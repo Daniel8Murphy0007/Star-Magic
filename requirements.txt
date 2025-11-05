@@ -1,0 +1,3 @@
+# Python dependencies for Star-Magic project
+# Anthropic's Claude API client
+anthropic>=0.40.0
