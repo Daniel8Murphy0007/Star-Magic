@@ -39,6 +39,25 @@ This unified theory addresses fundamental physics problems including:
 
 - **[Star Magic.md](Star%20Magic.md)**: The complete theoretical framework and equations
 - **Star-Magic_base64.md**: Base64 encoded version of the paper
+- **[USING_AI_ASSISTANTS.md](USING_AI_ASSISTANTS.md)**: Guide for using Claude and other AI tools with this repository
+
+## Frequently Asked Questions
+
+### Is this a software project?
+
+No, Star-Magic is a **theoretical physics framework**, not a software application. This repository contains documentation of a unified field theory - there is no code to install or run.
+
+### How do I install Claude?
+
+**Claude is not part of this repository.** If you're looking to use Claude (Anthropic's AI assistant) to help understand or contribute to this theoretical framework, please see our [guide on using AI assistants](USING_AI_ASSISTANTS.md).
+
+Claude can be accessed at [claude.ai](https://claude.ai) and is a helpful tool for:
+- Understanding complex scientific concepts
+- Reviewing mathematical equations
+- Discussing theoretical physics
+- Contributing to documentation
+
+See [USING_AI_ASSISTANTS.md](USING_AI_ASSISTANTS.md) for detailed information.
 
 ## Contributing
 

@@ -56,12 +56,23 @@ We welcome suggestions for:
 - Contributors grant permission for their contributions to be included
 - Proper attribution will be maintained
 
+## Using AI Assistants
+
+AI tools like Claude, ChatGPT, and others can be helpful for:
+- Understanding complex equations and concepts
+- Reviewing mathematical derivations
+- Improving documentation clarity
+- Finding related research
+
+See our [guide on using AI assistants](USING_AI_ASSISTANTS.md) for detailed information on how to use these tools effectively with the Star-Magic framework.
+
 ## Questions?
 
 If you have questions about contributing:
 - Open a discussion in the repository
 - Contact the author at daniel.murphy00@gmail.com
 - Review existing issues and discussions
+- See [USING_AI_ASSISTANTS.md](USING_AI_ASSISTANTS.md) for help with AI tools
 
 ## Code of Conduct
 
