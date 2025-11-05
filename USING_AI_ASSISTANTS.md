@@ -23,7 +23,7 @@ Claude is **not installed from this repository**. Instead, you access it through
 
 1. **Claude.ai** - Visit [claude.ai](https://claude.ai) to use Claude directly in your browser
 2. **Claude API** - If you're a developer, you can access Claude through Anthropic's API
-3. **Integrated Tools** - Some IDEs and tools integrate Claude (e.g., Cursor, GitHub Copilot uses similar technology)
+3. **Integrated Tools** - Some IDEs and tools integrate Claude (e.g., Cursor IDE has Claude integration)
 
 ### Using Claude to Work with Star-Magic
 
@@ -88,7 +88,7 @@ Besides Claude, other AI assistants that can help include:
 2. **Cite Properly**: If AI helps you find references, verify them independently
 3. **Maintain Accuracy**: The theoretical framework has specific definitions - ensure AI responses align with them
 4. **Use as a Tool**: AI assistants are helpers, not replacements for human understanding
-5. **Respect Copyright**: The Star-Magic framework is ©2025 Daniel T. Murphy - use AI to understand and contribute, not to copy
+5. **Respect Copyright**: The Star-Magic framework is copyrighted by Daniel T. Murphy - use AI to understand and contribute, not to copy
 
 ## Getting Started
 
