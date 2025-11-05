@@ -1,3 +1,4 @@
+---
 name: Feature Request
 description: Suggest an enhancement to the theoretical framework
 title: "[Feature]: "
@@ -6,8 +7,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for suggesting an enhancement to the Star-Magic framework.
-        
+        Thank you for suggesting an enhancement to the Star-Magic
+        framework.
+
   - type: textarea
     id: description
     attributes:
@@ -16,7 +18,7 @@ body:
       placeholder: What would you like to see added or improved?
     validations:
       required: true
-      
+
   - type: dropdown
     id: category
     attributes:
@@ -31,16 +33,18 @@ body:
         - Other
     validations:
       required: true
-      
+
   - type: textarea
     id: rationale
     attributes:
       label: Rationale
       description: Why is this enhancement valuable?
-      placeholder: Explain the scientific or practical benefit of this enhancement
+      placeholder: |
+        Explain the scientific or practical benefit of this
+        enhancement
     validations:
       required: true
-      
+
   - type: textarea
     id: proposal
     attributes:
@@ -52,12 +56,13 @@ body:
         - Implementation details
     validations:
       required: false
-      
+
   - type: textarea
     id: alternatives
     attributes:
       label: Alternatives Considered
       description: Have you considered any alternative approaches?
-      placeholder: Describe any alternative solutions you've thought about
+      placeholder: |
+        Describe any alternative solutions you've thought about
     validations:
       required: false
