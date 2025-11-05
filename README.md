@@ -39,6 +39,19 @@ This unified theory addresses fundamental physics problems including:
 
 - **[Star Magic.md](Star%20Magic.md)**: The complete theoretical framework and equations
 - **Star-Magic_base64.md**: Base64 encoded version of the paper
+- **requirements.txt**: Python dependencies including Claude AI integration
+- **claude_example.py**: Example script demonstrating Claude API usage
+- **[CLAUDE_SETUP.md](CLAUDE_SETUP.md)**: Guide for setting up and using Claude AI with Star-Magic
+
+## Claude AI Integration
+
+This repository includes integration with Anthropic's Claude AI for analyzing and discussing the theoretical framework. To get started:
+
+1. Install dependencies: `pip install -r requirements.txt`
+2. Set up your API key: `export ANTHROPIC_API_KEY='your-key-here'`
+3. Run the example: `python claude_example.py`
+
+See [CLAUDE_SETUP.md](CLAUDE_SETUP.md) for detailed setup instructions.
 
 ## Contributing
 
