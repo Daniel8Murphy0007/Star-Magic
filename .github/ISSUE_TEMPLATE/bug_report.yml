@@ -1,0 +1,51 @@
+name: Bug Report
+description: Report an error or inconsistency in the theoretical framework
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting an issue with the Star-Magic theoretical framework.
+        
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of the issue
+      placeholder: What seems to be incorrect or inconsistent?
+    validations:
+      required: true
+      
+  - type: textarea
+    id: location
+    attributes:
+      label: Location
+      description: Where in the document is this issue?
+      placeholder: |
+        - File: Star Magic.md
+        - Section: Chapter 2
+        - Equation: F_U derivation
+    validations:
+      required: true
+      
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should be correct?
+      placeholder: Describe what you believe should be the correct formulation or statement
+    validations:
+      required: false
+      
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Any additional information that might be helpful
+      placeholder: |
+        - References
+        - Mathematical derivations
+        - Related equations or concepts
+    validations:
+      required: false
