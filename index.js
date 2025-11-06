@@ -12862,6 +12862,48 @@ const { MagneticMomentModule } = require('./source104.js');
 // Import from source105.js
 const { GalacticBlackHoleModule } = require('./source105.js');
 
+// ===========================================================================================
+// Source106: NegativeTimeModule - Negative Time Factor (t_n) UQFF Module
+// ===========================================================================================
+// Import from source106.js
+const { NegativeTimeModule } = require('./source106.js');
+
+// ===========================================================================================
+// Source107: PiConstantModule - Mathematical Constant Pi (π) UQFF Module
+// ===========================================================================================
+// Import from source107.js
+const { PiConstantModule } = require('./source107.js');
+
+// ===========================================================================================
+// Source108: CorePenetrationModule - Planetary Core Penetration Factor (P_core) UQFF Module
+// ===========================================================================================
+// Import from source108.js
+const { CorePenetrationModule } = require('./source108.js');
+
+// ===========================================================================================
+// Source109: QuasiLongitudinalModule - Quasi-Longitudinal Wave Factor (f_quasi) UQFF Module
+// ===========================================================================================
+// Import from source109.js
+const { QuasiLongitudinalModule } = require('./source109.js');
+
+// ===========================================================================================
+// Source110: OuterFieldBubbleModule - Outer Field Bubble Radius (R_b) UQFF Module
+// ===========================================================================================
+// Import from source110.js
+const { OuterFieldBubbleModule } = require('./source110.js');
+
+// ===========================================================================================
+// Source111: ReciprocationDecayModule - Reciprocation Decay Rate (γ) UQFF Module
+// ===========================================================================================
+// Import from source111.js
+const { ReciprocationDecayModule } = require('./source111.js');
+
+// ===========================================================================================
+// Source112: ScmPenetrationModule - [SCm] Penetration Factor (P_SCm) UQFF Module
+// ===========================================================================================
+// Import from source112.js
+const { ScmPenetrationModule } = require('./source112.js');
+
 // Export all UQFF modules
 module.exports = {
     // Core UQFF modules
@@ -12901,7 +12943,28 @@ module.exports = {
     MagneticMomentModule,
     
     // Source105 galactic black hole module
-    GalacticBlackHoleModule
+    GalacticBlackHoleModule,
+    
+    // Source106 negative time module
+    NegativeTimeModule,
+    
+    // Source107 pi constant module
+    PiConstantModule,
+    
+    // Source108 core penetration module
+    CorePenetrationModule,
+    
+    // Source109 quasi-longitudinal module
+    QuasiLongitudinalModule,
+    
+    // Source110 outer field bubble module
+    OuterFieldBubbleModule,
+    
+    // Source111 reciprocation decay module
+    ReciprocationDecayModule,
+    
+    // Source112 SCm penetration module
+    ScmPenetrationModule
 };
 
 // Add Source98 Unified Field Strength system to PREDEFINED_SYSTEMS after class definition
@@ -13456,6 +13519,701 @@ PREDEFINED_SYSTEMS.GALACTIC_BLACK_HOLE = {
         ]
     }
 };
+
+// Add Source106 Negative Time Factor (t_n) system to PREDEFINED_SYSTEMS
+PREDEFINED_SYSTEMS.NEGATIVE_TIME = {
+    name: 'Negative Time Factor Module',
+    parameters: {
+        t_0: 0.0,                       // days - Reference time
+        t: 0.0,                         // days - Current time
+        gamma: 5e-5,                    // day^-1 - Decay/growth rate
+        mu_over_rj: 2.26e10,            // T m^2 - Magnetic moment over distance
+        P_SCm: 1.0,                     // Normalized - Superconductive medium pressure
+        E_react: 1e46,                  // J - Reactive energy
+        heaviside_f: 1e11 + 1.0,        // Heaviside amplification factor
+        quasi_f: 1.01                   // Quasi-static factor
+    },
+    description: {
+        purpose: 'Compute negative time factor t_n = t - t_0 enabling time-reversal and cyclic dynamics in UQFF',
+        physics: 't_n allows negative values for modeling negentropic processes, time-reversal zones (TRZ), and cyclic oscillations',
+        formula_t_n: 't_n = t - t_0 (can be negative for t < t_0)',
+        formula_cos: 'cos(π t_n) - Even function, same for ±t_n, drives oscillations',
+        formula_exp: 'exp(-γ t cos(π t_n)) - For t_n < 0 with cos(π t_n) < 0, exp grows (negentropic)',
+        formula_one_minus_exp: '1 - exp(-γ t cos(π t_n)) - Used in U_m and field contributions',
+        formula_Um: 'U_m ∝ (μ/r_j) * (1 - exp(-γ t cos(π t_n))) * φ_hat * P_SCm * E_react * heaviside_f * quasi_f',
+        role: 'Models forward/reverse time in nebulae, mergers, jets; enables growth phases and cyclic behavior',
+        mechanism: 'Negative t_n creates growth terms via positive exponential argument; cos(π t_n) is even, preserving symmetry'
+    },
+    example_calculation: {
+        scenario_positive: 't=1000 days, t_0=0, γ=5e-5 day^-1',
+        t_n_positive: '1000 days',
+        cos_positive: 'cos(π*1000) = 1.0',
+        exp_positive: 'exp(-5e-5 * 1000 * 1.0) = exp(-0.05) ≈ 0.951',
+        one_minus_exp_positive: '1 - 0.951 = 0.049',
+        Um_positive: '≈1.12e66 J/m³',
+        
+        scenario_negative: 't=1000 days, t_0=1001, γ=5e-5 day^-1',
+        t_n_negative: '-1 day',
+        cos_negative: 'cos(π*(-1)) = cos(-π) = -1.0 (cos even)',
+        exp_negative: 'exp(-5e-5 * 1000 * (-1.0)) = exp(0.05) ≈ 1.051',
+        one_minus_exp_negative: '1 - 1.051 = -0.051 (growth/negentropic)',
+        Um_negative: '≈-1.17e66 J/m³ (negative indicates growth phase)',
+        
+        explanation: 'Negative t_n enables modeling of time-reversal zones, negentropic growth, and cyclic oscillations in UQFF'
+    },
+    validation: {
+        t_n_range: '-1e6 to 1e6 days (arbitrary time reference)',
+        gamma_range: '1e-6 to 1e-3 day^-1 (decay/growth rates)',
+        cos_range: '-1.0 to 1.0 (oscillation)',
+        exp_range: '0.0 to ~10 (decay to growth)',
+        one_minus_exp_range: '-10 to 1.0 (decay to negentropic growth)',
+        Um_range: '-1e70 to 1e70 J/m³ (depends on scenario)'
+    },
+    applications: [
+        'Time-reversal zones (TRZ) in nebulae and star formation',
+        'Negentropic growth phases in jets and accretion disks',
+        'Cyclic oscillations in merging galaxies',
+        'Forward/reverse time modeling in UQFF dynamics',
+        'Growth-decay transitions via negative time factor',
+        'Temporal symmetry in cos(π t_n) for even-function dynamics',
+        'Exponential growth modeling for t_n < 0 scenarios'
+    ],
+    modular_design: {
+        self_expanding: true,
+        dynamic_variables: true,
+        time_reversal: 'Allows t_n < 0 for modeling reverse time and negentropic processes',
+        physics_terms: [
+            't_n_normalized_time',
+            'cos_pi_tn_oscillation',
+            'exp_decay_growth',
+            'one_minus_exp_field_contrib',
+            'Um_example_magnetic'
+        ]
+    }
+};
+
+// Add Source107 Pi Constant system to PREDEFINED_SYSTEMS
+PREDEFINED_SYSTEMS.PI_CONSTANT = {
+    name: 'Mathematical Constant Pi (π) Module',
+    moduleClass: PiConstantModule,
+    parameters: {
+        pi: 3.141592653589793,              // Unitless mathematical constant
+        t_n: 0.0,                           // days (negative time factor)
+        t: 0.0,                             // s (time)
+        period: 3.96e8,                     // s (example solar cycle ~12.5 years)
+        omega_c: 2.0 * Math.PI / 3.96e8,    // rad/s (angular frequency)
+        base_mu: 3.38e20,                   // Tï¿½m³ (base magnetic moment density)
+        B_j: 1e3                            // T (base magnetic field)
+    },
+    description: {
+        purpose: 'Mathematical constant π defines periodicity in all oscillatory UQFF terms',
+        physics: 'Core constant enabling cyclic dynamics, time-reversal oscillations, and solar cycles',
+        formulas: {
+            pi: 'π ≈ 3.141592653589793 (unitless)',
+            two_pi: '2π ≈ 6.283185307179586 (full circle in radians)',
+            circumference: 'C = 2π r (circle circumference)',
+            omega_c: 'ω_c = 2π / period (angular frequency in rad/s)',
+            cos_pi_tn: 'cos(π t_n) - Time-reversal oscillation in U_g1',
+            sin_omega_ct: 'sin(ω_c t) - Cyclic variation with period',
+            mu_j: 'μ_j = (B_j + 0.4 sin(ω_c t)) × base_mu (Tï¿½m³)',
+            validation: 'tan(π/4) = 1.0 (mathematical validation)'
+        },
+        example_calculations: [
+            {
+                scenario: 'Initial state (t=0, t_n=0)',
+                inputs: { t: 0.0, t_n: 0.0 },
+                outputs: {
+                    pi: '3.141592653589793',
+                    cos_pi_tn: '1.000000 (cos(π × 0) = 1)',
+                    sin_omega_ct: '0.000000 (sin(ω_c × 0) = 0)',
+                    mu_j: '3.38e23 Tï¿½m³ (B_j × base_mu)',
+                    omega_c: '1.587e-8 rad/s',
+                    period: '3.96e8 s (≈12.5 years)'
+                }
+            },
+            {
+                scenario: 'Half cycle (t_n=1.0)',
+                inputs: { t_n: 1.0 },
+                outputs: {
+                    cos_pi_tn: '-1.000000 (cos(π × 1) = -1)',
+                    interpretation: 'Time-reversal: negative phase in U_g1 oscillation'
+                }
+            },
+            {
+                scenario: 'Peak solar cycle (t = period/4)',
+                inputs: { t: 9.9e7 },
+                outputs: {
+                    sin_omega_ct: '1.000000 (sin(π/2) ≈ 1)',
+                    mu_j: '≈3.38e23 Tï¿½m³ (B_j + 0.4) × base_mu',
+                    interpretation: 'Maximum magnetic moment density variation'
+                }
+            }
+        ]
+    },
+    validation: {
+        pi_range: [3.141592, 3.141593],
+        cos_range: [-1.0, 1.0],
+        sin_range: [-1.0, 1.0],
+        omega_c_range: [0.0, 1e-6],
+        mu_j_range: [1e20, 1e24],
+        tan_pi_4: 1.0
+    },
+    applications: [
+        'Oscillatory terms in U_g1: cos(π t_n) for time-reversal dynamics',
+        'Cyclic variations in μ_j: sin(ω_c t) for solar cycle modeling',
+        'Angular frequency ω_c = 2π/period for periodic phenomena',
+        'Circle geometry: C = 2π r for orbital mechanics',
+        'Phase calculations in wave equations and resonance',
+        'Trigonometric identities for field coupling terms',
+        'Validation checks: tan(π/4) = 1.0 for numerical accuracy'
+    ],
+    modular_design: {
+        self_expanding: true,
+        dynamic_variables: true,
+        mathematical_constant: 'π is fundamental to all cyclic UQFF dynamics',
+        physics_terms: [
+            'cos_pi_tn_time_reversal',
+            'sin_omega_ct_solar_cycle',
+            'mu_j_magnetic_moment',
+            'omega_c_angular_frequency',
+            'two_pi_full_cycle'
+        ]
+    }
+};
+
+// Add Source108 Core Penetration system to PREDEFINED_SYSTEMS
+PREDEFINED_SYSTEMS.CORE_PENETRATION = {
+    name: 'Planetary Core Penetration Factor (P_core) Module',
+    moduleClass: CorePenetrationModule,
+    parameters: {
+        P_core: 1.0,                        // Unitless ≈1 for Sun (full plasma penetration)
+        k_3: 1.8,                           // Coupling constant
+        B_j: 1e3,                           // T (base magnetic field)
+        omega_s: 2.5e-6,                    // rad/s (solar rotation frequency)
+        P_core_planet: 1e-3,                // For planets (solid core, 3 orders lower)
+        E_react: 1e46,                      // J (reaction energy)
+        pi: Math.PI,
+        t: 0.0                              // s (time)
+    },
+    description: {
+        purpose: 'P_core scales magnetic strings disk energy U_g3 for core [SCm] influence',
+        physics: 'Adjusts penetration: full for stellar plasma (P_core=1), reduced for solid cores (P_core~1e-3)',
+        formulas: {
+            U_g3: 'U_g3 = k_3 × μ_j B_j(r,θ,t,ρ_vac,[SCm]) × cos(ω_s(t) t π) × P_core × E_react',
+            P_core_sun: 'P_core ≈ 1.0 (unitless, full plasma core penetration)',
+            P_core_planet: 'P_core ≈ 1e-3 (solid core, 3 orders lower)',
+            scaling: 'Stellar/Planetary ratio = 1.0 / 1e-3 = 1000x',
+            cos_term: 'cos(ω_s t π) - Solar rotation modulation',
+            role: 'Scales magnetic disk gravity for core superconducting medium influence'
+        },
+        example_calculations: [
+            {
+                scenario: 'Sun at t=0 (full plasma core)',
+                inputs: { t: 0.0, P_core: 1.0 },
+                outputs: {
+                    P_core: '1.000e+0 (full penetration)',
+                    cos_term: '1.000000 (cos(0) = 1)',
+                    U_g3: '≈1.8e49 J/m³',
+                    interpretation: 'Full magnetic strings disk energy for stellar plasma core'
+                }
+            },
+            {
+                scenario: 'Planet at t=0 (solid core)',
+                inputs: { t: 0.0, P_core: 1e-3 },
+                outputs: {
+                    P_core: '1.000e-3 (reduced penetration)',
+                    cos_term: '1.000000 (cos(0) = 1)',
+                    U_g3: '≈1.8e46 J/m³ (3 orders lower)',
+                    interpretation: 'Reduced penetration due to solid planetary core'
+                }
+            },
+            {
+                scenario: 'Sun at t=1e6 s (rotation phase)',
+                inputs: { t: 1e6 },
+                outputs: {
+                    omega_s_t_pi: '7.854 rad (≈2.5π)',
+                    cos_term: '≈0.707 (cos(2.5π) ≈ √2/2)',
+                    U_g3: '≈1.27e49 J/m³',
+                    interpretation: 'Solar rotation modulates U_g3'
+                }
+            }
+        ]
+    },
+    validation: {
+        P_core_sun_range: [0.9, 1.1],
+        P_core_planet_range: [1e-4, 1e-2],
+        scaling_factor: 1000.0,
+        cos_range: [-1.0, 1.0],
+        U_g3_sun_range: [1e48, 1e50],
+        U_g3_planet_range: [1e45, 1e47]
+    },
+    applications: [
+        'Stellar core modeling: Full P_core=1 for plasma penetration',
+        'Planetary core modeling: Reduced P_core~1e-3 for solid cores',
+        'Magnetic strings disk energy U_g3 scaling',
+        'Core [SCm] superconducting medium influence',
+        'Star formation regions with varying core densities',
+        'Nebulae and protoplanetary disk modeling',
+        'Core-mantle boundary dynamics in planets'
+    ],
+    modular_design: {
+        self_expanding: true,
+        dynamic_variables: true,
+        core_penetration: 'Enables stellar vs planetary core differentiation',
+        physics_terms: [
+            'P_core_scaling_factor',
+            'U_g3_magnetic_strings_disk',
+            'cos_omega_s_rotation',
+            'stellar_plasma_penetration',
+            'planetary_solid_core_reduction'
+        ]
+    }
+};
+
+// ===========================================================================================
+// Source109: QuasiLongitudinalModule - PREDEFINED_SYSTEMS Configuration
+// ===========================================================================================
+PREDEFINED_SYSTEMS.QUASI_LONGITUDINAL = {
+    name: 'Quasi-Longitudinal Wave Factor',
+    description: {
+        purpose: 'Quasi-longitudinal wave factor (f_quasi) scaling for Universal Magnetism U_m term',
+        physics: 'Minor 1% enhancement to magnetic strings energy via quasi-longitudinal wave propagation effects',
+        formula_f_quasi: 'f_quasi = 0.01 (unitless quasi-longitudinal wave fraction)',
+        formula_quasi_factor: 'Quasi factor = 1 + f_quasi = 1.01 (1% increase)',
+        formula_um_base: 'U_m_base = (μ_j / r_j) (1 - e^{-γ t cos(π t_n)}) φ_hat_j P_SCm E_react',
+        formula_um_contribution: 'U_m = U_m_base × (1 + 10^13 f_Heaviside) × (1 + f_quasi)',
+        formula_heaviside: 'Heaviside factor = 1 + 10^13 × 0.01 = 1e11 + 1',
+        role: 'Minor scaling for quasi-longitudinal waves in magnetic strings; subtle [SCm]/[UA] wave effects; enhances wave propagation in jets/nebulae'
+    },
+    parameters: {
+        f_quasi: 0.01,                          // Unitless quasi-longitudinal wave fraction
+        mu_j: 3.38e23,                          // T·m³ (j=1 magnetic moment)
+        r_j: 1.496e13,                          // m (distance)
+        gamma: 5e-5 / 86400.0,                  // s^-1 (0.00005 day^-1, decay rate)
+        t_n: 0.0,                               // s (normalized time)
+        phi_hat_j: 1.0,                         // Normalized flux
+        P_SCm: 1.0,                             // Pressure
+        E_react: 1e46,                          // J (reaction energy)
+        f_Heaviside: 0.01,                      // Heaviside fraction
+        scale_Heaviside: 1e13,                  // Amplification factor
+        pi: Math.PI,                            // π constant
+        quasi_factor: 1.01,                     // Derived: 1 + f_quasi
+        heaviside_factor: 1e11 + 1              // Derived: 1 + scale_Heaviside × f_Heaviside
+    },
+    example_calculations: [
+        {
+            scenario: 'Sun j=1, t=0',
+            inputs: { j: 1, t: 0.0, f_quasi: 0.01 },
+            outputs: {
+                quasi_factor: 1.01,
+                exp_arg: 0.0,                    // -γ × 0 × cos(π × 0)
+                one_minus_exp: 0.0,              // 1 - e^0 = 0
+                um_base: 0.0,                    // At t=0
+                um_with_quasi: '≈2.28e65 J/m³',  // With all factors (example from docs)
+                um_without_quasi: '≈2.26e65 J/m³', // Without quasi (1% lower)
+                percent_increase: '+1.0%'
+            }
+        },
+        {
+            scenario: 'Sun j=1, t=1e6 s',
+            inputs: { j: 1, t: 1e6, f_quasi: 0.01 },
+            outputs: {
+                quasi_factor: 1.01,
+                exp_arg: -0.579,                 // -5.787e-10 × 1e6 × 1
+                one_minus_exp: 0.44,             // 1 - e^-0.579 ≈ 0.44
+                um_base: '≈1.0e65 J/m³',         // With time evolution
+                um_contribution: '≈1.0e76 J/m³', // With Heaviside × quasi
+                enhancement: '1% quasi-wave boost'
+            }
+        },
+        {
+            scenario: 'Modified f_quasi = 0.02',
+            inputs: { j: 1, t: 1e6, f_quasi: 0.02 },
+            outputs: {
+                quasi_factor: 1.02,
+                um_contribution: '≈1.02e76 J/m³',
+                percent_increase: '+2.0%',
+                note: 'Doubled wave factor yields 2% enhancement'
+            }
+        }
+    ],
+    validation: {
+        f_quasi_range: { min: 0.0, max: 0.1, unit: 'unitless', description: 'Quasi-longitudinal wave fraction (typically 1%)' },
+        quasi_factor_range: { min: 1.0, max: 1.1, unit: 'unitless', description: 'Scaling factor = 1 + f_quasi' },
+        gamma_range: { min: 1e-10, max: 1e-8, unit: 's^-1', description: 'Decay rate for exponential term' },
+        um_base_range: { min: 0.0, max: 1e66, unit: 'J/m³', description: 'Base U_m before quasi scaling' },
+        um_contribution_range: { min: 0.0, max: 1e77, unit: 'J/m³', description: 'Full U_m with Heaviside and quasi' },
+        percent_increase_range: { min: 0.0, max: 10.0, unit: '%', description: 'Enhancement from quasi-longitudinal waves' }
+    },
+    applications: [
+        'Quasi-longitudinal wave propagation in magnetic strings',
+        'Minor (1%) enhancement to U_m universal magnetism term',
+        'Wave effects in stellar jets and AGN outflows',
+        'Nebular magnetic field dynamics with wave coupling',
+        'Subtle [SCm]/[UA] wave interaction modeling',
+        'Protoplanetary disk magnetic wave transport',
+        'Cumulative dynamics in long-timescale simulations'
+    ],
+    modular_design: {
+        self_expanding: true,
+        dynamic_variables: true,
+        quasi_longitudinal: 'Enables quasi-longitudinal wave factor calculations',
+        physics_terms: [
+            'f_quasi_wave_fraction',
+            'quasi_factor_scaling',
+            'um_base_magnetic_energy',
+            'heaviside_amplification',
+            'exponential_time_decay'
+        ]
+    }
+};
+
+// ===========================================================================================
+// Source110: OuterFieldBubbleModule - PREDEFINED_SYSTEMS Configuration
+// ===========================================================================================
+PREDEFINED_SYSTEMS.OUTER_FIELD_BUBBLE = {
+    name: 'Outer Field Bubble Radius',
+    description: {
+        purpose: 'Radius of outer field bubble (R_b) defining heliopause boundary and S(r - R_b) step function',
+        physics: 'Separates internal/external gravitational fields; activates U_g2 term beyond 100 AU',
+        formula_rb: 'R_b = 1.496e13 m (100 AU, outer bubble radius)',
+        formula_step: 'S(r - R_b) = 1 if r >= R_b, else 0 (Heaviside step function)',
+        formula_ug2: 'U_g2 = k_2 × [(ρ_vac,[UA] + ρ_vac,[SCm]) M_s / r²] × S(r - R_b) × (1 + δ_sw v_sw) × H_SCm × E_react',
+        formula_swirl: 'Swirl factor = 1 + δ_sw × v_sw (solar wind velocity modulation)',
+        role: 'Defines external gravity boundary (~heliopause); models heliosphere/nebular extent; sharp transition at R_b'
+    },
+    parameters: {
+        R_b: 1.496e13,                          // m (100 AU outer bubble radius)
+        AU_to_m: 1.496e11,                      // m/AU conversion factor
+        k_2: 1.2,                               // Coupling constant
+        rho_vac_UA: 7.09e-36,                   // J/m³ (UA vacuum density)
+        rho_vac_SCm: 7.09e-37,                  // J/m³ (SCm vacuum density)
+        M_s: 1.989e30,                          // kg (solar mass)
+        r: 1.496e13,                            // m (default = R_b)
+        delta_sw: 0.01,                         // Unitless solar wind fraction
+        v_sw: 5e5,                              // m/s (solar wind velocity)
+        H_SCm: 1.0,                             // Unitless SCm parameter
+        E_react: 1e46,                          // J (reaction energy)
+        rho_sum: 7.09e-36 + 7.09e-37,          // J/m³ (derived: ρ_vac,UA + ρ_vac,SCm)
+        swirl_factor: 1.0 + 0.01 * 5e5          // Derived: 1 + δ_sw × v_sw = 5001
+    },
+    example_calculations: [
+        {
+            scenario: 'Inside bubble (r = 1 AU = 1.496e11 m)',
+            inputs: { r: 1.496e11, R_b: 1.496e13 },
+            outputs: {
+                r_in_AU: 1.0,
+                S_step: 0.0,                     // r < R_b, step = 0
+                U_g2: 0.0,                       // Zero inside bubble
+                note: 'No external gravity field inside heliopause'
+            }
+        },
+        {
+            scenario: 'At boundary (r = R_b = 1.496e13 m = 100 AU)',
+            inputs: { r: 1.496e13, R_b: 1.496e13 },
+            outputs: {
+                r_in_AU: 100.0,
+                S_step: 1.0,                     // r >= R_b, step = 1
+                rho_sum: 7.80e-36,               // J/m³
+                swirl_factor: 5001.0,
+                U_g2: '≈1.18e53 J/m³',           // Activated at boundary
+                note: 'Sharp transition at heliopause'
+            }
+        },
+        {
+            scenario: 'Outside bubble (r = 1.5e13 m ≈ 100.3 AU)',
+            inputs: { r: 1.5e13, R_b: 1.496e13 },
+            outputs: {
+                r_in_AU: 100.3,
+                S_step: 1.0,                     // r >= R_b, step = 1
+                U_g2: '≈1.24e53 J/m³',           // Active in external region
+                ratio: '1.05× boundary value',   // Slight decrease with r²
+                note: 'External field active beyond heliopause'
+            }
+        }
+    ],
+    validation: {
+        rb_range: { min: 1e13, max: 2e13, unit: 'm', description: 'Outer bubble radius (50-150 AU typical)' },
+        rb_au_range: { min: 50, max: 150, unit: 'AU', description: 'Heliopause distance range' },
+        step_function: { values: [0.0, 1.0], unit: 'unitless', description: 'Step function S(r - R_b)' },
+        ug2_inside: { value: 0.0, unit: 'J/m³', description: 'U_g2 = 0 for r < R_b' },
+        ug2_boundary: { min: 1e52, max: 1e54, unit: 'J/m³', description: 'U_g2 at r = R_b' },
+        swirl_factor_range: { min: 1.0, max: 1e6, unit: 'unitless', description: 'Solar wind velocity modulation' }
+    },
+    applications: [
+        'Heliopause boundary definition (~100 AU for Sun)',
+        'Sharp transition between internal/external gravitational fields',
+        'U_g2 external gravity activation beyond R_b',
+        'Heliosphere extent modeling for stellar systems',
+        'Nebular boundary and extent calculations',
+        'Protoplanetary disk outer edge definition',
+        'Interstellar medium interaction at bubble boundary',
+        'Step function for field domain separation'
+    ],
+    modular_design: {
+        self_expanding: true,
+        dynamic_variables: true,
+        outer_field_bubble: 'Enables R_b boundary and step function calculations',
+        physics_terms: [
+            'R_b_bubble_radius',
+            'step_function_S',
+            'U_g2_external_gravity',
+            'swirl_factor_solar_wind',
+            'vacuum_density_sum'
+        ]
+    }
+};
+
+// ===========================================================================================
+// Source111: ReciprocationDecayModule - PREDEFINED_SYSTEMS Configuration
+// ===========================================================================================
+PREDEFINED_SYSTEMS.RECIPROCATION_DECAY = {
+    name: 'Reciprocation Decay Rate',
+    description: {
+        purpose: 'Reciprocation decay rate (γ) controlling exponential time evolution in U_m magnetic strings term',
+        physics: 'Slow decay/growth timescale ~55 years; cyclic via cos(π t_n) reciprocation between decay and negentropic growth',
+        formula_gamma: 'γ = 0.00005 day⁻¹ (5.8e-10 s⁻¹, slow decay constant)',
+        formula_exp: 'Exponential term: exp(-γ t cos(π t_n)) where t in days, t_n normalized time',
+        formula_one_minus_exp: '1 - exp(-γ t cos(π t_n)) appears in U_m magnetic strings energy',
+        formula_um_contribution: 'U_m ∝ (μ_j / r_j) × (1 - exp(-γ t cos(π t_n))) × φ_hat_j × P_SCm × E_react × Heaviside × quasi',
+        timescale: '1/γ ≈ 20000 days ≈ 55 years (long-term magnetic field evolution)',
+        reciprocation: 'cos(π t_n) switches sign: positive = decay, negative = growth (Time Reversal Zone TRZ)',
+        role: 'Governs slow magnetic strings evolution; enables cyclic decay/growth in jets, nebulae, galaxy mergers'
+    },
+    parameters: {
+        gamma_day: 0.00005,                     // day⁻¹ (decay rate)
+        gamma_s: 5.787e-10,                     // s⁻¹ (derived: 0.00005 / 86400)
+        day_to_s: 86400.0,                      // s/day conversion
+        t_n: 0.0,                               // Normalized time (unitless)
+        t_day: 0.0,                             // Time in days
+        pi: Math.PI,                            // π constant
+        mu_over_rj: 2.26e10,                    // T m² (μ_j / r_j magnetic moment per distance)
+        P_SCm: 1.0,                             // Normalized pressure
+        E_react: 1e46,                          // J (reaction energy)
+        heaviside_f: 1e11 + 1.0,                // 1 + 10^13 × 0.01
+        quasi_f: 1.01,                          // 1 + 0.01
+        timescale_days: 20000,                  // Derived: 1/γ
+        timescale_years: 54.75                  // Derived: 20000/365.25
+    },
+    example_calculations: [
+        {
+            scenario: 'Initial state (t = 0 days, t_n = 0)',
+            inputs: { t_day: 0, t_n: 0 },
+            outputs: {
+                cos_pi_tn: 1.0,                  // cos(π × 0) = 1
+                exp_arg: 0.0,                    // -γ × 0 × 1 = 0
+                exp_term: 1.0,                   // e^0 = 1
+                one_minus_exp: 0.0,              // 1 - 1 = 0
+                um_contribution: 0.0,            // Zero at t=0
+                note: 'No magnetic field buildup yet'
+            }
+        },
+        {
+            scenario: 'After 1000 days (t_n = 0, normal decay)',
+            inputs: { t_day: 1000, t_n: 0 },
+            outputs: {
+                cos_pi_tn: 1.0,                  // cos(0) = 1
+                exp_arg: -0.05,                  // -0.00005 × 1000 × 1
+                exp_term: 0.9512,                // e^(-0.05) ≈ 0.9512
+                one_minus_exp: 0.0488,           // 1 - 0.9512 ≈ 0.049
+                um_contribution: '≈1.12e66 J/m³', // With all scaling factors
+                note: '~5% field buildup after 1000 days'
+            }
+        },
+        {
+            scenario: 'After 10000 days (t_n = 0, ~27 years)',
+            inputs: { t_day: 10000, t_n: 0 },
+            outputs: {
+                cos_pi_tn: 1.0,
+                exp_arg: -0.5,
+                exp_term: 0.6065,                // e^(-0.5) ≈ 0.6065
+                one_minus_exp: 0.3935,           // ~39% saturation
+                um_contribution: '≈9.02e66 J/m³',
+                note: 'Approaching half-life timescale'
+            }
+        },
+        {
+            scenario: 'Reciprocation (t = 1000 days, t_n = 0.5, negative cos)',
+            inputs: { t_day: 1000, t_n: 0.5 },
+            outputs: {
+                cos_pi_tn: 0.0,                  // cos(π × 0.5) = 0
+                exp_arg: 0.0,                    // -γ × 1000 × 0 = 0
+                exp_term: 1.0,                   // e^0 = 1
+                one_minus_exp: 0.0,
+                um_contribution: 0.0,
+                note: 'Reciprocation zero point'
+            }
+        },
+        {
+            scenario: 'Negentropic growth (t = 1000 days, t_n = 1.0, TRZ)',
+            inputs: { t_day: 1000, t_n: 1.0 },
+            outputs: {
+                cos_pi_tn: -1.0,                 // cos(π) = -1
+                exp_arg: 0.05,                   // -γ × 1000 × (-1) = +0.05
+                exp_term: 1.0513,                // e^(+0.05) > 1 (growth!)
+                one_minus_exp: -0.0513,          // Negative = negentropic
+                um_contribution: 'Negative/Growth',
+                note: 'Time Reversal Zone: field grows instead of decays'
+            }
+        }
+    ],
+    validation: {
+        gamma_day_range: { min: 1e-6, max: 1e-3, unit: 'day⁻¹', description: 'Decay rate (0.00005 typical)' },
+        gamma_s_range: { min: 1e-11, max: 1e-8, unit: 's⁻¹', description: 'Decay rate in SI units' },
+        cos_pi_tn_range: { min: -1.0, max: 1.0, unit: 'unitless', description: 'Cosine reciprocation factor' },
+        exp_term_range: { min: 0.0, max: 10.0, unit: 'unitless', description: 'Exponential term (can exceed 1 in TRZ)' },
+        one_minus_exp_range: { min: -1.0, max: 1.0, unit: 'unitless', description: 'Buildup factor (negative in TRZ)' },
+        timescale_range: { min: 10, max: 100, unit: 'years', description: 'Characteristic evolution timescale' }
+    },
+    applications: [
+        'Slow magnetic field evolution in stellar systems (~55 year timescale)',
+        'Cyclic decay/growth via cos(π t_n) reciprocation',
+        'Time Reversal Zone (TRZ) negentropic growth when cos(π t_n) < 0',
+        'Magnetic strings energy buildup in jets and AGN outflows',
+        'Nebular magnetic field long-term dynamics',
+        'Galaxy merger magnetic field interaction timescales',
+        'Protoplanetary disk magnetic field evolution',
+        'Multi-decadal astronomical observation correlation'
+    ],
+    modular_design: {
+        self_expanding: true,
+        dynamic_variables: true,
+        reciprocation_decay: 'Enables γ decay rate and exponential time evolution',
+        physics_terms: [
+            'gamma_decay_rate',
+            'exponential_time_term',
+            'one_minus_exp_buildup',
+            'cos_pi_tn_reciprocation',
+            'negentropic_trz_growth'
+        ]
+    }
+};
+
+// ===========================================================================================
+// PREDEFINED_SYSTEMS.SCM_PENETRATION - Source112 [SCm] Penetration Factor Module
+// ===========================================================================================
+PREDEFINED_SYSTEMS.SCM_PENETRATION = {
+    name: 'SCM Penetration Factor Module',
+    moduleClass: ScmPenetrationModule,
+    parameters: {
+        // [SCm] Penetration Constants
+        P_SCm: 1.0,                         // Unitless ≈1 for Sun (full plasma penetration)
+        P_SCm_planet: 1e-3,                 // For planets (solid core, 1000× reduction)
+        
+        // Magnetic parameters
+        mu_j: 3.38e23,                      // T·m³ (magnetic moment)
+        r_j: 1.496e13,                      // m (solar radius scale)
+        
+        // Time evolution parameters
+        gamma: 5e-5 / 86400.0,              // s⁻¹ (decay rate: 5.787e-10 s⁻¹)
+        t_n: 0.0,                           // Normalized time for reciprocation
+        
+        // Field parameters
+        phi_hat_j: 1.0,                     // Normalized field direction
+        E_react: 1e46,                      // J (reactive energy)
+        
+        // Enhancement factors
+        f_Heaviside: 0.01,                  // Unitless (1% Heaviside enhancement)
+        f_quasi: 0.01,                      // Unitless (1% quasi-longitudinal enhancement)
+        scale_Heaviside: 1e13,              // Amplification scale (10^13)
+        
+        // Derived
+        heaviside_factor: 1.0 + 1e13 * 0.01, // 1 + 10^13 × f_Heaviside = 1e11 + 1
+        
+        // Constants
+        pi: Math.PI
+    },
+    description: {
+        purpose: 'Computes [SCm] Penetration Factor P_SCm for UQFF Universal Magnetism U_m term',
+        physics: `P_SCm ≈ 1 (unitless) for Sun - full plasma penetration of massless [SCm] field
+P_SCm ≈ 1e-3 for planets - reduced penetration through solid cores (1000× scaling)
+Controls [SCm] influence on magnetic string energy in stellar/planetary interiors
+Scales U_m magnetic energy density contribution to UQFF Master Equation`,
+        formulas: {
+            P_SCm_stellar: 'P_SCm ≈ 1.0 (full penetration for stellar plasma)',
+            P_SCm_planetary: 'P_SCm ≈ 1e-3 (reduced penetration for solid cores)',
+            Um_base: 'U_m_base = (μ_j / r_j) × (1 - e^{-γ t cos(π t_n)}) × φ_hat_j × P_SCm × E_react',
+            Um_full: 'U_m = U_m_base × (1 + 10^13 f_Heaviside) × (1 + f_quasi)',
+            scaling_ratio: 'P_SCm_stellar / P_SCm_planetary = 1000 (3 orders of magnitude)',
+            mu_over_rj: 'μ_j / r_j = 3.38e23 / 1.496e13 ≈ 2.26e10 T/m',
+            time_evolution: '1 - e^{-γ t cos(π t_n)} (builds up over ~55 year timescale)'
+        },
+        example_calculations: [
+            {
+                scenario: 'Sun at t=0, t_n=0',
+                P_SCm: 1.0,
+                one_minus_exp: 0.0,
+                Um_base: 0.0,
+                Um_full: 0.0,
+                description: 'Initial state - no magnetic energy buildup yet'
+            },
+            {
+                scenario: 'Sun at t=1000 days, t_n=0',
+                P_SCm: 1.0,
+                one_minus_exp: 0.049,
+                Um_base: '≈1.11e65 J/m³',
+                Um_full: '≈1.12e66 J/m³',
+                description: 'After ~2.7 years, ~5% magnetic energy buildup with full plasma penetration'
+            },
+            {
+                scenario: 'Planet at t=1000 days, t_n=0',
+                P_SCm: 1e-3,
+                one_minus_exp: 0.049,
+                Um_base: '≈1.11e62 J/m³',
+                Um_full: '≈1.12e63 J/m³',
+                description: 'Same time, 1000× reduced due to solid core (3 orders lower)'
+            },
+            {
+                scenario: 'Stellar vs Planetary comparison',
+                P_SCm_ratio: 1000,
+                Um_ratio: 1000,
+                description: 'Stellar U_m is 1000× planetary U_m at same time - [SCm] penetration scaling'
+            },
+            {
+                scenario: 'Long-term Sun at t=20000 days, t_n=0',
+                P_SCm: 1.0,
+                one_minus_exp: 0.632,
+                Um_base: '≈1.43e66 J/m³',
+                Um_full: '≈1.44e67 J/m³',
+                description: 'After ~55 years, 63% saturation (1/e timescale) with full penetration'
+            }
+        ],
+        validation: {
+            P_SCm_range: [1e-3, 1.0],
+            P_SCm_stellar: 1.0,
+            P_SCm_planetary: 1e-3,
+            scaling_ratio: 1000,
+            Um_stellar_range: [0, 1e68],
+            Um_planetary_range: [0, 1e65]
+        }
+    },
+    applications: [
+        'Stellar plasma full [SCm] penetration modeling',
+        'Planetary solid core reduced penetration (1000× scaling)',
+        'Stellar vs planetary magnetic field strength comparison',
+        'Interior [SCm] influence on magnetic string energy',
+        'Jets and AGN outflows with varying penetration depths',
+        'Protostellar collapse with evolving density/penetration',
+        'Binary systems with different penetration factors',
+        'Supernova remnants with mixed plasma/solid phases'
+    ],
+    modular_design: {
+        self_expanding: true,
+        dynamic_variables: true,
+        scm_penetration: 'Enables P_SCm scaling for stellar vs planetary systems',
+        physics_terms: [
+            'P_SCm_factor',
+            'stellar_plasma_penetration',
+            'planetary_solid_core',
+            'Um_base_calculation',
+            'Um_scaling_ratio'
+        ]
+    }
+};
+
+
+
+
 
 
 
