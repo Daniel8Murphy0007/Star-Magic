@@ -57,9 +57,6 @@ public:
 
 class DynamicVacuumTerm : public PhysicsTerm {
 private:
-    
-    // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
-    // Note: Can be extended with dynamic parameters via setVariable()
     double amplitude;
     double frequency;
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
@@ -86,9 +83,6 @@ public:
 
 class QuantumCouplingTerm : public PhysicsTerm {
 private:
-    
-    // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
-    // Note: Can be extended with dynamic parameters via setVariable()
     double coupling_strength;
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
@@ -119,15 +113,7 @@ public:
 
 class MagneticStringModule {
 private:
-    
-    // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
-    // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
-    double computeRjInAU();
-    double computeRjInLy();
-    double computeRjInPc();
-    double computeMuOverRj(int j);
-    double computeUmContribution(int j);
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
     std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
@@ -174,11 +160,11 @@ public:
 
 // Constructor: Set framework defaults
 MagneticStringModule::MagneticStringModule() {
-        enableDynamicTerms = true;
-        enableLogging = false;
-        learningRate = 0.001;
-        metadata["enhanced"] = "true";
-        metadata["version"] = "2.0-Enhanced";
+    enableDynamicTerms = true;
+    enableLogging = false;
+    learningRate = 0.001;
+    metadata["enhanced"] = "true";
+    metadata["version"] = "2.0-Enhanced";
 
     // Universal constants
     variables["AU_to_m"] = 1.496e11;                // m/AU
@@ -209,6 +195,8 @@ MagneticStringModule::MagneticStringModule() {
     variables["Omega_g"] = 7.3e-16;                 // rad/s
     variables["M_s"] = 1.989e30;                    // kg
     variables["d_g"] = 2.55e20;                     // m
+    variables["rho_vac_SCm"] = 7.09e-37;            // J/m³
+    variables["rho_vac_UA"] = 7.09e-36;             // J/m³
 }
 
 // Update variable
@@ -291,13 +279,13 @@ double MagneticStringModule::computeUg3Contribution() {
 
 // Equation text
 std::string MagneticStringModule::getEquationText() {
-    return "U_m = ?_j [ (?_j / r_j) * (1 - e^{-? t cos(? t_n)}) * ?_hat_j ] * P_SCm * E_react * (1 + 10^13 f_Heaviside) * (1 + f_quasi)\n"
+    return "U_m = sum_j [ (mu_j / r_j) * (1 - e^{-gamma*t*cos(pi*t_n)}) * phi_hat_j ] * P_SCm * E_react * (1 + 10^13*f_Heaviside) * (1 + f_quasi)\n"
            "Where r_j = 1.496e13 m (100 AU, j-th string path distance);\n"
-           "?_j = (10^3 + 0.4 sin(?_c t)) * 3.38e20 T m^3;\n"
-           "? ?5.8e-10 s^-1 (5e-5 day^-1); at t=0, 1-exp=0.\n"
-           "In Ug3: Influences (?_SCm + ?_UA) ?_g M_s / d_g * cos(...).\n"
-           "Example j=1, t=0: ?_1 / r_1 ?2.26e10 T m^2; U_m contrib=0 (exp=1).\n"
-           "Ug3 ?1.8e49 J/mï¿½ (k3=1.8 scaling).\n"
+           "mu_j = (10^3 + 0.4*sin(omega_c*t)) * 3.38e20 T m^3;\n"
+           "gamma ~5.8e-10 s^-1 (5e-5 day^-1); at t=0, 1-exp=0.\n"
+           "In Ug3: Influences (rho_SCm + rho_UA)*Omega_g*M_s/d_g * cos(...).\n"
+           "Example j=1, t=0: mu_1/r_1 ~2.26e10 T m^2; U_m contrib=0 (exp=1).\n"
+           "Ug3 ~1.8e49 J/m^3 (k3=1.8 scaling).\n"
            "Role: Scales magnetic string extent; stabilizes disks/nebulae at 100 AU scale.";
 }
 
@@ -320,9 +308,9 @@ void MagneticStringModule::printStringContributions(int j, double t) {
     double ug3 = computeUg3Contribution();
     std::cout << "Magnetic String j=" << j << " at t=" << t << " s:\n";
     std::cout << "r_j = " << std::scientific << rj_m << " m (" << rj_au << " AU, " << rj_ly << " ly, " << rj_pc << " pc)\n";
-    std::cout << "?_j / r_j = " << mu_over_rj << " T m^2\n";
-    std::cout << "U_m contrib = " << um_contrib << " J/mï¿½\n";
-    std::cout << "Ug3 contrib (example) = " << ug3 << " J/mï¿½\n";
+    std::cout << "mu_j / r_j = " << mu_over_rj << " T m^2\n";
+    std::cout << "U_m contrib = " << um_contrib << " J/m^3\n";
+    std::cout << "Ug3 contrib (example) = " << ug3 << " J/m^3\n";
 }
 
 // Example usage in base program (snippet)
@@ -336,29 +324,31 @@ void MagneticStringModule::printStringContributions(int j, double t) {
 //     return 0;
 // }
 // Compile: g++ -o string_test string_test.cpp MagneticStringModule.cpp -lm
-// Sample: r_1=1.496e13 m (100 AU); ?/r ?2.26e10; U_m=0 at t=0; Ug3?1.8e49 J/mï¿½.
+// Sample: r_1=1.496e13 m (100 AU); mu/r ~2.26e10; U_m=0 at t=0; Ug3~1.8e49 J/m^3.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 MagneticStringModule Evaluation
 
-Strengths :
--Modular, extensible design for modeling magnetic string path distances and their contributions to universal magnetism(U_m) and gravity(Ug3) in the UQFF framework.
+Strengths:
+- Modular, extensible design for modeling magnetic string path distances and their contributions to universal magnetism (U_m) and gravity (Ug3) in the UQFF framework.
 - Clear encapsulation of variables and string parameters using std::map, supporting dynamic updates and easy extension.
-- Implements core physical concepts : conversion of r_j between units(m, AU, ly, pc), magnetic moment calculations, and their influence on U_m and Ug3.
-- Approximations and physical meaning are well - documented in comments and equation text.
+- Implements core physical concepts: conversion of r_j between units (m, AU, ly, pc), magnetic moment calculations, and their influence on U_m and Ug3.
+- Approximations and physical meaning are well-documented in comments and equation text.
 - Output functions for variable state and string contributions support debugging and transparency.
 - Handles dynamic updates to r_j and recalculates dependent terms as needed.
 - Example calculations and conversion functions provide scientific context and validation.
 
 Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+- Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
 - Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
-- Minimal error handling(e.g., missing r_j, division by zero, invalid variable names); add validation for robustness.
+- Minimal error handling (e.g., missing r_j, division by zero, invalid variable names); add validation for robustness.
 - Unit consistency should be checked and documented for all physical quantities.
-- For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
+- For large-scale or performance-critical simulations, optimize data structures and reduce redundant calculations.
 - std::map is flexible but may be less efficient than structured types for very large models.
 - Expand documentation for function purposes and physical meaning.
-- Consider supporting multiple j - indexed strings for more general modeling.
+- Consider supporting multiple j-indexed strings for more general modeling.
 
 Summary:
-The code is well - structured, clear, and suitable for scientific prototyping and educational use in magnetic string modeling.It implements the UQFF magnetic string concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+The code is well-structured, clear, and suitable for scientific prototyping and educational use in magnetic string modeling. It implements the UQFF magnetic string concept faithfully and adapts to various scenarios. For production or high-performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+*/

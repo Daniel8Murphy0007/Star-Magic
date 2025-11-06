@@ -10484,6 +10484,57 @@ const PREDEFINED_SYSTEMS = {
             modular_design: true,
             dynamic_variables: true
         }
+    },
+    
+    // Magnetic String Module (from Source95.cpp)
+    MAGNETIC_STRING_UQFF_95: {
+        // Universal constants
+        c: 2.998e8,                             // m/s (speed of light)
+        G: 6.6743e-11,                          // m� kg?� s^-1� (gravitational constant)
+        hbar: 1.055e-34,                        // J�s (reduced Planck constant)
+        
+        // Magnetic string parameters
+        r_j: 1.496e13,                          // m (100 AU magnetic string path distance)
+        mu_j: 1.0e-6,                           // A�m� (magnetic moment, adjustable)
+        U_m_base: 1.0e-10,                      // J/m� (base universal magnetism)
+        U_g3_coupling: 1.8e49,                  // J/m� (Ug3 coupling strength)
+        exponential_decay: 0.1,                 // dimensionless (decay factor for U_m)
+        
+        // Physical scales
+        length_scale: 1.496e13,                 // m (100 AU reference scale)
+        energy_scale: 1.0e-10,                  // J/m� (U_m energy density)
+        time_scale: 1.0,                        // s (reference time)
+        
+        // Application parameters
+        system_type: 'magnetic_string',         // Framework type
+        physics_domain: 'disk_nebula_stabilization', // Application domain
+        coupling_strength: 'moderate',          // Coupling regime
+        
+        // Dynamic variable defaults
+        t_n: 0.0,                               // s (time node)
+        update_frequency: 1.0,                  // Hz (variable update rate)
+        
+        // Computational parameters
+        magnetic_string_enabled: true,          // Enable magnetic string physics
+        ug3_coupling_enabled: true,             // Enable Ug3 coupling effects
+        exponential_decay_enabled: true,        // Enable U_m exponential decay
+        
+        // Validation parameters
+        validation: {
+            expected_r_j_range: [1e12, 1e14],   // m (AU to 1000 AU range)
+            magnetic_moment_range: [1e-8, 1e-4], // A�m� (realistic μ_j range)
+            u_m_range: [1e-12, 1e-8],           // J/m� (U_m energy density range)
+            ug3_coupling_range: [1e48, 1e50],   // J/m� (Ug3 coupling range)
+            physical_regime: 'magnetic_string_dynamics',
+            length_scale: '100 AU - 1000 AU',
+            energy_scale: '1e-12 - 1e-8 J/m�',
+            expected_coupling: 1e-6,            // Moderate coupling
+            perturbation_order: 'first_order',   // Linear in magnetic terms
+            geometry_type: 'cylindrical_string', // Magnetic string geometry
+            applications: ['disk_stabilization', 'nebula_dynamics', 'galactic_magnetism'],
+            modular_design: true,
+            dynamic_variables: true
+        }
     }
 };
 
@@ -22358,4 +22409,12 @@ if (typeof module !== 'undefined' && module.exports) {
     // Source94 (Source94UQFFModule - Ug Coupling Module for scaled Universal Gravity terms k_i * U_gi with k1=1.5, k2=1.2, k3=1.8, k4=1.0)
     const Source94UQFFModule_Source94 = require('./source94.js');
     module.exports.Source94UQFFModule = Source94UQFFModule_Source94;
-};
+    
+    // Source95 (Source95UQFFModule - Magnetic String Module for magnetic string path distances r_j, magnetic moments μ_j, U_m contributions with exponential decay, and Ug3 coupling effects)
+    const Source95UQFFModule_Source95 = require('./source95.js');
+    module.exports.Source95UQFFModule = Source95UQFFModule_Source95;
+    
+    // Source96 (Source96UQFFModule - Galactic Distance Module for d_g distance from galactic center, M_bh/d_g scaling in U_bi and Ug4, SMBH influence on nebulae/disks)
+    const Source96UQFFModule_Source96 = require('./source96.js');
+    module.exports.Source96UQFFModule = Source96UQFFModule_Source96;
+}
