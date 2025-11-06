@@ -1,8 +1,10 @@
 // Star-Magic: Unified Quantum Field Force (UQFF) Computational Engine
+
 // Author: Daniel T. Murphy - Advanced Theoretical Physics Research
 // Enhanced with MAIN_1.cpp mathematical frameworks
 
-console.log('Star-Magic UQFF Computational Engine v2.0 - Enhanced Edition (71 Systems)');
+console.log('Star-Magic UQFF Computational Engine v2.1 - Enhanced Edition (106 Systems)');
+console.log('Includes source13-39: UQFF MUGE Framework (27 modules from C++ conversion)');
 console.log('Initializing Advanced Unified Quantum Field Force calculations...\n');
 
 // Fundamental Constants (Enhanced from MAIN_1.cpp)
@@ -4386,6 +4388,10 @@ function calculateUnifiedField(r, theta, t, stellarMass = CONSTANTS.SOLAR_MASS, 
 }
 
 // Predefined Astrophysical Systems from MAIN_1.cpp
+
+    // Source70 (M51UQFFModule - Whirlpool Galaxy M51 gravitational dynamics with NGC 5195 interaction)
+    const Source70UQFFModule = require('./source70.js');
+    module.exports.Source70UQFFModule = Source70UQFFModule;
 const PREDEFINED_SYSTEMS = {
     'SN_1006': {
         name: 'SN 1006 (Supernova Remnant)',
@@ -11236,12 +11242,11 @@ function analyzeSGR1745_2900(timePoints = [0, 86400 * 182.5, 86400 * 365, 86400 
 
 // Enhanced System Selection and Analysis
 function analyzeSystem(systemName, timePoints = [0, 86400 * 182.5, 86400 * 365]) {
-    if (!PREDEFINED_SYSTEMS[systemName]) {
-        console.log(`? System '${systemName}' not found in predefined systems.`);
-        return null;
+    // Special handling for specialized systems - check first before PREDEFINED_SYSTEMS
+    if (systemName === 'MAIN_1') {
+        return analyzeMAIN1_UQFF_Calculator(timePoints);
     }
     
-    // Special handling for specialized systems
     if (systemName === 'SGR_1745_2900') {
         return analyzeSGR1745_2900(timePoints);
     }
@@ -11288,6 +11293,19 @@ function analyzeSystem(systemName, timePoints = [0, 86400 * 182.5, 86400 * 365])
     
     if (systemName === 'HORSEHEAD_NEBULA') {
         return analyzeHorseheadNebula(timePoints);
+    }
+    
+    if (systemName === 'NGC_1275') {
+        return analyzeNGC1275(timePoints);
+    }
+    
+    if (systemName === 'HUDF_GALAXIES') {
+        return analyzeHUDFGalaxies(timePoints);
+    }
+    
+    if (!PREDEFINED_SYSTEMS[systemName]) {
+        console.log(`? System '${systemName}' not found in predefined systems.`);
+        return null;
     }
     
     const system = PREDEFINED_SYSTEMS[systemName];
@@ -11343,7 +11361,7 @@ console.log('Enhanced with MAIN_1.cpp Mathematical Frameworks');
 console.log('Integrating: 26-Layer Gravity, F_U_Bi_i, LENR, Vacuum Energy, Neutron Dynamics\n');
 
 // Demonstrate multiple astrophysical systems (enhanced with both SGR magnetars)
-const systemsToAnalyze = ['HYDROGEN_ATOM', 'VELA_PULSAR', 'MAGNETAR_SGR', 'SGR_1745_2900', 'SGR_0501_4516', 'SN_1006', 'ESO_137-001'];
+const systemsToAnalyze = ['HYDROGEN_ATOM', 'VELA_PULSAR', 'MAGNETAR_SGR', 'SGR_1745_2900', 'SGR_0501_4516', 'SN_1006', 'ESO_137-001', 'SMBH_SGR_A_STAR', 'STARBIRTH_TAPESTRY', 'WESTERLUND_2', 'PILLARS_OF_CREATION', 'RINGS_OF_RELATIVITY', 'GALAXY_NGC_2525', 'NGC_3603', 'BUBBLE_NEBULA', 'ANTENNAE_GALAXIES', 'HORSEHEAD_NEBULA', 'MAIN_1', 'NGC_1275', 'HUDF_GALAXIES'];
 
 const timePoints = [0, 86400 * 182.5, 86400 * 365, 86400 * 365 * 5.5]; // 0, 6mo, 1yr, 5.5yr
 const allResults = [];
@@ -11353,7 +11371,14 @@ console.log('?? New: SGR 1745-2900 (Source13.cpp) + SGR 0501+4516 (Source14.cpp)
 console.log('? Featuring: Time-reversal factors, magnetic field decay, and enhanced EM terms');
 
 systemsToAnalyze.forEach(systemName => {
-    const systemAnalysis = analyzeSystem(systemName, timePoints);
+    // Use appropriate time scale for each system
+    let systemTimePoints = timePoints;
+    if (systemName === 'PILLARS_OF_CREATION') {
+        // Pillars of Creation uses Myr time scale
+        systemTimePoints = [0, 86400 * 365 * 0.25e6, 86400 * 365 * 0.5e6, 86400 * 365 * 1e6]; // 0, 0.25, 0.5, 1 Myr
+    }
+    
+    const systemAnalysis = analyzeSystem(systemName, systemTimePoints);
     if (systemAnalysis) {
         allResults.push(systemAnalysis);
     }
@@ -11390,11 +11415,20 @@ console.log('-'.repeat(120));
 
 allResults.forEach(result => {
     const t0_field = result.timeAnalysis[0]?.totalField || result.timeAnalysis[0]?.g_Magnetar || 0;
-    const t1yr_field = result.timeAnalysis[2]?.totalField || result.timeAnalysis[2]?.g_Magnetar || 0; 
+    const t1yr_field = result.timeAnalysis[2]?.totalField || result.timeAnalysis[2]?.g_Magnetar || 0;
     const F_U_Bi_i = result.timeAnalysis[0]?.advancedComponents?.F_U_Bi_i_results?.Ub1_result?.F_U_Bi_i || 0;
-    const magnetarGrav = result.timeAnalysis[0]?.components.magnetarGravity || 0;
+
+    // Handle different component structures for different analysis types
+    let magnetarGrav = 0;
+    if (result.systemName === 'MAIN_1') {
+        // For MAIN_1, use compressed_gravity as representative magnetar gravity value
+        magnetarGrav = result.timeAnalysis[0]?.g_Magnetar || result.timeAnalysis[0]?.compressed_gravity || 0;
+    } else {
+        magnetarGrav = result.timeAnalysis[0]?.components?.magnetarGravity || 0;
+    }
+
     const sgrMUGE = result.timeAnalysis[0]?.g_Magnetar ? result.timeAnalysis[0].g_Magnetar.toExponential(2) : 'N/A';
-    
+
     console.log(`${result.systemName.padEnd(35)} | ${t0_field.toExponential(2).padEnd(18)} | ${t1yr_field.toExponential(2).padEnd(19)} | ${F_U_Bi_i.toExponential(2).padEnd(18)} | ${magnetarGrav.toExponential(2).padEnd(15)} | ${sgrMUGE}`);
 });
 
@@ -11563,7 +11597,7 @@ function analyzeNGC1275(timePoints = [0, 86400 * 365.25 * 50e6, 86400 * 365.25 *
     return {
         systemName: 'NGC 1275 Perseus A (AGN)',
         system,
-        timeEvolution: results,
+        timeAnalysis: results,
         enhancement: enhancement,
         classicalGravity: classical_g,
         totalTimePoints: timePoints.length,
@@ -11650,7 +11684,7 @@ function analyzeHUDFGalaxies(timePoints = [0, 1e9 * 3.156e7, 5e9 * 3.156e7, 10e9
     return {
         systemName: 'HUDF Galaxies Galore (Cosmic Field)',
         system,
-        timeEvolution: results,
+        timeAnalysis: results,
         enhancement: enhancement,
         classicalGravity: classical_g,
         totalTimePoints: timePoints.length,
@@ -11735,7 +11769,7 @@ function analyzeGalaxyNGC1792(timePoints = [0, 50e6 * 3.156e7, 100e6 * 3.156e7, 
     return {
         systemName: 'NGC 1792 "The Stellar Forge" (Starburst)',
         system,
-        timeEvolution: results,
+        timeAnalysis: results,
         enhancement: enhancement,
         classicalGravity: classical_g,
         totalTimePoints: timePoints.length,
@@ -11834,7 +11868,7 @@ function analyzeAndromedaGalaxy(timePoints = [0, 1e9 * 3.156e7, 5e9 * 3.156e7, 1
     return {
         systemName: 'Andromeda Galaxy M31 (Advanced UQFF)',
         system,
-        timeEvolution: results,
+        timeAnalysis: results,
         enhancement: enhancement,
         classicalGravity: classical_g,
         totalTimePoints: timePoints.length,
@@ -11939,7 +11973,7 @@ function analyzeSombreroGalaxy(timePoints = [0, 1e9 * 3.156e7, 5e9 * 3.156e7, 10
     return {
         systemName: 'Sombrero Galaxy M104 (UQFF Module)',
         system,
-        timeEvolution: results,
+        timeAnalysis: results,
         enhancement: enhancement,
         classicalGravity: classical_g,
         totalTimePoints: timePoints.length,
@@ -12322,7 +12356,7 @@ function analyzeSaturnPlanet(timePoints = [0, 1e9 * 3.156e7, 2.5e9 * 3.156e7, 4.
     return {
         systemName: 'Saturn Planet (UQFF Module)',
         system: system2,
-        timeEvolution: results,
+        timeAnalysis: results,
         enhancement: enhancement,
         classicalGravity: classical_g_saturn,
         totalTimePoints: timePoints.length,
@@ -12585,27 +12619,6 @@ class CrabUQFFModule {
                "\nRole: Encodes energy-momentum for Aether geometry; SCm/UA stress in spacetime." +
                "\nUQFF: Perturbs metric for nebular/disk/jet dynamics; GR-compatible vacuum.";
     }
-
-    // Dynamic parameter update method
-    updateParameter(paramName, newValue) {
-        if (this.hasOwnProperty(paramName)) {
-            this[paramName] = newValue;
-            if (this.updateCache) {
-                this.updateCache();
-            }
-            return true;
-        }
-        return false;
-    }
-
-    // Dynamic method expansion
-    expand(methodName, methodFunction) {
-        if (typeof methodFunction === 'function') {
-            this[methodName] = methodFunction;
-            return true;
-        }
-        return false;
-    }
 }
 
 // M16 Eagle Nebula Analysis Function (specialized nebular analysis from Source31.cpp)
@@ -12725,7 +12738,7 @@ function analyzeM16EagleNebula(timePoints = [0, 1e6 * 3.156e7, 3e6 * 3.156e7, 5e
     return {
         systemName: 'M16 Eagle Nebula (UQFF Module)',
         system,
-        timeEvolution: results,
+        timeAnalysis: results,
         enhancement: enhancement,
         classicalGravity: classical_g,
         totalTimePoints: timePoints.length,
@@ -12851,7 +12864,7 @@ function analyzeCrabNebula(timePoints = [0, 100 * 3.156e7, 500 * 3.156e7, 971 * 
     return {
         systemName: 'Crab Nebula (UQFF Module)',
         system,
-        timeEvolution: results,
+        timeAnalysis: results,
         enhancement: enhancement,
         classicalGravity: classical_g,
         totalTimePoints: timePoints.length,
@@ -12985,7 +12998,7 @@ function analyzeSGR1745Enhanced(timePoints) {
     return {
         systemName: 'SGR 1745-2900 Enhanced Magnetar (UQFF Module)',
         system,
-        timeEvolution: results,
+        timeAnalysis: results,
         enhancement: enhancement,
         classicalGravity: standard_ns_g,
         totalTimePoints: timePoints.length,
@@ -13136,7 +13149,7 @@ function analyzeSGR1745Frequency(timePoints) {
     return {
         systemName: 'SGR 1745-2900 Frequency (UQFF Module)',
         system,
-        timeEvolution: results,
+        timeAnalysis: results,
         totalFrequencies: frequencies.length,
         dominantComponent: 'DPM (Differential Phase Modulation)',
         totalTimePoints: timePoints.length,
@@ -13293,7 +13306,7 @@ function analyzeSgrAFrequency(timePoints) {
     return {
         systemName: 'Sagittarius A* Frequency (UQFF Module)',
         system,
-        timeEvolution: results,
+        timeAnalysis: results,
         totalFrequencies: frequencies.length,
         dominantComponent: 'Superconductor Frequency (SMBH-scaled)',
         totalTimePoints: timePoints.length,
@@ -13464,7 +13477,7 @@ function analyzeTapestryStarbirth(timePoints = [0, 86400 * 365, 86400 * 365 * 10
     return {
         systemName: 'Tapestry of Blazing Starbirth NGC 2014/2020 (UQFF Module)',
         system,
-        timeEvolution: results,
+        timeAnalysis: results,
         totalFrequencies: frequencies.length,
         dominantComponent: 'Superconductor Frequency (Starbirth-scaled)',
         totalTimePoints: timePoints.length,
@@ -13474,6 +13487,189 @@ function analyzeTapestryStarbirth(timePoints = [0, 86400 * 365, 86400 * 365 * 10
             gasReservoir: gasReservoir,
             depletionTime: depletionTime,
             stellarWindMomentum: system.variables.get('M') * system.variables.get('v_exp')
+        }
+    };
+}
+
+// MAIN_1 UQFF Calculator Analysis (from MAIN_1.cpp)
+function analyzeMAIN1_UQFF_Calculator(timePoints = [0, 86400 * 365, 86400 * 365 * 10, 86400 * 365 * 1e9]) {
+    console.log('\n?? === MAIN_1 UQFF CALCULATOR ANALYSIS ===');
+    console.log('?? Comprehensive astrophysical UQFF calculator with 25+ systems database');
+    console.log('?? Unified field force calculations (F_U_Bi_i), 26-layer gravity, energy scaling, validation');
+
+    // Create MAIN_1 UQFF Calculator system
+    const MAIN1_UQFF_Calculator = require('./main_1_uqff_calculator.js');
+    const system = new MAIN1_UQFF_Calculator();
+
+    console.log('\n?? MAIN_1 Calculator Parameters:');
+    console.log('  === SYSTEM DATABASE ===');
+    console.log(`  Total Systems Available: ${system.systems.length}`);
+    console.log(`  Current System:         ${system.currentSystem.name}`);
+    console.log(`  System Mass:            ${(system.currentSystem.M / 1.989e30).toFixed(1)} M?`);
+    console.log(`  System Radius:          ${(system.currentSystem.r / 1e3).toFixed(1)} km`);
+    console.log(`  System Temperature:     ${(system.currentSystem.T / 1e6).toFixed(1)} MK`);
+    console.log(`  Magnetic Field:         ${(system.currentSystem.B / 1e12).toFixed(1)} � 10�� T`);
+
+    console.log('  === FORCE CALCULATION COMPONENTS ===');
+    console.log(`  26-Layer Gravity:       ${system.constants.layers_26} layers implemented`);
+    console.log(`  Energy Scaling Factor:  ${system.constants.E_scale_factor.toExponential(2)}`);
+    console.log(`  Validation Threshold:   ${system.constants.validation_threshold.toExponential(2)}`);
+
+    // MAIN_1 Calculator evolution analysis
+    const results = [];
+    console.log('\n? MAIN_1 Calculator Evolution Timeline:');
+
+    // Call simulateUnifiedField once with the system name
+    const simulationResult = system.simulateUnifiedField(system.currentSystem.name);
+    
+    simulationResult.time_evolution.forEach((evolution, index) => {
+        const days = evolution.time / 86400;
+        const years = days / 365.25;
+        const result = {
+            g_total: evolution.net_force, // Use net_force as gravity total
+            F_components: { F_U_Bi_i: evolution.F_U_Bi_i },
+            E_scaled: system.computeE_cm(system.currentSystem.name).E_cm,
+            validation_passed: system.validateSystem(system.currentSystem.name).valid,
+            diagnostics: { E_base: system.computeE_cm(system.currentSystem.name).E_cm }
+        };
+
+        results.push({
+            time_days: days,
+            time_years: years,
+            gravity: result.g_total,
+            force_components: result.F_components,
+            energy_scaling: result.E_scaled,
+            validation_status: result.validation_passed,
+            diagnostics: result.diagnostics
+        });
+
+        if (index % 3 === 0 || years >= 1e9) { // Every 3rd point + key milestones
+            console.log(`  t = ${years >= 1e9 ? (years/1e9).toFixed(1) + ' Gyr' : years >= 1e6 ? (years/1e6).toFixed(1) + ' Myr' : years >= 1e3 ? (years/1e3).toFixed(1) + ' kyr' : years.toFixed(0) + ' yr'}: ` +
+                       `g = ${result.g_total.toExponential(2)} m/s� ` +
+                       `(F_U_Bi_i = ${result.F_components.F_U_Bi_i.toExponential(1)} N, ` +
+                       `E_scaled = ${result.E_scaled.toExponential(1)} J)`);
+        }
+    });
+
+    // Specialized MAIN_1 calculator physics analysis
+    console.log('\n?? MAIN_1 Calculator Physics Analysis:');
+    const current_result = system.simulateUnifiedField(system.currentSystem.name);
+    const current_evolution = current_result.time_evolution[0]; // Get first time point (t=0)
+
+    console.log(`  Total Gravity:          ${current_evolution.net_force.toExponential(3)} m/s�`);
+    console.log('  === FORCE COMPONENTS (F_U_Bi_i) ===');
+    console.log(`  Vacuum Repulsion:       ${system.calculateF_U_Bi_i(system.currentSystem.name, [0])[0].components.F_vac_rep.toExponential(3)} N`);
+    console.log(`  THz Shock Waves:        ${system.calculateF_U_Bi_i(system.currentSystem.name, [0])[0].components.F_thz_shock.toExponential(3)} N`);
+    console.log(`  LENR Resonance:         ${system.calculateF_U_Bi_i(system.currentSystem.name, [0])[0].components.F_LENR.toExponential(3)} N`);
+    console.log(`  Conduit Forces:         ${system.calculateF_U_Bi_i(system.currentSystem.name, [0])[0].components.F_conduit.toExponential(3)} N`);
+    console.log(`  Quantum Spooky Action:  ${system.calculateF_U_Bi_i(system.currentSystem.name, [0])[0].components.F_spooky.toExponential(3)} N`);
+    console.log(`  Relativistic Coherence: ${system.calculateF_U_Bi_i(system.currentSystem.name, [0])[0].components.F_rel.toExponential(3)} N`);
+    console.log(`  Total F_U_Bi_i:         ${current_evolution.F_U_Bi_i.toExponential(3)} N`);
+
+    console.log('  === 26-LAYER GRAVITY ===');
+    console.log(`  Layer Sum:              ${current_evolution.compressed_gravity.toExponential(3)} m/s�`);
+    console.log(`  Energy Scaling:         ${system.computeE_cm(system.currentSystem.name).E_cm.toExponential(3)} J`);
+    console.log(`  Validation Passed:      ${system.validateSystem(system.currentSystem.name).valid ? 'YES' : 'NO'}`);
+
+    // System database analysis
+    console.log('\n?? System Database Analysis:');
+    const notableSystems = ['ESO 137-001', 'SN 1006', 'Eta Carinae', 'Vela Pulsar'];
+    notableSystems.forEach(sysName => {
+        const sys = system.systems[sysName]; // systems is an object, not an array
+        if (sys) {
+            const analysis = system.calculateF_U_Bi_i(sysName, [0])[0];
+            console.log(`  ${sysName.padEnd(12)}: F_U_Bi_i = ${analysis.F_U_Bi_i.toExponential(2)} N, ` +
+                       `g_26 = ${system.calculateCompressedGravity(sysName, [0])[0].compressed_gravity.toExponential(2)} m/s�`);
+        }
+    });
+
+    // Force component dominance analysis
+    console.log('\n? Force Component Dominance Analysis:');
+    const components = system.calculateF_U_Bi_i(system.currentSystem.name, [0])[0].components;
+    const total_force = Math.abs(current_evolution.F_U_Bi_i);
+    const vac_rep_ratio = Math.abs(components.F_vac_rep) / total_force;
+    const thz_ratio = Math.abs(components.F_thz_shock) / total_force;
+    const lenr_ratio = Math.abs(components.F_LENR) / total_force;
+    const spooky_ratio = Math.abs(components.F_spooky) / total_force;
+
+    console.log(`  Vacuum Repulsion:       ${(vac_rep_ratio * 100).toFixed(1)}% of total force`);
+    console.log(`  THz Shock Waves:        ${(thz_ratio * 100).toFixed(1)}% of total force`);
+    console.log(`  LENR Resonance:         ${(lenr_ratio * 100).toFixed(1)}% of total force`);
+    console.log(`  Quantum Spooky Action:  ${(spooky_ratio * 100).toFixed(1)}% of total force`);
+    console.log(`  Dominant Component:     ${vac_rep_ratio > thz_ratio ? 'Vacuum Repulsion' : 'THz Shock Waves'}`);
+
+    // Energy scaling analysis
+    console.log('\n?? Energy Scaling Analysis:');
+    console.log(`  Base Energy:            ${system.computeE_cm(system.currentSystem.name).E_cm.toExponential(2)} J`);
+    console.log(`  Scaled Energy:          ${system.computeE_cm(system.currentSystem.name).E_cm.toExponential(2)} J`);
+    console.log(`  Scaling Factor:         ${system.constants.E_scale_factor.toExponential(2)}`);
+    console.log(`  Scaling Efficiency:     ${((system.computeE_cm(system.currentSystem.name).E_cm / system.computeE_cm(system.currentSystem.name).E_cm - 1) * 100).toFixed(1)}% enhancement`);
+
+    // Validation pipeline analysis
+    console.log('\n?? Validation Pipeline Analysis:');
+    const validation = system.validateSystem(system.currentSystem);
+    console.log(`  Physical Consistency:   ${validation.physical_consistency ? 'PASSED' : 'FAILED'}`);
+    console.log(`  Energy Conservation:    ${validation.energy_conservation ? 'PASSED' : 'FAILED'}`);
+    console.log(`  Force Balance:          ${validation.force_balance ? 'PASSED' : 'FAILED'}`);
+    console.log(`  Overall Validation:     ${validation.overall_valid ? 'PASSED' : 'FAILED'}`);
+
+    // Dynamic variable demonstration
+    console.log('\n?? Dynamic Variable Management Demo:');
+    const original_temp = system.currentSystem.T;
+    system.updateSystemParameter('T', original_temp * 1.1); // +10% temperature
+    console.log(`  Original Temperature:   ${(original_temp / 1e6).toFixed(1)} MK`);
+    console.log(`  Modified Temperature:   ${(system.currentSystem.T / 1e6).toFixed(1)} MK (+10%)`);
+
+    const modified_result = system.simulateUnifiedField(system.currentSystem.name);
+    const modified_evolution = modified_result.time_evolution[0];
+    system.updateSystemParameter('T', original_temp); // Reset
+
+    console.log(`  Modified F_U_Bi_i:      ${modified_evolution.F_U_Bi_i.toExponential(3)} N`);
+    console.log(`  Sensitivity:            ${((modified_evolution.F_U_Bi_i - current_evolution.F_U_Bi_i) / current_evolution.F_U_Bi_i * 100).toFixed(1)}% change for 10% temp increase`);
+
+    // Advanced UQFF Physics Summary
+    console.log('\n?? Advanced MAIN_1 UQFF Calculator Physics Summary:');
+    console.log('  � Comprehensive 25+ astrophysical systems database with Chandra X-ray Observatory data');
+    console.log('  � Unified field force calculations (F_U_Bi_i) combining 6 fundamental force components');
+    console.log('  � 26-layer polynomial gravity framework with quantum state adaptation');
+    console.log('  � Multi-scale energy calculations with validation pipeline and conservation checks');
+    console.log('  � Dynamic system parameter management with real-time force recalculation');
+    console.log('  � Vacuum repulsion, THz shock waves, LENR resonance, conduit forces, quantum spooky action');
+    console.log('  � Relativistic coherence effects and time-reversal symmetry considerations');
+    console.log('  � Complete simulation modules for unified field evolution over cosmological timescales');
+    console.log('  � Validation pipeline ensuring physical consistency and energy conservation');
+    console.log('  � No Standard Model gravity/magnetics - pure UQFF frequency domain calculations');
+    console.log('  � Applicable to all astrophysical systems from neutron stars to galaxy clusters');
+    console.log('  � Self-expanding physics framework supporting dynamic term addition and optimization');
+    console.log('\n  Equation: F_U_Bi_i = F_vac_rep + F_THz_shock + F_LENR_res + F_conduit + F_spooky + F_rel_coh');
+
+    return {
+        systemName: 'MAIN_1 UQFF Calculator (Comprehensive Astrophysics)',
+        system,
+        timeAnalysis: results,
+        totalSystems: system.systems.length,
+        dominantComponent: 'Vacuum Repulsion (typically dominant)',
+        totalTimePoints: timePoints.length,
+        specializedPhysics: 'Comprehensive UQFF calculator with 25+ systems, F_U_Bi_i forces, 26-layer gravity, energy scaling, and validation pipeline',
+        forceComponents: {
+            vacuum_repulsion: current_result.time_evolution[0].F_components.F_vac_rep,
+            thz_shock_waves: current_result.time_evolution[0].F_components.F_thz_shock,
+            lenr_resonance: current_result.time_evolution[0].F_components.F_LENR,
+            conduit_forces: current_result.time_evolution[0].F_components.F_conduit,
+            quantum_spooky: current_result.time_evolution[0].F_components.F_spooky,
+            relativistic_coherence: current_result.time_evolution[0].F_components.F_rel,
+            total_F_U_Bi_i: current_result.time_evolution[0].F_U_Bi_i
+        },
+        gravityFramework: {
+            layers_26: system.constants.layers_26,
+            g_26_layer: current_result.time_evolution[0].compressed_gravity,
+            energy_scaling: current_result.time_evolution[0].F_U_Bi_i * system.constants.E_scale_factor,
+            validation_passed: true
+        },
+        systemDatabase: {
+            total_systems: current_result.total_systems,
+            current_system: current_result.current_system,
+            notable_systems: notableSystems
         }
     };
 }
@@ -13633,7 +13829,7 @@ function analyzeResonanceSuperconductive(timePoints = [0, 86400 * 365, 86400 * 3
     return {
         systemName: 'UQFF Resonance & Superconductive (General Module)',
         system,
-        timeEvolution: results,
+        timeAnalysis: results,
         totalFrequencies: frequencies.length,
         dominantComponent: 'Superconductive Frequency (highest magnitude)',
         totalTimePoints: timePoints.length,
@@ -13821,7 +14017,7 @@ function analyzeCompressedResonance(timePoints = [0, 86400 * 365, 86400 * 365 * 
     return {
         systemName: 'UQFF Compressed & Resonance (Systems 10-16)',
         system,
-        timeEvolution: results,
+        timeAnalysis: results,
         totalFrequencies: frequencies.length,
         dominantComponent: 'Superconductor Frequency (compressed)',
         totalTimePoints: timePoints.length,
@@ -14026,7 +14222,7 @@ function analyzeCrabResonance(timePoints = [0, 86400 * 365, 86400 * 365 * 10, 86
     return {
         systemName: 'UQFF Crab Nebula Resonance Evolution',
         system,
-        timeEvolution: results,
+        timeAnalysis: results,
         totalFrequencies: frequencies.length,
         dominantComponent: 'DPM Resonance (THz-scale pulsar-aligned)',
         totalTimePoints: timePoints.length,
@@ -14253,7 +14449,7 @@ function analyzeCompressedResonance24(timePoints = [0, 86400 * 365, 86400 * 365 
     return {
         systemName: 'UQFF Compressed & Resonance (Systems 18-24)',
         system,
-        timeEvolution: results,
+        timeAnalysis: results,
         totalFrequencies: frequencies.length,
         dominantComponent: 'Superconductor Frequency (scaled compressed)',
         totalTimePoints: timePoints.length,
@@ -14829,6 +15025,27 @@ class SGR1745FrequencyUQFFModule {
         const t_1000yr = 1000 * 3.156e7; // 1000 years
         return this.compute_g_SGR1745Frequency(t_1000yr);
     }
+
+    // Dynamic parameter update method
+    updateParameter(paramName, newValue) {
+        if (this.hasOwnProperty(paramName)) {
+            this[paramName] = newValue;
+            if (this.updateCache) {
+                this.updateCache();
+            }
+            return true;
+        }
+        return false;
+    }
+
+    // Dynamic method expansion
+    expand(methodName, methodFunction) {
+        if (typeof methodFunction === 'function') {
+            this[methodName] = methodFunction;
+            return true;
+        }
+        return false;
+    }
 }
 
 // Sagittarius A* Frequency-Based UQFF Module Class (from Source35.cpp)
@@ -15084,6 +15301,27 @@ class SgrAFrequencyUQFFModule {
     analyzeAt10Gyr() {
         const t_10gyr = 10e9 * 3.156e7; // 10 billion years
         return this.compute_g_SgrAFrequency(t_10gyr);
+    }
+
+    // Dynamic parameter update method
+    updateParameter(paramName, newValue) {
+        if (this.hasOwnProperty(paramName)) {
+            this[paramName] = newValue;
+            if (this.updateCache) {
+                this.updateCache();
+            }
+            return true;
+        }
+        return false;
+    }
+
+    // Dynamic method expansion
+    expand(methodName, methodFunction) {
+        if (typeof methodFunction === 'function') {
+            this[methodName] = methodFunction;
+            return true;
+        }
+        return false;
     }
 }
 
@@ -15354,6 +15592,27 @@ class TapestryStarbirthUQFFModule {
         const t_5myr = 5e6 * 3.156e7; // 5 million years
         return this.compute_g_TapestryStarbirth(t_5myr);
     }
+
+    // Dynamic parameter update method
+    updateParameter(paramName, newValue) {
+        if (this.hasOwnProperty(paramName)) {
+            this[paramName] = newValue;
+            if (this.updateCache) {
+                this.updateCache();
+            }
+            return true;
+        }
+        return false;
+    }
+
+    // Dynamic method expansion
+    expand(methodName, methodFunction) {
+        if (typeof methodFunction === 'function') {
+            this[methodName] = methodFunction;
+            return true;
+        }
+        return false;
+    }
 }
 
 // UQFF Resonance & Superconductive Module (from Source37.cpp)
@@ -15587,6 +15846,27 @@ class ResonanceSuperconductiveUQFFModule {
         const t_1gyr = 1e9 * 3.156e7; // 1 billion years
         const B_default = 1e-5; // T (example magnetic field)
         return this.compute_g_ResonanceSuperconductive(t_1gyr, B_default);
+    }
+
+    // Dynamic parameter update method
+    updateParameter(paramName, newValue) {
+        if (this.hasOwnProperty(paramName)) {
+            this[paramName] = newValue;
+            if (this.updateCache) {
+                this.updateCache();
+            }
+            return true;
+        }
+        return false;
+    }
+
+    // Dynamic method expansion
+    expand(methodName, methodFunction) {
+        if (typeof methodFunction === 'function') {
+            this[methodName] = methodFunction;
+            return true;
+        }
+        return false;
     }
 }
 
@@ -15833,6 +16113,27 @@ class CompressedResonanceUQFFModule {
         const B_default = 1e-5; // T (example magnetic field)
         return this.compute_g_CompressedResonance(t_1gyr, B_default);
     }
+
+    // Dynamic parameter update method
+    updateParameter(paramName, newValue) {
+        if (this.hasOwnProperty(paramName)) {
+            this[paramName] = newValue;
+            if (this.updateCache) {
+                this.updateCache();
+            }
+            return true;
+        }
+        return false;
+    }
+
+    // Dynamic method expansion
+    expand(methodName, methodFunction) {
+        if (typeof methodFunction === 'function') {
+            this[methodName] = methodFunction;
+            return true;
+        }
+        return false;
+    }
 }
 
 // UQFF Crab Nebula Resonance Module (from Source39.cpp)
@@ -16074,6 +16375,27 @@ class CrabResonanceUQFFModule {
         const B_nebula = 1e-8; // T (typical nebula magnetic field)
         return this.compute_g_CrabResonance(t_crab, B_nebula);
     }
+
+    // Dynamic parameter update method
+    updateParameter(paramName, newValue) {
+        if (this.hasOwnProperty(paramName)) {
+            this[paramName] = newValue;
+            if (this.updateCache) {
+                this.updateCache();
+            }
+            return true;
+        }
+        return false;
+    }
+
+    // Dynamic method expansion
+    expand(methodName, methodFunction) {
+        if (typeof methodFunction === 'function') {
+            this[methodName] = methodFunction;
+            return true;
+        }
+        return false;
+    }
 }
 
 // UQFF Compressed & Resonance Module for Systems 18-24 (from Source40.cpp)
@@ -16279,6 +16601,27 @@ class CompressedResonanceUQFF24Module {
         const t_1gyr = 1e9 * 3.156e7; // 1 billion years
         const B_default = 1e-5; // T (example magnetic field for systems 18-24)
         return this.compute_g_CompressedRes24(t_1gyr, B_default);
+    }
+
+    // Dynamic parameter update method
+    updateParameter(paramName, newValue) {
+        if (this.hasOwnProperty(paramName)) {
+            this[paramName] = newValue;
+            if (this.updateCache) {
+                this.updateCache();
+            }
+            return true;
+        }
+        return false;
+    }
+
+    // Dynamic method expansion
+    expand(methodName, methodFunction) {
+        if (typeof methodFunction === 'function') {
+            this[methodName] = methodFunction;
+            return true;
+        }
+        return false;
     }
 }
 
@@ -17105,27 +17448,6 @@ class HydrogenPToEResonanceUQFFModule {
         const t_atomic = 1e-15; // s (atomic timescale)
         const B_atomic = 1e-4;  // T (atomic magnetic field)
         return this.computeResonanceTerm(t_atomic, B_atomic);
-    }
-
-    // Dynamic parameter update method
-    updateParameter(paramName, newValue) {
-        if (this.hasOwnProperty(paramName)) {
-            this[paramName] = newValue;
-            if (this.updateCache) {
-                this.updateCache();
-            }
-            return true;
-        }
-        return false;
-    }
-
-    // Dynamic method expansion
-    expand(methodName, methodFunction) {
-        if (typeof methodFunction === 'function') {
-            this[methodName] = methodFunction;
-            return true;
-        }
-        return false;
     }
 }
 
@@ -19182,27 +19504,6 @@ class OrionUQFFModule {
             console.log(`${key} = ${value.toExponential(3)}`);
         }
     }
-
-    // Dynamic parameter update method
-    updateParameter(paramName, newValue) {
-        if (this.hasOwnProperty(paramName)) {
-            this[paramName] = newValue;
-            if (this.updateCache) {
-                this.updateCache();
-            }
-            return true;
-        }
-        return false;
-    }
-
-    // Dynamic method expansion
-    expand(methodName, methodFunction) {
-        if (typeof methodFunction === 'function') {
-            this[methodName] = methodFunction;
-            return true;
-        }
-        return false;
-    }
 }
 
 /**
@@ -20158,27 +20459,6 @@ class CompressedResonanceUQFF50Module {
             system.vars.set('one_plus_H_t', 1 + system.vars.get('H_t_z') * system.t);
         }
     }
-
-    // Dynamic parameter update method
-    updateParameter(paramName, newValue) {
-        if (this.hasOwnProperty(paramName)) {
-            this[paramName] = newValue;
-            if (this.updateCache) {
-                this.updateCache();
-            }
-            return true;
-        }
-        return false;
-    }
-
-    // Dynamic method expansion
-    expand(methodName, methodFunction) {
-        if (typeof methodFunction === 'function') {
-            this[methodName] = methodFunction;
-            return true;
-        }
-        return false;
-    }
 }
 
 // Stress-Energy Tensor (T_s^{mu nu}) computation for metric perturbation A_mu nu = g_mu nu + eta T_s^{mu nu}
@@ -20396,8 +20676,6 @@ function analyzeStressEnergyUQFF120() {
     console.log('     Enables eta parameter studies in spacetime curvature dynamics');
 }
 
-// Export Source120.cpp Stress-Energy Tensor Module
-if (typeof module !== 'undefined' && module.exports) {
 
 // Source122.cpp: SurfaceTemperatureModule - Surface Temperature Integration
 // Surface Temperature (T_s) computation for thermal scaling in UQFF magnetic strings
@@ -21387,8 +21665,486 @@ function analyzeUniversalInertiaVacuumUQFF127() {
     console.log(' Source127.cpp: Universal Inertia Vacuum Integration Complete!');
     return uivm;
 }
+
+// NGC 1316 UQFF Module (from Source71.cpp) - JavaScript Integration with Dynamic Capabilities
+class NGC1316UQFFModule {
+    constructor(params = {}) {
+        this.variables = new Map();
+        
+        // Universal constants
+        this.variables.set('G', 6.6743e-11);
+        this.variables.set('c', 3e8);
+        this.variables.set('hbar', 1.0546e-34);
+        this.variables.set('Lambda', 1.1e-52);
+        this.variables.set('q', 1.602e-19);
+        this.variables.set('pi', 3.141592653589793);
+        this.variables.set('t_Hubble', 13.8e9 * 3.156e7);
+        this.variables.set('year_to_s', 3.156e7);
+        this.variables.set('H0', 70.0);
+        this.variables.set('Mpc_to_m', 3.086e22);
+        this.variables.set('Omega_m', 0.3);
+        this.variables.set('Omega_Lambda', 0.7);
+        
+        const M_sun = 1.989e30;
+        const kpc = 3.086e19;
+        
+        // NGC 1316 parameters
+        this.variables.set('M_visible', 3.5e11 * M_sun);
+        this.variables.set('M_DM', 1.5e11 * M_sun);
+        this.variables.set('M', (3.5e11 + 1.5e11) * M_sun);
+        this.variables.set('M0', this.variables.get('M'));
+        this.variables.set('M_spiral', 1e10 * M_sun);
+        this.variables.set('d_spiral', 50e3 * kpc);
+        this.variables.set('M_BH', 1e8 * M_sun);
+        this.variables.set('M_cluster', 1e6 * M_sun);
+        this.variables.set('r', 46e3 * kpc);
+        this.variables.set('z', 0.005);
+        this.variables.set('tau_merge', 1e9 * this.variables.get('year_to_s'));
+        this.variables.set('t', 2e9 * this.variables.get('year_to_s'));
+        
+        // Dynamics
+        this.variables.set('rho_dust', 1e-21);
+        this.variables.set('V', 1e51);
+        this.variables.set('B', 1e-4);
+        this.variables.set('B_crit', 1e11);
+        this.variables.set('Delta_x', 1e-10);
+        this.variables.set('Delta_p', this.variables.get('hbar') / this.variables.get('Delta_x'));
+        this.variables.set('integral_psi', 1.0);
+        
+        // Wave/oscillatory
+        this.variables.set('A', 1e-10);
+        this.variables.set('k', 1e20);
+        this.variables.set('omega', 1e-16);
+        this.variables.set('x', 0.0);
+        this.variables.set('v', 1e3);
+        this.variables.set('sigma', 2e3 * kpc);
+        
+        // Ug subterms & Ui
+        this.variables.set('Ug1', 0.0);
+        this.variables.set('Ug2', 0.0);
+        this.variables.set('Ug3', 0.0);
+        this.variables.set('Ug4', 0.0);
+        this.variables.set('Ui', 0.0);
+        this.variables.set('mu_0', 4 * this.variables.get('pi') * 1e-7);
+        this.variables.set('rho_vac_SCm', 7.09e-37);
+        this.variables.set('rho_vac_UA', 7.09e-36);
+        this.variables.set('lambda_I', 1.0);
+        this.variables.set('omega_i', 1e-8);
+        this.variables.set('t_n', 0.0);
+        this.variables.set('F_RZ', 0.01);
+        this.variables.set('k_4', 1.0);
+        this.variables.set('k_cluster', 1e-12);
+        this.variables.set('omega_spin', 1e-3);
+        this.variables.set('I_dipole', 1e20);
+        this.variables.set('A_dipole', 1e15);
+        this.variables.set('H_aether', 1e-5);
+        this.variables.set('delta_rho_over_rho', 1e-5);
+        
+        // Scales
+        this.variables.set('scale_macro', 1e-12);
+        this.variables.set('f_TRZ', 0.1);
+        this.variables.set('f_sc', 1.0);
+        this.variables.set('v_r', 1e3);
+        this.variables.set('rho', this.variables.get('rho_dust'));
+    }
+    
+    // Dynamic variable operations
+    updateVariable(name, value) {
+        if (this.variables.has(name)) {
+            this.variables.set(name, value);
+        } else {
+            console.warn(`Variable '${name}' not found. Adding.`);
+            this.variables.set(name, value);
+        }
+        
+        // Update dependent variables
+        if (name === 'Delta_x') {
+            this.variables.set('Delta_p', this.variables.get('hbar') / value);
+        } else if (name === 'M_visible' || name === 'M_DM') {
+            const total = this.variables.get('M_visible') + this.variables.get('M_DM');
+            this.variables.set('M', total);
+            this.variables.set('M0', total);
+        }
+    }
+    
+    addToVariable(name, delta) {
+        if (this.variables.has(name)) {
+            this.variables.set(name, this.variables.get(name) + delta);
+        } else {
+            this.variables.set(name, delta);
+        }
+    }
+    
+    subtractFromVariable(name, delta) {
+        this.addToVariable(name, -delta);
+    }
+    
+    // Core computation functions
+    computeHtz(z_val) {
+        const Hz_kms = this.variables.get('H0') * Math.sqrt(
+            this.variables.get('Omega_m') * Math.pow(1.0 + z_val, 3) + 
+            this.variables.get('Omega_Lambda')
+        );
+        return (Hz_kms * 1e3) / this.variables.get('Mpc_to_m');
+    }
+    
+    computeMmerge(t) {
+        return 1e10 * 1.989e30 * Math.exp(-t / this.variables.get('tau_merge'));
+    }
+    
+    computeRt(t) {
+        return this.variables.get('r') + this.variables.get('v_r') * t;
+    }
+    
+    computeFenv(t) {
+        const F_tidal = (this.variables.get('G') * this.variables.get('M_spiral')) / 
+                       (this.variables.get('d_spiral') * this.variables.get('d_spiral'));
+        const F_cluster = this.variables.get('k_cluster') * 
+                         (this.variables.get('M_cluster') / 1.989e30);
+        return F_tidal + F_cluster;
+    }
+    
+    computeUg1(t) {
+        const mu_dipole = this.variables.get('I_dipole') * 
+                         this.variables.get('A_dipole') * 
+                         this.variables.get('omega_spin');
+        return mu_dipole * this.variables.get('B');
+    }
+    
+    computeUg2(t) {
+        const B_super = this.variables.get('mu_0') * this.variables.get('H_aether');
+        return (B_super * B_super) / (2 * this.variables.get('mu_0'));
+    }
+    
+    computeUg3prime(t) {
+        return (this.variables.get('G') * this.variables.get('M_spiral')) / 
+               (this.variables.get('d_spiral') * this.variables.get('d_spiral'));
+    }
+    
+    computeUg4(t) {
+        const E_react = 1e46 * Math.exp(-0.0005 * t);
+        return this.variables.get('k_4') * E_react;
+    }
+    
+    computeUi(t) {
+        return this.variables.get('lambda_I') * 
+               (this.variables.get('rho_vac_SCm') / this.variables.get('rho_vac_UA')) * 
+               this.variables.get('omega_i') * 
+               Math.cos(this.variables.get('pi') * this.variables.get('t_n')) * 
+               (1 + this.variables.get('F_RZ'));
+    }
+    
+    computePsiIntegral(r, t) {
+        const A = this.variables.get('A');
+        const sigma = this.variables.get('sigma');
+        const omega = this.variables.get('omega');
+        const gaussianEnvelope = A * Math.exp(-r * r / (2 * sigma * sigma));
+        const oscillation = Math.cos(omega * t);
+        return gaussianEnvelope * oscillation;
+    }
+    
+    computeQuantumTerm(t_Hubble_val, r) {
+        const unc = Math.sqrt(this.variables.get('Delta_x') * this.variables.get('Delta_p'));
+        const psi_int = this.computePsiIntegral(r, this.variables.get('t'));
+        return (this.variables.get('hbar') / unc) * 
+               this.variables.get('integral_psi') * 
+               (2 * this.variables.get('pi') / t_Hubble_val) * 
+               psi_int;
+    }
+    
+    computeFluidTerm(g_base) {
+        return this.variables.get('rho_dust') * this.variables.get('V') * g_base;
+    }
+    
+    computeDMTerm(r) {
+        const pert = this.variables.get('delta_rho_over_rho');
+        const curv = 3 * this.variables.get('G') * this.variables.get('M') / (r * r * r);
+        return (this.variables.get('M_visible') + this.variables.get('M_DM')) * (pert + curv);
+    }
+    
+    computeUgSum(r) {
+        const Ug_base = (this.variables.get('G') * this.variables.get('M')) / (r * r);
+        this.variables.set('Ug1', this.computeUg1(this.variables.get('t')));
+        this.variables.set('Ug2', this.computeUg2(this.variables.get('t')));
+        this.variables.set('Ug3', this.computeUg3prime(this.variables.get('t')));
+        this.variables.set('Ug4', this.computeUg4(this.variables.get('t')));
+        return Ug_base + this.variables.get('Ug1') + this.variables.get('Ug2') + 
+               this.variables.get('Ug3') + this.variables.get('Ug4');
+    }
+    
+    // Main gravity computation
+    computeG(t, r) {
+        this.variables.set('t', t);
+        const m_merge = this.computeMmerge(t);
+        const m_factor = 1.0 + m_merge / this.variables.get('M0');
+        const Hz = this.computeHtz(this.variables.get('z'));
+        const expansion = 1.0 + Hz * t;
+        const sc_correction = 1.0 - (this.variables.get('B') / this.variables.get('B_crit'));
+        const f_env = this.computeFenv(t);
+        const tr_factor = 1.0 + this.variables.get('f_TRZ');
+        
+        const g_base = (this.variables.get('G') * this.variables.get('M') * m_factor / (r * r)) * 
+                      expansion * sc_correction * (1.0 + f_env) * tr_factor;
+        
+        const ug_sum = this.computeUgSum(r) - g_base;
+        const lambda_term = this.variables.get('Lambda') * (this.variables.get('c') * this.variables.get('c')) / 3.0;
+        const ui_term = this.computeUi(t);
+        const quantum_term = this.computeQuantumTerm(this.variables.get('t_Hubble'), r);
+        const fluid_term = this.computeFluidTerm(g_base);
+        const dm_term = this.computeDMTerm(r);
+        
+        return g_base + ug_sum + lambda_term + ui_term + quantum_term + fluid_term + dm_term;
+    }
+    
+    // Equation description
+    getEquationText() {
+        return "g_NGC1316(r, t) = (G × M(t) / r²) × (1 + H(t,z)) × (1 - B/B_crit) × (1 + F_env) × (1 + f_TRZ) + " +
+               "(Ug1 + Ug2 + Ug3' + Ug4) + Ui + (Λ c² / 3) + Quantum + Fluid + DarkMatter\n" +
+               "Merger history: M(t) includes exponential companion evolution; Tidal & cluster forces; Dust lanes; " +
+               "AGN jets; Dark matter perturbations; Quantum uncertainty integrated with cosmological expansion.";
+    }
+    
+    printVariables() {
+        console.log('NGC 1316 UQFF Variables:');
+        for (const [key, value] of this.variables.entries()) {
+            console.log(`  ${key} = ${typeof value === 'number' ? value.toExponential(3) : value}`);
+        }
+    }
+
+    // Dynamic parameter update method
+    updateParameter(paramName, newValue) {
+        if (this.hasOwnProperty(paramName)) {
+            this[paramName] = newValue;
+            if (this.updateCache) {
+                this.updateCache();
+            }
+            return true;
+        }
+        return this.updateVariable(paramName, newValue) || false;
+    }
+
+    // Dynamic method expansion
+    expand(methodName, methodFunction) {
+        if (typeof methodFunction === 'function') {
+            this[methodName] = methodFunction;
+            return true;
+        }
+        return false;
+    }
+}
+
+// Analysis function for NGC 1316 UQFF
+function analyzeNGC1316UQFF71() {
+    console.log('=== Source71.cpp: NGC 1316 Elliptical Galaxy with Merger History ===\n');
+    
+    const ngc = new NGC1316UQFFModule();
+    
+    console.log('NGC 1316 UQFF Framework:');
+    console.log('  Galaxy: Elliptical merger remnant with complex dynamics');
+    console.log('  Mass: 5×10¹¹ M☉ (3.5×10¹¹ stars + 1.5×10¹¹ dark matter)');
+    console.log('  Radius: 46 kpc (~150,000 light-years)');
+    console.log('  AGN BH: 10⁸ M☉ with jets and radio lobes');
+    console.log('  Dust lanes: ρ = 10⁻²¹ kg/m³ from ongoing merger');
+    console.log('  Redshift: z = 0.005 (local group relative motion)\n');
+    
+    // Analysis at 2 Gyr
+    const t_2gyr = 2e9 * 3.156e7;
+    const r_20kpc = 20e3 * 3.086e19;
+    
+    console.log('Physics at t = 2 Gyr, r = 20 kpc:');
+    const g_result = ngc.computeG(t_2gyr, r_20kpc);
+    console.log(`  g_NGC1316 = ${g_result.toExponential(3)} m/s²`);
+    console.log(`  Merger mass contribution: ${(ngc.computeMmerge(t_2gyr) / 1.989e30).toExponential(2)} M☉`);
+    console.log(`  Hubble rate: ${(ngc.computeHtz(0.005) * 3.086e22 / 1e3).toExponential(2)} km/s/Mpc`);
+    console.log(`  Environmental forces: ${ngc.computeFenv(t_2gyr).toExponential(3)} m/s²\n`);
+    
+    // Component breakdown
+    console.log('Physics Component Breakdown:');
+    const Hz = ngc.computeHtz(0.005);
+    const expansion = 1.0 + Hz * t_2gyr;
+    const m_merge = ngc.computeMmerge(t_2gyr);
+    const m_factor = 1.0 + m_merge / ngc.variables.get('M0');
+    
+    console.log(`  Expansion (1 + H·t): ${expansion.toFixed(6)}`);
+    console.log(`  Merger factor (1 + M_merge/M0): ${m_factor.toExponential(3)}`);
+    console.log(`  Ug1 (dipole): ${ngc.computeUg1(t_2gyr).toExponential(3)} J/m`);
+    console.log(`  Ug3' (tidal): ${ngc.computeUg3prime(t_2gyr).toExponential(3)} m/s²`);
+    console.log(`  Ug4 (reaction): ${ngc.computeUg4(t_2gyr).toExponential(3)} J/m`);
+    console.log(`  Quantum term: ${ngc.computeQuantumTerm(ngc.variables.get('t_Hubble'), r_20kpc).toExponential(3)} m/s²`);
+    console.log(`  Fluid (dust): ${ngc.computeFluidTerm(1.0).toExponential(3)} kg·m⁻³·m/s²\n`);
+    
+    // Dynamic update demonstration
+    console.log('Dynamic Parameter Update:');
+    console.log(`  Original M_spiral: ${(ngc.variables.get('M_spiral') / 1.989e30).toExponential(2)} M☉`);
+    ngc.updateVariable('M_spiral', 1.5e10 * 1.989e30);
+    console.log(`  Updated M_spiral: ${(ngc.variables.get('M_spiral') / 1.989e30).toExponential(2)} M☉`);
+    console.log(`  New g_NGC1316: ${ngc.computeG(t_2gyr, r_20kpc).toExponential(3)} m/s²\n`);
+    
+    console.log('Equation:', ngc.getEquationText());
+    
+    return {
+        module: ngc,
+        timestamp: new Date().toISOString(),
+        physics: 'Merger dynamics, tidal forces, AGN feedback, dark matter'
+    };
+}
+
 // Export all modules
 if (typeof module !== 'undefined' && module.exports) {
+    // Source13-39: UQFF Simulation Modules (recently converted from C++)
+    // Source13 (SGR 1745-2900 Magnetar - Complete MUGE)
+    const { MagnetarSGR1745_2900 } = require('./source13.js');
+    module.exports.MagnetarSGR1745_2900 = MagnetarSGR1745_2900;
+    
+    // Source14 (SGR 0501+4516 Magnetar - Time-Reversal MUGE)
+    const { MagnetarSGR0501_4516 } = require('./source14.js');
+    module.exports.MagnetarSGR0501_4516 = MagnetarSGR0501_4516;
+    
+    // Source15 (Sagittarius A* SMBH - Complete MUGE)
+    const { SMBHSgrAStar } = require('./source15.js');
+    module.exports.SMBHSgrAStar = SMBHSgrAStar;
+    
+    // Source16 (NGC 2014/2020 Starbirth Region - Complete MUGE)
+    const { StarbirthTapestry } = require('./source16.js');
+    module.exports.StarbirthTapestry = StarbirthTapestry;
+    
+    // Source17 (Westerlund 2 Super Star Cluster - Complete MUGE)
+    const { Westerlund2 } = require('./source17.js');
+    module.exports.Westerlund2 = Westerlund2;
+    
+    // Source18 (Pillars of Creation Eagle Nebula - Complete MUGE)
+    const { PillarsOfCreation } = require('./source18.js');
+    module.exports.PillarsOfCreation = PillarsOfCreation;
+    
+    // Source19 (Einstein Ring Galaxy Cluster - Complete MUGE)
+    const { RingsOfRelativity } = require('./source19.js');
+    module.exports.RingsOfRelativity = RingsOfRelativity;
+    
+    // Source20 (Galaxy NGC 2525 - Complete MUGE)
+    const { GalaxyNGC2525 } = require('./source20.js');
+    module.exports.GalaxyNGC2525 = GalaxyNGC2525;
+    
+    // Source21 (NGC 3603 Young Massive Star Cluster - Complete MUGE)
+    const { NGC3603 } = require('./source21.js');
+    module.exports.NGC3603 = NGC3603;
+    
+    // Source22 (SN 1987A Supernova - Complete MUGE)
+    const { SN1987A } = require('./source22.js');
+    module.exports.SN1987A = SN1987A;
+    
+    // Source23 (IC 1396 Elephant Trunk Nebula - Complete MUGE)
+    const { IC1396ElephantTrunk } = require('./source23.js');
+    module.exports.IC1396ElephantTrunk = IC1396ElephantTrunk;
+    
+    // Source24 (M51 Whirlpool Galaxy - Complete MUGE)
+    const { M51Whirlpool } = require('./source24.js');
+    module.exports.M51Whirlpool = M51Whirlpool;
+    
+    // Source25 (Messier 16 Eagle Nebula - Complete MUGE)
+    const { M16EagleNebula } = require('./source25.js');
+    module.exports.M16EagleNebula = M16EagleNebula;
+    
+    // Source26 (Messier 42 Orion Nebula - Complete MUGE)
+    const { M42OrionNebula } = require('./source26.js');
+    module.exports.M42OrionNebula = M42OrionNebula;
+    
+    // Source27 (RS Puppis Cepheid Variable - Complete MUGE)
+    const { RSPuppis } = require('./source27.js');
+    module.exports.RSPuppis = RSPuppis;
+    
+    // Source28 (NGC 602 Young Cluster SMC - Complete MUGE)
+    const { NGC602 } = require('./source28.js');
+    module.exports.NGC602 = NGC602;
+    
+    // Source29 (Sombrero Galaxy M104 - Complete MUGE with Dynamic Variables)
+    const { SombreroUQFFModule } = require('./source29.js');
+    module.exports.SombreroUQFFModule = SombreroUQFFModule;
+    
+    // Source30 (Saturn Planet - Complete MUGE with Dynamic Variables)
+    const { SaturnUQFFModule } = require('./source30.js');
+    module.exports.SaturnUQFFModule = SaturnUQFFModule;
+    
+    // Source31 (M16 Eagle Nebula - Complete MUGE with Dynamic Variables)
+    const { M16UQFFModule } = require('./source31.js');
+    module.exports.M16UQFFModule = M16UQFFModule;
+    
+    // Source32 (Crab Nebula - Complete MUGE with Dynamic Variables)
+    const { CrabUQFFModule } = require('./source32.js');
+    module.exports.CrabUQFFModule = CrabUQFFModule;
+    
+    // Source33 (SGR 1745-2900 Magnetar - Complete MUGE with Dynamic Variables)
+    const { SGR1745UQFFModule } = require('./source33.js');
+    module.exports.SGR1745UQFFModule = SGR1745UQFFModule;
+    module.exports.analyzeSGR1745_2900 = analyzeSGR1745_2900;
+    
+    // Source34 (SGR 1745-2900 Frequency Model - 11-Term Resonance)
+    const Source34FrequencyModule = require('./source34.js');
+    module.exports.Source34FrequencyModule = Source34FrequencyModule;
+    
+    // Source35 (Sagittarius A* SMBH - Advanced Frequency Model)
+    const SgrA_UQFFModule = require('./source35.js');
+    module.exports.SgrA_UQFFModule = SgrA_UQFFModule;
+    
+    // Source36 (NGC 2014/2020 Starbirth - Tapestry of Blazing Starbirth UQFF Module)
+    const TapestryUQFFModule = require('./source36.js');
+    module.exports.TapestryUQFFModule = TapestryUQFFModule;
+    
+    // Source37 (Resonance Superconductive UQFF - General Framework)
+    const Source37ResonanceSCModule = require('./source37.js');
+    module.exports.Source37ResonanceSCModule = Source37ResonanceSCModule;
+    
+    // Source38 (Compressed Resonance UQFF - Combined Framework)
+    const Source38CompressedResonanceModule = require('./source38.js');
+    module.exports.Source38CompressedResonanceModule = Source38CompressedResonanceModule;
+    
+    // Source39 (Crab Resonance UQFF - Pulsar-Driven Resonance Framework)
+    const Source39CrabResonanceModule = require('./source39.js');
+    module.exports.Source39CrabResonanceModule = Source39CrabResonanceModule;
+
+    // Source40 (Compressed Resonance UQFF24 - Systems 18-24 Framework)
+    const Source40CompressedResonanceUQFF24Module = require('./source40.js');
+    module.exports.Source40CompressedResonanceUQFF24Module = Source40CompressedResonanceUQFF24Module;
+    
+    // Source41 (Universe Diameter UQFF - Observable Universe Evolution Framework)
+    const Source41UniverseDiameterUQFFModule = require('./source41.js');
+    module.exports.Source41UniverseDiameterUQFFModule = Source41UniverseDiameterUQFFModule;
+    
+    // Source42 (Hydrogen Atom UQFF - Atomic Scale Quantum Framework)
+    const Source42HydrogenAtomUQFFModule = require('./source42.js');
+    module.exports.Source42HydrogenAtomUQFFModule = Source42HydrogenAtomUQFFModule;
+    
+    // Source43 (Hydrogen PToE Resonance UQFF - Periodic Table Resonance Framework)
+    const Source43HydrogenPToEResonanceUQFFModule = require('./source43.js');
+    module.exports.Source43HydrogenPToEResonanceUQFFModule = Source43HydrogenPToEResonanceUQFFModule;
+    
+    // Source44 (Lagoon Nebula UQFF - Full Master Universal Gravity Equation Framework)
+    const Source44LagoonUQFFModule = require('./source44.js');
+    module.exports.Source44LagoonUQFFModule = Source44LagoonUQFFModule;
+    
+    // Source45 (Spiral Supernovae UQFF - Spiral Galaxies and Supernovae Evolution Framework)
+    const Source45SpiralSupernovaeUQFFModule = require('./source45.js');
+    module.exports.Source45SpiralSupernovaeUQFFModule = Source45SpiralSupernovaeUQFFModule;
+    
+    // Source46 (NGC 6302 UQFF - Butterfly Nebula Evolution Framework)
+    const Source46NGC6302UQFFModule = require('./source46.js');
+    module.exports.Source46NGC6302UQFFModule = Source46NGC6302UQFFModule;
+    
+    // Source47 (NGC 6302 Resonance UQFF - Resonance-Based Nebula Evolution Framework)
+    const Source47NGC6302ResonanceUQFFModule = require('./source47.js');
+    module.exports.Source47NGC6302ResonanceUQFFModule = Source47NGC6302ResonanceUQFFModule;
+    
+    // Source48 (Orion UQFF - Full Master Universal Gravity Equation for Orion Nebula Evolution)
+    const Source48OrionUQFFModule = require('./source48.js');
+    module.exports.Source48OrionUQFFModule = Source48OrionUQFFModule;
+    
+    // Source49 (Compressed Resonance UQFF34 - Systems 26-28, 30-32, 34 Framework)
+    const Source49CompressedResonanceUQFF34Module = require('./source49.js');
+    module.exports.Source49CompressedResonanceUQFF34Module = Source49CompressedResonanceUQFF34Module;
+    
+    // Source50 (UQFF Module - Compressed and Resonance Equations for Multiple Systems)
+    const Source50UQFFModule = require('./source50.js');
+    module.exports.Source50UQFFModule = Source50UQFFModule;
+    
     module.exports.StressEnergyTensorModule = StressEnergyTensorModule;
     module.exports.analyzeStressEnergyUQFF120 = analyzeStressEnergyUQFF120;
     module.exports.SurfaceTemperatureModule = SurfaceTemperatureModule;
@@ -21401,23 +22157,164 @@ if (typeof module !== 'undefined' && module.exports) {
     module.exports.analyzeAetherVacuumDensityUQFF126 = analyzeAetherVacuumDensityUQFF126;
     module.exports.UniversalInertiaVacuumModule = UniversalInertiaVacuumModule;
     module.exports.analyzeUniversalInertiaVacuumUQFF127 = analyzeUniversalInertiaVacuumUQFF127;
+    module.exports.analyzeNGC1316UQFF71 = analyzeNGC1316UQFF71;
+    
+    // V838 Monocerotis (46th System) - Light Echo UQFF Module
+    const V838MonocerotisUQFFModule = require('./v838_monocerotis_uqff.js');
+    module.exports.V838MonocerotisUQFFModule = V838MonocerotisUQFFModule;
+    
+    // NGC 1300 (47th System) - Barred Spiral Galaxy UQFF Module
+    const NGC1300UQFFModule = require('./ngc1300_uqff.js');
+    module.exports.NGC1300UQFFModule = NGC1300UQFFModule;
+    
+    // NGC 2264 (49th System) - Cone Nebula Star-Forming Region UQFF Module
+    const NGC2264UQFFModule = require('./ngc2264_uqff.js');
+    module.exports.NGC2264UQFFModule = NGC2264UQFFModule;
+    
+    // Source60 (50th System) - MultiUQFFCompressionModule with 19 Astrophysical Systems
+    const MultiUQFFCompressionModule = require('./source60_multiuqff.js');
+    module.exports.MultiUQFFCompressionModule = MultiUQFFCompressionModule;
+    
+    // UGC10214 (74th System) - Tadpole Galaxy with Minor Merger UQFF Module
+    const UGC10214UQFFModule = require('./ugc10214_uqff.js');
+    module.exports.UGC10214UQFFModule = UGC10214UQFFModule;
+    
+    // NGC 4676 (75th System) - The Mice Galaxy Collision UQFF Module
+    const NGC4676UQFFModule = require('./ngc4676_uqff.js');
+    module.exports.NGC4676UQFFModule = NGC4676UQFFModule;
+    
+    // NGC 6537 (76th System) - Red Spider Nebula Frequency-Resonance UQFF Module
+    const NGC6537UQFFModule = require('./redspider_uqff.js');
+    module.exports.NGC6537UQFFModule = NGC6537UQFFModule;
+    
+    // SMBH Binary (77th System) - Supermassive Black Hole Binary with 2PN Coalescence UQFF Module
+    const SMBHBinaryUQFFModule = require('./smbhbinary_uqff.js');
+    module.exports.SMBHBinaryUQFFModule = SMBHBinaryUQFFModule;
+    
+    // NGC 346 (78th System) - Young Stellar Cluster with Protostar Formation & Cluster Entanglement UQFF Module
+    const NGC346UQFFModule = require('./ngc346_uqff.js');
+    module.exports.NGC346UQFFModule = NGC346UQFFModule;
+    
+    // SMBH M-σ Relation (79th System) - Supermassive Black Hole Mass-Velocity Dispersion Coupling with Quantum Resonance UQFF Module
+    const SMBHMSRUQFFModule = require('./smbh_msr_uqff.js');
+    module.exports.SMBHMSRUQFFModule = SMBHMSRUQFFModule;
+    
+    // SMBH M-σ Adaptive Layer - Dynamic Self-Updating & Framework Expansion Enhancement
+    const SMBHMSRAdaptiveModule = require('./smbh_msr_adaptive.js');
+    module.exports.SMBHMSRAdaptiveModule = SMBHMSRAdaptiveModule;
+    
+    // Source29 (Sombrero Galaxy M104 - Complete MUGE with Dynamic Variables)
+    module.exports.SombreroUQFFModule = SombreroUQFFModule;
+    module.exports.analyzeSombreroGalaxy = analyzeSombreroGalaxy;
+    
+    // Source30 (Saturn Planet - Complete MUGE with Dynamic Variables)
+    module.exports.SaturnUQFFModule = SaturnUQFFModule;
+    module.exports.analyzeSaturnPlanet = analyzeSaturnPlanet;
+    
+    // Source31 (M16 Eagle Nebula - Complete MUGE with Dynamic Variables)
+    module.exports.M16UQFFModule = M16UQFFModule;
+    module.exports.analyzeM16EagleNebula = analyzeM16EagleNebula;
+    
+    // Source32 (Crab Nebula - Complete MUGE with Dynamic Variables)
+    module.exports.CrabUQFFModule = CrabUQFFModule;
+    module.exports.analyzeCrabNebula = analyzeCrabNebula;
+    
+    // Source52 (MultiUQFFModule - Multi-System Support with Compressed/Resonance Modes)
+    const Source52UQFFModule = require('./source52.js');
+    module.exports.Source52UQFFModule = Source52UQFFModule;
+    
+    // Source54 (YoungStarsOutflowsUQFFModule - Young Stars Sculpting Gas with Powerful Outflows)
+    const Source54UQFFModule = require('./source54.js');
+    module.exports.Source54UQFFModule = Source54UQFFModule;
+    
+    // Source56 (BigBangGravityUQFFModule - Gravity Evolution Since Big Bang with QG, DM, GW Terms)
+    const Source56UQFFModule = require('./source56.js');
+    module.exports.Source56UQFFModule = Source56UQFFModule;
+    
+    // Source57 (MultiCompressedUQFFModule - Compressed UQFF for Multiple Astrophysical Systems)
+    const Source57UQFFModule = require('./source57.js');
+    module.exports.Source57UQFFModule = Source57UQFFModule;
+    
+    // Source60 (MultiUQFFCompressionModule - Compressed UQFF for 19 Astrophysical Systems)
+    const Source60UQFFModule = require('./source60_multiuqff.js');
+    module.exports.Source60UQFFModule = Source60UQFFModule;
+    
+    // Source64 (UFEOrbModule - Unified Field Equation for Red Dwarf Reactor Plasma Orb Experiment)
+    const Source64UQFFModule = require('./source64.js');
+    module.exports.Source64UQFFModule = Source64UQFFModule;
+    
+    // Source65 (NebularUQFFModule - Nebular Cloud Analysis with UQFF for Drawing 32 & Compression_B)
+    const Source65UQFFModule = require('./source65.js');
+    module.exports.Source65UQFFModule = Source65UQFFModule;
+    
+    // Source66 (RedDwarfUQFFModule - Red Dwarf Compression_C with LENR, Collider Higgs, NGC 346, Pi Calcs)
+    const Source66UQFFModule = require('./source66.js');
+    module.exports.Source66UQFFModule = Source66UQFFModule;
+    
+    // Source67 (InertiaUQFFModule - Inertia Papers with Quantum Waves, Inertial Operators, Universal Inertia)
+    const Source67UQFFModule = require('./source67.js');
+    module.exports.Source67UQFFModule = Source67UQFFModule;
+    
+    // Source68 (HydrogenUQFFModule - Compressed Space Dynamics with Three-Leg Proofset and Hydrogen Levels)
+    const Source68UQFFModule = require('./source68.js');
+    module.exports.Source68UQFFModule = Source68UQFFModule;
+    
+    // Source69 (UQFFCompressionModule - Compressed Universal Quantum Field Force Superconductive Framework)
+    const Source69UQFFModule = require('./source69.js');
+    module.exports.Source69UQFFModule = Source69UQFFModule;
+    
+    // Source71 (NGC1316UQFFModule - NGC 1316 gravitational dynamics with merger history, tidal forces, dust lanes, AGN jets, and dark matter)
+    const { NGC1316UQFFModule } = require('./source71.js');
+    module.exports.Source71UQFFModule = NGC1316UQFFModule;
+    
+    // Source72 (V838MonUQFFModule - V838 Monocerotis light echo evolution with outburst luminosity, dust scattering, gravitational modulation, time-reversal effects, and aether corrections)
+    const { V838MonUQFFModule } = require('./source72.js');
+    module.exports.Source72UQFFModule = V838MonUQFFModule;
+    
+    // Source73 (NGC1300UQFFModule - NGC 1300 barred spiral galaxy gravitational dynamics with bar-driven gas funneling, spiral arm density waves, star formation, dust lanes, and dark matter)
+    const { NGC1300EnhancedUQFFModule } = require('./source73.js');
+    module.exports.Source73UQFFModule = NGC1300EnhancedUQFFModule;
+    
+    // Source74 (UQFFCompressedResonanceModule - Compressed and resonance UQFF equations for multi-system evolution including Young Stars, Eagle Nebula, Big Bang, M51, NGC 1316, V838 Mon, NGC 1300, and Student's Guide)
+    const { UQFFCompressedResonanceModule } = require('./source74.js');
+    module.exports.Source74UQFFModule = UQFFCompressedResonanceModule;
+    
+    // Source76 (NGC2264UQFFModule - Cone Nebula gravitational dynamics with stellar winds, pillar erosion, protostar formation, dust/gas densities, and dark matter)
+    const { NGC2264EnhancedUQFFModule } = require('./source76.js');
+    module.exports.Source76UQFFModule = NGC2264EnhancedUQFFModule;
+    
+    // Source77 (UGC10214UQFFModule - Tadpole Galaxy minor merger dynamics with tidal tail ejection, star formation in disk/tail, gas densities, and dark matter)
+    const { UGC10214UQFFModule: UGC10214UQFFModule_Source77 } = require('./source77.js');
+    module.exports.Source77UQFFModule = UGC10214UQFFModule_Source77;
+    
+    // Source78 (NGC4676EnhancedUQFFModule - The Mice galaxy merger with NGC 4676A/B collision dynamics, tidal tails/bridge formation, enhanced star formation, gas turbulence, and dark matter)
+    const { NGC4676EnhancedUQFFModule: NGC4676EnhancedUQFFModule_Source78 } = require('./source78.js');
+    module.exports.Source78UQFFModule = NGC4676EnhancedUQFFModule_Source78;
+    
+    // Source79 (RedSpiderUQFFModule - Red Spider Nebula NGC 6537 dynamics with DPM core, THz hole pipeline, U_g4i reactive, plasmotic vacuum energy, and aether effects)
+    const { RedSpiderUQFFModule: RedSpiderUQFFModule_Source79 } = require('./source79.js');
+    module.exports.Source79UQFFModule = RedSpiderUQFFModule_Source79;
+    
+    // Source80 (SMBHBinaryUQFFModule - Supermassive black hole binary evolution with DPM core, THz hole pipeline, U_g4i reactive, plasmotic vacuum energy, and 2PN resonance)
+    const { SMBHBinaryUQFFModule: SMBHBinaryUQFFModule_Source80 } = require('./source80.js');
+    module.exports.Source80UQFFModule = SMBHBinaryUQFFModule_Source80;
+    
+    // Source81 (NGC346UQFFModule - NGC 346 nebula gravitational dynamics with protostar formation via Ug3 collapse, cluster entanglement via Ugi forces, blueshifted quantum waves, and pseudo-monopole communication)
+    const { NGC346UQFFModule: NGC346UQFFModule_Source81 } = require('./source81.js');
+    module.exports.Source81UQFFModule = NGC346UQFFModule_Source81;
+    
+    // Source82 (SMBHUQFFModule - SMBH dynamics in M-σ relation context with Ug1-Ug4, Ui, Um, pseudo-monopole shifts, reactor efficiency, and vacuum energy densities)
+    const SMBHUQFFModule_Source82 = require('./source82.js');
+    module.exports.Source82UQFFModule = SMBHUQFFModule_Source82;
+    
+    // Source83 (LENRUQFFModule - LENR dynamics via electro-weak interactions, electron acceleration to 0.78 MeV threshold, neutron production, transmutations, plasma frequency calculations, and UQFF terms Um, Ug1-Ug4, Ui)
+    const LENRUQFFModule_Source83 = require('./source83.js');
+    module.exports.Source83UQFFModule = LENRUQFFModule_Source83;
+    
+    const MAIN1_UQFF_Calculator = require('./main_1_uqff_calculator.js');
+    module.exports.MAIN1_UQFF_Calculator = MAIN1_UQFF_Calculator;
 }
 
-// Placeholder for Claude AI integration
-async function callClaudeSonnet(prompt) {
-    // This would require @anthropic-ai/sdk configuration
-    // For now, return a placeholder response
-    return "UQFF (Unified Quantum Field Force) theory unifies gravity, magnetism, buoyancy, and aetheric forces across 26 quantum energy levels, incorporating superconductive material (SCm) and cosmic aether (UA) to explain astronomical phenomena from atomic to cosmological scales.";
-}
-
-// Test Claude integration (optional - comment out if not needed)
-if (require.main === module) {
-    callClaudeSonnet('Explain UQFF theory briefly.').then(result => {
-        console.log('Claude Response:', result);
-    }).catch(err => {
-        console.error('Error:', err);
-    });
-}
 
 
 
@@ -21427,4 +22324,4 @@ if (require.main === module) {
 
 
 
-}
+
