@@ -268,7 +268,7 @@ try {
         console.log('✓ Environmental forces computation working:', typeof f_env === 'number' && !isNaN(f_env));
 
         // Test plasma frequency computation
-        const omega_p = lenrModule.computePlasmaFrequency();
+        const omega_p = lenrModule.computePlasmaFreq();
         console.log('✓ Plasma frequency computation working:', typeof omega_p === 'number' && omega_p > 0);
 
         // Test neutron rate computation

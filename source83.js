@@ -229,6 +229,36 @@ class LENRUQFFModule {
         return F_total;
     }
 
+    // ========== GRAVITY COMPUTATION (UQFF Unified Field) ==========
+    computeG(t, r = null) {
+        // LENR unified field force computation combining electro-weak, plasma, and UQFF effects
+        const r_val = r || this.variables.get("r");
+
+        // Electro-weak contribution (electron acceleration to 0.78 MeV threshold)
+        const F_ew = this.variables.get("e") * this.variables.get("E_field") / r_val;
+
+        // Plasma frequency contribution
+        const Omega = this.computePlasmaFreq(this.variables.get("rho_e"));
+        const F_plasma = this.variables.get("m_e") * Omega * Omega * r_val;
+
+        // UQFF contributions (Um, Ug1, Ui terms)
+        const Um = this.computeUm(t, r_val, 1);
+        const Ug1 = this.computeUg1(t, r_val, this.variables.get("M_s"), 1);
+        const Ui = this.computeUi(t);
+
+        // Total unified field force (effective gravity-like acceleration)
+        const F_total = F_ew + F_plasma + Um + Ug1 + Ui;
+
+        // Convert force to acceleration (F = m*a, using electron mass as reference)
+        const g_lenr = F_total / this.variables.get("m_e");
+
+        if (this.enableLogging) {
+            console.log(`LENR unified field computation: F_ew=${F_ew}, F_plasma=${F_plasma}, Um=${Um}, Ug1=${Ug1}, Ui=${Ui}, g=${g_lenr}`);
+        }
+
+        return g_lenr;
+    }
+
     // ========== EQUATION TEXT ==========
     getEquationText() {
         return "η(t) = (G_F² (m̃ c²)⁴ / (2π ℏ³)) (W - Δ)² θ(W - Δ)\n" +
