@@ -22354,8 +22354,5 @@ if (typeof module !== 'undefined' && module.exports) {
     module.exports.Source93UQFFModule = Source93UQFFModule_Source93;
     
     // Source94 (Source94UQFFModule - Ug Coupling Module for scaled Universal Gravity terms k_i * U_gi with k1=1.5, k2=1.2, k3=1.8, k4=1.0)
-    // Source94 (Source94UQFFModule - Ug Coupling Module for scaled Universal Gravity terms k_i * U_gi with k1=1.5, k2=1.2, k3=1.8, k4=1.0)
-    // Source94 (Source94UQFFModule - Ug Coupling Module for scaled Universal Gravity terms k_i * U_gi with k1=1.5, k2=1.2, k3=1.8, k4=1.0)
     const Source94UQFFModule_Source94 = require('./source94.js');
     module.exports.Source94UQFFModule = Source94UQFFModule_Source94;
-};

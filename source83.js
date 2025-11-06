@@ -148,7 +148,7 @@ class LENRUQFFModule {
                (Omega_val / this.variables.get("c"));
     }
 
-    computeNeutronRate(W_val, beta_val) {
+    computeNeutronRateInternal(W_val, beta_val) {
         const Delta = 1.3e6 * 1.602e-19;  // J (1.3 MeV)
         const G_F_scaled = this.variables.get("G_F") * Math.pow(1.973e-7, -2);  // GeV to J approx
         const m_tilde = beta_val * this.variables.get("m_e");
@@ -194,7 +194,7 @@ class LENRUQFFModule {
         const W = this.variables.get("Q_threshold") +
                  this.computeElectricField(this.variables.get("Omega")) *
                  this.variables.get("e") * this.variables.get("r");  // Approx energy
-        const result = this.computeNeutronRate(W, this.variables.get("beta"));
+        const result = this.computeNeutronRateInternal(W, this.variables.get("beta"));
 
         if (this.enableLogging) {
             console.log(`LENR neutron rate computation: W=${W}, beta=${this.variables.get("beta")}, rate=${result}`);
