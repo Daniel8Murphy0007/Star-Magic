@@ -12904,6 +12904,185 @@ const { ReciprocationDecayModule } = require('./source111.js');
 // Import from source112.js
 const { ScmPenetrationModule } = require('./source112.js');
 
+// ===========================================================================================
+// Source113: ScmReactivityDecayModule - [SCm] Reactivity Decay Rate (κ) UQFF Module
+// ===========================================================================================
+// Import from source113.js
+const { ScmReactivityDecayModule } = require('./source113.js');
+
+// ===========================================================================================
+// Source114: SolarCycleFrequencyModule - Solar Cycle Frequency (ω_c) UQFF Module
+// ===========================================================================================
+// Import from source114.js
+const { SolarCycleFrequencyModule } = require('./source114.js');
+
+// ===========================================================================================
+// Source115: SolarWindModulationModule - Solar Wind Modulation Factor (δ_sw) UQFF Module
+// ===========================================================================================
+// Import from source115.js
+const { SolarWindModulationModule } = require('./source115.js');
+
+// ===========================================================================================
+// Source116: SolarWindVelocityModule - Solar Wind Velocity (v_sw) UQFF Module
+// ===========================================================================================
+// Import from source116.js
+const { SolarWindVelocityModule } = require('./source116.js');
+
+// ===========================================================================================
+// Source117: StellarMassModule - Stellar/Planetary Mass (M_s) UQFF Module
+// ===========================================================================================
+// Import from source117.js
+const { StellarMassModule } = require('./source117.js');
+
+// ===========================================================================================
+// Source71: NGC1316UQFFModule - NGC 1316 (Fornax A) Galaxy UQFF Module
+// ===========================================================================================
+// Import from source71.js
+const { NGC1316UQFFModule } = require('./source71.js');
+
+// ===========================================================================================
+// Source72: V838MonUQFFModule - V838 Monocerotis Light Echo UQFF Module
+// ===========================================================================================
+// Import from source72.js
+const { V838MonUQFFModule } = require('./source72.js');
+
+// ===========================================================================================
+// Source73: NGC1300EnhancedUQFFModule - NGC 1300 Barred Spiral Galaxy UQFF Module
+// ===========================================================================================
+// Import from source73.js
+const { NGC1300EnhancedUQFFModule } = require('./source73.js');
+
+// ===========================================================================================
+// Source74: UQFFCompressedResonanceModule - Compressed/Resonance Equations UQFF Module
+// ===========================================================================================
+const { UQFFCompressedResonanceModule } = require('./source74.js');
+
+// ===========================================================================================
+// Source76-79: Additional UQFF Modules
+// ===========================================================================================
+const { NGC2264UQFFModule } = require('./source76.js');
+const { NGC346UQFFModule } = require('./source77.js');
+const { NGC4676UQFFModule } = require('./source78.js');
+const { RedSpiderUQFFModule } = require('./source79.js');
+
+// ===========================================================================================
+// Source80-97: Extended UQFF Module Suite
+// ===========================================================================================
+const { SMBHBinaryUQFFModule } = require('./source80.js');
+const { NGC346FrequencyModule } = require('./source81.js');
+const { SMBHUQFFModule } = require('./source82.js');
+const { SMBHAdaptiveUQFFModule } = require('./source83.js');
+const { LENRCalibUQFFModule } = require('./source84.js');
+const { TapestryFrequencyModule } = require('./source85.js');
+const { CrabFrequencyModule } = require('./source86.js');
+const { HorseshoeProtostarModule } = require('./source87.js');
+const { PillarsCreationModule } = require('./source88.js');
+const { HelixPNModule } = require('./source89.js');
+const { EtaCarinaeMegastarModule } = require('./source90.js');
+const { CarinaNebulaModule } = require('./source91.js');
+const { CatEyeNebulaModule } = require('./source92.js');
+const { ButterflyNebulaModule } = require('./source93.js');
+const { EskimoNebulaModule } = require('./source94.js');
+const { RingNebulaModule } = require('./source95.js');
+const { DumbbellNebulaModule } = require('./source96.js');
+const { Source97UQFFModule } = require('./source97.js');
+
+// ===========================================================================================
+// Source40-69: Additional Physics Modules
+// ===========================================================================================
+const { CompressedResonanceUQFF24Module } = require('./source40.js');
+const { UniverseDiameterUQFFModule } = require('./source41.js');
+const { HydrogenAtomUQFFModule } = require('./source42.js');
+const { HydrogenPToEResonanceUQFFModule } = require('./source43.js');
+const { LagoonUQFFModule } = require('./source44.js');
+const { SpiralSupernovaeUQFFModule } = require('./source45.js');
+const { NGC6302UQFFModule } = require('./source46.js');
+const { NGC6302ResonanceUQFFModule } = require('./source47.js');
+const { OrionUQFFModule } = require('./source48.js');
+const { CompressedResonanceUQFF34Module } = require('./source49.js');
+const { SystemData } = require('./source50.js');
+const { MultiUQFFModule } = require('./source52.js');
+const { YoungStarsOutflowsUQFFModule } = require('./source54.js');
+const { BigBangGravityUQFFModule } = require('./source56.js');
+const { MultiCompressedUQFFModule } = require('./source57.js');
+const { UFEOrbModule } = require('./source64.js');
+const { NebularUQFFModule } = require('./source65.js');
+const { RedDwarfUQFFModule } = require('./source66.js');
+const { InertiaUQFFModule } = require('./source67.js');
+const { HydrogenUQFFModule } = require('./source68.js');
+const { UQFFCompressionModule } = require('./source69.js');
+
+// ===========================================================================================
+// Source70: M51 Whirlpool Galaxy Module
+// ===========================================================================================
+const { M51UQFFModule } = require('./source70.js');
+
+// ===========================================================================================
+// Source20-39: Additional Astrophysical Systems
+// ===========================================================================================
+const { PhysicsTerm: PhysicsTerm20, NGC2525Module } = require('./source20.js');
+const { SN1987A } = require('./source22.js');
+const { IC1396ElephantTrunk } = require('./source23.js');
+const { M51Whirlpool } = require('./source24.js');
+const { M16EagleNebula } = require('./source25.js');
+const { M42OrionNebula } = require('./source26.js');
+const { RSPuppis } = require('./source27.js');
+const { NGC602 } = require('./source28.js');
+const { SGR1745UQFFModule: SGR1745UQFFModule34 } = require('./source34.js');
+const { SgrA_UQFFModule } = require('./source35.js');
+const { TapestryUQFFModule } = require('./source36.js');
+const { ResonanceSuperconductiveUQFFModule: ResonanceSuperconductiveUQFFModule37 } = require('./source37.js');
+const { CompressedResonanceUQFFModule: CompressedResonanceUQFFModule38 } = require('./source38.js');
+const { CrabResonanceUQFFModule } = require('./source39.js');
+
+// ===========================================================================================
+// Source118: StellarRotationModule - Stellar/Planetary Rotation Rate (ω_s) UQFF Module
+// ===========================================================================================
+// Import from source118.js
+const { StellarRotationModule } = require('./source118.js');
+
+// ===========================================================================================
+// Source119: StepFunctionModule - Outer Field Bubble Step Function S(r-R_b) UQFF Module
+// ===========================================================================================
+// Import from source119.js
+const { StepFunctionModule } = require('./source119.js');
+
+// ===========================================================================================
+// Source120: StressEnergyTensorModule - Stress-Energy Tensor T_s^{μν} UQFF Module
+// ===========================================================================================
+// Import from source120.js
+const { StressEnergyTensorModule } = require('./source120.js');
+
+// ===========================================================================================
+// Source121: SurfaceMagneticFieldModule - Surface Magnetic Field B_s UQFF Module
+// ===========================================================================================
+// Import from source121.js
+const { SurfaceMagneticFieldModule } = require('./source121.js');
+
+// ===========================================================================================
+// Source122: SurfaceTemperatureModule - Surface Temperature T_s UQFF Module
+// ===========================================================================================
+// Import from source122.js
+const { SurfaceTemperatureModule } = require('./source122.js');
+
+// ===========================================================================================
+// Source123: TimeReversalZoneModule - Time-Reversal Zone Factor f_TRZ UQFF Module
+// ===========================================================================================
+// Import from source123.js
+const { TimeReversalZoneModule } = require('./source123.js');
+
+// ===========================================================================================
+// Source124: Ug1DefectModule - U_g1 Defect Factor δ_def UQFF Module
+// ===========================================================================================
+// Import from source124.js
+const { Ug1DefectModule } = require('./source124.js');
+
+// ===========================================================================================
+// Source125: Ug3DiskVectorModule - U_g3 Disk Unit Vector φ̂_j UQFF Module
+// ===========================================================================================
+// Import from source125.js
+const { Ug3DiskVectorModule } = require('./source125.js');
+
 // Export all UQFF modules
 module.exports = {
     // Core UQFF modules
@@ -12918,8 +13097,89 @@ module.exports = {
     CrabResonanceUQFFModule,
     CompressedResonanceUQFF24Module,
     
-    // Source97 feedback factor module
+    // Source13 magnetar SGR 1745-2900 module
+    MagnetarSGR1745_2900,
+    
+    // Source71 NGC 1316 galaxy module
+    NGC1316UQFFModule,
+    
+    // Source72 V838 Mon light echo module
+    V838MonUQFFModule,
+    
+    // Source73 NGC 1300 barred spiral module
+    NGC1300EnhancedUQFFModule,
+    
+    // Source74 compressed/resonance module
+    UQFFCompressedResonanceModule,
+    
+    // Source76-79 modules
+    NGC2264UQFFModule,
+    NGC346UQFFModule,
+    NGC4676UQFFModule,
+    RedSpiderUQFFModule,
+    
+    // Source80-97 extended modules
+    SMBHBinaryUQFFModule,
+    NGC346FrequencyModule,
+    SMBHUQFFModule,
+    SMBHAdaptiveUQFFModule,
+    LENRCalibUQFFModule,
+    TapestryFrequencyModule,
+    CrabFrequencyModule,
+    HorseshoeProtostarModule,
+    PillarsCreationModule,
+    HelixPNModule,
+    EtaCarinaeMegastarModule,
+    CarinaNebulaModule,
+    CatEyeNebulaModule,
+    ButterflyNebulaModule,
+    EskimoNebulaModule,
+    RingNebulaModule,
+    DumbbellNebulaModule,
     Source97UQFFModule,
+    
+    // Source40-69 physics modules
+    CompressedResonanceUQFF24Module,
+    UniverseDiameterUQFFModule,
+    HydrogenAtomUQFFModule,
+    HydrogenPToEResonanceUQFFModule,
+    LagoonUQFFModule,
+    SpiralSupernovaeUQFFModule,
+    NGC6302UQFFModule,
+    NGC6302ResonanceUQFFModule,
+    OrionUQFFModule,
+    CompressedResonanceUQFF34Module,
+    SystemData,
+    MultiUQFFModule,
+    YoungStarsOutflowsUQFFModule,
+    BigBangGravityUQFFModule,
+    MultiCompressedUQFFModule,
+    UFEOrbModule,
+    NebularUQFFModule,
+    RedDwarfUQFFModule,
+    InertiaUQFFModule,
+    HydrogenUQFFModule,
+    UQFFCompressionModule,
+    
+    // Source70 M51 Whirlpool Galaxy
+    M51UQFFModule,
+    
+    // Source20-39 astrophysical systems
+    PhysicsTerm20,
+    NGC2525Module,
+    SN1987A,
+    IC1396ElephantTrunk,
+    M51Whirlpool,
+    M16EagleNebula,
+    M42OrionNebula,
+    RSPuppis,
+    NGC602,
+    SGR1745UQFFModule34,
+    SgrA_UQFFModule,
+    TapestryUQFFModule,
+    ResonanceSuperconductiveUQFFModule37,
+    CompressedResonanceUQFFModule38,
+    CrabResonanceUQFFModule,
     
     // Source98 unified field strength module
     UnifiedFieldModule,
@@ -12964,7 +13224,46 @@ module.exports = {
     ReciprocationDecayModule,
     
     // Source112 SCm penetration module
-    ScmPenetrationModule
+    ScmPenetrationModule,
+    
+    // Source113 SCm reactivity decay module
+    ScmReactivityDecayModule,
+    
+    // Source114 solar cycle frequency module
+    SolarCycleFrequencyModule,
+    
+    // Source115 solar wind modulation module
+    SolarWindModulationModule,
+    
+    // Source116 solar wind velocity module
+    SolarWindVelocityModule,
+    
+    // Source117 stellar mass module
+    StellarMassModule,
+    
+    // Source118 stellar rotation module
+    StellarRotationModule,
+    
+    // Source119 step function module
+    StepFunctionModule,
+    
+    // Source120 stress-energy tensor module
+    StressEnergyTensorModule,
+    
+    // Source121 surface magnetic field module
+    SurfaceMagneticFieldModule,
+    
+    // Source122 surface temperature module
+    SurfaceTemperatureModule,
+    
+    // Source123 time-reversal zone module
+    TimeReversalZoneModule,
+    
+    // Source124 Ug1 defect module
+    Ug1DefectModule,
+    
+    // Source125 Ug3 disk vector module
+    Ug3DiskVectorModule
 };
 
 // Add Source98 Unified Field Strength system to PREDEFINED_SYSTEMS after class definition
@@ -14211,6 +14510,804 @@ Scales U_m magnetic energy density contribution to UQFF Master Equation`,
     }
 };
 
+// ===========================================================================================
+// PREDEFINED_SYSTEMS.SCM_REACTIVITY_DECAY - Source113 [SCm] Reactivity Decay Rate Module
+// ===========================================================================================
+PREDEFINED_SYSTEMS.SCM_REACTIVITY_DECAY = {
+    name: 'SCM Reactivity Decay Rate Module',
+    moduleClass: ScmReactivityDecayModule,
+    parameters: {
+        // [SCm] Reactivity Decay Rate Constants
+        kappa_day: 0.0005,                  // day⁻¹ (reactivity decay rate)
+        kappa_s: 5.787e-6,                  // s⁻¹ (derived: 0.0005 / 86400)
+        
+        // Time conversion
+        day_to_s: 86400.0,                  // s/day
+        
+        // Reactive energy parameters
+        E_react_base: 1e46,                 // J (base reactive energy at t=0)
+        t_day: 0.0,                         // days (current time)
+        
+        // Timescale parameters
+        timescale_days: 2000,               // days (1/κ ≈ 2000 days)
+        timescale_years: 5.48,              // years (~5.5 years)
+        
+        // UQFF integration parameters (from previous modules)
+        mu_over_rj: 2.26e10,                // T/m (magnetic moment ratio from source112)
+        P_SCm: 1.0,                         // Normalized penetration factor (from source112)
+        heaviside_f: 1e11 + 1.0,            // 1 + 10^13 × 0.01 (from source109/112)
+        quasi_f: 1.01,                      // 1 + 0.01 (from source109)
+        one_minus_exp: 1.0                  // Placeholder at t=0 (from source111)
+    },
+    description: {
+        purpose: 'Computes [SCm] Reactivity Decay Rate κ for E_react exponential decay in UQFF terms',
+        physics: `κ = 0.0005 day⁻¹ ≈ 5.8e-6 s⁻¹ (reactivity decay constant)
+Timescale: 1/κ ≈ 2000 days ≈ 5.5 years (characteristic decay time)
+E_react = 10^46 × exp(-κ t) where t in days
+Models gradual [SCm]-[UA] interaction energy loss over cosmic timescales
+Used in U_m (magnetic strings), U_bi (binary), U_i (internal), U_gi (gravity interaction)`,
+        formulas: {
+            kappa_day: 'κ = 0.0005 day⁻¹ (reactivity decay rate)',
+            kappa_s: 'κ_s = κ_day / 86400 ≈ 5.787e-6 s⁻¹',
+            E_react: 'E_react(t) = 10^46 × exp(-κ t) J (t in days)',
+            timescale: '1/κ ≈ 2000 days ≈ 5.48 years',
+            decay_fraction: 'exp(-κ t) (fraction of initial reactivity)',
+            Um_with_E_react: 'U_m = (μ/r × (1-exp) × φ_hat) × P_SCm × E_react × Heaviside × quasi'
+        },
+        example_calculations: [
+            {
+                scenario: 't=0 days (initial)',
+                kappa: 0.0005,
+                E_react: '1.000e46 J',
+                decay_fraction: 1.0,
+                Um: '≈2.28e65 J/m³',
+                description: 'Initial state - full reactive energy, no decay yet'
+            },
+            {
+                scenario: 't=200 days (~6.6 months)',
+                kappa: 0.0005,
+                E_react: '≈9.05e45 J',
+                decay_fraction: 0.9048,
+                Um: '≈2.06e65 J/m³',
+                description: 'After 200 days, ~90.5% reactivity remains (~9.5% decay)'
+            },
+            {
+                scenario: 't=1000 days (~2.7 years)',
+                kappa: 0.0005,
+                E_react: '≈6.07e45 J',
+                decay_fraction: 0.6065,
+                Um: '≈1.38e65 J/m³',
+                description: 'After 1000 days, ~60.7% reactivity remains (~39.3% decay)'
+            },
+            {
+                scenario: 't=2000 days (~5.5 years, 1/κ timescale)',
+                kappa: 0.0005,
+                E_react: '≈3.68e45 J',
+                decay_fraction: 0.3679,
+                Um: '≈8.39e64 J/m³',
+                description: 'After 2000 days (1 timescale), ~36.8% reactivity remains (1/e decay)'
+            },
+            {
+                scenario: 't=4000 days (~11 years, 2 timescales)',
+                kappa: 0.0005,
+                E_react: '≈1.35e45 J',
+                decay_fraction: 0.1353,
+                Um: '≈3.08e64 J/m³',
+                description: 'After 4000 days (2 timescales), ~13.5% reactivity remains (1/e² decay)'
+            }
+        ],
+        validation: {
+            kappa_day_range: [1e-5, 1e-2],
+            kappa_s_range: [1e-10, 1e-7],
+            E_react_range: [0, 1e47],
+            decay_fraction_range: [0, 1.0],
+            timescale_range: [100, 100000]
+        }
+    },
+    applications: [
+        '[SCm] reactivity decay in stellar magnetic fields',
+        'Temporal evolution of jets and AGN outflows (5-10 year timescales)',
+        'Nebular energy dissipation modeling',
+        'Binary system [SCm]-[UA] interaction loss',
+        'Galaxy merger long-term magnetic field evolution',
+        'Protostellar collapse reactivity degradation',
+        'Supernova remnant energy decay over years to decades',
+        'Multi-year astronomical observation correlation'
+    ],
+    modular_design: {
+        self_expanding: true,
+        dynamic_variables: true,
+        reactivity_decay: 'Enables κ decay rate for E_react exponential evolution',
+        physics_terms: [
+            'kappa_decay_rate',
+            'E_react_exponential',
+            'decay_fraction',
+            'timescale_calculation',
+            'Um_integration'
+        ]
+    }
+};
+
+// ===========================================================================================
+// Source114: SolarCycleFrequencyModule - Solar Cycle Frequency (ω_c) Configuration
+// ===========================================================================================
+PREDEFINED_SYSTEMS.SOLAR_CYCLE_FREQUENCY = {
+    name: 'Solar Cycle Frequency Module',
+    moduleClass: SolarCycleFrequencyModule,
+    parameters: {
+        // Universal constants
+        pi: 3.141592653589793,
+        period: 3.96e8,              // s (~12.55 years)
+        base_mu: 3.38e20,            // T·m³
+        B_j: 1e3,                    // Base magnetic field in Tesla
+        t: 0.0,                      // Time in seconds
+        
+        // Derived (computed)
+        omega_c: 1.585e-8            // rad/s (computed: 2π / period)
+    },
+    description: {
+        purpose: 'Solar Cycle Frequency Module - ω_c for periodic magnetic variations',
+        physics: `Models solar cycle periodicity with ω_c = 2π / 3.96e8 s⁻¹ ≈ 1.59e-8 rad/s
+Period: ~12.55 years (near 11-year Hale solar cycle)
+Magnetic variation: μ_j = (10³ + 0.4 sin(ω_c t)) × 3.38e20 T·m³
+Cyclic magnetic field: B_j(t) = 1000 + 0.4 sin(ω_c t) Tesla
+Applications: Solar cycle effects in jets, nebulae, stellar formation`,
+        
+        formulas: {
+            omega_c: 'ω_c = 2π / period ≈ 1.59e-8 rad/s',
+            sin_omega_c_t: 'sin(ω_c t)',
+            mu_j_example: 'μ_j = (B_j + 0.4 sin(ω_c t)) × 3.38e20 T·m³',
+            B_j_variation: 'B_j(t) = 1000 + 0.4 sin(ω_c t) Tesla',
+            period_years: 'period ≈ 12.55 years',
+            frequency_hz: 'f = ω_c / (2π) ≈ 2.52e-9 Hz'
+        },
+        
+        example_calculations: [
+            {
+                scenario: 't = 0 (solar cycle minimum/maximum)',
+                time_s: 0,
+                time_years: 0,
+                sin_omega_c_t: 0,
+                B_j_t: 1000,
+                mu_j: 3.38e23,
+                delta_mu_percent: 0,
+                notes: 'Baseline: sin(0) = 0, no variation'
+            },
+            {
+                scenario: 't = 3.14e7 s (~1 year)',
+                time_s: 3.14e7,
+                time_years: 0.995,
+                sin_omega_c_t: 0.477,
+                B_j_t: 1000.191,
+                mu_j: 3.381e23,
+                delta_mu_percent: 0.019,
+                notes: 'Small increase: sin(ω_c × 3.14e7) ≈ 0.477'
+            },
+            {
+                scenario: 't = 9.90e7 s (~3.14 years, π years)',
+                time_s: 9.90e7,
+                time_years: 3.14,
+                sin_omega_c_t: 1.0,
+                B_j_t: 1000.4,
+                mu_j: 3.381e23,
+                delta_mu_percent: 0.04,
+                notes: 'Peak: sin(ω_c t) ≈ 1, maximum magnetic field'
+            },
+            {
+                scenario: 't = 1.98e8 s (~6.28 years, half cycle)',
+                time_s: 1.98e8,
+                time_years: 6.28,
+                sin_omega_c_t: 0,
+                B_j_t: 1000,
+                mu_j: 3.38e23,
+                delta_mu_percent: 0,
+                notes: 'Midpoint: sin(π) = 0, back to baseline'
+            },
+            {
+                scenario: 't = 3.96e8 s (~12.55 years, full cycle)',
+                time_s: 3.96e8,
+                time_years: 12.55,
+                sin_omega_c_t: 0,
+                B_j_t: 1000,
+                mu_j: 3.38e23,
+                delta_mu_percent: 0,
+                notes: 'Full cycle: sin(2π) = 0, returns to initial state'
+            }
+        ],
+        
+        validation: {
+            omega_c_range: '1.0e-8 to 2.0e-8 rad/s (physical solar cycle)',
+            period_range: '3.0e8 to 5.0e8 s (9.5 to 15.8 years)',
+            B_j_range: '999.6 to 1000.4 T (±0.04% variation)',
+            mu_j_range: '3.379e23 to 3.381e23 T·m³ (±0.04% variation)',
+            sin_range: '-1 to +1 (mathematical constraint)'
+        },
+        
+        applications: [
+            'Solar cycle modeling: 11-year Hale cycle approximation',
+            'Stellar magnetic activity: Periodic field variations in stars',
+            'Jets and AGN: ~10-year timescale variability in accretion',
+            'Nebular evolution: Cyclic ionization from nearby stellar cycles',
+            'Binary systems: Magnetic reconnection events with cyclic patterns',
+            'Galaxy clusters: Long-term magnetic field oscillations',
+            'Protostellar formation: Cyclic accretion rate variations',
+            'Multi-year observations: Matching observed ~12-year periodicities'
+        ],
+        
+        modular_design: {
+            self_expanding: true,
+            dynamic_variables: true,
+            state_management: true,
+            physics_terms: 5,
+            export_import: true,
+            logging: true
+        }
+    },
+    usage_examples: [
+        {
+            description: 'Compute ω_c from period',
+            code: `const mod = new SolarCycleFrequencyModule();
+const omega_c = mod.computeOmega_c();
+console.log(\`ω_c = \${omega_c.toExponential(3)} rad/s\`);`,
+            expected_output: 'ω_c = 1.585e-8 rad/s'
+        },
+        {
+            description: 'Compute magnetic moment at t=1 year',
+            code: `const t_1yr = 3.14e7; // ~1 year in seconds
+const mu_j = mod.computeMuJExample(t_1yr);
+console.log(\`μ_j(1 yr) = \${mu_j.toExponential(3)} T·m³\`);`,
+            expected_output: 'μ_j(1 yr) = 3.381e+23 T·m³'
+        },
+        {
+            description: 'Update period and recalculate',
+            code: `mod.updateVariable('period', 3.5e8); // 11.1 years
+const new_omega_c = mod.computeOmega_c();
+console.log(\`New ω_c = \${new_omega_c.toExponential(3)} rad/s\`);`,
+            expected_output: 'New ω_c = 1.795e-8 rad/s'
+        }
+    ],
+    physics_terms: [
+        'omega_c_frequency',
+        'sin_omega_c_t',
+        'mu_j_cyclic',
+        'B_j_variation',
+        'solar_cycle_period'
+    ]
+};
+
+// Add Source115 Solar Wind Modulation system to PREDEFINED_SYSTEMS
+PREDEFINED_SYSTEMS.SOLAR_WIND_MODULATION = {
+    name: 'Solar Wind Modulation Module',
+    moduleClass: SolarWindModulationModule,
+    parameters: {
+        // Core modulation parameters
+        delta_sw: 0.01,                     // Unitless (solar wind modulation factor)
+        v_sw: 5e5,                          // m/s (solar wind velocity)
+        k_2: 1.2,                           // Coupling constant
+        
+        // Vacuum energy densities
+        rho_vac_UA: 7.09e-36,               // J/m³ (Universal Ambiance)
+        rho_vac_SCm: 7.09e-37,              // J/m³ (Superconductive Medium)
+        
+        // Solar system parameters
+        M_s: 1.989e30,                      // kg (solar mass)
+        r: 1.496e13,                        // m (distance, default = R_b)
+        R_b: 1.496e13,                      // m (heliopause at 100 AU)
+        
+        // Additional factors
+        S_r_Rb: 1.0,                        // Step function value
+        H_SCm: 1.0,                         // Superconductive Medium factor
+        E_react: 1e46,                      // J (reactive energy)
+        
+        // Derived (auto-calculated)
+        rho_sum: 7.80e-36,                  // J/m³ (ρ_vac,UA + ρ_vac,SCm)
+        modulation_factor: 5001.0           // 1 + δ_sw × v_sw
+    },
+    description: {
+        purpose: 'Models solar wind modulation factor δ_sw and its enhancement of Universal Gravity U_g2 term beyond heliopause',
+        physics: [
+            'δ_sw = 0.01 (unitless solar wind modulation factor)',
+            'Modulation Factor = 1 + δ_sw × v_sw ≈ 5001 (at v_sw = 5×10⁵ m/s)',
+            'Amplification: ~5000× enhancement of U_g2 beyond heliopause (r ≥ R_b)',
+            'Step function S(r - R_b): activates at r ≥ 1.496×10¹³ m (100 AU)',
+            'Models heliosphere dynamics, solar wind momentum/pressure effects',
+            'Critical for nebular dynamics, star formation, galactic interactions'
+        ],
+        formulas: {
+            delta_sw: 'δ_sw = 0.01 (unitless)',
+            modulation_factor: 'Mod = 1 + δ_sw × v_sw',
+            U_g2: 'U_g2 = k_2 × [(ρ_vac,UA + ρ_vac,SCm) × M_s / r²] × S(r - R_b) × (1 + δ_sw × v_sw) × H_SCm × E_react',
+            step_function: 'S(r - R_b) = 1 if r ≥ R_b, else 0',
+            amplification_ratio: 'Amplification = U_g2(with modulation) / U_g2(without modulation)',
+            modulation_percentage: 'Modulation % = ((Mod - 1) / 1) × 100'
+        }
+    },
+    examples: [
+        {
+            scenario: 'At heliopause boundary (r = R_b = 1.496×10¹³ m)',
+            parameters: { r: 1.496e13, delta_sw: 0.01, v_sw: 5e5 },
+            results: {
+                modulation_factor: 5001.0,
+                U_g2_with_mod: '≈ 1.18×10⁵³ J/m³',
+                U_g2_without_mod: '≈ 2.36×10⁴⁹ J/m³',
+                amplification: '~5000×',
+                step_function: 1,
+                modulation_percentage: '500000%'
+            },
+            interpretation: 'At heliopause, solar wind modulation creates massive ~5000× amplification of external gravity term U_g2, modeling heliosphere boundary dynamics'
+        },
+        {
+            scenario: 'Inside heliopause (r = 7.48×10¹² m, 50 AU)',
+            parameters: { r: 7.48e12, delta_sw: 0.01, v_sw: 5e5 },
+            results: {
+                modulation_factor: 5001.0,
+                U_g2_with_mod: 0,
+                U_g2_without_mod: 0,
+                amplification: 'N/A',
+                step_function: 0,
+                modulation_percentage: '500000%'
+            },
+            interpretation: 'Inside heliopause (r < R_b), step function S(r - R_b) = 0, so U_g2 = 0 regardless of modulation. Solar wind effects confined to exterior region.'
+        },
+        {
+            scenario: 'Beyond heliopause (r = 2.99×10¹³ m, 200 AU)',
+            parameters: { r: 2.99e13, delta_sw: 0.01, v_sw: 5e5 },
+            results: {
+                modulation_factor: 5001.0,
+                U_g2_with_mod: '≈ 2.95×10⁵² J/m³',
+                U_g2_without_mod: '≈ 5.90×10⁴⁸ J/m³',
+                amplification: '~5000×',
+                step_function: 1,
+                modulation_percentage: '500000%'
+            },
+            interpretation: 'Beyond heliopause at 200 AU, U_g2 decreases with r⁻² but maintains ~5000× modulation amplification. Models solar wind influence on interstellar medium.'
+        },
+        {
+            scenario: 'Increased solar wind velocity (v_sw = 7.5×10⁵ m/s)',
+            parameters: { r: 1.496e13, delta_sw: 0.01, v_sw: 7.5e5 },
+            results: {
+                modulation_factor: 7501.0,
+                U_g2_with_mod: '≈ 1.77×10⁵³ J/m³',
+                U_g2_without_mod: '≈ 2.36×10⁴⁹ J/m³',
+                amplification: '~7500×',
+                step_function: 1,
+                modulation_percentage: '750000%'
+            },
+            interpretation: 'Higher solar wind velocity (e.g., during solar maximum) increases modulation factor to ~7501, enhancing U_g2 amplification to ~7500×. Models variable heliosphere conditions.'
+        },
+        {
+            scenario: 'Decreased modulation factor (δ_sw = 0.005)',
+            parameters: { r: 1.496e13, delta_sw: 0.005, v_sw: 5e5 },
+            results: {
+                modulation_factor: 2501.0,
+                U_g2_with_mod: '≈ 5.90×10⁵² J/m³',
+                U_g2_without_mod: '≈ 2.36×10⁴⁹ J/m³',
+                amplification: '~2500×',
+                step_function: 1,
+                modulation_percentage: '250000%'
+            },
+            interpretation: 'Halving δ_sw to 0.005 reduces modulation factor to ~2501 and amplification to ~2500×. Models weaker solar wind conditions (e.g., solar minimum).'
+        },
+        {
+            scenario: 'No modulation baseline (δ_sw = 0)',
+            parameters: { r: 1.496e13, delta_sw: 0, v_sw: 5e5 },
+            results: {
+                modulation_factor: 1.0,
+                U_g2_with_mod: '≈ 2.36×10⁴⁹ J/m³',
+                U_g2_without_mod: '≈ 2.36×10⁴⁹ J/m³',
+                amplification: '1×',
+                step_function: 1,
+                modulation_percentage: '0%'
+            },
+            interpretation: 'With δ_sw = 0 (no solar wind modulation), modulation factor = 1.0 and U_g2 has no amplification. Baseline scenario for comparison.'
+        }
+    ],
+    validation: {
+        parameter_ranges: {
+            delta_sw: { min: 0, max: 0.1, typical: 0.01, unit: 'unitless' },
+            v_sw: { min: 3e5, max: 8e5, typical: 5e5, unit: 'm/s' },
+            modulation_factor: { min: 1, max: 80001, typical: 5001, unit: 'unitless' },
+            U_g2: { min: 0, max: 1e60, typical: 1e53, unit: 'J/m³' },
+            r: { min: 0, max: 1e20, typical: 1.496e13, unit: 'm' }
+        },
+        physical_constraints: [
+            'δ_sw ≥ 0 (non-negative modulation)',
+            'v_sw > 0 (positive solar wind velocity)',
+            'r ≥ 0 (non-negative distance)',
+            'S(r - R_b) ∈ {0, 1} (step function binary)',
+            'Modulation factor = 1 + δ_sw × v_sw ≥ 1',
+            'Amplification ratio = U_g2(with) / U_g2(without) ≥ 1'
+        ]
+    },
+    applications: [
+        'Heliosphere dynamics modeling (solar wind boundary interactions)',
+        'Interstellar medium interactions (solar wind momentum transfer)',
+        'Nebular dynamics (wind-driven compression, ionization)',
+        'Star formation enhancement (pressure-triggered collapse)',
+        'Galactic wind interactions (multi-scale wind coupling)',
+        'Cosmic ray modulation (solar wind shielding effects)',
+        'Planetary magnetosphere interactions (wind-magnetosphere coupling)',
+        'Stellar wind comparative studies (other stellar systems)'
+    ],
+    modular_design: {
+        self_expanding: true,
+        physics_terms: [
+            'DynamicVacuumTerm: Time-varying vacuum energy contribution',
+            'QuantumCouplingTerm: Non-local quantum effects in heliosphere',
+            'Custom terms can be added via registerDynamicTerm()'
+        ],
+        dynamic_parameters: [
+            'Can modify δ_sw, v_sw, vacuum densities at runtime',
+            'Automatic recalculation of derived quantities (modulation_factor, rho_sum)',
+            'State export/import for serialization'
+        ],
+        integration_ready: true
+    }
+};
+
+// Add Source116 Solar Wind Velocity system to PREDEFINED_SYSTEMS
+PREDEFINED_SYSTEMS.SOLAR_WIND_VELOCITY = {
+    name: 'Solar Wind Velocity Module',
+    moduleClass: SolarWindVelocityModule,
+    parameters: {
+        // Core velocity parameters
+        v_sw: 5e5,                          // m/s (solar wind velocity, 500 km/s)
+        delta_sw: 0.01,                     // Unitless (modulation factor)
+        k_2: 1.2,                           // Coupling constant
+        
+        // Vacuum energy densities
+        rho_vac_UA: 7.09e-36,               // J/m³ (Universal Ambiance)
+        rho_vac_SCm: 7.09e-37,              // J/m³ (Superconductive Medium)
+        
+        // Solar system parameters
+        M_s: 1.989e30,                      // kg (solar mass)
+        r: 1.496e13,                        // m (distance, default = R_b)
+        R_b: 1.496e13,                      // m (heliopause at 100 AU)
+        
+        // Additional factors
+        S_r_Rb: 1.0,                        // Step function value
+        H_SCm: 1.0,                         // Superconductive Medium factor
+        E_react: 1e46,                      // J (reactive energy)
+        
+        // Derived (auto-calculated)
+        rho_sum: 7.80e-36,                  // J/m³ (ρ_vac,UA + ρ_vac,SCm)
+        modulation_factor: 5001.0           // 1 + δ_sw × v_sw
+    },
+    description: {
+        purpose: 'Models solar wind velocity v_sw and its role in modulating Universal Gravity U_g2 term beyond heliopause',
+        physics: [
+            'v_sw = 5×10⁵ m/s (500 km/s, typical solar wind speed at 1 AU and beyond)',
+            'Modulation Factor = 1 + δ_sw × v_sw ≈ 5001 (with δ_sw = 0.01)',
+            'Amplification: ~5000× enhancement of U_g2 beyond heliopause',
+            'Step function S(r - R_b): activates at r ≥ 1.496×10¹³ m (100 AU)',
+            'Solar wind momentum/pressure creates dynamic heliosphere boundary',
+            'Velocity variations: slow wind (300-400 km/s), fast wind (500-800 km/s), solar max (900+ km/s)'
+        ],
+        formulas: {
+            v_sw: 'v_sw = 5×10⁵ m/s (500 km/s)',
+            v_sw_kms: 'v_sw (km/s) = v_sw / 1000',
+            modulation_factor: 'Mod = 1 + δ_sw × v_sw',
+            U_g2: 'U_g2 = k_2 × [(ρ_vac,UA + ρ_vac,SCm) × M_s / r²] × S(r - R_b) × (1 + δ_sw × v_sw) × H_SCm × E_react',
+            step_function: 'S(r - R_b) = 1 if r ≥ R_b, else 0',
+            amplification_ratio: 'Amplification = U_g2(with v_sw) / U_g2(without v_sw)',
+            velocity_variation: 'U_g2(v_sw_new) computed with updated velocity'
+        }
+    },
+    examples: [
+        {
+            scenario: 'Standard solar wind at heliopause (v_sw = 500 km/s)',
+            parameters: { r: 1.496e13, v_sw: 5e5, delta_sw: 0.01 },
+            results: {
+                v_sw_ms: '5.00×10⁵ m/s',
+                v_sw_kms: '500 km/s',
+                modulation_factor: 5001.0,
+                U_g2_with_sw: '≈ 4.16×10¹⁸ J/m³',
+                U_g2_without_sw: '≈ 8.32×10¹⁴ J/m³',
+                amplification: '~5000×',
+                step_function: 1
+            },
+            interpretation: 'At typical solar wind speed (500 km/s) at heliopause, modulation creates ~5000× amplification of U_g2, modeling heliosphere boundary dynamics'
+        },
+        {
+            scenario: 'Slow solar wind (v_sw = 300 km/s)',
+            parameters: { r: 1.496e13, v_sw: 3e5, delta_sw: 0.01 },
+            results: {
+                v_sw_ms: '3.00×10⁵ m/s',
+                v_sw_kms: '300 km/s',
+                modulation_factor: 3001.0,
+                U_g2_with_sw: '≈ 2.50×10¹⁸ J/m³',
+                U_g2_without_sw: '≈ 8.32×10¹⁴ J/m³',
+                amplification: '~3000×',
+                step_function: 1
+            },
+            interpretation: 'During slow wind conditions (solar minimum), reduced velocity (300 km/s) decreases modulation to ~3001, yielding ~3000× amplification'
+        },
+        {
+            scenario: 'Fast solar wind (v_sw = 700 km/s)',
+            parameters: { r: 1.496e13, v_sw: 7e5, delta_sw: 0.01 },
+            results: {
+                v_sw_ms: '7.00×10⁵ m/s',
+                v_sw_kms: '700 km/s',
+                modulation_factor: 7001.0,
+                U_g2_with_sw: '≈ 5.83×10¹⁸ J/m³',
+                U_g2_without_sw: '≈ 8.32×10¹⁴ J/m³',
+                amplification: '~7000×',
+                step_function: 1
+            },
+            interpretation: 'During fast wind conditions (coronal holes, solar streams), increased velocity (700 km/s) boosts modulation to ~7001 and amplification to ~7000×'
+        },
+        {
+            scenario: 'Solar maximum extreme wind (v_sw = 900 km/s)',
+            parameters: { r: 1.496e13, v_sw: 9e5, delta_sw: 0.01 },
+            results: {
+                v_sw_ms: '9.00×10⁵ m/s',
+                v_sw_kms: '900 km/s',
+                modulation_factor: 9001.0,
+                U_g2_with_sw: '≈ 7.49×10¹⁸ J/m³',
+                U_g2_without_sw: '≈ 8.32×10¹⁴ J/m³',
+                amplification: '~9000×',
+                step_function: 1
+            },
+            interpretation: 'During solar maximum with extreme wind speeds (900 km/s), modulation reaches ~9001, creating ~9000× amplification. Models peak heliosphere dynamics.'
+        },
+        {
+            scenario: 'Inside heliopause (r = 50 AU, any v_sw)',
+            parameters: { r: 7.48e12, v_sw: 5e5, delta_sw: 0.01 },
+            results: {
+                v_sw_ms: '5.00×10⁵ m/s',
+                v_sw_kms: '500 km/s',
+                modulation_factor: 5001.0,
+                U_g2_with_sw: 0,
+                U_g2_without_sw: 0,
+                amplification: 'N/A',
+                step_function: 0
+            },
+            interpretation: 'Inside heliopause (r < R_b), step function S(r - R_b) = 0, so U_g2 = 0 regardless of v_sw. Solar wind effects confined to exterior.'
+        },
+        {
+            scenario: 'Beyond heliopause (r = 200 AU)',
+            parameters: { r: 2.99e13, v_sw: 5e5, delta_sw: 0.01 },
+            results: {
+                v_sw_ms: '5.00×10⁵ m/s',
+                v_sw_kms: '500 km/s',
+                modulation_factor: 5001.0,
+                U_g2_with_sw: '≈ 1.04×10¹⁸ J/m³',
+                U_g2_without_sw: '≈ 2.08×10¹⁴ J/m³',
+                amplification: '~5000×',
+                step_function: 1
+            },
+            interpretation: 'At 200 AU beyond heliopause, U_g2 decreases by r⁻² but maintains ~5000× modulation amplification. Models solar wind influence on local interstellar medium.'
+        }
+    ],
+    validation: {
+        parameter_ranges: {
+            v_sw: { min: 2e5, max: 1e6, typical: 5e5, unit: 'm/s', note: '200-1000 km/s observed range' },
+            v_sw_kms: { min: 200, max: 1000, typical: 500, unit: 'km/s', note: 'Convenient units' },
+            modulation_factor: { min: 1, max: 10001, typical: 5001, unit: 'unitless' },
+            U_g2: { min: 0, max: 1e60, typical: 4e18, unit: 'J/m³' },
+            r: { min: 0, max: 1e20, typical: 1.496e13, unit: 'm' }
+        },
+        physical_constraints: [
+            'v_sw > 0 (positive solar wind velocity)',
+            'r ≥ 0 (non-negative distance)',
+            'S(r - R_b) ∈ {0, 1} (step function binary)',
+            'Modulation factor = 1 + δ_sw × v_sw ≥ 1',
+            'Amplification ratio = U_g2(with v_sw) / U_g2(without v_sw) ≥ 1',
+            'Typical v_sw range: 300-900 km/s (3-9×10⁵ m/s)'
+        ]
+    },
+    applications: [
+        'Heliosphere dynamics modeling (solar wind boundary interactions)',
+        'Solar wind velocity variation studies (solar minimum vs maximum)',
+        'Interstellar medium coupling (wind momentum transfer)',
+        'Nebular compression modeling (wind-driven shocks)',
+        'Star formation triggering (pressure waves from stellar winds)',
+        'Cosmic ray modulation (velocity-dependent shielding)',
+        'Planetary magnetosphere studies (wind-magnetosphere coupling)',
+        'Comparative stellar wind studies (other stellar systems)',
+        'Space weather forecasting (velocity-dependent impacts)',
+        'Voyager heliosphere crossing analysis (termination shock dynamics)'
+    ],
+    modular_design: {
+        self_expanding: true,
+        physics_terms: [
+            'DynamicVacuumTerm: Time-varying vacuum energy contribution',
+            'QuantumCouplingTerm: Non-local quantum effects in solar wind dynamics',
+            'Custom terms can be added via registerDynamicTerm()'
+        ],
+        dynamic_parameters: [
+            'Can modify v_sw, δ_sw, vacuum densities at runtime',
+            'Automatic recalculation of derived quantities (modulation_factor, rho_sum, v_sw in km/s)',
+            'Velocity variation studies via computeVelocityVariation()',
+            'State export/import for serialization'
+        ],
+        integration_ready: true
+    }
+};
+
+// ===========================================================================================
+// PREDEFINED_SYSTEMS.STELLAR_MASS - Stellar/Planetary Mass (M_s) UQFF Configuration
+// ===========================================================================================
+PREDEFINED_SYSTEMS.STELLAR_MASS = {
+    description: {
+        purpose: 'Models stellar/planetary mass M_s and its role in scaling gravitational fields via M_s/r² in U_g1 (internal) and U_g2 (external) terms',
+        
+        physics: `
+            • M_s = 1.989×10³⁰ kg (1 M_☉ for Sun) - central stellar/planetary mass
+            • M_s / r² scaling drives gravity strength with distance
+            • At r = R_b = 1.496×10¹³ m: M_s/r² ≈ 8.89×10³ kg/m²
+            • U_g1 (internal dipole): k₁ × ρ_vac × (M_s/r²) × E_react
+            • U_g2 (outer bubble): k₂ × ρ_vac × (M_s/r²) × S(r-R_b) × (1+δ_sw v_sw) × H_SCm × E_react
+            • U_g2 at R_b ≈ 1.18×10⁵³ J/m³ for Sun
+            • Mass ranges: planetary (Earth ~6×10²⁴ kg, Jupiter ~2×10²⁷ kg) to stellar (0.1-100 M_☉)
+            • U_g1/U_g2 ratio ≈ 1.25 (coupling ratio k₁/k₂ = 1.5/1.2)
+            • Inverse square law: gravity ∝ M_s/r²
+        `,
+        
+        formulas: {
+            M_s: 'M_s = 1.989×10³⁰ kg (1 M_☉)',
+            M_s_Msun: 'M_s,Msun = M_s / M_☉',
+            M_s_over_r2: 'M_s/r² (kg/m²) - mass scaling factor',
+            U_g1: 'U_g1 = k₁ × (ρ_vac,UA + ρ_vac,SCm) × (M_s/r²) × E_react',
+            U_g2: 'U_g2 = k₂ × (ρ_vac,UA + ρ_vac,SCm) × (M_s/r²) × S(r-R_b) × (1+δ_sw×v_sw) × H_SCm × E_react',
+            step_function: 'S(r - R_b) = 1 if r ≥ R_b, else 0',
+            gravity_ratio: 'U_g1/U_g2 = k₁/k₂ = 1.5/1.2 ≈ 1.25',
+            mass_scaling: 'U_g2(M_scaled) / U_g2(M_original) = M_scaled / M_original'
+        }
+    },
+    
+    parameters: {
+        // Core stellar mass parameter
+        M_s: 1.989e30,                    // kg (1 M_☉ for Sun)
+        M_sun: 1.989e30,                  // kg (solar mass reference)
+        
+        // Coupling constants
+        k_1: 1.5,                         // Internal dipole coupling
+        k_2: 1.2,                         // Outer bubble coupling
+        
+        // Vacuum energy densities
+        rho_vac_UA: 7.09e-36,             // J/m³ (UA component)
+        rho_vac_SCm: 7.09e-37,            // J/m³ (SCm component)
+        rho_sum: 7.80e-36,                // J/m³ (sum)
+        
+        // Spatial parameters
+        r: 1.496e13,                      // m (example at R_b)
+        R_b: 1.496e13,                    // m (100 AU heliopause)
+        
+        // Solar wind modulation
+        delta_sw: 0.01,                   // Unitless modulation factor
+        v_sw: 5e5,                        // m/s (500 km/s)
+        swirl_factor: 5001.0,             // 1 + δ_sw × v_sw
+        
+        // Other factors
+        H_SCm: 1.0,                       // SCm penetration
+        E_react: 1e46,                    // J (reactive energy)
+        
+        // Derived values
+        M_s_over_r2: 8.89e3,              // kg/m² at R_b
+        U_g1_at_Rb: 1.48e53,              // J/m³
+        U_g2_at_Rb: 1.18e53,              // J/m³
+        gravity_ratio: 1.25               // U_g1/U_g2
+    },
+    
+    examples: [
+        {
+            scenario: 'Solar mass at heliopause (R_b = 100 AU)',
+            M_s: 1.989e30,                // kg (1 M_☉)
+            M_s_Msun: 1.0,                // M_☉
+            r: 1.496e13,                  // m
+            M_s_over_r2: 8.89e3,          // kg/m²
+            U_g1: 1.48e53,                // J/m³
+            U_g2: 1.18e53,                // J/m³
+            ratio: 1.25,
+            description: 'Standard solar mass gravity at heliopause boundary'
+        },
+        {
+            scenario: 'Solar mass at 1 AU (Earth orbit)',
+            M_s: 1.989e30,                // kg (1 M_☉)
+            r: 1.496e11,                  // m (1 AU)
+            M_s_over_r2: 8.89e7,          // kg/m² (10000× stronger)
+            U_g1: 1.48e57,                // J/m³
+            U_g2: 0.0,                    // J/m³ (S=0, inside R_b)
+            description: 'Solar mass at Earth orbit - only internal U_g1 active'
+        },
+        {
+            scenario: 'Jupiter mass (0.001 M_☉) at R_b',
+            M_s: 1.898e27,                // kg (≈0.001 M_☉)
+            M_s_Msun: 0.000955,           // M_☉
+            r: 1.496e13,                  // m
+            M_s_over_r2: 8.48,            // kg/m²
+            U_g1: 1.41e48,                // J/m³ (1000× weaker)
+            U_g2: 1.13e48,                // J/m³
+            scaling: 0.001,
+            description: 'Jovian mass scales gravity ~1000× weaker than solar'
+        },
+        {
+            scenario: 'Massive star (10 M_☉) at R_b',
+            M_s: 1.989e31,                // kg (10 M_☉)
+            M_s_Msun: 10.0,               // M_☉
+            r: 1.496e13,                  // m
+            M_s_over_r2: 8.89e4,          // kg/m² (10× stronger)
+            U_g1: 1.48e54,                // J/m³
+            U_g2: 1.18e54,                // J/m³
+            scaling: 10.0,
+            description: 'Massive star scales gravity 10× stronger linearly with mass'
+        },
+        {
+            scenario: 'Solar mass at 10 AU',
+            M_s: 1.989e30,                // kg (1 M_☉)
+            r: 1.496e12,                  // m (10 AU)
+            M_s_over_r2: 8.89e5,          // kg/m² (100× stronger)
+            U_g1: 1.48e55,                // J/m³
+            U_g2: 0.0,                    // J/m³ (inside R_b)
+            description: 'Inverse square law: r² scaling at 10 AU vs 100 AU'
+        },
+        {
+            scenario: 'Earth mass at 1 AU',
+            M_s: 5.972e24,                // kg (Earth)
+            M_s_Msun: 3.0e-6,             // M_☉
+            r: 1.496e11,                  // m
+            M_s_over_r2: 2.67e2,          // kg/m²
+            U_g1: 4.44e51,                // J/m³
+            U_g2: 0.0,                    // J/m³
+            description: 'Planetary mass at orbital radius - weak gravity field'
+        }
+    ],
+    
+    validation: {
+        parameter_ranges: {
+            M_s: { min: 1e24, max: 1e32, unit: 'kg', description: 'Earth mass to 50 M_☉' },
+            M_s_Msun: { min: 5e-7, max: 50, unit: 'M_☉', description: 'Planetary to massive stellar' },
+            M_s_over_r2: { min: 1e-2, max: 1e10, unit: 'kg/m²', description: 'Gravity scaling factor' },
+            r: { min: 1e9, max: 1e17, unit: 'm', description: '0.01 AU to 1000 AU' },
+            U_g1: { min: 1e40, max: 1e60, unit: 'J/m³', description: 'Internal gravity energy' },
+            U_g2: { min: 0, max: 1e60, unit: 'J/m³', description: 'External gravity energy' },
+            gravity_ratio: { min: 0.5, max: 2.0, unit: 'dimensionless', description: 'U_g1/U_g2 coupling ratio' }
+        },
+        
+        physical_constraints: [
+            'M_s must be positive',
+            'Mass scaling is linear: U_g ∝ M_s',
+            'Inverse square law: U_g ∝ 1/r²',
+            'U_g2 = 0 when r < R_b (step function)',
+            'U_g1/U_g2 ratio depends only on k₁/k₂',
+            'Stellar masses: 0.08-100 M_☉ typical',
+            'Planetary masses: Earth (1 M_⊕) to Jupiter (318 M_⊕)',
+            'Mass-to-gravity scaling validated for solar system'
+        ]
+    },
+    
+    applications: [
+        'Stellar gravity field modeling (main sequence to massive stars)',
+        'Planetary system dynamics (terrestrial to gas giant masses)',
+        'Binary star systems and mass transfer',
+        'Stellar evolution and mass loss processes',
+        'Accretion disk mass distribution',
+        'Nebular collapse and star formation (mass-dependent gravity)',
+        'Galactic dynamics with stellar mass distribution',
+        'Gravitational lensing by stellar masses',
+        'Planetary migration in protoplanetary disks',
+        'Mass-radius relationships in stellar structure',
+        'Supernova progenitor mass determination',
+        'Exoplanet host star mass characterization',
+        'Tidal interactions in close binary systems',
+        'Mass segregation in star clusters',
+        'Gravitational microlensing by stellar objects'
+    ],
+    
+    module_config: {
+        self_expanding: true,
+        dynamic_terms: [
+            'DynamicVacuumTerm - time-varying vacuum energy',
+            'QuantumCouplingTerm - non-local quantum effects',
+            'User-defined terms via registerDynamicTerm()'
+        ],
+        state_management: 'Full export/import via JSON serialization',
+        variable_updates: 'Runtime parameter modification with derived variable auto-update',
+        logging: 'Optional debug output for all operations',
+        learning: 'Adaptive parameter tuning with configurable learning rate'
+    }
+};
 
 
 
@@ -14238,4 +15335,683 @@ Scales U_m magnetic energy density contribution to UQFF Master Equation`,
 
 
 
+
+
+
+
+
+
+
+// ===========================================================================================
+// PREDEFINED_SYSTEMS.STELLAR_ROTATION - Stellar/Planetary Rotation Rate (ω_s) UQFF Configuration
+// ===========================================================================================
+PREDEFINED_SYSTEMS.STELLAR_ROTATION = {
+    name: 'Stellar/Planetary Rotation Rate Module',
+    moduleClass: StellarRotationModule,
+    parameters: {
+        omega_s: 2.5e-6,                // rad/s (Sun's equatorial rotation rate)
+        k_3: 1.8,                       // U_g3 coupling constant
+        lambda_i: 1.0,                  // U_i inertia coupling
+        B_j: 1e3,                       // T (Tesla)
+        P_core: 1.0,                    // Unitless
+        E_react: 1e46,                  // J
+        rho_vac_SCm: 7.09e-37,          // J/m
+        rho_vac_UA: 7.09e-36,           // J/m
+        rho_sum: 7.80e-36,              // J/m
+        f_TRZ: 0.1,                     // Unitless
+        t: 0.0,                         // s
+        t_n: 0.0,                       // s
+        pi: Math.PI,
+        day_to_s: 86400.0               // s/day
+    },
+    derived: {
+        period_days: 29.14,             // days
+        period_seconds: 2.5133e6,       // s
+        U_g3_at_t0: 1.8e49,            // J/m
+        U_i_at_t0: 1.38e-47,           // J/m
+        U_g3_per_omega: 7.2e54,        // Js/m
+        U_i_per_omega: 5.52e-42        // Js/m
+    },
+    description: {
+        purpose: 'Models stellar/planetary rotation rate ω_s and its effects on gravitational oscillations (U_g3) and inertial resistance (U_i)',
+        physics: {
+            omega_s: 'ω_s = 2.5e-6 rad/s (Sun ~29-day period). Angular velocity of stellar/planetary spin modulating gravity and inertia.',
+            period: 'Period = 2π/ω_s  29.14 days for Sun. Jupiter ~10 hours (ω_s  1.76e-4 rad/s), Earth 24 hours (ω_s  7.27e-5 rad/s).',
+            U_g3_formula: 'U_g3 = k_3  B_j  cos(ω_stπ)  P_core  E_react. Rotational modulation of magnetic disk gravity with periodic oscillations.',
+            U_i_formula: 'U_i = λ_i  ρ_vac,SCm  ρ_vac,UA  ω_s(t)  cos(πt_n)  (1 + f_TRZ). Inertial resistance scaling linearly with ω_s.',
+            rotation_ranges: 'Slow rotators (red giants, ω_s ~ 1e-7 rad/s, months), Solar (ω_s ~ 2.5e-6 rad/s, ~29 days), Fast (pulsars, ω_s ~ 1-1000 rad/s).',
+            scaling_behavior: 'U_g3 varies as cos(ω_stπ). U_i scales linearly: doubling ω_s doubles U_i.',
+            physical_meaning: 'ω_s introduces rotational dynamics: centrifugal effects, disk formation, magnetic field generation, inertial resistance.'
+        },
+        example_calculations: [
+            { scenario: 'Solar at t=0', parameters: { omega_s: 2.5e-6, t: 0.0 }, results: { period: 29.14, U_g3: 1.8e49, U_i: 1.38e-47 } },
+            { scenario: 'Quarter period', parameters: { omega_s: 2.5e-6, t: 6.28e5 }, results: { cos_term: 0.0, U_g3: 0.0, U_i: 1.38e-47 } },
+            { scenario: 'Fast (2 solar)', parameters: { omega_s: 5.0e-6, t: 0.0 }, results: { period: 14.57, U_g3: 1.8e49, U_i: 2.76e-47 } },
+            { scenario: 'Slow (0.1 solar)', parameters: { omega_s: 2.5e-7, t: 0.0 }, results: { period: 291.4, U_g3: 1.8e49, U_i: 1.38e-48 } },
+            { scenario: 'Jupiter-like', parameters: { omega_s: 1.76e-4, t: 0.0 }, results: { period: 0.414, U_g3: 1.8e49, U_i: 9.72e-46 } },
+            { scenario: 'Earth', parameters: { omega_s: 7.27e-5, t: 0.0 }, results: { period: 1.0, U_g3: 1.8e49, U_i: 4.01e-46 } }
+        ],
+        validation: [
+            { parameter: 'omega_s', range: [1e-8, 1e3], units: 'rad/s', constraint: 'Slow giants to millisecond pulsars' },
+            { parameter: 'period', range: [0.001, 1e4], units: 'days', constraint: 'Millisecond pulsars to slow giants' },
+            { parameter: 'U_g3', range: [0, 1e50], units: 'J/m', constraint: 'Oscillates with cos(ω_stπ)' },
+            { parameter: 'U_i', range: [1e-50, 1e-40], units: 'J/m', constraint: 'Scales linearly with ω_s' }
+        ],
+        applications: [
+            'Stellar rotation dynamics', 'Planetary spin effects', 'Disk formation',
+            'Magnetic dynamos', 'Centrifugal effects', 'Gyroscopic stability',
+            'Tidal locking', 'Pulsar rotation', 'Angular momentum loss',
+            'Binary spin-up', 'Accretion disk rotation', 'Activity cycles',
+            'Neutron star inertia', 'Coriolis effects', 'Rotational distortion'
+        ]
+    },
+    modular_design: {
+        self_expanding: true,
+        dynamic_terms_supported: true,
+        physics_terms_count: 2,
+        can_register_new_terms: true,
+        runtime_parameter_modification: true,
+        state_export_import: true
+    }
+};
+
+// ===========================================================================================
+// PREDEFINED_SYSTEMS.SGR1745_MAGNETAR - SGR 1745-2900 Magnetar UQFF Configuration
+// ===========================================================================================
+PREDEFINED_SYSTEMS.SGR1745_MAGNETAR = {
+    name: 'SGR 1745-2900 Magnetar Module',
+    moduleClass: MagnetarSGR1745_2900,
+    parameters: {
+        G: 6.6743e-11,                  // Gravitational constant (m/kgs)
+        M: 2.7846e30,                   // 1.4 M_sun (kg)
+        r: 1e4,                         // 10 km radius (m)
+        Hz: 2.269e-18,                  // Hubble parameter H(z) (s)
+        B0: 2e10,                       // Initial B field (T)
+        B_crit: 1e11,                   // Critical B field (T)
+        Lambda: 1.1e-52,                // Cosmological constant (m)
+        c_light: 3e8,                   // Speed of light (m/s)
+        M_BH: 7.956e36,                 // Sgr A* mass (4e6 M_sun in kg)
+        r_BH: 2.83e16,                  // Distance to Sgr A* (m)
+        L0_W: 5e28,                     // Initial luminosity (W)
+        tau_decay: 1.104e8,             // 3.5 years decay time (s)
+        P_init: 3.76,                   // Pulse period (s)
+        rho_vac_UA: 7.09e-36,           // UA vacuum density (J/m)
+        rho_vac_SCm: 7.09e-37           // SCm vacuum density (J/m)
+    },
+    derived: {
+        ug1_base: 1.86e9,               // m/s (base gravity at 10 km)
+        f_sc: 0.8,                      // Superconductive factor (1 - B/B_crit)
+        M_mag: 1.26e43,                 // Magnetic energy (J)
+        Ug: 1.86e9,                     // UQFF gravity (m/s)
+        g_total_1yr: 1.86e9             // Total gravitational acceleration at 1 year (m/s)
+    },
+    description: {
+        purpose: 'Master Universal Gravity Equation (MUGE) for SGR 1745-2900 magnetar including ALL physics terms: gravity, expansion, BH influence, UQFF, Lambda, EM, GW, quantum, fluid, oscillatory, DM, magnetic, and decay',
+        physics: {
+            magnetar: 'SGR 1745-2900 is a magnetar (neutron star with extreme magnetic field B ~ 210 T) near Sgr A* at galactic center. M = 1.4 M_, r = 10 km, P = 3.76 s rotation period.',
+            terms: '12 comprehensive terms: (1) Base Newtonian + H(z) cosmic expansion + B field corrections, (2) BH influence from Sgr A*, (3) UQFF Ug components, (4) Lambda dark energy, (5) EM from vB, (6) GW radiation, (7) Quantum uncertainty, (8) Fluid dynamics, (9) Oscillatory waves, (10) DM + density perturbations, (11) Magnetic energy, (12) Luminosity decay',
+            f_sc: 'Superconductive factor f_sc = 1 - B/B_crit  0.8. Strong B field (210 T) approaches critical field (10 T), reducing superconductivity.',
+            time_evolution: 'Evolves over time t: B field decay (τ_B ~ 4000 yr), spin-down (τ_Ω ~ 10000 yr), luminosity decay (τ_decay = 3.5 yr exponential)'
+        },
+        applications: [
+            'Magnetar gravitational field modeling near galactic center',
+            'SGR 1745-2900 multi-physics comprehensive gravity equation',
+            'Cosmic expansion effects on compact objects',
+            'Sgr A* black hole gravitational influence on nearby magnetar',
+            'UQFF gravity with extreme magnetic fields',
+            'Dark energy Lambda contribution in strong gravity regime',
+            'Electromagnetic acceleration from rotating magnetar',
+            'Gravitational wave emission from neutron star spin-down',
+            'Quantum uncertainty effects in compact objects',
+            'Fluid dynamics in neutron star crust',
+            'Oscillatory modes and pulsations',
+            'Dark matter and density perturbations',
+            'Magnetic field energy storage and decay',
+            'X-ray luminosity decay modeling'
+        ]
+    },
+    modular_design: {
+        comprehensive_terms: 12,
+        time_dependent: true,
+        multi_physics: true,
+        runtime_parameter_modification: true
+    }
+};
+
+// ===========================================================================================
+// PREDEFINED_SYSTEMS.NGC1316 - NGC 1316 (Fornax A) Galaxy UQFF Configuration
+// ===========================================================================================
+PREDEFINED_SYSTEMS.NGC1316 = {
+    name: 'NGC 1316 (Fornax A) Galaxy Module',
+    moduleClass: NGC1316UQFFModule,
+    parameters: {
+        G: 6.6743e-11,                  // m/kgs
+        M_visible: 6.9565e41,           // kg (3.510 M_)
+        M_DM: 2.9835e41,                // kg (1.510 M_ dark matter)
+        M_total: 9.94e41,               // kg (5.010 M_ total)
+        M_BH: 1.989e38,                 // kg (10 M_ AGN central BH)
+        r: 1.42e21,                     // m (46 kpc radius)
+        z: 0.005,                       // Redshift
+        Lambda: 1.1e-52,                // m
+        c: 3e8                          // m/s
+    },
+    derived: {
+        M_merger: 1.989e40,             // kg (10 M_ spiral progenitor)
+        tau_merge: 3.156e16,            // s (1 Gyr)
+        g_base: 1e-10,                  // m/s
+        rho_dust: 1e-21                 // kg/m
+    },
+    description: {
+        purpose: 'Models NGC 1316 (Fornax A) lenticular galaxy with merger history, tidal forces, star cluster disruption, and AGN activity',
+        physics: {
+            galaxy: 'NGC 1316 is massive lenticular galaxy (510 M_) at z=0.005 with prominent merger history, dust lanes, and powerful AGN (Fornax A radio source)',
+            merger: 'Experienced recent merger ~1-2 Gyr ago with spiral galaxy (~10 M_). Tidal tails and shells visible.',
+            dark_matter: '30% visible (3.510 M_) + dark matter halo (1.510 M_)',
+            agn: 'Central supermassive black hole (10 M_) powers radio jets and lobes (Fornax A)',
+            star_clusters: 'Disruption of globular clusters through tidal interactions'
+        },
+        applications: [
+            'Post-merger galaxy dynamics and tidal effects',
+            'AGN jet propagation through galactic medium',
+            'Star cluster disruption in merging systems',
+            'Dust lane formation from spiral merger',
+            'Radio lobe expansion in galaxy clusters',
+            'Dark matter distribution in lenticular galaxies',
+            'Gravitational field evolution during mergers'
+        ]
+    },
+    modular_design: {
+        self_expanding: true,
+        dynamic_terms_supported: true,
+        runtime_parameter_modification: true,
+        merger_dynamics: true,
+        agn_modeling: true
+    }
+};
+
+// ===========================================================================================
+// PREDEFINED_SYSTEMS.V838_MON - V838 Monocerotis Light Echo UQFF Configuration
+// ===========================================================================================
+PREDEFINED_SYSTEMS.V838_MON = {
+    name: 'V838 Monocerotis Light Echo Module',
+    moduleClass: V838MonUQFFModule,
+    parameters: {
+        M_s: 1.5912e31,                 // kg (8 M_)
+        L_outburst: 2.3e38,             // W (600,000 L_)
+        rho_0: 1e-22,                   // kg/m (dust density)
+        sigma_scatter: 1e-12,           // m (dust cross-section)
+        d: 6.1e3,                       // pc (distance)
+        f_TRZ: 0.1,                     // Time-reversal factor
+        rho_vac_UA: 7.09e-36            // J/m
+    },
+    derived: {
+        echo_radius_3yr: 9.46e15,       // m (~3 light-years)
+        intensity_3yr: 1e-15,           // Normalized units
+        dust_modulation: 1.1             // Enhanced by UQFF
+    },
+    description: {
+        purpose: 'Models V838 Monocerotis light echo expansion with UQFF gravitational modulation and dust scattering',
+        physics: {
+            outburst: '2002 red nova outburst reached 600,000 L_, created expanding light echo visible for years',
+            light_echo: 'Light scattered by circumstellar dust creates expanding echo shell, radius ~ c  t',
+            uqff_modulation: 'Ug1 gravitational term modulates dust density rho_dust(t), affecting echo intensity',
+            time_reversal: 'f_TRZ factor represents time-reversal symmetry breaking in light propagation'
+        },
+        applications: [
+            'Light echo intensity evolution modeling',
+            'Dust distribution around evolved stars',
+            'Gravitational modulation of scattered light',
+            'Red nova outburst physics',
+            'Circumstellar environment mapping via light echoes'
+        ]
+    }
+};
+
+PREDEFINED_SYSTEMS.NGC1300 = {
+    name: 'NGC 1300 Barred Spiral Galaxy',
+    moduleClass: NGC1300EnhancedUQFFModule,
+    parameters: { M_visible: 1.3923e41, M_DM: 5.967e40, r: 3.63e20, z: 0.005, SFR: 6.3e19 },
+    description: { purpose: 'Barred spiral with prominent bar and star formation in arms', physics: { bar: 'Central bar drives gas inflow and star formation', sfr: '1 M_/yr in spiral arms' } }
+};
+
+PREDEFINED_SYSTEMS.COMPRESSED_RESONANCE = { name: 'Compressed/Resonance Equations', moduleClass: UQFFCompressedResonanceModule };
+PREDEFINED_SYSTEMS.NGC2264 = { name: 'NGC 2264 (Cone Nebula)', moduleClass: NGC2264UQFFModule };
+PREDEFINED_SYSTEMS.NGC346 = { name: 'NGC 346 (SMC Star Formation)', moduleClass: NGC346UQFFModule };
+PREDEFINED_SYSTEMS.NGC4676 = { name: 'NGC 4676 (Mice Galaxies)', moduleClass: NGC4676UQFFModule };
+PREDEFINED_SYSTEMS.RED_SPIDER = { name: 'Red Spider Nebula', moduleClass: RedSpiderUQFFModule };
+
+// Source80-97 Systems
+PREDEFINED_SYSTEMS.SMBH_BINARY = { name: 'SMBH Binary System', moduleClass: SMBHBinaryUQFFModule };
+PREDEFINED_SYSTEMS.NGC346_FREQ = { name: 'NGC 346 Frequency', moduleClass: NGC346FrequencyModule };
+PREDEFINED_SYSTEMS.SMBH_MSR = { name: 'SMBH MSR Mode', moduleClass: SMBHUQFFModule };
+PREDEFINED_SYSTEMS.SMBH_ADAPTIVE = { name: 'SMBH Adaptive', moduleClass: SMBHAdaptiveUQFFModule };
+PREDEFINED_SYSTEMS.LENR_CALIB = { name: 'LENR Neutron Calibration', moduleClass: LENRCalibUQFFModule };
+PREDEFINED_SYSTEMS.TAPESTRY_FREQ = { name: 'Tapestry Frequency', moduleClass: TapestryFrequencyModule };
+PREDEFINED_SYSTEMS.CRAB_FREQ = { name: 'Crab Frequency', moduleClass: CrabFrequencyModule };
+PREDEFINED_SYSTEMS.HORSESHOE = { name: 'Horseshoe Protostar', moduleClass: HorseshoeProtostarModule };
+PREDEFINED_SYSTEMS.PILLARS = { name: 'Pillars of Creation', moduleClass: PillarsCreationModule };
+PREDEFINED_SYSTEMS.HELIX = { name: 'Helix Nebula', moduleClass: HelixPNModule };
+PREDEFINED_SYSTEMS.ETA_CARINAE = { name: 'Eta Carinae Megastar', moduleClass: EtaCarinaeMegastarModule };
+PREDEFINED_SYSTEMS.CARINA = { name: 'Carina Nebula', moduleClass: CarinaNebulaModule };
+PREDEFINED_SYSTEMS.CAT_EYE = { name: 'Cat Eye Nebula', moduleClass: CatEyeNebulaModule };
+PREDEFINED_SYSTEMS.BUTTERFLY = { name: 'Butterfly Nebula', moduleClass: ButterflyNebulaModule };
+PREDEFINED_SYSTEMS.ESKIMO = { name: 'Eskimo Nebula', moduleClass: EskimoNebulaModule };
+PREDEFINED_SYSTEMS.RING = { name: 'Ring Nebula', moduleClass: RingNebulaModule };
+PREDEFINED_SYSTEMS.DUMBBELL = { name: 'Dumbbell Nebula', moduleClass: DumbbellNebulaModule };
+
+// ===========================================================================================
+// Source40-69 Module Configurations
+// ===========================================================================================
+
+// Source40: Compressed/Resonance UQFF 24 Module
+PREDEFINED_SYSTEMS.COMPRESSED_RESONANCE_24 = {
+    moduleClass: CompressedResonanceUQFF24Module,
+    description: 'Compressed and Resonance equations for systems 18-24 (Sombrero, Saturn, M16, Crab)',
+    parameters: { f_DPM: 1e11, f_THz: 1e11, f_super: 1.411e15 },
+    applications: ['nebula_dynamics', 'planetary_systems', 'supernova_remnants']
+};
+
+// Source41: Universe Diameter UQFF Module
+PREDEFINED_SYSTEMS.UNIVERSE_DIAMETER = {
+    moduleClass: UniverseDiameterUQFFModule,
+    description: 'Observable universe scale UQFF calculations (M~1e53 Msun, r~4.4e26 m)',
+    parameters: { M: 1e53 * 1.989e30, r: 4.4e26, t_Hubble: 13.8e9 * 3.156e7 },
+    applications: ['cosmology', 'large_scale_structure', 'hubble_expansion']
+};
+
+// Source42: Hydrogen Atom UQFF Module
+PREDEFINED_SYSTEMS.HYDROGEN_ATOM = {
+    moduleClass: HydrogenAtomUQFFModule,
+    description: 'Hydrogen atom UQFF at Bohr radius scale (r=5.29e-11 m)',
+    parameters: { M: 1.673e-27, r: 5.29e-11 },
+    applications: ['atomic_physics', 'quantum_mechanics', 'spectroscopy']
+};
+
+// Source43: Hydrogen P-to-E Resonance Module
+PREDEFINED_SYSTEMS.HYDROGEN_RESONANCE = {
+    moduleClass: HydrogenPToEResonanceUQFFModule,
+    description: 'Hydrogen atom proton-to-electron resonance transitions (Lyman alpha)',
+    parameters: { r: 5.29e-11, f_DPM: 1e15, f_quantum_orbital: 1e15 },
+    applications: ['spectroscopy', 'atomic_transitions', 'quantum_resonance']
+};
+
+// Source44: Lagoon Nebula UQFF Module
+PREDEFINED_SYSTEMS.LAGOON_NEBULA = {
+    moduleClass: LagoonUQFFModule,
+    description: 'Lagoon Nebula (M8) star-forming region (M~1e4 Msun, SFR~0.1 Msun/yr)',
+    parameters: { M: 1e4 * 1.989e30, SFR: 0.1 * 1.989e30, r: 1.5e19 },
+    applications: ['star_formation', 'HII_regions', 'nebula_dynamics']
+};
+
+// Source45: Spiral Supernovae UQFF Module
+PREDEFINED_SYSTEMS.SPIRAL_SUPERNOVAE = {
+    moduleClass: SpiralSupernovaeUQFFModule,
+    description: 'Spiral galaxy with supernova feedback (M~1e11 Msun, r~30 kpc)',
+    parameters: { M: 1e11 * 1.989e30, r: 9.258e20, SN_rate: 0.01 },
+    applications: ['galaxy_evolution', 'supernova_feedback', 'stellar_populations']
+};
+
+// Source46: NGC 6302 Butterfly Nebula Module
+PREDEFINED_SYSTEMS.NGC6302_BUTTERFLY = {
+    moduleClass: NGC6302UQFFModule,
+    description: 'NGC 6302 Butterfly planetary nebula bipolar outflows',
+    parameters: { M: 0.64 * 1.989e30, v_exp: 3e5, T: 2e5 },
+    applications: ['planetary_nebulae', 'stellar_death', 'bipolar_outflows']
+};
+
+// Source47: NGC 6302 Resonance Module
+PREDEFINED_SYSTEMS.NGC6302_RESONANCE = {
+    moduleClass: NGC6302ResonanceUQFFModule,
+    description: 'NGC 6302 resonance terms and spectral line analysis',
+    parameters: { f_DPM: 1e13, f_THz: 1e13, f_quantum_orbital: 1e14 },
+    applications: ['spectroscopy', 'nebular_resonance', 'emission_lines']
+};
+
+// Source48: Orion Nebula UQFF Module
+PREDEFINED_SYSTEMS.ORION_NEBULA = {
+    moduleClass: OrionUQFFModule,
+    description: 'Orion Nebula (M42) nearest massive star-forming region',
+    parameters: { M: 2e3 * 1.989e30, r: 7.7e17, SFR: 0.01 * 1.989e30 },
+    applications: ['star_formation', 'massive_stars', 'photoionization']
+};
+
+// Source49: Compressed/Resonance UQFF 34 Module
+PREDEFINED_SYSTEMS.COMPRESSED_RESONANCE_34 = {
+    moduleClass: CompressedResonanceUQFF34Module,
+    description: 'Compressed and Resonance equations for systems 34+ (extended range)',
+    parameters: { f_DPM: 1e12, f_THz: 1e12, f_super: 1e16 },
+    applications: ['high_energy_physics', 'extreme_environments', 'AGN']
+};
+
+// Source50: System Data Module
+PREDEFINED_SYSTEMS.SYSTEM_DATA = {
+    moduleClass: SystemData,
+    description: 'Dynamic system data container for multiple astrophysical systems',
+    parameters: { configurable: true },
+    applications: ['multi_system_analysis', 'comparative_studies', 'data_management']
+};
+
+// Source52: Multi-UQFF Module
+PREDEFINED_SYSTEMS.MULTI_UQFF = {
+    moduleClass: MultiUQFFModule,
+    description: 'Multi-system UQFF module supporting multiple targets (Orion, etc.)',
+    parameters: { system: 'OrionNebula', mode: 'compressed' },
+    applications: ['multi_target_analysis', 'system_comparison', 'flexible_modeling']
+};
+
+// Source54: Young Stars Outflows Module
+PREDEFINED_SYSTEMS.YOUNG_STARS_OUTFLOWS = {
+    moduleClass: YoungStarsOutflowsUQFFModule,
+    description: 'Young stellar objects with bipolar outflows (NGC 346-like)',
+    parameters: { M: 1e3 * 1.989e30, v_outflow: 2e5, SFR: 0.01 * 1.989e30 },
+    applications: ['protostar_jets', 'stellar_winds', 'accretion_disks']
+};
+
+// Source56: Big Bang Gravity UQFF Module
+PREDEFINED_SYSTEMS.BIG_BANG_GRAVITY = {
+    moduleClass: BigBangGravityUQFFModule,
+    description: 'Big Bang era gravity calculations (early universe)',
+    parameters: { t: 1e-10, rho: 1e20, T: 1e15 },
+    applications: ['cosmology', 'early_universe', 'primordial_gravity']
+};
+
+// Source57: Multi-Compressed UQFF Module
+PREDEFINED_SYSTEMS.MULTI_COMPRESSED = {
+    moduleClass: MultiCompressedUQFFModule,
+    description: 'Multi-system compressed UQFF (Magnetar SGR 1745-2900 default)',
+    parameters: { system: 'MagnetarSGR1745' },
+    applications: ['magnetar_physics', 'extreme_fields', 'neutron_stars']
+};
+
+// Source64: UFE Orb Module (Red Dwarf Reactor Plasma)
+PREDEFINED_SYSTEMS.UFE_ORB = {
+    moduleClass: UFEOrbModule,
+    description: 'Red Dwarf reactor plasma orb experiment (plasmoid dynamics)',
+    parameters: { batch: 'GENERIC' },
+    applications: ['plasma_physics', 'fusion_experiments', 'plasmoid_dynamics']
+};
+
+// Source65: Nebular UQFF Module
+PREDEFINED_SYSTEMS.NEBULAR_CLOUD = {
+    moduleClass: NebularUQFFModule,
+    description: 'Nebular cloud analysis: dust trails, pseudo-monopoles, pillars',
+    parameters: { system: 'GENERIC' },
+    applications: ['nebula_structure', 'dust_dynamics', 'star_formation_pillars']
+};
+
+// Source66: Red Dwarf UQFF Module
+PREDEFINED_SYSTEMS.RED_DWARF = {
+    moduleClass: RedDwarfUQFFModule,
+    description: 'Red Dwarf systems including LENR cells, solar corona, NGC 346',
+    parameters: { systemType: 'GENERIC' },
+    applications: ['low_mass_stars', 'LENR_physics', 'stellar_coronae']
+};
+
+// Source67: Inertia UQFF Module
+PREDEFINED_SYSTEMS.INERTIA_UNIVERSAL = {
+    moduleClass: InertiaUQFFModule,
+    description: 'Universal inertia: quantum waves, inertial operators, bosonic energy',
+    parameters: { systemType: 'UNIVERSAL_INERTIA' },
+    applications: ['inertia_physics', 'quantum_mechanics', 'field_theory']
+};
+
+// Source68: Hydrogen UQFF Module (Enhanced)
+PREDEFINED_SYSTEMS.HYDROGEN_ENHANCED = {
+    moduleClass: HydrogenUQFFModule,
+    description: 'Enhanced hydrogen atom UQFF with aether and Higgs interactions',
+    parameters: { E_aether: 1.683e-10, V: 1e-27, higgs_freq: 1.25e34 },
+    applications: ['atomic_physics', 'aether_coupling', 'higgs_mechanisms']
+};
+
+// Source69: UQFF Compression Module
+PREDEFINED_SYSTEMS.UQFF_COMPRESSION = {
+    moduleClass: UQFFCompressionModule,
+    description: 'General UQFF compression module for various systems',
+    parameters: { system: 'General' },
+    applications: ['data_compression', 'equation_simplification', 'multi_scale_physics']
+};
+
+
+// ===========================================================================================
+// Source20-39 Module Configurations
+// ===========================================================================================
+
+// Source20: NGC 2525 Galaxy Module
+PREDEFINED_SYSTEMS.NGC2525 = {
+    moduleClass: NGC2525Module,
+    description: 'NGC 2525 spiral galaxy with supernova SN 2018gv',
+    parameters: { M: 1e11 * 1.989e30, r: 1.5e21, SN_rate: 0.01 },
+    applications: ['spiral_galaxies', 'supernovae', 'galaxy_evolution']
+};
+
+// Source21: NGC 3603 Extreme Star Cluster
+PREDEFINED_SYSTEMS.NGC3603 = {
+    moduleClass: NGC3603,
+    description: 'NGC 3603 extreme young massive star cluster',
+    parameters: { M: 1e4 * 1.989e30, r: 3e17, age: 1e6 },
+    applications: ['star_clusters', 'massive_stars', 'stellar_winds']
+};
+
+// Source22: SN 1987A Supernova
+PREDEFINED_SYSTEMS.SN1987A = {
+    moduleClass: SN1987A,
+    description: 'SN 1987A supernova in Large Magellanic Cloud',
+    parameters: { progenitor_mass: 20 * 1.989e30, explosion_energy: 1e44 },
+    applications: ['supernovae', 'stellar_death', 'shock_waves']
+};
+
+// Source23: IC 1396 Elephant Trunk Nebula
+PREDEFINED_SYSTEMS.IC1396_ELEPHANT = {
+    moduleClass: IC1396ElephantTrunk,
+    description: 'IC 1396 Elephant Trunk pillar in Cepheus',
+    parameters: { length: 2e17, density: 100, temperature: 50 },
+    applications: ['dark_nebulae', 'star_formation', 'photoionization']
+};
+
+// Source24: M51 Whirlpool Galaxy
+PREDEFINED_SYSTEMS.M51_WHIRLPOOL = {
+    moduleClass: M51Whirlpool,
+    description: 'M51 Whirlpool interacting galaxy system',
+    parameters: { primary_mass: 5e10 * 1.989e30, secondary_mass: 1e10 * 1.989e30 },
+    applications: ['galaxy_interactions', 'tidal_forces', 'starburst']
+};
+
+// Source25: M16 Eagle Nebula
+PREDEFINED_SYSTEMS.M16_EAGLE = {
+    moduleClass: M16EagleNebula,
+    description: 'M16 Eagle Nebula with Pillars of Creation',
+    parameters: { gas_mass: 1e4 * 1.989e30, pillar_count: 3 },
+    applications: ['star_formation', 'HII_regions', 'stellar_feedback']
+};
+
+// Source26: M42 Orion Nebula
+PREDEFINED_SYSTEMS.M42_ORION = {
+    moduleClass: M42OrionNebula,
+    description: 'M42 Orion Nebula nearest massive star-forming region',
+    parameters: { trap_mass: 1e3 * 1.989e30, ionizing_stars: 4 },
+    applications: ['HII_regions', 'photoionization', 'protoplanetary_disks']
+};
+
+// Source27: RS Puppis Cepheid Variable
+PREDEFINED_SYSTEMS.RS_PUPPIS = {
+    moduleClass: RSPuppis,
+    description: 'RS Puppis Cepheid variable star with light echo',
+    parameters: { mass: 9 * 1.989e30, period: 41.4 * 24 * 3600 },
+    applications: ['variable_stars', 'distance_ladder', 'pulsation']
+};
+
+// Source28: NGC 602 Young Cluster
+PREDEFINED_SYSTEMS.NGC602 = {
+    moduleClass: NGC602,
+    description: 'NGC 602 young cluster in Small Magellanic Cloud',
+    parameters: { stars_count: 1000, age: 5e6, metallicity: 0.2 },
+    applications: ['star_clusters', 'low_metallicity', 'SMC']
+};
+
+// Source29: Sombrero Galaxy M104
+PREDEFINED_SYSTEMS.SOMBRERO = {
+    moduleClass: SombreroUQFFModule,
+    description: 'Sombrero Galaxy M104 with prominent dust lane',
+    parameters: { M: 1e11 * 1.989e30, r: 2.5e20, bulge_fraction: 0.8 },
+    applications: ['lenticular_galaxies', 'dust_lanes', 'SMBH']
+};
+
+// Source34: SGR 1745-2900 Magnetar (alternate)
+PREDEFINED_SYSTEMS.SGR1745_ALT = {
+    moduleClass: SGR1745UQFFModule34,
+    description: 'SGR 1745-2900 magnetar near Galactic Center (source34)',
+    parameters: { M: 1.4 * 1.989e30, B: 1e11, r: 1e4 },
+    applications: ['magnetars', 'X_ray_bursts', 'extreme_fields']
+};
+
+// Source35: Sagittarius A* SMBH
+PREDEFINED_SYSTEMS.SGRA_SMBH = {
+    moduleClass: SgrA_UQFFModule,
+    description: 'Sagittarius A* supermassive black hole',
+    parameters: { M: 4.3e6 * 1.989e30, r: 1.27e10, f_DPM: 1e9 },
+    applications: ['SMBH', 'galactic_center', 'event_horizon']
+};
+
+// Source36: Tapestry Starbirth (NGC 2014/2020)
+PREDEFINED_SYSTEMS.TAPESTRY = {
+    moduleClass: TapestryUQFFModule,
+    description: 'Tapestry of Blazing Starbirth NGC 2014/2020',
+    parameters: { M: 1000 * 1.989e30, r: 3.5e18, f_DPM: 1e11 },
+    applications: ['star_formation', 'LMC', 'ionization_fronts']
+};
+
+// Source37: Resonance Superconductive (alternate)
+PREDEFINED_SYSTEMS.RESONANCE_SC_ALT = {
+    moduleClass: ResonanceSuperconductiveUQFFModule37,
+    description: 'Resonance Superconductive UQFF (source37)',
+    parameters: { f_DPM: 1e12, f_super: 1e15 },
+    applications: ['resonance_physics', 'superconductivity', 'quantum_coupling']
+};
+
+// Source38: Compressed Resonance (alternate)
+PREDEFINED_SYSTEMS.COMPRESSED_RES_ALT = {
+    moduleClass: CompressedResonanceUQFFModule38,
+    description: 'Compressed Resonance UQFF (source38)',
+    parameters: { f_DPM: 1e12, f_THz: 1e12 },
+    applications: ['compressed_equations', 'resonance', 'field_coupling']
+};
+
+// Source39: Crab Resonance
+PREDEFINED_SYSTEMS.CRAB_RESONANCE = {
+    moduleClass: CrabResonanceUQFFModule,
+    description: 'Crab Nebula resonance physics with pulsar',
+    parameters: { M: 4.6 * 1.989e30, r: 5.2e16, f_DPM: 1e12 },
+    applications: ['pulsar_wind', 'supernova_remnants', 'resonance']
+};
+
+
+// Source70: M51 Whirlpool Galaxy
+PREDEFINED_SYSTEMS.M51_UQFF = {
+    moduleClass: M51UQFFModule,
+    description: 'M51 Whirlpool Galaxy with NGC 5195 interaction, spiral arms, SMBH',
+    parameters: { M: 1.6e11 * 1.989e30, r: 2.5e20, companion_mass: 5e10 * 1.989e30 },
+    applications: ['interacting_galaxies', 'tidal_interactions', 'spiral_structure', 'SMBH_jets']
+};
+
+// ===========================================================================================
+// Source119: Step Function Module - Outer Field Bubble S(r-R_b)
+// ===========================================================================================
+PREDEFINED_SYSTEMS.STEP_FUNCTION = {
+    name: 'Step Function Module S(r-R_b)',
+    moduleClass: StepFunctionModule,
+    description: 'Heaviside step function for outer field bubble activation at heliopause-like boundary',
+    parameters: {
+        R_b: 1.496e13,                  // m (100 AU)
+        k_2: 1.2,
+        rho_sum: 7.80e-36,              // J/m³
+        M_s: 1.989e30,                  // kg
+        r: 1.496e11                     // m (test at 1 AU)
+    },
+    applications: ['heliosphere', 'magnetosphere_boundaries', 'stellar_wind_shocks', 'interstellar_transitions']
+};
+
+// Source120: Stress-Energy Tensor Module
+PREDEFINED_SYSTEMS.STRESS_ENERGY_TENSOR = {
+    name: 'Stress-Energy Tensor Module',
+    moduleClass: StressEnergyTensorModule,
+    description: 'Stress-energy tensor T_s and metric perturbation A_μν',
+    parameters: {
+        T_s_base: 1.123e7,              // J/m³
+        eta: 1e-22                      // Perturbation coupling
+    },
+    applications: ['general_relativity', 'spacetime_curvature', 'metric_perturbations']
+};
+
+// Source121: Surface Magnetic Field Module
+PREDEFINED_SYSTEMS.SURFACE_MAGNETIC_FIELD = {
+    name: 'Surface Magnetic Field Module',
+    moduleClass: SurfaceMagneticFieldModule,
+    description: 'Stellar surface magnetic field B_s [1e-4, 0.4] T with solar cycle modulation',
+    parameters: {
+        B_s: 1e-4,                      // T (quiet Sun)
+        B_s_max: 0.4,                   // T (active Sun)
+        omega_s: 2 * Math.PI / (11 * 365.25 * 24 * 3600), // rad/s (11-year cycle)
+        M_s: 1.989e30,                  // kg
+        r: 6.96e8                       // m
+    },
+    applications: ['solar_cycle', 'stellar_magnetism', 'magnetic_strings', 'sunspot_dynamics']
+};
+
+// Source122: Surface Temperature Module
+PREDEFINED_SYSTEMS.SURFACE_TEMPERATURE = {
+    name: 'Surface Temperature Module',
+    moduleClass: SurfaceTemperatureModule,
+    description: 'Stellar surface temperature T_s=5778 K (Sun) with thermal scaling of magnetic fields',
+    parameters: {
+        T_s: 5778.0,                    // K (Sun)
+        T_s_ref: 5778.0,                // K
+        B_ref: 1e3                      // T
+    },
+    applications: ['stellar_classification', 'temperature_scaling', 'magnetic_field_models']
+};
+
+// Source123: Time-Reversal Zone Module
+PREDEFINED_SYSTEMS.TIME_REVERSAL_ZONE = {
+    name: 'Time-Reversal Zone Module',
+    moduleClass: TimeReversalZoneModule,
+    description: 'Time-reversal zone factor f_TRZ=0.1 for negentropic enhancement of U_i',
+    parameters: {
+        f_TRZ: 0.1,                     // +10% enhancement
+        lambda_i: 1.0,
+        rho_vac_SCm: 7.09e-37,          // J/m³
+        rho_vac_UA: 7.09e-36            // J/m³
+    },
+    applications: ['negentropy_modeling', 'time_asymmetry', 'vacuum_energy_extraction', 'star_formation']
+};
+
+// Source124: Ug1 Defect Module
+PREDEFINED_SYSTEMS.UG1_DEFECT = {
+    name: 'Ug1 Defect Factor Module',
+    moduleClass: Ug1DefectModule,
+    description: 'Oscillatory defect δ_def in U_g1 internal dipole gravity with ~17-year period',
+    parameters: {
+        amplitude: 0.01,                // ±1% oscillation
+        freq: 0.001,                    // day⁻¹
+        k_1: 1.5,
+        mu_s: 3.38e23,                  // T²m³
+        M_s: 1.989e30,                  // kg
+        r: 1.496e11                     // m
+    },
+    applications: ['cyclic_gravity_variations', 'stellar_internal_dynamics', 'SCm_superconductivity']
+};
+
+// Source125: Ug3 Disk Vector Module
+PREDEFINED_SYSTEMS.UG3_DISK_VECTOR = {
+    name: 'Ug3 Disk Vector Module',
+    moduleClass: Ug3DiskVectorModule,
+    description: 'Unit vector φ̂_j in disk plane for magnetic string directional geometry',
+    parameters: {
+        theta_j: 0.0,                   // rad (azimuthal angle)
+        mu_j: 3.38e23,                  // T²m³
+        r_j: 1.496e13,                  // m
+        f_Heaviside: 0.01,
+        f_quasi: 0.01
+    },
+    applications: ['disk_geometry', 'jet_collimation', 'magnetic_string_orientation', 'galactic_plane']
+};
 
