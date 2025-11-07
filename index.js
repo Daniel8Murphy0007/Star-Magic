@@ -13083,6 +13083,42 @@ const { Ug1DefectModule } = require('./source124.js');
 // Import from source125.js
 const { Ug3DiskVectorModule } = require('./source125.js');
 
+// ===========================================================================================
+// SOURCE131-162: Enhanced UQFF Modules (37 modules - SIMULATION-READY)
+// ===========================================================================================
+const ScmVelocityModule = require('./source131.js');
+const ButterflyNebulaUQFFModule = require('./source132.js');
+const CentaurusAUQFFModule = require('./source133.js');
+const Abell2256UQFFModule = require('./source134.js');
+const ASASSN14liUQFFModule = require('./source135.js');
+const CentaurusAUQFFModule136 = require('./source136.js');
+const CrabNebulaUQFFModule = require('./source137.js');
+const ElGordoUQFFModule = require('./source138.js');
+const ESO137UQFFModule = require('./source139.js');
+const IC2163UQFFModule = require('./source140.js');
+const J1610UQFFModule = require('./source141.js');
+const JupiterAuroraeUQFFModule = require('./source142.js');
+const LagoonNebulaUQFFModule = require('./source143.js');
+const LagoonNebulaUQFFModule144 = require('./source144.js');
+const M87JetUQFFModule = require('./source145.js');
+const NGC1365UQFFModule = require('./source146.js');
+const NGC2207UQFFModule = require('./source147.js');
+const RAquariiUQFFModule = require('./source148.js');
+const SgrAStarUQFFModule = require('./source149.js');
+const SPTCLJ2215UQFFModule = require('./source150.js');
+const StephanQuintetUQFFModule = require('./source151.js');
+const VelaPulsarUQFFModule = require('./source152.js');
+const Abell2256UQFFModule153 = require('./source153.js');
+const HydrogenResonanceUQFFModule = require('./source154.js');
+const UQFFBuoyancyModule = require('./source155.js');
+const UQFFBuoyancyCNBModule = require('./Source156.js');
+const UQFFBuoyancyModule157 = require('./Source157.js');
+const UQFFBuoyancyModule158 = require('./Source158.js');
+const UQFFBuoyancyModule159 = require('./Source159.js');
+const UQFFBuoyancyModule160 = require('./Source160.js');
+const UQFFBuoyancyModule161 = require('./Source161.js');
+const UQFFBuoyancyCNBModule162 = require('./Source162.js');
+
 // Export all UQFF modules
 module.exports = {
     // Core UQFF modules
@@ -13263,7 +13299,43 @@ module.exports = {
     Ug1DefectModule,
     
     // Source125 Ug3 disk vector module
-    Ug3DiskVectorModule
+    Ug3DiskVectorModule,
+    
+    // ===========================================================================================
+    // SOURCE131-162: Enhanced UQFF Modules (37 modules - SIMULATION-READY)
+    // ===========================================================================================
+    ScmVelocityModule,
+    ButterflyNebulaUQFFModule,
+    CentaurusAUQFFModule,
+    Abell2256UQFFModule,
+    ASASSN14liUQFFModule,
+    CentaurusAUQFFModule136,
+    CrabNebulaUQFFModule,
+    ElGordoUQFFModule,
+    ESO137UQFFModule,
+    IC2163UQFFModule,
+    J1610UQFFModule,
+    JupiterAuroraeUQFFModule,
+    LagoonNebulaUQFFModule,
+    LagoonNebulaUQFFModule144,
+    M87JetUQFFModule,
+    NGC1365UQFFModule,
+    NGC2207UQFFModule,
+    RAquariiUQFFModule,
+    SgrAStarUQFFModule,
+    SPTCLJ2215UQFFModule,
+    StephanQuintetUQFFModule,
+    VelaPulsarUQFFModule,
+    Abell2256UQFFModule153,
+    HydrogenResonanceUQFFModule,
+    UQFFBuoyancyModule,
+    UQFFBuoyancyCNBModule,
+    UQFFBuoyancyModule157,
+    UQFFBuoyancyModule158,
+    UQFFBuoyancyModule159,
+    UQFFBuoyancyModule160,
+    UQFFBuoyancyModule161,
+    UQFFBuoyancyCNBModule162
 };
 
 // Add Source98 Unified Field Strength system to PREDEFINED_SYSTEMS after class definition
