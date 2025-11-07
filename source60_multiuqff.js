@@ -1,6 +1,16 @@
 // Source60 Multi-UQFF Compression Module
 // JavaScript implementation of the MultiUQFFCompressionModule for compressed UQFF calculations
 // Supports 19 astrophysical systems with dynamic variable management
+// Enhanced with full 25-method self-expansion framework
+
+const { addEnhancedDynamics } = require('./enhanced_dynamics.js');
+
+// Complex number helpers
+function complexAdd(a, b) { return {re: a.re + b.re, im: a.im + b.im}; }
+function complexSub(a, b) { return {re: a.re - b.re, im: a.im - b.im}; }
+function complexMul(a, b) { return {re: a.re*b.re - a.im*b.im, im: a.re*b.im + a.im*b.re}; }
+function complexScale(a, s) { return {re: a.re*s, im: a.im*s}; }
+function toComplex(x) { return typeof x === 'object' && x.re !== undefined ? x : {re: x, im: 0}; }
 
 class MultiUQFFCompressionModule {
     constructor(system = "MagnetarSGR1745") {
@@ -8,6 +18,17 @@ class MultiUQFFCompressionModule {
         this.current_system = system;
         this.initializeConstants();
         this.setSystem(system);
+        
+        // Enhanced dynamics infrastructure
+        this.dynamicTerms = [];
+        this.dynamicParameters = new Map();
+        this.metadata = new Map();
+        this.metadata.set("enhanced", true);
+        this.metadata.set("version", "2.0.0");
+        this.metadata.set("system_name", "Multi_UQFF_Compression");
+        this.metadata.set("supported_systems", 19);
+        this.enableLogging = false;
+        this.learningRate = 0.01;
     }
 
     // Initialize universal constants
@@ -414,6 +435,51 @@ class MultiUQFFCompressionModule {
         console.log("Supports 19 astrophysical systems: MagnetarSGR1745, SagittariusA, TapestryStarbirth, Westerlund2, PillarsCreation, RingsRelativity, NGC2525, NGC3603, BubbleNebula, AntennaeGalaxies, HorseheadNebula, NGC1275, NGC1792, HubbleUltraDeepField, StudentsGuideUniverse");
         console.log("Includes modular F_env(t) environmental terms and unified H(t,z) cosmology");
     }
+    
+    // Enhanced dynamics support methods
+    setEnableLogging(enable) { this.enableLogging = enable; }
+    registerDynamicTerm(term) { this.dynamicTerms.push(term); }
+    setDynamicParameter(name, value) { this.dynamicParameters.set(name, value); }
+    getDynamicParameter(name) { return this.dynamicParameters.get(name); }
+    
+    // Clone for parallel processing
+    clone() {
+        const cloned = new MultiUQFFCompressionModule(this.current_system);
+        cloned.variables = new Map(this.variables);
+        cloned.dynamicParameters = new Map(this.dynamicParameters);
+        cloned.metadata = new Map(this.metadata);
+        cloned.enableLogging = this.enableLogging;
+        cloned.learningRate = this.learningRate;
+        return cloned;
+    }
 }
 
-module.exports = { MultiUQFFCompressionModule };
+// Domain-specific expansion methods
+const domainExpansion = {
+    expandSystemScale(massFactor, radiusFactor) {
+        if (this.variables.has("M")) this.variables.set("M", toComplex(this.variables.get("M") * massFactor));
+        if (this.variables.has("r")) this.variables.set("r", toComplex(this.variables.get("r") * radiusFactor));
+        if (this.enableLogging) console.log(`Expanded: M×${massFactor}, r×${radiusFactor}`);
+    },
+    expandMultiSystemMode(systemList) {
+        // Expand to handle multiple systems simultaneously
+        if (this.enableLogging) console.log(`Multi-system mode: ${systemList.length} systems`);
+        this.metadata.set("multi_system_mode", true);
+        this.metadata.set("active_systems", systemList);
+    },
+    expandEnvironmentalTerms(envFactors) {
+        // Scale environmental terms (wind, SN, merger, etc.)
+        const envKeys = ["v_wind", "M_SN", "M_ext"];
+        envKeys.forEach(k => {
+            if (this.variables.has(k) && envFactors[k]) {
+                const current = this.variables.get(k);
+                this.variables.set(k, toComplex(current * envFactors[k]));
+            }
+        });
+        if (this.enableLogging) console.log(`Expanded environmental terms`);
+    }
+};
+
+addEnhancedDynamics(MultiUQFFCompressionModule, "Multi_UQFF_19_Systems", domainExpansion);
+
+module.exports = MultiUQFFCompressionModule;
