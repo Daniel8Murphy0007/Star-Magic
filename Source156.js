@@ -118,6 +118,16 @@ class UQFFBuoyancyCNBModule {
   registerDynamicTerm(term) { this.dynamicTerms.push(term); }
   setDynamicParameter(name, value) { this.dynamicParameters.set(name, value); }
   getDynamicParameter(name) { return this.dynamicParameters.get(name); }
+  
+  // Clone for parallel processing
+  clone() {
+    const cloned = new UQFFBuoyancyCNBModule(this.currentSystem);
+    cloned.variables = new Map(this.variables);
+    cloned.dynamicParameters = new Map(this.dynamicParameters);
+    cloned.metadata = new Map(this.metadata);
+    cloned.enableLogging = this.enableLogging;
+    return cloned;
+  }
 }
 
 const domainExpansion = {
