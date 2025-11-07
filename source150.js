@@ -192,6 +192,18 @@ class SPTCLJ2215UQFFModule {
   getDynamicParameter(name) {
     return this.dynamicParameters.get(name);
   }
+  
+  // Clone for parallel processing
+  clone() {
+    const cloned = new SPTCLJ2215UQFFModule();
+    cloned.variables = new Map(this.variables);
+    cloned.dynamicParameters = new Map(this.dynamicParameters);
+    cloned.metadata = new Map(this.metadata);
+    cloned.enableDynamicTerms = this.enableDynamicTerms;
+    cloned.enableLogging = this.enableLogging;
+    cloned.learningRate = this.learningRate;
+    return cloned;
+  }
 }
 
 // ========== Domain-Specific Expansion Methods ==========
