@@ -11424,6 +11424,40 @@ function analyzeSGR1745_2900(timePoints = [0, 86400 * 182.5, 86400 * 365, 86400 
     };
 }
 
+// MAIN_1 UQFF Calculator Analysis (from MAIN_1.cpp)
+function analyzeMAIN1_UQFF_Calculator(timePoints = [0, 1e6, 1e7, 1e8]) {
+    console.log(`\n?? ANALYZING MAIN_1 UQFF CALCULATOR (25+ Astrophysical Systems)`);
+    console.log(`?? Based on MAIN_1.cpp comprehensive framework`);
+    
+    const calculator = new MAIN1_UQFF_Calculator();
+    const availableSystems = calculator.getAvailableSystems();
+    
+    console.log(`?? Available Systems: ${availableSystems.length}`);
+    console.log(`   Systems: ${availableSystems.slice(0, 5).join(', ')}... and ${availableSystems.length - 5} more`);
+    
+    // Use default system "ESO 137-001" for demonstration
+    const systemName = "ESO 137-001";
+    const analysis = calculator.runFullAnalysis(systemName, timePoints);
+    
+    console.log(`\n?? System: ${systemName}`);
+    console.log(`?? Time Evolution Analysis:`);
+    
+    analysis.time_evolution.forEach((point, index) => {
+        console.log(`\n--- Time Point ${index + 1}: t = ${point.time.toExponential(2)} s ---`);
+        console.log(`   F_U_Bi_i (Buoyancy): ${point.F_U_Bi_i.toExponential(4)} N/m³`);
+        console.log(`   Compressed Gravity (26-layer): ${point.compressed_gravity.toExponential(4)} N/m³`);
+        console.log(`   Net Force: ${point.net_force.toExponential(4)} N/m³`);
+    });
+    
+    return {
+        systemName: 'MAIN_1 UQFF Calculator',
+        calculator: calculator,
+        analysisResults: analysis,
+        availableSystems: availableSystems,
+        timePoints: timePoints
+    };
+}
+
 // Enhanced System Selection and Analysis
 function analyzeSystem(systemName, timePoints = [0, 86400 * 182.5, 86400 * 365]) {
     // Special handling for specialized systems - check first before PREDEFINED_SYSTEMS
@@ -11545,7 +11579,7 @@ console.log('Enhanced with MAIN_1.cpp Mathematical Frameworks');
 console.log('Integrating: 26-Layer Gravity, F_U_Bi_i, LENR, Vacuum Energy, Neutron Dynamics\n');
 
 // Demonstrate multiple astrophysical systems (enhanced with both SGR magnetars)
-const systemsToAnalyze = ['HYDROGEN_ATOM', 'VELA_PULSAR', 'MAGNETAR_SGR', 'SGR_1745_2900', 'SGR_0501_4516', 'SN_1006', 'ESO_137-001', 'SMBH_SGR_A_STAR', 'STARBIRTH_TAPESTRY', 'WESTERLUND_2', 'PILLARS_OF_CREATION', 'RINGS_OF_RELATIVITY', 'GALAXY_NGC_2525', 'NGC_3603', 'BUBBLE_NEBULA', 'ANTENNAE_GALAXIES', 'HORSEHEAD_NEBULA', 'MAIN_1', 'NGC_1275', 'HUDF_GALAXIES'];
+const systemsToAnalyze = ['HYDROGEN_ATOM', 'VELA_PULSAR', 'MAGNETAR_SGR', 'SGR_1745_2900', 'SGR_0501_4516', 'SN_1006', 'ESO_137-001', 'SMBH_SGR_A_STAR', 'STARBIRTH_TAPESTRY', 'WESTERLUND_2', 'PILLARS_OF_CREATION', 'RINGS_OF_RELATIVITY', 'GALAXY_NGC_2525', 'NGC_3603', 'BUBBLE_NEBULA', 'ANTENNAE_GALAXIES', 'HORSEHEAD_NEBULA', 'NGC_1275', 'HUDF_GALAXIES'];
 
 const timePoints = [0, 86400 * 182.5, 86400 * 365, 86400 * 365 * 5.5]; // 0, 6mo, 1yr, 5.5yr
 const allResults = [];
@@ -13084,24 +13118,18 @@ const { Ug1DefectModule } = require('./source124.js');
 const { Ug3DiskVectorModule } = require('./source125.js');
 
 // ===========================================================================================
-// SOURCE131-162: Enhanced UQFF Modules (37 modules - SIMULATION-READY)
+// MAIN_1 UQFF Calculator
+// ===========================================================================================
+const MAIN1_UQFF_Calculator = require('./main_1_uqff_calculator.js');
+
+// ===========================================================================================
+// SOURCE131-162: Enhanced UQFF Modules (SIMULATION-READY)
 // ===========================================================================================
 const ScmVelocityModule = require('./source131.js');
 const ButterflyNebulaUQFFModule = require('./source132.js');
 const CentaurusAUQFFModule = require('./source133.js');
 const Abell2256UQFFModule = require('./source134.js');
-const ASASSN14liUQFFModule = require('./source135.js');
-const CentaurusAUQFFModule136 = require('./source136.js');
-const CrabNebulaUQFFModule = require('./source137.js');
-const ElGordoUQFFModule = require('./source138.js');
-const ESO137UQFFModule = require('./source139.js');
-const IC2163UQFFModule = require('./source140.js');
-const J1610UQFFModule = require('./source141.js');
-const JupiterAuroraeUQFFModule = require('./source142.js');
-const LagoonNebulaUQFFModule = require('./source143.js');
-const LagoonNebulaUQFFModule144 = require('./source144.js');
-const M87JetUQFFModule = require('./source145.js');
-const NGC1365UQFFModule = require('./source146.js');
+// source135-146: Not yet created - reserved for future expansion
 const NGC2207UQFFModule = require('./source147.js');
 const RAquariiUQFFModule = require('./source148.js');
 const SgrAStarUQFFModule = require('./source149.js');
@@ -13124,9 +13152,6 @@ module.exports = {
     // Core UQFF modules
     M16UQFFModule,
     CrabUQFFModule,
-    SGR1745UQFFModule,
-    SGR1745FrequencyUQFFModule,
-    SgrAFrequencyUQFFModule,
     TapestryStarbirthUQFFModule,
     ResonanceSuperconductiveUQFFModule,
     CompressedResonanceUQFFModule,
@@ -13302,24 +13327,13 @@ module.exports = {
     Ug3DiskVectorModule,
     
     // ===========================================================================================
-    // SOURCE131-162: Enhanced UQFF Modules (37 modules - SIMULATION-READY)
+    // SOURCE131-162: Enhanced UQFF Modules (SIMULATION-READY)
     // ===========================================================================================
     ScmVelocityModule,
     ButterflyNebulaUQFFModule,
     CentaurusAUQFFModule,
     Abell2256UQFFModule,
-    ASASSN14liUQFFModule,
-    CentaurusAUQFFModule136,
-    CrabNebulaUQFFModule,
-    ElGordoUQFFModule,
-    ESO137UQFFModule,
-    IC2163UQFFModule,
-    J1610UQFFModule,
-    JupiterAuroraeUQFFModule,
-    LagoonNebulaUQFFModule,
-    LagoonNebulaUQFFModule144,
-    M87JetUQFFModule,
-    NGC1365UQFFModule,
+    // source135-146: Not yet created - reserved for future expansion
     NGC2207UQFFModule,
     RAquariiUQFFModule,
     SgrAStarUQFFModule,
