@@ -1,0 +1,13 @@
+---
+blank_issues_enabled: true
+contact_links:
+  - name: Email Contact
+    url: mailto:daniel.murphy00@gmail.com
+    about: |
+      For private inquiries or detailed discussions,
+      contact the author directly
+  - name: GitHub Discussions
+    url: https://github.com/Daniel8Murphy0007/Star-Magic/discussions
+    about: |
+      For general discussions and community interaction
+      (if enabled)

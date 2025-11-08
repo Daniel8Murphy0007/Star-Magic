@@ -1,0 +1,49 @@
+---
+name: Question
+description: Ask a question about the Star-Magic theoretical framework
+title: "[Question]: "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have a question about the Star-Magic framework?
+        We're here to help!
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: What would you like to know?
+      placeholder: Ask your question here
+    validations:
+      required: true
+
+  - type: dropdown
+    id: topic
+    attributes:
+      label: Topic Area
+      description: Which area does your question relate to?
+      options:
+        - Universal Gravity (Ug)
+        - SCm (Superconductive Material)
+        - Universal Aether
+        - Unified Quantum Field Equation
+        - Applications
+        - General Understanding
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: |
+        Any relevant background or what you've already explored
+      placeholder: |
+        - What sections have you read?
+        - What specifically is unclear?
+        - Your background or perspective
+    validations:
+      required: false
