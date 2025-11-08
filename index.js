@@ -13047,6 +13047,122 @@ const {
 } = require('./source4.js');
 
 // ===========================================================================================
+// Source5: Celestial Body UQFF with Self-Expanding Framework & Fluid Simulation
+// ===========================================================================================
+const {
+  PhysicsTerm: PhysicsTerm5,
+  DarkMatterHaloTerm,
+  VacuumEnergyTerm,
+  CelestialBody,
+  ResonanceParams,
+  MUGESystem,
+  FluidSolver,
+  UQFFModule5JS,
+  compute_Ug1: source5_compute_Ug1,
+  compute_Ug2: source5_compute_Ug2,
+  compute_Ug3: source5_compute_Ug3,
+  compute_Ug4: source5_compute_Ug4,
+  compute_Um: source5_compute_Um,
+  compute_Ubi: source5_compute_Ubi,
+  compute_FU: source5_compute_FU,
+  compute_compressed_MUGE: source5_compute_compressed_MUGE,
+  compute_resonance_MUGE: source5_compute_resonance_MUGE,
+  compute_aDPM,
+  compute_aTHz,
+  compute_avac_diff,
+  compute_asuper_freq,
+  compute_aaether_res,
+  compute_Ug4i,
+  compute_aquantum_freq,
+  compute_aAether_freq,
+  compute_afluid_freq,
+  compute_a_wormhole,
+  createDefaultBodies,
+  createDefaultMUGESystems
+} = require('./source5.js');
+
+// ===========================================================================================
+// Source6: 3D Graphics, Model Loading, Shader System, and Advanced UQFF Physics
+// ===========================================================================================
+const {
+  // Physical constants
+  PI: PI6,
+  c: c6,
+  G: G6,
+  Omega_g: Omega_g6,
+  Mbh: Mbh6,
+  dg: dg6,
+  // Material constants
+  v_SCm: v_SCm6,
+  rho_A: rho_A6,
+  rho_sw: rho_sw6,
+  v_sw: v_sw6,
+  QA: QA6,
+  Qs: Qs6,
+  // Coupling constants
+  kappa: kappa6,
+  alpha: alpha6,
+  gamma: gamma6,
+  delta_sw: delta_sw6,
+  epsilon_sw: epsilon_sw6,
+  delta_def: delta_def6,
+  HSCm: HSCm6,
+  UUA: UUA6,
+  eta: eta6,
+  // Advanced constants
+  k1: k16,
+  k2: k26,
+  k3: k36,
+  k4: k46,
+  beta_i: beta_i6,
+  rho_v: rho_v6,
+  C_concentration: C_concentration6,
+  f_feedback: f_feedback6,
+  num_strings: num_strings6,
+  Ts00: Ts006,
+  g_mu_nu: g_mu_nu6,
+  // Classes
+  CelestialBody: CelestialBody6,
+  ThreeDObject,
+  ToolPath,
+  SimulationEntity,
+  MeshData,
+  Shader,
+  Camera,
+  SIMPlugin,
+  PhysicsTerm: PhysicsTerm6,
+  DarkMatterHaloTerm: DarkMatterHaloTerm6,
+  VacuumEnergyTerm: VacuumEnergyTerm6,
+  UQFFModule6JS,
+  // Helper functions
+  stepFunction: stepFunction6,
+  computeEreact,
+  computeMuS,
+  computeGradMsR,
+  computeBj,
+  computeOmegaST,
+  computeMuJ,
+  // Physics functions
+  computeUg1: source6_computeUg1,
+  computeUg2: source6_computeUg2,
+  computeUg3: source6_computeUg3,
+  computeUm: source6_computeUm,
+  computeUg4: source6_computeUg4,
+  computeUbi: source6_computeUbi,
+  computeAMuNu: source6_computeAMuNu,
+  computeFU: source6_computeFU,
+  // 3D & Model functions
+  loadOBJ,
+  exportOBJ,
+  loadTexture,
+  // Simulation functions
+  simulateQuasarJet: source6_simulateQuasarJet,
+  printSummaryStats,
+  loadBodies: source6_loadBodies,
+  getDefaultBodies
+} = require('./source6.js');
+
+// ===========================================================================================
 // Source40-69: Additional Physics Modules
 // ===========================================================================================
 const { CompressedResonanceUQFF24Module } = require('./source40.js');
