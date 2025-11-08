@@ -13022,6 +13022,31 @@ const { DumbbellNebulaModule } = require('./source96.js');
 const { Source97UQFFModule } = require('./source97.js');
 
 // ===========================================================================================
+// Source4: Unified Field Theory with 2.0-Enhanced Self-Expanding Framework
+// ===========================================================================================
+const { 
+  PhysicsTerm: Source4PhysicsTerm,
+  DynamicVacuumTerm: Source4DynamicVacuumTerm, 
+  QuantumCouplingTerm: Source4QuantumCouplingTerm,
+  UQFFModule4JS,
+  CelestialBody: Source4CelestialBody,
+  FluidSolver: Source4FluidSolver,
+  ResonanceParams: Source4ResonanceParams,
+  MUGESystem: Source4MUGESystem,
+  compute_Ug1: source4_compute_Ug1,
+  compute_Ug2: source4_compute_Ug2,
+  compute_Ug3: source4_compute_Ug3,
+  compute_Ug4: source4_compute_Ug4,
+  compute_Ubi: source4_compute_Ubi,
+  compute_Um: source4_compute_Um,
+  compute_A_mu_nu: source4_compute_A_mu_nu,
+  compute_FU: source4_compute_FU,
+  compute_compressed_MUGE: source4_compute_compressed_MUGE,
+  compute_resonance_MUGE: source4_compute_resonance_MUGE,
+  simulate_quasar_jet: source4_simulate_quasar_jet
+} = require('./source4.js');
+
+// ===========================================================================================
 // Source40-69: Additional Physics Modules
 // ===========================================================================================
 const { CompressedResonanceUQFF24Module } = require('./source40.js');
@@ -13149,12 +13174,46 @@ const UQFFBuoyancyCNBModule162 = require('./Source162.js');
 
 // Export all UQFF modules
 module.exports = {
+    // ===========================================================================================
+    // Source4: Unified Field Theory with 2.0-Enhanced Self-Expanding Framework
+    // ===========================================================================================
+    // Enhancement Framework Classes
+    Source4PhysicsTerm,
+    Source4DynamicVacuumTerm,
+    Source4QuantumCouplingTerm,
+    UQFFModule4JS,
+    
+    // Source4 Core Classes
+    Source4CelestialBody,
+    Source4FluidSolver,
+    Source4ResonanceParams,
+    Source4MUGESystem,
+    
+    // Source4 Unified Field Functions
+    source4_compute_Ug1,
+    source4_compute_Ug2,
+    source4_compute_Ug3,
+    source4_compute_Ug4,
+    source4_compute_Ubi,
+    source4_compute_Um,
+    source4_compute_A_mu_nu,
+    source4_compute_FU,
+    
+    // Source4 MUGE Functions
+    source4_compute_compressed_MUGE,
+    source4_compute_resonance_MUGE,
+    
+    // Source4 Simulation
+    source4_simulate_quasar_jet,
+    
+    // ===========================================================================================
     // Core UQFF modules
+    // ===========================================================================================
     M16UQFFModule,
     CrabUQFFModule,
-    TapestryStarbirthUQFFModule,
-    ResonanceSuperconductiveUQFFModule,
-    CompressedResonanceUQFFModule,
+    StarbirthTapestry,
+    ResonanceSuperconductiveUQFFModule37,
+    CompressedResonanceUQFFModule38,
     CrabResonanceUQFFModule,
     CompressedResonanceUQFF24Module,
     
@@ -15988,6 +16047,76 @@ PREDEFINED_SYSTEMS.CRAB_RESONANCE = {
     description: 'Crab Nebula resonance physics with pulsar',
     parameters: { M: 4.6 * 1.989e30, r: 5.2e16, f_DPM: 1e12 },
     applications: ['pulsar_wind', 'supernova_remnants', 'resonance']
+};
+
+// ===========================================================================================
+// Source4: Unified Field Theory with 2.0-Enhanced Self-Expanding Framework
+// Complete implementation of FU equation, MUGE (compressed & resonance), Navier-Stokes
+// Includes PhysicsTerm plugin system, auto-calibration, adaptive updates, state persistence
+// ===========================================================================================
+PREDEFINED_SYSTEMS.SOURCE4_UNIFIED_FIELD = {
+    moduleClass: UQFFModule4JS,
+    description: 'Source4 Unified Field Theory with self-expanding 2.0 framework - FU, MUGE, quasar jets',
+    parameters: { 
+        mass: 1e30,                    // kg (default stellar mass)
+        radius: 1e6,                   // m (default stellar radius)
+        temperature: 1e6,              // K (default stellar temperature)
+        magnetic_field: 1e-5,          // T (default magnetic field)
+        M_bh: 8.15e36,                 // kg (Sgr A* black hole mass)
+        d_g: 8.178e3,                  // pc (galactic center distance)
+        Omega_g: 7.3e-16,              // rad/s (galactic spin rate)
+        v_SCm: 0.99 * 3e8,             // m/s (SCm relativistic velocity)
+        rho_A: 1e-23,                  // kg/m³ (aether density)
+        rho_v: 6e-27                   // kg/m³ (vacuum energy density)
+    },
+    functions: {
+        compute_Ug1: source4_compute_Ug1,
+        compute_Ug2: source4_compute_Ug2,
+        compute_Ug3: source4_compute_Ug3,
+        compute_Ug4: source4_compute_Ug4,
+        compute_Ubi: source4_compute_Ubi,
+        compute_Um: source4_compute_Um,
+        compute_A_mu_nu: source4_compute_A_mu_nu,
+        compute_FU: source4_compute_FU,
+        compute_compressed_MUGE: source4_compute_compressed_MUGE,
+        compute_resonance_MUGE: source4_compute_resonance_MUGE,
+        simulate_quasar_jet: source4_simulate_quasar_jet
+    },
+    applications: [
+        'unified_field_equation',
+        'MUGE_compressed_resonance',
+        'quasar_jets',
+        'self_expanding_physics',
+        'dynamic_term_registration',
+        'auto_calibration',
+        'adaptive_parameter_evolution',
+        'observational_data_scaling',
+        'state_persistence',
+        'variable_history_tracking',
+        'navier_stokes_fluid_simulation',
+        'celestial_body_modeling',
+        'dark_matter_coupling',
+        'vacuum_energy_dynamics',
+        'universal_buoyancy',
+        'universal_magnetism',
+        'stress_energy_tensor',
+        'galactic_center_physics'
+    ],
+    enhancementCapabilities: {
+        selfExpanding: true,
+        dynamicTermRegistration: true,
+        autoCalibration: true,
+        adaptiveUpdates: true,
+        selfLearning: true,
+        statePersistence: true,
+        variableHistory: true,
+        observationalScaling: true,
+        customPhysicsTerms: true,
+        gradientDescent: true,
+        learningRateConfigurable: true,
+        metadataTracking: true,
+        updateCounting: true
+    }
 };
 
 
