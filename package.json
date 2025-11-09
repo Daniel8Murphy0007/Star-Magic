@@ -1,6 +1,34 @@
 {
+  "name": "star-magic-uqff",
+  "version": "2.0.0",
+  "description": "Star-Magic Unified Quantum Field Force (UQFF) - Advanced astrophysics simulation framework with 126+ modules",
+  "main": "index.js",
   "type": "commonjs",
+  "scripts": {
+    "start": "node index.js",
+    "demo": "node quick_demo.js",
+    "test": "node -c index.js && echo 'Syntax check passed!'",
+    "test:source134": "node -e \"const A2256 = require('./source134.js'); const m = new A2256(); console.log('✓ Source134 loaded:', m.getSystemName()); const report = m.generateReport(); console.log('M =', report.parameters.M.toExponential(2), 'kg');\"",
+    "integration": "node integration_check.js",
+    "check:syntax": "node -c index.js",
+    "verify": "node -e \"console.log('Verifying modules...'); const idx = require('./index.js'); console.log('✓ All modules loaded successfully');\""
+  },
+  "keywords": [
+    "astrophysics",
+    "uqff",
+    "quantum-field",
+    "galaxy-clusters",
+    "magnetars",
+    "pulsars",
+    "dark-matter",
+    "physics-simulation"
+  ],
+  "author": "Daniel T. Murphy",
+  "license": "ISC",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.68.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }

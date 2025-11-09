@@ -1,7 +1,31 @@
 {
+    // ========== AUTO-CONFIGURATION FOR STAR-MAGIC UQFF ==========
     "github.copilot.chat.agent.thinkingTool": true,
+    // Files & Editor
+    "files.associations": {
+        "*.cpp": "cpp",
+        "*.js": "javascript",
+        "source*.cpp": "cpp",
+        "Source*.cpp": "cpp"
+    },
+    "files.exclude": {
+        "**/*.exe": false,
+        "**/*.o": true,
+        "**/*.obj": true
+    },
+    // C++ Configuration
+    "C_Cpp.default.cppStandard": "c++17",
+    "C_Cpp.default.intelliSenseMode": "windows-gcc-x64",
+    "C_Cpp.default.compilerPath": "g++.exe",
+    // JavaScript/Node.js
+    "javascript.suggest.autoImports": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    // Debug Configuration
+    "debug.internalConsoleOptions": "openOnSessionStart",
+    "debug.saveBeforeStart": "allEditorsInActiveGroup",
+    "debug.openDebug": "openOnDebugBreak",
+    // Terminal Auto-Approve
     "chat.tools.terminal.autoApprove": {
-        
         "cd": true,
         "echo": true,
         "ls": true,
