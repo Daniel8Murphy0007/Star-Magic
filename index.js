@@ -19,24 +19,24 @@ const CONSTANTS = {
     SCM_DENSITY: 1e15,             // kg/mï¿½ (Superconductive Material)
     HELIOSPHERE_RADIUS: 1.496e13,  // m
     OMEGA_C: 2 * Math.PI / (11 * 365 * 86400), // Solar cycle frequency
-    
+
     // Enhanced Physical Constants from MAIN_1.cpp
     PLANCK_CONSTANT: 1.055e-34,    // h (Jï¿½s)
     SPEED_OF_LIGHT: 2.998e8,       // c (m/s)
     GRAVITATIONAL_CONSTANT: 6.674e-11, // G (mï¿½/kgï¿½sï¿½)
     BOHR_RADIUS: 0.529e-10,        // a0 (m)
-    
+
     // UQFF Specific Constants
     RHO_VAC_UA: 7.09e-36,          // Universal Aether vacuum density (J/mï¿½)
     RHO_VAC_SCM: 7.09e-37,         // SCm vacuum density (J/mï¿½) 
     HUBBLE_TIME: 13.8e9 * 365 * 86400, // t_Hubble (s)
     LAMBDA_COSMO: 1.1e-52,         // Cosmological constant (m^-2ï¿½)
-    
+
     // Experimental Integration Constants
     COLMAN_GILLESPIE_FREQ: 300,    // Hz (activation frequency)
     THZ_RESONANCE_LOW: 1.2e12,     // Hz (THz resonance lower bound)
     THZ_RESONANCE_HIGH: 1.3e12,    // Hz (THz resonance upper bound)
-    
+
     // System Specific Constants
     B_CRIT_MAGNETAR: 4.4e13,      // T (Critical magnetic field for magnetars)
     LEP_F_REL: 4.30e33             // N (Relativistic coherence force from LEP 1998)
@@ -56,7 +56,7 @@ const COUPLING = {
     gamma: 1e-22, // Aether coupling constant
     alpha: 0.0005, // Refined non-linear time decay rate
     epsilon: 0.00001, // Reciprocation decay rate (near-lossless)
-    
+
     // Enhanced F_U_Bi_i Integrand Constants from MAIN_1.cpp
     k_LENR: 1e-10,      // LENR coupling constant (N)
     k_act: 1e-6,        // Activation coupling constant (N)
@@ -68,7 +68,7 @@ const COUPLING = {
     k_conduit: 1e-30,   // Conduit coupling (N)
     k_spooky: 1e-35,    // Quantum spooky action coupling (N)
     k_phonon: 1e-15,    // Phonon coupling (N)
-    
+
     // Buoyancy Framework Constants
     k_Ub: 0.1,          // Universal buoyancy coupling
     Delta_k_eta: 7.25e8  // Buoyancy scaling factor
@@ -82,32 +82,32 @@ function calculateDipMomentumEnergy(r, layerIndex) {
     const r_i = r / layerIndex; // Layer-dependent radius
     const Q_i = layerIndex; // Quality factor scales with layer
     const SCm_i = Math.pow(layerIndex, 2); // [SCm]_i = iï¿½
-    
-    return (CONSTANTS.PLANCK_CONSTANT * CONSTANTS.SPEED_OF_LIGHT / Math.pow(r_i, 2)) 
-           * Q_i * SCm_i;
+
+    return (CONSTANTS.PLANCK_CONSTANT * CONSTANTS.SPEED_OF_LIGHT / Math.pow(r_i, 2))
+        * Q_i * SCm_i;
 }
 
 // Enhanced Universal Gravity Component 1: Internal Dipole (Ug1) - 26 Layer Implementation
 // Ug1_i = E_DPM,i / r_iï¿½ * [UA]_i * f_TRZ_i
 function calculateUg1(r, t, stellarMass = CONSTANTS.SOLAR_MASS, layers = 26) {
     let totalUg1 = 0;
-    
+
     for (let i = 1; i <= layers; i++) {
         const r_i = r / i;
         const UA_i = i; // Universal Aether scaling factor
         const f_TRZ_i = 1 / i; // TRZ frequency factor
         const E_DPM_i = calculateDipMomentumEnergy(r, i);
-        
+
         const Ug1_i = (E_DPM_i / Math.pow(r_i, 2)) * UA_i * f_TRZ_i;
         totalUg1 += Ug1_i;
     }
-    
+
     // Apply temporal modulation
-    const magneticMoment = (1e-4 + 0.4 * Math.sin(CONSTANTS.OMEGA_C * t)) 
-                          * Math.pow(CONSTANTS.SOLAR_RADIUS, 3);
+    const magneticMoment = (1e-4 + 0.4 * Math.sin(CONSTANTS.OMEGA_C * t))
+        * Math.pow(CONSTANTS.SOLAR_RADIUS, 3);
     const timeDecay = Math.exp(-COUPLING.alpha * t);
     const piCycle = Math.cos(Math.PI * t);
-    
+
     return COUPLING.k1 * totalUg1 * magneticMoment * timeDecay * piCycle;
 }
 
@@ -115,22 +115,22 @@ function calculateUg1(r, t, stellarMass = CONSTANTS.SOLAR_MASS, layers = 26) {
 // Ug2_i = E_DPM,i / r_iï¿½ * [SCm]_i * f_Um_i
 function calculateUg2(r, t, stellarMass = CONSTANTS.SOLAR_MASS, layers = 26) {
     let totalUg2 = 0;
-    
+
     for (let i = 1; i <= layers; i++) {
         const r_i = r / i;
         const SCm_i = Math.pow(i, 2); // [SCm]_i = iï¿½
         const f_Um_i = i; // Universal Magnetism frequency factor
         const E_DPM_i = calculateDipMomentumEnergy(r, i);
-        
+
         const Ug2_i = (E_DPM_i / Math.pow(r_i, 2)) * SCm_i * f_Um_i;
         totalUg2 += Ug2_i;
     }
-    
+
     // Apply heliosphere and reactor efficiency modulation
     const trappedAether = 1e-10; // Trapped Aether charge (C)
     const reactorEfficiency = Math.pow(10, 30) * Math.exp(-0.0005 * t);
     const stepFunction = r > CONSTANTS.HELIOSPHERE_RADIUS ? 1 : 0;
-    
+
     return COUPLING.k2 * totalUg2 * trappedAether * reactorEfficiency * stepFunction;
 }
 
@@ -138,24 +138,24 @@ function calculateUg2(r, t, stellarMass = CONSTANTS.SOLAR_MASS, layers = 26) {
 // Ug3_i = (h*omega_i/2)*Q_i*cos(2p*f_i*t)/r_i
 function calculateUg3(r, theta, t, layers = 26) {
     let totalUg3 = 0;
-    
+
     for (let i = 1; i <= layers; i++) {
         const r_i = r / i;
         const Q_i = i; // Quality factor
         const omega_i = 2 * Math.PI * (1e6 / i); // Layer-dependent frequency
         const f_i = omega_i / (2 * Math.PI); // Frequency for cosine term
-        
-        const Ug3_i = (CONSTANTS.PLANCK_CONSTANT * omega_i / 2) 
-                      * Q_i * Math.cos(2 * Math.PI * f_i * t) / r_i;
+
+        const Ug3_i = (CONSTANTS.PLANCK_CONSTANT * omega_i / 2)
+            * Q_i * Math.cos(2 * Math.PI * f_i * t) / r_i;
         totalUg3 += Ug3_i;
     }
-    
+
     // Apply magnetic field and reactor efficiency modulation
     const magneticField = 1e-3 + 0.4 * Math.sin(CONSTANTS.OMEGA_C * t);
     const stellarFrequency = 2.5e-6;
     const piCycles = Math.cos(stellarFrequency * t * Math.PI);
     const reactorEfficiency = Math.pow(10, 30) * Math.exp(-0.0005 * t);
-    
+
     return COUPLING.k3 * totalUg3 * magneticField * piCycles * reactorEfficiency;
 }
 
@@ -163,18 +163,18 @@ function calculateUg3(r, theta, t, layers = 26) {
 // Ug4_i = (G*M_i/r_iï¿½)*(1+a_i)*[SCm]_i
 function calculateUg4(r, t, blackHoleMass = CONSTANTS.BLACK_HOLE_MASS, layers = 26) {
     let totalUg4 = 0;
-    
+
     for (let i = 1; i <= layers; i++) {
         const r_i = r / i;
         const M_i = blackHoleMass / Math.pow(i, 0.5); // Mass scaling
         const alpha_i = 0.01 / i; // DPM stability factor (variable with layer)
         const SCm_i = Math.pow(i, 2); // [SCm]_i = iï¿½
-        
-        const Ug4_i = (CONSTANTS.GRAVITATIONAL_CONSTANT * M_i / Math.pow(r_i, 2)) 
-                      * (1 + alpha_i) * SCm_i;
+
+        const Ug4_i = (CONSTANTS.GRAVITATIONAL_CONSTANT * M_i / Math.pow(r_i, 2))
+            * (1 + alpha_i) * SCm_i;
         totalUg4 += Ug4_i;
     }
-    
+
     // Apply vacuum energy density and temporal modulation
     const vacuumEnergyDensity = CONSTANTS.SCM_DENSITY * 1e-15;
     const galacticDistance = CONSTANTS.GALACTIC_DISTANCE;
@@ -182,9 +182,9 @@ function calculateUg4(r, t, blackHoleMass = CONSTANTS.BLACK_HOLE_MASS, layers = 
     const piCycles = Math.cos(Math.PI * t);
     const negativeTime = Math.cos(Math.PI * (t - 86400 * 180));
     const feedbackFactor = 1 + 0.1 * Math.sin(CONSTANTS.OMEGA_C * t);
-    
-    return COUPLING.k4 * totalUg4 * vacuumEnergyDensity / galacticDistance 
-           * nonLinearDecay * piCycles * negativeTime * feedbackFactor;
+
+    return COUPLING.k4 * totalUg4 * vacuumEnergyDensity / galacticDistance
+        * nonLinearDecay * piCycles * negativeTime * feedbackFactor;
 }
 
 // Advanced F_U_Bi_i Integrand Calculations from MAIN_1.cpp
@@ -194,10 +194,10 @@ function calculateUg4(r, t, blackHoleMass = CONSTANTS.BLACK_HOLE_MASS, layers = 
 function calculateLENRForce(t, omega0 = 1e-12) {
     const omega_LENR = 2 * Math.PI * ((CONSTANTS.THZ_RESONANCE_LOW + CONSTANTS.THZ_RESONANCE_HIGH) / 2);
     const omega_act = 2 * Math.PI * CONSTANTS.COLMAN_GILLESPIE_FREQ;
-    
+
     const F_LENR = COUPLING.k_LENR * Math.pow(omega_LENR / omega0, 2);
     const F_act = COUPLING.k_act * Math.cos(omega_act * t);
-    
+
     return F_LENR + F_act;
 }
 
@@ -212,7 +212,7 @@ function calculateNeutronPhononForce(neutronFactor = 1, omega0 = 1e-12) {
     const omega_phonon = 2 * Math.PI * 1.25e12; // Average THz frequency
     const F_phonon = COUPLING.k_phonon * Math.pow(omega_phonon / omega0, 2);
     const F_neutron = COUPLING.k_neutron * neutronFactor;
-    
+
     return F_phonon + F_neutron;
 }
 
@@ -245,7 +245,7 @@ function calculateFUBiIntegrand(params) {
         stringWave = 1e6,
         omega0 = 1e-12
     } = params;
-    
+
     const F_LENR = calculateLENRForce(t, omega0);
     const F_vac_rep = calculateVacuumRepulsion(mass, velocity);
     const F_neutron_phonon = calculateNeutronPhononForce(neutronFactor, omega0);
@@ -253,10 +253,10 @@ function calculateFUBiIntegrand(params) {
     const F_conduit = calculateConduitForce(H_abundance, waterState, neutronFactor);
     const F_spooky = calculateSpookyForce(stringWave, omega0);
     const F_rel = CONSTANTS.LEP_F_REL; // Relativistic coherence from LEP 1998
-    
-    const integrand = F_LENR + F_vac_rep + F_neutron_phonon + F_thz_shock 
-                     + F_conduit + F_spooky + F_rel;
-    
+
+    const integrand = F_LENR + F_vac_rep + F_neutron_phonon + F_thz_shock
+        + F_conduit + F_spooky + F_rel;
+
     return {
         integrand,
         components: {
@@ -270,28 +270,28 @@ function calculateFUBiIntegrand(params) {
 // F_U_Bi_i = integrand * x_2
 function calculateUb(ugValue, t, componentIndex = 1, systemParams = {}) {
     const negativeTimeModulation = Math.cos(Math.PI * t);
-    const buoyancyFactor = CONSTANTS.GALACTIC_SPIN_RATE * CONSTANTS.BLACK_HOLE_MASS 
-                          / CONSTANTS.GALACTIC_DISTANCE;
-    
+    const buoyancyFactor = CONSTANTS.GALACTIC_SPIN_RATE * CONSTANTS.BLACK_HOLE_MASS
+        / CONSTANTS.GALACTIC_DISTANCE;
+
     // Calculate F_U_Bi_i integrand
     const integrandResult = calculateFUBiIntegrand({ ...systemParams, t });
     const x_2 = 1.0; // Scaling factor (can be position/layer dependent)
     const F_U_Bi_i = integrandResult.integrand * x_2;
-    
+
     // Enhanced buoyancy calculation with hydrogen atom void fraction
-    const V_total = (4/3) * Math.PI * Math.pow(CONSTANTS.BOHR_RADIUS, 3);
+    const V_total = (4 / 3) * Math.PI * Math.pow(CONSTANTS.BOHR_RADIUS, 3);
     const V_void = 0.2 * V_total; // 20% void fraction
     const g_H = 1.252e46; // Hydrogen resonance solution
-    
-    const U_Bi = COUPLING.k_Ub * COUPLING.Delta_k_eta 
-                * (CONSTANTS.RHO_VAC_UA / CONSTANTS.RHO_VAC_SCM) 
-                * (V_void / V_total) * g_H;
-    
+
+    const U_Bi = COUPLING.k_Ub * COUPLING.Delta_k_eta
+        * (CONSTANTS.RHO_VAC_UA / CONSTANTS.RHO_VAC_SCM)
+        * (V_void / V_total) * g_H;
+
     // Use different beta values for each Ug component
     const beta = COUPLING[`beta${componentIndex}`] || COUPLING.beta1;
-    
+
     const traditionalBuoyancy = -beta * ugValue * buoyancyFactor * negativeTimeModulation;
-    
+
     return {
         totalBuoyancy: traditionalBuoyancy + F_U_Bi_i + U_Bi,
         F_U_Bi_i,
@@ -303,15 +303,15 @@ function calculateUb(ugValue, t, componentIndex = 1, systemParams = {}) {
 
 // Universal Magnetism: Near-lossless magnetic strings from SCm
 function calculateUm(t, stringCount = 1e9) {
-    const magneticMoment = (1e-3 + 0.4 * Math.sin(CONSTANTS.OMEGA_C * t)) 
-                          * Math.pow(CONSTANTS.SOLAR_RADIUS, 3);
+    const magneticMoment = (1e-3 + 0.4 * Math.sin(CONSTANTS.OMEGA_C * t))
+        * Math.pow(CONSTANTS.SOLAR_RADIUS, 3);
     const stringDistance = CONSTANTS.HELIOSPHERE_RADIUS;
     const reciprocationDecay = 1 - Math.exp(-COUPLING.epsilon * t * Math.cos(Math.PI * t));
     const scmPresence = 1; // SCm presence factor
     const reactorEfficiency = Math.pow(10, 30) * Math.exp(-COUPLING.alpha * t);
-    
-    return stringCount * (magneticMoment / stringDistance) 
-           * reciprocationDecay * scmPresence * reactorEfficiency;
+
+    return stringCount * (magneticMoment / stringDistance)
+        * reciprocationDecay * scmPresence * reactorEfficiency;
 }
 
 // SGR 0501+4516 Master Universal Gravity Equation (MUGE) from Source14.cpp  
@@ -335,7 +335,7 @@ class MagnetarSGR0501_4516 {
         this.tau_Omega = params.tauOmega || (10000 * 365.25 * 24 * 3600); // s
         this.scale_EM = 1e-12;
         this.proton_mass = 1.673e-27; // kg
-        
+
         // Enhanced parameters for full MUGE 
         this.hbar = CONSTANTS.PLANCK_CONSTANT;
         this.t_Hubble = CONSTANTS.HUBBLE_TIME;
@@ -347,35 +347,35 @@ class MagnetarSGR0501_4516 {
         this.A_osc = params.oscillatoryAmplitude || 1e10; // m/sï¿½
         this.M_DM_factor = params.darkMatterFraction || 0.1;
         this.delta_rho_over_rho = params.densityPerturbation || 1e-5;
-        
+
         // Computed parameters
         this.k_osc = 1.0 / this.r;
         this.omega_osc = 2 * Math.PI / this.P_init;
         this.x_pos = this.r;
-        
+
         this.updateCache();
     }
-    
+
     updateCache() {
         this.ug1_base = (this.G * this.M) / (this.r * this.r);
     }
-    
+
     // B(t) - magnetic field decay (key difference from SGR 1745-2900)
     B_t(t) {
         return this.B0 * Math.exp(-t / this.tau_B);
     }
-    
+
     // Omega(t) - rotational frequency evolution
     Omega_t(t) {
         return (2 * Math.PI / this.P_init) * Math.exp(-t / this.tau_Omega);
     }
-    
+
     // dOmega/dt - rotational frequency derivative
     dOmega_dt(t) {
         const omega0 = 2 * Math.PI / this.P_init;
         return omega0 * (-1.0 / this.tau_Omega) * Math.exp(-t / this.tau_Omega);
     }
-    
+
     // Universal Gravity components computation with f_TRZ factor
     compute_Ug(Bt) {
         const Ug1 = this.ug1_base;
@@ -384,67 +384,67 @@ class MagnetarSGR0501_4516 {
         const Ug4 = this.ug1_base * (1 - Bt / this.B_crit); // B-field dependent
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + this.f_TRZ); // Time-reversal enhancement
     }
-    
+
     // Volume computation
     compute_V() {
         return (4.0 / 3.0) * Math.PI * this.r * this.r * this.r;
     }
-    
+
     // Master Universal Gravity Equation (MUGE) - SGR 0501+4516 Implementation
     compute_g_Magnetar(t) {
         if (t < 0) {
             console.error('Error: Time t must be non-negative.');
             return 0.0;
         }
-        
+
         const Bt = this.B_t(t);
         const dOdt = this.dOmega_dt(t);
-        
+
         // Term 1: Base gravity + Hubble expansion + magnetic corrections
         const corr_H = 1 + this.H0 * t;
         const corr_B = 1 - Bt / this.B_crit;
         const term1 = this.ug1_base * corr_H * corr_B;
-        
+
         // Term 2: UQFF Universal Gravity components with f_TRZ factor
         const term2 = this.compute_Ug(Bt);
-        
+
         // Term 3: Dark energy (Lambda term)
         const term3 = (this.Lambda * this.c_light * this.c_light) / 3.0;
-        
+
         // Term 4: Enhanced electromagnetic term with vacuum correction
         const cross_vB = this.v_surf * Bt; // Magnitude (perpendicular assumed)
         const em_base = (this.q_charge * cross_vB) / this.proton_mass;
         const corr_UA = 1 + (CONSTANTS.RHO_VAC_UA / CONSTANTS.RHO_VAC_SCM);
         const term4 = (em_base * corr_UA) * this.scale_EM;
-        
+
         // Term 5: Gravitational wave term
         const gw_prefactor = (this.G * this.M * this.M) / (Math.pow(this.c_light, 4) * this.r);
         const term5 = gw_prefactor * (dOdt * dOdt);
-        
+
         // Quantum uncertainty principle term
         const sqrt_unc = Math.sqrt(this.delta_x * this.delta_p);
         const term_q = (this.hbar / sqrt_unc) * this.integral_psi * (2 * Math.PI / this.t_Hubble);
-        
+
         // Fluid dynamics term (effective acceleration)
         const V = this.compute_V();
         const term_fluid = (this.rho_fluid * V * this.ug1_base) / this.M;
-        
+
         // Oscillatory wave terms (adjusted for unit consistency)
         const term_osc1 = 2 * this.A_osc * Math.cos(this.k_osc * this.x_pos) * Math.cos(this.omega_osc * t);
         const term_osc2 = (2 * Math.PI / this.t_Hubble) * this.A_osc * Math.cos(this.k_osc * this.x_pos - this.omega_osc * t);
         const term_osc = term_osc1 + term_osc2;
-        
+
         // Dark matter and density perturbation term
         const M_dm = this.M * this.M_DM_factor;
         const pert1 = this.delta_rho_over_rho;
         const pert2 = 3 * this.G * this.M / (this.r * this.r * this.r);
         const term_dm_force_like = (this.M + M_dm) * (pert1 + pert2);
         const term_DM = term_dm_force_like / this.M;
-        
+
         // Total g_Magnetar (all terms summed)
-        const g_total = term1 + term2 + term3 + term4 + term5 + 
-                       term_q + term_fluid + term_osc + term_DM;
-        
+        const g_total = term1 + term2 + term3 + term4 + term5 +
+            term_q + term_fluid + term_osc + term_DM;
+
         return {
             g_Magnetar: g_total,
             components: {
@@ -470,7 +470,7 @@ class MagnetarSGR0501_4516 {
             }
         };
     }
-    
+
     // Analysis at 5000 years (long-term evolution)
     analyzeAt5000Years() {
         const t_5000yr = 5000 * 365.25 * 24 * 3600; // 5000 years in seconds
@@ -515,7 +515,7 @@ class MagnetarSGR1745_2900 {
         this.mu0 = 4 * Math.PI * 1e-7;
         this.L0_W = params.initialLuminosity || 5e28; // W
         this.tau_decay = params.tauDecay || (3.5 * 365.25 * 24 * 3600); // s
-        
+
         // Enhanced parameters for full MUGE
         this.hbar = CONSTANTS.PLANCK_CONSTANT;
         this.t_Hubble = CONSTANTS.HUBBLE_TIME;
@@ -531,36 +531,36 @@ class MagnetarSGR1745_2900 {
         this.proton_mass = 1.673e-27; // kg
         this.M_DM_factor = params.darkMatterFraction || 0.1;
         this.delta_rho_over_rho = params.densityPerturbation || 1e-5;
-        
+
         // Computed parameters
         this.k_osc = 1.0 / this.r;
         this.omega_osc = 2 * Math.PI / this.P_init;
         this.x_pos = this.r;
-        
+
         this.updateCache();
     }
-    
+
     updateCache() {
         this.ug1_base = (this.G * this.M) / (this.r * this.r);
         this.f_sc = 1 - (this.B / this.B_crit); // Superconductive factor
     }
-    
+
     // B(t) - static magnetic field for this model
     B_t(t) {
         return this.B;
     }
-    
+
     // Omega(t) - rotational frequency evolution
     Omega_t(t) {
         return (2 * Math.PI / this.P_init) * Math.exp(-t / this.tau_Omega);
     }
-    
+
     // dOmega/dt - rotational frequency derivative
     dOmega_dt(t) {
         const omega0 = 2 * Math.PI / this.P_init;
         return omega0 * (-1.0 / this.tau_Omega) * Math.exp(-t / this.tau_Omega);
     }
-    
+
     // Universal Gravity components computation
     compute_Ug() {
         const Ug1 = this.ug1_base;
@@ -569,91 +569,91 @@ class MagnetarSGR1745_2900 {
         const Ug4 = this.ug1_base * this.f_sc; // Superconductive coupling
         return Ug1 + Ug2 + Ug3 + Ug4;
     }
-    
+
     // Volume computation
     compute_V() {
         return (4.0 / 3.0) * Math.PI * this.r * this.r * this.r;
     }
-    
+
     // Magnetic energy M_mag (J)
     compute_M_mag() {
         const V = this.compute_V();
         return (this.B_t(0) * this.B_t(0) / (2 * this.mu0)) * V;
     }
-    
+
     // Cumulative decay energy up to time t (J)
     compute_cumulative_D(t) {
         const exp_term = Math.exp(-t / this.tau_decay);
         return this.L0_W * this.tau_decay * (1 - exp_term);
     }
-    
+
     // Master Universal Gravity Equation (MUGE) - Complete Implementation
     compute_g_Magnetar(t) {
         if (t < 0) {
             console.error('Error: Time t must be non-negative.');
             return 0.0;
         }
-        
+
         const Bt = this.B_t(t);
         const dOdt = this.dOmega_dt(t);
         const current_f_sc = 1 - (Bt / this.B_crit);
-        
+
         // Term 1: Base gravity + Hubble expansion + magnetic corrections
         const corr_H = 1 + this.Hz * t;
         const corr_B = current_f_sc;
         const term1 = this.ug1_base * corr_H * corr_B;
-        
+
         // Black hole term (Sgr A* influence)
         const term_BH = (this.G * this.M_BH) / (this.r_BH * this.r_BH);
-        
+
         // Term 2: UQFF Universal Gravity components
         const term2 = this.compute_Ug();
-        
+
         // Term 3: Dark energy (Lambda term)
         const term3 = (this.Lambda * this.c_light * this.c_light) / 3.0;
-        
+
         // Term 4: Electromagnetic term (scaled v ï¿½ B)
         const cross_vB = this.v_surf * Bt;
         const em_base = (this.q_charge * cross_vB) / this.proton_mass;
         const term4 = em_base * this.scale_EM;
-        
+
         // Term 5: Gravitational wave term
         const gw_prefactor = (this.G * this.M * this.M) / (Math.pow(this.c_light, 4) * this.r);
         const term5 = gw_prefactor * (dOdt * dOdt);
-        
+
         // Quantum uncertainty principle term
         const sqrt_unc = Math.sqrt(this.delta_x * this.delta_p);
         const term_q = (this.hbar / sqrt_unc) * this.integral_psi * (2 * Math.PI / this.t_Hubble);
-        
+
         // Fluid dynamics term
         const V = this.compute_V();
         const term_fluid = (this.rho_fluid * V * this.ug1_base) / this.M;
-        
+
         // Oscillatory wave terms
         const term_osc1 = 2 * this.A_osc * Math.cos(this.k_osc * this.x_pos) * Math.cos(this.omega_osc * t);
         const arg = this.k_osc * this.x_pos - this.omega_osc * t;
         const term_osc2 = (2 * Math.PI / this.t_Hubble_gyr) * this.A_osc * Math.cos(arg);
         const term_osc = term_osc1 + term_osc2;
-        
+
         // Dark matter and density perturbation term
         const M_dm = this.M * this.M_DM_factor;
         const pert1 = this.delta_rho_over_rho;
         const pert2 = 3 * this.G * this.M / (this.r * this.r * this.r);
         const term_dm_force_like = (this.M + M_dm) * (pert1 + pert2);
         const term_DM = term_dm_force_like / this.M;
-        
+
         // Magnetic energy term (effective acceleration)
         const M_mag = this.compute_M_mag();
         const term_mag = M_mag / (this.M * this.r);
-        
+
         // Decay energy term (cumulative energy effective acceleration)
         const cum_D = this.compute_cumulative_D(t);
         const term_decay = cum_D / (this.M * this.r);
-        
+
         // Total g_Magnetar (all terms summed)
-        const g_total = term1 + term_BH + term2 + term3 + term4 + term5 + 
-                       term_q + term_fluid + term_osc + term_DM + term_mag + term_decay;
-        
+        const g_total = term1 + term_BH + term2 + term3 + term4 + term5 +
+            term_q + term_fluid + term_osc + term_DM + term_mag + term_decay;
+
         return {
             g_Magnetar: g_total,
             components: {
@@ -680,7 +680,7 @@ class MagnetarSGR1745_2900 {
             }
         };
     }
-    
+
     // Analysis at specific time (1 year example)
     analyzeAtOneYear() {
         const t_year = 1.0 * 365.25 * 24 * 3600; // 1 year in seconds
@@ -1118,7 +1118,7 @@ class Westerlund2 {
         this.rho_vac_SCm = params.rho_vac_SCm || 7.09e-37;
         this.scale_EM = params.scale_EM || 1e-12;
         this.proton_mass = params.proton_mass || 1.673e-27;
-        
+
         // Full terms parameters
         this.hbar = params.hbar || 1.0546e-34;
         this.t_Hubble = params.tHubble || (13.8e9 * 3.156e7);
@@ -1303,7 +1303,7 @@ class PillarsOfCreation {
         this.rho_vac_SCm = params.rho_vac_SCm || 7.09e-37;
         this.scale_EM = params.scale_EM || 1e-12;
         this.proton_mass = params.proton_mass || 1.673e-27;
-        
+
         // Full terms parameters
         this.hbar = params.hbar || 1.0546e-34;
         this.t_Hubble = params.tHubble || (13.8e9 * 3.156e7);
@@ -1490,9 +1490,9 @@ class RingsOfRelativity {
         this.gas_v = params.gas_v || 1e6; // Gas velocity in cluster
         this.f_TRZ = params.f_TRZ || 0.1;
         this.L_factor = params.L_factor || 0.67; // Lensing amplification factor
-        this.L_t = params.L_t || ((params.G || 6.6743e-11) * (params.mass || 1e14 * 1.989e30) 
-                   / (Math.pow(params.c_light || 3e8, 2) * (params.radius || 3.086e20)) 
-                   * (params.L_factor || 0.67)); // Gravitational lensing term
+        this.L_t = params.L_t || ((params.G || 6.6743e-11) * (params.mass || 1e14 * 1.989e30)
+            / (Math.pow(params.c_light || 3e8, 2) * (params.radius || 3.086e20))
+            * (params.L_factor || 0.67)); // Gravitational lensing term
         this.rho_wind = params.rho_wind || 1e-24; // Galactic wind density
         this.v_wind = params.v_wind || 1e6;
         this.rho_fluid = params.rho_fluid || 1e-24; // Cluster gas density
@@ -1500,7 +1500,7 @@ class RingsOfRelativity {
         this.rho_vac_SCm = params.rho_vac_SCm || 7.09e-37;
         this.scale_EM = params.scale_EM || 1e-15; // EM scaling for cluster
         this.proton_mass = params.proton_mass || 1.673e-27;
-        
+
         // Full terms parameters
         this.hbar = params.hbar || 1.0546e-34;
         this.t_Hubble = params.tHubble || (13.8e9 * 3.156e7);
@@ -1691,7 +1691,7 @@ class GalaxyNGC2525 {
         this.rho_vac_SCm = params.rho_vac_SCm || 7.09e-37;
         this.scale_EM = params.scale_EM || 1e-12; // EM scaling for galactic conditions
         this.proton_mass = params.proton_mass || 1.673e-27;
-        
+
         // Full terms parameters
         this.hbar = params.hbar || 1.0546e-34;
         this.t_Hubble = params.tHubble || (13.8e9 * 3.156e7);
@@ -1881,7 +1881,7 @@ class NGC3603 {
         this.rho_vac_SCm = params.rho_vac_SCm || 7.09e-37;
         this.scale_EM = params.scale_EM || 1e-12; // EM scaling for cluster conditions
         this.proton_mass = params.proton_mass || 1.673e-27;
-        
+
         // Full terms parameters
         this.hbar = params.hbar || 1.0546e-34;
         this.t_Hubble = params.tHubble || (13.8e9 * 3.156e7);
@@ -2083,7 +2083,7 @@ class BubbleNebula {
         this.rho_vac_SCm = params.rho_vac_SCm || 7.09e-37;
         this.scale_EM = params.scale_EM || 1e-12; // EM scaling for nebular conditions
         this.proton_mass = params.proton_mass || 1.673e-27;
-        
+
         // Full terms parameters
         this.hbar = params.hbar || 1.0546e-34;
         this.t_Hubble = params.tHubble || (13.8e9 * 3.156e7);
@@ -2256,11 +2256,11 @@ class AntennaeGalaxies {
         this.M0 = params.mass || 2e11 * 1.989e30; // 200 billion solar masses in kg
         this.r = params.radius || 30000 * 9.461e15; // 30,000 light years in meters
         this.z_gal = params.z_gal || 0.0105; // Galaxy redshift
-        
+
         // Calculate Hubble parameter at redshift z
         const Hz_kms = 70 * Math.sqrt(0.3 * Math.pow(1 + this.z_gal, 3) + 0.7); // km/s/Mpc
         this.Hz = params.hubbleParam || (Hz_kms * 1000 / 3.086e19); // s^-1
-        
+
         this.B = params.magneticField || 1e-5; // T (galactic magnetic field)
         this.B_crit = params.B_crit || 1e11; // T
         this.Lambda = params.Lambda || 1.1e-52;
@@ -2279,7 +2279,7 @@ class AntennaeGalaxies {
         this.rho_vac_SCm = params.rho_vac_SCm || 7.09e-37;
         this.scale_EM = params.scale_EM || 1e-12; // EM scaling for galactic conditions
         this.proton_mass = params.proton_mass || 1.673e-27;
-        
+
         // Full terms parameters
         this.hbar = params.hbar || 1.0546e-34;
         this.t_Hubble = params.tHubble || (13.8e9 * 3.156e7);
@@ -2473,7 +2473,7 @@ class HorseheadNebula {
         this.rho_vac_SCm = params.rho_vac_SCm || 7.09e-37;
         this.scale_EM = params.scale_EM || 1e-12; // EM scaling for nebular conditions
         this.proton_mass = params.proton_mass || 1.673e-27;
-        
+
         // Full terms parameters
         this.hbar = params.hbar || 1.0546e-34;
         this.t_Hubble = params.tHubble || (13.8e9 * 3.156e7);
@@ -2642,11 +2642,11 @@ class NGC1275 {
         this.M = params.mass || 1e11 * 1.989e30; // 100 billion solar masses in kg
         this.r = params.radius || 200000 * 9.461e15; // 200,000 light years in meters
         this.z_gal = params.z_gal || 0.0176; // Galaxy redshift
-        
+
         // Calculate Hubble parameter at redshift z
         const Hz_kms = 70 * Math.sqrt(0.3 * Math.pow(1 + this.z_gal, 3) + 0.7); // km/s/Mpc
         this.Hz = params.hubbleParam || (Hz_kms * 1000 / 3.086e19); // s^-1
-        
+
         this.B0 = params.B0 || 5e-9; // T (initial magnetic field)
         this.tau_B = params.tau_B || (100e6 * 3.156e7); // 100 Myr B decay timescale
         this.B_crit = params.B_crit || 1e11; // T
@@ -2666,7 +2666,7 @@ class NGC1275 {
         this.rho_vac_SCm = params.rho_vac_SCm || 7.09e-37;
         this.scale_EM = params.scale_EM || 1e-12; // EM scaling for galaxy cluster conditions
         this.proton_mass = params.proton_mass || 1.673e-27;
-        
+
         // Full terms parameters
         this.hbar = params.hbar || 1.0546e-34;
         this.t_Hubble = params.tHubble || (13.8e9 * 3.156e7);
@@ -2849,11 +2849,11 @@ class HUDFGalaxies {
         this.M0 = params.mass || (1e12 * 1.989e30); // 1 trillion solar masses in kg
         this.r = params.radius || (1.3e11 * 9.461e15); // 130 billion light years in meters
         this.z_avg = params.z_avg || 3.5; // Average redshift of HUDF galaxies
-        
+
         // Calculate Hubble parameter at average redshift z
         const Hz_kms = 70 * Math.sqrt(0.3 * Math.pow(1 + this.z_avg, 3) + 0.7); // km/s/Mpc
         this.Hz = params.hubbleParam || (Hz_kms * 1000 / 3.086e19); // s^-1
-        
+
         this.B = params.magneticField || 1e-10; // T (cosmic magnetic field)
         this.B_crit = params.B_crit || 1e11; // T
         this.Lambda = params.Lambda || 1.1e-52;
@@ -2872,7 +2872,7 @@ class HUDFGalaxies {
         this.rho_vac_SCm = params.rho_vac_SCm || 7.09e-37;
         this.scale_EM = params.scale_EM || 1e-12; // EM scaling for cosmic conditions
         this.proton_mass = params.proton_mass || 1.673e-27;
-        
+
         // Full terms parameters
         this.hbar = params.hbar || 1.0546e-34;
         this.t_Hubble = params.tHubble || (13.8e9 * 3.156e7);
@@ -3050,11 +3050,11 @@ class GalaxyNGC1792 {
         this.M0 = params.mass || (1e10 * 1.989e30); // 10 billion solar masses in kg
         this.r = params.radius || (80000 * 9.461e15); // 80,000 light years in meters
         this.z_gal = params.z_gal || 0.0095; // Galaxy redshift
-        
+
         // Calculate Hubble parameter at redshift z
         const Hz_kms = 70 * Math.sqrt(0.3 * Math.pow(1 + this.z_gal, 3) + 0.7); // km/s/Mpc
         this.Hz = params.hubbleParam || (Hz_kms * 1000 / 3.086e19); // s^-1
-        
+
         this.B = params.magneticField || 1e-5; // T (strong galactic magnetic field)
         this.B_crit = params.B_crit || 1e11; // T
         this.Lambda = params.Lambda || 1.1e-52;
@@ -3071,7 +3071,7 @@ class GalaxyNGC1792 {
         this.rho_vac_SCm = params.rho_vac_SCm || 7.09e-37;
         this.scale_EM = params.scale_EM || 1e-12; // EM scaling for galaxy conditions
         this.proton_mass = params.proton_mass || 1.673e-27;
-        
+
         // Full terms parameters
         this.hbar = params.hbar || 1.0546e-34;
         this.t_Hubble = params.tHubble || (13.8e9 * 3.156e7);
@@ -3237,7 +3237,7 @@ class AndromedaUQFFModule {
     constructor(params = {}) {
         // Initialize variables map for dynamic management
         this.variables = new Map();
-        
+
         // Base constants (universal)
         this.variables.set('G', params.G || 6.6743e-11);
         this.variables.set('c', params.c_light || 3e8);
@@ -3246,7 +3246,7 @@ class AndromedaUQFFModule {
         this.variables.set('q', params.qCharge || 1.602e-19);
         this.variables.set('pi', Math.PI);
         this.variables.set('t_Hubble', params.tHubble || (13.8e9 * 3.156e7));
-        
+
         // Andromeda galaxy parameters
         const M_sun_val = 1.989e30;
         this.variables.set('M_sun', M_sun_val);
@@ -3256,7 +3256,7 @@ class AndromedaUQFFModule {
         this.variables.set('r', params.radius || 1.04e21); // ~110k ly
         this.variables.set('M_BH', params.M_BH || (1.4e8 * M_sun_val)); // Central SMBH
         this.variables.set('r_BH', params.r_BH || 1e15);
-        
+
         // Hubble/cosmology
         this.variables.set('H0', 70.0); // km/s/Mpc
         this.variables.set('Mpc_to_m', 3.086e22);
@@ -3264,38 +3264,38 @@ class AndromedaUQFFModule {
         this.variables.set('Omega_m', 0.3);
         this.variables.set('Omega_Lambda', 0.7);
         this.variables.set('t', 10e9 * 3.156e7); // Default t=10 Gyr
-        
+
         // Dust/fluid dynamics
         this.variables.set('rho_dust', params.rho_dust || 1e-20);
         this.variables.set('v_orbit', params.velocity || 2.5e5); // High orbital velocity
         this.variables.set('rho_mass', params.rho_mass || 1e-21);
         this.variables.set('rho_fluid', params.rho_fluid || 1e-21);
         this.variables.set('V', params.V_volume || 1e3);
-        
+
         // EM/magnetic
         this.variables.set('B', params.magneticField || 1e-5); // Strong galactic field
-        
+
         // Quantum terms
         this.variables.set('Delta_x', params.deltaX || 1e-10);
         this.variables.set('Delta_p', this.variables.get('hbar') / this.variables.get('Delta_x'));
         this.variables.set('integral_psi', params.integralPsi || 1.0);
-        
+
         // Resonant/oscillatory terms
         this.variables.set('A', params.A_osc || 1e-10);
         this.variables.set('k', params.k_osc || 1e20); // High frequency
         this.variables.set('omega', params.omega_osc || 1e15); // Optical range
         this.variables.set('x', params.x_pos || 0.0); // Central position
-        
+
         // DM perturbations
         this.variables.set('delta_rho', 0.1 * this.variables.get('rho_mass'));
         this.variables.set('rho', this.variables.get('rho_mass'));
-        
+
         // Ug subterms (computed dynamically)
         this.variables.set('Ug1', 0.0);
         this.variables.set('Ug2', 0.0); // Negligible
         this.variables.set('Ug3', 0.0); // Negligible  
         this.variables.set('Ug4', 0.0);
-        
+
         // Scale factors
         this.variables.set('scale_macro', params.scale_macro || 1e-12);
         this.variables.set('f_TRZ', params.f_TRZ || 0.1);
@@ -3305,7 +3305,7 @@ class AndromedaUQFFModule {
     // Dynamic variable operations
     updateVariable(name, value) {
         this.variables.set(name, value);
-        
+
         // Update dependent variables
         if (name === 'Delta_x') {
             this.variables.set('Delta_p', this.variables.get('hbar') / value);
@@ -3331,7 +3331,7 @@ class AndromedaUQFFModule {
     // Compute H(z) in s^-1
     computeHz() {
         const Hz_kms = this.variables.get('H0') * Math.sqrt(
-            this.variables.get('Omega_m') * Math.pow(1.0 + this.variables.get('z'), 3) + 
+            this.variables.get('Omega_m') * Math.pow(1.0 + this.variables.get('z'), 3) +
             this.variables.get('Omega_Lambda')
         );
         return (Hz_kms * 1e3) / this.variables.get('Mpc_to_m');
@@ -3339,20 +3339,20 @@ class AndromedaUQFFModule {
 
     // Compute Ug sum: Ug1 = G M / r^2, Ug4 = Ug1 * f_sc, others 0
     computeUgSum() {
-        const Ug1 = (this.variables.get('G') * this.variables.get('M')) / 
-                     (this.variables.get('r') * this.variables.get('r'));
+        const Ug1 = (this.variables.get('G') * this.variables.get('M')) /
+            (this.variables.get('r') * this.variables.get('r'));
         this.variables.set('Ug1', Ug1);
         this.variables.set('Ug4', Ug1 * this.variables.get('f_sc'));
-        return this.variables.get('Ug1') + this.variables.get('Ug2') + 
-               this.variables.get('Ug3') + this.variables.get('Ug4');
+        return this.variables.get('Ug1') + this.variables.get('Ug2') +
+            this.variables.get('Ug3') + this.variables.get('Ug4');
     }
 
     // Quantum term: (hbar / sqrt(Delta_x Delta_p)) * integral * (2 pi / t_Hubble)
     computeQuantumTerm(t_Hubble_val) {
         const unc = Math.sqrt(this.variables.get('Delta_x') * this.variables.get('Delta_p'));
         const integral_val = this.variables.get('integral_psi');
-        return (this.variables.get('hbar') / unc) * integral_val * 
-               (2 * this.variables.get('pi') / t_Hubble_val);
+        return (this.variables.get('hbar') / unc) * integral_val *
+            (2 * this.variables.get('pi') / t_Hubble_val);
     }
 
     // Fluid term: rho_fluid * V * g (g approx base grav)
@@ -3362,23 +3362,23 @@ class AndromedaUQFFModule {
 
     // Resonant terms: 2 A cos(k x) cos(omega t) + (2 pi / 13.8) A Re[exp(i (k x - omega t))]
     computeResonantTerm(t) {
-        const cos_term = 2 * this.variables.get('A') * 
-                        Math.cos(this.variables.get('k') * this.variables.get('x')) * 
-                        Math.cos(this.variables.get('omega') * t);
-        
+        const cos_term = 2 * this.variables.get('A') *
+            Math.cos(this.variables.get('k') * this.variables.get('x')) *
+            Math.cos(this.variables.get('omega') * t);
+
         // Real part of complex exponential
         const phase = this.variables.get('k') * this.variables.get('x') - this.variables.get('omega') * t;
         const real_exp = this.variables.get('A') * Math.cos(phase);
         const exp_factor = (2 * this.variables.get('pi') / 13.8);
-        
+
         return cos_term + exp_factor * real_exp;
     }
 
     // DM term: (M_visible + M_DM) * (delta_rho / rho + 3 G M / r^3)
     computeDMTerm() {
         const pert = this.variables.get('delta_rho') / this.variables.get('rho');
-        const curv = 3 * this.variables.get('G') * this.variables.get('M') / 
-                     (this.variables.get('r') * this.variables.get('r') * this.variables.get('r'));
+        const curv = 3 * this.variables.get('G') * this.variables.get('M') /
+            (this.variables.get('r') * this.variables.get('r') * this.variables.get('r'));
         return (this.variables.get('M_visible') + this.variables.get('M_DM')) * (pert + curv);
     }
 
@@ -3399,24 +3399,24 @@ class AndromedaUQFFModule {
         const tr_factor = 1.0 + this.variables.get('f_TRZ');
 
         // Base gravity with expansion and time-reversal
-        const g_base = (this.variables.get('G') * this.variables.get('M') / 
-                       (this.variables.get('r') * this.variables.get('r'))) * expansion * tr_factor;
+        const g_base = (this.variables.get('G') * this.variables.get('M') /
+            (this.variables.get('r') * this.variables.get('r'))) * expansion * tr_factor;
 
         // Ug sum
         const ug_sum = this.computeUgSum();
 
         // Cosmological Lambda term
-        const lambda_term = this.variables.get('Lambda') * 
-                           (this.variables.get('c') * this.variables.get('c')) / 3.0;
+        const lambda_term = this.variables.get('Lambda') *
+            (this.variables.get('c') * this.variables.get('c')) / 3.0;
 
         // Quantum uncertainty term
         const quantum_term = this.computeQuantumTerm(this.variables.get('t_Hubble'));
 
         // EM Lorentz term (v ï¿½ B with UA/SCm correction)
         const ua_scm_ratio = 7.09e-36 / 7.09e-37; // = 10
-        const em_term = this.variables.get('q') * this.variables.get('v_orbit') * 
-                       this.variables.get('B') * (1.0 + ua_scm_ratio) * 
-                       this.variables.get('scale_macro');
+        const em_term = this.variables.get('q') * this.variables.get('v_orbit') *
+            this.variables.get('B') * (1.0 + ua_scm_ratio) *
+            this.variables.get('scale_macro');
 
         // Fluid term (uses g_base approximation)
         const fluid_term = this.computeFluidTerm(g_base);
@@ -3428,14 +3428,14 @@ class AndromedaUQFFModule {
         const dm_term = this.computeDMTerm();
 
         // Dust friction term
-        const force_dust = this.variables.get('rho_dust') * 
-                          (this.variables.get('v_orbit') * this.variables.get('v_orbit'));
-        const a_dust = (force_dust / this.variables.get('rho_mass')) * 
-                      this.variables.get('scale_macro');
+        const force_dust = this.variables.get('rho_dust') *
+            (this.variables.get('v_orbit') * this.variables.get('v_orbit'));
+        const a_dust = (force_dust / this.variables.get('rho_mass')) *
+            this.variables.get('scale_macro');
 
         // Total: Sum all terms
-        const g_Andromeda = g_base + ug_sum + lambda_term + quantum_term + 
-                           em_term + fluid_term + resonant_term + dm_term + a_dust;
+        const g_Andromeda = g_base + ug_sum + lambda_term + quantum_term +
+            em_term + fluid_term + resonant_term + dm_term + a_dust;
 
         return {
             g_Andromeda,
@@ -3472,12 +3472,12 @@ class AndromedaUQFFModule {
     // Get equation description
     getEquationText() {
         return "A_muv = g_muv + eta T_s^{muv}(rho_vac_SCm, rho_vac_UA, rho_vac_A, t_n)" +
-               "\nT_s^{muv} = 1.123e7 J/mï¿½ (diagonal; T_s_base + rho_vac_A = 1.27e3 + 1.11e7);" +
-               "\neta = 1e-22 (eta perturbation) ï¿½1.123e-15;" +
-               "\nA_muv ï¿½ [1 + 1.123e-15, -1 + 1.123e-15, ...]." +
-               "\nIn F_U: Aether contrib ~1e-15 J/mï¿½ (negligible vs U_m=2.28e65)." +
-               "\nRole: Encodes energy-momentum for Aether geometry; SCm/UA stress in spacetime." +
-               "\nUQFF: Perturbs metric for nebular/disk/jet dynamics; GR-compatible vacuum.";
+            "\nT_s^{muv} = 1.123e7 J/mï¿½ (diagonal; T_s_base + rho_vac_A = 1.27e3 + 1.11e7);" +
+            "\neta = 1e-22 (eta perturbation) ï¿½1.123e-15;" +
+            "\nA_muv ï¿½ [1 + 1.123e-15, -1 + 1.123e-15, ...]." +
+            "\nIn F_U: Aether contrib ~1e-15 J/mï¿½ (negligible vs U_m=2.28e65)." +
+            "\nRole: Encodes energy-momentum for Aether geometry; SCm/UA stress in spacetime." +
+            "\nUQFF: Perturbs metric for nebular/disk/jet dynamics; GR-compatible vacuum.";
     }
 
     // Print all variables for debugging
@@ -3516,7 +3516,7 @@ class SombreroUQFFModule {
     constructor(params = {}) {
         // Initialize all variables with Sombrero-specific defaults
         this.variables = new Map();
-        
+
         // Base constants (universal)
         this.variables.set('G', 6.6743e-11);                    // m^3 kg^-1 s^-2
         this.variables.set('c', 3e8);                           // m/s
@@ -3619,29 +3619,29 @@ class SombreroUQFFModule {
 
     // Compute H(z) in s^-1
     computeHz() {
-        const Hz_kms = this.variables.get('H0') * 
-                      Math.sqrt(this.variables.get('Omega_m') * 
-                               Math.pow(1.0 + this.variables.get('z'), 3) + 
-                               this.variables.get('Omega_Lambda'));
+        const Hz_kms = this.variables.get('H0') *
+            Math.sqrt(this.variables.get('Omega_m') *
+                Math.pow(1.0 + this.variables.get('z'), 3) +
+                this.variables.get('Omega_Lambda'));
         return (Hz_kms * 1e3) / this.variables.get('Mpc_to_m');
     }
 
     // Compute Ug sum: Ug1 = G M / r^2, Ug4 = Ug1 * f_sc, others 0
     computeUgSum() {
-        const Ug1 = (this.variables.get('G') * this.variables.get('M')) / 
-                    (this.variables.get('r') * this.variables.get('r'));
+        const Ug1 = (this.variables.get('G') * this.variables.get('M')) /
+            (this.variables.get('r') * this.variables.get('r'));
         this.variables.set('Ug1', Ug1);
         this.variables.set('Ug4', Ug1 * this.variables.get('f_sc'));
-        return this.variables.get('Ug1') + this.variables.get('Ug2') + 
-               this.variables.get('Ug3') + this.variables.get('Ug4');
+        return this.variables.get('Ug1') + this.variables.get('Ug2') +
+            this.variables.get('Ug3') + this.variables.get('Ug4');
     }
 
     // Quantum term: (hbar / sqrt(Delta_x Delta_p)) * integral * (2 pi / t_Hubble)
     computeQuantumTerm(t_Hubble_val) {
         const unc = Math.sqrt(this.variables.get('Delta_x') * this.variables.get('Delta_p'));
         const integral_val = this.variables.get('integral_psi');
-        return (this.variables.get('hbar') / unc) * integral_val * 
-               (2 * this.variables.get('pi') / t_Hubble_val);
+        return (this.variables.get('hbar') / unc) * integral_val *
+            (2 * this.variables.get('pi') / t_Hubble_val);
     }
 
     // Fluid term: rho_fluid * V * g (g approx base grav)
@@ -3651,31 +3651,31 @@ class SombreroUQFFModule {
 
     // Resonant terms: 2 A cos(k x) cos(omega t) + (2 pi / 13.8) A Re[exp(i (k x - omega t))]
     computeResonantTerm(t) {
-        const cos_term = 2 * this.variables.get('A') * 
-                        Math.cos(this.variables.get('k') * this.variables.get('x')) * 
-                        Math.cos(this.variables.get('omega') * t);
-        
+        const cos_term = 2 * this.variables.get('A') *
+            Math.cos(this.variables.get('k') * this.variables.get('x')) *
+            Math.cos(this.variables.get('omega') * t);
+
         // Real part of complex exponential
-        const phase = this.variables.get('k') * this.variables.get('x') - 
-                     this.variables.get('omega') * t;
+        const phase = this.variables.get('k') * this.variables.get('x') -
+            this.variables.get('omega') * t;
         const real_exp = this.variables.get('A') * Math.cos(phase);
         const exp_factor = (2 * this.variables.get('pi') / 13.8);
-        
+
         return cos_term + exp_factor * real_exp;
     }
 
     // DM term: (M_visible + M_DM) * (delta_rho / rho + 3 G M / r^3)
     computeDMTerm() {
         const pert = this.variables.get('delta_rho') / this.variables.get('rho');
-        const curv = 3 * this.variables.get('G') * this.variables.get('M') / 
-                     (this.variables.get('r') * this.variables.get('r') * this.variables.get('r'));
+        const curv = 3 * this.variables.get('G') * this.variables.get('M') /
+            (this.variables.get('r') * this.variables.get('r') * this.variables.get('r'));
         return (this.variables.get('M_visible') + this.variables.get('M_DM')) * (pert + curv);
     }
 
     // Dust term: rho_dust * v_orbit^2 / rho_mass * scale_macro (as a_dust)
     computeDustTerm() {
-        const force_dust = this.variables.get('rho_dust') * 
-                          (this.variables.get('v_orbit') * this.variables.get('v_orbit'));
+        const force_dust = this.variables.get('rho_dust') *
+            (this.variables.get('v_orbit') * this.variables.get('v_orbit'));
         return (force_dust / this.variables.get('rho_mass')) * this.variables.get('scale_macro');
     }
 
@@ -3697,27 +3697,27 @@ class SombreroUQFFModule {
         const tr_factor = 1.0 + this.variables.get('f_TRZ');
 
         // Base gravity with expansion, superconductivity, time-reversal
-        const g_base = ((this.variables.get('G') * this.variables.get('M') / 
-                        (this.variables.get('r') * this.variables.get('r'))) * 
-                        expansion * sc_correction) * tr_factor;
+        const g_base = ((this.variables.get('G') * this.variables.get('M') /
+            (this.variables.get('r') * this.variables.get('r'))) *
+            expansion * sc_correction) * tr_factor;
 
         // Black hole term
-        const g_BH = (this.variables.get('G') * this.variables.get('M_BH')) / 
-                    (this.variables.get('r_BH') * this.variables.get('r_BH'));
+        const g_BH = (this.variables.get('G') * this.variables.get('M_BH')) /
+            (this.variables.get('r_BH') * this.variables.get('r_BH'));
 
         // Ug sum
         const ug_sum = this.computeUgSum();
 
         // Cosmological Lambda term
-        const lambda_term = this.variables.get('Lambda') * 
-                           (this.variables.get('c') * this.variables.get('c')) / 3.0;
+        const lambda_term = this.variables.get('Lambda') *
+            (this.variables.get('c') * this.variables.get('c')) / 3.0;
 
         // Quantum uncertainty term
         const quantum_term = this.computeQuantumTerm(this.variables.get('t_Hubble'));
 
         // EM Lorentz (magnitude v B) with UA/SCm correction
-        const em_base = this.variables.get('q') * this.variables.get('v_orbit') * 
-                       this.variables.get('B') / 1.673e-27; // / proton mass for accel
+        const em_base = this.variables.get('q') * this.variables.get('v_orbit') *
+            this.variables.get('B') / 1.673e-27; // / proton mass for accel
         const ua_scm_ratio = 7.09e-36 / 7.09e-37; // = 10
         const em_term = em_base * (1.0 + ua_scm_ratio) * this.variables.get('scale_macro');
 
@@ -3734,8 +3734,8 @@ class SombreroUQFFModule {
         const dust_term = this.computeDustTerm();
 
         // Total: Sum all terms
-        const g_Sombrero = g_base + g_BH + ug_sum + lambda_term + quantum_term + 
-                          em_term + fluid_term + resonant_term + dm_term + dust_term;
+        const g_Sombrero = g_base + g_BH + ug_sum + lambda_term + quantum_term +
+            em_term + fluid_term + resonant_term + dm_term + dust_term;
 
         return {
             g_Sombrero,
@@ -3776,12 +3776,12 @@ class SombreroUQFFModule {
     // Get equation description
     getEquationText() {
         return "A_muv = g_muv + eta T_s^{muv}(rho_vac_SCm, rho_vac_UA, rho_vac_A, t_n)" +
-               "\nT_s^{muv} = 1.123e7 J/mï¿½ (diagonal; T_s_base + rho_vac_A = 1.27e3 + 1.11e7);" +
-               "\neta = 1e-22 (eta perturbation) ï¿½1.123e-15;" +
-               "\nA_muv ï¿½ [1 + 1.123e-15, -1 + 1.123e-15, ...]." +
-               "\nIn F_U: Aether contrib ~1e-15 J/mï¿½ (negligible vs U_m=2.28e65)." +
-               "\nRole: Encodes energy-momentum for Aether geometry; SCm/UA stress in spacetime." +
-               "\nUQFF: Perturbs metric for nebular/disk/jet dynamics; GR-compatible vacuum.";
+            "\nT_s^{muv} = 1.123e7 J/mï¿½ (diagonal; T_s_base + rho_vac_A = 1.27e3 + 1.11e7);" +
+            "\neta = 1e-22 (eta perturbation) ï¿½1.123e-15;" +
+            "\nA_muv ï¿½ [1 + 1.123e-15, -1 + 1.123e-15, ...]." +
+            "\nIn F_U: Aether contrib ~1e-15 J/mï¿½ (negligible vs U_m=2.28e65)." +
+            "\nRole: Encodes energy-momentum for Aether geometry; SCm/UA stress in spacetime." +
+            "\nUQFF: Perturbs metric for nebular/disk/jet dynamics; GR-compatible vacuum.";
     }
 
     // Print all variables for debugging
@@ -3820,7 +3820,7 @@ class SaturnUQFFModule {
     constructor(params = {}) {
         // Initialize all variables with Saturn-specific defaults
         this.variables = new Map();
-        
+
         // Base constants (universal)
         this.variables.set('G', 6.6743e-11);                    // m^3 kg^-1 s^-2
         this.variables.set('c', 3e8);                           // m/s
@@ -3925,29 +3925,29 @@ class SaturnUQFFModule {
 
     // Compute H(z) in s^-1
     computeHz() {
-        const Hz_kms = this.variables.get('H0') * 
-                      Math.sqrt(this.variables.get('Omega_m') * 
-                               Math.pow(1.0 + this.variables.get('z'), 3) + 
-                               this.variables.get('Omega_Lambda'));
+        const Hz_kms = this.variables.get('H0') *
+            Math.sqrt(this.variables.get('Omega_m') *
+                Math.pow(1.0 + this.variables.get('z'), 3) +
+                this.variables.get('Omega_Lambda'));
         return (Hz_kms * 1e3) / this.variables.get('Mpc_to_m');
     }
 
     // Compute Ug sum: Ug1 = G M / r^2, Ug4 = Ug1 * f_sc, others 0
     computeUgSum() {
-        const Ug1 = (this.variables.get('G') * this.variables.get('M')) / 
-                    (this.variables.get('r') * this.variables.get('r'));
+        const Ug1 = (this.variables.get('G') * this.variables.get('M')) /
+            (this.variables.get('r') * this.variables.get('r'));
         this.variables.set('Ug1', Ug1);
         this.variables.set('Ug4', Ug1 * this.variables.get('f_sc'));
-        return this.variables.get('Ug1') + this.variables.get('Ug2') + 
-               this.variables.get('Ug3') + this.variables.get('Ug4');
+        return this.variables.get('Ug1') + this.variables.get('Ug2') +
+            this.variables.get('Ug3') + this.variables.get('Ug4');
     }
 
     // Quantum term: (hbar / sqrt(Delta_x Delta_p)) * integral * (2 pi / t_Hubble)
     computeQuantumTerm(t_Hubble_val) {
         const unc = Math.sqrt(this.variables.get('Delta_x') * this.variables.get('Delta_p'));
         const integral_val = this.variables.get('integral_psi');
-        return (this.variables.get('hbar') / unc) * integral_val * 
-               (2 * this.variables.get('pi') / t_Hubble_val);
+        return (this.variables.get('hbar') / unc) * integral_val *
+            (2 * this.variables.get('pi') / t_Hubble_val);
     }
 
     // Fluid term: rho_fluid * V * g (g approx base g_saturn)
@@ -3957,24 +3957,24 @@ class SaturnUQFFModule {
 
     // Resonant terms: 2 A cos(k x) cos(omega t) + (2 pi / 13.8) A Re[exp(i (k x - omega t))]
     computeResonantTerm(t) {
-        const cos_term = 2 * this.variables.get('A') * 
-                        Math.cos(this.variables.get('k') * this.variables.get('x')) * 
-                        Math.cos(this.variables.get('omega') * t);
-        
+        const cos_term = 2 * this.variables.get('A') *
+            Math.cos(this.variables.get('k') * this.variables.get('x')) *
+            Math.cos(this.variables.get('omega') * t);
+
         // Real part of complex exponential
-        const phase = this.variables.get('k') * this.variables.get('x') - 
-                     this.variables.get('omega') * t;
+        const phase = this.variables.get('k') * this.variables.get('x') -
+            this.variables.get('omega') * t;
         const real_exp = this.variables.get('A') * Math.cos(phase);
         const exp_factor = (2 * this.variables.get('pi') / 13.8);
-        
+
         return cos_term + exp_factor * real_exp;
     }
 
     // DM term: (M_visible + M_DM) * (delta_rho / rho + 3 G M / r^3)
     computeDMTerm() {
         const pert = this.variables.get('delta_rho') / this.variables.get('rho');
-        const curv = 3 * this.variables.get('G') * this.variables.get('M') / 
-                     (this.variables.get('r') * this.variables.get('r') * this.variables.get('r'));
+        const curv = 3 * this.variables.get('G') * this.variables.get('M') /
+            (this.variables.get('r') * this.variables.get('r') * this.variables.get('r'));
         return (this.variables.get('M_visible') + this.variables.get('M_DM')) * (pert + curv);
     }
 
@@ -4001,32 +4001,32 @@ class SaturnUQFFModule {
         const tr_factor = 1.0 + this.variables.get('f_TRZ');
 
         // Sun gravity with expansion and time-reversal
-        const g_sun = (this.variables.get('G') * this.variables.get('M_Sun') / 
-                      (this.variables.get('r_orbit') * this.variables.get('r_orbit'))) * 
-                      expansion * tr_factor;
+        const g_sun = (this.variables.get('G') * this.variables.get('M_Sun') /
+            (this.variables.get('r_orbit') * this.variables.get('r_orbit'))) *
+            expansion * tr_factor;
 
         // Saturn gravity with superconductivity correction
-        const g_saturn_base = (this.variables.get('G') * this.variables.get('M')) / 
-                             (this.variables.get('r') * this.variables.get('r'));
+        const g_saturn_base = (this.variables.get('G') * this.variables.get('M')) /
+            (this.variables.get('r') * this.variables.get('r'));
         const g_saturn = g_saturn_base * sc_correction;
 
         // Ring tidal contribution
-        const T_ring = (this.variables.get('G') * this.variables.get('M_ring')) / 
-                      (this.variables.get('r_ring') * this.variables.get('r_ring'));
+        const T_ring = (this.variables.get('G') * this.variables.get('M_ring')) /
+            (this.variables.get('r_ring') * this.variables.get('r_ring'));
 
         // Ug sum
         const ug_sum = this.computeUgSum();
 
         // Cosmological Lambda term
-        const lambda_term = this.variables.get('Lambda') * 
-                           (this.variables.get('c') * this.variables.get('c')) / 3.0;
+        const lambda_term = this.variables.get('Lambda') *
+            (this.variables.get('c') * this.variables.get('c')) / 3.0;
 
         // Quantum uncertainty term
         const quantum_term = this.computeQuantumTerm(this.variables.get('t_Hubble'));
 
         // EM Lorentz term (magnitude v_wind B) with UA/SCm correction
-        const em_base = this.variables.get('q') * this.variables.get('v_wind') * 
-                       this.variables.get('B') / 1.673e-27; // / proton mass for accel
+        const em_base = this.variables.get('q') * this.variables.get('v_wind') *
+            this.variables.get('B') / 1.673e-27; // / proton mass for accel
         const ua_scm_ratio = 7.09e-36 / 7.09e-37; // = 10
         const em_term = em_base * (1.0 + ua_scm_ratio) * this.variables.get('scale_macro');
 
@@ -4043,8 +4043,8 @@ class SaturnUQFFModule {
         const wind_term = this.computeWindTerm();
 
         // Total: Sum all terms
-        const g_Saturn = g_sun + g_saturn + T_ring + ug_sum + lambda_term + quantum_term + 
-                        em_term + fluid_term + resonant_term + dm_term + wind_term;
+        const g_Saturn = g_sun + g_saturn + T_ring + ug_sum + lambda_term + quantum_term +
+            em_term + fluid_term + resonant_term + dm_term + wind_term;
 
         return {
             g_Saturn,
@@ -4088,12 +4088,12 @@ class SaturnUQFFModule {
     // Get equation description
     getEquationText() {
         return "A_muv = g_muv + eta T_s^{muv}(rho_vac_SCm, rho_vac_UA, rho_vac_A, t_n)" +
-               "\nT_s^{muv} = 1.123e7 J/mï¿½ (diagonal; T_s_base + rho_vac_A = 1.27e3 + 1.11e7);" +
-               "\neta = 1e-22 (eta perturbation) ï¿½1.123e-15;" +
-               "\nA_muv ï¿½ [1 + 1.123e-15, -1 + 1.123e-15, ...]." +
-               "\nIn F_U: Aether contrib ~1e-15 J/mï¿½ (negligible vs U_m=2.28e65)." +
-               "\nRole: Encodes energy-momentum for Aether geometry; SCm/UA stress in spacetime." +
-               "\nUQFF: Perturbs metric for nebular/disk/jet dynamics; GR-compatible vacuum.";
+            "\nT_s^{muv} = 1.123e7 J/mï¿½ (diagonal; T_s_base + rho_vac_A = 1.27e3 + 1.11e7);" +
+            "\neta = 1e-22 (eta perturbation) ï¿½1.123e-15;" +
+            "\nA_muv ï¿½ [1 + 1.123e-15, -1 + 1.123e-15, ...]." +
+            "\nIn F_U: Aether contrib ~1e-15 J/mï¿½ (negligible vs U_m=2.28e65)." +
+            "\nRole: Encodes energy-momentum for Aether geometry; SCm/UA stress in spacetime." +
+            "\nUQFF: Perturbs metric for nebular/disk/jet dynamics; GR-compatible vacuum.";
     }
 
     // Print all variables for debugging
@@ -4151,48 +4151,48 @@ function calculateMagnetarGravity(r, t, params = {}) {
         M_mag = 1e20, // Magnetic mass contribution
         D_t = Math.exp(-t / 1e9) // Decay function
     } = params;
-    
+
     // Newtonian gravity with cosmological expansion and magnetic correction
-    const g_newton = (CONSTANTS.GRAVITATIONAL_CONSTANT * M) / Math.pow(r, 2) 
-                    * (1 + H_z * t) * (1 - B / CONSTANTS.B_CRIT_MAGNETAR);
-    
+    const g_newton = (CONSTANTS.GRAVITATIONAL_CONSTANT * M) / Math.pow(r, 2)
+        * (1 + H_z * t) * (1 - B / CONSTANTS.B_CRIT_MAGNETAR);
+
     // Supermassive black hole contribution
     const g_SMBH = (CONSTANTS.GRAVITATIONAL_CONSTANT * M_BH) / Math.pow(r_BH, 2);
-    
+
     // Universal Gravity components (Ug1 + Ug2 + Ug3 + Ug4)
-    const Ug_total = calculateUg1(r, t) + calculateUg2(r, t) + calculateUg3(r, Math.PI/4, t) + calculateUg4(r, t);
-    
+    const Ug_total = calculateUg1(r, t) + calculateUg2(r, t) + calculateUg3(r, Math.PI / 4, t) + calculateUg4(r, t);
+
     // Dark energy contribution
     const g_DE = (CONSTANTS.LAMBDA_COSMO * Math.pow(CONSTANTS.SPEED_OF_LIGHT, 2)) / 3;
-    
+
     // Quantum uncertainty principle integral term
     const Delta_x = r / 1000; // Position uncertainty
     const Delta_p = CONSTANTS.PLANCK_CONSTANT / Delta_x; // Momentum uncertainty
-    const g_quantum = (CONSTANTS.PLANCK_CONSTANT / Math.sqrt(Delta_x * Delta_p)) 
-                     * (2 * Math.PI / CONSTANTS.HUBBLE_TIME);
-    
+    const g_quantum = (CONSTANTS.PLANCK_CONSTANT / Math.sqrt(Delta_x * Delta_p))
+        * (2 * Math.PI / CONSTANTS.HUBBLE_TIME);
+
     // Lorentz force contribution: q * (v ï¿½ B)
     const v_cross_B = [
         v[1] * B_vec[2] - v[2] * B_vec[1],
-        v[2] * B_vec[0] - v[0] * B_vec[2], 
+        v[2] * B_vec[0] - v[0] * B_vec[2],
         v[0] * B_vec[1] - v[1] * B_vec[0]
     ];
-    const g_lorentz = q * Math.sqrt(v_cross_B[0]**2 + v_cross_B[1]**2 + v_cross_B[2]**2) / M;
-    
+    const g_lorentz = q * Math.sqrt(v_cross_B[0] ** 2 + v_cross_B[1] ** 2 + v_cross_B[2] ** 2) / M;
+
     // Fluid buoyancy
     const g_fluid = rho_fluid * V_fluid * (CONSTANTS.GRAVITATIONAL_CONSTANT * M) / Math.pow(r, 2);
-    
+
     // Wave interference terms
     const g_wave1 = 2 * A * Math.cos(k * x) * Math.cos(omega * t);
     const g_wave2 = (2 * Math.PI / 13.8) * A * Math.cos(k * x - omega * t); // Cosmological wave
-    
+
     // Dark matter perturbations
     const g_DM = (M_visible + M_DM) * (delta_rho / rho_avg + (3 * CONSTANTS.GRAVITATIONAL_CONSTANT * M) / Math.pow(r, 3));
-    
+
     // Total magnetar gravity
-    const g_Magnetar = g_newton + g_SMBH + Ug_total + g_DE + g_quantum 
-                      + g_lorentz + g_fluid + g_wave1 + g_wave2 + g_DM + M_mag + D_t;
-    
+    const g_Magnetar = g_newton + g_SMBH + Ug_total + g_DE + g_quantum
+        + g_lorentz + g_fluid + g_wave1 + g_wave2 + g_DM + M_mag + D_t;
+
     // Enhanced with specialized magnetars
     if (params.magnetarType === 'SGR_1745_2900') {
         const sgr1745 = new MagnetarSGR1745_2900(params);
@@ -4204,7 +4204,7 @@ function calculateMagnetarGravity(r, t, params = {}) {
             magnetarType: 'SGR_1745_2900'
         };
     }
-    
+
     if (params.magnetarType === 'SGR_0501_4516') {
         const sgr0501 = new MagnetarSGR0501_4516(params);
         const sgrResult = sgr0501.compute_g_Magnetar(t);
@@ -4215,7 +4215,7 @@ function calculateMagnetarGravity(r, t, params = {}) {
             magnetarType: 'SGR_0501_4516'
         };
     }
-    
+
     return {
         g_Magnetar,
         components: {
@@ -4229,16 +4229,16 @@ function calculateMagnetarGravity(r, t, params = {}) {
 // Compressed Gravity Framework: g(r,t) = sum_{i=1 to 26} (Ug1_i + Ug2_i + Ug3_i + Ug4_i)
 function calculateCompressedGravity(r, t, layers = 26) {
     let totalGravity = 0;
-    
+
     for (let i = 1; i <= layers; i++) {
         const Ug1_i = calculateUg1(r, t, CONSTANTS.SOLAR_MASS, 1) / layers; // Single layer contribution
         const Ug2_i = calculateUg2(r, t, CONSTANTS.SOLAR_MASS, 1) / layers;
-        const Ug3_i = calculateUg3(r, Math.PI/4, t, 1) / layers;
+        const Ug3_i = calculateUg3(r, Math.PI / 4, t, 1) / layers;
         const Ug4_i = calculateUg4(r, t, CONSTANTS.BLACK_HOLE_MASS, 1) / layers;
-        
+
         totalGravity += (Ug1_i + Ug2_i + Ug3_i + Ug4_i);
     }
-    
+
     return totalGravity;
 }
 
@@ -4247,7 +4247,7 @@ function calculateUA(t) {
     const stressEnergyTensor = 1.27e3 + 1.11e7; // kg/mï¿½ cï¿½
     const aetherModulation = Math.cos(Math.PI * t); // Negative time modulation
     const quantumFluctuations = CONSTANTS.RHO_VAC_UA * Math.sin(2 * Math.PI * t / 86400); // Daily oscillations
-    
+
     return COUPLING.gamma * (stressEnergyTensor + quantumFluctuations) * aetherModulation;
 }
 
@@ -4255,7 +4255,7 @@ function calculateUA(t) {
 function exportResults(results, filename = 'uqff_results.json') {
     const fs = require('fs');
     const timestamp = new Date().toISOString();
-    
+
     const exportData = {
         timestamp: timestamp,
         theory: 'Unified Quantum Field Force (UQFF)',
@@ -4264,7 +4264,7 @@ function exportResults(results, filename = 'uqff_results.json') {
         coupling: COUPLING,
         results: results
     };
-    
+
     try {
         fs.writeFileSync(filename, JSON.stringify(exportData, null, 2));
         console.log(`Results exported to ${filename}`);
@@ -4278,16 +4278,16 @@ function calculateReactorEfficiency(scmDensity, aetherDensity, t) {
     const scmVelocity = 1e8; // m/s (fastest-moving substance)
     const decayRate = COUPLING.alpha;
     const piModulation = Math.cos(Math.PI * t);
-    
-    return scmDensity * Math.pow(scmVelocity, 2) * aetherDensity 
-           * Math.exp(-decayRate * t) * (1 + 0.1 * piModulation);
+
+    return scmDensity * Math.pow(scmVelocity, 2) * aetherDensity
+        * Math.exp(-decayRate * t) * (1 + 0.1 * piModulation);
 }
 
 // Time evolution analysis
 function analyzeTimeEvolution(r, theta, timePoints) {
-    console.log(`\n=== Time Evolution Analysis at r=${(r/1e6).toFixed(1)}Mm ===`);
+    console.log(`\n=== Time Evolution Analysis at r=${(r / 1e6).toFixed(1)}Mm ===`);
     const evolution = [];
-    
+
     timePoints.forEach(t => {
         const result = calculateUnifiedField(r, theta, t);
         evolution.push({
@@ -4296,7 +4296,7 @@ function analyzeTimeEvolution(r, theta, timePoints) {
             components: result.components
         });
     });
-    
+
     return evolution;
 }
 
@@ -4304,78 +4304,78 @@ function analyzeTimeEvolution(r, theta, timePoints) {
 // F_U = S[k_i Delta_Ug_i - ï¿½_i ?Ug_i O_g M_bh/d_g E_react] + Um + A + F_U_Bi_i + g_Magnetar
 function calculateUnifiedField(r, theta, t, stellarMass = CONSTANTS.SOLAR_MASS, systemParams = {}) {
     console.log(`\n=== Advanced UQFF Calculation ===`);
-    console.log(`Position: r=${(r/1e6).toFixed(1)}Mm, theta=${theta.toFixed(2)}rad`);
-    console.log(`Time: t=${(t/86400).toFixed(1)}days (${t}s)`);
+    console.log(`Position: r=${(r / 1e6).toFixed(1)}Mm, theta=${theta.toFixed(2)}rad`);
+    console.log(`Time: t=${(t / 86400).toFixed(1)}days (${t}s)`);
     console.log(`System: M=${stellarMass.toExponential(2)}kg`);
-    
+
     // Calculate 26-Layer Universal Gravity components
     const Ug1 = calculateUg1(r, t, stellarMass);
     const Ug2 = calculateUg2(r, t, stellarMass);
     const Ug3 = calculateUg3(r, theta, t);
     const Ug4 = calculateUg4(r, t);
-    
+
     // Calculate enhanced Universal Buoyancy with F_U_Bi_i integrand
     const Ub1_result = calculateUb(Ug1, t, 1, systemParams);
     const Ub2_result = calculateUb(Ug2, t, 2, systemParams);
     const Ub3_result = calculateUb(Ug3, t, 3, systemParams);
     const Ub4_result = calculateUb(Ug4, t, 4, systemParams);
-    
+
     // Extract total buoyancy values
     const Ub1 = Ub1_result.totalBuoyancy;
-    const Ub2 = Ub2_result.totalBuoyancy; 
+    const Ub2 = Ub2_result.totalBuoyancy;
     const Ub3 = Ub3_result.totalBuoyancy;
     const Ub4 = Ub4_result.totalBuoyancy;
-    
+
     // Calculate Universal Magnetism and enhanced Aether
     const Um = calculateUm(t);
     const UA = calculateUA(t);
-    
+
     // Calculate Magnetar Gravity (comprehensive gravitational framework)
     const magnetarResult = calculateMagnetarGravity(r, t, {
         M: stellarMass,
         ...systemParams
     });
-    
+
     // Calculate Compressed Gravity (26-layer framework)
     const compressedGravity = calculateCompressedGravity(r, t);
-    
+
     // Enhanced Unified Field summation with all advanced components
-    const unifiedField = (Ug1 + Ub1) + (Ug2 + Ub2) + (Ug3 + Ub3) + (Ug4 + Ub4) 
-                        + Um + UA + magnetarResult.g_Magnetar + compressedGravity;
-    
+    const unifiedField = (Ug1 + Ub1) + (Ug2 + Ub2) + (Ug3 + Ub3) + (Ug4 + Ub4)
+        + Um + UA + magnetarResult.g_Magnetar + compressedGravity;
+
     // Detailed logging
     console.log(`\n--- Universal Gravity Components (26-Layer Enhanced) ---`);
     console.log(`  Ug1 (Internal Dipole): ${Ug1.toExponential(3)} N/mï¿½`);
     console.log(`  Ug2 (Outer Field Bubble): ${Ug2.toExponential(3)} N/mï¿½`);
     console.log(`  Ug3 (Magnetic Strings): ${Ug3.toExponential(3)} N/mï¿½`);
     console.log(`  Ug4 (Star-BH Interactions): ${Ug4.toExponential(3)} N/mï¿½`);
-    
+
     console.log(`\n--- Enhanced Universal Buoyancy (F_U_Bi_i Integration) ---`);
     console.log(`  Ub1 Total: ${Ub1.toExponential(3)} N/mï¿½`);
     console.log(`  F_U_Bi_i Component: ${Ub1_result.F_U_Bi_i.toExponential(3)} N/mï¿½`);
     console.log(`  LENR Force: ${Ub1_result.integrandComponents.F_LENR.toExponential(3)} N`);
     console.log(`  Vacuum Repulsion: ${Ub1_result.integrandComponents.F_vac_rep.toExponential(3)} N`);
     console.log(`  LEP Relativistic: ${Ub1_result.integrandComponents.F_rel.toExponential(3)} N`);
-    
+
     console.log(`\n--- Additional Field Components ---`);
     console.log(`  Universal Magnetism (Um): ${Um.toExponential(3)} N/mï¿½`);
     console.log(`  Universal Aether (UA): ${UA.toExponential(3)} N/mï¿½`);
     console.log(`  Magnetar Gravity: ${magnetarResult.g_Magnetar.toExponential(3)} m/sï¿½`);
     console.log(`  Compressed Gravity (26-layer): ${compressedGravity.toExponential(3)} N/mï¿½`);
-    
+
     console.log(`\n--- Final Unified Field Result ---`);
     console.log(`  F_U (Total Unified Field): ${unifiedField.toExponential(4)} N/mï¿½`);
-    
+
     // Detect negative buoyancy (challenges Standard Model)
     if (Ub1 < 0 || Ub2 < 0 || Ub3 < 0 || Ub4 < 0) {
         console.log(`\n??  NEGATIVE BUOYANCY DETECTED - Challenges SM conservation via vacuum fluctuations`);
     }
-    
+
     return {
         totalField: unifiedField,
-        components: { 
-            Ug1, Ug2, Ug3, Ug4, 
-            Ub1, Ub2, Ub3, Ub4, 
+        components: {
+            Ug1, Ug2, Ug3, Ug4,
+            Ub1, Ub2, Ub3, Ub4,
             Um, UA,
             magnetarGravity: magnetarResult.g_Magnetar,
             compressedGravity
@@ -4389,9 +4389,9 @@ function calculateUnifiedField(r, theta, t, stellarMass = CONSTANTS.SOLAR_MASS, 
 
 // Predefined Astrophysical Systems from MAIN_1.cpp
 
-    // Source70 (M51UQFFModule - Whirlpool Galaxy M51 gravitational dynamics with NGC 5195 interaction)
-    const Source70UQFFModule = require('./source70.js');
-    module.exports.Source70UQFFModule = Source70UQFFModule;
+// Source70 (M51UQFFModule - Whirlpool Galaxy M51 gravitational dynamics with NGC 5195 interaction)
+const Source70UQFFModule = require('./source70.js');
+module.exports.Source70UQFFModule = Source70UQFFModule;
 const PREDEFINED_SYSTEMS = {
     'SN_1006': {
         name: 'SN 1006 (Supernova Remnant)',
@@ -5338,7 +5338,7 @@ const PREDEFINED_SYSTEMS = {
         E_vac_ISM: 7.09e-37, // J/mï¿½ (ISM vacuum energy density)
         f_TRZ: 0.1, // Time-reversal correction factor
         M_sun: CONSTANTS.SOLAR_MASS, // kg (solar mass)
-        V_sys: (4.0/3.0) * Math.PI * Math.pow(1e4, 3), // mï¿½ (system volume)
+        V_sys: (4.0 / 3.0) * Math.PI * Math.pow(1e4, 3), // mï¿½ (system volume)
         // DPM (Differential Phase Modulation) parameters
         I_current: 1e21, // A (magnetar current)
         A_area: Math.PI * Math.pow(1e4, 2), // mï¿½ (cross-sectional area)
@@ -5398,7 +5398,7 @@ const PREDEFINED_SYSTEMS = {
         E_vac_ISM: 7.09e-37, // J/mï¿½ (ISM vacuum energy density)
         f_TRZ: 0.1, // Time-reversal correction factor
         M_sun: CONSTANTS.SOLAR_MASS, // kg (solar mass)
-        V_sys: (4.0/3.0) * Math.PI * Math.pow(1.27e10, 3), // mï¿½ (SMBH system volume)
+        V_sys: (4.0 / 3.0) * Math.PI * Math.pow(1.27e10, 3), // mï¿½ (SMBH system volume)
         // DPM (Differential Phase Modulation) parameters - scaled for SMBH
         I_current: 1e24, // A (SMBH-scale current, scaled up from magnetar)
         A_area: Math.PI * Math.pow(1.27e10, 2), // mï¿½ (SMBH cross-sectional area)
@@ -5466,7 +5466,7 @@ const PREDEFINED_SYSTEMS = {
         E_vac_ISM: 7.09e-37, // J/mï¿½ (ISM vacuum energy density)
         f_TRZ: 0.1, // Time-reversal correction factor
         M_sun: CONSTANTS.SOLAR_MASS, // kg (solar mass)
-        V_sys: (4.0/3.0) * Math.PI * Math.pow(3.5e18, 3), // mï¿½ (starbirth region volume)
+        V_sys: (4.0 / 3.0) * Math.PI * Math.pow(3.5e18, 3), // mï¿½ (starbirth region volume)
         // DPM (Differential Phase Modulation) parameters - scaled for starbirth
         I_current: 1e20, // A (current from stellar winds and magnetic fields)
         A_area: Math.PI * Math.pow(3.5e18, 2), // mï¿½ (starbirth region cross-sectional area)
@@ -5916,7 +5916,7 @@ const PREDEFINED_SYSTEMS = {
         t: 1e-15, // s (atomic timescale proxy)
         // Electron/orbital dynamics from Source42.cpp
         rho_fluid: 1e-25, // kg/mï¿½ (electron cloud density estimate)
-        V_volume: (4.0/3.0) * Math.PI * Math.pow(5.29e-11, 3), // mï¿½ (orbital volume)
+        V_volume: (4.0 / 3.0) * Math.PI * Math.pow(5.29e-11, 3), // mï¿½ (orbital volume)
         v_orbital: 2.2e6, // m/s (electron orbital velocity)
         delta_rho: 0.1 * 1e-25, // kg/mï¿½ (density perturbation)
         rho_mean: 1e-25, // kg/mï¿½ (mean electron density)
@@ -5978,7 +5978,7 @@ const PREDEFINED_SYSTEMS = {
         f_TRZ: 0.1, // Time-reversal correction factor
         // Hydrogen Atom parameters from Source43.cpp
         r: 5.29e-11, // m (Bohr radius)
-        V_sys: (4.0/3.0) * Math.PI * Math.pow(5.29e-11, 3), // mï¿½ (orbital volume)
+        V_sys: (4.0 / 3.0) * Math.PI * Math.pow(5.29e-11, 3), // mï¿½ (orbital volume)
         // Resonance parameters (spectral lines) from Source43.cpp
         f_DPM: 1e15, // Hz (Lyman alpha ~2.47e15 Hz scaled)
         f_THz: 1e15, // Hz (THz proxy for transitions)
@@ -6004,7 +6004,7 @@ const PREDEFINED_SYSTEMS = {
         A_amplitude: 1e-10, // Amplitude
         // Fluid/quantum proxies from Source43.cpp
         rho_fluid: 1e-25, // kg/mï¿½ (electron cloud density)
-        V_volume: (4.0/3.0) * Math.PI * Math.pow(5.29e-11, 3), // mï¿½ (volume)
+        V_volume: (4.0 / 3.0) * Math.PI * Math.pow(5.29e-11, 3), // mï¿½ (volume)
         delta_rho: 0.1 * 1e-25, // kg/mï¿½ (density perturbation)
         rho_mean: 1e-25, // kg/mï¿½ (mean density)
         // Quantum from Source43.cpp
@@ -6203,7 +6203,7 @@ const PREDEFINED_SYSTEMS = {
         targetScale: 'planetary_nebula_evolution', // Target application scale
         integrationMode: 'full_UQFF_NGC6302_evolution' // Complete Bug Nebula integration
     },
-    
+
     // 35th System: Source47.cpp - NGC 6302 Bug Nebula Resonance Evolution
     NGC6302_RESONANCE: {
         name: 'NGC 6302 Bug Nebula - Resonance Evolution (UQFF Module)',
@@ -6271,7 +6271,7 @@ const PREDEFINED_SYSTEMS = {
         targetScale: 'resonance_nebula_evolution', // Target application scale
         integrationMode: 'full_UQFF_NGC6302_resonance' // Complete resonance integration
     },
-    
+
     // 36th System: Source48.cpp - Orion Nebula MUGE Evolution
     ORION_NEBULA: {
         name: 'Orion Nebula - Complete MUGE Evolution (UQFF+SM Module)',
@@ -6302,7 +6302,7 @@ const PREDEFINED_SYSTEMS = {
         targetScale: 'orion_nebula_evolution', // Target application scale
         integrationMode: 'full_UQFF_orion_evolution' // Complete evolutionary integration
     },
-    
+
     // 37th System: Source49.cpp - Multi-System Compressed+Resonance UQFF Framework
     COMPRESSED_RESONANCE_UQFF34: {
         name: 'Multi-System Compressed+Resonance UQFF Framework (Systems 26-28, 30-32, 34)',
@@ -6342,7 +6342,7 @@ const PREDEFINED_SYSTEMS = {
         unificationFramework: true, // Unified multi-system approach
         integrationMode: 'compressed_resonance_multi_system' // Multi-system integration
     },
-    
+
     // 38th System: Source50.cpp - Dynamic Variable UQFF Compressed & Resonance Module
     COMPRESSED_RESONANCE_UQFF50: {
         name: 'Dynamic Variable UQFF Compressed & Resonance Module with Predefined Astronomical Systems',
@@ -6381,11 +6381,11 @@ const PREDEFINED_SYSTEMS = {
             'Hubble Sees Galaxies Galore': {
                 name: 'Hubble Sees Galaxies Galore',
                 description: 'Hubble Deep Field observations, capturing thousands of galaxies.',
-                M: 1.989e41, r: 1.543e21, z: 1.0, t: 4.35e17, 
+                M: 1.989e41, r: 1.543e21, z: 1.0, t: 4.35e17,
                 F_env: 0.0, v_exp: 1e5, I: 1e24, A: 7.487e42, omega1: 1e-6, omega2: -1e-6
             },
             'The Stellar Forge': {
-                name: 'The Stellar Forge', 
+                name: 'The Stellar Forge',
                 description: 'Star-forming region in Large Magellanic Cloud (30 Doradus Nebula).',
                 M: 1.989e34, r: 9.46e16, z: 0.00005, t: 6.312e13,
                 F_env: 0.0, v_exp: 1e4, I: 1e22, A: 8.508e35, omega1: 1e-2, omega2: -1e-2
@@ -6455,7 +6455,7 @@ const PREDEFINED_SYSTEMS = {
         resonanceAnalysis: true, // Full resonance MUGE analysis
         integrationMode: 'dynamic_compressed_resonance_astronomical' // Dynamic multi-system framework
     },
-    
+
     // 39th System: Source52.cpp - Multi-System UQFF Module with Compressed & Resonance Modes
     MULTI_UQFF52: {
         name: 'Multi-System UQFF Module with Compressed & Resonance Modes for 8 Astrophysical Systems',
@@ -6575,7 +6575,7 @@ const PREDEFINED_SYSTEMS = {
         comprehensiveTerms: true, // All UQFF terms included (no negligible approximations)
         integrationMode: 'multi_system_compressed_resonance_uqff' // Multi-system dual-mode framework
     },
-    
+
     // 40th System: Source54.cpp - Young Stars Outflows UQFF Module
     YOUNG_STARS_OUTFLOWS_54: {
         name: 'Young Stars Sculpting Gas with Powerful Outflows Evolution (NGC 346-like)',
@@ -6588,7 +6588,7 @@ const PREDEFINED_SYSTEMS = {
         pi: Math.PI,
         t_Hubble: 13.8e9 * 3.156e7, // s
         year_to_s: 3.156e7, // s/yr
-        
+
         // Young Stars Outflows parameters (NGC 346-like system)
         M_sun: 1.989e30, // kg
         M: 1000 * 1.989e30, // kg (1000 Msun total mass)
@@ -6597,7 +6597,7 @@ const PREDEFINED_SYSTEMS = {
         M_visible: 1000 * 1.989e30, // kg (visible mass, M_DM=0)
         M_DM: 0.0, // kg (no dark matter halo)
         r: 2.365e17, // m (half span ~25 ly)
-        
+
         // Hubble/cosmology parameters
         H0: 70.0, // km/s/Mpc
         Mpc_to_m: 3.086e22, // m/Mpc
@@ -6605,7 +6605,7 @@ const PREDEFINED_SYSTEMS = {
         Omega_m: 0.3,
         Omega_Lambda: 0.7,
         t_default: 5e6 * 3.156e7, // s (5 Myr default time)
-        
+
         // Gas/outflow dynamics
         rho_fluid: 1e-20, // kg/mï¿½ (dense gas)
         V: 1.0 / 1e-20, // mï¿½ (set for unit consistency: V = 1/rho_fluid)
@@ -6613,35 +6613,35 @@ const PREDEFINED_SYSTEMS = {
         t_evolve: 5e6 * 3.156e7, // s (5 Myr evolution time)
         delta_rho: 1e-5 * 1e-20, // kg/mï¿½ (density perturbation)
         rho: 1e-20, // kg/mï¿½ (same as rho_fluid)
-        
+
         // Electromagnetic/magnetic parameters
         B: 1e-5, // T (nebula magnetic field)
         B_crit: 1e11, // T (critical field 10^15 G)
         m_p: 1.673e-27, // kg (proton mass)
         rho_vac_UA: 7.09e-36, // Universal Aether vacuum density
         rho_vac_SCm: 7.09e-37, // SCm vacuum density
-        
+
         // Quantum terms
         Delta_x: 1e-10, // m
         Delta_p: 1.0546e-34 / 1e-10, // kgï¿½m/s (hbar / Delta_x)
         integral_psi: 1.0, // Normalized quantum integral
-        
+
         // Resonant/oscillatory parameters
         A: 1e-10, // Oscillatory amplitude
         k: 1e20, // Wave number
         omega: 1e15, // rad/s (angular frequency)
         x: 0.0, // Position coordinate
-        
+
         // Ug subterms (calculated dynamically)
         Ug1: 0.0, // Will be G*M/rï¿½
         Ug2: 0.0, // Will be v_outï¿½/r  
         Ug3: 0.0, // Set to zero
         Ug4: 0.0, // Will be Ug1 * f_sc
-        
+
         // Scale factors
         f_TRZ: 0.1, // Time-reversal factor
         f_sc: 10.0, // Scale factor for Ug4
-        
+
         // Young Stars Outflows specific parameters
         starFormationRate: 0.1, // Msun/yr
         outflowVelocity: 1e5, // m/s (100 km/s)
@@ -6649,7 +6649,7 @@ const PREDEFINED_SYSTEMS = {
         gasSculpting: true, // Gas sculpting by young stars
         radiationPressure: true, // Radiation pressure effects
         stellarWinds: true, // Stellar wind dynamics
-        
+
         // Physical description
         description: 'Young star cluster sculpting surrounding gas with powerful stellar outflows, radiation pressure, and stellar winds',
         systemType: 'stellar_cluster_outflows',
@@ -6664,41 +6664,41 @@ const PREDEFINED_SYSTEMS = {
         M_total: 1e53, // kg - Total mass of observable universe
         r_present: 4.4e26, // m - Current observable universe radius
         t_Hubble: 13.8e9 * 365.25 * 24 * 3600, // s - Hubble time (13.8 Gyr)
-        
+
         // Planck scale physics parameters  
         planckLength: 1.616e-35, // m - Planck length
         planckTime: 5.391e-44, // s - Planck time
         planckMass: 2.176e-8, // kg - Planck mass
-        
+
         // Fundamental constants for cosmic evolution
         c: 2.998e8, // m/s - Speed of light
         G: 6.674e-11, // mï¿½/(kgï¿½sï¿½) - Gravitational constant
         hbar: 1.055e-34, // Jï¿½s - Reduced Planck constant
-        
+
         // Dark matter and dark energy parameters
         omegaM: 0.315, // Total matter density parameter
         omegaLambda: 0.685, // Dark energy density parameter
         omegaDM: 0.268, // Dark matter density parameter (0.85 ï¿½ omegaM)
-        
+
         // Gravitational wave parameters
         h_strain: 1e-21, // Dimensionless strain amplitude
         lambda_gw: 1e16, // m - Gravitational wave wavelength
         f_gw: 1e-3, // Hz - Gravitational wave frequency
-        
+
         // UQFF specific parameters
         f_TRZ: 0.95, // Time-reversal zone factor
         alpha_cosmic: 1.618, // Golden ratio cosmic scaling
         beta_evolution: 2.718, // Natural evolution constant
-        
+
         // Quantum gravity coupling parameters
         xi_QG: 1.0, // Quantum gravity coupling strength
         eta_cosmic: 0.732, // Cosmic structure formation efficiency
-        
+
         // Integration and computational parameters
         timeSteps: 1000, // Number of time steps for evolution
         minTime: 5.391e-44, // s - Minimum time (Planck time)
         maxTime: 13.8e9 * 365.25 * 24 * 3600, // s - Maximum time (Hubble time)
-        
+
         // Physical description
         description: 'Big Bang gravity evolution from Planck epoch to present with quantum gravity, dark matter, and gravitational wave physics',
         systemType: 'cosmic_evolution',
@@ -6712,7 +6712,7 @@ const PREDEFINED_SYSTEMS = {
         // Multi-system framework parameters (7 systems supported)
         supportedSystems: ['MagnetarSGR1745', 'SagittariusA', 'TapestryStarbirth', 'Westerlund2', 'PillarsCreation', 'RingsRelativity', 'UniverseGuide'],
         defaultSystem: 'MagnetarSGR1745',
-        
+
         // Universal constants for all systems
         G: 6.6743e-11, // mï¿½/(kgï¿½sï¿½) - Gravitational constant
         c: 3e8, // m/s - Speed of light
@@ -6720,7 +6720,7 @@ const PREDEFINED_SYSTEMS = {
         Lambda: 1.1e-52, // m^-2ï¿½ - Cosmological constant
         q: 1.602e-19, // C - Elementary charge
         pi: Math.PI, // p constant
-        
+
         // Cosmological parameters
         t_Hubble: 13.8e9 * 3.156e7, // s - Hubble time
         year_to_s: 3.156e7, // s/yr - Year to seconds conversion
@@ -6728,18 +6728,18 @@ const PREDEFINED_SYSTEMS = {
         Mpc_to_m: 3.086e22, // m/Mpc - Megaparsec to meters
         Omega_m: 0.3, // Matter density parameter
         Omega_Lambda: 0.7, // Dark energy density parameter
-        
+
         // Magnetic and superconductivity parameters
         B_default: 1e-5, // T - Default magnetic field
         B_crit: 1e11, // T - Critical magnetic field for superconductivity
         f_sc: 10.0, // Superconductivity factor
-        
+
         // Fluid and quantum parameters
         rho_fluid: 1e-20, // kg/mï¿½ - Default fluid density
         delta_rho_over_rho: 1e-5, // Density perturbation ratio
         integral_psi_total: 1.0, // Combined wave integral (approximation)
         Delta_x_Delta_p: 1e-68, // Jï¿½ï¿½sï¿½ - Uncertainty product
-        
+
         // System-specific parameter sets (loaded dynamically)
         systemParameters: {
             MagnetarSGR1745: {
@@ -6820,19 +6820,19 @@ const PREDEFINED_SYSTEMS = {
                 systemType: 'solar_system'
             }
         },
-        
+
         // Compressed UQFF integration parameters
         compressionCycle: 2, // UQFF Compression Cycle 2
         unifiedHtz: true, // Unified H(t,z) computation
         modularF_env: true, // Modular environmental terms
         generalizedUg3: true, // Generalized Ug3' = G*M_ext/r_extï¿½
         consolidatedPsi: true, // Consolidated ?_total integral
-        
+
         // Variable management features
         dynamicVariables: true, // Dynamic variable updates
         systemSwitching: true, // Runtime system switching
         autoParameterLoading: true, // Automatic parameter loading per system
-        
+
         // Physical description
         description: 'Multi-system compressed UQFF framework supporting 7 astrophysical systems with dynamic variable management, unified environmental terms, and modular compressed gravity equations',
         systemType: 'multi_system_compressed_uqff',
@@ -6844,11 +6844,11 @@ const PREDEFINED_SYSTEMS = {
     // Multi-System UQFF Compression Module (from Source60.cpp) - 43rd System
     MULTI_UQFF_COMPRESSION_60: {
         // 19-system comprehensive framework
-        supportedSystems: ['MagnetarSGR1745', 'SagittariusA', 'TapestryStarbirth', 'Westerlund2', 'PillarsCreation', 
-                          'RingsRelativity', 'NGC2525', 'NGC3603', 'BubbleNebula', 'AntennaeGalaxies', 'HorseheadNebula', 
-                          'NGC1275', 'NGC1792', 'HubbleUltraDeepField', 'StudentsGuideUniverse'],
+        supportedSystems: ['MagnetarSGR1745', 'SagittariusA', 'TapestryStarbirth', 'Westerlund2', 'PillarsCreation',
+            'RingsRelativity', 'NGC2525', 'NGC3603', 'BubbleNebula', 'AntennaeGalaxies', 'HorseheadNebula',
+            'NGC1275', 'NGC1792', 'HubbleUltraDeepField', 'StudentsGuideUniverse'],
         defaultSystem: 'MagnetarSGR1745',
-        
+
         // Universal physical constants
         G: 6.6743e-11, // mï¿½ kg?ï¿½ s^-1ï¿½
         c: 3e8, // m/s
@@ -6856,7 +6856,7 @@ const PREDEFINED_SYSTEMS = {
         Lambda: 1.1e-52, // m^-2ï¿½
         q: 1.602e-19, // C
         pi: Math.PI,
-        
+
         // Cosmological framework
         t_Hubble: 13.8e9 * 3.156e7, // s
         year_to_s: 3.156e7, // s/yr
@@ -6864,22 +6864,22 @@ const PREDEFINED_SYSTEMS = {
         Mpc_to_m: 3.086e22, // m/Mpc
         Omega_m: 0.3,
         Omega_Lambda: 0.7,
-        
+
         // Magnetic and superconductivity
         B_default: 1e-5, // T
         B_crit: 1e11, // T
         f_sc: 10.0,
-        
+
         // Fluid and quantum defaults
         rho_fluid: 1e-20, // kg/mï¿½
         delta_rho_over_rho: 1e-5,
         integral_psi_total: 1.0,
         Delta_x_Delta_p: 1e-68, // Jï¿½ sï¿½
-        
+
         // DM and visibility fractions (defaults)
         M_DM_fraction: 0.85,
         M_visible_fraction: 0.15,
-        
+
         // System-specific parameters for all 19 systems
         systemParameters: {
             MagnetarSGR1745: {
@@ -7078,19 +7078,19 @@ const PREDEFINED_SYSTEMS = {
                 description: 'Solar mass reference system for students guide'
             }
         },
-        
+
         // Compression framework features
         compressionCycle: 2, // UQFF Compression Cycle 2
         unifiedHtz: true, // Unified H(t,z) = H0v(O_m(1+z)ï¿½ + O_?)
         modularF_env: true, // Modular F_env(t) = S F_i(t)
         generalizedUg3: true, // Ug3' = G*M_ext/r_extï¿½
         consolidatedPsi: true, // ?_total consolidated integral
-        
+
         // Advanced features
         dynamicVariables: true, // Map-based dynamic variable management
         systemSwitching: true, // Runtime system switching capability
         comprehensiveTerms: true, // All UQFF terms included (nothing negligible)
-        
+
         // Physical description
         description: '19-system comprehensive UQFF compression framework with unified H(t,z), modular F_env(t), dynamic variables, and complete gravitational component integration across diverse astrophysical systems',
         systemType: 'multi_system_uqff_compression',
@@ -7104,28 +7104,28 @@ const PREDEFINED_SYSTEMS = {
         // Red Dwarf Reactor Plasma Orb Experiment parameters
         name: 'UFE Red Dwarf Reactor Plasma Orb Experiment',
         description: 'Unified Field Equation implementation for Red Dwarf Reactor Plasma Orb Experiment with batch processing, plasmoid dynamics, and 26 quantum levels',
-        
+
         // Universal constants
         G: 6.6743e-11, // mï¿½ kg?ï¿½ s^-1ï¿½
         c: 3e8, // m/s
         hbar: 1.0546e-34, // J s
         pi: Math.PI,
-        
+
         // Experimental parameters
         gamma: 0.001, // Decay rate
         fps: 33.3, // Frames per second
         total_frames: 496, // Total experimental frames
-        
+
         // Physical dimensions (Red Dwarf Reactor cylinder)
         cylinder_radius: 0.0445, // m (1.75" radius)
         cylinder_height: 0.254, // m (10" height)
         cylinder_volume: Math.PI * Math.pow(0.0445, 2) * 0.254, // mï¿½
-        
+
         // Superconductive Material (SCm) and Universal Aether (UA) parameters
         SCm: 1e15, // kg/mï¿½
         SCm_prime: 1e15, // m^-2ï¿½
         UA: 1e-11, // C
-        
+
         // Vacuum energy densities (scale-dependent, J/mï¿½)
         rho_vac_SCm_atomic: 1.60e19, // Atomic scale
         rho_vac_UA_atomic: 1.60e20, // Atomic scale
@@ -7135,7 +7135,7 @@ const PREDEFINED_SYSTEMS = {
         rho_vac_Um: 1.42e-36, // Solar scale magnetism
         rho_vac_Ub: 2.13e-36, // Buoyancy
         rho_vac_Ui: 2.84e-36, // Interaction terms
-        
+
         // UFE coefficients (Ug_i and Um_j terms)
         k1: 1.0, // Ug1 coefficient
         beta1: 0.1, // Ug1 buoyancy opposition
@@ -7144,23 +7144,23 @@ const PREDEFINED_SYSTEMS = {
         phi1: 1.0, // Um1 phase
         eta: 1.0, // Metric coefficient
         lambda1: 0.1, // Ui interaction coefficient
-        
+
         // Astrophysical parameters
         M_bh: 1e6 * 1.989e30, // kg (example SMBH mass)
         E_react: 1e-20, // J (reaction energy)
-        
+
         // Experimental conditions
         B_s: 1e-3, // T (magnetic field)
         omega_s: 1e3, // rad/s (spin frequency)
         T_s: 300.0, // K (temperature)
         RM: 1.0, // Rotation measure
         SM: 1.0, // Source measure
-        
+
         // Default operational parameters
         r_default: 0.0445, // m (default radius)
         plasmoid_count_avg: 40.0, // Average plasmoids per frame
         energy_per_frame: 0.019, // J (energy per frame)
-        
+
         // Batch configurations
         batches: {
             BATCH_31: {
@@ -7171,7 +7171,7 @@ const PREDEFINED_SYSTEMS = {
                 description: 'Mid-sequence batch with elevated plasmoid activity'
             },
             BATCH_39: {
-                name: 'Batch 39', 
+                name: 'Batch 39',
                 t_start: 13.53, // s (start time - frame 451)
                 frame_start: 451,
                 plasmoid_count: 50.0,
@@ -7206,7 +7206,7 @@ const PREDEFINED_SYSTEMS = {
                 description: 'Default batch configuration'
             }
         },
-        
+
         // Quantum levels (26 levels from atomic to cosmic)
         quantum_levels: 26,
         level_descriptions: {
@@ -7214,7 +7214,7 @@ const PREDEFINED_SYSTEMS = {
             13: 'Plasma level (laboratory scale)',
             26: 'Cosmic scale (AGN feedback)'
         },
-        
+
         // Experimental timeline
         experiment_duration: 149.88, // s (total duration)
         timeline_markers: [
@@ -7223,14 +7223,14 @@ const PREDEFINED_SYSTEMS = {
             { frame: 451, time: 13.53, event: 'Batch 39 start' },
             { frame: 496, time: 14.91, event: 'Experiment end' }
         ],
-        
+
         // Physical properties
         systemType: 'ufe_plasma_orb_experiment',
         experimentType: 'red_dwarf_reactor',
         physicalScale: '10?ï¿½ï¿½ m - 10ï¿½ï¿½ m (atomic to cosmic via 26 quantum levels)',
         dominantPhysics: ['unified_field_equation', 'plasma_dynamics', 'plasmoid_formation', 'vacuum_energy', 'quantum_levels'],
         integrationMode: 'ufe_orb_dynamics', // UFE orb experiment framework
-        
+
         // Computational features
         dynamicBatching: true, // Runtime batch switching
         plasmoidTracking: true, // Plasmoid count analysis
@@ -7238,7 +7238,7 @@ const PREDEFINED_SYSTEMS = {
         temporalNegativeTime: true, // t? = -t_n * exp(p - t_n) computation
         quantumLevelIntegration: true // 26-level quantum framework
     },
-    
+
     // System 45: Nebular UQFF Module (Source65.cpp) - Nebular Cloud Analysis with Drawing 32 & Red Dwarf Compression_B
     // Advanced UQFF implementation for nebular dynamics: dust trails, pseudo-monopoles, pillars, star geometries
     // Integrates LENR, Higgs, NGC 346 star formation with equations 14-33 and 26 quantum levels
@@ -7246,7 +7246,7 @@ const PREDEFINED_SYSTEMS = {
         // Core system information
         name: 'Nebular UQFF Multi-System Framework',
         description: 'UQFF for Nebular Cloud Analysis (Drawing 32) and Red Dwarf Compression_B with LENR, Higgs, and star formation integration',
-        
+
         // Universal constants
         c: 3e8, // m/s (speed of light)
         G: 6.6743e-11, // mï¿½/(kgï¿½sï¿½) (gravitational constant)
@@ -7254,13 +7254,13 @@ const PREDEFINED_SYSTEMS = {
         pi: 3.141592653589793,
         e: 1.602e-19, // C (elementary charge)
         m_e: 9.11e-31, // kg (electron mass)
-        
+
         // Nebular dynamics parameters
         Omega: 1e3, // rad/s (angular frequency)
         n_e: 1e20, // m^-2ï¿½ (electron density)
         sigma: 1e-28, // mï¿½ (cross-section)
         v: 1e6, // m/s (velocity)
-        
+
         // Calibration factors (Drawing 32)
         k_eta: 1.0, // Neutron rate calibration
         k_trans: 1.0, // Transmutation calibration
@@ -7268,27 +7268,27 @@ const PREDEFINED_SYSTEMS = {
         kappa_V: 1.05, // Volume calibration (1.01-1.09)
         kappa_F: 1.00, // Force calibration (0.89-1.11)
         mu: 1.00, // Higgs parameter (1.00-1.18)
-        
+
         // Quantum framework
         n26: 26.0, // 26 quantum levels
         SSq: 1.0, // Superconductive square parameter
         gamma_decay: 0.1, // Decay parameter for eq31
-        
+
         // Vacuum energy densities (J/mï¿½) - Level 13 (plasma/nebula)
         rho_vac_SCm: 2.39e-22, // SCm vacuum energy (nebula scale)
         rho_vac_UA: 7.09e-36, // Universal aether vacuum energy
         rho_vac_Ug4: 1.19e-24, // Ug4 vacuum energy (dust trails)
         E_vac_UA_prime_SCm: 1e-20, // UA':SCm coupling (eq30)
         Um: 1.42e-36, // Universal magnetism
-        
+
         // Temporal parameters
         omega_c: 1e15, // rad/s (DNA frequency - eq32)
         t_default: 1e6, // s (default time)
-        
+
         // Geometric parameters (Drawing 32)
         V_little: 1.0, // atm (small volume)
         V_big: 33.0, // atm (large volume) 
-        
+
         // Star positions (Drawing 32 - normalized coordinates)
         star_positions: [
             { name: 'Star1_UL', x: 0.1, y: 0.9 }, // Upper left
@@ -7296,7 +7296,7 @@ const PREDEFINED_SYSTEMS = {
             { name: 'Star3_UR', x: 0.8, y: 0.85 }, // Upper right  
             { name: 'Star4_LC', x: 0.5, y: 0.2 }   // Lower center
         ],
-        
+
         // System configurations (5 system types)
         systems: {
             NEBULA_CLOUD: {
@@ -7337,7 +7337,7 @@ const PREDEFINED_SYSTEMS = {
                 focus: 'general_analysis'
             }
         },
-        
+
         // Equation implementation (eqs 14-33)
         equations: {
             electric_field: '14-18', // E-field computation
@@ -7351,24 +7351,24 @@ const PREDEFINED_SYSTEMS = {
             dna_flow: '32', // DNA energy flow
             buoyancy_ratio: '33' // Buoyancy ratio calculation
         },
-        
+
         // Non-local term: [SSq]^{n26} * exp(-(p + t))
         non_local_function: 'SSq^n26 * exp(-(pi + t))',
-        
+
         // Physical properties
         systemType: 'nebular_uqff_multi_system',
         experimentType: 'drawing_32_compression_b',
         physicalScale: '10?ï¿½ï¿½ m - 10ï¿½ï¿½ m (atomic to cosmic via 26 quantum levels)',
         dominantPhysics: ['nebular_dynamics', 'star_formation', 'lenr_physics', 'higgs_bosons', 'pseudo_monopoles'],
         integrationMode: 'multi_system_uqff', // Multi-system framework
-        
+
         // Computational features
         systemSwitching: true, // Runtime system type switching
         geometryCalculation: true, // Star geometry and angles
         accuracyComparison: true, // SM/UQFF accuracy validation
         nonLocalTerms: true, // Non-local [SSq]^{n26} computation
         equationIntegration: true, // Complete equations 14-33 implementation
-        
+
         // Validation targets (literature comparison)
         validation: {
             lenr_accuracy: 100.0, // % (post-calibration)
@@ -7376,7 +7376,7 @@ const PREDEFINED_SYSTEMS = {
             geometric_precision: 0.8, // rad (butterfly angle significance)
             star_formation_correlation: 0.95 // Correlation with NGC 346 data
         },
-        
+
         // Scale ranges per system
         scale_ranges: {
             NEBULA_CLOUD: { min: 1e15, max: 1e21 }, // m (nebular scale)
@@ -7386,7 +7386,7 @@ const PREDEFINED_SYSTEMS = {
             GENERIC: { min: 1e-11, max: 1e21 } // m (full range)
         }
     },
-    
+
     // System 46: Red Dwarf UQFF Module (Source66.cpp) - Red Dwarf Compression_C with LENR, Collider Higgs, NGC 346, Pi Calculations
     // Advanced UQFF implementation for equations 1-10, 15, 20 with Pi series, neutron rates, and magnetic energy calculations
     // Integrates LENR metallic hydride, exploding wire, solar corona, Higgs boson physics, and Basel series computations
@@ -7394,74 +7394,74 @@ const PREDEFINED_SYSTEMS = {
         // Core system information
         name: 'Red Dwarf UQFF Compression_C Framework',
         description: 'UQFF for Red Dwarf Compression_C (43.c) with LENR, Collider Higgs, NGC 346, Gas Nebula, Pi Calculations (equations 1-10,15,20)',
-        
+
         // Universal constants
         c: 3e8, // m/s (speed of light)
         G: 6.6743e-11, // mï¿½/(kgï¿½sï¿½) (gravitational constant)
         pi: 3.141592653589793,
-        
+
         // Particle masses
         Mn: 1.67493e-27, // kg (neutron mass)
         Mp: 1.67262e-27, // kg (proton mass)
         me: 9.11e-31, // kg (electron mass)
-        
+
         // LENR parameters
         Q_MeV: 0.78, // MeV (Q-value for transmutation)
         E_hydride: 2e11, // V/m (metallic hydride E-field)
         Omega_hydride: 1e16, // rad/s (hydride frequency)
         eta_hydride: 1e13, // cm^-2ï¿½/s (hydride neutron rate)
-        
+
         // Exploding wire parameters
         E_wire: 28.8e11, // V/m (wire E-field)
         eta_wire: 1e8, // cm^-2ï¿½/s (wire neutron rate)
-        
+
         // Solar corona parameters
         E_corona: 1.2e-3, // V/m (base corona E-field)
         beta_minus_beta0: 1.0, // (ï¿½ - ï¿½0)ï¿½ scaling factor
         eta_corona: 7e-3, // cm^-2ï¿½/s (corona neutron rate)
-        
+
         // Collider Higgs parameters
         m_H: 125.0, // GeV (Higgs mass)
         mu_H: 1.00, // Higgs parameter (1.00-1.18 range)
         BR_WW: 0.215, // Branching ratio H?WW
-        
+
         // Calibration factors
         k_eta: 2.75e8, // Neutron rate calibration
         lambda_H: 1.0, // Higgs field coupling
         omega_H: 1.585e-8, // rad/s (Higgs frequency)
         f_quasi: 0.01, // Quasi-particle fraction
-        
+
         // Quantum framework
         n26: 26.0, // 26 quantum levels
         SSq: 1.0, // Superconductive square parameter
-        
+
         // Magnetic and stellar parameters
         k3: 1.0, // Ug3 coupling constant
         B_j: 1.01e-7, // T (adjusted magnetic field)
         omega_s: 2.5e-6, // rad/s (stellar frequency)
         P_core: 1.0, // Core pressure factor
         E_react: 1e46, // J (reaction energy)
-        
+
         // Plasma parameters
         n_e: 1e20, // m^-2ï¿½ (electron density)
         sigma: 1e-28, // mï¿½ (cross-section)
         v: 1e6, // m/s (velocity)
-        
+
         // Corona/stellar parameters
         r: 1e3, // km (radius)
         B_kiloG: 1.0, // kG (magnetic field in kilogauss)
         R_km: 1e3, // km (radius in km)
         v_over_c: 1e-2, // v/c ratio
-        
+
         // Star formation parameters
         M_stars: 1000.0, // Solar masses
         theta: 0.0, // rad (angle)
         n_ug: 1.0, // Ug3 power
-        
+
         // Series parameters
         x_buoy: 3.0, // Buoyancy series parameter
         t_default: 1.0, // s (default time)
-        
+
         // System configurations (7 system types)
         systems: {
             LENR_CELL: {
@@ -7508,7 +7508,7 @@ const PREDEFINED_SYSTEMS = {
                 focus: 'general_analysis'
             }
         },
-        
+
         // Equation implementation (eqs 1-10, 15, 20)
         equations: {
             transmutation_Q: '2', // Q-value for nuclear transmutation
@@ -7522,7 +7522,7 @@ const PREDEFINED_SYSTEMS = {
             basel_series: '15', // S(s) Basel series S1/n^s
             buoyancy_series: '20' // Buoyancy series S(odd n) 1/x^{(p+1)^n}
         },
-        
+
         // Pi series constants (Basel series)
         pi_series: {
             S2_exact: Math.PI * Math.PI / 6, // pï¿½/6 ï¿½ 1.6449340668
@@ -7530,17 +7530,17 @@ const PREDEFINED_SYSTEMS = {
             series_terms: 10000, // Terms for convergence (~15 digits)
             precision_digits: 15 // Target precision
         },
-        
+
         // Non-local function: exp(-[SSq]^{n26} * exp(-(p + t)))
         non_local_function: 'exp(-SSq^n26 * exp(-(pi + t)))',
-        
+
         // Physical properties
         systemType: 'red_dwarf_uqff_compression_c',
         experimentType: 'lenr_higgs_pi_calculations',
         physicalScale: '10?ï¿½8 m - 10ï¿½ï¿½ m (particle to cosmic via 26 quantum levels)',
         dominantPhysics: ['lenr_transmutation', 'higgs_physics', 'pi_series', 'magnetic_energy', 'neutron_production'],
         integrationMode: 'multi_system_compression_c', // Red Dwarf Compression_C framework
-        
+
         // Computational features
         systemSwitching: true, // Runtime system type switching
         piSeriesCalculation: true, // Basel series S(s) computation
@@ -7548,7 +7548,7 @@ const PREDEFINED_SYSTEMS = {
         magneticEnergyCalculation: true, // W_mag = 15 GeV ï¿½ B_kG ï¿½ R_km ï¿½ (v/c)
         neutronRateModeling: true, // Multi-system neutron production rates
         higgsIntegration: true, // Collider Higgs mass and branching ratios
-        
+
         // Validation targets (literature comparison)
         validation: {
             lenr_accuracy: 100.0, // % (post-calibration)
@@ -7557,7 +7557,7 @@ const PREDEFINED_SYSTEMS = {
             neutron_rate_correlation: 0.98, // Correlation with experimental data
             magnetic_energy_correlation: 0.95 // W_mag correlation
         },
-        
+
         // Scale ranges per system
         scale_ranges: {
             LENR_CELL: { min: 1e-15, max: 1e-9 }, // m (nuclear scale)
@@ -7569,7 +7569,7 @@ const PREDEFINED_SYSTEMS = {
             GENERIC: { min: 1e-18, max: 1e21 } // m (full range)
         }
     },
-    
+
     // System 47: Inertia UQFF Module (Source67.cpp) - Inertia Papers Quantum Waves with Operator Theory
     // Advanced UQFF implementation for equations 1-7 with wave functions, inertial operators, and bosonic energy
     // Integrates quantum waves, universal inertia, magnetic Hamiltonian, and three-leg proofset validation
@@ -7577,43 +7577,43 @@ const PREDEFINED_SYSTEMS = {
         // Core system information
         name: 'Inertia UQFF Quantum Waves Framework',
         description: 'UQFF for Inertia Papers (43.d) with Quantum Waves, Inertial Operator, Universal Inertia, Bosonic Energy (equations 1-7)',
-        
+
         // Universal constants
         c: 3e8, // m/s (speed of light)
         hbar: 1.0546e-34, // Jï¿½s (reduced Planck constant)
         mu0: 4 * Math.PI * 1e-7, // H/m (permeability of free space)
         pi: Math.PI,
-        
+
         // Quantum/atomic parameters
         a0: 5.29e-11, // m (Bohr radius)
         lambda: 1.885e-7, // m (wavelength from hydride)
         omega: 1e16, // rad/s (fundamental frequency)
         alpha: 1e6, // m^-2ï¿½ (wave vector parameter)
         r0: 1e-7, // m (reference position)
-        
+
         // Wave function parameters
         A: 1.0, // Wave amplitude
         beta: 1.0, // Twist amplitude
         lambda_I: 1.0, // Inertial coupling constant
         omega_m: 1e15, // rad/s (magnetic frequency)
         qm: 1e-10, // C (magnetic charge)
-        
+
         // Vacuum densities and aether
         rho_vac_SCm: 7.09e-37, // J/mï¿½ (SCm vacuum density)
         rho_vac_UA: 7.09e-36, // J/mï¿½ (UA vacuum density)
         E_aether: 1.683e-10, // J/mï¿½ (aether energy density)
         V: 1e-27, // mï¿½ (volume element)
-        
+
         // Inertial and resonant parameters
         omega_i: 1e3, // rad/s (inertial frequency)
         omega_r: 1e15, // rad/s (resonant frequency)
         F_RZ: 0.01, // Factor RZ correction
         m: 1.67e-27, // kg (proton mass approx)
-        
+
         // Magnetic parameters
         mu_mag: 9.27e-24, // J/T (Bohr magneton)
         B: 1e-5, // T (magnetic field)
-        
+
         // Scaling parameters for hydrogen levels (n=1-4)
         higgs_freq: 1.25e34, // Hz (Higgs frequency)
         precession_s: 1.617e11, // s (Earth precession time)
@@ -7621,12 +7621,12 @@ const PREDEFINED_SYSTEMS = {
         radial_factor: 5.29e-11 / 1e-9, // a0/1e-9 ï¿½ 0.0529
         wave_type_factor: 2.0,
         scaling_factor: 1e3 / 1e23, // 3.333e-23 quantum scaling
-        
+
         // Three-leg proofset validation
         energy_conservation_factor: 1.0, // Energy conservation E_out/E_in ï¿½ 1
         vacuum_density_ratio: 1.683e-97, // Galactic vacuum ratio
         quantum_scaling_factor: 3.333e-23, // 1e3/1e23 quantum scaling
-        
+
         // System type parameters (5 types available)
         system_types: {
             QUANTUM_WAVES: { l: 0, m: 0 }, // Spherical harmonic Y_00
@@ -7635,17 +7635,17 @@ const PREDEFINED_SYSTEMS = {
             BOSONIC_ENERGY: { x: 0.0, n_boson: 0 }, // Displacement and boson number
             GENERIC: {} // Default parameters
         },
-        
+
         // Default values
         t: 0.0, // s (time)
         r: 2e-7, // m (radius)
         theta: 0.0, // rad (polar angle)
         phi: 0.0, // rad (azimuthal angle)
         t_n: 0.0, // s (reference time)
-        
+
         // Wave vector
         k: 2 * Math.PI / 1.885e-7, // m^-2ï¿½ (k = 2p/?)
-        
+
         // Equation implementation (eqs 1-7)
         equations: {
             wave_function: '1', // ?(r,?,f,t) = A Y_lm sin(kr-?t)/r exp(-a|r-r0|)
@@ -7656,24 +7656,24 @@ const PREDEFINED_SYSTEMS = {
             bosonic_energy: '6', // E_boson = ï¿½m^-2?ï¿½xï¿½ + h??(n+ï¿½)
             magnetic_hamiltonian: '7' // H_mag = -mu?ï¿½B?
         },
-        
+
         // Non-local exponential: exp(-a |r - r0|)
         non_local_function: 'exp(-alpha * |r - r0|)',
-        
+
         // Physical properties
         systemType: 'inertia_uqff_quantum_waves',
         experimentType: 'quantum_wave_inertial_operator',
         physicalScale: '10?ï¿½ï¿½ m - 10?7 m (atomic to molecular scales)',
         dominantPhysics: ['quantum_waves', 'inertial_dynamics', 'bosonic_energy', 'magnetic_coupling', 'aether_interactions'],
         integrationMode: 'inertia_papers_43d', // Inertia Papers 43.d framework
-        
+
         // Computational features
         sphericalHarmonics: true, // Y_lm computation (simplified l=0,m=0)
         complexWaveFunction: true, // Complex ? calculations
         inertialOperatorApproximation: true, // ï¿½? approximation via finite differences
         threeLegProofset: true, // Energy conservation validation
         hydrogenLevelScaling: true, // n=1-4 quantum state scaling
-        
+
         // Validation targets (literature comparison)
         validation: {
             wave_function_accuracy: 95.0, // % (Y_00 = 1/v(4p) reference)
@@ -7682,7 +7682,7 @@ const PREDEFINED_SYSTEMS = {
             e_wave_magnitude: 1.17e-105, // J (expected E_wave for n=1-4)
             vacuum_ratio_precision: 1.683e-97 // Exact galactic vacuum ratio
         },
-        
+
         // Scale ranges per system type
         scale_ranges: {
             QUANTUM_WAVES: { min: 1e-11, max: 1e-9 }, // m (atomic wave scale)
@@ -7692,7 +7692,7 @@ const PREDEFINED_SYSTEMS = {
             GENERIC: { min: 1e-15, max: 1e-6 } // m (full quantum range)
         }
     },
-    
+
     // System 48: Hydrogen UQFF Module (Source68.cpp) - Red Dwarf Compression_E with Compressed Space Dynamics
     // Advanced UQFF implementation for hydrogen levels n=1-4 with E_space scaling and three-leg proofset validation
     // Integrates compressed space dynamics, matter creation, and precise Higgs/precession factor calculations
@@ -7700,36 +7700,36 @@ const PREDEFINED_SYSTEMS = {
         // Core system information
         name: 'Hydrogen UQFF Compressed Space Framework',
         description: 'UQFF for Red Dwarf Compression_E (43.e) with Compressed Space Dynamics, Three-Leg Proofset, Hydrogen Levels n=1-4',
-        
+
         // Universal constants
         pi: Math.PI,
-        
+
         // Energy parameters
         E_aether: 1.683e-10, // J/mï¿½ (aether energy density)
         V: 1e-27, // mï¿½ (volume element - atomic scale)
-        
+
         // Frequency and temporal parameters
         higgs_freq: 1.25e34, // Hz (Higgs frequency)
         precession_s: 1.617e11, // s (Earth precession time - Mayan calendar derived)
-        
+
         // Spatial configuration parameters
         spatial_config: 2.0, // Spherical/toroidal configuration factor
         compression: 1.0, // Compression factor
         layers: 5.0, // Concentric layers (page 85-86 default)
-        
+
         // Computed factors
         higgs_factor: 8e-34, // 10 / 1.25e34 ï¿½ 8e-34
         precession_factor: 6.183e-13, // 0.1 / 1.617e11 ï¿½ 6.183e-13
         quantum_scaling: 3.333e-23, // 1e3 / 1e23 = 3.333e-23
-        
+
         // Three-leg proofset parameters
         quantum_eV: 4.136e-14, // eV (quantum energy leg)
         vacuum_density_ratio: 1.683e-97, // Galactic vacuum ratio
         conservation_factor: 1.0, // Energy conservation E_out/E_in ï¿½ 1
-        
+
         // Standard Model comparison
         ESM: 12.94, // J (Standard Model equivalent energy)
-        
+
         // System type parameters (4 types available)
         system_types: {
             COMPRESSED_SPACE_85: { layers: 5.0, page: 85 }, // Page 85 specification
@@ -7737,13 +7737,13 @@ const PREDEFINED_SYSTEMS = {
             HYDROGEN_LEVELS: { n_levels: 4.0 }, // n=1-4 hydrogen levels
             GENERIC: {} // Default parameters
         },
-        
+
         // Default values
         t: 1.0, // s (time)
         r: 1e-9, // m (radius - nanometer scale)
         theta: 0.0, // rad (polar angle)
         n: 1.0, // Principal quantum number
-        
+
         // Equation implementation
         equations: {
             e_space: 'main', // E_space = E0 ï¿½ SCF ï¿½ CF ï¿½ LF ï¿½ HFF ï¿½ PTF ï¿½ QSF
@@ -7752,7 +7752,7 @@ const PREDEFINED_SYSTEMS = {
             vacuum_ratio_leg: '2', // Galactic vacuum density ratio
             quantum_energy_leg: '3' // Quantum energy in eV
         },
-        
+
         // Energy scaling formula components
         energy_scaling: {
             E0_formula: 'E_aether ï¿½ V', // Base energy
@@ -7763,7 +7763,7 @@ const PREDEFINED_SYSTEMS = {
             PTF: 'precession_factor', // Precession Time Factor
             QSF: 'quantum_scaling' // Quantum Scaling Factor
         },
-        
+
         // Expected results
         expected_results: {
             E0: 1.683e-37, // J (E_aether ï¿½ V)
@@ -7771,17 +7771,17 @@ const PREDEFINED_SYSTEMS = {
             E_space_page86: 5.52e-104, // J (expected for page 86, similar)
             UQFF_contrast_SM: 2.35e-105 // UQFF/SM ratio (~1e-105 vs 12.94 J)
         },
-        
+
         // Non-local function integration
         non_local_function: 'exp(-(p + t))', // Non-local exponential for Um/Ug3
-        
+
         // Physical properties
         systemType: 'hydrogen_uqff_compressed_space',
         experimentType: 'compressed_space_dynamics_e',
         physicalScale: '10?ï¿½7 mï¿½ - 10?? m (atomic to nanometer scales)',
         dominantPhysics: ['compressed_space', 'matter_creation', 'three_leg_validation', 'hydrogen_levels', 'higgs_precession_scaling'],
         integrationMode: 'red_dwarf_compression_e', // Red Dwarf Compression_E framework
-        
+
         // Computational features
         threeLegValidation: true, // Three-leg proofset (conservation, vacuum, quantum)
         hydrogenLevelScaling: true, // n=1-4 hydrogen level calculations
@@ -7790,7 +7790,7 @@ const PREDEFINED_SYSTEMS = {
         pageSpecificConfiguration: true, // Page 85/86 specific parameters
         higgsFrequencyScaling: true, // Precise Higgs frequency factor scaling
         precessionTimeIntegration: true, // Mayan calendar precession integration
-        
+
         // Validation targets (literature comparison)
         validation: {
             e_space_accuracy: 95.0, // % (E_space calculation accuracy)
@@ -7801,7 +7801,7 @@ const PREDEFINED_SYSTEMS = {
             precession_factor_precision: 6.183e-13, // Exact precession factor
             sm_contrast_magnitude: 2.35e-105 // UQFF vs SM energy contrast
         },
-        
+
         // Scale ranges per system type
         scale_ranges: {
             COMPRESSED_SPACE_85: { min: 1e-27, max: 1e-9 }, // mï¿½ to m (atomic to nano)
@@ -7810,7 +7810,7 @@ const PREDEFINED_SYSTEMS = {
             GENERIC: { min: 1e-27, max: 1e-6 } // mï¿½ to mum (full range)
         }
     },
-    
+
     // System 49: UQFF Compression Module (Source69.cpp) - Multi-System Compressed UQFF Framework
     // Advanced UQFF implementation for multi-system astrophysical evolution with compressed equations
     // Supports 19+ systems including Magnetar SGR 1745-2900, Sagittarius A*, Tapestry, Westerlund 2, Pillars of Creation
@@ -7818,13 +7818,13 @@ const PREDEFINED_SYSTEMS = {
         // Core system information
         name: 'UQFF Compression Multi-System Framework',
         description: 'Compressed Universal Quantum Field Superconductive Framework for multi-system astrophysical evolution with H(t,z), F_env(t), and Ug3\' terms',
-        
+
         // Universal constants
         c: 3e8, // m/s (speed of light)
         G: 6.6743e-11, // mï¿½/(kgï¿½sï¿½) (gravitational constant)
         hbar: 1.0546e-34, // Jï¿½s (reduced Planck constant)
         pi: Math.PI,
-        
+
         // Cosmological parameters
         Lambda: 1.1e-52, // m^-2ï¿½ (cosmological constant)
         H0: 70.0, // km/s/Mpc (Hubble constant)
@@ -7833,11 +7833,11 @@ const PREDEFINED_SYSTEMS = {
         Omega_Lambda: 0.7, // Dark energy density parameter
         t_Hubble: 13.8e9 * 3.156e7, // s (Hubble time)
         year_to_s: 3.156e7, // s/yr conversion
-        
+
         // Magnetic and superconductivity parameters
         B_crit: 1e11, // T (critical magnetic field - 10^15 G)
         f_sc: 1.0, // Superconductive factor
-        
+
         // Environmental force terms (F_env components)
         F_wind: 0.01, // Wind force factor
         F_erode: 0.02, // Erosion force factor
@@ -7851,12 +7851,12 @@ const PREDEFINED_SYSTEMS = {
         F_SN: 0.04, // Supernova force factor
         F_rad: 0.02, // Radiation force factor
         F_BH: 0.01, // Black hole force factor
-        
+
         // Quantum parameters
         Delta_x: 1e-10, // m (position uncertainty)
         Delta_p: 1.0546e-24, // kgï¿½m/s (momentum uncertainty)
         integral_psi: 1.0, // Normalized wavefunction integral
-        
+
         // Wave parameters for psi_total
         A: 1e-10, // Wave amplitude
         k: 1e20, // m^-2ï¿½ (wave number)
@@ -7865,14 +7865,14 @@ const PREDEFINED_SYSTEMS = {
         q: 1.602e-19, // C (elementary charge)
         v: 1e6, // m/s (velocity)
         B: 1e-5, // T (magnetic field)
-        
+
         // Fluid and dark matter parameters
         rho_fluid: 1e-20, // kg/mï¿½ (fluid density)
         V: 1e3, // mï¿½ (volume scale)
         delta_rho: 1e-21, // kg/mï¿½ (density perturbation)
         rho: 1e-20, // kg/mï¿½ (mean density)
         M_DM: 0.0, // kg (dark matter mass - default)
-        
+
         // Default system parameters (Magnetar SGR 1745-2900)
         M: 1.4 * 1.989e30, // kg (1.4 solar masses)
         M0: 1.4 * 1.989e30, // kg (initial mass)
@@ -7882,16 +7882,16 @@ const PREDEFINED_SYSTEMS = {
         r_ext: 2.83e16, // m (distance to Sgr A*)
         SFR: 0.0, // kg/s (star formation rate - not applicable)
         M_visible: 1.4 * 1.989e30, // kg (visible mass)
-        
+
         // Supported systems (19+ astrophysical systems)
         supportedSystems: [
-            'MagnetarSGR1745', 'SagittariusA', 'TapestryStarbirth', 'Westerlund2', 
-            'PillarsCreation', 'RingsRelativity', 'NGC2525', 'NGC3603', 'BubbleNebula', 
-            'AntennaeGalaxies', 'HorseheadNebula', 'NGC1275', 'NGC1792', 
-            'HubbleUltraDeepField', 'StudentsGuideUniverse', 'LagoonNebula', 
+            'MagnetarSGR1745', 'SagittariusA', 'TapestryStarbirth', 'Westerlund2',
+            'PillarsCreation', 'RingsRelativity', 'NGC2525', 'NGC3603', 'BubbleNebula',
+            'AntennaeGalaxies', 'HorseheadNebula', 'NGC1275', 'NGC1792',
+            'HubbleUltraDeepField', 'StudentsGuideUniverse', 'LagoonNebula',
             'SpiralsSupernovae', 'NGC6302', 'OrionNebula'
         ],
-        
+
         // System parameter sets (key systems)
         systemParameters: {
             MagnetarSGR1745: {
@@ -7925,27 +7925,27 @@ const PREDEFINED_SYSTEMS = {
                 description: 'Solar mass reference system'
             }
         },
-        
+
         // Compression features
         compressionCycle: 2, // UQFF Compression Cycle 2
         unifiedHtz: true, // Unified H(t,z) = H0v(O_m(1+z)ï¿½ + O_?)
         modularF_env: true, // Modular F_env(t) = S F_i(t)
         generalizedUg3: true, // Ug3' = G*M_ext/r_extï¿½
         consolidatedPsi: true, // ?_total consolidated wave integral
-        
+
         // Advanced features
         dynamicVariables: true, // Dynamic variable management
         systemSwitching: true, // Runtime system switching
         comprehensiveTerms: true, // All UQFF terms included
         environmentalModulation: true, // F_env(t) environmental modulation
-        
+
         // Physical properties
         systemType: 'uqff_compression_multi_system',
         experimentType: 'compressed_uqff_astrophysical_evolution',
         physicalScale: '10 km - 100 kpc (magnetar to galaxy scales)',
         dominantPhysics: ['compressed_gravity', 'unified_hubble', 'modular_environment', 'external_gravity', 'multi_system_framework'],
         integrationMode: 'compressed_uqff_multi_system', // Multi-system compressed UQFF framework
-        
+
         // Computational features
         multisystemSupport: true, // 19+ astrophysical system support
         compressedEquations: true, // Compressed UQFF equation implementation
@@ -7954,7 +7954,7 @@ const PREDEFINED_SYSTEMS = {
         externalGravity: true, // Ug3' external gravitational effects
         quantumWaveIntegration: true, // ?_total quantum wave integration
         fluidDarkMatterCoupling: true, // Fluid and dark matter coupling terms
-        
+
         // Validation and accuracy
         validation: {
             multi_system_accuracy: 95.0, // % (multi-system calculation accuracy)
@@ -7964,7 +7964,7 @@ const PREDEFINED_SYSTEMS = {
             external_gravity_accuracy: 99.0, // % (Ug3' calculation accuracy)
             quantum_wave_integration: 96.5 // % (?_total integration accuracy)
         },
-        
+
         // Scale ranges for different systems
         scale_ranges: {
             MagnetarSGR1745: { min: 1e4, max: 1e5 }, // m (neutron star scale)
@@ -7983,52 +7983,52 @@ const PREDEFINED_SYSTEMS = {
         radius: 23.58e3 * 3.086e19, // m (23.58 kpc - M51 diameter)
         magneticField: 1e-5, // T (typical galactic magnetic field)
         temperature: 10, // K (cold galactic medium)
-        
+
         // M51 Whirlpool Galaxy specific parameters
         M_visible: 1.2e11 * 1.989e30, // kg (visible mass)
         M_DM: 4e10 * 1.989e30, // kg (dark matter mass)
         SFR: 1 * 1.989e30 / (365.25 * 24 * 3600), // kg/s (1 M?/yr star formation rate)
         z: 0.002, // Redshift (nearby galaxy)
-        
+
         // NGC 5195 interaction parameters
         M_NGC5195: 1e10 * 1.989e30, // kg (companion galaxy mass)
         d_NGC5195: 50e3 * 3.086e19, // m (separation distance 50 kpc)
-        
+
         // Central black hole
         M_BH: 1e6 * 1.989e30, // kg (central SMBH mass)
         omega_spin: 1e-4, // rad/s (BH spin)
-        
+
         // Galactic dynamics
         v_r: 1e3, // m/s (radial velocity)
         rho_fluid: 1e-20, // kg/mï¿½ (interstellar medium density)
         V: 1e50, // mï¿½ (galactic volume)
-        
+
         // Spiral arm parameters
         omega: 1e-15, // rad/s (density wave frequency)
         A: 1e-10, // Amplitude parameter
         k: 1e20, // Wave number
         sigma: 1e3 * 3.086e19, // m (Gaussian width - 1 kpc)
-        
+
         // Environmental forces
         k_SF: 1e-10, // N/Msun (star formation coupling)
         F_tidal: 0.0, // Calculated dynamically
         F_SF: 0.0, // Calculated dynamically
-        
+
         // Magnetic components
         I_dipole: 1e20, // A (dipole current)
         A_dipole: 1e15, // mï¿½ (dipole area)
         H_aether: 1e-6, // A/m (aether field)
-        
+
         // Time evolution
         t: 5e8 * 365.25 * 24 * 3600, // s (default 500 Myr)
         t_Hubble: 13.8e9 * 365.25 * 24 * 3600, // s (Hubble time)
-        
+
         // Oscillatory parameters
         delta_rho_over_rho: 1e-5, // Density perturbation
         scale_macro: 1e-12, // Macroscopic scale factor
         f_TRZ: 0.1, // Time-reversal factor
         f_sc: 1.0, // Superconductive factor
-        
+
         // Universal constants (matched to C++ implementation)
         G: 6.6743e-11, // mï¿½ kg?ï¿½ s^-1ï¿½
         c: 3e8, // m/s
@@ -8041,14 +8041,14 @@ const PREDEFINED_SYSTEMS = {
         Omega_Lambda: 0.7,
         Mpc_to_m: 3.086e22, // m/Mpc
         year_to_s: 365.25 * 24 * 3600, // s/yr
-        
+
         // Derived parameters
         mu_0: 4 * Math.PI * 1e-7, // H/m
         B_crit: 1e11, // T
         Delta_x: 1e-10, // m
         Delta_p: 1.0546e-24, // kgï¿½m/s (hbar/Delta_x)
         integral_psi: 1.0, // Normalized
-        
+
         // UQFF subcomponents
         rho_vac_SCm: 7.09e-37, // J/mï¿½
         rho_vac_UA: 7.09e-36, // J/mï¿½
@@ -8057,35 +8057,35 @@ const PREDEFINED_SYSTEMS = {
         t_n: 0.0,
         F_RZ: 0.01,
         k_4: 1.0,
-        
+
         // Dynamic variables
         Ug1: 0.0, // Calculated
         Ug2: 0.0, // Calculated  
         Ug3: 0.0, // Calculated
         Ug4: 0.0, // Calculated
         Ui: 0.0, // Calculated
-        
+
         // Physical properties
         systemType: 'm51_galaxy_uqff',
         experimentType: 'galactic_gravitational_dynamics',
         physicalScale: '23.58 kpc (galactic scale)',
         dominantPhysics: ['galactic_gravity', 'tidal_interaction', 'star_formation', 'black_hole_dynamics', 'spiral_waves', 'dark_matter'],
         integrationMode: 'm51_whirlpool_evolution', // M51 Whirlpool Galaxy evolution
-        
+
         // M51-specific features
         tidalInteraction: true, // NGC 5195 companion interaction
         spiralArmDynamics: true, // Density wave spiral arms
         centralBlackHole: true, // Central SMBH effects
         starFormationCoupling: true, // Star formation feedback
         darkMatterHalo: true, // Dark matter halo dynamics
-        
+
         // Computational features
         dynamicMass: true, // M(t) = M0 + SFRï¿½t
         environmentalForces: true, // F_env(t) = F_tidal + F_SF
         hubbleEvolution: true, // H(t,z) cosmological expansion
         superconductiveCorrection: true, // (1 - B/B_crit)
         quantumFluidCoupling: true, // Quantum and fluid terms
-        
+
         // Validation parameters
         validation: {
             galactic_mass_accuracy: 98.5, // % (total mass estimation)
@@ -8095,7 +8095,7 @@ const PREDEFINED_SYSTEMS = {
             central_bh_dynamics: 97.5, // % (SMBH gravitational effects)
             dark_matter_contribution: 95.0 // % (DM halo modeling)
         },
-        
+
         // M51 observational parameters (Hubble data)
         hubble_data: {
             distance: 8.58e6 * 3.086e16, // m (8.58 Mpc)
@@ -8105,7 +8105,7 @@ const PREDEFINED_SYSTEMS = {
             absolute_magnitude: -21.8, // V-band
             surface_brightness: 13.5 // mag/arcsecï¿½
         },
-        
+
         // Scale range
         scale_range: {
             min: 1e16, // m (sub-galactic scales)
@@ -8119,56 +8119,56 @@ const PREDEFINED_SYSTEMS = {
         radius: 46e3 * 3.086e19, // m (46 kpc - NGC 1316 extent)
         magneticField: 1e-4, // T (AGN magnetic field)
         temperature: 10, // K (cold galactic medium)
-        
+
         // NGC 1316 specific parameters
         M_visible: 3.5e11 * 1.989e30, // kg (visible mass)
         M_DM: 1.5e11 * 1.989e30, // kg (dark matter mass)
         M0: 5e11 * 1.989e30, // kg (initial total mass)
         z: 0.005, // Redshift
-        
+
         // Merger history parameters
         M_spiral: 1e10 * 1.989e30, // kg (merger progenitor mass)
         d_spiral: 50e3 * 3.086e19, // m (merger distance)
         tau_merge: 1e9 * 365.25 * 24 * 3600, // s (merger timescale 1 Gyr)
-        
+
         // Central AGN black hole
         M_BH: 1e8 * 1.989e30, // kg (central SMBH mass)
         omega_spin: 1e-3, // rad/s (BH spin for jets)
-        
+
         // Star cluster disruption
         M_cluster: 1e6 * 1.989e30, // kg (star cluster mass)
         k_cluster: 1e-12, // N/Msun (cluster disruption coupling)
-        
+
         // Dust lane dynamics
         rho_dust: 1e-21, // kg/mï¿½ (dust density)
         V: 1e51, // mï¿½ (galactic volume)
         v_r: 1e3, // m/s (radial velocity)
-        
+
         // Dust wave parameters
         A: 1e-10, // Amplitude parameter
         k: 1e20, // Wave number  
         omega: 1e-16, // rad/s (dust wave frequency)
         sigma: 2e3 * 3.086e19, // m (Gaussian width - 2 kpc)
-        
+
         // Environmental forces
         F_tidal: 0.0, // Calculated dynamically
         F_cluster: 0.0, // Calculated dynamically
-        
+
         // AGN jet/magnetic components
         I_dipole: 1e20, // A (dipole current)
         A_dipole: 1e15, // mï¿½ (dipole area)
         H_aether: 1e-5, // A/m (aether field)
-        
+
         // Time evolution
         t: 2e9 * 365.25 * 24 * 3600, // s (default 2 Gyr)
         t_Hubble: 13.8e9 * 365.25 * 24 * 3600, // s (Hubble time)
-        
+
         // Oscillatory parameters
         delta_rho_over_rho: 1e-5, // Density perturbation
         scale_macro: 1e-12, // Macroscopic scale factor
         f_TRZ: 0.1, // Time-reversal factor
         f_sc: 1.0, // Superconductive factor
-        
+
         // Universal constants (matched to C++ implementation)
         G: 6.6743e-11, // mï¿½ kg?ï¿½ s^-1ï¿½
         c: 3e8, // m/s
@@ -8181,14 +8181,14 @@ const PREDEFINED_SYSTEMS = {
         Omega_Lambda: 0.7,
         Mpc_to_m: 3.086e22, // m/Mpc
         year_to_s: 365.25 * 24 * 3600, // s/yr
-        
+
         // Derived parameters
         mu_0: 4 * Math.PI * 1e-7, // H/m
         B_crit: 1e11, // T
         Delta_x: 1e-10, // m
         Delta_p: 1.0546e-24, // kgï¿½m/s (hbar/Delta_x)
         integral_psi: 1.0, // Normalized
-        
+
         // UQFF subcomponents
         rho_vac_SCm: 7.09e-37, // J/mï¿½
         rho_vac_UA: 7.09e-36, // J/mï¿½
@@ -8197,21 +8197,21 @@ const PREDEFINED_SYSTEMS = {
         t_n: 0.0,
         F_RZ: 0.01,
         k_4: 1.0,
-        
+
         // Dynamic variables
         Ug1: 0.0, // Calculated
         Ug2: 0.0, // Calculated  
         Ug3: 0.0, // Calculated
         Ug4: 0.0, // Calculated
         Ui: 0.0, // Calculated
-        
+
         // Physical properties
         systemType: 'ngc1316_galaxy_uqff',
         experimentType: 'galactic_gravitational_dynamics',
         physicalScale: '46 kpc (galactic scale)',
         dominantPhysics: ['galactic_gravity', 'merger_history', 'tidal_forces', 'star_cluster_disruption', 'dust_lanes', 'agn_jets', 'dark_matter'],
         integrationMode: 'ngc1316_cosmic_dust_bunnies', // NGC 1316 cosmic dust bunnies evolution
-        
+
         // NGC 1316-specific features
         mergerHistory: true, // Galaxy merger evolution
         tidalDisruption: true, // Tidal forces from mergers
@@ -8220,14 +8220,14 @@ const PREDEFINED_SYSTEMS = {
         agnJets: true, // Active galactic nucleus jets
         radioLobes: true, // Radio emission lobes
         darkMatterHalo: true, // Dark matter halo dynamics
-        
+
         // Computational features
         dynamicMass: true, // M(t) with merger history
         environmentalForces: true, // F_env(t) = F_tidal + F_cluster
         hubbleEvolution: true, // H(t,z) cosmological expansion
         superconductiveCorrection: true, // (1 - B/B_crit)
         quantumFluidCoupling: true, // Quantum and dust fluid terms
-        
+
         // Validation parameters
         validation: {
             galactic_mass_accuracy: 97.0, // % (total mass estimation)
@@ -8238,7 +8238,7 @@ const PREDEFINED_SYSTEMS = {
             star_cluster_evolution: 96.5, // % (cluster disruption)
             dark_matter_contribution: 95.5 // % (DM halo modeling)
         },
-        
+
         // NGC 1316 observational parameters (Hubble ACS data)
         hubble_data: {
             distance: 18.7e6 * 3.086e16, // m (18.7 Mpc - Fornax cluster)
@@ -8248,7 +8248,7 @@ const PREDEFINED_SYSTEMS = {
             absolute_magnitude: -22.5, // V-band (very luminous)
             surface_brightness: 14.2 // mag/arcsecï¿½
         },
-        
+
         // Scale range
         scale_range: {
             min: 1e17, // m (star cluster scales)
@@ -8262,68 +8262,68 @@ const PREDEFINED_SYSTEMS = {
         radius: 6.1e3 * 3.086e19, // m (6.1 kpc distance for light echo calculations)
         magneticField: 1e-5, // T (stellar magnetic field)
         temperature: 5000, // K (stellar effective temperature)
-        
+
         // V838 Mon specific parameters
         M_s: 8 * 1.989e30, // kg (stellar mass)
         L_outburst: 600000 * 3.826e26, // W (2.3e38 W - peak outburst luminosity)
         d_V838: 6.1e3 * 3.086e19, // m (distance to V838 Mon)
-        
+
         // Dust scattering parameters
         rho_0: 1e-22, // kg/mï¿½ (circumstellar dust density)
         sigma_scatter: 1e-12, // mï¿½ (dust grain scattering cross-section)
         beta: 1.0, // Dust density modulation coefficient
-        
+
         // Light echo dynamics
         c: 3e8, // m/s (speed of light)
         t_echo_default: 3 * 365.25 * 24 * 3600, // s (3 years default echo time)
-        
+
         // Gravitational modulation via Ug1
         k1: 1.0, // Ug1 scaling factor
         mu_s: 1.0, // Superconductive permeability
         alpha: 0.0005, // Exponential decay coefficient
-        
+
         // Time-reversal and phase parameters
         f_TRZ: 0.1, // Time-reversal correction factor
         t_n: 0.0, // Phase parameter
         delta_def: 0.01, // Periodic modulation amplitude
         periodic_freq: 0.001, // Periodic frequency coefficient
-        
+
         // Aether and vacuum energy parameters
         rho_vac_UA: 7.09e-36, // J/mï¿½ (Universal Aether vacuum energy)
         rho_vac_SCm: 7.09e-37, // J/mï¿½ (Superconductive material vacuum energy)
-        
+
         // Universal constants
         G: 6.6743e-11, // mï¿½ kg?ï¿½ s^-1ï¿½
         hbar: 1.0546e-34, // Jï¿½s
         pi: Math.PI,
-        
+
         // Scale and integration parameters
         scale_macro: 1e-12, // Macroscopic scale factor
         r_min: 1e13, // m (minimum light echo radius ~0.1 ly)
         r_max: 3e16, // m (maximum light echo radius ~3 ly)
-        
+
         // Derived light echo parameters
         I_base_max: 0.0, // Calculated dynamically (base intensity)
         rho_dust_modulated: 0.0, // Calculated dynamically
-        
+
         // Oscillatory and modulation terms
         cos_phase_factor: 1.0, // cos(p t_n) term
         exp_decay_factor: 1.0, // exp(-a t) term
         gradient_term: 0.0, // ?(M_s / r) simplified to M_s/rï¿½
-        
+
         // Environmental factors
         ug1_modulation: 0.0, // Ug1 gravitational modulation
         dust_exp_term: 1.0, // exp(-ï¿½ Ug1) dust density factor
         trz_correction: 1.1, // (1 + f_TRZ) time-reversal correction
         ua_sc_ratio: 1.0, // (1 + ?_UA/?_SCm) aether correction
-        
+
         // Physical properties
         systemType: 'v838mon_light_echo_uqff',
         experimentType: 'stellar_light_echo_dynamics',
         physicalScale: '6.1 kpc (interstellar scale)',
         dominantPhysics: ['light_echo_propagation', 'dust_scattering', 'gravitational_modulation', 'outburst_luminosity', 'time_reversal_effects', 'aether_corrections'],
         integrationMode: 'v838mon_intensity_evolution', // V838 Mon light echo intensity evolution
-        
+
         // V838 Mon-specific features
         lightEchoPropagation: true, // Light echo expansion dynamics
         dustScattering: true, // Circumstellar dust scattering
@@ -8332,14 +8332,14 @@ const PREDEFINED_SYSTEMS = {
         timeReversalEffects: true, // f_TRZ corrections
         aetherCorrections: true, // UA/SCm vacuum energy effects
         stellarMassEffect: true, // M_s = 8 M? gravitational influence
-        
+
         // Computational features
         dynamicIntensity: true, // I_echo(r,t) evolution
         dustDensityModulation: true, // ?_dust(r,t) via Ug1
         periodicModulation: true, // d_def = 0.01 sin(0.001 t)
         exponentialDecay: true, // exp(-a t) time evolution
         vacuumEnergyCorrection: true, // (1 + ?_UA/?_SCm) terms
-        
+
         // Validation parameters
         validation: {
             light_echo_intensity_accuracy: 95.0, // % (I_echo calculation accuracy)
@@ -8350,7 +8350,7 @@ const PREDEFINED_SYSTEMS = {
             aether_effect_contribution: 91.5, // % (UA/SCm corrections)
             stellar_mass_influence: 97.0 // % (M_s gravitational effects)
         },
-        
+
         // V838 Mon observational parameters (Hubble ACS 2004 data)
         hubble_data: {
             distance: 6.1e3 * 3.086e16, // m (6.1 kpc)
@@ -8360,7 +8360,7 @@ const PREDEFINED_SYSTEMS = {
             nebular_extent: 6 * 9.46e15, // m (~6 light-years maximum echo)
             spectral_type: 'L-type' // Post-outburst classification
         },
-        
+
         // Scale range
         scale_range: {
             min: 1e13, // m (inner circumstellar region)
@@ -8374,7 +8374,7 @@ const PREDEFINED_SYSTEMS = {
         radius: 11.79e3 * 3.086e19, // m (11.79 kpc galactic radius)
         magneticField: 1e-5, // T (galactic magnetic field)
         temperature: 1e4, // K (ISM temperature)
-        
+
         // NGC 1300 specific parameters
         M_visible: 7e10 * 1.989e30, // kg (visible matter)
         M_DM: 3e10 * 1.989e30, // kg (dark matter)
@@ -8382,53 +8382,53 @@ const PREDEFINED_SYSTEMS = {
         SFR: 1 * 1.989e30 / (365.25 * 24 * 3600), // kg/s (1 M?/yr star formation rate)
         z: 0.005, // Redshift
         v_arm: 200e3, // m/s (spiral arm gas velocity)
-        
+
         // Galactic dynamics
         rho_fluid: 1e-21, // kg/mï¿½ (ISM density)
         V: 1e50, // mï¿½ (galactic volume)
         B_crit: 1e11, // T (critical magnetic field)
         Delta_x: 1e-10, // m (quantum uncertainty)
-        
+
         // Bar dynamics parameters
         omega_spin: 1e-4, // rad/s (bar rotation frequency)
         I_dipole: 1e20, // A (bar dipole current)
         A_dipole: 1e15, // mï¿½ (bar dipole area)
         H_aether: 1e-6, // A/m (aether magnetic field)
-        
+
         // Spiral wave parameters
         A: 1e-10, // Wave amplitude
         k: 1e20, // Wave number
         omega: 1e-15, // rad/s (density wave frequency)
         sigma: 1e3 * 3.086e19, // m (Gaussian width for spiral arms)
-        
+
         // Environmental forces
         k_SF: 1e-10, // N/M? star formation feedback coefficient
         k_4: 1.0, // Reaction term coefficient
-        
+
         // Vacuum and aether parameters
         rho_vac_SCm: 7.09e-37, // J/mï¿½ (superconductive vacuum energy)
         rho_vac_UA: 7.09e-36, // J/mï¿½ (universal aether vacuum energy)
         lambda_I: 1.0, // Inertial coefficient
         omega_i: 1e-8, // rad/s (inertial frequency)
         F_RZ: 0.01, // Relativistic correction factor
-        
+
         // Cosmological parameters
         H0: 70.0, // km/s/Mpc (Hubble constant)
         Omega_m: 0.3, // Matter density parameter
         Omega_Lambda: 0.7, // Dark energy density parameter
         t_Hubble: 13.8e9 * 365.25 * 24 * 3600, // s (Hubble time)
-        
+
         // Scale factors
         scale_macro: 1e-12, // Macroscopic scale factor
         f_TRZ: 0.1, // Time-reversal factor
         f_sc: 1.0, // Superconductive correction factor
         v_r: 1e3, // m/s (radial velocity)
-        
+
         // Galactic structure parameters
         M_bar: 0.2, // Bar mass fraction (20% of total)
         r_bar: 0.3, // Bar radius fraction (30% of galactic radius)
         delta_rho_over_rho: 1e-5, // Density perturbation
-        
+
         // Universal constants
         G: 6.6743e-11, // mï¿½ kg?ï¿½ s^-1ï¿½
         c: 3e8, // m/s
@@ -8437,14 +8437,14 @@ const PREDEFINED_SYSTEMS = {
         q: 1.602e-19, // C (elementary charge)
         pi: Math.PI,
         mu_0: 4 * Math.PI * 1e-7, // H/m (permeability of free space)
-        
+
         // Physical properties
         systemType: 'ngc1300_barred_galaxy_uqff',
         experimentType: 'barred_spiral_galaxy_dynamics',
         physicalScale: '11.79 kpc (galactic scale)',
         dominantPhysics: ['bar_driven_gas_funneling', 'spiral_arm_density_waves', 'star_formation', 'dark_matter_dynamics', 'galactic_magnetic_fields', 'cosmological_expansion'],
         integrationMode: 'ngc1300_gravity_evolution', // NGC 1300 gravitational evolution
-        
+
         // NGC 1300-specific features
         barDynamics: true, // Central bar driving gas inflows
         spiralArmWaves: true, // Two-armed spiral density waves
@@ -8453,13 +8453,13 @@ const PREDEFINED_SYSTEMS = {
         galacticMagneticField: true, // Large-scale B-field structure
         cosmologicalEvolution: true, // H(t,z) expansion effects
         gasFlowDynamics: true, // ISM and molecular gas dynamics
-        
+
         // Environmental force components
         barFunneling: true, // F_bar = 0.1 GM/rï¿½ bar-driven flows
         starFormationFeedback: true, // F_SF stellar wind/SN feedback
         densityWaveForcing: true, // F_wave = ? v_armï¿½ spiral wave pressure
         externalGravity: true, // Ug3' = GM_bar/r_barï¿½ bar gravity
-        
+
         // Computational features
         dynamicMassEvolution: true, // M(t) = M0(1 + SFRï¿½t/M0)
         radiusEvolution: true, // r(t) = r0 + v_rï¿½t
@@ -8467,7 +8467,7 @@ const PREDEFINED_SYSTEMS = {
         superconductiveCorrection: true, // (1 - B/B_crit) terms
         quantumWaveIntegration: true, // ?_spiral wave functions
         fluidDynamicsIntegration: true, // ?_fluid ï¿½ V ï¿½ g terms
-        
+
         // Validation parameters
         validation: {
             gravitational_dynamics_accuracy: 94.5, // % (g_NGC1300 calculation)
@@ -8478,7 +8478,7 @@ const PREDEFINED_SYSTEMS = {
             magnetic_field_structure: 89.5, // % (galactic B-field)
             cosmological_expansion_integration: 96.0 // % (H(z) evolution)
         },
-        
+
         // NGC 1300 observational parameters (Hubble ACS 2004 data)
         hubble_data: {
             distance: 19.0e3 * 3.086e16, // m (19 Mpc)
@@ -8488,7 +8488,7 @@ const PREDEFINED_SYSTEMS = {
             apparent_magnitude: 10.4, // V-band
             angular_size: 6.2 * 60 // arcseconds (major axis)
         },
-        
+
         // Scale range
         scale_range: {
             min: 1e18, // m (inner galactic region)
@@ -8502,7 +8502,7 @@ const PREDEFINED_SYSTEMS = {
         radius: 1e20, // m (default scale)
         magneticField: 1e-5, // T (default magnetic field)
         temperature: 1e4, // K (default temperature)
-        
+
         // Multi-system UQFF parameters
         M0: 1e41, // kg (initial mass reference)
         SFR: 6e19, // kg/s (~2 M?/yr default)
@@ -8512,7 +8512,7 @@ const PREDEFINED_SYSTEMS = {
         rho_fluid: 1e-21, // kg/mï¿½ (ISM density)
         V: 1e50, // mï¿½ (volume)
         B_crit: 1e11, // T (critical magnetic field)
-        
+
         // Quantum and wave parameters
         Delta_x: 1e-10, // m (quantum uncertainty)
         Delta_p: 1.0546e-24, // kgï¿½m/s (momentum uncertainty)
@@ -8522,25 +8522,25 @@ const PREDEFINED_SYSTEMS = {
         omega: 1e15, // rad/s (oscillation frequency)
         x: 0.0, // Position parameter
         v: 1e3, // m/s (velocity)
-        
+
         // Force components
         Ug1: 0.0, // Dipole term
         Ug2: 0.0, // Superconductor term
         Ug3: 0.0, // External gravity term
         Ug4: 0.0, // Reaction term
-        
+
         // Environmental and scaling factors
         scale_macro: 1e-12, // Macroscopic scale factor
         f_TRZ: 0.1, // Time-reversal factor
         f_sc: 1.0, // Superconductive correction factor
         delta_rho: 1e-26, // kg/mï¿½ (density perturbation)
         F_wind: 0.0, // Wind force
-        
+
         H0: 70.0, // km/s/Mpc (Hubble constant)
         Omega_m: 0.3, // Matter density parameter
         Omega_Lambda: 0.7, // Dark energy density parameter
         t_Hubble: 13.8e9 * 365.25 * 24 * 3600, // s (Hubble time)
-        
+
         // System-specific parameters for each supported system
         systems: {
             YoungStars: {
@@ -8608,7 +8608,7 @@ const PREDEFINED_SYSTEMS = {
                 z: 0
             }
         },
-        
+
         // Universal constants
         G: 6.6743e-11, // mï¿½ kg?ï¿½ s^-1ï¿½
         c: 3e8, // m/s
@@ -8616,14 +8616,14 @@ const PREDEFINED_SYSTEMS = {
         Lambda: 1.1e-52, // m^-2ï¿½ (cosmological constant)
         q: 1.602e-19, // C (elementary charge)
         pi: Math.PI,
-        
+
         // Physical properties
         systemType: 'uqff_compressed_resonance_multi',
         experimentType: 'multi_system_uqff_dynamics',
         physicalScale: 'Universal (stellar to cosmic)',
         dominantPhysics: ['compressed_gravity', 'resonance_oscillations', 'multi_system_adaptation', 'cosmological_expansion', 'quantum_field_effects', 'dark_matter_dynamics'],
         integrationMode: 'compressed_resonance_uqff', // Dual-mode UQFF framework
-        
+
         // Multi-system features
         compressedMode: true, // Standard compressed UQFF equations
         resonanceMode: true, // Oscillatory wave dynamics
@@ -8632,11 +8632,11 @@ const PREDEFINED_SYSTEMS = {
         quantumIntegration: true, // Quantum field effects
         cosmologicalEvolution: true, // H(t,z) expansion
         darkMatterIntegration: true, // DM halo effects
-        
+
         // Supported analysis modes
         analysisTypes: ['compressed', 'resonance', 'hybrid'],
         supportedSystems: ['YoungStars', 'Eagle', 'BigBang', 'M51', 'NGC1316', 'V838Mon', 'NGC1300', 'Guide'],
-        
+
         // Computational features
         dualModeCalculation: true, // Both compressed and resonance
         systemSpecificParams: true, // Parameter sets per system
@@ -8644,7 +8644,7 @@ const PREDEFINED_SYSTEMS = {
         quantumUncertaintyIntegration: true, // ?xï¿½?p terms
         fluidDynamicsIntegration: true, // ?_fluid ï¿½ V ï¿½ g terms
         environmentalForces: true, // F_env environmental effects
-        
+
         // Validation parameters
         validation: {
             multi_system_accuracy: 96.0, // % (across all systems)
@@ -8655,7 +8655,7 @@ const PREDEFINED_SYSTEMS = {
             dark_matter_interaction: 92.5, // % (DM effects)
             parameter_adaptation_efficiency: 98.0 // % (system switching)
         },
-        
+
         // Framework characteristics
         framework_features: {
             compressed_equations: 'Standard g_UQFF(r,t) framework',
@@ -8665,7 +8665,7 @@ const PREDEFINED_SYSTEMS = {
             cosmological_framework: 'H(t,z) expansion with O_m, O_?',
             environmental_modeling: 'F_env system-specific forces'
         },
-        
+
         // Scale range (adaptive based on system)
         scale_range: {
             min: 1e10, // m (stellar scales)
@@ -8679,7 +8679,7 @@ const PREDEFINED_SYSTEMS = {
         radius: 3.31e16, // m (~3.5 light-years)
         magneticField: 1e-5, // T
         temperature: 20, // K (cold cloud)
-        
+
         // NGC 2264 specific parameters
         M_visible: 1.59e32, // kg (80 M?)
         M_DM: 3.978e31, // kg (20 M?)
@@ -8687,33 +8687,33 @@ const PREDEFINED_SYSTEMS = {
         SFR: 6.3e22, // kg/s (0.01 M?/yr star formation rate)
         z: 0.0008, // Redshift (nearby nebula)
         r: 3.31e16, // m (nebula radius)
-        
+
         // Stellar wind and environmental parameters
         v_wind: 20e3, // m/s (stellar wind velocity)
         rho_fluid: 1e-20, // kg/mï¿½ (gas density)
         V: 1e48, // mï¿½ (nebula volume)
         B_crit: 1e11, // T (critical magnetic field)
-        
+
         // Protostar formation and dynamics
         omega_spin: 1e-5, // rad/s (protostar spin rate)
         I_dipole: 1e18, // A (dipole current)
         A_dipole: 1e12, // mï¿½ (dipole area)
         H_aether: 1e-6, // A/m (aetheric field strength)
         v_r: 1e3, // m/s (radial expansion velocity)
-        
+
         // Pillar erosion and wave dynamics
         A: 1e-10, // Wave amplitude for pillar oscillations
         k: 1e20, // m^-2ï¿½ (wave number)
         omega: 1e-14, // rad/s (pillar wave frequency)
         sigma: 1e15, // m (Gaussian width for pillar structure)
-        
+
         // Environmental force parameters
         k_SF: 1e-10, // Star formation efficiency factor
         F_RZ: 0.01, // Radiative zone factor
         k_4: 1.0, // Reaction coefficient
         E_react_0: 1e40, // J (initial reaction energy)
         decay_rate: 0.0005, // s^-1ï¿½ (reaction decay rate)
-        
+
         // Quantum and vacuum parameters
         Delta_x: 1e-10, // m (quantum position uncertainty)
         Delta_p: 1.0546e-24, // kgï¿½m/s (momentum uncertainty)
@@ -8722,19 +8722,19 @@ const PREDEFINED_SYSTEMS = {
         rho_vac_UA: 7.09e-36, // J/mï¿½ (UA vacuum density)
         lambda_I: 1.0, // Interaction coupling constant
         omega_i: 1e-8, // rad/s (interaction frequency)
-        
+
         // Scaling and correction factors
         scale_macro: 1e-12, // Macroscopic scale factor
         f_TRZ: 0.1, // Time-reversal zone factor
         f_sc: 1.0, // Superconductive correction
         delta_rho_over_rho: 1e-5, // Relative density perturbation
-        
+
         // Cosmological parameters
         H0: 70.0, // km/s/Mpc (Hubble constant)
         Omega_m: 0.3, // Matter density parameter
         Omega_Lambda: 0.7, // Dark energy density parameter
         t_Hubble: 13.8e9 * 365.25 * 24 * 3600, // s (Hubble time)
-        
+
         // Universal constants
         G: 6.6743e-11, // mï¿½ kg?ï¿½ s^-1ï¿½
         c: 3e8, // m/s
@@ -8743,14 +8743,14 @@ const PREDEFINED_SYSTEMS = {
         q: 1.602e-19, // C (elementary charge)
         pi: Math.PI,
         mu_0: 4 * Math.PI * 1e-7, // H/m (magnetic permeability)
-        
+
         // Physical properties
         systemType: 'cone_nebula_uqff',
         experimentType: 'stellar_wind_protostar_formation',
         physicalScale: 'Nebular (1-10 light-years)',
         dominantPhysics: ['stellar_winds', 'pillar_erosion', 'protostar_formation', 'dust_gas_dynamics', 'dark_matter_interaction', 'magnetic_field_evolution'],
         integrationMode: 'cone_nebula_uqff', // NGC 2264 specific UQFF framework
-        
+
         // NGC 2264 features
         stellarWinds: true, // v_wind = 20 km/s stellar winds
         pillarErosion: true, // Wind erosion of pillar structures
@@ -8761,7 +8761,7 @@ const PREDEFINED_SYSTEMS = {
         quantumPillarWaves: true, // Quantum wave dynamics in pillars
         cosmologicalExpansion: true, // H(t,z) effects
         environmentalForces: true, // F_env(t) wind/SF/erosion
-        
+
         // Validation parameters
         validation: {
             hubble_acs_2002_correlation: 94.0, // % (Hubble ACS observations)
@@ -8773,7 +8773,7 @@ const PREDEFINED_SYSTEMS = {
             dark_matter_interaction: 90.5, // % (M_DM effects)
             environmental_force_modeling: 94.5 // % (F_env accuracy)
         },
-        
+
         // Framework characteristics
         framework_features: {
             stellar_wind_dynamics: 'F_wind = ? ï¿½ v_windï¿½ modeling',
@@ -8784,7 +8784,7 @@ const PREDEFINED_SYSTEMS = {
             environmental_forces: 'F_env = F_wind + F_SF + F_erode',
             dark_matter_halo: 'M_DM = 20 M? component integration'
         },
-        
+
         // Scale range
         scale_range: {
             min: 1e15, // m (protostar scales)
@@ -8798,7 +8798,7 @@ const PREDEFINED_SYSTEMS = {
         radius: 1.69e22, // m (~55 kpc)
         magneticField: 1e-5, // T
         temperature: 1e4, // K (interstellar medium)
-        
+
         // UGC 10214 specific parameters
         M_visible: 1.393e41, // kg (7ï¿½10ï¿½ï¿½ M?)
         M_DM: 5.967e40, // kg (3ï¿½10ï¿½ï¿½ M?)
@@ -8806,39 +8806,39 @@ const PREDEFINED_SYSTEMS = {
         SFR: 2.94e32, // kg/s (4.67 M?/yr star formation rate)
         z: 0.032, // Redshift
         r: 1.69e22, // m (galaxy radius)
-        
+
         // Minor merger and tidal parameters
         M_dwarf: 6.967e39, // kg (3.5ï¿½10? M? dwarf companion VV 29c)
         d_dwarf: 3.39e23, // m (110 kpc separation)
         v_tail: 400e3, // m/s (tidal tail velocity)
         tau_merge: 7.884e15, // s (250 Myr merger timescale)
-        
+
         // Tidal tail dynamics
         tail_length: 8.5e21, // m (~280 kpc tail length)
         rho_fluid: 1e-21, // kg/mï¿½ (ISM density)
         V: 1e52, // mï¿½ (galaxy volume)
         B_crit: 1e11, // T (critical magnetic field)
-        
+
         // Galactic structure and dynamics
         omega_spin: 1e-4, // rad/s (galactic rotation)
         I_dipole: 1e20, // A (galactic dipole current)
         A_dipole: 1e15, // mï¿½ (dipole area)
         H_aether: 1e-6, // A/m (aetheric field strength)
         v_r: 1e3, // m/s (radial expansion velocity)
-        
+
         // Tidal tail wave dynamics
         A: 1e-10, // Wave amplitude for tail oscillations
         k: 1e20, // m^-2ï¿½ (wave number)
         omega: 1e-15, // rad/s (tail wave frequency)
         sigma: 3.086e22, // m (10 kpc Gaussian width for tail structure)
-        
+
         // Environmental force parameters
         k_SF: 1e-10, // Star formation efficiency factor
         F_RZ: 0.01, // Radiative zone factor
         k_4: 1.0, // Reaction coefficient
         E_react_0: 1e46, // J (initial reaction energy)
         decay_rate: 0.0005, // s^-1ï¿½ (reaction decay rate)
-        
+
         // Quantum and vacuum parameters
         Delta_x: 1e-10, // m (quantum position uncertainty)
         Delta_p: 1.0546e-24, // kgï¿½m/s (momentum uncertainty)
@@ -8847,19 +8847,19 @@ const PREDEFINED_SYSTEMS = {
         rho_vac_UA: 7.09e-36, // J/mï¿½ (UA vacuum density)
         lambda_I: 1.0, // Interaction coupling constant
         omega_i: 1e-8, // rad/s (interaction frequency)
-        
+
         // Scaling and correction factors
         scale_macro: 1e-12, // Macroscopic scale factor
         f_TRZ: 0.1, // Time-reversal zone factor
         f_sc: 1.0, // Superconductive correction
         delta_rho_over_rho: 1e-5, // Relative density perturbation
-        
+
         // Cosmological parameters
         H0: 70.0, // km/s/Mpc (Hubble constant)
         Omega_m: 0.3, // Matter density parameter
         Omega_Lambda: 0.7, // Dark energy density parameter
         t_Hubble: 13.8e9 * 365.25 * 24 * 3600, // s (Hubble time)
-        
+
         // Universal constants
         G: 6.6743e-11, // mï¿½ kg?ï¿½ s^-1ï¿½
         c: 3e8, // m/s
@@ -8868,14 +8868,14 @@ const PREDEFINED_SYSTEMS = {
         q: 1.602e-19, // C (elementary charge)
         pi: Math.PI,
         mu_0: 4 * Math.PI * 1e-7, // H/m (magnetic permeability)
-        
+
         // Physical properties
         systemType: 'tadpole_galaxy_uqff',
         experimentType: 'tidal_tail_minor_merger',
         physicalScale: 'Galactic (50-300 kpc)',
         dominantPhysics: ['tidal_tail_ejection', 'minor_merger_dynamics', 'star_formation_in_tail', 'galactic_disk_distortion', 'dark_matter_redistribution', 'cosmic_expansion'],
         integrationMode: 'tadpole_galaxy_uqff', // UGC 10214 specific UQFF framework
-        
+
         // UGC 10214 features
         tidalTailEjection: true, // v_tail = 400 km/s tail formation
         minorMergerDynamics: true, // M_dwarf merger evolution
@@ -8885,7 +8885,7 @@ const PREDEFINED_SYSTEMS = {
         cosmicExpansion: true, // H(t,z) effects at z=0.032
         quantumTailWaves: true, // Quantum wave dynamics in tidal tail
         environmentalForces: true, // F_env(t) tidal/SF/tail forces
-        
+
         // Validation parameters
         validation: {
             hubble_acs_2003_correlation: 95.0, // % (Hubble ACS observations)
@@ -8897,7 +8897,7 @@ const PREDEFINED_SYSTEMS = {
             dark_matter_redistribution: 92.0, // % (M_DM effects)
             environmental_force_modeling: 94.0 // % (F_env accuracy)
         },
-        
+
         // Framework characteristics
         framework_features: {
             tidal_tail_dynamics: 'F_tail = ? ï¿½ v_tailï¿½ modeling with 280 kpc tail',
@@ -8908,7 +8908,7 @@ const PREDEFINED_SYSTEMS = {
             environmental_forces: 'F_env = F_tidal + F_SF + F_tail',
             dark_matter_evolution: 'M_DM = 3ï¿½10ï¿½ï¿½ M? redistribution'
         },
-        
+
         // Scale range
         scale_range: {
             min: 1e20, // m (galactic disk scales)
@@ -8922,7 +8922,7 @@ const PREDEFINED_SYSTEMS = {
         radius: 1.543e22, // m (~50 kpc)
         magneticField: 1e-5, // T
         temperature: 1e4, // K (interstellar medium)
-        
+
         // NGC 4676 specific parameters
         M_A: 9.945e40, // kg (5ï¿½10ï¿½ï¿½ M? - NGC 4676A)
         M_B: 9.945e40, // kg (5ï¿½10ï¿½ï¿½ M? - NGC 4676B)
@@ -8932,13 +8932,13 @@ const PREDEFINED_SYSTEMS = {
         SFR: 3.15e32, // kg/s (5 M?/yr enhanced star formation)
         z: 0.022, // Redshift
         r: 1.543e22, // m (system radius)
-        
+
         // Collision and merger parameters
         d: 3.086e20, // m (10 kpc effective separation)
         v_rel: 400e3, // m/s (relative velocity)
         tau_merge: 5.36e15, // s (170 Myr merger timescale)
         collision_phase: 'approach', // Current collision phase
-        
+
         // Tidal bridge and tail dynamics
         bridge_length: 4.63e21, // m (~150 kpc bridge length)
         tail_A_length: 6.17e21, // m (~200 kpc NGC 4676A tail)
@@ -8946,32 +8946,32 @@ const PREDEFINED_SYSTEMS = {
         rho_fluid: 1e-21, // kg/mï¿½ (ISM density)
         V: 1e52, // mï¿½ (system volume)
         B_crit: 1e11, // T (critical magnetic field)
-        
+
         // Galactic structure and dynamics
         omega_spin: 1e-4, // rad/s (galactic rotation)
         I_dipole: 1e20, // A (galactic dipole current)
         A_dipole: 1e15, // mï¿½ (dipole area)
         H_aether: 1e-6, // A/m (aetheric field strength)
         v_r: 1e3, // m/s (radial expansion velocity)
-        
+
         // THz enhancement parameters
         f_THz: 0.05, // THz factor for aetheric modulation
         H_eff_z: 1.0, // Effective H(z) enhancement
         Ug2_THz_amplitude: 1e-12, // THz-enhanced superconductor term amplitude
-        
+
         // Tidal tail wave dynamics
         A: 1e-10, // Wave amplitude for tail oscillations
         k: 1e20, // m^-2ï¿½ (wave number)
         omega: 1e-15, // rad/s (tail wave frequency)
         sigma: 6.17e22, // m (20 kpc Gaussian width for tail structure)
-        
+
         // Environmental force parameters
         k_SF: 1e-10, // Star formation efficiency factor
         F_RZ: 0.01, // Radiative zone factor
         k_4: 1.0, // Reaction coefficient
         E_react_0: 1e46, // J (initial reaction energy)
         decay_rate: 0.0005, // s^-1ï¿½ (reaction decay rate)
-        
+
         // Quantum and vacuum parameters
         Delta_x: 1e-10, // m (quantum position uncertainty)
         Delta_p: 1.0546e-24, // kgï¿½m/s (momentum uncertainty)
@@ -8980,19 +8980,19 @@ const PREDEFINED_SYSTEMS = {
         rho_vac_UA: 7.09e-36, // J/mï¿½ (UA vacuum density)
         lambda_I: 1.0, // Interaction coupling constant
         omega_i: 1e-8, // rad/s (interaction frequency)
-        
+
         // Scaling and correction factors
         scale_macro: 1e-12, // Macroscopic scale factor
         f_TRZ: 0.1, // Time-reversal zone factor
         f_sc: 1.0, // Superconductive correction
         delta_rho_over_rho: 1e-5, // Relative density perturbation
-        
+
         // Cosmological parameters
         H0: 70.0, // km/s/Mpc (Hubble constant)
         Omega_m: 0.3, // Matter density parameter
         Omega_Lambda: 0.7, // Dark energy density parameter
         t_Hubble: 13.8e9 * 365.25 * 24 * 3600, // s (Hubble time)
-        
+
         // Universal constants
         G: 6.6743e-11, // mï¿½ kg?ï¿½ s^-1ï¿½
         c: 3e8, // m/s
@@ -9001,14 +9001,14 @@ const PREDEFINED_SYSTEMS = {
         q: 1.602e-19, // C (elementary charge)
         pi: Math.PI,
         mu_0: 4 * Math.PI * 1e-7, // H/m (magnetic permeability)
-        
+
         // Physical properties
         systemType: 'mice_galaxies_uqff',
         experimentType: 'galactic_collision_thz_enhancement',
         physicalScale: 'Multi-Galactic (50-400 kpc)',
         dominantPhysics: ['galactic_collision', 'tidal_bridge_formation', 'tail_ejection', 'enhanced_star_formation', 'dark_matter_interaction', 'thz_aetheric_enhancement'],
         integrationMode: 'mice_galaxies_uqff', // NGC 4676 specific UQFF framework
-        
+
         // NGC 4676 features
         galacticCollision: true, // NGC 4676A/B collision dynamics
         tidalBridgeFormation: true, // Bridge connecting galaxies
@@ -9019,7 +9019,7 @@ const PREDEFINED_SYSTEMS = {
         cosmicExpansion: true, // H_eff(t,z) enhanced expansion
         quantumTailWaves: true, // Quantum wave dynamics in tails/bridge
         environmentalForces: true, // F_env(t) tidal/bridge/SF forces
-        
+
         // Validation parameters
         validation: {
             hubble_acs_2002_correlation: 96.0, // % (Hubble ACS observations)
@@ -9031,7 +9031,7 @@ const PREDEFINED_SYSTEMS = {
             dark_matter_interaction: 93.0, // % (M_DM collision effects)
             environmental_force_modeling: 94.5 // % (F_env accuracy)
         },
-        
+
         // Framework characteristics
         framework_features: {
             galactic_collision_dynamics: 'NGC 4676A/B collision with M_A = M_B = 5ï¿½10ï¿½ï¿½ M?',
@@ -9044,7 +9044,7 @@ const PREDEFINED_SYSTEMS = {
             environmental_forces: 'F_env = F_tidal + F_SF + F_bridge',
             dark_matter_redistribution: 'M_DM = 2ï¿½10ï¿½ï¿½ M? collision redistribution'
         },
-        
+
         // Scale range
         scale_range: {
             min: 1e20, // m (galactic core scales)
@@ -9058,7 +9058,7 @@ const PREDEFINED_SYSTEMS = {
         radius: 7.1e15, // m (nebula radius)
         magneticField: 1e-4, // T (nebular magnetic field)
         temperature: 2.5e5, // K (white dwarf temperature)
-        
+
         // NGC 6537 Red Spider specific parameters
         r: 7.1e15, // m (nebula radius)
         rho_lobe: 1e-22, // kg/mï¿½ (lobe density)
@@ -9068,7 +9068,7 @@ const PREDEFINED_SYSTEMS = {
         L_wd: 1e29, // W (white dwarf luminosity)
         z: 0.0015, // Redshift (frequency shift)
         t_age: 1900 * 3.156e7, // s (1900 years in seconds)
-        
+
         // Frequency-driven UQFF parameters
         f_super: 1.411e16, // Hz (superconductive base frequency)
         f_fluid: 1.269e-14, // Hz (fluid dynamics frequency)
@@ -9077,7 +9077,7 @@ const PREDEFINED_SYSTEMS = {
         f_react: 1e10, // Hz (U_g4i reactive frequency)
         f_DPM: 1e12, // Hz (di-pseudo-monopole frequency)
         f_THz: 1e12, // Hz (THz hole frequency)
-        
+
         // Quantum and resonance parameters
         Delta_x: 1e-10, // m (position uncertainty)
         Delta_p: 1.0546e-24, // kgï¿½m/s (momentum uncertainty)
@@ -9085,31 +9085,31 @@ const PREDEFINED_SYSTEMS = {
         A: 1e-10, // Resonance amplitude
         k: 1e20, // m^-2ï¿½ (wave number)
         omega: 8.87e16, // rad/s (2p ï¿½ f_super)
-        
+
         // Plasmotic vacuum and reactive parameters
         rho_vac_plasm: 1e-9, // J/mï¿½ (plasmotic vacuum energy density)
         lambda_I: 1.0, // Interaction coupling constant
         f_TRZ: 0.1, // Time-reversal zone factor
-        
+
         // DPM core and THz hole parameters
         dpm_core_strength: 1e12, // Hz (DPM core frequency)
         thz_hole_amplitude: 1e12, // Hz (THz hole amplitude)
         u_g4i_reactive: 1e10, // Hz (U_g4i reactive term)
-        
+
         // Universal constants
         c: 3e8, // m/s
         hbar: 1.0546e-34, // Jï¿½s
         lambda_planck: 1.616e-35, // m (effective wavelength)
         t_Hubble: 13.8e9 * 3.156e7, // s (Hubble time)
         pi: Math.PI,
-        
+
         // Physical properties
         systemType: 'red_spider_nebula_uqff',
         experimentType: 'frequency_driven_nebular_dynamics',
         physicalScale: 'Planetary Nebula (1.5 ly diameter)',
         dominantPhysics: ['dpm_core_dynamics', 'thz_hole_pipeline', 'u_g4i_reactive', 'plasmotic_vacuum_energy', 'aetheric_resonance', 'frequency_causality'],
         integrationMode: 'red_spider_uqff', // NGC 6537 specific UQFF framework
-        
+
         // Red Spider features
         dpmCoreModeling: true, // Di-pseudo-monopole core dynamics
         thzHolePipeline: true, // THz hole effects through nebula
@@ -9120,7 +9120,7 @@ const PREDEFINED_SYSTEMS = {
         timeReversalZone: true, // f_TRZ time-reversal effects
         quantumUncertainty: true, // Heisenberg uncertainty integration
         whiteDwarfEvolution: true, // Central WD stellar evolution
-        
+
         // Validation parameters
         validation: {
             hubble_spectroscopy_correlation: 94.0, // % (HST spectroscopic data)
@@ -9132,7 +9132,7 @@ const PREDEFINED_SYSTEMS = {
             aetheric_resonance_integration: 89.5, // % (aetheric effects)
             plasmotic_vacuum_modeling: 88.0 // % (vacuum energy effects)
         },
-        
+
         // Framework characteristics
         framework_features: {
             frequency_driven_acceleration: 'g_UQFF(r,t) = Sf_i ï¿½ ?_P / (2p)',
@@ -9145,7 +9145,7 @@ const PREDEFINED_SYSTEMS = {
             fluid_density_modulation: 'f_fluid = 1.269ï¿½10?ï¿½4 ï¿½ (?/?_fil)',
             wave_function_resonance: '? = A exp(i(kr - ?t)) with |?|ï¿½ integral'
         },
-        
+
         // Scale range
         scale_range: {
             min: 1e13, // m (white dwarf scales)
@@ -9159,7 +9159,7 @@ const PREDEFINED_SYSTEMS = {
         radius: 9.461e16, // m (~0.1 ly initial separation)
         magneticField: 1e-3, // T (accretion disk magnetic field)
         temperature: 1e7, // K (accretion disk temperature)
-        
+
         // SMBH Binary specific parameters
         M1: 7.956e36, // kg (4ï¿½106 M? - primary SMBH)
         M2: 3.978e36, // kg (2ï¿½106 M? - secondary SMBH)
@@ -9168,14 +9168,14 @@ const PREDEFINED_SYSTEMS = {
         t_coal: 1.555e7, // s (180 days coalescence time)
         z: 0.1, // Redshift
         rho: 1e-20, // kg/mï¿½ (interacting gas density)
-        
+
         // Gravitational wave parameters
         SNR: 475, // Signal-to-noise ratio
         f_GW_peak: 1e-3, // Hz (peak gravitational wave frequency)
         strain_amplitude: 1e-21, // Dimensionless strain
         chirp_mass: 4.88e36, // kg (chirp mass ï¿½ 2.45ï¿½106 M?)
         symmetric_mass_ratio: 0.222, // ? = M1ï¿½M2/(M1+M2)ï¿½
-        
+
         // Frequency-driven UQFF parameters
         f_super: 1.411e16, // Hz (superconductive base frequency)
         f_fluid: 5.070e-8, // Hz (fluid dynamics frequency)
@@ -9184,7 +9184,7 @@ const PREDEFINED_SYSTEMS = {
         f_react: 1e10, // Hz (U_g4i reactive frequency)
         f_DPM: 1e12, // Hz (di-pseudo-monopole frequency)
         f_THz: 1e12, // Hz (THz hole frequency)
-        
+
         // Quantum and resonance parameters
         Delta_x: 1e-10, // m (position uncertainty)
         Delta_p: 1.0546e-24, // kgï¿½m/s (momentum uncertainty)
@@ -9192,38 +9192,38 @@ const PREDEFINED_SYSTEMS = {
         A: 1e-10, // Resonance amplitude
         k: 1e20, // m^-2ï¿½ (wave number)
         omega: 8.87e16, // rad/s (2p ï¿½ f_super)
-        
+
         // Plasmotic vacuum and reactive parameters
         rho_vac_plasm: 1e-9, // J/mï¿½ (plasmotic vacuum energy density)
         lambda_I: 1.0, // Interaction coupling constant
         f_TRZ: 0.1, // Time-reversal zone factor
-        
+
         // Binary orbital dynamics
         orbital_frequency: 1e-6, // Hz (initial orbital frequency)
         orbital_decay_rate: 1e-12, // s^-1ï¿½ (orbital decay rate)
         eccentricity: 0.1, // Orbital eccentricity
         inclination: 0.5, // rad (orbital inclination)
-        
+
         // Accretion and environment
         accretion_rate_1: 1e-3, // M?/yr (primary SMBH accretion)
         accretion_rate_2: 5e-4, // M?/yr (secondary SMBH accretion)
         disk_temperature: 1e7, // K (accretion disk temperature)
         disk_luminosity: 1e39, // W (total accretion luminosity)
-        
+
         // Universal constants
         c: 3e8, // m/s
         hbar: 1.0546e-34, // Jï¿½s
         lambda_planck: 1.616e-35, // m (effective wavelength)
         t_Hubble: 13.8e9 * 3.156e7, // s (Hubble time)
         pi: Math.PI,
-        
+
         // Physical properties
         systemType: 'smbh_binary_uqff',
         experimentType: 'frequency_driven_binary_black_hole_dynamics',
         physicalScale: 'Galactic Core Binary (0.1 ly separation)',
         dominantPhysics: ['dpm_core_dynamics', 'thz_hole_pipeline', 'u_g4i_reactive', 'plasmotic_vacuum_energy', 'aetheric_resonance', 'frequency_causality', 'gravitational_waves', '2pn_resonance'],
         integrationMode: 'smbh_binary_uqff', // SMBH Binary specific UQFF framework
-        
+
         // SMBH Binary features
         dpmCoreModeling: true, // Di-pseudo-monopole core dynamics
         thzHolePipeline: true, // THz hole effects through binary system
@@ -9237,7 +9237,7 @@ const PREDEFINED_SYSTEMS = {
         postNewtonianResonance: true, // 2PN waveform simplified to resonance
         binaryEvolution: true, // Orbital decay and coalescence
         accretionDynamics: true, // Dual SMBH accretion physics
-        
+
         // Validation parameters
         validation: {
             lisa_simulation_correlation: 96.0, // % (LISA mission simulation data)
@@ -9250,7 +9250,7 @@ const PREDEFINED_SYSTEMS = {
             plasmotic_vacuum_modeling: 89.0, // % (vacuum energy effects)
             post_newtonian_resonance: 93.5 // % (2PN waveform simplification)
         },
-        
+
         // Framework characteristics
         framework_features: {
             frequency_driven_acceleration: 'g_UQFF(r,t) = Sf_i ï¿½ ?_P / (2p)',
@@ -9266,7 +9266,7 @@ const PREDEFINED_SYSTEMS = {
             binary_coalescence: 'Orbital decay r(t) ? 0 over t_coal = 180 days',
             accretion_coupling: 'Dual SMBH accretion with disk dynamics'
         },
-        
+
         // Scale range
         scale_range: {
             min: 1e14, // m (SMBH event horizon scales)
@@ -9280,7 +9280,7 @@ const PREDEFINED_SYSTEMS = {
         radius: 1.543e17, // m (5 pc)
         magneticField: 1e-5, // T (nebular magnetic field)
         temperature: 1e4, // K (gas temperature)
-        
+
         // NGC 346 Nebula specific parameters
         M_visible: 1.989e33, // kg (1000 M? visible mass)
         M_DM: 3.978e32, // kg (200 M? dark matter)
@@ -9290,13 +9290,13 @@ const PREDEFINED_SYSTEMS = {
         z: 0.0006, // Redshift (Small Magellanic Cloud)
         rho_gas: 1e-20, // kg/mï¿½ (gas density)
         v_rad: -1e4, // m/s (-10 km/s blueshift)
-        
+
         // Environmental and dynamics parameters
         V: 1e49, // mï¿½ (nebula volume)
         B: 1e-5, // T (magnetic field)
         B_crit: 1e11, // T (critical magnetic field)
         t_default: 3.156e14, // s (10 Myr default time)
-        
+
         // Quantum and wave parameters
         Delta_x: 1e-10, // m (position uncertainty)
         Delta_p: 1.0546e-24, // kgï¿½m/s (momentum uncertainty)
@@ -9307,7 +9307,7 @@ const PREDEFINED_SYSTEMS = {
         x: 0.0, // Position coordinate
         v: 1e4, // m/s (velocity magnitude from v_rad)
         sigma: 1e16, // m (Gaussian width)
-        
+
         // UQFF subterms
         Ug1: 0.0, // Dipole term (computed)
         Ug2: 0.0, // Superconductor term (computed)
@@ -9315,7 +9315,7 @@ const PREDEFINED_SYSTEMS = {
         Ug4: 0.0, // Reaction term (computed)
         Ui: 0.0, // Universal inertia (computed)
         Um: 0.0, // Universal magnetism (computed)
-        
+
         // Vacuum and interaction parameters
         rho_vac_UA: 7.09e-36, // J/mï¿½ (UA vacuum density)
         lambda_I: 1.0, // Interaction coupling constant
@@ -9326,19 +9326,19 @@ const PREDEFINED_SYSTEMS = {
         k_SF: 1e-10, // Star formation efficiency factor
         H_aether: 1e-6, // A/m (aetheric field strength)
         delta_rho_over_rho: 1e-5, // Relative density perturbation
-        
+
         // Scale and correction factors
         scale_macro: 1e-12, // Macroscopic scale factor
         f_TRZ: 0.1, // Time-reversal zone factor
         f_sc: 1.0, // Superconductive correction
         v_r: 1e3, // m/s (radial velocity)
-        
+
         // Cosmological parameters
         H0: 70.0, // km/s/Mpc (Hubble constant)
         Omega_m: 0.3, // Matter density parameter
         Omega_Lambda: 0.7, // Dark energy density parameter
         t_Hubble: 13.8e9 * 365.25 * 24 * 3600, // s (Hubble time)
-        
+
         // Universal constants
         G: 6.6743e-11, // mï¿½ kg?ï¿½ s^-1ï¿½
         c: 3e8, // m/s
@@ -9347,14 +9347,14 @@ const PREDEFINED_SYSTEMS = {
         q: 1.602e-19, // C (elementary charge)
         pi: Math.PI,
         mu_0: 4 * Math.PI * 1e-7, // H/m (magnetic permeability)
-        
+
         // Physical properties
         systemType: 'ngc346_nebula_uqff',
         experimentType: 'complete_uqff_nebular_dynamics',
         physicalScale: 'Star-Forming Nebula (5 pc diameter)',
         dominantPhysics: ['ug1_dipole_oscillations', 'ug2_superconductor', 'ug3_magnetic_strings_collapse', 'ug4_reaction', 'ui_universal_inertia', 'um_universal_magnetism', 'quantum_waves', 'protostar_formation', 'cluster_entanglement', 'blueshifted_dynamics'],
         integrationMode: 'ngc346_uqff', // NGC 346 specific complete UQFF framework
-        
+
         // NGC 346 features
         dipoleOscillations: true, // Ug1 dipole gravity oscillations
         superconductorEffects: true, // Ug2 superconductor terms
@@ -9370,7 +9370,7 @@ const PREDEFINED_SYSTEMS = {
         coreEnergyModeling: true, // E_core and T_core calculations
         pseudoMonopoleCommunication: true, // Non-local quantum effects
         cosmologicalExpansion: true, // H(t,z) expansion with SMC z=0.0006
-        
+
         // Validation parameters
         validation: {
             smc_observation_correlation: 94.0, // % (Small Magellanic Cloud observations)
@@ -9382,7 +9382,7 @@ const PREDEFINED_SYSTEMS = {
             cluster_entanglement_modeling: 89.5, // % (entanglement physics)
             environmental_force_precision: 88.0 // % (F_env accuracy)
         },
-        
+
         // Framework characteristics
         framework_features: {
             complete_uqff_dynamics: 'g_NGC346(r,t) = GM(t)/rï¿½ï¿½(1+H(t,z))ï¿½(1-B/B_crit)ï¿½(1+F_env) + SUg_i + Ui + Um + ?cï¿½/3 + quantum + fluid + DM',
@@ -9400,7 +9400,7 @@ const PREDEFINED_SYSTEMS = {
             core_temperature: 'T_core ? Ug3ï¿½?_vac_UA collapse heating',
             blueshift_effects: '??/? = v_rad/c = -10 km/s/c frequency shift'
         },
-        
+
         // Scale range
         scale_range: {
             min: 1e15, // m (protostar scales)
@@ -9414,14 +9414,14 @@ const PREDEFINED_SYSTEMS = {
         radius: 3.086e19, // m (1 kpc R_bulge)
         magneticField: 1e-4, // T (galactic magnetic field)
         temperature: 1e7, // K (SMBH accretion disk temperature)
-        
+
         // SMBH M-s relation specific parameters
         M_bh: 1.989e42, // kg (1e12 M? SMBH mass)
         sigma: 2e5, // m/s (200 km/s velocity dispersion)
         R_bulge: 3.086e19, // m (1 kpc bulge radius)
         t: 4.543e9 * 3.156e7, // s (4.543 Gyr cosmic time)
         z: 0.0, // Redshift (local universe default)
-        
+
         // Universal constants
         c: 3e8, // m/s (speed of light)
         hbar: 1.0546e-34, // Jï¿½s (reduced Planck constant)
@@ -9430,7 +9430,7 @@ const PREDEFINED_SYSTEMS = {
         year_to_s: 3.156e7, // s/yr
         kpc: 3.086e19, // m/kpc
         M_sun: 1.989e30, // kg
-        
+
         // Core UQFF parameters
         rho_vac_UA: 7.09e-36, // J/mï¿½ (Universal Aether vacuum density)
         rho_vac_SCm: 7.09e-37, // J/mï¿½ (Superconductive material vacuum density)
@@ -9440,7 +9440,7 @@ const PREDEFINED_SYSTEMS = {
         k_galactic: 2.59e-9, // galactic scale factor
         omega_c: 2 * Math.PI / (3.96e8), // s^-1ï¿½ (cosmic frequency)
         gamma: 0.00005, // day?ï¿½ (decay rate)
-        
+
         // Feedback and resonance parameters
         f_heaviside: 0.01, // Heaviside function factor
         f_quasi: 0.01, // Quasi-static factor
@@ -9449,7 +9449,7 @@ const PREDEFINED_SYSTEMS = {
         E_react_0: 1e46, // Initial reactor energy (J)
         alpha: 0.001, // day?ï¿½ (exponential decay rate)
         lambda_i: 1.0, // Inertia coupling constant
-        
+
         // UQFF coupling constants
         k1: 1.1, // Ug1 coupling
         k2: 1.0, // Ug2 coupling
@@ -9462,10 +9462,10 @@ const PREDEFINED_SYSTEMS = {
         H_scm: 1.0, // SCm field strength
         delta_def: 0.1, // Deformation factor
         phi: 1.0, // Higgs field (normalized)
-        
+
         // Time and evolution parameters
         t_n: 0.0, // days (normalized time)
-        
+
         // Range parameters (for dynamic updates)
         M_bh_min: 1e11 * 1.989e30, // kg (1e11 M? minimum)
         M_bh_max: 1e14 * 1.989e30, // kg (1e14 M? maximum)
@@ -9473,14 +9473,14 @@ const PREDEFINED_SYSTEMS = {
         sigma_max: 1e6, // m/s (1000 km/s maximum)
         z_min: 0.0, // Minimum redshift
         z_max: 6.0, // Maximum redshift
-        
+
         // Physical properties
         systemType: 'smbh_m_sigma_uqff',
         experimentType: 'm_sigma_relation_uqff_resonance',
         physicalScale: 'Supermassive Black Hole + Galactic Bulge (1-1000 kpc)',
         dominantPhysics: ['m_sigma_relation', 'uqff_resonance', 'vacuum_energy_densities', 'pseudo_monopole_shifts', 'reactor_efficiency', 'feedback_calibration', 'dynamic_variables'],
         integrationMode: 'smbh_uqff', // SMBH-specific UQFF framework
-        
+
         // SMBH M-s features
         mSigmaRelation: true, // M-s correlation via UQFF
         uqffResonance: true, // UQFF resonance effects
@@ -9495,7 +9495,7 @@ const PREDEFINED_SYSTEMS = {
         umTerm: true, // U_m magnetic field contributions
         ug1Term: true, // U_g1 gravitational dipole oscillations
         rangeSupport: true, // M_bh and s range exploration
-        
+
         // Validation parameters
         validation: {
             m_sigma_correlation: 95.0, // % (M-s relation accuracy)
@@ -9507,7 +9507,7 @@ const PREDEFINED_SYSTEMS = {
             galactic_rotation_modeling: 88.0, // % (?_s calculation)
             dynamic_variable_precision: 87.5 // % (variable update accuracy)
         },
-        
+
         // Framework characteristics
         framework_features: {
             master_uqff_equation: 'g_UQFF(t,s) = U_m(t,r,n) + U_g1(t,r,M_s,n) + ?_s(s)ï¿½k_galactic',
@@ -9523,7 +9523,7 @@ const PREDEFINED_SYSTEMS = {
             m_sigma_insights: 'M-s relation via UQFF resonance; no Standard Model illusions',
             romulus25_adaptation: 'Adapted for ROMULUS25 simulations with M_bh=1e11-1e14 M?, s=100-1000 km/s'
         },
-        
+
         // Scale range
         scale_range: {
             min: 1e18, // m (SMBH event horizon scales)
@@ -9537,13 +9537,13 @@ const PREDEFINED_SYSTEMS = {
         radius: 5.29e-11, // m (Bohr radius)
         magneticField: 0.1, // T (typical LENR experimental field)
         temperature: 1000, // K (elevated temperature for LENR)
-        
+
         // LENR specific parameters
         Q_threshold: 0.78e6 * 1.602e-19, // J (0.78 MeV electro-weak threshold)
         G_F: 1.166e-5, // GeV?ï¿½ (Fermi constant)
         a: 5.29e-11, // m (Bohr radius)
         E_a: 1.602e-19 / (5.29e-11 * 5.29e-11), // V/m (atomic field strength)
-        
+
         // Universal constants
         c: 3e8, // m/s (speed of light)
         hbar: 1.0546e-34, // Jï¿½s (reduced Planck constant)
@@ -9551,7 +9551,7 @@ const PREDEFINED_SYSTEMS = {
         m_e: 9.109e-31, // kg (electron mass)
         M_p: 1.673e-27, // kg (proton mass)
         pi: Math.PI, // p
-        
+
         // UQFF parameters
         rho_vac_UA: 7.09e-36, // J/mï¿½ (Universal Aether vacuum density)
         mu_0: 4 * Math.PI * 1e-7, // H/m (magnetic permeability)
@@ -9565,7 +9565,7 @@ const PREDEFINED_SYSTEMS = {
         gamma: 0.00005, // day?ï¿½ (decay rate)
         f_heaviside: 0.01, // Heaviside function factor
         f_quasi: 0.01, // Quasi-static factor
-        
+
         // UQFF coupling constants
         k1: 1.1, // Ug1 coupling
         k2: 1.0, // Ug2 coupling
@@ -9576,7 +9576,7 @@ const PREDEFINED_SYSTEMS = {
         H_scm: 1.0, // SCm field strength
         delta_def: 0.1, // Deformation factor
         phi: 1.0, // Higgs field (normalized)
-        
+
         // Scenario-specific parameters (defaults to hydride)
         current_scenario: 'hydride', // Default scenario
         rho_e: 1e29, // m^-2ï¿½ (electron density - hydride)
@@ -9586,36 +9586,36 @@ const PREDEFINED_SYSTEMS = {
         M_s: 1.989e30, // kg (solar mass reference)
         n: 1, // Quantum state
         Omega: 1e14, // rad/s (plasma frequency)
-        
+
         // Hydride scenario parameters
         E_field_hydride: 2e11, // V/m (electric field)
         eta_hydride: 1e13, // cm^-2ï¿½/s (neutron rate)
-        
+
         // Exploding wires scenario parameters
         I_Alfven: 17e3, // A (Alfvï¿½n current)
         E_field_wires: 28.8e11, // V/m (electric field)
         eta_wires: 1e8, // cm^-2ï¿½/s (neutron rate)
-        
+
         // Solar corona scenario parameters
         B_corona: 1e4, // Gauss = 1 kG (magnetic field)
         R_corona: 1e7, // m (104 km radius)
         v_over_c: 0.01, // Velocity ratio
         E_field_corona: 1.2e-3, // V/m (electric field)
         eta_corona: 7e-3, // cm^-2ï¿½/s (neutron rate)
-        
+
         // Physical constants and derived values
         Delta: 1.3e6 * 1.602e-19, // J (1.3 MeV mass difference)
         m_tilde: 2.53 * 9.109e-31, // kg (renormalized electron mass)
         year_to_s: 365.25 * 24 * 3600, // s/year
         day_to_s: 24 * 3600, // s/day
-        
+
         // Physical properties
         systemType: 'lenr_uqff',
         experimentType: 'low_energy_nuclear_reactions',
         physicalScale: 'Atomic to Laboratory (10?ï¿½ï¿½ to 10?ï¿½ m)',
         dominantPhysics: ['electro_weak_interactions', 'electron_acceleration', 'neutron_production', 'transmutations', 'um_magnetism', 'ug1_ug4_gravity', 'ui_inertia', 'pseudo_monopole_effects', 'plasma_frequency', 'scenario_adaptation'],
         integrationMode: 'lenr_uqff', // LENR-specific UQFF framework
-        
+
         // LENR features
         electroWeakInteractions: true, // Electro-weak threshold physics
         electronAcceleration: true, // Electron acceleration to 0.78 MeV
@@ -9632,7 +9632,7 @@ const PREDEFINED_SYSTEMS = {
         fermiConstantCalculations: true, // G_F weak interaction constant
         thresholdPhysics: true, // Q = 0.78 MeV threshold modeling
         massRenormalization: true, // ï¿½ = 2.53 mass factor
-        
+
         // Validation parameters
         validation: {
             hydride_neutron_rate: 95.0, // % (? = 1e13 cm^-2ï¿½/s accuracy)
@@ -9645,7 +9645,7 @@ const PREDEFINED_SYSTEMS = {
             scenario_switching: 88.5, // % (scenario adaptation precision)
             uqff_integration: 87.0 // % (UQFF terms accuracy)
         },
-        
+
         // Framework characteristics
         framework_features: {
             neutron_rate_equation: '?(t) = (G_Fï¿½(m~cï¿½)4/(2p?ï¿½))ï¿½(W-?)ï¿½ï¿½?(W-?)',
@@ -9665,7 +9665,7 @@ const PREDEFINED_SYSTEMS = {
             pramana_2008_calibration: 'Calibrated to 100% paper accuracy via Pramana 2008',
             no_sm_illusions: 'No Standard Model illusions; pure UQFF electro-weak framework'
         },
-        
+
         // Scale range
         scale_range: {
             min: 1e-15, // m (nuclear scales)
@@ -9679,13 +9679,13 @@ const PREDEFINED_SYSTEMS = {
         radius: 1e-10, // m (characteristic length scale)
         magneticField: 0.1, // T (typical LENR experimental field)
         temperature: 1000, // K (elevated temperature for LENR)
-        
+
         // LENR calibration specific parameters
         pi: Math.PI, // p
         year_to_s: 3.156e7, // s/yr (seconds per year)
         r: 1e-10, // m (default characteristic radius)
         S_S_q: 1.0, // Non-local base parameter [S S_q]
-        
+
         // UQFF vacuum energy parameters
         rho_vac_SCm: 7.09e-37, // J/mï¿½ (SCm vacuum density)
         rho_vac_UA: 7.09e-36, // J/mï¿½ (UA vacuum density)
@@ -9697,25 +9697,25 @@ const PREDEFINED_SYSTEMS = {
         omega_c: 2 * Math.PI / 3.96e8, // rad/s (cosmic frequency)
         f_heaviside: 0.01, // Heaviside function factor
         f_quasi: 0.01, // Quasi-static factor
-        
+
         // Default parameters (overridden by scenario)
         k_eta: 1e13, // cm^-2ï¿½/s (neutron production calibration constant)
         t: 1.0 * 3.156e7, // s (1 year default time)
         n: 1, // Quantum state number
         current_scenario: 'hydride', // Default scenario
-        
+
         // Hydride scenario calibration parameters
         k_eta_hydride: 1e13, // cm^-2ï¿½/s (neutron rate calibration)
         E_target_hydride: 2e11, // V/m (target electric field)
-        
+
         // Exploding wires scenario calibration parameters
         k_eta_wires: 1e8, // cm^-2ï¿½/s (neutron rate calibration)
         E_target_wires: 28.8e11, // V/m (target electric field)
-        
+
         // Solar corona scenario calibration parameters
         k_eta_corona: 7e-3, // cm^-2ï¿½/s (neutron rate calibration)
         E_target_corona: 1.2e-3, // V/m (target electric field)
-        
+
         // Universal constants
         c: 3e8, // m/s (speed of light)
         hbar: 1.0546e-34, // Jï¿½s (reduced Planck constant)
@@ -9723,19 +9723,19 @@ const PREDEFINED_SYSTEMS = {
         m_e: 9.109e-31, // kg (electron mass)
         m_n: 1.675e-27, // kg (neutron mass)
         G: 6.6743e-11, // mï¿½ kg?ï¿½ s^-1ï¿½ (gravitational constant)
-        
+
         // Time and conversion factors
         day_to_s: 24 * 3600, // s/day
         year_to_day: 365.25, // days/year
         cm2_to_m2: 1e-4, // mï¿½/cmï¿½
-        
+
         // Physical properties
         systemType: 'lenr_calib_uqff',
         experimentType: 'neutron_production_calibration',
         physicalScale: 'Atomic to Laboratory (10?ï¿½5 to 10?ï¿½ m)',
         dominantPhysics: ['neutron_production_calibration', 'um_magnetism', 'pseudo_monopole_states', 'non_local_exponentials', 'vacuum_energy_densities', 'scenario_adaptation', 'k_eta_tuning'],
         integrationMode: 'lenr_calib_uqff', // LENR calibration-specific UQFF framework
-        
+
         // LENR calibration features
         neutronProductionCalibration: true, // k_? calibration constant
         umMagnetism: true, // U_m magnetic field contributions
@@ -9752,7 +9752,7 @@ const PREDEFINED_SYSTEMS = {
         deltaNStates: true, // d_n = (2p)^(n/6) quantum states
         rhoVacUAScmEvolution: true, // ?_vac,[UA']:SCm time evolution
         pramana2008Calibration: true, // 100% accuracy via Pramana 2008
-        
+
         // Validation parameters
         validation: {
             hydride_k_eta_calibration: 96.0, // % (k_? = 1e13 cm^-2ï¿½/s accuracy)
@@ -9766,7 +9766,7 @@ const PREDEFINED_SYSTEMS = {
             scenario_switching: 87.5, // % (scenario adaptation accuracy)
             pramana_2008_accuracy: 100.0 // % (calibrated to 100% paper accuracy)
         },
-        
+
         // Framework characteristics
         framework_features: {
             neutron_rate_calibration: '?(t,n) = k_? ï¿½ exp(-[S S_q]n 26 e^(-p-t/yr)) ï¿½ U_m/?_vac,[UA]',
@@ -9785,14 +9785,14 @@ const PREDEFINED_SYSTEMS = {
             quantum_state_range: 'n = 1-26 quantum energy levels for d_n and non-local effects',
             s_s_q_parameter: '[S S_q] = 1 (calibration base) for non-local exponential modeling'
         },
-        
+
         // Scale range
         scale_range: {
             min: 1e-15, // m (nuclear scales)
             max: 1e-3 // m (laboratory device scales)
         }
     },
-    
+
     // NGC346 UQFF Analysis (from Source85.cpp)
     NGC346_UQFF_85: {
         // Universal constants
@@ -9810,7 +9810,7 @@ const PREDEFINED_SYSTEMS = {
         Omega_Lambda: 0.7,
         M_sun: 1.989e30,                        // kg
         pc: 3.086e16,                           // m
-        
+
         // NGC 346 specific parameters
         M_visible: 1000 * 1.989e30,             // kg (1000 M?)
         M_DM: 200 * 1.989e30,                   // kg (200 M? dark matter)
@@ -9821,7 +9821,7 @@ const PREDEFINED_SYSTEMS = {
         rho_gas: 1e-20,                         // kg/mï¿½
         v_rad: -10e3,                           // m/s (blueshift)
         t_age: 1e7 * 3.156e7,                   // s (10 Myr default)
-        
+
         // Dynamics and environment
         V_nebula: 1e49,                         // mï¿½
         B_field: 1e-5,                          // T
@@ -9829,13 +9829,13 @@ const PREDEFINED_SYSTEMS = {
         Delta_x: 1e-10,                         // m
         Delta_p: 1.0546e-34 / 1e-10,           // kg m/s
         integral_psi: 1.0,                      // Normalized
-        
+
         // Wave/oscillatory parameters
         A_wave: 1e-10,                          // Wave amplitude
         k_wave: 1e20,                           // Wave number
         omega_wave: 1e-14,                      // rad/s
         sigma_gauss: 1e16,                      // m (Gaussian width)
-        
+
         // UQFF force components
         mu_0: 4 * Math.PI * 1e-7,               // H/m
         rho_vac_UA: 7.09e-36,                   // J/mï¿½
@@ -9847,17 +9847,17 @@ const PREDEFINED_SYSTEMS = {
         k_SF: 1e-10,                            // Star formation coupling
         H_aether: 1e-6,                         // A/m
         delta_rho_over_rho: 1e-5,               // Density perturbation
-        
+
         // Scale factors
         scale_macro: 1e-12,
         f_TRZ: 0.1,                             // Transition zone factor
         f_sc: 1.0,                              // Superconductor factor
         v_r: 1e3,                               // m/s (radial velocity)
-        
+
         // Collapse dynamics
         E_react_0: 1e40,                        // J (initial reaction energy)
         decay_rate: 0.0005,                     // yr?ï¿½
-        
+
         // Validation
         validation: {
             expected_g_range: [1e-12, 1e-8],    // m/sï¿½ at different radii
@@ -9867,7 +9867,7 @@ const PREDEFINED_SYSTEMS = {
             length_scale: '0.1-10 pc'
         }
     },
-    
+
     // MUGE UQFF Analysis (from Source86.cpp)
     MUGE_UQFF_86: {
         // Universal constants
@@ -9935,7 +9935,7 @@ const PREDEFINED_SYSTEMS = {
         rho_fluid_magnetar: 1e-15,              // kg/mï¿½
         V_magnetar: 4.189e12,                   // mï¿½
         g_local_magnetar: 10.0,                 // m/sï¿½
-        
+
         // Multi-system definitions
         systems: {
             MAGNETAR_SGR_1745_2900: {
@@ -10049,7 +10049,7 @@ const PREDEFINED_SYSTEMS = {
             length_scale: '10 km - 100 pc'
         }
     },
-    
+
     // MUGE Resonance UQFF Analysis (from Source87.cpp)
     MUGE_RESONANCE_UQFF_87: {
         // Universal constants
@@ -10281,7 +10281,7 @@ const PREDEFINED_SYSTEMS = {
             aether_replacement: 'dark_energy_alternative'
         }
     },
-    
+
     // Andromeda Enhanced UQFF Analysis (from Source88.cpp)
     ANDROMEDA_ENHANCED_UQFF_88: {
         // Universal constants
@@ -10295,7 +10295,7 @@ const PREDEFINED_SYSTEMS = {
         Omega_Lambda: 0.7,
         year_to_s: 3.156e7,                     // s/yr
         Gyr: 1e9,                               // yr
-        
+
         // Andromeda Galaxy parameters
         M: 1e12 * 1.989e30,                     // kg (Total mass)
         r: 1.04e21,                             // m (half diameter ~110 kpc)
@@ -10306,16 +10306,16 @@ const PREDEFINED_SYSTEMS = {
         rho_mass: 1e-21,                        // kg/mï¿½ (mass density)
         z: -0.001,                              // Blueshift (approaching)
         B: 1e-5,                                // T (magnetic field)
-        
+
         // UQFF vacuum energies
         rho_vac_UA: 7.09e-36,                   // J/mï¿½ (universal aether)
         rho_vac_SCm: 7.09e-37,                  // J/mï¿½ (superconductive material)
         f_TRZ: 0.1,                             // dimensionless (time-reversal factor)
         scale_macro: 1e-12,                     // Scaling factor for macro effects
-        
+
         // Default time parameter
         t_default: 10.0 * 1e9 * 3.156e7,        // s (10 Gyr)
-        
+
         // Evolution time points (0-10 Gyr in 2 Gyr steps)
         evolution_times: [
             0,                                   // Present
@@ -10325,34 +10325,34 @@ const PREDEFINED_SYSTEMS = {
             8.0 * 1e9 * 3.156e7,                // 8 Gyr
             10.0 * 1e9 * 3.156e7                // 10 Gyr
         ],
-        
+
         // Physical approximations and scaling
         dust_scaling: {
             enabled: true,
             description: "Dust friction from galactic dust lanes",
             force_formula: "rho_dust * v_orbit^2 / rho_mass * scale_macro"
         },
-        
+
         em_enhancement: {
             enabled: true,
             description: "EM effects with vacuum energy enhancement",
             formula: "q * v * B / m_proton * (1 + rho_vac_UA/rho_vac_SCm) * scale_macro"
         },
-        
+
         smbh_effects: {
             enabled: true,
             description: "Central supermassive black hole gravitational contribution",
             mass_ratio: 1.4e8 / 1e12,           // M_BH / M_total
             core_scale: 1e15                    // m
         },
-        
+
         cosmological_evolution: {
             enabled: true,
             description: "H(z) expansion with blueshift correction",
             blueshift_factor: 1.001,            // 1/(1+z) for z=-0.001
             expansion_timescale: 4.35e17        // s (Hubble time)
         },
-        
+
         // Validation parameters
         validation: {
             expected_g_range: [1e-12, 10.0],    // m/sï¿½ Andromeda gravity range
@@ -10367,47 +10367,47 @@ const PREDEFINED_SYSTEMS = {
             dynamic_variables: true
         }
     },
-    
+
     // Aether Coupling UQFF Analysis (from Source89.cpp)
     AETHER_COUPLING_UQFF_89: {
         // Universal constants
         c: 2.998e8,                             // m/s (speed of light)
         G: 6.6743e-11,                          // mï¿½ kg?ï¿½ s^-1ï¿½
         hbar: 1.055e-34,                        // Jï¿½s (reduced Planck constant)
-        
+
         // Aether coupling parameters
         eta: 1e-22,                             // dimensionless (Aether coupling constant)
         rho_vac_UA: 7.09e-36,                   // J/mï¿½ (universal aether vacuum energy)
         rho_vac_SCm: 7.09e-37,                  // J/mï¿½ (superconductive material vacuum energy)
         rho_vac_A: 1.11e7,                     // J/mï¿½ (Aether component vacuum energy)
         T_s_base: 1.27e3,                       // J/mï¿½ (base stress-energy tensor)
-        
+
         // Background Minkowski metric components [t, x, y, z]
         g_mu_nu: [1.0, -1.0, -1.0, -1.0],      // Diagonal flat spacetime metric
-        
+
         // Metric perturbation parameters
         perturbation_magnitude: 1.123e-15,      // ? * T_s (weak coupling regime)
         coupling_regime: 'weak',                // Preserves near-flat geometry
-        
+
         // Physical scales
         length_scale: 1e3,                      // m (reference scale ~1 km)
         energy_scale: 1.123e7,                  // J/mï¿½ (T_s total)
         time_scale: 1.0,                        // s (reference time)
-        
+
         // Application parameters
         system_type: 'metric_perturbation',     // Framework type
         spacetime_regime: 'nearly_flat',        // Weak field approximation
         coupling_strength: 'minimal',           // ? << 1
-        
+
         // Dynamic variable defaults
         t_n: 0.0,                               // s (time node)
         update_frequency: 1.0,                  // Hz (variable update rate)
-        
+
         // Computational parameters
         diagonal_approximation: true,            // T_s diagonal components only
         preserve_causality: true,               // Maintain c as maximum speed
         weak_field_limit: true,                 // |perturbation| << 1
-        
+
         // Validation parameters
         validation: {
             expected_perturbation_range: [1e-16, 1e-14],  // Weak coupling bounds
@@ -10424,49 +10424,49 @@ const PREDEFINED_SYSTEMS = {
             dynamic_variables: true
         }
     },
-    
+
     // Background Aether UQFF Analysis (from Source90.cpp)
     BACKGROUND_AETHER_UQFF_90: {
         // Universal constants
         c: 2.998e8,                             // m/s (speed of light)
         G: 6.6743e-11,                          // mï¿½ kg?ï¿½ s^-1ï¿½
         hbar: 1.055e-34,                        // Jï¿½s (reduced Planck constant)
-        
+
         // Background Aether parameters
         eta: 1e-22,                             // dimensionless (Aether coupling constant)
         rho_vac_UA: 7.09e-36,                   // J/mï¿½ (universal aether vacuum energy)
         rho_vac_SCm: 7.09e-37,                  // J/mï¿½ (superconductive material vacuum energy)
         rho_vac_A: 1.11e7,                     // J/mï¿½ (Aether component vacuum energy)
         T_s_base: 1.27e3,                       // J/mï¿½ (base stress-energy tensor)
-        
+
         // Fixed Minkowski metric components [t, x, y, z]
         g_mu_nu: [1.0, -1.0, -1.0, -1.0],      // Fixed baseline metric (+,-,-,-) signature
-        
+
         // Metric perturbation parameters
         perturbation_magnitude: 1.123e-15,      // ? * T_s (weak coupling regime)
         coupling_regime: 'weak',                // Preserves flat geometry
         metric_signature: 'minkowski',          // (+,-,-,-) flat spacetime
-        
+
         // Physical scales
         length_scale: 1e3,                      // m (reference scale ~1 km)
         energy_scale: 1.123e7,                  // J/mï¿½ (T_s total)
         time_scale: 1.0,                        // s (reference time)
-        
+
         // Application parameters
         system_type: 'baseline_metric',         // Framework type
         spacetime_regime: 'flat_minkowski',     // Baseline geometry
         coupling_strength: 'minimal',           // ? << 1
-        
+
         // Dynamic variable defaults
         t_n: 0.0,                               // s (time node)
         update_frequency: 1.0,                  // Hz (variable update rate)
-        
+
         // Computational parameters
         fixed_background: true,                 // g_mu? unchanging
         diagonal_approximation: true,           // T_s diagonal components only
         preserve_signature: true,               // Maintain (+,-,-,-) signature
         weak_field_limit: true,                 // |perturbation| << 1
-        
+
         // Validation parameters
         validation: {
             expected_perturbation_range: [1e-16, 1e-14],  // Weak coupling bounds
@@ -10485,40 +10485,40 @@ const PREDEFINED_SYSTEMS = {
             dynamic_variables: true
         }
     },
-    
+
     // Magnetic String Module (from Source95.cpp)
     MAGNETIC_STRING_UQFF_95: {
         // Universal constants
         c: 2.998e8,                             // m/s (speed of light)
         G: 6.6743e-11,                          // mï¿½ kg?ï¿½ s^-1ï¿½ (gravitational constant)
         hbar: 1.055e-34,                        // Jï¿½s (reduced Planck constant)
-        
+
         // Magnetic string parameters
         r_j: 1.496e13,                          // m (100 AU magnetic string path distance)
         mu_j: 1.0e-6,                           // Aï¿½mï¿½ (magnetic moment, adjustable)
         U_m_base: 1.0e-10,                      // J/mï¿½ (base universal magnetism)
         U_g3_coupling: 1.8e49,                  // J/mï¿½ (Ug3 coupling strength)
         exponential_decay: 0.1,                 // dimensionless (decay factor for U_m)
-        
+
         // Physical scales
         length_scale: 1.496e13,                 // m (100 AU reference scale)
         energy_scale: 1.0e-10,                  // J/mï¿½ (U_m energy density)
         time_scale: 1.0,                        // s (reference time)
-        
+
         // Application parameters
         system_type: 'magnetic_string',         // Framework type
         physics_domain: 'disk_nebula_stabilization', // Application domain
         coupling_strength: 'moderate',          // Coupling regime
-        
+
         // Dynamic variable defaults
         t_n: 0.0,                               // s (time node)
         update_frequency: 1.0,                  // Hz (variable update rate)
-        
+
         // Computational parameters
         magnetic_string_enabled: true,          // Enable magnetic string physics
         ug3_coupling_enabled: true,             // Enable Ug3 coupling effects
         exponential_decay_enabled: true,        // Enable U_m exponential decay
-        
+
         // Validation parameters
         validation: {
             expected_r_j_range: [1e12, 1e14],   // m (AU to 1000 AU range)
@@ -10536,22 +10536,22 @@ const PREDEFINED_SYSTEMS = {
             dynamic_variables: true
         }
     },
-    
+
     // Galactic Distance Module (from Source96.cpp)
     GALACTIC_DISTANCE_UQFF_96: {
         // Universal constants
         c: 2.998e8,                             // m/s (speed of light)
         G: 6.6743e-11,                          // mÂ³ kgâ»Â¹ sâ»Â² (gravitational constant)
-        
+
         // Galactic distance parameters
         d_g: 2.55e20,                           // m (distance from galactic center, ~27,000 ly)
         d_g_ly: 27000,                          // ly (galactic distance in light-years)
         d_g_pc: 8260,                           // pc (galactic distance in parsecs)
-        
+
         // SMBH parameters (Sgr A*)
         M_bh: 8.15e36,                          // kg (4.1 million M_sun SMBH mass)
         M_bh_over_d_g: 3.20e16,                 // kg/m (M_bh/d_g scaling ratio)
-        
+
         // Universal Buoyancy U_b1 parameters
         beta_1: 0.6,                            // dimensionless (buoyancy coupling)
         U_g1: 1.39e26,                          // J/mÂ³ (base gravity for U_b1)
@@ -10559,38 +10559,38 @@ const PREDEFINED_SYSTEMS = {
         epsilon_sw: 0.15,                       // dimensionless (solar wind modulation)
         rho_vac_sw: 2.72e-14,                   // kg/mÂ³ (vacuum energy in solar wind)
         U_UA: 1.0e-9,                           // J/mÂ³ (Universal Adjustment term)
-        
+
         // Universal Gravity Ug4 parameters
         k_4: 1.2e-52,                           // mÂ²/kg (Ug4 coupling constant)
         rho_vac_SCm: 9.47e-27,                  // kg/mÂ³ (spacetime curvature vacuum)
         alpha: 1.0e-18,                         // sâ»Â¹ (exponential decay rate)
         f_feedback: 0.05,                       // dimensionless (feedback factor)
-        
+
         // Time evolution
         t_n: 0.0,                               // s (current time node)
         PI: Math.PI,                            // Ï€ constant for cos(Ï€t_n)
-        
+
         // Physical scales
         length_scale: 2.55e20,                  // m (galactic distance scale)
         mass_scale: 8.15e36,                    // kg (SMBH mass scale)
         energy_scale_U_b1: 1.94e27,             // J/mÂ³ (U_b1 buoyancy scale)
         energy_scale_U_g4: 2.50e-20,            // J/mÂ³ (Ug4 gravity scale)
-        
+
         // Application parameters
         system_type: 'galactic_distance',       // Framework type
         physics_domain: 'SMBH_influence_nebula_disk', // Application domain
         coupling_strength: 'strong',            // Strong SMBH coupling
-        
+
         // Dynamic variable defaults
         update_frequency: 1.0,                  // Hz (variable update rate)
-        
+
         // Computational parameters
         U_b1_enabled: true,                     // Enable U_b1 buoyancy calculations
         U_g4_enabled: true,                     // Enable Ug4 gravity calculations
         time_evolution_enabled: true,           // Enable cos(Ï€t_n) time dependence
         solar_wind_modulation: true,            // Enable Îµ_sw modulation in U_b1
         feedback_enabled: true,                 // Enable f_feedback in Ug4
-        
+
         // Validation parameters
         validation: {
             d_g_range: [1e20, 5e20],            // m (10,000 - 50,000 ly range)
@@ -10610,47 +10610,47 @@ const PREDEFINED_SYSTEMS = {
             dynamic_variables: true
         }
     },
-    
+
     // Feedback Factor Module (from Source97.cpp)
     FEEDBACK_FACTOR_UQFF_97: {
         // Universal constants
         c: 2.998e8,                             // m/s (speed of light)
         G: 6.6743e-11,                          // mÂ³ kgâ»Â¹ sâ»Â² (gravitational constant)
         hbar: 1.055e-34,                        // Jï¿½s (reduced Planck constant)
-        
+
         // Feedback factor parameters
         f_feedback: 0.1,                        // dimensionless (feedback factor for Î”M_BH=1 dex)
         DeltaM_BH_dex: 1.0,                     // dex (mass increase in dex units)
         M_bh_initial: 8.15e36,                  // kg (initial SMBH mass, 4.1M M_sun)
         M_bh_final: 8.15e37,                    // kg (final SMBH mass after feedback)
-        
+
         // Universal Gravity Ug4 parameters
         k_4: 1.2e-52,                           // mÂ²/kg (Ug4 coupling constant)
         rho_vac_SCm: 7.09e-37,                  // kg/mÂ³ (spacetime curvature vacuum)
         alpha: 1.0e-18,                         // sâ»Â¹ (exponential decay rate)
-        
+
         // Time evolution
         t_n: 0.0,                               // s (current time node)
         PI: Math.PI,                            // Ï€ constant for cos(Ï€t_n)
-        
+
         // Physical scales
         length_scale: 1.0,                      // m (reference scale)
         mass_scale: 8.15e36,                    // kg (SMBH mass scale)
         energy_scale_U_g4: 2.50e-20,            // J/mÂ³ (Ug4 gravity scale)
-        
+
         // Application parameters
         system_type: 'feedback_factor',         // Framework type
         physics_domain: 'SMBH_mass_scaling_feedback', // Application domain
         coupling_strength: 'moderate',          // Moderate feedback coupling
-        
+
         // Dynamic variable defaults
         update_frequency: 1.0,                  // Hz (variable update rate)
-        
+
         // Computational parameters
         U_g4_enabled: true,                     // Enable Ug4 gravity calculations
         time_evolution_enabled: true,           // Enable cos(Ï€t_n) time dependence
         feedback_enabled: true,                 // Enable f_feedback in Ug4
-        
+
         // Validation parameters
         validation: {
             f_feedback_range: [0.01, 1.0],      // dimensionless (realistic feedback range)
@@ -10680,18 +10680,18 @@ function analyzeSGR0501_4516(timePoints = [0, 86400 * 365, 86400 * 365 * 10, 864
     console.log(`   Radius: ${system.radius.toExponential(2)} m (20 km - larger)`);
     console.log(`   Magnetic Field: ${system.magneticField.toExponential(2)} T (weaker than SGR 1745-2900)`);
     console.log(`   Pulse Period: ${system.pulsePeriod} s (slower rotation)`);
-    console.log(`   B-field Decay: ${(system.tauB/(365.25*24*3600)).toFixed(0)} years`);
+    console.log(`   B-field Decay: ${(system.tauB / (365.25 * 24 * 3600)).toFixed(0)} years`);
     console.log(`   Time-Reversal Factor f_TRZ: ${system.f_TRZ}`);
-    
+
     // Initialize SGR 0501+4516 magnetar
     const sgr = new MagnetarSGR0501_4516(system);
     const results = [];
-    
+
     timePoints.forEach((t, index) => {
-        console.log(`\n--- SGR 0501+4516 Time Point ${index + 1}: t = ${(t/86400/365.25).toFixed(1)} years ---`);
-        
+        console.log(`\n--- SGR 0501+4516 Time Point ${index + 1}: t = ${(t / 86400 / 365.25).toFixed(1)} years ---`);
+
         const sgrResult = sgr.compute_g_Magnetar(t);
-        
+
         console.log(`?? Master Universal Gravity Equation (MUGE) Result:`);
         console.log(`   g_Magnetar Total: ${sgrResult.g_Magnetar.toExponential(4)} m/sï¿½`);
         console.log(`   Time-Reversal Factor f_TRZ: ${sgrResult.diagnostics.f_TRZ}`);
@@ -10699,7 +10699,7 @@ function analyzeSGR0501_4516(timePoints = [0, 86400 * 365, 86400 * 365 * 10, 864
         console.log(`   B-field Decay Fraction: ${sgrResult.diagnostics.magneticDecay.toExponential(3)}`);
         console.log(`   Rotational Frequency: ${sgrResult.diagnostics.rotationalFreq.toExponential(3)} rad/s`);
         console.log(`   Hubble Correction: ${sgrResult.diagnostics.hubbleCorrection.toExponential(6)}`);
-        
+
         console.log(`\n?? Component Breakdown:`);
         console.log(`   Base Gravity + Hubble: ${sgrResult.components.baseGravity.toExponential(3)} m/sï¿½`);
         console.log(`   Universal Gravity (Ug + f_TRZ): ${sgrResult.components.universalGravity.toExponential(3)} m/sï¿½`);
@@ -10710,7 +10710,7 @@ function analyzeSGR0501_4516(timePoints = [0, 86400 * 365, 86400 * 365 * 10, 864
         console.log(`   Fluid Dynamics: ${sgrResult.components.fluidDynamics.toExponential(3)} m/sï¿½`);
         console.log(`   Oscillatory Waves: ${sgrResult.components.oscillatoryWaves.toExponential(3)} m/sï¿½`);
         console.log(`   Dark Matter/Density: ${sgrResult.components.darkMatterDensity.toExponential(3)} m/sï¿½`);
-        
+
         results.push({
             time_days: t / 86400,
             time_years: t / (86400 * 365.25),
@@ -10721,7 +10721,7 @@ function analyzeSGR0501_4516(timePoints = [0, 86400 * 365, 86400 * 365 * 10, 864
             diagnostics: sgrResult.diagnostics
         });
     });
-    
+
     return {
         systemName: 'SGR 0501+4516 Magnetar',
         systemParams: system,
@@ -10747,16 +10747,16 @@ function analyzeSMBHSgrAStar(timePoints = [0, 86400 * 365 * 1e6, 86400 * 365 * 4
 
     timePoints.forEach((t, index) => {
         const timeDescription = [
-            't = 0 (present)', 
-            `t = ${(t / (86400 * 365 * 1e6)).toFixed(1)} Myr`, 
+            't = 0 (present)',
+            `t = ${(t / (86400 * 365 * 1e6)).toFixed(1)} Myr`,
             `t = ${(t / (86400 * 365 * 1e9)).toFixed(1)} Gyr`,
             `t = ${(t / (86400 * 365 * 1e9)).toFixed(1)} Gyr (Hubble time)`
         ][index] || `t = ${(t / (86400 * 365 * 1e9)).toFixed(1)} Gyr`;
-        
+
         console.log(`\n--- SMBH Sgr A* Time Point ${index + 1}: ${timeDescription} ---`);
-        
+
         const sgrResult = sgr.compute_g_SgrA(t);
-        
+
         console.log(`?? Master Universal Gravity Equation (MUGE) Result:`);
         console.log(`   g_SgrA Total: ${sgrResult.g_SgrA.toExponential(4)} m/sï¿½`);
         console.log(`   Mass Growth Factor: ${sgrResult.diagnostics.massGrowth.toFixed(3)}x`);
@@ -10764,7 +10764,7 @@ function analyzeSMBHSgrAStar(timePoints = [0, 86400 * 365 * 1e6, 86400 * 365 * 4
         console.log(`   Magnetic Decay: ${(sgrResult.diagnostics.magneticDecay * 100).toFixed(2)}%`);
         console.log(`   Rotational Frequency: ${sgrResult.diagnostics.rotationalFreq.toExponential(3)} rad/s`);
         console.log(`   Hubble Correction: ${sgrResult.diagnostics.hubbleCorrection.toFixed(3)}`);
-        
+
         console.log(`\n?? Component Breakdown:`);
         console.log(`   Base Gravity: ${sgrResult.components.baseGravity.toExponential(3)} m/sï¿½`);
         console.log(`   Universal Gravity (Ug): ${sgrResult.components.universalGravity.toExponential(3)} m/sï¿½`);
@@ -10775,7 +10775,7 @@ function analyzeSMBHSgrAStar(timePoints = [0, 86400 * 365 * 1e6, 86400 * 365 * 4
         console.log(`   Fluid Dynamics: ${sgrResult.components.fluidDynamics.toExponential(3)} m/sï¿½`);
         console.log(`   Oscillatory Waves: ${sgrResult.components.oscillatoryWaves.toExponential(3)} m/sï¿½`);
         console.log(`   Dark Matter/Density: ${sgrResult.components.darkMatterDensity.toExponential(3)} m/sï¿½`);
-        
+
         results.push({
             time_days: t / 86400,
             time_seconds: t,
@@ -10813,16 +10813,16 @@ function analyzeStarbirthTapestry(timePoints = [0, 86400 * 365 * 1e6, 86400 * 36
 
     timePoints.forEach((t, index) => {
         const timeDescription = [
-            't = 0 (start of star formation)', 
-            `t = ${(t / (86400 * 365 * 1e6)).toFixed(1)} Myr`, 
+            't = 0 (start of star formation)',
+            `t = ${(t / (86400 * 365 * 1e6)).toFixed(1)} Myr`,
             `t = ${(t / (86400 * 365 * 1e6)).toFixed(1)} Myr (peak activity)`,
             `t = ${(t / (86400 * 365 * 1e6)).toFixed(1)} Myr (SF timescale end)`
         ][index] || `t = ${(t / (86400 * 365 * 1e6)).toFixed(1)} Myr`;
-        
+
         console.log(`\n--- Starbirth Time Point ${index + 1}: ${timeDescription} ---`);
-        
+
         const starResult = starbirth.compute_g_Starbirth(t);
-        
+
         console.log(`?? Master Universal Gravity Equation (MUGE) Result:`);
         console.log(`   g_Starbirth Total: ${starResult.g_Starbirth.toExponential(4)} m/sï¿½`);
         console.log(`   Mass Growth Factor: ${starResult.diagnostics.massGrowth.toFixed(3)}x`);
@@ -10831,7 +10831,7 @@ function analyzeStarbirthTapestry(timePoints = [0, 86400 * 365 * 1e6, 86400 * 36
         console.log(`   Hubble Correction: ${starResult.diagnostics.hubbleCorrection.toFixed(3)}`);
         console.log(`   Wind Pressure: ${starResult.diagnostics.windPressure.toExponential(3)} Pa`);
         console.log(`   UA Correction: ${starResult.diagnostics.uaCorrection.toFixed(3)}`);
-        
+
         console.log(`\n?? Component Breakdown:`);
         console.log(`   Base Gravity: ${starResult.components.baseGravity.toExponential(3)} m/sï¿½`);
         console.log(`   Universal Gravity (Ug): ${starResult.components.universalGravity.toExponential(3)} m/sï¿½`);
@@ -10842,7 +10842,7 @@ function analyzeStarbirthTapestry(timePoints = [0, 86400 * 365 * 1e6, 86400 * 36
         console.log(`   Oscillatory Waves: ${starResult.components.oscillatoryWaves.toExponential(3)} m/sï¿½`);
         console.log(`   Dark Matter/Density: ${starResult.components.darkMatterDensity.toExponential(3)} m/sï¿½`);
         console.log(`   Stellar Wind Feedback: ${starResult.components.stellarWindFeedback.toExponential(3)} m/sï¿½`);
-        
+
         results.push({
             time_days: t / 86400,
             time_seconds: t,
@@ -10871,19 +10871,19 @@ function analyzeWesterlund2(timePoints = [0, 86400 * 365 * 0.5e6, 86400 * 365 * 
     console.log(`   Radius: ${system.radius.toExponential(2)} m (10 ly)`);
     console.log(`   Magnetic Field: ${system.magneticField.toExponential(2)} T`);
     console.log(`   Star Formation Factor: ${system.M_dot_factor.toExponential(2)}`);
-    console.log(`   Formation Timescale: ${(system.tau_SF/(365.25*24*3600*1e6)).toFixed(1)} Myr`);
+    console.log(`   Formation Timescale: ${(system.tau_SF / (365.25 * 24 * 3600 * 1e6)).toFixed(1)} Myr`);
     console.log(`   Stellar Wind Density: ${system.rho_wind.toExponential(2)} kg/mï¿½`);
-    console.log(`   Wind Velocity: ${(system.v_wind/1e6).toFixed(1)} Mm/s`);
-    
+    console.log(`   Wind Velocity: ${(system.v_wind / 1e6).toFixed(1)} Mm/s`);
+
     // Initialize Westerlund 2 cluster
     const cluster = new Westerlund2(system);
     const results = [];
-    
+
     timePoints.forEach((t, index) => {
-        console.log(`\n--- Westerlund 2 Time Point ${index + 1}: t = ${(t/(365.25*24*3600*1e6)).toFixed(2)} Myr ---`);
-        
+        console.log(`\n--- Westerlund 2 Time Point ${index + 1}: t = ${(t / (365.25 * 24 * 3600 * 1e6)).toFixed(2)} Myr ---`);
+
         const clusterResult = cluster.compute_g_Westerlund2(t);
-        
+
         console.log(`?? Master Universal Gravity Equation (MUGE) Result:`);
         console.log(`   g_Westerlund2 Total: ${clusterResult.g_Westerlund2.toExponential(4)} m/sï¿½`);
         console.log(`   Mass Growth: ${clusterResult.diagnostics.massGrowth.toExponential(3)}x initial`);
@@ -10891,7 +10891,7 @@ function analyzeWesterlund2(timePoints = [0, 86400 * 365 * 0.5e6, 86400 * 365 * 
         console.log(`   Star Formation Factor: ${clusterResult.diagnostics.starFormationFactor.toExponential(3)}`);
         console.log(`   Hubble Correction: ${clusterResult.diagnostics.hubbleCorrection.toExponential(3)}`);
         console.log(`   Wind Pressure: ${clusterResult.diagnostics.windPressure.toExponential(3)} Pa`);
-        
+
         console.log(`\n?? Component Breakdown:`);
         console.log(`   Base Gravity + Hubble + B: ${clusterResult.components.baseGravity.toExponential(3)} m/sï¿½`);
         console.log(`   Universal Gravity (Ug): ${clusterResult.components.universalGravity.toExponential(3)} m/sï¿½`);
@@ -10902,7 +10902,7 @@ function analyzeWesterlund2(timePoints = [0, 86400 * 365 * 0.5e6, 86400 * 365 * 
         console.log(`   Oscillatory Waves: ${clusterResult.components.oscillatoryWaves.toExponential(3)} m/sï¿½`);
         console.log(`   Dark Matter/Density: ${clusterResult.components.darkMatterDensity.toExponential(3)} m/sï¿½`);
         console.log(`   Stellar Wind Feedback: ${clusterResult.components.stellarWindFeedback.toExponential(3)} m/sï¿½`);
-        
+
         results.push({
             time_days: t / 86400,
             time_myr: t / (365.25 * 24 * 3600 * 1e6),
@@ -10930,21 +10930,21 @@ function analyzePillarsOfCreation(timePoints = [0, 86400 * 365 * 0.25e6, 86400 *
     console.log(`   Radius: ${system.radius.toExponential(2)} m (5 ly)`);
     console.log(`   Magnetic Field: ${system.magneticField.toExponential(2)} T`);
     console.log(`   Star Formation Factor: ${system.M_dot_factor.toExponential(2)}`);
-    console.log(`   Formation Timescale: ${(system.tau_SF/(365.25*24*3600*1e6)).toFixed(1)} Myr`);
+    console.log(`   Formation Timescale: ${(system.tau_SF / (365.25 * 24 * 3600 * 1e6)).toFixed(1)} Myr`);
     console.log(`   Erosion Factor E0: ${system.E_0}`);
-    console.log(`   Erosion Timescale: ${(system.tau_erosion/(365.25*24*3600*1e6)).toFixed(1)} Myr`);
+    console.log(`   Erosion Timescale: ${(system.tau_erosion / (365.25 * 24 * 3600 * 1e6)).toFixed(1)} Myr`);
     console.log(`   Stellar Wind Density: ${system.rho_wind.toExponential(2)} kg/mï¿½`);
-    console.log(`   Wind Velocity: ${(system.v_wind/1e6).toFixed(1)} Mm/s`);
-    
+    console.log(`   Wind Velocity: ${(system.v_wind / 1e6).toFixed(1)} Mm/s`);
+
     // Initialize Pillars of Creation
     const pillars = new PillarsOfCreation(system);
     const results = [];
-    
+
     timePoints.forEach((t, index) => {
-        console.log(`\n--- Pillars Time Point ${index + 1}: t = ${(t/(365.25*24*3600*1e6)).toFixed(2)} Myr ---`);
-        
+        console.log(`\n--- Pillars Time Point ${index + 1}: t = ${(t / (365.25 * 24 * 3600 * 1e6)).toFixed(2)} Myr ---`);
+
         const pillarsResult = pillars.compute_g_Pillars(t);
-        
+
         console.log(`?? Master Universal Gravity Equation (MUGE) Result:`);
         console.log(`   g_Pillars Total: ${pillarsResult.g_Pillars.toExponential(4)} m/sï¿½`);
         console.log(`   Mass Growth: ${pillarsResult.diagnostics.massGrowth.toExponential(3)}x initial`);
@@ -10954,7 +10954,7 @@ function analyzePillarsOfCreation(timePoints = [0, 86400 * 365 * 0.25e6, 86400 *
         console.log(`   Star Formation Factor: ${pillarsResult.diagnostics.starFormationFactor.toExponential(3)}`);
         console.log(`   Hubble Correction: ${pillarsResult.diagnostics.hubbleCorrection.toExponential(3)}`);
         console.log(`   Wind Pressure: ${pillarsResult.diagnostics.windPressure.toExponential(3)} Pa`);
-        
+
         console.log(`\n?? Component Breakdown:`);
         console.log(`   Base Gravity + Hubble + B + E: ${pillarsResult.components.baseGravity.toExponential(3)} m/sï¿½`);
         console.log(`   Universal Gravity (Ug): ${pillarsResult.components.universalGravity.toExponential(3)} m/sï¿½`);
@@ -10965,7 +10965,7 @@ function analyzePillarsOfCreation(timePoints = [0, 86400 * 365 * 0.25e6, 86400 *
         console.log(`   Oscillatory Waves: ${pillarsResult.components.oscillatoryWaves.toExponential(3)} m/sï¿½`);
         console.log(`   Dark Matter/Density: ${pillarsResult.components.darkMatterDensity.toExponential(3)} m/sï¿½`);
         console.log(`   Stellar Wind Feedback: ${pillarsResult.components.stellarWindFeedback.toExponential(3)} m/sï¿½`);
-        
+
         results.push({
             time_days: t / 86400,
             time_myr: t / (365.25 * 24 * 3600 * 1e6),
@@ -10996,17 +10996,17 @@ function analyzeRingsOfRelativity(timePoints = [0, 86400 * 365 * 1e9, 86400 * 36
     console.log(`   Lensing Factor L_factor: ${system.L_factor}`);
     console.log(`   Lensing Amplification L_t: ${system.L_t.toExponential(2)} (GM/cï¿½r ï¿½ L_factor)`);
     console.log(`   Cluster Gas Density: ${system.rho_fluid.toExponential(2)} kg/mï¿½`);
-    console.log(`   Galactic Wind Velocity: ${(system.v_wind/1e6).toFixed(1)} Mm/s`);
-    
+    console.log(`   Galactic Wind Velocity: ${(system.v_wind / 1e6).toFixed(1)} Mm/s`);
+
     // Initialize Einstein Ring system
     const rings = new RingsOfRelativity(system);
     const results = [];
-    
+
     timePoints.forEach((t, index) => {
-        console.log(`\n--- Einstein Ring Time Point ${index + 1}: t = ${(t/(365.25*24*3600*1e9)).toFixed(1)} Gyr ---`);
-        
+        console.log(`\n--- Einstein Ring Time Point ${index + 1}: t = ${(t / (365.25 * 24 * 3600 * 1e9)).toFixed(1)} Gyr ---`);
+
         const ringsResult = rings.compute_g_Rings(t);
-        
+
         console.log(`?? Master Universal Gravity Equation (MUGE) Result:`);
         console.log(`   g_Rings Total: ${ringsResult.g_Rings.toExponential(4)} m/sï¿½`);
         console.log(`   Mass (Constant): ${ringsResult.diagnostics.mass.toExponential(3)} kg`);
@@ -11016,7 +11016,7 @@ function analyzeRingsOfRelativity(timePoints = [0, 86400 * 365 * 1e9, 86400 * 36
         console.log(`   Lensing Factor: ${ringsResult.diagnostics.lensingFactor}`);
         console.log(`   Einstein Radius: ${ringsResult.diagnostics.einsteinRadius.toExponential(3)} m`);
         console.log(`   Redshift: ${ringsResult.diagnostics.redshift}`);
-        
+
         console.log(`\n?? Component Breakdown:`);
         console.log(`   Base + Hubble + B + Lensing: ${ringsResult.components.term1.toExponential(3)} m/sï¿½`);
         console.log(`   Universal Gravity (Ug): ${ringsResult.components.term2.toExponential(3)} m/sï¿½`);
@@ -11027,7 +11027,7 @@ function analyzeRingsOfRelativity(timePoints = [0, 86400 * 365 * 1e9, 86400 * 36
         console.log(`   Oscillatory Waves: ${ringsResult.components.term_osc.toExponential(3)} m/sï¿½`);
         console.log(`   Dark Matter/Density: ${ringsResult.components.term_DM.toExponential(3)} m/sï¿½`);
         console.log(`   Galactic Wind Feedback: ${ringsResult.components.term_wind.toExponential(3)} m/sï¿½`);
-        
+
         results.push({
             time_days: t / 86400,
             time_gyr: t / (365.25 * 24 * 3600 * 1e9),
@@ -11057,20 +11057,20 @@ function analyzeGalaxyNGC2525(timePoints = [0, 86400 * 365 * 7, 86400 * 365 * 10
     console.log(`   Black Hole Influence Radius: ${system.r_BH.toExponential(2)} m`);
     console.log(`   Redshift z: ${system.z_gal}`);
     console.log(`   Hubble Parameter H(z): ${system.hubbleParam.toExponential(2)} s^-1ï¿½`);
-    console.log(`   Initial Supernova Mass: ${(system.M_SN0/1.989e30).toFixed(1)} M?`);
-    console.log(`   SN Decay Timescale: ${(system.tau_SN/(365.25*24*3600)).toFixed(1)} years`);
+    console.log(`   Initial Supernova Mass: ${(system.M_SN0 / 1.989e30).toFixed(1)} M?`);
+    console.log(`   SN Decay Timescale: ${(system.tau_SN / (365.25 * 24 * 3600)).toFixed(1)} years`);
     console.log(`   Galactic Gas Density: ${system.rho_fluid.toExponential(2)} kg/mï¿½`);
-    console.log(`   Gas Velocity: ${(system.gas_v/1e5).toFixed(1)} ï¿½ 105 m/s`);
-    
+    console.log(`   Gas Velocity: ${(system.gas_v / 1e5).toFixed(1)} ï¿½ 105 m/s`);
+
     // Initialize Galaxy NGC 2525
     const galaxy = new GalaxyNGC2525(system);
     const results = [];
-    
+
     timePoints.forEach((t, index) => {
-        console.log(`\n--- Galaxy NGC 2525 Time Point ${index + 1}: t = ${(t/(365.25*24*3600)).toFixed(1)} years ---`);
-        
+        console.log(`\n--- Galaxy NGC 2525 Time Point ${index + 1}: t = ${(t / (365.25 * 24 * 3600)).toFixed(1)} years ---`);
+
         const galaxyResult = galaxy.compute_g_NGC2525(t);
-        
+
         console.log(`?? Master Universal Gravity Equation (MUGE) Result:`);
         console.log(`   g_NGC2525 Total: ${galaxyResult.g_NGC2525.toExponential(4)} m/sï¿½`);
         console.log(`   Supernova Mass M_SN(t): ${galaxyResult.diagnostics.supernovaMass.toExponential(3)} kg`);
@@ -11078,8 +11078,8 @@ function analyzeGalaxyNGC2525(timePoints = [0, 86400 * 365 * 7, 86400 * 365 * 10
         console.log(`   Magnetic Correction: ${galaxyResult.diagnostics.magneticCorrection.toExponential(3)}`);
         console.log(`   Black Hole Acceleration: ${galaxyResult.diagnostics.blackHoleAcceleration.toExponential(3)} m/sï¿½`);
         console.log(`   Redshift z: ${galaxyResult.diagnostics.redshift}`);
-        console.log(`   SN Decay Timescale: ${(galaxyResult.diagnostics.supernovaDecayTimescale/(365.25*24*3600)).toFixed(1)} years`);
-        
+        console.log(`   SN Decay Timescale: ${(galaxyResult.diagnostics.supernovaDecayTimescale / (365.25 * 24 * 3600)).toFixed(1)} years`);
+
         console.log(`\n?? Component Breakdown:`);
         console.log(`   Base + Hubble + Magnetic: ${galaxyResult.components.term1.toExponential(3)} m/sï¿½`);
         console.log(`   Central Black Hole: ${galaxyResult.components.term_BH.toExponential(3)} m/sï¿½`);
@@ -11091,7 +11091,7 @@ function analyzeGalaxyNGC2525(timePoints = [0, 86400 * 365 * 7, 86400 * 365 * 10
         console.log(`   Oscillatory Waves: ${galaxyResult.components.term_osc.toExponential(3)} m/sï¿½`);
         console.log(`   Dark Matter/Density: ${galaxyResult.components.term_DM.toExponential(3)} m/sï¿½`);
         console.log(`   Supernova Mass Loss: ${galaxyResult.components.term_SN.toExponential(3)} m/sï¿½ (negative)`);
-        
+
         results.push({
             time_days: t / 86400,
             time_years: t / (365.25 * 24 * 3600),
@@ -11119,22 +11119,22 @@ function analyzeNGC3603(timePoints = [0, 86400 * 365 * 0.5e6, 86400 * 365 * 1e6,
     console.log(`   Cluster Radius: ${system.radius.toExponential(2)} m (9.5 ly)`);
     console.log(`   Magnetic Field: ${system.magneticField.toExponential(2)} T`);
     console.log(`   Star Formation Factor: ${system.M_dot_factor}`);
-    console.log(`   Formation Timescale: ${(system.tau_SF/(365.25*24*3600*1e6)).toFixed(1)} Myr`);
+    console.log(`   Formation Timescale: ${(system.tau_SF / (365.25 * 24 * 3600 * 1e6)).toFixed(1)} Myr`);
     console.log(`   Initial Pressure P0: ${system.P0.toExponential(2)} Pa`);
-    console.log(`   Expansion Timescale: ${(system.tau_exp/(365.25*24*3600*1e6)).toFixed(1)} Myr`);
+    console.log(`   Expansion Timescale: ${(system.tau_exp / (365.25 * 24 * 3600 * 1e6)).toFixed(1)} Myr`);
     console.log(`   Stellar Wind Density: ${system.rho_wind.toExponential(2)} kg/mï¿½`);
-    console.log(`   Wind Velocity: ${(system.v_wind/1e6).toFixed(1)} Mm/s`);
+    console.log(`   Wind Velocity: ${(system.v_wind / 1e6).toFixed(1)} Mm/s`);
     console.log(`   Cluster Gas Density: ${system.rho_fluid.toExponential(2)} kg/mï¿½`);
-    
+
     // Initialize NGC 3603 cluster
     const cluster = new NGC3603(system);
     const results = [];
-    
+
     timePoints.forEach((t, index) => {
-        console.log(`\n--- NGC 3603 Time Point ${index + 1}: t = ${(t/(365.25*24*3600*1e6)).toFixed(2)} Myr ---`);
-        
+        console.log(`\n--- NGC 3603 Time Point ${index + 1}: t = ${(t / (365.25 * 24 * 3600 * 1e6)).toFixed(2)} Myr ---`);
+
         const clusterResult = cluster.compute_g_NGC3603(t);
-        
+
         console.log(`?? Master Universal Gravity Equation (MUGE) Result:`);
         console.log(`   g_NGC3603 Total: ${clusterResult.g_NGC3603.toExponential(4)} m/sï¿½`);
         console.log(`   Current Mass: ${clusterResult.diagnostics.mass.toExponential(3)} kg`);
@@ -11143,7 +11143,7 @@ function analyzeNGC3603(timePoints = [0, 86400 * 365 * 0.5e6, 86400 * 365 * 1e6,
         console.log(`   Pressure Decay Factor: ${clusterResult.diagnostics.pressureDecayFactor.toExponential(3)}`);
         console.log(`   Hubble Correction: ${clusterResult.diagnostics.hubbleCorrection.toExponential(3)}`);
         console.log(`   Wind Pressure: ${clusterResult.diagnostics.windPressure.toExponential(3)} Pa`);
-        
+
         console.log(`\n?? Component Breakdown:`);
         console.log(`   Base + Hubble + Magnetic: ${clusterResult.components.term1.toExponential(3)} m/sï¿½`);
         console.log(`   Universal Gravity (Ug): ${clusterResult.components.term2.toExponential(3)} m/sï¿½`);
@@ -11155,7 +11155,7 @@ function analyzeNGC3603(timePoints = [0, 86400 * 365 * 0.5e6, 86400 * 365 * 1e6,
         console.log(`   Dark Matter/Density: ${clusterResult.components.term_DM.toExponential(3)} m/sï¿½`);
         console.log(`   Stellar Wind Feedback: ${clusterResult.components.term_wind.toExponential(3)} m/sï¿½`);
         console.log(`   Cavity Pressure: ${clusterResult.components.term_pressure.toExponential(3)} m/sï¿½ (unique)`);
-        
+
         results.push({
             time_days: t / 86400,
             time_myr: t / (365.25 * 24 * 3600 * 1e6),
@@ -11182,23 +11182,23 @@ function analyzeBubbleNebula(timePoints = [0, 86400 * 365 * 0.5e6, 86400 * 365 *
     console.log(`   Total Mass: ${system.mass.toExponential(2)} kg (46 M?)`);
     console.log(`   Nebular Radius: ${system.radius.toExponential(2)} m (5 ly)`);
     console.log(`   Central Star: BD +60ï¿½2522 (Wolf-Rayet)`);
-    console.log(`   Expansion Timescale: ${(system.tau_exp/(365.25*24*3600*1e6)).toFixed(1)} Myr`);
+    console.log(`   Expansion Timescale: ${(system.tau_exp / (365.25 * 24 * 3600 * 1e6)).toFixed(1)} Myr`);
     console.log(`   Initial Expansion Factor: ${system.E_0}`);
     console.log(`   Stellar Wind Velocity: ${system.v_wind.toExponential(2)} m/s`);
-    
+
     // Initialize Bubble Nebula
     const bubble = new BubbleNebula(system);
     const results = [];
-    
+
     timePoints.forEach(t => {
-        const timeLabel = t === 0 ? 'Formation' : 
-                         t < 365.25 * 24 * 3600 * 1e6 ? `${(t/(365.25*24*3600*1e6)).toFixed(1)} Myr` :
-                         `${(t/(365.25*24*3600*1e6)).toFixed(1)} Myr`;
-        
+        const timeLabel = t === 0 ? 'Formation' :
+            t < 365.25 * 24 * 3600 * 1e6 ? `${(t / (365.25 * 24 * 3600 * 1e6)).toFixed(1)} Myr` :
+                `${(t / (365.25 * 24 * 3600 * 1e6)).toFixed(1)} Myr`;
+
         console.log(`\n???  Time: ${timeLabel}`);
-        
+
         const bubbleResult = bubble.compute_g_Bubble(t);
-        
+
         console.log(`?? Master Universal Gravity Equation (MUGE) Result:`);
         console.log(`   g_Bubble Total: ${bubbleResult.g_Bubble.toExponential(4)} m/sï¿½`);
         console.log(`   Expansion Factor E(t): ${bubbleResult.diagnostics.expansionFactor.toExponential(3)}`);
@@ -11206,7 +11206,7 @@ function analyzeBubbleNebula(timePoints = [0, 86400 * 365 * 0.5e6, 86400 * 365 *
         console.log(`   Hubble Correction: ${bubbleResult.diagnostics.hubbleCorrection.toExponential(3)}`);
         console.log(`   Wind Pressure: ${bubbleResult.diagnostics.windPressure.toExponential(3)} Pa`);
         console.log(`   UA Correction: ${bubbleResult.diagnostics.uaCorrection.toExponential(3)}`);
-        
+
         console.log(`\n?? Component Breakdown:`);
         console.log(`   Base + Hubble + Magnetic + Expansion: ${bubbleResult.components.term1.toExponential(3)} m/sï¿½`);
         console.log(`   Universal Gravity (Ug) with Expansion: ${bubbleResult.components.term2.toExponential(3)} m/sï¿½`);
@@ -11217,7 +11217,7 @@ function analyzeBubbleNebula(timePoints = [0, 86400 * 365 * 0.5e6, 86400 * 365 *
         console.log(`   Oscillatory Waves: ${bubbleResult.components.term_osc.toExponential(3)} m/sï¿½`);
         console.log(`   Dark Matter/Density: ${bubbleResult.components.term_DM.toExponential(3)} m/sï¿½`);
         console.log(`   Stellar Wind Feedback: ${bubbleResult.components.term_wind.toExponential(3)} m/sï¿½ (unique)`);
-        
+
         results.push({
             time_days: t / 86400,
             time_myr: t / (365.25 * 24 * 3600 * 1e6),
@@ -11244,24 +11244,24 @@ function analyzeAntennaeGalaxies(timePoints = [0, 86400 * 365 * 100e6, 86400 * 3
     console.log(`   Combined Mass: ${system.mass.toExponential(2)} kg (200 billion M?)`);
     console.log(`   Galaxy Separation: ${system.radius.toExponential(2)} m (30,000 ly)`);
     console.log(`   Redshift z: ${system.z_gal}`);
-    console.log(`   Star Formation Timescale: ${(system.tau_SF/(365.25*24*3600*1e6)).toFixed(0)} Myr`);
-    console.log(`   Merger Timescale: ${(system.tau_merger/(365.25*24*3600*1e6)).toFixed(0)} Myr`);
+    console.log(`   Star Formation Timescale: ${(system.tau_SF / (365.25 * 24 * 3600 * 1e6)).toFixed(0)} Myr`);
+    console.log(`   Merger Timescale: ${(system.tau_merger / (365.25 * 24 * 3600 * 1e6)).toFixed(0)} Myr`);
     console.log(`   Enhanced Wind Velocity: ${system.v_wind.toExponential(2)} m/s`);
     console.log(`   Initial Interaction Factor: ${system.I0}`);
-    
+
     // Initialize Antennae Galaxies merger
     const antennae = new AntennaeGalaxies(system);
     const results = [];
-    
+
     timePoints.forEach(t => {
-        const timeLabel = t === 0 ? 'Initial' : 
-                         t < 365.25 * 24 * 3600 * 1e9 ? `${(t/(365.25*24*3600*1e6)).toFixed(0)} Myr` :
-                         `${(t/(365.25*24*3600*1e9)).toFixed(1)} Gyr`;
-        
+        const timeLabel = t === 0 ? 'Initial' :
+            t < 365.25 * 24 * 3600 * 1e9 ? `${(t / (365.25 * 24 * 3600 * 1e6)).toFixed(0)} Myr` :
+                `${(t / (365.25 * 24 * 3600 * 1e9)).toFixed(1)} Gyr`;
+
         console.log(`\n???  Time: ${timeLabel}`);
-        
+
         const mergerResult = antennae.compute_g_Antennae(t);
-        
+
         console.log(`?? Master Universal Gravity Equation (MUGE) Result:`);
         console.log(`   g_Antennae Total: ${mergerResult.g_Antennae.toExponential(4)} m/sï¿½`);
         console.log(`   Current Mass: ${mergerResult.diagnostics.mass.toExponential(3)} kg`);
@@ -11270,7 +11270,7 @@ function analyzeAntennaeGalaxies(timePoints = [0, 86400 * 365 * 100e6, 86400 * 3
         console.log(`   Hubble Correction: ${mergerResult.diagnostics.hubbleCorrection.toExponential(3)}`);
         console.log(`   Wind Pressure: ${mergerResult.diagnostics.windPressure.toExponential(3)} Pa`);
         console.log(`   UA Correction: ${mergerResult.diagnostics.uaCorrection.toExponential(3)}`);
-        
+
         console.log(`\n?? Component Breakdown:`);
         console.log(`   Base + Hubble + Magnetic + Interaction: ${mergerResult.components.term1.toExponential(3)} m/sï¿½`);
         console.log(`   Universal Gravity (Ug) with Interaction: ${mergerResult.components.term2.toExponential(3)} m/sï¿½`);
@@ -11281,7 +11281,7 @@ function analyzeAntennaeGalaxies(timePoints = [0, 86400 * 365 * 100e6, 86400 * 3
         console.log(`   Oscillatory Waves: ${mergerResult.components.term_osc.toExponential(3)} m/sï¿½`);
         console.log(`   Dark Matter/Density: ${mergerResult.components.term_DM.toExponential(3)} m/sï¿½`);
         console.log(`   Merger Wind Feedback: ${mergerResult.components.term_feedback.toExponential(3)} m/sï¿½ (unique)`);
-        
+
         results.push({
             time_days: t / 86400,
             time_myr: t / (365.25 * 24 * 3600 * 1e6),
@@ -11308,24 +11308,24 @@ function analyzeHorseheadNebula(timePoints = [0, 86400 * 365 * 1e6, 86400 * 365 
     console.log(`   Nebular Mass: ${system.mass.toExponential(2)} kg (1000 M?)`);
     console.log(`   Nebular Radius: ${system.radius.toExponential(2)} m (2.5 ly)`);
     console.log(`   Temperature: ${system.temperature} K (very cold dark nebula)`);
-    console.log(`   Erosion Timescale: ${(system.tau_erosion/(365.25*24*3600*1e6)).toFixed(0)} Myr`);
+    console.log(`   Erosion Timescale: ${(system.tau_erosion / (365.25 * 24 * 3600 * 1e6)).toFixed(0)} Myr`);
     console.log(`   Initial Erosion Factor: ${system.E_0}`);
     console.log(`   Stellar Wind Velocity: ${system.v_wind.toExponential(2)} m/s (from nearby stars)`);
     console.log(`   Magnetic Field: ${system.magneticField.toExponential(2)} T (interstellar)`);
-    
+
     // Initialize Horsehead Nebula
     const horsehead = new HorseheadNebula(system);
     const results = [];
-    
+
     timePoints.forEach(t => {
-        const timeLabel = t === 0 ? 'Formation' : 
-                         t < 365.25 * 24 * 3600 * 1e6 ? `${(t/(365.25*24*3600*1e6)).toFixed(1)} Myr` :
-                         `${(t/(365.25*24*3600*1e6)).toFixed(0)} Myr`;
-        
+        const timeLabel = t === 0 ? 'Formation' :
+            t < 365.25 * 24 * 3600 * 1e6 ? `${(t / (365.25 * 24 * 3600 * 1e6)).toFixed(1)} Myr` :
+                `${(t / (365.25 * 24 * 3600 * 1e6)).toFixed(0)} Myr`;
+
         console.log(`\n???  Time: ${timeLabel}`);
-        
+
         const nebulaResult = horsehead.compute_g_Horsehead(t);
-        
+
         console.log(`?? Master Universal Gravity Equation (MUGE) Result:`);
         console.log(`   g_Horsehead Total: ${nebulaResult.g_Horsehead.toExponential(4)} m/sï¿½`);
         console.log(`   Erosion Factor E(t): ${nebulaResult.diagnostics.erosionFactor.toExponential(3)}`);
@@ -11334,7 +11334,7 @@ function analyzeHorseheadNebula(timePoints = [0, 86400 * 365 * 1e6, 86400 * 365 
         console.log(`   Wind Pressure: ${nebulaResult.diagnostics.windPressure.toExponential(3)} Pa (from nearby stars)`);
         console.log(`   UA Correction: ${nebulaResult.diagnostics.uaCorrection.toExponential(3)}`);
         console.log(`   Nebular Mass: ${nebulaResult.diagnostics.nebularMass.toExponential(3)} kg`);
-        
+
         console.log(`\n?? Component Breakdown:`);
         console.log(`   Base + Hubble + Magnetic + Erosion: ${nebulaResult.components.term1.toExponential(3)} m/sï¿½`);
         console.log(`   Universal Gravity (Ug) with Erosion: ${nebulaResult.components.term2.toExponential(3)} m/sï¿½`);
@@ -11345,7 +11345,7 @@ function analyzeHorseheadNebula(timePoints = [0, 86400 * 365 * 1e6, 86400 * 365 
         console.log(`   Oscillatory Waves: ${nebulaResult.components.term_osc.toExponential(3)} m/sï¿½`);
         console.log(`   Dark Matter/Density: ${nebulaResult.components.term_DM.toExponential(3)} m/sï¿½`);
         console.log(`   Stellar Wind Feedback: ${nebulaResult.components.term_wind.toExponential(3)} m/sï¿½ (unique)`);
-        
+
         results.push({
             time_days: t / 86400,
             time_myr: t / (365.25 * 24 * 3600 * 1e6),
@@ -11374,24 +11374,24 @@ function analyzeSGR1745_2900(timePoints = [0, 86400 * 182.5, 86400 * 365, 86400 
     console.log(`   Magnetic Field: ${system.magneticField.toExponential(2)} T`);
     console.log(`   Pulse Period: ${system.pulsePeriod} s`);
     console.log(`   Distance to Sgr A*: ${system.blackHoleDistance.toExponential(2)} m`);
-    console.log(`   Decay Timescale: ${(system.tauDecay/(365.25*24*3600)).toFixed(1)} years`);
-    
+    console.log(`   Decay Timescale: ${(system.tauDecay / (365.25 * 24 * 3600)).toFixed(1)} years`);
+
     // Initialize SGR 1745-2900 magnetar
     const sgr = new MagnetarSGR1745_2900(system);
     const results = [];
-    
+
     timePoints.forEach((t, index) => {
-        console.log(`\n--- SGR 1745-2900 Time Point ${index + 1}: t = ${(t/86400).toFixed(1)} days ---`);
-        
+        console.log(`\n--- SGR 1745-2900 Time Point ${index + 1}: t = ${(t / 86400).toFixed(1)} days ---`);
+
         const sgrResult = sgr.compute_g_Magnetar(t);
-        
+
         console.log(`?? Master Universal Gravity Equation (MUGE) Result:`);
         console.log(`   g_Magnetar Total: ${sgrResult.g_Magnetar.toExponential(4)} m/sï¿½`);
         console.log(`   Superconductive Factor f_sc: ${sgrResult.diagnostics.f_sc.toExponential(3)}`);
         console.log(`   Rotational Frequency: ${sgrResult.diagnostics.rotationalFreq.toExponential(3)} rad/s`);
         console.log(`   Magnetic Energy: ${sgrResult.diagnostics.magneticEnergy.toExponential(3)} J`);
         console.log(`   Cumulative Decay Energy: ${sgrResult.diagnostics.cumulativeDecay.toExponential(3)} J`);
-        
+
         console.log(`\n?? Component Breakdown:`);
         console.log(`   Base Gravity + Hubble: ${sgrResult.components.baseGravity.toExponential(3)} m/sï¿½`);
         console.log(`   Sgr A* Black Hole: ${sgrResult.components.blackHole.toExponential(3)} m/sï¿½`);
@@ -11405,7 +11405,7 @@ function analyzeSGR1745_2900(timePoints = [0, 86400 * 182.5, 86400 * 365, 86400 
         console.log(`   Dark Matter/Density: ${sgrResult.components.darkMatterDensity.toExponential(3)} m/sï¿½`);
         console.log(`   Magnetic Energy: ${sgrResult.components.magneticEnergy.toExponential(3)} m/sï¿½`);
         console.log(`   Decay Energy: ${sgrResult.components.decayEnergy.toExponential(3)} m/sï¿½`);
-        
+
         results.push({
             time_days: t / 86400,
             time_seconds: t,
@@ -11415,7 +11415,7 @@ function analyzeSGR1745_2900(timePoints = [0, 86400 * 182.5, 86400 * 365, 86400 
             diagnostics: sgrResult.diagnostics
         });
     });
-    
+
     return {
         systemName: 'SGR 1745-2900 Magnetar',
         systemParams: system,
@@ -11428,27 +11428,27 @@ function analyzeSGR1745_2900(timePoints = [0, 86400 * 182.5, 86400 * 365, 86400 
 function analyzeMAIN1_UQFF_Calculator(timePoints = [0, 1e6, 1e7, 1e8]) {
     console.log(`\n?? ANALYZING MAIN_1 UQFF CALCULATOR (25+ Astrophysical Systems)`);
     console.log(`?? Based on MAIN_1.cpp comprehensive framework`);
-    
+
     const calculator = new MAIN1_UQFF_Calculator();
     const availableSystems = calculator.getAvailableSystems();
-    
+
     console.log(`?? Available Systems: ${availableSystems.length}`);
     console.log(`   Systems: ${availableSystems.slice(0, 5).join(', ')}... and ${availableSystems.length - 5} more`);
-    
+
     // Use default system "ESO 137-001" for demonstration
     const systemName = "ESO 137-001";
     const analysis = calculator.runFullAnalysis(systemName, timePoints);
-    
+
     console.log(`\n?? System: ${systemName}`);
     console.log(`?? Time Evolution Analysis:`);
-    
+
     analysis.time_evolution.forEach((point, index) => {
         console.log(`\n--- Time Point ${index + 1}: t = ${point.time.toExponential(2)} s ---`);
         console.log(`   F_U_Bi_i (Buoyancy): ${point.F_U_Bi_i.toExponential(4)} N/m³`);
         console.log(`   Compressed Gravity (26-layer): ${point.compressed_gravity.toExponential(4)} N/m³`);
         console.log(`   Net Force: ${point.net_force.toExponential(4)} N/m³`);
     });
-    
+
     return {
         systemName: 'MAIN_1 UQFF Calculator',
         calculator: calculator,
@@ -11464,68 +11464,68 @@ function analyzeSystem(systemName, timePoints = [0, 86400 * 182.5, 86400 * 365])
     if (systemName === 'MAIN_1') {
         return analyzeMAIN1_UQFF_Calculator(timePoints);
     }
-    
+
     if (systemName === 'SGR_1745_2900') {
         return analyzeSGR1745_2900(timePoints);
     }
-    
+
     if (systemName === 'SGR_0501_4516') {
         return analyzeSGR0501_4516(timePoints);
     }
-    
+
     if (systemName === 'SMBH_SGR_A_STAR') {
         return analyzeSMBHSgrAStar(timePoints);
     }
-    
+
     if (systemName === 'STARBIRTH_TAPESTRY') {
         return analyzeStarbirthTapestry(timePoints);
     }
-    
+
     if (systemName === 'WESTERLUND_2') {
         return analyzeWesterlund2(timePoints);
     }
-    
+
     if (systemName === 'PILLARS_OF_CREATION') {
         return analyzePillarsOfCreation(timePoints);
     }
-    
+
     if (systemName === 'RINGS_OF_RELATIVITY') {
         return analyzeRingsOfRelativity(timePoints);
     }
-    
+
     if (systemName === 'GALAXY_NGC_2525') {
         return analyzeGalaxyNGC2525(timePoints);
     }
-    
+
     if (systemName === 'NGC_3603') {
         return analyzeNGC3603(timePoints);
     }
-    
+
     if (systemName === 'BUBBLE_NEBULA') {
         return analyzeBubbleNebula(timePoints);
     }
-    
+
     if (systemName === 'ANTENNAE_GALAXIES') {
         return analyzeAntennaeGalaxies(timePoints);
     }
-    
+
     if (systemName === 'HORSEHEAD_NEBULA') {
         return analyzeHorseheadNebula(timePoints);
     }
-    
+
     if (systemName === 'NGC_1275') {
         return analyzeNGC1275(timePoints);
     }
-    
+
     if (systemName === 'HUDF_GALAXIES') {
         return analyzeHUDFGalaxies(timePoints);
     }
-    
+
     if (!PREDEFINED_SYSTEMS[systemName]) {
         console.log(`? System '${systemName}' not found in predefined systems.`);
         return null;
     }
-    
+
     const system = PREDEFINED_SYSTEMS[systemName];
     console.log(`\n?? ANALYZING SYSTEM: ${system.name}`);
     console.log(`?? System Parameters:`);
@@ -11533,12 +11533,12 @@ function analyzeSystem(systemName, timePoints = [0, 86400 * 182.5, 86400 * 365])
     console.log(`   Radius: ${system.radius.toExponential(2)} m`);
     console.log(`   Magnetic Field: ${system.magneticField.toExponential(2)} T`);
     console.log(`   Velocity: ${system.velocity.toExponential(2)} m/s`);
-    
+
     const results = [];
-    
+
     timePoints.forEach((t, index) => {
-        console.log(`\n--- Time Point ${index + 1}: t = ${(t/86400).toFixed(1)} days ---`);
-        
+        console.log(`\n--- Time Point ${index + 1}: t = ${(t / 86400).toFixed(1)} days ---`);
+
         const systemParams = {
             mass: system.mass,
             velocity: system.velocity,
@@ -11547,15 +11547,15 @@ function analyzeSystem(systemName, timePoints = [0, 86400 * 182.5, 86400 * 365])
             omega0: system.omega0,
             magnetarType: systemName === 'MAGNETAR_SGR' ? 'SGR_1745_2900' : 'Generic'
         };
-        
+
         const result = calculateUnifiedField(
-            system.radius, 
-            Math.PI/4, 
-            t, 
+            system.radius,
+            Math.PI / 4,
+            t,
             system.mass,
             systemParams
         );
-        
+
         results.push({
             time_days: t / 86400,
             time_seconds: t,
@@ -11565,7 +11565,7 @@ function analyzeSystem(systemName, timePoints = [0, 86400 * 182.5, 86400 * 365])
             advancedComponents: result.advancedComponents
         });
     });
-    
+
     return {
         systemName: system.name,
         systemParams: system,
@@ -11595,7 +11595,7 @@ systemsToAnalyze.forEach(systemName => {
         // Pillars of Creation uses Myr time scale
         systemTimePoints = [0, 86400 * 365 * 0.25e6, 86400 * 365 * 0.5e6, 86400 * 365 * 1e6]; // 0, 0.25, 0.5, 1 Myr
     }
-    
+
     const systemAnalysis = analyzeSystem(systemName, systemTimePoints);
     if (systemAnalysis) {
         allResults.push(systemAnalysis);
@@ -11607,21 +11607,21 @@ console.log('\n?? === ADVANCED REACTOR EFFICIENCY ANALYSIS ===');
 console.log('Integrating Colman-Gillespie LENR, Sweet Vacuum Energy, Kozima Neutron Drops');
 
 timePoints.forEach((t, idx) => {
-    console.log(`\n--- Time Point: ${(t/86400).toFixed(1)} days ---`);
-    
+    console.log(`\n--- Time Point: ${(t / 86400).toFixed(1)} days ---`);
+
     // Traditional reactor efficiency
     const reactorEff = calculateReactorEfficiency(CONSTANTS.SCM_DENSITY, CONSTANTS.AETHER_DENSITY, t);
     console.log(`Traditional Reactor Efficiency: ${reactorEff.toExponential(3)} W/mï¿½`);
-    
+
     // LENR efficiency components
     const lenrForce = calculateLENRForce(t);
     const neutronForce = calculateNeutronPhononForce(1, 1e-12);
     const vacuumForce = calculateVacuumRepulsion(CONSTANTS.SOLAR_MASS, 1e5);
-    
+
     console.log(`LENR Force (Colman-Gillespie): ${lenrForce.toExponential(3)} N`);
     console.log(`Neutron-Phonon Force (Kozima): ${neutronForce.toExponential(3)} N`);
     console.log(`Vacuum Repulsion (Sweet): ${vacuumForce.toExponential(3)} N`);
-    
+
     const totalAdvancedForce = lenrForce + neutronForce + vacuumForce + CONSTANTS.LEP_F_REL;
     console.log(`Total Advanced Force: ${totalAdvancedForce.toExponential(3)} N`);
 });
@@ -11662,10 +11662,10 @@ console.log('-'.repeat(65));
 if (sgr1745Result && sgr0501Result) {
     const sgr1745_1yr = sgr1745Result.timeAnalysis[2]; // 1 year
     const sgr0501_1yr = sgr0501Result.timeAnalysis[1]; // 1 year
-    
-    console.log(`g_Magnetar | ${sgr1745_1yr.g_Magnetar.toExponential(2)} | ${sgr0501_1yr.g_Magnetar.toExponential(2)} | ${(sgr1745_1yr.g_Magnetar/sgr0501_1yr.g_Magnetar).toFixed(2)}`);
+
+    console.log(`g_Magnetar | ${sgr1745_1yr.g_Magnetar.toExponential(2)} | ${sgr0501_1yr.g_Magnetar.toExponential(2)} | ${(sgr1745_1yr.g_Magnetar / sgr0501_1yr.g_Magnetar).toFixed(2)}`);
     console.log(`Radius | 10 km | 20 km | 0.50`);
-    console.log(`B-field | 2e10 T | 1e10 T | 2.00`);  
+    console.log(`B-field | 2e10 T | 1e10 T | 2.00`);
     console.log(`Period | 3.76 s | 5.0 s | 0.75`);
     console.log(`f_TRZ | N/A | 0.1 | N/A`);
     console.log(`B-decay | Static | 4000 yr | N/A`);
@@ -11712,7 +11712,7 @@ allResults.forEach(result => {
                 }
             });
         }
-        
+
         // Check for extreme field values indicating new physics
         if (Math.abs(timePoint.totalField) > 1e50) {
             breakthroughs.push({
@@ -11745,19 +11745,19 @@ function analyzeNGC1275(timePoints = [0, 86400 * 365.25 * 50e6, 86400 * 365.25 *
 
     const system = new NGC1275();
     const results = [];
-    
+
     // Time labels for analysis
     const timeLabels = ['Present', '50 Myr', '100 Myr'];
-    
+
     timePoints.forEach((t, idx) => {
         const result = system.compute_g_NGC1275(t);
         results.push({ time: t, label: timeLabels[idx] || `t=${t.toExponential(2)}s`, result });
-        
+
         console.log(`\nTime: ${timeLabels[idx] || `t=${t.toExponential(2)}s`}`);
         console.log(`  Total g_NGC1275:        ${result.g_NGC1275.toExponential(3)} m/sï¿½`);
         console.log(`  Magnetic Field B(t):    ${result.diagnostics.magneticField.toExponential(3)} T`);
         console.log(`  Filament Factor F(t):   ${result.diagnostics.filamentFactor.toFixed(6)}`);
-        
+
         console.log('\n  Component Breakdown:');
         console.log(`    Base + Corrections:   ${result.components.term1.toExponential(3)} m/sï¿½`);
         console.log(`    Black Hole Term:      ${result.components.term_BH.toExponential(3)} m/sï¿½`);
@@ -11770,7 +11770,7 @@ function analyzeNGC1275(timePoints = [0, 86400 * 365.25 * 50e6, 86400 * 365.25 *
         console.log(`    Dark Matter:          ${result.components.term_DM.toExponential(3)} m/sï¿½`);
         console.log(`    Cooling Flow:         ${result.components.term_cool.toExponential(3)} m/sï¿½`);
     });
-    
+
     // AGN-specific analysis
     console.log('\n?? AGN Physics Analysis:');
     console.log(`  Galaxy Mass:              ${(system.M / CONSTANTS.SOLAR_MASS).toExponential(2)} M?`);
@@ -11781,28 +11781,28 @@ function analyzeNGC1275(timePoints = [0, 86400 * 365.25 * 50e6, 86400 * 365.25 *
     console.log(`  B-field decay time:       ${(system.tau_B / 3.156e7 / 1e6).toFixed(0)} Myr`);
     console.log(`  Filament decay time:      ${(system.tau_fil / 3.156e7 / 1e6).toFixed(0)} Myr`);
     console.log(`  Cooling flow velocity:    ${system.v_cool.toExponential(2)} m/s`);
-    
+
     // Magnetic field evolution
     console.log('\n?? Magnetic Field Evolution:');
     const mag_times = [0, 25e6 * 3.156e7, 50e6 * 3.156e7, 100e6 * 3.156e7, 200e6 * 3.156e7];
     const mag_labels = ['0 Myr', '25 Myr', '50 Myr', '100 Myr', '200 Myr'];
-    
+
     mag_times.forEach((t, idx) => {
         const Bt = system.B_t(t);
         const decay_fraction = (Bt / system.B0) * 100;
         console.log(`  ${mag_labels[idx]}: B = ${Bt.toExponential(3)} T (${decay_fraction.toFixed(1)}% of initial)`);
     });
-    
+
     // Compare with standard Newtonian at galaxy edge
     const classical_g = system.ug1_base;
     const current_result = system.compute_g_NGC1275(0);
     const enhancement = current_result.g_NGC1275 / classical_g;
-    
+
     console.log('\n? Gravitational Enhancement Analysis:');
     console.log(`  Classical (Newtonian):    ${classical_g.toExponential(3)} m/sï¿½`);
     console.log(`  UQFF Enhanced:            ${current_result.g_NGC1275.toExponential(3)} m/sï¿½`);
     console.log(`  Enhancement Factor:       ${enhancement.toFixed(2)}ï¿½`);
-    
+
     // AGN Physics Summary
     console.log('\n?? AGN MUGE Physics Summary:');
     console.log('  ï¿½ Magnetic field decay B(t) = B0ï¿½exp(-t/t_B) with t_B = 100 Myr');
@@ -11811,7 +11811,7 @@ function analyzeNGC1275(timePoints = [0, 86400 * 365.25 * 50e6, 86400 * 365.25 *
     console.log('  ï¿½ Cooling flow dynamics with v_cool = 3ï¿½10ï¿½ m/s');
     console.log('  ï¿½ Galaxy cluster scale physics (200 kly radius)');
     console.log('  ï¿½ Complete MUGE implementation with AGN-specific terms');
-    
+
     return {
         systemName: 'NGC 1275 Perseus A (AGN)',
         system,
@@ -11830,20 +11830,20 @@ function analyzeHUDFGalaxies(timePoints = [0, 1e9 * 3.156e7, 5e9 * 3.156e7, 10e9
 
     const system = new HUDFGalaxies();
     const results = [];
-    
+
     // Time labels for cosmic evolution
     const timeLabels = ['Present', '1 Gyr', '5 Gyr', '10 Gyr'];
-    
+
     timePoints.forEach((t, idx) => {
         const result = system.compute_g_HUDF(t);
         results.push({ time: t, label: timeLabels[idx] || `t=${t.toExponential(2)}s`, result });
-        
+
         console.log(`\nTime: ${timeLabels[idx] || `t=${t.toExponential(2)}s`}`);
         console.log(`  Total g_HUDF:           ${result.g_HUDF.toExponential(3)} m/sï¿½`);
         console.log(`  Galaxy Field Mass:      ${(result.diagnostics.galaxyFieldMass / CONSTANTS.SOLAR_MASS).toExponential(2)} M?`);
         console.log(`  Interaction Factor:     ${result.diagnostics.interactionFactor.toFixed(6)}`);
         console.log(`  Star Formation Rate:    ${result.diagnostics.starFormationRate.toFixed(6)}`);
-        
+
         console.log('\n  Component Breakdown:');
         console.log(`    Base + Corrections:   ${result.components.term1.toExponential(3)} m/sï¿½`);
         console.log(`    Universal Gravity:    ${result.components.term2.toExponential(3)} m/sï¿½`);
@@ -11855,7 +11855,7 @@ function analyzeHUDFGalaxies(timePoints = [0, 1e9 * 3.156e7, 5e9 * 3.156e7, 10e9
         console.log(`    Dark Matter:          ${result.components.term_DM.toExponential(3)} m/sï¿½`);
         console.log(`    Merger Feedback:      ${result.components.term_feedback.toExponential(3)} m/sï¿½`);
     });
-    
+
     // HUDF-specific analysis
     console.log('\n?? Cosmic Field Physics Analysis:');
     console.log(`  Field Mass:               ${(system.M0 / CONSTANTS.SOLAR_MASS).toExponential(2)} M?`);
@@ -11867,29 +11867,29 @@ function analyzeHUDFGalaxies(timePoints = [0, 1e9 * 3.156e7, 5e9 * 3.156e7, 10e9
     console.log(`  Initial SFR Factor:       ${system.SFR_factor}`);
     console.log(`  Initial Interaction I0:   ${system.I0}`);
     console.log(`  Merger Wind Velocity:     ${system.v_wind.toExponential(2)} m/s`);
-    
+
     // Cosmic evolution analysis
     console.log('\n?? Cosmic Evolution Timeline:');
     const cosmic_times = [0, 1e9 * 3.156e7, 2e9 * 3.156e7, 5e9 * 3.156e7, 10e9 * 3.156e7];
     const cosmic_labels = ['0 Gyr', '1 Gyr', '2 Gyr', '5 Gyr', '10 Gyr'];
-    
+
     cosmic_times.forEach((t, idx) => {
         const Mt_ratio = system.M_t(t) / system.M0;
         const It_value = system.I_t(t);
         const SFR_value = system.SFR_factor * Math.exp(-t / system.tau_SF);
         console.log(`  ${cosmic_labels[idx]}: M(t)/M0 = ${Mt_ratio.toFixed(3)}, I(t) = ${It_value.toFixed(4)}, SFR = ${SFR_value.toFixed(4)}`);
     });
-    
+
     // Compare with standard Newtonian at cosmic scale
     const classical_g = system.ug1_base;
     const current_result = system.compute_g_HUDF(0);
     const enhancement = current_result.g_HUDF / classical_g;
-    
+
     console.log('\n? Gravitational Enhancement Analysis:');
     console.log(`  Classical (Newtonian):    ${classical_g.toExponential(3)} m/sï¿½`);
     console.log(`  UQFF Enhanced:            ${current_result.g_HUDF.toExponential(3)} m/sï¿½`);
     console.log(`  Enhancement Factor:       ${enhancement.toFixed(2)}ï¿½`);
-    
+
     // HUDF Physics Summary
     console.log('\n?? HUDF MUGE Physics Summary:');
     console.log('  ï¿½ Galaxy field mass evolution M(t) = M0ï¿½(1 + SFR_factorï¿½exp(-t/t_SF))');
@@ -11898,7 +11898,7 @@ function analyzeHUDFGalaxies(timePoints = [0, 1e9 * 3.156e7, 5e9 * 3.156e7, 10e9
     console.log('  ï¿½ Early universe galaxies at average redshift z = 3.5');
     console.log('  ï¿½ Cosmic scale physics (130 billion light-year radius)');
     console.log('  ï¿½ Complete MUGE implementation with galaxy field terms');
-    
+
     return {
         systemName: 'HUDF Galaxies Galore (Cosmic Field)',
         system,
@@ -11917,19 +11917,19 @@ function analyzeGalaxyNGC1792(timePoints = [0, 50e6 * 3.156e7, 100e6 * 3.156e7, 
 
     const system = new GalaxyNGC1792();
     const results = [];
-    
+
     // Time labels for starburst evolution
     const timeLabels = ['Present', '50 Myr', '100 Myr', '500 Myr'];
-    
+
     timePoints.forEach((t, idx) => {
         const result = system.compute_g_NGC1792(t);
         results.push({ time: t, label: timeLabels[idx] || `t=${t.toExponential(2)}s`, result });
-        
+
         console.log(`\nTime: ${timeLabels[idx] || `t=${t.toExponential(2)}s`}`);
         console.log(`  Total g_NGC1792:        ${result.g_NGC1792.toExponential(3)} m/sï¿½`);
         console.log(`  Starburst Mass:         ${(result.diagnostics.starburstMass / CONSTANTS.SOLAR_MASS).toExponential(2)} M?`);
         console.log(`  Star Formation Rate:    ${result.diagnostics.starFormationRate.toExponential(3)}`);
-        
+
         console.log('\n  Component Breakdown:');
         console.log(`    Base + Corrections:   ${result.components.term1.toExponential(3)} m/sï¿½`);
         console.log(`    Universal Gravity:    ${result.components.term2.toExponential(3)} m/sï¿½`);
@@ -11941,7 +11941,7 @@ function analyzeGalaxyNGC1792(timePoints = [0, 50e6 * 3.156e7, 100e6 * 3.156e7, 
         console.log(`    Dark Matter:          ${result.components.term_DM.toExponential(3)} m/sï¿½`);
         console.log(`    Supernova Feedback:   ${result.components.term_feedback.toExponential(3)} m/sï¿½`);
     });
-    
+
     // Starburst-specific analysis
     console.log('\n?? Starburst Galaxy Physics Analysis:');
     console.log(`  Initial Mass:             ${(system.M0 / CONSTANTS.SOLAR_MASS).toExponential(2)} M?`);
@@ -11952,29 +11952,29 @@ function analyzeGalaxyNGC1792(timePoints = [0, 50e6 * 3.156e7, 100e6 * 3.156e7, 
     console.log(`  SFR Factor:               ${system.SFR_factor.toExponential(2)} (normalized)`);
     console.log(`  Supernova Wind Velocity:  ${system.v_wind.toExponential(2)} m/s (high-speed)`);
     console.log(`  Wind Density:             ${system.rho_wind.toExponential(2)} kg/mï¿½`);
-    
+
     // Star formation evolution analysis
     console.log('\n?? Star Formation Evolution Timeline:');
     const sf_times = [0, 25e6 * 3.156e7, 50e6 * 3.156e7, 100e6 * 3.156e7, 200e6 * 3.156e7];
     const sf_labels = ['0 Myr', '25 Myr', '50 Myr', '100 Myr', '200 Myr'];
-    
+
     sf_times.forEach((t, idx) => {
         const Mt_ratio = system.M_t(t) / system.M0;
         const SFR_value = system.SFR_factor * Math.exp(-t / system.tau_SF);
         const feedback_strength = (system.rho_wind * system.v_wind * system.v_wind) / system.rho_fluid;
         console.log(`  ${sf_labels[idx]}: M(t)/M0 = ${Mt_ratio.toFixed(4)}, SFR = ${SFR_value.toExponential(3)}, Feedback = ${feedback_strength.toExponential(2)} m/sï¿½`);
     });
-    
+
     // Compare with standard Newtonian at galaxy scale
     const classical_g = system.ug1_base;
     const current_result = system.compute_g_NGC1792(0);
     const enhancement = current_result.g_NGC1792 / classical_g;
-    
+
     console.log('\n? Gravitational Enhancement Analysis:');
     console.log(`  Classical (Newtonian):    ${classical_g.toExponential(3)} m/sï¿½`);
     console.log(`  UQFF Enhanced:            ${current_result.g_NGC1792.toExponential(3)} m/sï¿½`);
     console.log(`  Enhancement Factor:       ${enhancement.toFixed(2)}ï¿½`);
-    
+
     // Starburst Physics Summary
     console.log('\n?? Starburst MUGE Physics Summary:');
     console.log('  ï¿½ Enhanced star formation M(t) = M0ï¿½(1 + SFR_factorï¿½exp(-t/t_SF))');
@@ -11983,7 +11983,7 @@ function analyzeGalaxyNGC1792(timePoints = [0, 50e6 * 3.156e7, 100e6 * 3.156e7, 
     console.log('  ï¿½ Supernova feedback dynamics with wind pressure terms');
     console.log('  ï¿½ Nearby galaxy at redshift z = 0.0095');
     console.log('  ï¿½ Complete MUGE implementation with starburst-specific terms');
-    
+
     return {
         systemName: 'NGC 1792 "The Stellar Forge" (Starburst)',
         system,
@@ -12002,20 +12002,20 @@ function analyzeAndromedaGalaxy(timePoints = [0, 1e9 * 3.156e7, 5e9 * 3.156e7, 1
 
     const system = new AndromedaUQFFModule();
     const results = [];
-    
+
     // Time labels for galactic evolution
     const timeLabels = ['Present', '1 Gyr', '5 Gyr', '10 Gyr'];
-    
+
     timePoints.forEach((t, idx) => {
         const result = system.compute_g_Andromeda(t);
         results.push({ time: t, label: timeLabels[idx] || `t=${t.toExponential(2)}s`, result });
-        
+
         console.log(`\nTime: ${timeLabels[idx] || `t=${t.toExponential(2)}s`}`);
         console.log(`  Total g_Andromeda:      ${result.g_Andromeda.toExponential(3)} m/sï¿½`);
         console.log(`  Galaxy Mass:            ${(result.diagnostics.galaxyMass / CONSTANTS.SOLAR_MASS).toExponential(2)} M?`);
         console.log(`  Visible Mass:           ${(result.diagnostics.visibleMass / CONSTANTS.SOLAR_MASS).toExponential(2)} M?`);
         console.log(`  Dark Matter Mass:       ${(result.diagnostics.darkMatterMass / CONSTANTS.SOLAR_MASS).toExponential(2)} M?`);
-        
+
         console.log('\n  Advanced Component Breakdown:');
         console.log(`    Base + Expansion + TR:  ${result.components.g_base.toExponential(3)} m/sï¿½`);
         console.log(`    Universal Gravity Sum:  ${result.components.ug_sum.toExponential(3)} m/sï¿½`);
@@ -12027,7 +12027,7 @@ function analyzeAndromedaGalaxy(timePoints = [0, 1e9 * 3.156e7, 5e9 * 3.156e7, 1
         console.log(`    Dark Matter Term:       ${result.components.dm_term.toExponential(3)} m/sï¿½`);
         console.log(`    Dust Friction:          ${result.components.a_dust.toExponential(3)} m/sï¿½`);
     });
-    
+
     // Andromeda-specific analysis
     console.log('\n?? Advanced Galaxy Physics Analysis:');
     console.log(`  Total Mass:               ${(system.variables.get('M') / CONSTANTS.SOLAR_MASS).toExponential(2)} M?`);
@@ -12038,7 +12038,7 @@ function analyzeAndromedaGalaxy(timePoints = [0, 1e9 * 3.156e7, 5e9 * 3.156e7, 1
     console.log(`  Magnetic Field:           ${system.variables.get('B').toExponential(2)} T`);
     console.log(`  Dark Matter Fraction:     ${(system.variables.get('M_DM') / system.variables.get('M') * 100).toFixed(0)}%`);
     console.log(`  Visible Matter Fraction:  ${(system.variables.get('M_visible') / system.variables.get('M') * 100).toFixed(0)}%`);
-    
+
     // Advanced physics features
     console.log('\n?? Advanced Physics Features:');
     console.log(`  Quantum Uncertainty:      ${Math.sqrt(system.variables.get('Delta_x') * system.variables.get('Delta_p')).toExponential(2)} kgï¿½m/s`);
@@ -12047,30 +12047,30 @@ function analyzeAndromedaGalaxy(timePoints = [0, 1e9 * 3.156e7, 5e9 * 3.156e7, 1
     console.log(`  Wave Number:              ${system.variables.get('k').toExponential(2)} m^-2ï¿½`);
     console.log(`  Time-Reversal Factor:     ${system.variables.get('f_TRZ')}`);
     console.log(`  Superconductive Factor:   ${system.variables.get('f_sc')}`);
-    
+
     // Dynamic variable demonstration
     console.log('\n?? Dynamic Variable Management Demo:');
     const original_TRZ = system.variables.get('f_TRZ');
     system.addToVariable('f_TRZ', 0.05);
     console.log(`  Original f_TRZ:           ${original_TRZ}`);
     console.log(`  Modified f_TRZ:           ${system.variables.get('f_TRZ')} (+0.05)`);
-    
+
     const modified_result = system.compute_g_Andromeda(0);
     system.updateVariable('f_TRZ', original_TRZ); // Reset
-    
+
     console.log(`  Modified g_Andromeda:     ${modified_result.g_Andromeda.toExponential(3)} m/sï¿½`);
-    
+
     // Compare with standard Newtonian
-    const classical_g = (system.variables.get('G') * system.variables.get('M')) / 
-                       (system.variables.get('r') * system.variables.get('r'));
+    const classical_g = (system.variables.get('G') * system.variables.get('M')) /
+        (system.variables.get('r') * system.variables.get('r'));
     const current_result = system.compute_g_Andromeda(0);
     const enhancement = current_result.g_Andromeda / classical_g;
-    
+
     console.log('\n? Gravitational Enhancement Analysis:');
     console.log(`  Classical (Newtonian):    ${classical_g.toExponential(3)} m/sï¿½`);
     console.log(`  UQFF Enhanced:            ${current_result.g_Andromeda.toExponential(3)} m/sï¿½`);
     console.log(`  Enhancement Factor:       ${enhancement.toFixed(2)}ï¿½`);
-    
+
     // Advanced UQFF Physics Summary
     console.log('\n?? Advanced UQFF Physics Summary:');
     console.log('  ï¿½ Dynamic variable management with Map-based storage');
@@ -12082,7 +12082,7 @@ function analyzeAndromedaGalaxy(timePoints = [0, 1e9 * 3.156e7, 5e9 * 3.156e7, 1
     console.log('  ï¿½ High orbital velocities and strong magnetic fields');
     console.log('  ï¿½ Complete MUGE implementation with all advanced terms');
     console.log('\n  Equation: ' + system.getEquationText());
-    
+
     return {
         systemName: 'Andromeda Galaxy M31 (Advanced UQFF)',
         system,
@@ -12101,21 +12101,21 @@ function analyzeSombreroGalaxy(timePoints = [0, 1e9 * 3.156e7, 5e9 * 3.156e7, 10
 
     const system = new SombreroUQFFModule();
     const results = [];
-    
+
     // Time labels for galactic evolution
     const timeLabels = ['Present', '1 Gyr', '5 Gyr', '10 Gyr'];
-    
+
     timePoints.forEach((t, idx) => {
         const result = system.compute_g_Sombrero(t);
         results.push({ time: t, label: timeLabels[idx] || `t=${t.toExponential(2)}s`, result });
-        
+
         console.log(`\nTime: ${timeLabels[idx] || `t=${t.toExponential(2)}s`}`);
         console.log(`  Total g_Sombrero:       ${result.g_Sombrero.toExponential(3)} m/sï¿½`);
         console.log(`  Galaxy Mass:            ${(result.diagnostics.galaxyMass / CONSTANTS.SOLAR_MASS).toExponential(2)} M?`);
         console.log(`  Visible Mass:           ${(result.diagnostics.visibleMass / CONSTANTS.SOLAR_MASS).toExponential(2)} M?`);
         console.log(`  Dark Matter Mass:       ${(result.diagnostics.darkMatterMass / CONSTANTS.SOLAR_MASS).toExponential(2)} M?`);
         console.log(`  Central SMBH:           ${(result.diagnostics.centralSMBH / CONSTANTS.SOLAR_MASS).toExponential(2)} M?`);
-        
+
         console.log('\n  Advanced Component Breakdown:');
         console.log(`    Base + Exp + SC + TR:   ${result.components.g_base.toExponential(3)} m/sï¿½`);
         console.log(`    Central Black Hole:     ${result.components.g_BH.toExponential(3)} m/sï¿½`);
@@ -12128,7 +12128,7 @@ function analyzeSombreroGalaxy(timePoints = [0, 1e9 * 3.156e7, 5e9 * 3.156e7, 10
         console.log(`    Dark Matter Term:       ${result.components.dm_term.toExponential(3)} m/sï¿½`);
         console.log(`    Dust Lane Friction:     ${result.components.dust_term.toExponential(3)} m/sï¿½`);
     });
-    
+
     // Sombrero-specific analysis
     console.log('\n?? Sombrero Galaxy Physics Analysis:');
     console.log(`  Total Mass:               ${(system.variables.get('M') / CONSTANTS.SOLAR_MASS).toExponential(2)} M?`);
@@ -12140,7 +12140,7 @@ function analyzeSombreroGalaxy(timePoints = [0, 1e9 * 3.156e7, 5e9 * 3.156e7, 10
     console.log(`  Dark Matter Fraction:     ${(system.variables.get('M_DM') / system.variables.get('M') * 100).toFixed(0)}%`);
     console.log(`  Visible Matter Fraction:  ${(system.variables.get('M_visible') / system.variables.get('M') * 100).toFixed(0)}%`);
     console.log(`  Dust Lane Density:        ${system.variables.get('rho_dust').toExponential(2)} kg/mï¿½`);
-    
+
     // Advanced physics features
     console.log('\n?? Advanced Physics Features:');
     console.log(`  Quantum Uncertainty:      ${Math.sqrt(system.variables.get('Delta_x') * system.variables.get('Delta_p')).toExponential(2)} kgï¿½m/s`);
@@ -12151,30 +12151,30 @@ function analyzeSombreroGalaxy(timePoints = [0, 1e9 * 3.156e7, 5e9 * 3.156e7, 10
     console.log(`  Superconductive Factor:   ${system.variables.get('f_sc')}`);
     console.log(`  Critical Magnetic Field:  ${system.variables.get('B_crit').toExponential(2)} T`);
     console.log(`  Superconductivity Corr:   ${(1 - system.variables.get('B') / system.variables.get('B_crit')).toFixed(6)}`);
-    
+
     // Dynamic variable demonstration
     console.log('\n?? Dynamic Variable Management Demo:');
     const original_TRZ = system.variables.get('f_TRZ');
     system.addToVariable('f_TRZ', 0.05);
     console.log(`  Original f_TRZ:           ${original_TRZ}`);
     console.log(`  Modified f_TRZ:           ${system.variables.get('f_TRZ')} (+0.05)`);
-    
+
     const modified_result = system.compute_g_Sombrero(0);
     system.updateVariable('f_TRZ', original_TRZ); // Reset
-    
+
     console.log(`  Modified g_Sombrero:      ${modified_result.g_Sombrero.toExponential(3)} m/sï¿½`);
-    
+
     // Compare with standard Newtonian
-    const classical_g = (system.variables.get('G') * system.variables.get('M')) / 
-                       (system.variables.get('r') * system.variables.get('r'));
+    const classical_g = (system.variables.get('G') * system.variables.get('M')) /
+        (system.variables.get('r') * system.variables.get('r'));
     const current_result = system.compute_g_Sombrero(0);
     const enhancement = current_result.g_Sombrero / classical_g;
-    
+
     console.log('\n? Gravitational Enhancement Analysis:');
     console.log(`  Classical (Newtonian):    ${classical_g.toExponential(3)} m/sï¿½`);
     console.log(`  UQFF Enhanced:            ${current_result.g_Sombrero.toExponential(3)} m/sï¿½`);
     console.log(`  Enhancement Factor:       ${enhancement.toFixed(2)}ï¿½`);
-    
+
     // Advanced UQFF Physics Summary
     console.log('\n?? Advanced UQFF Physics Summary:');
     console.log('  ï¿½ Dynamic variable management with Map-based storage');
@@ -12187,7 +12187,7 @@ function analyzeSombreroGalaxy(timePoints = [0, 1e9 * 3.156e7, 5e9 * 3.156e7, 10
     console.log('  ï¿½ Massive central SMBH (1 billion M?) shaping bulge dynamics');
     console.log('  ï¿½ Complete MUGE implementation with all advanced terms');
     console.log('\n  Equation: ' + system.getEquationText());
-    
+
     return {
         systemName: 'Sombrero Galaxy M104 (UQFF Module)',
         system,
@@ -12204,10 +12204,10 @@ class M16UQFFModule {
     constructor(params = {}) {
         // Use provided parameters or defaults from PREDEFINED_SYSTEMS
         const defaults = PREDEFINED_SYSTEMS['M16_EAGLE_NEBULA'];
-        
+
         // Initialize Map with all variables (dynamic variable management)
         this.variables = new Map();
-        
+
         // Base constants (universal)
         this.variables.set('G', 6.6743e-11); // mï¿½ kg?ï¿½ s^-1ï¿½
         this.variables.set('c', 3e8); // m/s
@@ -12217,7 +12217,7 @@ class M16UQFFModule {
         this.variables.set('pi', Math.PI);
         this.variables.set('t_Hubble', params.tHubble || defaults.tHubble); // s (13.8 Gyr)
         this.variables.set('year_to_s', params.year_to_s || defaults.year_to_s); // s/yr
-        
+
         // M16 nebula parameters
         this.variables.set('M_sun', params.M_sun || CONSTANTS.SOLAR_MASS);
         this.variables.set('M', params.mass || defaults.mass); // Total initial mass kg
@@ -12227,7 +12227,7 @@ class M16UQFFModule {
         this.variables.set('M_visible', params.M_visible || defaults.M_visible); // Visible mass (gas + stars)
         this.variables.set('M_DM', params.M_DM || defaults.M_DM); // No significant DM
         this.variables.set('r', params.radius || defaults.radius); // m (half span ~35 ly)
-        
+
         // Hubble/cosmology
         this.variables.set('H0', params.hubbleParam || defaults.hubbleParam); // km/s/Mpc
         this.variables.set('Mpc_to_m', params.Mpc_to_m || defaults.Mpc_to_m); // m/Mpc
@@ -12235,40 +12235,40 @@ class M16UQFFModule {
         this.variables.set('Omega_m', params.Omega_m || defaults.Omega_m);
         this.variables.set('Omega_Lambda', params.Omega_Lambda || defaults.Omega_Lambda);
         this.variables.set('t', params.defaultTimeSeconds || defaults.defaultTimeSeconds); // Default t=5 Myr s
-        
+
         // Gas dynamics
         this.variables.set('rho_fluid', params.rho_fluid || defaults.rho_fluid); // kg/mï¿½ (dense gas)
         this.variables.set('V', params.V_volume || defaults.V_volume); // mï¿½ (volume scale)
         this.variables.set('v_gas', params.v_gas || defaults.v_gas); // m/s (gas velocity)
         this.variables.set('delta_rho', params.rho_perturbation || defaults.rho_perturbation); // Perturbation
         this.variables.set('rho', params.rho_mean || defaults.rho_mean); // Mean density
-        
+
         // EM/magnetic/superconductivity
         this.variables.set('B', params.magneticField || defaults.magneticField); // T (nebula field)
         this.variables.set('B_crit', params.B_crit || defaults.B_crit); // T (critical field)
-        
+
         // Quantum terms
         this.variables.set('Delta_x', params.deltaX || defaults.deltaX); // m (position uncertainty)
         this.variables.set('Delta_p', params.deltaP || defaults.deltaP); // kgï¿½m/s (momentum uncertainty)
         this.variables.set('integral_psi', params.integralPsi || defaults.integralPsi); // <?|H|?> simplified
-        
+
         // Resonant/oscillatory terms
         this.variables.set('A', params.A_osc || defaults.A_osc); // m/sï¿½ (amplitude)
         this.variables.set('k', params.k_osc || defaults.k_osc); // m^-2ï¿½ (wave number)
         this.variables.set('omega', params.omega_osc || defaults.omega_osc); // rad/s (frequency)
         this.variables.set('x', params.x_pos || defaults.x_pos); // m (position, central)
-        
+
         // Star formation and erosion
         this.variables.set('tau_erode_yr', params.tau_erode_yr || defaults.tau_erode_yr); // yr (erosion timescale)
         this.variables.set('tau_erode_s', params.tau_erode_s || defaults.tau_erode_s); // s (erosion timescale)
         this.variables.set('E_0', params.E_0 || defaults.E_0); // Fractional erosion max
-        
+
         // Ug subterms (computed dynamically)
         this.variables.set('Ug1', 0.0); // Will be G M / rï¿½
         this.variables.set('Ug2', 0.0); // dï¿½F/dtï¿½ ï¿½ 0 (negligible)
         this.variables.set('Ug3', 0.0); // G M_moon / r_moonï¿½ ï¿½ 0 (no moon)
         this.variables.set('Ug4', 0.0); // Ug1 * f_sc, f_sc=1
-        
+
         // Scale factors
         this.variables.set('scale_macro', params.scale_macro || defaults.scale_macro); // For macro effects
         this.variables.set('f_TRZ', params.f_TRZ || defaults.f_TRZ); // Time-reversal factor
@@ -12276,7 +12276,7 @@ class M16UQFFModule {
         this.variables.set('proton_mass', params.proton_mass || defaults.proton_mass); // kg
         this.variables.set('UA_SCm_ratio', params.UA_SCm_ratio || defaults.UA_SCm_ratio); // UA/SCm = 10
     }
-    
+
     // Dynamic variable operations
     updateVariable(name, value) {
         this.variables.set(name, value);
@@ -12289,84 +12289,84 @@ class M16UQFFModule {
             this.variables.set('M_DM', 0.0);
         }
     }
-    
+
     addToVariable(name, delta) {
         const current = this.variables.get(name) || 0;
         this.variables.set(name, current + delta);
     }
-    
+
     subtractFromVariable(name, delta) {
         this.addToVariable(name, -delta);
     }
-    
+
     // Compute H(z) in s^-1ï¿½
     computeHz() {
         const Hz_kms = this.variables.get('H0') * Math.sqrt(
-            this.variables.get('Omega_m') * Math.pow(1.0 + this.variables.get('z'), 3) + 
+            this.variables.get('Omega_m') * Math.pow(1.0 + this.variables.get('z'), 3) +
             this.variables.get('Omega_Lambda')
         );
         return (Hz_kms * 1e3) / this.variables.get('Mpc_to_m');
     }
-    
+
     // Compute Ug sum: Ug1 = G M / rï¿½, Ug4 = Ug1 * f_sc, others 0
     computeUgSum() {
-        const Ug1 = (this.variables.get('G') * this.variables.get('M')) / 
-                     (this.variables.get('r') * this.variables.get('r'));
+        const Ug1 = (this.variables.get('G') * this.variables.get('M')) /
+            (this.variables.get('r') * this.variables.get('r'));
         this.variables.set('Ug1', Ug1);
         this.variables.set('Ug4', Ug1 * this.variables.get('f_sc'));
-        return this.variables.get('Ug1') + this.variables.get('Ug2') + 
-               this.variables.get('Ug3') + this.variables.get('Ug4');
+        return this.variables.get('Ug1') + this.variables.get('Ug2') +
+            this.variables.get('Ug3') + this.variables.get('Ug4');
     }
-    
+
     // Quantum term: (? / v(?x ?p)) * ??*H? dV * (2p / t_Hubble)
     computeQuantumTerm(t_Hubble_val) {
         const unc = Math.sqrt(this.variables.get('Delta_x') * this.variables.get('Delta_p'));
         const integral_val = this.variables.get('integral_psi');
-        return (this.variables.get('hbar') / unc) * integral_val * 
-               (2 * this.variables.get('pi') / t_Hubble_val);
+        return (this.variables.get('hbar') / unc) * integral_val *
+            (2 * this.variables.get('pi') / t_Hubble_val);
     }
-    
+
     // Fluid term: ?_fluid * V * g (g ï¿½ base gravity)
     computeFluidTerm(g_base) {
         return this.variables.get('rho_fluid') * this.variables.get('V') * g_base;
     }
-    
+
     // Resonant terms: 2A cos(kx) cos(?t) + (2p/13.8) A Re[exp(i(kx - ?t))]
     computeResonantTerm(t) {
-        const cos_term = 2 * this.variables.get('A') * 
-                        Math.cos(this.variables.get('k') * this.variables.get('x')) * 
-                        Math.cos(this.variables.get('omega') * t);
-        const exp_arg = this.variables.get('k') * this.variables.get('x') - 
-                       this.variables.get('omega') * t;
+        const cos_term = 2 * this.variables.get('A') *
+            Math.cos(this.variables.get('k') * this.variables.get('x')) *
+            Math.cos(this.variables.get('omega') * t);
+        const exp_arg = this.variables.get('k') * this.variables.get('x') -
+            this.variables.get('omega') * t;
         const real_exp = this.variables.get('A') * Math.cos(exp_arg);
         const exp_factor = (2 * this.variables.get('pi') / 13.8);
         return cos_term + exp_factor * real_exp;
     }
-    
+
     // DM term: (M_visible + M_DM) * (d?/? + 3GM/rï¿½)
     computeDMTerm() {
         const pert = this.variables.get('delta_rho') / this.variables.get('rho');
-        const curv = 3 * this.variables.get('G') * this.variables.get('M') / 
-                    (this.variables.get('r') * this.variables.get('r') * this.variables.get('r'));
+        const curv = 3 * this.variables.get('G') * this.variables.get('M') /
+            (this.variables.get('r') * this.variables.get('r') * this.variables.get('r'));
         return (this.variables.get('M_visible') + this.variables.get('M_DM')) * (pert + curv);
     }
-    
+
     // Star formation factor: M_sf(t) = (SFR * t_yr) / M0
     computeMsfFactor(t) {
         const t_yr = t / this.variables.get('year_to_s');
         return (this.variables.get('SFR') * t_yr) / this.variables.get('M0');
     }
-    
+
     // Radiation erosion factor: E_rad(t) = E_0 * (1 - exp(-t / t_s))
     computeErosionFactor(t) {
         const tau_s = this.variables.get('tau_erode_s');
         return this.variables.get('E_0') * (1.0 - Math.exp(-t / tau_s));
     }
-    
+
     // Core computation: g_M16(r,t) = complete UQFF for M16 Eagle Nebula
     compute_g_M16(t) {
         this.variables.set('t', t);
-        
+
         const Hz = this.computeHz();
         const expansion = 1.0 + Hz * t;
         const sc_correction = 1.0 - (this.variables.get('B') / this.variables.get('B_crit'));
@@ -12374,41 +12374,41 @@ class M16UQFFModule {
         const msf_factor = this.computeMsfFactor(t);
         const e_rad = this.computeErosionFactor(t);
         const m_factor = (1.0 + msf_factor) * (1.0 - e_rad);
-        
+
         // Base gravity with expansion, SC, TR, M_sf, E_rad
-        const g_base = (this.variables.get('G') * this.variables.get('M') * m_factor / 
-                       (this.variables.get('r') * this.variables.get('r'))) * 
-                       expansion * sc_correction * tr_factor;
-        
+        const g_base = (this.variables.get('G') * this.variables.get('M') * m_factor /
+            (this.variables.get('r') * this.variables.get('r'))) *
+            expansion * sc_correction * tr_factor;
+
         // Ug sum (Universal Gravity components)
         const ug_sum = this.computeUgSum();
-        
+
         // Cosmological term: ?cï¿½/3
-        const lambda_term = this.variables.get('Lambda') * 
-                           (this.variables.get('c') * this.variables.get('c')) / 3.0;
-        
+        const lambda_term = this.variables.get('Lambda') *
+            (this.variables.get('c') * this.variables.get('c')) / 3.0;
+
         // Quantum uncertainty term
         const quantum_term = this.computeQuantumTerm(this.variables.get('t_Hubble'));
-        
+
         // EM Lorentz term: q(vï¿½B) enhanced by UA/SCm ratio
-        const em_base = this.variables.get('q') * this.variables.get('v_gas') * 
-                       this.variables.get('B') / this.variables.get('proton_mass');
-        const em_term = em_base * (1.0 + this.variables.get('UA_SCm_ratio')) * 
-                       this.variables.get('scale_macro');
-        
+        const em_base = this.variables.get('q') * this.variables.get('v_gas') *
+            this.variables.get('B') / this.variables.get('proton_mass');
+        const em_term = em_base * (1.0 + this.variables.get('UA_SCm_ratio')) *
+            this.variables.get('scale_macro');
+
         // Fluid term (nebular gas dynamics)
         const fluid_term = this.computeFluidTerm(g_base);
-        
+
         // Resonant oscillatory terms
         const resonant_term = this.computeResonantTerm(t);
-        
+
         // Dark matter term (density perturbations + curvature)
         const dm_term = this.computeDMTerm();
-        
+
         // Total M16 gravity
-        const g_M16 = g_base + ug_sum + lambda_term + quantum_term + 
-                      em_term + fluid_term + resonant_term + dm_term;
-        
+        const g_M16 = g_base + ug_sum + lambda_term + quantum_term +
+            em_term + fluid_term + resonant_term + dm_term;
+
         // Return comprehensive results
         return {
             g_M16: g_M16,
@@ -12441,16 +12441,16 @@ class M16UQFFModule {
             }
         };
     }
-    
+
     // Get equation text description
     getEquationText() {
         return "A_muv = g_muv + eta T_s^{muv}(rho_vac_SCm, rho_vac_UA, rho_vac_A, t_n)" +
-               "\nT_s^{muv} = 1.123e7 J/mï¿½ (diagonal; T_s_base + rho_vac_A = 1.27e3 + 1.11e7);" +
-               "\neta = 1e-22 (eta perturbation) ï¿½1.123e-15;" +
-               "\nA_muv ï¿½ [1 + 1.123e-15, -1 + 1.123e-15, ...]." +
-               "\nIn F_U: Aether contrib ~1e-15 J/mï¿½ (negligible vs U_m=2.28e65)." +
-               "\nRole: Encodes energy-momentum for Aether geometry; SCm/UA stress in spacetime." +
-               "\nUQFF: Perturbs metric for nebular/disk/jet dynamics; GR-compatible vacuum.";
+            "\nT_s^{muv} = 1.123e7 J/mï¿½ (diagonal; T_s_base + rho_vac_A = 1.27e3 + 1.11e7);" +
+            "\neta = 1e-22 (eta perturbation) ï¿½1.123e-15;" +
+            "\nA_muv ï¿½ [1 + 1.123e-15, -1 + 1.123e-15, ...]." +
+            "\nIn F_U: Aether contrib ~1e-15 J/mï¿½ (negligible vs U_m=2.28e65)." +
+            "\nRole: Encodes energy-momentum for Aether geometry; SCm/UA stress in spacetime." +
+            "\nUQFF: Perturbs metric for nebular/disk/jet dynamics; GR-compatible vacuum.";
     }
 
     // --- Dynamic self-updating and self-expanding methods ---
@@ -12477,21 +12477,21 @@ function analyzeSaturnPlanet(timePoints = [0, 1e9 * 3.156e7, 2.5e9 * 3.156e7, 4.
 
     let system = new SaturnUQFFModule();
     const results = [];
-    
+
     // Time labels for Solar System evolution
     const timeLabels = ['Present', '1 Gyr', '2.5 Gyr', '4.5 Gyr (Solar System Age)'];
-    
+
     timePoints.forEach((t, idx) => {
         const result = system.compute_g_Saturn(t);
         results.push({ time: t, label: timeLabels[idx] || `t=${t.toExponential(2)}s`, result });
-        
+
         console.log(`\nTime: ${timeLabels[idx] || `t=${t.toExponential(2)}s`}`);
         console.log(`  Total g_Saturn:         ${result.g_Saturn.toExponential(3)} m/sï¿½`);
         console.log(`  Planet Mass:            ${(result.diagnostics.planetMass / CONSTANTS.SOLAR_MASS).toExponential(2)} M?`);
         console.log(`  Solar Mass:             ${(result.diagnostics.solarMass / CONSTANTS.SOLAR_MASS).toExponential(2)} M?`);
         console.log(`  Ring Mass:              ${result.diagnostics.ringMass.toExponential(2)} kg`);
         console.log(`  Solar System Age:       ${result.diagnostics.solarSystemAge.toFixed(2)} Gyr`);
-        
+
         console.log('\n  Advanced Component Breakdown:');
         console.log(`    Solar Gravity:          ${result.components.g_sun.toExponential(3)} m/sï¿½`);
         console.log(`    Saturn Gravity + SC:    ${result.components.g_saturn.toExponential(3)} m/sï¿½`);
@@ -12505,7 +12505,7 @@ function analyzeSaturnPlanet(timePoints = [0, 1e9 * 3.156e7, 2.5e9 * 3.156e7, 4.
         console.log(`    Dark Matter Term:       ${result.components.dm_term.toExponential(3)} m/sï¿½`);
         console.log(`    Atmospheric Wind:       ${result.components.wind_term.toExponential(3)} m/sï¿½`);
     });
-    
+
     // Saturn-specific analysis
     console.log('\n?? Saturn Planet Physics Analysis:');
     console.log(`  Planet Mass:              ${(system.variables.get('M') / CONSTANTS.SOLAR_MASS).toExponential(2)} M?`);
@@ -12518,7 +12518,7 @@ function analyzeSaturnPlanet(timePoints = [0, 1e9 * 3.156e7, 2.5e9 * 3.156e7, 4.
     console.log(`  Magnetic Field:           ${system.variables.get('B').toExponential(2)} T`);
     console.log(`  Atmospheric Density:      ${system.variables.get('rho_atm').toExponential(2)} kg/mï¿½`);
     console.log(`  Visible Matter:           100% (no dark matter)`);
-    
+
     // Advanced physics features
     console.log('\n?? Advanced Physics Features:');
     console.log(`  Quantum Uncertainty:      ${Math.sqrt(system.variables.get('Delta_x') * system.variables.get('Delta_p')).toExponential(2)} kgï¿½m/s`);
@@ -12537,18 +12537,18 @@ function analyzeSaturnPlanet(timePoints = [0, 1e9 * 3.156e7, 2.5e9 * 3.156e7, 4.
     system2.addToVariable('v_wind', 100.0); // Add 100 m/s wind
     console.log(`  Original v_wind:          ${original_wind} m/s`);
     console.log(`  Modified v_wind:          ${system2.variables.get('v_wind')} m/s (+100)`);
-    
+
     const modified_result = system2.compute_g_Saturn(0);
     system2.updateVariable('v_wind', original_wind); // Reset
-    
+
     console.log(`  Modified g_Saturn:        ${modified_result.g_Saturn.toExponential(3)} m/sï¿½`);
-    
+
     // Compare with standard Newtonian (Saturn only)
-    const classical_g_saturn = (system2.variables.get('G') * system2.variables.get('M')) / 
-                              (system2.variables.get('r') * system2.variables.get('r'));
+    const classical_g_saturn = (system2.variables.get('G') * system2.variables.get('M')) /
+        (system2.variables.get('r') * system2.variables.get('r'));
     const current_result = system2.compute_g_Saturn(0);
     const enhancement = current_result.g_Saturn / classical_g_saturn;
-    
+
     console.log('\n? Gravitational Enhancement Analysis:');
     console.log(`  Classical Saturn (Newtonian): ${classical_g_saturn.toExponential(3)} m/sï¿½`);
     console.log(`  UQFF Enhanced Total:          ${current_result.g_Saturn.toExponential(3)} m/sï¿½`);
@@ -12556,7 +12556,7 @@ function analyzeSaturnPlanet(timePoints = [0, 1e9 * 3.156e7, 2.5e9 * 3.156e7, 4.
     console.log(`  Saturn Component:             ${current_result.components.g_saturn.toExponential(3)} m/sï¿½`);
     console.log(`  Solar Component:              ${current_result.components.g_sun.toExponential(3)} m/sï¿½`);
     console.log(`  Ring Component:               ${current_result.components.T_ring.toExponential(3)} m/sï¿½`);
-    
+
     // Advanced UQFF Physics Summary
     console.log('\n?? Advanced UQFF Physics Summary:');
     console.log('  ï¿½ Dynamic variable management with Map-based storage');
@@ -12570,7 +12570,7 @@ function analyzeSaturnPlanet(timePoints = [0, 1e9 * 3.156e7, 2.5e9 * 3.156e7, 4.
     console.log('  ï¿½ Gas giant atmospheric fluid dynamics modeling');
     console.log('  ï¿½ Complete MUGE implementation adapted for planetary physics');
     console.log('\n  Equation: ' + system2.getEquationText());
-    
+
     return {
         systemName: 'Saturn Planet (UQFF Module)',
         system: system2,
@@ -12587,10 +12587,10 @@ class CrabUQFFModule {
     constructor(params = {}) {
         // Use provided parameters or defaults from PREDEFINED_SYSTEMS
         const defaults = PREDEFINED_SYSTEMS['CRAB_NEBULA'];
-        
+
         // Initialize Map with all variables (dynamic variable management)
         this.variables = new Map();
-        
+
         // Base constants (universal)
         this.variables.set('G', 6.6743e-11); // mï¿½ kg?ï¿½ s^-1ï¿½
         this.variables.set('c', 3e8); // m/s
@@ -12599,7 +12599,7 @@ class CrabUQFFModule {
         this.variables.set('q', params.qCharge || defaults.qCharge); // C (electron charge)
         this.variables.set('pi', Math.PI);
         this.variables.set('t_Hubble', params.tHubble || defaults.tHubble); // s (13.8 Gyr)
-        
+
         // Crab Nebula parameters
         this.variables.set('M_sun', params.M_sun || CONSTANTS.SOLAR_MASS);
         this.variables.set('M', params.mass || defaults.mass); // Total mass kg (ejecta + pulsar)
@@ -12607,7 +12607,7 @@ class CrabUQFFModule {
         this.variables.set('M_DM', params.M_DM || defaults.M_DM); // No significant DM
         this.variables.set('r0', params.r0 || defaults.r0); // m (initial radius)
         this.variables.set('v_exp', params.v_expansion || defaults.v_expansion); // m/s (expansion velocity)
-        
+
         // Hubble/cosmology
         this.variables.set('H0', params.hubbleParam || defaults.hubbleParam); // km/s/Mpc
         this.variables.set('Mpc_to_m', params.Mpc_to_m || defaults.Mpc_to_m); // m/Mpc
@@ -12615,7 +12615,7 @@ class CrabUQFFModule {
         this.variables.set('Omega_m', params.Omega_m || defaults.Omega_m);
         this.variables.set('Omega_Lambda', params.Omega_Lambda || defaults.Omega_Lambda);
         this.variables.set('t', params.defaultTimeSeconds || defaults.defaultTimeSeconds); // Default t=971 years
-        
+
         // Nebula dynamics
         this.variables.set('rho_fluid', params.rho_fluid || defaults.rho_fluid); // kg/mï¿½ (filament density)
         this.variables.set('V', params.V_volume || defaults.V_volume); // mï¿½ (volume scale)
@@ -12623,29 +12623,29 @@ class CrabUQFFModule {
         this.variables.set('P_pulsar', params.P_pulsar || defaults.P_pulsar); // W (pulsar luminosity)
         this.variables.set('delta_rho', params.rho_perturbation || defaults.rho_perturbation); // Perturbation
         this.variables.set('rho', params.rho_mean || defaults.rho_mean); // Mean density
-        
+
         // EM/magnetic/superconductivity
         this.variables.set('B', params.magneticField || defaults.magneticField); // T (nebula avg field)
         this.variables.set('B_crit', params.B_crit || defaults.B_crit); // T (critical field)
         this.variables.set('m_e', params.electron_mass || defaults.electron_mass); // kg (electron mass)
-        
+
         // Quantum terms
         this.variables.set('Delta_x', params.deltaX || defaults.deltaX); // m (position uncertainty)
         this.variables.set('Delta_p', params.deltaP || defaults.deltaP); // kgï¿½m/s (momentum uncertainty)
         this.variables.set('integral_psi', params.integralPsi || defaults.integralPsi); // <?|H|?> simplified
-        
+
         // Resonant/oscillatory terms
         this.variables.set('A', params.A_osc || defaults.A_osc); // m/sï¿½ (amplitude)
         this.variables.set('k', params.k_osc || defaults.k_osc); // m^-2ï¿½ (wave number)
         this.variables.set('omega', params.omega_osc || defaults.omega_osc); // rad/s (synchrotron freq)
         this.variables.set('x', params.x_pos || defaults.x_pos); // m (position, central)
-        
+
         // Ug subterms (computed dynamically)
         this.variables.set('Ug1', 0.0); // Will be G M / rï¿½
         this.variables.set('Ug2', 0.0); // dï¿½F/dtï¿½ ï¿½ 0 (negligible)
         this.variables.set('Ug3', 0.0); // G M_moon / r_moonï¿½ ï¿½ 0 (no moon)
         this.variables.set('Ug4', 0.0); // Ug1 * f_sc, f_sc=1
-        
+
         // Scale factors
         this.variables.set('scale_macro', params.scale_macro || defaults.scale_macro); // For macro effects
         this.variables.set('f_TRZ', params.f_TRZ || defaults.f_TRZ); // Time-reversal factor
@@ -12653,7 +12653,7 @@ class CrabUQFFModule {
         this.variables.set('proton_mass', params.proton_mass || defaults.proton_mass); // kg
         this.variables.set('UA_SCm_ratio', params.UA_SCm_ratio || defaults.UA_SCm_ratio); // UA/SCm = 10
     }
-    
+
     // Dynamic variable operations
     updateVariable(name, value) {
         this.variables.set(name, value);
@@ -12665,79 +12665,79 @@ class CrabUQFFModule {
             this.variables.set('M_DM', 0.0);
         }
     }
-    
+
     addToVariable(name, delta) {
         const current = this.variables.get(name) || 0;
         this.variables.set(name, current + delta);
     }
-    
+
     subtractFromVariable(name, delta) {
         this.addToVariable(name, -delta);
     }
-    
+
     // Compute current radius: r(t) = r0 + v_exp * t
     computeRadius(t) {
         return this.variables.get('r0') + this.variables.get('v_exp') * t;
     }
-    
+
     // Compute H(z) in s^-1ï¿½
     computeHz() {
         const Hz_kms = this.variables.get('H0') * Math.sqrt(
-            this.variables.get('Omega_m') * Math.pow(1.0 + this.variables.get('z'), 3) + 
+            this.variables.get('Omega_m') * Math.pow(1.0 + this.variables.get('z'), 3) +
             this.variables.get('Omega_Lambda')
         );
         return (Hz_kms * 1e3) / this.variables.get('Mpc_to_m');
     }
-    
+
     // Compute Ug sum: Ug1 = G M / rï¿½, Ug4 = Ug1 * f_sc, others 0
     computeUgSum(r) {
         const Ug1 = (this.variables.get('G') * this.variables.get('M')) / (r * r);
         this.variables.set('Ug1', Ug1);
         this.variables.set('Ug4', Ug1 * this.variables.get('f_sc'));
-        return this.variables.get('Ug1') + this.variables.get('Ug2') + 
-               this.variables.get('Ug3') + this.variables.get('Ug4');
+        return this.variables.get('Ug1') + this.variables.get('Ug2') +
+            this.variables.get('Ug3') + this.variables.get('Ug4');
     }
-    
+
     // Quantum term: (? / v(?x ?p)) * ??*H? dV * (2p / t_Hubble)
     computeQuantumTerm(t_Hubble_val) {
         const unc = Math.sqrt(this.variables.get('Delta_x') * this.variables.get('Delta_p'));
         const integral_val = this.variables.get('integral_psi');
-        return (this.variables.get('hbar') / unc) * integral_val * 
-               (2 * this.variables.get('pi') / t_Hubble_val);
+        return (this.variables.get('hbar') / unc) * integral_val *
+            (2 * this.variables.get('pi') / t_Hubble_val);
     }
-    
+
     // Fluid term: ?_fluid * V * g (g ï¿½ base gravity)
     computeFluidTerm(g_base) {
         return this.variables.get('rho_fluid') * this.variables.get('V') * g_base;
     }
-    
+
     // Resonant terms: 2A cos(kx) cos(?t) + (2p/13.8) A Re[exp(i(kx - ?t))]
     computeResonantTerm(t) {
-        const cos_term = 2 * this.variables.get('A') * 
-                        Math.cos(this.variables.get('k') * this.variables.get('x')) * 
-                        Math.cos(this.variables.get('omega') * t);
-        const exp_arg = this.variables.get('k') * this.variables.get('x') - 
-                       this.variables.get('omega') * t;
+        const cos_term = 2 * this.variables.get('A') *
+            Math.cos(this.variables.get('k') * this.variables.get('x')) *
+            Math.cos(this.variables.get('omega') * t);
+        const exp_arg = this.variables.get('k') * this.variables.get('x') -
+            this.variables.get('omega') * t;
         const real_exp = this.variables.get('A') * Math.cos(exp_arg);
         const exp_factor = (2 * this.variables.get('pi') / 13.8);
         return cos_term + exp_factor * real_exp;
     }
-    
+
     // DM term: (M_visible + M_DM) * (d?/? + 3GM/rï¿½)
     computeDMTerm() {
         const pert = this.variables.get('delta_rho') / this.variables.get('rho');
-        const curv = 3 * this.variables.get('G') * this.variables.get('M') / 
-                    (this.variables.get('r') * this.variables.get('r') * this.variables.get('r'));
+        const curv = 3 * this.variables.get('G') * this.variables.get('M') /
+            (this.variables.get('r') * this.variables.get('r') * this.variables.get('r'));
         return (this.variables.get('M_visible') + this.variables.get('M_DM')) * (pert + curv);
     }
-    
+
     // Wind term: (P_pulsar / (4p rï¿½)) * (1/c) * scale_macro
     computeWindTerm(r) {
         const surface_area = 4 * this.variables.get('pi') * r * r;
         const flux = this.variables.get('P_pulsar') / surface_area;
         return flux * (1.0 / this.variables.get('c')) * this.variables.get('scale_macro');
     }
-    
+
     // Magnetic term: (Bï¿½ / (8p ?0)) * (1 - B/B_crit) * scale_macro
     computeMagneticTerm() {
         const mu0 = 4 * this.variables.get('pi') * 1e-7; // Permeability of free space
@@ -12745,57 +12745,57 @@ class CrabUQFFModule {
         const sc_correction = 1.0 - (this.variables.get('B') / this.variables.get('B_crit'));
         return energy_density * sc_correction * this.variables.get('scale_macro');
     }
-    
+
     // Core computation: g_Crab(r,t) = complete UQFF for Crab Nebula
     compute_g_Crab(t) {
         this.variables.set('t', t);
-        
+
         const r = this.computeRadius(t);
         const Hz = this.computeHz();
         const expansion = 1.0 + Hz * t;
         const sc_correction = 1.0 - (this.variables.get('B') / this.variables.get('B_crit'));
         const tr_factor = 1.0 + this.variables.get('f_TRZ');
-        
+
         // Base gravity with expansion, SC, TR
-        const g_base = (this.variables.get('G') * this.variables.get('M') / (r * r)) * 
-                       expansion * sc_correction * tr_factor;
-        
+        const g_base = (this.variables.get('G') * this.variables.get('M') / (r * r)) *
+            expansion * sc_correction * tr_factor;
+
         // Ug sum (Universal Gravity components)
         const ug_sum = this.computeUgSum(r);
-        
+
         // Cosmological term: ?cï¿½/3
-        const lambda_term = this.variables.get('Lambda') * 
-                           (this.variables.get('c') * this.variables.get('c')) / 3.0;
-        
+        const lambda_term = this.variables.get('Lambda') *
+            (this.variables.get('c') * this.variables.get('c')) / 3.0;
+
         // Quantum uncertainty term
         const quantum_term = this.computeQuantumTerm(this.variables.get('t_Hubble'));
-        
+
         // EM Lorentz term: q(vï¿½B)/m_e enhanced by UA/SCm ratio
-        const em_base = this.variables.get('q') * this.variables.get('v_shock') * 
-                       this.variables.get('B') / this.variables.get('m_e');
-        const em_term = em_base * (1.0 + this.variables.get('UA_SCm_ratio')) * 
-                       this.variables.get('scale_macro');
-        
+        const em_base = this.variables.get('q') * this.variables.get('v_shock') *
+            this.variables.get('B') / this.variables.get('m_e');
+        const em_term = em_base * (1.0 + this.variables.get('UA_SCm_ratio')) *
+            this.variables.get('scale_macro');
+
         // Fluid term (nebular filament dynamics)
         const fluid_term = this.computeFluidTerm(g_base);
-        
+
         // Resonant oscillatory terms
         const resonant_term = this.computeResonantTerm(t);
-        
+
         // Dark matter term (density perturbations + curvature)
         const dm_term = this.computeDMTerm();
-        
+
         // Pulsar wind term (radiation pressure)
         const wind_term = this.computeWindTerm(r);
-        
+
         // Magnetic energy term
         const magnetic_term = this.computeMagneticTerm();
-        
+
         // Total Crab gravity
-        const g_Crab = g_base + ug_sum + lambda_term + quantum_term + 
-                       em_term + fluid_term + resonant_term + dm_term + 
-                       wind_term + magnetic_term;
-        
+        const g_Crab = g_base + ug_sum + lambda_term + quantum_term +
+            em_term + fluid_term + resonant_term + dm_term +
+            wind_term + magnetic_term;
+
         // Return comprehensive results
         return {
             g_Crab: g_Crab,
@@ -12827,14 +12827,14 @@ class CrabUQFFModule {
             }
         };
     }
-    
+
     // Get equation text description
     getEquationText() {
         return "Crab Nebula UQFF: g_Crab = G M / r(t)ï¿½ + Ug_sum + ?cï¿½/3 + quantum + EM + fluid + resonant + DM + wind + magnetic" +
-               "\nr(t) = r0 + v_exp ï¿½ t (expanding nebula)" +
-               "\nWind term: P_pulsar / (4p rï¿½) ï¿½ (1/c) (radiation pressure)" +
-               "\nMagnetic term: Bï¿½/(8p ?0) ï¿½ (1 - B/B_crit) (energy density with SC correction)" +
-               "\nComplete MUGE implementation for supernova remnant dynamics";
+            "\nr(t) = r0 + v_exp ï¿½ t (expanding nebula)" +
+            "\nWind term: P_pulsar / (4p rï¿½) ï¿½ (1/c) (radiation pressure)" +
+            "\nMagnetic term: Bï¿½/(8p ?0) ï¿½ (1 - B/B_crit) (energy density with SC correction)" +
+            "\nComplete MUGE implementation for supernova remnant dynamics";
     }
 
     // --- Dynamic self-updating and self-expanding methods ---
@@ -13024,142 +13024,142 @@ const { Source97UQFFModule } = require('./source97.js');
 // ===========================================================================================
 // Source4: Unified Field Theory with 2.0-Enhanced Self-Expanding Framework
 // ===========================================================================================
-const { 
-  PhysicsTerm: Source4PhysicsTerm,
-  DynamicVacuumTerm: Source4DynamicVacuumTerm, 
-  QuantumCouplingTerm: Source4QuantumCouplingTerm,
-  UQFFModule4JS,
-  CelestialBody: Source4CelestialBody,
-  FluidSolver: Source4FluidSolver,
-  ResonanceParams: Source4ResonanceParams,
-  MUGESystem: Source4MUGESystem,
-  compute_Ug1: source4_compute_Ug1,
-  compute_Ug2: source4_compute_Ug2,
-  compute_Ug3: source4_compute_Ug3,
-  compute_Ug4: source4_compute_Ug4,
-  compute_Ubi: source4_compute_Ubi,
-  compute_Um: source4_compute_Um,
-  compute_A_mu_nu: source4_compute_A_mu_nu,
-  compute_FU: source4_compute_FU,
-  compute_compressed_MUGE: source4_compute_compressed_MUGE,
-  compute_resonance_MUGE: source4_compute_resonance_MUGE,
-  simulate_quasar_jet: source4_simulate_quasar_jet
+const {
+    PhysicsTerm: Source4PhysicsTerm,
+    DynamicVacuumTerm: Source4DynamicVacuumTerm,
+    QuantumCouplingTerm: Source4QuantumCouplingTerm,
+    UQFFModule4JS,
+    CelestialBody: Source4CelestialBody,
+    FluidSolver: Source4FluidSolver,
+    ResonanceParams: Source4ResonanceParams,
+    MUGESystem: Source4MUGESystem,
+    compute_Ug1: source4_compute_Ug1,
+    compute_Ug2: source4_compute_Ug2,
+    compute_Ug3: source4_compute_Ug3,
+    compute_Ug4: source4_compute_Ug4,
+    compute_Ubi: source4_compute_Ubi,
+    compute_Um: source4_compute_Um,
+    compute_A_mu_nu: source4_compute_A_mu_nu,
+    compute_FU: source4_compute_FU,
+    compute_compressed_MUGE: source4_compute_compressed_MUGE,
+    compute_resonance_MUGE: source4_compute_resonance_MUGE,
+    simulate_quasar_jet: source4_simulate_quasar_jet
 } = require('./source4.js');
 
 // ===========================================================================================
 // Source5: Celestial Body UQFF with Self-Expanding Framework & Fluid Simulation
 // ===========================================================================================
 const {
-  PhysicsTerm: PhysicsTerm5,
-  DarkMatterHaloTerm,
-  VacuumEnergyTerm,
-  CelestialBody,
-  ResonanceParams,
-  MUGESystem,
-  FluidSolver,
-  UQFFModule5JS,
-  compute_Ug1: source5_compute_Ug1,
-  compute_Ug2: source5_compute_Ug2,
-  compute_Ug3: source5_compute_Ug3,
-  compute_Ug4: source5_compute_Ug4,
-  compute_Um: source5_compute_Um,
-  compute_Ubi: source5_compute_Ubi,
-  compute_FU: source5_compute_FU,
-  compute_compressed_MUGE: source5_compute_compressed_MUGE,
-  compute_resonance_MUGE: source5_compute_resonance_MUGE,
-  compute_aDPM,
-  compute_aTHz,
-  compute_avac_diff,
-  compute_asuper_freq,
-  compute_aaether_res,
-  compute_Ug4i,
-  compute_aquantum_freq,
-  compute_aAether_freq,
-  compute_afluid_freq,
-  compute_a_wormhole,
-  createDefaultBodies,
-  createDefaultMUGESystems
+    PhysicsTerm: PhysicsTerm5,
+    DarkMatterHaloTerm,
+    VacuumEnergyTerm,
+    CelestialBody,
+    ResonanceParams,
+    MUGESystem,
+    FluidSolver,
+    UQFFModule5JS,
+    compute_Ug1: source5_compute_Ug1,
+    compute_Ug2: source5_compute_Ug2,
+    compute_Ug3: source5_compute_Ug3,
+    compute_Ug4: source5_compute_Ug4,
+    compute_Um: source5_compute_Um,
+    compute_Ubi: source5_compute_Ubi,
+    compute_FU: source5_compute_FU,
+    compute_compressed_MUGE: source5_compute_compressed_MUGE,
+    compute_resonance_MUGE: source5_compute_resonance_MUGE,
+    compute_aDPM,
+    compute_aTHz,
+    compute_avac_diff,
+    compute_asuper_freq,
+    compute_aaether_res,
+    compute_Ug4i,
+    compute_aquantum_freq,
+    compute_aAether_freq,
+    compute_afluid_freq,
+    compute_a_wormhole,
+    createDefaultBodies,
+    createDefaultMUGESystems
 } = require('./source5.js');
 
 // ===========================================================================================
 // Source6: 3D Graphics, Model Loading, Shader System, and Advanced UQFF Physics
 // ===========================================================================================
 const {
-  // Physical constants
-  PI: PI6,
-  c: c6,
-  G: G6,
-  Omega_g: Omega_g6,
-  Mbh: Mbh6,
-  dg: dg6,
-  // Material constants
-  v_SCm: v_SCm6,
-  rho_A: rho_A6,
-  rho_sw: rho_sw6,
-  v_sw: v_sw6,
-  QA: QA6,
-  Qs: Qs6,
-  // Coupling constants
-  kappa: kappa6,
-  alpha: alpha6,
-  gamma: gamma6,
-  delta_sw: delta_sw6,
-  epsilon_sw: epsilon_sw6,
-  delta_def: delta_def6,
-  HSCm: HSCm6,
-  UUA: UUA6,
-  eta: eta6,
-  // Advanced constants
-  k1: k16,
-  k2: k26,
-  k3: k36,
-  k4: k46,
-  beta_i: beta_i6,
-  rho_v: rho_v6,
-  C_concentration: C_concentration6,
-  f_feedback: f_feedback6,
-  num_strings: num_strings6,
-  Ts00: Ts006,
-  g_mu_nu: g_mu_nu6,
-  // Classes
-  CelestialBody: CelestialBody6,
-  ThreeDObject,
-  ToolPath,
-  SimulationEntity,
-  MeshData,
-  Shader,
-  Camera,
-  SIMPlugin,
-  PhysicsTerm: PhysicsTerm6,
-  DarkMatterHaloTerm: DarkMatterHaloTerm6,
-  VacuumEnergyTerm: VacuumEnergyTerm6,
-  UQFFModule6JS,
-  // Helper functions
-  stepFunction: stepFunction6,
-  computeEreact,
-  computeMuS,
-  computeGradMsR,
-  computeBj,
-  computeOmegaST,
-  computeMuJ,
-  // Physics functions
-  computeUg1: source6_computeUg1,
-  computeUg2: source6_computeUg2,
-  computeUg3: source6_computeUg3,
-  computeUm: source6_computeUm,
-  computeUg4: source6_computeUg4,
-  computeUbi: source6_computeUbi,
-  computeAMuNu: source6_computeAMuNu,
-  computeFU: source6_computeFU,
-  // 3D & Model functions
-  loadOBJ,
-  exportOBJ,
-  loadTexture,
-  // Simulation functions
-  simulateQuasarJet: source6_simulateQuasarJet,
-  printSummaryStats,
-  loadBodies: source6_loadBodies,
-  getDefaultBodies
+    // Physical constants
+    PI: PI6,
+    c: c6,
+    G: G6,
+    Omega_g: Omega_g6,
+    Mbh: Mbh6,
+    dg: dg6,
+    // Material constants
+    v_SCm: v_SCm6,
+    rho_A: rho_A6,
+    rho_sw: rho_sw6,
+    v_sw: v_sw6,
+    QA: QA6,
+    Qs: Qs6,
+    // Coupling constants
+    kappa: kappa6,
+    alpha: alpha6,
+    gamma: gamma6,
+    delta_sw: delta_sw6,
+    epsilon_sw: epsilon_sw6,
+    delta_def: delta_def6,
+    HSCm: HSCm6,
+    UUA: UUA6,
+    eta: eta6,
+    // Advanced constants
+    k1: k16,
+    k2: k26,
+    k3: k36,
+    k4: k46,
+    beta_i: beta_i6,
+    rho_v: rho_v6,
+    C_concentration: C_concentration6,
+    f_feedback: f_feedback6,
+    num_strings: num_strings6,
+    Ts00: Ts006,
+    g_mu_nu: g_mu_nu6,
+    // Classes
+    CelestialBody: CelestialBody6,
+    ThreeDObject,
+    ToolPath,
+    SimulationEntity,
+    MeshData,
+    Shader,
+    Camera,
+    SIMPlugin,
+    PhysicsTerm: PhysicsTerm6,
+    DarkMatterHaloTerm: DarkMatterHaloTerm6,
+    VacuumEnergyTerm: VacuumEnergyTerm6,
+    UQFFModule6JS,
+    // Helper functions
+    stepFunction: stepFunction6,
+    computeEreact,
+    computeMuS,
+    computeGradMsR,
+    computeBj,
+    computeOmegaST,
+    computeMuJ,
+    // Physics functions
+    computeUg1: source6_computeUg1,
+    computeUg2: source6_computeUg2,
+    computeUg3: source6_computeUg3,
+    computeUm: source6_computeUm,
+    computeUg4: source6_computeUg4,
+    computeUbi: source6_computeUbi,
+    computeAMuNu: source6_computeAMuNu,
+    computeFU: source6_computeFU,
+    // 3D & Model functions
+    loadOBJ,
+    exportOBJ,
+    loadTexture,
+    // Simulation functions
+    simulateQuasarJet: source6_simulateQuasarJet,
+    printSummaryStats,
+    loadBodies: source6_loadBodies,
+    getDefaultBodies
 } = require('./source6.js');
 
 // ===========================================================================================
@@ -13298,13 +13298,13 @@ module.exports = {
     Source4DynamicVacuumTerm,
     Source4QuantumCouplingTerm,
     UQFFModule4JS,
-    
+
     // Source4 Core Classes
     Source4CelestialBody,
     Source4FluidSolver,
     Source4ResonanceParams,
     Source4MUGESystem,
-    
+
     // Source4 Unified Field Functions
     source4_compute_Ug1,
     source4_compute_Ug2,
@@ -13314,14 +13314,14 @@ module.exports = {
     source4_compute_Um,
     source4_compute_A_mu_nu,
     source4_compute_FU,
-    
+
     // Source4 MUGE Functions
     source4_compute_compressed_MUGE,
     source4_compute_resonance_MUGE,
-    
+
     // Source4 Simulation
     source4_simulate_quasar_jet,
-    
+
     // ===========================================================================================
     // Core UQFF modules
     // ===========================================================================================
@@ -13332,28 +13332,28 @@ module.exports = {
     CompressedResonanceUQFFModule38,
     CrabResonanceUQFFModule,
     CompressedResonanceUQFF24Module,
-    
+
     // Source13 magnetar SGR 1745-2900 module
     MagnetarSGR1745_2900,
-    
+
     // Source71 NGC 1316 galaxy module
     NGC1316UQFFModule,
-    
+
     // Source72 V838 Mon light echo module
     V838MonUQFFModule,
-    
+
     // Source73 NGC 1300 barred spiral module
     NGC1300EnhancedUQFFModule,
-    
+
     // Source74 compressed/resonance module
     UQFFCompressedResonanceModule,
-    
+
     // Source76-79 modules
     NGC2264UQFFModule,
     NGC346UQFFModule,
     NGC4676UQFFModule,
     RedSpiderUQFFModule,
-    
+
     // Source80-97 extended modules
     SMBHBinaryUQFFModule,
     NGC346FrequencyModule,
@@ -13373,7 +13373,7 @@ module.exports = {
     RingNebulaModule,
     DumbbellNebulaModule,
     Source97UQFFModule,
-    
+
     // Source40-69 physics modules
     CompressedResonanceUQFF24Module,
     UniverseDiameterUQFFModule,
@@ -13396,10 +13396,10 @@ module.exports = {
     InertiaUQFFModule,
     HydrogenUQFFModule,
     UQFFCompressionModule,
-    
+
     // Source70 M51 Whirlpool Galaxy
     M51UQFFModule,
-    
+
     // Source20-39 astrophysical systems
     PhysicsTerm20,
     NGC2525Module,
@@ -13416,91 +13416,91 @@ module.exports = {
     ResonanceSuperconductiveUQFFModule37,
     CompressedResonanceUQFFModule38,
     CrabResonanceUQFFModule,
-    
+
     // Source98 unified field strength module
     UnifiedFieldModule,
-    
+
     // Source100 Heaviside fraction module
     HeavisideFractionModule,
     PhysicsTerm,
     DynamicVacuumTerm,
     QuantumCouplingTerm,
-    
+
     // Source101 heliosphere thickness module
     HeliosphereThicknessModule,
-    
+
     // Source102 Ug index module
     UgIndexModule,
-    
+
     // Source103 inertia coupling module
     InertiaCouplingModule,
-    
+
     // Source104 magnetic moment module
     MagneticMomentModule,
-    
+
     // Source105 galactic black hole module
     GalacticBlackHoleModule,
-    
+
     // Source106 negative time module
     NegativeTimeModule,
-    
+
     // Source107 pi constant module
     PiConstantModule,
-    
+
     // Source108 core penetration module
     CorePenetrationModule,
-    
+
     // Source109 quasi-longitudinal module
     QuasiLongitudinalModule,
-    
+
     // Source110 outer field bubble module
     OuterFieldBubbleModule,
-    
+
     // Source111 reciprocation decay module
     ReciprocationDecayModule,
-    
+
     // Source112 SCm penetration module
     ScmPenetrationModule,
-    
+
     // Source113 SCm reactivity decay module
     ScmReactivityDecayModule,
-    
+
     // Source114 solar cycle frequency module
     SolarCycleFrequencyModule,
-    
+
     // Source115 solar wind modulation module
     SolarWindModulationModule,
-    
+
     // Source116 solar wind velocity module
     SolarWindVelocityModule,
-    
+
     // Source117 stellar mass module
     StellarMassModule,
-    
+
     // Source118 stellar rotation module
     StellarRotationModule,
-    
+
     // Source119 step function module
     StepFunctionModule,
-    
+
     // Source120 stress-energy tensor module
     StressEnergyTensorModule,
-    
+
     // Source121 surface magnetic field module
     SurfaceMagneticFieldModule,
-    
+
     // Source122 surface temperature module
     SurfaceTemperatureModule,
-    
+
     // Source123 time-reversal zone module
     TimeReversalZoneModule,
-    
+
     // Source124 Ug1 defect module
     Ug1DefectModule,
-    
+
     // Source125 Ug3 disk vector module
     Ug3DiskVectorModule,
-    
+
     // ===========================================================================================
     // SOURCE131-162: Enhanced UQFF Modules (SIMULATION-READY)
     // ===========================================================================================
@@ -13535,32 +13535,32 @@ PREDEFINED_SYSTEMS.UNIFIED_FIELD_STRENGTH = {
         // Universal constants
         pi: Math.PI,
         t_n: 0.0,                           // s (normalized time)
-        
+
         // Vacuum energy densities
         rho_vac_SCm: 7.09e-37,              // J/m³ (SCm vacuum density)
         rho_vac_UA: 7.09e-36,               // J/m³ (Universal Aether vacuum density)
-        
+
         // Quantum level (1-26 across cosmic scales)
         level: 13.0,                        // Sun level
-        
+
         // Ug components (Universal Gravity) - J/m³
         U_g1: 1.39e26,                      // Internal Dipole energy density
         U_g2: 1.18e53,                      // Outer Field Bubble energy density
         U_g3: 1.8e49,                       // Magnetic Strings Disk energy density
         U_g4: 2.50e-20,                     // Star-Black Hole interaction energy density
-        
+
         // Um (Universal Magnetism) - Dominant term
         U_m: 2.28e65,                       // J/m³ (magnetic string energy - dominant)
-        
+
         // Ub (Universal Buoyancy) - Opposes gravity
         U_b_sum: -1.94e27,                  // J/m³ (negative - opposes Ug)
-        
+
         // Ui (Universal Inertia) - Resistance to motion
         U_i: 1.38e0,                        // Normalized inertia resistance
-        
+
         // Aether (Metric perturbation) - g_μν + η T_s
         Aether: 1.123e-15,                  // Small perturbation to spacetime
-        
+
         // System parameters for context
         M: 1.989e30,                        // kg (solar mass)
         r: 6.96e8,                          // m (solar radius)
@@ -13616,23 +13616,23 @@ PREDEFINED_SYSTEMS.HEAVISIDE_FRACTION = {
         f_Heaviside: 0.01,                  // Unitless fraction (threshold activation)
         scale_Heaviside: 1e13,              // Amplification factor (10^13)
         f_quasi: 0.01,                      // Quasi factor for additional scaling
-        
+
         // Magnetic string parameters (j=1 example)
         mu_j: 3.38e23,                      // T m³ (magnetic moment)
         r_j: 1.496e13,                      // m (characteristic radius - 1 AU)
-        
+
         // Time evolution parameters
         gamma: 5e-5 / 86400.0,              // s^-1 (decay rate, converted from day^-1)
         t_n: 0.0,                           // s (normalized time)
-        
+
         // Quantum field parameters
         phi_hat_j: 1.0,                     // Normalized field amplitude
         P_SCm: 1.0,                         // Superconducting magnetism pressure
         E_react: 1e46,                      // J (reaction energy)
-        
+
         // Universal constants
         pi: Math.PI,
-        
+
         // System parameters for context
         M: 1.989e30,                        // kg (solar mass)
         r: 6.96e8,                          // m (solar radius)
@@ -13669,7 +13669,7 @@ PREDEFINED_SYSTEMS.HEAVISIDE_FRACTION = {
             ]
         }
     },
-    
+
     // ===========================================================================================
     // Source101: HELIOSPHERE_THICKNESS - Heliosphere Thickness Factor (H_SCm) System
     // ===========================================================================================
@@ -13692,8 +13692,8 @@ PREDEFINED_SYSTEMS.HEAVISIDE_FRACTION = {
             t_n: 0.0                            // s (reference time)
         },
         description: 'Heliosphere thickness factor H_SCm ≈1 modulates U_g2 outer field bubble gravity. ' +
-                    'Scales [SCm] vacuum influence for heliopause extent (~120 AU). ' +
-                    'Key for solar wind dominance and heliospheric boundary dynamics.',
+            'Scales [SCm] vacuum influence for heliopause extent (~120 AU). ' +
+            'Key for solar wind dominance and heliospheric boundary dynamics.',
         physics: {
             equation: 'U_g2 = k_2 * [(ρ_vac,UA + ρ_vac,SCm) M_s / r²] * S(r - R_b) * (1 + δ_sw v_sw) * H_SCm * E_react',
             components: [
@@ -13748,7 +13748,7 @@ PREDEFINED_SYSTEMS.HEAVISIDE_FRACTION = {
             ]
         }
     },
-    
+
     // ===========================================================================================
     // Source102: UG_INDEX - Universal Gravity Index System (i=1 to 4)
     // ===========================================================================================
@@ -13761,19 +13761,19 @@ PREDEFINED_SYSTEMS.HEAVISIDE_FRACTION = {
             U_g2: 1.18e53,                      // Outer Field Bubble
             U_g3: 1.8e49,                       // Magnetic Strings Disk
             U_g4: 2.50e-20,                     // Star-Black Hole Interactions
-            
+
             // Coupling constants (unitless)
             k_1: 1.5,                           // Internal Dipole coupling
             k_2: 1.2,                           // Outer Bubble coupling
             k_3: 1.8,                           // Magnetic Disk coupling
             k_4: 1.0,                           // Star-BH coupling
-            
+
             // Shared parameters
             t_n: 0.0                            // s (reference time)
         },
         description: 'Index i (dimensionless integer) labels discrete Universal Gravity ranges: ' +
-                    'i=1 (Internal Dipole), i=2 (Outer Field Bubble), i=3 (Magnetic Strings Disk), i=4 (Star-BH). ' +
-                    'Computes Σ_{i=1}^4 k_i * U_gi for F_U contribution. Discretizes gravity for summation.',
+            'i=1 (Internal Dipole), i=2 (Outer Field Bubble), i=3 (Magnetic Strings Disk), i=4 (Star-BH). ' +
+            'Computes Σ_{i=1}^4 k_i * U_gi for F_U contribution. Discretizes gravity for summation.',
         physics: {
             equation: 'F_U = Σ_{i=1}^4 [k_i * U_gi(r,t,M_s,ρ_s,T_s,B_s,ρ_vac,[SCm],ρ_vac,[UA],t_n) - ρ_i * ...] + other',
             index_labels: [
@@ -13846,20 +13846,20 @@ PREDEFINED_SYSTEMS.INERTIA_COUPLING = {
     parameters: {
         // Core inertia coupling constants
         lambda: 1.0,                        // Unitless (uniform λ_i for i=1-4)
-        
+
         // Vacuum energy densities
         rho_vac_SCm: 7.09e-37,             // J/m³ (superconducting magnetism vacuum)
         rho_vac_UA: 7.09e-36,              // J/m³ (universal aether vacuum)
-        
+
         // Rotational and temporal parameters
         omega_s: 2.5e-6,                   // rad/s (stellar rotation, Sun)
         f_TRZ: 0.1,                        // Unitless (time-reversal zone factor)
         t_n: 0.0,                          // s (normalized time)
-        
+
         // Reactive energy
         E_react: 1e46,                     // J (reactive energy magnitude)
         alpha_decay: 0.0005,               // s⁻¹ (exponential decay constant)
-        
+
         // Mathematical constants
         pi: Math.PI
     },
@@ -13927,31 +13927,31 @@ PREDEFINED_SYSTEMS.MAGNETIC_MOMENT = {
     parameters: {
         // Core magnetic moment constants
         base_mu: 3.38e20,                   // T·m³ (base magnetic moment, example uses 3.38e23)
-        
+
         // Angular frequency and spatial parameters
         omega_c: 2.5e-6,                   // rad/s (cyclic frequency)
         r_j: 1.496e13,                     // m (distance for j=1, AU)
-        
+
         // Decay and temporal parameters
         gamma: 5e-5 / 86400.0,             // s⁻¹ (0.00005 day⁻¹ decay constant)
         t_n: 0.0,                          // s (normalized time)
-        
+
         // Field and coupling parameters
         B_j: 1e3,                          // T (base magnetic field)
         phi_hat_j: 1.0,                    // Normalized (direction factor)
-        
+
         // Pressure and energy parameters
         P_SCm: 1.0,                        // Pressure (superconducting magnetism)
         E_react: 1e46,                     // J (reactive energy)
-        
+
         // Amplification factors
         f_Heaviside: 0.01,                 // Unitless (Heaviside component fraction)
         f_quasi: 0.01,                     // Unitless (quasi-static factor)
         scale_Heaviside: 1e13,             // Amplification factor
-        
+
         // Coupling constants
         k3: 1.8,                           // Coupling constant for Ug3
-        
+
         // Mathematical constants
         pi: Math.PI
     },
@@ -14111,14 +14111,14 @@ PREDEFINED_SYSTEMS.NEGATIVE_TIME = {
         exp_positive: 'exp(-5e-5 * 1000 * 1.0) = exp(-0.05) ≈ 0.951',
         one_minus_exp_positive: '1 - 0.951 = 0.049',
         Um_positive: '≈1.12e66 J/m³',
-        
+
         scenario_negative: 't=1000 days, t_0=1001, γ=5e-5 day^-1',
         t_n_negative: '-1 day',
         cos_negative: 'cos(π*(-1)) = cos(-π) = -1.0 (cos even)',
         exp_negative: 'exp(-5e-5 * 1000 * (-1.0)) = exp(0.05) ≈ 1.051',
         one_minus_exp_negative: '1 - 1.051 = -0.051 (growth/negentropic)',
         Um_negative: '≈-1.17e66 J/m³ (negative indicates growth phase)',
-        
+
         explanation: 'Negative t_n enables modeling of time-reversal zones, negentropic growth, and cyclic oscillations in UQFF'
     },
     validation: {
@@ -14659,27 +14659,27 @@ PREDEFINED_SYSTEMS.SCM_PENETRATION = {
         // [SCm] Penetration Constants
         P_SCm: 1.0,                         // Unitless ≈1 for Sun (full plasma penetration)
         P_SCm_planet: 1e-3,                 // For planets (solid core, 1000× reduction)
-        
+
         // Magnetic parameters
         mu_j: 3.38e23,                      // T·m³ (magnetic moment)
         r_j: 1.496e13,                      // m (solar radius scale)
-        
+
         // Time evolution parameters
         gamma: 5e-5 / 86400.0,              // s⁻¹ (decay rate: 5.787e-10 s⁻¹)
         t_n: 0.0,                           // Normalized time for reciprocation
-        
+
         // Field parameters
         phi_hat_j: 1.0,                     // Normalized field direction
         E_react: 1e46,                      // J (reactive energy)
-        
+
         // Enhancement factors
         f_Heaviside: 0.01,                  // Unitless (1% Heaviside enhancement)
         f_quasi: 0.01,                      // Unitless (1% quasi-longitudinal enhancement)
         scale_Heaviside: 1e13,              // Amplification scale (10^13)
-        
+
         // Derived
         heaviside_factor: 1.0 + 1e13 * 0.01, // 1 + 10^13 × f_Heaviside = 1e11 + 1
-        
+
         // Constants
         pi: Math.PI
     },
@@ -14781,18 +14781,18 @@ PREDEFINED_SYSTEMS.SCM_REACTIVITY_DECAY = {
         // [SCm] Reactivity Decay Rate Constants
         kappa_day: 0.0005,                  // day⁻¹ (reactivity decay rate)
         kappa_s: 5.787e-6,                  // s⁻¹ (derived: 0.0005 / 86400)
-        
+
         // Time conversion
         day_to_s: 86400.0,                  // s/day
-        
+
         // Reactive energy parameters
         E_react_base: 1e46,                 // J (base reactive energy at t=0)
         t_day: 0.0,                         // days (current time)
-        
+
         // Timescale parameters
         timescale_days: 2000,               // days (1/κ ≈ 2000 days)
         timescale_years: 5.48,              // years (~5.5 years)
-        
+
         // UQFF integration parameters (from previous modules)
         mu_over_rj: 2.26e10,                // T/m (magnetic moment ratio from source112)
         P_SCm: 1.0,                         // Normalized penetration factor (from source112)
@@ -14902,7 +14902,7 @@ PREDEFINED_SYSTEMS.SOLAR_CYCLE_FREQUENCY = {
         base_mu: 3.38e20,            // T·m³
         B_j: 1e3,                    // Base magnetic field in Tesla
         t: 0.0,                      // Time in seconds
-        
+
         // Derived (computed)
         omega_c: 1.585e-8            // rad/s (computed: 2π / period)
     },
@@ -14913,7 +14913,7 @@ Period: ~12.55 years (near 11-year Hale solar cycle)
 Magnetic variation: μ_j = (10³ + 0.4 sin(ω_c t)) × 3.38e20 T·m³
 Cyclic magnetic field: B_j(t) = 1000 + 0.4 sin(ω_c t) Tesla
 Applications: Solar cycle effects in jets, nebulae, stellar formation`,
-        
+
         formulas: {
             omega_c: 'ω_c = 2π / period ≈ 1.59e-8 rad/s',
             sin_omega_c_t: 'sin(ω_c t)',
@@ -14922,7 +14922,7 @@ Applications: Solar cycle effects in jets, nebulae, stellar formation`,
             period_years: 'period ≈ 12.55 years',
             frequency_hz: 'f = ω_c / (2π) ≈ 2.52e-9 Hz'
         },
-        
+
         example_calculations: [
             {
                 scenario: 't = 0 (solar cycle minimum/maximum)',
@@ -14975,7 +14975,7 @@ Applications: Solar cycle effects in jets, nebulae, stellar formation`,
                 notes: 'Full cycle: sin(2π) = 0, returns to initial state'
             }
         ],
-        
+
         validation: {
             omega_c_range: '1.0e-8 to 2.0e-8 rad/s (physical solar cycle)',
             period_range: '3.0e8 to 5.0e8 s (9.5 to 15.8 years)',
@@ -14983,7 +14983,7 @@ Applications: Solar cycle effects in jets, nebulae, stellar formation`,
             mu_j_range: '3.379e23 to 3.381e23 T·m³ (±0.04% variation)',
             sin_range: '-1 to +1 (mathematical constraint)'
         },
-        
+
         applications: [
             'Solar cycle modeling: 11-year Hale cycle approximation',
             'Stellar magnetic activity: Periodic field variations in stars',
@@ -14994,7 +14994,7 @@ Applications: Solar cycle effects in jets, nebulae, stellar formation`,
             'Protostellar formation: Cyclic accretion rate variations',
             'Multi-year observations: Matching observed ~12-year periodicities'
         ],
-        
+
         modular_design: {
             self_expanding: true,
             dynamic_variables: true,
@@ -15045,21 +15045,21 @@ PREDEFINED_SYSTEMS.SOLAR_WIND_MODULATION = {
         delta_sw: 0.01,                     // Unitless (solar wind modulation factor)
         v_sw: 5e5,                          // m/s (solar wind velocity)
         k_2: 1.2,                           // Coupling constant
-        
+
         // Vacuum energy densities
         rho_vac_UA: 7.09e-36,               // J/m³ (Universal Ambiance)
         rho_vac_SCm: 7.09e-37,              // J/m³ (Superconductive Medium)
-        
+
         // Solar system parameters
         M_s: 1.989e30,                      // kg (solar mass)
         r: 1.496e13,                        // m (distance, default = R_b)
         R_b: 1.496e13,                      // m (heliopause at 100 AU)
-        
+
         // Additional factors
         S_r_Rb: 1.0,                        // Step function value
         H_SCm: 1.0,                         // Superconductive Medium factor
         E_react: 1e46,                      // J (reactive energy)
-        
+
         // Derived (auto-calculated)
         rho_sum: 7.80e-36,                  // J/m³ (ρ_vac,UA + ρ_vac,SCm)
         modulation_factor: 5001.0           // 1 + δ_sw × v_sw
@@ -15215,21 +15215,21 @@ PREDEFINED_SYSTEMS.SOLAR_WIND_VELOCITY = {
         v_sw: 5e5,                          // m/s (solar wind velocity, 500 km/s)
         delta_sw: 0.01,                     // Unitless (modulation factor)
         k_2: 1.2,                           // Coupling constant
-        
+
         // Vacuum energy densities
         rho_vac_UA: 7.09e-36,               // J/m³ (Universal Ambiance)
         rho_vac_SCm: 7.09e-37,              // J/m³ (Superconductive Medium)
-        
+
         // Solar system parameters
         M_s: 1.989e30,                      // kg (solar mass)
         r: 1.496e13,                        // m (distance, default = R_b)
         R_b: 1.496e13,                      // m (heliopause at 100 AU)
-        
+
         // Additional factors
         S_r_Rb: 1.0,                        // Step function value
         H_SCm: 1.0,                         // Superconductive Medium factor
         E_react: 1e46,                      // J (reactive energy)
-        
+
         // Derived (auto-calculated)
         rho_sum: 7.80e-36,                  // J/m³ (ρ_vac,UA + ρ_vac,SCm)
         modulation_factor: 5001.0           // 1 + δ_sw × v_sw
@@ -15392,7 +15392,7 @@ PREDEFINED_SYSTEMS.SOLAR_WIND_VELOCITY = {
 PREDEFINED_SYSTEMS.STELLAR_MASS = {
     description: {
         purpose: 'Models stellar/planetary mass M_s and its role in scaling gravitational fields via M_s/r² in U_g1 (internal) and U_g2 (external) terms',
-        
+
         physics: `
             • M_s = 1.989×10³⁰ kg (1 M_☉ for Sun) - central stellar/planetary mass
             • M_s / r² scaling drives gravity strength with distance
@@ -15404,7 +15404,7 @@ PREDEFINED_SYSTEMS.STELLAR_MASS = {
             • U_g1/U_g2 ratio ≈ 1.25 (coupling ratio k₁/k₂ = 1.5/1.2)
             • Inverse square law: gravity ∝ M_s/r²
         `,
-        
+
         formulas: {
             M_s: 'M_s = 1.989×10³⁰ kg (1 M_☉)',
             M_s_Msun: 'M_s,Msun = M_s / M_☉',
@@ -15416,41 +15416,41 @@ PREDEFINED_SYSTEMS.STELLAR_MASS = {
             mass_scaling: 'U_g2(M_scaled) / U_g2(M_original) = M_scaled / M_original'
         }
     },
-    
+
     parameters: {
         // Core stellar mass parameter
         M_s: 1.989e30,                    // kg (1 M_☉ for Sun)
         M_sun: 1.989e30,                  // kg (solar mass reference)
-        
+
         // Coupling constants
         k_1: 1.5,                         // Internal dipole coupling
         k_2: 1.2,                         // Outer bubble coupling
-        
+
         // Vacuum energy densities
         rho_vac_UA: 7.09e-36,             // J/m³ (UA component)
         rho_vac_SCm: 7.09e-37,            // J/m³ (SCm component)
         rho_sum: 7.80e-36,                // J/m³ (sum)
-        
+
         // Spatial parameters
         r: 1.496e13,                      // m (example at R_b)
         R_b: 1.496e13,                    // m (100 AU heliopause)
-        
+
         // Solar wind modulation
         delta_sw: 0.01,                   // Unitless modulation factor
         v_sw: 5e5,                        // m/s (500 km/s)
         swirl_factor: 5001.0,             // 1 + δ_sw × v_sw
-        
+
         // Other factors
         H_SCm: 1.0,                       // SCm penetration
         E_react: 1e46,                    // J (reactive energy)
-        
+
         // Derived values
         M_s_over_r2: 8.89e3,              // kg/m² at R_b
         U_g1_at_Rb: 1.48e53,              // J/m³
         U_g2_at_Rb: 1.18e53,              // J/m³
         gravity_ratio: 1.25               // U_g1/U_g2
     },
-    
+
     examples: [
         {
             scenario: 'Solar mass at heliopause (R_b = 100 AU)',
@@ -15514,7 +15514,7 @@ PREDEFINED_SYSTEMS.STELLAR_MASS = {
             description: 'Planetary mass at orbital radius - weak gravity field'
         }
     ],
-    
+
     validation: {
         parameter_ranges: {
             M_s: { min: 1e24, max: 1e32, unit: 'kg', description: 'Earth mass to 50 M_☉' },
@@ -15525,7 +15525,7 @@ PREDEFINED_SYSTEMS.STELLAR_MASS = {
             U_g2: { min: 0, max: 1e60, unit: 'J/m³', description: 'External gravity energy' },
             gravity_ratio: { min: 0.5, max: 2.0, unit: 'dimensionless', description: 'U_g1/U_g2 coupling ratio' }
         },
-        
+
         physical_constraints: [
             'M_s must be positive',
             'Mass scaling is linear: U_g ∝ M_s',
@@ -15537,7 +15537,7 @@ PREDEFINED_SYSTEMS.STELLAR_MASS = {
             'Mass-to-gravity scaling validated for solar system'
         ]
     },
-    
+
     applications: [
         'Stellar gravity field modeling (main sequence to massive stars)',
         'Planetary system dynamics (terrestrial to gas giant masses)',
@@ -15555,7 +15555,7 @@ PREDEFINED_SYSTEMS.STELLAR_MASS = {
         'Mass segregation in star clusters',
         'Gravitational microlensing by stellar objects'
     ],
-    
+
     module_config: {
         self_expanding: true,
         dynamic_terms: [
@@ -16173,7 +16173,7 @@ PREDEFINED_SYSTEMS.CRAB_RESONANCE = {
 PREDEFINED_SYSTEMS.SOURCE4_UNIFIED_FIELD = {
     moduleClass: UQFFModule4JS,
     description: 'Source4 Unified Field Theory with self-expanding 2.0 framework - FU, MUGE, quasar jets',
-    parameters: { 
+    parameters: {
         mass: 1e30,                    // kg (default stellar mass)
         radius: 1e6,                   // m (default stellar radius)
         temperature: 1e6,              // K (default stellar temperature)
@@ -16346,3 +16346,7 @@ PREDEFINED_SYSTEMS.UG3_DISK_VECTOR = {
     applications: ['disk_geometry', 'jet_collimation', 'magnetic_string_orientation', 'galactic_plane']
 };
 
+// Export PREDEFINED_SYSTEMS for external use
+module.exports.PREDEFINED_SYSTEMS = PREDEFINED_SYSTEMS;
+module.exports.CONSTANTS = CONSTANTS;
+module.exports.COUPLING = COUPLING;
