@@ -1,0 +1,5 @@
+C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/Source134.dir
+C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/MAIN_1.dir
+C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/INSTALL.dir
+C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/ALL_BUILD.dir
+C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/ZERO_CHECK.dir
