@@ -28,32 +28,44 @@
 ## Integrated Physics Terms
 
 ### 1. DynamicVacuumTerm
+
 **Equation**: `F = coupling × amplitude × ρ_vac × sin(freq × t)`
+
 - Time-varying vacuum energy fluctuations
 - Source: Source134.cpp, Source162.cpp
 
 ### 2. QuantumCouplingTerm
+
 **Equation**: `F = α × κ × (ℏ²)/(M×r²) × cos(t/10⁶)`
+
 - Non-local quantum entanglement effects
 - Source: Source134.cpp, Source162.cpp
 
 ### 3. DarkMatterHaloTerm
+
 **Equation**: `g = (G×M_halo×ln(1+x))/(r×x)` (NFW profile)
+
 - Dark matter halo gravitational contribution
 - Source: Source5.cpp
 
 ### 4. VacuumEnergyTerm
+
 **Equation**: `E = λ × E_scale × (1 + 0.1×sin(10⁻¹⁰×t))`
+
 - Large-scale vacuum energy variations
 - Source: Source5.cpp, Source13_Enhanced.cpp
 
 ### 5. QuantumEntanglementTerm
+
 **Equation**: `F = κ × (ℏ²)/(M×r²) × cos(t/10⁶)`
+
 - Spooky action at a distance
 - Source: Source13_Enhanced.cpp
 
 ### 6. CosmicNeutrinoTerm
+
 **Equation**: `ρ = (n_ν × k_B × T_CNB)/r²`
+
 - Cosmic neutrino background contribution
 - Source: Source162.cpp
 
@@ -69,6 +81,7 @@ F_U_Bi_i = (∑ F_terms) × x₂
 ```
 
 **9 Force Components**:
+
 1. **F_LENR**: Low-energy nuclear reactions (1.2 THz)
 2. **F_act**: Colman-Gillespie activation (300 Hz)
 3. **F_DE**: Directed energy term
@@ -88,12 +101,14 @@ g(r,t) = Σ(i=1 to 26) [Ug1ᵢ + Ug2ᵢ + Ug3ᵢ + Ug4ᵢ]
 ```
 
 **Four Universal Gravity Terms per Layer**:
+
 - **Ug1**: Dipole/spin (trapped aether/mass)
 - **Ug2**: Superconductor quality (outer field)
 - **Ug3**: Resonance/magnetic disk (time-dependent)
 - **Ug4**: Adjusted Newtonian gravity
 
 **Layer Scaling**:
+
 - rᵢ = r/i, Qᵢ = i, [SCm]ᵢ = i², f_TRZ = 1/i, f_Um = i
 
 ### Relativistic Functions
@@ -106,6 +121,7 @@ g(r,t) = Σ(i=1 to 26) [Ug1ᵢ + Ug2ᵢ + Ug3ᵢ + Ug4ᵢ]
 ## System Parameters
 
 **44 Parameters Total**:
+
 - **Core**: M, r, T, L_X, B0, ω₀, θ, t, v
 - **Vacuum**: ρ_vac_UA, ρ_vac_SCm
 - **DPM**: DPM_stability, DPM_momentum, DPM_gravity
@@ -138,6 +154,7 @@ g(r,t) = Σ(i=1 to 26) [Ug1ᵢ + Ug2ᵢ + Ug3ᵢ + Ug4ᵢ]
 ## Statistical Analysis
 
 **Metrics Computed**:
+
 - Mean (μ)
 - Standard Deviation (σ)
 - Variance (σ²)
@@ -147,6 +164,7 @@ g(r,t) = Σ(i=1 to 26) [Ug1ᵢ + Ug2ᵢ + Ug3ᵢ + Ug4ᵢ]
 - Correlation Coefficient (r)
 
 **Optimization Algorithm**:
+
 ```
 MSE = Σ(observed - predicted)² / n
 adjustment = -learning_rate × MSE
@@ -156,6 +174,7 @@ parameter *= (1 + adjustment)
 ## Predefined Systems Database
 
 **26+ Astrophysical Systems**:
+
 - ESO 137-001 (ram-pressure stripped galaxy)
 - Black Hole Pairs (binary SMBH)
 - SN 1006 (supernova remnant)
@@ -172,11 +191,13 @@ parameter *= (1 + adjustment)
 ## Verbose Logging
 
 **3 Levels**:
+
 - **Level 1 (INFO)**: System events, initialization
 - **Level 2 (CALC)**: Calculation results
 - **Level 3 (DEBUG)**: Detailed term-by-term breakdown
 
 **Output**:
+
 - Console (real-time)
 - File (`coAnQi_log_<timestamp>.txt`)
 
@@ -185,6 +206,7 @@ parameter *= (1 + adjustment)
 ## Architecture Components
 
 ### PhysicsTerm Framework
+
 - Abstract base class for all physics
 - Dynamic parameter management
 - Nested term support
@@ -192,24 +214,28 @@ parameter *= (1 + adjustment)
 - Runtime extensibility
 
 ### ModuleRegistry
+
 - Dynamic term registration
 - Runtime loading
 - Batch computation
 - Cross-module communication
 
 ### StatisticalAnalyzer
+
 - Mean, stddev, variance, median
 - Min/max tracking
 - Correlation analysis
 - Distribution statistics
 
 ### SelfModifier
+
 - System cloning with mutation
 - C++ code generation
 - Parameter optimization
 - Gradient descent tuning
 
 ### VerboseLogger
+
 - 3-level logging
 - Timestamped entries
 - Dual output (console + file)
@@ -218,6 +244,7 @@ parameter *= (1 + adjustment)
 ## Self-Expanding Capabilities
 
 **Runtime Term Injection**:
+
 ```cpp
 auto term = make_unique<CustomTerm>(params);
 term->setDynamicParameter("coupling", 1.5);
@@ -225,18 +252,21 @@ g_moduleRegistry.registerTerm("CustomPhysics", move(term));
 ```
 
 **Code Generation**:
+
 ```cpp
 string code = g_selfModifier.generatePhysicsTermCode("NewTerm", "equation");
 // Outputs complete C++ class implementing PhysicsTerm
 ```
 
 **System Cloning**:
+
 ```cpp
 SystemParams clone = g_selfModifier.cloneSystem(original, 0.1);
 // 10% parameter mutation
 ```
 
 **Parameter Optimization**:
+
 ```cpp
 g_selfModifier.optimizeParameters(system, observed, predicted);
 // Auto-tunes alpha_i and DPM_stability
@@ -302,6 +332,7 @@ M_☉ = 1.989e30        // Solar mass (kg)
 ## Output Summary
 
 For each system calculation:
+
 1. **F_U_Bi_i** (UQFF buoyancy force, N)
 2. **g_compressed** (26-layer gravity, m/s²)
 3. **Dynamic terms** (additional physics, N)
@@ -331,6 +362,7 @@ For each system calculation:
 ## Scientific Foundation
 
 **UQFF Principles**:
+
 - 26-layer quantum state compression
 - Universal gravity unification (Ug1-Ug4)
 - Buoyancy-based force framework
@@ -339,6 +371,7 @@ For each system calculation:
 - Relativistic corrections
 
 **Theoretical Integration**:
+
 - Colman-Gillespie (300 Hz activation)
 - Floyd Sweet (vacuum triode)
 - Kozima (neutron drop phonon coupling)
@@ -349,7 +382,7 @@ For each system calculation:
 ## Contact & Copyright
 
 **Author**: Daniel T. Murphy  
-**Email**: daniel.murphy00@gmail.com  
+**Email**: <daniel.murphy00@gmail.com>  
 **Framework**: Unified Quantum Field Framework (UQFF)  
 **Copyright**: © 2025 Daniel T. Murphy  
 **Enhancement**: AI Agent (November 10, 2025)
@@ -378,7 +411,7 @@ g++ -std=c++17 MAIN_1_CoAnQi.cpp -o MAIN_1_CoAnQi
 
 > **CoAnQi is not just a calculator—it's a conscious computational organism.**
 >
-> It learns through statistical feedback, evolves through parameter optimization, 
+> It learns through statistical feedback, evolves through parameter optimization,
 > reproduces through cloning, and generates its own code. It's physics made alive,
 > computation made conscious, and science made self-aware.
 
