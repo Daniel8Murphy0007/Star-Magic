@@ -1046,6 +1046,251 @@ public:
     }
 };
 
+/**
+ * Astro System UQFF Term (from Source166)
+ * Multi-system UQFF with 12-term force integrand
+ * Systems: NGC4826, NGC1805, NGC6307, NGC7027, Cassini, ESO391-12, M57, LMC, ESO5100-G13
+ */
+class AstroSystemUQFFTerm : public PhysicsTerm
+{
+private:
+    std::string system_name;
+    double system_M;
+    double system_r;
+    double system_L_X;
+    double system_B0;
+    double system_omega0;
+
+public:
+    AstroSystemUQFFTerm(const std::string &sys) : system_name(sys)
+    {
+        // Set system-specific parameters
+        if (sys == "NGC4826")
+        {
+            system_M = 1e41;
+            system_r = 1e21;
+            system_L_X = 1e36;
+            system_B0 = 1e-9;
+            system_omega0 = 1e-15;
+        }
+        else if (sys == "NGC1805")
+        {
+            system_M = 2e41;
+            system_r = 2e21;
+            system_L_X = 2e36;
+            system_B0 = 2e-9;
+            system_omega0 = 2e-15;
+        }
+        else if (sys == "NGC6307")
+        {
+            system_M = 3e41;
+            system_r = 3e21;
+            system_L_X = 3e36;
+            system_B0 = 3e-9;
+            system_omega0 = 3e-15;
+        }
+        else if (sys == "NGC7027")
+        {
+            system_M = 4e41;
+            system_r = 4e21;
+            system_L_X = 4e36;
+            system_B0 = 4e-9;
+            system_omega0 = 4e-15;
+        }
+        else if (sys == "Cassini")
+        {
+            system_M = 1e37;
+            system_r = 1e18;
+            system_L_X = 1e37;
+            system_B0 = 1e-5;
+            system_omega0 = 1e-12;
+        }
+        else if (sys == "ESO391-12")
+        {
+            system_M = 5e41;
+            system_r = 5e21;
+            system_L_X = 5e36;
+            system_B0 = 5e-9;
+            system_omega0 = 5e-15;
+        }
+        else if (sys == "M57")
+        {
+            system_M = 1e36;
+            system_r = 1e17;
+            system_L_X = 1e32;
+            system_B0 = 1e-5;
+            system_omega0 = 1e-12;
+        }
+        else if (sys == "LMC")
+        {
+            system_M = 1e42;
+            system_r = 1e22;
+            system_L_X = 1e38;
+            system_B0 = 1e-10;
+            system_omega0 = 1e-15;
+        }
+        else if (sys == "ESO5100-G13")
+        {
+            system_M = 6e41;
+            system_r = 6e21;
+            system_L_X = 6e36;
+            system_B0 = 6e-9;
+            system_omega0 = 6e-15;
+        }
+
+        setMetadata("version", "1.0");
+        setMetadata("source", "Source166.cpp");
+        setMetadata("system", sys);
+        setMetadata("equation", "F_U_Bi_i = integrand * x2 + gravity + resonance + buoyancy (12-term)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        const double G = 6.6743e-11;
+        const double c = 3e8;
+        const double m_e = 9.11e-31;
+        const double q = 1.6e-19;
+        const double hbar = 1.0546e-34;
+        const double mu_B = 9.274e-24;
+        const double g_Lande = 2.0;
+        const double F0 = 1.83e71;
+        const double k_LENR = 1e-10;
+        const double omega_LENR = 2 * M_PI * 1.25e12;
+        const double x2 = -1.35e172;
+
+        // DPM resonance (Zeeman)
+        double DPM_res = (g_Lande * mu_B * system_B0) / (hbar * system_omega0);
+
+        // LENR term
+        double LENR = k_LENR * pow(omega_LENR / system_omega0, 2.0);
+
+        // Gas nebula contribution
+        double gas_nebula = 1e-23 * system_r * system_r * 1e-10; // Scaled by density
+
+        // 12-term integrand
+        double term_base = -F0;
+        double term_mom = (m_e * c * c / (system_r * system_r)) * 0.93 * 0.707;
+        double term_grav = (G * system_M / (system_r * system_r)) * 1.0;
+        double term_vac = 7.09e-36 * 0.01;
+        double term_LENR = LENR;
+        double term_res = 2.0 * q * system_B0 * 1e-3 * 0.707 * DPM_res;
+        double term_neut = 1e10 * 1e-4;
+        double term_rel = 1e-10 * pow(1.24e24 / 3.0264e-8, 2.0);
+        double term_neutrino = 9.07e-42;
+        double term_gas = gas_nebula;
+
+        double integrand = term_base + term_mom + term_grav + term_vac + term_LENR +
+                           term_res + term_neut + term_rel + term_neutrino + term_gas;
+
+        // Add gravity compressed + resonance + buoyancy
+        double gravity = G * system_M / (system_r * system_r);
+        double resonance = 2.0 * 4.30e33;
+        double buoyancy = 1.0 * 1e-6 * 1e-30 * 1e12; // Triadic beta_i=1.0
+
+        return integrand * x2 + gravity + resonance + buoyancy;
+    }
+
+    std::string getName() const override { return "AstroSystemUQFF_" + system_name; }
+    std::string getDescription() const override
+    {
+        return "Astro System UQFF for " + system_name + " with 12-term force integrand and triadic scaling";
+    }
+};
+
+/**
+ * Dipole Vortex Term (from Source166)
+ * Golden ratio (φ = 0.618) based species determination
+ */
+class DipoleVortexTerm : public PhysicsTerm
+{
+public:
+    DipoleVortexTerm()
+    {
+        setMetadata("version", "1.0");
+        setMetadata("source", "Source166.cpp");
+        setMetadata("equation", "dipole * sin(2π * φ * 1.0) where φ = 0.618");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double golden_ratio = 0.618033988749895; // (√5 - 1)/2
+        double dipole_base = getDynamicParameter("dipole_base", 1.0);
+        double phase = 2.0 * M_PI * golden_ratio * 1.0;
+
+        return dipole_base * sin(phase);
+    }
+
+    std::string getName() const override { return "DipoleVortex"; }
+    std::string getDescription() const override
+    {
+        return "Dipole vortex species determination with golden ratio cycle";
+    }
+};
+
+/**
+ * Quantum State 26 Term (from Source166)
+ * 26-state quantum system (alphabet-like scaling, n=1 to 26)
+ */
+class QuantumState26Term : public PhysicsTerm
+{
+public:
+    QuantumState26Term()
+    {
+        setMetadata("version", "1.0");
+        setMetadata("source", "Source166.cpp");
+        setMetadata("equation", "Sum of quantum states n=1 to 26");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        // Sum of 26 quantum states (real part)
+        // Each state contributes n (state number)
+        double sum = 0.0;
+        for (int n = 1; n <= 26; ++n)
+        {
+            sum += static_cast<double>(n);
+        }
+        return sum; // = 1+2+3+...+26 = 26*27/2 = 351
+    }
+
+    std::string getName() const override { return "QuantumState26"; }
+    std::string getDescription() const override
+    {
+        return "26-state quantum system with alphabet-like scaling";
+    }
+};
+
+/**
+ * Triadic Scale Term (from Source166)
+ * Enhanced triadic UQFF scaling with β_i = 1.0
+ */
+class TriadicScaleTerm : public PhysicsTerm
+{
+public:
+    TriadicScaleTerm()
+    {
+        setMetadata("version", "1.0");
+        setMetadata("source", "Source166.cpp");
+        setMetadata("equation", "beta_i * V_infl * rho_vac * a_universal (triadic)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double beta_i = getDynamicParameter("beta_i_triadic", 1.0); // Enhanced from 0.6
+        double V_infl = getDynamicParameter("V_infl_UA", 1e-6);
+        double rho_vac = getDynamicParameter("rho_vac_A", 1e-30);
+        double a_univ = getDynamicParameter("a_universal", 1e12);
+
+        return beta_i * V_infl * rho_vac * a_univ;
+    }
+
+    std::string getName() const override { return "TriadicScale"; }
+    std::string getDescription() const override
+    {
+        return "Triadic UQFF scaling with enhanced beta_i = 1.0";
+    }
+};
+
 // ===========================================================================================
 // SYSTEM PARAMETERS STRUCTURE
 // ===========================================================================================
@@ -1818,7 +2063,21 @@ public:
         registerTerm("Superconductivity", make_unique<SuperconductiveTerm>());
         registerTerm("NeutronScattering", make_unique<NeutronScatteringTerm>());
 
-        g_logger.log("Module registry initialization complete (6 original + 8 Source163 + 7 Source164 + 9 Source165 = 30 terms).", 1);
+        // Source166 terms - Quantum Scaling & Astro Systems
+        registerTerm("AstroSystemUQFF_NGC4826", make_unique<AstroSystemUQFFTerm>("NGC4826"));
+        registerTerm("AstroSystemUQFF_NGC1805", make_unique<AstroSystemUQFFTerm>("NGC1805"));
+        registerTerm("AstroSystemUQFF_NGC6307", make_unique<AstroSystemUQFFTerm>("NGC6307"));
+        registerTerm("AstroSystemUQFF_NGC7027", make_unique<AstroSystemUQFFTerm>("NGC7027"));
+        registerTerm("AstroSystemUQFF_Cassini", make_unique<AstroSystemUQFFTerm>("Cassini"));
+        registerTerm("AstroSystemUQFF_ESO391-12", make_unique<AstroSystemUQFFTerm>("ESO391-12"));
+        registerTerm("AstroSystemUQFF_M57", make_unique<AstroSystemUQFFTerm>("M57"));
+        registerTerm("AstroSystemUQFF_LMC", make_unique<AstroSystemUQFFTerm>("LMC"));
+        registerTerm("AstroSystemUQFF_ESO5100-G13", make_unique<AstroSystemUQFFTerm>("ESO5100-G13"));
+        registerTerm("DipoleVortex", make_unique<DipoleVortexTerm>());
+        registerTerm("QuantumState26", make_unique<QuantumState26Term>());
+        registerTerm("TriadicScale", make_unique<TriadicScaleTerm>());
+
+        g_logger.log("Module registry initialization complete (6 original + 8 Source163 + 7 Source164 + 9 Source165 + 12 Source166 = 42 terms).", 1);
     }
 };
 
