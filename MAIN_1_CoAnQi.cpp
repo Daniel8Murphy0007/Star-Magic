@@ -634,6 +634,207 @@ public:
     }
 };
 
+/**
+ * Nebula UQFF Term (from Source164)
+ * Multi-nebula system UQFF with gas nebula integration
+ */
+class NebulaUQFFTerm : public PhysicsTerm
+{
+private:
+    std::string system_name;
+    double system_M;
+    double system_r;
+    double system_L_X;
+    double system_T;
+    double rho_gas;
+
+public:
+    NebulaUQFFTerm(const std::string &system = "NGC3596")
+        : system_name(system)
+    {
+        setMetadata("version", "1.0");
+        setMetadata("source", "Source164.cpp");
+        setMetadata("systems", "NGC3596, NGC1961, NGC5335, NGC2014, NGC2020");
+
+        setSystemParams(system);
+    }
+
+    void setSystemParams(const std::string &system)
+    {
+        system_name = system;
+        if (system == "NGC3596")
+        {
+            system_M = 1e41;
+            system_r = 1e21;
+            system_L_X = 1e36;
+            system_T = 1e7;
+            rho_gas = 1e-23;
+        }
+        else if (system == "NGC1961")
+        {
+            system_M = 2e41;
+            system_r = 2e21;
+            system_L_X = 2e36;
+            system_T = 2e7;
+            rho_gas = 2e-23;
+        }
+        else if (system == "NGC5335")
+        {
+            system_M = 3e41;
+            system_r = 3e21;
+            system_L_X = 3e36;
+            system_T = 3e7;
+            rho_gas = 3e-23;
+        }
+        else if (system == "NGC2014")
+        {
+            system_M = 4e41;
+            system_r = 4e21;
+            system_L_X = 4e36;
+            system_T = 4e7;
+            rho_gas = 4e-23;
+        }
+        else if (system == "NGC2020")
+        {
+            system_M = 5e41;
+            system_r = 5e21;
+            system_L_X = 5e36;
+            system_T = 5e7;
+            rho_gas = 5e-23;
+        }
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double G = 6.6743e-11;
+
+        // Gravity compressed
+        double gravity = G * system_M / (system_r * system_r);
+
+        // Gas nebula integration (from Source164)
+        double k_B = 1.380649e-23;
+        double m_p = 1.6726e-27;
+        double c = 3e8;
+        double ionization = getDynamicParameter("ionization_fraction", 0.5);
+        double v_exp = getDynamicParameter("expansion_velocity", 20000.0);
+
+        // Thermal pressure
+        double P_thermal = rho_gas * k_B * system_T / m_p;
+
+        // Radiation pressure
+        double P_rad = system_L_X / (4.0 * M_PI * system_r * system_r * c);
+
+        // Expansion force
+        double F_expansion = 4.0 * M_PI * system_r * system_r * rho_gas * v_exp * v_exp;
+
+        // Ionization contribution
+        double F_ionization = ionization * P_thermal * 4.0 * M_PI * system_r * system_r;
+
+        // Combined nebula force
+        double gas_nebula = F_expansion + F_ionization + P_rad * system_r * system_r;
+
+        return gravity + gas_nebula;
+    }
+
+    std::string getName() const override { return "NebulaUQFF"; }
+    std::string getDescription() const override
+    {
+        return "Nebula UQFF with gas expansion, ionization, and radiation pressure";
+    }
+};
+
+/**
+ * Gas Ionization Term (from Source164)
+ * Ionization fraction and rate for nebulae
+ */
+class GasIonizationTerm : public PhysicsTerm
+{
+private:
+    double L_X;
+    double r_nebula;
+    double rho_gas;
+
+public:
+    GasIonizationTerm(double L = 1e36, double r = 1e21, double rho = 1e-23)
+        : L_X(L), r_nebula(r), rho_gas(rho)
+    {
+        setMetadata("version", "1.0");
+        setMetadata("source", "Source164.cpp");
+        setMetadata("equation", "ion_frac = ionization_rate / (n_gas * V)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double q_val = 1.6e-19;
+        double m_p = 1.6726e-27;
+
+        // Ionization energy (Hydrogen)
+        double photon_energy = 13.6 * q_val;
+
+        // Ionization rate (photons/s)
+        double ionization_rate = getDynamicParameter("L_X", L_X) / photon_energy;
+
+        // Number density
+        double n_gas = getDynamicParameter("rho_gas", rho_gas) / m_p;
+
+        // Volume
+        double V = (4.0 / 3.0) * M_PI * r_nebula * r_nebula * r_nebula;
+
+        // Ionization fraction
+        double ion_frac = std::min(1.0, ionization_rate / (n_gas * V));
+
+        return ion_frac * 1e40; // Scale for contribution
+    }
+
+    std::string getName() const override { return "GasIonization"; }
+    std::string getDescription() const override
+    {
+        return "Gas ionization fraction (Stromgren sphere model)";
+    }
+};
+
+/**
+ * Nebula Expansion Term (from Source164)
+ * Time-dependent expansion with density evolution
+ */
+class NebulaExpansionTerm : public PhysicsTerm
+{
+private:
+    double r0;
+    double v_expansion;
+
+public:
+    NebulaExpansionTerm(double r_init = 1e21, double v_exp = 20000.0)
+        : r0(r_init), v_expansion(v_exp)
+    {
+        setMetadata("version", "1.0");
+        setMetadata("source", "Source164.cpp");
+        setMetadata("equation", "r(t) = r0 * (1 + v_exp * t / r0)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double r_initial = getDynamicParameter("r0", r0);
+        double v_exp = getDynamicParameter("v_expansion", v_expansion);
+        double t0 = getDynamicParameter("t0", 1e16);
+
+        // Hubble-like expansion
+        double r_t = r_initial * (1.0 + v_exp * (t - t0) / r_initial);
+
+        // Expansion energy
+        double M = getDynamicParameter("M", 1e41);
+        double E_expansion = 0.5 * M * v_exp * v_exp;
+
+        return E_expansion / r_t; // Energy density
+    }
+
+    std::string getName() const override { return "NebulaExpansion"; }
+    std::string getDescription() const override
+    {
+        return "Nebula expansion with time-dependent radius and density";
+    }
+};
+
 // ===========================================================================================
 // SYSTEM PARAMETERS STRUCTURE
 // ===========================================================================================
@@ -1377,7 +1578,7 @@ public:
         registerTerm("QuantumEntanglement", make_unique<QuantumEntanglementTerm>());
         registerTerm("CosmicNeutrino", make_unique<CosmicNeutrinoTerm>());
 
-        // New Source163 terms - Multi-System UQFF
+        // Source163 terms - Multi-System UQFF
         registerTerm("MultiSystemUQFF_NGC685", make_unique<MultiSystemUQFFTerm>("NGC685"));
         registerTerm("MultiSystemUQFF_NGC3507", make_unique<MultiSystemUQFFTerm>("NGC3507"));
         registerTerm("MultiSystemUQFF_NGC3511", make_unique<MultiSystemUQFFTerm>("NGC3511"));
@@ -1387,7 +1588,16 @@ public:
         registerTerm("SMBHAccretion", make_unique<SMBHAccretionTerm>());
         registerTerm("TDE", make_unique<TDETerm>());
 
-        g_logger.log("Module registry initialization complete (12 original + 8 Source163 terms).", 1);
+        // Source164 terms - Nebula UQFF
+        registerTerm("NebulaUQFF_NGC3596", make_unique<NebulaUQFFTerm>("NGC3596"));
+        registerTerm("NebulaUQFF_NGC1961", make_unique<NebulaUQFFTerm>("NGC1961"));
+        registerTerm("NebulaUQFF_NGC5335", make_unique<NebulaUQFFTerm>("NGC5335"));
+        registerTerm("NebulaUQFF_NGC2014", make_unique<NebulaUQFFTerm>("NGC2014"));
+        registerTerm("NebulaUQFF_NGC2020", make_unique<NebulaUQFFTerm>("NGC2020"));
+        registerTerm("GasIonization", make_unique<GasIonizationTerm>());
+        registerTerm("NebulaExpansion", make_unique<NebulaExpansionTerm>());
+
+        g_logger.log("Module registry initialization complete (6 original + 8 Source163 + 7 Source164 = 21 terms).", 1);
     }
 };
 
