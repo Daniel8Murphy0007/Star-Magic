@@ -373,6 +373,267 @@ public:
     }
 };
 
+/**
+ * Multi-System UQFF Term (from Source163)
+ * Handles NGC685, NGC3507, NGC3511, AT2024tvd calculations
+ */
+class MultiSystemUQFFTerm : public PhysicsTerm
+{
+private:
+    std::string system_name;
+    double system_M;
+    double system_r;
+    double system_L_X;
+    double system_B0;
+    double system_omega0;
+
+public:
+    MultiSystemUQFFTerm(const std::string &system = "NGC685")
+        : system_name(system)
+    {
+        setMetadata("version", "1.0");
+        setMetadata("source", "Source163.cpp");
+        setMetadata("systems", "NGC685, NGC3507, NGC3511, AT2024tvd");
+
+        // Set system defaults
+        setSystemParams(system);
+    }
+
+    void setSystemParams(const std::string &system)
+    {
+        system_name = system;
+        if (system == "NGC685")
+        {
+            system_M = 1e41;
+            system_r = 1e21;
+            system_L_X = 1e36;
+            system_B0 = 1e-9;
+            system_omega0 = 1e-15;
+        }
+        else if (system == "NGC3507")
+        {
+            system_M = 2e41;
+            system_r = 2e21;
+            system_L_X = 2e36;
+            system_B0 = 2e-9;
+            system_omega0 = 2e-15;
+        }
+        else if (system == "NGC3511")
+        {
+            system_M = 3e41;
+            system_r = 3e21;
+            system_L_X = 3e36;
+            system_B0 = 3e-9;
+            system_omega0 = 3e-15;
+        }
+        else if (system == "AT2024tvd")
+        {
+            system_M = 1e37;
+            system_r = 1e18;
+            system_L_X = 1e37;
+            system_B0 = 1e-5;
+            system_omega0 = 1e-12;
+        }
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double G = 6.6743e-11;
+        double c = 3e8;
+        double m_e = 9.11e-31;
+        double q = 1.6e-19;
+        double V = 1e-3;
+        double theta = M_PI / 4.0;
+
+        // DPM coefficients
+        double DPM_momentum = getDynamicParameter("DPM_momentum", 0.93);
+        double DPM_gravity = getDynamicParameter("DPM_gravity", 1.0);
+        double DPM_stability = getDynamicParameter("DPM_stability", 0.01);
+
+        // LENR term (dominant)
+        double k_LENR = 1e-10;
+        double omega_LENR = 2 * M_PI * 1.25e12;
+        double LENR_term = k_LENR * pow(omega_LENR / system_omega0, 2.0);
+
+        // Core terms
+        double term_mom = (m_e * c * c / (system_r * system_r)) * DPM_momentum * cos(theta);
+        double term_grav = (G * system_M / (system_r * system_r)) * DPM_gravity;
+        double term_vac = 7.09e-36 * DPM_stability;
+
+        // Resonance term
+        double g_Lande = 2.0;
+        double mu_B = 9.274e-24;
+        double hbar = 1.0546e-34;
+        double DPM_resonance = (g_Lande * mu_B * system_B0) / (hbar * system_omega0);
+        double term_res = 2.0 * q * system_B0 * V * sin(theta) * DPM_resonance;
+
+        // Gravity compressed
+        double gravity_compressed = G * system_M / (system_r * system_r);
+
+        // Buoyancy
+        double beta_i = getDynamicParameter("beta_i", 1.0);
+        double V_infl = getDynamicParameter("V_infl", 1e-6);
+        double rho_vac_A = getDynamicParameter("rho_vac_A", 1e-30);
+        double a_universal = getDynamicParameter("a_universal", 1e12);
+        double buoyancy = beta_i * V_infl * rho_vac_A * a_universal;
+
+        // Resonance U_r
+        double F_rel = getDynamicParameter("F_rel", 4.30e33);
+        double resonance = 2.0 * F_rel; // U_dp + U_r = 1 + 1
+
+        // Scale by x2 (quadratic root approximation)
+        double x2 = getDynamicParameter("x2", -1.35e172);
+
+        return (term_mom + term_grav + term_vac + LENR_term + term_res) * x2 + gravity_compressed + resonance + buoyancy;
+    }
+
+    std::string getName() const override { return "MultiSystemUQFF"; }
+    std::string getDescription() const override
+    {
+        return "Multi-system UQFF (NGC685/3507/3511/AT2024tvd) with DPM resonance, LENR, gravity compressed";
+    }
+};
+
+/**
+ * DPM Resonance Term (from Source163)
+ * Quantum magnetic resonance for DPM stability
+ */
+class DPMResonanceTerm : public PhysicsTerm
+{
+private:
+    double g_Lande;
+    double mu_B;
+    double B0;
+    double omega0;
+
+public:
+    DPMResonanceTerm(double B = 1e-9, double omega = 1e-15)
+        : g_Lande(2.0), mu_B(9.274e-24), B0(B), omega0(omega)
+    {
+        setMetadata("version", "1.0");
+        setMetadata("source", "Source163.cpp");
+        setMetadata("equation", "DPM_resonance = (g * mu_B * B0) / (hbar * omega0)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double hbar = 1.0546e-34;
+        double B = getDynamicParameter("B0", B0);
+        double omega = getDynamicParameter("omega0", omega0);
+        return (g_Lande * mu_B * B) / (hbar * omega);
+    }
+
+    std::string getName() const override { return "DPMResonance"; }
+    std::string getDescription() const override
+    {
+        return "DPM quantum magnetic resonance (Lande factor based)";
+    }
+};
+
+/**
+ * LENR Extended Term (from Source163)
+ * Low-Energy Nuclear Reactions with frequency scaling
+ */
+class LENRExtendedTerm : public PhysicsTerm
+{
+private:
+    double k_LENR;
+    double omega_LENR;
+    double omega0;
+
+public:
+    LENRExtendedTerm(double k = 1e-10, double omega_L = 2 * M_PI * 1.25e12, double omega_0 = 1e-15)
+        : k_LENR(k), omega_LENR(omega_L), omega0(omega_0)
+    {
+        setMetadata("version", "1.0");
+        setMetadata("source", "Source163.cpp");
+        setMetadata("equation", "F_LENR = k * (omega_LENR / omega0)^2");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double k = getDynamicParameter("k_LENR", k_LENR);
+        double omega_L = getDynamicParameter("omega_LENR", omega_LENR);
+        double omega_0 = getDynamicParameter("omega0", omega0);
+        return k * pow(omega_L / omega_0, 2.0);
+    }
+
+    std::string getName() const override { return "LENRExtended"; }
+    std::string getDescription() const override
+    {
+        return "Extended LENR with frequency ratio squared scaling";
+    }
+};
+
+/**
+ * SMBH Accretion Term (from Source163)
+ * Supermassive Black Hole accretion luminosity
+ */
+class SMBHAccretionTerm : public PhysicsTerm
+{
+private:
+    double M_bh;
+    double eta;
+
+public:
+    SMBHAccretionTerm(double M = 1e41, double efficiency = 0.1)
+        : M_bh(M), eta(efficiency)
+    {
+        setMetadata("version", "1.0");
+        setMetadata("source", "Source163.cpp");
+        setMetadata("equation", "L_acc = eta * M_dot * c^2");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double M = getDynamicParameter("M", M_bh);
+        double t_scale = getDynamicParameter("t", 1e16);
+        double c = 3e8;
+        double M_dot = 0.1 * M / t_scale; // Accretion rate
+        return eta * M_dot * c * c;
+    }
+
+    std::string getName() const override { return "SMBHAccretion"; }
+    std::string getDescription() const override
+    {
+        return "SMBH accretion disk luminosity (radiative efficiency model)";
+    }
+};
+
+/**
+ * Tidal Disruption Event Term (from Source163)
+ * TDE lightcurve with t^(-5/3) decay
+ */
+class TDETerm : public PhysicsTerm
+{
+private:
+    double L_peak;
+    double t_peak;
+
+public:
+    TDETerm(double L = 1e37, double t_p = 1e6)
+        : L_peak(L), t_peak(t_p)
+    {
+        setMetadata("version", "1.0");
+        setMetadata("source", "Source163.cpp - AT2024tvd");
+        setMetadata("equation", "L_TDE = L_peak * exp(-|dt|/0.3) * (1 + |dt|)^(-5/3)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double L = getDynamicParameter("L_peak", L_peak);
+        double t_p = getDynamicParameter("t_peak", t_peak);
+        double dt_norm = (t - t_p) / t_p;
+        return L * exp(-fabs(dt_norm) / 0.3) * pow(1.0 + fabs(dt_norm), -5.0 / 3.0);
+    }
+
+    std::string getName() const override { return "TDE"; }
+    std::string getDescription() const override
+    {
+        return "Tidal Disruption Event with exponential + power-law decay";
+    }
+};
+
 // ===========================================================================================
 // SYSTEM PARAMETERS STRUCTURE
 // ===========================================================================================
@@ -1108,6 +1369,7 @@ public:
     {
         g_logger.log("Initializing all module physics terms...", 1);
 
+        // Original CoAnQi terms
         registerTerm("DynamicVacuum", make_unique<DynamicVacuumTerm>());
         registerTerm("QuantumCoupling", make_unique<QuantumCouplingTerm>());
         registerTerm("DarkMatterHalo", make_unique<DarkMatterHaloTerm>());
@@ -1115,7 +1377,17 @@ public:
         registerTerm("QuantumEntanglement", make_unique<QuantumEntanglementTerm>());
         registerTerm("CosmicNeutrino", make_unique<CosmicNeutrinoTerm>());
 
-        g_logger.log("Module registry initialization complete.", 1);
+        // New Source163 terms - Multi-System UQFF
+        registerTerm("MultiSystemUQFF_NGC685", make_unique<MultiSystemUQFFTerm>("NGC685"));
+        registerTerm("MultiSystemUQFF_NGC3507", make_unique<MultiSystemUQFFTerm>("NGC3507"));
+        registerTerm("MultiSystemUQFF_NGC3511", make_unique<MultiSystemUQFFTerm>("NGC3511"));
+        registerTerm("MultiSystemUQFF_AT2024tvd", make_unique<MultiSystemUQFFTerm>("AT2024tvd"));
+        registerTerm("DPMResonance", make_unique<DPMResonanceTerm>());
+        registerTerm("LENRExtended", make_unique<LENRExtendedTerm>());
+        registerTerm("SMBHAccretion", make_unique<SMBHAccretionTerm>());
+        registerTerm("TDE", make_unique<TDETerm>());
+
+        g_logger.log("Module registry initialization complete (12 original + 8 Source163 terms).", 1);
     }
 };
 

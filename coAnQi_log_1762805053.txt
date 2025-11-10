@@ -1,0 +1,72 @@
+Mon Nov 10 15:04:13 2025 [INFO]  === CoAnQi Verbose Logger Initialized ===
+Mon Nov 10 15:04:13 2025 [INFO]  === CoAnQi UQFF Calculator Started ===
+Mon Nov 10 15:04:13 2025 [INFO]  Self-Expanding, Self-Updating, Self-Simulating Framework
+Mon Nov 10 15:04:13 2025 [INFO]  Loaded 11 predefined systems
+Mon Nov 10 15:04:13 2025 [INFO]  Initializing all module physics terms...
+Mon Nov 10 15:04:13 2025 [INFO]  Registered physics term: DynamicVacuum
+Mon Nov 10 15:04:13 2025 [INFO]  Registered physics term: QuantumCoupling
+Mon Nov 10 15:04:13 2025 [INFO]  Registered physics term: DarkMatterHalo
+Mon Nov 10 15:04:13 2025 [INFO]  Registered physics term: VacuumEnergy
+Mon Nov 10 15:04:13 2025 [INFO]  Registered physics term: QuantumEntanglement
+Mon Nov 10 15:04:13 2025 [INFO]  Registered physics term: CosmicNeutrino
+Mon Nov 10 15:04:13 2025 [INFO]  Registered physics term: MultiSystemUQFF_NGC685
+Mon Nov 10 15:04:13 2025 [INFO]  Registered physics term: MultiSystemUQFF_NGC3507
+Mon Nov 10 15:04:13 2025 [INFO]  Registered physics term: MultiSystemUQFF_NGC3511
+Mon Nov 10 15:04:13 2025 [INFO]  Registered physics term: MultiSystemUQFF_AT2024tvd
+Mon Nov 10 15:04:13 2025 [INFO]  Registered physics term: DPMResonance
+Mon Nov 10 15:04:13 2025 [INFO]  Registered physics term: LENRExtended
+Mon Nov 10 15:04:13 2025 [INFO]  Registered physics term: SMBHAccretion
+Mon Nov 10 15:04:13 2025 [INFO]  Registered physics term: TDE
+Mon Nov 10 15:04:13 2025 [INFO]  Module registry initialization complete (12 original + 8 Source163 terms).
+Mon Nov 10 15:04:47 2025 [INFO]  Computing ALL systems simultaneously...
+Mon Nov 10 15:04:47 2025 [CALC]  Computing F_U_Bi_i for system: ASASSN-14li
+Mon Nov 10 15:04:47 2025 [CALC]  [ASASSN-14li] F_U_Bi_i (FINAL) = 2.073600e+128
+Mon Nov 10 15:04:47 2025 [CALC]  Computing compressed_g for system: ASASSN-14li
+Mon Nov 10 15:04:47 2025 [CALC]  [ASASSN-14li] g_compressed (FINAL) = 1.651871e+009
+Mon Nov 10 15:04:47 2025 [CALC]  Computing F_U_Bi_i for system: Black Hole Pairs
+Mon Nov 10 15:04:47 2025 [CALC]  [Black Hole Pairs] F_U_Bi_i (FINAL) = 2.073600e+120
+Mon Nov 10 15:04:47 2025 [CALC]  Computing compressed_g for system: Black Hole Pairs
+Mon Nov 10 15:04:47 2025 [CALC]  [Black Hole Pairs] g_compressed (FINAL) = 1.651871e+012
+Mon Nov 10 15:04:47 2025 [CALC]  Computing F_U_Bi_i for system: ESO 137-001
+Mon Nov 10 15:04:47 2025 [CALC]  [ESO 137-001] F_U_Bi_i (FINAL) = 2.073600e+168
+Mon Nov 10 15:04:47 2025 [CALC]  Computing compressed_g for system: ESO 137-001
+Mon Nov 10 15:04:47 2025 [CALC]  [ESO 137-001] g_compressed (FINAL) = 1.730052e-008
+Mon Nov 10 15:04:47 2025 [CALC]  Computing F_U_Bi_i for system: El Gordo
+Mon Nov 10 15:04:47 2025 [CALC]  [El Gordo] F_U_Bi_i (FINAL) = 2.073600e+172
+Mon Nov 10 15:04:47 2025 [CALC]  Computing compressed_g for system: El Gordo
+Mon Nov 10 15:04:47 2025 [CALC]  [El Gordo] g_compressed (FINAL) = 3.460104e-007
+Mon Nov 10 15:04:47 2025 [CALC]  Computing F_U_Bi_i for system: Eta Carinae
+Mon Nov 10 15:04:47 2025 [CALC]  [Eta Carinae] F_U_Bi_i (FINAL) = 2.073600e+136
+Mon Nov 10 15:04:47 2025 [CALC]  Computing compressed_g for system: Eta Carinae
+Mon Nov 10 15:04:47 2025 [CALC]  [Eta Carinae] g_compressed (FINAL) = 1.651871e+003
+Mon Nov 10 15:04:47 2025 [CALC]  Computing F_U_Bi_i for system: Galactic Center
+Mon Nov 10 15:04:47 2025 [CALC]  [Galactic Center] F_U_Bi_i (FINAL) = 2.073600e+144
+Mon Nov 10 15:04:47 2025 [CALC]  Computing compressed_g for system: Galactic Center
+Mon Nov 10 15:04:47 2025 [CALC]  [Galactic Center] g_compressed (FINAL) = 4.588530e+011
+Mon Nov 10 15:04:47 2025 [CALC]  Computing F_U_Bi_i for system: Kepler's SNR
+Mon Nov 10 15:04:47 2025 [CALC]  [Kepler's SNR] F_U_Bi_i (FINAL) = 2.073600e+140
+Mon Nov 10 15:04:47 2025 [CALC]  Computing compressed_g for system: Kepler's SNR
+Mon Nov 10 15:04:47 2025 [CALC]  [Kepler's SNR] g_compressed (FINAL) = 1.689276e-008
+Mon Nov 10 15:04:47 2025 [CALC]  Computing F_U_Bi_i for system: Magnetar SGR 1745-2900
+Mon Nov 10 15:04:47 2025 [CALC]  [Magnetar SGR 1745-2900] F_U_Bi_i (FINAL) = 1.333173e+109
+Mon Nov 10 15:04:47 2025 [CALC]  Computing compressed_g for system: Magnetar SGR 1745-2900
+Mon Nov 10 15:04:47 2025 [CALC]  [Magnetar SGR 1745-2900] g_compressed (FINAL) = 2.312619e+017
+Mon Nov 10 15:04:47 2025 [CALC]  Computing F_U_Bi_i for system: NGC 1365
+Mon Nov 10 15:04:47 2025 [CALC]  [NGC 1365] F_U_Bi_i (FINAL) = 2.073600e+164
+Mon Nov 10 15:04:47 2025 [CALC]  Computing compressed_g for system: NGC 1365
+Mon Nov 10 15:04:47 2025 [CALC]  [NGC 1365] g_compressed (FINAL) = 4.339161e-009
+Mon Nov 10 15:04:47 2025 [CALC]  Computing F_U_Bi_i for system: SN 1006
+Mon Nov 10 15:04:47 2025 [CALC]  [SN 1006] F_U_Bi_i (FINAL) = 2.073600e+140
+Mon Nov 10 15:04:47 2025 [CALC]  Computing compressed_g for system: SN 1006
+Mon Nov 10 15:04:47 2025 [CALC]  [SN 1006] g_compressed (FINAL) = 1.078803e-008
+Mon Nov 10 15:04:47 2025 [CALC]  Computing F_U_Bi_i for system: Vela Pulsar
+Mon Nov 10 15:04:47 2025 [CALC]  [Vela Pulsar] F_U_Bi_i (FINAL) = 8.636401e+100
+Mon Nov 10 15:04:47 2025 [CALC]  Computing compressed_g for system: Vela Pulsar
+Mon Nov 10 15:04:47 2025 [CALC]  [Vela Pulsar] g_compressed (FINAL) = 2.312619e+017
+Mon Nov 10 15:04:47 2025 [INFO]  All systems computed.
+Mon Nov 10 15:05:45 2025 [CALC]  Computing F_U_Bi_i for system: Galactic Center
+Mon Nov 10 15:05:45 2025 [CALC]  [Galactic Center] F_U_Bi_i (FINAL) = 2.073600e+144
+Mon Nov 10 15:05:45 2025 [CALC]  Computing compressed_g for system: Galactic Center
+Mon Nov 10 15:05:45 2025 [CALC]  [Galactic Center] g_compressed (FINAL) = 4.588530e+011
+Mon Nov 10 15:07:18 2025 [INFO]  === CoAnQi Shutdown ===
+Mon Nov 10 15:07:18 2025 [INFO]  === CoAnQi Logger Shutdown ===
