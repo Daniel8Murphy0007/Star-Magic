@@ -835,6 +835,217 @@ public:
     }
 };
 
+/**
+ * Buoyancy UQFF Term (from Source165)
+ * Multi-system buoyancy with 11-term force integrand
+ * Systems: M74, M16, M84, CentaurusA, SupernovaSurvey
+ */
+class BuoyancyUQFFTerm : public PhysicsTerm
+{
+private:
+    std::string system_name;
+    double system_M;
+    double system_r;
+    double system_L_X;
+    double system_B0;
+    double system_omega0;
+
+public:
+    BuoyancyUQFFTerm(const std::string &sys) : system_name(sys)
+    {
+        // Set system-specific parameters
+        if (sys == "M74")
+        {
+            system_M = 7.17e41;
+            system_r = 9.46e20;
+            system_L_X = 1e35;
+            system_B0 = 1e-9;
+            system_omega0 = 1e-15;
+        }
+        else if (sys == "M16")
+        {
+            system_M = 1e36;
+            system_r = 2.36e17;
+            system_L_X = 1e32;
+            system_B0 = 1e-5;
+            system_omega0 = 1e-12;
+        }
+        else if (sys == "M84")
+        {
+            system_M = 1.46e45;
+            system_r = 3.09e22;
+            system_L_X = 1e38;
+            system_B0 = 1e-10;
+            system_omega0 = 1e-15;
+        }
+        else if (sys == "CentaurusA")
+        {
+            system_M = 4e41;
+            system_r = 3.09e21;
+            system_L_X = 1e35;
+            system_B0 = 1e-5;
+            system_omega0 = 1e-15;
+        }
+        else if (sys == "SupernovaSurvey")
+        {
+            system_M = 1e30;
+            system_r = 1e10;
+            system_L_X = 1e40;
+            system_B0 = 1e-6;
+            system_omega0 = 1e-12;
+        }
+
+        setMetadata("version", "1.0");
+        setMetadata("source", "Source165.cpp");
+        setMetadata("system", sys);
+        setMetadata("equation", "F_U_Bi_i = integrand * x2 (11-term force)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        const double G = 6.6743e-11;
+        const double c = 3e8;
+        const double m_e = 9.11e-31;
+        const double q = 1.6e-19;
+        const double hbar = 1.0546e-34;
+        const double mu_B = 9.274e-24;
+        const double g_Lande = 2.0;
+        const double F0 = 1.83e71;
+        const double k_LENR = 1e-10;
+        const double omega_LENR = 2 * M_PI * 1.25e12;
+        const double k_neutron = 1e10;
+        const double sigma_n = 1e-4;
+        const double k_rel = 1e-10;
+        const double E_cm_astro = 1.24e24;
+        const double E_cm = 3.0264e-8;
+        const double x2 = -1.35e172;
+
+        // DPM resonance (Zeeman)
+        double DPM_res = (g_Lande * mu_B * system_B0) / (hbar * system_omega0);
+
+        // LENR term
+        double LENR = k_LENR * pow(omega_LENR / system_omega0, 2.0);
+
+        // 11-term integrand
+        double term_base = -F0;
+        double term_mom = (m_e * c * c / (system_r * system_r)) * 0.93 * 0.707; // cos(45°)
+        double term_grav = (G * system_M / (system_r * system_r)) * 1.0;
+        double term_vac = 7.09e-36 * 0.01;
+        double term_LENR = LENR;
+        double term_res = 2.0 * q * system_B0 * 1e-3 * 0.707 * DPM_res; // sin(45°)
+        double term_neut = k_neutron * sigma_n;
+        double term_rel = k_rel * pow(E_cm_astro / E_cm, 2.0);
+        double term_neutrino = 9.07e-43;
+
+        double integrand = term_base + term_mom + term_grav + term_vac + term_LENR +
+                           term_res + term_neut + term_rel + term_neutrino;
+
+        return integrand * x2;
+    }
+
+    std::string getName() const override { return "BuoyancyUQFF_" + system_name; }
+    std::string getDescription() const override
+    {
+        return "Buoyancy UQFF for " + system_name + " with 11-term force integrand";
+    }
+};
+
+/**
+ * Inflation Buoyancy Term (from Source165)
+ * β_i × V_infl × ρ_vac × a_universal
+ */
+class InflationBuoyancyTerm : public PhysicsTerm
+{
+public:
+    InflationBuoyancyTerm()
+    {
+        setMetadata("version", "1.0");
+        setMetadata("source", "Source165.cpp");
+        setMetadata("equation", "U_bi = beta_i * V_infl * rho_vac * a_universal");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double beta_i = getDynamicParameter("beta_i", 0.6);
+        double V_infl = getDynamicParameter("V_infl_UA", 1e-6);
+        double rho_vac = getDynamicParameter("rho_vac_A", 1e-30);
+        double a_univ = getDynamicParameter("a_universal", 1e12);
+
+        return beta_i * V_infl * rho_vac * a_univ;
+    }
+
+    std::string getName() const override { return "InflationBuoyancy"; }
+    std::string getDescription() const override
+    {
+        return "Inflation-driven buoyancy force";
+    }
+};
+
+/**
+ * Superconductivity Term (from Source165)
+ * Time-dependent: λ × (ρ_SC/ρ_UA) × ω_s × cos(πt_n) × (1 + f_TRZ)
+ */
+class SuperconductiveTerm : public PhysicsTerm
+{
+public:
+    SuperconductiveTerm()
+    {
+        setMetadata("version", "1.0");
+        setMetadata("source", "Source165.cpp");
+        setMetadata("equation", "U_i = lambda * (rho_SC/rho_UA) * omega_s * cos(pi*t_n) * (1 + f_TRZ)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double lambda_i = getDynamicParameter("lambda_i", 1.0);
+        double rho_sc = getDynamicParameter("rho_vac_SCm", 7.09e-37);
+        double rho_ua = getDynamicParameter("rho_vac_UA", 7.09e-36);
+        double omega_s = getDynamicParameter("omega_s", 2.5e-6);
+        double t_scale = getDynamicParameter("t_scale", 1e16);
+        double f_TRZ = getDynamicParameter("f_TRZ", 0.1);
+
+        double t_n = t / t_scale;
+        double cos_term = cos(M_PI * t_n);
+
+        return lambda_i * (rho_sc / rho_ua) * omega_s * cos_term * (1.0 + f_TRZ);
+    }
+
+    std::string getName() const override { return "Superconductivity"; }
+    std::string getDescription() const override
+    {
+        return "Time-dependent superconductivity with oscillating vacuum density";
+    }
+};
+
+/**
+ * Neutron Scattering Term (from Source165)
+ * k_neutron × σ_n
+ */
+class NeutronScatteringTerm : public PhysicsTerm
+{
+public:
+    NeutronScatteringTerm()
+    {
+        setMetadata("version", "1.0");
+        setMetadata("source", "Source165.cpp");
+        setMetadata("equation", "F_neutron = k_neutron * sigma_n");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double k_neutron = getDynamicParameter("k_neutron", 1e10);
+        double sigma_n = getDynamicParameter("sigma_n", 1e-4);
+
+        return k_neutron * sigma_n;
+    }
+
+    std::string getName() const override { return "NeutronScattering"; }
+    std::string getDescription() const override
+    {
+        return "Neutron scattering cross-section contribution";
+    }
+};
+
 // ===========================================================================================
 // SYSTEM PARAMETERS STRUCTURE
 // ===========================================================================================
@@ -1597,7 +1808,17 @@ public:
         registerTerm("GasIonization", make_unique<GasIonizationTerm>());
         registerTerm("NebulaExpansion", make_unique<NebulaExpansionTerm>());
 
-        g_logger.log("Module registry initialization complete (6 original + 8 Source163 + 7 Source164 = 21 terms).", 1);
+        // Source165 terms - Buoyancy UQFF
+        registerTerm("BuoyancyUQFF_M74", make_unique<BuoyancyUQFFTerm>("M74"));
+        registerTerm("BuoyancyUQFF_M16", make_unique<BuoyancyUQFFTerm>("M16"));
+        registerTerm("BuoyancyUQFF_M84", make_unique<BuoyancyUQFFTerm>("M84"));
+        registerTerm("BuoyancyUQFF_CentaurusA", make_unique<BuoyancyUQFFTerm>("CentaurusA"));
+        registerTerm("BuoyancyUQFF_SupernovaSurvey", make_unique<BuoyancyUQFFTerm>("SupernovaSurvey"));
+        registerTerm("InflationBuoyancy", make_unique<InflationBuoyancyTerm>());
+        registerTerm("Superconductivity", make_unique<SuperconductiveTerm>());
+        registerTerm("NeutronScattering", make_unique<NeutronScatteringTerm>());
+
+        g_logger.log("Module registry initialization complete (6 original + 8 Source163 + 7 Source164 + 9 Source165 = 30 terms).", 1);
     }
 };
 
