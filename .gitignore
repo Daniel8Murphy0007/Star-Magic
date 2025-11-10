@@ -47,3 +47,16 @@ Thumbs.db
 # AI SDK files
 .anthropic/
 *.anthropic_cache
+
+# Backup files
+*_backup*.js
+*_BACKUP*.js
+index_backup_*.js
+index_EMERGENCY_*.js
+
+# Compiled binaries
+*.exe
+*.dll
+*.so
+*.dylib
+MAIN_1.exe
