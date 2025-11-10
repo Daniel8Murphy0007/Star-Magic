@@ -1,7 +1,7 @@
 {
   "name": "star-magic-uqff",
-  "version": "2.0.0",
-  "description": "Star-Magic Unified Quantum Field Force (UQFF) - Advanced astrophysics simulation framework with 126+ modules",
+  "version": "2.1.0",
+  "description": "Star-Magic Unified Quantum Field Force (UQFF) v2.1 - Enhanced Edition with 106 systems, F_U_Bi_i integration, and self-expanding framework",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
@@ -9,9 +9,12 @@
     "demo": "node quick_demo.js",
     "test": "node -c index.js && echo 'Syntax check passed!'",
     "test:source134": "node -e \"const A2256 = require('./source134.js'); const m = new A2256(); console.log('✓ Source134 loaded:', m.getSystemName()); const report = m.generateReport(); console.log('M =', report.parameters.M.toExponential(2), 'kg');\"",
+    "test:source4": "node -e \"const idx = require('./index.js'); const s4 = new idx.Source4UQFFModule(); console.log('✓ Source4 MUGE Framework loaded'); console.log('Ug1:', s4.computeUg1(1e10, 0, 1.989e30).toExponential(3));\"",
+    "test:source5": "node -e \"const idx = require('./index.js'); const s5 = new idx.Source5UQFFModule(); console.log('✓ Source5 Self-Expanding Framework loaded'); console.log('FU Enhanced:', s5.computeFUEnhanced({M: 1.989e30, r: 1e10, t: 0}).toExponential(3));\"",
+    "test:source6": "node -e \"const idx = require('./index.js'); const s6 = new idx.Source6UQFFModule(); console.log('✓ Source6 3D Graphics Module loaded'); s6.printSummaryStats();\"",
     "integration": "node integration_check.js",
     "check:syntax": "node -c index.js",
-    "verify": "node -e \"console.log('Verifying modules...'); const idx = require('./index.js'); console.log('✓ All modules loaded successfully');\""
+    "verify": "node -e \"console.log('Verifying modules...'); const idx = require('./index.js'); console.log('✓ All modules loaded successfully'); console.log('✓ Source4-6 integrated:', typeof idx.Source4UQFFModule, typeof idx.Source5UQFFModule, typeof idx.Source6UQFFModule);\""
   },
   "keywords": [
     "astrophysics",
@@ -21,7 +24,14 @@
     "magnetars",
     "pulsars",
     "dark-matter",
-    "physics-simulation"
+    "physics-simulation",
+    "muge",
+    "f-u-bi-i",
+    "self-expanding-framework",
+    "26-layer-gravity",
+    "navier-stokes",
+    "webgl",
+    "3d-graphics"
   ],
   "author": "Daniel T. Murphy",
   "license": "ISC",
