@@ -1291,6 +1291,166 @@ public:
     }
 };
 
+/**
+ * UQFF Master Term (from Source167)
+ * System-specific UQFF master force with U_g1 + U_g3
+ * Systems: M82, IC418, Canis Major, NGC6302, NGC7027
+ */
+class UQFFMasterTerm : public PhysicsTerm
+{
+private:
+    std::string system_name;
+    double sfr;
+    double wind_vel;
+    double mag_field;
+    double f_Ub_scale;
+    double M;
+    double r;
+
+public:
+    UQFFMasterTerm(const std::string &sys, double sfr_val, double wind_val,
+                   double mag_val, double f_Ub, double M_val, double r_val)
+        : system_name(sys), sfr(sfr_val), wind_vel(wind_val), mag_field(mag_val),
+          f_Ub_scale(f_Ub), M(M_val), r(r_val)
+    {
+        setMetadata("version", "1.0");
+        setMetadata("source", "Source167.cpp");
+        setMetadata("system", sys);
+        setMetadata("equation", "F_master = U_g1 + U_g3 * f_Ub (June 2025 UQFF framework)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        const double k1 = getDynamicParameter("k1", 1.0);
+        const double ki = getDynamicParameter("ki", 1.0);
+        const double Z_MAX = 1000.0;
+
+        // U_g1: DPM with electrostatic barrier
+        double f_UA_prime = 0.999; // (Z_MAX - Z) / Z_MAX
+        double f_SCm = 0.001;      // Z / Z_MAX
+        double R_EB = 1.0;         // k_R * Z
+        double nu_THz = 1e12;      // 1 THz
+        double theta = M_PI / 2.0;
+        double phi = 0.0;
+
+        double f_nu = 1.0 + std::sin(M_PI * nu_THz / 1e12);
+        double geom_factor = std::sin(theta) * std::cos(phi);
+        double exp_barrier = std::exp(-R_EB / r);
+
+        double U_g1 = k1 * f_UA_prime * f_SCm * R_EB * f_nu * geom_factor * exp_barrier / (r * r);
+
+        // U_g3: Combined force (simplified)
+        double U_g3 = ki * f_UA_prime * nu_THz * R_EB * geom_factor / (r * r);
+
+        // Master force
+        return U_g1 + U_g3 * f_Ub_scale;
+    }
+
+    std::string getName() const override { return "UQFFMaster_" + system_name; }
+    std::string getDescription() const override
+    {
+        return "UQFF Master Force for " + system_name +
+               " (SFR=" + std::to_string(sfr) + " M_sun/yr, Wind=" +
+               std::to_string(wind_vel) + " km/s)";
+    }
+};
+
+/**
+ * Electrostatic Barrier Term (from Source167)
+ * Exponential barrier penetration in U_g1
+ */
+class ElectrostaticBarrierTerm : public PhysicsTerm
+{
+public:
+    ElectrostaticBarrierTerm()
+    {
+        setMetadata("version", "1.0");
+        setMetadata("source", "Source167.cpp");
+        setMetadata("equation", "exp(-R_EB/r) with R_EB = k_R * Z");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double R_EB = getDynamicParameter("R_EB", 1.0);
+        double r = getDynamicParameter("r_distance", 1e20);
+
+        return std::exp(-R_EB / r);
+    }
+
+    std::string getName() const override { return "ElectrostaticBarrier"; }
+    std::string getDescription() const override
+    {
+        return "Exponential barrier penetration term for electrostatic force";
+    }
+};
+
+/**
+ * Electric Field Term (from Source167)
+ * E-field derived from Universal Magnetism U_m
+ */
+class ElectricFieldTerm : public PhysicsTerm
+{
+public:
+    ElectricFieldTerm()
+    {
+        setMetadata("version", "1.0");
+        setMetadata("source", "Source167.cpp");
+        setMetadata("equation", "E = (U_m / rho_vac_UA) * (1/r)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double U_m = getDynamicParameter("U_m", 7.97717e-22); // From Source167 test
+        double r = getDynamicParameter("r_distance", 1e20);
+        double rho_vac_UA = getDynamicParameter("rho_vac_UA", 1e-27);
+
+        return (U_m / rho_vac_UA) * (1.0 / r);
+    }
+
+    std::string getName() const override { return "ElectricField"; }
+    std::string getDescription() const override
+    {
+        return "Electric field derived from Universal Magnetism";
+    }
+};
+
+/**
+ * Neutron Production Term (from Source167)
+ * eta: Neutron production rate with 26 quantum states
+ */
+class NeutronProductionTerm : public PhysicsTerm
+{
+public:
+    NeutronProductionTerm()
+    {
+        setMetadata("version", "1.0");
+        setMetadata("source", "Source167.cpp");
+        setMetadata("equation", "eta = k_eta * exp(-SSQ*n/26) * exp(-(pi-t)) * (U_m/rho_vac)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        const double k_eta = 2.75e8;
+        const double SSQ = 1.0;
+        const double N_QUANTUM = 26.0;
+        double n = getDynamicParameter("quantum_state_n", 26.0);
+        double U_m = getDynamicParameter("U_m", 7.97717e-22);
+        double rho_vac_UA = getDynamicParameter("rho_vac_UA", 1e-27);
+
+        double exp_ssq = std::exp(-SSQ * n / N_QUANTUM);
+        double exp_pi_t = std::exp(-(M_PI - t));
+        double field_term = U_m / rho_vac_UA;
+
+        return k_eta * exp_ssq * exp_pi_t * field_term;
+    }
+
+    std::string getName() const override { return "NeutronProduction"; }
+    std::string getDescription() const override
+    {
+        return "Neutron production rate with 26 quantum states";
+    }
+};
+
 // ===========================================================================================
 // SYSTEM PARAMETERS STRUCTURE
 // ===========================================================================================
@@ -2077,7 +2237,17 @@ public:
         registerTerm("QuantumState26", make_unique<QuantumState26Term>());
         registerTerm("TriadicScale", make_unique<TriadicScaleTerm>());
 
-        g_logger.log("Module registry initialization complete (6 original + 8 Source163 + 7 Source164 + 9 Source165 + 12 Source166 = 42 terms).", 1);
+        // Source167 terms - UQFF Core (June 2025 Framework)
+        registerTerm("UQFFMaster_M82", make_unique<UQFFMasterTerm>("M82", 10.0, 1000.0, 1e-4, 1e8, 1.5e41, 3e21));
+        registerTerm("UQFFMaster_IC418", make_unique<UQFFMasterTerm>("IC418", 0.001, 20.0, 1e-6, 1e6, 1e35, 1e17));
+        registerTerm("UQFFMaster_CanisMajor", make_unique<UQFFMasterTerm>("CanisMajor", 0.1, 2000.0, 1e-5, 1e7, 5e40, 2e21));
+        registerTerm("UQFFMaster_NGC6302", make_unique<UQFFMasterTerm>("NGC6302", 0.0001, 10.0, 1e-5, 1e6, 1e36, 5e17));
+        registerTerm("UQFFMaster_NGC7027", make_unique<UQFFMasterTerm>("NGC7027", 0.0001, 15.0, 1e-6, 1e5, 8e35, 3e17));
+        registerTerm("ElectrostaticBarrier", make_unique<ElectrostaticBarrierTerm>());
+        registerTerm("ElectricField", make_unique<ElectricFieldTerm>());
+        registerTerm("NeutronProduction", make_unique<NeutronProductionTerm>());
+
+        g_logger.log("Module registry initialization complete (6 original + 8 Source163 + 7 Source164 + 9 Source165 + 12 Source166 + 8 Source167 = 50 terms).", 1);
     }
 };
 

@@ -1,0 +1,55 @@
+=== UQFFCoreModule State Export ===
+Metadata:
+  author = Daniel T. Murphy
+  framework = UQFF June 2025
+  source = Source167.cpp
+  version = 1.0
+
+Variables:
+  N_QUANTUM = 26 + i*0
+  Z_MAX = 1000 + i*0
+  k1 = 1 + i*0
+  k_eta = 2.75e+008 + i*0
+  ke = 1 + i*0
+  ki = 1 + i*0
+  km = 1 + i*0
+
+=== System: Messier 82 ===
+SFR: 10 M_sun/yr
+Wind velocity: 1000 km/s
+Magnetic field: 0.0001 T
+f_Ub scale: 1e+008
+Mass: 1.5e+041 kg
+Radius: 3e+021 m
+
+=== System: Spirograph Nebula IC418 ===
+SFR: 0.001 M_sun/yr
+Wind velocity: 20 km/s
+Magnetic field: 1e-006 T
+f_Ub scale: 1e+006
+Mass: 1e+035 kg
+Radius: 1e+017 m
+
+=== System: Canis Major R136 ===
+SFR: 0.1 M_sun/yr
+Wind velocity: 2000 km/s
+Magnetic field: 1e-005 T
+f_Ub scale: 1e+007
+Mass: 5e+040 kg
+Radius: 2e+021 m
+
+=== System: NGC 6302 Butterfly Nebula ===
+SFR: 0.0001 M_sun/yr
+Wind velocity: 10 km/s
+Magnetic field: 1e-005 T
+f_Ub scale: 1e+006
+Mass: 1e+036 kg
+Radius: 5e+017 m
+
+=== System: NGC 7027 Planetary Nebula ===
+SFR: 0.0001 M_sun/yr
+Wind velocity: 15 km/s
+Magnetic field: 1e-006 T
+f_Ub scale: 100000
+Mass: 8e+035 kg
+Radius: 3e+017 m
