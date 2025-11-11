@@ -60,3 +60,7 @@ index_EMERGENCY_*.js
 *.so
 *.dylib
 MAIN_1.exe
+
+# Log files
+coAnQi_log_*.txt
+*_log_*.txt
