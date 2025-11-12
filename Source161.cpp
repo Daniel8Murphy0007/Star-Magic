@@ -1,13 +1,13 @@
-﻿
+
 // UQFFBuoyancyAstroModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Buoyancy Equations across J1610+1811, PLCK G287.0+32.9, PSZ2 G181.06+48.47, ASKAP J1832-0911, Sonification Collection.
 // This module can be plugged into a base program (e.g., 'uqff_buoyancy_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "UQFFBuoyancyAstroModule.h"
+// Usage in base: // // #include "UQFFBuoyancyAstroModule.h"  // Commented - header not available  // Commented - header not available
 // UQFFBuoyancyAstroModule mod; mod.computeFBi(system); mod.updateVariable("F_rel", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino, Sweet vac, Kozima drop.
 // Associated text: Outputs descriptive equation string via getEquationText().
-// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low Ï‰_0; x2 from quadratic solver approx; F_rel from 1998 LEP.
+// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low ω_0; x2 from quadratic solver approx; F_rel from 1998 LEP.
 // Multi-system params: J1610+1811 M=2.785e30 kg r=3.09e15 m; PLCK G287.0+32.9 M=1.989e44 kg r=3.09e22 m; PSZ2 G181.06+48.47 M=1.989e44 kg r=3.09e22 m; ASKAP J1832-0911 M=2.785e30 kg r=4.63e16 m; Sonification Collection M=1.989e31 kg r=6.17e16 m.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 22, 2025.
 
@@ -179,7 +179,7 @@ public:
 #endif // UQFF_BUOYANCY_ASTRO_MODULE_H
 
 // UQFFBuoyancyAstroModule.cpp
-#include "UQFFBuoyancyAstroModule.h"
+// // #include "UQFFBuoyancyAstroModule.h"  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set all variables with multi-system defaults
 UQFFBuoyancyAstroModule::UQFFBuoyancyAstroModule() {
@@ -251,7 +251,7 @@ void UQFFBuoyancyAstroModule::setSystemParams(const std::string& system)
         this->variables["L_X"] = {1e31, 0.0};
         this->variables["B0"] = {1e-4, 0.0};
         this->variables["omega0"] = {1e-12, 0.0};
-        this->variables["Mach"] = {1.0, 0.0};  // â„³
+        this->variables["Mach"] = {1.0, 0.0};  // ℳ
         this->variables["C"] = {1.0, 0.0};
         this->variables["theta"] = {pi_val / 4, 0.0};
         this->variables["t"] = {3.156e10, 0.0};
@@ -354,15 +354,15 @@ std::string UQFFBuoyancyAstroModule::getEquationText(const std::string& system) 
     std::ostringstream oss;
     oss << "F_U_Bi_i(r, t) = Integral[Integrand(r, t) dt] approximated as Integrand * x2\n";
     oss << "Where Integrand includes terms for base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino, Sweet vac, Kozima drop.\n";
-    oss << "LENR Resonance: F_LENR = k_LENR * (Ï‰_LENR / Ï‰_0)^2\n";
-    oss << "Activation: F_act = k_act * cos(Ï‰_act t)\n";
+    oss << "LENR Resonance: F_LENR = k_LENR * (ω_LENR / ω_0)^2\n";
+    oss << "Activation: F_act = k_act * cos(ω_act t)\n";
     oss << "Directed Energy: F_DE = k_DE * L_X\n";
-    oss << "Magnetic Resonance: F_res = 2 q B_0 V sinÎ¸ * DPM_resonance\n";
-    oss << "Neutron Drop: F_neutron = k_neutron * Ïƒ_n\n";
+    oss << "Magnetic Resonance: F_res = 2 q B_0 V sinθ * DPM_resonance\n";
+    oss << "Neutron Drop: F_neutron = k_neutron * σ_n\n";
     oss << "Relativistic: F_rel = k_rel * (E_cm_astro_local_adj_eff_enhanced / E_cm)^2\n";
     oss << "Neutrino: F_neutrino = k_neutrino * L_X\n";
-    oss << "Sweet Vac: F_sweet = k_Sweet * Ï_vac_UA\n";
-    oss << "Kozima Drop: F_kozima = k_Kozima * Ïƒ_n\n";
+    oss << "Sweet Vac: F_sweet = k_Sweet * ρ_vac_UA\n";
+    oss << "Kozima Drop: F_kozima = k_Kozima * σ_n\n";
     oss << "Relativistic Correction: F_relativ = k_relativistic * (V / c)^2 * F0\n";
     oss << "System: " << system << "\n";
     return oss.str();

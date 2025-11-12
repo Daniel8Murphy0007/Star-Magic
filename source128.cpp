@@ -1,9 +1,9 @@
-﻿// ScmVacuumDensityModule.h
+// ScmVacuumDensityModule.h
 // Modular C++ implementation of the Vacuum Energy Density of [SCm] (?_vac,[SCm]) in the Universal Quantum Field Superconductive Framework (UQFF).
-// This module computes ?_vac,[SCm] = 7.09e-37 J/mï¿½ (Sun, level 13); scales in U_g2, U_i, T_s terms.
-// Pluggable: #include "ScmVacuumDensityModule.h"
+// This module computes ?_vac,[SCm] = 7.09e-37 J/m� (Sun, level 13); scales in U_g2, U_i, T_s terms.
+// Pluggable: // // // #include "ScmVacuumDensityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // ScmVacuumDensityModule mod; mod.computeU_g2_example(1.496e13); mod.updateVariable("rho_vac_SCm", new_value);
-// Variables in std::map; example for Sun at r=1.496e13 m; U_g2 ?1.18e53 J/mï¿½, U_i ?1.38e-47 J/mï¿½.
+// Variables in std::map; example for Sun at r=1.496e13 m; U_g2 ?1.18e53 J/m�, U_i ?1.38e-47 J/m�.
 // Approximations: S(r - R_b)=1; (1 + ?_sw v_sw)=5001; ?_i=1.0; f_TRZ=0.1; E_react=1e46.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
@@ -144,9 +144,9 @@ public:
     void subtractFromVariable(const std::string& name, double delta);
 
     // Core computations
-    double computeRho_vac_SCm();  // 7.09e-37 J/mï¿½
-    double computeU_g2_example(double r);  // U_g2 with ?_vac,[SCm] (J/mï¿½)
-    double computeU_i_example(double t, double t_n);  // U_i with ?_vac,[SCm] (J/mï¿½)
+    double computeRho_vac_SCm();  // 7.09e-37 J/m�
+    double computeU_g2_example(double r);  // U_g2 with ?_vac,[SCm] (J/m�)
+    double computeU_i_example(double t, double t_n);  // U_i with ?_vac,[SCm] (J/m�)
 
     // Output descriptive text
     std::string getEquationText();
@@ -158,7 +158,7 @@ public:
 #endif // SCM_VACUUM_DENSITY_MODULE_H
 
 // ScmVacuumDensityModule.cpp
-#include "ScmVacuumDensityModule.h"
+// // // #include "ScmVacuumDensityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults (Sun at level 13)
 ScmVacuumDensityModule::ScmVacuumDensityModule() {
@@ -169,8 +169,8 @@ ScmVacuumDensityModule::ScmVacuumDensityModule() {
         metadata["version"] = "2.0-Enhanced";
 
     // Universal constants
-    variables["rho_vac_SCm"] = 7.09e-37;            // J/mï¿½
-    variables["rho_vac_UA"] = 7.09e-36;             // J/mï¿½
+    variables["rho_vac_SCm"] = 7.09e-37;            // J/m�
+    variables["rho_vac_UA"] = 7.09e-36;             // J/m�
     variables["k_2"] = 1.2;                         // Coupling U_g2
     variables["M_s"] = 1.989e30;                    // kg
     variables["R_b"] = 1.496e13;                    // m
@@ -226,7 +226,7 @@ void ScmVacuumDensityModule::subtractFromVariable(const std::string& name, doubl
     addToVariable(name, -delta);
 }
 
-// Compute ?_vac,[SCm] (J/mï¿½)
+// Compute ?_vac,[SCm] (J/m�)
 double ScmVacuumDensityModule::computeRho_vac_SCm() {
     return variables["rho_vac_SCm"];
 }
@@ -260,9 +260,9 @@ std::string ScmVacuumDensityModule::getEquationText() {
     return "U_g2 = k_2 * [(?_vac,[UA] + ?_vac,[SCm]) M_s / r^2] * S(r - R_b) * (1 + ?_sw v_sw) * H_SCm * E_react\n"
            "U_i = ?_i * ?_vac,[SCm] * ?_vac,[UA] * ?_s(t) * cos(? t_n) * (1 + f_TRZ)\n"
            "T_s^{??} ? T_s_base + ?_vac,[SCm] + ?_vac,[UA] + ?_vac,A (in A_?? perturbation)\n"
-           "Where ?_vac,[SCm] = 7.09e-37 J/mï¿½ (Sun level 13; [SCm] vacuum energy).\n"
+           "Where ?_vac,[SCm] = 7.09e-37 J/m� (Sun level 13; [SCm] vacuum energy).\n"
            "[SCm]: Massless extra-universal material reacting with [UA] for dynamics.\n"
-           "Example U_g2 (r=R_b): ?1.18e53 J/mï¿½; U_i (t=0,t_n=0): ?1.38e-47 J/mï¿½.\n"
+           "Example U_g2 (r=R_b): ?1.18e53 J/m�; U_i (t=0,t_n=0): ?1.38e-47 J/m�.\n"
            "Role: [SCm] scales gravity/inertia/Aether; pervasive in U terms/F_U.\n"
            "UQFF: Builds matter/elements; jets/formation/mergers via [SCm]-[UA].";
 }
@@ -276,20 +276,20 @@ void ScmVacuumDensityModule::printVariables() {
 }
 
 // Example usage in base program (snippet)
-// #include "ScmVacuumDensityModule.h"
+// // // // #include "ScmVacuumDensityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     ScmVacuumDensityModule mod;
 //     double rho = mod.computeRho_vac_SCm();
-//     std::cout << "?_vac,[SCm] = " << rho << " J/mï¿½\n";
+//     std::cout << "?_vac,[SCm] = " << rho << " J/m�\n";
 //     double u_g2 = mod.computeU_g2_base(1.496e13);
-//     std::cout << "U_g2 example = " << u_g2 << " J/mï¿½\n";
+//     std::cout << "U_g2 example = " << u_g2 << " J/m�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("rho_vac_SCm", 8e-37);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o scm_density_test scm_density_test.cpp ScmVacuumDensityModule.cpp -lm
-// Sample: ?_vac,[SCm]=7.09e-37 J/mï¿½; U_g2?1.18e53 J/mï¿½; scales [SCm] effects.
+// Sample: ?_vac,[SCm]=7.09e-37 J/m�; U_g2?1.18e53 J/m�; scales [SCm] effects.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 ScmVacuumDensityModule Evaluation

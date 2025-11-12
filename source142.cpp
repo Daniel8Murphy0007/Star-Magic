@@ -1,7 +1,7 @@
-﻿// JupiterAuroraeUQFFModule.h
+// JupiterAuroraeUQFFModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Jupiter Aurorae Planetary Evolution.
 // This module can be plugged into a base program (e.g., 'jupiter_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "JupiterAuroraeUQFFModule.h"
+// Usage in base: // // // #include "JupiterAuroraeUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // JupiterAuroraeUQFFModule mod; mod.computeF(t); mod.updateVariable("M", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino.
@@ -176,7 +176,7 @@ public:
 #endif // JUPITER_AURORAE_UQFF_MODULE_H
 
 // JupiterAuroraeUQFFModule.cpp
-#include "JupiterAuroraeUQFFModule.h"
+// // // #include "JupiterAuroraeUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with Jupiter Aurorae-specific values
@@ -427,7 +427,7 @@ void JupiterAuroraeUQFFModule::printVariables() {
 }
 
 // Example usage in base program 'jupiter_sim.cpp' (snippet for integration)
-// #include "JupiterAuroraeUQFFModule.h"
+// // // // #include "JupiterAuroraeUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #include <complex>
 // int main() {
 //     JupiterAuroraeUQFFModule mod;

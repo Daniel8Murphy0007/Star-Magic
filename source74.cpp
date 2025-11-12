@@ -1,7 +1,7 @@
-﻿// UQFFCompressedResonanceModule.h
+// UQFFCompressedResonanceModule.h
 // Modular C++ implementation of Compressed and Resonance UQFF Equations for Multi-System Evolution (Young Stars Outflows, Eagle Nebula, Big Bang, M51, NGC 1316, V838 Mon, NGC 1300, Student's Guide).
 // Supports compressed g_UQFF(r,t) unified form; resonance mode adds oscillatory terms (cos/exp(i ? t)) for wave dynamics.
-// Usage: #include "UQFFCompressedResonanceModule.h"; UQFFCompressedResonanceModule mod; mod.setSystem("Eagle"); mod.setMode("resonance"); mod.computeG(t);
+// Usage: // // #include "UQFFCompressedResonanceModule.h"  // Commented - header not available  // Commented - header not available; UQFFCompressedResonanceModule mod; mod.setSystem("Eagle"); mod.setMode("resonance"); mod.computeG(t);
 // Variables in std::map; auto-loads params from DeepSearch (Hubble/JWST/CERN/high-energy labs).
 // Approximations: psi_int=1.0; H(t,z) standard; resonance A=1e-10, ?=1e15; Big Bang: r=c t, rho=rho_c.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
@@ -171,7 +171,7 @@ public:
 #endif // UQFF_COMPRESSED_RESONANCE_MODULE_H
 
 // UQFFCompressedResonanceModule.cpp
-#include "UQFFCompressedResonanceModule.h"
+// // #include "UQFFCompressedResonanceModule.h"  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor
@@ -363,6 +363,7 @@ void UQFFCompressedResonanceModule::printVariables() {
 // Compile: g++ -o multi_uqff base.cpp UQFFCompressedResonanceModule.cpp -lm
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 UQFFCompressedResonanceModule Evaluation
 
 Strengths :
@@ -384,3 +385,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, flexible, and suitable for scientific prototyping and educational use in multi - system astrophysical modeling.It implements a broad set of physical effects and adapts to various scenarios, including resonance phenomena.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+*/

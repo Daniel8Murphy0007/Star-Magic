@@ -1,7 +1,7 @@
-﻿// StephanQuintetUQFFModule.h
+// StephanQuintetUQFFModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Stephan's Quintet Compact Galaxy Group Evolution.
 // This module can be plugged into a base program (e.g., 'stephan_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "StephanQuintetUQFFModule.h"
+// Usage in base: // // // #include "StephanQuintetUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // StephanQuintetUQFFModule mod; mod.computeF(t); mod.updateVariable("M", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino.
@@ -176,7 +176,7 @@ public:
 #endif // STEPHAN_QUINTET_UQFF_MODULE_H
 
 // StephanQuintetUQFFModule.cpp
-#include "StephanQuintetUQFFModule.h"
+// // // #include "StephanQuintetUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with Stephan's Quintet-specific values
@@ -427,7 +427,7 @@ void StephanQuintetUQFFModule::printVariables() {
 }
 
 // Example usage in base program 'stephan_sim.cpp' (snippet for integration)
-// #include "StephanQuintetUQFFModule.h"
+// // // // #include "StephanQuintetUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #include <complex>
 // int main() {
 //     StephanQuintetUQFFModule mod;

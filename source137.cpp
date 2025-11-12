@@ -1,13 +1,13 @@
-﻿// CrabNebulaUQFFModule.h
+// CrabNebulaUQFFModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Crab Nebula Supernova Remnant Evolution.
 // This module can be plugged into a base program (e.g., 'crab_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "CrabNebulaUQFFModule.h"
+// Usage in base: // // // #include "CrabNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // CrabNebulaUQFFModule mod; mod.computeF(t); mod.updateVariable("M", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino.
 // Associated text: Outputs descriptive equation string via getEquationText().
-// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low ω_0; x2 from quadratic solver approx.
-// Crab Nebula params: M=1e31 kg, r=4.73e16 m, L_X=1e27 W, B0=3e-8 T, t=3.06e10 s, ω_0=1e-12 s^-1, etc.
+// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low ?_0; x2 from quadratic solver approx.
+// Crab Nebula params: M=1e31 kg, r=4.73e16 m, L_X=1e27 W, B0=3e-8 T, t=3.06e10 s, ?_0=1e-12 s^-1, etc.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 14, 2025.
 
 #ifndef CRAB_NEBULA_UQFF_MODULE_H
@@ -176,7 +176,7 @@ public:
 #endif // CRAB_NEBULA_UQFF_MODULE_H
 
 // CrabNebulaUQFFModule.cpp
-#include "CrabNebulaUQFFModule.h"
+// // // #include "CrabNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with Crab Nebula-specific values
@@ -427,7 +427,7 @@ void CrabNebulaUQFFModule::printVariables() {
 }
 
 // Example usage in base program 'crab_sim.cpp' (snippet for integration)
-// #include "CrabNebulaUQFFModule.h"
+// // // // #include "CrabNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #include <complex>
 // int main() {
 //     CrabNebulaUQFFModule mod;
@@ -441,7 +441,7 @@ void CrabNebulaUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o crab_sim crab_sim.cpp CrabNebulaUQFFModule.cpp -lm
-// Sample Output at t=970 yr: F ≈ -2.09e212 + i (large; approx per framework; dominant real from LENR * x2).
+// Sample Output at t=970 yr: F � -2.09e212 + i (large; approx per framework; dominant real from LENR * x2).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 14, 2025.
 
 CrabNebulaUQFFModule Evaluation

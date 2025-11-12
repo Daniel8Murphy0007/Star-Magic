@@ -1,7 +1,7 @@
-﻿// HydrogenPToEResonanceUQFFModule.h
+// HydrogenPToEResonanceUQFFModule.h
 // Modular C++ implementation of the Hydrogen Resonance Equations of the Periodic Table of Elements (PToE) using UQFF.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "HydrogenPToEResonanceUQFFModule.h"
+// Usage in base: // // // #include "HydrogenPToEResonanceUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // HydrogenPToEResonanceUQFFModule mod; mod.computeResonanceTerm(t); mod.updateVariable("f_res", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Nothing is negligible: Includes resonance terms - DPM resonance, THz pipeline resonance, Aether-mediated resonance, U_g4i reactive resonance, quantum orbital resonance, oscillatory resonance (cos/exp for PToE levels), with SC correction for atomic fields.
@@ -165,7 +165,7 @@ public:
 #endif // HYDROGEN_PTOE_RESONANCE_UQFF_MODULE_H
 
 // HydrogenPToEResonanceUQFFModule.cpp
-#include "HydrogenPToEResonanceUQFFModule.h"
+// // // #include "HydrogenPToEResonanceUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with Hydrogen PToE-specific resonance values
@@ -329,7 +329,7 @@ std::string HydrogenPToEResonanceUQFFModule::getEquationText() {
            "- a_osc_res = 2 A cos(k x) cos(? t) + (2? / 13.8) A Re[exp(i (k x - ? t))]\n"
            "- SC_int = (1 - B / B_crit) * f_sc\n"
            "Special Terms: UQFF resonance for PToE hydrogen orbitals/spectral lines; Aether replaces dark energy; no SM gravity dominant.\n"
-           "Solutions: At t=1e-15 s, B=1e-4 T, g ? 1e-30 m/sï¿½ (resonance micro-scale, orbital transitions).\n"
+           "Solutions: At t=1e-15 s, B=1e-4 T, g ? 1e-30 m/s� (resonance micro-scale, orbital transitions).\n"
            "Adaptations: f_osc=2.47e15 Hz (Lyman alpha) for PToE H resonance.";
 }
 
@@ -342,13 +342,13 @@ void HydrogenPToEResonanceUQFFModule::printVariables() {
 }
 
 // Example usage in base program 'ziqn233h.cpp' (snippet for integration)
-// #include "HydrogenPToEResonanceUQFFModule.h"
+// // // // #include "HydrogenPToEResonanceUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     HydrogenPToEResonanceUQFFModule mod;
 //     double t = 1e-15;  // Atomic timescale
 //     double B = 1e-4;   // T (atomic field)
 //     double g_res = mod.computeResonanceTerm(t, B);
-//     std::cout << "g_res = " << g_res << " m/sï¿½\n";
+//     std::cout << "g_res = " << g_res << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_DPM", 2.5e15);  // Update for Lyman
 //     mod.addToVariable("f_TRZ", 0.05);
@@ -356,9 +356,10 @@ void HydrogenPToEResonanceUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp HydrogenPToEResonanceUQFFModule.cpp -lm
-// Sample Output at t=1e-15 s: g_res ? 1e-30 m/sï¿½ (varies; resonance for PToE H levels).
+// Sample Output at t=1e-15 s: g_res ? 1e-30 m/s� (varies; resonance for PToE H levels).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
+/*
 // Evaluation of HydrogenPToEResonanceUQFFModule (UQFF Resonance Model for Hydrogen Atom and Periodic Table)
 
 **Strengths:**
@@ -379,3 +380,4 @@ void HydrogenPToEResonanceUQFFModule::printVariables() {
 
     ** Summary : **
     The module is robust, dynamic, and extensible, supporting runtime updates and changes to all model parameters.It is suitable for advanced UQFF - based resonance modeling of hydrogen and periodic table elements.Minor improvements in error handling, documentation, and physical justification are recommended for production or publication use.
+*/

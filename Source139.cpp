@@ -1,7 +1,7 @@
-﻿// ESO137UQFFModule.h
+// ESO137UQFFModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for ESO 137-001 Jellyfish Galaxy Evolution.
 // This module can be plugged into a base program (e.g., 'eso137_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "ESO137UQFFModule.h"
+// Usage in base: // // // #include "ESO137UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // ESO137UQFFModule mod; mod.computeF(t); mod.updateVariable("M", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino.
@@ -176,7 +176,7 @@ public:
 #endif // ESO137_UQFF_MODULE_H
 
 // ESO137UQFFModule.cpp
-#include "ESO137UQFFModule.h"
+// // // #include "ESO137UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with ESO 137-001-specific values
@@ -427,7 +427,7 @@ void ESO137UQFFModule::printVariables() {
 }
 
 // Example usage in base program 'eso137_sim.cpp' (snippet for integration)
-// #include "ESO137UQFFModule.h"
+// // // // #include "ESO137UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #include <complex>
 // int main() {
 //     ESO137UQFFModule mod;

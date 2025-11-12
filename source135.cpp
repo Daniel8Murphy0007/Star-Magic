@@ -1,7 +1,7 @@
-﻿// ASASSN14liUQFFModule.h
+// ASASSN14liUQFFModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for ASASSN-14li Tidal Disruption Event Evolution.
 // This module can be plugged into a base program (e.g., 'asassn_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "ASASSN14liUQFFModule.h"
+// Usage in base: // // // #include "ASASSN14liUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // ASASSN14liUQFFModule mod; mod.computeF(t); mod.updateVariable("M", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino.
@@ -176,7 +176,7 @@ public:
 #endif // ASASSN14LI_UQFF_MODULE_H
 
 // ASASSN14liUQFFModule.cpp
-#include "ASASSN14liUQFFModule.h"
+// // // #include "ASASSN14liUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with ASASSN-14li-specific values
@@ -427,7 +427,7 @@ void ASASSN14liUQFFModule::printVariables() {
 }
 
 // Example usage in base program 'asassn_sim.cpp' (snippet for integration)
-// #include "ASASSN14liUQFFModule.h"
+// // // // #include "ASASSN14liUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #include <complex>
 // int main() {
 //     ASASSN14liUQFFModule mod;

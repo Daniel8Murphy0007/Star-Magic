@@ -1,10 +1,10 @@
-﻿// StellarRotationModule.h
+// StellarRotationModule.h
 // Modular C++ implementation of the Stellar/Planetary Rotation Rate (?_s) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?_s=2.5e-6 rad/s (~29-day Sun period); scales ?_s(t) in U_g3 cos(?_s t ?) and U_i ?_s cos(? t_n).
-// Pluggable: #include "StellarRotationModule.h"
+// Pluggable: // // // #include "StellarRotationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // StellarRotationModule mod; mod.computeU_g3(0.0); mod.updateVariable("omega_s", new_value);
-// Variables in std::map; example for Sun at t=0, t_n=0; U_g3 ?1.8e49 J/mï¿½, U_i ?1.38e-47 J/mï¿½.
-// Approximations: cos(? t_n)=1; f_TRZ=0.1; ?_i=1.0; ?_vac sum=7.80e-36 J/mï¿½.
+// Variables in std::map; example for Sun at t=0, t_n=0; U_g3 ?1.8e49 J/m�, U_i ?1.38e-47 J/m�.
+// Approximations: cos(? t_n)=1; f_TRZ=0.1; ?_i=1.0; ?_vac sum=7.80e-36 J/m�.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef STELLAR_ROTATION_MODULE_H
@@ -13,6 +13,10 @@
 #include <map>
 #include <string>
 #include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+#define _USE_MATH_DEFINES
 #include <iostream>
 #include <iomanip>
 
@@ -161,7 +165,7 @@ public:
 #endif // STELLAR_ROTATION_MODULE_H
 
 // StellarRotationModule.cpp
-#include "StellarRotationModule.h"
+// // // #include "StellarRotationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults (Sun at t=0)
 StellarRotationModule::StellarRotationModule() {
@@ -265,7 +269,7 @@ std::string StellarRotationModule::getEquationText() {
            "U_i = ?_i * ?_vac,[SCm] * ?_vac,[UA] * ?_s(t) * cos(? t_n) * (1 + f_TRZ)\n"
            "Where ?_s = 2.5e-6 rad/s (~29-day Sun equatorial rotation);\n"
            "Scales rotational oscillations/inertia.\n"
-           "Example t=0, t_n=0: U_g3 ?1.8e49 J/mï¿½; U_i ?1.38e-47 J/mï¿½.\n"
+           "Example t=0, t_n=0: U_g3 ?1.8e49 J/m�; U_i ?1.38e-47 J/m�.\n"
            "Role: Introduces spin in disk gravity/inertia; stellar/planetary dynamics.\n"
            "UQFF: Rotational effects in nebulae/disks/formation/mergers.";
 }
@@ -279,20 +283,20 @@ void StellarRotationModule::printVariables() {
 }
 
 // Example usage in base program (snippet)
-// #include "StellarRotationModule.h"
+// // // // #include "StellarRotationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     StellarRotationModule mod;
 //     double omega = mod.computeOmega_s();
 //     std::cout << "?_s = " << omega << " rad/s (~" << mod.computePeriod_days() << " days)\n";
 //     double u_g3 = mod.computeU_g3(0.0);
-//     std::cout << "U_g3 = " << u_g3 << " J/mï¿½\n";
+//     std::cout << "U_g3 = " << u_g3 << " J/m�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("omega_s", 3e-6);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o rotation_test rotation_test.cpp StellarRotationModule.cpp -lm
-// Sample: ?_s=2.5e-6 rad/s (~29 days); U_g3?1.8e49 J/mï¿½; scales rotation.
+// Sample: ?_s=2.5e-6 rad/s (~29 days); U_g3?1.8e49 J/m�; scales rotation.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 StellarRotationModule Evaluation

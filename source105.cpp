@@ -1,7 +1,7 @@
-﻿// GalacticBlackHoleModule.h
+// GalacticBlackHoleModule.h
 // Modular C++ implementation of the Mass of the Galactic Black Hole (M_bh) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes M_bh=8.15e36 kg ?4.1e6 M_sun; scales M_bh / d_g in Universal Buoyancy U_bi and Ug4.
-// Pluggable: #include "GalacticBlackHoleModule.h"
+// Pluggable: // // // #include "GalacticBlackHoleModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // GalacticBlackHoleModule mod; mod.computeU_b1(); mod.updateVariable("M_bh", new_value);
 // Variables in std::map; example for Sun at t=0, t_n=0.
 // Approximations: cos(? t_n)=1; (1 + ?_sw ?_vac,sw)?1; ?=0.001 s^-1; f_feedback=0.1.
@@ -162,7 +162,7 @@ public:
 #endif // GALACTIC_BLACK_HOLE_MODULE_H
 
 // GalacticBlackHoleModule.cpp
-#include "GalacticBlackHoleModule.h"
+// // // #include "GalacticBlackHoleModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 GalacticBlackHoleModule::GalacticBlackHoleModule() {
@@ -263,7 +263,7 @@ std::string GalacticBlackHoleModule::getEquationText() {
            "U_g4 = k_4 (?_vac,[SCm] M_bh / d_g) e^{-? t} cos(? t_n) (1 + f_feedback)\n"
            "Where M_bh = 8.15e36 kg ?4.1e6 M_sun (Sgr A*).\n"
            "M_bh / d_g ?3.20e16 kg/m;\n"
-           "Example U_b1 ? -1.94e27 J/mï¿½; U_g4 ?2.50e-20 J/mï¿½ (t_n=0).\n"
+           "Example U_b1 ? -1.94e27 J/m�; U_g4 ?2.50e-20 J/m� (t_n=0).\n"
            "Role: Scales SMBH gravity in buoyancy/Ug4; drives galactic dynamics/mergers.\n"
            "UQFF: Central mass for star formation/nebulae; resolves parsec problem.";
 }
@@ -277,22 +277,23 @@ void GalacticBlackHoleModule::printVariables() {
 }
 
 // Example usage in base program (snippet)
-// #include "GalacticBlackHoleModule.h"
+// // // // #include "GalacticBlackHoleModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     GalacticBlackHoleModule mod;
 //     double m_sun = mod.computeM_bhInMsun();
 //     std::cout << "M_bh ? " << m_sun << " M_sun\n";
 //     double u_b1 = mod.computeU_b1();
-//     std::cout << "U_b1 = " << u_b1 << " J/mï¿½\n";
+//     std::cout << "U_b1 = " << u_b1 << " J/m�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M_bh", 9e36);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o bh_mass_test bh_mass_test.cpp GalacticBlackHoleModule.cpp -lm
-// Sample: M_bh ?4.1e6 M_sun; U_b1 ? -1.94e27 J/mï¿½; scales SMBH influence.
+// Sample: M_bh ?4.1e6 M_sun; U_b1 ? -1.94e27 J/m�; scales SMBH influence.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 GalacticBlackHoleModule Evaluation
 
 Strengths :
@@ -312,3 +313,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, clear, and suitable for scientific prototyping and educational use in galactic black hole mass modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+*/

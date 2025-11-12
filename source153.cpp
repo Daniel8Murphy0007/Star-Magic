@@ -1,13 +1,13 @@
-﻿// Abell2256UQFFModule.h
+// Abell2256UQFFModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Abell 2256 Galaxy Cluster Evolution.
 // This module can be plugged into a base program (e.g., 'abell_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "Abell2256UQFFModule.h"
+// Usage in base: // // // #include "Abell2256UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // Abell2256UQFFModule mod; mod.computeF(t); mod.updateVariable("M", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino.
 // Associated text: Outputs descriptive equation string via getEquationText().
-// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low Ï‰_0; x2 from quadratic solver approx.
-// Abell 2256 params: M=1.23e45 kg, r=3.93e22 m, L_X=3.7e37 W, B0=1e-9 T, t=6.31e15 s, Ï‰_0=1e-15 s^-1, etc.
+// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low ω_0; x2 from quadratic solver approx.
+// Abell 2256 params: M=1.23e45 kg, r=3.93e22 m, L_X=3.7e37 W, B0=1e-9 T, t=6.31e15 s, ω_0=1e-15 s^-1, etc.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 11, 2025.
 
 #ifndef ABELL2256_UQFF_MODULE_H
@@ -176,7 +176,7 @@ public:
 #endif // ABELL2256_UQFF_MODULE_H
 
 // Abell2256UQFFModule.cpp
-#include "Abell2256UQFFModule.h"
+// // // #include "Abell2256UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with Abell 2256-specific values
@@ -427,7 +427,7 @@ void Abell2256UQFFModule::printVariables() {
 }
 
 // Example usage in base program 'abell_sim.cpp' (snippet for integration)
-// #include "Abell2256UQFFModule.h"
+// // // // #include "Abell2256UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #include <complex>
 // int main() {
 //     Abell2256UQFFModule mod;
@@ -441,7 +441,7 @@ void Abell2256UQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o abell_sim abell_sim.cpp Abell2256UQFFModule.cpp -lm
-// Sample Output at t=0.2 Gyr: F â‰ˆ -8.32e217 + i (large; approx per framework; dominant real from LENR * x2).
+// Sample Output at t=0.2 Gyr: F ≈ -8.32e217 + i (large; approx per framework; dominant real from LENR * x2).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 11, 2025.
 // ===== MISSING ABELL 2256 BUOYANCY FUNCTION IMPLEMENTATIONS =====
 

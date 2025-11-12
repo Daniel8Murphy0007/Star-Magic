@@ -1,9 +1,9 @@
-﻿// SurfaceMagneticFieldModule.h
+// SurfaceMagneticFieldModule.h
 // Modular C++ implementation of the Surface Magnetic Field (B_s) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes B_s range [1e-4, 0.4] T for Sun; influences B_j in U_g3 magnetic strings (scaled by B_s / B_ref).
-// Pluggable: #include "SurfaceMagneticFieldModule.h"
+// Pluggable: // // // #include "SurfaceMagneticFieldModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // SurfaceMagneticFieldModule mod; mod.computeU_g3_example(0.0); mod.updateVariable("B_s_min", new_value);
-// Variables in std::map; example for Sun at t=0; quiet Sun B_s=1e-4 T ? U_g3?4.5e45 J/mï¿½.
+// Variables in std::map; example for Sun at t=0; quiet Sun B_s=1e-4 T ? U_g3?4.5e45 J/m�.
 // Approximations: B_ref=0.4 T (max sunspot); cos(?_s t ?)=1; P_core=1; E_react=1e46.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
@@ -159,7 +159,7 @@ public:
 #endif // SURFACE_MAGNETIC_FIELD_MODULE_H
 
 // SurfaceMagneticFieldModule.cpp
-#include "SurfaceMagneticFieldModule.h"
+// // // #include "SurfaceMagneticFieldModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults (Sun)
 SurfaceMagneticFieldModule::SurfaceMagneticFieldModule() {
@@ -239,8 +239,8 @@ std::string SurfaceMagneticFieldModule::getEquationText() {
            "U_g3 = k_3 * ? B_j * cos(?_s t ?) * P_core * E_react\n"
            "Where B_s = [1e-4, 0.4] T (Sun surface; quiet to sunspot).\n"
            "B_ref=0.4 T (max); scales string fields by surface B_s.\n"
-           "Example t=0, B_s=0.4 T: B_j?1e3 T, U_g3?1.8e49 J/mï¿½;\n"
-           "B_s=1e-4 T: B_j?0.25 T, U_g3?4.5e45 J/mï¿½ (-4 orders).\n"
+           "Example t=0, B_s=0.4 T: B_j?1e3 T, U_g3?1.8e49 J/m�;\n"
+           "B_s=1e-4 T: B_j?0.25 T, U_g3?4.5e45 J/m� (-4 orders).\n"
            "Role: Baseline magnetic strength for strings; variability in U_g3/disks.\n"
            "UQFF: Surface fields drive cosmic magnetism; extensible for planets.";
 }
@@ -254,20 +254,20 @@ void SurfaceMagneticFieldModule::printVariables() {
 }
 
 // Example usage in base program (snippet)
-// #include "SurfaceMagneticFieldModule.h"
+// // // // #include "SurfaceMagneticFieldModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     SurfaceMagneticFieldModule mod;
 //     double b_min = mod.computeB_s_min();
 //     std::cout << "B_s range: " << b_min << " to " << mod.computeB_s_max() << " T\n";
 //     double u_g3 = mod.computeU_g3_example(0.0, 1e-4);
-//     std::cout << "U_g3 (quiet Sun) = " << u_g3 << " J/mï¿½\n";
+//     std::cout << "U_g3 (quiet Sun) = " << u_g3 << " J/m�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("B_s_min", 5e-5);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o surface_b_test surface_b_test.cpp SurfaceMagneticFieldModule.cpp -lm
-// Sample: B_s [1e-4, 0.4] T; U_g3 quiet?4.5e45 J/mï¿½; scales magnetic influence.
+// Sample: B_s [1e-4, 0.4] T; U_g3 quiet?4.5e45 J/m�; scales magnetic influence.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 SurfaceMagneticFieldModule Evaluation

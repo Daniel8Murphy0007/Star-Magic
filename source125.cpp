@@ -1,10 +1,10 @@
-﻿// Ug3DiskVectorModule.h
+// Ug3DiskVectorModule.h
 // Modular C++ implementation of the Unit Vector in the Ug3 Disk Plane (??_j) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ??_j (unit vector, magnitude=1; e.g., [cos ?_j, sin ?_j, 0]); scales in Universal Magnetism U_m term.
-// Pluggable: #include "Ug3DiskVectorModule.h"
+// Pluggable: // // // #include "Ug3DiskVectorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // Ug3DiskVectorModule mod; mod.computeUmContribution(0.0, 1); mod.updateVariable("theta_j", new_value);
-// Variables in std::map; example for j=1 at t=0, ?_j=0 (??_j=[1,0,0], U_m?2.28e65 J/mï¿½).
-// Approximations: ??_j magnitude=1; 1 - exp=0 at t=0; ?_j / r_j=2.26e10 T mï¿½.
+// Variables in std::map; example for j=1 at t=0, ?_j=0 (??_j=[1,0,0], U_m?2.28e65 J/m�).
+// Approximations: ??_j magnitude=1; 1 - exp=0 at t=0; ?_j / r_j=2.26e10 T m�.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef UG3_DISK_VECTOR_MODULE_H
@@ -163,7 +163,7 @@ public:
 #endif // UG3_DISK_VECTOR_MODULE_H
 
 // Ug3DiskVectorModule.cpp
-#include "Ug3DiskVectorModule.h"
+// // // #include "Ug3DiskVectorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 Ug3DiskVectorModule::Ug3DiskVectorModule() {
@@ -175,7 +175,7 @@ Ug3DiskVectorModule::Ug3DiskVectorModule() {
 
     // Universal constants
     variables["theta_j"] = 0.0;                     // rad (default azimuthal angle)
-    variables["mu_j"] = 3.38e23;                    // Tï¿½m^3 (j=1)
+    variables["mu_j"] = 3.38e23;                    // T�m^3 (j=1)
     variables["r_j"] = 1.496e13;                    // m
     variables["gamma"] = 5e-5 / 86400.0;            // s^-1
     variables["t_n"] = 0.0;                         // s
@@ -252,7 +252,7 @@ std::string Ug3DiskVectorModule::getEquationText() {
     return "U_m = ?_j [ (?_j / r_j) (1 - e^{-? t cos(? t_n)}) \hat{?}_j ] P_SCm E_react (1 + 10^13 f_Heaviside) (1 + f_quasi)\n"
            "Where \hat{?}_j = [cos ?_j, sin ?_j, 0] (unit vector in Ug3 disk plane, |??_j|=1);\n"
            "Specifies azimuthal direction for j-th string in disk (e.g., galactic plane).\n"
-           "Example j=1, ?_j=0, t=0: ??_j=[1,0,0], U_m ?2.28e65 J/mï¿½ (mag=1).\n"
+           "Example j=1, ?_j=0, t=0: ??_j=[1,0,0], U_m ?2.28e65 J/m� (mag=1).\n"
            "Role: Directional geometry for magnetic contributions in disks/nebulae.\n"
            "UQFF: Vector orientation in U_m/U_g3; collimation in jets/disks/formation.";
 }
@@ -272,11 +272,11 @@ void Ug3DiskVectorModule::printVectorAndUm(int j, double t) {
     double um = computeUmContribution(t, j);
     std::cout << "??_" << j << " at ?_j=" << variables["theta_j"] << " rad, t=" << t << " s:\n";
     std::cout << "??_j = [" << std::scientific << phi[0] << ", " << phi[1] << ", " << phi[2] << "] (mag=" << mag << ")\n";
-    std::cout << "U_m contrib = " << um << " J/mï¿½\n";
+    std::cout << "U_m contrib = " << um << " J/m�\n";
 }
 
 // Example usage in base program (snippet)
-// #include "Ug3DiskVectorModule.h"
+// // // // #include "Ug3DiskVectorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     Ug3DiskVectorModule mod;
 //     auto phi = mod.computePhiHat_j(1);
@@ -288,7 +288,7 @@ void Ug3DiskVectorModule::printVectorAndUm(int j, double t) {
 //     return 0;
 // }
 // Compile: g++ -o disk_vector_test disk_vector_test.cpp Ug3DiskVectorModule.cpp -lm
-// Sample: ??_1=[1,0,0] (?=0); U_m?2.28e65 J/mï¿½; directional in disk plane.
+// Sample: ??_1=[1,0,0] (?=0); U_m?2.28e65 J/m�; directional in disk plane.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 Ug3DiskVectorModule Evaluation

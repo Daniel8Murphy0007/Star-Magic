@@ -1,13 +1,13 @@
-﻿
+
 // UQFFBuoyancyModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Buoyancy Equations across M74, Eagle Nebula (M16), M84, Centaurus A, Supernova Survey.
 // This module can be plugged into a base program (e.g., 'uqff_buoyancy_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "UQFFBuoyancyModule.h"
+// Usage in base: // // // // // #include "UQFFBuoyancyModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // UQFFBuoyancyModule mod; mod.computeFBi(system); mod.updateVariable("F_rel", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino, Sweet vac, Kozima drop.
 // Associated text: Outputs descriptive equation string via getEquationText().
-// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low Ï‰_0; x2 from quadratic solver approx; F_rel from 1998 LEP.
+// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low ω_0; x2 from quadratic solver approx; F_rel from 1998 LEP.
 // Multi-system params: M74 M=7.17e41 kg r=9.46e20 m; Eagle M16 M=1e36 kg r=2.36e17 m; M84 M=1.46e45 kg r=3.09e22 m; Centaurus A M=4e41 kg r=3.09e21 m; Supernova Survey (generic M=1e30 kg r=1e10 m).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 22, 2025.
 
@@ -177,7 +177,7 @@ public:
 
 #endif // UQFF_BUOYANCY_MODULE_H
 // SurfaceMagneticFieldModule.cpp
-#include "SurfaceMagneticFieldModule.h"
+// // // #include "SurfaceMagneticFieldModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // Compute B_s minimum (quiet Sun)
 double SurfaceMagneticFieldModule::computeB_s_min() {
     return variables["B_s_min"];
@@ -204,12 +204,12 @@ void SurfaceMagneticFieldModule::updateVariable(const std::string& name, double 
 // UQFFBuoyancyModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Buoyancy Equations across M74, Eagle Nebula (M16), M84, Centaurus A, Supernova Survey.
 // This module can be plugged into a base program (e.g., 'uqff_buoyancy_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "UQFFBuoyancyModule.h"
+// Usage in base: // // // // // #include "UQFFBuoyancyModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // UQFFBuoyancyModule mod; mod.computeFBi(system); mod.updateVariable("F_rel", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino, Sweet vac, Kozima drop.
 // Associated text: Outputs descriptive equation string via getEquationText().
-// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low Ï‰_0; x2 from quadratic solver approx; F_rel from 1998 LEP.
+// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low ω_0; x2 from quadratic solver approx; F_rel from 1998 LEP.
 // Multi-system params: M74 M=7.17e41 kg r=9.46e20 m; Eagle M16 M=1e36 kg r=2.36e17 m; M84 M=1.46e45 kg r=3.09e22 m; Centaurus A M=4e41 kg r=3.09e21 m; Supernova Survey (generic M=1e30 kg r=1e10 m).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 22, 2025.
 #ifndef UQFF_BUOYANCY_MODULE_H
@@ -360,7 +360,7 @@ public:
 };
 #endif // UQFF_BUOYANCY_MODULE_H
 // SurfaceMagneticFieldModule.cpp
-#include "SurfaceMagneticFieldModule.h"
+// // // #include "SurfaceMagneticFieldModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // Compute B_s minimum (quiet Sun)
 double SurfaceMagneticFieldModule::computeB_s_min() {
     return variables["B_s_min"];
@@ -387,12 +387,12 @@ void SurfaceMagneticFieldModule::updateVariable(const std::string& name, double 
 // UQFFBuoyancyModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Buoyancy Equations across M74, Eagle Nebula (M16), M84, Centaurus A, Supernova Survey.
 // This module can be plugged into a base program (e.g., 'uqff_buoyancy_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "UQFFBuoyancyModule.h"
+// Usage in base: // // // // // #include "UQFFBuoyancyModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // UQFFBuoyancyModule mod; mod.computeFBi(system); mod.updateVariable("F_rel", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino, Sweet vac, Kozima drop.
 // Associated text: Outputs descriptive equation string via getEquationText().
-// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low Ï‰_0; x2 from quadratic solver approx; F_rel from 1998 LEP.
+// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low ω_0; x2 from quadratic solver approx; F_rel from 1998 LEP.
 // Multi-system params: M74 M=7.17e41 kg r=9.46e20 m; Eagle M16 M=1e36 kg r=2.36e17 m; M84 M=1.46e45 kg r=3.09e22 m; Centaurus A M=4e41 kg r=3.09e21 m; Supernova Survey (generic M=1e30 kg r=1e10 m).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 22, 2025.
 #ifndef UQFF_BUOYANCY_MODULE_H
@@ -533,7 +533,7 @@ public:
 };
 #endif // UQFF_BUOYANCY_MODULE_H
 // SurfaceMagneticFieldModule.cpp
-#include "SurfaceMagneticFieldModule.h"
+// // // #include "SurfaceMagneticFieldModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // Compute B_s minimum (quiet Sun)
 double SurfaceMagneticFieldModule::computeB_s_min() {
     return variables["B_s_min"];
@@ -558,7 +558,7 @@ void SurfaceMagneticFieldModule::updateVariable(const std::string& name, double 
     }
 }
 // UQFFBuoyancyModule.cpp
-#include "UQFFBuoyancyModule.h"
+// // // // // #include "UQFFBuoyancyModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // Constructor: Initialize all variables with multi-system defaults
 UQFFBuoyancyModule::UQFFBuoyancyModule() {
         enableDynamicTerms = true;
@@ -617,7 +617,7 @@ double UQFFBuoyancyModule::computeCompressedG(const std::string& system, double 
     return 0.0; // Placeholder
 }
 // UQFFBuoyancyModule.cpp
-#include "UQFFBuoyancyModule.h"
+// // // // // #include "UQFFBuoyancyModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with multi-system defaults

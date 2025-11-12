@@ -1,7 +1,7 @@
-﻿// StressEnergyTensorModule.h
+// StressEnergyTensorModule.h
 // Modular C++ implementation of the Stress-Energy Tensor (T_s^{??}) in the Universal Quantum Field Superconductive Framework (UQFF).
-// This module computes T_s^{??} ?1.123e7 J/mï¿½ (diagonal scalar); perturbs A_?? = g_?? + ? T_s^{??} (~1.123e-15).
-// Pluggable: #include "StressEnergyTensorModule.h"
+// This module computes T_s^{??} ?1.123e7 J/m� (diagonal scalar); perturbs A_?? = g_?? + ? T_s^{??} (~1.123e-15).
+// Pluggable: // // // #include "StressEnergyTensorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // StressEnergyTensorModule mod; mod.computeA_mu_nu(); mod.updateVariable("rho_vac_A", new_value);
 // Variables in std::map; diagonal [tt, xx, yy, zz]; example for Sun at t_n=0.
 // Approximations: Diagonal T_s = T_s_base + ?_vac_A; ?=1e-22; g_??=[1,-1,-1,-1].
@@ -124,7 +124,7 @@ private:
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
     std::vector<double> g_mu_nu;  // Background [1, -1, -1, -1]
-    double computeT_s();  // Scalar approx J/mï¿½
+    double computeT_s();  // Scalar approx J/m�
     std::vector<double> computeA_mu_nu();
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
@@ -146,7 +146,7 @@ public:
     void subtractFromVariable(const std::string& name, double delta);
 
     // Core computations
-    double computeT_s();  // 1.123e7 J/mï¿½
+    double computeT_s();  // 1.123e7 J/m�
     double computePerturbation();  // ? * T_s ?1.123e-15
     std::vector<double> computeA_mu_nu();  // Perturbed metric
 
@@ -163,7 +163,7 @@ public:
 #endif // STRESS_ENERGY_TENSOR_MODULE_H
 
 // StressEnergyTensorModule.cpp
-#include "StressEnergyTensorModule.h"
+// // // #include "StressEnergyTensorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 StressEnergyTensorModule::StressEnergyTensorModule() {
@@ -233,10 +233,10 @@ std::vector<double> StressEnergyTensorModule::computeA_mu_nu() {
 // Equation text
 std::string StressEnergyTensorModule::getEquationText() {
     return "A_?? = g_?? + ? T_s^{??}(?_vac,[SCm], ?_vac,[UA], ?_vac,A, t_n)\n"
-           "T_s^{??} ? 1.123e7 J/mï¿½ (diagonal; T_s_base + ?_vac,A =1.27e3 + 1.11e7);\n"
+           "T_s^{??} ? 1.123e7 J/m� (diagonal; T_s_base + ?_vac,A =1.27e3 + 1.11e7);\n"
            "? =1e-22 ? perturbation ?1.123e-15;\n"
            "A_?? ? [1 + 1.123e-15, -1 + 1.123e-15, ...].\n"
-           "In F_U: Aether contrib ~1e-15 J/mï¿½ (negligible vs U_m=2.28e65).\n"
+           "In F_U: Aether contrib ~1e-15 J/m� (negligible vs U_m=2.28e65).\n"
            "Role: Encodes energy-momentum for Aether geometry; [SCm]/[UA] stress in spacetime.\n"
            "UQFF: Perturbs metric for nebular/disk/jet dynamics; GR-compatible vacuum.";
 }
@@ -259,7 +259,7 @@ void StressEnergyTensorModule::printTensorAndMetric() {
     double t_s = computeT_s();
     double pert = computePerturbation();
     auto a_mu_nu = computeA_mu_nu();
-    std::cout << "T_s^{??} (diagonal scalar) = " << std::scientific << t_s << " J/mï¿½\n";
+    std::cout << "T_s^{??} (diagonal scalar) = " << std::scientific << t_s << " J/m�\n";
     std::cout << "Perturbation ? T_s = " << pert << "\n";
     std::cout << "A_??: ";
     for (double val : a_mu_nu) {
@@ -269,11 +269,11 @@ void StressEnergyTensorModule::printTensorAndMetric() {
 }
 
 // Example usage in base program (snippet)
-// #include "StressEnergyTensorModule.h"
+// // // // #include "StressEnergyTensorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     StressEnergyTensorModule mod;
 //     double t_s = mod.computeT_s();
-//     std::cout << "T_s ? " << t_s << " J/mï¿½\n";
+//     std::cout << "T_s ? " << t_s << " J/m�\n";
 //     mod.printTensorAndMetric();
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("rho_vac_A", 1.2e7);
@@ -281,7 +281,7 @@ void StressEnergyTensorModule::printTensorAndMetric() {
 //     return 0;
 // }
 // Compile: g++ -o tensor_test tensor_test.cpp StressEnergyTensorModule.cpp -lm
-// Sample: T_s=1.123e7 J/mï¿½; pert?1.123e-15; A_?? nearly [1,-1,-1,-1].
+// Sample: T_s=1.123e7 J/m�; pert?1.123e-15; A_?? nearly [1,-1,-1,-1].
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 StressEnergyTensorModule Evaluation

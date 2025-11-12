@@ -1,10 +1,10 @@
-﻿// UgIndexModule.h
+// UgIndexModule.h
 // Modular C++ implementation of the Index for Discrete Universal Gravity Ranges (i) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module uses i=1 to 4 to label Ug1-Ug4; computes sum_{i=1}^4 k_i * U_gi for F_U contribution.
-// Pluggable: #include "UgIndexModule.h"
+// Pluggable: // // // #include "UgIndexModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // UgIndexModule mod; mod.computeSumKUgi(); mod.updateVariable("U_g1", new_value);
 // Variables in std::map; defaults for Sun at t=0; i labels: 1=Internal Dipole, 2=Outer Bubble, 3=Magnetic Disk, 4=Star-BH.
-// Approximations: k_i from coupling; sum ?1.42e53 J/mï¿½ (Ug2 dominant).
+// Approximations: k_i from coupling; sum ?1.42e53 J/m� (Ug2 dominant).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef UG_INDEX_MODULE_H
@@ -164,7 +164,7 @@ public:
 #endif // UG_INDEX_MODULE_H
 
 // UgIndexModule.cpp
-#include "UgIndexModule.h"
+// // // #include "UgIndexModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set defaults for Sun at t=0
 UgIndexModule::UgIndexModule() {
@@ -252,7 +252,7 @@ std::string UgIndexModule::getEquationText() {
            "i (dimensionless integer): Labels Ug ranges; i=1: Internal Dipole, i=2: Outer Bubble,\n"
            "i=3: Magnetic Disk, i=4: Star-BH.\n"
            "Discretizes gravity for summation; enables scale-specific modeling.\n"
-           "Example Sun t=0: ? k_i U_gi ?1.42e53 J/mï¿½ (Ug2 dominant).\n"
+           "Example Sun t=0: ? k_i U_gi ?1.42e53 J/m� (Ug2 dominant).\n"
            "Role: Structures Ug contributions; extensible for more ranges.";
 }
 
@@ -281,17 +281,17 @@ void UgIndexModule::printIndexBreakdown() {
             default: label = "Unknown";
         }
         std::cout << "i=" << i << " (" << label << "): U_g" << i << "=" << std::scientific << ugi
-                  << ", k" << i << "=" << ki << ", k_i U_gi=" << kugi << " J/mï¿½\n";
+                  << ", k" << i << "=" << ki << ", k_i U_gi=" << kugi << " J/m�\n";
     }
-    std::cout << "Sum ? k_i U_gi = " << std::scientific << computeSumKUgi() << " J/mï¿½\n";
+    std::cout << "Sum ? k_i U_gi = " << std::scientific << computeSumKUgi() << " J/m�\n";
 }
 
 // Example usage in base program (snippet)
-// #include "UgIndexModule.h"
+// // // // #include "UgIndexModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     UgIndexModule mod;
 //     double sum = mod.computeSumKUgi();
-//     std::cout << "? k_i U_gi = " << sum << " J/mï¿½\n";
+//     std::cout << "? k_i U_gi = " << sum << " J/m�\n";
 //     mod.printIndexBreakdown();
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("U_g3", 2e49);
@@ -299,9 +299,10 @@ void UgIndexModule::printIndexBreakdown() {
 //     return 0;
 // }
 // Compile: g++ -o ug_index_test ug_index_test.cpp UgIndexModule.cpp -lm
-// Sample: Sum ?1.42e53 J/mï¿½; i structures 4 Ug ranges.
+// Sample: Sum ?1.42e53 J/m�; i structures 4 Ug ranges.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 UgIndexModule Evaluation
 
 Strengths :
@@ -321,3 +322,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, clear, and suitable for scientific prototyping and educational use in universal gravity modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+*/

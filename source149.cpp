@@ -1,7 +1,7 @@
-﻿// SgrAStarUQFFModule.h
+// SgrAStarUQFFModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Sagittarius A* SMBH at Milky Way Center Evolution.
 // This module can be plugged into a base program (e.g., 'sgra_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "SgrAStarUQFFModule.h"
+// Usage in base: // // // #include "SgrAStarUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // SgrAStarUQFFModule mod; mod.computeF(t); mod.updateVariable("M", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino.
@@ -176,7 +176,7 @@ public:
 #endif // SGR_A_STAR_UQFF_MODULE_H
 
 // SgrAStarUQFFModule.cpp
-#include "SgrAStarUQFFModule.h"
+// // // #include "SgrAStarUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with Sgr A*-specific values
@@ -427,7 +427,7 @@ void SgrAStarUQFFModule::printVariables() {
 }
 
 // Example usage in base program 'sgra_sim.cpp' (snippet for integration)
-// #include "SgrAStarUQFFModule.h"
+// // // // #include "SgrAStarUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #include <complex>
 // int main() {
 //     SgrAStarUQFFModule mod;

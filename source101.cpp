@@ -1,7 +1,7 @@
-﻿// HeliosphereThicknessModule.h
+// HeliosphereThicknessModule.h
 // Modular C++ implementation of the Heliosphere Thickness Factor (H_SCm) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes H_SCm ?1 (unitless) and its scaling in Universal Gravity U_g2 term.
-// Pluggable: #include "HeliosphereThicknessModule.h"
+// Pluggable: // // // #include "HeliosphereThicknessModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // HeliosphereThicknessModule mod; mod.computeU_g2(0.0, 0.0); mod.updateVariable("H_SCm", new_value);
 // Variables in std::map; example for Sun at t=0, t_n=0, r=R_b=1.496e13 m.
 // Approximations: S(r - R_b)=1; ?_sw v_sw=5001; E_react=1e46.
@@ -158,7 +158,7 @@ public:
 #endif // HELIOSPHERE_THICKNESS_MODULE_H
 
 // HeliosphereThicknessModule.cpp
-#include "HeliosphereThicknessModule.h"
+// // // #include "HeliosphereThicknessModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 HeliosphereThicknessModule::HeliosphereThicknessModule() {
@@ -256,8 +256,8 @@ std::string HeliosphereThicknessModule::getEquationText() {
     return "U_g2 = k_2 * [(?_vac,[UA] + ?_vac,[SCm]) M_s / r^2] * S(r - R_b) * (1 + ?_sw v_sw) * H_SCm * E_react\n"
            "Where H_SCm ?1 (unitless heliosphere thickness factor);\n"
            "Scales outer field bubble gravity for heliopause extent (~120 AU).\n"
-           "Example r=R_b=1.496e13 m, t=0: U_g2 ?1.18e53 J/mï¿½ (H=1);\n"
-           "If H_SCm=1.1: ?1.30e53 J/mï¿½ (+10%).\n"
+           "Example r=R_b=1.496e13 m, t=0: U_g2 ?1.18e53 J/m� (H=1);\n"
+           "If H_SCm=1.1: ?1.30e53 J/m� (+10%).\n"
            "Role: Adjusts [SCm] influence in heliosphere; minimal but flexible for boundary variations.\n"
            "UQFF: Models solar wind dominance; key for nebular/heliospheric dynamics.";
 }
@@ -271,22 +271,23 @@ void HeliosphereThicknessModule::printVariables() {
 }
 
 // Example usage in base program (snippet)
-// #include "HeliosphereThicknessModule.h"
+// // // // #include "HeliosphereThicknessModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     HeliosphereThicknessModule mod;
 //     double h = mod.computeH_SCm();
 //     std::cout << "H_SCm ? " << h << std::endl;
 //     double u_g2 = mod.computeU_g2(0.0, 0.0);
-//     std::cout << "U_g2 = " << u_g2 << " J/mï¿½\n";
+//     std::cout << "U_g2 = " << u_g2 << " J/m�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("H_SCm", 1.1);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o heliosphere_test heliosphere_test.cpp HeliosphereThicknessModule.cpp -lm
-// Sample: H_SCm=1; U_g2 ?1.18e53 J/mï¿½; +10% for H=1.1.
+// Sample: H_SCm=1; U_g2 ?1.18e53 J/m�; +10% for H=1.1.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 HeliosphereThicknessModule Evaluation
 
 Strengths :
@@ -306,3 +307,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, clear, and suitable for scientific prototyping and educational use in heliosphere thickness and gravity modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+*/

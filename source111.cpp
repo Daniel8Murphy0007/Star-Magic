@@ -1,10 +1,10 @@
-﻿// ReciprocationDecayModule.h
+// ReciprocationDecayModule.h
 // Modular C++ implementation of the Reciprocation Decay Rate (?) in the Universal Quantum Field Superconductive Framework (UQFF).
-// This module computes ?=0.00005 day?ï¿½ (~5.8e-10 s?ï¿½); used in exp(-? t cos(? t_n)) for U_m decay.
-// Pluggable: #include "ReciprocationDecayModule.h"
+// This module computes ?=0.00005 day?� (~5.8e-10 s?�); used in exp(-? t cos(? t_n)) for U_m decay.
+// Pluggable: // // // #include "ReciprocationDecayModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // ReciprocationDecayModule mod; mod.computeOneMinusExp(1000.0, 0.0); mod.updateVariable("gamma_day", new_value);
 // Variables in std::map; example for t=1000 days, t_n=0; 1-exp ?0.049.
-// Approximations: cos(? t_n)=1; timescale ~55 years; ?_j / r_j=2.26e10 T mï¿½.
+// Approximations: cos(? t_n)=1; timescale ~55 years; ?_j / r_j=2.26e10 T m�.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef RECIPROCATION_DECAY_MODULE_H
@@ -122,7 +122,7 @@ private:
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
-    double computeGamma_s();  // ? in s?ï¿½
+    double computeGamma_s();  // ? in s?�
     double computeCosPiTn(double t_n);
     double computeExpTerm(double t_day, double t_n);
     double computeOneMinusExp(double t_day, double t_n);
@@ -146,8 +146,8 @@ public:
     void subtractFromVariable(const std::string& name, double delta);
 
     // Core computations
-    double computeGamma_day();  // 0.00005 day?ï¿½
-    double computeGamma_s();    // ~5.8e-10 s?ï¿½
+    double computeGamma_day();  // 0.00005 day?�
+    double computeGamma_s();    // ~5.8e-10 s?�
     double computeCosPiTn(double t_n);  // cos(? t_n)
     double computeExpTerm(double t_day, double t_n);  // exp(-? t cos(? t_n))
     double computeOneMinusExp(double t_day, double t_n);  // 1 - exp(...)
@@ -166,7 +166,7 @@ public:
 #endif // RECIPROCATION_DECAY_MODULE_H
 
 // ReciprocationDecayModule.cpp
-#include "ReciprocationDecayModule.h"
+// // // #include "ReciprocationDecayModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 ReciprocationDecayModule::ReciprocationDecayModule() {
@@ -177,12 +177,12 @@ ReciprocationDecayModule::ReciprocationDecayModule() {
         metadata["version"] = "2.0-Enhanced";
 
     // Universal constants
-    variables["gamma_day"] = 0.00005;               // day?ï¿½
+    variables["gamma_day"] = 0.00005;               // day?�
     variables["day_to_s"] = 86400.0;                // s/day
     variables["t_n"] = 0.0;                         // days
     variables["t_day"] = 0.0;                       // days
     variables["pi"] = 3.141592653589793;
-    variables["mu_over_rj"] = 2.26e10;              // T mï¿½
+    variables["mu_over_rj"] = 2.26e10;              // T m�
     variables["P_SCm"] = 1.0;                       // Normalized
     variables["E_react"] = 1e46;                    // J
     variables["heaviside_f"] = 1e11 + 1.0;          // 1 + 10^13 * 0.01
@@ -223,12 +223,12 @@ void ReciprocationDecayModule::subtractFromVariable(const std::string& name, dou
     addToVariable(name, -delta);
 }
 
-// Compute ? (day?ï¿½)
+// Compute ? (day?�)
 double ReciprocationDecayModule::computeGamma_day() {
     return variables["gamma_day"];
 }
 
-// Compute ? in s?ï¿½
+// Compute ? in s?�
 double ReciprocationDecayModule::computeGamma_s() {
     return computeGamma_day() / variables["day_to_s"];
 }
@@ -252,7 +252,7 @@ double ReciprocationDecayModule::computeOneMinusExp(double t_day, double t_n) {
     return 1.0 - computeExpTerm(t_day, t_n);
 }
 
-// Simplified U_m example (J/mï¿½)
+// Simplified U_m example (J/m�)
 double ReciprocationDecayModule::computeUmExample(double t_day, double t_n, double mu_over_rj) {
     double one_minus_exp = computeOneMinusExp(t_day, t_n);
     double phi_hat = 1.0;
@@ -265,10 +265,10 @@ double ReciprocationDecayModule::computeUmExample(double t_day, double t_n, doub
 
 // Equation text
 std::string ReciprocationDecayModule::getEquationText() {
-    return "? = 0.00005 day?ï¿½ (~5.8e-10 s?ï¿½; timescale ~55 years);\n"
+    return "? = 0.00005 day?� (~5.8e-10 s?�; timescale ~55 years);\n"
            "In U_m: ... (1 - exp(-? t cos(? t_n))) ... (t days, reciprocating decay/growth).\n"
            "Negative cos(? t_n): exp(+? t) >1 (growth, negentropic TRZ).\n"
-           "Example t=1000 days, t_n=0: 1-exp ?0.049, U_m ?1.12e66 J/mï¿½.\n"
+           "Example t=1000 days, t_n=0: 1-exp ?0.049, U_m ?1.12e66 J/m�.\n"
            "UQFF: Slow decay for magnetic strings; cyclic via cos(? t_n) in jets/nebulae/mergers.";
 }
 
@@ -290,15 +290,15 @@ void ReciprocationDecayModule::printDecayEffects(double t_day, double t_n) {
     std::cout << "cos(? t_n) = " << cos_pi << "\n";
     std::cout << "exp(-? t cos(? t_n)) = " << exp_val << "\n";
     std::cout << "1 - exp(...) = " << one_minus << "\n";
-    std::cout << "U_m example contrib = " << um_ex << " J/mï¿½\n";
+    std::cout << "U_m example contrib = " << um_ex << " J/m�\n";
 }
 
 // Example usage in base program (snippet)
-// #include "ReciprocationDecayModule.h"
+// // // // #include "ReciprocationDecayModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     ReciprocationDecayModule mod;
 //     double gamma = mod.computeGamma_day();
-//     std::cout << "? = " << gamma << " day?ï¿½\n";
+//     std::cout << "? = " << gamma << " day?�\n";
 //     mod.printDecayEffects(1000.0, 0.0);
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("gamma_day", 0.0001);
@@ -306,7 +306,7 @@ void ReciprocationDecayModule::printDecayEffects(double t_day, double t_n) {
 //     return 0;
 // }
 // Compile: g++ -o decay_test decay_test.cpp ReciprocationDecayModule.cpp -lm
-// Sample: ?=5e-5 day?ï¿½; t=1000 days: 1-exp?0.049; U_m?1.12e66 J/mï¿½.
+// Sample: ?=5e-5 day?�; t=1000 days: 1-exp?0.049; U_m?1.12e66 J/m�.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 ReciprocationDecayModule Evaluation

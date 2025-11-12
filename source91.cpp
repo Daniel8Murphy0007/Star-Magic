@@ -1,7 +1,7 @@
-﻿// DPMModule.h
+// DPMModule.h
 // Modular C++ implementation of the Birth of Di-Pseudo-Monopole (DPM) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module models the Pre-Big Bang reaction of [SCm] and [UA] in a 26-shell oscillating EM field, yielding 26 resonant sphere centers.
-// Pluggable: #include "DPMModule.h"
+// Pluggable: // // // #include "DPMModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // DPMModule mod; mod.computeDPM(); mod.updateVariable("num_states", 26);
 // Variables in std::map; computes sphere centers (h,k,l,r) for 26 states; resonant points via standing waves.
 // Approximations: 26 centers distributed on unit sphere; r fixed; [SCm]/[UA] energies as scalars; inflation barriers at -1/2 states.
@@ -14,9 +14,12 @@
 #include <string>
 #include <vector>
 #include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+#define _USE_MATH_DEFINES
 #include <iostream>
 #include <iomanip>
-
 
 #include <map>
 #include <vector>
@@ -37,7 +40,8 @@
 // SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
 // ===========================================================================================
 
-class PhysicsTerm {
+class PhysicsTerm
+{
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
     std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
@@ -46,18 +50,17 @@ class PhysicsTerm {
     bool enableLogging;
     double learningRate;
 
-
 public:
     virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double>& params) const = 0;
+    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
     virtual std::string getName() const = 0;
     virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double>& params) const { return true; }
+    virtual bool validate(const std::map<std::string, double> &params) const { return true; }
 };
 
-class DynamicVacuumTerm : public PhysicsTerm {
+class DynamicVacuumTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double amplitude;
@@ -70,23 +73,23 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15) 
+    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15)
         : amplitude(amp), frequency(freq) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
         return amplitude * rho_vac * std::sin(frequency * t);
     }
-    
+
     std::string getName() const override { return "DynamicVacuum"; }
     std::string getDescription() const override { return "Time-varying vacuum energy"; }
 };
 
-class QuantumCouplingTerm : public PhysicsTerm {
+class QuantumCouplingTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double coupling_strength;
@@ -98,17 +101,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
     QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
         double M = params.count("M") ? params.at("M") : 1.989e30;
         double r = params.count("r") ? params.at("r") : 1e4;
         return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
     }
-    
+
     std::string getName() const override { return "QuantumCoupling"; }
     std::string getDescription() const override { return "Non-local quantum effects"; }
 };
@@ -117,13 +120,13 @@ public:
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
 // ===========================================================================================
 
-class DPMModule {
+class DPMModule
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
-    std::vector<std::vector<double>> computeSphereCenters();  // 26 centers [h,k,l]
+    std::vector<std::vector<double>> computeSphereCenters(); // 26 centers [h,k,l]
     std::vector<double> computeResonantPoints(double h, double k, double l, double r);
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
@@ -133,22 +136,20 @@ private:
     bool enableLogging;
     double learningRate;
 
-
-
 public:
     // Constructor: Initialize with UQFF defaults for DPM birth
     DPMModule();
 
     // Dynamic variable operations
-    void updateVariable(const std::string& name, double value);
-    void addToVariable(const std::string& name, double delta);
-    void subtractFromVariable(const std::string& name, double delta);
+    void updateVariable(const std::string &name, double value);
+    void addToVariable(const std::string &name, double delta);
+    void subtractFromVariable(const std::string &name, double delta);
 
     // Core computations
-    std::vector<std::vector<double>> computeDPM();  // Returns 26 sphere centers [[h,k,l], ...]
-    double computeSCmEnergy();  // [SCm] massless metal energy
-    double computeUAEnergy();   // [UA] self-plasmotic vacuum energy
-    double computeResonanceFactor();  // Belly Button cosmic standing resonance
+    std::vector<std::vector<double>> computeDPM(); // Returns 26 sphere centers [[h,k,l], ...]
+    double computeSCmEnergy();                     // [SCm] massless metal energy
+    double computeUAEnergy();                      // [UA] self-plasmotic vacuum energy
+    double computeResonanceFactor();               // Belly Button cosmic standing resonance
 
     // Output descriptive text
     std::string getEquationText();
@@ -163,64 +164,76 @@ public:
 #endif // DPM_MODULE_H
 
 // DPMModule.cpp
-#include "DPMModule.h"
-#include <random>  // For distributing 26 centers
+// // // #include "DPMModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+#include <random> // For distributing 26 centers
 
 // Constructor: Set UQFF defaults for Pre-Big Bang DPM
-DPMModule::DPMModule() {
-        enableDynamicTerms = true;
-        enableLogging = false;
-        learningRate = 0.001;
-        metadata["enhanced"] = "true";
-        metadata["version"] = "2.0-Enhanced";
+DPMModule::DPMModule()
+{
+    enableDynamicTerms = true;
+    enableLogging = false;
+    learningRate = 0.001;
+    metadata["enhanced"] = "true";
+    metadata["version"] = "2.0-Enhanced";
 
     // Universal constants
-    variables["num_states"] = 26.0;                 // 26 EM fields/states
-    variables["r"] = 1.0;                           // Sphere radius (normalized)
-    variables["SCm_amount"] = 1e42;                 // Raw [SCm] amount (arbitrary J)
-    variables["UA_amount"] = 1e42;                  // Raw [UA] amount (arbitrary J)
-    variables["ACP_massive"] = 1.0;                 // 26-field envelope factor
-    variables["a_over_b"] = 6.6743e-11;             // G M / r^2 analog
-    variables["e"] = 1.602e-19;                     // Elementary charge q analog
-    variables["half_state_barrier"] = -0.5;         // High energy superconductive barrier
-    variables["decay_rate"] = 1e-10;                // Trapped UA breakdown rate (s^-1)
-    variables["t_pre_bigbang"] = 0.0;               // Time at birth (s)
+    variables["num_states"] = 26.0;         // 26 EM fields/states
+    variables["r"] = 1.0;                   // Sphere radius (normalized)
+    variables["SCm_amount"] = 1e42;         // Raw [SCm] amount (arbitrary J)
+    variables["UA_amount"] = 1e42;          // Raw [UA] amount (arbitrary J)
+    variables["ACP_massive"] = 1.0;         // 26-field envelope factor
+    variables["a_over_b"] = 6.6743e-11;     // G M / r^2 analog
+    variables["e"] = 1.602e-19;             // Elementary charge q analog
+    variables["half_state_barrier"] = -0.5; // High energy superconductive barrier
+    variables["decay_rate"] = 1e-10;        // Trapped UA breakdown rate (s^-1)
+    variables["t_pre_bigbang"] = 0.0;       // Time at birth (s)
 
     // Higgs/proton stability default
-    variables["Higgs_support"] = 1.0;               // Proton stability factor
+    variables["Higgs_support"] = 1.0; // Proton stability factor
 }
 
 // Update variable
-void DPMModule::updateVariable(const std::string& name, double value) {
-    if (variables.find(name) != variables.end()) {
+void DPMModule::updateVariable(const std::string &name, double value)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] = value;
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with value " << value << std::endl;
         variables[name] = value;
     }
-    if (name == "num_states") {
+    if (name == "num_states")
+    {
         // Ensure integer for centers
         variables[name] = std::round(value);
     }
 }
 
 // Add delta
-void DPMModule::addToVariable(const std::string& name, double delta) {
-    if (variables.find(name) != variables.end()) {
+void DPMModule::addToVariable(const std::string &name, double delta)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] += delta;
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with delta " << delta << std::endl;
         variables[name] = delta;
     }
 }
 
 // Subtract delta
-void DPMModule::subtractFromVariable(const std::string& name, double delta) {
+void DPMModule::subtractFromVariable(const std::string &name, double delta)
+{
     addToVariable(name, -delta);
 }
 
 // Compute 26 sphere centers distributed on unit sphere
-std::vector<std::vector<double>> DPMModule::computeSphereCenters() {
+std::vector<std::vector<double>> DPMModule::computeSphereCenters()
+{
     int n = static_cast<int>(variables["num_states"]);
     std::vector<std::vector<double>> centers(n, std::vector<double>(3, 0.0));
     std::random_device rd;
@@ -228,42 +241,48 @@ std::vector<std::vector<double>> DPMModule::computeSphereCenters() {
     std::uniform_real_distribution<double> theta_dist(0.0, 2 * M_PI);
     std::uniform_real_distribution<double> phi_dist(0.0, M_PI);
 
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; ++i)
+    {
         double theta = theta_dist(gen);
         double phi = phi_dist(gen);
         double r_sphere = variables["r"];
-        centers[i][0] = r_sphere * std::sin(phi) * std::cos(theta);  // h = x
-        centers[i][1] = r_sphere * std::sin(phi) * std::sin(theta);  // k = y
-        centers[i][2] = r_sphere * std::cos(phi);                    // l = z
+        centers[i][0] = r_sphere * std::sin(phi) * std::cos(theta); // h = x
+        centers[i][1] = r_sphere * std::sin(phi) * std::sin(theta); // k = y
+        centers[i][2] = r_sphere * std::cos(phi);                   // l = z
     }
     return centers;
 }
 
 // Compute resonant points for a single sphere (sample points on surface)
-std::vector<double> DPMModule::computeResonantPoints(double h, double k, double l, double r) {
+std::vector<double> DPMModule::computeResonantPoints(double h, double k, double l, double r)
+{
     // Simplified: Return sample point on sphere
-    return {h + r, k, l};  // One resonant point
+    return {h + r, k, l}; // One resonant point
 }
 
 // Compute DPM: 26 centers
-std::vector<std::vector<double>> DPMModule::computeDPM() {
+std::vector<std::vector<double>> DPMModule::computeDPM()
+{
     return computeSphereCenters();
 }
 
 // [SCm] energy (massless metal, extra-universal)
-double DPMModule::computeSCmEnergy() {
+double DPMModule::computeSCmEnergy()
+{
     return variables["SCm_amount"] * variables["ACP_massive"];
 }
 
 // [UA] energy (self-plasmotic vacuum pressed)
-double DPMModule::computeUAEnergy() {
+double DPMModule::computeUAEnergy()
+{
     double ua_base = variables["UA_amount"];
     double breakdown = std::exp(-variables["decay_rate"] * variables["t_pre_bigbang"]);
     return ua_base * breakdown * variables["ACP_massive"];
 }
 
 // Belly Button cosmic standing resonance factor
-double DPMModule::computeResonanceFactor() {
+double DPMModule::computeResonanceFactor()
+{
     double scm = computeSCmEnergy();
     double ua = computeUAEnergy();
     double attraction = variables["a_over_b"] * (scm * ua) / (variables["r"] * variables["r"]);
@@ -271,29 +290,34 @@ double DPMModule::computeResonanceFactor() {
 }
 
 // Equation text
-std::string DPMModule::getEquationText() {
+std::string DPMModule::getEquationText()
+{
     return "Birth of DPM: (x - h)^2 + (y - k)^2 + (z - l)^2 = r^2 for 26 states (centers [h,k,l]).\n"
-           "[SCm] + [UA] in 26-shell EM field → Resonant DPM spheres.\n"
+           "[SCm] + [UA] in 26-shell EM field ? Resonant DPM spheres.\n"
            "Resonance Factor = (G M / r^2) * q * Higgs_support (a/b: GM/r^2, e: q).\n"
-           "Inflation: -1/2 states as high energy barriers; Trapped UA decays exp(-γ t).\n"
+           "Inflation: -1/2 states as high energy barriers; Trapped UA decays exp(-? t).\n"
            "UQFF Model: 26 quantum levels; plasma mediates; Higgs proton stability; [SCm] builds matter.\n"
            "At t_pre=0: Resonance ~1e-11 (normalized); 26 centers on unit sphere.";
 }
 
 // Print variables
-void DPMModule::printVariables() {
+void DPMModule::printVariables()
+{
     std::cout << "Current Variables:\n";
-    for (const auto& pair : variables) {
+    for (const auto &pair : variables)
+    {
         std::cout << pair.first << " = " << std::scientific << pair.second << std::endl;
     }
 }
 
 // Print DPM spheres (centers)
-void DPMModule::printDPMSpheres() {
+void DPMModule::printDPMSpheres()
+{
     auto centers = computeDPM();
     std::cout << "DPM Sphere Centers (26 states, [h,k,l]):\n";
-    for (size_t i = 0; i < centers.size(); ++i) {
-        std::cout << "State " << i+1 << ": [" << std::fixed << std::setprecision(3)
+    for (size_t i = 0; i < centers.size(); ++i)
+    {
+        std::cout << "State " << i + 1 << ": [" << std::fixed << std::setprecision(3)
                   << centers[i][0] << ", " << centers[i][1] << ", " << centers[i][2] << "]\n";
     }
     std::cout << "Resonance Factor: " << std::scientific << computeResonanceFactor() << std::endl;
@@ -302,7 +326,7 @@ void DPMModule::printDPMSpheres() {
 }
 
 // Example usage in base program (snippet)
-// #include "DPMModule.h"
+// // // // #include "DPMModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     DPMModule mod;
 //     auto dpm = mod.computeDPM();
@@ -316,6 +340,7 @@ void DPMModule::printDPMSpheres() {
 // Sample: 26 random centers on unit sphere; Resonance ~1e-11 J; UA decays over t.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 DPMModule Evaluation
 
 Strengths :
@@ -339,3 +364,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, clear, and suitable for scientific prototyping and educational use in DPM birth modeling.It implements the UQFF DPM concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+*/

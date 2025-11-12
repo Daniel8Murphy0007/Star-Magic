@@ -1,7 +1,7 @@
-﻿// SMBHBinaryUQFFModule.h
+// SMBHBinaryUQFFModule.h
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for SMBH Binary Evolution.
 // This module models SMBH binary dynamics via frequency/resonance: DPM core, THz hole pipeline, U_g4i reactive, plasmotic vacuum energy; no SM gravity/magnetics.
-// Usage: #include "SMBHBinaryUQFFModule.h" in base program; SMBHBinaryUQFFModule mod; mod.computeG(t); mod.updateVariable("f_super", new_value);
+// Usage: // // // #include "SMBHBinaryUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; SMBHBinaryUQFFModule mod; mod.computeG(t); mod.updateVariable("f_super", new_value);
 // Variables in std::map for dynamic updates; supports F_env(t) as resonance factors; Aether replaces dark energy.
 // Approximations: psi_integral=1.0; all terms frequency-derived (a = f * ?_P / (2?)); U_g4i reactive freq=1e10 Hz; 2PN waveform simplified to resonance.
 // SMBH Binary params: M1=4e6 Msun, M2=2e6 Msun, total=6e6 Msun, t_coal=1.555e7 s, SNR~475, r_init~9.46e16 m, z=0.1, etc.
@@ -153,7 +153,7 @@ public:
     void addToVariable(const std::string& name, double delta);
     void subtractFromVariable(const std::string& name, double delta);
 
-    // Core computation: g_UQFF(r, t) as freq-derived acceleration m/sï¿½
+    // Core computation: g_UQFF(r, t) as freq-derived acceleration m/s�
     double computeG(double t, double r);
 
     // Output descriptive text of the equation
@@ -166,7 +166,7 @@ public:
 #endif // SMBHBINARY_UQFF_MODULE_H
 
 // SMBHBinaryUQFFModule.cpp
-#include "SMBHBinaryUQFFModule.h"
+// // // #include "SMBHBinaryUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: SMBH Binary-specific values
@@ -194,7 +194,7 @@ SMBHBinaryUQFFModule::SMBHBinaryUQFFModule() {
     variables["r_init"] = 0.1 * ly_val;             // m
     variables["t_coal"] = 1.555e7;                  // s (~180 days)
     variables["z"] = 0.1;                           // Redshift
-    variables["rho"] = 1e-20;                       // kg/mï¿½ (interacting gas)
+    variables["rho"] = 1e-20;                       // kg/m� (interacting gas)
     variables["t"] = variables["t_coal"];           // Default t=coal s
     variables["Delta_x"] = 1e-10;                   // m
     variables["Delta_p"] = variables["hbar"] / variables["Delta_x"];
@@ -209,11 +209,11 @@ SMBHBinaryUQFFModule::SMBHBinaryUQFFModule() {
     variables["f_DPM"] = 1e12;                      // Hz (di-pseudo-monopole)
     variables["f_THz"] = 1e12;                      // THz hole
     variables["A"] = 1e-10;                         // Resonance amplitude
-    variables["k"] = 1e20;                          // m?ï¿½
+    variables["k"] = 1e20;                          // m?�
     variables["omega"] = 2 * variables["pi"] * variables["f_super"]; // rad/s
 
     // Reactive/Plasmotic
-    variables["rho_vac_plasm"] = 1e-9;              // J/mï¿½ (vacuum energy density)
+    variables["rho_vac_plasm"] = 1e-9;              // J/m� (vacuum energy density)
     variables["lambda_I"] = 1.0;
     variables["f_TRZ"] = 0.1;                       // Time-reversal factor
 }
@@ -331,7 +331,7 @@ std::string SMBHBinaryUQFFModule::getEquationText() {
            "f_res(t) = 2? f_super |?|^2; f_DPM(t) = f_DPM ?_vac / c; f_THz(t) = 1e12 sin(? t);\n"
            "U_g4i(t) = f_react ?_I (1 + f_TRZ); ? = A exp(i(k r - ? t));\n"
            "Insights: Freq-driven (51% causal); Aether (f_Aether) replaces dark energy; no SM illusions; 2PN resonance.\n"
-           "Adaptations: AstroGravS LISA data; M1=4e6 Msun, M2=2e6 Msun, t_coal=180 days. Solutions: g ~1.65e-122 m/sï¿½ at t=1.555e7 s (resonance dominant).";
+           "Adaptations: AstroGravS LISA data; M1=4e6 Msun, M2=2e6 Msun, t_coal=180 days. Solutions: g ~1.65e-122 m/s� at t=1.555e7 s (resonance dominant).";
 }
 
 // Print
@@ -343,22 +343,23 @@ void SMBHBinaryUQFFModule::printVariables() {
 }
 
 // Example usage
-// #include "SMBHBinaryUQFFModule.h"
+// // // // #include "SMBHBinaryUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     SMBHBinaryUQFFModule mod;
 //     double t = 1.555e7;  // 180 days
 //     double r = 9.46e16;  // 0.1 ly
 //     double g = mod.computeG(t, r);
-//     std::cout << "g_UQFF = " << g << " m/sï¿½\n";
+//     std::cout << "g_UQFF = " << g << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_super", 1.5 * mod.variables["f_super"]);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o smbh_sim base.cpp SMBHBinaryUQFFModule.cpp -lm
-// Sample Output: g_UQFF ? 1.65e-122 m/sï¿½ (Aether/resonance dominant; freq causal advance).
+// Sample Output: g_UQFF ? 1.65e-122 m/s� (Aether/resonance dominant; freq causal advance).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 SMBHBinaryUQFFModule Evaluation
 
 Strengths :
@@ -381,3 +382,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, flexible, and suitable for scientific prototyping and educational use in SMBH binary resonance modeling.It implements a broad set of frequency - driven physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+*/

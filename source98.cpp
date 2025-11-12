@@ -1,10 +1,10 @@
-Ôªø// UnifiedFieldModule.h
+// UnifiedFieldModule.h
 // Modular C++ implementation of the Unified Field Strength (F_U) in the Universal Quantum Field Superconductive Framework (UQFF).
-// This module computes F_U as normalized vacuum energy density (J/m¬≥) from Ug, Um, Ub, Ui, and Aether terms across 26 quantum levels.
-// Pluggable: #include "UnifiedFieldModule.h"
+// This module computes F_U as normalized vacuum energy density (J/m≥) from Ug, Um, Ub, Ui, and Aether terms across 26 quantum levels.
+// Pluggable: // // // #include "UnifiedFieldModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // UnifiedFieldModule mod; mod.computeFU(double t); mod.updateVariable("U_g1", new_value);
 // Variables in std::map; defaults for Sun at t=0 (level 13); normalization via coupling constants.
-// Approximations: Dominant Um ~2.28e65 J/m¬≥; Aether small; cos(œÄ t_n)=1 at t_n=0.
+// Approximations: Dominant Um ~2.28e65 J/m≥; Aether small; cos(p t_n)=1 at t_n=0.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef UNIFIED_FIELD_MODULE_H
@@ -146,7 +146,7 @@ public:
     void addToVariable(const std::string& name, double delta);
     void subtractFromVariable(const std::string& name, double delta);
 
-    // Core computation: F_U(t) in J/m¬≥
+    // Core computation: F_U(t) in J/m≥
     double computeFU(double t);
 
     // Output descriptive text
@@ -162,7 +162,7 @@ public:
 #endif // UNIFIED_FIELD_MODULE_H
 
 // UnifiedFieldModule.cpp
-#include "UnifiedFieldModule.h"
+// // // #include "UnifiedFieldModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set defaults for Sun at t=0 (level 13)
 UnifiedFieldModule::UnifiedFieldModule() {
@@ -222,7 +222,7 @@ void UnifiedFieldModule::subtractFromVariable(const std::string& name, double de
     addToVariable(name, -delta);
 }
 
-// Compute Ug sum (‚àë U_gi)
+// Compute Ug sum (? U_gi)
 double UnifiedFieldModule::computeUgSum() {
     return variables["U_g1"] + variables["U_g2"] + variables["U_g3"] + variables["U_g4"];
 }
@@ -263,11 +263,11 @@ double UnifiedFieldModule::computeFU(double t) {
 
 // Equation text
 std::string UnifiedFieldModule::getEquationText() {
-    return "F_U = ‚àë [Ug_i + Um + Ub_i + Ui + Aether] * norm(œÅ_vac,[SCm] + œÅ_vac,[UA])\n"
-           "Units: J/m¬≥ (energy density).\n"
-           "Ug: ‚àë U_g1-4 (gravity scales); Um: Magnetic strings; Ub: -Œ≤_i Ug_i ... (buoyancy);\n"
-           "Ui: Inertia resistance; Aether: g_ŒºŒΩ + Œ∑ T_s (perturbed metric).\n"
-           "Normalized across 26 levels; Sun t=0: F_U ‚âà2.28e65 J/m¬≥ (Um dominant).\n"
+    return "F_U = ? [Ug_i + Um + Ub_i + Ui + Aether] * norm(?_vac,[SCm] + ?_vac,[UA])\n"
+           "Units: J/m≥ (energy density).\n"
+           "Ug: ? U_g1-4 (gravity scales); Um: Magnetic strings; Ub: -ﬂ_i Ug_i ... (buoyancy);\n"
+           "Ui: Inertia resistance; Aether: g_µ? + ? T_s (perturbed metric).\n"
+           "Normalized across 26 levels; Sun t=0: F_U ò2.28e65 J/m≥ (Um dominant).\n"
            "Role: Holistic energy density for cosmic/quantum dynamics (nebulae, AGN, mergers).\n"
            "UQFF: Integrates forces; vacuum normalization for scale consistency.";
 }
@@ -290,22 +290,22 @@ void UnifiedFieldModule::printComponentBreakdown(double t) {
     double aether = computeAether();
     double norm = (variables["rho_vac_SCm"] + variables["rho_vac_UA"]);
     std::cout << "F_U Breakdown at t=" << t << " s:\n";
-    std::cout << "Ug sum: " << std::scientific << ug << " J/m¬≥\n";
-    std::cout << "Um: " << um << " J/m¬≥\n";
-    std::cout << "Ub sum: " << ub << " J/m¬≥\n";
-    std::cout << "Ui: " << ui << " J/m¬≥\n";
-    std::cout << "Aether: " << aether << " J/m¬≥\n";
+    std::cout << "Ug sum: " << std::scientific << ug << " J/m≥\n";
+    std::cout << "Um: " << um << " J/m≥\n";
+    std::cout << "Ub sum: " << ub << " J/m≥\n";
+    std::cout << "Ui: " << ui << " J/m≥\n";
+    std::cout << "Aether: " << aether << " J/m≥\n";
     std::cout << "Norm factor: " << norm << "\n";
-    std::cout << "Total F_U: " << fu << " J/m¬≥\n";
+    std::cout << "Total F_U: " << fu << " J/m≥\n";
 }
 
 // Example usage in base program (snippet)
-// #include "UnifiedFieldModule.h"
+// // // // #include "UnifiedFieldModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     UnifiedFieldModule mod;
 //     double t = 0.0;
 //     double fu = mod.computeFU(t);
-//     std::cout << "F_U = " << fu << " J/m¬≥\n";
+//     std::cout << "F_U = " << fu << " J/m≥\n";
 //     mod.printComponentBreakdown(t);
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("U_m", 2.5e65);
@@ -313,9 +313,10 @@ void UnifiedFieldModule::printComponentBreakdown(double t) {
 //     return 0;
 // }
 // Compile: g++ -o unified_test unified_test.cpp UnifiedFieldModule.cpp -lm
-// Sample: F_U ‚âà2.28e65 J/m¬≥ (Um dominant); normalized vacuum density.
+// Sample: F_U ò2.28e65 J/m≥ (Um dominant); normalized vacuum density.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 UnifiedFieldModule Evaluation
 
 Strengths :
@@ -339,3 +340,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, clear, and suitable for scientific prototyping and educational use in unified field modeling.It implements the UQFF unified field concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+*/

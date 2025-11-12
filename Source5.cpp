@@ -1,11 +1,64 @@
 // CelestialBody.h
-#pragma once
 
 #include <string>
 #include <vector>
 #include <map>
 #include <memory>
 #include <functional>
+#include <cmath>
+#include <iostream>
+#include <fstream>
+#include <algorithm>
+#include <numeric>
+
+// ============================================================================
+// Structure Definitions (moved early to resolve forward references)
+// ============================================================================
+
+struct ResonanceParams
+{
+    double fDPM = 1e12;
+    double fTHz = 1e12;
+    double Evac_neb = 7.09e-36;
+    double Evac_ISM = 7.09e-37;
+    double Delta_Evac = 6.381e-36;
+    double Fsuper = 6.287e-19;
+    double UA_SCM = 10;
+    double omega_i = 1e-8;
+    double k4_res = 1.0;
+    double freact = 1e10;
+    double fquantum = 1.445e-17;
+    double fAether = 1.576e-35;
+    double fosc = 4.57e14;
+    double fTRZ = 0.1;
+    double c_res = 3e8;
+};
+
+struct MUGESystem
+{
+    std::string name;
+    double I;
+    double A;
+    double omega1;
+    double omega2;
+    double Vsys;
+    double vexp;
+    double t;
+    double z;
+    double ffluid;
+    double M;
+    double r;
+    double B;
+    double Bcrit;
+    double rho_fluid;
+    double g_local;
+    double M_DM;
+    double delta_rho_rho;
+};
+
+// Function forward declarations
+double compute_compressed_MUGE(const MUGESystem &sys);
+double compute_resonance_MUGE(const MUGESystem &sys, const ResonanceParams &res);
 
 // ============================================================================
 // UQFF 2.0-Enhanced Framework: Self-Expanding Physics Module
@@ -283,7 +336,8 @@ public:
 };
 
 // CelestialBody.cpp
-#include "CelestialBody.h"
+// Note: CelestialBody struct already defined at line 87 above
+// #include "CelestialBody.h"  // Removed - struct defined in this file
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -451,51 +505,11 @@ std::vector<CelestialBody> load_bodies(const std::string &filename)
     return bodies;
 }
 
-// MUGE.h
-#pragma once
+// MUGE.h - Structures defined inline
+// #pragma once  // Removed - not needed in .cpp file
 
-#include <string>
-
-struct ResonanceParams
-{
-    double fDPM = 1e12;
-    double fTHz = 1e12;
-    double Evac_neb = 7.09e-36;
-    double Evac_ISM = 7.09e-37;
-    double Delta_Evac = 6.381e-36;
-    double Fsuper = 6.287e-19;
-    double UA_SCM = 10;
-    double omega_i = 1e-8;
-    double k4_res = 1.0;
-    double freact = 1e10;
-    double fquantum = 1.445e-17;
-    double fAether = 1.576e-35;
-    double fosc = 4.57e14;
-    double fTRZ = 0.1;
-    double c_res = 3e8;
-};
-
-struct MUGESystem
-{
-    std::string name;
-    double I;
-    double A;
-    double omega1;
-    double omega2;
-    double Vsys;
-    double vexp;
-    double t;
-    double z;
-    double ffluid;
-    double M;
-    double r;
-    double B;
-    double Bcrit;
-    double rho_fluid;
-    double g_local;
-    double M_DM;
-    double delta_rho_rho;
-};
+// Note: ResonanceParams and MUGESystem already defined at top of file (lines 15-63)
+// Duplicate definitions removed
 
 // Compressed MUGE term functions
 double compute_compressed_base(const MUGESystem &sys);
@@ -530,7 +544,8 @@ double compute_resonance_MUGE(const MUGESystem &sys, const ResonanceParams &res)
 std::vector<MUGESystem> load_muge_systems(const std::string &filename);
 
 // MUGE.cpp
-#include "MUGE.h"
+// Note: MUGE structures already defined earlier in file
+// #include "MUGE.h"  // Removed - structures defined above
 #include <stdexcept>
 #include <fstream>
 #include <sstream>
@@ -755,8 +770,8 @@ std::vector<MUGESystem> load_muge_systems(const std::string &filename)
     return systems;
 }
 
-// FluidSolver.h
-#pragma once
+// FluidSolver.h - Class defined inline
+// #pragma once  // Removed - not needed in .cpp file
 
 #include <vector>
 
@@ -782,7 +797,8 @@ extern const double visc;
 extern const double force_jet;
 
 // FluidSolver.cpp
-#include "FluidSolver.h"
+// Note: FluidSolver class already defined above
+// #include "FluidSolver.h"  // Removed - class defined in this file
 #include <cmath>
 #include <iostream>
 
@@ -959,15 +975,16 @@ void FluidSolver::print_velocity_field()
     }
 }
 
-// UnitTests.h
-#pragma once
+// UnitTests.h - Function declarations
+// #pragma once  // Removed - not needed in .cpp file
 
 void run_unit_tests();
 
 // UnitTests.cpp
-#include "UnitTests.h"
-#include "CelestialBody.h"
-#include "MUGE.h"
+// Note: All structures already defined earlier in file
+// #include "UnitTests.h"  // Removed - forward declaration above
+// #include "CelestialBody.h"  // Removed - struct defined in this file
+// #include "MUGE.h"  // Removed - structures defined in this file
 #include <cassert>
 #include <cmath>
 
@@ -1264,10 +1281,11 @@ void run_unit_tests()
 #include <fstream>
 #include <iomanip>
 #include <stdexcept>
-#include "CelestialBody.h"
-#include "MUGE.h"
-#include "FluidSolver.h"
-#include "UnitTests.h"
+// Note: All local headers removed - all structures/classes defined earlier in this file
+// #include "CelestialBody.h"  // Removed - struct defined in this file
+// #include "MUGE.h"  // Removed - structures defined in this file
+// #include "FluidSolver.h"  // Removed - class defined in this file
+// #include "UnitTests.h"  // Removed - functions defined in this file
 
 const double PI = 3.141592653589793;
 const double c = 3.0e8;
@@ -1297,7 +1315,7 @@ double beta_i = 0.6;
 double rho_v = 6e-27;
 double C_concentration = 1.0;
 double f_feedback = 0.1;
-const double num_strings = 1e9;
+double num_strings = 1e9; // Changed from const to match extern declaration
 double Ts00 = 1.27e3 + 1.11e7;
 std::vector<std::vector<double>> g_mu_nu = {
     {1.0, 0.0, 0.0, 0.0},

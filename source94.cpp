@@ -1,7 +1,7 @@
-﻿// UgCouplingModule.h
+// UgCouplingModule.h
 // Modular C++ implementation of the Coupling Constants for Ug Ranges (k_i) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes scaled Universal Gravity terms k_i * U_gi for i=1-4 (Ug1-Ug4), with k1=1.5, k2=1.2, k3=1.8, k4=1.0 (unitless).
-// Pluggable: #include "UgCouplingModule.h"
+// Pluggable: // // // #include "UgCouplingModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // UgCouplingModule mod; mod.computeSumK_Ugi(); mod.updateVariable("U_g1", new_value);
 // Variables in std::map; sum contributes to F_U; placeholders for full U_gi equations.
 // Approximations: t_n=0, cos(? t_n)=1; ?_def=0, etc.; example values from Sun at t=0.
@@ -164,7 +164,7 @@ public:
 #endif // UG_COUPLING_MODULE_H
 
 // UgCouplingModule.cpp
-#include "UgCouplingModule.h"
+// // // #include "UgCouplingModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 UgCouplingModule::UgCouplingModule() {
@@ -275,7 +275,7 @@ std::string UgCouplingModule::getEquationText() {
            "U_g2 = k2 * (?_UA + ?_SCm) M_s / r^2 * S(r-R_b) (1+?_sw v_sw) H_SCm E_react;\n"
            "U_g3 = k3 * (?_SCm + ?_UA) ?_g M_s / d_g * cos(? t_n) (1 + f_mag_str);\n"
            "U_g4 = k4 * ?_SCm M_bh / d_g * e^{-? t} cos(? t_n) (1 + f_feedback).\n"
-           "Example Sun t=0: ? k_i U_gi ?1.42e53 J/mï¿½ (Ug2 dominant).\n"
+           "Example Sun t=0: ? k_i U_gi ?1.42e53 J/m� (Ug2 dominant).\n"
            "Role: Scales Ug strengths; normalizes contributions in F_U.";
 }
 
@@ -295,7 +295,7 @@ void UgCouplingModule::printVariables() {
 // Print k_i * U_gi
 void UgCouplingModule::printK_Ugi() {
     auto all = computeAllK_Ugi();
-    std::cout << "Scaled Ug Terms k_i * U_gi (J/mï¿½):\n";
+    std::cout << "Scaled Ug Terms k_i * U_gi (J/m�):\n";
     for (int i = 1; i <= 4; ++i) {
         std::cout << "k" << i << " * U_g" << i << " = " << std::scientific << all[i-1] << std::endl;
     }
@@ -303,11 +303,11 @@ void UgCouplingModule::printK_Ugi() {
 }
 
 // Example usage in base program (snippet)
-// #include "UgCouplingModule.h"
+// // // // #include "UgCouplingModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     UgCouplingModule mod;
 //     double sum = mod.computeSumK_Ugi();
-//     std::cout << "? k_i U_gi = " << sum << " J/mï¿½\n";
+//     std::cout << "? k_i U_gi = " << sum << " J/m�\n";
 //     mod.printK_Ugi();
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("U_g3", 2e49);
@@ -315,9 +315,10 @@ void UgCouplingModule::printK_Ugi() {
 //     return 0;
 // }
 // Compile: g++ -o ug_coupling_test ug_coupling_test.cpp UgCouplingModule.cpp -lm
-// Sample Output: Sum ?1.42e53 J/mï¿½; k3 amplifies Ug3 by 1.8.
+// Sample Output: Sum ?1.42e53 J/m�; k3 amplifies Ug3 by 1.8.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 UgCouplingModule Evaluation
 
 Strengths :
@@ -340,3 +341,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, clear, and suitable for scientific prototyping and educational use in gravity coupling modeling.It implements the UQFF coupling concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+*/

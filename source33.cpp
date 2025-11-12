@@ -1,7 +1,7 @@
-﻿// SGR1745UQFFModule.h
+// SGR1745UQFFModule.h
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF) for SGR 1745-2900 Magnetar Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "SGR1745UQFFModule.h"
+// Usage in base: // // // #include "SGR1745UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // SGR1745UQFFModule mod; mod.computeG(t); mod.updateVariable("M", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Nothing is negligible: Includes all terms - base gravity, Ug1-Ug4 (gravitational subterms), cosmological Lambda, 
@@ -168,7 +168,7 @@ public:
 #endif // SGR1745_UQFF_MODULE_H
 
 // SGR1745UQFFModule.cpp
-#include "SGR1745UQFFModule.h"
+// // // #include "SGR1745UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with SGR 1745-2900-specific values
@@ -218,7 +218,7 @@ SGR1745UQFFModule::SGR1745UQFFModule() {
     // Quantum terms
     variables["Delta_x"] = 1e-10;                   // m (position uncertainty, atomic scale)
     variables["Delta_p"] = variables["hbar"] / variables["Delta_x"];  // Momentum uncertainty (Heisenberg)
-    variables["integral_psi"] = 1.0;                // Normalized <psi|H|psi> dV ≈ E_ground (simplified to 1 for unitless)
+    variables["integral_psi"] = 1.0;                // Normalized <psi|H|psi> dV � E_ground (simplified to 1 for unitless)
 
     // Resonant/oscillatory terms (for bursts/pulsations)
     variables["A"] = 1e-10;                         // Amplitude (arbitrary small)
@@ -228,8 +228,8 @@ SGR1745UQFFModule::SGR1745UQFFModule() {
 
     // Ug subterms (computed dynamically, but init placeholders)
     variables["Ug1"] = 0.0;  // Will be G M / r^2
-    variables["Ug2"] = 0.0;  // d^2 Phi / dt^2 ≈ 0 (negligible)
-    variables["Ug3"] = 0.0;  // G M_moon / r_moon^2 ≈ 0 (no moon)
+    variables["Ug2"] = 0.0;  // d^2 Phi / dt^2 � 0 (negligible)
+    variables["Ug3"] = 0.0;  // G M_moon / r_moon^2 � 0 (no moon)
     variables["Ug4"] = 0.0;  // Ug1 * f_sc, f_sc=1
 
     // Scale factors (from streamlining)
@@ -355,15 +355,15 @@ double SGR1745UQFFModule::computeG(double t) {
 // Get equation text (descriptive)
 std::string SGR1745UQFFModule::getEquationText() {
     return "g_SGR1745(r, t) = (G * M / r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ∫(ψ* H ψ dV) * (2π / t_Hubble) + q (v × B) + ρ_fluid * V * g + "
-           "2 A cos(k x) cos(ω t) + (2π / 13.8) A exp(i (k x - ω t)) + (M_visible + M_DM) * (δρ/ρ + 3 G M / r^3)\n"
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q (v � B) + ?_fluid * V * g + "
+           "2 A cos(k x) cos(? t) + (2p / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (d?/? + 3 G M / r^3)\n"
            "Special Terms:\n"
            "- Quantum: Heisenberg uncertainty with normalized wavefunction integral (ground state approx) for neutron star quantum effects.\n"
            "- Fluid: Crust density-volume-gravity coupling for starquakes.\n"
            "- Resonant: Oscillatory Aether-mediated waves (real part of complex exp) for pulsations/bursts.\n"
            "- DM: Visible mass with density perturbations and curvature term (M_DM=0).\n"
            "- Superconductivity: (1 - B/B_crit) critical for high-field magnetar (~2e10 T).\n"
-           "Solutions: Numerical evaluation at t=1000 yr yields ~1.2e12 m/s² (EM dominant due to B; g_base ~1e11 m/s²; micro terms ~1e-10 to 1e-3).\n"
+           "Solutions: Numerical evaluation at t=1000 yr yields ~1.2e12 m/s� (EM dominant due to B; g_base ~1e11 m/s�; micro terms ~1e-10 to 1e-3).\n"
            "Adaptations for SGR 1745-2900: Galactic Center magnetar with B=2e10 T; P=3.76s spin; Chandra outburst data informs evolution.";
 }
 
@@ -376,12 +376,12 @@ void SGR1745UQFFModule::printVariables() {
 }
 
 // Example usage in base program 'ziqn233h.cpp' (snippet for integration)
-// #include "SGR1745UQFFModule.h"
+// // // // #include "SGR1745UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     SGR1745UQFFModule mod;
 //     double t = 1000 * 3.156e7;  // 1000 years
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
+//     std::cout << "g = " << g << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("B", 2.5e10);  // Update field
 //     mod.addToVariable("f_TRZ", 0.05); // Add to TR factor
@@ -390,9 +390,10 @@ void SGR1745UQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp SGR1745UQFFModule.cpp -lm
-// Sample Output at t=1000 yr: g ≈ 1.2e12 m/s² (varies with updates; quantum/fluid/resonant ~1e-10 to 1e-3, DM ~1e30 * 1e-17 ~1e13 but pert small).
+// Sample Output at t=1000 yr: g � 1.2e12 m/s� (varies with updates; quantum/fluid/resonant ~1e-10 to 1e-3, DM ~1e30 * 1e-17 ~1e13 but pert small).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
+/*
 // Evaluation of SGR1745UQFFModule (Master Universal Gravity Equation for SGR 1745-2900 Magnetar)
 
 **Strengths:**
@@ -411,3 +412,4 @@ void SGR1745UQFFModule::printVariables() {
 
     ** Summary : **
     The module is robust, dynamic, and extensible, supporting runtime updates and changes to all model parameters.Minor improvements in error handling and documentation are recommended for production use.
+*/

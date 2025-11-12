@@ -1,7 +1,7 @@
-﻿// V838MonUQFFModule.h
+// V838MonUQFFModule.h
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for V838 Monocerotis Light Echo Evolution.
 // This module models the light echo intensity evolution, incorporating outburst luminosity, dust scattering, gravitational modulation via Ug1, time-reversal (f_TRZ), and Aether ([UA]) effects.
-// Usage: #include "V838MonUQFFModule.h" in base program; V838MonUQFFModule mod; mod.computeIecho(t); mod.updateVariable("L_outburst", new_value);
+// Usage: // // // #include "V838MonUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; V838MonUQFFModule mod; mod.computeIecho(t); mod.updateVariable("L_outburst", new_value);
 // Variables in std::map for dynamic updates; supports rho_dust(t) modulated by Ug1.
 // Approximations: sigma_scatter=1e-12 m^2; integral normalized; simplified gradient ?(M_s / r); alpha=0.0005; beta=1.0.
 // V838 Mon params: M_s=8 Msun, L_outburst=2.3e38 W, rho_0=1e-22 kg/m^3, d=6.1 kpc, B=1e-5 T, etc.
@@ -160,7 +160,7 @@ public:
 #endif // V838MON_UQFF_MODULE_H
 
 // V838MonUQFFModule.cpp
-#include "V838MonUQFFModule.h"
+// // // #include "V838MonUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: V838 Mon-specific values
@@ -281,7 +281,7 @@ void V838MonUQFFModule::printVariables() {
 }
 
 // Example usage
-// #include "V838MonUQFFModule.h"
+// // // // #include "V838MonUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     V838MonUQFFModule mod;
 //     double t = 3 * 3.156e7;  // 3 years s
@@ -297,6 +297,7 @@ void V838MonUQFFModule::printVariables() {
 // Sample Output: I_echo ? 1e-20 W/m^2 (UA/TRZ advance framework).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 V838MonUQFFModule Evaluation
 
 Strengths :
@@ -318,3 +319,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, flexible, and suitable for scientific prototyping and educational use in light echo modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+*/

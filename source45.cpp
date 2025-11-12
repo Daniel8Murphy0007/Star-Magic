@@ -1,7 +1,7 @@
-﻿// SpiralSupernovaeUQFFModule.h
+// SpiralSupernovaeUQFFModule.h
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF & SM Integration) for Spirals and Supernovae Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "SpiralSupernovaeUQFFModule.h"
+// Usage in base: // // // #include "SpiralSupernovaeUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // SpiralSupernovaeUQFFModule mod; mod.computeG(t); mod.updateVariable("M", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Nothing is negligible: Includes all terms - base gravity with T_spiral, Ug1-Ug4, cosmological Lambda with ?_?, quantum integral, Lorentz q(v x B), fluid rho_fluid V g, resonant oscillatory (cos/exp), DM/visible with perturbations, supernova SN_term.
@@ -166,7 +166,7 @@ public:
 #endif // SPIRAL_SUPERNOVAE_UQFF_MODULE_H
 
 // SpiralSupernovaeUQFFModule.cpp
-#include "SpiralSupernovaeUQFFModule.h"
+// // // #include "SpiralSupernovaeUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with Spirals and Supernovae-specific values
@@ -371,7 +371,7 @@ double SpiralSupernovaeUQFFModule::computeG(double t, double z) {
 // Get equation text (descriptive)
 std::string SpiralSupernovaeUQFFModule::getEquationText() {
     return "g_Spiral_SN(r, t) = (G * M / r^2) * (1 + H(z) * t) * (1 + T_spiral) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 * ?_? / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v ï¿½ B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v � B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2? / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (??/? + 3 G M / r^3) + SN_term\n"
            "Where T_spiral = G * M_gas * M / r^2 * (1 + ?_p * t); SN_term = (L_SN / (4? r^2 c)) * (1 + H(z) * t)\n"
            "Special Terms:\n"
@@ -382,7 +382,7 @@ std::string SpiralSupernovaeUQFFModule::getEquationText() {
            "- Superconductivity: (1 - B/B_crit) for galactic fields.\n"
            "- Spiral Torque: T_spiral for arm evolution.\n"
            "- Supernova: SN_term for expansion probe.\n"
-           "Solutions: At t=5 Gyr, z=0.5, g_Spiral_SN ~1e-10 m/sï¿½ (Lambda/SN dominant; g_base ~1e-10).\n"
+           "Solutions: At t=5 Gyr, z=0.5, g_Spiral_SN ~1e-10 m/s� (Lambda/SN dominant; g_base ~1e-10).\n"
            "Adaptations for Spirals and Supernovae: SH0ES H0=73; ?_p=20 km/s/kpc; L_SN=1e36 W for Ia SN.";
 }
 
@@ -395,13 +395,13 @@ void SpiralSupernovaeUQFFModule::printVariables() {
 }
 
 // Example usage in base program 'ziqn233h.cpp' (snippet for integration)
-// #include "SpiralSupernovaeUQFFModule.h"
+// // // // #include "SpiralSupernovaeUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     SpiralSupernovaeUQFFModule mod;
 //     double t = 5e9 * 3.156e7;  // 5 Gyr
 //     double z = 0.5;            // Typical SN z
 //     double g = mod.computeG(t, z);
-//     std::cout << "g = " << g << " m/sï¿½\n";
+//     std::cout << "g = " << g << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("H0", 74.0);  // Update H0
 //     mod.addToVariable("f_TRZ", 0.05);
@@ -409,9 +409,10 @@ void SpiralSupernovaeUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp SpiralSupernovaeUQFFModule.cpp -lm
-// Sample Output at t=5 Gyr, z=0.5: g ? 1e-10 m/sï¿½ (varies; Lambda/SN dominant).
+// Sample Output at t=5 Gyr, z=0.5: g ? 1e-10 m/s� (varies; Lambda/SN dominant).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
+/*
 // Evaluation of SpiralSupernovaeUQFFModule (UQFF & Standard Model Integration for Spiral Galaxies and Supernovae)
 
 **Strengths:**
@@ -432,3 +433,4 @@ void SpiralSupernovaeUQFFModule::printVariables() {
 
             ** Summary : **
             The module is robust, dynamic, and extensible, supporting runtime updates and changes to all model parameters.It is suitable for advanced UQFF - based and Standard Model modeling of spiral galaxies and supernovae.Minor improvements in error handling, documentation, and physical justification are recommended for production or publication use.
+*/

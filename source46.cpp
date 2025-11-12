@@ -1,7 +1,7 @@
-﻿// NGC6302UQFFModule.h
+// NGC6302UQFFModule.h
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF & SM Integration) for NGC 6302 Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "NGC6302UQFFModule.h"
+// Usage in base: // // // #include "NGC6302UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // NGC6302UQFFModule mod; mod.computeG(t); mod.updateVariable("M", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Nothing is negligible: Includes all terms - base gravity, Ug1-Ug4, cosmological Lambda, quantum integral, Lorentz q(v x B), fluid rho_fluid V g, resonant oscillatory (cos/exp), DM/visible with perturbations, stellar wind W_shock.
@@ -165,7 +165,7 @@ public:
 #endif // NGC6302_UQFF_MODULE_H
 
 // NGC6302UQFFModule.cpp
-#include "NGC6302UQFFModule.h"
+// // // #include "NGC6302UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with NGC 6302-specific values
@@ -356,7 +356,7 @@ double NGC6302UQFFModule::computeG(double t) {
 // Get equation text (descriptive)
 std::string NGC6302UQFFModule::getEquationText() {
     return "g_NGC6302(r, t) = (G * M / r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v ï¿½ B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v � B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2? / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (??/? + 3 G M / r^3) + W_shock\n"
            "Where W_shock = ? * v_wind^2 * (1 + t / t_eject)\n"
            "Special Terms:\n"
@@ -366,7 +366,7 @@ std::string NGC6302UQFFModule::getEquationText() {
            "- DM: Visible+dark mass with perturbations (negligible).\n"
            "- Superconductivity: (1 - B/B_crit) for nebular fields.\n"
            "- Wind Shock: W_shock from central star winds eroding lobes.\n"
-           "Solutions: At t=2000 yr, g_NGC6302 ~1e-10 m/sï¿½ (W_shock/EM dominant; g_base ~1e-12).\n"
+           "Solutions: At t=2000 yr, g_NGC6302 ~1e-10 m/s� (W_shock/EM dominant; g_base ~1e-12).\n"
            "Adaptations for NGC 6302: Bipolar PN with v_wind=100 km/s; z=0.00095; t_eject=2000 yr for ejections.";
 }
 
@@ -379,12 +379,12 @@ void NGC6302UQFFModule::printVariables() {
 }
 
 // Example usage in base program 'ziqn233h.cpp' (snippet for integration)
-// #include "NGC6302UQFFModule.h"
+// // // // #include "NGC6302UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     NGC6302UQFFModule mod;
 //     double t = 2000 * 3.156e7;  // 2000 years
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/sï¿½\n";
+//     std::cout << "g = " << g << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 4e30);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05);  // Add to TR factor
@@ -392,9 +392,10 @@ void NGC6302UQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp NGC6302UQFFModule.cpp -lm
-// Sample Output at t=2000 yr: g ? 1e-10 m/sï¿½ (varies with updates; W_shock/EM dominant).
+// Sample Output at t=2000 yr: g ? 1e-10 m/s� (varies with updates; W_shock/EM dominant).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
+/*
 // Evaluation of NGC6302UQFFModule (UQFF & Standard Model Integration for NGC 6302 Nebula Evolution)
 
 **Strengths:**
@@ -415,3 +416,4 @@ void NGC6302UQFFModule::printVariables() {
 
         ** Summary : **
         The module is robust, dynamic, and extensible, supporting runtime updates and changes to all model parameters.It is suitable for advanced UQFF - based and Standard Model nebular modeling.Minor improvements in error handling, documentation, and physical justification are recommended for production or publication use.
+*/

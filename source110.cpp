@@ -1,7 +1,7 @@
-﻿// OuterFieldBubbleModule.h
+// OuterFieldBubbleModule.h
 // Modular C++ implementation of the Radius of the Outer Field Bubble (R_b) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes R_b=1.496e13 m (100 AU); defines S(r - R_b) step function in Universal Gravity U_g2 term.
-// Pluggable: #include "OuterFieldBubbleModule.h"
+// Pluggable: // // // #include "OuterFieldBubbleModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // OuterFieldBubbleModule mod; mod.computeU_g2(1.5e13); mod.updateVariable("R_b", new_value);
 // Variables in std::map; example for Sun at t=0; S=1 for r >= R_b, 0 otherwise.
 // Approximations: S step=1 at r=R_b; ?_sw v_sw=5001; E_react=1e46.
@@ -159,7 +159,7 @@ public:
 #endif // OUTER_FIELD_BUBBLE_MODULE_H
 
 // OuterFieldBubbleModule.cpp
-#include "OuterFieldBubbleModule.h"
+// // // #include "OuterFieldBubbleModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults (Sun at t=0)
 OuterFieldBubbleModule::OuterFieldBubbleModule() {
@@ -255,7 +255,7 @@ std::string OuterFieldBubbleModule::getEquationText() {
     return "U_g2 = k_2 * [(?_vac,[UA] + ?_vac,[SCm]) M_s / r^2] * S(r - R_b) * (1 + ?_sw v_sw) * H_SCm * E_react\n"
            "Where R_b = 1.496e13 m (100 AU, outer bubble radius);\n"
            "S(r - R_b) = 1 (r >= R_b), 0 otherwise (step function).\n"
-           "Example r=R_b: U_g2 ?1.18e53 J/mï¿½; r < R_b (e.g., 1 AU): U_g2=0.\n"
+           "Example r=R_b: U_g2 ?1.18e53 J/m�; r < R_b (e.g., 1 AU): U_g2=0.\n"
            "Role: Defines external gravity boundary (~heliopause); activates U_g2 beyond R_b.\n"
            "UQFF: Separates internal/external fields; models heliosphere/nebular extent.";
 }
@@ -269,22 +269,23 @@ void OuterFieldBubbleModule::printVariables() {
 }
 
 // Example usage in base program (snippet)
-// #include "OuterFieldBubbleModule.h"
+// // // // #include "OuterFieldBubbleModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     OuterFieldBubbleModule mod;
 //     double rb = mod.computeR_b();
 //     std::cout << "R_b = " << rb << " m (" << mod.computeR_bInAU() << " AU)\n";
 //     double u_g2 = mod.computeU_g2(1.5e13);  // r > R_b
-//     std::cout << "U_g2 (r=1.5e13 m) = " << u_g2 << " J/mï¿½\n";
+//     std::cout << "U_g2 (r=1.5e13 m) = " << u_g2 << " J/m�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("R_b", 2e13);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o bubble_test bubble_test.cpp OuterFieldBubbleModule.cpp -lm
-// Sample: R_b=1.496e13 m (100 AU); U_g2?1.18e53 J/mï¿½ (r>=R_b); 0 inside.
+// Sample: R_b=1.496e13 m (100 AU); U_g2?1.18e53 J/m� (r>=R_b); 0 inside.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 OuterFieldBubbleModule Evaluation
 
 Strengths :
@@ -305,3 +306,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, clear, and suitable for scientific prototyping and educational use in outer field bubble modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+*/

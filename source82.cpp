@@ -1,7 +1,7 @@
-﻿// SMBHUQFFModule.h
+// SMBHUQFFModule.h
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for SMBH Comparison to UQFF.
 // This module models SMBH dynamics in the M-? relation context, incorporating Ug1-Ug4, Ui, Um, pseudo-monopole shifts, reactor efficiency, and vacuum energy densities.
-// Usage: #include "SMBHUQFFModule.h" in base program; SMBHUQFFModule mod; mod.computeG(t, sigma); mod.updateVariable("M_bh", new_value);
+// Usage: // // // #include "SMBHUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; SMBHUQFFModule mod; mod.computeG(t, sigma); mod.updateVariable("M_bh", new_value);
 // Variables in std::map for dynamic updates; supports ranges for M_bh, sigma; excludes SM illusions.
 // Approximations: cosmic_time approx; omega_s galactic scale; E_react exp decay; delta_n for states 1-26.
 // SMBH params: M_bh=1e11-1e14 Msun, sigma=100-1000 km/s, R_bulge=1 kpc, t=4.543e9 yr, z=0-6, etc.
@@ -164,7 +164,7 @@ public:
 #endif // SMBH_UQFF_MODULE_H
 
 // SMBHUQFFModule.cpp
-#include "SMBHUQFFModule.h"
+// // // #include "SMBHUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: SMBH-UQFF specific values
@@ -185,9 +185,9 @@ SMBHUQFFModule::SMBHUQFFModule() {
     double M_sun_val = 1.989e30;                    // kg
 
     // Core UQFF params
-    variables["rho_vac_UA"] = 7.09e-36;             // J/mï¿½
-    variables["rho_vac_SCm"] = 7.09e-37;            // J/mï¿½
-    variables["rho_vac_UA_prime"] = 7.09e-36;       // J/mï¿½
+    variables["rho_vac_UA"] = 7.09e-36;             // J/m�
+    variables["rho_vac_SCm"] = 7.09e-37;            // J/m�
+    variables["rho_vac_UA_prime"] = 7.09e-36;       // J/m�
     variables["mu_0"] = 4 * variables["pi"] * 1e-7; // H/m
     variables["omega_s_sun"] = 2.65e-6;             // rad/s
     variables["k_galactic"] = 2.59e-9;              // scale factor
@@ -316,7 +316,7 @@ std::string SMBHUQFFModule::getEquationText() {
            "U_g1 = G M_s / r^2 * ?_n cos(?_s,sun t); ?_n = ? (2?)^{n/6}\n"
            "?_s(?) = ? / R_bulge; ?_vac,UA':SCm = ?_UA' (?_SCm / ?_UA)^n exp(-exp(-? - t/yr))\n"
            "Insights: M-? via UQFF resonance; f_feedback=0.063 calibrates metal retention; no SM illusions.\n"
-           "Adaptations: ROMULUS25 sim; M_bh=1e11-1e14 Msun; ?=100-1000 km/s. Solutions: g ~1e-10 m/sï¿½ (Ug1/Um dominant).";
+           "Adaptations: ROMULUS25 sim; M_bh=1e11-1e14 Msun; ?=100-1000 km/s. Solutions: g ~1e-10 m/s� (Ug1/Um dominant).";
 }
 
 // Print
@@ -328,22 +328,23 @@ void SMBHUQFFModule::printVariables() {
 }
 
 // Example usage
-// #include "SMBHUQFFModule.h"
+// // // // #include "SMBHUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     SMBHUQFFModule mod;
 //     double t = 4.543e9 * 3.156e7;  // 4.543 Gyr
 //     double sigma = 200e3;  // 200 km/s
 //     double g = mod.computeG(t, sigma);
-//     std::cout << "g_UQFF = " << g << " m/sï¿½\n";
+//     std::cout << "g_UQFF = " << g << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M_bh", 1e13 * 1.989e30);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o smbh_uqff base.cpp SMBHUQFFModule.cpp -lm
-// Sample Output: g_UQFF ~ 1e-10 m/sï¿½ (resonance/feedback dominant; UQFF advances M-?).
+// Sample Output: g_UQFF ~ 1e-10 m/s� (resonance/feedback dominant; UQFF advances M-?).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 SMBHUQFFModule Evaluation
 
 Strengths :
@@ -365,3 +366,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, flexible, and suitable for scientific prototyping and educational use in SMBH and M - ? relation modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+*/

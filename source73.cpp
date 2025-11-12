@@ -1,7 +1,7 @@
-﻿// NGC1300UQFFModule.h
+// NGC1300UQFFModule.h
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for Barred Spiral Galaxy NGC 1300 Evolution.
 // This module models NGC 1300's gravitational dynamics, incorporating bar-driven gas funneling, spiral arm density waves, star formation, dust lanes, and dark matter.
-// Usage: #include "NGC1300UQFFModule.h" in base program; NGC1300UQFFModule mod; mod.computeG(t); mod.updateVariable("SFR", new_value);
+// Usage: // // // #include "NGC1300UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; NGC1300UQFFModule mod; mod.computeG(t); mod.updateVariable("SFR", new_value);
 // Variables in std::map for dynamic updates; supports F_env(t) with bar and wave terms.
 // Approximations: psi_integral normalized to 1.0; H(t,z) with Omega_m=0.3, Omega_Lambda=0.7; no AGN terms.
 // NGC 1300 params: M=1e11 Msun, r=11.79 kpc, SFR=1 Msun/yr, v_arm=200 km/s, B=1e-5 T, z=0.005, etc.
@@ -169,7 +169,7 @@ public:
 #endif // NGC1300_UQFF_MODULE_H
 
 // NGC1300UQFFModule.cpp
-#include "NGC1300UQFFModule.h"
+// // // #include "NGC1300UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: NGC 1300-specific values
@@ -425,7 +425,7 @@ std::string NGC1300UQFFModule::getEquationText() {
            "F_bar = 0.1 G M / r^2; F_wave = ? v_arm^2; U_g1 = ?_dipole * B; U_g2 = B_super^2 / (2 ?0);\n"
            "U_g3' = G M_bar / r_bar^2; U_g4 = k4 * E_react(t); U_i = ?_I * (?_SCm/?_UA) * ?_i * cos(? t_n) * (1 + F_RZ);\n"
            "?_total = A exp(-r^2/(2?^2)) exp(i(m? - ? t)) + bar terms; Insights: Attractive (g_base, Ug1, Ug3') vs. Repulsive (U_g2, ?) advance UQFF.\n"
-           "Adaptations: Hubble ACS 2004 data; SFR=1 Msun/yr; M=1e11 Msun. Solutions: g ~2e36 m/sï¿½ at t=1 Gyr (DM/fluid dominant).";
+           "Adaptations: Hubble ACS 2004 data; SFR=1 Msun/yr; M=1e11 Msun. Solutions: g ~2e36 m/s� at t=1 Gyr (DM/fluid dominant).";
 }
 
 // Print
@@ -437,29 +437,30 @@ void NGC1300UQFFModule::printVariables() {
 }
 
 // Example usage
-// #include "NGC1300UQFFModule.h"
+// // // // #include "NGC1300UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     NGC1300UQFFModule mod;
 //     double t = 1e9 * 3.156e7;  // 1 Gyr
 //     double r = 5e3 * 3.086e19;  // 5 kpc
 //     double g = mod.computeG(t, r);
-//     std::cout << "g_NGC1300 = " << g << " m/sï¿½\n";
+//     std::cout << "g_NGC1300 = " << g << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("SFR", 2 * mod.variables["SFR"]);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o ngc1300_sim base.cpp NGC1300UQFFModule.cpp -lm
-// Sample Output: g_NGC1300 ~ 2e36 m/sï¿½ (env/fluid dominant; repulsive terms advance framework).
+// Sample Output: g_NGC1300 ~ 2e36 m/s� (env/fluid dominant; repulsive terms advance framework).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 NGC1300UQFFModule Evaluation
 
 Strengths :
 -Modular, extensible design for modeling NGC 1300 galaxy gravity, including bar - driven gas funneling, spiral arm density waves, star formation, dust lanes, and dark matter.
 - Comprehensive physics : gravity, cosmological expansion, magnetic fields, environmental / bar / wave effects, quantum, fluid, and DM terms.
 - Dynamic variable management via std::map enables runtime updates and system adaptation.
-- Clear separation of computation functions(e.g., Ug1ï¿½Ug4, F_env, quantum, fluid, DM), aiding maintainability.
+- Clear separation of computation functions(e.g., Ug1�Ug4, F_env, quantum, fluid, DM), aiding maintainability.
 - NGC 1300 - specific parameters are initialized for realistic simulation; supports easy modification.
 - Output functions for equation text and variable state support debugging and documentation.
 
@@ -474,3 +475,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, flexible, and suitable for scientific prototyping and educational use in galactic dynamics modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+*/

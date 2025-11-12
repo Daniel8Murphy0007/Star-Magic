@@ -1,7 +1,7 @@
-﻿// CompressedResonanceUQFFModule.h
+// CompressedResonanceUQFFModule.h
 // Modular C++ implementation of the UQFF Compressed and Resonance Equations.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "CompressedResonanceUQFFModule.h"
+// Usage in base: // // // #include "CompressedResonanceUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // CompressedResonanceUQFFModule mod; mod.computeCompressedResTerm(t, B); mod.updateVariable("f_DPM", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Nothing is negligible: Includes compressed terms (streamlined DPM, THz, vac_diff, super) + resonance (aether, U_g4i, osc, quantum, fluid, exp).
@@ -161,7 +161,7 @@ public:
 #endif // COMPRESSED_RESONANCE_UQFF_MODULE_H
 
 // CompressedResonanceUQFFModule.cpp
-#include "CompressedResonanceUQFFModule.h"
+// // // #include "CompressedResonanceUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with UQFF-specific values for compressed/resonance
@@ -294,7 +294,7 @@ std::string CompressedResonanceUQFFModule::getEquationText() {
            "Full: g_comp_res = (a_comp + a_res) * SC_int * (1 + f_TRZ)\n"
            "Where SC_int = (1 - B / B_crit) * f_sc\n"
            "Special Terms: UQFF compressed/resonance via plasmotic vacuum; no SM; for systems 10-16.\n"
-           "Solutions: Example g_comp_res ~1e-40 m/sï¿½ (micro-scale).\n"
+           "Solutions: Example g_comp_res ~1e-40 m/s� (micro-scale).\n"
            "Adaptations: Scaled frequencies for nebulae/SMBH/starbirth.";
 }
 
@@ -307,13 +307,13 @@ void CompressedResonanceUQFFModule::printVariables() {
 }
 
 // Example usage in base program 'ziqn233h.cpp' (snippet for integration)
-// #include "CompressedResonanceUQFFModule.h"
+// // // // #include "CompressedResonanceUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     CompressedResonanceUQFFModule mod;
 //     double t = 1e9 * 3.156e7;  // 1 Gyr
 //     double B = 1e-5;           // T
 //     double g_comp_res = mod.computeCompressedResTerm(t, B);
-//     std::cout << "g_comp_res = " << g_comp_res << " m/sï¿½\n";
+//     std::cout << "g_comp_res = " << g_comp_res << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_DPM", 1.1e12);  // Update
 //     mod.addToVariable("f_TRZ", 0.05);
@@ -321,9 +321,10 @@ void CompressedResonanceUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp CompressedResonanceUQFFModule.cpp -lm
-// Sample Output: g_comp_res ? 1e-40 m/sï¿½ (varies; micro-scale compressed/resonance).
+// Sample Output: g_comp_res ? 1e-40 m/s� (varies; micro-scale compressed/resonance).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
+/*
 // Evaluation of CompressedResonanceUQFFModule (UQFF Compressed & Resonance Terms)
 
 **Strengths:**
@@ -343,3 +344,4 @@ void CompressedResonanceUQFFModule::printVariables() {
 
     ** Summary : **
     The module is robust, dynamic, and extensible, supporting runtime updates and changes to all model parameters.It is suitable for advanced UQFF - based compressed and resonance modeling.Minor improvements in error handling, documentation, and physical justification are recommended for production or publication use.
+*/

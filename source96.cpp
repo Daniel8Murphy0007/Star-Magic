@@ -1,10 +1,10 @@
-Ôªø// GalacticDistanceModule.h
+// GalacticDistanceModule.h
 // Modular C++ implementation of the Distance from Galactic Center (d_g) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes d_g=2.55e20 m (~27,000 ly) and conversions; scales M_bh / d_g in U_bi and Ug4.
-// Pluggable: #include "GalacticDistanceModule.h"
+// Pluggable: // // // #include "GalacticDistanceModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // GalacticDistanceModule mod; mod.computeMbhOverDg(); mod.updateVariable("d_g", new_value);
 // Variables in std::map; example for Sun at t=0, t_n=0.
-// Approximations: cos(œÄ t_n)=1; Œµ_sw * œÅ_vac,sw ‚âà0; Œ±=0.001 s^-1; f_feedback=0.1.
+// Approximations: cos(p t_n)=1; e_sw * ?_vac,sw ò0; a=0.001 s^-1; f_feedback=0.1.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef GALACTIC_DISTANCE_MODULE_H
@@ -164,7 +164,7 @@ public:
 #endif // GALACTIC_DISTANCE_MODULE_H
 
 // GalacticDistanceModule.cpp
-#include "GalacticDistanceModule.h"
+// // // #include "GalacticDistanceModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 GalacticDistanceModule::GalacticDistanceModule() {
@@ -177,7 +177,7 @@ GalacticDistanceModule::GalacticDistanceModule() {
     // Universal constants
     variables["c"] = 2.998e8;                       // m/s
     variables["year_to_s"] = 3.156e7;               // s/yr
-    variables["ly_to_m"] = variables["c"] * variables["year_to_s"];  // ‚âà9.461e15 m/ly
+    variables["ly_to_m"] = variables["c"] * variables["year_to_s"];  // ò9.461e15 m/ly
     variables["pc_to_ly"] = 3.262;                  // ly/pc
     variables["pi"] = 3.141592653589793;
 
@@ -271,11 +271,11 @@ double GalacticDistanceModule::computeU_g4() {
 
 // Equation text
 std::string GalacticDistanceModule::getEquationText() {
-    return "U_bi = -Œ≤_i U_gi Œ©_g (M_bh / d_g) (1 + Œµ_sw œÅ_vac,sw) U_UA cos(œÄ t_n)\n"
-           "U_g4 = k_4 (œÅ_vac,[SCm] M_bh / d_g) e^{-Œ± t} cos(œÄ t_n) (1 + f_feedback)\n"
+    return "U_bi = -ﬂ_i U_gi O_g (M_bh / d_g) (1 + e_sw ?_vac,sw) U_UA cos(p t_n)\n"
+           "U_g4 = k_4 (?_vac,[SCm] M_bh / d_g) e^{-a t} cos(p t_n) (1 + f_feedback)\n"
            "Where d_g = 2.55e20 m (~27,000 ly / 8,260 pc; Sun to Sgr A*).\n"
-           "M_bh / d_g ‚âà3.20e16 kg/m;\n"
-           "Example U_b1 ‚âà -1.94e27 J/m¬≥; U_g4 ‚âà2.50e-20 J/m¬≥ (t_n=0).\n"
+           "M_bh / d_g ò3.20e16 kg/m;\n"
+           "Example U_b1 ò -1.94e27 J/m≥; U_g4 ò2.50e-20 J/m≥ (t_n=0).\n"
            "Role: Scales SMBH influence on buoyancy/Ug4; galactic dynamics in nebulae/disks.\n"
            "UQFF: Enables merger resolution (final parsec); star formation modulation.";
 }
@@ -289,22 +289,23 @@ void GalacticDistanceModule::printVariables() {
 }
 
 // Example usage in base program (snippet)
-// #include "GalacticDistanceModule.h"
+// // // // #include "GalacticDistanceModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     GalacticDistanceModule mod;
 //     double dg_ly = mod.computeDgInLy();
-//     std::cout << "d_g ‚âà " << dg_ly << " ly\n";
+//     std::cout << "d_g ò " << dg_ly << " ly\n";
 //     double u_b1 = mod.computeU_b1();
-//     std::cout << "U_b1 = " << u_b1 << " J/m¬≥\n";
+//     std::cout << "U_b1 = " << u_b1 << " J/m≥\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("d_g", 2.6e20);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o galactic_test galactic_test.cpp GalacticDistanceModule.cpp -lm
-// Sample: d_g ‚âà2.70e4 ly; U_b1 ‚âà -1.94e27 J/m¬≥; scales SMBH at galactic distances.
+// Sample: d_g ò2.70e4 ly; U_b1 ò -1.94e27 J/m≥; scales SMBH at galactic distances.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 GalacticDistanceModule Evaluation
 
 Strengths :
@@ -327,3 +328,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, clear, and suitable for scientific prototyping and educational use in galactic distance modeling.It implements the UQFF distance concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+*/

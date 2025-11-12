@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ================================================================================================
  * Header: GalaxyNGC1792.h
  *
@@ -27,7 +27,8 @@
  *   - Computes g_NGC1792(r, t) with every term explicitly included.
  *
  * Author: Encoded by Grok (xAI), based on Daniel T. Murphy's UQFF manuscript.
- * Date: October 08, 2025
+ * Date: October 08, 2025
+
  * Enhanced: November 04, 2025 - Added self-expanding capabilities
  * Copyright: Daniel T. Murphy, daniel.murphy00@gmail.com
  * ================================================================================================
@@ -37,9 +38,12 @@
 #define GALAXY_NGC_1792_H
 
 #include <iostream>
+#define _USE_MATH_DEFINES
 #include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 #include <iomanip>
-
 
 #include <map>
 #include <vector>
@@ -60,7 +64,8 @@
 // SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
 // ===========================================================================================
 
-class PhysicsTerm {
+class PhysicsTerm
+{
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
     std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
@@ -69,18 +74,17 @@ class PhysicsTerm {
     bool enableLogging;
     double learningRate;
 
-
 public:
     virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double>& params) const = 0;
+    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
     virtual std::string getName() const = 0;
     virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double>& params) const { return true; }
+    virtual bool validate(const std::map<std::string, double> & /* params */) const { return true; }
 };
 
-class DynamicVacuumTerm : public PhysicsTerm {
+class DynamicVacuumTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double amplitude;
@@ -93,23 +97,23 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15) 
+    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15)
         : amplitude(amp), frequency(freq) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
         return amplitude * rho_vac * std::sin(frequency * t);
     }
-    
+
     std::string getName() const override { return "DynamicVacuum"; }
     std::string getDescription() const override { return "Time-varying vacuum energy"; }
 };
 
-class QuantumCouplingTerm : public PhysicsTerm {
+class QuantumCouplingTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double coupling_strength;
@@ -121,17 +125,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
     QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
         double M = params.count("M") ? params.at("M") : 1.989e30;
         double r = params.count("r") ? params.at("r") : 1e4;
         return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
     }
-    
+
     std::string getName() const override { return "QuantumCoupling"; }
     std::string getDescription() const override { return "Non-local quantum effects"; }
 };
@@ -140,50 +144,50 @@ public:
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
 // ===========================================================================================
 
-class GalaxyNGC1792 {
+class GalaxyNGC1792
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     // Core parameters (mutable for updates)
-    double G;               // Gravitational constant
-    double M0;              // Initial mass (kg)
-    double r;               // Radius (m)
-    double Hz;              // Hubble parameter at z (s^-1)
-    double B;               // Static magnetic field (T)
-    double B_crit;          // Critical B field (T)
-    double Lambda;          // Cosmological constant
-    double c_light;         // Speed of light
-    double q_charge;        // Charge (proton)
-    double gas_v;           // Gas velocity for EM (m/s)
-    double f_TRZ;           // Time-reversal factor
-    double SFR_factor;      // Star formation rate factor (dimensionless)
-    double tau_SF;          // Star formation timescale (s)
-    double rho_wind;        // Wind density (kg/m^3)
-    double v_wind;          // Wind velocity (m/s)
-    double rho_fluid;       // Fluid density (kg/m^3)
-    double rho_vac_UA;      // UA vacuum density (J/m^3)
-    double rho_vac_SCm;     // SCm vacuum density (J/m^3)
-    double scale_EM;        // EM scaling factor
-    double proton_mass;     // Proton mass for EM acceleration
-    double z_gal;           // Galaxy redshift
+    double G;           // Gravitational constant
+    double M0;          // Initial mass (kg)
+    double r;           // Radius (m)
+    double Hz;          // Hubble parameter at z (s^-1)
+    double B;           // Static magnetic field (T)
+    double B_crit;      // Critical B field (T)
+    double Lambda;      // Cosmological constant
+    double c_light;     // Speed of light
+    double q_charge;    // Charge (proton)
+    double gas_v;       // Gas velocity for EM (m/s)
+    double f_TRZ;       // Time-reversal factor
+    double SFR_factor;  // Star formation rate factor (dimensionless)
+    double tau_SF;      // Star formation timescale (s)
+    double rho_wind;    // Wind density (kg/m^3)
+    double v_wind;      // Wind velocity (m/s)
+    double rho_fluid;   // Fluid density (kg/m^3)
+    double rho_vac_UA;  // UA vacuum density (J/m^3)
+    double rho_vac_SCm; // SCm vacuum density (J/m^3)
+    double scale_EM;    // EM scaling factor
+    double proton_mass; // Proton mass for EM acceleration
+    double z_gal;       // Galaxy redshift
 
     // Additional parameters for full inclusion of terms
-    double hbar;            // Reduced Planck's constant
-    double t_Hubble;        // Hubble time (s)
-    double delta_x;         // Position uncertainty (m)
-    double delta_p;         // Momentum uncertainty (kg m/s)
-    double integral_psi;    // Wavefunction integral approximation
-    double A_osc;           // Oscillatory amplitude (m/s^2)
-    double k_osc;           // Wave number (1/m)
-    double omega_osc;       // Angular frequency (rad/s)
-    double x_pos;           // Position for oscillation (m)
-    double t_Hubble_gyr;    // Hubble time in Gyr
-    double M_DM_factor;     // Dark matter mass fraction
+    double hbar;               // Reduced Planck's constant
+    double t_Hubble;           // Hubble time (s)
+    double delta_x;            // Position uncertainty (m)
+    double delta_p;            // Momentum uncertainty (kg m/s)
+    double integral_psi;       // Wavefunction integral approximation
+    double A_osc;              // Oscillatory amplitude (m/s^2)
+    double k_osc;              // Wave number (1/m)
+    double omega_osc;          // Angular frequency (rad/s)
+    double x_pos;              // Position for oscillation (m)
+    double t_Hubble_gyr;       // Hubble time in Gyr
+    double M_DM_factor;        // Dark matter mass fraction
     double delta_rho_over_rho; // Density perturbation fraction
 
     // Computed caches (updated on demand)
-    double ug1_base;        // Cached Ug1 for initial M0
+    double ug1_base; // Cached Ug1 for initial M0
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
     std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
@@ -192,11 +196,10 @@ private:
     bool enableLogging;
     double learningRate;
 
-
-
 public:
     // Constructor with default UQFF values
-    GalaxyNGC1792() {
+    GalaxyNGC1792()
+    {
         enableDynamicTerms = true;
         enableLogging = false;
         learningRate = 0.001;
@@ -207,24 +210,26 @@ public:
     }
 
     // Destructor (empty)
-    ~GalaxyNGC1792() {
+    ~GalaxyNGC1792()
+    {
         enableDynamicTerms = true;
         enableLogging = false;
         learningRate = 0.001;
         metadata["enhanced"] = "true";
         metadata["version"] = "2.0-Enhanced";
-}
+    }
 
     // Initialization method (called in constructor)
-    void initializeDefaults() {
+    void initializeDefaults()
+    {
         G = 6.6743e-11;
         double M_sun = 1.989e30;
         M0 = 1e10 * M_sun;
         double ly_to_m = 9.461e15;
         r = 80000.0 * ly_to_m;
         z_gal = 0.0095;
-        double Hz_kms = 70 * sqrt(0.3 * pow(1 + z_gal, 3) + 0.7);  // km/s/Mpc
-        Hz = (Hz_kms * 1000 / 3.086e19);  // s^-1
+        double Hz_kms = 70 * sqrt(0.3 * pow(1 + z_gal, 3) + 0.7); // km/s/Mpc
+        Hz = (Hz_kms * 1000 / 3.086e19);                          // s^-1
         B = 1e-5;
         B_crit = 1e11;
         Lambda = 1.1e-52;
@@ -232,7 +237,7 @@ public:
         q_charge = 1.602e-19;
         gas_v = 1e5;
         f_TRZ = 0.1;
-        SFR_factor = 10.0 / (1e10);  // Normalized SFR
+        SFR_factor = 10.0 / (1e10); // Normalized SFR
         tau_SF = 100e6 * 3.156e7;
         rho_wind = 1e-21;
         v_wind = 2e6;
@@ -260,47 +265,149 @@ public:
     }
 
     // Cache update for efficiency (call after parameter changes)
-    void updateCache() {
+    void updateCache()
+    {
         ug1_base = (G * M0) / (r * r);
     }
 
     // Universal setter for any variable (by name, for flexibility)
-    bool setVariable(const std::string& varName, double newValue) {
-        if (varName == "G") { G = newValue; }
-        else if (varName == "M0") { M0 = newValue; }
-        else if (varName == "r") { r = newValue; }
-        else if (varName == "Hz") { Hz = newValue; }
-        else if (varName == "B") { B = newValue; }
-        else if (varName == "B_crit") { B_crit = newValue; }
-        else if (varName == "Lambda") { Lambda = newValue; }
-        else if (varName == "c_light") { c_light = newValue; }
-        else if (varName == "q_charge") { q_charge = newValue; }
-        else if (varName == "gas_v") { gas_v = newValue; }
-        else if (varName == "f_TRZ") { f_TRZ = newValue; }
-        else if (varName == "SFR_factor") { SFR_factor = newValue; }
-        else if (varName == "tau_SF") { tau_SF = newValue; }
-        else if (varName == "rho_wind") { rho_wind = newValue; }
-        else if (varName == "v_wind") { v_wind = newValue; }
-        else if (varName == "rho_fluid") { rho_fluid = newValue; }
-        else if (varName == "rho_vac_UA") { rho_vac_UA = newValue; }
-        else if (varName == "rho_vac_SCm") { rho_vac_SCm = newValue; }
-        else if (varName == "scale_EM") { scale_EM = newValue; }
-        else if (varName == "proton_mass") { proton_mass = newValue; }
-        else if (varName == "z_gal") { z_gal = newValue; }
+    bool setVariable(const std::string &varName, double newValue)
+    {
+        if (varName == "G")
+        {
+            G = newValue;
+        }
+        else if (varName == "M0")
+        {
+            M0 = newValue;
+        }
+        else if (varName == "r")
+        {
+            r = newValue;
+        }
+        else if (varName == "Hz")
+        {
+            Hz = newValue;
+        }
+        else if (varName == "B")
+        {
+            B = newValue;
+        }
+        else if (varName == "B_crit")
+        {
+            B_crit = newValue;
+        }
+        else if (varName == "Lambda")
+        {
+            Lambda = newValue;
+        }
+        else if (varName == "c_light")
+        {
+            c_light = newValue;
+        }
+        else if (varName == "q_charge")
+        {
+            q_charge = newValue;
+        }
+        else if (varName == "gas_v")
+        {
+            gas_v = newValue;
+        }
+        else if (varName == "f_TRZ")
+        {
+            f_TRZ = newValue;
+        }
+        else if (varName == "SFR_factor")
+        {
+            SFR_factor = newValue;
+        }
+        else if (varName == "tau_SF")
+        {
+            tau_SF = newValue;
+        }
+        else if (varName == "rho_wind")
+        {
+            rho_wind = newValue;
+        }
+        else if (varName == "v_wind")
+        {
+            v_wind = newValue;
+        }
+        else if (varName == "rho_fluid")
+        {
+            rho_fluid = newValue;
+        }
+        else if (varName == "rho_vac_UA")
+        {
+            rho_vac_UA = newValue;
+        }
+        else if (varName == "rho_vac_SCm")
+        {
+            rho_vac_SCm = newValue;
+        }
+        else if (varName == "scale_EM")
+        {
+            scale_EM = newValue;
+        }
+        else if (varName == "proton_mass")
+        {
+            proton_mass = newValue;
+        }
+        else if (varName == "z_gal")
+        {
+            z_gal = newValue;
+        }
         // Full terms
-        else if (varName == "hbar") { hbar = newValue; }
-        else if (varName == "t_Hubble") { t_Hubble = newValue; }
-        else if (varName == "t_Hubble_gyr") { t_Hubble_gyr = newValue; }
-        else if (varName == "delta_x") { delta_x = newValue; }
-        else if (varName == "delta_p") { delta_p = newValue; }
-        else if (varName == "integral_psi") { integral_psi = newValue; }
-        else if (varName == "A_osc") { A_osc = newValue; }
-        else if (varName == "k_osc") { k_osc = newValue; }
-        else if (varName == "omega_osc") { omega_osc = newValue; }
-        else if (varName == "x_pos") { x_pos = newValue; }
-        else if (varName == "M_DM_factor") { M_DM_factor = newValue; }
-        else if (varName == "delta_rho_over_rho") { delta_rho_over_rho = newValue; }
-        else {
+        else if (varName == "hbar")
+        {
+            hbar = newValue;
+        }
+        else if (varName == "t_Hubble")
+        {
+            t_Hubble = newValue;
+        }
+        else if (varName == "t_Hubble_gyr")
+        {
+            t_Hubble_gyr = newValue;
+        }
+        else if (varName == "delta_x")
+        {
+            delta_x = newValue;
+        }
+        else if (varName == "delta_p")
+        {
+            delta_p = newValue;
+        }
+        else if (varName == "integral_psi")
+        {
+            integral_psi = newValue;
+        }
+        else if (varName == "A_osc")
+        {
+            A_osc = newValue;
+        }
+        else if (varName == "k_osc")
+        {
+            k_osc = newValue;
+        }
+        else if (varName == "omega_osc")
+        {
+            omega_osc = newValue;
+        }
+        else if (varName == "x_pos")
+        {
+            x_pos = newValue;
+        }
+        else if (varName == "M_DM_factor")
+        {
+            M_DM_factor = newValue;
+        }
+        else if (varName == "delta_rho_over_rho")
+        {
+            delta_rho_over_rho = newValue;
+        }
+        else
+        {
             std::cerr << "Error: Unknown variable '" << varName << "'." << std::endl;
             return false;
         }
@@ -309,65 +416,104 @@ public:
     }
 
     // Addition method for variables
-    bool addToVariable(const std::string& varName, double delta) {
+    bool addToVariable(const std::string &varName, double delta)
+    {
         return setVariable(varName, getVariable(varName) + delta);
     }
 
     // Subtraction method for variables
-    bool subtractFromVariable(const std::string& varName, double delta) {
+    bool subtractFromVariable(const std::string &varName, double delta)
+    {
         return addToVariable(varName, -delta);
     }
 
     // Getter for any variable (helper for add/subtract)
-    double getVariable(const std::string& varName) const {
-        if (varName == "G") return G;
-        else if (varName == "M0") return M0;
-        else if (varName == "r") return r;
-        else if (varName == "Hz") return Hz;
-        else if (varName == "B") return B;
-        else if (varName == "B_crit") return B_crit;
-        else if (varName == "Lambda") return Lambda;
-        else if (varName == "c_light") return c_light;
-        else if (varName == "q_charge") return q_charge;
-        else if (varName == "gas_v") return gas_v;
-        else if (varName == "f_TRZ") return f_TRZ;
-        else if (varName == "SFR_factor") return SFR_factor;
-        else if (varName == "tau_SF") return tau_SF;
-        else if (varName == "rho_wind") return rho_wind;
-        else if (varName == "v_wind") return v_wind;
-        else if (varName == "rho_fluid") return rho_fluid;
-        else if (varName == "rho_vac_UA") return rho_vac_UA;
-        else if (varName == "rho_vac_SCm") return rho_vac_SCm;
-        else if (varName == "scale_EM") return scale_EM;
-        else if (varName == "proton_mass") return proton_mass;
-        else if (varName == "z_gal") return z_gal;
+    double getVariable(const std::string &varName) const
+    {
+        if (varName == "G")
+            return G;
+        else if (varName == "M0")
+            return M0;
+        else if (varName == "r")
+            return r;
+        else if (varName == "Hz")
+            return Hz;
+        else if (varName == "B")
+            return B;
+        else if (varName == "B_crit")
+            return B_crit;
+        else if (varName == "Lambda")
+            return Lambda;
+        else if (varName == "c_light")
+            return c_light;
+        else if (varName == "q_charge")
+            return q_charge;
+        else if (varName == "gas_v")
+            return gas_v;
+        else if (varName == "f_TRZ")
+            return f_TRZ;
+        else if (varName == "SFR_factor")
+            return SFR_factor;
+        else if (varName == "tau_SF")
+            return tau_SF;
+        else if (varName == "rho_wind")
+            return rho_wind;
+        else if (varName == "v_wind")
+            return v_wind;
+        else if (varName == "rho_fluid")
+            return rho_fluid;
+        else if (varName == "rho_vac_UA")
+            return rho_vac_UA;
+        else if (varName == "rho_vac_SCm")
+            return rho_vac_SCm;
+        else if (varName == "scale_EM")
+            return scale_EM;
+        else if (varName == "proton_mass")
+            return proton_mass;
+        else if (varName == "z_gal")
+            return z_gal;
         // Full terms
-        else if (varName == "hbar") return hbar;
-        else if (varName == "t_Hubble") return t_Hubble;
-        else if (varName == "t_Hubble_gyr") return t_Hubble_gyr;
-        else if (varName == "delta_x") return delta_x;
-        else if (varName == "delta_p") return delta_p;
-        else if (varName == "integral_psi") return integral_psi;
-        else if (varName == "A_osc") return A_osc;
-        else if (varName == "k_osc") return k_osc;
-        else if (varName == "omega_osc") return omega_osc;
-        else if (varName == "x_pos") return x_pos;
-        else if (varName == "M_DM_factor") return M_DM_factor;
-        else if (varName == "delta_rho_over_rho") return delta_rho_over_rho;
-        else {
+        else if (varName == "hbar")
+            return hbar;
+        else if (varName == "t_Hubble")
+            return t_Hubble;
+        else if (varName == "t_Hubble_gyr")
+            return t_Hubble_gyr;
+        else if (varName == "delta_x")
+            return delta_x;
+        else if (varName == "delta_p")
+            return delta_p;
+        else if (varName == "integral_psi")
+            return integral_psi;
+        else if (varName == "A_osc")
+            return A_osc;
+        else if (varName == "k_osc")
+            return k_osc;
+        else if (varName == "omega_osc")
+            return omega_osc;
+        else if (varName == "x_pos")
+            return x_pos;
+        else if (varName == "M_DM_factor")
+            return M_DM_factor;
+        else if (varName == "delta_rho_over_rho")
+            return delta_rho_over_rho;
+        else
+        {
             std::cerr << "Error: Unknown variable '" << varName << "'." << std::endl;
             return 0.0;
         }
     }
 
     // M(t) computation
-    double M_t(double t) const {
+    double M_t(double t) const
+    {
         double M_dot = SFR_factor * exp(-t / tau_SF);
         return M0 * (1 + M_dot);
     }
 
     // Ug terms computation
-    double compute_Ug(double Mt) const {
+    double compute_Ug(double Mt) const
+    {
         double Ug1 = (G * Mt) / (r * r);
         double Ug2 = 0.0;
         double Ug3 = 0.0;
@@ -377,13 +523,16 @@ public:
     }
 
     // Volume computation for fluid
-    double compute_V() const {
+    double compute_V() const
+    {
         return (4.0 / 3.0) * M_PI * r * r * r;
     }
 
     // Main MUGE computation (includes ALL terms)
-    double compute_g_NGC1792(double t) const {
-        if (t < 0) {
+    double compute_g_NGC1792(double t) const
+    {
+        if (t < 0)
+        {
             std::cerr << "Error: Time t must be non-negative." << std::endl;
             return 0.0;
         }
@@ -403,7 +552,7 @@ public:
         double term3 = (Lambda * c_light * c_light) / 3.0;
 
         // Term 4: Scaled EM with UA
-        double cross_vB = gas_v * B;  // Magnitude, assuming perpendicular
+        double cross_vB = gas_v * B; // Magnitude, assuming perpendicular
         double em_base = (q_charge * cross_vB) / proton_mass;
         double corr_UA = 1 + (rho_vac_UA / rho_vac_SCm);
         double term4 = (em_base * corr_UA) * scale_EM;
@@ -438,7 +587,8 @@ public:
     }
 
     // Debug/Output method (for transparency in base program)
-    void printParameters(std::ostream& os = std::cout) const {
+    void printParameters(std::ostream &os = std::cout) const
+    {
         os << std::fixed << std::setprecision(3);
         os << "NGC 1792 Parameters:" << std::endl;
         os << "G: " << G << ", M0: " << M0 << ", r: " << r << std::endl;
@@ -451,7 +601,8 @@ public:
     }
 
     // Example computation at t=50 Myr (for testing)
-    double exampleAt50Myr() const {
+    double exampleAt50Myr() const
+    {
         double t_example = 50e6 * 3.156e7;
         return compute_g_NGC1792(t_example);
     }

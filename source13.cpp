@@ -34,59 +34,66 @@
 #ifndef MAGNETAR_SGR1745_2900_H
 #define MAGNETAR_SGR1745_2900_H
 
+#define _USE_MATH_DEFINES
 #include <iostream>
 #include <cmath>
 #include <iomanip>
 
-class MagnetarSGR1745_2900 {
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
+class MagnetarSGR1745_2900
+{
 private:
     // Core parameters (mutable for updates)
-    double G;               // Gravitational constant
-    double M;               // Magnetar mass
-    double r;               // Radius
-    double Hz;              // Hubble parameter at z (s^-1)
-    double B0;              // Initial magnetic field
-    double tau_B;           // B decay timescale (s) - not used in this eq, but for consistency
-    double B_crit;          // Critical B field
-    double Lambda;          // Cosmological constant
-    double c_light;         // Speed of light
-    double q_charge;        // Charge (proton)
-    double v_surf;          // Surface velocity
-    double f_sc;            // Superconductive factor (computed as 1 - B/B_crit)
-    double rho_vac_UA;      // UA vacuum density - not used here
-    double rho_vac_SCm;     // SCm vacuum density - not used here
-    double P_init;          // Initial rotation period (s)
-    double tau_Omega;       // Omega decay timescale (s)
-    double scale_EM;        // EM scaling factor
-    double proton_mass;     // Proton mass for EM acceleration
-    double M_BH;            // Black hole mass
-    double r_BH;            // Distance to black hole
-    double mu0;             // Vacuum permeability
-    double L0_W;            // Initial luminosity (W)
-    double tau_decay;       // Decay timescale (s)
+    double G;           // Gravitational constant
+    double M;           // Magnetar mass
+    double r;           // Radius
+    double Hz;          // Hubble parameter at z (s^-1)
+    double B0;          // Initial magnetic field
+    double tau_B;       // B decay timescale (s) - not used in this eq, but for consistency
+    double B_crit;      // Critical B field
+    double Lambda;      // Cosmological constant
+    double c_light;     // Speed of light
+    double q_charge;    // Charge (proton)
+    double v_surf;      // Surface velocity
+    double f_sc;        // Superconductive factor (computed as 1 - B/B_crit)
+    double rho_vac_UA;  // UA vacuum density - not used here
+    double rho_vac_SCm; // SCm vacuum density - not used here
+    double P_init;      // Initial rotation period (s)
+    double tau_Omega;   // Omega decay timescale (s)
+    double scale_EM;    // EM scaling factor
+    double proton_mass; // Proton mass for EM acceleration
+    double M_BH;        // Black hole mass
+    double r_BH;        // Distance to black hole
+    double mu0;         // Vacuum permeability
+    double L0_W;        // Initial luminosity (W)
+    double tau_decay;   // Decay timescale (s)
 
     // Additional parameters for full inclusion of terms
-    double hbar;            // Reduced Planck's constant
-    double t_Hubble;        // Hubble time (s)
-    double t_Hubble_gyr;    // Hubble time in Gyr
-    double delta_x;         // Position uncertainty (m)
-    double delta_p;         // Momentum uncertainty (kg m/s)
-    double integral_psi;    // Wavefunction integral approximation
-    double rho_fluid;       // Fluid density (kg/m^3)
-    double A_osc;           // Oscillatory amplitude (m/s^2)
-    double k_osc;           // Wave number (1/m)
-    double omega_osc;       // Angular frequency (rad/s)
-    double x_pos;           // Position for oscillation (m)
-    double M_DM_factor;     // Dark matter mass fraction
+    double hbar;               // Reduced Planck's constant
+    double t_Hubble;           // Hubble time (s)
+    double t_Hubble_gyr;       // Hubble time in Gyr
+    double delta_x;            // Position uncertainty (m)
+    double delta_p;            // Momentum uncertainty (kg m/s)
+    double integral_psi;       // Wavefunction integral approximation
+    double rho_fluid;          // Fluid density (kg/m^3)
+    double A_osc;              // Oscillatory amplitude (m/s^2)
+    double k_osc;              // Wave number (1/m)
+    double omega_osc;          // Angular frequency (rad/s)
+    double x_pos;              // Position for oscillation (m)
+    double M_DM_factor;        // Dark matter mass fraction
     double delta_rho_over_rho; // Density perturbation fraction
 
     // Computed caches (updated on demand)
-    double ug1_base;        // Cached Ug1 = G*M/r^2
-    double B;               // Current B (static in this model)
+    double ug1_base; // Cached Ug1 = G*M/r^2
+    double B;        // Current B (static in this model)
 
 public:
     // Constructor with default UQFF values
-    MagnetarSGR1745_2900() {
+    MagnetarSGR1745_2900()
+    {
         initializeDefaults();
     }
 
@@ -94,31 +101,32 @@ public:
     ~MagnetarSGR1745_2900() {}
 
     // Initialization method (called in constructor)
-    void initializeDefaults() {
+    void initializeDefaults()
+    {
         G = 6.6743e-11;
         M = 1.4 * 1.989e30;
         r = 1e4;
-        Hz = 2.269e-18;  // Computed H(z)
+        Hz = 2.269e-18; // Computed H(z)
         B0 = 2e10;
-        B = B0;  // Static for this model
-        tau_B = 4000 * 3.15576e7;  // Default, not used
+        B = B0;                   // Static for this model
+        tau_B = 4000 * 3.15576e7; // Default, not used
         B_crit = 1e11;
         Lambda = 1.1e-52;
         c_light = 3e8;
         q_charge = 1.602e-19;
         v_surf = 1e6;
-        f_sc = 1 - (B / B_crit);  // Initial
+        f_sc = 1 - (B / B_crit); // Initial
         rho_vac_UA = 7.09e-36;
         rho_vac_SCm = 7.09e-37;
-        P_init = 3.76;  // Pulse period
+        P_init = 3.76; // Pulse period
         tau_Omega = 10000 * 3.15576e7;
         scale_EM = 1e-12;
         proton_mass = 1.673e-27;
         M_BH = 4e6 * 1.989e30;
         r_BH = 2.83e16;
         mu0 = 4 * M_PI * 1e-7;
-        L0_W = 5e28;  // 5e35 erg/s = 5e28 W
-        tau_decay = 3.5 * 365.25 * 24 * 3600;  // 3.5 years in s
+        L0_W = 5e28;                          // 5e35 erg/s = 5e28 W
+        tau_decay = 3.5 * 365.25 * 24 * 3600; // 3.5 years in s
 
         // Full terms defaults
         hbar = 1.0546e-34;
@@ -139,51 +147,163 @@ public:
     }
 
     // Cache update for efficiency (call after parameter changes)
-    void updateCache() {
+    void updateCache()
+    {
         ug1_base = (G * M) / (r * r);
         f_sc = 1 - (B / B_crit);
     }
 
     // Universal setter for any variable (by name, for flexibility)
-    bool setVariable(const std::string& varName, double newValue) {
-        if (varName == "G") { G = newValue; }
-        else if (varName == "M") { M = newValue; }
-        else if (varName == "r") { r = newValue; }
-        else if (varName == "Hz") { Hz = newValue; }
-        else if (varName == "B0") { B0 = newValue; B = newValue; }
-        else if (varName == "tau_B") { tau_B = newValue; }
-        else if (varName == "B_crit") { B_crit = newValue; }
-        else if (varName == "Lambda") { Lambda = newValue; }
-        else if (varName == "c_light") { c_light = newValue; }
-        else if (varName == "q_charge") { q_charge = newValue; }
-        else if (varName == "v_surf") { v_surf = newValue; }
-        else if (varName == "f_sc") { f_sc = newValue; }
-        else if (varName == "rho_vac_UA") { rho_vac_UA = newValue; }
-        else if (varName == "rho_vac_SCm") { rho_vac_SCm = newValue; }
-        else if (varName == "P_init") { P_init = newValue; }
-        else if (varName == "tau_Omega") { tau_Omega = newValue; }
-        else if (varName == "scale_EM") { scale_EM = newValue; }
-        else if (varName == "proton_mass") { proton_mass = newValue; }
-        else if (varName == "M_BH") { M_BH = newValue; }
-        else if (varName == "r_BH") { r_BH = newValue; }
-        else if (varName == "mu0") { mu0 = newValue; }
-        else if (varName == "L0_W") { L0_W = newValue; }
-        else if (varName == "tau_decay") { tau_decay = newValue; }
+    bool setVariable(const std::string &varName, double newValue)
+    {
+        if (varName == "G")
+        {
+            G = newValue;
+        }
+        else if (varName == "M")
+        {
+            M = newValue;
+        }
+        else if (varName == "r")
+        {
+            r = newValue;
+        }
+        else if (varName == "Hz")
+        {
+            Hz = newValue;
+        }
+        else if (varName == "B0")
+        {
+            B0 = newValue;
+            B = newValue;
+        }
+        else if (varName == "tau_B")
+        {
+            tau_B = newValue;
+        }
+        else if (varName == "B_crit")
+        {
+            B_crit = newValue;
+        }
+        else if (varName == "Lambda")
+        {
+            Lambda = newValue;
+        }
+        else if (varName == "c_light")
+        {
+            c_light = newValue;
+        }
+        else if (varName == "q_charge")
+        {
+            q_charge = newValue;
+        }
+        else if (varName == "v_surf")
+        {
+            v_surf = newValue;
+        }
+        else if (varName == "f_sc")
+        {
+            f_sc = newValue;
+        }
+        else if (varName == "rho_vac_UA")
+        {
+            rho_vac_UA = newValue;
+        }
+        else if (varName == "rho_vac_SCm")
+        {
+            rho_vac_SCm = newValue;
+        }
+        else if (varName == "P_init")
+        {
+            P_init = newValue;
+        }
+        else if (varName == "tau_Omega")
+        {
+            tau_Omega = newValue;
+        }
+        else if (varName == "scale_EM")
+        {
+            scale_EM = newValue;
+        }
+        else if (varName == "proton_mass")
+        {
+            proton_mass = newValue;
+        }
+        else if (varName == "M_BH")
+        {
+            M_BH = newValue;
+        }
+        else if (varName == "r_BH")
+        {
+            r_BH = newValue;
+        }
+        else if (varName == "mu0")
+        {
+            mu0 = newValue;
+        }
+        else if (varName == "L0_W")
+        {
+            L0_W = newValue;
+        }
+        else if (varName == "tau_decay")
+        {
+            tau_decay = newValue;
+        }
         // Full terms
-        else if (varName == "hbar") { hbar = newValue; }
-        else if (varName == "t_Hubble") { t_Hubble = newValue; }
-        else if (varName == "t_Hubble_gyr") { t_Hubble_gyr = newValue; }
-        else if (varName == "delta_x") { delta_x = newValue; }
-        else if (varName == "delta_p") { delta_p = newValue; }
-        else if (varName == "integral_psi") { integral_psi = newValue; }
-        else if (varName == "rho_fluid") { rho_fluid = newValue; }
-        else if (varName == "A_osc") { A_osc = newValue; }
-        else if (varName == "k_osc") { k_osc = newValue; }
-        else if (varName == "omega_osc") { omega_osc = newValue; }
-        else if (varName == "x_pos") { x_pos = newValue; }
-        else if (varName == "M_DM_factor") { M_DM_factor = newValue; }
-        else if (varName == "delta_rho_over_rho") { delta_rho_over_rho = newValue; }
-        else {
+        else if (varName == "hbar")
+        {
+            hbar = newValue;
+        }
+        else if (varName == "t_Hubble")
+        {
+            t_Hubble = newValue;
+        }
+        else if (varName == "t_Hubble_gyr")
+        {
+            t_Hubble_gyr = newValue;
+        }
+        else if (varName == "delta_x")
+        {
+            delta_x = newValue;
+        }
+        else if (varName == "delta_p")
+        {
+            delta_p = newValue;
+        }
+        else if (varName == "integral_psi")
+        {
+            integral_psi = newValue;
+        }
+        else if (varName == "rho_fluid")
+        {
+            rho_fluid = newValue;
+        }
+        else if (varName == "A_osc")
+        {
+            A_osc = newValue;
+        }
+        else if (varName == "k_osc")
+        {
+            k_osc = newValue;
+        }
+        else if (varName == "omega_osc")
+        {
+            omega_osc = newValue;
+        }
+        else if (varName == "x_pos")
+        {
+            x_pos = newValue;
+        }
+        else if (varName == "M_DM_factor")
+        {
+            M_DM_factor = newValue;
+        }
+        else if (varName == "delta_rho_over_rho")
+        {
+            delta_rho_over_rho = newValue;
+        }
+        else
+        {
             std::cerr << "Error: Unknown variable '" << varName << "'." << std::endl;
             return false;
         }
@@ -192,78 +312,122 @@ public:
     }
 
     // Addition method for variables
-    bool addToVariable(const std::string& varName, double delta) {
+    bool addToVariable(const std::string &varName, double delta)
+    {
         return setVariable(varName, getVariable(varName) + delta);
     }
 
     // Subtraction method for variables
-    bool subtractFromVariable(const std::string& varName, double delta) {
+    bool subtractFromVariable(const std::string &varName, double delta)
+    {
         return addToVariable(varName, -delta);
     }
 
     // Getter for any variable (helper for add/subtract)
-    double getVariable(const std::string& varName) const {
-        if (varName == "G") return G;
-        else if (varName == "M") return M;
-        else if (varName == "r") return r;
-        else if (varName == "Hz") return Hz;
-        else if (varName == "B0") return B0;
-        else if (varName == "tau_B") return tau_B;
-        else if (varName == "B_crit") return B_crit;
-        else if (varName == "Lambda") return Lambda;
-        else if (varName == "c_light") return c_light;
-        else if (varName == "q_charge") return q_charge;
-        else if (varName == "v_surf") return v_surf;
-        else if (varName == "f_sc") return f_sc;
-        else if (varName == "rho_vac_UA") return rho_vac_UA;
-        else if (varName == "rho_vac_SCm") return rho_vac_SCm;
-        else if (varName == "P_init") return P_init;
-        else if (varName == "tau_Omega") return tau_Omega;
-        else if (varName == "scale_EM") return scale_EM;
-        else if (varName == "proton_mass") return proton_mass;
-        else if (varName == "M_BH") return M_BH;
-        else if (varName == "r_BH") return r_BH;
-        else if (varName == "mu0") return mu0;
-        else if (varName == "L0_W") return L0_W;
-        else if (varName == "tau_decay") return tau_decay;
+    double getVariable(const std::string &varName) const
+    {
+        if (varName == "G")
+            return G;
+        else if (varName == "M")
+            return M;
+        else if (varName == "r")
+            return r;
+        else if (varName == "Hz")
+            return Hz;
+        else if (varName == "B0")
+            return B0;
+        else if (varName == "tau_B")
+            return tau_B;
+        else if (varName == "B_crit")
+            return B_crit;
+        else if (varName == "Lambda")
+            return Lambda;
+        else if (varName == "c_light")
+            return c_light;
+        else if (varName == "q_charge")
+            return q_charge;
+        else if (varName == "v_surf")
+            return v_surf;
+        else if (varName == "f_sc")
+            return f_sc;
+        else if (varName == "rho_vac_UA")
+            return rho_vac_UA;
+        else if (varName == "rho_vac_SCm")
+            return rho_vac_SCm;
+        else if (varName == "P_init")
+            return P_init;
+        else if (varName == "tau_Omega")
+            return tau_Omega;
+        else if (varName == "scale_EM")
+            return scale_EM;
+        else if (varName == "proton_mass")
+            return proton_mass;
+        else if (varName == "M_BH")
+            return M_BH;
+        else if (varName == "r_BH")
+            return r_BH;
+        else if (varName == "mu0")
+            return mu0;
+        else if (varName == "L0_W")
+            return L0_W;
+        else if (varName == "tau_decay")
+            return tau_decay;
         // Full terms
-        else if (varName == "hbar") return hbar;
-        else if (varName == "t_Hubble") return t_Hubble;
-        else if (varName == "t_Hubble_gyr") return t_Hubble_gyr;
-        else if (varName == "delta_x") return delta_x;
-        else if (varName == "delta_p") return delta_p;
-        else if (varName == "integral_psi") return integral_psi;
-        else if (varName == "rho_fluid") return rho_fluid;
-        else if (varName == "A_osc") return A_osc;
-        else if (varName == "k_osc") return k_osc;
-        else if (varName == "omega_osc") return omega_osc;
-        else if (varName == "x_pos") return x_pos;
-        else if (varName == "M_DM_factor") return M_DM_factor;
-        else if (varName == "delta_rho_over_rho") return delta_rho_over_rho;
-        else {
+        else if (varName == "hbar")
+            return hbar;
+        else if (varName == "t_Hubble")
+            return t_Hubble;
+        else if (varName == "t_Hubble_gyr")
+            return t_Hubble_gyr;
+        else if (varName == "delta_x")
+            return delta_x;
+        else if (varName == "delta_p")
+            return delta_p;
+        else if (varName == "integral_psi")
+            return integral_psi;
+        else if (varName == "rho_fluid")
+            return rho_fluid;
+        else if (varName == "A_osc")
+            return A_osc;
+        else if (varName == "k_osc")
+            return k_osc;
+        else if (varName == "omega_osc")
+            return omega_osc;
+        else if (varName == "x_pos")
+            return x_pos;
+        else if (varName == "M_DM_factor")
+            return M_DM_factor;
+        else if (varName == "delta_rho_over_rho")
+            return delta_rho_over_rho;
+        else
+        {
             std::cerr << "Error: Unknown variable '" << varName << "'." << std::endl;
             return 0.0;
         }
     }
 
     // B(t) - static B for this model
-    double B_t(double /*t*/) const {
+    double B_t(double /*t*/) const
+    {
         return B;
     }
 
     // Omega(t) computation
-    double Omega_t(double t) const {
+    double Omega_t(double t) const
+    {
         return (2 * M_PI / P_init) * exp(-t / tau_Omega);
     }
 
     // dOmega/dt computation
-    double dOmega_dt(double t) const {
+    double dOmega_dt(double t) const
+    {
         double omega0 = 2 * M_PI / P_init;
         return omega0 * (-1.0 / tau_Omega) * exp(-t / tau_Omega);
     }
 
     // Ug terms computation
-    double compute_Ug() const {
+    double compute_Ug() const
+    {
         double Ug1 = ug1_base;
         double Ug2 = 0.0;
         double Ug3 = 0.0;
@@ -272,25 +436,30 @@ public:
     }
 
     // Volume computation
-    double compute_V() const {
+    double compute_V() const
+    {
         return (4.0 / 3.0) * M_PI * r * r * r;
     }
 
     // Magnetic energy M_mag (J)
-    double compute_M_mag() const {
+    double compute_M_mag() const
+    {
         double V = compute_V();
         return (B_t(0) * B_t(0) / (2 * mu0)) * V;
     }
 
     // Cumulative decay energy up to t (J)
-    double compute_cumulative_D(double t) const {
+    double compute_cumulative_D(double t) const
+    {
         double exp_term = exp(-t / tau_decay);
         return L0_W * tau_decay * (1 - exp_term);
     }
 
     // Main MUGE computation (includes ALL terms)
-    double compute_g_Magnetar(double t) const {
-        if (t < 0) {
+    double compute_g_Magnetar(double t) const
+    {
+        if (t < 0)
+        {
             std::cerr << "Error: Time t must be non-negative." << std::endl;
             return 0.0;
         }
@@ -309,7 +478,7 @@ public:
         // BH term
         double term_BH = (G * M_BH) / (r_BH * r_BH);
 
-        // Term 2: UQFF Ug 
+        // Term 2: UQFF Ug
         double term2 = compute_Ug();
 
         // Term 3: Lambda
@@ -318,7 +487,7 @@ public:
         // Term 4: Scaled EM (v x B magnitude)
         double cross_vB = v_surf * Bt;
         double em_base = (q_charge * cross_vB) / proton_mass;
-        double term4 = em_base * scale_EM;  // UA not used here
+        double term4 = em_base * scale_EM; // UA not used here
 
         // Term 5: GW (assumed same as previous)
         double gw_prefactor = (G * M * M) / (pow(c_light, 4) * r);
@@ -358,7 +527,8 @@ public:
     }
 
     // Debug/Output method (for transparency in base program)
-    void printParameters(std::ostream& os = std::cout) const {
+    void printParameters(std::ostream &os = std::cout) const
+    {
         os << std::fixed << std::setprecision(3);
         os << "SGR 1745-2900 Parameters:" << std::endl;
         os << "G: " << G << ", M: " << M << ", r: " << r << std::endl;
@@ -371,7 +541,8 @@ public:
     }
 
     // Example computation at t=1 year (for testing)
-    double exampleAtOneYear() const {
+    double exampleAtOneYear() const
+    {
         double t_example = 1.0 * 365.25 * 24 * 3600;
         return compute_g_Magnetar(t_example);
     }

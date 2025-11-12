@@ -1,7 +1,7 @@
-﻿// NGC1365UQFFModule.h
+// NGC1365UQFFModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for NGC 1365 Great Barred Spiral Galaxy Evolution.
 // This module can be plugged into a base program (e.g., 'ngc1365_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "NGC1365UQFFModule.h"
+// Usage in base: // // // #include "NGC1365UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // NGC1365UQFFModule mod; mod.computeF(t); mod.updateVariable("M", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino.
@@ -176,7 +176,7 @@ public:
 #endif // NGC1365_UQFF_MODULE_H
 
 // NGC1365UQFFModule.cpp
-#include "NGC1365UQFFModule.h"
+// // // #include "NGC1365UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with NGC 1365-specific values
@@ -427,7 +427,7 @@ void NGC1365UQFFModule::printVariables() {
 }
 
 // Example usage in base program 'ngc1365_sim.cpp' (snippet for integration)
-// #include "NGC1365UQFFModule.h"
+// // // // #include "NGC1365UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #include <complex>
 // int main() {
 //     NGC1365UQFFModule mod;

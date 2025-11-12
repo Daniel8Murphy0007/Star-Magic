@@ -1,7 +1,7 @@
-﻿// PiConstantModule.h
+// PiConstantModule.h
 // Modular C++ implementation of the Mathematical Constant Pi (?) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ? ?3.14159 (unitless) and its role in oscillatory terms like cos(? t_n), sin(?_c t), with ?_c=2? / period.
-// Pluggable: #include "PiConstantModule.h"
+// Pluggable: // // // #include "PiConstantModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // PiConstantModule mod; mod.computeCosPiTn(0.0); mod.updateVariable("t_n", new_value);
 // Variables in std::map; examples for U_m ?_j and U_g1 cos(? t_n) at t=0, t_n=0.
 // Approximations: ?=3.141592653589793; sin(?_c * 0)=0; cos(? * 0)=1.
@@ -162,7 +162,7 @@ public:
 #endif // PI_CONSTANT_MODULE_H
 
 // PiConstantModule.cpp
-#include "PiConstantModule.h"
+// // // #include "PiConstantModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 PiConstantModule::PiConstantModule() {
@@ -178,7 +178,7 @@ PiConstantModule::PiConstantModule() {
     variables["t"] = 0.0;                           // Time
     variables["period"] = 3.96e8;                   // s (example solar cycle)
     variables["omega_c"] = 2.0 * variables["pi"] / variables["period"];  // rad/s
-    variables["base_mu"] = 3.38e20;                 // Tï¿½m^3
+    variables["base_mu"] = 3.38e20;                 // T�m^3
     variables["B_j"] = 1e3;                         // Base T
 }
 
@@ -230,7 +230,7 @@ double PiConstantModule::computeSinOmegaCT(double t) {
     return std::sin(variables["omega_c"] * t);
 }
 
-// Example ?_j = (10^3 + 0.4 sin(?_c t)) * 3.38e20 Tï¿½m^3
+// Example ?_j = (10^3 + 0.4 sin(?_c t)) * 3.38e20 T�m^3
 double PiConstantModule::computeMuJExample(double t) {
     double sin_omega = computeSinOmegaCT(t);
     double b_j = variables["B_j"] + 0.4 * sin_omega;
@@ -248,7 +248,7 @@ std::string PiConstantModule::getEquationText() {
            "Role: Defines periodicity in oscillations; C=2? r; trig args (sin/cos with 2? cycle).\n"
            "In U_m: ?_j = (10^3 + 0.4 sin(?_c t)) * 3.38e20; ?_c = 2? / period.\n"
            "In U_g1: ... cos(? t_n) ... (time-reversal oscillations).\n"
-           "Example t=0, t_n=0: sin(?_c t)=0 ? ?_j=3.38e23 Tï¿½m^3; cos(? t_n)=1.\n"
+           "Example t=0, t_n=0: sin(?_c t)=0 ? ?_j=3.38e23 T�m^3; cos(? t_n)=1.\n"
            "UQFF: Ensures cyclic/TRZ dynamics; solar cycles, rotations in nebulae/quasars.";
 }
 
@@ -261,22 +261,23 @@ void PiConstantModule::printVariables() {
 }
 
 // Example usage in base program (snippet)
-// #include "PiConstantModule.h"
+// // // // #include "PiConstantModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     PiConstantModule mod;
 //     double pi_val = mod.computePi();
 //     std::cout << "? ? " << pi_val << std::endl;
 //     double mu = mod.computeMuJExample(0.0);
-//     std::cout << "?_j (t=0) = " << mu << " Tï¿½m^3\n";
+//     std::cout << "?_j (t=0) = " << mu << " T�m^3\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("t_n", 1.0);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o pi_test pi_test.cpp PiConstantModule.cpp -lm
-// Sample: ?=3.14159; ?_j?3.38e23 Tï¿½m^3; cos(?*0)=1.
+// Sample: ?=3.14159; ?_j?3.38e23 T�m^3; cos(?*0)=1.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 PiConstantModule Evaluation
 
 Strengths :
@@ -296,3 +297,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, clear, and suitable for scientific prototyping and educational use in mathematical constant and oscillatory modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+*/

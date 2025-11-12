@@ -1,7 +1,7 @@
-﻿// FeedbackFactorModule.h
+// FeedbackFactorModule.h
 // Modular C++ implementation of the Feedback Factor (f_feedback) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes f_feedback=0.1 for ?M_BH=1 dex (10x mass increase); scales (1 + f_feedback) in U_g4 term.
-// Pluggable: #include "FeedbackFactorModule.h"
+// Pluggable: // // // #include "FeedbackFactorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // FeedbackFactorModule mod; mod.computeU_g4(0.0, 0.0); mod.updateVariable("f_feedback", new_value);
 // Variables in std::map; example for Sun at t=0, t_n=0; ?M_BH=1 dex ? M_bh_final=10*M_bh_initial.
 // Approximations: cos(? t_n)=1; e^{-? t}=1 at t=0; ?=0.001 day^-1 (scaled to s^-1 if needed).
@@ -165,7 +165,7 @@ public:
 #endif // FEEDBACK_FACTOR_MODULE_H
 
 // FeedbackFactorModule.cpp
-#include "FeedbackFactorModule.h"
+// // // #include "FeedbackFactorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 FeedbackFactorModule::FeedbackFactorModule() {
@@ -264,7 +264,7 @@ std::string FeedbackFactorModule::getEquationText() {
     return "U_g4 = k_4 * (?_vac,[SCm] M_bh / d_g) * e^{-? t} * cos(? t_n) * (1 + f_feedback)\n"
            "Where f_feedback = 0.1 (unitless, for ?M_BH = 1 dex = 10x mass increase);\n"
            "?M_BH =1 dex ? M_bh_final = 10 * M_bh_initial (8.15e36 kg ? 8.15e37 kg).\n"
-           "Example t=0, t_n=0: U_g4 ?2.75e-20 J/mï¿½ (with); ?2.50e-20 J/mï¿½ (without; +10%).\n"
+           "Example t=0, t_n=0: U_g4 ?2.75e-20 J/m� (with); ?2.50e-20 J/m� (without; +10%).\n"
            "Role: Scales feedback in star-BH interactions; regulates AGN, mergers, star formation.\n"
            "UQFF: Enhances energy density for 10x M_BH; resolves final parsec, quasar jets.";
 }
@@ -283,13 +283,13 @@ void FeedbackFactorModule::printU_g4_comparison(double t, double t_n) {
     double u_without = computeU_g4_no_feedback(t, t_n);
     double delta_percent = ((u_with - u_without) / u_without) * 100.0;
     std::cout << "U_g4 Comparison at t=" << t << " s, t_n=" << t_n << " s:\n";
-    std::cout << "With feedback: " << std::scientific << u_with << " J/mï¿½\n";
-    std::cout << "Without feedback: " << std::scientific << u_without << " J/mï¿½\n";
+    std::cout << "With feedback: " << std::scientific << u_with << " J/m�\n";
+    std::cout << "Without feedback: " << std::scientific << u_without << " J/m�\n";
     std::cout << "Difference: +" << std::fixed << std::setprecision(1) << delta_percent << "%\n";
 }
 
 // Example usage in base program (snippet)
-// #include "FeedbackFactorModule.h"
+// // // // #include "FeedbackFactorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     FeedbackFactorModule mod;
 //     double m_final = mod.computeM_bh_final();
@@ -301,9 +301,10 @@ void FeedbackFactorModule::printU_g4_comparison(double t, double t_n) {
 //     return 0;
 // }
 // Compile: g++ -o feedback_test feedback_test.cpp FeedbackFactorModule.cpp -lm
-// Sample: M_bh_final=8.15e37 kg; U_g4 with=2.75e-20 J/mï¿½ (+10% vs without).
+// Sample: M_bh_final=8.15e37 kg; U_g4 with=2.75e-20 J/m� (+10% vs without).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 FeedbackFactorModule Evaluation
 
 Strengths :
@@ -326,3 +327,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, clear, and suitable for scientific prototyping and educational use in feedback factor modeling.It implements the UQFF feedback concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+*/

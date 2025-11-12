@@ -1,9 +1,9 @@
-﻿// InertiaCouplingModule.h
+// InertiaCouplingModule.h
 // Modular C++ implementation of the Inertia Coupling Constants (?_i) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?_i=1.0 (unitless, uniform for i=1-4) and scales U_i in F_U: -?_i [?_i U_i E_react].
-// Pluggable: #include "InertiaCouplingModule.h"
+// Pluggable: // // // #include "InertiaCouplingModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // InertiaCouplingModule mod; mod.computeSumInertiaTerms(0.0); mod.updateVariable("rho_vac_SCm", new_value);
-// Variables in std::map; example for Sun at t=0, t_n=0; U_i ?1.38e-47 J/mï¿½, contrib ? -0.138 J/mï¿½.
+// Variables in std::map; example for Sun at t=0, t_n=0; U_i ?1.38e-47 J/m�, contrib ? -0.138 J/m�.
 // Approximations: Uniform ?_i=1.0; cos(? t_n)=1; f_TRZ=0.1; ?_s=2.5e-6 rad/s; E_react=1e46.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
@@ -162,7 +162,7 @@ public:
 #endif // INERTIA_COUPLING_MODULE_H
 
 // InertiaCouplingModule.cpp
-#include "InertiaCouplingModule.h"
+// // // #include "InertiaCouplingModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults (Sun at t=0, level 13)
 InertiaCouplingModule::InertiaCouplingModule() {
@@ -247,7 +247,7 @@ std::string InertiaCouplingModule::getEquationText() {
            "U_i = ?_i * ?_vac,[SCm] * ?_vac,[UA] * ?_s(t) * cos(? t_n) * (1 + f_TRZ)\n"
            "Where ?_i = 1.0 (unitless, uniform for i=1-4: Ug1-Ug4);\n"
            "E_react = 1e46 * e^{-? t} (?=5e-4);\n"
-           "Example Sun t=0, t_n=0: U_i ?1.38e-47 J/mï¿½; -?_i U_i E_react ? -0.138 J/mï¿½ (per i).\n"
+           "Example Sun t=0, t_n=0: U_i ?1.38e-47 J/m�; -?_i U_i E_react ? -0.138 J/m� (per i).\n"
            "Role: Scales resistive inertia; uniform baseline opposition to dynamics.\n"
            "UQFF: Consistent across scales; aids stability in interiors/disks/mergers.";
 }
@@ -266,17 +266,17 @@ void InertiaCouplingModule::printInertiaBreakdown(double t) {
     for (int i = 1; i <= 4; ++i) {
         double u_i = computeU_i(i, t);
         double term = computeInertiaTerm(i, t);
-        std::cout << "i=" << i << ": U_i = " << std::scientific << u_i << " J/mï¿½, Term = " << term << " J/mï¿½\n";
+        std::cout << "i=" << i << ": U_i = " << std::scientific << u_i << " J/m�, Term = " << term << " J/m�\n";
     }
-    std::cout << "Sum ? Terms = " << std::scientific << computeSumInertiaTerms(t) << " J/mï¿½\n";
+    std::cout << "Sum ? Terms = " << std::scientific << computeSumInertiaTerms(t) << " J/m�\n";
 }
 
 // Example usage in base program (snippet)
-// #include "InertiaCouplingModule.h"
+// // // // #include "InertiaCouplingModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     InertiaCouplingModule mod;
 //     double sum = mod.computeSumInertiaTerms(0.0);
-//     std::cout << "Sum Inertia Terms = " << sum << " J/mï¿½\n";
+//     std::cout << "Sum Inertia Terms = " << sum << " J/m�\n";
 //     mod.printInertiaBreakdown(0.0);
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("lambda", 1.1);
@@ -284,9 +284,10 @@ void InertiaCouplingModule::printInertiaBreakdown(double t) {
 //     return 0;
 // }
 // Compile: g++ -o inertia_test inertia_test.cpp InertiaCouplingModule.cpp -lm
-// Sample: Per i term ? -0.138 J/mï¿½; sum ? -0.552 J/mï¿½ (4 terms).
+// Sample: Per i term ? -0.138 J/m�; sum ? -0.552 J/m� (4 terms).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 InertiaCouplingModule Evaluation
 
 Strengths :
@@ -305,3 +306,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, clear, and suitable for scientific prototyping and educational use in inertia coupling modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+*/

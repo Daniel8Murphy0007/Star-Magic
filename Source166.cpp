@@ -92,6 +92,8 @@ UQFF8AstroSystemsModule::UQFF8AstroSystemsModule()
 {
     cdouble zero = {0.0, 0.0};
     cdouble i_small = {0.0, 1e-37};
+    (void)zero;    // Suppress unused warning
+    (void)i_small; // Suppress unused warning
 
     // Base constants (universal)
     variables["G"] = {6.6743e-11, 0.0};
@@ -273,6 +275,7 @@ void UQFF8AstroSystemsModule::subtractFromVariable(const std::string &name, cdou
 // Compute DPM_resonance (Zeeman splitting)
 cdouble UQFF8AstroSystemsModule::computeDPM_resonance(const std::string &system)
 {
+    setSystemParams(system);
     cdouble g = variables["g_Lande"];
     cdouble muB = variables["mu_B"];
     cdouble B = variables["B0"];
@@ -284,6 +287,7 @@ cdouble UQFF8AstroSystemsModule::computeDPM_resonance(const std::string &system)
 // Compute LENR term (nuclear resonance)
 cdouble UQFF8AstroSystemsModule::computeLENRTerm(const std::string &system)
 {
+    setSystemParams(system);
     cdouble k = variables["k_LENR"];
     cdouble omegaL = variables["omega_LENR"];
     cdouble omega0 = variables["omega0"];
@@ -293,6 +297,7 @@ cdouble UQFF8AstroSystemsModule::computeLENRTerm(const std::string &system)
 // Compute Gas Nebula Integration
 cdouble UQFF8AstroSystemsModule::computeGasNebulaIntegration(const std::string &system)
 {
+    setSystemParams(system);
     // Gas nebula contribution scaled by density
     cdouble rho = variables["rho_gas"];
     cdouble r = variables["r"];
@@ -303,6 +308,7 @@ cdouble UQFF8AstroSystemsModule::computeGasNebulaIntegration(const std::string &
 // Uses golden ratio (φ = 0.618) for species determination
 double UQFF8AstroSystemsModule::computeDipoleVortexSpecies(const std::string &system)
 {
+    setSystemParams(system);
     double golden_ratio = 0.618033988749895; // (√5 - 1)/2
     double dipole_base = 1.0;
     double phase = 2.0 * M_PI * golden_ratio * 1.0;
@@ -361,6 +367,7 @@ cdouble UQFF8AstroSystemsModule::computeIntegrand(double t_user, const std::stri
 // Approx x2 (quadratic root)
 cdouble UQFF8AstroSystemsModule::computeX2(const std::string &system)
 {
+    setSystemParams(system);
     return variables["x2"];
 }
 
@@ -374,6 +381,7 @@ cdouble UQFF8AstroSystemsModule::computeQuadraticRoot(cdouble a, cdouble b, cdou
 // Compute Gravity Compressed
 cdouble UQFF8AstroSystemsModule::computeGravityCompressed(const std::string &system)
 {
+    setSystemParams(system);
     cdouble G = variables["G"];
     cdouble M = variables["M"];
     cdouble r = variables["r"];
@@ -383,12 +391,14 @@ cdouble UQFF8AstroSystemsModule::computeGravityCompressed(const std::string &sys
 // Compute Resonance U_r
 cdouble UQFF8AstroSystemsModule::computeResonanceUr(int U_dp, int U_r, const std::string &system)
 {
+    setSystemParams(system);
     return static_cast<double>(U_dp + U_r) * variables["F_rel"];
 }
 
 // Compute Buoyancy U_Bi (Triadic scaling with β_i=1.0)
 cdouble UQFF8AstroSystemsModule::computeBuoyancyUbi(const std::string &system)
 {
+    setSystemParams(system);
     cdouble beta = variables["beta_i"]; // Triadic: 1.0
     cdouble V = variables["V_infl_UA"];
     cdouble rho = variables["rho_vac_A"];
@@ -422,12 +432,14 @@ cdouble UQFF8AstroSystemsModule::computeResonant(const std::string &system)
 // Buoyancy
 cdouble UQFF8AstroSystemsModule::computeBuoyancy(const std::string &system)
 {
+    setSystemParams(system);
     return computeBuoyancyUbi(system);
 }
 
 // Superconductive Ui (time-dependent)
 cdouble UQFF8AstroSystemsModule::computeSuperconductive(const std::string &system, double t)
 {
+    setSystemParams(system);
     double tn = t / variables["t_scale"].real();
     cdouble lambda = variables["lambda_i"];
     cdouble rho_sc = variables["rho_vac_SCm"];
@@ -442,6 +454,9 @@ cdouble UQFF8AstroSystemsModule::computeSuperconductive(const std::string &syste
 double UQFF8AstroSystemsModule::computeCompressedG(const std::string &system, double t)
 {
     setSystemParams(system);
+    // Time parameter t reserved for future time-evolution physics
+    (void)t; // Suppress warning - parameter ready for time-dependent gravity calculations
+
     double G_val = variables["G"].real();
     double M_val = variables["M"].real();
     double rho = variables["rho_gas"].real();

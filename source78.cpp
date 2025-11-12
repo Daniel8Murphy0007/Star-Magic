@@ -1,7 +1,7 @@
-﻿// NGC4676UQFFModule.h
+// NGC4676UQFFModule.h
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for NGC 4676 (The Mice) Evolution.
 // This module models NGC 4676's gravitational dynamics, incorporating collision of NGC 4676A/B, tidal tails/bridge, enhanced star formation, gas turbulence, and dark matter.
-// Usage: #include "NGC4676UQFFModule.h" in base program; NGC4676UQFFModule mod; mod.computeG(t); mod.updateVariable("SFR", new_value);
+// Usage: // // // #include "NGC4676UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; NGC4676UQFFModule mod; mod.computeG(t); mod.updateVariable("SFR", new_value);
 // Variables in std::map for dynamic updates; supports F_env(t) with tidal/bridge/SF terms; includes THz concepts (Ug2_THz, H_eff_z).
 // Approximations: psi_integral normalized to 1.0; H(t,z) with Omega_m=0.3, Omega_Lambda=0.7; E_react exp decay; tail waves simplified.
 // NGC 4676 params: M_total=1e11 Msun, r=50 kpc, SFR=5 Msun/yr, M_A=M_B=5e10 Msun, d=10 kpc (effective), v_rel=400 km/s, rho=1e-21 kg/m^3, B=1e-5 T, z=0.022, etc.
@@ -171,7 +171,7 @@ public:
 #endif // NGC4676_UQFF_MODULE_H
 
 // NGC4676UQFFModule.cpp
-#include "NGC4676UQFFModule.h"
+// // // #include "NGC4676UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: NGC 4676-specific values
@@ -447,7 +447,7 @@ std::string NGC4676UQFFModule::getEquationText() {
            "U_g2,THz = U_g2 (1 + f_THz H_eff t / t_Hubble); U_g3' = G M_B / d^2; U_g4 = k4 * E_react(t);\n"
            "U_i = ?_I * (?_SCm/?_UA) * ?_i * cos(? t_n) * (1 + F_RZ); ?_total = A exp(-r^2/(2?^2)) exp(i(m? - ? t)) + merger terms;\n"
            "Insights: Attractive (g_base, Ug1, Ug3') vs. Repulsive (U_g2,THz, ?) with Aether/THz advance UQFF.\n"
-           "Adaptations: Hubble ACS 2002 data; SFR=5 Msun/yr; M=1e11 Msun. Solutions: g ~4e37 m/sï¿½ at t=170 Myr (DM/tidal dominant).";
+           "Adaptations: Hubble ACS 2002 data; SFR=5 Msun/yr; M=1e11 Msun. Solutions: g ~4e37 m/s� at t=170 Myr (DM/tidal dominant).";
 }
 
 // Print
@@ -459,29 +459,30 @@ void NGC4676UQFFModule::printVariables() {
 }
 
 // Example usage
-// #include "NGC4676UQFFModule.h"
+// // // // #include "NGC4676UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     NGC4676UQFFModule mod;
 //     double t = 1.7e8 * 3.156e7;  // 170 Myr
 //     double r = 20e3 * 3.086e19;  // 20 kpc
 //     double g = mod.computeG(t, r);
-//     std::cout << "g_NGC4676 = " << g << " m/sï¿½\n";
+//     std::cout << "g_NGC4676 = " << g << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("SFR", 6 * mod.variables["SFR"]);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o ngc4676_sim base.cpp NGC4676UQFFModule.cpp -lm
-// Sample Output: g_NGC4676 ~ 4e37 m/sï¿½ (DM/fluid dominant; THz/Aether advance framework).
+// Sample Output: g_NGC4676 ~ 4e37 m/s� (DM/fluid dominant; THz/Aether advance framework).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 NGC4676UQFFModule Evaluation
 
 Strengths :
 -Modular, extensible design for modeling NGC 4676 (The Mice) galaxy gravity, including collision dynamics, tidal tails / bridge, star formation, gas turbulence, and dark matter.
 - Comprehensive physics : gravity, cosmological expansion, magnetic fields, environmental / tidal / bridge effects, quantum, fluid, DM, and THz / aetheric terms.
 - Dynamic variable management via std::map enables runtime updates and system adaptation.
-- Clear separation of computation functions(e.g., Ug1ï¿½Ug4, Ug2_THz, F_env, quantum, fluid, DM), aiding maintainability.
+- Clear separation of computation functions(e.g., Ug1�Ug4, Ug2_THz, F_env, quantum, fluid, DM), aiding maintainability.
 - NGC 4676 - specific parameters are initialized for realistic simulation; supports easy modification.
 - Output functions for equation text and variable state support debugging and documentation.
 - THz / aetheric enhancements(Ug2_THz, H_eff_z) add advanced physical modeling.
@@ -497,3 +498,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, flexible, and suitable for scientific prototyping and educational use in galactic collision modeling.It implements a broad set of physical effects and adapts to various scenarios, including THz / aetheric phenomena.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+*/

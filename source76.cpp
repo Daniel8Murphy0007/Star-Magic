@@ -1,7 +1,7 @@
-﻿// NGC2264UQFFModule.h
+// NGC2264UQFFModule.h
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for Cone Nebula (NGC 2264) Evolution.
 // This module models NGC 2264's gravitational dynamics, incorporating stellar winds, pillar erosion, protostar formation, dust/gas densities, and dark matter.
-// Usage: #include "NGC2264UQFFModule.h" in base program; NGC2264UQFFModule mod; mod.computeG(t); mod.updateVariable("SFR", new_value);
+// Usage: // // // #include "NGC2264UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; NGC2264UQFFModule mod; mod.computeG(t); mod.updateVariable("SFR", new_value);
 // Variables in std::map for dynamic updates; supports F_env(t) with wind and erosion terms.
 // Approximations: psi_integral normalized to 1.0; H(t,z) with Omega_m=0.3, Omega_Lambda=0.7; E_react exp decay; pillar waves simplified.
 // NGC 2264 params: M=100 Msun, r=3.31e16 m, SFR=0.01 Msun/yr, v_wind=20 km/s, rho=1e-20 kg/m^3, B=1e-5 T, z=0.0008, etc.
@@ -169,7 +169,7 @@ public:
 #endif // NGC2264_UQFF_MODULE_H
 
 // NGC2264UQFFModule.cpp
-#include "NGC2264UQFFModule.h"
+// // // #include "NGC2264UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: NGC 2264-specific values
@@ -422,7 +422,7 @@ std::string NGC2264UQFFModule::getEquationText() {
            "F_wind = ? v_wind^2; U_g1 = ?_dipole * B; U_g2 = B_super^2 / (2 ?0);\n"
            "U_g3' = G M_star / r_star^2; U_g4 = k4 * E_react(t); U_i = ?_I * (?_SCm/?_UA) * ?_i * cos(? t_n) * (1 + F_RZ);\n"
            "?_total = A exp(-r^2/(2?^2)) exp(i(m? - ? t)) + wind terms; Insights: Attractive (g_base, Ug1, Ug3') vs. Repulsive (U_g2, ?) advance UQFF.\n"
-           "Adaptations: Hubble ACS 2002 data; SFR=0.01 Msun/yr; M=100 Msun. Solutions: g ~1e-9 m/sï¿½ at t=3 Myr (wind/fluid dominant).";
+           "Adaptations: Hubble ACS 2002 data; SFR=0.01 Msun/yr; M=100 Msun. Solutions: g ~1e-9 m/s� at t=3 Myr (wind/fluid dominant).";
 }
 
 // Print
@@ -434,29 +434,30 @@ void NGC2264UQFFModule::printVariables() {
 }
 
 // Example usage
-// #include "NGC2264UQFFModule.h"
+// // // // #include "NGC2264UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     NGC2264UQFFModule mod;
 //     double t = 3e6 * 3.156e7;  // 3 Myr
 //     double r = 1e16;  // 1 ly
 //     double g = mod.computeG(t, r);
-//     std::cout << "g_NGC2264 = " << g << " m/sï¿½\n";
+//     std::cout << "g_NGC2264 = " << g << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("SFR", 0.02 * 1.989e30 / (3.156e7));
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o ngc2264_sim base.cpp NGC2264UQFFModule.cpp -lm
-// Sample Output: g_NGC2264 ~ 1e-9 m/sï¿½ (wind/fluid dominant; repulsive terms advance framework).
+// Sample Output: g_NGC2264 ~ 1e-9 m/s� (wind/fluid dominant; repulsive terms advance framework).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 NGC2264UQFFModule Evaluation
 
 Strengths :
 -Modular, extensible design for modeling Cone Nebula(NGC 2264) gravity, including stellar winds, pillar erosion, protostar formation, dust / gas densities, and dark matter.
 - Comprehensive physics : gravity, cosmological expansion, magnetic fields, environmental / wind / erosion effects, quantum, fluid, and DM terms.
 - Dynamic variable management via std::map enables runtime updates and system adaptation.
-- Clear separation of computation functions(e.g., Ug1ï¿½Ug4, F_env, quantum, fluid, DM), aiding maintainability.
+- Clear separation of computation functions(e.g., Ug1�Ug4, F_env, quantum, fluid, DM), aiding maintainability.
 - NGC 2264 - specific parameters are initialized for realistic simulation; supports easy modification.
 - Output functions for equation text and variable state support debugging and documentation.
 
@@ -471,3 +472,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, flexible, and suitable for scientific prototyping and educational use in nebular dynamics modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+*/

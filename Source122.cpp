@@ -1,9 +1,9 @@
-﻿// SurfaceTemperatureModule.h
+// SurfaceTemperatureModule.h
 // Modular C++ implementation of the Surface Temperature (T_s) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes T_s=5778 K (Sun effective); potential scaling T_s / T_s_ref in B_j for U_g3 magnetic strings.
-// Pluggable: #include "SurfaceTemperatureModule.h"
+// Pluggable: // // // #include "SurfaceTemperatureModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // SurfaceTemperatureModule mod; mod.computeU_g3_example(0.0, 5778.0); mod.updateVariable("T_s", new_value);
-// Variables in std::map; example for Sun at t=0; T_s=5778 K ? U_g3?1.8e49 J/mï¿½ (full); T_s=10000 K: ~3.11e49 J/mï¿½.
+// Variables in std::map; example for Sun at t=0; T_s=5778 K ? U_g3?1.8e49 J/m� (full); T_s=10000 K: ~3.11e49 J/m�.
 // Approximations: T_s_ref=5778 K (Sun); cos(?_s t ?)=1; P_core=1; E_react=1e46; hypothetical B_j scaling.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
@@ -158,7 +158,7 @@ public:
 #endif // SURFACE_TEMPERATURE_MODULE_H
 
 // SurfaceTemperatureModule.cpp
-#include "SurfaceTemperatureModule.h"
+// // // #include "SurfaceTemperatureModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults (Sun)
 SurfaceTemperatureModule::SurfaceTemperatureModule() {
@@ -231,10 +231,10 @@ double SurfaceTemperatureModule::computeU_g3_example(double t, double T_s) {
 std::string SurfaceTemperatureModule::getEquationText() {
     return "B_j ? (10^3 + 0.4 sin(?_s t)) * (T_s / T_s,ref) T (hypothetical);\n"
            "U_g3 = k_3 * ? B_j * cos(?_s t ?) * P_core * E_react\n"
-           "Where T_s = 5778 K (Sun effective photosphere; ï¿½C=5505).\n"
+           "Where T_s = 5778 K (Sun effective photosphere; �C=5505).\n"
            "T_s,ref=5778 K; scales string fields by temperature.\n"
-           "Example t=0, T_s=5778 K: B_j?1e3 T, U_g3?1.8e49 J/mï¿½;\n"
-           "T_s=10000 K: B_j?1730 T, U_g3?3.11e49 J/mï¿½ (+73%).\n"
+           "Example t=0, T_s=5778 K: B_j?1e3 T, U_g3?1.8e49 J/m�;\n"
+           "T_s=10000 K: B_j?1730 T, U_g3?3.11e49 J/m� (+73%).\n"
            "Role: Thermal baseline for magnetic strength; variability in U_g3/disks.\n"
            "UQFF: Temperature-dependent fields; extensible for radiation/formation.";
 }
@@ -248,20 +248,20 @@ void SurfaceTemperatureModule::printVariables() {
 }
 
 // Example usage in base program (snippet)
-// #include "SurfaceTemperatureModule.h"
+// // // // #include "SurfaceTemperatureModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     SurfaceTemperatureModule mod;
 //     double t_s = mod.computeT_s();
 //     std::cout << "T_s = " << t_s << " K\n";
 //     double u_g3 = mod.computeU_g3_example(0.0, 10000.0);
-//     std::cout << "U_g3 (T_s=10000 K) = " << u_g3 << " J/mï¿½\n";
+//     std::cout << "U_g3 (T_s=10000 K) = " << u_g3 << " J/m�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("T_s", 6000.0);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o temp_test temp_test.cpp SurfaceTemperatureModule.cpp -lm
-// Sample: T_s=5778 K; U_g3 (hot star)?3.11e49 J/mï¿½; thermal scaling.
+// Sample: T_s=5778 K; U_g3 (hot star)?3.11e49 J/m�; thermal scaling.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 SurfaceTemperatureModule Evaluation

@@ -1,7 +1,7 @@
-﻿// AndromedaUQFFModule.h
+// AndromedaUQFFModule.h
 // Modular C++ implementation of the Master Universal Gravity Equation (UQFF) for Andromeda Galaxy Evolution.
 // This module can be plugged into a base program by including this header and linking the .cpp.
-// Usage: #include "AndromedaUQFFModule.h"
+// Usage: // // // #include "AndromedaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // AndromedaUQFFModule mod; mod.computeG(t); mod.updateVariable("M", new_value);
 // Variables stored in std::map for dynamic updates.
 // Includes base gravity with expansion and TRZ, BH term, dust friction a_dust, EM/Aether term.
@@ -163,7 +163,7 @@ public:
 #endif // ANDROMEDA_UQFF_MODULE_H
 
 // AndromedaUQFFModule.cpp
-#include "AndromedaUQFFModule.h"
+// // // #include "AndromedaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set Andromeda-specific values
 AndromedaUQFFModule::AndromedaUQFFModule() {
@@ -279,7 +279,7 @@ std::string AndromedaUQFFModule::getEquationText() {
            "Where a_dust = (?_dust * v_orbit^2 / ?_mass) * scale_macro;\n"
            "EM term: q v B / m_proton * (1 + ?_vac_UA / ?_vac_SCm) * scale_macro.\n"
            "Andromeda Adaptations: Blueshift z=-0.001; M=1e12 M_sun; dust lanes with v_orbit=250 km/s.\n"
-           "At t=10 Gyr, g ?6.273 m/sï¿½ (dust dominant); minimal evolution due to small H(z)t.\n"
+           "At t=10 Gyr, g ?6.273 m/s� (dust dominant); minimal evolution due to small H(z)t.\n"
            "UQFF Terms: f_TRZ for time-reversal; Aether vacua ratio for EM enhancement.";
 }
 
@@ -294,7 +294,7 @@ void AndromedaUQFFModule::printVariables() {
 // Print evolution table
 void AndromedaUQFFModule::printEvolutionTable() {
     std::cout << std::fixed << std::setprecision(3);
-    std::cout << "Evolution over time (m/sï¿½):\n";
+    std::cout << "Evolution over time (m/s�):\n";
     std::cout << "t (Gyr) | g_Andromeda\n";
     std::cout << "--------|------------\n";
     for (int i = 0; i <= 5; ++i) {
@@ -305,12 +305,12 @@ void AndromedaUQFFModule::printEvolutionTable() {
 }
 
 // Example usage in base program (snippet)
-// #include "AndromedaUQFFModule.h"
+// // // // #include "AndromedaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     AndromedaUQFFModule mod;
 //     double t = 10.0 * 1e9 * 3.156e7;
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/sï¿½\n";
+//     std::cout << "g = " << g << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.printEvolutionTable();
 //     mod.updateVariable("v_orbit", 3e5);
@@ -318,9 +318,10 @@ void AndromedaUQFFModule::printEvolutionTable() {
 //     return 0;
 // }
 // Compile: g++ -o andromeda_test andromeda_test.cpp AndromedaUQFFModule.cpp -lm
-// Sample Output at t=10 Gyr: g ? 6.273 m/sï¿½; table shows near-constant due to small expansion.
+// Sample Output at t=10 Gyr: g ? 6.273 m/s�; table shows near-constant due to small expansion.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 AndromedaUQFFModule Evaluation
 
 Strengths :
@@ -343,3 +344,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, flexible, and suitable for scientific prototyping and educational use in galactic gravity modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+*/

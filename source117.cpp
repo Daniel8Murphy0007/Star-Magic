@@ -1,9 +1,9 @@
-﻿// StellarMassModule.h
+// StellarMassModule.h
 // Modular C++ implementation of the Stellar/Planetary Mass (M_s) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes M_s=1.989e30 kg (1 M_sun for Sun); scales M_s / r^2 in Universal Gravity U_g1 and U_g2 terms.
-// Pluggable: #include "StellarMassModule.h"
+// Pluggable: // // // #include "StellarMassModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // StellarMassModule mod; mod.computeU_g2(1.496e13); mod.updateVariable("M_s", new_value);
-// Variables in std::map; example for Sun at r=1.496e13 m; U_g2 ?1.18e53 J/mï¿½.
+// Variables in std::map; example for Sun at r=1.496e13 m; U_g2 ?1.18e53 J/m�.
 // Approximations: S(r - R_b)=1; (1 + ?_sw v_sw)=5001; H_SCm=1; E_react=1e46.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
@@ -147,7 +147,7 @@ public:
     // Core computations
     double computeM_s();  // 1.989e30 kg
     double computeM_sInMsun();  // 1 M_sun
-    double computeM_sOverR2(double r);  // M_s / r^2 (kg/mï¿½)
+    double computeM_sOverR2(double r);  // M_s / r^2 (kg/m�)
     double computeU_g1(double r);  // U_g1 example (J/m^3)
     double computeU_g2(double r);  // U_g2 example (J/m^3)
 
@@ -161,7 +161,7 @@ public:
 #endif // STELLAR_MASS_MODULE_H
 
 // StellarMassModule.cpp
-#include "StellarMassModule.h"
+// // // #include "StellarMassModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults (Sun at r=R_b)
 StellarMassModule::StellarMassModule() {
@@ -236,7 +236,7 @@ double StellarMassModule::computeM_sInMsun() {
     return computeM_s() / variables["M_sun"];
 }
 
-// M_s / r^2 (kg/mï¿½)
+// M_s / r^2 (kg/m�)
 double StellarMassModule::computeM_sOverR2(double r) {
     variables["r"] = r;
     if (r == 0.0) return 0.0;
@@ -269,8 +269,8 @@ std::string StellarMassModule::getEquationText() {
     return "U_g1 = k_1 * ?_vac,[UA/SCm] * (M_s / r^2) * ... E_react (internal dipole);\n"
            "U_g2 = k_2 * ?_vac,[UA/SCm] * (M_s / r^2) * S(r - R_b) * (1 + ?_sw v_sw) * H_SCm * E_react (outer bubble).\n"
            "Where M_s = 1.989e30 kg (1 M_sun for Sun).\n"
-           "Scales gravity by mass; M_s / r^2 ?8.89e3 kg/mï¿½ at r=1.496e13 m.\n"
-           "Example U_g2 (r=R_b): ?1.18e53 J/mï¿½.\n"
+           "Scales gravity by mass; M_s / r^2 ?8.89e3 kg/m� at r=1.496e13 m.\n"
+           "Example U_g2 (r=R_b): ?1.18e53 J/m�.\n"
            "Role: Central mass drives internal/external gravity; stellar/planetary dynamics.\n"
            "UQFF: Mass-dependent fields for nebulae/formation/mergers.";
 }
@@ -284,20 +284,20 @@ void StellarMassModule::printVariables() {
 }
 
 // Example usage in base program (snippet)
-// #include "StellarMassModule.h"
+// // // // #include "StellarMassModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     StellarMassModule mod;
 //     double m_sun = mod.computeM_sInMsun();
 //     std::cout << "M_s = " << m_sun << " M_sun\n";
 //     double u_g2 = mod.computeU_g2(1.496e13);
-//     std::cout << "U_g2 = " << u_g2 << " J/mï¿½\n";
+//     std::cout << "U_g2 = " << u_g2 << " J/m�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M_s", 2e30);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o stellar_mass_test stellar_mass_test.cpp StellarMassModule.cpp -lm
-// Sample: M_s=1 M_sun; U_g2?1.18e53 J/mï¿½; scales gravity by mass.
+// Sample: M_s=1 M_sun; U_g2?1.18e53 J/m�; scales gravity by mass.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 StellarMassModule Evaluation

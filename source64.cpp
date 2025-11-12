@@ -21,7 +21,6 @@
 #include <complex>
 #include <vector>
 
-
 #include <map>
 #include <vector>
 #include <functional>
@@ -29,7 +28,7 @@
 #include <algorithm>
 #include <fstream>
 #include <sstream>
-enum #include <map>
+#include <map>
 #include <vector>
 #include <functional>
 #include <fstream>
@@ -41,7 +40,8 @@ enum #include <map>
 // SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
 // ===========================================================================================
 
-class PhysicsTerm {
+class PhysicsTerm
+{
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
     std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
@@ -50,18 +50,17 @@ class PhysicsTerm {
     bool enableLogging;
     double learningRate;
 
-
 public:
     virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double>& params) const = 0;
+    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
     virtual std::string getName() const = 0;
     virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double>& params) const { return true; }
+    virtual bool validate(const std::map<std::string, double> &params) const { return true; }
 };
 
-class DynamicVacuumTerm : public PhysicsTerm {
+class DynamicVacuumTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double amplitude;
@@ -74,23 +73,23 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15) 
+    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15)
         : amplitude(amp), frequency(freq) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
         return amplitude * rho_vac * std::sin(frequency * t);
     }
-    
+
     std::string getName() const override { return "DynamicVacuum"; }
     std::string getDescription() const override { return "Time-varying vacuum energy"; }
 };
 
-class QuantumCouplingTerm : public PhysicsTerm {
+class QuantumCouplingTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double coupling_strength;
@@ -102,17 +101,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
     QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
         double M = params.count("M") ? params.at("M") : 1.989e30;
         double r = params.count("r") ? params.at("r") : 1e4;
         return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
     }
-    
+
     std::string getName() const override { return "QuantumCoupling"; }
     std::string getDescription() const override { return "Non-local quantum effects"; }
 };
@@ -121,14 +120,20 @@ public:
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
 // ===========================================================================================
 
-class BatchType {
-    BATCH_31, BATCH_39, EARLY_SEQUENCE, MID_SEQUENCE, LATE_SEQUENCE, GENERIC
+enum class BatchType
+{
+    BATCH_31,
+    BATCH_39,
+    EARLY_SEQUENCE,
+    MID_SEQUENCE,
+    LATE_SEQUENCE,
+    GENERIC
     // Extensible for #1-496 batches
 };
 
-class UFEOrbModule {
+class UFEOrbModule
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
@@ -139,7 +144,7 @@ private:
     double computeMetricTerm();
     double computeUbTerm(double t_minus);
     double computeFUExtension(double t);
-    double computeVacEnergy(const std::string& type);  // e.g., "SCm"
+    double computeVacEnergy(const std::string &type); // e.g., "SCm"
     double computePlasmoidCount(double timestamp);
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
@@ -149,8 +154,6 @@ private:
     bool enableLogging;
     double learningRate;
 
-
-
 public:
     // Constructor: Defaults for Red Dwarf Reactor
     UFEOrbModule(BatchType batch = BatchType::GENERIC);
@@ -159,17 +162,17 @@ public:
     void setBatch(BatchType batch);
 
     // Dynamic operations
-    void updateVariable(const std::string& name, double value);
-    void addToVariable(const std::string& name, double delta);
-    void subtractFromVariable(const std::string& name, double delta);
+    void updateVariable(const std::string &name, double value);
+    void addToVariable(const std::string &name, double delta);
+    void subtractFromVariable(const std::string &name, double delta);
 
     // Core computations
-    double computeUP(double t);  // UP(t) full equation
-    double computeFU(double t);  // FU unified field
+    double computeUP(double t); // UP(t) full equation
+    double computeFU(double t); // FU unified field
 
     // Output
     std::string getEquationText();
-    std::string getSolutions(double t);  // Step-by-step numerics
+    std::string getSolutions(double t); // Step-by-step numerics
 
     void printVariables();
 };
@@ -177,165 +180,184 @@ public:
 #endif // UFE_ORB_MODULE_H
 
 // UFEOrbModule.cpp
-#include "UFEOrbModule.h"
+// #include "UFEOrbModule.h"  // Commented - header not available
 #include <complex>
 
 // Constructor: Red Dwarf defaults
-UFEOrbModule::UFEOrbModule(BatchType batch) : current_batch(batch) {
+UFEOrbModule::UFEOrbModule(BatchType batch) : current_batch(batch)
+{
     // Universal constants
     variables["G"] = 6.6743e-11;
     variables["c"] = 3e8;
     variables["hbar"] = 1.0546e-34;
     variables["pi"] = 3.141592653589793;
-    variables["gamma"] = 0.001;  // Decay rate
-    variables["fps"] = 33.3;     // Frames per second
-    variables["cylinder_r"] = 0.0445;  // m (1.75" radius)
-    variables["cylinder_h"] = 0.254;   // m (10")
+    variables["gamma"] = 0.001;       // Decay rate
+    variables["fps"] = 33.3;          // Frames per second
+    variables["cylinder_r"] = 0.0445; // m (1.75" radius)
+    variables["cylinder_h"] = 0.254;  // m (10")
 
     // SCm & UA
-    variables["SCm"] = 1e15;     // kg/mï¿½
-    variables["SCm_prime"] = 1e15;  // m^{-3}
-    variables["UA"] = 1e-11;     // C
+    variables["SCm"] = 1e15;       // kg/mï¿½
+    variables["SCm_prime"] = 1e15; // m^{-3}
+    variables["UA"] = 1e-11;       // C
 
     // Vacuum energies (J/mï¿½, scale-dependent)
     variables["rho_vac_SCm_atomic"] = 1.60e19;
     variables["rho_vac_UA_atomic"] = 1.60e20;
     variables["E_vac_neb"] = 7.09e-36;
     variables["E_vac_ISM"] = 7.09e-37;
-    variables["rho_vac_Ug"] = 5e-89;  // Cosmic
-    variables["rho_vac_Um"] = 1.42e-36;  // Sun scale
+    variables["rho_vac_Ug"] = 5e-89;    // Cosmic
+    variables["rho_vac_Um"] = 1.42e-36; // Sun scale
     variables["rho_vac_Ub"] = 2.13e-36;
     variables["rho_vac_Ui"] = 2.84e-36;
 
     // Ug/Um coefficients (ki, ?j, etc.)
-    variables["k1"] = 1.0;  // For Ug1
+    variables["k1"] = 1.0; // For Ug1
     variables["beta1"] = 0.1;
     variables["Omega_g"] = 1.0;
-    variables["M_bh"] = 1e6 * 1.989e30;  // kg, example SMBH
-    variables["E_react"] = 1e-20;  // Reaction energy J
-    variables["mu1"] = 1.0;  // For Um1
-    variables["phi1"] = 1.0;  // Phase
-    variables["eta"] = 1.0;  // Metric eta
-    variables["lambda1"] = 0.1;  // For Ui
+    variables["M_bh"] = 1e6 * 1.989e30; // kg, example SMBH
+    variables["E_react"] = 1e-20;       // Reaction energy J
+    variables["mu1"] = 1.0;             // For Um1
+    variables["phi1"] = 1.0;            // Phase
+    variables["eta"] = 1.0;             // Metric eta
+    variables["lambda1"] = 0.1;         // For Ui
 
     // Experiment params
-    variables["B_s"] = 1e-3;     // T
-    variables["t_n"] = 1.0;      // Normalized time
-    variables["omega_s"] = 1e3;  // rad/s spin
-    variables["T_s"] = 300.0;    // K
-    variables["RM"] = 1.0;       // Rotation measure
-    variables["SM"] = 1.0;       // Source measure
-    variables["r"] = 0.0445;     // Default radial m
-    variables["t"] = 9.03;       // s, batch 31 start
+    variables["B_s"] = 1e-3;    // T
+    variables["t_n"] = 1.0;     // Normalized time
+    variables["omega_s"] = 1e3; // rad/s spin
+    variables["T_s"] = 300.0;   // K
+    variables["RM"] = 1.0;      // Rotation measure
+    variables["SM"] = 1.0;      // Source measure
+    variables["r"] = 0.0445;    // Default radial m
+    variables["t"] = 9.03;      // s, batch 31 start
 
     // Batch defaults
-    variables["plasmoid_count"] = 40.0;  // Avg per frame
-    variables["energy_per_frame"] = 0.019;  // J
+    variables["plasmoid_count"] = 40.0;    // Avg per frame
+    variables["energy_per_frame"] = 0.019; // J
 
     setBatch(batch);
 }
 
 // Set batch: Override timestamps, counts, etc.
-void UFEOrbModule::setBatch(BatchType batch) {
+void UFEOrbModule::setBatch(BatchType batch)
+{
     current_batch = batch;
     double frame_rate_inv = 1.0 / variables["fps"];
-    switch (batch) {
-        case BatchType::BATCH_31:
-            variables["t"] = 9.03;  // Start 301st frame
-            variables["frame_start"] = 301;
-            variables["plasmoid_count"] = 45.0;  // Est. mid-sequence
-            break;
-        case BatchType::BATCH_39:
-            variables["t"] = 13.53;  // Start 451st frame
-            variables["frame_start"] = 451;
-            variables["plasmoid_count"] = 50.0;  // Late sequence
-            break;
-        case BatchType::EARLY_SEQUENCE:
-            variables["t"] = 0.24;  // e.g., Photo #9
-            variables["plasmoid_count"] = 30.0;
-            break;
-        case BatchType::MID_SEQUENCE:
-            variables["t"] = 8.73;  // Batch 30 end
-            variables["plasmoid_count"] = 40.0;
-            break;
-        case BatchType::LATE_SEQUENCE:
-            variables["t"] = 13.68;  // Batch 39/6
-            variables["plasmoid_count"] = 50.0;
-            break;
-        default:
-            break;
+    switch (batch)
+    {
+    case BatchType::BATCH_31:
+        variables["t"] = 9.03; // Start 301st frame
+        variables["frame_start"] = 301;
+        variables["plasmoid_count"] = 45.0; // Est. mid-sequence
+        break;
+    case BatchType::BATCH_39:
+        variables["t"] = 13.53; // Start 451st frame
+        variables["frame_start"] = 451;
+        variables["plasmoid_count"] = 50.0; // Late sequence
+        break;
+    case BatchType::EARLY_SEQUENCE:
+        variables["t"] = 0.24; // e.g., Photo #9
+        variables["plasmoid_count"] = 30.0;
+        break;
+    case BatchType::MID_SEQUENCE:
+        variables["t"] = 8.73; // Batch 30 end
+        variables["plasmoid_count"] = 40.0;
+        break;
+    case BatchType::LATE_SEQUENCE:
+        variables["t"] = 13.68; // Batch 39/6
+        variables["plasmoid_count"] = 50.0;
+        break;
+    default:
+        break;
     }
     // Update t_n = t * fps / total_frames est.
     variables["t_n"] = variables["t"] * variables["fps"] / 496.0;
 }
 
 // Update variable
-void UFEOrbModule::updateVariable(const std::string& name, double value) {
+void UFEOrbModule::updateVariable(const std::string &name, double value)
+{
     variables[name] = value;
-    if (name == "SCm") {
-        variables["rho_vac_SCm_atomic"] = value * 1e4;  // Approx scaling
+    if (name == "SCm")
+    {
+        variables["rho_vac_SCm_atomic"] = value * 1e4; // Approx scaling
     }
 }
 
 // Add/subtract
-void UFEOrbModule::addToVariable(const std::string& name, double delta) {
-    if (variables.count(name)) variables[name] += delta;
+void UFEOrbModule::addToVariable(const std::string &name, double delta)
+{
+    if (variables.count(name))
+        variables[name] += delta;
 }
-void UFEOrbModule::subtractFromVariable(const std::string& name, double delta) {
+void UFEOrbModule::subtractFromVariable(const std::string &name, double delta)
+{
     addToVariable(name, -delta);
 }
 
 // t^- = -t_n * exp(? - t_n)
-double UFEOrbModule::computeTminus(double t_n) {
+double UFEOrbModule::computeTminus(double t_n)
+{
     return -t_n * std::exp(variables["pi"] - t_n);
 }
 
 // ? ki Ug_i (simplified for i=1; extend vector)
-double UFEOrbModule::computeUgSum(double t, double r) {
+double UFEOrbModule::computeUgSum(double t, double r)
+{
     double t_minus = computeTminus(variables["t_n"]);
     double Ug1 = variables["k1"] * (variables["G"] * variables["M_bh"] / (r * r)) * std::exp(-variables["gamma"] * t_minus) * std::cos(variables["pi"] * variables["t_n"]);
     double beta_term = variables["beta1"] * Ug1 * variables["Omega_g"] * variables["E_react"] / variables["M_bh"];
-    return Ug1 - beta_term;  // For i=1
+    return Ug1 - beta_term; // For i=1
 }
 
 // ? ?j / rj (1 - e^{-? t^-} cos(? t_n)) ?^j Um_j
-double UFEOrbModule::computeUmSum(double t, double r) {
+double UFEOrbModule::computeUmSum(double t, double r)
+{
     double t_minus = computeTminus(variables["t_n"]);
     double exp_cos = 1 - std::exp(-variables["gamma"] * t_minus) * std::cos(variables["pi"] * variables["t_n"]);
     double Um1 = (variables["mu1"] / r) * exp_cos * std::pow(variables["phi1"], 1) * variables["rho_vac_Um"];
-    return Um1;  // For j=1
+    return Um1; // For j=1
 }
 
 // Metric + stress-energy
-double UFEOrbModule::computeMetricTerm() {
-    return variables["eta"] * variables["T_s"] * variables["rho_vac_Ug"];  // Simplified g_?? ~1
+double UFEOrbModule::computeMetricTerm()
+{
+    return variables["eta"] * variables["T_s"] * variables["rho_vac_Ug"]; // Simplified g_?? ~1
 }
 
 // Ub(t^-)
-double UFEOrbModule::computeUbTerm(double t_minus) {
-    return variables["rho_vac_Ub"] * std::exp(t_minus);  // Approx
+double UFEOrbModule::computeUbTerm(double t_minus)
+{
+    return variables["rho_vac_Ub"] * std::exp(t_minus); // Approx
 }
 
 // FU extension: -? ?_i Ui E_react
-double UFEOrbModule::computeFUExtension(double t) {
+double UFEOrbModule::computeFUExtension(double t)
+{
     return -variables["lambda1"] * variables["rho_vac_Ui"] * variables["E_react"];
 }
 
 // Vac energy by type
-double UFEOrbModule::computeVacEnergy(const std::string& type) {
-    if (type == "SCm") return variables["rho_vac_SCm_atomic"];
-    if (type == "UA") return variables["rho_vac_UA_atomic"];
+double UFEOrbModule::computeVacEnergy(const std::string &type)
+{
+    if (type == "SCm")
+        return variables["rho_vac_SCm_atomic"];
+    if (type == "UA")
+        return variables["rho_vac_UA_atomic"];
     // etc.
     return variables["E_vac_neb"];
 }
 
 // Plasmoid count est. ~ linear with t
-double UFEOrbModule::computePlasmoidCount(double timestamp) {
-    return 20.0 + 2.0 * (timestamp / 149.88) * 30.0;  // 20-50 range
+double UFEOrbModule::computePlasmoidCount(double timestamp)
+{
+    return 20.0 + 2.0 * (timestamp / 149.88) * 30.0; // 20-50 range
 }
 
 // Full UP(t)
-double UFEOrbModule::computeUP(double t) {
+double UFEOrbModule::computeUP(double t)
+{
     variables["t"] = t;
     double r = variables["r"];
     double ug_sum = computeUgSum(t, r);
@@ -352,14 +374,16 @@ double UFEOrbModule::computeUP(double t) {
 }
 
 // FU(t)
-double UFEOrbModule::computeFU(double t) {
+double UFEOrbModule::computeFU(double t)
+{
     double up_base = computeUP(t);
     double fu_ext = computeFUExtension(t);
     return up_base + fu_ext;
 }
 
 // Equation text
-std::string UFEOrbModule::getEquationText() {
+std::string UFEOrbModule::getEquationText()
+{
     return "UP(t) = ?_i [k_i Ug_i(r, t^-, ?_s, T_s, B_s, SCm, SCm', UA, t_n, RM, SM)] + ?_j [?_j / r_j (1 - e^{-? t^-} cos(? t_n)) ?^j Um_j] + (g_?? + ? T_s ??) + Ub(t^-) + [SCm-UA terms]\n"
            "Where t^- = -t_n exp(? - t_n); Ug_i ~ G M_bh / r^2 exp(-? t^-) cos(? t_n)\n"
            "FU = ? [k_i Ug_i - ?_i Ug_i ?_g M_bh / d_g E_react] + ? [?_j / r_j (1 - e^{-? t} cos(? t_n)) ?^j] + (g_?? + ? T_s ??) - ? [?_i Ui E_react]\n"
@@ -368,7 +392,8 @@ std::string UFEOrbModule::getEquationText() {
 }
 
 // Solutions: Step-by-step for t
-std::string UFEOrbModule::getSolutions(double t) {
+std::string UFEOrbModule::getSolutions(double t)
+{
     double r = variables["r"];
     double t_n = variables["t_n"];
     double t_minus = computeTminus(t_n);
@@ -396,9 +421,11 @@ std::string UFEOrbModule::getSolutions(double t) {
     return ss.str();
 }
 
-void UFEOrbModule::printVariables() {
+void UFEOrbModule::printVariables()
+{
     std::cout << "Variables (Batch: " << static_cast<int>(current_batch) << "):\n";
-    for (const auto& pair : variables) {
+    for (const auto &pair : variables)
+    {
         std::cout << pair.first << " = " << std::scientific << pair.second << std::endl;
     }
 }
@@ -437,4 +464,3 @@ void UFEOrbModule::printVariables() {
 // - Magic Numbers: Parameterize gamma=0.001 from exp data.
 
 // Summary: Robust module for UFE orb sims; bridges experiment to cosmic (26 levels, AGN feedback). Rating: 9/10.
-

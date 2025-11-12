@@ -1,13 +1,13 @@
-﻿// VelaPulsarUQFFModule.h
+// VelaPulsarUQFFModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Vela Pulsar (PSR J0835-4510 in Vela Remnant) Evolution.
 // This module can be plugged into a base program (e.g., 'vela_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "VelaPulsarUQFFModule.h"
+// Usage in base: // // // #include "VelaPulsarUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // VelaPulsarUQFFModule mod; mod.computeF(t); mod.updateVariable("M", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino.
 // Associated text: Outputs descriptive equation string via getEquationText().
-// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low ω_0; x2 from quadratic solver approx.
-// Vela Pulsar params: M=2.8e30 kg, r=1.7e17 m, L_X=1e27 W, B0=3e-8 T, t=3.47e11 s, ω_0=1e-12 s^-1, etc.
+// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low ?_0; x2 from quadratic solver approx.
+// Vela Pulsar params: M=2.8e30 kg, r=1.7e17 m, L_X=1e27 W, B0=3e-8 T, t=3.47e11 s, ?_0=1e-12 s^-1, etc.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 23, 2025.
 
 #ifndef VELA_PULSAR_UQFF_MODULE_H
@@ -176,7 +176,7 @@ public:
 #endif // VELA_PULSAR_UQFF_MODULE_H
 
 // VelaPulsarUQFFModule.cpp
-#include "VelaPulsarUQFFModule.h"
+// // // #include "VelaPulsarUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with Vela Pulsar-specific values
@@ -427,7 +427,7 @@ void VelaPulsarUQFFModule::printVariables() {
 }
 
 // Example usage in base program 'vela_sim.cpp' (snippet for integration)
-// #include "VelaPulsarUQFFModule.h"
+// // // // #include "VelaPulsarUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #include <complex>
 // int main() {
 //     VelaPulsarUQFFModule mod;
@@ -441,7 +441,7 @@ void VelaPulsarUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o vela_sim vela_sim.cpp VelaPulsarUQFFModule.cpp -lm
-// Sample Output at t=11k yr: F ≈ 5.30e208 + i (large; approx per framework; dominant real from LENR * x2).
+// Sample Output at t=11k yr: F � 5.30e208 + i (large; approx per framework; dominant real from LENR * x2).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 23, 2025.
 
 VelaPulsarUQFFModule C++ Code Evaluation

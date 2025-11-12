@@ -1,7 +1,7 @@
-﻿// CompressedResonanceUQFF34Module.h
+// CompressedResonanceUQFF34Module.h
 // Modular C++ implementation of the UQFF Compressed and Resonance Equations for Systems 26-28, 30-32, 34.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "CompressedResonanceUQFF34Module.h"
+// Usage in base: // // // #include "CompressedResonanceUQFF34Module.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // CompressedResonanceUQFF34Module mod; mod.computeCompressed(system_id); mod.computeResonance(system_id);
 // All variables are stored in a std::map for dynamic addition/subtraction/update; system_id selects parameters (e.g., 26=Universe, 27=Hydrogen Atom, etc.).
 // Nothing is negligible: Includes compressed terms (DPM, THz, vac_diff, super) + resonance (aether, U_g4i, osc, quantum, fluid, exp) with system-specific scaling.
@@ -19,7 +19,6 @@
 #include <iostream>
 #include <iomanip>
 #include <complex>
-
 
 #include <map>
 #include <vector>
@@ -40,7 +39,8 @@
 // SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
 // ===========================================================================================
 
-class PhysicsTerm {
+class PhysicsTerm
+{
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
     std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
@@ -49,18 +49,17 @@ class PhysicsTerm {
     bool enableLogging;
     double learningRate;
 
-
 public:
     virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double>& params) const = 0;
+    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
     virtual std::string getName() const = 0;
     virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double>& params) const { return true; }
+    virtual bool validate(const std::map<std::string, double> &params) const { return true; }
 };
 
-class DynamicVacuumTerm : public PhysicsTerm {
+class DynamicVacuumTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double amplitude;
@@ -73,23 +72,23 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15) 
+    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15)
         : amplitude(amp), frequency(freq) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
         return amplitude * rho_vac * std::sin(frequency * t);
     }
-    
+
     std::string getName() const override { return "DynamicVacuum"; }
     std::string getDescription() const override { return "Time-varying vacuum energy"; }
 };
 
-class QuantumCouplingTerm : public PhysicsTerm {
+class QuantumCouplingTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double coupling_strength;
@@ -101,17 +100,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
     QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
         double M = params.count("M") ? params.at("M") : 1.989e30;
         double r = params.count("r") ? params.at("r") : 1e4;
         return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
     }
-    
+
     std::string getName() const override { return "QuantumCoupling"; }
     std::string getDescription() const override { return "Non-local quantum effects"; }
 };
@@ -120,9 +119,9 @@ public:
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
 // ===========================================================================================
 
-class CompressedResonanceUQFF34Module {
+class CompressedResonanceUQFF34Module
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
@@ -138,21 +137,20 @@ private:
     bool enableLogging;
     double learningRate;
 
-
-
 public:
     // Constructor: Initialize base variables
     CompressedResonanceUQFF34Module();
 
     // Dynamic variable operations
-    void updateVariable(const std::string& name, double value);
-    void addToVariable(const std::string& name, double delta);
-    void subtractFromVariable(const std::string& name, double delta);
+    void updateVariable(const std::string &name, double value);
+    void addToVariable(const std::string &name, double delta);
+    void subtractFromVariable(const std::string &name, double delta);
 
     // Core computations: Set system and compute compressed/resonance/full
     double computeCompressed(int system_id);
     double computeResonance(int system_id, double t);
     double computeFullUQFF34(int system_id, double t, double B = 1e-5);
+    double computeCompressedResTerm(int system_id, double t, double B);
 
     // Output descriptive text of the equations for a system
     std::string getEquationText(int system_id);
@@ -164,124 +162,285 @@ public:
 #endif // COMPRESSED_RESONANCE_UQFF34_MODULE_H
 
 // CompressedResonanceUQFF34Module.cpp
-#include "CompressedResonanceUQFF34Module.h"
+// // // #include "CompressedResonanceUQFF34Module.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set base variables common to all systems
-CompressedResonanceUQFF34Module::CompressedResonanceUQFF34Module() {
-        enableDynamicTerms = true;
-        enableLogging = false;
-        learningRate = 0.001;
-        metadata["enhanced"] = "true";
-        metadata["version"] = "2.0-Enhanced";
+CompressedResonanceUQFF34Module::CompressedResonanceUQFF34Module()
+{
+    enableDynamicTerms = true;
+    enableLogging = false;
+    learningRate = 0.001;
+    metadata["enhanced"] = "true";
+    metadata["version"] = "2.0-Enhanced";
 
     // Base constants (UQFF universal)
-    variables["c"] = 3e8;                           // m/s
-    variables["pi"] = 3.141592653589793;            // pi
-    variables["E_vac"] = 7.09e-36;                  // J/m^3 (plasmotic vacuum)
-    variables["hbar"] = 1.0546e-34;                 // J s
-    variables["f_TRZ"] = 0.1;                       // Time-reversal
-    variables["B_crit"] = 1e11;                     // T
-    variables["f_sc"] = 1.0;                        // Superconductive factor
-    variables["scale_macro"] = 1e-12;               // Macro scaling
-    variables["E_vac_ISM"] = variables["E_vac"] / 10.0;  // Proxy
+    variables["c"] = 3e8;                               // m/s
+    variables["pi"] = 3.141592653589793;                // pi
+    variables["E_vac"] = 7.09e-36;                      // J/m^3 (plasmotic vacuum)
+    variables["hbar"] = 1.0546e-34;                     // J s
+    variables["f_TRZ"] = 0.1;                           // Time-reversal
+    variables["B_crit"] = 1e11;                         // T
+    variables["f_sc"] = 1.0;                            // Superconductive factor
+    variables["scale_macro"] = 1e-12;                   // Macro scaling
+    variables["E_vac_ISM"] = variables["E_vac"] / 10.0; // Proxy
 }
 
 // Set system-specific variables (system_id: 26=Universe, 27=Hydrogen, 28=PToE H, 30=Lagoon, 31=Spirals SN, 32=NGC6302, 34=Orion)
-void CompressedResonanceUQFF34Module::setSystemVariables(int system_id) {
-    switch (system_id) {
-        case 26:  // Universe Diameter
-            variables["f_DPM"] = 1e9; variables["I"] = 1e24; variables["A_vort"] = 3.142e52; variables["omega_1"] = 1e-6; variables["omega_2"] = -1e-6;
-            variables["v_exp"] = 1e8; variables["V_sys"] = 4.189e80; variables["f_THz"] = 1e9; variables["f_vac_diff"] = 0.143; variables["f_super"] = 1.411e13;
-            variables["f_aether"] = 1e3; variables["f_react"] = 1e7; variables["f_quantum"] = 1.445e-17; variables["f_fluid"] = 1.269e-14; variables["f_exp"] = 1.373e-8;
-            variables["f_osc"] = 4.57e11; variables["k"] = 1e17; variables["omega_osc"] = 1e14; variables["x"] = 0.0; variables["A"] = 1e-9;
-            variables["rho_fluid"] = 8.6e-27; variables["V"] = 1e3; variables["delta_rho"] = 0.1 * variables["rho_fluid"]; variables["rho"] = variables["rho_fluid"];
-            variables["Delta_x"] = 1e-10; variables["Delta_p"] = variables["hbar"] / variables["Delta_x"]; variables["integral_psi"] = 1.0;
-            break;
-        case 27:  // Hydrogen Atom
-            variables["f_DPM"] = 1e15; variables["I"] = 1e18; variables["A_vort"] = 3.142e-21; variables["omega_1"] = 1e-3; variables["omega_2"] = -1e-3;
-            variables["v_exp"] = 2.2e6; variables["V_sys"] = 4.189e-31; variables["f_THz"] = 1e15; variables["f_vac_diff"] = 0.143; variables["f_super"] = 1.411e16;
-            variables["f_aether"] = 1e4; variables["f_react"] = 1e10; variables["f_quantum"] = 1.445e-17; variables["f_fluid"] = 1.269e-14; variables["f_exp"] = 1.373e-8;
-            variables["f_osc"] = 2.47e15; variables["k"] = 1e11; variables["omega_osc"] = 2.47e15; variables["x"] = 0.0; variables["A"] = 1e-10;
-            variables["rho_fluid"] = 1e-25; variables["V"] = 4.189e-31; variables["delta_rho"] = 0.1 * variables["rho_fluid"]; variables["rho"] = variables["rho_fluid"];
-            variables["Delta_x"] = 5.29e-11; variables["Delta_p"] = variables["hbar"] / variables["Delta_x"]; variables["integral_psi"] = 1.0;
-            break;
-        case 28:  // Hydrogen PToE Resonance
-            variables["f_DPM"] = 1e15; variables["I"] = 1e18; variables["A_vort"] = 3.142e-21; variables["omega_1"] = 1e-3; variables["omega_2"] = -1e-3;
-            variables["v_exp"] = 2.2e6; variables["V_sys"] = 4.189e-31; variables["f_THz"] = 1e15; variables["f_vac_diff"] = 0.143; variables["f_super"] = 1.411e16;
-            variables["f_aether"] = 1e4; variables["f_react"] = 1e10; variables["f_quantum"] = 1.445e-17; variables["f_fluid"] = 1.269e-14; variables["f_exp"] = 1.373e-8;
-            variables["f_osc"] = 2.47e15; variables["k"] = 1e11; variables["omega_osc"] = 2.47e15; variables["x"] = 0.0; variables["A"] = 1e-10;
-            variables["rho_fluid"] = 1e-25; variables["V"] = 4.189e-31; variables["delta_rho"] = 0.1 * variables["rho_fluid"]; variables["rho"] = variables["rho_fluid"];
-            variables["Delta_x"] = 5.29e-11; variables["Delta_p"] = variables["hbar"] / variables["Delta_x"]; variables["integral_psi"] = 1.0;
-            break;
-        case 30:  // Lagoon Nebula
-            variables["f_DPM"] = 1e11; variables["I"] = 1e20; variables["A_vort"] = 3.142e35; variables["omega_1"] = 1e-2; variables["omega_2"] = -1e-2;
-            variables["v_exp"] = 1e4; variables["V_sys"] = 5.913e53; variables["f_THz"] = 1e11; variables["f_vac_diff"] = 0.143; variables["f_super"] = 1.411e15;
-            variables["f_aether"] = 1e2; variables["f_react"] = 1e9; variables["f_quantum"] = 1.445e-17; variables["f_fluid"] = 1.269e-14; variables["f_exp"] = 1.373e-8;
-            variables["f_osc"] = 4.57e13; variables["k"] = 1e15; variables["omega_osc"] = 1e14; variables["x"] = 0.0; variables["A"] = 1e-9;
-            variables["rho_fluid"] = 1e-20; variables["V"] = 1e9; variables["delta_rho"] = 0.1 * variables["rho_fluid"]; variables["rho"] = variables["rho_fluid"];
-            variables["Delta_x"] = 1e-10; variables["Delta_p"] = variables["hbar"] / variables["Delta_x"]; variables["integral_psi"] = 1.0;
-            break;
-        case 31:  // Spirals and Supernovae
-            variables["f_DPM"] = 1e10; variables["I"] = 1e22; variables["A_vort"] = 3.142e41; variables["omega_1"] = 1e-1; variables["omega_2"] = -1e-1;
-            variables["v_exp"] = 2e5; variables["V_sys"] = 1.543e64; variables["f_THz"] = 1e10; variables["f_vac_diff"] = 0.143; variables["f_super"] = 1.411e14;
-            variables["f_aether"] = 1e1; variables["f_react"] = 1e8; variables["f_quantum"] = 1.445e-17; variables["f_fluid"] = 1.269e-14; variables["f_exp"] = 1.373e-8;
-            variables["f_osc"] = 4.57e12; variables["k"] = 1e16; variables["omega_osc"] = 1e13; variables["x"] = 0.0; variables["A"] = 1e-8;
-            variables["rho_fluid"] = 1e-21; variables["V"] = 1e12; variables["delta_rho"] = 0.1 * variables["rho_fluid"]; variables["rho"] = variables["rho_fluid"];
-            variables["Delta_x"] = 1e-10; variables["Delta_p"] = variables["hbar"] / variables["Delta_x"]; variables["integral_psi"] = 1.0;
-            break;
-        case 32:  // NGC 6302
-            variables["f_DPM"] = 1e12; variables["I"] = 1e20; variables["A_vort"] = 3.142e32; variables["omega_1"] = 1e-3; variables["omega_2"] = -1e-3;
-            variables["v_exp"] = 2.68e5; variables["V_sys"] = 1.458e48; variables["f_THz"] = 1e12; variables["f_vac_diff"] = 0.143; variables["f_super"] = 1.411e16;
-            variables["f_aether"] = 1e4; variables["f_react"] = 1e10; variables["f_quantum"] = 1.445e-17; variables["f_fluid"] = 1.269e-14; variables["f_exp"] = 1.373e-8;
-            variables["f_osc"] = 4.57e14; variables["k"] = 1e20; variables["omega_osc"] = 1e15; variables["x"] = 0.0; variables["A"] = 1e-10;
-            variables["rho_fluid"] = 1e-21; variables["V"] = 1e3; variables["delta_rho"] = 0.1 * variables["rho_fluid"]; variables["rho"] = variables["rho_fluid"];
-            variables["Delta_x"] = 1e-10; variables["Delta_p"] = variables["hbar"] / variables["Delta_x"]; variables["integral_psi"] = 1.0;
-            break;
-        case 34:  // Orion Nebula
-            variables["f_DPM"] = 1e11; variables["I"] = 1e20; variables["A_vort"] = 3.142e34; variables["omega_1"] = 1e-2; variables["omega_2"] = -1e-2;
-            variables["v_exp"] = 1e4; variables["V_sys"] = 6.132e51; variables["f_THz"] = 1e11; variables["f_vac_diff"] = 0.143; variables["f_super"] = 1.411e15;
-            variables["f_aether"] = 1e2; variables["f_react"] = 1e9; variables["f_quantum"] = 1.445e-17; variables["f_fluid"] = 1.269e-14; variables["f_exp"] = 1.373e-8;
-            variables["f_osc"] = 4.57e13; variables["k"] = 1e15; variables["omega_osc"] = 1e14; variables["x"] = 0.0; variables["A"] = 1e-9;
-            variables["rho_fluid"] = 1e-20; variables["V"] = 1e9; variables["delta_rho"] = 0.1 * variables["rho_fluid"]; variables["rho"] = variables["rho_fluid"];
-            variables["Delta_x"] = 1e-10; variables["Delta_p"] = variables["hbar"] / variables["Delta_x"]; variables["integral_psi"] = 1.0;
-            break;
-        default:
-            std::cerr << "Unknown system_id: " << system_id << std::endl;
-            break;
+void CompressedResonanceUQFF34Module::setSystemVariables(int system_id)
+{
+    switch (system_id)
+    {
+    case 26: // Universe Diameter
+        variables["f_DPM"] = 1e9;
+        variables["I"] = 1e24;
+        variables["A_vort"] = 3.142e52;
+        variables["omega_1"] = 1e-6;
+        variables["omega_2"] = -1e-6;
+        variables["v_exp"] = 1e8;
+        variables["V_sys"] = 4.189e80;
+        variables["f_THz"] = 1e9;
+        variables["f_vac_diff"] = 0.143;
+        variables["f_super"] = 1.411e13;
+        variables["f_aether"] = 1e3;
+        variables["f_react"] = 1e7;
+        variables["f_quantum"] = 1.445e-17;
+        variables["f_fluid"] = 1.269e-14;
+        variables["f_exp"] = 1.373e-8;
+        variables["f_osc"] = 4.57e11;
+        variables["k"] = 1e17;
+        variables["omega_osc"] = 1e14;
+        variables["x"] = 0.0;
+        variables["A"] = 1e-9;
+        variables["rho_fluid"] = 8.6e-27;
+        variables["V"] = 1e3;
+        variables["delta_rho"] = 0.1 * variables["rho_fluid"];
+        variables["rho"] = variables["rho_fluid"];
+        variables["Delta_x"] = 1e-10;
+        variables["Delta_p"] = variables["hbar"] / variables["Delta_x"];
+        variables["integral_psi"] = 1.0;
+        break;
+    case 27: // Hydrogen Atom
+        variables["f_DPM"] = 1e15;
+        variables["I"] = 1e18;
+        variables["A_vort"] = 3.142e-21;
+        variables["omega_1"] = 1e-3;
+        variables["omega_2"] = -1e-3;
+        variables["v_exp"] = 2.2e6;
+        variables["V_sys"] = 4.189e-31;
+        variables["f_THz"] = 1e15;
+        variables["f_vac_diff"] = 0.143;
+        variables["f_super"] = 1.411e16;
+        variables["f_aether"] = 1e4;
+        variables["f_react"] = 1e10;
+        variables["f_quantum"] = 1.445e-17;
+        variables["f_fluid"] = 1.269e-14;
+        variables["f_exp"] = 1.373e-8;
+        variables["f_osc"] = 2.47e15;
+        variables["k"] = 1e11;
+        variables["omega_osc"] = 2.47e15;
+        variables["x"] = 0.0;
+        variables["A"] = 1e-10;
+        variables["rho_fluid"] = 1e-25;
+        variables["V"] = 4.189e-31;
+        variables["delta_rho"] = 0.1 * variables["rho_fluid"];
+        variables["rho"] = variables["rho_fluid"];
+        variables["Delta_x"] = 5.29e-11;
+        variables["Delta_p"] = variables["hbar"] / variables["Delta_x"];
+        variables["integral_psi"] = 1.0;
+        break;
+    case 28: // Hydrogen PToE Resonance
+        variables["f_DPM"] = 1e15;
+        variables["I"] = 1e18;
+        variables["A_vort"] = 3.142e-21;
+        variables["omega_1"] = 1e-3;
+        variables["omega_2"] = -1e-3;
+        variables["v_exp"] = 2.2e6;
+        variables["V_sys"] = 4.189e-31;
+        variables["f_THz"] = 1e15;
+        variables["f_vac_diff"] = 0.143;
+        variables["f_super"] = 1.411e16;
+        variables["f_aether"] = 1e4;
+        variables["f_react"] = 1e10;
+        variables["f_quantum"] = 1.445e-17;
+        variables["f_fluid"] = 1.269e-14;
+        variables["f_exp"] = 1.373e-8;
+        variables["f_osc"] = 2.47e15;
+        variables["k"] = 1e11;
+        variables["omega_osc"] = 2.47e15;
+        variables["x"] = 0.0;
+        variables["A"] = 1e-10;
+        variables["rho_fluid"] = 1e-25;
+        variables["V"] = 4.189e-31;
+        variables["delta_rho"] = 0.1 * variables["rho_fluid"];
+        variables["rho"] = variables["rho_fluid"];
+        variables["Delta_x"] = 5.29e-11;
+        variables["Delta_p"] = variables["hbar"] / variables["Delta_x"];
+        variables["integral_psi"] = 1.0;
+        break;
+    case 30: // Lagoon Nebula
+        variables["f_DPM"] = 1e11;
+        variables["I"] = 1e20;
+        variables["A_vort"] = 3.142e35;
+        variables["omega_1"] = 1e-2;
+        variables["omega_2"] = -1e-2;
+        variables["v_exp"] = 1e4;
+        variables["V_sys"] = 5.913e53;
+        variables["f_THz"] = 1e11;
+        variables["f_vac_diff"] = 0.143;
+        variables["f_super"] = 1.411e15;
+        variables["f_aether"] = 1e2;
+        variables["f_react"] = 1e9;
+        variables["f_quantum"] = 1.445e-17;
+        variables["f_fluid"] = 1.269e-14;
+        variables["f_exp"] = 1.373e-8;
+        variables["f_osc"] = 4.57e13;
+        variables["k"] = 1e15;
+        variables["omega_osc"] = 1e14;
+        variables["x"] = 0.0;
+        variables["A"] = 1e-9;
+        variables["rho_fluid"] = 1e-20;
+        variables["V"] = 1e9;
+        variables["delta_rho"] = 0.1 * variables["rho_fluid"];
+        variables["rho"] = variables["rho_fluid"];
+        variables["Delta_x"] = 1e-10;
+        variables["Delta_p"] = variables["hbar"] / variables["Delta_x"];
+        variables["integral_psi"] = 1.0;
+        break;
+    case 31: // Spirals and Supernovae
+        variables["f_DPM"] = 1e10;
+        variables["I"] = 1e22;
+        variables["A_vort"] = 3.142e41;
+        variables["omega_1"] = 1e-1;
+        variables["omega_2"] = -1e-1;
+        variables["v_exp"] = 2e5;
+        variables["V_sys"] = 1.543e64;
+        variables["f_THz"] = 1e10;
+        variables["f_vac_diff"] = 0.143;
+        variables["f_super"] = 1.411e14;
+        variables["f_aether"] = 1e1;
+        variables["f_react"] = 1e8;
+        variables["f_quantum"] = 1.445e-17;
+        variables["f_fluid"] = 1.269e-14;
+        variables["f_exp"] = 1.373e-8;
+        variables["f_osc"] = 4.57e12;
+        variables["k"] = 1e16;
+        variables["omega_osc"] = 1e13;
+        variables["x"] = 0.0;
+        variables["A"] = 1e-8;
+        variables["rho_fluid"] = 1e-21;
+        variables["V"] = 1e12;
+        variables["delta_rho"] = 0.1 * variables["rho_fluid"];
+        variables["rho"] = variables["rho_fluid"];
+        variables["Delta_x"] = 1e-10;
+        variables["Delta_p"] = variables["hbar"] / variables["Delta_x"];
+        variables["integral_psi"] = 1.0;
+        break;
+    case 32: // NGC 6302
+        variables["f_DPM"] = 1e12;
+        variables["I"] = 1e20;
+        variables["A_vort"] = 3.142e32;
+        variables["omega_1"] = 1e-3;
+        variables["omega_2"] = -1e-3;
+        variables["v_exp"] = 2.68e5;
+        variables["V_sys"] = 1.458e48;
+        variables["f_THz"] = 1e12;
+        variables["f_vac_diff"] = 0.143;
+        variables["f_super"] = 1.411e16;
+        variables["f_aether"] = 1e4;
+        variables["f_react"] = 1e10;
+        variables["f_quantum"] = 1.445e-17;
+        variables["f_fluid"] = 1.269e-14;
+        variables["f_exp"] = 1.373e-8;
+        variables["f_osc"] = 4.57e14;
+        variables["k"] = 1e20;
+        variables["omega_osc"] = 1e15;
+        variables["x"] = 0.0;
+        variables["A"] = 1e-10;
+        variables["rho_fluid"] = 1e-21;
+        variables["V"] = 1e3;
+        variables["delta_rho"] = 0.1 * variables["rho_fluid"];
+        variables["rho"] = variables["rho_fluid"];
+        variables["Delta_x"] = 1e-10;
+        variables["Delta_p"] = variables["hbar"] / variables["Delta_x"];
+        variables["integral_psi"] = 1.0;
+        break;
+    case 34: // Orion Nebula
+        variables["f_DPM"] = 1e11;
+        variables["I"] = 1e20;
+        variables["A_vort"] = 3.142e34;
+        variables["omega_1"] = 1e-2;
+        variables["omega_2"] = -1e-2;
+        variables["v_exp"] = 1e4;
+        variables["V_sys"] = 6.132e51;
+        variables["f_THz"] = 1e11;
+        variables["f_vac_diff"] = 0.143;
+        variables["f_super"] = 1.411e15;
+        variables["f_aether"] = 1e2;
+        variables["f_react"] = 1e9;
+        variables["f_quantum"] = 1.445e-17;
+        variables["f_fluid"] = 1.269e-14;
+        variables["f_exp"] = 1.373e-8;
+        variables["f_osc"] = 4.57e13;
+        variables["k"] = 1e15;
+        variables["omega_osc"] = 1e14;
+        variables["x"] = 0.0;
+        variables["A"] = 1e-9;
+        variables["rho_fluid"] = 1e-20;
+        variables["V"] = 1e9;
+        variables["delta_rho"] = 0.1 * variables["rho_fluid"];
+        variables["rho"] = variables["rho_fluid"];
+        variables["Delta_x"] = 1e-10;
+        variables["Delta_p"] = variables["hbar"] / variables["Delta_x"];
+        variables["integral_psi"] = 1.0;
+        break;
+    default:
+        std::cerr << "Unknown system_id: " << system_id << std::endl;
+        break;
     }
 }
 
 // Update variable (set to new value)
-void CompressedResonanceUQFF34Module::updateVariable(const std::string& name, double value) {
-    if (variables.find(name) != variables.end()) {
+void CompressedResonanceUQFF34Module::updateVariable(const std::string &name, double value)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] = value;
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with value " << value << std::endl;
         variables[name] = value;
     }
-    if (name == "Delta_x") {
+    if (name == "Delta_x")
+    {
         variables["Delta_p"] = variables["hbar"] / value;
     }
 }
 
 // Add delta to variable
-void CompressedResonanceUQFF34Module::addToVariable(const std::string& name, double delta) {
-    if (variables.find(name) != variables.end()) {
+void CompressedResonanceUQFF34Module::addToVariable(const std::string &name, double delta)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] += delta;
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with delta " << delta << std::endl;
         variables[name] = delta;
     }
 }
 
 // Subtract delta from variable
-void CompressedResonanceUQFF34Module::subtractFromVariable(const std::string& name, double delta) {
+void CompressedResonanceUQFF34Module::subtractFromVariable(const std::string &name, double delta)
+{
     addToVariable(name, -delta);
 }
 
 // Compute Compressed Term: Sum streamlined DPM + THz + vac_diff + super
-double CompressedResonanceUQFF34Module::computeCompressedTerm() {
+double CompressedResonanceUQFF34Module::computeCompressedTerm()
+{
     double F_DPM = variables["I"] * variables["A_vort"] * (variables["omega_1"] - variables["omega_2"]);
     double a_DPM = (F_DPM * variables["f_DPM"] * variables["E_vac"]) / (variables["c"] * variables["V_sys"]);
     double a_THz = (variables["f_THz"] * variables["E_vac"] * variables["v_exp"] * a_DPM) / (variables["E_vac_ISM"] * variables["c"]);
@@ -291,7 +450,8 @@ double CompressedResonanceUQFF34Module::computeCompressedTerm() {
 }
 
 // Compute Resonance Term: Sum aether + U_g4i + osc + quantum + fluid + exp
-double CompressedResonanceUQFF34Module::computeResonanceTerm(double t) {
+double CompressedResonanceUQFF34Module::computeResonanceTerm(double t)
+{
     double a_DPM = (variables["I"] * variables["A_vort"] * (variables["omega_1"] - variables["omega_2"]) * variables["f_DPM"] * variables["E_vac"]) / (variables["c"] * variables["V_sys"]);
     double a_aether = variables["f_aether"] * 1e-8 * variables["f_DPM"] * (1 + variables["f_TRZ"]) * a_DPM;
     double Ug1_proxy = 1.0;
@@ -308,13 +468,15 @@ double CompressedResonanceUQFF34Module::computeResonanceTerm(double t) {
 }
 
 // Compute SC Integrated: (1 - B / B_crit) * f_sc
-double CompressedResonanceUQFF34Module::computeSCIntegrated(double B) {
+double CompressedResonanceUQFF34Module::computeSCIntegrated(double B)
+{
     return (1.0 - (B / variables["B_crit"])) * variables["f_sc"];
 }
 
 // Full Compressed + Resonance with SC: (compressed + resonance) * SC * (1 + f_TRZ)
-double CompressedResonanceUQFF34Module::computeCompressedResTerm(double t, double B) {
-    setSystemVariables(system_id);  // Wait, this is in the method, but system_id not passed. Wait, for this code, assume it's set externally or add parameter.
+double CompressedResonanceUQFF34Module::computeCompressedResTerm(int system_id, double t, double B)
+{
+    setSystemVariables(system_id); // Wait, this is in the method, but system_id not passed. Wait, for this code, assume it's set externally or add parameter.
     // Note: In usage, set system first.
     double comp = computeCompressedTerm();
     double res = computeResonanceTerm(t);
@@ -324,44 +486,65 @@ double CompressedResonanceUQFF34Module::computeCompressedResTerm(double t, doubl
 }
 
 // Get equation text (descriptive)
-std::string CompressedResonanceUQFF34Module::getEquationText(int system_id) {
+std::string CompressedResonanceUQFF34Module::getEquationText(int system_id)
+{
     std::string sys_name;
-    switch (system_id) {
-        case 26: sys_name = "Universe Diameter"; break;
-        case 27: sys_name = "Hydrogen Atom"; break;
-        case 28: sys_name = "Hydrogen PToE Resonance"; break;
-        case 30: sys_name = "Lagoon Nebula"; break;
-        case 31: sys_name = "Spirals and Supernovae"; break;
-        case 32: sys_name = "NGC 6302"; break;
-        case 34: sys_name = "Orion Nebula"; break;
-        default: sys_name = "Unknown"; break;
+    switch (system_id)
+    {
+    case 26:
+        sys_name = "Universe Diameter";
+        break;
+    case 27:
+        sys_name = "Hydrogen Atom";
+        break;
+    case 28:
+        sys_name = "Hydrogen PToE Resonance";
+        break;
+    case 30:
+        sys_name = "Lagoon Nebula";
+        break;
+    case 31:
+        sys_name = "Spirals and Supernovae";
+        break;
+    case 32:
+        sys_name = "NGC 6302";
+        break;
+    case 34:
+        sys_name = "Orion Nebula";
+        break;
+    default:
+        sys_name = "Unknown";
+        break;
     }
     return "Compressed Terms: a_comp = a_DPM + a_THz + a_vac_diff + a_super (scaled for " + sys_name + ")\n"
-           "Resonance Terms: a_res = a_aether + U_g4i + a_osc + a_quantum + a_fluid + a_exp\n"
-           "Full: g_comp_res = (a_comp + a_res) * SC_int * (1 + f_TRZ)\n"
-           "Where SC_int = (1 - B / B_crit) * f_sc\n"
-           "Special Terms: UQFF compressed/resonance via plasmotic vacuum; no SM; for system " + std::to_string(system_id) + " (" + sys_name + ").\n"
-           "Solutions: See doc for system-specific g ~1e-33 to 1e35 m/s² (micro to macro scale).\n"
-           "Adaptations: Frequencies scaled per system (e.g., f_DPM=1e9 for Universe, 1e15 for Hydrogen).";
+                                                                                                       "Resonance Terms: a_res = a_aether + U_g4i + a_osc + a_quantum + a_fluid + a_exp\n"
+                                                                                                       "Full: g_comp_res = (a_comp + a_res) * SC_int * (1 + f_TRZ)\n"
+                                                                                                       "Where SC_int = (1 - B / B_crit) * f_sc\n"
+                                                                                                       "Special Terms: UQFF compressed/resonance via plasmotic vacuum; no SM; for system " +
+           std::to_string(system_id) + " (" + sys_name + ").\n"
+                                                         "Solutions: See doc for system-specific g ~1e-33 to 1e35 m/s� (micro to macro scale).\n"
+                                                         "Adaptations: Frequencies scaled per system (e.g., f_DPM=1e9 for Universe, 1e15 for Hydrogen).";
 }
 
 // Print variables
-void CompressedResonanceUQFF34Module::printVariables() {
+void CompressedResonanceUQFF34Module::printVariables()
+{
     std::cout << "Current Variables:\n";
-    for (const auto& pair : variables) {
+    for (const auto &pair : variables)
+    {
         std::cout << pair.first << " = " << std::scientific << pair.second << std::endl;
     }
 }
 
 // Example usage in base program 'ziqn233h.cpp' (snippet for integration)
-// #include "CompressedResonanceUQFF34Module.h"
+// // // // #include "CompressedResonanceUQFF34Module.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     CompressedResonanceUQFF34Module mod;
 //     int system_id = 26;  // Universe Diameter
 //     double t = 13.8e9 * 3.156e7;  // 13.8 Gyr
 //     double B = 1e-15;  // T
 //     double g_comp_res = mod.computeFullUQFF34(system_id, t, B);
-//     std::cout << "g_comp_res for system " << system_id << " = " << g_comp_res << " m/s²\n";
+//     std::cout << "g_comp_res for system " << system_id << " = " << g_comp_res << " m/s�\n";
 //     std::cout << mod.getEquationText(system_id) << std::endl;
 //     mod.updateVariable("f_DPM", 1.1 * mod.variables["f_DPM"]);  // Update
 //     mod.addToVariable("f_TRZ", 0.05);
@@ -369,9 +552,10 @@ void CompressedResonanceUQFF34Module::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp CompressedResonanceUQFF34Module.cpp -lm
-// Sample Output for system 26: g_comp_res ≈ 1e-33 m/s² (varies; micro-scale per system).
+// Sample Output for system 26: g_comp_res � 1e-33 m/s� (varies; micro-scale per system).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
+/*
 // Evaluation of CompressedResonanceUQFF34Module (UQFF Compressed & Resonance Terms for Systems 26-28, 30-32, 34)
 
 **Strengths:**
@@ -393,3 +577,4 @@ void CompressedResonanceUQFF34Module::printVariables() {
 
     ** Summary:**
     The module is robust, dynamic, and extensible, supporting runtime updates and changes to all model parameters.It is suitable for advanced UQFF - based compressed and resonance modeling for multiple astrophysical systems.Minor improvements in error handling, documentation, method consistency, and physical justification are recommended for production or publication use.
+*/

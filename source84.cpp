@@ -1,7 +1,7 @@
-﻿// LENRCalibUQFFModule.h
+// LENRCalibUQFFModule.h
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for K_n Neutron Production Calibration Constant in LENR.
-// This module models neutron production rate ? via Um, calibrated k_? for 100% accuracy in hydride/wires/corona; pseudo-monopole states ?_n, ?_vac,[UAï¿½]:[SCm].
-// Usage: #include "LENRCalibUQFFModule.h" in base program; LENRCalibUQFFModule mod; mod.setScenario("hydride"); mod.computeEta(t); mod.updateVariable("k_eta", new_value);
+// This module models neutron production rate ? via Um, calibrated k_? for 100% accuracy in hydride/wires/corona; pseudo-monopole states ?_n, ?_vac,[UA�]:[SCm].
+// Usage: // // // #include "LENRCalibUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; LENRCalibUQFFModule mod; mod.setScenario("hydride"); mod.computeEta(t); mod.updateVariable("k_eta", new_value);
 // Variables in std::map for dynamic updates; supports scenarios; exp(-[S S_q]^n 2^6 e^(-? - t)) non-local.
 // Approximations: [S S_q]=1 (calib); t in yr; 100% accuracy post k_? adjustment.
 // LENR Calib params: k_?=1e13 (hydride), E=2e11 V/m, ?=1e13 cm^-2/s, n=1-26, etc.
@@ -167,7 +167,7 @@ public:
 #endif // LENR_CALIB_UQFF_MODULE_H
 
 // LENRCalibUQFFModule.cpp
-#include "LENRCalibUQFFModule.h"
+// // // #include "LENRCalibUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: LENR calib-specific values
@@ -185,8 +185,8 @@ LENRCalibUQFFModule::LENRCalibUQFFModule() : current_scenario("hydride") {
     variables["S_S_q"] = 1.0;                       // Non-local base
 
     // UQFF params
-    variables["rho_vac_SCm"] = 7.09e-37;            // J/mï¿½
-    variables["rho_vac_UA"] = 7.09e-36;             // J/mï¿½
+    variables["rho_vac_SCm"] = 7.09e-37;            // J/m�
+    variables["rho_vac_UA"] = 7.09e-36;             // J/m�
     variables["rho_vac_UA_prime"] = 1e-23;          // For UA':SCm
     variables["gamma"] = 0.00005;                   // day^-1
     variables["t_n"] = 0.0;                         // days
@@ -281,7 +281,7 @@ std::string LENRCalibUQFFModule::getEquationText() {
     return "?(t, n) = k_? * exp(-[S S_q]^n 2^6 e^(-? - t/yr)) * U_m / ?_vac,[UA]\n"
            "U_m(t,r,n) = ? [?_j / r * (1 - e^{-? t cos(? t_n)}) * ?^j ] * P_scm E_react (1 + 10^13 f_Heaviside) (1 + f_quasi)\n"
            "?_j(t) = (10^3 + 0.4 sin(?_c t)) * 3.38e20; E_react(t) = 10^46 e^{-0.0005 t/yr}\n"
-           "?_n = (2?)^{n/6}; ?_vac,[UAï¿½]:[SCm](n,t) = 10^{-23} (0.1)^n exp(-[S S_q]^n 2^6 e^(-? - t/yr))\n"
+           "?_n = (2?)^{n/6}; ?_vac,[UA�]:[SCm](n,t) = 10^{-23} (0.1)^n exp(-[S S_q]^n 2^6 e^(-? - t/yr))\n"
            "E = U_m / (?_vac,[UA] r); Insights: Calib k_? for 100% accuracy; hydride ?=1e13 cm^{-2}/s, E=2e11 V/m.\n"
            "Adaptations: Pramana 2008; Scenarios: hydride/wires/corona. Solutions: ? ~1e13 cm^{-2}/s (non-local dominant).";
 }
@@ -295,7 +295,7 @@ void LENRCalibUQFFModule::printVariables() {
 }
 
 // Example usage
-// #include "LENRCalibUQFFModule.h"
+// // // // #include "LENRCalibUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     LENRCalibUQFFModule mod;
 //     mod.setScenario("hydride");
@@ -312,6 +312,7 @@ void LENRCalibUQFFModule::printVariables() {
 // Sample Output: ? ? 1e13 cm^-2/s (Um/non-local dominant; 100% calib accuracy).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 LENRCalibUQFFModule Evaluation
 
 Strengths :
@@ -335,3 +336,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, flexible, and suitable for scientific prototyping and educational use in LENR neutron calibration modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+*/

@@ -1,7 +1,7 @@
-ï»¿// CompressedResonanceUQFF24Module.h
+// CompressedResonanceUQFF24Module.h
 // Modular C++ implementation of the UQFF Compressed and Resonance Equations for Systems 18-24.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "CompressedResonanceUQFF24Module.h"
+// Usage in base: // // // #include "CompressedResonanceUQFF24Module.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // CompressedResonanceUQFF24Module mod; mod.computeCompressedResTerm(t, B); mod.updateVariable("f_DPM", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Nothing is negligible: Includes compressed terms (DPM, THz, vac_diff, super) + resonance (aether, U_g4i, osc, quantum, fluid, exp) scaled for systems 18-24 (e.g., Sombrero, Saturn, M16, Crab).
@@ -161,7 +161,7 @@ public:
 #endif // COMPRESSED_RESONANCE_UQFF24_MODULE_H
 
 // CompressedResonanceUQFF24Module.cpp
-#include "CompressedResonanceUQFF24Module.h"
+// // // #include "CompressedResonanceUQFF24Module.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with UQFF-specific values for compressed/resonance (systems 18-24)
@@ -294,7 +294,7 @@ std::string CompressedResonanceUQFF24Module::getEquationText() {
            "Full: g_comp_res = (a_comp + a_res) * SC_int * (1 + f_TRZ)\n"
            "Where SC_int = (1 - B / B_crit) * f_sc\n"
            "Special Terms: UQFF compressed/resonance via plasmotic vacuum; no SM; for systems 18-24 (Sombrero, Saturn, M16, Crab).\n"
-           "Solutions: Example g_comp_res ~1e-38 m/sÂ² (micro-scale).\n"
+           "Solutions: Example g_comp_res ~1e-38 m/s² (micro-scale).\n"
            "Adaptations: Frequencies scaled for nebulae/planets/remnants.";
 }
 
@@ -307,13 +307,13 @@ void CompressedResonanceUQFF24Module::printVariables() {
 }
 
 // Example usage in base program 'ziqn233h.cpp' (snippet for integration)
-// #include "CompressedResonanceUQFF24Module.h"
+// // // // #include "CompressedResonanceUQFF24Module.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     CompressedResonanceUQFF24Module mod;
 //     double t = 1e9 * 3.156e7;  // 1 Gyr
 //     double B = 1e-5;           // T
 //     double g_comp_res = mod.computeCompressedResTerm(t, B);
-//     std::cout << "g_comp_res = " << g_comp_res << " m/sÂ²\n";
+//     std::cout << "g_comp_res = " << g_comp_res << " m/s²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_DPM", 1.1e11);  // Update
 //     mod.addToVariable("f_TRZ", 0.05);
@@ -321,9 +321,10 @@ void CompressedResonanceUQFF24Module::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp CompressedResonanceUQFF24Module.cpp -lm
-// Sample Output: g_comp_res â‰ˆ 1e-38 m/sÂ² (varies; micro-scale for systems 18-24).
+// Sample Output: g_comp_res ˜ 1e-38 m/s² (varies; micro-scale for systems 18-24).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
+/*
 // Evaluation of CompressedResonanceUQFF24Module (UQFF Compressed & Resonance Terms for Systems 18-24)
 
 **Strengths:**
@@ -344,3 +345,4 @@ void CompressedResonanceUQFF24Module::printVariables() {
 
     ** Summary : **
     The module is robust, dynamic, and extensible, supporting runtime updates and changes to all model parameters.It is suitable for advanced UQFF - based compressed and resonance modeling for systems 18 - 24. Minor improvements in error handling, documentation, and physical justification are recommended for production or publication use.
+*/

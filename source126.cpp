@@ -1,7 +1,7 @@
-﻿// AetherVacuumDensityModule.h
+// AetherVacuumDensityModule.h
 // Modular C++ implementation of the Vacuum Energy Density of Aether (?_vac,A) in the Universal Quantum Field Superconductive Framework (UQFF).
-// This module computes ?_vac,A = 1e-23 J/mï¿½; contributes to T_s^{??} ?1.123e7 J/mï¿½, perturbs A_?? = g_?? + ? T_s^{??} (~1.123e-15).
-// Pluggable: #include "AetherVacuumDensityModule.h"
+// This module computes ?_vac,A = 1e-23 J/m�; contributes to T_s^{??} ?1.123e7 J/m�, perturbs A_?? = g_?? + ? T_s^{??} (~1.123e-15).
+// Pluggable: // // // #include "AetherVacuumDensityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // AetherVacuumDensityModule mod; mod.computeA_mu_nu(); mod.updateVariable("rho_vac_A", new_value);
 // Variables in std::map; diagonal [tt, xx, yy, zz]; example for Sun at t_n=0.
 // Approximations: T_s = T_s_base + ?_vac,A (but doc value small; use 1.11e7 for consistency); ?=1e-22; g_??=[1,-1,-1,-1].
@@ -124,7 +124,7 @@ private:
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
     std::vector<double> g_mu_nu;  // Background [1, -1, -1, -1]
-    double computeT_s();  // Scalar approx J/mï¿½
+    double computeT_s();  // Scalar approx J/m�
     std::vector<double> computeA_mu_nu();
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
@@ -146,8 +146,8 @@ public:
     void subtractFromVariable(const std::string& name, double delta);
 
     // Core computations
-    double computeRho_vac_A();  // 1e-23 J/mï¿½
-    double computeT_s();  // 1.123e7 J/mï¿½
+    double computeRho_vac_A();  // 1e-23 J/m�
+    double computeT_s();  // 1.123e7 J/m�
     double computePerturbation();  // ? * T_s ?1.123e-15
     std::vector<double> computeA_mu_nu();  // Perturbed metric
 
@@ -164,7 +164,7 @@ public:
 #endif // AETHER_VACUUM_DENSITY_MODULE_H
 
 // AetherVacuumDensityModule.cpp
-#include "AetherVacuumDensityModule.h"
+// // // #include "AetherVacuumDensityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 AetherVacuumDensityModule::AetherVacuumDensityModule() {
@@ -175,11 +175,11 @@ AetherVacuumDensityModule::AetherVacuumDensityModule() {
         metadata["version"] = "2.0-Enhanced";
 
     // Universal constants
-    variables["rho_vac_A"] = 1e-23;                 // J/mï¿½ (doc value)
-    variables["rho_vac_SCm"] = 7.09e-37;            // J/mï¿½ (for T_s context)
-    variables["rho_vac_UA"] = 7.09e-36;             // J/mï¿½
-    variables["T_s_base"] = 1.27e3;                 // J/mï¿½
-    variables["rho_vac_A_contrib"] = 1.11e7;        // J/mï¿½ (for T_s=1.123e7)
+    variables["rho_vac_A"] = 1e-23;                 // J/m� (doc value)
+    variables["rho_vac_SCm"] = 7.09e-37;            // J/m� (for T_s context)
+    variables["rho_vac_UA"] = 7.09e-36;             // J/m�
+    variables["T_s_base"] = 1.27e3;                 // J/m�
+    variables["rho_vac_A_contrib"] = 1.11e7;        // J/m� (for T_s=1.123e7)
     variables["eta"] = 1e-22;                       // Coupling
     variables["t_n"] = 0.0;                         // s
 
@@ -212,7 +212,7 @@ void AetherVacuumDensityModule::subtractFromVariable(const std::string& name, do
     addToVariable(name, -delta);
 }
 
-// Compute ?_vac,A (J/mï¿½)
+// Compute ?_vac,A (J/m�)
 double AetherVacuumDensityModule::computeRho_vac_A() {
     return variables["rho_vac_A"];
 }
@@ -240,11 +240,11 @@ std::vector<double> AetherVacuumDensityModule::computeA_mu_nu() {
 // Equation text
 std::string AetherVacuumDensityModule::getEquationText() {
     return "A_?? = g_?? + ? T_s^{??}(?_vac,[SCm], ?_vac,[UA], ?_vac,A, t_n)\n"
-           "?_vac,A = 1e-23 J/mï¿½ (Aether vacuum energy density);\n"
-           "T_s^{??} ?1.123e7 J/mï¿½ (diagonal; base 1.27e3 + A contrib 1.11e7);\n"
+           "?_vac,A = 1e-23 J/m� (Aether vacuum energy density);\n"
+           "T_s^{??} ?1.123e7 J/m� (diagonal; base 1.27e3 + A contrib 1.11e7);\n"
            "?=1e-22 ? pert ?1.123e-15;\n"
            "A_?? ? [1 + 1.123e-15, -1 + 1.123e-15, ...].\n"
-           "In F_U: Aether ~1e-15 J/mï¿½ (negligible vs U_m=2.28e65).\n"
+           "In F_U: Aether ~1e-15 J/m� (negligible vs U_m=2.28e65).\n"
            "Role: Intrinsic Aether energy for spacetime geometry; [UA] background.\n"
            "UQFF: Subtle vacuum contrib in nebular/disk/jet dynamics; GR-Aether link.";
 }
@@ -268,8 +268,8 @@ void AetherVacuumDensityModule::printDensityAndMetric() {
     double t_s = computeT_s();
     double pert = computePerturbation();
     auto a_mu_nu = computeA_mu_nu();
-    std::cout << "?_vac,A = " << std::scientific << rho_a << " J/mï¿½\n";
-    std::cout << "T_s (diagonal scalar) = " << t_s << " J/mï¿½\n";
+    std::cout << "?_vac,A = " << std::scientific << rho_a << " J/m�\n";
+    std::cout << "T_s (diagonal scalar) = " << t_s << " J/m�\n";
     std::cout << "Perturbation ? T_s = " << pert << "\n";
     std::cout << "A_??: ";
     for (double val : a_mu_nu) {
@@ -279,11 +279,11 @@ void AetherVacuumDensityModule::printDensityAndMetric() {
 }
 
 // Example usage in base program (snippet)
-// #include "AetherVacuumDensityModule.h"
+// // // // #include "AetherVacuumDensityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     AetherVacuumDensityModule mod;
 //     double rho = mod.computeRho_vac_A();
-//     std::cout << "?_vac,A = " << rho << " J/mï¿½\n";
+//     std::cout << "?_vac,A = " << rho << " J/m�\n";
 //     mod.printDensityAndMetric();
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("rho_vac_A", 2e-23);
@@ -291,7 +291,7 @@ void AetherVacuumDensityModule::printDensityAndMetric() {
 //     return 0;
 // }
 // Compile: g++ -o aether_density_test aether_density_test.cpp AetherVacuumDensityModule.cpp -lm
-// Sample: ?_vac,A=1e-23 J/mï¿½; T_s=1.123e7 J/mï¿½; pert?1.123e-15; A_?? nearly flat.
+// Sample: ?_vac,A=1e-23 J/m�; T_s=1.123e7 J/m�; pert?1.123e-15; A_?? nearly flat.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 AetherVacuumDensityModule Evaluation

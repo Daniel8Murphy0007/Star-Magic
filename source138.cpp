@@ -1,7 +1,7 @@
-﻿// ElGordoUQFFModule.h
+// ElGordoUQFFModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for El Gordo (ACT-CL J0102-4915) Galaxy Cluster Evolution.
 // This module can be plugged into a base program (e.g., 'elgordo_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "ElGordoUQFFModule.h"
+// Usage in base: // // // #include "ElGordoUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // ElGordoUQFFModule mod; mod.computeF(t); mod.updateVariable("M", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino.
@@ -176,7 +176,7 @@ public:
 #endif // EL_GORDO_UQFF_MODULE_H
 
 // ElGordoUQFFModule.cpp
-#include "ElGordoUQFFModule.h"
+// // // #include "ElGordoUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with El Gordo-specific values
@@ -429,7 +429,7 @@ void ElGordoUQFFModule::printVariables() {
 }
 
 // Example usage in base program 'elgordo_sim.cpp' (snippet for integration)
-// #include "ElGordoUQFFModule.h"
+// // // // #include "ElGordoUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #include <complex>
 // int main() {
 //     ElGordoUQFFModule mod;

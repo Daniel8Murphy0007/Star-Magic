@@ -1,7 +1,7 @@
-﻿// J1610UQFFModule.h
+// J1610UQFFModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for J1610+1811 High-z Quasar Evolution.
 // This module can be plugged into a base program (e.g., 'j1610_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "J1610UQFFModule.h"
+// Usage in base: // // // #include "J1610UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // J1610UQFFModule mod; mod.computeF(t); mod.updateVariable("M", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino.
@@ -176,7 +176,7 @@ public:
 #endif // J1610_UQFF_MODULE_H
 
 // J1610UQFFModule.cpp
-#include "J1610UQFFModule.h"
+// // // #include "J1610UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with J1610+1811-specific values
@@ -427,7 +427,7 @@ void J1610UQFFModule::printVariables() {
 }
 
 // Example usage in base program 'j1610_sim.cpp' (snippet for integration)
-// #include "J1610UQFFModule.h"
+// // // // #include "J1610UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #include <complex>
 // int main() {
 //     J1610UQFFModule mod;

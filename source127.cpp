@@ -1,10 +1,10 @@
-﻿// UniversalInertiaVacuumModule.h
-// Modular C++ implementation of the Vacuum Energy Density of Universal Inertia (ρ_vac,Ui) in the Universal Quantum Field Superconductive Framework (UQFF).
-// This module computes ρ_vac,Ui = 2.84e-36 J/m³ (Sun, level 13); reference scale for U_i inertial term.
-// Pluggable: #include "UniversalInertiaVacuumModule.h"
+// UniversalInertiaVacuumModule.h
+// Modular C++ implementation of the Vacuum Energy Density of Universal Inertia (?_vac,Ui) in the Universal Quantum Field Superconductive Framework (UQFF).
+// This module computes ?_vac,Ui = 2.84e-36 J/m� (Sun, level 13); reference scale for U_i inertial term.
+// Pluggable: // // // #include "UniversalInertiaVacuumModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // UniversalInertiaVacuumModule mod; mod.computeU_i_example(0.0, 0.0); mod.updateVariable("rho_vac_Ui", new_value);
-// Variables in std::map; example for Sun at t=0, t_n=0; U_i ≈1.38e-47 J/m³.
-// Approximations: λ_i=1.0; cos(π t_n)=1; ω_s=2.5e-6 rad/s; f_TRZ=0.1; ρ_[SCm/UA] product=5.03e-72 J²/m⁶.
+// Variables in std::map; example for Sun at t=0, t_n=0; U_i �1.38e-47 J/m�.
+// Approximations: ?_i=1.0; cos(p t_n)=1; ?_s=2.5e-6 rad/s; f_TRZ=0.1; ?_[SCm/UA] product=5.03e-72 J�/m6.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef UNIVERSAL_INERTIA_VACUUM_MODULE_H
@@ -144,8 +144,8 @@ public:
     void subtractFromVariable(const std::string& name, double delta);
 
     // Core computations
-    double computeRho_vac_Ui();  // 2.84e-36 J/m³
-    double computeU_i(double t, double t_n);  // U_i example (J/m³)
+    double computeRho_vac_Ui();  // 2.84e-36 J/m�
+    double computeU_i(double t, double t_n);  // U_i example (J/m�)
 
     // Output descriptive text
     std::string getEquationText();
@@ -157,7 +157,7 @@ public:
 #endif // UNIVERSAL_INERTIA_VACUUM_MODULE_H
 
 // UniversalInertiaVacuumModule.cpp
-#include "UniversalInertiaVacuumModule.h"
+// // // #include "UniversalInertiaVacuumModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults (Sun at t=0, level 13)
 UniversalInertiaVacuumModule::UniversalInertiaVacuumModule() {
@@ -168,10 +168,10 @@ UniversalInertiaVacuumModule::UniversalInertiaVacuumModule() {
         metadata["version"] = "2.0-Enhanced";
 
     // Universal constants
-    variables["rho_vac_Ui"] = 2.84e-36;             // J/m³ (reference scale)
+    variables["rho_vac_Ui"] = 2.84e-36;             // J/m� (reference scale)
     variables["lambda_i"] = 1.0;                    // Unitless
-    variables["rho_vac_SCm"] = 7.09e-37;            // J/m³
-    variables["rho_vac_UA"] = 7.09e-36;             // J/m³
+    variables["rho_vac_SCm"] = 7.09e-37;            // J/m�
+    variables["rho_vac_UA"] = 7.09e-36;             // J/m�
     variables["omega_s"] = 2.5e-6;                  // rad/s
     variables["f_TRZ"] = 0.1;                       // Unitless
     variables["pi"] = 3.141592653589793;
@@ -213,7 +213,7 @@ void UniversalInertiaVacuumModule::subtractFromVariable(const std::string& name,
     addToVariable(name, -delta);
 }
 
-// Compute ρ_vac,Ui (J/m³, reference)
+// Compute ?_vac,Ui (J/m�, reference)
 double UniversalInertiaVacuumModule::computeRho_vac_Ui() {
     return variables["rho_vac_Ui"];
 }
@@ -237,11 +237,11 @@ double UniversalInertiaVacuumModule::computeU_i(double t, double t_n) {
 
 // Equation text
 std::string UniversalInertiaVacuumModule::getEquationText() {
-    return "U_i = λ_i * ρ_vac,[SCm] * ρ_vac,[UA] * ω_s(t) * cos(π t_n) * (1 + f_TRZ)\n"
-           "ρ_vac,Ui = 2.84e-36 J/m³ (Sun level 13, inertia vacuum scale; not direct in eq.).\n"
+    return "U_i = ?_i * ?_vac,[SCm] * ?_vac,[UA] * ?_s(t) * cos(p t_n) * (1 + f_TRZ)\n"
+           "?_vac,Ui = 2.84e-36 J/m� (Sun level 13, inertia vacuum scale; not direct in eq.).\n"
            "Provides reference for U_i magnitude; inertial resistance from [SCm]/[UA].\n"
-           "Example t=0, t_n=0: U_i ≈1.38e-47 J/m³ (consistent scale with ρ_vac,Ui).\n"
-           "In F_U: -∑ λ_i U_i E_react (resistive inertia).\n"
+           "Example t=0, t_n=0: U_i �1.38e-47 J/m� (consistent scale with ?_vac,Ui).\n"
+           "In F_U: -? ?_i U_i E_react (resistive inertia).\n"
            "Role: Quantifies vacuum inertia energy; opposes dynamics in nebulae/formation.\n"
            "UQFF: Small-scale reference for cosmic inertia; [SCm]-[UA] resistance.";
 }
@@ -255,20 +255,20 @@ void UniversalInertiaVacuumModule::printVariables() {
 }
 
 // Example usage in base program (snippet)
-// #include "UniversalInertiaVacuumModule.h"
+// // // // #include "UniversalInertiaVacuumModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     UniversalInertiaVacuumModule mod;
 //     double rho = mod.computeRho_vac_Ui();
-//     std::cout << "ρ_vac,Ui = " << rho << " J/m³\n";
+//     std::cout << "?_vac,Ui = " << rho << " J/m�\n";
 //     double u_i = mod.computeU_i(0.0, 0.0);
-//     std::cout << "U_i = " << u_i << " J/m³\n";
+//     std::cout << "U_i = " << u_i << " J/m�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("rho_vac_Ui", 3e-36);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o inertia_vac_test inertia_vac_test.cpp UniversalInertiaVacuumModule.cpp -lm
-// Sample: ρ_vac,Ui=2.84e-36 J/m³; U_i≈1.38e-47 J/m³; scale reference.
+// Sample: ?_vac,Ui=2.84e-36 J/m�; U_i�1.38e-47 J/m�; scale reference.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 UniversalInertiaVacuumModule Evaluation

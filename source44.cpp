@@ -1,7 +1,7 @@
-﻿// LagoonUQFFModule.h
+// LagoonUQFFModule.h
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF & SM Integration) for Lagoon Nebula Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "LagoonUQFFModule.h"
+// Usage in base: // // // #include "LagoonUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // LagoonUQFFModule mod; mod.computeG(t); mod.updateVariable("M", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Nothing is negligible: Includes all terms - base gravity with M_sf(t), Ug1-Ug4, cosmological Lambda, quantum integral, Lorentz q(v x B), fluid rho_fluid V g, resonant oscillatory (cos/exp), DM/visible with perturbations, radiation pressure P_rad.
@@ -166,7 +166,7 @@ public:
 #endif // LAGOON_UQFF_MODULE_H
 
 // LagoonUQFFModule.cpp
-#include "LagoonUQFFModule.h"
+// // // #include "LagoonUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with Lagoon Nebula-specific values
@@ -372,7 +372,7 @@ double LagoonUQFFModule::computeG(double t) {
 // Get equation text (descriptive)
 std::string LagoonUQFFModule::getEquationText() {
     return "g_Lagoon(r, t) = (G * M(t) / r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v ï¿½ B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v � B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2? / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (??/? + 3 G M / r^3) - P_rad\n"
            "Where M(t) = M * (1 + M_sf(t)); M_sf(t) = (SFR * t_yr) / M0; P_rad = (L_H36 / (4? r^2 c)) * (? / m_H)\n"
            "Special Terms:\n"
@@ -383,7 +383,7 @@ std::string LagoonUQFFModule::getEquationText() {
            "- Superconductivity: (1 - B/B_crit) for quantum fields.\n"
            "- Star Formation: M_sf(t) boosts mass via SFR=0.1 Msun/yr.\n"
            "- Radiation Pressure: P_rad from Herschel 36 erodes gas.\n"
-           "Solutions: At t=1 Myr, g_Lagoon ~1e-12 m/sï¿½ (EM/fluid dominant; g_base ~1e-13; P_rad ~1e-14).\n"
+           "Solutions: At t=1 Myr, g_Lagoon ~1e-12 m/s� (EM/fluid dominant; g_base ~1e-13; P_rad ~1e-14).\n"
            "Adaptations for Lagoon Nebula: H II region with Herschel 36 radiation; z=0.0013; SFR for starbirth.";
 }
 
@@ -396,12 +396,12 @@ void LagoonUQFFModule::printVariables() {
 }
 
 // Example usage in base program 'ziqn233h.cpp' (snippet for integration)
-// #include "LagoonUQFFModule.h"
+// // // // #include "LagoonUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     LagoonUQFFModule mod;
 //     double t = 1e6 * 3.156e7;  // 1 Myr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/sï¿½\n";
+//     std::cout << "g = " << g << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 1.1e4 * 1.989e30);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05);           // Add to TR factor
@@ -409,9 +409,10 @@ void LagoonUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp LagoonUQFFModule.cpp -lm
-// Sample Output at t=1 Myr: g ? 1e-12 m/sï¿½ (varies with updates; fluid/EM dominant).
+// Sample Output at t=1 Myr: g ? 1e-12 m/s� (varies with updates; fluid/EM dominant).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
+/*
 // Evaluation of LagoonUQFFModule (UQFF & Standard Model Integration for Lagoon Nebula Evolution)
 
 **Strengths:**
@@ -432,3 +433,4 @@ void LagoonUQFFModule::printVariables() {
 
     ** Summary : **
     The module is robust, dynamic, and extensible, supporting runtime updates and changes to all model parameters.It is suitable for advanced UQFF - based and Standard Model nebular modeling.Minor improvements in error handling, documentation, and physical justification are recommended for production or publication use.
+*/

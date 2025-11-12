@@ -1,13 +1,13 @@
-﻿// M87JetUQFFModule.h
+// M87JetUQFFModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for M87 Jet Relativistic Jet Evolution.
 // This module can be plugged into a base program (e.g., 'm87_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "M87JetUQFFModule.h"
+// Usage in base: // // // #include "M87JetUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // M87JetUQFFModule mod; mod.computeF(t); mod.updateVariable("M", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino.
 // Associated text: Outputs descriptive equation string via getEquationText().
-// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low ω_0; x2 from quadratic solver approx.
-// M87 Jet params: M=1.29e40 kg, r=4.63e19 m, L_X=1e34 W, B0=1e-5 T, t=3.156e14 s, ω_0=1e-15 s^-1, etc.
+// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low ?_0; x2 from quadratic solver approx.
+// M87 Jet params: M=1.29e40 kg, r=4.63e19 m, L_X=1e34 W, B0=1e-5 T, t=3.156e14 s, ?_0=1e-15 s^-1, etc.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 18, 2025.
 
 #ifndef M87_JET_UQFF_MODULE_H
@@ -176,7 +176,7 @@ public:
 #endif // M87_JET_UQFF_MODULE_H
 
 // M87JetUQFFModule.cpp
-#include "M87JetUQFFModule.h"
+// // // #include "M87JetUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with M87 Jet-specific values
@@ -427,7 +427,7 @@ void M87JetUQFFModule::printVariables() {
 }
 
 // Example usage in base program 'm87_sim.cpp' (snippet for integration)
-// #include "M87JetUQFFModule.h"
+// // // // #include "M87JetUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #include <complex>
 // int main() {
 //     M87JetUQFFModule mod;
@@ -441,7 +441,7 @@ void M87JetUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o m87_sim m87_sim.cpp M87JetUQFFModule.cpp -lm
-// Sample Output at t=dynamical: F ≈ -8.32e217 + i (large; approx per framework; dominant real from LENR * x2).
+// Sample Output at t=dynamical: F � -8.32e217 + i (large; approx per framework; dominant real from LENR * x2).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 18, 2025.
 
 M87JetUQFFModule C++ Code Evaluation

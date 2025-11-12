@@ -1,7 +1,7 @@
-﻿// CrabResonanceUQFFModule.h
+// CrabResonanceUQFFModule.h
 // Modular C++ implementation of the Master Universal Gravity Equation (UQFF Resonance) for Crab Nebula Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "CrabResonanceUQFFModule.h"
+// Usage in base: // // // #include "CrabResonanceUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // CrabResonanceUQFFModule mod; mod.computeG(t); mod.updateVariable("f_DPM", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Nothing is negligible: Includes all resonance-focused terms - DPM resonance, THz pipeline resonance, Aether-mediated resonance, U_g4i reactive resonance, quantum resonance, fluid resonance, oscillatory resonance (cos/exp), cosmic expansion resonance, with SC correction integrated.
@@ -167,7 +167,7 @@ public:
 #endif // CRAB_RESONANCE_UQFF_MODULE_H
 
 // CrabResonanceUQFFModule.cpp
-#include "CrabResonanceUQFFModule.h"
+// // // #include "CrabResonanceUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with Crab Nebula-specific resonance values
@@ -349,7 +349,7 @@ std::string CrabResonanceUQFFModule::getEquationText() {
            "- a_exp_res = (f_exp * E_vac * a_DPM_res) / (E_vac/10 * c)\n"
            "- SC_int = (1 - B / B_crit) * f_sc\n"
            "Special Terms: UQFF resonance via plasmotic vacuum; Aether replaces dark energy; no SM terms; pulsar-driven f_osc.\n"
-           "Solutions: At t=971 yr, B=1e-8 T, g ? 1e-40 m/sï¿½ (resonance micro-scale, wind proxy).\n"
+           "Solutions: At t=971 yr, B=1e-8 T, g ? 1e-40 m/s� (resonance micro-scale, wind proxy).\n"
            "Adaptations: Resonance focus for Crab wisps/shocks per Hubble/Chandra.";
 }
 
@@ -362,13 +362,13 @@ void CrabResonanceUQFFModule::printVariables() {
 }
 
 // Example usage in base program 'ziqn233h.cpp' (snippet for integration)
-// #include "CrabResonanceUQFFModule.h"
+// // // // #include "CrabResonanceUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     CrabResonanceUQFFModule mod;
 //     double t = 971 * 3.156e7;  // 971 years
 //     double B = 1e-8;           // T (nebula avg)
 //     double g_res = mod.computeG(t, B);
-//     std::cout << "g_res = " << g_res << " m/sï¿½\n";
+//     std::cout << "g_res = " << g_res << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_DPM", 1.1e12);  // Update resonance freq
 //     mod.addToVariable("f_TRZ", 0.05);     // Add to TR factor
@@ -376,9 +376,10 @@ void CrabResonanceUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp CrabResonanceUQFFModule.cpp -lm
-// Sample Output at t=971 yr: g_res ? 1e-40 m/sï¿½ (varies; micro-scale resonance terms).
+// Sample Output at t=971 yr: g_res ? 1e-40 m/s� (varies; micro-scale resonance terms).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
+/*
 // Evaluation of CrabResonanceUQFFModule (UQFF Resonance Model for Crab Nebula)
 
 **Strengths:**
@@ -399,3 +400,4 @@ void CrabResonanceUQFFModule::printVariables() {
 
     ** Summary : **
     The module is robust, dynamic, and extensible, supporting runtime updates and changes to all model parameters.It is suitable for advanced UQFF - based resonance modeling of the Crab Nebula.Minor improvements in error handling, documentation, and physical justification are recommended for production or publication use.
+*/

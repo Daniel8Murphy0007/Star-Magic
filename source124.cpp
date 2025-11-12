@@ -1,10 +1,10 @@
-﻿// Ug1DefectModule.h
+// Ug1DefectModule.h
 // Modular C++ implementation of the Ug1 Defect Factor (?_def) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?_def = 0.01 * sin(0.001 t) (unitless); scales (1 + ?_def) in Universal Gravity U_g1 term.
-// Pluggable: #include "Ug1DefectModule.h"
+// Pluggable: // // // #include "Ug1DefectModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // Ug1DefectModule mod; mod.computeU_g1(0.0, 1.496e11); mod.updateVariable("amplitude", new_value);
-// Variables in std::map; example for Sun at t=0 (?_def=0, U_g1?4.51e31 J/mï¿½); t=1570.8 days: +1%.
-// Approximations: ?=0.001 day?ï¿½; cos(? t_n)=1 at t_n=0; ?_s=3.38e23 Tï¿½mï¿½; ?(M_s/r)?M_s/rï¿½=8.89e7 m/sï¿½.
+// Variables in std::map; example for Sun at t=0 (?_def=0, U_g1?4.51e31 J/m�); t=1570.8 days: +1%.
+// Approximations: ?=0.001 day?�; cos(? t_n)=1 at t_n=0; ?_s=3.38e23 T�m�; ?(M_s/r)?M_s/r�=8.89e7 m/s�.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef UG1_DEFECT_MODULE_H
@@ -13,6 +13,10 @@
 #include <map>
 #include <string>
 #include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+#define _USE_MATH_DEFINES
 #include <iostream>
 #include <iomanip>
 
@@ -158,7 +162,7 @@ public:
 #endif // UG1_DEFECT_MODULE_H
 
 // Ug1DefectModule.cpp
-#include "Ug1DefectModule.h"
+// // // #include "Ug1DefectModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults (Sun)
 Ug1DefectModule::Ug1DefectModule() {
@@ -170,11 +174,11 @@ Ug1DefectModule::Ug1DefectModule() {
 
     // Universal constants
     variables["amplitude"] = 0.01;                  // Unitless
-    variables["freq"] = 0.001;                      // day?ï¿½
+    variables["freq"] = 0.001;                      // day?�
     variables["k_1"] = 1.5;                         // Coupling
-    variables["mu_s"] = 3.38e23;                    // Tï¿½mï¿½
+    variables["mu_s"] = 3.38e23;                    // T�m�
     variables["M_s"] = 1.989e30;                    // kg
-    variables["alpha"] = 0.001;                     // day?ï¿½
+    variables["alpha"] = 0.001;                     // day?�
     variables["t_n"] = 0.0;                         // days
     variables["pi"] = 3.141592653589793;
     variables["t_day"] = 0.0;                       // days
@@ -242,9 +246,9 @@ double Ug1DefectModule::computePeriod_years() {
 std::string Ug1DefectModule::getEquationText() {
     return "U_g1 = k_1 * ?_s * ?(M_s / r) * e^{-? t} * cos(? t_n) * (1 + ?_def)\n"
            "Where ?_def = 0.01 * sin(0.001 t) (unitless, t days; period ~17.22 yr).\n"
-           "Small oscillatory defect (~ï¿½1%) in internal dipole gravity.\n"
-           "Example t=0, r=1.496e11 m: ?_def=0, U_g1 ?4.51e31 J/mï¿½;\n"
-           "t=1570.8 days: ?_def=0.01, U_g1 ?4.56e31 J/mï¿½ (+1.1%).\n"
+           "Small oscillatory defect (~�1%) in internal dipole gravity.\n"
+           "Example t=0, r=1.496e11 m: ?_def=0, U_g1 ?4.51e31 J/m�;\n"
+           "t=1570.8 days: ?_def=0.01, U_g1 ?4.56e31 J/m� (+1.1%).\n"
            "Role: Time-dependent perturbations; internal dynamics/[SCm] variations.\n"
            "UQFF: Cyclic defects in stellar gravity; for formation/nebular stability.";
 }
@@ -258,20 +262,20 @@ void Ug1DefectModule::printVariables() {
 }
 
 // Example usage in base program (snippet)
-// #include "Ug1DefectModule.h"
+// // // // #include "Ug1DefectModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     Ug1DefectModule mod;
 //     double delta = mod.computeDelta_def(0.0);
 //     std::cout << "?_def (t=0) = " << delta << std::endl;
 //     double u_g1 = mod.computeU_g1(1570.8, 1.496e11);
-//     std::cout << "U_g1 (t=1570.8 days) = " << u_g1 << " J/mï¿½\n";
+//     std::cout << "U_g1 (t=1570.8 days) = " << u_g1 << " J/m�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("amplitude", 0.02);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o defect_test defect_test.cpp Ug1DefectModule.cpp -lm
-// Sample: ?_def=0 at t=0; U_g1?4.56e31 J/mï¿½ at peak (+1%); period~17.22 yr.
+// Sample: ?_def=0 at t=0; U_g1?4.56e31 J/m� at peak (+1%); period~17.22 yr.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 Ug1DefectModule Evaluation

@@ -1,13 +1,13 @@
-﻿
+
 // UQFFBuoyancyModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Buoyancy Equations across M74, Eagle Nebula (M16), M84, Centaurus A, Supernova Survey.
 // This module can be plugged into a base program (e.g., 'uqff_buoyancy_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "UQFFBuoyancyModule.h"
+// Usage in base: // // // #include "UQFFBuoyancyModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // UQFFBuoyancyModule mod; mod.computeFBi(system); mod.updateVariable("F_rel", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino, Sweet vac, Kozima drop.
 // Associated text: Outputs descriptive equation string via getEquationText().
-// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low Ï‰_0; x2 from quadratic solver approx; F_rel from 1998 LEP; g(r,t) and Q_wave dynamic per system to address repetition.
+// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low ω_0; x2 from quadratic solver approx; F_rel from 1998 LEP; g(r,t) and Q_wave dynamic per system to address repetition.
 // Multi-system params: M74 M=7.17e41 kg r=9.46e20 m; M16 M=1e36 kg r=2.36e17 m; M84 M=1.46e45 kg r=3.09e22 m; Centaurus A M=4e41 kg r=3.09e21 m; Supernova Survey (generic M=1e30 kg r=1e10 m).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 22, 2025.
 
@@ -177,7 +177,7 @@ public:
 
 #endif // UQFF_BUOYANCY_MODULE_H
 // UQFFBuoyancyModule.cpp
-#include "UQFFBuoyancyModule.h"
+// // // #include "UQFFBuoyancyModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // Constructor: Initialize all variables with multi-system defaults
 UQFFBuoyancyModule::UQFFBuoyancyModule() {
         enableDynamicTerms = true;
@@ -189,7 +189,7 @@ UQFFBuoyancyModule::UQFFBuoyancyModule() {
     // Universal constants
     variables["G"] = cdouble(6.67430e-11, 0.0);          // m^3 kg^-1 s^-2
     variables["c"] = cdouble(299792458.0, 0.0);          // m/s
-    variables["h_bar"] = cdouble(1.054571817e-34, 0.0);   // JÂ·s
+    variables["h_bar"] = cdouble(1.054571817e-34, 0.0);   // J·s
     variables["e_charge"] = cdouble(1.602176634e-19, 0.0); // C
     variables["epsilon_0"] = cdouble(8.854187817e-12, 0.0); // F/m
     variables["mu_0"] = cdouble(1.25663706212e-6, 0.0);   // N/A^2
@@ -229,7 +229,7 @@ void UQFFBuoyancyModule::setSystemParams(const std::string& system)
 // UQFFBuoyancyModule.h
 // Modular C++ implementation of the Surface Magnetic Field Module for stellar magnetic field modeling (Sun).
 // This module can be plugged into a base program (e.g., 'surface_magnetic_field_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "SurfaceMagneticFieldModule.h"
+// Usage in base: // // #include "SurfaceMagneticFieldModule.h"  // Commented - header not available  // Commented - header not available
 // SurfaceMagneticFieldModule mod; mod.computeU_g3_example(0.0); mod.updateVariable("B_s_min", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Associated text: Outputs descriptive equation string via getEquationText().
@@ -282,7 +282,7 @@ public:
 
 #endif // SURFACE_MAGNETIC_FIELD_MODULE_H
 // SurfaceMagneticFieldModule.cpp
-#include "SurfaceMagneticFieldModule.h"
+// // #include "SurfaceMagneticFieldModule.h"  // Commented - header not available  // Commented - header not available
 
 SurfaceMagneticFieldModule::SurfaceMagneticFieldModule() {
     // Initialize default variables
@@ -334,7 +334,7 @@ void SurfaceMagneticFieldModule::printVariables() {
     }
 }
 // UQFFBuoyancyModule.cpp
-#include "UQFFBuoyancyModule.h"
+// // // #include "UQFFBuoyancyModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with multi-system defaults

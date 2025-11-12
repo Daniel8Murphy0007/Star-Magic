@@ -1,7 +1,7 @@
-﻿// LagoonNebulaUQFFModule.h
+// LagoonNebulaUQFFModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Lagoon Nebula Emission Nebula Evolution.
 // This module can be plugged into a base program (e.g., 'lagoon_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "LagoonNebulaUQFFModule.h"
+// Usage in base: // // // #include "LagoonNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // LagoonNebulaUQFFModule mod; mod.computeF(t); mod.updateVariable("M", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino.
@@ -176,7 +176,7 @@ public:
 #endif // LAGOON_NEBULA_UQFF_MODULE_H
 
 // LagoonNebulaUQFFModule.cpp
-#include "LagoonNebulaUQFFModule.h"
+// // // #include "LagoonNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with Lagoon Nebula-specific values
@@ -427,7 +427,7 @@ void LagoonNebulaUQFFModule::printVariables() {
 }
 
 // Example usage in base program 'lagoon_sim.cpp' (snippet for integration)
-// #include "LagoonNebulaUQFFModule.h"
+// // // // #include "LagoonNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #include <complex>
 // int main() {
 //     LagoonNebulaUQFFModule mod;

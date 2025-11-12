@@ -1,7 +1,7 @@
-﻿// ScmReactivityDecayModule.h
+// ScmReactivityDecayModule.h
 // Modular C++ implementation of the [SCm] Reactivity Decay Rate (?) in the Universal Quantum Field Superconductive Framework (UQFF).
-// This module computes ?=0.0005 day?ï¿½ (~5.8e-6 s?ï¿½); used in E_react = 10^46 * exp(-? t) for decay in U_m, U_bi, etc.
-// Pluggable: #include "ScmReactivityDecayModule.h"
+// This module computes ?=0.0005 day?� (~5.8e-6 s?�); used in E_react = 10^46 * exp(-? t) for decay in U_m, U_bi, etc.
+// Pluggable: // // // #include "ScmReactivityDecayModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // ScmReactivityDecayModule mod; mod.computeE_react(0.0); mod.updateVariable("kappa_day", new_value);
 // Variables in std::map; example for Sun at t=0 (E_react=1e46); t=2000 days: ~3.68e45.
 // Approximations: t in days; timescale ~5.5 years; integrates into U_m example.
@@ -122,7 +122,7 @@ private:
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
-    double computeKappa_s();  // ? in s?ï¿½
+    double computeKappa_s();  // ? in s?�
     double computeE_react(double t_day);
     double computeUmExample(double t_day);
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
@@ -145,10 +145,10 @@ public:
     void subtractFromVariable(const std::string& name, double delta);
 
     // Core computations
-    double computeKappa_day();  // 0.0005 day?ï¿½
-    double computeKappa_s();    // ~5.8e-6 s?ï¿½
+    double computeKappa_day();  // 0.0005 day?�
+    double computeKappa_s();    // ~5.8e-6 s?�
     double computeE_react(double t_day);  // 1e46 * exp(-? t)
-    double computeUmExample(double t_day);  // Simplified U_m with E_react (J/mï¿½)
+    double computeUmExample(double t_day);  // Simplified U_m with E_react (J/m�)
 
     // Output descriptive text
     std::string getEquationText();
@@ -163,7 +163,7 @@ public:
 #endif // SCM_REACTIVITY_DECAY_MODULE_H
 
 // ScmReactivityDecayModule.cpp
-#include "ScmReactivityDecayModule.h"
+// // // #include "ScmReactivityDecayModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 ScmReactivityDecayModule::ScmReactivityDecayModule() {
@@ -174,11 +174,11 @@ ScmReactivityDecayModule::ScmReactivityDecayModule() {
         metadata["version"] = "2.0-Enhanced";
 
     // Universal constants
-    variables["kappa_day"] = 0.0005;                // day?ï¿½
+    variables["kappa_day"] = 0.0005;                // day?�
     variables["day_to_s"] = 86400.0;                // s/day
     variables["E_react_base"] = 1e46;               // J
     variables["t_day"] = 0.0;                       // days
-    variables["mu_over_rj"] = 2.26e10;              // T mï¿½ (example)
+    variables["mu_over_rj"] = 2.26e10;              // T m� (example)
     variables["P_SCm"] = 1.0;                       // Normalized
     variables["heaviside_f"] = 1e11 + 1.0;          // 1 + 10^13 * 0.01
     variables["quasi_f"] = 1.01;                    // 1 + 0.01
@@ -219,12 +219,12 @@ void ScmReactivityDecayModule::subtractFromVariable(const std::string& name, dou
     addToVariable(name, -delta);
 }
 
-// Compute ? (day?ï¿½)
+// Compute ? (day?�)
 double ScmReactivityDecayModule::computeKappa_day() {
     return variables["kappa_day"];
 }
 
-// Compute ? in s?ï¿½
+// Compute ? in s?�
 double ScmReactivityDecayModule::computeKappa_s() {
     return computeKappa_day() / variables["day_to_s"];
 }
@@ -249,10 +249,10 @@ double ScmReactivityDecayModule::computeUmExample(double t_day) {
 
 // Equation text
 std::string ScmReactivityDecayModule::getEquationText() {
-    return "E_react = 10^46 * exp(-? t) (t days); ?=0.0005 day?ï¿½ (~5.8e-6 s?ï¿½, timescale ~5.5 years).\n"
+    return "E_react = 10^46 * exp(-? t) (t days); ?=0.0005 day?� (~5.8e-6 s?�, timescale ~5.5 years).\n"
            "In U_m, U_bi, U_i, U_gi: ... * E_react * ... (decays [SCm] reactivity).\n"
            "Example t=0: E_react=1e46 J; t=2000 days: ~3.68e45 J (~36.8%).\n"
-           "U_m (t=0): ?2.28e65 J/mï¿½; t=2000: ?8.39e64 J/mï¿½.\n"
+           "U_m (t=0): ?2.28e65 J/m�; t=2000: ?8.39e64 J/m�.\n"
            "Role: Gradual [SCm]-[UA] interaction loss; temporal evolution in jets/nebulae/mergers.\n"
            "UQFF: Models reactivity decay; energy dissipation over cosmic time.";
 }
@@ -272,15 +272,15 @@ void ScmReactivityDecayModule::printDecayEffects(double t_day) {
     double fraction = e_react / variables["E_react_base"];
     std::cout << "[SCm] Decay Effects at t=" << t_day << " days:\n";
     std::cout << "E_react = " << std::scientific << e_react << " J (" << fraction << " of initial)\n";
-    std::cout << "U_m example = " << um_ex << " J/mï¿½\n";
+    std::cout << "U_m example = " << um_ex << " J/m�\n";
 }
 
 // Example usage in base program (snippet)
-// #include "ScmReactivityDecayModule.h"
+// // // // #include "ScmReactivityDecayModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     ScmReactivityDecayModule mod;
 //     double kappa = mod.computeKappa_day();
-//     std::cout << "? = " << kappa << " day?ï¿½\n";
+//     std::cout << "? = " << kappa << " day?�\n";
 //     mod.printDecayEffects(2000.0);
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("kappa_day", 0.001);
@@ -288,7 +288,7 @@ void ScmReactivityDecayModule::printDecayEffects(double t_day) {
 //     return 0;
 // }
 // Compile: g++ -o scm_decay_test scm_decay_test.cpp ScmReactivityDecayModule.cpp -lm
-// Sample: ?=5e-4 day?ï¿½; t=2000 days: E_react?3.68e45 J; U_m?8.39e64 J/mï¿½.
+// Sample: ?=5e-4 day?�; t=2000 days: E_react?3.68e45 J; U_m?8.39e64 J/m�.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 ScmReactivityDecayModule Evaluation

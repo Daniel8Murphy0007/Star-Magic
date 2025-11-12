@@ -1,10 +1,10 @@
-Ôªø// ScmVelocityModule.h
+// ScmVelocityModule.h
 // Modular C++ implementation of the [SCm] Velocity (v_SCm) in the Universal Quantum Field Superconductive Framework (UQFF).
-// This module computes v_SCm = 1e8 m/s (~c/3); scales in E_react = œÅ_vac,[SCm] v_SCm¬≤ / œÅ_vac,A * exp(-Œ∫ t) for U_m, U_bi, etc.
-// Pluggable: #include "ScmVelocityModule.h"
+// This module computes v_SCm = 1e8 m/s (~c/3); scales in E_react = ?_vac,[SCm] v_SCm≤ / ?_vac,A * exp(-? t) for U_m, U_bi, etc.
+// Pluggable: // // // #include "ScmVelocityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // ScmVelocityModule mod; mod.computeE_react(0.0); mod.updateVariable("v_sc m", new_value);
 // Variables in std::map; example for Sun at t=0 (E_react=1e46 J); t=2000 days: scales down via exp.
-// Approximations: Œ∫=0.0005 day‚Åª¬π; œÅ_vac,[SCm]=7.09e-37 J/m¬≥; œÅ_vac,A=1e-23 J/m¬≥; U_m base=2.28e65 J/m¬≥.
+// Approximations: ?=0.0005 day?π; ?_vac,[SCm]=7.09e-37 J/m≥; ?_vac,A=1e-23 J/m≥; U_m base=2.28e65 J/m≥.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef SCM_VELOCITY_MODULE_H
@@ -146,8 +146,8 @@ public:
 
     // Core computations
     double computeV_sc m();  // 1e8 m/s
-    double computeE_react(double t_day);  // œÅ_[SCm] v_SCm¬≤ / œÅ_A * exp(-Œ∫ t)
-    double computeUmExample(double t_day);  // Simplified U_m with E_react (J/m¬≥)
+    double computeE_react(double t_day);  // ?_[SCm] v_SCm≤ / ?_A * exp(-? t)
+    double computeUmExample(double t_day);  // Simplified U_m with E_react (J/m≥)
 
     // Output descriptive text
     std::string getEquationText();
@@ -162,7 +162,7 @@ public:
 #endif // SCM_VELOCITY_MODULE_H
 
 // ScmVelocityModule.cpp
-#include "ScmVelocityModule.h"
+// // // #include "ScmVelocityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 ScmVelocityModule::ScmVelocityModule() {
@@ -174,13 +174,13 @@ ScmVelocityModule::ScmVelocityModule() {
 
     // Universal constants
     variables["v_sc m"] = 1e8;                      // m/s (~c/3)
-    variables["rho_vac_SCm"] = 7.09e-37;            // J/m¬≥
-    variables["rho_vac_A"] = 1e-23;                 // J/m¬≥
-    variables["kappa_day"] = 0.0005;                // day‚Åª¬π
+    variables["rho_vac_SCm"] = 7.09e-37;            // J/m≥
+    variables["rho_vac_A"] = 1e-23;                 // J/m≥
+    variables["kappa_day"] = 0.0005;                // day?π
     variables["day_to_s"] = 86400.0;                // s/day
     variables["t_day"] = 0.0;                       // days
     variables["E_react_base"] = variables["rho_vac_SCm"] * std::pow(variables["v_sc m"], 2) / variables["rho_vac_A"];  // Derived
-    variables["mu_over_rj"] = 2.26e10;              // T m¬≤ (example)
+    variables["mu_over_rj"] = 2.26e10;              // T m≤ (example)
     variables["P_SCm"] = 1.0;                       // Normalized
     variables["heaviside_f"] = 1e11 + 1.0;          // 1 + 10^13 * 0.01
     variables["quasi_f"] = 1.01;                    // 1 + 0.01
@@ -230,7 +230,7 @@ double ScmVelocityModule::computeV_sc m() {
     return variables["v_sc m"];
 }
 
-// Compute E_react = E_react_base * exp(-Œ∫ t)
+// Compute E_react = E_react_base * exp(-? t)
 double ScmVelocityModule::computeE_react(double t_day) {
     variables["t_day"] = t_day;
     double arg = - variables["kappa_day"] * t_day;
@@ -250,11 +250,11 @@ double ScmVelocityModule::computeUmExample(double t_day) {
 
 // Equation text
 std::string ScmVelocityModule::getEquationText() {
-    return "E_react = [œÅ_vac,[SCm] v_SCm¬≤ / œÅ_vac,A] * exp(-Œ∫ t) (t days);\n"
+    return "E_react = [?_vac,[SCm] v_SCm≤ / ?_vac,A] * exp(-? t) (t days);\n"
            "v_SCm = 1e8 m/s (~c/3, [SCm] propagation speed);\n"
            "Scales reactivity in U_m, U_bi, U_i, U_gi via E_react.\n"
            "Example t=0: E_react=1e46 J; t=2000 days: ~3.68e45 J (~36.8%).\n"
-           "U_m (t=0): ‚âà2.28e65 J/m¬≥; t=2000: ‚âà8.39e64 J/m¬≥.\n"
+           "U_m (t=0): ò2.28e65 J/m≥; t=2000: ò8.39e64 J/m≥.\n"
            "Role: [SCm] dynamic speed for relativistic effects; jets/energy transfer.\n"
            "UQFF: Subluminal propagation; [SCm]-[UA] reactions in nebulae/formation.";
 }
@@ -276,11 +276,11 @@ void ScmVelocityModule::printVelocityEffects(double t_day) {
     std::cout << "[SCm] Velocity Effects at t=" << t_day << " days:\n";
     std::cout << "v_SCm = " << std::scientific << v << " m/s\n";
     std::cout << "E_react = " << e_react << " J (" << fraction << " of initial)\n";
-    std::cout << "U_m example = " << um_ex << " J/m¬≥\n";
+    std::cout << "U_m example = " << um_ex << " J/m≥\n";
 }
 
 // Example usage in base program (snippet)
-// #include "ScmVelocityModule.h"
+// // // // #include "ScmVelocityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     ScmVelocityModule mod;
 //     double v = mod.computeV_sc m();
@@ -292,7 +292,7 @@ void ScmVelocityModule::printVelocityEffects(double t_day) {
 //     return 0;
 // }
 // Compile: g++ -o scm_vel_test scm_vel_test.cpp ScmVelocityModule.cpp -lm
-// Sample: v_SCm=1e8 m/s; t=2000 days: E_react‚âà3.68e45 J; U_m‚âà8.39e64 J/m¬≥.
+// Sample: v_SCm=1e8 m/s; t=2000 days: E_reactò3.68e45 J; U_mò8.39e64 J/m≥.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 ScmVelocityModule Evaluation

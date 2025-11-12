@@ -1,10 +1,10 @@
-﻿// ScmPenetrationModule.h
+// ScmPenetrationModule.h
 // Modular C++ implementation of the [SCm] Penetration Factor (P_SCm) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes P_SCm ?1 (unitless for Sun, ~1e-3 for planets); scales P_SCm in Universal Magnetism U_m term.
-// Pluggable: #include "ScmPenetrationModule.h"
+// Pluggable: // // // #include "ScmPenetrationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // ScmPenetrationModule mod; mod.computeUmContribution(0.0); mod.updateVariable("P_SCm", new_value);
 // Variables in std::map; example for Sun at t=0, t_n=0; full penetration for plasma cores.
-// Approximations: 1 - e^{-? t cos(? t_n)}=0 at t=0; ?_hat_j=1; ?_j / r_j=2.26e10 T mï¿½.
+// Approximations: 1 - e^{-? t cos(? t_n)}=0 at t=0; ?_hat_j=1; ?_j / r_j=2.26e10 T m�.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef SCM_PENETRATION_MODULE_H
@@ -158,7 +158,7 @@ public:
 #endif // SCM_PENETRATION_MODULE_H
 
 // ScmPenetrationModule.cpp
-#include "ScmPenetrationModule.h"
+// // // #include "ScmPenetrationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults (Sun at t=0)
 ScmPenetrationModule::ScmPenetrationModule() {
@@ -171,7 +171,7 @@ ScmPenetrationModule::ScmPenetrationModule() {
     // Universal constants
     variables["P_SCm"] = 1.0;                       // Unitless ?1 for Sun
     variables["P_SCm_planet"] = 1e-3;               // For planets
-    variables["mu_j"] = 3.38e23;                    // Tï¿½m^3
+    variables["mu_j"] = 3.38e23;                    // T�m^3
     variables["r_j"] = 1.496e13;                    // m
     variables["gamma"] = 5e-5 / 86400.0;            // s^-1
     variables["t_n"] = 0.0;                         // s
@@ -250,8 +250,8 @@ std::string ScmPenetrationModule::getEquationText() {
     return "U_m = [ (?_j / r_j) (1 - e^{-? t cos(? t_n)}) ?_hat_j ] P_SCm E_react (1 + 10^13 f_Heaviside) (1 + f_quasi)\n"
            "Where P_SCm ?1 (unitless [SCm] penetration factor; ~1e-3 for planets).\n"
            "Scales magnetic energy for [SCm] interior interaction.\n"
-           "Example Sun t=0: U_m ?2.28e65 J/mï¿½ (P_SCm=1);\n"
-           "Planet: ?2.28e62 J/mï¿½ (P_SCm=1e-3, -3 orders).\n"
+           "Example Sun t=0: U_m ?2.28e65 J/m� (P_SCm=1);\n"
+           "Planet: ?2.28e62 J/m� (P_SCm=1e-3, -3 orders).\n"
            "Role: Full for stellar plasma, reduced for solid cores; [SCm] influence on strings.\n"
            "UQFF: Models penetration in jets/nebulae/formation; massless [SCm] dynamics.";
 }
@@ -265,20 +265,20 @@ void ScmPenetrationModule::printVariables() {
 }
 
 // Example usage in base program (snippet)
-// #include "ScmPenetrationModule.h"
+// // // // #include "ScmPenetrationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     ScmPenetrationModule mod;
 //     double p = mod.computeP_SCm();
 //     std::cout << "P_SCm ? " << p << std::endl;
 //     double um_sun = mod.computeUmContribution(0.0);
-//     std::cout << "U_m (Sun) = " << um_sun << " J/mï¿½\n";
+//     std::cout << "U_m (Sun) = " << um_sun << " J/m�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("P_SCm", 1e-3);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o scm_test scm_test.cpp ScmPenetrationModule.cpp -lm
-// Sample: P_SCm=1; U_m?2.28e65 J/mï¿½ (Sun); scales for planetary [SCm].
+// Sample: P_SCm=1; U_m?2.28e65 J/m� (Sun); scales for planetary [SCm].
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 ScmPenetrationModule Evaluation

@@ -71,7 +71,7 @@ private:
 public:
     DynamicVacuumTerm(double amp, double freq) : amplitude(amp), frequency(freq) {}
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double t, const std::map<std::string, double> & /* params */) const override
     {
         return amplitude * sin(frequency * t);
     }
@@ -83,7 +83,7 @@ public:
         return "Time-varying vacuum energy contribution: A*sin(f*t)";
     }
 
-    bool validate(const std::map<std::string, double> &params) const override
+    bool validate(const std::map<std::string, double> & /* params */) const override
     {
         return amplitude != 0.0 && frequency > 0.0;
     }
@@ -117,7 +117,7 @@ public:
         return "Non-local quantum coupling: strength * hbar^2/(M*r^2) * cos(t/10^6)";
     }
 
-    bool validate(const std::map<std::string, double> &params) const override
+    bool validate(const std::map<std::string, double> & /* params */) const override
     {
         return coupling_strength != 0.0;
     }
@@ -234,7 +234,7 @@ double compute_mu_j(double t, double omega_c, double Rs, double SCm_contrib = 1e
 }
 
 // Main computation functions
-double compute_Ug1(const CelestialBody &body, double r, double t, double tn, double alpha, double delta_def, double k1)
+double compute_Ug1(const CelestialBody &body, double /* r */, double t, double tn, double alpha, double delta_def, double k1)
 {
     double mu_s = compute_mu_s(t, body.Bs_avg, body.omega_c, body.Rs);
     double grad_Ms_r = compute_grad_Ms_r(body.Ms, body.Rs);
@@ -242,7 +242,7 @@ double compute_Ug1(const CelestialBody &body, double r, double t, double tn, dou
     return k1 * mu_s * grad_Ms_r * std::exp(-alpha * t) * std::cos(PI * tn) * defect;
 }
 
-double compute_Ug2(const CelestialBody &body, double r, double t, double tn, double k2, double QA, double delta_sw, double v_sw, double HSCm, double rho_A, double kappa)
+double compute_Ug2(const CelestialBody &body, double r, double t, double /* tn */, double k2, double QA, double delta_sw, double v_sw, double HSCm, double rho_A, double kappa)
 {
     double Ereact = compute_Ereact(t, body.SCm_density, v_SCm, rho_A, kappa);
     double S = step_function(r, body.Rb);
@@ -250,7 +250,7 @@ double compute_Ug2(const CelestialBody &body, double r, double t, double tn, dou
     return k2 * (QA + body.QUA) * body.Ms / (r * r) * S * wind_mod * HSCm * Ereact;
 }
 
-double compute_Ug3(const CelestialBody &body, double r, double t, double tn, double theta, double rho_A, double kappa, double k3)
+double compute_Ug3(const CelestialBody &body, double /* r */, double t, double /* tn */, double /* theta */, double rho_A, double kappa, double k3)
 {
     double Ereact = compute_Ereact(t, body.SCm_density, v_SCm, rho_A, kappa);
     double omega_s_t = compute_omega_s_t(t, body.omega_s, body.omega_c);
@@ -469,7 +469,7 @@ public:
         if (it == variable_history.end())
             return {};
 
-        if (steps < 0 || steps >= it->second.size())
+        if (steps < 0 || static_cast<size_t>(steps) >= it->second.size())
         {
             return it->second;
         }
@@ -817,7 +817,7 @@ public:
 
     void add_source(std::vector<double> &x, std::vector<double> &s)
     {
-        for (int i = 0; i < x.size(); ++i)
+        for (size_t i = 0; i < x.size(); ++i)
         {
             x[i] += dt_ns * s[i];
         }
@@ -1184,6 +1184,159 @@ double compute_resonance_MUGE(const MUGESystem &sys, const ResonanceParams &res)
     return aDPM + aTHz + avac_diff + asuper_freq + aaether_res + Ug4i + aquantum_freq + aAether_freq + afluid_freq + Osc_term + aexp_freq + fTRZ + a_worm;
 }
 
+// ========== MUGE SYSTEM DEFINITIONS ==========
+// System definitions must appear before test functions that use them
+MUGESystem sgr1745 = {
+    "Magnetar SGR 1745-2900",
+    1e21,      // I
+    3.142e8,   // A
+    1e-3,      // omega1
+    -1e-3,     // omega2
+    4.189e12,  // Vsys
+    1e3,       // vexp
+    3.799e10,  // t
+    0.0009,    // z
+    1.269e-14, // ffluid
+    2.984e30,  // M
+    1e4,       // r
+    1e10,      // B
+    1e11,      // Bcrit
+    1e-15,     // rho_fluid
+    10.0,      // g_local
+    0.0,       // M_DM
+    1e-5,      // delta_rho_rho
+};
+
+MUGESystem sagA = {
+    "Sagittarius A*",
+    1e23,     // I
+    2.813e30, // A
+    1e-5,     // omega1
+    -1e-5,    // omega2
+    3.552e45, // Vsys
+    5e6,      // vexp
+    3.786e14, // t
+    0.0009,   // z
+    3.465e-8, // ffluid
+    8.155e36, // M
+    1e12,     // r
+    1e-5,     // B
+    1e-4,     // Bcrit
+    1e-20,    // rho_fluid
+    1e-5,     // g_local
+    1e37,     // M_DM
+    1e-3,     // delta_rho_rho
+};
+
+MUGESystem tapestry = {
+    "Tapestry of Blazing Starbirth",
+    1e22,     // I (speculative based on pattern)
+    1e35,     // A
+    1e-4,     // omega1
+    -1e-4,    // omega2
+    1e53,     // Vsys
+    1e4,      // vexp
+    3.156e13, // t
+    0.0,      // z
+    1e-12,    // ffluid
+    1.989e35, // M
+    3.086e17, // r
+    1e-4,     // B
+    1e-3,     // Bcrit
+    1e-21,    // rho_fluid
+    1e-8,     // g_local
+    1e35,     // M_DM
+    1e-4,     // delta_rho_rho
+};
+
+// Add Westerlund 2, Pillars, Rings, Student's Guide with similar speculative params based on attachment
+// For Westerlund 2 (similar to Tapestry)
+MUGESystem westerlund = {
+    "Westerlund 2",
+    1e22,     // I (speculative based on pattern)
+    1e35,     // A
+    1e-4,     // omega1
+    -1e-4,    // omega2
+    1e53,     // Vsys
+    1e4,      // vexp
+    3.156e13, // t
+    0.0,      // z
+    1e-12,    // ffluid
+    1.989e35, // M
+    3.086e17, // r
+    1e-4,     // B
+    1e-3,     // Bcrit
+    1e-21,    // rho_fluid
+    1e-8,     // g_local
+    1e35,     // M_DM
+    1e-4,     // delta_rho_rho
+};
+
+MUGESystem pillars = {
+    "Pillars of Creation",
+    1e21,      // I
+    2.813e32,  // A
+    1e-3,      // omega1
+    -1e-3,     // omega2
+    3.552e48,  // Vsys
+    2e3,       // vexp
+    3.156e13,  // t
+    0.0,       // z
+    8.457e-14, // ffluid
+    1.989e32,  // M
+    9.46e15,   // r
+    1e-4,      // B
+    1e-3,      // Bcrit
+    1e-21,     // rho_fluid
+    1e-8,      // g_local
+    0.0,       // M_DM
+    1e-5,      // delta_rho_rho
+};
+
+MUGESystem rings = {
+    "Rings of Relativity",
+    1e22,     // I
+    1e35,     // A
+    1e-4,     // omega1
+    -1e-4,    // omega2
+    1e54,     // Vsys
+    1e5,      // vexp
+    3.156e14, // t
+    0.01,     // z
+    1e-9,     // ffluid
+    1.989e36, // M
+    3.086e17, // r
+    1e-5,     // B
+    1e-4,     // Bcrit
+    1e-20,    // rho_fluid
+    1e-5,     // g_local
+    1e36,     // M_DM
+    1e-3,     // delta_rho_rho
+};
+
+MUGESystem student_guide = {
+    "Student�s Guide to the Universe",
+    1e24,    // I
+    1e52,    // A
+    1e-6,    // omega1
+    -1e-6,   // omega2
+    1e80,    // Vsys
+    3e8,     // vexp
+    4.35e17, // t
+    0.0,     // z
+    1e-18,   // ffluid
+    1e53,    // M
+    1e26,    // r
+    1e-10,   // B
+    1e-9,    // Bcrit
+    1e-30,   // rho_fluid
+    1e-10,   // g_local
+    1e53,    // M_DM
+    1e-6,    // delta_rho_rho
+};
+
+// ========== END MUGE SYSTEM DEFINITIONS ==========
+
 // Unit Tests
 void test_compute_compressed_base()
 {
@@ -1459,7 +1612,7 @@ void simulate_quasar_jet(double initial_velocity)
     solver.print_velocity_field();
 }
 
-std::vector<CelestialBody> load_bodies(const std::string &filename)
+std::vector<CelestialBody> load_bodies(const std::string & /* filename */)
 {
     std::vector<CelestialBody> bodies;
     // Similar parsing as for MUGE systems
@@ -1603,138 +1756,8 @@ int main(int argc, char **argv)
     // Integrated MUGE calculations from attachments
     ResonanceParams res_params;
 
-    // Define systems with parameters from attachments
-    MUGESystem sgr1745 = {
-        "Magnetar SGR 1745-2900",
-        1e21,      // I
-        3.142e8,   // A
-        1e-3,      // omega1
-        -1e-3,     // omega2
-        4.189e12,  // Vsys
-        1e3,       // vexp
-        3.799e10,  // t
-        0.0009,    // z
-        1.269e-14, // ffluid
-        2.984e30,  // M
-        1e4,       // r
-        1e10,      // B
-        1e11,      // Bcrit
-        1e-15,     // rho_fluid
-        10.0,      // g_local
-        0.0,       // M_DM
-        1e-5,      // delta_rho_rho
-    };
-
-    MUGESystem sagA = {
-        "Sagittarius A*",
-        1e23,     // I
-        2.813e30, // A
-        1e-5,     // omega1
-        -1e-5,    // omega2
-        3.552e45, // Vsys
-        5e6,      // vexp
-        3.786e14, // t
-        0.0009,   // z
-        3.465e-8, // ffluid
-        8.155e36, // M
-        1e12,     // r
-        1e-5,     // B
-        1e-4,     // Bcrit
-        1e-20,    // rho_fluid
-        1e-5,     // g_local
-        1e37,     // M_DM
-        1e-3,     // delta_rho_rho
-    };
-
-    MUGESystem tapestry = {
-        "Tapestry of Blazing Starbirth",
-        1e22,     // I (speculative based on pattern)
-        1e35,     // A
-        1e-4,     // omega1
-        -1e-4,    // omega2
-        1e53,     // Vsys
-        1e4,      // vexp
-        3.156e13, // t
-        0.0,      // z
-        1e-12,    // ffluid
-        1.989e35, // M
-        3.086e17, // r
-        1e-4,     // B
-        1e-3,     // Bcrit
-        1e-21,    // rho_fluid
-        1e-8,     // g_local
-        1e35,     // M_DM
-        1e-4,     // delta_rho_rho
-    };
-
-    // Add Westerlund 2, Pillars, Rings, Student's Guide with similar speculative params based on attachment
-    // For Westerlund 2 (similar to Tapestry)
-    MUGESystem westerlund = tapestry;
-    westerlund.name = "Westerlund 2";
-
-    MUGESystem pillars = {
-        "Pillars of Creation",
-        1e21,      // I
-        2.813e32,  // A
-        1e-3,      // omega1
-        -1e-3,     // omega2
-        3.552e48,  // Vsys
-        2e3,       // vexp
-        3.156e13,  // t
-        0.0,       // z
-        8.457e-14, // ffluid
-        1.989e32,  // M
-        9.46e15,   // r
-        1e-4,      // B
-        1e-3,      // Bcrit
-        1e-21,     // rho_fluid
-        1e-8,      // g_local
-        0.0,       // M_DM
-        1e-5,      // delta_rho_rho
-    };
-
-    MUGESystem rings = {
-        "Rings of Relativity",
-        1e22,     // I
-        1e35,     // A
-        1e-4,     // omega1
-        -1e-4,    // omega2
-        1e54,     // Vsys
-        1e5,      // vexp
-        3.156e14, // t
-        0.01,     // z
-        1e-9,     // ffluid
-        1.989e36, // M
-        3.086e17, // r
-        1e-5,     // B
-        1e-4,     // Bcrit
-        1e-20,    // rho_fluid
-        1e-5,     // g_local
-        1e36,     // M_DM
-        1e-3,     // delta_rho_rho
-    };
-
-    MUGESystem student_guide = {
-        "Student�s Guide to the Universe",
-        1e24,    // I
-        1e52,    // A
-        1e-6,    // omega1
-        -1e-6,   // omega2
-        1e80,    // Vsys
-        3e8,     // vexp
-        4.35e17, // t
-        0.0,     // z
-        1e-18,   // ffluid
-        1e53,    // M
-        1e26,    // r
-        1e-10,   // B
-        1e-9,    // Bcrit
-        1e-30,   // rho_fluid
-        1e-10,   // g_local
-        1e53,    // M_DM
-        1e-6,    // delta_rho_rho
-    };
-
+    // MUGE system definitions have been moved before test functions (see earlier in file)
+    // to avoid forward reference errors
     std::vector<MUGESystem> muge_systems = {sgr1745, sagA, tapestry, westerlund, pillars, rings, student_guide};
 
     for (const auto &sys : muge_systems)

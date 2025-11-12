@@ -1,7 +1,7 @@
-﻿// HeavisideFractionModule.h
+// HeavisideFractionModule.h
 // Modular C++ implementation of the Heaviside Component Fraction (f_Heaviside) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes f_Heaviside=0.01 (unitless) and its scaling (1 + 10^13 * f_Heaviside) in Universal Magnetism U_m term.
-// Pluggable: #include "HeavisideFractionModule.h"
+// Pluggable: // // // #include "HeavisideFractionModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // HeavisideFractionModule mod; mod.computeUmContribution(0.0); mod.updateVariable("f_Heaviside", new_value);
 // Variables in std::map; example for Sun at t=0, t_n=0; amplifies by ~10^11.
 // Approximations: 1 - e^{-? t cos(? t_n)}=0 at t=0; ?_hat_j=1; P_SCm=1; f_quasi=0.01.
@@ -163,7 +163,7 @@ public:
 #endif // HEAVISIDE_FRACTION_MODULE_H
 
 // HeavisideFractionModule.cpp
-#include "HeavisideFractionModule.h"
+// // // #include "HeavisideFractionModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 HeavisideFractionModule::HeavisideFractionModule() {
@@ -262,7 +262,7 @@ std::string HeavisideFractionModule::getEquationText() {
     return "U_m = ?_j [ (?_j / r_j) (1 - e^{-? t cos(? t_n)}) ?_hat_j ] P_SCm E_react (1 + 10^13 f_Heaviside) (1 + f_quasi)\n"
            "Where f_Heaviside = 0.01 (unitless Heaviside fraction);\n"
            "Heaviside factor = 1 + 10^13 * 0.01 = 1 + 1e11 (amplifies ~10^11x).\n"
-           "Example j=1, t=0: U_m contrib ?2.28e65 J/mï¿½ (with); ?2.28e54 J/mï¿½ (without).\n"
+           "Example j=1, t=0: U_m contrib ?2.28e65 J/m� (with); ?2.28e54 J/m� (without).\n"
            "Role: Threshold-activated scaling in magnetic energy; nonlinear [SCm]/[UA] effects.\n"
            "UQFF: Amplifies small fraction for large impact in nebulae/quasars/jets.";
 }
@@ -281,13 +281,13 @@ void HeavisideFractionModule::printUmComparison(int j, double t) {
     double um_without = computeUmWithNoHeaviside(j, t);
     double amplification = um_with / um_without;
     std::cout << "U_m Comparison for j=" << j << " at t=" << t << " s:\n";
-    std::cout << "With Heaviside: " << std::scientific << um_with << " J/mï¿½\n";
-    std::cout << "Without Heaviside: " << um_without << " J/mï¿½\n";
+    std::cout << "With Heaviside: " << std::scientific << um_with << " J/m�\n";
+    std::cout << "Without Heaviside: " << um_without << " J/m�\n";
     std::cout << "Amplification: ~" << std::scientific << amplification << "x\n";
 }
 
 // Example usage in base program (snippet)
-// #include "HeavisideFractionModule.h"
+// // // // #include "HeavisideFractionModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     HeavisideFractionModule mod;
 //     double heav_factor = mod.computeHeavisideFactor();
@@ -299,9 +299,10 @@ void HeavisideFractionModule::printUmComparison(int j, double t) {
 //     return 0;
 // }
 // Compile: g++ -o heaviside_test heaviside_test.cpp HeavisideFractionModule.cpp -lm
-// Sample: Factor=1e11+1; U_m with=2.28e65 J/mï¿½ (~1e11x without).
+// Sample: Factor=1e11+1; U_m with=2.28e65 J/m� (~1e11x without).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 HeavisideFractionModule Evaluation
 
 Strengths :
@@ -320,3 +321,4 @@ Weaknesses / Recommendations :
 
     Summary :
     The code is well - structured, clear, and suitable for scientific prototyping and educational use.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+*/

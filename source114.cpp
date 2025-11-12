@@ -1,9 +1,9 @@
-﻿// SolarCycleFrequencyModule.h
+// SolarCycleFrequencyModule.h
 // Modular C++ implementation of the Solar Cycle Frequency (?_c) in the Universal Quantum Field Superconductive Framework (UQFF).
-// This module computes ?_c = 2? / 3.96e8 s?ï¿½ (~1.59e-8 rad/s, period ~12.55 years); used in sin(?_c t) for ?_j in U_m.
-// Pluggable: #include "SolarCycleFrequencyModule.h"
+// This module computes ?_c = 2? / 3.96e8 s?� (~1.59e-8 rad/s, period ~12.55 years); used in sin(?_c t) for ?_j in U_m.
+// Pluggable: // // // #include "SolarCycleFrequencyModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // SolarCycleFrequencyModule mod; mod.computeMuJExample(0.0); mod.updateVariable("period", new_value);
-// Variables in std::map; example for Sun at t=0 (sin=0, ?_j=3.38e23 Tï¿½mï¿½); t~1 year: slight increase.
+// Variables in std::map; example for Sun at t=0 (sin=0, ?_j=3.38e23 T�m�); t~1 year: slight increase.
 // Approximations: Period=3.96e8 s (~12.55 yr); base B_j=1e3 T.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
@@ -144,9 +144,9 @@ public:
     void subtractFromVariable(const std::string& name, double delta);
 
     // Core computations
-    double computeOmega_c();  // 2? / period s?ï¿½
+    double computeOmega_c();  // 2? / period s?�
     double computeSinOmegaCT(double t);  // sin(?_c t)
-    double computeMuJExample(double t);  // (10^3 + 0.4 sin(?_c t)) * 3.38e20 Tï¿½mï¿½
+    double computeMuJExample(double t);  // (10^3 + 0.4 sin(?_c t)) * 3.38e20 T�m�
 
     // Output descriptive text
     std::string getEquationText();
@@ -158,7 +158,7 @@ public:
 #endif // SOLAR_CYCLE_FREQUENCY_MODULE_H
 
 // SolarCycleFrequencyModule.cpp
-#include "SolarCycleFrequencyModule.h"
+// // // #include "SolarCycleFrequencyModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 SolarCycleFrequencyModule::SolarCycleFrequencyModule() {
@@ -171,7 +171,7 @@ SolarCycleFrequencyModule::SolarCycleFrequencyModule() {
     // Universal constants
     variables["pi"] = 3.141592653589793;
     variables["period"] = 3.96e8;                   // s (~12.55 years)
-    variables["base_mu"] = 3.38e20;                 // Tï¿½mï¿½
+    variables["base_mu"] = 3.38e20;                 // T�m�
     variables["B_j"] = 1e3;                         // Base T
     variables["t"] = 0.0;                           // s
 
@@ -230,11 +230,11 @@ double SolarCycleFrequencyModule::computeMuJExample(double t) {
 
 // Equation text
 std::string SolarCycleFrequencyModule::getEquationText() {
-    return "?_c = 2? / 3.96e8 s?ï¿½ ?1.59e-8 rad/s (period ~12.55 yr, near 11-yr solar cycle);\n"
-           "In U_m: ?_j = (10^3 + 0.4 sin(?_c t)) * 3.38e20 Tï¿½mï¿½ (cyclic magnetic variation).\n"
+    return "?_c = 2? / 3.96e8 s?� ?1.59e-8 rad/s (period ~12.55 yr, near 11-yr solar cycle);\n"
+           "In U_m: ?_j = (10^3 + 0.4 sin(?_c t)) * 3.38e20 T�m� (cyclic magnetic variation).\n"
            "In U_g3: ... cos(?_s t ?) ... (?_s Sun rotation, but ?_c for cycle).\n"
-           "Example t=0: sin=0 ? ?_j=3.38e23 Tï¿½mï¿½;\n"
-           "t=3.14e7 s (~1 yr): sin?0.477 ? ?_j?3.381e23 Tï¿½mï¿½ (+0.019%).\n"
+           "Example t=0: sin=0 ? ?_j=3.38e23 T�m�;\n"
+           "t=3.14e7 s (~1 yr): sin?0.477 ? ?_j?3.381e23 T�m� (+0.019%).\n"
            "Role: Models solar cycle periodicity; magnetic activity in strings/fields.\n"
            "UQFF: Cyclic effects in jets/nebulae/formation; near 11-yr Hale cycle.";
 }
@@ -248,20 +248,20 @@ void SolarCycleFrequencyModule::printVariables() {
 }
 
 // Example usage in base program (snippet)
-// #include "SolarCycleFrequencyModule.h"
+// // // // #include "SolarCycleFrequencyModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     SolarCycleFrequencyModule mod;
 //     double omega = mod.computeOmega_c();
 //     std::cout << "?_c ? " << omega << " rad/s\n";
 //     double mu = mod.computeMuJExample(0.0);
-//     std::cout << "?_j (t=0) = " << mu << " Tï¿½mï¿½\n";
+//     std::cout << "?_j (t=0) = " << mu << " T�m�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("period", 3.8e8);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o solar_cycle_test solar_cycle_test.cpp SolarCycleFrequencyModule.cpp -lm
-// Sample: ?_c?1.59e-8 rad/s; ?_j?3.38e23 Tï¿½mï¿½; periodic variation.
+// Sample: ?_c?1.59e-8 rad/s; ?_j?3.38e23 T�m�; periodic variation.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 SolarCycleFrequencyModule Evaluation

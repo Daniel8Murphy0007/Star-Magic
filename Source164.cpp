@@ -253,7 +253,7 @@ cdouble UQFFNebulaTriadicModule::getVariable(const std::string &name) const
     return {0.0, 0.0};
 }
 
-cdouble UQFFNebulaTriadicModule::computeDPM_resonance(const std::string &system)
+cdouble UQFFNebulaTriadicModule::computeDPM_resonance(const std::string & /* system */)
 {
     cdouble g = variables["g_Lande"];
     cdouble muB = variables["mu_B"];
@@ -264,7 +264,7 @@ cdouble UQFFNebulaTriadicModule::computeDPM_resonance(const std::string &system)
     return cdouble(result, 0.0);
 }
 
-cdouble UQFFNebulaTriadicModule::computeLENRTerm(const std::string &system)
+cdouble UQFFNebulaTriadicModule::computeLENRTerm(const std::string & /* system */)
 {
     cdouble k = variables["k_LENR"];
     cdouble omegaL = variables["omega_LENR"];
@@ -272,7 +272,7 @@ cdouble UQFFNebulaTriadicModule::computeLENRTerm(const std::string &system)
     return k * pow(omegaL / omega0, 2.0);
 }
 
-cdouble UQFFNebulaTriadicModule::computeGasNebulaIntegration(const std::string &system, double t)
+cdouble UQFFNebulaTriadicModule::computeGasNebulaIntegration(const std::string & /* system */, double /* t */)
 {
     // Gas nebula physics: ionization, expansion, radiation pressure
     double rho_gas = variables["rho_gas"].real();
@@ -326,7 +326,7 @@ cdouble UQFFNebulaTriadicModule::computeIntegrand(double t_user, const std::stri
     return term_base + term_mom + term_grav + term_vac + term_LENR + term_act + term_DE + term_res + term_neut + term_rel + term_neutrino + gas_nebula;
 }
 
-cdouble UQFFNebulaTriadicModule::computeX2(const std::string &system)
+cdouble UQFFNebulaTriadicModule::computeX2(const std::string & /* system */)
 {
     return variables["x2"];
 }
@@ -337,7 +337,7 @@ cdouble UQFFNebulaTriadicModule::computeQuadraticRoot(cdouble a, cdouble b, cdou
     return (-b - disc) / (2.0 * a);
 }
 
-cdouble UQFFNebulaTriadicModule::computeGravityCompressed(const std::string &system)
+cdouble UQFFNebulaTriadicModule::computeGravityCompressed(const std::string & /* system */)
 {
     cdouble G = variables["G"];
     cdouble M = variables["M"];
@@ -345,12 +345,12 @@ cdouble UQFFNebulaTriadicModule::computeGravityCompressed(const std::string &sys
     return G * M / pow(r, 2.0);
 }
 
-cdouble UQFFNebulaTriadicModule::computeResonanceUr(int U_dp, int U_r, const std::string &system)
+cdouble UQFFNebulaTriadicModule::computeResonanceUr(int U_dp, int U_r, const std::string & /* system */)
 {
     return static_cast<double>(U_dp + U_r) * variables["F_rel"];
 }
 
-cdouble UQFFNebulaTriadicModule::computeBuoyancyUbi(const std::string &system)
+cdouble UQFFNebulaTriadicModule::computeBuoyancyUbi(const std::string & /* system */)
 {
     cdouble beta = variables["beta_i"];
     cdouble V = variables["V_infl_UA"];
@@ -394,7 +394,7 @@ cdouble UQFFNebulaTriadicModule::computeBuoyancy(const std::string &system)
     return computeBuoyancyUbi(system);
 }
 
-cdouble UQFFNebulaTriadicModule::computeSuperconductive(const std::string &system, double t)
+cdouble UQFFNebulaTriadicModule::computeSuperconductive(const std::string & /* system */, double t)
 {
     double tn = t / variables["t_scale"].real();
     cdouble lambda = variables["lambda_i"];
@@ -407,7 +407,7 @@ cdouble UQFFNebulaTriadicModule::computeSuperconductive(const std::string &syste
     return lambda * (rho_sc / rho_ua * omega_s * cos_term * (1.0 + f_trz.real()));
 }
 
-double UQFFNebulaTriadicModule::computeCompressedG(const std::string &system, double t)
+double UQFFNebulaTriadicModule::computeCompressedG(const std::string &system, double /* t */)
 {
     setSystemParams(system);
     double G_val = variables["G"].real();
@@ -536,7 +536,7 @@ cdouble UQFFNebulaTriadicModule::computeNebulaExpansion(const std::string &syste
     return cdouble(r_t, rho_t);
 }
 
-cdouble UQFFNebulaTriadicModule::computeGasIonization(const std::string &system, double t)
+cdouble UQFFNebulaTriadicModule::computeGasIonization(const std::string &system, double /* t */)
 {
     setSystemParams(system);
     double L_X = variables["L_X"].real();

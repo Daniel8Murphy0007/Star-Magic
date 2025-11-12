@@ -1,7 +1,7 @@
-﻿// SgrA_UQFFModule.h
+// SgrA_UQFFModule.h
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF) for Sagittarius A* SMBH Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "SgrA_UQFFModule.h"
+// Usage in base: // // // #include "SgrA_UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // SgrA_UQFFModule mod; mod.computeG(t); mod.updateVariable("M", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Nothing is negligible: Includes all terms - DPM resonance, THz hole pipeline, plasmotic vacuum differential, superconductor frequency, Aether-mediated resonance, reactive U_g4i, quantum wave, fluid dynamics, oscillatory components, cosmic expansion, time-reversal correction.
@@ -169,7 +169,7 @@ public:
 #endif // SGR_A_UQFF_MODULE_H
 
 // SgrA_UQFFModule.cpp
-#include "SgrA_UQFFModule.h"
+// // // #include "SgrA_UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with Sagittarius A*-specific values
@@ -354,7 +354,7 @@ std::string SgrA_UQFFModule::getEquationText() {
     return "g_SgrA(t) = [a_DPM + a_THz + a_vac_diff + a_super_freq + a_aether_res + U_g4i + a_quantum_freq + a_Aether_freq + a_fluid_freq + Osc_term + a_exp_freq] * (1 + f_TRZ)\n"
            "Where terms mirror magnetar but scaled for SMBH (f_DPM=1e9 Hz, V_sys large).\n"
            "Special Terms: All driven by UQFF frequencies/resonances via plasmotic vacuum; Aether replaces dark energy; no SM terms.\n"
-           "Solutions: At t=1e10 yr, g ? 1e-30 m/sï¿½ (dominated by THz/fluid; micro-scale per proof set).\n"
+           "Solutions: At t=1e10 yr, g ? 1e-30 m/s� (dominated by THz/fluid; micro-scale per proof set).\n"
            "Adaptations: DPM heart, THz pipeline for SMBH accretion/flares per Chandra data.";
 }
 
@@ -367,12 +367,12 @@ void SgrA_UQFFModule::printVariables() {
 }
 
 // Example usage in base program 'ziqn233h.cpp' (snippet for integration)
-// #include "SgrA_UQFFModule.h"
+// // // // #include "SgrA_UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     SgrA_UQFFModule mod;
 //     double t = 1e10 * 3.156e7;  // 10 Gyr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/sï¿½\n";
+//     std::cout << "g = " << g << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_DPM", 1.1e9);  // Update DPM freq
 //     mod.addToVariable("f_TRZ", 0.05);    // Add to TR factor
@@ -380,9 +380,10 @@ void SgrA_UQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp SgrA_UQFFModule.cpp -lm
-// Sample Output at t=10 Gyr: g ? 1e-30 m/sï¿½ (varies with updates; all terms micro-scale per UQFF frequencies).
+// Sample Output at t=10 Gyr: g ? 1e-30 m/s� (varies with updates; all terms micro-scale per UQFF frequencies).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
+/*
 // Evaluation of SgrA_UQFFModule (UQFF Frequency/Resonance Model for Sagittarius A* SMBH)
 
 **Strengths:**
@@ -402,3 +403,4 @@ void SgrA_UQFFModule::printVariables() {
 
     ** Summary : **
     The module is robust, dynamic, and extensible, supporting runtime updates and changes to all model parameters.It is suitable for advanced UQFF - based SMBH modeling.Minor improvements in error handling, documentation, and physical justification are recommended for production or publication use.
+*/

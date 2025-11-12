@@ -1,7 +1,7 @@
-﻿// CorePenetrationModule.h
+// CorePenetrationModule.h
 // Modular C++ implementation of the Planetary Core Penetration Factor (P_core) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes P_core ?1 (unitless for Sun, ~1e-3 for planets); scales P_core in Universal Gravity U_g3 term.
-// Pluggable: #include "CorePenetrationModule.h"
+// Pluggable: // // // #include "CorePenetrationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // CorePenetrationModule mod; mod.computeU_g3(0.0); mod.updateVariable("P_core", new_value);
 // Variables in std::map; example for Sun at t=0; planet mode with P_core=1e-3.
 // Approximations: cos(?_s t ?)=1 at t=0; E_react=1e46; B_j=1e3 T.
@@ -157,7 +157,7 @@ public:
 #endif // CORE_PENETRATION_MODULE_H
 
 // CorePenetrationModule.cpp
-#include "CorePenetrationModule.h"
+// // // #include "CorePenetrationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults (Sun at t=0)
 CorePenetrationModule::CorePenetrationModule() {
@@ -233,8 +233,8 @@ std::string CorePenetrationModule::getEquationText() {
     return "U_g3 = k_3 * ?_j B_j(r,?,t,?_vac,[SCm]) * cos(?_s(t) t ?) * P_core * E_react\n"
            "Where P_core ?1 (unitless for Sun, ~1e-3 for planets; core penetration).\n"
            "Scales magnetic disk gravity for core [SCm] influence.\n"
-           "Example Sun t=0: U_g3 ?1.8e49 J/mï¿½ (P_core=1);\n"
-           "Planet: ?1.8e46 J/mï¿½ (P_core=1e-3, -3 orders).\n"
+           "Example Sun t=0: U_g3 ?1.8e49 J/m� (P_core=1);\n"
+           "Planet: ?1.8e46 J/m� (P_core=1e-3, -3 orders).\n"
            "Role: Adjusts core interactions; full for stellar plasma, reduced for solid cores.\n"
            "UQFF: Models penetration in nebulae/star formation/disks.";
 }
@@ -248,22 +248,23 @@ void CorePenetrationModule::printVariables() {
 }
 
 // Example usage in base program (snippet)
-// #include "CorePenetrationModule.h"
+// // // // #include "CorePenetrationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     CorePenetrationModule mod;
 //     double p = mod.computeP_core();
 //     std::cout << "P_core ? " << p << std::endl;
 //     double u_g3_sun = mod.computeU_g3(0.0);
-//     std::cout << "U_g3 (Sun) = " << u_g3_sun << " J/mï¿½\n";
+//     std::cout << "U_g3 (Sun) = " << u_g3_sun << " J/m�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("P_core", 1e-3);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o core_test core_test.cpp CorePenetrationModule.cpp -lm
-// Sample: P_core=1; U_g3?1.8e49 J/mï¿½ (Sun); scales for planetary cores.
+// Sample: P_core=1; U_g3?1.8e49 J/m� (Sun); scales for planetary cores.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 CorePenetrationModule Evaluation
 
 Strengths :
@@ -283,3 +284,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, clear, and suitable for scientific prototyping and educational use in core penetration modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+*/

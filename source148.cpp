@@ -1,13 +1,13 @@
-﻿// RAquariiUQFFModule.h
+// RAquariiUQFFModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for R Aquarii Symbiotic Binary Star Evolution.
 // This module can be plugged into a base program (e.g., 'raquarii_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "RAquariiUQFFModule.h"
+// Usage in base: // // // #include "RAquariiUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // RAquariiUQFFModule mod; mod.computeF(t); mod.updateVariable("M", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino.
 // Associated text: Outputs descriptive equation string via getEquationText().
-// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low ω_0; x2 from quadratic solver approx.
-// R Aquarii params: M=3.978e30 kg, r=2.18e15 m, L_X=1e32 W, B0=1e-6 T, t=1.4e9 s, ω_0=1e-12 s^-1, etc.
+// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low ?_0; x2 from quadratic solver approx.
+// R Aquarii params: M=3.978e30 kg, r=2.18e15 m, L_X=1e32 W, B0=1e-6 T, t=1.4e9 s, ?_0=1e-12 s^-1, etc.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 21, 2025.
 
 #ifndef R_AQUARII_UQFF_MODULE_H
@@ -176,7 +176,7 @@ public:
 #endif // R_AQUARII_UQFF_MODULE_H
 
 // RAquariiUQFFModule.cpp
-#include "RAquariiUQFFModule.h"
+// // // #include "RAquariiUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with R Aquarii-specific values
@@ -427,7 +427,7 @@ void RAquariiUQFFModule::printVariables() {
 }
 
 // Example usage in base program 'raquarii_sim.cpp' (snippet for integration)
-// #include "RAquariiUQFFModule.h"
+// // // // #include "RAquariiUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #include <complex>
 // int main() {
 //     RAquariiUQFFModule mod;
@@ -441,7 +441,7 @@ void RAquariiUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o raquarii_sim raquarii_sim.cpp RAquariiUQFFModule.cpp -lm
-// Sample Output at t=orbital: F ≈ -2.09e212 + i (large; approx per framework; dominant real from LENR * x2).
+// Sample Output at t=orbital: F � -2.09e212 + i (large; approx per framework; dominant real from LENR * x2).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 21, 2025.
 
 RAquariiUQFFModule C++ Code Evaluation

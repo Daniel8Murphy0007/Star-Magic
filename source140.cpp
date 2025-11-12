@@ -1,13 +1,13 @@
-﻿// IC2163UQFFModule.h
+// IC2163UQFFModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for IC 2163 Interacting Galaxy Evolution.
 // This module can be plugged into a base program (e.g., 'ic2163_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "IC2163UQFFModule.h"
+// Usage in base: // // // #include "IC2163UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // IC2163UQFFModule mod; mod.computeF(t); mod.updateVariable("M", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino.
 // Associated text: Outputs descriptive equation string via getEquationText().
-// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low ω_0; x2 from quadratic solver approx.
-// IC 2163 params: M=1.989e40 kg, r=3.09e20 m, L_X=1e37 W, B0=1e-5 T, t=1.26e15 s, ω_0=1e-12 s^-1, etc.
+// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low ?_0; x2 from quadratic solver approx.
+// IC 2163 params: M=1.989e40 kg, r=3.09e20 m, L_X=1e37 W, B0=1e-5 T, t=1.26e15 s, ?_0=1e-12 s^-1, etc.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 15, 2025.
 
 #ifndef IC2163_UQFF_MODULE_H
@@ -176,7 +176,7 @@ public:
 #endif // IC2163_UQFF_MODULE_H
 
 // IC2163UQFFModule.cpp
-#include "IC2163UQFFModule.h"
+// // // #include "IC2163UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with IC 2163-specific values
@@ -427,7 +427,7 @@ void IC2163UQFFModule::printVariables() {
 }
 
 // Example usage in base program 'ic2163_sim.cpp' (snippet for integration)
-// #include "IC2163UQFFModule.h"
+// // // // #include "IC2163UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #include <complex>
 // int main() {
 //     IC2163UQFFModule mod;
@@ -441,7 +441,7 @@ void IC2163UQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ic2163_sim ic2163_sim.cpp IC2163UQFFModule.cpp -lm
-// Sample Output at t=dynamical: F ≈ -8.32e217 + i (large; approx per framework; dominant real from LENR * x2).
+// Sample Output at t=dynamical: F � -8.32e217 + i (large; approx per framework; dominant real from LENR * x2).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 15, 2025.
 
 IC2163UQFFModule Evaluation

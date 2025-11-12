@@ -1,7 +1,7 @@
-﻿// QuasiLongitudinalModule.h
+// QuasiLongitudinalModule.h
 // Modular C++ implementation of the Quasi-Longitudinal Wave Factor (f_quasi) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes f_quasi=0.01 (unitless) and its scaling (1 + f_quasi) in Universal Magnetism U_m term.
-// Pluggable: #include "QuasiLongitudinalModule.h"
+// Pluggable: // // // #include "QuasiLongitudinalModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // QuasiLongitudinalModule mod; mod.computeUmContribution(0.0); mod.updateVariable("f_quasi", new_value);
 // Variables in std::map; example for Sun at t=0, t_n=0; minor 1% increase in U_m.
 // Approximations: 1 - e^{-? t cos(? t_n)}=0 at t=0; ?_hat_j=1; P_SCm=1; f_Heaviside=0.01 (1 + 10^13 f=1e11+1).
@@ -163,7 +163,7 @@ public:
 #endif // QUASI_LONGITUDINAL_MODULE_H
 
 // QuasiLongitudinalModule.cpp
-#include "QuasiLongitudinalModule.h"
+// // // #include "QuasiLongitudinalModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 QuasiLongitudinalModule::QuasiLongitudinalModule() {
@@ -175,7 +175,7 @@ QuasiLongitudinalModule::QuasiLongitudinalModule() {
 
     // Universal constants
     variables["f_quasi"] = 0.01;                    // Unitless fraction
-    variables["mu_j"] = 3.38e23;                    // Tï¿½m^3 (j=1)
+    variables["mu_j"] = 3.38e23;                    // T�m^3 (j=1)
     variables["r_j"] = 1.496e13;                    // m
     variables["gamma"] = 5e-5 / 86400.0;            // s^-1 (0.00005 day^-1)
     variables["t_n"] = 0.0;                         // s
@@ -263,7 +263,7 @@ std::string QuasiLongitudinalModule::getEquationText() {
     return "U_m = ?_j [ (?_j / r_j) (1 - e^{-? t cos(? t_n)}) ?_hat_j ] P_SCm E_react (1 + 10^13 f_Heaviside) (1 + f_quasi)\n"
            "Where f_quasi = 0.01 (unitless quasi-longitudinal wave factor);\n"
            "Quasi factor = 1 + 0.01 = 1.01 (1% increase).\n"
-           "Example j=1, t=0: U_m contrib ?2.28e65 J/mï¿½ (with); ?2.26e65 J/mï¿½ (without; -1%).\n"
+           "Example j=1, t=0: U_m contrib ?2.28e65 J/m� (with); ?2.26e65 J/m� (without; -1%).\n"
            "Role: Minor scaling for quasi-longitudinal waves in magnetic strings; subtle [SCm]/[UA] wave effects.\n"
            "UQFF: Enhances wave propagation in jets/nebulae; small but cumulative in dynamics.";
 }
@@ -282,13 +282,13 @@ void QuasiLongitudinalModule::printUmComparison(int j, double t) {
     double um_without = computeUmWithNoQuasi(j, t);
     double percent_increase = ((um_with - um_without) / um_without) * 100.0;
     std::cout << "U_m Comparison for j=" << j << " at t=" << t << " s:\n";
-    std::cout << "With quasi: " << std::scientific << um_with << " J/mï¿½\n";
-    std::cout << "Without quasi: " << um_without << " J/mï¿½\n";
+    std::cout << "With quasi: " << std::scientific << um_with << " J/m�\n";
+    std::cout << "Without quasi: " << um_without << " J/m�\n";
     std::cout << "Increase: +" << std::fixed << std::setprecision(1) << percent_increase << "%\n";
 }
 
 // Example usage in base program (snippet)
-// #include "QuasiLongitudinalModule.h"
+// // // // #include "QuasiLongitudinalModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     QuasiLongitudinalModule mod;
 //     double quasi_f = mod.computeQuasiFactor();
@@ -300,9 +300,10 @@ void QuasiLongitudinalModule::printUmComparison(int j, double t) {
 //     return 0;
 // }
 // Compile: g++ -o quasi_test quasi_test.cpp QuasiLongitudinalModule.cpp -lm
-// Sample: Factor=1.01; U_m with=2.28e65 J/mï¿½ (+1% vs without).
+// Sample: Factor=1.01; U_m with=2.28e65 J/m� (+1% vs without).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 QuasiLongitudinalModule Evaluation
 
 Strengths :
@@ -322,3 +323,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, clear, and suitable for scientific prototyping and educational use in quasi - longitudinal wave factor modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+*/

@@ -1,7 +1,7 @@
-﻿// ButterflyNebulaUQFFModule.h
+// ButterflyNebulaUQFFModule.h
 // Modular C++ implementation of the UQFF Force for NGC 6302 (Butterfly Nebula) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes F_U_Bi_i,enhanced as integral from x1 to x2 of [-F0 + DPM terms + LENR + activation + DE + EM + neutron + rel + Sweet + Kozima].
-// Pluggable: #include "ButterflyNebulaUQFFModule.h"
+// Pluggable: // // // #include "ButterflyNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // ButterflyNebulaUQFFModule mod; mod.computeF_U_Bi(0.0, 3.22e19, 0.0); mod.updateVariable("M", new_value);
 // Variables in std::map; defaults for NGC 6302 (M=0.64 M_sun, r=3.22e19 m, level=13); ~ -2.09e212 N at t=0.
 // Approximations: Integral approx via average * ?x; cos(?)=1; ?_LENR / ?_0 tuned; Sweet/Kozima small/negligible.
@@ -167,7 +167,7 @@ public:
 #endif // BUTTERFLY_NEBULA_UQFF_MODULE_H
 
 // ButterflyNebulaUQFFModule.cpp
-#include "ButterflyNebulaUQFFModule.h"
+// // // #include "ButterflyNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set NGC 6302-specific values
 ButterflyNebulaUQFFModule::ButterflyNebulaUQFFModule() {
@@ -199,7 +199,7 @@ ButterflyNebulaUQFFModule::ButterflyNebulaUQFFModule() {
     variables["DPM_momentum"] = 1.0;                // Normalized
     variables["DPM_gravity"] = 1.0;                 // Normalized
     variables["DPM_stability"] = 0.01;              // Normalized
-    variables["rho_vac_UA"] = 7.09e-36;             // J/mï¿½
+    variables["rho_vac_UA"] = 7.09e-36;             // J/m�
     variables["k_LENR"] = 1.0;                      // Coupling
     variables["omega_LENR"] = 7.85e12;              // Hz
     variables["omega_0"] = 1e-12;                   // Hz (reference)
@@ -209,7 +209,7 @@ ButterflyNebulaUQFFModule::ButterflyNebulaUQFFModule() {
     variables["L_x"] = 1.0;                         // Length scale
     variables["B_0"] = 1.0;                         // T
     variables["V"] = 1.0;                           // m/s
-    variables["g"] = 9.8;                           // m/sï¿½
+    variables["g"] = 9.8;                           // m/s�
     variables["k_neutron"] = 1e10;                  // Neutron coupling
     variables["sigma_n"] = 1e-4;                    // Barn
     variables["k_rel"] = 1.0;                       // Rel coupling
@@ -340,7 +340,7 @@ void ButterflyNebulaUQFFModule::printVariables() {
 }
 
 // Example usage
-// #include "ButterflyNebulaUQFFModule.h"
+// // // // #include "ButterflyNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     ButterflyNebulaUQFFModule mod;
 //     double t = 0.0;

@@ -1,7 +1,7 @@
-﻿// NegativeTimeModule.h
+// NegativeTimeModule.h
 // Modular C++ implementation of the Negative Time Factor (t_n) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes t_n = t - t_0 (s or days, allows t_n < 0); used in cos(? t_n) for oscillations and exp(-? t cos(? t_n)) for growth/decay.
-// Pluggable: #include "NegativeTimeModule.h"
+// Pluggable: // // // #include "NegativeTimeModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // NegativeTimeModule mod; mod.computeCosPiTn(1000.0); mod.updateVariable("t_0", new_value);
 // Variables in std::map; defaults t_0=0, t=0 (t_n=0); example for U_m term with t_n negative.
 // Approximations: cos even function; ?=5e-5 day^-1; at t_n=-1, exp term negative (growth).
@@ -163,7 +163,7 @@ public:
 #endif // NEGATIVE_TIME_MODULE_H
 
 // NegativeTimeModule.cpp
-#include "NegativeTimeModule.h"
+// // // #include "NegativeTimeModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 NegativeTimeModule::NegativeTimeModule() {
@@ -252,7 +252,7 @@ std::string NegativeTimeModule::getEquationText() {
            "Used in: cos(? t_n) for oscillations; exp(-? t cos(? t_n)) for decay/growth.\n"
            "In U_m: ... (1 - exp(-? t cos(? t_n))) ...;\n"
            "Negative t_n: e.g., t_n=-1 ? cos(-?)=-1 ? exp(? t) >1 (growth, negentropic).\n"
-           "Example t=1000 days, ?=5e-5 day^-1, t_0=0: 1-exp ?0.049, U_m ?1.12e66 J/mï¿½.\n"
+           "Example t=1000 days, ?=5e-5 day^-1, t_0=0: 1-exp ?0.049, U_m ?1.12e66 J/m�.\n"
            "t_n=-1000: same (cos even); t_n=-1: 1-exp ? -0.051 (growth phase).\n"
            "Role: Models cyclic/TRZ dynamics; forward/reverse time in nebulae/mergers/jets.";
 }
@@ -285,12 +285,12 @@ void NegativeTimeModule::printTnEffects(double t, double gamma) {
     variables["t_0"] = orig_t0;  // Restore
 
     std::cout << "t_n Effects at t=" << t << " (?=" << gamma << "):\n";
-    std::cout << "Positive t_n (" << t_n_pos << "): cos(? t_n)=" << cos_pos << ", 1-exp=" << one_minus_pos << ", U_m?" << um_pos << " J/mï¿½\n";
-    std::cout << "Negative t_n (" << t_n_neg << "): cos(? t_n)=" << cos_neg << ", 1-exp=" << one_minus_neg << ", U_m?" << um_neg << " J/mï¿½\n";
+    std::cout << "Positive t_n (" << t_n_pos << "): cos(? t_n)=" << cos_pos << ", 1-exp=" << one_minus_pos << ", U_m?" << um_pos << " J/m�\n";
+    std::cout << "Negative t_n (" << t_n_neg << "): cos(? t_n)=" << cos_neg << ", 1-exp=" << one_minus_neg << ", U_m?" << um_neg << " J/m�\n";
 }
 
 // Example usage in base program (snippet)
-// #include "NegativeTimeModule.h"
+// // // // #include "NegativeTimeModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     NegativeTimeModule mod;
 //     double t = 1000.0;  // days
@@ -304,6 +304,7 @@ void NegativeTimeModule::printTnEffects(double t, double gamma) {
 // Sample: Positive: 1-exp?0.049; Negative t_n=-1: 1-exp?-0.051 (growth); U_m scales accordingly.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 NegativeTimeModule Evaluation
 
 Strengths :
@@ -323,3 +324,4 @@ Strengths :
 
 Summary:
 The code is well - structured, clear, and suitable for scientific prototyping and educational use in negative time factor modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+*/

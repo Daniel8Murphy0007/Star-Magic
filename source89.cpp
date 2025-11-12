@@ -1,7 +1,7 @@
-﻿// AetherCouplingModule.h
+// AetherCouplingModule.h
 // Modular C++ implementation of the Aether Coupling Constant (?) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes the Aether metric perturbation A_?? = g_?? + ? * T_s^{??}, where ? is the dimensionless Aether coupling constant.
-// Pluggable: #include "AetherCouplingModule.h"
+// Pluggable: // // // #include "AetherCouplingModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // AetherCouplingModule mod; mod.computePerturbation(); mod.updateVariable("eta", new_value);
 // Variables in std::map; supports diagonal metric components [1, -1, -1, -1] for flat Minkowski.
 // Includes stress-energy tensor T_s from ?_vac_UA, ?_vac_SCm, ?_vac_A; computes perturbed metric.
@@ -163,7 +163,7 @@ public:
 #endif // AETHER_COUPLING_MODULE_H
 
 // AetherCouplingModule.cpp
-#include "AetherCouplingModule.h"
+// // // #include "AetherCouplingModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 AetherCouplingModule::AetherCouplingModule() {
@@ -271,7 +271,7 @@ void AetherCouplingModule::printPerturbedMetric() {
 }
 
 // Example usage in base program (snippet)
-// #include "AetherCouplingModule.h"
+// // // // #include "AetherCouplingModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     AetherCouplingModule mod;
 //     double pert = mod.computePerturbation();
@@ -286,6 +286,7 @@ void AetherCouplingModule::printPerturbedMetric() {
 // Sample Output: Perturbation ~1.123e-15; A_?? nearly [1,-1,-1,-1]; weak coupling confirmed.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 AetherCouplingModule Evaluation
 
 Strengths :
@@ -307,3 +308,4 @@ Weaknesses / Recommendations :
 
     Summary:
 The code is well - structured, clear, and suitable for scientific prototyping and educational use in metric perturbation modeling.It implements the Aether coupling concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+*/

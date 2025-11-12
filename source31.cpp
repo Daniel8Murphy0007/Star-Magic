@@ -1,7 +1,7 @@
-﻿// M16UQFFModule.h
+// M16UQFFModule.h
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF) for M16 (Eagle Nebula) Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "M16UQFFModule.h"
+// Usage in base: // // // #include "M16UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // M16UQFFModule mod; mod.computeG(t); mod.updateVariable("M", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Nothing is negligible: Includes all terms - base gravity, Ug1-Ug4 (gravitational subterms), cosmological Lambda, 
@@ -170,7 +170,7 @@ public:
 #endif // M16_UQFF_MODULE_H
 
 // M16UQFFModule.cpp
-#include "M16UQFFModule.h"
+// // // #include "M16UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with M16-specific values
@@ -377,7 +377,7 @@ double M16UQFFModule::computeG(double t) {
 // Get equation text (descriptive)
 std::string M16UQFFModule::getEquationText() {
     return "g_M16(r, t) = (G * M(t) / r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v ï¿½ B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v � B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2? / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (??/? + 3 G M / r^3)\n"
            "Where M(t) = M * (1 + M_sf(t)) * (1 - E_rad(t)); M_sf(t) = (SFR * t_yr) / M0; E_rad(t) = E_0 * (1 - exp(-t / ?))\n"
            "Special Terms:\n"
@@ -388,7 +388,7 @@ std::string M16UQFFModule::getEquationText() {
            "- Superconductivity: (1 - B/B_crit) for quantum field effects in nebula.\n"
            "- Star Formation: M_sf(t) boosts mass via SFR=1 Msun/yr.\n"
            "- Radiation Erosion: E_rad(t) reduces mass via photoevaporation from O-stars.\n"
-           "Solutions: Numerical evaluation at t=5 Myr yields ~1.053e-3 m/sï¿½ (EM dominant; g_grav ~1e-12 scaled by factors; micro terms ~1e-10 to 1e-3).\n"
+           "Solutions: Numerical evaluation at t=5 Myr yields ~1.053e-3 m/s� (EM dominant; g_grav ~1e-12 scaled by factors; micro terms ~1e-10 to 1e-3).\n"
            "Adaptations for M16: Star-forming pillars with erosion; z=0.0015; gas v=1e5 m/s boosts EM.";
 }
 
@@ -401,12 +401,12 @@ void M16UQFFModule::printVariables() {
 }
 
 // Example usage in base program 'ziqn233h.cpp' (snippet for integration)
-// #include "M16UQFFModule.h"
+// // // // #include "M16UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     M16UQFFModule mod;
 //     double t = 5e6 * 3.156e7;  // 5 Myr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/sï¿½\n";
+//     std::cout << "g = " << g << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 1300 * 1.989e30);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05);           // Add to TR factor
@@ -415,9 +415,10 @@ void M16UQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp M16UQFFModule.cpp -lm
-// Sample Output at t=5 Myr: g ? 0.001 m/sï¿½ (varies with updates; quantum/fluid/resonant ~1e-10 to 1e-3, DM ~1e33 * 1e-33 ~1e0 but curv small).
+// Sample Output at t=5 Myr: g ? 0.001 m/s� (varies with updates; quantum/fluid/resonant ~1e-10 to 1e-3, DM ~1e33 * 1e-33 ~1e0 but curv small).
 // Watermark: Copyright - Daniel T. Murphy, analyzed October 09, 2025.
 
+/*
 // Evaluation of M16UQFFModule (Master Universal Gravity Equation for M16 Eagle Nebula)
 
 **Strengths:**
@@ -436,3 +437,4 @@ void M16UQFFModule::printVariables() {
 
     ** Summary : **
     The module is robust, dynamic, and extensible, supporting runtime updates and changes to all model parameters.Minor improvements in error handling and documentation are recommended for production use.
+*/

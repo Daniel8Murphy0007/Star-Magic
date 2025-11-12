@@ -1,10 +1,10 @@
-﻿// SolarWindModulationModule.h
+// SolarWindModulationModule.h
 // Modular C++ implementation of the Solar Wind Modulation Factor (?_sw) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?_sw=0.01 (unitless) and its scaling (1 + ?_sw v_sw) in Universal Gravity U_g2 term.
-// Pluggable: #include "SolarWindModulationModule.h"
+// Pluggable: // // // #include "SolarWindModulationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // SolarWindModulationModule mod; mod.computeU_g2(1.496e13); mod.updateVariable("delta_sw", new_value);
 // Variables in std::map; example for Sun at r=R_b=1.496e13 m; amplification ~5001x.
-// Approximations: S(r - R_b)=1; H_SCm=1; E_react=1e46; ?_sum=7.80e-36 J/mï¿½.
+// Approximations: S(r - R_b)=1; H_SCm=1; E_react=1e46; ?_sum=7.80e-36 J/m�.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef SOLAR_WIND_MODULATION_MODULE_H
@@ -159,7 +159,7 @@ public:
 #endif // SOLAR_WIND_MODULATION_MODULE_H
 
 // SolarWindModulationModule.cpp
-#include "SolarWindModulationModule.h"
+// // // #include "SolarWindModulationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults (Sun at r=R_b)
 SolarWindModulationModule::SolarWindModulationModule() {
@@ -263,7 +263,7 @@ std::string SolarWindModulationModule::getEquationText() {
     return "U_g2 = k_2 * [(?_vac,[UA] + ?_vac,[SCm]) M_s / r^2] * S(r - R_b) * (1 + ?_sw v_sw) * H_SCm * E_react\n"
         "Where ?_sw = 0.01 (unitless solar wind modulation factor);\n"
         "Modulation = 1 + 0.01 * v_sw (v_sw=5e5 m/s ? ~5001x amplification).\n"
-        "Example r=R_b=1.496e13 m: U_g2 ?1.18e53 J/mï¿½ (with); ?2.36e49 J/mï¿½ (without; ~5000x less).\n"
+        "Example r=R_b=1.496e13 m: U_g2 ?1.18e53 J/m� (with); ?2.36e49 J/m� (without; ~5000x less).\n"
         "Role: Enhances external gravity via solar wind momentum/pressure beyond R_b.\n"
         "UQFF: Models heliosphere dynamics; wind influence on nebular/star formation.";
 }
@@ -277,20 +277,20 @@ void SolarWindModulationModule::printVariables() {
 }
 
 // Example usage in base program (snippet)
-// #include "SolarWindModulationModule.h"
+// // // // #include "SolarWindModulationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     SolarWindModulationModule mod;
 //     double mod_f = mod.computeModulationFactor();
 //     std::cout << "Modulation Factor = " << mod_f << std::endl;
 //     double u_g2 = mod.computeU_g2(1.496e13);
-//     std::cout << "U_g2 = " << u_g2 << " J/mï¿½\n";
+//     std::cout << "U_g2 = " << u_g2 << " J/m�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("delta_sw", 0.02);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o sw_mod_test sw_mod_test.cpp SolarWindModulationModule.cpp -lm
-// Sample: Factor=5001; U_g2?1.18e53 J/mï¿½; amplifies outer bubble gravity.
+// Sample: Factor=5001; U_g2?1.18e53 J/m�; amplifies outer bubble gravity.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 SolarWindModulationModule Evaluation

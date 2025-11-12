@@ -1,10 +1,10 @@
-﻿// NGC346UQFFModule.h
+// NGC346UQFFModule.h
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for NGC 346 Nebula Evolution.
 // This module models NGC 346's gravitational dynamics, incorporating protostar formation via Ug3 collapse, cluster entanglement via Ugi forces, blueshifted quantum waves, and pseudo-monopole communication.
-// Usage: #include "NGC346UQFFModule.h" in base program; NGC346UQFFModule mod; mod.computeG(t); mod.updateVariable("rho_gas", new_value);
+// Usage: // // // #include "NGC346UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; NGC346UQFFModule mod; mod.computeG(t); mod.updateVariable("rho_gas", new_value);
 // Variables in std::map for dynamic updates; supports F_env(t) with collapse and wave terms.
 // Approximations: psi_integral normalized to 1.0; H(t,z) with Omega_m=0.3, Omega_Lambda=0.7; E_react exp decay; Um simplified.
-// NGC 346 params: M=1000 Msun, r=5 pc, SFR=0.1 Msun/yr, rho_gas=1e-20 kg/m³, v_rad=-10e3 m/s (blueshift), z=0.0006, etc.
+// NGC 346 params: M=1000 Msun, r=5 pc, SFR=0.1 Msun/yr, rho_gas=1e-20 kg/m�, v_rad=-10e3 m/s (blueshift), z=0.0006, etc.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef NGC346_UQFF_MODULE_H
@@ -172,7 +172,7 @@ public:
 #endif // NGC346_UQFF_MODULE_H
 
 // NGC346UQFFModule.cpp
-#include "NGC346UQFFModule.h"
+// // // #include "NGC346UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: NGC 346-specific values
@@ -207,7 +207,7 @@ NGC346UQFFModule::NGC346UQFFModule() {
     variables["SFR"] = 0.1 * M_sun_val / variables["year_to_s"];  // kg/s
     variables["r"] = 5 * pc_val;                    // m
     variables["z"] = 0.0006;                        // Redshift (SMC)
-    variables["rho_gas"] = 1e-20;                   // kg/m³
+    variables["rho_gas"] = 1e-20;                   // kg/m�
     variables["v_rad"] = -10e3;                     // m/s (blueshift)
     variables["t"] = 1e7 * variables["year_to_s"];  // Default t=10 Myr s
 
@@ -235,7 +235,7 @@ NGC346UQFFModule::NGC346UQFFModule() {
     variables["Ui"] = 0.0;                          // Universal Inertia
     variables["Um"] = 0.0;                          // Universal Magnetism
     variables["mu_0"] = 4 * variables["pi"] * 1e-7; // H/m
-    variables["rho_vac_UA"] = 7.09e-36;             // J/m³
+    variables["rho_vac_UA"] = 7.09e-36;             // J/m�
     variables["lambda_I"] = 1.0;
     variables["omega_i"] = 1e-8;                    // rad/s
     variables["t_n"] = 0.0;
@@ -432,16 +432,16 @@ double NGC346UQFFModule::computeG(double t, double r) {
 // Equation text
 std::string NGC346UQFFModule::getEquationText() {
     return "g_NGC346(r, t) = (G * M(t) / r(t)^2) * (1 + H(t, z)) * (1 - B(t) / B_crit) * (1 + F_env(t)) + "
-           "Σ U_gi + U_i + U_m + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Δx * Δp)) * ∫ (ψ_total * H * ψ_total dV) * (2π / t_Hubble) + "
-           "ρ_gas * V * g + (M_visible + M_DM) * (δρ/ρ + 3 G M / r^3)\n"
+           "S U_gi + U_i + U_m + (Lambda * c^2 / 3) + "
+           "(hbar / sqrt(?x * ?p)) * ? (?_total * H * ?_total dV) * (2p / t_Hubble) + "
+           "?_gas * V * g + (M_visible + M_DM) * (d?/? + 3 G M / r^3)\n"
            "Where: M(t) = M * (1 + M_SF(t)); M_SF(t) = SFR * t; r(t) = r0 + v_r t;\n"
-           "H(t, z) = H0 * sqrt(Ωm (1+z)^3 + ΩΛ); F_env(t) = F_collapse + F_SF;\n"
-           "F_collapse = ρ_gas v_rad^2; U_g1 = cos(ω t); U_g2 = B_super^2 / (2 μ0);\n"
-           "U_g3 = G M / r^2 * (ρ_gas / ρ_vac,UA); U_g4 = k4 * E_react(t); U_i = λ_I * (ρ_vac,UA / ρ_plasm) * ω_i * cos(π t_n);\n"
-           "U_m = q v_rad B; ψ_total = A exp(-r^2/(2σ^2)) exp(i(mθ - ω t)) + non-local [S S_q];\n"
-           "E_core = U_g3 + U_i * ρ_gas; T_core ∝ U_g3 ρ_vac,UA; Insights: Entanglement via Σ U_gi; blueshift Δλ/λ = v_rad / c; pseudo-monopole communication.\n"
-           "Adaptations: Hubble data; SFR=0.1 Msun/yr; M=1200 Msun. Solutions: g ~1e-10 m/s² at t=10 Myr (Ug3/Ui dominant).";
+           "H(t, z) = H0 * sqrt(Om (1+z)^3 + O?); F_env(t) = F_collapse + F_SF;\n"
+           "F_collapse = ?_gas v_rad^2; U_g1 = cos(? t); U_g2 = B_super^2 / (2 �0);\n"
+           "U_g3 = G M / r^2 * (?_gas / ?_vac,UA); U_g4 = k4 * E_react(t); U_i = ?_I * (?_vac,UA / ?_plasm) * ?_i * cos(p t_n);\n"
+           "U_m = q v_rad B; ?_total = A exp(-r^2/(2s^2)) exp(i(m? - ? t)) + non-local [S S_q];\n"
+           "E_core = U_g3 + U_i * ?_gas; T_core ? U_g3 ?_vac,UA; Insights: Entanglement via S U_gi; blueshift ??/? = v_rad / c; pseudo-monopole communication.\n"
+           "Adaptations: Hubble data; SFR=0.1 Msun/yr; M=1200 Msun. Solutions: g ~1e-10 m/s� at t=10 Myr (Ug3/Ui dominant).";
 }
 
 // Print
@@ -453,29 +453,30 @@ void NGC346UQFFModule::printVariables() {
 }
 
 // Example usage
-// #include "NGC346UQFFModule.h"
+// // // // #include "NGC346UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     NGC346UQFFModule mod;
 //     double t = 1e7 * 3.156e7;  // 10 Myr
 //     double r = 1e16;  // 0.3 pc
 //     double g = mod.computeG(t, r);
-//     std::cout << "g_NGC346 = " << g << " m/s²\n";
+//     std::cout << "g_NGC346 = " << g << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("SFR", 0.2 * 1.989e30 / (3.156e7));
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o ngc346_sim base.cpp NGC346UQFFModule.cpp -lm
-// Sample Output: g_NGC346 ~ 1e-10 m/s² (collapse/wave dominant; Ugi entanglement advances framework).
+// Sample Output: g_NGC346 ~ 1e-10 m/s� (collapse/wave dominant; Ugi entanglement advances framework).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 NGC346UQFFModule Evaluation
 
 Strengths :
 -Modular, extensible design for modeling NGC 346 nebula gravity, including protostar formation, cluster entanglement, quantum wave effects, and pseudo - monopole communication.
 - Comprehensive physics : gravity, cosmological expansion, magnetic fields, collapse / wave / entanglement effects, quantum, fluid, DM, and non - local terms.
 - Dynamic variable management via std::map enables runtime updates and system adaptation.
-- Clear separation of computation functions(e.g., Ug1–Ug4, Ui, Um, F_env, quantum, fluid, DM), aiding maintainability.
+- Clear separation of computation functions(e.g., Ug1�Ug4, Ui, Um, F_env, quantum, fluid, DM), aiding maintainability.
 - NGC 346 - specific parameters are initialized for realistic simulation; supports easy modification.
 - Output functions for equation text and variable state support debugging and documentation.
 - Includes core energy and temperature calculations for collapse modeling.
@@ -491,3 +492,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, flexible, and suitable for scientific prototyping and educational use in nebular dynamics modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+*/

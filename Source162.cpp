@@ -1,8 +1,8 @@
-﻿
+
 // UQFFBuoyancyCNBModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Buoyancy Equations across J1610+1811, PLCK G287.0+32.9, PSZ2 G181.06+48.47, ASKAP J1832-0911, Sonification Collection, Centaurus A with CNB integration.
 // This module can be plugged into a base program (e.g., 'uqff_buoyancy_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "UQFFBuoyancyCNBModule.h"
+// Usage in base: // // #include "UQFFBuoyancyCNBModule.h"  // Commented - header not available  // Commented - header not available
 // UQFFBuoyancyCNBModule mod; mod.computeFBi(system); mod.updateVariable("F_rel", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino (CNB), Sweet vac, Kozima drop.
@@ -179,7 +179,7 @@ public:
 #endif // UQFF_BUOYANCY_CNB_MODULE_H
 
 // UQFFBuoyancyCNBModule.cpp
-#include "UQFFBuoyancyCNBModule.h"
+// // #include "UQFFBuoyancyCNBModule.h"  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with multi-system defaults

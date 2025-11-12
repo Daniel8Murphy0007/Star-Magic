@@ -1,10 +1,10 @@
-Ôªø// SolarWindVelocityModule.h
+// SolarWindVelocityModule.h
 // Modular C++ implementation of the Solar Wind Velocity (v_sw) in the Universal Quantum Field Superconductive Framework (UQFF).
-// This module computes v_sw=5e5 m/s (500 km/s); scales (1 + Œ¥_sw v_sw) in Universal Gravity U_g2 term.
-// Pluggable: #include "SolarWindVelocityModule.h"
+// This module computes v_sw=5e5 m/s (500 km/s); scales (1 + d_sw v_sw) in Universal Gravity U_g2 term.
+// Pluggable: // // // #include "SolarWindVelocityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // SolarWindVelocityModule mod; mod.computeU_g2(1.496e13); mod.updateVariable("v_sw", new_value);
 // Variables in std::map; example for Sun at r=R_b=1.496e13 m; amplification ~5001x.
-// Approximations: S(r - R_b)=1; H_SCm=1; E_react=1e46; œÅ_sum=7.80e-36 J/m¬≥.
+// Approximations: S(r - R_b)=1; H_SCm=1; E_react=1e46; ?_sum=7.80e-36 J/m≥.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef SOLAR_WIND_VELOCITY_MODULE_H
@@ -146,7 +146,7 @@ public:
     // Core computations
     double computeV_sw();  // 5e5 m/s
     double computeV_swKmS();  // 500 km/s
-    double computeModulationFactor();  // 1 + Œ¥_sw v_sw
+    double computeModulationFactor();  // 1 + d_sw v_sw
     double computeU_g2(double r);  // U_g2 with modulation (J/m^3)
     double computeU_g2_no_sw(double r);  // Without v_sw (set=0)
 
@@ -160,7 +160,7 @@ public:
 #endif // SOLAR_WIND_VELOCITY_MODULE_H
 
 // SolarWindVelocityModule.cpp
-#include "SolarWindVelocityModule.h"
+// // // #include "SolarWindVelocityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults (Sun at r=R_b)
 SolarWindVelocityModule::SolarWindVelocityModule() {
@@ -233,7 +233,7 @@ double SolarWindVelocityModule::computeV_swKmS() {
     return computeV_sw() / 1e3;
 }
 
-// Compute 1 + Œ¥_sw * v_sw
+// Compute 1 + d_sw * v_sw
 double SolarWindVelocityModule::computeModulationFactor() {
     return 1.0 + variables["delta_sw"] * computeV_sw();
 }
@@ -262,10 +262,10 @@ double SolarWindVelocityModule::computeU_g2_no_sw(double r) {
 
 // Equation text
 std::string SolarWindVelocityModule::getEquationText() {
-    return "U_g2 = k_2 * [(œÅ_vac,[UA] + œÅ_vac,[SCm]) M_s / r^2] * S(r - R_b) * (1 + Œ¥_sw v_sw) * H_SCm * E_react\n"
+    return "U_g2 = k_2 * [(?_vac,[UA] + ?_vac,[SCm]) M_s / r^2] * S(r - R_b) * (1 + d_sw v_sw) * H_SCm * E_react\n"
            "Where v_sw = 5e5 m/s (500 km/s, typical solar wind speed at 1 AU+);\n"
-           "Modulation = 1 + 0.01 * v_sw ‚âà5001 (amplifies ~5000x).\n"
-           "Example r=R_b=1.496e13 m: U_g2 ‚âà1.18e53 J/m¬≥ (with); ‚âà2.36e49 J/m¬≥ (without v_sw; ~5000x less).\n"
+           "Modulation = 1 + 0.01 * v_sw ò5001 (amplifies ~5000x).\n"
+           "Example r=R_b=1.496e13 m: U_g2 ò1.18e53 J/m≥ (with); ò2.36e49 J/m≥ (without v_sw; ~5000x less).\n"
            "Role: Solar wind momentum/pressure enhances external gravity beyond R_b (heliosphere).\n"
            "UQFF: Models wind shaping of fields; key for heliodynamics/nebular formation.";
 }
@@ -279,20 +279,20 @@ void SolarWindVelocityModule::printVariables() {
 }
 
 // Example usage in base program (snippet)
-// #include "SolarWindVelocityModule.h"
+// // // // #include "SolarWindVelocityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     SolarWindVelocityModule mod;
 //     double v = mod.computeV_sw();
 //     std::cout << "v_sw = " << v << " m/s (" << mod.computeV_swKmS() << " km/s)\n";
 //     double u_g2 = mod.computeU_g2(1.496e13);
-//     std::cout << "U_g2 = " << u_g2 << " J/m¬≥\n";
+//     std::cout << "U_g2 = " << u_g2 << " J/m≥\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("v_sw", 4e5);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o sw_vel_test sw_vel_test.cpp SolarWindVelocityModule.cpp -lm
-// Sample: v_sw=5e5 m/s (500 km/s); U_g2‚âà1.18e53 J/m¬≥; amplifies outer bubble.
+// Sample: v_sw=5e5 m/s (500 km/s); U_g2ò1.18e53 J/m≥; amplifies outer bubble.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 SolarWindVelocityModule Evaluation

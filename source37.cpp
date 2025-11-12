@@ -1,7 +1,7 @@
-﻿// ResonanceSuperconductiveUQFFModule.h
+// ResonanceSuperconductiveUQFFModule.h
 // Modular C++ implementation of the UQFF Resonance Superconductive Equations.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "ResonanceSuperconductiveUQFFModule.h"
+// Usage in base: // // // #include "ResonanceSuperconductiveUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // ResonanceSuperconductiveUQFFModule mod; mod.computeResonanceTerm(B, f); mod.updateVariable("B_crit", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Focus: Resonance (oscillatory, frequency-based) and Superconductive (SCm correction, 1 - B/B_crit) terms from UQFF.
@@ -167,7 +167,7 @@ public:
 #endif // RESONANCE_SUPERCONDUCTIVE_UQFF_MODULE_H
 
 // ResonanceSuperconductiveUQFFModule.cpp
-#include "ResonanceSuperconductiveUQFFModule.h"
+// // // #include "ResonanceSuperconductiveUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with UQFF-specific values for resonance/superconductivity
@@ -330,7 +330,7 @@ std::string ResonanceSuperconductiveUQFFModule::getEquationText() {
            "Superconductive Correction: SCm = 1 - B / B_crit\n"
            "Full: g_res_sc = a_res * SCm * (1 + f_TRZ)\n"
            "Special Terms: UQFF-driven resonance/superconductive interactions via plasmotic vacuum; no SM terms.\n"
-           "Solutions: Example a_res ~1e-42 m/sï¿½, SCm ~1 (low B); full ~1e-42 m/sï¿½.\n"
+           "Solutions: Example a_res ~1e-42 m/s�, SCm ~1 (low B); full ~1e-42 m/s�.\n"
            "Adaptations: For 1-8 systems (galaxies, planets, nebulae, magnetars); frequencies scaled per object.";
 }
 
@@ -343,13 +343,13 @@ void ResonanceSuperconductiveUQFFModule::printVariables() {
 }
 
 // Example usage in base program 'ziqn233h.cpp' (snippet for integration)
-// #include "ResonanceSuperconductiveUQFFModule.h"
+// // // // #include "ResonanceSuperconductiveUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     ResonanceSuperconductiveUQFFModule mod;
 //     double t = 1e9 * 3.156e7;  // 1 Gyr
 //     double B = 1e-5;           // T (example B)
 //     double g_res_sc = mod.computeFullUQFFResSC(t, B);
-//     std::cout << "g_res_sc = " << g_res_sc << " m/sï¿½\n";
+//     std::cout << "g_res_sc = " << g_res_sc << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_DPM", 1.1e12);  // Update resonance freq
 //     mod.addToVariable("f_TRZ", 0.05);     // Add to TR factor
@@ -357,9 +357,10 @@ void ResonanceSuperconductiveUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp ResonanceSuperconductiveUQFFModule.cpp -lm
-// Sample Output: g_res_sc ? 1e-42 m/sï¿½ (varies with updates; micro-scale resonance/superconductive terms).
+// Sample Output: g_res_sc ? 1e-42 m/s� (varies with updates; micro-scale resonance/superconductive terms).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
+/*
 // Evaluation of ResonanceSuperconductiveUQFFModule (UQFF Resonance & Superconductive Terms)
 
 **Strengths:**
@@ -379,3 +380,4 @@ void ResonanceSuperconductiveUQFFModule::printVariables() {
 
     ** Summary : **
     The module is robust, dynamic, and extensible, supporting runtime updates and changes to all model parameters.It is suitable for advanced UQFF - based resonance and superconductivity modeling.Minor improvements in error handling, documentation, and physical justification are recommended for production or publication use.
+*/

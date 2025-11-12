@@ -80,6 +80,8 @@ UQFFBuoyancyModule::UQFFBuoyancyModule()
 {
     cdouble zero = {0.0, 0.0};
     cdouble i_small = {0.0, 1e-37};
+    (void)zero;    // Suppress unused warning
+    (void)i_small; // Suppress unused warning
 
     // Base constants (universal)
     variables["G"] = {6.6743e-11, 0.0};
@@ -209,7 +211,7 @@ void UQFFBuoyancyModule::subtractFromVariable(const std::string &name, cdouble d
 }
 
 // Compute DPM_resonance (Zeeman splitting)
-cdouble UQFFBuoyancyModule::computeDPM_resonance(const std::string &system)
+cdouble UQFFBuoyancyModule::computeDPM_resonance(const std::string & /* system */)
 {
     cdouble g = variables["g_Lande"];
     cdouble muB = variables["mu_B"];
@@ -220,7 +222,7 @@ cdouble UQFFBuoyancyModule::computeDPM_resonance(const std::string &system)
 }
 
 // Compute LENR term (nuclear resonance)
-cdouble UQFFBuoyancyModule::computeLENRTerm(const std::string &system)
+cdouble UQFFBuoyancyModule::computeLENRTerm(const std::string & /* system */)
 {
     cdouble k = variables["k_LENR"];
     cdouble omegaL = variables["omega_LENR"];
@@ -253,7 +255,7 @@ cdouble UQFFBuoyancyModule::computeIntegrand(double t_user, const std::string &s
 }
 
 // Approx x2 (quadratic root)
-cdouble UQFFBuoyancyModule::computeX2(const std::string &system)
+cdouble UQFFBuoyancyModule::computeX2(const std::string & /* system */)
 {
     return variables["x2"];
 }
@@ -286,7 +288,7 @@ cdouble UQFFBuoyancyModule::computeResonant(const std::string &system)
 }
 
 // Buoyancy Ub1 (inflation-driven)
-cdouble UQFFBuoyancyModule::computeBuoyancy(const std::string &system)
+cdouble UQFFBuoyancyModule::computeBuoyancy(const std::string & /* system */)
 {
     cdouble beta = variables["beta_i"];
     cdouble V = variables["V_infl_UA"];
@@ -296,7 +298,7 @@ cdouble UQFFBuoyancyModule::computeBuoyancy(const std::string &system)
 }
 
 // Superconductive Ui (time-dependent)
-cdouble UQFFBuoyancyModule::computeSuperconductive(const std::string &system, double t)
+cdouble UQFFBuoyancyModule::computeSuperconductive(const std::string & /* system */, double t)
 {
     double tn = t / variables["t_scale"].real();
     cdouble lambda = variables["lambda_i"];
@@ -309,7 +311,7 @@ cdouble UQFFBuoyancyModule::computeSuperconductive(const std::string &system, do
 }
 
 // Compressed g(r,t) with thermal and curvature corrections
-double UQFFBuoyancyModule::computeCompressedG(const std::string &system, double t)
+double UQFFBuoyancyModule::computeCompressedG(const std::string &system, double /* t */)
 {
     setSystemParams(system);
     double G_val = variables["G"].real();

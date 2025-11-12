@@ -1,7 +1,7 @@
-﻿// TapestryUQFFModule.h
+// TapestryUQFFModule.h
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF) for "Tapestry of Blazing Starbirth" (NGC 2014/2020) Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "TapestryUQFFModule.h"
+// Usage in base: // // // #include "TapestryUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // TapestryUQFFModule mod; mod.computeG(t); mod.updateVariable("M", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Nothing is negligible: Includes all terms - DPM resonance, THz hole pipeline, plasmotic vacuum differential, superconductor frequency, Aether-mediated resonance, reactive U_g4i, quantum wave, fluid dynamics, oscillatory components, cosmic expansion, time-reversal correction.
@@ -169,7 +169,7 @@ public:
 #endif // TAPESTRY_UQFF_MODULE_H
 
 // TapestryUQFFModule.cpp
-#include "TapestryUQFFModule.h"
+// // // #include "TapestryUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with Tapestry-specific values
@@ -354,7 +354,7 @@ std::string TapestryUQFFModule::getEquationText() {
     return "g_Tapestry(t) = [a_DPM + a_THz + a_vac_diff + a_super_freq + a_aether_res + U_g4i + a_quantum_freq + a_Aether_freq + a_fluid_freq + Osc_term + a_exp_freq] * (1 + f_TRZ)\n"
            "Where terms mirror SMBH but scaled for starbirth region (f_DPM=1e11 Hz, V_sys large for gas clouds).\n"
            "Special Terms: All driven by UQFF frequencies/resonances via plasmotic vacuum; Aether replaces dark energy; no SM terms.\n"
-           "Solutions: At t=5 Myr, g ? 1e-28 m/sï¿½ (dominated by fluid/THz; micro-scale per proof set).\n"
+           "Solutions: At t=5 Myr, g ? 1e-28 m/s� (dominated by fluid/THz; micro-scale per proof set).\n"
            "Adaptations: DPM heart, THz pipeline for star formation/erosion in NGC 2014/2020 per Hubble data.";
 }
 
@@ -367,12 +367,12 @@ void TapestryUQFFModule::printVariables() {
 }
 
 // Example usage in base program 'ziqn233h.cpp' (snippet for integration)
-// #include "TapestryUQFFModule.h"
+// // // // #include "TapestryUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     TapestryUQFFModule mod;
 //     double t = 5e6 * 3.156e7;  // 5 Myr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/sï¿½\n";
+//     std::cout << "g = " << g << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_DPM", 1.1e11);  // Update DPM freq
 //     mod.addToVariable("f_TRZ", 0.05);     // Add to TR factor
@@ -380,9 +380,10 @@ void TapestryUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp TapestryUQFFModule.cpp -lm
-// Sample Output at t=5 Myr: g ? 1e-28 m/sï¿½ (varies with updates; all terms micro-scale per UQFF frequencies).
+// Sample Output at t=5 Myr: g ? 1e-28 m/s� (varies with updates; all terms micro-scale per UQFF frequencies).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
+/*
 // Evaluation of TapestryUQFFModule (UQFF Frequency/Resonance Model for NGC 2014/2020 Starbirth Region)
 
 **Strengths:**
@@ -402,3 +403,4 @@ void TapestryUQFFModule::printVariables() {
 
     ** Summary : **
     The module is robust, dynamic, and extensible, supporting runtime updates and changes to all model parameters.It is suitable for advanced UQFF - based starbirth region modeling.Minor improvements in error handling, documentation, and physical justification are recommended for production or publication use.
+*/

@@ -1,7 +1,7 @@
-﻿// BackgroundAetherModule.h
+// BackgroundAetherModule.h
 // Modular C++ implementation of the Background Aether Metric (g_??) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes the baseline Minkowski metric g_?? = [1, -1, -1, -1] and the perturbed A_?? = g_?? + ? * T_s^{??}.
-// Pluggable: #include "BackgroundAetherModule.h"
+// Pluggable: // // // #include "BackgroundAetherModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // BackgroundAetherModule mod; mod.computeA_mu_nu(); mod.updateVariable("eta", new_value);
 // Variables in std::map; diagonal metric for flat spacetime (+, -, -, -) signature.
 // Integrates ? (coupling) and T_s (stress-energy) for perturbation; weak coupling preserves flatness.
@@ -164,7 +164,7 @@ public:
 #endif // BACKGROUND_AETHER_MODULE_H
 
 // BackgroundAetherModule.cpp
-#include "BackgroundAetherModule.h"
+// // // #include "BackgroundAetherModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 BackgroundAetherModule::BackgroundAetherModule() {
@@ -280,7 +280,7 @@ void BackgroundAetherModule::printMetrics() {
 }
 
 // Example usage in base program (snippet)
-// #include "BackgroundAetherModule.h"
+// // // // #include "BackgroundAetherModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     BackgroundAetherModule mod;
 //     auto a_mu_nu = mod.computeA_mu_nu();
@@ -294,6 +294,7 @@ void BackgroundAetherModule::printMetrics() {
 // Sample Output: g_?? = [1, -1, -1, -1]; A_?? nearly identical; perturbation ~1.123e-15.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
+/*
 BackgroundAetherModule Evaluation
 
 Strengths :
@@ -315,3 +316,4 @@ Weaknesses / Recommendations :
 
     Summary:
 The code is well - structured, clear, and suitable for scientific prototyping and educational use in metric perturbation modeling.It implements the Aether coupling concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+*/

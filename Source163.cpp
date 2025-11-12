@@ -231,7 +231,7 @@ cdouble AstroSystemsUQFFModule::getVariable(const std::string &name) const
     return {0.0, 0.0};
 }
 
-cdouble AstroSystemsUQFFModule::computeDPM_resonance(const std::string &system)
+cdouble AstroSystemsUQFFModule::computeDPM_resonance(const std::string & /* system */)
 {
     cdouble g = variables["g_Lande"];
     cdouble muB = variables["mu_B"];
@@ -242,7 +242,7 @@ cdouble AstroSystemsUQFFModule::computeDPM_resonance(const std::string &system)
     return cdouble(result, 0.0);
 }
 
-cdouble AstroSystemsUQFFModule::computeLENRTerm(const std::string &system)
+cdouble AstroSystemsUQFFModule::computeLENRTerm(const std::string & /* system */)
 {
     cdouble k = variables["k_LENR"];
     cdouble omegaL = variables["omega_LENR"];
@@ -274,7 +274,7 @@ cdouble AstroSystemsUQFFModule::computeIntegrand(double t_user, const std::strin
     return term_base + term_mom + term_grav + term_vac + term_LENR + term_act + term_DE + term_res + term_neut + term_rel + term_neutrino;
 }
 
-cdouble AstroSystemsUQFFModule::computeX2(const std::string &system)
+cdouble AstroSystemsUQFFModule::computeX2(const std::string & /* system */)
 {
     return variables["x2"];
 }
@@ -285,7 +285,7 @@ cdouble AstroSystemsUQFFModule::computeQuadraticRoot(cdouble a, cdouble b, cdoub
     return (-b - disc) / (2.0 * a);
 }
 
-cdouble AstroSystemsUQFFModule::computeGravityCompressed(const std::string &system)
+cdouble AstroSystemsUQFFModule::computeGravityCompressed(const std::string & /* system */)
 {
     cdouble G = variables["G"];
     cdouble M = variables["M"];
@@ -293,12 +293,12 @@ cdouble AstroSystemsUQFFModule::computeGravityCompressed(const std::string &syst
     return G * M / pow(r, 2.0);
 }
 
-cdouble AstroSystemsUQFFModule::computeResonanceUr(int U_dp, int U_r, const std::string &system)
+cdouble AstroSystemsUQFFModule::computeResonanceUr(int U_dp, int U_r, const std::string & /* system */)
 {
     return static_cast<double>(U_dp + U_r) * variables["F_rel"];
 }
 
-cdouble AstroSystemsUQFFModule::computeBuoyancyUbi(const std::string &system)
+cdouble AstroSystemsUQFFModule::computeBuoyancyUbi(const std::string & /* system */)
 {
     cdouble beta = variables["beta_i"];
     cdouble V = variables["V_infl_UA"];
@@ -342,7 +342,7 @@ cdouble AstroSystemsUQFFModule::computeBuoyancy(const std::string &system)
     return computeBuoyancyUbi(system);
 }
 
-cdouble AstroSystemsUQFFModule::computeSuperconductive(const std::string &system, double t)
+cdouble AstroSystemsUQFFModule::computeSuperconductive(const std::string & /* system */, double t)
 {
     double tn = t / variables["t_scale"].real();
     cdouble lambda = variables["lambda_i"];
@@ -355,7 +355,7 @@ cdouble AstroSystemsUQFFModule::computeSuperconductive(const std::string &system
     return lambda * (rho_sc / rho_ua * omega_s * cos_term * (1.0 + f_trz.real()));
 }
 
-double AstroSystemsUQFFModule::computeCompressedG(const std::string &system, double t)
+double AstroSystemsUQFFModule::computeCompressedG(const std::string &system, double /* t */)
 {
     setSystemParams(system);
     double G_val = variables["G"].real();
@@ -467,7 +467,7 @@ cdouble AstroSystemsUQFFModule::computeDPMEvolution(const std::string &system, d
     return dF_dt;
 }
 
-cdouble AstroSystemsUQFFModule::computeSMBHAccretion(const std::string &system, double t)
+cdouble AstroSystemsUQFFModule::computeSMBHAccretion(const std::string &system, double /* t */)
 {
     setSystemParams(system);
     double M_dot = 0.1 * variables["M"].real() / variables["t"].real(); // Accretion rate

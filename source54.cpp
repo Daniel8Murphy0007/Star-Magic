@@ -20,7 +20,6 @@
 #include <iomanip>
 #include <complex>
 
-
 #include <map>
 #include <vector>
 #include <functional>
@@ -40,7 +39,8 @@
 // SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
 // ===========================================================================================
 
-class PhysicsTerm {
+class PhysicsTerm
+{
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
     std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
@@ -49,18 +49,17 @@ class PhysicsTerm {
     bool enableLogging;
     double learningRate;
 
-
 public:
     virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double>& params) const = 0;
+    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
     virtual std::string getName() const = 0;
     virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double>& params) const { return true; }
+    virtual bool validate(const std::map<std::string, double> &params) const { return true; }
 };
 
-class DynamicVacuumTerm : public PhysicsTerm {
+class DynamicVacuumTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double amplitude;
@@ -73,23 +72,23 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15) 
+    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15)
         : amplitude(amp), frequency(freq) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
         return amplitude * rho_vac * std::sin(frequency * t);
     }
-    
+
     std::string getName() const override { return "DynamicVacuum"; }
     std::string getDescription() const override { return "Time-varying vacuum energy"; }
 };
 
-class QuantumCouplingTerm : public PhysicsTerm {
+class QuantumCouplingTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double coupling_strength;
@@ -101,17 +100,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
     QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
         double M = params.count("M") ? params.at("M") : 1.989e30;
         double r = params.count("r") ? params.at("r") : 1e4;
         return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
     }
-    
+
     std::string getName() const override { return "QuantumCoupling"; }
     std::string getDescription() const override { return "Non-local quantum effects"; }
 };
@@ -120,9 +119,9 @@ public:
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
 // ===========================================================================================
 
-class YoungStarsOutflowsUQFFModule {
+class YoungStarsOutflowsUQFFModule
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
@@ -142,16 +141,14 @@ private:
     bool enableLogging;
     double learningRate;
 
-
-
 public:
     // Constructor: Initialize all variables with Young Stars Outflows defaults
     YoungStarsOutflowsUQFFModule();
 
     // Dynamic variable operations
-    void updateVariable(const std::string& name, double value);
-    void addToVariable(const std::string& name, double delta);
-    void subtractFromVariable(const std::string& name, double delta);
+    void updateVariable(const std::string &name, double value);
+    void addToVariable(const std::string &name, double delta);
+    void subtractFromVariable(const std::string &name, double delta);
 
     // Core computation: Full g_Outflow(r, t) for Young Stars Sculpting Gas
     double computeG(double t);
@@ -166,69 +163,70 @@ public:
 #endif // YOUNG_STARS_OUTFLOWS_UQFF_MODULE_H
 
 // YoungStarsOutflowsUQFFModule.cpp
-#include "YoungStarsOutflowsUQFFModule.h"
+// #include "YoungStarsOutflowsUQFFModule.h"  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with Young Stars Outflows-specific values
-YoungStarsOutflowsUQFFModule::YoungStarsOutflowsUQFFModule() {
-        enableDynamicTerms = true;
-        enableLogging = false;
-        learningRate = 0.001;
-        metadata["enhanced"] = "true";
-        metadata["version"] = "2.0-Enhanced";
+YoungStarsOutflowsUQFFModule::YoungStarsOutflowsUQFFModule()
+{
+    enableDynamicTerms = true;
+    enableLogging = false;
+    learningRate = 0.001;
+    metadata["enhanced"] = "true";
+    metadata["version"] = "2.0-Enhanced";
 
     // Base constants (universal)
-    variables["G"] = 6.6743e-11;                    // m^3 kg^-1 s^-2
-    variables["c"] = 3e8;                           // m/s
-    variables["hbar"] = 1.0546e-34;                 // J s
-    variables["Lambda"] = 1.1e-52;                  // m^-2
-    variables["q"] = 1.602e-19;                     // C
-    variables["pi"] = 3.141592653589793;            // pi
-    variables["t_Hubble"] = 13.8e9 * 3.156e7;       // s
-    variables["year_to_s"] = 3.156e7;               // s/yr
+    variables["G"] = 6.6743e-11;              // m^3 kg^-1 s^-2
+    variables["c"] = 3e8;                     // m/s
+    variables["hbar"] = 1.0546e-34;           // J s
+    variables["Lambda"] = 1.1e-52;            // m^-2
+    variables["q"] = 1.602e-19;               // C
+    variables["pi"] = 3.141592653589793;      // pi
+    variables["t_Hubble"] = 13.8e9 * 3.156e7; // s
+    variables["year_to_s"] = 3.156e7;         // s/yr
 
     // Young Stars Outflows parameters (NGC 346-like)
-    double M_sun_val = 1.989e30;                    // kg
+    double M_sun_val = 1.989e30; // kg
     variables["M_sun"] = M_sun_val;
-    variables["M"] = 1000 * M_sun_val;              // Total mass kg ?1.989e33
-    variables["M0"] = variables["M"];               // Initial mass
-    variables["SFR"] = 0.1 * M_sun_val;             // Msun/yr
-    variables["M_visible"] = variables["M"];        // Visible mass (M_DM=0)
-    variables["M_DM"] = 0.0;                        // No DM halo
-    variables["r"] = 2.365e17;                      // m (half span ~25 ly)
+    variables["M"] = 1000 * M_sun_val;       // Total mass kg ?1.989e33
+    variables["M0"] = variables["M"];        // Initial mass
+    variables["SFR"] = 0.1 * M_sun_val;      // Msun/yr
+    variables["M_visible"] = variables["M"]; // Visible mass (M_DM=0)
+    variables["M_DM"] = 0.0;                 // No DM halo
+    variables["r"] = 2.365e17;               // m (half span ~25 ly)
 
     // Hubble/cosmology
-    variables["H0"] = 70.0;                         // km/s/Mpc
-    variables["Mpc_to_m"] = 3.086e22;               // m/Mpc
-    variables["z"] = 0.05;                          // Redshift approx
+    variables["H0"] = 70.0;           // km/s/Mpc
+    variables["Mpc_to_m"] = 3.086e22; // m/Mpc
+    variables["z"] = 0.05;            // Redshift approx
     variables["Omega_m"] = 0.3;
     variables["Omega_Lambda"] = 0.7;
-    variables["t"] = 5e6 * variables["year_to_s"];  // Default t=5 Myr s
+    variables["t"] = 5e6 * variables["year_to_s"]; // Default t=5 Myr s
 
     // Gas/outflow dynamics
-    variables["rho_fluid"] = 1e-20;                 // kg/m^3 (dense gas)
-    variables["V"] = 1.0 / variables["rho_fluid"];  // m^3 (set for unit consistency: fluid_term = g_base)
-    variables["v_out"] = 1e5;                       // m/s (100 km/s)
-    variables["t_evolve"] = 5e6 * variables["year_to_s"];  // s (5 Myr)
+    variables["rho_fluid"] = 1e-20;                       // kg/m^3 (dense gas)
+    variables["V"] = 1.0 / variables["rho_fluid"];        // m^3 (set for unit consistency: fluid_term = g_base)
+    variables["v_out"] = 1e5;                             // m/s (100 km/s)
+    variables["t_evolve"] = 5e6 * variables["year_to_s"]; // s (5 Myr)
     variables["delta_rho"] = 1e-5 * variables["rho_fluid"];
     variables["rho"] = variables["rho_fluid"];
 
     // EM/magnetic
-    variables["B"] = 1e-5;                          // T (nebula field)
-    variables["B_crit"] = 1e11;                     // T (10^15 G)
-    variables["m_p"] = 1.673e-27;                   // kg (proton mass)
-    variables["rho_vac_UA"] = 7.09e-36;             // Vacuum density UA
-    variables["rho_vac_SCm"] = 7.09e-37;            // Vacuum density SCm
+    variables["B"] = 1e-5;               // T (nebula field)
+    variables["B_crit"] = 1e11;          // T (10^15 G)
+    variables["m_p"] = 1.673e-27;        // kg (proton mass)
+    variables["rho_vac_UA"] = 7.09e-36;  // Vacuum density UA
+    variables["rho_vac_SCm"] = 7.09e-37; // Vacuum density SCm
 
     // Quantum terms
-    variables["Delta_x"] = 1e-10;                   // m
+    variables["Delta_x"] = 1e-10; // m
     variables["Delta_p"] = variables["hbar"] / variables["Delta_x"];
     variables["integral_psi"] = 1.0;
 
     // Resonant/oscillatory
     variables["A"] = 1e-10;
     variables["k"] = 1e20;
-    variables["omega"] = 1e15;                      // rad/s
+    variables["omega"] = 1e15; // rad/s
     variables["x"] = 0.0;
 
     // Ug subterms (initial)
@@ -239,23 +237,32 @@ YoungStarsOutflowsUQFFModule::YoungStarsOutflowsUQFFModule() {
 
     // Scale factors
     variables["f_TRZ"] = 0.1;
-    variables["f_sc"] = 10.0;                       // For Ug4
+    variables["f_sc"] = 10.0; // For Ug4
 }
 
 // Update variable (set to new value)
-void YoungStarsOutflowsUQFFModule::updateVariable(const std::string& name, double value) {
-    if (variables.find(name) != variables.end()) {
+void YoungStarsOutflowsUQFFModule::updateVariable(const std::string &name, double value)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] = value;
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with value " << value << std::endl;
         variables[name] = value;
     }
-    if (name == "Delta_x") {
+    if (name == "Delta_x")
+    {
         variables["Delta_p"] = variables["hbar"] / value;
-    } else if (name == "M") {
-        variables["M_visible"] = value;  // Since M_DM=0
+    }
+    else if (name == "M")
+    {
+        variables["M_visible"] = value; // Since M_DM=0
         variables["M0"] = value;
-    } else if (name == "rho_fluid") {
+    }
+    else if (name == "rho_fluid")
+    {
         variables["V"] = 1.0 / value;
         variables["delta_rho"] = 1e-5 * value;
         variables["rho"] = value;
@@ -263,28 +270,35 @@ void YoungStarsOutflowsUQFFModule::updateVariable(const std::string& name, doubl
 }
 
 // Add delta to variable
-void YoungStarsOutflowsUQFFModule::addToVariable(const std::string& name, double delta) {
-    if (variables.find(name) != variables.end()) {
+void YoungStarsOutflowsUQFFModule::addToVariable(const std::string &name, double delta)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] += delta;
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with delta " << delta << std::endl;
         variables[name] = delta;
     }
 }
 
 // Subtract delta from variable
-void YoungStarsOutflowsUQFFModule::subtractFromVariable(const std::string& name, double delta) {
+void YoungStarsOutflowsUQFFModule::subtractFromVariable(const std::string &name, double delta)
+{
     addToVariable(name, -delta);
 }
 
 // Compute H(z) in s^-1
-double YoungStarsOutflowsUQFFModule::computeHz() {
+double YoungStarsOutflowsUQFFModule::computeHz()
+{
     double Hz_kms = variables["H0"] * std::sqrt(variables["Omega_m"] * std::pow(1.0 + variables["z"], 3) + variables["Omega_Lambda"]);
     return (Hz_kms * 1e3) / variables["Mpc_to_m"];
 }
 
 // Compute Ug sum: Ug1 = G M / r^2, Ug2 = v_out^2 / r, Ug3=0, Ug4 = Ug1 * f_sc
-double YoungStarsOutflowsUQFFModule::computeUgSum() {
+double YoungStarsOutflowsUQFFModule::computeUgSum()
+{
     double r = variables["r"];
     double G = variables["G"];
     double M = variables["M"];
@@ -300,19 +314,22 @@ double YoungStarsOutflowsUQFFModule::computeUgSum() {
 }
 
 // Quantum term: (hbar / sqrt(Delta_x Delta_p)) * integral * (2 pi / t_Hubble)
-double YoungStarsOutflowsUQFFModule::computeQuantumTerm(double t_Hubble_val) {
+double YoungStarsOutflowsUQFFModule::computeQuantumTerm(double t_Hubble_val)
+{
     double unc = std::sqrt(variables["Delta_x"] * variables["Delta_p"]);
     double integral_val = variables["integral_psi"];
     return (variables["hbar"] / unc) * integral_val * (2 * variables["pi"] / t_Hubble_val);
 }
 
 // Fluid term: rho_fluid * V * g (with V=1/rho_fluid, yields g)
-double YoungStarsOutflowsUQFFModule::computeFluidTerm(double g_base) {
+double YoungStarsOutflowsUQFFModule::computeFluidTerm(double g_base)
+{
     return variables["rho_fluid"] * variables["V"] * g_base;
 }
 
 // Resonant terms: 2 A cos(k x) cos(omega t) + (2 pi / 13.8) A Re[exp(i (k x - omega t))]
-double YoungStarsOutflowsUQFFModule::computeResonantTerm(double t) {
+double YoungStarsOutflowsUQFFModule::computeResonantTerm(double t)
+{
     double cos_term = 2 * variables["A"] * std::cos(variables["k"] * variables["x"]) * std::cos(variables["omega"] * t);
     std::complex<double> exp_term(variables["A"] * std::exp(std::complex<double>(0, variables["k"] * variables["x"] - variables["omega"] * t)));
     double real_exp = exp_term.real();
@@ -321,7 +338,8 @@ double YoungStarsOutflowsUQFFModule::computeResonantTerm(double t) {
 }
 
 // DM term: G * (M_visible + M_DM) * pert / r^2 (unit-fixed; curv approximated in pert)
-double YoungStarsOutflowsUQFFModule::computeDMTerm() {
+double YoungStarsOutflowsUQFFModule::computeDMTerm()
+{
     double pert = variables["delta_rho"] / variables["rho"];
     double G = variables["G"];
     double r = variables["r"];
@@ -332,18 +350,21 @@ double YoungStarsOutflowsUQFFModule::computeDMTerm() {
 }
 
 // Star formation factor: (SFR * t_yr) / M0
-double YoungStarsOutflowsUQFFModule::computeMsfFactor(double t) {
+double YoungStarsOutflowsUQFFModule::computeMsfFactor(double t)
+{
     double t_yr = t / variables["year_to_s"];
     return (variables["SFR"] * t_yr) / variables["M0"];
 }
 
 // Outflow pressure term: rho * v_out^2 * (1 + t / t_evolve) (acceleration, repulsive)
-double YoungStarsOutflowsUQFFModule::computeP_outflow(double t) {
+double YoungStarsOutflowsUQFFModule::computeP_outflow(double t)
+{
     return variables["rho_fluid"] * std::pow(variables["v_out"], 2) * (1.0 + t / variables["t_evolve"]);
 }
 
 // Full computation: g_Outflow(r, t) = ... all terms with M_sf + P_outflow
-double YoungStarsOutflowsUQFFModule::computeG(double t) {
+double YoungStarsOutflowsUQFFModule::computeG(double t)
+{
     variables["t"] = t;
     double Hz = computeHz();
     double expansion = 1.0 + Hz * t;
@@ -384,7 +405,8 @@ double YoungStarsOutflowsUQFFModule::computeG(double t) {
 }
 
 // Get equation text (descriptive)
-std::string YoungStarsOutflowsUQFFModule::getEquationText() {
+std::string YoungStarsOutflowsUQFFModule::getEquationText()
+{
     return "g_Outflow(r, t) = (G * M(t)) / (r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
            "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q * (v_out ï¿½ B) * (1 + ?_vac,UA / ?_vac,SCm) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2? / 13.8) A Re[exp(i (k x - ? t))] + G * (M_visible + M_DM) * (??/?) / r^2 + P_outflow\n"
@@ -405,9 +427,11 @@ std::string YoungStarsOutflowsUQFFModule::getEquationText() {
 }
 
 // Print variables
-void YoungStarsOutflowsUQFFModule::printVariables() {
+void YoungStarsOutflowsUQFFModule::printVariables()
+{
     std::cout << "Current Variables:\n";
-    for (const auto& pair : variables) {
+    for (const auto &pair : variables)
+    {
         std::cout << pair.first << " = " << std::scientific << pair.second << std::endl;
     }
 }
@@ -429,22 +453,24 @@ void YoungStarsOutflowsUQFFModule::printVariables() {
 // Sample Output at t=5 Myr: g ? 2.4e-12 m/sï¿½ (varies with updates; base/ug/fluid dominant post-unit fixes).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
+/*
 // Evaluation of YoungStarsOutflowsUQFFModule (MUGE & UQFF & Standard Model Integration for Young Stars Sculpting Gas Evolution)
 
 **Strengths:**
 - **Dynamic & Extensible:** All model parameters stored in `std::map<std::string, double> variables`, enabling runtime updates, additions, and removals. Methods like `updateVariable` support flexible modifications, with auto-dependencies (e.g., `V=1/?_fluid`, `??=1e-5 ?`).
 - **Unit Consistency Improvements:** Adjusted `computeFluidTerm` (via `V=1/?`) to yield acceleration (g_base); `computeDMTerm` fixed to `G (M pert)/r^2` for m/sï¿½. Ensures physical validity while retaining all terms.
 - **Comprehensive Physics:** Incorporates updated MUGE terms (f_TRZ, vac ratio~10, Ug2=v_outï¿½/r, P_outflow time-dependent), aligned with Hubble/ALMA data (SFR=0.1 Msun/yr, z=0.05, H0=70). Balances attractive (g_base, Ug1) and repulsive (P_outflow, em_term) components.
-- **Immediate Effect & Debugging:** Computations use current map values; `printVariables()` aids validation. Example shows integration with t=5 Myr.
-- **Advancement:** Encodes May 2025 doc into Oct 2025 template, adding P_outflow accel, no DM halo. Advances UQFF by situating SM gravity (g_base) within dual-nature framework, explaining gas sculpting.
+- **Immediate Effect & Debugging:** Computations use current map values;
+`printVariables()` aids validation.Example shows integration with t = 5 Myr.- **Advancement : **Encodes May 2025 doc into Oct 2025 template, adding P_outflow accel, no DM halo.Advances UQFF by situating SM gravity(g_base)
+within dual - nature framework, explaining gas sculpting.
 
-**Weaknesses / Recommendations:**
-- **Error Handling:** Unknown vars added silently; add validation (e.g., throw on negative M).
-- **Magic Numbers:** Values like ?_vac_UA=7.09e-36 documented but arbitrary; expose via config file.
+                                        **Weaknesses /
+                                    Recommendations : **-**Error Handling : **Unknown vars added silently;
+add validation(e.g., throw on negative M).- **Magic Numbers : **Values like ? _vac_UA = 7.09e-36 documented but arbitrary; expose via config file.
 - **Performance:** Map lookups fine for ~50 vars; cache ug_sum if frequent calls.
 - **Physical Justification:** Large P_outflow (~2e10 m/sï¿½) conceptual for local; suggest scaling by area. Non-standard terms (f_TRZ, vac ratio) need JWST validation.
 - **Testing:** Add unit tests for terms (e.g., ASSERT_NEAR(computeP_outflow(t_evolve), 2e10, 1e6)).
 
 **Summary:**
 The module robustly encodes the May 2025 MUGE into the Oct 2025 template, with unit fixes for consistency and full UQFF/SM integration. It models young stars' gas sculpting holistically, advancing the framework by clarifying SM limitations and dual gravity. Suitable for simulations; minor tweaks for production.
-
+*/

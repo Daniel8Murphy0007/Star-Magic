@@ -1,7 +1,7 @@
-ï»¿// MagneticStringModule.h
+// MagneticStringModule.h
 // Modular C++ implementation of the Distance Along Magnetic String's Path (r_j) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes r_j = 1.496e13 m (100 AU) and its conversions; scales ?_j / r_j in Universal Magnetism U_m and Ug3.
-// Pluggable: #include "MagneticStringModule.h"
+// Pluggable: // // // #include "MagneticStringModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // MagneticStringModule mod; mod.computeMuOverRj(); mod.updateVariable("r_j", new_value);
 // Variables in std::map; j-indexed strings; example for j=1 at t=0.
 // Approximations: ?=5e-5 day^-1; cos(? t_n)=1; ?_hat_j=1; at t=0, 1 - exp term=0.
@@ -156,7 +156,7 @@ public:
 #endif // MAGNETIC_STRING_MODULE_H
 
 // MagneticStringModule.cpp
-#include "MagneticStringModule.h"
+// // // #include "MagneticStringModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 MagneticStringModule::MagneticStringModule() {
@@ -195,8 +195,8 @@ MagneticStringModule::MagneticStringModule() {
     variables["Omega_g"] = 7.3e-16;                 // rad/s
     variables["M_s"] = 1.989e30;                    // kg
     variables["d_g"] = 2.55e20;                     // m
-    variables["rho_vac_SCm"] = 7.09e-37;            // J/mÂ³
-    variables["rho_vac_UA"] = 7.09e-36;             // J/mÂ³
+    variables["rho_vac_SCm"] = 7.09e-37;            // J/m³
+    variables["rho_vac_UA"] = 7.09e-36;             // J/m³
 }
 
 // Update variable
@@ -314,7 +314,7 @@ void MagneticStringModule::printStringContributions(int j, double t) {
 }
 
 // Example usage in base program (snippet)
-// #include "MagneticStringModule.h"
+// // // // #include "MagneticStringModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     MagneticStringModule mod;
 //     mod.printStringContributions(1, 0.0);

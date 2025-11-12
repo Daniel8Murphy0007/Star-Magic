@@ -1,10 +1,10 @@
-﻿// TimeReversalZoneModule.h
+// TimeReversalZoneModule.h
 // Modular C++ implementation of the Time-Reversal Zone Factor (f_TRZ) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes f_TRZ=0.1 (unitless); scales (1 + f_TRZ) in Universal Inertia U_i term for TRZ enhancement.
-// Pluggable: #include "TimeReversalZoneModule.h"
+// Pluggable: // // // #include "TimeReversalZoneModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // TimeReversalZoneModule mod; mod.computeU_i(0.0, 0.0); mod.updateVariable("f_TRZ", new_value);
-// Variables in std::map; example for Sun at t=0, t_n=0; U_i ?1.38e-47 J/mï¿½ (with, +10%); without: ?1.25e-47 J/mï¿½.
-// Approximations: ?_i=1.0; cos(? t_n)=1; ?_s=2.5e-6 rad/s; ?_sum=7.80e-36 J/mï¿½.
+// Variables in std::map; example for Sun at t=0, t_n=0; U_i ?1.38e-47 J/m� (with, +10%); without: ?1.25e-47 J/m�.
+// Approximations: ?_i=1.0; cos(? t_n)=1; ?_s=2.5e-6 rad/s; ?_sum=7.80e-36 J/m�.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef TIME_REVERSAL_ZONE_MODULE_H
@@ -163,7 +163,7 @@ public:
 #endif // TIME_REVERSAL_ZONE_MODULE_H
 
 // TimeReversalZoneModule.cpp
-#include "TimeReversalZoneModule.h"
+// // // #include "TimeReversalZoneModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults (Sun at t=0, level 13)
 TimeReversalZoneModule::TimeReversalZoneModule() {
@@ -264,7 +264,7 @@ std::string TimeReversalZoneModule::getEquationText() {
     return "U_i = ?_i * ?_vac,[SCm] * ?_vac,[UA] * ?_s(t) * cos(? t_n) * (1 + f_TRZ)\n"
            "Where f_TRZ = 0.1 (unitless time-reversal zone factor; +10% negentropic enhancement);\n"
            "TRZ: Regions for time-reversal/negentropy (COP>1, vacuum extraction).\n"
-           "Example Sun t=0, t_n=0: U_i ?1.38e-47 J/mï¿½ (with); ?1.25e-47 J/mï¿½ (without; -9.1%).\n"
+           "Example Sun t=0, t_n=0: U_i ?1.38e-47 J/m� (with); ?1.25e-47 J/m� (without; -9.1%).\n"
            "In F_U: -? ?_i U_i E_react (resistive, TRZ-boosted).\n"
            "Role: Stabilizes via negentropy; TRZ in nebulae/formation/mergers/biology.\n"
            "UQFF: Integrates pondermotive force/time asymmetry; Aether superfluid effects.";
@@ -284,13 +284,13 @@ void TimeReversalZoneModule::printUiComparison(double t, double t_n) {
     double u_i_without = computeU_i_no_TRZ(t, t_n);
     double percent_increase = ((u_i_with - u_i_without) / u_i_without) * 100.0;
     std::cout << "U_i Comparison at t=" << t << " s, t_n=" << t_n << ":\n";
-    std::cout << "With TRZ: " << std::scientific << u_i_with << " J/mï¿½\n";
-    std::cout << "Without TRZ: " << u_i_without << " J/mï¿½\n";
+    std::cout << "With TRZ: " << std::scientific << u_i_with << " J/m�\n";
+    std::cout << "Without TRZ: " << u_i_without << " J/m�\n";
     std::cout << "Increase: +" << std::fixed << std::setprecision(1) << percent_increase << "%\n";
 }
 
 // Example usage in base program (snippet)
-// #include "TimeReversalZoneModule.h"
+// // // // #include "TimeReversalZoneModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     TimeReversalZoneModule mod;
 //     double f_trz = mod.computeF_TRZ();
@@ -302,7 +302,7 @@ void TimeReversalZoneModule::printUiComparison(double t, double t_n) {
 //     return 0;
 // }
 // Compile: g++ -o trz_test trz_test.cpp TimeReversalZoneModule.cpp -lm
-// Sample: f_TRZ=0.1; U_i with=1.38e-47 J/mï¿½ (+10% vs without).
+// Sample: f_TRZ=0.1; U_i with=1.38e-47 J/m� (+10% vs without).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 TimeReversalZoneModule Evaluation
