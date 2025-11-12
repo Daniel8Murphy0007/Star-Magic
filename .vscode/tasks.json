@@ -1,7 +1,149 @@
 {
     "version": "2.0.0",
     "tasks": [
-        // ========== CMAKE TASKS ==========
+        // ========== CMAKE TASKS (Visual Studio) ==========
+        {
+            "label": "CMake: Configure (Visual Studio)",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-B",
+                "build"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "Configure CMake with Visual Studio generator"
+        },
+        {
+            "label": "CMake: Build All (Debug - VS)",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "build",
+                "--config",
+                "Debug"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Build all targets with Visual Studio (Debug)"
+        },
+        {
+            "label": "CMake: Build MAIN_1 (VS)",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "build",
+                "--config",
+                "Debug",
+                "--target",
+                "MAIN_1"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": "build",
+            "detail": "Build MAIN_1 with Visual Studio"
+        },
+        {
+            "label": "CMake: Build Source134 (VS)",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "build",
+                "--config",
+                "Debug",
+                "--target",
+                "Source134"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": "build",
+            "detail": "Build Source134 with Visual Studio"
+        },
+        {
+            "label": "CMake: Build MAIN_1_CoAnQi (VS)",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "build",
+                "--config",
+                "Debug",
+                "--target",
+                "MAIN_1_CoAnQi"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": "build",
+            "detail": "Build MAIN_1_CoAnQi with Visual Studio"
+        },
+        {
+            "label": "CMake: Clean (VS)",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "build",
+                "--config",
+                "Debug",
+                "--target",
+                "clean"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "detail": "Clean Visual Studio build"
+        },
+        {
+            "label": "CMake: Rebuild All (VS)",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "build",
+                "--config",
+                "Debug",
+                "--clean-first"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": "build",
+            "detail": "Clean and rebuild with Visual Studio"
+        },
+        // ========== CMAKE TASKS (MinGW) ==========
         {
             "label": "CMake: Configure",
             "type": "shell",

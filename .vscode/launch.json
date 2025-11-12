@@ -4,6 +4,43 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        // ========== CMAKE VISUAL STUDIO DEBUGGER ==========
+        {
+            "name": "CMake: Debug MAIN_1 (Visual Studio)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/Debug/MAIN_1.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "console": "integratedTerminal",
+            "preLaunchTask": "CMake: Build MAIN_1 (VS)"
+        },
+        {
+            "name": "CMake: Debug Source134 (Visual Studio)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/Debug/Source134.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "console": "integratedTerminal",
+            "preLaunchTask": "CMake: Build Source134 (VS)"
+        },
+        {
+            "name": "CMake: Debug MAIN_1_CoAnQi (Visual Studio)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/Debug/MAIN_1_CoAnQi.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "console": "integratedTerminal",
+            "preLaunchTask": "CMake: Build MAIN_1_CoAnQi (VS)"
+        },
         // ========== AUTO-CONFIGURED SMART DEFAULTS ==========
         {
             "name": "▶️ Auto-Run (Smart Detection)",

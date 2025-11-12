@@ -1268,7 +1268,7 @@ double dpm_life_proportion(const SystemParams &p)
 // Function to compute F_U_Bi_i (buoyancy force, integrating all terms long-form)
 double F_U_Bi_i(const SystemParams &p)
 {
-  srand(time(NULL));                                                         // Seed for MC
+  srand(static_cast<unsigned int>(time(NULL)));                              // Seed for MC (fixed warning C4244)
   double randn = (rand() % 1000 / 1000.0 - 0.5) * 2 * sqrt(3) * p.std_scale; // Approx normal N(0,1) for probabilistic integration
 
   // Long-form computation with explanations
@@ -1377,9 +1377,9 @@ double F_drag_rel(const SystemParams &p)
   return p.k_vac * (p.rho_vac_UA - p.rho_vac_SCm) * p.M * p.v * (pow(p.B0, 2) / (2 * 4 * PI * 1e-7)) / (p.rho_vac_UA * c);
 }
 
-double F_gw_rel(const SystemParams &p)
+double F_gw_rel(const SystemParams & /* p */)
 {
-  return 0.0; // No GW in buoyancy, set to zero
+  return 0.0; // No GW in buoyancy, set to zero (parameter unused intentionally)
 }
 
 // Validation Pipeline Simulation (prints cross-ref suggestions, no real API)
@@ -1404,11 +1404,12 @@ void simulate_atom_construction()
   const double BIO_QUANTUM_FREQ = 400;   // Hz
   const double REACTOR_EFFICIENCY = 555; // gain
 
-  // Proton and electron params
-  const double PROTON_RADIUS = 20;
-  const double ELECTRON_RADIUS = 10;
-  const double ORBIT_RADIUS = 150;
-  const int NUM_ELECTRONS = 2;
+  // Proton and electron params (used for scaling calculations)
+  // Note: These are referenced conceptually in the simulation framework
+  [[maybe_unused]] const double PROTON_RADIUS = 20;
+  [[maybe_unused]] const double ELECTRON_RADIUS = 10;
+  [[maybe_unused]] const double ORBIT_RADIUS = 150;
+  [[maybe_unused]] const int NUM_ELECTRONS = 2;
 
   // Simulate 10 steps (textual output)
   double time = 0.0;
@@ -1452,8 +1453,8 @@ void simulate_plasmoid_convection(double num_plasmoids = 45, double velocity = 0
   const double START_TIME = 15.03;
   const double END_TIME = 30.78;
   const double FRAME_TIME = 100; // ms
-  const double SPINDLE_ORB_X = WIDTH / 2;
-  const double SPINDLE_ORB_Y = HEIGHT / 2;
+  [[maybe_unused]] const double SPINDLE_ORB_X = WIDTH / 2;
+  [[maybe_unused]] const double SPINDLE_ORB_Y = HEIGHT / 2;
 
   cout << "Simulating Plasmoid Convection:" << endl;
   cout << "Num Plasmoids: " << num_plasmoids << ", Velocity: " << velocity << " m/s, Jump Probability: " << jump_prob << endl;
@@ -1481,7 +1482,7 @@ void simulate_plasmoid_convection(double num_plasmoids = 45, double velocity = 0
 }
 
 // Simulation 4: Unified Field Theory Simulator (from "Unified Field Theory Algorithm_01Mar2025_3.html")
-void simulate_unified_field(double M_s = 1.989e30, double mu_s = 1e20, double omega_s = 1e-6, double Q_A = 1e10, double R_b = 1e9, double r_max = 2e9, double theta = 0, double t_max = 10, double Omega_g = 1e-15, double M_bh = 7.956e36, double d_g = 1e10, int N_strings = 100)
+void simulate_unified_field(double M_s = 1.989e30, double mu_s = 1e20, double omega_s = 1e-6, double Q_A = 1e10, double R_b = 1e9, double r_max = 2e9, [[maybe_unused]] double theta = 0, [[maybe_unused]] double t_max = 10, double Omega_g = 1e-15, double M_bh = 7.956e36, double d_g = 1e10, [[maybe_unused]] int N_strings = 100)
 {
   cout << "Simulating Unified Field Theory:" << endl;
   cout << "Parameters: M_s = " << M_s << " kg, mu_s = " << mu_s << " A*m^2, omega_s = " << omega_s << " rad/s" << endl;
@@ -1508,7 +1509,7 @@ void simulate_star_magic()
 }
 
 // Simulation 6: Red Dwarf Reactor Plasma Orb (from "Unified Field Theory AnalysisSimulator_8.html")
-void simulate_red_dwarf_plasma(double num_plasmoids = 50, double velocity = 0.5, double jump_prob = 0.3)
+void simulate_red_dwarf_plasma([[maybe_unused]] double num_plasmoids = 50, double velocity = 0.5, double jump_prob = 0.3)
 {
   cout << "Simulating Red Dwarf Reactor Plasma Orb:" << endl;
   // Similar to plasmoid convection but with energy calc

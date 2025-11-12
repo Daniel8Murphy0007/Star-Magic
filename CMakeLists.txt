@@ -32,6 +32,9 @@ add_executable(Source134 Source134.cpp)
 # MAIN_1: Core mathematical framework (ENABLED - repaired Nov 9, 2025)
 add_executable(MAIN_1 MAIN_1.cpp)
 
+# MAIN_1_CoAnQi: Conscious Quantum Intelligence UQFF Calculator (50+ physics terms)
+add_executable(MAIN_1_CoAnQi MAIN_1_CoAnQi.cpp)
+
 # Source2: HEAD PROGRAM (DISABLED - requires Qt framework)
 # add_executable(Source2 "source2(HEAD PROGRAM).cpp")
 
@@ -50,9 +53,11 @@ add_executable(MAIN_1 MAIN_1.cpp)
 if(MSVC)
     target_compile_options(Source134 PRIVATE /Zi)
     target_compile_options(MAIN_1 PRIVATE /Zi /Od)
+    target_compile_options(MAIN_1_CoAnQi PRIVATE /Zi /Od)
 else()
     target_compile_options(Source134 PRIVATE -g)
     target_compile_options(MAIN_1 PRIVATE -g -O0)
+    target_compile_options(MAIN_1_CoAnQi PRIVATE -g -O0)
 endif()
 
 # ========== OPTIONAL: Add include directories ==========
@@ -64,7 +69,7 @@ endif()
 # target_link_libraries(Source134 m)
 
 # ========== INSTALL TARGETS ==========
-install(TARGETS Source134 MAIN_1
+install(TARGETS Source134 MAIN_1 MAIN_1_CoAnQi
     RUNTIME DESTINATION bin
 )
 

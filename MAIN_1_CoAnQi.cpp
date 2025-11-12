@@ -123,7 +123,7 @@ public:
     virtual std::string getDescription() const = 0;
 
     // Optional validation
-    virtual bool validate(const std::map<std::string, double> &params) const { return true; }
+    virtual bool validate(const std::map<std::string, double> & /* params */) const { return true; }
 
     // Dynamic parameter management
     void setDynamicParameter(const std::string &name, double value)
@@ -261,14 +261,14 @@ public:
         setMetadata("profile", "NFW");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double /* t */, const std::map<std::string, double> &params) const override
     {
         double r = params.count("r") ? params.at("r") : 1.0e4;
         if (r == 0.0 || r_scale == 0.0)
             return 0.0;
 
         double x = r / r_scale;
-        double rho_0 = M_halo / (4.0 * M_PI * r_scale * r_scale * r_scale * (log(2.0) - 0.5));
+        // double rho_0 = M_halo / (4.0 * M_PI * r_scale * r_scale * r_scale * (log(2.0) - 0.5));
         return G * M_halo * log(1 + x) / (r * x);
     }
 
@@ -297,7 +297,7 @@ public:
         setMetadata("source", "Source5.cpp, Source13_Enhanced.cpp");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double t, const std::map<std::string, double> & /* params */) const override
     {
         return lambda * E_vac_scale * (1.0 + 0.1 * sin(1e-10 * t));
     }
@@ -358,7 +358,7 @@ public:
         setMetadata("description", "Cosmic Neutrino Background");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double /* t */, const std::map<std::string, double> &params) const override
     {
         double k_B = 1.380649e-23; // Boltzmann constant
         double energy_density = n_nu * k_B * T_cnb;
@@ -436,7 +436,7 @@ public:
         }
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double /* t */, const std::map<std::string, double> & /* params */) const override
     {
         double G = 6.6743e-11;
         double c = 3e8;
@@ -515,7 +515,7 @@ public:
         setMetadata("equation", "DPM_resonance = (g * mu_B * B0) / (hbar * omega0)");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double /* t */, const std::map<std::string, double> & /* params */) const override
     {
         double hbar = 1.0546e-34;
         double B = getDynamicParameter("B0", B0);
@@ -550,7 +550,7 @@ public:
         setMetadata("equation", "F_LENR = k * (omega_LENR / omega0)^2");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double /* t */, const std::map<std::string, double> & /* params */) const override
     {
         double k = getDynamicParameter("k_LENR", k_LENR);
         double omega_L = getDynamicParameter("omega_LENR", omega_LENR);
@@ -584,7 +584,7 @@ public:
         setMetadata("equation", "L_acc = eta * M_dot * c^2");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double /* t */, const std::map<std::string, double> & /* params */) const override
     {
         double M = getDynamicParameter("M", M_bh);
         double t_scale = getDynamicParameter("t", 1e16);
@@ -619,7 +619,7 @@ public:
         setMetadata("equation", "L_TDE = L_peak * exp(-|dt|/0.3) * (1 + |dt|)^(-5/3)");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double t, const std::map<std::string, double> & /* params */) const override
     {
         double L = getDynamicParameter("L_peak", L_peak);
         double t_p = getDynamicParameter("t_peak", t_peak);
@@ -704,7 +704,7 @@ public:
         }
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double /* t */, const std::map<std::string, double> & /* params */) const override
     {
         double G = 6.6743e-11;
 
@@ -763,7 +763,7 @@ public:
         setMetadata("equation", "ion_frac = ionization_rate / (n_gas * V)");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double /* t */, const std::map<std::string, double> & /* params */) const override
     {
         double q_val = 1.6e-19;
         double m_p = 1.6726e-27;
@@ -812,7 +812,7 @@ public:
         setMetadata("equation", "r(t) = r0 * (1 + v_exp * t / r0)");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double t, const std::map<std::string, double> & /* params */) const override
     {
         double r_initial = getDynamicParameter("r0", r0);
         double v_exp = getDynamicParameter("v_expansion", v_expansion);
@@ -901,7 +901,7 @@ public:
         setMetadata("equation", "F_U_Bi_i = integrand * x2 (11-term force)");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double /* t */, const std::map<std::string, double> & /* params */) const override
     {
         const double G = 6.6743e-11;
         const double c = 3e8;
@@ -964,7 +964,7 @@ public:
         setMetadata("equation", "U_bi = beta_i * V_infl * rho_vac * a_universal");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double /* t */, const std::map<std::string, double> & /* params */) const override
     {
         double beta_i = getDynamicParameter("beta_i", 0.6);
         double V_infl = getDynamicParameter("V_infl_UA", 1e-6);
@@ -995,7 +995,7 @@ public:
         setMetadata("equation", "U_i = lambda * (rho_SC/rho_UA) * omega_s * cos(pi*t_n) * (1 + f_TRZ)");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double t, const std::map<std::string, double> & /* params */) const override
     {
         double lambda_i = getDynamicParameter("lambda_i", 1.0);
         double rho_sc = getDynamicParameter("rho_vac_SCm", 7.09e-37);
@@ -1031,7 +1031,7 @@ public:
         setMetadata("equation", "F_neutron = k_neutron * sigma_n");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double /* t */, const std::map<std::string, double> & /* params */) const override
     {
         double k_neutron = getDynamicParameter("k_neutron", 1e10);
         double sigma_n = getDynamicParameter("sigma_n", 1e-4);
@@ -1144,7 +1144,7 @@ public:
         setMetadata("equation", "F_U_Bi_i = integrand * x2 + gravity + resonance + buoyancy (12-term)");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double /* t */, const std::map<std::string, double> & /* params */) const override
     {
         const double G = 6.6743e-11;
         const double c = 3e8;
@@ -1211,7 +1211,7 @@ public:
         setMetadata("equation", "dipole * sin(2π * φ * 1.0) where φ = 0.618");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double /* t */, const std::map<std::string, double> & /* params */) const override
     {
         double golden_ratio = 0.618033988749895; // (√5 - 1)/2
         double dipole_base = getDynamicParameter("dipole_base", 1.0);
@@ -1241,7 +1241,7 @@ public:
         setMetadata("equation", "Sum of quantum states n=1 to 26");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double /* t */, const std::map<std::string, double> & /* params */) const override
     {
         // Sum of 26 quantum states (real part)
         // Each state contributes n (state number)
@@ -1274,7 +1274,7 @@ public:
         setMetadata("equation", "beta_i * V_infl * rho_vac * a_universal (triadic)");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double /* t */, const std::map<std::string, double> & /* params */) const override
     {
         double beta_i = getDynamicParameter("beta_i_triadic", 1.0); // Enhanced from 0.6
         double V_infl = getDynamicParameter("V_infl_UA", 1e-6);
@@ -1319,11 +1319,11 @@ public:
         setMetadata("equation", "F_master = U_g1 + U_g3 * f_Ub (June 2025 UQFF framework)");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double /* t */, const std::map<std::string, double> & /* params */) const override
     {
         const double k1 = getDynamicParameter("k1", 1.0);
         const double ki = getDynamicParameter("ki", 1.0);
-        const double Z_MAX = 1000.0;
+        // const double Z_MAX = 1000.0;
 
         // U_g1: DPM with electrostatic barrier
         double f_UA_prime = 0.999; // (Z_MAX - Z) / Z_MAX
@@ -1369,7 +1369,7 @@ public:
         setMetadata("equation", "exp(-R_EB/r) with R_EB = k_R * Z");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double /* t */, const std::map<std::string, double> & /* params */) const override
     {
         double R_EB = getDynamicParameter("R_EB", 1.0);
         double r = getDynamicParameter("r_distance", 1e20);
@@ -1398,7 +1398,7 @@ public:
         setMetadata("equation", "E = (U_m / rho_vac_UA) * (1/r)");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double /* t */, const std::map<std::string, double> & /* params */) const override
     {
         double U_m = getDynamicParameter("U_m", 7.97717e-22); // From Source167 test
         double r = getDynamicParameter("r_distance", 1e20);
@@ -1428,7 +1428,7 @@ public:
         setMetadata("equation", "eta = k_eta * exp(-SSQ*n/26) * exp(-(pi-t)) * (U_m/rho_vac)");
     }
 
-    double compute(double t, const std::map<std::string, double> &params) const override
+    double compute(double t, const std::map<std::string, double> & /* params */) const override
     {
         const double k_eta = 2.75e8;
         const double SSQ = 1.0;
