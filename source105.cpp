@@ -16,7 +16,6 @@
 #include <iostream>
 #include <iomanip>
 
-
 #include <map>
 #include <vector>
 #include <functional>
@@ -36,7 +35,8 @@
 // SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
 // ===========================================================================================
 
-class PhysicsTerm {
+class PhysicsTerm
+{
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
     std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
@@ -45,18 +45,17 @@ class PhysicsTerm {
     bool enableLogging;
     double learningRate;
 
-
 public:
     virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double>& params) const = 0;
+    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
     virtual std::string getName() const = 0;
     virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double>& params) const { return true; }
+    virtual bool validate(const std::map<std::string, double> &params) const { return true; }
 };
 
-class DynamicVacuumTerm : public PhysicsTerm {
+class DynamicVacuumTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double amplitude;
@@ -69,23 +68,23 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15) 
+    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15)
         : amplitude(amp), frequency(freq) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
         return amplitude * rho_vac * std::sin(frequency * t);
     }
-    
+
     std::string getName() const override { return "DynamicVacuum"; }
     std::string getDescription() const override { return "Time-varying vacuum energy"; }
 };
 
-class QuantumCouplingTerm : public PhysicsTerm {
+class QuantumCouplingTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double coupling_strength;
@@ -97,17 +96,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
     QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
         double M = params.count("M") ? params.at("M") : 1.989e30;
         double r = params.count("r") ? params.at("r") : 1e4;
         return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
     }
-    
+
     std::string getName() const override { return "QuantumCoupling"; }
     std::string getDescription() const override { return "Non-local quantum effects"; }
 };
@@ -116,9 +115,9 @@ public:
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
 // ===========================================================================================
 
-class GalacticBlackHoleModule {
+class GalacticBlackHoleModule
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
@@ -134,23 +133,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
-
 public:
     // Constructor: Initialize with framework defaults
     GalacticBlackHoleModule();
 
     // Dynamic variable operations
-    void updateVariable(const std::string& name, double value);
-    void addToVariable(const std::string& name, double delta);
-    void subtractFromVariable(const std::string& name, double delta);
+    void updateVariable(const std::string &name, double value);
+    void addToVariable(const std::string &name, double delta);
+    void subtractFromVariable(const std::string &name, double delta);
 
     // Core computations
-    double computeM_bh();  // 8.15e36 kg
-    double computeM_bhInMsun();  // ?4.1e6 M_sun
-    double computeMbhOverDg();  // M_bh / d_g (kg/m)
-    double computeU_b1();  // Universal Buoyancy example (J/m^3)
-    double computeU_g4();  // Ug4 example (J/m^3)
+    double computeM_bh(); // 8.15e36 kg
 
     // Output descriptive text
     std::string getEquationText();
@@ -165,77 +158,91 @@ public:
 // // // #include "GalacticBlackHoleModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
-GalacticBlackHoleModule::GalacticBlackHoleModule() {
-        enableDynamicTerms = true;
-        enableLogging = false;
-        learningRate = 0.001;
-        metadata["enhanced"] = "true";
-        metadata["version"] = "2.0-Enhanced";
+GalacticBlackHoleModule::GalacticBlackHoleModule()
+{
+    enableDynamicTerms = true;
+    enableLogging = false;
+    learningRate = 0.001;
+    metadata["enhanced"] = "true";
+    metadata["version"] = "2.0-Enhanced";
 
     // Universal constants
-    variables["M_sun"] = 1.989e30;                  // kg
-    variables["M_bh"] = 8.15e36;                    // kg (Sgr A*)
+    variables["M_sun"] = 1.989e30; // kg
+    variables["M_bh"] = 8.15e36;   // kg (Sgr A*)
 
     // Shared params for terms
-    variables["beta_1"] = 0.6;                      // Unitless
-    variables["U_g1"] = 1.39e26;                    // J/m^3
-    variables["Omega_g"] = 7.3e-16;                 // rad/s
-    variables["d_g"] = 2.55e20;                     // m
-    variables["epsilon_sw"] = 0.001;                // Unitless
-    variables["rho_vac_sw"] = 8e-21;                // J/m^3
-    variables["U_UA"] = 1.0;                        // Normalized
-    variables["t_n"] = 0.0;                         // s
+    variables["beta_1"] = 0.6;       // Unitless
+    variables["U_g1"] = 1.39e26;     // J/m^3
+    variables["Omega_g"] = 7.3e-16;  // rad/s
+    variables["d_g"] = 2.55e20;      // m
+    variables["epsilon_sw"] = 0.001; // Unitless
+    variables["rho_vac_sw"] = 8e-21; // J/m^3
+    variables["U_UA"] = 1.0;         // Normalized
+    variables["t_n"] = 0.0;          // s
     variables["pi"] = 3.141592653589793;
 
     // Ug4 params
-    variables["k_4"] = 1.0;                         // Unitless
-    variables["rho_vac_SCm"] = 7.09e-37;            // J/m^3
-    variables["alpha"] = 0.001;                     // s^-1
-    variables["f_feedback"] = 0.1;                  // Unitless
+    variables["k_4"] = 1.0;              // Unitless
+    variables["rho_vac_SCm"] = 7.09e-37; // J/m^3
+    variables["alpha"] = 0.001;          // s^-1
+    variables["f_feedback"] = 0.1;       // Unitless
 }
 
 // Update variable
-void GalacticBlackHoleModule::updateVariable(const std::string& name, double value) {
-    if (variables.find(name) != variables.end()) {
+void GalacticBlackHoleModule::updateVariable(const std::string &name, double value)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] = value;
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with value " << value << std::endl;
         variables[name] = value;
     }
 }
 
 // Add delta
-void GalacticBlackHoleModule::addToVariable(const std::string& name, double delta) {
-    if (variables.find(name) != variables.end()) {
+void GalacticBlackHoleModule::addToVariable(const std::string &name, double delta)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] += delta;
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with delta " << delta << std::endl;
         variables[name] = delta;
     }
 }
 
 // Subtract delta
-void GalacticBlackHoleModule::subtractFromVariable(const std::string& name, double delta) {
+void GalacticBlackHoleModule::subtractFromVariable(const std::string &name, double delta)
+{
     addToVariable(name, -delta);
 }
 
 // Compute M_bh (kg)
-double GalacticBlackHoleModule::computeM_bh() {
+double GalacticBlackHoleModule::computeM_bh()
+{
     return variables["M_bh"];
 }
 
 // M_bh in M_sun
-double GalacticBlackHoleModule::computeM_bhInMsun() {
+double GalacticBlackHoleModule::computeM_bhInMsun()
+{
     return computeM_bh() / variables["M_sun"];
 }
 
 // M_bh / d_g (kg/m)
-double GalacticBlackHoleModule::computeMbhOverDg() {
+double GalacticBlackHoleModule::computeMbhOverDg()
+{
     return computeM_bh() / variables["d_g"];
 }
 
 // U_b1 example (J/m^3)
-double GalacticBlackHoleModule::computeU_b1() {
+double GalacticBlackHoleModule::computeU_b1()
+{
     double beta_1 = variables["beta_1"];
     double U_g1 = variables["U_g1"];
     double Omega_g = variables["Omega_g"];
@@ -247,18 +254,20 @@ double GalacticBlackHoleModule::computeU_b1() {
 }
 
 // U_g4 example (J/m^3)
-double GalacticBlackHoleModule::computeU_g4() {
+double GalacticBlackHoleModule::computeU_g4()
+{
     double k_4 = variables["k_4"];
     double rho_vac_SCm = variables["rho_vac_SCm"];
     double mbh_over_dg = computeMbhOverDg();
-    double exp_term = std::exp( - variables["alpha"] * variables["t_n"] );
+    double exp_term = std::exp(-variables["alpha"] * variables["t_n"]);
     double cos_term = std::cos(variables["pi"] * variables["t_n"]);
     double feedback_factor = 1.0 + variables["f_feedback"];
     return k_4 * (rho_vac_SCm * computeM_bh() / variables["d_g"]) * exp_term * cos_term * feedback_factor;
 }
 
 // Equation text
-std::string GalacticBlackHoleModule::getEquationText() {
+std::string GalacticBlackHoleModule::getEquationText()
+{
     return "U_bi = -?_i U_gi ?_g (M_bh / d_g) (1 + ?_sw ?_vac,sw) U_UA cos(? t_n)\n"
            "U_g4 = k_4 (?_vac,[SCm] M_bh / d_g) e^{-? t} cos(? t_n) (1 + f_feedback)\n"
            "Where M_bh = 8.15e36 kg ?4.1e6 M_sun (Sgr A*).\n"
@@ -269,9 +278,11 @@ std::string GalacticBlackHoleModule::getEquationText() {
 }
 
 // Print variables
-void GalacticBlackHoleModule::printVariables() {
+void GalacticBlackHoleModule::printVariables()
+{
     std::cout << "Current Variables:\n";
-    for (const auto& pair : variables) {
+    for (const auto &pair : variables)
+    {
         std::cout << pair.first << " = " << std::scientific << pair.second << std::endl;
     }
 }

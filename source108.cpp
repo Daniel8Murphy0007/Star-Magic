@@ -16,7 +16,6 @@
 #include <iostream>
 #include <iomanip>
 
-
 #include <map>
 #include <vector>
 #include <functional>
@@ -36,7 +35,8 @@
 // SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
 // ===========================================================================================
 
-class PhysicsTerm {
+class PhysicsTerm
+{
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
     std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
@@ -45,18 +45,17 @@ class PhysicsTerm {
     bool enableLogging;
     double learningRate;
 
-
 public:
     virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double>& params) const = 0;
+    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
     virtual std::string getName() const = 0;
     virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double>& params) const { return true; }
+    virtual bool validate(const std::map<std::string, double> &params) const { return true; }
 };
 
-class DynamicVacuumTerm : public PhysicsTerm {
+class DynamicVacuumTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double amplitude;
@@ -69,23 +68,23 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15) 
+    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15)
         : amplitude(amp), frequency(freq) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
         return amplitude * rho_vac * std::sin(frequency * t);
     }
-    
+
     std::string getName() const override { return "DynamicVacuum"; }
     std::string getDescription() const override { return "Time-varying vacuum energy"; }
 };
 
-class QuantumCouplingTerm : public PhysicsTerm {
+class QuantumCouplingTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double coupling_strength;
@@ -97,17 +96,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
     QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
         double M = params.count("M") ? params.at("M") : 1.989e30;
         double r = params.count("r") ? params.at("r") : 1e4;
         return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
     }
-    
+
     std::string getName() const override { return "QuantumCoupling"; }
     std::string getDescription() const override { return "Non-local quantum effects"; }
 };
@@ -116,9 +115,9 @@ public:
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
 // ===========================================================================================
 
-class CorePenetrationModule {
+class CorePenetrationModule
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
@@ -131,21 +130,18 @@ private:
     bool enableLogging;
     double learningRate;
 
-
-
 public:
     // Constructor: Initialize with framework defaults (Sun)
     CorePenetrationModule();
 
     // Dynamic variable operations
-    void updateVariable(const std::string& name, double value);
-    void addToVariable(const std::string& name, double delta);
-    void subtractFromVariable(const std::string& name, double delta);
+    void updateVariable(const std::string &name, double value);
+    void addToVariable(const std::string &name, double delta);
+    void subtractFromVariable(const std::string &name, double delta);
 
     // Core computations
-    double computeP_core();  // ?1 for Sun (unitless)
-    double computeU_g3(double t);  // U_g3 with P_core (J/m^3)
-    double computeU_g3_planet(double t);  // For planet P_core=1e-3
+    double computeP_core();              // ?1 for Sun (unitless)
+    double computeU_g3_planet(double t); // For planet P_core=1e-3
 
     // Output descriptive text
     std::string getEquationText();
@@ -160,59 +156,71 @@ public:
 // // // #include "CorePenetrationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults (Sun at t=0)
-CorePenetrationModule::CorePenetrationModule() {
-        enableDynamicTerms = true;
-        enableLogging = false;
-        learningRate = 0.001;
-        metadata["enhanced"] = "true";
-        metadata["version"] = "2.0-Enhanced";
+CorePenetrationModule::CorePenetrationModule()
+{
+    enableDynamicTerms = true;
+    enableLogging = false;
+    learningRate = 0.001;
+    metadata["enhanced"] = "true";
+    metadata["version"] = "2.0-Enhanced";
 
     // Universal constants
-    variables["P_core"] = 1.0;                      // Unitless ?1 for Sun
-    variables["k_3"] = 1.8;                         // Coupling
-    variables["B_j"] = 1e3;                         // T (base)
-    variables["omega_s"] = 2.5e-6;                  // rad/s
-    variables["P_core_planet"] = 1e-3;              // For planets
-    variables["E_react"] = 1e46;                    // J
+    variables["P_core"] = 1.0;         // Unitless ?1 for Sun
+    variables["k_3"] = 1.8;            // Coupling
+    variables["B_j"] = 1e3;            // T (base)
+    variables["omega_s"] = 2.5e-6;     // rad/s
+    variables["P_core_planet"] = 1e-3; // For planets
+    variables["E_react"] = 1e46;       // J
     variables["pi"] = 3.141592653589793;
-    variables["t"] = 0.0;                           // s
+    variables["t"] = 0.0; // s
 }
 
 // Update variable
-void CorePenetrationModule::updateVariable(const std::string& name, double value) {
-    if (variables.find(name) != variables.end()) {
+void CorePenetrationModule::updateVariable(const std::string &name, double value)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] = value;
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with value " << value << std::endl;
         variables[name] = value;
     }
 }
 
 // Add delta
-void CorePenetrationModule::addToVariable(const std::string& name, double delta) {
-    if (variables.find(name) != variables.end()) {
+void CorePenetrationModule::addToVariable(const std::string &name, double delta)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] += delta;
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with delta " << delta << std::endl;
         variables[name] = delta;
     }
 }
 
 // Subtract delta
-void CorePenetrationModule::subtractFromVariable(const std::string& name, double delta) {
+void CorePenetrationModule::subtractFromVariable(const std::string &name, double delta)
+{
     addToVariable(name, -delta);
 }
 
 // Compute P_core ?1
-double CorePenetrationModule::computeP_core() {
+double CorePenetrationModule::computeP_core()
+{
     return variables["P_core"];
 }
 
 // Compute U_g3 with P_core
-double CorePenetrationModule::computeU_g3(double t) {
+double CorePenetrationModule::computeU_g3(double t)
+{
     variables["t"] = t;
     double k_3 = variables["k_3"];
-    double b_j = variables["B_j"];  // Simplified, no sin term in example
+    double b_j = variables["B_j"]; // Simplified, no sin term in example
     double cos_term = std::cos(variables["omega_s"] * t * variables["pi"]);
     double p_core = computeP_core();
     double e_react = variables["E_react"];
@@ -220,7 +228,8 @@ double CorePenetrationModule::computeU_g3(double t) {
 }
 
 // U_g3 for planet (P_core=1e-3)
-double CorePenetrationModule::computeU_g3_planet(double t) {
+double CorePenetrationModule::computeU_g3_planet(double t)
+{
     double orig_p = variables["P_core"];
     variables["P_core"] = variables["P_core_planet"];
     double result = computeU_g3(t);
@@ -229,7 +238,8 @@ double CorePenetrationModule::computeU_g3_planet(double t) {
 }
 
 // Equation text
-std::string CorePenetrationModule::getEquationText() {
+std::string CorePenetrationModule::getEquationText()
+{
     return "U_g3 = k_3 * ?_j B_j(r,?,t,?_vac,[SCm]) * cos(?_s(t) t ?) * P_core * E_react\n"
            "Where P_core ?1 (unitless for Sun, ~1e-3 for planets; core penetration).\n"
            "Scales magnetic disk gravity for core [SCm] influence.\n"
@@ -240,9 +250,11 @@ std::string CorePenetrationModule::getEquationText() {
 }
 
 // Print variables
-void CorePenetrationModule::printVariables() {
+void CorePenetrationModule::printVariables()
+{
     std::cout << "Current Variables:\n";
-    for (const auto& pair : variables) {
+    for (const auto &pair : variables)
+    {
         std::cout << pair.first << " = " << std::scientific << pair.second << std::endl;
     }
 }

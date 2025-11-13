@@ -16,7 +16,6 @@
 #include <iostream>
 #include <iomanip>
 
-
 #include <map>
 #include <vector>
 #include <functional>
@@ -36,7 +35,8 @@
 // SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
 // ===========================================================================================
 
-class PhysicsTerm {
+class PhysicsTerm
+{
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
     std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
@@ -45,18 +45,17 @@ class PhysicsTerm {
     bool enableLogging;
     double learningRate;
 
-
 public:
     virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double>& params) const = 0;
+    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
     virtual std::string getName() const = 0;
     virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double>& params) const { return true; }
+    virtual bool validate(const std::map<std::string, double> &params) const { return true; }
 };
 
-class DynamicVacuumTerm : public PhysicsTerm {
+class DynamicVacuumTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double amplitude;
@@ -69,23 +68,23 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15) 
+    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15)
         : amplitude(amp), frequency(freq) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
         return amplitude * rho_vac * std::sin(frequency * t);
     }
-    
+
     std::string getName() const override { return "DynamicVacuum"; }
     std::string getDescription() const override { return "Time-varying vacuum energy"; }
 };
 
-class QuantumCouplingTerm : public PhysicsTerm {
+class QuantumCouplingTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double coupling_strength;
@@ -97,17 +96,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
     QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
         double M = params.count("M") ? params.at("M") : 1.989e30;
         double r = params.count("r") ? params.at("r") : 1e4;
         return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
     }
-    
+
     std::string getName() const override { return "QuantumCoupling"; }
     std::string getDescription() const override { return "Non-local quantum effects"; }
 };
@@ -116,9 +115,9 @@ public:
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
 // ===========================================================================================
 
-class NegativeTimeModule {
+class NegativeTimeModule
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
@@ -132,23 +131,20 @@ private:
     bool enableLogging;
     double learningRate;
 
-
-
 public:
     // Constructor: Initialize with framework defaults
     NegativeTimeModule();
 
     // Dynamic variable operations
-    void updateVariable(const std::string& name, double value);
-    void addToVariable(const std::string& name, double delta);
-    void subtractFromVariable(const std::string& name, double delta);
+    void updateVariable(const std::string &name, double value);
+    void addToVariable(const std::string &name, double delta);
+    void subtractFromVariable(const std::string &name, double delta);
 
     // Core computations
-    double computeT_n(double t);  // t_n = t - t_0 (s/days)
-    double computeCosPiTn(double t);  // cos(? t_n)
-    double computeExpTerm(double gamma, double t);  // exp(-? t cos(? t_n))
-    double computeOneMinusExp(double gamma, double t);  // 1 - exp(-? t cos(? t_n))
-    double computeUmExample(double t, double mu_over_rj = 2.26e10);  // Simplified U_m contrib
+    double computeT_n(double t);                                    // t_n = t - t_0 (s/days)
+    double computeExpTerm(double gamma, double t);                  // exp(-? t cos(? t_n))
+    double computeOneMinusExp(double gamma, double t);              // 1 - exp(-? t cos(? t_n))
+    double computeUmExample(double t, double mu_over_rj = 2.26e10); // Simplified U_m contrib
 
     // Output descriptive text
     std::string getEquationText();
@@ -166,76 +162,91 @@ public:
 // // // #include "NegativeTimeModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
-NegativeTimeModule::NegativeTimeModule() {
-        enableDynamicTerms = true;
-        enableLogging = false;
-        learningRate = 0.001;
-        metadata["enhanced"] = "true";
-        metadata["version"] = "2.0-Enhanced";
+NegativeTimeModule::NegativeTimeModule()
+{
+    enableDynamicTerms = true;
+    enableLogging = false;
+    learningRate = 0.001;
+    metadata["enhanced"] = "true";
+    metadata["version"] = "2.0-Enhanced";
 
     // Universal constants
-    variables["t_0"] = 0.0;                         // Reference time (s/days)
-    variables["t"] = 0.0;                           // Current time
-    variables["gamma"] = 5e-5;                      // day^-1 (example)
+    variables["t_0"] = 0.0;    // Reference time (s/days)
+    variables["t"] = 0.0;      // Current time
+    variables["gamma"] = 5e-5; // day^-1 (example)
     variables["pi"] = 3.141592653589793;
-    variables["mu_over_rj"] = 2.26e10;              // T m^2 (example)
-    variables["P_SCm"] = 1.0;                       // Normalized
-    variables["E_react"] = 1e46;                    // J
-    variables["heaviside_f"] = 1e11 + 1.0;          // 1 + 10^13 * 0.01
-    variables["quasi_f"] = 1.01;                    // 1 + 0.01
+    variables["mu_over_rj"] = 2.26e10;     // T m^2 (example)
+    variables["P_SCm"] = 1.0;              // Normalized
+    variables["E_react"] = 1e46;           // J
+    variables["heaviside_f"] = 1e11 + 1.0; // 1 + 10^13 * 0.01
+    variables["quasi_f"] = 1.01;           // 1 + 0.01
 }
 
 // Update variable
-void NegativeTimeModule::updateVariable(const std::string& name, double value) {
-    if (variables.find(name) != variables.end()) {
+void NegativeTimeModule::updateVariable(const std::string &name, double value)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] = value;
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with value " << value << std::endl;
         variables[name] = value;
     }
 }
 
 // Add delta
-void NegativeTimeModule::addToVariable(const std::string& name, double delta) {
-    if (variables.find(name) != variables.end()) {
+void NegativeTimeModule::addToVariable(const std::string &name, double delta)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] += delta;
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with delta " << delta << std::endl;
         variables[name] = delta;
     }
 }
 
 // Subtract delta
-void NegativeTimeModule::subtractFromVariable(const std::string& name, double delta) {
+void NegativeTimeModule::subtractFromVariable(const std::string &name, double delta)
+{
     addToVariable(name, -delta);
 }
 
 // Compute t_n = t - t_0
-double NegativeTimeModule::computeT_n(double t) {
+double NegativeTimeModule::computeT_n(double t)
+{
     variables["t"] = t;
     return t - variables["t_0"];
 }
 
 // Compute cos(? t_n)
-double NegativeTimeModule::computeCosPiTn(double t) {
+double NegativeTimeModule::computeCosPiTn(double t)
+{
     double t_n = computeT_n(t);
     return std::cos(variables["pi"] * t_n);
 }
 
 // Compute exp(-? t cos(? t_n))
-double NegativeTimeModule::computeExpTerm(double gamma, double t) {
+double NegativeTimeModule::computeExpTerm(double gamma, double t)
+{
     double cos_pi_tn = computeCosPiTn(t);
-    double arg = - gamma * t * cos_pi_tn;
+    double arg = -gamma * t * cos_pi_tn;
     return std::exp(arg);
 }
 
 // Compute 1 - exp(-? t cos(? t_n))
-double NegativeTimeModule::computeOneMinusExp(double gamma, double t) {
+double NegativeTimeModule::computeOneMinusExp(double gamma, double t)
+{
     return 1.0 - computeExpTerm(gamma, t);
 }
 
 // Simplified U_m example contrib
-double NegativeTimeModule::computeUmExample(double t, double mu_over_rj) {
+double NegativeTimeModule::computeUmExample(double t, double mu_over_rj)
+{
     double gamma = variables["gamma"];
     double one_minus_exp = computeOneMinusExp(gamma, t);
     double phi_hat = 1.0;
@@ -247,7 +258,8 @@ double NegativeTimeModule::computeUmExample(double t, double mu_over_rj) {
 }
 
 // Equation text
-std::string NegativeTimeModule::getEquationText() {
+std::string NegativeTimeModule::getEquationText()
+{
     return "t_n = t - t_0 (s/days, allows t_n < 0 for time-reversal);\n"
            "Used in: cos(? t_n) for oscillations; exp(-? t cos(? t_n)) for decay/growth.\n"
            "In U_m: ... (1 - exp(-? t cos(? t_n))) ...;\n"
@@ -258,16 +270,19 @@ std::string NegativeTimeModule::getEquationText() {
 }
 
 // Print variables
-void NegativeTimeModule::printVariables() {
+void NegativeTimeModule::printVariables()
+{
     std::cout << "Current Variables:\n";
-    for (const auto& pair : variables) {
+    for (const auto &pair : variables)
+    {
         std::cout << pair.first << " = " << std::scientific << pair.second << std::endl;
     }
 }
 
 // Print effects for positive/negative t_n
-void NegativeTimeModule::printTnEffects(double t, double gamma) {
-    double t_n_pos = computeT_n(t);  // Positive example
+void NegativeTimeModule::printTnEffects(double t, double gamma)
+{
+    double t_n_pos = computeT_n(t); // Positive example
     double cos_pos = computeCosPiTn(t);
     double exp_pos = computeExpTerm(gamma, t);
     double one_minus_pos = computeOneMinusExp(gamma, t);
@@ -275,14 +290,14 @@ void NegativeTimeModule::printTnEffects(double t, double gamma) {
 
     // Negative t_n: adjust t_0 to make t_n negative
     double orig_t0 = variables["t_0"];
-    variables["t_0"] = t + 1.0;  // t_n = t - (t+1) = -1
+    variables["t_0"] = t + 1.0; // t_n = t - (t+1) = -1
     double t_n_neg = computeT_n(t);
     double cos_neg = computeCosPiTn(t);
     double exp_neg = computeExpTerm(gamma, t);
     double one_minus_neg = computeOneMinusExp(gamma, t);
     double um_neg = computeUmExample(t);
 
-    variables["t_0"] = orig_t0;  // Restore
+    variables["t_0"] = orig_t0; // Restore
 
     std::cout << "t_n Effects at t=" << t << " (?=" << gamma << "):\n";
     std::cout << "Positive t_n (" << t_n_pos << "): cos(? t_n)=" << cos_pos << ", 1-exp=" << one_minus_pos << ", U_m?" << um_pos << " J/m�\n";

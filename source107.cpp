@@ -16,7 +16,6 @@
 #include <iostream>
 #include <iomanip>
 
-
 #include <map>
 #include <vector>
 #include <functional>
@@ -36,7 +35,8 @@
 // SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
 // ===========================================================================================
 
-class PhysicsTerm {
+class PhysicsTerm
+{
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
     std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
@@ -45,18 +45,17 @@ class PhysicsTerm {
     bool enableLogging;
     double learningRate;
 
-
 public:
     virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double>& params) const = 0;
+    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
     virtual std::string getName() const = 0;
     virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double>& params) const { return true; }
+    virtual bool validate(const std::map<std::string, double> &params) const { return true; }
 };
 
-class DynamicVacuumTerm : public PhysicsTerm {
+class DynamicVacuumTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double amplitude;
@@ -69,23 +68,23 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15) 
+    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15)
         : amplitude(amp), frequency(freq) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
         return amplitude * rho_vac * std::sin(frequency * t);
     }
-    
+
     std::string getName() const override { return "DynamicVacuum"; }
     std::string getDescription() const override { return "Time-varying vacuum energy"; }
 };
 
-class QuantumCouplingTerm : public PhysicsTerm {
+class QuantumCouplingTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double coupling_strength;
@@ -97,17 +96,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
     QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
         double M = params.count("M") ? params.at("M") : 1.989e30;
         double r = params.count("r") ? params.at("r") : 1e4;
         return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
     }
-    
+
     std::string getName() const override { return "QuantumCoupling"; }
     std::string getDescription() const override { return "Non-local quantum effects"; }
 };
@@ -116,9 +115,9 @@ public:
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
 // ===========================================================================================
 
-class PiConstantModule {
+class PiConstantModule
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
@@ -134,23 +133,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
-
 public:
     // Constructor: Initialize with framework defaults
     PiConstantModule();
 
     // Dynamic variable operations
-    void updateVariable(const std::string& name, double value);
-    void addToVariable(const std::string& name, double delta);
-    void subtractFromVariable(const std::string& name, double delta);
+    void updateVariable(const std::string &name, double value);
+    void addToVariable(const std::string &name, double delta);
+    void subtractFromVariable(const std::string &name, double delta);
 
     // Core computations
-    double computePi();  // ?3.141592653589793 (unitless)
-    double computeCosPiTn(double t_n);  // cos(? t_n)
-    double computeSinOmegaCT(double t);  // sin(?_c t), ?_c=2? / period
-    double computeMuJExample(double t);  // Example ?_j with sin(?_c t)
-    double computeUg1CosTerm(double t_n);  // cos(? t_n) in U_g1
+    double computePi(); // ?3.141592653589793 (unitless)
 
     // Output descriptive text
     std::string getEquationText();
@@ -165,85 +158,103 @@ public:
 // // // #include "PiConstantModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
-PiConstantModule::PiConstantModule() {
-        enableDynamicTerms = true;
-        enableLogging = false;
-        learningRate = 0.001;
-        metadata["enhanced"] = "true";
-        metadata["version"] = "2.0-Enhanced";
+PiConstantModule::PiConstantModule()
+{
+    enableDynamicTerms = true;
+    enableLogging = false;
+    learningRate = 0.001;
+    metadata["enhanced"] = "true";
+    metadata["version"] = "2.0-Enhanced";
 
     // Mathematical constants
-    variables["pi"] = 3.141592653589793;            // Unitless
-    variables["t_n"] = 0.0;                         // Negative time factor
-    variables["t"] = 0.0;                           // Time
-    variables["period"] = 3.96e8;                   // s (example solar cycle)
-    variables["omega_c"] = 2.0 * variables["pi"] / variables["period"];  // rad/s
-    variables["base_mu"] = 3.38e20;                 // T�m^3
-    variables["B_j"] = 1e3;                         // Base T
+    variables["pi"] = 3.141592653589793;                                // Unitless
+    variables["t_n"] = 0.0;                                             // Negative time factor
+    variables["t"] = 0.0;                                               // Time
+    variables["period"] = 3.96e8;                                       // s (example solar cycle)
+    variables["omega_c"] = 2.0 * variables["pi"] / variables["period"]; // rad/s
+    variables["base_mu"] = 3.38e20;                                     // T�m^3
+    variables["B_j"] = 1e3;                                             // Base T
 }
 
 // Update variable
-void PiConstantModule::updateVariable(const std::string& name, double value) {
-    if (variables.find(name) != variables.end()) {
+void PiConstantModule::updateVariable(const std::string &name, double value)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] = value;
-        if (name == "period") {
+        if (name == "period")
+        {
             variables["omega_c"] = 2.0 * variables["pi"] / value;
         }
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with value " << value << std::endl;
         variables[name] = value;
     }
 }
 
 // Add delta
-void PiConstantModule::addToVariable(const std::string& name, double delta) {
-    if (variables.find(name) != variables.end()) {
+void PiConstantModule::addToVariable(const std::string &name, double delta)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] += delta;
-        if (name == "period") {
+        if (name == "period")
+        {
             variables["omega_c"] = 2.0 * variables["pi"] / variables[name];
         }
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with delta " << delta << std::endl;
         variables[name] = delta;
     }
 }
 
 // Subtract delta
-void PiConstantModule::subtractFromVariable(const std::string& name, double delta) {
+void PiConstantModule::subtractFromVariable(const std::string &name, double delta)
+{
     addToVariable(name, -delta);
 }
 
 // Compute ?
-double PiConstantModule::computePi() {
+double PiConstantModule::computePi()
+{
     return variables["pi"];
 }
 
 // Compute cos(? t_n)
-double PiConstantModule::computeCosPiTn(double t_n) {
+double PiConstantModule::computeCosPiTn(double t_n)
+{
     variables["t_n"] = t_n;
     return std::cos(computePi() * t_n);
 }
 
 // Compute sin(?_c t)
-double PiConstantModule::computeSinOmegaCT(double t) {
+double PiConstantModule::computeSinOmegaCT(double t)
+{
     variables["t"] = t;
     return std::sin(variables["omega_c"] * t);
 }
 
 // Example ?_j = (10^3 + 0.4 sin(?_c t)) * 3.38e20 T�m^3
-double PiConstantModule::computeMuJExample(double t) {
+double PiConstantModule::computeMuJExample(double t)
+{
     double sin_omega = computeSinOmegaCT(t);
     double b_j = variables["B_j"] + 0.4 * sin_omega;
     return b_j * variables["base_mu"];
 }
 
 // Example cos(? t_n) in U_g1
-double PiConstantModule::computeUg1CosTerm(double t_n) {
+double PiConstantModule::computeUg1CosTerm(double t_n)
+{
     return computeCosPiTn(t_n);
 }
 
 // Equation text
-std::string PiConstantModule::getEquationText() {
+std::string PiConstantModule::getEquationText()
+{
     return "? ? 3.141592653589793 (unitless mathematical constant).\n"
            "Role: Defines periodicity in oscillations; C=2? r; trig args (sin/cos with 2? cycle).\n"
            "In U_m: ?_j = (10^3 + 0.4 sin(?_c t)) * 3.38e20; ?_c = 2? / period.\n"
@@ -253,9 +264,11 @@ std::string PiConstantModule::getEquationText() {
 }
 
 // Print variables
-void PiConstantModule::printVariables() {
+void PiConstantModule::printVariables()
+{
     std::cout << "Current Variables:\n";
-    for (const auto& pair : variables) {
+    for (const auto &pair : variables)
+    {
         std::cout << pair.first << " = " << std::scientific << pair.second << std::endl;
     }
 }
