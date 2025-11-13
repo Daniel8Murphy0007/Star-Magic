@@ -67,7 +67,7 @@ public:
 #endif // UQFF_BUOYANCY_MODULE_H
 
 // Set system-specific parameters
-void setSystemParams(system)
+void setSystemParams(const std::string &system)
 {
     if (system == "CrabNebula")
     {

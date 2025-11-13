@@ -22,7 +22,6 @@
 #include <complex>
 #include <sstream>
 
-
 #include <map>
 #include <vector>
 #include <functional>
@@ -44,7 +43,8 @@ using cdouble = std::complex<double>;
 // SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
 // ===========================================================================================
 
-class PhysicsTerm {
+class PhysicsTerm
+{
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
     std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
@@ -53,18 +53,17 @@ class PhysicsTerm {
     bool enableLogging;
     double learningRate;
 
-
 public:
     virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double>& params) const = 0;
+    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
     virtual std::string getName() const = 0;
     virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double>& params) const { return true; }
+    virtual bool validate(const std::map<std::string, double> &params) const { return true; }
 };
 
-class DynamicVacuumTerm : public PhysicsTerm {
+class DynamicVacuumTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double amplitude;
@@ -77,23 +76,23 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15) 
+    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15)
         : amplitude(amp), frequency(freq) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
         return amplitude * rho_vac * std::sin(frequency * t);
     }
-    
+
     std::string getName() const override { return "DynamicVacuum"; }
     std::string getDescription() const override { return "Time-varying vacuum energy"; }
 };
 
-class QuantumCouplingTerm : public PhysicsTerm {
+class QuantumCouplingTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double coupling_strength;
@@ -105,17 +104,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
     QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
         double M = params.count("M") ? params.at("M") : 1.989e30;
         double r = params.count("r") ? params.at("r") : 1e4;
         return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
     }
-    
+
     std::string getName() const override { return "QuantumCoupling"; }
     std::string getDescription() const override { return "Non-local quantum effects"; }
 };
@@ -124,22 +123,22 @@ public:
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
 // ===========================================================================================
 
-class UQFFBuoyancyAstroModule {
+class UQFFBuoyancyAstroModule
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, cdouble> variables;
-    cdouble computeIntegrand(double t, const std::string& system);
-    cdouble computeDPM_resonance(const std::string& system);
-    cdouble computeX2(const std::string& system);
+    cdouble computeIntegrand(double t, const std::string &system);
+    cdouble computeDPM_resonance(const std::string &system);
+    cdouble computeX2(const std::string &system);
     cdouble computeQuadraticRoot(cdouble a, cdouble b, cdouble c);
-    cdouble computeLENRTerm(const std::string& system);
-    double computeG(double t, const std::string& system);
-    cdouble computeQ_wave(double t, const std::string& system);
-    cdouble computeUb1(const std::string& system);
-    cdouble computeUi(double t, const std::string& system);
-    void setSystemParams(const std::string& system);
+    cdouble computeLENRTerm(const std::string &system);
+    double computeG(double t, const std::string &system);
+    cdouble computeQ_wave(double t, const std::string &system);
+    cdouble computeUb1(const std::string &system);
+    cdouble computeUi(double t, const std::string &system);
+    void setSystemParams(const std::string &system);
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
     std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
@@ -148,29 +147,30 @@ private:
     bool enableLogging;
     double learningRate;
 
-
-
 public:
     // Constructor: Initialize all variables with multi-system defaults
     UQFFBuoyancyAstroModule();
 
     // Dynamic variable operations (complex)
-    void updateVariable(const std::string& name, cdouble value);
-    void addToVariable(const std::string& name, cdouble delta);
-    void subtractFromVariable(const std::string& name, cdouble delta);
+    void updateVariable(const std::string &name, cdouble value);
+    void addToVariable(const std::string &name, cdouble delta);
+    void subtractFromVariable(const std::string &name, cdouble delta);
+
+    // Self-learning control
+    void enableSelfLearning(bool enable);
 
     // Core computation: Full F_U_Bi_i(r, t) for system (approx integral)
-    cdouble computeFBi(const std::string& system, double t);
+    cdouble computeFBi(const std::string &system, double t);
 
     // Sub-equations
-    cdouble computeCompressed(const std::string& system, double t);  // Integrand
-    cdouble computeResonant(const std::string& system);
-    cdouble computeBuoyancy(const std::string& system);
-    cdouble computeSuperconductive(const std::string& system, double t);
-    double computeCompressedG(const std::string& system, double t);  // g(r,t)
+    cdouble computeCompressed(const std::string &system, double t); // Integrand
+    cdouble computeResonant(const std::string &system);
+    cdouble computeBuoyancy(const std::string &system);
+    cdouble computeSuperconductive(const std::string &system, double t);
+    double computeCompressedG(const std::string &system, double t); // g(r,t)
 
     // Output descriptive text of the equation
-    std::string getEquationText(const std::string& system);
+    std::string getEquationText(const std::string &system);
 
     // Print all current variables (for debugging/updates)
     void printVariables();
@@ -182,12 +182,13 @@ public:
 // // #include "UQFFBuoyancyAstroModule.h"  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set all variables with multi-system defaults
-UQFFBuoyancyAstroModule::UQFFBuoyancyAstroModule() {
-        enableDynamicTerms = true;
-        enableLogging = false;
-        learningRate = 0.001;
-        metadata["enhanced"] = "true";
-        metadata["version"] = "2.0-Enhanced";
+UQFFBuoyancyAstroModule::UQFFBuoyancyAstroModule()
+{
+    enableDynamicTerms = true;
+    enableLogging = false;
+    learningRate = 0.001;
+    metadata["enhanced"] = "true";
+    metadata["version"] = "2.0-Enhanced";
 
     double pi_val = 3.141592653589793;
 
@@ -206,8 +207,8 @@ UQFFBuoyancyAstroModule::UQFFBuoyancyAstroModule() {
 
     // Shared params from document
     variables["F0"] = {1.83e71, 0.0};
-    variables["V"] = {1e-3, 0.0};  // Default particle velocity
-    variables["theta"] = {pi_val / 4, 0.0};  // 45 deg
+    variables["V"] = {1e-3, 0.0};           // Default particle velocity
+    variables["theta"] = {pi_val / 4, 0.0}; // 45 deg
     variables["phi"] = {pi_val / 4, 0.0};
     variables["omega_act"] = {2 * pi_val * 300, 0.0};
     variables["k_act"] = {1e-6, 0.0};
@@ -218,44 +219,47 @@ UQFFBuoyancyAstroModule::UQFFBuoyancyAstroModule() {
     variables["k_neutrino"] = {1e-15, 0.0};
     variables["k_Sweet"] = {1e-25, 0.0};
     variables["k_Kozima"] = {1e-18, 0.0};
-    variables["omega_0_LENR"] = {2 * pi_val * 1.25e12, 0.0};  // LENR resonance freq 1.2-1.3 THz
+    variables["omega_0_LENR"] = {2 * pi_val * 1.25e12, 0.0}; // LENR resonance freq 1.2-1.3 THz
     variables["k_LENR"] = {1e-10, 0.0};
-    variables["rho_vac_UA"] = {7.09e-36, 0.0};  // Vacuum energy density
-    variables["sigma_n"] = {1e-4, 0.0};  // Scaled for astrophysical densities
-    variables["E_cm"] = {189.0, 0.0};  // GeV
-    variables["E_cm_astro_local_adj_eff_enhanced"] = {1.24e24, 0.0};  // events/m3
+    variables["rho_vac_UA"] = {7.09e-36, 0.0};                       // Vacuum energy density
+    variables["sigma_n"] = {1e-4, 0.0};                              // Scaled for astrophysical densities
+    variables["E_cm"] = {189.0, 0.0};                                // GeV
+    variables["E_cm_astro_local_adj_eff_enhanced"] = {1.24e24, 0.0}; // events/m3
     variables["DPM_stability"] = {0.01, 0.0};
     variables["DPM_momentum"] = {0.93, 0.0};
     variables["DPM_gravity"] = {1.0, 0.0};
     variables["DPM_light"] = {0.01, 0.0};
-    variables["DPM_resonance"] = {1.0, 0.0};  // Default
-    variables["phase"] = {2.36e-3, 0.0};  // s^-1
+    variables["DPM_resonance"] = {1.0, 0.0}; // Default
+    variables["phase"] = {2.36e-3, 0.0};     // s^-1
     variables["curvature"] = {1e-22, 0.0};
-    variables["k_10_13"] = {1e-13, 0.0};  // For light term in quadratic
-    variables["k_b_term"] = {2.51e-5, 0.0};  // Constant in b
-    variables["c_constant"] = {-3.06e175, 0.0};  // Constant in c
-    variables["c_inv_r2_coeff"] = {1e-29, 0.0};  // 10^{-29}/r^2 in c
-    variables["a_eps_coeff"] = {1.38e-41, 0.0};  // Coefficient for first term in a (as per document)
+    variables["k_10_13"] = {1e-13, 0.0};        // For light term in quadratic
+    variables["k_b_term"] = {2.51e-5, 0.0};     // Constant in b
+    variables["c_constant"] = {-3.06e175, 0.0}; // Constant in c
+    variables["c_inv_r2_coeff"] = {1e-29, 0.0}; // 10^{-29}/r^2 in c
+    variables["a_eps_coeff"] = {1.38e-41, 0.0}; // Coefficient for first term in a (as per document)
 
     // System-specific params will be set in setSystemParams()
 }
 
 // Set system-specific parameters
-void UQFFBuoyancyAstroModule::setSystemParams(const std::string& system)
+void UQFFBuoyancyAstroModule::setSystemParams(const std::string &system)
 {
     double pi_val = variables["pi"].real();
-    if (system == "J1610+1811") {
+    if (system == "J1610+1811")
+    {
         this->variables["M"] = {2.785e30, 0.0};
         this->variables["r"] = {3.09e15, 0.0};
         this->variables["T"] = {1e4, 0.0};
         this->variables["L_X"] = {1e31, 0.0};
         this->variables["B0"] = {1e-4, 0.0};
         this->variables["omega0"] = {1e-12, 0.0};
-        this->variables["Mach"] = {1.0, 0.0};  // ℳ
+        this->variables["Mach"] = {1.0, 0.0}; // ℳ
         this->variables["C"] = {1.0, 0.0};
         this->variables["theta"] = {pi_val / 4, 0.0};
         this->variables["t"] = {3.156e10, 0.0};
-    } else if (system == "PLCK_G287.0+32.9") {
+    }
+    else if (system == "PLCK_G287.0+32.9")
+    {
         this->variables["M"] = {1.989e44, 0.0};
         this->variables["r"] = {3.09e22, 0.0};
         this->variables["T"] = {1e7, 0.0};
@@ -266,7 +270,9 @@ void UQFFBuoyancyAstroModule::setSystemParams(const std::string& system)
         this->variables["C"] = {1.2, 0.0};
         this->variables["theta"] = {pi_val / 4, 0.0};
         this->variables["t"] = {1.42e17, 0.0};
-    } else if (system == "PSZ2_G181.06+48.47") {
+    }
+    else if (system == "PSZ2_G181.06+48.47")
+    {
         this->variables["M"] = {1.989e44, 0.0};
         this->variables["r"] = {3.09e22, 0.0};
         this->variables["T"] = {1e7, 0.0};
@@ -277,18 +283,22 @@ void UQFFBuoyancyAstroModule::setSystemParams(const std::string& system)
         this->variables["C"] = {1.2, 0.0};
         this->variables["theta"] = {pi_val / 4, 0.0};
         this->variables["t"] = {2.36e17, 0.0};
-    } else if (system == "ASKAP_J1832-0911") {
+    }
+    else if (system == "ASKAP_J1832-0911")
+    {
         this->variables["M"] = {2.785e30, 0.0};
         this->variables["r"] = {4.63e16, 0.0};
         this->variables["T"] = {1e4, 0.0};
         this->variables["L_X"] = {1e31, 0.0};
         this->variables["B0"] = {1e-4, 0.0};
-        this->variables["omega0"] = {1e-12, 0.0};  // From 44-min period approx
+        this->variables["omega0"] = {1e-12, 0.0}; // From 44-min period approx
         this->variables["Mach"] = {1.0, 0.0};
         this->variables["C"] = {1.0, 0.0};
         this->variables["theta"] = {pi_val / 4, 0.0};
         this->variables["t"] = {3.156e10, 0.0};
-    } else if (system == "SonificationCollection") {
+    }
+    else if (system == "SonificationCollection")
+    {
         this->variables["M"] = {1.989e31, 0.0};
         this->variables["r"] = {6.17e16, 0.0};
         this->variables["T"] = {1e5, 0.0};
@@ -303,18 +313,22 @@ void UQFFBuoyancyAstroModule::setSystemParams(const std::string& system)
 }
 
 // Dynamic variable operations (complex)
-void UQFFBuoyancyAstroModule::updateVariable(const std::string& name, cdouble value) {
+void UQFFBuoyancyAstroModule::updateVariable(const std::string &name, cdouble value)
+{
     this->variables[name] = value;
 }
-void UQFFBuoyancyAstroModule::addToVariable(const std::string& name, cdouble delta) {
+void UQFFBuoyancyAstroModule::addToVariable(const std::string &name, cdouble delta)
+{
     this->variables[name] += delta;
 }
-void UQFFBuoyancyAstroModule::subtractFromVariable(const std::string& name, cdouble delta) {
+void UQFFBuoyancyAstroModule::subtractFromVariable(const std::string &name, cdouble delta)
+{
     this->variables[name] -= delta;
 }
 
 // Core computation: Full F_U_Bi_i(r, t) for system (approx integral)
-cdouble UQFFBuoyancyAstroModule::computeFBi(const std::string& system, double t) {
+cdouble UQFFBuoyancyAstroModule::computeFBi(const std::string &system, double t)
+{
     setSystemParams(system);
     cdouble integrand = computeIntegrand(t, system);
     cdouble x2 = computeX2(system);
@@ -327,29 +341,35 @@ cdouble UQFFBuoyancyAstroModule::computeFBi(const std::string& system, double t)
 }
 
 // Sub-equations
-cdouble UQFFBuoyancyAstroModule::computeCompressed(const std::string& system, double t) {
+cdouble UQFFBuoyancyAstroModule::computeCompressed(const std::string &system, double t)
+{
     setSystemParams(system);
     return computeIntegrand(t, system);
 }
-cdouble UQFFBuoyancyAstroModule::computeResonant(const std::string& system) {
+cdouble UQFFBuoyancyAstroModule::computeResonant(const std::string &system)
+{
     setSystemParams(system);
     return computeDPM_resonance(system);
 }
-cdouble UQFFBuoyancyAstroModule::computeBuoyancy(const std::string& system) {
+cdouble UQFFBuoyancyAstroModule::computeBuoyancy(const std::string &system)
+{
     setSystemParams(system);
     return computeUb1(system);
 }
-cdouble UQFFBuoyancyAstroModule::computeSuperconductive(const std::string& system, double t) {
+cdouble UQFFBuoyancyAstroModule::computeSuperconductive(const std::string &system, double t)
+{
     setSystemParams(system);
     return computeUi(t, system);
 }
-double UQFFBuoyancyAstroModule::computeCompressedG(const std::string& system, double t) {
+double UQFFBuoyancyAstroModule::computeCompressedG(const std::string &system, double t)
+{
     setSystemParams(system);
     return computeG(t, system);
 }
 
 // Output descriptive text of the equation
-std::string UQFFBuoyancyAstroModule::getEquationText(const std::string& system) {
+std::string UQFFBuoyancyAstroModule::getEquationText(const std::string &system)
+{
     setSystemParams(system);
     std::ostringstream oss;
     oss << "F_U_Bi_i(r, t) = Integral[Integrand(r, t) dt] approximated as Integrand * x2\n";
@@ -369,14 +389,17 @@ std::string UQFFBuoyancyAstroModule::getEquationText(const std::string& system) 
 }
 
 // Print all current variables (for debugging/updates)
-void UQFFBuoyancyAstroModule::printVariables() {
-    for (const auto& pair : variables) {
+void UQFFBuoyancyAstroModule::printVariables()
+{
+    for (const auto &pair : variables)
+    {
         std::cout << std::setw(15) << pair.first << " : " << pair.second << std::endl;
     }
 }
 
 // Compute integrand for F_U_Bi_i
-cdouble UQFFBuoyancyAstroModule::computeIntegrand(double t, const std::string& system) {
+cdouble UQFFBuoyancyAstroModule::computeIntegrand(double t, const std::string &system)
+{
     setSystemParams(system);
     double pi_val = variables["pi"].real();
     double sin_theta = sin(variables["theta"].real());
@@ -400,18 +423,21 @@ cdouble UQFFBuoyancyAstroModule::computeIntegrand(double t, const std::string& s
 }
 
 // Compute DPM resonance term
-cdouble UQFFBuoyancyAstroModule::computeDPM_resonance(const std::string& system) {
+cdouble UQFFBuoyancyAstroModule::computeDPM_resonance(const std::string &system)
+{
     setSystemParams(system);
     double g_lande = variables["g_Lande"].real();
     double mu_b = variables["mu_B"].real();
     double b0 = variables["B0"].real();
     double hbar_omega0 = variables["hbar"].real() * variables["omega0"].real();
-    if (hbar_omega0 == 0.0) return {0.0, 0.0};
+    if (hbar_omega0 == 0.0)
+        return {0.0, 0.0};
     return {g_lande * mu_b * b0 / hbar_omega0, 0.0};
 }
 
 // Compute x2 from quadratic root approximation (negative root as per doc)
-cdouble UQFFBuoyancyAstroModule::computeX2(const std::string& system) {
+cdouble UQFFBuoyancyAstroModule::computeX2(const std::string &system)
+{
     setSystemParams(system);
     double r_real = variables["r"].real();
     double r2 = r_real * r_real;
@@ -439,43 +465,52 @@ cdouble UQFFBuoyancyAstroModule::computeX2(const std::string& system) {
 }
 
 // Compute quadratic root (negative branch: [-b - sqrt(b^2 - 4ac)] / 2a)
-cdouble UQFFBuoyancyAstroModule::computeQuadraticRoot(cdouble a, cdouble b, cdouble c) {
+cdouble UQFFBuoyancyAstroModule::computeQuadraticRoot(cdouble a, cdouble b, cdouble c)
+{
     cdouble disc = b * b - 4.0 * a * c;
     double disc_real = disc.real();
-    if (disc_real < 0.0) disc_real = 0.0;  // Force real for approximation
+    if (disc_real < 0.0)
+        disc_real = 0.0; // Force real for approximation
     cdouble sqrt_disc = {sqrt(disc_real), 0.0};
     return (-b - sqrt_disc) / (2.0 * a);
 }
 
 // Compute LENR term
-cdouble UQFFBuoyancyAstroModule::computeLENRTerm(const std::string& system) {
+cdouble UQFFBuoyancyAstroModule::computeLENRTerm(const std::string &system)
+{
     setSystemParams(system);
     double omega0_real = variables["omega0"].real();
-    if (omega0_real == 0.0) return {0.0, 0.0};
+    if (omega0_real == 0.0)
+        return {0.0, 0.0};
     return variables["k_LENR"] * pow(variables["omega_0_LENR"].real() / omega0_real, 2.0);
 }
 
 // Compute gravitational acceleration g(r,t) - as per document
-double UQFFBuoyancyAstroModule::computeG(double t, const std::string& system) {
+double UQFFBuoyancyAstroModule::computeG(double t, const std::string &system)
+{
     return -1.07e16;
 }
 
 // Compute Q_wave term - as per document
-cdouble UQFFBuoyancyAstroModule::computeQ_wave(double t, const std::string& system) {
+cdouble UQFFBuoyancyAstroModule::computeQ_wave(double t, const std::string &system)
+{
     return {3.11e5, 0.0};
 }
 
 // Compute Ub1 buoyancy term
-cdouble UQFFBuoyancyAstroModule::computeUb1(const std::string& system) {
+cdouble UQFFBuoyancyAstroModule::computeUb1(const std::string &system)
+{
     return computeIntegrand(0.0, system);
 }
 
 // Compute Ui superconductive term
-cdouble UQFFBuoyancyAstroModule::computeUi(double t, const std::string& system) {
+cdouble UQFFBuoyancyAstroModule::computeUi(double t, const std::string &system)
+{
     return computeQ_wave(t, system);
 }
 
 // Dynamic method test
-void UQFFBuoyancyAstroModule::enableSelfLearning(bool enable) {
+void UQFFBuoyancyAstroModule::enableSelfLearning(bool enable)
+{
     self_learning_enabled = enable;
 }

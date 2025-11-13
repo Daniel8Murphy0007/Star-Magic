@@ -1,4 +1,4 @@
-ï»¿// README.md (for setup and starting new conversation/company)
+// README.md (for setup and starting new conversation/company)
 /*
 #CoAnQi Codebase - Unified Field Theory Simulation with 3D Graphics and Plugins
 
@@ -301,7 +301,7 @@ std::vector<CelestialBody> load_bodies(const std::string &filename)
 }
 
 // MUGE.h
-#pragma once
+// #pragma once
 
 #include <string>
 
@@ -625,7 +625,7 @@ int main(int argc, char **argv)
             westerlund.name = "Westerlund 2";
             MUGESystem pillars = {"Pillars of Creation", 1e21, 2.813e32, 1e-3, -1e-3, 3.552e48, 2e3, 3.156e13, 0.0, 8.457e-14, 1.989e32, 9.46e15, 1e-4, 1e-3, 1e-21, 1e-8, 0.0, 1e-5};
             MUGESystem rings = {"Rings of Relativity", 1e22, 1e35, 1e-4, -1e-4, 1e54, 1e5, 3.156e14, 0.01, 1e-9, 1.989e36, 3.086e17, 1e-5, 1e-4, 1e-20, 1e-5, 1e36, 1e-3};
-            MUGESystem student_guide = {"Studentâ€™s Guide to the Universe", 1e24, 1e52, 1e-6, -1e-6, 1e80, 3e8, 4.35e17, 0.0, 1e-18, 1e53, 1e26, 1e-10, 1e-9, 1e-30, 1e-10, 1e53, 1e-6};
+            MUGESystem student_guide = {"Student’s Guide to the Universe", 1e24, 1e52, 1e-6, -1e-6, 1e80, 3e8, 4.35e17, 0.0, 1e-18, 1e53, 1e26, 1e-10, 1e-9, 1e-30, 1e-10, 1e53, 1e-6};
             muge_systems = {sgr1745, sagA, tapestry, westerlund, pillars, rings, student_guide};
         }
 
@@ -675,7 +675,7 @@ int main(int argc, char **argv)
 }
 
 // FluidSolver.h
-#pragma once
+// #pragma once
 
 #include <vector>
 
@@ -879,7 +879,7 @@ void FluidSolver::print_velocity_field()
 }
 
 // UnitTests.h
-#pragma once
+// #pragma once
 
 void run_unit_tests();
 
@@ -1214,7 +1214,7 @@ void run_unit_tests()
 }
 
 // ModelLoader.h
-#pragma once
+// #pragma once
 
 #include <vector>
 #include <glm/glm.hpp>
@@ -1320,16 +1320,16 @@ void exportOBJ(const std::string &path, const MeshData &mesh)
 }
 
 // Texture.h
-#pragma once
+// #pragma once
 
 #include <string>
-#include <GL/glew.h>
+// #include <GL/glew.h> // Commented - OpenGL library not available
 
 GLuint loadTexture(const std::string &path);
 
 // Texture.cpp
 #include "Texture.h"
-#include "stb_image.h" // Assume included
+// #include "stb_image.h" // Commented - external library // Assume included
 
 GLuint loadTexture(const std::string &path)
 {
@@ -1356,10 +1356,10 @@ GLuint loadTexture(const std::string &path)
 }
 
 // Shader.h
-#pragma once
+// #pragma once
 
 #include <string>
-#include <GL/glew.h>
+// #include <GL/glew.h> // Commented - OpenGL library not available
 
 class Shader
 {
@@ -1424,7 +1424,7 @@ void Shader::setMat4(const std::string &name, const glm::mat4 &mat)
 }
 
 // Camera.h
-#pragma once
+// #pragma once
 
 #include <glm/glm.hpp>
 
@@ -1465,12 +1465,12 @@ void renderMultiViewports(const std::vector<Camera> &cameras, const std::vector<
     }
 }
 // Animation.h
-#pragma once
+// #pragma once
 
 #include <glm/glm.hpp>
 #include <vector>
 #include <map>
-#include <assimp/scene.h>
+// #include <assimp/scene.h>
 
 struct BoneInfo
 {
@@ -1622,7 +1622,7 @@ glm::mat4 Bone::GetLocalTransform()
     return m_LocalTransform;
 }
 // Landscape.h
-#pragma once
+// #pragma once
 
 #include <vector>
 #include <glm/glm.hpp>
@@ -1671,7 +1671,7 @@ MeshData generateProceduralLandscape(int width, int height, float scale)
 }
 
 // Modeling.h
-#pragma once
+// #pragma once
 
 #include "ModelLoader.h"
 
@@ -1682,10 +1682,10 @@ MeshData booleanUnion(const MeshData &mesh1, const MeshData &mesh2);
 #include "Modeling.h"
 
 // LaTeXRenderer.h
-#pragma once
+// #pragma once
 
 #include <string>
-#include <GL/glew.h>
+// #include <GL/glew.h> // Commented - OpenGL library not available
 
 void renderLaTeX(const std::string &latexCode, float x, float y);
 
@@ -1705,7 +1705,7 @@ void renderLaTeX(const std::string &latexCode, float x, float y)
 }
 
 // PluginModule.h
-#pragma once
+// #pragma once
 
 #include <string>
 
@@ -2104,7 +2104,7 @@ int main(int argc, char **argv)
             westerlund.name = "Westerlund 2";
             MUGESystem pillars = {"Pillars of Creation", 1e21, 2.813e32, 1e-3, -1e-3, 3.552e48, 2e3, 3.156e13, 0.0, 8.457e-14, 1.989e32, 9.46e15, 1e-4, 1e-3, 1e-21, 1e-8, 0.0, 1e-5};
             MUGESystem rings = {"Rings of Relativity", 1e22, 1e35, 1e-4, -1e-4, 1e54, 1e5, 3.156e14, 0.01, 1e-9, 1.989e36, 3.086e17, 1e-5, 1e-4, 1e-20, 1e-5, 1e36, 1e-3};
-            MUGESystem student_guide = {"Studentâ€™s Guide to the Universe", 1e24, 1e52, 1e-6, -1e-6, 1e80, 3e8, 4.35e17, 0.0, 1e-18, 1e53, 1e26, 1e-10, 1e-9, 1e-30, 1e-10, 1e53, 1e-6};
+            MUGESystem student_guide = {"Student’s Guide to the Universe", 1e24, 1e52, 1e-6, -1e-6, 1e80, 3e8, 4.35e17, 0.0, 1e-18, 1e53, 1e26, 1e-10, 1e-9, 1e-30, 1e-10, 1e53, 1e-6};
             muge_systems = {sgr1745, sagA, tapestry, westerlund, pillars, rings, student_guide};
         }
 

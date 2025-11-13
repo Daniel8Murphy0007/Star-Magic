@@ -131,7 +131,7 @@ public:
     void setLearningRate(double rate);
     void setEnableLogging(bool enable);
     void printInfo() const;
-    
+
     // Enhanced compute functions
     double compute_Ug1_enhanced(const CelestialBody &body, double r, double t, double tn,
                                 double alpha, double delta_def, double k1);
