@@ -16,7 +16,6 @@
 #include <iostream>
 #include <iomanip>
 
-
 #include <map>
 #include <vector>
 #include <functional>
@@ -36,7 +35,8 @@
 // SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
 // ===========================================================================================
 
-class PhysicsTerm {
+class PhysicsTerm
+{
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
     std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
@@ -45,18 +45,17 @@ class PhysicsTerm {
     bool enableLogging;
     double learningRate;
 
-
 public:
     virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double>& params) const = 0;
+    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
     virtual std::string getName() const = 0;
     virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double>& params) const { return true; }
+    virtual bool validate(const std::map<std::string, double> &params) const { return true; }
 };
 
-class DynamicVacuumTerm : public PhysicsTerm {
+class DynamicVacuumTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double amplitude;
@@ -69,23 +68,23 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15) 
+    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15)
         : amplitude(amp), frequency(freq) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
         return amplitude * rho_vac * std::sin(frequency * t);
     }
-    
+
     std::string getName() const override { return "DynamicVacuum"; }
     std::string getDescription() const override { return "Time-varying vacuum energy"; }
 };
 
-class QuantumCouplingTerm : public PhysicsTerm {
+class QuantumCouplingTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double coupling_strength;
@@ -97,17 +96,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
     QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
         double M = params.count("M") ? params.at("M") : 1.989e30;
         double r = params.count("r") ? params.at("r") : 1e4;
         return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
     }
-    
+
     std::string getName() const override { return "QuantumCoupling"; }
     std::string getDescription() const override { return "Non-local quantum effects"; }
 };
@@ -116,9 +115,9 @@ public:
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
 // ===========================================================================================
 
-class SolarCycleFrequencyModule {
+class SolarCycleFrequencyModule
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
@@ -132,21 +131,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
-
 public:
     // Constructor: Initialize with framework defaults
     SolarCycleFrequencyModule();
 
     // Dynamic variable operations
-    void updateVariable(const std::string& name, double value);
-    void addToVariable(const std::string& name, double delta);
-    void subtractFromVariable(const std::string& name, double delta);
+    void updateVariable(const std::string &name, double value);
+    void addToVariable(const std::string &name, double delta);
+    void subtractFromVariable(const std::string &name, double delta);
 
     // Core computations
-    double computeOmega_c();  // 2? / period s?�
-    double computeSinOmegaCT(double t);  // sin(?_c t)
-    double computeMuJExample(double t);  // (10^3 + 0.4 sin(?_c t)) * 3.38e20 T�m�
+    double computeMuJExample(double t); // (10^3 + 0.4 sin(?_c t)) * 3.38e20 T�m�
 
     // Output descriptive text
     std::string getEquationText();
@@ -161,75 +156,91 @@ public:
 // // // #include "SolarCycleFrequencyModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
-SolarCycleFrequencyModule::SolarCycleFrequencyModule() {
-        enableDynamicTerms = true;
-        enableLogging = false;
-        learningRate = 0.001;
-        metadata["enhanced"] = "true";
-        metadata["version"] = "2.0-Enhanced";
+SolarCycleFrequencyModule::SolarCycleFrequencyModule()
+{
+    enableDynamicTerms = true;
+    enableLogging = false;
+    learningRate = 0.001;
+    metadata["enhanced"] = "true";
+    metadata["version"] = "2.0-Enhanced";
 
     // Universal constants
     variables["pi"] = 3.141592653589793;
-    variables["period"] = 3.96e8;                   // s (~12.55 years)
-    variables["base_mu"] = 3.38e20;                 // T�m�
-    variables["B_j"] = 1e3;                         // Base T
-    variables["t"] = 0.0;                           // s
+    variables["period"] = 3.96e8;   // s (~12.55 years)
+    variables["base_mu"] = 3.38e20; // T�m�
+    variables["B_j"] = 1e3;         // Base T
+    variables["t"] = 0.0;           // s
 
     // Derived
     variables["omega_c"] = computeOmega_c();
 }
 
 // Update variable
-void SolarCycleFrequencyModule::updateVariable(const std::string& name, double value) {
-    if (variables.find(name) != variables.end()) {
+void SolarCycleFrequencyModule::updateVariable(const std::string &name, double value)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] = value;
-        if (name == "period") {
+        if (name == "period")
+        {
             variables["omega_c"] = computeOmega_c();
         }
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with value " << value << std::endl;
         variables[name] = value;
     }
 }
 
 // Add delta
-void SolarCycleFrequencyModule::addToVariable(const std::string& name, double delta) {
-    if (variables.find(name) != variables.end()) {
+void SolarCycleFrequencyModule::addToVariable(const std::string &name, double delta)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] += delta;
-        if (name == "period") {
+        if (name == "period")
+        {
             variables["omega_c"] = computeOmega_c();
         }
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with delta " << delta << std::endl;
         variables[name] = delta;
     }
 }
 
 // Subtract delta
-void SolarCycleFrequencyModule::subtractFromVariable(const std::string& name, double delta) {
+void SolarCycleFrequencyModule::subtractFromVariable(const std::string &name, double delta)
+{
     addToVariable(name, -delta);
 }
 
 // Compute ?_c = 2? / period
-double SolarCycleFrequencyModule::computeOmega_c() {
+double SolarCycleFrequencyModule::computeOmega_c()
+{
     return 2.0 * variables["pi"] / variables["period"];
 }
 
 // Compute sin(?_c t)
-double SolarCycleFrequencyModule::computeSinOmegaCT(double t) {
+double SolarCycleFrequencyModule::computeSinOmegaCT(double t)
+{
     variables["t"] = t;
     return std::sin(variables["omega_c"] * t);
 }
 
 // Example ?_j = (10^3 + 0.4 sin(?_c t)) * 3.38e20
-double SolarCycleFrequencyModule::computeMuJExample(double t) {
+double SolarCycleFrequencyModule::computeMuJExample(double t)
+{
     double sin_omega = computeSinOmegaCT(t);
     double b_j = variables["B_j"] + 0.4 * sin_omega;
     return b_j * variables["base_mu"];
 }
 
 // Equation text
-std::string SolarCycleFrequencyModule::getEquationText() {
+std::string SolarCycleFrequencyModule::getEquationText()
+{
     return "?_c = 2? / 3.96e8 s?� ?1.59e-8 rad/s (period ~12.55 yr, near 11-yr solar cycle);\n"
            "In U_m: ?_j = (10^3 + 0.4 sin(?_c t)) * 3.38e20 T�m� (cyclic magnetic variation).\n"
            "In U_g3: ... cos(?_s t ?) ... (?_s Sun rotation, but ?_c for cycle).\n"
@@ -240,9 +251,11 @@ std::string SolarCycleFrequencyModule::getEquationText() {
 }
 
 // Print variables
-void SolarCycleFrequencyModule::printVariables() {
+void SolarCycleFrequencyModule::printVariables()
+{
     std::cout << "Current Variables:\n";
-    for (const auto& pair : variables) {
+    for (const auto &pair : variables)
+    {
         std::cout << pair.first << " = " << std::scientific << pair.second << std::endl;
     }
 }
@@ -264,19 +277,16 @@ void SolarCycleFrequencyModule::printVariables() {
 // Sample: ?_c?1.59e-8 rad/s; ?_j?3.38e23 T�m�; periodic variation.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
-SolarCycleFrequencyModule Evaluation
+/* SolarCycleFrequencyModule Evaluation
 
-Strengths :
--Modular and pluggable design; can be included and instantiated easily in other projects.
-- Dynamic variable management using std::map allows runtime updates, additions, and removals.
-- Core computation methods(computeOmega_c, computeSinOmegaCT, computeMuJExample) are clear, concise, and variable - driven.
-- Automatic recalculation of derived variables(omega_c) when dependencies change(e.g., period).
-- Output and debugging functions(printVariables, getEquationText) provide transparency and aid validation.
-- Well - documented physical meaning and example calculations in comments and equation text.
-- Models solar cycle periodicity and magnetic activity with realistic parameters.
+    Strengths : -Modular and pluggable design;
+can be included and instantiated easily in other projects.- Dynamic variable management using std::map allows runtime updates, additions, and removals.- Core computation methods(computeOmega_c, computeSinOmegaCT, computeMuJExample)
+are clear, concise, and variable - driven.- Automatic recalculation of derived variables(omega_c)
+when dependencies change(e.g., period).- Output and debugging functions(printVariables, getEquationText)
+provide transparency and aid validation.- Well - documented physical meaning and example calculations in comments and equation text.- Models solar cycle periodicity and magnetic activity with realistic parameters.
 
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
+                                                                                                                                          Weaknesses /
+                                                                                                                                          Recommendations : -Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
 - Minimal error handling for missing variables, invalid input, or division by zero; add validation for robustness.
 - Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
 - For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
@@ -284,3 +294,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, clear, and suitable for scientific prototyping and educational use in solar cycle frequency modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+*/

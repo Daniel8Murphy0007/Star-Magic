@@ -16,7 +16,6 @@
 #include <iostream>
 #include <iomanip>
 
-
 #include <map>
 #include <vector>
 #include <functional>
@@ -36,7 +35,8 @@
 // SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
 // ===========================================================================================
 
-class PhysicsTerm {
+class PhysicsTerm
+{
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
     std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
@@ -45,18 +45,17 @@ class PhysicsTerm {
     bool enableLogging;
     double learningRate;
 
-
 public:
     virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double>& params) const = 0;
+    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
     virtual std::string getName() const = 0;
     virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double>& params) const { return true; }
+    virtual bool validate(const std::map<std::string, double> &params) const { return true; }
 };
 
-class DynamicVacuumTerm : public PhysicsTerm {
+class DynamicVacuumTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double amplitude;
@@ -69,23 +68,23 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15) 
+    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15)
         : amplitude(amp), frequency(freq) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
         return amplitude * rho_vac * std::sin(frequency * t);
     }
-    
+
     std::string getName() const override { return "DynamicVacuum"; }
     std::string getDescription() const override { return "Time-varying vacuum energy"; }
 };
 
-class QuantumCouplingTerm : public PhysicsTerm {
+class QuantumCouplingTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double coupling_strength;
@@ -97,17 +96,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
     QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
         double M = params.count("M") ? params.at("M") : 1.989e30;
         double r = params.count("r") ? params.at("r") : 1e4;
         return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
     }
-    
+
     std::string getName() const override { return "QuantumCoupling"; }
     std::string getDescription() const override { return "Non-local quantum effects"; }
 };
@@ -116,13 +115,13 @@ public:
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
 // ===========================================================================================
 
-class ScmReactivityDecayModule {
+class ScmReactivityDecayModule
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
-    double computeKappa_s();  // ? in s?�
+    double computeKappa_s(); // ? in s?�
     double computeE_react(double t_day);
     double computeUmExample(double t_day);
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
@@ -133,22 +132,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
-
 public:
     // Constructor: Initialize with framework defaults
     ScmReactivityDecayModule();
 
     // Dynamic variable operations
-    void updateVariable(const std::string& name, double value);
-    void addToVariable(const std::string& name, double delta);
-    void subtractFromVariable(const std::string& name, double delta);
+    void updateVariable(const std::string &name, double value);
+    void addToVariable(const std::string &name, double delta);
+    void subtractFromVariable(const std::string &name, double delta);
 
     // Core computations
-    double computeKappa_day();  // 0.0005 day?�
-    double computeKappa_s();    // ~5.8e-6 s?�
-    double computeE_react(double t_day);  // 1e46 * exp(-? t)
-    double computeUmExample(double t_day);  // Simplified U_m with E_react (J/m�)
+    double computeKappa_day(); // 0.0005 day?�
 
     // Output descriptive text
     std::string getEquationText();
@@ -166,80 +160,96 @@ public:
 // // // #include "ScmReactivityDecayModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
-ScmReactivityDecayModule::ScmReactivityDecayModule() {
-        enableDynamicTerms = true;
-        enableLogging = false;
-        learningRate = 0.001;
-        metadata["enhanced"] = "true";
-        metadata["version"] = "2.0-Enhanced";
+ScmReactivityDecayModule::ScmReactivityDecayModule()
+{
+    enableDynamicTerms = true;
+    enableLogging = false;
+    learningRate = 0.001;
+    metadata["enhanced"] = "true";
+    metadata["version"] = "2.0-Enhanced";
 
     // Universal constants
-    variables["kappa_day"] = 0.0005;                // day?�
-    variables["day_to_s"] = 86400.0;                // s/day
-    variables["E_react_base"] = 1e46;               // J
-    variables["t_day"] = 0.0;                       // days
-    variables["mu_over_rj"] = 2.26e10;              // T m� (example)
-    variables["P_SCm"] = 1.0;                       // Normalized
-    variables["heaviside_f"] = 1e11 + 1.0;          // 1 + 10^13 * 0.01
-    variables["quasi_f"] = 1.01;                    // 1 + 0.01
-    variables["one_minus_exp"] = 1.0;               // At t=0
+    variables["kappa_day"] = 0.0005;       // day?�
+    variables["day_to_s"] = 86400.0;       // s/day
+    variables["E_react_base"] = 1e46;      // J
+    variables["t_day"] = 0.0;              // days
+    variables["mu_over_rj"] = 2.26e10;     // T m� (example)
+    variables["P_SCm"] = 1.0;              // Normalized
+    variables["heaviside_f"] = 1e11 + 1.0; // 1 + 10^13 * 0.01
+    variables["quasi_f"] = 1.01;           // 1 + 0.01
+    variables["one_minus_exp"] = 1.0;      // At t=0
 
     // Derived
     variables["kappa_s"] = computeKappa_s();
 }
 
 // Update variable
-void ScmReactivityDecayModule::updateVariable(const std::string& name, double value) {
-    if (variables.find(name) != variables.end()) {
+void ScmReactivityDecayModule::updateVariable(const std::string &name, double value)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] = value;
-        if (name == "kappa_day") {
+        if (name == "kappa_day")
+        {
             variables["kappa_s"] = computeKappa_s();
         }
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with value " << value << std::endl;
         variables[name] = value;
     }
 }
 
 // Add delta
-void ScmReactivityDecayModule::addToVariable(const std::string& name, double delta) {
-    if (variables.find(name) != variables.end()) {
+void ScmReactivityDecayModule::addToVariable(const std::string &name, double delta)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] += delta;
-        if (name == "kappa_day") {
+        if (name == "kappa_day")
+        {
             variables["kappa_s"] = computeKappa_s();
         }
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with delta " << delta << std::endl;
         variables[name] = delta;
     }
 }
 
 // Subtract delta
-void ScmReactivityDecayModule::subtractFromVariable(const std::string& name, double delta) {
+void ScmReactivityDecayModule::subtractFromVariable(const std::string &name, double delta)
+{
     addToVariable(name, -delta);
 }
 
 // Compute ? (day?�)
-double ScmReactivityDecayModule::computeKappa_day() {
+double ScmReactivityDecayModule::computeKappa_day()
+{
     return variables["kappa_day"];
 }
 
 // Compute ? in s?�
-double ScmReactivityDecayModule::computeKappa_s() {
+double ScmReactivityDecayModule::computeKappa_s()
+{
     return computeKappa_day() / variables["day_to_s"];
 }
 
 // Compute E_react = 1e46 * exp(-? t)
-double ScmReactivityDecayModule::computeE_react(double t_day) {
+double ScmReactivityDecayModule::computeE_react(double t_day)
+{
     variables["t_day"] = t_day;
-    double arg = - computeKappa_day() * t_day;
+    double arg = -computeKappa_day() * t_day;
     return variables["E_react_base"] * std::exp(arg);
 }
 
 // Simplified U_m example with E_react
-double ScmReactivityDecayModule::computeUmExample(double t_day) {
+double ScmReactivityDecayModule::computeUmExample(double t_day)
+{
     double e_react = computeE_react(t_day);
-    double one_minus_exp = variables["one_minus_exp"];  // Placeholder; full would compute
+    double one_minus_exp = variables["one_minus_exp"]; // Placeholder; full would compute
     double phi_hat = 1.0;
     double p_scm = variables["P_SCm"];
     double heaviside_f = variables["heaviside_f"];
@@ -248,7 +258,8 @@ double ScmReactivityDecayModule::computeUmExample(double t_day) {
 }
 
 // Equation text
-std::string ScmReactivityDecayModule::getEquationText() {
+std::string ScmReactivityDecayModule::getEquationText()
+{
     return "E_react = 10^46 * exp(-? t) (t days); ?=0.0005 day?� (~5.8e-6 s?�, timescale ~5.5 years).\n"
            "In U_m, U_bi, U_i, U_gi: ... * E_react * ... (decays [SCm] reactivity).\n"
            "Example t=0: E_react=1e46 J; t=2000 days: ~3.68e45 J (~36.8%).\n"
@@ -258,15 +269,18 @@ std::string ScmReactivityDecayModule::getEquationText() {
 }
 
 // Print variables
-void ScmReactivityDecayModule::printVariables() {
+void ScmReactivityDecayModule::printVariables()
+{
     std::cout << "Current Variables:\n";
-    for (const auto& pair : variables) {
+    for (const auto &pair : variables)
+    {
         std::cout << pair.first << " = " << std::scientific << pair.second << std::endl;
     }
 }
 
 // Print effects
-void ScmReactivityDecayModule::printDecayEffects(double t_day) {
+void ScmReactivityDecayModule::printDecayEffects(double t_day)
+{
     double e_react = computeE_react(t_day);
     double um_ex = computeUmExample(t_day);
     double fraction = e_react / variables["E_react_base"];
@@ -291,18 +305,16 @@ void ScmReactivityDecayModule::printDecayEffects(double t_day) {
 // Sample: ?=5e-4 day?�; t=2000 days: E_react?3.68e45 J; U_m?8.39e64 J/m�.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
-ScmReactivityDecayModule Evaluation
+/* ScmReactivityDecayModule Evaluation
 
-Strengths :
--Modular and pluggable design; can be included and instantiated easily in other projects.
-- Dynamic variable management using std::map allows runtime updates, additions, and removals.
-- Core computation methods(computeKappa_day, computeKappa_s, computeE_react, computeUmExample) are clear, concise, and variable - driven.
-- Automatic recalculation of derived variables(kappa_s) when dependencies change.
-- Output and debugging functions(printVariables, printDecayEffects, getEquationText) provide transparency and aid validation.
-- Well - documented physical meaning and example calculations in comments and equation text.
+    Strengths : -Modular and pluggable design;
+can be included and instantiated easily in other projects.- Dynamic variable management using std::map allows runtime updates, additions, and removals.- Core computation methods(computeKappa_day, computeKappa_s, computeE_react, computeUmExample)
+are clear, concise, and variable - driven.- Automatic recalculation of derived variables(kappa_s)
+when dependencies change.- Output and debugging functions(printVariables, printDecayEffects, getEquationText)
+provide transparency and aid validation.- Well - documented physical meaning and example calculations in comments and equation text.
 
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
+                                                     Weaknesses /
+                                                     Recommendations : -Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
 - Minimal error handling for missing variables, invalid input, or division by zero; add validation for robustness.
 - Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
 - For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
@@ -310,3 +322,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, clear, and suitable for scientific prototyping and educational use in[SCm] reactivity decay modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+*/
