@@ -450,8 +450,7 @@ void SombreroUQFFModule::printVariables()
 
     ** Is the code dynamic enough to perform updates or accept changes ? **
     Yes, the code is designed to be highly dynamic and configurable.You can change any parameter, add new ones, or adjust existing ones at runtime, and the computations will adapt accordingly.This makes it suitable for interactive modeling, parameter sweeps, or integration into larger simulation frameworks.
-*/
 
-    * *Summary : **
+    **Summary:**
     The module is robust, dynamic, and extensible, supporting runtime updates and changes to all model parameters.Minor improvements in error handling and documentation are recommended for production use.
 */

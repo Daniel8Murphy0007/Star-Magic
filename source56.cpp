@@ -132,7 +132,6 @@ private:
     double computeUgSum(double r_t);
     double computeHz(double z_t);
     double computeQGTerm(double t);
-    double computeDMTerm(double g_base);
     double computeGWTerm(double r_t, double t);
     double computeM_t(double t);
     double computeR_t(double t);
@@ -374,12 +373,6 @@ double BigBangGravityUQFFModule::computeGWTerm(double r_t, double t)
 {
     double phase = (2 * variables["pi"] / variables["lambda_gw"]) * r_t - (2 * variables["pi"] / variables["year_to_s"]) * t;
     return variables["h_strain"] * (variables["c"] * variables["c"]) / variables["lambda_gw"] * std::sin(phase);
-}
-
-// Pert term for visible+DM: G * (M_vis_t + M_DM_t) * pert / r_t^2 (but simplified; pert=delta_rho/rho + 3 G M_t / r_t^3)
-double BigBangGravityUQFFModule::computeDMTerm(double g_base)
-{                                             // Overload for pert, but use DM_fraction here
-    return variables["DM_fraction"] * g_base; // As per doc
 }
 
 // Full computation: g_Gravity(t) = ... with evolving M_t, r_t, z_t + QG_term + DM_term + GW_term
