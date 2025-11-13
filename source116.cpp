@@ -4,7 +4,7 @@
 // Pluggable: // // // #include "SolarWindVelocityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // SolarWindVelocityModule mod; mod.computeU_g2(1.496e13); mod.updateVariable("v_sw", new_value);
 // Variables in std::map; example for Sun at r=R_b=1.496e13 m; amplification ~5001x.
-// Approximations: S(r - R_b)=1; H_SCm=1; E_react=1e46; ?_sum=7.80e-36 J/m³.
+// Approximations: S(r - R_b)=1; H_SCm=1; E_react=1e46; ?_sum=7.80e-36 J/mï¿½.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef SOLAR_WIND_VELOCITY_MODULE_H
@@ -15,7 +15,6 @@
 #include <cmath>
 #include <iostream>
 #include <iomanip>
-
 
 #include <map>
 #include <vector>
@@ -36,7 +35,8 @@
 // SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
 // ===========================================================================================
 
-class PhysicsTerm {
+class PhysicsTerm
+{
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
     std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
@@ -45,18 +45,17 @@ class PhysicsTerm {
     bool enableLogging;
     double learningRate;
 
-
 public:
     virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double>& params) const = 0;
+    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
     virtual std::string getName() const = 0;
     virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double>& params) const { return true; }
+    virtual bool validate(const std::map<std::string, double> &params) const { return true; }
 };
 
-class DynamicVacuumTerm : public PhysicsTerm {
+class DynamicVacuumTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double amplitude;
@@ -69,23 +68,23 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15) 
+    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15)
         : amplitude(amp), frequency(freq) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
         return amplitude * rho_vac * std::sin(frequency * t);
     }
-    
+
     std::string getName() const override { return "DynamicVacuum"; }
     std::string getDescription() const override { return "Time-varying vacuum energy"; }
 };
 
-class QuantumCouplingTerm : public PhysicsTerm {
+class QuantumCouplingTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double coupling_strength;
@@ -97,17 +96,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
     QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
         double M = params.count("M") ? params.at("M") : 1.989e30;
         double r = params.count("r") ? params.at("r") : 1e4;
         return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
     }
-    
+
     std::string getName() const override { return "QuantumCoupling"; }
     std::string getDescription() const override { return "Non-local quantum effects"; }
 };
@@ -116,9 +115,9 @@ public:
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
 // ===========================================================================================
 
-class SolarWindVelocityModule {
+class SolarWindVelocityModule
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
@@ -132,23 +131,19 @@ private:
     bool enableLogging;
     double learningRate;
 
-
-
 public:
     // Constructor: Initialize with framework defaults (Sun)
     SolarWindVelocityModule();
 
     // Dynamic variable operations
-    void updateVariable(const std::string& name, double value);
-    void addToVariable(const std::string& name, double delta);
-    void subtractFromVariable(const std::string& name, double delta);
+    void updateVariable(const std::string &name, double value);
+    void addToVariable(const std::string &name, double delta);
+    void subtractFromVariable(const std::string &name, double delta);
 
     // Core computations
-    double computeV_sw();  // 5e5 m/s
-    double computeV_swKmS();  // 500 km/s
-    double computeModulationFactor();  // 1 + d_sw v_sw
-    double computeU_g2(double r);  // U_g2 with modulation (J/m^3)
-    double computeU_g2_no_sw(double r);  // Without v_sw (set=0)
+    double computeV_sw();               // 5e5 m/s
+    double computeV_swKmS();            // 500 km/s
+    double computeU_g2_no_sw(double r); // Without v_sw (set=0)
 
     // Output descriptive text
     std::string getEquationText();
@@ -163,25 +158,26 @@ public:
 // // // #include "SolarWindVelocityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults (Sun at r=R_b)
-SolarWindVelocityModule::SolarWindVelocityModule() {
-        enableDynamicTerms = true;
-        enableLogging = false;
-        learningRate = 0.001;
-        metadata["enhanced"] = "true";
-        metadata["version"] = "2.0-Enhanced";
+SolarWindVelocityModule::SolarWindVelocityModule()
+{
+    enableDynamicTerms = true;
+    enableLogging = false;
+    learningRate = 0.001;
+    metadata["enhanced"] = "true";
+    metadata["version"] = "2.0-Enhanced";
 
     // Universal constants
-    variables["v_sw"] = 5e5;                        // m/s
-    variables["delta_sw"] = 0.01;                   // Unitless
-    variables["k_2"] = 1.2;                         // Coupling
-    variables["rho_vac_UA"] = 7.09e-36;             // J/m^3
-    variables["rho_vac_SCm"] = 7.09e-37;            // J/m^3
-    variables["M_s"] = 1.989e30;                    // kg
-    variables["r"] = 1.496e13;                      // m (R_b)
-    variables["R_b"] = 1.496e13;                    // m
-    variables["S_r_Rb"] = 1.0;                      // Step
-    variables["H_SCm"] = 1.0;                       // Unitless
-    variables["E_react"] = 1e46;                    // J
+    variables["v_sw"] = 5e5;             // m/s
+    variables["delta_sw"] = 0.01;        // Unitless
+    variables["k_2"] = 1.2;              // Coupling
+    variables["rho_vac_UA"] = 7.09e-36;  // J/m^3
+    variables["rho_vac_SCm"] = 7.09e-37; // J/m^3
+    variables["M_s"] = 1.989e30;         // kg
+    variables["r"] = 1.496e13;           // m (R_b)
+    variables["R_b"] = 1.496e13;         // m
+    variables["S_r_Rb"] = 1.0;           // Step
+    variables["H_SCm"] = 1.0;            // Unitless
+    variables["E_react"] = 1e46;         // J
 
     // Derived
     variables["rho_sum"] = variables["rho_vac_UA"] + variables["rho_vac_SCm"];
@@ -189,57 +185,76 @@ SolarWindVelocityModule::SolarWindVelocityModule() {
 }
 
 // Update variable
-void SolarWindVelocityModule::updateVariable(const std::string& name, double value) {
-    if (variables.find(name) != variables.end()) {
+void SolarWindVelocityModule::updateVariable(const std::string &name, double value)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] = value;
-        if (name == "v_sw" || name == "delta_sw") {
+        if (name == "v_sw" || name == "delta_sw")
+        {
             variables["modulation_factor"] = computeModulationFactor();
-        } else if (name == "rho_vac_UA" || name == "rho_vac_SCm") {
+        }
+        else if (name == "rho_vac_UA" || name == "rho_vac_SCm")
+        {
             variables["rho_sum"] = variables["rho_vac_UA"] + variables["rho_vac_SCm"];
         }
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with value " << value << std::endl;
         variables[name] = value;
     }
 }
 
 // Add delta
-void SolarWindVelocityModule::addToVariable(const std::string& name, double delta) {
-    if (variables.find(name) != variables.end()) {
+void SolarWindVelocityModule::addToVariable(const std::string &name, double delta)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] += delta;
-        if (name == "v_sw" || name == "delta_sw") {
+        if (name == "v_sw" || name == "delta_sw")
+        {
             variables["modulation_factor"] = computeModulationFactor();
-        } else if (name == "rho_vac_UA" || name == "rho_vac_SCm") {
+        }
+        else if (name == "rho_vac_UA" || name == "rho_vac_SCm")
+        {
             variables["rho_sum"] = variables["rho_vac_UA"] + variables["rho_vac_SCm"];
         }
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with delta " << delta << std::endl;
         variables[name] = delta;
     }
 }
 
 // Subtract delta
-void SolarWindVelocityModule::subtractFromVariable(const std::string& name, double delta) {
+void SolarWindVelocityModule::subtractFromVariable(const std::string &name, double delta)
+{
     addToVariable(name, -delta);
 }
 
 // Compute v_sw (m/s)
-double SolarWindVelocityModule::computeV_sw() {
+double SolarWindVelocityModule::computeV_sw()
+{
     return variables["v_sw"];
 }
 
 // v_sw in km/s
-double SolarWindVelocityModule::computeV_swKmS() {
+double SolarWindVelocityModule::computeV_swKmS()
+{
     return computeV_sw() / 1e3;
 }
 
 // Compute 1 + d_sw * v_sw
-double SolarWindVelocityModule::computeModulationFactor() {
+double SolarWindVelocityModule::computeModulationFactor()
+{
     return 1.0 + variables["delta_sw"] * computeV_sw();
 }
 
 // Compute U_g2 with modulation
-double SolarWindVelocityModule::computeU_g2(double r) {
+double SolarWindVelocityModule::computeU_g2(double r)
+{
     variables["r"] = r;
     double k_2 = variables["k_2"];
     double rho_sum = variables["rho_sum"];
@@ -252,7 +267,8 @@ double SolarWindVelocityModule::computeU_g2(double r) {
 }
 
 // U_g2 without solar wind (v_sw=0)
-double SolarWindVelocityModule::computeU_g2_no_sw(double r) {
+double SolarWindVelocityModule::computeU_g2_no_sw(double r)
+{
     double orig_v = variables["v_sw"];
     variables["v_sw"] = 0.0;
     double result = computeU_g2(r);
@@ -261,19 +277,22 @@ double SolarWindVelocityModule::computeU_g2_no_sw(double r) {
 }
 
 // Equation text
-std::string SolarWindVelocityModule::getEquationText() {
+std::string SolarWindVelocityModule::getEquationText()
+{
     return "U_g2 = k_2 * [(?_vac,[UA] + ?_vac,[SCm]) M_s / r^2] * S(r - R_b) * (1 + d_sw v_sw) * H_SCm * E_react\n"
            "Where v_sw = 5e5 m/s (500 km/s, typical solar wind speed at 1 AU+);\n"
-           "Modulation = 1 + 0.01 * v_sw ˜5001 (amplifies ~5000x).\n"
-           "Example r=R_b=1.496e13 m: U_g2 ˜1.18e53 J/m³ (with); ˜2.36e49 J/m³ (without v_sw; ~5000x less).\n"
+           "Modulation = 1 + 0.01 * v_sw ï¿½5001 (amplifies ~5000x).\n"
+           "Example r=R_b=1.496e13 m: U_g2 ï¿½1.18e53 J/mï¿½ (with); ï¿½2.36e49 J/mï¿½ (without v_sw; ~5000x less).\n"
            "Role: Solar wind momentum/pressure enhances external gravity beyond R_b (heliosphere).\n"
            "UQFF: Models wind shaping of fields; key for heliodynamics/nebular formation.";
 }
 
 // Print variables
-void SolarWindVelocityModule::printVariables() {
+void SolarWindVelocityModule::printVariables()
+{
     std::cout << "Current Variables:\n";
-    for (const auto& pair : variables) {
+    for (const auto &pair : variables)
+    {
         std::cout << pair.first << " = " << std::scientific << pair.second << std::endl;
     }
 }
@@ -285,29 +304,26 @@ void SolarWindVelocityModule::printVariables() {
 //     double v = mod.computeV_sw();
 //     std::cout << "v_sw = " << v << " m/s (" << mod.computeV_swKmS() << " km/s)\n";
 //     double u_g2 = mod.computeU_g2(1.496e13);
-//     std::cout << "U_g2 = " << u_g2 << " J/m³\n";
+//     std::cout << "U_g2 = " << u_g2 << " J/mï¿½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("v_sw", 4e5);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o sw_vel_test sw_vel_test.cpp SolarWindVelocityModule.cpp -lm
-// Sample: v_sw=5e5 m/s (500 km/s); U_g2˜1.18e53 J/m³; amplifies outer bubble.
+// Sample: v_sw=5e5 m/s (500 km/s); U_g2ï¿½1.18e53 J/mï¿½; amplifies outer bubble.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
-SolarWindVelocityModule Evaluation
+/* SolarWindVelocityModule Evaluation
 
-Strengths :
--Modular and pluggable design; can be included and instantiated easily in other projects.
-- Dynamic variable management using std::map allows runtime updates, additions, and removals.
-- Core computation methods(computeV_sw, computeV_swKmS, computeModulationFactor, computeU_g2, computeU_g2_no_sw) are clear, concise, and variable - driven.
-- Automatic recalculation of derived variables(modulation_factor, rho_sum) when dependencies change.
-- Output and debugging functions(printVariables, getEquationText) provide transparency and aid validation.
-- Well - documented physical meaning and example calculations in comments and equation text.
-- Models strong amplification of gravity terms via solar wind velocity.
+    Strengths : -Modular and pluggable design;
+can be included and instantiated easily in other projects.- Dynamic variable management using std::map allows runtime updates, additions, and removals.- Core computation methods(computeV_sw, computeV_swKmS, computeModulationFactor, computeU_g2, computeU_g2_no_sw)
+are clear, concise, and variable - driven.- Automatic recalculation of derived variables(modulation_factor, rho_sum)
+when dependencies change.- Output and debugging functions(printVariables, getEquationText)
+provide transparency and aid validation.- Well - documented physical meaning and example calculations in comments and equation text.- Models strong amplification of gravity terms via solar wind velocity.
 
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
+                                                                                                                                          Weaknesses /
+                                                                                                                                          Recommendations : -Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
 - Minimal error handling for missing variables, invalid input, or division by zero; add validation for robustness.
 - Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
 - For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
@@ -315,3 +331,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, clear, and suitable for scientific prototyping and educational use in solar wind velocity modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+*/
