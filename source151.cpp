@@ -20,7 +20,6 @@
 #include <iomanip>
 #include <complex>
 
-
 #include <map>
 #include <vector>
 #include <functional>
@@ -42,7 +41,8 @@ using cdouble = std::complex<double>;
 // SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
 // ===========================================================================================
 
-class PhysicsTerm {
+class PhysicsTerm
+{
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
     std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
@@ -51,18 +51,17 @@ class PhysicsTerm {
     bool enableLogging;
     double learningRate;
 
-
 public:
     virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double>& params) const = 0;
+    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
     virtual std::string getName() const = 0;
     virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double>& params) const { return true; }
+    virtual bool validate(const std::map<std::string, double> &params) const { return true; }
 };
 
-class DynamicVacuumTerm : public PhysicsTerm {
+class DynamicVacuumTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double amplitude;
@@ -75,23 +74,23 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15) 
+    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15)
         : amplitude(amp), frequency(freq) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
         return amplitude * rho_vac * std::sin(frequency * t);
     }
-    
+
     std::string getName() const override { return "DynamicVacuum"; }
     std::string getDescription() const override { return "Time-varying vacuum energy"; }
 };
 
-class QuantumCouplingTerm : public PhysicsTerm {
+class QuantumCouplingTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double coupling_strength;
@@ -103,17 +102,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
     QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
         double M = params.count("M") ? params.at("M") : 1.989e30;
         double r = params.count("r") ? params.at("r") : 1e4;
         return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
     }
-    
+
     std::string getName() const override { return "QuantumCoupling"; }
     std::string getDescription() const override { return "Non-local quantum effects"; }
 };
@@ -122,9 +121,9 @@ public:
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
 // ===========================================================================================
 
-class StephanQuintetUQFFModule {
+class StephanQuintetUQFFModule
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, cdouble> variables;
@@ -145,26 +144,24 @@ private:
     bool enableLogging;
     double learningRate;
 
-
-
 public:
     // Constructor: Initialize all variables with Stephan's Quintet defaults
     StephanQuintetUQFFModule();
 
     // Dynamic variable operations (complex)
-    void updateVariable(const std::string& name, cdouble value);
-    void addToVariable(const std::string& name, cdouble delta);
-    void subtractFromVariable(const std::string& name, cdouble delta);
+    void updateVariable(const std::string &name, cdouble value);
+    void addToVariable(const std::string &name, cdouble delta);
+    void subtractFromVariable(const std::string &name, cdouble delta);
 
     // Core computation: Full F_U_Bi_i(r, t) for Stephan's Quintet (approx integral)
     cdouble computeF(double t);
 
     // Sub-equations
-    cdouble computeCompressed(double t);  // Integrand
+    cdouble computeCompressed(double t); // Integrand
     cdouble computeResonant();
     cdouble computeBuoyancy();
     cdouble computeSuperconductive(double t);
-    double computeCompressedG(double t);  // g(r,t)
+    double computeCompressedG(double t); // g(r,t)
 
     // Output descriptive text of the equation
     std::string getEquationText();
@@ -180,12 +177,13 @@ public:
 #include <complex>
 
 // Constructor: Set all variables with Stephan's Quintet-specific values
-StephanQuintetUQFFModule::StephanQuintetUQFFModule() {
-        enableDynamicTerms = true;
-        enableLogging = false;
-        learningRate = 0.001;
-        metadata["enhanced"] = "true";
-        metadata["version"] = "2.0-Enhanced";
+StephanQuintetUQFFModule::StephanQuintetUQFFModule()
+{
+    enableDynamicTerms = true;
+    enableLogging = false;
+    learningRate = 0.001;
+    metadata["enhanced"] = "true";
+    metadata["version"] = "2.0-Enhanced";
 
     double pi_val = 3.141592653589793;
     cdouble zero = {0.0, 0.0};
@@ -209,10 +207,10 @@ StephanQuintetUQFFModule::StephanQuintetUQFFModule() {
     variables["L_X"] = {1e38, 0.0};
     variables["B0"] = {1e-9, 0.0};
     variables["omega0"] = {1e-15, 0.0};
-    variables["theta"] = {pi_val / 4, 0.0};  // 45 deg
-    variables["t"] = {1e16, 0.0};  // Default t
+    variables["theta"] = {pi_val / 4, 0.0}; // 45 deg
+    variables["t"] = {1e16, 0.0};           // Default t
     variables["rho_gas"] = {1e-24, 0.0};
-    variables["V"] = {1e-3, 0.0};  // Particle velocity
+    variables["V"] = {1e-3, 0.0}; // Particle velocity
     variables["F0"] = {1.83e71, 0.0};
 
     // Vacuum and DPM
@@ -233,12 +231,12 @@ StephanQuintetUQFFModule::StephanQuintetUQFFModule() {
     variables["k_neutron"] = {1e10, 0.0};
     variables["sigma_n"] = {1e-4, 0.0};
     variables["k_rel"] = {1e-10, 0.0};
-    variables["E_cm_astro"] = {1.24e24, 0.0};  // Refined, imag 0 for simplicity
-    variables["E_cm"] = {3.0264e-8, 0.0};  // 189 GeV in J
+    variables["E_cm_astro"] = {1.24e24, 0.0}; // Refined, imag 0 for simplicity
+    variables["E_cm"] = {3.0264e-8, 0.0};     // 189 GeV in J
     variables["F_neutrino"] = {9.07e-42, 1e-43};
 
     // Quadratic approx
-    variables["x2"] = {-1.35e172, 0.0};  // Refined approx root
+    variables["x2"] = {-1.35e172, 0.0}; // Refined approx root
 
     // Buoyancy
     variables["beta_i"] = {0.6, 0.0};
@@ -251,14 +249,18 @@ StephanQuintetUQFFModule::StephanQuintetUQFFModule() {
     variables["rho_vac_SCm"] = {7.09e-37, 1e-38};
     variables["omega_s"] = {2.5e-6, 1e-7};
     variables["f_TRZ"] = {0.1, 0.0};
-    variables["t_scale"] = {1e16, 0.0};  // For t_n = t / t_scale
+    variables["t_scale"] = {1e16, 0.0}; // For t_n = t / t_scale
 }
 
 // Update variable (set to new complex value)
-void StephanQuintetUQFFModule::updateVariable(const std::string& name, cdouble value) {
-    if (variables.find(name) != variables.end()) {
+void StephanQuintetUQFFModule::updateVariable(const std::string &name, cdouble value)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] = value;
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with value " << value << std::endl;
         variables[name] = value;
     }
@@ -266,33 +268,40 @@ void StephanQuintetUQFFModule::updateVariable(const std::string& name, cdouble v
 }
 
 // Add delta (complex) to variable
-void StephanQuintetUQFFModule::addToVariable(const std::string& name, cdouble delta) {
-    if (variables.find(name) != variables.end()) {
+void StephanQuintetUQFFModule::addToVariable(const std::string &name, cdouble delta)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] += delta;
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with delta " << delta << std::endl;
         variables[name] = delta;
     }
 }
 
 // Subtract delta (complex)
-void StephanQuintetUQFFModule::subtractFromVariable(const std::string& name, cdouble delta) {
+void StephanQuintetUQFFModule::subtractFromVariable(const std::string &name, cdouble delta)
+{
     addToVariable(name, -delta);
 }
 
 // Compute DPM_resonance
-cdouble StephanQuintetUQFFModule::computeDPM_resonance() {
+cdouble StephanQuintetUQFFModule::computeDPM_resonance()
+{
     cdouble g = variables["g_Lande"];
     cdouble muB = variables["mu_B"];
     cdouble B = variables["B0"];
     cdouble hbar = variables["hbar"];
     cdouble omega0 = variables["omega0"];
     // Use refined real form
-    return (g * muB * B / (hbar * omega0)).real();  // Return as complex with imag 0
+    return (g * muB * B / (hbar * omega0)).real(); // Return as complex with imag 0
 }
 
 // Compute LENR term
-cdouble StephanQuintetUQFFModule::computeLENRTerm() {
+cdouble StephanQuintetUQFFModule::computeLENRTerm()
+{
     cdouble k = variables["k_LENR"];
     cdouble omegaL = variables["omega_LENR"];
     cdouble omega0 = variables["omega0"];
@@ -300,7 +309,8 @@ cdouble StephanQuintetUQFFModule::computeLENRTerm() {
 }
 
 // Compute integrand for F_U_Bi_i
-cdouble StephanQuintetUQFFModule::computeIntegrand(double t_user) {
+cdouble StephanQuintetUQFFModule::computeIntegrand(double t_user)
+{
     variables["t"] = {t_user, 0.0};
     double cos_theta = cos(variables["theta"].real());
     double sin_theta = sin(variables["theta"].real());
@@ -322,35 +332,41 @@ cdouble StephanQuintetUQFFModule::computeIntegrand(double t_user) {
 }
 
 // Approx x2 (hardcoded refined for stability; dynamic via var)
-cdouble StephanQuintetUQFFModule::computeX2() {
+cdouble StephanQuintetUQFFModule::computeX2()
+{
     return variables["x2"];
 }
 
 // Quadratic root helper (for future refinement)
-cdouble StephanQuintetUQFFModule::computeQuadraticRoot(cdouble a, cdouble b, cdouble c) {
-    cdouble disc = sqrt(b*b - 4*a*c);
-    return (-b - disc) / (2*a);  // Negative root approx
+cdouble StephanQuintetUQFFModule::computeQuadraticRoot(cdouble a, cdouble b, cdouble c)
+{
+    cdouble disc = sqrt(b * b - 4 * a * c);
+    return (-b - disc) / (2 * a); // Negative root approx
 }
 
 // Full F_U_Bi_i approx as integrand * x2
-cdouble StephanQuintetUQFFModule::computeF(double t) {
+cdouble StephanQuintetUQFFModule::computeF(double t)
+{
     cdouble integ = computeIntegrand(t);
     cdouble x2_val = computeX2();
     return integ * x2_val;
 }
 
 // Compressed (integrand)
-cdouble StephanQuintetUQFFModule::computeCompressed(double t) {
+cdouble StephanQuintetUQFFModule::computeCompressed(double t)
+{
     return computeIntegrand(t);
 }
 
 // Resonant DPM
-cdouble StephanQuintetUQFFModule::computeResonant() {
+cdouble StephanQuintetUQFFModule::computeResonant()
+{
     return computeDPM_resonance();
 }
 
 // Buoyancy Ub1
-cdouble StephanQuintetUQFFModule::computeBuoyancy() {
+cdouble StephanQuintetUQFFModule::computeBuoyancy()
+{
     cdouble beta = variables["beta_i"];
     cdouble V = variables["V_infl_UA"];
     cdouble rho = variables["rho_vac_A"];
@@ -359,7 +375,8 @@ cdouble StephanQuintetUQFFModule::computeBuoyancy() {
 }
 
 // Superconductive Ui
-cdouble StephanQuintetUQFFModule::computeSuperconductive(double t) {
+cdouble StephanQuintetUQFFModule::computeSuperconductive(double t)
+{
     double tn = t / variables["t_scale"].real();
     cdouble lambda = variables["lambda_i"];
     cdouble rho_sc = variables["rho_vac_SCm"];
@@ -371,31 +388,33 @@ cdouble StephanQuintetUQFFModule::computeSuperconductive(double t) {
 }
 
 // Compressed g(r,t)
-double StephanQuintetUQFFModule::computeCompressedG(double t) {
+double StephanQuintetUQFFModule::computeCompressedG(double t)
+{
     double G_val = variables["G"].real();
     double M_val = variables["M"].real();
     double rho = variables["rho_gas"].real();
     double r_val = variables["r"].real();
     double kB = variables["k_B"].real();
-    double T_val = 1e7;  // Fixed for calc
+    double T_val = 1e7; // Fixed for calc
     double m_e_val = variables["m_e"].real();
     double c_val = variables["c"].real();
-    double dpm_curv = 1e-22;  // From list
+    double dpm_curv = 1e-22; // From list
 
-    double term1 = - (G_val * M_val * rho) / r_val;
-    double term2 = - (kB * T_val * rho) / (m_e_val * c_val * c_val);
+    double term1 = -(G_val * M_val * rho) / r_val;
+    double term2 = -(kB * T_val * rho) / (m_e_val * c_val * c_val);
     double term3 = dpm_curv * pow(c_val, 4) / (G_val * r_val * r_val);
 
     return term1 + term2 + term3;
 }
 
 // Resonant Q_wave
-cdouble StephanQuintetUQFFModule::computeQ_wave(double t) {
+cdouble StephanQuintetUQFFModule::computeQ_wave(double t)
+{
     double mu0_val = variables["mu0"].real();
     double B_val = variables["B0"].real();
     cdouble dpm_res = computeDPM_resonance();
     double rho = variables["rho_gas"].real();
-    double v = 1e6;  // Shock velocity
+    double v = 1e6; // Shock velocity
     double dpm_phase = 2.36e-3;
     double t_val = t;
 
@@ -406,7 +425,8 @@ cdouble StephanQuintetUQFFModule::computeQ_wave(double t) {
 }
 
 // Get equation text (descriptive)
-std::string StephanQuintetUQFFModule::getEquationText() {
+std::string StephanQuintetUQFFModule::getEquationText()
+{
     return "F_U_{Bi_i} = \\int_0^{x_2} \\left[ -F_0 + \\left( \\frac{m_e c^2}{r^2} \\right) DPM_{momentum} \\cos\\theta + \\left( \\frac{G M}{r^2} \\right) DPM_{gravity} + \\rho_{vac,[UA]} DPM_{stability} + k_{LENR} \\left( \\frac{\\omega_{LENR}}{\\omega_0} \\right)^2 + k_{act} \\cos(\\omega_{act} t + \\phi) + k_{DE} L_X + 2 q B_0 V \\sin\\theta DPM_{resonance} + k_{neutron} \\sigma_n + k_{rel} \\left( \\frac{E_{cm,astro}}{E_{cm}} \\right)^2 + F_{neutrino} \\right] dx \\approx -8.32 \\times 10^{217} + i \\cdot (-6.75 \\times 10^{160}) N (approx; imag scaled separately in framework)\n"
            "Compressed: F_U_{Bi_i,integrand} = sum of terms \\approx 6.16 \\times 10^{45} N\n"
            "Resonant: DPM_{resonance} = g \\mu_B B_0 / (\\hbar \\omega_0) \\approx 1.76 \\times 10^{17}\n"
@@ -418,9 +438,11 @@ std::string StephanQuintetUQFFModule::getEquationText() {
 }
 
 // Print variables (complex)
-void StephanQuintetUQFFModule::printVariables() {
+void StephanQuintetUQFFModule::printVariables()
+{
     std::cout << "Current Variables:\n";
-    for (const auto& pair : variables) {
+    for (const auto &pair : variables)
+    {
         std::cout << pair.first << " = " << std::scientific << std::setprecision(10)
                   << pair.second.real() << " + i " << pair.second.imag() << std::endl;
     }
@@ -449,7 +471,7 @@ StephanQuintetUQFFModule C++ Code Evaluation
 
 Design & Structure
 ------------------
-- Implements a modular class for the Master Unified Field Equation tailored to Stephan's Quintet compact galaxy group evolution.
+- Implements a modular class for the Master Unified Field Equation tailored to Stephans Quintet compact galaxy group evolution.
 - Uses std::map<std::string, std::complex<double>> for dynamic variable management, supporting both real and imaginary components.
 - Constructor initializes all relevant physical constants and system - specific parameters.
 
