@@ -17,7 +17,6 @@
 #include <iostream>
 #include <iomanip>
 
-
 #include <map>
 #include <vector>
 #include <functional>
@@ -37,7 +36,8 @@
 // SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
 // ===========================================================================================
 
-class PhysicsTerm {
+class PhysicsTerm
+{
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
     std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
@@ -46,18 +46,17 @@ class PhysicsTerm {
     bool enableLogging;
     double learningRate;
 
-
 public:
     virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double>& params) const = 0;
+    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
     virtual std::string getName() const = 0;
     virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double>& params) const { return true; }
+    virtual bool validate(const std::map<std::string, double> &params) const { return true; }
 };
 
-class DynamicVacuumTerm : public PhysicsTerm {
+class DynamicVacuumTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double amplitude;
@@ -70,23 +69,23 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15) 
+    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15)
         : amplitude(amp), frequency(freq) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
         return amplitude * rho_vac * std::sin(frequency * t);
     }
-    
+
     std::string getName() const override { return "DynamicVacuum"; }
     std::string getDescription() const override { return "Time-varying vacuum energy"; }
 };
 
-class QuantumCouplingTerm : public PhysicsTerm {
+class QuantumCouplingTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double coupling_strength;
@@ -98,17 +97,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
     QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
         double M = params.count("M") ? params.at("M") : 1.989e30;
         double r = params.count("r") ? params.at("r") : 1e4;
         return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
     }
-    
+
     std::string getName() const override { return "QuantumCoupling"; }
     std::string getDescription() const override { return "Non-local quantum effects"; }
 };
@@ -117,13 +116,13 @@ public:
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
 // ===========================================================================================
 
-class UgCouplingModule {
+class UgCouplingModule
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
-    std::vector<double> k_values;  // [k1, k2, k3, k4]
+    std::vector<double> k_values; // [k1, k2, k3, k4]
     std::vector<double> computeAllK_Ugi();
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
@@ -133,23 +132,20 @@ private:
     bool enableLogging;
     double learningRate;
 
-
-
 public:
     // Constructor: Initialize with framework defaults
     UgCouplingModule();
 
     // Dynamic variable operations
-    void updateVariable(const std::string& name, double value);
-    void addToVariable(const std::string& name, double delta);
-    void subtractFromVariable(const std::string& name, double delta);
+    void updateVariable(const std::string &name, double value);
+    void addToVariable(const std::string &name, double delta);
+    void subtractFromVariable(const std::string &name, double delta);
 
     // Core computations
-    double computeK_i(int i);  // k_i for specific i (1-4)
+    double computeK_i(int i);   // k_i for specific i (1-4)
     double computeU_gi(int i);  // Placeholder U_gi (J/m^3)
-    double computeK_Ugi(int i);  // k_i * U_gi
-    std::vector<double> computeAllK_Ugi();  // All four k_i * U_gi
-    double computeSumK_Ugi();  // Sum for F_U contribution
+    double computeK_Ugi(int i); // k_i * U_gi
+    double computeSumK_Ugi();   // Sum for F_U contribution
 
     // Output descriptive text
     std::string getEquationText();
@@ -167,75 +163,86 @@ public:
 // // // #include "UgCouplingModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
-UgCouplingModule::UgCouplingModule() {
-        enableDynamicTerms = true;
-        enableLogging = false;
-        learningRate = 0.001;
-        metadata["enhanced"] = "true";
-        metadata["version"] = "2.0-Enhanced";
+UgCouplingModule::UgCouplingModule()
+{
+    enableDynamicTerms = true;
+    enableLogging = false;
+    learningRate = 0.001;
+    metadata["enhanced"] = "true";
+    metadata["version"] = "2.0-Enhanced";
 
     // Coupling constants (unitless)
-    k_values = {1.5, 1.2, 1.8, 1.0};               // k1=1.5, k2=1.2, k3=1.8, k4=1.0
+    k_values = {1.5, 1.2, 1.8, 1.0}; // k1=1.5, k2=1.2, k3=1.8, k4=1.0
 
     // U_gi defaults (example from Sun at t=0, J/m^3)
-    variables["U_g1"] = 1.39e26;                    // Internal Dipole
-    variables["U_g2"] = 1.18e53;                    // Outer Field Bubble
-    variables["U_g3"] = 1.8e49;                     // Magnetic Strings Disk
-    variables["U_g4"] = 2.50e-20;                   // Star-Black Hole Interactions
+    variables["U_g1"] = 1.39e26;  // Internal Dipole
+    variables["U_g2"] = 1.18e53;  // Outer Field Bubble
+    variables["U_g3"] = 1.8e49;   // Magnetic Strings Disk
+    variables["U_g4"] = 2.50e-20; // Star-Black Hole Interactions
 
     // Shared params (placeholders)
-    variables["mu_s"] = 1.0;                        // Magnetic moment
-    variables["M_s"] = 1.989e30;                    // Stellar mass kg
-    variables["r"] = 1e11;                          // m
-    variables["alpha"] = 1e-10;                     // Decay rate s^-1
-    variables["t_n"] = 0.0;                         // s
+    variables["mu_s"] = 1.0;     // Magnetic moment
+    variables["M_s"] = 1.989e30; // Stellar mass kg
+    variables["r"] = 1e11;       // m
+    variables["alpha"] = 1e-10;  // Decay rate s^-1
+    variables["t_n"] = 0.0;      // s
     variables["pi"] = 3.141592653589793;
-    variables["delta_def"] = 0.0;                   // Deformation
-    variables["rho_vac_UA"] = 7.09e-36;             // J/m^3
-    variables["rho_vac_SCm"] = 7.09e-37;            // J/m^3
-    variables["S_r_Rb"] = 1.0;                      // Step function
-    variables["delta_sw"] = 0.0;                    // Swirl deformation
-    variables["v_sw"] = 0.0;                        // Solar wind velocity
-    variables["H_SCm"] = 1.0;                       // Heaviside SCm
-    variables["E_react"] = 1.0;                     // Reactive energy
-    variables["M_bh"] = 8.15e36;                    // kg
-    variables["d_g"] = 2.55e20;                     // m
-    variables["f_feedback"] = 0.0;                  // Feedback factor
+    variables["delta_def"] = 0.0;        // Deformation
+    variables["rho_vac_UA"] = 7.09e-36;  // J/m^3
+    variables["rho_vac_SCm"] = 7.09e-37; // J/m^3
+    variables["S_r_Rb"] = 1.0;           // Step function
+    variables["delta_sw"] = 0.0;         // Swirl deformation
+    variables["v_sw"] = 0.0;             // Solar wind velocity
+    variables["H_SCm"] = 1.0;            // Heaviside SCm
+    variables["E_react"] = 1.0;          // Reactive energy
+    variables["M_bh"] = 8.15e36;         // kg
+    variables["d_g"] = 2.55e20;          // m
+    variables["f_feedback"] = 0.0;       // Feedback factor
 }
 
 // Update variable
-void UgCouplingModule::updateVariable(const std::string& name, double value) {
+void UgCouplingModule::updateVariable(const std::string &name, double value)
+{
     variables[name] = value;
 }
 
 // Add delta
-void UgCouplingModule::addToVariable(const std::string& name, double delta) {
-    if (variables.find(name) != variables.end()) {
+void UgCouplingModule::addToVariable(const std::string &name, double delta)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] += delta;
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with delta " << delta << std::endl;
         variables[name] = delta;
     }
 }
 
 // Subtract delta
-void UgCouplingModule::subtractFromVariable(const std::string& name, double delta) {
+void UgCouplingModule::subtractFromVariable(const std::string &name, double delta)
+{
     addToVariable(name, -delta);
 }
 
 // Compute k_i (1-based index)
-double UgCouplingModule::computeK_i(int i) {
-    if (i < 1 || i > 4) {
+double UgCouplingModule::computeK_i(int i)
+{
+    if (i < 1 || i > 4)
+    {
         std::cerr << "Invalid i: " << i << ". Using k1." << std::endl;
         return k_values[0];
     }
-    return k_values[i-1];
+    return k_values[i - 1];
 }
 
 // Placeholder compute U_gi (simplified; full eqs require more params)
-double UgCouplingModule::computeU_gi(int i) {
+double UgCouplingModule::computeU_gi(int i)
+{
     std::string key = "U_g" + std::to_string(i);
-    if (variables.find(key) != variables.end()) {
+    if (variables.find(key) != variables.end())
+    {
         return variables[key];
     }
     std::cerr << "U_g" << i << " not defined. Returning 0." << std::endl;
@@ -243,31 +250,37 @@ double UgCouplingModule::computeU_gi(int i) {
 }
 
 // Compute k_i * U_gi
-double UgCouplingModule::computeK_Ugi(int i) {
+double UgCouplingModule::computeK_Ugi(int i)
+{
     return computeK_i(i) * computeU_gi(i);
 }
 
 // Compute all k_i * U_gi
-std::vector<double> UgCouplingModule::computeAllK_Ugi() {
+std::vector<double> UgCouplingModule::computeAllK_Ugi()
+{
     std::vector<double> k_ugi(4);
-    for (int i = 1; i <= 4; ++i) {
-        k_ugi[i-1] = computeK_Ugi(i);
+    for (int i = 1; i <= 4; ++i)
+    {
+        k_ugi[i - 1] = computeK_Ugi(i);
     }
     return k_ugi;
 }
 
 // Sum k_i * U_gi for F_U
-double UgCouplingModule::computeSumK_Ugi() {
+double UgCouplingModule::computeSumK_Ugi()
+{
     auto all = computeAllK_Ugi();
     double sum = 0.0;
-    for (double val : all) {
+    for (double val : all)
+    {
         sum += val;
     }
     return sum;
 }
 
 // Equation text
-std::string UgCouplingModule::getEquationText() {
+std::string UgCouplingModule::getEquationText()
+{
     return "F_U = ? [k_i * U_gi(r,t,M_s,?_s,T_s,B_s,?_vac,[SCm],?_vac,[UA],t_n) - ?_i * ... ] + other terms\n"
            "k_i (unitless): k1=1.5 (Ug1 Internal Dipole), k2=1.2 (Ug2 Outer Bubble),\n"
            "k3=1.8 (Ug3 Magnetic Disk), k4=1.0 (Ug4 Star-BH).\n"
@@ -280,24 +293,29 @@ std::string UgCouplingModule::getEquationText() {
 }
 
 // Print variables
-void UgCouplingModule::printVariables() {
+void UgCouplingModule::printVariables()
+{
     std::cout << "Current Variables:\n";
-    for (const auto& pair : variables) {
+    for (const auto &pair : variables)
+    {
         std::cout << pair.first << " = " << std::scientific << pair.second << std::endl;
     }
     std::cout << "k_i values: ";
-    for (size_t j = 0; j < k_values.size(); ++j) {
-        std::cout << "k" << (j+1) << "=" << k_values[j] << " ";
+    for (size_t j = 0; j < k_values.size(); ++j)
+    {
+        std::cout << "k" << (j + 1) << "=" << k_values[j] << " ";
     }
     std::cout << std::endl;
 }
 
 // Print k_i * U_gi
-void UgCouplingModule::printK_Ugi() {
+void UgCouplingModule::printK_Ugi()
+{
     auto all = computeAllK_Ugi();
     std::cout << "Scaled Ug Terms k_i * U_gi (J/m�):\n";
-    for (int i = 1; i <= 4; ++i) {
-        std::cout << "k" << i << " * U_g" << i << " = " << std::scientific << all[i-1] << std::endl;
+    for (int i = 1; i <= 4; ++i)
+    {
+        std::cout << "k" << i << " * U_g" << i << " = " << std::scientific << all[i - 1] << std::endl;
     }
     std::cout << "Sum ? k_i U_gi = " << std::scientific << computeSumK_Ugi() << std::endl;
 }

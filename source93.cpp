@@ -142,7 +142,6 @@ public:
     // Core computations
     double computeEpsilon_sw();       // ?_sw = 0.001 (unitless)
     double computeModulationFactor(); // 1 + ?_sw * ?_vac,sw
-    double computeU_b1();             // Full U_b1 with modulation
 
     // Output descriptive text
     std::string getEquationText();

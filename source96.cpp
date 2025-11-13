@@ -4,7 +4,7 @@
 // Pluggable: // // // #include "GalacticDistanceModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // GalacticDistanceModule mod; mod.computeMbhOverDg(); mod.updateVariable("d_g", new_value);
 // Variables in std::map; example for Sun at t=0, t_n=0.
-// Approximations: cos(p t_n)=1; e_sw * ?_vac,sw ˜0; a=0.001 s^-1; f_feedback=0.1.
+// Approximations: cos(p t_n)=1; e_sw * ?_vac,sw ï¿½0; a=0.001 s^-1; f_feedback=0.1.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef GALACTIC_DISTANCE_MODULE_H
@@ -15,7 +15,6 @@
 #include <cmath>
 #include <iostream>
 #include <iomanip>
-
 
 #include <map>
 #include <vector>
@@ -36,7 +35,8 @@
 // SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
 // ===========================================================================================
 
-class PhysicsTerm {
+class PhysicsTerm
+{
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
     std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
@@ -45,18 +45,17 @@ class PhysicsTerm {
     bool enableLogging;
     double learningRate;
 
-
 public:
     virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double>& params) const = 0;
+    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
     virtual std::string getName() const = 0;
     virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double>& params) const { return true; }
+    virtual bool validate(const std::map<std::string, double> &params) const { return true; }
 };
 
-class DynamicVacuumTerm : public PhysicsTerm {
+class DynamicVacuumTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double amplitude;
@@ -69,23 +68,23 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15) 
+    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15)
         : amplitude(amp), frequency(freq) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
         return amplitude * rho_vac * std::sin(frequency * t);
     }
-    
+
     std::string getName() const override { return "DynamicVacuum"; }
     std::string getDescription() const override { return "Time-varying vacuum energy"; }
 };
 
-class QuantumCouplingTerm : public PhysicsTerm {
+class QuantumCouplingTerm : public PhysicsTerm
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     double coupling_strength;
@@ -97,17 +96,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
 public:
     QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
         double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
         double M = params.count("M") ? params.at("M") : 1.989e30;
         double r = params.count("r") ? params.at("r") : 1e4;
         return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
     }
-    
+
     std::string getName() const override { return "QuantumCoupling"; }
     std::string getDescription() const override { return "Non-local quantum effects"; }
 };
@@ -116,9 +115,9 @@ public:
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
 // ===========================================================================================
 
-class GalacticDistanceModule {
+class GalacticDistanceModule
+{
 private:
-    
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
@@ -135,24 +134,17 @@ private:
     bool enableLogging;
     double learningRate;
 
-
-
 public:
     // Constructor: Initialize with framework defaults
     GalacticDistanceModule();
 
     // Dynamic variable operations
-    void updateVariable(const std::string& name, double value);
-    void addToVariable(const std::string& name, double delta);
-    void subtractFromVariable(const std::string& name, double delta);
+    void updateVariable(const std::string &name, double value);
+    void addToVariable(const std::string &name, double delta);
+    void subtractFromVariable(const std::string &name, double delta);
 
     // Core computations
-    double computeDg();  // d_g in m (2.55e20)
-    double computeDgInLy();
-    double computeDgInPc();
-    double computeMbhOverDg();  // M_bh / d_g (kg/m)
-    double computeU_b1();  // Universal Buoyancy example (J/m^3)
-    double computeU_g4();  // Ug4 example (J/m^3)
+    double computeDg(); // d_g in m (2.55e20)
 
     // Output descriptive text
     std::string getEquationText();
@@ -167,87 +159,102 @@ public:
 // // // #include "GalacticDistanceModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
-GalacticDistanceModule::GalacticDistanceModule() {
-        enableDynamicTerms = true;
-        enableLogging = false;
-        learningRate = 0.001;
-        metadata["enhanced"] = "true";
-        metadata["version"] = "2.0-Enhanced";
+GalacticDistanceModule::GalacticDistanceModule()
+{
+    enableDynamicTerms = true;
+    enableLogging = false;
+    learningRate = 0.001;
+    metadata["enhanced"] = "true";
+    metadata["version"] = "2.0-Enhanced";
 
     // Universal constants
-    variables["c"] = 2.998e8;                       // m/s
-    variables["year_to_s"] = 3.156e7;               // s/yr
-    variables["ly_to_m"] = variables["c"] * variables["year_to_s"];  // ˜9.461e15 m/ly
-    variables["pc_to_ly"] = 3.262;                  // ly/pc
+    variables["c"] = 2.998e8;                                       // m/s
+    variables["year_to_s"] = 3.156e7;                               // s/yr
+    variables["ly_to_m"] = variables["c"] * variables["year_to_s"]; // ï¿½9.461e15 m/ly
+    variables["pc_to_ly"] = 3.262;                                  // ly/pc
     variables["pi"] = 3.141592653589793;
 
     // Galactic params
-    variables["d_g"] = 2.55e20;                     // m (~27,000 ly)
-    variables["M_bh"] = 8.15e36;                    // kg (Sgr A* mass)
+    variables["d_g"] = 2.55e20;  // m (~27,000 ly)
+    variables["M_bh"] = 8.15e36; // kg (Sgr A* mass)
 
     // U_bi params
-    variables["beta_1"] = 0.6;                      // Unitless
-    variables["U_g1"] = 1.39e26;                    // J/m^3
-    variables["Omega_g"] = 7.3e-16;                 // rad/s
-    variables["epsilon_sw"] = 0.001;                // Unitless
-    variables["rho_vac_sw"] = 8e-21;                // J/m^3
-    variables["U_UA"] = 1.0;                        // Normalized
-    variables["t_n"] = 0.0;                         // s
+    variables["beta_1"] = 0.6;       // Unitless
+    variables["U_g1"] = 1.39e26;     // J/m^3
+    variables["Omega_g"] = 7.3e-16;  // rad/s
+    variables["epsilon_sw"] = 0.001; // Unitless
+    variables["rho_vac_sw"] = 8e-21; // J/m^3
+    variables["U_UA"] = 1.0;         // Normalized
+    variables["t_n"] = 0.0;          // s
 
     // Ug4 params
-    variables["k_4"] = 1.0;                         // Unitless
-    variables["rho_vac_SCm"] = 7.09e-37;            // J/m^3
-    variables["alpha"] = 0.001;                     // s^-1
-    variables["f_feedback"] = 0.1;                  // Unitless
+    variables["k_4"] = 1.0;              // Unitless
+    variables["rho_vac_SCm"] = 7.09e-37; // J/m^3
+    variables["alpha"] = 0.001;          // s^-1
+    variables["f_feedback"] = 0.1;       // Unitless
 }
 
 // Update variable
-void GalacticDistanceModule::updateVariable(const std::string& name, double value) {
-    if (variables.find(name) != variables.end()) {
+void GalacticDistanceModule::updateVariable(const std::string &name, double value)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] = value;
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with value " << value << std::endl;
         variables[name] = value;
     }
 }
 
 // Add delta
-void GalacticDistanceModule::addToVariable(const std::string& name, double delta) {
-    if (variables.find(name) != variables.end()) {
+void GalacticDistanceModule::addToVariable(const std::string &name, double delta)
+{
+    if (variables.find(name) != variables.end())
+    {
         variables[name] += delta;
-    } else {
+    }
+    else
+    {
         std::cerr << "Variable '" << name << "' not found. Adding with delta " << delta << std::endl;
         variables[name] = delta;
     }
 }
 
 // Subtract delta
-void GalacticDistanceModule::subtractFromVariable(const std::string& name, double delta) {
+void GalacticDistanceModule::subtractFromVariable(const std::string &name, double delta)
+{
     addToVariable(name, -delta);
 }
 
 // Compute d_g (m)
-double GalacticDistanceModule::computeDg() {
+double GalacticDistanceModule::computeDg()
+{
     return variables["d_g"];
 }
 
 // d_g in ly
-double GalacticDistanceModule::computeDgInLy() {
+double GalacticDistanceModule::computeDgInLy()
+{
     return computeDg() / variables["ly_to_m"];
 }
 
 // d_g in pc
-double GalacticDistanceModule::computeDgInPc() {
+double GalacticDistanceModule::computeDgInPc()
+{
     return computeDgInLy() / variables["pc_to_ly"];
 }
 
 // M_bh / d_g (kg/m)
-double GalacticDistanceModule::computeMbhOverDg() {
+double GalacticDistanceModule::computeMbhOverDg()
+{
     return variables["M_bh"] / computeDg();
 }
 
 // U_b1 example (J/m^3)
-double GalacticDistanceModule::computeU_b1() {
+double GalacticDistanceModule::computeU_b1()
+{
     double beta_1 = variables["beta_1"];
     double U_g1 = variables["U_g1"];
     double Omega_g = variables["Omega_g"];
@@ -259,31 +266,35 @@ double GalacticDistanceModule::computeU_b1() {
 }
 
 // U_g4 example (J/m^3)
-double GalacticDistanceModule::computeU_g4() {
+double GalacticDistanceModule::computeU_g4()
+{
     double k_4 = variables["k_4"];
     double rho_vac_SCm = variables["rho_vac_SCm"];
     double mbh_over_dg = computeMbhOverDg();
-    double exp_term = std::exp( - variables["alpha"] * variables["t_n"] );
+    double exp_term = std::exp(-variables["alpha"] * variables["t_n"]);
     double cos_term = std::cos(variables["pi"] * variables["t_n"]);
     double feedback_factor = 1.0 + variables["f_feedback"];
     return k_4 * (rho_vac_SCm * variables["M_bh"]) / computeDg() * exp_term * cos_term * feedback_factor;
 }
 
 // Equation text
-std::string GalacticDistanceModule::getEquationText() {
-    return "U_bi = -ß_i U_gi O_g (M_bh / d_g) (1 + e_sw ?_vac,sw) U_UA cos(p t_n)\n"
+std::string GalacticDistanceModule::getEquationText()
+{
+    return "U_bi = -ï¿½_i U_gi O_g (M_bh / d_g) (1 + e_sw ?_vac,sw) U_UA cos(p t_n)\n"
            "U_g4 = k_4 (?_vac,[SCm] M_bh / d_g) e^{-a t} cos(p t_n) (1 + f_feedback)\n"
            "Where d_g = 2.55e20 m (~27,000 ly / 8,260 pc; Sun to Sgr A*).\n"
-           "M_bh / d_g ˜3.20e16 kg/m;\n"
-           "Example U_b1 ˜ -1.94e27 J/m³; U_g4 ˜2.50e-20 J/m³ (t_n=0).\n"
+           "M_bh / d_g ï¿½3.20e16 kg/m;\n"
+           "Example U_b1 ï¿½ -1.94e27 J/mï¿½; U_g4 ï¿½2.50e-20 J/mï¿½ (t_n=0).\n"
            "Role: Scales SMBH influence on buoyancy/Ug4; galactic dynamics in nebulae/disks.\n"
            "UQFF: Enables merger resolution (final parsec); star formation modulation.";
 }
 
 // Print variables
-void GalacticDistanceModule::printVariables() {
+void GalacticDistanceModule::printVariables()
+{
     std::cout << "Current Variables:\n";
-    for (const auto& pair : variables) {
+    for (const auto &pair : variables)
+    {
         std::cout << pair.first << " = " << std::scientific << pair.second << std::endl;
     }
 }
@@ -293,16 +304,16 @@ void GalacticDistanceModule::printVariables() {
 // int main() {
 //     GalacticDistanceModule mod;
 //     double dg_ly = mod.computeDgInLy();
-//     std::cout << "d_g ˜ " << dg_ly << " ly\n";
+//     std::cout << "d_g ï¿½ " << dg_ly << " ly\n";
 //     double u_b1 = mod.computeU_b1();
-//     std::cout << "U_b1 = " << u_b1 << " J/m³\n";
+//     std::cout << "U_b1 = " << u_b1 << " J/mï¿½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("d_g", 2.6e20);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o galactic_test galactic_test.cpp GalacticDistanceModule.cpp -lm
-// Sample: d_g ˜2.70e4 ly; U_b1 ˜ -1.94e27 J/m³; scales SMBH at galactic distances.
+// Sample: d_g ï¿½2.70e4 ly; U_b1 ï¿½ -1.94e27 J/mï¿½; scales SMBH at galactic distances.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
