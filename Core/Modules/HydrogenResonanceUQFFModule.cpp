@@ -62,15 +62,28 @@ public:
 
 #endif // HYDROGEN_RESONANCE_UQFF_MODULE_H
 
+// Surface Magnetic Field Module - Helper class
+class SurfaceMagneticFieldModule {
+private:
+    std::map<std::string, double> variables;
+public:
+    SurfaceMagneticFieldModule() {
+        variables["B_ref"] = 1e-4;
+        variables["omega_s"] = 2 * 3.14159265358979323846 / (27.0 * 86400.0);  // Solar rotation ~27 days
+        variables["t"] = 0.0;
+    }
+    double computeB_j(double t, double B_s);
+    void updateVariable(const std::string& name, double value);
+};
+
 // SurfaceMagneticFieldModule.cpp
-#include "SurfaceMagneticFieldModule.h"
 // Compute scaled B_j based on time t and surface field B_s
 double SurfaceMagneticFieldModule::computeB_j(double t, double B_s) {
     variables["t"] = t;
-    double base_b = variables["B_ref"] + 0.4 * std::sin(variables["omega_s"] * t);  // Hypothetical cycle
+    double base_b = variables["B_ref"] + 0.4 * std::sin(variables["omega_s"] * t);
     return base_b * (B_s / variables["B_ref"]);
 }
-// Update variable
+
 void SurfaceMagneticFieldModule::updateVariable(const std::string& name, double value) {
     if (variables.find(name) != variables.end()) {
         variables[name] = value;
@@ -78,19 +91,6 @@ void SurfaceMagneticFieldModule::updateVariable(const std::string& name, double 
         std::cerr << "Variable " << name << " not found. Cannot update." << std::endl;
     }
 }
-} else {
-        std::cerr << "Variable '" << name << "' not found. Adding with delta " << delta << std::endl;
-        variables[name] = delta;
-    }
-}
-    if (variables.find(name) != variables.end()) {
-        variables[name] += delta;
-    } else {
-        std::cerr << "Variable '" << name << "' not found. Adding with delta " << delta << std::endl;
-        variables[name] = delta;
-    }
-}
-    if (variables.find(name) != variables.end()) {
         variables[name] += delta;
     } else {
         std::cerr << "Variable '" << name << "' not found. Adding with delta " << delta << std::endl;
@@ -303,7 +303,7 @@ double SurfaceMagneticFieldModule::computeU_g3_example(double t, double B_s) {
     return k_3 * b_j * cos_term * p_core * e_react;
 }
 // HydrogenResonanceUQFFModule.cpp
-#include "HydrogenResonanceUQFFModule.h"
+// #include "HydrogenResonanceUQFFModule.h"  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with PToE-specific values

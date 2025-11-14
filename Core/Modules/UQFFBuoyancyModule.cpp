@@ -10,6 +10,11 @@
 // M84 M=1.46e45 kg r=3.09e22 m; Centaurus A M=4e41 kg r=3.09e21 m; Supernova Survey M=1e30 kg r=1e10 m.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 22, 2025.
 
+#define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 #include <map>
 #include <string>
 #include <cmath>
@@ -19,10 +24,6 @@
 #include <sstream>
 #include <vector>
 #include <fstream>
-
-#ifndef M_PI
-#define M_PI 3.141592653589793
-#endif
 
 using cdouble = std::complex<double>;
 

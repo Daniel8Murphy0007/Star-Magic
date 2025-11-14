@@ -1,7 +1,12 @@
 // RedSpiderUQFFModule.h
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for Red Spider Nebula (NGC 6537) Evolution.
 // This module models NGC 6537's dynamics via frequency/resonance: DPM core, THz hole pipeline, U_g4i reactive, plasmotic vacuum energy; no SM gravity/magnetics.
-// Usage: // // // #include "RedSpiderUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; RedSpiderUQFFModule mod; mod.computeG(t); mod.updateVariable("f_super", new_value);
+// Usage: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "RedSpiderUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; RedSpiderUQFFModule mod; mod.computeG(t); mod.updateVariable("f_super", new_value);
 // Variables in std::map for dynamic updates; supports F_env(t) as resonance factors; Aether replaces dark energy.
 // Approximations: psi_integral=1.0; all terms frequency-derived (a = f * ? / (2?)); U_g4i reactive freq=1e10 Hz.
 // Red Spider params: r=7.1e15 m, rho_lobe=1e-22 kg/m�, rho_fil=1e-20 kg/m�, v_exp=3e5 m/s, T_wd=2.5e5 K, L=1e29 W, z=0.0015, etc.
@@ -360,26 +365,27 @@ void RedSpiderUQFFModule::printVariables() {
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-RedSpiderUQFFModule Evaluation
+// RedSpiderUQFFModule Evaluation
 
-Strengths :
--Modular, extensible design for modeling Red Spider Nebula(NGC 6537) dynamics, focusing on frequency / resonance - driven acceleration.
-- Comprehensive physics : incorporates DPM core, THz hole pipeline, reactive / plasmotic vacuum energy, and aetheric effects; avoids standard gravity / magnetics for a unique approach.
-- Dynamic variable management via std::map enables runtime updates and system adaptation.
-- Clear separation of computation functions(e.g., frequency terms, resonance, DPM, THz, Ug4i), aiding maintainability.
-- Red Spider - specific parameters are initialized for realistic simulation; supports easy modification.
-- Output functions for equation text and variable state support debugging and documentation.
-- Frequency - based modeling(a = f * ? / 2?) is innovative and well - encapsulated.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
-- Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
-- Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
-- Unit consistency should be checked and documented for all physical quantities.
-- For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
-- std::map is flexible but may be less efficient than structured types for very large models.
-- Expand documentation for function purposes and physical meaning.
-
-Summary:
-The code is well - structured, flexible, and suitable for scientific prototyping and educational use in nebular resonance modeling.It implements a broad set of frequency - driven physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular, extensible design for modeling Red Spider Nebula(NGC 6537) dynamics, focusing on frequency / resonance - driven acceleration.
+// - Comprehensive physics : incorporates DPM core, THz hole pipeline, reactive / plasmotic vacuum energy, and aetheric effects; avoids standard gravity / magnetics for a unique approach.
+// - Dynamic variable management via std::map enables runtime updates and system adaptation.
+// - Clear separation of computation functions(e.g., frequency terms, resonance, DPM, THz, Ug4i), aiding maintainability.
+// - Red Spider - specific parameters are initialized for realistic simulation; supports easy modification.
+// - Output functions for equation text and variable state support debugging and documentation.
+// - Frequency - based modeling(a = f * ? / 2?) is innovative and well - encapsulated.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+// - Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
+// - Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
+// - Unit consistency should be checked and documented for all physical quantities.
+// - For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
+// - std::map is flexible but may be less efficient than structured types for very large models.
+// - Expand documentation for function purposes and physical meaning.
+//
+// Summary:
+// The code is well - structured, flexible, and suitable for scientific prototyping and educational use in nebular resonance modeling.It implements a broad set of frequency - driven physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+// */

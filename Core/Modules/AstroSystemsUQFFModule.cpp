@@ -4,6 +4,11 @@
 // Copyright - Daniel T. Murphy, analyzed Oct 23, 2025
 // Enhanced Nov 10, 2025 with dynamics, simulation, and self-expanding capabilities
 
+#define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 #include <map>
 #include <string>
 #include <cmath>
@@ -88,27 +93,27 @@ public:
 
 AstroSystemsUQFFModule::AstroSystemsUQFFModule() : enable_logging(false)
 {
-    double pi_val = 3.141592653589793;
+    // double M_PI already defined in header
 
     // Base constants (universal)
     variables["G"] = {6.6743e-11, 0.0};
     variables["c"] = {3e8, 0.0};
     variables["hbar"] = {1.0546e-34, 0.0};
     variables["q"] = {1.6e-19, 0.0};
-    variables["pi"] = {pi_val, 0.0};
+    variables["pi"] = {M_PI, 0.0};
     variables["m_e"] = {9.11e-31, 0.0};
     variables["mu_B"] = {9.274e-24, 0.0};
     variables["g_Lande"] = {2.0, 0.0};
     variables["k_B"] = {1.38e-23, 0.0};
-    variables["mu0"] = {4 * pi_val * 1e-7, 0.0};
+    variables["mu0"] = {4 * M_PI * 1e-7, 0.0};
 
     // Shared params
     variables["F_rel"] = {4.30e33, 0.0};
     variables["F0"] = {1.83e71, 0.0};
     variables["V"] = {1e-3, 0.0};
-    variables["theta"] = {pi_val / 4, 0.0};
-    variables["phi"] = {pi_val / 4, 0.0};
-    variables["omega_act"] = {2 * pi_val * 300, 0.0};
+    variables["theta"] = {M_PI / 4, 0.0};
+    variables["phi"] = {M_PI / 4, 0.0};
+    variables["omega_act"] = {2 * M_PI * 300, 0.0};
     variables["k_act"] = {1e-6, 0.0};
     variables["k_DE"] = {1e-30, 0.0};
     variables["k_neutron"] = {1e10, 0.0};
@@ -118,7 +123,7 @@ AstroSystemsUQFFModule::AstroSystemsUQFFModule() : enable_logging(false)
     variables["E_cm"] = {3.0264e-8, 0.0};
     variables["F_neutrino"] = {9.07e-42, 1e-43};
     variables["k_LENR"] = {1e-10, 0.0};
-    variables["omega_LENR"] = {2 * pi_val * 1.25e12, 0.0};
+    variables["omega_LENR"] = {2 * M_PI * 1.25e12, 0.0};
     variables["rho_vac_UA"] = {7.09e-36, 1e-37};
     variables["DPM_momentum"] = {0.93, 0.05};
     variables["DPM_gravity"] = {1.0, 0.1};
@@ -349,8 +354,8 @@ cdouble AstroSystemsUQFFModule::computeSuperconductive(const std::string & /* sy
     cdouble rho_sc = variables["rho_vac_SCm"];
     cdouble rho_ua = variables["rho_vac_UA"];
     cdouble omega_s = variables["omega_s"];
-    double pi_val = variables["pi"].real();
-    double cos_term = cos(pi_val * tn);
+    double pi_value = variables["pi"].real();  // M_PI is a macro
+    double cos_term = cos(M_PI * tn);
     cdouble f_trz = variables["f_TRZ"];
     return lambda * (rho_sc / rho_ua * omega_s * cos_term * (1.0 + f_trz.real()));
 }

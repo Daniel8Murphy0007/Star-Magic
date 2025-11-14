@@ -1,7 +1,12 @@
 // ScmVelocityModule.h
 // Modular C++ implementation of the [SCm] Velocity (v_SCm) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes v_SCm = 1e8 m/s (~c/3); scales in E_react = ?_vac,[SCm] v_SCm� / ?_vac,A * exp(-? t) for U_m, U_bi, etc.
-// Pluggable: // // // #include "ScmVelocityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "ScmVelocityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // ScmVelocityModule mod; mod.computeE_react(0.0); mod.updateVariable("v_scm", new_value);
 // Variables in std::map; example for Sun at t=0 (E_react=1e46 J); t=2000 days: scales down via exp.
 // Approximations: ?=0.0005 day?�; ?_vac,[SCm]=7.09e-37 J/m�; ?_vac,A=1e-23 J/m�; U_m base=2.28e65 J/m�.

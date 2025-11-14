@@ -1,7 +1,12 @@
 // ReciprocationDecayModule.h
 // Modular C++ implementation of the Reciprocation Decay Rate (?) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?=0.00005 day?� (~5.8e-10 s?�); used in exp(-? t cos(? t_n)) for U_m decay.
-// Pluggable: // // // #include "ReciprocationDecayModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "ReciprocationDecayModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // ReciprocationDecayModule mod; mod.computeOneMinusExp(1000.0, 0.0); mod.updateVariable("gamma_day", new_value);
 // Variables in std::map; example for t=1000 days, t_n=0; 1-exp ?0.049.
 // Approximations: cos(? t_n)=1; timescale ~55 years; ?_j / r_j=2.26e10 T m�.
@@ -325,23 +330,24 @@ void ReciprocationDecayModule::printDecayEffects(double t_day, double t_n)
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-ReciprocationDecayModule Evaluation
+// ReciprocationDecayModule Evaluation
 
-Strengths :
--Modular and pluggable design; can be included and instantiated easily in other projects.
-- Dynamic variable management using std::map allows runtime updates, additions, and removals.
-- Core computation methods(computeGamma_day, computeGamma_s, computeCosPiTn, computeExpTerm, computeOneMinusExp, computeUmExample) are clear, concise, and variable - driven.
-- Automatic recalculation of derived variables(gamma_s) when dependencies change.
-- Output and debugging functions(printVariables, printDecayEffects, getEquationText) provide transparency and aid validation.
-- Well - documented physical meaning and example calculations in comments and equation text.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
-- Minimal error handling for missing variables, invalid input, or division by zero; add validation for robustness.
-- Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
-- For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
-- Expand documentation for function purposes and expected input / output.
-
-Summary:
-The code is well - structured, clear, and suitable for scientific prototyping and educational use in reciprocation decay modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular and pluggable design; can be included and instantiated easily in other projects.
+// - Dynamic variable management using std::map allows runtime updates, additions, and removals.
+// - Core computation methods(computeGamma_day, computeGamma_s, computeCosPiTn, computeExpTerm, computeOneMinusExp, computeUmExample) are clear, concise, and variable - driven.
+// - Automatic recalculation of derived variables(gamma_s) when dependencies change.
+// - Output and debugging functions(printVariables, printDecayEffects, getEquationText) provide transparency and aid validation.
+// - Well - documented physical meaning and example calculations in comments and equation text.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
+// - Minimal error handling for missing variables, invalid input, or division by zero; add validation for robustness.
+// - Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
+// - For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
+// - Expand documentation for function purposes and expected input / output.
+//
+// Summary:
+// The code is well - structured, clear, and suitable for scientific prototyping and educational use in reciprocation decay modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+// */

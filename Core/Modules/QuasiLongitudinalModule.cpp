@@ -1,7 +1,12 @@
 // QuasiLongitudinalModule.h
 // Modular C++ implementation of the Quasi-Longitudinal Wave Factor (f_quasi) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes f_quasi=0.01 (unitless) and its scaling (1 + f_quasi) in Universal Magnetism U_m term.
-// Pluggable: // // // #include "QuasiLongitudinalModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "QuasiLongitudinalModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // QuasiLongitudinalModule mod; mod.computeUmContribution(0.0); mod.updateVariable("f_quasi", new_value);
 // Variables in std::map; example for Sun at t=0, t_n=0; minor 1% increase in U_m.
 // Approximations: 1 - e^{-? t cos(? t_n)}=0 at t=0; ?_hat_j=1; P_SCm=1; f_Heaviside=0.01 (1 + 10^13 f=1e11+1).
@@ -320,23 +325,24 @@ void QuasiLongitudinalModule::printUmComparison(int j, double t)
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-QuasiLongitudinalModule Evaluation
+// QuasiLongitudinalModule Evaluation
 
-Strengths :
--Modular and pluggable design; can be included and instantiated easily in other projects.
-- Dynamic variable management using std::map allows runtime updates, additions, and removals.
-- Core computation methods(computeF_quasi, computeQuasiFactor, computeUmContribution, computeUmWithNoQuasi) are clear, concise, and variable - driven.
-- Automatic recalculation of derived variables(quasi_factor) when dependencies change.
-- Output and debugging functions(printVariables, printUmComparison, getEquationText) provide transparency and aid validation.
-- Well - documented physical meaning and example calculations in comments and equation text.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
-- Minimal error handling for missing variables, invalid input, or division by zero; add validation for robustness.
-- Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
-- For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
-- Expand documentation for function purposes and expected input / output.
-
-Summary:
-The code is well - structured, clear, and suitable for scientific prototyping and educational use in quasi - longitudinal wave factor modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular and pluggable design; can be included and instantiated easily in other projects.
+// - Dynamic variable management using std::map allows runtime updates, additions, and removals.
+// - Core computation methods(computeF_quasi, computeQuasiFactor, computeUmContribution, computeUmWithNoQuasi) are clear, concise, and variable - driven.
+// - Automatic recalculation of derived variables(quasi_factor) when dependencies change.
+// - Output and debugging functions(printVariables, printUmComparison, getEquationText) provide transparency and aid validation.
+// - Well - documented physical meaning and example calculations in comments and equation text.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
+// - Minimal error handling for missing variables, invalid input, or division by zero; add validation for robustness.
+// - Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
+// - For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
+// - Expand documentation for function purposes and expected input / output.
+//
+// Summary:
+// The code is well - structured, clear, and suitable for scientific prototyping and educational use in quasi - longitudinal wave factor modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+// */

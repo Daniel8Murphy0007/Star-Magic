@@ -1,7 +1,12 @@
 // CompressedResonanceUQFF34Module.h
 // Modular C++ implementation of the UQFF Compressed and Resonance Equations for Systems 26-28, 30-32, 34.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: // // // #include "CompressedResonanceUQFF34Module.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Usage in base: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "CompressedResonanceUQFF34Module.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // CompressedResonanceUQFF34Module mod; mod.computeCompressed(system_id); mod.computeResonance(system_id);
 // All variables are stored in a std::map for dynamic addition/subtraction/update; system_id selects parameters (e.g., 26=Universe, 27=Hydrogen Atom, etc.).
 // Nothing is negligible: Includes compressed terms (DPM, THz, vac_diff, super) + resonance (aether, U_g4i, osc, quantum, fluid, exp) with system-specific scaling.
@@ -559,12 +564,12 @@ void CompressedResonanceUQFF34Module::printVariables()
 // Evaluation of CompressedResonanceUQFF34Module (UQFF Compressed & Resonance Terms for Systems 26-28, 30-32, 34)
 
 **Strengths:**
--**Dynamic & Extensible : **All model parameters are stored in a `std: : map<std::string, double> variables`, allowing runtime updates, additions, and removals.The methods `updateVariable`, `addToVariable`, and `subtractFromVariable` enable flexible modification of any parameter.
-- **System - Specific Scaling : **The `setSystemVariables(int system_id)` method configures all relevant parameters for each supported system, making the module highly adaptable for Universe, Hydrogen, Lagoon, Spirals / SN, NGC 6302, Orion, and more.
-- **Automatic Dependency Updates : **When key variables like `"Delta_x"` are updated, dependent variables(`"Delta_p"`) are recalculated automatically, ensuring consistency.
-    - **Immediate Effect : **All computations(e.g., `computeCompressedResTerm`, `computeFullUQFF34`) use the current values in the map, so any changes are immediately reflected in results.
+-**Dynamic & Extensible : **All model parameters are stored in a std: : map<std::string, double> variables, allowing runtime updates, additions, and removals.The methods updateVariable, addToVariable, and subtractFromVariable enable flexible modification of any parameter.
+- **System - Specific Scaling : **The setSystemVariables(int system_id) method configures all relevant parameters for each supported system, making the module highly adaptable for Universe, Hydrogen, Lagoon, Spirals / SN, NGC 6302, Orion, and more.
+- **Automatic Dependency Updates : **When key variables like "Delta_x" are updated, dependent variables("Delta_p") are recalculated automatically, ensuring consistency.
+    - **Immediate Effect : **All computations(e.g., computeCompressedResTerm, computeFullUQFF34) use the current values in the map, so any changes are immediately reflected in results.
         - **Comprehensive Physics : **The module includes all major UQFF compressed and resonance terms, such as DPM, THz, vacuum differential, superconductor, aether, U_g4i, oscillatory, quantum, fluid, and expansion effects.Standard Model gravity / magnetics are intentionally excluded per UQFF.
-        - **Debugging Support : **The `printVariables()` method provides a snapshot of all current parameters, aiding validation and troubleshooting.
+        - **Debugging Support : **The printVariables() method provides a snapshot of all current parameters, aiding validation and troubleshooting.
     - **Sample Usage Provided : **Example integration and compilation instructions are included, demonstrating how to update variables and see their effect.
 
     * *Weaknesses / Recommendations : **
@@ -573,7 +578,7 @@ void CompressedResonanceUQFF34Module::printVariables()
     - **Magic Numbers : **Some scale factors and physical constants are set to arbitrary values.Document their physical meaning or allow configuration via constructor arguments or config files.
     - **Physical Justification : **The model is highly specialized for UQFF and omits Standard Model terms.Ensure this is appropriate for your scientific context and document the rationale for each term.
     - **Performance : **For large - scale or repeated updates, consider profiling and optimizing critical paths if needed.
-    - **Method Consistency : **In `computeCompressedResTerm`, ensure `setSystemVariables(system_id)` is called with the correct system_id(currently not passed as a parameter).Refactor for clarity and reliability.
+    - **Method Consistency : **In computeCompressedResTerm, ensure setSystemVariables(system_id) is called with the correct system_id(currently not passed as a parameter).Refactor for clarity and reliability.
 
     ** Summary:**
     The module is robust, dynamic, and extensible, supporting runtime updates and changes to all model parameters.It is suitable for advanced UQFF - based compressed and resonance modeling for multiple astrophysical systems.Minor improvements in error handling, documentation, method consistency, and physical justification are recommended for production or publication use.

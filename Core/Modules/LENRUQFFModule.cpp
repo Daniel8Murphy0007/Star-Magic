@@ -1,7 +1,12 @@
 // LENRUQFFModule.h
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for LENR Analysis (Metallic Hydride Cells, Exploding Wires, Solar Corona).
 // This module models LENR dynamics via electro-weak interactions: electron acceleration to 0.78 MeV threshold, neutron production, transmutations; UQFF terms Um (magnetism), Ug1-Ug4 (gravity), Ui (inertia), pseudo-monopole.
-// Usage: // // // #include "LENRUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; LENRUQFFModule mod; mod.setScenario("hydride"); mod.computeNeutronRate(t); mod.updateVariable("E_field", new_value);
+// Usage: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "LENRUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; LENRUQFFModule mod; mod.setScenario("hydride"); mod.computeNeutronRate(t); mod.updateVariable("E_field", new_value);
 // Variables in std::map for dynamic updates; supports scenarios via setScenario; calibrated to 100% paper accuracy.
 // Approximations: Q=0.78 MeV; plasma freq from rho_e; neutron rate eta ~1e13 cm^-2/s (hydride); no SM illusions.
 // LENR params: E~2e11 V/m (hydride), I_Alfven=17 kA (wires), B~1 kG, R~10^4 km (corona), etc.
@@ -354,27 +359,28 @@ void LENRUQFFModule::printVariables()
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-LENRUQFFModule Evaluation
+// LENRUQFFModule Evaluation
 
-Strengths :
--Modular, extensible design for modeling LENR(Low Energy Nuclear Reactions) dynamics in various scenarios(hydride, wires, solar corona).
-- Comprehensive physics : incorporates electro - weak interactions, electron acceleration, neutron production, transmutations, and UQFF terms(Um, Ug1 - Ug4, Ui, pseudo - monopole).
-- Dynamic variable management via std::map enables runtime updates and scenario adaptation.
-- Scenario - specific parameter loading via setScenario for flexible analysis.
-- Clear separation of computation functions(e.g., plasma frequency, electric field, neutron rate, Um, Ug1, Ui), aiding maintainability.
-- LENR - specific parameters are initialized for realistic simulation; supports easy modification.
-- Output functions for equation text and variable state support debugging and documentation.
-- Approximations and calibration are documented, supporting scientific reproducibility.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
-- Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
-- Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
-- Unit consistency should be checked and documented for all physical quantities.
-- For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
-- std::map is flexible but may be less efficient than structured types for very large models.
-- Expand documentation for function purposes and physical meaning.
-
-Summary:
-The code is well - structured, flexible, and suitable for scientific prototyping and educational use in LENR modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular, extensible design for modeling LENR(Low Energy Nuclear Reactions) dynamics in various scenarios(hydride, wires, solar corona).
+// - Comprehensive physics : incorporates electro - weak interactions, electron acceleration, neutron production, transmutations, and UQFF terms(Um, Ug1 - Ug4, Ui, pseudo - monopole).
+// - Dynamic variable management via std::map enables runtime updates and scenario adaptation.
+// - Scenario - specific parameter loading via setScenario for flexible analysis.
+// - Clear separation of computation functions(e.g., plasma frequency, electric field, neutron rate, Um, Ug1, Ui), aiding maintainability.
+// - LENR - specific parameters are initialized for realistic simulation; supports easy modification.
+// - Output functions for equation text and variable state support debugging and documentation.
+// - Approximations and calibration are documented, supporting scientific reproducibility.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+// - Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
+// - Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
+// - Unit consistency should be checked and documented for all physical quantities.
+// - For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
+// - std::map is flexible but may be less efficient than structured types for very large models.
+// - Expand documentation for function purposes and physical meaning.
+//
+// Summary:
+// The code is well - structured, flexible, and suitable for scientific prototyping and educational use in LENR modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+// */

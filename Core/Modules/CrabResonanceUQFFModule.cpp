@@ -1,7 +1,12 @@
 // CrabResonanceUQFFModule.h
 // Modular C++ implementation of the Master Universal Gravity Equation (UQFF Resonance) for Crab Nebula Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: // // // #include "CrabResonanceUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Usage in base: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "CrabResonanceUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // CrabResonanceUQFFModule mod; mod.computeG(t); mod.updateVariable("f_DPM", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Nothing is negligible: Includes all resonance-focused terms - DPM resonance, THz pipeline resonance, Aether-mediated resonance, U_g4i reactive resonance, quantum resonance, fluid resonance, oscillatory resonance (cos/exp), cosmic expansion resonance, with SC correction integrated.
@@ -383,12 +388,12 @@ void CrabResonanceUQFFModule::printVariables() {
 // Evaluation of CrabResonanceUQFFModule (UQFF Resonance Model for Crab Nebula)
 
 **Strengths:**
--**Dynamic & Extensible : **All model parameters are stored in a `std: : map<std::string, double> variables`, allowing runtime updates, additions, and removals.The methods `updateVariable`, `addToVariable`, and `subtractFromVariable` enable flexible modification of any parameter.
-- **Automatic Dependency Updates : **When key variables like `"Delta_x"` are updated, dependent variables(`"Delta_p"`) are recalculated automatically, ensuring consistency.
-    - **Immediate Effect : **All computations(e.g., `computeG`) use the current values in the map, so any changes are immediately reflected in results.
+-**Dynamic & Extensible : **All model parameters are stored in a std: : map<std::string, double> variables, allowing runtime updates, additions, and removals.The methods updateVariable, addToVariable, and subtractFromVariable enable flexible modification of any parameter.
+- **Automatic Dependency Updates : **When key variables like "Delta_x" are updated, dependent variables("Delta_p") are recalculated automatically, ensuring consistency.
+    - **Immediate Effect : **All computations(e.g., computeG) use the current values in the map, so any changes are immediately reflected in results.
         - **Comprehensive Physics : **The module includes all major UQFF resonance terms relevant for Crab Nebula modeling, such as DPM resonance, THz pipeline, Aether resonance, U_g4i reactive, quantum, fluid, oscillatory, and cosmic expansion effects.Standard Model gravity / magnetics are intentionally excluded per UQFF.
-        - **Time - Dependent Volume : **The resonance terms correctly use the time - dependent radius and volume(`r(t)`, `V_sys(t)`), reflecting nebula expansion.
-    - **Debugging Support : **The `printVariables()` method provides a snapshot of all current parameters, aiding validation and troubleshooting.
+        - **Time - Dependent Volume : **The resonance terms correctly use the time - dependent radius and volume(r(t), V_sys(t)), reflecting nebula expansion.
+    - **Debugging Support : **The printVariables() method provides a snapshot of all current parameters, aiding validation and troubleshooting.
     - **Sample Usage Provided : **Example integration and compilation instructions are included, demonstrating how to update variables and see their effect.
 
     ** Weaknesses / Recommendations : **

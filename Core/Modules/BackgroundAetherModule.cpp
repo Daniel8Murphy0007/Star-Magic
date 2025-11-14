@@ -1,7 +1,12 @@
 // BackgroundAetherModule.h
 // Modular C++ implementation of the Background Aether Metric (g_??) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes the baseline Minkowski metric g_?? = [1, -1, -1, -1] and the perturbed A_?? = g_?? + ? * T_s^{??}.
-// Pluggable: // // // #include "BackgroundAetherModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "BackgroundAetherModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // BackgroundAetherModule mod; mod.computeA_mu_nu(); mod.updateVariable("eta", new_value);
 // Variables in std::map; diagonal metric for flat spacetime (+, -, -, -) signature.
 // Integrates ? (coupling) and T_s (stress-energy) for perturbation; weak coupling preserves flatness.
@@ -295,25 +300,26 @@ void BackgroundAetherModule::printMetrics() {
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-BackgroundAetherModule Evaluation
+// BackgroundAetherModule Evaluation
 
-Strengths :
--Modular, extensible design for computing the baseline Minkowski metric and its perturbation via Aether coupling in the UQFF framework.
-- Clear encapsulation of variables and metric components using std::map and std::vector, supporting dynamic updates.
-- Implements core physical concepts : Aether coupling constant, stress - energy tensor, and metric perturbation, with direct calculation and output functions.
-- Approximations and physical meaning are well - documented in comments and equation text.
-- Output functions for variable state and both baseline and perturbed metrics support debugging and transparency.
-- Weak coupling regime(? ~1e-22) preserves near - flat geometry, suitable for nebular / galactic modeling.
-
-Weaknesses / Recommendations :
-    -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
-    - Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
-    - Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
-    - Unit consistency should be checked and documented for all physical quantities.
-    - For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
-    - std::map and std::vector are flexible but may be less efficient than structured types for very large models.
-    - Expand documentation for function purposes and physical meaning.
-
-    Summary:
-The code is well - structured, clear, and suitable for scientific prototyping and educational use in metric perturbation modeling.It implements the Aether coupling concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular, extensible design for computing the baseline Minkowski metric and its perturbation via Aether coupling in the UQFF framework.
+// - Clear encapsulation of variables and metric components using std::map and std::vector, supporting dynamic updates.
+// - Implements core physical concepts : Aether coupling constant, stress - energy tensor, and metric perturbation, with direct calculation and output functions.
+// - Approximations and physical meaning are well - documented in comments and equation text.
+// - Output functions for variable state and both baseline and perturbed metrics support debugging and transparency.
+// - Weak coupling regime(? ~1e-22) preserves near - flat geometry, suitable for nebular / galactic modeling.
+//
+// Weaknesses / Recommendations :
+//     -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+//     - Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
+//     - Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
+//     - Unit consistency should be checked and documented for all physical quantities.
+//     - For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
+//     - std::map and std::vector are flexible but may be less efficient than structured types for very large models.
+//     - Expand documentation for function purposes and physical meaning.
+//
+//     Summary:
+// The code is well - structured, clear, and suitable for scientific prototyping and educational use in metric perturbation modeling.It implements the Aether coupling concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+// */

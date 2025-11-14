@@ -1,7 +1,12 @@
 // BuoyancyCouplingModule.h
 // Modular C++ implementation of the Buoyancy Coupling Constants (?_i) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes the Universal Buoyancy terms U_bi = -?_i * U_gi * ?_g * (M_bh / d_g) * E_react for i=1 to 4 (Ug1-Ug4).
-// Pluggable: // // // #include "BuoyancyCouplingModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "BuoyancyCouplingModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // BuoyancyCouplingModule mod; mod.computeU_bi(1); mod.updateVariable("beta", new_value);
 // Variables in std::map; ?_i=0.6 uniform (unitless); opposes gravity with 60% scaling.
 // Approximations: cos(? t_n)=1 at t_n=0; ?_sw * ?_vac,sw ?0; U_UA=1; computes per i or sum.
@@ -320,22 +325,23 @@ void BuoyancyCouplingModule::printU_bi()
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-BuoyancyCouplingModule Evaluation
+// BuoyancyCouplingModule Evaluation
 
-Strengths :
--Modular, extensible design for computing buoyancy coupling constants(?_i) and universal buoyancy terms(U_bi)
-in the UQFF framework.- Clear encapsulation of variables and buoyancy terms using std::map and std::vector, supporting dynamic updates and easy extension.- Implements core physical concepts : ? _i scaling, opposition to gravity, and contributions to the unified field(F_U).- Approximations and physical meaning are well - documented in comments and equation text.- Output functions for variable state and U_bi terms support debugging and transparency.- Uniform ? _i(0.6) simplifies analysis and tuning;
-supports per - term and summed contributions.- Handles dynamic updates to variables and recalculates dependent terms as needed.
-
-                                                   Weaknesses /
-                                                   Recommendations : -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
-- Some calculations use magic numbers or lack explanatory comments;
-define named constants and clarify logic.- Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
-- Unit consistency should be checked and documented for all physical quantities.
-- For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
-- std::map and std::vector are flexible but may be less efficient than structured types for very large models.
-- Expand documentation for function purposes and physical meaning.
-
-Summary:
-The code is well - structured, clear, and suitable for scientific prototyping and educational use in buoyancy coupling modeling.It implements the UQFF buoyancy concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular, extensible design for computing buoyancy coupling constants(?_i) and universal buoyancy terms(U_bi)
+// in the UQFF framework.- Clear encapsulation of variables and buoyancy terms using std::map and std::vector, supporting dynamic updates and easy extension.- Implements core physical concepts : ? _i scaling, opposition to gravity, and contributions to the unified field(F_U).- Approximations and physical meaning are well - documented in comments and equation text.- Output functions for variable state and U_bi terms support debugging and transparency.- Uniform ? _i(0.6) simplifies analysis and tuning;
+// supports per - term and summed contributions.- Handles dynamic updates to variables and recalculates dependent terms as needed.
+//
+//                                                    Weaknesses /
+//                                                    Recommendations : -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+// - Some calculations use magic numbers or lack explanatory comments;
+// define named constants and clarify logic.- Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
+// - Unit consistency should be checked and documented for all physical quantities.
+// - For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
+// - std::map and std::vector are flexible but may be less efficient than structured types for very large models.
+// - Expand documentation for function purposes and physical meaning.
+//
+// Summary:
+// The code is well - structured, clear, and suitable for scientific prototyping and educational use in buoyancy coupling modeling.It implements the UQFF buoyancy concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+// */

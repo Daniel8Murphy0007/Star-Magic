@@ -1,7 +1,12 @@
 // FeedbackFactorModule.h
 // Modular C++ implementation of the Feedback Factor (f_feedback) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes f_feedback=0.1 for ?M_BH=1 dex (10x mass increase); scales (1 + f_feedback) in U_g4 term.
-// Pluggable: // // // #include "FeedbackFactorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "FeedbackFactorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // FeedbackFactorModule mod; mod.computeU_g4(0.0, 0.0); mod.updateVariable("f_feedback", new_value);
 // Variables in std::map; example for Sun at t=0, t_n=0; ?M_BH=1 dex ? M_bh_final=10*M_bh_initial.
 // Approximations: cos(? t_n)=1; e^{-? t}=1 at t=0; ?=0.001 day^-1 (scaled to s^-1 if needed).
@@ -122,10 +127,6 @@ private:
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
-    double computeDeltaM_BH();  // 1 dex = log10(10) = factor of 10
-    double computeM_bh_final();
-    double computeU_g4(double t, double t_n);
-    double computeU_g4_no_feedback(double t, double t_n);
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
     std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
@@ -305,26 +306,27 @@ void FeedbackFactorModule::printU_g4_comparison(double t, double t_n) {
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-FeedbackFactorModule Evaluation
+// FeedbackFactorModule Evaluation
 
-Strengths :
--Modular, extensible design for modeling the feedback factor(f_feedback) in UQFF, with clear encapsulation of variables using std::map.
-- Implements core physical concepts : feedback scaling for black hole mass increase(?M_BH in dex), and its effect on the Ug4 term.
-- Provides both feedback and non - feedback calculations for Ug4, enabling comparative analysis.
-- Approximations and physical meaning are well - documented in comments and equation text.
-- Output functions for variable state and Ug4 comparison support debugging and transparency.
-- Handles dynamic updates to variables and recalculates dependent terms as needed.
-- Example usage and equation text provide scientific context and validation.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
-- Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
-- Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
-- Unit consistency should be checked and documented for all physical quantities.
-- For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
-- std::map is flexible but may be less efficient than structured types for very large models.
-- Expand documentation for function purposes and physical meaning.
-
-Summary:
-The code is well - structured, clear, and suitable for scientific prototyping and educational use in feedback factor modeling.It implements the UQFF feedback concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular, extensible design for modeling the feedback factor(f_feedback) in UQFF, with clear encapsulation of variables using std::map.
+// - Implements core physical concepts : feedback scaling for black hole mass increase(?M_BH in dex), and its effect on the Ug4 term.
+// - Provides both feedback and non - feedback calculations for Ug4, enabling comparative analysis.
+// - Approximations and physical meaning are well - documented in comments and equation text.
+// - Output functions for variable state and Ug4 comparison support debugging and transparency.
+// - Handles dynamic updates to variables and recalculates dependent terms as needed.
+// - Example usage and equation text provide scientific context and validation.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+// - Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
+// - Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
+// - Unit consistency should be checked and documented for all physical quantities.
+// - For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
+// - std::map is flexible but may be less efficient than structured types for very large models.
+// - Expand documentation for function purposes and physical meaning.
+//
+// Summary:
+// The code is well - structured, clear, and suitable for scientific prototyping and educational use in feedback factor modeling.It implements the UQFF feedback concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+// */

@@ -1,7 +1,13 @@
 // CrabNebulaUQFFModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Crab Nebula Supernova Remnant Evolution.
 // This module can be plugged into a base program (e.g., 'crab_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: // // // #include "CrabNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Usage in base: // // // #define _USE_MATH_DEFINES
+#define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "CrabNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // CrabNebulaUQFFModule mod; mod.computeF(t); mod.updateVariable("M", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino.
@@ -176,7 +182,8 @@ public:
 #endif // CRAB_NEBULA_UQFF_MODULE_H
 
 // CrabNebulaUQFFModule.cpp
-// // // #include "CrabNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// // // #define _USE_MATH_DEFINES
+// #include "CrabNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with Crab Nebula-specific values
@@ -186,8 +193,7 @@ CrabNebulaUQFFModule::CrabNebulaUQFFModule() {
         learningRate = 0.001;
         metadata["enhanced"] = "true";
         metadata["version"] = "2.0-Enhanced";
-
-    double pi_val = 3.141592653589793;
+    // double M_PI already defined in header
     cdouble zero = {0.0, 0.0};
     cdouble i_small = {0.0, 1e-37};
 
@@ -196,12 +202,12 @@ CrabNebulaUQFFModule::CrabNebulaUQFFModule() {
     variables["c"] = {3e8, 0.0};
     variables["hbar"] = {1.0546e-34, 0.0};
     variables["q"] = {1.6e-19, 0.0};
-    variables["pi"] = {pi_val, 0.0};
+    variables["pi"] = {M_PI, 0.0};
     variables["m_e"] = {9.11e-31, 0.0};
     variables["mu_B"] = {9.274e-24, 0.0};
     variables["g_Lande"] = {2.0, 0.0};
     variables["k_B"] = {1.38e-23, 0.0};
-    variables["mu0"] = {4 * pi_val * 1e-7, 0.0};
+    variables["mu0"] = {4 * M_PI * 1e-7, 0.0};
 
     // Crab Nebula parameters
     variables["M"] = {1e31, 0.0};
@@ -209,7 +215,7 @@ CrabNebulaUQFFModule::CrabNebulaUQFFModule() {
     variables["L_X"] = {1e27, 0.0};
     variables["B0"] = {3e-8, 0.0};
     variables["omega0"] = {1e-12, 0.0};
-    variables["theta"] = {pi_val / 4, 0.0};  // 45 deg
+    variables["theta"] = {M_PI / 4, 0.0};  // 45 deg
     variables["t"] = {3.06e10, 0.0};  // Default t
     variables["rho_gas"] = {1e-23, 0.0};
     variables["V"] = {1e-3, 0.0};  // Particle velocity
@@ -223,10 +229,10 @@ CrabNebulaUQFFModule::CrabNebulaUQFFModule() {
 
     // LENR and activation
     variables["k_LENR"] = {1e-10, 0.0};
-    variables["omega_LENR"] = {2 * pi_val * 1.25e12, 0.0};
+    variables["omega_LENR"] = {2 * M_PI * 1.25e12, 0.0};
     variables["k_act"] = {1e-6, 0.0};
-    variables["omega_act"] = {2 * pi_val * 300, 0.0};
-    variables["phi"] = {pi_val / 4, 0.0};
+    variables["omega_act"] = {2 * M_PI * 300, 0.0};
+    variables["phi"] = {M_PI / 4, 0.0};
 
     // Other couplings
     variables["k_DE"] = {1e-30, 0.0};
@@ -313,7 +319,7 @@ cdouble CrabNebulaUQFFModule::computeIntegrand(double t_user) {
     cdouble term_LENR = computeLENRTerm();
     cdouble term_act = variables["k_act"] * cos_act;
     cdouble term_DE = variables["k_DE"] * variables["L_X"];
-    cdouble term_res = 2 * variables["q"] * variables["B0"] * variables["V"] * sin_theta * computeDPM_resonance();
+    cdouble term_res = cdouble(2.0) * variables["q"] * variables["B0"] * variables["V"] * sin_theta * computeDPM_resonance();
     cdouble term_neut = variables["k_neutron"] * variables["sigma_n"];
     cdouble term_rel = variables["k_rel"] * pow(variables["E_cm_astro"] / variables["E_cm"], 2);
     cdouble term_neutrino = variables["F_neutrino"];
@@ -328,8 +334,8 @@ cdouble CrabNebulaUQFFModule::computeX2() {
 
 // Quadratic root helper (for future refinement)
 cdouble CrabNebulaUQFFModule::computeQuadraticRoot(cdouble a, cdouble b, cdouble c) {
-    cdouble disc = sqrt(b*b - 4*a*c);
-    return (-b - disc) / (2*a);  // Negative root approx
+    cdouble disc = sqrt(b*b - cdouble(4.0)*a*c);
+    return (-b - disc) / (cdouble(2.0)*a);  // Negative root approx
 }
 
 // Full F_U_Bi_i approx as integrand * x2
@@ -365,7 +371,7 @@ cdouble CrabNebulaUQFFModule::computeSuperconductive(double t) {
     cdouble rho_sc = variables["rho_vac_SCm"];
     cdouble rho_ua = variables["rho_vac_UA"];
     cdouble omega_s = variables["omega_s"];
-    double cos_term = cos(pi_val * tn);
+    double cos_term = cos(M_PI * tn);
     cdouble f_trz = variables["f_TRZ"];
     return lambda * (rho_sc / rho_ua * omega_s * cos_term * (1 + f_trz.real()));
 }
@@ -427,8 +433,10 @@ void CrabNebulaUQFFModule::printVariables() {
 }
 
 // Example usage in base program 'crab_sim.cpp' (snippet for integration)
-// // // // #include "CrabNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
-// #include <complex>
+// // // // #define _USE_MATH_DEFINES
+// #include "CrabNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// #define _USE_MATH_DEFINES
+#include <complex>
 // int main() {
 //     CrabNebulaUQFFModule mod;
 //     double t = 3.06e10;  // Age ~970 yr
@@ -444,25 +452,26 @@ void CrabNebulaUQFFModule::printVariables() {
 // Sample Output at t=970 yr: F ˜ -2.09e212 + i (large; approx per framework; dominant real from LENR * x2).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 14, 2025.
 
-CrabNebulaUQFFModule Evaluation
+// CrabNebulaUQFFModule Evaluation
 
-Strengths :
--Highly modular and pluggable; can be included and instantiated easily in other projects or simulations.
-- Uses `std::map<std::string, std::complex<double>>` for all variables, supporting dynamic updates and complex - valued physics.
-- Core computation methods(computeF, computeIntegrand, computeLENRTerm, computeDPM_resonance, etc.) are clear, concise, and variable - driven.
-- Integrates a comprehensive set of physical effects : base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino, and more.
-- Approximates the integral using a quadratic root and complex arithmetic, allowing for both real and imaginary contributions.
-- Output and debugging functions(printVariables, getEquationText) provide transparency and aid validation.
-- Well - documented physical meaning, example calculations, and usage in comments and equation text.
-- Supports dynamic addition, subtraction, and update of variables, including complex values.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration(e.g., JSON, XML) for greater flexibility and scientific reproducibility.
-- Minimal error handling for missing variables, invalid input, or division by zero; add validation for robustness.
-- Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
-- For large - scale or performance - critical simulations, consider more efficient data structures than `std::map` and optimize the integration / approximation routines.
-- Expand documentation for function purposes, expected input / output, and physical context for each term.
-- Imaginary components are present but not fully scaled or physically interpreted; clarify their role in scientific output.
-
-Summary:
-The code is well - structured, clear, and suitable for advanced scientific prototyping and educational use in unified field modeling for supernova remnants.It is dynamic, extensible, and supports complex - valued physics.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+//
+// Strengths:
+// -Highly modular and pluggable; can be included and instantiated easily in other projects or simulations.
+// - Uses std::map<std::string, std::complex<double>> for all variables, supporting dynamic updates and complex - valued physics.
+// - Core computation methods(computeF, computeIntegrand, computeLENRTerm, computeDPM_resonance, etc.) are clear, concise, and variable - driven.
+// - Integrates a comprehensive set of physical effects : base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino, and more.
+// - Approximates the integral using a quadratic root and complex arithmetic, allowing for both real and imaginary contributions.
+// - Output and debugging functions(printVariables, getEquationText) provide transparency and aid validation.
+// - Well - documented physical meaning, example calculations, and usage in comments and equation text.
+// - Supports dynamic addition, subtraction, and update of variables, including complex values.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration(e.g., JSON, XML) for greater flexibility and scientific reproducibility.
+// - Minimal error handling for missing variables, invalid input, or division by zero; add validation for robustness.
+// - Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
+// - For large - scale or performance - critical simulations, consider more efficient data structures than std::map and optimize the integration / approximation routines.
+// - Expand documentation for function purposes, expected input / output, and physical context for each term.
+// - Imaginary components are present but not fully scaled or physically interpreted; clarify their role in scientific output.
+//
+// Summary:
+// The code is well - structured, clear, and suitable for advanced scientific prototyping and educational use in unified field modeling for supernova remnants.It is dynamic, extensible, and supports complex - valued physics.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.

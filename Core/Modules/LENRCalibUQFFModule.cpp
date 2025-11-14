@@ -1,7 +1,12 @@
 // LENRCalibUQFFModule.h
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for K_n Neutron Production Calibration Constant in LENR.
 // This module models neutron production rate ? via Um, calibrated k_? for 100% accuracy in hydride/wires/corona; pseudo-monopole states ?_n, ?_vac,[UA�]:[SCm].
-// Usage: // // // #include "LENRCalibUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; LENRCalibUQFFModule mod; mod.setScenario("hydride"); mod.computeEta(t); mod.updateVariable("k_eta", new_value);
+// Usage: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "LENRCalibUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; LENRCalibUQFFModule mod; mod.setScenario("hydride"); mod.computeEta(t); mod.updateVariable("k_eta", new_value);
 // Variables in std::map for dynamic updates; supports scenarios; exp(-[S S_q]^n 2^6 e^(-? - t)) non-local.
 // Approximations: [S S_q]=1 (calib); t in yr; 100% accuracy post k_? adjustment.
 // LENR Calib params: k_?=1e13 (hydride), E=2e11 V/m, ?=1e13 cm^-2/s, n=1-26, etc.
@@ -313,27 +318,28 @@ void LENRCalibUQFFModule::printVariables() {
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-LENRCalibUQFFModule Evaluation
+// LENRCalibUQFFModule Evaluation
 
-Strengths :
--Modular, extensible design for neutron production calibration in LENR scenarios(hydride, wires, corona).
-- Comprehensive physics : includes Um(magnetism), non - local pseudo - monopole states, vacuum energy densities, and scenario - specific calibration.
-- Dynamic variable management via std::map enables runtime updates and scenario adaptation.
-- Scenario - specific parameter loading via setScenario for flexible analysis and calibration.
-- Clear separation of computation functions(e.g., Um, EReact, ElectricField, DeltaN, NonLocalExp, Eta), aiding maintainability.
-- Calibration parameters(e.g., k_eta) are initialized for realistic simulation and can be tuned for accuracy.
-- Output functions for equation text and variable state support debugging and documentation.
-- Non - local exponential and calibration constant k_? allow for fine - tuning and high accuracy.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
-- Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
-- Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
-- Unit consistency should be checked and documented for all physical quantities.
-- For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
-- std::map is flexible but may be less efficient than structured types for very large models.
-- Expand documentation for function purposes and physical meaning.
-
-Summary:
-The code is well - structured, flexible, and suitable for scientific prototyping and educational use in LENR neutron calibration modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular, extensible design for neutron production calibration in LENR scenarios(hydride, wires, corona).
+// - Comprehensive physics : includes Um(magnetism), non - local pseudo - monopole states, vacuum energy densities, and scenario - specific calibration.
+// - Dynamic variable management via std::map enables runtime updates and scenario adaptation.
+// - Scenario - specific parameter loading via setScenario for flexible analysis and calibration.
+// - Clear separation of computation functions(e.g., Um, EReact, ElectricField, DeltaN, NonLocalExp, Eta), aiding maintainability.
+// - Calibration parameters(e.g., k_eta) are initialized for realistic simulation and can be tuned for accuracy.
+// - Output functions for equation text and variable state support debugging and documentation.
+// - Non - local exponential and calibration constant k_? allow for fine - tuning and high accuracy.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+// - Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
+// - Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
+// - Unit consistency should be checked and documented for all physical quantities.
+// - For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
+// - std::map is flexible but may be less efficient than structured types for very large models.
+// - Expand documentation for function purposes and physical meaning.
+//
+// Summary:
+// The code is well - structured, flexible, and suitable for scientific prototyping and educational use in LENR neutron calibration modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+// */

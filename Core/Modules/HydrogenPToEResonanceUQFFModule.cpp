@@ -1,7 +1,12 @@
 // HydrogenPToEResonanceUQFFModule.h
 // Modular C++ implementation of the Hydrogen Resonance Equations of the Periodic Table of Elements (PToE) using UQFF.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: // // // #include "HydrogenPToEResonanceUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Usage in base: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "HydrogenPToEResonanceUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // HydrogenPToEResonanceUQFFModule mod; mod.computeResonanceTerm(t); mod.updateVariable("f_res", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Nothing is negligible: Includes resonance terms - DPM resonance, THz pipeline resonance, Aether-mediated resonance, U_g4i reactive resonance, quantum orbital resonance, oscillatory resonance (cos/exp for PToE levels), with SC correction for atomic fields.
@@ -363,12 +368,12 @@ void HydrogenPToEResonanceUQFFModule::printVariables() {
 // Evaluation of HydrogenPToEResonanceUQFFModule (UQFF Resonance Model for Hydrogen Atom and Periodic Table)
 
 **Strengths:**
--**Dynamic & Extensible : **All model parameters are stored in a `std: : map<std::string, double> variables`, allowing runtime updates, additions, and removals.The methods `updateVariable`, `addToVariable`, and `subtractFromVariable` enable flexible modification of any parameter.
-- **Automatic Dependency Updates : **When key variables like `"Delta_x"` or `"r"` are updated, dependent variables(`"Delta_p"`, `"V_sys"`, `"A_vort"`, `"V"`) are recalculated automatically, ensuring consistency.
-    - **Immediate Effect : **All computations(e.g., `computeResonanceTerm`) use the current values in the map, so any changes are immediately reflected in results.
+-**Dynamic & Extensible : **All model parameters are stored in a std: : map<std::string, double> variables, allowing runtime updates, additions, and removals.The methods updateVariable, addToVariable, and subtractFromVariable enable flexible modification of any parameter.
+- **Automatic Dependency Updates : **When key variables like "Delta_x" or "r" are updated, dependent variables("Delta_p", "V_sys", "A_vort", "V") are recalculated automatically, ensuring consistency.
+    - **Immediate Effect : **All computations(e.g., computeResonanceTerm) use the current values in the map, so any changes are immediately reflected in results.
         - **Comprehensive Physics : **The module includes all major UQFF resonance terms relevant for atomic and periodic table modeling, such as DPM resonance, THz pipeline, Aether resonance, U_g4i reactive, quantum orbital, oscillatory, and superconductivity corrections.Standard Model gravity is intentionally not dominant per UQFF.
         - **Spectral Line Alignment : **Resonance frequencies are aligned with hydrogen spectral lines(Lyman / Balmer), supporting physical relevance for atomic transitions.
-        - **Debugging Support : **The `printVariables()` method provides a snapshot of all current parameters, aiding validation and troubleshooting.
+        - **Debugging Support : **The printVariables() method provides a snapshot of all current parameters, aiding validation and troubleshooting.
     - **Sample Usage Provided : **Example integration and compilation instructions are included, demonstrating how to update variables and see their effect.
 
     ** Weaknesses / Recommendations : **

@@ -1,7 +1,12 @@
 // GalacticDistanceModule.h
 // Modular C++ implementation of the Distance from Galactic Center (d_g) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes d_g=2.55e20 m (~27,000 ly) and conversions; scales M_bh / d_g in U_bi and Ug4.
-// Pluggable: // // // #include "GalacticDistanceModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "GalacticDistanceModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // GalacticDistanceModule mod; mod.computeMbhOverDg(); mod.updateVariable("d_g", new_value);
 // Variables in std::map; example for Sun at t=0, t_n=0.
 // Approximations: cos(p t_n)=1; e_sw * ?_vac,sw �0; a=0.001 s^-1; f_feedback=0.1.
@@ -317,26 +322,27 @@ void GalacticDistanceModule::printVariables()
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-GalacticDistanceModule Evaluation
+// GalacticDistanceModule Evaluation
 
-Strengths :
--Modular, extensible design for modeling galactic center distance and its role in UQFF calculations.
-- Clear encapsulation of variables using std::map, supporting dynamic updates and easy extension.
-- Implements core physical concepts : conversion of d_g between units(m, ly, pc), SMBH scaling(M_bh / d_g), and contributions to universal buoyancy(U_b1) and gravity(Ug4).
-- Approximations and physical meaning are well - documented in comments and equation text.
-- Output functions for variable state and equation text support debugging and transparency.
-- Handles dynamic updates to variables and recalculates dependent terms as needed.
-- Example calculations and conversion functions provide scientific context and validation.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
-- Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
-- Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
-- Unit consistency should be checked and documented for all physical quantities.
-- For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
-- std::map is flexible but may be less efficient than structured types for very large models.
-- Expand documentation for function purposes and physical meaning.
-
-Summary:
-The code is well - structured, clear, and suitable for scientific prototyping and educational use in galactic distance modeling.It implements the UQFF distance concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular, extensible design for modeling galactic center distance and its role in UQFF calculations.
+// - Clear encapsulation of variables using std::map, supporting dynamic updates and easy extension.
+// - Implements core physical concepts : conversion of d_g between units(m, ly, pc), SMBH scaling(M_bh / d_g), and contributions to universal buoyancy(U_b1) and gravity(Ug4).
+// - Approximations and physical meaning are well - documented in comments and equation text.
+// - Output functions for variable state and equation text support debugging and transparency.
+// - Handles dynamic updates to variables and recalculates dependent terms as needed.
+// - Example calculations and conversion functions provide scientific context and validation.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+// - Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
+// - Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
+// - Unit consistency should be checked and documented for all physical quantities.
+// - For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
+// - std::map is flexible but may be less efficient than structured types for very large models.
+// - Expand documentation for function purposes and physical meaning.
+//
+// Summary:
+// The code is well - structured, clear, and suitable for scientific prototyping and educational use in galactic distance modeling.It implements the UQFF distance concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+// */

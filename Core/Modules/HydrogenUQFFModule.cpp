@@ -1,7 +1,12 @@
 // HydrogenUQFFModule.h
 // Modular C++ implementation of UQFF for Red Dwarf Compression_E (43.e): Compressed Space Dynamics (E_space eq), Three-Leg Proofset, Hydrogen Levels n=1-4 (page 85-86).
 // Computes E_space scaled by Higgs freq/Earth precession; three-leg (cons, vac ratio, quantum scale); integrates prior Um/Ug3 for matter creation.
-// Plug into base (e.g., 'hydrogen_uqff_sim.cpp') via #include "HydrogenUQFFModule.h".
+// Plug into base (e.g., 'hydrogen_uqff_sim.cpp') via #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "HydrogenUQFFModule.h"
 // Usage: HydrogenUQFFModule mod; mod.setSystem(SystemType::COMPRESSED_SPACE); double E_sp = mod.computeEspace(5); mod.computeThreeLegProofset(E_sp);
 // Variables in std::map; dynamic for factors (spatial=2, layers=5, etc.). Supports page-specific (85: layers=5, 86: rotational).
 // Approximations: Compression=1; E0=E_aether*V=1.683e-37 J; Higgs freq=1.25e34 Hz; precession=1.617e11 s; quantum=4.136e-14 eV.

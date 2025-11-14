@@ -1,7 +1,12 @@
 // ButterflyNebulaUQFFModule.h
 // Modular C++ implementation of the UQFF Force for NGC 6302 (Butterfly Nebula) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes F_U_Bi_i,enhanced as integral from x1 to x2 of [-F0 + DPM terms + LENR + activation + DE + EM + neutron + rel + Sweet + Kozima].
-// Pluggable: // // // #include "ButterflyNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "ButterflyNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // ButterflyNebulaUQFFModule mod; mod.computeF_U_Bi(0.0, 3.22e19, 0.0); mod.updateVariable("M", new_value);
 // Variables in std::map; defaults for NGC 6302 (M=0.64 M_sun, r=3.22e19 m, level=13); ~ -2.09e212 N at t=0.
 // Approximations: Integral approx via average * ?x; cos(?)=1; ?_LENR / ?_0 tuned; Sweet/Kozima small/negligible.

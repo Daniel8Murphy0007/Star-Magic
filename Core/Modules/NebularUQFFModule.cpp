@@ -1,12 +1,17 @@
-﻿// NebularUQFFModule.h
+// NebularUQFFModule.h
 // Modular C++ implementation of UQFF for Nebular Cloud Analysis (Drawing 32) and Red Dwarf Compression_B (43.b).
 // Computes UQFF terms for nebular dynamics: dust trails, pseudo-monopoles, pillars, star geometries; integrates LENR, Higgs, NGC 346 star formation.
-// Plug into base (e.g., 'nebular_uqff_sim.cpp') via #include "NebularUQFFModule.h".
+// Plug into base (e.g., 'nebular_uqff_sim.cpp') via #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "NebularUQFFModule.h"
 // Usage: NebularUQFFModule mod; mod.setSystem(SystemType::NEBULA_CLOUD); double E_field = mod.computeElectricField(); mod.computeAccuracy();
-// Variables in std::map; dynamic for [SCm], [UA], ρ_vac, etc. Supports geometric calcs for stars.
-// Includes: E-field (eq14-18), η neutron (eq15-17,19), transmutation (eq20), Higgs (eq24), Ug3 star form (eq28), blueshift (eq29), neutrinos (eq30), decay (eq31), DNA (eq32), buoyancy (eq33).
-// Approximations: Calibrated k_η=1.0, κ_V=1.05; non-local [SSq]^{n26} e^{-(π + t)} normalized; level 13 (plasma/nebula).
-// Defaults: Nebula scale ρ_vac,[SCm]=2.39e-22 J/m³, [UA]:[SCm] ratio=1e1; geometric stars at est. positions.
+// Variables in std::map; dynamic for [SCm], [UA], ?_vac, etc. Supports geometric calcs for stars.
+// Includes: E-field (eq14-18), ? neutron (eq15-17,19), transmutation (eq20), Higgs (eq24), Ug3 star form (eq28), blueshift (eq29), neutrinos (eq30), decay (eq31), DNA (eq32), buoyancy (eq33).
+// Approximations: Calibrated k_?=1.0, ?_V=1.05; non-local [SSq]^{n26} e^{-(p + t)} normalized; level 13 (plasma/nebula).
+// Defaults: Nebula scale ?_vac,[SCm]=2.39e-22 J/m�, [UA]:[SCm] ratio=1e1; geometric stars at est. positions.
 // Associated: getEquationText() for full UQFF eqs; getSolutions() for derivations/comparisons.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
@@ -168,7 +173,7 @@ public:
 
     // Core UQFF computations
     double computeElectricField();                                                                  // Eq14-18
-    double computeNeutronRate();                                                                    // η eq15-17,19
+    double computeNeutronRate();                                                                    // ? eq15-17,19
     double computeTransmutationEnergy();                                                            // Eq20
     double computeHiggsMass();                                                                      // Eq24
     double computeStarFormationTemp(double t, double r);                                            // Eq28
@@ -218,7 +223,7 @@ NebularUQFFModule::NebularUQFFModule(SystemType sys) : current_system(sys)
     variables["n26"] = 26.0;             // Quantum levels
     variables["SSq"] = 1.0;              // Superconductive square?
     variables["gamma_decay"] = 0.1;      // For eq31
-    variables["rho_vac_SCm"] = 2.39e-22; // Nebula J/m³
+    variables["rho_vac_SCm"] = 2.39e-22; // Nebula J/m�
     variables["rho_vac_UA"] = 7.09e-36;
     variables["rho_vac_Ug4"] = 1.19e-24;
     variables["E_vac_UA_prime_SCm"] = 1e-20; // Eq30
@@ -290,7 +295,7 @@ void NebularUQFFModule::subtractFromVariable(const std::string &name, double del
     addToVariable(name, -delta);
 }
 
-// Non-local: [SSq]^{n26} e^{-(π + t)}
+// Non-local: [SSq]^{n26} e^{-(p + t)}
 double NebularUQFFModule::computeNonLocalTerm(double t, int n26)
 {
     return std::pow(variables["SSq"], n26) * std::exp(-(variables["pi"] + t));
@@ -363,7 +368,7 @@ double NebularUQFFModule::computeElectricField()
     return e_field * variables["kappa_V"]; // With calib
 }
 
-// η neutron (avg)
+// ? neutron (avg)
 double NebularUQFFModule::computeNeutronRate()
 {
     double eta = variables["k_eta"] * variables["n_e"] * variables["sigma"] * variables["v"];
@@ -434,15 +439,15 @@ double NebularUQFFModule::computeAccuracy(const std::string &scenario)
 // Equation text
 std::string NebularUQFFModule::getEquationText()
 {
-    return "UQFF Nebular (Drawing 32): Ug3(t,r,θ,n) ≈ 1.0 M_stars 3.38e20 / r^3 cos(θ) 1.0 10^46 ≈1.01e39 J/m³; T ∝ Ug3 / 7.09e-36 ≈1.424e74 K (scaled 1e6 K)\n"
-           "Blueshift: v_radial = c Δλ/λ ≈ -3.33e-5 c\n"
-           "Neutrino: E_neutrino ∝ ρ_vac,[UA':SCm] e^{-[SSq]^{26} e^{-(π + t)}} Um / ρ_vac,[UA]\n"
-           "Decay: Rate ∝ ρ_vac,[SCm]/ρ_vac,[UA] e^{-[SSq]^{26} e^{-(π + t)}} ≈0.0963\n"
-           "DNA: E_DNA ∝ Um cos(ω_c t)\n"
-           "Buoyancy: ∝ ρ_vac,[UA]/ρ_vac,[SCm] V_little / V_big ≈1/33\n"
-           "Higgs: m_H ≈ k_Higgs 125 μ κ_F (GeV); LENR: E ≈ k_η e Ω / m_e sqrt(n_e σ v) (V/m)\n"
-           "Accuracy: 100% post-calib; Geometric: Avg angle = ∑ atan2(dy,dx) / pairs\n"
-           "Nebula: [UA]:[SCm] pseudo-monopoles; dust trails Ug4=1.19e-24 J/m³.";
+    return "UQFF Nebular (Drawing 32): Ug3(t,r,?,n) � 1.0 M_stars 3.38e20 / r^3 cos(?) 1.0 10^46 �1.01e39 J/m�; T ? Ug3 / 7.09e-36 �1.424e74 K (scaled 1e6 K)\n"
+           "Blueshift: v_radial = c ??/? � -3.33e-5 c\n"
+           "Neutrino: E_neutrino ? ?_vac,[UA':SCm] e^{-[SSq]^{26} e^{-(p + t)}} Um / ?_vac,[UA]\n"
+           "Decay: Rate ? ?_vac,[SCm]/?_vac,[UA] e^{-[SSq]^{26} e^{-(p + t)}} �0.0963\n"
+           "DNA: E_DNA ? Um cos(?_c t)\n"
+           "Buoyancy: ? ?_vac,[UA]/?_vac,[SCm] V_little / V_big �1/33\n"
+           "Higgs: m_H � k_Higgs 125 � ?_F (GeV); LENR: E � k_? e O / m_e sqrt(n_e s v) (V/m)\n"
+           "Accuracy: 100% post-calib; Geometric: Avg angle = ? atan2(dy,dx) / pairs\n"
+           "Nebula: [UA]:[SCm] pseudo-monopoles; dust trails Ug4=1.19e-24 J/m�.";
 }
 
 // Solutions
@@ -462,7 +467,7 @@ std::string NebularUQFFModule::getSolutions(double t)
 
     std::stringstream ss;
     ss << std::scientific << "UQFF Solutions t=" << t << " s (" << static_cast<int>(current_system) << "):\n";
-    ss << "Ug3 = " << ug3 << " J/m³\nT_star = " << T << " K\nv_rad = " << v_rad << " m/s\n";
+    ss << "Ug3 = " << ug3 << " J/m�\nT_star = " << T << " K\nv_rad = " << v_rad << " m/s\n";
     ss << "E_neut = " << E_neut << " J\nDecay Rate = " << decay << "\nE_DNA = " << E_DNA << " J\nBuoyancy Ratio = " << buoy << "\n";
     ss << "LENR Acc% = " << acc_lenr << "; Higgs Acc% = " << acc_higgs << "\nGeo Avg Angle = " << geo_angle << " rad\n";
     ss << "Overall UQFF = " << computeUQFF(t) << "\nSM Contrast: Local vs. Non-local [UA]/[SCm] drives.";
@@ -489,7 +494,7 @@ void NebularUQFFModule::printVariables()
 //     return 0;
 // }
 // Compile: g++ -o nebular_uqff_sim nebular_uqff_sim.cpp NebularUQFFModule.cpp -lm
-// Sample: Ug3 ~1.01e39 J/m³; Acc 100%; Geo ~0.8 rad (butterfly angles significant).
+// Sample: Ug3 ~1.01e39 J/m�; Acc 100%; Geo ~0.8 rad (butterfly angles significant).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
 // Evaluation of NebularUQFFModule (UQFF for Drawing 32 & Compression_B)
@@ -497,13 +502,13 @@ void NebularUQFFModule::printVariables()
 // Strengths:
 // - Full UQFF: Implements eqs 27-33; non-local term; geometric for stars (pseudo-monopoles, trails).
 // - Comparisons: computeAccuracy() for SM/UQFF 100% match post-calib; contrasts local/non-local.
-// - Nebula Focus: ρ_vac tuned for level 13; integrates [UA]:[SCm], quasar pillars.
-// - Dynamic: Map for calib k_η etc.; extensible to 32 drawings.
+// - Nebula Focus: ?_vac tuned for level 13; integrates [UA]:[SCm], quasar pillars.
+// - Dynamic: Map for calib k_? etc.; extensible to 32 drawings.
 
 // Weaknesses / Recommendations:
 // - Geometric: Hardcode positions; add image input for real coords.
 // - Non-Local: [SSq]^{26} placeholder; derive from batch data.
 // - Calibration: Scenario-specific; add optimizer for k_trans.
-// - Validation: Tie to IR photo (e.g., view_image tool); error ±0.5% for blueshift.
+// - Validation: Tie to IR photo (e.g., view_image tool); error �0.5% for blueshift.
 
 // Summary: Precise module for nebular UQFF; unifies LENR/Higgs/star form with 100% acc. Rating: 9.3/10.

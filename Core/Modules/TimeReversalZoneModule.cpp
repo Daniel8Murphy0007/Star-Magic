@@ -1,7 +1,12 @@
 // TimeReversalZoneModule.h
 // Modular C++ implementation of the Time-Reversal Zone Factor (f_TRZ) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes f_TRZ=0.1 (unitless); scales (1 + f_TRZ) in Universal Inertia U_i term for TRZ enhancement.
-// Pluggable: // // // #include "TimeReversalZoneModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "TimeReversalZoneModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // TimeReversalZoneModule mod; mod.computeU_i(0.0, 0.0); mod.updateVariable("f_TRZ", new_value);
 // Variables in std::map; example for Sun at t=0, t_n=0; U_i ?1.38e-47 J/m� (with, +10%); without: ?1.25e-47 J/m�.
 // Approximations: ?_i=1.0; cos(? t_n)=1; ?_s=2.5e-6 rad/s; ?_sum=7.80e-36 J/m�.

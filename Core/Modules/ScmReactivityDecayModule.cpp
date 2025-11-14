@@ -1,7 +1,12 @@
 // ScmReactivityDecayModule.h
 // Modular C++ implementation of the [SCm] Reactivity Decay Rate (?) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?=0.0005 day?� (~5.8e-6 s?�); used in E_react = 10^46 * exp(-? t) for decay in U_m, U_bi, etc.
-// Pluggable: // // // #include "ScmReactivityDecayModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "ScmReactivityDecayModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // ScmReactivityDecayModule mod; mod.computeE_react(0.0); mod.updateVariable("kappa_day", new_value);
 // Variables in std::map; example for Sun at t=0 (E_react=1e46); t=2000 days: ~3.68e45.
 // Approximations: t in days; timescale ~5.5 years; integrates into U_m example.

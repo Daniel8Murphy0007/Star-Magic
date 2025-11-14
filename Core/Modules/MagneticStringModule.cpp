@@ -1,7 +1,12 @@
 // MagneticStringModule.h
 // Modular C++ implementation of the Distance Along Magnetic String's Path (r_j) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes r_j = 1.496e13 m (100 AU) and its conversions; scales ?_j / r_j in Universal Magnetism U_m and Ug3.
-// Pluggable: // // // #include "MagneticStringModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "MagneticStringModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // MagneticStringModule mod; mod.computeMuOverRj(); mod.updateVariable("r_j", new_value);
 // Variables in std::map; j-indexed strings; example for j=1 at t=0.
 // Approximations: ?=5e-5 day^-1; cos(? t_n)=1; ?_hat_j=1; at t=0, 1 - exp term=0.
@@ -328,27 +333,28 @@ void MagneticStringModule::printStringContributions(int j, double t) {
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-MagneticStringModule Evaluation
+// MagneticStringModule Evaluation
 
-Strengths:
-- Modular, extensible design for modeling magnetic string path distances and their contributions to universal magnetism (U_m) and gravity (Ug3) in the UQFF framework.
-- Clear encapsulation of variables and string parameters using std::map, supporting dynamic updates and easy extension.
-- Implements core physical concepts: conversion of r_j between units (m, AU, ly, pc), magnetic moment calculations, and their influence on U_m and Ug3.
-- Approximations and physical meaning are well-documented in comments and equation text.
-- Output functions for variable state and string contributions support debugging and transparency.
-- Handles dynamic updates to r_j and recalculates dependent terms as needed.
-- Example calculations and conversion functions provide scientific context and validation.
-
-Weaknesses / Recommendations:
-- Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
-- Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
-- Minimal error handling (e.g., missing r_j, division by zero, invalid variable names); add validation for robustness.
-- Unit consistency should be checked and documented for all physical quantities.
-- For large-scale or performance-critical simulations, optimize data structures and reduce redundant calculations.
-- std::map is flexible but may be less efficient than structured types for very large models.
-- Expand documentation for function purposes and physical meaning.
-- Consider supporting multiple j-indexed strings for more general modeling.
-
-Summary:
-The code is well-structured, clear, and suitable for scientific prototyping and educational use in magnetic string modeling. It implements the UQFF magnetic string concept faithfully and adapts to various scenarios. For production or high-performance applications, address the recommendations for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// - Modular, extensible design for modeling magnetic string path distances and their contributions to universal magnetism (U_m) and gravity (Ug3) in the UQFF framework.
+// - Clear encapsulation of variables and string parameters using std::map, supporting dynamic updates and easy extension.
+// - Implements core physical concepts: conversion of r_j between units (m, AU, ly, pc), magnetic moment calculations, and their influence on U_m and Ug3.
+// - Approximations and physical meaning are well-documented in comments and equation text.
+// - Output functions for variable state and string contributions support debugging and transparency.
+// - Handles dynamic updates to r_j and recalculates dependent terms as needed.
+// - Example calculations and conversion functions provide scientific context and validation.
+//
+// Weaknesses / Recommendations:
+// - Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+// - Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
+// - Minimal error handling (e.g., missing r_j, division by zero, invalid variable names); add validation for robustness.
+// - Unit consistency should be checked and documented for all physical quantities.
+// - For large-scale or performance-critical simulations, optimize data structures and reduce redundant calculations.
+// - std::map is flexible but may be less efficient than structured types for very large models.
+// - Expand documentation for function purposes and physical meaning.
+// - Consider supporting multiple j-indexed strings for more general modeling.
+//
+// Summary:
+// The code is well-structured, clear, and suitable for scientific prototyping and educational use in magnetic string modeling. It implements the UQFF magnetic string concept faithfully and adapts to various scenarios. For production or high-performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+// */

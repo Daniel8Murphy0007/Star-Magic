@@ -1,7 +1,12 @@
 // RedDwarfUQFFModule.h
 // Modular C++ implementation of UQFF for Red Dwarf Compression_C (43.c): LENR (eq1-4), Collider Higgs, NGC 346, Gas Nebula, Pi Calcs (series sums).
 // Computes W_mag (eq4), Um (eq5), UH (eq6), Ug3 (eq7), E (eq8), ? (eq9), ?n (eq10), S(s) Basel (eq15), Buoyancy series (eq20), etc.
-// Plug into base (e.g., 'red_dwarf_uqff_sim.cpp') via #include "RedDwarfUQFFModule.h".
+// Plug into base (e.g., 'red_dwarf_uqff_sim.cpp') via #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "RedDwarfUQFFModule.h"
 // Usage: RedDwarfUQFFModule mod; mod.setSystem(SystemType::LENR); double eta = mod.computeNeutronRate(); mod.computePiSeries(2);
 // Variables in std::map; dynamic for ?_vac, k_calib, etc. Supports numerical solutions for eqs 4-10,15,20.
 // Approximations: Calibrated k_?=2.75e8, ?_H=1.0; non-local e^{-[SSq]^{n26} e^{-(?+t)}}; Pi to ~15 digits (mpmath/sympy via tool if needed, but hardcoded).

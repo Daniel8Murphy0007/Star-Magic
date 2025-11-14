@@ -1,7 +1,13 @@
 // Ug3DiskVectorModule.h
 // Modular C++ implementation of the Unit Vector in the Ug3 Disk Plane (??_j) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ??_j (unit vector, magnitude=1; e.g., [cos ?_j, sin ?_j, 0]); scales in Universal Magnetism U_m term.
-// Pluggable: // // // #include "Ug3DiskVectorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "Ug3DiskVectorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // Ug3DiskVectorModule mod; mod.computeUmContribution(0.0, 1); mod.updateVariable("theta_j", new_value);
 // Variables in std::map; example for j=1 at t=0, ?_j=0 (??_j=[1,0,0], U_m?2.28e65 J/m�).
 // Approximations: ??_j magnitude=1; 1 - exp=0 at t=0; ?_j / r_j=2.26e10 T m�.
@@ -158,7 +164,8 @@ public:
 #endif // UG3_DISK_VECTOR_MODULE_H
 
 // Ug3DiskVectorModule.cpp
-// // // #include "Ug3DiskVectorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// // // #define _USE_MATH_DEFINES
+// #include "Ug3DiskVectorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 Ug3DiskVectorModule::Ug3DiskVectorModule()
@@ -289,7 +296,8 @@ void Ug3DiskVectorModule::printVectorAndUm(int j, double t)
 }
 
 // Example usage in base program (snippet)
-// // // // #include "Ug3DiskVectorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// // // // #define _USE_MATH_DEFINES
+// #include "Ug3DiskVectorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     Ug3DiskVectorModule mod;
 //     auto phi = mod.computePhiHat_j(1);

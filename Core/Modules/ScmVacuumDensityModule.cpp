@@ -1,7 +1,12 @@
 // ScmVacuumDensityModule.h
 // Modular C++ implementation of the Vacuum Energy Density of [SCm] (?_vac,[SCm]) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?_vac,[SCm] = 7.09e-37 J/m� (Sun, level 13); scales in U_g2, U_i, T_s terms.
-// Pluggable: // // // #include "ScmVacuumDensityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "ScmVacuumDensityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // ScmVacuumDensityModule mod; mod.computeU_g2_example(1.496e13); mod.updateVariable("rho_vac_SCm", new_value);
 // Variables in std::map; example for Sun at r=1.496e13 m; U_g2 ?1.18e53 J/m�, U_i ?1.38e-47 J/m�.
 // Approximations: S(r - R_b)=1; (1 + ?_sw v_sw)=5001; ?_i=1.0; f_TRZ=0.1; E_react=1e46.

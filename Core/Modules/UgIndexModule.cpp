@@ -1,7 +1,12 @@
 // UgIndexModule.h
 // Modular C++ implementation of the Index for Discrete Universal Gravity Ranges (i) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module uses i=1 to 4 to label Ug1-Ug4; computes sum_{i=1}^4 k_i * U_gi for F_U contribution.
-// Pluggable: // // // #include "UgIndexModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "UgIndexModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // UgIndexModule mod; mod.computeSumKUgi(); mod.updateVariable("U_g1", new_value);
 // Variables in std::map; defaults for Sun at t=0; i labels: 1=Internal Dipole, 2=Outer Bubble, 3=Magnetic Disk, 4=Star-BH.
 // Approximations: k_i from coupling; sum ?1.42e53 J/m� (Ug2 dominant).
@@ -303,23 +308,24 @@ void UgIndexModule::printIndexBreakdown() {
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-UgIndexModule Evaluation
+// UgIndexModule Evaluation
 
-Strengths :
--Modular and pluggable design; can be included and instantiated easily in other projects.
-- Dynamic variable management using std::map allows runtime updates, additions, and removals.
-- Coupling constants and gravity terms are clearly separated and indexed, supporting extensibility.
-- Core computation methods(computeU_gi, computeK_i, computeKUgi, computeSumKUgi) are clear, concise, and variable - driven.
-- Output and debugging functions(printVariables, printIndexBreakdown, getEquationText) provide transparency and aid validation.
-- Well - documented physical meaning and example calculations in comments and equation text.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
-- Minimal error handling for missing variables, invalid indices, or division by zero; add validation for robustness.
-- Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
-- For large - scale or performance - critical simulations, consider more efficient data structures than std::map and std::vector.
-- Expand documentation for function purposes and expected input / output.
-
-Summary:
-The code is well - structured, clear, and suitable for scientific prototyping and educational use in universal gravity modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular and pluggable design; can be included and instantiated easily in other projects.
+// - Dynamic variable management using std::map allows runtime updates, additions, and removals.
+// - Coupling constants and gravity terms are clearly separated and indexed, supporting extensibility.
+// - Core computation methods(computeU_gi, computeK_i, computeKUgi, computeSumKUgi) are clear, concise, and variable - driven.
+// - Output and debugging functions(printVariables, printIndexBreakdown, getEquationText) provide transparency and aid validation.
+// - Well - documented physical meaning and example calculations in comments and equation text.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
+// - Minimal error handling for missing variables, invalid indices, or division by zero; add validation for robustness.
+// - Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
+// - For large - scale or performance - critical simulations, consider more efficient data structures than std::map and std::vector.
+// - Expand documentation for function purposes and expected input / output.
+//
+// Summary:
+// The code is well - structured, clear, and suitable for scientific prototyping and educational use in universal gravity modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+// */

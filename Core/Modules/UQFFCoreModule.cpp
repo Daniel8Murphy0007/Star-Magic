@@ -9,6 +9,11 @@
 // Integrated into Star-Magic by GitHub Copilot, November 10, 2025
 // Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com
 
+#define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 #include <iostream>
 #include <vector>
 #include <complex>
@@ -17,10 +22,6 @@
 #include <string>
 #include <memory>
 #include <fstream>
-
-#ifndef M_PI
-#define M_PI 3.141592653589793
-#endif
 
 using cdouble = std::complex<double>;
 

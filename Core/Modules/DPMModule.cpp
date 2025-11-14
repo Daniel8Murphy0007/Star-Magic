@@ -1,7 +1,12 @@
 // DPMModule.h
 // Modular C++ implementation of the Birth of Di-Pseudo-Monopole (DPM) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module models the Pre-Big Bang reaction of [SCm] and [UA] in a 26-shell oscillating EM field, yielding 26 resonant sphere centers.
-// Pluggable: // // // #include "DPMModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "DPMModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // DPMModule mod; mod.computeDPM(); mod.updateVariable("num_states", 26);
 // Variables in std::map; computes sphere centers (h,k,l,r) for 26 states; resonant points via standing waves.
 // Approximations: 26 centers distributed on unit sphere; r fixed; [SCm]/[UA] energies as scalars; inflation barriers at -1/2 states.
@@ -14,10 +19,6 @@
 #include <string>
 #include <vector>
 #include <cmath>
-#ifndef M_PI
-#define M_PI 3.14159265358979323846
-#endif
-#define _USE_MATH_DEFINES
 #include <iostream>
 #include <iomanip>
 
@@ -341,27 +342,28 @@ void DPMModule::printDPMSpheres()
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-DPMModule Evaluation
+// DPMModule Evaluation
 
-Strengths :
--Modular, extensible design for modeling the birth of Di - Pseudo - Monopole(DPM) in the UQFF framework.
-- Clear encapsulation of variables and sphere center data using std::map and std::vector, supporting dynamic updates and easy extension.
-- Implements core physical concepts : distribution of 26 sphere centers on a unit sphere, resonance factor calculation, and energy computations for[SCm] and [UA].
-- Approximations and physical meaning are well - documented in comments and equation text.
-- Output functions for variable state and DPM sphere centers support debugging and transparency.
-- Randomized sphere center generation provides realistic spatial distribution for resonance modeling.
-- Handles dynamic state count(e.g., 26 or 13) and updates dependent calculations accordingly.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
-- Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
-- Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
-- Unit consistency should be checked and documented for all physical quantities.
-- For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
-- std::map and std::vector are flexible but may be less efficient than structured types for very large models.
-- Expand documentation for function purposes and physical meaning.
-- Random sphere center generation may not be reproducible; consider seeding for deterministic results if needed.
-
-Summary:
-The code is well - structured, clear, and suitable for scientific prototyping and educational use in DPM birth modeling.It implements the UQFF DPM concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular, extensible design for modeling the birth of Di - Pseudo - Monopole(DPM) in the UQFF framework.
+// - Clear encapsulation of variables and sphere center data using std::map and std::vector, supporting dynamic updates and easy extension.
+// - Implements core physical concepts : distribution of 26 sphere centers on a unit sphere, resonance factor calculation, and energy computations for[SCm] and [UA].
+// - Approximations and physical meaning are well - documented in comments and equation text.
+// - Output functions for variable state and DPM sphere centers support debugging and transparency.
+// - Randomized sphere center generation provides realistic spatial distribution for resonance modeling.
+// - Handles dynamic state count(e.g., 26 or 13) and updates dependent calculations accordingly.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+// - Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
+// - Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
+// - Unit consistency should be checked and documented for all physical quantities.
+// - For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
+// - std::map and std::vector are flexible but may be less efficient than structured types for very large models.
+// - Expand documentation for function purposes and physical meaning.
+// - Random sphere center generation may not be reproducible; consider seeding for deterministic results if needed.
+//
+// Summary:
+// The code is well - structured, clear, and suitable for scientific prototyping and educational use in DPM birth modeling.It implements the UQFF DPM concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+// */

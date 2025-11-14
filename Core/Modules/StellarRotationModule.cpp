@@ -1,7 +1,12 @@
 // StellarRotationModule.h
 // Modular C++ implementation of the Stellar/Planetary Rotation Rate (?_s) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?_s=2.5e-6 rad/s (~29-day Sun period); scales ?_s(t) in U_g3 cos(?_s t ?) and U_i ?_s cos(? t_n).
-// Pluggable: // // // #include "StellarRotationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "StellarRotationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // StellarRotationModule mod; mod.computeU_g3(0.0); mod.updateVariable("omega_s", new_value);
 // Variables in std::map; example for Sun at t=0, t_n=0; U_g3 ?1.8e49 J/m�, U_i ?1.38e-47 J/m�.
 // Approximations: cos(? t_n)=1; f_TRZ=0.1; ?_i=1.0; ?_vac sum=7.80e-36 J/m�.
@@ -13,10 +18,6 @@
 #include <map>
 #include <string>
 #include <cmath>
-#ifndef M_PI
-#define M_PI 3.14159265358979323846
-#endif
-#define _USE_MATH_DEFINES
 #include <iostream>
 #include <iomanip>
 

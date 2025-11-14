@@ -1,7 +1,12 @@
 // CompressedResonanceUQFF24Module.h
 // Modular C++ implementation of the UQFF Compressed and Resonance Equations for Systems 18-24.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: // // // #include "CompressedResonanceUQFF24Module.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Usage in base: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "CompressedResonanceUQFF24Module.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // CompressedResonanceUQFF24Module mod; mod.computeCompressedResTerm(t, B); mod.updateVariable("f_DPM", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Nothing is negligible: Includes compressed terms (DPM, THz, vac_diff, super) + resonance (aether, U_g4i, osc, quantum, fluid, exp) scaled for systems 18-24 (e.g., Sombrero, Saturn, M16, Crab).
@@ -328,12 +333,12 @@ void CompressedResonanceUQFF24Module::printVariables() {
 // Evaluation of CompressedResonanceUQFF24Module (UQFF Compressed & Resonance Terms for Systems 18-24)
 
 **Strengths:**
--**Dynamic & Extensible : **All model parameters are stored in a `std: : map<std::string, double> variables`, allowing runtime updates, additions, and removals.The methods `updateVariable`, `addToVariable`, and `subtractFromVariable` enable flexible modification of any parameter.
-- **Automatic Dependency Updates : **When key variables like `"Delta_x"` are updated, dependent variables(`"Delta_p"`) are recalculated automatically, ensuring consistency.
-    - **Immediate Effect : **All computations(e.g., `computeCompressedResTerm`) use the current values in the map, so any changes are immediately reflected in results.
+-**Dynamic & Extensible : **All model parameters are stored in a std: : map<std::string, double> variables, allowing runtime updates, additions, and removals.The methods updateVariable, addToVariable, and subtractFromVariable enable flexible modification of any parameter.
+- **Automatic Dependency Updates : **When key variables like "Delta_x" are updated, dependent variables("Delta_p") are recalculated automatically, ensuring consistency.
+    - **Immediate Effect : **All computations(e.g., computeCompressedResTerm) use the current values in the map, so any changes are immediately reflected in results.
         - **Comprehensive Physics : **The module includes all major UQFF compressed and resonance terms, such as DPM, THz, vacuum differential, superconductor, aether, U_g4i, oscillatory, quantum, fluid, and expansion effects.Standard Model gravity / magnetics are intentionally excluded per UQFF.
         - **Scalability : **Parameters and frequencies are scaled for systems 18 - 24 (e.g., nebulae, planets, remnants), making the module adaptable to a range of astrophysical scenarios.
-        - **Debugging Support : **The `printVariables()` method provides a snapshot of all current parameters, aiding validation and troubleshooting.
+        - **Debugging Support : **The printVariables() method provides a snapshot of all current parameters, aiding validation and troubleshooting.
     - **Sample Usage Provided : **Example integration and compilation instructions are included, demonstrating how to update variables and see their effect.
 
     ** Weaknesses / Recommendations : **

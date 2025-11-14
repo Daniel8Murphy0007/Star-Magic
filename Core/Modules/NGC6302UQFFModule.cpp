@@ -1,7 +1,12 @@
 // NGC6302UQFFModule.h
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF & SM Integration) for NGC 6302 Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: // // // #include "NGC6302UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Usage in base: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "NGC6302UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // NGC6302UQFFModule mod; mod.computeG(t); mod.updateVariable("M", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Nothing is negligible: Includes all terms - base gravity, Ug1-Ug4, cosmological Lambda, quantum integral, Lorentz q(v x B), fluid rho_fluid V g, resonant oscillatory (cos/exp), DM/visible with perturbations, stellar wind W_shock.
@@ -399,12 +404,12 @@ void NGC6302UQFFModule::printVariables() {
 // Evaluation of NGC6302UQFFModule (UQFF & Standard Model Integration for NGC 6302 Nebula Evolution)
 
 **Strengths:**
--**Dynamic & Extensible : **All model parameters are stored in a `std: : map<std::string, double> variables`, allowing runtime updates, additions, and removals.The methods `updateVariable`, `addToVariable`, and `subtractFromVariable` enable flexible modification of any parameter.
-- **Automatic Dependency Updates : **When key variables like `"Delta_x"` or `"M"` are updated, dependent variables(`"Delta_p"`, `"M_visible"`, `"M_DM"`) are recalculated automatically, ensuring consistency.
-    - **Immediate Effect : **All computations(e.g., `computeG`) use the current values in the map, so any changes are immediately reflected in results.
+-**Dynamic & Extensible : **All model parameters are stored in a std: : map<std::string, double> variables, allowing runtime updates, additions, and removals.The methods updateVariable, addToVariable, and subtractFromVariable enable flexible modification of any parameter.
+- **Automatic Dependency Updates : **When key variables like "Delta_x" or "M" are updated, dependent variables("Delta_p", "M_visible", "M_DM") are recalculated automatically, ensuring consistency.
+    - **Immediate Effect : **All computations(e.g., computeG) use the current values in the map, so any changes are immediately reflected in results.
         - **Comprehensive Physics : **The module includes all major UQFF and Standard Model terms relevant for nebular gravity, such as base gravity, cosmological constant, quantum, EM, fluid, resonant, DM, wind shock, and superconductivity corrections.
-        - **Wind Shock Modeling : **Incorporates a wind shock term(`W_shock`) that evolves with time, reflecting the impact of stellar winds on nebular evolution.
-            - **Debugging Support : **The `printVariables()` method provides a snapshot of all current parameters, aiding validation and troubleshooting.
+        - **Wind Shock Modeling : **Incorporates a wind shock term(W_shock) that evolves with time, reflecting the impact of stellar winds on nebular evolution.
+            - **Debugging Support : **The printVariables() method provides a snapshot of all current parameters, aiding validation and troubleshooting.
         - **Sample Usage Provided : **Example integration and compilation instructions are included, demonstrating how to update variables and see their effect.
 
         ** Weaknesses / Recommendations : **

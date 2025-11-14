@@ -1,7 +1,12 @@
 // NegativeTimeModule.h
 // Modular C++ implementation of the Negative Time Factor (t_n) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes t_n = t - t_0 (s or days, allows t_n < 0); used in cos(? t_n) for oscillations and exp(-? t cos(? t_n)) for growth/decay.
-// Pluggable: // // // #include "NegativeTimeModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "NegativeTimeModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // NegativeTimeModule mod; mod.computeCosPiTn(1000.0); mod.updateVariable("t_0", new_value);
 // Variables in std::map; defaults t_0=0, t=0 (t_n=0); example for U_m term with t_n negative.
 // Approximations: cos even function; ?=5e-5 day^-1; at t_n=-1, exp term negative (growth).
@@ -320,23 +325,24 @@ void NegativeTimeModule::printTnEffects(double t, double gamma)
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-NegativeTimeModule Evaluation
+// NegativeTimeModule Evaluation
 
-Strengths :
--Modular and pluggable design; can be included and instantiated easily in other projects.
-- Dynamic variable management using std::map allows runtime updates, additions, and removals.
-- Core computation methods(computeT_n, computeCosPiTn, computeExpTerm, computeOneMinusExp, computeUmExample) are clear, concise, and variable - driven.
-- Handles negative time values(t_n < 0) robustly, enabling modeling of time - reversal and cyclic effects.
-    - Output and debugging functions(printVariables, printTnEffects, getEquationText) provide transparency and aid validation.
-    - Well - documented physical meaning and example calculations in comments and equation text.
-
-    Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
-- Minimal error handling for missing variables, invalid input, or division by zero; add validation for robustness.
-- Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
-- For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
-- Expand documentation for function purposes and expected input / output.
-
-Summary:
-The code is well - structured, clear, and suitable for scientific prototyping and educational use in negative time factor modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular and pluggable design; can be included and instantiated easily in other projects.
+// - Dynamic variable management using std::map allows runtime updates, additions, and removals.
+// - Core computation methods(computeT_n, computeCosPiTn, computeExpTerm, computeOneMinusExp, computeUmExample) are clear, concise, and variable - driven.
+// - Handles negative time values(t_n < 0) robustly, enabling modeling of time - reversal and cyclic effects.
+//     - Output and debugging functions(printVariables, printTnEffects, getEquationText) provide transparency and aid validation.
+//     - Well - documented physical meaning and example calculations in comments and equation text.
+//
+//     Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
+// - Minimal error handling for missing variables, invalid input, or division by zero; add validation for robustness.
+// - Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
+// - For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
+// - Expand documentation for function purposes and expected input / output.
+//
+// Summary:
+// The code is well - structured, clear, and suitable for scientific prototyping and educational use in negative time factor modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+// */

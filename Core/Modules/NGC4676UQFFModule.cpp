@@ -1,7 +1,12 @@
 // NGC4676UQFFModule.h
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for NGC 4676 (The Mice) Evolution.
 // This module models NGC 4676's gravitational dynamics, incorporating collision of NGC 4676A/B, tidal tails/bridge, enhanced star formation, gas turbulence, and dark matter.
-// Usage: // // // #include "NGC4676UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; NGC4676UQFFModule mod; mod.computeG(t); mod.updateVariable("SFR", new_value);
+// Usage: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "NGC4676UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; NGC4676UQFFModule mod; mod.computeG(t); mod.updateVariable("SFR", new_value);
 // Variables in std::map for dynamic updates; supports F_env(t) with tidal/bridge/SF terms; includes THz concepts (Ug2_THz, H_eff_z).
 // Approximations: psi_integral normalized to 1.0; H(t,z) with Omega_m=0.3, Omega_Lambda=0.7; E_react exp decay; tail waves simplified.
 // NGC 4676 params: M_total=1e11 Msun, r=50 kpc, SFR=5 Msun/yr, M_A=M_B=5e10 Msun, d=10 kpc (effective), v_rel=400 km/s, rho=1e-21 kg/m^3, B=1e-5 T, z=0.022, etc.
@@ -476,26 +481,27 @@ void NGC4676UQFFModule::printVariables() {
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-NGC4676UQFFModule Evaluation
+// NGC4676UQFFModule Evaluation
 
-Strengths :
--Modular, extensible design for modeling NGC 4676 (The Mice) galaxy gravity, including collision dynamics, tidal tails / bridge, star formation, gas turbulence, and dark matter.
-- Comprehensive physics : gravity, cosmological expansion, magnetic fields, environmental / tidal / bridge effects, quantum, fluid, DM, and THz / aetheric terms.
-- Dynamic variable management via std::map enables runtime updates and system adaptation.
-- Clear separation of computation functions(e.g., Ug1�Ug4, Ug2_THz, F_env, quantum, fluid, DM), aiding maintainability.
-- NGC 4676 - specific parameters are initialized for realistic simulation; supports easy modification.
-- Output functions for equation text and variable state support debugging and documentation.
-- THz / aetheric enhancements(Ug2_THz, H_eff_z) add advanced physical modeling.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
-- Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
-- Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
-- Unit consistency should be checked and documented for all physical quantities.
-- For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
-- std::map is flexible but may be less efficient than structured types for very large models.
-- Expand documentation for function purposes and physical meaning.
-
-Summary:
-The code is well - structured, flexible, and suitable for scientific prototyping and educational use in galactic collision modeling.It implements a broad set of physical effects and adapts to various scenarios, including THz / aetheric phenomena.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths :
+// -Modular, extensible design for modeling NGC 4676 (The Mice) galaxy gravity, including collision dynamics, tidal tails / bridge, star formation, gas turbulence, and dark matter.
+// - Comprehensive physics : gravity, cosmological expansion, magnetic fields, environmental / tidal / bridge effects, quantum, fluid, DM, and THz / aetheric terms.
+// - Dynamic variable management via std::map enables runtime updates and system adaptation.
+// - Clear separation of computation functions(e.g., Ug1�Ug4, Ug2_THz, F_env, quantum, fluid, DM), aiding maintainability.
+// - NGC 4676 - specific parameters are initialized for realistic simulation; supports easy modification.
+// - Output functions for equation text and variable state support debugging and documentation.
+// - THz / aetheric enhancements(Ug2_THz, H_eff_z) add advanced physical modeling.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+// - Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
+// - Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
+// - Unit consistency should be checked and documented for all physical quantities.
+// - For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
+// - std::map is flexible but may be less efficient than structured types for very large models.
+// - Expand documentation for function purposes and physical meaning.
+//
+// Summary:
+// The code is well - structured, flexible, and suitable for scientific prototyping and educational use in galactic collision modeling.It implements a broad set of physical effects and adapts to various scenarios, including THz / aetheric phenomena.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+// */

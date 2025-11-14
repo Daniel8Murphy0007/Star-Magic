@@ -1,7 +1,12 @@
 // UgCouplingModule.h
 // Modular C++ implementation of the Coupling Constants for Ug Ranges (k_i) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes scaled Universal Gravity terms k_i * U_gi for i=1-4 (Ug1-Ug4), with k1=1.5, k2=1.2, k3=1.8, k4=1.0 (unitless).
-// Pluggable: // // // #include "UgCouplingModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "UgCouplingModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // UgCouplingModule mod; mod.computeSumK_Ugi(); mod.updateVariable("U_g1", new_value);
 // Variables in std::map; sum contributes to F_U; placeholders for full U_gi equations.
 // Approximations: t_n=0, cos(? t_n)=1; ?_def=0, etc.; example values from Sun at t=0.
@@ -337,26 +342,27 @@ void UgCouplingModule::printK_Ugi()
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-UgCouplingModule Evaluation
+// UgCouplingModule Evaluation
 
-Strengths :
--Modular, extensible design for computing scaled universal gravity terms(k_i * U_gi) in the UQFF framework.
-- Clear encapsulation of variables and coupling constants using std::map and std::vector, supporting dynamic updates and easy extension.
-- Implements core physical concepts : scaling of Ug terms via k_i, contribution to the unified field(F_U), and separation of physical roles for Ug1 - Ug4.
-- Approximations and physical meaning are well - documented in comments and equation text.
-- Output functions for variable state and scaled Ug terms support debugging and transparency.
-- Handles dynamic updates to variables and recalculates dependent terms as needed.
-- Example values and equation text provide context for scientific use and validation.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
-- Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
-- Minimal error handling(e.g., invalid index for k_i / U_gi, division by zero); add validation for robustness.
-- Unit consistency should be checked and documented for all physical quantities.
-- For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
-- std::map and std::vector are flexible but may be less efficient than structured types for very large models.
-- Expand documentation for function purposes and physical meaning.
-
-Summary:
-The code is well - structured, clear, and suitable for scientific prototyping and educational use in gravity coupling modeling.It implements the UQFF coupling concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular, extensible design for computing scaled universal gravity terms(k_i * U_gi) in the UQFF framework.
+// - Clear encapsulation of variables and coupling constants using std::map and std::vector, supporting dynamic updates and easy extension.
+// - Implements core physical concepts : scaling of Ug terms via k_i, contribution to the unified field(F_U), and separation of physical roles for Ug1 - Ug4.
+// - Approximations and physical meaning are well - documented in comments and equation text.
+// - Output functions for variable state and scaled Ug terms support debugging and transparency.
+// - Handles dynamic updates to variables and recalculates dependent terms as needed.
+// - Example values and equation text provide context for scientific use and validation.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+// - Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
+// - Minimal error handling(e.g., invalid index for k_i / U_gi, division by zero); add validation for robustness.
+// - Unit consistency should be checked and documented for all physical quantities.
+// - For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
+// - std::map and std::vector are flexible but may be less efficient than structured types for very large models.
+// - Expand documentation for function purposes and physical meaning.
+//
+// Summary:
+// The code is well - structured, clear, and suitable for scientific prototyping and educational use in gravity coupling modeling.It implements the UQFF coupling concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+// */

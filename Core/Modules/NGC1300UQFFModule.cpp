@@ -1,7 +1,12 @@
 // NGC1300UQFFModule.h
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for Barred Spiral Galaxy NGC 1300 Evolution.
 // This module models NGC 1300's gravitational dynamics, incorporating bar-driven gas funneling, spiral arm density waves, star formation, dust lanes, and dark matter.
-// Usage: // // // #include "NGC1300UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; NGC1300UQFFModule mod; mod.computeG(t); mod.updateVariable("SFR", new_value);
+// Usage: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "NGC1300UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; NGC1300UQFFModule mod; mod.computeG(t); mod.updateVariable("SFR", new_value);
 // Variables in std::map for dynamic updates; supports F_env(t) with bar and wave terms.
 // Approximations: psi_integral normalized to 1.0; H(t,z) with Omega_m=0.3, Omega_Lambda=0.7; no AGN terms.
 // NGC 1300 params: M=1e11 Msun, r=11.79 kpc, SFR=1 Msun/yr, v_arm=200 km/s, B=1e-5 T, z=0.005, etc.
@@ -454,25 +459,26 @@ void NGC1300UQFFModule::printVariables() {
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-NGC1300UQFFModule Evaluation
+// NGC1300UQFFModule Evaluation
 
-Strengths :
--Modular, extensible design for modeling NGC 1300 galaxy gravity, including bar - driven gas funneling, spiral arm density waves, star formation, dust lanes, and dark matter.
-- Comprehensive physics : gravity, cosmological expansion, magnetic fields, environmental / bar / wave effects, quantum, fluid, and DM terms.
-- Dynamic variable management via std::map enables runtime updates and system adaptation.
-- Clear separation of computation functions(e.g., Ug1�Ug4, F_env, quantum, fluid, DM), aiding maintainability.
-- NGC 1300 - specific parameters are initialized for realistic simulation; supports easy modification.
-- Output functions for equation text and variable state support debugging and documentation.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
-- Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
-- Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
-- Unit consistency should be checked and documented for all physical quantities.
-- For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
-- std::map is flexible but may be less efficient than structured types for very large models.
-- Expand documentation for function purposes and physical meaning.
-
-Summary:
-The code is well - structured, flexible, and suitable for scientific prototyping and educational use in galactic dynamics modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths :
+// -Modular, extensible design for modeling NGC 1300 galaxy gravity, including bar - driven gas funneling, spiral arm density waves, star formation, dust lanes, and dark matter.
+// - Comprehensive physics : gravity, cosmological expansion, magnetic fields, environmental / bar / wave effects, quantum, fluid, and DM terms.
+// - Dynamic variable management via std::map enables runtime updates and system adaptation.
+// - Clear separation of computation functions(e.g., Ug1�Ug4, F_env, quantum, fluid, DM), aiding maintainability.
+// - NGC 1300 - specific parameters are initialized for realistic simulation; supports easy modification.
+// - Output functions for equation text and variable state support debugging and documentation.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+// - Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
+// - Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
+// - Unit consistency should be checked and documented for all physical quantities.
+// - For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
+// - std::map is flexible but may be less efficient than structured types for very large models.
+// - Expand documentation for function purposes and physical meaning.
+//
+// Summary:
+// The code is well - structured, flexible, and suitable for scientific prototyping and educational use in galactic dynamics modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+// */

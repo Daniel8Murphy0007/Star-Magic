@@ -1,7 +1,12 @@
 // NGC1316UQFFModule.h
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for NGC 1316 (Hubble Spies Cosmic Dust Bunnies) Evolution.
 // This module models NGC 1316's gravitational dynamics, incorporating merger history, tidal forces, star cluster disruption, dust lanes, AGN jets/radio lobes, and dark matter.
-// Usage: // // // #include "NGC1316UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; NGC1316UQFFModule mod; mod.computeG(t); mod.updateVariable("M_spiral", new_value);
+// Usage: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "NGC1316UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; NGC1316UQFFModule mod; mod.computeG(t); mod.updateVariable("M_spiral", new_value);
 // Variables in std::map for dynamic updates; supports F_env(t) with tidal and cluster terms; uses rho_dust for fluid.
 // Approximations: psi_integral normalized to 1.0; H(t,z) with Omega_m=0.3, Omega_Lambda=0.7; E_react exp decay; dust waves simplified.
 // NGC 1316 params: M=5e11 Msun, r=46 kpc, M_spiral=1e10 Msun, d=50 kpc, M_BH=1e8 Msun, M_cluster=1e6 Msun, rho_dust=1e-21 kg/m^3, B=1e-4 T, z=0.005, etc.
@@ -479,25 +484,26 @@ void NGC1316UQFFModule::printVariables()
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-NGC1316UQFFModule Evaluation
+// NGC1316UQFFModule Evaluation
 
-Strengths :
--Modular, extensible design for modeling NGC 1316 galaxy gravity, including merger history, tidal forces, star cluster disruption, dust lanes, AGN jets, and dark matter.
-- Comprehensive physics : gravity, cosmological expansion, magnetic fields, environmental / tidal effects, quantum, fluid(dust), and DM terms.
-- Dynamic variable management via std::map enables runtime updates and system adaptation.
-- Clear separation of computation functions(e.g., Ug1-Ug4, F_env, quantum, fluid, DM), aiding maintainability.
-- NGC 1316 - specific parameters are initialized for realistic simulation; supports easy modification.
-- Output functions for equation text and variable state support debugging and documentation.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
-- Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
-- Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
-- Unit consistency should be checked and documented for all physical quantities.
-- For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
-- std::map is flexible but may be less efficient than structured types for very large models.
-- Expand documentation for function purposes and physical meaning.
-
-Summary:
-The code is well - structured, flexible, and suitable for scientific prototyping and educational use in galactic dynamics modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths :
+// -Modular, extensible design for modeling NGC 1316 galaxy gravity, including merger history, tidal forces, star cluster disruption, dust lanes, AGN jets, and dark matter.
+// - Comprehensive physics : gravity, cosmological expansion, magnetic fields, environmental / tidal effects, quantum, fluid(dust), and DM terms.
+// - Dynamic variable management via std::map enables runtime updates and system adaptation.
+// - Clear separation of computation functions(e.g., Ug1-Ug4, F_env, quantum, fluid, DM), aiding maintainability.
+// - NGC 1316 - specific parameters are initialized for realistic simulation; supports easy modification.
+// - Output functions for equation text and variable state support debugging and documentation.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+// - Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
+// - Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
+// - Unit consistency should be checked and documented for all physical quantities.
+// - For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
+// - std::map is flexible but may be less efficient than structured types for very large models.
+// - Expand documentation for function purposes and physical meaning.
+//
+// Summary:
+// The code is well - structured, flexible, and suitable for scientific prototyping and educational use in galactic dynamics modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+// */

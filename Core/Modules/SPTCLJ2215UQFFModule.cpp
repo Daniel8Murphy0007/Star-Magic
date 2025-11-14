@@ -1,7 +1,13 @@
 // SPTCLJ2215UQFFModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for SPT-CL J2215-3537 Galaxy Cluster Evolution.
 // This module can be plugged into a base program (e.g., 'sptcl_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: // // // #include "SPTCLJ2215UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Usage in base: // // // #define _USE_MATH_DEFINES
+#define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "SPTCLJ2215UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // SPTCLJ2215UQFFModule mod; mod.computeF(t); mod.updateVariable("M", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino.
@@ -176,7 +182,8 @@ public:
 #endif // SPTCL_J2215_UQFF_MODULE_H
 
 // SPTCLJ2215UQFFModule.cpp
-// // // #include "SPTCLJ2215UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// // // #define _USE_MATH_DEFINES
+// #include "SPTCLJ2215UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with SPT-CL J2215-3537-specific values
@@ -186,8 +193,7 @@ SPTCLJ2215UQFFModule::SPTCLJ2215UQFFModule() {
         learningRate = 0.001;
         metadata["enhanced"] = "true";
         metadata["version"] = "2.0-Enhanced";
-
-    double pi_val = 3.141592653589793;
+    // double M_PI already defined in header
     cdouble zero = {0.0, 0.0};
     cdouble i_small = {0.0, 1e-37};
 
@@ -196,12 +202,12 @@ SPTCLJ2215UQFFModule::SPTCLJ2215UQFFModule() {
     variables["c"] = {3e8, 0.0};
     variables["hbar"] = {1.0546e-34, 0.0};
     variables["q"] = {1.6e-19, 0.0};
-    variables["pi"] = {pi_val, 0.0};
+    variables["pi"] = {M_PI, 0.0};
     variables["m_e"] = {9.11e-31, 0.0};
     variables["mu_B"] = {9.274e-24, 0.0};
     variables["g_Lande"] = {2.0, 0.0};
     variables["k_B"] = {1.38e-23, 0.0};
-    variables["mu0"] = {4 * pi_val * 1e-7, 0.0};
+    variables["mu0"] = {4 * M_PI * 1e-7, 0.0};
 
     // SPT-CL J2215-3537 parameters
     variables["M"] = {1.46e45, 0.0};
@@ -209,7 +215,7 @@ SPTCLJ2215UQFFModule::SPTCLJ2215UQFFModule() {
     variables["L_X"] = {2e38, 0.0};
     variables["B0"] = {1e-10, 0.0};
     variables["omega0"] = {1e-15, 0.0};
-    variables["theta"] = {pi_val / 4, 0.0};  // 45 deg
+    variables["theta"] = {M_PI / 4, 0.0};  // 45 deg
     variables["t"] = {2.21e16, 0.0};  // Default t
     variables["rho_gas"] = {1e-24, 0.0};
     variables["V"] = {1e-3, 0.0};  // Particle velocity
@@ -223,10 +229,10 @@ SPTCLJ2215UQFFModule::SPTCLJ2215UQFFModule() {
 
     // LENR and activation
     variables["k_LENR"] = {1e-10, 0.0};
-    variables["omega_LENR"] = {2 * pi_val * 1.25e12, 0.0};
+    variables["omega_LENR"] = {2 * M_PI * 1.25e12, 0.0};
     variables["k_act"] = {1e-6, 0.0};
-    variables["omega_act"] = {2 * pi_val * 300, 0.0};
-    variables["phi"] = {pi_val / 4, 0.0};
+    variables["omega_act"] = {2 * M_PI * 300, 0.0};
+    variables["phi"] = {M_PI / 4, 0.0};
 
     // Other couplings
     variables["k_DE"] = {1e-30, 0.0};
@@ -313,7 +319,7 @@ cdouble SPTCLJ2215UQFFModule::computeIntegrand(double t_user) {
     cdouble term_LENR = computeLENRTerm();
     cdouble term_act = variables["k_act"] * cos_act;
     cdouble term_DE = variables["k_DE"] * variables["L_X"];
-    cdouble term_res = 2 * variables["q"] * variables["B0"] * variables["V"] * sin_theta * computeDPM_resonance();
+    cdouble term_res = cdouble(2.0) * variables["q"] * variables["B0"] * variables["V"] * sin_theta * computeDPM_resonance();
     cdouble term_neut = variables["k_neutron"] * variables["sigma_n"];
     cdouble term_rel = variables["k_rel"] * pow(variables["E_cm_astro"] / variables["E_cm"], 2);
     cdouble term_neutrino = variables["F_neutrino"];
@@ -328,8 +334,8 @@ cdouble SPTCLJ2215UQFFModule::computeX2() {
 
 // Quadratic root helper (for future refinement)
 cdouble SPTCLJ2215UQFFModule::computeQuadraticRoot(cdouble a, cdouble b, cdouble c) {
-    cdouble disc = sqrt(b*b - 4*a*c);
-    return (-b - disc) / (2*a);  // Negative root approx
+    cdouble disc = sqrt(b*b - cdouble(4.0)*a*c);
+    return (-b - disc) / (cdouble(2.0)*a);  // Negative root approx
 }
 
 // Full F_U_Bi_i approx as integrand * x2
@@ -365,7 +371,7 @@ cdouble SPTCLJ2215UQFFModule::computeSuperconductive(double t) {
     cdouble rho_sc = variables["rho_vac_SCm"];
     cdouble rho_ua = variables["rho_vac_UA"];
     cdouble omega_s = variables["omega_s"];
-    double cos_term = cos(pi_val * tn);
+    double cos_term = cos(M_PI * tn);
     cdouble f_trz = variables["f_TRZ"];
     return lambda * (rho_sc / rho_ua * omega_s * cos_term * (1 + f_trz.real()));
 }
@@ -427,8 +433,10 @@ void SPTCLJ2215UQFFModule::printVariables() {
 }
 
 // Example usage in base program 'sptcl_sim.cpp' (snippet for integration)
-// // // // #include "SPTCLJ2215UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
-// #include <complex>
+// // // // #define _USE_MATH_DEFINES
+// #include "SPTCLJ2215UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// #define _USE_MATH_DEFINES
+#include <complex>
 // int main() {
 //     SPTCLJ2215UQFFModule mod;
 //     double t = 2.21e16;  // 0.7 Gyr
@@ -444,37 +452,37 @@ void SPTCLJ2215UQFFModule::printVariables() {
 // Sample Output at t=0.7 Gyr: F ? -1.40e218 + i (large; approx per framework; dominant real from LENR * x2).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 11, 2025.
 
-SPTCLJ2215UQFFModule C++ Code Evaluation
-========================================
-
-Design & Structure
-------------------
-- Implements a modular class for the Master Unified Field Equation tailored to SPT - CL J2215 - 3537 galaxy cluster evolution.
-- Uses std::map<std::string, std::complex<double>> for dynamic variable management, supporting both real and imaginary components.
-- Constructor initializes all relevant physical constants and cluster - specific parameters.
-
-Functionality
------------- -
--Provides methods for updating, adding, and subtracting variables at runtime.
-- Core computation covers all major physical effects : base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino.
-- Approximates the integral as integrand * x2, with x2 as a quadratic root.
-- Includes sub - equation methods for compressed integrand, resonance, buoyancy, superconductive effects, and gravitational compression.
-- Outputs a descriptive equation string and prints all current variables for debugging.
-
-Code Quality
-------------
-- Well - organized and clearly commented; function and variable names are descriptive.
-- Error handling : If a variable is missing, it is added and a message is printed to std::cerr.
-- Scientific notation and precision are used for variable output.
-
-Potential Improvements
-----------------------
-- For performance, consider using std::unordered_map for faster variable access if order is not required.
-- Add input validation for variable updates to prevent accidental misuse.
-- Implement unit tests for each computation method to ensure correctness and reproducibility.
-- Consider separating physical constants from simulation parameters for clarity and maintainability.
-
-Summary
------- -
--The code is robust, modular, and well - suited for scientific simulation and experimentation.
-- Ready for integration into larger simulation frameworks and can be easily extended or adapted.
+// SPTCLJ2215UQFFModule C++ Code Evaluation
+// ========================================
+//
+// Design & Structure
+// ------------------
+// - Implements a modular class for the Master Unified Field Equation tailored to SPT - CL J2215 - 3537 galaxy cluster evolution.
+// - Uses std::map<std::string, std::complex<double>> for dynamic variable management, supporting both real and imaginary components.
+// - Constructor initializes all relevant physical constants and cluster - specific parameters.
+//
+// Functionality
+// ------------ -
+// -Provides methods for updating, adding, and subtracting variables at runtime.
+// - Core computation covers all major physical effects : base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino.
+// - Approximates the integral as integrand * x2, with x2 as a quadratic root.
+// - Includes sub - equation methods for compressed integrand, resonance, buoyancy, superconductive effects, and gravitational compression.
+// - Outputs a descriptive equation string and prints all current variables for debugging.
+//
+// Code Quality
+// ------------
+// - Well - organized and clearly commented; function and variable names are descriptive.
+// - Error handling : If a variable is missing, it is added and a message is printed to std::cerr.
+// - Scientific notation and precision are used for variable output.
+//
+// Potential Improvements
+// ----------------------
+// - For performance, consider using std::unordered_map for faster variable access if order is not required.
+// - Add input validation for variable updates to prevent accidental misuse.
+// - Implement unit tests for each computation method to ensure correctness and reproducibility.
+// - Consider separating physical constants from simulation parameters for clarity and maintainability.
+//
+// Summary
+// ------ -
+// -The code is robust, modular, and well - suited for scientific simulation and experimentation.
+// - Ready for integration into larger simulation frameworks and can be easily extended or adapted.

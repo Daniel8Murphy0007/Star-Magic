@@ -1,7 +1,12 @@
 // M16UQFFModule.h
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF) for M16 (Eagle Nebula) Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: // // // #include "M16UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Usage in base: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "M16UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // M16UQFFModule mod; mod.computeG(t); mod.updateVariable("M", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Nothing is negligible: Includes all terms - base gravity, Ug1-Ug4 (gravitational subterms), cosmological Lambda, 
@@ -422,11 +427,11 @@ void M16UQFFModule::printVariables() {
 // Evaluation of M16UQFFModule (Master Universal Gravity Equation for M16 Eagle Nebula)
 
 **Strengths:**
--**Dynamic & Extensible : **All model parameters are stored in a `std: : map<std::string, double> variables`, allowing runtime updates, additions, and removals.The methods `updateVariable`, `addToVariable`, and `subtractFromVariable` enable flexible modification of any parameter.
-- **Automatic Dependency Updates : **When key variables like `"M"` or `"Delta_x"` are updated, dependent variables(`"M_visible"`, `"M0"`, `"M_DM"`, `"Delta_p"`) are recalculated automatically, ensuring consistency.
-    - **Immediate Effect : **All computations(e.g., `computeG`) use the current values in the map, so any changes are immediately reflected in results.
+-**Dynamic & Extensible : **All model parameters are stored in a std: : map<std::string, double> variables, allowing runtime updates, additions, and removals.The methods updateVariable, addToVariable, and subtractFromVariable enable flexible modification of any parameter.
+- **Automatic Dependency Updates : **When key variables like "M" or "Delta_x" are updated, dependent variables("M_visible", "M0", "M_DM", "Delta_p") are recalculated automatically, ensuring consistency.
+    - **Immediate Effect : **All computations(e.g., computeG) use the current values in the map, so any changes are immediately reflected in results.
         - **Comprehensive Physics : **The module includes all major terms relevant for nebular gravity, including base gravity, cosmological, quantum, EM, fluid, resonant, DM, superconductivity, star formation, and radiation erosion.
-        - **Debugging Support : **The `printVariables()` method provides a snapshot of all current parameters, aiding validation and troubleshooting.
+        - **Debugging Support : **The printVariables() method provides a snapshot of all current parameters, aiding validation and troubleshooting.
     - **Sample Usage Provided : **Example integration and compilation instructions are included, demonstrating how to update variables and see their effect.
 
     ** Weaknesses / Recommendations : **

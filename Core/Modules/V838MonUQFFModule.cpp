@@ -1,7 +1,12 @@
 // V838MonUQFFModule.h
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for V838 Monocerotis Light Echo Evolution.
 // This module models the light echo intensity evolution, incorporating outburst luminosity, dust scattering, gravitational modulation via Ug1, time-reversal (f_TRZ), and Aether ([UA]) effects.
-// Usage: // // // #include "V838MonUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; V838MonUQFFModule mod; mod.computeIecho(t); mod.updateVariable("L_outburst", new_value);
+// Usage: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "V838MonUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; V838MonUQFFModule mod; mod.computeIecho(t); mod.updateVariable("L_outburst", new_value);
 // Variables in std::map for dynamic updates; supports rho_dust(t) modulated by Ug1.
 // Approximations: sigma_scatter=1e-12 m^2; integral normalized; simplified gradient ?(M_s / r); alpha=0.0005; beta=1.0.
 // V838 Mon params: M_s=8 Msun, L_outburst=2.3e38 W, rho_0=1e-22 kg/m^3, d=6.1 kpc, B=1e-5 T, etc.
@@ -298,25 +303,26 @@ void V838MonUQFFModule::printVariables() {
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-V838MonUQFFModule Evaluation
+// V838MonUQFFModule Evaluation
 
-Strengths :
--Modular, extensible design for modeling V838 Monocerotis light echo intensity, including outburst luminosity, dust scattering, gravitational modulation, time - reversal, and aetheric corrections.
-- Comprehensive physics : incorporates gravitational gradient, dust density modulation, time - reversal symmetry, and vacuum energy corrections.
-- Dynamic variable management via std::map enables runtime updates and system adaptation.
-- Clear separation of computation functions(e.g., Ug1, rho_dust, I_echo base, TRZ, UA / SCm), aiding maintainability.
-- V838 Mon - specific parameters are initialized for realistic simulation; supports easy modification.
-- Output functions for equation text and variable state support debugging and documentation.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
-- Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
-- Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
-- Unit consistency should be checked and documented for all physical quantities.
-- For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
-- std::map is flexible but may be less efficient than structured types for very large models.
-- Expand documentation for function purposes and physical meaning.
-
-Summary:
-The code is well - structured, flexible, and suitable for scientific prototyping and educational use in light echo modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths :
+// -Modular, extensible design for modeling V838 Monocerotis light echo intensity, including outburst luminosity, dust scattering, gravitational modulation, time - reversal, and aetheric corrections.
+// - Comprehensive physics : incorporates gravitational gradient, dust density modulation, time - reversal symmetry, and vacuum energy corrections.
+// - Dynamic variable management via std::map enables runtime updates and system adaptation.
+// - Clear separation of computation functions(e.g., Ug1, rho_dust, I_echo base, TRZ, UA / SCm), aiding maintainability.
+// - V838 Mon - specific parameters are initialized for realistic simulation; supports easy modification.
+// - Output functions for equation text and variable state support debugging and documentation.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+// - Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
+// - Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
+// - Unit consistency should be checked and documented for all physical quantities.
+// - For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
+// - std::map is flexible but may be less efficient than structured types for very large models.
+// - Expand documentation for function purposes and physical meaning.
+//
+// Summary:
+// The code is well - structured, flexible, and suitable for scientific prototyping and educational use in light echo modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+// */

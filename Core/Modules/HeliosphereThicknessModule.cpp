@@ -1,7 +1,12 @@
 // HeliosphereThicknessModule.h
 // Modular C++ implementation of the Heliosphere Thickness Factor (H_SCm) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes H_SCm ?1 (unitless) and its scaling in Universal Gravity U_g2 term.
-// Pluggable: // // // #include "HeliosphereThicknessModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "HeliosphereThicknessModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // HeliosphereThicknessModule mod; mod.computeU_g2(0.0, 0.0); mod.updateVariable("H_SCm", new_value);
 // Variables in std::map; example for Sun at t=0, t_n=0, r=R_b=1.496e13 m.
 // Approximations: S(r - R_b)=1; ?_sw v_sw=5001; E_react=1e46.
@@ -305,23 +310,24 @@ void HeliosphereThicknessModule::printVariables()
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-HeliosphereThicknessModule Evaluation
+// HeliosphereThicknessModule Evaluation
 
-Strengths :
--Modular and pluggable design; can be included and instantiated easily in other projects.
-- Dynamic variable management using std::map allows runtime updates, additions, and removals.
-- Automatic recalculation of derived variables(e.g., rho_sum, swirl_factor) when dependencies change.
-- Core computation methods(computeU_g2, computeU_g2_no_H) are clear and use variable - driven logic.
-- Output and debugging functions(printVariables, getEquationText) provide transparency and aid validation.
-- Well - documented physical meaning and example calculations in comments and equation text.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
-- Minimal error handling for missing variables, division by zero, or invalid input; add validation for robustness.
-- Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
-- For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
-- Expand documentation for function purposes and expected input / output.
-
-Summary:
-The code is well - structured, clear, and suitable for scientific prototyping and educational use in heliosphere thickness and gravity modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular and pluggable design; can be included and instantiated easily in other projects.
+// - Dynamic variable management using std::map allows runtime updates, additions, and removals.
+// - Automatic recalculation of derived variables(e.g., rho_sum, swirl_factor) when dependencies change.
+// - Core computation methods(computeU_g2, computeU_g2_no_H) are clear and use variable - driven logic.
+// - Output and debugging functions(printVariables, getEquationText) provide transparency and aid validation.
+// - Well - documented physical meaning and example calculations in comments and equation text.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
+// - Minimal error handling for missing variables, division by zero, or invalid input; add validation for robustness.
+// - Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
+// - For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
+// - Expand documentation for function purposes and expected input / output.
+//
+// Summary:
+// The code is well - structured, clear, and suitable for scientific prototyping and educational use in heliosphere thickness and gravity modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+// */

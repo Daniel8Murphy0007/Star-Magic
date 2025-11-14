@@ -1,7 +1,12 @@
 // SolarWindBuoyancyModule.h
 // Modular C++ implementation of the Buoyancy Modulation by Solar Wind Density (?_sw) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes the modulation factor (1 + ?_sw * ?_vac,sw) in the Universal Buoyancy term U_bi, with ?_sw=0.001 (unitless).
-// Pluggable: // // // #include "SolarWindBuoyancyModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "SolarWindBuoyancyModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // SolarWindBuoyancyModule mod; mod.computeModulationFactor(); mod.updateVariable("epsilon_sw", new_value);
 // Variables in std::map; negligible correction ~8e-24; integrates into U_b1 example computation.
 // Approximations: cos(? t_n)=1; U_UA=1; ?_vac,sw as energy density (8e-21 J/m^3).
@@ -289,26 +294,27 @@ void SolarWindBuoyancyModule::printVariables()
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-SolarWindBuoyancyModule Evaluation
+// SolarWindBuoyancyModule Evaluation
 
-Strengths :
--Modular, extensible design for modeling solar wind density modulation in the UQFF buoyancy framework.
-- Clear encapsulation of variables using std::map, supporting dynamic updates and easy extension.
-- Implements core physical concepts : modulation factor(1 + ?_sw * ?_vac, sw), integration into U_b1 computation, and solar wind effects.
-- Approximations and physical meaning are well - documented in comments and equation text.
-- Output functions for variable state and equation text support debugging and transparency.
-- Handles dynamic updates to ?_sw and ?_vac, sw, recalculating the modulation factor as needed.
-- Negligible correction is correctly handled, but the structure allows for future flexibility.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
-- Some calculations use magic numbers or lack explanatory comments;
-define named constants and clarify logic.- Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
-- Unit consistency should be checked and documented for all physical quantities.
-- For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
-- std::map is flexible but may be less efficient than structured types for very large models.
-- Expand documentation for function purposes and physical meaning.
-
-Summary:
-The code is well - structured, clear, and suitable for scientific prototyping and educational use in solar wind buoyancy modeling.It implements the UQFF modulation concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular, extensible design for modeling solar wind density modulation in the UQFF buoyancy framework.
+// - Clear encapsulation of variables using std::map, supporting dynamic updates and easy extension.
+// - Implements core physical concepts : modulation factor(1 + ?_sw * ?_vac, sw), integration into U_b1 computation, and solar wind effects.
+// - Approximations and physical meaning are well - documented in comments and equation text.
+// - Output functions for variable state and equation text support debugging and transparency.
+// - Handles dynamic updates to ?_sw and ?_vac, sw, recalculating the modulation factor as needed.
+// - Negligible correction is correctly handled, but the structure allows for future flexibility.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+// - Some calculations use magic numbers or lack explanatory comments;
+// define named constants and clarify logic.- Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
+// - Unit consistency should be checked and documented for all physical quantities.
+// - For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
+// - std::map is flexible but may be less efficient than structured types for very large models.
+// - Expand documentation for function purposes and physical meaning.
+//
+// Summary:
+// The code is well - structured, clear, and suitable for scientific prototyping and educational use in solar wind buoyancy modeling.It implements the UQFF modulation concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+// */

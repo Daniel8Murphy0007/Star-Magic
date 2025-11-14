@@ -2,7 +2,12 @@
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE) for multiple astronomical systems.
 // This module integrates compressed UQFF (from documents) and resonance-based UQFF models.
 // Can be plugged into a base program by including this header and linking the .cpp.
-// Usage: // // // #include "MUGEModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Usage: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "MUGEModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // MUGEModule mod("Magnetar"); mod.computeG(t); mod.updateVariable("M", new_value);
 // Supports systems: Magnetar SGR 1745-2900, Sagittarius A*, Tapestry of Blazing Starbirth, Westerlund 2,
 // Pillars of Creation, Rings of Relativity, Students Guide to the Universe.
@@ -34,6 +39,8 @@
 #include <functional>
 #include <fstream>
 #include <sstream>
+
+using cdouble = std::complex<double>;
 #include <memory>
 #include <algorithm>
 
@@ -478,11 +485,11 @@ double MUGEModule::computeResonantTerm(double t)
     double k = variables["k"];         // 1e20
     double omega = variables["omega"]; // 1e15
     double x = 0.0;
-    double cos_term = 2 * A * std::cos(k * x) * std::cos(omega * t);
+    std::complex<double> cos_term = cdouble(2.0)*A * std::cos(k * x) * std::cos(omega * t);
     std::complex<double> exp_term(A * std::exp(std::complex<double>(0, k * x - omega * t)));
     double real_exp = exp_term.real();
     double exp_factor = (2 * variables["pi"] / 13.8);
-    return cos_term + exp_factor * real_exp;
+    return cos_term.real() + exp_factor * real_exp;
 }
 
 // EM term q (v x B) magnitude
@@ -594,7 +601,8 @@ double MUGEModule::computeOscTerm(double t)
 {
     double A = 1e-10; // Default
     double omega = variables["f_osc"] * 2 * variables["pi"];
-    return 2 * A * std::cos(omega * t); // Simplified osc
+    std::complex<double> result = cdouble(2.0)*A * std::cos(omega * t);
+    return result.real(); // Simplified osc
 }
 
 double MUGEModule::computeAExpFreq()
@@ -686,27 +694,28 @@ void MUGEModule::printVariables()
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-MUGEModule Evaluation
+// MUGEModule Evaluation
 
-Strengths :
--Modular, extensible design for modeling gravity in multiple astronomical systems, supporting both compressed and resonance - based UQFF models.
-- Comprehensive physics : gravity, cosmological expansion, superconductivity, quantum, fluid, dark matter, system - specific effects, and resonance phenomena.
-- Dynamic variable management via std::map enables runtime updates and system adaptation.
-- System - specific parameter loading via setSystem for flexible analysis across diverse scenarios.
-- Clear separation of computation functions(e.g., quantum, fluid, DM, Ug terms, resonance helpers), aiding maintainability.
-- Output functions for equation text and variable state support debugging and documentation.
-- Both compressed and resonance models are implemented, allowing comparative analysis and physical insight.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
-- Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
-- Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
-- Unit consistency should be checked and documented for all physical quantities.
-- For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
-- std::map is flexible but may be less efficient than structured types for very large models.
-- Expand documentation for function purposes and physical meaning.
-- Minor typo : duplicate `double` in function declarations(e.g., `double double computeAAetherRes(); `).
-
-    Summary:
-The code is well - structured, flexible, and suitable for scientific prototyping and educational use in multi - system gravity modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular, extensible design for modeling gravity in multiple astronomical systems, supporting both compressed and resonance - based UQFF models.
+// - Comprehensive physics : gravity, cosmological expansion, superconductivity, quantum, fluid, dark matter, system - specific effects, and resonance phenomena.
+// - Dynamic variable management via std::map enables runtime updates and system adaptation.
+// - System - specific parameter loading via setSystem for flexible analysis across diverse scenarios.
+// - Clear separation of computation functions(e.g., quantum, fluid, DM, Ug terms, resonance helpers), aiding maintainability.
+// - Output functions for equation text and variable state support debugging and documentation.
+// - Both compressed and resonance models are implemented, allowing comparative analysis and physical insight.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+// - Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
+// - Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
+// - Unit consistency should be checked and documented for all physical quantities.
+// - For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
+// - std::map is flexible but may be less efficient than structured types for very large models.
+// - Expand documentation for function purposes and physical meaning.
+// - Minor typo : duplicate double in function declarations(e.g., double double computeAAetherRes(); ).
+//
+//     Summary:
+// The code is well - structured, flexible, and suitable for scientific prototyping and educational use in multi - system gravity modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+// */

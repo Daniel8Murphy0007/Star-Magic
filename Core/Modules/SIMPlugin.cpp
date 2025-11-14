@@ -31,7 +31,7 @@ void output_json_params(const CelestialBody &body);
 std::vector<CelestialBody> load_bodies(const std::string &filename);
 
 // CelestialBody.cpp
-#include "CelestialBody.h"
+// #include "CelestialBody.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -233,10 +233,10 @@ std::vector<CelestialBody> load_bodies(const std::string &filename)
 #include <iomanip>
 #include <stdexcept>
 #include <omp.h> // For OpenMP
-#include "CelestialBody.h"
-#include "MUGE.h"
-#include "FluidSolver.h"
-#include "UnitTests.h"
+// #include "CelestialBody.h"
+// #include "MUGE.h"
+// #include "FluidSolver.h"
+// #include "UnitTests.h"
 
 const double PI = 3.141592653589793;
 const double c = 3.0e8;
@@ -558,7 +558,7 @@ void initOpenGL(GLFWwindow **window);
 void render3DScene(const std::vector<SimulationEntity> &entities);
 
 // 3DGraphics.cpp
-#include "3DGraphics.h"
+// #include "3DGraphics.h"
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
@@ -682,7 +682,7 @@ public:
 };
 
 // PluginModule.cpp
-#include "PluginModule.h"
+// #include "PluginModule.h"
 #include <stdexcept>
 
 SIMPlugin::SIMPlugin(const std::string &path)
@@ -712,12 +712,12 @@ SIMPlugin::~SIMPlugin()
 #include <iomanip>
 #include <stdexcept>
 #include <omp.h>
-#include "CelestialBody.h"
-#include "MUGE.h"
-#include "FluidSolver.h"
-#include "UnitTests.h"
-#include "3DGraphics.h"
-#include "PluginModule.h"
+// #include "CelestialBody.h"
+// #include "MUGE.h"
+// #include "FluidSolver.h"
+// #include "UnitTests.h"
+// #include "3DGraphics.h"
+// #include "PluginModule.h"
 
 const double PI = 3.141592653589793;
 const double c = 3.0e8;
@@ -1073,7 +1073,7 @@ bool loadOBJ(const std::string &path, MeshData &mesh);
 void exportOBJ(const std::string &path, const MeshData &mesh);
 
 // ModelLoader.cpp
-#include "ModelLoader.h"
+// #include "ModelLoader.h"
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
@@ -1170,8 +1170,8 @@ void exportOBJ(const std::string &path, const MeshData &mesh)
 GLuint loadTexture(const std::string &path);
 
 // Texture.cpp
-#include "Texture.h"
-#include "stb_image.h" // Assume included
+// #include "Texture.h"
+// #include "stb_image.h"
 
 GLuint loadTexture(const std::string &path)
 {
@@ -1214,7 +1214,7 @@ public:
 };
 
 // Shader.cpp
-#include "Shader.h"
+// #include "Shader.h"
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
@@ -1286,7 +1286,7 @@ public:
 void renderMultiViewports(const std::vector<Camera> &cameras, const std::vector<SimulationEntity> &entities);
 
 // Camera.cpp
-#include "Camera.h"
+// #include "Camera.h"
 #include <glm/gtc/matrix_transform.hpp>
 
 Camera::Camera(glm::vec3 pos) : position(pos), front(glm::vec3(0.0f, 0.0f, -1.0f)), up(glm::vec3(0.0f, 1.0f, 0.0f)), yaw(-90.0f), pitch(0.0f) {}
@@ -1342,7 +1342,7 @@ public:
 };
 
 // Animation.cpp
-#include "Animation.h"
+// #include "Animation.h"
 #include <glm/gtx/quaternion.hpp>
 
 Bone::Bone(const std::string &name, int ID, const aiNodeAnim *channel) : m_Name(name), m_ID(ID), m_LocalTransform(1.0f)
@@ -1377,7 +1377,7 @@ void Bone::Update(float animationTime)
 MeshData generateProceduralLandscape(int width, int height, float scale);
 
 // Landscape.cpp
-#include "Landscape.h"
+// #include "Landscape.h"
 
 // Simple heightmap with noise (perlin placeholder)
 float perlinNoise(float x, float y)
@@ -1420,13 +1420,13 @@ MeshData generateProceduralLandscape(int width, int height, float scale)
 // Modeling.h
 #pragma once
 
-#include "ModelLoader.h"
+// #include "ModelLoader.h"
 
 MeshData extrudeMesh(const MeshData &base, float height);
 MeshData booleanUnion(const MeshData &mesh1, const MeshData &mesh2); // Placeholder
 
 // Modeling.cpp
-#include "Modeling.h"
+// #include "Modeling.h"
 
 // Simple extrude for 2D base to 3D
 MeshData extrudeMesh(const MeshData &base, float height)
@@ -1468,12 +1468,12 @@ MeshData booleanUnion(const MeshData &mesh1, const MeshData &mesh2)
 
 #include <string>
 #include <GL/glew.h>
-#include "MicroTeX.h" // Assume included
+// #include "MicroTeX.h"
 
 void renderLaTeX(const std::string &latexCode, float x, float y);
 
 // LaTeXRenderer.cpp
-#include "LaTeXRenderer.h"
+// #include "LaTeXRenderer.h"
 
 void renderLaTeX(const std::string &latexCode, float x, float y)
 {
@@ -1503,7 +1503,7 @@ public:
 };
 
 // PluginModule.cpp
-#include "PluginModule.h"
+// #include "PluginModule.h"
 #include <stdexcept>
 
 #ifdef _WIN32
@@ -1556,19 +1556,19 @@ SIMPlugin::~SIMPlugin()
 #include <iomanip>
 #include <stdexcept>
 #include <omp.h>
-#include "CelestialBody.h"
-#include "MUGE.h"
-#include "FluidSolver.h"
-#include "UnitTests.h"
-#include "ModelLoader.h"
-#include "Texture.h"
-#include "Shader.h"
-#include "Camera.h"
-#include "Animation.h"
-#include "Landscape.h"
-#include "Modeling.h"
-#include "LaTeXRenderer.h"
-#include "PluginModule.h"
+// #include "CelestialBody.h"
+// #include "MUGE.h"
+// #include "FluidSolver.h"
+// #include "UnitTests.h"
+// #include "ModelLoader.h"
+// #include "Texture.h"
+// #include "Shader.h"
+// #include "Camera.h"
+// #include "Animation.h"
+// #include "Landscape.h"
+// #include "Modeling.h"
+// #include "LaTeXRenderer.h"
+// #include "PluginModule.h"
 
 const double PI = 3.141592653589793;
 const double c = 3.0e8;

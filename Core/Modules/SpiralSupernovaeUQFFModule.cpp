@@ -1,7 +1,12 @@
 // SpiralSupernovaeUQFFModule.h
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF & SM Integration) for Spirals and Supernovae Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: // // // #include "SpiralSupernovaeUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Usage in base: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "SpiralSupernovaeUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // SpiralSupernovaeUQFFModule mod; mod.computeG(t); mod.updateVariable("M", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Nothing is negligible: Includes all terms - base gravity with T_spiral, Ug1-Ug4, cosmological Lambda with ?_?, quantum integral, Lorentz q(v x B), fluid rho_fluid V g, resonant oscillatory (cos/exp), DM/visible with perturbations, supernova SN_term.
@@ -416,12 +421,12 @@ void SpiralSupernovaeUQFFModule::printVariables() {
 // Evaluation of SpiralSupernovaeUQFFModule (UQFF & Standard Model Integration for Spiral Galaxies and Supernovae)
 
 **Strengths:**
--**Dynamic & Extensible : **All model parameters are stored in a `std: : map<std::string, double> variables`, allowing runtime updates, additions, and removals.The methods `updateVariable`, `addToVariable`, and `subtractFromVariable` enable flexible modification of any parameter.
-- **Automatic Dependency Updates : **When key variables like `"Delta_x"` or `"M"` are updated, dependent variables(`"Delta_p"`, `"M_visible"`, `"M_DM"`) are recalculated automatically, ensuring consistency.
-    - **Immediate Effect : **All computations(e.g., `computeG`) use the current values in the map, so any changes are immediately reflected in results.
+-**Dynamic & Extensible : **All model parameters are stored in a std: : map<std::string, double> variables, allowing runtime updates, additions, and removals.The methods updateVariable, addToVariable, and subtractFromVariable enable flexible modification of any parameter.
+- **Automatic Dependency Updates : **When key variables like "Delta_x" or "M" are updated, dependent variables("Delta_p", "M_visible", "M_DM") are recalculated automatically, ensuring consistency.
+    - **Immediate Effect : **All computations(e.g., computeG) use the current values in the map, so any changes are immediately reflected in results.
         - **Comprehensive Physics : **The module includes all major UQFF and Standard Model terms relevant for spiral galaxy and supernova gravity, such as base gravity, cosmological constant, quantum, EM, fluid, resonant, DM, spiral torque, supernova, and superconductivity corrections.
-        - **Specialized Terms : **Incorporates spiral torque(`T_spiral`) and supernova(`SN_term`) effects, which are important for galactic evolution and feedback.
-            - **Debugging Support : **The `printVariables()` method provides a snapshot of all current parameters, aiding validation and troubleshooting.
+        - **Specialized Terms : **Incorporates spiral torque(T_spiral) and supernova(SN_term) effects, which are important for galactic evolution and feedback.
+            - **Debugging Support : **The printVariables() method provides a snapshot of all current parameters, aiding validation and troubleshooting.
             - **Sample Usage Provided : **Example integration and compilation instructions are included, demonstrating how to update variables and see their effect.
 
             ** Weaknesses / Recommendations : **

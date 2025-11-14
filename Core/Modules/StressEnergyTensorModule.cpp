@@ -1,7 +1,12 @@
 // StressEnergyTensorModule.h
 // Modular C++ implementation of the Stress-Energy Tensor (T_s^{??}) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes T_s^{??} ?1.123e7 J/m� (diagonal scalar); perturbs A_?? = g_?? + ? T_s^{??} (~1.123e-15).
-// Pluggable: // // // #include "StressEnergyTensorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "StressEnergyTensorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // StressEnergyTensorModule mod; mod.computeA_mu_nu(); mod.updateVariable("rho_vac_A", new_value);
 // Variables in std::map; diagonal [tt, xx, yy, zz]; example for Sun at t_n=0.
 // Approximations: Diagonal T_s = T_s_base + ?_vac_A; ?=1e-22; g_??=[1,-1,-1,-1].

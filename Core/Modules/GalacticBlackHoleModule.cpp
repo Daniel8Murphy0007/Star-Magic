@@ -1,7 +1,12 @@
 // GalacticBlackHoleModule.h
 // Modular C++ implementation of the Mass of the Galactic Black Hole (M_bh) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes M_bh=8.15e36 kg ?4.1e6 M_sun; scales M_bh / d_g in Universal Buoyancy U_bi and Ug4.
-// Pluggable: // // // #include "GalacticBlackHoleModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "GalacticBlackHoleModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // GalacticBlackHoleModule mod; mod.computeU_b1(); mod.updateVariable("M_bh", new_value);
 // Variables in std::map; example for Sun at t=0, t_n=0.
 // Approximations: cos(? t_n)=1; (1 + ?_sw ?_vac,sw)?1; ?=0.001 s^-1; f_feedback=0.1.
@@ -305,23 +310,24 @@ void GalacticBlackHoleModule::printVariables()
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-GalacticBlackHoleModule Evaluation
+// GalacticBlackHoleModule Evaluation
 
-Strengths :
--Modular and pluggable design; can be included and instantiated easily in other projects.
-- Dynamic variable management using std::map allows runtime updates, additions, and removals.
-- Core computation methods(computeM_bh, computeM_bhInMsun, computeMbhOverDg, computeU_b1, computeU_g4) are clear, concise, and variable - driven.
-- Output and debugging functions(printVariables, getEquationText) provide transparency and aid validation.
-- Well - documented physical meaning and example calculations in comments and equation text.
-- Approximations and physical context are clearly stated, aiding scientific understanding.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
-- Minimal error handling for missing variables, invalid indices, or division by zero; add validation for robustness.
-- Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
-- For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
-- Expand documentation for function purposes and expected input / output.
-
-Summary:
-The code is well - structured, clear, and suitable for scientific prototyping and educational use in galactic black hole mass modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular and pluggable design; can be included and instantiated easily in other projects.
+// - Dynamic variable management using std::map allows runtime updates, additions, and removals.
+// - Core computation methods(computeM_bh, computeM_bhInMsun, computeMbhOverDg, computeU_b1, computeU_g4) are clear, concise, and variable - driven.
+// - Output and debugging functions(printVariables, getEquationText) provide transparency and aid validation.
+// - Well - documented physical meaning and example calculations in comments and equation text.
+// - Approximations and physical context are clearly stated, aiding scientific understanding.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
+// - Minimal error handling for missing variables, invalid indices, or division by zero; add validation for robustness.
+// - Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
+// - For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
+// - Expand documentation for function purposes and expected input / output.
+//
+// Summary:
+// The code is well - structured, clear, and suitable for scientific prototyping and educational use in galactic black hole mass modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+// */

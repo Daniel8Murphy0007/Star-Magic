@@ -1,7 +1,12 @@
 // ScmPenetrationModule.h
 // Modular C++ implementation of the [SCm] Penetration Factor (P_SCm) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes P_SCm ?1 (unitless for Sun, ~1e-3 for planets); scales P_SCm in Universal Magnetism U_m term.
-// Pluggable: // // // #include "ScmPenetrationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "ScmPenetrationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // ScmPenetrationModule mod; mod.computeUmContribution(0.0); mod.updateVariable("P_SCm", new_value);
 // Variables in std::map; example for Sun at t=0, t_n=0; full penetration for plasma cores.
 // Approximations: 1 - e^{-? t cos(? t_n)}=0 at t=0; ?_hat_j=1; ?_j / r_j=2.26e10 T m�.

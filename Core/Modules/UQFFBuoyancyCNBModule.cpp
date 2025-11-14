@@ -1,8 +1,14 @@
-﻿
+
 // UQFFBuoyancyCNBModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Buoyancy Equations across J1610+1811, PLCK G287.0+32.9, PSZ2 G181.06+48.47, ASKAP J1832-0911, Sonification Collection, Centaurus A with CNB integration.
 // This module can be plugged into a base program (e.g., 'uqff_buoyancy_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: #include "UQFFBuoyancyCNBModule.h"
+// Usage in base: #define _USE_MATH_DEFINES
+#define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "UQFFBuoyancyCNBModule.h"
 // UQFFBuoyancyCNBModule mod; mod.computeFBi(system); mod.updateVariable("F_rel", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino (CNB), Sweet vac, Kozima drop.
@@ -169,6 +175,10 @@ public:
     cdouble computeSuperconductive(const std::string& system, double t);
     double computeCompressedG(const std::string& system, double t);  // g(r,t)
 
+    // Enhanced CNB-specific computations
+    cdouble computeUb1_CNB(const std::string& system);
+    cdouble computeUi_CNB(double t, const std::string& system);
+
     // Output descriptive text of the equation
     std::string getEquationText(const std::string& system);
 
@@ -179,7 +189,7 @@ public:
 #endif // UQFF_BUOYANCY_CNB_MODULE_H
 
 // UQFFBuoyancyCNBModule.cpp
-#include "UQFFBuoyancyCNBModule.h"
+// #include "UQFFBuoyancyCNBModule.h"
 #include <complex>
 
 // Constructor: Set all variables with multi-system defaults
@@ -189,29 +199,28 @@ UQFFBuoyancyCNBModule::UQFFBuoyancyCNBModule() {
         learningRate = 0.001;
         metadata["enhanced"] = "true";
         metadata["version"] = "2.0-Enhanced";
-
-    double pi_val = 3.141592653589793;
+    // double M_PI already defined in header
 
     // Base constants (universal)
     variables["G"] = {6.6743e-11, 0.0}; // Gravitational constant
     variables["c"] = {3e8, 0.0};
     variables["hbar"] = {1.0546e-34, 0.0};
     variables["q"] = {1.6e-19, 0.0};
-    variables["pi"] = {pi_val, 0.0};
+    variables["pi"] = {M_PI, 0.0};
     variables["m_e"] = {9.11e-31, 0.0};
     variables["mu_B"] = {9.274e-24, 0.0};
     variables["g_Lande"] = {2.0, 0.0};
     variables["k_B"] = {1.38e-23, 0.0};
-    variables["mu0"] = {4 * pi_val * 1e-7, 0.0};
+    variables["mu0"] = {4 * M_PI * 1e-7, 0.0};
     variables["epsilon0"] = {8.85e-12, 0.0}; // For quadratic terms
 
     // Shared params from document
     variables["F_rel"] = {4.30e33, 0.0};  // Relativistic coherence from LEP 1998
     variables["F0"] = {1.83e71, 0.0};
     variables["V"] = {1e-3, 0.0};  // Default particle velocity
-    variables["theta"] = {pi_val / 4, 0.0};  // 45 deg
-    variables["phi"] = {pi_val / 4, 0.0};
-    variables["omega_act"] = {2 * pi_val * 300, 0.0};
+    variables["theta"] = {M_PI / 4, 0.0};  // 45 deg
+    variables["phi"] = {M_PI / 4, 0.0};
+    variables["omega_act"] = {2 * M_PI * 300, 0.0};
     variables["k_act"] = {1e-6, 0.0};
     variables["k_DE"] = {1e-30, 0.0};
     variables["k_neutron"] = {1e10, 0.0};
@@ -220,7 +229,7 @@ UQFFBuoyancyCNBModule::UQFFBuoyancyCNBModule() {
     variables["k_neutrino"] = {1e-10, 0.0};  // For CNB
     variables["k_Sweet"] = {1e-25, 0.0};
     variables["k_Kozima"] = {1e-18, 0.0};
-    variables["omega_0_LENR"] = {2 * pi_val * 1.25e12, 0.0};  // LENR resonance freq 1.2-1.3 THz
+    variables["omega_0_LENR"] = {2 * M_PI * 1.25e12, 0.0};  // LENR resonance freq 1.2-1.3 THz
     variables["k_LENR"] = {1e-10, 0.0};
     variables["rho_vac_UA"] = {7.09e-36, 0.0};  // Vacuum energy density
     variables["sigma_n"] = {1e-4, 0.0};  // Scaled for astrophysical densities
@@ -247,7 +256,7 @@ UQFFBuoyancyCNBModule::UQFFBuoyancyCNBModule() {
 // Set system-specific parameters
 void UQFFBuoyancyCNBModule::setSystemParams(const std::string& system)
 {
-    double pi_val = variables["pi"].real();
+    double pi_value = variables["pi"].real();  // M_PI is a macro
     if (system == "J1610+1811") {
         this->variables["M"] = {2.785e30, 0.0};
         this->variables["r"] = {3.09e15, 0.0};
@@ -257,7 +266,7 @@ void UQFFBuoyancyCNBModule::setSystemParams(const std::string& system)
         this->variables["omega0"] = {1e-12, 0.0};
         this->variables["Mach"] = {1.0, 0.0};
         this->variables["C"] = {1.0, 0.0};
-        this->variables["theta"] = {pi_val / 4, 0.0};
+        this->variables["theta"] = {M_PI / 4, 0.0};
         this->variables["t"] = {3.156e10, 0.0};
     } else if (system == "PLCK_G287.0+32.9") {
         this->variables["M"] = {1.989e44, 0.0};
@@ -268,7 +277,7 @@ void UQFFBuoyancyCNBModule::setSystemParams(const std::string& system)
         this->variables["omega0"] = {1e-15, 0.0};
         this->variables["Mach"] = {1.5, 0.0};
         this->variables["C"] = {1.2, 0.0};
-        this->variables["theta"] = {pi_val / 4, 0.0};
+        this->variables["theta"] = {M_PI / 4, 0.0};
         this->variables["t"] = {1.42e17, 0.0};
     } else if (system == "PSZ2_G181.06+48.47") {
         this->variables["M"] = {1.989e44, 0.0};
@@ -279,7 +288,7 @@ void UQFFBuoyancyCNBModule::setSystemParams(const std::string& system)
         this->variables["omega0"] = {1e-15, 0.0};
         this->variables["Mach"] = {1.5, 0.0};
         this->variables["C"] = {1.2, 0.0};
-        this->variables["theta"] = {pi_val / 4, 0.0};
+        this->variables["theta"] = {M_PI / 4, 0.0};
         this->variables["t"] = {2.36e17, 0.0};
     } else if (system == "ASKAP_J1832-0911") {
         this->variables["M"] = {2.785e30, 0.0};
@@ -290,7 +299,7 @@ void UQFFBuoyancyCNBModule::setSystemParams(const std::string& system)
         this->variables["omega0"] = {1e-12, 0.0};
         this->variables["Mach"] = {1.0, 0.0};
         this->variables["C"] = {1.0, 0.0};
-        this->variables["theta"] = {pi_val / 4, 0.0};
+        this->variables["theta"] = {M_PI / 4, 0.0};
         this->variables["t"] = {3.156e10, 0.0};
     } else if (system == "SonificationCollection") {
         this->variables["M"] = {1.989e31, 0.0};
@@ -301,7 +310,7 @@ void UQFFBuoyancyCNBModule::setSystemParams(const std::string& system)
         this->variables["omega0"] = {1e-12, 0.0};
         this->variables["Mach"] = {1.0, 0.0};
         this->variables["C"] = {1.0, 0.0};
-        this->variables["theta"] = {pi_val / 4, 0.0};
+        this->variables["theta"] = {M_PI / 4, 0.0};
         this->variables["t"] = {3.156e14, 0.0};
     } else if (system == "CentaurusA") {
         this->variables["M"] = {1.094e38, 0.0};
@@ -312,7 +321,7 @@ void UQFFBuoyancyCNBModule::setSystemParams(const std::string& system)
         this->variables["omega0"] = {1e-15, 0.0};
         this->variables["Mach"] = {1.5, 0.0};
         this->variables["C"] = {1.2, 0.0};
-        this->variables["theta"] = {pi_val / 4, 0.0};
+        this->variables["theta"] = {M_PI / 4, 0.0};
         this->variables["t"] = {3.472e14, 0.0};
     }
 }
@@ -393,7 +402,7 @@ void UQFFBuoyancyCNBModule::printVariables() {
 // Compute integrand for F_U_Bi_i
 cdouble UQFFBuoyancyCNBModule::computeIntegrand(double t, const std::string& system) {
     setSystemParams(system);
-    double pi_val = variables["pi"].real();
+    double pi_value = variables["pi"].real();  // M_PI is a macro
     double sin_theta = sin(variables["theta"].real());
     double cos_theta = cos(variables["theta"].real());
     cdouble dpm_res = computeDPM_resonance(system);
@@ -432,10 +441,10 @@ cdouble UQFFBuoyancyCNBModule::computeX2(const std::string& system) {
     double r2 = r_real * r_real;
     double t_val = variables["T"].real();
     double m = variables["M"].real();
-    double pi_val = variables["pi"].real();
+    double pi_value = variables["pi"].real();  // M_PI is a macro
     // a terms from parsed document formula
     double term1_num = variables["a_eps_coeff"].real() * variables["q"].real();
-    double term1_denom = 4.0 * pi_val * variables["epsilon0"].real() * r2 * t_val;
+    double term1_denom = 4.0 * M_PI * variables["epsilon0"].real() * r2 * t_val;
     double term1 = term1_num / term1_denom;
     double term2 = variables["G"].real() * m / r2;
     double term3 = pow(variables["c"].real(), 4.0) * variables["k_10_13"].real() / r2 * variables["DPM_light"].real();
@@ -769,9 +778,9 @@ void SurfaceMagneticFieldModule::adaptiveUpdate(double dt, const std::string& fe
     variables["neutrino_flux"] *= (1.0 + 0.001 * std::cos(dt / 1e10));
     
     recordHistory("adaptive_time", dt);
-    std::cout << "CNB magnetic adaptive update: B_ref=" << variables["B_ref"] 
- * Enhanced: November 04, 2025 - Added self-expanding capabilities
+    std::cout << "CNB magnetic adaptive update: B_ref=" << variables["B_ref"] 
               << ", CNB_T=" << variables["CNB_temperature"] << std::endl;
+    // Enhanced: November 04, 2025 - Added self-expanding capabilities
 }
 
 // Scale to CNB observational data

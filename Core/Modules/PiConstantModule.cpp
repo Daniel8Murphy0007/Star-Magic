@@ -1,7 +1,13 @@
 // PiConstantModule.h
 // Modular C++ implementation of the Mathematical Constant Pi (?) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ? ?3.14159 (unitless) and its role in oscillatory terms like cos(? t_n), sin(?_c t), with ?_c=2? / period.
-// Pluggable: // // // #include "PiConstantModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "PiConstantModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // PiConstantModule mod; mod.computeCosPiTn(0.0); mod.updateVariable("t_n", new_value);
 // Variables in std::map; examples for U_m ?_j and U_g1 cos(? t_n) at t=0, t_n=0.
 // Approximations: ?=3.141592653589793; sin(?_c * 0)=0; cos(? * 0)=1.
@@ -155,7 +161,8 @@ public:
 #endif // PI_CONSTANT_MODULE_H
 
 // PiConstantModule.cpp
-// // // #include "PiConstantModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// // // #define _USE_MATH_DEFINES
+// #include "PiConstantModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 
 // Constructor: Set framework defaults
 PiConstantModule::PiConstantModule()
@@ -274,11 +281,12 @@ void PiConstantModule::printVariables()
 }
 
 // Example usage in base program (snippet)
-// // // // #include "PiConstantModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// // // // #define _USE_MATH_DEFINES
+// #include "PiConstantModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // int main() {
 //     PiConstantModule mod;
-//     double pi_val = mod.computePi();
-//     std::cout << "? ? " << pi_val << std::endl;
+//     double M_PI = mod.computePi();
+//     std::cout << "? ? " << M_PI << std::endl;
 //     double mu = mod.computeMuJExample(0.0);
 //     std::cout << "?_j (t=0) = " << mu << " T�m^3\n";
 //     std::cout << mod.getEquationText() << std::endl;
@@ -291,23 +299,24 @@ void PiConstantModule::printVariables()
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-PiConstantModule Evaluation
+// PiConstantModule Evaluation
 
-Strengths :
--Modular and pluggable design; can be included and instantiated easily in other projects.
-- Dynamic variable management using std::map allows runtime updates, additions, and removals.
-- Core computation methods(computePi, computeCosPiTn, computeSinOmegaCT, computeMuJExample, computeUg1CosTerm) are clear, concise, and variable - driven.
-- Handles updates to dependent variables(e.g., period, omega_c) automatically for consistency.
-- Output and debugging functions(printVariables, getEquationText) provide transparency and aid validation.
-- Well - documented physical meaning and example calculations in comments and equation text.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
-- Minimal error handling for missing variables, invalid input, or division by zero; add validation for robustness.
-- Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
-- For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
-- Expand documentation for function purposes and expected input / output.
-
-Summary:
-The code is well - structured, clear, and suitable for scientific prototyping and educational use in mathematical constant and oscillatory modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular and pluggable design; can be included and instantiated easily in other projects.
+// - Dynamic variable management using std::map allows runtime updates, additions, and removals.
+// - Core computation methods(computePi, computeCosPiTn, computeSinOmegaCT, computeMuJExample, computeUg1CosTerm) are clear, concise, and variable - driven.
+// - Handles updates to dependent variables(e.g., period, omega_c) automatically for consistency.
+// - Output and debugging functions(printVariables, getEquationText) provide transparency and aid validation.
+// - Well - documented physical meaning and example calculations in comments and equation text.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
+// - Minimal error handling for missing variables, invalid input, or division by zero; add validation for robustness.
+// - Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
+// - For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
+// - Expand documentation for function purposes and expected input / output.
+//
+// Summary:
+// The code is well - structured, clear, and suitable for scientific prototyping and educational use in mathematical constant and oscillatory modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+// */

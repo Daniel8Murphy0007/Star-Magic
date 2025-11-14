@@ -1,7 +1,12 @@
 // StellarMassModule.h
 // Modular C++ implementation of the Stellar/Planetary Mass (M_s) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes M_s=1.989e30 kg (1 M_sun for Sun); scales M_s / r^2 in Universal Gravity U_g1 and U_g2 terms.
-// Pluggable: // // // #include "StellarMassModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "StellarMassModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // StellarMassModule mod; mod.computeU_g2(1.496e13); mod.updateVariable("M_s", new_value);
 // Variables in std::map; example for Sun at r=1.496e13 m; U_g2 ?1.18e53 J/m�.
 // Approximations: S(r - R_b)=1; (1 + ?_sw v_sw)=5001; H_SCm=1; E_react=1e46.

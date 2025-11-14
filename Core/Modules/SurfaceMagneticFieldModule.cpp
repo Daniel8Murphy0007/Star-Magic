@@ -1,7 +1,12 @@
 // SurfaceMagneticFieldModule.h
 // Modular C++ implementation of the Surface Magnetic Field (B_s) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes B_s range [1e-4, 0.4] T for Sun; influences B_j in U_g3 magnetic strings (scaled by B_s / B_ref).
-// Pluggable: // // // #include "SurfaceMagneticFieldModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "SurfaceMagneticFieldModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // SurfaceMagneticFieldModule mod; mod.computeU_g3_example(0.0); mod.updateVariable("B_s_min", new_value);
 // Variables in std::map; example for Sun at t=0; quiet Sun B_s=1e-4 T ? U_g3?4.5e45 J/m�.
 // Approximations: B_ref=0.4 T (max sunspot); cos(?_s t ?)=1; P_core=1; E_react=1e46.

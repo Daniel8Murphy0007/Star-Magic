@@ -1,7 +1,12 @@
 // MagneticMomentModule.h
 // Modular C++ implementation of the Magnetic Moment of the j-th String (?_j) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?_j = (10^3 + 0.4 sin(?_c t)) * 3.38e20 T�m^3; scales ?_j / r_j in Universal Magnetism U_m and Ug3.
-// Pluggable: // // // #include "MagneticMomentModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "MagneticMomentModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // MagneticMomentModule mod; mod.computeMu_j(0.0); mod.updateVariable("base_mu", new_value);
 // Variables in std::map; j-indexed; example for j=1 at t=0.
 // Approximations: ?_c=2.5e-6 rad/s; at t=0, sin=0, ?_j?3.38e23 T�m^3 (adjusted for example consistency).
@@ -301,23 +306,24 @@ void MagneticMomentModule::printMomentContributions(int j, double t)
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-MagneticMomentModule Evaluation
+// MagneticMomentModule Evaluation
 
-Strengths :
--Modular and pluggable design; can be included and instantiated easily in other projects.
-- Dynamic variable management using std::map allows runtime updates, additions, and removals.
-- Core computation methods(computeMu_j, computeB_j, computeUmContrib, computeUg3Contrib) are clear, concise, and variable - driven.
-- Output and debugging functions(printVariables, printMomentContributions, getEquationText) provide transparency and aid validation.
-- Well - documented physical meaning and example calculations in comments and equation text.
-- Time - dependent magnetic moment(?_j) and field(B_j) allow for cyclic / physical modeling.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
-- Minimal error handling for missing variables, invalid indices, or division by zero; add validation for robustness.
-- Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
-- For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
-- Expand documentation for function purposes and expected input / output.
-
-Summary:
-The code is well - structured, clear, and suitable for scientific prototyping and educational use in magnetic moment modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular and pluggable design; can be included and instantiated easily in other projects.
+// - Dynamic variable management using std::map allows runtime updates, additions, and removals.
+// - Core computation methods(computeMu_j, computeB_j, computeUmContrib, computeUg3Contrib) are clear, concise, and variable - driven.
+// - Output and debugging functions(printVariables, printMomentContributions, getEquationText) provide transparency and aid validation.
+// - Well - documented physical meaning and example calculations in comments and equation text.
+// - Time - dependent magnetic moment(?_j) and field(B_j) allow for cyclic / physical modeling.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
+// - Minimal error handling for missing variables, invalid indices, or division by zero; add validation for robustness.
+// - Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
+// - For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
+// - Expand documentation for function purposes and expected input / output.
+//
+// Summary:
+// The code is well - structured, clear, and suitable for scientific prototyping and educational use in magnetic moment modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+// */

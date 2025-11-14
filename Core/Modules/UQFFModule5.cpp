@@ -1,5 +1,10 @@
 // CelestialBody.h
 
+#define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 #include <string>
 #include <vector>
 #include <map>
@@ -10,6 +15,9 @@
 #include <fstream>
 #include <algorithm>
 #include <numeric>
+#include <complex>
+
+using cdouble = std::complex<double>;
 
 // ============================================================================
 // Structure Definitions (moved early to resolve forward references)
@@ -839,7 +847,7 @@ void FluidSolver::diffuse(int b, std::vector<double> &x, std::vector<double> &x0
             {
                 x[IX(i, j)] = (x0[IX(i, j)] + a * (x[IX(i - 1, j)] + x[IX(i + 1, j)] +
                                                    x[IX(i, j - 1)] + x[IX(i, j + 1)])) /
-                              (1 + 4 * a);
+                              (1.0 + 4.0*a);  // All vectors are double, not complex
             }
         }
         set_bnd(b, x);

@@ -1,7 +1,12 @@
 // OrionUQFFModule.h
 // Modular C++ implementation of the full Master Universal Gravity Equation (MUGE & UQFF & SM Integration) for Orion Nebula Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: // // // #include "OrionUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Usage in base: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "OrionUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // OrionUQFFModule mod; mod.computeG(t); mod.updateVariable("M", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Nothing is negligible: Includes all terms - base gravity with M_sf(t), Ug1-Ug4 (incl. Ug2=v_exp^2/r), cosmological Lambda, quantum integral, Lorentz q(v_exp x B) with vac ratio, fluid rho_fluid V g (V=1/rho for unit fix), resonant oscillatory (cos/exp with H-alpha params), DM/visible with perturbations (unit-fixed as G delta_M / r^2), stellar wind v_wind^2 (1+t/t_age), radiation pressure P_rad = L_Trap/(4 pi r^2 c m_H) (repulsive).
@@ -464,10 +469,10 @@ void OrionUQFFModule::printVariables()
 /*
 // Evaluation of OrionUQFFModule (MUGE & UQFF & Standard Model Integration for Orion Nebula Evolution)
 
-**Strengths : **-**Dynamic &Extensible : **All model parameters stored in `std::map<std::string, double> variables`, enabling runtime updates, additions, and removals.Methods like `updateVariable` support flexible modifications, with auto - dependencies(e.g., `V = 1 / ?_fluid`, `d? = 1e-5 ?`).- **Unit Consistency Improvements : **Adjusted `computeFluidTerm` (via `V = 1 / ?`) to yield acceleration(g_base); `computeDMTerm` fixed to `G (M pert)/r^2` for m/s�. Ensures physical validity while retaining all terms.
+**Strengths : **-**Dynamic &Extensible : **All model parameters stored in std::map<std::string, double> variables, enabling runtime updates, additions, and removals.Methods like updateVariable support flexible modifications, with auto - dependencies(e.g., V = 1 / ?_fluid, d? = 1e-5 ?).- **Unit Consistency Improvements : **Adjusted computeFluidTerm (via V = 1 / ?) to yield acceleration(g_base); computeDMTerm fixed to G (M pert)/r^2 for m/s�. Ensures physical validity while retaining all terms.
 - **Comprehensive Physics:** Incorporates updated MUGE terms (f_TRZ, vac ratio~11, Ug2=v_exp�/r, P_rad repulsive, W_stellar accel), aligned with Hubble/ALMA data (SFR=0.1 Msun/yr, z=0.0004, H0=70). Balances attractive (g_base, Ug1) and repulsive (P_rad, em_term) components.
 - **Immediate Effect & Debugging:** Computations use current map values;
-`printVariables()` aids validation.Example shows integration with t = 300k yr.- **Advancement : **Encodes May 2025 doc into Oct 2025 template, adding P_rad / W_stellar accel fixes, H - alpha resonant params, no DM halo.Advances UQFF by situating SM gravity(g_base)
+printVariables() aids validation.Example shows integration with t = 300k yr.- **Advancement : **Encodes May 2025 doc into Oct 2025 template, adding P_rad / W_stellar accel fixes, H - alpha resonant params, no DM halo.Advances UQFF by situating SM gravity(g_base)
 within dual - nature framework, explaining nebular expansion.
 
                                         **Weaknesses /

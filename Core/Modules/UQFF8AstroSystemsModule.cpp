@@ -11,6 +11,11 @@
 // LENR dominant due to low ω_0; x2 from quadratic solver approx; F_rel from LEP 1998.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 23, 2025.
 
+#define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 #include <map>
 #include <string>
 #include <cmath>
@@ -20,10 +25,6 @@
 #include <sstream>
 #include <vector>
 #include <fstream>
-
-#ifndef M_PI
-#define M_PI 3.141592653589793
-#endif
 
 using cdouble = std::complex<double>;
 

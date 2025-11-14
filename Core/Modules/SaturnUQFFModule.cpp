@@ -1,7 +1,12 @@
 // SaturnUQFFModule.h
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF) for Saturn Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: // // // #include "SaturnUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Usage in base: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "SaturnUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // SaturnUQFFModule mod; mod.computeG(t); mod.updateVariable("M", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Nothing is negligible: Includes all terms - base gravity (Sun + Saturn), Ug1-Ug4 (gravitational subterms), cosmological Lambda,
@@ -438,11 +443,11 @@ void SaturnUQFFModule::printVariables()
 // Evaluation of SaturnUQFFModule (Master Universal Gravity Equation for Saturn)
 
 **Strengths:**
--**Dynamic & Extensible : **All model parameters are stored in a `std: : map<std::string, double> variables`, allowing runtime updates, additions, and removals.The methods `updateVariable`, `addToVariable`, and `subtractFromVariable` enable flexible modification of any parameter.
-- **Automatic Dependency Updates : **When key variables like `"M"` or `"Delta_x"` are updated, dependent variables(`"M_visible"`, `"M_DM"`, `"Delta_p"`) are recalculated automatically, ensuring consistency.
-    - **Immediate Effect : **All computations(e.g., `computeG`) use the current values in the map, so any changes are immediately reflected in results.
+-**Dynamic & Extensible : **All model parameters are stored in a std: : map<std::string, double> variables, allowing runtime updates, additions, and removals.The methods updateVariable, addToVariable, and subtractFromVariable enable flexible modification of any parameter.
+- **Automatic Dependency Updates : **When key variables like "M" or "Delta_x" are updated, dependent variables("M_visible", "M_DM", "Delta_p") are recalculated automatically, ensuring consistency.
+    - **Immediate Effect : **All computations(e.g., computeG) use the current values in the map, so any changes are immediately reflected in results.
         - **Comprehensive Physics : **The module includes all major terms relevant for planetary gravity, including base gravity(Sun + Saturn), cosmological, quantum, EM, fluid, resonant, DM, ring tidal, wind, and superconductivity corrections.
-        - **Debugging Support : **The `printVariables()` method provides a snapshot of all current parameters, aiding validation and troubleshooting.
+        - **Debugging Support : **The printVariables() method provides a snapshot of all current parameters, aiding validation and troubleshooting.
     - **Sample Usage Provided : **Example integration and compilation instructions are included, demonstrating how to update variables and see their effect.
 
     ** Weaknesses / Recommendations : **

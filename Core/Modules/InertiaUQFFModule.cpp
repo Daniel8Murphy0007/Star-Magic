@@ -1,7 +1,12 @@
 // InertiaUQFFModule.h
 // Modular C++ implementation of UQFF for Inertia Papers (43.d Red Dwarf Compression_D): Quantum Waves (eq1-2), Inertial Operator (eq3-4), Universal Inertia Ui (eq5), Bosonic Energy (eq6), Magnetic H (eq7), integrated with Um/Ug3.
 // Computes ? wave, ?_twist, �?, B_pseudo, Ui, E_boson, H_mag; solves for E_wave scaled by Higgs freq/Earth precession.
-// Plug into base (e.g., 'inertia_uqff_sim.cpp') via #include "InertiaUQFFModule.h".
+// Plug into base (e.g., 'inertia_uqff_sim.cpp') via #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "InertiaUQFFModule.h"
 // Usage: InertiaUQFFModule mod; mod.setSystem(SystemType::QUANTUM_WAVES); double psi = mod.computeWaveFunction(r, t); mod.computeEwave();
 // Variables in std::map; dynamic for ?_I, ?_vac, etc. Supports three-leg proofset (energy cons, vac density, quantum scaling).
 // Approximations: Y_00=1/sqrt(4?); non-local exp(-?|r-r0|); F_RZ=0.01; n=1-4 for hydrogen levels; Pi from prior.

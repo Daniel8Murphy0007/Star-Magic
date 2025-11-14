@@ -1,4 +1,4 @@
-﻿// UQFFBuoyancyModule157.h
+// UQFFBuoyancyModule157.h
 // UQFF Buoyancy for Observational Systems: M104, NGC 4839, Chandra/Webb, NGC 346, NGC 1672
 // Copyright - Daniel T. Murphy, analyzed Oct 22, 2025.
 
@@ -6,12 +6,13 @@
 #define UQFF_BUOYANCY_MODULE_H
 
 #define _USE_MATH_DEFINES
-#include <map>
-#include <string>
 #include <cmath>
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif
+#include <map>
+#include <string>
+#include <cmath>
 #include <iostream>
 
 #include <map>
@@ -747,18 +748,18 @@ void SurfaceMagneticFieldModule::importState(const std::string &filename)
 std::string SurfaceMagneticFieldModule::getEquationText()
 {
     return "Observational-Enhanced Magnetic Field Equations:\n"
-           "B_j  (B_ref + 0.5 sin(ω_s t) * T_thermal) * (B_s / B_ref) T\n"
-           "U_g3 = k_3 *  B_j * cos(ω_s t π) * P_core * E_react * (1 + Obs_coupling)\n"
-           "Obs_coupling = κ_obs * B_field * L * (ν/ν_0)^α * (S/S_0)\n"
+           "B_j  (B_ref + 0.5 sin(?_s t) * T_thermal) * (B_s / B_ref) T\n"
+           "U_g3 = k_3 *  B_j * cos(?_s t p) * P_core * E_react * (1 + Obs_coupling)\n"
+           "Obs_coupling = ?_obs * B_field * L * (?/?_0)^a * (S/S_0)\n"
            "Where:\n"
            "- B_s = [5e-7, 1.5] T (observational system range)\n"
            "- S = " +
            std::to_string(variables["flux_density"]) + " W m Hz (flux density)\n"
-                                                       "- ν = " +
+                                                       "- ? = " +
            std::to_string(variables["observation_frequency"]) + " Hz (observation frequency)\n"
-                                                                "- α = " +
+                                                                "- a = " +
            std::to_string(variables["spectral_index"]) + " (spectral index)\n"
-                                                         "- κ_obs = " +
+                                                         "- ?_obs = " +
            std::to_string(variables["luminosity_coupling"]) + " (observational coupling)\n"
                                                               "Observational Systems: M104 (Sombrero), NGC 4839, Chandra/Webb,\n"
                                                               "NGC 346, NGC 1672\n"

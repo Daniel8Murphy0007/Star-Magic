@@ -1,7 +1,12 @@
 // AetherVacuumDensityModule.h
 // Modular C++ implementation of the Vacuum Energy Density of Aether (?_vac,A) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?_vac,A = 1e-23 J/m�; contributes to T_s^{??} ?1.123e7 J/m�, perturbs A_?? = g_?? + ? T_s^{??} (~1.123e-15).
-// Pluggable: // // // #include "AetherVacuumDensityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "AetherVacuumDensityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // AetherVacuumDensityModule mod; mod.computeA_mu_nu(); mod.updateVariable("rho_vac_A", new_value);
 // Variables in std::map; diagonal [tt, xx, yy, zz]; example for Sun at t_n=0.
 // Approximations: T_s = T_s_base + ?_vac,A (but doc value small; use 1.11e7 for consistency); ?=1e-22; g_??=[1,-1,-1,-1].

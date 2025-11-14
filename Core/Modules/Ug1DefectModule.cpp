@@ -1,7 +1,12 @@
 // Ug1DefectModule.h
 // Modular C++ implementation of the Ug1 Defect Factor (?_def) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?_def = 0.01 * sin(0.001 t) (unitless); scales (1 + ?_def) in Universal Gravity U_g1 term.
-// Pluggable: // // // #include "Ug1DefectModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "Ug1DefectModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // Ug1DefectModule mod; mod.computeU_g1(0.0, 1.496e11); mod.updateVariable("amplitude", new_value);
 // Variables in std::map; example for Sun at t=0 (?_def=0, U_g1?4.51e31 J/m�); t=1570.8 days: +1%.
 // Approximations: ?=0.001 day?�; cos(? t_n)=1 at t_n=0; ?_s=3.38e23 T�m�; ?(M_s/r)?M_s/r�=8.89e7 m/s�.
@@ -13,10 +18,6 @@
 #include <map>
 #include <string>
 #include <cmath>
-#ifndef M_PI
-#define M_PI 3.14159265358979323846
-#endif
-#define _USE_MATH_DEFINES
 #include <iostream>
 #include <iomanip>
 

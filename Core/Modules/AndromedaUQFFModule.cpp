@@ -1,7 +1,12 @@
 // AndromedaUQFFModule.h
 // Modular C++ implementation of the Master Universal Gravity Equation (UQFF) for Andromeda Galaxy Evolution.
 // This module can be plugged into a base program by including this header and linking the .cpp.
-// Usage: // // // #include "AndromedaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Usage: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "AndromedaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // AndromedaUQFFModule mod; mod.computeG(t); mod.updateVariable("M", new_value);
 // Variables stored in std::map for dynamic updates.
 // Includes base gravity with expansion and TRZ, BH term, dust friction a_dust, EM/Aether term.
@@ -322,26 +327,27 @@ void AndromedaUQFFModule::printEvolutionTable() {
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-AndromedaUQFFModule Evaluation
+// AndromedaUQFFModule Evaluation
 
-Strengths :
--Modular, extensible design for modeling Andromeda Galaxy gravity, including base gravity, expansion, SMBH term, dust friction, and EM / Aether effects.
-- Comprehensive physics : gravity, cosmological expansion, SMBH, dust, electromagnetic, and vacuum energy terms.
-- Dynamic variable management via std::map enables runtime updates and system adaptation.
-- Clear separation of computation functions(e.g., H(z), dust, EM), aiding maintainability.
-- Andromeda - specific parameters are initialized for realistic simulation; supports easy modification.
-- Output functions for equation text, variable state, and evolution table support debugging and documentation.
-- Approximations and scaling factors are documented, supporting scientific reproducibility.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
-- Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
-- Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
-- Unit consistency should be checked and documented for all physical quantities.
-- For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
-- std::map is flexible but may be less efficient than structured types for very large models.
-- Expand documentation for function purposes and physical meaning.
-
-Summary:
-The code is well - structured, flexible, and suitable for scientific prototyping and educational use in galactic gravity modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular, extensible design for modeling Andromeda Galaxy gravity, including base gravity, expansion, SMBH term, dust friction, and EM / Aether effects.
+// - Comprehensive physics : gravity, cosmological expansion, SMBH, dust, electromagnetic, and vacuum energy terms.
+// - Dynamic variable management via std::map enables runtime updates and system adaptation.
+// - Clear separation of computation functions(e.g., H(z), dust, EM), aiding maintainability.
+// - Andromeda - specific parameters are initialized for realistic simulation; supports easy modification.
+// - Output functions for equation text, variable state, and evolution table support debugging and documentation.
+// - Approximations and scaling factors are documented, supporting scientific reproducibility.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+// - Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
+// - Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
+// - Unit consistency should be checked and documented for all physical quantities.
+// - For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
+// - std::map is flexible but may be less efficient than structured types for very large models.
+// - Expand documentation for function purposes and physical meaning.
+//
+// Summary:
+// The code is well - structured, flexible, and suitable for scientific prototyping and educational use in galactic gravity modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+// */

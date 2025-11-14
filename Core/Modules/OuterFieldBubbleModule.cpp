@@ -1,7 +1,12 @@
 // OuterFieldBubbleModule.h
 // Modular C++ implementation of the Radius of the Outer Field Bubble (R_b) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes R_b=1.496e13 m (100 AU); defines S(r - R_b) step function in Universal Gravity U_g2 term.
-// Pluggable: // // // #include "OuterFieldBubbleModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "OuterFieldBubbleModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // OuterFieldBubbleModule mod; mod.computeU_g2(1.5e13); mod.updateVariable("R_b", new_value);
 // Variables in std::map; example for Sun at t=0; S=1 for r >= R_b, 0 otherwise.
 // Approximations: S step=1 at r=R_b; ?_sw v_sw=5001; E_react=1e46.
@@ -304,24 +309,25 @@ void OuterFieldBubbleModule::printVariables()
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-OuterFieldBubbleModule Evaluation
+// OuterFieldBubbleModule Evaluation
 
-Strengths :
--Modular and pluggable design; can be included and instantiated easily in other projects.
-- Dynamic variable management using std::map allows runtime updates, additions, and removals.
-- Core computation methods(computeR_b, computeR_bInAU, computeS_r_Rb, computeU_g2) are clear, concise, and variable - driven.
-- Automatic recalculation of derived variables(rho_sum, swirl_factor) when dependencies change.
-- Output and debugging functions(printVariables, getEquationText) provide transparency and aid validation.
-- Well - documented physical meaning and example calculations in comments and equation text.
-- Step function S(r - R_b) cleanly separates internal and external field regions.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
-- Minimal error handling for missing variables, invalid input, or division by zero; add validation for robustness.
-- Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
-- For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
-- Expand documentation for function purposes and expected input / output.
-
-Summary:
-The code is well - structured, clear, and suitable for scientific prototyping and educational use in outer field bubble modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular and pluggable design; can be included and instantiated easily in other projects.
+// - Dynamic variable management using std::map allows runtime updates, additions, and removals.
+// - Core computation methods(computeR_b, computeR_bInAU, computeS_r_Rb, computeU_g2) are clear, concise, and variable - driven.
+// - Automatic recalculation of derived variables(rho_sum, swirl_factor) when dependencies change.
+// - Output and debugging functions(printVariables, getEquationText) provide transparency and aid validation.
+// - Well - documented physical meaning and example calculations in comments and equation text.
+// - Step function S(r - R_b) cleanly separates internal and external field regions.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
+// - Minimal error handling for missing variables, invalid input, or division by zero; add validation for robustness.
+// - Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
+// - For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
+// - Expand documentation for function purposes and expected input / output.
+//
+// Summary:
+// The code is well - structured, clear, and suitable for scientific prototyping and educational use in outer field bubble modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+// */

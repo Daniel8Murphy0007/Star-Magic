@@ -1,7 +1,12 @@
 // UnifiedFieldModule.h
 // Modular C++ implementation of the Unified Field Strength (F_U) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes F_U as normalized vacuum energy density (J/m³) from Ug, Um, Ub, Ui, and Aether terms across 26 quantum levels.
-// Pluggable: // // // #include "UnifiedFieldModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "UnifiedFieldModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // UnifiedFieldModule mod; mod.computeFU(double t); mod.updateVariable("U_g1", new_value);
 // Variables in std::map; defaults for Sun at t=0 (level 13); normalization via coupling constants.
 // Approximations: Dominant Um ~2.28e65 J/m³; Aether small; cos(p t_n)=1 at t_n=0.
@@ -317,27 +322,28 @@ void UnifiedFieldModule::printComponentBreakdown(double t) {
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-UnifiedFieldModule Evaluation
+// UnifiedFieldModule Evaluation
 
-Strengths :
--Modular, extensible design for computing the unified field strength(F_U) in the UQFF framework, integrating gravity(Ug), magnetism(Um), buoyancy(Ub), inertia(Ui), and Aether terms.
-- Uses std::map for dynamic variable management, allowing runtime updates and easy extension.
-- Implements core physical concepts : summation of field components, normalization by vacuum energy densities, and quantum level scaling.
-- Approximations and physical meaning are well - documented in comments and equation text.
-- Output functions for variable state, component breakdown, and equation text support debugging and transparency.
-- Handles dynamic updates to variables and recalculates dependent terms as needed.
-- Example calculations and breakdown functions provide scientific context and validation.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
-- Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
-- Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
-- Unit consistency should be checked and documented for all physical quantities.
-- For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
-- std::map is flexible but may be less efficient than structured types for very large models.
-- Expand documentation for function purposes and physical meaning.
-- Consider implementing quantum level - dependent normalization for more accurate scaling.
-
-Summary:
-The code is well - structured, clear, and suitable for scientific prototyping and educational use in unified field modeling.It implements the UQFF unified field concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular, extensible design for computing the unified field strength(F_U) in the UQFF framework, integrating gravity(Ug), magnetism(Um), buoyancy(Ub), inertia(Ui), and Aether terms.
+// - Uses std::map for dynamic variable management, allowing runtime updates and easy extension.
+// - Implements core physical concepts : summation of field components, normalization by vacuum energy densities, and quantum level scaling.
+// - Approximations and physical meaning are well - documented in comments and equation text.
+// - Output functions for variable state, component breakdown, and equation text support debugging and transparency.
+// - Handles dynamic updates to variables and recalculates dependent terms as needed.
+// - Example calculations and breakdown functions provide scientific context and validation.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+// - Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
+// - Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
+// - Unit consistency should be checked and documented for all physical quantities.
+// - For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
+// - std::map is flexible but may be less efficient than structured types for very large models.
+// - Expand documentation for function purposes and physical meaning.
+// - Consider implementing quantum level - dependent normalization for more accurate scaling.
+//
+// Summary:
+// The code is well - structured, clear, and suitable for scientific prototyping and educational use in unified field modeling.It implements the UQFF unified field concept faithfully and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+// */

@@ -1,7 +1,12 @@
 // UQFFCompressedResonanceModule.h
 // Modular C++ implementation of Compressed and Resonance UQFF Equations for Multi-System Evolution (Young Stars Outflows, Eagle Nebula, Big Bang, M51, NGC 1316, V838 Mon, NGC 1300, Student's Guide).
 // Supports compressed g_UQFF(r,t) unified form; resonance mode adds oscillatory terms (cos/exp(i ? t)) for wave dynamics.
-// Usage: // // #include "UQFFCompressedResonanceModule.h"  // Commented - header not available  // Commented - header not available; UQFFCompressedResonanceModule mod; mod.setSystem("Eagle"); mod.setMode("resonance"); mod.computeG(t);
+// Usage: // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "UQFFCompressedResonanceModule.h"  // Commented - header not available  // Commented - header not available; UQFFCompressedResonanceModule mod; mod.setSystem("Eagle"); mod.setMode("resonance"); mod.computeG(t);
 // Variables in std::map; auto-loads params from DeepSearch (Hubble/JWST/CERN/high-energy labs).
 // Approximations: psi_int=1.0; H(t,z) standard; resonance A=1e-10, ?=1e15; Big Bang: r=c t, rho=rho_c.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
@@ -364,25 +369,26 @@ void UQFFCompressedResonanceModule::printVariables() {
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-UQFFCompressedResonanceModule Evaluation
+// UQFFCompressedResonanceModule Evaluation
 
-Strengths :
--Modular, extensible design for multi - system astrophysical modeling, supporting both compressed and resonance modes.
-- Comprehensive physics : gravity, cosmological expansion, magnetic fields, environmental effects, quantum, fluid, and dark matter terms.
-- Resonance mode adds oscillatory wave dynamics(cosine and complex exponential terms), broadening physical applicability.
-- Dynamic variable management via std::map enables runtime updates and system adaptation.
-- System - specific parameter loading via setSystem for easy adaptation to diverse scenarios(e.g., Eagle Nebula, Big Bang, M51, V838 Mon).
-- Output functions for equation text and variable state support debugging and documentation.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
-- Some calculations use placeholder values(e.g., computeUgSum, computeFenv); implement full physical models for accuracy.
-- Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
-- Unit consistency should be checked and documented for all physical quantities.
-- For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
-- std::map is flexible but may be less efficient than structured types for very large models.
-- Expand documentation for function purposes and physical meaning.
-
-Summary:
-The code is well - structured, flexible, and suitable for scientific prototyping and educational use in multi - system astrophysical modeling.It implements a broad set of physical effects and adapts to various scenarios, including resonance phenomena.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular, extensible design for multi - system astrophysical modeling, supporting both compressed and resonance modes.
+// - Comprehensive physics : gravity, cosmological expansion, magnetic fields, environmental effects, quantum, fluid, and dark matter terms.
+// - Resonance mode adds oscillatory wave dynamics(cosine and complex exponential terms), broadening physical applicability.
+// - Dynamic variable management via std::map enables runtime updates and system adaptation.
+// - System - specific parameter loading via setSystem for easy adaptation to diverse scenarios(e.g., Eagle Nebula, Big Bang, M51, V838 Mon).
+// - Output functions for equation text and variable state support debugging and documentation.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+// - Some calculations use placeholder values(e.g., computeUgSum, computeFenv); implement full physical models for accuracy.
+// - Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
+// - Unit consistency should be checked and documented for all physical quantities.
+// - For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
+// - std::map is flexible but may be less efficient than structured types for very large models.
+// - Expand documentation for function purposes and physical meaning.
+//
+// Summary:
+// The code is well - structured, flexible, and suitable for scientific prototyping and educational use in multi - system astrophysical modeling.It implements a broad set of physical effects and adapts to various scenarios, including resonance phenomena.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+// */

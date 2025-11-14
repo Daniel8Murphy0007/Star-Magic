@@ -1,7 +1,12 @@
 // InertiaCouplingModule.h
 // Modular C++ implementation of the Inertia Coupling Constants (?_i) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?_i=1.0 (unitless, uniform for i=1-4) and scales U_i in F_U: -?_i [?_i U_i E_react].
-// Pluggable: // // // #include "InertiaCouplingModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "InertiaCouplingModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // InertiaCouplingModule mod; mod.computeSumInertiaTerms(0.0); mod.updateVariable("rho_vac_SCm", new_value);
 // Variables in std::map; example for Sun at t=0, t_n=0; U_i ?1.38e-47 J/m�, contrib ? -0.138 J/m�.
 // Approximations: Uniform ?_i=1.0; cos(? t_n)=1; f_TRZ=0.1; ?_s=2.5e-6 rad/s; E_react=1e46.
@@ -288,22 +293,23 @@ void InertiaCouplingModule::printInertiaBreakdown(double t) {
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-InertiaCouplingModule Evaluation
+// InertiaCouplingModule Evaluation
 
-Strengths :
--Modular and pluggable design; can be included and instantiated easily in other projects.
-- Dynamic variable management using std::map allows runtime updates, additions, and removals.
-- Core computation methods(computeLambda_i, computeU_i, computeInertiaTerm, computeSumInertiaTerms) are clear, concise, and variable - driven.
-- Output and debugging functions(printVariables, printInertiaBreakdown, getEquationText) provide transparency and aid validation.
-- Well - documented physical meaning and example calculations in comments and equation text.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
-- Minimal error handling for missing variables, invalid indices, or division by zero; add validation for robustness.
-- Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
-- For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
-- Expand documentation for function purposes and expected input / output.
-
-Summary:
-The code is well - structured, clear, and suitable for scientific prototyping and educational use in inertia coupling modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular and pluggable design; can be included and instantiated easily in other projects.
+// - Dynamic variable management using std::map allows runtime updates, additions, and removals.
+// - Core computation methods(computeLambda_i, computeU_i, computeInertiaTerm, computeSumInertiaTerms) are clear, concise, and variable - driven.
+// - Output and debugging functions(printVariables, printInertiaBreakdown, getEquationText) provide transparency and aid validation.
+// - Well - documented physical meaning and example calculations in comments and equation text.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for greater flexibility.
+// - Minimal error handling for missing variables, invalid indices, or division by zero; add validation for robustness.
+// - Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
+// - For large - scale or performance - critical simulations, consider more efficient data structures than std::map.
+// - Expand documentation for function purposes and expected input / output.
+//
+// Summary:
+// The code is well - structured, clear, and suitable for scientific prototyping and educational use in inertia coupling modeling.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+// */

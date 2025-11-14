@@ -1,7 +1,12 @@
 // SolarCycleFrequencyModule.h
 // Modular C++ implementation of the Solar Cycle Frequency (?_c) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?_c = 2? / 3.96e8 s?� (~1.59e-8 rad/s, period ~12.55 years); used in sin(?_c t) for ?_j in U_m.
-// Pluggable: // // // #include "SolarCycleFrequencyModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "SolarCycleFrequencyModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // SolarCycleFrequencyModule mod; mod.computeMuJExample(0.0); mod.updateVariable("period", new_value);
 // Variables in std::map; example for Sun at t=0 (sin=0, ?_j=3.38e23 T�m�); t~1 year: slight increase.
 // Approximations: Period=3.96e8 s (~12.55 yr); base B_j=1e3 T.

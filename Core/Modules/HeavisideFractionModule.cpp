@@ -1,7 +1,12 @@
 // HeavisideFractionModule.h
 // Modular C++ implementation of the Heaviside Component Fraction (f_Heaviside) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes f_Heaviside=0.01 (unitless) and its scaling (1 + 10^13 * f_Heaviside) in Universal Magnetism U_m term.
-// Pluggable: // // // #include "HeavisideFractionModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "HeavisideFractionModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // HeavisideFractionModule mod; mod.computeUmContribution(0.0); mod.updateVariable("f_Heaviside", new_value);
 // Variables in std::map; example for Sun at t=0, t_n=0; amplifies by ~10^11.
 // Approximations: 1 - e^{-? t cos(? t_n)}=0 at t=0; ?_hat_j=1; P_SCm=1; f_quasi=0.01.
@@ -319,22 +324,23 @@ void HeavisideFractionModule::printUmComparison(int j, double t)
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-HeavisideFractionModule Evaluation
+// HeavisideFractionModule Evaluation
 
-Strengths :
--Dynamic variable management using std::map allows runtime updates, additions, and removals.
-- Extensible computation : core methods use variable names and indices, supporting easy logic extension.
-- Automatic dependency updates : changing f_Heaviside recalculates heaviside_factor for consistency.
-- Debugging and transparency : printVariables, printUmComparison, and getEquationText provide clear module state and calculation output.
-- Pluggable design : self - contained, supports multiple instances with independent variable sets.
-
-Weaknesses / Recommendations :
-    -Hardcoded constants : consider external configuration(e.g., JSON, XML) for greater flexibility.
-    - Minimal error handling : add validation for missing variables, division by zero, and invalid indices.
-    - Unit consistency : runtime checks or clearer documentation would help avoid confusion.
-    - Efficiency : for large models, consider alternatives to std::map for better performance.
-    - Documentation : expand function - level documentation for physical meaning and expected input / output.
-
-    Summary :
-    The code is well - structured, clear, and suitable for scientific prototyping and educational use.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Dynamic variable management using std::map allows runtime updates, additions, and removals.
+// - Extensible computation : core methods use variable names and indices, supporting easy logic extension.
+// - Automatic dependency updates : changing f_Heaviside recalculates heaviside_factor for consistency.
+// - Debugging and transparency : printVariables, printUmComparison, and getEquationText provide clear module state and calculation output.
+// - Pluggable design : self - contained, supports multiple instances with independent variable sets.
+//
+// Weaknesses / Recommendations :
+//     -Hardcoded constants : consider external configuration(e.g., JSON, XML) for greater flexibility.
+//     - Minimal error handling : add validation for missing variables, division by zero, and invalid indices.
+//     - Unit consistency : runtime checks or clearer documentation would help avoid confusion.
+//     - Efficiency : for large models, consider alternatives to std::map for better performance.
+//     - Documentation : expand function - level documentation for physical meaning and expected input / output.
+//
+//     Summary :
+//     The code is well - structured, clear, and suitable for scientific prototyping and educational use.It is dynamic and can be updated or expanded easily.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+// */

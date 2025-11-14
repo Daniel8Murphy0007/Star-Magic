@@ -35,13 +35,13 @@
 #define MAGNETAR_SGR1745_2900_H
 
 #define _USE_MATH_DEFINES
-#include <iostream>
 #include <cmath>
-#include <iomanip>
-
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif
+#include <iostream>
+#include <cmath>
+#include <iomanip>
 
 class MagnetarSGR1745_2900
 {

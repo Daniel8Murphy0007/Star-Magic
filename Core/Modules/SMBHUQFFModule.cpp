@@ -1,7 +1,12 @@
 // SMBHUQFFModule.h
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for SMBH Comparison to UQFF.
 // This module models SMBH dynamics in the M-? relation context, incorporating Ug1-Ug4, Ui, Um, pseudo-monopole shifts, reactor efficiency, and vacuum energy densities.
-// Usage: // // // #include "SMBHUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; SMBHUQFFModule mod; mod.computeG(t, sigma); mod.updateVariable("M_bh", new_value);
+// Usage: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "SMBHUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; SMBHUQFFModule mod; mod.computeG(t, sigma); mod.updateVariable("M_bh", new_value);
 // Variables in std::map for dynamic updates; supports ranges for M_bh, sigma; excludes SM illusions.
 // Approximations: cosmic_time approx; omega_s galactic scale; E_react exp decay; delta_n for states 1-26.
 // SMBH params: M_bh=1e11-1e14 Msun, sigma=100-1000 km/s, R_bulge=1 kpc, t=4.543e9 yr, z=0-6, etc.
@@ -345,25 +350,26 @@ void SMBHUQFFModule::printVariables() {
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
-SMBHUQFFModule Evaluation
+// SMBHUQFFModule Evaluation
 
-Strengths :
--Modular, extensible design for modeling SMBH dynamics in the M - ? relation context, including vacuum energy densities, pseudo - monopole shifts, reactor efficiency, and feedback.
-- Comprehensive physics : gravity, quantum, vacuum, feedback, and resonance terms; supports a wide range of SMBH masses and velocity dispersions.
-- Dynamic variable management via std::map enables runtime updates and system adaptation.
-- Clear separation of computation functions(e.g., cosmic time, omega_s, mu_j, E_react, Um, Ug1), aiding maintainability.
-- SMBH - specific parameters are initialized for realistic simulation; supports easy modification and range exploration.
-- Output functions for equation text and variable state support debugging and documentation.
-
-Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
-- Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
-- Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
-- Unit consistency should be checked and documented for all physical quantities.
-- For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
-- std::map is flexible but may be less efficient than structured types for very large models.
-- Expand documentation for function purposes and physical meaning.
-
-Summary:
-The code is well - structured, flexible, and suitable for scientific prototyping and educational use in SMBH and M - ? relation modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
-*/
+//
+// Strengths:
+// -Modular, extensible design for modeling SMBH dynamics in the M - ? relation context, including vacuum energy densities, pseudo - monopole shifts, reactor efficiency, and feedback.
+// - Comprehensive physics : gravity, quantum, vacuum, feedback, and resonance terms; supports a wide range of SMBH masses and velocity dispersions.
+// - Dynamic variable management via std::map enables runtime updates and system adaptation.
+// - Clear separation of computation functions(e.g., cosmic time, omega_s, mu_j, E_react, Um, Ug1), aiding maintainability.
+// - SMBH - specific parameters are initialized for realistic simulation; supports easy modification and range exploration.
+// - Output functions for equation text and variable state support debugging and documentation.
+//
+// Weaknesses / Recommendations:
+// -Many constants and parameters are hardcoded; consider external configuration for flexibility and scalability.
+// - Some calculations use magic numbers or lack explanatory comments; define named constants and clarify logic.
+// - Minimal error handling(e.g., division by zero, invalid variable names); add validation for robustness.
+// - Unit consistency should be checked and documented for all physical quantities.
+// - For large - scale or performance - critical simulations, optimize data structures and reduce redundant calculations.
+// - std::map is flexible but may be less efficient than structured types for very large models.
+// - Expand documentation for function purposes and physical meaning.
+//
+// Summary:
+// The code is well - structured, flexible, and suitable for scientific prototyping and educational use in SMBH and M - ? relation modeling.It implements a broad set of physical effects and adapts to various scenarios.For production or high - performance applications, address the recommendations for improved robustness, maintainability, and scalability.
+// */

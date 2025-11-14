@@ -1,7 +1,12 @@
 // SurfaceTemperatureModule.h
 // Modular C++ implementation of the Surface Temperature (T_s) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes T_s=5778 K (Sun effective); potential scaling T_s / T_s_ref in B_j for U_g3 magnetic strings.
-// Pluggable: // // // #include "SurfaceTemperatureModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "SurfaceTemperatureModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // SurfaceTemperatureModule mod; mod.computeU_g3_example(0.0, 5778.0); mod.updateVariable("T_s", new_value);
 // Variables in std::map; example for Sun at t=0; T_s=5778 K ? U_g3?1.8e49 J/m� (full); T_s=10000 K: ~3.11e49 J/m�.
 // Approximations: T_s_ref=5778 K (Sun); cos(?_s t ?)=1; P_core=1; E_react=1e46; hypothetical B_j scaling.

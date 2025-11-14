@@ -1,7 +1,12 @@
 // SolarWindModulationModule.h
 // Modular C++ implementation of the Solar Wind Modulation Factor (?_sw) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?_sw=0.01 (unitless) and its scaling (1 + ?_sw v_sw) in Universal Gravity U_g2 term.
-// Pluggable: // // // #include "SolarWindModulationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Pluggable: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "SolarWindModulationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // SolarWindModulationModule mod; mod.computeU_g2(1.496e13); mod.updateVariable("delta_sw", new_value);
 // Variables in std::map; example for Sun at r=R_b=1.496e13 m; amplification ~5001x.
 // Approximations: S(r - R_b)=1; H_SCm=1; E_react=1e46; ?_sum=7.80e-36 J/m�.

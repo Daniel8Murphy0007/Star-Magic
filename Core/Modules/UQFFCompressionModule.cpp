@@ -1,7 +1,12 @@
 // UQFFCompressionModule.h
 // Modular C++ implementation of the Compressed Universal Quantum Field Superconductive Framework (UQFF) for Multi-System Astrophysical Evolution.
 // This module implements the streamlined UQFF equation from Compression Cycle 2, adaptable for systems like Magnetar SGR 1745-2900, Sagittarius A*, Tapestry of Blazing Starbirth, Westerlund 2, Pillars of Creation, Rings of Relativity, NGC 2525, NGC 3603, Bubble Nebula, Antennae Galaxies, Horsehead Nebula, NGC 1275, Hubble Ultra Deep Field, NGC 1792, and the Student�s Guide to the Universe.
-// Usage: // // // #include "UQFFCompressionModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; UQFFCompressionModule mod; mod.computeG(t); mod.updateVariable("M", value); mod.setSystem("Magnetar"); for system-specific params.
+// Usage: // // // #define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "UQFFCompressionModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; UQFFCompressionModule mod; mod.computeG(t); mod.updateVariable("M", value); mod.setSystem("Magnetar"); for system-specific params.
 // Variables in std::map for dynamic ops; supports F_env(t) modular additions for winds, erosion, lensing, etc.
 // Approximations: psi_total integral normalized to 1.0; H(t,z) with Omega_m=0.3, Omega_Lambda=0.7; F_env sums sub-terms; Ug3' = G M_ext / r_ext^2.
 // Defaults: General cosmic params; system-specific via setSystem().

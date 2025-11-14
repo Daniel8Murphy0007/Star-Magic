@@ -1,7 +1,13 @@
 // Abell2256UQFFModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Abell 2256 Galaxy Cluster Evolution.
 // This module can be plugged into a base program (e.g., 'abell_sim.cpp') by including this header and linking the .cpp.
-// Usage in base: // // // #include "Abell2256UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// Usage in base: // // // #define _USE_MATH_DEFINES
+#define _USE_MATH_DEFINES
+#include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// #include "Abell2256UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // Abell2256UQFFModule mod; mod.computeF(t); mod.updateVariable("M", {new_real, new_imag});
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino.
@@ -144,6 +150,11 @@ private:
     bool enableDynamicTerms;
     bool enableLogging;
     double learningRate;
+    bool self_learning_enabled;
+    double learning_rate;
+    int update_counter;
+    std::map<std::string, std::vector<cdouble>> variable_history;
+    std::map<std::string, std::string> variable_dependencies;
 
 
 
@@ -171,12 +182,26 @@ public:
 
     // Print all current variables (for debugging/updates)
     void printVariables();
+
+    // ========== SELF-EXPANDING FRAMEWORK METHODS ==========
+    void autoCalibrate(const std::string& observable, double target_value, double tolerance = 0.01);
+    void adaptiveUpdate(double dt, const std::string& feedback_param);
+    void scaleToObservations(const std::map<std::string, double>& observations);
+    void addCustomVariable(const std::string& name, cdouble value, const std::string& dependency = "");
+    void enableSelfLearning(bool enable);
+    void exportState(const std::string& filename);
+    void importState(const std::string& filename);
+    void updateDependencies(const std::string& changed_var);
+    cdouble computeGradient(const std::string& var, const std::string& target);
+    void recordHistory(const std::string& name, cdouble value);
+    std::map<std::string, cdouble> getVariableHistory(const std::string& name, int steps = -1);
 };
 
 #endif // ABELL2256_UQFF_MODULE_H
 
 // Abell2256UQFFModule.cpp
-// // // #include "Abell2256UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// // // #define _USE_MATH_DEFINES
+// #include "Abell2256UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 
 // Constructor: Set all variables with Abell 2256-specific values
@@ -186,8 +211,10 @@ Abell2256UQFFModule::Abell2256UQFFModule() {
         learningRate = 0.001;
         metadata["enhanced"] = "true";
         metadata["version"] = "2.0-Enhanced";
-
-    double pi_val = 3.141592653589793;
+        self_learning_enabled = false;
+        learning_rate = 0.001;
+        update_counter = 0;
+    // double M_PI already defined in header
     cdouble zero = {0.0, 0.0};
     cdouble i_small = {0.0, 1e-37};
 
@@ -196,12 +223,12 @@ Abell2256UQFFModule::Abell2256UQFFModule() {
     variables["c"] = {3e8, 0.0};
     variables["hbar"] = {1.0546e-34, 0.0};
     variables["q"] = {1.6e-19, 0.0};
-    variables["pi"] = {pi_val, 0.0};
+    variables["pi"] = {M_PI, 0.0};
     variables["m_e"] = {9.11e-31, 0.0};
     variables["mu_B"] = {9.274e-24, 0.0};
     variables["g_Lande"] = {2.0, 0.0};
     variables["k_B"] = {1.38e-23, 0.0};
-    variables["mu0"] = {4 * pi_val * 1e-7, 0.0};
+    variables["mu0"] = {4 * M_PI * 1e-7, 0.0};
 
     // Abell 2256 parameters
     variables["M"] = {1.23e45, 0.0};
@@ -209,7 +236,7 @@ Abell2256UQFFModule::Abell2256UQFFModule() {
     variables["L_X"] = {3.7e37, 0.0};
     variables["B0"] = {1e-9, 0.0};
     variables["omega0"] = {1e-15, 0.0};
-    variables["theta"] = {pi_val / 4, 0.0};  // 45 deg
+    variables["theta"] = {M_PI / 4, 0.0};  // 45 deg
     variables["t"] = {6.31e15, 0.0};  // Default t
     variables["rho_gas"] = {5e-24, 0.0};
     variables["V"] = {1e-3, 0.0};  // Particle velocity
@@ -223,10 +250,10 @@ Abell2256UQFFModule::Abell2256UQFFModule() {
 
     // LENR and activation
     variables["k_LENR"] = {1e-10, 0.0};
-    variables["omega_LENR"] = {2 * pi_val * 1.25e12, 0.0};
+    variables["omega_LENR"] = {2 * M_PI * 1.25e12, 0.0};
     variables["k_act"] = {1e-6, 0.0};
-    variables["omega_act"] = {2 * pi_val * 300, 0.0};
-    variables["phi"] = {pi_val / 4, 0.0};
+    variables["omega_act"] = {2 * M_PI * 300, 0.0};
+    variables["phi"] = {M_PI / 4, 0.0};
 
     // Other couplings
     variables["k_DE"] = {1e-30, 0.0};
@@ -313,7 +340,7 @@ cdouble Abell2256UQFFModule::computeIntegrand(double t_user) {
     cdouble term_LENR = computeLENRTerm();
     cdouble term_act = variables["k_act"] * cos_act;
     cdouble term_DE = variables["k_DE"] * variables["L_X"];
-    cdouble term_res = 2 * variables["q"] * variables["B0"] * variables["V"] * sin_theta * computeDPM_resonance();
+    cdouble term_res = cdouble(2.0) * variables["q"] * variables["B0"] * variables["V"] * sin_theta * computeDPM_resonance();
     cdouble term_neut = variables["k_neutron"] * variables["sigma_n"];
     cdouble term_rel = variables["k_rel"] * pow(variables["E_cm_astro"] / variables["E_cm"], 2);
     cdouble term_neutrino = variables["F_neutrino"];
@@ -328,8 +355,8 @@ cdouble Abell2256UQFFModule::computeX2() {
 
 // Quadratic root helper (for future refinement)
 cdouble Abell2256UQFFModule::computeQuadraticRoot(cdouble a, cdouble b, cdouble c) {
-    cdouble disc = sqrt(b*b - 4*a*c);
-    return (-b - disc) / (2*a);  // Negative root approx
+    cdouble disc = sqrt(b*b - cdouble(4.0)*a*c);
+    return (-b - disc) / (cdouble(2.0)*a);  // Negative root approx
 }
 
 // Full F_U_Bi_i approx as integrand * x2
@@ -365,7 +392,7 @@ cdouble Abell2256UQFFModule::computeSuperconductive(double t) {
     cdouble rho_sc = variables["rho_vac_SCm"];
     cdouble rho_ua = variables["rho_vac_UA"];
     cdouble omega_s = variables["omega_s"];
-    double cos_term = cos(pi_val * tn);
+    double cos_term = cos(variables["pi"].real() * tn);
     cdouble f_trz = variables["f_TRZ"];
     return lambda * (rho_sc / rho_ua * omega_s * cos_term * (1 + f_trz.real()));
 }
@@ -427,8 +454,10 @@ void Abell2256UQFFModule::printVariables() {
 }
 
 // Example usage in base program 'abell_sim.cpp' (snippet for integration)
-// // // // #include "Abell2256UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
-// #include <complex>
+// // // // #define _USE_MATH_DEFINES
+// #include "Abell2256UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// #define _USE_MATH_DEFINES
+#include <complex>
 // int main() {
 //     Abell2256UQFFModule mod;
 //     double t = 6.31e15;  // 0.2 Gyr
@@ -491,7 +520,7 @@ cdouble Abell2256UQFFModule::computeUb1() {
 
 // Compute Ui superconductive term for galaxy cluster magnetism and dynamics
 cdouble Abell2256UQFFModule::computeUi(double t) {
-    double pi_val = variables["pi"].real();
+    double pi_value = variables["pi"].real();  // M_PI is a macro
     double tn = t / variables["t_scale"].real();
     cdouble lambda = variables["lambda_i"];
     cdouble rho_sc = variables["rho_vac_SCm"];
@@ -500,7 +529,7 @@ cdouble Abell2256UQFFModule::computeUi(double t) {
     cdouble f_trz = variables["f_TRZ"];
     
     // Time-dependent oscillations
-    double cos_term = cos(pi_val * tn);
+    double cos_term = cos(variables["pi"].real() * tn);
     
     // Abell 2256 specific magnetic field enhancements
     cdouble B0 = variables["B0"];
@@ -525,7 +554,7 @@ cdouble Abell2256UQFFModule::computeUi(double t) {
     // Dark matter interaction effects
     cdouble M = variables["M"];
     cdouble r = variables["r"];
-    cdouble dm_coupling = M / (4.0 * pi_val * r * r * r);  // Mass density profile
+    cdouble dm_coupling = M / (4.0 * M_PI * r * r * r);  // Mass density profile
     
     // Enhanced superconductive term with galaxy cluster physics
     cdouble base_ui = lambda * (rho_sc / rho_ua) * omega_s * cos_term * (1.0 + f_trz);
@@ -594,9 +623,9 @@ void Abell2256UQFFModule::adaptiveUpdate(double dt, const std::string& feedback_
     }
     
     recordHistory("adaptive_time", {dt, 0.0});
-    std::cout << "Adaptive update: B0=" << variables["B0"].real() 
- * Enhanced: November 04, 2025 - Added self-expanding capabilities
+    std::cout << "Adaptive update: B0=" << variables["B0"].real() 
               << ", v_disp=" << variables["velocity_dispersion"].real() << std::endl;
+    // Enhanced: November 04, 2025 - Added self-expanding capabilities
 }
 
 // Scale parameters to match observational data
