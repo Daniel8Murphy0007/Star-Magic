@@ -28,10 +28,26 @@
     // JavaScript/Node.js
     "javascript.suggest.autoImports": true,
     "javascript.updateImportsOnFileMove.enabled": "always",
-    // Debug Configuration
-    "debug.internalConsoleOptions": "openOnSessionStart",
-    "debug.saveBeforeStart": "allEditorsInActiveGroup",
-    "debug.openDebug": "openOnDebugBreak",
+    // Debug Configuration - DISABLED AUTO-RESET
+    "debug.internalConsoleOptions": "neverOpen",
+    "debug.saveBeforeStart": "none",
+    "debug.openDebug": "neverOpen",
+    // DISABLE AUTO-EXECUTION
+    "task.autoDetect": "off",
+    "npm.autoDetect": "off",
+    "typescript.tsc.autoDetect": "off",
+    "grunt.autoDetect": "off",
+    "gulp.autoDetect": "off",
+    "jake.autoDetect": "off",
+    // DISABLE ENVIRONMENT RESETS
+    "files.autoSave": "off",
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true,
+        "**/*.js": true,
+        "**/*.json": true
+    },
     // Terminal Auto-Approve
     "chat.tools.terminal.autoApprove": {
         "cd": true,

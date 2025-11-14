@@ -1,0 +1,6 @@
+﻿{
+    "Source154":  {
+                      "Class":  "HydrogenResonanceUQFFModule",
+                      "Method":  "computeHRes"
+                  }
+}

@@ -496,52 +496,7 @@
             "problemMatcher": [],
             "detail": "Build CoAnQi and all new Source modules (163-167)"
         },
-        // ========== NODE.JS TASKS ==========
-        {
-            "label": "Node: Run index.js",
-            "type": "shell",
-            "command": "node",
-            "args": [
-                "index.js"
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
-            "problemMatcher": [],
-            "group": "test",
-            "detail": "Run the main UQFF engine"
-        },
-        {
-            "label": "Node: Test Source134",
-            "type": "shell",
-            "command": "node",
-            "args": [
-                "-e",
-                "const A2256 = require('./source134.js'); const m = new A2256(); console.log('System:', m.getSystemName()); const t = 6.31e15; const F = m.computeF(t); console.log('F_U_Bi_i =', F.re.toExponential(3), '+ i*' + F.im.toExponential(3), 'N'); const report = m.generateReport(); console.log('M =', report.parameters.M.toExponential(2), 'kg');"
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
-            "problemMatcher": [],
-            "group": "test",
-            "detail": "Test Abell 2256 module (source134.js)"
-        },
-        {
-            "label": "Node: Syntax check index.js",
-            "type": "shell",
-            "command": "node",
-            "args": [
-                "-c",
-                "index.js"
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
-            "problemMatcher": [],
-            "group": "test",
-            "detail": "Check index.js for syntax errors"
-        },
-        // ========== GIT TASKS ==========
+        // ========== C++ BUILD TASKS ==========
         {
             "label": "Git: Status",
             "type": "shell",
