@@ -114,21 +114,28 @@ function Extract-ModuleIntelligent {
     # Read source
     $content = Get-Content $sourcePath -Raw
     
-    # Identify main class/struct - look for UQFF modules or main physics classes
-    $classPatterns = @(
-        'class\s+(\w*UQFF\w*Module\w*)',  # UQFFModule variants
-        'class\s+(\w*Module\d+)',  # ModuleN patterns
-        'class\s+(\w*Solver)',  # Solver classes
-        'class\s+(\w*Engine)',  # Engine classes
-        'class\s+(\w+UQFF\w+)',  # General UQFF classes
-        'class\s+([A-Z]\w+)\s*\{[^}]*registerDynamicTerm'  # Classes with enhancement framework
-    )
+    # Find all class definitions
+    $allMatches = [regex]::Matches($content, 'class\s+([A-Za-z_]\w*)')
+    $classNames = $allMatches | ForEach-Object { $_.Groups[1].Value }
     
+    # Filter out base framework classes
+    $baseClasses = @('PhysicsTerm', 'DynamicVacuumTerm', 'QuantumCouplingTerm')
+    $mainClasses = $classNames | Where-Object { $_ -notin $baseClasses }
+    
+    # Prioritize UQFF/Module classes, then take first non-base class
     $className = $null
-    foreach ($pattern in $classPatterns) {
-        if ($content -match $pattern) {
-            $className = $matches[1]
-            break
+    if ($mainClasses.Count -gt 0) {
+        # Try to find best match
+        $className = $mainClasses | Where-Object { $_ -match 'UQFF.*Module' } | Select-Object -First 1
+        if (-not $className) {
+            $className = $mainClasses | Where-Object { $_ -match 'Module' } | Select-Object -First 1
+        }
+        if (-not $className) {
+            $className = $mainClasses | Where-Object { $_ -match 'Solver|Engine' } | Select-Object -First 1
+        }
+        if (-not $className) {
+            # Take first non-base class
+            $className = $mainClasses[0]
         }
     }
     
