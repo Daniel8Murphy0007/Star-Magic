@@ -32,13 +32,20 @@ add_executable(Source134 Source134.cpp)
 # MAIN_1: Core mathematical framework (ENABLED - repaired Nov 9, 2025)
 add_executable(MAIN_1 MAIN_1.cpp)
 
-# MAIN_1_CoAnQi: Conscious Quantum Intelligence UQFF Calculator (50+ physics terms)
+# MAIN_1_CoAnQi: Conscious Quantum Intelligence UQFF Calculator (273 physics terms)
 add_executable(MAIN_1_CoAnQi MAIN_1_CoAnQi.cpp)
 
 # Source2: HEAD PROGRAM (DISABLED - requires Qt framework)
 # add_executable(Source2 "source2(HEAD PROGRAM).cpp")
 
 # ========== ADDITIONAL SOURCE MODULES ==========
+
+# Source163-167: Latest modules (Nov 2025)
+add_executable(Source163 Source163.cpp)
+add_executable(Source164 Source164.cpp)
+add_executable(Source165 Source165.cpp)
+add_executable(Source166 Source166.cpp)
+add_executable(Source167 Source167.cpp)
 
 # Source modules 1-162 (add as needed)
 # Example: Uncomment to build specific modules
@@ -54,10 +61,20 @@ if(MSVC)
     target_compile_options(Source134 PRIVATE /Zi)
     target_compile_options(MAIN_1 PRIVATE /Zi /Od)
     target_compile_options(MAIN_1_CoAnQi PRIVATE /Zi /Od)
+    target_compile_options(Source163 PRIVATE /Zi)
+    target_compile_options(Source164 PRIVATE /Zi)
+    target_compile_options(Source165 PRIVATE /Zi)
+    target_compile_options(Source166 PRIVATE /Zi)
+    target_compile_options(Source167 PRIVATE /Zi)
 else()
     target_compile_options(Source134 PRIVATE -g)
     target_compile_options(MAIN_1 PRIVATE -g -O0)
     target_compile_options(MAIN_1_CoAnQi PRIVATE -g -O0)
+    target_compile_options(Source163 PRIVATE -g -O0)
+    target_compile_options(Source164 PRIVATE -g -O0)
+    target_compile_options(Source165 PRIVATE -g -O0)
+    target_compile_options(Source166 PRIVATE -g -O0)
+    target_compile_options(Source167 PRIVATE -g -O0)
 endif()
 
 # ========== OPTIONAL: Add include directories ==========
@@ -69,7 +86,7 @@ endif()
 # target_link_libraries(Source134 m)
 
 # ========== INSTALL TARGETS ==========
-install(TARGETS Source134 MAIN_1 MAIN_1_CoAnQi
+install(TARGETS Source134 MAIN_1 MAIN_1_CoAnQi Source163 Source164 Source165 Source166 Source167
     RUNTIME DESTINATION bin
 )
 

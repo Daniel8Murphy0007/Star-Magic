@@ -1,5 +1,7 @@
 # Star-Magic
 
+**Last Updated**: November 13, 2025 @ 9:45 PM
+
 **Unveiling Superconductivity that Unifies the Quantum and Universal Field Equations**
 
 ## Overview
@@ -53,13 +55,37 @@ This unified theory addresses fundamental physics problems including:
 
 ## Repository Contents
 
+### Core Engine
+
+- **MAIN_1_CoAnQi.cpp**: 356,913 bytes, 9,970 lines - Conscious Quantum Intelligence UQFF Calculator
+  - 273 PhysicsTerm classes (self-expanding framework)
+  - Threading disabled (MinGW compatibility)
+  - 8-option interactive menu system
 - **index.js**: 16,104-line UQFF computational engine (106 astrophysical systems)
-- **source1.cpp - source162.cpp**: 162 C++ physics modules with enhanced dynamics framework
+
+### Physics Modules
+
+- **source1.cpp - source167.cpp**: 163 C++ physics modules with enhanced dynamics framework
+  - Source163-167: Latest additions (Multi-System, Nebula, Buoyancy, Quantum 26-State, UQFF Core)
+  - All modules support dynamic term registration and runtime parameters
+
+### Documentation
+
 - **[Star Magic.md](Star%20Magic.md)**: The complete theoretical framework and equations
 - **Star-Magic_base64.md**: Base64 encoded version of the paper
+- **QUICK_START_VSCODE.md**: VS Code C++ quick reference and current project status
+- **ENHANCEMENT_GUIDE.md**: Guide to self-expanding physics module system
+
+### AI Integration
+
 - **requirements.txt**: Python dependencies including Claude AI integration
 - **claude_example.py**: Example script demonstrating Claude API usage
 - **[CLAUDE_SETUP.md](CLAUDE_SETUP.md)**: Guide for setting up and using Claude AI with Star-Magic
+
+### Build System
+
+- **CMakeLists.txt**: Updated Nov 13, 2025 (273 terms, Source163-167 targets)
+- **enhance_modules.ps1**: PowerShell script for module enhancement automation
 
 ## Claude AI Integration
 
