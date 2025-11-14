@@ -1,34 +1,35 @@
 ﻿// UQFFSource10.cpp: Source file for UQFFSource10 class (split from header for maintainability)
 // Include the header
 #include "UQFFSource10.h"
+#include "Core/SystemCatalogue.hpp" // Phase 1 Week 1: Extracted master equations
 
 // Class implementation (methods defined here for separation)
 namespace UQFF
 {
     // ... (All private members and methods from header are declared; implementations below if needed)
     // Note: Inline methods in header for simplicity; complex ones here e.g.,
-    void Source10::loadConfig(const string &config_file)
+    void Source10::loadConfig(const std::string &config_file)
     {
         // Implementation as in header (ifstream read)
-        ifstream file(config_file);
+        std::ifstream file(config_file);
         if (!file.is_open())
         {
-            cout << "Config file not found; using defaults." << endl;
+            std::cout << "Config file not found; using defaults." << std::endl;
             return;
         }
-        string line;
-        while (getline(file, line))
+        std::string line;
+        while (std::getline(file, line))
         {
             // Parse key=value (trim whitespace if needed)
             size_t eq_pos = line.find('=');
-            if (eq_pos != string::npos)
+            if (eq_pos != std::string::npos)
             {
-                string key = line.substr(0, eq_pos);
-                double val = stod(line.substr(eq_pos + 1));
+                std::string key = line.substr(0, eq_pos);
+                double val = std::stod(line.substr(eq_pos + 1));
                 scaling_factors[key] = val;
             }
         }
-        cout << "Loaded config from " << config_file << endl;
+        std::cout << "Loaded config from " << config_file << std::endl;
     }
 
     // Other methods (e.g., batch_compute_F_U_Bi_i) implemented in header for brevity
@@ -79,12 +80,12 @@ namespace UQFF
 // #include "BubbleNebula.h"
 
 // Additional aliases (using declarations for seamless integration)
-namespace UQFF
-{
-    using GalaxyNGC2525;        // Alias for galaxy class
-    using MagnetarSGR0501_4516; // Alias for magnetar class
-    // Extend aliases: using <ClassName> for all 500+ as needed in Source12.cpp
-}
+// namespace UQFF
+// {
+//     using GalaxyNGC2525;        // Alias for galaxy class
+//     using MagnetarSGR0501_4516; // Alias for magnetar class
+//     // Extend aliases: using <ClassName> for all 500+ as needed in Source12.cpp
+// }
 
 // #ifndef UQFF_SOURCE10_H  // Commented - not for .cpp
 // #define UQFF_SOURCE10_H
@@ -124,11 +125,12 @@ namespace UQFF
         // ...
     };
 
+    /* COMMENTED DUPLICATE CLASS DEFINITION - Already in UQFFSource10.h
     class Source10
     {
     private:
         // Configurable scaling factors (fully configurable via map and loadConfig)
-        map<string, double> scaling_factors;
+        std::map<std::string, double> scaling_factors;
 
         // Key Dialogue Summary Sections (captured from thread as member variables with comments)
         // 1. UQFF Core: Buoyancy F_U_Bi_i = integrand * x_2, with terms for LENR, activation, DE, resonance, neutron, rel.
@@ -426,24 +428,25 @@ namespace UQFF
         }
 
         // Debug/Output: Print Catalogue Summary
-        void printCatalogue(ostream &os = cout) const
+        void printCatalogue(std::ostream &os = std::cout) const
         {
-            os << fixed << setprecision(3);
-            os << "UQFF Source10 Catalogue Summary:" << endl;
-            os << "F_U_Bi_i: " << F_U_Bi_i << " N" << endl;
-            os << "g_H: " << g_H << endl;
-            os << "DPM_resonance: " << DPM_resonance << " J/m " << endl;
-            os << "Neutron Factor: " << neutron_factor << endl;
-            os << "Scaling Factors:" << endl;
+            os << std::fixed << std::setprecision(3);
+            os << "UQFF Source10 Catalogue Summary:" << std::endl;
+            os << "F_U_Bi_i: " << F_U_Bi_i << " N" << std::endl;
+            os << "g_H: " << g_H << std::endl;
+            os << "DPM_resonance: " << DPM_resonance << " J/m " << std::endl;
+            os << "Neutron Factor: " << neutron_factor << std::endl;
+            os << "Scaling Factors:" << std::endl;
             for (const auto &pair : scaling_factors)
             {
-                os << "  " << pair.first << ": " << pair.second << endl;
+                os << "  " << pair.first << ": " << pair.second << std::endl;
             }
-            os << "Layers: " << Ug1_vec.size() << endl;
+            os << "Layers: " << Ug1_vec.size() << std::endl;
         }
-    };
+    }; // END DUPLICATE CLASS */
 } // namespace UQFF
 
+/* COMMENTED DUPLICATE MAIN - Use main at line 1109 instead
 // Refactored main for non-interactive/batch use (upgraded: args for t, --profile for timing many systems)
 int main(int argc, char *argv[])
 {
@@ -454,7 +457,7 @@ int main(int argc, char *argv[])
     double t = 0.0;
     int profile_count = 0;
     bool profile_mode = false;
-    string config_file = "";
+    std::string config_file = "";
     for (int i = 1; i < argc; ++i)
     {
         string arg = argv[i];
@@ -493,6 +496,7 @@ int main(int argc, char *argv[])
 
     return 0;
 }
+*/ // END COMMENTED FIRST MAIN
 
 #include <iostream>
 #include <cmath>
@@ -655,6 +659,7 @@ using namespace std;
 // Variables: Surface plasmon polaritons enhance effective mass m_e*.
 // Solutions: Explains LENR without Coulomb barrier violation.
 
+/* COMMENTED DUPLICATE CONSTANTS - Now using Core/SystemCatalogue.hpp
 // Constants (global defaults; overridden per system)
 const double PI = 3.141592653589793;
 const double G = 6.6743e-11;
@@ -685,12 +690,42 @@ const double epsilon_0 = 8.85e-12;         // Permittivity of free space
 const double EFSC_PI = 3.604e-16;          // J from Aether doc
 const double W_RES = 1.424e14;             // rad/s resonant frequency
 const double DELTA_E_PHASE = 5.52e-17;     // J
+*/
+
+// Using constants from Core/SystemCatalogue.hpp (PI, G, c, h_bar, Msun, num_layers, layer_scale_factor, h_gw, E_LEP)
+// Additional local constants for this file:
+const double m_e = 9.11e-31;
+const double q = 1.6e-19;
+const double mu_B = 9.274e-24;
+const double g_factor = 2.0;
+const double pc = 3.086e16;                // Parsec in m
+const double Rsun = 6.96e8;                // Solar radius in m
+const double Gauss_to_T = 1e-4;            // Gauss to Tesla
+const double erg_per_s_to_W = 1e-7;        // erg/s to W
+const double ly = 9.461e15;                // Light year in m
+const double kpc = 1000 * pc;              // Kiloparsec
+const double Mpc = 1e6 * pc;               // Megaparsec
+const double keV_to_K = 1.16e7;            // keV to K (approx k_B T)
+const double f_gw = 100.0;                 // Hz for NS mergers
+const double d_f = 2.5;                    // Fractal dimension for multi-scale E_cm
+const double r_atomic = 1e-10;             // m for fractal scaling
+const double E_atomic = 1e-18;             // J for fractal scaling
+const double mu_0 = 4 * PI * 1e-7;         // Permeability of free space
+const double epsilon_0 = 8.85e-12;         // Permittivity of free space
+const double EFSC_PI = 3.604e-16;          // J from Aether doc
+const double W_RES = 1.424e14;             // rad/s resonant frequency
+const double DELTA_E_PHASE = 5.52e-17;     // J
 const double E_JET = 5.52e-18;             // J
-const double E_LEP = 4.30e33;              // From LEP data, adjusted for E_cm
+// E_LEP now from Core/SystemCatalogue.hpp (208e9 * 1.602e-19 J)
 const double DELTA_M = 0.78e6 * 1.602e-19; // MeV to J for Widom-Larsen
 const double E_F = 10 * 1.602e-19;         // eV to J for Fermi energy
 const double ALPHA_EM = 1.0 / 137.0;       // Electromagnetic fine structure constant
 
+// PHASE 1 WEEK 1 EXTRACTION: SystemParams struct and systems map moved to Core/SystemCatalogue.hpp/.cpp
+// Use UQFFCatalogue::SystemParams and UQFFCatalogue::initializeSystemCatalogue() instead
+// Original definitions commented out to preserve Source10 structure while using extracted code
+
+/*
 // Struct for system params (expandable, all fields from documents)
 struct SystemParams
 {
@@ -741,7 +776,13 @@ struct SystemParams
     double rho_astro = 1e-17; // Default density g/cm3, adjust per system
     double rho_LEP = 1e-25;   // Assumed LEP density g/cm3 for scaling
 };
+*/
 
+// Use extracted SystemParams from Core/SystemCatalogue
+using UQFFCatalogue::SystemParams;
+
+// COMMENTED OUT: Systems map now initialized via UQFFCatalogue::initializeSystemCatalogue()
+/*
 // Map of systems with params (expanded from document, all values preserved)
 map<string, SystemParams> systems = {
     // ESO 137-001 (Galaxy): Mass ~1e11 Msun, r ~10 kpc ~3.086e20 m, T ~1e7 K (gas), L_X ~1e36 W (tail), B0 ~1e-10 T, omega0 ~0, v ~4.68e6 m/s (LOS), distance ~220e6 ly
@@ -789,7 +830,26 @@ map<string, SystemParams> systems = {
     {"PJ352-15", {"PJ352-15", 1e9 * Msun, 4.6e21, 1e7, 1e37, 1e-5, 1e-15, 45.0, 1e15, 2.7e8, 7.09e-36, 7.09e-37, 0.01, 0.93, 1.0, 1e-10, 1e-6, 1e-30, 1e10, 1e-4, 1e-10, 4.30e33, 1e-30, 1e-10, 2 * PI * 1e12, 1.0, 10.0, 1e-22, 1.0, 1e-30, 1e-10, 10.0, 7.25e8, 0.2, 0.01, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 1.0, 1e-24, 1e-25}},
     {"Quasar Survey (Typical)", {"Quasar Survey (Typical)", 1e8 * Msun, 1e13, 1e7, 1e36, 1e-6, 1e-12, 45.0, 1e15, 3e8, 7.09e-36, 7.09e-37, 0.01, 0.93, 1.0, 1e-10, 1e-6, 1e-30, 1e10, 1e-4, 1e-10, 4.30e33, 1e-30, 1e-10, 2 * PI * 1e12, 1.0, 10.0, 1e-22, 1.0, 1e-30, 1e-10, 10.0, 7.25e8, 0.2, 0.01, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 1.0, 1e-24, 1e-25}},
     {"GSN 069", {"GSN 069", 4e5 * Msun, 1e9, 1e5, 1e32, 1e8, 1e-13, 45.0, 1e15, 1e7, 7.09e-36, 7.09e-37, 0.01, 0.93, 1.0, 1e-10, 1e-6, 1e-30, 1e10, 1e-4, 1e-10, 4.30e33, 1e-30, 1e-10, 2 * PI * 1e12, 1.0, 10.0, 1e-22, 1.0, 1e-30, 1e-10, 10.0, 7.25e8, 0.2, 0.01, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 1.0, 1e-24, 1e-25}},
-};
+}; */ // END COMMENTED SYSTEMS MAP
+
+// PHASE 1 WEEK 1: Initialize systems map from extracted catalogue
+std::map<std::string, UQFFCatalogue::SystemParams> systems = UQFFCatalogue::initializeSystemCatalogue();
+
+// PHASE 1 WEEK 1 EXTRACTION: compute_E_cm, dpm_life_proportion, F_U_Bi_i, compressed_g moved to Core/SystemCatalogue.cpp
+// Original functions commented out, use UQFFCatalogue:: namespace versions instead
+// Using directives for convenience:
+using UQFFCatalogue::SystemParams;
+using UQFFCatalogue::compute_E_cm;
+using UQFFCatalogue::dpm_life_proportion;
+using UQFFCatalogue::F_U_Bi_i;
+using UQFFCatalogue::compressed_g;
+using UQFFCatalogue::F_jet_rel;
+using UQFFCatalogue::E_acc_rel;
+using UQFFCatalogue::F_drag_rel;
+using UQFFCatalogue::F_gw_rel;
+using UQFFCatalogue::validation_pipeline;
+
+/* BEGIN COMMENTED DUPLICATE FUNCTIONS (now in Core/SystemCatalogue.cpp)
 
 // Function to compute E_cm scaling (long-form)
 double compute_E_cm(const SystemParams &p)
@@ -937,6 +997,8 @@ void validation_pipeline(const SystemParams &p)
     cout << "Cross-ref L_X with GW strain: " << p.L_X * h_gw << " W (adjusted)" << endl;
     cout << "Suggest observation: JWST for buoyancy offset ~" << p.v / c * p.r << " m" << endl;
 }
+
+END COMMENTED DUPLICATE FUNCTIONS */ // Phase 1 Week 1: All above functions now in Core/SystemCatalogue.cpp
 
 // Simulation Category Functions (Integrated from uploaded HTML motion files)
 // User can choose to demonstrate internal high energy systems via textual simulations/calculations
