@@ -48,31 +48,46 @@
 #include <random>
 #include <numeric>
 
-// Note: Threading disabled for MinGW compatibility
-// To enable threading, uncomment these lines and ensure -pthread flag
-// #include <thread>
-// #include <mutex>
-// #include <chrono>
-// #include <atomic>
+// Threading enabled for parallel system calculations
+// MinGW 6.3.0 doesn't support std::thread, using Windows threads instead
+#ifdef _WIN32
+#include <windows.h>
+#include <process.h>
+#else
+#include <thread>
+#include <mutex>
+#include <chrono>
+#include <atomic>
+#endif
 
-// Threading stubs for non-threaded version
-#define NO_THREADING
-#ifdef NO_THREADING
-namespace std
+// Windows threading wrapper for MinGW 6.3.0 compatibility
+#ifdef _WIN32
+class SimpleMutex
 {
-    class mutex
-    {
-    public:
-        void lock() {}
-        void unlock() {}
-    };
-    template <typename T>
-    class lock_guard
-    {
-    public:
-        lock_guard(T &) {}
-    };
-}
+private:
+    CRITICAL_SECTION cs;
+
+public:
+    SimpleMutex() { InitializeCriticalSection(&cs); }
+    ~SimpleMutex() { DeleteCriticalSection(&cs); }
+    void lock() { EnterCriticalSection(&cs); }
+    void unlock() { LeaveCriticalSection(&cs); }
+};
+
+template <typename T>
+class SimpleLockGuard
+{
+private:
+    T &mutex;
+
+public:
+    SimpleLockGuard(T &m) : mutex(m) { mutex.lock(); }
+    ~SimpleLockGuard() { mutex.unlock(); }
+};
+#else
+using SimpleMutex = std::mutex;
+template <typename T>
+using SimpleLockGuard = std::lock_guard<T>;
 #endif
 
 // Define constants
@@ -9085,7 +9100,7 @@ class VerboseLogger
 private:
     bool enabled;
     ofstream logFile;
-    mutex logMutex;
+    SimpleMutex logMutex;
     int verbosityLevel; // 0=none, 1=basic, 2=detailed, 3=debug
 
 public:
@@ -9114,7 +9129,7 @@ public:
         if (!enabled || level > verbosityLevel)
             return;
 
-        lock_guard<mutex> lock(logMutex);
+        SimpleLockGuard<SimpleMutex> lock(logMutex);
         time_t now = time(nullptr);
         string time_str = ctime(&now);
         time_str.pop_back(); // Remove newline
@@ -9783,8 +9798,103 @@ int main()
 
         case 2:
         {
-            // Calculate ALL systems (sequential for compatibility, can be parallelized with proper threading)
-            g_logger.log("Computing ALL systems simultaneously...", 1);
+#ifdef _WIN32
+            // Calculate ALL systems in parallel using Windows threads
+            g_logger.log("Computing ALL systems in parallel (Windows threading)...", 1);
+
+            vector<double> all_F_results(systems.size());
+            vector<double> all_g_results(systems.size());
+            vector<string> system_names;
+            vector<SystemParams> system_params;
+
+            // Prepare data for parallel processing
+            for (const auto &pair : systems)
+            {
+                system_names.push_back(pair.first);
+                system_params.push_back(pair.second);
+            }
+
+            // Determine optimal thread count
+            SYSTEM_INFO sysinfo;
+            GetSystemInfo(&sysinfo);
+            unsigned int num_threads = sysinfo.dwNumberOfProcessors;
+            if (num_threads == 0 || num_threads > 32)
+                num_threads = 4; // Fallback to 4 threads
+
+            g_logger.log("Using " + to_string(num_threads) + " threads for parallel computation", 1);
+
+            // Mutex for thread-safe result storage
+            SimpleMutex result_mutex;
+
+            // Thread data structure
+            struct ThreadData
+            {
+                size_t start_idx;
+                size_t end_idx;
+                vector<SystemParams> *params;
+                vector<double> *F_results;
+                vector<double> *g_results;
+                vector<string> *names;
+                SimpleMutex *mutex;
+            };
+
+            vector<ThreadData> thread_data(num_threads);
+            vector<HANDLE> thread_handles;
+
+            // Thread function (must be static or free function for _beginthreadex)
+            struct ComputeWorker
+            {
+                static unsigned __stdcall thread_func(void *arg)
+                {
+                    ThreadData *data = static_cast<ThreadData *>(arg);
+                    for (size_t i = data->start_idx; i < data->end_idx; ++i)
+                    {
+                        SystemParams p = (*data->params)[i];
+                        double F_result = F_U_Bi_i(p);
+                        double g_result = compressed_g(p);
+
+                        SimpleLockGuard<SimpleMutex> lock(*data->mutex);
+                        (*data->F_results)[i] = F_result;
+                        (*data->g_results)[i] = g_result;
+                    }
+                    return 0;
+                }
+            };
+
+            // Create threads and distribute work
+            size_t systems_per_thread = system_params.size() / num_threads;
+            size_t remainder = system_params.size() % num_threads;
+
+            size_t start_idx = 0;
+            for (unsigned int t = 0; t < num_threads; ++t)
+            {
+                size_t end_idx = start_idx + systems_per_thread + (t < remainder ? 1 : 0);
+                if (start_idx < system_params.size())
+                {
+                    thread_data[t] = {start_idx, end_idx, &system_params,
+                                      &all_F_results, &all_g_results, &system_names, &result_mutex};
+
+                    HANDLE hThread = (HANDLE)_beginthreadex(
+                        nullptr, 0, ComputeWorker::thread_func, &thread_data[t], 0, nullptr);
+                    thread_handles.push_back(hThread);
+                }
+                start_idx = end_idx;
+            }
+
+            // Wait for all threads to complete
+            if (!thread_handles.empty())
+            {
+                WaitForMultipleObjects(thread_handles.size(), thread_handles.data(), TRUE, INFINITE);
+                for (auto handle : thread_handles)
+                {
+                    CloseHandle(handle);
+                }
+            }
+
+            g_logger.log("All systems computed in parallel.", 1);
+#else
+            // Non-Windows fallback to sequential processing
+            g_logger.log("Computing ALL systems sequentially...", 1);
 
             vector<double> all_F_results;
             vector<double> all_g_results;
@@ -9800,6 +9910,7 @@ int main()
             }
 
             g_logger.log("All systems computed.", 1);
+#endif
 
             // Statistical analysis
             StatisticalAnalyzer::printStatistics("F_U_Bi_i", StatisticalAnalyzer::analyze(all_F_results));

@@ -1,37 +1,58 @@
 {
-    // ========== AUTO-CONFIGURATION FOR STAR-MAGIC UQFF ==========
+    // ========== C++ ONLY - NO SCRIPTING LANGUAGES ==========
     "github.copilot.chat.agent.thinkingTool": true,
-    // Files & Editor
+    
+    // Files & Editor - C++ ONLY
     "files.associations": {
         "*.cpp": "cpp",
-        "*.js": "javascript",
+        "*.h": "cpp",
+        "*.hpp": "cpp",
         "source*.cpp": "cpp",
         "Source*.cpp": "cpp"
     },
     "files.exclude": {
         "**/*.exe": false,
-        "**/*.o": true,
-        "**/*.obj": true
+        "**/*.o": false,
+        "**/*.obj": false,
+        "**/build/**": false,
+        "**/CMakeFiles/**": true,
+        "**/*.js": true,
+        "**/*.json": false,
+        "**/*.py": true,
+        "**/node_modules/**": true
     },
-    // C++ Configuration
+    
+    // C++ Configuration ONLY
     "C_Cpp.default.cppStandard": "c++17",
     "C_Cpp.default.cStandard": "c17",
     "C_Cpp.default.intelliSenseMode": "windows-gcc-x64",
     "C_Cpp.default.compilerPath": "C:/MinGW/bin/g++.exe",
     "C_Cpp.errorSquiggles": "enabled",
     "C_Cpp.autocomplete": "default",
+    "C_Cpp.intelliSenseEngine": "default",
     "[cpp]": {
         "editor.defaultFormatter": "ms-vscode.cpptools",
-        "editor.formatOnSave": true,
+        "editor.formatOnSave": false,
         "editor.tabSize": 4
     },
-    // JavaScript/Node.js
-    "javascript.suggest.autoImports": true,
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    // Debug Configuration - DISABLED AUTO-RESET
-    "debug.internalConsoleOptions": "neverOpen",
-    "debug.saveBeforeStart": "none",
-    "debug.openDebug": "neverOpen",
+    
+    // DISABLE ALL SCRIPTING LANGUAGES
+    "javascript.validate.enable": false,
+    "javascript.suggest.enabled": false,
+    "typescript.validate.enable": false,
+    "typescript.suggest.enabled": false,
+    "python.analysis.autoImportCompletions": false,
+    "python.languageServer": "None",
+    
+    // DISABLE ALL AUTO-UPDATES
+    "extensions.autoUpdate": false,
+    "extensions.autoCheckUpdates": false,
+    "update.mode": "none",
+    "files.autoSave": "off",
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
+    "editor.formatOnPaste": false,
+    
     // DISABLE AUTO-EXECUTION
     "task.autoDetect": "off",
     "npm.autoDetect": "off",
@@ -39,15 +60,13 @@
     "grunt.autoDetect": "off",
     "gulp.autoDetect": "off",
     "jake.autoDetect": "off",
-    // DISABLE ENVIRONMENT RESETS
-    "files.autoSave": "off",
-    "files.watcherExclude": {
-        "**/.git/objects/**": true,
-        "**/.git/subtree-cache/**": true,
-        "**/node_modules/**": true,
-        "**/*.js": true,
-        "**/*.json": true
-    },
+    "cmake.configureOnOpen": false,
+    "cmake.buildBeforeRun": false,
+    
+    // Debug - MANUAL ONLY
+    "debug.internalConsoleOptions": "neverOpen",
+    "debug.saveBeforeStart": "none",
+    "debug.openDebug": "neverOpen",
     // Terminal Auto-Approve
     "chat.tools.terminal.autoApprove": {
         "cd": true,
