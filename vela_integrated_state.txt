@@ -1,0 +1,28 @@
+# UQFFModule4 State Export
+# Generated: November 08, 2025
+
+[Metadata]
+created=November 08, 2025
+framework=Self-Expanding UQFF
+module=UQFFModule4
+version=2.0-Enhanced
+
+[Variables]
+magnetic_field=1e-05
+mass=1e+30
+radius=1e+06
+temperature=1e+06
+vela_buoyancy=1.21394e+32
+vela_gravity=2.31262e+17
+vela_mass=2.7846e+30
+vela_radius=10000
+
+[DynamicParameters]
+mass=2.7846e+30
+radius=10000
+
+[Configuration]
+enableDynamicTerms=1
+enableLogging=0
+learningRate=0.001
+updateCounter=4
