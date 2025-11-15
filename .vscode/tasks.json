@@ -1,6 +1,58 @@
 {
     "version": "2.0.0",
     "tasks": [
+        // ========== AUTO-RUN ON VS CODE STARTUP ==========
+        {
+            "label": "🌟 Workspace Initialization",
+            "type": "shell",
+            "command": "Write-Host '═══════════════════════════════════════════════════' -ForegroundColor Cyan; Write-Host '🌟 Star-Magic UQFF Workspace Loaded' -ForegroundColor Green; Write-Host '═══════════════════════════════════════════════════' -ForegroundColor Cyan; Write-Host '📍 Phase: Phase 4 - Integration & Testing' -ForegroundColor Yellow; Write-Host '📦 Library: build/libUQFFCore.a (66.52 MB)' -ForegroundColor White; Write-Host '🔧 Modules: 118 compiled successfully' -ForegroundColor White; Write-Host '🔖 Restore Point: 5d0a633' -ForegroundColor Magenta; Write-Host '═══════════════════════════════════════════════════' -ForegroundColor Cyan",
+            "presentation": {
+                "echo": false,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": false
+            },
+            "runOptions": {
+                "runOn": "folderOpen"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "✅ Verify Build Status",
+            "type": "shell",
+            "command": "if (Test-Path build/libUQFFCore.a) { Write-Host '✅ UQFFCore Library Found' -ForegroundColor Green; Get-Item build/libUQFFCore.a | Select-Object Name, @{Name='Size (MB)';Expression={[math]::Round($_.Length/1MB,2)}}, LastWriteTime | Format-List } else { Write-Host '❌ WARNING: UQFFCore library not found!' -ForegroundColor Red; Write-Host 'Run: CMake: Build UQFFCore' -ForegroundColor Yellow }",
+            "presentation": {
+                "echo": false,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false
+            },
+            "runOptions": {
+                "runOn": "folderOpen"
+            },
+            "problemMatcher": [],
+            "dependsOn": ["🌟 Workspace Initialization"]
+        },
+        {
+            "label": "📋 Git Status Check",
+            "type": "shell",
+            "command": "git log --oneline -1; Write-Host ''; git status -sb",
+            "presentation": {
+                "echo": false,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false
+            },
+            "runOptions": {
+                "runOn": "folderOpen"
+            },
+            "problemMatcher": [],
+            "dependsOn": ["✅ Verify Build Status"]
+        },
         // ========== CMAKE TASKS (Visual Studio) ==========
         {
             "label": "CMake: Configure (Visual Studio)",

@@ -1,6 +1,16 @@
 {
-    // ========== C++ ONLY - NO SCRIPTING LANGUAGES ==========
+    // ========== STAR-MAGIC UQFF WORKSPACE CONFIGURATION ==========
+    // Restore Point: November 14, 2025 @ 5:03 PM
+    // Phase 3 Complete: UQFFCore library built (118 modules, 66.52 MB)
+    
     "github.copilot.chat.agent.thinkingTool": true,
+    
+    // ========== WORKSPACE ENVIRONMENT CONTROLS ==========
+    "workspace.name": "Star-Magic UQFF",
+    "workspace.phase": "Phase 4: Integration & Testing",
+    "workspace.restorePoint": "5d0a633",
+    "workspace.libraryPath": "${workspaceFolder}/build/libUQFFCore.a",
+    "workspace.primaryPlatform": "${workspaceFolder}/source2.cpp",
     
     // Files & Editor - C++ ONLY
     "files.associations": {
@@ -8,7 +18,8 @@
         "*.h": "cpp",
         "*.hpp": "cpp",
         "source*.cpp": "cpp",
-        "Source*.cpp": "cpp"
+        "Source*.cpp": "cpp",
+        "CMakeLists.txt": "cmake"
     },
     "files.exclude": {
         "**/*.exe": false,
