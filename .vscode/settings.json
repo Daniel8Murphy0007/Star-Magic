@@ -74,6 +74,13 @@
     "cmake.configureOnOpen": false,
     "cmake.buildBeforeRun": false,
     
+    // LOCK ENVIRONMENTAL CONTROLS - DO NOT MODIFY
+    "settings.cycle": false,
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "workbench.settings.editor": "json",
+    "workbench.settings.openDefaultSettings": false,
+    "workbench.settings.useSplitJSON": false,
+    
     // Debug - MANUAL ONLY
     "debug.internalConsoleOptions": "neverOpen",
     "debug.saveBeforeStart": "none",
