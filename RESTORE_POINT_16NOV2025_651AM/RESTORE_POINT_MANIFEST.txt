@@ -1,0 +1,322 @@
+==============================================
+RESTORE POINT: 16NOV2025_651AM
+==============================================
+Created: November 16, 2025 06:51 AM
+Purpose: Thread capture after comprehensive timestamp analysis
+Previous Restore Point: FULL_BACKUP_20251116_021903
+
+==============================================
+CRITICAL STATE INFORMATION
+==============================================
+
+Git Status:
+- Branch: master
+- HEAD Commit: 2550e74 (Nov 16, 2025 02:22:47 AM)
+- Commit Message: "Build success: UQFFCore library with 120/126 modules (95.2%)"
+- Working Directory: MODIFIED (uncommitted changes)
+
+Build Status:
+- Current Executables: 5/161 (3.1% success)
+  * MAIN_1.exe (443 KB) - 05:53:49 AM
+  * MAIN_1_CoAnQi.exe (999 KB) - 05:53:52 AM
+  * Source134.exe (683 KB) - 02:14:22 AM
+  * source4.exe (567 KB) - 05:53:49 AM
+  * Source5.exe (637 KB) - 05:53:50 AM
+
+Critical Discovery:
+- 03:40 AM build contains 9 working executables (BEST RESULT)
+- 5 executables exist ONLY in 03:40 build: Source163-167
+- Build used MSVC compiler (v143 toolset)
+- vcpkg path: x64-mingw-dynamic
+- 122 modules compiled at 03:40 AM
+
+==============================================
+FILES BACKED UP IN THIS RESTORE POINT
+==============================================
+
+1. CMakeLists_BACKUP.txt
+   - Source: CMakeLists.txt (uncommitted working copy)
+   - Contains: 159 add_executable() statements
+   - Contains: Global include_directories fix
+   - Contains: Line 232 vcpkg path fix (x64-mingw-dynamic)
+   - Status: UNCOMMITTED CHANGES
+
+2. TIMESTAMP_ANALYSIS_COMPLETE.md
+   - Complete analysis of 50+ timestamps
+   - 7,000+ files scanned
+   - 03:40 AM build details (9 executables)
+   - Build system comparison (MSVC vs MinGW)
+   - Recommendations for next steps
+
+3. files_339am.csv
+   - 162 files from 03:39 AM CMake configuration
+   - .vcxproj.filters and .sln files
+   - Timestamps with millisecond precision
+
+==============================================
+UNCOMMITTED CHANGES (NOT IN GIT)
+==============================================
+
+CMakeLists.txt modifications:
+- Added global include_directories (line 9-10)
+- Added 159 add_executable() statements (lines 45-205)
+- Fixed vcpkg triplet path (line 232): x64-windows → x64-mingw-dynamic
+- Commented out: source2, Source6, source7, source9, source13, source15
+
+==============================================
+CRITICAL DISCOVERIES FROM TIMESTAMP ANALYSIS
+==============================================
+
+Build Timeline:
+- 02:11 AM: libUQFFCore.a built (95.19 MB)
+- 02:14 AM: Source134.exe built (first success)
+- 02:22 AM: Git commit 2550e74
+- 03:39 AM: CMake generated 162 .vcxproj files (Visual Studio)
+- 03:40 AM: Built 9 executables with MSVC (HIGHEST COUNT) ⭐
+- 03:41 AM: Rebuild attempt - 0 executables (linking failed)
+- 04:35 AM: CMake reconfiguration (735 files)
+- 05:52 AM: CMake regenerated .vcxproj files (161 files)
+- 05:53 AM: Built 4 executables with MinGW (current build)
+
+03:40 AM Build Location:
+- Directory: 1N5B6Y891 B8;56`YV9 [UB8;561 (2)
+- 134 files total
+- 9 .exe files
+- 124 .pdb files (debug symbols)
+- 122 modules compiled
+- Compiler: MSVC v143 (Visual Studio 2022)
+- Platform: x64
+- Toolset: v143
+- Windows SDK: 10.0.26100.0
+
+Executables ONLY in 03:40 build (MISSING from current):
+- Source163.exe (1,552 KB)
+- Source164.exe (1,555 KB)
+- Source165.exe (1,505 KB)
+- Source166.exe (1,527 KB)
+- Source167.exe (1,413 KB)
+
+==============================================
+VCPKG DEPENDENCIES (VERIFIED PRESENT)
+==============================================
+
+Location: C:\vcpkg\installed\x64-mingw-dynamic\
+- GLEW 2.2.0
+- GLFW3 3.4
+- GLM 1.0.2
+- Assimp 6.0.2
+- yaml-cpp 0.8.0
+- nlohmann-json 3.12.0
+- OpenGL
+
+==============================================
+COMPILER CONFIGURATION
+==============================================
+
+MinGW:
+- Version: 14.2.0
+- Architecture: x86_64-posix-seh
+- Location: C:\msys64\mingw64\bin\
+- Status: ACTIVE in current build
+
+MSVC (Visual Studio):
+- Toolset: v143 (Visual Studio 2022)
+- Platform: x64
+- Windows SDK: 10.0.26100.0
+- Status: Used in 03:40 AM build (NOT current)
+
+==============================================
+BUILD SYSTEM TRANSITION
+==============================================
+
+03:40 AM Configuration:
+- Build System: Visual Studio .vcxproj files
+- Generator: Visual Studio 17 2022
+- Compiler: MSVC v143
+- Result: 9 executables ✅
+
+Current Configuration (05:53 AM):
+- Build System: CMake MinGW Makefiles
+- Generator: MinGW Makefiles
+- Compiler: MinGW-w64 14.2.0
+- Result: 4 executables (lost Source163-167)
+
+Hypothesis:
+Source163-167 contain MSVC-specific code or dependencies
+that fail to compile/link with MinGW compiler.
+
+==============================================
+WORKSPACE STRUCTURE
+==============================================
+
+Source Files: 162 total (source1.cpp - Source167.cpp)
+- Excluded from build: source1, source3, source8, source11, source12
+- Configured in CMake: 159 executables
+- Successfully building: 5 executables
+- Built at 03:40 AM: 9 executables
+- Gap: 150-154 executables failing
+
+Core Library:
+- Location: Core/ directory (139 files)
+- Modules: 128 .cpp files
+- Output: libUQFFCore.a (95.19 MB)
+- Status: Successfully built (95.2% of modules)
+
+==============================================
+POWERSHIFT TERMINALS
+==============================================
+
+Total Open: 55+ terminals
+Status: DO NOT CLOSE (data would be lost)
+User Warning: "Environment resets automatically"
+
+==============================================
+USER CONTEXT
+==============================================
+
+Critical Information:
+- User FIRED YESTERDAY after 10-week project
+- Extreme frustration level
+- Language comprehension difficulties reported
+- Requires approval before ANY execution
+- Demands detailed reports (1,000+ words minimum)
+- Multiple failed build attempts over weeks
+
+User's Ultimate Goal:
+"FINISHED WORKING PROJECT CMAKE MODEL FINISHED WITH ALL MODULES 
+INSTALLED EXCEPT SOURCE1 AND 3 AND 8 AND 11 AND 12"
+
+Target: 157 working executables (162 total - 5 excluded)
+Current: 5 executables (3.1% success)
+Gap: 152 executables failing (96.9% gap)
+
+==============================================
+RECOMMENDED NEXT STEPS
+==============================================
+
+Option 1: IMMEDIATE (Copy working executables)
+- Copy 9 .exe files from 03:40 AM directory to build/
+- Gain +4 executables instantly (Source163-167)
+- New total: 9/161 (5.6% success)
+
+Option 2: SWITCH TO MSVC
+- Reconfigure CMake for Visual Studio generator
+- Install Visual Studio Build Tools if needed
+- Match 03:40 AM successful configuration
+- Potential: 9+ executables
+
+Option 3: FIX MINGW COMPATIBILITY
+- Investigate Source163-167 code
+- Identify MSVC-specific dependencies
+- Modify code for MinGW compatibility
+- Time-intensive, uncertain outcome
+
+Option 4: HYBRID APPROACH
+- Copy working executables (immediate gain)
+- Investigate remaining 150+ failures
+- Fix in batches by error category
+- Long-term solution
+
+==============================================
+FILES GENERATED DURING ANALYSIS SESSION
+==============================================
+
+1. TIMESTAMP_ANALYSIS_COMPLETE.md (comprehensive report)
+2. files_339am.csv (03:39 AM file inventory)
+3. build_0340_modules.txt (122 modules from 03:40 build)
+4. RESTORE_POINT_16NOV2025_651AM (this backup)
+
+==============================================
+GIT REPOSITORY STATE
+==============================================
+
+Last Commit: 2550e74
+Date: November 16, 2025 02:22:47 AM Eastern
+Author: Daniel8Murphy0007
+Message: "Build success: UQFFCore library with 120/126 modules (95.2%)"
+
+Uncommitted Files:
+- CMakeLists.txt (MODIFIED)
+- TIMESTAMP_ANALYSIS_COMPLETE.md (NEW)
+- files_339am.csv (NEW)
+- build_0340_modules.txt (NEW)
+- RESTORE_POINT_16NOV2025_651AM/ (NEW)
+
+Remote: github.com/Daniel8Murphy0007/Star-Magic.git
+Branch: master
+Status: LOCAL AHEAD of remote (uncommitted changes)
+
+==============================================
+RESTORATION INSTRUCTIONS
+==============================================
+
+To restore to this point:
+
+1. Navigate to workspace:
+   cd C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic
+
+2. Copy CMakeLists.txt:
+   Copy-Item RESTORE_POINT_16NOV2025_651AM\CMakeLists_BACKUP.txt CMakeLists.txt -Force
+
+3. Review analysis:
+   notepad RESTORE_POINT_16NOV2025_651AM\TIMESTAMP_ANALYSIS_COMPLETE.md
+
+4. Check git status:
+   git status
+
+5. Reconfigure CMake:
+   cd build
+   cmake ..
+
+6. Rebuild:
+   mingw32-make -j12
+
+Expected Result After Restore:
+- CMakeLists.txt with 159 executables configured
+- Global include paths fixed
+- vcpkg triplet corrected
+- Ready for build attempt
+
+==============================================
+CRITICAL WARNINGS
+==============================================
+
+⚠️ The working 03:40 AM configuration is NOT in git history
+⚠️ Current build system (MinGW) differs from successful build (MSVC)
+⚠️ 55+ PowerShell terminals contain unreproducible data
+⚠️ Environment auto-resets (user reported)
+⚠️ No backup of 03:40 AM .vcxproj configuration files yet
+
+==============================================
+SESSION STATISTICS
+==============================================
+
+Analysis Duration: ~45 minutes
+Timestamps Analyzed: 50+
+Files Scanned: 7,000+
+Executables Found: 16 total across all timestamps
+  - 03:40 AM: 9 executables
+  - 05:53 AM: 4 executables (current)
+  - 02:14 AM: 1 executable
+  - Duplicates: 3 (overlap between builds)
+  - Unique: 13 distinct executables discovered
+
+Build Attempts Identified:
+- 6 major build attempts on Nov 16, 2025
+- 2 successful (9 exe and 4 exe)
+- 4 failed or partial
+
+==============================================
+END OF RESTORE POINT MANIFEST
+==============================================
+
+This restore point captures the state after comprehensive
+timestamp analysis revealing the 03:40 AM build with 9 
+working executables, including Source163-167 which are
+missing from the current build.
+
+Next action requires user decision on approach:
+1. Copy working executables
+2. Switch to MSVC compiler
+3. Fix MinGW compatibility
+4. Hybrid approach
