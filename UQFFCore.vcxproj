@@ -22,31 +22,31 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{2B880EAC-3A34-3797-BF95-291A390E7D1F}</ProjectGuid>
+    <ProjectGuid>{E684D250-CF96-37A5-A399-236B654E4515}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
-    <ProjectName>Source166</ProjectName>
+    <ProjectName>UQFFCore</ProjectName>
     <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
@@ -60,38 +60,33 @@
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Debug\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Source166.dir\Debug\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Source166</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
-    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UQFFCore.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UQFFCore</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Release\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Source166.dir\Release\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Source166</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
-    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UQFFCore.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UQFFCore</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\MinSizeRel\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Source166.dir\MinSizeRel\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Source166</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
-    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">UQFFCore.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">UQFFCore</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\RelWithDebInfo\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Source166.dir\RelWithDebInfo\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Source166</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
-    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">UQFFCore.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">UQFFCore</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/vcpkg/installed/x64-mingw-dynamic/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
       <CallingConvention></CallingConvention>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <FloatingPointModel></FloatingPointModel>
       <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -105,48 +100,37 @@
       <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level4</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;GLFW_DLL;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <ProgramDataBaseFileName>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Source166.dir\Debug\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\UQFFCore.dir\Debug\</ProgramDataBaseFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;GLFW_DLL;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
-    <Link>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    <Lib>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
-      <DataExecutionPrevention></DataExecutionPrevention>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
-      <ImportLibrary>C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/Debug/Source166.lib</ImportLibrary>
-      <LinkErrorReporting></LinkErrorReporting>
-      <ProgramDataBaseFile>C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/Debug/Source166.pdb</ProgramDataBaseFile>
-      <RandomizedBaseAddress></RandomizedBaseAddress>
-      <SubSystem>Console</SubSystem>
-    </Link>
-    <ProjectReference>
-      <LinkLibraryDependencies>false</LinkLibraryDependencies>
-    </ProjectReference>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/vcpkg/installed/x64-mingw-dynamic/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
       <CallingConvention></CallingConvention>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <FloatingPointModel></FloatingPointModel>
       <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -161,48 +145,39 @@
       <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_DLL;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <ProgramDataBaseFileName>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Source166.dir\Release\</ProgramDataBaseFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ProgramDataBaseFileName>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\UQFFCore.dir\Release\</ProgramDataBaseFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_DLL;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
-    <Link>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    <Lib>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
-      <DataExecutionPrevention></DataExecutionPrevention>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
-      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
-      <ImportLibrary>C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/Release/Source166.lib</ImportLibrary>
-      <LinkErrorReporting></LinkErrorReporting>
-      <ProgramDataBaseFile>C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/Release/Source166.pdb</ProgramDataBaseFile>
-      <RandomizedBaseAddress></RandomizedBaseAddress>
-      <SubSystem>Console</SubSystem>
-    </Link>
-    <ProjectReference>
-      <LinkLibraryDependencies>false</LinkLibraryDependencies>
-    </ProjectReference>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/vcpkg/installed/x64-mingw-dynamic/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
       <CallingConvention></CallingConvention>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <FloatingPointModel></FloatingPointModel>
       <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
@@ -217,48 +192,40 @@
       <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_DLL;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <ProgramDataBaseFileName>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Source166.dir\MinSizeRel\</ProgramDataBaseFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ProgramDataBaseFileName>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\UQFFCore.dir\MinSizeRel\</ProgramDataBaseFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_DLL;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
-    <Link>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    <Lib>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
-      <DataExecutionPrevention></DataExecutionPrevention>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
-      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
-      <ImportLibrary>C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/MinSizeRel/Source166.lib</ImportLibrary>
-      <LinkErrorReporting></LinkErrorReporting>
-      <ProgramDataBaseFile>C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/MinSizeRel/Source166.pdb</ProgramDataBaseFile>
-      <RandomizedBaseAddress></RandomizedBaseAddress>
-      <SubSystem>Console</SubSystem>
-    </Link>
-    <ProjectReference>
-      <LinkLibraryDependencies>false</LinkLibraryDependencies>
-    </ProjectReference>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/vcpkg/installed/x64-mingw-dynamic/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
       <CallingConvention></CallingConvention>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <FloatingPointModel></FloatingPointModel>
       <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
@@ -273,39 +240,26 @@
       <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_DLL;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <ProgramDataBaseFileName>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Source166.dir\RelWithDebInfo\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\UQFFCore.dir\RelWithDebInfo\</ProgramDataBaseFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_DLL;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
-    <Link>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    <Lib>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
-      <DataExecutionPrevention></DataExecutionPrevention>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
-      <ImportLibrary>C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/RelWithDebInfo/Source166.lib</ImportLibrary>
-      <LinkErrorReporting></LinkErrorReporting>
-      <ProgramDataBaseFile>C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/RelWithDebInfo/Source166.pdb</ProgramDataBaseFile>
-      <RandomizedBaseAddress></RandomizedBaseAddress>
-      <SubSystem>Console</SubSystem>
-    </Link>
-    <ProjectReference>
-      <LinkLibraryDependencies>false</LinkLibraryDependencies>
-    </ProjectReference>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\CMakeLists.txt">
@@ -365,7 +319,128 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Source166.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\SystemCatalogue.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\UQFFModule4.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\ASASSN14liUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\Abell2256UQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\AetherCouplingModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\AetherVacuumDensityModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\AndromedaUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\AstroSystemsUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\BackgroundAetherModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\BigBangGravityUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\BuoyancyCouplingModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\ButterflyNebulaUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\CentaurusAUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\CompressedResonanceUQFF24Module.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\CompressedResonanceUQFF34Module.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\CompressedResonanceUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\CorePenetrationModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\CrabNebulaUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\CrabResonanceUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\CrabUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\DPMModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\ESO137UQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\ElGordoUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\FeedbackFactorModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\GalacticBlackHoleModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\GalacticDistanceModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\HeavisideFractionModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\HeliosphereThicknessModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\HydrogenAtomUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\HydrogenPToEResonanceUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\HydrogenResonanceUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\HydrogenResonanceUQFFModule_HEALED_20251115_0140.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\HydrogenUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\IC2163UQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\InertiaCouplingModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\InertiaUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\J1610UQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\JupiterAuroraeUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\LENRCalibUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\LENRUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\LagoonNebulaUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\LagoonUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\M16UQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\M51UQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\M87JetUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\MUGEModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\MUGEResonanceModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\MagneticMomentModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\MagneticStringModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\MultiCompressedUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\MultiUQFFCompressionModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\MultiUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\NGC1300UQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\NGC1316UQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\NGC1365UQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\NGC2207UQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\NGC2264UQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\NGC346UQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\NGC4676UQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\NGC6302ResonanceUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\NGC6302UQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\NebularUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\NegativeTimeModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\OrionUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\OuterFieldBubbleModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\PhysicsTerm.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\PiConstantModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\QuasiLongitudinalModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\RAquariiUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\ReciprocationDecayModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\RedDwarfUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\RedSpiderUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\ResonanceSuperconductiveUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\SGR1745UQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\SMBHBinaryUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\SMBHUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\SPTCLJ2215UQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\SaturnUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\ScmPenetrationModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\ScmReactivityDecayModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\ScmVacuumDensityModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\ScmVelocityModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\SgrAStarUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\SgrA_UQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\SolarCycleFrequencyModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\SolarWindBuoyancyModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\SolarWindModulationModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\SolarWindVelocityModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\SombreroUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\SpiralSupernovaeUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\StellarMassModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\StellarRotationModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\StepFunctionModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\StephanQuintetUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\StressEnergyTensorModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\SurfaceMagneticFieldModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\SurfaceTemperatureModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\TapestryUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\TimeReversalZoneModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UFEOrbModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UGC10214UQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFF8AstroSystemsModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFBuoyancyAstroModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFBuoyancyCNBModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFBuoyancyModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFBuoyancyModule157.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFCompressedResonanceModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFCompressionModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFCoreModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFModule5.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFNebulaTriadicModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UaVacuumDensityModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\Ug1DefectModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\Ug3DiskVectorModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UgCouplingModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UgIndexModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UnifiedFieldModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UniversalInertiaVacuumModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UniverseDiameterUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\V838MonUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\VelaPulsarUQFFModule.cpp" />
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\YoungStarsOutflowsUQFFModule.cpp" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

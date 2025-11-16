@@ -68,17 +68,13 @@ set(CORE_FOUNDATION
 # Adaptive framework (Week 2)
 set(CORE_ADAPTIVE
     Core/UQFFModule4.cpp
-    # Core/FluidSolver.cpp - Excluded: requires VTK
+    Core/FluidSolver.cpp
 )
 
 # Extracted modules (Weeks 3-4): All extracted modules
 file(GLOB CORE_MODULES "Core/Modules/*.cpp")
-# Remove modules with unmet dependencies:
-# - SymEngine, SymEngineAllocator: GMP blocked by vcpkg portfile bug (2 modules)
-# - Qt5-dependent modules without Qt5 installed: ForceModule, ScientificCalculatorDialog, InputModule, SIMPlugin (4 modules)
-# - FluidSolver: Requires VTK (Visualization Toolkit) not installed (1 module)
-# - Corrupted backup files
-list(FILTER CORE_MODULES EXCLUDE REGEX ".*/(SymEngine|SymEngineAllocator|ForceModule|ScientificCalculatorDialog|InputModule|SIMPlugin|FluidSolver|.*_CORRUPTED_BACKUP|.*_BACKUP)\\.cpp$")
+# Remove false keywords and modules with external GUI dependencies (OpenGL/Qt) or needing class updates
+list(FILTER CORE_MODULES EXCLUDE REGEX ".*/(FluidSolver|SIMPlugin|ScientificCalculatorDialog|SymEngine|SymEngineAllocator|ForceModule|InputModule|HydrogenResonanceUQFFModule)\\.cpp$")
 
 # Build UQFFCore as static library
 add_library(UQFFCore STATIC
@@ -90,55 +86,7 @@ add_library(UQFFCore STATIC
 target_include_directories(UQFFCore PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/Core
-    C:/vcpkg/installed/x64-windows/include
 )
-
-# Configure OpenGL/GLEW, GLFW, GLM, Assimp, yaml-cpp, nlohmann-json from vcpkg installations
-set(CMAKE_PREFIX_PATH "C:/vcpkg/installed/x64-mingw-dynamic")
-find_package(OpenGL REQUIRED)
-find_package(GLEW REQUIRED)
-find_package(glfw3 CONFIG REQUIRED)
-find_package(glm CONFIG REQUIRED)
-find_package(assimp CONFIG REQUIRED)
-find_package(yaml-cpp CONFIG REQUIRED)
-find_package(nlohmann_json CONFIG REQUIRED)
-
-# Qt5 is optional - only needed for GUI modules (ScientificCalculatorDialog, InputModule, ForceModule)
-# Uncomment below to enable Qt5 modules after installing: vcpkg install qt5-base:x64-mingw-dynamic
-# find_package(Qt5 COMPONENTS Core Widgets)
-
-message(STATUS "FluidSolver dependencies found: OpenGL, GLEW, GLFW3, GLM, Assimp, yaml-cpp, nlohmann-json")
-
-# Link all required libraries to UQFFCore
-target_link_libraries(UQFFCore PUBLIC 
-    GLEW::GLEW 
-    OpenGL::GL 
-    glfw
-    glm::glm
-    assimp::assimp
-    yaml-cpp::yaml-cpp
-    nlohmann_json::nlohmann_json
-)
-
-# If Qt5 was found, link it and copy DLLs
-if(Qt5_FOUND)
-    message(STATUS "Qt5 found: ${Qt5_VERSION} - enabling GUI modules")
-    target_link_libraries(UQFFCore PUBLIC Qt5::Core Qt5::Widgets)
-    target_include_directories(UQFFCore PUBLIC 
-        ${Qt5Core_INCLUDE_DIRS} 
-        ${Qt5Widgets_INCLUDE_DIRS}
-    )
-    add_custom_command(TARGET UQFFCore POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            $<TARGET_FILE:Qt5::Core>
-            $<TARGET_FILE_DIR:UQFFCore>
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            $<TARGET_FILE:Qt5::Widgets>
-            $<TARGET_FILE_DIR:UQFFCore>
-    )
-else()
-    message(STATUS "Qt5 not found - GUI modules (ScientificCalculatorDialog, InputModule, etc.) will be excluded")
-endif()
 
 # Optional: Build integration test
 option(BUILD_CORE_TESTS "Build UQFFCore integration tests" ON)

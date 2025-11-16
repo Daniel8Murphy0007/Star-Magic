@@ -1,0 +1,554 @@
+﻿{
+    "Source82":  {
+                     "Class":  "SMBHUQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source143":  {
+                      "Class":  "LagoonNebulaUQFFModule",
+                      "Method":  "computeF"
+                  },
+    "Source100":  {
+                      "Class":  "HeavisideFractionModule",
+                      "Method":  "computeF_Heaviside"
+                  },
+    "Source85":  {
+                     "Class":  "NGC346UQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source128":  {
+                      "Class":  "ScmVacuumDensityModule",
+                      "Method":  "computeRho_vac_SCm"
+                  },
+    "Source88":  {
+                     "Class":  "AndromedaUQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source60":  {
+                     "Class":  "MultiUQFFCompressionModule",
+                     "Method":  "computeG"
+                 },
+    "Source73":  {
+                     "Class":  "NGC1300UQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source32":  {
+                     "Class":  "CrabUQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source64":  {
+                     "Class":  "BatchType",
+                     "Method":  "computeUP"
+                 },
+    "Source118":  {
+                      "Class":  "StellarRotationModule",
+                      "Method":  "computeOmega_s"
+                  },
+    "Source151":  {
+                      "Class":  "StephanQuintetUQFFModule",
+                      "Method":  "computeF"
+                  },
+    "Source115":  {
+                      "Class":  "SolarWindModulationModule",
+                      "Method":  "computeDelta_sw"
+                  },
+    "Source47":  {
+                     "Class":  "NGC6302ResonanceUQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source158":  {
+                      "Class":  "UQFFBuoyancyModule",
+                      "Method":  "computeFBi"
+                  },
+    "Source127":  {
+                      "Class":  "UniversalInertiaVacuumModule",
+                      "Method":  "computeRho_vac_Ui"
+                  },
+    "Source116":  {
+                      "Class":  "SolarWindVelocityModule",
+                      "Method":  "computeV_sw"
+                  },
+    "Source124":  {
+                      "Class":  "Ug1DefectModule",
+                      "Method":  "computeDelta_def"
+                  },
+    "Source80":  {
+                     "Class":  "SMBHBinaryUQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source69":  {
+                     "Class":  "UQFFCompressionModule",
+                     "Method":  "computeG"
+                 },
+    "Source140":  {
+                      "Class":  "IC2163UQFFModule",
+                      "Method":  "computeF"
+                  },
+    "Source121":  {
+                      "Class":  "SurfaceMagneticFieldModule",
+                      "Method":  "computeB_s_min"
+                  },
+    "Source14":  {
+                     "Class":  "in",
+                     "Method":  "compute_Ug"
+                 },
+    "Source42":  {
+                     "Class":  "HydrogenAtomUQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source91":  {
+                     "Class":  "DPMModule",
+                     "Method":  "computeSCmEnergy"
+                 },
+    "Source19":  {
+                     "Class":  "in",
+                     "Method":  "compute_Ug"
+                 },
+    "Source39":  {
+                     "Class":  "CrabResonanceUQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source132":  {
+                      "Class":  "ButterflyNebulaUQFFModule",
+                      "Method":  "computeF_U_Bi"
+                  },
+    "Source48":  {
+                     "Class":  "OrionUQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source97":  {
+                     "Class":  "FeedbackFactorModule",
+                     "Method":  "computeF_feedback"
+                 },
+    "Source122":  {
+                      "Class":  "SurfaceTemperatureModule",
+                      "Method":  "computeT_s"
+                  },
+    "Source113":  {
+                      "Class":  "ScmReactivityDecayModule",
+                      "Method":  "computeKappa_day"
+                  },
+    "Source98":  {
+                     "Class":  "UnifiedFieldModule",
+                     "Method":  "computeFU"
+                 },
+    "Source77":  {
+                     "Class":  "UGC10214UQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source46":  {
+                     "Class":  "NGC6302UQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source114":  {
+                      "Class":  "SolarCycleFrequencyModule",
+                      "Method":  "computeOmega_c"
+                  },
+    "Source74":  {
+                     "Class":  "UQFFCompressedResonanceModule",
+                     "Method":  "computeG"
+                 },
+    "Source110":  {
+                      "Class":  "OuterFieldBubbleModule",
+                      "Method":  "computeR_b"
+                  },
+    "Source120":  {
+                      "Class":  "StressEnergyTensorModule",
+                      "Method":  "computeT_s"
+                  },
+    "Source37":  {
+                     "Class":  "ResonanceSuperconductiveUQFFModule",
+                     "Method":  "computeResonanceTerm"
+                 },
+    "Source102":  {
+                      "Class":  "UgIndexModule",
+                      "Method":  "computeU_gi"
+                  },
+    "Source34":  {
+                     "Class":  "SGR1745UQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source84":  {
+                     "Class":  "LENRCalibUQFFModule",
+                     "Method":  "computeEta"
+                 },
+    "Source38":  {
+                     "Class":  "CompressedResonanceUQFFModule",
+                     "Method":  "computeCompressedResTerm"
+                 },
+    "Source87":  {
+                     "Class":  "SystemType",
+                     "Method":  "computeG_resonance"
+                 },
+    "Source68":  {
+                     "Class":  "SystemType",
+                     "Method":  "computeEspace"
+                 },
+    "Source33":  {
+                     "Class":  "SGR1745UQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source67":  {
+                     "Class":  "SystemType",
+                     "Method":  "computeTwistPhase"
+                 },
+    "Source24":  {
+                     "Class":  "in",
+                     "Method":  "compute_Ug"
+                 },
+    "Source52":  {
+                     "Class":  "MultiUQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source137":  {
+                      "Class":  "CrabNebulaUQFFModule",
+                      "Method":  "computeF"
+                  },
+    "Source162":  {
+                      "Class":  "UQFFBuoyancyCNBModule",
+                      "Method":  "computeFBi"
+                  },
+    "Source153":  {
+                      "Class":  "Abell2256UQFFModule",
+                      "Method":  "computeF"
+                  },
+    "Source130":  {
+                      "Class":  "UniversalInertiaVacuumModule",
+                      "Method":  "computeRho_vac_Ui"
+                  },
+    "Source160":  {
+                      "Class":  "UQFFBuoyancyModule",
+                      "Method":  "computeFBi"
+                  },
+    "Source119":  {
+                      "Class":  "StepFunctionModule",
+                      "Method":  "computeS_r_Rb"
+                  },
+    "Source111":  {
+                      "Class":  "ReciprocationDecayModule",
+                      "Method":  "computeGamma_day"
+                  },
+    "Source56":  {
+                     "Class":  "BigBangGravityUQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source155":  {
+                      "Class":  "UQFFBuoyancyModule",
+                      "Method":  "computeFBi"
+                  },
+    "Source30":  {
+                     "Class":  "SaturnUQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source15":  {
+                     "Class":  "in",
+                     "Method":  "compute_Ug"
+                 },
+    "Source41":  {
+                     "Class":  "UniverseDiameterUQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source92":  {
+                     "Class":  "BuoyancyCouplingModule",
+                     "Method":  "computeBeta"
+                 },
+    "Source16":  {
+                     "Class":  "in",
+                     "Method":  "compute_Ug"
+                 },
+    "Source106":  {
+                      "Class":  "NegativeTimeModule",
+                      "Method":  "computeT_n"
+                  },
+    "Source93":  {
+                     "Class":  "SolarWindBuoyancyModule",
+                     "Method":  "computeEpsilon_sw"
+                 },
+    "Source134":  {
+                      "Class":  "Abell2256UQFFModule",
+                      "Method":  "computeF"
+                  },
+    "Source109":  {
+                      "Class":  "QuasiLongitudinalModule",
+                      "Method":  "computeF_quasi"
+                  },
+    "Source94":  {
+                     "Class":  "UgCouplingModule",
+                     "Method":  "computeK_i"
+                 },
+    "Source112":  {
+                      "Class":  "ScmPenetrationModule",
+                      "Method":  "computeP_SCm"
+                  },
+    "Source78":  {
+                     "Class":  "NGC4676UQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source45":  {
+                     "Class":  "SpiralSupernovaeUQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source146":  {
+                      "Class":  "NGC1365UQFFModule",
+                      "Method":  "computeF"
+                  },
+    "Source21":  {
+                     "Class":  "in",
+                     "Method":  "compute_Ug"
+                 },
+    "Source20":  {
+                     "Class":  "in",
+                     "Method":  "compute_Ug"
+                 },
+    "Source150":  {
+                      "Class":  "SPTCLJ2215UQFFModule",
+                      "Method":  "computeF"
+                  },
+    "Source83":  {
+                     "Class":  "LENRUQFFModule",
+                     "Method":  "computeNeutronRate"
+                 },
+    "Source161":  {
+                      "Class":  "UQFFBuoyancyAstroModule",
+                      "Method":  "computeFBi"
+                  },
+    "Source138":  {
+                      "Class":  "ElGordoUQFFModule",
+                      "Method":  "computeF"
+                  },
+    "Source86":  {
+                     "Class":  "SystemType",
+                     "Method":  "computeG_compressed"
+                 },
+    "Source154":  {
+                      "Class":  "HydrogenResonanceUQFFModule",
+                      "Method":  "computeHRes"
+                  },
+    "Source89":  {
+                     "Class":  "AetherCouplingModule",
+                     "Method":  "computeT_s"
+                 },
+    "Source101":  {
+                      "Class":  "HeliosphereThicknessModule",
+                      "Method":  "computeH_SCm"
+                  },
+    "Source27":  {
+                     "Class":  "in",
+                     "Method":  "compute_Ug"
+                 },
+    "Source125":  {
+                      "Class":  "Ug3DiskVectorModule",
+                      "Method":  "computePhiHatMagnitude"
+                  },
+    "Source103":  {
+                      "Class":  "InertiaCouplingModule",
+                      "Method":  "computeLambda_i"
+                  },
+    "Source152":  {
+                      "Class":  "VelaPulsarUQFFModule",
+                      "Method":  "computeF"
+                  },
+    "Source147":  {
+                      "Class":  "NGC2207UQFFModule",
+                      "Method":  "computeF"
+                  },
+    "Source29":  {
+                     "Class":  "SombreroUQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source148":  {
+                      "Class":  "RAquariiUQFFModule",
+                      "Method":  "computeF"
+                  },
+    "Source23":  {
+                     "Class":  "in",
+                     "Method":  "compute_Ug"
+                 },
+    "Source57":  {
+                     "Class":  "MultiCompressedUQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source136":  {
+                      "Class":  "CentaurusAUQFFModule",
+                      "Method":  "computeF"
+                  },
+    "Source17":  {
+                     "Class":  "in",
+                     "Method":  "compute_Ug"
+                 },
+    "Source105":  {
+                      "Class":  "GalacticBlackHoleModule",
+                      "Method":  "computeM_bh"
+                  },
+    "Source135":  {
+                      "Class":  "ASASSN14liUQFFModule",
+                      "Method":  "computeF"
+                  },
+    "Source18":  {
+                     "Class":  "in",
+                     "Method":  "compute_Ug"
+                 },
+    "Source108":  {
+                      "Class":  "CorePenetrationModule",
+                      "Method":  "computeP_core"
+                  },
+    "Source95":  {
+                     "Class":  "MagneticStringModule",
+                     "Method":  "computeRj"
+                 },
+    "Source40":  {
+                     "Class":  "CompressedResonanceUQFF24Module",
+                     "Method":  "computeCompressedResTerm"
+                 },
+    "Source96":  {
+                     "Class":  "GalacticDistanceModule",
+                     "Method":  "computeDg"
+                 },
+    "Source70":  {
+                     "Class":  "M51UQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source44":  {
+                     "Class":  "LagoonUQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source35":  {
+                     "Class":  "SgrA_UQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source141":  {
+                      "Class":  "J1610UQFFModule",
+                      "Method":  "computeF"
+                  },
+    "Source142":  {
+                      "Class":  "JupiterAuroraeUQFFModule",
+                      "Method":  "computeF"
+                  },
+    "Source133":  {
+                      "Class":  "CentaurusAUQFFModule",
+                      "Method":  "computeF_U_Bi"
+                  },
+    "Source123":  {
+                      "Class":  "TimeReversalZoneModule",
+                      "Method":  "computeF_TRZ"
+                  },
+    "Source66":  {
+                     "Class":  "SystemType",
+                     "Method":  "computeWmag"
+                 },
+    "Source31":  {
+                     "Class":  "M16UQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source65":  {
+                     "Class":  "SystemType",
+                     "Method":  "computeElectricField"
+                 },
+    "Source71":  {
+                     "Class":  "NGC1316UQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source129":  {
+                      "Class":  "UaVacuumDensityModule",
+                      "Method":  "computeRho_vac_UA"
+                  },
+    "Source26":  {
+                     "Class":  "in",
+                     "Method":  "compute_Ug"
+                 },
+    "Source126":  {
+                      "Class":  "AetherVacuumDensityModule",
+                      "Method":  "computeRho_vac_A"
+                  },
+    "Source25":  {
+                     "Class":  "in",
+                     "Method":  "compute_Ug"
+                 },
+    "Source145":  {
+                      "Class":  "M87JetUQFFModule",
+                      "Method":  "computeF"
+                  },
+    "Source144":  {
+                      "Class":  "LagoonNebulaUQFFModule",
+                      "Method":  "computeF"
+                  },
+    "Source28":  {
+                     "Class":  "AndromedaUQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source149":  {
+                      "Class":  "SgrAStarUQFFModule",
+                      "Method":  "computeF"
+                  },
+    "Source22":  {
+                     "Class":  "in",
+                     "Method":  "compute_Ug"
+                 },
+    "Source54":  {
+                     "Class":  "YoungStarsOutflowsUQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source72":  {
+                     "Class":  "V838MonUQFFModule",
+                     "Method":  "computeIecho"
+                 },
+    "Source43":  {
+                     "Class":  "HydrogenPToEResonanceUQFFModule",
+                     "Method":  "computeResonanceTerm"
+                 },
+    "Source49":  {
+                     "Class":  "CompressedResonanceUQFF34Module",
+                     "Method":  "computeCompressed"
+                 },
+    "Source117":  {
+                      "Class":  "StellarMassModule",
+                      "Method":  "computeM_s"
+                  },
+    "Source131":  {
+                      "Class":  "ScmVelocityModule",
+                      "Method":  "computeE_react"
+                  },
+    "Source81":  {
+                     "Class":  "NGC346UQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source104":  {
+                      "Class":  "MagneticMomentModule",
+                      "Method":  "computeMu_j"
+                  },
+    "Source90":  {
+                     "Class":  "BackgroundAetherModule",
+                     "Method":  "computeT_s"
+                 },
+    "Source79":  {
+                     "Class":  "RedSpiderUQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source107":  {
+                      "Class":  "PiConstantModule",
+                      "Method":  "computePi"
+                  },
+    "Source156":  {
+                      "Class":  "UQFFBuoyancyCNBModule",
+                      "Method":  "computeFBi"
+                  },
+    "Source76":  {
+                     "Class":  "NGC2264UQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source159":  {
+                      "Class":  "UQFFBuoyancyModule",
+                      "Method":  "computeFBi"
+                  },
+    "Source157":  {
+                      "Class":  "UQFFBuoyancyModule157",
+                      "Method":  "computeUb1"
+                  },
+    "Source36":  {
+                     "Class":  "TapestryUQFFModule",
+                     "Method":  "computeG"
+                 },
+    "Source139":  {
+                      "Class":  "ESO137UQFFModule",
+                      "Method":  "computeF"
+                  }
+}

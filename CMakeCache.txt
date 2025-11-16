@@ -14,6 +14,9 @@
 # EXTERNAL cache entries
 ########################
 
+//Build UQFFCore integration tests
+BUILD_CORE_TESTS:BOOL=ON
+
 //Path to a program.
 CMAKE_AR:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/lib.exe
 
@@ -173,6 +176,9 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=OFF
 
+//The directory containing a CMake configuration file for GLEW.
+GLEW_DIR:PATH=C:/vcpkg/installed/x64-mingw-dynamic/share/glew
+
 //Value Computed by CMake
 MyProjectName_BINARY_DIR:STATIC=C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic
 
@@ -182,6 +188,15 @@ MyProjectName_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 MyProjectName_SOURCE_DIR:STATIC=C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic
 
+//OpenGL library for win32
+OPENGL_gl_LIBRARY:STRING=opengl32
+
+//GLU library for win32
+OPENGL_glu_LIBRARY:STRING=glu32
+
+//The directory containing a CMake configuration file for Qt5.
+Qt5_DIR:PATH=Qt5_DIR-NOTFOUND
+
 //Value Computed by CMake
 StarMagic_UQFF_BINARY_DIR:STATIC=C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic
 
@@ -190,6 +205,24 @@ StarMagic_UQFF_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 StarMagic_UQFF_SOURCE_DIR:STATIC=C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic
+
+//Dependencies for the target
+UQFFCore_LIB_DEPENDS:STATIC=general;GLEW::GLEW;general;glfw;general;glm::glm;general;assimp::assimp;general;yaml-cpp::yaml-cpp;
+
+//The directory containing a CMake configuration file for assimp.
+assimp_DIR:PATH=C:/vcpkg/installed/x64-mingw-dynamic/share/assimp
+
+//The directory containing a CMake configuration file for glfw3.
+glfw3_DIR:PATH=C:/vcpkg/installed/x64-mingw-dynamic/share/glfw3
+
+//The directory containing a CMake configuration file for glm.
+glm_DIR:PATH=C:/vcpkg/installed/x64-mingw-dynamic/share/glm
+
+//The directory containing a CMake configuration file for nlohmann_json.
+nlohmann_json_DIR:PATH=C:/vcpkg/installed/x64-mingw-dynamic/share/nlohmann_json
+
+//The directory containing a CMake configuration file for yaml-cpp.
+yaml-cpp_DIR:PATH=C:/vcpkg/installed/x64-mingw-dynamic/share/yaml-cpp
 
 
 ########################
@@ -246,6 +279,12 @@ CMAKE_GENERATOR_INSTANCE:INTERNAL=C:/Program Files/Microsoft Visual Studio/2022/
 CMAKE_GENERATOR_PLATFORM:INTERNAL=x64
 //Name of generator toolset.
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
+//Test CMAKE_HAVE_LIBC_PTHREAD
+CMAKE_HAVE_LIBC_PTHREAD:INTERNAL=
+//Have library pthreads
+CMAKE_HAVE_PTHREADS_CREATE:INTERNAL=
+//Have library pthread
+CMAKE_HAVE_PTHREAD_CREATE:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic
@@ -312,4 +351,16 @@ CMAKE_STATIC_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding GLEW
+FIND_PACKAGE_MESSAGE_DETAILS_GLEW:INTERNAL=[C:/vcpkg/installed/x64-mingw-dynamic/share/glew/glew-config.cmake][v()]
+//Details about finding OpenGL
+FIND_PACKAGE_MESSAGE_DETAILS_OpenGL:INTERNAL=[opengl32][ ][v()]
+//Details about finding Threads
+FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//Details about finding nlohmann_json
+FIND_PACKAGE_MESSAGE_DETAILS_nlohmann_json:INTERNAL=[C:/vcpkg/installed/x64-mingw-dynamic/share/nlohmann_json/nlohmann_jsonConfig.cmake][v3.12.0()]
+//ADVANCED property for variable: OPENGL_gl_LIBRARY
+OPENGL_gl_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OPENGL_glu_LIBRARY
+OPENGL_glu_LIBRARY-ADVANCED:INTERNAL=1
 

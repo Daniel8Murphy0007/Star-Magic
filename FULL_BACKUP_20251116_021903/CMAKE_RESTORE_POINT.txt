@@ -1,0 +1,22 @@
+CMAKE RESTORE POINT
+===================
+
+Date: November 13, 2025
+Commit: 30646bd
+Branch: master
+Status: 100/157 files compiling (63.7%)
+
+Restore Command:
+git reset --hard 30646bd
+
+Description:
+Baseline state with 100 successfully compiling C++ source files.
+Fixed source131-134: removed duplicates, fixed v_scm syntax, wrapped evaluations.
+
+Files Status:
+- Source134.cpp: ✓ Compiling
+- MAIN_1.cpp: ✓ Present
+- MAIN_1_CoAnQi.cpp: ✓ Present
+- CMakeLists.txt: ✓ Configured
+
+Use this restore point if future modifications break compilation.

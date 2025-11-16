@@ -5,7 +5,7 @@ events:
     kind: "message-v1"
     backtrace:
       - "C:/CMake/share/cmake-4.2/Modules/CMakeDetermineSystem.cmake:212 (message)"
-      - "CMakeLists.txt:5 (project)"
+      - "CMakeLists.txt:7 (project)"
     message: |
       The system is: Windows - 10.0.26200 - AMD64
   -
@@ -16,7 +16,7 @@ events:
       - "C:/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
       - "C:/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "C:/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:5 (project)"
+      - "CMakeLists.txt:7 (project)"
     mode: "file"
     variable: "src_in"
     description: "Path to a file."
@@ -83,6 +83,7 @@ events:
         - "C:\\Users\\tmsjd\\.dotnet\\tools"
         - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\nodejs"
+        - "C:\\nodejs\\"
         - "C:\\Users\\tmsjd\\nodejs"
         - "C:\\Users\\tmsjd\\.local\\bin"
         - "C:\\Python314\\Scripts\\"
@@ -112,23 +113,55 @@ events:
         - "C:\\Program Files\\nodejs\""
         - "C:\\Users\\tmsjd\\.dotnet\\tools"
         - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\MinGW\\mingw64\\bin"
+        - "C:\\Strawberry\\perl\\bin"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files/MyProjectName"
   -
     kind: "message-v1"
     backtrace:
       - "C:/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
       - "C:/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "C:/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:5 (project)"
+      - "CMakeLists.txt:7 (project)"
     message: |
       Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
       Compiler:  
-      Build flags: 
+      Build flags: /DWIN32;/D_WINDOWS;/W3;/GR;/EHsc
       Id flags:  
       
       The output was:
       0
       MSBuild version 17.14.23+b0019275e for .NET Framework
-      Build started 11/6/2025 11:47:52 AM.
+      Build started 11/16/2025 1:54:24 AM.
       
       Project "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\4.2.0-rc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -157,7 +190,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:01.84
+      Time Elapsed 00:00:02.17
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -174,7 +207,7 @@ events:
       - "C:/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:65 (__resolve_tool_path)"
       - "C:/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:103 (__resolve_linker_path)"
       - "C:/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
-      - "CMakeLists.txt:5 (project)"
+      - "CMakeLists.txt:7 (project)"
     mode: "program"
     variable: "_CMAKE_TOOL_WITH_PATH"
     description: "Path to a program."
@@ -220,6 +253,8 @@ events:
       - "C:/Program Files/nodejs\"/"
       - "C:/Users/tmsjd/AppData/Roaming/npm/"
       - "C:/Users/tmsjd/nodejs/"
+      - "C:/MinGW/mingw64/bin/"
+      - "C:/Strawberry/perl/bin/"
     searched_directories:
       - "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/link.com"
     found: "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/link.exe"
@@ -273,6 +308,7 @@ events:
         - "C:\\Users\\tmsjd\\.dotnet\\tools"
         - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\nodejs"
+        - "C:\\nodejs\\"
         - "C:\\Users\\tmsjd\\nodejs"
         - "C:\\Users\\tmsjd\\.local\\bin"
         - "C:\\Python314\\Scripts\\"
@@ -302,6 +338,38 @@ events:
         - "C:\\Program Files\\nodejs\""
         - "C:\\Users\\tmsjd\\.dotnet\\tools"
         - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\MinGW\\mingw64\\bin"
+        - "C:\\Strawberry\\perl\\bin"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files/MyProjectName"
   -
     kind: "find-v1"
     backtrace:
@@ -309,7 +377,7 @@ events:
       - "C:/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:65 (__resolve_tool_path)"
       - "C:/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:104 (__resolve_linker_path)"
       - "C:/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
-      - "CMakeLists.txt:5 (project)"
+      - "CMakeLists.txt:7 (project)"
     mode: "program"
     variable: "_CMAKE_TOOL_WITH_PATH"
     description: "Path to a program."
@@ -355,6 +423,8 @@ events:
       - "C:/Program Files/nodejs\"/"
       - "C:/Users/tmsjd/AppData/Roaming/npm/"
       - "C:/Users/tmsjd/nodejs/"
+      - "C:/MinGW/mingw64/bin/"
+      - "C:/Strawberry/perl/bin/"
     searched_directories:
       - "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/lld-link.com"
       - "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/lld-link.exe"
@@ -449,6 +519,12 @@ events:
       - "C:/Users/tmsjd/nodejs/lld-link.com"
       - "C:/Users/tmsjd/nodejs/lld-link.exe"
       - "C:/Users/tmsjd/nodejs/lld-link"
+      - "C:/MinGW/mingw64/bin/lld-link.com"
+      - "C:/MinGW/mingw64/bin/lld-link.exe"
+      - "C:/MinGW/mingw64/bin/lld-link"
+      - "C:/Strawberry/perl/bin/lld-link.com"
+      - "C:/Strawberry/perl/bin/lld-link.exe"
+      - "C:/Strawberry/perl/bin/lld-link"
     found: false
     search_context:
       ENV{PATH}:
@@ -500,6 +576,7 @@ events:
         - "C:\\Users\\tmsjd\\.dotnet\\tools"
         - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\nodejs"
+        - "C:\\nodejs\\"
         - "C:\\Users\\tmsjd\\nodejs"
         - "C:\\Users\\tmsjd\\.local\\bin"
         - "C:\\Python314\\Scripts\\"
@@ -529,61 +606,442 @@ events:
         - "C:\\Program Files\\nodejs\""
         - "C:\\Users\\tmsjd\\.dotnet\\tools"
         - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\MinGW\\mingw64\\bin"
+        - "C:\\Strawberry\\perl\\bin"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files/MyProjectName"
   -
-    kind: "find-v1"
+    kind: "try_compile-v1"
     backtrace:
-      - "C:/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
-      - "C:/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
-      - "CMakeLists.txt:5 (project)"
-    mode: "program"
-    variable: "CMAKE_LINKER"
-    description: "Path to a program."
+      - "C:/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "C:/CMake/share/cmake-4.2/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:7 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-amrivv"
+      binary: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-amrivv"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-amrivv'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Professional/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_26716.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.23+b0019275e for .NET Framework
+        Build started 11/16/2025 1:54:27 AM.
+        
+        Project "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-amrivv\\cmTC_26716.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-amrivv\\Debug\\".
+          Creating directory "cmTC_26716.dir\\Debug\\cmTC_26716.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_26716.dir\\Debug\\cmTC_26716.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_26716.dir\\Debug\\cmTC_26716.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GR /Fo"cmTC_26716.dir\\Debug\\\\" /Fd"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-amrivv\\cmTC_26716.dir\\Debug\\vc143.pdb" /external:W3 /TP /errorReport:queue "C:\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35219 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GR /Fo"cmTC_26716.dir\\Debug\\\\" /Fd"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-amrivv\\cmTC_26716.dir\\Debug\\vc143.pdb" /external:W3 /TP /errorReport:queue "C:\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
+          CMakeCXXCompilerABI.cpp
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-amrivv\\Debug\\cmTC_26716.exe" /INCREMENTAL /ILK:"cmTC_26716.dir\\Debug\\cmTC_26716.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-amrivv/Debug/cmTC_26716.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-amrivv/Debug/cmTC_26716.lib" /MACHINE:X64  /machine:x64 cmTC_26716.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_26716.vcxproj -> C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-amrivv\\Debug\\cmTC_26716.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_26716.dir\\Debug\\cmTC_26716.tlog\\unsuccessfulbuild".
+          Touching "cmTC_26716.dir\\Debug\\cmTC_26716.tlog\\cmTC_26716.lastbuildstate".
+        Done Building Project "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-amrivv\\cmTC_26716.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.77
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
+      - "C:/CMake/share/cmake-4.2/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:7 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'CXX': C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/HostX64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/CMake/share/cmake-4.2/Modules/Internal/CMakeDetermineLinkerId.cmake:36 (message)"
+      - "C:/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerABI.cmake:299 (cmake_determine_linker_id)"
+      - "C:/CMake/share/cmake-4.2/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:7 (project)"
+    message: |
+      Running the CXX compiler's linker: "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.44.35219.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "CMakeLists.txt:99 (find_package)"
+    name: "Qt5"
+    components:
+      -
+        name: "Core"
+        required: true
+        found: false
+      -
+        name: "Widgets"
+        required: true
+        found: false
+    configs:
+      -
+        filename: "Qt5Config.cmake"
+        kind: "cmake"
+      -
+        filename: "qt5-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
     settings:
-      SearchFramework: "NEVER"
-      SearchAppBundle: "NEVER"
-      CMAKE_FIND_USE_CMAKE_PATH: false
-      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
-      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
-      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
-      CMAKE_FIND_USE_INSTALL_PREFIX: true
-    names:
-      - "link"
-    candidate_directories:
-      - "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/"
-      - "C:/Python314/Scripts/"
-      - "C:/Python314/"
-      - "C:/Program Files (x86)/Microsoft SDKs/Azure/CLI2/wbin/"
-      - "C:/Windows/System32/"
-      - "C:/Windows/"
-      - "C:/Windows/System32/wbem/"
-      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
-      - "C:/Windows/System32/OpenSSH/"
-      - "C:/Program Files/Git/cmd/"
-      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/"
-      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
-      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
-      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
-      - "C:/ProgramData/chocolatey/bin/"
-      - "C:/Program Files/Docker/Docker/resources/bin/"
-      - "C:/Program Files/dotnet/"
-      - "C:/Program Files (x86)/IncrediBuild/"
-      - "C:/CMake/bin/"
-      - "C:/nodejs/"
-      - "C:/Users/tmsjd/.local/bin/"
-      - "C:/Program Files/CMake/bin/"
-      - "C:/Program Files/nodejs/"
-      - "C:/Users/tmsjd/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/tmsjd/AppData/Local/Microsoft/WindowsApps/"
-      - "C:/Users/tmsjd/AppData/Local/GitHubDesktop/bin/"
-      - "C:/Users/tmsjd/AppData/Local/Programs/Microsoft VS Code/bin/"
-      - "C:/Users/tmsjd/.dotnet/tools/"
-      - "C:/Program Files/nodejs\"/"
-      - "C:/Users/tmsjd/AppData/Roaming/npm/"
-      - "C:/Users/tmsjd/nodejs/"
-    searched_directories:
-      - "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/link.com"
-    found: "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/link.exe"
+      required: "required_explicit"
+      quiet: false
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "Qt5"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-windows/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-windows/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Python314/Scripts/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Python314/Scripts/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Python314/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Python314/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Microsoft SDKs/Azure/CLI2/wbin/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Microsoft SDKs/Azure/CLI2/wbin/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/wbem/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/wbem/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/WindowsPowerShell/v1.0/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/WindowsPowerShell/v1.0/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/OpenSSH/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/OpenSSH/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Git/cmd/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Git/cmd/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/ProgramData/chocolatey/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/ProgramData/chocolatey/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Docker/Docker/resources/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Docker/Docker/resources/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/dotnet/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/dotnet/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/IncrediBuild/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/IncrediBuild/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/CMake/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/CMake/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/nodejs/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/nodejs/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/.local/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/.local/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/AppData/Local/Programs/Python/Launcher/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/AppData/Local/Programs/Python/Launcher/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/AppData/Local/Microsoft/WindowsApps/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/AppData/Local/Microsoft/WindowsApps/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/AppData/Local/GitHubDesktop/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/AppData/Local/GitHubDesktop/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/AppData/Local/Programs/Microsoft VS Code/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/AppData/Local/Programs/Microsoft VS Code/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/AppData/Roaming/npm/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/AppData/Roaming/npm/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/nodejs/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/nodejs/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/MinGW/mingw64/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/MinGW/mingw64/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Strawberry/perl/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Strawberry/perl/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/CMake/Qt5Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/CMake/qt5-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found: null
     search_context:
+      CMAKE_PREFIX_PATH:
+        - "C:/vcpkg/installed/x64-windows"
+        - "C:/vcpkg/installed/x64-mingw-dynamic"
       ENV{PATH}:
         - "C:\\Python314\\Scripts\\"
         - "C:\\Python314\\"
@@ -633,6 +1091,7 @@ events:
         - "C:\\Users\\tmsjd\\.dotnet\\tools"
         - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\nodejs"
+        - "C:\\nodejs\\"
         - "C:\\Users\\tmsjd\\nodejs"
         - "C:\\Users\\tmsjd\\.local\\bin"
         - "C:\\Python314\\Scripts\\"
@@ -662,153 +1121,1360 @@ events:
         - "C:\\Program Files\\nodejs\""
         - "C:\\Users\\tmsjd\\.dotnet\\tools"
         - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\MinGW\\mingw64\\bin"
+        - "C:\\Strawberry\\perl\\bin"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files/MyProjectName"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "C:/CMake"
+        - "C:/Program Files/MyProjectName"
+      CMAKE_MODULE_PATH:
+        - "C:/vcpkg/installed/x64-windows/share/cmake/Qt5"
+...
+
+---
+events:
   -
-    kind: "find-v1"
+    kind: "find_package-v1"
     backtrace:
-      - "C:/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
-      - "C:/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
-      - "CMakeLists.txt:5 (project)"
-    mode: "program"
-    variable: "CMAKE_MT"
-    description: "Path to a program."
+      - "C:/CMake/share/cmake-4.2/Modules/FindGLEW.cmake:139 (find_package)"
+      - "CMakeLists.txt:99 (find_package)"
+    name: "GLEW"
+    configs:
+      -
+        filename: "GLEWConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "glew-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
     settings:
-      SearchFramework: "NEVER"
-      SearchAppBundle: "NEVER"
-      CMAKE_FIND_USE_CMAKE_PATH: false
-      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
-      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
-      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
-      CMAKE_FIND_USE_INSTALL_PREFIX: true
-    names:
-      - "mt"
-    candidate_directories:
-      - "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/"
-      - "C:/Python314/Scripts/"
-      - "C:/Python314/"
-      - "C:/Program Files (x86)/Microsoft SDKs/Azure/CLI2/wbin/"
-      - "C:/Windows/System32/"
-      - "C:/Windows/"
-      - "C:/Windows/System32/wbem/"
-      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
-      - "C:/Windows/System32/OpenSSH/"
-      - "C:/Program Files/Git/cmd/"
-      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/"
-      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
-      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
-      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
-      - "C:/ProgramData/chocolatey/bin/"
-      - "C:/Program Files/Docker/Docker/resources/bin/"
-      - "C:/Program Files/dotnet/"
-      - "C:/Program Files (x86)/IncrediBuild/"
-      - "C:/CMake/bin/"
-      - "C:/nodejs/"
-      - "C:/Users/tmsjd/.local/bin/"
-      - "C:/Program Files/CMake/bin/"
-      - "C:/Program Files/nodejs/"
-      - "C:/Users/tmsjd/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/tmsjd/AppData/Local/Microsoft/WindowsApps/"
-      - "C:/Users/tmsjd/AppData/Local/GitHubDesktop/bin/"
-      - "C:/Users/tmsjd/AppData/Local/Programs/Microsoft VS Code/bin/"
-      - "C:/Users/tmsjd/.dotnet/tools/"
-      - "C:/Program Files/nodejs\"/"
-      - "C:/Users/tmsjd/AppData/Roaming/npm/"
-      - "C:/Users/tmsjd/nodejs/"
-    searched_directories:
-      - "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/mt.com"
-      - "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/mt.exe"
-      - "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/mt"
-      - "C:/Python314/Scripts/mt.com"
-      - "C:/Python314/Scripts/mt.exe"
-      - "C:/Python314/Scripts/mt"
-      - "C:/Python314/mt.com"
-      - "C:/Python314/mt.exe"
-      - "C:/Python314/mt"
-      - "C:/Program Files (x86)/Microsoft SDKs/Azure/CLI2/wbin/mt.com"
-      - "C:/Program Files (x86)/Microsoft SDKs/Azure/CLI2/wbin/mt.exe"
-      - "C:/Program Files (x86)/Microsoft SDKs/Azure/CLI2/wbin/mt"
-      - "C:/Windows/System32/mt.com"
-      - "C:/Windows/System32/mt.exe"
-      - "C:/Windows/System32/mt"
-      - "C:/Windows/mt.com"
-      - "C:/Windows/mt.exe"
-      - "C:/Windows/mt"
-      - "C:/Windows/System32/wbem/mt.com"
-      - "C:/Windows/System32/wbem/mt.exe"
-      - "C:/Windows/System32/wbem/mt"
-      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt.com"
-      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt.exe"
-      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt"
-      - "C:/Windows/System32/OpenSSH/mt.com"
-      - "C:/Windows/System32/OpenSSH/mt.exe"
-      - "C:/Windows/System32/OpenSSH/mt"
-      - "C:/Program Files/Git/cmd/mt.com"
-      - "C:/Program Files/Git/cmd/mt.exe"
-      - "C:/Program Files/Git/cmd/mt"
-      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/mt.com"
-      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/mt.exe"
-      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/mt"
-      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/mt.com"
-      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/mt.exe"
-      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/mt"
-      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/mt.com"
-      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/mt.exe"
-      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/mt"
-      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/mt.com"
-      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/mt.exe"
-      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/mt"
-      - "C:/ProgramData/chocolatey/bin/mt.com"
-      - "C:/ProgramData/chocolatey/bin/mt.exe"
-      - "C:/ProgramData/chocolatey/bin/mt"
-      - "C:/Program Files/Docker/Docker/resources/bin/mt.com"
-      - "C:/Program Files/Docker/Docker/resources/bin/mt.exe"
-      - "C:/Program Files/Docker/Docker/resources/bin/mt"
-      - "C:/Program Files/dotnet/mt.com"
-      - "C:/Program Files/dotnet/mt.exe"
-      - "C:/Program Files/dotnet/mt"
-      - "C:/Program Files (x86)/IncrediBuild/mt.com"
-      - "C:/Program Files (x86)/IncrediBuild/mt.exe"
-      - "C:/Program Files (x86)/IncrediBuild/mt"
-      - "C:/CMake/bin/mt.com"
-      - "C:/CMake/bin/mt.exe"
-      - "C:/CMake/bin/mt"
-      - "C:/nodejs/mt.com"
-      - "C:/nodejs/mt.exe"
-      - "C:/nodejs/mt"
-      - "C:/Users/tmsjd/.local/bin/mt.com"
-      - "C:/Users/tmsjd/.local/bin/mt.exe"
-      - "C:/Users/tmsjd/.local/bin/mt"
-      - "C:/Program Files/CMake/bin/mt.com"
-      - "C:/Program Files/CMake/bin/mt.exe"
-      - "C:/Program Files/CMake/bin/mt"
-      - "C:/Program Files/nodejs/mt.com"
-      - "C:/Program Files/nodejs/mt.exe"
-      - "C:/Program Files/nodejs/mt"
-      - "C:/Users/tmsjd/AppData/Local/Programs/Python/Launcher/mt.com"
-      - "C:/Users/tmsjd/AppData/Local/Programs/Python/Launcher/mt.exe"
-      - "C:/Users/tmsjd/AppData/Local/Programs/Python/Launcher/mt"
-      - "C:/Users/tmsjd/AppData/Local/Microsoft/WindowsApps/mt.com"
-      - "C:/Users/tmsjd/AppData/Local/Microsoft/WindowsApps/mt.exe"
-      - "C:/Users/tmsjd/AppData/Local/Microsoft/WindowsApps/mt"
-      - "C:/Users/tmsjd/AppData/Local/GitHubDesktop/bin/mt.com"
-      - "C:/Users/tmsjd/AppData/Local/GitHubDesktop/bin/mt.exe"
-      - "C:/Users/tmsjd/AppData/Local/GitHubDesktop/bin/mt"
-      - "C:/Users/tmsjd/AppData/Local/Programs/Microsoft VS Code/bin/mt.com"
-      - "C:/Users/tmsjd/AppData/Local/Programs/Microsoft VS Code/bin/mt.exe"
-      - "C:/Users/tmsjd/AppData/Local/Programs/Microsoft VS Code/bin/mt"
-      - "C:/Users/tmsjd/.dotnet/tools/mt.com"
-      - "C:/Users/tmsjd/.dotnet/tools/mt.exe"
-      - "C:/Users/tmsjd/.dotnet/tools/mt"
-      - "C:/Program Files/nodejs\"/mt.com"
-      - "C:/Program Files/nodejs\"/mt.exe"
-      - "C:/Program Files/nodejs\"/mt"
-      - "C:/Users/tmsjd/AppData/Roaming/npm/mt.com"
-      - "C:/Users/tmsjd/AppData/Roaming/npm/mt.exe"
-      - "C:/Users/tmsjd/AppData/Roaming/npm/mt"
-      - "C:/Users/tmsjd/nodejs/mt.com"
-      - "C:/Users/tmsjd/nodejs/mt.exe"
-      - "C:/Users/tmsjd/nodejs/mt"
-    found: false
+      required: "optional"
+      quiet: true
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "GLEW"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/GLEWConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/glew-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/GLEWConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/glew-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/share/glew/GLEWConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found:
+      path: "C:/vcpkg/installed/x64-mingw-dynamic/share/glew/glew-config.cmake"
+      mode: "config"
+      version: ""
     search_context:
+      CMAKE_PREFIX_PATH:
+        - "C:/vcpkg/installed/x64-mingw-dynamic"
+      ENV{PATH}:
+        - "c:\\Users\\tmsjd\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\tmsjd\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IncrediBuild"
+        - "C:\\CMake\\bin"
+        - "C:\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\nodejs\\"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\MinGW\\mingw64\\bin"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "c:\\Users\\tmsjd\\.vscode\\extensions\\ms-python.debugpy-2025.16.0-win32-x64\\bundled\\scripts\\noConfigScripts"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files/MyProjectName"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "C:/CMake"
+        - "C:/Program Files/MyProjectName"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/CMake/share/cmake-4.2/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "C:/CMake/share/cmake-4.2/Modules/CheckCXXSourceCompiles.cmake:103 (cmake_check_source_compiles)"
+      - "C:/CMake/share/cmake-4.2/Modules/FindThreads.cmake:162 (check_cxx_source_compiles)"
+      - "C:/CMake/share/cmake-4.2/Modules/FindThreads.cmake:226 (_threads_check_libc)"
+      - "C:/CMake/share/cmake-4.2/Modules/CMakeFindDependencyMacro.cmake:93 (find_package)"
+      - "C:/CMake/share/cmake-4.2/Modules/CMakeFindDependencyMacro.cmake:125 (__find_dependency_common)"
+      - "C:/vcpkg/installed/x64-mingw-dynamic/share/glfw3/glfw3Config.cmake:2 (find_dependency)"
+      - "CMakeLists.txt:100 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-c0y163"
+      binary: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-c0y163"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Od /W4"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-c0y163'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Professional/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_6733d.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.23+b0019275e for .NET Framework
+        Build started 11/16/2025 2:09:59 AM.
+        
+        Project "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-c0y163\\cmTC_6733d.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-c0y163\\Debug\\".
+          Creating directory "cmTC_6733d.dir\\Debug\\cmTC_6733d.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_6733d.dir\\Debug\\cmTC_6733d.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_6733d.dir\\Debug\\cmTC_6733d.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W4 /WX- /diagnostics:column /Od /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /GR /std:c++17 /Fo"cmTC_6733d.dir\\Debug\\\\" /Fd"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-c0y163\\cmTC_6733d.dir\\Debug\\vc143.pdb" /external:W4 /TP /errorReport:queue "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-c0y163\\src.cxx"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35219 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W4 /WX- /diagnostics:column /Od /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /GR /std:c++17 /Fo"cmTC_6733d.dir\\Debug\\\\" /Fd"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-c0y163\\cmTC_6733d.dir\\Debug\\vc143.pdb" /external:W4 /TP /errorReport:queue "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-c0y163\\src.cxx"
+          src.cxx
+        C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-c0y163\\src.cxx(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-c0y163\\cmTC_6733d.vcxproj]
+        Done Building Project "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-c0y163\\cmTC_6733d.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-c0y163\\cmTC_6733d.vcxproj" (default target) (1) ->
+        (ClCompile target) -> 
+          C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-c0y163\\src.cxx(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-c0y163\\cmTC_6733d.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.86
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/CMake/share/cmake-4.2/Modules/CheckLibraryExists.cmake:154 (try_compile)"
+      - "C:/CMake/share/cmake-4.2/Modules/FindThreads.cmake:175 (check_library_exists)"
+      - "C:/CMake/share/cmake-4.2/Modules/FindThreads.cmake:238 (_threads_check_lib)"
+      - "C:/CMake/share/cmake-4.2/Modules/CMakeFindDependencyMacro.cmake:93 (find_package)"
+      - "C:/CMake/share/cmake-4.2/Modules/CMakeFindDependencyMacro.cmake:125 (__find_dependency_common)"
+      - "C:/vcpkg/installed/x64-mingw-dynamic/share/glfw3/glfw3Config.cmake:2 (find_dependency)"
+      - "CMakeLists.txt:100 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthreads"
+    directories:
+      source: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-aqej4d"
+      binary: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-aqej4d"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Od /W4"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREADS_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-aqej4d'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Professional/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_3eb0b.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.23+b0019275e for .NET Framework
+        Build started 11/16/2025 2:10:00 AM.
+        
+        Project "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-aqej4d\\cmTC_3eb0b.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-aqej4d\\Debug\\".
+          Creating directory "cmTC_3eb0b.dir\\Debug\\cmTC_3eb0b.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_3eb0b.dir\\Debug\\cmTC_3eb0b.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_3eb0b.dir\\Debug\\cmTC_3eb0b.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W4 /WX- /diagnostics:column /Od /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /GR /std:c++17 /Fo"cmTC_3eb0b.dir\\Debug\\\\" /Fd"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-aqej4d\\cmTC_3eb0b.dir\\Debug\\vc143.pdb" /external:W4 /TP /errorReport:queue "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-aqej4d\\CheckFunctionExists.cxx"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35219 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W4 /WX- /diagnostics:column /Od /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /GR /std:c++17 /Fo"cmTC_3eb0b.dir\\Debug\\\\" /Fd"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-aqej4d\\cmTC_3eb0b.dir\\Debug\\vc143.pdb" /external:W4 /TP /errorReport:queue "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-aqej4d\\CheckFunctionExists.cxx"
+          CheckFunctionExists.cxx
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-aqej4d\\Debug\\cmTC_3eb0b.exe" /INCREMENTAL /ILK:"cmTC_3eb0b.dir\\Debug\\cmTC_3eb0b.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-aqej4d/Debug/cmTC_3eb0b.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-aqej4d/Debug/cmTC_3eb0b.lib" /MACHINE:X64  /machine:x64 cmTC_3eb0b.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-aqej4d\\cmTC_3eb0b.vcxproj]
+        Done Building Project "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-aqej4d\\cmTC_3eb0b.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-aqej4d\\cmTC_3eb0b.vcxproj" (default target) (1) ->
+        (Link target) -> 
+          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-aqej4d\\cmTC_3eb0b.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.57
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/CMake/share/cmake-4.2/Modules/CheckLibraryExists.cmake:154 (try_compile)"
+      - "C:/CMake/share/cmake-4.2/Modules/FindThreads.cmake:175 (check_library_exists)"
+      - "C:/CMake/share/cmake-4.2/Modules/FindThreads.cmake:239 (_threads_check_lib)"
+      - "C:/CMake/share/cmake-4.2/Modules/CMakeFindDependencyMacro.cmake:93 (find_package)"
+      - "C:/CMake/share/cmake-4.2/Modules/CMakeFindDependencyMacro.cmake:125 (__find_dependency_common)"
+      - "C:/vcpkg/installed/x64-mingw-dynamic/share/glfw3/glfw3Config.cmake:2 (find_dependency)"
+      - "CMakeLists.txt:100 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthread"
+    directories:
+      source: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-7pvynh"
+      binary: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-7pvynh"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Od /W4"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREAD_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-7pvynh'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Professional/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_b3306.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.23+b0019275e for .NET Framework
+        Build started 11/16/2025 2:10:01 AM.
+        
+        Project "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-7pvynh\\cmTC_b3306.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-7pvynh\\Debug\\".
+          Creating directory "cmTC_b3306.dir\\Debug\\cmTC_b3306.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_b3306.dir\\Debug\\cmTC_b3306.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_b3306.dir\\Debug\\cmTC_b3306.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W4 /WX- /diagnostics:column /Od /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /GR /std:c++17 /Fo"cmTC_b3306.dir\\Debug\\\\" /Fd"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-7pvynh\\cmTC_b3306.dir\\Debug\\vc143.pdb" /external:W4 /TP /errorReport:queue "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-7pvynh\\CheckFunctionExists.cxx"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35219 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W4 /WX- /diagnostics:column /Od /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /GR /std:c++17 /Fo"cmTC_b3306.dir\\Debug\\\\" /Fd"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-7pvynh\\cmTC_b3306.dir\\Debug\\vc143.pdb" /external:W4 /TP /errorReport:queue "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-7pvynh\\CheckFunctionExists.cxx"
+          CheckFunctionExists.cxx
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-7pvynh\\Debug\\cmTC_b3306.exe" /INCREMENTAL /ILK:"cmTC_b3306.dir\\Debug\\cmTC_b3306.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-7pvynh/Debug/cmTC_b3306.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-7pvynh/Debug/cmTC_b3306.lib" /MACHINE:X64  /machine:x64 cmTC_b3306.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-7pvynh\\cmTC_b3306.vcxproj]
+        Done Building Project "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-7pvynh\\cmTC_b3306.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-7pvynh\\cmTC_b3306.vcxproj" (default target) (1) ->
+        (Link target) -> 
+          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-7pvynh\\cmTC_b3306.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.46
+        
+      exitCode: 1
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "CMakeLists.txt:100 (find_package)"
+    name: "glfw3"
+    configs:
+      -
+        filename: "glfw3Config.cmake"
+        kind: "cmake"
+      -
+        filename: "glfw3-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "required_explicit"
+      quiet: false
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "glfw3"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/glfw3Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/glfw3-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/glfw3Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/glfw3-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found:
+      path: "C:/vcpkg/installed/x64-mingw-dynamic/share/glfw3/glfw3Config.cmake"
+      mode: "config"
+      version: "3.4.0"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "C:/vcpkg/installed/x64-mingw-dynamic"
+      ENV{PATH}:
+        - "c:\\Users\\tmsjd\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\tmsjd\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IncrediBuild"
+        - "C:\\CMake\\bin"
+        - "C:\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\nodejs\\"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\MinGW\\mingw64\\bin"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "c:\\Users\\tmsjd\\.vscode\\extensions\\ms-python.debugpy-2025.16.0-win32-x64\\bundled\\scripts\\noConfigScripts"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files/MyProjectName"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "C:/CMake"
+        - "C:/Program Files/MyProjectName"
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "CMakeLists.txt:101 (find_package)"
+    name: "glm"
+    configs:
+      -
+        filename: "glmConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "glm-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "required_explicit"
+      quiet: false
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "glm"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/glmConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/glm-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/glmConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/glm-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found:
+      path: "C:/vcpkg/installed/x64-mingw-dynamic/share/glm/glmConfig.cmake"
+      mode: "config"
+      version: "1.0.2"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "C:/vcpkg/installed/x64-mingw-dynamic"
+      ENV{PATH}:
+        - "c:\\Users\\tmsjd\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\tmsjd\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IncrediBuild"
+        - "C:\\CMake\\bin"
+        - "C:\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\nodejs\\"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\MinGW\\mingw64\\bin"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "c:\\Users\\tmsjd\\.vscode\\extensions\\ms-python.debugpy-2025.16.0-win32-x64\\bundled\\scripts\\noConfigScripts"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files/MyProjectName"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "C:/CMake"
+        - "C:/Program Files/MyProjectName"
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "CMakeLists.txt:102 (find_package)"
+    name: "assimp"
+    configs:
+      -
+        filename: "assimpConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "assimp-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "required_explicit"
+      quiet: false
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "assimp"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/assimpConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/assimp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/assimpConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/assimp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found:
+      path: "C:/vcpkg/installed/x64-mingw-dynamic/share/assimp/assimpConfig.cmake"
+      mode: "config"
+      version: "6.0.2"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "C:/vcpkg/installed/x64-mingw-dynamic"
+      ENV{PATH}:
+        - "c:\\Users\\tmsjd\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\tmsjd\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IncrediBuild"
+        - "C:\\CMake\\bin"
+        - "C:\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\nodejs\\"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\MinGW\\mingw64\\bin"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "c:\\Users\\tmsjd\\.vscode\\extensions\\ms-python.debugpy-2025.16.0-win32-x64\\bundled\\scripts\\noConfigScripts"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files/MyProjectName"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "C:/CMake"
+        - "C:/Program Files/MyProjectName"
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "CMakeLists.txt:103 (find_package)"
+    name: "yaml-cpp"
+    configs:
+      -
+        filename: "yaml-cppConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "yaml-cpp-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "required_explicit"
+      quiet: false
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "yaml-cpp"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/yaml-cppConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/yaml-cpp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/yaml-cppConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/yaml-cpp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/share/yaml-cpp/yaml-cppConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found:
+      path: "C:/vcpkg/installed/x64-mingw-dynamic/share/yaml-cpp/yaml-cpp-config.cmake"
+      mode: "config"
+      version: "0.8.0"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "C:/vcpkg/installed/x64-mingw-dynamic"
+      ENV{PATH}:
+        - "c:\\Users\\tmsjd\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\tmsjd\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IncrediBuild"
+        - "C:\\CMake\\bin"
+        - "C:\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\nodejs\\"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\MinGW\\mingw64\\bin"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "c:\\Users\\tmsjd\\.vscode\\extensions\\ms-python.debugpy-2025.16.0-win32-x64\\bundled\\scripts\\noConfigScripts"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files/MyProjectName"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "C:/CMake"
+        - "C:/Program Files/MyProjectName"
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "CMakeLists.txt:104 (find_package)"
+    name: "nlohmann_json"
+    configs:
+      -
+        filename: "nlohmann_jsonConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "nlohmann_json-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "required_explicit"
+      quiet: false
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "nlohmann_json"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/nlohmann_jsonConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/nlohmann_json-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/nlohmann_jsonConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/nlohmann_json-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found:
+      path: "C:/vcpkg/installed/x64-mingw-dynamic/share/nlohmann_json/nlohmann_jsonConfig.cmake"
+      mode: "config"
+      version: "3.12.0"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "C:/vcpkg/installed/x64-mingw-dynamic"
+      ENV{PATH}:
+        - "c:\\Users\\tmsjd\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\tmsjd\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IncrediBuild"
+        - "C:\\CMake\\bin"
+        - "C:\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\nodejs\\"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\MinGW\\mingw64\\bin"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "c:\\Users\\tmsjd\\.vscode\\extensions\\ms-python.debugpy-2025.16.0-win32-x64\\bundled\\scripts\\noConfigScripts"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files/MyProjectName"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "C:/CMake"
+        - "C:/Program Files/MyProjectName"
+...
+
+---
+events:
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "C:/CMake/share/cmake-4.2/Modules/FindGLEW.cmake:139 (find_package)"
+      - "CMakeLists.txt:99 (find_package)"
+    name: "GLEW"
+    configs:
+      -
+        filename: "GLEWConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "glew-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "optional"
+      quiet: true
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "GLEW"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/GLEWConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/glew-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/GLEWConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/glew-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/share/glew/GLEWConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found:
+      path: "C:/vcpkg/installed/x64-mingw-dynamic/share/glew/glew-config.cmake"
+      mode: "config"
+      version: ""
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "C:/vcpkg/installed/x64-mingw-dynamic"
       ENV{PATH}:
         - "C:\\Python314\\Scripts\\"
         - "C:\\Python314\\"
@@ -858,6 +2524,7 @@ events:
         - "C:\\Users\\tmsjd\\.dotnet\\tools"
         - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\nodejs"
+        - "C:\\nodejs\\"
         - "C:\\Users\\tmsjd\\nodejs"
         - "C:\\Users\\tmsjd\\.local\\bin"
         - "C:\\Python314\\Scripts\\"
@@ -887,382 +2554,8 @@ events:
         - "C:\\Program Files\\nodejs\""
         - "C:\\Users\\tmsjd\\.dotnet\\tools"
         - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
-  -
-    kind: "find-v1"
-    backtrace:
-      - "C:/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
-      - "C:/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
-      - "CMakeLists.txt:5 (project)"
-    mode: "program"
-    variable: "CMAKE_AR"
-    description: "Path to a program."
-    settings:
-      SearchFramework: "NEVER"
-      SearchAppBundle: "NEVER"
-      CMAKE_FIND_USE_CMAKE_PATH: false
-      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
-      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
-      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
-      CMAKE_FIND_USE_INSTALL_PREFIX: true
-    names:
-      - "lib"
-    candidate_directories:
-      - "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/"
-      - "C:/Python314/Scripts/"
-      - "C:/Python314/"
-      - "C:/Program Files (x86)/Microsoft SDKs/Azure/CLI2/wbin/"
-      - "C:/Windows/System32/"
-      - "C:/Windows/"
-      - "C:/Windows/System32/wbem/"
-      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
-      - "C:/Windows/System32/OpenSSH/"
-      - "C:/Program Files/Git/cmd/"
-      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/"
-      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
-      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
-      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
-      - "C:/ProgramData/chocolatey/bin/"
-      - "C:/Program Files/Docker/Docker/resources/bin/"
-      - "C:/Program Files/dotnet/"
-      - "C:/Program Files (x86)/IncrediBuild/"
-      - "C:/CMake/bin/"
-      - "C:/nodejs/"
-      - "C:/Users/tmsjd/.local/bin/"
-      - "C:/Program Files/CMake/bin/"
-      - "C:/Program Files/nodejs/"
-      - "C:/Users/tmsjd/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/tmsjd/AppData/Local/Microsoft/WindowsApps/"
-      - "C:/Users/tmsjd/AppData/Local/GitHubDesktop/bin/"
-      - "C:/Users/tmsjd/AppData/Local/Programs/Microsoft VS Code/bin/"
-      - "C:/Users/tmsjd/.dotnet/tools/"
-      - "C:/Program Files/nodejs\"/"
-      - "C:/Users/tmsjd/AppData/Roaming/npm/"
-      - "C:/Users/tmsjd/nodejs/"
-    searched_directories:
-      - "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/lib.com"
-    found: "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/lib.exe"
-    search_context:
-      ENV{PATH}:
-        - "C:\\Python314\\Scripts\\"
-        - "C:\\Python314\\"
-        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
-        - "C:\\WINDOWS\\system32"
-        - "C:\\WINDOWS"
-        - "C:\\WINDOWS\\System32\\Wbem"
-        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
-        - "C:\\WINDOWS\\System32\\OpenSSH\\"
-        - "C:\\Program Files\\Git\\cmd"
-        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
-        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
-        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
-        - "C:\\ProgramData\\chocolatey\\bin"
-        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
-        - "C:\\Program Files\\dotnet\\"
-        - "C:\\Program Files (x86)\\IncrediBuild"
-        - "C:\\CMake\\bin"
-        - "C:\\nodejs"
-        - "C:\\Users\\tmsjd\\.local\\bin"
-        - "C:\\Python314\\Scripts\\"
-        - "C:\\Python314\\"
-        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
-        - "C:\\WINDOWS\\system32"
-        - "C:\\WINDOWS"
-        - "C:\\WINDOWS\\System32\\Wbem"
-        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
-        - "C:\\WINDOWS\\System32\\OpenSSH\\"
-        - "C:\\Program Files\\Git\\cmd"
-        - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
-        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
-        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
-        - "C:\\Program Files\\dotnet\\"
-        - "C:\\Program Files (x86)\\Incredibuild"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
-        - "C:\\Program Files\\nodejs\\"
-        - "C:\\ProgramData\\chocolatey\\bin"
-        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
-        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
-        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
-        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
-        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
-        - "C:\\Users\\tmsjd\\.dotnet\\tools"
-        - "C:\\Program Files\\nodejs\""
-        - "C:\\Users\\tmsjd\\.dotnet\\tools"
-        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
-        - "C:\\Program Files\\nodejs"
-        - "C:\\Users\\tmsjd\\nodejs"
-        - "C:\\Users\\tmsjd\\.local\\bin"
-        - "C:\\Python314\\Scripts\\"
-        - "C:\\Python314\\"
-        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
-        - "C:\\WINDOWS\\system32"
-        - "C:\\WINDOWS"
-        - "C:\\WINDOWS\\System32\\Wbem"
-        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
-        - "C:\\WINDOWS\\System32\\OpenSSH\\"
-        - "C:\\Program Files\\Git\\cmd"
-        - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
-        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
-        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
-        - "C:\\Program Files\\dotnet\\"
-        - "C:\\Program Files (x86)\\Incredibuild"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
-        - "C:\\Program Files\\nodejs\\"
-        - "C:\\ProgramData\\chocolatey\\bin"
-        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
-        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
-        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
-        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
-        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
-        - "C:\\Users\\tmsjd\\.dotnet\\tools"
-        - "C:\\Program Files\\nodejs\""
-        - "C:\\Users\\tmsjd\\.dotnet\\tools"
-        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
-  -
-    kind: "find-v1"
-    backtrace:
-      - "C:/CMake/share/cmake-4.2/Modules/CMakeDetermineRCCompiler.cmake:40 (find_program)"
-      - "C:/CMake/share/cmake-4.2/Modules/Platform/Windows-MSVC.cmake:580 (enable_language)"
-      - "C:/CMake/share/cmake-4.2/Modules/Platform/Windows-MSVC.cmake:553 (__windows_compiler_msvc_enable_rc)"
-      - "C:/CMake/share/cmake-4.2/Modules/Platform/Windows-MSVC-CXX.cmake:6 (__windows_compiler_msvc)"
-      - "C:/CMake/share/cmake-4.2/Modules/CMakeCXXInformation.cmake:48 (include)"
-      - "CMakeLists.txt:5 (project)"
-    mode: "program"
-    variable: "CMAKE_RC_COMPILER"
-    description: "RC compiler"
-    settings:
-      SearchFramework: "NEVER"
-      SearchAppBundle: "NEVER"
-      CMAKE_FIND_USE_CMAKE_PATH: true
-      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
-      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
-      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
-      CMAKE_FIND_USE_INSTALL_PREFIX: true
-    names:
-      - "rc"
-    candidate_directories:
-      - "C:/Python314/Scripts/"
-      - "C:/Python314/"
-      - "C:/Program Files (x86)/Microsoft SDKs/Azure/CLI2/wbin/"
-      - "C:/Windows/System32/"
-      - "C:/Windows/"
-      - "C:/Windows/System32/wbem/"
-      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
-      - "C:/Windows/System32/OpenSSH/"
-      - "C:/Program Files/Git/cmd/"
-      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/"
-      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
-      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
-      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
-      - "C:/ProgramData/chocolatey/bin/"
-      - "C:/Program Files/Docker/Docker/resources/bin/"
-      - "C:/Program Files/dotnet/"
-      - "C:/Program Files (x86)/IncrediBuild/"
-      - "C:/CMake/bin/"
-      - "C:/nodejs/"
-      - "C:/Users/tmsjd/.local/bin/"
-      - "C:/Program Files/CMake/bin/"
-      - "C:/Program Files/nodejs/"
-      - "C:/Users/tmsjd/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/tmsjd/AppData/Local/Microsoft/WindowsApps/"
-      - "C:/Users/tmsjd/AppData/Local/GitHubDesktop/bin/"
-      - "C:/Users/tmsjd/AppData/Local/Programs/Microsoft VS Code/bin/"
-      - "C:/Users/tmsjd/.dotnet/tools/"
-      - "C:/Program Files/nodejs\"/"
-      - "C:/Users/tmsjd/AppData/Roaming/npm/"
-      - "C:/Users/tmsjd/nodejs/"
-      - "C:/Program Files/bin/"
-      - "C:/Program Files/sbin/"
-      - "C:/Program Files/"
-      - "C:/Program Files (x86)/bin/"
-      - "C:/Program Files (x86)/sbin/"
-      - "C:/Program Files (x86)/"
-      - "C:/CMake/bin/"
-      - "C:/CMake/sbin/"
-      - "C:/CMake/"
-      - "C:/Program Files/MyProjectName/bin/"
-      - "C:/Program Files/MyProjectName/sbin/"
-      - "C:/Program Files/MyProjectName/"
-    searched_directories:
-      - "C:/Python314/Scripts/rc.com"
-      - "C:/Python314/Scripts/rc.exe"
-      - "C:/Python314/Scripts/rc"
-      - "C:/Python314/rc.com"
-      - "C:/Python314/rc.exe"
-      - "C:/Python314/rc"
-      - "C:/Program Files (x86)/Microsoft SDKs/Azure/CLI2/wbin/rc.com"
-      - "C:/Program Files (x86)/Microsoft SDKs/Azure/CLI2/wbin/rc.exe"
-      - "C:/Program Files (x86)/Microsoft SDKs/Azure/CLI2/wbin/rc"
-      - "C:/Windows/System32/rc.com"
-      - "C:/Windows/System32/rc.exe"
-      - "C:/Windows/System32/rc"
-      - "C:/Windows/rc.com"
-      - "C:/Windows/rc.exe"
-      - "C:/Windows/rc"
-      - "C:/Windows/System32/wbem/rc.com"
-      - "C:/Windows/System32/wbem/rc.exe"
-      - "C:/Windows/System32/wbem/rc"
-      - "C:/Windows/System32/WindowsPowerShell/v1.0/rc.com"
-      - "C:/Windows/System32/WindowsPowerShell/v1.0/rc.exe"
-      - "C:/Windows/System32/WindowsPowerShell/v1.0/rc"
-      - "C:/Windows/System32/OpenSSH/rc.com"
-      - "C:/Windows/System32/OpenSSH/rc.exe"
-      - "C:/Windows/System32/OpenSSH/rc"
-      - "C:/Program Files/Git/cmd/rc.com"
-      - "C:/Program Files/Git/cmd/rc.exe"
-      - "C:/Program Files/Git/cmd/rc"
-      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/rc.com"
-      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/rc.exe"
-      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/rc"
-      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/rc.com"
-      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/rc.exe"
-      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/rc"
-      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/rc.com"
-      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/rc.exe"
-      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/rc"
-      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/rc.com"
-      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/rc.exe"
-      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/rc"
-      - "C:/ProgramData/chocolatey/bin/rc.com"
-      - "C:/ProgramData/chocolatey/bin/rc.exe"
-      - "C:/ProgramData/chocolatey/bin/rc"
-      - "C:/Program Files/Docker/Docker/resources/bin/rc.com"
-      - "C:/Program Files/Docker/Docker/resources/bin/rc.exe"
-      - "C:/Program Files/Docker/Docker/resources/bin/rc"
-      - "C:/Program Files/dotnet/rc.com"
-      - "C:/Program Files/dotnet/rc.exe"
-      - "C:/Program Files/dotnet/rc"
-      - "C:/Program Files (x86)/IncrediBuild/rc.com"
-      - "C:/Program Files (x86)/IncrediBuild/rc.exe"
-      - "C:/Program Files (x86)/IncrediBuild/rc"
-      - "C:/CMake/bin/rc.com"
-      - "C:/CMake/bin/rc.exe"
-      - "C:/CMake/bin/rc"
-      - "C:/nodejs/rc.com"
-      - "C:/nodejs/rc.exe"
-      - "C:/nodejs/rc"
-      - "C:/Users/tmsjd/.local/bin/rc.com"
-      - "C:/Users/tmsjd/.local/bin/rc.exe"
-      - "C:/Users/tmsjd/.local/bin/rc"
-      - "C:/Program Files/CMake/bin/rc.com"
-      - "C:/Program Files/CMake/bin/rc.exe"
-      - "C:/Program Files/CMake/bin/rc"
-      - "C:/Program Files/nodejs/rc.com"
-      - "C:/Program Files/nodejs/rc.exe"
-      - "C:/Program Files/nodejs/rc"
-      - "C:/Users/tmsjd/AppData/Local/Programs/Python/Launcher/rc.com"
-      - "C:/Users/tmsjd/AppData/Local/Programs/Python/Launcher/rc.exe"
-      - "C:/Users/tmsjd/AppData/Local/Programs/Python/Launcher/rc"
-      - "C:/Users/tmsjd/AppData/Local/Microsoft/WindowsApps/rc.com"
-      - "C:/Users/tmsjd/AppData/Local/Microsoft/WindowsApps/rc.exe"
-      - "C:/Users/tmsjd/AppData/Local/Microsoft/WindowsApps/rc"
-      - "C:/Users/tmsjd/AppData/Local/GitHubDesktop/bin/rc.com"
-      - "C:/Users/tmsjd/AppData/Local/GitHubDesktop/bin/rc.exe"
-      - "C:/Users/tmsjd/AppData/Local/GitHubDesktop/bin/rc"
-      - "C:/Users/tmsjd/AppData/Local/Programs/Microsoft VS Code/bin/rc.com"
-      - "C:/Users/tmsjd/AppData/Local/Programs/Microsoft VS Code/bin/rc.exe"
-      - "C:/Users/tmsjd/AppData/Local/Programs/Microsoft VS Code/bin/rc"
-      - "C:/Users/tmsjd/.dotnet/tools/rc.com"
-      - "C:/Users/tmsjd/.dotnet/tools/rc.exe"
-      - "C:/Users/tmsjd/.dotnet/tools/rc"
-      - "C:/Program Files/nodejs\"/rc.com"
-      - "C:/Program Files/nodejs\"/rc.exe"
-      - "C:/Program Files/nodejs\"/rc"
-      - "C:/Users/tmsjd/AppData/Roaming/npm/rc.com"
-      - "C:/Users/tmsjd/AppData/Roaming/npm/rc.exe"
-      - "C:/Users/tmsjd/AppData/Roaming/npm/rc"
-      - "C:/Users/tmsjd/nodejs/rc.com"
-      - "C:/Users/tmsjd/nodejs/rc.exe"
-      - "C:/Users/tmsjd/nodejs/rc"
-      - "C:/Program Files/bin/rc.com"
-      - "C:/Program Files/bin/rc.exe"
-      - "C:/Program Files/bin/rc"
-      - "C:/Program Files/sbin/rc.com"
-      - "C:/Program Files/sbin/rc.exe"
-      - "C:/Program Files/sbin/rc"
-      - "C:/Program Files/rc.com"
-      - "C:/Program Files/rc.exe"
-      - "C:/Program Files/rc"
-      - "C:/Program Files (x86)/bin/rc.com"
-      - "C:/Program Files (x86)/bin/rc.exe"
-      - "C:/Program Files (x86)/bin/rc"
-      - "C:/Program Files (x86)/sbin/rc.com"
-      - "C:/Program Files (x86)/sbin/rc.exe"
-      - "C:/Program Files (x86)/sbin/rc"
-      - "C:/Program Files (x86)/rc.com"
-      - "C:/Program Files (x86)/rc.exe"
-      - "C:/Program Files (x86)/rc"
-      - "C:/CMake/bin/rc.com"
-      - "C:/CMake/bin/rc.exe"
-      - "C:/CMake/bin/rc"
-      - "C:/CMake/sbin/rc.com"
-      - "C:/CMake/sbin/rc.exe"
-      - "C:/CMake/sbin/rc"
-      - "C:/CMake/rc.com"
-      - "C:/CMake/rc.exe"
-      - "C:/CMake/rc"
-      - "C:/Program Files/MyProjectName/bin/rc.com"
-      - "C:/Program Files/MyProjectName/bin/rc.exe"
-      - "C:/Program Files/MyProjectName/bin/rc"
-      - "C:/Program Files/MyProjectName/sbin/rc.com"
-      - "C:/Program Files/MyProjectName/sbin/rc.exe"
-      - "C:/Program Files/MyProjectName/sbin/rc"
-      - "C:/Program Files/MyProjectName/rc.com"
-      - "C:/Program Files/MyProjectName/rc.exe"
-      - "C:/Program Files/MyProjectName/rc"
-    found: false
-    search_context:
-      ENV{PATH}:
-        - "C:\\Python314\\Scripts\\"
-        - "C:\\Python314\\"
-        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
-        - "C:\\WINDOWS\\system32"
-        - "C:\\WINDOWS"
-        - "C:\\WINDOWS\\System32\\Wbem"
-        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
-        - "C:\\WINDOWS\\System32\\OpenSSH\\"
-        - "C:\\Program Files\\Git\\cmd"
-        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
-        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
-        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
-        - "C:\\ProgramData\\chocolatey\\bin"
-        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
-        - "C:\\Program Files\\dotnet\\"
-        - "C:\\Program Files (x86)\\IncrediBuild"
-        - "C:\\CMake\\bin"
-        - "C:\\nodejs"
-        - "C:\\Users\\tmsjd\\.local\\bin"
-        - "C:\\Python314\\Scripts\\"
-        - "C:\\Python314\\"
-        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
-        - "C:\\WINDOWS\\system32"
-        - "C:\\WINDOWS"
-        - "C:\\WINDOWS\\System32\\Wbem"
-        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
-        - "C:\\WINDOWS\\System32\\OpenSSH\\"
-        - "C:\\Program Files\\Git\\cmd"
-        - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
-        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
-        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
-        - "C:\\Program Files\\dotnet\\"
-        - "C:\\Program Files (x86)\\Incredibuild"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
-        - "C:\\Program Files\\nodejs\\"
-        - "C:\\ProgramData\\chocolatey\\bin"
-        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
-        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
-        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
-        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
-        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
-        - "C:\\Users\\tmsjd\\.dotnet\\tools"
-        - "C:\\Program Files\\nodejs\""
-        - "C:\\Users\\tmsjd\\.dotnet\\tools"
-        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
-        - "C:\\Program Files\\nodejs"
+        - "C:\\MinGW\\mingw64\\bin"
+        - "C:\\Strawberry\\perl\\bin"
         - "C:\\Users\\tmsjd\\nodejs"
         - "C:\\Users\\tmsjd\\.local\\bin"
         - "C:\\Python314\\Scripts\\"
@@ -1301,84 +2594,1054 @@ events:
   -
     kind: "try_compile-v1"
     backtrace:
-      - "C:/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
-      - "C:/CMake/share/cmake-4.2/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:5 (project)"
+      - "C:/CMake/share/cmake-4.2/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "C:/CMake/share/cmake-4.2/Modules/CheckCXXSourceCompiles.cmake:103 (cmake_check_source_compiles)"
+      - "C:/CMake/share/cmake-4.2/Modules/FindThreads.cmake:162 (check_cxx_source_compiles)"
+      - "C:/CMake/share/cmake-4.2/Modules/FindThreads.cmake:226 (_threads_check_libc)"
+      - "C:/CMake/share/cmake-4.2/Modules/CMakeFindDependencyMacro.cmake:93 (find_package)"
+      - "C:/CMake/share/cmake-4.2/Modules/CMakeFindDependencyMacro.cmake:125 (__find_dependency_common)"
+      - "C:/vcpkg/installed/x64-mingw-dynamic/share/glfw3/glfw3Config.cmake:2 (find_dependency)"
+      - "CMakeLists.txt:100 (find_package)"
     checks:
-      - "Detecting CXX compiler ABI info"
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-93lrtb"
-      binary: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-93lrtb"
+      source: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-cre4g1"
+      binary: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-cre4g1"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
-      CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
-      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Od /W4"
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
     buildResult:
-      variable: "CMAKE_CXX_ABI_COMPILED"
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-93lrtb'
+        Change Dir: 'C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-cre4g1'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Professional/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_fae2d.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Professional/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_73649.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.14.23+b0019275e for .NET Framework
-        Build started 11/6/2025 11:47:55 AM.
+        Build started 11/16/2025 2:11:38 AM.
         
-        Project "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-93lrtb\\cmTC_fae2d.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-cre4g1\\cmTC_73649.vcxproj" on node 1 (default targets).
         PrepareForBuild:
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-93lrtb\\Debug\\".
-          Creating directory "cmTC_fae2d.dir\\Debug\\cmTC_fae2d.tlog\\".
+          Creating directory "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-cre4g1\\Debug\\".
+          Creating directory "cmTC_73649.dir\\Debug\\cmTC_73649.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_fae2d.dir\\Debug\\cmTC_fae2d.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_fae2d.dir\\Debug\\cmTC_fae2d.tlog\\unsuccessfulbuild".
+          Creating "cmTC_73649.dir\\Debug\\cmTC_73649.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_73649.dir\\Debug\\cmTC_73649.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GR /Fo"cmTC_fae2d.dir\\Debug\\\\" /Fd"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-93lrtb\\cmTC_fae2d.dir\\Debug\\vc143.pdb" /external:W3 /TP /errorReport:queue "C:\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W4 /WX- /diagnostics:column /Od /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /GR /std:c++17 /Fo"cmTC_73649.dir\\Debug\\\\" /Fd"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-cre4g1\\cmTC_73649.dir\\Debug\\vc143.pdb" /external:W4 /TP /errorReport:queue "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-cre4g1\\src.cxx"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35219 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GR /Fo"cmTC_fae2d.dir\\Debug\\\\" /Fd"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-93lrtb\\cmTC_fae2d.dir\\Debug\\vc143.pdb" /external:W3 /TP /errorReport:queue "C:\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
-          CMakeCXXCompilerABI.cpp
-        Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-93lrtb\\Debug\\cmTC_fae2d.exe" /INCREMENTAL /ILK:"cmTC_fae2d.dir\\Debug\\cmTC_fae2d.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-93lrtb/Debug/cmTC_fae2d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-93lrtb/Debug/cmTC_fae2d.lib" /MACHINE:X64  /machine:x64 cmTC_fae2d.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_fae2d.vcxproj -> C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-93lrtb\\Debug\\cmTC_fae2d.exe
-        FinalizeBuildStatus:
-          Deleting file "cmTC_fae2d.dir\\Debug\\cmTC_fae2d.tlog\\unsuccessfulbuild".
-          Touching "cmTC_fae2d.dir\\Debug\\cmTC_fae2d.tlog\\cmTC_fae2d.lastbuildstate".
-        Done Building Project "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-93lrtb\\cmTC_fae2d.vcxproj" (default targets).
+          cl /c /Zi /W4 /WX- /diagnostics:column /Od /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /GR /std:c++17 /Fo"cmTC_73649.dir\\Debug\\\\" /Fd"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-cre4g1\\cmTC_73649.dir\\Debug\\vc143.pdb" /external:W4 /TP /errorReport:queue "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-cre4g1\\src.cxx"
+          src.cxx
+        C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-cre4g1\\src.cxx(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-cre4g1\\cmTC_73649.vcxproj]
+        Done Building Project "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-cre4g1\\cmTC_73649.vcxproj" (default targets) -- FAILED.
         
-        Build succeeded.
+        Build FAILED.
+        
+        "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-cre4g1\\cmTC_73649.vcxproj" (default target) (1) ->
+        (ClCompile target) -> 
+          C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-cre4g1\\src.cxx(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-cre4g1\\cmTC_73649.vcxproj]
+        
             0 Warning(s)
-            0 Error(s)
+            1 Error(s)
         
-        Time Elapsed 00:00:00.90
+        Time Elapsed 00:00:00.38
         
-      exitCode: 0
+      exitCode: 1
   -
-    kind: "message-v1"
+    kind: "try_compile-v1"
     backtrace:
-      - "C:/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
-      - "C:/CMake/share/cmake-4.2/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:5 (project)"
-    message: |
-      Parsed CXX implicit link information:
-        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
-        linker tool for 'CXX': C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/HostX64/x64/link.exe
-        implicit libs: []
-        implicit objs: []
-        implicit dirs: []
-        implicit fwks: []
-      
-      
+      - "C:/CMake/share/cmake-4.2/Modules/CheckLibraryExists.cmake:154 (try_compile)"
+      - "C:/CMake/share/cmake-4.2/Modules/FindThreads.cmake:175 (check_library_exists)"
+      - "C:/CMake/share/cmake-4.2/Modules/FindThreads.cmake:238 (_threads_check_lib)"
+      - "C:/CMake/share/cmake-4.2/Modules/CMakeFindDependencyMacro.cmake:93 (find_package)"
+      - "C:/CMake/share/cmake-4.2/Modules/CMakeFindDependencyMacro.cmake:125 (__find_dependency_common)"
+      - "C:/vcpkg/installed/x64-mingw-dynamic/share/glfw3/glfw3Config.cmake:2 (find_dependency)"
+      - "CMakeLists.txt:100 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthreads"
+    directories:
+      source: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-vdzvbw"
+      binary: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-vdzvbw"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Od /W4"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREADS_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-vdzvbw'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Professional/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_92f63.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.23+b0019275e for .NET Framework
+        Build started 11/16/2025 2:11:39 AM.
+        
+        Project "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-vdzvbw\\cmTC_92f63.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-vdzvbw\\Debug\\".
+          Creating directory "cmTC_92f63.dir\\Debug\\cmTC_92f63.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_92f63.dir\\Debug\\cmTC_92f63.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_92f63.dir\\Debug\\cmTC_92f63.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W4 /WX- /diagnostics:column /Od /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /GR /std:c++17 /Fo"cmTC_92f63.dir\\Debug\\\\" /Fd"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-vdzvbw\\cmTC_92f63.dir\\Debug\\vc143.pdb" /external:W4 /TP /errorReport:queue "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-vdzvbw\\CheckFunctionExists.cxx"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35219 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W4 /WX- /diagnostics:column /Od /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /GR /std:c++17 /Fo"cmTC_92f63.dir\\Debug\\\\" /Fd"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-vdzvbw\\cmTC_92f63.dir\\Debug\\vc143.pdb" /external:W4 /TP /errorReport:queue "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-vdzvbw\\CheckFunctionExists.cxx"
+          CheckFunctionExists.cxx
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-vdzvbw\\Debug\\cmTC_92f63.exe" /INCREMENTAL /ILK:"cmTC_92f63.dir\\Debug\\cmTC_92f63.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-vdzvbw/Debug/cmTC_92f63.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-vdzvbw/Debug/cmTC_92f63.lib" /MACHINE:X64  /machine:x64 cmTC_92f63.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-vdzvbw\\cmTC_92f63.vcxproj]
+        Done Building Project "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-vdzvbw\\cmTC_92f63.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-vdzvbw\\cmTC_92f63.vcxproj" (default target) (1) ->
+        (Link target) -> 
+          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-vdzvbw\\cmTC_92f63.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.49
+        
+      exitCode: 1
   -
-    kind: "message-v1"
+    kind: "try_compile-v1"
     backtrace:
-      - "C:/CMake/share/cmake-4.2/Modules/Internal/CMakeDetermineLinkerId.cmake:36 (message)"
-      - "C:/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerABI.cmake:299 (cmake_determine_linker_id)"
-      - "C:/CMake/share/cmake-4.2/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:5 (project)"
-    message: |
-      Running the CXX compiler's linker: "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/HostX64/x64/link.exe" "-v"
-      Microsoft (R) Incremental Linker Version 14.44.35219.0
-      Copyright (C) Microsoft Corporation.  All rights reserved.
+      - "C:/CMake/share/cmake-4.2/Modules/CheckLibraryExists.cmake:154 (try_compile)"
+      - "C:/CMake/share/cmake-4.2/Modules/FindThreads.cmake:175 (check_library_exists)"
+      - "C:/CMake/share/cmake-4.2/Modules/FindThreads.cmake:239 (_threads_check_lib)"
+      - "C:/CMake/share/cmake-4.2/Modules/CMakeFindDependencyMacro.cmake:93 (find_package)"
+      - "C:/CMake/share/cmake-4.2/Modules/CMakeFindDependencyMacro.cmake:125 (__find_dependency_common)"
+      - "C:/vcpkg/installed/x64-mingw-dynamic/share/glfw3/glfw3Config.cmake:2 (find_dependency)"
+      - "CMakeLists.txt:100 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthread"
+    directories:
+      source: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-qtqedd"
+      binary: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-qtqedd"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Od /W4"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREAD_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-qtqedd'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Professional/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_b7ec1.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.23+b0019275e for .NET Framework
+        Build started 11/16/2025 2:11:40 AM.
+        
+        Project "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-qtqedd\\cmTC_b7ec1.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-qtqedd\\Debug\\".
+          Creating directory "cmTC_b7ec1.dir\\Debug\\cmTC_b7ec1.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_b7ec1.dir\\Debug\\cmTC_b7ec1.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_b7ec1.dir\\Debug\\cmTC_b7ec1.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W4 /WX- /diagnostics:column /Od /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /GR /std:c++17 /Fo"cmTC_b7ec1.dir\\Debug\\\\" /Fd"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-qtqedd\\cmTC_b7ec1.dir\\Debug\\vc143.pdb" /external:W4 /TP /errorReport:queue "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-qtqedd\\CheckFunctionExists.cxx"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35219 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W4 /WX- /diagnostics:column /Od /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /GR /std:c++17 /Fo"cmTC_b7ec1.dir\\Debug\\\\" /Fd"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-qtqedd\\cmTC_b7ec1.dir\\Debug\\vc143.pdb" /external:W4 /TP /errorReport:queue "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-qtqedd\\CheckFunctionExists.cxx"
+          CheckFunctionExists.cxx
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-qtqedd\\Debug\\cmTC_b7ec1.exe" /INCREMENTAL /ILK:"cmTC_b7ec1.dir\\Debug\\cmTC_b7ec1.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-qtqedd/Debug/cmTC_b7ec1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/CMakeScratch/TryCompile-qtqedd/Debug/cmTC_b7ec1.lib" /MACHINE:X64  /machine:x64 cmTC_b7ec1.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-qtqedd\\cmTC_b7ec1.vcxproj]
+        Done Building Project "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-qtqedd\\cmTC_b7ec1.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-qtqedd\\cmTC_b7ec1.vcxproj" (default target) (1) ->
+        (Link target) -> 
+          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\CMakeFiles\\CMakeScratch\\TryCompile-qtqedd\\cmTC_b7ec1.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.71
+        
+      exitCode: 1
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "CMakeLists.txt:100 (find_package)"
+    name: "glfw3"
+    configs:
+      -
+        filename: "glfw3Config.cmake"
+        kind: "cmake"
+      -
+        filename: "glfw3-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "required_explicit"
+      quiet: false
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "glfw3"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/glfw3Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/glfw3-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/glfw3Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/glfw3-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found:
+      path: "C:/vcpkg/installed/x64-mingw-dynamic/share/glfw3/glfw3Config.cmake"
+      mode: "config"
+      version: "3.4.0"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "C:/vcpkg/installed/x64-mingw-dynamic"
+      ENV{PATH}:
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IncrediBuild"
+        - "C:\\CMake\\bin"
+        - "C:\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\nodejs\\"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\MinGW\\mingw64\\bin"
+        - "C:\\Strawberry\\perl\\bin"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files/MyProjectName"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "C:/CMake"
+        - "C:/Program Files/MyProjectName"
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "CMakeLists.txt:101 (find_package)"
+    name: "glm"
+    configs:
+      -
+        filename: "glmConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "glm-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "required_explicit"
+      quiet: false
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "glm"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/glmConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/glm-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/glmConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/glm-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found:
+      path: "C:/vcpkg/installed/x64-mingw-dynamic/share/glm/glmConfig.cmake"
+      mode: "config"
+      version: "1.0.2"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "C:/vcpkg/installed/x64-mingw-dynamic"
+      ENV{PATH}:
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IncrediBuild"
+        - "C:\\CMake\\bin"
+        - "C:\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\nodejs\\"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\MinGW\\mingw64\\bin"
+        - "C:\\Strawberry\\perl\\bin"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files/MyProjectName"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "C:/CMake"
+        - "C:/Program Files/MyProjectName"
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "CMakeLists.txt:102 (find_package)"
+    name: "assimp"
+    configs:
+      -
+        filename: "assimpConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "assimp-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "required_explicit"
+      quiet: false
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "assimp"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/assimpConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/assimp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/assimpConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/assimp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found:
+      path: "C:/vcpkg/installed/x64-mingw-dynamic/share/assimp/assimpConfig.cmake"
+      mode: "config"
+      version: "6.0.2"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "C:/vcpkg/installed/x64-mingw-dynamic"
+      ENV{PATH}:
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IncrediBuild"
+        - "C:\\CMake\\bin"
+        - "C:\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\nodejs\\"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\MinGW\\mingw64\\bin"
+        - "C:\\Strawberry\\perl\\bin"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files/MyProjectName"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "C:/CMake"
+        - "C:/Program Files/MyProjectName"
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "CMakeLists.txt:103 (find_package)"
+    name: "yaml-cpp"
+    configs:
+      -
+        filename: "yaml-cppConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "yaml-cpp-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "required_explicit"
+      quiet: false
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "yaml-cpp"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/yaml-cppConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/yaml-cpp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/yaml-cppConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/yaml-cpp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/share/yaml-cpp/yaml-cppConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found:
+      path: "C:/vcpkg/installed/x64-mingw-dynamic/share/yaml-cpp/yaml-cpp-config.cmake"
+      mode: "config"
+      version: "0.8.0"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "C:/vcpkg/installed/x64-mingw-dynamic"
+      ENV{PATH}:
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IncrediBuild"
+        - "C:\\CMake\\bin"
+        - "C:\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\nodejs\\"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\MinGW\\mingw64\\bin"
+        - "C:\\Strawberry\\perl\\bin"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files/MyProjectName"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "C:/CMake"
+        - "C:/Program Files/MyProjectName"
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "CMakeLists.txt:104 (find_package)"
+    name: "nlohmann_json"
+    configs:
+      -
+        filename: "nlohmann_jsonConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "nlohmann_json-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "required_explicit"
+      quiet: false
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "nlohmann_json"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/nlohmann_jsonConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/nlohmann_json-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/nlohmann_jsonConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/nlohmann_json-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found:
+      path: "C:/vcpkg/installed/x64-mingw-dynamic/share/nlohmann_json/nlohmann_jsonConfig.cmake"
+      mode: "config"
+      version: "3.12.0"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "C:/vcpkg/installed/x64-mingw-dynamic"
+      ENV{PATH}:
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IncrediBuild"
+        - "C:\\CMake\\bin"
+        - "C:\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\nodejs\\"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\MinGW\\mingw64\\bin"
+        - "C:\\Strawberry\\perl\\bin"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files/MyProjectName"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "C:/CMake"
+        - "C:/Program Files/MyProjectName"
 ...

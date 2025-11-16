@@ -1,0 +1,554 @@
+﻿{
+    "Source82":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source143":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source100":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source85":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source128":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source88":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source60":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source73":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source32":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source64":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source118":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source151":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source115":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source47":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source158":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source127":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source116":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source124":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source80":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source69":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source140":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source121":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source14":  {
+                     "Class":  "in",
+                     "Method":  "compute"
+                 },
+    "Source42":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source91":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source19":  {
+                     "Class":  "in",
+                     "Method":  "compute"
+                 },
+    "Source39":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source132":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source48":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source97":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source122":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source113":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source98":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source77":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source46":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source114":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source74":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source110":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source120":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source37":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source102":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source34":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source84":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source38":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source87":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source68":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source33":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source67":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source24":  {
+                     "Class":  "in",
+                     "Method":  "compute"
+                 },
+    "Source52":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source137":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source162":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source153":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source130":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source160":  {
+                      "Class":  "UQFFBuoyancyModule",
+                      "Method":  "computeIntegrand"
+                  },
+    "Source119":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source111":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source56":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source155":  {
+                      "Class":  "UQFFBuoyancyModule",
+                      "Method":  "computeIntegrand"
+                  },
+    "Source30":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source15":  {
+                     "Class":  "in",
+                     "Method":  "compute"
+                 },
+    "Source41":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source92":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source16":  {
+                     "Class":  "in",
+                     "Method":  "compute"
+                 },
+    "Source106":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source93":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source134":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source109":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source94":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source112":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source78":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source45":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source146":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source21":  {
+                     "Class":  "in",
+                     "Method":  "compute"
+                 },
+    "Source20":  {
+                     "Class":  "in",
+                     "Method":  "compute"
+                 },
+    "Source150":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source83":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source161":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source138":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source86":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source154":  {
+                      "Class":  "HydrogenResonanceUQFFModule",
+                      "Method":  "computeA_res"
+                  },
+    "Source89":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source101":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source27":  {
+                     "Class":  "in",
+                     "Method":  "compute"
+                 },
+    "Source125":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source103":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source152":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source147":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source29":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source148":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source23":  {
+                     "Class":  "in",
+                     "Method":  "compute"
+                 },
+    "Source57":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source136":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source17":  {
+                     "Class":  "in",
+                     "Method":  "compute"
+                 },
+    "Source105":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source135":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source18":  {
+                     "Class":  "in",
+                     "Method":  "compute"
+                 },
+    "Source108":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source95":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source40":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source96":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source70":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source44":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source35":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source141":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source142":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source133":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source123":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source66":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source31":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source65":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source71":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source129":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source26":  {
+                     "Class":  "in",
+                     "Method":  "compute"
+                 },
+    "Source126":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source25":  {
+                     "Class":  "in",
+                     "Method":  "compute"
+                 },
+    "Source145":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source144":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source28":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source149":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source22":  {
+                     "Class":  "in",
+                     "Method":  "compute"
+                 },
+    "Source54":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source72":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source43":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source49":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source117":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source131":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source81":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source104":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source90":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source79":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source107":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source156":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source76":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source159":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source157":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  },
+    "Source36":  {
+                     "Class":  "PhysicsTerm",
+                     "Method":  "compute"
+                 },
+    "Source139":  {
+                      "Class":  "PhysicsTerm",
+                      "Method":  "compute"
+                  }
+}

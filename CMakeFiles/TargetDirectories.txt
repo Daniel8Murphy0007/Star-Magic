@@ -6,6 +6,9 @@ C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/Source164.di
 C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/Source165.dir
 C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/Source166.dir
 C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/Source167.dir
+C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/UQFFCore.dir
+C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/test_core_integration.dir
+C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/RUN_TESTS.dir
 C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/INSTALL.dir
 C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/ALL_BUILD.dir
 C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/ZERO_CHECK.dir
