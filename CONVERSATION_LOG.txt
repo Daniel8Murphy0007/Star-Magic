@@ -1,0 +1,7 @@
+
+[2025-11-15 22:12:16] Qt5 build active - compiling corelib, Perl v5.32.1 working, JSON configs deleted and committed (0e46b3d, 8f28eda)
+[2025-11-15 22:39:14] Qt5 build restarted with build_qt5.ps1 wrapper, Perl v5.32.1 verified in PATH
+[2025-11-15 22:44:40] Created perl.bat wrapper at C:\vcpkg\perl.bat, Qt5 build restarted with C:\vcpkg in PATH
+[2025-11-15 22:57:07] Qt5 Perl PATH issue persists across all approaches - mingw32-make subprocesses don't inherit PATH. Need alternative: skip Qt5, use already-installed x64-windows triplet, or install SymEngine without Qt5 dependencies
+[2025-11-15 22:57:53] Skipping Qt5 x64-mingw-dynamic due to persistent Perl PATH issues. Starting SymEngine installation (37 packages, ~25-35 min, includes LLVM 18.1.6)
+[2025-11-15 23:04:00] GMP build active (package 1/38 for SymEngine). Generating configure script for x64-windows build
