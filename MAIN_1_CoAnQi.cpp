@@ -15814,7 +15814,7 @@ public:
 };
 UQFFCoreModule_SOURCE110 g_uqffcore_module;
 
-// SOURCE111: Master F_U_Bi_i Buoyancy Equations (Source168)
+// SOURCE111: Master F_U_Bi_i Buoyancy Equations (Source168) - ENHANCED
 class MasterBuoyancyModule_SOURCE111
 {
 private:
@@ -15828,9 +15828,27 @@ private:
     };
     std::map<std::string, SystemParams> systems;
 
+    // Self-Expanding Framework (Enhanced)
+    std::map<std::string, double> dynamicParameters;
+    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
+    std::map<std::string, std::string> metadata;
+    bool enableDynamicTerms;
+    bool enableLogging;
+    double learningRate;
+
 public:
     MasterBuoyancyModule_SOURCE111()
+        : enableDynamicTerms(false), enableLogging(false), learningRate(0.001)
     {
+        // Metadata
+        metadata["module_name"] = "MasterBuoyancyModule_SOURCE111";
+        metadata["version"] = "2.0-Enhanced";
+        metadata["source_file"] = "source168.cpp";
+        metadata["author"] = "Daniel T. Murphy";
+        metadata["date_enhanced"] = "November 17, 2025";
+        metadata["framework"] = "UQFF Master F_U_Bi_i Buoyancy";
+        metadata["capabilities"] = "self-expanding,dynamic-terms,state-export";
+
         // Physical constants
         constants["PI"] = 3.141592653589793;
         constants["F0"] = 1.83e71;                               // Base force (N)
@@ -15969,10 +15987,94 @@ public:
     {
         dpm_vars[name] = value;
     }
+
+    // === SELF-EXPANDING FRAMEWORK METHODS ===
+
+    void registerDynamicTerm(std::unique_ptr<PhysicsTerm> term)
+    {
+        if (enableLogging)
+            std::cout << "[SOURCE111] Registering dynamic term: " << term->getName() << std::endl;
+        dynamicTerms.push_back(std::move(term));
+    }
+
+    void listDynamicTerms() const
+    {
+        std::cout << "\n[SOURCE111] Dynamic Terms (" << dynamicTerms.size() << " registered):\n";
+        for (size_t i = 0; i < dynamicTerms.size(); ++i)
+        {
+            std::cout << "  [" << i << "] " << dynamicTerms[i]->getName()
+                      << ": " << dynamicTerms[i]->getDescription() << std::endl;
+        }
+    }
+
+    void setDynamicParameter(const std::string &name, double value)
+    {
+        if (enableLogging)
+            std::cout << "[SOURCE111] Setting dynamic parameter: " << name << " = " << value << std::endl;
+        dynamicParameters[name] = value;
+    }
+
+    double getDynamicParameter(const std::string &name, double defaultValue = 0.0) const
+    {
+        auto it = dynamicParameters.find(name);
+        return (it != dynamicParameters.end()) ? it->second : defaultValue;
+    }
+
+    void setEnableDynamicTerms(bool enable) { enableDynamicTerms = enable; }
+    void setEnableLogging(bool enable) { enableLogging = enable; }
+    void setLearningRate(double rate) { learningRate = rate; }
+
+    double computeDynamicContribution(double t) const
+    {
+        if (!enableDynamicTerms || dynamicTerms.empty())
+            return 0.0;
+
+        double contribution = 0.0;
+        for (const auto &term : dynamicTerms)
+        {
+            contribution += term->compute(t, dynamicParameters);
+        }
+        return contribution;
+    }
+
+    void exportState(const std::string &filename) const
+    {
+        std::ofstream outfile(filename);
+        if (!outfile.is_open())
+        {
+            std::cerr << "[SOURCE111] Error: Cannot open file " << filename << std::endl;
+            return;
+        }
+
+        outfile << "# SOURCE111 - MasterBuoyancyModule State Export\n";
+        outfile << "# Date: November 17, 2025\n\n";
+
+        outfile << "[Metadata]\n";
+        for (const auto &kv : metadata)
+            outfile << kv.first << " = " << kv.second << "\n";
+
+        outfile << "\n[DynamicParameters]\n";
+        for (const auto &kv : dynamicParameters)
+            outfile << kv.first << " = " << kv.second << "\n";
+
+        outfile << "\n[DPMVariables]\n";
+        for (const auto &kv : dpm_vars)
+            outfile << kv.first << " = " << kv.second << "\n";
+
+        outfile << "\n[Configuration]\n";
+        outfile << "enableDynamicTerms = " << enableDynamicTerms << "\n";
+        outfile << "enableLogging = " << enableLogging << "\n";
+        outfile << "learningRate = " << learningRate << "\n";
+        outfile << "dynamicTermCount = " << dynamicTerms.size() << "\n";
+
+        outfile.close();
+        if (enableLogging)
+            std::cout << "[SOURCE111] State exported to " << filename << std::endl;
+    }
 };
 MasterBuoyancyModule_SOURCE111 g_master_buoyancy_module;
 
-// SOURCE112: Cassini Mission UQFF Buoyancy (Source169)
+// SOURCE112: Cassini Mission UQFF Buoyancy (Source169) - ENHANCED
 class CassiniMissionModule_SOURCE112
 {
 private:
@@ -15995,9 +16097,27 @@ private:
     CassiniParams params;
     DPMVars default_vars;
 
+    // Self-Expanding Framework (Enhanced)
+    std::map<std::string, double> dynamicParameters;
+    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
+    std::map<std::string, std::string> metadata;
+    bool enableDynamicTerms;
+    bool enableLogging;
+    double learningRate;
+
 public:
     CassiniMissionModule_SOURCE112()
+        : enableDynamicTerms(false), enableLogging(false), learningRate(0.001)
     {
+        // Metadata
+        metadata["module_name"] = "CassiniMissionModule_SOURCE112";
+        metadata["version"] = "2.0-Enhanced";
+        metadata["source_file"] = "source169.cpp";
+        metadata["author"] = "Daniel T. Murphy";
+        metadata["date_enhanced"] = "November 17, 2025";
+        metadata["framework"] = "UQFF Cassini Mission";
+        metadata["capabilities"] = "self-expanding,dynamic-terms,complex-physics,state-export";
+
         // Constants
         constants["PI"] = 3.141592653589793;
         constants["K_R"] = 1.0;
@@ -16100,10 +16220,97 @@ public:
         std::complex<double> delta_v = calculate_delta_v_particle();
         return F_ug1 + F_ug3 * f_U_Bi * (U_Ii / U_Mi) * thz_hole + std::complex<double>(0.0, delta_v.real());
     }
+
+    // === SELF-EXPANDING FRAMEWORK METHODS ===
+
+    void registerDynamicTerm(std::unique_ptr<PhysicsTerm> term)
+    {
+        if (enableLogging)
+            std::cout << "[SOURCE112] Registering dynamic term: " << term->getName() << std::endl;
+        dynamicTerms.push_back(std::move(term));
+    }
+
+    void listDynamicTerms() const
+    {
+        std::cout << "\n[SOURCE112] Dynamic Terms (" << dynamicTerms.size() << " registered):\n";
+        for (size_t i = 0; i < dynamicTerms.size(); ++i)
+        {
+            std::cout << "  [" << i << "] " << dynamicTerms[i]->getName()
+                      << ": " << dynamicTerms[i]->getDescription() << std::endl;
+        }
+    }
+
+    void setDynamicParameter(const std::string &name, double value)
+    {
+        if (enableLogging)
+            std::cout << "[SOURCE112] Setting dynamic parameter: " << name << " = " << value << std::endl;
+        dynamicParameters[name] = value;
+    }
+
+    double getDynamicParameter(const std::string &name, double defaultValue = 0.0) const
+    {
+        auto it = dynamicParameters.find(name);
+        return (it != dynamicParameters.end()) ? it->second : defaultValue;
+    }
+
+    void setEnableDynamicTerms(bool enable) { enableDynamicTerms = enable; }
+    void setEnableLogging(bool enable) { enableLogging = enable; }
+    void setLearningRate(double rate) { learningRate = rate; }
+
+    std::complex<double> computeDynamicContribution(double t) const
+    {
+        if (!enableDynamicTerms || dynamicTerms.empty())
+            return std::complex<double>(0.0, 0.0);
+
+        double contribution = 0.0;
+        for (const auto &term : dynamicTerms)
+        {
+            contribution += term->compute(t, dynamicParameters);
+        }
+        return std::complex<double>(contribution, 0.0);
+    }
+
+    void exportState(const std::string &filename) const
+    {
+        std::ofstream outfile(filename);
+        if (!outfile.is_open())
+        {
+            std::cerr << "[SOURCE112] Error: Cannot open file " << filename << std::endl;
+            return;
+        }
+
+        outfile << "# SOURCE112 - CassiniMissionModule State Export\n";
+        outfile << "# Date: November 17, 2025\n\n";
+
+        outfile << "[Metadata]\n";
+        for (const auto &kv : metadata)
+            outfile << kv.first << " = " << kv.second << "\n";
+
+        outfile << "\n[DynamicParameters]\n";
+        for (const auto &kv : dynamicParameters)
+            outfile << kv.first << " = " << kv.second << "\n";
+
+        outfile << "\n[CassiniParameters]\n";
+        outfile << "orbital_r = " << params.orbital_r << "\n";
+        outfile << "ring_r = " << params.ring_r << "\n";
+        outfile << "saturn_mass = " << params.saturn_mass << "\n";
+        outfile << "rotation_period = " << params.rotation_period << "\n";
+        outfile << "geom_type = " << params.geom_type << "\n";
+
+        outfile << "\n[Configuration]\n";
+        outfile << "enableDynamicTerms = " << enableDynamicTerms << "\n";
+        outfile << "enableLogging = " << enableLogging << "\n";
+        outfile << "learningRate = " << learningRate << "\n";
+        outfile << "dynamicTermCount = " << dynamicTerms.size() << "\n";
+
+        outfile.close();
+        if (enableLogging)
+            std::cout << "[SOURCE112] State exported to " << filename << std::endl;
+    }
 };
 CassiniMissionModule_SOURCE112 g_cassini_mission_module;
 
-// SOURCE113: Multi-Astronomical Systems UQFF (Source170)
+// SOURCE113: Multi-Astronomical Systems UQFF (Source170) - ENHANCED
 class MultiAstroSystemsModule_SOURCE113
 {
 private:
@@ -16123,9 +16330,27 @@ private:
 
     std::vector<AstroParams> systems;
 
+    // Self-Expanding Framework (Enhanced)
+    std::map<std::string, double> dynamicParameters;
+    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
+    std::map<std::string, std::string> metadata;
+    bool enableDynamicTerms;
+    bool enableLogging;
+    double learningRate;
+
 public:
     MultiAstroSystemsModule_SOURCE113()
+        : enableDynamicTerms(false), enableLogging(false), learningRate(0.001)
     {
+        // Metadata
+        metadata["module_name"] = "MultiAstroSystemsModule_SOURCE113";
+        metadata["version"] = "2.0-Enhanced";
+        metadata["source_file"] = "source170.cpp";
+        metadata["author"] = "Daniel T. Murphy";
+        metadata["date_enhanced"] = "November 17, 2025";
+        metadata["framework"] = "UQFF Multi-Astronomical Systems";
+        metadata["capabilities"] = "self-expanding,dynamic-terms,batch-processing,state-export";
+
         // Constants
         constants["PI"] = 3.141592653589793;
         constants["K_R"] = 1.0;
@@ -16226,6 +16451,96 @@ public:
     }
 
     int get_system_count() { return systems.size(); }
+
+    // === SELF-EXPANDING FRAMEWORK METHODS ===
+
+    void registerDynamicTerm(std::unique_ptr<PhysicsTerm> term)
+    {
+        if (enableLogging)
+            std::cout << "[SOURCE113] Registering dynamic term: " << term->getName() << std::endl;
+        dynamicTerms.push_back(std::move(term));
+    }
+
+    void listDynamicTerms() const
+    {
+        std::cout << "\n[SOURCE113] Dynamic Terms (" << dynamicTerms.size() << " registered):\n";
+        for (size_t i = 0; i < dynamicTerms.size(); ++i)
+        {
+            std::cout << "  [" << i << "] " << dynamicTerms[i]->getName()
+                      << ": " << dynamicTerms[i]->getDescription() << std::endl;
+        }
+    }
+
+    void setDynamicParameter(const std::string &name, double value)
+    {
+        if (enableLogging)
+            std::cout << "[SOURCE113] Setting dynamic parameter: " << name << " = " << value << std::endl;
+        dynamicParameters[name] = value;
+    }
+
+    double getDynamicParameter(const std::string &name, double defaultValue = 0.0) const
+    {
+        auto it = dynamicParameters.find(name);
+        return (it != dynamicParameters.end()) ? it->second : defaultValue;
+    }
+
+    void setEnableDynamicTerms(bool enable) { enableDynamicTerms = enable; }
+    void setEnableLogging(bool enable) { enableLogging = enable; }
+    void setLearningRate(double rate) { learningRate = rate; }
+
+    std::complex<double> computeDynamicContribution(double t) const
+    {
+        if (!enableDynamicTerms || dynamicTerms.empty())
+            return std::complex<double>(0.0, 0.0);
+
+        double contribution = 0.0;
+        for (const auto &term : dynamicTerms)
+        {
+            contribution += term->compute(t, dynamicParameters);
+        }
+        return std::complex<double>(contribution, 0.0);
+    }
+
+    void exportState(const std::string &filename) const
+    {
+        std::ofstream outfile(filename);
+        if (!outfile.is_open())
+        {
+            std::cerr << "[SOURCE113] Error: Cannot open file " << filename << std::endl;
+            return;
+        }
+
+        outfile << "# SOURCE113 - MultiAstroSystemsModule State Export\n";
+        outfile << "# Date: November 17, 2025\n\n";
+
+        outfile << "[Metadata]\n";
+        for (const auto &kv : metadata)
+            outfile << kv.first << " = " << kv.second << "\n";
+
+        outfile << "\n[DynamicParameters]\n";
+        for (const auto &kv : dynamicParameters)
+            outfile << kv.first << " = " << kv.second << "\n";
+
+        outfile << "\n[AstronomicalSystems]\n";
+        for (size_t i = 0; i < systems.size(); ++i)
+        {
+            outfile << "system_" << i << "_name = " << systems[i].name << "\n";
+            outfile << "system_" << i << "_radius = " << systems[i].r << "\n";
+            outfile << "system_" << i << "_sfr = " << systems[i].sfr << "\n";
+            outfile << "system_" << i << "_redshift = " << systems[i].z << "\n";
+        }
+
+        outfile << "\n[Configuration]\n";
+        outfile << "enableDynamicTerms = " << enableDynamicTerms << "\n";
+        outfile << "enableLogging = " << enableLogging << "\n";
+        outfile << "learningRate = " << learningRate << "\n";
+        outfile << "dynamicTermCount = " << dynamicTerms.size() << "\n";
+        outfile << "systemCount = " << systems.size() << "\n";
+
+        outfile.close();
+        if (enableLogging)
+            std::cout << "[SOURCE113] State exported to " << filename << std::endl;
+    }
 };
 MultiAstroSystemsModule_SOURCE113 g_multi_astro_module;
 
