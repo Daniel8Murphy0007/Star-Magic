@@ -60,6 +60,34 @@ index_EMERGENCY_*.js
 *.so
 *.dylib
 MAIN_1.exe
+*.lib
+*.a
+*.obj
+*.pdb
+*.ilk
+
+# Build directories
+Debug/
+Release/
+x64/
+build_backup_*/
+module_backups_*/
+
+# Visual Studio
+.vs/
+*.vcxproj.user
+*.suo
+*.sdf
+*.opensdf
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+*.dir/
+
+# Encoded directories (build artifacts)
+1N5B6Y891*/
 
 # Log files
 coAnQi_log_*.txt

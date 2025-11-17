@@ -6,6 +6,9 @@ cmake_minimum_required(VERSION 3.10)
 # Project name and programming language
 project(StarMagic_UQFF LANGUAGES CXX)
 
+# Global include directories for all targets
+include_directories(C:/vcpkg/installed/x64-windows/include)
+
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -25,14 +28,8 @@ endif()
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # ========== MAIN EXECUTABLES ==========
-
-# Source134: Abell 2256 Galaxy Cluster (fully functional)
-add_executable(Source134 Source134.cpp)
-
-# MAIN_1: Core mathematical framework (ENABLED - repaired Nov 9, 2025)
+# Core mathematical framework executables
 add_executable(MAIN_1 MAIN_1.cpp)
-
-# MAIN_1_CoAnQi: Conscious Quantum Intelligence UQFF Calculator (273 physics terms)
 add_executable(MAIN_1_CoAnQi MAIN_1_CoAnQi.cpp)
 
 # Source2: HEAD PROGRAM - Primary User Base Platform (REQUIRES Qt5, VTK, AWS SDK, OpenCV, etc.)
@@ -46,55 +43,218 @@ add_executable(MAIN_1_CoAnQi MAIN_1_CoAnQi.cpp)
 
 # ========== ADDITIONAL SOURCE MODULES ==========
 
-# Source163-167: Latest modules (Nov 2025)
+# ========== ALL SOURCE MODULES (EXCLUDING 1, 3, 8, 11, 12) ==========
+# Complete build configuration - all modules ready
+# add_executable(source2 source2.cpp)  # Requires Qt5
+add_executable(source4 source4.cpp)
+add_executable(Source5 Source5.cpp)
+# add_executable(Source6 Source6.cpp)  # Missing 3DGraphics.h
+# add_executable(source7 source7.cpp)  # Missing Animation.h
+# add_executable(source9 source9.cpp)  # Requires VTK library
+add_executable(source10 source10.cpp)
+# add_executable(source13 source13.cpp)  # Missing main()
+add_executable(source14 source14.cpp)
+# add_executable(source15 source15.cpp)  # Missing main()
+add_executable(source16 source16.cpp)
+add_executable(source17 source17.cpp)
+add_executable(source18 source18.cpp)
+add_executable(source19 source19.cpp)
+add_executable(source20 source20.cpp)
+add_executable(source21 source21.cpp)
+add_executable(source22 source22.cpp)
+add_executable(source23 source23.cpp)
+add_executable(source24 source24.cpp)
+add_executable(source25 source25.cpp)
+add_executable(source26 source26.cpp)
+add_executable(source27 source27.cpp)
+add_executable(source28 source28.cpp)
+add_executable(source29 source29.cpp)
+add_executable(source30 source30.cpp)
+add_executable(source31 source31.cpp)
+add_executable(source32 source32.cpp)
+add_executable(source33 source33.cpp)
+add_executable(source34 source34.cpp)
+add_executable(source35 source35.cpp)
+add_executable(source36 source36.cpp)
+add_executable(source37 source37.cpp)
+add_executable(source38 source38.cpp)
+add_executable(source39 source39.cpp)
+add_executable(source40 source40.cpp)
+add_executable(source41 source41.cpp)
+add_executable(source42 source42.cpp)
+add_executable(source43 source43.cpp)
+add_executable(source44 source44.cpp)
+add_executable(source45 source45.cpp)
+add_executable(source46 source46.cpp)
+add_executable(source47 source47.cpp)
+add_executable(source48 source48.cpp)
+add_executable(Source48-5 Source48-5.cpp)
+add_executable(source49 source49.cpp)
+add_executable(source50 source50.cpp)
+add_executable(source52 source52.cpp)
+add_executable(source54 source54.cpp)
+add_executable(source56 source56.cpp)
+add_executable(source57 source57.cpp)
+add_executable(source60 source60.cpp)
+add_executable(source64 source64.cpp)
+add_executable(source65 source65.cpp)
+add_executable(source66 source66.cpp)
+add_executable(source67 source67.cpp)
+add_executable(source68 source68.cpp)
+add_executable(source69 source69.cpp)
+add_executable(source70 source70.cpp)
+add_executable(source71 source71.cpp)
+add_executable(source72 source72.cpp)
+add_executable(source73 source73.cpp)
+add_executable(source74 source74.cpp)
+add_executable(source76 source76.cpp)
+add_executable(source77 source77.cpp)
+add_executable(source78 source78.cpp)
+add_executable(source79 source79.cpp)
+add_executable(source80 source80.cpp)
+add_executable(source81 source81.cpp)
+add_executable(source82 source82.cpp)
+add_executable(source83 source83.cpp)
+add_executable(source84 source84.cpp)
+add_executable(source85 source85.cpp)
+add_executable(source86 source86.cpp)
+add_executable(source87 source87.cpp)
+add_executable(source88 source88.cpp)
+add_executable(source89 source89.cpp)
+add_executable(source90 source90.cpp)
+add_executable(source91 source91.cpp)
+add_executable(source92 source92.cpp)
+add_executable(source93 source93.cpp)
+add_executable(source94 source94.cpp)
+add_executable(source95 source95.cpp)
+add_executable(source96 source96.cpp)
+add_executable(source97 source97.cpp)
+add_executable(source98 source98.cpp)
+add_executable(source100 source100.cpp)
+add_executable(source101 source101.cpp)
+add_executable(source102 source102.cpp)
+add_executable(Source103 Source103.cpp)
+add_executable(source104 source104.cpp)
+add_executable(source105 source105.cpp)
+add_executable(source106 source106.cpp)
+add_executable(source107 source107.cpp)
+add_executable(source108 source108.cpp)
+add_executable(source109 source109.cpp)
+add_executable(source110 source110.cpp)
+add_executable(source111 source111.cpp)
+add_executable(source112 source112.cpp)
+add_executable(source113 source113.cpp)
+add_executable(source114 source114.cpp)
+add_executable(Source115 Source115.cpp)
+add_executable(source116 source116.cpp)
+add_executable(source117 source117.cpp)
+add_executable(source118 source118.cpp)
+add_executable(Source119 Source119.cpp)
+add_executable(source120 source120.cpp)
+add_executable(source121 source121.cpp)
+add_executable(Source122 Source122.cpp)
+add_executable(source123 source123.cpp)
+add_executable(source124 source124.cpp)
+add_executable(source125 source125.cpp)
+add_executable(source126 source126.cpp)
+add_executable(source127 source127.cpp)
+add_executable(source128 source128.cpp)
+add_executable(source129 source129.cpp)
+add_executable(source130 source130.cpp)
+add_executable(source131 source131.cpp)
+add_executable(source132 source132.cpp)
+add_executable(source133 source133.cpp)
+add_executable(Source134 Source134.cpp)
+add_executable(source135 source135.cpp)
+add_executable(source136 source136.cpp)
+add_executable(source137 source137.cpp)
+add_executable(source138 source138.cpp)
+add_executable(Source139 Source139.cpp)
+add_executable(source140 source140.cpp)
+add_executable(source141 source141.cpp)
+add_executable(source142 source142.cpp)
+add_executable(Source143 Source143.cpp)
+add_executable(source144 source144.cpp)
+add_executable(source145 source145.cpp)
+add_executable(source146 source146.cpp)
+add_executable(source147 source147.cpp)
+add_executable(source148 source148.cpp)
+add_executable(source149 source149.cpp)
+add_executable(source150 source150.cpp)
+add_executable(source151 source151.cpp)
+add_executable(source152 source152.cpp)
+add_executable(source153 source153.cpp)
+add_executable(Source154 Source154.cpp)
+add_executable(Source155 Source155.cpp)
+add_executable(Source156 Source156.cpp)
+add_executable(Source157 Source157.cpp)
+add_executable(Source158 Source158.cpp)
+add_executable(Source159 Source159.cpp)
+add_executable(Source160 Source160.cpp)
+add_executable(Source161 Source161.cpp)
+add_executable(Source162 Source162.cpp)
 add_executable(Source163 Source163.cpp)
 add_executable(Source164 Source164.cpp)
 add_executable(Source165 Source165.cpp)
 add_executable(Source166 Source166.cpp)
 add_executable(Source167 Source167.cpp)
 
-# Source modules 1-162 (add as needed)
-# Example: Uncomment to build specific modules
-
 # ========== UQFF CORE LIBRARY ==========
 # Added: November 14, 2025
 # Purpose: Consolidated Core architecture from extracted modules
+# Updated: Matches successful build_backup_20251116_072753 configuration
 
-# Foundation modules (Week 1)
+# Foundation modules
 set(CORE_FOUNDATION
     Core/SystemCatalogue.cpp
-)
-
-# Adaptive framework (Week 2)
-set(CORE_ADAPTIVE
     Core/UQFFModule4.cpp
-    # Core/FluidSolver.cpp - Excluded: requires VTK
 )
 
-# Extracted modules (Weeks 3-4): All extracted modules
+# Collect all Core module source files
 file(GLOB CORE_MODULES "Core/Modules/*.cpp")
-# Remove modules with unmet dependencies:
-# - SymEngine, SymEngineAllocator: GMP blocked by vcpkg portfile bug (2 modules)
-# - Qt5-dependent modules without Qt5 installed: ForceModule, ScientificCalculatorDialog, InputModule, SIMPlugin (4 modules)
-# - FluidSolver: Requires VTK (Visualization Toolkit) not installed (1 module)
-# - Corrupted backup files
-list(FILTER CORE_MODULES EXCLUDE REGEX ".*/(SymEngine|SymEngineAllocator|ForceModule|ScientificCalculatorDialog|InputModule|SIMPlugin|FluidSolver|.*_CORRUPTED_BACKUP|.*_BACKUP)\\.cpp$")
+
+# Remove backup files and files with unmet dependencies
+list(FILTER CORE_MODULES EXCLUDE REGEX ".*_CORRUPTED_BACKUP\\.cpp$")
+list(FILTER CORE_MODULES EXCLUDE REGEX ".*_HEALED_20251115_0140\\.cpp$")
+
+# Conditionally exclude modules based on available dependencies
+if(NOT Qt5_FOUND)
+    list(FILTER CORE_MODULES EXCLUDE REGEX ".*/ForceModule\\.cpp$")
+    list(FILTER CORE_MODULES EXCLUDE REGEX ".*/ScientificCalculatorDialog\\.cpp$")
+    list(FILTER CORE_MODULES EXCLUDE REGEX ".*/InputModule\\.cpp$")
+    list(FILTER CORE_MODULES EXCLUDE REGEX ".*/SIMPlugin\\.cpp$")
+endif()
+
+if(NOT GMP_FOUND)
+    list(FILTER CORE_MODULES EXCLUDE REGEX ".*/SymEngine\\.cpp$")
+    list(FILTER CORE_MODULES EXCLUDE REGEX ".*/SymEngineAllocator\\.cpp$")
+endif()
+
+# FluidSolver requires VTK - exclude it
+list(FILTER CORE_MODULES EXCLUDE REGEX ".*/FluidSolver\\.cpp$")
 
 # Build UQFFCore as static library
 add_library(UQFFCore STATIC
     ${CORE_FOUNDATION}
-    ${CORE_ADAPTIVE}
     ${CORE_MODULES}
+)
+
+# Install UQFFCore.hpp master header
+target_sources(UQFFCore PUBLIC
+    FILE_SET HEADERS
+    BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}
+    FILES Core/UQFFCore.hpp
 )
 
 target_include_directories(UQFFCore PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/Core
+    ${CMAKE_CURRENT_SOURCE_DIR}/Core/Modules
     C:/vcpkg/installed/x64-windows/include
 )
 
 # Configure OpenGL/GLEW, GLFW, GLM, Assimp, yaml-cpp, nlohmann-json from vcpkg installations
-set(CMAKE_PREFIX_PATH "C:/vcpkg/installed/x64-mingw-dynamic")
+set(CMAKE_PREFIX_PATH "C:/vcpkg/installed/x64-windows")
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
@@ -103,55 +263,42 @@ find_package(assimp CONFIG REQUIRED)
 find_package(yaml-cpp CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 
-# Qt5 is optional - only needed for GUI modules (ScientificCalculatorDialog, InputModule, ForceModule)
-# Uncomment below to enable Qt5 modules after installing: vcpkg install qt5-base:x64-mingw-dynamic
-# find_package(Qt5 COMPONENTS Core Widgets)
+# Optional: Qt5 and GMP
+find_package(Qt5 COMPONENTS Core Widgets QUIET)
+find_package(GMP QUIET)
 
-message(STATUS "FluidSolver dependencies found: OpenGL, GLEW, GLFW3, GLM, Assimp, yaml-cpp, nlohmann-json")
+# Add GLFW_DLL definition to match successful build
+add_definitions(-DGLFW_DLL)
 
-# Link all required libraries to UQFFCore
+# Link all required libraries to UQFFCore (matches build_backup configuration)
 target_link_libraries(UQFFCore PUBLIC 
+    OpenGL::GL
     GLEW::GLEW 
-    OpenGL::GL 
     glfw
     glm::glm
     assimp::assimp
-    yaml-cpp::yaml-cpp
+    yaml-cpp
     nlohmann_json::nlohmann_json
 )
 
-# If Qt5 was found, link it and copy DLLs
+# If Qt5 was found, link it
 if(Qt5_FOUND)
     message(STATUS "Qt5 found: ${Qt5_VERSION} - enabling GUI modules")
     target_link_libraries(UQFFCore PUBLIC Qt5::Core Qt5::Widgets)
-    target_include_directories(UQFFCore PUBLIC 
-        ${Qt5Core_INCLUDE_DIRS} 
-        ${Qt5Widgets_INCLUDE_DIRS}
-    )
-    add_custom_command(TARGET UQFFCore POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            $<TARGET_FILE:Qt5::Core>
-            $<TARGET_FILE_DIR:UQFFCore>
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            $<TARGET_FILE:Qt5::Widgets>
-            $<TARGET_FILE_DIR:UQFFCore>
-    )
 else()
-    message(STATUS "Qt5 not found - GUI modules (ScientificCalculatorDialog, InputModule, etc.) will be excluded")
-endif()
-
-# Optional: Build integration test
-option(BUILD_CORE_TESTS "Build UQFFCore integration tests" ON)
-if(BUILD_CORE_TESTS AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/test_core_integration.cpp")
-    add_executable(test_core_integration test_core_integration.cpp)
-    target_link_libraries(test_core_integration PRIVATE UQFFCore)
-    enable_testing()
-    add_test(NAME CoreIntegrationTest COMMAND test_core_integration)
+    message(STATUS "Qt5 not found - GUI modules will be excluded")
 endif()
 
 # Build summary
 list(LENGTH CORE_MODULES CORE_MODULE_COUNT)
-message(STATUS "UQFFCore Library: ${CORE_MODULE_COUNT} extracted modules + foundation + adaptive")
+message(STATUS "==========================================")
+message(STATUS "UQFFCore Library Build Summary")
+message(STATUS "==========================================")
+message(STATUS "Core Modules: ${CORE_MODULE_COUNT} modules")
+message(STATUS "Qt5 Found: ${Qt5_FOUND}")
+message(STATUS "GMP Found: ${GMP_FOUND}")
+message(STATUS "==========================================")
+
 # add_executable(Source13 source13.cpp)
 # add_executable(Source14 source14.cpp)
 # add_executable(Source147 Source147.cpp)

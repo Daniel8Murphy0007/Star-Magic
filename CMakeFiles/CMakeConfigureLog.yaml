@@ -3645,3 +3645,426 @@ events:
         - "C:/CMake"
         - "C:/Program Files/MyProjectName"
 ...
+
+---
+events:
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "CMakeLists.txt:268 (find_package)"
+    name: "GMP"
+    configs:
+      -
+        filename: "GMPConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "gmp-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "optional"
+      quiet: true
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "GMP"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/CMakeFiles/pkgRedirects/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/vcpkg/installed/x64-mingw-dynamic/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Python314/Scripts/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Python314/Scripts/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Python314/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Python314/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Microsoft SDKs/Azure/CLI2/wbin/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Microsoft SDKs/Azure/CLI2/wbin/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/wbem/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/wbem/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/WindowsPowerShell/v1.0/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/WindowsPowerShell/v1.0/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/OpenSSH/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/OpenSSH/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Git/cmd/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Git/cmd/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/ProgramData/chocolatey/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/ProgramData/chocolatey/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Docker/Docker/resources/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Docker/Docker/resources/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/dotnet/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/dotnet/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/IncrediBuild/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/IncrediBuild/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/CMake/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/CMake/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/nodejs/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/nodejs/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/.local/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/.local/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/AppData/Local/Programs/Python/Launcher/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/AppData/Local/Programs/Python/Launcher/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/AppData/Local/Microsoft/WindowsApps/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/AppData/Local/Microsoft/WindowsApps/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/AppData/Local/GitHubDesktop/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/AppData/Local/GitHubDesktop/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/AppData/Local/Programs/Microsoft VS Code/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/AppData/Local/Programs/Microsoft VS Code/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/AppData/Roaming/npm/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/AppData/Roaming/npm/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/nodejs/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/tmsjd/nodejs/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/MinGW/mingw64/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/MinGW/mingw64/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Strawberry/perl/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Strawberry/perl/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/CMake/GMPConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/CMake/gmp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found: null
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "C:/vcpkg/installed/x64-mingw-dynamic"
+      ENV{PATH}:
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IncrediBuild"
+        - "C:\\CMake\\bin"
+        - "C:\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\nodejs\\"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+        - "C:\\MinGW\\mingw64\\bin"
+        - "C:\\Strawberry\\perl\\bin"
+        - "C:\\Users\\tmsjd\\nodejs"
+        - "C:\\Users\\tmsjd\\.local\\bin"
+        - "C:\\Python314\\Scripts\\"
+        - "C:\\Python314\\"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Incredibuild"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\tmsjd\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Program Files\\nodejs\""
+        - "C:\\Users\\tmsjd\\.dotnet\\tools"
+        - "C:\\Users\\tmsjd\\AppData\\Roaming\\npm"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files/MyProjectName"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "C:/CMake"
+        - "C:/Program Files/MyProjectName"
+...

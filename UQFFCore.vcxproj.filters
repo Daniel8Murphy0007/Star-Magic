@@ -94,9 +94,6 @@
     <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\HydrogenResonanceUQFFModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\HydrogenResonanceUQFFModule_HEALED_20251115_0140.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\HydrogenUQFFModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -369,9 +366,17 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\UQFFCore.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
     <CustomBuild Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{9B18E91F-E0D4-3D2A-B9ED-DA67C2F74CB0}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{EB0537E7-9640-35C8-9FF6-E8A3BD7C86F4}</UniqueIdentifier>
     </Filter>

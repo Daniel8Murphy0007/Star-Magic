@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "C:/vcpkg/installed/x64-mingw-dynamic/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -115,10 +115,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;GLFW_DLL;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -145,7 +145,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "C:/vcpkg/installed/x64-mingw-dynamic/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -176,10 +176,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_DLL;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -206,7 +206,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "C:/vcpkg/installed/x64-mingw-dynamic/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -237,10 +237,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_DLL;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -267,7 +267,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "C:/vcpkg/installed/x64-mingw-dynamic/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -297,10 +297,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_DLL;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-windows\include;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic;C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core;C:\vcpkg\installed\x64-mingw-dynamic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>

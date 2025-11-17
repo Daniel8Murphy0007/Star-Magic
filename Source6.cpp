@@ -558,7 +558,7 @@ void initOpenGL(GLFWwindow **window);
 void render3DScene(const std::vector<SimulationEntity> &entities);
 
 // 3DGraphics.cpp
-#include "3DGraphics.h"
+// #include "3DGraphics.h"  // Code is inline below
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
@@ -716,7 +716,7 @@ SIMPlugin::~SIMPlugin()
 #include "MUGE.h"
 #include "FluidSolver.h"
 #include "UnitTests.h"
-#include "3DGraphics.h"
+// #include "3DGraphics.h"  // Already inline above
 #include "PluginModule.h"
 
 const double PI = 3.141592653589793;
