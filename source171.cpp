@@ -15,18 +15,30 @@
 #include <complex>
 #include <cmath>
 #include <string>
+#include <map>
+#include <memory>
+#include <fstream>
 
 // Constants (scaled as per document; adjust for precision)
 const double PI = 3.141592653589793;
-const double K_R = 1.0;                               // Electrostatic barrier constant
-const double Z_MAX = 1000.0;                          // Max Z for f_UA' and f_SCm
-const double NU_THz = 1e12;                           // THz frequency (Hz)
-const double RHO_VAC_UA = 7.09e-36;                   // Vacuum energy density [UA] (J/m^3)
-const double H_Z_BASE = 2.268e-18;                    // Hubble constant base (s^-1)
-const double E_RAD = 0.1554;                          // Radiation energy fraction
-const double T_SF = 3.156e13;                         // Star formation timescale (s)
-const double M_SF = 1.5;                              // SFR adjustment
-const double I_UNIT = std::complex<double>(0.0, 1.0); // Imaginary unit
+const double K_R = 1.0;                                             // Electrostatic barrier constant
+const double Z_MAX = 1000.0;                                        // Max Z for f_UA' and f_SCm
+const double NU_THz = 1e12;                                         // THz frequency (Hz)
+const double RHO_VAC_UA = 7.09e-36;                                 // Vacuum energy density [UA] (J/m^3)
+const double H_Z_BASE = 2.268e-18;                                  // Hubble constant base (s^-1)
+const double E_RAD = 0.1554;                                        // Radiation energy fraction
+const double T_SF = 3.156e13;                                       // Star formation timescale (s)
+const double M_SF = 1.5;                                            // SFR adjustment
+const std::complex<double> I_UNIT = std::complex<double>(0.0, 1.0); // Imaginary unit
+
+// PhysicsTerm interface for dynamic expansion
+class PhysicsTerm
+{
+public:
+    virtual ~PhysicsTerm() = default;
+    virtual std::complex<double> compute(double t) const = 0;
+    virtual std::string describe() const = 0;
+};
 
 // Enum for UQFF systems
 enum UQFFSystemType
@@ -84,16 +96,16 @@ public:
     UQFFEightAstroCore(double k1 = 1.0, double k_ub = 0.1);
 
     // Master Compressed UQFF (Gravity) calculation
-    std::complex<double> calculate_compressed_UQFF(const DPMVars &vars, const AstroParams &params);
+    std::complex<double> calculate_compressed_UQFF(const DPMVars &vars, const AstroParams &params) const;
 
     // Master Resonance UQFF calculation
-    std::complex<double> calculate_resonance_UQFF(const DPMVars &vars, const AstroParams &params, double t);
+    std::complex<double> calculate_resonance_UQFF(const DPMVars &vars, const AstroParams &params, double t) const;
 
     // Master Buoyancy UQFF (U_Bi) calculation
-    std::complex<double> calculate_buoyancy_UQFF(const DPMVars &vars, const AstroParams &params);
+    std::complex<double> calculate_buoyancy_UQFF(const DPMVars &vars, const AstroParams &params) const;
 
     // Simultaneous solution for all three master systems
-    std::vector<std::complex<double>> calculate_simultaneous(const DPMVars &vars, const AstroParams &params, double t);
+    std::vector<std::complex<double>> calculate_simultaneous(const DPMVars &vars, const AstroParams &params, double t) const;
 
     // DPM Creation Scenario simulation (placeholder for ACP stage)
     std::complex<double> simulate_DPM_creation(double vacuum_density);
@@ -104,8 +116,27 @@ public:
     // Compute for all 8 systems (batch processing)
     std::vector<std::vector<std::complex<double>>> compute_all_systems(double t_global = 0.0);
 
+    // Self-expanding framework methods
+    void registerDynamicTerm(std::unique_ptr<PhysicsTerm> term);
+    void listDynamicTerms() const;
+    void setDynamicParameter(const std::string &name, double value);
+    double getDynamicParameter(const std::string &name, double defaultValue = 0.0) const;
+    void setEnableDynamicTerms(bool enable) { enableDynamicTerms_ = enable; }
+    void setEnableLogging(bool enable) { enableLogging_ = enable; }
+    void setLearningRate(double rate) { learningRate_ = rate; }
+    std::complex<double> computeDynamicContribution(double t) const;
+    void exportState(const std::string &filename) const;
+
 private:
     double k1_, k_ub_;
+
+    // Self-expanding framework members
+    std::map<std::string, double> dynamicParameters_;
+    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms_;
+    std::map<std::string, std::string> metadata_;
+    bool enableDynamicTerms_;
+    bool enableLogging_;
+    double learningRate_;
     std::complex<double> G_k(const DPMVars &vars, UQFFSystemType type) const;
     std::complex<double> H_k(const DPMVars &vars, UQFFSystemType type) const;
     double Hubble_correction(double z) const { return 1.0 + z; }
@@ -120,7 +151,7 @@ public:
     UQFFEightAstroSystem(const AstroParams &params);
 
     // Calculate simultaneous forces
-    std::vector<std::complex<double>> calculate_simultaneous(const UQFFEightAstroCore &core, double t);
+    std::vector<std::complex<double>> calculate_simultaneous(const UQFFEightAstroCore &core, double t) const;
 
     AstroParams get_params() const { return params_; }
     std::string get_name() const { return params_.name; }
@@ -148,7 +179,7 @@ UQFFEightAstroSystem create_NGC2174_system();
 // Author: Generated by Grok for Daniel T. Murphy
 // Watermark: Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com, analyzed by Grok 3, dated November 17, 2025
 
-#include "UQFFEightAstroSystems.h"
+// Header is embedded above in the same file
 #include <iostream>
 #include <iomanip>
 #include <numeric>
@@ -156,9 +187,17 @@ UQFFEightAstroSystem create_NGC2174_system();
 
 // UQFFEightAstroCore Implementation
 UQFFEightAstroCore::UQFFEightAstroCore(double k1, double k_ub)
-    : k1_(k1), k_ub_(k_ub) {}
+    : k1_(k1), k_ub_(k_ub), enableDynamicTerms_(false), enableLogging_(false), learningRate_(0.001)
+{
+    // Initialize metadata
+    metadata_["module_name"] = "UQFFEightAstroCore_SOURCE114";
+    metadata_["version"] = "2.0-Enhanced";
+    metadata_["source_file"] = "source171.cpp";
+    metadata_["capabilities"] = "8-system-batch-processing,complex-physics,dpm-creation,self-expanding";
+    metadata_["systems"] = "AFGL5180,NGC346,LMC_opo9944a,LMC_heic1301,LMC_potw1408a,LMC_heic1206,LMC_heic1402,NGC2174";
+}
 
-std::complex<double> UQFFEightAstroCore::calculate_compressed_UQFF(const DPMVars &vars, const AstroParams &params)
+std::complex<double> UQFFEightAstroCore::calculate_compressed_UQFF(const DPMVars &vars, const AstroParams &params) const
 {
     std::complex<double> dpm_term = vars.f_UA_prime * vars.f_SCm * vars.R_EB;
     std::complex<double> geom_factor = G_k(vars, COMPRESSED);
@@ -169,7 +208,7 @@ std::complex<double> UQFFEightAstroCore::calculate_compressed_UQFF(const DPMVars
     return (base + ub_term) * h_corr * e_rad;
 }
 
-std::complex<double> UQFFEightAstroCore::calculate_resonance_UQFF(const DPMVars &vars, const AstroParams &params, double t)
+std::complex<double> UQFFEightAstroCore::calculate_resonance_UQFF(const DPMVars &vars, const AstroParams &params, double t) const
 {
     double omega_ug1 = 1.989e-13; // Example from doc
     std::complex<double> r_ug1 = std::complex<double>(M_SF, 0.0) * calculate_compressed_UQFF(vars, params) * std::cos(omega_ug1 * t);
@@ -177,7 +216,7 @@ std::complex<double> UQFFEightAstroCore::calculate_resonance_UQFF(const DPMVars 
     return r_ug1 * vars.f_Ub; // Modulated by buoyancy
 }
 
-std::complex<double> UQFFEightAstroCore::calculate_buoyancy_UQFF(const DPMVars &vars, const AstroParams &params)
+std::complex<double> UQFFEightAstroCore::calculate_buoyancy_UQFF(const DPMVars &vars, const AstroParams &params) const
 {
     std::complex<double> dpm_term = vars.f_UA_prime * vars.f_SCm * vars.R_EB;
     std::complex<double> mod_factor = H_k(vars, BUOYANCY);
@@ -185,7 +224,7 @@ std::complex<double> UQFFEightAstroCore::calculate_buoyancy_UQFF(const DPMVars &
     return base * std::complex<double>(1.0 + params.sfr / 1.0, 0.0); // Scaled by SFR
 }
 
-std::vector<std::complex<double>> UQFFEightAstroCore::calculate_simultaneous(const DPMVars &vars, const AstroParams &params, double t)
+std::vector<std::complex<double>> UQFFEightAstroCore::calculate_simultaneous(const DPMVars &vars, const AstroParams &params, double t) const
 {
     std::vector<std::complex<double>> results(3);
     results[COMPRESSED] = calculate_compressed_UQFF(vars, params);
@@ -239,6 +278,111 @@ std::vector<std::vector<std::complex<double>>> UQFFEightAstroCore::compute_all_s
     return all_results;
 }
 
+// Self-expanding framework implementation
+void UQFFEightAstroCore::registerDynamicTerm(std::unique_ptr<PhysicsTerm> term)
+{
+    if (enableLogging_)
+    {
+        std::cout << "[UQFFEightAstroCore] Registering dynamic term: " << term->describe() << std::endl;
+    }
+    dynamicTerms_.push_back(std::move(term));
+}
+
+void UQFFEightAstroCore::listDynamicTerms() const
+{
+    std::cout << "[UQFFEightAstroCore] Dynamic terms (" << dynamicTerms_.size() << " total):" << std::endl;
+    for (size_t i = 0; i < dynamicTerms_.size(); ++i)
+    {
+        std::cout << "  " << i << ": " << dynamicTerms_[i]->describe() << std::endl;
+    }
+}
+
+void UQFFEightAstroCore::setDynamicParameter(const std::string &name, double value)
+{
+    dynamicParameters_[name] = value;
+    if (enableLogging_)
+    {
+        std::cout << "[UQFFEightAstroCore] Set parameter '" << name << "' = " << value << std::endl;
+    }
+}
+
+double UQFFEightAstroCore::getDynamicParameter(const std::string &name, double defaultValue) const
+{
+    auto it = dynamicParameters_.find(name);
+    return (it != dynamicParameters_.end()) ? it->second : defaultValue;
+}
+
+std::complex<double> UQFFEightAstroCore::computeDynamicContribution(double t) const
+{
+    if (!enableDynamicTerms_ || dynamicTerms_.empty())
+    {
+        return std::complex<double>(0.0, 0.0);
+    }
+    std::complex<double> sum(0.0, 0.0);
+    for (const auto &term : dynamicTerms_)
+    {
+        sum += term->compute(t);
+    }
+    return sum;
+}
+
+void UQFFEightAstroCore::exportState(const std::string &filename) const
+{
+    std::ofstream ofs(filename);
+    if (!ofs)
+    {
+        if (enableLogging_)
+        {
+            std::cerr << "[UQFFEightAstroCore] Failed to open " << filename << " for export" << std::endl;
+        }
+        return;
+    }
+
+    ofs << "# UQFFEightAstroCore State Export\n";
+    ofs << "# Generated: November 17, 2025\n\n";
+
+    ofs << "[Metadata]\n";
+    for (const auto &kv : metadata_)
+    {
+        ofs << kv.first << " = " << kv.second << "\n";
+    }
+
+    ofs << "\n[Parameters]\n";
+    ofs << "k1 = " << k1_ << "\n";
+    ofs << "k_ub = " << k_ub_ << "\n";
+    ofs << "learningRate = " << learningRate_ << "\n";
+    ofs << "enableDynamicTerms = " << enableDynamicTerms_ << "\n";
+
+    ofs << "\n[DynamicParameters]\n";
+    for (const auto &kv : dynamicParameters_)
+    {
+        ofs << kv.first << " = " << kv.second << "\n";
+    }
+
+    ofs << "\n[DynamicTerms]\n";
+    ofs << "count = " << dynamicTerms_.size() << "\n";
+    for (size_t i = 0; i < dynamicTerms_.size(); ++i)
+    {
+        ofs << "term_" << i << " = " << dynamicTerms_[i]->describe() << "\n";
+    }
+
+    ofs << "\n[AstronomicalSystems]\n";
+    ofs << "AFGL5180 = r:1e16,sfr:0.01,B:1e-4,z:0.0,age:3.15e13\n";
+    ofs << "NGC346 = r:1e19,sfr:0.1,B:1e-5,z:0.0006,age:3.15e14\n";
+    ofs << "LMC_opo9944a = r:5e18,sfr:0.05,B:1e-5,z:0.0005,age:1.58e14\n";
+    ofs << "LMC_heic1301 = r:2e19,sfr:0.02,B:1e-5,z:0.0005,age:6.31e14\n";
+    ofs << "LMC_potw1408a = r:1e18,sfr:0.01,B:1e-6,z:0.0005,age:3.15e13\n";
+    ofs << "LMC_heic1206 = r:3e18,sfr:0.03,B:1e-5,z:0.0005,age:9.46e13\n";
+    ofs << "LMC_heic1402 = r:1.5e19,sfr:0.08,B:1e-5,z:0.0005,age:4.73e14\n";
+    ofs << "NGC2174 = r:2e19,sfr:0.1,B:1e-5,z:0.00015,age:1.58e14\n";
+
+    ofs.close();
+    if (enableLogging_)
+    {
+        std::cout << "[UQFFEightAstroCore] State exported to " << filename << std::endl;
+    }
+}
+
 // UQFFEightAstroSystem Implementation
 UQFFEightAstroSystem::UQFFEightAstroSystem(const AstroParams &params) : params_(params)
 {
@@ -256,10 +400,11 @@ UQFFEightAstroSystem::UQFFEightAstroSystem(const AstroParams &params) : params_(
     default_vars_.f_Ub = std::complex<double>(1e9, 1e6); // Proportional to delta
 }
 
-std::vector<std::complex<double>> UQFFEightAstroSystem::calculate_simultaneous(const UQFFEightAstroCore &core, double t)
+std::vector<std::complex<double>> UQFFEightAstroSystem::calculate_simultaneous(const UQFFEightAstroCore &core, double t) const
 {
-    default_vars_.f_Ub = core.calculate_f_Ub(default_vars_.delta_k_eta);
-    return core.calculate_simultaneous(default_vars_, params_, t);
+    DPMVars vars = default_vars_;
+    vars.f_Ub = core.calculate_f_Ub(vars.delta_k_eta);
+    return core.calculate_simultaneous(vars, params_, t);
 }
 
 // Factory functions (parameters from DeepSearch in document)
@@ -319,11 +464,222 @@ UQFFEightAstroSystem create_NGC2174_system()
     return UQFFEightAstroSystem(p);
 }
 
-// Example usage (main for testing all 8 systems; compile with g++ -o uqffeight UQFFEightAstroSystems.cpp -std=c++11)
+// ============================================================================
+// SOURCE114: EightAstroSystemsModule_SOURCE114
+// Integration into MAIN_1_CoAnQi.cpp
+// ============================================================================
+
+class EightAstroSystemsModule_SOURCE114
+{
+private:
+    UQFFEightAstroCore core_;
+    std::vector<UQFFEightAstroSystem> systems_;
+
+    // Self-expanding framework members
+    std::map<std::string, double> dynamicParameters_;
+    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms_;
+    std::map<std::string, std::string> metadata_;
+    bool enableDynamicTerms_;
+    bool enableLogging_;
+    double learningRate_;
+
+public:
+    EightAstroSystemsModule_SOURCE114(double k1 = 1.0, double k_ub = 0.1)
+        : core_(k1, k_ub), enableDynamicTerms_(false), enableLogging_(false), learningRate_(0.001)
+    {
+        // Initialize metadata
+        metadata_["module_name"] = "EightAstroSystemsModule_SOURCE114";
+        metadata_["version"] = "2.0-Enhanced";
+        metadata_["source_file"] = "source171.cpp";
+        metadata_["capabilities"] = "8-system-batch,compressed-resonance-buoyancy,dpm-creation,self-expanding";
+        metadata_["date"] = "2025-11-17";
+
+        // Initialize all 8 systems
+        systems_.push_back(create_AFGL5180_system());
+        systems_.push_back(create_NGC346_system());
+        systems_.push_back(create_LMC_opo9944a_system());
+        systems_.push_back(create_LMC_heic1301_system());
+        systems_.push_back(create_LMC_potw1408a_system());
+        systems_.push_back(create_LMC_heic1206_system());
+        systems_.push_back(create_LMC_heic1402_system());
+        systems_.push_back(create_NGC2174_system());
+    }
+
+    // Batch compute all 8 systems × 3 UQFF types = 24 results
+    std::vector<std::vector<std::complex<double>>> computeAllSystems(double t_global = 0.0)
+    {
+        auto results = core_.compute_all_systems(t_global);
+
+        // Add dynamic contributions if enabled
+        if (enableDynamicTerms_)
+        {
+            std::complex<double> dynamic = computeDynamicContribution(t_global);
+            for (auto &sys_results : results)
+            {
+                for (auto &val : sys_results)
+                {
+                    val += dynamic;
+                }
+            }
+        }
+
+        return results;
+    }
+
+    // Simulate DPM creation
+    std::complex<double> simulateDPMCreation(double vacuum_density)
+    {
+        return core_.simulate_DPM_creation(vacuum_density);
+    }
+
+    // Self-expanding framework methods
+    void registerDynamicTerm(std::unique_ptr<PhysicsTerm> term)
+    {
+        if (enableLogging_)
+        {
+            std::cout << "[SOURCE114] Registering dynamic term: " << term->describe() << std::endl;
+        }
+        dynamicTerms_.push_back(std::move(term));
+        core_.registerDynamicTerm(std::move(term));
+    }
+
+    void listDynamicTerms() const
+    {
+        std::cout << "[SOURCE114] Dynamic terms (" << dynamicTerms_.size() << " total):" << std::endl;
+        for (size_t i = 0; i < dynamicTerms_.size(); ++i)
+        {
+            std::cout << "  " << i << ": " << dynamicTerms_[i]->describe() << std::endl;
+        }
+    }
+
+    void setDynamicParameter(const std::string &name, double value)
+    {
+        dynamicParameters_[name] = value;
+        core_.setDynamicParameter(name, value);
+        if (enableLogging_)
+        {
+            std::cout << "[SOURCE114] Set parameter '" << name << "' = " << value << std::endl;
+        }
+    }
+
+    double getDynamicParameter(const std::string &name, double defaultValue = 0.0) const
+    {
+        auto it = dynamicParameters_.find(name);
+        return (it != dynamicParameters_.end()) ? it->second : defaultValue;
+    }
+
+    void setEnableDynamicTerms(bool enable)
+    {
+        enableDynamicTerms_ = enable;
+        core_.setEnableDynamicTerms(enable);
+    }
+
+    void setEnableLogging(bool enable)
+    {
+        enableLogging_ = enable;
+        core_.setEnableLogging(enable);
+    }
+
+    void setLearningRate(double rate)
+    {
+        learningRate_ = rate;
+        core_.setLearningRate(rate);
+    }
+
+    std::complex<double> computeDynamicContribution(double t) const
+    {
+        if (!enableDynamicTerms_ || dynamicTerms_.empty())
+        {
+            return std::complex<double>(0.0, 0.0);
+        }
+        std::complex<double> sum(0.0, 0.0);
+        for (const auto &term : dynamicTerms_)
+        {
+            sum += term->compute(t);
+        }
+        return sum;
+    }
+
+    void exportState(const std::string &filename) const
+    {
+        std::ofstream ofs(filename);
+        if (!ofs)
+        {
+            if (enableLogging_)
+            {
+                std::cerr << "[SOURCE114] Failed to open " << filename << " for export" << std::endl;
+            }
+            return;
+        }
+
+        ofs << "# EightAstroSystemsModule_SOURCE114 State Export\n";
+        ofs << "# Generated: November 17, 2025\n\n";
+
+        ofs << "[Metadata]\n";
+        for (const auto &kv : metadata_)
+        {
+            ofs << kv.first << " = " << kv.second << "\n";
+        }
+
+        ofs << "\n[Parameters]\n";
+        ofs << "learningRate = " << learningRate_ << "\n";
+        ofs << "enableDynamicTerms = " << enableDynamicTerms_ << "\n";
+        ofs << "enableLogging = " << enableLogging_ << "\n";
+
+        ofs << "\n[DynamicParameters]\n";
+        for (const auto &kv : dynamicParameters_)
+        {
+            ofs << kv.first << " = " << kv.second << "\n";
+        }
+
+        ofs << "\n[DynamicTerms]\n";
+        ofs << "count = " << dynamicTerms_.size() << "\n";
+        for (size_t i = 0; i < dynamicTerms_.size(); ++i)
+        {
+            ofs << "term_" << i << " = " << dynamicTerms_[i]->describe() << "\n";
+        }
+
+        ofs << "\n[AstronomicalSystems]\n";
+        ofs << "system_count = 8\n";
+        for (size_t i = 0; i < systems_.size(); ++i)
+        {
+            ofs << "system_" << i << " = " << systems_[i].get_name() << "\n";
+        }
+
+        ofs.close();
+        if (enableLogging_)
+        {
+            std::cout << "[SOURCE114] State exported to " << filename << std::endl;
+        }
+    }
+
+    // Diagnostics
+    void printDiagnostics(double t_global = 0.0) const
+    {
+        std::cout << "\n=== SOURCE114: Eight Astro Systems Module ===";
+        std::cout << "\nSystems: 8 (AFGL5180 to NGC2174)";
+        std::cout << "\nUQFF Types: 3 (Compressed, Resonance, Buoyancy)";
+        std::cout << "\nTotal Results: 24 (8 systems × 3 types)";
+        std::cout << "\nDynamic Terms: " << dynamicTerms_.size();
+        std::cout << "\nDynamic Parameters: " << dynamicParameters_.size();
+        std::cout << "\nLearning Rate: " << learningRate_;
+        std::cout << "\n"
+                  << std::endl;
+    }
+};
+
+// Global instance for MAIN_1_CoAnQi.cpp integration
+EightAstroSystemsModule_SOURCE114 g_eightAstroSystems_SOURCE114;
+
+// Example usage (main for testing all 8 systems; compile with g++ -o uqffeight source171.cpp -std=c++11)
+#ifdef STANDALONE_TEST
 int main()
 {
-    UQFFEightAstroCore core;
-    auto all_results = core.compute_all_systems(); // Batch compute for all 8
+    EightAstroSystemsModule_SOURCE114 module;
+    module.setEnableLogging(true);
+
+    // Test batch computation
+    auto all_results = module.computeAllSystems();
     std::vector<std::string> names = {
         "AFGL 5180", "NGC 346 (GFSC)", "LMC opo9944a", "LMC heic1301",
         "LMC potw1408a", "LMC heic1206", "LMC heic1402", "NGC 2174"};
@@ -338,9 +694,15 @@ int main()
         std::cout << std::endl;
     }
 
+    // Test DPM creation
     double vacuum_density = 1.0;
-    std::complex<double> dpm = core.simulate_DPM_creation(vacuum_density);
+    std::complex<double> dpm = module.simulateDPMCreation(vacuum_density);
     std::cout << "DPM Creation (example): " << dpm.real() << " + " << dpm.imag() << "i" << std::endl;
+
+    // Test self-expanding framework
+    module.printDiagnostics();
+    module.exportState("source114_state.txt");
 
     return 0;
 }
+#endif
