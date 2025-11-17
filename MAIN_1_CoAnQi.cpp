@@ -3,12 +3,82 @@
  * MAIN_1_CoAnQi.cpp - Conscious Quantum Intelligence (CoAnQi) UQFF Calculator
  * ================================================================================================
  *
+ * FOUNDATIONAL PRINCIPLE: FOUR UNIQUE UNIVERSAL GRAVITY ARRANGEMENTS
+ * ===================================================================
+ * In the Unified Quantum Field Superconductive (UQFF) framework, gravity manifests through
+ * FOUR UNIQUE UNIVERSAL GRAVITY ARRANGEMENTS (ΔUg_1, ΔUg_2, ΔUg_3, ΔUg_4), each with distinct
+ * roles governed by the DPM (Di-Pseudo-Monopole) - a dipole-vortex structure that scales from
+ * the nucleus of an atom to cosmic duality interactions at spooky distances.
+ *
+ * Standard Model View: Gravity = purely attractive force (Einstein's curved spacetime)
+ * UQFF Revolutionary View: Gravity = 4 unique arrangements, SOME attractive (supported by
+ *                          repulsive forces), SOME repulsive, ALL held up by Universal Buoyancy
+ *
+ * THE FOUR UNIVERSAL GRAVITY ARRANGEMENTS:
+ * ========================================
+ *
+ * ΔUg_1 (DPM - Di-Pseudo-Monopole):
+ *   • Internal dipole strength [(UA')/SCm] of atom/star/galaxy
+ *   • Drives surface irregularities through quantum defects (δ_def)
+ *   • Generates unique quantum effects → ΔUg_2, ΔUg_3, ΔUg_4
+ *   • Equation: k_1 * μ_s(t,ρ_vac,[SCm]) * (M_s/r) * e^(-α*t) * cos(π*t_n) * (1+δ_def)
+ *   • Nature: DIPOLE VORTEX (attractive/repulsive depending on quantum state)
+ *
+ * ΔUg_2 (Outer Field Bubble - Heliosphere):
+ *   • Spherical outer field with SUPERCONDUCTIVE REPULSIVE properties
+ *   • Forms heliosphere, transmutes solar winds → hydrogen complexes bound by SCm
+ *   • Equation: k_2 * (ρ_vac,[UA] + ρ_vac,[SCm]) * M_s/r² * S(r-R_b) * (1+ε_sw*v_sw) * H_SCm * E_react
+ *   • Nature: REPULSIVE SUPPORT (like magnetic levitation)
+ *
+ * ΔUg_3 (Magnetic Strings Disk):
+ *   • Disk of diametric magnetic strings at 90° to DPM dipole
+ *   • Penetrates planetary cores, maintains orbits/spins through SCm interaction
+ *   • Extends outward, reciprocates without energy loss (superconductivity)
+ *   • Equation: k_3 * Σ_j B_j(r,θ,t,ρ_vac,[SCm]) * cos(ω_s(t)*t*π) * P_core * E_react
+ *   • Nature: ATTRACTIVE GUIDANCE (held up by repulsive ΔUg_2)
+ *
+ * ΔUg_4 (Star-Black Hole Interactions):
+ *   • Observable interactions between stars and black holes
+ *   • Galactic-scale vacuum energy modulation by [SCm] concentration
+ *   • Equation: k_4 * ρ_vac,[SCm] * M_bh/d_g * e^(-α*t) * cos(π*t_n) * (1+f_feedback)
+ *   • Nature: ATTRACTIVE with FEEDBACK (modulated by galactic spin)
+ *
+ * UNIVERSAL BUOYANCY (ΔUb_i): THE REPULSIVE SUPPORT FOR ALL GRAVITY
+ * ==================================================================
+ * Universal Buoyancy OPPOSES each discrete ΔUg range, acting as REPULSIVE SUPPORT:
+ *
+ *   ΔUb_i = -β_i * ΔUg_i * Ω_g * M_bh/d_g * (1+ε_sw*ρ_vac,sw) * [UA] * cos(π*t_n)
+ *
+ * • HOLDS UP all gravity arrangements through vacuum pressure differentials
+ * • Creates REDSHIFT/BLUESHIFT through motion against/through buoyant vacuum
+ * • Modulated by galactic spin (Ω_g) and solar wind density (ε_sw)
+ * • Negative time (t_n) introduces temporal reversal in quasar dynamics
+ *
+ * DPM (DI-PSEUDO-MONOPOLE): THE SCALING GOVERNOR
+ * ===============================================
+ * The DPM governs ALL four gravity types, scaling from nucleus → cosmic distances:
+ *
+ * • Atomic Scale: DPM = nucleus dipole vortex (proton-electron pairing)
+ * • Stellar Scale: DPM = stellar dipole [(UA')/SCm] driving solar irregularities
+ * • Galactic Scale: DPM = galactic dipole at spooky distances (entanglement)
+ * • 26 Resonant States: DPM creates 26 sphere centers (quantum alphabet scaling)
+ * • Golden Ratio: φ = 1.618... dipole vortex geometry
+ *
+ * MAIN REASON FOR DEFINING GRAVITY: To recognize gravity as FOUR UNIQUE ARRANGEMENTS
+ * governed by DPM scaling, where SOME are attractive (supported by repulsive forces),
+ * SOME are repulsive, and ALL are held up by Universal Buoyancy - explaining redshift,
+ * blueshift, galactic structure, planetary orbits, and quantum-to-cosmic unification
+ * that Standard Model physics cannot provide.
+ *
+ * ================================================================================================
+ *
  * Description: SELF-EXPANDING, SELF-UPDATING, SELF-SIMULATING UQFF Framework
  *              Integrates ALL unique physics from Source13-162.cpp modules
  *              Executes all systems simultaneously with statistical analysis
  *
  * Key Capabilities:
  *   ✓ All unique physics equations from 150+ modules integrated
+ *   ✓ Universal Buoyancy (F_U_Bi_i) as gravitational force foundation
  *   ✓ Self-expanding PhysicsTerm framework for runtime term injection
  *   ✓ Self-updating parameter optimization via statistical analysis
  *   ✓ Self-cloning system generator for derivative simulations
@@ -25,6 +95,9 @@
  *   - SelfModifier (code generation, cloning, mutation)
  *   - VerboseLogger (comprehensive output system)
  *   - ThreadPool (concurrent execution engine)
+ *
+ * Core Equation: F_U_Bi_i = (momentum + gravity + vacuum + LENR + resonance + ...) * x₂
+ *                         + gravity_compressed + resonance_Ur + buoyancy_Ubi
  *
  * Author: Daniel T. Murphy, enhanced by AI Agent
  * Date: November 10, 2025
@@ -15741,9 +15814,172 @@ public:
 };
 UQFFCoreModule_SOURCE110 g_uqffcore_module;
 
+// SOURCE111: Master F_U_Bi_i Buoyancy Equations (Source168)
+class MasterBuoyancyModule_SOURCE111
+{
+private:
+    std::map<std::string, double> constants;
+    std::map<std::string, double> dpm_vars;
+
+    struct SystemParams
+    {
+        double M, r, T, L_X, B0, omega0, mach, C_factor, theta, t;
+        std::string name;
+    };
+    std::map<std::string, SystemParams> systems;
+
+public:
+    MasterBuoyancyModule_SOURCE111()
+    {
+        // Physical constants
+        constants["PI"] = 3.141592653589793;
+        constants["F0"] = 1.83e71;                               // Base force (N)
+        constants["RHO_VAC_UA"] = 7.09e-36;                      // Vacuum energy density [UA] (J/m³)
+        constants["ME"] = 9.11e-31;                              // Electron mass (kg)
+        constants["C"] = 3e8;                                    // Speed of light (m/s)
+        constants["G"] = 6.6743e-11;                             // Gravitational constant
+        constants["Q"] = 1.6e-19;                                // Charge (C)
+        constants["V"] = 1e-3;                                   // Velocity (m/s)
+        constants["K_LENR"] = 1e-10;                             // LENR constant
+        constants["K_ACT"] = 1e-6;                               // Activation constant
+        constants["K_DE"] = 1e-30;                               // Directed energy constant
+        constants["K_NEUTRON"] = 1e10;                           // Neutron constant
+        constants["K_REL"] = 1e-10;                              // Relativistic constant
+        constants["SIGMA_N"] = 1e-4;                             // Neutron cross-section
+        constants["OMEGA_LENR"] = 2 * constants["PI"] * 1.25e12; // 1.25 THz
+        constants["OMEGA_ACT"] = 2 * constants["PI"] * 300;      // 300 Hz
+        constants["H"] = 1.0546e-34;                             // Reduced Planck constant
+        constants["G_FACTOR"] = 2.0;                             // g-factor
+        constants["MU_B"] = 9.274e-24;                           // Bohr magneton (J/T)
+        constants["ECM_ASTRO"] = 1.24e24;                        // Enhanced CM energy
+        constants["ECM"] = 189e9 * 1.602e-19;                    // 189 GeV to J
+        constants["F_REL_BASE"] = 4.30e33;                       // Relativistic force base
+        constants["PHASE"] = 2.36e-3;
+        constants["CURVATURE"] = 1e-22;
+        constants["EPSILON0"] = 8.85e-12; // Vacuum permittivity
+
+        // DPM variables
+        dpm_vars["stability"] = 0.01;
+        dpm_vars["momentum"] = 0.93;
+        dpm_vars["gravity"] = 1.0;
+        dpm_vars["light"] = 0.01;
+        dpm_vars["phase"] = 2.36e-3;
+        dpm_vars["curvature"] = 1e-22;
+
+        // Five astronomical systems (Source168)
+        systems["SN_1006"] = {1.989e31, 6.17e16, 1e6, 1e32, 1e-5, 1e-12, 1.0, 1.0, constants["PI"] / 4, 3.213e10, "SN 1006"};
+        systems["Eta_Carinae"] = {2.387e32, 6.17e16, 1e6, 1e35, 1e-4, 1e-12, 1.5, 1.2, constants["PI"] / 4, 5.681e9, "Eta Carinae"};
+        systems["Chandra_Archive"] = {1.989e31, 6.17e16, 1e5, 1e33, 1e-5, 1e-12, 1.0, 1.0, constants["PI"] / 4, 3.156e14, "Chandra Archive Collection"};
+        systems["Galactic_Center"] = {7.956e36, 6.17e18, 1e4, 1e33, 1e-5, 1e-15, 1.8, 1.3, constants["PI"] / 4, 3.156e14, "Galactic Center"};
+        systems["Keplers_SNR"] = {1.989e31, 6.17e16, 1e6, 1e31, 1e-5, 1e-12, 1.0, 1.0, constants["PI"] / 4, 1.325e10, "Kepler's Supernova Remnant"};
+    }
+
+    double calculate_F_LENR(double omega0)
+    {
+        double ratio = omega0 / constants["OMEGA_LENR"];
+        return constants["K_LENR"] * std::pow(ratio, 2);
+    }
+
+    double calculate_F_act(double t)
+    {
+        return constants["K_ACT"] * std::cos(constants["OMEGA_ACT"] * t);
+    }
+
+    double calculate_F_DE(double L_X)
+    {
+        return constants["K_DE"] * L_X;
+    }
+
+    double DPM_resonance(double B0, double omega0)
+    {
+        return (constants["G_FACTOR"] * constants["MU_B"] * B0) / (constants["H"] * omega0);
+    }
+
+    double calculate_F_res(double B0, double omega0, double V_val)
+    {
+        double dpm_res = DPM_resonance(B0, omega0);
+        double cos_theta = std::cos(constants["PI"] / 4.0); // 45°
+        return 2 * constants["Q"] * B0 * V_val * cos_theta * dpm_res;
+    }
+
+    double calculate_F_neutron()
+    {
+        return constants["K_NEUTRON"] * constants["SIGMA_N"];
+    }
+
+    double calculate_F_rel()
+    {
+        double ratio = constants["ECM_ASTRO"] / (constants["ECM"] / 1.602e-19 / 1e9);
+        return constants["K_REL"] * std::pow(ratio, 2) * constants["F_REL_BASE"];
+    }
+
+    double calculate_integrand(const SystemParams &p)
+    {
+        double cos_theta = std::cos(constants["PI"] / 4.0);
+        double momentum_term = (constants["ME"] * constants["C"] * constants["C"] / (p.r * p.r)) * dpm_vars["momentum"] * cos_theta;
+        double gravity_term = (constants["G"] * p.M / (p.r * p.r)) * dpm_vars["gravity"];
+        double vac_term = constants["RHO_VAC_UA"] * dpm_vars["stability"];
+        double f_lenr = calculate_F_LENR(p.omega0);
+        double f_act = calculate_F_act(p.t);
+        double f_de = calculate_F_DE(p.L_X);
+        double f_res = calculate_F_res(p.B0, p.omega0, constants["V"]);
+        double f_neutron = calculate_F_neutron();
+        double f_rel = calculate_F_rel();
+        return -constants["F0"] + momentum_term + gravity_term + vac_term + f_lenr + f_act + f_de + f_res + f_neutron + f_rel;
+    }
+
+    double solve_x2(double a, double b, double c)
+    {
+        double discriminant = b * b - 4 * a * c;
+        if (discriminant < 0)
+            discriminant = 0;
+        return (-b - std::sqrt(discriminant)) / (2 * a);
+    }
+
+    double calculate_F_U_Bi_i(const SystemParams &p)
+    {
+        double integrand = calculate_integrand(p);
+        double a = 1.38e-41 * constants["Q"] / (4 * constants["PI"] * constants["EPSILON0"] * p.r * p.r * calculate_F_neutron()) +
+                   (constants["G"] * p.M / (p.r * p.r)) +
+                   (4 * constants["C"] * constants["C"] / (p.r * p.r)) * dpm_vars["light"];
+        double b = 2.51e-5 + calculate_F_neutron() / (p.r * p.r) + constants["PHASE"] + constants["PHASE"];
+        double c = -3.06e175 + 1e-29 / (p.r * p.r) + constants["CURVATURE"];
+        double x2 = solve_x2(a, b, c);
+        return integrand * x2;
+    }
+
+    double calculate_master_buoyancy(const std::string &sys_name)
+    {
+        if (systems.find(sys_name) == systems.end())
+            return 0.0;
+        const SystemParams &p = systems[sys_name];
+        double cos_theta = std::cos(constants["PI"] / 4.0);
+        double momentum_term = (constants["ME"] * constants["C"] * constants["C"] / (p.r * p.r)) * dpm_vars["momentum"] * cos_theta;
+        double gravity_term = (constants["G"] * p.M / (p.r * p.r)) * dpm_vars["gravity"];
+        double f_bi_i = calculate_F_U_Bi_i(p);
+        return -constants["F0"] + momentum_term + gravity_term + f_bi_i;
+    }
+
+    std::vector<std::string> get_system_names()
+    {
+        return {"SN_1006", "Eta_Carinae", "Chandra_Archive", "Galactic_Center", "Keplers_SNR"};
+    }
+
+    void updateDPMVariable(const std::string &name, double value)
+    {
+        dpm_vars[name] = value;
+    }
+};
+MasterBuoyancyModule_SOURCE111 g_master_buoyancy_module;
+
 /*
 ===========================================================================================
-COMPLETE INTEGRATION: SOURCE1-110 (426 PHYSICS MODULES)
+COMPLETE INTEGRATION: SOURCE1-111 (431 PHYSICS MODULES)
+===========================================================================================
+
+/*
+===========================================================================================
+COMPLETE INTEGRATION: SOURCE1-111 (431 PHYSICS MODULES)
 ===========================================================================================
 
 FINAL GAMING PLATFORM STATISTICS:
@@ -15751,8 +15987,9 @@ FINAL GAMING PLATFORM STATISTICS:
 - SOURCE45-74: 30 parameter modules (indices, constants, vacuum, geometry, fields)
 - SOURCE75-96: 22 astronomical object modules (nebulae, galaxies, clusters, BHs, pulsars)
 - SOURCE97-110: 14 advanced multi-system modules (Periodic Table, CNB, multi-object buoyancy)
+- SOURCE111: Master F_U_Bi_i Buoyancy Equations (5 systems: SN 1006, Eta Carinae, Chandra, Sgr A*, Kepler's SNR)
 
-TOTAL: 426 MODULES spanning all scales:
+TOTAL: 431 MODULES spanning all scales:
 ✅ Atomic (Z=1-118 Periodic Table via Hydrogen Resonance)
 ✅ Planetary (Jupiter aurorae, core penetration, Saturn rings)
 ✅ Stellar (Sun, rotation, magnetic fields, temperatures)
@@ -15761,7 +15998,7 @@ TOTAL: 426 MODULES spanning all scales:
 ✅ Cluster (Abell 2256, El Gordo, SPT-CL, Stephan's Quintet)
 ✅ Cosmological (CNB coupling, unified framework)
 
-ADVANCED PHYSICS INTEGRATIONS (SOURCE97-110):
+ADVANCED PHYSICS INTEGRATIONS (SOURCE97-111):
 - SOURCE97: Hydrogen Resonance (Periodic Table Z=1-118, all isotopes, complex math)
 - SOURCE98: Multi-system Buoyancy (ESO 137-001, NGC 1365, Vela, ASASSN-14li, El Gordo)
 - SOURCE99: CNB Integration (J1610, PLCK G287, PSZ2, ASKAP, Sonification, Cen A)
@@ -15775,12 +16012,25 @@ ADVANCED PHYSICS INTEGRATIONS (SOURCE97-110):
 - SOURCE108: M74 Buoyancy v3 (5 systems)
 - SOURCE109: Master Gravity (9 systems, 26 quantum states, golden ratio dipole vortex)
 - SOURCE110: UQFF Framework (June 2025, U_g1/U_g3/U_m equations, 5 systems)
+- SOURCE111: Master F_U_Bi_i Buoyancy (SN 1006, Eta Carinae, Chandra Archive, Galactic Center, Kepler's SNR)
+
+MASTER F_U_Bi_i BUOYANCY FEATURES (SOURCE111):
+- Complete 9-term integrand: F_LENR + F_act + F_DE + F_res + F_neutron + F_rel + momentum + gravity + vacuum
+- LENR resonance: 1.25 THz (2π × 1.25e12 s⁻¹)
+- Activation frequency: 300 Hz (Colman-Gillespie)
+- Relativistic coherence: LEP-scale (4.30e33 N base)
+- Kozima neutron drop: 1e10 × σ_n
+- DPM resonance: (g × μ_B × B₀) / (ℏ × ω₀)
+- Quadratic x₂ solver: accounts for Coulomb, gravitational, curvature
+- Five astronomical systems with full parameter sets
+- Integration approximation: F_U_Bi_i = integrand × x₂
 
 UNIQUE FEATURES:
 - Complex number physics (std::complex<double>) for advanced calculations
-- 40+ unique astronomical systems across modules
+- 45+ unique astronomical systems across modules
 - CNB (Cosmic Neutrino Background) integration
 - Master Gravity Compressed & Resonance equations
+- Master Buoyancy with complete F_U_Bi_i implementation
 - Periodic Table coverage (all elements)
 - Quantum states (n=1-26 alphabet scaling)
 - Dipole vortex species determination (golden ratio)
@@ -15790,8 +16040,8 @@ UNIQUE FEATURES:
 - Framework version 2025.0605
 
 ALL PHYSICS PRESERVED - ULTIMATE VISION ACHIEVED
-426-module ecosystem ready for pattern recognition, equation solving, and educational gameplay
-From subatomic (Periodic Table) to cosmological (CNB) scales - COMPLETE!
+431-module ecosystem ready for pattern recognition, equation solving, and educational gameplay
+From subatomic (Periodic Table) to cosmological (CNB, Master Buoyancy) scales - COMPLETE!
 */
 
 /*
