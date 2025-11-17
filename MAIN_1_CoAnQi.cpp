@@ -47,6 +47,7 @@
 #include <algorithm>
 #include <random>
 #include <numeric>
+#include <complex>
 
 // Threading enabled for parallel system calculations
 // MinGW 6.3.0 doesn't support std::thread, using Windows threads instead
@@ -208,6 +209,412 @@ public:
     virtual void printInfo(std::ostream &os = std::cout) const = 0;
     virtual bool isCompatible(const std::string &frameworkVersion) const { return true; }
 };
+
+// ===========================================================================================
+// CALCULATOR CORE INFRASTRUCTURE - Central Computation & Cross-Linking Engine
+// ===========================================================================================
+
+/**
+ * UQFFModule - Enhanced module interface for mount/dismount capability
+ * All source4-167.cpp modules will implement this interface
+ */
+class UQFFModule
+{
+public:
+    virtual ~UQFFModule() {}
+
+    // Lifecycle Management
+    virtual void mount() = 0;          // Load module into calculator
+    virtual void dismount() = 0;       // Unload module from calculator
+    virtual bool isLoaded() const = 0; // Check load status
+
+    // Core Computation
+    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
+    virtual void registerPhysicsTerms(std::vector<std::unique_ptr<PhysicsTerm>> &registry) = 0;
+
+    // Self-* Operations
+    virtual void selfExpand() = 0;                                                  // Add new physics terms at runtime
+    virtual void selfUpdate(const std::map<std::string, double> &observedData) = 0; // Optimize parameters
+    virtual void selfSimulate() = 0;                                                // Run autonomous validation tests
+
+    // State Management for Cross-Module Communication
+    virtual std::map<std::string, double> exportState() const = 0;
+    virtual void importState(const std::map<std::string, double> &state) = 0;
+
+    // Metadata
+    virtual std::string getName() const = 0;
+    virtual std::string getVersion() const = 0;
+    virtual std::vector<std::string> getDependencies() const = 0;
+};
+
+/**
+ * ModuleRegistry - Dynamic module loading and management system
+ * Tracks all 161 source modules and their load states
+ */
+class ModuleRegistry
+{
+private:
+    std::map<std::string, std::unique_ptr<UQFFModule>> modules;
+    std::map<std::string, bool> loadStates;
+    SimpleMutex registryMutex;
+
+public:
+    ModuleRegistry() {}
+
+    // Module Management
+    void registerModule(const std::string &name, std::unique_ptr<UQFFModule> module)
+    {
+        SimpleLockGuard<SimpleMutex> lock(registryMutex);
+        modules[name] = std::move(module);
+        loadStates[name] = false;
+    }
+
+    bool loadModule(const std::string &name)
+    {
+        SimpleLockGuard<SimpleMutex> lock(registryMutex);
+        auto it = modules.find(name);
+        if (it != modules.end() && !loadStates[name])
+        {
+            it->second->mount();
+            loadStates[name] = true;
+            return true;
+        }
+        return false;
+    }
+
+    bool unloadModule(const std::string &name)
+    {
+        SimpleLockGuard<SimpleMutex> lock(registryMutex);
+        auto it = modules.find(name);
+        if (it != modules.end() && loadStates[name])
+        {
+            it->second->dismount();
+            loadStates[name] = false;
+            return true;
+        }
+        return false;
+    }
+
+    UQFFModule *getModule(const std::string &name)
+    {
+        auto it = modules.find(name);
+        return (it != modules.end()) ? it->second.get() : nullptr;
+    }
+
+    std::vector<std::string> getLoadedModules() const
+    {
+        std::vector<std::string> loaded;
+        for (const auto &pair : loadStates)
+        {
+            if (pair.second)
+            {
+                loaded.push_back(pair.first);
+            }
+        }
+        return loaded;
+    }
+
+    std::vector<std::string> getAllModules() const
+    {
+        std::vector<std::string> all;
+        for (const auto &pair : modules)
+        {
+            all.push_back(pair.first);
+        }
+        return all;
+    }
+
+    size_t getModuleCount() const { return modules.size(); }
+    size_t getLoadedCount() const { return getLoadedModules().size(); }
+};
+
+/**
+ * PhysicsTermRegistry - Central registry for all physics equations
+ * Manages 200+ unique physics terms from all modules
+ */
+class PhysicsTermRegistry
+{
+private:
+    std::map<std::string, std::unique_ptr<PhysicsTerm>> terms;
+    std::map<std::string, std::string> termSources; // Maps term name to source file
+    SimpleMutex registryMutex;
+
+public:
+    PhysicsTermRegistry() {}
+
+    void registerTerm(const std::string &name, std::unique_ptr<PhysicsTerm> term, const std::string &source = "")
+    {
+        SimpleLockGuard<SimpleMutex> lock(registryMutex);
+        terms[name] = std::move(term);
+        if (!source.empty())
+        {
+            termSources[name] = source;
+        }
+    }
+
+    PhysicsTerm *getTerm(const std::string &name)
+    {
+        auto it = terms.find(name);
+        return (it != terms.end()) ? it->second.get() : nullptr;
+    }
+
+    std::vector<std::string> getAllTerms() const
+    {
+        std::vector<std::string> all;
+        for (const auto &pair : terms)
+        {
+            all.push_back(pair.first);
+        }
+        return all;
+    }
+
+    std::vector<std::string> getTermsBySource(const std::string &source) const
+    {
+        std::vector<std::string> filtered;
+        for (const auto &pair : termSources)
+        {
+            if (pair.second == source)
+            {
+                filtered.push_back(pair.first);
+            }
+        }
+        return filtered;
+    }
+
+    size_t getTermCount() const { return terms.size(); }
+
+    std::string getTermSource(const std::string &name) const
+    {
+        auto it = termSources.find(name);
+        return (it != termSources.end()) ? it->second : "Unknown";
+    }
+};
+
+/**
+ * CrossModuleCommunicator - Manages state exchange between modules
+ * Enables modules to share computation results and parameters
+ */
+class CrossModuleCommunicator
+{
+private:
+    std::map<std::string, std::map<std::string, double>> sharedStates;
+    SimpleMutex commMutex;
+
+public:
+    CrossModuleCommunicator() {}
+
+    void publishState(const std::string &moduleName, const std::map<std::string, double> &state)
+    {
+        SimpleLockGuard<SimpleMutex> lock(commMutex);
+        sharedStates[moduleName] = state;
+    }
+
+    std::map<std::string, double> getState(const std::string &moduleName) const
+    {
+        auto it = sharedStates.find(moduleName);
+        return (it != sharedStates.end()) ? it->second : std::map<std::string, double>();
+    }
+
+    bool hasState(const std::string &moduleName) const
+    {
+        return sharedStates.find(moduleName) != sharedStates.end();
+    }
+
+    void clearState(const std::string &moduleName)
+    {
+        SimpleLockGuard<SimpleMutex> lock(commMutex);
+        sharedStates.erase(moduleName);
+    }
+
+    void clearAllStates()
+    {
+        SimpleLockGuard<SimpleMutex> lock(commMutex);
+        sharedStates.clear();
+    }
+};
+
+/**
+ * DependencyResolver - Analyzes and resolves module dependencies
+ * Ensures modules are loaded in correct order
+ */
+class DependencyResolver
+{
+private:
+    std::map<std::string, std::vector<std::string>> dependencies;
+
+public:
+    DependencyResolver() {}
+
+    void addDependency(const std::string &moduleName, const std::vector<std::string> &deps)
+    {
+        dependencies[moduleName] = deps;
+    }
+
+    std::vector<std::string> resolveDependencies(const std::string &moduleName)
+    {
+        std::vector<std::string> resolved;
+        std::vector<std::string> visited;
+        resolveDependenciesRecursive(moduleName, resolved, visited);
+        return resolved;
+    }
+
+private:
+    void resolveDependenciesRecursive(const std::string &name,
+                                      std::vector<std::string> &resolved,
+                                      std::vector<std::string> &visited)
+    {
+        if (std::find(visited.begin(), visited.end(), name) != visited.end())
+        {
+            return; // Already processed
+        }
+
+        visited.push_back(name);
+
+        auto it = dependencies.find(name);
+        if (it != dependencies.end())
+        {
+            for (const auto &dep : it->second)
+            {
+                resolveDependenciesRecursive(dep, resolved, visited);
+            }
+        }
+
+        resolved.push_back(name);
+    }
+};
+
+/**
+ * CalculatorCore - Central UQFF Quantum Calculator Engine
+ * Orchestrates all modules, physics terms, and cross-module communication
+ */
+class CalculatorCore
+{
+private:
+    ModuleRegistry moduleRegistry;
+    PhysicsTermRegistry physicsRegistry;
+    CrossModuleCommunicator communicator;
+    DependencyResolver dependencyResolver;
+
+    std::string version;
+    std::map<std::string, double> globalParameters;
+
+public:
+    CalculatorCore() : version("1.0.0-CoAnQi") {}
+
+    // Module Management API
+    bool loadModule(const std::string &name)
+    {
+        // Resolve dependencies first
+        auto deps = dependencyResolver.resolveDependencies(name);
+        for (const auto &dep : deps)
+        {
+            if (dep != name)
+            {
+                moduleRegistry.loadModule(dep);
+            }
+        }
+        return moduleRegistry.loadModule(name);
+    }
+
+    bool unloadModule(const std::string &name)
+    {
+        return moduleRegistry.unloadModule(name);
+    }
+
+    void registerModule(const std::string &name, std::unique_ptr<UQFFModule> module)
+    {
+        // Register module dependencies
+        auto deps = module->getDependencies();
+        dependencyResolver.addDependency(name, deps);
+
+        // Register module
+        moduleRegistry.registerModule(name, std::move(module));
+    }
+
+    std::vector<std::string> getLoadedModules() const
+    {
+        return moduleRegistry.getLoadedModules();
+    }
+
+    // Physics Term Management
+    void registerPhysicsTerm(const std::string &name, std::unique_ptr<PhysicsTerm> term, const std::string &source = "")
+    {
+        physicsRegistry.registerTerm(name, std::move(term), source);
+    }
+
+    PhysicsTerm *getPhysicsTerm(const std::string &name)
+    {
+        return physicsRegistry.getTerm(name);
+    }
+
+    std::vector<std::string> getAllPhysicsTerms() const
+    {
+        return physicsRegistry.getAllTerms();
+    }
+
+    // Computation API (for SOURCE2 integration)
+    double compute(const std::string &termName, double t, const std::map<std::string, double> &params)
+    {
+        auto term = physicsRegistry.getTerm(termName);
+        if (term)
+        {
+            return term->compute(t, params);
+        }
+        return 0.0;
+    }
+
+    double computeModule(const std::string &moduleName, double t, const std::map<std::string, double> &params)
+    {
+        auto module = moduleRegistry.getModule(moduleName);
+        if (module && module->isLoaded())
+        {
+            return module->compute(t, params);
+        }
+        return 0.0;
+    }
+
+    // Cross-Module Communication
+    void publishModuleState(const std::string &moduleName, const std::map<std::string, double> &state)
+    {
+        communicator.publishState(moduleName, state);
+    }
+
+    std::map<std::string, double> getModuleState(const std::string &moduleName)
+    {
+        return communicator.getState(moduleName);
+    }
+
+    // Global Parameters
+    void setGlobalParameter(const std::string &name, double value)
+    {
+        globalParameters[name] = value;
+    }
+
+    double getGlobalParameter(const std::string &name, double defaultValue = 0.0) const
+    {
+        auto it = globalParameters.find(name);
+        return (it != globalParameters.end()) ? it->second : defaultValue;
+    }
+
+    // System Information
+    std::string getVersion() const { return version; }
+
+    void printStatus(std::ostream &os = std::cout) const
+    {
+        os << "========================================" << std::endl;
+        os << "UQFF Calculator Core Status" << std::endl;
+        os << "========================================" << std::endl;
+        os << "Version: " << version << std::endl;
+        os << "Total Modules: " << moduleRegistry.getModuleCount() << std::endl;
+        os << "Loaded Modules: " << moduleRegistry.getLoadedCount() << std::endl;
+        os << "Physics Terms: " << physicsRegistry.getTermCount() << std::endl;
+        os << "Global Parameters: " << globalParameters.size() << std::endl;
+        os << "========================================" << std::endl;
+    }
+};
+
+// Global CalculatorCore instance
+static CalculatorCore g_calculatorCore;
 
 // ===========================================================================================
 // CONCRETE PHYSICS TERMS - All Unique Physics from Source Modules
@@ -1596,6 +2003,400 @@ public:
 };
 
 /**
+ * Source4 Integration: Reactor Energy (Ereact) Term
+ * SCm reactive energy with exponential decay
+ */
+class ReactorEnergyTerm : public PhysicsTerm
+{
+private:
+    double rho_SCm;
+    double v_SCm;
+    double rho_A;
+    double kappa;
+
+public:
+    ReactorEnergyTerm(double scm_density = 1e15, double scm_velocity = 0.99 * 3e8,
+                      double aether_density = 1e-23, double decay_rate = 0.0005)
+        : rho_SCm(scm_density), v_SCm(scm_velocity), rho_A(aether_density), kappa(decay_rate)
+    {
+        setMetadata("source", "source4.cpp");
+        setMetadata("type", "reactor_energy");
+        setMetadata("equation", "Ereact = (rho_SCm * v_SCm^2 / rho_A) * exp(-kappa*t)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double scm_d = getDynamicParameter("rho_SCm", rho_SCm);
+        double v = getDynamicParameter("v_SCm", v_SCm);
+        double rho = getDynamicParameter("rho_A", rho_A);
+        double k = getDynamicParameter("kappa", kappa);
+
+        return (scm_d * v * v / rho) * exp(-k * t);
+    }
+
+    std::string getName() const override { return "ReactorEnergy"; }
+    std::string getDescription() const override
+    {
+        return "Source4: SCm reactor efficiency with exponential time decay";
+    }
+};
+
+/**
+ * Source4 Integration: Magnetic Dipole Moment (mu_s) Term
+ * Time-varying magnetic dipole with SCm contribution
+ */
+class MagneticDipoleTerm : public PhysicsTerm
+{
+private:
+    double Bs_avg;
+    double omega_c;
+    double Rs;
+    double SCm_contrib;
+
+public:
+    MagneticDipoleTerm(double B_field = 1e-4, double cycle_freq = 2 * M_PI / (11.0 * 365.25 * 24 * 3600),
+                       double radius = 6.96e8, double scm_mag = 1e3)
+        : Bs_avg(B_field), omega_c(cycle_freq), Rs(radius), SCm_contrib(scm_mag)
+    {
+        setMetadata("source", "source4.cpp");
+        setMetadata("type", "magnetic_dipole");
+        setMetadata("equation", "mu_s = (Bs + 0.4*sin(omega_c*t) + SCm) * Rs^3");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double B = getDynamicParameter("Bs_avg", Bs_avg);
+        double omega = getDynamicParameter("omega_c", omega_c);
+        double R = getDynamicParameter("Rs", Rs);
+        double scm = getDynamicParameter("SCm_contrib", SCm_contrib);
+
+        double Bs_t = B + 0.4 * sin(omega * t) + scm;
+        return Bs_t * pow(R, 3);
+    }
+
+    std::string getName() const override { return "MagneticDipole"; }
+    std::string getDescription() const override
+    {
+        return "Source4: Time-varying magnetic dipole moment with SCm enhancement";
+    }
+};
+
+/**
+ * Source4 Integration: Magnetic Jet Field (Bj) Term
+ * Oscillating magnetic field in jets
+ */
+class MagneticJetFieldTerm : public PhysicsTerm
+{
+private:
+    double B_base;
+    double omega_c;
+    double SCm_contrib;
+
+public:
+    MagneticJetFieldTerm(double B0 = 1e-3, double cycle_freq = 2 * M_PI / (11.0 * 365.25 * 24 * 3600),
+                         double scm_mag = 1e3)
+        : B_base(B0), omega_c(cycle_freq), SCm_contrib(scm_mag)
+    {
+        setMetadata("source", "source4.cpp");
+        setMetadata("type", "magnetic_jet_field");
+        setMetadata("equation", "Bj = B_base + 0.4*sin(omega_c*t) + SCm");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double B0 = getDynamicParameter("B_base", B_base);
+        double omega = getDynamicParameter("omega_c", omega_c);
+        double scm = getDynamicParameter("SCm_contrib", SCm_contrib);
+
+        return B0 + 0.4 * sin(omega * t) + scm;
+    }
+
+    std::string getName() const override { return "MagneticJetField"; }
+    std::string getDescription() const override
+    {
+        return "Source4: Oscillating magnetic field in stellar jets";
+    }
+};
+
+/**
+ * Source4 Integration: Unified Field Buoyancy (Ubi) Term
+ * Galactic buoyancy force from individual Ug components
+ */
+class UnifiedBuoyancyTerm : public PhysicsTerm
+{
+private:
+    double beta_i;
+    double Omega_g;
+    double Mbh;
+    double dg;
+    double epsilon_sw;
+    double rho_sw;
+    double UUA;
+
+public:
+    UnifiedBuoyancyTerm(double beta = 0.6, double omega_gal = 7.3e-16, double bh_mass = 8.15e36,
+                        double distance = 2.55e20, double eps = 0.001, double rho = 8e-21, double ua = 1.0)
+        : beta_i(beta), Omega_g(omega_gal), Mbh(bh_mass), dg(distance),
+          epsilon_sw(eps), rho_sw(rho), UUA(ua)
+    {
+        setMetadata("source", "source4.cpp");
+        setMetadata("type", "unified_buoyancy");
+        setMetadata("equation", "Ubi = -beta_i * Ugi * Omega_g * Mbh/dg * wind_mod * UUA * cos(pi*tn)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double Ugi = params.count("Ugi") ? params.at("Ugi") : 1e10;
+        double tn = params.count("tn") ? params.at("tn") : t;
+
+        double beta = getDynamicParameter("beta_i", beta_i);
+        double omega = getDynamicParameter("Omega_g", Omega_g);
+        double M = getDynamicParameter("Mbh", Mbh);
+        double d = getDynamicParameter("dg", dg);
+        double eps = getDynamicParameter("epsilon_sw", epsilon_sw);
+        double rho = getDynamicParameter("rho_sw", rho_sw);
+        double ua = getDynamicParameter("UUA", UUA);
+
+        double wind_mod = 1.0 + eps * rho;
+        return -beta * Ugi * omega * M / d * wind_mod * ua * cos(M_PI * tn);
+    }
+
+    std::string getName() const override { return "UnifiedBuoyancy"; }
+    std::string getDescription() const override
+    {
+        return "Source4: Galactic buoyancy force from Ug components";
+    }
+};
+
+/**
+ * Source4 Integration: Compressed MUGE Base Term
+ * Basic gravitational component with radius dependence
+ */
+class CompressedMUGEBaseTerm : public PhysicsTerm
+{
+public:
+    CompressedMUGEBaseTerm()
+    {
+        setMetadata("source", "source4.cpp");
+        setMetadata("type", "compressed_muge_base");
+        setMetadata("equation", "g_base = G * M / r^2");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double M = params.count("M") ? params.at("M") : 1.989e30;
+        double r = params.count("r") ? params.at("r") : 1.496e11;
+
+        if (r == 0.0)
+            return 0.0;
+        return G * M / (r * r);
+    }
+
+    std::string getName() const override { return "CompressedMUGE_Base"; }
+    std::string getDescription() const override
+    {
+        return "Source4: Compressed MUGE base gravitational term";
+    }
+};
+
+/**
+ * Source4 Integration: Compressed MUGE Expansion Term
+ * Hubble expansion correction factor
+ */
+class CompressedMUGEExpansionTerm : public PhysicsTerm
+{
+private:
+    double H0;
+
+public:
+    CompressedMUGEExpansionTerm(double hubble = 2.269e-18)
+        : H0(hubble)
+    {
+        setMetadata("source", "source4.cpp");
+        setMetadata("type", "compressed_muge_expansion");
+        setMetadata("equation", "expansion = 1 + H0 * t");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double H = getDynamicParameter("H0", H0);
+        return 1.0 + H * t;
+    }
+
+    std::string getName() const override { return "CompressedMUGE_Expansion"; }
+    std::string getDescription() const override
+    {
+        return "Source4: Hubble expansion correction for compressed MUGE";
+    }
+};
+
+/**
+ * Source4 Integration: Superconductive Adjustment Term
+ * Magnetic field superconductivity correction
+ */
+class SuperconductiveAdjustmentTerm : public PhysicsTerm
+{
+public:
+    SuperconductiveAdjustmentTerm()
+    {
+        setMetadata("source", "source4.cpp");
+        setMetadata("type", "superconductive_adjustment");
+        setMetadata("equation", "adj = 1 - B/B_crit");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double B = params.count("B") ? params.at("B") : 1e10;
+        double Bcrit = params.count("Bcrit") ? params.at("Bcrit") : 1e11;
+
+        if (Bcrit == 0.0)
+            return 0.0;
+        return 1.0 - B / Bcrit;
+    }
+
+    std::string getName() const override { return "SuperconductiveAdj"; }
+    std::string getDescription() const override
+    {
+        return "Source4: Magnetic superconductivity adjustment factor";
+    }
+};
+
+/**
+ * Source4 Integration: Cosmological Constant Term
+ * Lambda * c^2 / 3 contribution
+ */
+class CosmologicalConstantTerm : public PhysicsTerm
+{
+private:
+    double Lambda;
+
+public:
+    CosmologicalConstantTerm(double lambda = 1.1e-52)
+        : Lambda(lambda)
+    {
+        setMetadata("source", "source4.cpp");
+        setMetadata("type", "cosmological_constant");
+        setMetadata("equation", "term = Lambda * c^2 / 3");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double L = getDynamicParameter("Lambda", Lambda);
+        return L * c_light * c_light / 3.0;
+    }
+
+    std::string getName() const override { return "CosmologicalConstant"; }
+    std::string getDescription() const override
+    {
+        return "Source4: Cosmological constant dark energy term";
+    }
+};
+
+/**
+ * Source4 Integration: Quantum Uncertainty Term
+ * Heisenberg uncertainty principle contribution
+ */
+class QuantumUncertaintyTerm : public PhysicsTerm
+{
+private:
+    double delta_x_p;
+    double integral_psi;
+    double t_Hubble;
+
+public:
+    QuantumUncertaintyTerm(double uncertainty = 1e-68, double psi_int = 2.176e-18, double t_hub = 4.35e17)
+        : delta_x_p(uncertainty), integral_psi(psi_int), t_Hubble(t_hub)
+    {
+        setMetadata("source", "source4.cpp");
+        setMetadata("type", "quantum_uncertainty");
+        setMetadata("equation", "(hbar/sqrt(dx*dp)) * psi_int * (2*pi/t_Hubble)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double dx_dp = getDynamicParameter("delta_x_p", delta_x_p);
+        double psi = getDynamicParameter("integral_psi", integral_psi);
+        double t_hub = getDynamicParameter("t_Hubble", t_Hubble);
+
+        if (dx_dp == 0.0)
+            return 0.0;
+        double sqrt_unc = sqrt(dx_dp);
+        return (hbar / sqrt_unc) * psi * (2 * M_PI / t_hub);
+    }
+
+    std::string getName() const override { return "QuantumUncertainty"; }
+    std::string getDescription() const override
+    {
+        return "Source4: Heisenberg uncertainty principle quantum term";
+    }
+};
+
+/**
+ * Source4 Integration: Fluid Dynamics Term
+ * Rho * V * g contribution for fluid systems
+ */
+class FluidDynamicsTerm : public PhysicsTerm
+{
+public:
+    FluidDynamicsTerm()
+    {
+        setMetadata("source", "source4.cpp");
+        setMetadata("type", "fluid_dynamics");
+        setMetadata("equation", "term = rho_fluid * V * g_local");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double rho = params.count("rho_fluid") ? params.at("rho_fluid") : 1e-15;
+        double V = params.count("Vsys") ? params.at("Vsys") : 4.189e12;
+        double g = params.count("g_local") ? params.at("g_local") : 10.0;
+
+        return rho * V * g;
+    }
+
+    std::string getName() const override { return "FluidDynamics"; }
+    std::string getDescription() const override
+    {
+        return "Source4: Fluid dynamics contribution to gravity";
+    }
+};
+
+/**
+ * Source4 Integration: Density Perturbation Term
+ * (M + M_DM) * (delta_rho/rho + 3GM/r^3)
+ */
+class DensityPerturbationTerm : public PhysicsTerm
+{
+public:
+    DensityPerturbationTerm()
+    {
+        setMetadata("source", "source4.cpp");
+        setMetadata("type", "density_perturbation");
+        setMetadata("equation", "(M + M_DM) * (delta_rho/rho + 3*G*M/r^3)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double M = params.count("M") ? params.at("M") : 2.984e30;
+        double r = params.count("r") ? params.at("r") : 1e4;
+        double M_DM = params.count("M_DM") ? params.at("M_DM") : 0.0;
+        double delta_rho_rho = params.count("delta_rho_rho") ? params.at("delta_rho_rho") : 1e-5;
+
+        if (r == 0.0)
+            return 0.0;
+        double pert1 = delta_rho_rho;
+        double pert2 = 3 * G * M / (r * r * r);
+        return (M + M_DM) * (pert1 + pert2);
+    }
+
+    std::string getName() const override { return "DensityPerturbation"; }
+    std::string getDescription() const override
+    {
+        return "Source4: Visible + dark matter density perturbation";
+    }
+};
+
+/**
  * Source5 Integration: UQFFModule5 Enhanced Framework
  * Self-expanding unified field with dark matter and vacuum energy
  */
@@ -1714,6 +2515,463 @@ public:
         // State export capability for cross-module communication
         // Last value: last_computed_value
         // Count: computation_count
+    }
+};
+
+/**
+ * Source5 Integration: Time-Varying Rotation Rate Term
+ * omega_s(t) = omega_s - 0.4e-6 * sin(omega_c * t)
+ */
+class TimeVaryingRotationTerm : public PhysicsTerm
+{
+private:
+    double omega_s_base; // Base rotation rate (rad/s)
+    double omega_c;      // Cycle frequency (rad/s)
+    double amplitude;    // Modulation amplitude
+
+public:
+    TimeVaryingRotationTerm(double base_rot = 7.292e-5,
+                            double cycle_freq = 2 * M_PI / (365.25 * 24 * 3600),
+                            double amp = 0.4e-6)
+        : omega_s_base(base_rot), omega_c(cycle_freq), amplitude(amp)
+    {
+        setMetadata("source", "source5.cpp");
+        setMetadata("type", "time_varying_rotation");
+        setMetadata("equation", "omega_s(t) = omega_s - 0.4e-6 * sin(omega_c * t)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        return omega_s_base - amplitude * sin(omega_c * t);
+    }
+
+    std::string getName() const override { return "TimeVaryingRotation"; }
+    std::string getDescription() const override
+    {
+        return "Source5 time-varying rotation rate with cyclic modulation";
+    }
+};
+
+/**
+ * Source5 Integration: Navier-Stokes Fluid Dynamics Term
+ * Computational fluid dynamics with diffusion, advection, and projection
+ */
+class NavierStokesFluidTerm : public PhysicsTerm
+{
+private:
+    double viscosity; // Kinematic viscosity
+    double dt;        // Time step
+    int grid_size;    // Spatial grid resolution
+    mutable double last_velocity_magnitude;
+
+public:
+    NavierStokesFluidTerm(double visc = 0.0001, double timestep = 0.1, int N = 32)
+        : viscosity(visc), dt(timestep), grid_size(N), last_velocity_magnitude(0.0)
+    {
+        setMetadata("source", "source5.cpp");
+        setMetadata("type", "navier_stokes_fluid");
+        setMetadata("physics", "incompressible_flow");
+        setMetadata("methods", "diffuse, advect, project");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double uqff_g = params.count("gravity") ? params.at("gravity") : 1e-5;
+        double force_jet = params.count("jet_force") ? params.at("jet_force") : 10.0;
+
+        // Simplified fluid dynamics contribution
+        // Full implementation in FluidSolver class: diffuse, advect, project steps
+        double diffusion_term = viscosity * dt * grid_size * grid_size;
+        double advection_term = dt * grid_size;
+        double pressure_projection = 1.0 / (4.0 * diffusion_term + 1.0);
+
+        // Velocity field magnitude (simplified)
+        double velocity = force_jet * uqff_g * pressure_projection / (1.0 + diffusion_term);
+        last_velocity_magnitude = velocity;
+
+        return velocity;
+    }
+
+    std::string getName() const override { return "NavierStokesFluid"; }
+    std::string getDescription() const override
+    {
+        return "Source5 Navier-Stokes fluid dynamics with diffusion, advection, projection";
+    }
+};
+
+/**
+ * Source5 Integration: Spacetime Metric Modulation Term
+ * A_mu_nu = g_mu_nu + eta * Ts00 * cos(pi * tn)
+ */
+class SpacetimeMetricModulationTerm : public PhysicsTerm
+{
+private:
+    double eta;  // Coupling constant
+    double Ts00; // Energy-momentum tensor trace
+
+public:
+    SpacetimeMetricModulationTerm(double coupling = 1e-22, double T_trace = 1.27e3 + 1.11e7)
+        : eta(coupling), Ts00(T_trace)
+    {
+        setMetadata("source", "source5.cpp");
+        setMetadata("type", "spacetime_metric_modulation");
+        setMetadata("equation", "A_mu_nu = g_mu_nu + eta * Ts00 * cos(pi * tn)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double tn = params.count("tn") ? params.at("tn") : t;
+
+        // Modulation amplitude
+        double modulation = eta * Ts00 * cos(M_PI * tn);
+
+        // Return scalar contribution (trace of metric perturbation)
+        // Full A_mu_nu is 4x4 matrix, this returns scalar modulation
+        return 4.0 * modulation; // Trace: sum of diagonal elements
+    }
+
+    std::string getName() const override { return "SpacetimeMetricModulation"; }
+    std::string getDescription() const override
+    {
+        return "Source5 spacetime metric modulation: A_mu_nu = g_mu_nu + eta * Ts00 * cos(pi*tn)";
+    }
+};
+
+/**
+ * Source5 Integration: Full Unified Field (FU) Term
+ * FU = sum(Ugi) + sum(Ubi) + Um + A_mu_nu_scalar
+ * Complete integration of all unified field components
+ */
+class FullUnifiedFieldTerm : public PhysicsTerm
+{
+private:
+    double k1, k2, k3, k4; // Coupling constants
+    double beta_i;         // Buoyancy coefficient
+    double Omega_g;        // Galactic rotation
+    double Mbh;            // Black hole mass
+    double dg;             // Galactic distance
+    double UUA;            // Universal Aether constant
+
+public:
+    FullUnifiedFieldTerm(double k1_val = 1.5, double k2_val = 1.2, double k3_val = 1.8, double k4_val = 2.0)
+        : k1(k1_val), k2(k2_val), k3(k3_val), k4(k4_val),
+          beta_i(0.6), Omega_g(7.3e-16), Mbh(8.15e36), dg(2.55e20), UUA(1.0)
+    {
+        setMetadata("source", "source5.cpp");
+        setMetadata("type", "full_unified_field");
+        setMetadata("equation", "FU = sum(Ugi) + sum(Ubi) + Um + A_scalar");
+        setMetadata("components", "Ug1, Ug2, Ug3, Ug4, Ubi1-4, Um, A_mu_nu");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double r = params.count("radius") ? params.at("radius") : 1e13;
+        double tn = params.count("tn") ? params.at("tn") : t;
+
+        // Simplified unified field calculation
+        // In full implementation: compute all Ug1-4, Ubi1-4, Um, A_mu_nu and sum
+        double Ug_sum = k1 + k2 + k3 + k4; // Simplified placeholder
+        double Ubi_sum = -beta_i * Ug_sum * Omega_g * Mbh / dg * UUA * cos(M_PI * tn);
+        double Um = 1e-20; // Magnetic string contribution
+        double A_scalar = 4.0 * 1e-22 * (1.27e3 + 1.11e7) * cos(M_PI * tn);
+
+        return Ug_sum + Ubi_sum + Um + A_scalar;
+    }
+
+    std::string getName() const override { return "FullUnifiedField"; }
+    std::string getDescription() const override
+    {
+        return "Source5 complete unified field: FU = sum(Ugi) + sum(Ubi) + Um + A_mu_nu";
+    }
+};
+
+/**
+ * Source5 Integration: Resonance MUGE aDPM Term
+ * aDPM = FDPM * fDPM * Evac_neb * c * Vsys
+ * where FDPM = I * A * (omega1 - omega2)
+ */
+class ResonanceMUGE_DPMTerm : public PhysicsTerm
+{
+private:
+    double fDPM;     // DPM frequency factor
+    double Evac_neb; // Nebula vacuum energy
+    double c_res;    // Speed of light
+
+public:
+    ResonanceMUGE_DPMTerm(double f_dpm = 1e12, double E_vac = 7.09e-36, double c_speed = 3e8)
+        : fDPM(f_dpm), Evac_neb(E_vac), c_res(c_speed)
+    {
+        setMetadata("source", "source5.cpp");
+        setMetadata("type", "resonance_muge_dpm");
+        setMetadata("equation", "aDPM = FDPM * fDPM * Evac_neb * c * Vsys");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double I = params.count("inertia") ? params.at("inertia") : 1e21;
+        double A = params.count("area") ? params.at("area") : 3.142e8;
+        double omega1 = params.count("omega1") ? params.at("omega1") : 1e-3;
+        double omega2 = params.count("omega2") ? params.at("omega2") : -1e-3;
+        double Vsys = params.count("volume") ? params.at("volume") : 4.189e12;
+
+        double FDPM = I * A * (omega1 - omega2);
+        return FDPM * fDPM * Evac_neb * c_res * Vsys;
+    }
+
+    std::string getName() const override { return "ResonanceMUGE_DPM"; }
+    std::string getDescription() const override
+    {
+        return "Source5 resonance MUGE DPM term: fundamental dipolar moment resonance";
+    }
+};
+
+/**
+ * Source5 Integration: Resonance MUGE THz Term
+ * aTHz = fTHz * Evac_neb * vexp * aDPM / (Evac_ISM * c)
+ */
+class ResonanceMUGE_THzTerm : public PhysicsTerm
+{
+private:
+    double fTHz;     // THz frequency factor
+    double Evac_neb; // Nebula vacuum energy
+    double Evac_ISM; // ISM vacuum energy
+    double c_res;    // Speed of light
+
+public:
+    ResonanceMUGE_THzTerm(double f_thz = 1e12, double E_neb = 7.09e-36,
+                          double E_ism = 7.09e-37, double c_speed = 3e8)
+        : fTHz(f_thz), Evac_neb(E_neb), Evac_ISM(E_ism), c_res(c_speed)
+    {
+        setMetadata("source", "source5.cpp");
+        setMetadata("type", "resonance_muge_thz");
+        setMetadata("equation", "aTHz = fTHz * Evac_neb * vexp * aDPM / (Evac_ISM * c)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double vexp = params.count("expansion_velocity") ? params.at("expansion_velocity") : 1e3;
+        double aDPM = params.count("aDPM") ? params.at("aDPM") : 3.545e-42;
+
+        return fTHz * Evac_neb * vexp * aDPM / (Evac_ISM * c_res);
+    }
+
+    std::string getName() const override { return "ResonanceMUGE_THz"; }
+    std::string getDescription() const override
+    {
+        return "Source5 resonance MUGE THz frequency term";
+    }
+};
+
+/**
+ * Source5 Integration: Vacuum Energy Differential Term
+ * avac_diff = Delta_Evac * vexp^2 * aDPM / (Evac_neb * c^2)
+ */
+class VacuumEnergyDifferentialTerm : public PhysicsTerm
+{
+private:
+    double Delta_Evac; // Vacuum energy difference
+    double Evac_neb;   // Nebula vacuum energy
+    double c_res;      // Speed of light
+
+public:
+    VacuumEnergyDifferentialTerm(double delta_E = 6.381e-36, double E_neb = 7.09e-36, double c_speed = 3e8)
+        : Delta_Evac(delta_E), Evac_neb(E_neb), c_res(c_speed)
+    {
+        setMetadata("source", "source5.cpp");
+        setMetadata("type", "vacuum_differential");
+        setMetadata("equation", "avac_diff = Delta_Evac * vexp^2 * aDPM / (Evac_neb * c^2)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double vexp = params.count("expansion_velocity") ? params.at("expansion_velocity") : 1e3;
+        double aDPM = params.count("aDPM") ? params.at("aDPM") : 3.545e-42;
+
+        return Delta_Evac * vexp * vexp * aDPM / (Evac_neb * c_res * c_res);
+    }
+
+    std::string getName() const override { return "VacuumEnergyDifferential"; }
+    std::string getDescription() const override
+    {
+        return "Source5 vacuum energy differential between nebula and ISM";
+    }
+};
+
+/**
+ * Source5 Integration: Superconductive Frequency Term
+ * asuper_freq = Fsuper * fTHz * aDPM / (Evac_neb * c)
+ */
+class SuperconductiveFrequencyTerm : public PhysicsTerm
+{
+private:
+    double Fsuper;   // Superconductive factor
+    double fTHz;     // THz frequency
+    double Evac_neb; // Nebula vacuum energy
+    double c_res;    // Speed of light
+
+public:
+    SuperconductiveFrequencyTerm(double F_sc = 6.287e-19, double f_thz = 1e12,
+                                 double E_neb = 7.09e-36, double c_speed = 3e8)
+        : Fsuper(F_sc), fTHz(f_thz), Evac_neb(E_neb), c_res(c_speed)
+    {
+        setMetadata("source", "source5.cpp");
+        setMetadata("type", "superconductive_frequency");
+        setMetadata("equation", "asuper_freq = Fsuper * fTHz * aDPM / (Evac_neb * c)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double aDPM = params.count("aDPM") ? params.at("aDPM") : 3.545e-42;
+
+        return Fsuper * fTHz * aDPM / (Evac_neb * c_res);
+    }
+
+    std::string getName() const override { return "SuperconductiveFrequency"; }
+    std::string getDescription() const override
+    {
+        return "Source5 superconductive frequency enhancement term";
+    }
+};
+
+/**
+ * Source5 Integration: Aether Resonance Term
+ * aaether_res = UA_SCM * omega_i * fTHz * aDPM * (1 + fTRZ)
+ */
+class AetherResonanceTerm : public PhysicsTerm
+{
+private:
+    double UA_SCM;  // Universal Aether SCM coupling
+    double omega_i; // Internal frequency
+    double fTHz;    // THz frequency
+    double fTRZ;    // TRZ factor
+
+public:
+    AetherResonanceTerm(double ua_scm = 10.0, double omega = 1e-8,
+                        double f_thz = 1e12, double f_trz = 0.1)
+        : UA_SCM(ua_scm), omega_i(omega), fTHz(f_thz), fTRZ(f_trz)
+    {
+        setMetadata("source", "source5.cpp");
+        setMetadata("type", "aether_resonance");
+        setMetadata("equation", "aaether_res = UA_SCM * omega_i * fTHz * aDPM * (1 + fTRZ)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double aDPM = params.count("aDPM") ? params.at("aDPM") : 3.545e-42;
+
+        return UA_SCM * omega_i * fTHz * aDPM * (1 + fTRZ);
+    }
+
+    std::string getName() const override { return "AetherResonance"; }
+    std::string getDescription() const override
+    {
+        return "Source5 Universal Aether resonance with TRZ modulation";
+    }
+};
+
+/**
+ * Source5 Integration: Quantum Frequency Term
+ * aquantum_freq = fquantum * Evac_neb * aDPM / (Evac_ISM * c)
+ */
+class QuantumFrequencyTerm : public PhysicsTerm
+{
+private:
+    double fquantum; // Quantum frequency factor
+    double Evac_neb; // Nebula vacuum energy
+    double Evac_ISM; // ISM vacuum energy
+    double c_res;    // Speed of light
+
+public:
+    QuantumFrequencyTerm(double f_q = 1.445e-17, double E_neb = 7.09e-36,
+                         double E_ism = 7.09e-37, double c_speed = 3e8)
+        : fquantum(f_q), Evac_neb(E_neb), Evac_ISM(E_ism), c_res(c_speed)
+    {
+        setMetadata("source", "source5.cpp");
+        setMetadata("type", "quantum_frequency");
+        setMetadata("equation", "aquantum_freq = fquantum * Evac_neb * aDPM / (Evac_ISM * c)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double aDPM = params.count("aDPM") ? params.at("aDPM") : 3.545e-42;
+
+        return fquantum * Evac_neb * aDPM / (Evac_ISM * c_res);
+    }
+
+    std::string getName() const override { return "QuantumFrequency"; }
+    std::string getDescription() const override
+    {
+        return "Source5 quantum frequency coupling term";
+    }
+};
+
+/**
+ * Source5 Integration: Aether Frequency Term
+ * aAether_freq = fAether * Evac_neb * aDPM / (Evac_ISM * c)
+ */
+class AetherFrequencyTerm : public PhysicsTerm
+{
+private:
+    double fAether;  // Aether frequency factor
+    double Evac_neb; // Nebula vacuum energy
+    double Evac_ISM; // ISM vacuum energy
+    double c_res;    // Speed of light
+
+public:
+    AetherFrequencyTerm(double f_a = 1.576e-35, double E_neb = 7.09e-36,
+                        double E_ism = 7.09e-37, double c_speed = 3e8)
+        : fAether(f_a), Evac_neb(E_neb), Evac_ISM(E_ism), c_res(c_speed)
+    {
+        setMetadata("source", "source5.cpp");
+        setMetadata("type", "aether_frequency");
+        setMetadata("equation", "aAether_freq = fAether * Evac_neb * aDPM / (Evac_ISM * c)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double aDPM = params.count("aDPM") ? params.at("aDPM") : 3.545e-42;
+
+        return fAether * Evac_neb * aDPM / (Evac_ISM * c_res);
+    }
+
+    std::string getName() const override { return "AetherFrequency"; }
+    std::string getDescription() const override
+    {
+        return "Source5 Aether frequency term";
+    }
+};
+
+/**
+ * Source5 Integration: Wormhole Contribution Term
+ * a_wormhole = f_worm * Evac_neb / (b^2 + r^2)
+ */
+class WormholeContributionTerm : public PhysicsTerm
+{
+private:
+    double f_worm;   // Wormhole coupling factor
+    double Evac_neb; // Nebula vacuum energy
+    double b;        // Wormhole throat parameter
+
+public:
+    WormholeContributionTerm(double f_w = 1.0, double E_neb = 7.09e-36, double throat = 1.0)
+        : f_worm(f_w), Evac_neb(E_neb), b(throat)
+    {
+        setMetadata("source", "source5.cpp");
+        setMetadata("type", "wormhole_contribution");
+        setMetadata("equation", "a_wormhole = f_worm * Evac_neb / (b^2 + r^2)");
+    }
+
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double r = params.count("radius") ? params.at("radius") : 1e4;
+
+        return f_worm * Evac_neb / (b * b + r * r);
+    }
+
+    std::string getName() const override { return "WormholeContribution"; }
+    std::string getDescription() const override
+    {
+        return "Source5 wormhole spacetime contribution term";
     }
 };
 
@@ -2082,94 +3340,6 @@ public:
     std::string getDescription() const override
     {
         return "Source6 compressed MUGE: multi-layer universal gravity with compression";
-    }
-};
-
-/**
- * Source7 Integration: Resonance MUGE - DPM Term
- * Dipole momentum resonance acceleration
- */
-class ResonanceMUGE_DPMTerm : public PhysicsTerm
-{
-private:
-    double I;      // Moment of inertia (kg·m²)
-    double omega1; // Primary angular velocity (rad/s)
-    double omega2; // Secondary angular velocity (rad/s)
-    double fDPM;   // DPM frequency (Hz)
-    double k4_res; // Resonance coupling constant
-
-public:
-    ResonanceMUGE_DPMTerm(double inertia = 1e23, double w1 = 1e-5, double w2 = -1e-5,
-                          double freq_dpm = 1e12, double k_res = 1.0)
-        : I(inertia), omega1(w1), omega2(w2), fDPM(freq_dpm), k4_res(k_res)
-    {
-        setMetadata("source", "source7.cpp");
-        setMetadata("type", "resonance_muge_dpm");
-        setMetadata("physics", "dipole_momentum_resonance");
-    }
-
-    double compute(double t, const std::map<std::string, double> &params) const override
-    {
-        // DPM-based acceleration
-        double omega_eff = omega1 + omega2;
-        double L = I * omega_eff; // Angular momentum
-
-        // Resonance factor
-        double resonance = 1.0 + 0.1 * sin(2 * M_PI * fDPM * t);
-
-        // aDPM calculation
-        double aDPM = k4_res * L / I * resonance;
-
-        return aDPM;
-    }
-
-    std::string getName() const override { return "ResonanceMUGE_DPM"; }
-    std::string getDescription() const override
-    {
-        return "Source7 resonance MUGE DPM: dipole momentum resonance acceleration";
-    }
-};
-
-/**
- * Source7 Integration: Resonance MUGE - THz Frequency Term
- */
-class ResonanceMUGE_THzTerm : public PhysicsTerm
-{
-private:
-    double I;
-    double omega1;
-    double omega2;
-    double fDPM;
-    double fTHz; // THz frequency
-    double k4_res;
-
-public:
-    ResonanceMUGE_THzTerm(double inertia = 1e23, double w1 = 1e-5, double w2 = -1e-5,
-                          double freq_dpm = 1e12, double freq_thz = 1e12, double k_res = 1.0)
-        : I(inertia), omega1(w1), omega2(w2), fDPM(freq_dpm), fTHz(freq_thz), k4_res(k_res)
-    {
-        setMetadata("source", "source7.cpp");
-        setMetadata("type", "resonance_muge_thz");
-        setMetadata("physics", "terahertz_frequency_coupling");
-    }
-
-    double compute(double t, const std::map<std::string, double> &params) const override
-    {
-        // Base DPM
-        double omega_eff = omega1 + omega2;
-        double L = I * omega_eff;
-        double aDPM = k4_res * L / I;
-
-        // THz coupling
-        double aTHz = aDPM * (1.0 + fTHz / fDPM) * cos(2 * M_PI * fTHz * t);
-
-        return aTHz;
-    }
-
-    std::string getName() const override { return "ResonanceMUGE_THz"; }
-    std::string getDescription() const override
-    {
-        return "Source7 resonance MUGE THz: terahertz frequency coupling";
     }
 };
 
@@ -8928,6 +10098,1946 @@ public:
     std::string getDescription() const override
     {
         return "Source35 SgrA*-UQFF: Expansion frequency";
+    }
+};
+
+// ===========================================================================================
+// SOURCE36: YOUNG STARS OUTFLOWS (source54.cpp)
+// Physics: Powerful stellar outflows sculpting gas; repulsive P_outflow pressure
+// Parameters: M=1000 Msun, v_out=100 km/s, SFR=0.1 Msun/yr, t_evolve=5 Myr
+// ===========================================================================================
+
+class YoungStarsCore : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double G = 6.67430e-11;
+        double M_sun = 1.98847e30;
+        double year_s = 3.15576e7;
+        double M = params.count("M") ? params.at("M") : 1000 * M_sun;
+        double r = params.count("r") ? params.at("r") : 1e17; // 0.01 ly
+        double SFR = params.count("SFR") ? params.at("SFR") : 0.1 * M_sun / year_s;
+        double t_yr = t / year_s;
+        double M_SF = (SFR * t_yr) / M; // Star formation mass factor
+        double H0 = 2.3e-18;            // Hubble constant s^-1
+        double z = 0.0;
+        double expansion = 1.0 + H0 * t * std::sqrt(0.3 * std::pow(1.0 + z, 3) + 0.7);
+        double B = params.count("B") ? params.at("B") : 1e-8;
+        double B_crit = 1e-6;
+        double sc_correction = 1.0 - (B / B_crit);
+        return (G * M / (r * r)) * (1.0 + M_SF) * expansion * sc_correction;
+    }
+
+    std::string getName() const override { return "YoungStars_Core"; }
+    std::string getDescription() const override
+    {
+        return "Source36 YoungStars: Core gravity with star formation mass factor M_SF(t)";
+    }
+};
+
+class YoungStarsLambda : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double Lambda = 1.1056e-52; // m^-2
+        double c = 2.99792458e8;
+        return Lambda * c * c / 3.0;
+    }
+
+    std::string getName() const override { return "YoungStars_Lambda"; }
+    std::string getDescription() const override
+    {
+        return "Source36 YoungStars: Cosmological constant term";
+    }
+};
+
+class YoungStarsUQFF : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double G = 6.67430e-11;
+        double M_sun = 1.98847e30;
+        double M = params.count("M") ? params.at("M") : 1000 * M_sun;
+        double r = params.count("r") ? params.at("r") : 1e17;
+        double v_out = params.count("v_out") ? params.at("v_out") : 1e5; // 100 km/s
+        double rho_UA = 7.09e-36;
+        double rho_SCm = 7.09e-37;
+        double Ug1 = G * M / (r * r);     // Standard gravity
+        double Ug2 = (v_out * v_out) / r; // Outflow-driven SC term
+        double Ug3 = 0.0;                 // External (negligible)
+        double f_sc = 0.01;
+        double Ug4 = Ug1 * f_sc; // Reaction
+        return Ug1 + Ug2 + Ug3 + Ug4;
+    }
+
+    std::string getName() const override { return "YoungStars_UQFF"; }
+    std::string getDescription() const override
+    {
+        return "Source36 YoungStars: UQFF sum (Ug1-4) with outflow velocity SC term";
+    }
+};
+
+class YoungStarsEM : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double q = 1.60217663e-19;
+        double m_p = 1.67262192e-27;
+        double v_out = params.count("v_out") ? params.at("v_out") : 1e5;
+        double B = params.count("B") ? params.at("B") : 1e-8;
+        double rho_UA = 7.09e-36;
+        double rho_SCm = 7.09e-37;
+        double vac_ratio = 1.0 + (rho_UA / rho_SCm); // ~11
+        return (q * v_out * B / m_p) * vac_ratio;
+    }
+
+    std::string getName() const override { return "YoungStars_EM"; }
+    std::string getDescription() const override
+    {
+        return "Source36 YoungStars: EM Lorentz with vacuum ratio correction";
+    }
+};
+
+class YoungStarsQuantum : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double hbar = 1.054571817e-34;
+        double Delta_x = 1e-34;
+        double Delta_p = hbar / Delta_x;
+        double unc = std::sqrt(Delta_x * Delta_p);
+        double integral_psi = 1.0;
+        double year_s = 3.15576e7;
+        double t_Hubble = 13.8e9 * year_s;
+        return (hbar / unc) * integral_psi * (2.0 * 3.141592653589793 / t_Hubble);
+    }
+
+    std::string getName() const override { return "YoungStars_Quantum"; }
+    std::string getDescription() const override
+    {
+        return "Source36 YoungStars: Quantum uncertainty term";
+    }
+};
+
+class YoungStarsFluid : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double rho_fluid = params.count("rho_fluid") ? params.at("rho_fluid") : 1e-24;
+        double V = 1.0 / rho_fluid;
+        double G = 6.67430e-11;
+        double M_sun = 1.98847e30;
+        double M = params.count("M") ? params.at("M") : 1000 * M_sun;
+        double r = params.count("r") ? params.at("r") : 1e17;
+        double g_base = (G * M / (r * r));
+        return rho_fluid * V * g_base;
+    }
+
+    std::string getName() const override { return "YoungStars_Fluid"; }
+    std::string getDescription() const override
+    {
+        return "Source36 YoungStars: Fluid dynamics term";
+    }
+};
+
+class YoungStarsOscillatory : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double A = 1e-10;
+        double k = 1e20;
+        double x = params.count("x") ? params.at("x") : 1e16;
+        double omega = 2.0 * 3.141592653589793 * 1.411e16; // f_super
+        double standing = 2.0 * A * std::cos(k * x) * std::cos(omega * t);
+        double year_s = 3.15576e7;
+        std::complex<double> traveling(A * std::exp(std::complex<double>(0, k * x - omega * t)));
+        double traveling_real = (2.0 * 3.141592653589793 / 13.8) * traveling.real();
+        return standing + traveling_real;
+    }
+
+    std::string getName() const override { return "YoungStars_Oscillatory"; }
+    std::string getDescription() const override
+    {
+        return "Source36 YoungStars: Resonant oscillatory term (standing + traveling)";
+    }
+};
+
+class YoungStarsDarkMatter : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double G = 6.67430e-11;
+        double M_sun = 1.98847e30;
+        double M = params.count("M") ? params.at("M") : 1000 * M_sun;
+        double r = params.count("r") ? params.at("r") : 1e17;
+        double M_visible = M;
+        double M_DM = 5.67 * M_visible;  // DM fraction
+        double delta_rho = 1e-5 * 1e-24; // Perturbation
+        double rho = 1e-24;
+        return (M_visible + M_DM) * (delta_rho / rho + 3.0 * G * M / (r * r * r));
+    }
+
+    std::string getName() const override { return "YoungStars_DarkMatter"; }
+    std::string getDescription() const override
+    {
+        return "Source36 YoungStars: Dark matter perturbation term";
+    }
+};
+
+class YoungStarsOutflowPressure : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double rho_fluid = params.count("rho_fluid") ? params.at("rho_fluid") : 1e-24;
+        double v_out = params.count("v_out") ? params.at("v_out") : 1e5;
+        double year_s = 3.15576e7;
+        double t_evolve = params.count("t_evolve") ? params.at("t_evolve") : 5e6 * year_s;
+        // P_outflow = rho * v^2 * (1 + t/tau) - time-evolving repulsive pressure
+        return rho_fluid * v_out * v_out * (1.0 + t / t_evolve);
+    }
+
+    std::string getName() const override { return "YoungStars_OutflowPressure"; }
+    std::string getDescription() const override
+    {
+        return "Source36 YoungStars: Outflow pressure P=rho*v^2*(1+t/tau) UNIQUE";
+    }
+};
+
+class YoungStarsStarFormation : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double M_sun = 1.98847e30;
+        double year_s = 3.15576e7;
+        double M = params.count("M") ? params.at("M") : 1000 * M_sun;
+        double SFR = params.count("SFR") ? params.at("SFR") : 0.1 * M_sun / year_s;
+        double t_yr = t / year_s;
+        return (SFR * t_yr) / M; // M_SF factor (dimensionless)
+    }
+
+    std::string getName() const override { return "YoungStars_StarFormationFactor"; }
+    std::string getDescription() const override
+    {
+        return "Source36 YoungStars: Star formation mass factor M_SF=SFR*t/M UNIQUE";
+    }
+};
+
+// ===========================================================================================
+// SOURCE37: BIG BANG GRAVITY (source56.cpp)
+// Physics: Cosmological gravity from Big Bang to present; quantum gravity + GW
+// Parameters: M_total=1e53 kg, l_P=1.616e-35 m, h_strain=1e-21, t_Hubble=13.8 Gyr
+// ===========================================================================================
+
+class BigBangCore : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double G = 6.67430e-11;
+        double year_s = 3.15576e7;
+        double t_Hubble = 13.8e9 * year_s;
+        double c = 2.99792458e8;
+        double M_total = params.count("M_total") ? params.at("M_total") : 1e53;
+        double M_t = M_total * (t / t_Hubble); // Linear mass growth
+        double r_t = c * t;                    // Naive radius
+        if (r_t < 1e-30)
+            r_t = 1e-30; // Avoid singularity
+        double z_t = (t_Hubble / t) - 1.0;
+        double H0 = 70.0 * 1e3 / 3.0857e22; // ~2.3e-18 s^-1
+        double Omega_m = 0.3;
+        double Omega_Lambda = 0.7;
+        double Hz = H0 * std::sqrt(Omega_m * std::pow(1.0 + z_t, 3) + Omega_Lambda);
+        double expansion = 1.0 + Hz * t;
+        double B = params.count("B") ? params.at("B") : 1e-8;
+        double B_crit = 1e-6;
+        double sc_correction = 1.0 - (B / B_crit);
+        return (G * M_t / (r_t * r_t)) * expansion * sc_correction;
+    }
+
+    std::string getName() const override { return "BigBang_Core"; }
+    std::string getDescription() const override
+    {
+        return "Source37 BigBang: Core gravity with M(t)=M_total*(t/t_H), r(t)=c*t";
+    }
+};
+
+class BigBangLambda : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double Lambda = 1.1056e-52;
+        double c = 2.99792458e8;
+        return Lambda * c * c / 3.0;
+    }
+
+    std::string getName() const override { return "BigBang_Lambda"; }
+    std::string getDescription() const override
+    {
+        return "Source37 BigBang: Cosmological constant term";
+    }
+};
+
+class BigBangUg1 : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double G = 6.67430e-11;
+        double year_s = 3.15576e7;
+        double t_Hubble = 13.8e9 * year_s;
+        double c = 2.99792458e8;
+        double M_total = params.count("M_total") ? params.at("M_total") : 1e53;
+        double M_t = M_total * (t / t_Hubble);
+        double r_t = c * t;
+        if (r_t < 1e-30)
+            r_t = 1e-30;
+        return (G * M_t) / (r_t * r_t);
+    }
+
+    std::string getName() const override { return "BigBang_Ug1"; }
+    std::string getDescription() const override
+    {
+        return "Source37 BigBang: Ug1 = G*M(t)/r(t)^2";
+    }
+};
+
+class BigBangUg4 : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double G = 6.67430e-11;
+        double year_s = 3.15576e7;
+        double t_Hubble = 13.8e9 * year_s;
+        double c = 2.99792458e8;
+        double M_total = params.count("M_total") ? params.at("M_total") : 1e53;
+        double M_t = M_total * (t / t_Hubble);
+        double r_t = c * t;
+        if (r_t < 1e-30)
+            r_t = 1e-30;
+        double Ug1 = (G * M_t) / (r_t * r_t);
+        double f_sc = 0.01;
+        return Ug1 * f_sc;
+    }
+
+    std::string getName() const override { return "BigBang_Ug4"; }
+    std::string getDescription() const override
+    {
+        return "Source37 BigBang: Ug4 reaction = Ug1 * f_sc";
+    }
+};
+
+class BigBangQuantum : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double hbar = 1.054571817e-34;
+        double Delta_x = 1e-34;
+        double Delta_p = hbar / Delta_x;
+        double unc = std::sqrt(Delta_x * Delta_p);
+        double integral_psi = 1.0;
+        double year_s = 3.15576e7;
+        double t_Hubble = 13.8e9 * year_s;
+        return (hbar / unc) * integral_psi * (2.0 * 3.141592653589793 / t_Hubble);
+    }
+
+    std::string getName() const override { return "BigBang_Quantum"; }
+    std::string getDescription() const override
+    {
+        return "Source37 BigBang: Quantum uncertainty term";
+    }
+};
+
+class BigBangFluid : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double rho_fluid = params.count("rho_fluid") ? params.at("rho_fluid") : 1e-24;
+        double V = 1.0 / rho_fluid;
+        double G = 6.67430e-11;
+        double year_s = 3.15576e7;
+        double t_Hubble = 13.8e9 * year_s;
+        double c = 2.99792458e8;
+        double M_total = params.count("M_total") ? params.at("M_total") : 1e53;
+        double M_t = M_total * (t / t_Hubble);
+        double r_t = c * t;
+        if (r_t < 1e-30)
+            r_t = 1e-30;
+        double g_base = (G * M_t / (r_t * r_t));
+        return rho_fluid * V * g_base;
+    }
+
+    std::string getName() const override { return "BigBang_Fluid"; }
+    std::string getDescription() const override
+    {
+        return "Source37 BigBang: Fluid dynamics term";
+    }
+};
+
+class BigBangOscillatory : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double A = 1e-10;
+        double k = 1e20;
+        double x = params.count("x") ? params.at("x") : 1e16;
+        double omega = 2.0 * 3.141592653589793 * 1.411e16;
+        double standing = 2.0 * A * std::cos(k * x) * std::cos(omega * t);
+        std::complex<double> traveling(A * std::exp(std::complex<double>(0, k * x - omega * t)));
+        double traveling_real = (2.0 * 3.141592653589793 / 13.8) * traveling.real();
+        return standing + traveling_real;
+    }
+
+    std::string getName() const override { return "BigBang_Oscillatory"; }
+    std::string getDescription() const override
+    {
+        return "Source37 BigBang: Oscillatory resonance term";
+    }
+};
+
+class BigBangDarkMatter : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double DM_fraction = 0.268; // Fractional contribution
+        double G = 6.67430e-11;
+        double year_s = 3.15576e7;
+        double t_Hubble = 13.8e9 * year_s;
+        double c = 2.99792458e8;
+        double M_total = params.count("M_total") ? params.at("M_total") : 1e53;
+        double M_t = M_total * (t / t_Hubble);
+        double r_t = c * t;
+        if (r_t < 1e-30)
+            r_t = 1e-30;
+        double g_base = (G * M_t / (r_t * r_t));
+        return DM_fraction * g_base;
+    }
+
+    std::string getName() const override { return "BigBang_DarkMatter"; }
+    std::string getDescription() const override
+    {
+        return "Source37 BigBang: Dark matter fractional term";
+    }
+};
+
+class BigBangQuantumGravity : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double hbar = 1.054571817e-34;
+        double c = 2.99792458e8;
+        double l_p = params.count("l_p") ? params.at("l_p") : 1.616e-35; // Planck length
+        double t_p = l_p / c;                                            // Planck time ~5.39e-44 s
+        // QG = (hbar * c / l_p^2) * (t / t_p) - Planck scale effects
+        return (hbar * c / (l_p * l_p)) * (t / t_p);
+    }
+
+    std::string getName() const override { return "BigBang_QuantumGravity"; }
+    std::string getDescription() const override
+    {
+        return "Source37 BigBang: Quantum gravity QG=(hbar*c/l_p^2)*(t/t_p) UNIQUE";
+    }
+};
+
+class BigBangGravitationalWave : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double c = 2.99792458e8;
+        double year_s = 3.15576e7;
+        double h_strain = params.count("h_strain") ? params.at("h_strain") : 1e-21;   // NANOGrav/LIGO
+        double lambda_gw = params.count("lambda_gw") ? params.at("lambda_gw") : 1e17; // GW wavelength
+        double r_t = c * t;
+        double phase = (2.0 * 3.141592653589793 / lambda_gw) * r_t - (2.0 * 3.141592653589793 / year_s) * t;
+        // GW = h * c^2 / lambda * sin(2pi/lambda*r - 2pi/year*t)
+        return h_strain * (c * c) / lambda_gw * std::sin(phase);
+    }
+
+    std::string getName() const override { return "BigBang_GravitationalWave"; }
+    std::string getDescription() const override
+    {
+        return "Source37 BigBang: Gravitational wave GW=h*c^2/lambda*sin(...) UNIQUE";
+    }
+};
+
+class BigBangCosmicEvolution : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double year_s = 3.15576e7;
+        double t_Hubble = 13.8e9 * year_s;
+        double c = 2.99792458e8;
+        double M_total = params.count("M_total") ? params.at("M_total") : 1e53;
+        double M_t = M_total * (t / t_Hubble);
+        double r_t = c * t;
+        double z_t = (t_Hubble / t) - 1.0;
+        // Returns redshift as proxy for cosmic evolution (high z early, 0 now)
+        return z_t;
+    }
+
+    std::string getName() const override { return "BigBang_CosmicEvolution"; }
+    std::string getDescription() const override
+    {
+        return "Source37 BigBang: Cosmic evolution z(t)=t_H/t-1 (redshift proxy) UNIQUE";
+    }
+};
+
+// ===========================================================================================
+// SOURCE38: M51 WHIRLPOOL GALAXY (source70.cpp)
+// Physics: Tidal interaction with NGC 5195, spiral arm dynamics, BH magnetic dipole
+// Parameters: M=1.6e11 Msun, M_NGC5195=1e10 Msun, d=50 kpc, SFR=1 Msun/yr, M_BH=1e6 Msun
+// ===========================================================================================
+
+class M51Core : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double G = 6.67430e-11;
+        double M_sun = 1.98847e30;
+        double year_s = 3.15576e7;
+        double M = params.count("M") ? params.at("M") : 1.6e11 * M_sun;
+        double r = params.count("r") ? params.at("r") : 1e21; // ~30 kpc
+        double SFR = params.count("SFR") ? params.at("SFR") : 1.0 * M_sun / year_s;
+        double t_yr = t / year_s;
+        double M_SF = (SFR * t_yr) / M;
+        double z = 0.0026; // M51 redshift
+        double H0 = 2.3e-18;
+        double expansion = 1.0 + H0 * t * std::sqrt(0.3 * std::pow(1.0 + z, 3) + 0.7);
+        double B = params.count("B") ? params.at("B") : 1e-9;
+        double B_crit = 1e-6;
+        double sc_correction = 1.0 - (B / B_crit);
+        // Environmental forces: tidal + star formation
+        double M_NGC5195 = params.count("M_NGC5195") ? params.at("M_NGC5195") : 1e10 * M_sun;
+        double d_NGC5195 = params.count("d_NGC5195") ? params.at("d_NGC5195") : 5e19; // 50 kpc
+        double F_tidal = (G * M_NGC5195) / (d_NGC5195 * d_NGC5195);
+        double F_SF = (SFR * M_sun / year_s) / (M * 1e-10);
+        double F_env = F_tidal + F_SF;
+        return (G * M / (r * r)) * (1.0 + M_SF) * expansion * sc_correction * (1.0 + F_env);
+    }
+
+    std::string getName() const override { return "M51_Core"; }
+    std::string getDescription() const override
+    {
+        return "Source38 M51: Core gravity with M_SF + expansion + SC + F_env(tidal+SF)";
+    }
+};
+
+class M51Ug1Dipole : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double M_sun = 1.98847e30;
+        double M_BH = params.count("M_BH") ? params.at("M_BH") : 1e6 * M_sun;
+        double r_BH = 2.95e3 * (M_BH / M_sun);      // Schwarzschild radius
+        double I_dipole = 0.4 * M_BH * r_BH * r_BH; // Moment of inertia
+        double A_dipole = 3.141592653589793 * r_BH * r_BH;
+        double omega_spin = 2.0 * 3.141592653589793 / 1e4; // ~10^4 s period
+        double B = params.count("B") ? params.at("B") : 1e-9;
+        // Ug1 = I * A * omega * B (magnetic dipole interaction)
+        return I_dipole * A_dipole * omega_spin * B;
+    }
+
+    std::string getName() const override { return "M51_Ug1Dipole"; }
+    std::string getDescription() const override
+    {
+        return "Source38 M51: Ug1 = I*A*omega*B (BH magnetic dipole) UNIQUE";
+    }
+};
+
+class M51Ug2Superconductor : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double B = params.count("B") ? params.at("B") : 1e-9;
+        double mu_0 = 1.25663706212e-6;
+        // Ug2 = B^2 / (2*mu_0) - superconductor magnetic energy density
+        return (B * B) / (2.0 * mu_0);
+    }
+
+    std::string getName() const override { return "M51_Ug2Superconductor"; }
+    std::string getDescription() const override
+    {
+        return "Source38 M51: Ug2 = B^2/(2*mu_0) (superconductor term) UNIQUE";
+    }
+};
+
+class M51Ug3Tidal : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double G = 6.67430e-11;
+        double M_sun = 1.98847e30;
+        double M_NGC5195 = params.count("M_NGC5195") ? params.at("M_NGC5195") : 1e10 * M_sun;
+        double d = params.count("d_NGC5195") ? params.at("d_NGC5195") : 5e19; // 50 kpc
+        // Ug3' = G * M_NGC5195 / d^2 - tidal force from companion galaxy
+        return (G * M_NGC5195) / (d * d);
+    }
+
+    std::string getName() const override { return "M51_Ug3Tidal"; }
+    std::string getDescription() const override
+    {
+        return "Source38 M51: Ug3' = G*M_NGC5195/d^2 (external tidal) UNIQUE";
+    }
+};
+
+class M51Ug4Reaction : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double k_4 = 1e-10;
+        double E_react = 1e15 * std::exp(-0.0005 * t); // Exponential decay
+        // Ug4 = k_4 * E_react(t) - reactive term with decay
+        return k_4 * E_react;
+    }
+
+    std::string getName() const override { return "M51_Ug4Reaction"; }
+    std::string getDescription() const override
+    {
+        return "Source38 M51: Ug4 = k_4*E_react*exp(-0.0005*t) (reaction decay) UNIQUE";
+    }
+};
+
+class M51UiVacuum : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double lambda_I = 1.0;
+        double rho_SCm = 7.09e-37;
+        double rho_UA = 7.09e-36;
+        double omega_i = 1e10; // rad/s
+        double t_n = t;
+        double F_RZ = 0.1; // Resonance zone factor
+        // Ui = lambda_I * (rho_SCm/rho_UA) * omega_i * cos(pi*t_n) * (1 + F_RZ)
+        return lambda_I * (rho_SCm / rho_UA) * omega_i * std::cos(3.141592653589793 * t_n) * (1.0 + F_RZ);
+    }
+
+    std::string getName() const override { return "M51_UiVacuum"; }
+    std::string getDescription() const override
+    {
+        return "Source38 M51: Ui vacuum interaction = lambda*(rho_SCm/rho_UA)*omega*cos(pi*t) UNIQUE";
+    }
+};
+
+class M51Lambda : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double Lambda = 1.1056e-52;
+        double c = 2.99792458e8;
+        return Lambda * c * c / 3.0;
+    }
+
+    std::string getName() const override { return "M51_Lambda"; }
+    std::string getDescription() const override
+    {
+        return "Source38 M51: Cosmological constant term";
+    }
+};
+
+class M51Quantum : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double hbar = 1.054571817e-34;
+        double Delta_x = 1e-34;
+        double Delta_p = hbar / Delta_x;
+        double unc = std::sqrt(Delta_x * Delta_p);
+        double year_s = 3.15576e7;
+        double t_Hubble = 13.8e9 * year_s;
+        // Spiral arm wave function contribution
+        double r = params.count("r") ? params.at("r") : 1e21;
+        double sigma = 1e20;                                            // Spiral arm width
+        double m = 2.0;                                                 // 2-arm spiral
+        double theta = 0.0;                                             // Azimuthal angle (simplified)
+        double omega_spiral = 2.0 * 3.141592653589793 / (2e8 * year_s); // ~200 Myr period
+        double A = 1.0;
+        std::complex<double> psi_spiral(A * std::exp(-r * r / (2.0 * sigma * sigma)) * std::exp(std::complex<double>(0, m * theta - omega_spiral * t)));
+        double integral_psi = std::norm(psi_spiral);
+        return (hbar / unc) * integral_psi * (2.0 * 3.141592653589793 / t_Hubble);
+    }
+
+    std::string getName() const override { return "M51_Quantum"; }
+    std::string getDescription() const override
+    {
+        return "Source38 M51: Quantum term with psi_spiral wave function UNIQUE";
+    }
+};
+
+class M51Fluid : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double rho_fluid = params.count("rho_fluid") ? params.at("rho_fluid") : 1e-24;
+        double V = 1.0 / rho_fluid;
+        double G = 6.67430e-11;
+        double M_sun = 1.98847e30;
+        double M = params.count("M") ? params.at("M") : 1.6e11 * M_sun;
+        double r = params.count("r") ? params.at("r") : 1e21;
+        double g_base = (G * M / (r * r));
+        return rho_fluid * V * g_base;
+    }
+
+    std::string getName() const override { return "M51_Fluid"; }
+    std::string getDescription() const override
+    {
+        return "Source38 M51: Fluid dynamics term";
+    }
+};
+
+class M51DarkMatter : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double G = 6.67430e-11;
+        double M_sun = 1.98847e30;
+        double M = params.count("M") ? params.at("M") : 1.6e11 * M_sun;
+        double r = params.count("r") ? params.at("r") : 1e21;
+        double M_visible = M;
+        double M_DM = 5.67 * M_visible;
+        double delta_rho = 1e-5 * 1e-24;
+        double rho = 1e-24;
+        double curvature = 3.0 * G * M / (r * r * r);
+        return (M_visible + M_DM) * (delta_rho / rho + curvature);
+    }
+
+    std::string getName() const override { return "M51_DarkMatter"; }
+    std::string getDescription() const override
+    {
+        return "Source38 M51: Dark matter with curvature term";
+    }
+};
+
+class M51EnvironmentalForces : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double G = 6.67430e-11;
+        double M_sun = 1.98847e30;
+        double year_s = 3.15576e7;
+        double M = params.count("M") ? params.at("M") : 1.6e11 * M_sun;
+        double M_NGC5195 = params.count("M_NGC5195") ? params.at("M_NGC5195") : 1e10 * M_sun;
+        double d_NGC5195 = params.count("d_NGC5195") ? params.at("d_NGC5195") : 5e19;
+        double SFR = params.count("SFR") ? params.at("SFR") : 1.0 * M_sun / year_s;
+        double F_tidal = (G * M_NGC5195) / (d_NGC5195 * d_NGC5195);
+        double F_SF = (SFR * M_sun / year_s) / (M * 1e-10);
+        // F_env = F_tidal + F_SF (tidal from NGC5195 + star formation pressure)
+        return F_tidal + F_SF;
+    }
+
+    std::string getName() const override { return "M51_EnvironmentalForces"; }
+    std::string getDescription() const override
+    {
+        return "Source38 M51: F_env = F_tidal + F_SF (environmental forces) UNIQUE";
+    }
+};
+
+// ===========================================================================================
+// SOURCE39: NGC 1316 GALAXY MERGER (source71.cpp)
+// Physics: Galaxy merger ("Cosmic Dust Bunnies"), dust lanes, AGN jets, cluster disruption
+// Parameters: M=5e11 Msun, M_spiral=1e10 Msun, rho_dust=1e-21 kg/m³, tau_merge=2 Gyr
+// ===========================================================================================
+
+class NGC1316Core : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double G = 6.67430e-11;
+        double M_sun = 1.98847e30;
+        double year_s = 3.15576e7;
+        double M = params.count("M") ? params.at("M") : 5e11 * M_sun;
+        double r = params.count("r") ? params.at("r") : 1e21; // ~30 kpc
+        double tau_merge = params.count("tau_merge") ? params.at("tau_merge") : 2e9 * year_s;
+        double M_merge = 1e10 * M_sun * std::exp(-t / tau_merge); // Exponential decay
+        double m_factor = 1.0 + (M_merge / M);
+        double z = 0.0059; // NGC1316 redshift
+        double H0 = 2.3e-18;
+        double expansion = 1.0 + H0 * t * std::sqrt(0.3 * std::pow(1.0 + z, 3) + 0.7);
+        double B = params.count("B") ? params.at("B") : 1e-9;
+        double B_crit = 1e-6;
+        double sc_correction = 1.0 - (B / B_crit);
+        return (G * M / (r * r)) * m_factor * expansion * sc_correction;
+    }
+
+    std::string getName() const override { return "NGC1316_Core"; }
+    std::string getDescription() const override
+    {
+        return "Source39 NGC1316: Core with M_merge(t)=1e10*exp(-t/tau) merger mass UNIQUE";
+    }
+};
+
+class NGC1316Ug1Dipole : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double M_sun = 1.98847e30;
+        double M_BH = params.count("M_BH") ? params.at("M_BH") : 1.5e9 * M_sun; // Larger BH
+        double r_BH = 2.95e3 * (M_BH / M_sun);
+        double I_dipole = 0.4 * M_BH * r_BH * r_BH;
+        double A_dipole = 3.141592653589793 * r_BH * r_BH;
+        double omega_spin = 2.0 * 3.141592653589793 / 1e5; // Slower spin
+        double B = params.count("B") ? params.at("B") : 1e-9;
+        return I_dipole * A_dipole * omega_spin * B;
+    }
+
+    std::string getName() const override { return "NGC1316_Ug1Dipole"; }
+    std::string getDescription() const override
+    {
+        return "Source39 NGC1316: Ug1 BH magnetic dipole (M_BH=1.5e9 Msun)";
+    }
+};
+
+class NGC1316Ug2Superconductor : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double B = params.count("B") ? params.at("B") : 1e-9;
+        double mu_0 = 1.25663706212e-6;
+        return (B * B) / (2.0 * mu_0);
+    }
+
+    std::string getName() const override { return "NGC1316_Ug2Superconductor"; }
+    std::string getDescription() const override
+    {
+        return "Source39 NGC1316: Ug2 superconductor magnetic energy";
+    }
+};
+
+class NGC1316Ug3External : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double G = 6.67430e-11;
+        double M_sun = 1.98847e30;
+        double M_spiral = params.count("M_spiral") ? params.at("M_spiral") : 1e10 * M_sun;
+        double d = params.count("d_spiral") ? params.at("d_spiral") : 1e20; // Distance to spiral
+        return (G * M_spiral) / (d * d);
+    }
+
+    std::string getName() const override { return "NGC1316_Ug3External"; }
+    std::string getDescription() const override
+    {
+        return "Source39 NGC1316: Ug3 external tidal from spiral companion";
+    }
+};
+
+class NGC1316Ug4Reaction : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double k_4 = 1e-10;
+        double E_react = 1e15 * std::exp(-0.0005 * t);
+        return k_4 * E_react;
+    }
+
+    std::string getName() const override { return "NGC1316_Ug4Reaction"; }
+    std::string getDescription() const override
+    {
+        return "Source39 NGC1316: Ug4 reaction term";
+    }
+};
+
+class NGC1316UiVacuum : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double lambda_I = 1.0;
+        double rho_SCm = 7.09e-37;
+        double rho_UA = 7.09e-36;
+        double omega_i = 1e10;
+        double F_RZ = 0.1;
+        return lambda_I * (rho_SCm / rho_UA) * omega_i * std::cos(3.141592653589793 * t) * (1.0 + F_RZ);
+    }
+
+    std::string getName() const override { return "NGC1316_UiVacuum"; }
+    std::string getDescription() const override
+    {
+        return "Source39 NGC1316: Ui vacuum interaction term";
+    }
+};
+
+class NGC1316Lambda : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double Lambda = 1.1056e-52;
+        double c = 2.99792458e8;
+        return Lambda * c * c / 3.0;
+    }
+
+    std::string getName() const override { return "NGC1316_Lambda"; }
+    std::string getDescription() const override
+    {
+        return "Source39 NGC1316: Cosmological constant";
+    }
+};
+
+class NGC1316Quantum : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double hbar = 1.054571817e-34;
+        double Delta_x = 1e-34;
+        double Delta_p = hbar / Delta_x;
+        double unc = std::sqrt(Delta_x * Delta_p);
+        double year_s = 3.15576e7;
+        double t_Hubble = 13.8e9 * year_s;
+        // Dust wave function psi_dust
+        double r = params.count("r") ? params.at("r") : 1e21;
+        double sigma_dust = 5e19; // Dust lane width ~5 kpc
+        double A = 1.0;
+        double psi_dust_sq = A * A * std::exp(-r * r / (sigma_dust * sigma_dust));
+        return (hbar / unc) * psi_dust_sq * (2.0 * 3.141592653589793 / t_Hubble);
+    }
+
+    std::string getName() const override { return "NGC1316_Quantum"; }
+    std::string getDescription() const override
+    {
+        return "Source39 NGC1316: Quantum with psi_dust wave function UNIQUE";
+    }
+};
+
+class NGC1316FluidDust : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double rho_dust = params.count("rho_dust") ? params.at("rho_dust") : 1e-21; // Dust density
+        double V = 1.0 / rho_dust;
+        double G = 6.67430e-11;
+        double M_sun = 1.98847e30;
+        double M = params.count("M") ? params.at("M") : 5e11 * M_sun;
+        double r = params.count("r") ? params.at("r") : 1e21;
+        double g_base = (G * M / (r * r));
+        // Fluid term uses rho_dust instead of rho_fluid
+        return rho_dust * V * g_base;
+    }
+
+    std::string getName() const override { return "NGC1316_FluidDust"; }
+    std::string getDescription() const override
+    {
+        return "Source39 NGC1316: Fluid with rho_dust density UNIQUE";
+    }
+};
+
+class NGC1316DarkMatter : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double G = 6.67430e-11;
+        double M_sun = 1.98847e30;
+        double M = params.count("M") ? params.at("M") : 5e11 * M_sun;
+        double r = params.count("r") ? params.at("r") : 1e21;
+        double M_visible = M;
+        double M_DM = 5.67 * M_visible;
+        double delta_rho = 1e-5 * 1e-24;
+        double rho = 1e-24;
+        return (M_visible + M_DM) * (delta_rho / rho + 3.0 * G * M / (r * r * r));
+    }
+
+    std::string getName() const override { return "NGC1316_DarkMatter"; }
+    std::string getDescription() const override
+    {
+        return "Source39 NGC1316: Dark matter term";
+    }
+};
+
+class NGC1316MergerForces : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double G = 6.67430e-11;
+        double M_sun = 1.98847e30;
+        double M_spiral = params.count("M_spiral") ? params.at("M_spiral") : 1e10 * M_sun;
+        double d_spiral = params.count("d_spiral") ? params.at("d_spiral") : 1e20;
+        double F_tidal = (G * M_spiral) / (d_spiral * d_spiral);
+        double M_cluster = 1e6 * M_sun; // Disrupted globular clusters
+        double k_cluster = 1e-15;
+        double F_cluster = k_cluster * M_cluster;
+        // F_env = F_tidal + F_cluster (tidal from spiral + disrupted clusters)
+        return F_tidal + F_cluster;
+    }
+
+    std::string getName() const override { return "NGC1316_MergerForces"; }
+    std::string getDescription() const override
+    {
+        return "Source39 NGC1316: Merger forces = F_tidal + F_cluster UNIQUE";
+    }
+};
+
+// ===========================================================================================
+// SOURCE40: SMBH BINARY COALESCENCE (source80.cpp)
+// Physics: Binary black hole via frequency/resonance (no SM gravity)
+// Parameters: M1=4e6 Msun, M2=2e6 Msun, t_coal=1.555e7 s (180 days), SNR~475
+// ===========================================================================================
+
+class SMBHBinaryDPMResonance : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double f_DPM = params.count("f_DPM") ? params.at("f_DPM") : 1e12;                         // Hz
+        double rho_vac_plasm = params.count("rho_vac_plasm") ? params.at("rho_vac_plasm") : 1e-9; // J/m^3
+        double c = 2.99792458e8;
+        // f_DPM * rho_vac / c - Di-pseudo-monopole resonance frequency
+        return f_DPM * rho_vac_plasm / c;
+    }
+
+    std::string getName() const override { return "SMBHBinary_DPMResonance"; }
+    std::string getDescription() const override
+    {
+        return "Source40 SMBHBinary: DPM core resonance f_DPM*rho_vac/c UNIQUE";
+    }
+};
+
+class SMBHBinaryTHzResonance : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double f_THz = params.count("f_THz") ? params.at("f_THz") : 1e12; // THz
+        double omega = 2.0 * 3.141592653589793 * 1.411e16;                // Superconductive freq
+        // f_THz * sin(omega*t) - THz hole pipeline resonance
+        return f_THz * std::sin(omega * t);
+    }
+
+    std::string getName() const override { return "SMBHBinary_THzResonance"; }
+    std::string getDescription() const override
+    {
+        return "Source40 SMBHBinary: THz pipeline resonance f_THz*sin(omega*t) UNIQUE";
+    }
+};
+
+class SMBHBinaryUg4iResonance : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double f_react = params.count("f_react") ? params.at("f_react") : 1e10; // Hz
+        double lambda_I = 1.0;
+        double f_TRZ = 0.1; // Time-reversal zone factor
+        double omega = 2.0 * 3.141592653589793 * 1.411e16;
+        // f_react * lambda_I * (1 + f_TRZ) * cos(omega*t) - Reactive U_g4i
+        return f_react * lambda_I * (1.0 + f_TRZ) * std::cos(omega * t);
+    }
+
+    std::string getName() const override { return "SMBHBinary_Ug4iResonance"; }
+    std::string getDescription() const override
+    {
+        return "Source40 SMBHBinary: U_g4i reactive resonance UNIQUE";
+    }
+};
+
+class SMBHBinaryPlasmoticVacuum : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double rho_vac_plasm = params.count("rho_vac_plasm") ? params.at("rho_vac_plasm") : 1e-9;
+        double lambda_I = 1.0;
+        // lambda_I * rho_vac_plasm - Plasmotic vacuum energy density
+        return lambda_I * rho_vac_plasm;
+    }
+
+    std::string getName() const override { return "SMBHBinary_PlasmoticVacuum"; }
+    std::string getDescription() const override
+    {
+        return "Source40 SMBHBinary: Plasmotic vacuum energy UNIQUE";
+    }
+};
+
+class SMBHBinaryQuantumResonance : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double f_quantum = params.count("f_quantum") ? params.at("f_quantum") : 1.445e-17; // Hz
+        double hbar = 1.054571817e-34;
+        double Delta_x = 1e-34;
+        double unc = std::sqrt(Delta_x * hbar / Delta_x);
+        // f_quantum / unc - Quantum resonance frequency
+        return f_quantum / unc;
+    }
+
+    std::string getName() const override { return "SMBHBinary_QuantumResonance"; }
+    std::string getDescription() const override
+    {
+        return "Source40 SMBHBinary: Quantum resonance f_quantum/unc UNIQUE";
+    }
+};
+
+class SMBHBinaryFluidResonance : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double f_fluid = params.count("f_fluid") ? params.at("f_fluid") : 5.070e-8; // Hz
+        double rho = params.count("rho_fluid") ? params.at("rho_fluid") : 1e-24;
+        double rho_ref = 1e-24;
+        // f_fluid * (rho / rho_ref) - Density-modulated fluid resonance
+        return f_fluid * (rho / rho_ref);
+    }
+
+    std::string getName() const override { return "SMBHBinary_FluidResonance"; }
+    std::string getDescription() const override
+    {
+        return "Source40 SMBHBinary: Fluid resonance f_fluid*(rho/rho_ref) UNIQUE";
+    }
+};
+
+class SMBHBinaryOscillatoryResonance : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double f_super = params.count("f_super") ? params.at("f_super") : 1.411e16; // Hz
+        double t_coal = params.count("t_coal") ? params.at("t_coal") : 1.555e7;     // 180 days
+        double A = 1e-10;
+        double k = 1e20;
+        double r = params.count("r") ? params.at("r") : 9.46e16; // 0.1 ly
+        double omega = 2.0 * 3.141592653589793 * f_super;
+        // f_super * exp(-t/t_coal) * |psi|^2 - Exponentially decaying resonance
+        std::complex<double> psi(A * std::exp(std::complex<double>(0, k * r - omega * t)));
+        double psi_sq = std::norm(psi);
+        return f_super * std::exp(-t / t_coal) * psi_sq;
+    }
+
+    std::string getName() const override { return "SMBHBinary_OscillatoryResonance"; }
+    std::string getDescription() const override
+    {
+        return "Source40 SMBHBinary: Oscillatory resonance f*exp(-t/tau)*|psi|^2 UNIQUE";
+    }
+};
+
+class SMBHBinaryExpansionResonance : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double f_Aether = params.count("f_Aether") ? params.at("f_Aether") : 1.576e-35; // Hz
+        // f_Aether (constant) - Cosmic expansion resonance frequency
+        return f_Aether;
+    }
+
+    std::string getName() const override { return "SMBHBinary_ExpansionResonance"; }
+    std::string getDescription() const override
+    {
+        return "Source40 SMBHBinary: Cosmic expansion resonance (Aether freq) UNIQUE";
+    }
+};
+
+class SMBHBinaryCoalescence : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double M_sun = 1.98847e30;
+        double M1 = params.count("M1") ? params.at("M1") : 4e6 * M_sun;
+        double M2 = params.count("M2") ? params.at("M2") : 2e6 * M_sun;
+        double t_coal = params.count("t_coal") ? params.at("t_coal") : 1.555e7;
+        double M_total = M1 + M2;
+        double M_chirp = std::pow(M1 * M2, 0.6) / std::pow(M_total, 0.2);
+        double G = 6.67430e-11;
+        double c = 2.99792458e8;
+        // Chirp mass influence: G*M_chirp/c^2 * (1 - t/t_coal) - Binary dynamics
+        double tau_factor = 1.0 - (t / t_coal);
+        if (tau_factor < 0.0)
+            tau_factor = 0.0; // After coalescence
+        return (G * M_chirp / (c * c)) * tau_factor;
+    }
+
+    std::string getName() const override { return "SMBHBinary_Coalescence"; }
+    std::string getDescription() const override
+    {
+        return "Source40 SMBHBinary: Binary coalescence dynamics (2PN waveform) UNIQUE";
+    }
+};
+
+// ===========================================================================================
+// SOURCE41: BACKGROUND AETHER (source90.cpp)
+// Physics: Metric perturbations in UQFF framework (Minkowski + stress-energy)
+// Parameters: eta~1e-15, T_s~1.123e7 J/m³
+// ===========================================================================================
+
+class BackgroundAetherMinkowski : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        // g_00 = 1 (time component of Minkowski metric, fixed)
+        return 1.0;
+    }
+
+    std::string getName() const override { return "BackgroundAether_Minkowski"; }
+    std::string getDescription() const override
+    {
+        return "Source41 BackgroundAether: Minkowski metric g_μν=[1,-1,-1,-1] UNIQUE";
+    }
+};
+
+class BackgroundAetherPerturbedMetric : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double eta = params.count("eta") ? params.at("eta") : 1e-22; // Coupling constant
+        double T_s_base = 1.27e3;                                    // J/m^3
+        double rho_vac_A = 1.11e7;                                   // J/m^3 (Aether component)
+        double T_s = T_s_base + rho_vac_A;                           // ~1.123e7 J/m^3
+        // A_μν = g_μν + eta * T_s (perturbed metric)
+        // Return perturbation term eta * T_s
+        return eta * T_s;
+    }
+
+    std::string getName() const override { return "BackgroundAether_PerturbedMetric"; }
+    std::string getDescription() const override
+    {
+        return "Source41 BackgroundAether: Perturbed metric A=g+eta*T_s UNIQUE";
+    }
+};
+
+class BackgroundAetherStressEnergy : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double T_s_base = 1.27e3;
+        double rho_vac_A = 1.11e7;
+        double T_s = T_s_base + rho_vac_A; // Total stress-energy density
+        // T_s^μν (diagonal stress-energy tensor, return scalar approximation)
+        return T_s;
+    }
+
+    std::string getName() const override { return "BackgroundAether_StressEnergy"; }
+    std::string getDescription() const override
+    {
+        return "Source41 BackgroundAether: Stress-energy tensor T_s=1.123e7 J/m³ UNIQUE";
+    }
+};
+
+class BackgroundAetherCoupling : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double eta = params.count("eta") ? params.at("eta") : 1e-22; // Unitless coupling
+        // eta parameter for metric perturbation strength
+        return eta;
+    }
+
+    std::string getName() const override { return "BackgroundAether_Coupling"; }
+    std::string getDescription() const override
+    {
+        return "Source41 BackgroundAether: Coupling parameter eta~1e-22 UNIQUE";
+    }
+};
+
+// ===========================================================================================
+// SOURCE42: HEAVISIDE FRACTION (source100.cpp)
+// Physics: Universal magnetism amplification via Heaviside threshold fraction
+// U_m scaling: (1 + 10^13 × f_Heaviside) where f_Heaviside = 0.01
+// Amplifies magnetic energy by ~10^11 for nebulae/quasars/jets
+// ===========================================================================================
+
+class HeavisideFraction : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double f_Heaviside = params.count("f_Heaviside") ? params.at("f_Heaviside") : 0.01;
+        return f_Heaviside;
+    }
+
+    std::string getName() const override { return "Heaviside_Fraction"; }
+    std::string getDescription() const override
+    {
+        return "Source42 Heaviside: f_Heaviside = 0.01 (unitless threshold fraction)";
+    }
+};
+
+class HeavisideFactor : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double f_Heaviside = params.count("f_Heaviside") ? params.at("f_Heaviside") : 0.01;
+        double scale = params.count("scale_Heaviside") ? params.at("scale_Heaviside") : 1e13;
+        return 1.0 + scale * f_Heaviside;
+    }
+
+    std::string getName() const override { return "Heaviside_Factor"; }
+    std::string getDescription() const override
+    {
+        return "Source42 Heaviside: (1 + 10^13 × f_H) = 1 + 1e11 amplification UNIQUE";
+    }
+};
+
+class HeavisideUmBase : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double mu_j = params.count("mu_j") ? params.at("mu_j") : 3.38e23;           // T·m³
+        double r_j = params.count("r_j") ? params.at("r_j") : 1.496e13;             // m
+        double gamma = params.count("gamma") ? params.at("gamma") : 5e-5 / 86400.0; // s^-1
+        double t_n = params.count("t_n") ? params.at("t_n") : 0.0;
+        double pi = 3.141592653589793;
+        double phi_hat_j = params.count("phi_hat_j") ? params.at("phi_hat_j") : 1.0;
+        double P_SCm = params.count("P_SCm") ? params.at("P_SCm") : 1.0;
+        double E_react = params.count("E_react") ? params.at("E_react") : 1e46; // J
+
+        double exp_arg = -gamma * t * std::cos(pi * t_n);
+        double one_minus_exp = 1.0 - std::exp(exp_arg);
+
+        return (mu_j / r_j) * one_minus_exp * phi_hat_j * P_SCm * E_react;
+    }
+
+    std::string getName() const override { return "Heaviside_UmBase"; }
+    std::string getDescription() const override
+    {
+        return "Source42 Heaviside: U_m base = (μ/r)(1-e^(-γt cos(πt_n)))φ̂·P_SCm·E_react";
+    }
+};
+
+class HeavisideUmWithHeaviside : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        // Compute base
+        double mu_j = params.count("mu_j") ? params.at("mu_j") : 3.38e23;
+        double r_j = params.count("r_j") ? params.at("r_j") : 1.496e13;
+        double gamma = params.count("gamma") ? params.at("gamma") : 5e-5 / 86400.0;
+        double t_n = params.count("t_n") ? params.at("t_n") : 0.0;
+        double pi = 3.141592653589793;
+        double phi_hat_j = params.count("phi_hat_j") ? params.at("phi_hat_j") : 1.0;
+        double P_SCm = params.count("P_SCm") ? params.at("P_SCm") : 1.0;
+        double E_react = params.count("E_react") ? params.at("E_react") : 1e46;
+
+        double exp_arg = -gamma * t * std::cos(pi * t_n);
+        double one_minus_exp = 1.0 - std::exp(exp_arg);
+        double base = (mu_j / r_j) * one_minus_exp * phi_hat_j * P_SCm * E_react;
+
+        // Apply Heaviside amplification
+        double f_Heaviside = params.count("f_Heaviside") ? params.at("f_Heaviside") : 0.01;
+        double scale = params.count("scale_Heaviside") ? params.at("scale_Heaviside") : 1e13;
+        double heaviside_factor = 1.0 + scale * f_Heaviside;
+
+        // Apply quasi factor
+        double f_quasi = params.count("f_quasi") ? params.at("f_quasi") : 0.01;
+        double quasi_factor = 1.0 + f_quasi;
+
+        return base * heaviside_factor * quasi_factor;
+    }
+
+    std::string getName() const override { return "Heaviside_UmAmplified"; }
+    std::string getDescription() const override
+    {
+        return "Source42 Heaviside: U_m × (1+10^13·f_H) × (1+f_quasi) UNIQUE amplification";
+    }
+};
+
+class HeavisideUmWithoutHeaviside : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        // Compute base without Heaviside (f_Heaviside = 0)
+        double mu_j = params.count("mu_j") ? params.at("mu_j") : 3.38e23;
+        double r_j = params.count("r_j") ? params.at("r_j") : 1.496e13;
+        double gamma = params.count("gamma") ? params.at("gamma") : 5e-5 / 86400.0;
+        double t_n = params.count("t_n") ? params.at("t_n") : 0.0;
+        double pi = 3.141592653589793;
+        double phi_hat_j = params.count("phi_hat_j") ? params.at("phi_hat_j") : 1.0;
+        double P_SCm = params.count("P_SCm") ? params.at("P_SCm") : 1.0;
+        double E_react = params.count("E_react") ? params.at("E_react") : 1e46;
+
+        double exp_arg = -gamma * t * std::cos(pi * t_n);
+        double one_minus_exp = 1.0 - std::exp(exp_arg);
+        double base = (mu_j / r_j) * one_minus_exp * phi_hat_j * P_SCm * E_react;
+
+        // Apply only quasi factor (no Heaviside)
+        double f_quasi = params.count("f_quasi") ? params.at("f_quasi") : 0.01;
+        double quasi_factor = 1.0 + f_quasi;
+
+        return base * quasi_factor;
+    }
+
+    std::string getName() const override { return "Heaviside_UmUnscaled"; }
+    std::string getDescription() const override
+    {
+        return "Source42 Heaviside: U_m without Heaviside (baseline comparison)";
+    }
+};
+
+class HeavisideQuasiFactor : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double f_quasi = params.count("f_quasi") ? params.at("f_quasi") : 0.01;
+        return 1.0 + f_quasi;
+    }
+
+    std::string getName() const override { return "Heaviside_QuasiFactor"; }
+    std::string getDescription() const override
+    {
+        return "Source42 Heaviside: (1 + f_quasi) quasi-scaling factor";
+    }
+};
+
+class HeavisideExponentialDecay : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double gamma = params.count("gamma") ? params.at("gamma") : 5e-5 / 86400.0;
+        double t_n = params.count("t_n") ? params.at("t_n") : 0.0;
+        double pi = 3.141592653589793;
+        double exp_arg = -gamma * t * std::cos(pi * t_n);
+        return 1.0 - std::exp(exp_arg);
+    }
+
+    std::string getName() const override { return "Heaviside_ExpDecay"; }
+    std::string getDescription() const override
+    {
+        return "Source42 Heaviside: (1 - e^(-γt cos(πt_n))) time-modulated decay";
+    }
+};
+
+class HeavisideMagneticMoment : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double mu_j = params.count("mu_j") ? params.at("mu_j") : 3.38e23; // T·m³
+        double r_j = params.count("r_j") ? params.at("r_j") : 1.496e13;   // m
+        return mu_j / r_j;                                                // T·m³/m = T·m²
+    }
+
+    std::string getName() const override { return "Heaviside_MagneticMoment"; }
+    std::string getDescription() const override
+    {
+        return "Source42 Heaviside: μ_j/r_j magnetic moment density";
+    }
+};
+
+class HeavisideAmplificationRatio : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double f_Heaviside = params.count("f_Heaviside") ? params.at("f_Heaviside") : 0.01;
+        double scale = params.count("scale_Heaviside") ? params.at("scale_Heaviside") : 1e13;
+        double heaviside_factor = 1.0 + scale * f_Heaviside;
+        // Returns amplification ratio (typically ~1e11 for default values)
+        return heaviside_factor;
+    }
+
+    std::string getName() const override { return "Heaviside_AmplificationRatio"; }
+    std::string getDescription() const override
+    {
+        return "Source42 Heaviside: Amplification ratio ~1e11 UNIQUE threshold effect";
+    }
+};
+
+// ===========================================================================================
+// SOURCE43: HYDROGEN RESONANCE + SURFACE MAGNETIC FIELD (Source154)
+// Module: HydrogenResonanceUQFFModule + SurfaceMagneticFieldModule
+// Physics: Periodic Table nuclear resonance equations + Solar magnetic field dynamics
+// Date: 2025-11-17
+// ===========================================================================================
+
+// Nuclear resonance amplitude for Periodic Table elements (Z=1-118)
+class HydrogenResonance_Amplitude : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double k_A = params.count("k_A") ? params.at("k_A") : 0.4604;
+        double Z = params.count("Z") ? params.at("Z") : 1.0;       // Atomic number
+        double A = params.count("A") ? params.at("A") : 1.0;       // Mass number
+        double A_H = params.count("A_H") ? params.at("A_H") : 1.0; // Hydrogen mass
+        double delta_pair = params.count("delta_pair") ? params.at("delta_pair") : 0.0;
+
+        // A_res = k_A × Z × (A/A_H) × (1 + δ_pair)
+        double A_res = k_A * Z * (A / A_H) * (1.0 + delta_pair);
+        return A_res;
+    }
+
+    std::string getName() const override { return "HRes_Amplitude"; }
+    std::string getDescription() const override
+    {
+        return "Source43 HydrogenRes: Nuclear resonance amplitude A_res for PToE UNIQUE";
+    }
+};
+
+// Nuclear resonance frequency based on binding energy
+class HydrogenResonance_Frequency : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double E_bind = params.count("E_bind") ? params.at("E_bind") : 7.8e6; // eV
+        double h = params.count("h") ? params.at("h") : 6.626e-34;            // J·s
+        double A = params.count("A") ? params.at("A") : 1.0;
+        double A_H = params.count("A_H") ? params.at("A_H") : 1.0;
+
+        // Convert E_bind to Joules
+        double E_J = E_bind * 1.602e-19;
+
+        // f_res = (E_bind/h) × (A_H/A)
+        double f_res = (E_J / h) * (A_H / A);
+        return f_res;
+    }
+
+    std::string getName() const override { return "HRes_Frequency"; }
+    std::string getDescription() const override
+    {
+        return "Source43 HydrogenRes: Resonance frequency f_res from binding energy UNIQUE";
+    }
+};
+
+// Deep pairing interaction between nuclear components
+class HydrogenResonance_DeepPairing : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double k = params.count("k_pair") ? params.at("k_pair") : 1.325e-6;
+        double A1 = params.count("A1") ? params.at("A1") : 1.0;
+        double A2 = params.count("A2") ? params.at("A2") : 1.0;
+        double f_dp = params.count("f_dp") ? params.at("f_dp") : 1e15;
+        double phi_dp = params.count("phi_dp") ? params.at("phi_dp") : 0.0;
+
+        // U_dp = k × (A1 × A2 / f_dp²) × cos(φ_dp)
+        double U_dp = k * (A1 * A2 / (f_dp * f_dp)) * cos(phi_dp);
+        return U_dp;
+    }
+
+    std::string getName() const override { return "HRes_DeepPairing"; }
+    std::string getDescription() const override
+    {
+        return "Source43 HydrogenRes: Deep pairing U_dp between nuclear components UNIQUE";
+    }
+};
+
+// Nuclear coupling constant with neutron-proton ratio
+class HydrogenResonance_NuclearCoupling : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double k_0 = params.count("k_0") ? params.at("k_0") : 1.0;
+        double N = params.count("N") ? params.at("N") : 0.0; // Neutron number
+        double Z = params.count("Z") ? params.at("Z") : 1.0; // Proton number
+        double delta_pair = params.count("delta_pair") ? params.at("delta_pair") : 0.0;
+
+        // k_nuc = k_0 × (N/Z) × (1 + δ_pair)
+        double k_nuc = (Z > 0) ? k_0 * (N / Z) * (1.0 + delta_pair) : 0.0;
+        return k_nuc;
+    }
+
+    std::string getName() const override { return "HRes_NuclearCoupling"; }
+    std::string getDescription() const override
+    {
+        return "Source43 HydrogenRes: Nuclear coupling k_nuc with N/Z ratio UNIQUE";
+    }
+};
+
+// Shell correction based on magic numbers (nuclear shell model)
+class HydrogenResonance_ShellCorrection : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double S_scale = params.count("S_shell_scale") ? params.at("S_shell_scale") : 0.1;
+        double Z = params.count("Z") ? params.at("Z") : 1.0;
+        double N = params.count("N") ? params.at("N") : 0.0;
+
+        // Magic numbers: 2, 8, 20, 28, 50, 82, 126
+        std::vector<double> magic = {2, 8, 20, 28, 50, 82, 126};
+        double Z_magic = 0.0, N_magic = 0.0;
+
+        for (double m : magic)
+        {
+            if (abs(Z - m) < 1.0)
+                Z_magic = m;
+            if (abs(N - m) < 1.0)
+                N_magic = m;
+        }
+
+        // S_shell = S_scale × (Z_magic + N_magic)
+        double S_shell = S_scale * (Z_magic + N_magic);
+        return S_shell;
+    }
+
+    std::string getName() const override { return "HRes_ShellCorrection"; }
+    std::string getDescription() const override
+    {
+        return "Source43 HydrogenRes: Shell correction S_shell from magic numbers UNIQUE";
+    }
+};
+
+// Enhanced buoyancy with nuclear physics (binding, pairing, magic, range)
+class HydrogenResonance_Buoyancy : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double A = params.count("A") ? params.at("A") : 1.0;
+        double Z = params.count("Z") ? params.at("Z") : 1.0;
+        double N = params.count("N") ? params.at("N") : 0.0;
+        double E_bind = params.count("E_bind") ? params.at("E_bind") : 7.8e6; // eV
+        double S_shell = params.count("S_shell") ? params.at("S_shell") : 0.0;
+
+        // Nuclear radius and volume
+        double r_nuc = 1.2e-15 * pow(A, 1.0 / 3.0); // femtometers
+        double volume = (4.0 / 3.0) * M_PI * pow(r_nuc, 3);
+        double rho_nuc = 2.3e17; // kg/m³
+
+        // Binding energy contribution
+        double E_J = E_bind * 1.602e-19;
+        double binding_contrib = E_J / (volume * rho_nuc);
+
+        // Pairing effects
+        int A_int = (int)A, Z_int = (int)Z;
+        double pairing = 0.0;
+        if (A_int % 2 == 0 && Z_int % 2 == 0)
+            pairing = 0.5; // Even-even
+        else if (A_int % 2 == 1)
+            pairing = 0.0; // Odd-mass
+        else
+            pairing = -0.5; // Odd-odd
+
+        // Magic number enhancement
+        std::vector<double> magic = {2, 8, 20, 28, 50, 82, 126};
+        double magic_enhance = 1.0;
+        for (double m : magic)
+        {
+            if (abs(Z - m) < 1.0 || abs(N - m) < 1.0)
+                magic_enhance = 1.5;
+        }
+
+        // Strong force range
+        double range_factor = exp(-r_nuc / 1.4e-15);
+
+        // Combined buoyancy
+        double buoyancy = S_shell + binding_contrib * (1.0 + pairing) * magic_enhance * range_factor;
+        return buoyancy;
+    }
+
+    std::string getName() const override { return "HRes_Buoyancy"; }
+    std::string getDescription() const override
+    {
+        return "Source43 HydrogenRes: Enhanced buoyancy with nuclear pairing+magic UNIQUE";
+    }
+};
+
+// Superconductive-enhanced nuclear coherence with tunneling
+class HydrogenResonance_Superconductive : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double SC_m = params.count("SC_m") ? params.at("SC_m") : 1.0;
+        double Z = params.count("Z") ? params.at("Z") : 1.0;
+        double A = params.count("A") ? params.at("A") : 1.0;
+        double U_dp = params.count("U_dp") ? params.at("U_dp") : 0.0;
+
+        // Nuclear frequency
+        double nu_nuc = sqrt(Z) * 1e20; // Hz
+
+        // Quantum coherence (real part only for simplicity)
+        double phase = 2.0 * M_PI * nu_nuc * t;
+        double coherence = cos(phase);
+
+        // Coulomb barrier and tunneling
+        double V_barrier = 1e6 * Z; // eV
+        double tunneling = exp(-V_barrier / (13.6 * sqrt(A)));
+
+        // Isotope effects
+        double isotope_factor = 1.0;
+        if (A > 2.0 * Z)
+            isotope_factor = 1.2; // Neutron-rich
+        else if (A < 2.0 * Z)
+            isotope_factor = 0.8; // Proton-rich
+
+        // Nuclear spin coupling (simplified)
+        int A_int = (int)A;
+        double spin = 0.5 * (A_int % 2);
+        double spin_coupling = 1.0 + 0.1 * spin;
+
+        // Combined superconductive term
+        double SC_enhanced = SC_m * coherence * tunneling * isotope_factor * spin_coupling + U_dp;
+        return SC_enhanced;
+    }
+
+    std::string getName() const override { return "HRes_Superconductive"; }
+    std::string getDescription() const override
+    {
+        return "Source43 HydrogenRes: SC with quantum coherence+tunneling UNIQUE";
+    }
+};
+
+// Pairing energy contribution (even-odd nuclei effects)
+class HydrogenResonance_PairingEnergy : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double A = params.count("A") ? params.at("A") : 1.0;
+        double Z = params.count("Z") ? params.at("Z") : 1.0;
+        double delta_pair = params.count("delta_pair") ? params.at("delta_pair") : 0.0;
+
+        // Pairing energy based on even-odd structure
+        int A_int = (int)A, Z_int = (int)Z;
+        double pairing_term = delta_pair;
+
+        if (A_int % 2 == 0 && Z_int % 2 == 0)
+            pairing_term += 0.5; // Even-even (enhanced stability)
+        else if (A_int % 2 == 1)
+            pairing_term += 0.0; // Odd-mass (neutral)
+        else
+            pairing_term -= 0.5; // Odd-odd (reduced stability)
+
+        return pairing_term;
+    }
+
+    std::string getName() const override { return "HRes_PairingEnergy"; }
+    std::string getDescription() const override
+    {
+        return "Source43 HydrogenRes: Pairing energy δ_pair for even-odd nuclei UNIQUE";
+    }
+};
+
+// Magic number stability enhancement
+class HydrogenResonance_MagicStability : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double Z = params.count("Z") ? params.at("Z") : 1.0;
+        double N = params.count("N") ? params.at("N") : 0.0;
+
+        // Magic numbers from nuclear shell model
+        std::vector<double> magic = {2, 8, 20, 28, 50, 82, 126};
+        double stability_factor = 1.0;
+
+        for (double m : magic)
+        {
+            if (abs(Z - m) < 1.0 || abs(N - m) < 1.0)
+            {
+                stability_factor = 1.5; // 50% stability enhancement
+                break;
+            }
+        }
+
+        return stability_factor;
+    }
+
+    std::string getName() const override { return "HRes_MagicStability"; }
+    std::string getDescription() const override
+    {
+        return "Source43 HydrogenRes: Magic number stability enhancement UNIQUE";
+    }
+};
+
+// Coulomb barrier tunneling probability
+class HydrogenResonance_TunnelingProb : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double Z = params.count("Z") ? params.at("Z") : 1.0;
+        double A = params.count("A") ? params.at("A") : 1.0;
+
+        // Coulomb barrier height (eV)
+        double V_barrier = 1e6 * Z;
+
+        // Tunneling probability (WKB approximation)
+        double tunneling_prob = exp(-V_barrier / (13.6 * sqrt(A)));
+
+        return tunneling_prob;
+    }
+
+    std::string getName() const override { return "HRes_TunnelingProb"; }
+    std::string getDescription() const override
+    {
+        return "Source43 HydrogenRes: Coulomb barrier tunneling probability UNIQUE";
+    }
+};
+
+// Full H_res integrand (main nuclear resonance formula)
+class HydrogenResonance_Integrand : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        // Get component terms
+        double A_res = params.count("A_res") ? params.at("A_res") : 0.0;
+        double f_res = params.count("f_res") ? params.at("f_res") : 1e15;
+        double U_dp = params.count("U_dp") ? params.at("U_dp") : 0.0;
+        double SC_m = params.count("SC_m") ? params.at("SC_m") : 1.0;
+        double k_nuc = params.count("k_nuc") ? params.at("k_nuc") : 1.0;
+        double S_shell = params.count("S_shell") ? params.at("S_shell") : 0.0;
+
+        // Integrand = A_res × sin(2πf_res × t) + U_dp × SC_m × k_nuc + S_shell
+        double integrand = A_res * sin(2.0 * M_PI * f_res * t) +
+                           U_dp * SC_m * k_nuc + S_shell;
+
+        return integrand;
+    }
+
+    std::string getName() const override { return "HRes_Integrand"; }
+    std::string getDescription() const override
+    {
+        return "Source43 HydrogenRes: Full H_res integrand formula UNIQUE";
+    }
+};
+
+// Complete H_res calculation (integrand × quadratic root)
+class HydrogenResonance_Full : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        // Get integrand and quadratic root
+        double integrand = params.count("H_integrand") ? params.at("H_integrand") : 0.0;
+        double x2 = params.count("x2") ? params.at("x2") : -1.35e172;
+
+        // H_res = integrand × x2
+        double H_res = integrand * x2;
+
+        return H_res;
+    }
+
+    std::string getName() const override { return "HRes_Full"; }
+    std::string getDescription() const override
+    {
+        return "Source43 HydrogenRes: Complete H_res = integrand × x2 UNIQUE";
+    }
+};
+
+// Solar surface magnetic field oscillations (B_j)
+class SurfaceMagnetic_Oscillation : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double B_s = params.count("B_s") ? params.at("B_s") : 0.2; // Tesla
+        double B_ref = params.count("B_ref") ? params.at("B_ref") : 0.4;
+        double k_3 = params.count("k_3") ? params.at("k_3") : 1.8;
+        double omega_s = params.count("omega_s") ? params.at("omega_s") : 2.5e-6;
+
+        // B_j = B_s × (B_s/B_ref)^k_3 × cos(omega_s × t)
+        double B_j = B_s * pow(B_s / B_ref, k_3) * cos(omega_s * t);
+
+        return B_j;
+    }
+
+    std::string getName() const override { return "SurfMag_Oscillation"; }
+    std::string getDescription() const override
+    {
+        return "Source43 SurfaceMag: Solar magnetic field oscillation B_j UNIQUE";
+    }
+};
+
+// Magnetic field minimum (quiet Sun)
+class SurfaceMagnetic_MinField : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double B_s_min = params.count("B_s_min") ? params.at("B_s_min") : 1e-4; // Tesla
+        return B_s_min;
+    }
+
+    std::string getName() const override { return "SurfMag_MinField"; }
+    std::string getDescription() const override
+    {
+        return "Source43 SurfaceMag: Minimum magnetic field B_s_min (quiet Sun) UNIQUE";
+    }
+};
+
+// Magnetic field maximum (sunspot)
+class SurfaceMagnetic_MaxField : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double B_s_max = params.count("B_s_max") ? params.at("B_s_max") : 0.4; // Tesla
+        return B_s_max;
+    }
+
+    std::string getName() const override { return "SurfMag_MaxField"; }
+    std::string getDescription() const override
+    {
+        return "Source43 SurfaceMag: Maximum magnetic field B_s_max (sunspot) UNIQUE";
+    }
+};
+
+// Solar cycle-dependent magnetic reference field
+class SurfaceMagnetic_CycleReference : public PhysicsTerm
+{
+public:
+    double compute(double t, const std::map<std::string, double> &params) const override
+    {
+        double B_s_max = params.count("B_s_max") ? params.at("B_s_max") : 0.4;
+        double solar_cycle_period = params.count("solar_cycle_period") ? params.at("solar_cycle_period") : 3.47e8; // 11 years
+
+        // Solar cycle phase
+        double cycle_phase = fmod(t, solar_cycle_period) / solar_cycle_period;
+        double cycle_factor = 0.5 * (1.0 + cos(2.0 * M_PI * cycle_phase));
+
+        // B_ref varies from 0.1×B_max to 1.0×B_max over 11-year cycle
+        double B_ref = B_s_max * (0.1 + 0.9 * cycle_factor);
+
+        return B_ref;
+    }
+
+    std::string getName() const override { return "SurfMag_CycleRef"; }
+    std::string getDescription() const override
+    {
+        return "Source43 SurfaceMag: Solar cycle reference field B_ref UNIQUE";
     }
 };
 
