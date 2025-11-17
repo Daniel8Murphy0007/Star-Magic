@@ -1,0 +1,132 @@
+================================================================================
+  STAR-MAGIC UQFF CORE LIBRARY - VERSION INFORMATION
+================================================================================
+
+Official Designation: Star-Magic UQFF Core Library v1.0 (VS2022-x64)
+
+Project:        Star-Magic
+Technology:     Unified Quantum Field Force (UQFF)
+Component:      Core Physics Library
+Version:        1.0
+Build Platform: Visual Studio 2022 (MSVC 19.44.35219.0)
+Architecture:   x64 (64-bit)
+Build Date:     November 16, 2025
+
+================================================================================
+  BUILD CONFIGURATION
+================================================================================
+
+Build System:       CMake 4.2.0-rc1
+Generator:          Visual Studio 17 2022
+Toolchain:          vcpkg x64-windows triplet
+Preset:             vs2022-x64-windows
+Configuration:      Debug (primary), Release (available)
+Parallel Jobs:      12
+
+Windows SDK:        10.0.26100.0 (targeting 10.0.26200)
+Compiler:           Microsoft Visual C++ 19.44.35219.0
+
+================================================================================
+  LIBRARY DETAILS
+================================================================================
+
+Library Name:       UQFFCore.lib
+Library Size:       128.11 MB (134,429,706 bytes)
+Location:           build/Debug/UQFFCore.lib
+Modules Compiled:   119 Core physics modules
+Last Built:         November 16, 2025 at 6:19:25 PM EST
+
+Solution File:      StarMagic_UQFF.sln
+
+================================================================================
+  DEPENDENCIES (via vcpkg)
+================================================================================
+
+Graphics & Rendering:
+  - OpenGL                (graphics API)
+  - GLEW                  (OpenGL extensions)
+  - glfw                  (windowing/input)
+  - glm                   (mathematics library)
+  - assimp                (asset import)
+
+Data & Configuration:
+  - yaml-cpp::yaml-cpp    (YAML configuration parser)
+  - nlohmann-json         (JSON library)
+
+Optional (Not Found):
+  - Qt5                   (GUI framework - excluded)
+  - GMP                   (arbitrary precision - optional)
+
+================================================================================
+  MODULE ARCHITECTURE
+================================================================================
+
+Core Modules:       119 compiled C++ modules (Source14.cpp - Source162.cpp)
+Enhancement System: Self-expanding physics framework
+Dynamic Terms:      Runtime-extensible calculation engine
+Mathematical Core:  MAIN_1.cpp validated computational framework
+
+Module Features:
+  - Dynamic term registration
+  - Runtime parameter tuning
+  - State export/import capability
+  - Auto-optimization with learning rates
+  - Metadata tracking and versioning
+
+================================================================================
+  VERSION CONTROL
+================================================================================
+
+Repository:         https://github.com/Daniel8Murphy0007/Star-Magic.git
+Branch:             master
+Last Commit:        fecb4a1
+Commit Date:        November 16, 2025 at 7:07:40 PM EST
+Author:             Daniel T Murphy <daniel.murphy00@gmail.com>
+
+Commit Message:     "Switch to Visual Studio 2022 x64-windows build system;
+                    remove local GLM/json copies (using vcpkg); add .gitignore
+                    for build artifacts; document build procedure in
+                    BUILD_INSTRUCTIONS_PERMANENT.md"
+
+================================================================================
+  BUILD STATUS
+================================================================================
+
+CMake Configuration:    ✓ COMPLETE (4.2s, zero warnings)
+UQFFCore.lib:           ✓ BUILT (119 modules, 128 MB)
+MAIN_1.exe:             ⚠ PENDING
+Source Programs:        ⚠ PENDING (source4-162 executables)
+
+Configuration File:     CMakePresets.json (ensures persistent settings)
+Build Artifacts:        Excluded from version control via .gitignore
+
+================================================================================
+  NEXT BUILD STEPS
+================================================================================
+
+Build all executables:
+  cmake --build build --config Debug -j 12
+
+Build specific target:
+  cmake --build build --target MAIN_1 --config Debug
+
+Release build:
+  cmake --build build --config Release -j 12
+
+Reconfigure if needed:
+  cmake --preset vs2022-x64-windows
+
+================================================================================
+  SCIENTIFIC INTEGRITY NOTES
+================================================================================
+
+- All dynamic terms are additive; original validated mathematics preserved
+- Backward compatibility maintained for all core methods
+- Dynamic features are opt-in and disabled by default
+- All operations support transparent logging and traceability
+- Version control ensures reproducibility
+
+================================================================================
+End of Version Information
+Generated: November 16, 2025
+================================================================================

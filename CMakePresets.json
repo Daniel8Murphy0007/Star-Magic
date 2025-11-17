@@ -1,0 +1,42 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 21,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "vs2022-x64-windows",
+            "displayName": "Visual Studio 2022 x64 (vcpkg)",
+            "description": "Default configuration for Star-Magic UQFF with Visual Studio 2022",
+            "generator": "Visual Studio 17 2022",
+            "architecture": {
+                "value": "x64",
+                "strategy": "set"
+            },
+            "binaryDir": "${sourceDir}/build",
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": "C:/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "VCPKG_TARGET_TRIPLET": "x64-windows",
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "vs2022-debug",
+            "displayName": "Visual Studio 2022 Debug Build",
+            "configurePreset": "vs2022-x64-windows",
+            "configuration": "Debug",
+            "jobs": 12
+        },
+        {
+            "name": "vs2022-release",
+            "displayName": "Visual Studio 2022 Release Build",
+            "configurePreset": "vs2022-x64-windows",
+            "configuration": "Release",
+            "jobs": 12
+        }
+    ]
+}

@@ -277,7 +277,7 @@ target_link_libraries(UQFFCore PUBLIC
     glfw
     glm::glm
     assimp::assimp
-    yaml-cpp
+    yaml-cpp::yaml-cpp
     nlohmann_json::nlohmann_json
 )
 

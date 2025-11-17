@@ -75,6 +75,8 @@ module_backups_*/
 
 # Visual Studio
 .vs/
+*.vcxproj
+*.vcxproj.filters
 *.vcxproj.user
 *.suo
 *.sdf
@@ -85,6 +87,7 @@ CMakeCache.txt
 CMakeFiles/
 cmake_install.cmake
 *.dir/
+Makefile
 
 # Encoded directories (build artifacts)
 1N5B6Y891*/

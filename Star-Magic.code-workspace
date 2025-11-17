@@ -7,20 +7,21 @@
     ],
     "settings": {
         // ========== WORKSPACE METADATA ==========
-        "workspace.name": "Star-Magic UQFF",
+        "workspace.name": "Star-Magic UQFF Core Library v1.0 (VS2022-x64)",
         "workspace.phase": "Phase 4: Integration & Testing",
-        "workspace.restorePoint": "5d0a633",
-        "workspace.libraryPath": "${workspaceFolder}/build/libUQFFCore.a",
+        "workspace.restorePoint": "fecb4a1",
+        "workspace.libraryPath": "${workspaceFolder}/build/Debug/UQFFCore.lib",
         "workspace.primaryPlatform": "${workspaceFolder}/source2.cpp",
-        
+        "workspace.buildSystem": "Visual Studio 2022 x64-windows",
+        "workspace.lastUpdate": "November 16, 2025",
         // ========== C++ CONFIGURATION ==========
         "C_Cpp.default.cppStandard": "c++17",
-        "C_Cpp.default.compilerPath": "C:/msys64/mingw64/bin/g++.exe",
-        "C_Cpp.default.intelliSenseMode": "windows-gcc-x64",
+        "C_Cpp.default.compilerPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35219/bin/Hostx64/x64/cl.exe",
+        "C_Cpp.default.intelliSenseMode": "windows-msvc-x64",
         "C_Cpp.default.includePath": [
             "${workspaceFolder}/**",
             "${workspaceFolder}/Core/Modules",
-            "C:/msys64/mingw64/include"
+            "C:/vcpkg/installed/x64-windows/include"
         ],
         "C_Cpp.default.defines": [
             "_DEBUG",
@@ -30,20 +31,24 @@
         "C_Cpp.errorSquiggles": "enabled",
         "C_Cpp.intelliSenseEngine": "default",
         "C_Cpp.autocomplete": "default",
-        
         // ========== CMAKE CONFIGURATION ==========
         "cmake.configureOnOpen": false,
-        "cmake.generator": "MinGW Makefiles",
+        "cmake.generator": "Visual Studio 17 2022",
         "cmake.buildDirectory": "${workspaceFolder}/build",
         "cmake.sourceDirectory": "${workspaceFolder}",
-        
+        "cmake.configureSettings": {
+            "CMAKE_TOOLCHAIN_FILE": "C:/vcpkg/scripts/buildsystems/vcpkg.cmake",
+            "VCPKG_TARGET_TRIPLET": "x64-windows"
+        },
+        "cmake.preferredGenerators": [
+            "Visual Studio 17 2022"
+        ],
         // ========== FILE ASSOCIATIONS ==========
         "files.associations": {
             "*.cpp": "cpp",
             "*.h": "c",
             "CMakeLists.txt": "cmake"
         },
-        
         // ========== FILES EXCLUDE (BUILD ARTIFACTS) ==========
         "files.exclude": {
             "**/.git": true,
@@ -61,12 +66,10 @@
             "**/build/*.cmake": true,
             "**/build/Makefile": true
         },
-        
         // ========== GIT CONFIGURATION ==========
         "git.enabled": true,
         "git.autofetch": false,
         "git.confirmSync": true,
-        
         // ========== TERMINAL CONFIGURATION ==========
         "terminal.integrated.defaultProfile.windows": "PowerShell",
         "terminal.integrated.profiles.windows": {
@@ -83,13 +86,11 @@
                 "icon": "terminal-cmd"
             }
         },
-        
         // ========== EDITOR CONFIGURATION ==========
         "editor.formatOnSave": false,
         "editor.tabSize": 4,
         "editor.insertSpaces": true,
         "editor.detectIndentation": true,
-        
         // ========== RECOMMENDED EXTENSIONS ==========
         "extensions.ignoreRecommendations": false
     },
