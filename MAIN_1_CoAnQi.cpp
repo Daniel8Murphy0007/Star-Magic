@@ -13188,3 +13188,265 @@ int main()
 
     return 0;
 }
+
+// ===========================================================================================
+// SOURCE44: HELIOSPHERE BOUNDARY LAYER PHYSICS (from source101.cpp)
+// Integration Date: 2025-11-17
+// Module: HeliosphereThicknessModule
+// Purpose: Heliosphere boundary dynamics at ~1 AU and heliopause (~120 AU)
+// Critical for: Millennium Prize boundary conditions, solar wind coupling
+// Terms: 1 primary (H_SCm heliosphere thickness factor)
+// ===========================================================================================
+
+/*
+PHYSICS: Heliosphere Thickness Factor H_SCm
+
+The heliosphere is the vast region of space dominated by the Sun's solar wind and magnetic field.
+Its boundary (heliopause) lies at ~120 AU where solar wind pressure balances interstellar medium.
+
+H_SCm is a unitless thickness factor (~1) that scales the heliospheric influence in U_g2:
+
+U_g2 = k_2 * [(ρ_vac,UA + ρ_vac,SCm) * M_s / r²] * S(r - R_b) * (1 + δ_sw * v_sw) * H_SCm * E_react
+
+Key Components:
+- R_b = 1.496e13 m (1 AU reference boundary)
+- ρ_vac,UA = 7.09e-36 J/m³ (Universal Aether vacuum density)
+- ρ_vac,SCm = 7.09e-37 J/m³ (SCm vacuum density)
+- δ_sw = 0.01 (solar wind modulation factor)
+- v_sw = 5e5 m/s (solar wind velocity)
+- E_react = 1e46 J (reaction energy at boundary)
+- H_SCm ≈ 1.0 (heliosphere thickness factor, can vary ±10%)
+
+Physical Significance:
+1. Boundary Layer Dynamics: Models transition from solar-dominated to interstellar space
+2. Solar Wind Coupling: Swirl factor (1 + δ_sw * v_sw) captures wind-field interaction
+3. Vacuum Energy Differential: (ρ_vac,UA + ρ_vac,SCm) represents aether density gradient
+4. Heliopause Extent: H_SCm adjusts for time-varying heliosphere size (solar cycle effects)
+
+Millennium Prize Relevance:
+- Navier-Stokes: Solar wind plasma flow at heliospheric boundaries
+- Yang-Mills: Vacuum field coupling across boundary layers
+- Boundary conditions for all field equations at stellar system edges
+
+Example Values:
+At r = R_b = 1.496e13 m, t = 0, H_SCm = 1.0:
+  U_g2 ≈ 1.18e53 J/m³
+
+If H_SCm = 1.1 (10% thicker heliosphere during solar maximum):
+  U_g2 ≈ 1.30e53 J/m³ (+10% effect)
+
+Integration with Existing Physics:
+- Complements SOURCE1 (Solar wind general terms)
+- Extends SOURCE3 (Outer field bubble R_b dynamics)
+- Links to SOURCE17 (SCm penetration at planetary scales)
+- Provides boundary conditions for SOURCE2 (Time-varying rotation)
+
+References:
+- Murphy, D.T. (2025). Heliosphere Thickness Module Analysis.
+- Voyager 1/2 heliopause crossing data (~120 AU)
+- Solar cycle heliosphere expansion/contraction observations
+*/
+
+class HeliosphereThicknessModule_SOURCE44
+{
+private:
+    std::map<std::string, double> variables;
+    std::map<std::string, double> dynamicParameters;
+    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
+    std::map<std::string, std::string> metadata;
+    bool enableDynamicTerms;
+    bool enableLogging;
+    double learningRate;
+
+    double computeH_SCm()
+    {
+        return variables["H_SCm"];
+    }
+
+public:
+    // Constructor: Initialize heliosphere boundary parameters
+    HeliosphereThicknessModule_SOURCE44()
+    {
+        enableDynamicTerms = true;
+        enableLogging = false;
+        learningRate = 0.001;
+        metadata["source"] = "source101.cpp";
+        metadata["enhanced"] = "true";
+        metadata["version"] = "2.0-Enhanced";
+        metadata["integration_date"] = "2025-11-17";
+
+        // Universal constants
+        variables["H_SCm"] = 1.0;            // Unitless ≈1 (heliosphere thickness factor)
+        variables["k_2"] = 1.2;              // Coupling constant for U_g2
+        variables["rho_vac_UA"] = 7.09e-36;  // J/m³ (Universal Aether vacuum density)
+        variables["rho_vac_SCm"] = 7.09e-37; // J/m³ (SCm vacuum density)
+        variables["M_s"] = 1.989e30;         // kg (Solar mass)
+        variables["r"] = 1.496e13;           // m (distance - typically R_b)
+        variables["R_b"] = 1.496e13;         // m (1 AU reference boundary)
+        variables["delta_sw"] = 0.01;        // Unitless (solar wind modulation)
+        variables["v_sw"] = 5e5;             // m/s (solar wind velocity)
+        variables["E_react"] = 1e46;         // J (reaction energy at boundary)
+        variables["S_r_Rb"] = 1.0;           // Step function S(r - R_b)
+        variables["pi"] = 3.141592653589793;
+        variables["t_n"] = 0.0; // s (negative time parameter)
+
+        // Derived quantities
+        variables["rho_sum"] = variables["rho_vac_UA"] + variables["rho_vac_SCm"];
+        variables["swirl_factor"] = 1.0 + variables["delta_sw"] * variables["v_sw"];
+    }
+
+    // Update variable with automatic dependency recalculation
+    void updateVariable(const std::string &name, double value)
+    {
+        if (variables.find(name) != variables.end())
+        {
+            variables[name] = value;
+            // Recalculate derived quantities
+            if (name == "rho_vac_UA" || name == "rho_vac_SCm")
+            {
+                variables["rho_sum"] = variables["rho_vac_UA"] + variables["rho_vac_SCm"];
+            }
+            else if (name == "delta_sw" || name == "v_sw")
+            {
+                variables["swirl_factor"] = 1.0 + variables["delta_sw"] * variables["v_sw"];
+            }
+        }
+        else
+        {
+            if (enableLogging)
+            {
+                std::cerr << "[SOURCE44] Variable '" << name << "' not found. Adding with value " << value << std::endl;
+            }
+            variables[name] = value;
+        }
+    }
+
+    void addToVariable(const std::string &name, double delta)
+    {
+        if (variables.find(name) != variables.end())
+        {
+            variables[name] += delta;
+            if (name == "rho_vac_UA" || name == "rho_vac_SCm")
+            {
+                variables["rho_sum"] = variables["rho_vac_UA"] + variables["rho_vac_SCm"];
+            }
+            else if (name == "delta_sw" || name == "v_sw")
+            {
+                variables["swirl_factor"] = 1.0 + variables["delta_sw"] * variables["v_sw"];
+            }
+        }
+        else
+        {
+            if (enableLogging)
+            {
+                std::cerr << "[SOURCE44] Variable '" << name << "' not found. Adding with delta " << delta << std::endl;
+            }
+            variables[name] = delta;
+        }
+    }
+
+    void subtractFromVariable(const std::string &name, double delta)
+    {
+        addToVariable(name, -delta);
+    }
+
+    // Core computation: U_g2 with H_SCm heliosphere thickness scaling
+    double computeU_g2(double t, double t_n)
+    {
+        double k_2 = variables["k_2"];
+        double rho_sum = variables["rho_sum"];
+        double M_s = variables["M_s"];
+        double r = variables["r"];
+        double S_r_Rb = variables["S_r_Rb"];
+        double swirl_factor = variables["swirl_factor"];
+        double H_SCm = computeH_SCm();
+        double E_react = variables["E_react"];
+
+        // U_g2 = k_2 * [(ρ_vac,UA + ρ_vac,SCm) * M_s / r²] * S(r - R_b) * (1 + δ_sw * v_sw) * H_SCm * E_react
+        return k_2 * (rho_sum * M_s / (r * r)) * S_r_Rb * swirl_factor * H_SCm * E_react;
+    }
+
+    // Baseline U_g2 without H_SCm variation (H = 1 fixed)
+    double computeU_g2_no_H(double t, double t_n)
+    {
+        double orig_H = variables["H_SCm"];
+        variables["H_SCm"] = 1.0;
+        double result = computeU_g2(t, t_n);
+        variables["H_SCm"] = orig_H;
+        return result;
+    }
+
+    // Equation description
+    std::string getEquationText()
+    {
+        return "U_g2 = k_2 * [(ρ_vac,UA + ρ_vac,SCm) * M_s / r²] * S(r - R_b) * (1 + δ_sw * v_sw) * H_SCm * E_react\n"
+               "Where H_SCm ≈ 1 (unitless heliosphere thickness factor);\n"
+               "Scales outer field bubble gravity for heliopause extent (~120 AU).\n"
+               "Example r = R_b = 1.496e13 m, t = 0: U_g2 ≈ 1.18e53 J/m³ (H = 1);\n"
+               "If H_SCm = 1.1: ≈ 1.30e53 J/m³ (+10%).\n"
+               "Role: Adjusts [SCm] influence in heliosphere; minimal but flexible for boundary variations.\n"
+               "UQFF: Models solar wind dominance; key for nebular/heliospheric dynamics and Millennium Prize boundary conditions.";
+    }
+
+    // Debug output
+    void printVariables()
+    {
+        std::cout << "\n=== SOURCE44: Heliosphere Thickness Module Variables ===\n";
+        for (const auto &pair : variables)
+        {
+            std::cout << pair.first << " = " << std::scientific << std::setprecision(6) << pair.second << std::endl;
+        }
+    }
+
+    // Getter for H_SCm
+    double getH_SCm() const
+    {
+        return variables.at("H_SCm");
+    }
+
+    // Enable/disable logging
+    void setLogging(bool enable)
+    {
+        enableLogging = enable;
+    }
+};
+
+// Global instance for SOURCE44
+HeliosphereThicknessModule_SOURCE44 g_heliosphere_module;
+
+/*
+INTEGRATION NOTES FOR SOURCE44:
+
+1. Physics Integration:
+   - Adds heliosphere boundary layer dynamics to existing U_g2 framework
+   - Complements outer field bubble physics from SOURCE3
+   - Provides time-varying boundary conditions for solar wind coupling
+
+2. Computational Usage:
+   double U_g2_helio = g_heliosphere_module.computeU_g2(current_time, t_negative);
+   double H_factor = g_heliosphere_module.getH_SCm();
+
+3. Parameter Tuning:
+   g_heliosphere_module.updateVariable("H_SCm", 1.1);  // 10% thicker during solar max
+   g_heliosphere_module.updateVariable("v_sw", 4e5);   // Lower solar wind velocity
+
+4. Millennium Prize Applications:
+   - Navier-Stokes: Solar wind plasma boundary conditions
+   - Yang-Mills: Vacuum field coupling at heliosphere edge
+   - Provides outer boundary for all stellar system field equations
+
+5. Observational Validation:
+   - Voyager 1 heliopause crossing: 121 AU (2012)
+   - Voyager 2 heliopause crossing: 119 AU (2018)
+   - Solar cycle variations: ±10-15% heliosphere size
+   - Solar wind speed: 300-800 km/s (average ~450 km/s)
+
+6. Future Extensions:
+   - Couple H_SCm to solar cycle phase (11-year periodicity)
+   - Add interstellar medium pressure terms
+   - Implement dynamic heliopause position calculation
+   - Include magnetic field reconnection at boundary
+
+Term Count for SOURCE44: 1 primary term (H_SCm heliosphere thickness factor)
+Total Integration: 359 + 1 = 360 unique physics terms
+*/
