@@ -54,12 +54,14 @@ Thumbs.db
 index_backup_*.js
 index_EMERGENCY_*.js
 
-# Compiled binaries
-*.exe
+# Compiled binaries (excluding primary executable)
+test_*.exe
+*_backup*.exe
+Debug/*.exe
+build_backup_*/*.exe
 *.dll
 *.so
 *.dylib
-MAIN_1.exe
 *.lib
 *.a
 *.obj
