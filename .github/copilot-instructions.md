@@ -1,17 +1,21 @@
 # Copilot Instructions for Star-Magic UQFF Codebase
 
 ## Big Picture Architecture
-- **Core Engine:** `index.js` orchestrates advanced Unified Quantum Field Force (UQFF) calculations, integrating mathematical frameworks from `MAIN_1.cpp` and enhanced C++ modules (`Source14.cpp` through `Source162.cpp`).
-- **Module Ecosystem:** Over 138 C++ modules (see `ENHANCEMENT_GUIDE.md`) implement self-expanding physics terms, supporting organic code growth and dynamic runtime extension.
-- **Data Flow:** JavaScript (`index.js`) calls C++ modules via child processes, native addons, or WebAssembly. Modules communicate via shared state files, sockets, or memory.
+- **Primary Platform:** `MAIN_1_CoAnQi.cpp` (18,466 lines) - Conscious Quantum Intelligence UQFF Calculator with 446 integrated physics modules (SOURCE1-116)
+- **Module Integration:** All unique physics from source1.cpp through source173.cpp extracted and compiled into single comprehensive framework
+- **Self-Expanding System:** 2.0-Enhanced framework with dynamic term registration, runtime parameters, state export/import, and auto-optimization
+- **Build System:** CMake + MinGW-w64 GCC 14.2.0, C++17 standard, builds MAIN_1_CoAnQi.exe as primary executable
+- **Integration Tracking:** `INTEGRATION_TRACKER.csv` documents all 161 source files, 445 modules, 359+ unique physics terms
 
 ## Developer Workflows
-- **Build/Run C++ Modules:**
-  - Compile: `g++ -std=c++17 Source14.cpp -o test_source14`
-  - Test: `./test_source14`
-  - Batch test: `g++ -std=c++17 test_enhanced_modules.cpp -o test_enhanced; ./test_enhanced`
-- **Enhancement Script:** Use `enhance_modules.ps1` to upgrade modules with dynamic term support. Backups are stored in `module_backups_YYYYMMDD_HHMMSS/`.
-- **Integration:** Use Node.js (`index.js`) to orchestrate and connect modules. For new physics terms, follow the `PhysicsTerm` interface (see `ENHANCEMENT_GUIDE.md`).
+- **Build Primary Executable:**
+  - Configure: `cmake -S . -B build -G "MinGW Makefiles"`
+  - Build: `cmake --build build --target MAIN_1_CoAnQi`
+  - Run: `.\build\MAIN_1_CoAnQi.exe` (8-option interactive menu)
+- **Quick Build Commands:**
+  - Clean: `Remove-Item -Recurse -Force build -ErrorAction SilentlyContinue`
+  - Full rebuild: `cmake -S . -B build -G "MinGW Makefiles"; cmake --build build`
+- **Integration Status:** Check `INTEGRATION_TRACKER.csv` for module compilation status, physics terms count, and notes
 
 ## Project-Specific Patterns
 - **Self-Expanding Classes:** All enhanced modules support:
@@ -28,18 +32,31 @@
 - **Cross-Module:** Modules can export/import parameters for collaborative computation (see examples in `ENHANCEMENT_GUIDE.md`).
 
 ## Key Files & Directories
-- `index.js`: Central computational engine
-- `Source14.cpp`–`Source162.cpp`: Enhanced physics modules
-- `ENHANCEMENT_GUIDE.md`: Full enhancement details and usage patterns
-- `MAIN_1.cpp`: Mathematical backbone
-- `enhance_modules.ps1`: Enhancement automation script
-- `SETUP.md`: Setup and configuration guide
+- `MAIN_1_CoAnQi.cpp`: Primary platform (18,463 lines, 446 integrated modules SOURCE1-116)
+- `INTEGRATION_TRACKER.csv`: Complete module status tracking (173 source files, 116 integrated, 57 skipped)
+- `MAIN_1_CoAnQi_integration_status.json`: Build status and physics terms inventory
+- `source1.cpp`–`source173.cpp`: Original physics modules extracted and integrated
+- `ENHANCEMENT_GUIDE.md`: Self-expanding framework documentation
+- `BUILD_INSTRUCTIONS_PERMANENT.md`: Critical build workflow (READ EVERY TIME)
+- `CMakeLists.txt`: Build configuration (MinGW Makefiles, C++17)
+- `copilot_thread_capture_source.cpp`: Session recovery file (Nov 14 @ 5:03 PM)
+- `restore_point_thread_capture_15nov2025_0248.txt`: Session recovery (Nov 15 @ 2:48 AM)
 
-## Example: Registering a Dynamic Term
+## Example: Using MAIN_1_CoAnQi Interactive Menu
 ```cpp
-module.registerDynamicTerm(std::make_unique<DarkMatterHaloTerm>(1e12 * M_sun, 20000));
-module.setDynamicParameter("custom_coupling", 1.23e-40);
-module.exportState("moduleA_shared.txt");
+// Run the primary executable
+.\build\MAIN_1_CoAnQi.exe
+
+// 8-option menu:
+// 1. Calculate system (single)
+// 2. Calculate ALL systems (parallel)
+// 3. Clone and mutate system
+// 4. Add custom system
+// 5. Add dynamic physics term
+// 6. Run simulations
+// 7. Statistical analysis
+// 8. Self-optimization
+// 9. Exit
 ```
 
 ## Conventions

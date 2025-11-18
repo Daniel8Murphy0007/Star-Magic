@@ -1,6 +1,12 @@
 ﻿{
-    "Source154":  {
-                      "Class":  "HydrogenResonanceUQFFModule",
-                      "Method":  "computeHRes"
-                  }
+    "NOTICE": "This file is deprecated as of November 18, 2025",
+    "CurrentFile": "module_methods_UPDATED_NOV18.json",
+    "IntegrationStatus": "446 modules (SOURCE1-116) - See MAIN_1_CoAnQi_integration_status.json",
+    "LegacyEntry": {
+        "Source154": {
+            "Class": "HydrogenResonanceUQFFModule",
+            "Method": "computeHRes",
+            "Note": "Now integrated as SOURCE43 in MAIN_1_CoAnQi.cpp with 16 physics terms"
+        }
+    }
 }

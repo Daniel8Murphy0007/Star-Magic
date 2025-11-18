@@ -2,41 +2,41 @@
   STAR-MAGIC UQFF CORE LIBRARY - VERSION INFORMATION
 ================================================================================
 
-Official Designation: Star-Magic UQFF Core Library v1.0 (VS2022-x64)
+Official Designation: Star-Magic UQFF Core Library v2.2 (MinGW-x64)
 
 Project:        Star-Magic
 Technology:     Unified Quantum Field Force (UQFF)
 Component:      Core Physics Library
-Version:        1.0
-Build Platform: Visual Studio 2022 (MSVC 19.44.35219.0)
+Version:        2.2
+Build Platform: MinGW-w64 GCC 14.2.0
 Architecture:   x64 (64-bit)
-Build Date:     November 16, 2025
+Build Date:     November 18, 2025
 
 ================================================================================
   BUILD CONFIGURATION
 ================================================================================
 
-Build System:       CMake 4.2.0-rc1
-Generator:          Visual Studio 17 2022
-Toolchain:          vcpkg x64-windows triplet
-Preset:             vs2022-x64-windows
-Configuration:      Debug (primary), Release (available)
-Parallel Jobs:      12
+Build System:       CMake 3.31.0
+Generator:          MinGW Makefiles
+Toolchain:          MinGW-w64 GCC 14.2.0
+Standard:           C++17
+Configuration:      Release (optimized)
+Parallel Jobs:      Available
 
-Windows SDK:        10.0.26100.0 (targeting 10.0.26200)
-Compiler:           Microsoft Visual C++ 19.44.35219.0
+Threading:          Windows threads (<windows.h>, <process.h>)
+Compiler:           g++ (MinGW-w64) 14.2.0
 
 ================================================================================
   LIBRARY DETAILS
 ================================================================================
 
-Library Name:       UQFFCore.lib
-Library Size:       128.11 MB (134,429,706 bytes)
-Location:           build/Debug/UQFFCore.lib
-Modules Compiled:   119 Core physics modules
-Last Built:         November 16, 2025 at 6:19:25 PM EST
+Primary Executable: MAIN_1_CoAnQi.exe
+Executable Size:    1.28 MB (1,342,464 bytes)
+Source File:        MAIN_1_CoAnQi.cpp (18,463 lines, 677 KB)
+Modules Integrated: 446 unique physics terms (SOURCE1-116)
+Last Built:         November 18, 2025 at 1:23 AM EST
 
-Solution File:      StarMagic_UQFF.sln
+Build Target:       MAIN_1_CoAnQi
 
 ================================================================================
   DEPENDENCIES (via vcpkg)
@@ -61,17 +61,19 @@ Optional (Not Found):
   MODULE ARCHITECTURE
 ================================================================================
 
-Core Modules:       119 compiled C++ modules (Source14.cpp - Source162.cpp)
-Enhancement System: Self-expanding physics framework
+Core Modules:       446 physics terms integrated (SOURCE1-116)
+Source Files:       116 of 173 processed (223% of 200 target)
+Enhancement System: Self-expanding 2.0-Enhanced framework
 Dynamic Terms:      Runtime-extensible calculation engine
-Mathematical Core:  MAIN_1.cpp validated computational framework
+Mathematical Core:  MAIN_1_CoAnQi.cpp validated computational framework
 
 Module Features:
-  - Dynamic term registration
-  - Runtime parameter tuning
-  - State export/import capability
-  - Auto-optimization with learning rates
+  - Dynamic term registration (registerDynamicTerm)
+  - Runtime parameter tuning (setDynamicParameter)
+  - State export/import capability (exportState/importState)
+  - Auto-optimization with learning rates (setLearningRate)
   - Metadata tracking and versioning
+  - 8-option interactive menu system
 
 ================================================================================
   VERSION CONTROL
@@ -79,42 +81,40 @@ Module Features:
 
 Repository:         https://github.com/Daniel8Murphy0007/Star-Magic.git
 Branch:             master
-Last Commit:        fecb4a1
-Commit Date:        November 16, 2025 at 7:07:40 PM EST
+Last Commit:        2e3eb51
+Commit Date:        November 18, 2025 at 1:09 AM EST
 Author:             Daniel T Murphy <daniel.murphy00@gmail.com>
 
-Commit Message:     "Switch to Visual Studio 2022 x64-windows build system;
-                    remove local GLM/json copies (using vcpkg); add .gitignore
-                    for build artifacts; document build procedure in
-                    BUILD_INSTRUCTIONS_PERMANENT.md"
+Commit Message:     "Update JSON startup configuration to reflect current workspace state
+                    (446 modules, SOURCE1-116, 18,463 lines, MinGW threading)"
 
 ================================================================================
   BUILD STATUS
 ================================================================================
 
-CMake Configuration:    ✓ COMPLETE (4.2s, zero warnings)
-UQFFCore.lib:           ✓ BUILT (119 modules, 128 MB)
-MAIN_1.exe:             ⚠ PENDING
-Source Programs:        ⚠ PENDING (source4-162 executables)
+CMake Configuration:    ✓ COMPLETE (MinGW Makefiles generator)
+MAIN_1_CoAnQi.exe:      ✓ BUILT (446 modules, 1.28 MB)
+MAIN_1_CoAnQi.o:        ✓ COMPILED (18,463 lines, SUCCESS)
+Integration Tracker:    INTEGRATION_TRACKER.csv (173 source files tracked)
 
-Configuration File:     CMakePresets.json (ensures persistent settings)
-Build Artifacts:        Excluded from version control via .gitignore
+Configuration File:     CMakeLists.txt (MinGW-compatible build)
+Build Artifacts:        build/ directory
 
 ================================================================================
   NEXT BUILD STEPS
 ================================================================================
 
-Build all executables:
-  cmake --build build --config Debug -j 12
+Configure with MinGW:
+  cmake -S . -B build -G "MinGW Makefiles"
 
-Build specific target:
-  cmake --build build --target MAIN_1 --config Debug
+Build MAIN_1_CoAnQi:
+  cmake --build build --target MAIN_1_CoAnQi
 
-Release build:
-  cmake --build build --config Release -j 12
+Run interactive menu:
+  .\build\MAIN_1_CoAnQi.exe
 
-Reconfigure if needed:
-  cmake --preset vs2022-x64-windows
+Clean rebuild:
+  Remove-Item -Recurse -Force build; cmake -S . -B build -G "MinGW Makefiles"; cmake --build build
 
 ================================================================================
   SCIENTIFIC INTEGRITY NOTES
@@ -128,5 +128,5 @@ Reconfigure if needed:
 
 ================================================================================
 End of Version Information
-Generated: November 16, 2025
+Generated: November 18, 2025 @ 1:23 AM
 ================================================================================
