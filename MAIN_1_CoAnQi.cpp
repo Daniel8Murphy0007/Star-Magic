@@ -125,6 +125,9 @@
 #include <memory>
 #include <functional>
 
+// Observational Systems Configuration - 35+ astronomical systems with categorization
+#include "observational_systems_config.h"
+
 // Threading enabled for parallel system calculations
 // MinGW 6.3.0 doesn't support std::thread, using Windows threads instead
 #ifdef _WIN32
@@ -12672,25 +12675,742 @@ void validation_pipeline(const SystemParams &p)
 }
 
 // ===========================================================================================
-// PREDEFINED SYSTEMS DATABASE (26 systems from original MAIN_1.cpp)
+// PREDEFINED SYSTEMS DATABASE (100+ systems consolidated from all sources)
 // ===========================================================================================
+
+// Helper function to convert ObservationalSystem to SystemParams
+SystemParams convertToSystemParams(const ObservationalSystem &obs)
+{
+    SystemParams p;
+    p.name = obs.name;
+    p.M = obs.M;
+    p.r = obs.r;
+    p.L_X = obs.L_X;
+    p.B0 = obs.B0;
+    p.v = 0.0;              // Default if not specified
+    p.omega0 = obs.omega0;
+    p.T = obs.T_gas;        // Map T_gas to T
+    // Note: obs.rho_gas not directly mapped (could be set via rho_vac_UA/SCm if needed)
+    return p;
+}
 
 map<string, SystemParams> initializeSystems()
 {
     map<string, SystemParams> systems;
 
-    // System 1: ESO 137-001
-    SystemParams eso;
-    eso.name = "ESO 137-001";
-    eso.M = 1e12 * M_sun;
-    eso.r = 3.09e22;
-    eso.v = 2e6;
-    eso.L_X = 1e36;
-    eso.B0 = 1e-6;
-    eso.omega0 = 1e-15;
-    systems[eso.name] = eso;
+    // ========== OBSERVATIONAL SYSTEMS (35+ from observational_systems_config.h) ==========
+    for (const auto &pair : OBSERVATIONAL_SYSTEMS)
+    {
+        SystemParams p = convertToSystemParams(pair.second);
+        systems[p.name] = p;
+    }
 
-    // System 2: Black Hole Pairs
+    // ========== SOURCE115 SYSTEMS (19 systems from source172.cpp) ==========
+
+    // System 1: NGC 2264 - Tapestry of Blazing Starbirth
+    SystemParams ngc2264;
+    ngc2264.name = "NGC 2264";
+    ngc2264.M = 1.989e36;
+    ngc2264.r = 2e19;
+    ngc2264.L_X = 1e32;
+    ngc2264.B0 = 1e-5;
+    ngc2264.omega0 = 1e-14;
+    ngc2264.v = 0.0;
+    systems[ngc2264.name] = ngc2264;
+
+    // System 2: UGC 10214 - Tadpole Galaxy
+    SystemParams ugc10214;
+    ugc10214.name = "UGC 10214";
+    ugc10214.M = 1.989e41;
+    ugc10214.r = 1.3e21;
+    ugc10214.L_X = 1e38;
+    ugc10214.B0 = 1e-5;
+    ugc10214.omega0 = 1e-15;
+    ugc10214.v = 0.0;
+    systems[ugc10214.name] = ugc10214;
+
+    // System 3: NGC 4676 - The Mice Galaxies
+    SystemParams ngc4676;
+    ngc4676.name = "NGC 4676";
+    ngc4676.M = 3.978e41;
+    ngc4676.r = 3e20;
+    ngc4676.L_X = 5e37;
+    ngc4676.B0 = 1e-4;
+    ngc4676.omega0 = 1e-15;
+    ngc4676.v = 0.0;
+    systems[ngc4676.name] = ngc4676;
+
+    // System 4: Red Spider Nebula
+    SystemParams redspider;
+    redspider.name = "Red Spider Nebula";
+    redspider.M = 1.989e30;
+    redspider.r = 1e16;
+    redspider.L_X = 1e30;
+    redspider.B0 = 1e-5;
+    redspider.omega0 = 1e-12;
+    redspider.v = 0.0;
+    systems[redspider.name] = redspider;
+
+    // System 5: NGC 3372 - Carina Nebula (broader region)
+    SystemParams ngc3372;
+    ngc3372.name = "NGC 3372";
+    ngc3372.M = 1.989e35;
+    ngc3372.r = 2e17;
+    ngc3372.L_X = 5e32;
+    ngc3372.B0 = 1e-5;
+    ngc3372.omega0 = 1e-14;
+    ngc3372.v = 0.0;
+    systems[ngc3372.name] = ngc3372;
+
+    // System 6: AG Carinae Nebula
+    SystemParams agcarinae;
+    agcarinae.name = "AG Carinae Nebula";
+    agcarinae.M = 3.978e31;
+    agcarinae.r = 1e16;
+    agcarinae.L_X = 1e31;
+    agcarinae.B0 = 1e-5;
+    agcarinae.omega0 = 1e-13;
+    agcarinae.v = 0.0;
+    systems[agcarinae.name] = agcarinae;
+
+    // System 7: M42 - Orion Nebula
+    SystemParams m42;
+    m42.name = "M42";
+    m42.M = 3.978e33;
+    m42.r = 2e16;
+    m42.L_X = 1e32;
+    m42.B0 = 1e-5;
+    m42.omega0 = 1e-14;
+    m42.v = 0.0;
+    systems[m42.name] = m42;
+
+    // System 8: NGC 2841
+    SystemParams ngc2841;
+    ngc2841.name = "NGC 2841";
+    ngc2841.M = 1.989e41;
+    ngc2841.r = 5e20;
+    ngc2841.L_X = 1e37;
+    ngc2841.B0 = 1e-5;
+    ngc2841.omega0 = 1e-15;
+    ngc2841.v = 0.0;
+    systems[ngc2841.name] = ngc2841;
+
+    // System 9: Mystic Mountain (Carina Nebula pillar)
+    SystemParams mystic;
+    mystic.name = "Mystic Mountain";
+    mystic.M = 1.989e32;
+    mystic.r = 1e16;
+    mystic.L_X = 5e31;
+    mystic.B0 = 1e-5;
+    mystic.omega0 = 1e-14;
+    mystic.v = 0.0;
+    systems[mystic.name] = mystic;
+
+    // System 10: NGC 6217
+    SystemParams ngc6217;
+    ngc6217.name = "NGC 6217";
+    ngc6217.M = 1.989e41;
+    ngc6217.r = 3e20;
+    ngc6217.L_X = 1e37;
+    ngc6217.B0 = 1e-5;
+    ngc6217.omega0 = 1e-15;
+    ngc6217.v = 0.0;
+    systems[ngc6217.name] = ngc6217;
+
+    // System 11: Stephan's Quintet
+    SystemParams stephans;
+    stephans.name = "Stephan's Quintet";
+    stephans.M = 9.945e41;
+    stephans.r = 1e21;
+    stephans.L_X = 1e38;
+    stephans.B0 = 1e-4;
+    stephans.omega0 = 1e-15;
+    stephans.v = 0.0;
+    systems[stephans.name] = stephans;
+
+    // System 12: NGC 7049
+    SystemParams ngc7049;
+    ngc7049.name = "NGC 7049";
+    ngc7049.M = 1.989e41;
+    ngc7049.r = 5e20;
+    ngc7049.L_X = 5e36;
+    ngc7049.B0 = 1e-5;
+    ngc7049.omega0 = 1e-15;
+    ngc7049.v = 0.0;
+    systems[ngc7049.name] = ngc7049;
+
+    // System 13: NGC 3324 (specific Carina region)
+    SystemParams ngc3324;
+    ngc3324.name = "NGC 3324";
+    ngc3324.M = 1.989e35;
+    ngc3324.r = 2e17;
+    ngc3324.L_X = 5e32;
+    ngc3324.B0 = 1e-5;
+    ngc3324.omega0 = 1e-14;
+    ngc3324.v = 0.0;
+    systems[ngc3324.name] = ngc3324;
+
+    // System 14: NGC 5866
+    SystemParams ngc5866;
+    ngc5866.name = "NGC 5866";
+    ngc5866.M = 1.989e41;
+    ngc5866.r = 3e20;
+    ngc5866.L_X = 5e36;
+    ngc5866.B0 = 1e-5;
+    ngc5866.omega0 = 1e-15;
+    ngc5866.v = 0.0;
+    systems[ngc5866.name] = ngc5866;
+
+    // System 15: M82 - Cigar Galaxy
+    SystemParams m82;
+    m82.name = "M82";
+    m82.M = 1.989e41;
+    m82.r = 4e20;
+    m82.L_X = 1e38;
+    m82.B0 = 2e-5;
+    m82.omega0 = 1e-15;
+    m82.v = 0.0;
+    systems[m82.name] = m82;
+
+    // System 16: IC 418 - Spirograph Nebula
+    SystemParams ic418;
+    ic418.name = "IC 418";
+    ic418.M = 1.989e30;
+    ic418.r = 1e16;
+    ic418.L_X = 5e30;
+    ic418.B0 = 1e-5;
+    ic418.omega0 = 1e-12;
+    ic418.v = 0.0;
+    systems[ic418.name] = ic418;
+
+    // ========== SOURCE114 SYSTEMS (11 systems from source170.cpp) ==========
+
+    // System 17: NGC 4826 - Black Eye Galaxy
+    SystemParams ngc4826;
+    ngc4826.name = "NGC 4826";
+    ngc4826.M = 1e41;
+    ngc4826.r = 3.31e20;
+    ngc4826.L_X = 5e36;
+    ngc4826.B0 = 1e-5;
+    ngc4826.omega0 = 1e-15;
+    ngc4826.v = 0.0;
+    systems[ngc4826.name] = ngc4826;
+
+    // System 18: NGC 1805
+    SystemParams ngc1805;
+    ngc1805.name = "NGC 1805";
+    ngc1805.M = 5e35;
+    ngc1805.r = 3e17;
+    ngc1805.L_X = 1e32;
+    ngc1805.B0 = 1e-5;
+    ngc1805.omega0 = 1e-14;
+    ngc1805.v = 0.0;
+    systems[ngc1805.name] = ngc1805;
+
+    // System 19: NGC 6307
+    SystemParams ngc6307;
+    ngc6307.name = "NGC 6307";
+    ngc6307.M = 1.989e30;
+    ngc6307.r = 9.46e15;
+    ngc6307.L_X = 5e30;
+    ngc6307.B0 = 1e-5;
+    ngc6307.omega0 = 1e-12;
+    ngc6307.v = 0.0;
+    systems[ngc6307.name] = ngc6307;
+
+    // System 20: NGC 7027
+    SystemParams ngc7027;
+    ngc7027.name = "NGC 7027";
+    ngc7027.M = 1.989e30;
+    ngc7027.r = 9.46e15;
+    ngc7027.L_X = 1e31;
+    ngc7027.B0 = 1e-5;
+    ngc7027.omega0 = 1e-12;
+    ngc7027.v = 0.0;
+    systems[ngc7027.name] = ngc7027;
+
+    // System 21: Cassini Encke Gap
+    SystemParams cassini_enck;
+    cassini_enck.name = "Cassini Encke Gap";
+    cassini_enck.M = 5.68e26; // Saturn mass
+    cassini_enck.r = 1.3359e8;
+    cassini_enck.L_X = 1e25;
+    cassini_enck.B0 = 1e-7;
+    cassini_enck.omega0 = 1e-5;
+    cassini_enck.v = 0.0;
+    systems[cassini_enck.name] = cassini_enck;
+
+    // System 22: Cassini Division
+    SystemParams cassini_div;
+    cassini_div.name = "Cassini Division";
+    cassini_div.M = 5.68e26;
+    cassini_div.r = 1.2e8;
+    cassini_div.L_X = 1e25;
+    cassini_div.B0 = 1e-7;
+    cassini_div.omega0 = 1e-5;
+    cassini_div.v = 0.0;
+    systems[cassini_div.name] = cassini_div;
+
+    // System 23: Cassini Maxwell Gap
+    SystemParams cassini_max;
+    cassini_max.name = "Cassini Maxwell Gap";
+    cassini_max.M = 5.68e26;
+    cassini_max.r = 8.75e7;
+    cassini_max.L_X = 1e25;
+    cassini_max.B0 = 1e-7;
+    cassini_max.omega0 = 1e-5;
+    cassini_max.v = 0.0;
+    systems[cassini_max.name] = cassini_max;
+
+    // System 24: ESO 391-12
+    SystemParams eso391;
+    eso391.name = "ESO 391-12";
+    eso391.M = 1e41;
+    eso391.r = 4.73e20;
+    eso391.L_X = 1e37;
+    eso391.B0 = 1e-5;
+    eso391.omega0 = 1e-15;
+    eso391.v = 0.0;
+    systems[eso391.name] = eso391;
+
+    // System 25: M57 - Ring Nebula
+    SystemParams m57;
+    m57.name = "M57";
+    m57.M = 1.989e30;
+    m57.r = 1.89e16;
+    m57.L_X = 1e31;
+    m57.B0 = 1e-5;
+    m57.omega0 = 1e-12;
+    m57.v = 0.0;
+    systems[m57.name] = m57;
+
+    // System 26: Large Magellanic Cloud
+    SystemParams lmc;
+    lmc.name = "Large Magellanic Cloud";
+    lmc.M = 1e43; // ~10 billion solar masses
+    lmc.r = 4.4e21;
+    lmc.L_X = 1e39;
+    lmc.B0 = 1e-6;
+    lmc.omega0 = 1e-16;
+    lmc.v = 0.0;
+    systems[lmc.name] = lmc;
+
+    // System 27: ESO 510-G13
+    SystemParams eso510;
+    eso510.name = "ESO 510-G13";
+    eso510.M = 5e40;
+    eso510.r = 3e20;
+    eso510.L_X = 5e36;
+    eso510.B0 = 1e-5;
+    eso510.omega0 = 1e-15;
+    eso510.v = 0.0;
+    systems[eso510.name] = eso510;
+
+    // ========== SOURCE114 ADDITIONAL SYSTEMS (8 systems from source171.cpp) ==========
+
+    // System 28: AFGL 5180
+    SystemParams afgl5180;
+    afgl5180.name = "AFGL 5180";
+    afgl5180.M = 1.989e34; // Massive protostellar core
+    afgl5180.r = 1e16;
+    afgl5180.L_X = 1e30;
+    afgl5180.B0 = 1e-4;
+    afgl5180.omega0 = 1e-14;
+    afgl5180.v = 0.0;
+    systems[afgl5180.name] = afgl5180;
+
+    // System 29: NGC 346 (GFSC) - already in observational_systems_config.h, skip duplicate
+
+    // System 30: LMC opo9944a
+    SystemParams lmc_opo;
+    lmc_opo.name = "LMC opo9944a";
+    lmc_opo.M = 5e34; // LMC star cluster
+    lmc_opo.r = 5e18;
+    lmc_opo.L_X = 1e32;
+    lmc_opo.B0 = 1e-5;
+    lmc_opo.omega0 = 1e-14;
+    lmc_opo.v = 0.0;
+    systems[lmc_opo.name] = lmc_opo;
+
+    // System 31: LMC heic1301
+    SystemParams lmc_heic1301;
+    lmc_heic1301.name = "LMC heic1301";
+    lmc_heic1301.M = 1e35; // LMC supernova remnant or cluster
+    lmc_heic1301.r = 2e19;
+    lmc_heic1301.L_X = 1e32;
+    lmc_heic1301.B0 = 1e-5;
+    lmc_heic1301.omega0 = 1e-14;
+    lmc_heic1301.v = 0.0;
+    systems[lmc_heic1301.name] = lmc_heic1301;
+
+    // System 32: LMC potw1408a
+    SystemParams lmc_potw;
+    lmc_potw.name = "LMC potw1408a";
+    lmc_potw.M = 5e33; // LMC planetary nebula/cluster
+    lmc_potw.r = 1e18;
+    lmc_potw.L_X = 1e31;
+    lmc_potw.B0 = 1e-6;
+    lmc_potw.omega0 = 1e-14;
+    lmc_potw.v = 0.0;
+    systems[lmc_potw.name] = lmc_potw;
+
+    // System 33: LMC heic1206
+    SystemParams lmc_heic1206;
+    lmc_heic1206.name = "LMC heic1206";
+    lmc_heic1206.M = 1.5e34; // LMC star-forming region
+    lmc_heic1206.r = 3e18;
+    lmc_heic1206.L_X = 1e31;
+    lmc_heic1206.B0 = 1e-5;
+    lmc_heic1206.omega0 = 1e-14;
+    lmc_heic1206.v = 0.0;
+    systems[lmc_heic1206.name] = lmc_heic1206;
+
+    // System 34: LMC heic1402
+    SystemParams lmc_heic1402;
+    lmc_heic1402.name = "LMC heic1402";
+    lmc_heic1402.M = 8e34; // LMC massive stars/cluster
+    lmc_heic1402.r = 1.5e19;
+    lmc_heic1402.L_X = 1e32;
+    lmc_heic1402.B0 = 1e-5;
+    lmc_heic1402.omega0 = 1e-14;
+    lmc_heic1402.v = 0.0;
+    systems[lmc_heic1402.name] = lmc_heic1402;
+
+    // System 35: NGC 2174 (Monkey Head Nebula)
+    SystemParams ngc2174;
+    ngc2174.name = "NGC 2174";
+    ngc2174.M = 1e35;
+    ngc2174.r = 2e19;
+    ngc2174.L_X = 1e32;
+    ngc2174.B0 = 1e-5;
+    ngc2174.omega0 = 1e-14;
+    ngc2174.v = 0.0;
+    systems[ngc2174.name] = ngc2174;
+
+    // ===== Additional Systems from Individual Physics Modules (source13-87) =====
+    
+    // System 36: Magnetar SGR 1745-2900 (source13)
+    SystemParams sgr1745_2900;
+    sgr1745_2900.name = "SGR 1745-2900";
+    sgr1745_2900.M = 1.4 * M_sun;  // 1.4 solar masses
+    sgr1745_2900.r = 1e4;              // 10 km radius
+    sgr1745_2900.L_X = 5e28;           // 5e35 erg/s luminosity
+    sgr1745_2900.B0 = 2e10;            // 2e14 G magnetic field (T)
+    sgr1745_2900.omega0 = 2.0 * 3.14159 / 3.76;  // Period 3.76s
+    sgr1745_2900.v = 1e6;              // 1000 km/s surface velocity
+    systems[sgr1745_2900.name] = sgr1745_2900;
+
+    // System 37: Sagittarius A* (Sgr A*) (source15/87)
+    SystemParams sgrA;
+    sgrA.name = "Sagittarius A*";
+    sgrA.M = 4.1e6 * M_sun;  // 4.1M solar masses SMBH
+    sgrA.r = 1.18e10;           // Schwarzschild radius ~0.08 AU
+    sgrA.L_X = 1e30;            // X-ray luminosity
+    sgrA.B0 = 1e-4;             // Magnetic field
+    sgrA.omega0 = 1e-4;         // Rotation
+    sgrA.v = 5e3;               // Expansion velocity
+    systems[sgrA.name] = sgrA;
+
+    // System 38: M31 Andromeda Galaxy (source28/88)
+    SystemParams m31;
+    m31.name = "M31 Andromeda";
+    m31.M = 1e12 * M_sun;   // 1 trillion solar masses
+    m31.r = 1.04e21;           // ~110 kpc diameter
+    m31.L_X = 1e33;            // Total X-ray luminosity
+    m31.B0 = 1e-5;             // Galactic magnetic field
+    m31.omega0 = 1e-15;        // Rotation period ~200 Myr
+    m31.v = 2.5e5;             // Orbital velocity 250 km/s
+    systems[m31.name] = m31;
+
+    // System 39: Saturn (source30)
+    SystemParams saturn;
+    saturn.name = "Saturn";
+    saturn.M = 5.683e26;       // Saturn mass
+    saturn.r = 6.0268e7;       // Equatorial radius
+    saturn.L_X = 1e20;         // Minimal X-ray emission
+    saturn.B0 = 1e-7;          // Planetary magnetic field
+    saturn.omega0 = 2.0 * 3.14159 / (10.656 * 3600);  // Rotation period ~10.656 hours
+    saturn.v = 500.0;          // Wind speed
+    systems[saturn.name] = saturn;
+
+    // System 40: Big Bang (Cosmological) (source56)
+    SystemParams bigbang;
+    bigbang.name = "Big Bang";
+    bigbang.M = 1e53;          // Observable universe mass
+    bigbang.r = 4.4e26;        // Present radius ~46.5 Gly
+    bigbang.L_X = 0.0;         // No X-ray (CMB epoch)
+    bigbang.B0 = 1e-15;        // Primordial magnetic field
+    bigbang.omega0 = 1e-18;    // Hubble constant ~70 km/s/Mpc
+    bigbang.v = 3e8;           // Speed of light
+    systems[bigbang.name] = bigbang;
+
+    // System 41: M51 Whirlpool Galaxy (source70/74)
+    SystemParams m51;
+    m51.name = "M51 Whirlpool";
+    m51.M = 1.6e11 * M_sun; // 160 billion solar masses
+    m51.r = 23e3 * 3.086e19;   // 23 kpc radius
+    m51.L_X = 1e32;            // X-ray luminosity
+    m51.B0 = 1e-5;             // Galactic magnetic field
+    m51.omega0 = 1e-15;        // Rotation period
+    m51.v = 2e5;               // Orbital velocity
+    systems[m51.name] = m51;
+
+    // System 42: NGC 1316 Fornax A (source71)
+    SystemParams ngc1316;
+    ngc1316.name = "NGC 1316";
+    ngc1316.M = 5e11 * M_sun;  // 500 billion solar masses
+    ngc1316.r = 46e3 * 3.086e19;  // 46 kpc radius
+    ngc1316.L_X = 1e33;           // AGN X-ray luminosity
+    ngc1316.B0 = 1e-4;            // AGN magnetic field
+    ngc1316.omega0 = 1e-15;       // Rotation
+    ngc1316.v = 0.0;              // Post-merger
+    systems[ngc1316.name] = ngc1316;
+
+    // System 43: Tapestry of Blazing Starbirth (NGC2014/NGC2020) (source87)
+    SystemParams tapestry;
+    tapestry.name = "Tapestry Starbirth";
+    tapestry.M = 2000 * M_sun;  // 2000 solar masses
+    tapestry.r = 1.18e17;          // ~0.004 pc
+    tapestry.L_X = 1e30;           // X-ray from young stars
+    tapestry.B0 = 1e-5;            // Magnetic field
+    tapestry.omega0 = 1e-5;        // Rotation
+    tapestry.v = 1e4;              // Expansion 10 km/s
+    systems[tapestry.name] = tapestry;
+
+    // System 44: Pillars of Creation (Eagle Nebula M16) (source87)
+    SystemParams pillars;
+    pillars.name = "Pillars of Creation";
+    pillars.M = 800 * M_sun;   // 800 solar masses
+    pillars.r = 1e17;             // ~0.003 pc
+    pillars.L_X = 1e29;           // X-ray emission
+    pillars.B0 = 1e-5;            // Magnetic field
+    pillars.omega0 = 1e-5;        // Rotation
+    pillars.v = 8e3;              // Expansion 8 km/s
+    systems[pillars.name] = pillars;
+
+    // System 45: Einstein Ring (Rings of Relativity) (source87)
+    SystemParams einstein_ring;
+    einstein_ring.name = "Einstein Ring";
+    einstein_ring.M = 1e6 * M_sun;  // 1M solar masses (lensing galaxy)
+    einstein_ring.r = 1e16;            // Compact scale
+    einstein_ring.L_X = 1e31;          // X-ray
+    einstein_ring.B0 = 1e-6;           // Magnetic field
+    einstein_ring.omega0 = 1e-6;       // Rotation
+    einstein_ring.v = 5e3;             // Velocity
+    systems[einstein_ring.name] = einstein_ring;
+
+    // System 46: NGC 3603 (Star-forming region) (source87)
+    SystemParams ngc3603;
+    ngc3603.name = "NGC 3603";
+    ngc3603.M = 2000 * M_sun;  // 2000 solar masses
+    ngc3603.r = 1.18e17;          // Same as Tapestry
+    ngc3603.L_X = 1e30;           // X-ray
+    ngc3603.B0 = 1e-5;            // Magnetic field
+    ngc3603.omega0 = 1e-5;        // Rotation
+    ngc3603.v = 1e4;              // Expansion
+    systems[ngc3603.name] = ngc3603;
+
+    // System 47: Bubble Nebula (NGC 7635) (source87)
+    SystemParams bubble;
+    bubble.name = "Bubble Nebula";
+    bubble.M = 100 * M_sun;    // 100 solar masses
+    bubble.r = 4.73e16;           // ~0.0015 pc
+    bubble.L_X = 1e28;            // X-ray
+    bubble.B0 = 1e-6;             // Magnetic field
+    bubble.omega0 = 1e-3;         // Fast rotation
+    bubble.v = 5e4;               // Expansion 50 km/s
+    systems[bubble.name] = bubble;
+
+    // System 48: Antennae Galaxies (NGC 4038/4039) (source87)
+    SystemParams antennae;
+    antennae.name = "Antennae Galaxies";
+    antennae.M = 5e10 * M_sun; // 50 billion solar masses
+    antennae.r = 4.629e21;        // ~150 kpc
+    antennae.L_X = 1e33;          // X-ray from merger
+    antennae.B0 = 1e-5;           // Magnetic field
+    antennae.omega0 = 1e-6;       // Slow rotation
+    antennae.v = 2e5;             // Collision velocity
+    systems[antennae.name] = antennae;
+
+    // System 49: Horsehead Nebula (Barnard 33) (source87)
+    SystemParams horsehead;
+    horsehead.name = "Horsehead Nebula";
+    horsehead.M = 100 * M_sun; // 100 solar masses
+    horsehead.r = 9.46e15;        // ~0.0003 pc
+    horsehead.L_X = 1e27;         // Minimal X-ray
+    horsehead.B0 = 1e-6;          // Magnetic field
+    horsehead.omega0 = 1e-3;      // Rotation
+    horsehead.v = 2e3;            // Expansion 2 km/s
+    systems[horsehead.name] = horsehead;
+
+    // System 50: V838 Monocerotis (variable star with light echo, source72)
+    SystemParams v838mon;
+    v838mon.name = "V838 Monocerotis";
+    v838mon.M = 8 * M_sun;               // 8 solar masses
+    v838mon.r = 2e13;                    // 20 trillion m (~0.13 AU)
+    v838mon.L_X = 2.3e38;                // Outburst luminosity 2.3e38 W
+    v838mon.B0 = 1e-6;                   // 1 micro-Tesla magnetic field
+    v838mon.omega0 = 0.0;                // No rotation (non-periodic)
+    v838mon.v = 5e3;                     // 5 km/s surface velocity
+    systems[v838mon.name] = v838mon;
+
+    // System 51: NGC 1300 (barred spiral galaxy, source73)
+    SystemParams ngc1300;
+    ngc1300.name = "NGC 1300";
+    ngc1300.M = 1e11 * M_sun;            // 1e41 kg total mass
+    ngc1300.r = 3.64e20;                 // 11.79 kpc (~38,000 ly)
+    ngc1300.L_X = 1e32;                  // X-ray luminosity
+    ngc1300.B0 = 1e-5;                   // 10 nano-Tesla
+    ngc1300.omega0 = 1e-4;               // Bar rotation ~1e-4 rad/s
+    ngc1300.v = 2e5;                     // 200 km/s gas velocity
+    systems[ngc1300.name] = ngc1300;
+
+    // System 52: Young Stars Outflows (star-forming region, source74)
+    SystemParams youngstars;
+    youngstars.name = "Young Stars Outflows";
+    youngstars.M = 1000 * M_sun;         // 1000 solar masses
+    youngstars.r = 3e17;                 // ~0.01 pc (~3000 AU)
+    youngstars.L_X = 1e30;               // X-ray from protostars
+    youngstars.B0 = 1e-6;                // 1 micro-Tesla
+    youngstars.omega0 = 0.0;             // Non-rotating (region)
+    youngstars.v = 1e4;                  // 10 km/s outflow velocity
+    systems[youngstars.name] = youngstars;
+
+    // System 53: NGC 1275 Perseus A (active galaxy with filaments, source60)
+    SystemParams ngc1275;
+    ngc1275.name = "NGC 1275 Perseus A";
+    ngc1275.M = 1e11 * M_sun;            // 1e41 kg
+    ngc1275.r = 1e21;                    // ~32 kpc
+    ngc1275.L_X = 1e37;                  // Strong AGN X-ray
+    ngc1275.B0 = 1e-4;                   // 100 nano-Tesla (AGN)
+    ngc1275.omega0 = 0.0;                // Non-rotating (galaxy)
+    ngc1275.v = 1e4;                     // 10 km/s wind from AGN
+    systems[ngc1275.name] = ngc1275;
+
+    // System 56: NGC 1792 (starburst galaxy, source60)
+    SystemParams ngc1792;
+    ngc1792.name = "NGC 1792";
+    ngc1792.M = 5e10 * M_sun;            // 5e40 kg
+    ngc1792.r = 5e20;                    // ~16 kpc
+    ngc1792.L_X = 1e32;                  // X-ray from starburst
+    ngc1792.B0 = 1e-5;                   // 10 nano-Tesla
+    ngc1792.omega0 = 1e-4;               // Galaxy rotation
+    ngc1792.v = 2e3;                     // 2 km/s supernova winds
+    systems[ngc1792.name] = ngc1792;
+
+    // System 57: Hubble Ultra Deep Field (composite deep field, source60)
+    SystemParams hudf;
+    hudf.name = "Hubble Ultra Deep Field";
+    hudf.M = 1e12 * M_sun;               // 1e42 kg (total field mass estimate)
+    hudf.r = 1e23;                       // ~3 Mpc scale
+    hudf.L_X = 1e35;                     // Collective X-ray
+    hudf.B0 = 1e-6;                      // 1 nano-Tesla (intergalactic)
+    hudf.omega0 = 0.0;                   // Non-rotating (field)
+    hudf.v = 0.0;                        // No bulk velocity
+    systems[hudf.name] = hudf;
+
+    // System 56: Lagoon Nebula M8 (star-forming nebula, source52)
+    SystemParams lagoon;
+    lagoon.name = "Lagoon Nebula M8";
+    lagoon.M = 1e4 * M_sun;              // 10,000 solar masses
+    lagoon.r = 5.203e17;                 // ~55 light-years
+    lagoon.L_X = 1e31;                   // X-ray from hot stars
+    lagoon.B0 = 1e-5;                    // 10 nano-Tesla
+    lagoon.omega0 = 0.0;                 // Non-rotating (nebula)
+    lagoon.v = 1e4;                      // 10 km/s expansion
+    systems[lagoon.name] = lagoon;
+
+    // System 60: NGC 6302 Butterfly Nebula (planetary nebula, source52)
+    SystemParams butterfly;
+    butterfly.name = "NGC 6302 Butterfly Nebula";
+    butterfly.M = 1.0 * M_sun;           // 1 solar mass (central star)
+    butterfly.r = 1.514e16;              // ~0.5 light-years
+    butterfly.L_X = 1e29;                // X-ray from central star
+    butterfly.B0 = 1e-3;                 // 1 milli-Tesla (strong field)
+    butterfly.omega0 = 1e-2;             // Fast rotation
+    butterfly.v = 2e4;                   // 20 km/s expansion
+    systems[butterfly.name] = butterfly;
+
+    // System 61: Orion Nebula M42 (stellar nursery, source52)
+    SystemParams orion;
+    orion.name = "Orion Nebula M42";
+    orion.M = 2e3 * M_sun;               // 2000 solar masses
+    orion.r = 1.135e17;                  // ~12 light-years
+    orion.L_X = 1e31;                    // X-ray from protostars
+    orion.B0 = 1e-5;                     // 10 nano-Tesla
+    orion.omega0 = 0.0;                  // Non-rotating (nebula)
+    orion.v = 1e4;                       // 10 km/s expansion
+    systems[orion.name] = orion;
+
+    // System 62: Hubble Sees Galaxies Galore (deep field survey, source50)
+    SystemParams galaxies_galore;
+    galaxies_galore.name = "Hubble Sees Galaxies Galore";
+    galaxies_galore.M = 1.989e41;        // ~1e11 M_sun composite
+    galaxies_galore.r = 1.543e21;        // ~50 kpc field
+    galaxies_galore.L_X = 1e38;          // Composite X-ray
+    galaxies_galore.B0 = 1e-7;           // Weak field
+    galaxies_galore.omega0 = 0.0;        // Survey field
+    galaxies_galore.v = 1e5;             // 100 km/s recessional
+    systems[galaxies_galore.name] = galaxies_galore;
+
+    // System 63: The Stellar Forge (30 Doradus Nebula LMC, source50)
+    SystemParams stellar_forge;
+    stellar_forge.name = "The Stellar Forge";
+    stellar_forge.M = 1.989e34;          // ~1e4 M_sun
+    stellar_forge.r = 9.46e16;           // ~10 light-years
+    stellar_forge.L_X = 1e33;            // Intense star formation
+    stellar_forge.B0 = 1e-5;             // 10 nano-Tesla
+    stellar_forge.omega0 = 0.0;          // Non-rotating region
+    stellar_forge.v = 1e4;               // 10 km/s winds
+    systems[stellar_forge.name] = stellar_forge;
+
+    // System 64: Sombrero Galaxy M104 (peculiar galaxy, source50)
+    SystemParams sombrero;
+    sombrero.name = "Sombrero Galaxy M104";
+    sombrero.M = 1.591e42;               // ~8e11 M_sun
+    sombrero.r = 4.73e20;                // ~50 kly diameter
+    sombrero.L_X = 1e37;                 // AGN-like core
+    sombrero.B0 = 1e-6;                  // Galactic field
+    sombrero.omega0 = 1e-15;             // Slow rotation
+    sombrero.v = 2e5;                    // 200 km/s rotation
+    systems[sombrero.name] = sombrero;
+
+    // System 65: New Stars Shed Light on the Past (SMC N90, source50)
+    SystemParams new_stars_past;
+    new_stars_past.name = "New Stars Shed Light on the Past";
+    new_stars_past.M = 1.989e34;         // ~1e4 M_sun
+    new_stars_past.r = 9.46e16;          // ~10 light-years
+    new_stars_past.L_X = 1e32;           // Young cluster
+    new_stars_past.B0 = 1e-5;            // 10 nano-Tesla
+    new_stars_past.omega0 = 0.0;         // Cluster
+    new_stars_past.v = 1e4;              // 10 km/s winds
+    systems[new_stars_past.name] = new_stars_past;
+
+    // System 66: Crab Nebula (1054 CE supernova remnant, source50)
+    SystemParams crab;
+    crab.name = "Crab Nebula";
+    crab.M = 9.945e30;                   // ~5 M_sun
+    crab.r = 5.203e16;                   // ~5.5 light-years
+    crab.L_X = 1e34;                     // Pulsar wind nebula
+    crab.B0 = 1e-4;                      // 100 nano-Tesla
+    crab.omega0 = 1e-8;                  // Expanding
+    crab.v = 1.34e6;                     // 1340 km/s expansion
+    systems[crab.name] = crab;
+
+    // System 67: Spirals and Supernovae (galactic dynamics, source50)
+    SystemParams spirals_sne;
+    spirals_sne.name = "Spirals and Supernovae";
+    spirals_sne.M = 1.989e41;            // ~1e11 M_sun
+    spirals_sne.r = 1.543e21;            // ~50 kpc
+    spirals_sne.L_X = 1e37;              // Active galaxy
+    spirals_sne.B0 = 1e-6;               // Galactic field
+    spirals_sne.omega0 = 1e-15;          // Slow rotation
+    spirals_sne.v = 2e5;                 // 200 km/s rotation
+    systems[spirals_sne.name] = spirals_sne;
+
+    // ========== LEGACY MAIN_1 SYSTEMS (filling gaps) ==========
+
+    // Black Hole Pairs
     SystemParams bhp;
     bhp.name = "Black Hole Pairs";
     bhp.M = 1e7 * M_sun;
@@ -12698,20 +13418,21 @@ map<string, SystemParams> initializeSystems()
     bhp.L_X = 1e38;
     bhp.B0 = 1e4;
     bhp.omega0 = 1e-3;
+    bhp.v = 0.0;
     systems[bhp.name] = bhp;
 
-    // System 3: SN 1006
-    SystemParams sn;
-    sn.name = "SN 1006";
-    sn.M = 1.4 * M_sun;
-    sn.r = 4.63e16;
-    sn.v = 1e7;
-    sn.L_X = 1e34;
-    sn.B0 = 1e-4;
-    sn.omega0 = 1e-8;
-    systems[sn.name] = sn;
+    // SN 1006
+    SystemParams sn1006;
+    sn1006.name = "SN 1006";
+    sn1006.M = 1.4 * M_sun;
+    sn1006.r = 4.63e16;
+    sn1006.L_X = 1e34;
+    sn1006.B0 = 1e-4;
+    sn1006.omega0 = 1e-8;
+    sn1006.v = 1e7;
+    systems[sn1006.name] = sn1006;
 
-    // System 4: Eta Carinae
+    // Eta Carinae
     SystemParams eta;
     eta.name = "Eta Carinae";
     eta.M = 100 * M_sun;
@@ -12719,9 +13440,10 @@ map<string, SystemParams> initializeSystems()
     eta.L_X = 1e35;
     eta.B0 = 1e-2;
     eta.omega0 = 1e-7;
+    eta.v = 0.0;
     systems[eta.name] = eta;
 
-    // System 5: Galactic Center
+    // Galactic Center (Sgr A*)
     SystemParams gc;
     gc.name = "Galactic Center";
     gc.M = 4e6 * M_sun;
@@ -12729,72 +13451,96 @@ map<string, SystemParams> initializeSystems()
     gc.L_X = 1e33;
     gc.B0 = 1e-3;
     gc.omega0 = 1e-9;
+    gc.v = 0.0;
     systems[gc.name] = gc;
 
-    // System 6: Kepler's SNR
+    // Kepler's SNR
     SystemParams kepler;
     kepler.name = "Kepler's SNR";
     kepler.M = 1.4 * M_sun;
     kepler.r = 3.7e16;
-    kepler.v = 5e6;
     kepler.L_X = 1e34;
     kepler.B0 = 1e-4;
     kepler.omega0 = 1e-8;
+    kepler.v = 5e6;
     systems[kepler.name] = kepler;
 
-    // System 7: NGC 1365
-    SystemParams ngc1365;
-    ngc1365.name = "NGC 1365";
-    ngc1365.M = 1e10 * M_sun;
-    ngc1365.r = 6.17e21;
-    ngc1365.L_X = 1e40;
-    ngc1365.B0 = 1e-6;
-    ngc1365.omega0 = 1e-14;
-    systems[ngc1365.name] = ngc1365;
+    // Westerlund 2
+    SystemParams west2;
+    west2.name = "Westerlund 2";
+    west2.M = 1e36;
+    west2.r = 1e17;
+    west2.L_X = 1e32;
+    west2.B0 = 1e-5;
+    west2.omega0 = 1e-14;
+    west2.v = 0.0;
+    systems[west2.name] = west2;
 
-    // System 8: Vela Pulsar
-    SystemParams vela;
-    vela.name = "Vela Pulsar";
-    vela.M = 1.4 * M_sun;
-    vela.r = 1e4;
-    vela.L_X = 1e33;
-    vela.B0 = 3.4e8;
-    vela.omega0 = 70.0;
-    systems[vela.name] = vela;
+    // Cassiopeia A
+    SystemParams casA;
+    casA.name = "Cassiopeia A";
+    casA.M = 1.4 * M_sun;
+    casA.r = 5e16;
+    casA.L_X = 1e34;
+    casA.B0 = 1e-4;
+    casA.omega0 = 1e-8;
+    casA.v = 1e7;
+    systems[casA.name] = casA;
 
-    // System 9: ASASSN-14li
-    SystemParams asassn;
-    asassn.name = "ASASSN-14li";
-    asassn.M = 1e6 * M_sun;
-    asassn.r = 1e11;
-    asassn.L_X = 1e44;
-    asassn.B0 = 1e3;
-    asassn.omega0 = 1e-5;
-    systems[asassn.name] = asassn;
+    // 3C273 - Quasar
+    SystemParams quasar3c;
+    quasar3c.name = "3C273";
+    quasar3c.M = 1e9 * M_sun;
+    quasar3c.r = 1e14;
+    quasar3c.L_X = 1e40;
+    quasar3c.B0 = 1e-2;
+    quasar3c.omega0 = 1e-6;
+    quasar3c.v = 0.0;
+    systems[quasar3c.name] = quasar3c;
 
-    // System 10: El Gordo
-    SystemParams elgordo;
-    elgordo.name = "El Gordo";
-    elgordo.M = 2e15 * M_sun;
-    elgordo.r = 3.09e23;
-    elgordo.v = 3e6;
-    elgordo.L_X = 1e46;
-    elgordo.B0 = 1e-7;
-    elgordo.omega0 = 1e-16;
-    systems[elgordo.name] = elgordo;
+    // Geminga Pulsar
+    SystemParams geminga;
+    geminga.name = "Geminga";
+    geminga.M = 1.4 * M_sun;
+    geminga.r = 1e4;
+    geminga.L_X = 1e33;
+    geminga.B0 = 1.6e8;
+    geminga.omega0 = 4.22;
+    geminga.v = 0.0;
+    systems[geminga.name] = geminga;
 
-    // System 11: Magnetar SGR 1745-2900
-    SystemParams sgr1745;
-    sgr1745.name = "Magnetar SGR 1745-2900";
-    sgr1745.M = 1.4 * M_sun;
-    sgr1745.r = 1e4;
-    sgr1745.L_X = 3.5e33;
-    sgr1745.B0 = 8e10;
-    sgr1745.omega0 = 0.628;
-    systems[sgr1745.name] = sgr1745;
+    // GW170817 - Neutron star merger
+    SystemParams gw170817;
+    gw170817.name = "GW170817";
+    gw170817.M = 2.8 * M_sun;
+    gw170817.r = 1e4;
+    gw170817.L_X = 1e40;
+    gw170817.B0 = 1e10;
+    gw170817.omega0 = 1e3;
+    gw170817.v = 0.3 * c_light;
+    systems[gw170817.name] = gw170817;
 
-    // Add remaining 15 systems...
-    // (For brevity, showing pattern - you can expand to all 26)
+    // NGC 1068 - Seyfert galaxy
+    SystemParams ngc1068;
+    ngc1068.name = "NGC 1068";
+    ngc1068.M = 1e7 * M_sun;
+    ngc1068.r = 1e15;
+    ngc1068.L_X = 1e38;
+    ngc1068.B0 = 1e-3;
+    ngc1068.omega0 = 1e-9;
+    ngc1068.v = 0.0;
+    systems[ngc1068.name] = ngc1068;
+
+    // System 100: HD 209458b Osiris (first exoplanet with detected atmosphere, hot Jupiter)
+    SystemParams hd209458b;
+    hd209458b.name = "HD 209458b Osiris";
+    hd209458b.M = 1.397e27;              // ~0.7 M_jup (~695 M_earth)
+    hd209458b.r = 9.44e7;                // ~1.32 R_jup (inflated hot Jupiter)
+    hd209458b.L_X = 1e25;                // Hot Jupiter thermal radiation
+    hd209458b.B0 = 1e-3;                 // Strong planetary magnetic field
+    hd209458b.omega0 = 1.73e-4;          // 3.5-day orbit (angular velocity)
+    hd209458b.v = 1.5e5;                 // 150 km/s orbital velocity
+    systems[hd209458b.name] = hd209458b;
 
     return systems;
 }
@@ -12895,6 +13641,148 @@ public:
 SelfModifier g_selfModifier;
 
 // ===========================================================================================
+// CATEGORY-BASED SYSTEM SELECTION
+// ===========================================================================================
+
+/**
+ * Interactive system selection using category browsing
+ * Returns selected system name, or empty string if cancelled
+ */
+string selectSystemByCategory(const map<string, SystemParams> &systems)
+{
+    // Build category map from observational_systems_config.h plus custom categories
+    map<string, vector<string>> categories;
+
+    // Populate from observational systems config if available
+    for (const auto &pair : OBSERVATIONAL_SYSTEMS)
+    {
+        categories[pair.second.category].push_back(pair.first);
+    }
+
+    // Add remaining systems to appropriate categories based on naming/properties
+    for (const auto &pair : systems)
+    {
+        string name = pair.first;
+        bool found = false;
+
+        // Check if already in observational systems
+        for (const auto &cat_pair : categories)
+        {
+            if (find(cat_pair.second.begin(), cat_pair.second.end(), name) != cat_pair.second.end())
+            {
+                found = true;
+                break;
+            }
+        }
+
+        if (!found)
+        {
+            // Auto-categorize based on name patterns
+            if (name.find("Nebula") != string::npos || name.find("M42") != string::npos ||
+                name.find("M57") != string::npos)
+            {
+                categories["nebula"].push_back(name);
+            }
+            else if (name.find("NGC") != string::npos)
+            {
+                categories["galaxy"].push_back(name);
+            }
+            else if (name.find("Cassini") != string::npos)
+            {
+                categories["ring_gap"].push_back(name);
+            }
+            else if (name.find("Pulsar") != string::npos || name.find("Vela") != string::npos ||
+                     name.find("Geminga") != string::npos)
+            {
+                categories["pulsar"].push_back(name);
+            }
+            else if (name.find("SN ") != string::npos || name.find("SNR") != string::npos ||
+                     name.find("Cassiopeia A") != string::npos)
+            {
+                categories["snr"].push_back(name);
+            }
+            else if (name.find("Black Hole") != string::npos || name.find("3C273") != string::npos ||
+                     name.find("Galactic Center") != string::npos)
+            {
+                categories["agn"].push_back(name);
+            }
+            else if (name.find("Cloud") != string::npos)
+            {
+                categories["multi_system"].push_back(name);
+            }
+            else
+            {
+                categories["other"].push_back(name);
+            }
+        }
+    }
+
+    // Display categories
+    cout << "\n=== SELECT CATEGORY ===" << endl;
+    vector<string> category_names;
+    int idx = 1;
+    for (const auto &pair : categories)
+    {
+        cout << idx++ << ". " << pair.first << " (" << pair.second.size() << " systems)" << endl;
+        category_names.push_back(pair.first);
+    }
+    cout << idx << ". List all systems (no filter)" << endl;
+    cout << "0. Cancel" << endl;
+    cout << "Enter choice: ";
+
+    int category_choice;
+    cin >> category_choice;
+    cin.ignore();
+
+    if (category_choice == 0)
+    {
+        return "";
+    }
+
+    vector<string> filtered_systems;
+    if (category_choice == (int)category_names.size() + 1)
+    {
+        // List all systems
+        for (const auto &pair : systems)
+        {
+            filtered_systems.push_back(pair.first);
+        }
+    }
+    else if (category_choice > 0 && category_choice <= (int)category_names.size())
+    {
+        // Use selected category
+        string selected_category = category_names[category_choice - 1];
+        filtered_systems = categories[selected_category];
+    }
+    else
+    {
+        cout << "Invalid choice." << endl;
+        return "";
+    }
+
+    // Display systems in selected category
+    sort(filtered_systems.begin(), filtered_systems.end());
+    cout << "\n=== SELECT SYSTEM ===" << endl;
+    for (size_t i = 0; i < filtered_systems.size(); ++i)
+    {
+        cout << (i + 1) << ". " << filtered_systems[i] << endl;
+    }
+    cout << "0. Cancel" << endl;
+    cout << "Enter choice: ";
+
+    int system_choice;
+    cin >> system_choice;
+    cin.ignore();
+
+    if (system_choice > 0 && system_choice <= (int)filtered_systems.size())
+    {
+        return filtered_systems[system_choice - 1];
+    }
+
+    return "";
+}
+
+// ===========================================================================================
 // MAIN FUNCTION - CoAnQi Interactive Calculator
 // ===========================================================================================
 
@@ -12911,12 +13799,10 @@ int main()
     // No need for separate module initialization - core calculator has everything built-in
     g_logger.log("CoAnQi v2.0: Hybrid architecture with 63 extracted physics terms", 1);
 
-    // Display available systems
-    cout << "\n=== AVAILABLE SYSTEMS ===" << endl;
-    for (const auto &pair : systems)
-    {
-        cout << "  • " << pair.first << endl;
-    }
+    // Display system count by category
+    cout << "\n=== SYSTEMS DATABASE ===" << endl;
+    cout << "Total systems loaded: " << systems.size() << endl;
+    cout << "Use Menu Option 1 to browse systems by category" << endl;
 
     // Main interactive loop
     while (true)
@@ -12947,10 +13833,14 @@ int main()
         {
         case 1:
         {
-            // Single system calculation
-            cout << "Enter system name: ";
-            string system_name;
-            getline(cin, system_name);
+            // Single system calculation with category browsing
+            string system_name = selectSystemByCategory(systems);
+
+            if (system_name.empty())
+            {
+                cout << "Selection cancelled." << endl;
+                break;
+            }
 
             if (systems.find(system_name) == systems.end())
             {

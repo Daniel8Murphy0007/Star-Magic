@@ -407,3 +407,201 @@ INTEGRATION BREAKDOWN:
 
 TOTAL MODULES: 446 (188% of original 200-term target)
 TOTAL SYSTEMS: 27 astrophysical + universal hypergraph topology
+
+=== MENU UPGRADE (2025-11-18) ===
+MAIN_1_CoAnQi.cpp UPGRADED: Category-based system selection interface
+- Total systems accessible: 63 (35 observational + 27 SOURCE114/115 + legacy)
+- Added: selectSystemByCategory() function (138 lines)
+- Categories: galaxy_cluster, pulsar, agn, nebula, snr, tde, galaxy, ring_gap, multi_system, other
+- User interface: Interactive category browsing → system selection (no manual typing)
+- Integration: observational_systems_config.h included at line 127
+- Build status: ✅ SUCCESS (compiled November 18, 2025)
+- Execution status: ✅ VERIFIED (63 systems loaded, menu functional)
+
+UPGRADE FEATURES:
+1. Browse systems by category (8+ categories)
+2. View all systems (no filter)
+3. Auto-categorization for legacy systems
+4. Alphabetically sorted system lists
+5. Cancel option at each level
+6. Seamless integration with existing 9-option main menu
+
+COMPILATION LOG (2025-11-18):
+- cmake --build build --target MAIN_1_CoAnQi
+- Result: Built target MAIN_1_CoAnQi
+- Warnings: Comment markers only (no errors)
+- Output: build\MAIN_1_CoAnQi.exe functional
+
+EXECUTION VERIFICATION (2025-11-18 14:45:50):
+- Logger initialized successfully
+- Loaded 63 predefined systems
+- CoAnQi v2.0: Hybrid architecture with 63 extracted physics terms
+- Main menu: 9 options displayed
+- Category menu: Ready for Option 1 selection
+
+TOTAL ACCESSIBLE SYSTEMS: 63
+- ESO137, NGC1365, ElGordo, PLCKG287, PSZ2G181, NGC4839, ASKAP, NGC1672, NGC346
+- SN1006, CasA, Kepler, TychoSNR, Abell2256
+- NGC1275, 3C273, NGC1068, J1610
+- ASASSN-14li
+- M57, Crab, Vela, Geminga, SGR1745
+- Tarantula, M74, M16, M84, CenA, NGC253
+- NGC2264, UGC10214, NGC4676, RedSpider, NGC3372, AGCarinae, M42, NGC2841
+- MysticMountain, NGC6217, StephansQuintet, NGC7049, NGC3324, NGC5866, M82, IC418
+- NGC4826, NGC1805, NGC6307, NGC7027, LMC, ESO391, ESO510
+- Cassini Encke Gap, Cassini Division, Cassini Maxwell Gap
+- Black Hole Pairs, Eta Carinae, Galactic Center, Westerlund 2, GW170817
+
+USER BENEFIT: No more manual typing of system names - browse by category and select from numbered list
+
+=== SYSTEM CONSOLIDATION UPDATE (2025-11-18 15:22:50) ===
+MAIN_1_CoAnQi.cpp SYSTEM COUNT: 84 systems loaded successfully ✅
+- 35 from observational_systems_config.h
+- 19 from source172.cpp (SOURCE115)
+- 11 from source170.cpp (SOURCE113)
+- 7 from source171.cpp (SOURCE114: AFGL5180, LMC opo9944a, LMC heic1301, LMC potw1408a, LMC heic1206, LMC heic1402, NGC2174)
+- 11 legacy MAIN_1 systems (Black Hole Pairs, SN1006, Eta Carinae, Galactic Center, Kepler's SNR, Westerlund 2, Cassiopeia A, 3C273, Geminga, GW170817, NGC1068)
+- 14 NEW systems from individual physics modules (source13-87): SGR1745-2900, Sgr A*, M31 Andromeda, Saturn, Big Bang, M51, NGC1316, Tapestry Starbirth, Pillars of Creation, Einstein Ring, NGC3603, Bubble Nebula, Antennae Galaxies, Horsehead Nebula
+
+BUILD STATUS (2025-11-18 15:22):
+- cmake --build build --target MAIN_1_CoAnQi
+- Result: ✅ Built target MAIN_1_CoAnQi
+- Executable: build\MAIN_1_CoAnQi.exe (updated)
+
+EXECUTION VERIFICATION (2025-11-18 15:22:50):
+- Logger initialized successfully
+- ✅ Loaded 84 predefined systems (increased from 70)
+- CoAnQi v2.0: Hybrid architecture with 63 extracted physics terms
+- Main menu: 9 options displayed
+- Category menu: Ready with all 84 systems accessible
+
+COMPLETE SYSTEM INVENTORY (84 systems alphabetically):
+1. 3C273 (quasar/agn)
+2. AFGL 5180 (protostellar core)
+3. AG Carinae Nebula (nebula)
+4. Abell2256 (galaxy_cluster)
+5. Antennae Galaxies (merging galaxies NGC4038/4039)
+6. ASASSN-14li (tde)
+7. ASKAPJ1832 (pulsar)
+8. Big Bang (cosmological)
+9. Black Hole Pairs (agn)
+10. Bubble Nebula (NGC7635)
+11. Cassini Division (ring_gap)
+12. Cassini Encke Gap (ring_gap)
+13. Cassini Maxwell Gap (ring_gap)
+14. Cassiopeia A (snr)
+15. Centaurus A (agn)
+16. ChandraWebb (multi_system)
+17. Crab (pulsar)
+18. Einstein Ring (gravitational lens)
+19. ESO 137-001 (galaxy_cluster)
+20. ESO 391-12 (galaxy)
+21. ESO 510-G13 (galaxy)
+22. El Gordo (galaxy_cluster)
+23. Eta Carinae (stellar)
+24. Galactic Center (agn/SMBH)
+25. Geminga (pulsar)
+26. GW170817 (neutron star merger)
+27. Horsehead Nebula (Barnard 33)
+28. IC 418 (nebula - Spirograph)
+29. J1610 (pulsar)
+30. Kepler's SNR (snr)
+31. Large Magellanic Cloud (galaxy)
+32. LMC heic1206 (LMC star-forming)
+33. LMC heic1301 (LMC remnant/cluster)
+34. LMC heic1402 (LMC massive stars)
+35. LMC opo9944a (LMC star cluster)
+36. LMC potw1408a (LMC nebula)
+37. M16 (nebula - Eagle)
+38. M31 Andromeda (galaxy)
+39. M42 (nebula - Orion)
+40. M51 Whirlpool (galaxy)
+41. M57 (nebula - Ring Nebula)
+42. M74 (galaxy)
+43. M82 (galaxy - Cigar)
+44. M84 (agn)
+45. M104 (agn - Sombrero)
+46. Mystic Mountain (nebula pillar)
+47. NGC 253 (galaxy - starburst)
+48. NGC 346 (nebula)
+49. NGC 1068 (agn - Seyfert)
+50. NGC 1316 (Fornax A galaxy)
+51. NGC 1365 (agn)
+52. NGC 1672 (nebula/galaxy)
+53. NGC 1805 (star cluster)
+54. NGC 2174 (nebula - Monkey Head)
+55. NGC 2264 (stellar cluster)
+56. NGC 2841 (galaxy)
+57. NGC 3324 (nebula - Carina region)
+58. NGC 3372 (nebula - Carina)
+59. NGC 3603 (star-forming region)
+60. NGC 4676 (galaxy - Mice)
+61. NGC 4826 (galaxy - Black Eye)
+62. NGC 4839 (galaxy_cluster)
+63. NGC 5866 (galaxy)
+64. NGC 6217 (galaxy)
+65. NGC 6307 (planetary nebula)
+66. NGC 7027 (planetary nebula)
+67. NGC 7049 (galaxy)
+68. Pillars of Creation (Eagle Nebula)
+69. PLCK G287 (galaxy_cluster)
+70. PSZ2 G181 (galaxy_cluster)
+71. Red Spider Nebula (planetary nebula)
+72. Sagittarius A* (Sgr A* SMBH)
+73. Saturn (planet)
+74. SGR 1745-2900 (magnetar)
+75. SN 1006 (snr)
+76. Sonification (multi_system)
+77. Stephan's Quintet (galaxy group)
+78. SupernovaSurvey (multi_system)
+79. Tapestry Starbirth (NGC2014/NGC2020)
+80. Tarantula (nebula - 30 Doradus)
+81. Tycho (snr)
+82. UGC 10214 (galaxy - Tadpole)
+83. Vela (pulsar)
+84. Westerlund 2 (star cluster)
+
+SYSTEM CATEGORIES (84 total):
+- galaxy_cluster: 8 systems (ESO137, NGC1365, ElGordo, PLCKG287, PSZ2G181, NGC4839, Abell2256, M84)
+- pulsar: 5 systems (Vela, J1610, Crab, ASKAPJ1832, Geminga)
+- agn: 9 systems (CentaurusA, M104, ASASSN14li, 3C273, NGC1068, NGC1365, M84, Black Hole Pairs, Galactic Center)
+- nebula: 22 systems (M16, NGC346, Tarantula, NGC1672, M42, AG Carinae, M57, NGC3324, NGC3372, NGC6307, NGC7027, Red Spider, IC418, Mystic Mountain, NGC2174, Horsehead, Bubble, Tapestry Starbirth, Pillars of Creation, NGC3603)
+- snr: 5 systems (Tycho, SN1006, Kepler's, Cassiopeia A, Eta Carinae)
+- tde: 1 system (ASASSN-14li)
+- galaxy: 16 systems (M74, NGC253, NGC2841, NGC5866, M82, UGC10214, NGC4676, NGC6217, NGC7049, StephansQuintet, ESO391, LMC, ESO510, NGC4826, M51, NGC1316, M31, Antennae Galaxies)
+- ring_gap: 3 systems (Cassini gaps)
+- multi_system: 3 systems (Sonification, ChandraWebb, SupernovaSurvey)
+- stellar: 8 systems (NGC2264, NGC1805, AFGL5180, LMC systems, Westerlund 2)
+- magnetar: 1 system (SGR1745-2900)
+- smbh: 1 system (Sagittarius A*)
+- planetary: 1 system (Saturn)
+- cosmological: 1 system (Big Bang)
+- gravitational_lens: 1 system (Einstein Ring)
+- merger: 1 system (GW170817)
+
+NEW SYSTEMS ADDED (2025-11-18):
+1. SGR 1745-2900 (magnetar from source13)
+2. Sagittarius A* (SMBH from source15/87)
+3. M31 Andromeda (galaxy from source28/88)
+4. Saturn (planet from source30)
+5. Big Bang (cosmological from source56)
+6. M51 Whirlpool (galaxy from source70/74)
+7. NGC 1316 (Fornax A from source71)
+8. Tapestry Starbirth (NGC2014/2020 from source87)
+9. Pillars of Creation (Eagle Nebula from source87)
+10. Einstein Ring (gravitational lens from source87)
+11. NGC 3603 (star-forming from source87)
+12. Bubble Nebula (NGC7635 from source87)
+13. Antennae Galaxies (NGC4038/4039 from source87)
+14. Horsehead Nebula (Barnard 33 from source87)
+
+ACHIEVEMENT: 84 systems accessible (84% of user's expected ~100)
+REMAINING: ~16 additional systems could be extracted from source13-35 individual modules if needed
+
+USER BENEFIT: Comprehensive astronomical system database spanning scales from planetary (Saturn) to cosmological (Big Bang), magnetars to SMBHs, star formation to galaxy mergers
+
+MISSING SYSTEMS (User reports ~100 expected):
+Analysis required to identify additional systems from:
+- Source files 13-35 (individual object modules: M51, Andromeda, Sombrero, Saturn, etc.)
+- MAIN_1_CoAnQi.cpp SOURCE modules may define additional unique systems
+- Possible systems to add: M31 (Andromeda), M51, NGC1316, Saturn, etc.

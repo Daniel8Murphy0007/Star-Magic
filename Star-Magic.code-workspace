@@ -33,6 +33,16 @@
         "C_Cpp.autocomplete": "default",
         // ========== CMAKE CONFIGURATION ==========
         "cmake.configureOnOpen": false,
+        "cmake.configureOnEdit": false,
+        "cmake.automaticReconfigure": false,
+        "cmake.statusbar.advanced": {
+            "debug": {
+                "visibility": "hidden"
+            },
+            "launch": {
+                "visibility": "hidden"
+            }
+        },
         "cmake.generator": "MinGW Makefiles",
         "cmake.buildDirectory": "${workspaceFolder}/build",
         "cmake.sourceDirectory": "${workspaceFolder}",
@@ -92,6 +102,10 @@
         "editor.tabSize": 4,
         "editor.insertSpaces": true,
         "editor.detectIndentation": true,
+        // ========== WINDOW CONFIGURATION ==========
+        "window.restoreWindows": "all",
+        "window.reopenFolders": "all",
+        "window.title": "🌟 Star-Magic UQFF - ${dirty}${activeEditorShort}${separator}${rootName}",
         // ========== RECOMMENDED EXTENSIONS ==========
         "extensions.ignoreRecommendations": false
     },

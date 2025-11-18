@@ -1,0 +1,21 @@
+Tue Nov 18 15:44:54 2025 [INFO]  === CoAnQi Verbose Logger Initialized ===
+Tue Nov 18 15:44:54 2025 [INFO]  === CoAnQi UQFF Calculator Started ===
+Tue Nov 18 15:44:54 2025 [INFO]  Self-Expanding, Self-Updating, Self-Simulating Framework
+Tue Nov 18 15:44:54 2025 [INFO]  Loaded 99 predefined systems
+Tue Nov 18 15:44:54 2025 [INFO]  CoAnQi v2.0: Hybrid architecture with 63 extracted physics terms
+
+=== SYSTEMS DATABASE ===
+Total systems loaded: 99
+Use Menu Option 1 to browse systems by category
+
+=== CoAnQi MAIN MENU ===
+1. Calculate system (single)
+2. Calculate ALL systems (parallel)
+3. Clone and mutate system
+4. Add custom system
+5. Add dynamic physics term
+6. Run simulations
+7. Statistical analysis
+8. Self-optimization
+9. Exit
+Enter choice: 
