@@ -16,7 +16,7 @@
         "workspace.lastUpdate": "November 18, 2025 @ 1:09 AM",
         // ========== C++ CONFIGURATION ==========
         "C_Cpp.default.cppStandard": "c++17",
-        "C_Cpp.default.compilerPath": "C:/msys64/mingw64/bin/g++.exe",
+        "C_Cpp.default.compilerPath": "C:/MinGW/mingw64/bin/g++.exe",
         "C_Cpp.default.intelliSenseMode": "windows-gcc-x64",
         "C_Cpp.default.includePath": [
             "${workspaceFolder}/**",
@@ -37,9 +37,9 @@
         "cmake.buildDirectory": "${workspaceFolder}/build",
         "cmake.sourceDirectory": "${workspaceFolder}",
         "cmake.configureSettings": {
-            "CMAKE_C_COMPILER": "C:/msys64/mingw64/bin/gcc.exe",
-            "CMAKE_CXX_COMPILER": "C:/msys64/mingw64/bin/g++.exe",
-            "CMAKE_MAKE_PROGRAM": "C:/msys64/mingw64/bin/mingw32-make.exe"
+            "CMAKE_C_COMPILER": "C:/MinGW/mingw64/bin/gcc.exe",
+            "CMAKE_CXX_COMPILER": "C:/MinGW/mingw64/bin/g++.exe",
+            "CMAKE_MAKE_PROGRAM": "C:/MinGW/mingw64/bin/mingw32-make.exe"
         },
         "cmake.preferredGenerators": [
             "MinGW Makefiles"
