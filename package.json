@@ -1,7 +1,7 @@
 {
   "name": "star-magic-uqff",
-  "version": "2.1.0",
-  "description": "Star-Magic Unified Quantum Field Force (UQFF) v2.1 - Enhanced Edition with 106 systems, F_U_Bi_i integration, and self-expanding framework",
+  "version": "2.2.0",
+  "description": "Star-Magic Unified Quantum Field Force (UQFF) v2.2 - Enhanced Edition with 446 modules, SOURCE1-116 integration, self-expanding framework 2.0, 26D quantum polynomials, Wolfram hypergraph physics, MinGW threading compatibility",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
@@ -29,9 +29,18 @@
     "f-u-bi-i",
     "self-expanding-framework",
     "26-layer-gravity",
+    "26d-polynomials",
+    "wolfram-hypergraph",
+    "emergent-spacetime",
+    "pi-infinity-decoder",
+    "sacred-geometry",
+    "consciousness-field",
     "navier-stokes",
     "webgl",
-    "3d-graphics"
+    "3d-graphics",
+    "mingw-threading",
+    "source115",
+    "source116"
   ],
   "author": "Daniel T. Murphy",
   "license": "ISC",
