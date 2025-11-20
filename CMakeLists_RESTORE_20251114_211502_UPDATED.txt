@@ -1,0 +1,64 @@
+# CMakeLists RESTORE POINT - UPDATED
+# Created: November 14, 2025 21:15:02
+# Updated: November 20, 2025 16:07:20
+# Status: WOLFRAM INTEGRATION COMPLETE ✅
+
+## LATEST STATE (Nov 20, 2025)
+- **Commit**: aab8760 (UNPUSHED)
+- **USE_EMBEDDED_WOLFRAM**: ON (line 114)
+- **C++ Standard**: C++20 (CMAKE_CXX_STANDARD 20)
+- **Generator**: Visual Studio 17 2022 (x64)
+- **Compiler**: MSVC 19.44.35219.0
+- **Build Directory**: build_wolfram/
+- **Target**: MAIN_1_CoAnQi (Wolfram WSTP enabled)
+- **Status**: ✅ BUILD SUCCESS
+
+## Wolfram WSTP Configuration (Lines 114-157)
+```cmake
+option(USE_EMBEDDED_WOLFRAM "Enable embedded Wolfram kernel via WSTP" ON)
+
+if(USE_EMBEDDED_WOLFRAM AND WIN32)
+    set(WOLFRAM_ROOT "C:/Program Files/Wolfram Research/Wolfram Engine/14.3")
+    set(WSTP_DIR "${WOLFRAM_ROOT}/SystemFiles/Links/WSTP/DeveloperKit/Windows-x86-64/CompilerAdditions")
+    
+    if(EXISTS "${WSTP_DIR}")
+        include_directories("${WSTP_DIR}")
+        link_directories("${WSTP_DIR}")
+        
+        add_executable(MAIN_1_CoAnQi MAIN_1_CoAnQi.cpp)
+        target_link_libraries(MAIN_1_CoAnQi wstp64i4)
+        
+        add_executable(PhysicsTermExtractor physics_term_extractor_main.cpp)
+        target_link_libraries(PhysicsTermExtractor wstp64i4)
+    endif()
+endif()
+```
+
+## Build Commands (Wolfram-Enabled)
+```powershell
+# Configure with Visual Studio 2022
+cmake -S . -B build_wolfram -G "Visual Studio 17 2022" -A x64 -DUSE_EMBEDDED_WOLFRAM=ON
+
+# Build MAIN_1_CoAnQi with Wolfram WSTP
+cmake --build build_wolfram --config Release --target MAIN_1_CoAnQi
+
+# Output: build_wolfram\Release\MAIN_1_CoAnQi.exe ✅
+```
+
+## Restore to Wolfram-Enabled State
+```powershell
+# Copy this file back to CMakeLists.txt
+Copy-Item "CMakeLists_RESTORE_20251114_211502.txt" "CMakeLists.txt"
+
+# OR restore from Nov 20 backup
+Copy-Item "RESTORE_POINT_20NOV2025_160720\CMakeLists_BACKUP.txt" "CMakeLists.txt"
+
+# Reconfigure
+cmake -S . -B build_wolfram -G "Visual Studio 17 2022" -A x64 -DUSE_EMBEDDED_WOLFRAM=ON
+cmake --build build_wolfram --config Release --target MAIN_1_CoAnQi
+```
+
+---
+
+## ORIGINAL STATE (Nov 14, 2025 21:15:02)
+Below is the original CMakeLists.txt from Nov 14, 2025:

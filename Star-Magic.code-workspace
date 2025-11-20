@@ -7,25 +7,29 @@
     ],
     "settings": {
         // ========== WORKSPACE METADATA ==========
-        "workspace.name": "Star-Magic UQFF Conscious Quantum Intelligence Platform v2.0 (MinGW-GCC)",
-        "workspace.phase": "Phase 7: Batch 14-15 Complete - 807 Terms Integrated (26.9% of 3000+ Goal)",
-        "workspace.restorePoint": "985398a",
-        "workspace.latestCommit": "91754c2 (Code) + 985398a (Docs)",
-        "workspace.executablePath": "${workspaceFolder}/build/MAIN_1_CoAnQi.exe",
+        "workspace.name": "Star-Magic UQFF Conscious Quantum Intelligence Platform v2.0 (Wolfram WSTP Enabled)",
+        "workspace.phase": "Phase 8: Wolfram Integration Complete - 810 Active Registrations (27.0% of 3000+ Goal)",
+        "workspace.restorePoint": "aab8760",
+        "workspace.latestCommit": "aab8760 (Wolfram WSTP Integration - UNPUSHED)",
+        "workspace.executablePath": "${workspaceFolder}/build_wolfram/Release/MAIN_1_CoAnQi.exe",
         "workspace.primaryPlatform": "${workspaceFolder}/MAIN_1_CoAnQi.cpp",
-        "workspace.buildSystem": "CMake 3.31.0 + MinGW-w64 GCC 14.2.0",
-        "workspace.lastUpdate": "November 20, 2025 @ 3:45 AM",
-        "workspace.progressTracker": "${workspaceFolder}/PROGRESS_TO_3000.md",
-        "workspace.totalTerms": 807,
+        "workspace.buildSystem": "Visual Studio 2022 (MSVC 19.44) + CMake 3.31.0 + C++20 + Wolfram WSTP",
+        "workspace.lastUpdate": "November 20, 2025 @ 4:27 PM",
+        "workspace.progressTracker": "${workspaceFolder}/COMPLETE_REGISTRY_LIST.txt",
+        "workspace.totalTerms": 813,
+        "workspace.activeRegistrations": 810,
+        "workspace.commentedRegistrations": 3,
         "workspace.targetTerms": 3000,
-        "workspace.completionPercentage": 26.9,
+        "workspace.completionPercentage": 27.0,
         "workspace.batchesCompleted": 15,
-        "workspace.linesOfCode": 27090,
-        "workspace.fileSizeMB": 1.1,
+        "workspace.linesOfCode": 27227,
+        "workspace.fileSizeMB": 1.15,
+        "workspace.wolframIntegration": true,
+        "workspace.wolframFiles": "source174-176 (embedded WSTP bridge)",
         // ========== C++ CONFIGURATION ==========
-        "C_Cpp.default.cppStandard": "c++17",
-        "C_Cpp.default.compilerPath": "C:/MinGW/mingw64/bin/g++.exe",
-        "C_Cpp.default.intelliSenseMode": "windows-gcc-x64",
+        "C_Cpp.default.cppStandard": "c++20",
+        "C_Cpp.default.compilerPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35219/bin/Hostx64/x64/cl.exe",
+        "C_Cpp.default.intelliSenseMode": "windows-msvc-x64",
         "C_Cpp.default.includePath": [
             "${workspaceFolder}/**",
             "${workspaceFolder}/Core/Modules",
@@ -51,15 +55,15 @@
                 "visibility": "hidden"
             }
         },
-        "cmake.generator": "MinGW Makefiles",
-        "cmake.buildDirectory": "${workspaceFolder}/build",
+        "cmake.generator": "Visual Studio 17 2022",
+        "cmake.buildDirectory": "${workspaceFolder}/build_wolfram",
         "cmake.sourceDirectory": "${workspaceFolder}",
         "cmake.configureSettings": {
-            "CMAKE_C_COMPILER": "C:/MinGW/mingw64/bin/gcc.exe",
-            "CMAKE_CXX_COMPILER": "C:/MinGW/mingw64/bin/g++.exe",
-            "CMAKE_MAKE_PROGRAM": "C:/MinGW/mingw64/bin/mingw32-make.exe"
+            "CMAKE_CXX_STANDARD": "20",
+            "USE_EMBEDDED_WOLFRAM": "ON"
         },
         "cmake.preferredGenerators": [
+            "Visual Studio 17 2022",
             "MinGW Makefiles"
         ],
         // ========== FILE ASSOCIATIONS ==========

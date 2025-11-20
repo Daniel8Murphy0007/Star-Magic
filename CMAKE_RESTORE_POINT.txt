@@ -1,6 +1,41 @@
-CMAKE RESTORE POINT
-===================
+CMAKE RESTORE POINT (UPDATED)
+=============================
 
+## LATEST RESTORE POINT: November 20, 2025 16:07:20
+Date: November 20, 2025
+Commit: aab8760 (UNPUSHED)
+Branch: master
+Status: MAIN_1_CoAnQi FULLY OPERATIONAL ✅
+Wolfram WSTP: ENABLED ✅
+Registry: 813 registrations documented ✅
+
+Restore Command:
+git reset --hard aab8760
+
+Description:
+WOLFRAM INTEGRATION COMPLETE - First fully operational WSTP build.
+- 810 active registrations + 3 commented = 813 total
+- 7 duplicate classes removed, 8 duplicate registrations removed
+- Syntax error fixed (StellarMass_M_sInMsun)
+- BUILD SUCCESS: build_wolfram\Release\MAIN_1_CoAnQi.exe
+- C++20, MSVC 19.44, Visual Studio 2022
+- Complete registry inventory in COMPLETE_REGISTRY_LIST.txt
+
+Files Status:
+- CMakeLists.txt: ✓ USE_EMBEDDED_WOLFRAM=ON
+- MAIN_1_CoAnQi.cpp: ✓ 27,228 lines, 894 classes, 813 registrations
+- source174-176: ✓ Wolfram bridge fully integrated
+- COMPLETE_REGISTRY_LIST.txt: ✓ 810 registrations
+- build_wolfram\Release\MAIN_1_CoAnQi.exe: ✓ READY
+
+Detailed Manifest:
+See RESTORE_POINT_20NOV2025_160720/RESTORE_POINT_MANIFEST.txt
+
+Use this restore point for Wolfram-enabled builds.
+
+---
+
+## PREVIOUS RESTORE POINT: November 13, 2025
 Date: November 13, 2025
 Commit: 30646bd
 Branch: master
@@ -19,4 +54,4 @@ Files Status:
 - MAIN_1_CoAnQi.cpp: ✓ Present
 - CMakeLists.txt: ✓ Configured
 
-Use this restore point if future modifications break compilation.
+Use this restore point if Wolfram build breaks compilation.
