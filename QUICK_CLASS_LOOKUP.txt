@@ -1,0 +1,790 @@
+QUICK PHYSICS CLASS LOOKUP BY SOURCE FILE
+================================================================================
+
+source1.cpp:
+  RamanujanCalculatorDialog (vacuum)
+  CalculusButtonField (magnetic)
+  BrowserWindow (vacuum)
+  MainWindow (vacuum)
+
+source2.cpp:
+  RamanujanCalculatorDialog (gravity)
+  CalculusButtonField (magnetic)
+  BrowserWindow (gravity)
+  MainWindow (gravity)
+
+source3.cpp:
+  RamanujanCalculatorDialog (vacuum)
+  CalculusButtonField (magnetic)
+  BrowserWindow (vacuum)
+  MainWindow (vacuum)
+
+source4.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  UQFFModule4 (unified)
+
+source5.cpp:
+  DarkMatterHaloTerm (gravity)
+  VacuumEnergyTerm (vacuum)
+  UQFFModule5 (unified)
+
+source6.cpp:
+  3DObject (gravity)
+  ToolPath (gravity)
+  SimulationEntity (gravity)
+  CoAnQiNode (gravity)
+
+source7.cpp:
+  3DObject (gravity)
+  ToolPath (gravity)
+  SimulationEntity (gravity)
+  CoAnQiNode (gravity)
+
+source10.cpp:
+  Source10 (nuclear)
+
+source13.cpp:
+  MagnetarSGR1745_2900 (magnetic)
+
+source14.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  MagnetarSGR0501_4516 (magnetic)
+
+source15.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SMBHSgrAStar (gravity)
+
+source16.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  StarbirthTapestry (stellar)
+
+source17.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  Westerlund2 (gravity)
+
+source18.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  PillarsOfCreation (gravity)
+
+source19.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  RingsOfRelativity (gravity)
+
+source20.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  GalaxyNGC2525 (galactic)
+
+source21.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  NGC3603 (galactic)
+
+source22.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  BubbleNebula (stellar)
+
+source23.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  AntennaeGalaxies (gravity)
+
+source24.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  HorseheadNebula (stellar)
+
+source25.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  NGC1275 (galactic)
+
+source26.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  HUDFGalaxies (gravity)
+
+source27.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  GalaxyNGC1792 (galactic)
+
+source28.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  AndromedaUQFFModule (galactic)
+
+source29.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SombreroUQFFModule (unified)
+
+source30.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SaturnUQFFModule (unified)
+
+source31.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  M16UQFFModule (unified)
+
+source32.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  CrabUQFFModule (unified)
+
+source33.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SGR1745UQFFModule (unified)
+
+source34.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SGR1745UQFFModule (unified)
+
+source35.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SgrA_UQFFModule (unified)
+
+source36.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  TapestryUQFFModule (unified)
+
+source37.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  ResonanceSuperconductiveUQFFModule (resonance)
+
+source38.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  CompressedResonanceUQFFModule (gravity)
+
+source39.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  CrabResonanceUQFFModule (resonance)
+
+source40.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  CompressedResonanceUQFF24Module (gravity)
+
+source41.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  UniverseDiameterUQFFModule (cosmological)
+
+source42.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  HydrogenAtomUQFFModule (nuclear)
+
+source43.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  HydrogenPToEResonanceUQFFModule (nuclear)
+
+source44.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  LagoonUQFFModule (unified)
+
+source45.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SpiralSupernovaeUQFFModule (galactic)
+
+source46.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  NGC6302UQFFModule (galactic)
+
+source47.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  NGC6302ResonanceUQFFModule (resonance)
+
+source48.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  OrionUQFFModule (stellar)
+
+source49.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  CompressedResonanceUQFF34Module (gravity)
+
+source52.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  MultiUQFFModule (unified)
+
+source54.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  YoungStarsOutflowsUQFFModule (stellar)
+
+source56.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  BigBangGravityUQFFModule (gravity)
+
+source57.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  MultiCompressedUQFFModule (gravity)
+
+source60.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  MultiUQFFCompressionModule (gravity)
+
+source64.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  BatchType (gravity)
+  UFEOrbModule (gravity)
+
+source65.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SystemType (gravity)
+  NebularUQFFModule (stellar)
+
+source66.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SystemType (nuclear)
+  RedDwarfUQFFModule (stellar)
+
+source67.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SystemType (nuclear)
+  InertiaUQFFModule (unified)
+
+source68.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SystemType (nuclear)
+  HydrogenUQFFModule (nuclear)
+
+source69.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  UQFFCompressionModule (gravity)
+
+source70.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  M51UQFFModule (galactic)
+
+source71.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  NGC1316UQFFModule (galactic)
+
+source72.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  V838MonUQFFModule (unified)
+
+source73.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  NGC1300UQFFModule (galactic)
+
+source74.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  UQFFCompressedResonanceModule (gravity)
+
+source76.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  NGC2264UQFFModule (galactic)
+
+source77.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  UGC10214UQFFModule (unified)
+
+source78.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  NGC4676UQFFModule (galactic)
+
+source79.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  RedSpiderUQFFModule (unified)
+
+source80.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SMBHBinaryUQFFModule (gravity)
+
+source81.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  NGC346UQFFModule (galactic)
+
+source82.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SMBHUQFFModule (gravity)
+
+source83.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  LENRUQFFModule (unified)
+
+source84.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  LENRCalibUQFFModule (unified)
+
+source85.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  NGC346UQFFModule (galactic)
+
+source86.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SystemType (gravity)
+  MUGEModule (gravity)
+
+source87.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SystemType (magnetic)
+  MUGEResonanceModule (resonance)
+
+source88.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  AndromedaUQFFModule (galactic)
+
+source89.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  AetherCouplingModule (vacuum)
+
+source90.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  BackgroundAetherModule (vacuum)
+
+source91.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  DPMModule (vacuum)
+
+source92.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  BuoyancyCouplingModule (vacuum)
+
+source93.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SolarWindBuoyancyModule (vacuum)
+
+source94.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  UgCouplingModule (vacuum)
+
+source95.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  MagneticStringModule (magnetic)
+
+source96.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  GalacticDistanceModule (gravity)
+
+source97.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  FeedbackFactorModule (vacuum)
+
+source98.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  UnifiedFieldModule (magnetic)
+
+source100.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  HeavisideFractionModule (magnetic)
+
+source101.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  HeliosphereThicknessModule (vacuum)
+
+source102.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  UgIndexModule (magnetic)
+
+source103.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  InertiaCouplingModule (vacuum)
+
+source104.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  MagneticMomentModule (magnetic)
+
+source105.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  GalacticBlackHoleModule (gravity)
+
+source106.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  NegativeTimeModule (vacuum)
+
+source107.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  PiConstantModule (vacuum)
+
+source108.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  CorePenetrationModule (magnetic)
+
+source109.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  QuasiLongitudinalModule (magnetic)
+
+source110.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  OuterFieldBubbleModule (magnetic)
+
+source111.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  ReciprocationDecayModule (magnetic)
+
+source112.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  ScmPenetrationModule (magnetic)
+
+source113.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  ScmReactivityDecayModule (vacuum)
+
+source114.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SolarCycleFrequencyModule (resonance)
+
+source115.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SolarWindModulationModule (vacuum)
+
+source116.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SolarWindVelocityModule (vacuum)
+
+source117.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  StellarMassModule (gravity)
+
+source118.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  StellarRotationModule (stellar)
+
+source119.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  StepFunctionModule (vacuum)
+
+source120.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  StressEnergyTensorModule (vacuum)
+
+source121.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SurfaceMagneticFieldModule (magnetic)
+
+source122.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SurfaceTemperatureModule (magnetic)
+
+source123.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  TimeReversalZoneModule (vacuum)
+
+source124.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  Ug1DefectModule (magnetic)
+
+source125.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  Ug3DiskVectorModule (magnetic)
+
+source126.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  AetherVacuumDensityModule (vacuum)
+
+source127.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  UniversalInertiaVacuumModule (vacuum)
+
+source128.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  ScmVacuumDensityModule (vacuum)
+
+source129.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  UaVacuumDensityModule (vacuum)
+
+source130.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  UniversalInertiaVacuumModule (vacuum)
+
+source131.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  ScmVelocityModule (vacuum)
+
+source132.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  ButterflyNebulaUQFFModule (stellar)
+
+source133.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  CentaurusAUQFFModule (unified)
+
+source134.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  Abell2256UQFFModule (unified)
+
+source135.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  ASASSN14liUQFFModule (unified)
+
+source136.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  CentaurusAUQFFModule (unified)
+
+source137.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  CrabNebulaUQFFModule (stellar)
+
+source138.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  ElGordoUQFFModule (unified)
+
+source139.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  ESO137UQFFModule (unified)
+
+source140.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  IC2163UQFFModule (unified)
+
+source141.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  J1610UQFFModule (unified)
+
+source142.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  JupiterAuroraeUQFFModule (unified)
+
+source143.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  LagoonNebulaUQFFModule (stellar)
+
+source144.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  LagoonNebulaUQFFModule (stellar)
+
+source145.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  M87JetUQFFModule (unified)
+
+source146.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  NGC1365UQFFModule (galactic)
+
+source147.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  NGC2207UQFFModule (galactic)
+
+source148.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  RAquariiUQFFModule (unified)
+
+source149.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SgrAStarUQFFModule (stellar)
+
+source150.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  SPTCLJ2215UQFFModule (unified)
+
+source151.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  StephanQuintetUQFFModule (unified)
+
+source152.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  VelaPulsarUQFFModule (stellar)
+
+source153.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  Abell2256UQFFModule (unified)
+
+source154.cpp:
+  HydrogenResonanceUQFFModule (nuclear)
+  SurfaceMagneticFieldModule (magnetic)
+
+source155.cpp:
+  UQFFBuoyancyModule (unified)
+  SurfaceMagneticFieldModule (magnetic)
+
+source156.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  UQFFBuoyancyCNBModule (unified)
+  SurfaceMagneticFieldModule (magnetic)
+
+source157.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  UQFFBuoyancyModule157 (unified)
+  SurfaceMagneticFieldModule (magnetic)
+
+source158.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  UQFFBuoyancyModule (unified)
+  SurfaceMagneticFieldModule (magnetic)
+
+source159.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  UQFFBuoyancyModule (unified)
+  SurfaceMagneticFieldModule (magnetic)
+
+source160.cpp:
+  UQFFBuoyancyModule (unified)
+
+source161.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  UQFFBuoyancyAstroModule (unified)
+
+source162.cpp:
+  DynamicVacuumTerm (vacuum)
+  QuantumCouplingTerm (vacuum)
+  UQFFBuoyancyCNBModule (unified)
+
+source163.cpp:
+  AstroSystemsUQFFModule (unified)
+
+source164.cpp:
+  UQFFNebulaTriadicModule (stellar)
+
+source165.cpp:
+  UQFFBuoyancyModule (unified)
+
+source166.cpp:
+  UQFF8AstroSystemsModule (unified)
+
+source167.cpp:
+  UQFFCoreModule (unified)
+  UQFFSystem (unified)
+
+source168.cpp:
+  UQFFBuoyancyCore (unified)
+  UQFFBuoyancySystem (unified)
+
+source169.cpp:
+  UQFFCassiniCore (unified)
+  UQFFCassiniSystem (unified)
+
+source170.cpp:
+  UQFFMultiAstroCore (unified)
+  UQFFMultiAstroSystem (unified)
+
+source171.cpp:
+  UQFFEightAstroCore (unified)
+  UQFFEightAstroSystem (unified)
+  EightAstroSystemsModule_SOURCE114 (nuclear)
+
+source172.cpp:
+  PhysicsTerm_S115 (gravity)
+  UQFFNineteenAstroCore_S115 (unified)
+  UQFFNineteenAstroSystem_S115 (unified)
+  NineteenAstroSystemsModule_SOURCE115 (gravity)
+
+source173.cpp:
+  PI_Infinity_Decoder_S116 (magnetic)
+  WolframFieldUnityEngine_S116 (magnetic)
+  WolframFieldUnityModule_SOURCE116 (magnetic)
+

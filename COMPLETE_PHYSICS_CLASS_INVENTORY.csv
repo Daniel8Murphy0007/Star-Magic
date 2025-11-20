@@ -1,0 +1,472 @@
+SourceFile,ClassName,LineNumber,BaseClass,PhysicsType,MethodSignature
+source1.cpp,RamanujanCalculatorDialog,259,QDialog,vacuum,void solveEquations()
+source1.cpp,CalculusButtonField,381,QDockWidget,magnetic,
+source1.cpp,BrowserWindow,442,QMainWindow,vacuum,
+source1.cpp,MainWindow,924,QMainWindow,vacuum,
+source2.cpp,RamanujanCalculatorDialog,555,QDialog,gravity,void solveEquations()
+source2.cpp,CalculusButtonField,677,QDockWidget,magnetic,
+source2.cpp,BrowserWindow,750,QMainWindow,gravity,bytes processed (size * nmemb)
+source2.cpp,MainWindow,1854,QMainWindow,gravity,
+source3.cpp,RamanujanCalculatorDialog,268,QDialog,vacuum,void solveEquations()
+source3.cpp,CalculusButtonField,376,QDockWidget,magnetic,
+source3.cpp,BrowserWindow,437,QMainWindow,vacuum,
+source3.cpp,MainWindow,918,QMainWindow,vacuum,
+source4.cpp,DynamicVacuumTerm,68,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> & /* params */)"
+source4.cpp,QuantumCouplingTerm,96,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source4.cpp,UQFFModule4,339,standalone,unified,double computeDynamicTerms(double t)
+source5.cpp,DarkMatterHaloTerm,83,PhysicsTerm,gravity,"double compute(const std::map<std::string, double> &params)"
+source5.cpp,VacuumEnergyTerm,115,PhysicsTerm,vacuum,"double compute(const std::map<std::string, double> &params)"
+source5.cpp,UQFFModule5,169,standalone,unified,"double computeDynamicContributions(const std::map<std::string, double> &params)"
+source6.cpp,3DObject,1922,standalone,gravity,
+source6.cpp,ToolPath,1944,standalone,gravity,
+source6.cpp,SimulationEntity,1950,standalone,gravity,
+source6.cpp,CoAnQiNode,1962,standalone,gravity,
+source7.cpp,3DObject,2249,standalone,gravity,
+source7.cpp,ToolPath,2253,standalone,gravity,
+source7.cpp,SimulationEntity,2261,standalone,gravity,
+source7.cpp,CoAnQiNode,2269,standalone,gravity,
+source10.cpp,Source10,130,standalone,nuclear,
+source13.cpp,MagnetarSGR1745_2900,48,standalone,magnetic,
+source14.cpp,DynamicVacuumTerm,85,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source14.cpp,QuantumCouplingTerm,114,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source14.cpp,MagnetarSGR0501_4516,147,standalone,magnetic,
+source15.cpp,DynamicVacuumTerm,85,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source15.cpp,QuantumCouplingTerm,114,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source15.cpp,SMBHSgrAStar,147,standalone,gravity,
+source16.cpp,DynamicVacuumTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source16.cpp,QuantumCouplingTerm,116,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source16.cpp,StarbirthTapestry,149,standalone,stellar,
+source17.cpp,DynamicVacuumTerm,86,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source17.cpp,QuantumCouplingTerm,115,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source17.cpp,Westerlund2,148,standalone,gravity,
+source18.cpp,DynamicVacuumTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source18.cpp,QuantumCouplingTerm,116,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source18.cpp,PillarsOfCreation,149,standalone,gravity,
+source19.cpp,DynamicVacuumTerm,86,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source19.cpp,QuantumCouplingTerm,115,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source19.cpp,RingsOfRelativity,148,standalone,gravity,
+source20.cpp,DynamicVacuumTerm,86,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source20.cpp,QuantumCouplingTerm,115,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source20.cpp,GalaxyNGC2525,148,standalone,galactic,
+source21.cpp,DynamicVacuumTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source21.cpp,QuantumCouplingTerm,116,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source21.cpp,NGC3603,149,standalone,galactic,
+source22.cpp,DynamicVacuumTerm,86,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source22.cpp,QuantumCouplingTerm,115,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source22.cpp,BubbleNebula,148,standalone,stellar,
+source23.cpp,DynamicVacuumTerm,88,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source23.cpp,QuantumCouplingTerm,117,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source23.cpp,AntennaeGalaxies,150,standalone,gravity,
+source24.cpp,DynamicVacuumTerm,86,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source24.cpp,QuantumCouplingTerm,115,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source24.cpp,HorseheadNebula,148,standalone,stellar,
+source25.cpp,DynamicVacuumTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source25.cpp,QuantumCouplingTerm,116,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source25.cpp,NGC1275,149,standalone,galactic,
+source26.cpp,DynamicVacuumTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source26.cpp,QuantumCouplingTerm,116,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source26.cpp,HUDFGalaxies,149,standalone,gravity,
+source27.cpp,DynamicVacuumTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source27.cpp,QuantumCouplingTerm,116,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source27.cpp,GalaxyNGC1792,149,standalone,galactic,
+source28.cpp,DynamicVacuumTerm,64,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source28.cpp,QuantumCouplingTerm,93,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source28.cpp,AndromedaUQFFModule,126,standalone,galactic,double computeQuantumTerm(double t_Hubble_val)
+source29.cpp,DynamicVacuumTerm,65,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source29.cpp,QuantumCouplingTerm,94,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source29.cpp,SombreroUQFFModule,127,standalone,unified,double computeQuantumTerm(double t_Hubble_val)
+source30.cpp,DynamicVacuumTerm,65,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source30.cpp,QuantumCouplingTerm,94,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source30.cpp,SaturnUQFFModule,127,standalone,unified,double computeQuantumTerm(double t_Hubble_val)
+source31.cpp,DynamicVacuumTerm,66,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source31.cpp,QuantumCouplingTerm,95,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source31.cpp,M16UQFFModule,128,standalone,unified,double computeQuantumTerm(double t_Hubble_val)
+source32.cpp,DynamicVacuumTerm,66,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source32.cpp,QuantumCouplingTerm,95,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source32.cpp,CrabUQFFModule,128,standalone,unified,double computeQuantumTerm(double t_Hubble_val)
+source33.cpp,DynamicVacuumTerm,66,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source33.cpp,QuantumCouplingTerm,95,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source33.cpp,SGR1745UQFFModule,128,standalone,unified,double computeQuantumTerm(double t_Hubble_val)
+source34.cpp,DynamicVacuumTerm,62,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source34.cpp,QuantumCouplingTerm,91,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source34.cpp,SGR1745UQFFModule,124,standalone,unified,double computeDPMTerm()
+source35.cpp,DynamicVacuumTerm,62,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source35.cpp,QuantumCouplingTerm,91,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source35.cpp,SgrA_UQFFModule,124,standalone,unified,double computeDPMTerm()
+source36.cpp,DynamicVacuumTerm,62,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source36.cpp,QuantumCouplingTerm,91,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source36.cpp,TapestryUQFFModule,124,standalone,unified,double computeDPMTerm()
+source37.cpp,DynamicVacuumTerm,63,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source37.cpp,QuantumCouplingTerm,92,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source37.cpp,ResonanceSuperconductiveUQFFModule,125,standalone,resonance,double computeDPMResTerm()
+source38.cpp,DynamicVacuumTerm,62,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source38.cpp,QuantumCouplingTerm,91,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source38.cpp,CompressedResonanceUQFFModule,124,standalone,gravity,double computeCompressedTerm()
+source39.cpp,DynamicVacuumTerm,62,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source39.cpp,QuantumCouplingTerm,91,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source39.cpp,CrabResonanceUQFFModule,124,standalone,resonance,double computeDPMResTerm()
+source40.cpp,DynamicVacuumTerm,62,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source40.cpp,QuantumCouplingTerm,91,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source40.cpp,CompressedResonanceUQFF24Module,124,standalone,gravity,double computeCompressedTerm()
+source41.cpp,DynamicVacuumTerm,61,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source41.cpp,QuantumCouplingTerm,90,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source41.cpp,UniverseDiameterUQFFModule,123,standalone,cosmological,double computeQuantumTerm(double t_Hubble_val)
+source42.cpp,DynamicVacuumTerm,62,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source42.cpp,QuantumCouplingTerm,91,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source42.cpp,HydrogenAtomUQFFModule,124,standalone,nuclear,double computeQuantumTerm(double t_Hubble_val)
+source43.cpp,DynamicVacuumTerm,62,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source43.cpp,QuantumCouplingTerm,91,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source43.cpp,HydrogenPToEResonanceUQFFModule,124,standalone,nuclear,double computeDPMResTerm()
+source44.cpp,DynamicVacuumTerm,62,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source44.cpp,QuantumCouplingTerm,91,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source44.cpp,LagoonUQFFModule,124,standalone,unified,double computeQuantumTerm(double t_Hubble_val)
+source45.cpp,DynamicVacuumTerm,62,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source45.cpp,QuantumCouplingTerm,91,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source45.cpp,SpiralSupernovaeUQFFModule,124,standalone,galactic,double computeQuantumTerm(double t_Hubble_val)
+source46.cpp,DynamicVacuumTerm,62,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source46.cpp,QuantumCouplingTerm,91,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source46.cpp,NGC6302UQFFModule,124,standalone,galactic,double computeQuantumTerm(double t_Hubble_val)
+source47.cpp,DynamicVacuumTerm,62,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source47.cpp,QuantumCouplingTerm,91,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source47.cpp,NGC6302ResonanceUQFFModule,124,standalone,resonance,double computeDPMTerm()
+source48.cpp,DynamicVacuumTerm,61,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source48.cpp,QuantumCouplingTerm,90,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source48.cpp,OrionUQFFModule,123,standalone,stellar,double computeQuantumTerm(double t_Hubble_val)
+source49.cpp,DynamicVacuumTerm,61,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source49.cpp,QuantumCouplingTerm,90,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source49.cpp,CompressedResonanceUQFF34Module,123,standalone,gravity,double computeCompressedTerm()
+source52.cpp,DynamicVacuumTerm,62,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source52.cpp,QuantumCouplingTerm,91,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source52.cpp,MultiUQFFModule,124,standalone,unified,double computeHz()
+source54.cpp,DynamicVacuumTerm,61,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source54.cpp,QuantumCouplingTerm,90,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source54.cpp,YoungStarsOutflowsUQFFModule,123,standalone,stellar,double computeQuantumTerm(double t_Hubble_val)
+source56.cpp,DynamicVacuumTerm,61,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source56.cpp,QuantumCouplingTerm,90,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source56.cpp,BigBangGravityUQFFModule,123,standalone,gravity,double computeQuantumTerm(double t_Hubble_val)
+source57.cpp,DynamicVacuumTerm,62,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source57.cpp,QuantumCouplingTerm,91,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source57.cpp,MultiCompressedUQFFModule,124,standalone,gravity,double computeHtz(double z)
+source60.cpp,DynamicVacuumTerm,62,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source60.cpp,QuantumCouplingTerm,91,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source60.cpp,MultiUQFFCompressionModule,124,standalone,gravity,double computeHtz(double z)
+source64.cpp,DynamicVacuumTerm,62,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source64.cpp,QuantumCouplingTerm,91,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source64.cpp,BatchType,124,standalone,gravity,double computeTminus(double t_n)
+source64.cpp,UFEOrbModule,135,standalone,gravity,double computeTminus(double t_n)
+source65.cpp,DynamicVacuumTerm,62,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source65.cpp,QuantumCouplingTerm,91,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source65.cpp,SystemType,124,standalone,gravity,"double computeNonLocalTerm(double t, int n26)"
+source65.cpp,NebularUQFFModule,134,standalone,stellar,"double computeNonLocalTerm(double t, int n26)"
+source66.cpp,DynamicVacuumTerm,61,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source66.cpp,QuantumCouplingTerm,90,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source66.cpp,SystemType,123,standalone,nuclear,"double computeNonLocalExp(double t, int n26)"
+source66.cpp,RedDwarfUQFFModule,135,standalone,stellar,"double computeNonLocalExp(double t, int n26)"
+source67.cpp,DynamicVacuumTerm,61,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source67.cpp,QuantumCouplingTerm,90,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source67.cpp,SystemType,123,standalone,nuclear,"double computeNonLocalExp(double alpha, double r, double r0)"
+source67.cpp,InertiaUQFFModule,133,standalone,unified,"double computeNonLocalExp(double alpha, double r, double r0)"
+source68.cpp,DynamicVacuumTerm,61,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source68.cpp,QuantumCouplingTerm,90,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source68.cpp,SystemType,123,standalone,nuclear,double computeE0()
+source68.cpp,HydrogenUQFFModule,132,standalone,nuclear,double computeE0()
+source69.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source69.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source69.cpp,UQFFCompressionModule,120,standalone,gravity,double computeHtz(double z_val)
+source70.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source70.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source70.cpp,M51UQFFModule,120,standalone,galactic,double computeHtz(double z_val)
+source71.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source71.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source71.cpp,NGC1316UQFFModule,120,standalone,galactic,double computeHtz(double z_val)
+source72.cpp,DynamicVacuumTerm,59,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source72.cpp,QuantumCouplingTerm,88,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source72.cpp,V838MonUQFFModule,121,standalone,unified,"double computeUg1(double t, double r)"
+source73.cpp,DynamicVacuumTerm,59,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source73.cpp,QuantumCouplingTerm,88,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source73.cpp,NGC1300UQFFModule,121,standalone,galactic,double computeHtz(double z_val)
+source74.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source74.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source74.cpp,UQFFCompressedResonanceModule,120,standalone,gravity,double computeHtz(double z_val)
+source76.cpp,DynamicVacuumTerm,59,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source76.cpp,QuantumCouplingTerm,88,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source76.cpp,NGC2264UQFFModule,121,standalone,galactic,double computeHtz(double z_val)
+source77.cpp,DynamicVacuumTerm,59,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source77.cpp,QuantumCouplingTerm,88,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source77.cpp,UGC10214UQFFModule,121,standalone,unified,double computeHtz(double z_val)
+source78.cpp,DynamicVacuumTerm,59,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source78.cpp,QuantumCouplingTerm,88,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source78.cpp,NGC4676UQFFModule,121,standalone,galactic,double computeHtz(double z_val)
+source79.cpp,DynamicVacuumTerm,59,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source79.cpp,QuantumCouplingTerm,88,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source79.cpp,RedSpiderUQFFModule,121,standalone,unified,double computeFreqSuper(double t)
+source80.cpp,DynamicVacuumTerm,59,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source80.cpp,QuantumCouplingTerm,88,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source80.cpp,SMBHBinaryUQFFModule,121,standalone,gravity,double computeFreqSuper(double t)
+source81.cpp,DynamicVacuumTerm,59,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source81.cpp,QuantumCouplingTerm,88,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source81.cpp,NGC346UQFFModule,121,standalone,galactic,double computeHtz(double z_val)
+source82.cpp,DynamicVacuumTerm,60,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source82.cpp,QuantumCouplingTerm,89,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source82.cpp,SMBHUQFFModule,122,standalone,gravity,double computeCosmicTime(double z_val)
+source83.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source83.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source83.cpp,LENRUQFFModule,120,standalone,unified,double computePlasmaFreq(double rho_e_val)
+source84.cpp,DynamicVacuumTerm,59,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source84.cpp,QuantumCouplingTerm,88,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source84.cpp,LENRCalibUQFFModule,121,standalone,unified,double computeMuJ(double t)
+source85.cpp,DynamicVacuumTerm,59,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source85.cpp,QuantumCouplingTerm,88,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source85.cpp,NGC346UQFFModule,121,standalone,galactic,double computeHtz(double z_val)
+source86.cpp,DynamicVacuumTerm,63,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source86.cpp,QuantumCouplingTerm,92,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source86.cpp,SystemType,125,standalone,gravity,"double computeH(double t, double z)"
+source86.cpp,MUGEModule,136,standalone,gravity,"double computeH(double t, double z)"
+source87.cpp,DynamicVacuumTerm,60,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source87.cpp,QuantumCouplingTerm,89,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source87.cpp,SystemType,122,standalone,magnetic,double computeHz(double z)
+source87.cpp,MUGEResonanceModule,138,standalone,resonance,double computeHz(double z)
+source88.cpp,DynamicVacuumTerm,61,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source88.cpp,QuantumCouplingTerm,90,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source88.cpp,AndromedaUQFFModule,123,standalone,galactic,double computeHz()
+source89.cpp,DynamicVacuumTerm,61,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source89.cpp,QuantumCouplingTerm,90,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source89.cpp,AetherCouplingModule,123,standalone,vacuum,double computeT_s()
+source90.cpp,DynamicVacuumTerm,61,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source90.cpp,QuantumCouplingTerm,90,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source90.cpp,BackgroundAetherModule,123,standalone,vacuum,double computeT_s()
+source91.cpp,DynamicVacuumTerm,62,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source91.cpp,QuantumCouplingTerm,91,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source91.cpp,DPMModule,124,standalone,vacuum,double computeSCmEnergy()
+source92.cpp,DynamicVacuumTerm,59,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source92.cpp,QuantumCouplingTerm,88,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source92.cpp,BuoyancyCouplingModule,121,standalone,vacuum,double computeBeta(int i)
+source93.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source93.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source93.cpp,SolarWindBuoyancyModule,120,standalone,vacuum,double computeU_b1()
+source94.cpp,DynamicVacuumTerm,59,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source94.cpp,QuantumCouplingTerm,88,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source94.cpp,UgCouplingModule,121,standalone,vacuum,double computeK_i(int i)
+source95.cpp,DynamicVacuumTerm,60,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source95.cpp,QuantumCouplingTerm,86,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source95.cpp,MagneticStringModule,116,standalone,magnetic,double computeRj(int j)
+source96.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source96.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source96.cpp,GalacticDistanceModule,120,standalone,gravity,double computeDgInLy()
+source97.cpp,DynamicVacuumTerm,59,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source97.cpp,QuantumCouplingTerm,88,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source97.cpp,FeedbackFactorModule,121,standalone,vacuum,double computeDeltaM_BH()
+source98.cpp,DynamicVacuumTerm,59,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source98.cpp,QuantumCouplingTerm,88,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source98.cpp,UnifiedFieldModule,121,standalone,magnetic,double computeUgSum()
+source100.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source100.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source100.cpp,HeavisideFractionModule,120,standalone,magnetic,double computeHeavisideFactor()
+source101.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source101.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source101.cpp,HeliosphereThicknessModule,120,standalone,vacuum,double computeH_SCm()
+source102.cpp,DynamicVacuumTerm,60,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source102.cpp,QuantumCouplingTerm,89,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source102.cpp,UgIndexModule,122,standalone,magnetic,double computeU_gi(int i)
+source103.cpp,DynamicVacuumTerm,59,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source103.cpp,QuantumCouplingTerm,88,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source103.cpp,InertiaCouplingModule,121,standalone,vacuum,double computeLambda_i(int i)
+source104.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source104.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source104.cpp,MagneticMomentModule,120,standalone,magnetic,"double computeMu_j(int j, double t)"
+source105.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source105.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source105.cpp,GalacticBlackHoleModule,120,standalone,gravity,double computeM_bhInMsun()
+source106.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source106.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source106.cpp,NegativeTimeModule,120,standalone,vacuum,double computeCosPiTn(double t_n)
+source107.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source107.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source107.cpp,PiConstantModule,120,standalone,vacuum,double computeCosPiTn(double t_n)
+source108.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source108.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source108.cpp,CorePenetrationModule,120,standalone,magnetic,double computeU_g3(double t)
+source109.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source109.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source109.cpp,QuasiLongitudinalModule,120,standalone,magnetic,double computeQuasiFactor()
+source110.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source110.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source110.cpp,OuterFieldBubbleModule,120,standalone,magnetic,double computeS_r_Rb(double r)
+source111.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source111.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source111.cpp,ReciprocationDecayModule,120,standalone,magnetic,double computeGamma_s()
+source112.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source112.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source112.cpp,ScmPenetrationModule,120,standalone,magnetic,double computeUmBase(double t)
+source113.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source113.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source113.cpp,ScmReactivityDecayModule,120,standalone,vacuum,double computeKappa_s()
+source114.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source114.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source114.cpp,SolarCycleFrequencyModule,120,standalone,resonance,double computeOmega_c()
+source115.cpp,DynamicVacuumTerm,57,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source115.cpp,QuantumCouplingTerm,86,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source115.cpp,SolarWindModulationModule,119,standalone,vacuum,double computeModulationFactor()
+source116.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source116.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source116.cpp,SolarWindVelocityModule,120,standalone,vacuum,double computeModulationFactor()
+source117.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source117.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source117.cpp,StellarMassModule,120,standalone,gravity,double computeM_sOverR2(double r)
+source118.cpp,DynamicVacuumTerm,62,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source118.cpp,QuantumCouplingTerm,91,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source118.cpp,StellarRotationModule,124,standalone,stellar,double computeOmega_s_t(double t)
+source119.cpp,DynamicVacuumTerm,57,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source119.cpp,QuantumCouplingTerm,86,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source119.cpp,StepFunctionModule,119,standalone,vacuum,double computeS_r_Rb(double r)
+source120.cpp,DynamicVacuumTerm,59,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source120.cpp,QuantumCouplingTerm,88,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source120.cpp,StressEnergyTensorModule,121,standalone,vacuum,double computeT_s()
+source121.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source121.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source121.cpp,SurfaceMagneticFieldModule,120,standalone,magnetic,"double computeB_j(double t, double B_s)"
+source122.cpp,DynamicVacuumTerm,57,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source122.cpp,QuantumCouplingTerm,86,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source122.cpp,SurfaceTemperatureModule,119,standalone,magnetic,"double computeB_j_hypothetical(double t, double T_s)"
+source123.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source123.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source123.cpp,TimeReversalZoneModule,120,standalone,vacuum,double computeTRZFactor()
+source124.cpp,DynamicVacuumTerm,62,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source124.cpp,QuantumCouplingTerm,91,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source124.cpp,Ug1DefectModule,124,standalone,magnetic,double computeDelta_def(double t_day)
+source125.cpp,DynamicVacuumTerm,59,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source125.cpp,QuantumCouplingTerm,88,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source125.cpp,Ug3DiskVectorModule,121,standalone,magnetic,double computeUmBase(double t)
+source126.cpp,DynamicVacuumTerm,59,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source126.cpp,QuantumCouplingTerm,88,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source126.cpp,AetherVacuumDensityModule,121,standalone,vacuum,double computeT_s()
+source127.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source127.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source127.cpp,UniversalInertiaVacuumModule,120,standalone,vacuum,"double computeU_i_base(double t, double t_n)"
+source128.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source128.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source128.cpp,ScmVacuumDensityModule,120,standalone,vacuum,double computeU_g2_base(double r)
+source129.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source129.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source129.cpp,UaVacuumDensityModule,120,standalone,vacuum,double computeU_g2_base(double r)
+source130.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source130.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source130.cpp,UniversalInertiaVacuumModule,120,standalone,vacuum,"double computeU_i_base(double t, double t_n)"
+source131.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source131.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source131.cpp,ScmVelocityModule,120,standalone,vacuum,double computeE_react_base()
+source132.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source132.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source132.cpp,ButterflyNebulaUQFFModule,120,standalone,stellar,double computeDPM_momentum_term(double r)
+source133.cpp,DynamicVacuumTerm,58,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source133.cpp,QuantumCouplingTerm,87,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source133.cpp,CentaurusAUQFFModule,120,standalone,unified,double computeDPM_momentum_term(double r)
+source134.cpp,DynamicVacuumTerm,67,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source134.cpp,QuantumCouplingTerm,96,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source134.cpp,Abell2256UQFFModule,129,standalone,unified,cdouble computeIntegrand(double t)
+source135.cpp,DynamicVacuumTerm,64,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source135.cpp,QuantumCouplingTerm,93,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source135.cpp,ASASSN14liUQFFModule,126,standalone,unified,cdouble computeIntegrand(double t)
+source136.cpp,DynamicVacuumTerm,64,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source136.cpp,QuantumCouplingTerm,93,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source136.cpp,CentaurusAUQFFModule,126,standalone,unified,cdouble computeIntegrand(double t)
+source137.cpp,DynamicVacuumTerm,64,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source137.cpp,QuantumCouplingTerm,93,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source137.cpp,CrabNebulaUQFFModule,126,standalone,stellar,cdouble computeIntegrand(double t)
+source138.cpp,DynamicVacuumTerm,64,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source138.cpp,QuantumCouplingTerm,93,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source138.cpp,ElGordoUQFFModule,126,standalone,unified,cdouble computeIntegrand(double t)
+source139.cpp,DynamicVacuumTerm,63,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source139.cpp,QuantumCouplingTerm,92,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source139.cpp,ESO137UQFFModule,125,standalone,unified,cdouble computeIntegrand(double t)
+source140.cpp,DynamicVacuumTerm,64,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source140.cpp,QuantumCouplingTerm,93,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source140.cpp,IC2163UQFFModule,126,standalone,unified,cdouble computeIntegrand(double t)
+source141.cpp,DynamicVacuumTerm,64,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source141.cpp,QuantumCouplingTerm,93,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source141.cpp,J1610UQFFModule,126,standalone,unified,cdouble computeIntegrand(double t)
+source142.cpp,DynamicVacuumTerm,64,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source142.cpp,QuantumCouplingTerm,93,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source142.cpp,JupiterAuroraeUQFFModule,126,standalone,unified,cdouble computeIntegrand(double t)
+source143.cpp,DynamicVacuumTerm,63,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source143.cpp,QuantumCouplingTerm,92,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source143.cpp,LagoonNebulaUQFFModule,125,standalone,stellar,cdouble computeIntegrand(double t)
+source144.cpp,DynamicVacuumTerm,64,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source144.cpp,QuantumCouplingTerm,93,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source144.cpp,LagoonNebulaUQFFModule,126,standalone,stellar,cdouble computeIntegrand(double t)
+source145.cpp,DynamicVacuumTerm,64,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source145.cpp,QuantumCouplingTerm,93,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source145.cpp,M87JetUQFFModule,126,standalone,unified,cdouble computeIntegrand(double t)
+source146.cpp,DynamicVacuumTerm,64,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source146.cpp,QuantumCouplingTerm,93,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source146.cpp,NGC1365UQFFModule,126,standalone,galactic,cdouble computeIntegrand(double t)
+source147.cpp,DynamicVacuumTerm,69,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source147.cpp,QuantumCouplingTerm,98,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source147.cpp,NGC2207UQFFModule,131,standalone,galactic,cdouble computeIntegrand(double t)
+source148.cpp,DynamicVacuumTerm,64,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source148.cpp,QuantumCouplingTerm,93,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source148.cpp,RAquariiUQFFModule,126,standalone,unified,cdouble computeIntegrand(double t)
+source149.cpp,DynamicVacuumTerm,64,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source149.cpp,QuantumCouplingTerm,93,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source149.cpp,SgrAStarUQFFModule,126,standalone,stellar,cdouble computeIntegrand(double t)
+source150.cpp,DynamicVacuumTerm,64,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source150.cpp,QuantumCouplingTerm,93,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source150.cpp,SPTCLJ2215UQFFModule,126,standalone,unified,cdouble computeIntegrand(double t)
+source151.cpp,DynamicVacuumTerm,63,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source151.cpp,QuantumCouplingTerm,92,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source151.cpp,StephanQuintetUQFFModule,125,standalone,unified,cdouble computeIntegrand(double t)
+source152.cpp,DynamicVacuumTerm,64,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source152.cpp,QuantumCouplingTerm,93,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source152.cpp,VelaPulsarUQFFModule,126,standalone,stellar,cdouble computeIntegrand(double t)
+source153.cpp,DynamicVacuumTerm,64,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source153.cpp,QuantumCouplingTerm,93,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source153.cpp,Abell2256UQFFModule,126,standalone,unified,cdouble computeIntegrand(double t)
+source154.cpp,HydrogenResonanceUQFFModule,26,standalone,nuclear,"cdouble computeA_res(int Z, int A)"
+source154.cpp,SurfaceMagneticFieldModule,69,standalone,magnetic,"double computeB_j(double t, double B_s)"
+source155.cpp,UQFFBuoyancyModule,26,standalone,unified,"cdouble computeIntegrand(double t, const std::string& system)"
+source155.cpp,SurfaceMagneticFieldModule,72,standalone,magnetic,double computeB_s_min()
+source156.cpp,DynamicVacuumTerm,65,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source156.cpp,QuantumCouplingTerm,94,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source156.cpp,UQFFBuoyancyCNBModule,127,standalone,unified,"cdouble computeIntegrand(double t, const std::string& system)"
+source156.cpp,SurfaceMagneticFieldModule,560,standalone,magnetic,"double computeGradient(const std::string& var, const std::string& target)"
+source157.cpp,DynamicVacuumTerm,54,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source157.cpp,QuantumCouplingTerm,83,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source157.cpp,UQFFBuoyancyModule157,116,standalone,unified,double computeUb1(const std::string &system)
+source157.cpp,SurfaceMagneticFieldModule,374,standalone,magnetic,"double computeGradient(const std::string &var, const std::string &target)"
+source158.cpp,DynamicVacuumTerm,64,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source158.cpp,QuantumCouplingTerm,93,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source158.cpp,UQFFBuoyancyModule,126,standalone,unified,"cdouble computeIntegrand(double t, const std::string& system)"
+source158.cpp,SurfaceMagneticFieldModule,184,standalone,magnetic,double computeB_s_min()
+source159.cpp,DynamicVacuumTerm,63,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source159.cpp,QuantumCouplingTerm,92,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source159.cpp,UQFFBuoyancyModule,125,standalone,unified,"cdouble computeIntegrand(double t, const std::string &system)"
+source159.cpp,SurfaceMagneticFieldModule,254,standalone,magnetic,"double computeB_j(double t, double B_s)"
+source160.cpp,UQFFBuoyancyModule,26,standalone,unified,"cdouble computeIntegrand(double t, const std::string &system)"
+source161.cpp,DynamicVacuumTerm,65,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source161.cpp,QuantumCouplingTerm,94,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double> &params)"
+source161.cpp,UQFFBuoyancyAstroModule,127,standalone,unified,"cdouble computeIntegrand(double t, const std::string &system)"
+source162.cpp,DynamicVacuumTerm,65,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source162.cpp,QuantumCouplingTerm,94,PhysicsTerm,vacuum,"double compute(double t, const std::map<std::string, double>& params)"
+source162.cpp,UQFFBuoyancyCNBModule,127,standalone,unified,"cdouble computeIntegrand(double t, const std::string& system)"
+source163.cpp,AstroSystemsUQFFModule,36,standalone,unified,"cdouble computeIntegrand(double t, const std::string &system)"
+source164.cpp,UQFFNebulaTriadicModule,40,standalone,stellar,"cdouble computeIntegrand(double t, const std::string &system)"
+source165.cpp,UQFFBuoyancyModule,34,standalone,unified,"cdouble computeIntegrand(double t, const std::string &system)"
+source166.cpp,UQFF8AstroSystemsModule,35,standalone,unified,"cdouble computeIntegrand(double t, const std::string &system)"
+source167.cpp,UQFFCoreModule,75,standalone,unified,"double calculate_U_g1(const std::vector<DPMVars> &vars, GeometryType geom = SPHERICAL)"
+source167.cpp,UQFFSystem,225,standalone,unified,"double calculate_master_force(const std::vector<DPMVars> &vars, const UQFFCoreModule &core)"
+source168.cpp,UQFFBuoyancyCore,86,standalone,unified,double calculate_F_LENR(double omega0)
+source168.cpp,UQFFBuoyancySystem,134,standalone,unified,double calculate_master_buoyancy(const UQFFBuoyancyCore &core)
+source169.cpp,UQFFCassiniCore,72,standalone,unified,
+source169.cpp,UQFFCassiniSystem,110,standalone,unified,
+source170.cpp,UQFFMultiAstroCore,84,standalone,unified,
+source170.cpp,UQFFMultiAstroSystem,120,standalone,unified,
+source171.cpp,UQFFEightAstroCore,93,standalone,unified,
+source171.cpp,UQFFEightAstroSystem,148,standalone,unified,
+source171.cpp,EightAstroSystemsModule_SOURCE114,474,standalone,nuclear,
+source172.cpp,PhysicsTerm_S115,42,standalone,gravity,"double compute_E_DPM_i(int i, const DPMVars &vars)"
+source172.cpp,UQFFNineteenAstroCore_S115,113,standalone,unified,"double compute_E_DPM_i(int i, const DPMVars &vars)"
+source172.cpp,UQFFNineteenAstroSystem_S115,217,standalone,unified,
+source172.cpp,NineteenAstroSystemsModule_SOURCE115,523,standalone,gravity,"double evaluate26DPolynomial(const std::array<double, NUM_STATES> &coeffs, double x)"
+source173.cpp,PI_Infinity_Decoder_S116,56,standalone,magnetic,double computeDynamicContribution(double t)
+source173.cpp,WolframFieldUnityEngine_S116,69,standalone,magnetic,double computeDynamicContribution(double t)
+source173.cpp,WolframFieldUnityModule_SOURCE116,532,standalone,magnetic,double computeDynamicContribution(double t)

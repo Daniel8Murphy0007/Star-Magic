@@ -1,0 +1,789 @@
+﻿FILE-BY-FILE PHYSICS CLASS BREAKDOWN
+================================================================================
+
+source1.cpp (4 classes):
+  RamanujanCalculatorDialog
+  CalculusButtonField
+  BrowserWindow
+  MainWindow
+
+source2.cpp (4 classes):
+  RamanujanCalculatorDialog
+  CalculusButtonField
+  BrowserWindow
+  MainWindow
+
+source3.cpp (4 classes):
+  RamanujanCalculatorDialog
+  CalculusButtonField
+  BrowserWindow
+  MainWindow
+
+source4.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  UQFFModule4
+
+source5.cpp (3 classes):
+  DarkMatterHaloTerm
+  VacuumEnergyTerm
+  UQFFModule5
+
+source6.cpp (4 classes):
+  3DObject
+  ToolPath
+  SimulationEntity
+  CoAnQiNode
+
+source7.cpp (4 classes):
+  3DObject
+  ToolPath
+  SimulationEntity
+  CoAnQiNode
+
+source10.cpp (1 classes):
+  Source10
+
+source13.cpp (1 classes):
+  MagnetarSGR1745_2900
+
+source14.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  MagnetarSGR0501_4516
+
+source15.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SMBHSgrAStar
+
+source16.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  StarbirthTapestry
+
+source17.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  Westerlund2
+
+source18.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  PillarsOfCreation
+
+source19.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  RingsOfRelativity
+
+source20.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  GalaxyNGC2525
+
+source21.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  NGC3603
+
+source22.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  BubbleNebula
+
+source23.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  AntennaeGalaxies
+
+source24.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  HorseheadNebula
+
+source25.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  NGC1275
+
+source26.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  HUDFGalaxies
+
+source27.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  GalaxyNGC1792
+
+source28.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  AndromedaUQFFModule
+
+source29.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SombreroUQFFModule
+
+source30.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SaturnUQFFModule
+
+source31.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  M16UQFFModule
+
+source32.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  CrabUQFFModule
+
+source33.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SGR1745UQFFModule
+
+source34.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SGR1745UQFFModule
+
+source35.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SgrA_UQFFModule
+
+source36.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  TapestryUQFFModule
+
+source37.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  ResonanceSuperconductiveUQFFModule
+
+source38.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  CompressedResonanceUQFFModule
+
+source39.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  CrabResonanceUQFFModule
+
+source40.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  CompressedResonanceUQFF24Module
+
+source41.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  UniverseDiameterUQFFModule
+
+source42.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  HydrogenAtomUQFFModule
+
+source43.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  HydrogenPToEResonanceUQFFModule
+
+source44.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  LagoonUQFFModule
+
+source45.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SpiralSupernovaeUQFFModule
+
+source46.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  NGC6302UQFFModule
+
+source47.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  NGC6302ResonanceUQFFModule
+
+source48.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  OrionUQFFModule
+
+source49.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  CompressedResonanceUQFF34Module
+
+source52.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  MultiUQFFModule
+
+source54.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  YoungStarsOutflowsUQFFModule
+
+source56.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  BigBangGravityUQFFModule
+
+source57.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  MultiCompressedUQFFModule
+
+source60.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  MultiUQFFCompressionModule
+
+source64.cpp (4 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  BatchType
+  UFEOrbModule
+
+source65.cpp (4 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SystemType
+  NebularUQFFModule
+
+source66.cpp (4 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SystemType
+  RedDwarfUQFFModule
+
+source67.cpp (4 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SystemType
+  InertiaUQFFModule
+
+source68.cpp (4 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SystemType
+  HydrogenUQFFModule
+
+source69.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  UQFFCompressionModule
+
+source70.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  M51UQFFModule
+
+source71.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  NGC1316UQFFModule
+
+source72.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  V838MonUQFFModule
+
+source73.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  NGC1300UQFFModule
+
+source74.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  UQFFCompressedResonanceModule
+
+source76.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  NGC2264UQFFModule
+
+source77.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  UGC10214UQFFModule
+
+source78.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  NGC4676UQFFModule
+
+source79.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  RedSpiderUQFFModule
+
+source80.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SMBHBinaryUQFFModule
+
+source81.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  NGC346UQFFModule
+
+source82.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SMBHUQFFModule
+
+source83.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  LENRUQFFModule
+
+source84.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  LENRCalibUQFFModule
+
+source85.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  NGC346UQFFModule
+
+source86.cpp (4 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SystemType
+  MUGEModule
+
+source87.cpp (4 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SystemType
+  MUGEResonanceModule
+
+source88.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  AndromedaUQFFModule
+
+source89.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  AetherCouplingModule
+
+source90.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  BackgroundAetherModule
+
+source91.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  DPMModule
+
+source92.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  BuoyancyCouplingModule
+
+source93.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SolarWindBuoyancyModule
+
+source94.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  UgCouplingModule
+
+source95.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  MagneticStringModule
+
+source96.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  GalacticDistanceModule
+
+source97.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  FeedbackFactorModule
+
+source98.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  UnifiedFieldModule
+
+source100.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  HeavisideFractionModule
+
+source101.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  HeliosphereThicknessModule
+
+source102.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  UgIndexModule
+
+source103.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  InertiaCouplingModule
+
+source104.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  MagneticMomentModule
+
+source105.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  GalacticBlackHoleModule
+
+source106.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  NegativeTimeModule
+
+source107.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  PiConstantModule
+
+source108.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  CorePenetrationModule
+
+source109.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  QuasiLongitudinalModule
+
+source110.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  OuterFieldBubbleModule
+
+source111.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  ReciprocationDecayModule
+
+source112.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  ScmPenetrationModule
+
+source113.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  ScmReactivityDecayModule
+
+source114.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SolarCycleFrequencyModule
+
+source115.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SolarWindModulationModule
+
+source116.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SolarWindVelocityModule
+
+source117.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  StellarMassModule
+
+source118.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  StellarRotationModule
+
+source119.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  StepFunctionModule
+
+source120.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  StressEnergyTensorModule
+
+source121.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SurfaceMagneticFieldModule
+
+source122.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SurfaceTemperatureModule
+
+source123.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  TimeReversalZoneModule
+
+source124.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  Ug1DefectModule
+
+source125.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  Ug3DiskVectorModule
+
+source126.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  AetherVacuumDensityModule
+
+source127.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  UniversalInertiaVacuumModule
+
+source128.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  ScmVacuumDensityModule
+
+source129.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  UaVacuumDensityModule
+
+source130.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  UniversalInertiaVacuumModule
+
+source131.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  ScmVelocityModule
+
+source132.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  ButterflyNebulaUQFFModule
+
+source133.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  CentaurusAUQFFModule
+
+source134.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  Abell2256UQFFModule
+
+source135.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  ASASSN14liUQFFModule
+
+source136.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  CentaurusAUQFFModule
+
+source137.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  CrabNebulaUQFFModule
+
+source138.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  ElGordoUQFFModule
+
+source139.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  ESO137UQFFModule
+
+source140.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  IC2163UQFFModule
+
+source141.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  J1610UQFFModule
+
+source142.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  JupiterAuroraeUQFFModule
+
+source143.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  LagoonNebulaUQFFModule
+
+source144.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  LagoonNebulaUQFFModule
+
+source145.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  M87JetUQFFModule
+
+source146.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  NGC1365UQFFModule
+
+source147.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  NGC2207UQFFModule
+
+source148.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  RAquariiUQFFModule
+
+source149.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SgrAStarUQFFModule
+
+source150.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  SPTCLJ2215UQFFModule
+
+source151.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  StephanQuintetUQFFModule
+
+source152.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  VelaPulsarUQFFModule
+
+source153.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  Abell2256UQFFModule
+
+source154.cpp (2 classes):
+  HydrogenResonanceUQFFModule
+  SurfaceMagneticFieldModule
+
+source155.cpp (2 classes):
+  UQFFBuoyancyModule
+  SurfaceMagneticFieldModule
+
+source156.cpp (4 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  UQFFBuoyancyCNBModule
+  SurfaceMagneticFieldModule
+
+source157.cpp (4 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  UQFFBuoyancyModule157
+  SurfaceMagneticFieldModule
+
+source158.cpp (4 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  UQFFBuoyancyModule
+  SurfaceMagneticFieldModule
+
+source159.cpp (4 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  UQFFBuoyancyModule
+  SurfaceMagneticFieldModule
+
+source160.cpp (1 classes):
+  UQFFBuoyancyModule
+
+source161.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  UQFFBuoyancyAstroModule
+
+source162.cpp (3 classes):
+  DynamicVacuumTerm
+  QuantumCouplingTerm
+  UQFFBuoyancyCNBModule
+
+source163.cpp (1 classes):
+  AstroSystemsUQFFModule
+
+source164.cpp (1 classes):
+  UQFFNebulaTriadicModule
+
+source165.cpp (1 classes):
+  UQFFBuoyancyModule
+
+source166.cpp (1 classes):
+  UQFF8AstroSystemsModule
+
+source167.cpp (2 classes):
+  UQFFCoreModule
+  UQFFSystem
+
+source168.cpp (2 classes):
+  UQFFBuoyancyCore
+  UQFFBuoyancySystem
+
+source169.cpp (2 classes):
+  UQFFCassiniCore
+  UQFFCassiniSystem
+
+source170.cpp (2 classes):
+  UQFFMultiAstroCore
+  UQFFMultiAstroSystem
+
+source171.cpp (3 classes):
+  UQFFEightAstroCore
+  UQFFEightAstroSystem
+  EightAstroSystemsModule_SOURCE114
+
+source172.cpp (4 classes):
+  PhysicsTerm_S115
+  UQFFNineteenAstroCore_S115
+  UQFFNineteenAstroSystem_S115
+  NineteenAstroSystemsModule_SOURCE115
+
+source173.cpp (3 classes):
+  PI_Infinity_Decoder_S116
+  WolframFieldUnityEngine_S116
+  WolframFieldUnityModule_SOURCE116
