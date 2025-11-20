@@ -176,8 +176,30 @@ public:
 };
 
 #endif // UQFF_BUOYANCY_MODULE_H
-// SurfaceMagneticFieldModule.cpp
-// // // #include "SurfaceMagneticFieldModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+
+// SurfaceMagneticFieldModule - inline implementation
+#ifndef SURFACE_MAGNETIC_FIELD_MODULE_H
+#define SURFACE_MAGNETIC_FIELD_MODULE_H
+
+class SurfaceMagneticFieldModule {
+private:
+    std::map<std::string, double> variables;
+public:
+    SurfaceMagneticFieldModule() {
+        variables["B_s_min"] = 1e-4;
+        variables["B_s_max"] = 0.3;
+        variables["B_ref"] = 1e-4;
+        variables["omega_s"] = 2 * M_PI * 1e-9;
+    }
+    double computeB_s_min();
+    double computeB_s_max();
+    double computeB_j(double t, double B_s);
+    void updateVariable(const std::string& name, double value) { variables[name] = value; }
+};
+
+#endif // SURFACE_MAGNETIC_FIELD_MODULE_H
+
+// SurfaceMagneticFieldModule.cpp implementation
 // Compute B_s minimum (quiet Sun)
 double SurfaceMagneticFieldModule::computeB_s_min() {
     return variables["B_s_min"];

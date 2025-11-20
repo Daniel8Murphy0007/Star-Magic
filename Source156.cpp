@@ -178,8 +178,7 @@ public:
 
 #endif // UQFF_BUOYANCY_CNB_MODULE_H
 
-// UQFFBuoyancyCNBModule.cpp
-#include "UQFFBuoyancyCNBModule.h"
+// UQFFBuoyancyCNBModule.cpp implementation
 #include <complex>
 
 // Constructor: Set all variables with multi-system defaults

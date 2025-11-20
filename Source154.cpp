@@ -62,8 +62,25 @@ public:
 
 #endif // HYDROGEN_RESONANCE_UQFF_MODULE_H
 
-// SurfaceMagneticFieldModule.cpp
-#include "SurfaceMagneticFieldModule.h"
+// SurfaceMagneticFieldModule - inline implementation
+#ifndef SURFACE_MAGNETIC_FIELD_MODULE_H
+#define SURFACE_MAGNETIC_FIELD_MODULE_H
+
+class SurfaceMagneticFieldModule {
+private:
+    std::map<std::string, double> variables;
+public:
+    SurfaceMagneticFieldModule() {
+        variables["B_ref"] = 1e-4;  // Reference field
+        variables["omega_s"] = 2 * M_PI * 1e-9;  // Surface oscillation
+    }
+    double computeB_j(double t, double B_s);
+    void updateVariable(const std::string& name, double value) { variables[name] = value; }
+};
+
+#endif // SURFACE_MAGNETIC_FIELD_MODULE_H
+
+// SurfaceMagneticFieldModule.cpp implementation
 // Compute scaled B_j based on time t and surface field B_s
 double SurfaceMagneticFieldModule::computeB_j(double t, double B_s) {
     variables["t"] = t;
