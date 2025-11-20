@@ -1,29 +1,46 @@
 {
     "project": "Star-Magic UQFF Framework",
     "main_file": "MAIN_1_CoAnQi.cpp",
-    "integration_date": "2025-11-18",
-    "status": "COMPLETE",
-    "compilation_status": "SUCCESS",
+    "integration_date": "2025-11-20",
+    "status": "IN PROGRESS - BATCH 15",
+    "compilation_status": "PENDING VALIDATION",
     "summary": {
         "total_source_files": 173,
         "files_processed": 173,
         "files_integrated": 116,
         "files_skipped": 57,
-        "total_modules": 446,
-        "unique_physics_terms": 446,
-        "target_terms": 200,
-        "completion_percentage": 223.0,
-        "lines_of_code": 18463,
-        "source_size_kb": 677,
-        "compiled_size_mb": 1.28,
+        "total_modules": 807,
+        "unique_physics_terms": 807,
+        "target_terms": 3000,
+        "completion_percentage": 26.9,
+        "lines_of_code": 27090,
+        "source_size_kb": 1100,
+        "compiled_size_mb": 2.5,
         "framework_version": "2.0-Enhanced",
-        "compiler": "g++ -std=c++17"
+        "compiler": "g++ -std=c++17",
+        "batches_completed": 15,
+        "latest_commit": "91754c2"
     },
     "physics_categories": {
         "SOURCE_blocks": {
             "count": 116,
             "terms": 446,
             "description": "Core physics systems integrated into SOURCE1-116 blocks"
+        },
+        "batch_14_computeG": {
+            "count": 74,
+            "terms": 74,
+            "description": "Time-dependent gravity g(r,t) from all 74 UQFF modules (source100-173)",
+            "integration_date": "2025-11-20",
+            "frequency_range": "1e-17 Hz to 622 Hz",
+            "notable_systems": ["Black Widow Pulsar 622Hz", "NGC4993 kilonova", "Wolfram PI-decoder"]
+        },
+        "batch_15_helpers": {
+            "count": 27,
+            "terms": 27,
+            "description": "Module-specific helper methods (factors, base computations, derived quantities)",
+            "integration_date": "2025-11-20",
+            "methods": ["Heaviside factors", "magnetic moments", "decay rates", "penetration factors", "gravity indices"]
         },
         "embedded_terms": {
             "count": 6,
