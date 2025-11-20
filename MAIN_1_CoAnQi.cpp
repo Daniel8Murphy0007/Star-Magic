@@ -17251,28 +17251,7 @@ public:
     std::string getDescription() const override { return "TDE force"; }
 };
 
-class ASASSN14li_CompressedTerm : public PhysicsTerm {
-public:
-    ASASSN14li_CompressedTerm() { setMetadata("source", "source135.cpp"); }
-    double compute(double t, const std::map<std::string, double>& params) const override {
-        double M = getDynamicParameter("M", 1.989e37);
-        double r = getDynamicParameter("r", 3.09e18);
-        return (M / r) * 1e-10;
-    }
-    std::string getName() const override { return "ASASSN14li_Compressed"; }
-    std::string getDescription() const override { return "Compressed g TDE"; }
-};
-
-class ASASSN14li_BuoyancyTerm : public PhysicsTerm {
-public:
-    ASASSN14li_BuoyancyTerm() { setMetadata("source", "source135.cpp"); }
-    double compute(double t, const std::map<std::string, double>& params) const override {
-        double rho_vac = getDynamicParameter("rho_vac_UA", 7.09e-36);
-        return rho_vac * 1e45;
-    }
-    std::string getName() const override { return "ASASSN14li_Buoyancy"; }
-    std::string getDescription() const override { return "Buoyancy TDE"; }
-};
+// Source135 duplicate classes removed - originals at lines 14764-14787
 
 // Source136-140: Similar pattern (CentaurusA, CrabNebula, ElGordo, ESO137, IC2163)
 // Each has 15 compute methods - adding representative subset for efficiency
@@ -17404,40 +17383,7 @@ public:
     std::string getDescription() const override { return "El Gordo total force"; }
 };
 
-class ElGordo_CompressedTerm : public PhysicsTerm {
-public:
-    ElGordo_CompressedTerm() { setMetadata("source", "source138.cpp"); }
-    double compute(double t, const std::map<std::string, double>& params) const override {
-        double M = getDynamicParameter("M", 4.97e45);
-        double r = getDynamicParameter("r", 3.09e22);
-        return (M / r) * 1e-10;
-    }
-    std::string getName() const override { return "ElGordo_Compressed"; }
-    std::string getDescription() const override { return "El Gordo compressed g"; }
-};
-
-class ESO137_IntegrandTerm : public PhysicsTerm {
-public:
-    ESO137_IntegrandTerm() { setMetadata("source", "Source139.cpp"); }
-    double compute(double t, const std::map<std::string, double>& params) const override {
-        double M = getDynamicParameter("M", 2e41);
-        double r = getDynamicParameter("r", 6.17e21);
-        return M / (r * r * r);
-    }
-    std::string getName() const override { return "ESO137_Integrand"; }
-    std::string getDescription() const override { return "ESO 137-001 integrand"; }
-};
-
-class ESO137_LENR_termTerm : public PhysicsTerm {
-public:
-    ESO137_LENR_termTerm() { setMetadata("source", "Source139.cpp"); }
-    double compute(double t, const std::map<std::string, double>& params) const override {
-        double rho_0 = getDynamicParameter("rho_0", 1e-15);
-        return 1.0 / rho_0;
-    }
-    std::string getName() const override { return "ESO137_LENR_term"; }
-    std::string getDescription() const override { return "ESO 137-001 LENR"; }
-};
+// Source138-139 duplicate classes removed - originals at lines 14850+
 
 class ESO137_FTerm : public PhysicsTerm {
 public:
@@ -17451,17 +17397,7 @@ public:
     std::string getDescription() const override { return "ESO 137-001 total force"; }
 };
 
-class ESO137_CompressedTerm : public PhysicsTerm {
-public:
-    ESO137_CompressedTerm() { setMetadata("source", "Source139.cpp"); }
-    double compute(double t, const std::map<std::string, double>& params) const override {
-        double M = getDynamicParameter("M", 2e41);
-        double r = getDynamicParameter("r", 6.17e21);
-        return (M / r) * 1e-10;
-    }
-    std::string getName() const override { return "ESO137_Compressed"; }
-    std::string getDescription() const override { return "ESO 137-001 compressed g"; }
-};
+// Source139 duplicate ESO137_CompressedTerm removed - original at line 14474
 
 class IC2163_IntegrandTerm : public PhysicsTerm {
 public:
@@ -17740,15 +17676,7 @@ public:
     std::string getDescription() const override { return "Total UQFF force for NGC 1365"; }
 };
 
-class NGC1365_CompressedTerm : public PhysicsTerm {
-public:
-    NGC1365_CompressedTerm() { setMetadata("source", "source146.cpp"); }
-    double compute(double t, const std::map<std::string, double>& params) const override {
-        return (7.17e41 / 9.46e20) * 1e-10;
-    }
-    std::string getName() const override { return "NGC1365_Compressed"; }
-    std::string getDescription() const override { return "Compressed g for NGC 1365"; }
-};
+// Source146 duplicate classes removed - originals at lines 14661+
 
 // ===== Source147 - NGC2207UQFFModule (Interacting galaxies, 4 terms) =====
 class NGC2207_IntegrandTerm : public PhysicsTerm {
@@ -20615,7 +20543,7 @@ public:
 
 class StellarMass_M_sInMsun : public PhysicsTerm {
 public:
-    StellarMass_M_sInMsun() { setMetadata("source", "source117.cpp"); setMetadata("physics", "stellar_mass"; }
+    StellarMass_M_sInMsun() { setMetadata("source", "source117.cpp"); setMetadata("physics", "stellar_mass"); }
     double compute(double t, const std::map<std::string, double>& params) const override {
         return 1.0;  // M_☉
     }
@@ -20974,6 +20902,7 @@ void registerAllPhysicsTerms(CalculatorCore& core) {
     core.registerPhysicsTerm("ESO137_Q_wave", std::make_unique<ESO137_Q_waveTerm>(), "auto-registered");
     core.registerPhysicsTerm("ESO137_Ub1", std::make_unique<ESO137_Ub1Term>(), "auto-registered");
     core.registerPhysicsTerm("ESO137_Ui", std::make_unique<ESO137_UiTerm>(), "auto-registered");
+    core.registerPhysicsTerm("ESO137_F", std::make_unique<ESO137_FTerm>(), "auto-registered");
     
     // NGC1365 Barred Spiral Galaxy (3 terms)
     core.registerPhysicsTerm("NGC1365_Buoyancy", std::make_unique<NGC1365_BuoyancyTerm>(), "auto-registered");
@@ -21201,8 +21130,7 @@ void registerAllPhysicsTerms(CalculatorCore& core) {
     core.registerPhysicsTerm("ASASSN14li_LENR_term", std::make_unique<ASASSN14li_LENR_termTerm>(), "auto-registered");
     core.registerPhysicsTerm("ASASSN14li_Q_wave", std::make_unique<ASASSN14li_Q_waveTerm>(), "auto-registered");
     core.registerPhysicsTerm("ASASSN14li_F", std::make_unique<ASASSN14li_FTerm>(), "auto-registered");
-    core.registerPhysicsTerm("ASASSN14li_Compressed", std::make_unique<ASASSN14li_CompressedTerm>(), "auto-registered");
-    core.registerPhysicsTerm("ASASSN14li_Buoyancy", std::make_unique<ASASSN14li_BuoyancyTerm>(), "auto-registered");
+    // Duplicate registrations removed - originals at lines 20927-20928
 
     // Source136 - CentaurusA UQFF (4 terms)
     core.registerPhysicsTerm("CentaurusA_X2", std::make_unique<CentaurusA_X2Term>(), "auto-registered");
@@ -21220,13 +21148,9 @@ void registerAllPhysicsTerms(CalculatorCore& core) {
     core.registerPhysicsTerm("ElGordo_Integrand", std::make_unique<ElGordo_IntegrandTerm>(), "auto-registered");
     core.registerPhysicsTerm("ElGordo_LENR_term", std::make_unique<ElGordo_LENR_termTerm>(), "auto-registered");
     core.registerPhysicsTerm("ElGordo_F", std::make_unique<ElGordo_FTerm>(), "auto-registered");
-    core.registerPhysicsTerm("ElGordo_Compressed", std::make_unique<ElGordo_CompressedTerm>(), "auto-registered");
+    // Duplicate registration removed - original at line 20933
 
-    // Source139 - ESO137UQFFModule (4 terms)
-    core.registerPhysicsTerm("ESO137_Integrand", std::make_unique<ESO137_IntegrandTerm>(), "auto-registered");
-    core.registerPhysicsTerm("ESO137_LENR_term", std::make_unique<ESO137_LENR_termTerm>(), "auto-registered");
-    core.registerPhysicsTerm("ESO137_F", std::make_unique<ESO137_FTerm>(), "auto-registered");
-    core.registerPhysicsTerm("ESO137_Compressed", std::make_unique<ESO137_CompressedTerm>(), "auto-registered");
+    // Source139 - ESO137UQFFModule registrations removed (classes were duplicates from earlier batch)
 
     // Source140 - IC2163UQFFModule (4 terms)
     core.registerPhysicsTerm("IC2163_Integrand", std::make_unique<IC2163_IntegrandTerm>(), "auto-registered");
@@ -21269,7 +21193,7 @@ void registerAllPhysicsTerms(CalculatorCore& core) {
     core.registerPhysicsTerm("NGC1365_Integrand", std::make_unique<NGC1365_IntegrandTerm>(), "auto-registered");
     core.registerPhysicsTerm("NGC1365_LENR_term", std::make_unique<NGC1365_LENR_termTerm>(), "auto-registered");
     core.registerPhysicsTerm("NGC1365_F", std::make_unique<NGC1365_FTerm>(), "auto-registered");
-    core.registerPhysicsTerm("NGC1365_Compressed", std::make_unique<NGC1365_CompressedTerm>(), "auto-registered");
+    // Duplicate registration removed - original at line 20918
     
     // Source147 - NGC2207
     core.registerPhysicsTerm("NGC2207_Integrand", std::make_unique<NGC2207_IntegrandTerm>(), "auto-registered");

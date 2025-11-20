@@ -111,7 +111,7 @@ endif()
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # ========== WOLFRAM ENGINE INTEGRATION (OPTIONAL) ==========
-option(USE_EMBEDDED_WOLFRAM "Enable embedded Wolfram kernel via WSTP" OFF)
+option(USE_EMBEDDED_WOLFRAM "Enable embedded Wolfram kernel via WSTP" ON)
 
 if(USE_EMBEDDED_WOLFRAM)
     # WSTP-Specific Settings: C:\Program Files\Wolfram Research\Wolfram Engine\14.3\SystemFiles\Links\WSTP\DeveloperKit\Windows-x86-64\CompilerAdditions\wstp
