@@ -123,3 +123,19 @@ test_wolfram.txt
 CMakeCache.txt
 CMakeFiles/
 cmake_install.cmake
+
+# Auto-generated physics term files (November 20, 2025)
+register_*_terms.cpp
+physics_registration.cpp
+generated_*_physics_terms.cpp
+physics_term_wrappers_*.cpp
+extracted_complete_implementations.cpp
+extracted_all_missing_classes.h
+extracted_complete_classes.h
+generated_wrappers.txt
+physics_term_inventory.txt
+
+# Temporary working files
+Untitled-*.py
+Untitled-*.cpp
+Untitled-*.txt

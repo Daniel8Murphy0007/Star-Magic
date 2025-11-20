@@ -1,6 +1,27 @@
 
-// StarMagicUQFFModule.cpp
-#include "StarMagicUQFFModule.h"
+// StarMagicUQFFModule - inline class definition
+#ifndef STAR_MAGIC_UQFF_MODULE_H
+#define STAR_MAGIC_UQFF_MODULE_H
+
+#include <map>
+#include <string>
+#include <complex>
+
+using cdouble = std::complex<double>;
+
+class StarMagicUQFFModule {
+private:
+    std::map<std::string, cdouble> variables;
+public:
+    StarMagicUQFFModule();
+    cdouble computeF(double t);
+    void updateVariable(const std::string& name, cdouble value) { variables[name] = value; }
+    void printVariables();
+};
+
+#endif // STAR_MAGIC_UQFF_MODULE_H
+
+// StarMagicUQFFModule.cpp implementation
 #include <complex>
 
 // Constructor: Set all variables with Star Magic-specific values

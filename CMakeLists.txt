@@ -154,7 +154,18 @@ if(USE_EMBEDDED_WOLFRAM)
         shell32
     )
     
+    # Physics term extractor (Wolfram-powered)
+    add_executable(PhysicsTermExtractor physics_term_extractor_main.cpp)
+    target_link_libraries(PhysicsTermExtractor 
+        wstp64i4
+        kernel32
+        user32
+        advapi32
+        shell32
+    )
+    
     message(STATUS "MAIN_1_CoAnQi compiled WITH Wolfram WSTP support")
+    message(STATUS "PhysicsTermExtractor compiled WITH Wolfram WSTP support")
 else()
     add_executable(MAIN_1_CoAnQi MAIN_1_CoAnQi.cpp)
     message(STATUS "MAIN_1_CoAnQi compiled WITHOUT Wolfram support")
