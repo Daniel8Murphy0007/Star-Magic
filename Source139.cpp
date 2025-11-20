@@ -366,7 +366,7 @@ cdouble ESO137UQFFModule::computeSuperconductive(double t) {
     cdouble rho_sc = variables["rho_vac_SCm"];
     cdouble rho_ua = variables["rho_vac_UA"];
     cdouble omega_s = variables["omega_s"];
-    double cos_term = cos(pi_val * tn);
+    double cos_term = cos(variables["pi"].real() * tn);
     cdouble f_trz = variables["f_TRZ"];
     return lambda * (rho_sc / rho_ua * omega_s * cos_term * (1 + f_trz.real()));
 }
@@ -445,26 +445,27 @@ void ESO137UQFFModule::printVariables() {
 // Sample Output at t=24.5 Myr: F ? -8.32e211 + i (large; approx per framework; dominant real from LENR * x2).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 11, 2025.
 
+/*
 ESO137UQFFModule Evaluation
 
-Strengths :
--Highly modular and pluggable; can be included and instantiated easily in other projects or simulations.
-- Uses `std::map<std::string, std::complex<double>>` for all variables, supporting dynamic updates and complex - valued physics.
-- Core computation methods(computeF, computeIntegrand, computeLENRTerm, computeDPM_resonance, etc.) are clear, concise, and variable - driven.
-- Integrates a comprehensive set of physical effects : base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino, and more.
+Strengths:
+- Highly modular and pluggable; can be included and instantiated easily in other projects or simulations.
+- Uses std::map<std::string, std::complex<double>> for all variables, supporting dynamic updates and complex-valued physics.
+- Core computation methods (computeF, computeIntegrand, computeLENRTerm, computeDPM_resonance, etc.) are clear, concise, and variable-driven.
+- Integrates a comprehensive set of physical effects: base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino, and more.
 - Approximates the integral using a quadratic root and complex arithmetic, allowing for both real and imaginary contributions.
-- Output and debugging functions(printVariables, getEquationText) provide transparency and aid validation.
-- Well - documented physical meaning, example calculations, and usage in comments and equation text.
+- Output and debugging functions (printVariables, getEquationText) provide transparency and aid validation.
+- Well-documented physical meaning, example calculations, and usage in comments and equation text.
 - Supports dynamic addition, subtraction, and update of variables, including complex values.
 
 Weaknesses / Recommendations:
--Many constants and parameters are hardcoded; consider external configuration(e.g., JSON, XML) for greater flexibility and scientific reproducibility.
+- Many constants and parameters are hardcoded; consider external configuration (e.g., JSON, XML) for greater flexibility and scientific reproducibility.
 - Minimal error handling for missing variables, invalid input, or division by zero; add validation for robustness.
 - Unit consistency is described in comments but not enforced; runtime checks or clearer documentation would help.
-- For large - scale or performance - critical simulations, consider more efficient data structures than `std::map` and optimize the integration / approximation routines.
-- Expand documentation for function purposes, expected input / output, and physical context for each term.
+- For large-scale or performance-critical simulations, consider more efficient data structures than std::map and optimize the integration/approximation routines.
+- Expand documentation for function purposes, expected input/output, and physical context for each term.
 - Imaginary components are present but not fully scaled or physically interpreted; clarify their role in scientific output.
 
 Summary:
-The code is well - structured, clear, and suitable for advanced scientific prototyping and educational use in unified field modeling for jellyfish galaxies.It is dynamic, extensible, and supports complex - valued physics.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
-
+The code is well-structured, clear, and suitable for advanced scientific prototyping and educational use in unified field modeling for jellyfish galaxies. It is dynamic, extensible, and supports complex-valued physics. For production or high-performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+*/

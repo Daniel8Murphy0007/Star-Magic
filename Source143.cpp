@@ -366,7 +366,7 @@ cdouble LagoonNebulaUQFFModule::computeSuperconductive(double t) {
     cdouble rho_sc = variables["rho_vac_SCm"];
     cdouble rho_ua = variables["rho_vac_UA"];
     cdouble omega_s = variables["omega_s"];
-    double cos_term = cos(pi_val * tn);
+    double cos_term = cos(variables["pi"].real() * tn);
     cdouble f_trz = variables["f_TRZ"];
     return lambda * (rho_sc / rho_ua * omega_s * cos_term * (1 + f_trz.real()));
 }
@@ -476,5 +476,6 @@ Potential Improvements
 Summary
 ------ -
 -The code is robust, modular, and well - suited for scientific simulation and experimentation.
-- Ready for integration into larger simulation frameworks and can be easily extended or adapted. */
+- Ready for integration into larger simulation frameworks and can be easily extended or adapted.
+ */
 
