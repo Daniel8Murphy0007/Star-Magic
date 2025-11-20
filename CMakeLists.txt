@@ -114,8 +114,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 option(USE_EMBEDDED_WOLFRAM "Enable embedded Wolfram kernel via WSTP" OFF)
 
 if(USE_EMBEDDED_WOLFRAM)
-    # WSTP-Specific Settings: C:\Program Files\Wolfram Research\Wolfram Engine\14.1\SystemFiles\Links\WSTP\DeveloperKit\Windows-x86-64\CompilerAdditions\wstp
-    set(WSTP_DIR "C:/Program Files/Wolfram Research/Wolfram Engine/14.1/SystemFiles/Links/WSTP/DeveloperKit/Windows-x86-64/CompilerAdditions")
+    # WSTP-Specific Settings: C:\Program Files\Wolfram Research\Wolfram Engine\14.3\SystemFiles\Links\WSTP\DeveloperKit\Windows-x86-64\CompilerAdditions\wstp
+    set(WSTP_DIR "C:/Program Files/Wolfram Research/Wolfram Engine/14.3/SystemFiles/Links/WSTP/DeveloperKit/Windows-x86-64/CompilerAdditions")
     
     if(EXISTS "${WSTP_DIR}")
         # C/C++ → General → Additional Include Directories

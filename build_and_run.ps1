@@ -20,7 +20,7 @@ Write-Host "Build Type: $BuildType" -ForegroundColor Yellow
 # Configuration
 $VSBuildDir = "build_msvc"
 $MinGWBuildDir = "build"
-$WolframEnginePath = "C:\Program Files\Wolfram Research\Wolfram Engine\14.1\SystemFiles\Libraries\Windows-x86-64"
+$WolframEnginePath = "C:\Program Files\Wolfram Research\Wolfram Engine\14.3\SystemFiles\Libraries\Windows-x86-64"
 
 # Clean build directories if requested
 if ($Clean) {

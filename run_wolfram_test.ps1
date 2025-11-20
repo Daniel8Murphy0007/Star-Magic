@@ -1,5 +1,5 @@
 # Add Wolfram DLL to PATH
-$env:PATH = "C:\Program Files\Wolfram Research\Wolfram Engine\14.1\SystemFiles\Libraries\Windows-x86-64;" + $env:PATH
+$env:PATH = "C:\Program Files\Wolfram Research\Wolfram Engine\14.3\SystemFiles\Libraries\Windows-x86-64;" + $env:PATH
 
 # Run MAIN_1_CoAnQi with option 9 (Wolfram), then 10 (Exit)
 Write-Host "=== Testing Wolfram Integration in MAIN_1_CoAnQi ===" -ForegroundColor Cyan
