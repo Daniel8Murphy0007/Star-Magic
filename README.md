@@ -1,8 +1,9 @@
 # Star-Magic
 
-**Last Updated**: November 20, 2025 @ 4:15 AM
-**Latest Commit**: 883974b (Production updates + docs sync)
-**Progress**: 827 of 3000+ terms (27.6% complete)**Unveiling Superconductivity that Unifies the Quantum and Universal Field Equations**
+**Last Updated**: November 20, 2025 @ 5:00 AM
+**Latest Commit**: f1abfd8 (Inventory and tools integration)
+**Progress**: 827 of 3000+ terms (27.6% complete)
+**Wolfram Integration**: ✅ Fully integrated (see [WOLFRAM_INTEGRATION_STATUS.md](WOLFRAM_INTEGRATION_STATUS.md))**Unveiling Superconductivity that Unifies the Quantum and Universal Field Equations**
 
 ## Overview
 
@@ -77,6 +78,7 @@ This unified theory addresses fundamental physics problems including:
   - **Integrated**: 116 files → 446 modules (SOURCE1-116 in MAIN_1_CoAnQi.cpp)
   - **Skipped**: 57 files (GUI infrastructure, duplicate wrappers)
   - **Latest**: Source171 (8 astro systems), Source172 (19-system 26D), Source173 (Wolfram hypergraph)
+  - **Wolfram WSTP**: Source174-176 (embedded kernel, UQFF export, auto-collection)
   - **Framework**: Self-expanding 2.0 with dynamic term registration
 
 ### Documentation
@@ -86,7 +88,15 @@ This unified theory addresses fundamental physics problems including:
 - **MAIN_1_CoAnQi_integration_status.json**: Complete build status and physics terms
 - **BUILD_INSTRUCTIONS_PERMANENT.md**: Critical build workflow (**READ EVERY TIME**)
 - **ENHANCEMENT_GUIDE.md**: Self-expanding physics module system guide
+- **WOLFRAM_INTEGRATION_STATUS.md**: Wolfram Engine integration guide (optional, MSVC-only)
 - **.github/copilot-instructions.md**: AI agent development guidelines
+
+### Automation Tools (New)
+
+- **Extraction Scripts**: 9 PowerShell/Python scripts for automated physics term extraction
+- **Physics Inventories**: 4 CSV files cataloguing 473 classes from all source files
+- **Reference Docs**: Quick lookup indices and statistical analysis
+- **See**: COMPLETE_PHYSICS_CLASS_INVENTORY.csv, batch_extract_all_classes.ps1
 
 ### AI Integration
 
