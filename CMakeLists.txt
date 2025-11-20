@@ -25,14 +25,14 @@ endif()
 # Global include directories for all targets
 include_directories(C:/vcpkg/installed/x64-windows/include)
 
-# Set C++ standard
-set(CMAKE_CXX_STANDARD 17)
+# Set C++ standard to C++20 for maximum VR/VM functionality
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Compiler-specific flags for MSVC
 if(MSVC)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /std:c++17 /permissive- /Zc:__cplusplus /GR-")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /std:c++20 /permissive- /Zc:__cplusplus /GR-")
     set(CMAKE_CXX_FLAGS_DEBUG "/Zi /Od")
     set(CMAKE_CXX_FLAGS_RELEASE "/Os /GL /Gw /Zc:inline /GF")  # /Os = Favor small code, /GL = Whole Program Optimization, /Gw = Global data optimization, /Zc:inline = Remove unreferenced inline, /GF = String pooling
     
@@ -142,7 +142,8 @@ add_executable(MAIN_1 MAIN_1.cpp)
 
 # MAIN_1_CoAnQi with optional Wolfram integration
 if(USE_EMBEDDED_WOLFRAM)
-    add_executable(MAIN_1_CoAnQi MAIN_1_CoAnQi.cpp source174_wolfram_bridge_embedded.cpp)
+    # source174 is included via source176, don't add it separately to avoid duplicate definitions
+    add_executable(MAIN_1_CoAnQi MAIN_1_CoAnQi.cpp)
     
     # Linker → Input → Additional Dependencies: wstp64i4.lib + Windows system libraries
     target_link_libraries(MAIN_1_CoAnQi 
