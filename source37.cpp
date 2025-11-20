@@ -169,6 +169,7 @@ public:
 // ResonanceSuperconductiveUQFFModule.cpp
 // // // #include "ResonanceSuperconductiveUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with UQFF-specific values for resonance/superconductivity
 ResonanceSuperconductiveUQFFModule::ResonanceSuperconductiveUQFFModule() {

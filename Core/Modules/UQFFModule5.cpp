@@ -1289,6 +1289,7 @@ void run_unit_tests()
 #include <fstream>
 #include <iomanip>
 #include <stdexcept>
+#include <array> // MSVC requirement
 // Note: All local headers removed - all structures/classes defined earlier in this file
 // #include "CelestialBody.h"  // Removed - struct defined in this file
 // #include "MUGE.h"  // Removed - structures defined in this file

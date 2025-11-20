@@ -13,16 +13,26 @@
 ## Developer Workflows
 ### C++ Build (Primary)
 ```powershell
-# Configure (MinGW Makefiles - NOT Visual Studio)
+# Configure - Visual Studio 2022 (Release-MaxCompress optimizations)
+cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64
+
+# Configure - MinGW (alternative, smaller footprint)
 cmake -S . -B build -G "MinGW Makefiles"
 
-# Build primary executable
+# Build with Visual Studio (Release-MaxCompress + UPX compression)
+cmake --build build_msvc --config Release --target MAIN_1_CoAnQi
+
+# Build with MinGW
 cmake --build build --target MAIN_1_CoAnQi
 
 # Run interactive calculator (9 menu options)
-.\build\MAIN_1_CoAnQi.exe
+.\build_msvc\Release\MAIN_1_CoAnQi.exe   # Visual Studio optimized
+.\build\MAIN_1_CoAnQi.exe                # MinGW
 
-# Clean rebuild
+# Clean rebuild (Visual Studio)
+Remove-Item -Recurse -Force build_msvc -ErrorAction SilentlyContinue; cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64; cmake --build build_msvc --config Release
+
+# Clean rebuild (MinGW)
 Remove-Item -Recurse -Force build -ErrorAction SilentlyContinue; cmake -S . -B build -G "MinGW Makefiles"; cmake --build build
 ```
 
@@ -103,6 +113,11 @@ SimpleLockGuard<SimpleMutex> lock;   // RAII lock guard (lines 142-162)
 - `ENHANCEMENT_GUIDE.md` - Self-expanding framework guide (examples, architecture, scientific integrity)
 - `BUILD_INSTRUCTIONS_PERMANENT.md` - **CRITICAL:** vcpkg path warnings, Visual Studio vs. MinGW conflicts
 - `README.md` - Project overview, UQFF theory, author info
+- `Star Magic.md` - Complete theoretical framework and equations
+
+### Build Configuration
+- `CMakeLists.txt` - Visual Studio 2022 + MinGW generators, C++17, Release-MaxCompress optimization flags, WSTP integration
+- `observational_systems_config.h` - 35+ astrophysical systems parameters (ESO137, NGC1365, Vela, etc.)
 - `Star Magic.md` - Complete theoretical framework and equations
 
 ### Build Configuration

@@ -178,6 +178,7 @@ public:
 // SgrAStarUQFFModule.cpp
 // // // #include "SgrAStarUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Sgr A*-specific values
 SgrAStarUQFFModule::SgrAStarUQFFModule() {

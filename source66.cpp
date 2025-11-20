@@ -192,6 +192,7 @@ public:
 // RedDwarfUQFFModule.cpp
 // #include "RedDwarfUQFFModule.h"  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor
 RedDwarfUQFFModule::RedDwarfUQFFModule(SystemType sys) : current_system(sys)

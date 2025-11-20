@@ -6,6 +6,22 @@ cmake_minimum_required(VERSION 3.10)
 # Project name and programming language
 project(StarMagic_UQFF LANGUAGES CXX)
 
+# ========== FORCE MSVC ON WINDOWS ==========
+# WSTP libraries (wstp64i4.lib, wstp64i4.dll) are MSVC-compiled ONLY
+# MinGW CANNOT link with these libraries - binary incompatibility
+if(WIN32 AND NOT MSVC)
+    message(FATAL_ERROR "\n"
+        "============================================================\n"
+        "ERROR: This project REQUIRES MSVC on Windows!\n"
+        "\n"
+        "REASON: Wolfram WSTP libraries are MSVC-compiled only.\n"
+        "        MinGW cannot link with MSVC binaries.\n"
+        "\n"
+        "SOLUTION: Use Visual Studio generator:\n"
+        "  cmake -G \"Visual Studio 17 2022\" -A x64 -S . -B build\n"
+        "============================================================\n")
+endif()
+
 # Global include directories for all targets
 include_directories(C:/vcpkg/installed/x64-windows/include)
 
@@ -14,23 +30,154 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Enable debugging symbols
-set(CMAKE_BUILD_TYPE Debug)
-
-# Compiler-specific flags
+# Compiler-specific flags for MSVC
 if(MSVC)
-    set(CMAKE_CXX_FLAGS_DEBUG "/Zi /Od /W4")
-else()
-    set(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -Wall -Wextra")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /std:c++17 /permissive- /Zc:__cplusplus /GR-")
+    set(CMAKE_CXX_FLAGS_DEBUG "/Zi /Od")
+    set(CMAKE_CXX_FLAGS_RELEASE "/Os /GL /Gw /Zc:inline /GF")  # /Os = Favor small code, /GL = Whole Program Optimization, /Gw = Global data optimization, /Zc:inline = Remove unreferenced inline, /GF = String pooling
+    
+    # RECOMMENDED FINAL RELEASE CONFIGURATION "Release-MaxCompress"
+    # Configuration verified against VS2022 Property Pages best practices
+    
+    # STEP 1 of 8: Whole Program Optimization Control Points
+    # /GL (Whole Program Optimization) + Linker → /LTCG + /OPT:REF + /OPT:ICF
+    # Applies to: All 175 .cpp files (source*.cpp, MAIN_1*.cpp, Core/Modules/*.cpp)
+    # Effect: Code + identical COMDAT folding across entire codebase
+    
+    # STEP 2 of 8: Favor Size Optimization
+    # /Os instead of /O2 or /Ox
+    # Effect: Prioritizes code size over speed (smaller binaries, better cache utilization)
+    # VS2022 Property Pages: C/C++ → Optimization → Favor Size or Speed = Favor small code (/Os)
+    
+    # STEP 3 of 8: Global Data Optimization + Inline Function Elimination
+    # /Gw (Global Data Optimization) - separate COMDAT sections for each global variable
+    # /Zc:inline (Remove Unreferenced Inline) - eliminates unused inline/template functions
+    # Effect: CRITICAL for this project - removes duplicate constexpr/static data across 175+ translation units
+    # Expected savings: 500KB-2MB (massive static const duplication in physics modules)
+    # VS2022 Property Pages: C/C++ → Optimization → Enable Global Data Optimization = Yes (/Gw)
+    
+    # STEP 7 of 8: Standards Conformance for Better LTCG Optimization
+    # /permissive- - strict C++ standards conformance mode
+    # /Zc:__cplusplus - report correct __cplusplus macro value (201703L for C++17)
+    # Effect: Cleaner codegen enables LTCG to identify more merging opportunities
+    # Benefit: More aggressive template instantiation folding, better type deduction
+    # Minor size savings: 10-50KB (better template deduplication)
+    # VS2022 Property Pages: C/C++ → Language → Conformance mode = Yes (/permissive-)
+    
+    # ADDITIONAL RELEASE-MAXCOMPRESS FLAGS:
+    # /GF - String Pooling: merges identical string literals across compilation units
+    # /GR- - Disable RTTI: removes Run-Time Type Information (typeid, dynamic_cast)
+    # Effect: /GF saves 20-100KB (duplicate strings), /GR- saves 50-200KB (RTTI tables)
+    # VS2022 Property Pages:
+    #   C/C++ → Code Generation → Enable String Pooling = Yes (/GF)
+    #   C/C++ → Language → Enable Run-Time Type Information = No (/GR-)
+    
+    set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} /LTCG /OPT:REF /OPT:ICF /MERGE:.rdata=.text /SUBSYSTEM:CONSOLE /MANIFESTUAC:level='asInvoker' /DEBUG:NONE /PDBALTPATH:none /INCREMENTAL:NO")
+    set(CMAKE_SHARED_LINKER_FLAGS_RELEASE "${CMAKE_SHARED_LINKER_FLAGS_RELEASE} /LTCG /OPT:REF /OPT:ICF /MERGE:.rdata=.text /DEBUG:NONE")
+    set(CMAKE_STATIC_LINKER_FLAGS_RELEASE "${CMAKE_STATIC_LINKER_FLAGS_RELEASE} /LTCG")
+    
+    # STEP 4 of 8: Section Merging for Reduced PE Overhead
+    # /MERGE:.rdata=.text - merges read-only data section into code section
+    # Effect: Reduces PE header overhead, fewer sections = smaller binary
+    # Benefit: .rdata contains string literals, vtables, const data - merging with .text saves section alignment padding
+    # Expected savings: 50-200KB (section alignment is typically 4KB, each merged section eliminates padding)
+    # VS2022 Property Pages: Linker → Advanced → Merge Sections = .rdata=.text
+    
+    # STEP 5 of 8: Subsystem Optimization + Minimal Manifest
+    # /SUBSYSTEM:CONSOLE - required for MAIN_1_CoAnQi.cpp (uses std::cout)
+    # /MANIFESTUAC:level='asInvoker' - minimal UAC manifest (no elevation required)
+    # Effect: Smaller embedded manifest, no admin prompt overhead
+    # Note: /SUBSYSTEM:WINDOWS would save ~10KB but breaks console I/O (std::cout becomes silent)
+    # VS2022 Property Pages: 
+    #   Linker → System → SubSystem = Console (/SUBSYSTEM:CONSOLE)
+    #   Linker → Manifest File → UAC Execution Level = asInvoker
+    
+    # STEP 6 of 8: Strip Debug Information for Maximum Size Reduction
+    # /DEBUG:NONE - completely disables PDB generation (no debug symbols)
+    # /PDBALTPATH:none - removes PDB path from PE header
+    # Effect: Eliminates multi-MB PDB overhead, removes debug directory from executable
+    # Expected savings: 100-500KB in .exe (CodeView debug info removed), 5-50MB .pdb file not created
+    # Trade-off: No stack traces on crash, no source-level debugging in production builds
+    # VS2022 Property Pages: Linker → Debugging → Generate Debug Info = No (/DEBUG:NONE)
+    
+    # VS2022 Property Pages equivalents:
+    # C/C++ → Optimization → Whole Program Optimization = Yes (/GL)
+    # Linker → Optimization → Enable Whole-Program Optimization = Yes (/LTCG)
+    # Linker → Optimization → References = Yes (/OPT:REF)
+    # Linker → Optimization → Enable COMDAT Folding = Yes (/OPT:ICF)
 endif()
 
 # Export compile commands for IDE integration
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+# ========== WOLFRAM ENGINE INTEGRATION (OPTIONAL) ==========
+option(USE_EMBEDDED_WOLFRAM "Enable embedded Wolfram kernel via WSTP" OFF)
+
+if(USE_EMBEDDED_WOLFRAM)
+    # WSTP-Specific Settings: C:\Program Files\Wolfram Research\Wolfram Engine\14.1\SystemFiles\Links\WSTP\DeveloperKit\Windows-x86-64\CompilerAdditions\wstp
+    set(WSTP_DIR "C:/Program Files/Wolfram Research/Wolfram Engine/14.1/SystemFiles/Links/WSTP/DeveloperKit/Windows-x86-64/CompilerAdditions")
+    
+    if(EXISTS "${WSTP_DIR}")
+        # C/C++ → General → Additional Include Directories
+        include_directories("${WSTP_DIR}")
+        
+        # Linker → General → Additional Library Directories
+        link_directories("${WSTP_DIR}")
+        
+        # Preprocessor → Preprocessor Definitions: USE_EMBEDDED_WOLFRAM, _CRT_SECURE_NO_WARNINGS, WIN64
+        add_definitions(-DUSE_EMBEDDED_WOLFRAM -D_CRT_SECURE_NO_WARNINGS -DWIN64)
+        
+        message(STATUS "Wolfram Engine integration ENABLED (WSTP found at ${WSTP_DIR})")
+    else()
+        message(WARNING "USE_EMBEDDED_WOLFRAM is ON but WSTP_DIR not found: ${WSTP_DIR}")
+        message(WARNING "Wolfram integration will be DISABLED. Install Wolfram Engine or adjust WSTP_DIR path.")
+    endif()
+else()
+    message(STATUS "Wolfram Engine integration DISABLED (use -DUSE_EMBEDDED_WOLFRAM=ON to enable)")
+endif()
+
 # ========== MAIN EXECUTABLES ==========
 # Core mathematical framework executables
 add_executable(MAIN_1 MAIN_1.cpp)
-add_executable(MAIN_1_CoAnQi MAIN_1_CoAnQi.cpp)
+
+# MAIN_1_CoAnQi with optional Wolfram integration
+if(USE_EMBEDDED_WOLFRAM)
+    add_executable(MAIN_1_CoAnQi MAIN_1_CoAnQi.cpp source174_wolfram_bridge_embedded.cpp)
+    
+    # Linker → Input → Additional Dependencies: wstp64i4.lib + Windows system libraries
+    target_link_libraries(MAIN_1_CoAnQi 
+        wstp64i4
+        kernel32
+        user32
+        advapi32
+        shell32
+    )
+    
+    message(STATUS "MAIN_1_CoAnQi compiled WITH Wolfram WSTP support")
+else()
+    add_executable(MAIN_1_CoAnQi MAIN_1_CoAnQi.cpp)
+    message(STATUS "MAIN_1_CoAnQi compiled WITHOUT Wolfram support")
+endif()
+
+# STEP 8 of 8: UPX Ultimate Packer (Post-Build Compression)
+# Compresses final executable using UPX with maximum compression settings
+# Effect: Dramatic size reduction (50-70% compression ratio typical)
+# Target: Get MAIN_1_CoAnQi.exe under 3 MB (from ~5-8 MB uncompressed)
+# Requirements: UPX installed at C:/Tools/UPX/upx.exe (download from https://upx.github.io/)
+# Trade-offs: Slower startup (decompression overhead ~50-200ms), incompatible with some antivirus
+# VS2022 Property Pages: Build Events → Post-Build Event → Command Line
+find_program(UPX_EXECUTABLE upx PATHS "C:/Tools/UPX" "C:/Tools/upx" "C:/Program Files/upx" DOC "UPX executable packer")
+if(UPX_EXECUTABLE)
+    add_custom_command(TARGET MAIN_1_CoAnQi POST_BUILD
+        COMMAND ${UPX_EXECUTABLE} --best --ultra-brute "$<TARGET_FILE:MAIN_1_CoAnQi>"
+        COMMENT "STEP 8: Compressing MAIN_1_CoAnQi.exe with UPX (--best --ultra-brute)"
+        VERBATIM
+    )
+    message(STATUS "UPX compression ENABLED for MAIN_1_CoAnQi (found at ${UPX_EXECUTABLE})")
+else()
+    message(WARNING "UPX not found - executable will not be compressed. Install UPX to C:/Tools/upx/ for Step 8 compression.")
+    message(WARNING "Download from: https://github.com/upx/upx/releases")
+endif()
 
 # Source2: HEAD PROGRAM - Primary User Base Platform (REQUIRES Qt5, VTK, AWS SDK, OpenCV, etc.)
 # Uncomment after installing dependencies via vcpkg:

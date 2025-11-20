@@ -437,6 +437,7 @@ void RAquariiUQFFModule::printVariables() {
 // #include "RAquariiUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #define _USE_MATH_DEFINES
 #include <complex>
+#include <array> // MSVC requirement
 // int main() {
 //     RAquariiUQFFModule mod;
 //     double t = 1.4e9;  // Orbital time

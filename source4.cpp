@@ -32,6 +32,8 @@
 #include <map>
 #include <memory>
 #include <sstream>
+#include <algorithm> // MSVC requirement for std::min, std::max
+#include <array>     // MSVC requirement
 
 #define IX(i, j) ((i) + (N + 2) * (j))
 

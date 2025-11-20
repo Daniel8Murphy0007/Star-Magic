@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ================================================================================================
  * MAIN_1_CoAnQi.cpp - Conscious Quantum Intelligence (CoAnQi) UQFF Calculator
  * ================================================================================================
@@ -8,23 +8,23 @@
  *              Executes all systems simultaneously with statistical analysis
  *
  * Physics Terms: 152 TOTAL PhysicsTerm Classes
- *   • 26 Original framework terms (DynamicVacuumTerm, QuantumCouplingTerm, etc.)
- *   • 126 Astrophysical system wrappers (Source14-162):
+ *   � 26 Original framework terms (DynamicVacuumTerm, QuantumCouplingTerm, etc.)
+ *   � 126 Astrophysical system wrappers (Source14-162):
  *       - Magnetars, black holes, galaxies, nebulae
  *       - Fundamental physics (hydrogen, LENR, Big Bang)
  *       - UQFF parameters and coupling modules
  *       - All terms call actual module compute methods
  *
  * Key Capabilities:
- *   âœ“ All unique physics equations from 150+ modules integrated
- *   âœ“ Self-expanding PhysicsTerm framework for runtime term injection
- *   âœ“ Self-updating parameter optimization via statistical analysis
- *   âœ“ Self-cloning system generator for derivative simulations
- *   âœ“ Simultaneous multi-system execution with thread pooling
- *   âœ“ Comprehensive verbose logging and real-time analysis
- *   âœ“ Dynamic module loading and runtime compilation
- *   âœ“ Cross-module data exchange and state synchronization
- *   âœ“ Autonomous validation against observational datasets
+ *   ✓ All unique physics equations from 150+ modules integrated
+ *   ✓ Self-expanding PhysicsTerm framework for runtime term injection
+ *   ✓ Self-updating parameter optimization via statistical analysis
+ *   ✓ Self-cloning system generator for derivative simulations
+ *   ✓ Simultaneous multi-system execution with thread pooling
+ *   ✓ Comprehensive verbose logging and real-time analysis
+ *   ✓ Dynamic module loading and runtime compilation
+ *   ✓ Cross-module data exchange and state synchronization
+ *   ✓ Autonomous validation against observational datasets
  *
  * Architecture:
  *   - PhysicsTerm plugin system (152 terms total: 26 original + 126 wrappers)
@@ -55,6 +55,7 @@
 #include <algorithm>
 #include <random>
 #include <numeric>
+#include <array> // MSVC requirement
 
 // Note: Threading disabled for MinGW compatibility
 // To enable threading, uncomment these lines and ensure -pthread flag
@@ -936,11 +937,11 @@ public:
 
         // 11-term integrand
         double term_base = -F0;
-        double term_mom = (m_e * c * c / (system_r * system_r)) * 0.93 * 0.707; // cos(45Â°)
+        double term_mom = (m_e * c * c / (system_r * system_r)) * 0.93 * 0.707; // cos(45°)
         double term_grav = (G * system_M / (system_r * system_r)) * 1.0;
         double term_vac = 7.09e-36 * 0.01;
         double term_LENR = LENR;
-        double term_res = 2.0 * q * system_B0 * 1e-3 * 0.707 * DPM_res; // sin(45Â°)
+        double term_res = 2.0 * q * system_B0 * 1e-3 * 0.707 * DPM_res; // sin(45°)
         double term_neut = k_neutron * sigma_n;
         double term_rel = k_rel * pow(E_cm_astro / E_cm, 2.0);
         double term_neutrino = 9.07e-43;
@@ -960,7 +961,7 @@ public:
 
 /**
  * Inflation Buoyancy Term (from Source165)
- * Î²_i Ã— V_infl Ã— Ï_vac Ã— a_universal
+ * β_i × V_infl × ρ_vac × a_universal
  */
 class InflationBuoyancyTerm : public PhysicsTerm
 {
@@ -991,7 +992,7 @@ public:
 
 /**
  * Superconductivity Term (from Source165)
- * Time-dependent: Î» Ã— (Ï_SC/Ï_UA) Ã— Ï‰_s Ã— cos(Ï€t_n) Ã— (1 + f_TRZ)
+ * Time-dependent: λ × (ρ_SC/ρ_UA) × ω_s × cos(πt_n) × (1 + f_TRZ)
  */
 class SuperconductiveTerm : public PhysicsTerm
 {
@@ -1027,7 +1028,7 @@ public:
 
 /**
  * Neutron Scattering Term (from Source165)
- * k_neutron Ã— Ïƒ_n
+ * k_neutron × σ_n
  */
 class NeutronScatteringTerm : public PhysicsTerm
 {
@@ -1207,7 +1208,7 @@ public:
 
 /**
  * Dipole Vortex Term (from Source166)
- * Golden ratio (Ï† = 0.618) based species determination
+ * Golden ratio (φ = 0.618) based species determination
  */
 class DipoleVortexTerm : public PhysicsTerm
 {
@@ -1216,12 +1217,12 @@ public:
     {
         setMetadata("version", "1.0");
         setMetadata("source", "Source166.cpp");
-        setMetadata("equation", "dipole * sin(2Ï€ * Ï† * 1.0) where Ï† = 0.618");
+        setMetadata("equation", "dipole * sin(2π * φ * 1.0) where φ = 0.618");
     }
 
     double compute(double /* t */, const std::map<std::string, double> & /* params */) const override
     {
-        double golden_ratio = 0.618033988749895; // (âˆš5 - 1)/2
+        double golden_ratio = 0.618033988749895; // (√5 - 1)/2
         double dipole_base = getDynamicParameter("dipole_base", 1.0);
         double phase = 2.0 * M_PI * golden_ratio * 1.0;
 
@@ -1270,7 +1271,7 @@ public:
 
 /**
  * Triadic Scale Term (from Source166)
- * Enhanced triadic UQFF scaling with Î²_i = 1.0
+ * Enhanced triadic UQFF scaling with β_i = 1.0
  */
 class TriadicScaleTerm : public PhysicsTerm
 {
@@ -5087,7 +5088,7 @@ double F_U_Bi_i(const SystemParams &p)
 }
 
 /**
- * COMPRESSED GRAVITY EQUATION: g(r,t) = Î£(Ug1 + Ug2 + Ug3 + Ug4) over 26 layers
+ * COMPRESSED GRAVITY EQUATION: g(r,t) = Σ(Ug1 + Ug2 + Ug3 + Ug4) over 26 layers
  */
 double compressed_g(const SystemParams &p)
 {
@@ -5288,11 +5289,11 @@ void validation_pipeline(const SystemParams &p)
 
     if (error < 10)
     {
-        cout << "âœ“ Validation PASSED (error < 10%)" << endl;
+        cout << "✓ Validation PASSED (error < 10%)" << endl;
     }
     else
     {
-        cout << "âœ— Validation WARNING (error >= 10%)" << endl;
+        cout << "✗ Validation WARNING (error >= 10%)" << endl;
     }
 }
 
@@ -5653,7 +5654,7 @@ int main()
     cout << "\n=== AVAILABLE SYSTEMS ===" << endl;
     for (const auto &pair : systems)
     {
-        cout << "  â€¢ " << pair.first << endl;
+        cout << "  • " << pair.first << endl;
     }
 
     // Main interactive loop

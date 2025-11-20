@@ -437,6 +437,7 @@ void IC2163UQFFModule::printVariables() {
 // #include "IC2163UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #define _USE_MATH_DEFINES
 #include <complex>
+#include <array> // MSVC requirement
 // int main() {
 //     IC2163UQFFModule mod;
 //     double t = 1.26e15;  // Dynamical time

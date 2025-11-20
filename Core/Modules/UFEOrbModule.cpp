@@ -187,6 +187,7 @@ public:
 // UFEOrbModule.cpp
 // #include "UFEOrbModule.h"  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Red Dwarf defaults
 UFEOrbModule::UFEOrbModule(BatchType batch) : current_batch(batch)

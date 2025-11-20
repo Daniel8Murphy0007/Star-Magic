@@ -178,6 +178,7 @@ public:
 // Abell2256UQFFModule.cpp
 // // // #include "Abell2256UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Abell 2256-specific values
 Abell2256UQFFModule::Abell2256UQFFModule() {
@@ -594,7 +595,8 @@ void Abell2256UQFFModule::adaptiveUpdate(double dt, const std::string& feedback_
     }
     
     recordHistory("adaptive_time", {dt, 0.0});
-    std::cout << "Adaptive update: B0=" << variables["B0"].real() 
+    std::cout << "Adaptive update: B0=" << variables["B0"].real() 
+
  * Enhanced: November 04, 2025 - Added self-expanding capabilities
               << ", v_disp=" << variables["velocity_dispersion"].real() << std::endl;
 }

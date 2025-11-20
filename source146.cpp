@@ -178,6 +178,7 @@ public:
 // NGC1365UQFFModule.cpp
 // // // #include "NGC1365UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with NGC 1365-specific values
 NGC1365UQFFModule::NGC1365UQFFModule() {

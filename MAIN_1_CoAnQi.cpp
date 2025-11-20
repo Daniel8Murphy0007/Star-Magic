@@ -124,12 +124,18 @@
 #include <set>
 #include <memory>
 #include <functional>
+#include <array>
 
 // Observational Systems Configuration - 35+ astronomical systems with categorization
 #include "observational_systems_config.h"
 
+// Wolfram WSTP integration (optional)
+#ifdef USE_EMBEDDED_WOLFRAM
+extern void WolframEmbeddedBridge();
+#endif
+
 // Threading enabled for parallel system calculations
-// MinGW 6.3.0 doesn't support std::thread, using Windows threads instead
+// Using Windows threads for compatibility
 #ifdef _WIN32
 #include <windows.h>
 #include <process.h>
@@ -1301,7 +1307,7 @@ public:
         double V = (4.0 / 3.0) * M_PI * r_nebula * r_nebula * r_nebula;
 
         // Ionization fraction
-        double ion_frac = std::min(1.0, ionization_rate / (n_gas * V));
+        double ion_frac = std::min<double>(1.0, ionization_rate / (n_gas * V));
 
         return ion_frac * 1e40; // Scale for contribution
     }
@@ -13816,14 +13822,23 @@ int main()
         cout << "6. Run simulations" << endl;
         cout << "7. Statistical analysis" << endl;
         cout << "8. Self-optimization" << endl;
+#ifdef USE_EMBEDDED_WOLFRAM
+        cout << "9. WSTP kernel interface" << endl;
+        cout << "10. Exit" << endl;
+#else
         cout << "9. Exit" << endl;
+#endif
         cout << "Enter choice: ";
 
         int choice;
         cin >> choice;
         cin.ignore();
 
+#ifdef USE_EMBEDDED_WOLFRAM
+        if (choice == 10)
+#else
         if (choice == 9)
+#endif
         {
             g_logger.log("=== CoAnQi Shutdown ===", 1);
             break;
@@ -14146,6 +14161,15 @@ int main()
             cout << "Optimization complete." << endl;
             break;
         }
+
+#ifdef USE_EMBEDDED_WOLFRAM
+        case 9:
+        {
+            // WSTP kernel interface
+            WolframEmbeddedBridge();
+            break;
+        }
+#endif
 
         default:
             cout << "Invalid choice." << endl;

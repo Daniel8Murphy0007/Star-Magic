@@ -10,6 +10,7 @@
 #include <fstream>
 #include <algorithm>
 #include <numeric>
+#include <array> // MSVC requirement
 
 // ============================================================================
 // Structure Definitions (moved early to resolve forward references)

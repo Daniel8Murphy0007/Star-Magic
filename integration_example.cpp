@@ -167,6 +167,7 @@ int main() {
 #include "Source14.cpp"
 #include <vector>
 #include <cmath>
+#include <array> // MSVC requirement
 
 struct Observation {
     double time;

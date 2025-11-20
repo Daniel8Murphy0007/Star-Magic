@@ -167,6 +167,7 @@ public:
 // V838MonUQFFModule.cpp
 // // // #include "V838MonUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: V838 Mon-specific values
 V838MonUQFFModule::V838MonUQFFModule() {

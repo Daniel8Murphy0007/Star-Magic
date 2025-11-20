@@ -166,6 +166,7 @@ public:
 // LENRUQFFModule.cpp
 // // // #include "LENRUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: LENR-specific values
 LENRUQFFModule::LENRUQFFModule() : current_scenario("hydride")

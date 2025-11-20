@@ -58,6 +58,7 @@
 #include <sstream>
 #include <memory>
 #include <algorithm>
+#include <array> // MSVC requirement
 
 // ===========================================================================================
 // SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System

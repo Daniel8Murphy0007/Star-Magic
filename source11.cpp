@@ -19,6 +19,7 @@
 #include <vtk-9.0/vtkRenderWindowInteractor.h>
 #include <vtk-9.0/vtkSmartPointer.h>
 #include <vtk-9.0/vtkSTLWriter.h>
+#include <array> // MSVC requirement
 
 using json = nlohmann::json;
 

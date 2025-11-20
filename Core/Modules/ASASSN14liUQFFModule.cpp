@@ -437,6 +437,7 @@ void ASASSN14liUQFFModule::printVariables() {
 // #include "ASASSN14liUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #define _USE_MATH_DEFINES
 #include <complex>
+#include <array> // MSVC requirement
 // int main() {
 //     ASASSN14liUQFFModule mod;
 //     double t = 9.504e6;  // 110 days

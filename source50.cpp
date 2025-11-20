@@ -19,6 +19,7 @@
 #include <vector>
 #include <cmath>
 #include <iomanip>
+#include <array> // MSVC requirement
 
 // Forward declaration for base program integration (assumed in ziqn233h.cpp)
 extern void base_program_init(); // Placeholder for base program

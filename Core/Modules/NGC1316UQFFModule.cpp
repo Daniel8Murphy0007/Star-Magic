@@ -173,6 +173,7 @@ public:
 // NGC1316UQFFModule.cpp
 // // // #include "NGC1316UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: NGC 1316-specific values
 NGC1316UQFFModule::NGC1316UQFFModule()

@@ -178,6 +178,7 @@ public:
 // UQFFCompressedResonanceModule.cpp
 // // #include "UQFFCompressedResonanceModule.h"  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor
 UQFFCompressedResonanceModule::UQFFCompressedResonanceModule() : current_system("Guide"), mode("compressed") {

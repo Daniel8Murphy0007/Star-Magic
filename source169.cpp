@@ -131,6 +131,7 @@ private:
 #include <iostream>
 #include <numeric> // For std::accumulate
 #include <complex>
+#include <array> // MSVC requirement
 
 // UQFFCassiniCore Implementation
 UQFFCassiniCore::UQFFCassiniCore(double k1, double ki, double km, double ke)

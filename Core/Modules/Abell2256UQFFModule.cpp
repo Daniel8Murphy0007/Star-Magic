@@ -458,6 +458,7 @@ void Abell2256UQFFModule::printVariables() {
 // #include "Abell2256UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #define _USE_MATH_DEFINES
 #include <complex>
+#include <array> // MSVC requirement
 // int main() {
 //     Abell2256UQFFModule mod;
 //     double t = 6.31e15;  // 0.2 Gyr

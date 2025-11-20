@@ -1,4 +1,4 @@
-﻿// UQFFSource10.cpp: Source file for UQFFSource10 class (split from header for maintainability)
+// UQFFSource10.cpp: Source file for UQFFSource10 class (split from header for maintainability)
 // Include the header
 #include "UQFFSource10.h"
 #include "Core/SystemCatalogue.hpp" // Phase 1 Week 1: Extracted master equations
@@ -505,6 +505,7 @@ int main(int argc, char *argv[])
 #include <map>
 #include <cstdlib> // for rand
 #include <ctime>   // for srand
+#include <array> // MSVC requirement
 
 using namespace std;
 

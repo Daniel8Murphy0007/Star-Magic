@@ -181,6 +181,7 @@ public:
 // UQFFBuoyancyCNBModule.cpp
 // // #include "UQFFBuoyancyCNBModule.h"  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with multi-system defaults
 UQFFBuoyancyCNBModule::UQFFBuoyancyCNBModule() {

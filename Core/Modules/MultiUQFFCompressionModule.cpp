@@ -174,6 +174,7 @@ public:
 // MultiUQFFCompressionModule.cpp
 // #include "MultiUQFFCompressionModule.h"  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Init system
 MultiUQFFCompressionModule::MultiUQFFCompressionModule(const std::string &system)

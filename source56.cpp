@@ -1,4 +1,4 @@
-﻿// BigBangGravityUQFFModule.h
+// BigBangGravityUQFFModule.h
 // Modular C++ implementation of the full Master Universal Gravity Equation (MUGE & UQFF & SM Integration) for Evolution of Gravity Since the Big Bang.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
 // Usage in base: #include "BigBangGravityUQFFModule.h"
@@ -168,6 +168,7 @@ public:
 // BigBangGravityUQFFModule.cpp
 // #include "BigBangGravityUQFFModule.h"  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Big Bang Gravity-specific values
 BigBangGravityUQFFModule::BigBangGravityUQFFModule()
@@ -425,7 +426,7 @@ double BigBangGravityUQFFModule::computeG(double t)
 std::string BigBangGravityUQFFModule::getEquationText()
 {
     return "g_Gravity(t) = (G * M(t) / r(t)^2) * (1 + H(z) * t) * (1 - B / B_crit) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v ï¿½ B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v � B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2? / 13.8) A Re[exp(i (k x - ? t))] + (M_visible + M_DM) * (??/? + 3 G M / r^3) + QG_term + DM_term + GW_term\n"
            "Where M(t) = M_total * (t / t_Hubble); r(t) = c t; z(t) = t_Hubble / t - 1;\n"
            "QG_term = (hbar c / l_p^2) * (t / t_p); DM_term = 0.268 * (G M(t) / r(t)^2); GW_term = h_strain * c^2 / ?_gw * sin(2?/?_gw r - 2?/yr t)\n"
@@ -436,7 +437,7 @@ std::string BigBangGravityUQFFModule::getEquationText()
            "- GW: Sinusoidal gravitational waves (NANOGrav/LIGO).\n"
            "- Evolution: From t_p (z~10^32) quantum-dominated to t_Hubble (z=0) Lambda-dominated.\n"
            "- Synthesis: Integrates 6 prior MUGEs (universe, H atom, Lagoon, spirals/SN, NGC6302, Orion) patterns.\n"
-           "Solutions: At t=t_Hubble, g_Gravity ~1e-10 m/sï¿½ (balanced; early t dominated by QG ~1e100).\n"
+           "Solutions: At t=t_Hubble, g_Gravity ~1e-10 m/s� (balanced; early t dominated by QG ~1e100).\n"
            "Adaptations: Cosmic evolution from Big Bang; informed by DESI/LIGO/NANOGrav.";
 }
 
@@ -456,17 +457,17 @@ void BigBangGravityUQFFModule::printVariables()
 //     BigBangGravityUQFFModule mod;
 //     double t = mod.variables["t_Hubble"];  // Present
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/sï¿½\n";
+//     std::cout << "g = " << g << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     double t_early = 1e-43;  // Near Planck
 //     g = mod.computeG(t_early);
-//     std::cout << "Early g = " << g << " m/sï¿½\n";
+//     std::cout << "Early g = " << g << " m/s�\n";
 //     mod.updateVariable("M_total", 1.1e53);  // Update mass
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp BigBangGravityUQFFModule.cpp -lm
-// Sample Output at t=t_Hubble: g ? 1e-10 m/sï¿½ (balanced terms); at t=1e-43 s: g ? 1e100 m/sï¿½ (QG dominant).
+// Sample Output at t=t_Hubble: g ? 1e-10 m/s� (balanced terms); at t=1e-43 s: g ? 1e100 m/s� (QG dominant).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
 /*
@@ -475,7 +476,7 @@ void BigBangGravityUQFFModule::printVariables()
 **Strengths : **-**Dynamic &Evolutionary : **Map - based storage with computeM_t / r_t / z_t enables time - dependent evolution from Planck(t ~1e-44 s, z ~1e32) to present, synthesizing 6 prior MUGEs(e.g., feedback from Orion / Lagoon, cosmic from UniverseDiameter).- **Unit Consistency : **Fluid V = 1 / ? yields g_base;
 DM_term fractional;
 QG_term dimensional accel;
-GW_term ~1e-10 m / sï¿½ at cosmic scales.Auto - dependencies(e.g., M_visible = 0.15 M_total).- **Comprehensive Physics : **Full UQFF terms + new QG(Planck), DM(0.268 frac), GW(sinusoidal, LIGO / NANOGrav); Hz(z_t) for expansion;
+GW_term ~1e-10 m / s� at cosmic scales.Auto - dependencies(e.g., M_visible = 0.15 M_total).- **Comprehensive Physics : **Full UQFF terms + new QG(Planck), DM(0.268 frac), GW(sinusoidal, LIGO / NANOGrav); Hz(z_t) for expansion;
 balances quantum early(QG dom) to Lambda late.- **Immediate Effect &Debugging : **Updates reflect in computes; printVariables for snapshots;
 example tests early / present.- **Advancement : **Encodes May 2025 doc(6 MUGEs synthesis) into Oct 2025 template;
 advances UQFF by unifying scales(atomic - cosmic), addressing gravity evolution from Big Bang, clarifying SM as subset.

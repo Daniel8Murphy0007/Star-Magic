@@ -172,6 +172,7 @@ public:
 // HydrogenPToEResonanceUQFFModule.cpp
 // // // #include "HydrogenPToEResonanceUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Hydrogen PToE-specific resonance values
 HydrogenPToEResonanceUQFFModule::HydrogenPToEResonanceUQFFModule() {

@@ -73,6 +73,7 @@
 
 #include <iostream>
 #include <string>
+#include <array> // MSVC requirement
 
 int main() {
     std::cout << "========================================" << std::endl;

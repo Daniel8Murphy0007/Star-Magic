@@ -161,6 +161,7 @@ using namespace libsnark;
 // Construction notes: Applied all suggestions. Added real-time OT for scripts. Speech-to-text for input. Biometric for API keys. Multi-device sync. AI tutor with Grok. Biology sim with biopython. Languages English only. Removed Braille, env impact, battery, tutor. Implemented placeholders, GSL polys, units pair, specific errors, multi-eq, multi-var numerical, memory scopes. Added main. Advanced: script OT collab, voice input, biometric api, multi-sync, Grok tutor, biopython sim. Improved error handling, Excel import with openpyxl, stats with R, general upgrades. Integrated Star Magic framework with custom functions for Ug, SCm, Ub, Um, Aether, and Millennium Problem connections.
 
 #include <cmath> // For math functions like cos, sin, etc.
+#include <array> // MSVC requirement
 
 // Custom allocator
 class SymEngineAllocator {

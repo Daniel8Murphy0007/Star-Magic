@@ -193,6 +193,7 @@ public:
 // InertiaUQFFModule.cpp
 // #include "InertiaUQFFModule.h"  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor
 InertiaUQFFModule::InertiaUQFFModule(SystemType sys) : current_system(sys)

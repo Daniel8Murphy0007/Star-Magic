@@ -168,6 +168,7 @@ public:
 // RedSpiderUQFFModule.cpp
 // // // #include "RedSpiderUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Red Spider-specific values
 RedSpiderUQFFModule::RedSpiderUQFFModule() {

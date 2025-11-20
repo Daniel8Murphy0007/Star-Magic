@@ -1,4 +1,4 @@
-﻿// MultiCompressedUQFFModule.h
+// MultiCompressedUQFFModule.h
 // Modular C++ implementation of the full Compressed Master Universal Gravity Equation (UQFF Compression Cycle 2) for multiple astrophysical systems.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
 // Usage in base: #include "MultiCompressedUQFFModule.h"
@@ -169,6 +169,7 @@ public:
 // MultiCompressedUQFFModule.cpp
 // #include "MultiCompressedUQFFModule.h"  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Init system
 MultiCompressedUQFFModule::MultiCompressedUQFFModule(const std::string &system)
@@ -470,14 +471,14 @@ double MultiCompressedUQFFModule::computeG(double t)
 std::string MultiCompressedUQFFModule::getEquationText()
 {
     return "g_UQFF(r, t) = (G * M(t) / r^2) * (1 + H(t, z)) * (1 - B(t) / B_crit) * (1 + F_env(t)) + (Ug1 + Ug2 + Ug3' + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ∫(ψ_total H ψ_total dV) * (2π / t_Hubble) + ρ_fluid * V * g + (M_visible + M_DM) * (δρ/ρ + 3 G M / r^3)\n"
-           "Where H(t, z) = H_0 * sqrt(Ω_m (1+z)^3 + Ω_Λ); M(t) = M * (1 + M_sf(t)); M_sf(t) = (SFR * t_yr) / M0;\n"
-           "F_env(t) = system-specific (e.g., ρ v_wind^2 for Starbirth, E(t) for Pillars); Ug3' = G M_ext / r_ext^2;\n"
-           "ψ_total = combined waves (magnetic + standing + quantum).\n"
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?_total H ?_total dV) * (2p / t_Hubble) + ?_fluid * V * g + (M_visible + M_DM) * (d?/? + 3 G M / r^3)\n"
+           "Where H(t, z) = H_0 * sqrt(O_m (1+z)^3 + O_?); M(t) = M * (1 + M_sf(t)); M_sf(t) = (SFR * t_yr) / M0;\n"
+           "F_env(t) = system-specific (e.g., ? v_wind^2 for Starbirth, E(t) for Pillars); Ug3' = G M_ext / r_ext^2;\n"
+           "?_total = combined waves (magnetic + standing + quantum).\n"
            "Special Terms:\n"
-           "- Compression: Unified H(t,z), F_env(t) modular, Ug3' generalized, ψ_total consolidated.\n"
+           "- Compression: Unified H(t,z), F_env(t) modular, Ug3' generalized, ?_total consolidated.\n"
            "- Adaptations: Magnetar (M_BH, decay); SgrA* (GW spin); Starbirth/Westerlund2 (winds); Pillars (erosion); Rings (lensing); UniverseGuide (solar).\n"
-           "Solutions: Varies by system/t; e.g., Magnetar t=1kyr ~1e12 m/s² (B_crit dominant).\n"
+           "Solutions: Varies by system/t; e.g., Magnetar t=1kyr ~1e12 m/s� (B_crit dominant).\n"
            "From UQFF Cycle 2: Streamlines 7 systems, reduces redundancy.";
 }
 
@@ -497,16 +498,16 @@ void MultiCompressedUQFFModule::printVariables()
 //     MultiCompressedUQFFModule mod("PillarsCreation");
 //     double t = mod.variables["t_default"];
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
+//     std::cout << "g = " << g << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.setSystem("SagittariusA");
 //     g = mod.computeG(t);
-//     std::cout << "SgrA* g = " << g << " m/s²\n";
+//     std::cout << "SgrA* g = " << g << " m/s�\n";
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp MultiCompressedUQFFModule.cpp -lm
-// Sample Output (Pillars t=2 Myr): g ≈ 1e-11 m/s² (winds/F_env dominant).
+// Sample Output (Pillars t=2 Myr): g � 1e-11 m/s� (winds/F_env dominant).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
 /*
@@ -514,13 +515,13 @@ void MultiCompressedUQFFModule::printVariables()
 
 **Strengths:**
 - **Multi-System Compression:** Dynamic setSystem() for 7 systems, auto-loading params (e.g., Magnetar M_ext=4e6 Msun for SgrA*, Pillars v_wind=1e4 m/s). Implements proposed compressed eq with unified H(t,z), modular F_env(t) (e.g., erosion E(t) for Pillars), generalized Ug3'.
-- **Streamlined Extensibility:** Consolidated ψ_total (integral=1.0);
+- **Streamlined Extensibility:** Consolidated ?_total (integral=1.0);
 F_env encapsulates specifics(winds, lensing, decay)
 without core changes.Auto - dependencies(e.g., M_DM = 0.85 M).- **Comprehensive Coverage : **Retains all UQFF terms;
 balances attractive(g_base, Ug1) and env(F_env); Hz(z) for cosmic (Rings z=0.5) vs local (Magnetar z=0.026).
 - **Immediate Effect & Debugging:** Updates reflected;
 printVariables system - specific;
-example switches systems.- **Advancement : **Encodes May 2025 Cycle 2 review into Oct 2025 template; advances UQFF via modularity (F_env), reduced redundancy (unified H/Ug3/ψ), scalability across systems.
+example switches systems.- **Advancement : **Encodes May 2025 Cycle 2 review into Oct 2025 template; advances UQFF via modularity (F_env), reduced redundancy (unified H/Ug3/?), scalability across systems.
 
 **Weaknesses / Recommendations:**
 - **Placeholder Approximations:** F_env heuristics (e.g., sin for lensing);
@@ -529,7 +530,7 @@ system - specific.- **Error Handling : **Silent adds;
 add validation(e.g., r > 0).- **Magic Numbers : **integral_psi_total = 1.0, f_sc = 10; expose config.
 - **Performance:** Fine for computes; cache F_env for repeated t.
 - **Validation:** Test vs obs (e.g., Chandra for Magnetar decay); numerical solvers for full M(t).
-- **Generalization:** Extend F_env for new systems (e.g., halos); add Ug2=d²Φ/dt² if needed.
+- **Generalization:** Extend F_env for new systems (e.g., halos); add Ug2=d�F/dt� if needed.
 
 **Summary:**
 Module robustly encodes May 2025 UQFF Cycle 2 compression into Oct 2025 template, unifying 7 systems with modular compressed eq. Advances framework by streamlining (unified terms, F_env), enhancing clarity/applicability, while retaining fidelity. Ideal for further refinements;

@@ -168,6 +168,7 @@ public:
 // SaturnUQFFModule.cpp
 // // // #include "SaturnUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Saturn-specific values
 SaturnUQFFModule::SaturnUQFFModule()

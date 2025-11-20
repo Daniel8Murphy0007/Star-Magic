@@ -1,4 +1,4 @@
-﻿
+
 // UQFFBuoyancyCNBModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Buoyancy Equations across J1610+1811, PLCK G287.0+32.9, PSZ2 G181.06+48.47, ASKAP J1832-0911, Sonification Collection, Centaurus A with CNB integration.
 // This module can be plugged into a base program (e.g., 'uqff_buoyancy_sim.cpp') by including this header and linking the .cpp.
@@ -556,6 +556,7 @@ cdouble UQFFBuoyancyCNBModule::computeUi_CNB(double t, const std::string& system
 #include <iomanip>
 #include <fstream>
 #include <vector>
+#include <array> // MSVC requirement
 
 class SurfaceMagneticFieldModule {
 private:
@@ -769,7 +770,8 @@ void SurfaceMagneticFieldModule::adaptiveUpdate(double dt, const std::string& fe
     variables["neutrino_flux"] *= (1.0 + 0.001 * std::cos(dt / 1e10));
     
     recordHistory("adaptive_time", dt);
-    std::cout << "CNB magnetic adaptive update: B_ref=" << variables["B_ref"] 
+    std::cout << "CNB magnetic adaptive update: B_ref=" << variables["B_ref"] 
+
  * Enhanced: November 04, 2025 - Added self-expanding capabilities
               << ", CNB_T=" << variables["CNB_temperature"] << std::endl;
 }

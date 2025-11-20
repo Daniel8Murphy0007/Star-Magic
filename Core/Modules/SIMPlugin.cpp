@@ -1556,6 +1556,7 @@ SIMPlugin::~SIMPlugin()
 #include <iomanip>
 #include <stdexcept>
 #include <omp.h>
+#include <array> // MSVC requirement
 // #include "CelestialBody.h"
 // #include "MUGE.h"
 // #include "FluidSolver.h"

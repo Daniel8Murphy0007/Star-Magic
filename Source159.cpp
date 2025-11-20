@@ -440,6 +440,7 @@ cdouble UQFFBuoyancyModule::computeFBi(const std::string &system, double t)
 #include <iomanip>
 #include <fstream>
 #include <vector>
+#include <array> // MSVC requirement
 
 class SurfaceMagneticFieldModule
 {

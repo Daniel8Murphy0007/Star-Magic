@@ -47,6 +47,7 @@
 #include <algorithm>
 #include <random>
 #include <numeric>
+#include <array> // MSVC requirement
 
 // Note: Threading disabled for MinGW compatibility
 // To enable threading, uncomment these lines and ensure -pthread flag

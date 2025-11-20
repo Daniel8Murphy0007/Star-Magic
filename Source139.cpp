@@ -178,6 +178,7 @@ public:
 // ESO137UQFFModule.cpp
 // // // #include "ESO137UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with ESO 137-001-specific values
 ESO137UQFFModule::ESO137UQFFModule() {
@@ -466,3 +467,4 @@ Weaknesses / Recommendations:
 
 Summary:
 The code is well - structured, clear, and suitable for advanced scientific prototyping and educational use in unified field modeling for jellyfish galaxies.It is dynamic, extensible, and supports complex - valued physics.For production or high - performance applications, address the recommendations above for improved robustness, maintainability, and scalability.
+

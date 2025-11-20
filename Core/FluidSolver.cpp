@@ -14,6 +14,7 @@
  */
 
 #include "FluidSolver.hpp"
+#include <array> // MSVC requirement
 
 namespace UQFFCore {
 

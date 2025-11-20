@@ -166,6 +166,7 @@ public:
 // HydrogenAtomUQFFModule.cpp
 // // // #include "HydrogenAtomUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Hydrogen Atom-specific values
 HydrogenAtomUQFFModule::HydrogenAtomUQFFModule() {

@@ -1,4 +1,4 @@
-﻿
+
 // UQFFBuoyancyModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Buoyancy Equations across ESO 137-001, NGC 1365, Vela Pulsar, ASASSN-14li, El Gordo.
 // This module can be plugged into a base program (e.g., 'uqff_buoyancy_sim.cpp') by including this header and linking the .cpp.
@@ -7,7 +7,7 @@
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino, Sweet vac, Kozima drop.
 // Associated text: Outputs descriptive equation string via getEquationText().
-// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low Ï‰_0; x2 from quadratic solver approx; F_rel from 1998 LEP.
+// Approximations: Integral approximated as integrand * x2 (quadratic root); imag parts small and not fully scaled; LENR dominant due to low ω_0; x2 from quadratic solver approx; F_rel from 1998 LEP.
 // Multi-system params: ESO 137-001 M=2e41 kg r=6.17e21 m; NGC 1365 M=7.17e41 kg r=9.46e20 m; Vela M=2.8e30 kg r=1.7e17 m; ASASSN-14li M=1.989e37 kg r=3.09e18 m; El Gordo M=4.97e45 kg r=3.09e22 m.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 22, 2025.
 
@@ -92,6 +92,7 @@ double SurfaceMagneticFieldModule::computeB_j(double t, double B_s) {
 // UQFFBuoyancyModule.cpp
 #include "UQFFBuoyancyModule.h"
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with multi-system defaults
 UQFFBuoyancyModule::UQFFBuoyancyModule() {
@@ -381,7 +382,7 @@ void UQFFBuoyancyModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o uqff_buoyancy_sim uqff_buoyancy_sim.cpp UQFFBuoyancyModule.cpp -lm
-// Sample Output for ESO137: F â‰ˆ -8.32e217 + i (large; approx per framework; dominant real from LENR * x2).
+// Sample Output for ESO137: F ≈ -8.32e217 + i (large; approx per framework; dominant real from LENR * x2).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 22, 2025.
 // ===== MISSING BUOYANCY FUNCTION IMPLEMENTATIONS =====
 

@@ -437,6 +437,7 @@ void LagoonNebulaUQFFModule::printVariables() {
 // #include "LagoonNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #define _USE_MATH_DEFINES
 #include <complex>
+#include <array> // MSVC requirement
 // int main() {
 //     LagoonNebulaUQFFModule mod;
 //     double t = 1e13;  // Evolutionary time

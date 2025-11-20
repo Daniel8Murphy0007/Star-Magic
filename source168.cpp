@@ -169,6 +169,7 @@ UQFFBuoyancySystem create_KeplersSNR_system();
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include <array> // MSVC requirement
 
 // UQFFBuoyancyCore Implementation
 UQFFBuoyancyCore::UQFFBuoyancyCore() {}

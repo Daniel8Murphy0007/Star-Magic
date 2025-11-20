@@ -178,6 +178,7 @@ public:
 // SPTCLJ2215UQFFModule.cpp
 // // // #include "SPTCLJ2215UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with SPT-CL J2215-3537-specific values
 SPTCLJ2215UQFFModule::SPTCLJ2215UQFFModule() {

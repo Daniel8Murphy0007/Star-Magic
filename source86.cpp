@@ -198,6 +198,7 @@ public:
 // MUGEModule.cpp
 // // // #include "MUGEModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set universal constants and system-specific params
 MUGEModule::MUGEModule(SystemType sys) : current_system(sys)

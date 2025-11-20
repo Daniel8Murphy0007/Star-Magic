@@ -168,6 +168,7 @@ public:
 // M51UQFFModule.cpp
 // // // #include "M51UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: M51-specific values
 M51UQFFModule::M51UQFFModule()

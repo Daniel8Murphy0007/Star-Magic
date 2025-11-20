@@ -172,6 +172,7 @@ public:
 // UQFFCompressionModule.cpp
 // // // #include "UQFFCompressionModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: General defaults for multi-system use
 UQFFCompressionModule::UQFFCompressionModule() : current_system("General")

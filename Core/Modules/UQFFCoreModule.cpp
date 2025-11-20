@@ -22,6 +22,7 @@
 #include <string>
 #include <memory>
 #include <fstream>
+#include <array> // MSVC requirement
 
 using cdouble = std::complex<double>;
 

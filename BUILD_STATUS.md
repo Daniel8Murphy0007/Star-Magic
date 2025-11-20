@@ -206,7 +206,7 @@ cmake --build build --target MAIN_1_CoAnQi
 
 # Verify and run
 ls build/MAIN_1_CoAnQi.exe
-.\build\MAIN_1_CoAnQi.exe
+.\build_msvc\Release\MAIN_1_CoAnQi.exe
 ```
 
 ### Link Existing Executables

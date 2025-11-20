@@ -166,6 +166,7 @@ public:
 // SMBHUQFFModule.cpp
 // // // #include "SMBHUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: SMBH-UQFF specific values
 SMBHUQFFModule::SMBHUQFFModule() {

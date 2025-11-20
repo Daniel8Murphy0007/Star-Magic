@@ -1,4 +1,4 @@
-ï»¿#include <QVBoxLayout>
+#include <QVBoxLayout>
 #include <QTextEdit>
 #include <QPushButton>
 #include <QMouseEvent>
@@ -156,6 +156,7 @@ using namespace libsnark;
 // Construction notes: Applied all suggestions. Added real-time OT for scripts. Speech-to-text for input. Biometric for API keys. Multi-device sync. AI tutor with Grok. Biology sim with biopython. Languages English only. Removed Braille, env impact, battery, tutor. Implemented placeholders, GSL polys, units pair, specific errors, multi-eq, multi-var numerical, memory scopes. Added main. Advanced: script OT collab, voice input, biometric api, multi-sync, Grok tutor, biopython sim. Improved error handling, Excel import with openpyxl, stats with R, general upgrades. Integrated Star Magic framework with custom functions for Ug, SCm, Ub, Um, Aether, and Millennium Problem connections.
 
 #include <cmath> // For math functions like cos, sin, etc.
+#include <array> // MSVC requirement
 
 // Custom allocator
 class SymEngineAllocator {
@@ -748,9 +749,9 @@ public:
         symbolTabs->setMinimumHeight(100);
         std::map<QString, QStringList> catSymbols;
         catSymbols["Greek"] = { "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?" };
-        catSymbols["Operators"] = { "+", "-", "*", "/", "^", "_", "Â±", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "Â¬", "?", "?", "?", "?" };
+        catSymbols["Operators"] = { "+", "-", "*", "/", "^", "_", "±", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "¬", "?", "?", "?", "?" };
         catSymbols["Functions"] = { "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "dy/dx", "?y/?x", "?y/?x", "?y/?x" };
-        catSymbols["Formulas"] = { "(-bÂ±?(b^2-4ac))/2a" };
+        catSymbols["Formulas"] = { "(-b±?(b^2-4ac))/2a" };
         catSymbols["Physics"] = { "F=ma", "E=mc^2", "v=u+at", "s=ut+1/2at^2", "F=Gm1m2/r^2", "KE=1/2mv^2", "PE=mgh", "p=mv", "?=2?f", "?=v/f", "P=VI", "E=hf" };
         catSymbols["Geometry"] = { "A=?r^2", "V=4/3?r^3", "Pythagoras: a^2 + b^2 = c^2", "Circumference=2?r", "Area_triangle=1/2bh", "Volume_cylinder=?r^2h" };
         catSymbols["Motion"] = { "x(t)=x0 + v0 t + 1/2 a t^2", "v(t)=v0 + a t", "v^2 = v0^2 + 2 a (x - x0)", "F=dp/dt" };

@@ -171,6 +171,7 @@ public:
 // NGC2264UQFFModule.cpp
 // // // #include "NGC2264UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: NGC 2264-specific values
 NGC2264UQFFModule::NGC2264UQFFModule() {

@@ -171,6 +171,7 @@ public:
 // TapestryUQFFModule.cpp
 // // // #include "TapestryUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Tapestry-specific values
 TapestryUQFFModule::TapestryUQFFModule() {

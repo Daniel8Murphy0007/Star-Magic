@@ -804,6 +804,7 @@ void NGC2207UQFFModule::autoCorrectAnomalies() {
 #include "source147.cpp"
 #include <iostream>
 #include <iomanip>
+#include <array> // MSVC requirement
 
 int main() {
     std::cout << "========== NGC 2207 Interacting Galaxy UQFF Enhancement Demo ==========\n\n";

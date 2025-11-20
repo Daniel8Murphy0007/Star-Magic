@@ -437,6 +437,7 @@ void ESO137UQFFModule::printVariables() {
 // #include "ESO137UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #define _USE_MATH_DEFINES
 #include <complex>
+#include <array> // MSVC requirement
 // int main() {
 //     ESO137UQFFModule mod;
 //     double t = 7.72e14;  // 24.5 Myr

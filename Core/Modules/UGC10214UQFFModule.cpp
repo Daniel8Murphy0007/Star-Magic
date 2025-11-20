@@ -176,6 +176,7 @@ public:
 // UGC10214UQFFModule.cpp
 // // // #include "UGC10214UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: UGC 10214-specific values
 UGC10214UQFFModule::UGC10214UQFFModule() {

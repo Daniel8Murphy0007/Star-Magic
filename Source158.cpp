@@ -793,6 +793,7 @@ cdouble UQFFBuoyancyModule::computeUi(double t, const std::string& system) {
 #include <iomanip>
 #include <fstream>
 #include <vector>
+#include <array> // MSVC requirement
 
 class SurfaceMagneticFieldModule {
 private:
@@ -1017,7 +1018,8 @@ void SurfaceMagneticFieldModule::adaptiveUpdate(double dt, const std::string& fe
     variables["dark_matter_coupling"] *= (1.0 + 0.0001 * std::sin(dt / 1e13));
     
     recordHistory("adaptive_time", dt);
-    std::cout << "Galactic magnetic adaptive update: B_ref=" << variables["B_ref"] 
+    std::cout << "Galactic magnetic adaptive update: B_ref=" << variables["B_ref"] 
+
  * Enhanced: November 04, 2025 - Added self-expanding capabilities
               << ", SFR=" << variables["star_formation_rate"] << std::endl;
 }

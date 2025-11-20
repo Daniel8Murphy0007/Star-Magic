@@ -172,6 +172,7 @@ public:
 // CrabUQFFModule.cpp
 // // // #include "CrabUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Crab Nebula-specific values
 CrabUQFFModule::CrabUQFFModule() {

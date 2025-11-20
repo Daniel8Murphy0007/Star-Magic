@@ -161,6 +161,7 @@ UQFFMultiAstroSystem create_ESO510_G13_system();
 #include <iomanip>
 #include <numeric>
 #include <vector>
+#include <array> // MSVC requirement
 
 // UQFFMultiAstroCore Implementation
 UQFFMultiAstroCore::UQFFMultiAstroCore(double k1, double k_ub)

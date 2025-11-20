@@ -437,6 +437,7 @@ void J1610UQFFModule::printVariables() {
 // #include "J1610UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #define _USE_MATH_DEFINES
 #include <complex>
+#include <array> // MSVC requirement
 // int main() {
 //     J1610UQFFModule mod;
 //     double t = 3.156e14;  // 10 Myr

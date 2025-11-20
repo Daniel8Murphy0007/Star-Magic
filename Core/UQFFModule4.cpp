@@ -12,6 +12,7 @@
  */
 
 #include "UQFFModule4.hpp"
+#include <array> // MSVC requirement
 
 namespace UQFFCore {
 

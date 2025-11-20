@@ -178,6 +178,7 @@ public:
 // J1610UQFFModule.cpp
 // // // #include "J1610UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with J1610+1811-specific values
 J1610UQFFModule::J1610UQFFModule() {

@@ -178,6 +178,7 @@ public:
 // M87JetUQFFModule.cpp
 // // // #include "M87JetUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with M87 Jet-specific values
 M87JetUQFFModule::M87JetUQFFModule() {

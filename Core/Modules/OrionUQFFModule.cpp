@@ -171,6 +171,7 @@ public:
 // OrionUQFFModule.cpp
 // // // #include "OrionUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Orion Nebula-specific values
 OrionUQFFModule::OrionUQFFModule()

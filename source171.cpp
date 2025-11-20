@@ -184,6 +184,7 @@ UQFFEightAstroSystem create_NGC2174_system();
 #include <iomanip>
 #include <numeric>
 #include <vector>
+#include <array> // MSVC requirement
 
 // UQFFEightAstroCore Implementation
 UQFFEightAstroCore::UQFFEightAstroCore(double k1, double k_ub)

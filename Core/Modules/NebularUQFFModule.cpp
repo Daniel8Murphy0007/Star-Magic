@@ -199,6 +199,7 @@ public:
 // NebularUQFFModule.cpp
 // #include "NebularUQFFModule.h"  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor
 NebularUQFFModule::NebularUQFFModule(SystemType sys) : current_system(sys)

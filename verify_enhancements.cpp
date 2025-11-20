@@ -9,6 +9,7 @@
 #include <memory>
 #include <vector>
 #include <chrono>
+#include <array> // MSVC requirement
 
 // Include a sample of enhanced modules to verify functionality
 // Note: Adjust includes based on your compilation setup

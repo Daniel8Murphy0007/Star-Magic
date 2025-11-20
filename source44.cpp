@@ -168,6 +168,7 @@ public:
 // LagoonUQFFModule.cpp
 // // // #include "LagoonUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Lagoon Nebula-specific values
 LagoonUQFFModule::LagoonUQFFModule() {

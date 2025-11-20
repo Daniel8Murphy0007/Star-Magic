@@ -168,6 +168,7 @@ public:
 // CompressedResonanceUQFF24Module.cpp
 // // // #include "CompressedResonanceUQFF24Module.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with UQFF-specific values for compressed/resonance (systems 18-24)
 CompressedResonanceUQFF24Module::CompressedResonanceUQFF24Module() {

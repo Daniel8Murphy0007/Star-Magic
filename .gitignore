@@ -97,3 +97,29 @@ Makefile
 # Log files
 coAnQi_log_*.txt
 *_log_*.txt
+
+# Build directories (MSVC migration - Nov 19, 2025)
+build/
+build_*/
+*.dir/
+
+# Visual Studio artifacts
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.suo
+*.user
+.vs/
+
+# Test output and logs
+*.log
+wolfram_*.txt
+msvc_errors*.txt
+input.txt
+test_wolfram.txt
+
+# CMake cache
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake

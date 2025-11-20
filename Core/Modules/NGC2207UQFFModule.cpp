@@ -988,6 +988,7 @@ int main() {
 // #include "NGC2207UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #define _USE_MATH_DEFINES
 #include <complex>
+#include <array> // MSVC requirement
 // int main() {
 //     NGC2207UQFFModule mod;
 //     double t = 1.26e15;  // 40 Myr

@@ -178,6 +178,7 @@ public:
 // VelaPulsarUQFFModule.cpp
 // // // #include "VelaPulsarUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Vela Pulsar-specific values
 VelaPulsarUQFFModule::VelaPulsarUQFFModule() {

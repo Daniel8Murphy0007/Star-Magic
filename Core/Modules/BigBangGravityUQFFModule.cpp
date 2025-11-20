@@ -173,6 +173,7 @@ public:
 // BigBangGravityUQFFModule.cpp
 // #include "BigBangGravityUQFFModule.h"  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Big Bang Gravity-specific values
 BigBangGravityUQFFModule::BigBangGravityUQFFModule()

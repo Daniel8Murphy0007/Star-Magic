@@ -178,6 +178,7 @@ public:
 // ASASSN14liUQFFModule.cpp
 // // // #include "ASASSN14liUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with ASASSN-14li-specific values
 ASASSN14liUQFFModule::ASASSN14liUQFFModule() {

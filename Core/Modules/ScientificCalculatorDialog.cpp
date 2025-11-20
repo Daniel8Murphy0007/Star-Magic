@@ -51,6 +51,7 @@
 #include <algorithm>
 #include <fstream>
 #include <chrono>
+#include <array> // MSVC requirement
 
 #define MAX_QUERY_LENGTH 6000
 #define MAX_WINDOWS 21 // Increased for ALMA Cycle 12

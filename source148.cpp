@@ -178,6 +178,7 @@ public:
 // RAquariiUQFFModule.cpp
 // // // #include "RAquariiUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with R Aquarii-specific values
 RAquariiUQFFModule::RAquariiUQFFModule() {

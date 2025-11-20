@@ -209,8 +209,14 @@ StarMagic_UQFF_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 StarMagic_UQFF_SOURCE_DIR:STATIC=C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic
 
+//UPX executable packer
+UPX_EXECUTABLE:FILEPATH=UPX_EXECUTABLE-NOTFOUND
+
 //Dependencies for the target
 UQFFCore_LIB_DEPENDS:STATIC=general;GLEW::GLEW;general;glfw;general;glm::glm;general;assimp::assimp;general;yaml-cpp::yaml-cpp;
+
+//Enable embedded Wolfram kernel via WSTP
+USE_EMBEDDED_WOLFRAM:BOOL=OFF
 
 //The directory containing a CMake configuration file for assimp.
 assimp_DIR:PATH=C:/vcpkg/installed/x64-mingw-dynamic/share/assimp

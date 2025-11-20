@@ -171,6 +171,7 @@ public:
 // NGC6302ResonanceUQFFModule.cpp
 // // // #include "NGC6302ResonanceUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with NGC 6302-specific values
 NGC6302ResonanceUQFFModule::NGC6302ResonanceUQFFModule() {

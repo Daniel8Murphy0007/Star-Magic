@@ -42,6 +42,7 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip>
+#include <array> // MSVC requirement
 
 class MagnetarSGR1745_2900
 {

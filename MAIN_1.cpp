@@ -6,6 +6,7 @@
 #include <map>
 #include <cstdlib> // for rand
 #include <ctime>   // for srand
+#include <array> // MSVC requirement
 
 // Define PI for compatibility across compilers
 #ifndef M_PI

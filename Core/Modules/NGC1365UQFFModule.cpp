@@ -437,6 +437,7 @@ void NGC1365UQFFModule::printVariables() {
 // #include "NGC1365UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #define _USE_MATH_DEFINES
 #include <complex>
+#include <array> // MSVC requirement
 // int main() {
 //     NGC1365UQFFModule mod;
 //     double t = 1.1e16;  // Dynamical time

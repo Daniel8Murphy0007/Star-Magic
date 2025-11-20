@@ -173,6 +173,7 @@ public:
 // NGC4676UQFFModule.cpp
 // // // #include "NGC4676UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: NGC 4676-specific values
 NGC4676UQFFModule::NGC4676UQFFModule() {

@@ -175,6 +175,7 @@ public:
 // StephanQuintetUQFFModule.cpp
 // // // #include "StephanQuintetUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Stephan's Quintet-specific values
 StephanQuintetUQFFModule::StephanQuintetUQFFModule()

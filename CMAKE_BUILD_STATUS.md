@@ -56,7 +56,7 @@ cmake -S . -B build -G "MinGW Makefiles"
 cmake --build build --target MAIN_1_CoAnQi
 
 # Run interactive menu
-.\build\MAIN_1_CoAnQi.exe
+.\build_msvc\Release\MAIN_1_CoAnQi.exe
 
 # Clean rebuild
 Remove-Item -Recurse -Force build

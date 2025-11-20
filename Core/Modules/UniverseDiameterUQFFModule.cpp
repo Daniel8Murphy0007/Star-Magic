@@ -168,6 +168,7 @@ public:
 // UniverseDiameterUQFFModule.cpp
 // // // #include "UniverseDiameterUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Universe-specific values
 UniverseDiameterUQFFModule::UniverseDiameterUQFFModule()

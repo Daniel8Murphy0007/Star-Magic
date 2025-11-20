@@ -197,6 +197,7 @@ public:
 // MUGEResonanceModule.cpp
 // // // #include "MUGEResonanceModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Universal constants and resonance params
 MUGEResonanceModule::MUGEResonanceModule(SystemType sys) : current_system(sys)

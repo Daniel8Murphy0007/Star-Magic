@@ -1,4 +1,4 @@
-﻿
+
 // HydrogenResonanceUQFFModule.h
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Hydrogen Resonance Equations of the Periodic Table of Elements (PToE).
 // This module can be plugged into a base program (e.g., 'pto_resonance_sim.cpp') by including this header and linking the .cpp.
@@ -7,7 +7,7 @@
 // All variables are stored in a std::map for dynamic addition/subtraction/update, using complex<double> for real/imaginary components.
 // Nothing is negligible: Includes all terms - amplitude resonance, deep pairing, shell corrections, nuclear stability factors.
 // Associated text: Outputs descriptive equation string via getEquationText().
-// Approximations: SC_m normalized to 1.0; Î´_pair for even-odd; magic numbers from nuclear data; f_res from binding energy.
+// Approximations: SC_m normalized to 1.0; δ_pair for even-odd; magic numbers from nuclear data; f_res from binding energy.
 // PToE params: Z=1-118, A from isotopes, E_bind from nuclear tables, etc.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 22, 2025.
 
@@ -267,8 +267,8 @@ std::string SurfaceMagneticFieldModule::getEquationText() {
            "U_g3 = k_3 * ? B_j * cos(?_s t ?) * P_core * E_react\n"
            "Where B_s = [1e-4, 0.4] T (Sun surface; quiet to sunspot).\n"
            "B_ref=0.4 T (max); scales string fields by surface B_s.\n"
-           "Example t=0, B_s=0.4 T: B_j?1e3 T, U_g3?1.8e49 J/mï¿½;\n"
-           "B_s=1e-4 T: B_j?0.25 T, U_g3?4.5e45 J/mï¿½ (-4 orders).\n"
+           "Example t=0, B_s=0.4 T: B_j?1e3 T, U_g3?1.8e49 J/m�;\n"
+           "B_s=1e-4 T: B_j?0.25 T, U_g3?4.5e45 J/m� (-4 orders).\n"
            "Role: Baseline magnetic strength for strings; variability in U_g3/disks.\n"
            "UQFF: Surface fields drive cosmic magnetism; extensible for planets.";
 }
@@ -305,6 +305,7 @@ double SurfaceMagneticFieldModule::computeU_g3_example(double t, double B_s) {
 // HydrogenResonanceUQFFModule.cpp
 #include "HydrogenResonanceUQFFModule.h"
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with PToE-specific values
 HydrogenResonanceUQFFModule::HydrogenResonanceUQFFModule() {
@@ -493,7 +494,7 @@ void HydrogenResonanceUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o pto_resonance_sim pto_resonance_sim.cpp HydrogenResonanceUQFFModule.cpp -lm
-// Sample Output for Protium: H_res â‰ˆ small value (resonance amp); full for elements via computeHRes(Z,A,t).
+// Sample Output for Protium: H_res ≈ small value (resonance amp); full for elements via computeHRes(Z,A,t).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 22, 2025.
 
 // ===== ENHANCED NUCLEAR BUOYANCY FUNCTIONS =====

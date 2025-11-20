@@ -25,6 +25,7 @@
 #include <sstream>
 #include <vector>
 #include <fstream>
+#include <array> // MSVC requirement
 
 using cdouble = std::complex<double>;
 

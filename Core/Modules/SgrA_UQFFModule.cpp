@@ -176,6 +176,7 @@ public:
 // SgrA_UQFFModule.cpp
 // // // #include "SgrA_UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Sagittarius A*-specific values
 SgrA_UQFFModule::SgrA_UQFFModule() {

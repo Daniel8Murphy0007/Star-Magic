@@ -437,6 +437,7 @@ void SgrAStarUQFFModule::printVariables() {
 // #include "SgrAStarUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #define _USE_MATH_DEFINES
 #include <complex>
+#include <array> // MSVC requirement
 // int main() {
 //     SgrAStarUQFFModule mod;
 //     double t = 1e15;  // Dynamical time

@@ -14,6 +14,7 @@
 #include <ctime>
 #include <cmath>
 #include <iostream>
+#include <array> // MSVC requirement
 
 namespace UQFFCatalogue {
 

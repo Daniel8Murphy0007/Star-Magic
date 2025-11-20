@@ -169,6 +169,7 @@ public:
 // LENRCalibUQFFModule.cpp
 // // // #include "LENRCalibUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: LENR calib-specific values
 LENRCalibUQFFModule::LENRCalibUQFFModule() : current_scenario("hydride") {

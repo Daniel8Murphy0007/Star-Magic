@@ -168,6 +168,7 @@ public:
 // SMBHBinaryUQFFModule.cpp
 // // // #include "SMBHBinaryUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: SMBH Binary-specific values
 SMBHBinaryUQFFModule::SMBHBinaryUQFFModule() {

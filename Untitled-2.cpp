@@ -2,6 +2,7 @@
 // StarMagicUQFFModule.cpp
 #include "StarMagicUQFFModule.h"
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Star Magic-specific values
 StarMagicUQFFModule::StarMagicUQFFModule() {

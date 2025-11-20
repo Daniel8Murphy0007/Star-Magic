@@ -40,7 +40,7 @@ cmake -S . -B build -G "MinGW Makefiles"
 cmake --build build --target MAIN_1_CoAnQi
 
 # Run the program
-.\build\MAIN_1_CoAnQi.exe
+.\build_msvc\Release\MAIN_1_CoAnQi.exe
 ```
 
 ### 8-Option Interactive Menu

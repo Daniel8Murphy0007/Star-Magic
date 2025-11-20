@@ -178,6 +178,7 @@ public:
 // IC2163UQFFModule.cpp
 // // // #include "IC2163UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with IC 2163-specific values
 IC2163UQFFModule::IC2163UQFFModule() {

@@ -34,7 +34,7 @@
     cmake --build build --target MAIN_1_CoAnQi
 
   Run Interactive Menu (8 options):
-    .\build\MAIN_1_CoAnQi.exe
+    .\build_msvc\Release\MAIN_1_CoAnQi.exe
 
   Clean Rebuild:
     Remove-Item -Recurse -Force build

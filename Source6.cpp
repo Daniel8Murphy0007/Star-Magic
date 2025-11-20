@@ -1569,6 +1569,7 @@ SIMPlugin::~SIMPlugin()
 #include "Modeling.h"
 #include "LaTeXRenderer.h"
 #include "PluginModule.h"
+#include <array> // MSVC requirement
 
 const double PI = 3.141592653589793;
 const double c = 3.0e8;

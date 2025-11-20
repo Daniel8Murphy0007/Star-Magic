@@ -370,6 +370,7 @@ void UQFFBuoyancyModule157::printVariables()
 #include <iomanip>
 #include <fstream>
 #include <vector>
+#include <array> // MSVC requirement
 
 class SurfaceMagneticFieldModule
 {

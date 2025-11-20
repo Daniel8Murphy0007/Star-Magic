@@ -170,6 +170,7 @@ public:
 // YoungStarsOutflowsUQFFModule.cpp
 // #include "YoungStarsOutflowsUQFFModule.h"  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Young Stars Outflows-specific values
 YoungStarsOutflowsUQFFModule::YoungStarsOutflowsUQFFModule()

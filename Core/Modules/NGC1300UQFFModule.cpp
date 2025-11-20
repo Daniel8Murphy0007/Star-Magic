@@ -176,6 +176,7 @@ public:
 // NGC1300UQFFModule.cpp
 // // // #include "NGC1300UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: NGC 1300-specific values
 NGC1300UQFFModule::NGC1300UQFFModule() {

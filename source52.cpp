@@ -1,4 +1,4 @@
-﻿// MultiUQFFModule.h
+// MultiUQFFModule.h
 // Modular C++ implementation of the full Master Universal Gravity Compressed UQFF Equations (with Resonance mode) for multiple astrophysical systems.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
 // Usage in base: #include "MultiUQFFModule.h"
@@ -171,6 +171,7 @@ public:
 // MultiUQFFModule.cpp
 // #include "MultiUQFFModule.h"  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set mode and init system
 MultiUQFFModule::MultiUQFFModule(const std::string &system, const std::string &mode)
@@ -401,7 +402,7 @@ double MultiUQFFModule::computeG(double t)
 // Get equation text (descriptive, mode-specific)
 std::string MultiUQFFModule::getEquationText()
 {
-    std::string eq_base = "g_" + current_system + "(r, t) = (G * M(t) / r^2) * (1 + H(t, z)) * (1 - B(t) / B_crit) * (1 + F_env(t)) + (Ug1 + Ug2 + Ug3' + Ug4) + (Lambda * c^2 / 3) + (hbar / sqrt(Delta_x * Delta_p)) * ∫(ψ_total H ψ_total dV) * (2π / t_Hubble) + ρ_fluid * V * g + (M_visible + M_DM) * (δρ/ρ + 3 G M / r^3)";
+    std::string eq_base = "g_" + current_system + "(r, t) = (G * M(t) / r^2) * (1 + H(t, z)) * (1 - B(t) / B_crit) * (1 + F_env(t)) + (Ug1 + Ug2 + Ug3' + Ug4) + (Lambda * c^2 / 3) + (hbar / sqrt(Delta_x * Delta_p)) * ?(?_total H ?_total dV) * (2p / t_Hubble) + ?_fluid * V * g + (M_visible + M_DM) * (d?/? + 3 G M / r^3)";
     if (current_mode == "resonance")
     {
         eq_base = "g_" + current_system + "(r, t) = a_DPM + a_THz + a_vac_diff + a_super_freq + a_aether_res + U_g4i + a_quantum_freq + a_Aether_freq + a_fluid_freq + Osc_term + a_exp_freq + f_TRZ";
@@ -425,17 +426,17 @@ void MultiUQFFModule::printVariables()
 //     MultiUQFFModule mod("OrionNebula", "compressed");
 //     double t = mod.variables["t_default"];
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
+//     std::cout << "g = " << g << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.setMode("resonance");
 //     g = mod.computeG(t);
-//     std::cout << "Resonance g = " << g << " m/s²\n";
+//     std::cout << "Resonance g = " << g << " m/s�\n";
 //     mod.setSystem("UniverseDiameter");
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp MultiUQFFModule.cpp -lm
-// Sample Output (compressed Orion t=3.156e13): g ≈ 6.132e37 m/s² (fluid dominant).
+// Sample Output (compressed Orion t=3.156e13): g � 6.132e37 m/s� (fluid dominant).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
 /*

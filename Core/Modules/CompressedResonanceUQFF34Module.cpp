@@ -169,6 +169,7 @@ public:
 // CompressedResonanceUQFF34Module.cpp
 // // // #include "CompressedResonanceUQFF34Module.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set base variables common to all systems
 CompressedResonanceUQFF34Module::CompressedResonanceUQFF34Module()

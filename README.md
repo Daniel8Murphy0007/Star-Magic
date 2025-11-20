@@ -66,7 +66,7 @@ This unified theory addresses fundamental physics problems including:
   - 8-option interactive menu system
   - Compilation: ✅ SUCCESS (Nov 18, 2025)
 - **Build**: `cmake -S . -B build -G "MinGW Makefiles"; cmake --build build --target MAIN_1_CoAnQi`
-- **Run**: `.\build\MAIN_1_CoAnQi.exe`
+- **Run**: `.\build_msvc\Release\MAIN_1_CoAnQi.exe` (or `.\build\MAIN_1_CoAnQi.exe` for MinGW)
 
 ### Secondary Engine
 
@@ -100,7 +100,7 @@ This unified theory addresses fundamental physics problems including:
 - **CMakeLists.txt**: Updated Nov 18, 2025 (446 modules, MAIN_1_CoAnQi primary target)
 - **Compiler**: MinGW-w64 GCC 14.2.0, C++17 standard
 - **Build Command**: `cmake -S . -B build -G "MinGW Makefiles"; cmake --build build --target MAIN_1_CoAnQi`
-- **Output**: `build\MAIN_1_CoAnQi.exe` (primary executable)
+- **Output**: `build_msvc\Release\MAIN_1_CoAnQi.exe` (Visual Studio) or `build\MAIN_1_CoAnQi.exe` (MinGW)
 
 ## Claude AI Integration
 

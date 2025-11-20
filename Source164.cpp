@@ -14,6 +14,7 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
+#include <array> // MSVC requirement
 
 #ifndef M_PI
 #define M_PI 3.141592653589793

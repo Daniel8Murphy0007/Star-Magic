@@ -177,6 +177,7 @@ public:
 // M16UQFFModule.cpp
 // // // #include "M16UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with M16-specific values
 M16UQFFModule::M16UQFFModule() {

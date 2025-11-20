@@ -140,6 +140,7 @@
 #include <QtVirtualKeyboard> // For virtual keyboard
 #include <QTouchEvent> // For touch events
 #include <QPanGesture> // For pan gesture
+#include <array> // MSVC requirement
 
 using namespace antlr4;
 using namespace SymEngine;

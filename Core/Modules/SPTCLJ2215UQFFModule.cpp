@@ -437,6 +437,7 @@ void SPTCLJ2215UQFFModule::printVariables() {
 // #include "SPTCLJ2215UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #define _USE_MATH_DEFINES
 #include <complex>
+#include <array> // MSVC requirement
 // int main() {
 //     SPTCLJ2215UQFFModule mod;
 //     double t = 2.21e16;  // 0.7 Gyr

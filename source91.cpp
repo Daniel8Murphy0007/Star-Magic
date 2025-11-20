@@ -166,6 +166,7 @@ public:
 // DPMModule.cpp
 // // // #include "DPMModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <random> // For distributing 26 centers
+#include <array> // MSVC requirement
 
 // Constructor: Set UQFF defaults for Pre-Big Bang DPM
 DPMModule::DPMModule()

@@ -72,6 +72,7 @@
 #include <algorithm>         // std algorithms - searching, sorting, and other operations
 #include <fstream>           // File streams - file input/output operations
 #include <chrono>            // Time library - date/time operations and timing
+#include <array> // MSVC requirement
 
 // ============================================================================
 // PREPROCESSOR DEFINITIONS - Constants and API keys used throughout the program

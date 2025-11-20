@@ -136,6 +136,7 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <array> // MSVC requirement
 
 // Restore point metadata
 struct RestorePointInfo {

@@ -168,6 +168,7 @@ public:
 // SpiralSupernovaeUQFFModule.cpp
 // // // #include "SpiralSupernovaeUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Spirals and Supernovae-specific values
 SpiralSupernovaeUQFFModule::SpiralSupernovaeUQFFModule() {

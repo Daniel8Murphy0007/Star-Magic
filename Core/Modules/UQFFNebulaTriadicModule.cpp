@@ -19,6 +19,7 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
+#include <array> // MSVC requirement
 
 using cdouble = std::complex<double>;
 

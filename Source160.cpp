@@ -216,6 +216,7 @@ void UQFFBuoyancyModule::printVariables()
 // UQFFBuoyancyModule.cpp
 // // // #include "UQFFBuoyancyModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all default variables for multi-system support
 UQFFBuoyancyModule::UQFFBuoyancyModule()

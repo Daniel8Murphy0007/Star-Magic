@@ -565,6 +565,7 @@ cdouble UQFFBuoyancyCNBModule::computeUi_CNB(double t, const std::string& system
 #include <iomanip>
 #include <fstream>
 #include <vector>
+#include <array> // MSVC requirement
 
 class SurfaceMagneticFieldModule {
 private:

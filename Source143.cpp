@@ -178,6 +178,7 @@ public:
 // LagoonNebulaUQFFModule.cpp
 // // // #include "LagoonNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Lagoon Nebula-specific values
 LagoonNebulaUQFFModule::LagoonNebulaUQFFModule() {
@@ -444,7 +445,7 @@ void LagoonNebulaUQFFModule::printVariables() {
 // Sample Output at t=evolutionary: F ? -2.09e212 + i (large; approx per framework; dominant real from LENR * x2).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 17, 2025.
 
-LagoonNebulaUQFFModule C++ Code Evaluation
+/* LagoonNebulaUQFFModule C++ Code Evaluation
 ==========================================
 
 Design & Structure
@@ -475,4 +476,5 @@ Potential Improvements
 Summary
 ------ -
 -The code is robust, modular, and well - suited for scientific simulation and experimentation.
-- Ready for integration into larger simulation frameworks and can be easily extended or adapted.
+- Ready for integration into larger simulation frameworks and can be easily extended or adapted. */
+

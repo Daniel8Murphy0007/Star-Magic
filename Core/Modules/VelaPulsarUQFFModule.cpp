@@ -437,6 +437,7 @@ void VelaPulsarUQFFModule::printVariables() {
 // #include "VelaPulsarUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #define _USE_MATH_DEFINES
 #include <complex>
+#include <array> // MSVC requirement
 // int main() {
 //     VelaPulsarUQFFModule mod;
 //     double t = 3.47e11;  // Age ~11k yr

@@ -169,6 +169,7 @@ public:
 // CrabResonanceUQFFModule.cpp
 // // // #include "CrabResonanceUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Crab Nebula-specific resonance values
 CrabResonanceUQFFModule::CrabResonanceUQFFModule() {

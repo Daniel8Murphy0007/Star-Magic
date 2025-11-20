@@ -437,6 +437,7 @@ void JupiterAuroraeUQFFModule::printVariables() {
 // #include "JupiterAuroraeUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #define _USE_MATH_DEFINES
 #include <complex>
+#include <array> // MSVC requirement
 // int main() {
 //     JupiterAuroraeUQFFModule mod;
 //     double t = 60.0;  // 60 s

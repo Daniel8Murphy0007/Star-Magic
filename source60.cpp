@@ -1,4 +1,4 @@
-﻿// MultiUQFFCompressionModule.h
+// MultiUQFFCompressionModule.h
 // Modular C++ implementation of the full Compressed Master Universal Gravity Equation (UQFF Compression Cycle 2) for 19 astrophysical systems (1-19 docs).
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
 // Usage in base: #include "MultiUQFFCompressionModule.h"
@@ -169,6 +169,7 @@ public:
 // MultiUQFFCompressionModule.cpp
 // #include "MultiUQFFCompressionModule.h"  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Init system
 MultiUQFFCompressionModule::MultiUQFFCompressionModule(const std::string &system)
@@ -621,14 +622,14 @@ double MultiUQFFCompressionModule::computeG(double t)
 std::string MultiUQFFCompressionModule::getEquationText()
 {
     return "g_UQFF(r, t) = (G * M(t) / r^2) * (1 + H(t, z)) * (1 - B(t) / B_crit) * (1 + F_env(t)) + (Ug1 + Ug2 + Ug3' + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ∫(ψ_total H ψ_total dV) * (2π / t_Hubble) + ρ_fluid * V * g + (M_visible + M_DM) * (δρ/ρ + 3 G M / r^3)\n"
-           "Where H(t, z) = H_0 * sqrt(Ω_m (1+z)^3 + Ω_Λ); M(t) = M * (1 + M_sf(t)); M_sf(t) = (SFR * t_yr) / M0;\n"
-           "F_env(t) = ∑ F_i(t) (e.g., F_wind=ρ v_wind^2, F_erode=E(t), F_SN=-M_SN(t)/M, F_merge=M_merge(t)/M, F_rad, F_fil, F_BH=G M_ext / r_ext^2);\n"
-           "Ug3' = G M_ext / r_ext^2; ψ_total = combined waves.\n"
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?_total H ?_total dV) * (2p / t_Hubble) + ?_fluid * V * g + (M_visible + M_DM) * (d?/? + 3 G M / r^3)\n"
+           "Where H(t, z) = H_0 * sqrt(O_m (1+z)^3 + O_?); M(t) = M * (1 + M_sf(t)); M_sf(t) = (SFR * t_yr) / M0;\n"
+           "F_env(t) = ? F_i(t) (e.g., F_wind=? v_wind^2, F_erode=E(t), F_SN=-M_SN(t)/M, F_merge=M_merge(t)/M, F_rad, F_fil, F_BH=G M_ext / r_ext^2);\n"
+           "Ug3' = G M_ext / r_ext^2; ?_total = combined waves.\n"
            "Special Terms:\n"
-           "- Compression: Unified H(t,z), modular F_env(t) for 19 systems (1-19 docs), generalized Ug3', ψ_total consolidated.\n"
+           "- Compression: Unified H(t,z), modular F_env(t) for 19 systems (1-19 docs), generalized Ug3', ?_total consolidated.\n"
            "- Adaptations: NGC2525 (SN loss); NGC3603 (cavity P(t)); Bubble (expansion E(t)); Antennae (merger); Horsehead (sculpting); NGC1275 (filaments/BH); NGC1792 (starburst SN); HUDF (gal evo).\n"
-           "Solutions: Varies by system/t; e.g., NGC2525 t=1 Gyr ~1e-10 m/s² (SN/F_env bal).\n"
+           "Solutions: Varies by system/t; e.g., NGC2525 t=1 Gyr ~1e-10 m/s� (SN/F_env bal).\n"
            "From UQFF Cycle 2: Unifies 19 docs; extensible to 20-38.";
 }
 
@@ -648,25 +649,25 @@ void MultiUQFFCompressionModule::printVariables()
 //     MultiUQFFCompressionModule mod("NGC2525");
 //     double t = mod.variables["t_default"];
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
+//     std::cout << "g = " << g << " m/s�\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.setSystem("HubbleUltraDeepField");
 //     g = mod.computeG(t);
-//     std::cout << "HUDF g = " << g << " m/s²\n";
+//     std::cout << "HUDF g = " << g << " m/s�\n";
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp MultiUQFFCompressionModule.cpp -lm
-// Sample Output (NGC2525 t=1 Gyr): g ≈ 1e-10 m/s² (F_env/SN dominant).
+// Sample Output (NGC2525 t=1 Gyr): g � 1e-10 m/s� (F_env/SN dominant).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
 /*
 // Evaluation of MultiUQFFCompressionModule (UQFF Compression Cycle 2 for 19 Systems)
 
 **Strengths:**
-- **Expanded Multi-System Support:** Dynamic setSystem() for 19 systems (1-19 docs), auto-loading params (e.g., NGC2525 M_ext=1e9 Msun BH, M_SN=10 Msun; HUDF z=10, r=1e23 m). Implements compressed eq with ∑ F_i(t) in F_env (e.g., -M_SN(t)/M for NGC2525, F_fil for NGC1275).
+- **Expanded Multi-System Support:** Dynamic setSystem() for 19 systems (1-19 docs), auto-loading params (e.g., NGC2525 M_ext=1e9 Msun BH, M_SN=10 Msun; HUDF z=10, r=1e23 m). Implements compressed eq with ? F_i(t) in F_env (e.g., -M_SN(t)/M for NGC2525, F_fil for NGC1275).
 - **Unified Compression:** H(t,z) cosmic, F_env modular sum (winds, erosion E(t), mergers M_merge(t), SN F_SN, rad, fil, BH);
-Ug3' external; ψ_total consolidated. Auto-deps (M_DM=0.85 M). - **Comprehensive Coverage : **Retains UQFF terms;
+Ug3' external; ?_total consolidated. Auto-deps (M_DM=0.85 M). - **Comprehensive Coverage : **Retains UQFF terms;
 balances env(F_env dom in nebulae / galaxies) and pert; Hz(z) for high-z (HUDF z=10) vs low (Horsehead z=0).
 - **Immediate Effect & Debugging:** Updates reflect;
 printVariables system - specific;
@@ -682,6 +683,6 @@ validate r > 0, z >= 0. - **Magic Numbers : **integral = 1.0, f_sc = 10; expose 
 - **Generalization:** F_env extensible (add F_i for 20-38, e.g., halos); include Ug2 if mergers need torque.
 
 **Summary:**
-Module encodes May 2025 UQFF Cycle 2 compression (1-19 docs) into Oct 2025 template, unifying systems with modular F_env(t) for diverse dynamics. Advances framework by streamlining (unified H/Ug3/ψ, ∑ F_i), enhancing scalability/clarity for full 38. Robust;
+Module encodes May 2025 UQFF Cycle 2 compression (1-19 docs) into Oct 2025 template, unifying systems with modular F_env(t) for diverse dynamics. Advances framework by streamlining (unified H/Ug3/?, ? F_i), enhancing scalability/clarity for full 38. Robust;
 integrate 20 - 38 next.
 */

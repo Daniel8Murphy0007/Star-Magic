@@ -176,6 +176,7 @@ public:
 // MultiUQFFModule.cpp
 // #include "MultiUQFFModule.h"  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set mode and init system
 MultiUQFFModule::MultiUQFFModule(const std::string &system, const std::string &mode)

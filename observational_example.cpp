@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include "observational_systems_config.h"
+#include <array> // MSVC requirement
 
 // Example: Simulate using SOURCE10 BuoyancyUQFF term
 // (In real usage, you'd link against MAIN_1_CoAnQi.cpp and use actual PhysicsTerm classes)

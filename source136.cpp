@@ -178,6 +178,7 @@ public:
 // CentaurusAUQFFModule.cpp
 // // // #include "CentaurusAUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
+#include <array> // MSVC requirement
 
 // Constructor: Set all variables with Centaurus A-specific values
 CentaurusAUQFFModule::CentaurusAUQFFModule() {

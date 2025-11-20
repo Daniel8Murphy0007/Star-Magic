@@ -459,6 +459,7 @@ void StephanQuintetUQFFModule::printVariables()
 // #include "StephanQuintetUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // #define _USE_MATH_DEFINES
 #include <complex>
+#include <array> // MSVC requirement
 // int main() {
 //     StephanQuintetUQFFModule mod;
 //     double t = 1e16;  // Dynamical time
