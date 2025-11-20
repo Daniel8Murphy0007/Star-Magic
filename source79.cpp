@@ -1,4 +1,5 @@
 // RedSpiderUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source79.cpp *) + source79_unification_sector"
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for Red Spider Nebula (NGC 6537) Evolution.
 // This module models NGC 6537's dynamics via frequency/resonance: DPM core, THz hole pipeline, U_g4i reactive, plasmotic vacuum energy; no SM gravity/magnetics.
 // Usage: // // // #include "RedSpiderUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; RedSpiderUQFFModule mod; mod.computeG(t); mod.updateVariable("f_super", new_value);

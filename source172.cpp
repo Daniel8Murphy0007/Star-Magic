@@ -1,4 +1,5 @@
 
+#define WOLFRAM_TERM "(* Auto-contribution from source172.cpp *) + source172_unification_sector"
 // UQFFNineteenAstroSystems.h
 // Header file for Unified Quantum Force Field (UQFF) Nineteen Astrophysical Systems
 // Based on the provided UQFF framework document dated October 11, 2025, enhanced for November 17, 2025

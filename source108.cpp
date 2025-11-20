@@ -1,4 +1,5 @@
 // CorePenetrationModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source108.cpp *) + source108_unification_sector"
 // Modular C++ implementation of the Planetary Core Penetration Factor (P_core) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes P_core ?1 (unitless for Sun, ~1e-3 for planets); scales P_core in Universal Gravity U_g3 term.
 // Pluggable: // // // #include "CorePenetrationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

@@ -1,4 +1,5 @@
 // NGC2264UQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source76.cpp *) + source76_unification_sector"
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for Cone Nebula (NGC 2264) Evolution.
 // This module models NGC 2264's gravitational dynamics, incorporating stellar winds, pillar erosion, protostar formation, dust/gas densities, and dark matter.
 // Usage: // // // #include "NGC2264UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; NGC2264UQFFModule mod; mod.computeG(t); mod.updateVariable("SFR", new_value);

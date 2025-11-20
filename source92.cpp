@@ -1,4 +1,5 @@
 // BuoyancyCouplingModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source92.cpp *) + source92_unification_sector"
 // Modular C++ implementation of the Buoyancy Coupling Constants (?_i) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes the Universal Buoyancy terms U_bi = -?_i * U_gi * ?_g * (M_bh / d_g) * E_react for i=1 to 4 (Ug1-Ug4).
 // Pluggable: // // // #include "BuoyancyCouplingModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

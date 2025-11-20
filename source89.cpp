@@ -1,4 +1,5 @@
 // AetherCouplingModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source89.cpp *) + source89_unification_sector"
 // Modular C++ implementation of the Aether Coupling Constant (?) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes the Aether metric perturbation A_?? = g_?? + ? * T_s^{??}, where ? is the dimensionless Aether coupling constant.
 // Pluggable: // // // #include "AetherCouplingModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

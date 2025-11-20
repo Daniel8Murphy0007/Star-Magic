@@ -1,4 +1,5 @@
 // M87JetUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source145.cpp *) + source145_unification_sector"
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for M87 Jet Relativistic Jet Evolution.
 // This module can be plugged into a base program (e.g., 'm87_sim.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "M87JetUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
@@ -442,7 +443,7 @@ void M87JetUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o m87_sim m87_sim.cpp M87JetUQFFModule.cpp -lm
-// Sample Output at t=dynamical: F ˜ -8.32e217 + i (large; approx per framework; dominant real from LENR * x2).
+// Sample Output at t=dynamical: F Â˜ -8.32e217 + i (large; approx per framework; dominant real from LENR * x2).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 18, 2025.
 
 M87JetUQFFModule C++ Code Evaluation

@@ -1,4 +1,5 @@
 // NGC4676UQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source78.cpp *) + source78_unification_sector"
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for NGC 4676 (The Mice) Evolution.
 // This module models NGC 4676's gravitational dynamics, incorporating collision of NGC 4676A/B, tidal tails/bridge, enhanced star formation, gas turbulence, and dark matter.
 // Usage: // // // #include "NGC4676UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; NGC4676UQFFModule mod; mod.computeG(t); mod.updateVariable("SFR", new_value);

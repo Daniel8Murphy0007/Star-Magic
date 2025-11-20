@@ -1,4 +1,5 @@
 // SolarWindBuoyancyModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source93.cpp *) + source93_unification_sector"
 // Modular C++ implementation of the Buoyancy Modulation by Solar Wind Density (?_sw) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes the modulation factor (1 + ?_sw * ?_vac,sw) in the Universal Buoyancy term U_bi, with ?_sw=0.001 (unitless).
 // Pluggable: // // // #include "SolarWindBuoyancyModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

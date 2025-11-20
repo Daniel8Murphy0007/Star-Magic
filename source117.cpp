@@ -1,4 +1,5 @@
 // StellarMassModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source117.cpp *) + source117_unification_sector"
 // Modular C++ implementation of the Stellar/Planetary Mass (M_s) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes M_s=1.989e30 kg (1 M_sun for Sun); scales M_s / r^2 in Universal Gravity U_g1 and U_g2 terms.
 // Pluggable: // // // #include "StellarMassModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

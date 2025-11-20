@@ -1,4 +1,5 @@
 // LagoonNebulaUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source144.cpp *) + source144_unification_sector"
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Lagoon Nebula Emission Nebula Evolution.
 // This module can be plugged into a base program (e.g., 'lagoon_sim.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "LagoonNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

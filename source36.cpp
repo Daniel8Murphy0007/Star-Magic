@@ -1,4 +1,5 @@
 // TapestryUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source36.cpp *) + source36_unification_sector"
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF) for "Tapestry of Blazing Starbirth" (NGC 2014/2020) Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "TapestryUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

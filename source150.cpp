@@ -1,4 +1,5 @@
 // SPTCLJ2215UQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source150.cpp *) + source150_unification_sector"
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for SPT-CL J2215-3537 Galaxy Cluster Evolution.
 // This module can be plugged into a base program (e.g., 'sptcl_sim.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "SPTCLJ2215UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

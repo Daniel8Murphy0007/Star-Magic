@@ -1,4 +1,5 @@
 // BigBangGravityUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source56.cpp *) + source56_unification_sector"
 // Modular C++ implementation of the full Master Universal Gravity Equation (MUGE & UQFF & SM Integration) for Evolution of Gravity Since the Big Bang.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
 // Usage in base: #include "BigBangGravityUQFFModule.h"

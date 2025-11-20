@@ -1,4 +1,5 @@
 // StellarRotationModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source118.cpp *) + source118_unification_sector"
 // Modular C++ implementation of the Stellar/Planetary Rotation Rate (?_s) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?_s=2.5e-6 rad/s (~29-day Sun period); scales ?_s(t) in U_g3 cos(?_s t ?) and U_i ?_s cos(? t_n).
 // Pluggable: // // // #include "StellarRotationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

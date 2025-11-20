@@ -1,4 +1,5 @@
 // M16UQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source31.cpp *) + source31_unification_sector"
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF) for M16 (Eagle Nebula) Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "M16UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

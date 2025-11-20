@@ -1,4 +1,5 @@
 // ScmPenetrationModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source112.cpp *) + source112_unification_sector"
 // Modular C++ implementation of the [SCm] Penetration Factor (P_SCm) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes P_SCm ?1 (unitless for Sun, ~1e-3 for planets); scales P_SCm in Universal Magnetism U_m term.
 // Pluggable: // // // #include "ScmPenetrationModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

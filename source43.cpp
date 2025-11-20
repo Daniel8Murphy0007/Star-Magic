@@ -1,4 +1,5 @@
 // HydrogenPToEResonanceUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source43.cpp *) + source43_unification_sector"
 // Modular C++ implementation of the Hydrogen Resonance Equations of the Periodic Table of Elements (PToE) using UQFF.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "HydrogenPToEResonanceUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

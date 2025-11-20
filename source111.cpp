@@ -1,4 +1,5 @@
 // ReciprocationDecayModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source111.cpp *) + source111_unification_sector"
 // Modular C++ implementation of the Reciprocation Decay Rate (?) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?=0.00005 day?� (~5.8e-10 s?�); used in exp(-? t cos(? t_n)) for U_m decay.
 // Pluggable: // // // #include "ReciprocationDecayModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

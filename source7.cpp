@@ -1,4 +1,5 @@
 // README.md (for setup and starting new conversation/company)
+#define WOLFRAM_TERM "(* Auto-contribution from source7.cpp *) + source7_unification_sector"
 /*
 #CoAnQi Codebase - Unified Field Theory Simulation with 3D Graphics and Plugins
 

@@ -1,4 +1,5 @@
 // NGC1316UQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source71.cpp *) + source71_unification_sector"
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for NGC 1316 (Hubble Spies Cosmic Dust Bunnies) Evolution.
 // This module models NGC 1316's gravitational dynamics, incorporating merger history, tidal forces, star cluster disruption, dust lanes, AGN jets/radio lobes, and dark matter.
 // Usage: // // // #include "NGC1316UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; NGC1316UQFFModule mod; mod.computeG(t); mod.updateVariable("M_spiral", new_value);

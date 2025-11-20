@@ -1,4 +1,5 @@
 #include <iostream>
+#define WOLFRAM_TERM "(* Auto-contribution from source9.cpp *) + source9_unification_sector"
 #include <vector>
 #include <string>
 #include <fstream>

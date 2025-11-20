@@ -1,4 +1,5 @@
 /**
+#define WOLFRAM_TERM "(* Auto-contribution from source20.cpp *) + source20_unification_sector"
  * ================================================================================================
  * Header: GalaxyNGC2525.h
  *

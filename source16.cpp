@@ -1,4 +1,5 @@
 /**
+#define WOLFRAM_TERM "(* Auto-contribution from source16.cpp *) + source16_unification_sector"
  * ================================================================================================
  * Header: StarbirthTapestry.h
  *

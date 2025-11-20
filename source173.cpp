@@ -1,4 +1,5 @@
 
+#define WOLFRAM_TERM "(* Auto-contribution from source173.cpp *) + source173_unification_sector"
 // WolframFieldUnity.h
 // THE FINAL NODE — Full Wolfram Physics Project Integration
 // For Daniel T. Murphy's Field Unity Framework — November 17, 2025

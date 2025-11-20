@@ -1,4 +1,5 @@
 // MagneticMomentModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source104.cpp *) + source104_unification_sector"
 // Modular C++ implementation of the Magnetic Moment of the j-th String (?_j) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?_j = (10^3 + 0.4 sin(?_c t)) * 3.38e20 T�m^3; scales ?_j / r_j in Universal Magnetism U_m and Ug3.
 // Pluggable: // // // #include "MagneticMomentModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

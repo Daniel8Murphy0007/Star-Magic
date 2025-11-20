@@ -1,4 +1,5 @@
 /**
+#define WOLFRAM_TERM "(* Auto-contribution from source25.cpp *) + source25_unification_sector"
  * ================================================================================================
  * Header: NGC1275.h
  *

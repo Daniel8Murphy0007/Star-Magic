@@ -1,4 +1,5 @@
 // MUGEResonanceModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source87.cpp *) + source87_unification_sector"
 // Modular C++ implementation of the Resonance-Based Superconductive MUGE (UQFF) for multiple astronomical systems.
 // This module uses frequency-driven dynamics via plasmotic vacuum energy and resonances, excluding SM gravity/magnetics.
 // Pluggable: // // // #include "MUGEResonanceModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

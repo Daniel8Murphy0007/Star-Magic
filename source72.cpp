@@ -1,4 +1,5 @@
 // V838MonUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source72.cpp *) + source72_unification_sector"
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for V838 Monocerotis Light Echo Evolution.
 // This module models the light echo intensity evolution, incorporating outburst luminosity, dust scattering, gravitational modulation via Ug1, time-reversal (f_TRZ), and Aether ([UA]) effects.
 // Usage: // // // #include "V838MonUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; V838MonUQFFModule mod; mod.computeIecho(t); mod.updateVariable("L_outburst", new_value);

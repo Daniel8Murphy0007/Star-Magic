@@ -1,4 +1,5 @@
 // SMBHUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source82.cpp *) + source82_unification_sector"
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for SMBH Comparison to UQFF.
 // This module models SMBH dynamics in the M-? relation context, incorporating Ug1-Ug4, Ui, Um, pseudo-monopole shifts, reactor efficiency, and vacuum energy densities.
 // Usage: // // // #include "SMBHUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; SMBHUQFFModule mod; mod.computeG(t, sigma); mod.updateVariable("M_bh", new_value);

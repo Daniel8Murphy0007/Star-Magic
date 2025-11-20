@@ -1,4 +1,5 @@
 /**
+#define WOLFRAM_TERM "(* Auto-contribution from source22.cpp *) + source22_unification_sector"
  * ================================================================================================
  * Header: BubbleNebula.h
  *

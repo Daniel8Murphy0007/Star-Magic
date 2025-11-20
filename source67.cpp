@@ -1,4 +1,5 @@
 // InertiaUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source67.cpp *) + source67_unification_sector"
 // Modular C++ implementation of UQFF for Inertia Papers (43.d Red Dwarf Compression_D): Quantum Waves (eq1-2), Inertial Operator (eq3-4), Universal Inertia Ui (eq5), Bosonic Energy (eq6), Magnetic H (eq7), integrated with Um/Ug3.
 // Computes ? wave, ?_twist, �?, B_pseudo, Ui, E_boson, H_mag; solves for E_wave scaled by Higgs freq/Earth precession.
 // Plug into base (e.g., 'inertia_uqff_sim.cpp') via #include "InertiaUQFFModule.h".

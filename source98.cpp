@@ -1,10 +1,11 @@
 // UnifiedFieldModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source98.cpp *) + source98_unification_sector"
 // Modular C++ implementation of the Unified Field Strength (F_U) in the Universal Quantum Field Superconductive Framework (UQFF).
-// This module computes F_U as normalized vacuum energy density (J/m³) from Ug, Um, Ub, Ui, and Aether terms across 26 quantum levels.
+// This module computes F_U as normalized vacuum energy density (J/mÂ³) from Ug, Um, Ub, Ui, and Aether terms across 26 quantum levels.
 // Pluggable: // // // #include "UnifiedFieldModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 // UnifiedFieldModule mod; mod.computeFU(double t); mod.updateVariable("U_g1", new_value);
 // Variables in std::map; defaults for Sun at t=0 (level 13); normalization via coupling constants.
-// Approximations: Dominant Um ~2.28e65 J/m³; Aether small; cos(p t_n)=1 at t_n=0.
+// Approximations: Dominant Um ~2.28e65 J/mÂ³; Aether small; cos(p t_n)=1 at t_n=0.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef UNIFIED_FIELD_MODULE_H
@@ -147,7 +148,7 @@ public:
     void addToVariable(const std::string& name, double delta);
     void subtractFromVariable(const std::string& name, double delta);
 
-    // Core computation: F_U(t) in J/m³
+    // Core computation: F_U(t) in J/mÂ³
     double computeFU(double t);
 
     // Output descriptive text
@@ -265,10 +266,10 @@ double UnifiedFieldModule::computeFU(double t) {
 // Equation text
 std::string UnifiedFieldModule::getEquationText() {
     return "F_U = ? [Ug_i + Um + Ub_i + Ui + Aether] * norm(?_vac,[SCm] + ?_vac,[UA])\n"
-           "Units: J/m³ (energy density).\n"
-           "Ug: ? U_g1-4 (gravity scales); Um: Magnetic strings; Ub: -ß_i Ug_i ... (buoyancy);\n"
-           "Ui: Inertia resistance; Aether: g_µ? + ? T_s (perturbed metric).\n"
-           "Normalized across 26 levels; Sun t=0: F_U ˜2.28e65 J/m³ (Um dominant).\n"
+           "Units: J/mÂ³ (energy density).\n"
+           "Ug: ? U_g1-4 (gravity scales); Um: Magnetic strings; Ub: -ÃŸ_i Ug_i ... (buoyancy);\n"
+           "Ui: Inertia resistance; Aether: g_Âµ? + ? T_s (perturbed metric).\n"
+           "Normalized across 26 levels; Sun t=0: F_U Â˜2.28e65 J/mÂ³ (Um dominant).\n"
            "Role: Holistic energy density for cosmic/quantum dynamics (nebulae, AGN, mergers).\n"
            "UQFF: Integrates forces; vacuum normalization for scale consistency.";
 }
@@ -291,13 +292,13 @@ void UnifiedFieldModule::printComponentBreakdown(double t) {
     double aether = computeAether();
     double norm = (variables["rho_vac_SCm"] + variables["rho_vac_UA"]);
     std::cout << "F_U Breakdown at t=" << t << " s:\n";
-    std::cout << "Ug sum: " << std::scientific << ug << " J/m³\n";
-    std::cout << "Um: " << um << " J/m³\n";
-    std::cout << "Ub sum: " << ub << " J/m³\n";
-    std::cout << "Ui: " << ui << " J/m³\n";
-    std::cout << "Aether: " << aether << " J/m³\n";
+    std::cout << "Ug sum: " << std::scientific << ug << " J/mÂ³\n";
+    std::cout << "Um: " << um << " J/mÂ³\n";
+    std::cout << "Ub sum: " << ub << " J/mÂ³\n";
+    std::cout << "Ui: " << ui << " J/mÂ³\n";
+    std::cout << "Aether: " << aether << " J/mÂ³\n";
     std::cout << "Norm factor: " << norm << "\n";
-    std::cout << "Total F_U: " << fu << " J/m³\n";
+    std::cout << "Total F_U: " << fu << " J/mÂ³\n";
 }
 
 // Example usage in base program (snippet)
@@ -306,7 +307,7 @@ void UnifiedFieldModule::printComponentBreakdown(double t) {
 //     UnifiedFieldModule mod;
 //     double t = 0.0;
 //     double fu = mod.computeFU(t);
-//     std::cout << "F_U = " << fu << " J/m³\n";
+//     std::cout << "F_U = " << fu << " J/mÂ³\n";
 //     mod.printComponentBreakdown(t);
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("U_m", 2.5e65);
@@ -314,7 +315,7 @@ void UnifiedFieldModule::printComponentBreakdown(double t) {
 //     return 0;
 // }
 // Compile: g++ -o unified_test unified_test.cpp UnifiedFieldModule.cpp -lm
-// Sample: F_U ˜2.28e65 J/m³ (Um dominant); normalized vacuum density.
+// Sample: F_U Â˜2.28e65 J/mÂ³ (Um dominant); normalized vacuum density.
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*

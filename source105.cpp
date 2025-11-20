@@ -1,4 +1,5 @@
 // GalacticBlackHoleModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source105.cpp *) + source105_unification_sector"
 // Modular C++ implementation of the Mass of the Galactic Black Hole (M_bh) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes M_bh=8.15e36 kg ?4.1e6 M_sun; scales M_bh / d_g in Universal Buoyancy U_bi and Ug4.
 // Pluggable: // // // #include "GalacticBlackHoleModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

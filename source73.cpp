@@ -1,4 +1,5 @@
 // NGC1300UQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source73.cpp *) + source73_unification_sector"
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for Barred Spiral Galaxy NGC 1300 Evolution.
 // This module models NGC 1300's gravitational dynamics, incorporating bar-driven gas funneling, spiral arm density waves, star formation, dust lanes, and dark matter.
 // Usage: // // // #include "NGC1300UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; NGC1300UQFFModule mod; mod.computeG(t); mod.updateVariable("SFR", new_value);

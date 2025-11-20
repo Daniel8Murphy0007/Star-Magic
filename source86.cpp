@@ -1,4 +1,5 @@
 // MUGEModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source86.cpp *) + source86_unification_sector"
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE) for multiple astronomical systems.
 // This module integrates compressed UQFF (from documents) and resonance-based UQFF models.
 // Can be plugged into a base program by including this header and linking the .cpp.

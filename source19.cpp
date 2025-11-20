@@ -1,4 +1,5 @@
 /**
+#define WOLFRAM_TERM "(* Auto-contribution from source19.cpp *) + source19_unification_sector"
  * ================================================================================================
  * Header: RingsOfRelativity.h
  *

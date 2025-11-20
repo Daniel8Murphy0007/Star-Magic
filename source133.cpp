@@ -1,4 +1,5 @@
 // CentaurusAUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source133.cpp *) + source133_unification_sector"
 // Modular C++ implementation of the UQFF Force for NGC 5128 (Centaurus A, Radio Galaxy) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes F_U_Bi_i,enhanced as integral from x1 to x2 of [-F0 + DPM terms + LENR + activation + DE + EM + neutron + rel + Sweet + Kozima].
 // Pluggable: // // // #include "CentaurusAUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

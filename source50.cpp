@@ -1,4 +1,5 @@
 // uqff_module.cpp
+#define WOLFRAM_TERM "(* Auto-contribution from source50.cpp *) + source50_unification_sector"
 // Module for UQFF (Compressed and Resonance) Equations implementation
 // Pluggable into base program 'ziqn233h..cpp' via external functions:
 // - void install_uqff_module();  // Installer/Initializer

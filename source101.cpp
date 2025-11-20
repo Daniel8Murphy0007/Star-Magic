@@ -1,4 +1,5 @@
 // HeliosphereThicknessModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source101.cpp *) + source101_unification_sector"
 // Modular C++ implementation of the Heliosphere Thickness Factor (H_SCm) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes H_SCm ?1 (unitless) and its scaling in Universal Gravity U_g2 term.
 // Pluggable: // // // #include "HeliosphereThicknessModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

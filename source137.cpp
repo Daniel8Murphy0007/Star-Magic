@@ -1,4 +1,5 @@
 // CrabNebulaUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source137.cpp *) + source137_unification_sector"
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Crab Nebula Supernova Remnant Evolution.
 // This module can be plugged into a base program (e.g., 'crab_sim.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "CrabNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
@@ -442,7 +443,7 @@ void CrabNebulaUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o crab_sim crab_sim.cpp CrabNebulaUQFFModule.cpp -lm
-// Sample Output at t=970 yr: F ˜ -2.09e212 + i (large; approx per framework; dominant real from LENR * x2).
+// Sample Output at t=970 yr: F Â˜ -2.09e212 + i (large; approx per framework; dominant real from LENR * x2).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 14, 2025.
 
 CrabNebulaUQFFModule Evaluation

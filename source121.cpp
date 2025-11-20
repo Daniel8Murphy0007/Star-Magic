@@ -1,4 +1,5 @@
 // SurfaceMagneticFieldModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source121.cpp *) + source121_unification_sector"
 // Modular C++ implementation of the Surface Magnetic Field (B_s) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes B_s range [1e-4, 0.4] T for Sun; influences B_j in U_g3 magnetic strings (scaled by B_s / B_ref).
 // Pluggable: // // // #include "SurfaceMagneticFieldModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

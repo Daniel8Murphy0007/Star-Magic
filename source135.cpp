@@ -1,4 +1,5 @@
 // ASASSN14liUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source135.cpp *) + source135_unification_sector"
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for ASASSN-14li Tidal Disruption Event Evolution.
 // This module can be plugged into a base program (e.g., 'asassn_sim.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "ASASSN14liUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

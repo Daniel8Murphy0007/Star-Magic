@@ -1,4 +1,5 @@
 #include <QVBoxLayout>
+#define WOLFRAM_TERM "(* Auto-contribution from source8.cpp *) + source8_unification_sector"
 #include <QTextEdit>
 #include <QPushButton>
 #include <QMouseEvent>

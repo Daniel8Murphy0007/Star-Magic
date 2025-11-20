@@ -1,4 +1,5 @@
 // ScmReactivityDecayModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source113.cpp *) + source113_unification_sector"
 // Modular C++ implementation of the [SCm] Reactivity Decay Rate (?) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?=0.0005 day?� (~5.8e-6 s?�); used in E_react = 10^46 * exp(-? t) for decay in U_m, U_bi, etc.
 // Pluggable: // // // #include "ScmReactivityDecayModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

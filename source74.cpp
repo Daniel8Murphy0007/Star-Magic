@@ -1,4 +1,5 @@
 // UQFFCompressedResonanceModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source74.cpp *) + source74_unification_sector"
 // Modular C++ implementation of Compressed and Resonance UQFF Equations for Multi-System Evolution (Young Stars Outflows, Eagle Nebula, Big Bang, M51, NGC 1316, V838 Mon, NGC 1300, Student's Guide).
 // Supports compressed g_UQFF(r,t) unified form; resonance mode adds oscillatory terms (cos/exp(i ? t)) for wave dynamics.
 // Usage: // // #include "UQFFCompressedResonanceModule.h"  // Commented - header not available  // Commented - header not available; UQFFCompressedResonanceModule mod; mod.setSystem("Eagle"); mod.setMode("resonance"); mod.computeG(t);

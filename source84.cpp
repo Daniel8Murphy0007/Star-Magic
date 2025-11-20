@@ -1,4 +1,5 @@
 // LENRCalibUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source84.cpp *) + source84_unification_sector"
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for K_n Neutron Production Calibration Constant in LENR.
 // This module models neutron production rate ? via Um, calibrated k_? for 100% accuracy in hydride/wires/corona; pseudo-monopole states ?_n, ?_vac,[UA�]:[SCm].
 // Usage: // // // #include "LENRCalibUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; LENRCalibUQFFModule mod; mod.setScenario("hydride"); mod.computeEta(t); mod.updateVariable("k_eta", new_value);

@@ -1,4 +1,5 @@
 // UgCouplingModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source94.cpp *) + source94_unification_sector"
 // Modular C++ implementation of the Coupling Constants for Ug Ranges (k_i) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes scaled Universal Gravity terms k_i * U_gi for i=1-4 (Ug1-Ug4), with k1=1.5, k2=1.2, k3=1.8, k4=1.0 (unitless).
 // Pluggable: // // // #include "UgCouplingModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

@@ -1,4 +1,5 @@
 // SgrAStarUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source149.cpp *) + source149_unification_sector"
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Sagittarius A* SMBH at Milky Way Center Evolution.
 // This module can be plugged into a base program (e.g., 'sgra_sim.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "SgrAStarUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

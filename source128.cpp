@@ -1,4 +1,5 @@
 // ScmVacuumDensityModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source128.cpp *) + source128_unification_sector"
 // Modular C++ implementation of the Vacuum Energy Density of [SCm] (?_vac,[SCm]) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?_vac,[SCm] = 7.09e-37 J/m� (Sun, level 13); scales in U_g2, U_i, T_s terms.
 // Pluggable: // // // #include "ScmVacuumDensityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

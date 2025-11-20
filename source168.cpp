@@ -1,4 +1,5 @@
 
+#define WOLFRAM_TERM "(* Auto-contribution from source168.cpp *) + source168_unification_sector"
 // UQFFBuoyancy.h
 // Header file for Unified Quantum Force Field (UQFF) Buoyancy calculations
 // Based on the provided UQFF framework document dated June 20, 2025, enhanced for November 17, 2025

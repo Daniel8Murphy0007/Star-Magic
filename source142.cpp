@@ -1,4 +1,5 @@
 // JupiterAuroraeUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source142.cpp *) + source142_unification_sector"
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Jupiter Aurorae Planetary Evolution.
 // This module can be plugged into a base program (e.g., 'jupiter_sim.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "JupiterAuroraeUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

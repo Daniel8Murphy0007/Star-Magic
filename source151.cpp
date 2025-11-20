@@ -1,4 +1,5 @@
 // StephanQuintetUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source151.cpp *) + source151_unification_sector"
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Stephan's Quintet Compact Galaxy Group Evolution.
 // This module can be plugged into a base program (e.g., 'stephan_sim.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "StephanQuintetUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

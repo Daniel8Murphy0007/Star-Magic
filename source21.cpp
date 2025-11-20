@@ -1,4 +1,5 @@
 /**
+#define WOLFRAM_TERM "(* Auto-contribution from source21.cpp *) + source21_unification_sector"
  * ================================================================================================
  * Header: NGC3603.h
  *

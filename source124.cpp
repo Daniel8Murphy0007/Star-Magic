@@ -1,4 +1,5 @@
 // Ug1DefectModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source124.cpp *) + source124_unification_sector"
 // Modular C++ implementation of the Ug1 Defect Factor (?_def) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?_def = 0.01 * sin(0.001 t) (unitless); scales (1 + ?_def) in Universal Gravity U_g1 term.
 // Pluggable: // // // #include "Ug1DefectModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

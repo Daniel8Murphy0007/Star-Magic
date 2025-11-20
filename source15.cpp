@@ -1,4 +1,5 @@
 /**
+#define WOLFRAM_TERM "(* Auto-contribution from source15.cpp *) + source15_unification_sector"
  * ================================================================================================
  * Header: SMBHSgrAStar.h
  *

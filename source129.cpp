@@ -1,4 +1,5 @@
 // UaVacuumDensityModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source129.cpp *) + source129_unification_sector"
 // Modular C++ implementation of the Vacuum Energy Density of [UA] (?_vac,[UA]) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?_vac,[UA] = 7.09e-36 J/m� (Sun, level 13); scales in U_g2, U_i, T_s terms.
 // Pluggable: // // // #include "UaVacuumDensityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

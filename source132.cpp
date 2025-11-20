@@ -1,4 +1,5 @@
 // ButterflyNebulaUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source132.cpp *) + source132_unification_sector"
 // Modular C++ implementation of the UQFF Force for NGC 6302 (Butterfly Nebula) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes F_U_Bi_i,enhanced as integral from x1 to x2 of [-F0 + DPM terms + LENR + activation + DE + EM + neutron + rel + Sweet + Kozima].
 // Pluggable: // // // #include "ButterflyNebulaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

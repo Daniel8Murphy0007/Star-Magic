@@ -1,4 +1,5 @@
 // PiConstantModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source107.cpp *) + source107_unification_sector"
 // Modular C++ implementation of the Mathematical Constant Pi (?) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ? ?3.14159 (unitless) and its role in oscillatory terms like cos(? t_n), sin(?_c t), with ?_c=2? / period.
 // Pluggable: // // // #include "PiConstantModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

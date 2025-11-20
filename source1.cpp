@@ -1,4 +1,5 @@
 #include <QApplication>
+#define WOLFRAM_TERM "(* Auto-contribution from source1.cpp *) + source1_unification_sector"
 #include <QMainWindow>
 #include <QLineEdit>
 #include <QTextEdit>

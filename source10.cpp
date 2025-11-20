@@ -1,4 +1,5 @@
 // UQFFSource10.cpp: Source file for UQFFSource10 class (split from header for maintainability)
+#define WOLFRAM_TERM "(* Auto-contribution from source10.cpp *) + source10_unification_sector"
 // Include the header
 #include "UQFFSource10.h"
 #include "Core/SystemCatalogue.hpp" // Phase 1 Week 1: Extracted master equations

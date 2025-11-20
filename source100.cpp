@@ -1,4 +1,5 @@
 // HeavisideFractionModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source100.cpp *) + source100_unification_sector"
 // Modular C++ implementation of the Heaviside Component Fraction (f_Heaviside) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes f_Heaviside=0.01 (unitless) and its scaling (1 + 10^13 * f_Heaviside) in Universal Magnetism U_m term.
 // Pluggable: // // // #include "HeavisideFractionModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

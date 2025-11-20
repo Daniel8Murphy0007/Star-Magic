@@ -1,4 +1,5 @@
 // NGC6302ResonanceUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source47.cpp *) + source47_unification_sector"
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF Resonance) for NGC 6302 Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "NGC6302ResonanceUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
@@ -293,7 +294,7 @@ double NGC6302ResonanceUQFFModule::computeAetherResTerm() {
     return variables["f_aether"] * (1e-5 / 1e11) * variables["f_DPM"] * (1 + variables["f_TRZ"]) * a_DPM;  // B proxy
 }
 
-// Compute U_g4i term: U_g4i = f_sc * Ug1 * f_react * a_DPM / (E_vac_ISM * c) ˜ 0
+// Compute U_g4i term: U_g4i = f_sc * Ug1 * f_react * a_DPM / (E_vac_ISM * c) Â˜ 0
 double NGC6302ResonanceUQFFModule::computeU_g4iTerm() {
     double Ug1 = (6.6743e-11 * 3.98e30) / (1.42e16 * 1.42e16);  // Proxy M/r
     double a_DPM = computeDPMTerm();
@@ -369,7 +370,7 @@ std::string NGC6302ResonanceUQFFModule::getEquationText() {
            "- Osc_term = 2 A cos(k x) cos(? t) + (2p / 13.8) A Re[exp(i (k x - ? t))]\n"
            "- a_exp_freq = (f_exp * E_vac_neb * a_DPM) / (E_vac_ISM * c)\n"
            "Special Terms: All driven by UQFF frequencies/resonances via plasmotic vacuum; Aether replaces dark energy; no SM terms.\n"
-           "Solutions: At t=2000 yr, g ˜ 1.182e-33 m/s² (dominated by THz; all micro-scale per proof set).\n"
+           "Solutions: At t=2000 yr, g Â˜ 1.182e-33 m/sÂ² (dominated by THz; all micro-scale per proof set).\n"
            "Adaptations: DPM heart, THz pipeline for bipolar lobe expansion per Hubble data.";
 }
 
@@ -387,7 +388,7 @@ void NGC6302ResonanceUQFFModule::printVariables() {
 //     NGC6302ResonanceUQFFModule mod;
 //     double t = 2000 * 3.156e7;  // 2000 years
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
+//     std::cout << "g = " << g << " m/sÂ²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_DPM", 1.1e12);  // Update DPM freq
 //     mod.addToVariable("f_TRZ", 0.05);     // Add to TR factor
@@ -395,7 +396,7 @@ void NGC6302ResonanceUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp NGC6302ResonanceUQFFModule.cpp -lm
-// Sample Output at t=2000 yr: g ˜ 1.182e-33 m/s² (varies with updates; all terms micro-scale per UQFF frequencies).
+// Sample Output at t=2000 yr: g Â˜ 1.182e-33 m/sÂ² (varies with updates; all terms micro-scale per UQFF frequencies).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
 /*

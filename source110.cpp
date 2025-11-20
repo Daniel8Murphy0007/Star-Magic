@@ -1,4 +1,5 @@
 // OuterFieldBubbleModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source110.cpp *) + source110_unification_sector"
 // Modular C++ implementation of the Radius of the Outer Field Bubble (R_b) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes R_b=1.496e13 m (100 AU); defines S(r - R_b) step function in Universal Gravity U_g2 term.
 // Pluggable: // // // #include "OuterFieldBubbleModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

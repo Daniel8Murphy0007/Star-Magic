@@ -1,4 +1,5 @@
 // GalacticDistanceModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source96.cpp *) + source96_unification_sector"
 // Modular C++ implementation of the Distance from Galactic Center (d_g) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes d_g=2.55e20 m (~27,000 ly) and conversions; scales M_bh / d_g in U_bi and Ug4.
 // Pluggable: // // // #include "GalacticDistanceModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

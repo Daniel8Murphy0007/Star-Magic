@@ -1,4 +1,5 @@
 // UFEOrbModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source64.cpp *) + source64_unification_sector"
 // Modular C++ implementation of the Unified Field Equation (UFE) for Red Dwarf Reactor Plasma Orb Experiment (UFE ORB EXP 2_24_07Mar2025).
 // Computes UP(t) and FU for plasmoid dynamics, integrating SCm, UA, Ug_i, Um_j, etc., across 26 quantum levels.
 // Plug into base (e.g., 'ufe_orb_sim.cpp') via #include "UFEOrbModule.h".

@@ -1,4 +1,5 @@
 // VelaPulsarUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source152.cpp *) + source152_unification_sector"
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Vela Pulsar (PSR J0835-4510 in Vela Remnant) Evolution.
 // This module can be plugged into a base program (e.g., 'vela_sim.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "VelaPulsarUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
@@ -442,7 +443,7 @@ void VelaPulsarUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o vela_sim vela_sim.cpp VelaPulsarUQFFModule.cpp -lm
-// Sample Output at t=11k yr: F ˜ 5.30e208 + i (large; approx per framework; dominant real from LENR * x2).
+// Sample Output at t=11k yr: F Â˜ 5.30e208 + i (large; approx per framework; dominant real from LENR * x2).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 23, 2025.
 
 VelaPulsarUQFFModule C++ Code Evaluation

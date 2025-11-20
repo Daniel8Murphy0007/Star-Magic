@@ -1,4 +1,5 @@
 // SaturnUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source30.cpp *) + source30_unification_sector"
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF) for Saturn Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "SaturnUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

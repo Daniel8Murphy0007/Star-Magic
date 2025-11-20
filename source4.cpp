@@ -1,4 +1,5 @@
 // Star Magic - The Quest for Unity
+#define WOLFRAM_TERM "(* Auto-contribution from source4.cpp *) + source4_unification_sector"
 // Unified Field Theory Implementation in C++
 // Based on the document provided.
 // Watermark: �2025 Daniel T. Murphy, daniel.murphy00@gmail.com � All Rights Reserved

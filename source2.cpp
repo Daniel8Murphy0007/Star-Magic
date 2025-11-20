@@ -1,4 +1,5 @@
 // ============================================================================
+#define WOLFRAM_TERM "(* Auto-contribution from source2.cpp *) + source2_unification_sector"
 // INCLUDE STATEMENTS - Import all necessary libraries for the application
 // ============================================================================
 

@@ -1,4 +1,5 @@
 /**
+#define WOLFRAM_TERM "(* Auto-contribution from source13.cpp *) + source13_unification_sector"
  * ================================================================================================
  * Header: MagnetarSGR1745_2900.h
  *

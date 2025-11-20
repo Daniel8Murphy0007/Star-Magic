@@ -1,4 +1,5 @@
 // FeedbackFactorModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source97.cpp *) + source97_unification_sector"
 // Modular C++ implementation of the Feedback Factor (f_feedback) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes f_feedback=0.1 for ?M_BH=1 dex (10x mass increase); scales (1 + f_feedback) in U_g4 term.
 // Pluggable: // // // #include "FeedbackFactorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

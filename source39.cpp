@@ -1,4 +1,5 @@
 // CrabResonanceUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source39.cpp *) + source39_unification_sector"
 // Modular C++ implementation of the Master Universal Gravity Equation (UQFF Resonance) for Crab Nebula Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "CrabResonanceUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

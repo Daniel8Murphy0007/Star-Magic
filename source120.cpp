@@ -1,4 +1,5 @@
 // StressEnergyTensorModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source120.cpp *) + source120_unification_sector"
 // Modular C++ implementation of the Stress-Energy Tensor (T_s^{??}) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes T_s^{??} ?1.123e7 J/m� (diagonal scalar); perturbs A_?? = g_?? + ? T_s^{??} (~1.123e-15).
 // Pluggable: // // // #include "StressEnergyTensorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

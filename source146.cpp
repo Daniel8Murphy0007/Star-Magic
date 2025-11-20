@@ -1,4 +1,5 @@
 // NGC1365UQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source146.cpp *) + source146_unification_sector"
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for NGC 1365 Great Barred Spiral Galaxy Evolution.
 // This module can be plugged into a base program (e.g., 'ngc1365_sim.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "NGC1365UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

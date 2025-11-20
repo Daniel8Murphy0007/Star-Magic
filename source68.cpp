@@ -1,4 +1,5 @@
 // HydrogenUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source68.cpp *) + source68_unification_sector"
 // Modular C++ implementation of UQFF for Red Dwarf Compression_E (43.e): Compressed Space Dynamics (E_space eq), Three-Leg Proofset, Hydrogen Levels n=1-4 (page 85-86).
 // Computes E_space scaled by Higgs freq/Earth precession; three-leg (cons, vac ratio, quantum scale); integrates prior Um/Ug3 for matter creation.
 // Plug into base (e.g., 'hydrogen_uqff_sim.cpp') via #include "HydrogenUQFFModule.h".

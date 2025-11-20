@@ -1,4 +1,5 @@
 
+#define WOLFRAM_TERM "(* Auto-contribution from source169.cpp *) + source169_unification_sector"
 // UQFFCassiniBuoyancy.h
 // Header file for Unified Quantum Force Field (UQFF) Cassini Mission Buoyancy calculations
 // Based on the provided UQFF framework document dated October 12, 2025, enhanced for November 17, 2025

@@ -1,4 +1,5 @@
 // QuasiLongitudinalModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source109.cpp *) + source109_unification_sector"
 // Modular C++ implementation of the Quasi-Longitudinal Wave Factor (f_quasi) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes f_quasi=0.01 (unitless) and its scaling (1 + f_quasi) in Universal Magnetism U_m term.
 // Pluggable: // // // #include "QuasiLongitudinalModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

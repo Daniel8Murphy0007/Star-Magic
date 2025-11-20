@@ -1,4 +1,5 @@
 // RAquariiUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source148.cpp *) + source148_unification_sector"
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for R Aquarii Symbiotic Binary Star Evolution.
 // This module can be plugged into a base program (e.g., 'raquarii_sim.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "RAquariiUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
@@ -442,7 +443,7 @@ void RAquariiUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o raquarii_sim raquarii_sim.cpp RAquariiUQFFModule.cpp -lm
-// Sample Output at t=orbital: F ˜ -2.09e212 + i (large; approx per framework; dominant real from LENR * x2).
+// Sample Output at t=orbital: F Â˜ -2.09e212 + i (large; approx per framework; dominant real from LENR * x2).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 21, 2025.
 
 RAquariiUQFFModule C++ Code Evaluation

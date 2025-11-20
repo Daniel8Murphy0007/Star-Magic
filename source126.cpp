@@ -1,4 +1,5 @@
 // AetherVacuumDensityModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source126.cpp *) + source126_unification_sector"
 // Modular C++ implementation of the Vacuum Energy Density of Aether (?_vac,A) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?_vac,A = 1e-23 J/m�; contributes to T_s^{??} ?1.123e7 J/m�, perturbs A_?? = g_?? + ? T_s^{??} (~1.123e-15).
 // Pluggable: // // // #include "AetherVacuumDensityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

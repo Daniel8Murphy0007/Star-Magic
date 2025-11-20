@@ -1,4 +1,5 @@
 // J1610UQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source141.cpp *) + source141_unification_sector"
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for J1610+1811 High-z Quasar Evolution.
 // This module can be plugged into a base program (e.g., 'j1610_sim.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "J1610UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

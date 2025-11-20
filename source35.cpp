@@ -1,4 +1,5 @@
 // SgrA_UQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source35.cpp *) + source35_unification_sector"
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF) for Sagittarius A* SMBH Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "SgrA_UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

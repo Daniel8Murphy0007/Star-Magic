@@ -1,4 +1,5 @@
 // SolarCycleFrequencyModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source114.cpp *) + source114_unification_sector"
 // Modular C++ implementation of the Solar Cycle Frequency (?_c) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ?_c = 2? / 3.96e8 s?� (~1.59e-8 rad/s, period ~12.55 years); used in sin(?_c t) for ?_j in U_m.
 // Pluggable: // // // #include "SolarCycleFrequencyModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

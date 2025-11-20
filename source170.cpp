@@ -1,4 +1,5 @@
 
+#define WOLFRAM_TERM "(* Auto-contribution from source170.cpp *) + source170_unification_sector"
 // UQFFMultiAstroSystems.h
 // Header file for Unified Quantum Force Field (UQFF) Multi-Astronomical Systems
 // Updated and renamed for comprehensive handling of 11 astronomical systems

@@ -1,4 +1,5 @@
 // AndromedaUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source88.cpp *) + source88_unification_sector"
 // Modular C++ implementation of the Master Universal Gravity Equation (UQFF) for Andromeda Galaxy Evolution.
 // This module can be plugged into a base program by including this header and linking the .cpp.
 // Usage: // // // #include "AndromedaUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

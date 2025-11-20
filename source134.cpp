@@ -1,4 +1,5 @@
 // Abell2256UQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source134.cpp *) + source134_unification_sector"
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Abell 2256 Galaxy Cluster Evolution.
 // This module can be plugged into a base program (e.g., 'abell_sim.cpp') by including this header and linking the .cpp.
 // Usage in base: // // #include "Abell2256UQFFModule.h"  // Commented - header not available  // Commented - header not available
@@ -469,7 +470,7 @@ void Abell2256UQFFModule::printVariables()
 //     return 0;
 // }
 // Compile: g++ -o abell_sim abell_sim.cpp Abell2256UQFFModule.cpp -lm
-// Sample Output at t=0.2 Gyr: F ˜ -8.32e217 + i (large; approx per framework; dominant real from LENR * x2).
+// Sample Output at t=0.2 Gyr: F Â˜ -8.32e217 + i (large; approx per framework; dominant real from LENR * x2).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 11, 2025.
 
 /*

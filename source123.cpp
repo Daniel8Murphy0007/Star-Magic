@@ -1,4 +1,5 @@
 // TimeReversalZoneModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source123.cpp *) + source123_unification_sector"
 // Modular C++ implementation of the Time-Reversal Zone Factor (f_TRZ) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes f_TRZ=0.1 (unitless); scales (1 + f_TRZ) in Universal Inertia U_i term for TRZ enhancement.
 // Pluggable: // // // #include "TimeReversalZoneModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

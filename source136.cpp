@@ -1,4 +1,5 @@
 // CentaurusAUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source136.cpp *) + source136_unification_sector"
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for Centaurus A Active Galaxy Evolution.
 // This module can be plugged into a base program (e.g., 'centaurus_sim.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "CentaurusAUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
@@ -442,7 +443,7 @@ void CentaurusAUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o centaurus_sim centaurus_sim.cpp CentaurusAUQFFModule.cpp -lm
-// Sample Output at t=dynamical: F ˜ -8.32e217 + i (large; approx per framework; dominant real from LENR * x2).
+// Sample Output at t=dynamical: F Â˜ -8.32e217 + i (large; approx per framework; dominant real from LENR * x2).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 13, 2025.
 
 CentaurusAUQFFModule Evaluation

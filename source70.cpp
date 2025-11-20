@@ -1,4 +1,5 @@
 // M51UQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source70.cpp *) + source70_unification_sector"
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for Whirlpool Galaxy (M51) Evolution.
 // This module models M51's gravitational dynamics, incorporating interaction with NGC 5195, star formation, black hole torus/jets, spiral arm density waves, and dark matter.
 // Usage: // // // #include "M51UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; M51UQFFModule mod; mod.computeG(t); mod.updateVariable("SFR", new_value);

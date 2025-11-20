@@ -1,4 +1,5 @@
 // NGC6302UQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source46.cpp *) + source46_unification_sector"
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF & SM Integration) for NGC 6302 Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "NGC6302UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

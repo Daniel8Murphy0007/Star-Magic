@@ -1,4 +1,5 @@
 // NegativeTimeModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source106.cpp *) + source106_unification_sector"
 // Modular C++ implementation of the Negative Time Factor (t_n) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes t_n = t - t_0 (s or days, allows t_n < 0); used in cos(? t_n) for oscillations and exp(-? t cos(? t_n)) for growth/decay.
 // Pluggable: // // // #include "NegativeTimeModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

@@ -1,4 +1,5 @@
 // RedDwarfUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source66.cpp *) + source66_unification_sector"
 // Modular C++ implementation of UQFF for Red Dwarf Compression_C (43.c): LENR (eq1-4), Collider Higgs, NGC 346, Gas Nebula, Pi Calcs (series sums).
 // Computes W_mag (eq4), Um (eq5), UH (eq6), Ug3 (eq7), E (eq8), ? (eq9), ?n (eq10), S(s) Basel (eq15), Buoyancy series (eq20), etc.
 // Plug into base (e.g., 'red_dwarf_uqff_sim.cpp') via #include "RedDwarfUQFFModule.h".

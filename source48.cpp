@@ -1,4 +1,5 @@
 // OrionUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source48.cpp *) + source48_unification_sector"
 // Modular C++ implementation of the full Master Universal Gravity Equation (MUGE & UQFF & SM Integration) for Orion Nebula Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "OrionUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

@@ -1,4 +1,5 @@
 // MultiUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source52.cpp *) + source52_unification_sector"
 // Modular C++ implementation of the full Master Universal Gravity Compressed UQFF Equations (with Resonance mode) for multiple astrophysical systems.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
 // Usage in base: #include "MultiUQFFModule.h"
@@ -426,17 +427,17 @@ void MultiUQFFModule::printVariables()
 //     MultiUQFFModule mod("OrionNebula", "compressed");
 //     double t = mod.variables["t_default"];
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
+//     std::cout << "g = " << g << " m/sÂ²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.setMode("resonance");
 //     g = mod.computeG(t);
-//     std::cout << "Resonance g = " << g << " m/s²\n";
+//     std::cout << "Resonance g = " << g << " m/sÂ²\n";
 //     mod.setSystem("UniverseDiameter");
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp MultiUQFFModule.cpp -lm
-// Sample Output (compressed Orion t=3.156e13): g ˜ 6.132e37 m/s² (fluid dominant).
+// Sample Output (compressed Orion t=3.156e13): g Â˜ 6.132e37 m/sÂ² (fluid dominant).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
 /*

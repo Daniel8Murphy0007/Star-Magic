@@ -1,4 +1,5 @@
 // ElGordoUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source138.cpp *) + source138_unification_sector"
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for El Gordo (ACT-CL J0102-4915) Galaxy Cluster Evolution.
 // This module can be plugged into a base program (e.g., 'elgordo_sim.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "ElGordoUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

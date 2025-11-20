@@ -1,4 +1,5 @@
 // IC2163UQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source140.cpp *) + source140_unification_sector"
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for IC 2163 Interacting Galaxy Evolution.
 // This module can be plugged into a base program (e.g., 'ic2163_sim.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "IC2163UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
@@ -442,7 +443,7 @@ void IC2163UQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ic2163_sim ic2163_sim.cpp IC2163UQFFModule.cpp -lm
-// Sample Output at t=dynamical: F ˜ -8.32e217 + i (large; approx per framework; dominant real from LENR * x2).
+// Sample Output at t=dynamical: F Â˜ -8.32e217 + i (large; approx per framework; dominant real from LENR * x2).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 15, 2025.
 
 IC2163UQFFModule Evaluation

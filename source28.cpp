@@ -1,4 +1,5 @@
 // AndromedaUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source28.cpp *) + source28_unification_sector"
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF) for Andromeda Galaxy Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
 // Usage in base: #include "AndromedaUQFFModule.h"
@@ -217,7 +218,7 @@ AndromedaUQFFModule::AndromedaUQFFModule()
     // Quantum terms
     variables["Delta_x"] = 1e-10;                                    // m (position uncertainty, atomic scale)
     variables["Delta_p"] = variables["hbar"] / variables["Delta_x"]; // Momentum uncertainty (Heisenberg)
-    variables["integral_psi"] = 1.0;                                 // Normalized <psi|H|psi> dV ˜ E_ground (simplified to 1 for unitless)
+    variables["integral_psi"] = 1.0;                                 // Normalized <psi|H|psi> dV Â˜ E_ground (simplified to 1 for unitless)
 
     // Resonant/oscillatory terms
     variables["A"] = 1e-10;    // Amplitude (arbitrary small)
@@ -231,8 +232,8 @@ AndromedaUQFFModule::AndromedaUQFFModule()
 
     // Ug subterms (computed dynamically, but init placeholders)
     variables["Ug1"] = 0.0; // Will be G M / r^2
-    variables["Ug2"] = 0.0; // d^2 Phi / dt^2 ˜ 0 (negligible)
-    variables["Ug3"] = 0.0; // G M_moon / r_moon^2 ˜ 0 (no moon)
+    variables["Ug2"] = 0.0; // d^2 Phi / dt^2 Â˜ 0 (negligible)
+    variables["Ug3"] = 0.0; // G M_moon / r_moon^2 Â˜ 0 (no moon)
     variables["Ug4"] = 0.0; // Ug1 * f_sc, f_sc=1
 
     // Scale factors (from streamlining)
@@ -377,14 +378,14 @@ double AndromedaUQFFModule::computeG(double t)
 std::string AndromedaUQFFModule::getEquationText()
 {
     return "g_UQFF(r, t) = (G * M(t) / r(t)^2) * (1 + H(z) * t) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q (v × B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q (v Ã— B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2p / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (d?/? + 3 G M / r^3) + a_dust\n"
            "Special Terms:\n"
            "- Quantum: Heisenberg uncertainty with normalized wavefunction integral (ground state approx).\n"
            "- Fluid: ISM-like density-volume-gravity coupling.\n"
            "- Resonant: Oscillatory Aether-mediated waves (real part of complex exp).\n"
            "- DM: Visible+dark mass with density perturbations and curvature term.\n"
-           "Solutions: Numerical evaluation at t=10 Gyr yields ~6.273 m/s² (dust/resonant dominant; full sum includes micro terms ~1e-10).\n"
+           "Solutions: Numerical evaluation at t=10 Gyr yields ~6.273 m/sÂ² (dust/resonant dominant; full sum includes micro terms ~1e-10).\n"
            "Adaptations for Andromeda: Larger M/r lowers base g; blueshift minimal effect; higher v_orbit boosts dust/EM.";
 }
 
@@ -404,7 +405,7 @@ void AndromedaUQFFModule::printVariables()
 //     AndromedaUQFFModule mod;
 //     double t = 10e9 * 3.156e7;  // 10 Gyr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
+//     std::cout << "g = " << g << " m/sÂ²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 1.1e12 * 1.989e30);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05);            // Add to TR factor
@@ -413,7 +414,7 @@ void AndromedaUQFFModule::printVariables()
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp AndromedaUQFFModule.cpp -lm
-// Sample Output at t=10 Gyr: g ˜ 6.273 m/s² (varies with updates; quantum/fluid/resonant ~1e-10 to 1e-3, DM ~1e41 * 1e-41 ~1e0 negligible in sum).
+// Sample Output at t=10 Gyr: g Â˜ 6.273 m/sÂ² (varies with updates; quantum/fluid/resonant ~1e-10 to 1e-3, DM ~1e41 * 1e-41 ~1e0 negligible in sum).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 08, 2025.
 
 /*

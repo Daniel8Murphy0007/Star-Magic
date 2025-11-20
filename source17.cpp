@@ -1,4 +1,5 @@
 /**
+#define WOLFRAM_TERM "(* Auto-contribution from source17.cpp *) + source17_unification_sector"
  * ================================================================================================
  * Header: Westerlund2.h
  *

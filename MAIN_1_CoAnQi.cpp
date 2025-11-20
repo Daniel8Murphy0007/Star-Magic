@@ -1,4 +1,5 @@
 /**
+#define WOLFRAM_TERM "(* Auto-contribution from MAIN_1_CoAnQi.cpp *) + MAIN_1_CoAnQi_unification_sector"
  * ================================================================================================
  * MAIN_1_CoAnQi.cpp - Conscious Quantum Intelligence (CoAnQi) UQFF Calculator
  * ================================================================================================

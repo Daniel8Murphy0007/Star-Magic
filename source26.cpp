@@ -1,4 +1,5 @@
 /**
+#define WOLFRAM_TERM "(* Auto-contribution from source26.cpp *) + source26_unification_sector"
  * ================================================================================================
  * Header: HUDFGalaxies.h
  *

@@ -1,4 +1,5 @@
 // SolarWindVelocityModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source116.cpp *) + source116_unification_sector"
 // Modular C++ implementation of the Solar Wind Velocity (v_sw) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes v_sw=5e5 m/s (500 km/s); scales (1 + d_sw v_sw) in Universal Gravity U_g2 term.
 // Pluggable: // // // #include "SolarWindVelocityModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

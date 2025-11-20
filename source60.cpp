@@ -1,4 +1,5 @@
 // MultiUQFFCompressionModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source60.cpp *) + source60_unification_sector"
 // Modular C++ implementation of the full Compressed Master Universal Gravity Equation (UQFF Compression Cycle 2) for 19 astrophysical systems (1-19 docs).
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
 // Usage in base: #include "MultiUQFFCompressionModule.h"
@@ -629,7 +630,7 @@ std::string MultiUQFFCompressionModule::getEquationText()
            "Special Terms:\n"
            "- Compression: Unified H(t,z), modular F_env(t) for 19 systems (1-19 docs), generalized Ug3', ?_total consolidated.\n"
            "- Adaptations: NGC2525 (SN loss); NGC3603 (cavity P(t)); Bubble (expansion E(t)); Antennae (merger); Horsehead (sculpting); NGC1275 (filaments/BH); NGC1792 (starburst SN); HUDF (gal evo).\n"
-           "Solutions: Varies by system/t; e.g., NGC2525 t=1 Gyr ~1e-10 m/s² (SN/F_env bal).\n"
+           "Solutions: Varies by system/t; e.g., NGC2525 t=1 Gyr ~1e-10 m/sÂ² (SN/F_env bal).\n"
            "From UQFF Cycle 2: Unifies 19 docs; extensible to 20-38.";
 }
 
@@ -649,16 +650,16 @@ void MultiUQFFCompressionModule::printVariables()
 //     MultiUQFFCompressionModule mod("NGC2525");
 //     double t = mod.variables["t_default"];
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
+//     std::cout << "g = " << g << " m/sÂ²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.setSystem("HubbleUltraDeepField");
 //     g = mod.computeG(t);
-//     std::cout << "HUDF g = " << g << " m/s²\n";
+//     std::cout << "HUDF g = " << g << " m/sÂ²\n";
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp MultiUQFFCompressionModule.cpp -lm
-// Sample Output (NGC2525 t=1 Gyr): g ˜ 1e-10 m/s² (F_env/SN dominant).
+// Sample Output (NGC2525 t=1 Gyr): g Â˜ 1e-10 m/sÂ² (F_env/SN dominant).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
 /*

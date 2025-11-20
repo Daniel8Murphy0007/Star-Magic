@@ -1,4 +1,5 @@
 // NGC2207UQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source147.cpp *) + source147_unification_sector"
 // Modular C++ implementation of the full Master Unified Field Equation (F_U_Bi_i & UQFF Integration) for NGC 2207 Interacting Galaxy Evolution.
 // This module can be plugged into a base program (e.g., 'ngc2207_sim.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "NGC2207UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
@@ -993,7 +994,7 @@ int main() {
 //     return 0;
 // }
 // Compile: g++ -o ngc2207_sim ngc2207_sim.cpp NGC2207UQFFModule.cpp -lm
-// Sample Output at t=40 Myr: F ˜ -8.32e217 + i (large; approx per framework; dominant real from LENR * x2).
+// Sample Output at t=40 Myr: F Â˜ -8.32e217 + i (large; approx per framework; dominant real from LENR * x2).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 20, 2025.
 
 NGC2207UQFFModule C++ Code Evaluation

@@ -1,4 +1,5 @@
 /**
+#define WOLFRAM_TERM "(* Auto-contribution from source23.cpp *) + source23_unification_sector"
  * ================================================================================================
  * Header: AntennaeGalaxies.h
  *

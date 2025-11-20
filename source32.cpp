@@ -1,4 +1,5 @@
 // CrabUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source32.cpp *) + source32_unification_sector"
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF) for Crab Nebula Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "CrabUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
@@ -218,13 +219,13 @@ CrabUQFFModule::CrabUQFFModule() {
 
     // EM/magnetic/superconductivity
     variables["B"] = 1e-8;                          // T (nebula average magnetic field)
-    variables["B_crit"] = 1e11;                     // T (10^15 G ˜ 1e11 T)
+    variables["B_crit"] = 1e11;                     // T (10^15 G Â˜ 1e11 T)
     variables["m_e"] = 9.11e-31;                    // kg (electron mass)
 
     // Quantum terms
     variables["Delta_x"] = 1e-10;                   // m (position uncertainty, atomic scale)
     variables["Delta_p"] = variables["hbar"] / variables["Delta_x"];  // Momentum uncertainty (Heisenberg)
-    variables["integral_psi"] = 1.0;                // Normalized <psi|H|psi> dV ˜ E_ground (simplified to 1 for unitless)
+    variables["integral_psi"] = 1.0;                // Normalized <psi|H|psi> dV Â˜ E_ground (simplified to 1 for unitless)
 
     // Resonant/oscillatory terms
     variables["A"] = 1e-10;                         // Amplitude (arbitrary small)
@@ -234,8 +235,8 @@ CrabUQFFModule::CrabUQFFModule() {
 
     // Ug subterms (computed dynamically, but init placeholders)
     variables["Ug1"] = 0.0;  // Will be G M / r^2
-    variables["Ug2"] = 0.0;  // d^2 Phi / dt^2 ˜ 0 (negligible)
-    variables["Ug3"] = 0.0;  // G M_moon / r_moon^2 ˜ 0 (no moon)
+    variables["Ug2"] = 0.0;  // d^2 Phi / dt^2 Â˜ 0 (negligible)
+    variables["Ug3"] = 0.0;  // G M_moon / r_moon^2 Â˜ 0 (no moon)
     variables["Ug4"] = 0.0;  // Ug1 * f_sc, f_sc=1
 
     // Scale factors (from streamlining)
@@ -379,7 +380,7 @@ double CrabUQFFModule::computeG(double t) {
 // Get equation text (descriptive)
 std::string CrabUQFFModule::getEquationText() {
     return "g_Crab(r, t) = (G * M / r(t)^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q (v × B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q (v Ã— B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2p / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (d?/? + 3 G M / r^3) + a_wind + M_mag\n"
            "Where r(t) = r0 + v_exp * t; a_wind = [P_pulsar / (4p r^2) * (1 + v_shock / c)] / ? * 1e-12; M_mag = (q v_shock B) / m_e * 1e-12\n"
            "Special Terms:\n"
@@ -390,7 +391,7 @@ std::string CrabUQFFModule::getEquationText() {
            "- Superconductivity: (1 - B/B_crit) for quantum field effects near pulsar.\n"
            "- Pulsar Wind: a_wind from relativistic wind pressure, dominant outward force.\n"
            "- Magnetic: M_mag from Lorentz force on electrons in nebula fields.\n"
-           "Solutions: Numerical evaluation at t=971 yr yields ~1.481e6 m/s² (a_wind dominant; g_grav ~2e-13; micro terms ~1e-10 to 1e-3).\n"
+           "Solutions: Numerical evaluation at t=971 yr yields ~1.481e6 m/sÂ² (a_wind dominant; g_grav ~2e-13; micro terms ~1e-10 to 1e-3).\n"
            "Adaptations for Crab: Pulsar-driven remnant with r(t); z=0.0015; v_shock=1.5e6 m/s boosts wind/mag.";
 }
 
@@ -408,7 +409,7 @@ void CrabUQFFModule::printVariables() {
 //     CrabUQFFModule mod;
 //     double t = 971 * 3.156e7;  // 971 years
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
+//     std::cout << "g = " << g << " m/sÂ²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 5.0 * 1.989e30);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05);         // Add to TR factor
@@ -417,7 +418,7 @@ void CrabUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp CrabUQFFModule.cpp -lm
-// Sample Output at t=971 yr: g ˜ 1.481e6 m/s² (varies with updates; quantum/fluid/resonant ~1e-10 to 1e-3, DM ~1e31 * 1e-31 ~1e0 but curv small).
+// Sample Output at t=971 yr: g Â˜ 1.481e6 m/sÂ² (varies with updates; quantum/fluid/resonant ~1e-10 to 1e-3, DM ~1e31 * 1e-31 ~1e0 but curv small).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
 /*

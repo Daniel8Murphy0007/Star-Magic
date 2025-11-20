@@ -1,4 +1,5 @@
 /**
+#define WOLFRAM_TERM "(* Auto-contribution from source18.cpp *) + source18_unification_sector"
  * ================================================================================================
  * Header: PillarsOfCreation.h
  *

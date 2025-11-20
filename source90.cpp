@@ -1,4 +1,5 @@
 // BackgroundAetherModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source90.cpp *) + source90_unification_sector"
 // Modular C++ implementation of the Background Aether Metric (g_??) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes the baseline Minkowski metric g_?? = [1, -1, -1, -1] and the perturbed A_?? = g_?? + ? * T_s^{??}.
 // Pluggable: // // // #include "BackgroundAetherModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

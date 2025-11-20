@@ -1,4 +1,5 @@
 // ResonanceSuperconductiveUQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source37.cpp *) + source37_unification_sector"
 // Modular C++ implementation of the UQFF Resonance Superconductive Equations.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "ResonanceSuperconductiveUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

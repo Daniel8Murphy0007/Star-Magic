@@ -1,4 +1,5 @@
 // UGC10214UQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source77.cpp *) + source77_unification_sector"
 // Modular C++ implementation of the Master Universal Gravity Equation (MUGE & UQFF Integration) for Galaxy UGC 10214 (Tadpole Galaxy) Evolution.
 // This module models UGC 10214's gravitational dynamics, incorporating minor merger with VV 29c, tidal tail ejection, star formation in disk/tail, gas densities, and dark matter.
 // Usage: // // // #include "UGC10214UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available in base program; UGC10214UQFFModule mod; mod.computeG(t); mod.updateVariable("SFR", new_value);
@@ -421,10 +422,10 @@ std::string UGC10214UQFFModule::getEquationText() {
            "?_fluid * V * g + (M_visible + M_DM) * (d?/? + 3 G M / r^3)\n"
            "Where: M(t) = M * (1 + M_merge(t)); M_merge(t) = M_dwarf * exp(-t/t); r(t) = r0 + v_r t;\n"
            "H(t, z) = H0 * sqrt(Om (1+z)^3 + O?); F_env(t) = F_tidal + F_SF + F_tail;\n"
-           "F_tidal = G M_dwarf / d^2; F_tail = ? v_tail^2; U_g1 = µ_dipole * B; U_g2 = B_super^2 / (2 µ0);\n"
+           "F_tidal = G M_dwarf / d^2; F_tail = ? v_tail^2; U_g1 = Âµ_dipole * B; U_g2 = B_super^2 / (2 Âµ0);\n"
            "U_g3' = G M_dwarf / d^2; U_g4 = k4 * E_react(t); U_i = ?_I * (?_SCm/?_UA) * ?_i * cos(p t_n) * (1 + F_RZ);\n"
            "?_total = A exp(-r^2/(2s^2)) exp(i(m? - ? t)) + merger terms; Insights: Attractive (g_base, Ug1, Ug3') vs. Repulsive (U_g2, ?) advance UQFF.\n"
-           "Adaptations: Hubble ACS 2003 data; SFR=4.67 Msun/yr; M=1e11 Msun. Solutions: g ~5e37 m/s² at t=250 Myr (DM/tail dominant).";
+           "Adaptations: Hubble ACS 2003 data; SFR=4.67 Msun/yr; M=1e11 Msun. Solutions: g ~5e37 m/sÂ² at t=250 Myr (DM/tail dominant).";
 }
 
 // Print
@@ -442,14 +443,14 @@ void UGC10214UQFFModule::printVariables() {
 //     double t = 2.5e8 * 3.156e7;  // 250 Myr
 //     double r = 20e3 * 3.086e19;  // 20 kpc
 //     double g = mod.computeG(t, r);
-//     std::cout << "g_UGC10214 = " << g << " m/s²\n";
+//     std::cout << "g_UGC10214 = " << g << " m/sÂ²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("SFR", 5 * mod.variables["SFR"]);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o ugc10214_sim base.cpp UGC10214UQFFModule.cpp -lm
-// Sample Output: g_UGC10214 ~ 5e37 m/s² (DM/fluid dominant; repulsive terms advance framework).
+// Sample Output: g_UGC10214 ~ 5e37 m/sÂ² (DM/fluid dominant; repulsive terms advance framework).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 /*
@@ -459,7 +460,7 @@ Strengths :
 -Modular, extensible design for modeling UGC 10214 (Tadpole Galaxy) gravity, including minor merger, tidal tail ejection, star formation, gas densities, and dark matter.
 - Comprehensive physics : gravity, cosmological expansion, magnetic fields, environmental / tidal / tail effects, quantum, fluid, and DM terms.
 - Dynamic variable management via std::map enables runtime updates and system adaptation.
-- Clear separation of computation functions(e.g., Ug1–Ug4, F_env, quantum, fluid, DM), aiding maintainability.
+- Clear separation of computation functions(e.g., Ug1Â–Ug4, F_env, quantum, fluid, DM), aiding maintainability.
 - UGC 10214 - specific parameters are initialized for realistic simulation; supports easy modification.
 - Output functions for equation text and variable state support debugging and documentation.
 

@@ -1,4 +1,5 @@
 // Ug3DiskVectorModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source125.cpp *) + source125_unification_sector"
 // Modular C++ implementation of the Unit Vector in the Ug3 Disk Plane (??_j) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes ??_j (unit vector, magnitude=1; e.g., [cos ?_j, sin ?_j, 0]); scales in Universal Magnetism U_m term.
 // Pluggable: // // // #include "Ug3DiskVectorModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

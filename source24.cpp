@@ -1,4 +1,5 @@
 /**
+#define WOLFRAM_TERM "(* Auto-contribution from source24.cpp *) + source24_unification_sector"
  * ================================================================================================
  * Header: HorseheadNebula.h
  *

@@ -1,4 +1,5 @@
 // SGR1745UQFFModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source34.cpp *) + source34_unification_sector"
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF) for SGR 1745-2900 Magnetar Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
 // Usage in base: // // // #include "SGR1745UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
@@ -297,7 +298,7 @@ double SGR1745UQFFModule::computeAetherResTerm() {
     return variables["f_aether"] * (1e-8) * variables["f_DPM"] * (1 + variables["f_TRZ"]) * a_DPM;  // B proxy as 1e-8
 }
 
-// Compute U_g4i term: U_g4i = f_sc * Ug1 * f_react * a_DPM / (E_vac_ISM * c) ˜ 0
+// Compute U_g4i term: U_g4i = f_sc * Ug1 * f_react * a_DPM / (E_vac_ISM * c) Â˜ 0
 double SGR1745UQFFModule::computeU_g4iTerm() {
     double Ug1 = (variables["G"] * variables["M"]) / (variables["r"] * variables["r"]);  // Proxy Ug1
     double a_DPM = computeDPMTerm();
@@ -366,10 +367,10 @@ std::string SGR1745UQFFModule::getEquationText() {
            "- a_quantum_freq = (f_quantum * E_vac_neb * a_DPM) / (E_vac_ISM * c)\n"
            "- a_Aether_freq = (f_Aether * E_vac_neb * a_DPM) / (E_vac_ISM * c)\n"
            "- a_fluid_freq = (f_fluid * E_vac_neb * V_sys) / (E_vac_ISM * c)\n"
-           "- Osc_term ˜ 0\n"
+           "- Osc_term Â˜ 0\n"
            "- a_exp_freq = (f_exp * E_vac_neb * a_DPM) / (E_vac_ISM * c)\n"
            "Special Terms: All driven by UQFF frequencies/resonances via plasmotic vacuum; Aether replaces dark energy; no SM terms.\n"
-           "Solutions: At t=1000 yr, g ˜ 1.182e-33 m/s² (dominated by THz; all micro-scale per proof set).\n"
+           "Solutions: At t=1000 yr, g Â˜ 1.182e-33 m/sÂ² (dominated by THz; all micro-scale per proof set).\n"
            "Adaptations: DPM heart, THz pipeline for magnetar bursts/outbursts per Chandra data.";
 }
 
@@ -387,7 +388,7 @@ void SGR1745UQFFModule::printVariables() {
 //     SGR1745UQFFModule mod;
 //     double t = 1000 * 3.156e7;  // 1000 years
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
+//     std::cout << "g = " << g << " m/sÂ²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_DPM", 1.1e12);  // Update DPM freq
 //     mod.addToVariable("f_TRZ", 0.05);     // Add to TR factor
@@ -396,7 +397,7 @@ void SGR1745UQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp SGR1745UQFFModule.cpp -lm
-// Sample Output at t=1000 yr: g ˜ 1.182e-33 m/s² (varies with updates; all terms micro-scale per UQFF frequencies).
+// Sample Output at t=1000 yr: g Â˜ 1.182e-33 m/sÂ² (varies with updates; all terms micro-scale per UQFF frequencies).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
 /*

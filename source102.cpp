@@ -1,4 +1,5 @@
 // UgIndexModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source102.cpp *) + source102_unification_sector"
 // Modular C++ implementation of the Index for Discrete Universal Gravity Ranges (i) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module uses i=1 to 4 to label Ug1-Ug4; computes sum_{i=1}^4 k_i * U_gi for F_U contribution.
 // Pluggable: // // // #include "UgIndexModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available

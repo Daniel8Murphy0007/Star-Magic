@@ -1,4 +1,5 @@
 // MagneticStringModule.h
+#define WOLFRAM_TERM "(* Auto-contribution from source95.cpp *) + source95_unification_sector"
 // Modular C++ implementation of the Distance Along Magnetic String's Path (r_j) in the Universal Quantum Field Superconductive Framework (UQFF).
 // This module computes r_j = 1.496e13 m (100 AU) and its conversions; scales ?_j / r_j in Universal Magnetism U_m and Ug3.
 // Pluggable: // // // #include "MagneticStringModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
@@ -196,8 +197,8 @@ MagneticStringModule::MagneticStringModule() {
     variables["Omega_g"] = 7.3e-16;                 // rad/s
     variables["M_s"] = 1.989e30;                    // kg
     variables["d_g"] = 2.55e20;                     // m
-    variables["rho_vac_SCm"] = 7.09e-37;            // J/m³
-    variables["rho_vac_UA"] = 7.09e-36;             // J/m³
+    variables["rho_vac_SCm"] = 7.09e-37;            // J/mÂ³
+    variables["rho_vac_UA"] = 7.09e-36;             // J/mÂ³
 }
 
 // Update variable
