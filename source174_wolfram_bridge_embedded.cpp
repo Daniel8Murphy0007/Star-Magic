@@ -17,57 +17,59 @@ bool InitializeWolframKernel()
     if (ws_link)
         return true;
 
+    std::cout << "[WSTP] Initializing environment...\n" << std::flush;
     ws_env = WSInitialize(nullptr);
     if (!ws_env)
     {
-        std::cout << "WSInitialize failed\n";
+        std::cout << "[WSTP] WSInitialize failed\n" << std::flush;
         return false;
     }
+    std::cout << "[WSTP] Environment initialized successfully\n" << std::flush;
 
     int err = 0;
-    // Use loopback connection - no file dialogs, no PATH issues
-    // First create listener, then connect kernel to it
-    std::string listen_cmd = "-linkmode listen -linkprotocol TCPIP";
+    // Launch kernel directly with wolfram.exe -mathlink
+    char* argv[] = {
+        (char*)"CoAnQi",
+        (char*)"-linkname",
+        (char*)"\"C:\\Program Files\\Wolfram Research\\Wolfram Engine\\14.3\\wolfram.exe\" -mathlink -nogui",
+        (char*)"-linkmode",
+        (char*)"launch",
+        nullptr
+    };
     
-    ws_link = WSOpenString(ws_env, listen_cmd.c_str(), &err);
+    std::cout << "[WSTP] About to launch kernel with WSOpenArgv...\n" << std::flush;
+    std::cout << "[WSTP] Launch string: " << argv[2] << "\n" << std::flush;
+    std::cout << "[DEBUG] Launch command: " << argv[4] << "\n" << std::flush;
+    
+    ws_link = WSOpenArgv(ws_env, argv, argv + (sizeof(argv)/sizeof(argv[0]) - 1), &err);
+
+    std::cout << "[WSTP] WSOpenArgv returned, ws_link = " << (void*)ws_link << ", err = " << err << "\n" << std::flush;
 
     if (!ws_link || err != WSEOK)
     {
-        std::cout << "Failed to create WSTP listener (error code: " << err << ")\n";
+        std::cout << "[WSTP] Failed to launch kernel (error code: " << err << ")\n" << std::flush;
+        if (ws_link) {
+            const char* errmsg = WSErrorMessage(ws_link);
+            if (errmsg) {
+                std::cout << "[WSTP] Error message: " << errmsg << "\n" << std::flush;
+            }
+        }
         if (ws_env) WSDeinitialize(ws_env);
         ws_env = nullptr;
         return false;
     }
 
-    // Get the link name that the kernel should connect to
-    const char *link_name = WSLinkName(ws_link);
-    if (!link_name)
-    {
-        std::cout << "Failed to get listener link name\n";
-        WSClose(ws_link);
-        WSDeinitialize(ws_env);
-        ws_link = nullptr;
-        ws_env = nullptr;
-        return false;
-    }
-
-    std::cout << "Waiting for kernel connection on: " << link_name << "\n";
+    std::cout << "[WSTP] Kernel link created, activating...\n" << std::flush;
     
-    // Launch kernel in background to connect to our listener
-    std::string kernel_launch = "start /B \"\" \"C:\\Program Files\\Wolfram Research\\Wolfram Engine\\14.3\\WolframKernel.exe\" -wstp -linkmode connect -linkprotocol TCPIP -linkname \"" + std::string(link_name) + "\"";
-    std::cout << "Launching kernel with command: " << kernel_launch << "\n";
-    int launch_result = system(kernel_launch.c_str());
-    std::cout << "system() returned: " << launch_result << "\n";
-
-    std::cout << "Waiting for WSActivate (kernel connection)...\n";
-    // Wait for kernel to connect (with timeout)
+    // Activate the link
     if (!WSActivate(ws_link))
     {
         int ws_error = WSError(ws_link);
-        std::cout << "Kernel failed to connect (timeout or error)\n";
-        std::cout << "WSError code: " << ws_error << "\n";
-        std::cout << "WSErrorMessage: " << (WSErrorMessage(ws_link) ? WSErrorMessage(ws_link) : "none") << "\n";
-        std::cout << "Hint: Ensure Wolfram Engine is activated with 'wolframscript -activate'\n";
+        std::cout << "[WSTP] Kernel failed to activate (error code: " << ws_error << ")\n" << std::flush;
+        const char* errmsg = WSErrorMessage(ws_link);
+        if (errmsg) {
+            std::cout << "[WSTP] Error message: " << errmsg << "\n" << std::flush;
+        }
         WSClose(ws_link);
         WSDeinitialize(ws_env);
         ws_link = nullptr;
@@ -75,14 +77,24 @@ bool InitializeWolframKernel()
         return false;
     }
 
-    // Drain startup messages
+    std::cout << "[WSTP] Kernel activated, draining startup packets...\n" << std::flush;
+    
+    // Drain startup packets with safety limit
     int pkt;
-    while ((pkt = WSNextPacket(ws_link)) && pkt != RETURNPKT)
+    int drain_count = 0;
+    while ((pkt = WSNextPacket(ws_link)) && pkt != RETURNPKT && drain_count < 20)  // Safety limit
     {
         WSNewPacket(ws_link);
+        drain_count++;
     }
 
-    std::cout << "Wolfram kernel connected successfully via TCPIP.\n";
+    if (drain_count >= 20)
+    {
+        std::cout << "[WSTP] Warning: Startup drain took too many packets — possible loop. Continuing...\n" << std::flush;
+    }
+
+    std::cout << "[WSTP] Startup packets drained (" << drain_count << " packets).\n" << std::flush;
+    std::cout << "[WSTP] Wolfram kernel connected successfully!\n" << std::flush;
     return true;
 }
 

@@ -58,8 +58,10 @@ void AutoExportFullUQFF()
                 continue;
 
             std::string line;
-            while (std::getline(f, line))
+            int lines_read = 0;
+            while (std::getline(f, line) && lines_read < 500)  // Limit per file to prevent infinite read
             {
+                lines_read++;
                 std::smatch m;
                 if (std::regex_search(line, m, term_regex) && m.size() > 1)
                 {
@@ -69,7 +71,7 @@ void AutoExportFullUQFF()
                     {
                         std::cout << "  [" << terms_found << "] " << entry.path().filename().string() << " → " << m.str(1).substr(0, 50) << "...\n" << std::flush;
                     }
-                    break;
+                    break;  // Stop after first match in file
                 }
             }
         }
