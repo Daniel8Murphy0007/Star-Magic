@@ -55,12 +55,18 @@ bool InitializeWolframKernel()
     
     // Launch kernel in background to connect to our listener
     std::string kernel_launch = "start /B \"\" \"C:\\Program Files\\Wolfram Research\\Wolfram Engine\\14.3\\WolframKernel.exe\" -wstp -linkmode connect -linkprotocol TCPIP -linkname \"" + std::string(link_name) + "\"";
-    system(kernel_launch.c_str());
+    std::cout << "Launching kernel with command: " << kernel_launch << "\n";
+    int launch_result = system(kernel_launch.c_str());
+    std::cout << "system() returned: " << launch_result << "\n";
 
+    std::cout << "Waiting for WSActivate (kernel connection)...\n";
     // Wait for kernel to connect (with timeout)
     if (!WSActivate(ws_link))
     {
+        int ws_error = WSError(ws_link);
         std::cout << "Kernel failed to connect (timeout or error)\n";
+        std::cout << "WSError code: " << ws_error << "\n";
+        std::cout << "WSErrorMessage: " << (WSErrorMessage(ws_link) ? WSErrorMessage(ws_link) : "none") << "\n";
         std::cout << "Hint: Ensure Wolfram Engine is activated with 'wolframscript -activate'\n";
         WSClose(ws_link);
         WSDeinitialize(ws_env);

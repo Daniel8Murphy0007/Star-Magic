@@ -32,9 +32,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Compiler-specific flags for MSVC
 if(MSVC)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /std:c++20 /permissive- /Zc:__cplusplus /GR-")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /std:c++20 /permissive- /Zc:__cplusplus /GR- /arch:AVX2")
     set(CMAKE_CXX_FLAGS_DEBUG "/Zi /Od")
-    set(CMAKE_CXX_FLAGS_RELEASE "/Os /GL /Gw /Zc:inline /GF")  # /Os = Favor small code, /GL = Whole Program Optimization, /Gw = Global data optimization, /Zc:inline = Remove unreferenced inline, /GF = String pooling
+    set(CMAKE_CXX_FLAGS_RELEASE "/Os /GL /Gw /Gy /Zc:inline /GF /Oi")  # /Os = Favor small code, /GL = Whole Program Optimization, /Gw = Global data optimization, /Gy = Function-level linking, /Zc:inline = Remove unreferenced inline, /GF = String pooling, /Oi = Intrinsics
     
     # RECOMMENDED FINAL RELEASE CONFIGURATION "Release-MaxCompress"
     # Configuration verified against VS2022 Property Pages best practices
@@ -73,6 +73,7 @@ if(MSVC)
     #   C/C++ → Language → Enable Run-Time Type Information = No (/GR-)
     
     set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} /LTCG /OPT:REF /OPT:ICF /MERGE:.rdata=.text /SUBSYSTEM:CONSOLE /MANIFESTUAC:level='asInvoker' /DEBUG:NONE /PDBALTPATH:none /INCREMENTAL:NO")
+    # Explicit LTCG ensures link-time code generation with /GL compiler flag
     set(CMAKE_SHARED_LINKER_FLAGS_RELEASE "${CMAKE_SHARED_LINKER_FLAGS_RELEASE} /LTCG /OPT:REF /OPT:ICF /MERGE:.rdata=.text /DEBUG:NONE")
     set(CMAKE_STATIC_LINKER_FLAGS_RELEASE "${CMAKE_STATIC_LINKER_FLAGS_RELEASE} /LTCG")
     
