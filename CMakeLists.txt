@@ -25,6 +25,18 @@ endif()
 # Global include directories for all targets
 include_directories(C:/vcpkg/installed/x64-windows/include)
 
+# ========== Qt5 SUPPORT (Optional - for GUI components) ==========
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+find_package(Qt5 COMPONENTS Core Widgets WebEngineWidgets PrintSupport QUIET)
+if(Qt5_FOUND)
+    message(STATUS "Qt5 found - GUI components enabled")
+    add_definitions(-DHAVE_QT5)
+else()
+    message(STATUS "Qt5 not found - GUI components will be commented out")
+endif()
+
 # Set C++ standard to C++20 for maximum VR/VM functionality
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -154,6 +166,16 @@ if(USE_EMBEDDED_WOLFRAM)
         advapi32
         shell32
     )
+    
+    # Add Qt5 libraries if available
+    if(Qt5_FOUND)
+        target_link_libraries(MAIN_1_CoAnQi
+            Qt5::Core
+            Qt5::Widgets
+            Qt5::WebEngineWidgets
+            Qt5::PrintSupport
+        )
+    endif()
     
     # Physics term extractor (Wolfram-powered)
     add_executable(PhysicsTermExtractor physics_term_extractor_main.cpp)
