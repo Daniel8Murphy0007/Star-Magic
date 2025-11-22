@@ -1,8 +1,8 @@
 # VS Code Workspace Restart Guide
 
-**Date:** November 17, 2025  
-**Project:** Star-Magic UQFF Gaming Platform  
-**Status:** ✅ ALL SYSTEMS GO
+**Date:** November 22, 2025  
+**Project:** Star-Magic UQFF Wolfram Integration  
+**Status:** ✅ WSTP KERNEL CONNECTED
 
 ---
 
@@ -10,20 +10,22 @@
 
 ### Current Statistics
 
-- **Total Modules:** 441 (SOURCE1-113)
-- **Main File:** MAIN_1_CoAnQi.cpp (16,690 lines, 595 KB)
-- **Compilation:** ✅ SUCCESS (1.54 MB object)
+- **Total Modules:** 446 physics terms (SOURCE1-116)
+- **Main File:** MAIN_1_CoAnQi.cpp (27,227 lines)
+- **Build:** Visual Studio 2022 Release (MSVC v14.44, C++20)
+- **Executable:** build_msvc\Release\MAIN_1_CoAnQi.exe (1.75 MB)
 - **Git Branch:** master (synced with origin)
-- **Last Commit:** ac0d8e5
-- **Framework:** 2.0-Enhanced (Self-Expanding)
+- **Last Commit:** 8ae9ffe (WSTP integration fixes)
+- **Wolfram:** Kernel connection ACTIVE (wolfram.exe -mathlink)
 
 ### Recent Achievements ✅
 
-1. SOURCE111-113 integration complete
-2. Self-expanding framework enhancements applied
-3. All documentation updated
-4. Git repository fully synced
-5. Workspace configuration updated
+1. ✅ Wolfram WSTP kernel connection working (WSOpenArgv launch mode)
+2. ✅ Fixed infinite file scan loop (break after first WOLFRAM_TERM)
+3. ✅ Added packet draining safety counter (max 20 packets)
+4. ✅ SOURCE174 wolfram_bridge_embedded.cpp with debug logging
+5. ✅ SOURCE176 auto_full_uqff.cpp optimized file scanning
+6. ✅ Menu option 10: Auto-export full UQFF to Wolfram
 
 ---
 
@@ -31,28 +33,44 @@
 
 ### Primary Development
 
-1. `MAIN_1_CoAnQi.cpp` - Main integration file
-2. `source171.cpp` - Next module (in progress)
+1. `MAIN_1_CoAnQi.cpp` - Main executable (27,227 lines, 446 physics terms)
+2. `source174_wolfram_bridge_embedded.cpp` - WSTP kernel bridge
+3. `source176_auto_full_uqff.cpp` - Auto-export orchestration
 
 ### Reference Documentation
 
-3. `SOURCE111-113_ENHANCEMENT_SUMMARY.md` - Latest enhancements
-4. `INTEGRATION_PROGRESS_REPORT.md` - Current progress
-5. `.vscode/WORKSPACE_STATUS.md` - Detailed status
+1. `.github/copilot-instructions.md` - Build workflows and project structure
+2. `BUILD_INSTRUCTIONS_PERMANENT.md` - Critical CMake/vcpkg warnings
+3. `MAIN_1_CoAnQi_integration_status.json` - 446 physics terms inventory
 
 ### Quick Reference
 
-6. `INTEGRATION_SUMMARY_QUICK.txt` - Fast overview
-7. `ENHANCEMENT_GUIDE.md` - Self-expanding framework guide
+1. `INTEGRATION_TRACKER.csv` - 173 source files status (116 integrated)
+2. `ENHANCEMENT_GUIDE.md` - Self-expanding framework 2.0
 
 ---
 
 ## ⚡ Quick Start Commands
 
-### Verify Build
+### Build (Visual Studio 2022)
 
 ```powershell
-g++ -std=c++17 -c MAIN_1_CoAnQi.cpp -o MAIN_1_CoAnQi.o
+# Configure
+cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64
+
+# Build Release
+cmake --build build_msvc --config Release --target MAIN_1_CoAnQi
+
+# Clean rebuild
+Remove-Item -Recurse -Force build_msvc -ErrorAction SilentlyContinue; cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64; cmake --build build_msvc --config Release
+```
+
+### Execute with Wolfram
+
+```powershell
+$env:PATH = "C:\Program Files\Wolfram Research\Wolfram Engine\14.3\SystemFiles\Links\WSTP\DeveloperKit\Windows-x86-64\CompilerAdditions;" + $env:PATH
+.\build_msvc\Release\MAIN_1_CoAnQi.exe
+# Select option 10 for Auto-export to Wolfram
 ```
 
 ### Check Git Status
@@ -62,28 +80,31 @@ git status
 git log --oneline -5
 ```
 
-### View Recent Commits
-
-```powershell
-git log --graph --oneline --decorate -10
-```
-
 ---
 
 ## 🔧 Development Environment Ready
 
 ### Compiler Configuration
 
-- **Compiler:** GCC 13.1.0 (MinGW-w64)
-- **Path:** C:/MinGW/mingw64/bin/x86_64-w64-mingw32-g++.exe
-- **Standard:** C++17
-- **Mode:** gcc-x64
+- **Compiler:** MSVC v14.44.35207 (Visual Studio 2022 Professional)
+- **Toolset:** v143
+- **Standard:** C++20 (`/std:c++20`)
+- **Architecture:** x64 (AMD64)
+- **Optimizations:** /Os /GL /LTCG /Gy /Oi /arch:AVX2
+
+### Wolfram Integration
+
+- **Engine:** Wolfram Engine 14.3 (free, activated)
+- **WSTP:** wstp64i4.dll (64-bit)
+- **Include:** CompilerAdditions\wstp
+- **Executable:** wolfram.exe -mathlink -nogui
+- **Preprocessor:** USE_EMBEDDED_WOLFRAM defined
 
 ### VS Code Settings
 
-- CMake auto-configure: OFF
-- Task auto-detect: OFF
-- Extensions auto-update: OFF
+- CMake generator: Visual Studio 17 2022
+- Build directory: build_msvc
+- Configuration: Release
 - File associations: .cpp, .h → C++
 
 ---
@@ -92,20 +113,23 @@ git log --graph --oneline --decorate -10
 
 ### Immediate Priority
 
-- [ ] Review current source171.cpp progress
-- [ ] Continue integration work
-- [ ] Test recent enhancements
+- [ ] Run menu option 10 to test full UQFF Wolfram export
+- [ ] Monitor file scan completes without infinite loop
+- [ ] Verify Wolfram kernel connection and packet draining
+- [ ] Check FullSimplify evaluation results
 
 ### Testing
 
-- [ ] Compile MAIN_1_CoAnQi.cpp (verify 441 modules)
-- [ ] Test SOURCE111-113 self-expanding framework
-- [ ] Validate state export functionality
+- [ ] Test all 9 menu options (calculate system, ALL systems, clone/mutate, add custom, add dynamic term, simulations, statistics, self-optimization, exit)
+- [ ] Verify 446 physics terms extract correctly
+- [ ] Validate master UQFF expression building
+- [ ] Test Wolfram FullSimplify evaluation
 
-### Documentation
+### Development
 
-- [ ] Update INTEGRATION_TRACKER.csv if needed
-- [ ] Create gameplay examples using new framework
+- [ ] Complete remaining 57 source files integration (173 total, 116 done)
+- [ ] Generate PhysicsTerm wrappers for 471 classes (63 done → 471 target)
+- [ ] Update PhysicsTermRegistry with all terms
 
 ---
 
