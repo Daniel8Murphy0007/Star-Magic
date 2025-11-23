@@ -25,16 +25,41 @@ endif()
 # Global include directories for all targets
 include_directories(C:/vcpkg/installed/x64-windows/include)
 
-# ========== Qt5 SUPPORT (Optional - for GUI components) ==========
+# ========== OPTION A FULL RECOVERY: Qt6 + ANTLR4 + SymEngine ==========
+# Using existing Qt 6.10.0 MSVC 2022 installation
+set(CMAKE_PREFIX_PATH "C:/Qt/6.10.0/msvc2022_64" ${CMAKE_PREFIX_PATH})
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
-find_package(Qt5 COMPONENTS Core Widgets WebEngineWidgets PrintSupport QUIET)
-if(Qt5_FOUND)
-    message(STATUS "Qt5 found - GUI components enabled")
-    add_definitions(-DHAVE_QT5)
+
+# Find Qt6 (upgraded from Qt5)
+find_package(Qt6 COMPONENTS Core Widgets Network QUIET)
+if(Qt6_FOUND)
+    message(STATUS "Qt6 found - GUI components enabled (Option A Full Recovery)")
+    add_definitions(-DHAVE_QT6)
 else()
-    message(STATUS "Qt5 not found - GUI components will be commented out")
+    # Fallback to Qt5 if Qt6 not found
+    find_package(Qt5 COMPONENTS Core Widgets WebEngineWidgets PrintSupport QUIET)
+    if(Qt5_FOUND)
+        message(STATUS "Qt5 found - GUI components enabled")
+        add_definitions(-DHAVE_QT5)
+    else()
+        message(STATUS "Qt not found - GUI components will be commented out")
+    endif()
+endif()
+
+# Find ANTLR4 runtime (for parser code patterns)
+find_package(antlr4-runtime CONFIG QUIET)
+if(antlr4-runtime_FOUND)
+    message(STATUS "ANTLR4 runtime found - parser components enabled")
+    add_definitions(-DHAVE_ANTLR4)
+endif()
+
+# Find SymEngine (for symbolic math patterns)
+find_package(SymEngine CONFIG QUIET)
+if(SymEngine_FOUND)
+    message(STATUS "SymEngine found - symbolic math components enabled")
+    add_definitions(-DHAVE_SYMENGINE)
 endif()
 
 # Set C++ standard to C++20 for maximum VR/VM functionality
@@ -44,7 +69,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Compiler-specific flags for MSVC
 if(MSVC)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /std:c++20 /permissive- /Zc:__cplusplus /GR- /arch:AVX2")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3 /std:c++20 /permissive- /Zc:__cplusplus /GR- /arch:AVX2 /wd4100 /wd4244 /wd4267 /wd4305 /wd4996 /wd4005")
+    # Warning suppressions: /wd4100=unreferenced params, /wd4244=conversion loss, /wd4267=size_t conversion, /wd4305=truncation, /wd4996=deprecated POSIX, /wd4005=macro redefinition
     set(CMAKE_CXX_FLAGS_DEBUG "/Zi /Od")
     set(CMAKE_CXX_FLAGS_RELEASE "/Os /GL /Gw /Gy /Zc:inline /GF /Oi")  # /Os = Favor small code, /GL = Whole Program Optimization, /Gw = Global data optimization, /Gy = Function-level linking, /Zc:inline = Remove unreferenced inline, /GF = String pooling, /Oi = Intrinsics
     
@@ -153,10 +179,15 @@ endif()
 # Core mathematical framework executables
 add_executable(MAIN_1 MAIN_1.cpp)
 
-# MAIN_1_CoAnQi with optional Wolfram integration
+# MAIN_1_CoAnQi with optional Wolfram integration + Grok AI API
 if(USE_EMBEDDED_WOLFRAM)
     # source174 is included via source176, don't add it separately to avoid duplicate definitions
-    add_executable(MAIN_1_CoAnQi MAIN_1_CoAnQi.cpp)
+    # source178_grok_api.cpp added for xAI Grok API integration (Phase 23: AI Integration)
+    add_executable(MAIN_1_CoAnQi MAIN_1_CoAnQi.cpp source178_grok_api.cpp)
+    
+    # Disable AUTOMOC for MAIN_1_CoAnQi - it's a pure C++ physics calculator, not a Qt GUI app
+    # Q_OBJECT macros in commented sections should not trigger AutoMoc
+    set_target_properties(MAIN_1_CoAnQi PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF)
     
     # Linker → Input → Additional Dependencies: wstp64i4.lib + Windows system libraries
     target_link_libraries(MAIN_1_CoAnQi 
@@ -167,13 +198,23 @@ if(USE_EMBEDDED_WOLFRAM)
         shell32
     )
     
-    # Add Qt5 libraries if available
+    # Add Qt5 libraries if available (required for Grok API QNetworkAccessManager)
     if(Qt5_FOUND)
         target_link_libraries(MAIN_1_CoAnQi
             Qt5::Core
             Qt5::Widgets
             Qt5::WebEngineWidgets
             Qt5::PrintSupport
+            Qt5::Network
+        )
+    endif()
+    
+    # Add Qt6 libraries if available (required for Grok API QNetworkAccessManager)
+    if(Qt6_FOUND)
+        target_link_libraries(MAIN_1_CoAnQi
+            Qt6::Core
+            Qt6::Widgets
+            Qt6::Network
         )
     endif()
     
@@ -191,27 +232,33 @@ if(USE_EMBEDDED_WOLFRAM)
     message(STATUS "PhysicsTermExtractor compiled WITH Wolfram WSTP support")
 else()
     add_executable(MAIN_1_CoAnQi MAIN_1_CoAnQi.cpp)
+    
+    # Disable AUTOMOC for MAIN_1_CoAnQi - pure C++ physics calculator
+    set_target_properties(MAIN_1_CoAnQi PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF)
+    
     message(STATUS "MAIN_1_CoAnQi compiled WITHOUT Wolfram support")
 endif()
 
 # STEP 8 of 8: UPX Ultimate Packer (Post-Build Compression)
+# UPX 5.0.2 (Latest as of Nov 22, 2025) - Download from https://github.com/upx/upx/releases
 # Compresses final executable using UPX with maximum compression settings
 # Effect: Dramatic size reduction (50-70% compression ratio typical)
 # Target: Get MAIN_1_CoAnQi.exe under 3 MB (from ~5-8 MB uncompressed)
-# Requirements: UPX installed at C:/Tools/UPX/upx.exe (download from https://upx.github.io/)
+# Requirements: UPX 5.0.2+ installed at C:/Tools/upx/upx.exe
 # Trade-offs: Slower startup (decompression overhead ~50-200ms), incompatible with some antivirus
 # VS2022 Property Pages: Build Events → Post-Build Event → Command Line
-find_program(UPX_EXECUTABLE upx PATHS "C:/Tools/UPX" "C:/Tools/upx" "C:/Program Files/upx" DOC "UPX executable packer")
+find_program(UPX_EXECUTABLE upx PATHS "C:/Tools/upx" "C:/Tools/UPX" "C:/Program Files/upx" ENV PATH DOC "UPX 5.0.2 executable packer")
 if(UPX_EXECUTABLE)
     add_custom_command(TARGET MAIN_1_CoAnQi POST_BUILD
-        COMMAND ${UPX_EXECUTABLE} --best --ultra-brute "$<TARGET_FILE:MAIN_1_CoAnQi>"
-        COMMENT "STEP 8: Compressing MAIN_1_CoAnQi.exe with UPX (--best --ultra-brute)"
+        COMMAND "${UPX_EXECUTABLE}" --best --lzma "$<TARGET_FILE:MAIN_1_CoAnQi>"
+        COMMENT "STEP 8: Compressing MAIN_1_CoAnQi.exe with UPX 5.0.2 (--best --lzma)"
         VERBATIM
     )
     message(STATUS "UPX compression ENABLED for MAIN_1_CoAnQi (found at ${UPX_EXECUTABLE})")
 else()
-    message(WARNING "UPX not found - executable will not be compressed. Install UPX to C:/Tools/upx/ for Step 8 compression.")
-    message(WARNING "Download from: https://github.com/upx/upx/releases")
+    message(WARNING "UPX not found - executable will not be compressed.")
+    message(WARNING "Download UPX 5.0.2: https://github.com/upx/upx/releases/download/v5.0.2/upx-5.0.2-win64.zip")
+    message(WARNING "Extract to C:/Tools/upx/ and add to PATH")
 endif()
 
 # Source2: HEAD PROGRAM - Primary User Base Platform (REQUIRES Qt5, VTK, AWS SDK, OpenCV, etc.)
