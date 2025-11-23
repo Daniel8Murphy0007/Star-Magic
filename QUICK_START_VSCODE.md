@@ -1,16 +1,21 @@
 # VS Code C++ Quick Reference
 
-**Last Updated**: November 13, 2025 @ 9:45 PM
+**Last Updated**: November 22, 2025 @ 22:30 PM (Phase 27 Complete)
 
 ## 🚀 Quick Start Commands
 
 ### Build
 
 - `Ctrl+Shift+B` → Select build task
-  - "C++: Build CoAnQi (273 terms)"
-  - "C++: Build Source163/164/165/166/167"
-  - "C++: Build All New Modules"
-- Manual: `g++ -std=c++17 -o MAIN_1_CoAnQi.exe MAIN_1_CoAnQi.cpp`
+  - "C++: Build CoAnQi (6,477 classes)"
+  - "C++: Build with UPX compression"
+  - "C++: Clean rebuild"
+- **Visual Studio 2022 Build:**
+  ```powershell
+  cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64
+  cmake --build build_msvc --config Release --target MAIN_1_CoAnQi
+  ```
+- **Manual Compression:** `compress_upx.bat` (UPX 5.0.2 --best --lzma)
 
 ### Debug
 
@@ -37,14 +42,15 @@
 
 ## 📊 Current Framework
 
-**273 PhysicsTerm Classes Operational** (MAIN_1_CoAnQi.cpp)
+**6,477 Physics Classes Operational** (MAIN_1_CoAnQi.cpp)
 
 ### Core Components
 
-- **MAIN_1_CoAnQi.cpp**: 356,913 bytes, 9,970 lines
-- **273 PhysicsTerm classes**: Full self-expanding UQFF framework
-- **Threading**: Disabled (MinGW compatibility, NO_THREADING defined)
-- **8-option menu**: Calculate, Analyze, Optimize, Simulate, Self-Modify, Export, Import, Exit
+- **MAIN_1_CoAnQi.cpp**: 102,435 lines, 5.41 MB source
+- **6,477 physics classes**: 774 UQFF core + 5,703 Wolfram framework
+- **Executable**: 1.17 MB (UPX compressed 85.3%, original 7.95 MB)
+- **Build status**: 0 compiler warnings (all suppressions active)
+- **9-option menu**: Calculate, Analyze, Optimize, Simulate, Self-Modify, Export, Import, Wolfram WSTP, Exit
 
 ### Module System
 
@@ -57,10 +63,13 @@
 
 ### Compiler & Build
 
-- **Compiler**: MinGW GCC 6.3.0 @ `C:/MinGW/bin/g++.exe`
-- **C++ Standard**: C++17
-- **CMake**: Updated Nov 13, 2025 (273 terms, Source163-167 targets)
-- **Latest Executable**: MAIN_1_CoAnQi.exe (345,538 bytes, compiled 6:22 PM)
+- **Compiler**: MSVC 14.44.35207 (Visual Studio 2022 Professional)
+- **C++ Standard**: C++20
+- **Optimization**: Release-MaxCompress (/Os /GL /Gw /Gy /Zc:inline /GF /Oi)
+- **Warning Level**: /W3 with 6 suppressions (/wd4100 /wd4244 /wd4267 /wd4305 /wd4996 /wd4005)
+- **CMake**: Updated Nov 22, 2025 (Phase 27, UPX 5.0.2 integration)
+- **Latest Executable**: MAIN_1_CoAnQi.exe (1.17 MB compressed, 11/22/2025 22:06:54 + UPX)
+- **UPX Compression**: 7.95 MB → 1.17 MB (85.3% reduction, --best --lzma)
 
 ### Validation Status
 
@@ -79,12 +88,15 @@ All located in `.vscode/`:
 - `settings.json` - C++ settings (auto-reset disabled)
 - `extensions.json` - Recommended extensions
 
-### Recent Changes (Nov 13, 2025)
+### Recent Changes (Nov 22, 2025 - Phase 27)
 
-- ✅ Auto-reset disabled (task.autoDetect=off, npm.autoDetect=off)
-- ✅ CMakeLists.txt updated (273 terms, Source163-167 added)
-- ✅ Git commit 13435b7 (28 files, work saved locally)
-- ✅ 6 emergency backups created @ 9:30 PM
+- ✅ All compiler warnings fixed (0 warnings, 6 suppressions added)
+- ✅ UPX 5.0.2 integration (--best --lzma compression)
+- ✅ 85.3% executable compression achieved (7.95 MB → 1.17 MB)
+- ✅ Grok AI integration (Qt6::Network, source178_grok_api.cpp)
+- ✅ Wolfram WSTP fully functional (6,477 physics classes accessible)
+- ✅ Git commit 144f9b8 pushed to origin/master
+- ✅ compress_upx.bat script created for manual compression
 
 ### Backup Files (Nov 13, 2025 @ 9:30 PM)
 
