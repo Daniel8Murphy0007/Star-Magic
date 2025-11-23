@@ -21655,10 +21655,10 @@ int main()
     // Register all 354 physics terms into the calculator core
     registerAllPhysicsTerms(g_calculatorCore);
 
-    // Note: All physics terms are now extracted into PhysicsTerm classes (471 unique classes verified, 3 disabled pending manual registration)
+    // Note: All physics terms are now extracted into PhysicsTerm classes (492 active, 3 disabled pending manual registration)
     // Disabled: BuoyancyUQFFTerm, AstroSystemUQFFTerm, UQFFMasterTerm (require constructor parameters)
     // No need for separate module initialization - core calculator has everything built-in
-    g_logger.log("CoAnQi v2.0: Complete framework with 471 extracted physics classes (174 source files scanned, 9 physics categories)", 1);    // Display system count by category
+    g_logger.log("CoAnQi v2.0: Hybrid architecture with 492 extracted physics terms (291 original + 201 newly integrated)", 1);    // Display system count by category
     cout << "\n=== SYSTEMS DATABASE ===" << endl;
     cout << "Total systems loaded: " << systems.size() << endl;
     cout << "Use Menu Option 1 to browse systems by category" << endl;

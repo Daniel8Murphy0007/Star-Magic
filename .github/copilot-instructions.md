@@ -2,11 +2,11 @@
 
 ## Big Picture Architecture
 - **Dual-Platform System:**
-  - **C++ Core:** `MAIN_1_CoAnQi.cpp` (102,452 lines, 446 integrated modules SOURCE1-116, **471 physics classes extracted**, **100 astronomical systems**) - Production calculator with 12-option interactive menu (Wolfram WSTP 9-11 + Exit 12)
+  - **C++ Core:** `MAIN_1_CoAnQi.cpp` (102,452 lines, 446 integrated modules SOURCE1-116, **492 physics terms extracted**, **100 astronomical systems**) - Production calculator with 12-option interactive menu (Wolfram WSTP 9-11 + Exit 12)
   - **JavaScript Engine:** `index.js` (23,790 lines) - UQFF computational orchestration layer with 106 astrophysical systems
 - **Module Integration:** Physics from source1.cpp through source173.cpp (173 files total) consolidated:
   - 116 files integrated into SOURCE1-116 blocks in MAIN_1_CoAnQi.cpp (446 unique modules)
-  - 471 unique physics classes extracted (comprehensive worktree scan, 9 physics categories)
+  - 492 physics terms extracted (INTEGRATION_TRACKER.csv verified, 291 original + 201 newly integrated)
   - 57 files skipped (GUI infrastructure, duplicate wrappers)
 - **Self-Expanding Framework 2.0:** Dynamic term registration, runtime parameters, state export/import, auto-optimization, metadata tracking
 - **Build System:** CMake + Visual Studio 2022 (MSVC 14.44.35207) + MinGW-w64 GCC 14.2.0, C++20 standard, Windows threading compatibility, UPX 5.0.2 compression (1.17 MB, 85.3% reduction)
