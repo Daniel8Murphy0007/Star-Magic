@@ -1,32 +1,41 @@
 CMAKE RESTORE POINT (UPDATED)
 =============================
 
-## LATEST RESTORE POINT: November 20, 2025 16:07:20
-Date: November 20, 2025
-Commit: aab8760 (UNPUSHED)
+## LATEST RESTORE POINT: November 25, 2025 08:15:00
+Date: November 25, 2025
+Commit: HEAD (master)
 Branch: master
-Status: MAIN_1_CoAnQi FULLY OPERATIONAL ✅
+Status: WOLFRAM COMPANION GENERATION ACTIVE ✅
 Wolfram WSTP: ENABLED ✅
-Registry: 813 registrations documented ✅
+C++20/MSVC: ENFORCED (MinGW blocked) ✅
+Wolfram Companions: 8/163 complete (source13-20) ✅
 
 Restore Command:
-git reset --hard aab8760
+git reset --hard HEAD
 
 Description:
-WOLFRAM INTEGRATION COMPLETE - First fully operational WSTP build.
-- 810 active registrations + 3 commented = 813 total
-- 7 duplicate classes removed, 8 duplicate registrations removed
-- Syntax error fixed (StellarMass_M_sInMsun)
-- BUILD SUCCESS: build_wolfram\Release\MAIN_1_CoAnQi.exe
-- C++20, MSVC 19.44, Visual Studio 2022
-- Complete registry inventory in COMPLETE_REGISTRY_LIST.txt
+WOLFRAM COMPANION GENERATION PHASE - Systematic extraction of physics terms.
+- C++20 ENFORCED via CMakeLists.txt (line 68: CMAKE_CXX_STANDARD 20)
+- MSVC REQUIRED (Wolfram WSTP binary compatibility, FATAL_ERROR if MinGW)
+- Compiler flags: /std:c++20 /permissive- /Zc:__cplusplus /GR- /arch:AVX2
+- Wolfram companion files: 8/163 complete (source13-20_wolfram.cpp)
+  - source13: SGR 1745-2900 (14 terms, 75 classes)
+  - source14: SGR 0501+4516 (14 terms, 89 classes)
+  - source15: Sgr A* (17 terms, 106 classes)
+  - source16: NGC 2014/2020 (15 terms, 121 classes)
+  - source17: Westerlund 2 (15 terms, 136 classes)
+  - source18: Pillars of Creation (17 terms, 153 classes)
+  - source19: Einstein Ring (16 terms, 169 classes)
+  - source20: NGC 2525 galaxy (12 terms, 181 classes)
+- BUILD SUCCESS: build_msvc\Release\MAIN_1_CoAnQi.exe (1.17 MB UPX)
+- Visual Studio 2022, MSVC 14.44.35207
 
 Files Status:
-- CMakeLists.txt: ✓ USE_EMBEDDED_WOLFRAM=ON
-- MAIN_1_CoAnQi.cpp: ✓ 27,228 lines, 894 classes, 813 registrations
-- source174-176: ✓ Wolfram bridge fully integrated
-- COMPLETE_REGISTRY_LIST.txt: ✓ 810 registrations
-- build_wolfram\Release\MAIN_1_CoAnQi.exe: ✓ READY
+- CMakeLists.txt: ✓ C++20 ENFORCED (line 68), MSVC REQUIRED (FATAL_ERROR lines 11-23)
+- MAIN_1_CoAnQi.cpp: ✓ 102,452 lines, 492 physics terms, 810 registrations
+- source13-20_wolfram.cpp: ✓ 8 companion files (181 total classes)
+- source174-177: ✓ Wolfram WSTP bridge fully integrated
+- build_msvc\Release\MAIN_1_CoAnQi.exe: ✓ READY (1.17 MB UPX compressed)
 
 Detailed Manifest:
 See RESTORE_POINT_20NOV2025_160720/RESTORE_POINT_MANIFEST.txt

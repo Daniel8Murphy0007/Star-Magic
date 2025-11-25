@@ -1,10 +1,10 @@
 # Star-Magic
 
-**Last Updated**: November 23, 2025 @ 06:30 (Phase 27 Complete - 492 Physics Terms Verified)
-**Latest Commit**: 0c24703 (HEAD -> master, origin/master)
-**Progress**: 492 extracted physics terms (from INTEGRATION_TRACKER.csv) + 6,477 total framework (774 UQFF + 5,703 Wolfram)
-**Build Status**: ✅ MSVC 14.44.35207, C++20, 1.17 MB executable (UPX 5.0.2, 85.3% compression)
-**Wolfram Integration**: ✅ WSTP 14.3 + Grok AI (Qt6::Network) + Hypergraph + 12-option menu
+**Last Updated**: November 25, 2025 @ 08:15 (Wolfram Companion Generation - Source20 Complete)
+**Latest Commit**: HEAD -> master
+**Progress**: 492 extracted physics terms + Wolfram companion files (source13-20: 8/163 complete, 155 remaining)
+**Build Status**: ✅ MSVC 14.44.35207, C++20 (enforced), 1.17 MB executable (UPX 5.0.2, 85.3% compression)
+**Wolfram Integration**: ✅ WSTP 14.3 + PhysicsTermRegistry delegation architecture + 12-option menu
 
 **Unveiling Superconductivity that Unifies the Quantum and Universal Field Equations**
 
@@ -138,10 +138,11 @@ This unified theory addresses fundamental physics problems including:
 
 ### Build System
 
-- **CMakeLists.txt**: Updated Nov 18, 2025 (446 modules, MAIN_1_CoAnQi primary target)
-- **Compiler**: MinGW-w64 GCC 14.2.0, C++17 standard
-- **Build Command**: `cmake -S . -B build -G "MinGW Makefiles"; cmake --build build --target MAIN_1_CoAnQi`
-- **Output**: `build_msvc\Release\MAIN_1_CoAnQi.exe` (Visual Studio) or `build\MAIN_1_CoAnQi.exe` (MinGW)
+- **CMakeLists.txt**: C++20 enforced, MSVC-only (Wolfram WSTP binary compatibility)
+- **Compiler**: MSVC 14.44+ (Visual Studio 2022), C++20 standard (/std:c++20)
+- **Build Command**: `cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64; cmake --build build_msvc --config Release`
+- **Output**: `build_msvc\Release\MAIN_1_CoAnQi.exe` (1.17 MB UPX compressed)
+- **MinGW Note**: FATAL_ERROR enforced - WSTP libraries are MSVC-compiled only
 
 ## Claude AI Integration
 

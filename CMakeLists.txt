@@ -183,7 +183,11 @@ add_executable(MAIN_1 MAIN_1.cpp)
 if(USE_EMBEDDED_WOLFRAM)
     # source174 is included via source176, don't add it separately to avoid duplicate definitions
     # source178_grok_api.cpp added for xAI Grok API integration (Phase 23: AI Integration)
-    add_executable(MAIN_1_CoAnQi MAIN_1_CoAnQi.cpp source178_grok_api.cpp)
+    # Phase 4 Wolfram extraction: Files included directly in MAIN_1_CoAnQi.cpp, not compiled separately
+    add_executable(MAIN_1_CoAnQi 
+        MAIN_1_CoAnQi.cpp 
+        source178_grok_api.cpp
+    )
     
     # Disable AUTOMOC for MAIN_1_CoAnQi - it's a pure C++ physics calculator, not a Qt GUI app
     # Q_OBJECT macros in commented sections should not trigger AutoMoc

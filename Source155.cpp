@@ -109,8 +109,14 @@ double SurfaceMagneticFieldModule::computeB_j(double t, double B_s) {
         variables[name] = delta;
     }
 }
-// UQFFBuoyancyModule.cpp
-#include "UQFFBuoyancyModule.h"
+
+// UQFFBuoyancyModule - inline implementation (header content)
+#ifndef UQFF_BUOYANCY_MODULE_INLINE_H
+#define UQFF_BUOYANCY_MODULE_INLINE_H
+// Class already defined above, this is just the implementation marker
+#endif
+
+// UQFFBuoyancyModule.cpp implementation
 #include <complex>
 #include <array> // MSVC requirement
 

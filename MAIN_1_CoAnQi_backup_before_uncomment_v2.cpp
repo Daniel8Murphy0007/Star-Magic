@@ -642,12 +642,6 @@ public:
     {
         return physicsRegistry.getAllTerms();
     }
-    
-    // Registry Access (for Phase 4 Wolfram extraction registration)
-    PhysicsTermRegistry& getRegistry()
-    {
-        return physicsRegistry;
-    }
 
     // Computation API (for SOURCE2 integration)
     double compute(const std::string &termName, double t, const std::map<std::string, double> &params)
@@ -20561,30 +20555,6 @@ public:
 // ========== END BATCH 15 EXPANSION: 20 MORE METHODS (Total Batch 15: 50 terms) ==========
 
 // ===========================================================================================
-// WOLFRAM KNOWLEDGEBASE PHYSICS TERMS (5,703 CLASSES)
-// Generated from: wolfram_physics_terms_FULL.txt (WolframKernel.exe retrieval)
-// Categories: PhysicalConstant (380), Particle (1034), Isotope (1000), PhysicalQuantity (3289)
-// Generated: Auto-generated via generate_wolfram_classes.ps1
-// File: wolfram_physics_classes.cpp (5.07 MB, included inline below)
-// ===========================================================================================
-#include "wolfram_physics_classes.cpp"
-
-// ===========================================================================================
-// PHASE 4 WOLFRAM EXTRACTION: NEW EXTRACTED PHYSICS TERMS (188 CLASSES)
-// ===========================================================================================
-// Auto-generated Wolfram PhysicsTerm classes from extraction pipeline (Phases 1-4)
-// Source files: source10.cpp (102), Source167.cpp (11), source168-172.cpp (75)
-// Total: 93 constants + 95 astrophysical systems = 188 PhysicsTerm classes
-// ===========================================================================================
-#include "wolfram_extraction/generated_classes/source10.cpp_wolfram.cpp"
-#include "wolfram_extraction/generated_classes/Source167.cpp_wolfram.cpp"
-#include "wolfram_extraction/generated_classes/source168.cpp_wolfram.cpp"
-#include "wolfram_extraction/generated_classes/source169.cpp_wolfram.cpp"
-#include "wolfram_extraction/generated_classes/source170.cpp_wolfram.cpp"
-#include "wolfram_extraction/generated_classes/source171.cpp_wolfram.cpp"
-#include "wolfram_extraction/generated_classes/source172.cpp_wolfram.cpp"
-
-// ===========================================================================================
 // AUTO-GENERATED PHYSICS TERM REGISTRATION
 // ===========================================================================================
 
@@ -21651,120 +21621,6 @@ void registerAllPhysicsTerms(CalculatorCore& core) {
     core.registerPhysicsTerm("StellarMass_M_sInMsun", std::make_unique<StellarMass_M_sInMsun>(), "auto-registered");
     
     // ========== END BATCH 15: 56 REGISTRATIONS (MODULE HELPER METHODS) ==========
-    
-    // ========== BATCH 17: MISSING MAIN REGISTRATIONS (81 classes) ==========
-    // Generated: 2025-11-23 15:24:47 - Previously unregistered PhysicsTerm classes
-    g_logger.log("Registering Batch 17: 81 missing MAIN classes...", 1);
-    
-    core.registerPhysicsTerm("BackgroundAetherCoupling", std::make_unique<BackgroundAetherCoupling>(), "auto-registered");
-    core.registerPhysicsTerm("BackgroundAetherMinkowski", std::make_unique<BackgroundAetherMinkowski>(), "auto-registered");
-    core.registerPhysicsTerm("BackgroundAetherPerturbedMetric", std::make_unique<BackgroundAetherPerturbedMetric>(), "auto-registered");
-    core.registerPhysicsTerm("BackgroundAetherStressEnergy", std::make_unique<BackgroundAetherStressEnergy>(), "auto-registered");
-    core.registerPhysicsTerm("BigBangCore", std::make_unique<BigBangCore>(), "auto-registered");
-    core.registerPhysicsTerm("BigBangCosmicEvolution", std::make_unique<BigBangCosmicEvolution>(), "auto-registered");
-    core.registerPhysicsTerm("BigBangDarkMatter", std::make_unique<BigBangDarkMatter>(), "auto-registered");
-    core.registerPhysicsTerm("BigBangFluid", std::make_unique<BigBangFluid>(), "auto-registered");
-    core.registerPhysicsTerm("BigBangGravitationalWave", std::make_unique<BigBangGravitationalWave>(), "auto-registered");
-    core.registerPhysicsTerm("BigBangLambda", std::make_unique<BigBangLambda>(), "auto-registered");
-    core.registerPhysicsTerm("BigBangOscillatory", std::make_unique<BigBangOscillatory>(), "auto-registered");
-    core.registerPhysicsTerm("BigBangQuantum", std::make_unique<BigBangQuantum>(), "auto-registered");
-    core.registerPhysicsTerm("BigBangQuantumGravity", std::make_unique<BigBangQuantumGravity>(), "auto-registered");
-    core.registerPhysicsTerm("BigBangUg1", std::make_unique<BigBangUg1>(), "auto-registered");
-    core.registerPhysicsTerm("BigBangUg4", std::make_unique<BigBangUg4>(), "auto-registered");
-    core.registerPhysicsTerm("HeavisideAmplificationRatio", std::make_unique<HeavisideAmplificationRatio>(), "auto-registered");
-    core.registerPhysicsTerm("HeavisideExponentialDecay", std::make_unique<HeavisideExponentialDecay>(), "auto-registered");
-    core.registerPhysicsTerm("HeavisideFactor", std::make_unique<HeavisideFactor>(), "auto-registered");
-    core.registerPhysicsTerm("HeavisideFraction", std::make_unique<HeavisideFraction>(), "auto-registered");
-    core.registerPhysicsTerm("HeavisideMagneticMoment", std::make_unique<HeavisideMagneticMoment>(), "auto-registered");
-    core.registerPhysicsTerm("HeavisideQuasiFactor", std::make_unique<HeavisideQuasiFactor>(), "auto-registered");
-    core.registerPhysicsTerm("HeavisideUmBase", std::make_unique<HeavisideUmBase>(), "auto-registered");
-    core.registerPhysicsTerm("HeavisideUmWithHeaviside", std::make_unique<HeavisideUmWithHeaviside>(), "auto-registered");
-    core.registerPhysicsTerm("HeavisideUmWithoutHeaviside", std::make_unique<HeavisideUmWithoutHeaviside>(), "auto-registered");
-    core.registerPhysicsTerm("HydrogenResonance_Amplitude", std::make_unique<HydrogenResonance_Amplitude>(), "auto-registered");
-    core.registerPhysicsTerm("HydrogenResonance_Buoyancy", std::make_unique<HydrogenResonance_Buoyancy>(), "auto-registered");
-    core.registerPhysicsTerm("HydrogenResonance_DeepPairing", std::make_unique<HydrogenResonance_DeepPairing>(), "auto-registered");
-    core.registerPhysicsTerm("HydrogenResonance_Frequency", std::make_unique<HydrogenResonance_Frequency>(), "auto-registered");
-    core.registerPhysicsTerm("HydrogenResonance_Full", std::make_unique<HydrogenResonance_Full>(), "auto-registered");
-    core.registerPhysicsTerm("HydrogenResonance_Integrand", std::make_unique<HydrogenResonance_Integrand>(), "auto-registered");
-    core.registerPhysicsTerm("HydrogenResonance_MagicStability", std::make_unique<HydrogenResonance_MagicStability>(), "auto-registered");
-    core.registerPhysicsTerm("HydrogenResonance_NuclearCoupling", std::make_unique<HydrogenResonance_NuclearCoupling>(), "auto-registered");
-    core.registerPhysicsTerm("HydrogenResonance_PairingEnergy", std::make_unique<HydrogenResonance_PairingEnergy>(), "auto-registered");
-    core.registerPhysicsTerm("HydrogenResonance_ShellCorrection", std::make_unique<HydrogenResonance_ShellCorrection>(), "auto-registered");
-    core.registerPhysicsTerm("HydrogenResonance_Superconductive", std::make_unique<HydrogenResonance_Superconductive>(), "auto-registered");
-    core.registerPhysicsTerm("HydrogenResonance_TunnelingProb", std::make_unique<HydrogenResonance_TunnelingProb>(), "auto-registered");
-    core.registerPhysicsTerm("M51Core", std::make_unique<M51Core>(), "auto-registered");
-    core.registerPhysicsTerm("M51DarkMatter", std::make_unique<M51DarkMatter>(), "auto-registered");
-    core.registerPhysicsTerm("M51EnvironmentalForces", std::make_unique<M51EnvironmentalForces>(), "auto-registered");
-    core.registerPhysicsTerm("M51Fluid", std::make_unique<M51Fluid>(), "auto-registered");
-    core.registerPhysicsTerm("M51Lambda", std::make_unique<M51Lambda>(), "auto-registered");
-    core.registerPhysicsTerm("M51Quantum", std::make_unique<M51Quantum>(), "auto-registered");
-    core.registerPhysicsTerm("M51Ug1Dipole", std::make_unique<M51Ug1Dipole>(), "auto-registered");
-    core.registerPhysicsTerm("M51Ug2Superconductor", std::make_unique<M51Ug2Superconductor>(), "auto-registered");
-    core.registerPhysicsTerm("M51Ug3Tidal", std::make_unique<M51Ug3Tidal>(), "auto-registered");
-    core.registerPhysicsTerm("M51Ug4Reaction", std::make_unique<M51Ug4Reaction>(), "auto-registered");
-    core.registerPhysicsTerm("M51UiVacuum", std::make_unique<M51UiVacuum>(), "auto-registered");
-    core.registerPhysicsTerm("NGC1316Core", std::make_unique<NGC1316Core>(), "auto-registered");
-    core.registerPhysicsTerm("NGC1316DarkMatter", std::make_unique<NGC1316DarkMatter>(), "auto-registered");
-    core.registerPhysicsTerm("NGC1316FluidDust", std::make_unique<NGC1316FluidDust>(), "auto-registered");
-    core.registerPhysicsTerm("NGC1316Lambda", std::make_unique<NGC1316Lambda>(), "auto-registered");
-    core.registerPhysicsTerm("NGC1316MergerForces", std::make_unique<NGC1316MergerForces>(), "auto-registered");
-    core.registerPhysicsTerm("NGC1316Quantum", std::make_unique<NGC1316Quantum>(), "auto-registered");
-    core.registerPhysicsTerm("NGC1316Ug1Dipole", std::make_unique<NGC1316Ug1Dipole>(), "auto-registered");
-    core.registerPhysicsTerm("NGC1316Ug2Superconductor", std::make_unique<NGC1316Ug2Superconductor>(), "auto-registered");
-    core.registerPhysicsTerm("NGC1316Ug3External", std::make_unique<NGC1316Ug3External>(), "auto-registered");
-    core.registerPhysicsTerm("NGC1316Ug4Reaction", std::make_unique<NGC1316Ug4Reaction>(), "auto-registered");
-    core.registerPhysicsTerm("NGC1316UiVacuum", std::make_unique<NGC1316UiVacuum>(), "auto-registered");
-    core.registerPhysicsTerm("SMBHBinaryCoalescence", std::make_unique<SMBHBinaryCoalescence>(), "auto-registered");
-    core.registerPhysicsTerm("SMBHBinaryDPMResonance", std::make_unique<SMBHBinaryDPMResonance>(), "auto-registered");
-    core.registerPhysicsTerm("SMBHBinaryExpansionResonance", std::make_unique<SMBHBinaryExpansionResonance>(), "auto-registered");
-    core.registerPhysicsTerm("SMBHBinaryFluidResonance", std::make_unique<SMBHBinaryFluidResonance>(), "auto-registered");
-    core.registerPhysicsTerm("SMBHBinaryOscillatoryResonance", std::make_unique<SMBHBinaryOscillatoryResonance>(), "auto-registered");
-    core.registerPhysicsTerm("SMBHBinaryPlasmoticVacuum", std::make_unique<SMBHBinaryPlasmoticVacuum>(), "auto-registered");
-    core.registerPhysicsTerm("SMBHBinaryQuantumResonance", std::make_unique<SMBHBinaryQuantumResonance>(), "auto-registered");
-    core.registerPhysicsTerm("SMBHBinaryTHzResonance", std::make_unique<SMBHBinaryTHzResonance>(), "auto-registered");
-    core.registerPhysicsTerm("SMBHBinaryUg4iResonance", std::make_unique<SMBHBinaryUg4iResonance>(), "auto-registered");
-    core.registerPhysicsTerm("SurfaceMagnetic_CycleReference", std::make_unique<SurfaceMagnetic_CycleReference>(), "auto-registered");
-    core.registerPhysicsTerm("SurfaceMagnetic_MaxField", std::make_unique<SurfaceMagnetic_MaxField>(), "auto-registered");
-    core.registerPhysicsTerm("SurfaceMagnetic_MinField", std::make_unique<SurfaceMagnetic_MinField>(), "auto-registered");
-    core.registerPhysicsTerm("SurfaceMagnetic_Oscillation", std::make_unique<SurfaceMagnetic_Oscillation>(), "auto-registered");
-    core.registerPhysicsTerm("YoungStarsCore", std::make_unique<YoungStarsCore>(), "auto-registered");
-    core.registerPhysicsTerm("YoungStarsDarkMatter", std::make_unique<YoungStarsDarkMatter>(), "auto-registered");
-    core.registerPhysicsTerm("YoungStarsEM", std::make_unique<YoungStarsEM>(), "auto-registered");
-    core.registerPhysicsTerm("YoungStarsFluid", std::make_unique<YoungStarsFluid>(), "auto-registered");
-    core.registerPhysicsTerm("YoungStarsLambda", std::make_unique<YoungStarsLambda>(), "auto-registered");
-    core.registerPhysicsTerm("YoungStarsOscillatory", std::make_unique<YoungStarsOscillatory>(), "auto-registered");
-    core.registerPhysicsTerm("YoungStarsOutflowPressure", std::make_unique<YoungStarsOutflowPressure>(), "auto-registered");
-    core.registerPhysicsTerm("YoungStarsQuantum", std::make_unique<YoungStarsQuantum>(), "auto-registered");
-    core.registerPhysicsTerm("YoungStarsStarFormation", std::make_unique<YoungStarsStarFormation>(), "auto-registered");
-    core.registerPhysicsTerm("YoungStarsUQFF", std::make_unique<YoungStarsUQFF>(), "auto-registered");
-    
-    g_logger.log("Batch 17 complete: 81 MAIN classes registered", 1);
-    // ========== END BATCH 17: 81 REGISTRATIONS ==========
-    
-    // ========== BATCH 18: WOLFRAM KNOWLEDGEBASE PHYSICS TERMS (5,703 REGISTRATIONS) ==========
-    // Generated from Wolfram Engine EntityList queries (18+ categories)
-    // PhysicalConstants: 380, Particles: 1034, Isotopes: 1000, PhysicalQuantities: 3289
-    // Timestamp: Auto-generated via WolframKernel.exe
-    g_logger.log("Starting Batch 18: Wolfram 5,703 class registration...", 1);
-    registerAllWolframPhysicsTerms(core);
-    g_logger.log("Batch 18 complete: Wolfram registration function called", 1);
-    // ========== END BATCH 18: 5,703 WOLFRAM TERMS REGISTERED ==========
-    
-    // ========== BATCH 19: PHASE 4 EXTRACTED WOLFRAM TERMS (188 REGISTRATIONS) ==========
-    // Extracted from source10.cpp, Source167.cpp, source168-172.cpp via Phase 1-4 pipeline
-    // Constants: 93 (PI, G, c, Planck constant, etc.)
-    // Systems: 95 (Magnetar, SMBH, Galaxy, NGC systems, etc.)
-    // Purpose: Resolve 11 missing term dependencies from complete source catalog extraction
-    g_logger.log("Starting Batch 19: Phase 4 extracted Wolfram 188 class registration...", 1);
-    registerWolframTerms_source10_cpp(core.getRegistry());
-    registerWolframTerms_Source167_cpp(core.getRegistry());
-    registerWolframTerms_source168_cpp(core.getRegistry());
-    registerWolframTerms_source169_cpp(core.getRegistry());
-    registerWolframTerms_source170_cpp(core.getRegistry());
-    registerWolframTerms_source171_cpp(core.getRegistry());
-    registerWolframTerms_source172_cpp(core.getRegistry());
-    g_logger.log("Batch 19 complete: 188 extracted Wolfram terms registered", 1);
-    // ========== END BATCH 19: 188 EXTRACTED WOLFRAM TERMS REGISTERED ==========
 }
 
 // ===========================================================================================
@@ -21782,33 +21638,6 @@ int main()
 
     // Register all 354 physics terms into the calculator core
     registerAllPhysicsTerms(g_calculatorCore);
-
-    // ========== REGISTRATION VERIFICATION ==========
-    int totalRegistered = g_calculatorCore.getAllPhysicsTerms().size();
-    g_logger.log("=== REGISTRATION VERIFICATION ===", 1);
-    g_logger.log("Total PhysicsTerms registered: " + to_string(totalRegistered), 1);
-    g_logger.log("Expected: 6,785 (894 MAIN + 5,703 Wolfram + 188 Phase4)", 1);
-    if (totalRegistered == 6785) {
-        g_logger.log("SUCCESS: All 6,785 terms registered!", 1);
-    } else if (totalRegistered == 6597) {
-        g_logger.log("PARTIAL: 6,597/6,785 terms registered (Phase 4 extraction missing)", 1);
-    } else if (totalRegistered == 894) {
-        g_logger.log("WARNING: Only MAIN terms registered (894/6,785) - Wolfram registrations FAILED!", 1);
-    } else {
-        g_logger.log("PARTIAL: " + to_string(totalRegistered) + "/6,785 terms registered", 1);
-    }
-    g_logger.log("=== END VERIFICATION ===", 1);
-    // ========== END REGISTRATION VERIFICATION ==========
-    
-    // Export all registered terms for debugging
-    {
-        std::ofstream registered_log("wolfram_registered.txt");
-        auto allTerms = g_calculatorCore.getAllPhysicsTerms();
-        for (const auto& name : allTerms) {
-            if (registered_log.is_open()) registered_log << name << std::endl;
-        }
-        if (registered_log.is_open()) registered_log.close();
-    }
 
     // Note: All physics terms are now extracted into PhysicsTerm classes (492 active, 3 disabled pending manual registration)
     // Disabled: BuoyancyUQFFTerm, AstroSystemUQFFTerm, UQFFMasterTerm (require constructor parameters)

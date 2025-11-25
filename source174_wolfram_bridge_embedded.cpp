@@ -5,6 +5,7 @@
 #ifdef USE_EMBEDDED_WOLFRAM
 
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <array> // MSVC requirement
 #include "wstp.h"
@@ -79,19 +80,27 @@ bool InitializeWolframKernel()
 
     std::cout << "[WSTP] Kernel activated, draining startup packets...\n" << std::flush;
     
-    // Drain startup packets with safety limit
+    // Drain startup packets until INPUTNAMEPKT (kernel prompt)
     int pkt;
     int drain_count = 0;
-    while ((pkt = WSNextPacket(ws_link)) && pkt != RETURNPKT && drain_count < 20)  // Safety limit
-    {
-        WSNewPacket(ws_link);
+    while ((pkt = WSNextPacket(ws_link))) {
         drain_count++;
+        if (pkt == INPUTNAMEPKT) break;  // Stop at kernel prompt
+        WSNewPacket(ws_link);
+        if (pkt == 0 || pkt == ILLEGALPKT) {  // Error handling
+            std::cerr << "[WSTP] Startup drain error: pkt=" << pkt << std::endl;
+            WSClose(ws_link);
+            WSDeinitialize(ws_env);
+            ws_link = nullptr;
+            ws_env = nullptr;
+            return false;
+        }
+        if (drain_count > 50) {  // Safety limit
+            std::cout << "[WSTP] Warning: Startup drain exceeded 50 packets. Breaking...\n" << std::flush;
+            break;
+        }
     }
-
-    if (drain_count >= 20)
-    {
-        std::cout << "[WSTP] Warning: Startup drain took too many packets — possible loop. Continuing...\n" << std::flush;
-    }
+    WSNewPacket(ws_link);  // Discard the INPUTNAMEPKT to ready the link
 
     std::cout << "[WSTP] Startup packets drained (" << drain_count << " packets).\n" << std::flush;
     std::cout << "[WSTP] Wolfram kernel connected successfully!\n" << std::flush;
@@ -129,6 +138,15 @@ std::string WolframEvalToString(const std::string &code)
         std::string result = res ? std::string(res) : "<null>";
         if (res) WSReleaseString(ws_link, res);
         WSNewPacket(ws_link);
+        
+        // Log exported UQFF terms to file
+        std::ofstream log("wolfram_export.log", std::ios::app);
+        if (log.is_open()) {
+            log << "Exported UQFF Term: " << code << "\n";
+            log << "Wolfram Result: " << result << "\n\n";
+            log.close();
+        }
+        
         return result;
     }
 
