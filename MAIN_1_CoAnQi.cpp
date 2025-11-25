@@ -190,6 +190,11 @@ using SimpleLockGuard = std::lock_guard<T>;
 #include "source177_wolfram_field_unity.cpp"
 #endif
 
+// Cosmic Quantum Egg - 26D Chaotic Dynamics (November 25, 2025)
+#ifdef USE_COSMIC_QUANTUM_EGG
+#include "source200_cosmic_quantum_egg.cpp"
+#endif
+
 using namespace std;
 
 // ===========================================================================================
@@ -21834,7 +21839,12 @@ int main()
         cout << "9. WSTP kernel interface" << endl;
         cout << "10. Auto-export full UQFF to Wolfram" << endl;
         cout << "11. Run Wolfram Field Unity Simulation" << endl;
+#ifdef USE_COSMIC_QUANTUM_EGG
+        cout << "12. Run Cosmic Quantum Egg (26D) Simulation" << endl;
+        cout << "13. Exit" << endl;
+#else
         cout << "12. Exit" << endl;
+#endif
 #else
         cout << "9. Exit" << endl;
 #endif
@@ -21845,7 +21855,11 @@ int main()
         cin.ignore();
 
 #ifdef USE_EMBEDDED_WOLFRAM
+#ifdef USE_COSMIC_QUANTUM_EGG
+        if (choice == 13)
+#else
         if (choice == 12)
+#endif
 #else
         if (choice == 9)
 #endif
@@ -22197,6 +22211,57 @@ int main()
             runWolframFieldUnitySimulation();
             break;
         }
+        
+#ifdef USE_COSMIC_QUANTUM_EGG
+        case 12:
+        {
+            // Run Cosmic Quantum Egg 26D Simulation
+            cout << "\n=== Cosmic Quantum Egg 26D Simulation ===" << endl;
+            cout << "26 independent dimensional spheres with chaotic dynamics" << endl;
+            cout << "Features: Toroid transformation, quantum freq focusing, spinor cataloging" << endl;
+            cout << "\nEnter number of time steps (recommended: 100-10000): ";
+            int num_steps;
+            cin >> num_steps;
+            cin.ignore();
+            
+            cout << "Enter time step size in seconds (recommended: 1e-3 to 1e-6): ";
+            double dt;
+            cin >> dt;
+            cin.ignore();
+            
+            cout << "\nSimulating " << num_steps << " steps with dt=" << dt << "s..." << endl;
+            
+            // Initialize egg
+            CosmicQuantumEgg uqff_egg;
+            
+            // Run simulation
+            for (int i = 0; i < num_steps; ++i) {
+                double t = i * dt;
+                
+                // Step simulation
+                uqff_egg.SimulateStep(t);
+                
+                // Print progress every 10% or every 100 steps (whichever is less frequent)
+                int print_interval = max(1, num_steps / 10);
+                if (i % print_interval == 0 || i == num_steps - 1) {
+                    double outline = uqff_egg.GetSphericalOutline();
+                    cout << "Step " << i << "/" << num_steps 
+                         << " (t=" << scientific << setprecision(3) << t << "s)"
+                         << " | Spherical outline: " << outline << endl;
+                }
+            }
+            
+            // Final state
+            double final_outline = uqff_egg.GetSphericalOutline();
+            cout << "\n=== Simulation Complete ===" << endl;
+            cout << "Final spherical outline radius: " << scientific << setprecision(6) 
+                 << final_outline << endl;
+            cout << "Perfect sphere emerged from 26D chaotic center dances" << endl;
+            cout << "Check output for Wolfram spinor verification messages" << endl;
+            
+            break;
+        }
+#endif
 #endif
 
         default:
