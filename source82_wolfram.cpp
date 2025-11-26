@@ -278,8 +278,11 @@ public:
     VirgoClusterTidalStrippingTerm(double mass = 1.2e15 * M_SUN, double r_vir = 2.2 * MPC_TO_M)
         : M_cluster(mass), R_virial(r_vir), G(G_CONST) {}
 
-    double compute(double r, double M_gal, const std::map<std::string, double>& params) const
+    double compute(double r, const std::map<std::string, double>& params) const
     {
+        // Get galaxy mass from params, default to 1e11 M_sun (typical spiral)
+        double M_gal = (params.count("M_gal") ? params.at("M_gal") : 1e11 * M_SUN);
+        
         // Enclosed cluster mass at radius r (NFW-like approximation)
         double x = r / R_virial;
         double M_enclosed = M_cluster * (x * x * x) / (1.0 + x) / (1.0 + x);
@@ -304,7 +307,7 @@ public:
                "2 * G * Menclosed * rtidal / r^3]";
     }
 
-    std::string getSignature() const { return "VirgoClusterTidalStrippingTerm(r, Mgal, params)"; }
+    std::string getSignature() const { return "VirgoClusterTidalStrippingTerm(r, params)"; }
     std::string getCategory() const { return "dynamics"; }
     std::string getName() const { return "VirgoTidalStripping"; }
     std::string getDescription() const { return "Tidal stripping acceleration: a_tidal = 2·G·M(<r)·r_t/r³ with r_t from Jacobi radius"; }
@@ -328,8 +331,11 @@ public:
     VirgoClusterVirialTerm(double mass = 1.2e15 * M_SUN, double r_vir = 2.2 * MPC_TO_M, double sigma = 700e3)
         : M_virial(mass), R_virial(r_vir), sigma_v(sigma), G(G_CONST) {}
 
-    double compute(const std::map<std::string, double>& params) const
+    double compute(double r, const std::map<std::string, double>& params) const
     {
+        // r parameter included for API consistency (unused for virial equilibrium)
+        (void)r;
+        
         // Virial relation: σ² = G·M_vir / (3·R_vir)
         // Returns virial equilibrium parameter (should be ~1 if in equilibrium)
         double sigma_virial = std::sqrt(G * M_virial / (3.0 * R_virial));
@@ -340,6 +346,7 @@ public:
         return virial_ratio;
     }
 
+    // Helper method (extends base interface for specific virial mass calculations)
     double computeVirialMass() const
     {
         // M_vir = 3·σ²·R_vir / G
@@ -355,7 +362,7 @@ public:
                "sigmaV / sigmaVirial]";
     }
 
-    std::string getSignature() const { return "VirgoClusterVirialTerm(params)"; }
+    std::string getSignature() const { return "VirgoClusterVirialTerm(r, params)"; }
     std::string getCategory() const { return "thermodynamics"; }
     std::string getName() const { return "VirgoClusterVirial"; }
     std::string getDescription() const { return "Virial equilibrium ratio: σ_obs/σ_vir where σ_vir² = G·M/(3·R), σ~700 km/s"; }
@@ -481,14 +488,22 @@ public:
     SMBHMSigmaRelationTerm(double slope = 4.38, double m_0 = 1.9e8, double sig_0 = 200e3)
         : alpha(slope), M_norm(m_0), sigma_norm(sig_0) {}
 
-    double compute(double sigma, const std::map<std::string, double>& params) const
+    double compute(double r, const std::map<std::string, double>& params) const
     {
+        // For M-σ relation, r is interpreted as sigma (velocity dispersion in m/s)
+        // This maintains API consistency while using physically meaningful parameter
+        double sigma = r;  // r represents sigma for this scaling relation
+        
+        // Allow override from params map if provided
+        if (params.count("sigma")) sigma = params.at("sigma");
+        
         // M_BH = M_norm * (σ/σ_norm)^α
         double M_BH = M_norm * std::pow(sigma / sigma_norm, alpha) * M_SUN;
         
         return M_BH;
     }
 
+    // Helper method (extends base interface for inverse calculation)
     double computeSigmaFromMass(double M_BH) const
     {
         // Inverse: σ = σ_norm * (M_BH / M_norm)^(1/α)
@@ -501,7 +516,7 @@ public:
                "Mnorm * 1.989*^30 * (sigma/sigmaNorm)^alpha";
     }
 
-    std::string getSignature() const { return "SMBHMSigmaRelationTerm(sigma, params)"; }
+    std::string getSignature() const { return "SMBHMSigmaRelationTerm(r, params)"; }
     std::string getCategory() const { return "scaling_relations"; }
     std::string getName() const { return "SMBHMSigma"; }
     std::string getDescription() const { return "M-σ relation: M_BH = 1.9e8·(σ/200 km/s)^4.38 M_sun (McConnell & Ma 2013)"; }
@@ -510,6 +525,13 @@ public:
 // ========================================
 // REGISTRATION FUNCTION
 // ========================================
+
+// NOTE: Registration function is commented out because PhysicsTermRegistry
+// is defined in MAIN_1_CoAnQi.cpp and requires proper header inclusion.
+// To integrate these terms into the main calculator:
+// 1. Include this file in MAIN_1_CoAnQi.cpp
+// 2. Uncomment the registration function below
+// 3. Call registerWolframTerms_source82(registry) from main initialization
 
 // Forward declaration of PhysicsTermRegistry if not available
 // #include "PhysicsTermRegistry.h"
