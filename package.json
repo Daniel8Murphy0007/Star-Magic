@@ -1,7 +1,7 @@
 {
   "name": "star-magic-uqff",
-  "version": "2.2.0",
-  "description": "Star-Magic Unified Quantum Field Force (UQFF) v2.2 - Enhanced Edition with 446 modules, SOURCE1-116 integration, self-expanding framework 2.0, 26D quantum polynomials, Wolfram hypergraph physics, MinGW threading compatibility",
+  "version": "2.3.0",
+  "description": "Star-Magic Unified Quantum Field Force (UQFF) v2.3 - Enhanced Edition with 446 modules, SOURCE1-116 integration, 68 Wolfram companion files (consolidated), self-expanding framework 2.0, 26D quantum polynomials, Wolfram hypergraph physics, MinGW threading compatibility",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {

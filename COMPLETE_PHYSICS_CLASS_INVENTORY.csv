@@ -1058,7 +1058,26 @@ source200_wolfram.cpp,CosmicEggOmnidirectionalRotationTerm,636,PhysicsTerm,rotat
 source200_wolfram.cpp,CosmicEggVoidVolumeTerm,637,PhysicsTerm,volume,double compute(double t)
 source200_wolfram.cpp,CosmicEggQuantumFrequencyTerm,638,PhysicsTerm,quantum,double compute(double t)
 source200_wolfram.cpp,CosmicEggSphericalOutlineTerm,639,PhysicsTerm,geometry,double compute(double t)
-
+source69_wolfram.cpp,CompressionExpansionFactorTerm,640,PhysicsTerm,cosmology,double compute(double t)
+source69_wolfram.cpp,CompressionSuperconductiveCorrectionTerm,641,PhysicsTerm,magnetic,double compute(double B)
+source69_wolfram.cpp,CompressionEnvironmentalForceTerm,642,PhysicsTerm,environment,double compute(double t)
+source69_wolfram.cpp,CompressionMassEvolutionTerm,643,PhysicsTerm,dynamics,double compute(double t)
+source69_wolfram.cpp,CompressionUg1GravityTerm,644,PhysicsTerm,gravity,double compute(double M, double r)
+source69_wolfram.cpp,CompressionUg3ExternalGravityTerm,645,PhysicsTerm,gravity,double compute()
+source69_wolfram.cpp,CompressionUg4SuperconductiveTerm,646,PhysicsTerm,gravity,double compute(double Ug1)
+source69_wolfram.cpp,CompressionQuantumWaveTerm,647,PhysicsTerm,quantum,double compute(double t, double x)
+source69_wolfram.cpp,CompressionDarkMatterPerturbationTerm,648,PhysicsTerm,dark_matter,double compute(double delta_rho, double rho, double M, double r)
+source69_wolfram.cpp,CompressionFluidDynamicsTerm,649,PhysicsTerm,fluid,double compute(double g_base)
+source70_wolfram.cpp,M51DipoleMagneticTerm,650,PhysicsTerm,magnetic,double compute(double B)
+source70_wolfram.cpp,M51SuperconductorEnergyTerm,651,PhysicsTerm,magnetic,double compute()
+source70_wolfram.cpp,M51ExternalTidalTerm,652,PhysicsTerm,gravity,double compute()
+source70_wolfram.cpp,M51ReactionEnergyTerm,653,PhysicsTerm,nuclear,double compute(double t)
+source70_wolfram.cpp,M51InertialVacuumTerm,654,PhysicsTerm,vacuum_energy,double compute(double t_n)
+source70_wolfram.cpp,M51SpiralArmWaveTerm,655,PhysicsTerm,wave,double compute(double r, double phi, double t)
+source70_wolfram.cpp,M51StarFormationForceTerm,656,PhysicsTerm,stellar,double compute(double SFR)
+source70_wolfram.cpp,M51TidalForceTerm,657,PhysicsTerm,gravity,double compute(double M_companion, double d)
+source70_wolfram.cpp,M51DarkMatterCurvatureTerm,658,PhysicsTerm,dark_matter,double compute(double delta_rho_over_rho, double M, double r)
+source70_wolfram.cpp,M51QuantumSpiralIntegralTerm,659,PhysicsTerm,quantum,double compute(double psi_squared_integral)
 
 
 
