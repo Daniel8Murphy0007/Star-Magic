@@ -73,9 +73,9 @@ source78.cpp,SKIP,0,,Module wrapper (physics already integrated)
 source79.cpp,SKIP,0,,Module wrapper (physics already integrated)
 source80.cpp,COMPLETE,9,2025-01-17,"SOURCE40: SMBHBinaryDPMResonance, SMBHBinaryTHzResonance, SMBHBinaryUg4iResonance, SMBHBinaryPlasmoticVacuum, SMBHBinaryQuantumResonance, SMBHBinaryFluidResonance, SMBHBinaryOscillatoryResonance, SMBHBinaryExpansionResonance, SMBHBinaryCoalescence"
 source81.cpp,SKIP,0,,Module wrapper (physics already integrated)
-source82.cpp,SKIP,0,,Module wrapper (physics already integrated)
-source83.cpp,SKIP,0,,Module wrapper (physics already integrated)
-source84.cpp,SKIP,0,,Module wrapper (physics already integrated)
+source82.cpp,COMPLETE,15,2025-11-27,"Wolfram companion created: SMBHDynamicVacuum, SMBHQuantumCoupling, SMBHMSigmaRelation, SMBHBulgeGravity, SMBHUg1, SMBHUg2, SMBHUg3, SMBHUg4, SMBHReactorEfficiency, SMBHPseudoMonopole, SMBHRedshiftCorrection, SMBHUi, SMBHUm, SMBHOmegaS, SMBHCosmicTime (source82_wolfram.cpp)"
+source83.cpp,COMPLETE,18,2025-11-27,"Wolfram companion created: LENRDynamicVacuum, LENRQuantumCoupling, LENRPlasmaFrequency, LENRElectricField, LENRNeutronRate, LENRUm, LENRUg1, LENRUi, LENREReact, LENRHydride, LENRWires, LENRCorona, LENRThresholdEnergy, LENRFermiConstant, LENRMassRenormalization, LENRElectronDensity, LENRTransmutationRate, LENREnergyDensity, LENRPseudoMonopole (source83_wolfram.cpp)"
+source84.cpp,COMPLETE,16,2025-11-27,"Wolfram companion created: LENRCalibDynamicVacuum, LENRCalibQuantumCoupling, LENRCalibMuJ, LENRCalibEReact, LENRCalibUm, LENRCalibElectricField, LENRCalibDeltaN, LENRCalibNonLocalExp, LENRCalibRhoVacUAScm, LENRCalibEtaNeutronRate, LENRCalibHydride, LENRCalibWires, LENRCalibCorona, LENRCalibPolarization, LENRCalibHeaviside, LENRCalibQuasi (source84_wolfram.cpp)"
 source85.cpp,SKIP,0,,Module wrapper (physics already integrated)
 source86.cpp,SKIP,0,,Module wrapper (physics already integrated)
 source87.cpp,SKIP,0,,Module wrapper (physics already integrated)
