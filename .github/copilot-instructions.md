@@ -9,32 +9,22 @@
   - 492 physics terms extracted (INTEGRATION_TRACKER.csv verified, 291 original + 201 newly integrated)
   - 57 files skipped (GUI infrastructure, duplicate wrappers)
 - **Self-Expanding Framework 2.0:** Dynamic term registration, runtime parameters, state export/import, auto-optimization, metadata tracking
-- **Build System:** CMake + Visual Studio 2022 (MSVC 14.44.35207) + MinGW-w64 GCC 14.2.0, C++20 standard, Windows threading compatibility, UPX 5.0.2 compression (1.17 MB, 85.3% reduction)
+- **Build System:** CMake + Visual Studio 2022 (MSVC 14.44.35207), C++20 standard, Windows threading compatibility, UPX 5.0.2 compression (1.17 MB, 85.3% reduction)
 
 ## Developer Workflows
-### C++ Build (Primary)
+### C++ Build (MSVC Required)
 ```powershell
-# Configure - Visual Studio 2022 (Release-MaxCompress optimizations)
+# Configure - Visual Studio 2022 (REQUIRED for Wolfram WSTP)
 cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64
-
-# Configure - MinGW (alternative, smaller footprint)
-cmake -S . -B build -G "MinGW Makefiles"
 
 # Build with Visual Studio (Release-MaxCompress + UPX compression)
 cmake --build build_msvc --config Release --target MAIN_1_CoAnQi
 
-# Build with MinGW
-cmake --build build --target MAIN_1_CoAnQi
+# Run interactive calculator (12 menu options including Wolfram integration)
+.\build_msvc\Release\MAIN_1_CoAnQi.exe
 
-# Run interactive calculator (9 menu options)
-.\build_msvc\Release\MAIN_1_CoAnQi.exe   # Visual Studio optimized
-.\build\MAIN_1_CoAnQi.exe                # MinGW
-
-# Clean rebuild (Visual Studio)
+# Clean rebuild
 Remove-Item -Recurse -Force build_msvc -ErrorAction SilentlyContinue; cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64; cmake --build build_msvc --config Release
-
-# Clean rebuild (MinGW)
-Remove-Item -Recurse -Force build -ErrorAction SilentlyContinue; cmake -S . -B build -G "MinGW Makefiles"; cmake --build build
 ```
 
 ### JavaScript Execution
@@ -74,9 +64,9 @@ module.setEnableLogging(true);
 - **Core Infrastructure:** CalculatorCore (line 566), ModuleRegistry (line 330), PhysicsTermRegistry (line 411), CrossModuleCommunicator (line 473)
 - **Dynamic Terms:** Disabled by default, additive to core calculations, validated before use
 
-### Threading Model (MinGW Compatibility)
+### Threading Model (Windows API)
 ```cpp
-// Windows threads via <windows.h> and <process.h> (NOT std::thread)
+// Windows threads via <windows.h> and <process.h> for maximum compatibility
 SimpleMutex result_mutex;            // Custom mutex wrapper (lines 120-140)
 SimpleLockGuard<SimpleMutex> lock;   // RAII lock guard (lines 142-162)
 
@@ -112,17 +102,12 @@ SimpleLockGuard<SimpleMutex> lock;   // RAII lock guard (lines 142-162)
 
 ### Documentation
 - `ENHANCEMENT_GUIDE.md` - Self-expanding framework guide (examples, architecture, scientific integrity)
-- `BUILD_INSTRUCTIONS_PERMANENT.md` - **CRITICAL:** vcpkg path warnings, Visual Studio vs. MinGW conflicts
+- `BUILD_INSTRUCTIONS_PERMANENT.md` - **CRITICAL:** vcpkg path configuration, MSVC-only requirements
 - `README.md` - Project overview, UQFF theory, author info
 - `Star Magic.md` - Complete theoretical framework and equations
 
 ### Build Configuration
-- `CMakeLists.txt` - Visual Studio 2022 + MinGW generators, C++17, Release-MaxCompress optimization flags, WSTP integration
-- `observational_systems_config.h` - 35+ astrophysical systems parameters (ESO137, NGC1365, Vela, etc.)
-- `Star Magic.md` - Complete theoretical framework and equations
-
-### Build Configuration
-- `CMakeLists.txt` - MinGW Makefiles generator, C++17, 155+ source*.cpp targets
+- `CMakeLists.txt` - Visual Studio 2022 generator, C++20, Release-MaxCompress optimization flags, WSTP integration
 - `observational_systems_config.h` - 35+ astrophysical systems parameters (ESO137, NGC1365, Vela, etc.)
 
 ### PowerShell Scripts
@@ -151,8 +136,8 @@ SimpleLockGuard<SimpleMutex> lock;   // RAII lock guard (lines 142-162)
 - **Transparent logging** - All dynamic operations traceable via `setEnableLogging(true)`
 
 ### Code Style
-- **C++17 Standard:** Use `std::unique_ptr`, `std::map`, `std::vector`, range-based for loops
-- **Windows Compatibility:** Use `<windows.h>` and `<process.h>` for threading (NOT `<thread>` with MinGW)
+- **C++20 Standard:** Use `std::unique_ptr`, `std::map`, `std::vector`, range-based for loops
+- **Windows API Threading:** Use `<windows.h>` and `<process.h>` for threading (maximum compatibility)
 - **Comments:** Mark enhancements vs. original code, document theoretical basis for physics terms
 
 ### Physical Constants (CONSTANTS object in index.js)

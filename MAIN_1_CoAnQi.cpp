@@ -147,7 +147,7 @@ extern void WolframEmbeddedBridge();
 #include <atomic>
 #endif
 
-// Windows threading wrapper for MinGW 6.3.0 compatibility
+// Windows API threading implementation for maximum compatibility
 #ifdef _WIN32
 class SimpleMutex
 {
