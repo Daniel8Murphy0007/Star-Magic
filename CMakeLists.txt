@@ -272,13 +272,20 @@ endif()
 
 # Source2: HEAD PROGRAM - Primary User Base Platform (REQUIRES Qt5, VTK, AWS SDK, OpenCV, etc.)
 # Status: Reserved for future development - requires extensive dependencies
+# CRITICAL: Use x64-windows (MSVC) triplet ONLY - NOT x64-mingw-dynamic
 # Uncomment after installing dependencies via vcpkg:
-#   vcpkg install qt5-base:x64-mingw-dynamic qt5-webengine:x64-mingw-dynamic
-#   vcpkg install vtk:x64-mingw-dynamic opencv:x64-mingw-dynamic
-#   vcpkg install curl:x64-mingw-dynamic sqlite3:x64-mingw-dynamic
-#   vcpkg install aws-sdk-cpp[cognito-idp,s3]:x64-mingw-dynamic
+#   vcpkg install qt5-base:x64-windows qt5-webengine:x64-windows
+#   vcpkg install vtk:x64-windows opencv:x64-windows
+#   vcpkg install curl:x64-windows sqlite3:x64-windows
+#   vcpkg install aws-sdk-cpp[cognito-idp,s3]:x64-windows
+#   vcpkg install pybind11:x64-windows websocketpp:x64-windows
+#   vcpkg install pocketsphinx:x64-windows qalculate:x64-windows
 # add_executable(Source2 source2.cpp)
 # target_link_libraries(Source2 PRIVATE UQFFCore Qt5::Widgets Qt5::WebEngineWidgets ${VTK_LIBRARIES} ${OpenCV_LIBS} CURL::libcurl SQLite::SQLite3 aws-cpp-sdk-cognito-idp aws-cpp-sdk-s3)
+
+# Source2 Minimal Test: MSVC Compatibility Verification (No external dependencies)
+add_executable(source2_minimal_test source2_minimal_test.cpp)
+target_compile_features(source2_minimal_test PRIVATE cxx_std_20)
 
 # ========== BUILD SUMMARY (November 30, 2025 - Commit 92c9908) ==========
 # PhysicsTerm Classes:
