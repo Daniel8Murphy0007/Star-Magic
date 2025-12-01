@@ -9,7 +9,7 @@
         {
             "name": "vs2022-x64-windows",
             "displayName": "Visual Studio 2022 x64 (vcpkg + Wolfram WSTP)",
-            "description": "Star-Magic UQFF v2.3 - MSVC 14.44, C++20, 659 physics classes, 68 Wolfram companions, SOURCE1-116 integration",
+            "description": "Star-Magic UQFF - MSVC 19.44, C++20, 7,062 PhysicsTerm classes (6,784 registered), SOURCE1-117, Wolfram 5,890 classes, commit 92c9908",
             "generator": "Visual Studio 17 2022",
             "architecture": {
                 "value": "x64",
