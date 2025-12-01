@@ -145,6 +145,3 @@ Untitled-*.txt
 
 # CTest
 CTestTestfile.cmake
-
-# Solution file from Visual Studio  
-# Note: .sln is already in the ignore patterns above
