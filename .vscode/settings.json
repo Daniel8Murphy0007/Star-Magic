@@ -1,0 +1,72 @@
+{
+    "files.associations": {
+        "*.cpp": "cpp",
+        "*.h": "cpp"
+    },
+    "C_Cpp.default.compilerPath": "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe",
+    "C_Cpp.default.cppStandard": "c++20",
+    "C_Cpp.default.intelliSenseMode": "msvc-x64",
+    "cmake.generator": "Visual Studio 17 2022",
+    "cmake.configureOnOpen": false,
+    "cmake.configureOnEdit": false,
+    "cmake.preferredGenerators": [
+        "Visual Studio 17 2022"
+    ],
+    "task.autoDetect": "off",
+    "extensions.autoUpdate": false,
+    // PRIMARY STARTUP FILE
+    "files.defaultLanguage": "cpp",
+    "workbench.startupEditor": "none",
+    // Star-Magic UQFF Project Status (LOCKED: November 22, 2025 @ 6:50 PM)
+    // ENVIRONMENT LOCKED TO: MSVC 14.44 / C++20 / Visual Studio 2022
+    // DO NOT AUTO-UPDATE - PERMANENT CONFIGURATION
+    "star-magic.primaryFile": "MAIN_1_CoAnQi.cpp",
+    "star-magic.buildTarget": "MAIN_1_CoAnQi",
+    "star-magic.executable": "build/MAIN_1_CoAnQi.exe",
+    "star-magic.status": {
+        "totalModules": 446,
+        "integratedRange": "SOURCE1-116",
+        "mainFile": "MAIN_1_CoAnQi.cpp",
+        "lines": 18463,
+        "sizeKB": 677,
+        "objectSizeMB": 1.28,
+        "lastRemoteCommit": "2e3eb51",
+        "commitTimestamp": "2025-11-18 01:09:43 -0500",
+        "lastEnhancement": "SOURCE115-116 (19-system 26D + Wolfram hypergraph)",
+        "compilationStatus": "SUCCESS",
+        "frameworkVersion": "2.0-Enhanced"
+    },
+    // Build Configuration (MSVC ONLY - December 1, 2025)
+    "star-magic.build": {
+        "generator": "Visual Studio 17 2022",
+        "compiler": "MSVC 14.44.35207",
+        "standard": "C++20",
+        "configureCommand": "cmake -S . -B build_msvc -G \"Visual Studio 17 2022\" -A x64",
+        "buildCommand": "cmake --build build_msvc --config Release --target MAIN_1_CoAnQi",
+        "runCommand": ".\\build_msvc\\Release\\MAIN_1_CoAnQi.exe"
+    },
+    // Integration Tracking
+    "star-magic.integration": {
+        "trackerFile": "INTEGRATION_TRACKER.csv",
+        "statusFile": "MAIN_1_CoAnQi_integration_status.json",
+        "totalSourceFiles": 173,
+        "processedFiles": 173,
+        "integratedFiles": 116,
+        "skippedFiles": 57,
+        "uniquePhysicsTerms": 446
+    },
+    // Recent Milestones
+    "star-magic.milestones": {
+        "SOURCE114": "8-Astronomical Systems (3 UQFF master equations)",
+        "SOURCE115": "19-System 26D Polynomial Framework",
+        "SOURCE116": "Wolfram Hypergraph + PI Infinity Decoder + Sacred Time Constants"
+    },
+    // Disable Markdown Linting (cosmetic warnings only)
+    "markdownlint.config": {
+        "MD022": false,
+        "MD032": false,
+        "MD036": false,
+        "MD040": false,
+        "default": true
+    }
+}
