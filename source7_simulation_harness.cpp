@@ -34,8 +34,8 @@
 // - MUGESystem and ResonanceParams structures
 // - Optional: yaml-cpp for YAML loading
 //
-// BUILD:
-// g++ -std=c++17 source7_simulation_harness.cpp -o source7_harness
+// BUILD (MSVC):
+// cl /std:c++20 /EHsc source7_simulation_harness.cpp /Fe:source7_harness.exe
 
 #include <iostream>
 #include <iomanip>

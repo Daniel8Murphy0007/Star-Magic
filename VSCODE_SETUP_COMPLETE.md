@@ -1,52 +1,38 @@
 # VS Code C++ Development Environment Setup Complete
 
-**Last Updated**: November 13, 2025 @ 9:45 PM
+**Last Updated**: November 30, 2025
 
 ## ✅ Configurations Added
 
 ### 1. IntelliSense Configuration (`.vscode/c_cpp_properties.json`)
 
-- **C++ Standard**: C++17
+- **C++ Standard**: C++20
 - **C Standard**: C17
-- **Compiler Path**: `C:/MinGW/bin/g++.exe`
-- **IntelliSense Mode**: windows-gcc-x64
+- **Compiler Path**: MSVC (Visual Studio 2022)
+- **IntelliSense Mode**: windows-msvc-x64
 - **Features**: Code completion, symbol navigation, hover documentation
 
 ### 2. Build Tasks (`.vscode/tasks.json`)
 
-Added 7 new C++ build tasks:
+Added C++ build tasks using CMake with Visual Studio 2022:
 
-- **C++: Build CoAnQi (273 terms)** - Main framework with all physics terms
-- **C++: Build Source163** - Multi-System UQFF (NGC685, NGC3507, NGC3511, AT2024tvd)
-- **C++: Build Source164** - Nebula UQFF (NGC3596, NGC1961, NGC5335, NGC2014, NGC2020)
-- **C++: Build Source165** - Buoyancy UQFF (M74, M16, M84, CentaurusA, SupernovaSurvey)
-- **C++: Build Source166** - Quantum 26-State UQFF (dipole vortex, Cassini rings)
-- **C++: Build Source167** - UQFF Core June 2025 (neutron production, U_m, E-field)
-- **C++: Build All New Modules** - Composite task to build all modules at once
+- **CMake: Configure** - Configure project with Visual Studio 2022 generator
+- **CMake: Build Release** - Build Release configuration
+- **CMake: Build MAIN_1_CoAnQi** - Build main executable
 
 **Usage**: Press `Ctrl+Shift+B` to see all build tasks
 
 ### 3. Debug Configurations (`.vscode/launch.json`)
 
-Added 6 new debug configurations:
-
-- **C++: Debug CoAnQi (273 terms)** - Debug main framework
-- **C++: Debug Source163 (Multi-System UQFF)**
-- **C++: Debug Source164 (Nebula UQFF)**
-- **C++: Debug Source165 (Buoyancy UQFF)**
-- **C++: Debug Source166 (Quantum 26-State)**
-- **C++: Debug Source167 (UQFF Core June 2025)**
-
-**GDB Path**: Updated all configurations to use `C:/MinGW/bin/gdb.exe`
+Debug configurations for MSVC-compiled executables.
 
 **Usage**: Press `F5` to start debugging with selected configuration
 
 ### 4. Enhanced C++ Settings (`.vscode/settings.json`)
 
 ```json
-"C_Cpp.default.cppStandard": "c++17",
+"C_Cpp.default.cppStandard": "c++20",
 "C_Cpp.default.cStandard": "c17",
-"C_Cpp.default.compilerPath": "C:/MinGW/bin/g++.exe",
 "C_Cpp.errorSquiggles": "enabled",
 "C_Cpp.autocomplete": "default",
 "[cpp]": {
@@ -110,7 +96,7 @@ Added C++ development essentials:
 - **MAIN_1_CoAnQi.cpp**: 356,913 bytes, 9,970 lines
 - **273 PhysicsTerm classes**: Complete self-expanding UQFF framework
 - **163 source modules**: Source1-167 (with gaps)
-- **Threading**: Disabled (MinGW compatibility, NO_THREADING defined)
+- **Threading**: Windows API (<windows.h>, <process.h>)
 - **8-option menu**: Calculate, Analyze, Optimize, Simulate, Self-Modify, Export, Import, Exit
 
 ### Module Additions
@@ -133,13 +119,11 @@ Added C++ development essentials:
 
 ## 🔧 Compiler Configuration
 
-**Compiler**: MinGW GCC
+**Compiler**: MSVC (Visual Studio 2022)
 
-- **Path**: `C:/MinGW/bin/g++.exe`
-- **Debugger**: `C:/MinGW/bin/gdb.exe`
-- **C++ Standard**: C++17 (`-std=c++17`)
-- **Math Library**: Linked with `-lm`
-- **Threading**: Disabled for CoAnQi (`-DNO_THREADING`)
+- **C++ Standard**: C++20 (`/std:c++20`)
+- **Generator**: Visual Studio 17 2022
+- **Architecture**: x64
 
 ## 📁 Module Files
 

@@ -21,8 +21,8 @@ $script:Config = @{
     SourceDir = $PSScriptRoot
     CoreDir = Join-Path $PSScriptRoot "Core"
     BackupDir = Join-Path $PSScriptRoot "extraction_backup_$(Get-Date -Format 'yyyyMMdd_HHmmss')"
-    CompilerPath = "g++"
-    CppStandard = "c++17"
+    CompilerPath = "cl"  # MSVC compiler
+    CppStandard = "c++20"
     LogFile = Join-Path $PSScriptRoot "extraction_log_$(Get-Date -Format 'yyyyMMdd_HHmmss').txt"
 }
 

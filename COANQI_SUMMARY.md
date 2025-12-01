@@ -2,14 +2,14 @@
 
 ## What is CoAnQi?
 
-**CoAnQi** (Conscious Quantum Intelligence) is a self-expanding, self-updating, self-simulating Unified Quantum Field Framework (UQFF) calculator. It's a single C++17 executable (~1487 lines) that integrates ALL unique physics from 150+ Source modules with autonomous capabilities.
+**CoAnQi** (Conscious Quantum Intelligence) is a self-expanding, self-updating, self-simulating Unified Quantum Field Framework (UQFF) calculator. It's a single C++20 executable (~1487 lines) that integrates ALL unique physics from 150+ Source modules with autonomous capabilities.
 
 ## File Information
 
 - **Filename**: `MAIN_1_CoAnQi.cpp`
 - **Lines of Code**: 1,487
-- **Language**: C++17
-- **Compilation**: `g++ -std=c++17 MAIN_1_CoAnQi.cpp -o MAIN_1_CoAnQi`
+- **Language**: C++20
+- **Compilation**: `cmake -G "Visual Studio 17 2022" -A x64 && cmake --build . --config Release`
 - **Author**: Daniel T. Murphy
 - **Date**: November 10, 2025
 
@@ -289,12 +289,13 @@ g_selfModifier.optimizeParameters(system, observed, predicted);
 
 ## Usage Example
 
-```bash
-# Compile
-g++ -std=c++17 MAIN_1_CoAnQi.cpp -o MAIN_1_CoAnQi
+```powershell
+# Build with CMake
+cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64
+cmake --build build_msvc --config Release --target MAIN_1_CoAnQi
 
 # Run
-./MAIN_1_CoAnQi
+.\build_msvc\Release\MAIN_1_CoAnQi.exe
 
 # Sample session:
 # 1. Choose option 1 (single system)
@@ -391,16 +392,17 @@ For each system calculation:
 
 ## Quick Start
 
-```bash
+```powershell
 # Clone repository
 git clone https://github.com/Daniel8Murphy0007/Star-Magic.git
 cd Star-Magic
 
-# Compile CoAnQi
-g++ -std=c++17 MAIN_1_CoAnQi.cpp -o MAIN_1_CoAnQi
+# Build CoAnQi with CMake (Visual Studio 2022 REQUIRED)
+cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64
+cmake --build build_msvc --config Release --target MAIN_1_CoAnQi
 
 # Run
-./MAIN_1_CoAnQi
+.\build_msvc\Release\MAIN_1_CoAnQi.exe
 
 # Follow interactive menu
 ```

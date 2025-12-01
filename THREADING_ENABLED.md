@@ -8,7 +8,7 @@
 ### 1. Threading Infrastructure
 - **Replaced:** Disabled threading stubs
 - **Added:** Windows-native threading using `<windows.h>` and `<process.h>`
-- **Reason:** MinGW 6.3.0 doesn't support std::thread
+- **Reason:** Maximum compatibility with Windows API
 
 ### 2. Cross-Platform Mutex Implementation
 ```cpp
@@ -58,9 +58,10 @@ struct ComputeWorker {
 
 ## Compilation
 
-**Command:**
+**Command (Visual Studio Developer Command Prompt):**
 ```powershell
-g++ -std=c++17 MAIN_1_CoAnQi.cpp -o MAIN_1_CoAnQi.exe
+cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64
+cmake --build build_msvc --config Release --target MAIN_1_CoAnQi
 ```
 
 **Note:** No `-pthread` flag needed (Windows native threads)

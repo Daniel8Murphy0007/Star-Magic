@@ -62,14 +62,15 @@
 
 ### Compilation
 
-```bash
-g++ -std=c++17 MAIN_1_CoAnQi.cpp -o MAIN_1_CoAnQi
+```powershell
+cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64
+cmake --build build_msvc --config Release --target MAIN_1_CoAnQi
 ```
 
 ### Basic Execution
 
 ```bash
-./MAIN_1_CoAnQi
+.\build_msvc\Release\MAIN_1_CoAnQi.exe
 ```
 
 ## Main Menu Options
@@ -472,8 +473,8 @@ CoAnQi is designed to work alongside your Source13-162.cpp modules:
 
 ## Technical Specifications
 
-- **Language**: C++17
-- **Compilation**: g++ or compatible C++17 compiler
+- **Language**: C++20
+- **Compilation**: MSVC (Visual Studio 2022) or compatible C++20 compiler
 - **Dependencies**: Standard library only (no external libs required)
 - **File Size**: ~1500 lines of code
 - **Systems Database**: 26+ predefined systems (expandable)

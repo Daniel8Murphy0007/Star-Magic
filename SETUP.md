@@ -15,7 +15,7 @@ The Star-Magic Unified Quantum Field Force (UQFF) project is built around **MAIN
 - **Physics Terms**: 446 unique terms (223% of target)
 - **Framework**: Self-expanding 2.0-Enhanced
 - **Compilation**: ✅ SUCCESS
-- **Compiler**: MinGW-w64 GCC 14.2.0, C++17
+- **Compiler**: MSVC 19.44 (Visual Studio 2022), C++20
 - **Threading**: Windows threads (<windows.h>, <process.h>)
 
 #### Module Integration
@@ -31,13 +31,13 @@ The Star-Magic Unified Quantum Field Force (UQFF) project is built around **MAIN
 
 ```powershell
 # Clean build
-Remove-Item -Recurse -Force build -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force build_msvc -ErrorAction SilentlyContinue
 
-# Configure with CMake
-cmake -S . -B build -G "MinGW Makefiles"
+# Configure with CMake (Visual Studio 2022 REQUIRED for Wolfram WSTP)
+cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64
 
 # Build primary executable
-cmake --build build --target MAIN_1_CoAnQi
+cmake --build build_msvc --config Release --target MAIN_1_CoAnQi
 
 # Run the program
 .\build_msvc\Release\MAIN_1_CoAnQi.exe

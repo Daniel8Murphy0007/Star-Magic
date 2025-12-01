@@ -582,15 +582,11 @@ int main(int argc, char* argv[]) {
 // BUILD INSTRUCTIONS
 // ============================================================================
 /*
-STANDALONE COMPILATION (Placeholder Mode):
-    g++ -std=c++17 -O2 -o source4_simulator source4_simulation_harness.cpp
+STANDALONE COMPILATION (Placeholder Mode - MSVC):
+    cl /std:c++20 /O2 /EHsc source4_simulation_harness.cpp /Fe:source4_simulator.exe
 
 FULL COMPILATION (with all 46 classes):
-    g++ -std=c++17 -O2 -o source4_simulator \
-        source4_simulation_harness.cpp \
-        source4_wolfram.cpp \
-        source4_wolfram_compressed.cpp \
-        source4_wolfram_resonance.cpp
+    cl /std:c++20 /O2 /EHsc source4_simulation_harness.cpp source4_wolfram.cpp source4_wolfram_compressed.cpp source4_wolfram_resonance.cpp /Fe:source4_simulator.exe
 
 CMAKE INTEGRATION:
     Add to CMakeLists.txt:

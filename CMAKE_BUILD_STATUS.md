@@ -12,9 +12,9 @@
   - Features: 446 modules (SOURCE1-116), 8-option interactive menu
   - Output: Complete UQFF calculations across all integrated systems
   - Size: 1.28 MB executable
-  - Location: `build/MAIN_1_CoAnQi.exe`
-  - Build System: CMake + MinGW-w64 GCC 14.2.0, C++17 standard
-  - Threading: MinGW compatibility mode (Windows threads)
+  - Location: `build_msvc/Release/MAIN_1_CoAnQi.exe`
+  - Build System: CMake + Visual Studio 2022 (MSVC), C++20 standard
+  - Threading: Windows threads (<windows.h>, <process.h>)
 
 ### ❌ Disabled (Issues)
 
@@ -43,33 +43,33 @@
 - ✅ Disabled MAIN_1 target (encoding issues)
 - ✅ Disabled Source2 target (Qt dependency)
 - ✅ Source134 as primary build target
-- ✅ Configured for MinGW Makefiles generator
-- ✅ Debug symbols enabled (-g -O0)
+- ✅ Configured for Visual Studio 2022 generator
+- ✅ Debug symbols enabled
 
 ## Build Commands
 
 ```powershell
-# Configure with CMake
-cmake -S . -B build -G "MinGW Makefiles"
+# Configure with CMake (Visual Studio 2022 REQUIRED for Wolfram WSTP)
+cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64
 
 # Build primary executable
-cmake --build build --target MAIN_1_CoAnQi
+cmake --build build_msvc --config Release --target MAIN_1_CoAnQi
 
 # Run interactive menu
 .\build_msvc\Release\MAIN_1_CoAnQi.exe
 
 # Clean rebuild
-Remove-Item -Recurse -Force build
-cmake -S . -B build -G "MinGW Makefiles"
-cmake --build build
+Remove-Item -Recurse -Force build_msvc
+cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64
+cmake --build build_msvc --config Release
 ```
 
 ## Compiler Information
 
-- **Generator**: MinGW Makefiles
-- **Compiler**: GNU 6.3.0 (MinGW)
-- **C++ Standard**: C++17
-- **Compiler Flags**: `-g -O0 -Wall -Wextra`
+- **Generator**: Visual Studio 17 2022
+- **Compiler**: MSVC 19.44 (Visual Studio 2022)
+- **C++ Standard**: C++20
+- **Compiler Flags**: /W3 /std:c++20 /permissive- /arch:AVX2
 
 ## Test Output
 
@@ -109,7 +109,7 @@ The JavaScript version (source134.js) remains the primary operational codebase:
 
 ### To Enable Source2.cpp
 
-1. Install Qt framework for MinGW
+1. Install Qt framework for MSVC
 2. Update CMakeLists.txt to find Qt:
 
    ```cmake

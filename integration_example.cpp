@@ -354,8 +354,9 @@ magnetar.loadConfiguration("configs/magnetar_sgr0501.cfg");
 // ===========================================================================================
 
 /*
-// Compile C++ module as shared library:
-// g++ -shared -fPIC -std=c++17 Source14.cpp -o libmagnetar.so
+// Compile C++ module as shared library (on Linux):
+// On Windows with MSVC, create a DLL instead:
+// cl /LD /std:c++20 Source14.cpp
 
 // Node.js FFI or child process integration:
 
@@ -428,8 +429,8 @@ int main() {
     std::cout << "\nTo use these examples:" << std::endl;
     std::cout << "1. Uncomment the desired example code above" << std::endl;
     std::cout << "2. Include the appropriate enhanced Source*.cpp files" << std::endl;
-    std::cout << "3. Compile with: g++ -std=c++17 integration_example.cpp -o integration" << std::endl;
-    std::cout << "4. Run: ./integration" << std::endl;
+    std::cout << "3. Build with CMake: cmake -G \"Visual Studio 17 2022\" -A x64 && cmake --build . --config Release" << std::endl;
+    std::cout << "4. Run: .\\Release\\integration.exe" << std::endl;
     
     std::cout << "\nAll 138 enhanced modules support these patterns!" << std::endl;
     std::cout << "Ready for organic growth across 3000+ module ecosystem.\n" << std::endl;
@@ -440,18 +441,22 @@ int main() {
 // ===========================================================================================
 // COMPILATION NOTES:
 //
-// Single module:
-//   g++ -std=c++17 integration_example.cpp -o integration
+// Using CMake (RECOMMENDED):
+//   cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64
+//   cmake --build build_msvc --config Release
+//
+// Using MSVC directly:
+//   cl /std:c++20 /EHsc integration_example.cpp /Fe:integration.exe
 //
 // With specific enhanced module:
-//   g++ -std=c++17 -I. Source14.cpp integration_example.cpp -o integration
+//   cl /std:c++20 /EHsc /I. Source14.cpp integration_example.cpp /Fe:integration.exe
 //
 // Multiple modules:
-//   g++ -std=c++17 Source14.cpp Source15.cpp Source76.cpp integration_example.cpp -o integration
+//   cl /std:c++20 /EHsc Source14.cpp Source15.cpp Source76.cpp integration_example.cpp /Fe:integration.exe
 //
-// Shared library:
-//   g++ -shared -fPIC -std=c++17 Source14.cpp -o libmagnetar.so
+// Shared library (DLL):
+//   cl /LD /std:c++20 Source14.cpp
 //
 // With optimization:
-//   g++ -std=c++17 -O3 -march=native integration_example.cpp -o integration
+//   cl /std:c++20 /O2 /EHsc integration_example.cpp /Fe:integration.exe
 // ===========================================================================================

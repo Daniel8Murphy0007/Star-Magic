@@ -7,16 +7,17 @@
 
 ## 🚀 Quick Commands
 
-### Compile
+### Build with CMake
 
-```bash
-g++ -std=c++17 -o MAIN_1_CoAnQi MAIN_1_CoAnQi.cpp
+```powershell
+cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64
+cmake --build build_msvc --config Release --target MAIN_1_CoAnQi
 ```
 
 ### Run
 
-```bash
-./MAIN_1_CoAnQi
+```powershell
+.\build_msvc\Release\MAIN_1_CoAnQi.exe
 ```
 
 ### Verify Class Count
@@ -165,7 +166,7 @@ When adding new source files:
 - [ ] Add getName() and getDescription() methods
 - [ ] Adapt parameters to use params map
 - [ ] Insert before SystemParams structure
-- [ ] Test compilation: `g++ -std=c++17 -o MAIN_1_CoAnQi MAIN_1_CoAnQi.cpp`
+- [ ] Test compilation: `cmake --build build_msvc --config Release`
 - [ ] Verify class count increases correctly
 - [ ] Update documentation (this file + HYBRID_COMPLETE.md)
 - [ ] Create backup if adding more than 5 terms
