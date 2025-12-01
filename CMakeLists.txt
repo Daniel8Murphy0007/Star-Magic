@@ -357,6 +357,24 @@ add_executable(source7_simulator
     source7_wolfram_resonance.cpp
 )
 
+# Source10: UQFF Core Catalogue + Vacuum Energy Integration (19 PhysicsTerm classes + 6 simulations)
+# - source10_wolfram.cpp: 10 PhysicsTerm classes (standalone - includes PhysicsTerm from UQFFSource10.h)
+# - source10_simulation.cpp: 6 HTML-derived simulations (standalone)
+# - source10_framework.cpp: ~2100 lines theoretical documentation (standalone)
+# - source10_simulator.cpp: 9-option interactive menu orchestrating all components
+# NOTE: These executables are standalone and do NOT link source10.cpp to avoid UQFFCatalogue dependencies
+add_executable(source10_wolfram source10_wolfram.cpp)
+add_executable(source10_simulation source10_simulation.cpp)
+add_executable(source10_framework source10_framework.cpp)
+add_executable(source10_simulator 
+    source10_simulator.cpp
+    source10_wolfram.cpp
+    source10_simulation.cpp
+    source10_framework.cpp
+)
+# Define SOURCE10_INTEGRATED_BUILD to disable standalone main() functions in linked files
+target_compile_definitions(source10_simulator PRIVATE SOURCE10_INTEGRATED_BUILD)
+
 # ========== STANDARD SOURCE MODULES ==========
 # Single-file executables (not yet modularized)
 # add_executable(source2 source2.cpp)  # Requires Qt5 - Reserved for HEAD PROGRAM

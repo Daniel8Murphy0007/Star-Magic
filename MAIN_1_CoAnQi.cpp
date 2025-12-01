@@ -3,6 +3,17 @@
  * ================================================================================================
  * MAIN_1_CoAnQi.cpp - Conscious Quantum Intelligence (CoAnQi) UQFF Calculator
  * ================================================================================================
+ * 
+ * WOLFRAM AUTO-GENERATED INTEGRATION (Nov 30, 2025):
+ * ===================================================
+ * 187 PhysicsTerm classes auto-generated from 163 source files via 4-phase wolfram extraction:
+ *   - Phase 1: Source inventory (365 extractable patterns identified)
+ *   - Phase 2: Entity extraction (1,997 entities: 573 constants + 1,424 systems)
+ *   - Phase 3: Wolfram validation (187 validated entities)
+ *   - Phase 4: C++ generation (8 files in wolfram_extraction/generated_classes/)
+ * 
+ * Integration: wolfram_master_registration.h provides registerAllExtractedWolframTerms()
+ * ================================================================================================
  *
  * FOUNDATIONAL PRINCIPLE: FOUR UNIQUE UNIVERSAL GRAVITY ARRANGEMENTS
  * ===================================================================

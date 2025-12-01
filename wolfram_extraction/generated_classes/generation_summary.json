@@ -1,7 +1,7 @@
 {
-  "timestamp": "2025-11-24T19:25:48.431210",
-  "totalFiles": 7,
-  "totalClasses": 188,
+  "timestamp": "2025-11-30T15:25:25.729933",
+  "totalFiles": 8,
+  "totalClasses": 187,
   "fileDetails": {
     "Source167.cpp": {
       "file": "Source167.cpp_wolfram.cpp",
@@ -13,9 +13,9 @@
     "source10.cpp": {
       "file": "source10.cpp_wolfram.cpp",
       "function": "registerWolframTerms_source10_cpp",
-      "constants": 93,
+      "constants": 97,
       "systems": 9,
-      "total": 102
+      "total": 106
     },
     "source168.cpp": {
       "file": "source168.cpp_wolfram.cpp",
@@ -35,22 +35,29 @@
       "file": "source170.cpp_wolfram.cpp",
       "function": "registerWolframTerms_source170_cpp",
       "constants": 0,
-      "systems": 18,
-      "total": 18
+      "systems": 16,
+      "total": 16
     },
     "source171.cpp": {
       "file": "source171.cpp_wolfram.cpp",
       "function": "registerWolframTerms_source171_cpp",
       "constants": 0,
-      "systems": 19,
-      "total": 19
+      "systems": 18,
+      "total": 18
     },
     "source172.cpp": {
       "file": "source172.cpp_wolfram.cpp",
       "function": "registerWolframTerms_source172_cpp",
       "constants": 0,
-      "systems": 36,
-      "total": 36
+      "systems": 33,
+      "total": 33
+    },
+    "source50.cpp": {
+      "file": "source50.cpp_wolfram.cpp",
+      "function": "registerWolframTerms_source50_cpp",
+      "constants": 0,
+      "systems": 1,
+      "total": 1
     }
   },
   "sourceGroups": [
@@ -60,6 +67,7 @@
     "source169.cpp",
     "source170.cpp",
     "source171.cpp",
-    "source172.cpp"
+    "source172.cpp",
+    "source50.cpp"
   ]
 }
