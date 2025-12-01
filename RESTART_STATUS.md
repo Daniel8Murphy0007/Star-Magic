@@ -1,12 +1,12 @@
 # Star-Magic Project Restart Status
-**Date:** November 26, 2025 (Wolfram Companion Expansion - Classes 660-719)  
-**Event:** Created source71-76_wolfram.cpp (6 new files, 60 physics classes)
+**Date:** November 30, 2025 (Recovery Session - Wolfram 5,890 Classes Complete)  
+**Event:** Savepoint 1-3 recovery sequence + remote sync + v1.0-wolfram-5890-complete release
 
 ---
 
 ## What Just Happened
 
-Successfully created **6 new Wolfram companion files** (source71-76_wolfram.cpp) extending the physics class library from class 659 to class 719. Added **60 new PhysicsTerm classes** for major galaxy systems: M31 Andromeda (classes 660-669), Centaurus A radio galaxy (670-679), M104 Sombrero (680-689), M101 Pinwheel (690-699), and M33 Triangulum (710-719). All files follow established pattern with Wolfram Language integration via toWolfram() methods and master UQFF integration functions.
+Completed **full recovery sequence** from token budget exceeded event. Discovered and integrated TWO separate Wolfram systems: (1) Nov 22-23 comprehensive extraction (5,703 classes in wolfram_physics_classes.cpp), and (2) Nov 23-30 targeted extraction (187 classes in wolfram_extraction/). Both systems already integrated with ZERO name collisions. Created 3 savepoints, generated deduplication analysis, pushed to GitHub remote with 2 production tags.
 
 ### Wolfram Companion Files Created
 - **source71_wolfram.cpp:** M31 Andromeda Galaxy (classes 660-669)
@@ -39,24 +39,31 @@ Successfully created **6 new Wolfram companion files** (source71-76_wolfram.cpp)
 ## Current System State
 
 ### Executable Status
-✅ **Functional** (VERIFIED 11/23/2025 - Wolfram Companions Extended 11/26/2025)
+✅ **Functional** (VERIFIED 11/30/2025 - Production Release v1.0-wolfram-5890-complete)
 - Path: `build_msvc\Release\MAIN_1_CoAnQi.exe`
-- Size: **1.17 MB** (UPX 5.0.2 compressed from 7.95 MB, **85.3% reduction**)
-- Source: MAIN_1_CoAnQi.cpp (5.41 MB, 102,452 lines)
-- Compiler: MSVC v14.44.35207 (Visual Studio 2022 Professional)
+- Size: **1.34 MB** (UPX compressed, 85.3% reduction)
+- Source: MAIN_1_CoAnQi.cpp (5.42 MB, 102,683 lines)
+- Compiler: MSVC v19.44.35219.0 (Visual Studio 2022)
 - Standard: C++20 (enforced in CMakeLists.txt)
 - Configuration: Release-MaxCompress, x64, /Os /GL /LTCG /arch:AVX2
-- Compression: UPX 5.0.2 --best --lzma (exceeded 60-75% target by +10.3%)
-- Dependencies: Qt6 6.10.0 ✅, ANTLR4 4.13.2 ✅, SymEngine 0.11.2 ⏳, Wolfram WSTP 14.3 ✅, Grok AI (Qt6::Network) ✅
+- Compression: UPX 5.0.2 --best --lzma
+- Dependencies: Wolfram WSTP 14.3 ✅ (wstp64i4.lib linked)
 
-### Wolfram Companion Library Status
-- **Total Files:** 74 wolfram companion files in root directory
-- **Early Batch (source4-12):** 9 files (classes 1-90 approx)
-- **Main Batch (source13-70):** 58 files (classes 91-659)
-- **New Batch (source71-76):** 6 files (classes 660-719) ⭐ **JUST CREATED**
-- **Special (source200):** 1 file (Cosmic Egg module)
-- **Pattern:** 10 classes per file, sequential numbering, toWolfram() exports
-- **Git Status:** 6 new untracked files ready for staging
+### Wolfram Integration Architecture (Dual System)
+- **Total PhysicsTerm Classes:** 6,703 registered
+  - **MAIN Classes (Batches 1-17):** 813 registered
+  - **Wolfram OLD (Batch 18):** 5,703 classes from wolfram_physics_classes.cpp (Nov 22-23)
+  - **Wolfram NEW (Batch 19):** 187 classes from wolfram_extraction/ (Nov 23-30)
+- **OLD System:** wolfram_physics_classes.cpp (132,550 lines, 4.86 MB)
+  - Categories: PhysicalConstant (380), Particle (1,034), Isotope (1,000), PhysicalQuantity (3,289)
+  - Naming: `<Entity>ConstantTerm`, `<Entity>ParticleTerm`
+  - Registration: `registerAllWolframPhysicsTerms(core)` at MAIN line 21,765
+- **NEW System:** wolfram_extraction/generated_classes/ (8 files, 5,096 lines)
+  - Files: source10/50/167-172.cpp_wolfram.cpp
+  - Naming: `Wolfram_<abbrev>` (e.g., Wolfram_c, Wolfram_G)
+  - Registration: 7 functions at MAIN lines 21,775-21,781
+- **Deduplication:** 0 name collisions (Compare-Object verified)
+- **Status:** BOTH SYSTEMS ACTIVE, zero conflicts
 
 ### Operational Features
 ✅ All core functionality working:
@@ -105,8 +112,36 @@ Successfully created **6 new Wolfram companion files** (source71-76_wolfram.cpp)
 
 ## Recent Development Activity
 
-### Wolfram Companion File Expansion (November 26, 2025)
-Created 6 new standalone Wolfram companion files following established pattern:
+### Recovery Session Complete (November 30, 2025)
+Executed full 3-savepoint recovery sequence after token budget exceeded event:
+
+1. **Savepoint 1 (fd0409e) - Emergency Commit:**
+   - Committed all 7 days of work (23 files, +18,871/-3,543 lines)
+   - Created tag `savepoint-7day-complete`
+   - Preserved complete Nov 23-30 extraction work (187 Wolfram classes)
+   - Preserved Nov 22-23 integration (5,703 Wolfram classes)
+
+2. **Savepoint 2 (4d9fa2d) - Build Fix:**
+   - Fixed CMakeLists.txt (removed source10_wolfram standalone references)
+   - Clean build achieved: MAIN_1_CoAnQi.exe 1.34 MB
+   - C++20/MSVC 14.44+ compliant
+
+3. **Savepoint 3 (775c7c9) - Documentation:**
+   - Created DEDUPLICATION_REPORT.md (0 name collisions confirmed)
+   - Updated INTEGRATION_TRACKER.csv with Batch 18+19 summaries
+   - Tagged `v1.0-wolfram-5890-complete`
+   - Generated old_5703_classes.txt + new_188_classes.txt
+
+**Remote Sync:**
+- Pushed 3 commits to origin/master
+- Pushed 2 tags to remote
+- Status: "Your branch is up to date with 'origin/master'"
+
+**Critical Discovery:**
+- Found wolfram_physics_classes.cpp (5,703 classes, Nov 22-23) ALREADY INTEGRATED
+- Registration function at line 126,825 ALREADY CALLED at line 21,765
+- New extraction work (187 classes) is ADDITIVE, not duplicate
+- Total Wolfram integration: 5,890 classes (5,703 + 187)
 
 1. **source71_wolfram.cpp** - M31 Andromeda Galaxy Module
    - 10 classes (660-669): NFW dark matter, rotation curve decomposition, SMBH dynamics
@@ -222,9 +257,11 @@ To uncomment, would need:
 - ✅ `deduplication_analysis_results.json` - Unique patterns
 
 ### Git Status
-- ✅ Commit: b6d8901 (just pushed)
-- ✅ Message: "Update project documentation: PLAN.md, INTEGRATION_TRACKER.csv, and status JSON with bulk extraction summary (4890 patterns, build successful)"
-- ✅ Remote: Synced with GitHub
+- ✅ Commit: 775c7c9 (v1.0-wolfram-5890-complete)
+- ✅ Rollback Point: fd0409e (savepoint-7day-complete)
+- ✅ Remote: SYNCED with GitHub origin/master
+- ✅ Tags: savepoint-7day-complete, v1.0-wolfram-5890-complete (both pushed)
+- ✅ Working tree: Clean
 
 ---
 
