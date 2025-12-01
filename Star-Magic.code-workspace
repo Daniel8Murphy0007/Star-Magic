@@ -64,8 +64,7 @@
             "USE_EMBEDDED_WOLFRAM": "ON"
         },
         "cmake.preferredGenerators": [
-            "Visual Studio 17 2022",
-            "MinGW Makefiles"
+            "Visual Studio 17 2022"
         ],
         // ========== FILE ASSOCIATIONS ==========
         "files.associations": {
