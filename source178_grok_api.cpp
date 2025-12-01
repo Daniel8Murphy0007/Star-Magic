@@ -36,7 +36,7 @@ QString callGrokAPI(const QString& prompt) {
 
     // Build JSON payload
     QJsonObject payload;
-    payload["model"] = "grok-beta";  // Use grok-beta model (latest available)
+    payload["model"] = "grok-2-1212";  // Use grok-2-1212 model (latest available as of Dec 2024)
 
     QJsonArray messages;
     

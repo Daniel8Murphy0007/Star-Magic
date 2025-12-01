@@ -1,13 +1,9 @@
 # Node.js
 node_modules/
 
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
+# Build directories (CMake artifacts, MSVC intermediate files)
 build/
+build_msvc/
 develop-eggs/
 dist/
 downloads/
@@ -30,7 +26,8 @@ env/
 .venv
 
 # IDE
-.vscode/
+.vscode/*
+!.vscode/settings.json
 .idea/
 *.swp
 *.swo
@@ -98,15 +95,17 @@ Makefile
 coAnQi_log_*.txt
 *_log_*.txt
 
-# Build directories (MSVC migration - Nov 19, 2025)
+# Build directories (Dec 1, 2025 - build_msvc is active)
 build/
-build_*/
-*.dir/
+build_backup_*/
+build_wolfram/
+# DO NOT ignore build_msvc - it's the current working build
+# build_msvc/
 
-# Visual Studio artifacts
-*.sln
-*.vcxproj
-*.vcxproj.filters
+# Visual Studio artifacts (preserved in build_msvc)
+# *.sln - KEEP in build_msvc
+# *.vcxproj - KEEP in build_msvc
+# *.vcxproj.filters - KEEP in build_msvc
 *.vcxproj.user
 *.suo
 *.user

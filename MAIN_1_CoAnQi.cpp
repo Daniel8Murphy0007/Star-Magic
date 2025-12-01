@@ -160,6 +160,7 @@ extern void WolframEmbeddedBridge();
 
 // Windows API threading implementation for maximum compatibility
 #ifdef _WIN32
+#include <chrono>  // For timing measurements in Option 2 parallel calculations
 class SimpleMutex
 {
 private:
@@ -201,10 +202,16 @@ using SimpleLockGuard = std::lock_guard<T>;
 #include "source177_wolfram_field_unity.cpp"
 #endif
 
+// Grok AI Integration - Error Diagnostics and Code Assistance (November 22, 2025)
+#include "source178_grok_api.cpp"
+
 // Cosmic Quantum Egg - 26D Chaotic Dynamics (November 25, 2025)
 #ifdef USE_COSMIC_QUANTUM_EGG
 #include "source200_cosmic_quantum_egg.cpp"
 #endif
+
+// UQFF Tracing System - Comprehensive operation tracking (December 1, 2025)
+#include "uqff_tracing.h"
 
 using namespace std;
 
@@ -21792,15 +21799,34 @@ int main()
     g_logger.log("=== CoAnQi UQFF Calculator Started ===", 1);
     g_logger.log("Self-Expanding, Self-Updating, Self-Simulating Framework", 1);
 
+    // Initialize UQFF Tracing System
+    TRACE_INIT("uqff_trace.log");
+    TRACE_EVENT("CoAnQi UQFF Calculator initialization started", TraceLevel::TRACE_INFO);
+    
+    auto mainSpan = UQFFTracer::getInstance().createSpan("main_execution", SpanType::SYSTEM_CALCULATION);
+    if (mainSpan) mainSpan->setAttribute("version", "2.0");
+
     // Initialize systems database
     map<string, SystemParams> systems = initializeSystems();
     g_logger.log("Loaded " + to_string(systems.size()) + " predefined systems", 1);
+    TRACE_EVENT("Loaded " + to_string(systems.size()) + " predefined systems", TraceLevel::TRACE_INFO);
 
     // Register all 354 physics terms into the calculator core
-    registerAllPhysicsTerms(g_calculatorCore);
+    {
+        auto regSpan = UQFFTracer::getInstance().createSpan("register_all_physics_terms", SpanType::MODULE_INIT);
+        if (regSpan) regSpan->setAttribute("expected_terms", 6785);
+        
+        registerAllPhysicsTerms(g_calculatorCore);
+        
+        if (regSpan) {
+            int totalReg = g_calculatorCore.getAllPhysicsTerms().size();
+            regSpan->setAttribute("actual_terms", totalReg);
+        }
+    }
 
     // ========== REGISTRATION VERIFICATION ==========
     int totalRegistered = g_calculatorCore.getAllPhysicsTerms().size();
+    TRACE_METRIC("physics_terms_registered", totalRegistered, "terms");
     g_logger.log("=== REGISTRATION VERIFICATION ===", 1);
     g_logger.log("Total PhysicsTerms registered: " + to_string(totalRegistered), 1);
     g_logger.log("Expected: 6,785 (894 MAIN + 5,703 Wolfram + 188 Phase4)", 1);
@@ -21852,9 +21878,11 @@ int main()
         cout << "11. Run Wolfram Field Unity Simulation" << endl;
 #ifdef USE_COSMIC_QUANTUM_EGG
         cout << "12. Run Cosmic Quantum Egg (26D) Simulation" << endl;
-        cout << "13. Exit" << endl;
+        cout << "13. Test Grok AI Integration" << endl;
+        cout << "14. Exit" << endl;
 #else
-        cout << "12. Exit" << endl;
+        cout << "12. Test Grok AI Integration" << endl;
+        cout << "13. Exit" << endl;
 #endif
 #else
         cout << "9. Exit" << endl;
@@ -21867,15 +21895,20 @@ int main()
 
 #ifdef USE_EMBEDDED_WOLFRAM
 #ifdef USE_COSMIC_QUANTUM_EGG
-        if (choice == 13)
+        if (choice == 14)
 #else
-        if (choice == 12)
+        if (choice == 13)
 #endif
 #else
         if (choice == 9)
 #endif
         {
             g_logger.log("=== CoAnQi Shutdown ===", 1);
+            TRACE_EVENT("CoAnQi shutdown initiated by user", TraceLevel::TRACE_INFO);
+            
+            if (mainSpan) mainSpan->end();
+            TRACE_SHUTDOWN();
+            
             break;
         }
 
@@ -21900,13 +21933,28 @@ int main()
 
             SystemParams p = systems[system_name];
 
-            // Compute
+            // Compute with tracing
+            auto sysSpan = UQFFTracer::getInstance().createSpan("system_calculation_" + system_name, SpanType::SYSTEM_CALCULATION);
+            if (sysSpan) {
+                sysSpan->setAttribute("system_name", system_name);
+                sysSpan->setAttribute("mass_kg", to_string(p.M));
+                sysSpan->setAttribute("radius_m", to_string(p.r));
+            }
+            
             double F_result = F_U_Bi_i(p);
             double g_result = compressed_g(p);
 
             // Note: All dynamic physics terms are now extracted into core calculator
             // Optional: Could instantiate specific PhysicsTerm classes here for additional effects
             double dynamic_contrib = 0.0; // Placeholder for future external module support
+
+            if (sysSpan) {
+                sysSpan->setAttribute("F_U_Bi_i_result", to_string(F_result));
+                sysSpan->setAttribute("g_compressed_result", to_string(g_result));
+            }
+            
+            TRACE_METRIC("F_U_Bi_i_" + system_name, F_result, "N");
+            TRACE_METRIC("g_compressed_" + system_name, g_result, "m/s^2");
 
             // Display results
             cout << "\n=== RESULTS: " << p.name << " ===" << endl;
@@ -21927,6 +21975,9 @@ int main()
 #ifdef _WIN32
             // Calculate ALL systems in parallel using Windows threads
             g_logger.log("Computing ALL systems in parallel (Windows threading)...", 1);
+            
+            auto parallelSpan = UQFFTracer::getInstance().createSpan("parallel_all_systems", SpanType::SYSTEM_CALCULATION);
+            if (parallelSpan) parallelSpan->setAttribute("total_systems", (int)systems.size());
 
             vector<double> all_F_results(systems.size());
             vector<double> all_g_results(systems.size());
@@ -22272,6 +22323,28 @@ int main()
             
             break;
         }
+#endif
+        
+#ifdef USE_EMBEDDED_WOLFRAM
+        case 12:
+#ifndef USE_COSMIC_QUANTUM_EGG
+#endif
+        {
+            // Test Grok AI Integration
+            cout << "\n=== Testing Grok AI Integration ===" << endl;
+            testGrokAPI();
+            break;
+        }
+        
+#ifdef USE_COSMIC_QUANTUM_EGG
+        case 13:
+        {
+            // Test Grok AI Integration (Cosmic Egg build)
+            cout << "\n=== Testing Grok AI Integration ===" << endl;
+            testGrokAPI();
+            break;
+        }
+#endif
 #endif
 #endif
 
@@ -30371,14 +30444,14 @@ class Source10
         uniform_real_distribution<> dis;
 
         // Timing for profiling
-        chrono::high_resolution_clock::time_point start_time;
+        std::chrono::high_resolution_clock::time_point start_time;
 
     public:
         // Constructor initializes defaults from catalogue
-        Source10() : rng(chrono::steady_clock::now().time_since_epoch().count()), dis(0.0, 1.0)
+        Source10() : rng(std::chrono::steady_clock::now().time_since_epoch().count()), dis(0.0, 1.0)
         {
             initializeCatalogue();
-            start_time = chrono::high_resolution_clock::now();
+            start_time = std::chrono::high_resolution_clock::now();
         }
 
         ~Source10() {}

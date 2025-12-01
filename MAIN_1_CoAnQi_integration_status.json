@@ -1,48 +1,49 @@
 {
-    "last_updated": "2025-11-26T20:45:00",
-    "build_status": "CONSTRUCTION_PHASE_ASSEMBLY",
-    "project_phase": "Phase 28: Wolfram Companion Integration Complete (102,672 lines, 6,477 classes, validation infrastructure assembly)",
-    "compiler":  "MSVC v14.44.35207 (Visual Studio 2022 Professional)",
+    "last_updated": "2025-12-01T16:51:33",
+    "build_status": "FULLY_OPERATIONAL",
+    "project_phase": "Phase 29: MSVC OpenSSL Deployment - TLS Backend Operational (Dec 1, 2025)",
+    "compiler":  "MSVC v19.44.35207 (Visual Studio 2022 Professional)",
     "standard":  "C++20",
     "configuration":  "Release, x64, /Os /GL /LTCG /arch:AVX2",
     "executable":  {
                        "path":  "build_msvc\\Release\\MAIN_1_CoAnQi.exe",
-                       "size_mb":  1.29,
-                       "build_time":  "2025-11-26T15:49:15"
+                       "size_mb":  1.31,
+                       "build_time":  "2025-12-01T15:05:49"
                    },
     "file_statistics":  {
-                            "total_lines":  102672,
+                            "total_lines":  102452,
                             "active_code_lines":  45000,
-                            "commented_lines":  57672,
+                            "commented_lines":  57452,
                             "original_code":  "1-27228",
                             "phase1_integration":  "27229-27380",
-                            "bulk_extraction":  "27381-102672",
-                            "file_size_mb":  6.21,
-                            "last_modified":  "2025-11-26T15:49:15"
+                            "bulk_extraction":  "27381-102452",
+                            "file_size_mb":  5.43,
+                            "last_modified":  "2025-12-01T15:05:49"
                         },
     "registry_status":  {
-                            "registered":  6477,
+                            "registered":  6643,
                             "classes_total_uqff":  774,
                             "classes_total_wolfram":  5703,
                             "classes_total":  6477,
                             "compute_methods_total":  7019,
                             "compute_methods_uqff":  1316,
                             "compute_methods_wolfram":  5703,
-                            "target_met":  "YES - exceeded 5,034 target by 1,443 classes",
-                            "verification_date":  "2025-11-22T21:30:00",
+                            "target_met":  "YES - exceeded 5,034 target by 1,609 classes",
+                            "verification_date":  "2025-12-01T16:51:33",
                             "wolfram_categories":  {
                                                        "PhysicalConstant":  380,
                                                        "Particle":  1034,
                                                        "Isotope":  1000,
                                                        "PhysicalQuantity":  3289
                                                    },
-                            "notes":  "Successfully integrated 5,703 Wolfram Knowledgebase entities auto-generated from WolframEngine EntityList queries"
+                            "notes":  "Successfully integrated 5,703 Wolfram Knowledgebase entities auto-generated from WolframEngine EntityList queries. Batches 17-19 registered: 6,643 physics terms."
                         },
     "dependencies":  {
                          "qt6":  {
                                      "version":  "6.10.0",
                                      "path":  "C:\\Qt\\6.10.0\\msvc2022_64",
-                                     "status":  "FOUND"
+                                     "compiler":  "MSVC",
+                                     "status":  "OPERATIONAL"
                                  },
                          "antlr4":  {
                                        "version":  "4.13.2",
@@ -55,17 +56,26 @@
                                           "status":  "INSTALLING",
                                           "packages":  39
                                       },
+                         "openssl":  {
+                                        "version":  "3.6.0",
+                                        "source":  "vcpkg x64-windows",
+                                        "compiler":  "MSVC",
+                                        "status":  "OPERATIONAL",
+                                        "tls_backend":  "RESOLVED",
+                                        "deployment_date":  "2025-12-01T16:51:33"
+                                    },
                          "wolfram_wstp":  {
                                              "version":  "14.3",
                                              "status":  "ACTIVE"
                                          },
                          "grok_ai_api":  {
-                                             "version":  "grok-beta",
+                                             "version":  "grok-2-1212",
                                              "source":  "source178_grok_api.cpp",
-                                             "status":  "COMPILED_AND_LINKED",
+                                             "status":  "OPERATIONAL",
                                              "qt6_network":  "6.10.0",
+                                             "tls_backend":  "OpenSSL 3.6.0 (MSVC)",
                                              "requires":  "XAI_API_KEY environment variable",
-                                             "date":  "2025-11-22T21:30:00"
+                                             "date":  "2025-12-01T16:51:33"
                                          },
                          "wolfram_classes_file":  {
                                                       "filename":  "wolfram_physics_classes.cpp",

@@ -9,13 +9,13 @@
         // ========== WORKSPACE METADATA ==========
         "workspace.name": "Star-Magic UQFF Conscious Quantum Intelligence Platform v2.0 (Wolfram WSTP Enabled)",
         "workspace.phase": "Phase 9: Wolfram Companion Files Consolidated - 68 Files Unified in Root Directory",
-        "workspace.restorePoint": "aab8760",
-        "workspace.latestCommit": "aab8760 (Wolfram File Consolidation - PENDING COMMIT)",
-        "workspace.wolframCompanions": "68 files (source4-12, source13-70, source200)",
-        "workspace.executablePath": "${workspaceFolder}/build_wolfram/Release/MAIN_1_CoAnQi.exe",
+        "workspace.restorePoint": "386422a",
+        "workspace.latestCommit": "386422a (Settings Lock - Dec 1, 2025)",
+        "workspace.wolframCompanions": "6,643 Wolfram terms registered",
+        "workspace.executablePath": "${workspaceFolder}/build_msvc/Release/MAIN_1_CoAnQi.exe",
         "workspace.primaryPlatform": "${workspaceFolder}/MAIN_1_CoAnQi.cpp",
-        "workspace.buildSystem": "Visual Studio 2022 (MSVC 19.44) + CMake 3.31.0 + C++20 + Wolfram WSTP",
-        "workspace.lastUpdate": "November 25, 2025 @ 6:30 PM",
+        "workspace.buildSystem": "Visual Studio 2022 (MSVC 19.44.35219) + CMake 3.10+ + C++20 + Wolfram WSTP",
+        "workspace.lastUpdate": "December 1, 2025 @ Settings Locked",
         "workspace.progressTracker": "${workspaceFolder}/COMPLETE_REGISTRY_LIST.txt",
         "workspace.totalTerms": 813,
         "workspace.activeRegistrations": 810,
@@ -57,7 +57,7 @@
             }
         },
         "cmake.generator": "Visual Studio 17 2022",
-        "cmake.buildDirectory": "${workspaceFolder}/build_wolfram",
+        "cmake.buildDirectory": "${workspaceFolder}/build_msvc",
         "cmake.sourceDirectory": "${workspaceFolder}",
         "cmake.configureSettings": {
             "CMAKE_CXX_STANDARD": "20",

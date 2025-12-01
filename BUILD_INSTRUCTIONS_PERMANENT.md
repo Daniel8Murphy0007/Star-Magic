@@ -1,23 +1,41 @@
 # PERMANENT BUILD INSTRUCTIONS - READ THIS EVERY TIME
 
 **Created: November 16, 2025**
+**Last Updated: December 1, 2025 - WOLFRAM WSTP + QT6 + GROK + MSVC OPENSSL COMPLETE**
 **DO NOT DELETE THIS FILE**
 
-## ⚠️ CRITICAL: Your Configuration Status
+## ✅ SAVE POINT: December 1, 2025 4:51 PM
 
-### Current State (as of Nov 16, 2025 7:30 PM)
+### FULLY OPERATIONAL STATE - ALL SYSTEMS GO
 
-- **Git Status**: You have staged DELETIONS of temporary files (glm/, module_backups/, nlohmann/)
-- **These deletions are SAFE** - you're using vcpkg versions
-- **Only 2 real file changes**: source7.cpp, test_core_integration.vcxproj
-- **CMakeLists.txt**: Configured for x64-mingw-dynamic (NOT Visual Studio yet)
+- **Build System**: Visual Studio 2022 (MSVC 19.44.35207) ✅
+- **Wolfram WSTP**: ENABLED (source168-173 integrated, options 9-11) ✅
+- **Qt6**: 6.10.0 MSVC-compiled (C:\Qt\6.10.0\msvc2022_64) ✅
+- **OpenSSL**: 3.6.0 MSVC-compiled from vcpkg (TLS resolved) ✅
+- **Grok AI**: XAI_API_KEY configured, TLS backend operational ✅
+- **Tracing System**: uqff_tracing.h integrated ✅
+- **Executable**: 1.31 MB (build_msvc\Release\MAIN_1_CoAnQi.exe) ✅
+- **Physics Terms**: 6,643/6,809 registered (Batches 17-19) ✅
+- **Menu Options**: 13 functional (Wolfram 9-11, Grok 12, Exit 13) ✅
+- **Binary Compatibility**: 100% MSVC (Qt6 + Wolfram + OpenSSL) ✅
 
-### What YOU Want
+### Critical Files Modified (Dec 1, 2025)
 
-1. **Build System**: Visual Studio 2022 (not MinGW)
-2. **Master Header**: Core/UQFFCore.hpp properly integrated
-3. **Dependencies**: From vcpkg x64-windows (NOT x64-mingw-dynamic)
-4. **Stop the cycle**: Same steps repeated 14+ times
+1. **CMakeLists.txt** - Removed duplicate source178 compilation
+2. **uqff_tracing.h** - Fixed TraceLevel enum (TRACE_DEBUG, etc.) for WSTP compatibility
+3. **MAIN_1_CoAnQi.cpp** - Fixed setAttribute calls, TraceLevel references
+4. **XAI_API_KEY** - Set permanently in user environment
+5. **OpenSSL DLLs** - Replaced MinGW versions with MSVC vcpkg versions (TLS resolved)
+6. **build_msvc\Release\** - Deployed MSVC-compiled libssl-3-x64.dll, libcrypto-3-x64.dll
+
+### What YOU Have NOW
+
+1. **Build System**: Visual Studio 2022 (MSVC-ONLY, Wolfram WSTP requires it) ✅
+2. **Dependencies**: From vcpkg x64-windows (OpenSSL 3.6.0, Qt6 6.10.0) ✅
+3. **Wolfram Integration**: 6 source files (168-173) with 19+11+8 astronomical systems ✅
+4. **AI Integration**: Grok API + Wolfram hypergraph working together ✅
+5. **Binary Compatibility**: All DLLs MSVC-compiled (no MinGW contamination) ✅
+6. **TLS Backend**: OpenSSL 3.6.0 from vcpkg, QNetworkAccessManager operational ✅
 
 ---
 
@@ -38,12 +56,24 @@ git commit -m "..."
 
 ---
 
-## ✅ CORRECT BUILD PROCESS
+## ✅ CORRECT BUILD PROCESS (December 1, 2025 - VERIFIED WORKING)
 
-### Step 1: One-Time vcpkg Setup (if not done)
+### Step 0: SAVE POINT RESTORE (if needed)
 
 ```powershell
-# Install for Visual Studio (x64-windows), NOT MinGW
+# This exact configuration is working as of Dec 1, 2025 3:05 PM
+# USE_EMBEDDED_WOLFRAM=ON, Qt6 6.10.0, XAI_API_KEY set
+# Executable: build_msvc\Release\MAIN_1_CoAnQi.exe (1.31 MB)
+
+# To restore this exact state:
+git log --oneline | Select-Object -First 5  # Find Dec 1, 2025 commit
+# git checkout <commit-hash>  # If needed
+```
+
+### Step 1: One-Time vcpkg Setup (ALREADY DONE)
+
+```powershell
+# ✅ COMPLETED - Dependencies installed for Visual Studio (x64-windows)
 cd C:\vcpkg
 .\vcpkg install opengl:x64-windows
 .\vcpkg install glew:x64-windows
@@ -55,24 +85,101 @@ cd C:\vcpkg
 .\vcpkg integrate install
 ```
 
-### Step 2: Update CMakeLists.txt for Visual Studio
+### Step 2: VERIFIED WORKING BUILD COMMANDS (Dec 1, 2025)
 
-**Change this line:**
+```powershell
+# Clean rebuild with Wolfram WSTP enabled
+Remove-Item -Recurse -Force build_msvc -ErrorAction SilentlyContinue
 
-```cmake
-include_directories(C:/vcpkg/installed/x64-mingw-dynamic/include)
+# Configure with Wolfram (REQUIRED for menu options 9-11)
+cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64 -DUSE_EMBEDDED_WOLFRAM=ON
+
+# Build (8 parallel jobs, UPX compression automatic)
+cmake --build build_msvc --config Release --target MAIN_1_CoAnQi -j 8
+
+# Run (Wolfram + Grok both active)
+.\build_msvc\Release\MAIN_1_CoAnQi.exe
 ```
 
-**To this:**
+### Step 3: Environment Variables (ALREADY SET)
+
+```powershell
+# ✅ XAI_API_KEY - Permanent user environment variable
+$env:XAI_API_KEY  # Should show: xai-[YOUR_KEY_HERE]
+
+# If not set, restore with:
+# [System.Environment]::SetEnvironmentVariable('XAI_API_KEY', 'xai-[YOUR_API_KEY]', 'User')
+# Get your API key at: https://x.ai/api
+```
+
+---
+
+## 🛑 CRITICAL: DO NOT CHANGE THESE (Dec 1, 2025 Working Config)
+
+### CMakeLists.txt - VERIFIED CORRECT SETTINGS
 
 ```cmake
+# ✅ Line 32: CORRECT (vcpkg x64-windows)
 include_directories(C:/vcpkg/installed/x64-windows/include)
+
+# ✅ Line 38: CORRECT (Qt6 path)
+set(CMAKE_PREFIX_PATH "C:/Qt/6.10.0/msvc2022_64" ${CMAKE_PREFIX_PATH})
+
+# ✅ Line 159: CORRECT (Wolfram enabled by default)
+option(USE_EMBEDDED_WOLFRAM "Enable embedded Wolfram kernel via WSTP" ON)
+
+# ✅ Line 163: CORRECT (WSTP directory)
+set(WSTP_DIR "C:/Program Files/Wolfram Research/Wolfram Engine/14.3/SystemFiles/Links/WSTP/DeveloperKit/Windows-x86-64/CompilerAdditions")
+
+# ✅ Line 191: CORRECT (source178 NOT compiled separately, only included)
+add_executable(MAIN_1_CoAnQi MAIN_1_CoAnQi.cpp)
 ```
 
-**And change this:**
+### uqff_tracing.h - VERIFIED CORRECT (Dec 1, 2025)
 
-```cmake
-set(CMAKE_PREFIX_PATH "C:/vcpkg/installed/x64-mingw-dynamic")
+```cpp
+// ✅ Lines 40-46: CORRECT (TRACE_ prefix avoids Windows WSTP conflicts)
+enum class TraceLevel {
+    TRACE_DEBUG = 0,
+    TRACE_INFO = 1,
+    TRACE_WARN = 2,
+    TRACE_ERROR = 3,
+    TRACE_FATAL = 4
+};
+```
+
+### MAIN_1_CoAnQi.cpp - VERIFIED CORRECT
+
+```cpp
+// ✅ Line 206: CORRECT (source178 included for Grok)
+#include "source178_grok_api.cpp"
+
+// ✅ Line 214: CORRECT (tracing header)
+#include "uqff_tracing.h"
+
+// ✅ Lines 21804, 21812, 21907: CORRECT (TraceLevel::TRACE_INFO)
+TRACE_EVENT("...", TraceLevel::TRACE_INFO);
+```
+
+---
+
+## 🛑 NEVER DO THIS AGAIN
+
+```powershell
+# ❌ WRONG - Uses MinGW (Wolfram WSTP requires MSVC)
+cmake . -B .\build -G "MinGW Makefiles"
+
+# ❌ WRONG - Disables Wolfram (menu options 9-11 will disappear)
+cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64 -DUSE_EMBEDDED_WOLFRAM=OFF
+
+# ❌ WRONG - Changes vcpkg path back to mingw
+# include_directories(C:/vcpkg/installed/x64-mingw-dynamic/include)
+
+# ❌ WRONG - Recompiles source178 separately (causes duplicate symbols)
+# add_executable(MAIN_1_CoAnQi MAIN_1_CoAnQi.cpp source178_grok_api.cpp)
+
+# ❌ WRONG - Resets working state
+git reset --hard
 ```
 
 **To this:**
