@@ -354,11 +354,10 @@ magnetar.loadConfiguration("configs/magnetar_sgr0501.cfg");
 // ===========================================================================================
 
 /*
-// Compile C++ module as shared library (on Linux):
-// On Windows with MSVC, create a DLL instead:
-// cl /LD /std:c++20 Source14.cpp
+// On Windows, create a DLL for Node.js FFI or use child process:
+// cl /LD /std:c++20 /EHsc Source14.cpp /Fe:libmagnetar.dll
 
-// Node.js FFI or child process integration:
+// Node.js child process integration:
 
 // JavaScript (index.js):
 const { execSync } = require('child_process');
@@ -441,22 +440,15 @@ int main() {
 // ===========================================================================================
 // COMPILATION NOTES:
 //
-// Using CMake (RECOMMENDED):
+// RECOMMENDED: Use CMake (handles all dependencies automatically)
 //   cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64
 //   cmake --build build_msvc --config Release
 //
-// Using MSVC directly:
+// DIRECT MSVC (for simple single-file testing only):
 //   cl /std:c++20 /EHsc integration_example.cpp /Fe:integration.exe
 //
 // With specific enhanced module:
 //   cl /std:c++20 /EHsc /I. Source14.cpp integration_example.cpp /Fe:integration.exe
 //
-// Multiple modules:
-//   cl /std:c++20 /EHsc Source14.cpp Source15.cpp Source76.cpp integration_example.cpp /Fe:integration.exe
-//
-// Shared library (DLL):
-//   cl /LD /std:c++20 Source14.cpp
-//
-// With optimization:
-//   cl /std:c++20 /O2 /EHsc integration_example.cpp /Fe:integration.exe
+// Note: For full builds with dependencies (Qt, WSTP, etc.), always use CMake.
 // ===========================================================================================

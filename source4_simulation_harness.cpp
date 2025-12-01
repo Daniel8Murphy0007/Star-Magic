@@ -582,11 +582,21 @@ int main(int argc, char* argv[]) {
 // BUILD INSTRUCTIONS
 // ============================================================================
 /*
-STANDALONE COMPILATION (Placeholder Mode - MSVC):
-    cl /std:c++20 /O2 /EHsc source4_simulation_harness.cpp /Fe:source4_simulator.exe
+RECOMMENDED: Use CMake (Visual Studio 2022)
+    cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64
+    cmake --build build_msvc --config Release --target source4_simulator
 
-FULL COMPILATION (with all 46 classes):
-    cl /std:c++20 /O2 /EHsc source4_simulation_harness.cpp source4_wolfram.cpp source4_wolfram_compressed.cpp source4_wolfram_resonance.cpp /Fe:source4_simulator.exe
+STANDALONE COMPILATION (Placeholder Mode - MSVC, for testing only):
+    cl /std:c++20 /O2 /EHsc source4_simulation_harness.cpp ^
+       /Fe:source4_simulator.exe
+
+FULL COMPILATION (with all 46 classes - MSVC):
+    cl /std:c++20 /O2 /EHsc ^
+       source4_simulation_harness.cpp ^
+       source4_wolfram.cpp ^
+       source4_wolfram_compressed.cpp ^
+       source4_wolfram_resonance.cpp ^
+       /Fe:source4_simulator.exe
 
 CMAKE INTEGRATION:
     Add to CMakeLists.txt:
