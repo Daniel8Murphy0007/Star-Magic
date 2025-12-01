@@ -1,9 +1,9 @@
 {
-    "last_updated": "2025-12-01T16:51:33",
+    "last_updated": "2025-12-01T18:09:12",
     "build_status": "FULLY_OPERATIONAL",
-    "project_phase": "Phase 29: MSVC OpenSSL Deployment - TLS Backend Operational (Dec 1, 2025)",
-    "compiler":  "MSVC v19.44.35207 (Visual Studio 2022 Professional)",
-    "standard":  "C++20",
+    "project_phase": "Phase 30: MinGW Purge + Source2 Qt6 Conversion - 100% MSVC Binary Compatibility (Dec 1, 2025)",
+    "compiler":  "MSVC v19.44.35219 (Visual Studio 2022 BuildTools)",
+    "standard":  "C++20 (/std:c++20 /permissive-)",
     "configuration":  "Release, x64, /Os /GL /LTCG /arch:AVX2",
     "executable":  {
                        "path":  "build_msvc\\Release\\MAIN_1_CoAnQi.exe",
@@ -29,30 +29,31 @@
                             "compute_methods_uqff":  1316,
                             "compute_methods_wolfram":  5703,
                             "target_met":  "YES - exceeded 5,034 target by 1,609 classes",
-                            "verification_date":  "2025-12-01T16:51:33",
+                            "verification_date":  "2025-12-01T18:09:12",
                             "wolfram_categories":  {
                                                        "PhysicalConstant":  380,
                                                        "Particle":  1034,
                                                        "Isotope":  1000,
                                                        "PhysicalQuantity":  3289
                                                    },
-                            "notes":  "Successfully integrated 5,703 Wolfram Knowledgebase entities auto-generated from WolframEngine EntityList queries. Batches 17-19 registered: 6,643 physics terms."
+                            "notes":  "Successfully integrated 5,703 Wolfram Knowledgebase entities auto-generated from WolframEngine EntityList queries. Batches 17-19 registered: 6,643 physics terms. Phase 30: Purged 37 MinGW packages, converted Source2 to Qt6."
                         },
     "dependencies":  {
                          "qt6":  {
                                      "version":  "6.10.0",
                                      "path":  "C:\\Qt\\6.10.0\\msvc2022_64",
                                      "compiler":  "MSVC",
+                                     "components":  "Core, Widgets, Network, WebEngineWidgets",
                                      "status":  "OPERATIONAL"
                                  },
                          "antlr4":  {
                                        "version":  "4.13.2",
-                                       "source":  "vcpkg",
+                                       "source":  "vcpkg x64-windows",
                                        "status":  "INSTALLED"
                                    },
                          "symengine":  {
                                           "version":  "0.11.2",
-                                          "source":  "vcpkg",
+                                          "source":  "vcpkg x64-windows",
                                           "status":  "INSTALLING",
                                           "packages":  39
                                       },
@@ -84,7 +85,28 @@
                                                       "classes":  5703,
                                                       "status":  "COMPILED_AND_LINKED",
                                                       "date":  "2025-11-22T21:06:51"
-                                                  }
+                                                  },
+                         "vcpkg":  {
+                                      "triplet":  "x64-windows",
+                                      "compiler":  "MSVC",
+                                      "packages_total":  44,
+                                      "mingw_packages":  0,
+                                      "status":  "100% MSVC - MinGW PURGED",
+                                      "purge_date":  "2025-12-01T18:09:12",
+                                      "purged_packages":  37
+                                  },
+                         "source2_platform":  {
+                                                 "filename":  "source2.cpp",
+                                                 "lines":  2183,
+                                                 "size_kb":  101.35,
+                                                 "description":  "HEAD PROGRAM - Primary User Base Platform (21 browser windows)",
+                                                 "framework":  "Qt6 WebEngineWidgets",
+                                                 "status":  "Qt6 CONVERSION COMPLETE - Phase 1 Ready",
+                                                 "conditional_guards":  ["NO_VTK", "NO_OPENCV", "NO_AWS", "NO_PYTHON", "NO_CURL", "NO_SQLITE", "NO_QALCULATE"],
+                                                 "conversion_date":  "2025-12-01T18:09:12",
+                                                 "msvc_verified":  true,
+                                                 "verification_test":  "source2_minimal_test.cpp (8/8 passed)"
+                                             }
                      },
     "source168_173_discovery":  {
                                     "discovered":  true,

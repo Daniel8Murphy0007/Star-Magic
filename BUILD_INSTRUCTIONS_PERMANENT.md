@@ -1,41 +1,51 @@
 # PERMANENT BUILD INSTRUCTIONS - READ THIS EVERY TIME
 
 **Created: November 16, 2025**
-**Last Updated: December 1, 2025 - WOLFRAM WSTP + QT6 + GROK + MSVC OPENSSL COMPLETE**
+**Last Updated: December 1, 2025 - PHASE 30: MinGW PURGE + SOURCE2 QT6 CONVERSION COMPLETE**
 **DO NOT DELETE THIS FILE**
 
-## ✅ SAVE POINT: December 1, 2025 4:51 PM
+## ✅ SAVE POINT: December 1, 2025 6:09 PM
 
-### FULLY OPERATIONAL STATE - ALL SYSTEMS GO
+### FULLY OPERATIONAL STATE - 100% MSVC BINARY COMPATIBILITY
 
-- **Build System**: Visual Studio 2022 (MSVC 19.44.35207) ✅
+- **Build System**: Visual Studio 2022 (MSVC 19.44.35219) ✅
+- **C++ Standard**: C++20 strict compliance (/std:c++20 /permissive-) ✅
 - **Wolfram WSTP**: ENABLED (source168-173 integrated, options 9-11) ✅
-- **Qt6**: 6.10.0 MSVC-compiled (C:\Qt\6.10.0\msvc2022_64) ✅
-- **OpenSSL**: 3.6.0 MSVC-compiled from vcpkg (TLS resolved) ✅
-- **Grok AI**: XAI_API_KEY configured, TLS backend operational ✅
-- **Tracing System**: uqff_tracing.h integrated ✅
+- **Qt6**: 6.10.0 MSVC-compiled (C:\Qt\6.10.0\msvc2022_64) + WebEngineWidgets ✅
+- **OpenSSL**: 3.6.0 MSVC-compiled from vcpkg (TLS operational) ✅
+- **Grok AI**: XAI_API_KEY configured, HTTPS working ✅
+- **vcpkg**: 44 packages, 100% x64-windows (MSVC), ZERO MinGW ✅
 - **Executable**: 1.31 MB (build_msvc\Release\MAIN_1_CoAnQi.exe) ✅
 - **Physics Terms**: 6,643/6,809 registered (Batches 17-19) ✅
 - **Menu Options**: 13 functional (Wolfram 9-11, Grok 12, Exit 13) ✅
-- **Binary Compatibility**: 100% MSVC (Qt6 + Wolfram + OpenSSL) ✅
+- **Binary Compatibility**: 100% MSVC (Qt6 + Wolfram + OpenSSL + vcpkg) ✅
 
-### Critical Files Modified (Dec 1, 2025)
+### Phase 30 Changes (Dec 1, 2025 18:09)
 
-1. **CMakeLists.txt** - Removed duplicate source178 compilation
-2. **uqff_tracing.h** - Fixed TraceLevel enum (TRACE_DEBUG, etc.) for WSTP compatibility
-3. **MAIN_1_CoAnQi.cpp** - Fixed setAttribute calls, TraceLevel references
-4. **XAI_API_KEY** - Set permanently in user environment
-5. **OpenSSL DLLs** - Replaced MinGW versions with MSVC vcpkg versions (TLS resolved)
-6. **build_msvc\Release\** - Deployed MSVC-compiled libssl-3-x64.dll, libcrypto-3-x64.dll
+1. **MinGW Purge**: Removed 37 MinGW-triplet packages from vcpkg (binary incompatibility resolved)
+2. **source2.cpp Qt6 Conversion**: Updated from Qt5 to Qt6 WebEngineWidgets
+3. **Conditional Compilation**: Added NO_VTK, NO_OPENCV, NO_AWS, NO_PYTHON guards
+4. **CMakeLists.txt**: Source2 Phase 1 build target (Qt6 WebEngineWidgets only)
+5. **vcpkg Cleanup**: Verified 100% MSVC-only triplet (x64-windows)
+6. **source2_minimal_test.cpp**: MSVC compatibility verified (all 8 tests passed)
+
+### Critical Files Modified (Dec 1, 2025 18:09)
+
+1. **source2.cpp** - Converted to Qt6, added conditional compilation guards
+2. **CMakeLists.txt** - Fixed MinGW triplets (x64-mingw-dynamic → x64-windows), added Source2 Phase 1 target
+3. **Star-Magic.code-workspace** - Updated to Phase 30 metadata
+4. **vcpkg environment** - Purged all MinGW packages (37 removed), verified MSVC-only
+5. **source2_minimal_test.cpp** - Created for MSVC verification (8 tests, all passed)
 
 ### What YOU Have NOW
 
-1. **Build System**: Visual Studio 2022 (MSVC-ONLY, Wolfram WSTP requires it) ✅
-2. **Dependencies**: From vcpkg x64-windows (OpenSSL 3.6.0, Qt6 6.10.0) ✅
+1. **Build System**: Visual Studio 2022 (MSVC 19.44.35219, C++20 strict) ✅
+2. **Dependencies**: From vcpkg x64-windows ONLY (100% MSVC) ✅
 3. **Wolfram Integration**: 6 source files (168-173) with 19+11+8 astronomical systems ✅
 4. **AI Integration**: Grok API + Wolfram hypergraph working together ✅
-5. **Binary Compatibility**: All DLLs MSVC-compiled (no MinGW contamination) ✅
-6. **TLS Backend**: OpenSSL 3.6.0 from vcpkg, QNetworkAccessManager operational ✅
+5. **Binary Compatibility**: ALL DLLs MSVC-compiled (ZERO MinGW) ✅
+6. **TLS Backend**: OpenSSL 3.6.0 MSVC, QNetworkAccessManager operational ✅
+7. **Source2 Platform**: Qt6 WebEngineWidgets ready (Phase 1 HEAD PROGRAM) ✅
 
 ---
 

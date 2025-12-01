@@ -1,44 +1,51 @@
 CMAKE RESTORE POINT (UPDATED)
 =============================
 
-## LATEST RESTORE POINT: December 1, 2025 16:51:33
+## LATEST RESTORE POINT: December 1, 2025 18:09:12
 Date: December 1, 2025
 Commit: HEAD (master)
 Branch: master
-Status: MSVC OPENSSL DEPLOYMENT COMPLETE ✅
+Status: PHASE 30 - MinGW PURGE + SOURCE2 QT6 CONVERSION COMPLETE ✅
 Wolfram WSTP: ENABLED ✅
-Qt6 Network: ENABLED ✅
+Qt6 WebEngineWidgets: ENABLED (6.10.0 MSVC) ✅
 Grok AI TLS: OPERATIONAL ✅
-C++20/MSVC: ENFORCED (MinGW blocked) ✅
-Binary Compatibility: 100% MSVC ✅
+C++20/MSVC 19.44+: ENFORCED (MinGW purged) ✅
+Binary Compatibility: 100% MSVC (44 packages) ✅
+vcpkg Triplet: x64-windows ONLY ✅
 
 Restore Command:
 git reset --hard HEAD
 
 Description:
-GROK AI TLS RESOLUTION - MSVC OpenSSL deployment complete.
+MINGW PURGE + SOURCE2 QT6 CONVERSION - 100% MSVC binary compatibility achieved.
+- Removed 37 MinGW-triplet packages from vcpkg (binary incompatibility resolved)
+- source2.cpp converted from Qt5 to Qt6 WebEngineWidgets
+- Added conditional compilation guards (NO_VTK, NO_OPENCV, NO_AWS, NO_PYTHON)
+- CMakeLists.txt corrected: x64-mingw-dynamic → x64-windows (10 packages fixed)
+- source2_minimal_test.cpp verified MSVC compatibility (8/8 tests passed)
+- vcpkg environment: 44 packages, 100% MSVC-compiled
 - OpenSSL 3.6.0 from vcpkg x64-windows (MSVC-compiled)
-- Replaced MinGW-compiled Git OpenSSL DLLs with vcpkg versions
-- TLS backend errors resolved (QNetworkAccessManager operational)
-- QCoreApplication errors resolved (binary compatibility achieved)
-- All DLLs now MSVC-compiled: Qt6 6.10.0, Wolfram WSTP 14.3, OpenSSL 3.6.0
+- Qt6 6.10.0 + WebEngineWidgets operational
 - Executable: build_msvc\Release\MAIN_1_CoAnQi.exe (1.31 MB, Dec 1 15:05)
 - Physics terms: 6,643 registered (Batches 17-19)
 - Menu options: 13 functional (Wolfram 9-11, Grok 12, Exit 13)
-- Visual Studio 2022, MSVC 19.44.35207
+- Visual Studio 2022, MSVC 19.44.35219, C++20 (/std:c++20 /permissive-)
 
 Files Status:
 - build_msvc\Release\libssl-3-x64.dll: ✓ MSVC (vcpkg, The OpenSSL Project)
 - build_msvc\Release\libcrypto-3-x64.dll: ✓ MSVC (vcpkg, The OpenSSL Project)
 - build_msvc\Release\Qt6Network.dll: ✓ MSVC (The Qt Company Ltd.)
 - build_msvc\Release\tls\qopensslbackend.dll: ✓ Qt6 TLS plugin deployed
-- source178_grok_api.cpp: ✓ QNetworkAccessManager HTTPS ready
+- source2.cpp: ✓ Qt6 WebEngineWidgets (2,183 lines, 21 browser windows)
+- source2_minimal_test.cpp: ✓ MSVC verified (95 lines, 8/8 tests passed)
+- vcpkg packages: ✓ 44 total, ZERO MinGW contamination
 - XAI_API_KEY: ✓ Environment variable configured (84 chars)
 
 Detailed Manifest:
-- CMakeLists.txt: C++20 ENFORCED, MSVC REQUIRED
+- CMakeLists.txt: C++20 ENFORCED, MSVC REQUIRED, Source2 Phase 1 target added
 - MAIN_1_CoAnQi.cpp: 102,452 lines, 492 physics terms
-- vcpkg OpenSSL: openssl:x64-windows@3.6.0#3 installed
+- source2.cpp: HEAD PROGRAM, Qt6 conversion complete
+- vcpkg: 100% x64-windows triplet (MSVC dynamic)
 - Git MinGW OpenSSL: REMOVED (binary incompatible with MSVC)
 
 Use this restore point for Grok AI + Wolfram enabled builds.
