@@ -3,6 +3,12 @@
 # Author: Daniel T. Murphy
 cmake_minimum_required(VERSION 3.10)
 
+# ========== VCPKG TOOLCHAIN INTEGRATION ==========
+# CRITICAL: Must be set BEFORE project() command for find_package() to work
+if(NOT DEFINED CMAKE_TOOLCHAIN_FILE AND EXISTS "C:/vcpkg/scripts/buildsystems/vcpkg.cmake")
+    set(CMAKE_TOOLCHAIN_FILE "C:/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Vcpkg toolchain file")
+endif()
+
 # Project name and programming language
 # Build Status: November 30, 2025 - Commit 92c9908
 # PhysicsTerm Classes: 7,062 total (1,172 MAIN + 5,703 Wolfram OLD + 187 Wolfram NEW)
@@ -39,10 +45,15 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 # Find Qt6 (upgraded from Qt5)
-find_package(Qt6 COMPONENTS Core Widgets Network QUIET)
+find_package(Qt6 COMPONENTS Core Widgets Network WebEngineWidgets QUIET)
 if(Qt6_FOUND)
     message(STATUS "Qt6 found - GUI components enabled (Option A Full Recovery)")
     add_definitions(-DHAVE_QT6)
+    if(TARGET Qt6::WebEngineWidgets)
+        message(STATUS "Qt6::WebEngineWidgets found - source2 web browser enabled")
+    else()
+        message(STATUS "Qt6::WebEngineWidgets NOT found - source2 will have limited functionality")
+    endif()
 else()
     # Fallback to Qt5 if Qt6 not found
     find_package(Qt5 COMPONENTS Core Widgets WebEngineWidgets PrintSupport QUIET)
@@ -52,6 +63,46 @@ else()
     else()
         message(STATUS "Qt not found - GUI components will be commented out")
     endif()
+endif()
+
+# Find VTK for scientific visualization (source2)
+find_package(VTK CONFIG QUIET)
+if(VTK_FOUND)
+    message(STATUS "VTK found at version ${VTK_VERSION} - source2 visualization enabled")
+else()
+    message(STATUS "VTK NOT found - source2 will compile with -DNO_VTK")
+endif()
+
+# Find CURL for HTTP requests (source2)
+find_package(CURL CONFIG QUIET)
+if(CURL_FOUND)
+    message(STATUS "CURL found - source2 web API access enabled")
+else()
+    message(STATUS "CURL NOT found - source2 will compile with -DNO_CURL")
+endif()
+
+# Find SQLite3 for local database (source2)
+find_package(unofficial-sqlite3 CONFIG QUIET)
+if(unofficial-sqlite3_FOUND)
+    message(STATUS "SQLite3 found - source2 database caching enabled")
+else()
+    message(STATUS "SQLite3 NOT found - source2 will compile with -DNO_SQLITE")
+endif()
+
+# Find OpenCV for computer vision (source2)
+find_package(OpenCV CONFIG QUIET)
+if(OpenCV_FOUND)
+    message(STATUS "OpenCV found at version ${OpenCV_VERSION} - source2 vision processing enabled")
+else()
+    message(STATUS "OpenCV NOT found - source2 will compile with -DNO_OPENCV")
+endif()
+
+# Find AWS SDK for cloud services (source2)
+find_package(AWSSDK CONFIG COMPONENTS cognito-idp s3 QUIET)
+if(AWSSDK_FOUND)
+    message(STATUS "AWS SDK found - source2 cloud sync enabled")
+else()
+    message(STATUS "AWS SDK NOT found - source2 will compile with -DNO_AWS")
 endif()
 
 # Find ANTLR4 runtime (for parser code patterns)
@@ -188,10 +239,11 @@ add_executable(MAIN_1 MAIN_1.cpp)
 # MAIN_1_CoAnQi with optional Wolfram integration + Grok AI API
 if(USE_EMBEDDED_WOLFRAM)
     # source174 is included via source176, don't add it separately to avoid duplicate definitions
-    # source178_grok_api.cpp is included directly in MAIN_1_CoAnQi.cpp (line 206), NOT compiled separately
+    # source178_grok_api.cpp added for xAI Grok API integration (Phase 23: AI Integration)
     # Phase 4 Wolfram extraction: Files included directly in MAIN_1_CoAnQi.cpp, not compiled separately
     add_executable(MAIN_1_CoAnQi 
-        MAIN_1_CoAnQi.cpp
+        MAIN_1_CoAnQi.cpp 
+        source178_grok_api.cpp
     )
     
     # Disable AUTOMOC for MAIN_1_CoAnQi - it's a pure C++ physics calculator, not a Qt GUI app
@@ -270,22 +322,74 @@ else()
     message(WARNING "Extract to C:/Tools/upx/ and add to PATH")
 endif()
 
-# Source2: HEAD PROGRAM - Primary User Base Platform (REQUIRES Qt5, VTK, AWS SDK, OpenCV, etc.)
-# Status: Reserved for future development - requires extensive dependencies
-# CRITICAL: Use x64-windows (MSVC) triplet ONLY - NOT x64-mingw-dynamic
-# Uncomment after installing dependencies via vcpkg:
-#   vcpkg install qt5-base:x64-windows qt5-webengine:x64-windows
+# Source2: HEAD PROGRAM - Primary User Base Platform (Qt6 + optional VTK, AWS SDK, OpenCV, etc.)
+# Status: ENABLED with Qt6 - optional dependencies compile conditionally
+# To install missing dependencies via vcpkg (x64-windows for MSVC):
+#   vcpkg install qt6-webengine:x64-windows
 #   vcpkg install vtk:x64-windows opencv:x64-windows
 #   vcpkg install curl:x64-windows sqlite3:x64-windows
 #   vcpkg install aws-sdk-cpp[cognito-idp,s3]:x64-windows
-#   vcpkg install pybind11:x64-windows websocketpp:x64-windows
-#   vcpkg install pocketsphinx:x64-windows qalculate:x64-windows
-# add_executable(Source2 source2.cpp)
-# target_link_libraries(Source2 PRIVATE UQFFCore Qt5::Widgets Qt5::WebEngineWidgets ${VTK_LIBRARIES} ${OpenCV_LIBS} CURL::libcurl SQLite::SQLite3 aws-cpp-sdk-cognito-idp aws-cpp-sdk-s3)
-
-# Source2 Minimal Test: MSVC Compatibility Verification (No external dependencies)
-add_executable(source2_minimal_test source2_minimal_test.cpp)
-target_compile_features(source2_minimal_test PRIVATE cxx_std_20)
+if(Qt6_FOUND)
+    add_executable(Source2 source2.cpp)
+    
+    # Base Qt6 dependencies (always required)
+    target_link_libraries(Source2 PRIVATE 
+        Qt6::Core 
+        Qt6::Widgets 
+        Qt6::Network
+    )
+    
+    # Qt6 WebEngineWidgets (conditional)
+    if(TARGET Qt6::WebEngineWidgets)
+        target_link_libraries(Source2 PRIVATE Qt6::WebEngineWidgets)
+    else()
+        target_compile_definitions(Source2 PRIVATE NO_WEBENGINE)
+        message(STATUS "Source2: Compiling without web browser (install qt6-webengine)")
+    endif()
+    
+    # VTK (conditional)
+    if(VTK_FOUND)
+        target_link_libraries(Source2 PRIVATE ${VTK_LIBRARIES})
+        target_include_directories(Source2 PRIVATE ${VTK_INCLUDE_DIRS})
+    else()
+        target_compile_definitions(Source2 PRIVATE NO_VTK)
+    endif()
+    
+    # CURL (conditional)
+    if(CURL_FOUND)
+        target_link_libraries(Source2 PRIVATE CURL::libcurl)
+    else()
+        target_compile_definitions(Source2 PRIVATE NO_CURL)
+    endif()
+    
+    # SQLite3 (conditional)
+    if(unofficial-sqlite3_FOUND)
+        target_link_libraries(Source2 PRIVATE unofficial::sqlite3::sqlite3)
+    else()
+        target_compile_definitions(Source2 PRIVATE NO_SQLITE)
+    endif()
+    
+    # OpenCV (conditional)
+    if(OpenCV_FOUND)
+        target_link_libraries(Source2 PRIVATE ${OpenCV_LIBS})
+    else()
+        target_compile_definitions(Source2 PRIVATE NO_OPENCV)
+    endif()
+    
+    # AWS SDK (conditional)
+    if(AWSSDK_FOUND)
+        target_link_libraries(Source2 PRIVATE aws-cpp-sdk-cognito-idp aws-cpp-sdk-s3)
+    else()
+        target_compile_definitions(Source2 PRIVATE NO_AWS)
+    endif()
+    
+    # Always disable Python, Qalculate, and PocketSphinx for now (complex dependencies not installed)
+    target_compile_definitions(Source2 PRIVATE NO_PYTHON NO_QALCULATE NO_POCKETSPHINX)
+    
+    message(STATUS "Source2 (HEAD PROGRAM) build target ENABLED")
+else()
+    message(STATUS "Source2 DISABLED - Qt6 required (install qt6-base:x64-windows)")
+endif()
 
 # ========== BUILD SUMMARY (November 30, 2025 - Commit 92c9908) ==========
 # PhysicsTerm Classes:

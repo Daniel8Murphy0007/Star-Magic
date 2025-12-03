@@ -3,12 +3,12 @@
 // INCLUDE STATEMENTS - Import all necessary libraries for the application
 // ============================================================================
 
-// Qt Framework - Cross-platform GUI toolkit for building the user interface
+// Qt6 Framework - Cross-platform GUI toolkit for building the user interface
 #include <QApplication>     // Main application class - manages GUI application control flow and settings
 #include <QMainWindow>      // Main window class - provides framework for building application's user interface
 #include <QLineEdit>        // Single-line text input widget - allows user to enter and edit text
 #include <QTextEdit>        // Multi-line text editor widget - allows editing and displaying plain/rich text
-#include <QWebEngineView>   // Web browser widget - displays web content using Chromium engine
+#include <QWebEngineView>   // Web browser widget - displays web content using Chromium engine (Qt6 WebEngineWidgets)
 #include <QTabWidget>       // Tab container widget - provides tab bar and page area for switching between pages
 #include <QVBoxLayout>      // Vertical box layout manager - arranges widgets vertically
 #include <QHBoxLayout>      // Horizontal box layout manager - arranges widgets horizontally
@@ -29,6 +29,7 @@
 #include <QCoreApplication> // Core application class - provides event loop for non-GUI applications
 
 // VTK (Visualization Toolkit) - For scientific data visualization (3D plots, charts, graphs)
+#ifndef NO_VTK
 #include <vtkSmartPointer.h>      // Smart pointer for VTK objects - automatic memory management
 #include <vtkScatterPlotMatrix.h> // Scatter plot matrix - creates matrix of scatter plots for data analysis
 #include <vtkChartXY.h>           // 2D chart - creates X-Y plots and line graphs
@@ -40,28 +41,45 @@
 #include <vtkAxis.h>              // Chart axis - represents axis in 2D chart (X or Y)
 #include <vtkRenderWindow.h>      // Rendering window - window for displaying VTK graphics
 #include <vtkRenderer.h>          // Renderer - renders 3D scene into a window
+#endif                            // NO_VTK
 
 // Network and Web Communication Libraries
+#ifndef NO_CURL
 #include <curl/curl.h> // libcurl - HTTP/HTTPS requests for fetching data from web APIs
-#include <websocket.h> // WebSocket protocol - real-time bidirectional communication with servers
+// #include <websocket.h> // WebSocket protocol - DISABLED: libwebsockets not installed via vcpkg
+#endif // NO_CURL
 
 // Database and Cloud Storage
+#ifndef NO_SQLITE
 #include <sqlite3.h> // SQLite database - embedded SQL database for local caching
+#endif               // NO_SQLITE
 
 // AWS (Amazon Web Services) SDK - Cloud services integration
+#ifndef NO_AWS
 #include <aws/core/Aws.h>                                  // AWS SDK core - initialization and configuration
 #include <aws/s3/S3Client.h>                               // AWS S3 client - cloud object storage for syncing cached data
 #include <aws/cognito-idp/CognitoIdentityProviderClient.h> // AWS Cognito - user authentication and authorization
+#endif                                                     // NO_AWS
 
-// Speech and Vision Processing
-#include <pocketsphinx.h>     // PocketSphinx - speech recognition for voice input commands
+// Speech Recognition
+#ifndef NO_POCKETSPHINX
+#include <pocketsphinx.h> // PocketSphinx - speech recognition for voice input commands
+#endif                    // NO_POCKETSPHINX
+
+// Vision Processing
+#ifndef NO_OPENCV
 #include <opencv2/opencv.hpp> // OpenCV - computer vision library for video/image processing
+#endif                        // NO_OPENCV
 
 // Python Integration
+#ifndef NO_PYTHON
 #include <pybind11/embed.h> // pybind11 - embeds Python interpreter for running Python code (AI models)
+#endif                      // NO_PYTHON
 
 // Mathematical Computation
+#ifndef NO_QALCULATE
 #include <qalculate.h> // Qalculate - powerful calculator library for symbolic math
+#endif                 // NO_QALCULATE
 
 // System and Standard Libraries
 #include <windows.h>         // Windows API - Windows-specific system functions
@@ -105,7 +123,9 @@
 // NAMESPACE ALIASES - Shorter names for frequently used namespaces
 // ============================================================================
 
-namespace py = pybind11;     // Alias for pybind11 - used for embedding Python interpreter
+#ifndef NO_PYTHON
+namespace py = pybind11; // Alias for pybind11 - used for embedding Python interpreter
+#endif
 using json = nlohmann::json; // Alias for JSON library - simplifies JSON parsing and creation
 
 // ============================================================================
@@ -157,11 +177,80 @@ std::vector<std::string> focusList = {
 // Index corresponds to window number (0-20), each vector holds SearchResult objects
 std::vector<SearchResult> results[MAX_WINDOWS];
 
+// ============================================================================
+// CONDITIONAL COMPILATION STUBS FOR MISSING DEPENDENCIES
+// ============================================================================
+
+// Stub types for missing dependencies (enables compilation when libraries not installed)
+#ifdef NO_SQLITE
+typedef void sqlite3; // Placeholder type when SQLite not available
+#endif
+
+#ifdef NO_AWS
+namespace Aws
+{
+    namespace S3
+    {
+        class S3Client;
+    }
+    namespace CognitoIdentityProvider
+    {
+        class CognitoIdentityProviderClient;
+    }
+}
+#endif
+
+#ifdef NO_CURL
+typedef void CURL;
+typedef int CURLcode;
+#define CURLOPT_URL 0
+#define CURLOPT_WRITEFUNCTION 0
+#define CURLOPT_WRITEDATA 0
+// Stub CURL functions when library not available
+inline CURL *curl_easy_init() { return nullptr; }
+inline void curl_easy_cleanup(CURL *) {}
+inline CURLcode curl_easy_perform(CURL *) { return 0; }
+inline CURLcode curl_easy_setopt(CURL *, int, ...) { return 0; }
+#endif
+
+#ifdef NO_QALCULATE
+class Qalculate
+{
+};
+#endif
+
+#ifdef NO_PYTHON
+namespace py
+{
+    class scoped_interpreter
+    {
+    };
+    class module_
+    {
+    public:
+        static module_ import(const char *) { return module_(); }
+    };
+    class object
+    {
+    };
+    static object make_tuple(...) { return object(); }
+}
+#endif
+
+// ============================================================================
+// FORWARD DECLARATIONS - Functions defined later in file
+// ============================================================================
+std::string FetchDONKI(const std::string &startDate, const std::string &endDate);
+std::string SummarizeWithOpenAI(const std::string &query);
+std::string FetchJDCalJD(const std::string &jd);
+std::string FetchJDCalCD(const std::string &cd);
+size_t WriteCallback(void *contents, size_t size, size_t nmemb, std::string *data);
+
 // Database and Cloud Storage Pointers
 // These are initialized in main() and used throughout the application
-sqlite3 *db;                                                                 // SQLite database for local caching of search results (offline access)
-Aws::S3::S3Client *s3_client;                                                // AWS S3 client for syncing cached data to cloud storage
-Aws::CognitoIdentityProvider::CognitoIdentityProviderClient *cognito_client; // AWS Cognito for user authentication
+sqlite3 *db = nullptr;                                                                 // SQLite database for local caching of search results (offline access)
+Aws::S3::S3Client *s3_client = nullptr;                                                // AWS S3 client for syncing cached data to cloud storage
+Aws::CognitoIdentityProvider::CognitoIdentityProviderClient *cognito_client = nullptr; // AWS Cognito for user authentication
 
 // ============================================================================
 // NASA DONKI API FUNCTION - Fetches space weather data
@@ -368,12 +457,16 @@ private:
 
         QString result; // String to accumulate all results for display
 
+#ifndef NO_QALCULATE
         // Initialize Qalculate library for mathematical calculations
         Qalculate calc;
+#endif
 
+#ifndef NO_PYTHON
         // Initialize Python interpreter for symbolic math (SymPy library)
         py::scoped_interpreter guard{};                   // RAII guard - automatically starts/stops interpreter
         py::module_ sympy = py::module_::import("sympy"); // Import SymPy for derivatives/integrals
+#endif
 
         // Vector to collect system of equations (multiple equations with multiple unknowns)
         std::vector<std::string> system_eqs;
@@ -417,6 +510,7 @@ private:
             // ================================================================
             else if (eq.find("d/d") != std::string::npos)
             {
+#ifndef NO_PYTHON
                 // Parse derivative notation like "d/dx(x^2)"
                 // Extract variable (usually "x") and function expression
                 std::string var = "x"; // Variable to differentiate with respect to (default x)
@@ -434,12 +528,16 @@ private:
                 result += QString("d/dx(%1) = %2\n")
                               .arg(QString::fromStdString(func),
                                    QString::fromStdString(deriv.attr("__str__")().cast<std::string>()));
+#else
+                result += QString("Derivative calculation requires Python/SymPy\n");
+#endif
             }
             // ================================================================
             // DEFINITE INTEGRAL CALCULATION: ? notation
             // ================================================================
             else if (eq.find("?") != std::string::npos)
             {
+#ifndef NO_PYTHON
                 // Parse integral notation like "?(0,1) x^2 dx"
                 // Extract bounds (a, b) and function expression
 
@@ -461,6 +559,9 @@ private:
                 result += QString("?(%1,%2) %3 dx = %4\n")
                               .arg(QString::number(a), QString::number(b), QString::fromStdString(func),
                                    QString::fromStdString(integral.attr("__str__")().cast<std::string>()));
+#else
+                result += QString("Integral calculation requires Python/SymPy\n");
+#endif
             }
             // ================================================================
             // ALGEBRAIC EQUATIONS: Contains "=" sign
@@ -481,11 +582,15 @@ private:
             // ================================================================
             else
             {
+#ifdef NO_QALCULATE
+                result += QString("%1 = [Qalculate not available]\n").arg(QString::fromStdString(eq));
+#else
                 // Use Qalculate library for general math expressions
                 // e.g., "2 + 2", "sqrt(16)", "sin(pi/2)", etc.
                 result += QString("%1 = %2\n")
                               .arg(QString::fromStdString(eq),
                                    QString::fromStdString(calc.evaluate(eq)));
+#endif
             }
         }
 
@@ -494,6 +599,9 @@ private:
         // ====================================================================
         if (system_eqs.size() >= 2)
         {
+#ifdef NO_PYTHON
+            result += QString("[System solving unavailable - Python/SymPy not installed]\\n");
+#else
             // Use SymPy to solve simultaneous equations with multiple unknowns
             // Example: "x + y = 5" and "x - y = 1" -> solve for x and y
 
@@ -508,10 +616,11 @@ private:
             py::object solutions = sympy.attr("solve")(py::make_tuple(eq1, eq2), py::make_tuple(x, y));
 
             // Display system and solutions
-            result += QString("System: %1, %2\nSolutions: %3\n")
+            result += QString("System: %1, %2\\nSolutions: %3\\n")
                           .arg(QString::fromStdString(system_eqs[0]),
                                QString::fromStdString(system_eqs[1]),
                                QString::fromStdString(solutions.attr("__str__")().cast<std::string>()));
+#endif
         }
 
         // Display all results in the output text area
@@ -620,6 +729,9 @@ private:
 
     void solveEquations()
     {
+#ifdef NO_PYTHON
+        output->setText("Python support not available. Install pybind11 and rebuild to enable symbolic math.");
+#else
         std::string expr = input->toPlainText().toStdString();
         std::vector<std::string> equations;
         std::stringstream ss(expr);
@@ -670,6 +782,7 @@ def ramanujan_tau(n):
             }
         }
         output->setText(result);
+#endif
     }
 };
 
@@ -791,6 +904,12 @@ public:
         summaries[0]->setText(html); // Display HTML in summary (or could be plain text)
     }
 
+    // loadUrl - Navigate to a specific URL
+    void loadUrl(const QUrl &url)
+    {
+        views[0]->load(url);
+    }
+
 private:
     std::vector<QWebEngineView *> views; // Collection of web view widgets
     std::vector<QTextEdit *> summaries;  // Collection of summary text widgets
@@ -869,6 +988,9 @@ size_t WriteCallback(void *contents, size_t size, size_t nmemb, std::string *dat
 //
 std::string SummarizeText(const std::string &text)
 {
+#ifdef NO_PYTHON
+    return "[Python AI summarization unavailable - install pybind11 and Hugging Face Transformers]";
+#else
     py::scoped_interpreter guard{}; // Initialize Python interpreter
 
     // Import Hugging Face Transformers library
@@ -882,6 +1004,7 @@ std::string SummarizeText(const std::string &text)
 
     // Extract summary text and convert to C++ string
     return summary[0].attr("summary_text").cast<std::string>();
+#endif
 }
 
 // SummarizeWithOpenAI - Summarizes text using OpenAI GPT-4 (with fallback to Llama)
@@ -898,6 +1021,9 @@ std::string SummarizeText(const std::string &text)
 //
 std::string SummarizeWithOpenAI(const std::string &query)
 {
+#ifdef NO_CURL
+    return "[OpenAI summarization unavailable - CURL not installed]";
+#else
     CURL *curl = curl_easy_init();                                  // Initialize cURL for HTTP request
     std::string url = "https://api.openai.com/v1/chat/completions"; // OpenAI API endpoint
     std::string response;
@@ -957,6 +1083,7 @@ std::string SummarizeWithOpenAI(const std::string &query)
 
     // Fallback: If OpenAI fails, use local Llama-3.1 model
     return SummarizeText(query);
+#endif
 }
 
 // ============================================================================
@@ -973,6 +1100,9 @@ std::string SummarizeWithOpenAI(const std::string &query)
 //
 std::string GetOAuthToken()
 {
+#ifdef NO_CURL
+    return "";
+#else
     CURL *curl = curl_easy_init();
 
     // Build Cognito OAuth2 endpoint URL
@@ -997,6 +1127,7 @@ std::string GetOAuthToken()
 
     // TODO: Parse JSON response to extract actual access_token
     return "mock_access_token"; // Placeholder - replace with: json::parse(response)["access_token"]
+#endif
 }
 
 // SyncCacheToCloud - Uploads local SQLite cache to AWS S3 for backup/sync
@@ -1011,6 +1142,11 @@ std::string GetOAuthToken()
 //
 void SyncCacheToCloud(const std::string &token)
 {
+#ifdef NO_AWS
+    // AWS SDK not available - cloud sync disabled
+    (void)token; // Suppress unused parameter warning
+    return;
+#else
     // Create S3 upload request
     Aws::S3::Model::PutObjectRequest request;
     request.SetBucket("coanqi-cache");                                  // S3 bucket name (replace with your bucket)
@@ -1025,6 +1161,7 @@ void SyncCacheToCloud(const std::string &token)
 
     // Execute S3 upload (synchronizes local cache to cloud)
     s3_client->PutObject(request);
+#endif
 }
 
 // ============================================================================
@@ -1042,6 +1179,12 @@ void SyncCacheToCloud(const std::string &token)
 //
 void OfflineSearch(const std::string &query, std::vector<SearchResult> &offlineResults)
 {
+#ifdef NO_SQLITE
+    // SQLite not available - offline search disabled
+    (void)query;
+    (void)offlineResults;
+    return;
+#else
     sqlite3_stmt *stmt; // SQLite prepared statement (compiled SQL query)
 
     // Prepare SQL query with wildcards for partial matching
@@ -1074,6 +1217,7 @@ void OfflineSearch(const std::string &query, std::vector<SearchResult> &offlineR
     }
 
     sqlite3_finalize(stmt); // Clean up prepared statement (free memory)
+#endif
 }
 
 // ============================================================================
@@ -1090,6 +1234,9 @@ void OfflineSearch(const std::string &query, std::vector<SearchResult> &offlineR
 //
 std::string ProcessVoiceInput()
 {
+#ifdef NO_POCKETSPHINX
+    return "[Voice input unavailable - install PocketSphinx for speech recognition]";
+#else
     // Initialize PocketSphinx decoder with default configuration
     ps_decoder_t *ps = ps_init(cmd_ln_init(nullptr, ps_args(), true, nullptr));
 
@@ -1111,6 +1258,7 @@ std::string ProcessVoiceInput()
 
     // Return the recognized text query (will be used for search)
     return text;
+#endif
 }
 
 // ProcessVideoInput - Captures video from webcam and recognizes hand gestures
@@ -1123,6 +1271,9 @@ std::string ProcessVoiceInput()
 // Use case: Hands-free operation (e.g., gesture to submit query without typing)
 std::string ProcessVideoInput()
 {
+#ifdef NO_OPENCV
+    return "submit query"; // Default command when OpenCV not available
+#else
     // Open video capture from default camera (device index 0)
     // cv::VideoCapture is RAII - automatically closes camera when destroyed
     cv::VideoCapture cap(0);
@@ -1149,6 +1300,7 @@ std::string ProcessVideoInput()
 
     // Return the command string (will trigger action in main application)
     return command;
+#endif
 }
 
 // RenderScatterPlot - Visualizes 2D data using VTK scatter plot
@@ -1161,6 +1313,13 @@ std::string ProcessVideoInput()
 // Use case: Visualize search results, orbital data, or statistical analysis
 void RenderScatterPlot(QWidget *parent, const std::vector<double> &x, const std::vector<double> &y)
 {
+#ifdef NO_VTK
+    // VTK not available - skip visualization
+    (void)parent;
+    (void)x;
+    (void)y;
+    return;
+#else
     // Create smart pointer to scatter plot matrix
     // vtkSmartPointer automatically manages memory (like std::shared_ptr but for VTK)
     // vtkScatterPlotMatrix creates a matrix of plots (1x1 in this case for single scatter plot)
@@ -1172,6 +1331,7 @@ void RenderScatterPlot(QWidget *parent, const std::vector<double> &x, const std:
     //   3. Create QVTKWidget to embed in Qt parent
     //   4. Set up interaction (zoom, pan, selection)
     // Simplified placeholder for now - full implementation would populate table and configure rendering
+#endif
 }
 
 // SearchNASA - Query NASA APIs for space-related data
@@ -1186,6 +1346,12 @@ void RenderScatterPlot(QWidget *parent, const std::vector<double> &x, const std:
 // Results are cached to SQLite database to reduce API calls
 void SearchNASA(const std::string &query, std::vector<SearchResult> &nasaResults)
 {
+#ifdef NO_CURL
+    // CURL not available - NASA search disabled
+    (void)query;
+    (void)nasaResults;
+    return;
+#else
     // Initialize cURL for HTTP requests (see FetchDONKI for similar pattern)
     CURL *curl = curl_easy_init();
 
@@ -1265,6 +1431,7 @@ void SearchNASA(const std::string &query, std::vector<SearchResult> &nasaResults
 
     // Clean up cURL handle (free memory, close connections)
     curl_easy_cleanup(curl);
+#endif
 }
 
 // SearchMAST - Query MAST (Mikulski Archive for Space Telescopes) for astronomy data
@@ -1280,6 +1447,11 @@ void SearchNASA(const std::string &query, std::vector<SearchResult> &nasaResults
 // Note: This is simplified example - production code would search catalog, not download specific file
 void SearchMAST(const std::string &query, std::vector<SearchResult> &mastResults)
 {
+#ifdef NO_CURL
+    (void)query;
+    (void)mastResults;
+    return;
+#else
     // Initialize cURL for HTTP request
     CURL *curl = curl_easy_init();
 
@@ -1322,6 +1494,7 @@ void SearchMAST(const std::string &query, std::vector<SearchResult> &mastResults
 
     // Clean up cURL
     curl_easy_cleanup(curl);
+#endif
 }
 
 // FetchHorizons - Query JPL Horizons system for solar system body ephemerides
@@ -1337,6 +1510,12 @@ void SearchMAST(const std::string &query, std::vector<SearchResult> &mastResults
 // Use case: Calculate object positions for observation planning or trajectory analysis
 std::string FetchHorizons(const std::string &command, const std::string &start_time, const std::string &stop_time)
 {
+#ifdef NO_CURL
+    (void)command;
+    (void)start_time;
+    (void)stop_time;
+    return "";
+#else
     // Initialize cURL
     CURL *curl = curl_easy_init();
 
@@ -1368,6 +1547,7 @@ std::string FetchHorizons(const std::string &command, const std::string &start_t
 
     // Return raw ephemeris text (caller can parse as needed)
     return response;
+#endif
 }
 
 // FetchJDCalJD - Convert Julian Date (JD) to calendar date
@@ -1377,6 +1557,10 @@ std::string FetchHorizons(const std::string &command, const std::string &start_t
 // Use case: Convert JD from astronomical data to human-readable date
 std::string FetchJDCalJD(const std::string &jd)
 {
+#ifdef NO_CURL
+    (void)jd;
+    return "";
+#else
     // Initialize cURL
     CURL *curl = curl_easy_init();
 
@@ -1401,6 +1585,7 @@ std::string FetchJDCalJD(const std::string &jd)
 
     // Return calendar date string
     return response;
+#endif
 }
 
 // FetchJDCalCD - Convert calendar date to Julian Date (JD)
@@ -1410,6 +1595,10 @@ std::string FetchJDCalJD(const std::string &jd)
 // Use case: Convert observation date to JD for ephemeris calculations or time arithmetic
 std::string FetchJDCalCD(const std::string &cd)
 {
+#ifdef NO_CURL
+    (void)cd;
+    return "";
+#else
     // Initialize cURL
     CURL *curl = curl_easy_init();
 
@@ -1434,6 +1623,7 @@ std::string FetchJDCalCD(const std::string &cd)
 
     // Return JD number
     return response;
+#endif
 }
 
 // FetchPeriodicEarthMoon - Get periodic orbit data for Earth-Moon system
@@ -1446,6 +1636,12 @@ std::string FetchJDCalCD(const std::string &cd)
 // Use case: Mission planning for lunar gateway, JWST-like missions, etc.
 std::string FetchPeriodicEarthMoon(const std::string &family, const std::string &libr, const std::string &branch)
 {
+#ifdef NO_CURL
+    (void)family;
+    (void)libr;
+    (void)branch;
+    return "";
+#else
     // Initialize cURL
     CURL *curl = curl_easy_init();
 
@@ -1472,6 +1668,7 @@ std::string FetchPeriodicEarthMoon(const std::string &family, const std::string 
 
     // Return orbit data (JSON with initial conditions, period, stability index, etc.)
     return response;
+#endif
 }
 
 // FetchPeriodicJupiterEuropa - Get periodic orbit data for Jupiter-Europa system
@@ -1481,8 +1678,13 @@ std::string FetchPeriodicEarthMoon(const std::string &family, const std::string 
 // Returns: JSON with orbit data for Jupiter's moon Europa
 // Europa: Jupiter's icy moon with subsurface ocean (target for astrobiology missions)
 // Use case: Planning orbits for Europa Clipper, future lander missions
-std::string FetchPeriodicJupiterEuropa(const std::string &family, double stability = -1.0)
+std::string FetchPeriodicJupiterEuropa(const std::string &family, double stability)
 {
+#ifdef NO_CURL
+    (void)family;
+    (void)stability;
+    return "";
+#else
     // Initialize cURL
     CURL *curl = curl_easy_init();
 
@@ -1512,6 +1714,7 @@ std::string FetchPeriodicJupiterEuropa(const std::string &family, double stabili
 
     // Return orbit data
     return response;
+#endif
 }
 
 // FetchPeriodicSaturnEnceladus - Get periodic orbit data for Saturn-Enceladus system
@@ -1525,6 +1728,13 @@ std::string FetchPeriodicJupiterEuropa(const std::string &family, double stabili
 // Use case: Planning sample-return missions through geyser plumes
 std::string FetchPeriodicSaturnEnceladus(const std::string &family, const std::string &libr, double periodmax = 1.0, const std::string &periodunits = "d")
 {
+#ifdef NO_CURL
+    (void)family;
+    (void)libr;
+    (void)periodmax;
+    (void)periodunits;
+    return "";
+#else
     // Initialize cURL
     CURL *curl = curl_easy_init();
 
@@ -1549,6 +1759,7 @@ std::string FetchPeriodicSaturnEnceladus(const std::string &family, const std::s
 
     // Return orbit data
     return response;
+#endif
 }
 
 // FetchPeriodicSaturnTitan - Get periodic orbit data for Saturn-Titan system
@@ -1563,6 +1774,13 @@ std::string FetchPeriodicSaturnEnceladus(const std::string &family, const std::s
 // Use case: Planning Dragonfly-like missions to Titan's surface
 std::string FetchPeriodicSaturnTitan(const std::string &family, double jacobimin = 3.0, double stabmax = 1.0, const std::string &branch = "N")
 {
+#ifdef NO_CURL
+    (void)family;
+    (void)jacobimin;
+    (void)stabmax;
+    (void)branch;
+    return "";
+#else
     // Initialize cURL
     CURL *curl = curl_easy_init();
 
@@ -1588,6 +1806,7 @@ std::string FetchPeriodicSaturnTitan(const std::string &family, double jacobimin
 
     // Return orbit data
     return response;
+#endif
 }
 
 // FetchPeriodicMarsPhobos - Get periodic orbit data for Mars-Phobos system
@@ -1602,6 +1821,13 @@ std::string FetchPeriodicSaturnTitan(const std::string &family, double jacobimin
 // Use case: Planning sample-return missions to Phobos (easier than landing on Mars surface)
 std::string FetchPeriodicMarsPhobos(const std::string &family, double jacobimin = 3.0, double stabmax = 1.0, const std::string &branch = "21")
 {
+#ifdef NO_CURL
+    (void)family;
+    (void)jacobimin;
+    (void)stabmax;
+    (void)branch;
+    return "";
+#else
     // Initialize cURL
     CURL *curl = curl_easy_init();
 
@@ -1625,6 +1851,7 @@ std::string FetchPeriodicMarsPhobos(const std::string &family, double jacobimin 
 
     // Return orbit data
     return response;
+#endif
 }
 
 // PerformSearch - Main search orchestration function (coordinates all API calls and result distribution)
@@ -1812,12 +2039,16 @@ void PerformSearch(const std::string &query, std::vector<std::string> &focus, bo
         RenderScatterPlot(nullptr, {}, {});
     }
 
-    struct lws_context *ws_context = lws_create_context(nullptr);
-    lws_connect(ws_context, "eventhorizontelescope.org", 443, "/data", on_message, nullptr);
-    lws_connect(ws_context, "skaobservatory.org", 443, "/realtime", on_message, nullptr);
-    lws_connect(ws_context, "ligo.org", 443, "/alerts", on_message, nullptr);
-    lws_connect(ws_context, "fast.bao.ac.cn", 443, "/realtime", on_message, nullptr);
+#ifndef NO_CURL
+    // WebSocket connections for live data streams
+    // DISABLED: libwebsockets not installed
+    // struct lws_context *ws_context = lws_create_context(nullptr);
+    // lws_connect(ws_context, "eventhorizontelescope.org", 443, "/data", on_message, nullptr);
+    // lws_connect(ws_context, "skaobservatory.org", 443, "/realtime", on_message, nullptr);
+    // lws_connect(ws_context, "ligo.org", 443, "/alerts", on_message, nullptr);
+    // lws_connect(ws_context, "fast.bao.ac.cn", 443, "/realtime", on_message, nullptr);
 
+    // Additional API queries for remaining windows
     CURL *curl = curl_easy_init();
     for (int i = 15; i < MAX_WINDOWS && i < focus.size(); ++i)
     {
@@ -1832,11 +2063,14 @@ void PerformSearch(const std::string &query, std::vector<std::string> &focus, bo
             std::string summary = SummarizeWithOpenAI(response);
             SearchResult result = {"https://example.com", "Sample Result", summary, 0.95, false};
             results[i].push_back(result);
+#ifndef NO_SQLITE
             sqlite3_exec(db, ("INSERT INTO cache (url, title, summary, isLive) VALUES ('" + result.url + "', '" + result.title + "', '" + result.summary + "', 0)").c_str(), nullptr, nullptr, nullptr);
+#endif
         }
     }
     curl_easy_cleanup(curl);
-    lws_context_destroy(ws_context);
+    // lws_context_destroy(ws_context); // DISABLED: libwebsockets not installed
+#endif
     SyncCacheToCloud(oauth_token);
 }
 
@@ -1863,13 +2097,13 @@ Q_OBJECT // Required macro for Qt's meta-object system (enables signals/slots)
 // WINDOWS-SPECIFIC: System tray icon (optional, only on Windows)
 #ifdef _WIN32
         // Create notification icon data structure
-        NOTIFYICONDATA nid = {sizeof(nid)};                      // Initialize with struct size
-        nid.hWnd = (HWND)winId();                                // Window handle (Qt's winId() gets native HWND)
-        nid.uID = 1;                                             // Unique icon ID
-        nid.uFlags = NIF_ICON | NIF_TIP;                         // Icon and tooltip enabled
-        nid.hIcon = LoadIcon(GetModuleHandle(nullptr), "Z.ico"); // Load icon from resources
-        strcpy(nid.szTip, "CoAnQi");                             // Tooltip text when hovering over tray icon
-        Shell_NotifyIcon(NIM_ADD, &nid);                         // Add icon to system tray
+        NOTIFYICONDATA nid = {sizeof(nid)};                       // Initialize with struct size
+        nid.hWnd = (HWND)winId();                                 // Window handle (Qt's winId() gets native HWND)
+        nid.uID = 1;                                              // Unique icon ID
+        nid.uFlags = NIF_ICON | NIF_TIP;                          // Icon and tooltip enabled
+        nid.hIcon = LoadIcon(GetModuleHandle(nullptr), L"Z.ico"); // Load icon from resources (wide string)
+        wcscpy_s(nid.szTip, L"CoAnQi");                           // Tooltip text when hovering over tray icon (wide string)
+        Shell_NotifyIcon(NIM_ADD, &nid);                          // Add icon to system tray
 #endif
 
         // CENTRAL WIDGET: Main container for all UI elements
@@ -1950,7 +2184,7 @@ Q_OBJECT // Required macro for Qt's meta-object system (enables signals/slots)
 
         // Special case: Tab 21 preloaded with ALMA Cycle 12 observing tool
         // ALMA = Atacama Large Millimeter Array (radio telescope in Chile)
-        browserWindows[20]->views[0]->load(QUrl("https://almascience.nrao.edu/proposing/observing-tool/tarball-download-page"));
+        browserWindows[20]->loadUrl(QUrl("https://almascience.nrao.edu/proposing/observing-tool/tarball-download-page"));
 
         // Add tabs to main layout
         layout->addWidget(tabs);
@@ -1982,13 +2216,16 @@ Q_OBJECT // Required macro for Qt's meta-object system (enables signals/slots)
         // DATABASE AND CLOUD INITIALIZATION
 
         // Open SQLite database (or create if doesn't exist)
+#ifndef NO_SQLITE
         sqlite3_open("coanqi_cache.db", &db);
 
         // Create cache table if not exists (stores offline search results)
         // Schema: url (TEXT), title (TEXT), summary (TEXT), isLive (INTEGER boolean)
         sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS cache (url TEXT, title TEXT, summary TEXT, isLive INTEGER)", nullptr, nullptr, nullptr);
+#endif
 
         // Initialize AWS SDK (required before using S3 or Cognito clients)
+#ifndef NO_AWS
         Aws::SDKOptions options; // Default SDK options
         Aws::InitAPI(options);   // Initialize SDK (loads credentials, configs)
 
@@ -1998,6 +2235,9 @@ Q_OBJECT // Required macro for Qt's meta-object system (enables signals/slots)
 
         // OAUTH AUTHENTICATION: Get token for authenticated API access
         std::string oauth_token = GetOAuthToken(); // Calls AWS Cognito (see GetOAuthToken function)
+#else
+        std::string oauth_token = ""; // No AWS - dummy token
+#endif
 
         // SIGNAL/SLOT CONNECTIONS: Wire up all button clicks and events
         // Qt's signal/slot mechanism connects events (signals) to handlers (slots/lambdas)
@@ -2118,14 +2358,18 @@ Q_OBJECT // Required macro for Qt's meta-object system (enables signals/slots)
         delete[] browserWindows;
 
         // Close SQLite database (flush buffers, release file locks)
+#ifndef NO_SQLITE
         sqlite3_close(db);
+#endif
 
         // Delete AWS clients (free network connections and memory)
+#ifndef NO_AWS
         delete s3_client;
         delete cognito_client;
 
         // Shutdown AWS SDK (opposite of InitAPI - releases global resources)
         Aws::ShutdownAPI(Aws::SDKOptions());
+#endif
 
 // WINDOWS-SPECIFIC: Remove system tray icon
 #ifdef _WIN32
@@ -2140,6 +2384,9 @@ private:
     // Private because only MainWindow should access this directly
     BrowserWindow **browserWindows;
 };
+
+// Include Qt MOC-generated code for MainWindow class (required for Q_OBJECT macro)
+#include "source2.moc"
 
 // main() - Application entry point (where program execution begins)
 // Parameters:
