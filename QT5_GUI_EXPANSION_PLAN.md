@@ -1,43 +1,34 @@
-# Qt5 GUI Expansion Plan - Star-Magic UQFF
+# Qt6 GUI Expansion Plan - Star-Magic UQFF
 **Created:** December 1, 2025  
-**Status:** Ready to begin after MAIN_1_CoAnQi.exe testing  
-**Target:** Build source2.cpp (HEAD PROGRAM) with full Qt5 GUI ecosystem
+**Updated:** December 3, 2025 @ 13:45 PM  
+**Status:** MAIN_1_CoAnQi OPERATIONAL, Source2 BROKEN (AWS SDK iostream errors)  
+**Target:** Build source2.cpp (HEAD PROGRAM) with full Qt6 GUI ecosystem
 
 ---
 
 ## Current Status: Core Computational Engine Complete ✅
 
-- **MAIN_1_CoAnQi.exe**: 1.31 MB, 13 menu options, Wolfram + Grok AI functional
-- **Physics Terms**: 6,809 registered across 116 integrated source files
-- **Build System**: Visual Studio 2022 (MSVC 19.44), CMake, UPX compression
+- **MAIN_1_CoAnQi.exe**: 2.00 MB (Dec 3 @ 13:21:45), 13 menu options, Wolfram + Grok AI functional
+- **Runtime Verified**: Dec 3 @ 13:37:40 (6,643/6,785 terms registered)
+- **Physics Terms**: 6,643 active across 116 integrated source files (97.9% registration)
+- **Build System**: Visual Studio 2022 (MSVC 19.44.35207), CMake 3.31.0, C++20
 - **AI Integrations**: Wolfram WSTP 14.3, Qt6 6.10.0, xAI Grok API
+- **Source2 Status**: ❌ BROKEN (8 iostream LNK2001 errors from AWS SDK DLLs)
 
 ---
 
-## Phase 1: Qt5 Installation via vcpkg
+## Phase 1: Qt6 Installation via vcpkg ✅ COMPLETE
 
-### Required Qt5 Components
-
-```powershell
-# Core Qt5 modules (already partially installed?)
-C:\vcpkg\vcpkg.exe install qt5-base:x64-windows
-C:\vcpkg\vcpkg.exe install qt5-webengine:x64-windows
-C:\vcpkg\vcpkg.exe install qt5-webenginewidgets:x64-windows
-C:\vcpkg\vcpkg.exe install qt5-printsupport:x64-windows
-C:\vcpkg\vcpkg.exe install qt5-network:x64-windows
-
-# Additional Qt5 for source2.cpp features
-C:\vcpkg\vcpkg.exe install qt5-multimedia:x64-windows
-C:\vcpkg\vcpkg.exe install qt5-svg:x64-windows
-```
-
-### Verification
+### Qt6 Components Installed
 
 ```powershell
-# Check installed Qt5 packages
-C:\vcpkg\vcpkg.exe list | Select-String "qt5"
+# Qt6 6.10.0 ALREADY INSTALLED at C:/Qt/6.10.0/msvc2022_64/
+# vcpkg integration: qt6-base, qt6-webenginewidgets
 
-# Expected output: qt5-base, qt5-webengine, qt5-webenginewidgets, qt5-printsupport, etc.
+# Verification
+C:\vcpkg\vcpkg.exe list | Select-String "qt6"
+# qt6-base:x64-windows                               6.10.0
+# qt6-webenginewidgets:x64-windows                   6.10.0 (used by Grok API)
 ```
 
 ---

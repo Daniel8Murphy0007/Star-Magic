@@ -1,6 +1,6 @@
 # WORKSPACE QUICK REFERENCE - Star-Magic UQFF
 
-**Last Updated:** December 1, 2025 @ 21:34  
+**Last Updated:** December 3, 2025 @ 13:45 PM  
 **Purpose:** ONE-PAGE cheat sheet to prevent re-discovery
 
 ---
@@ -8,18 +8,21 @@
 ## WHERE IS EVERYTHING?
 
 ### Executables (BUILT & WORKING)
+
 ```
-build_msvc\Release\MAIN_1_CoAnQi.exe          1.31 MB    ✅ WORKING
+build_msvc\Release\MAIN_1_CoAnQi.exe          2.00 MB    ✅ WORKING (Runtime Verified Dec 3 @ 13:37:40)
 build_msvc\Release\source2_minimal_test.exe   0.30 MB    ✅ WORKING
 ```
 
 ### Log Files (Application Runtime)
+
 ```
 coAnQi_log_*.txt in ROOT directory
-Latest: coAnQi_log_1764625572.txt (Dec 1, 4:46 PM)
+Latest Runtime: Dec 3, 13:37:40 (6,643/6,785 terms registered, 13-option menu)
 ```
 
 ### Wolfram Integration
+
 ```
 source168.cpp - UQFF Buoyancy (5 systems)
 source169.cpp - Cassini Buoyancy (Saturn)
@@ -36,6 +39,7 @@ TOTAL: 5,890 Wolfram PhysicsTerm classes
 ```
 
 ### Grok AI Integration
+
 ```
 source178_grok_api.cpp - xAI API wrapper (5 functions)
 GROK_ACTIVATION_GUIDE.md - Setup instructions
@@ -45,6 +49,7 @@ STATUS: ✅ CODE COMPLETE | ⚠️ NEEDS XAI_API_KEY
 ```
 
 ### Source File Tracking
+
 ```
 INTEGRATION_TRACKER.csv - 694 lines, 173 source files
 MAIN_1_CoAnQi_integration_status.json - Physics inventory
@@ -55,6 +60,7 @@ source178: ✅ INTEGRATED (Grok AI)
 ```
 
 ### Status Documentation
+
 ```
 SAVEPOINT_DEC1_2025.md - Complete build verification (MOST RECENT)
 CONSTRUCTION_STATUS_REPORT.md - Phase 1 85-90% complete
@@ -65,6 +71,7 @@ EMERGENCY_SESSION_CAPTURE_DEC1_2134.md - Context preservation
 ```
 
 ### Build System
+
 ```
 CMakeLists.txt - Visual Studio 2022, MSVC-only
 BUILD_INSTRUCTIONS_PERMANENT.md - vcpkg paths, WSTP config

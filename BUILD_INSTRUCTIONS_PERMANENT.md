@@ -1,33 +1,37 @@
 # PERMANENT BUILD INSTRUCTIONS - READ THIS EVERY TIME
 
 **Created: November 16, 2025**
-**Last Updated: December 1, 2025 - WOLFRAM WSTP + QT6 + GROK INTEGRATION COMPLETE**
+**Last Updated: December 3, 2025 - CMakeLists.txt FIX + MAIN_1_CoAnQi VERIFIED WORKING**
 **DO NOT DELETE THIS FILE**
 
-## ✅ SAVE POINT: December 1, 2025 3:05 PM
+## ✅ SAVE POINT: December 3, 2025 13:45 PM
 
 ### FULLY WORKING STATE - WOLFRAM + QT6 + GROK ACTIVE
 
-- **Build System**: Visual Studio 2022 (MSVC 19.44.35219.0) ✅
+- **Build System**: Visual Studio 2022 (MSVC 19.44.35207) ✅
 - **Wolfram WSTP**: ENABLED (source168-173 integrated) ✅
 - **Qt6**: 6.10.0 ENABLED (Grok API active) ✅
 - **Grok AI**: XAI_API_KEY configured ✅
 - **Tracing System**: uqff_tracing.h integrated ✅
-- **Executable**: 1.31 MB (UPX compressed, 84.8% reduction) ✅
-- **Menu Options**: 1-13 (includes Wolfram 9-11, Grok 12) ✅
+- **Executable**: 2.00 MB (built Dec 3 @ 13:21:45) ✅ RUNTIME VERIFIED 13:37:40
+- **Menu Options**: 1-13 (includes Wolfram 9-11, Grok 12, Exit 13) ✅
+- **Physics Terms**: 6,643/6,785 registered (97.9% rate) ✅
 - **Preprocessor**: USE_EMBEDDED_WOLFRAM=ON, HAVE_QT6 defined ✅
 
-### Critical Files Modified (Dec 1, 2025)
+### Critical Files Modified (Dec 3, 2025)
 
-1. **CMakeLists.txt** - Removed duplicate source178 compilation
-2. **uqff_tracing.h** - Fixed TraceLevel enum (TRACE_DEBUG, etc.) for WSTP compatibility
+1. **CMakeLists.txt** - Removed source178_grok_api.cpp from compile list (lines 243-246)
+   - Reason: source178_grok_api.cpp is #include'd in MAIN_1_CoAnQi.cpp line 206
+   - Fixed: 5 LNK2005 duplicate symbol errors (testGrokAPI, reviewPhysicsCode, etc.)
+   - Status: MAIN_1_CoAnQi.exe builds successfully with Exit Code 0
+2. **uqff_tracing.h** - TraceLevel enum fixed for WSTP compatibility
 3. **MAIN_1_CoAnQi.cpp** - Fixed setAttribute calls, TraceLevel references
 4. **XAI_API_KEY** - Set permanently in user environment
 
 ### What YOU Have NOW
 
 1. **Build System**: Visual Studio 2022 (MSVC-ONLY, Wolfram WSTP requires it) ✅
-2. **Dependencies**: From vcpkg x64-windows ✅
+2. **Dependencies**: From vcpkg x64-windows (8 total: Qt6, VTK, CURL, SQLite3, OpenCV, libwebsockets, AWS SDK, Python/pybind11) ✅
 3. **Wolfram Integration**: 6 source files (168-173) with 19+11+8 astronomical systems ✅
 4. **AI Integration**: Grok API + Wolfram hypergraph working together ✅
 
