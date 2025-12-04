@@ -29,8 +29,8 @@ if (-not (Test-Path $outputDir)) {
 # Step 1: Inventory all source files
 Write-Host "[Step 1] Inventorying source*.cpp files..." -ForegroundColor Yellow
 $sourceFiles = Get-ChildItem -Path $workspaceRoot -Filter "source*.cpp" | 
-    Where-Object { $_.Name -match '^source\d+\.cpp$' } | 
-    Sort-Object { [int]($_.Name -replace '[^\d]', '') }
+Where-Object { $_.Name -match '^source\d+\.cpp$' } | 
+Sort-Object { [int]($_.Name -replace '[^\d]', '') }
 
 Write-Host "Found $($sourceFiles.Count) source files (source1.cpp to source173.cpp)"
 Write-Host ""
@@ -53,16 +53,16 @@ foreach ($file in $sourceFiles) {
     $totalExtractable = $constants + $particles + $frequencies + $masses
     
     $analysisResults += [PSCustomObject]@{
-        FileName = $file.Name
-        FileNumber = [int]($file.Name -replace '[^\d]', '')
-        SizeKB = $sizeKB
-        Lines = $lineCount
-        Constants = $constants
-        Particles = $particles
-        Frequencies = $frequencies
-        Masses = $masses
+        FileName         = $file.Name
+        FileNumber       = [int]($file.Name -replace '[^\d]', '')
+        SizeKB           = $sizeKB
+        Lines            = $lineCount
+        Constants        = $constants
+        Particles        = $particles
+        Frequencies      = $frequencies
+        Masses           = $masses
         TotalExtractable = $totalExtractable
-        Priority = if ($totalExtractable -gt 50) { "HIGH" } elseif ($totalExtractable -gt 10) { "MEDIUM" } else { "LOW" }
+        Priority         = if ($totalExtractable -gt 50) { "HIGH" } elseif ($totalExtractable -gt 10) { "MEDIUM" } else { "LOW" }
     }
 }
 
@@ -82,10 +82,10 @@ Write-Host ""
 Write-Host "Total Extractable Entities: $(($analysisResults | Measure-Object -Property TotalExtractable -Sum).Sum)"
 Write-Host ""
 
-# Show top 20 files by extraction potential
-Write-Host "=== TOP 20 FILES BY EXTRACTION POTENTIAL ===" -ForegroundColor Cyan
-$analysisResults | Sort-Object TotalExtractable -Descending | Select-Object -First 20 | 
-    Format-Table FileName, SizeKB, Lines, TotalExtractable, Priority -AutoSize
+# Show all files by extraction potential (comprehensive mode)
+Write-Host "=== ALL FILES BY EXTRACTION POTENTIAL (Top 50 shown) ===" -ForegroundColor Cyan
+$analysisResults | Sort-Object TotalExtractable -Descending | Select-Object -First 50 | 
+Format-Table FileName, SizeKB, Lines, TotalExtractable, Priority -AutoSize
 
 Write-Host ""
 Write-Host "Report saved to: $reportPath" -ForegroundColor Green
@@ -99,7 +99,8 @@ $wolframAnalysis = $analysisResults | Where-Object { $_.FileNumber -in $wolframF
 if ($wolframAnalysis) {
     Write-Host "Wolfram-specific files (174-178) found:" -ForegroundColor Green
     $wolframAnalysis | Format-Table FileName, TotalExtractable, Priority -AutoSize
-} else {
+}
+else {
     Write-Host "WARNING: Wolfram-specific files (174-178) not all present!" -ForegroundColor Red
 }
 

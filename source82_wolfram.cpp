@@ -1,6 +1,6 @@
-// Wolfram-Enhanced Physics Terms from source82.cpp
+﻿// Wolfram-Enhanced Physics Terms from source82.cpp
 // Generated: November 27, 2025
-// Source: SMBHUQFFModule - SMBH M-σ Relation UQFF Integration (372 lines)
+// Source: SMBHUQFFModule - SMBH M-Ïƒ Relation UQFF Integration (372 lines)
 // Total Classes: 15 (SMBH-specific terms from DynamicVacuum, QuantumCoupling, and MUGE framework)
 
 #include <cmath>
@@ -23,7 +23,7 @@ public:
 };
 
 // ============================================================================
-// SOURCE82-SPECIFIC CLASSES (SMBH M-σ RELATION TERMS)
+// SOURCE82-SPECIFIC CLASSES (SMBH M-Ïƒ RELATION TERMS)
 // ============================================================================
 
 class SMBHDynamicVacuumTerm : public PhysicsTerm {
@@ -36,7 +36,7 @@ public:
         auto it_freq = params.find("frequency");
         
         double amplitude = (it_amp != params.end()) ? it_amp->second : 1e-10;
-        double rho_vac = (it_rho != params.end()) ? it_rho->second : 7.09e-36; // kg/m³
+        double rho_vac = (it_rho != params.end()) ? it_rho->second : 7.09e-36; // kg/mÂ³
         double frequency = (it_freq != params.end()) ? it_freq->second : 1e-15; // Hz
         
         return amplitude * rho_vac * std::sin(frequency * t);
@@ -88,7 +88,7 @@ public:
 class SMBHMSigmaRelationTerm : public PhysicsTerm {
 public:
     double compute(double t, const std::map<std::string, double>& params) const override {
-        // M-σ relation: M_bh = M_0 * (sigma / sigma_0)^alpha
+        // M-Ïƒ relation: M_bh = M_0 * (sigma / sigma_0)^alpha
         // Canonical: M_0 = 1.3e8 M_sun, sigma_0 = 200 km/s, alpha = 4.24
         auto it_M0 = params.find("M_0");
         auto it_sigma = params.find("sigma");
@@ -106,7 +106,7 @@ public:
     std::string getName() const override { return "SMBH_MSigmaRelation"; }
     
     std::string getDescription() const override {
-        return "M-σ relation: M_bh = M_0 * (sigma/sigma_0)^4.24";
+        return "M-Ïƒ relation: M_bh = M_0 * (sigma/sigma_0)^4.24";
     }
     
     bool validate(const std::map<std::string, double>& params) const override {
@@ -118,12 +118,12 @@ class SMBHBulgeGravityTerm : public PhysicsTerm {
 public:
     double compute(double t, const std::map<std::string, double>& params) const override {
         // Bulge gravitational potential influence on SMBH
-        // Φ_bulge = -G * M_bulge / R_bulge
+        // Î¦_bulge = -G * M_bulge / R_bulge
         auto it_G = params.find("G");
         auto it_M_bulge = params.find("M_bulge");
         auto it_R_bulge = params.find("R_bulge");
         
-        double G = (it_G != params.end()) ? it_G->second : 6.674e-11; // m³/kg/s²
+        double G = (it_G != params.end()) ? it_G->second : 6.674e-11; // mÂ³/kg/sÂ²
         double M_bulge = (it_M_bulge != params.end()) ? it_M_bulge->second : 1e11 * 1.989e30; // kg
         double R_bulge = (it_R_bulge != params.end()) ? it_R_bulge->second : 1e3 * 3.086e16; // m
         
@@ -133,7 +133,7 @@ public:
     std::string getName() const override { return "SMBH_BulgeGravity"; }
     
     std::string getDescription() const override {
-        return "Bulge gravitational potential: Φ = -G*M_bulge/R_bulge";
+        return "Bulge gravitational potential: Î¦ = -G*M_bulge/R_bulge";
     }
     
     bool validate(const std::map<std::string, double>& params) const override {
@@ -376,7 +376,7 @@ class SMBHCosmicTimeTerm : public PhysicsTerm {
 public:
     double compute(double t, const std::map<std::string, double>& params) const override {
         // Cosmic time approximation (age of universe at redshift z)
-        // t_cosmic ≈ t_0 / (1 + z)^(3/2) for matter-dominated
+        // t_cosmic â‰ˆ t_0 / (1 + z)^(3/2) for matter-dominated
         auto it_t0 = params.find("t_universe");
         auto it_z = params.find("redshift");
         
@@ -401,7 +401,7 @@ std::string exportToWolfram_Source82() {
     std::string wolfram_code;
     
     wolfram_code += "(* Wolfram Language Export - source82_wolfram.cpp *)\n";
-    wolfram_code += "(* SMBH M-σ Relation UQFF Integration - 15 Physics Terms *)\n";
+    wolfram_code += "(* SMBH M-Ïƒ Relation UQFF Integration - 15 Physics Terms *)\n";
     wolfram_code += "(* Generated: November 27, 2025 *)\n\n";
     
     wolfram_code += "source82Sector = {\n";
@@ -411,7 +411,7 @@ std::string exportToWolfram_Source82() {
     wolfram_code += "  (* Quantum Coupling *)\n";
     wolfram_code += "  SMBHQuantumCoupling[Mbh_, Msun_, r_, lambda_, g_] := g * (Mbh/Msun)^(1/3) * Exp[-r/lambda],\n\n";
     
-    wolfram_code += "  (* M-σ Relation *)\n";
+    wolfram_code += "  (* M-Ïƒ Relation *)\n";
     wolfram_code += "  SMBHMSigmaRelation[sigma_, M0_, sigma0_, alpha_] := M0 * (sigma/sigma0)^alpha,\n\n";
     
     wolfram_code += "  (* Bulge Gravity Potential *)\n";
@@ -464,3 +464,447 @@ std::string exportToWolfram_Source82() {
 }
 
 // End of source82_wolfram.cpp
+
+// ===== VIRGO CLUSTER COSMOLOGICAL TERMS =====
+
+class VirgoClusterMassTerm
+{
+private:
+    double G;              // Gravitational constant (m┬│/kg┬╖s┬▓)
+    double M_cluster;      // Total cluster mass (kg, ~1.2e15 M_sun)
+    double R_virial;       // Virial radius (m, ~2.2 Mpc = 6.79e22 m)
+    double z;              // Redshift (0.0036 for Virgo center)
+
+public:
+    VirgoClusterMassTerm(double mass = 1.2e15 * M_SUN, double r_vir = 2.2 * MPC_TO_M, double redshift = 0.0036)
+        : G(G_CONST), M_cluster(mass), R_virial(r_vir), z(redshift) {}
+
+    double compute(double r, const std::map<std::string, double>& params) const
+    {
+        // Enclosed mass profile: M(<r) = M_cluster * (r/R_virial)^3 * (1 + (R_virial/r))^(-2)
+        // Simplified NFW-like profile for cluster
+        double x = r / R_virial;
+        double M_enclosed = M_cluster * (x * x * x) / (1.0 + x) / (1.0 + x);
+        
+        // Return gravitational acceleration: a = G * M_enclosed / r┬▓
+        return (G * M_enclosed) / (r * r);
+    }
+
+    std::string toWolfram() const
+    {
+        return "VirgoClusterMass[r_, Mcluster_: 1.2*^15 * 1.989*^30, Rvirial_: 2.2 * 3.086*^22, G_: 6.6743*^-11] := "
+               "Module[{x, Menclosed}, "
+               "x = r / Rvirial; "
+               "Menclosed = Mcluster * x^3 / (1 + x)^2; "
+               "G * Menclosed / r^2]";
+    }
+
+    std::string getSignature() const { return "VirgoClusterMassTerm(r, params)"; }
+    std::string getCategory() const { return "gravity"; }
+    std::string getName() const { return "VirgoClusterMass"; }
+    std::string getDescription() const { return "Virgo Cluster total mass gravitational acceleration: a = G┬╖M(<r)/r┬▓ with M_cluster~1.2e15 M_sun"; }
+};
+
+// ========================================
+// CLASS 821: VirgoClusterIntraclusterMediumTerm
+// Category: gas_dynamics
+// Physics: Intracluster medium (ICM) - hot X-ray emitting gas at T~2-4 keV
+// ICM contains ~15% of cluster baryonic mass, creates X-ray emission and SZ effect
+// ========================================
+class VirgoClusterIntraclusterMediumTerm
+{
+private:
+    double T_ICM;          // ICM temperature (keV, ~2.3 keV for Virgo)
+    double n_e0;           // Central electron density (mΓü╗┬│, ~3e3)
+    double r_c;            // Core radius (m, ~40 kpc = 1.23e21 m)
+    double beta;           // Beta model parameter (~0.5 for Virgo)
+
+public:
+    VirgoClusterIntraclusterMediumTerm(double temp = 2.3, double ne_central = 3e3, double core_r = 40 * KPC_TO_M, double beta_param = 0.5)
+        : T_ICM(temp), n_e0(ne_central), r_c(core_r), beta(beta_param) {}
+
+    double compute(double r, const std::map<std::string, double>& params) const
+    {
+        // Beta model: n_e(r) = n_e0 * (1 + (r/r_c)┬▓)^(-3╬▓/2)
+        double n_e = n_e0 * std::pow(1.0 + (r * r) / (r_c * r_c), -1.5 * beta);
+        
+        // Pressure: P = n_e * k_B * T (convert T from keV to Kelvin: T_K = T_keV * 1.16e7)
+        double T_K = T_ICM * 1.16e7;
+        double P_ICM = n_e * K_BOLTZ * T_K;
+        
+        return P_ICM;
+    }
+
+    std::string toWolfram() const
+    {
+        return "VirgoICM[r_, T_: 2.3, ne0_: 3000, rc_: 40 * 3.086*^19, beta_: 0.5] := "
+               "Module[{ne, TK, kB}, "
+               "kB = 1.381*^-23; "
+               "ne = ne0 * (1 + (r/rc)^2)^(-1.5 * beta); "
+               "TK = T * 1.16*^7; "
+               "ne * kB * TK]";
+    }
+
+    std::string getSignature() const { return "VirgoClusterIntraclusterMediumTerm(r, params)"; }
+    std::string getCategory() const { return "gas_dynamics"; }
+    std::string getName() const { return "VirgoClusterICM"; }
+    std::string getDescription() const { return "ICM beta-model pressure: P = n_e(r)┬╖k_B┬╖T with T~2.3 keV, ╬▓~0.5"; }
+};
+
+// ========================================
+// CLASS 822: VirgoClusterGravitationalPotentialTerm
+// Category: gravity
+// Physics: Cluster gravitational potential well ╬ª(r) = -G┬╖M(<r)/r
+// Determines escape velocity and binding energy of member galaxies
+// ========================================
+class VirgoClusterGravitationalPotentialTerm
+{
+private:
+    double G;              // Gravitational constant
+    double M_cluster;      // Total cluster mass
+    double R_virial;       // Virial radius
+    double c_NFW;          // NFW concentration parameter (~4 for clusters)
+
+public:
+    VirgoClusterGravitationalPotentialTerm(double mass = 1.2e15 * M_SUN, double r_vir = 2.2 * MPC_TO_M, double concentration = 4.0)
+        : G(G_CONST), M_cluster(mass), R_virial(r_vir), c_NFW(concentration) {}
+
+    double compute(double r, const std::map<std::string, double>& params) const
+    {
+        // NFW potential: ╬ª(r) = -G┬╖M_virial ┬╖ ln(1 + c┬╖x) / (x ┬╖ f(c))
+        // where x = r/R_virial, f(c) = ln(1+c) - c/(1+c)
+        double x = r / R_virial;
+        double f_c = std::log(1.0 + c_NFW) - c_NFW / (1.0 + c_NFW);
+        
+        // Avoid division by zero at r=0
+        if (x < 1e-10) x = 1e-10;
+        
+        double Phi = -G * M_cluster * std::log(1.0 + c_NFW * x) / (x * f_c * R_virial);
+        
+        return Phi;
+    }
+
+    std::string toWolfram() const
+    {
+        return "VirgoClusterPotential[r_, Mcluster_: 1.2*^15 * 1.989*^30, Rvirial_: 2.2 * 3.086*^22, c_: 4] := "
+               "Module[{x, fc, G}, "
+               "G = 6.6743*^-11; "
+               "x = Max[r / Rvirial, 10^-10]; "
+               "fc = Log[1 + c] - c/(1 + c); "
+               "-G * Mcluster * Log[1 + c*x] / (x * fc * Rvirial)]";
+    }
+
+    std::string getSignature() const { return "VirgoClusterGravitationalPotentialTerm(r, params)"; }
+    std::string getCategory() const { return "gravity"; }
+    std::string getName() const { return "VirgoClusterPotential"; }
+    std::string getDescription() const { return "NFW gravitational potential: ╬ª(r) = -G┬╖M┬╖ln(1+c┬╖x)/(x┬╖f(c)┬╖R_vir) with c~4"; }
+};
+
+// ========================================
+// CLASS 823: VirgoClusterDarkMatterTerm
+// Category: dark_matter
+// Physics: Dark matter halo profile (NFW) - ~85% of cluster mass
+// ╧ü_DM(r) = ╧ü_s / ((r/r_s)(1 + r/r_s)┬▓)
+// ========================================
+class VirgoClusterDarkMatterTerm
+{
+private:
+    double rho_s;          // Scale density (kg/m┬│, ~3e-23 for Virgo)
+    double r_s;            // Scale radius (m, ~550 kpc = 1.70e22 m)
+    double M_DM;           // Total dark matter mass (~1e15 M_sun)
+
+public:
+    VirgoClusterDarkMatterTerm(double scale_density = 3e-23, double scale_radius = 550 * KPC_TO_M, double dm_mass = 1e15 * M_SUN)
+        : rho_s(scale_density), r_s(scale_radius), M_DM(dm_mass) {}
+
+    double compute(double r, const std::map<std::string, double>& params) const
+    {
+        // NFW density profile: ╧ü(r) = ╧ü_s / ((r/r_s) * (1 + r/r_s)┬▓)
+        double x = r / r_s;
+        if (x < 1e-10) x = 1e-10;  // Avoid singularity at r=0
+        
+        double rho_DM = rho_s / (x * (1.0 + x) * (1.0 + x));
+        
+        return rho_DM;
+    }
+
+    std::string toWolfram() const
+    {
+        return "VirgoClusterDarkMatter[r_, rhoS_: 3*^-23, rS_: 550 * 3.086*^19] := "
+               "Module[{x}, "
+               "x = Max[r/rS, 10^-10]; "
+               "rhoS / (x * (1 + x)^2)]";
+    }
+
+    std::string getSignature() const { return "VirgoClusterDarkMatterTerm(r, params)"; }
+    std::string getCategory() const { return "dark_matter"; }
+    std::string getName() const { return "VirgoClusterDarkMatter"; }
+    std::string getDescription() const { return "NFW dark matter profile: ╧ü(r) = ╧ü_s/((r/r_s)┬╖(1+r/r_s)┬▓) with r_s~550 kpc"; }
+};
+
+// ========================================
+// CLASS 824: VirgoClusterM87JetTerm
+// Category: agn
+// Physics: M87 (Virgo A) central AGN relativistic jet energy injection
+// Jet power ~1e44 erg/s = 1e37 W, affects ICM heating and cluster evolution
+// ========================================
+class VirgoClusterM87JetTerm
+{
+private:
+    double L_jet;          // Jet luminosity (W, ~1e37 for M87)
+    double theta_jet;      // Jet opening angle (rad, ~0.1)
+    double v_jet;          // Jet velocity (m/s, ~0.99c)
+    double r_jet_base;     // Jet base radius (m, ~100 pc = 3.086e18 m)
+
+public:
+    VirgoClusterM87JetTerm(double luminosity = 1e37, double angle = 0.1, double velocity = 0.99 * C_LIGHT, double base_r = 100 * 3.086e16)
+        : L_jet(luminosity), theta_jet(angle), v_jet(velocity), r_jet_base(base_r) {}
+
+    double compute(double r, const std::map<std::string, double>& params) const
+    {
+        // Jet energy density: u_jet(r) = L_jet / (4╧Ç┬╖r┬▓┬╖v_jet┬╖╬⌐_jet)
+        // where ╬⌐_jet = 2╧Ç(1 - cos(╬╕_jet)) is the solid angle
+        double Omega_jet = 2.0 * M_PI * (1.0 - std::cos(theta_jet));
+        
+        // Energy density in jet cone
+        double u_jet = L_jet / (4.0 * M_PI * r * r * v_jet * (Omega_jet / (4.0 * M_PI)));
+        
+        // Lorentz factor for relativistic correction
+        double gamma = 1.0 / std::sqrt(1.0 - (v_jet * v_jet) / (C_LIGHT * C_LIGHT));
+        
+        return u_jet * gamma;
+    }
+
+    std::string toWolfram() const
+    {
+        return "VirgoM87Jet[r_, Ljet_: 10^37, theta_: 0.1, vjet_: 0.99 * 2.998*^8] := "
+               "Module[{OmegaJet, uJet, gamma, c}, "
+               "c = 2.998*^8; "
+               "OmegaJet = 2 * Pi * (1 - Cos[theta]); "
+               "uJet = Ljet / (4 * Pi * r^2 * vjet * (OmegaJet/(4*Pi))); "
+               "gamma = 1/Sqrt[1 - (vjet/c)^2]; "
+               "uJet * gamma]";
+    }
+
+    std::string getSignature() const { return "VirgoClusterM87JetTerm(r, params)"; }
+    std::string getCategory() const { return "agn"; }
+    std::string getName() const { return "VirgoM87Jet"; }
+    std::string getDescription() const { return "M87 AGN jet energy density: u_jet = L_jet┬╖╬│/(4╧Ç┬╖r┬▓┬╖v_jet┬╖╬⌐) with L~10┬│Γü╖ W"; }
+};
+
+// ========================================
+// CLASS 825: VirgoClusterTidalStrippingTerm
+// Category: dynamics
+// Physics: Tidal stripping of infalling galaxies by cluster potential
+// Tidal radius r_t = r┬╖(M_gal/(3┬╖M_cluster(<r)))^(1/3)
+// ========================================
+class VirgoClusterTidalStrippingTerm
+{
+private:
+    double M_cluster;      // Cluster mass (kg)
+    double R_virial;       // Virial radius (m)
+    double G;              // Gravitational constant
+
+public:
+    VirgoClusterTidalStrippingTerm(double mass = 1.2e15 * M_SUN, double r_vir = 2.2 * MPC_TO_M)
+        : M_cluster(mass), R_virial(r_vir), G(G_CONST) {}
+
+    double compute(double r, const std::map<std::string, double>& params) const
+    {
+        // Get galaxy mass from params, default to 1e11 M_sun (typical spiral)
+        double M_gal = (params.count("M_gal") ? params.at("M_gal") : 1e11 * M_SUN);
+        
+        // Enclosed cluster mass at radius r (NFW-like approximation)
+        double x = r / R_virial;
+        double M_enclosed = M_cluster * (x * x * x) / (1.0 + x) / (1.0 + x);
+        
+        // Tidal radius: r_t = r * (M_gal / (3 * M_enclosed))^(1/3)
+        double r_tidal = r * std::pow(M_gal / (3.0 * M_enclosed), 1.0 / 3.0);
+        
+        // Tidal acceleration at galaxy edge
+        double a_tidal = 2.0 * G * M_enclosed * r_tidal / (r * r * r);
+        
+        return a_tidal;
+    }
+
+    std::string toWolfram() const
+    {
+        return "VirgoTidalStripping[r_, Mgal_, Mcluster_: 1.2*^15 * 1.989*^30, Rvirial_: 2.2 * 3.086*^22] := "
+               "Module[{x, Menclosed, rtidal, G}, "
+               "G = 6.6743*^-11; "
+               "x = r / Rvirial; "
+               "Menclosed = Mcluster * x^3 / (1 + x)^2; "
+               "rtidal = r * (Mgal / (3 * Menclosed))^(1/3); "
+               "2 * G * Menclosed * rtidal / r^3]";
+    }
+
+    std::string getSignature() const { return "VirgoClusterTidalStrippingTerm(r, params)"; }
+    std::string getCategory() const { return "dynamics"; }
+    std::string getName() const { return "VirgoTidalStripping"; }
+    std::string getDescription() const { return "Tidal stripping acceleration: a_tidal = 2┬╖G┬╖M(<r)┬╖r_t/r┬│ with r_t from Jacobi radius"; }
+};
+
+// ========================================
+// CLASS 826: VirgoClusterVirialTerm
+// Category: thermodynamics
+// Physics: Virial theorem equilibrium: 2K + U = 0, ╧â_v┬▓ = G┬╖M_vir/(3┬╖R_vir)
+// Velocity dispersion ╧â_v ~ 700 km/s for Virgo
+// ========================================
+class VirgoClusterVirialTerm
+{
+private:
+    double M_virial;       // Virial mass (kg)
+    double R_virial;       // Virial radius (m)
+    double sigma_v;        // Velocity dispersion (m/s, ~700 km/s)
+    double G;              // Gravitational constant
+
+public:
+    VirgoClusterVirialTerm(double mass = 1.2e15 * M_SUN, double r_vir = 2.2 * MPC_TO_M, double sigma = 700e3)
+        : M_virial(mass), R_virial(r_vir), sigma_v(sigma), G(G_CONST) {}
+
+    double compute(double r, const std::map<std::string, double>& params) const
+    {
+        // r parameter included for API consistency (unused for virial equilibrium)
+        (void)r;
+        
+        // Virial relation: ╧â┬▓ = G┬╖M_vir / (3┬╖R_vir)
+        // Returns virial equilibrium parameter (should be ~1 if in equilibrium)
+        double sigma_virial = std::sqrt(G * M_virial / (3.0 * R_virial));
+        
+        // Ratio of observed to virial velocity dispersion
+        double virial_ratio = sigma_v / sigma_virial;
+        
+        return virial_ratio;
+    }
+
+    // Helper method (extends base interface for specific virial mass calculations)
+    double computeVirialMass() const
+    {
+        // M_vir = 3┬╖╧â┬▓┬╖R_vir / G
+        return 3.0 * sigma_v * sigma_v * R_virial / G;
+    }
+
+    std::string toWolfram() const
+    {
+        return "VirgoClusterVirial[Mvir_: 1.2*^15 * 1.989*^30, Rvir_: 2.2 * 3.086*^22, sigmaV_: 700000] := "
+               "Module[{sigmaVirial, G}, "
+               "G = 6.6743*^-11; "
+               "sigmaVirial = Sqrt[G * Mvir / (3 * Rvir)]; "
+               "sigmaV / sigmaVirial]";
+    }
+
+    std::string getSignature() const { return "VirgoClusterVirialTerm(r, params)"; }
+    std::string getCategory() const { return "thermodynamics"; }
+    std::string getName() const { return "VirgoClusterVirial"; }
+    std::string getDescription() const { return "Virial equilibrium ratio: ╧â_obs/╧â_vir where ╧â_vir┬▓ = G┬╖M/(3┬╖R), ╧â~700 km/s"; }
+};
+
+// ========================================
+// CLASS 827: VirgoClusterXRayLuminosityTerm
+// Category: radiation
+// Physics: X-ray emission from hot ICM: L_X Γê¥ n_e┬▓┬╖╬¢(T)┬╖V
+// Virgo X-ray luminosity ~10^43 erg/s = 10^36 W
+// ========================================
+class VirgoClusterXRayLuminosityTerm
+{
+private:
+    double n_e0;           // Central electron density (mΓü╗┬│)
+    double T_ICM;          // ICM temperature (keV)
+    double r_c;            // Core radius (m)
+    double beta;           // Beta model parameter
+
+public:
+    VirgoClusterXRayLuminosityTerm(double ne_central = 3e3, double temp = 2.3, double core_r = 40 * KPC_TO_M, double beta_param = 0.5)
+        : n_e0(ne_central), T_ICM(temp), r_c(core_r), beta(beta_param) {}
+
+    double compute(double r, const std::map<std::string, double>& params) const
+    {
+        // Electron density profile (beta model)
+        double n_e = n_e0 * std::pow(1.0 + (r * r) / (r_c * r_c), -1.5 * beta);
+        
+        // Cooling function ╬¢(T) ~ 3e-23 * sqrt(T_keV) [W┬╖m┬│] (simplified)
+        double Lambda_T = 3e-23 * std::sqrt(T_ICM);
+        
+        // X-ray emissivity: ╬╡_X = n_e┬▓ * ╬¢(T) [W/m┬│]
+        double epsilon_X = n_e * n_e * Lambda_T;
+        
+        return epsilon_X;
+    }
+
+    double computeTotalLuminosity(double R_max) const
+    {
+        // Integrate emissivity over volume (simplified spherical)
+        // L_X = Γê½ ╬╡_X(r) 4╧Çr┬▓ dr
+        // Using analytical beta-model integration approximation
+        double L_X = 4.0 * M_PI * n_e0 * n_e0 * 3e-23 * std::sqrt(T_ICM) * 
+                     std::pow(r_c, 3) * M_PI / (6.0 * beta);
+        return L_X;
+    }
+
+    std::string toWolfram() const
+    {
+        return "VirgoXRay[r_, ne0_: 3000, T_: 2.3, rc_: 40 * 3.086*^19, beta_: 0.5] := "
+               "Module[{ne, LambdaT}, "
+               "ne = ne0 * (1 + (r/rc)^2)^(-1.5 * beta); "
+               "LambdaT = 3*^-23 * Sqrt[T]; "
+               "ne^2 * LambdaT]";
+    }
+
+    std::string getSignature() const { return "VirgoClusterXRayLuminosityTerm(r, params)"; }
+    std::string getCategory() const { return "radiation"; }
+    std::string getName() const { return "VirgoXRay"; }
+    std::string getDescription() const { return "X-ray emissivity: ╬╡_X = n_e┬▓┬╖╬¢(T) with ╬¢(T)~3e-23┬╖ΓêÜT W┬╖m┬│"; }
+};
+
+// ========================================
+// CLASS 828: VirgoClusterVelocityDispersionTerm
+// Category: kinematics
+// Physics: Galaxy velocity dispersion profile ╧â(r)
+// Central ╧â ~ 700 km/s, decreases with radius
+// ========================================
+class VirgoClusterVelocityDispersionTerm
+{
+private:
+    double sigma_0;        // Central velocity dispersion (m/s, ~700 km/s)
+    double r_sigma;        // Scale radius for dispersion (m, ~500 kpc)
+    double G;              // Gravitational constant
+    double M_cluster;      // Cluster mass
+
+public:
+    VirgoClusterVelocityDispersionTerm(double sigma_central = 700e3, double scale_r = 500 * KPC_TO_M, double mass = 1.2e15 * M_SUN)
+        : sigma_0(sigma_central), r_sigma(scale_r), G(G_CONST), M_cluster(mass) {}
+
+    double compute(double r, const std::map<std::string, double>& params) const
+    {
+        // Velocity dispersion profile: ╧â(r) = ╧â_0 / sqrt(1 + (r/r_╧â)┬▓)
+        double sigma_r = sigma_0 / std::sqrt(1.0 + (r * r) / (r_sigma * r_sigma));
+        
+        return sigma_r;
+    }
+
+    double computeDynamicalMass(double r) const
+    {
+        // M(<r) = r┬╖╧â┬▓(r) / G (simplified spherical Jeans equation)
+        double sigma_r = sigma_0 / std::sqrt(1.0 + (r * r) / (r_sigma * r_sigma));
+        return r * sigma_r * sigma_r / G;
+    }
+
+    std::string toWolfram() const
+    {
+        return "VirgoVelocityDispersion[r_, sigma0_: 700000, rSigma_: 500 * 3.086*^19] := "
+               "sigma0 / Sqrt[1 + (r/rSigma)^2]";
+    }
+
+    std::string getSignature() const { return "VirgoClusterVelocityDispersionTerm(r, params)"; }
+    std::string getCategory() const { return "kinematics"; }
+    std::string getName() const { return "VirgoVelocityDispersion"; }
+    std::string getDescription() const { return "Velocity dispersion profile: ╧â(r) = ╧â_0/ΓêÜ(1+(r/r_╧â)┬▓) with ╧â_0~700 km/s"; }
+};
+
+// ========================================
+// CLASS 829: SMBHMSigmaRelationTerm
+// Category: scaling_relations
+// Physics: M-╧â relation from source82 SMBH module
+// M_BH = 1.9e8 * (╧â/200 km/s)^4.38 M_sun (McConnell & Ma 2013)
+// Links SMBH mass to host galaxy velocity dispersion
+// ========================================

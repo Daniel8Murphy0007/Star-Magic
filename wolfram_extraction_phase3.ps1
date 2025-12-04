@@ -48,8 +48,8 @@ Print["Validating Physical Constants..."];
 constants = {
 "@
     
-    # Add sample constants for validation (first 50)
-    $sampleConstants = $entities.PhysicalConstants | Select-Object -First 50 -Unique
+    # Add ALL constants for validation (comprehensive)
+    $sampleConstants = $entities.PhysicalConstants | Select-Object -Unique
     foreach ($const in $sampleConstants) {
         $name = $const.Name
         $wolframScript += "`n  `"$name`","
@@ -78,8 +78,8 @@ Print["Validating Astrophysical Systems..."];
 systems = {
 "@
     
-    # Add sample systems (first 50)
-    $sampleSystems = $entities.AstrophysicalSystems | Select-Object -First 50 -Unique
+    # Add ALL systems (comprehensive)
+    $sampleSystems = $entities.AstrophysicalSystems | Select-Object -Unique
     foreach ($sys in $sampleSystems) {
         $name = $sys.Name
         $wolframScript += "`n  `"$name`","

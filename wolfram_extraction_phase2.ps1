@@ -7,8 +7,9 @@
 
 param(
     [string[]]$SourceFiles = @(),  # Specific files to process, or all if empty
-    [int]$TopN = 20,               # Process top N files by extraction potential
-    [switch]$ProcessAll = $false   # Process all 163 files
+    [int]$TopN = 999,              # Process top N files (default: ALL)
+    [switch]$ProcessAll = $true,   # Process all source files by default
+    [switch]$Comprehensive = $false # Enable comprehensive extraction (no limits)
 )
 
 $workspaceRoot = "c:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic"
@@ -31,10 +32,12 @@ $analysis = Import-Csv $analysisPath | Sort-Object { [int]$_.TotalExtractable } 
 if ($ProcessAll) {
     $filesToProcess = $analysis
     Write-Host "Processing ALL $($filesToProcess.Count) source files..." -ForegroundColor Yellow
-} elseif ($SourceFiles.Count -gt 0) {
+}
+elseif ($SourceFiles.Count -gt 0) {
     $filesToProcess = $analysis | Where-Object { $_.FileName -in $SourceFiles }
     Write-Host "Processing $($filesToProcess.Count) specified files..." -ForegroundColor Yellow
-} else {
+}
+else {
     $filesToProcess = $analysis | Select-Object -First $TopN
     Write-Host "Processing top $TopN files by extraction potential..." -ForegroundColor Yellow
 }
@@ -43,15 +46,15 @@ Write-Host ""
 
 # Entity extraction patterns
 $patterns = @{
-    PhysicalConstant = @(
+    PhysicalConstant    = @(
         'const\s+double\s+(\w+)\s*=\s*([0-9.eE+-]+)'  # const double NAME = VALUE
         '(G|c|h|k_B|m_e|m_p)\s*=\s*([0-9.eE+-]+)'     # Common physics constants
     )
-    Particle = @(
+    Particle            = @(
         'class\s+(\w*(?:Proton|Neutron|Electron|Muon|Quark|Meson|Baryon|Lepton)\w*)'
         '(Proton|Neutron|Electron|Muon|Tau|Quark|Gluon|Photon|W|Z)(?:Mass|Charge|Spin)'
     )
-    Quantity = @(
+    Quantity            = @(
         '(mass|charge|spin|energy|momentum|frequency|wavelength|temperature)\s+(\w+)'
         'double\s+(\w*(?:Mass|Energy|Freq|Temp|Press|Dens)\w*)'
     )
@@ -63,11 +66,11 @@ $patterns = @{
 
 # Storage for extracted entities
 $allEntities = @{
-    PhysicalConstants = @()
-    Particles = @()
-    Quantities = @()
+    PhysicalConstants    = @()
+    Particles            = @()
+    Quantities           = @()
     AstrophysicalSystems = @()
-    SourceFileMap = @{}
+    SourceFileMap        = @{}
 }
 
 $fileCount = 0
@@ -85,9 +88,9 @@ foreach ($fileInfo in $filesToProcess) {
     $content = Get-Content $filePath -Raw
     $entities = @{
         PhysicalConstants = @()
-        Particles = @()
-        Quantities = @()
-        Systems = @()
+        Particles         = @()
+        Quantities        = @()
+        Systems           = @()
     }
     
     # Extract Physical Constants
@@ -96,8 +99,8 @@ foreach ($fileInfo in $filesToProcess) {
         foreach ($match in $matches) {
             if ($match.Groups.Count -ge 3) {
                 $entities.PhysicalConstants += @{
-                    Name = $match.Groups[1].Value
-                    Value = $match.Groups[2].Value
+                    Name       = $match.Groups[1].Value
+                    Value      = $match.Groups[2].Value
                     SourceFile = $fileInfo.FileName
                 }
             }
@@ -111,7 +114,7 @@ foreach ($fileInfo in $filesToProcess) {
             $particleName = $match.Groups[1].Value
             if ($particleName -and $particleName.Length -gt 2) {
                 $entities.Particles += @{
-                    Name = $particleName
+                    Name       = $particleName
                     SourceFile = $fileInfo.FileName
                 }
             }
@@ -125,7 +128,7 @@ foreach ($fileInfo in $filesToProcess) {
             $systemName = $match.Groups[1].Value
             if ($systemName -and $systemName.Length -gt 2) {
                 $entities.Systems += @{
-                    Name = $systemName
+                    Name       = $systemName
                     SourceFile = $fileInfo.FileName
                 }
             }
