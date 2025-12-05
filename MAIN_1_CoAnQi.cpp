@@ -25620,6 +25620,536 @@ public:
 };
 ESO137001UQFFModule_SOURCE82 g_eso137001_module;
 
+// ============================================================================
+// SOURCE82 WOLFRAM PHYSICS INTEGRATION (24 CLASSES + 1 BASE)
+// Integrated from source82_wolfram.cpp - December 4, 2025
+// 15 SMBH M-σ Relation classes + 9 Virgo Cluster cosmological classes
+// ============================================================================
+
+// Define constants needed for Virgo Cluster physics (if not already defined)
+#ifndef M_SUN
+#define M_SUN 1.989e30  // Solar mass in kg
+#endif
+
+#ifndef MPC_TO_M
+#define MPC_TO_M 3.086e22  // Megaparsec to meters
+#endif
+
+#ifndef KPC_TO_M
+#define KPC_TO_M 3.086e19  // Kiloparsec to meters
+#endif
+
+#ifndef G_CONST
+#define G_CONST 6.6743e-11  // Gravitational constant m³/kg/s²
+#endif
+
+#ifndef K_BOLTZ
+#define K_BOLTZ 1.381e-23  // Boltzmann constant J/K
+#endif
+
+#ifndef C_LIGHT
+#define C_LIGHT 2.998e8  // Speed of light m/s
+#endif
+
+// Base physics term interface for SOURCE82 Wolfram classes
+class PhysicsTerm_SOURCE82 {
+public:
+    virtual ~PhysicsTerm_SOURCE82() {}
+    virtual double compute(double t, const std::map<std::string, double>& params) const = 0;
+    virtual std::string getName() const = 0;
+    virtual std::string getDescription() const = 0;
+    virtual bool validate(const std::map<std::string, double>& params) const { return true; }
+};
+
+// ============================================================================
+// SMBH M-σ RELATION TERMS (15 classes)
+// ============================================================================
+
+class SMBHDynamicVacuumTerm_SOURCE82 : public PhysicsTerm_SOURCE82 {
+public:
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        auto it_amp = params.find("amplitude");
+        auto it_rho = params.find("rho_vac_UA");
+        auto it_freq = params.find("frequency");
+        
+        double amplitude = (it_amp != params.end()) ? it_amp->second : 1e-10;
+        double rho_vac = (it_rho != params.end()) ? it_rho->second : 7.09e-36;
+        double frequency = (it_freq != params.end()) ? it_freq->second : 1e-15;
+        
+        return amplitude * rho_vac * std::sin(frequency * t);
+    }
+    
+    std::string getName() const override { return "SMBH_DynamicVacuum"; }
+    std::string getDescription() const override {
+        return "SMBH time-varying vacuum energy: E_vac = amp * rho_vac * sin(freq*t)";
+    }
+    bool validate(const std::map<std::string, double>& params) const override {
+        return params.count("rho_vac_UA") && params.at("rho_vac_UA") > 0;
+    }
+};
+
+class SMBHQuantumCouplingTerm_SOURCE82 : public PhysicsTerm_SOURCE82 {
+public:
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        auto it_coupling = params.find("coupling_strength");
+        auto it_M_bh = params.find("M_bh");
+        auto it_M_sun = params.find("M_sun");
+        auto it_r = params.find("r");
+        auto it_lambda = params.find("lambda_Q");
+        
+        double coupling = (it_coupling != params.end()) ? it_coupling->second : 1.23e-40;
+        double M_bh = (it_M_bh != params.end()) ? it_M_bh->second : 1e11;
+        double M_sun = (it_M_sun != params.end()) ? it_M_sun->second : 1.989e30;
+        double r = (it_r != params.end()) ? it_r->second : 1e3;
+        double lambda_Q = (it_lambda != params.end()) ? it_lambda->second : 1e-10;
+        
+        double mass_ratio = std::pow(M_bh / M_sun, 1.0/3.0);
+        return coupling * mass_ratio * std::exp(-r / lambda_Q);
+    }
+    
+    std::string getName() const override { return "SMBH_QuantumCoupling"; }
+    std::string getDescription() const override {
+        return "SMBH quantum coupling: F_q = g_coupling * (M_bh/M_sun)^(1/3) * exp(-r/lambda)";
+    }
+    bool validate(const std::map<std::string, double>& params) const override {
+        return params.count("M_bh") && params.at("M_bh") > 0;
+    }
+};
+
+class SMBHMSigmaRelationTerm_SOURCE82 : public PhysicsTerm_SOURCE82 {
+public:
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        auto it_M0 = params.find("M_0");
+        auto it_sigma = params.find("sigma");
+        auto it_sigma0 = params.find("sigma_0");
+        auto it_alpha = params.find("alpha_M_sigma");
+        
+        double M_0 = (it_M0 != params.end()) ? it_M0->second : 1.3e8;
+        double sigma = (it_sigma != params.end()) ? it_sigma->second : 300.0;
+        double sigma_0 = (it_sigma0 != params.end()) ? it_sigma0->second : 200.0;
+        double alpha = (it_alpha != params.end()) ? it_alpha->second : 4.24;
+        
+        return M_0 * std::pow(sigma / sigma_0, alpha);
+    }
+    
+    std::string getName() const override { return "SMBH_MSigmaRelation"; }
+    std::string getDescription() const override {
+        return "M-σ relation: M_bh = M_0 * (sigma/sigma_0)^4.24";
+    }
+    bool validate(const std::map<std::string, double>& params) const override {
+        return params.count("sigma") && params.at("sigma") > 0;
+    }
+};
+
+class SMBHBulgeGravityTerm_SOURCE82 : public PhysicsTerm_SOURCE82 {
+public:
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        auto it_G = params.find("G");
+        auto it_M_bulge = params.find("M_bulge");
+        auto it_R_bulge = params.find("R_bulge");
+        
+        double G = (it_G != params.end()) ? it_G->second : 6.674e-11;
+        double M_bulge = (it_M_bulge != params.end()) ? it_M_bulge->second : 1e11 * 1.989e30;
+        double R_bulge = (it_R_bulge != params.end()) ? it_R_bulge->second : 1e3 * 3.086e16;
+        
+        return -G * M_bulge / R_bulge;
+    }
+    
+    std::string getName() const override { return "SMBH_BulgeGravity"; }
+    std::string getDescription() const override {
+        return "Bulge gravitational potential: Φ = -G*M_bulge/R_bulge";
+    }
+    bool validate(const std::map<std::string, double>& params) const override {
+        return params.count("R_bulge") && params.at("R_bulge") > 0;
+    }
+};
+
+class SMBHUg1Term_SOURCE82 : public PhysicsTerm_SOURCE82 {
+public:
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        auto it_G = params.find("G");
+        auto it_M_bh = params.find("M_bh");
+        auto it_r = params.find("r");
+        
+        double G = (it_G != params.end()) ? it_G->second : 6.674e-11;
+        double M_bh = (it_M_bh != params.end()) ? it_M_bh->second : 1e11 * 1.989e30;
+        double r = (it_r != params.end()) ? it_r->second : 1e3 * 3.086e16;
+        
+        return G * M_bh / (r * r);
+    }
+    
+    std::string getName() const override { return "SMBH_Ug1"; }
+    std::string getDescription() const override {
+        return "SMBH Ug1 (Newtonian): G*M_bh/r^2";
+    }
+};
+
+class SMBHUg2Term_SOURCE82 : public PhysicsTerm_SOURCE82 {
+public:
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        auto it_G = params.find("G");
+        auto it_M_bh = params.find("M_bh");
+        auto it_r = params.find("r");
+        auto it_c = params.find("c");
+        
+        double G = (it_G != params.end()) ? it_G->second : 6.674e-11;
+        double M_bh = (it_M_bh != params.end()) ? it_M_bh->second : 1e11 * 1.989e30;
+        double r = (it_r != params.end()) ? it_r->second : 1e3 * 3.086e16;
+        double c = (it_c != params.end()) ? it_c->second : 2.998e8;
+        
+        double Ug1 = G * M_bh / (r * r);
+        return Ug1 * (3.0 * G * M_bh) / (r * c * c);
+    }
+    
+    std::string getName() const override { return "SMBH_Ug2"; }
+    std::string getDescription() const override {
+        return "SMBH Ug2 (GR correction): Ug1 * 3GM/(rc^2)";
+    }
+};
+
+class SMBHUg3Term_SOURCE82 : public PhysicsTerm_SOURCE82 {
+public:
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        auto it_k = params.find("k_monopole");
+        auto it_r = params.find("r");
+        auto it_lambda = params.find("lambda_Q");
+        
+        double k = (it_k != params.end()) ? it_k->second : 1e-50;
+        double r = (it_r != params.end()) ? it_r->second : 1e3 * 3.086e16;
+        double lambda_Q = (it_lambda != params.end()) ? it_lambda->second : 1e-10;
+        
+        return k * std::exp(-r / lambda_Q);
+    }
+    
+    std::string getName() const override { return "SMBH_Ug3"; }
+    std::string getDescription() const override {
+        return "SMBH Ug3 (quantum gravity): k_monopole * exp(-r/lambda_Q)";
+    }
+};
+
+class SMBHUg4Term_SOURCE82 : public PhysicsTerm_SOURCE82 {
+public:
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        auto it_rho = params.find("rho_vac_UA");
+        auto it_c = params.find("c");
+        auto it_r = params.find("r");
+        auto it_M_bh = params.find("M_bh");
+        
+        double rho_vac = (it_rho != params.end()) ? it_rho->second : 7.09e-36;
+        double c = (it_c != params.end()) ? it_c->second : 2.998e8;
+        double r = (it_r != params.end()) ? it_r->second : 1e3 * 3.086e16;
+        double M_bh = (it_M_bh != params.end()) ? it_M_bh->second : 1e11 * 1.989e30;
+        
+        return rho_vac * c * c * (r * r * r) / (3.0 * M_bh);
+    }
+    
+    std::string getName() const override { return "SMBH_Ug4"; }
+    std::string getDescription() const override {
+        return "SMBH Ug4 (vacuum energy): rho_vac*c^2*r^3/(3*M_bh)";
+    }
+};
+
+class SMBHReactorEfficiencyTerm_SOURCE82 : public PhysicsTerm_SOURCE82 {
+public:
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        auto it_E0 = params.find("E_react_0");
+        auto it_tau = params.find("tau_decay");
+        
+        double E_0 = (it_E0 != params.end()) ? it_E0->second : 1e52;
+        double tau = (it_tau != params.end()) ? it_tau->second : 4.543e9 * 3.156e7;
+        
+        return E_0 * std::exp(-t / tau);
+    }
+    
+    std::string getName() const override { return "SMBH_ReactorEfficiency"; }
+    std::string getDescription() const override {
+        return "Reactor efficiency decay: E_react = E_0 * exp(-t/tau)";
+    }
+};
+
+class SMBHPseudoMonopoleTerm_SOURCE82 : public PhysicsTerm_SOURCE82 {
+public:
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        auto it_state = params.find("state_n");
+        auto it_shift = params.find("delta_shift");
+        
+        double state_n = (it_state != params.end()) ? it_state->second : 1.0;
+        double shift = (it_shift != params.end()) ? it_shift->second : 1e-30;
+        
+        return shift * state_n;
+    }
+    
+    std::string getName() const override { return "SMBH_PseudoMonopole"; }
+    std::string getDescription() const override {
+        return "Pseudo-monopole state shift: delta_n(state)";
+    }
+};
+
+class SMBHRedshiftCorrectionTerm_SOURCE82 : public PhysicsTerm_SOURCE82 {
+public:
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        auto it_M = params.find("M_bh");
+        auto it_z = params.find("redshift");
+        
+        double M_bh = (it_M != params.end()) ? it_M->second : 1e11;
+        double z = (it_z != params.end()) ? it_z->second : 0.0;
+        
+        return M_bh * (1.0 + z);
+    }
+    
+    std::string getName() const override { return "SMBH_RedshiftCorrection"; }
+    std::string getDescription() const override {
+        return "Redshift mass correction: M_obs = M_intrinsic * (1+z)";
+    }
+};
+
+class SMBHUiTerm_SOURCE82 : public PhysicsTerm_SOURCE82 {
+public:
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        auto it_k = params.find("k_B");
+        auto it_T = params.find("T_virial");
+        auto it_M_bh = params.find("M_bh");
+        auto it_mp = params.find("m_proton");
+        
+        double k_B = (it_k != params.end()) ? it_k->second : 1.381e-23;
+        double T = (it_T != params.end()) ? it_T->second : 1e7;
+        double M_bh = (it_M_bh != params.end()) ? it_M_bh->second : 1e11 * 1.989e30;
+        double m_p = (it_mp != params.end()) ? it_mp->second : 1.673e-27;
+        
+        return 1.5 * k_B * T * (M_bh / m_p);
+    }
+    
+    std::string getName() const override { return "SMBH_Ui"; }
+    std::string getDescription() const override {
+        return "SMBH internal energy: Ui = 3/2 * k_B * T * (M_bh/m_p)";
+    }
+};
+
+class SMBHUmTerm_SOURCE82 : public PhysicsTerm_SOURCE82 {
+public:
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        auto it_B = params.find("B_field");
+        auto it_mu0 = params.find("mu_0");
+        auto it_R = params.find("R_bulge");
+        
+        double B = (it_B != params.end()) ? it_B->second : 1e-6;
+        double mu_0 = (it_mu0 != params.end()) ? it_mu0->second : 4.0 * M_PI * 1e-7;
+        double R = (it_R != params.end()) ? it_R->second : 1e3 * 3.086e16;
+        
+        double V_bulge = (4.0 / 3.0) * M_PI * R * R * R;
+        return (B * B) / (2.0 * mu_0) * V_bulge;
+    }
+    
+    std::string getName() const override { return "SMBH_Um"; }
+    std::string getDescription() const override {
+        return "SMBH magnetic energy: Um = B^2/(2*mu_0) * V_bulge";
+    }
+};
+
+class SMBHOmegaSGalacticTerm_SOURCE82 : public PhysicsTerm_SOURCE82 {
+public:
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        auto it_v = params.find("v_circ");
+        auto it_R = params.find("R_bulge");
+        
+        double v_circ = (it_v != params.end()) ? it_v->second : 220e3;
+        double R = (it_R != params.end()) ? it_R->second : 1e3 * 3.086e16;
+        
+        return v_circ / R;
+    }
+    
+    std::string getName() const override { return "SMBH_OmegaS"; }
+    std::string getDescription() const override {
+        return "Galactic angular velocity: omega_s = v_circ / R_bulge";
+    }
+};
+
+class SMBHCosmicTimeTerm_SOURCE82 : public PhysicsTerm_SOURCE82 {
+public:
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        auto it_t0 = params.find("t_universe");
+        auto it_z = params.find("redshift");
+        
+        double t_0 = (it_t0 != params.end()) ? it_t0->second : 4.543e9 * 3.156e7;
+        double z = (it_z != params.end()) ? it_z->second : 0.0;
+        
+        return t_0 / std::pow(1.0 + z, 1.5);
+    }
+    
+    std::string getName() const override { return "SMBH_CosmicTime"; }
+    std::string getDescription() const override {
+        return "Cosmic time: t_cosmic = t_0 / (1+z)^(3/2)";
+    }
+};
+
+// ============================================================================
+// VIRGO CLUSTER COSMOLOGICAL TERMS (9 classes)
+// ============================================================================
+
+class VirgoClusterMassTerm_SOURCE82
+{
+private:
+    double G, M_cluster, R_virial, z;
+public:
+    VirgoClusterMassTerm_SOURCE82(double mass = 1.2e15 * M_SUN, double r_vir = 2.2 * MPC_TO_M, double redshift = 0.0036)
+        : G(G_CONST), M_cluster(mass), R_virial(r_vir), z(redshift) {}
+
+    double compute(double r, const std::map<std::string, double>& params) const {
+        double x = r / R_virial;
+        double M_enclosed = M_cluster * (x * x * x) / (1.0 + x) / (1.0 + x);
+        return (G * M_enclosed) / (r * r);
+    }
+    std::string getName() const { return "VirgoClusterMass"; }
+    std::string getDescription() const { return "Virgo Cluster total mass gravitational acceleration: a = G·M(<r)/r² with M_cluster~1.2e15 M_sun"; }
+};
+
+class VirgoClusterIntraclusterMediumTerm_SOURCE82
+{
+private:
+    double T_ICM, n_e0, r_c, beta;
+public:
+    VirgoClusterIntraclusterMediumTerm_SOURCE82(double temp = 2.3, double ne_central = 3e3, double core_r = 40 * KPC_TO_M, double beta_param = 0.5)
+        : T_ICM(temp), n_e0(ne_central), r_c(core_r), beta(beta_param) {}
+
+    double compute(double r, const std::map<std::string, double>& params) const {
+        double n_e = n_e0 * std::pow(1.0 + (r * r) / (r_c * r_c), -1.5 * beta);
+        double T_K = T_ICM * 1.16e7;
+        double P_ICM = n_e * K_BOLTZ * T_K;
+        return P_ICM;
+    }
+    std::string getName() const { return "VirgoClusterICM"; }
+    std::string getDescription() const { return "ICM beta-model pressure: P = n_e(r)·k_B·T with T~2.3 keV, β~0.5"; }
+};
+
+class VirgoClusterGravitationalPotentialTerm_SOURCE82
+{
+private:
+    double G, M_cluster, R_virial, c_NFW;
+public:
+    VirgoClusterGravitationalPotentialTerm_SOURCE82(double mass = 1.2e15 * M_SUN, double r_vir = 2.2 * MPC_TO_M, double concentration = 4.0)
+        : G(G_CONST), M_cluster(mass), R_virial(r_vir), c_NFW(concentration) {}
+
+    double compute(double r, const std::map<std::string, double>& params) const {
+        double x = r / R_virial;
+        double f_c = std::log(1.0 + c_NFW) - c_NFW / (1.0 + c_NFW);
+        if (x < 1e-10) x = 1e-10;
+        double Phi = -G * M_cluster * std::log(1.0 + c_NFW * x) / (x * f_c * R_virial);
+        return Phi;
+    }
+    std::string getName() const { return "VirgoClusterPotential"; }
+    std::string getDescription() const { return "NFW gravitational potential: Φ(r) = -G·M·ln(1+c·x)/(x·f(c)·R_vir) with c~4"; }
+};
+
+class VirgoClusterDarkMatterTerm_SOURCE82
+{
+private:
+    double rho_s, r_s, M_DM;
+public:
+    VirgoClusterDarkMatterTerm_SOURCE82(double scale_density = 3e-23, double scale_radius = 550 * KPC_TO_M, double dm_mass = 1e15 * M_SUN)
+        : rho_s(scale_density), r_s(scale_radius), M_DM(dm_mass) {}
+
+    double compute(double r, const std::map<std::string, double>& params) const {
+        double x = r / r_s;
+        if (x < 1e-10) x = 1e-10;
+        double rho_DM = rho_s / (x * (1.0 + x) * (1.0 + x));
+        return rho_DM;
+    }
+    std::string getName() const { return "VirgoClusterDarkMatter"; }
+    std::string getDescription() const { return "NFW dark matter profile: ρ(r) = ρ_s/((r/r_s)·(1+r/r_s)²) with r_s~550 kpc"; }
+};
+
+class VirgoClusterM87JetTerm_SOURCE82
+{
+private:
+    double L_jet, theta_jet, v_jet, r_jet_base;
+public:
+    VirgoClusterM87JetTerm_SOURCE82(double luminosity = 1e37, double angle = 0.1, double velocity = 0.99 * C_LIGHT, double base_r = 100 * 3.086e16)
+        : L_jet(luminosity), theta_jet(angle), v_jet(velocity), r_jet_base(base_r) {}
+
+    double compute(double r, const std::map<std::string, double>& params) const {
+        double Omega_jet = 2.0 * M_PI * (1.0 - std::cos(theta_jet));
+        double u_jet = L_jet / (4.0 * M_PI * r * r * v_jet * (Omega_jet / (4.0 * M_PI)));
+        double gamma = 1.0 / std::sqrt(1.0 - (v_jet * v_jet) / (C_LIGHT * C_LIGHT));
+        return u_jet * gamma;
+    }
+    std::string getName() const { return "VirgoM87Jet"; }
+    std::string getDescription() const { return "M87 AGN jet energy density: u_jet = L_jet·γ/(4π·r²·v_jet·Ω) with L~10³⁷ W"; }
+};
+
+class VirgoClusterTidalStrippingTerm_SOURCE82
+{
+private:
+    double M_cluster, R_virial, G;
+public:
+    VirgoClusterTidalStrippingTerm_SOURCE82(double mass = 1.2e15 * M_SUN, double r_vir = 2.2 * MPC_TO_M)
+        : M_cluster(mass), R_virial(r_vir), G(G_CONST) {}
+
+    double compute(double r, const std::map<std::string, double>& params) const {
+        double M_gal = (params.count("M_gal") ? params.at("M_gal") : 1e11 * M_SUN);
+        double x = r / R_virial;
+        double M_enclosed = M_cluster * (x * x * x) / (1.0 + x) / (1.0 + x);
+        double r_tidal = r * std::pow(M_gal / (3.0 * M_enclosed), 1.0 / 3.0);
+        double a_tidal = 2.0 * G * M_enclosed * r_tidal / (r * r * r);
+        return a_tidal;
+    }
+    std::string getName() const { return "VirgoTidalStripping"; }
+    std::string getDescription() const { return "Tidal stripping acceleration: a_tidal = 2·G·M(<r)·r_t/r³ with r_t from Jacobi radius"; }
+};
+
+class VirgoClusterVirialTerm_SOURCE82
+{
+private:
+    double M_virial, R_virial, sigma_v, G;
+public:
+    VirgoClusterVirialTerm_SOURCE82(double mass = 1.2e15 * M_SUN, double r_vir = 2.2 * MPC_TO_M, double sigma = 700e3)
+        : M_virial(mass), R_virial(r_vir), sigma_v(sigma), G(G_CONST) {}
+
+    double compute(double r, const std::map<std::string, double>& params) const {
+        (void)r;
+        double sigma_virial = std::sqrt(G * M_virial / (3.0 * R_virial));
+        double virial_ratio = sigma_v / sigma_virial;
+        return virial_ratio;
+    }
+    std::string getName() const { return "VirgoClusterVirial"; }
+    std::string getDescription() const { return "Virial equilibrium ratio: σ_obs/σ_vir where σ_vir² = G·M/(3·R), σ~700 km/s"; }
+};
+
+class VirgoClusterXRayLuminosityTerm_SOURCE82
+{
+private:
+    double n_e0, T_ICM, r_c, beta;
+public:
+    VirgoClusterXRayLuminosityTerm_SOURCE82(double ne_central = 3e3, double temp = 2.3, double core_r = 40 * KPC_TO_M, double beta_param = 0.5)
+        : n_e0(ne_central), T_ICM(temp), r_c(core_r), beta(beta_param) {}
+
+    double compute(double r, const std::map<std::string, double>& params) const {
+        double n_e = n_e0 * std::pow(1.0 + (r * r) / (r_c * r_c), -1.5 * beta);
+        double Lambda_T = 3e-23 * std::sqrt(T_ICM);
+        double epsilon_X = n_e * n_e * Lambda_T;
+        return epsilon_X;
+    }
+    std::string getName() const { return "VirgoXRay"; }
+    std::string getDescription() const { return "X-ray emissivity: ε_X = n_e²·Λ(T) with Λ(T)~3e-23·√T W·m³"; }
+};
+
+class VirgoClusterVelocityDispersionTerm_SOURCE82
+{
+private:
+    double sigma_0, r_sigma, G, M_cluster;
+public:
+    VirgoClusterVelocityDispersionTerm_SOURCE82(double sigma_central = 700e3, double scale_r = 500 * KPC_TO_M, double mass = 1.2e15 * M_SUN)
+        : sigma_0(sigma_central), r_sigma(scale_r), G(G_CONST), M_cluster(mass) {}
+
+    double compute(double r, const std::map<std::string, double>& params) const {
+        double sigma_r = sigma_0 / std::sqrt(1.0 + (r * r) / (r_sigma * r_sigma));
+        return sigma_r;
+    }
+    std::string getName() const { return "VirgoVelocityDispersion"; }
+    std::string getDescription() const { return "Velocity dispersion profile: σ(r) = σ_0/√(1+(r/r_σ)²) with σ_0~700 km/s"; }
+};
+
+// End SOURCE82 Wolfram physics integration
+
 // SOURCE83: IC2163UQFFModule - Interacting galaxies (NGC 2207 & IC 2163)
 class IC2163UQFFModule_SOURCE83
 {
