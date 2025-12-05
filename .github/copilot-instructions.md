@@ -2,14 +2,15 @@
 
 ## Big Picture Architecture
 - **Dual-Platform System:**
-  - **C++ Core:** `MAIN_1_CoAnQi.cpp` (102,452 lines, 446 integrated modules SOURCE1-116, **492 physics terms extracted**, **100 astronomical systems**) - Production calculator with 12-option interactive menu (Wolfram WSTP 9-11 + Exit 12)
+  - **C++ Core:** `MAIN_1_CoAnQi.cpp` (104,931 lines, 446 integrated modules SOURCE1-116 + **SOURCE4**, **492 physics terms extracted**, **100 astronomical systems**) - Production calculator with 16-option interactive menu (includes SOURCE4 validation + Wolfram WSTP + Cosmic Egg + Grok AI + Exit)
   - **JavaScript Engine:** `index.js` (23,790 lines) - UQFF computational orchestration layer with 106 astrophysical systems
 - **Module Integration:** Physics from source1.cpp through source173.cpp (173 files total) consolidated:
   - 116 files integrated into SOURCE1-116 blocks in MAIN_1_CoAnQi.cpp (446 unique modules)
+  - **SOURCE4 integrated** (commit 3e66d94 Dec 5, 2025): 37 physics functions (8 UQFF + 10 MUGE Compressed + 14 MUGE Resonance + 6 Helpers)
   - 492 physics terms extracted (INTEGRATION_TRACKER.csv verified, 291 original + 201 newly integrated)
   - 57 files skipped (GUI infrastructure, duplicate wrappers)
 - **Self-Expanding Framework 2.0:** Dynamic term registration, runtime parameters, state export/import, auto-optimization, metadata tracking
-- **Build System:** CMake + Visual Studio 2022 (MSVC 14.44.35207), C++20 standard, Windows threading compatibility, UPX 5.0.2 compression (1.17 MB, 85.3% reduction)
+- **Build System:** CMake + Visual Studio 2022 (MSVC 14.44.35207), C++20 standard, Windows threading compatibility, UPX 5.0.2 compression (1.36 MB, 85.0% reduction)
 
 ## Developer Workflows
 ### C++ Build (MSVC Required)
@@ -20,7 +21,7 @@ cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64
 # Build with Visual Studio (Release-MaxCompress + UPX compression)
 cmake --build build_msvc --config Release --target MAIN_1_CoAnQi
 
-# Run interactive calculator (12 menu options including Wolfram integration)
+# Run interactive calculator (16 menu options including SOURCE4 validation, Wolfram integration, Cosmic Egg, Grok AI)
 .\build_msvc\Release\MAIN_1_CoAnQi.exe
 
 # Clean rebuild
@@ -81,6 +82,46 @@ SimpleLockGuard<SimpleMutex> lock;   // RAII lock guard (lines 142-162)
 // See SOURCE115 (source172.cpp) for 19-system 26D polynomial master equations
 ```
 
+### SOURCE4 Unified Field Theory (UQFF + MUGE)
+```cpp
+// Integration: commit 3e66d94 (Dec 5, 2025), menu commit 6ee52e2
+// Location: Lines 25623-26026 in MAIN_1_CoAnQi.cpp (namespace SOURCE4)
+// Origin: source4.cpp (1782 lines) → 37 inline functions extracted
+
+// UQFF (Unified Quantum Field Framework) - 8 functions
+double FU = SOURCE4::compute_FU_SOURCE4(body, r, t, tn, theta);  // Complete unified field
+double Ug1 = SOURCE4::compute_Ug1_SOURCE4(body, r);              // Magnetic dipole
+double Ug2 = SOURCE4::compute_Ug2_SOURCE4(body, r);              // Charge-reactivity
+double Ug3 = SOURCE4::compute_Ug3_SOURCE4(body, r, t);           // String rotation
+double Ug4 = SOURCE4::compute_Ug4_SOURCE4(body, r);              // Vacuum concentration
+double Ubi = SOURCE4::compute_Ubi_SOURCE4(body, r);              // Buoyancy force
+double Um = SOURCE4::compute_Um_SOURCE4(body, r);                // Magnetism
+
+// MUGE Compressed - 10 functions (base gravity + 9 correction terms)
+double g = SOURCE4::compute_compressed_MUGE_SOURCE4(system);     // Complete MUGE
+// Base: Newtonian, Expansion: Hubble, Super: Magnetic suppression, Envelope, Ug_sum, 
+// Cosm: Λ, Quantum: ℏ, Fluid: Navier-Stokes, Perturbation: Dark matter
+
+// MUGE Resonance - 14 functions (aDPM base + 13 resonance modes)
+double g = SOURCE4::compute_resonance_MUGE_SOURCE4(system, params);  // Complete resonance MUGE
+// aDPM, aTHz, Avac_diff, aSuperFreq, aAetherRes, Ug4i, aQuantumFreq, aAetherFreq, 
+// aFluidFreq, Osc_term, aExpFreq, fTRZ, Wormhole metric
+
+// 7 Pre-defined Astrophysical Systems
+SOURCE4::sgr1745_SOURCE4          // SGR1745 Magnetar
+SOURCE4::sagA_SOURCE4             // Sagittarius A* SMBH
+SOURCE4::tapestry_SOURCE4         // Tapestry Star Formation Region
+SOURCE4::westerlund_SOURCE4       // Westerlund2 Star Cluster
+SOURCE4::pillars_SOURCE4          // Pillars of Creation
+SOURCE4::rings_SOURCE4            // Rings of Relativity Gravitational Lens
+SOURCE4::student_guide_SOURCE4    // Student Guide Universe (cosmological)
+
+// Menu Access: 
+// - Cosmic Egg build: Option 15
+// - Wolfram-only build: Option 14
+// - No Wolfram build: Option 9
+```
+
 ## Integration Points & Communication
 - **C++ ↔ JavaScript:** Use child processes (`child_process.spawn`), native addons (node-gyp), or WebAssembly (Emscripten)
 - **Cross-Module:** Modules export/import state via `exportState()` → JSON/text files → `setDynamicParameter()` in other modules
@@ -116,16 +157,38 @@ SimpleLockGuard<SimpleMutex> lock;   // RAII lock guard (lines 142-162)
 
 ## Example: Main Menu Options
 ```cpp
-// Run MAIN_1_CoAnQi.exe interactive menu (line 12901-13050+)
-1. Calculate system (single)         // F_U_Bi_i, compressed_g, validation_pipeline
-2. Calculate ALL systems (parallel)  // Windows threading, SimpleMutex
-3. Clone and mutate system          // SystemParams deep copy + parameter perturbation
-4. Add custom system                // Runtime system registration
-5. Add dynamic physics term         // PhysicsTerm instantiation
-6. Run simulations                  // Time-series evolution
-7. Statistical analysis             // Ensemble statistics
-8. Self-optimization                // Learning rate auto-tuning
-9. Exit
+// Run MAIN_1_CoAnQi.exe interactive menu (line 23310+)
+// Options vary by build configuration:
+
+// === Cosmic Egg Build (USE_COSMIC_QUANTUM_EGG + USE_EMBEDDED_WOLFRAM) ===
+1. Calculate system (single)               // F_U_Bi_i, compressed_g, validation_pipeline
+2. Calculate ALL systems (parallel)        // Windows threading, SimpleMutex
+3. Clone and mutate system                 // SystemParams deep copy + parameter perturbation
+4. Add custom system                       // Runtime system registration
+5. Add dynamic physics term                // PhysicsTerm instantiation
+6. Run simulations                         // Time-series evolution
+7. Statistical analysis                    // Ensemble statistics
+8. Self-optimization                       // Learning rate auto-tuning
+9. WSTP kernel interface                   // Wolfram Symbolic Transfer Protocol
+10. Auto-export full UQFF to Wolfram       // Export all 175+ source files
+11. Run Wolfram Field Unity Simulation     // Multi-field solver
+12. Run Cosmic Quantum Egg (26D) Simulation // 26 independent dimensional spheres
+13. Configure Grok API Key                 // Set XAI_API_KEY environment variable
+14. Test Grok AI Integration               // Verify Grok xAI connection
+15. SOURCE4 Unified Field Validation       // Test UQFF + MUGE Compressed + MUGE Resonance
+16. Exit
+
+// === Wolfram-Only Build (USE_EMBEDDED_WOLFRAM, no Cosmic Egg) ===
+// Options 1-11 same as above, then:
+12. Configure Grok API Key
+13. Test Grok AI Integration
+14. SOURCE4 Unified Field Validation       // Test all 37 SOURCE4 functions
+15. Exit
+
+// === No Wolfram Build (minimal) ===
+// Options 1-8 same as above, then:
+9. SOURCE4 Unified Field Validation        // Test all 37 SOURCE4 functions
+10. Exit
 ```
 
 ## Conventions
