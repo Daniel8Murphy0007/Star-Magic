@@ -14,8 +14,8 @@
  * Integrates with VerboseLogger for unified logging/tracing output
  *
  * Author: Daniel T. Murphy
- * Date: December 1, 2025 (Last Updated: December 3, 2025)
- * Status: ACTIVE - Used by MAIN_1_CoAnQi.exe (runtime verified Dec 3 @ 13:37:40)
+ * Date: December 1, 2025 (Last Updated: December 4, 2025)
+ * Status: ACTIVE - Used by MAIN_1_CoAnQi.exe (runtime verified Dec 4 @ 17:40:40)
  * ================================================================================================
  */
 
