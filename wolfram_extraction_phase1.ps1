@@ -26,10 +26,10 @@ if (-not (Test-Path $outputDir)) {
     Write-Host "Created output directory: $outputDir" -ForegroundColor Green
 }
 
-# Step 1: Inventory all source files
-Write-Host "[Step 1] Inventorying source*.cpp files..." -ForegroundColor Yellow
+# Step 1: Inventory all source files (including *_wolfram*.cpp variants)
+Write-Host "[Step 1] Inventorying source*.cpp and source*_wolfram*.cpp files..." -ForegroundColor Yellow
 $sourceFiles = Get-ChildItem -Path $workspaceRoot -Filter "source*.cpp" | 
-Where-Object { $_.Name -match '^source\d+\.cpp$' } | 
+Where-Object { $_.Name -match '^source\d+(_wolfram.*?)?\.cpp$' } | 
 Sort-Object { [int]($_.Name -replace '[^\d]', '') }
 
 Write-Host "Found $($sourceFiles.Count) source files (source1.cpp to source173.cpp)"

@@ -50,6 +50,12 @@ Thumbs.db
 *_BACKUP*.js
 index_backup_*.js
 index_EMERGENCY_*.js
+*_backup_*.txt
+*_BACKUP_*.txt
+*_RESTORE_*.txt
+*.OBSOLETE
+cmake_backup.md
+CMakeList.txt
 
 # Compiled binaries (excluding primary executable)
 test_*.exe
@@ -64,6 +70,14 @@ build_backup_*/*.exe
 *.obj
 *.pdb
 *.ilk
+*.exp
+*.iobj
+*.ipdb
+
+# Executables (can be regenerated with cmake --build)
+MAIN_1_CoAnQi.exe
+MAIN_1.exe
+*.exe
 
 # Build directories
 Debug/
@@ -94,22 +108,33 @@ Makefile
 # Log files
 coAnQi_log_*.txt
 *_log_*.txt
+*.log
+wolfram_*.txt
+msvc_errors*.txt
+validation_log.txt
 
-# Build directories (Dec 1, 2025 - build_msvc is active)
+# Build output and status files
+build_output.txt
+BUILD_STATUS.md
+CMAKE_BUILD_STATUS.md
+C++17_MINGW_CONTAMINATION_REPORT.txt
 build/
 build_backup_*/
 build_wolfram/
-# DO NOT ignore build_msvc - it's the current working build
-# build_msvc/
+build_msvc/
 
-# Visual Studio artifacts (preserved in build_msvc)
-# *.sln - KEEP in build_msvc
-# *.vcxproj - KEEP in build_msvc
-# *.vcxproj.filters - KEEP in build_msvc
+# Visual Studio artifacts (all generated files)
+*.sln
+*.vcxproj
+*.vcxproj.filters
 *.vcxproj.user
 *.suo
 *.user
 .vs/
+ALL_BUILD.vcxproj
+ALL_BUILD.vcxproj.filters
+ZERO_CHECK.vcxproj
+ZERO_CHECK.vcxproj.filters
 
 # Test output and logs
 *.log
