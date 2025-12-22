@@ -205,6 +205,11 @@ if(MSVC)
     # Linker → Optimization → Enable COMDAT Folding = Yes (/OPT:ICF)
 endif()
 
+# Force synchronized PDB writes for parallel compilation (prevents C1041 error)
+if(MSVC)
+    add_compile_options(/FS)
+endif()
+
 # Export compile commands for IDE integration
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 

@@ -163,3 +163,6 @@ physics_term_inventory.txt
 Untitled-*.py
 Untitled-*.cpp
 Untitled-*.txt
+
+# Copilot workspace backups (large files)
+WORKSPACE_BACKUP_*/
