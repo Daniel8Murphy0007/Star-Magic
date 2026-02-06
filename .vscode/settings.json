@@ -72,5 +72,6 @@
         "MD036": false,
         "MD040": false,
         "default": true
-    }
+    },
+    "github.copilot.nextEditSuggestions.enabled": true
 }

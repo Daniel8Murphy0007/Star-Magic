@@ -1,0 +1,9 @@
+# UQFFModule18 State Export
+module_name=UQFFModule18_PillarsOfCreation
+M_initial=2.00881e+34
+R=4.7305e+16
+tau_SF=3.156e+13
+tau_erosion=3.156e+13
+E_0=0.1
+dyn_erosion_modifier=1
+dyn_sf_rate_modifier=1

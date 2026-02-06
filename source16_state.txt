@@ -1,0 +1,12 @@
+# UQFFModule16 State Export
+# Tapestry of Blazing Starbirth (NGC 2014/2020) MUGE Calculator
+M_dot_factor=4.166667e+01
+t_evolution=7.890000e+13
+tau_SF_Myr=5.000000e+00
+v_wind=2.000000e+06
+M_initial=4.773408e+32
+r=9.461000e+16
+r_ly=1.000000e+01
+B=1.000000e-06
+tau_SF=1.578000e+14
+v_wind=2.000000e+06

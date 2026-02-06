@@ -24,101 +24,24 @@
 #include <iostream>
 #include <iomanip>
 #include <complex>
-
-#include <map>
 #include <vector>
 #include <functional>
 #include <memory>
 #include <algorithm>
 #include <fstream>
 #include <sstream>
-#include <map>
-#include <vector>
-#include <functional>
-#include <fstream>
-#include <sstream>
-#include <memory>
-#include <algorithm>
+#include <array>
 
 // ===========================================================================================
-// SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
+// SHARED UQFF FRAMEWORK HEADERS
 // ===========================================================================================
+#include "uqff_constants.h"
+#include "uqff_self_expanding.h"
+#include "uqff_dual_physics.h"
 
-class PhysicsTerm
-{
-    // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
-    std::map<std::string, double> dynamicParameters;
-    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
-    std::map<std::string, std::string> metadata;
-    bool enableDynamicTerms;
-    bool enableLogging;
-    double learningRate;
-
-public:
-    virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
-    virtual std::string getName() const = 0;
-    virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double> &params) const { return true; }
-};
-
-class DynamicVacuumTerm : public PhysicsTerm
-{
-private:
-    // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
-    // Note: Can be extended with dynamic parameters via setVariable()
-    double amplitude;
-    double frequency;
-    // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
-    std::map<std::string, double> dynamicParameters;
-    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
-    std::map<std::string, std::string> metadata;
-    bool enableDynamicTerms;
-    bool enableLogging;
-    double learningRate;
-
-public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15)
-        : amplitude(amp), frequency(freq) {}
-
-    double compute(double t, const std::map<std::string, double> &params) const override
-    {
-        double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
-        return amplitude * rho_vac * std::sin(frequency * t);
-    }
-
-    std::string getName() const override { return "DynamicVacuum"; }
-    std::string getDescription() const override { return "Time-varying vacuum energy"; }
-};
-
-class QuantumCouplingTerm : public PhysicsTerm
-{
-private:
-    // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
-    // Note: Can be extended with dynamic parameters via setVariable()
-    double coupling_strength;
-    // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
-    std::map<std::string, double> dynamicParameters;
-    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
-    std::map<std::string, std::string> metadata;
-    bool enableDynamicTerms;
-    bool enableLogging;
-    double learningRate;
-
-public:
-    QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-
-    double compute(double t, const std::map<std::string, double> &params) const override
-    {
-        double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
-        double M = params.count("M") ? params.at("M") : 1.989e30;
-        double r = params.count("r") ? params.at("r") : 1e4;
-        return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
-    }
-
-    std::string getName() const override { return "QuantumCoupling"; }
-    std::string getDescription() const override { return "Non-local quantum effects"; }
-};
+using namespace UQFF;
+using namespace UQFFExpanding;
+using namespace UQFFDualPhysics;
 
 // ===========================================================================================
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
@@ -162,12 +85,16 @@ public:
 
     // Print all current variables (for debugging/updates)
     void printVariables();
+    
+    // ========== SELF-SIMULATION METHODS ==========
+    void runSelfSimulation(double t_start, double t_end, int steps);
+    void exportState(const std::string& filename) const;
+    void setLearningRate(double rate);
+    void setEnableLogging(bool enable);
+    void setEnableDynamicTerms(bool enable);
 };
 
-#endif // SOMBRERO_UQFF_MODULE_H
-
 // SombreroUQFFModule.cpp
-// // // #include "SombreroUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
 #include <complex>
 #include <array> // MSVC requirement
 
@@ -400,7 +327,7 @@ std::string SombreroUQFFModule::getEquationText()
            "- Resonant: Oscillatory Aether-mediated waves (real part of complex exp) for globular cluster dynamics.\n"
            "- DM: Visible+dark mass with density perturbations and curvature term for halo.\n"
            "- Superconductivity: (1 - B/B_crit) for quantum field effects.\n"
-           "Solutions: Numerical evaluation at t=10 Gyr yields ~0.535 m/s� (dust/BH dominant; full sum includes micro terms ~1e-10 to 1e-3).\n"
+           "Solutions: Numerical evaluation at t=10 Gyr yields ~0.535 m/s^2 (dust/BH dominant; full sum includes micro terms ~1e-10 to 1e-3).\n"
            "Adaptations for Sombrero: Virgo Cluster z=0.0063; prominent dust lane boosts D_dust; SMBH=1e9 Msun shapes bulge.";
 }
 
@@ -414,45 +341,116 @@ void SombreroUQFFModule::printVariables()
     }
 }
 
-// Example usage in base program 'ziqn233h.cpp' (snippet for integration)
-// // // // #include "SombreroUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
-// int main() {
-//     SombreroUQFFModule mod;
-//     double t = 10e9 * 3.156e7;  // 10 Gyr
-//     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
-//     std::cout << mod.getEquationText() << std::endl;
-//     mod.updateVariable("M", 1.1e11 * 1.989e30);  // Update mass
-//     mod.addToVariable("f_TRZ", 0.05);            // Add to TR factor
-//     mod.subtractFromVariable("A", 1e-11);        // Subtract from amplitude
-//     mod.printVariables();
-//     return 0;
-// }
-// Compile: g++ -o ziqn233h ziqn233h.cpp SombreroUQFFModule.cpp -lm
-// Sample Output at t=10 Gyr: g � 0.535 m/s� (varies with updates; quantum/fluid/resonant ~1e-10 to 1e-3, DM ~1e41 * 1e-41 ~1e0 negligible in sum).
-// Watermark: Copyright - Daniel T. Murphy, analyzed Oct 08, 2025.
+// ==================== SELF-SIMULATION METHODS ====================
 
-/*
-// Evaluation of SombreroUQFFModule (Master Universal Gravity Equation for Sombrero Galaxy)
+// Run self-simulation with time evolution
+void SombreroUQFFModule::runSelfSimulation(double t_start, double t_end, int steps) {
+    if (enableLogging) {
+        std::cout << "[Sombrero] Running self-simulation: t=" << t_start 
+                  << " to " << t_end << " (" << steps << " steps)\n";
+    }
+    double dt = (t_end - t_start) / steps;
+    for (int i = 0; i <= steps; ++i) {
+        double t = t_start + i * dt;
+        double g = computeG(t);
+        if (enableLogging) {
+            std::cout << "  t=" << std::scientific << std::setprecision(3) << t 
+                      << " s, g=" << g << " m/s²\n";
+        }
+    }
+}
 
-**Strengths:**
--**Dynamic Variable Management : **All physical and model parameters are stored in a `std: : map<std::string, double> variables`, allowing runtime updates, additions, and removals.The methods `updateVariable`, `addToVariable`, and `subtractFromVariable` enable flexible modification of any parameter.
-- **Automatic Dependency Updates : **When key variables like `"M"` or `"Delta_x"` are updated, dependent variables(`"M_visible"`, `"M_DM"`, `"Delta_p"`) are recalculated automatically, ensuring consistency.
-    - **Extensibility:**If a variable is referenced that does not exist, it is added to the map, making the module extensible for new terms or future model changes.
-    - **Immediate Effect : **All computations(e.g., `computeG`) use the current values in the map, so any changes are immediately reflected in results.
-        - **Comprehensive Physics : **The module includes all major terms relevant for galactic gravity, including base gravity, cosmological, quantum, EM, fluid, resonant, DM, dust, and superconductivity corrections.
-        - **Debugging Support : **The `printVariables()` method provides a snapshot of all current parameters, aiding validation and troubleshooting.
-    - **Sample Usage Provided : **Example integration and compilation instructions are included, demonstrating how to update variables and see their effect.
+// Export module state to file
+void SombreroUQFFModule::exportState(const std::string& filename) const {
+    std::ofstream out(filename);
+    if (out.is_open()) {
+        out << "# SombreroUQFFModule State Export\n";
+        out << "# Version: " << metadata.at("version") << "\n";
+        out << "\n[VARIABLES]\n";
+        for (const auto& pair : variables) {
+            out << pair.first << "=" << std::scientific << pair.second << "\n";
+        }
+        out << "\n[SETTINGS]\n";
+        out << "learningRate=" << learningRate << "\n";
+        out << "enableDynamicTerms=" << enableDynamicTerms << "\n";
+        out << "enableLogging=" << enableLogging << "\n";
+        out.close();
+        if (enableLogging) {
+            std::cout << "[Sombrero] State exported to " << filename << "\n";
+        }
+    }
+}
 
-    ** Weaknesses / Recommendations : **
-    -**Error Handling : **Adding unknown variables is flexible but may lead to silent errors if a typo occurs.Consider stricter validation or optional warnings for unknown variable names.
-    - **Unit Consistency : **Ensure all units are consistent, especially when combining terms from different physical domains.
-    - **Magic Numbers : **Some scale factors and physical constants are set to arbitrary values.Document their physical meaning or allow configuration via constructor arguments or config files.
-    - **Performance : **For large - scale or repeated updates, consider profiling and optimizing critical paths if needed.
+// Set learning rate for auto-optimization
+void SombreroUQFFModule::setLearningRate(double rate) {
+    learningRate = rate;
+    if (enableLogging) {
+        std::cout << "[Sombrero] Learning rate set to " << rate << "\n";
+    }
+}
 
-    ** Is the code dynamic enough to perform updates or accept changes ? **
-    Yes, the code is designed to be highly dynamic and configurable.You can change any parameter, add new ones, or adjust existing ones at runtime, and the computations will adapt accordingly.This makes it suitable for interactive modeling, parameter sweeps, or integration into larger simulation frameworks.
+// Enable/disable logging
+void SombreroUQFFModule::setEnableLogging(bool enable) { enableLogging = enable; }
 
-    **Summary:**
-    The module is robust, dynamic, and extensible, supporting runtime updates and changes to all model parameters.Minor improvements in error handling and documentation are recommended for production use.
-*/
+// Enable/disable dynamic terms
+void SombreroUQFFModule::setEnableDynamicTerms(bool enable) { enableDynamicTerms = enable; }
+
+#endif // SOMBRERO_UQFF_MODULE_H
+
+// ===========================================================================================
+// MAIN FUNCTION - Sombrero Galaxy M104 Simulation with Dual Physics Validation
+// ===========================================================================================
+int main()
+{
+    std::cout << "=== Source29: Sombrero Galaxy M104 UQFF Module ===" << std::endl;
+    std::cout << "Full MUGE with 12 physics terms + Dual Physics Validation\n" << std::endl;
+    
+    // Initialize Sombrero module
+    SombreroUQFFModule sombrero;
+    
+    // Compute gravity at multiple times
+    std::cout << "=== MUGE Gravity Evolution ===" << std::endl;
+    double times[] = {1e9 * 3.156e7, 5e9 * 3.156e7, 10e9 * 3.156e7, 13.8e9 * 3.156e7};  // 1, 5, 10, 13.8 Gyr
+    const char* labels[] = {"t=1 Gyr", "t=5 Gyr", "t=10 Gyr", "t=13.8 Gyr"};
+    
+    for (int i = 0; i < 4; ++i) {
+        double g = sombrero.computeG(times[i]);
+        std::cout << labels[i] << ": g = " << std::scientific << std::setprecision(4) << g << " m/s^2" << std::endl;
+    }
+    
+    // Print equation text
+    std::cout << "\n=== Equation Description ===" << std::endl;
+    std::cout << sombrero.getEquationText() << std::endl;
+    
+    // ==================== DUAL PHYSICS VALIDATION ====================
+    std::cout << "\n=== Dual Physics Validation ===" << std::endl;
+    
+    // Initialize FluidSolver for dust lane dynamics
+    FluidSolver fluidSolver(32, 0.1, 0.0001);
+    fluidSolver.add_jet_force(8.0);  // Dust lane turbulence
+    double g_example = sombrero.computeG(10e9 * 3.156e7);  // 10 Gyr
+    for (int step = 0; step < 10; ++step) {
+        fluidSolver.step(g_example * 1e-12);
+    }
+    std::cout << "FluidSolver: Max velocity = " << fluidSolver.getMaxVelocity() << " m/s" << std::endl;
+    
+    // Initialize DualMethodValidator
+    DualMethodValidator validator("source29_dual_physics.log");
+    validator.addConstraint("Sombrero_M104", 1e9, 1e13, 15.0);  // Galaxy-scale constraints
+    
+    // Create celestial body and MUGE system for Sombrero
+    double M_sun = 1.989e30;
+    UQFFDualPhysics::CelestialBody body29("Sombrero_M104", 1e11 * M_sun, 2.36e20, 1e-5);
+    UQFFDualPhysics::MUGESystem muge29("Sombrero_M104", 1e11 * M_sun, 2.36e20);
+    muge29.B0 = 1e-5;
+    muge29.Lambda = 1.1e-52;
+    // Note: 20% DM, z=0.0063 Virgo Cluster, SMBH=1e9 M_sun handled internally
+    
+    auto result = validator.validate(body29, muge29, 0.0, 0.0);
+    result.print();
+    std::cout << "Dual Physics: IMPLEMENTED" << std::endl;
+    // ================================================================
+    
+    std::cout << "\n[Source29] Sombrero M104 simulation complete." << std::endl;
+    return 0;
+}

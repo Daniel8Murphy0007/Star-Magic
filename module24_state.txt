@@ -1,0 +1,16 @@
+# UQFFModule24 State Export - Horsehead Nebula Barnard 33
+# Timestamp: January 2026
+
+[Core Parameters]
+M0=1.988920e+33
+r=2.365250e+16
+E_0=1.000000e-01
+tau_erosion=1.578000e+14
+ug1_base=2.372843e-10
+
+[Dynamic Parameters]
+erosion_modifier=1.000000e+00
+wind_modifier=1.000000e+00
+
+[Logging]
+enabled=true

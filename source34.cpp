@@ -1,121 +1,47 @@
-// SGR1745UQFFModule.h
+﻿// source34.cpp
+// SGR1745UQFFModule: UQFF 11-term Frequency/Resonance Model for SGR 1745-2900 Magnetar
+// DPM resonance, THz hole pipeline, plasmotic vacuum differential, superconductor frequency,
+// Aether-mediated resonance, U_g4i reactive, quantum wave, Aether effect, fluid, oscillatory, cosmic expansion.
+// All Standard Model (gravity/magnetics) terms intentionally excluded per UQFF.
+// Dynamic & extensible: all parameters updatable at runtime via setVariable/addToVariable/subtractFromVariable.
+// Conversion from MAIN_1.cpp Source 34 for modular integration.
+// Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
+// Enhanced with UQFF shared framework - Jan 2026
+
 #define WOLFRAM_TERM "(* Auto-contribution from source34.cpp *) + source34_unification_sector"
-// Modular C++ implementation of the full Master Universal Gravity Equation (UQFF) for SGR 1745-2900 Magnetar Evolution.
-// This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: // // // #include "SGR1745UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
-// SGR1745UQFFModule mod; mod.computeG(t); mod.updateVariable("M", new_value);
-// All variables are stored in a std::map for dynamic addition/subtraction/update.
-// Nothing is negligible: Includes all terms - DPM resonance, THz hole pipeline, plasmotic vacuum differential, superconductor frequency, Aether-mediated resonance, reactive U_g4i, quantum wave, fluid dynamics, oscillatory components, cosmic expansion, time-reversal correction.
-// Associated text: Outputs descriptive equation string via getEquationText().
-// Approximations: All terms derived from frequency/resonance interactions per UQFF; no SM gravity/magnetics; Aether replaces dark energy.
-// SGR1745 params: M=1.5 Msun, r=1e4 m, B=2e10 T (as frequency proxy), f_DPM=1e12 Hz, E_vac,neb=7.09e-36 J/m^3, etc.
-// Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
-#ifndef SGR1745_UQFF_MODULE_H
-#define SGR1745_UQFF_MODULE_H
+// ===========================================================================================
+// SHARED FRAMEWORK HEADERS (UQFF 2.0)
+// ===========================================================================================
+#include "uqff_constants.h"
+#include "uqff_self_expanding.h"
+#include "uqff_dual_physics.h"
 
-#include <map>
-#include <string>
-#include <cmath>
 #include <iostream>
+#include <cmath>
+#include <string>
+#include <map>
+#include <vector>
+#include <memory>
+#include <functional>
 #include <iomanip>
+#include <fstream>
+#include <sstream>
+#include <stdexcept>
+#include <algorithm>
+#include <numeric>
+#include <chrono>
+#include <random>
+#include <ctime>
 #include <complex>
+#include <array>
 
+// Import UQFF constants namespace for PI, c, G, hbar, k_B, etc.
+using namespace UQFF;
+using namespace UQFFDualPhysics;
+using namespace UQFFExpanding;
 
-#include <map>
-#include <vector>
-#include <functional>
-#include <memory>
-#include <algorithm>
-#include <fstream>
-#include <sstream>
-#include <map>
-#include <vector>
-#include <functional>
-#include <fstream>
-#include <sstream>
-#include <memory>
-#include <algorithm>
-
-// ===========================================================================================
-// SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
-// ===========================================================================================
-
-class PhysicsTerm {
-    // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
-    std::map<std::string, double> dynamicParameters;
-    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
-    std::map<std::string, std::string> metadata;
-    bool enableDynamicTerms;
-    bool enableLogging;
-    double learningRate;
-
-
-public:
-    virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double>& params) const = 0;
-    virtual std::string getName() const = 0;
-    virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double>& params) const { return true; }
-};
-
-class DynamicVacuumTerm : public PhysicsTerm {
-private:
-    
-    // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
-    // Note: Can be extended with dynamic parameters via setVariable()
-    double amplitude;
-    double frequency;
-    // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
-    std::map<std::string, double> dynamicParameters;
-    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
-    std::map<std::string, std::string> metadata;
-    bool enableDynamicTerms;
-    bool enableLogging;
-    double learningRate;
-
-
-public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15) 
-        : amplitude(amp), frequency(freq) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
-        double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
-        return amplitude * rho_vac * std::sin(frequency * t);
-    }
-    
-    std::string getName() const override { return "DynamicVacuum"; }
-    std::string getDescription() const override { return "Time-varying vacuum energy"; }
-};
-
-class QuantumCouplingTerm : public PhysicsTerm {
-private:
-    
-    // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
-    // Note: Can be extended with dynamic parameters via setVariable()
-    double coupling_strength;
-    // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
-    std::map<std::string, double> dynamicParameters;
-    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
-    std::map<std::string, std::string> metadata;
-    bool enableDynamicTerms;
-    bool enableLogging;
-    double learningRate;
-
-
-public:
-    QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
-        double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
-        double M = params.count("M") ? params.at("M") : 1.989e30;
-        double r = params.count("r") ? params.at("r") : 1e4;
-        return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
-    }
-    
-    std::string getName() const override { return "QuantumCoupling"; }
-    std::string getDescription() const override { return "Non-local quantum effects"; }
-};
+// PhysicsTerm, DynamicVacuumTerm, QuantumCouplingTerm now provided by uqff_self_expanding.h
 
 // ===========================================================================================
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
@@ -146,8 +72,6 @@ private:
     bool enableLogging;
     double learningRate;
 
-
-
 public:
     // Constructor: Initialize all variables with SGR 1745-2900 defaults
     SGR1745UQFFModule();
@@ -165,12 +89,24 @@ public:
 
     // Print all current variables (for debugging/updates)
     void printVariables();
+
+    // ========== SELF-EXPANDING FRAMEWORK METHODS ==========
+    void runSelfSimulation(double t_start, double t_end, int steps);
+    void exportState(const std::string& filename) const;
+    void setLearningRate(double rate) { learningRate = rate; }
+    void setEnableLogging(bool enable) { enableLogging = enable; }
+    void setEnableDynamicTerms(bool enable) { enableDynamicTerms = enable; }
+    void setDynamicParameter(const std::string& name, double value) { dynamicParameters[name] = value; }
+    double getDynamicParameter(const std::string& name) const {
+        auto it = dynamicParameters.find(name);
+        return (it != dynamicParameters.end()) ? it->second : 0.0;
+    }
+    void registerDynamicTerm(std::unique_ptr<PhysicsTerm> term) {
+        if (term && term->validate(variables)) dynamicTerms.push_back(std::move(term));
+    }
 };
 
-#endif // SGR1745_UQFF_MODULE_H
-
-// SGR1745UQFFModule.cpp
-// // // #include "SGR1745UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
+// SGR1745UQFFModule Implementation
 #include <complex>
 #include <array> // MSVC requirement
 
@@ -183,6 +119,7 @@ SGR1745UQFFModule::SGR1745UQFFModule() {
         metadata["version"] = "2.0-Enhanced";
 
     // Base constants (UQFF universal)
+    variables["G"] = 6.67430e-11;                   // m^3/kg/s^2 (gravitational constant)
     variables["c"] = 3e8;                           // m/s
     variables["pi"] = 3.141592653589793;            // pi
     variables["E_vac_neb"] = 7.09e-36;              // J/m^3 (plasmotic vacuum energy density, nebula)
@@ -298,7 +235,7 @@ double SGR1745UQFFModule::computeAetherResTerm() {
     return variables["f_aether"] * (1e-8) * variables["f_DPM"] * (1 + variables["f_TRZ"]) * a_DPM;  // B proxy as 1e-8
 }
 
-// Compute U_g4i term: U_g4i = f_sc * Ug1 * f_react * a_DPM / (E_vac_ISM * c)  0
+// Compute U_g4i term: U_g4i = f_sc * Ug1 * f_react * a_DPM / (E_vac_ISM * c) Â˜ 0
 double SGR1745UQFFModule::computeU_g4iTerm() {
     double Ug1 = (variables["G"] * variables["M"]) / (variables["r"] * variables["r"]);  // Proxy Ug1
     double a_DPM = computeDPMTerm();
@@ -367,10 +304,10 @@ std::string SGR1745UQFFModule::getEquationText() {
            "- a_quantum_freq = (f_quantum * E_vac_neb * a_DPM) / (E_vac_ISM * c)\n"
            "- a_Aether_freq = (f_Aether * E_vac_neb * a_DPM) / (E_vac_ISM * c)\n"
            "- a_fluid_freq = (f_fluid * E_vac_neb * V_sys) / (E_vac_ISM * c)\n"
-           "- Osc_term  0\n"
+           "- Osc_term Â˜ 0\n"
            "- a_exp_freq = (f_exp * E_vac_neb * a_DPM) / (E_vac_ISM * c)\n"
            "Special Terms: All driven by UQFF frequencies/resonances via plasmotic vacuum; Aether replaces dark energy; no SM terms.\n"
-           "Solutions: At t=1000 yr, g  1.182e-33 m/s² (dominated by THz; all micro-scale per proof set).\n"
+           "Solutions: At t=1000 yr, g Â˜ 1.182e-33 m/sÂ² (dominated by THz; all micro-scale per proof set).\n"
            "Adaptations: DPM heart, THz pipeline for magnetar bursts/outbursts per Chandra data.";
 }
 
@@ -382,42 +319,153 @@ void SGR1745UQFFModule::printVariables() {
     }
 }
 
-// Example usage in base program 'ziqn233h.cpp' (snippet for integration)
-// // // // #include "SGR1745UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
-// int main() {
-//     SGR1745UQFFModule mod;
-//     double t = 1000 * 3.156e7;  // 1000 years
-//     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
-//     std::cout << mod.getEquationText() << std::endl;
-//     mod.updateVariable("f_DPM", 1.1e12);  // Update DPM freq
-//     mod.addToVariable("f_TRZ", 0.05);     // Add to TR factor
-//     mod.subtractFromVariable("A", 1e-11); // Subtract from amplitude (if added)
-//     mod.printVariables();
-//     return 0;
-// }
-// Compile: g++ -o ziqn233h ziqn233h.cpp SGR1745UQFFModule.cpp -lm
-// Sample Output at t=1000 yr: g  1.182e-33 m/s² (varies with updates; all terms micro-scale per UQFF frequencies).
-// Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
+// ===========================================================================================
+// SELF-EXPANDING FRAMEWORK METHOD IMPLEMENTATIONS
+// ===========================================================================================
 
-/*
-// Evaluation of SGR1745UQFFModule (UQFF Frequency/Resonance Model for SGR 1745-2900 Magnetar)
+void SGR1745UQFFModule::runSelfSimulation(double t_start, double t_end, int steps) {
+    std::cout << "\n=== SGR 1745-2900 Frequency/Resonance Self-Simulation ===" << std::endl;
+    std::cout << "Time range: " << t_start / 3.156e7 << " - " << t_end / 3.156e7 << " years" << std::endl;
+    std::cout << "Steps: " << steps << std::endl;
+    
+    double dt = (t_end - t_start) / steps;
+    double g_min = 1e100, g_max = -1e100, g_sum = 0.0;
+    
+    for (int i = 0; i <= steps; ++i) {
+        double t = t_start + i * dt;
+        double g = computeG(t);
+        g_sum += g;
+        if (g < g_min) g_min = g;
+        if (g > g_max) g_max = g;
+        
+        if (enableLogging && i % (steps / 10 + 1) == 0) {
+            std::cout << "  t=" << std::scientific << t / 3.156e7 << " yr: g=" << g << " m/s^2" << std::endl;
+        }
+    }
+    
+    double g_avg = g_sum / (steps + 1);
+    std::cout << "\nSimulation Results:" << std::endl;
+    std::cout << "  g_min = " << std::scientific << g_min << " m/s^2" << std::endl;
+    std::cout << "  g_max = " << std::scientific << g_max << " m/s^2" << std::endl;
+    std::cout << "  g_avg = " << std::scientific << g_avg << " m/s^2" << std::endl;
+}
 
-**Strengths:**
--**Dynamic & Extensible : **All model parameters are stored in a `std: : map<std::string, double> variables`, allowing runtime updates, additions, and removals.The methods `updateVariable`, `addToVariable`, and `subtractFromVariable` enable flexible modification of any parameter.
-- **Automatic Dependency Updates : **When key variables like `"Delta_x"` or `"r"` are updated, dependent variables(`"Delta_p"`, `"A"`, `"V_sys"`) are recalculated automatically, ensuring consistency.
-    - **Immediate Effect : **All computations(e.g., `computeG`) use the current values in the map, so any changes are immediately reflected in results.
-        - **Comprehensive Physics : **The module includes all major UQFF terms relevant for magnetar modeling, such as DPM resonance, THz pipeline, vacuum differential, superconductor frequency, Aether resonance, quantum wave, fluid, oscillatory, and cosmic expansion effects.Standard Model gravity / magnetics are intentionally excluded per UQFF.
-        - **Debugging Support : **The `printVariables()` method provides a snapshot of all current parameters, aiding validation and troubleshooting.
-    - **Sample Usage Provided : **Example integration and compilation instructions are included, demonstrating how to update variables and see their effect.
+void SGR1745UQFFModule::exportState(const std::string& filename) const {
+    std::ofstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "Error: Could not open " << filename << " for writing" << std::endl;
+        return;
+    }
+    
+    file << "# SGR1745UQFFModule State Export" << std::endl;
+    file << "# 11-term Frequency/Resonance MUGE for SGR 1745-2900 Magnetar" << std::endl;
+    file << "# Generated: " << __DATE__ << " " << __TIME__ << std::endl;
+    file << std::endl;
+    
+    file << "[VARIABLES]" << std::endl;
+    for (const auto& var : variables) {
+        file << var.first << " = " << std::scientific << var.second << std::endl;
+    }
+    
+    file << std::endl << "[DYNAMIC_PARAMETERS]" << std::endl;
+    for (const auto& param : dynamicParameters) {
+        file << param.first << " = " << std::scientific << param.second << std::endl;
+    }
+    
+    file << std::endl << "[METADATA]" << std::endl;
+    for (const auto& meta : metadata) {
+        file << meta.first << " = " << meta.second << std::endl;
+    }
+    
+    file << std::endl << "[FRAMEWORK_STATE]" << std::endl;
+    file << "enableDynamicTerms = " << (enableDynamicTerms ? "true" : "false") << std::endl;
+    file << "enableLogging = " << (enableLogging ? "true" : "false") << std::endl;
+    file << "learningRate = " << learningRate << std::endl;
+    file << "dynamicTermsCount = " << dynamicTerms.size() << std::endl;
+    
+    file.close();
+    std::cout << "State exported to: " << filename << std::endl;
+}
 
-    ** Weaknesses / Recommendations : **
-    -**Error Handling : **Adding unknown variables is flexible but may lead to silent errors if a typo occurs.Consider stricter validation or optional warnings for unknown variable names.
-    - **Unit Consistency : **Ensure all units are consistent, especially when combining terms from different physical domains and frequency - based scaling.
-    - **Magic Numbers : **Some scale factors and physical constants are set to arbitrary values.Document their physical meaning or allow configuration via constructor arguments or config files.
-    - **Physical Justification : **The model is highly specialized for UQFF and omits Standard Model terms.Ensure this is appropriate for your scientific context and document the rationale for each term.
-    - **Performance : **For large - scale or repeated updates, consider profiling and optimizing critical paths if needed.
+// ===========================================================================================
+// MAIN FUNCTION - Active with dual physics validation
+// ===========================================================================================
+int main() {
+    std::cout << "========================================" << std::endl;
+    std::cout << "SGR1745UQFFModule - 11-Term Frequency/Resonance MUGE" << std::endl;
+    std::cout << "SGR 1745-2900 Magnetar (M=1.5 M_sun, r=10 km)" << std::endl;
+    std::cout << "========================================" << std::endl;
+    
+    SGR1745UQFFModule mod;
+    
+    // Display equation
+    std::cout << "\n" << mod.getEquationText() << std::endl;
+    
+    // Time evolution: 100 to 10000 years
+    std::cout << "\n=== Time Evolution ===" << std::endl;
+    double years[] = {100, 500, 1000, 5000, 10000};
+    for (double yr : years) {
+        double t = yr * 3.156e7;  // Convert years to seconds
+        double g = mod.computeG(t);
+        std::cout << "t = " << yr << " yr: g = " << std::scientific << g << " m/s^2" << std::endl;
+    }
+    
+    // Dual physics validation: UQFF vs Newtonian reference
+    std::cout << "\n=== Dual Physics Validation ===" << std::endl;
+    double M = 1.5 * 1.989e30;  // 1.5 solar masses
+    double r = 1e4;              // 10 km
+    double g_uqff = mod.computeG(1000 * 3.156e7);  // At t=1000 yr
+    
+    // DualMethodValidator for cross-validation
+    DualMethodValidator validator("source34_dual_physics.log");
+    
+    CelestialBody body;
+    body.name = "SGR_1745-2900";
+    body.M = M;
+    body.Rs = r;
+    body.B0 = 1e14;              // 10^14 T magnetar field
+    body.Pcore = 3.76;           // 3.76 s rotation period
+    
+    MUGESystem muge;
+    muge.name = "SGR1745";       // Use constraint name for validation
+    muge.M = M;
+    muge.r = r;
+    muge.B0 = 1e14;
+    muge.omega = 2.0 * PI / 3.76;
+    
+    ValidationResult result = validator.validate(body, muge);
+    
+    double g_newton = G * M / (r * r);
+    std::cout << "g_Newton (surface) = " << std::scientific << g_newton << " m/s^2" << std::endl;
+    std::cout << "g_UQFF (freq/res)  = " << std::scientific << g_uqff << " m/s^2" << std::endl;
+    result.print();
+    
+    // FluidSolver for frequency/resonance fluid coupling
+    std::cout << "\n=== FluidSolver: Frequency/Resonance Fluid Coupling ===" << std::endl;
+    FluidSolver fluidSolver(32, 0.1, 0.0001);  // 32x32 grid
+    std::cout << "FluidSolver initialized (32x32 grid)" << std::endl;
+    fluidSolver.add_jet_force(12.0);  // Magnetar burst forcing
+    for (int i = 0; i < 10; ++i) {
+        fluidSolver.step(g_newton * 1e-12);  // Scaled surface gravity
+    }
+    std::cout << "FluidSolver: Max velocity = " << fluidSolver.getMaxVelocity() << " m/s" << std::endl;
+    std::cout << "\nNote: UQFF frequency/resonance terms are micro-scale corrections," << std::endl;
+    std::cout << "      not replacements for bulk gravitational field." << std::endl;
+    std::cout << "      These terms model DPM, THz, vacuum, superconductor," << std::endl;
+    std::cout << "      Aether, quantum, fluid, and cosmic expansion effects." << std::endl;
+    
+    // Self-simulation test
+    mod.setEnableLogging(true);
+    mod.runSelfSimulation(100 * 3.156e7, 10000 * 3.156e7, 100);
+    
+    // Export state
+    mod.exportState("source34_sgr1745_freq_state.txt");
+    
+    std::cout << "\n=== Source34 Complete ===" << std::endl;
+    return 0;
+}
 
-    ** Summary : **
-    The module is robust, dynamic, and extensible, supporting runtime updates and changes to all model parameters.It is suitable for advanced UQFF - based magnetar modeling.Minor improvements in error handling, documentation, and physical justification are recommended for production or publication use.
-*/
+// Compile: cmake --build build_msvc --config Release --target source34
+// Expected Output: g ~ 1.182e-33 m/s^2 (micro-scale frequency/resonance terms)
+// Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
+// Enhanced with UQFF shared framework - Jan 2026

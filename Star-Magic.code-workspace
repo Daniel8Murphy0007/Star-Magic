@@ -122,7 +122,15 @@
         "window.restoreFullscreen": false,
         "window.title": "🌟 Star-Magic UQFF - ${dirty}${activeEditorShort}${separator}${rootName}",
         // ========== RECOMMENDED EXTENSIONS ==========
-        "extensions.ignoreRecommendations": false
+        "extensions.ignoreRecommendations": false,
+        "github.copilot.nextEditSuggestions.enabled": true,
+        "github.copilot.enable": {
+            "markdown": true,
+            "plaintext": true,
+            "scminput": true
+        },
+        "chat.useAgentSkills": true,
+        "chat.useNestedAgentsMdFiles": true
     },
     "extensions": {
         "recommendations": [

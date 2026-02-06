@@ -1,0 +1,32 @@
+# UQFFModule20_NGC2525_SelfExpanding State Export
+# Version: 2.0-SelfExpanding
+# Timestamp: Thu Jan 22 19:54:09 2026
+
+[PARAMETERS]
+M_BH=4.4750700000e+37
+M_galaxy=1.9889200000e+40
+SN_peak_luminosity=1.0000000000e+43
+SN_velocity_km_s=1.0000000000e+04
+r_galaxy=9.2570327445e+20
+ug1_base=1.5490999456e-12
+
+[METADATA]
+created=Thu Jan 22 19:54:09 2026
+enhanced=true
+last_param_created=SN_velocity_km_s
+last_simulation=Thu Jan 22 19:54:09 2026
+last_term_added=DynamicVacuum
+object=NGC 2525 + SN 2018gv
+simulation_steps=10
+version=2.0-SelfExpanding
+
+[DYNAMIC_TERMS]
+CentralSMBH:
+SupernovaMassLoss:
+DynamicVacuum:1e-08,1e-12,0
+
+[SETTINGS]
+learningRate=1.0000000000e-03
+enableDynamicTerms=1
+enableLogging=1
+enableAutoOptimize=0

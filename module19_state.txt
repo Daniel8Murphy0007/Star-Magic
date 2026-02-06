@@ -1,0 +1,10 @@
+# UQFFModule19 State Export
+module_name=UQFFModule19_RingsOfRelativity
+M=1.98892e+44
+R=3.086e+20
+z_lens=0.5
+Hz=2.96837e-18
+L_factor=0.67
+L_t=0.000320672
+dyn_lensing_modifier=1
+dyn_redshift_evolution=1

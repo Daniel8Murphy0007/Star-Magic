@@ -1,0 +1,42 @@
+# UQFFModule26_HUDF_SelfExpanding State Export
+# Version: 2.0-SelfExpanding
+# Timestamp: Thu Jan 22 20:23:06 2026
+
+[PARAMETERS]
+B=1.0000000000e-10
+G=6.6743000000e-11
+M0=1.9889200000e+42
+custom_coupling=1.5000000000e-40
+feedback_efficiency=8.0000000000e-01
+hbar=1.0545718170e-34
+merger_rate=1.0000000000e-01
+r=1.2299300000e+27
+rho_fluid=1.0000000000e-22
+tau_tidal=1.0000000000e+15
+temperature=1.0000000000e+06
+ug1_base=8.7753055857e-23
+
+[METADATA]
+created=Thu Jan 22 20:23:06 2026
+enhanced=true
+last_param_created=merger_rate
+last_simulation=Thu Jan 22 20:23:06 2026
+last_term_added=RadiativeCooling
+object=HUDF Galaxies Galore
+physics_terms=12 MUGE + dynamic
+simulation_steps=50
+version=2.0-SelfExpanding
+z_avg=3.5
+
+[DYNAMIC_TERMS]
+StarFormation:
+InterGalaxyInteraction:
+DynamicVacuum:1e-12,1e-16,0
+DarkMatterHalo:
+RadiativeCooling:
+
+[SETTINGS]
+learningRate=1.0000000000e-02
+enableDynamicTerms=1
+enableLogging=1
+enableAutoOptimize=1

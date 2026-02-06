@@ -1,0 +1,17 @@
+# UQFFModule22 State Export - Bubble Nebula NGC 7635
+# Timestamp: January 2026
+
+[Core Parameters]
+M0=9.149032e+31
+r=4.730500e+16
+v_wind=1.800000e+06
+rho_wind=1.000000e-21
+tau_exp=1.262400e+14
+ug1_base=2.728769e-12
+
+[Dynamic Parameters]
+expansion_modifier=1.000000e+00
+wind_modifier=1.000000e+00
+
+[Logging]
+enabled=true
