@@ -193,3 +193,7 @@ MAIN_1_CoAnQi_backup_*.cpp
 complete_physics_integration_backup_*.cpp
 *_backup_*MB*.cpp
 source*_backup_*.cpp
+
+# Python cache
+__pycache__/
+*.pyc
