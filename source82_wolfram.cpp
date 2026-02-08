@@ -223,10 +223,10 @@ private:
     double L_jet;          // Jet luminosity (W, ~1e37 for M87)
     double theta_jet;      // Jet opening angle (rad, ~0.1)
     double v_jet;          // Jet velocity (m/s, ~0.99c)
-    double r_jet_base;     // Jet base radius (m, ~100 pc = 3.086e18 m)
+    double r_jet_base;     // Jet base radius (m, ~0.01 pc = 3.086e14 m)
 
 public:
-    VirgoClusterM87JetTerm(double luminosity = 1e37, double angle = 0.1, double velocity = 0.99 * C_LIGHT, double base_r = 100 * 3.086e16)
+    VirgoClusterM87JetTerm(double luminosity = 1e37, double angle = 0.1, double velocity = 0.99 * C_LIGHT, double base_r = 0.01 * 3.086e16)
         : L_jet(luminosity), theta_jet(angle), v_jet(velocity), r_jet_base(base_r) {}
 
     double compute(double r, const std::map<std::string, double>& params) const
