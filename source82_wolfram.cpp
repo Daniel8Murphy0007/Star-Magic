@@ -487,7 +487,15 @@ public:
 
     double computeDynamicalMass(double r) const
     {
-        // M(<r) = r·σ²(r) / G (simplified spherical Jeans equation)
+        // Dynamical mass estimate from a simplified spherical Jeans equation.
+        // Full form for a spherical system: M(<r) = r * σ_r(r)^2 * (2 - β) / G,
+        // where β is the velocity anisotropy parameter. Here we intentionally use
+        // the reduced form M(<r) ≈ r * σ(r)^2 / G, effectively assuming an
+        // isotropic or mildly anisotropic velocity field and absorbing factors
+        // of order unity (including the (2 - β) term) into the empirical
+        // calibration of Virgo cluster parameters (M_cluster, R_virial).
+        // For precision Jeans modeling with explicit β(r), a dedicated solver
+        // should be used instead of this approximate estimator.
         double sigma_r = sigma_0 / std::sqrt(1.0 + (r * r) / (r_sigma * r_sigma));
         return r * sigma_r * sigma_r / G;
     }
