@@ -285,18 +285,25 @@ public:
 
     double compute(double r, const std::map<std::string, double>& params) const
     {
+        // Protect against r = 0 to avoid division by zero and numerical instability
+        double r_eff = r;
+        if (r_eff < 1e-10)
+        {
+            r_eff = 1e-10;
+        }
+
         // Get galaxy mass from params, default to 1e11 M_sun (typical spiral)
         double M_gal = (params.count("M_gal") ? params.at("M_gal") : 1e11 * M_SUN);
         
         // Enclosed cluster mass at radius r (NFW-like approximation)
-        double x = r / R_virial;
+        double x = r_eff / R_virial;
         double M_enclosed = M_cluster * (x * x * x) / (1.0 + x) / (1.0 + x);
         
         // Tidal radius: r_t = r * (M_gal / (3 * M_enclosed))^(1/3)
-        double r_tidal = r * std::pow(M_gal / (3.0 * M_enclosed), 1.0 / 3.0);
+        double r_tidal = r_eff * std::pow(M_gal / (3.0 * M_enclosed), 1.0 / 3.0);
         
         // Tidal acceleration at galaxy edge
-        double a_tidal = 2.0 * G * M_enclosed * r_tidal / (r * r * r);
+        double a_tidal = 2.0 * G * M_enclosed * r_tidal / (r_eff * r_eff * r_eff);
         
         return a_tidal;
     }
