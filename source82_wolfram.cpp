@@ -610,5 +610,5 @@ void registerWolframTerms_source82(PhysicsTermRegistry& registry) {
 // - Number of galaxies: ~1,500-2,000 members
 // ============================================================================
 // Companion to source82.cpp (SMBHUQFFModule)
-// Copyright - Daniel T. Murphy, November 2025
+// Copyright - Daniel T. Murphy, 2025-2026
 // ============================================================================
