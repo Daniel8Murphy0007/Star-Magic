@@ -35,6 +35,7 @@ constexpr double YEAR_TO_S = 3.156e7;       // Year to seconds
 // Category: gravity
 // Physics: Total cluster mass M_cluster ~ 1.2e15 M_sun (gravitational + dark matter)
 // Virgo Cluster is the nearest large galaxy cluster at ~16.5 Mpc
+// Uses proper NFW (Navarro-Frenk-White) enclosed mass profile
 // ========================================
 class VirgoClusterMassTerm
 {
@@ -43,10 +44,11 @@ private:
     double M_cluster;      // Total cluster mass (kg, ~1.2e15 M_sun)
     double R_virial;       // Virial radius (m, ~2.2 Mpc = 6.79e22 m)
     double z;              // Redshift (0.0036 for Virgo center)
+    double c_NFW;          // NFW concentration parameter (~4 for clusters)
 
 public:
-    VirgoClusterMassTerm(double mass = 1.2e15 * M_SUN, double r_vir = 2.2 * MPC_TO_M, double redshift = 0.0036)
-        : G(G_CONST), M_cluster(mass), R_virial(r_vir), z(redshift) {}
+    VirgoClusterMassTerm(double mass = 1.2e15 * M_SUN, double r_vir = 2.2 * MPC_TO_M, double redshift = 0.0036, double concentration = 4.0)
+        : G(G_CONST), M_cluster(mass), R_virial(r_vir), z(redshift), c_NFW(concentration) {}
 
     double compute(double r, const std::map<std::string, double>& params) const
     {
@@ -55,10 +57,12 @@ public:
         if (r_eff < 1e-10)
             r_eff = 1e-10;
 
-        // Enclosed mass profile: M(<r) = M_cluster * (r/R_virial)^3 * (1 + (R_virial/r))^(-2)
-        // Simplified NFW-like profile for cluster
+        // Standard NFW enclosed mass profile:
+        // M(<r) = M_vir * [ln(1 + c*x) - c*x/(1 + c*x)] / f(c)
+        // where x = r/R_vir, f(c) = ln(1+c) - c/(1+c)
         double x = r_eff / R_virial;
-        double M_enclosed = M_cluster * (x * x * x) / (1.0 + x) / (1.0 + x);
+        double f_c = std::log(1.0 + c_NFW) - c_NFW / (1.0 + c_NFW);
+        double M_enclosed = M_cluster * (std::log(1.0 + c_NFW * x) - (c_NFW * x) / (1.0 + c_NFW * x)) / f_c;
         
         // Return gravitational acceleration: a = G * M_enclosed / r_eff²
         return (G * M_enclosed) / (r_eff * r_eff);
@@ -66,17 +70,18 @@ public:
 
     std::string toWolfram() const
     {
-        return "VirgoClusterMass[r_, Mcluster_: 1.2*^15 * 1.989*^30, Rvirial_: 2.2 * 3.086*^22, G_: 6.6743*^-11] := "
-               "Module[{x, Menclosed}, "
+        return "VirgoClusterMass[r_, Mcluster_: 1.2*^15 * 1.989*^30, Rvirial_: 2.2 * 3.086*^22, c_: 4, G_: 6.6743*^-11] := "
+               "Module[{x, fc, Menclosed}, "
                "x = r / Rvirial; "
-               "Menclosed = Mcluster * x^3 / (1 + x)^2; "
+               "fc = Log[1 + c] - c/(1 + c); "
+               "Menclosed = Mcluster * (Log[1 + c*x] - (c*x)/(1 + c*x)) / fc; "
                "G * Menclosed / r^2]";
     }
 
     std::string getSignature() const { return "VirgoClusterMassTerm(r, params)"; }
     std::string getCategory() const { return "gravity"; }
     std::string getName() const { return "VirgoClusterMass"; }
-    std::string getDescription() const { return "Virgo Cluster total mass gravitational acceleration: a = G·M(<r)/r² with M_cluster~1.2e15 M_sun"; }
+    std::string getDescription() const { return "Virgo Cluster NFW enclosed mass gravitational acceleration: a = G·M(<r)/r² with proper NFW profile, c~4"; }
 };
 
 // ========================================
@@ -236,12 +241,12 @@ public:
 
     double compute(double r, const std::map<std::string, double>& params) const
     {
-        // Jet energy density: u_jet(r) = L_jet / (4π·r²·v_jet·Ω_jet)
-        // where Ω_jet = 2π(1 - cos(θ_jet)) is the solid angle
+        // Jet energy density: u_jet(r) = L_jet / (Ω_jet · r² · v_jet)
+        // where Ω_jet = 2π(1 - cos(θ_jet)) is the solid angle of the jet cone
         double Omega_jet = 2.0 * M_PI * (1.0 - std::cos(theta_jet));
         
-        // Energy density in jet cone
-        double u_jet = L_jet / (4.0 * M_PI * r * r * v_jet * (Omega_jet / (4.0 * M_PI)));
+        // Energy density in jet cone (simplified formula)
+        double u_jet = L_jet / (r * r * v_jet * Omega_jet);
         
         // Lorentz factor for relativistic correction
         double gamma = 1.0 / std::sqrt(1.0 - (v_jet * v_jet) / (C_LIGHT * C_LIGHT));
@@ -255,7 +260,7 @@ public:
                "Module[{OmegaJet, uJet, gamma, c}, "
                "c = 2.998*^8; "
                "OmegaJet = 2 * Pi * (1 - Cos[theta]); "
-               "uJet = Ljet / (4 * Pi * r^2 * vjet * (OmegaJet/(4*Pi))); "
+               "uJet = Ljet / (r^2 * vjet * OmegaJet); "
                "gamma = 1/Sqrt[1 - (vjet/c)^2]; "
                "uJet * gamma]";
     }
@@ -270,7 +275,8 @@ public:
 // CLASS 825: VirgoClusterTidalStrippingTerm
 // Category: dynamics
 // Physics: Tidal stripping of infalling galaxies by cluster potential
-// Tidal radius r_t = r·(M_gal/(3·M_cluster(<r)))^(1/3)
+// Tidal radius r_t = r·(M_gal/(3·M_cluster(<r)))^(1/3) (Jacobi radius)
+// Uses proper NFW profile for cluster mass distribution
 // ========================================
 class VirgoClusterTidalStrippingTerm
 {
@@ -278,10 +284,11 @@ private:
     double M_cluster;      // Cluster mass (kg)
     double R_virial;       // Virial radius (m)
     double G;              // Gravitational constant
+    double c_NFW;          // NFW concentration parameter (~4 for clusters)
 
 public:
-    VirgoClusterTidalStrippingTerm(double mass = 1.2e15 * M_SUN, double r_vir = 2.2 * MPC_TO_M)
-        : M_cluster(mass), R_virial(r_vir), G(G_CONST) {}
+    VirgoClusterTidalStrippingTerm(double mass = 1.2e15 * M_SUN, double r_vir = 2.2 * MPC_TO_M, double concentration = 4.0)
+        : M_cluster(mass), R_virial(r_vir), G(G_CONST), c_NFW(concentration) {}
 
     double compute(double r, const std::map<std::string, double>& params) const
     {
@@ -295,14 +302,18 @@ public:
         // Get galaxy mass from params, default to 1e11 M_sun (typical spiral)
         double M_gal = (params.count("M_gal") ? params.at("M_gal") : 1e11 * M_SUN);
         
-        // Enclosed cluster mass at radius r (NFW-like approximation)
+        // Enclosed cluster mass at radius r (proper NFW profile)
+        // M(<r) = M_vir * [ln(1 + c*x) - c*x/(1 + c*x)] / f(c)
         double x = r_eff / R_virial;
-        double M_enclosed = M_cluster * (x * x * x) / (1.0 + x) / (1.0 + x);
+        double f_c = std::log(1.0 + c_NFW) - c_NFW / (1.0 + c_NFW);
+        double M_enclosed = M_cluster * (std::log(1.0 + c_NFW * x) - (c_NFW * x) / (1.0 + c_NFW * x)) / f_c;
         
-        // Tidal radius: r_t = r * (M_gal / (3 * M_enclosed))^(1/3)
+        // Tidal radius: r_t = r * (M_gal / (3 * M_enclosed))^(1/3) (Jacobi radius)
         double r_tidal = r_eff * std::pow(M_gal / (3.0 * M_enclosed), 1.0 / 3.0);
         
-        // Tidal acceleration at galaxy edge
+        // Tidal acceleration: Based on cluster tidal field gradient
+        // a_tidal = 2 * |∂Φ/∂r| * r_tidal = 2 * (G*M_enclosed/r²) * r_tidal/r
+        // This represents the tidal force per unit mass acting to strip material beyond r_tidal
         double a_tidal = 2.0 * G * M_enclosed * r_tidal / (r_eff * r_eff * r_eff);
         
         return a_tidal;
@@ -310,11 +321,12 @@ public:
 
     std::string toWolfram() const
     {
-        return "VirgoTidalStripping[r_, Mgal_, Mcluster_: 1.2*^15 * 1.989*^30, Rvirial_: 2.2 * 3.086*^22] := "
-               "Module[{x, Menclosed, rtidal, G}, "
+        return "VirgoTidalStripping[r_, Mgal_, Mcluster_: 1.2*^15 * 1.989*^30, Rvirial_: 2.2 * 3.086*^22, c_: 4] := "
+               "Module[{x, fc, Menclosed, rtidal, G}, "
                "G = 6.6743*^-11; "
                "x = r / Rvirial; "
-               "Menclosed = Mcluster * x^3 / (1 + x)^2; "
+               "fc = Log[1 + c] - c/(1 + c); "
+               "Menclosed = Mcluster * (Log[1 + c*x] - (c*x)/(1 + c*x)) / fc; "
                "rtidal = r * (Mgal / (3 * Menclosed))^(1/3); "
                "2 * G * Menclosed * rtidal / r^3]";
     }
@@ -322,7 +334,7 @@ public:
     std::string getSignature() const { return "VirgoClusterTidalStrippingTerm(r, params)"; }
     std::string getCategory() const { return "dynamics"; }
     std::string getName() const { return "VirgoTidalStripping"; }
-    std::string getDescription() const { return "Tidal stripping acceleration: a_tidal = 2·G·M(<r)·r_t/r³ with r_t from Jacobi radius"; }
+    std::string getDescription() const { return "Tidal stripping acceleration: a_tidal = 2·G·M(<r)·r_t/r³ with r_t from Jacobi radius, proper NFW profile"; }
 };
 
 // ========================================
@@ -625,5 +637,9 @@ void registerWolframTerms_source82(PhysicsTermRegistry& registry) {
 // - Number of galaxies: ~1,500-2,000 members
 // ============================================================================
 // Companion to source82.cpp (SMBHUQFFModule)
+// This module models the Virgo Cluster host environment for SMBH M-σ relation studies.
+// While source82.cpp focuses on the M-σ relation for individual galaxies, this file
+// provides the cluster-scale physics (mass distribution, ICM, dark matter, tidal forces,
+// M87 jet feedback) that influences the formation and evolution of SMBHs in cluster galaxies.
 // Copyright - Daniel T. Murphy, 2025-2026
 // ============================================================================
