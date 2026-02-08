@@ -1,11 +1,13 @@
 // source82_wolfram.cpp
-// Wolfram Language Physics Term Companions for SMBHUQFFModule (source82.cpp)
-// Implements 10 PhysicsTerm classes for Virgo Cluster UQFF Integration
-// Systems: Virgo Cluster (nearest large cluster, ~16.5 Mpc), M87 central galaxy, SMBH M-σ relation
+// Wolfram Language Physics Term Companions for Virgo Cluster / M87 environment (used by SMBHUQFFModule in source82.cpp)
+// Implements 10 PhysicsTerm classes for Virgo Cluster UQFF Integration (cluster-scale environment + host-galaxy context)
+// Systems: Virgo Cluster (nearest large cluster, ~16.5 Mpc), M87 central galaxy, SMBH M-σ relation (via host environment)
 // Auto-generated: February 6, 2026
-// Module: SMBHUQFFModule - Master Universal Gravity Equation for SMBH M-σ relation
-// Physics: Cluster dynamics, ICM, dark matter halo, galaxy velocity dispersion, X-ray emission
-// Key parameters: M_cluster~1e15 M_sun, R_virial~2.2 Mpc, σ_v~700 km/s, T_ICM~2.3 keV
+// Module role: Virgo Cluster + M87 environment companion module feeding SMBHUQFFModule (Master Universal Gravity Equation for SMBH M-σ relation)
+// Physics: Cluster dynamics, ICM, dark matter halo, galaxy velocity dispersion, X-ray emission (inputs to SMBH-scale UQFF terms)
+// Key parameters (cluster-scale): M_cluster~1e15 M_sun, R_virial~2.2 Mpc, σ_v~700 km/s, T_ICM~2.3 keV
+// Note: Terms 820–828 model the Virgo Cluster and intracluster medium environment. SMBHUQFFModule (source82.cpp) consumes these as boundary
+//       and background conditions when evaluating SMBH M-σ behavior for M87 and related systems.
 // Copyright - Daniel T. Murphy
 
 #include <cmath>
@@ -228,6 +230,9 @@ public:
 // Category: agn
 // Physics: M87 (Virgo A) central AGN relativistic jet energy injection
 // Jet power ~1e44 erg/s = 1e37 W, affects ICM heating and cluster evolution
+// 
+// Note: r_jet_base is stored but not currently used in energy density calculation.
+// Future implementations may incorporate it as a minimum radius cutoff for jet model validity.
 // ========================================
 class VirgoClusterM87JetTerm
 {
@@ -235,7 +240,7 @@ private:
     double L_jet;          // Jet luminosity (W, ~1e37 for M87)
     double theta_jet;      // Jet opening angle (rad, ~0.1)
     double v_jet;          // Jet velocity (m/s, ~0.99c)
-    double r_jet_base;     // Jet base radius (m, ~0.01 pc = 3.086e14 m)
+    double r_jet_base;     // Jet base radius (m, ~0.01 pc = 3.086e14 m) - reserved for future use
 
 public:
     VirgoClusterM87JetTerm(double luminosity = 1e37, double angle = 0.1, double velocity = 0.99 * C_LIGHT, double base_r = 0.01 * 3.086e16)
@@ -243,12 +248,21 @@ public:
 
     double compute(double r, const std::map<std::string, double>& params) const
     {
+        // Protect against r = 0 to avoid division by zero / numerical instability
+        double r_eff = r;
+        if (r_eff < 1e-10)
+            r_eff = 1e-10;
+        
         // Jet energy density: u_jet(r) = L_jet / (Ω_jet · r² · v_jet)
         // where Ω_jet = 2π(1 - cos(θ_jet)) is the solid angle of the jet cone
         double Omega_jet = 2.0 * M_PI * (1.0 - std::cos(theta_jet));
         
+        // Also guard against very small opening angles
+        if (Omega_jet < 1e-10)
+            Omega_jet = 1e-10;
+        
         // Energy density in jet cone (simplified formula)
-        double u_jet = L_jet / (r * r * v_jet * Omega_jet);
+        double u_jet = L_jet / (r_eff * r_eff * v_jet * Omega_jet);
         
         // Lorentz factor for relativistic correction
         double gamma = 1.0 / std::sqrt(1.0 - (v_jet * v_jet) / (C_LIGHT * C_LIGHT));
@@ -259,10 +273,12 @@ public:
     std::string toWolfram() const
     {
         return "VirgoM87Jet[r_, Ljet_: 10^37, theta_: 0.1, vjet_: 0.99 * 2.998*^8] := "
-               "Module[{OmegaJet, uJet, gamma, c}, "
+               "Module[{OmegaJet, uJet, gamma, c, rEff, eps}, "
                "c = 2.998*^8; "
-               "OmegaJet = 2 * Pi * (1 - Cos[theta]); "
-               "uJet = Ljet / (r^2 * vjet * OmegaJet); "
+               "eps = 1.*^-10; "
+               "rEff = Max[r, eps]; "
+               "OmegaJet = Max[2 * Pi * (1 - Cos[theta]), eps]; "
+               "uJet = Ljet / (rEff^2 * vjet * OmegaJet); "
                "gamma = 1/Sqrt[1 - (vjet/c)^2]; "
                "uJet * gamma]";
     }
@@ -324,13 +340,15 @@ public:
     std::string toWolfram() const
     {
         return "VirgoTidalStripping[r_, Mgal_, Mcluster_: 1.2*^15 * 1.989*^30, Rvirial_: 2.2 * 3.086*^22, c_: 4] := "
-               "Module[{x, fc, Menclosed, rtidal, G}, "
+               "Module[{x, fc, Menclosed, rtidal, G, rEff, eps}, "
                "G = 6.6743*^-11; "
-               "x = r / Rvirial; "
+               "eps = 1.*^-10; "
+               "rEff = Max[r, eps]; "
+               "x = rEff / Rvirial; "
                "fc = Log[1 + c] - c/(1 + c); "
                "Menclosed = Mcluster * (Log[1 + c*x] - (c*x)/(1 + c*x)) / fc; "
-               "rtidal = r * (Mgal / (3 * Menclosed))^(1/3); "
-               "2 * G * Menclosed * rtidal / r^3]";
+               "rtidal = rEff * (Mgal / (3 * Menclosed))^(1/3); "
+               "2 * G * Menclosed * rtidal / rEff^3]";
     }
 
     std::string getSignature() const { return "VirgoClusterTidalStrippingTerm(r, params)"; }
