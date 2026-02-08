@@ -71,11 +71,13 @@ public:
     std::string toWolfram() const
     {
         return "VirgoClusterMass[r_, Mcluster_: 1.2*^15 * 1.989*^30, Rvirial_: 2.2 * 3.086*^22, c_: 4, G_: 6.6743*^-11] := "
-               "Module[{x, fc, Menclosed}, "
-               "x = r / Rvirial; "
+               "Module[{x, fc, Menclosed, rEff, eps}, "
+               "eps = 1.*^-10; "
+               "rEff = Max[r, eps]; "
+               "x = rEff / Rvirial; "
                "fc = Log[1 + c] - c/(1 + c); "
                "Menclosed = Mcluster * (Log[1 + c*x] - (c*x)/(1 + c*x)) / fc; "
-               "G * Menclosed / r^2]";
+               "G * Menclosed / rEff^2]";
     }
 
     std::string getSignature() const { return "VirgoClusterMassTerm(r, params)"; }
