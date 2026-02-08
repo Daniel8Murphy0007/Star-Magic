@@ -50,13 +50,18 @@ public:
 
     double compute(double r, const std::map<std::string, double>& params) const
     {
+        // Protect against r = 0 (or extremely small r) to avoid division by zero / numerical instability
+        double r_eff = r;
+        if (r_eff < 1e-10)
+            r_eff = 1e-10;
+
         // Enclosed mass profile: M(<r) = M_cluster * (r/R_virial)^3 * (1 + (R_virial/r))^(-2)
         // Simplified NFW-like profile for cluster
-        double x = r / R_virial;
+        double x = r_eff / R_virial;
         double M_enclosed = M_cluster * (x * x * x) / (1.0 + x) / (1.0 + x);
         
-        // Return gravitational acceleration: a = G * M_enclosed / r²
-        return (G * M_enclosed) / (r * r);
+        // Return gravitational acceleration: a = G * M_enclosed / r_eff²
+        return (G * M_enclosed) / (r_eff * r_eff);
     }
 
     std::string toWolfram() const
