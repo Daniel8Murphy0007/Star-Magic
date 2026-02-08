@@ -232,5 +232,94 @@ B_CRIT_MAGNETAR: 4.4e13 T
 - **19-System 26D Framework (SOURCE115):** Master gravity/resonance equations for NGC2264, Tadpole, Mice, Carina, M42, etc.
 - **5-Frequency Resonance (SOURCE27/28):** SGR1745/SgrA* SuperFreq, QuantumFreq, AetherFreq, FluidFreq, ExpFreq
 
+## CondensedPhysics.py Architecture Rules (MANDATORY)
+
+**CondensedPhysics.py is a PURE PHYSICS CALCULATOR, NOT a data repository.**
+
+### System Architecture:
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        source2.cpp (HEAD PROGRAM)                           │
+│  ┌───────────────────────────────────────────────────────────────────────┐ │
+│  │                     USER QUERY FIELD                                   │ │
+│  │  "Sagittarius A*", "M87", "Betelgeuse", "NGC 3596"...                 │ │
+│  └───────────────────────────────────────────────────────────────────────┘ │
+│                              │                                              │
+│                              ▼                                              │
+│  ┌───────────────────────────────────────────────────────────────────────┐ │
+│  │                    API FETCH LAYER                                     │ │
+│  │  SIMBAD → NASA → Grok fallback → bodies_YYYYMMDD_HHMMSS.csv           │ │
+│  └───────────────────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                   │
+                                   ▼ (Dataset passed to calculator)
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    CondensedPhysics.py (CALCULATOR)                         │
+│                       PURE PHYSICS EQUATIONS                                │
+│                                                                             │
+│  INPUT:  Dataset from source2.cpp (parameters: M, r, z, SFR, etc.)         │
+│                                                                             │
+│  OUTPUT: 1. Long-form equations with solutions (primary query)              │
+│          2. ALL other possible equations solvable for this query            │
+│          3. Dynamic equation sets for simultaneous simulation               │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                   │
+                                   ▼ (Output stored for recall)
+┌─────────────────────────────────────────────────────────────────────────────┐
+│              CondensedPhysics_OutputData.py (OUTPUT STORAGE)                │
+│                                                                             │
+│  STORES: Computed equation solutions, available equation lists,             │
+│          simulation sets - organized by query for user recall               │
+│                                                                             │
+│  SHARED WITH: source2.cpp head program for user query recall                │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                   │
+                                   ▼ (Recall loop)
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        source2.cpp (HEAD PROGRAM)                           │
+│                     User can recall previous queries                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### What This File Does:
+1. Receives datasets from source2.cpp head program (or direct user input)
+2. Inputs that data into parameterized physics equations
+3. Produces visible, long-form physics equations with solutions
+4. Lists ALL other equations it can solve specific to the query
+5. Generates dynamic equation sets for simultaneous simulation
+6. Outputs results to CondensedPhysics_OutputData.py for storage and recall
+
+### STRICT RULES - DO NOT VIOLATE:
+
+| Rule | ✗ WRONG | ✓ CORRECT |
+|------|---------|-----------|
+| No hardcoded data | `self.distance = 6500 * ly` | `def compute(self, distance, ...)` |
+| No named system classes | `class NGC3596Model:` | `class GalaxyRotationCalculator:` |
+| No global instances | `VIRGO_MODEL = VirgoModel()` | Stateless calculator classes |
+| No pre-computed solutions | `TRIADIC: g = 1.47e-8` | Dynamic equation output |
+
+### Where System Data Belongs:
+- `source2.cpp` query field → API fetch → `bodies_YYYYMMDD_HHMMSS.csv`
+- JSON configuration files (external)
+- API responses (SIMBAD, NASA, Grok)
+
+### Where Output Data Goes:
+- `CondensedPhysics_OutputData.py` - Stores computed solutions for user recall
+- Shared with source2.cpp for query history access
+
+### Correct Pattern:
+```python
+class TriadicGravityCalculator:
+    def compute(self, dataset: dict) -> dict:
+        # Receives data from source2.cpp, outputs equation sets
+        return {
+            'primary_equations': [...],      # Long-form with solutions
+            'available_equations': [...],    # All other solvable equations
+            'simulation_set': [...]          # For simultaneous simulation
+        }
+```
+
+**Read the MANDATORY ARCHITECTURE RULES at the top of CondensedPhysics.py before making ANY changes.**
+
 ---
 *See `ENHANCEMENT_GUIDE.md` for self-expanding patterns, `BUILD_INSTRUCTIONS_PERMANENT.md` for critical build warnings, and `MAIN_1_CoAnQi_integration_status.json` for complete physics inventory.*
