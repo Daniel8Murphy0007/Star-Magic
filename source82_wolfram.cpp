@@ -402,11 +402,40 @@ public:
 
     double computeTotalLuminosity(double R_max) const
     {
-        // Integrate emissivity over volume (simplified spherical)
-        // L_X = ∫ ε_X(r) 4πr² dr
-        // Using analytical beta-model integration approximation
-        double L_X = 4.0 * M_PI * n_e0 * n_e0 * 3e-23 * std::sqrt(T_ICM) * 
-                     std::pow(r_c, 3) * M_PI / (6.0 * beta);
+        // Numerically integrate emissivity over spherical volume:
+        // L_X = ∫_0^{R_max} ε_X(r) 4π r² dr
+        if (R_max <= 0.0)
+        {
+            return 0.0;
+        }
+
+        const int N = 1000; // number of radial integration steps (trapezoidal rule)
+        const double dr = R_max / static_cast<double>(N);
+        double integral = 0.0;
+
+        // Empty parameter map since compute(r, params) does not currently use params
+        const std::map<std::string, double> emptyParams;
+
+        for (int i = 0; i <= N; ++i)
+        {
+            double r = dr * static_cast<double>(i);
+            double epsilon_X = compute(r, emptyParams); // emissivity at radius r
+            double volumeElement = 4.0 * M_PI * r * r;
+
+            double integrand = epsilon_X * volumeElement;
+
+            // Trapezoidal weighting: 0.5 at endpoints, 1.0 elsewhere
+            if (i == 0 || i == N)
+            {
+                integral += 0.5 * integrand;
+            }
+            else
+            {
+                integral += integrand;
+            }
+        }
+
+        double L_X = integral * dr;
         return L_X;
     }
 
