@@ -344,6 +344,14 @@ public:
 // Category: thermodynamics
 // Physics: Virial theorem equilibrium: 2K + U = 0, σ_v² = G·M_vir/(3·R_vir)
 // Velocity dispersion σ_v ~ 700 km/s for Virgo
+// 
+// API Note: The compute() method accepts an 'r' parameter for API consistency
+// with other PhysicsTerm classes, but this parameter is unused since virial
+// equilibrium is a global cluster property, not a radial profile.
+// 
+// Extended Interface: This class provides computeVirialMass() as a helper method
+// beyond the standard PhysicsTerm interface for calculating virial mass from
+// velocity dispersion. This is a convenience method for cluster mass estimates.
 // ========================================
 class VirgoClusterVirialTerm
 {
@@ -399,6 +407,13 @@ public:
 // Category: radiation
 // Physics: X-ray emission from hot ICM: L_X ∝ n_e²·Λ(T)·V
 // Virgo X-ray luminosity ~10^43 erg/s = 10^36 W
+// 
+// Cooling Function Note: Uses simplified approximation Λ(T) ~ 3e-23 * sqrt(T_keV) [W·m³]
+// for ICM temperatures 2-4 keV. Real cooling functions are highly non-linear and
+// metallicity-dependent (see Sutherland & Dopita 1993 or APEC models). This
+// first-order approximation is valid for quick estimates in the limited
+// temperature range typical of Virgo Cluster ICM. For precision work, use
+// tabulated cooling functions with appropriate metallicity corrections.
 // ========================================
 class VirgoClusterXRayLuminosityTerm
 {
@@ -485,6 +500,11 @@ public:
 // Category: kinematics
 // Physics: Galaxy velocity dispersion profile σ(r)
 // Central σ ~ 700 km/s, decreases with radius
+// 
+// Extended Interface: This class provides computeDynamicalMass(r) as a helper method
+// for estimating enclosed mass from velocity dispersion using a simplified
+// spherical Jeans equation. This is an approximate method; see method comments
+// for details on assumptions and limitations.
 // ========================================
 class VirgoClusterVelocityDispersionTerm
 {
@@ -539,6 +559,16 @@ public:
 // Physics: M-σ relation from source82 SMBH module
 // M_BH = 1.9e8 * (σ/200 km/s)^4.38 M_sun (McConnell & Ma 2013)
 // Links SMBH mass to host galaxy velocity dispersion
+// 
+// API Note: This class uses a NON-STANDARD interpretation of the 'r' parameter.
+// Unlike other classes where 'r' represents radial distance, here 'r' is
+// interpreted as velocity dispersion σ (in m/s) to maintain API consistency
+// with the standard PhysicsTerm interface compute(double r, params).
+// The params map can also supply "sigma" to override this interpretation.
+// This design allows M-σ calculations within the unified PhysicsTerm framework.
+// 
+// Extended Interface: This class provides computeSigmaFromMass() as a helper method
+// for the inverse M-σ relation calculation (finding σ given M_BH).
 // ========================================
 class SMBHMSigmaRelationTerm
 {
