@@ -1,0 +1,39 @@
+# UQFFModule14_SGR0501_SelfExpanding State Export
+# Version: 2.0-SelfExpanding
+# Timestamp: Thu Jan 22 23:50:29 2026
+
+[PARAMETERS]
+B0=1.0000000000e+10
+G=6.6743000000e-11
+M=2.7844880000e+30
+burst_amplitude=1.0000000000e+20
+flare_frequency=1.0000000000e-01
+hbar=1.0545718170e-34
+r=2.0000000000e+04
+rho_fluid=1.0000000000e+17
+tau_B=1.2624000000e+11
+tau_Omega=3.1560000000e+11
+ug1_base=4.6461270646e+11
+
+[METADATA]
+created=Thu Jan 22 23:50:29 2026
+enhanced=true
+last_param_created=flare_frequency
+last_simulation=Thu Jan 22 23:50:29 2026
+last_term_added=QuantumCoupling
+object=SGR 0501+4516 Magnetar
+physics_terms=12 MUGE + dynamic
+simulation_steps=10
+version=2.0-SelfExpanding
+
+[DYNAMIC_TERMS]
+Spindown:
+MagneticDecay:
+DynamicVacuum:1e-10,1e-14,0
+QuantumCoupling:
+
+[SETTINGS]
+learningRate=1.0000000000e-03
+enableDynamicTerms=1
+enableLogging=1
+enableAutoOptimize=0

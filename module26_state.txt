@@ -1,0 +1,8 @@
+# UQFFModule26 State Export - HUDF Galaxies Galore
+M0=1.98892e+42
+r=1.22993e+27
+ug1_base=8.77531e-23
+g_feedback=1e+12
+feedback_modifier=1
+interaction_modifier=1
+sfr_modifier=1

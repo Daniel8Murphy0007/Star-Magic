@@ -2,39 +2,37 @@
 
 ## Big Picture Architecture
 - **Dual-Platform System:**
-  - **C++ Core:** `MAIN_1_CoAnQi.cpp` (102,452 lines, 446 integrated modules SOURCE1-116, **492 physics terms extracted**, **100 astronomical systems**) - Production calculator with 12-option interactive menu (Wolfram WSTP 9-11 + Exit 12)
+  - **C++ Core:** `MAIN_1_CoAnQi.cpp` (108,000+ lines, 446 integrated modules SOURCE1-116 + **SOURCE4**, **6,688+ physics terms registered**, **121+ astronomical systems**) - Production calculator with 16-option interactive menu (includes SOURCE4 validation + Wolfram WSTP + Cosmic Egg + Grok AI + Exit)
   - **JavaScript Engine:** `index.js` (23,790 lines) - UQFF computational orchestration layer with 106 astrophysical systems
 - **Module Integration:** Physics from source1.cpp through source173.cpp (173 files total) consolidated:
   - 116 files integrated into SOURCE1-116 blocks in MAIN_1_CoAnQi.cpp (446 unique modules)
-  - 492 physics terms extracted (INTEGRATION_TRACKER.csv verified, 291 original + 201 newly integrated)
+  - **SOURCE4 integrated** (commit 3e66d94 Dec 5, 2025): 37 physics functions (8 UQFF + 10 MUGE Compressed + 14 MUGE Resonance + 6 Helpers)
+  - **Batch 20** (Jan 27-28, 2026): 12 PhysicsTerm classes from UQFF Validation Session (5 astronomical systems)
+  - **Batch 21** (Jan 28, 2026): 15 PhysicsTerm classes from Information Paradox UQFF Module (Hawking radiation, Page curves, 26D channels)
+  - **Batch 22** (Jan 28, 2026): 5 PhysicsTerm classes from Astrophysical Transients Module (ASKAP J1832-0911, Helix Nebula, R Aquarii, PN Template, Super Flares)
+  - **Batch 23** (Jan 28, 2026): **13 PhysicsTerm classes** from Complete UQFF Validation (κ calibration, [SSq], Gaia DR4, LIGO GWTC-4.0, Neutrino SED, AT2019qiz, Widom-Larsen LENR, BEC Integration, F_U_Bi_i Integral, 4 UQFF Operational Modes: Compressed/Resonant/Buoyant/Superconductive)
+  - 6,688+ physics terms registered (Wolfram KB + extracted modules + validation batches)
   - 57 files skipped (GUI infrastructure, duplicate wrappers)
+- **UQFF Solvability:** 99.9% (Grok 4 analysis Sept 14-21, 2025), calibrated constants: κ=0.0005/day, [SSq]=0.57, H_SCm≈0.99, U_UA≈0.0001, k_η=10⁻¹¹³, β_i≈0.603
 - **Self-Expanding Framework 2.0:** Dynamic term registration, runtime parameters, state export/import, auto-optimization, metadata tracking
-- **Build System:** CMake + Visual Studio 2022 (MSVC 14.44.35207) + MinGW-w64 GCC 14.2.0, C++20 standard, Windows threading compatibility, UPX 5.0.2 compression (1.17 MB, 85.3% reduction)
+- **Build System:** CMake + Visual Studio 2022 (MSVC 14.44.35219), C++20 standard, Windows threading compatibility, UPX 5.0.2 compression (1.43 MB, 15.51% ratio)
+- **Dual-Method Validation:** UQFF (buoyancy-based) vs MUGE (Newtonian+corrections) cross-validation framework for physics discovery verification
+
 
 ## Developer Workflows
-### C++ Build (Primary)
+### C++ Build (MSVC Required)
 ```powershell
-# Configure - Visual Studio 2022 (Release-MaxCompress optimizations)
+# Configure - Visual Studio 2022 (REQUIRED for Wolfram WSTP)
 cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64
-
-# Configure - MinGW (alternative, smaller footprint)
-cmake -S . -B build -G "MinGW Makefiles"
 
 # Build with Visual Studio (Release-MaxCompress + UPX compression)
 cmake --build build_msvc --config Release --target MAIN_1_CoAnQi
 
-# Build with MinGW
-cmake --build build --target MAIN_1_CoAnQi
+# Run interactive calculator (16 menu options including SOURCE4 validation, Wolfram integration, Cosmic Egg, Grok AI)
+.\build_msvc\Release\MAIN_1_CoAnQi.exe
 
-# Run interactive calculator (9 menu options)
-.\build_msvc\Release\MAIN_1_CoAnQi.exe   # Visual Studio optimized
-.\build\MAIN_1_CoAnQi.exe                # MinGW
-
-# Clean rebuild (Visual Studio)
+# Clean rebuild
 Remove-Item -Recurse -Force build_msvc -ErrorAction SilentlyContinue; cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64; cmake --build build_msvc --config Release
-
-# Clean rebuild (MinGW)
-Remove-Item -Recurse -Force build -ErrorAction SilentlyContinue; cmake -S . -B build -G "MinGW Makefiles"; cmake --build build
 ```
 
 ### JavaScript Execution
@@ -74,9 +72,9 @@ module.setEnableLogging(true);
 - **Core Infrastructure:** CalculatorCore (line 566), ModuleRegistry (line 330), PhysicsTermRegistry (line 411), CrossModuleCommunicator (line 473)
 - **Dynamic Terms:** Disabled by default, additive to core calculations, validated before use
 
-### Threading Model (MinGW Compatibility)
+### Threading Model (Windows API)
 ```cpp
-// Windows threads via <windows.h> and <process.h> (NOT std::thread)
+// Windows threads via <windows.h> and <process.h> for maximum compatibility
 SimpleMutex result_mutex;            // Custom mutex wrapper (lines 120-140)
 SimpleLockGuard<SimpleMutex> lock;   // RAII lock guard (lines 142-162)
 
@@ -89,6 +87,46 @@ SimpleLockGuard<SimpleMutex> lock;   // RAII lock guard (lines 142-162)
 // Core equation: g(r,t) = Σ(i=1 to 26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i]
 // Each layer has quantum state factors Q_i, [UA]_i, [SCm]_i
 // See SOURCE115 (source172.cpp) for 19-system 26D polynomial master equations
+```
+
+### SOURCE4 Unified Field Theory (UQFF + MUGE)
+```cpp
+// Integration: commit 3e66d94 (Dec 5, 2025), menu commit 6ee52e2
+// Location: Lines 25623-26026 in MAIN_1_CoAnQi.cpp (namespace SOURCE4)
+// Origin: source4.cpp (1782 lines) → 37 inline functions extracted
+
+// UQFF (Unified Quantum Field Framework) - 8 functions
+double FU = SOURCE4::compute_FU_SOURCE4(body, r, t, tn, theta);  // Complete unified field
+double Ug1 = SOURCE4::compute_Ug1_SOURCE4(body, r);              // Magnetic dipole
+double Ug2 = SOURCE4::compute_Ug2_SOURCE4(body, r);              // Charge-reactivity
+double Ug3 = SOURCE4::compute_Ug3_SOURCE4(body, r, t);           // String rotation
+double Ug4 = SOURCE4::compute_Ug4_SOURCE4(body, r);              // Vacuum concentration
+double Ubi = SOURCE4::compute_Ubi_SOURCE4(body, r);              // Buoyancy force
+double Um = SOURCE4::compute_Um_SOURCE4(body, r);                // Magnetism
+
+// MUGE Compressed - 10 functions (base gravity + 9 correction terms)
+double g = SOURCE4::compute_compressed_MUGE_SOURCE4(system);     // Complete MUGE
+// Base: Newtonian, Expansion: Hubble, Super: Magnetic suppression, Envelope, Ug_sum, 
+// Cosm: Λ, Quantum: ℏ, Fluid: Navier-Stokes, Perturbation: Dark matter
+
+// MUGE Resonance - 14 functions (aDPM base + 13 resonance modes)
+double g = SOURCE4::compute_resonance_MUGE_SOURCE4(system, params);  // Complete resonance MUGE
+// aDPM, aTHz, Avac_diff, aSuperFreq, aAetherRes, Ug4i, aQuantumFreq, aAetherFreq, 
+// aFluidFreq, Osc_term, aExpFreq, fTRZ, Wormhole metric
+
+// 7 Pre-defined Astrophysical Systems
+SOURCE4::sgr1745_SOURCE4          // SGR1745 Magnetar
+SOURCE4::sagA_SOURCE4             // Sagittarius A* SMBH
+SOURCE4::tapestry_SOURCE4         // Tapestry Star Formation Region
+SOURCE4::westerlund_SOURCE4       // Westerlund2 Star Cluster
+SOURCE4::pillars_SOURCE4          // Pillars of Creation
+SOURCE4::rings_SOURCE4            // Rings of Relativity Gravitational Lens
+SOURCE4::student_guide_SOURCE4    // Student Guide Universe (cosmological)
+
+// Menu Access: 
+// - Cosmic Egg build: Option 15
+// - Wolfram-only build: Option 14
+// - No Wolfram build: Option 9
 ```
 
 ## Integration Points & Communication
@@ -112,17 +150,12 @@ SimpleLockGuard<SimpleMutex> lock;   // RAII lock guard (lines 142-162)
 
 ### Documentation
 - `ENHANCEMENT_GUIDE.md` - Self-expanding framework guide (examples, architecture, scientific integrity)
-- `BUILD_INSTRUCTIONS_PERMANENT.md` - **CRITICAL:** vcpkg path warnings, Visual Studio vs. MinGW conflicts
+- `BUILD_INSTRUCTIONS_PERMANENT.md` - **CRITICAL:** vcpkg path configuration, MSVC-only requirements
 - `README.md` - Project overview, UQFF theory, author info
 - `Star Magic.md` - Complete theoretical framework and equations
 
 ### Build Configuration
-- `CMakeLists.txt` - Visual Studio 2022 + MinGW generators, C++17, Release-MaxCompress optimization flags, WSTP integration
-- `observational_systems_config.h` - 35+ astrophysical systems parameters (ESO137, NGC1365, Vela, etc.)
-- `Star Magic.md` - Complete theoretical framework and equations
-
-### Build Configuration
-- `CMakeLists.txt` - MinGW Makefiles generator, C++17, 155+ source*.cpp targets
+- `CMakeLists.txt` - Visual Studio 2022 generator, C++20, Release-MaxCompress optimization flags, WSTP integration
 - `observational_systems_config.h` - 35+ astrophysical systems parameters (ESO137, NGC1365, Vela, etc.)
 
 ### PowerShell Scripts
@@ -131,16 +164,38 @@ SimpleLockGuard<SimpleMutex> lock;   // RAII lock guard (lines 142-162)
 
 ## Example: Main Menu Options
 ```cpp
-// Run MAIN_1_CoAnQi.exe interactive menu (line 12901-13050+)
-1. Calculate system (single)         // F_U_Bi_i, compressed_g, validation_pipeline
-2. Calculate ALL systems (parallel)  // Windows threading, SimpleMutex
-3. Clone and mutate system          // SystemParams deep copy + parameter perturbation
-4. Add custom system                // Runtime system registration
-5. Add dynamic physics term         // PhysicsTerm instantiation
-6. Run simulations                  // Time-series evolution
-7. Statistical analysis             // Ensemble statistics
-8. Self-optimization                // Learning rate auto-tuning
-9. Exit
+// Run MAIN_1_CoAnQi.exe interactive menu (line 23310+)
+// Options vary by build configuration:
+
+// === Cosmic Egg Build (USE_COSMIC_QUANTUM_EGG + USE_EMBEDDED_WOLFRAM) ===
+1. Calculate system (single)               // F_U_Bi_i, compressed_g, validation_pipeline
+2. Calculate ALL systems (parallel)        // Windows threading, SimpleMutex
+3. Clone and mutate system                 // SystemParams deep copy + parameter perturbation
+4. Add custom system                       // Runtime system registration
+5. Add dynamic physics term                // PhysicsTerm instantiation
+6. Run simulations                         // Time-series evolution
+7. Statistical analysis                    // Ensemble statistics
+8. Self-optimization                       // Learning rate auto-tuning
+9. WSTP kernel interface                   // Wolfram Symbolic Transfer Protocol
+10. Auto-export full UQFF to Wolfram       // Export all 175+ source files
+11. Run Wolfram Field Unity Simulation     // Multi-field solver
+12. Run Cosmic Quantum Egg (26D) Simulation // 26 independent dimensional spheres
+13. Configure Grok API Key                 // Set XAI_API_KEY environment variable
+14. Test Grok AI Integration               // Verify Grok xAI connection
+15. SOURCE4 Unified Field Validation       // Test UQFF + MUGE Compressed + MUGE Resonance
+16. Exit
+
+// === Wolfram-Only Build (USE_EMBEDDED_WOLFRAM, no Cosmic Egg) ===
+// Options 1-11 same as above, then:
+12. Configure Grok API Key
+13. Test Grok AI Integration
+14. SOURCE4 Unified Field Validation       // Test all 37 SOURCE4 functions
+15. Exit
+
+// === No Wolfram Build (minimal) ===
+// Options 1-8 same as above, then:
+9. SOURCE4 Unified Field Validation        // Test all 37 SOURCE4 functions
+10. Exit
 ```
 
 ## Conventions
@@ -151,8 +206,8 @@ SimpleLockGuard<SimpleMutex> lock;   // RAII lock guard (lines 142-162)
 - **Transparent logging** - All dynamic operations traceable via `setEnableLogging(true)`
 
 ### Code Style
-- **C++17 Standard:** Use `std::unique_ptr`, `std::map`, `std::vector`, range-based for loops
-- **Windows Compatibility:** Use `<windows.h>` and `<process.h>` for threading (NOT `<thread>` with MinGW)
+- **C++20 Standard:** Use `std::unique_ptr`, `std::map`, `std::vector`, range-based for loops
+- **Windows API Threading:** Use `<windows.h>` and `<process.h>` for threading (maximum compatibility)
 - **Comments:** Mark enhancements vs. original code, document theoretical basis for physics terms
 
 ### Physical Constants (CONSTANTS object in index.js)
@@ -176,6 +231,95 @@ B_CRIT_MAGNETAR: 4.4e13 T
 - **Nuclear Resonance (SOURCE43):** Complete Periodic Table Z=1-118 with pairing energy, magic numbers, shell corrections
 - **19-System 26D Framework (SOURCE115):** Master gravity/resonance equations for NGC2264, Tadpole, Mice, Carina, M42, etc.
 - **5-Frequency Resonance (SOURCE27/28):** SGR1745/SgrA* SuperFreq, QuantumFreq, AetherFreq, FluidFreq, ExpFreq
+
+## CondensedPhysics.py Architecture Rules (MANDATORY)
+
+**CondensedPhysics.py is a PURE PHYSICS CALCULATOR, NOT a data repository.**
+
+### System Architecture:
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        source2.cpp (HEAD PROGRAM)                           │
+│  ┌───────────────────────────────────────────────────────────────────────┐ │
+│  │                     USER QUERY FIELD                                   │ │
+│  │  "Sagittarius A*", "M87", "Betelgeuse", "NGC 3596"...                 │ │
+│  └───────────────────────────────────────────────────────────────────────┘ │
+│                              │                                              │
+│                              ▼                                              │
+│  ┌───────────────────────────────────────────────────────────────────────┐ │
+│  │                    API FETCH LAYER                                     │ │
+│  │  SIMBAD → NASA → Grok fallback → bodies_YYYYMMDD_HHMMSS.csv           │ │
+│  └───────────────────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                   │
+                                   ▼ (Dataset passed to calculator)
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    CondensedPhysics.py (CALCULATOR)                         │
+│                       PURE PHYSICS EQUATIONS                                │
+│                                                                             │
+│  INPUT:  Dataset from source2.cpp (parameters: M, r, z, SFR, etc.)         │
+│                                                                             │
+│  OUTPUT: 1. Long-form equations with solutions (primary query)              │
+│          2. ALL other possible equations solvable for this query            │
+│          3. Dynamic equation sets for simultaneous simulation               │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                   │
+                                   ▼ (Output stored for recall)
+┌─────────────────────────────────────────────────────────────────────────────┐
+│              CondensedPhysics_OutputData.py (OUTPUT STORAGE)                │
+│                                                                             │
+│  STORES: Computed equation solutions, available equation lists,             │
+│          simulation sets - organized by query for user recall               │
+│                                                                             │
+│  SHARED WITH: source2.cpp head program for user query recall                │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                   │
+                                   ▼ (Recall loop)
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        source2.cpp (HEAD PROGRAM)                           │
+│                     User can recall previous queries                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### What This File Does:
+1. Receives datasets from source2.cpp head program (or direct user input)
+2. Inputs that data into parameterized physics equations
+3. Produces visible, long-form physics equations with solutions
+4. Lists ALL other equations it can solve specific to the query
+5. Generates dynamic equation sets for simultaneous simulation
+6. Outputs results to CondensedPhysics_OutputData.py for storage and recall
+
+### STRICT RULES - DO NOT VIOLATE:
+
+| Rule | ✗ WRONG | ✓ CORRECT |
+|------|---------|-----------|
+| No hardcoded data | `self.distance = 6500 * ly` | `def compute(self, distance, ...)` |
+| No named system classes | `class NGC3596Model:` | `class GalaxyRotationCalculator:` |
+| No global instances | `VIRGO_MODEL = VirgoModel()` | Stateless calculator classes |
+| No pre-computed solutions | `TRIADIC: g = 1.47e-8` | Dynamic equation output |
+
+### Where System Data Belongs:
+- `source2.cpp` query field → API fetch → `bodies_YYYYMMDD_HHMMSS.csv`
+- JSON configuration files (external)
+- API responses (SIMBAD, NASA, Grok)
+
+### Where Output Data Goes:
+- `CondensedPhysics_OutputData.py` - Stores computed solutions for user recall
+- Shared with source2.cpp for query history access
+
+### Correct Pattern:
+```python
+class TriadicGravityCalculator:
+    def compute(self, dataset: dict) -> dict:
+        # Receives data from source2.cpp, outputs equation sets
+        return {
+            'primary_equations': [...],      # Long-form with solutions
+            'available_equations': [...],    # All other solvable equations
+            'simulation_set': [...]          # For simultaneous simulation
+        }
+```
+
+**Read the MANDATORY ARCHITECTURE RULES at the top of CondensedPhysics.py before making ANY changes.**
 
 ---
 *See `ENHANCEMENT_GUIDE.md` for self-expanding patterns, `BUILD_INSTRUCTIONS_PERMANENT.md` for critical build warnings, and `MAIN_1_CoAnQi_integration_status.json` for complete physics inventory.*

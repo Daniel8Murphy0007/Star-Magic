@@ -3,8 +3,50 @@
 # Author: Daniel T. Murphy
 cmake_minimum_required(VERSION 3.10)
 
+# ========== VCPKG TOOLCHAIN INTEGRATION ==========
+# CRITICAL: Must be set BEFORE project() command for find_package() to work
+if(NOT DEFINED CMAKE_TOOLCHAIN_FILE AND EXISTS "C:/vcpkg/scripts/buildsystems/vcpkg.cmake")
+    set(CMAKE_TOOLCHAIN_FILE "C:/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Vcpkg toolchain file")
+endif()
+
 # Project name and programming language
+# Build Status: January 28, 2026 - Batch 23 COMPLETE UQFF Validation Integration
+# Session: Integrated 13 PhysicsTerm classes from Complete UQFF Validation module
+# Previous: Batch 22 (5 classes) Transients + Batch 21 (15 classes) Info Paradox + Batch 20 (12 classes)
+# Framework Status: 99.9% solvability (Grok 4 analysis Sept 14-21, 2025)
+# Calibrated Variables: κ=0.0005/day, [SSq]=0.57, H_SCm=0.99, U_UA=0.0001, k_η=10⁻¹¹³, β_i=0.603
+# PhysicsTerm Classes: 6,688+ registered (6,675 + 13 new Batch 23)
+# Batch 23 Classes (13 total):
+#   Core Calibrations (6):
+#     KappaDecayTerm (JWST quasar τ~2000 days, MCMC κ=0.0005/day)
+#     SSqShellQuotientTerm (Nebula Ye~0.1 mapping, [SSq]=0.57)
+#     GaiaBinaryInclinationTerm (DR4 i~90° binaries, U_UA damping)
+#     LIGOGravitationalWaveTerm (GWTC-4.0 218 events, Ug4 validation)
+#     NeutrinoSEDTerm (RIAF pp/pγ soft <0.1 PeV, NGC 1068 4.2σ)
+#     AT2019qizTDETerm (Closest optical TDE 66 Mpc, QPEs)
+#   Extended Terms (7):
+#     WidomLarsenLENRTerm (Hydride η~10¹³, Wires η~10⁸, Corona η~7×10⁻³ cm⁻²/s)
+#     BECIntegrationTerm (N_B=1/(exp(ΔE/kT)-1), nuclear collisions)
+#     F_U_Bi_i_IntegralTerm (10+ DPM factors, x₂ quadratic limits)
+#     UQFFCompressedTerm (Newtonian + 9 MUGE corrections)
+#     UQFFResonantTerm (aDPM + 5 frequency resonances)
+#     UQFFBuoyantTerm (Ub_i opposition with β_i=0.603)
+#     UQFFSuperconductiveTerm (SCm P_SCm, H_SCm~0.99)
+# Source: Core/Modules/UQFFValidationBatch23Module.cpp (1600+ lines)
+# Data: Gaia DR4 (March 2025), LIGO GWTC-4.0 (Aug 2025), JWST, IceCube
+# Compiler: MSVC 19.44.35219.0 (Visual Studio 2022)
+# Standard: C++20 strict compliance
+# Executable: 1.43 MB (9,217,024 -> 1,429,504 bytes, 15.51% UPX compression)
+# Last Update: January 28, 2026 @ Batch 23 COMPLETE - 45 new classes total (Batch 20-23)
 project(StarMagic_UQFF LANGUAGES CXX)
+
+# ========== BUILD OPTIONS ==========
+# CMake options for profiling, benchmarking, and WebAssembly builds
+option(ENABLE_PROFILING "Enable performance profiling with gprof" OFF)
+option(ENABLE_BENCHMARK "Enable Google Benchmark tests" OFF)
+option(ENABLE_WASM "Build for WebAssembly using Emscripten" OFF)
+option(ENABLE_TESTS "Enable unit testing framework" ON)
+option(ENABLE_PLUGINS "Enable plugin system compilation" ON)
 
 # ========== FORCE MSVC ON WINDOWS ==========
 # WSTP libraries (wstp64i4.lib, wstp64i4.dll) are MSVC-compiled ONLY
@@ -33,10 +75,15 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 # Find Qt6 (upgraded from Qt5)
-find_package(Qt6 COMPONENTS Core Widgets Network QUIET)
+find_package(Qt6 COMPONENTS Core Widgets Network WebEngineWidgets QUIET)
 if(Qt6_FOUND)
     message(STATUS "Qt6 found - GUI components enabled (Option A Full Recovery)")
     add_definitions(-DHAVE_QT6)
+    if(TARGET Qt6::WebEngineWidgets)
+        message(STATUS "Qt6::WebEngineWidgets found - source2 web browser enabled")
+    else()
+        message(STATUS "Qt6::WebEngineWidgets NOT found - source2 will have limited functionality")
+    endif()
 else()
     # Fallback to Qt5 if Qt6 not found
     find_package(Qt5 COMPONENTS Core Widgets WebEngineWidgets PrintSupport QUIET)
@@ -46,6 +93,46 @@ else()
     else()
         message(STATUS "Qt not found - GUI components will be commented out")
     endif()
+endif()
+
+# Find VTK for scientific visualization (source2)
+find_package(VTK CONFIG QUIET)
+if(VTK_FOUND)
+    message(STATUS "VTK found at version ${VTK_VERSION} - source2 visualization enabled")
+else()
+    message(STATUS "VTK NOT found - source2 will compile with -DNO_VTK")
+endif()
+
+# Find CURL for HTTP requests (source2)
+find_package(CURL CONFIG QUIET)
+if(CURL_FOUND)
+    message(STATUS "CURL found - source2 web API access enabled")
+else()
+    message(STATUS "CURL NOT found - source2 will compile with -DNO_CURL")
+endif()
+
+# Find SQLite3 for local database (source2)
+find_package(unofficial-sqlite3 CONFIG QUIET)
+if(unofficial-sqlite3_FOUND)
+    message(STATUS "SQLite3 found - source2 database caching enabled")
+else()
+    message(STATUS "SQLite3 NOT found - source2 will compile with -DNO_SQLITE")
+endif()
+
+# Find OpenCV for computer vision (source2)
+find_package(OpenCV CONFIG QUIET)
+if(OpenCV_FOUND)
+    message(STATUS "OpenCV found at version ${OpenCV_VERSION} - source2 vision processing enabled")
+else()
+    message(STATUS "OpenCV NOT found - source2 will compile with -DNO_OPENCV")
+endif()
+
+# Find AWS SDK for cloud services (source2)
+find_package(AWSSDK CONFIG COMPONENTS cognito-idp s3 QUIET)
+if(AWSSDK_FOUND)
+    message(STATUS "AWS SDK found - source2 cloud sync enabled")
+else()
+    message(STATUS "AWS SDK NOT found - source2 will compile with -DNO_AWS")
 endif()
 
 # Find ANTLR4 runtime (for parser code patterns)
@@ -146,8 +233,92 @@ if(MSVC)
     # Linker → Optimization → Enable COMDAT Folding = Yes (/OPT:ICF)
 endif()
 
+# Force synchronized PDB writes for parallel compilation (prevents C1041 error)
+if(MSVC)
+    add_compile_options(/FS)
+endif()
+
 # Export compile commands for IDE integration
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# ========== PROFILING CONFIGURATION ==========
+# Enable performance profiling with gprof on Linux/Unix systems
+if(ENABLE_PROFILING)
+    if(UNIX AND NOT APPLE)
+        message(STATUS "Profiling ENABLED - Adding -pg flags for gprof")
+        
+        # Add -pg flag for all targets (generates gmon.out)
+        add_compile_options(-pg)
+        add_link_options(-pg)
+        
+        # Apply to specific targets
+        if(TARGET MAIN_1_CoAnQi)
+            target_compile_options(MAIN_1_CoAnQi PRIVATE -pg)
+            target_link_options(MAIN_1_CoAnQi PRIVATE -pg)
+        endif()
+        
+        if(TARGET source2)
+            target_compile_options(source2 PRIVATE -pg)
+            target_link_options(source2 PRIVATE -pg)
+        endif()
+        
+        message(STATUS "Profiling: Run executable, then analyze with 'gprof ./MAIN_1_CoAnQi gmon.out > analysis.txt'")
+    else()
+        message(STATUS "Profiling: Only supported on Linux (gprof). Use Visual Studio Profiler on Windows.")
+    endif()
+endif()
+
+# ========== BENCHMARK CONFIGURATION ==========
+# Enable Google Benchmark for performance testing
+if(ENABLE_BENCHMARK)
+    find_package(benchmark QUIET)
+    if(benchmark_FOUND)
+        message(STATUS "Google Benchmark FOUND - Enabling benchmark tests")
+        
+        # Define benchmark flag
+        add_definitions(-DENABLE_BENCHMARK)
+        
+        # Link benchmark library to targets
+        if(TARGET MAIN_1_CoAnQi)
+            target_link_libraries(MAIN_1_CoAnQi PRIVATE benchmark::benchmark)
+        endif()
+        
+        if(TARGET source2)
+            target_link_libraries(source2 PRIVATE benchmark::benchmark)
+        endif()
+        
+        message(STATUS "Benchmark: Link with benchmark::benchmark library")
+    else()
+        message(STATUS "Google Benchmark NOT found - Install with: vcpkg install benchmark")
+        message(STATUS "Benchmark tests will be DISABLED")
+    endif()
+endif()
+
+# ========== WEBASSEMBLY CONFIGURATION ==========
+# Configure build for WebAssembly using Emscripten compiler
+if(ENABLE_WASM)
+    if(EMSCRIPTEN)
+        message(STATUS "WebAssembly build ENABLED (Emscripten detected)")
+        
+        # Change executable suffix to .html for browser loading
+        set(CMAKE_EXECUTABLE_SUFFIX ".html")
+        
+        # Add Emscripten-specific flags
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s WASM=1 -s ALLOW_MEMORY_GROWTH=1")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s EXPORTED_RUNTIME_METHODS=['ccall','cwrap']")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --bind")  # Enable Embind for C++/JS interop
+        
+        # Optimize for size in WASM builds
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Os")
+        
+        message(STATUS "WebAssembly: Executable suffix = .html")
+        message(STATUS "WebAssembly: Memory growth enabled")
+        message(STATUS "WebAssembly: ccall/cwrap runtime methods exported")
+    else()
+        message(WARNING "ENABLE_WASM is ON but Emscripten not detected!")
+        message(WARNING "Use: emcmake cmake -B build-wasm -DENABLE_WASM=ON")
+    endif()
+endif()
 
 # ========== WOLFRAM ENGINE INTEGRATION (OPTIONAL) ==========
 option(USE_EMBEDDED_WOLFRAM "Enable embedded Wolfram kernel via WSTP" ON)
@@ -182,11 +353,10 @@ add_executable(MAIN_1 MAIN_1.cpp)
 # MAIN_1_CoAnQi with optional Wolfram integration + Grok AI API
 if(USE_EMBEDDED_WOLFRAM)
     # source174 is included via source176, don't add it separately to avoid duplicate definitions
-    # source178_grok_api.cpp added for xAI Grok API integration (Phase 23: AI Integration)
+    # source178_grok_api.cpp is included directly in MAIN_1_CoAnQi.cpp (line 206), NOT compiled separately
     # Phase 4 Wolfram extraction: Files included directly in MAIN_1_CoAnQi.cpp, not compiled separately
     add_executable(MAIN_1_CoAnQi 
-        MAIN_1_CoAnQi.cpp 
-        source178_grok_api.cpp
+        MAIN_1_CoAnQi.cpp
     )
     
     # Disable AUTOMOC for MAIN_1_CoAnQi - it's a pure C++ physics calculator, not a Qt GUI app
@@ -265,49 +435,245 @@ else()
     message(WARNING "Extract to C:/Tools/upx/ and add to PATH")
 endif()
 
-# Source2: HEAD PROGRAM - Primary User Base Platform (REQUIRES Qt5, VTK, AWS SDK, OpenCV, etc.)
-# Uncomment after installing dependencies via vcpkg:
-#   vcpkg install qt5-base:x64-mingw-dynamic qt5-webengine:x64-mingw-dynamic
-#   vcpkg install vtk:x64-mingw-dynamic opencv:x64-mingw-dynamic
-#   vcpkg install curl:x64-mingw-dynamic sqlite3:x64-mingw-dynamic
-#   vcpkg install aws-sdk-cpp[cognito-idp,s3]:x64-mingw-dynamic
-# add_executable(Source2 source2.cpp)
-# target_link_libraries(Source2 PRIVATE UQFFCore Qt5::Widgets Qt5::WebEngineWidgets ${VTK_LIBRARIES} ${OpenCV_LIBS} CURL::libcurl SQLite::SQLite3 aws-cpp-sdk-cognito-idp aws-cpp-sdk-s3)
+# Source2: HEAD PROGRAM - Primary User Base Platform (Qt6 + optional VTK, AWS SDK, OpenCV, etc.)
+# Status: ENABLED with Qt6 - optional dependencies compile conditionally
+# To install missing dependencies via vcpkg (x64-windows for MSVC):
+#   vcpkg install qt6-webengine:x64-windows
+#   vcpkg install vtk:x64-windows opencv:x64-windows
+#   vcpkg install curl:x64-windows sqlite3:x64-windows
+#   vcpkg install aws-sdk-cpp[cognito-idp,s3]:x64-windows
+if(Qt6_FOUND)
+    add_executable(Source2 source2.cpp source2_mainwindow.h)
+    
+    # Enable Qt AUTOMOC/AUTOUIC/AUTORCC for Source2 (Q_OBJECT in header file)
+    set_target_properties(Source2 PROPERTIES 
+        AUTOMOC ON 
+        AUTOUIC ON 
+        AUTORCC ON
+        # Use dynamic CRT (required for vcpkg AWS SDK compatibility)
+        MSVC_RUNTIME_LIBRARY "MultiThreadedDLL$<$<CONFIG:Debug>:Debug>"
+    )
+    
+    # Base Qt6 dependencies (always required)
+    target_link_libraries(Source2 PRIVATE 
+        Qt6::Core 
+        Qt6::Widgets 
+        Qt6::Network
+    )
+    
+    # Qt6 WebEngineWidgets (conditional)
+    if(TARGET Qt6::WebEngineWidgets)
+        target_link_libraries(Source2 PRIVATE Qt6::WebEngineWidgets)
+    else()
+        target_compile_definitions(Source2 PRIVATE NO_WEBENGINE)
+        message(STATUS "Source2: Compiling without web browser (install qt6-webengine)")
+    endif()
+    
+    # VTK (conditional)
+    if(VTK_FOUND)
+        target_link_libraries(Source2 PRIVATE ${VTK_LIBRARIES})
+        target_include_directories(Source2 PRIVATE ${VTK_INCLUDE_DIRS})
+    else()
+        target_compile_definitions(Source2 PRIVATE NO_VTK)
+    endif()
+    
+    # CURL (conditional)
+    if(CURL_FOUND)
+        target_link_libraries(Source2 PRIVATE CURL::libcurl)
+    else()
+        target_compile_definitions(Source2 PRIVATE NO_CURL)
+    endif()
+    
+    # SQLite3 (conditional)
+    if(unofficial-sqlite3_FOUND)
+        target_link_libraries(Source2 PRIVATE unofficial::sqlite3::sqlite3)
+    else()
+        target_compile_definitions(Source2 PRIVATE NO_SQLITE)
+    endif()
+    
+    # OpenCV (conditional)
+    if(OpenCV_FOUND)
+        target_link_libraries(Source2 PRIVATE ${OpenCV_LIBS})
+    else()
+        target_compile_definitions(Source2 PRIVATE NO_OPENCV)
+    endif()
+    
+    # AWS SDK (conditional) - DISABLED: CRT mismatch with vcpkg build
+    # TODO: Re-enable after fixing iostream symbol conflicts
+    # if(AWSSDK_FOUND)
+    #     target_link_libraries(Source2 PRIVATE 
+    #         ${AWSSDK_LINK_LIBRARIES}
+    #         aws-cpp-sdk-core
+    #         aws-cpp-sdk-cognito-idp 
+    #         aws-cpp-sdk-s3
+    #     )
+    # else()
+    #     target_compile_definitions(Source2 PRIVATE NO_AWS)
+    # endif()
+    target_compile_definitions(Source2 PRIVATE NO_AWS)
+    
+    # Always disable Python, Qalculate, and PocketSphinx for now (complex dependencies not installed)
+    target_compile_definitions(Source2 PRIVATE NO_PYTHON NO_QALCULATE NO_POCKETSPHINX)
+    
+    message(STATUS "Source2 (HEAD PROGRAM) build target ENABLED")
+else()
+    message(STATUS "Source2 DISABLED - Qt6 required (install qt6-base:x64-windows)")
+endif()
+
+# ========== BUILD SUMMARY (November 30, 2025 - Commit 92c9908) ==========
+# PhysicsTerm Classes:
+#   - MAIN_1_CoAnQi.cpp: 1,172 classes (Batches 1-17, SOURCE1-117)
+#   - wolfram_physics_classes.cpp: 5,703 classes (Batch 18, Nov 22-23)
+#   - wolfram_extraction/: 187 classes (Batch 19, Nov 23-30)
+#   - TOTAL DEFINED: 7,062 classes
+#   - TOTAL REGISTERED: 6,784 classes (96.1% registration rate)
+#   - UNREGISTERED: 278 classes (helpers, experimental, commented)
+#
+# Mathematical Computation Framework:
+#   - 10 distinct calculation patterns identified
+#   - Computational efficiency: 81% O(1) constant-time operations
+#   - 15% O(n) linear complexity, 4% complex algorithms
+#   - Verification: WOLFRAM_LAST_EVALUATION_REPORT.md (496 lines)
+#
+# Modularized Sources: 4 modules (source4, source5, source6, source7)
+#   - 46 classes (source4: UQFF + MUGE)
+#   - 45 classes (source5: UQFF Enhanced)
+#   - 29 classes (source6: Graphics + Physics)
+#   - 24 classes (source7: MUGE 7-System)
+#   - Total Modularized: 144 classes
+#
+# Main Platforms:
+#   - MAIN_1.cpp: Original mathematical framework
+#   - MAIN_1_CoAnQi.cpp: Production calculator (12-option menu, SOURCE1-117, 6,784 registered classes)
+#   - UQFFCore Library: Consolidated architecture (Core/Modules/*.cpp)
+#
+# WSTP Integration:
+#   - Status: Dormant (USE_EMBEDDED_WOLFRAM=ON available)
+#   - Potential: 5,703 live Wolfram queries when activated
+#   - Dependencies: wstp64i4.lib, WSTP64I4.dll (MSVC only)
+#
+# Executable Size:
+#   - Uncompressed: ~9.14 MB (MSVC Release-MaxCompress)
+#   - UPX compressed: 1.34 MB (85.3% reduction)
+#
+# Build Configuration:
+#   - Compiler: MSVC 19.44.35219.0 (Visual Studio 2022)
+#   - Standard: C++20 strict compliance
+#   - Optimization: /Os /GL /LTCG /Gw /Gy /Zc:inline /GF /Oi
+#   - Remote: origin/master synced (commit 775c7c9 tagged v1.0-wolfram-5890-complete)
 
 # ========== ADDITIONAL SOURCE MODULES ==========
 
-# ========== ALL SOURCE MODULES (EXCLUDING 1, 3, 8, 11, 12) ==========
-# Complete build configuration - all modules ready
-# add_executable(source2 source2.cpp)  # Requires Qt5
-add_executable(source4 source4.cpp)
-add_executable(Source5 Source5.cpp)
-# add_executable(Source6 Source6.cpp)  # Missing 3DGraphics.h
-# add_executable(source7 source7.cpp)  # Missing Animation.h
+# ========== MODULARIZED WOLFRAM SOURCE MODULES ==========
+# Source4, Source5, Source6, Source7 follow 4-file modularization pattern
+# Each has: main infrastructure, category_A, category_B, simulation_harness
+
+# Source4: UQFF + MUGE (46 PhysicsTerm classes across 4 files)
+# - source4_wolfram.cpp: 24 core classes (helpers, unified field, astrophysical systems)
+# - source4_wolfram_compressed.cpp: 9 MUGE compressed components
+# - source4_wolfram_resonance.cpp: 13 MUGE resonance components
+# - source4_simulation_harness.cpp: Interactive simulation engine
+add_executable(source4_wolfram source4_wolfram.cpp source4.cpp)
+add_executable(source4_compressed source4_wolfram_compressed.cpp source4.cpp)
+add_executable(source4_resonance source4_wolfram_resonance.cpp source4.cpp)
+add_executable(source4_simulator 
+    source4_simulation_harness.cpp
+    source4_wolfram.cpp
+    source4_wolfram_compressed.cpp
+    source4_wolfram_resonance.cpp
+    source4.cpp
+)
+
+# Source5: UQFF Enhanced (45 PhysicsTerm classes across 4 files)
+# - source5_wolfram.cpp: 21 core classes (Ug1-3, Um, helpers, wrappers)
+# - source5_wolfram_compressed.cpp: 10 compressed components + wrapper
+# - source5_wolfram_resonance.cpp: 14 resonance components + wrapper
+# - source5_simulation_harness.cpp: 6-option interactive menu
+add_executable(source5_wolfram source5_wolfram.cpp Source5.cpp)
+add_executable(source5_compressed source5_wolfram_compressed.cpp Source5.cpp)
+add_executable(source5_resonance source5_wolfram_resonance.cpp Source5.cpp)
+add_executable(source5_simulator 
+    source5_simulation_harness.cpp
+    source5_wolfram.cpp
+    source5_wolfram_compressed.cpp
+    source5_wolfram_resonance.cpp
+    Source5.cpp
+)
+
+# Source6: Graphics + Physics (29 PhysicsTerm classes across 4 files)
+# - source6_wolfram.cpp: Infrastructure (CelestialBody, PhysicsTermRegistry)
+# - source6_wolfram_graphics.cpp: 14 graphics classes (OpenGL, Vulkan, mesh, texture, etc.)
+# - source6_wolfram_physics.cpp: 15 UQFF physics classes (helpers + Ug1-4 + Ubi + Um + metrics)
+# - source6_register.cpp: Registration implementation
+# - source6_simulation_harness.cpp: Interactive menu
+add_executable(Source6 Source6.cpp)  # Refactored: 2.0-Enhanced with UQFFModule6
+add_executable(source6_wolfram source6_wolfram.cpp)
+add_executable(source6_simulator 
+    source6_simulation_harness.cpp
+    source6_wolfram.cpp
+)
+
+# Source7: MUGE 7-System (24 PhysicsTerm classes across 4 files)
+# - source7_wolfram.cpp: 2 infrastructure classes (YAMLConfigLoader, ArchiveMediaManager)
+# - source7_wolfram_compressed.cpp: 9 compressed MUGE components
+# - source7_wolfram_resonance.cpp: 13 resonance MUGE components
+# - source7_simulation_harness.cpp: 7-option menu (7 MUGE systems)
+add_executable(Source7 source7.cpp)  # Refactored: 2.0-Enhanced with UQFFModule7, FluidSolver, MUGE
+add_executable(source7_wolfram source7_wolfram.cpp)
+add_executable(source7_compressed source7_wolfram_compressed.cpp)
+add_executable(source7_resonance source7_wolfram_resonance.cpp)
+add_executable(source7_simulator 
+    source7_simulation_harness.cpp
+    source7_wolfram.cpp
+    source7_wolfram_compressed.cpp
+    source7_wolfram_resonance.cpp
+)
+
+# Source9: UQFF Unified Field Calculator (CoAnQi Namespace Organization)
+add_executable(Source9 source9.cpp)  # Refactored: 2.0-Enhanced with UQFFModule9, CoAnQi, MUGE
+
+# Source10: UQFF Catalogue & Calculator (F_U_Bi_i, compressed_g, 26-layer)
+add_executable(Source10 source10.cpp)  # Refactored: 2.0-Enhanced with UQFFModule10, 15 systems
+
+# Source11: UQFF Unified Field Calculator (compute_FU, Ug1-4, Ubi, Um)
+add_executable(Source11 source11.cpp)  # Refactored: 2.0-Enhanced with UQFFModule11, full physics
+
+# Source13: Magnetar SGR 1745-2900 MUGE Calculator (12 physics terms)
+add_executable(Source13 source13.cpp)  # Refactored: 2.0-Enhanced with UQFFModule13, magnetar physics
+
+# ========== STANDARD SOURCE MODULES ==========
+# Single-file executables (not yet modularized)
+# add_executable(source2 source2.cpp)  # Requires Qt5 - Reserved for HEAD PROGRAM
+add_executable(source4 source4.cpp)  # Original monolithic version (keep for compatibility)
+add_executable(Source5 Source5.cpp)  # Original monolithic version (keep for compatibility)
 # add_executable(source9 source9.cpp)  # Requires VTK library
 add_executable(source10 source10.cpp)
-# add_executable(source13 source13.cpp)  # Missing main()
-add_executable(source14 source14.cpp)
-# add_executable(source15 source15.cpp)  # Missing main()
-add_executable(source16 source16.cpp)
-add_executable(source17 source17.cpp)
-add_executable(source18 source18.cpp)
-add_executable(source19 source19.cpp)
-add_executable(source20 source20.cpp)
-add_executable(source21 source21.cpp)
-add_executable(source22 source22.cpp)
-add_executable(source23 source23.cpp)
-add_executable(source24 source24.cpp)
-add_executable(source25 source25.cpp)
-add_executable(source26 source26.cpp)
-add_executable(source27 source27.cpp)
-add_executable(source28 source28.cpp)
-add_executable(source29 source29.cpp)
-add_executable(source30 source30.cpp)
-add_executable(source31 source31.cpp)
-add_executable(source32 source32.cpp)
-add_executable(source33 source33.cpp)
-add_executable(source34 source34.cpp)
-add_executable(source35 source35.cpp)
+# Source13 already defined above
+
+# ========== ALIGNED UQFF MODULES (Jan 2026) ==========
+# All modules below have: UQFFConfigN singleton, UQFFModuleN wrapper, 8 standard methods, uqff_constants.h
+add_executable(source14 source14.cpp)  # SGR 0501+4516 Magnetar (12-term MUGE, B-field decay, time-reversal)
+add_executable(Source15 source15.cpp)  # Sagittarius A* SMBH (12-term MUGE, M(t) growth, Kerr spin)
+add_executable(source16 source16.cpp)  # NGC 2014/2020 Tapestry (11-term MUGE, star formation, stellar wind)
+add_executable(source17 source17.cpp)  # Westerlund 2 Cluster (11-term MUGE, 30000 M_sun, τ_SF=2 Myr)
+add_executable(source18 source18.cpp)  # Pillars of Creation M16 (12-term MUGE, E(t) erosion photoevaporation)
+add_executable(source19 source19.cpp)  # Rings of Relativity (11-term MUGE, L(t) lensing, z=0.5 Einstein ring)
+add_executable(source20 source20.cpp)  # Galaxy NGC 2525 (12-term MUGE, g_BH SMBH, M_SN(t) SN 2018gv)
+add_executable(source21 source21.cpp)  # NGC 3603 Extreme Cluster (13-term MUGE, P(t) cavity pressure, wind-blown bubble)
+add_executable(source22 source22.cpp)  # Bubble Nebula NGC 7635 (11-term MUGE, g_wind stellar wind feedback, O-type star)
+add_executable(source23 source23.cpp)  # Antennae Galaxies NGC 4038/4039 (12-term MUGE, I(t) merger interaction, M(t) star formation)
+add_executable(source24 source24.cpp)  # Horsehead Nebula Barnard 33 (11-term MUGE, E(t) erosion photoevaporation, sigma Orionis UV radiation)
+add_executable(source25 source25.cpp)  # NGC 1275 Perseus A (13-term MUGE, C(t) cooling flow, AGN feedback, M_BH=8e8 M_sun)
+add_executable(source26 source26.cpp)  # HUDF Galaxies Galore (12-term MUGE, M(t) star formation, I(t) inter-galaxy interaction, z=3.5)
+add_executable(source27 source27.cpp)  # NGC 1792 "The Stellar Forge" Starburst Galaxy (9-term MUGE, M(t) star formation, supernova feedback, z=0.0095)
+add_executable(source28 source28.cpp)  # Andromeda Galaxy M31 (11-term MUGE, Ug1-4, Lambda, quantum, EM, fluid, resonant, DM 80%, z=-0.001 blueshift)
+add_executable(source29 source29.cpp)  # Sombrero Galaxy M104 (12-term MUGE, SMBH 1e9 M_sun, dust lane, SC correction, z=0.0063 Virgo Cluster)
+add_executable(source30 source30.cpp)  # Saturn Evolution (11-term MUGE, g_sun+g_saturn+T_ring+Ug_sum+Lambda+quantum+EM+fluid+resonant+DM+wind, SC correction, z=0)
+add_executable(source31 source31.cpp)  # M16 Eagle Nebula Pillars of Creation (8-term MUGE, M_sf star formation, E_rad radiation erosion, SFR=1 M_sun/yr, z=0.0015)
+add_executable(source32 source32.cpp)  # Crab Nebula SNR M1 (12-term MUGE, r(t) expansion, pulsar wind P=5e31W, magnetic, superconductivity, z=0.0015)
+add_executable(source33 source33.cpp)  # SGR 1745-2900 Magnetar (10-term MUGE, B=2e10 T high-B superconductivity, P=3.76s spin, Galactic Center z=0)
+add_executable(source34 source34.cpp)  # SGR 1745-2900 Frequency/Resonance (11-term MUGE, DPM+THz+VacDiff+SuperFreq+AetherRes+Ug4i+QuantumFreq+AetherFreq+FluidFreq+Osc+ExpFreq, all frequency-based)
+add_executable(source35 source35.cpp)  # Sagittarius A* SMBH Frequency/Resonance (11-term MUGE, M=4.3e6 M_sun, r_s=1.27e10 m, f_DPM=1e9 Hz scaled for SMBH, accretion dynamics)
 add_executable(source36 source36.cpp)
 add_executable(source37 source37.cpp)
 add_executable(source38 source38.cpp)
@@ -431,6 +797,24 @@ add_executable(Source164 Source164.cpp)
 add_executable(Source165 Source165.cpp)
 add_executable(Source166 Source166.cpp)
 add_executable(Source167 Source167.cpp)
+
+# ========== SOURCE200 COSMIC QUANTUM EGG (WSTP Required) ==========
+# Added: January 22, 2026
+# Purpose: 26D Chaotic Dimensional Structure - Integrates into MAIN_1_CoAnQi.cpp
+# Requires: Wolfram WSTP (includes source174_wolfram_bridge_embedded.cpp)
+if(USE_EMBEDDED_WOLFRAM AND EXISTS "${WSTP_DIR}")
+    add_executable(source200 source200_cosmic_quantum_egg.cpp)
+    target_compile_definitions(source200 PRIVATE USE_EMBEDDED_WOLFRAM USE_COSMIC_QUANTUM_EGG)
+    target_link_libraries(source200 
+        wstp64i4
+        kernel32
+        user32
+        advapi32
+    )
+    message(STATUS "source200 (Cosmic Quantum Egg) enabled with WSTP integration")
+else()
+    message(STATUS "source200 (Cosmic Quantum Egg) SKIPPED - requires USE_EMBEDDED_WOLFRAM=ON")
+endif()
 
 # ========== UQFF CORE LIBRARY ==========
 # Added: November 14, 2025
@@ -577,3 +961,123 @@ install(TARGETS Source134 MAIN_1 MAIN_1_CoAnQi Source163 Source164 Source165 Sou
 # install(TARGETS MAIN_1 Source134 Source2
 #     RUNTIME DESTINATION bin
 # )
+
+# ============================================================================
+# COANQI ENHANCEMENTS - Plugin System, WebAssembly, ML, Testing
+# ============================================================================
+
+# ========== PLUGIN COMPILATION ==========
+# Build shared library plugins for CoAnQi extensibility
+if(EXISTS "${CMAKE_SOURCE_DIR}/src/plugins/ramanujan_validator.cpp")
+    add_library(ramanujan_validator SHARED src/plugins/ramanujan_validator.cpp)
+    
+    # Link against UQFFCore if it's the core library
+    if(TARGET UQFFCore)
+        target_link_libraries(ramanujan_validator PUBLIC UQFFCore)
+    endif()
+    
+    # If we create a CoAnQiCore library in the future, link it here
+    # target_link_libraries(ramanujan_validator PUBLIC CoAnQiCore)
+    
+    message(STATUS "Plugin: ramanujan_validator.dll will be built")
+    
+    install(TARGETS ramanujan_validator
+        LIBRARY DESTINATION lib/plugins
+        RUNTIME DESTINATION bin/plugins
+    )
+else()
+    message(STATUS "Plugin source not found: src/plugins/ramanujan_validator.cpp - skipping")
+endif()
+
+# ========== WEBASSEMBLY BUILD ==========
+# Build CoAnQi for web deployment using Emscripten
+if(EMSCRIPTEN)
+    message(STATUS "Emscripten detected - building WebAssembly version")
+    
+    set(CMAKE_EXECUTABLE_SUFFIX ".html")
+    
+    if(EXISTS "${CMAKE_SOURCE_DIR}/src/webassembly/main.cpp")
+        add_executable(coanqi_wasm src/webassembly/main.cpp)
+        
+        # Link WebAssembly-specific options
+        target_link_options(coanqi_wasm PUBLIC 
+            -s WASM=1 
+            -s ALLOW_MEMORY_GROWTH=1
+            -s EXPORTED_FUNCTIONS=['_main','_CoAnQi_calculate','_CoAnQi_sync']
+            -s EXPORTED_RUNTIME_METHODS=['ccall','cwrap']
+            --bind
+        )
+        
+        # Enable IndexedDB filesystem persistence
+        target_link_options(coanqi_wasm PUBLIC -lidbfs.js)
+        
+        message(STATUS "WebAssembly: coanqi_wasm.html will be built")
+    else()
+        message(STATUS "WebAssembly source not found: src/webassembly/main.cpp - skipping")
+    endif()
+endif()
+
+# ========== MACHINE LEARNING SUPPORT ==========
+# Integrate PyTorch for AI-enhanced validation
+find_package(Torch QUIET)
+if(Torch_FOUND)
+    message(STATUS "PyTorch found at ${Torch_DIR} - enabling ML features")
+    
+    # Enable ML compilation flag
+    add_definitions(-DCOANQI_ML_ENABLED)
+    
+    # Link PyTorch to core library
+    if(TARGET UQFFCore)
+        target_compile_definitions(UQFFCore PUBLIC COANQI_ML_ENABLED)
+        target_link_libraries(UQFFCore PUBLIC ${TORCH_LIBRARIES})
+    endif()
+    
+    # If source2 becomes a target, link it too
+    if(TARGET source2)
+        target_compile_definitions(source2 PUBLIC COANQI_ML_ENABLED)
+        target_link_libraries(source2 PUBLIC ${TORCH_LIBRARIES})
+    endif()
+    
+    message(STATUS "ML: PyTorch ${Torch_VERSION} linked successfully")
+else()
+    message(STATUS "PyTorch NOT found - ML features disabled (compile without COANQI_ML_ENABLED)")
+    message(STATUS "To enable: Install PyTorch C++ (libtorch) from pytorch.org")
+endif()
+
+# ========== UNIT TESTING ==========
+# Enable CTest framework for automated testing
+enable_testing()
+
+# Add tests subdirectory if it exists
+if(EXISTS "${CMAKE_SOURCE_DIR}/tests/CMakeLists.txt")
+    add_subdirectory(tests)
+    message(STATUS "Testing: Unit tests enabled in tests/ directory")
+else()
+    message(STATUS "Testing: tests/CMakeLists.txt not found - create it to enable unit tests")
+    message(STATUS "Testing: Example structure:")
+    message(STATUS "  tests/")
+    message(STATUS "    CMakeLists.txt")
+    message(STATUS "    test_mathematical_validator.cpp")
+    message(STATUS "    test_plugins.cpp")
+    message(STATUS "    test_ml_integration.cpp")
+endif()
+
+# ========== ENHANCEMENT SUMMARY ==========
+message(STATUS "==========================================")
+message(STATUS "CoAnQi Enhancement Features")
+message(STATUS "==========================================")
+message(STATUS "Plugins:      ramanujan_validator (if available)")
+message(STATUS "WebAssembly:  ${EMSCRIPTEN}")
+message(STATUS "ML (PyTorch): ${Torch_FOUND}")
+message(STATUS "Testing:      ${BUILD_TESTING}")
+message(STATUS "==========================================")
+message(STATUS "To build all enhancements:")
+message(STATUS "  cmake --build build --config Release")
+message(STATUS "  ctest --test-dir build --config Release")
+message(STATUS "==========================================")
+message(STATUS "For WebAssembly build:")
+message(STATUS "  emcmake cmake -S . -B build_wasm")
+message(STATUS "  cmake --build build_wasm")
+message(STATUS "  python -m http.server 8000 --directory build_wasm")
+message(STATUS "  Open: http://localhost:8000/coanqi_wasm.html")
+message(STATUS "==========================================")

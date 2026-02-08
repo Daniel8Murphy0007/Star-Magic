@@ -1,13 +1,9 @@
 # Node.js
 node_modules/
 
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
+# Build directories (CMake artifacts, MSVC intermediate files)
 build/
+build_msvc/
 develop-eggs/
 dist/
 downloads/
@@ -30,7 +26,10 @@ env/
 .venv
 
 # IDE
-.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/tasks.json
 .idea/
 *.swp
 *.swo
@@ -48,25 +47,58 @@ Thumbs.db
 .anthropic/
 *.anthropic_cache
 
-# Backup files
-*_backup*.js
-*_BACKUP*.js
+# ============================================================
+# BACKUP FILES (Enhanced - covers all backup patterns)
+# ============================================================
+*_backup*.*
+*_BACKUP*.*
+*BACKUP*.*
 index_backup_*.js
 index_EMERGENCY_*.js
+*_RESTORE_*.*
+*.OBSOLETE
+cmake_backup.md
+CMakeList.txt
+restore_point_*.cpp
+RESTORE_POINT_*/
 
-# Compiled binaries (excluding primary executable)
-test_*.exe
-*_backup*.exe
-Debug/*.exe
-build_backup_*/*.exe
+# ============================================================
+# COMPILED BINARIES AND BUILD ARTIFACTS (Critical additions)
+# ============================================================
+# Object files (CRITICAL - these are large!)
+*.o
+*.obj
+
+# Executables (all platforms)
+*.exe
 *.dll
 *.so
 *.dylib
+MAIN_1_CoAnQi.exe
+MAIN_1.exe
+test_*.exe
+
+# Static and dynamic libraries
 *.lib
 *.a
-*.obj
+
+# Linker outputs
 *.pdb
 *.ilk
+*.exp
+*.iobj
+*.ipdb
+
+# ============================================================
+# ARCHIVE FILES (NEW - prevents large zips being tracked)
+# ============================================================
+*.zip
+*.tar.gz
+*.tar
+*.rar
+*.7z
+*.gz
+*.bz2
 
 # Build directories
 Debug/
@@ -83,6 +115,12 @@ module_backups_*/
 *.suo
 *.sdf
 *.opensdf
+*.sln
+*.user
+ALL_BUILD.vcxproj
+ALL_BUILD.vcxproj.filters
+ZERO_CHECK.vcxproj
+ZERO_CHECK.vcxproj.filters
 
 # CMake
 CMakeCache.txt
@@ -94,37 +132,37 @@ Makefile
 # Encoded directories (build artifacts)
 1N5B6Y891*/
 
-# Log files
+# ============================================================
+# LOG FILES
+# ============================================================
+*.log
 coAnQi_log_*.txt
 *_log_*.txt
-
-# Build directories (MSVC migration - Nov 19, 2025)
-build/
-build_*/
-*.dir/
-
-# Visual Studio artifacts
-*.sln
-*.vcxproj
-*.vcxproj.filters
-*.vcxproj.user
-*.suo
-*.user
-.vs/
-
-# Test output and logs
-*.log
 wolfram_*.txt
 msvc_errors*.txt
+validation_log.txt
+
+# ============================================================
+# BUILD OUTPUT AND STATUS FILES
+# ============================================================
+build_output.txt
+BUILD_STATUS.md
+CMAKE_BUILD_STATUS.md
+C++17_MINGW_CONTAMINATION_REPORT.txt
+build/
+build_backup_*/
+build_wolfram/
+build_msvc/
+
+# ============================================================
+# TEST OUTPUT
+# ============================================================
 input.txt
 test_wolfram.txt
 
-# CMake cache
-CMakeCache.txt
-CMakeFiles/
-cmake_install.cmake
-
-# Auto-generated physics term files (November 20, 2025)
+# ============================================================
+# AUTO-GENERATED PHYSICS TERM FILES (November 20, 2025)
+# ============================================================
 register_*_terms.cpp
 physics_registration.cpp
 generated_*_physics_terms.cpp
@@ -135,7 +173,27 @@ extracted_complete_classes.h
 generated_wrappers.txt
 physics_term_inventory.txt
 
-# Temporary working files
+# ============================================================
+# TEMPORARY WORKING FILES
+# ============================================================
 Untitled-*.py
 Untitled-*.cpp
 Untitled-*.txt
+Untitled-*.*
+
+# ============================================================
+# COPILOT WORKSPACE BACKUPS (Large files - CRITICAL)
+# ============================================================
+WORKSPACE_BACKUP_*/
+
+# ============================================================
+# LARGE SOURCE FILE BACKUPS (NEW - prevents multi-MB cpp backups)
+# ============================================================
+MAIN_1_CoAnQi_backup_*.cpp
+complete_physics_integration_backup_*.cpp
+*_backup_*MB*.cpp
+source*_backup_*.cpp
+
+# Python cache
+__pycache__/
+*.pyc

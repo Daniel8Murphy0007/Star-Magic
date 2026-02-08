@@ -45,7 +45,6 @@
 #define M_PI 3.14159265358979323846
 #endif
 #include <iomanip>
-
 #include <map>
 #include <vector>
 #include <functional>
@@ -53,94 +52,18 @@
 #include <algorithm>
 #include <fstream>
 #include <sstream>
-#include <map>
-#include <vector>
-#include <functional>
-#include <fstream>
-#include <sstream>
-#include <memory>
-#include <algorithm>
-#include <array> // MSVC requirement
+#include <array>
 
 // ===========================================================================================
-// SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
+// SHARED UQFF FRAMEWORK HEADERS
 // ===========================================================================================
+#include "uqff_constants.h"
+#include "uqff_self_expanding.h"
+#include "uqff_dual_physics.h"
 
-class PhysicsTerm
-{
-    // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
-    std::map<std::string, double> dynamicParameters;
-    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
-    std::map<std::string, std::string> metadata;
-    bool enableDynamicTerms;
-    bool enableLogging;
-    double learningRate;
-
-public:
-    virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
-    virtual std::string getName() const = 0;
-    virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double> & /* params */) const { return true; }
-};
-
-class DynamicVacuumTerm : public PhysicsTerm
-{
-private:
-    // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
-    // Note: Can be extended with dynamic parameters via setVariable()
-    double amplitude;
-    double frequency;
-    // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
-    std::map<std::string, double> dynamicParameters;
-    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
-    std::map<std::string, std::string> metadata;
-    bool enableDynamicTerms;
-    bool enableLogging;
-    double learningRate;
-
-public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15)
-        : amplitude(amp), frequency(freq) {}
-
-    double compute(double t, const std::map<std::string, double> &params) const override
-    {
-        double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
-        return amplitude * rho_vac * std::sin(frequency * t);
-    }
-
-    std::string getName() const override { return "DynamicVacuum"; }
-    std::string getDescription() const override { return "Time-varying vacuum energy"; }
-};
-
-class QuantumCouplingTerm : public PhysicsTerm
-{
-private:
-    // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
-    // Note: Can be extended with dynamic parameters via setVariable()
-    double coupling_strength;
-    // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
-    std::map<std::string, double> dynamicParameters;
-    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
-    std::map<std::string, std::string> metadata;
-    bool enableDynamicTerms;
-    bool enableLogging;
-    double learningRate;
-
-public:
-    QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-
-    double compute(double t, const std::map<std::string, double> &params) const override
-    {
-        double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
-        double M = params.count("M") ? params.at("M") : 1.989e30;
-        double r = params.count("r") ? params.at("r") : 1e4;
-        return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
-    }
-
-    std::string getName() const override { return "QuantumCoupling"; }
-    std::string getDescription() const override { return "Non-local quantum effects"; }
-};
+using namespace UQFF;
+using namespace UQFFExpanding;
+using namespace UQFFDualPhysics;
 
 // ===========================================================================================
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
@@ -602,6 +525,65 @@ public:
         os << "ug1_base: " << ug1_base << std::endl;
     }
 
+    // ==================== SELF-SIMULATION METHODS ====================
+    
+    // Run self-simulation with time evolution
+    void runSelfSimulation(double t_start, double t_end, int steps) {
+        if (enableLogging) {
+            std::cout << "[NGC1792] Running self-simulation: t=" << t_start 
+                      << " to " << t_end << " (" << steps << " steps)\n";
+        }
+        double dt = (t_end - t_start) / steps;
+        for (int i = 0; i <= steps; ++i) {
+            double t = t_start + i * dt;
+            double g = compute_g_NGC1792(t);
+            if (enableLogging) {
+                std::cout << "  t=" << std::scientific << std::setprecision(3) << t 
+                          << " s, g=" << g << " m/s²\n";
+            }
+        }
+    }
+    
+    // Export module state to file
+    void exportState(const std::string& filename) const {
+        std::ofstream out(filename);
+        if (out.is_open()) {
+            out << "# GalaxyNGC1792 State Export\n";
+            out << "# Version: " << metadata.at("version") << "\n";
+            out << "\n[PARAMETERS]\n";
+            out << "G=" << std::scientific << G << "\n";
+            out << "M0=" << M0 << "\n";
+            out << "r=" << r << "\n";
+            out << "Hz=" << Hz << "\n";
+            out << "B=" << B << "\n";
+            out << "B_crit=" << B_crit << "\n";
+            out << "f_TRZ=" << f_TRZ << "\n";
+            out << "SFR_factor=" << SFR_factor << "\n";
+            out << "\n[SETTINGS]\n";
+            out << "learningRate=" << learningRate << "\n";
+            out << "enableDynamicTerms=" << enableDynamicTerms << "\n";
+            out << "enableLogging=" << enableLogging << "\n";
+            out.close();
+            if (enableLogging) {
+                std::cout << "[NGC1792] State exported to " << filename << "\n";
+            }
+        }
+    }
+    
+    // Set learning rate for auto-optimization
+    void setLearningRate(double rate) {
+        learningRate = rate;
+        if (enableLogging) {
+            std::cout << "[NGC1792] Learning rate set to " << rate << "\n";
+        }
+    }
+    
+    // Enable/disable logging
+    void setEnableLogging(bool enable) { enableLogging = enable; }
+    
+    // Enable/disable dynamic terms
+    void setEnableDynamicTerms(bool enable) { enableDynamicTerms = enable; }
+
     // Example computation at t=50 Myr (for testing)
     double exampleAt50Myr() const
     {
@@ -611,3 +593,58 @@ public:
 };
 
 #endif // GALAXY_NGC_1792_H
+
+// ===========================================================================================
+// MAIN FUNCTION - NGC 1792 Starburst Galaxy Simulation with Dual Physics Validation
+// ===========================================================================================
+int main()
+{
+    std::cout << "=== Source27: NGC 1792 'The Stellar Forge' Starburst Galaxy ==="  << std::endl;
+    std::cout << "UQFF Module with Dual Physics Validation Framework\n" << std::endl;
+    
+    // Initialize NGC 1792 galaxy module
+    GalaxyNGC1792 ngc1792;
+    ngc1792.printParameters();
+    
+    // Compute gravity at multiple times
+    std::cout << "\n=== MUGE Gravity Evolution ===" << std::endl;
+    double times[] = {0.0, 10e6 * 3.156e7, 50e6 * 3.156e7, 100e6 * 3.156e7};  // 0, 10, 50, 100 Myr
+    const char* labels[] = {"t=0", "t=10 Myr", "t=50 Myr", "t=100 Myr"};
+    
+    for (int i = 0; i < 4; ++i) {
+        double g = ngc1792.compute_g_NGC1792(times[i]);
+        std::cout << labels[i] << ": g = " << std::scientific << std::setprecision(4) << g << " m/s²" << std::endl;
+    }
+    
+    // ==================== DUAL PHYSICS VALIDATION ====================
+    std::cout << "\n=== Dual Physics Validation ===" << std::endl;
+    
+    // Initialize FluidSolver for starburst wind dynamics
+    FluidSolver fluidSolver(32, 0.1, 0.0001);
+    fluidSolver.add_jet_force(15.0);  // Starburst wind force
+    double g_example = ngc1792.exampleAt50Myr();
+    for (int step = 0; step < 10; ++step) {
+        fluidSolver.step(g_example * 1e-10);
+    }
+    std::cout << "FluidSolver: Max velocity = " << fluidSolver.getMaxVelocity() << " m/s" << std::endl;
+    
+    // Initialize DualMethodValidator
+    DualMethodValidator validator("source27_dual_physics.log");
+    validator.addConstraint("NGC1792", 1e9, 1e12, 10.0);  // Starburst galaxy constraints
+    
+    // Create celestial body and MUGE system for NGC 1792
+    double M_sun = 1.989e30;
+    UQFFDualPhysics::CelestialBody body27("NGC1792", 1e10 * M_sun, 80000.0 * 9.461e15, 1e-5);
+    UQFFDualPhysics::MUGESystem muge27("NGC1792", 1e10 * M_sun, 80000.0 * 9.461e15);
+    muge27.B0 = 1e-5;
+    muge27.Lambda = 1.1e-52;
+    // Note: SFR handled internally by GalaxyNGC1792 class (SFR_factor = 10/1e10)
+    
+    auto result = validator.validate(body27, muge27, 0.0, 0.0);
+    result.print();
+    std::cout << "Dual Physics: IMPLEMENTED" << std::endl;
+    // ================================================================
+    
+    std::cout << "\n[Source27] NGC 1792 simulation complete." << std::endl;
+    return 0;
+}

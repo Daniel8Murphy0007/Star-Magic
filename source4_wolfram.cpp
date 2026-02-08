@@ -1,7 +1,8 @@
 // Wolfram-Enhanced Physics Terms from source4.cpp
-// Generated: November 24, 2025
+// Generated: November 29, 2025 (Phase 1 Complete)
 // Source: Unified Field Theory Implementation (UQFF + MUGE + Navier-Stokes)
-// Total Classes: 19
+// Total Classes: 24 (19 original + 5 new helper classes)
+// Status: PHASE 1 COMPLETE - Helper functions added
 
 #include <cmath>
 #include <string>
@@ -639,6 +640,139 @@ public:
 // HELPER TERMS
 // ============================================================================
 
+// CLASS 2: MuSTerm - Magnetic dipole moment
+class MuSTerm : public PhysicsTerm {
+private:
+    double Bs;           // Base magnetic field (T)
+    double omega_c;      // Cyclotron frequency (rad/s)
+    double Rs;           // Stellar radius (m)
+    double SCm_contrib;  // SCm contribution (T)
+    
+public:
+    MuSTerm(double Bs_val = 1e-4, double omega_c_val = 2.7e-6, double Rs_val = 6.96e8, double SCm_val = 1e3)
+        : Bs(Bs_val), omega_c(omega_c_val), Rs(Rs_val), SCm_contrib(SCm_val) {}
+    
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        double Bs_t = Bs + 0.4 * std::sin(omega_c * t) + SCm_contrib;
+        return Bs_t * std::pow(Rs, 3);  // A·m²
+    }
+    
+    std::string getName() const override { return "MagneticDipoleMoment"; }
+    
+    std::string getDescription() const override {
+        return "mu_s(t): Time-varying magnetic dipole moment = Bs_t * Rs^3 where Bs_t = Bs + 0.4*sin(omega_c*t) + SCm_contrib (A·m²)";
+    }
+    
+    bool validate(const std::map<std::string, double>&) const override {
+        return (Rs > 0 && Bs >= 0);
+    }
+};
+
+// CLASS 3: GradMsRTerm - Surface gravity gradient
+class GradMsRTerm : public PhysicsTerm {
+private:
+    double Ms;  // Stellar mass (kg)
+    double Rs;  // Stellar radius (m)
+    static constexpr double G = 6.674e-11;  // Gravitational constant (m³/kg·s²)
+    
+public:
+    GradMsRTerm(double Ms_val = 1.989e30, double Rs_val = 6.96e8) : Ms(Ms_val), Rs(Rs_val) {}
+    
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        if (Rs == 0.0) throw std::runtime_error("Division by zero in Rs");
+        return G * Ms / (Rs * Rs);  // Surface gravity (m/s²)
+    }
+    
+    std::string getName() const override { return "SurfaceGravityGradient"; }
+    
+    std::string getDescription() const override {
+        return "grad(Ms/r): Approximate gradient of mass-to-radius ratio = G*Ms/Rs^2 (surface gravity in m/s²)";
+    }
+    
+    bool validate(const std::map<std::string, double>&) const override {
+        return (Ms > 0 && Rs > 0);
+    }
+};
+
+// CLASS 4: BjTerm - Magnetic string field
+class BjTerm : public PhysicsTerm {
+private:
+    double omega_c;      // Cyclotron frequency (rad/s)
+    double SCm_contrib;  // SCm contribution (T)
+    
+public:
+    BjTerm(double omega_c_val = 2.7e-6, double SCm_val = 1e3)
+        : omega_c(omega_c_val), SCm_contrib(SCm_val) {}
+    
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        return 1e-3 + 0.4 * std::sin(omega_c * t) + SCm_contrib;  // Tesla
+    }
+    
+    std::string getName() const override { return "MagneticStringField"; }
+    
+    std::string getDescription() const override {
+        return "Bj(t): Magnetic string field = 1e-3 + 0.4*sin(omega_c*t) + SCm_contrib (Tesla)";
+    }
+    
+    bool validate(const std::map<std::string, double>&) const override {
+        return true;
+    }
+};
+
+// CLASS 5: OmegaSTTerm - Time-varying rotation frequency
+class OmegaSTTerm : public PhysicsTerm {
+private:
+    double omega_s;   // Base stellar rotation frequency (rad/s)
+    double omega_c;   // Cyclotron frequency (rad/s)
+    
+public:
+    OmegaSTTerm(double omega_s_val = 2.7e-6, double omega_c_val = 2.7e-6)
+        : omega_s(omega_s_val), omega_c(omega_c_val) {}
+    
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        return omega_s - 0.4e-6 * std::sin(omega_c * t);  // rad/s
+    }
+    
+    std::string getName() const override { return "TimeVaryingRotationFrequency"; }
+    
+    std::string getDescription() const override {
+        return "omega_s(t): Stellar rotation frequency = omega_s - 0.4e-6*sin(omega_c*t) (rad/s)";
+    }
+    
+    bool validate(const std::map<std::string, double>&) const override {
+        return true;
+    }
+};
+
+// CLASS 6: MuJTerm - Magnetic string dipole moment
+class MuJTerm : public PhysicsTerm {
+private:
+    double omega_c;      // Cyclotron frequency (rad/s)
+    double Rs;           // Stellar radius (m)
+    double SCm_contrib;  // SCm contribution (T)
+    
+public:
+    MuJTerm(double omega_c_val = 2.7e-6, double Rs_val = 6.96e8, double SCm_val = 1e3)
+        : omega_c(omega_c_val), Rs(Rs_val), SCm_contrib(SCm_val) {}
+    
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        // Call Bj computation inline
+        double Bj = 1e-3 + 0.4 * std::sin(omega_c * t) + SCm_contrib;
+        return Bj * std::pow(Rs, 3);  // A·m²
+    }
+    
+    std::string getName() const override { return "StringDipoleMoment"; }
+    
+    std::string getDescription() const override {
+        return "mu_j(t): Magnetic string dipole moment = Bj(t) * Rs^3 (A·m²)";
+    }
+    
+    bool validate(const std::map<std::string, double>&) const override {
+        return (Rs > 0);
+    }
+};
+
+// CLASS 1: ReactorEfficiencyTerm (already exists)
 class ReactorEfficiencyTerm : public PhysicsTerm {
 private:
     double kappa = 0.0005;
@@ -723,7 +857,13 @@ void registerWolframTerms_source4(PhysicsTermRegistry& registry) {
     registry.registerPhysicsTerm("RingsRelativity", std::make_unique<RingsRelativityTerm>(), "wolfram");
     registry.registerPhysicsTerm("StudentGuideUniverse", std::make_unique<StudentGuideUniverseTerm>(), "wolfram");
     
-    // Helper Terms (2 terms)
+    // Helper Terms (7 terms - 5 NEW + 2 existing)
+    registry.registerPhysicsTerm("MagneticDipoleMoment", std::make_unique<MuSTerm>(), "wolfram");
+    registry.registerPhysicsTerm("SurfaceGravityGradient", std::make_unique<GradMsRTerm>(), "wolfram");
+    registry.registerPhysicsTerm("MagneticStringField", std::make_unique<BjTerm>(), "wolfram");
+    registry.registerPhysicsTerm("TimeVaryingRotationFrequency", std::make_unique<OmegaSTTerm>(), "wolfram");
+    registry.registerPhysicsTerm("StringDipoleMoment", std::make_unique<MuJTerm>(), "wolfram");
     registry.registerPhysicsTerm("ReactorEfficiency", std::make_unique<ReactorEfficiencyTerm>(), "wolfram");
     registry.registerPhysicsTerm("NavierStokesQuasarJet", std::make_unique<NavierStokesQuasarJetTerm>(), "wolfram");
 }
+

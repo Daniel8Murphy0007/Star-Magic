@@ -1,0 +1,9 @@
+# UQFFModule14 State Export
+# SGR 0501+4516 Magnetar MUGE Calculator
+M_DM_factor=1.000000e-01
+f_TRZ=1.000000e-01
+t_evolution=1.578000e+11
+M=2.784488e+30
+r=2.000000e+04
+B0=1.000000e+10
+P_init=5.000000e+00

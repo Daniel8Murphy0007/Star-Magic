@@ -1,0 +1,31 @@
+# UQFFModule17_Westerlund2_SelfExpanding State Export
+# Version: 2.0-SelfExpanding
+# Timestamp: Thu Jan 22 23:50:41 2026
+
+[PARAMETERS]
+M_initial=5.9667600000e+34
+cluster_age_Myr=2.0000000000e+00
+r=9.4610000000e+16
+tau_SF=6.3120000000e+13
+ug1_base=4.4490799320e-10
+
+[METADATA]
+created=Thu Jan 22 23:50:41 2026
+enhanced=true
+last_param_created=cluster_age_Myr
+last_simulation=Thu Jan 22 23:50:41 2026
+last_term_added=DynamicVacuum
+object=Westerlund 2 Super Star Cluster
+simulation_steps=5
+version=2.0-SelfExpanding
+
+[DYNAMIC_TERMS]
+ClusterFormation:
+StellarWind:
+DynamicVacuum:1e-12,1e-16,0
+
+[SETTINGS]
+learningRate=1.0000000000e-03
+enableDynamicTerms=1
+enableLogging=1
+enableAutoOptimize=0

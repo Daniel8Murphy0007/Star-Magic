@@ -2,8 +2,7 @@
 #define WOLFRAM_TERM "(* Auto-contribution from source33.cpp *) + source33_unification_sector"
 // Modular C++ implementation of the full Master Universal Gravity Equation (UQFF) for SGR 1745-2900 Magnetar Evolution.
 // This module can be plugged into a base program (e.g., 'ziqn233h.cpp') by including this header and linking the .cpp.
-// Usage in base: // // // #include "SGR1745UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
-// SGR1745UQFFModule mod; mod.computeG(t); mod.updateVariable("M", new_value);
+// Usage in base: SGR1745UQFFModule mod; mod.computeG(t); mod.updateVariable("M", new_value);
 // All variables are stored in a std::map for dynamic addition/subtraction/update.
 // Nothing is negligible: Includes all terms - base gravity, Ug1-Ug4 (gravitational subterms), cosmological Lambda, 
 // quantum (hbar uncertainty integral term), Lorentz q(v x B) amplified by high B, fluid (rho_fluid V g for crust), resonant oscillatory (cos and exp terms for pulsations), 
@@ -18,108 +17,33 @@
 #ifndef SGR1745_UQFF_MODULE_H
 #define SGR1745_UQFF_MODULE_H
 
+// ===========================================================================================
+// SHARED FRAMEWORK HEADERS (Unified across all source files)
+// ===========================================================================================
+#include "uqff_constants.h"        // Physical constants: PI, c, G, hbar, k_B, etc.
+#include "uqff_self_expanding.h"   // SelfExpandingModule template, PhysicsTerm base class
+#include "uqff_dual_physics.h"     // DualMethodValidator, FluidSolver, CelestialBody, MUGESystem
+
 #include <map>
 #include <string>
 #include <cmath>
 #include <iostream>
 #include <iomanip>
 #include <complex>
-
-
-#include <map>
 #include <vector>
 #include <functional>
 #include <memory>
 #include <algorithm>
 #include <fstream>
 #include <sstream>
-#include <map>
-#include <vector>
-#include <functional>
-#include <fstream>
-#include <sstream>
-#include <memory>
-#include <algorithm>
+#include <array>
 
-// ===========================================================================================
-// SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
-// ===========================================================================================
-
-class PhysicsTerm {
-    // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
-    std::map<std::string, double> dynamicParameters;
-    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
-    std::map<std::string, std::string> metadata;
-    bool enableDynamicTerms;
-    bool enableLogging;
-    double learningRate;
-
-
-public:
-    virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double>& params) const = 0;
-    virtual std::string getName() const = 0;
-    virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double>& params) const { return true; }
-};
-
-class DynamicVacuumTerm : public PhysicsTerm {
-private:
-    
-    // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
-    // Note: Can be extended with dynamic parameters via setVariable()
-    double amplitude;
-    double frequency;
-    // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
-    std::map<std::string, double> dynamicParameters;
-    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
-    std::map<std::string, std::string> metadata;
-    bool enableDynamicTerms;
-    bool enableLogging;
-    double learningRate;
-
-
-public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15) 
-        : amplitude(amp), frequency(freq) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
-        double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
-        return amplitude * rho_vac * std::sin(frequency * t);
-    }
-    
-    std::string getName() const override { return "DynamicVacuum"; }
-    std::string getDescription() const override { return "Time-varying vacuum energy"; }
-};
-
-class QuantumCouplingTerm : public PhysicsTerm {
-private:
-    
-    // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
-    // Note: Can be extended with dynamic parameters via setVariable()
-    double coupling_strength;
-    // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
-    std::map<std::string, double> dynamicParameters;
-    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
-    std::map<std::string, std::string> metadata;
-    bool enableDynamicTerms;
-    bool enableLogging;
-    double learningRate;
-
-
-public:
-    QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-    
-    double compute(double t, const std::map<std::string, double>& params) const override {
-        double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
-        double M = params.count("M") ? params.at("M") : 1.989e30;
-        double r = params.count("r") ? params.at("r") : 1e4;
-        return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
-    }
-    
-    std::string getName() const override { return "QuantumCoupling"; }
-    std::string getDescription() const override { return "Non-local quantum effects"; }
-};
+// Import UQFF constants namespace for PI, c, G, hbar, k_B, etc.
+using namespace UQFF;
+// Import dual physics namespace for CelestialBody, MUGESystem, DualMethodValidator, ValidationResult
+using namespace UQFFDualPhysics;
+// Import self-expanding namespace for PhysicsTerm
+using namespace UQFFExpanding;
 
 // ===========================================================================================
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
@@ -164,6 +88,13 @@ public:
 
     // Print all current variables (for debugging/updates)
     void printVariables();
+
+    // ========== SELF-SIMULATION METHODS (2.0-Enhanced) ==========
+    void runSelfSimulation(double t_start, double t_end, int steps);
+    void exportState(const std::string& filename) const;
+    void setLearningRate(double rate) { learningRate = rate; }
+    void setEnableLogging(bool enable) { enableLogging = enable; }
+    void setEnableDynamicTerms(bool enable) { enableDynamicTerms = enable; }
 };
 
 #endif // SGR1745_UQFF_MODULE_H
@@ -377,41 +308,112 @@ void SGR1745UQFFModule::printVariables() {
     }
 }
 
-// Example usage in base program 'ziqn233h.cpp' (snippet for integration)
-// // // // #include "SGR1745UQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
-// int main() {
-//     SGR1745UQFFModule mod;
-//     double t = 1000 * 3.156e7;  // 1000 years
-//     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
-//     std::cout << mod.getEquationText() << std::endl;
-//     mod.updateVariable("B", 2.5e10);  // Update field
-//     mod.addToVariable("f_TRZ", 0.05); // Add to TR factor
-//     mod.subtractFromVariable("A", 1e-11); // Subtract from amplitude
-//     mod.printVariables();
-//     return 0;
-// }
-// Compile: g++ -o ziqn233h ziqn233h.cpp SGR1745UQFFModule.cpp -lm
-// Sample Output at t=1000 yr: g  1.2e12 m/s² (varies with updates; quantum/fluid/resonant ~1e-10 to 1e-3, DM ~1e30 * 1e-17 ~1e13 but pert small).
+// ===========================================================================================
+// SELF-SIMULATION IMPLEMENTATIONS (2.0-Enhanced)
+// ===========================================================================================
+
+void SGR1745UQFFModule::runSelfSimulation(double t_start, double t_end, int steps) {
+    if (enableLogging) {
+        std::cout << "[SGR1745] Running self-simulation: t=" << t_start << " to " << t_end << " (" << steps << " steps)" << std::endl;
+    }
+    double dt = (t_end - t_start) / steps;
+    for (int i = 0; i <= steps; ++i) {
+        double t = t_start + i * dt;
+        double g = computeG(t);
+        if (enableLogging) {
+            std::cout << "  t=" << std::scientific << std::setprecision(3) << t << " s, g=" << g << " m/s^2" << std::endl;
+        }
+    }
+}
+
+void SGR1745UQFFModule::exportState(const std::string& filename) const {
+    std::ofstream out(filename);
+    if (out.is_open()) {
+        out << "# SGR1745UQFFModule State Export\n";
+        out << "# SGR 1745-2900 Magnetar 10-term MUGE with high B superconductivity\n";
+        for (const auto& pair : variables) {
+            out << pair.first << "=" << std::scientific << pair.second << "\n";
+        }
+        out << "learningRate=" << learningRate << "\n";
+        out << "enableDynamicTerms=" << enableDynamicTerms << "\n";
+        out << "enableLogging=" << enableLogging << "\n";
+        out.close();
+    }
+}
+
+// ===========================================================================================
+// MAIN: Dual Physics Validation for SGR 1745-2900 Magnetar
+// ===========================================================================================
+int main()
+{
+    std::cout << "=== Source33: SGR 1745-2900 Magnetar UQFF Module ===" << std::endl;
+    std::cout << "10-term MUGE with high-B superconductivity + Dual Physics Validation" << std::endl;
+
+    SGR1745UQFFModule sgr;
+
+    // Time evolution: 100, 1000, 10000 years (magnetar ages)
+    std::cout << "\n=== MUGE Gravity Evolution (Magnetar) ===" << std::endl;
+    double yr_to_s = 3.156e7;
+    std::array<double, 3> times = {100 * yr_to_s, 1000 * yr_to_s, 10000 * yr_to_s};
+    for (double t : times) {
+        double g = sgr.computeG(t);
+        std::cout << "t=" << static_cast<int>(t / yr_to_s) << " yr: g = " << std::scientific << std::setprecision(4) << g << " m/s^2" << std::endl;
+    }
+
+    // Print equation description
+    std::cout << "\n=== Equation Description ===" << std::endl;
+    std::cout << sgr.getEquationText() << std::endl;
+
+    // Dual Physics Validation: UQFF vs MUGE
+    std::cout << "\n=== Dual Physics Validation ===" << std::endl;
+    double t_now = 1000 * yr_to_s;  // ~1000 year old magnetar
+    double g_uqff = sgr.computeG(t_now);
+
+    // Newtonian base for comparison
+    double G = 6.6743e-11;
+    double M = 1.4 * 1.989e30;  // 1.4 solar masses
+    double r = 1e4;             // 10 km radius
+    double g_newton = G * M / (r * r);
+
+    std::cout << "SGR1745 UQFF (10-term):  " << std::scientific << std::setprecision(4) << g_uqff << " m/s^2" << std::endl;
+    std::cout << "Newton Base:             " << std::scientific << std::setprecision(4) << g_newton << " m/s^2" << std::endl;
+    std::cout << "High-B SC Correction:    " << (g_uqff < g_newton ? "YES (B near B_crit)" : "NO") << std::endl;
+
+    // FluidSolver for magnetar magnetosphere dynamics
+    std::cout << "\n=== FluidSolver: Magnetar Magnetosphere Dynamics ===" << std::endl;
+    FluidSolver fluidSolver(32, 0.1, 0.0001);  // 32x32 grid
+    std::cout << "FluidSolver initialized (32x32 grid)" << std::endl;
+    fluidSolver.add_jet_force(15.0);  // Strong magnetar outflow
+    for (int i = 0; i < 10; ++i) {
+        fluidSolver.step(g_newton * 1e-12);  // Scaled Newtonian gravity
+    }
+    std::cout << "FluidSolver: Max velocity = " << fluidSolver.getMaxVelocity() << " m/s" << std::endl;
+
+    // DualMethodValidator integration
+    CelestialBody body;
+    body.name = "SGR1745-2900";
+    body.M = M;
+    body.Rs = r;
+    body.B0 = 2e10;  // 2e14 Gauss = 2e10 Tesla
+
+    MUGESystem muge;
+    muge.name = "SGR1745_MUGE";
+    muge.M = M;
+    muge.r = r;
+    muge.B0 = 2e10;
+    muge.T = 1e8;  // Magnetar temperature ~100 million K
+
+    DualMethodValidator validator;
+    validator.addConstraint("magnetar_g", 1e10, 1e14, 0.5);  // Neutron star range
+    ValidationResult result = validator.validate(body, muge);
+    result.print();
+
+    // Self-simulation test
+    std::cout << "\n=== Self-Simulation Test ===" << std::endl;
+    sgr.setEnableLogging(true);
+    sgr.runSelfSimulation(100 * yr_to_s, 10000 * yr_to_s, 4);  // 100-10000 years evolution
+
+    std::cout << "\n=== Source33 Complete ===" << std::endl;
+    return 0;
+}
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
-
-/*
-// Evaluation of SGR1745UQFFModule (Master Universal Gravity Equation for SGR 1745-2900 Magnetar)
-
-**Strengths:**
--**Dynamic & Extensible : **All model parameters are stored in a `std: : map<std::string, double> variables`, allowing runtime updates, additions, and removals.The methods `updateVariable`, `addToVariable`, and `subtractFromVariable` enable flexible modification of any parameter.
-- **Automatic Dependency Updates : **When key variables like `"M"`, `"Delta_x"`, or `"P"` are updated, dependent variables(`"M_visible"`, `"M_DM"`, `"Delta_p"`, `"v_spin"`, `"omega"`) are recalculated automatically, ensuring consistency.
-    - **Immediate Effect : **All computations(e.g., `computeG`) use the current values in the map, so any changes are immediately reflected in results.
-        - **Comprehensive Physics : **The module includes all major terms relevant for magnetar gravity, including base gravity, cosmological, quantum, EM(amplified by high B), fluid, resonant, DM, and superconductivity corrections.
-        - **Debugging Support : **The `printVariables()` method provides a snapshot of all current parameters, aiding validation and troubleshooting.
-    - **Sample Usage Provided : **Example integration and compilation instructions are included, demonstrating how to update variables and see their effect.
-
-    ** Weaknesses / Recommendations : **
-    -**Error Handling : **Adding unknown variables is flexible but may lead to silent errors if a typo occurs.Consider stricter validation or optional warnings for unknown variable names.
-    - **Unit Consistency : **Ensure all units are consistent, especially when combining terms from different physical domains.
-    - **Magic Numbers : **Some scale factors and physical constants are set to arbitrary values.Document their physical meaning or allow configuration via constructor arguments or config files.
-    - **Performance : **For large - scale or repeated updates, consider profiling and optimizing critical paths if needed.
-
-    ** Summary : **
-    The module is robust, dynamic, and extensible, supporting runtime updates and changes to all model parameters.Minor improvements in error handling and documentation are recommended for production use.
-*/

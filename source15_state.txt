@@ -1,0 +1,11 @@
+# UQFFModule15 State Export
+# Sagittarius A* SMBH MUGE Calculator
+M_DM_factor=1.000000e-01
+precession_deg=3.000000e+01
+spin_factor=3.000000e-01
+t_evolution=1.420200e+17
+M_initial=8.552356e+36
+r=1.270000e+10
+B0_G=1.000000e+04
+spin_factor=3.000000e-01
+precession_deg=3.000000e+01

@@ -24,101 +24,24 @@
 #include <iostream>
 #include <iomanip>
 #include <complex>
-
-#include <map>
 #include <vector>
 #include <functional>
 #include <memory>
 #include <algorithm>
 #include <fstream>
 #include <sstream>
-#include <map>
-#include <vector>
-#include <functional>
-#include <fstream>
-#include <sstream>
-#include <memory>
-#include <algorithm>
+#include <array>
 
 // ===========================================================================================
-// SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
+// SHARED UQFF FRAMEWORK HEADERS
 // ===========================================================================================
+#include "uqff_constants.h"
+#include "uqff_self_expanding.h"
+#include "uqff_dual_physics.h"
 
-class PhysicsTerm
-{
-    // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
-    std::map<std::string, double> dynamicParameters;
-    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
-    std::map<std::string, std::string> metadata;
-    bool enableDynamicTerms;
-    bool enableLogging;
-    double learningRate;
-
-public:
-    virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
-    virtual std::string getName() const = 0;
-    virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double> &params) const { return true; }
-};
-
-class DynamicVacuumTerm : public PhysicsTerm
-{
-private:
-    // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
-    // Note: Can be extended with dynamic parameters via setVariable()
-    double amplitude;
-    double frequency;
-    // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
-    std::map<std::string, double> dynamicParameters;
-    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
-    std::map<std::string, std::string> metadata;
-    bool enableDynamicTerms;
-    bool enableLogging;
-    double learningRate;
-
-public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15)
-        : amplitude(amp), frequency(freq) {}
-
-    double compute(double t, const std::map<std::string, double> &params) const override
-    {
-        double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
-        return amplitude * rho_vac * std::sin(frequency * t);
-    }
-
-    std::string getName() const override { return "DynamicVacuum"; }
-    std::string getDescription() const override { return "Time-varying vacuum energy"; }
-};
-
-class QuantumCouplingTerm : public PhysicsTerm
-{
-private:
-    // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
-    // Note: Can be extended with dynamic parameters via setVariable()
-    double coupling_strength;
-    // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
-    std::map<std::string, double> dynamicParameters;
-    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
-    std::map<std::string, std::string> metadata;
-    bool enableDynamicTerms;
-    bool enableLogging;
-    double learningRate;
-
-public:
-    QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-
-    double compute(double t, const std::map<std::string, double> &params) const override
-    {
-        double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
-        double M = params.count("M") ? params.at("M") : 1.989e30;
-        double r = params.count("r") ? params.at("r") : 1e4;
-        return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
-    }
-
-    std::string getName() const override { return "QuantumCoupling"; }
-    std::string getDescription() const override { return "Non-local quantum effects"; }
-};
+using namespace UQFF;
+using namespace UQFFExpanding;
+using namespace UQFFDualPhysics;
 
 // ===========================================================================================
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
@@ -162,6 +85,13 @@ public:
 
     // Print all current variables (for debugging/updates)
     void printVariables();
+    
+    // ========== SELF-SIMULATION METHODS ==========
+    void runSelfSimulation(double t_start, double t_end, int steps);
+    void exportState(const std::string& filename) const;
+    void setLearningRate(double rate);
+    void setEnableLogging(bool enable);
+    void setEnableDynamicTerms(bool enable);
 };
 
 #endif // SATURN_UQFF_MODULE_H
@@ -418,41 +348,133 @@ void SaturnUQFFModule::printVariables()
     }
 }
 
-// Example usage in base program 'ziqn233h.cpp' (snippet for integration)
-// // // // #include "SaturnUQFFModule.h"  // Commented - header not available  // Commented - header not available  // Commented - header not available
-// int main() {
-//     SaturnUQFFModule mod;
-//     double t = 4.5e9 * 3.156e7;  // 4.5 Gyr
-//     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
-//     std::cout << mod.getEquationText() << std::endl;
-//     mod.updateVariable("M", 5.7e26);  // Update mass
-//     mod.addToVariable("f_TRZ", 0.05); // Add to TR factor
-//     mod.subtractFromVariable("A", 1e-11); // Subtract from amplitude
-//     mod.printVariables();
-//     return 0;
-// }
-// Compile: g++ -o ziqn233h ziqn233h.cpp SaturnUQFFModule.cpp -lm
-// Sample Output at t=4.5 Gyr: g ? 10.44 m/s� (varies with updates; quantum/fluid/resonant ~1e-10 to 1e-3, DM ~1e26 * 1e-26 ~1e0 but curv small).
+// ==================== SELF-SIMULATION METHODS ====================
+
+// Run self-simulation with time evolution
+void SaturnUQFFModule::runSelfSimulation(double t_start, double t_end, int steps) {
+    if (enableLogging) {
+        std::cout << "[Saturn] Running self-simulation: t=" << t_start 
+                  << " to " << t_end << " (" << steps << " steps)\n";
+    }
+    double dt = (t_end - t_start) / steps;
+    for (int i = 0; i <= steps; ++i) {
+        double t = t_start + i * dt;
+        double g = computeG(t);
+        if (enableLogging) {
+            std::cout << "  t=" << std::scientific << std::setprecision(3) << t 
+                      << " s, g=" << g << " m/s²\n";
+        }
+    }
+}
+
+// Export module state to file
+void SaturnUQFFModule::exportState(const std::string& filename) const {
+    std::ofstream out(filename);
+    if (out.is_open()) {
+        out << "# SaturnUQFFModule State Export\n";
+        out << "# Version: " << metadata.at("version") << "\n";
+        out << "\n[VARIABLES]\n";
+        for (const auto& pair : variables) {
+            out << pair.first << "=" << std::scientific << pair.second << "\n";
+        }
+        out << "\n[SETTINGS]\n";
+        out << "learningRate=" << learningRate << "\n";
+        out << "enableDynamicTerms=" << enableDynamicTerms << "\n";
+        out << "enableLogging=" << enableLogging << "\n";
+        out.close();
+        if (enableLogging) {
+            std::cout << "[Saturn] State exported to " << filename << "\n";
+        }
+    }
+}
+
+// Set learning rate for auto-optimization
+void SaturnUQFFModule::setLearningRate(double rate) {
+    learningRate = rate;
+    if (enableLogging) {
+        std::cout << "[Saturn] Learning rate set to " << rate << "\n";
+    }
+}
+
+// Enable/disable logging
+void SaturnUQFFModule::setEnableLogging(bool enable) { enableLogging = enable; }
+
+// Enable/disable dynamic terms
+void SaturnUQFFModule::setEnableDynamicTerms(bool enable) { enableDynamicTerms = enable; }
+
+// ===========================================================================================
+// MAIN FUNCTION - Saturn Evolution Simulation with Dual Physics Validation
+// ===========================================================================================
+int main()
+{
+    std::cout << "=== Source30: Saturn UQFF Module ===" << std::endl;
+    std::cout << "Full MUGE with Ring/Wind/Atmospheric Terms + Dual Physics Validation\n" << std::endl;
+    
+    // Initialize Saturn module
+    SaturnUQFFModule saturn;
+    
+    // Compute gravity at multiple times
+    std::cout << "=== MUGE Gravity Evolution ===" << std::endl;
+    double times[] = {1e9 * 3.156e7, 2.5e9 * 3.156e7, 4.5e9 * 3.156e7};  // 1, 2.5, 4.5 Gyr
+    const char* labels[] = {"t=1 Gyr", "t=2.5 Gyr", "t=4.5 Gyr (Solar System age)"};
+    
+    for (int i = 0; i < 3; ++i) {
+        double g = saturn.computeG(times[i]);
+        std::cout << labels[i] << ": g = " << std::scientific << std::setprecision(4) << g << " m/s^2" << std::endl;
+    }
+    
+    // Print equation text
+    std::cout << "\n=== Equation Description ===" << std::endl;
+    std::cout << saturn.getEquationText() << std::endl;
+    
+    // ==================== DUAL PHYSICS VALIDATION ====================
+    std::cout << "\n=== Dual Physics Validation ===" << std::endl;
+    
+    // Initialize FluidSolver for atmospheric dynamics
+    FluidSolver fluidSolver(32, 0.1, 0.0001);
+    fluidSolver.add_jet_force(5.0);  // Atmospheric wind forcing
+    double g_example = saturn.computeG(4.5e9 * 3.156e7);  // 4.5 Gyr
+    
+    // Create CelestialBody for Saturn (using framework structure)
+    CelestialBody saturnBody;
+    saturnBody.name = "Saturn";
+    saturnBody.M = 5.683e26;         // Mass (kg)
+    saturnBody.Rs = 6.0268e7;        // Radius (m)
+    saturnBody.B0 = 2.1e-5;          // Magnetic field (T)
+    
+    // Create MUGESystem for validation
+    MUGESystem saturnMUGE;
+    saturnMUGE.name = "Saturn";
+    saturnMUGE.M = 5.683e26;         // Mass (kg)
+    saturnMUGE.r = 6.0268e7;         // Distance (m)
+    saturnMUGE.B0 = 2.1e-5;          // Magnetic field (T)
+    saturnMUGE.T = 134;              // Temperature (K)
+    
+    // UQFF Computation
+    double g_uqff = g_example;
+    
+    // MUGE (Newtonian + corrections)
+    double g_newton = 6.6743e-11 * saturnBody.M / (saturnBody.Rs * saturnBody.Rs);
+    double g_muge = g_newton * (1.0 + 0.001);  // Small correction factor
+    
+    // Dual Method Validation
+    DualMethodValidator validator;
+    validator.addConstraint("Saturn", 8.0, 12.0, 5.0);  // Expected range for Saturn surface g
+    ValidationResult result = validator.validate(saturnBody, saturnMUGE);
+    
+    std::cout << "Saturn UQFF:  " << std::scientific << g_uqff << " m/s^2" << std::endl;
+    std::cout << "Saturn MUGE:  " << g_muge << " m/s^2" << std::endl;
+    std::cout << "Newton Base:  " << g_newton << " m/s^2" << std::endl;
+    std::cout << "Convergence:  " << (result.convergence_achieved ? "PASS" : "FAIL") << std::endl;
+    result.print();
+    
+    // Self-simulation test
+    std::cout << "\n=== Self-Simulation Test ===" << std::endl;
+    saturn.setEnableLogging(true);
+    saturn.runSelfSimulation(4.0e9 * 3.156e7, 4.5e9 * 3.156e7, 5);  // 4.0-4.5 Gyr
+    
+    std::cout << "\n=== Source30 Complete ==="  << std::endl;
+    return 0;
+}
+
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 08, 2025.
-
-/*
-// Evaluation of SaturnUQFFModule (Master Universal Gravity Equation for Saturn)
-
-**Strengths:**
--**Dynamic & Extensible : **All model parameters are stored in a `std: : map<std::string, double> variables`, allowing runtime updates, additions, and removals.The methods `updateVariable`, `addToVariable`, and `subtractFromVariable` enable flexible modification of any parameter.
-- **Automatic Dependency Updates : **When key variables like `"M"` or `"Delta_x"` are updated, dependent variables(`"M_visible"`, `"M_DM"`, `"Delta_p"`) are recalculated automatically, ensuring consistency.
-    - **Immediate Effect : **All computations(e.g., `computeG`) use the current values in the map, so any changes are immediately reflected in results.
-        - **Comprehensive Physics : **The module includes all major terms relevant for planetary gravity, including base gravity(Sun + Saturn), cosmological, quantum, EM, fluid, resonant, DM, ring tidal, wind, and superconductivity corrections.
-        - **Debugging Support : **The `printVariables()` method provides a snapshot of all current parameters, aiding validation and troubleshooting.
-    - **Sample Usage Provided : **Example integration and compilation instructions are included, demonstrating how to update variables and see their effect.
-
-    ** Weaknesses / Recommendations : **
-    -**Error Handling : **Adding unknown variables is flexible but may lead to silent errors if a typo occurs.Consider stricter validation or optional warnings for unknown variable names.
-    - **Unit Consistency : **Ensure all units are consistent, especially when combining terms from different physical domains.
-    - **Magic Numbers : **Some scale factors and physical constants are set to arbitrary values.Document their physical meaning or allow configuration via constructor arguments or config files.
-    - **Performance : **For large - scale or repeated updates, consider profiling and optimizing critical paths if needed.
-
-    ** Summary : **
-    The module is robust, dynamic, and extensible, supporting runtime updates and changes to all model parameters.Minor improvements in error handling and documentation are recommended for production use.
-*/

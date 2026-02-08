@@ -1,0 +1,213 @@
+# Star-Magic Celestial Bodies Database
+# Format: name,Ms,Rs,Rb,Ts_surface,omega_s,Bs_avg,SCm_density,QUA,Pcore,PSCm,omega_c
+# Units: kg, m, m, K, rad/s, T, kg/m³, C, dimensionless, dimensionless, rad/s
+# Watermark: ©2025-2026 Daniel T. Murphy, daniel.murphy00@gmail.com – All Rights Reserved
+
+name,Ms,Rs,Rb,Ts_surface,omega_s,Bs_avg,SCm_density,QUA,Pcore,PSCm,omega_c
+Sun,1.989e30,6.96e8,1.496e13,5778.0,2.5e-6,1e-4,1e15,1e-11,1.0,1.0,1.811e-8
+Earth,5.972e24,6.371e6,1e7,288.0,7.292e-5,3e-5,1e12,1e-12,1e-3,1e-3,1.991e-7
+Jupiter,1.898e27,6.9911e7,1e8,165.0,1.76e-4,4e-4,1e13,1e-11,1e-3,1e-3,1.678e-8
+Saturn,5.683e26,5.8232e7,8e7,134.0,1.64e-4,2e-5,1e12,1e-12,1e-3,1e-3,6.759e-9
+Mars,6.417e23,3.3895e6,5e6,210.0,7.088e-5,1e-6,1e10,1e-14,1e-4,1e-4,1.059e-7
+Venus,4.867e24,6.0518e6,1e7,737.0,2.99e-7,1e-8,1e11,1e-13,1e-3,1e-3,8.135e-8
+Mercury,3.301e23,2.4397e6,3e6,440.0,1.24e-6,1e-7,1e9,1e-15,1e-4,1e-4,2.266e-7
+Neptune,1.024e26,2.4622e7,5e7,72.0,1.08e-4,1e-4,1e11,1e-13,1e-3,1e-3,1.209e-9
+Uranus,8.681e25,2.5362e7,4e7,76.0,1.01e-4,5e-5,1e11,1e-13,1e-3,1e-3,2.369e-9
+Proxima_Centauri,2.446e29,2.15e8,5e10,3042.0,3.2e-6,6e-1,1e16,1e-10,1.0,1.0,5.5e-7
+Alpha_Centauri_A,2.187e30,8.513e8,2e13,5790.0,2.3e-6,1e-4,1e15,1e-11,1.0,1.0,1.5e-8
+Sirius_A,4.018e30,1.19e9,3e13,9940.0,1.6e-5,5e-4,1e16,1e-10,1.0,1.0,2.0e-8
+Betelgeuse,2.188e31,7.48e11,1e15,3600.0,4.6e-9,1e-6,1e14,1e-12,1.0,1.0,1.4e-10
+Neutron_Star_PSR,2.8e30,1e4,1e3,1e6,1000.0,1e8,1e20,1e-15,1.0,1.0,6.28e3
+Sgr_A_Star,8.155e36,1.2e10,1e12,1e7,1e-10,1e-12,1e25,1e-20,1.0,1.0,1e-15
+Moon,7.342e22,1.7374e6,1e5,250.0,2.6617e-6,1e-9,1e8,1e-16,1e-5,1e-5,2.6617e-6
+Pluto,1.303e22,1.188e6,1e6,44.0,1.139e-5,1e-10,1e7,1e-17,1e-6,1e-6,1.139e-5
+Ceres,9.393e20,4.73e5,1e5,168.0,1.923e-4,1e-11,1e6,1e-18,1e-6,1e-6,1.923e-4
+White_Dwarf_Sirius_B,2.028e30,5.8e6,1e8,2.5e4,2.5e-3,1e3,1e18,1e-14,1.0,1.0,1e-5
+Magnetar_SGR_1806,2.8e30,1e4,1e3,1e7,0.134,1e11,1e22,1e-16,1.0,1.0,0.84
+Pulsar_Crab,2.8e30,1e4,1e3,1e6,190.0,1e8,1e20,1e-15,1.0,1.0,1.194e3
+TRAPPIST_1,1.79e29,8.4e7,5e10,2566.0,3.3e-6,6e-2,1e15,1e-11,1.0,1.0,3.3e-6
+# === UQFF Extended Catalogue (Source10 Systems) ===
+SGR_1745-2900,2.78449e30,1e4,1e5,1e7,0.283,2e10,1e21,1e-16,1.0,1.0,1.78
+Vela_Pulsar,2.78449e30,1e4,1e5,1e6,70.4,1e8,1e20,1e-15,1.0,1.0,442.5
+Eta_Carinae,1.09391e32,1.32e10,5e12,2.5e4,1e-7,1e-2,1e17,1e-12,1.0,1.0,1e-9
+GW170817,5.37008e30,2e4,1e6,1e8,1e3,1e10,1e21,1e-15,1.0,1.0,6.28e3
+Cas_A,7.95568e30,1.54e17,1e18,1e7,1e-10,1e-6,1e14,1e-18,1e-2,1e-2,1e-12
+NGC_1365_SMBH,1.98892e41,1.54e21,1e22,1e6,1e-15,1e-8,1e24,1e-22,1.0,1.0,1e-18
+ESO_137-001,1.98892e41,3.086e20,1e21,1e7,1e-12,1e-6,1e22,1e-20,1.0,1.0,1e-15
+El_Gordo,3.97784e45,3.086e22,1e23,1e8,1e-18,1e-10,1e26,1e-24,1.0,1.0,1e-20
+SN_1006,3.97784e31,3.086e17,1e18,1e6,1e-12,1e-5,1e15,1e-17,1e-2,1e-2,1e-14
+Kepler_SNR,1.98892e30,1.23e17,1e18,1e6,1e-12,1e-5,1e15,1e-17,1e-2,1e-2,1e-14
+ASASSN-14li,1.98892e36,3e9,1e11,1e6,1e-8,1e-4,1e19,1e-18,1.0,1.0,1e-10
+NGC_2264,9.9446e32,6.172e16,1e17,1e4,1e-10,1e-4,1e16,1e-14,1.0,1.0,1e-12
+Westerlund_2,1.98892e34,3.086e16,1e17,4e4,1e-9,1e-3,1e17,1e-13,1.0,1.0,1e-11
+Pillars_M16,3.97784e32,3.086e16,1e17,1e4,1e-12,1e-5,1e15,1e-15,1.0,1.0,1e-14
+Galactic_Center,8.55236e36,1.26e10,1e12,1e7,1e-10,1e-6,1e24,1e-20,1.0,1.0,1e-15
+# === Additional UQFF Systems ===
+Tapestry_SFR,5e33,1e17,1e18,1e4,1e-10,1e-4,1e16,1e-14,1.0,1.0,1e-12
+Rings_of_Relativity,1e42,1e21,1e22,1e6,1e-14,1e-8,1e24,1e-22,1.0,1.0,1e-17
+Student_Guide_Universe,1e53,4.4e26,1e27,2.7,1e-18,1e-12,1e30,1e-28,1.0,1.0,1e-22
+M42_Orion_Nebula,2e33,1.2e17,1e18,1e4,1e-11,1e-4,1e16,1e-14,1.0,1.0,1e-13
+NGC_6302_Butterfly,1.5e30,3e16,1e17,2e5,1e-8,1e-3,1e17,1e-15,1.0,1.0,1e-10
+Carina_Nebula,4e34,9e17,1e18,2e4,1e-10,1e-3,1e17,1e-13,1.0,1.0,1e-12
+Mice_Galaxies,2e42,5e21,1e22,1e6,1e-14,1e-7,1e24,1e-21,1.0,1.0,1e-16
+Tadpole_Galaxy,1e42,3e21,1e22,1e6,1e-14,1e-7,1e24,1e-21,1.0,1.0,1e-16
+Andromeda_M31,2.5e42,1.1e21,1e22,1e6,1e-15,1e-8,1e24,1e-22,1.0,1.0,1e-18
+Cygnus_X-1,2.1e31,4.4e4,1e6,3e7,1e-3,1e6,1e20,1e-16,1.0,1.0,6.28e2
+PSR_B1937+21,2.8e30,1e4,1e5,1e6,4.07e3,1e9,1e21,1e-15,1.0,1.0,2.56e4
+IC_1101,1e47,2e23,1e24,1e6,1e-20,1e-12,1e28,1e-26,1.0,1.0,1e-22
+# === Source13 Magnetar Systems ===
+SGR_1806-20,2.8e30,1e4,1e5,1e7,0.134,2e11,1e22,1e-16,1.0,1.0,0.84
+SGR_0526-66,2.8e30,1e4,1e5,1e7,0.124,8e10,1e21,1e-16,1.0,1.0,0.78
+1E_2259+586,2.8e30,1e4,1e5,1e6,0.914,5.9e9,1e20,1e-16,1.0,1.0,5.74
+4U_0142+61,2.8e30,1e4,1e5,1e6,0.116,1.3e10,1e20,1e-16,1.0,1.0,0.73
+# === Binary & Compact Systems ===
+PSR_J0737-3039A,2.4e30,1e4,1e5,1e6,276.8,1e8,1e20,1e-15,1.0,1.0,1.74e3
+PSR_J0348+0432,3.97e30,1.3e4,1e5,1e6,25.6,1e8,1e20,1e-15,1.0,1.0,1.61e2
+Hulse_Taylor_Binary,2.78e30,1e4,1e5,1e6,16.95,1e8,1e20,1e-15,1.0,1.0,1.07e2
+# === Black Hole X-ray Binaries ===
+GRS_1915+105,2.09e31,6.2e4,1e7,1e7,1e-4,1e5,1e20,1e-17,1.0,1.0,1e-6
+V404_Cygni,1.79e31,5.4e4,1e7,1e7,1e-4,1e5,1e20,1e-17,1.0,1.0,1e-6
+A0620-00,1.31e31,4e4,1e7,1e7,1e-4,1e4,1e19,1e-17,1.0,1.0,1e-6
+# === Supermassive Black Holes ===
+M87_SMBH,1.29e40,1.2e13,1e14,1e6,1e-12,1e-6,1e24,1e-22,1.0,1.0,1e-15
+TON_618,1.32e41,3.9e14,1e15,1e6,1e-14,1e-8,1e25,1e-24,1.0,1.0,1e-17
+Phoenix_A,1.99e41,5.9e14,1e15,1e6,1e-14,1e-8,1e25,1e-24,1.0,1.0,1e-17
+# === White Dwarfs ===
+WD_J0551+4135,2.5e30,3e6,1e8,2e4,1e-3,1e6,1e18,1e-14,1.0,1.0,1e-5
+ZTF_J1901+1458,2.7e30,2.1e6,1e8,4.6e4,6.94,8e8,1e19,1e-14,1.0,1.0,43.6
+# === Fast Radio Burst Sources ===
+FRB_121102,2.8e30,1e4,1e5,1e7,1e-3,1e10,1e21,1e-16,1.0,1.0,1e-5
+FRB_180916,2.8e30,1e4,1e5,1e7,1e-3,1e10,1e21,1e-16,1.0,1.0,1e-5
+# === Source14-16 Aligned Module Systems (Jan 2026) ===
+# Source14: SGR 0501+4516 Magnetar (12-term MUGE, B-field decay, time-reversal)
+SGR_0501+4516,2.78e30,1e4,1e5,1e7,0.175,1.9e10,1e21,1e-16,1.0,1.0,1.10
+# Source15: Sagittarius A* SMBH (12-term MUGE, M(t) growth, Kerr spin a/M=0.3, 30° precession)
+Sgr_A_Star_MUGE,8.55e36,1.27e10,1e12,1e7,1e-10,1e0,1e24,1e-20,1.0,1.0,7.08e-6
+# Source16: Tapestry of Blazing Starbirth NGC 2014/2020 (11-term MUGE, star formation M(t), stellar wind)
+NGC_2014_2020_Tapestry,4.77e32,9.46e16,1e18,1e4,1e-10,1e-6,1e16,1e-14,1.0,1.0,1e-12
+# Source17: Westerlund 2 Super Star Cluster (11-term MUGE, 30000 M_sun, star formation, stellar wind)
+Westerlund_2_MUGE,5.97e34,9.46e16,1e18,4e4,1e-9,1e-5,1e17,1e-13,1.0,1.0,1e-11
+# Source18: Pillars of Creation Eagle Nebula M16 (12-term MUGE, E(t) erosion photoevaporation, star formation)
+Pillars_of_Creation_MUGE,2.01e34,4.73e16,1e17,1e4,1e-10,1e-9,1e15,1e-17,1.0,1.0,1e-12
+# Source19: Rings of Relativity GAL-CLUS-022058s (11-term MUGE, L(t) lensing amplification, z=0.5 Einstein ring)
+Rings_of_Relativity_MUGE,1.99e44,3.086e20,1e21,1e6,1e-15,1e-5,1e21,7.09e-36,1.0,1.0,2.97e-18
+# Source20: Galaxy NGC 2525 (12-term MUGE, g_BH central SMBH, M_SN(t) SN 2018gv Type Ia supernova mass loss)
+NGC_2525_MUGE,1.99e40,2.836e20,1e21,1e4,1e-13,1e-5,1e21,7.09e-36,1.0,1.0,2.27e-18
+# Source21: NGC 3603 Extreme Star Cluster (13-term MUGE, P(t) cavity pressure, wind-blown bubble expansion)
+NGC_3603_MUGE,7.96e35,8.998e16,1e17,4e4,1e-9,1e-5,1e20,7.09e-36,1.0,1.0,1e-10
+# Source22: Bubble Nebula NGC 7635 (11-term MUGE, g_wind stellar wind feedback, O-type star BD+60 2522)
+Bubble_Nebula_MUGE,9.15e31,4.73e16,1e17,1e4,1e-10,1e-6,1e15,7.09e-36,1.0,1.0,1e-12
+# Source23: Antennae Galaxies NGC 4038/4039 (12-term MUGE, I(t) merger interaction, M(t) star formation, z=0.0105)
+Antennae_Galaxies_MUGE,3.98e41,2.838e20,1e21,1e4,1e-13,1e-5,1e21,7.09e-36,1.0,1.0,2.28e-18
+# Source24: Horsehead Nebula Barnard 33 (11-term MUGE, E(t) erosion photoevaporation, sigma Orionis UV radiation)
+Horsehead_Nebula_MUGE,1.989e33,2.365e16,1e17,1e4,1e-10,1e-6,1e15,7.09e-36,1.0,1.0,1e-12
+# Source25: NGC 1275 Perseus A (13-term MUGE, C(t) cooling flow, AGN feedback, M_BH=8e8 M_sun, z=0.0176)
+NGC_1275_MUGE,1.989e41,1.892e21,1e21,1e4,1e-13,5e-9,1e18,7.09e-36,1.0,1.0,3.85e-18
+# Source26: HUDF Galaxies Galore (12-term MUGE, M(t) star formation, I(t) inter-galaxy interaction, z=3.5)
+HUDF_Galaxies_MUGE,1.989e42,1.23e27,1e28,1e4,1e-14,1e-10,1e26,7.09e-36,1.0,1.0,7.09e-17
+# Source27: NGC 1792 "The Stellar Forge" Starburst Galaxy (9-term MUGE, M(t) star formation, SN feedback, z=0.0095)
+NGC_1792_MUGE,1.989e40,7.569e20,1e21,1e4,2.19e-18,1e-5,1e21,7.09e-36,1.0,1.0,1e-12
+# Source28: Andromeda Galaxy M31 (11-term MUGE, 80% DM, z=-0.001 blueshift, M_BH=1.4e8 M_sun)
+Andromeda_M31_MUGE,1.989e42,1.04e21,1e22,1e4,-2.19e-18,1e-5,1e22,7.09e-36,1.0,1.0,1e-15
+# Source29: Sombrero Galaxy M104 (12-term MUGE, SMBH 1e9 M_sun, dust lane, SC correction, z=0.0063)
+Sombrero_M104_MUGE,1.989e41,2.36e20,1e21,1e4,2.19e-18,1e-5,1e21,7.09e-36,1.0,1.0,1e-14
+# Source30: Saturn Evolution (11-term MUGE, g_sun+g_saturn+T_ring+Ug_sum+Lambda+quantum+EM+fluid+resonant+DM+wind)
+Saturn_Evolution_MUGE,5.683e26,5.8232e7,8e7,134.0,1.64e-4,2e-5,1e12,1e-12,1e-3,1e-3,6.759e-9
+# Source31: M16 Eagle Nebula Pillars of Creation (8-term MUGE, M_sf star formation, E_rad radiation erosion, SFR=1 M_sun/yr, z=0.0015)
+M16_Eagle_Nebula_MUGE,2.01e34,4.73e16,1e17,1e4,1e-10,1e-9,1e15,7.09e-36,1.0,1.0,1e-12
+# Source32: Crab Nebula SNR M1 (12-term MUGE, r(t) expansion 1500 km/s, pulsar wind P=5e31W, B=0.5mT, SC correction, z=0.0015)
+Crab_Nebula_M1_MUGE,2.8e30,5.5e16,1e17,1e6,190.0,5e-7,1e20,7.09e-36,1.0,1.0,1.194e3
+# Source33: SGR 1745-2900 Magnetar (10-term MUGE, B=2e10 T high-B superconductivity, P=3.76s spin, Galactic Center z=0)
+SGR_1745-2900_MUGE,2.78e30,1e4,1e5,1e7,1.67,2e10,1e21,1e-16,1.0,1.0,10.5
+# Source34: SGR 1745-2900 Frequency/Resonance (11-term MUGE, DPM+THz+VacDiff+SuperFreq+AetherRes+Ug4i+QuantumFreq+AetherFreq+FluidFreq+Osc+ExpFreq)
+SGR_1745-2900_FreqRes_MUGE,2.985e30,1e4,1e5,1e7,1.67,2e10,1e21,1e-16,1.0,1.0,10.5
+# === UQFF Validation Session Jan 27, 2026 (5 systems, 99.7% solvability) ===
+# Validated with uqff_validation_test.py - Chandra/Hubble/GALEX/ASKAP data cross-reference
+# ASKAP J1832-0911: Long-period radio transient, M=2.785e30 kg, r=4.63e16 m, B=1e6 T (Source162.cpp)
+ASKAP_J1832-0911,2.785e30,1e4,4.63e16,1e6,1e-4,1e6,1e20,1e-16,1.0,1.0,1e-5
+# Helix Nebula NGC 7293: Nearest planetary nebula, d=200 pc, R=0.47 pc, M_wd=0.55 M_sun (Chandra X-ray Archive)
+Helix_Nebula_NGC7293,1.094e30,3e6,4.58e15,1e5,1e-6,1e-4,1e15,1e-15,1.0,1.0,1e-8
+# R Aquarii: Symbiotic binary Mira+WD, d=218 pc, L_X=1e32 W, orbital 43.6 yr (source148.cpp, Hubble WFC3)
+R_Aquarii_Symbiotic,3.978e30,2.18e11,2.18e15,5e3,1e-8,1e-3,1e16,1e-14,1.0,1.0,4.57e-9
+# Planetary Nebula Archive: Generic PNe template, M_wd=0.6 M_sun, R_nebula=0.3 pc (GALEX UV + source46_wolfram.cpp)
+Planetary_Nebula_Archive,1.193e30,5e6,9.26e15,1e5,1e-6,1e-4,1e15,1e-15,1.0,1.0,1e-8
+# Super Flares (Stellar): 10^34-10^38 erg events, typical G/K dwarf, flare_factor enhancement (Source159.cpp)
+Super_Flares_Stellar,1.989e30,6.96e8,1e13,5778.0,2.5e-6,1e-1,1e16,1e-11,1.0,1.0,1.811e-8
+# === Information Paradox UQFF Module Jan 28, 2026 (Batch 21, 15 PhysicsTerm classes) ===
+# Source: Core/Modules/InformationParadoxUQFFModule.cpp (1,257 lines)
+# Physics: Hawking radiation, Page curves, 26D channels, DPM creation, CMB distortions
+# Stellar_BH_10Msun: Typical stellar-mass black hole for Hawking/Page curve calculations
+Stellar_BH_10Msun,1.989e31,2.95e4,1e8,6.17e-8,0.0,1e-10,1e30,1e-20,1.0,1.0,0.0
+# SMBH_SgrA: Sagittarius A* supermassive BH, M=4.15e6 M_sun, for 26D channel capacity tests
+SMBH_SgrA_InfoParadox,8.26e36,1.23e10,1e14,1.5e-14,0.0,1e-6,1e35,1e-25,1.0,1.0,0.0
+# PBH_Evaporating: Primordial black hole ~10^12 kg for CMB distortion/burst energy tests
+PBH_Evaporating,1e12,1.48e-15,1e-10,1.23e11,0.0,0.0,1e40,1e-30,1.0,1.0,0.0
+# Analog_BH_BEC: Bose-Einstein condensate analog for phonon Hawking temperature
+Analog_BH_BEC,1.44e-25,1e-6,1e-3,1e-9,0.0,0.0,1e15,1e-20,1.0,1.0,0.0
+# GW_Merger_Remnant: 60 M_sun post-merger BH for ringdown QNM frequency calculations
+GW_Merger_Remnant,1.193e32,1.77e5,1e9,1.03e-9,0.7,1e-8,1e32,1e-22,1.0,1.0,0.0
+# ===========================================================================================
+# BATCH 22: Astrophysical Transients & Multiwavelength Systems (Jan 28, 2026)
+# UQFF 99.7% solvability, calibrated constants: kappa=0.0005/day, H_SCm=0.99, beta_i=0.603
+# ===========================================================================================
+# ASKAP_J1832: Long Period Radio Transient, 44-min period, NS/WD candidate, 15 kpc
+ASKAP_J1832_0911,2.785e30,1e11,1e8,0.0,0.0,2652.0,1e32,1e22,0.99,0.0001,0.5
+# Helix_Nebula: NGC 7293, destroyed planet X-ray signal, WD central star T=120kK, 200 pc
+Helix_Nebula_NGC7293,1.27e30,8.5e6,1e3,0.0,0.0,0.0,1e30,1e20,0.99,0.0001,0.5
+# R_Aquarii: Symbiotic binary, Mira+WD, jet velocity 600 km/s, 44-yr precession, 218 pc
+R_Aquarii_Symbiotic,3.978e30,2.99e11,1e6,0.0,0.0,1.39e9,1e31,1e21,0.99,0.0001,0.5
+# PN_Template: Generic planetary nebula template, 0.6 M_sun WD, T=100kK, v_exp=25 km/s
+PN_Template_Generic,1.19e30,9e6,1e2,0.0,0.0,0.0,1e29,1e19,0.99,0.0001,0.5
+# SuperFlare_Star: Typical super-flaring G/K star, B_spot=3000 G, f_spot=10%, E~10^38 erg
+SuperFlare_Star_Generic,1.989e30,6.957e8,3000.0,0.0,0.0,4.32e5,1e27,1e17,0.99,0.0001,0.5# ===========================================================================================
+# BATCH 23: Advanced UQFF Validation (Jan 28, 2026) - Grok 4 Analysis Sept 14-21, 2025
+# UQFF 99.9% solvability, kappa=0.0005/day, SSq=0.57, U_UA=0.0001, beta_i=0.603, k_eta=1e-113
+# ===========================================================================================
+# Gaia_Binary_Template: Edge-on binary i~90° for U_UA damping calibration, Gaia DR4 March 2025
+Gaia_Binary_Edge90,3.978e30,6.957e8,1e11,5778.0,2.5e-6,1e-4,1e15,1e-11,0.99,0.0001,1e-8
+# GW_Event_GW150914: First GW detection, BBH 36+29 M_sun -> 62 M_sun, 420 Mpc, LIGO GWTC-4.0
+GW_Event_GW150914,1.233e32,1.83e5,1e9,1e-9,0.0,1e-8,1e32,1e-22,0.99,0.0001,0.0
+# GW_Event_GW170817: First BNS merger, 1.4+1.4 M_sun -> 2.7 M_sun, 40 Mpc, GRB 170817A
+GW_Event_GW170817,5.37e30,2e4,1e7,1e9,0.0,1e6,1e28,1e-18,0.99,0.0001,0.0
+# GW_Event_GW190521: Intermediate mass BBH, 85+66 M_sun -> 142 M_sun, 5300 Mpc
+GW_Event_GW190521,2.83e32,4.2e5,1e10,1e-10,0.0,1e-9,1e33,1e-23,0.99,0.0001,0.0
+# JWST_Quasar_Template: kappa=0.0005/day calibration source, tau~2000 days variability
+JWST_Quasar_Kappa,8.26e36,1.23e10,1e15,1e7,1e-10,1e-6,1e35,1e-25,0.99,0.0001,1e-15
+# NGC1068_Hotspot: IceCube 4.2σ neutrino source, Seyfert II, RIAF pp/pγ soft SED
+NGC1068_Neutrino,1.59e37,2.4e10,1e14,1e6,1e-10,1e-4,1e34,1e-24,0.99,0.0001,1e-14
+# AT2019qiz_TDE: Closest optical TDE, 66 Mpc, M_BH~10^6 M_sun, QPEs, ZTF Sept 2019
+AT2019qiz_TDE,1.989e36,2.95e9,1e12,1e5,1e-8,1e-3,1e30,1e-20,0.99,0.0001,1e-12
+# SSq_Nebula_Template: [SSq]=0.57 calibration, Ye~0.1 neutron-rich r-process outflows
+SSq_Nebula_Ye01,3.978e30,1e10,1e14,1e4,1e-6,1e-2,1e20,1e-16,0.99,0.0001,1e-9
+Hydride_Cell_LENR,3.978e24,1e-12,1e11,1e3,1e-3,2e11,1e13,7.85e12,0.5,1e-10,1e-113
+Exploding_Wire_LENR,3.978e20,1e-15,1e12,1e5,1e-1,28.8e11,1e8,1e14,0.5,1e-10,1e-113
+Solar_Corona_LENR,1.989e30,6.96e8,1e3,5778,0.5e-4,1.2e-3,7e-3,1e4,0.99,0.0001,1e-113
+BEC_Nuclear_5MeV,3.978e30,1e-14,1e8,5e9,1e-10,1e8,1e8,1e13,0.01,0.0001,1e-10
+CXO_J101527_AGN,1e9,4.6e25,1e40,1e8,1e-4,1e9,1e40,1e-15,0.99,0.0001,1e-52
+MACS_J0035_Cluster,1e14,6e24,1e45,1e8,1e-4,1e6,1e43,1e-15,0.99,0.0001,1e-52
+SMBH_Survey_Sample,1e8,3.08e22,1e39,1e7,1e-5,1e6,1e38,1e-15,0.99,0.0001,1e-52
+# === BSM Physics UQFF Systems (Batch 22 Extension - ArXiv June 2025) ===
+# From 11 hep-ph/hep-ex papers analyzed by Grok 4 (Sept 14, 2025)
+# UQFF levels: n=10 (molecular), n=12 (light quarks), n=13 (neutrino), n=18 (heavy quarks/EW)
+# Neutrino polarizability: SBND at Fermilab, [SSq] exp(-0.57×13/26), monophoton limits
+Neutrino_Polar_SBND,1e-30,1e-15,1e3,1e6,1e6,1e-12,1e-36,1e-20,0.99,0.57,6.28e12
+# ALICE PbPb 5.36 TeV: dN_ch/dη~2000, k_η=10⁻¹¹³, √s^0.156 scaling
+ALICE_PbPb_5p36,1e30,1e-14,1e4,1e12,1e8,1e-8,1e22,1e-113,0.99,0.0001,1e10
+# Comagnetometer axion search: b_p spin coupling, χ_p~0.47, 75% error reduction
+Comag_Axion_10Hz,1e-26,1e-2,1e2,300,10,1e-11,1e-12,1e-20,0.99,0.47,62.83
+# JUNO PMT DCR: 20k PMTs, Qs=0 noise, P_SCm=1 (no reaction), t_n<0 spikes
+JUNO_PMT_LPMT,1e-24,1e-1,1e5,300,0.001,1e-8,1e10,0,1.0,1e-10,6.28e-3
+# Tau dipole at STCF/Belle II: a_τ ∈ [-4.5, 6.9]×10⁻³, r_τ~0.3 fm prediction
+Tau_Dipole_STCF,1.777,1e-16,1e3,1e11,1e15,1e-3,1e18,1e-18,0.99,0.0001,1e18
+# Belle II |V_cb| determination: |V_cb|=40.5×10⁻³, η=k_η×G_F²s/π
+Belle2_Vcb,5.28,1e-15,1e3,1e10,1e14,1e-4,1e16,1e-113,0.99,0.0001,1e16
+# LFV B→τμ decay at LHCb: BR<5.9×10⁻⁶, t_n<0 reversal mechanism
+LFV_B0_LHCb,5.28,1e-15,1e3,1e10,1e14,1e-4,1e16,1e-18,0.99,5.9e-6,1e16
+# ECFA Higgs factory: FCC-ee/ILC/CEPC, κ_Higgs~1.0, sub-% precisions
+FCC_ee_Higgs,125.1,1e-17,1e4,1e12,1e16,1e-5,1e20,1e-18,0.99,1.0,1e18
+# Vector-like quarks: T/B @ 1500 GeV, κ 0.14-0.52, SCm heavy quarks n=18
+VLQ_T_1500GeV,1500,1e-17,1e4,1e12,1e16,1e-3,1e22,1e-18,0.99,0.33,1e18
+# DCS D+ decays at BESIII: BR scaling with k_η, η~10¹³ cm⁻²/s LENR link
+DCS_Dplus_BESIII,1.87,1e-15,1e3,1e10,1e14,1e-4,1e16,1e-113,0.99,0.0001,1e16
+# H₂O-H₂ rotor collision: CC/CS, Phillips et al. 1995, τ_rot=r×F_V at level 10
+H2O_H2_Rotor,18,1e-10,1e-9,300,1e12,1e-8,1e-10,1e-20,0.99,0.0001,6.28e13

@@ -1,0 +1,40 @@
+# UQFFModule15_SgrA_SelfExpanding State Export
+# Version: 2.0-SelfExpanding
+# Timestamp: Thu Jan 22 19:32:36 2026
+
+[PARAMETERS]
+B0_G=1.0000000000e+04
+G=6.6743000000e-11
+M_initial=8.5523560000e+36
+accretion_rate=2.0000000000e-02
+hbar=1.0545718170e-34
+jet_power=1.0000000000e+37
+precession_deg=3.0000000000e+01
+r=1.2700000000e+10
+rho_fluid=1.0000000000e+17
+spin_factor=3.0000000000e-01
+ug1_base=3.5390284364e+06
+
+[METADATA]
+created=Thu Jan 22 19:32:36 2026
+enhanced=true
+last_param_created=jet_power
+last_simulation=Thu Jan 22 19:32:36 2026
+last_term_added=DarkMatterHalo
+mass=4.3 million solar masses
+object=Sagittarius A* SMBH
+physics_terms=12 MUGE + dynamic
+simulation_steps=10
+version=2.0-SelfExpanding
+
+[DYNAMIC_TERMS]
+MassAccretion:
+FrameDragging:
+DynamicVacuum:1e-08,1e-12,0
+DarkMatterHalo:
+
+[SETTINGS]
+learningRate=1.0000000000e-03
+enableDynamicTerms=1
+enableLogging=1
+enableAutoOptimize=0

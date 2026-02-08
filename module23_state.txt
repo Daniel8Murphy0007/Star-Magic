@@ -1,0 +1,20 @@
+# UQFFModule23 State Export - Antennae Galaxies NGC 4038/4039
+# Timestamp: January 2026
+
+[Core Parameters]
+M0=3.977840e+41
+r=2.838300e+20
+z=1.050000e-02
+Hz=2.279113e-18
+tau_SF=3.156000e+15
+tau_merger=1.262400e+16
+I0=1.000000e-01
+SFR_factor=1.000000e-10
+ug1_base=3.295615e-10
+
+[Dynamic Parameters]
+interaction_modifier=1.000000e+00
+sfr_modifier=1.000000e+00
+
+[Logging]
+enabled=true

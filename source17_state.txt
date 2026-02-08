@@ -1,0 +1,13 @@
+# UQFFModule17 State Export
+# Westerlund 2 Super Star Cluster MUGE Calculator
+M_dot_factor=3.333333e+00
+t_evolution=3.156000e+13
+tau_SF_Myr=2.000000e+00
+v_wind=2.000000e+06
+M_initial=5.966760e+34
+M_sun=3.000000e+04
+r=9.461000e+16
+r_ly=1.000000e+01
+B=1.000000e-05
+tau_SF=6.312000e+13
+v_wind=2.000000e+06

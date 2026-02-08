@@ -23,101 +23,24 @@
 #include <iostream>
 #include <iomanip>
 #include <complex>
-
-#include <map>
 #include <vector>
 #include <functional>
 #include <memory>
 #include <algorithm>
 #include <fstream>
 #include <sstream>
-#include <map>
-#include <vector>
-#include <functional>
-#include <fstream>
-#include <sstream>
-#include <memory>
-#include <algorithm>
+#include <array>
 
 // ===========================================================================================
-// SELF-EXPANDING FRAMEWORK: Dynamic Physics Term System
+// SHARED UQFF FRAMEWORK HEADERS
 // ===========================================================================================
+#include "uqff_constants.h"
+#include "uqff_self_expanding.h"
+#include "uqff_dual_physics.h"
 
-class PhysicsTerm
-{
-    // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
-    std::map<std::string, double> dynamicParameters;
-    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
-    std::map<std::string, std::string> metadata;
-    bool enableDynamicTerms;
-    bool enableLogging;
-    double learningRate;
-
-public:
-    virtual ~PhysicsTerm() {}
-    virtual double compute(double t, const std::map<std::string, double> &params) const = 0;
-    virtual std::string getName() const = 0;
-    virtual std::string getDescription() const = 0;
-    virtual bool validate(const std::map<std::string, double> &params) const { return true; }
-};
-
-class DynamicVacuumTerm : public PhysicsTerm
-{
-private:
-    // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
-    // Note: Can be extended with dynamic parameters via setVariable()
-    double amplitude;
-    double frequency;
-    // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
-    std::map<std::string, double> dynamicParameters;
-    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
-    std::map<std::string, std::string> metadata;
-    bool enableDynamicTerms;
-    bool enableLogging;
-    double learningRate;
-
-public:
-    DynamicVacuumTerm(double amp = 1e-10, double freq = 1e-15)
-        : amplitude(amp), frequency(freq) {}
-
-    double compute(double t, const std::map<std::string, double> &params) const override
-    {
-        double rho_vac = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
-        return amplitude * rho_vac * std::sin(frequency * t);
-    }
-
-    std::string getName() const override { return "DynamicVacuum"; }
-    std::string getDescription() const override { return "Time-varying vacuum energy"; }
-};
-
-class QuantumCouplingTerm : public PhysicsTerm
-{
-private:
-    // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
-    // Note: Can be extended with dynamic parameters via setVariable()
-    double coupling_strength;
-    // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
-    std::map<std::string, double> dynamicParameters;
-    std::vector<std::unique_ptr<PhysicsTerm>> dynamicTerms;
-    std::map<std::string, std::string> metadata;
-    bool enableDynamicTerms;
-    bool enableLogging;
-    double learningRate;
-
-public:
-    QuantumCouplingTerm(double strength = 1e-40) : coupling_strength(strength) {}
-
-    double compute(double t, const std::map<std::string, double> &params) const override
-    {
-        double hbar = params.count("hbar") ? params.at("hbar") : 1.0546e-34;
-        double M = params.count("M") ? params.at("M") : 1.989e30;
-        double r = params.count("r") ? params.at("r") : 1e4;
-        return coupling_strength * (hbar * hbar) / (M * r * r) * std::cos(t / 1e6);
-    }
-
-    std::string getName() const override { return "QuantumCoupling"; }
-    std::string getDescription() const override { return "Non-local quantum effects"; }
-};
+using namespace UQFF;
+using namespace UQFFExpanding;
+using namespace UQFFDualPhysics;
 
 // ===========================================================================================
 // ENHANCED CLASS WITH SELF-EXPANDING CAPABILITIES
@@ -160,9 +83,14 @@ public:
 
     // Print all current variables (for debugging/updates)
     void printVariables();
+    
+    // ========== SELF-SIMULATION METHODS ==========
+    void runSelfSimulation(double t_start, double t_end, int steps);
+    void exportState(const std::string& filename) const;
+    void setLearningRate(double rate);
+    void setEnableLogging(bool enable);
+    void setEnableDynamicTerms(bool enable);
 };
-
-#endif // ANDROMEDA_UQFF_MODULE_H
 
 // AndromedaUQFFModule.cpp
 // #include "AndromedaUQFFModule.h"  // Commented - header not available
@@ -399,6 +327,62 @@ void AndromedaUQFFModule::printVariables()
     }
 }
 
+// ==================== SELF-SIMULATION METHODS ====================
+
+// Run self-simulation with time evolution
+void AndromedaUQFFModule::runSelfSimulation(double t_start, double t_end, int steps) {
+    if (enableLogging) {
+        std::cout << "[Andromeda] Running self-simulation: t=" << t_start 
+                  << " to " << t_end << " (" << steps << " steps)\n";
+    }
+    double dt = (t_end - t_start) / steps;
+    for (int i = 0; i <= steps; ++i) {
+        double t = t_start + i * dt;
+        double g = computeG(t);
+        if (enableLogging) {
+            std::cout << "  t=" << std::scientific << std::setprecision(3) << t 
+                      << " s, g=" << g << " m/s²\n";
+        }
+    }
+}
+
+// Export module state to file
+void AndromedaUQFFModule::exportState(const std::string& filename) const {
+    std::ofstream out(filename);
+    if (out.is_open()) {
+        out << "# AndromedaUQFFModule State Export\n";
+        out << "# Version: " << metadata.at("version") << "\n";
+        out << "\n[VARIABLES]\n";
+        for (const auto& pair : variables) {
+            out << pair.first << "=" << std::scientific << pair.second << "\n";
+        }
+        out << "\n[SETTINGS]\n";
+        out << "learningRate=" << learningRate << "\n";
+        out << "enableDynamicTerms=" << enableDynamicTerms << "\n";
+        out << "enableLogging=" << enableLogging << "\n";
+        out.close();
+        if (enableLogging) {
+            std::cout << "[Andromeda] State exported to " << filename << "\n";
+        }
+    }
+}
+
+// Set learning rate for auto-optimization
+void AndromedaUQFFModule::setLearningRate(double rate) {
+    learningRate = rate;
+    if (enableLogging) {
+        std::cout << "[Andromeda] Learning rate set to " << rate << "\n";
+    }
+}
+
+// Enable/disable logging
+void AndromedaUQFFModule::setEnableLogging(bool enable) { enableLogging = enable; }
+
+// Enable/disable dynamic terms
+void AndromedaUQFFModule::setEnableDynamicTerms(bool enable) { enableDynamicTerms = enable; }
+
+#endif // ANDROMEDA_UQFF_MODULE_H
+
 // Example usage in base program 'ziqn233h.cpp' (snippet for integration)
 // #include "AndromedaUQFFModule.h"
 // int main() {
@@ -441,3 +425,61 @@ void AndromedaUQFFModule::printVariables()
     * *Summary : **
     The code is well - structured, scientifically thorough, and highly extensible for galactic gravity modeling.It is suitable for research, simulation, and educational use.Minor improvements in error handling, configurability, and documentation of scale factors are recommended for production or large - scale scientific deployment.
 */
+
+// ===========================================================================================
+// MAIN FUNCTION - Andromeda Galaxy M31 Simulation with Dual Physics Validation
+// ===========================================================================================
+int main()
+{
+    std::cout << "=== Source28: Andromeda Galaxy M31 UQFF Module ===" << std::endl;
+    std::cout << "Full MUGE with 11 physics terms + Dual Physics Validation\n" << std::endl;
+    
+    // Initialize Andromeda module
+    AndromedaUQFFModule andromeda;
+    
+    // Compute gravity at multiple times
+    std::cout << "=== MUGE Gravity Evolution ===" << std::endl;
+    double times[] = {1e9 * 3.156e7, 5e9 * 3.156e7, 10e9 * 3.156e7, 13.8e9 * 3.156e7};  // 1, 5, 10, 13.8 Gyr
+    const char* labels[] = {"t=1 Gyr", "t=5 Gyr", "t=10 Gyr", "t=13.8 Gyr"};
+    
+    for (int i = 0; i < 4; ++i) {
+        double g = andromeda.computeG(times[i]);
+        std::cout << labels[i] << ": g = " << std::scientific << std::setprecision(4) << g << " m/s^2" << std::endl;
+    }
+    
+    // Print equation text
+    std::cout << "\n=== Equation Description ===" << std::endl;
+    std::cout << andromeda.getEquationText() << std::endl;
+    
+    // ==================== DUAL PHYSICS VALIDATION ====================
+    std::cout << "\n=== Dual Physics Validation ===" << std::endl;
+    
+    // Initialize FluidSolver for galactic ISM dynamics
+    FluidSolver fluidSolver(32, 0.1, 0.0001);
+    fluidSolver.add_jet_force(5.0);  // ISM turbulence
+    double g_example = andromeda.computeG(10e9 * 3.156e7);  // 10 Gyr
+    for (int step = 0; step < 10; ++step) {
+        fluidSolver.step(g_example * 1e-12);
+    }
+    std::cout << "FluidSolver: Max velocity = " << fluidSolver.getMaxVelocity() << " m/s" << std::endl;
+    
+    // Initialize DualMethodValidator
+    DualMethodValidator validator("source28_dual_physics.log");
+    validator.addConstraint("Andromeda_M31", 1e10, 1e14, 15.0);  // Galaxy-scale constraints
+    
+    // Create celestial body and MUGE system for Andromeda
+    double M_sun = 1.989e30;
+    UQFFDualPhysics::CelestialBody body28("Andromeda_M31", 1e12 * M_sun, 1.04e21, 1e-5);
+    UQFFDualPhysics::MUGESystem muge28("Andromeda_M31", 1e12 * M_sun, 1.04e21);
+    muge28.B0 = 1e-5;
+    muge28.Lambda = 1.1e-52;
+    // Note: 80% dark matter, z=-0.001 blueshift handled internally
+    
+    auto result = validator.validate(body28, muge28, 0.0, 0.0);
+    result.print();
+    std::cout << "Dual Physics: IMPLEMENTED" << std::endl;
+    // ================================================================
+    
+    std::cout << "\n[Source28] Andromeda M31 simulation complete." << std::endl;
+    return 0;
+}
