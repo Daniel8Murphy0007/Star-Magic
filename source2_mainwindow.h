@@ -14,6 +14,8 @@
 #include <QIcon>
 #include <QUrl>
 #include <QWidget>
+#include <QProcess>
+#include "UQFFResultsWidget.h"
 
 #ifdef _WIN32
 #include <windows.h>
@@ -33,8 +35,14 @@ public:
     MainWindow();
     ~MainWindow();
 
+private slots:
+    // UQFF Physics Integration
+    void computeUQFF(const QString& systemName);
+    void parseAndDisplayUQFFResults(const QString& jsonStr);
+
 private:
     BrowserWindow **browserWindows;
+    UQFFResultsWidget* uqffResultsWidget;
 };
 
 #endif // SOURCE2_MAINWINDOW_H

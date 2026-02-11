@@ -461,7 +461,7 @@ endif()
 #   vcpkg install curl:x64-windows sqlite3:x64-windows
 #   vcpkg install aws-sdk-cpp[cognito-idp,s3]:x64-windows
 if(Qt6_FOUND)
-    add_executable(Source2 source2.cpp source2_mainwindow.h)
+    add_executable(Source2 source2.cpp source2_mainwindow.h UQFFResultsWidget.h)
     
     # Enable Qt AUTOMOC/AUTOUIC/AUTORCC for Source2 (Q_OBJECT in header file)
     set_target_properties(Source2 PROPERTIES 
@@ -516,22 +516,95 @@ if(Qt6_FOUND)
         target_compile_definitions(Source2 PRIVATE NO_OPENCV)
     endif()
     
-    # AWS SDK (conditional) - DISABLED: CRT mismatch with vcpkg build
-    # TODO: Re-enable after fixing iostream symbol conflicts
+    # CRITICAL: Ensure consistent MSVC runtime library for all dependencies
+    # This prevents LNK2001 iostream/STL symbol conflicts
+    set_target_properties(Source2 PROPERTIES 
+        MSVC_RUNTIME_LIBRARY "MultiThreadedDLL$<$<CONFIG:Debug>:Debug>"
+    )
+    
+    # Explicit linker flags for MSVC runtime (prevents CRT mismatch)
+    if(MSVC)
+        target_link_options(Source2 PRIVATE 
+            $<$<CONFIG:Release>:/NODEFAULTLIB:LIBCMT>     # Exclude static CRT
+            $<$<CONFIG:Release>:/NODEFAULTLIB:LIBCMTD>    # Exclude static debug CRT
+            $<$<CONFIG:Debug>:/NODEFAULTLIB:LIBCMT>
+            $<$<CONFIG:Debug>:/NODEFAULTLIB:MSVCRT>       # Exclude release CRT in debug
+        )
+        # Explicitly link MSVC dynamic runtime
+        target_link_libraries(Source2 PRIVATE 
+            $<$<CONFIG:Release>:msvcrt.lib>
+            $<$<CONFIG:Debug>:msvcrtd.lib>
+        )
+    endif()
+    
+    # AWS SDK - TEMPORARILY DISABLED for CRT debugging
+    # TODO: Re-enable after resolving iostream symbol conflicts
+    target_compile_definitions(Source2 PRIVATE NO_AWS)
+    message(STATUS "Source2: AWS SDK temporarily disabled (CRT debugging)")
+    
+    # # AWS SDK (conditional) - RE-ENABLED with proper CRT configuration
+    # # Solution: Ensure consistent /MD runtime and proper link order
     # if(AWSSDK_FOUND)
+    #     # Link AWS SDK libraries in correct order (dependencies first)
     #     target_link_libraries(Source2 PRIVATE 
-    #         ${AWSSDK_LINK_LIBRARIES}
-    #         aws-cpp-sdk-core
-    #         aws-cpp-sdk-cognito-idp 
     #         aws-cpp-sdk-s3
+    #         aws-cpp-sdk-cognito-idp
+    #         aws-cpp-sdk-core
+    #         ${AWSSDK_LINK_LIBRARIES}
     #     )
+    #     # Add AWS SDK include directories
+    #     if(AWSSDK_INCLUDE_DIRS)
+    #         target_include_directories(Source2 PRIVATE ${AWSSDK_INCLUDE_DIRS})
+    #     endif()
+    #     message(STATUS "Source2: AWS SDK enabled (S3 + Cognito)")
     # else()
     #     target_compile_definitions(Source2 PRIVATE NO_AWS)
+    #     message(STATUS "Source2: AWS SDK disabled (not found)")
     # endif()
-    target_compile_definitions(Source2 PRIVATE NO_AWS)
     
-    # Always disable Python, Qalculate, and PocketSphinx for now (complex dependencies not installed)
-    target_compile_definitions(Source2 PRIVATE NO_PYTHON NO_QALCULATE NO_POCKETSPHINX)
+    # Python (pybind11) - Disabled temporarily due to compilation conflicts
+    # TODO: Fix pybind11 integration conflicts with Qt/AWS SDK
+    target_compile_definitions(Source2 PRIVATE NO_PYTHON)
+    
+    # Qalculate and PocketSphinx - Not installed, always disabled
+    target_compile_definitions(Source2 PRIVATE NO_QALCULATE NO_POCKETSPHINX)
+    
+    # Post-build: Deploy Python wrappers and OpenSSL DLLs
+    if(WIN32)
+        add_custom_command(TARGET Source2 POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E echo "Deploying Python wrappers and dependencies for Source2..."
+            # Copy Python wrappers (UQFF, Symbolic Math, API Fetch)
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/CoAnQi_Wrapper.py"
+                "$<TARGET_FILE_DIR:Source2>/CoAnQi_Wrapper.py"
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/SymbolicMath_Wrapper.py"
+                "$<TARGET_FILE_DIR:Source2>/SymbolicMath_Wrapper.py"
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/APIFetch.py"
+                "$<TARGET_FILE_DIR:Source2>/APIFetch.py"
+            # Copy OpenSSL DLLs (required for MAIN_1_CoAnQi.exe Grok integration)
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "C:/Program Files/OpenSSL-Win64/bin/libssl-3-x64.dll"
+                "C:/Program Files/OpenSSL-Win64/bin/libcrypto-3-x64.dll"
+                "$<TARGET_FILE_DIR:Source2>/"
+            # Copy Visual C++ Runtime DLLs (required for MAIN_1_CoAnQi.exe)
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "C:/Windows/System32/vcruntime140.dll"
+                "C:/Windows/System32/vcruntime140_1.dll"
+                "C:/Windows/System32/msvcp140.dll"
+                "C:/Windows/System32/msvcp140_1.dll"
+                "C:/Windows/System32/msvcp140_2.dll"
+                "C:/Windows/System32/concrt140.dll"
+                "$<TARGET_FILE_DIR:Source2>/"
+            # Copy Wolfram WSTP DLL (required for MAIN_1_CoAnQi.exe physics calculations)
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "C:/Program Files/Wolfram Research/Wolfram Engine/14.3/SystemFiles/Links/WSTP/DeveloperKit/Windows-x86-64/SystemAdditions/wstp64i4.dll"
+                "$<TARGET_FILE_DIR:Source2>/"
+            COMMAND ${CMAKE_COMMAND} -E echo "✅ Python wrappers + OpenSSL + VC++ Runtime + WSTP DLLs deployed"
+            COMMENT "Deploying Python wrappers, OpenSSL, VC++ Runtime, and Wolfram WSTP for cross-platform integration"
+        )
+    endif()
     
     message(STATUS "Source2 (HEAD PROGRAM) build target ENABLED")
 else()

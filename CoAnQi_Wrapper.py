@@ -79,15 +79,34 @@ class CoAnQiCalculator:
         Raises:
             FileNotFoundError: If C++ calculator executable not found
         """
-        self.exe_path = Path(exe_path)
+        # Try multiple locations for MAIN_1_CoAnQi.exe (cross-platform support)
+        # 1. Same directory as wrapper (deployed with Source2.exe)
+        # 2. Default relative path from repo root
+        # 3. User-specified path
+        
+        script_dir = Path(__file__).parent
+        search_paths = [
+            Path(exe_path),  # User-specified or default
+            script_dir / "MAIN_1_CoAnQi.exe",  # Same directory as wrapper
+            script_dir / "../build_msvc/Release/MAIN_1_CoAnQi.exe",  # Relative from wrapper in Release
+        ]
+        
+        found_path = None
+        for path in search_paths:
+            if path.exists():
+                found_path = path
+                break
+        
+        if found_path is None:
+            raise FileNotFoundError(
+                f"C++ calculator not found in any of these locations:\n" +
+                "\n".join(f"  - {p}" for p in search_paths) +
+                f"\n\nBuild it first with: cmake --build build_msvc --config Release"
+            )
+        
+        self.exe_path = found_path
         self.timeout = timeout
         self.verbose = verbose
-        
-        if not self.exe_path.exists():
-            raise FileNotFoundError(
-                f"C++ calculator not found: {exe_path}\n"
-                f"Build it first with: cmake --build build_msvc --config Release"
-            )
         
         if self.verbose:
             print(f"[CoAnQi_Wrapper] Initialized with exe: {self.exe_path}")
