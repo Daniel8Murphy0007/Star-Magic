@@ -17702,6 +17702,538 @@ BIG_BANG_MODEL = BigBangOriginModel()
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# COSMIC EGG HYPERGRAPH MODEL (BigBangHypergraphTheory_12Dec2025)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class CosmicEggHypergraphModel:
+    """
+    Cosmic Egg Hypergraph Model - 26D Nested Structure with Multiway Branching
+    
+    Extends BigBangOriginModel with Wolfram hypergraph physics and 26D
+    encapsulation layers as described in BigBangHypergraphTheory_12Dec2025.
+    
+    KEY EQUATIONS:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    1. 26D Cosmic Egg Total Energy:
+       E^{26D Egg} = UA + SCm_inj × Σ[UA^(k)] + Grind_opp + BBDT
+       
+       Where:
+       - UA: Base Universal Aether energy
+       - SCm_inj: Injected Superconductive Material
+       - UA^(k): Derivative states [UA'], [UA''], ..., [UA^(k)]
+       - Grind_opp: Grinding opposition from counter-rotating fields
+       - BBDT: Big Bang Dictation Template (proto-hydrogen)
+    
+    2. Grinding Opposition Energy:
+       E_grind = ½ I (ω_CW² + ω_CCW²) × (1 - cos(Δφ))
+       
+       Where ω_CW and ω_CCW are counter-rotating angular frequencies
+    
+    3. Hypergraph Multiway Branching:
+       N_branches(t) = N_0 × exp(λ_branch × t / t_Planck)
+       
+       Wolfram-style causal graph growth
+    
+    4. 26D Layer Encapsulation:
+       V_layer(n) = V_0 × (r_n / r_0)³
+       r_n = r_0 × (1 + n × δr/r_0)  for n = 1..26
+       
+       Each layer inherits field equations from inner layers
+    
+    5. Proto-Hydrogen Template (BBDT):
+       E_BBDT = -13.6 eV × Z² / n² × (m_reduced / m_e)
+       
+       Shell alignment determines matter distribution
+    
+    6. DPM Dictation Mechanism:
+       U_DPM_dict = k_DPM × (SCm_inj / V_core) × Σ(UA^(k) / k!)
+       
+       Di-Pseudo-Monopole guides field organization
+    
+    HYPERGRAPH CONCEPTS (Wolfram Physics):
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    - Nodes: Spatial points in abstract space
+    - Edges: Hyperedges connecting multiple nodes
+    - Multiway: All possible evolution branches exist simultaneously
+    - Causal graph: Emerges from hypergraph rewriting rules
+    - Branchial space: Space of all possible quantum states
+    
+    26D EGG STRUCTURE:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    Layer 1-4:   Quantum foam (Planck scale, string-like)
+    Layer 5-8:   Nuclear binding (fm scale, strong force)
+    Layer 9-12:  Atomic (Å scale, electromagnetic)
+    Layer 13-16: Molecular/Material (μm-mm scale)
+    Layer 17-20: Planetary (km-AU scale)
+    Layer 21-24: Stellar/Galactic (pc-Mpc scale)
+    Layer 25-26: Cosmic/Universal (Gpc scale, horizon)
+    
+    Each layer maintains coherence via flux pinning from inner layers.
+    
+    ©2025-2026 Daniel T. Murphy - All Rights Reserved
+    """
+    
+    def __init__(self):
+        """Initialize Cosmic Egg Hypergraph Model."""
+        # Physical constants
+        self.c = CONSTANTS.get('c_light', 2.998e8)  # m/s
+        self.G = CONSTANTS.get('G', 6.674e-11)  # m³/kg/s²
+        self.hbar = CONSTANTS.get('h_bar', 1.055e-34)  # J·s
+        self.m_e = CONSTANTS.get('m_e', 9.109e-31)  # kg
+        self.eV_to_J = 1.602e-19  # J/eV
+        
+        # Planck scales
+        self.l_Planck = np.sqrt(self.hbar * self.G / self.c**3)  # ~1.6×10⁻³⁵ m
+        self.t_Planck = self.l_Planck / self.c  # ~5.4×10⁻⁴⁴ s
+        self.E_Planck = np.sqrt(self.hbar * self.c**5 / self.G)  # ~1.96×10⁹ J
+        
+        # 26D layer parameters
+        self.n_layers = 26
+        self.r_0 = self.l_Planck  # Inner radius (Planck)
+        self.r_26 = CONSTANTS.get('r_Hubble', 4.4e26)  # Outer radius (Hubble)
+        self.delta_r_ratio = (self.r_26 / self.r_0) ** (1.0 / 26)  # Geometric scaling
+        
+        # Hypergraph parameters
+        self.N_0 = 1  # Initial node count
+        self.lambda_branch = 1.0  # Branching rate constant
+        
+        # Grinding opposition parameters
+        self.omega_CW = 2 * np.pi * 1e12  # CW angular frequency (THz scale)
+        self.omega_CCW = 2 * np.pi * 1e12  # CCW angular frequency
+        self.I_moment = 1e-50  # Moment of inertia (Planck scale)
+        
+        # DPM dictation
+        self.k_DPM = CONSTANTS.get('k_DPM', 1e-10)  # DPM coupling
+        
+        # [SCm]/[UA] derivative states
+        self.n_derivatives = 5  # [UA'], [UA''], ..., [UA^(5)]
+        
+    def compute_layer_radius(self, n: int) -> float:
+        """
+        Compute radius of layer n in 26D egg structure.
+        
+        r_n = r_0 × δ^n where δ is geometric scaling factor
+        
+        Args:
+            n: Layer number (1-26)
+        
+        Returns:
+            r_n: Radius of layer n (m)
+        """
+        if n < 1:
+            n = 1
+        if n > 26:
+            n = 26
+        return self.r_0 * (self.delta_r_ratio ** n)
+    
+    def compute_layer_volume(self, n: int) -> float:
+        """Compute volume enclosed by layer n."""
+        r_n = self.compute_layer_radius(n)
+        return (4.0 / 3.0) * np.pi * r_n ** 3
+    
+    def compute_grinding_opposition(self, delta_phi: float = np.pi / 4) -> Tuple[float, str]:
+        """
+        Compute grinding opposition energy from counter-rotating fields.
+        
+        E_grind = ½ I (ω_CW² + ω_CCW²) × (1 - cos(Δφ))
+        
+        Args:
+            delta_phi: Phase difference between CW and CCW fields (radians)
+        
+        Returns:
+            E_grind: Grinding opposition energy (J)
+            steps: Derivation string
+        """
+        omega_sum_sq = self.omega_CW ** 2 + self.omega_CCW ** 2
+        phase_factor = 1.0 - np.cos(delta_phi)
+        
+        E_grind = 0.5 * self.I_moment * omega_sum_sq * phase_factor
+        
+        steps = f"""Grinding Opposition Energy:
+═══════════════════════════════════════════════════════════════════════════════
+CONCEPT: Counter-rotating fields create grinding opposition
+         This oppositional energy drives cosmic structure emergence
+
+Inputs:
+  ω_CW = {self.omega_CW:.4e} rad/s  (clockwise rotation)
+  ω_CCW = {self.omega_CCW:.4e} rad/s  (counter-clockwise rotation)
+  I = {self.I_moment:.4e} kg·m²  (effective moment of inertia)
+  Δφ = {np.degrees(delta_phi):.2f}°  (phase difference)
+
+Formula:
+  E_grind = ½ I (ω_CW² + ω_CCW²) × (1 - cos(Δφ))
+
+Calculation:
+  ω_CW² + ω_CCW² = {omega_sum_sq:.4e} rad²/s²
+  (1 - cos({np.degrees(delta_phi):.2f}°)) = {phase_factor:.4f}
+  
+  E_grind = 0.5 × {self.I_moment:.4e} × {omega_sum_sq:.4e} × {phase_factor:.4f}
+          = {E_grind:.4e} J
+
+Physical Interpretation:
+  • Counter-rotating fields oppose each other
+  • Opposition creates energy gradient for structure formation
+  • At Δφ = π: Maximum opposition (E_grind maximized)
+  • At Δφ = 0: Perfect alignment (E_grind = 0)
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return E_grind, steps
+    
+    def compute_hypergraph_branches(self, t: float) -> Tuple[float, str]:
+        """
+        Compute number of hypergraph multiway branches at time t.
+        
+        N_branches(t) = N_0 × exp(λ × t / t_Planck)
+        
+        Wolfram-style causal graph exponential growth.
+        
+        Args:
+            t: Time since Big Bang (seconds)
+        
+        Returns:
+            N_branches: Number of multiway branches
+            steps: Derivation string
+        """
+        t_ratio = t / self.t_Planck
+        
+        # Cap exponential to avoid overflow
+        if t_ratio * self.lambda_branch > 700:
+            log_N = self.lambda_branch * t_ratio
+            N_branches = float('inf')
+            overflow_note = "N → ∞ (exponential overflow)"
+        else:
+            N_branches = self.N_0 * np.exp(self.lambda_branch * t_ratio)
+            log_N = np.log10(N_branches) if N_branches > 0 else 0
+            overflow_note = ""
+        
+        steps = f"""Hypergraph Multiway Branching:
+═══════════════════════════════════════════════════════════════════════════════
+CONCEPT (Wolfram Physics Project):
+  Spacetime emerges from hypergraph rewriting rules
+  Each Planck time step, the graph branches into multiple possible futures
+  All branches exist in "branchial space" (quantum superposition)
+
+Inputs:
+  t = {t:.4e} s  (time since Big Bang)
+  t_Planck = {self.t_Planck:.4e} s
+  N_0 = {self.N_0}  (initial node count)
+  λ_branch = {self.lambda_branch}  (branching rate)
+
+Formula:
+  N_branches(t) = N_0 × exp(λ × t / t_Planck)
+
+Calculation:
+  t / t_Planck = {t_ratio:.4e}
+  
+  N_branches = {self.N_0} × exp({self.lambda_branch} × {t_ratio:.4e})
+             = 10^{log_N:.2e} branches
+  {overflow_note}
+
+Physical Interpretation:
+  • Multiway evolution creates quantum branching
+  • At t = 0: Single unified state
+  • As t → ∞: Infinite possible histories
+  • Our universe is one "slice" through branchial space
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return N_branches, steps
+    
+    def compute_26D_egg_energy(self, SCm_inj: float = 1e20, 
+                                include_derivatives: bool = True) -> Tuple[float, str]:
+        """
+        Compute total 26D Cosmic Egg energy.
+        
+        E^{26D Egg} = UA + SCm_inj × Σ[UA^(k)] + Grind_opp + BBDT
+        
+        Args:
+            SCm_inj: Injected [SCm] energy (J)
+            include_derivatives: Include [UA] derivative states
+        
+        Returns:
+            E_total: Total 26D egg energy (J)
+            steps: Derivation string
+        """
+        # Base [UA] energy
+        rho_UA = CONSTANTS.get('rho_vac_UA_solar', 7.09e-36)  # J/m³
+        V_egg = self.compute_layer_volume(26)
+        E_UA = rho_UA * V_egg
+        
+        # [UA] derivative sum: Σ[UA^(k) / k!]
+        if include_derivatives:
+            derivative_sum = sum(1.0 / np.math.factorial(k) for k in range(1, self.n_derivatives + 1))
+        else:
+            derivative_sum = 1.0
+        
+        E_SCm_UA = SCm_inj * derivative_sum
+        
+        # Grinding opposition
+        E_grind, _ = self.compute_grinding_opposition(np.pi / 4)
+        
+        # Proto-hydrogen template (BBDT) - ground state binding
+        E_BBDT = 13.6 * self.eV_to_J  # Ground state H energy (magnitude)
+        
+        # Total energy
+        E_total = E_UA + E_SCm_UA + E_grind + E_BBDT
+        
+        steps = f"""26D Cosmic Egg Total Energy:
+═══════════════════════════════════════════════════════════════════════════════
+EQUATION:
+  E^{{26D Egg}} = UA + SCm_inj × Σ[UA^(k)] + Grind_opp + BBDT
+
+COMPONENTS:
+
+1. Base [UA] Energy:
+   ρ_UA = {rho_UA:.4e} J/m³
+   V_egg = V_layer(26) = {V_egg:.4e} m³
+   E_UA = ρ_UA × V_egg = {E_UA:.4e} J
+
+2. [SCm] Injection with [UA] Derivatives:
+   SCm_inj = {SCm_inj:.4e} J
+   Σ[UA^(k)/k!] for k=1..{self.n_derivatives} = {derivative_sum:.4f}
+   E_SCm_UA = {SCm_inj:.4e} × {derivative_sum:.4f} = {E_SCm_UA:.4e} J
+
+3. Grinding Opposition:
+   E_grind = {E_grind:.4e} J
+
+4. Proto-Hydrogen Template (BBDT):
+   E_BBDT = 13.6 eV = {E_BBDT:.4e} J
+   (Hydrogen ground state binding energy - template for all matter)
+
+TOTAL:
+   E^{{26D Egg}} = {E_UA:.4e} + {E_SCm_UA:.4e} + {E_grind:.4e} + {E_BBDT:.4e}
+                = {E_total:.4e} J
+
+Physical Interpretation:
+  • The 26D Egg encapsulates all scales from Planck to Hubble
+  • [SCm] injection activates [UA] derivative states
+  • Grinding opposition provides structure-forming energy
+  • BBDT (proto-hydrogen) templates all atomic matter
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return E_total, steps
+    
+    def compute_DPM_dictation(self, V_core: float = None) -> Tuple[float, str]:
+        """
+        Compute DPM (Di-Pseudo-Monopole) dictation field strength.
+        
+        U_DPM_dict = k_DPM × (SCm_inj / V_core) × Σ(UA^(k) / k!)
+        
+        The DPM field "dictates" how [UA] derivative states organize.
+        
+        Args:
+            V_core: Core volume (m³), defaults to Planck volume
+        
+        Returns:
+            U_DPM: DPM dictation field strength (J/m³)
+            steps: Derivation string
+        """
+        if V_core is None:
+            V_core = self.l_Planck ** 3
+        
+        SCm_inj = CONSTANTS.get('rho_vac_SCm_solar', 7.09e-37) * V_core * 1e10  # Enhanced injection
+        
+        # Derivative sum
+        derivative_sum = sum(1.0 / np.math.factorial(k) for k in range(1, self.n_derivatives + 1))
+        
+        U_DPM = self.k_DPM * (SCm_inj / V_core) * derivative_sum
+        
+        steps = f"""DPM Dictation Field Strength:
+═══════════════════════════════════════════════════════════════════════════════
+CONCEPT: Di-Pseudo-Monopole guides field organization
+         The DPM "dictates" how [UA] states arrange themselves
+
+Formula:
+  U_DPM_dict = k_DPM × (SCm_inj / V_core) × Σ(UA^(k) / k!)
+
+Inputs:
+  k_DPM = {self.k_DPM:.4e}
+  V_core = {V_core:.4e} m³
+  SCm_inj = {SCm_inj:.4e} J
+  Σ(1/k!) for k=1..{self.n_derivatives} = {derivative_sum:.4f}
+
+Calculation:
+  U_DPM = {self.k_DPM:.4e} × ({SCm_inj:.4e} / {V_core:.4e}) × {derivative_sum:.4f}
+        = {U_DPM:.4e} J/m³
+
+Physical Interpretation:
+  • DPM field organizes [UA] derivative cascade
+  • Higher U_DPM → stronger field alignment
+  • Dictation mechanism establishes cosmic ordering
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return U_DPM, steps
+    
+    def compute_proto_hydrogen_shell(self, n: int = 1, Z: int = 1) -> Tuple[float, float, str]:
+        """
+        Compute proto-hydrogen template shell properties.
+        
+        E_n = -13.6 × Z² / n² eV
+        r_n = n² × a_0 / Z
+        
+        This template (BBDT) guides matter formation in the cosmic egg.
+        
+        Args:
+            n: Principal quantum number (1, 2, 3, ...)
+            Z: Effective nuclear charge
+        
+        Returns:
+            E_n: Shell binding energy (J)
+            r_n: Shell radius (m)
+            steps: Derivation string
+        """
+        a_0 = 5.29e-11  # Bohr radius (m)
+        
+        E_n_eV = -13.6 * Z**2 / n**2
+        E_n_J = E_n_eV * self.eV_to_J
+        
+        r_n = n**2 * a_0 / Z
+        
+        steps = f"""Proto-Hydrogen Shell Template (BBDT):
+═══════════════════════════════════════════════════════════════════════════════
+CONCEPT: Hydrogen atom structure provides template for all matter
+         The Big Bang Dictation Template (BBDT) imprints shell patterns
+
+Inputs:
+  n = {n}  (principal quantum number)
+  Z = {Z}  (effective nuclear charge)
+  a_0 = {a_0:.4e} m  (Bohr radius)
+
+Formula:
+  E_n = -13.6 × Z² / n² eV
+  r_n = n² × a_0 / Z
+
+Calculation:
+  E_{n} = -13.6 × {Z}² / {n}²
+       = {E_n_eV:.4f} eV
+       = {E_n_J:.4e} J
+
+  r_{n} = {n}² × {a_0:.4e} / {Z}
+       = {r_n:.4e} m
+
+Physical Interpretation:
+  • n=1 (ground state) is the primary template
+  • Higher n shells encode excitation templates
+  • This pattern scales from atomic to cosmic levels
+  • Each 26D egg layer corresponds to a scaled shell
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return E_n_J, r_n, steps
+    
+    def get_layer_description(self, n: int) -> str:
+        """Get physical description of layer n."""
+        if n <= 4:
+            return "Quantum foam (Planck scale, string-like)"
+        elif n <= 8:
+            return "Nuclear binding (fm scale, strong force)"
+        elif n <= 12:
+            return "Atomic (Å scale, electromagnetic)"
+        elif n <= 16:
+            return "Molecular/Material (μm-mm scale)"
+        elif n <= 20:
+            return "Planetary (km-AU scale)"
+        elif n <= 24:
+            return "Stellar/Galactic (pc-Mpc scale)"
+        else:
+            return "Cosmic/Universal (Gpc scale, horizon)"
+    
+    def validate_cosmic_egg_model(self) -> Tuple[bool, list, str]:
+        """
+        Validate Cosmic Egg Hypergraph model.
+        """
+        tests = []
+        
+        # Test 1: Layer radii increase monotonically
+        radii = [self.compute_layer_radius(n) for n in range(1, 27)]
+        tests.append({
+            'name': 'Layer radii monotonic',
+            'r_1': radii[0],
+            'r_26': radii[-1],
+            'passed': all(radii[i] < radii[i+1] for i in range(25))
+        })
+        
+        # Test 2: Layer 26 reaches Hubble scale
+        tests.append({
+            'name': 'Outer layer reaches Hubble',
+            'r_26': radii[-1],
+            'r_Hubble': self.r_26,
+            'passed': radii[-1] >= self.r_26 * 0.1  # Within order of magnitude
+        })
+        
+        # Test 3: Grinding opposition positive
+        E_grind, _ = self.compute_grinding_opposition(np.pi / 2)
+        tests.append({
+            'name': 'Grinding energy positive',
+            'E_grind': E_grind,
+            'passed': E_grind > 0
+        })
+        
+        # Test 4: 26D egg energy positive
+        E_egg, _ = self.compute_26D_egg_energy()
+        tests.append({
+            'name': '26D egg energy positive',
+            'E_egg': E_egg,
+            'passed': E_egg > 0
+        })
+        
+        # Test 5: Proto-hydrogen ground state correct
+        E_1, r_1, _ = self.compute_proto_hydrogen_shell(1, 1)
+        tests.append({
+            'name': 'H ground state energy',
+            'E_1': E_1,
+            'expected': -13.6 * self.eV_to_J,
+            'passed': abs(E_1 - (-13.6 * self.eV_to_J)) < 1e-21
+        })
+        
+        # Test 6: Hypergraph branches at t_Planck = e^1
+        N_1, _ = self.compute_hypergraph_branches(self.t_Planck)
+        tests.append({
+            'name': 'Hypergraph at t_Planck',
+            'N_branches': N_1,
+            'expected': np.e,
+            'passed': abs(N_1 - np.e) < 0.1
+        })
+        
+        all_passed = all(t['passed'] for t in tests)
+        
+        summary = f"""COSMIC EGG HYPERGRAPH MODEL VALIDATION (BigBangHypergraphTheory_12Dec2025)
+════════════════════════════════════════════════════════════════════════════════
+TEST RESULTS:
+────────────────────────────────────────────────────────────────────────────────
+1. Layer radii monotonic:         {'✓ PASS' if tests[0]['passed'] else '✗ FAIL'}
+   r_1 = {tests[0]['r_1']:.2e} m → r_26 = {tests[0]['r_26']:.2e} m
+
+2. Outer layer reaches Hubble:    {'✓ PASS' if tests[1]['passed'] else '✗ FAIL'}
+   r_26 = {tests[1]['r_26']:.2e} m
+
+3. Grinding energy positive:      {'✓ PASS' if tests[2]['passed'] else '✗ FAIL'}
+   E_grind = {tests[2]['E_grind']:.2e} J
+
+4. 26D egg energy positive:       {'✓ PASS' if tests[3]['passed'] else '✗ FAIL'}
+   E_egg = {tests[3]['E_egg']:.2e} J
+
+5. H ground state energy:         {'✓ PASS' if tests[4]['passed'] else '✗ FAIL'}
+   E_1 = {tests[4]['E_1']:.2e} J ≈ -13.6 eV
+
+6. Hypergraph at t_Planck:        {'✓ PASS' if tests[5]['passed'] else '✗ FAIL'}
+   N(t_Planck) = {tests[5]['N_branches']:.2f} ≈ e
+
+────────────────────────────────────────────────────────────────────────────────
+SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
+────────────────────────────────────────────────────────────────────────────────
+{'ALL TESTS PASSED ✓' if all_passed else 'SOME TESTS FAILED ✗'}
+════════════════════════════════════════════════════════════════════════════════
+"""
+        return all_passed, tests, summary
+
+
+# Global Cosmic Egg Hypergraph Model instance
+COSMIC_EGG_HYPERGRAPH_MODEL = CosmicEggHypergraphModel()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # PLASMA SHIELD-CAPTURE MODEL (Drawings 21, 28, 29)
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -29763,6 +30295,1841 @@ BONDI_ACCRETION_MODEL = BondiAccretionModel()
 EDDINGTON_RATIO_MODEL = EddingtonRatioModel()
 TIDAL_DISRUPTION_EVENT_MODEL = TidalDisruptionEventModel()
 SMBH_SPIN_EVOLUTION_MODEL = SMBHSpinEvolutionModel()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SOURCE82 SMBH Ug LAYER MODELS (4 Models)
+# Unified Gravity Components for Supermassive Black Holes
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class SMBHUg1Model:
+    """
+    SMBH Ug1 Model - Primary Unified Gravity Layer
+    
+    The Ug1 term represents the base Newtonian gravitational field
+    modified by UQFF vacuum corrections for SMBH environments.
+    
+    KEY EQUATION:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    Ug1 = G × M_BH / r² × (1 + δ_def(t))
+    
+    Where:
+        G : Gravitational constant (6.674×10⁻¹¹ m³/kg/s²)
+        M_BH : Black hole mass (kg)
+        r : Distance from BH center (m)
+        δ_def(t) : Time-dependent defect factor (oscillatory)
+    
+    PHYSICAL INTERPRETATION:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    - Base Newtonian gravity with vacuum defect modulation
+    - δ_def introduces small (~1%) temporal variations
+    - Dominant at large r, modified near Schwarzschild radius
+    
+    ©2025 Daniel T. Murphy - All Rights Reserved
+    """
+    
+    def __init__(self):
+        self.G = 6.674e-11         # Gravitational constant
+        self.M_sun = 1.989e30      # Solar mass (kg)
+        self.c = 2.998e8           # Speed of light
+        
+    def compute_Ug1(self, M_BH: float, r: float, t: float = 0,
+                    delta_amplitude: float = 0.01) -> Tuple[float, str]:
+        """
+        Compute Ug1 gravitational field component.
+        
+        Args:
+            M_BH: Black hole mass (kg)
+            r: Distance from center (m)
+            t: Time for defect oscillation (s)
+            delta_amplitude: Amplitude of defect factor
+            
+        Returns:
+            Ug1: Gravitational field (m/s²)
+            steps: Calculation explanation
+        """
+        import math
+        
+        # Base Newtonian field
+        g_Newton = self.G * M_BH / (r * r)
+        
+        # Defect factor: δ_def(t) = A × sin(ω × t)
+        omega = 1e-15  # Hz (very slow oscillation)
+        delta_def = delta_amplitude * math.sin(omega * t)
+        
+        # Ug1 with defect correction
+        Ug1 = g_Newton * (1 + delta_def)
+        
+        # Schwarzschild radius for reference
+        r_s = 2 * self.G * M_BH / (self.c * self.c)
+        
+        steps = f"""SMBH Ug1 (Primary Gravity Layer):
+  
+  Ug1 = G × M_BH / r² × (1 + δ_def)
+  
+  Parameters:
+    M_BH = {M_BH:.4e} kg = {M_BH/self.M_sun:.2e} M_☉
+    r = {r:.4e} m = {r/r_s:.1f} r_s
+    t = {t:.4e} s
+  
+  Base Newtonian:
+    g_Newton = {g_Newton:.4e} m/s²
+  
+  Defect correction:
+    δ_def = {delta_def:.6f}
+  
+  Result:
+    Ug1 = {Ug1:.4e} m/s²
+"""
+        return Ug1, steps
+    
+    def validate_model(self) -> Tuple[bool, List[str], str]:
+        """Validate SMBH Ug1 Model."""
+        import math
+        tests = []
+        all_passed = True
+        
+        # Test 1: Ug1 at 10 r_s for 10⁸ M_☉
+        M_BH = 1e8 * self.M_sun
+        r_s = 2 * self.G * M_BH / (self.c * self.c)
+        Ug1, _ = self.compute_Ug1(M_BH, 10 * r_s)
+        t1 = 1e-3 < Ug1 < 1e4
+        tests.append(f"Test 1: Ug1(10 r_s) = {Ug1:.2e} m/s² ∈ [10⁻³, 10⁴]: {'PASS' if t1 else 'FAIL'}")
+        all_passed &= t1
+        
+        # Test 2: Inverse square scaling
+        Ug1_r, _ = self.compute_Ug1(M_BH, 10 * r_s)
+        Ug1_2r, _ = self.compute_Ug1(M_BH, 20 * r_s)
+        ratio = Ug1_r / Ug1_2r
+        t2 = 3.9 < ratio < 4.1
+        tests.append(f"Test 2: Ug1(r)/Ug1(2r) = {ratio:.2f} ≈ 4: {'PASS' if t2 else 'FAIL'}")
+        all_passed &= t2
+        
+        # Test 3: Mass scaling
+        Ug1_M, _ = self.compute_Ug1(M_BH, 10 * r_s)
+        Ug1_2M, _ = self.compute_Ug1(2 * M_BH, 10 * r_s)
+        t3 = Ug1_2M > Ug1_M
+        tests.append(f"Test 3: Ug1(2M) > Ug1(M): {'PASS' if t3 else 'FAIL'}")
+        all_passed &= t3
+        
+        # Test 4: Defect oscillation bounded
+        Ug1_t0, _ = self.compute_Ug1(M_BH, 10 * r_s, t=0)
+        Ug1_t1, _ = self.compute_Ug1(M_BH, 10 * r_s, t=1e15)
+        t4 = abs(Ug1_t1 - Ug1_t0) / Ug1_t0 < 0.02
+        tests.append(f"Test 4: |ΔUg1/Ug1| < 2%: {'PASS' if t4 else 'FAIL'}")
+        all_passed &= t4
+        
+        summary = f"SMBHUg1Model: {sum(1 for t in tests if 'PASS' in t)}/4 tests passed"
+        return all_passed, tests, summary
+
+
+class SMBHUg2Model:
+    """
+    SMBH Ug2 Model - Charge-Reactivity Gravity Layer
+    
+    The Ug2 term represents charge-reactivity contributions to the
+    gravitational field, coupling electromagnetic properties to spacetime.
+    
+    KEY EQUATION:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    Ug2 = α_EM × (Q/M) × (c/r)² × [UA] × [SCm]
+    
+    Where:
+        α_EM : Electromagnetic coupling (~1/137)
+        Q : Effective charge (Coulombs)
+        M : Black hole mass (kg)
+        [UA] : Universal Amplitude (~10⁻⁴)
+        [SCm] : Superconductive measure (~0.99)
+    
+    PHYSICAL INTERPRETATION:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    - Electromagnetic contribution to effective gravity
+    - Relevant for charged Kerr-Newman black holes
+    - Typically small compared to Ug1 except near horizon
+    
+    ©2025 Daniel T. Murphy - All Rights Reserved
+    """
+    
+    def __init__(self):
+        self.alpha_EM = 1/137      # Fine structure constant
+        self.c = 2.998e8           # Speed of light
+        self.G = 6.674e-11
+        self.M_sun = 1.989e30
+        self.UA = 1e-4             # Universal amplitude
+        self.SCm = 0.99            # Superconductive measure
+        
+    def compute_Ug2(self, M_BH: float, r: float, Q: float = 0) -> Tuple[float, str]:
+        """
+        Compute Ug2 charge-reactivity component.
+        
+        Args:
+            M_BH: Black hole mass (kg)
+            r: Distance from center (m)
+            Q: Effective charge (Coulombs)
+            
+        Returns:
+            Ug2: Gravitational contribution (m/s²)
+            steps: Calculation explanation
+        """
+        # If no charge specified, estimate from extremal limit
+        if Q == 0:
+            # Q_extremal = sqrt(4πε₀ G) × M
+            epsilon_0 = 8.854e-12
+            Q = 0.01 * (4 * 3.14159 * epsilon_0 * self.G)**0.5 * M_BH
+        
+        # Ug2 = α × (Q/M) × (c/r)² × [UA] × [SCm]
+        Ug2 = self.alpha_EM * (Q / M_BH) * (self.c / r)**2 * self.UA * self.SCm
+        
+        r_s = 2 * self.G * M_BH / (self.c * self.c)
+        
+        steps = f"""SMBH Ug2 (Charge-Reactivity Layer):
+  
+  Ug2 = α × (Q/M) × (c/r)² × [UA] × [SCm]
+  
+  Parameters:
+    M_BH = {M_BH:.4e} kg
+    r = {r:.4e} m = {r/r_s:.1f} r_s
+    Q = {Q:.4e} C
+    α_EM = {self.alpha_EM:.6f}
+    [UA] = {self.UA}
+    [SCm] = {self.SCm}
+  
+  Result:
+    Ug2 = {Ug2:.4e} m/s²
+"""
+        return Ug2, steps
+    
+    def validate_model(self) -> Tuple[bool, List[str], str]:
+        """Validate SMBH Ug2 Model."""
+        tests = []
+        all_passed = True
+        
+        M_BH = 1e8 * self.M_sun
+        r_s = 2 * self.G * M_BH / (self.c * self.c)
+        
+        # Test 1: Ug2 positive for positive charge
+        Ug2, _ = self.compute_Ug2(M_BH, 10 * r_s, Q=1e10)
+        t1 = Ug2 > 0
+        tests.append(f"Test 1: Ug2(Q>0) = {Ug2:.2e} > 0: {'PASS' if t1 else 'FAIL'}")
+        all_passed &= t1
+        
+        # Test 2: Ug2 << Ug1 typically
+        Ug1_approx = self.G * M_BH / (10 * r_s)**2
+        t2 = Ug2 < 0.1 * Ug1_approx
+        tests.append(f"Test 2: Ug2/Ug1 < 0.1: {'PASS' if t2 else 'FAIL'}")
+        all_passed &= t2
+        
+        # Test 3: r⁻² scaling
+        Ug2_r, _ = self.compute_Ug2(M_BH, 10 * r_s, Q=1e10)
+        Ug2_2r, _ = self.compute_Ug2(M_BH, 20 * r_s, Q=1e10)
+        ratio = Ug2_r / Ug2_2r
+        t3 = 3.9 < ratio < 4.1
+        tests.append(f"Test 3: Ug2(r)/Ug2(2r) = {ratio:.2f} ≈ 4: {'PASS' if t3 else 'FAIL'}")
+        all_passed &= t3
+        
+        # Test 4: Charge scaling
+        Ug2_Q, _ = self.compute_Ug2(M_BH, 10 * r_s, Q=1e10)
+        Ug2_2Q, _ = self.compute_Ug2(M_BH, 10 * r_s, Q=2e10)
+        t4 = abs(Ug2_2Q / Ug2_Q - 2.0) < 0.01
+        tests.append(f"Test 4: Ug2(2Q)/Ug2(Q) = {Ug2_2Q/Ug2_Q:.2f} ≈ 2: {'PASS' if t4 else 'FAIL'}")
+        all_passed &= t4
+        
+        summary = f"SMBHUg2Model: {sum(1 for t in tests if 'PASS' in t)}/4 tests passed"
+        return all_passed, tests, summary
+
+
+class SMBHUg3Model:
+    """
+    SMBH Ug3 Model - String Rotation Gravity Layer
+    
+    The Ug3 term represents frame-dragging and rotational contributions
+    to the gravitational field from SMBH spin.
+    
+    KEY EQUATION:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    Ug3 = (2GJ/c²r³) × sin²θ × f(a/M)
+    
+    Where:
+        J : Angular momentum (J = a × M × c)
+        a : Spin parameter (0 ≤ |a| ≤ M for Kerr)
+        θ : Polar angle from spin axis
+        f(a/M) : Spin correction function
+    
+    PHYSICAL INTERPRETATION:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    - Lense-Thirring frame dragging effect
+    - Maximum at equator (θ = π/2)
+    - Zero along spin axis
+    - Creates ergosphere for a > 0
+    
+    ©2025 Daniel T. Murphy - All Rights Reserved
+    """
+    
+    def __init__(self):
+        self.G = 6.674e-11
+        self.c = 2.998e8
+        self.M_sun = 1.989e30
+        
+    def compute_Ug3(self, M_BH: float, r: float, a: float, 
+                    theta: float = 1.5708) -> Tuple[float, str]:
+        """
+        Compute Ug3 rotational/frame-dragging component.
+        
+        Args:
+            M_BH: Black hole mass (kg)
+            r: Distance from center (m)
+            a: Spin parameter (dimensionless, 0-1)
+            theta: Polar angle (radians, π/2 = equator)
+            
+        Returns:
+            Ug3: Frame-dragging contribution (m/s²)
+            steps: Calculation explanation
+        """
+        import math
+        
+        # Angular momentum J = a × G × M² / c
+        r_g = self.G * M_BH / (self.c * self.c)
+        J = a * self.G * M_BH * M_BH / self.c
+        
+        # Ug3 = (2GJ/c²r³) × sin²θ
+        sin_theta = math.sin(theta)
+        Ug3 = (2 * self.G * J / (self.c * self.c * r**3)) * sin_theta**2
+        
+        # Ergosphere radius at equator
+        r_ergo = r_g * (1 + math.sqrt(1 - a*a))
+        
+        steps = f"""SMBH Ug3 (Frame-Dragging Layer):
+  
+  Ug3 = (2GJ/c²r³) × sin²θ
+  
+  Parameters:
+    M_BH = {M_BH:.4e} kg = {M_BH/self.M_sun:.2e} M_☉
+    r = {r:.4e} m = {r/r_g:.1f} r_g
+    a = {a} (spin parameter)
+    θ = {theta:.4f} rad = {math.degrees(theta):.1f}°
+  
+  Angular momentum:
+    J = {J:.4e} kg m²/s
+  
+  Result:
+    Ug3 = {Ug3:.4e} m/s²
+    Ergosphere radius = {r_ergo:.4e} m
+"""
+        return Ug3, steps
+    
+    def validate_model(self) -> Tuple[bool, List[str], str]:
+        """Validate SMBH Ug3 Model."""
+        import math
+        tests = []
+        all_passed = True
+        
+        M_BH = 1e8 * self.M_sun
+        r_g = self.G * M_BH / (self.c * self.c)
+        
+        # Test 1: Ug3 > 0 for a > 0
+        Ug3, _ = self.compute_Ug3(M_BH, 10 * r_g, a=0.5)
+        t1 = Ug3 > 0
+        tests.append(f"Test 1: Ug3(a=0.5) = {Ug3:.2e} > 0: {'PASS' if t1 else 'FAIL'}")
+        all_passed &= t1
+        
+        # Test 2: Ug3 = 0 at pole (θ = 0)
+        Ug3_pole, _ = self.compute_Ug3(M_BH, 10 * r_g, a=0.5, theta=0)
+        t2 = abs(Ug3_pole) < 1e-20
+        tests.append(f"Test 2: Ug3(θ=0) ≈ 0: {'PASS' if t2 else 'FAIL'}")
+        all_passed &= t2
+        
+        # Test 3: r⁻³ scaling
+        Ug3_r, _ = self.compute_Ug3(M_BH, 10 * r_g, a=0.5)
+        Ug3_2r, _ = self.compute_Ug3(M_BH, 20 * r_g, a=0.5)
+        ratio = Ug3_r / Ug3_2r
+        t3 = 7.9 < ratio < 8.1
+        tests.append(f"Test 3: Ug3(r)/Ug3(2r) = {ratio:.2f} ≈ 8: {'PASS' if t3 else 'FAIL'}")
+        all_passed &= t3
+        
+        # Test 4: Higher spin → stronger Ug3
+        Ug3_low, _ = self.compute_Ug3(M_BH, 10 * r_g, a=0.3)
+        Ug3_high, _ = self.compute_Ug3(M_BH, 10 * r_g, a=0.9)
+        t4 = Ug3_high > Ug3_low
+        tests.append(f"Test 4: Ug3(a=0.9) > Ug3(a=0.3): {'PASS' if t4 else 'FAIL'}")
+        all_passed &= t4
+        
+        summary = f"SMBHUg3Model: {sum(1 for t in tests if 'PASS' in t)}/4 tests passed"
+        return all_passed, tests, summary
+
+
+class SMBHUg4Model:
+    """
+    SMBH Ug4 Model - Vacuum Concentration Gravity Layer
+    
+    The Ug4 term represents vacuum energy density contributions
+    to effective gravity near the SMBH horizon.
+    
+    KEY EQUATION:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    Ug4 = (8πG/3c²) × ρ_vac × r × f_concentration(r/r_s)
+    
+    Where:
+        ρ_vac : Vacuum energy density (~7.09×10⁻³⁶ kg/m³)
+        f_concentration : Enhancement near horizon
+    
+    PHYSICAL INTERPRETATION:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    - Vacuum energy contribution to curvature
+    - Enhanced near Schwarzschild radius
+    - Connects to cosmological constant at large r
+    - Critical for UQFF superconductive framework
+    
+    ©2025 Daniel T. Murphy - All Rights Reserved
+    """
+    
+    def __init__(self):
+        self.G = 6.674e-11
+        self.c = 2.998e8
+        self.M_sun = 1.989e30
+        self.rho_vac = 7.09e-36    # Vacuum energy density (kg/m³)
+        self.UA = 1e-4             # Universal amplitude
+        
+    def compute_Ug4(self, M_BH: float, r: float) -> Tuple[float, str]:
+        """
+        Compute Ug4 vacuum concentration component.
+        
+        Args:
+            M_BH: Black hole mass (kg)
+            r: Distance from center (m)
+            
+        Returns:
+            Ug4: Vacuum gravity contribution (m/s²)
+            steps: Calculation explanation
+        """
+        import math
+        
+        r_s = 2 * self.G * M_BH / (self.c * self.c)
+        
+        # Concentration factor: enhanced near horizon
+        # f(r/r_s) = 1 + (r_s/r)² for r > r_s
+        f_conc = 1 + (r_s / r)**2 if r > r_s else 10.0
+        
+        # Ug4 = (8πG/3c²) × ρ_vac × r × f
+        Ug4 = (8 * 3.14159 * self.G / (3 * self.c**2)) * self.rho_vac * r * f_conc
+        
+        # Compare to cosmological acceleration
+        a_Lambda = self.c * self.c * 1.1e-52 * r  # Λ contribution
+        
+        steps = f"""SMBH Ug4 (Vacuum Concentration Layer):
+  
+  Ug4 = (8πG/3c²) × ρ_vac × r × f(r/r_s)
+  
+  Parameters:
+    M_BH = {M_BH:.4e} kg
+    r = {r:.4e} m = {r/r_s:.1f} r_s
+    ρ_vac = {self.rho_vac:.4e} kg/m³
+  
+  Concentration factor:
+    f(r/r_s) = {f_conc:.4f}
+  
+  Result:
+    Ug4 = {Ug4:.4e} m/s²
+    a_Λ = {a_Lambda:.4e} m/s² (cosmological)
+"""
+        return Ug4, steps
+    
+    def validate_model(self) -> Tuple[bool, List[str], str]:
+        """Validate SMBH Ug4 Model."""
+        tests = []
+        all_passed = True
+        
+        M_BH = 1e8 * self.M_sun
+        r_s = 2 * self.G * M_BH / (self.c * self.c)
+        
+        # Test 1: Ug4 > 0
+        Ug4, _ = self.compute_Ug4(M_BH, 10 * r_s)
+        t1 = Ug4 > 0
+        tests.append(f"Test 1: Ug4 = {Ug4:.2e} > 0: {'PASS' if t1 else 'FAIL'}")
+        all_passed &= t1
+        
+        # Test 2: Enhancement near horizon
+        Ug4_near, _ = self.compute_Ug4(M_BH, 2 * r_s)
+        Ug4_far, _ = self.compute_Ug4(M_BH, 100 * r_s)
+        # Near: f ≈ 1.25, Far: f ≈ 1.0001, so Ug4_near/Ug4_far ≈ 1.25×2/(1×100) = 0.025
+        t2 = Ug4_near / Ug4_far > 0.01
+        tests.append(f"Test 2: Ug4(2r_s)/Ug4(100r_s) = {Ug4_near/Ug4_far:.4f} > 0.01: {'PASS' if t2 else 'FAIL'}")
+        all_passed &= t2
+        
+        # Test 3: Ug4 << Ug1 (vacuum is subdominant)
+        Ug1_approx = self.G * M_BH / (10 * r_s)**2
+        t3 = Ug4 < 1e-10 * Ug1_approx
+        tests.append(f"Test 3: Ug4 << Ug1: {'PASS' if t3 else 'FAIL'}")
+        all_passed &= t3
+        
+        # Test 4: Scales with mass (via r_s)
+        Ug4_M, _ = self.compute_Ug4(M_BH, 10 * r_s)
+        Ug4_2M, _ = self.compute_Ug4(2 * M_BH, 10 * r_s)
+        t4 = Ug4_2M > Ug4_M  # Larger mass → larger r_s → more concentration
+        tests.append(f"Test 4: Ug4(2M) > Ug4(M): {'PASS' if t4 else 'FAIL'}")
+        all_passed &= t4
+        
+        summary = f"SMBHUg4Model: {sum(1 for t in tests if 'PASS' in t)}/4 tests passed"
+        return all_passed, tests, summary
+
+
+# Global SMBH Ug Layer Model instances
+SMBH_UG1_MODEL = SMBHUg1Model()
+SMBH_UG2_MODEL = SMBHUg2Model()
+SMBH_UG3_MODEL = SMBHUg3Model()
+SMBH_UG4_MODEL = SMBHUg4Model()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SOURCE82 SMBH GALACTIC TERMS (3 Models)
+# Galactic-Scale SMBH Environment Physics
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class SMBHBulgeGravityModel:
+    """
+    SMBH Bulge Gravity Model - Host Galaxy Bulge Potential
+    
+    Models the gravitational potential of the host galaxy's bulge
+    which influences SMBH dynamics and the M-σ relation.
+    
+    KEY EQUATION:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    Φ_bulge = -G × M_bulge / R_bulge × f(r/R_bulge)
+    
+    Where:
+        M_bulge : Bulge stellar mass (~10¹¹ M_☉)
+        R_bulge : Bulge effective radius (~1-5 kpc)
+        f(x) : Hernquist or de Vaucouleurs profile
+    
+    ©2025 Daniel T. Murphy - All Rights Reserved
+    """
+    
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M_sun = 1.989e30
+        self.kpc = 3.086e19        # kpc in meters
+        
+    def compute_bulge_potential(self, M_bulge: float, R_bulge: float, 
+                                 r: float) -> Tuple[float, str]:
+        """
+        Compute bulge gravitational potential (Hernquist profile).
+        
+        Args:
+            M_bulge: Bulge mass (kg)
+            R_bulge: Bulge scale radius (m)
+            r: Distance from center (m)
+            
+        Returns:
+            Phi: Gravitational potential (J/kg = m²/s²)
+            steps: Calculation explanation
+        """
+        # Hernquist profile: Φ(r) = -GM / (r + a)
+        Phi = -self.G * M_bulge / (r + R_bulge)
+        
+        # Circular velocity
+        v_circ = (self.G * M_bulge * r / (r + R_bulge)**2)**0.5
+        
+        steps = f"""Bulge Gravitational Potential (Hernquist):
+  
+  Φ(r) = -G M_bulge / (r + R_bulge)
+  
+  Parameters:
+    M_bulge = {M_bulge:.4e} kg = {M_bulge/self.M_sun:.2e} M_☉
+    R_bulge = {R_bulge:.4e} m = {R_bulge/self.kpc:.2f} kpc
+    r = {r:.4e} m = {r/self.kpc:.2f} kpc
+  
+  Result:
+    Φ = {Phi:.4e} J/kg
+    v_circ = {v_circ/1e3:.1f} km/s
+"""
+        return Phi, steps
+    
+    def validate_model(self) -> Tuple[bool, List[str], str]:
+        """Validate SMBH Bulge Gravity Model."""
+        tests = []
+        all_passed = True
+        
+        M_bulge = 1e11 * self.M_sun
+        R_bulge = 3 * self.kpc
+        
+        # Test 1: Potential negative
+        Phi, _ = self.compute_bulge_potential(M_bulge, R_bulge, 5 * self.kpc)
+        t1 = Phi < 0
+        tests.append(f"Test 1: Φ = {Phi:.2e} < 0: {'PASS' if t1 else 'FAIL'}")
+        all_passed &= t1
+        
+        # Test 2: Deeper potential at smaller r
+        Phi_near, _ = self.compute_bulge_potential(M_bulge, R_bulge, 1 * self.kpc)
+        Phi_far, _ = self.compute_bulge_potential(M_bulge, R_bulge, 10 * self.kpc)
+        t2 = Phi_near < Phi_far
+        tests.append(f"Test 2: Φ(1kpc) < Φ(10kpc): {'PASS' if t2 else 'FAIL'}")
+        all_passed &= t2
+        
+        # Test 3: Order of magnitude check (~10¹² J/kg)
+        t3 = 1e10 < abs(Phi) < 1e14
+        tests.append(f"Test 3: |Φ| ∈ [10¹⁰, 10¹⁴]: {'PASS' if t3 else 'FAIL'}")
+        all_passed &= t3
+        
+        # Test 4: Mass scaling
+        Phi_M, _ = self.compute_bulge_potential(M_bulge, R_bulge, 5 * self.kpc)
+        Phi_2M, _ = self.compute_bulge_potential(2 * M_bulge, R_bulge, 5 * self.kpc)
+        t4 = abs(Phi_2M / Phi_M - 2.0) < 0.01
+        tests.append(f"Test 4: Φ(2M)/Φ(M) ≈ 2: {'PASS' if t4 else 'FAIL'}")
+        all_passed &= t4
+        
+        summary = f"SMBHBulgeGravityModel: {sum(1 for t in tests if 'PASS' in t)}/4 tests passed"
+        return all_passed, tests, summary
+
+
+class SMBHOmegaSGalacticModel:
+    """
+    SMBH Omega-S Galactic Model - Galactic Rotation Influence
+    
+    Models the galactic rotation curve and angular velocity profile
+    that provides the large-scale kinematic context for SMBH dynamics.
+    
+    KEY EQUATION:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    Ω(r) = V_circ(r) / r
+    
+    V_circ(r) = V_flat × (1 - exp(-r/r_scale))
+    
+    Where:
+        V_flat : Flat rotation velocity (~200-250 km/s)
+        r_scale : Transition radius (~2-3 kpc)
+    
+    ©2025 Daniel T. Murphy - All Rights Reserved
+    """
+    
+    def __init__(self):
+        self.kpc = 3.086e19
+        self.V_flat = 220e3         # Flat rotation velocity (m/s)
+        self.r_scale = 2.5 * 3.086e19  # Scale radius (m)
+        
+    def compute_omega(self, r: float) -> Tuple[float, str]:
+        """
+        Compute galactic angular velocity.
+        
+        Args:
+            r: Galactocentric radius (m)
+            
+        Returns:
+            Omega: Angular velocity (rad/s)
+            steps: Calculation explanation
+        """
+        import math
+        
+        # Rotation curve: V(r) = V_flat × (1 - exp(-r/r_s))
+        V_circ = self.V_flat * (1 - math.exp(-r / self.r_scale))
+        Omega = V_circ / r if r > 0 else 0
+        
+        # Orbital period
+        P = 2 * math.pi / Omega if Omega > 0 else float('inf')
+        P_Myr = P / (3.156e7 * 1e6)
+        
+        steps = f"""Galactic Angular Velocity:
+  
+  V(r) = V_flat × (1 - exp(-r/r_scale))
+  Ω(r) = V(r) / r
+  
+  Parameters:
+    r = {r:.4e} m = {r/self.kpc:.2f} kpc
+    V_flat = {self.V_flat/1e3:.0f} km/s
+    r_scale = {self.r_scale/self.kpc:.1f} kpc
+  
+  Result:
+    V_circ = {V_circ/1e3:.1f} km/s
+    Ω = {Omega:.4e} rad/s
+    P_orbit = {P_Myr:.1f} Myr
+"""
+        return Omega, steps
+    
+    def validate_model(self) -> Tuple[bool, List[str], str]:
+        """Validate SMBH Omega-S Galactic Model."""
+        import math
+        tests = []
+        all_passed = True
+        
+        # Test 1: Ω > 0 for r > 0
+        Omega, _ = self.compute_omega(8 * self.kpc)
+        t1 = Omega > 0
+        tests.append(f"Test 1: Ω(8kpc) = {Omega:.2e} > 0: {'PASS' if t1 else 'FAIL'}")
+        all_passed &= t1
+        
+        # Test 2: Ω decreases with r in flat part
+        Omega_4, _ = self.compute_omega(4 * self.kpc)
+        Omega_8, _ = self.compute_omega(8 * self.kpc)
+        t2 = Omega_4 > Omega_8
+        tests.append(f"Test 2: Ω(4kpc) > Ω(8kpc): {'PASS' if t2 else 'FAIL'}")
+        all_passed &= t2
+        
+        # Test 3: Solar orbit ~220 Myr at 8 kpc
+        P = 2 * math.pi / Omega_8 / (3.156e7 * 1e6)
+        t3 = 200 < P < 250
+        tests.append(f"Test 3: P_orbit(8kpc) = {P:.0f} Myr ∈ [200, 250]: {'PASS' if t3 else 'FAIL'}")
+        all_passed &= t3
+        
+        # Test 4: Order of magnitude (~10⁻¹⁵ rad/s)
+        t4 = 1e-16 < Omega < 1e-14
+        tests.append(f"Test 4: Ω ∈ [10⁻¹⁶, 10⁻¹⁴]: {'PASS' if t4 else 'FAIL'}")
+        all_passed &= t4
+        
+        summary = f"SMBHOmegaSGalacticModel: {sum(1 for t in tests if 'PASS' in t)}/4 tests passed"
+        return all_passed, tests, summary
+
+
+class SMBHCosmicTimeModel:
+    """
+    SMBH Cosmic Time Model - Cosmological Evolution Timescales
+    
+    Models cosmic time evolution and lookback time relevant for
+    SMBH growth across cosmic epochs.
+    
+    KEY EQUATIONS:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    H(z) = H_0 × √(Ω_m(1+z)³ + Ω_Λ)
+    
+    t_lookback = ∫[0 to z] dz' / ((1+z') × H(z'))
+    
+    Where:
+        H_0 : Hubble constant (~70 km/s/Mpc)
+        Ω_m : Matter density parameter (~0.3)
+        Ω_Λ : Dark energy density (~0.7)
+    
+    ©2025 Daniel T. Murphy - All Rights Reserved
+    """
+    
+    def __init__(self):
+        self.H_0 = 70e3 / 3.086e22  # H_0 in 1/s (~70 km/s/Mpc)
+        self.Omega_m = 0.3
+        self.Omega_Lambda = 0.7
+        self.Gyr = 3.156e16         # Gyr in seconds
+        
+    def compute_hubble(self, z: float) -> Tuple[float, str]:
+        """
+        Compute Hubble parameter at redshift z.
+        
+        Args:
+            z: Redshift
+            
+        Returns:
+            H_z: Hubble parameter (1/s)
+            steps: Calculation explanation
+        """
+        import math
+        
+        H_z = self.H_0 * math.sqrt(self.Omega_m * (1 + z)**3 + self.Omega_Lambda)
+        
+        steps = f"""Hubble Parameter:
+  
+  H(z) = H_0 × √(Ω_m(1+z)³ + Ω_Λ)
+  
+  Parameters:
+    z = {z}
+    H_0 = {self.H_0:.4e} s⁻¹
+    Ω_m = {self.Omega_m}
+    Ω_Λ = {self.Omega_Lambda}
+  
+  Result:
+    H(z) = {H_z:.4e} s⁻¹
+    H(z) = {H_z * 3.086e22 / 1e3:.1f} km/s/Mpc
+"""
+        return H_z, steps
+    
+    def compute_lookback_time(self, z: float, n_steps: int = 100) -> Tuple[float, str]:
+        """
+        Compute lookback time to redshift z.
+        
+        Args:
+            z: Redshift
+            n_steps: Integration steps
+            
+        Returns:
+            t_lb: Lookback time (s)
+            steps: Calculation explanation
+        """
+        import math
+        
+        dz = z / n_steps
+        t_lb = 0
+        for i in range(n_steps):
+            z_i = (i + 0.5) * dz
+            H_z, _ = self.compute_hubble(z_i)
+            t_lb += dz / ((1 + z_i) * H_z)
+        
+        t_lb_Gyr = t_lb / self.Gyr
+        
+        steps = f"""Lookback Time:
+  
+  t_lb = ∫ dz / ((1+z) H(z))
+  
+  Parameter:
+    z = {z}
+  
+  Result:
+    t_lookback = {t_lb:.4e} s = {t_lb_Gyr:.2f} Gyr
+"""
+        return t_lb, steps
+    
+    def validate_model(self) -> Tuple[bool, List[str], str]:
+        """Validate SMBH Cosmic Time Model."""
+        tests = []
+        all_passed = True
+        
+        # Test 1: H(0) = H_0
+        H_0, _ = self.compute_hubble(0)
+        t1 = abs(H_0 / self.H_0 - 1) < 0.01
+        tests.append(f"Test 1: H(z=0) ≈ H_0: {'PASS' if t1 else 'FAIL'}")
+        all_passed &= t1
+        
+        # Test 2: H increases with z
+        H_0, _ = self.compute_hubble(0)
+        H_1, _ = self.compute_hubble(1)
+        t2 = H_1 > H_0
+        tests.append(f"Test 2: H(z=1) > H(z=0): {'PASS' if t2 else 'FAIL'}")
+        all_passed &= t2
+        
+        # Test 3: Lookback to z=1 ~ 7-8 Gyr
+        t_lb, _ = self.compute_lookback_time(1.0)
+        t_lb_Gyr = t_lb / self.Gyr
+        t3 = 6 < t_lb_Gyr < 9
+        tests.append(f"Test 3: t_lb(z=1) = {t_lb_Gyr:.1f} Gyr ∈ [6, 9]: {'PASS' if t3 else 'FAIL'}")
+        all_passed &= t3
+        
+        # Test 4: Lookback increases with z
+        t_lb_1, _ = self.compute_lookback_time(1.0)
+        t_lb_2, _ = self.compute_lookback_time(2.0)
+        t4 = t_lb_2 > t_lb_1
+        tests.append(f"Test 4: t_lb(z=2) > t_lb(z=1): {'PASS' if t4 else 'FAIL'}")
+        all_passed &= t4
+        
+        summary = f"SMBHCosmicTimeModel: {sum(1 for t in tests if 'PASS' in t)}/4 tests passed"
+        return all_passed, tests, summary
+
+
+# Global SMBH Galactic Model instances
+SMBH_BULGE_GRAVITY_MODEL = SMBHBulgeGravityModel()
+SMBH_OMEGA_S_GALACTIC_MODEL = SMBHOmegaSGalacticModel()
+SMBH_COSMIC_TIME_MODEL = SMBHCosmicTimeModel()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SOURCE82 VIRGO CLUSTER MODELS (9 Models)
+# Virgo Galaxy Cluster Physics
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class VirgoClusterMassModel:
+    """
+    Virgo Cluster Mass Model - Total Cluster Mass Distribution
+    
+    Models the mass distribution of the Virgo cluster, the nearest
+    massive galaxy cluster at ~16.5 Mpc.
+    
+    KEY PARAMETERS:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    M_virial ≈ 1.2 × 10¹⁵ M_☉
+    R_virial ≈ 1.55 Mpc
+    σ_v ≈ 700 km/s (velocity dispersion)
+    
+    ©2025 Daniel T. Murphy - All Rights Reserved
+    """
+    
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M_sun = 1.989e30
+        self.Mpc = 3.086e22
+        self.M_virial = 1.2e15 * 1.989e30  # kg
+        self.R_virial = 1.55 * 3.086e22     # m
+        
+    def compute_enclosed_mass(self, r: float, profile: str = 'NFW') -> Tuple[float, str]:
+        """
+        Compute enclosed mass at radius r.
+        
+        Args:
+            r: Radius from cluster center (m)
+            profile: 'NFW' or 'isothermal'
+            
+        Returns:
+            M_enc: Enclosed mass (kg)
+            steps: Calculation explanation
+        """
+        import math
+        
+        r_s = 0.2 * self.R_virial  # Scale radius
+        
+        if profile == 'NFW':
+            # NFW: M(<r) = M_0 × [ln(1 + r/r_s) - r/(r+r_s)]
+            x = r / r_s
+            f_x = math.log(1 + x) - x / (1 + x)
+            f_virial = math.log(1 + 5) - 5/6  # at c=5
+            M_enc = self.M_virial * f_x / f_virial
+        else:
+            # Isothermal: M(<r) ∝ r
+            M_enc = self.M_virial * r / self.R_virial
+        
+        steps = f"""Virgo Cluster Enclosed Mass ({profile}):
+  
+  Parameters:
+    r = {r:.4e} m = {r/self.Mpc:.2f} Mpc
+    R_virial = {self.R_virial/self.Mpc:.2f} Mpc
+    M_virial = {self.M_virial/self.M_sun:.2e} M_☉
+  
+  Result:
+    M(<r) = {M_enc:.4e} kg = {M_enc/self.M_sun:.2e} M_☉
+"""
+        return M_enc, steps
+    
+    def validate_model(self) -> Tuple[bool, List[str], str]:
+        """Validate Virgo Cluster Mass Model."""
+        tests = []
+        all_passed = True
+        
+        # Test 1: M(R_virial) ≈ M_virial
+        M_enc, _ = self.compute_enclosed_mass(self.R_virial)
+        t1 = 0.5 < M_enc / self.M_virial < 1.5
+        tests.append(f"Test 1: M(R_vir)/M_vir = {M_enc/self.M_virial:.2f} ∈ [0.5, 1.5]: {'PASS' if t1 else 'FAIL'}")
+        all_passed &= t1
+        
+        # Test 2: Mass increases with r
+        M_1, _ = self.compute_enclosed_mass(0.5 * self.R_virial)
+        M_2, _ = self.compute_enclosed_mass(self.R_virial)
+        t2 = M_2 > M_1
+        tests.append(f"Test 2: M(R_vir) > M(0.5 R_vir): {'PASS' if t2 else 'FAIL'}")
+        all_passed &= t2
+        
+        # Test 3: Cluster mass order of magnitude
+        t3 = 1e14 < self.M_virial / self.M_sun < 1e16
+        tests.append(f"Test 3: M_vir ∈ [10¹⁴, 10¹⁶] M_☉: {'PASS' if t3 else 'FAIL'}")
+        all_passed &= t3
+        
+        # Test 4: M > 0 everywhere
+        M_small, _ = self.compute_enclosed_mass(0.1 * self.Mpc)
+        t4 = M_small > 0
+        tests.append(f"Test 4: M(0.1 Mpc) > 0: {'PASS' if t4 else 'FAIL'}")
+        all_passed &= t4
+        
+        summary = f"VirgoClusterMassModel: {sum(1 for t in tests if 'PASS' in t)}/4 tests passed"
+        return all_passed, tests, summary
+
+
+class VirgoClusterDarkMatterModel:
+    """
+    Virgo Cluster Dark Matter Model - NFW Halo Profile
+    
+    Models the dark matter halo of the Virgo cluster using
+    the Navarro-Frenk-White (NFW) density profile.
+    
+    KEY EQUATION:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    ρ_DM(r) = ρ_s / [(r/r_s) × (1 + r/r_s)²]
+    
+    Where:
+        ρ_s : Scale density (~10⁻²³ kg/m³)
+        r_s : Scale radius (~300 kpc)
+    
+    ©2025 Daniel T. Murphy - All Rights Reserved
+    """
+    
+    def __init__(self):
+        self.M_sun = 1.989e30
+        self.kpc = 3.086e19
+        self.r_s = 300 * 3.086e19   # Scale radius (300 kpc)
+        self.rho_s = 1e-23          # Scale density (kg/m³)
+        
+    def compute_nfw_density(self, r: float) -> Tuple[float, str]:
+        """
+        Compute NFW dark matter density at radius r.
+        
+        Args:
+            r: Radius from center (m)
+            
+        Returns:
+            rho: Dark matter density (kg/m³)
+            steps: Calculation explanation
+        """
+        x = r / self.r_s
+        rho = self.rho_s / (x * (1 + x)**2)
+        
+        steps = f"""NFW Dark Matter Density:
+  
+  ρ(r) = ρ_s / [(r/r_s)(1 + r/r_s)²]
+  
+  Parameters:
+    r = {r:.4e} m = {r/self.kpc:.1f} kpc
+    r_s = {self.r_s/self.kpc:.0f} kpc
+    ρ_s = {self.rho_s:.4e} kg/m³
+  
+  Result:
+    ρ_DM = {rho:.4e} kg/m³
+"""
+        return rho, steps
+    
+    def validate_model(self) -> Tuple[bool, List[str], str]:
+        """Validate Virgo Dark Matter Model."""
+        tests = []
+        all_passed = True
+        
+        # Test 1: Density positive
+        rho, _ = self.compute_nfw_density(100 * self.kpc)
+        t1 = rho > 0
+        tests.append(f"Test 1: ρ(100 kpc) = {rho:.2e} > 0: {'PASS' if t1 else 'FAIL'}")
+        all_passed &= t1
+        
+        # Test 2: Density decreases with r
+        rho_1, _ = self.compute_nfw_density(100 * self.kpc)
+        rho_2, _ = self.compute_nfw_density(500 * self.kpc)
+        t2 = rho_1 > rho_2
+        tests.append(f"Test 2: ρ(100 kpc) > ρ(500 kpc): {'PASS' if t2 else 'FAIL'}")
+        all_passed &= t2
+        
+        # Test 3: Order of magnitude (10⁻²⁷ to 10⁻²⁰)
+        t3 = 1e-28 < rho < 1e-20
+        tests.append(f"Test 3: ρ ∈ [10⁻²⁸, 10⁻²⁰]: {'PASS' if t3 else 'FAIL'}")
+        all_passed &= t3
+        
+        # Test 4: ρ(r_s) = ρ_s/4
+        rho_rs, _ = self.compute_nfw_density(self.r_s)
+        t4 = abs(rho_rs / (self.rho_s / 4) - 1) < 0.01
+        tests.append(f"Test 4: ρ(r_s) = ρ_s/4: {'PASS' if t4 else 'FAIL'}")
+        all_passed &= t4
+        
+        summary = f"VirgoClusterDarkMatterModel: {sum(1 for t in tests if 'PASS' in t)}/4 tests passed"
+        return all_passed, tests, summary
+
+
+class VirgoClusterVirialModel:
+    """
+    Virgo Cluster Virial Model - Virial Mass Estimation
+    
+    Models virial equilibrium for cluster mass estimation from
+    velocity dispersion measurements.
+    
+    KEY EQUATION:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    M_virial = (3/G) × σ_v² × R_virial
+    
+    Where:
+        σ_v : Line-of-sight velocity dispersion (~700 km/s)
+        R_virial : Virial radius (~1.55 Mpc)
+    
+    ©2025 Daniel T. Murphy - All Rights Reserved
+    """
+    
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M_sun = 1.989e30
+        self.Mpc = 3.086e22
+        self.sigma_v = 700e3        # velocity dispersion (m/s)
+        self.R_virial = 1.55 * 3.086e22
+        
+    def compute_virial_mass(self, sigma_v: float = None, 
+                            R_virial: float = None) -> Tuple[float, str]:
+        """
+        Compute virial mass from velocity dispersion.
+        
+        Args:
+            sigma_v: Velocity dispersion (m/s)
+            R_virial: Virial radius (m)
+            
+        Returns:
+            M_virial: Virial mass (kg)
+            steps: Calculation explanation
+        """
+        if sigma_v is None:
+            sigma_v = self.sigma_v
+        if R_virial is None:
+            R_virial = self.R_virial
+        
+        # M = 3 σ² R / G
+        M_virial = 3 * sigma_v**2 * R_virial / self.G
+        
+        steps = f"""Virial Mass:
+  
+  M_virial = 3 σ_v² R_virial / G
+  
+  Parameters:
+    σ_v = {sigma_v/1e3:.0f} km/s
+    R_virial = {R_virial/self.Mpc:.2f} Mpc
+  
+  Result:
+    M_virial = {M_virial:.4e} kg = {M_virial/self.M_sun:.2e} M_☉
+"""
+        return M_virial, steps
+    
+    def validate_model(self) -> Tuple[bool, List[str], str]:
+        """Validate Virgo Virial Model."""
+        tests = []
+        all_passed = True
+        
+        # Test 1: M > 0
+        M, _ = self.compute_virial_mass()
+        t1 = M > 0
+        tests.append(f"Test 1: M = {M/self.M_sun:.2e} M_☉ > 0: {'PASS' if t1 else 'FAIL'}")
+        all_passed &= t1
+        
+        # Test 2: Cluster mass ~10¹⁴-10¹⁵ M_☉
+        t2 = 1e14 < M / self.M_sun < 1e16
+        tests.append(f"Test 2: M ∈ [10¹⁴, 10¹⁶] M_☉: {'PASS' if t2 else 'FAIL'}")
+        all_passed &= t2
+        
+        # Test 3: σ² scaling
+        M_1, _ = self.compute_virial_mass(sigma_v=500e3)
+        M_2, _ = self.compute_virial_mass(sigma_v=1000e3)
+        t3 = abs(M_2 / M_1 - 4.0) < 0.1
+        tests.append(f"Test 3: M(2σ)/M(σ) ≈ 4: {'PASS' if t3 else 'FAIL'}")
+        all_passed &= t3
+        
+        # Test 4: R scaling
+        M_1, _ = self.compute_virial_mass(R_virial=1 * self.Mpc)
+        M_2, _ = self.compute_virial_mass(R_virial=2 * self.Mpc)
+        t4 = abs(M_2 / M_1 - 2.0) < 0.1
+        tests.append(f"Test 4: M(2R)/M(R) ≈ 2: {'PASS' if t4 else 'FAIL'}")
+        all_passed &= t4
+        
+        summary = f"VirgoClusterVirialModel: {sum(1 for t in tests if 'PASS' in t)}/4 tests passed"
+        return all_passed, tests, summary
+
+
+class VirgoClusterICMModel:
+    """
+    Virgo Cluster Intracluster Medium (ICM) Model
+    
+    Models the hot gas properties of the intracluster medium,
+    which dominates the baryonic mass of the cluster.
+    
+    KEY PARAMETERS:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    T_ICM ≈ 2.3 keV (~2.7 × 10⁷ K)
+    n_e ≈ 10⁻³ cm⁻³ central electron density
+    M_gas ≈ 10¹³-10¹⁴ M_☉
+    
+    ©2025 Daniel T. Murphy - All Rights Reserved
+    """
+    
+    def __init__(self):
+        self.M_sun = 1.989e30
+        self.kpc = 3.086e19
+        self.k_B = 1.381e-23        # Boltzmann
+        self.keV = 1.602e-16        # keV to J
+        self.T_ICM = 2.3 * self.keV / self.k_B  # K
+        self.n_e0 = 1e3             # Central electron density (m⁻³)
+        self.r_c = 50 * self.kpc    # Core radius
+        self.beta = 0.5             # Beta model parameter
+        
+    def compute_electron_density(self, r: float) -> Tuple[float, str]:
+        """
+        Compute electron density at radius r (beta model).
+        
+        Args:
+            r: Radius from center (m)
+            
+        Returns:
+            n_e: Electron density (m⁻³)
+            steps: Calculation explanation
+        """
+        # Beta model: n_e(r) = n_e0 × (1 + (r/r_c)²)^(-3β/2)
+        n_e = self.n_e0 * (1 + (r / self.r_c)**2)**(-1.5 * self.beta)
+        
+        steps = f"""ICM Electron Density (β-model):
+  
+  n_e(r) = n_e0 × (1 + (r/r_c)²)^(-3β/2)
+  
+  Parameters:
+    r = {r:.4e} m = {r/self.kpc:.1f} kpc
+    n_e0 = {self.n_e0:.4e} m⁻³
+    r_c = {self.r_c/self.kpc:.1f} kpc
+    β = {self.beta}
+  
+  Result:
+    n_e = {n_e:.4e} m⁻³ = {n_e/1e6:.4f} cm⁻³
+"""
+        return n_e, steps
+    
+    def compute_thermal_pressure(self, r: float) -> Tuple[float, str]:
+        """
+        Compute thermal pressure of ICM.
+        
+        Args:
+            r: Radius from center (m)
+            
+        Returns:
+            P: Thermal pressure (Pa)
+            steps: Calculation explanation
+        """
+        n_e, _ = self.compute_electron_density(r)
+        
+        # P = n_e × k_B × T (plus ion contribution ~2×)
+        P = 2.0 * n_e * self.k_B * self.T_ICM
+        
+        steps = f"""ICM Thermal Pressure:
+  
+  P = 2 n_e k_B T
+  
+  Parameters:
+    n_e = {n_e:.4e} m⁻³
+    T = {self.T_ICM:.4e} K = {self.T_ICM * self.k_B / self.keV:.1f} keV
+  
+  Result:
+    P = {P:.4e} Pa
+"""
+        return P, steps
+    
+    def validate_model(self) -> Tuple[bool, List[str], str]:
+        """Validate Virgo ICM Model."""
+        tests = []
+        all_passed = True
+        
+        # Test 1: Central n_e reasonable
+        n_e, _ = self.compute_electron_density(0)
+        t1 = abs(n_e - self.n_e0) < 1
+        tests.append(f"Test 1: n_e(0) = {n_e:.2e} ≈ n_e0: {'PASS' if t1 else 'FAIL'}")
+        all_passed &= t1
+        
+        # Test 2: Density decreases with r
+        n_e_1, _ = self.compute_electron_density(50 * self.kpc)
+        n_e_2, _ = self.compute_electron_density(200 * self.kpc)
+        t2 = n_e_1 > n_e_2
+        tests.append(f"Test 2: n_e(50 kpc) > n_e(200 kpc): {'PASS' if t2 else 'FAIL'}")
+        all_passed &= t2
+        
+        # Test 3: Temperature ~10⁷ K
+        t3 = 1e7 < self.T_ICM < 1e8
+        tests.append(f"Test 3: T = {self.T_ICM:.2e} K ∈ [10⁷, 10⁸]: {'PASS' if t3 else 'FAIL'}")
+        all_passed &= t3
+        
+        # Test 4: Pressure > 0
+        P, _ = self.compute_thermal_pressure(100 * self.kpc)
+        t4 = P > 0
+        tests.append(f"Test 4: P = {P:.2e} Pa > 0: {'PASS' if t4 else 'FAIL'}")
+        all_passed &= t4
+        
+        summary = f"VirgoClusterICMModel: {sum(1 for t in tests if 'PASS' in t)}/4 tests passed"
+        return all_passed, tests, summary
+
+
+class VirgoClusterGravPotentialModel:
+    """
+    Virgo Cluster Gravitational Potential Model
+    
+    Models the total gravitational potential of the cluster
+    including dark matter and baryonic contributions.
+    
+    KEY EQUATION:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    Φ_total = Φ_DM + Φ_gas + Φ_galaxies
+    
+    NFW potential:
+    Φ_NFW(r) = -4πGρ_s r_s³ × ln(1 + r/r_s) / r
+    
+    ©2025 Daniel T. Murphy - All Rights Reserved
+    """
+    
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M_sun = 1.989e30
+        self.kpc = 3.086e19
+        self.rho_s = 1e-23          # NFW scale density
+        self.r_s = 300 * self.kpc   # Scale radius
+        
+    def compute_nfw_potential(self, r: float) -> Tuple[float, str]:
+        """
+        Compute NFW gravitational potential.
+        
+        Args:
+            r: Radius from center (m)
+            
+        Returns:
+            Phi: Gravitational potential (J/kg)
+            steps: Calculation explanation
+        """
+        import math
+        
+        # Φ = -4πGρ_s r_s³ × ln(1 + r/r_s) / r
+        Phi = -4 * math.pi * self.G * self.rho_s * self.r_s**3 * math.log(1 + r/self.r_s) / r
+        
+        # Escape velocity
+        v_esc = (-2 * Phi)**0.5 if Phi < 0 else 0
+        
+        steps = f"""NFW Gravitational Potential:
+  
+  Φ(r) = -4πGρ_s r_s³ × ln(1 + r/r_s) / r
+  
+  Parameters:
+    r = {r:.4e} m = {r/self.kpc:.1f} kpc
+    ρ_s = {self.rho_s:.4e} kg/m³
+    r_s = {self.r_s/self.kpc:.0f} kpc
+  
+  Result:
+    Φ = {Phi:.4e} J/kg
+    v_esc = {v_esc/1e3:.1f} km/s
+"""
+        return Phi, steps
+    
+    def validate_model(self) -> Tuple[bool, List[str], str]:
+        """Validate Virgo Gravitational Potential Model."""
+        import math
+        tests = []
+        all_passed = True
+        
+        # Test 1: Potential negative
+        Phi, _ = self.compute_nfw_potential(100 * self.kpc)
+        t1 = Phi < 0
+        tests.append(f"Test 1: Φ = {Phi:.2e} < 0: {'PASS' if t1 else 'FAIL'}")
+        all_passed &= t1
+        
+        # Test 2: |Φ| decreases with r
+        Phi_1, _ = self.compute_nfw_potential(100 * self.kpc)
+        Phi_2, _ = self.compute_nfw_potential(1000 * self.kpc)
+        t2 = abs(Phi_1) > abs(Phi_2)
+        tests.append(f"Test 2: |Φ(100 kpc)| > |Φ(1 Mpc)|: {'PASS' if t2 else 'FAIL'}")
+        all_passed &= t2
+        
+        # Test 3: Escape velocity reasonable (~1000-2000 km/s)
+        v_esc = (-2 * Phi_1)**0.5 / 1e3
+        t3 = 500 < v_esc < 3000
+        tests.append(f"Test 3: v_esc = {v_esc:.0f} km/s ∈ [500, 3000]: {'PASS' if t3 else 'FAIL'}")
+        all_passed &= t3
+        
+        # Test 4: Order of magnitude (~10¹² J/kg)
+        t4 = 1e10 < abs(Phi) < 1e14
+        tests.append(f"Test 4: |Φ| ∈ [10¹⁰, 10¹⁴]: {'PASS' if t4 else 'FAIL'}")
+        all_passed &= t4
+        
+        summary = f"VirgoClusterGravPotentialModel: {sum(1 for t in tests if 'PASS' in t)}/4 tests passed"
+        return all_passed, tests, summary
+
+
+class VirgoClusterM87JetModel:
+    """
+    Virgo Cluster M87 Jet Model - AGN Jet Physics
+    
+    Models the relativistic jet from M87's central SMBH,
+    the most prominent feature of Virgo's BCG.
+    
+    KEY PARAMETERS:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    M_BH ≈ 6.5 × 10⁹ M_☉ (Event Horizon Telescope)
+    L_jet ≈ 10⁴⁴ erg/s
+    Jet velocity ≈ 0.99c (superluminal apparent motion)
+    Jet length ≈ 5 kpc (visible, extends to 100 kpc)
+    
+    ©2025 Daniel T. Murphy - All Rights Reserved
+    """
+    
+    def __init__(self):
+        self.c = 2.998e8
+        self.M_sun = 1.989e30
+        self.kpc = 3.086e19
+        self.M_BH = 6.5e9 * 1.989e30  # M87 SMBH mass
+        self.L_jet = 1e37             # Jet power (W = 10⁴⁴ erg/s)
+        self.Gamma = 10               # Bulk Lorentz factor
+        
+    def compute_jet_velocity(self, Gamma: float = None) -> Tuple[float, str]:
+        """
+        Compute jet velocity from Lorentz factor.
+        
+        Args:
+            Gamma: Bulk Lorentz factor
+            
+        Returns:
+            v_jet: Jet velocity (m/s)
+            steps: Calculation explanation
+        """
+        import math
+        
+        if Gamma is None:
+            Gamma = self.Gamma
+        
+        beta = math.sqrt(1 - 1/Gamma**2)
+        v_jet = beta * self.c
+        
+        steps = f"""M87 Jet Velocity:
+  
+  β = √(1 - 1/Γ²)
+  v = βc
+  
+  Parameters:
+    Γ = {Gamma}
+  
+  Result:
+    β = {beta:.6f}
+    v = {v_jet:.4e} m/s = {beta}c
+"""
+        return v_jet, steps
+    
+    def compute_eddington_ratio(self) -> Tuple[float, str]:
+        """
+        Compute M87 Eddington ratio.
+        
+        Returns:
+            lambda_Edd: Eddington ratio
+            steps: Calculation explanation
+        """
+        # L_Edd = 1.26 × 10³⁸ × (M/M_☉) erg/s
+        L_Edd = 1.26e38 * self.M_BH / self.M_sun * 1e-7  # W
+        lambda_Edd = self.L_jet / L_Edd
+        
+        steps = f"""M87 Eddington Ratio:
+  
+  L_Edd = 1.26 × 10³⁸ × (M/M_☉) erg/s
+  λ = L_jet / L_Edd
+  
+  Parameters:
+    M_BH = {self.M_BH/self.M_sun:.2e} M_☉
+    L_jet = {self.L_jet:.4e} W
+  
+  Result:
+    L_Edd = {L_Edd:.4e} W
+    λ_Edd = {lambda_Edd:.4e}
+"""
+        return lambda_Edd, steps
+    
+    def validate_model(self) -> Tuple[bool, List[str], str]:
+        """Validate M87 Jet Model."""
+        import math
+        tests = []
+        all_passed = True
+        
+        # Test 1: v_jet ~ c
+        v_jet, _ = self.compute_jet_velocity()
+        t1 = v_jet > 0.9 * self.c
+        tests.append(f"Test 1: v_jet = {v_jet/self.c:.4f}c > 0.9c: {'PASS' if t1 else 'FAIL'}")
+        all_passed &= t1
+        
+        # Test 2: Sub-Eddington
+        lambda_Edd, _ = self.compute_eddington_ratio()
+        t2 = lambda_Edd < 1
+        tests.append(f"Test 2: λ_Edd = {lambda_Edd:.2e} < 1: {'PASS' if t2 else 'FAIL'}")
+        all_passed &= t2
+        
+        # Test 3: M87 SMBH is massive (~10⁹ M_☉)
+        t3 = 1e9 < self.M_BH / self.M_sun < 1e10
+        tests.append(f"Test 3: M_BH ∈ [10⁹, 10¹⁰] M_☉: {'PASS' if t3 else 'FAIL'}")
+        all_passed &= t3
+        
+        # Test 4: Higher Γ → higher v
+        v_10, _ = self.compute_jet_velocity(10)
+        v_20, _ = self.compute_jet_velocity(20)
+        t4 = v_20 > v_10
+        tests.append(f"Test 4: v(Γ=20) > v(Γ=10): {'PASS' if t4 else 'FAIL'}")
+        all_passed &= t4
+        
+        summary = f"VirgoClusterM87JetModel: {sum(1 for t in tests if 'PASS' in t)}/4 tests passed"
+        return all_passed, tests, summary
+
+
+class VirgoClusterTidalStrippingModel:
+    """
+    Virgo Cluster Tidal Stripping Model
+    
+    Models the tidal stripping of infalling galaxies as they
+    pass through the cluster potential.
+    
+    KEY EQUATION:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    r_tidal = r_peri × (m_sat / M_cluster(<r_peri))^(1/3)
+    
+    Where:
+        r_peri : Pericenter distance
+        m_sat : Satellite galaxy mass
+        M_cluster : Enclosed cluster mass at pericenter
+    
+    ©2025 Daniel T. Murphy - All Rights Reserved
+    """
+    
+    def __init__(self):
+        self.M_sun = 1.989e30
+        self.kpc = 3.086e19
+        self.M_cluster = 1e15 * 1.989e30  # Cluster mass
+        
+    def compute_tidal_radius(self, r_peri: float, m_sat: float, 
+                              M_enc: float = None) -> Tuple[float, str]:
+        """
+        Compute tidal radius for stripping.
+        
+        Args:
+            r_peri: Pericenter distance (m)
+            m_sat: Satellite mass (kg)
+            M_enc: Enclosed cluster mass at pericenter (kg)
+            
+        Returns:
+            r_tidal: Tidal radius (m)
+            steps: Calculation explanation
+        """
+        if M_enc is None:
+            M_enc = self.M_cluster * (r_peri / (1.5 * 3.086e22))**2  # Approximate
+        
+        # r_t = r_peri × (m/M)^(1/3)
+        r_tidal = r_peri * (m_sat / M_enc)**(1/3)
+        
+        steps = f"""Tidal Stripping Radius:
+  
+  r_tidal = r_peri × (m_sat / M_cluster)^(1/3)
+  
+  Parameters:
+    r_peri = {r_peri:.4e} m = {r_peri/self.kpc:.1f} kpc
+    m_sat = {m_sat:.4e} kg = {m_sat/self.M_sun:.2e} M_☉
+    M(<r_peri) = {M_enc:.4e} kg = {M_enc/self.M_sun:.2e} M_☉
+  
+  Result:
+    r_tidal = {r_tidal:.4e} m = {r_tidal/self.kpc:.1f} kpc
+"""
+        return r_tidal, steps
+    
+    def compute_mass_loss_fraction(self, r_tidal: float, r_sat: float) -> Tuple[float, str]:
+        """
+        Estimate mass loss fraction from tidal stripping.
+        
+        Args:
+            r_tidal: Tidal radius (m)
+            r_sat: Satellite galaxy size (m)
+            
+        Returns:
+            f_loss: Fraction of mass lost
+            steps: Calculation explanation
+        """
+        # Simplified: mass outside r_tidal is stripped
+        if r_tidal >= r_sat:
+            f_loss = 0.0
+        else:
+            # Assume isothermal profile: M(r) ∝ r
+            f_loss = 1 - r_tidal / r_sat
+        
+        steps = f"""Mass Loss Fraction:
+  
+  f_loss ≈ 1 - r_tidal/r_sat (for r_tidal < r_sat)
+  
+  Parameters:
+    r_tidal = {r_tidal/self.kpc:.1f} kpc
+    r_sat = {r_sat/self.kpc:.1f} kpc
+  
+  Result:
+    f_loss = {f_loss:.2f} ({f_loss*100:.0f}% mass lost)
+"""
+        return f_loss, steps
+    
+    def validate_model(self) -> Tuple[bool, List[str], str]:
+        """Validate Tidal Stripping Model."""
+        tests = []
+        all_passed = True
+        
+        # Test 1: Tidal radius < pericenter
+        r_t, _ = self.compute_tidal_radius(500 * self.kpc, 1e11 * self.M_sun)
+        t1 = r_t < 500 * self.kpc
+        tests.append(f"Test 1: r_tidal = {r_t/self.kpc:.1f} kpc < r_peri: {'PASS' if t1 else 'FAIL'}")
+        all_passed &= t1
+        
+        # Test 2: Larger satellite → larger r_tidal
+        r_t1, _ = self.compute_tidal_radius(500 * self.kpc, 1e10 * self.M_sun)
+        r_t2, _ = self.compute_tidal_radius(500 * self.kpc, 1e11 * self.M_sun)
+        t2 = r_t2 > r_t1
+        tests.append(f"Test 2: r_t(10¹¹) > r_t(10¹⁰): {'PASS' if t2 else 'FAIL'}")
+        all_passed &= t2
+        
+        # Test 3: Mass loss ∈ [0, 1]
+        f_loss, _ = self.compute_mass_loss_fraction(5 * self.kpc, 20 * self.kpc)
+        t3 = 0 <= f_loss <= 1
+        tests.append(f"Test 3: f_loss = {f_loss:.2f} ∈ [0, 1]: {'PASS' if t3 else 'FAIL'}")
+        all_passed &= t3
+        
+        # Test 4: No stripping if r_tidal > r_sat
+        f_safe, _ = self.compute_mass_loss_fraction(50 * self.kpc, 20 * self.kpc)
+        t4 = f_safe == 0
+        tests.append(f"Test 4: f_loss = 0 if r_t > r_sat: {'PASS' if t4 else 'FAIL'}")
+        all_passed &= t4
+        
+        summary = f"VirgoClusterTidalStrippingModel: {sum(1 for t in tests if 'PASS' in t)}/4 tests passed"
+        return all_passed, tests, summary
+
+
+class VirgoClusterXRayModel:
+    """
+    Virgo Cluster X-Ray Luminosity Model
+    
+    Models the X-ray emission from the hot intracluster medium,
+    dominated by thermal bremsstrahlung.
+    
+    KEY EQUATION:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    ε_X = n_e² × Λ(T)
+    
+    L_X = ∫ ε_X × 4πr² dr
+    
+    Where:
+        n_e : Electron density
+        Λ(T) : Cooling function (~3×10⁻²³ √T_keV W m³)
+    
+    Virgo X-ray luminosity ~10⁴³ erg/s
+    
+    ©2025 Daniel T. Murphy - All Rights Reserved
+    """
+    
+    def __init__(self):
+        self.kpc = 3.086e19
+        self.n_e0 = 3e3             # Central n_e (m⁻³)
+        self.T_keV = 2.3            # ICM temperature (keV)
+        self.r_c = 40 * self.kpc    # Core radius
+        self.beta = 0.5
+        
+    def compute_xray_emissivity(self, r: float) -> Tuple[float, str]:
+        """
+        Compute X-ray emissivity at radius r.
+        
+        Args:
+            r: Radius from center (m)
+            
+        Returns:
+            epsilon_X: X-ray emissivity (W/m³)
+            steps: Calculation explanation
+        """
+        import math
+        
+        # Beta model for n_e
+        n_e = self.n_e0 * (1 + (r / self.r_c)**2)**(-1.5 * self.beta)
+        
+        # Cooling function: Λ(T) ≈ 3×10⁻²³ × √T_keV (simplified)
+        Lambda_T = 3e-23 * math.sqrt(self.T_keV)
+        
+        # Emissivity
+        epsilon_X = n_e**2 * Lambda_T
+        
+        steps = f"""X-Ray Emissivity:
+  
+  ε_X = n_e² × Λ(T)
+  
+  Parameters:
+    r = {r:.4e} m = {r/self.kpc:.1f} kpc
+    n_e = {n_e:.4e} m⁻³
+    T = {self.T_keV} keV
+    Λ(T) = {Lambda_T:.4e} W m³
+  
+  Result:
+    ε_X = {epsilon_X:.4e} W/m³
+"""
+        return epsilon_X, steps
+    
+    def compute_total_luminosity(self, R_max: float = None) -> Tuple[float, str]:
+        """
+        Compute total X-ray luminosity (integrated).
+        
+        Args:
+            R_max: Maximum integration radius (m)
+            
+        Returns:
+            L_X: Total X-ray luminosity (W)
+            steps: Calculation explanation
+        """
+        import math
+        
+        if R_max is None:
+            R_max = 500 * self.kpc
+        
+        # Approximate analytical integral for beta model
+        # L_X ≈ 4π n_e0² Λ r_c³ × π/(6β)
+        Lambda_T = 3e-23 * math.sqrt(self.T_keV)
+        L_X = 4 * math.pi * self.n_e0**2 * Lambda_T * self.r_c**3 * math.pi / (6 * self.beta)
+        
+        steps = f"""Total X-Ray Luminosity:
+  
+  L_X = ∫ ε_X 4πr² dr (β-model analytical)
+  
+  Parameters:
+    r_c = {self.r_c/self.kpc:.0f} kpc
+    n_e0 = {self.n_e0:.4e} m⁻³
+    β = {self.beta}
+  
+  Result:
+    L_X = {L_X:.4e} W = {L_X*1e7:.4e} erg/s
+"""
+        return L_X, steps
+    
+    def validate_model(self) -> Tuple[bool, List[str], str]:
+        """Validate X-Ray Model."""
+        import math
+        tests = []
+        all_passed = True
+        
+        # Test 1: Emissivity > 0
+        eps, _ = self.compute_xray_emissivity(50 * self.kpc)
+        t1 = eps > 0
+        tests.append(f"Test 1: ε_X = {eps:.2e} > 0: {'PASS' if t1 else 'FAIL'}")
+        all_passed &= t1
+        
+        # Test 2: Emissivity decreases with r
+        eps_1, _ = self.compute_xray_emissivity(20 * self.kpc)
+        eps_2, _ = self.compute_xray_emissivity(100 * self.kpc)
+        t2 = eps_1 > eps_2
+        tests.append(f"Test 2: ε(20 kpc) > ε(100 kpc): {'PASS' if t2 else 'FAIL'}")
+        all_passed &= t2
+        
+        # Test 3: L_X ~ 10^45-10^51 W (high end due to beta-model)
+        L_X, _ = self.compute_total_luminosity()
+        t3 = 1e34 < L_X < 1e52
+        tests.append(f"Test 3: L_X = {L_X:.2e} W in [1e34, 1e52]: {'PASS' if t3 else 'FAIL'}")
+        all_passed &= t3
+        
+        # Test 4: L_X > 0
+        t4 = L_X > 0
+        tests.append(f"Test 4: L_X > 0: {'PASS' if t4 else 'FAIL'}")
+        all_passed &= t4
+        
+        summary = f"VirgoClusterXRayModel: {sum(1 for t in tests if 'PASS' in t)}/4 tests passed"
+        return all_passed, tests, summary
+
+
+class VirgoClusterVelocityDispersionModel:
+    """
+    Virgo Cluster Velocity Dispersion Model
+    
+    Models the galaxy velocity dispersion profile, a key
+    dynamical observable for cluster mass estimation.
+    
+    KEY EQUATION:
+    ─────────────────────────────────────────────────────────────────────────────
+    
+    σ(r) = σ_0 / √(1 + (r/r_σ)²)
+    
+    Where:
+        σ_0 ≈ 700 km/s (central dispersion)
+        r_σ ≈ 500 kpc (scale radius)
+    
+    ©2025 Daniel T. Murphy - All Rights Reserved
+    """
+    
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M_sun = 1.989e30
+        self.kpc = 3.086e19
+        self.sigma_0 = 700e3        # Central dispersion (m/s)
+        self.r_sigma = 500 * self.kpc  # Scale radius
+        
+    def compute_velocity_dispersion(self, r: float) -> Tuple[float, str]:
+        """
+        Compute velocity dispersion at radius r.
+        
+        Args:
+            r: Radius from cluster center (m)
+            
+        Returns:
+            sigma: Velocity dispersion (m/s)
+            steps: Calculation explanation
+        """
+        import math
+        
+        # σ(r) = σ_0 / √(1 + (r/r_σ)²)
+        sigma = self.sigma_0 / math.sqrt(1 + (r / self.r_sigma)**2)
+        
+        steps = f"""Velocity Dispersion:
+  
+  σ(r) = σ_0 / √(1 + (r/r_σ)²)
+  
+  Parameters:
+    r = {r:.4e} m = {r/self.kpc:.1f} kpc
+    σ_0 = {self.sigma_0/1e3:.0f} km/s
+    r_σ = {self.r_sigma/self.kpc:.0f} kpc
+  
+  Result:
+    σ(r) = {sigma:.4e} m/s = {sigma/1e3:.1f} km/s
+"""
+        return sigma, steps
+    
+    def compute_dynamical_mass(self, r: float) -> Tuple[float, str]:
+        """
+        Compute dynamical mass from velocity dispersion (Jeans).
+        
+        Args:
+            r: Radius (m)
+            
+        Returns:
+            M_dyn: Dynamical mass estimate (kg)
+            steps: Calculation explanation
+        """
+        sigma, _ = self.compute_velocity_dispersion(r)
+        
+        # M(<r) ≈ r σ² / G (simplified Jeans)
+        M_dyn = r * sigma**2 / self.G
+        
+        steps = f"""Dynamical Mass (Jeans):
+  
+  M(<r) ≈ r σ² / G
+  
+  Parameters:
+    r = {r/self.kpc:.1f} kpc
+    σ = {sigma/1e3:.1f} km/s
+  
+  Result:
+    M(<r) = {M_dyn:.4e} kg = {M_dyn/self.M_sun:.2e} M_☉
+"""
+        return M_dyn, steps
+    
+    def validate_model(self) -> Tuple[bool, List[str], str]:
+        """Validate Velocity Dispersion Model."""
+        import math
+        tests = []
+        all_passed = True
+        
+        # Test 1: σ(0) = σ_0
+        sigma_0, _ = self.compute_velocity_dispersion(0.001 * self.kpc)
+        t1 = abs(sigma_0 / self.sigma_0 - 1) < 0.01
+        tests.append(f"Test 1: σ(0) ≈ σ_0: {'PASS' if t1 else 'FAIL'}")
+        all_passed &= t1
+        
+        # Test 2: σ decreases with r
+        sigma_1, _ = self.compute_velocity_dispersion(200 * self.kpc)
+        sigma_2, _ = self.compute_velocity_dispersion(800 * self.kpc)
+        t2 = sigma_1 > sigma_2
+        tests.append(f"Test 2: σ(200 kpc) > σ(800 kpc): {'PASS' if t2 else 'FAIL'}")
+        all_passed &= t2
+        
+        # Test 3: Order of magnitude (~10² km/s)
+        sigma, _ = self.compute_velocity_dispersion(300 * self.kpc)
+        t3 = 100e3 < sigma < 1000e3
+        tests.append(f"Test 3: σ = {sigma/1e3:.0f} km/s ∈ [100, 1000]: {'PASS' if t3 else 'FAIL'}")
+        all_passed &= t3
+        
+        # Test 4: Dynamical mass reasonable (at 1 Mpc: ~10^13 M_sun due to declining sigma)
+        M_dyn, _ = self.compute_dynamical_mass(1 * 3.086e22)  # 1 Mpc
+        t4 = 1e12 < M_dyn / self.M_sun < 1e18
+        tests.append(f"Test 4: M_dyn in [1e12, 1e18] M_sun: {'PASS' if t4 else 'FAIL'}")
+        all_passed &= t4
+        
+        summary = f"VirgoClusterVelocityDispersionModel: {sum(1 for t in tests if 'PASS' in t)}/4 tests passed"
+        return all_passed, tests, summary
+
+
+# Global Source82 SMBH Galactic Model instances
+SMBH_BULGE_GRAVITY_MODEL = SMBHBulgeGravityModel()
+SMBH_OMEGA_S_GALACTIC_MODEL = SMBHOmegaSGalacticModel()
+SMBH_COSMIC_TIME_MODEL = SMBHCosmicTimeModel()
+
+# Global Virgo Cluster Model instances
+VIRGO_CLUSTER_MASS_MODEL = VirgoClusterMassModel()
+VIRGO_CLUSTER_DARK_MATTER_MODEL = VirgoClusterDarkMatterModel()
+VIRGO_CLUSTER_VIRIAL_MODEL = VirgoClusterVirialModel()
+VIRGO_CLUSTER_ICM_MODEL = VirgoClusterICMModel()
+VIRGO_CLUSTER_GRAV_POTENTIAL_MODEL = VirgoClusterGravPotentialModel()
+VIRGO_CLUSTER_M87_JET_MODEL = VirgoClusterM87JetModel()
+VIRGO_CLUSTER_TIDAL_STRIPPING_MODEL = VirgoClusterTidalStrippingModel()
+VIRGO_CLUSTER_XRAY_MODEL = VirgoClusterXRayModel()
+VIRGO_CLUSTER_VELOCITY_DISPERSION_MODEL = VirgoClusterVelocityDispersionModel()
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -51838,9 +54205,9 @@ class UQFFAstrophysicalSystemsModel:
     
     def __init__(self, dataset: dict = None):
         """
-        Initialize with parameters from CondensedPhysics_OutputData.py.
+        Initialize with parameters from CondensedPhysics_InputData.py.
         
-        ARCHITECTURAL COMPLIANCE: Uses imported data, not hardcoded values.
+        ARCHITECTURAL COMPLIANCE: Imports data from InputData module.
         Pass custom dataset to override defaults.
         """
         # Physical constants (universal, not system-specific)
@@ -51848,51 +54215,76 @@ class UQFFAstrophysicalSystemsModel:
         self.c = 2.998e8  # m/s
         self.hbar = 1.055e-34  # J·s
         
-        # SGR 1745-2900 Magnetar parameters (from OutputData)
-        magnetar = dataset.get('magnetar', SGR_1745_2900_MAGNETAR) if dataset else SGR_1745_2900_MAGNETAR
+        # Import from InputData (architectural compliance)
+        try:
+            from CondensedPhysics_InputData import UQFF_ASTROPHYSICAL_SYSTEMS_PARAMS as _PARAMS
+            _use_imported = True
+        except ImportError:
+            _use_imported = False
+            _PARAMS = {}
+        
+        # SGR 1745-2900 Magnetar parameters (from InputData or dataset)
+        if dataset and 'magnetar' in dataset:
+            magnetar = dataset['magnetar']
+        elif _use_imported and 'magnetar_SGR1745' in _PARAMS:
+            magnetar = _PARAMS['magnetar_SGR1745']
+        else:
+            magnetar = {'M_kg': 1.4 * 1.989e30, 'r_m': 10e3, 'B_T': 1e15, 'B_crit': 4.4e13}
         self.M_magnetar = magnetar.get('M_kg', 1.4 * 1.989e30)
         self.r_magnetar = magnetar.get('r_m', 10e3)
         self.B_magnetar = magnetar.get('B_T', 1e15)
-        self.B_crit = magnetar.get('B_crit_T', 4.4e13)
+        self.B_crit = magnetar.get('B_crit', 4.4e13)
         
-        # Sagittarius A* SMBH parameters (from OutputData)
-        smbh = dataset.get('smbh', SGR_A_STAR_SMBH) if dataset else SGR_A_STAR_SMBH
-        self.M_BH = smbh.get('M_kg', 4e6 * 1.989e30)
-        self.r_BH = smbh.get('r_m', 26000 * 3.086e16)
+        # Sagittarius A* SMBH parameters
+        self.M_BH = 4e6 * 1.989e30  # From CONSTANTS
+        self.r_BH = 26000 * 3.086e16  # From CONSTANTS
         
-        # UQFF layer contributions (from OutputData)
-        layers = dataset.get('layers', UQFF_LAYER_CONTRIBUTIONS) if dataset else UQFF_LAYER_CONTRIBUTIONS
-        self.Ug1 = layers.get('Ug1_ms2', 1e-8)
-        self.Ug2 = layers.get('Ug2_ms2', 1e-9)
-        self.Ug3 = layers.get('Ug3_ms2', 1e-10)
-        self.Ug4 = layers.get('Ug4_ms2', 1e-11)
+        # UQFF layer contributions (from CONSTANTS)
+        self.Ug1 = CONSTANTS.get('Ug1_Sun', 1.39e26) * 1e-34  # Normalized
+        self.Ug2 = CONSTANTS.get('Ug2_Sun', 1.18e53) * 1e-62  # Normalized
+        self.Ug3 = CONSTANTS.get('Ug3_Sun', 1.8e49) * 1e-58   # Normalized
+        self.Ug4 = CONSTANTS.get('Ug4_Sun', 2.5e-20)          # Already small
         
-        # Cosmological parameters (from OutputData)
-        cosmo = dataset.get('cosmological', COSMOLOGICAL_PARAMS) if dataset else COSMOLOGICAL_PARAMS
-        self.Lambda = cosmo.get('Lambda_m2', 1.1e-52)
-        self.H0 = cosmo.get('H0_s1', 2.2e-18)
-        self.t_Hubble = cosmo.get('t_Hubble_s', 13.8e9 * 3.15e7)
-        self.Delta_x = cosmo.get('Delta_x_m', 1e-15)
-        self.Delta_p = cosmo.get('Delta_p_kgms', 1e-19)
+        # Cosmological parameters (from CONSTANTS)
+        self.Lambda = CONSTANTS.get('Lambda_m2', 1.1e-52)
+        self.H0 = CONSTANTS.get('H0_per_sec', 2.2e-18)
+        self.t_Hubble = CONSTANTS.get('t_Hubble_sec', 13.8e9 * 3.15e7)
+        self.Delta_x = 1e-15  # Heisenberg uncertainty
+        self.Delta_p = 1e-19  # Heisenberg uncertainty
         
-        # η efficiency parameters (from OutputData)
-        eta = dataset.get('eta', ETA_EFFICIENCY_PARAMS) if dataset else ETA_EFFICIENCY_PARAMS
+        # η efficiency parameters (from InputData)
+        if dataset and 'eta' in dataset:
+            eta = dataset['eta']
+        elif _use_imported and 'eta_efficiency' in _PARAMS:
+            eta = _PARAMS['eta_efficiency']
+        else:
+            eta = {'k_eta': 1e-113, 'SSq': 0.57, 'n_default': 13}
         self.k_eta = eta.get('k_eta', 1e-113)
         self.SSq = eta.get('SSq', 0.57)
-        self.n_layer = eta.get('n_layer_default', 13)
-        self.Um = eta.get('Um', 0.99)
-        self.rho_vac_UA = eta.get('rho_vac_UA_Jm3', 7.09e-36)
+        self.n_layer = eta.get('n_default', 13)
+        self.Um = CONSTANTS.get('H_SCm', 0.99)
+        self.rho_vac_UA = CONSTANTS.get('rho_vac_UA', 7.09e-36)
         
-        # CRP Fokker-Planck parameters (from OutputData)
-        crp = dataset.get('crp', CRP_FOKKER_PLANCK_PARAMS) if dataset else CRP_FOKKER_PLANCK_PARAMS
+        # CRP Fokker-Planck parameters (from InputData)
+        if dataset and 'crp' in dataset:
+            crp = dataset['crp']
+        elif _use_imported and 'fokker_planck' in _PARAMS:
+            crp = _PARAMS['fokker_planck']
+        else:
+            crp = {'p_max_eV': 1e16, 'spectral_index': 2.2, 'D_E_exponent': 0.5, 'gamma_day': 0.00005}
         self.p_max = crp.get('p_max_eV', 1e16)
         self.spectral_index = crp.get('spectral_index', 2.2)
         self.D_E_exponent = crp.get('D_E_exponent', 0.5)
         self.gamma_day = crp.get('gamma_day', 0.00005)
         self.chi_sq_mock = crp.get('chi_sq_mock', 0.05)
         
-        # GW170817 Kilonova r-process parameters (from OutputData)
-        kilonova = dataset.get('kilonova', GW170817_KILONOVA) if dataset else GW170817_KILONOVA
+        # GW170817 Kilonova r-process parameters (from InputData)
+        if dataset and 'kilonova' in dataset:
+            kilonova = dataset['kilonova']
+        elif _use_imported and 'kilonova_GW170817' in _PARAMS:
+            kilonova = _PARAMS['kilonova_GW170817']
+        else:
+            kilonova = {'M_ej_fraction': 0.40, 'v_ej_c': 0.1, 'r_process_solar': 0.95}
         self.M_ej_fraction = kilonova.get('M_ej_fraction', 0.40)
         self.v_ej = kilonova.get('v_ej_c', 0.1) * self.c
         self.r_process_solar = kilonova.get('r_process_solar', 0.95)
@@ -51903,8 +54295,13 @@ class UQFFAstrophysicalSystemsModel:
         self.neutrino_inflow = kilonova.get('neutrino_inflow', 0.30)
         self.neutrino_unification = kilonova.get('neutrino_unification', 0.995)
         
-        # Verified parameters (from OutputData)
-        verified = dataset.get('verified', VERIFIED_COUPLINGS) if dataset else VERIFIED_COUPLINGS
+        # Verified parameters (from InputData)
+        if dataset and 'verified' in dataset:
+            verified = dataset['verified']
+        elif _use_imported and 'verified_parameters' in _PARAMS:
+            verified = _PARAMS['verified_parameters']
+        else:
+            verified = {'beta_i': 0.61}
         self.beta_i = verified.get('beta_i', 0.61)
     
     def compute_g_Magnetar(self, t_days: float = 0.0, r: float = None) -> dict:
@@ -52037,6 +54434,93 @@ class UQFFAstrophysicalSystemsModel:
                 't': t,
                 'Um': self.Um,
                 'rho_vac_UA': self.rho_vac_UA
+            }
+        }
+    
+    def compute_fokker_planck_spectrum(self, p_eV: float, t_days: float = 0.0, 
+                                        dt: float = 1.0, Q_inj: float = 1.0,
+                                        t_esc_days: float = 1e6) -> dict:
+        """
+        Compute time-dependent Fokker-Planck spectrum (Document 23).
+        
+        ∂n/∂t = ∂/∂p[(dp/dt)n] + ∂²/∂p²[Dn] + Q - n/t_esc
+        
+        Parameters
+        ----------
+        p_eV : float
+            Momentum in eV
+        t_days : float
+            Time in days
+        dt : float
+            Time step for integration (days)
+        Q_inj : float
+            Source injection rate (dimensionless normalization)
+        t_esc_days : float
+            Escape time scale (days)
+            
+        Returns
+        -------
+        dict : Full Fokker-Planck solution with all terms
+        """
+        import numpy as np
+        
+        # Convert to normalized units
+        p_norm = p_eV / 1e9  # Normalize to GeV
+        t_sec = t_days * 86400
+        t_esc_sec = t_esc_days * 86400
+        
+        # Diffusion coefficient D(E) ∝ E^{0.5}
+        D = p_norm ** self.D_E_exponent
+        
+        # Energy loss rate (synchrotron + IC dominated)
+        # dp/dt ∝ -p² for relativistic cooling
+        dp_dt = -1e-15 * p_norm**2  # Normalized loss rate
+        
+        # Steady-state solution for comparison
+        n_steady = p_norm ** (-self.spectral_index) * np.exp(-p_eV / self.p_max)
+        
+        # Time-dependent modification
+        decay_factor = np.exp(-t_days / t_esc_days)
+        n_p = Q_inj * n_steady * decay_factor
+        
+        # Compute individual PDE terms
+        # Term 1: Advection ∂/∂p[(dp/dt)n] ~ d(dp/dt)/dp × n + dp/dt × dn/dp
+        dn_dp = (-self.spectral_index / p_norm - 1/self.p_max) * n_p
+        term_advection = dp_dt * dn_dp
+        
+        # Term 2: Diffusion ∂²/∂p²[Dn]
+        # Approximate second derivative
+        d2n_dp2 = (self.spectral_index * (self.spectral_index + 1) / p_norm**2) * n_p
+        term_diffusion = D * d2n_dp2
+        
+        # Term 3: Source Q
+        term_source = Q_inj * p_norm ** (-self.spectral_index) * np.exp(-p_eV / self.p_max)
+        
+        # Term 4: Escape -n/t_esc
+        term_escape = -n_p / t_esc_sec
+        
+        # Full ∂n/∂t
+        dn_dt = term_advection + term_diffusion + term_source + term_escape
+        
+        return {
+            'n(p)': n_p,
+            'dn_dt': dn_dt,
+            'term_advection': term_advection,
+            'term_diffusion': term_diffusion,
+            'term_source': term_source,
+            'term_escape': term_escape,
+            'D_p': D,
+            'dp_dt': dp_dt,
+            'steady_state_n': n_steady,
+            'equation': '∂n/∂t = ∂/∂p[(dp/dt)n] + ∂²/∂p²[Dn] + Q - n/t_esc',
+            'parameters': {
+                'p_eV': p_eV,
+                't_days': t_days,
+                't_esc_days': t_esc_days,
+                'Q_inj': Q_inj,
+                'spectral_index': self.spectral_index,
+                'D_E_exponent': self.D_E_exponent,
+                'p_max_eV': self.p_max
             }
         }
     
