@@ -12718,7 +12718,8 @@ public:
         {
             string filename = "coAnQi_log_" + to_string(time(nullptr)) + ".txt";
             logFile.open(filename);
-            log("=== CoAnQi Verbose Logger Initialized ===", 1);
+            // Note: Initialization message moved to explicit init() call to avoid
+            // stdout contamination during global construction (before CLI check)
         }
     }
 
@@ -23616,6 +23617,109 @@ int main(int argc, char *argv[])
     QCoreApplication app(argc, argv);
 #endif
 
+    // ========== CLI ACCESS POINT FOR PYTHON INTEGRATION ==========
+    // MUST be BEFORE any logger output to avoid JSON contamination
+    // Disable global logger for CLI mode
+    if (argc >= 2) {
+        std::string arg1 = argv[1];
+        if (arg1 == "--batch" || arg1 == "--list-systems" || arg1 == "--system-info") {
+            g_logger.disable();  // Suppress all logger output for CLI mode
+        }
+    }
+    
+    // Enables subprocess calls from APIFetch.py/QCalc.py/CoAnQi_Wrapper.py
+    // Usage: MAIN_1_CoAnQi.exe --batch "Sagittarius A*"
+    // Output: JSON to stdout for parsing
+    if (argc >= 2) {
+        std::string arg1 = argv[1];
+        
+        // Initialize systems database (needed for all CLI modes)
+        map<string, SystemParams> systems = initializeSystems();
+        
+        if (argc >= 3 && arg1 == "--batch") {
+            std::string system_name = argv[2];
+            
+            // Validate system exists
+            if (systems.find(system_name) == systems.end()) {
+                std::cerr << "{" << std::endl;
+                std::cerr << "  \"status\": \"error\"," << std::endl;
+                std::cerr << "  \"error\": \"System not found: " << system_name << "\"," << std::endl;
+                std::cerr << "  \"available_systems\": " << systems.size() << std::endl;
+                std::cerr << "}" << std::endl;
+                return 1;
+            }
+            
+            SystemParams p = systems[system_name];
+            
+            // Compute UQFF (no tracing to avoid stdout contamination)
+            double F_result = F_U_Bi_i(p);
+            double g_result = compressed_g(p);
+            double F_jet = F_jet_rel(p);
+            double E_acc = E_acc_rel(p);
+            double F_drag = F_drag_rel(p);
+            double F_gw = F_gw_rel(p);
+            
+            // Output JSON for Python parsing
+            std::cout << "{" << std::endl;
+            std::cout << "  \"status\": \"success\"," << std::endl;
+            std::cout << "  \"system_name\": \"" << system_name << "\"," << std::endl;
+            std::cout << "  \"F_U_Bi_i\": " << std::scientific << F_result << "," << std::endl;
+            std::cout << "  \"g_compressed\": " << std::scientific << g_result << "," << std::endl;
+            std::cout << "  \"F_jet_rel\": " << std::scientific << F_jet << "," << std::endl;
+            std::cout << "  \"E_acc_rel\": " << std::scientific << E_acc << "," << std::endl;
+            std::cout << "  \"F_drag_rel\": " << std::scientific << F_drag << "," << std::endl;
+            std::cout << "  \"F_gw_rel\": " << std::scientific << F_gw << std::endl;
+            std::cout << "}" << std::endl;
+            return 0;
+        }
+        else if (arg1 == "--list-systems") {
+            std::cout << "{" << std::endl;
+            std::cout << "  \"status\": \"success\"," << std::endl;
+            std::cout << "  \"total_systems\": " << systems.size() << "," << std::endl;
+            std::cout << "  \"systems\": [" << std::endl;
+            
+            size_t count = 0;
+            for (const auto& sys_pair : systems) {
+                std::cout << "    \"" << sys_pair.first << "\"";
+                if (++count < systems.size()) std::cout << ",";
+                std::cout << std::endl;
+            }
+            
+            std::cout << "  ]" << std::endl;
+            std::cout << "}" << std::endl;
+            return 0;
+        }
+        else if (argc >= 3 && arg1 == "--system-info") {
+            std::string system_name = argv[2];
+            
+            if (systems.find(system_name) == systems.end()) {
+                std::cerr << "{" << std::endl;
+                std::cerr << "  \"status\": \"error\"," << std::endl;
+                std::cerr << "  \"error\": \"System not found: " << system_name << "\"" << std::endl;
+                std::cerr << "}" << std::endl;
+                return 1;
+            }
+            
+            SystemParams p = systems[system_name];
+            
+            std::cout << "{" << std::endl;
+            std::cout << "  \"status\": \"success\"," << std::endl;
+            std::cout << "  \"system_name\": \"" << system_name << "\"," << std::endl;
+            std::cout << "  \"M\": " << std::scientific << p.M << "," << std::endl;
+            std::cout << "  \"r\": " << std::scientific << p.r << "," << std::endl;
+            std::cout << "  \"L_X\": " << std::scientific << p.L_X << "," << std::endl;
+            std::cout << "  \"B0\": " << std::scientific << p.B0 << "," << std::endl;
+            std::cout << "  \"omega0\": " << std::scientific << p.omega0 << "," << std::endl;
+            std::cout << "  \"v\": " << std::scientific << p.v << "," << std::endl;
+            std::cout << "  \"T\": " << std::scientific << p.T << std::endl;
+            std::cout << "}" << std::endl;
+            return 0;
+        }
+    }
+    // ========== END CLI ACCESS POINT ==========
+
+    //Log initialization message now that CLI check is complete
+    g_logger.log("=== CoAnQi Verbose Logger Initialized ===", 1);
     g_logger.log("=== CoAnQi UQFF Calculator Started ===", 1);
     g_logger.log("Self-Expanding, Self-Updating, Self-Simulating Framework", 1);
 
@@ -23627,7 +23731,7 @@ int main(int argc, char *argv[])
     if (mainSpan)
         mainSpan->setAttribute("version", "2.0");
 
-    // Initialize systems database
+    // Initialize systems database (already initialized above for CLI mode)
     map<string, SystemParams> systems = initializeSystems();
     g_logger.log("Loaded " + to_string(systems.size()) + " predefined systems", 1);
     TRACE_EVENT("Loaded " + to_string(systems.size()) + " predefined systems", TraceLevel::TRACE_INFO);

@@ -85,8 +85,8 @@ def test_cli_batch_mode(exe_path):
     
     test_systems = [
         "Sagittarius A*",
-        "Betelgeuse",
-        "M87"
+        "M82",
+        "Lagoon Nebula M8"
     ]
     
     for system_name in test_systems:
@@ -161,7 +161,7 @@ def test_system_info(exe_path):
     """Test --system-info flag"""
     print_header("4. Testing System Info (--system-info)")
     
-    test_system = "Betelgeuse"
+    test_system = "M82"
     
     try:
         result = subprocess.run(

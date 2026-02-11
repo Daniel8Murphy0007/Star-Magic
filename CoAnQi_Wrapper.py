@@ -162,7 +162,7 @@ class CoAnQiCalculator:
             try:
                 data = json.loads(result.stdout)
                 return CoAnQiResult(
-                    system_name=data['system'],
+                    system_name=data['system_name'],  # Fixed: C++ outputs 'system_name' not 'system'
                     F_U_Bi_i=data['F_U_Bi_i'],
                     g_compressed=data['g_compressed'],
                     F_jet_rel=data.get('F_jet_rel'),
