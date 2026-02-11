@@ -100,6 +100,7 @@ API KEYS CONFIGURED:
     - NASA_API_KEY_1: PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg
     - NASA_API_KEY_2: FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz
     - MAST_API_KEY: emXvt90Htf0U4RogKTB5lqSxClUeg2pvMQxvZciM
+    - XAI_API_KEY (Grok): Set via environment variable XAI_API_KEY
 
 OUTPUT: 
     All results written to IPData.py (InputParameters dataclass)
@@ -128,7 +129,7 @@ API_KEYS = {
     'NASA_API_KEY_1': os.environ.get('NASA_API_KEY_1', 'PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg'),
     'NASA_API_KEY_2': os.environ.get('NASA_API_KEY_2', 'FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz'),
     'MAST_API_KEY': os.environ.get('MAST_API_KEY', 'emXvt90Htf0U4RogKTB5lqSxClUeg2pvMQxvZciM'),
-    'XAI_API_KEY': os.environ.get('XAI_API_KEY', ''),  # Grok AI
+    'XAI_API_KEY': os.environ.get('XAI_API_KEY'),  # Grok AI - Set environment variable
     'OPENAI_API_KEY': os.environ.get('OPENAI_API_KEY', ''),
     'ANTHROPIC_API_KEY': os.environ.get('ANTHROPIC_API_KEY', ''),
     'WOLFRAM_APP_ID': os.environ.get('WOLFRAM_APP_ID', ''),
