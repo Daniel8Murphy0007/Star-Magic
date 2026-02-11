@@ -11,6 +11,7 @@
 #include "source2_mainwindow.h"
 #include <QLineEdit>        // Single-line text input widget - allows user to enter and edit text
 #include <QTextEdit>        // Multi-line text editor widget - allows editing and displaying plain/rich text
+#include <QScrollBar>       // Scrollbar widget - provides vertical/horizontal scrolling
 #include <QWebEngineView>   // Web browser widget - displays web content using Chromium engine (Qt6 WebEngineWidgets)
 #include <QTabWidget>       // Tab container widget - provides tab bar and page area for switching between pages
 #include <QVBoxLayout>      // Vertical box layout manager - arranges widgets vertically
@@ -179,6 +180,274 @@ struct SearchResult
     std::string summary; // AI-generated summary of the content (from GPT-4 or Llama)
     double relevance;    // Relevance score (0.0 to 1.0) - how well result matches query
     bool isLive;         // Flag indicating if this is real-time live data (LIGO, JWST streams)
+};
+
+// ============================================================================
+// POWERSHELL TERMINAL WIDGET - Embedded terminal for MAIN_1_CoAnQi.exe
+// ============================================================================
+
+/**
+ * @brief Interactive terminal widget for MAIN_1_CoAnQi.exe calculator
+ * 
+ * Provides embedded terminal access to the C++ calculator's 16-option interactive menu:
+ * 1. Calculate system (single) - F_U_Bi_i, g_compressed, validation_pipeline
+ * 2. Calculate ALL systems (parallel) - Windows threading, SimpleMutex
+ * 3. Clone and mutate system - SystemParams deep copy + parameter perturbation
+ * 4. Add custom system - Runtime system registration
+ * 5. Add dynamic physics term - PhysicsTerm instantiation
+ * 6. Run simulations - Time-series evolution
+ * 7. Statistical analysis - Ensemble statistics
+ * 8. Self-optimization - Learning rate auto-tuning
+ * 9-16. Wolfram/Cosmic Egg/Grok/SOURCE4 features
+ * 
+ * Reserved for Tab 1 (index 0) exclusively at Source2 startup.
+ */
+class PowerShellTerminalWidget : public QWidget {
+    Q_OBJECT
+
+public:
+    explicit PowerShellTerminalWidget (QWidget* parent = nullptr)
+        : QWidget(parent) {
+        
+        QVBoxLayout* layout = new QVBoxLayout(this);
+        
+        // Output display (read-only terminal output)
+        terminalOutput = new QTextEdit(this);
+        terminalOutput->setReadOnly(true);
+        terminalOutput->setStyleSheet(
+            "background-color: #0C0C0C; "  // PowerShell black background
+            "color: #CCCCCC; "              // Light gray text
+            "font-family: 'Consolas', 'Courier New', monospace; "
+            "font-size: 10pt; "
+            "padding: 10px;"
+        );
+        terminalOutput->setLineWrapMode(QTextEdit::NoWrap);
+        layout->addWidget(terminalOutput);
+        
+        // Input field with prompt
+        QHBoxLayout* inputLayout = new QHBoxLayout();
+        
+        promptLabel = new QLabel(">>", this);
+        promptLabel->setStyleSheet(
+            "color: #00FF00; "  // Green prompt
+            "font-family: 'Consolas', 'Courier New', monospace; "
+            "font-size: 10pt; "
+            "font-weight: bold; "
+            "padding: 5px;"
+        );
+        inputLayout->addWidget(promptLabel);
+        
+        terminalInput = new QLineEdit(this);
+        terminalInput->setStyleSheet(
+            "background-color: #0C0C0C; "
+            "color: #CCCCCC; "
+            "font-family: 'Consolas', 'Courier New', monospace; "
+            "font-size: 10pt; "
+            "border: none; "
+            "padding: 5px;"
+        );
+        terminalInput->setPlaceholderText("Enter menu option (1-16) or 'help' for commands...");
+        inputLayout->addWidget(terminalInput);
+        
+        layout->addLayout(inputLayout);
+        
+        setLayout(layout);
+        
+        // Create process for MAIN_1_CoAnQi.exe
+        process = new QProcess(this);
+        process->setWorkingDirectory(QCoreApplication::applicationDirPath());
+        
+        // Connect process signals
+        connect(process, &QProcess::readyReadStandardOutput, this, &PowerShellTerminalWidget::handleStdout);
+        connect(process, &QProcess::readyReadStandardError, this, &PowerShellTerminalWidget::handleStderr);
+        connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
+                this, &PowerShellTerminalWidget::handleProcessFinished);
+        
+        // Connect input field
+        connect(terminalInput, &QLineEdit::returnPressed, this, &PowerShellTerminalWidget::sendCommand);
+        
+        // Start MAIN_1_CoAnQi.exe in interactive mode
+        startCalculator();
+    }
+    
+    ~PowerShellTerminalWidget() {
+        if (process && process->state() == QProcess::Running) {
+            // Send Exit command (option 16 for Cosmic Egg build, varies by build)
+            process->write("16\n");  
+            process->waitForFinished(3000);
+            if (process->state() == QProcess::Running) {
+                process->kill();
+            }
+        }
+    }
+
+private slots:
+    void startCalculator() {
+        // Find MAIN_1_CoAnQi.exe in application directory
+        QString exePath = QCoreApplication::applicationDirPath() + "/MAIN_1_CoAnQi.exe";
+        
+        if (!QFile::exists(exePath)) {
+            terminalOutput->setTextColor(QColor("#FF0000"));
+            terminalOutput->append("❌ Error: MAIN_1_CoAnQi.exe not found\n");
+            terminalOutput->setTextColor(QColor("#FFFF00"));
+            terminalOutput->append("   Expected location: " + exePath + "\n\n");
+            terminalOutput->append("Build the calculator first:\n");
+            terminalOutput->append("   cmake --build build_msvc --config Release --target MAIN_1_CoAnQi\n\n");
+            terminalOutput->setTextColor(QColor("#CCCCCC"));
+            terminalOutput->append("Or copy MAIN_1_CoAnQi.exe to: " + QCoreApplication::applicationDirPath() + "\n");
+            return;
+        }
+        
+        terminalOutput->setTextColor(QColor("#00FFFF"));  // Cyan header
+        terminalOutput->append("════════════════════════════════════════════════════════════\n");
+        terminalOutput->append("  MAIN_1_CoAnQi Interactive Calculator - Embedded Mode\n");
+        terminalOutput->append("════════════════════════════════════════════════════════════\n\n");
+        terminalOutput->setTextColor(QColor("#CCCCCC"));
+        terminalOutput->append("Launching C++ calculator with 16-option interactive menu...\n\n");
+        
+        // Start process directly (native C++ executable, no PowerShell wrapper)
+        process->start(exePath, QStringList());
+        
+        if (!process->waitForStarted(5000)) {
+            terminalOutput->setTextColor(QColor("#FF0000"));
+            terminalOutput->append("❌ Failed to start MAIN_1_CoAnQi.exe\n");
+            terminalOutput->append("   Error: " + process->errorString() + "\n");
+            terminalOutput->setTextColor(QColor("#CCCCCC"));
+        } else {
+            terminalOutput->setTextColor(QColor("#00FF00"));
+            terminalOutput->append("✅ Calculator started successfully\n");
+            terminalOutput->setTextColor(QColor("#CCCCCC"));
+            terminalOutput->append("   PID: " + QString::number(process->processId()) + "\n\n");
+            terminalOutput->append("Waiting for menu...\n");
+        }
+    }
+    
+    void handleStdout() {
+        QByteArray data = process->readAllStandardOutput();
+        QString text = QString::fromLocal8Bit(data);
+        
+        // Append to output (preserving formatting)
+        terminalOutput->moveCursor(QTextCursor::End);
+        terminalOutput->insertPlainText(text);
+        terminalOutput->moveCursor(QTextCursor::End);
+        
+        // Auto-scroll to bottom
+        QScrollBar* scrollBar = terminalOutput->verticalScrollBar();
+        scrollBar->setValue(scrollBar->maximum());
+    }
+    
+    void handleStderr() {
+        QByteArray data = process->readAllStandardError();
+        QString text = QString::fromLocal8Bit(data);
+        
+        // Display errors in red
+        terminalOutput->moveCursor(QTextCursor::End);
+        terminalOutput->setTextColor(QColor("#FF0000"));
+        terminalOutput->insertPlainText(text);
+        terminalOutput->setTextColor(QColor("#CCCCCC"));
+        terminalOutput->moveCursor(QTextCursor::End);
+    }
+    
+    void handleProcessFinished(int exitCode, QProcess::ExitStatus exitStatus) {
+        terminalOutput->append("\n");
+        terminalOutput->setTextColor(QColor("#FFFF00"));  // Yellow for process termination
+        terminalOutput->append("════════════════════════════════════════════════════════════\n");
+        terminalOutput->append("  Process Terminated\n");
+        terminalOutput->append("════════════════════════════════════════════════════════════\n");
+        terminalOutput->setTextColor(QColor("#CCCCCC"));
+        terminalOutput->append("Exit Code: " + QString::number(exitCode) + "\n");
+        
+        if (exitStatus == QProcess::CrashExit) {
+            terminalOutput->setTextColor(QColor("#FF0000"));
+            terminalOutput->append("Status: CRASHED (abnormal termination)\n");
+        } else {
+            terminalOutput->setTextColor(QColor("#00FF00"));
+            terminalOutput->append("Status: Normal Exit\n");
+        }
+        
+        terminalOutput->setTextColor(QColor("#CCCCCC"));
+        terminalOutput->append("\nCommands:\n");
+        terminalOutput->append("  restart - Restart the calculator\n");
+        terminalOutput->append("  clear   - Clear terminal output\n");
+        terminalOutput->append("  Or close this tab to exit\n");
+        terminalInput->setEnabled(true);
+    }
+    
+    void sendCommand() {
+        QString command = terminalInput->text().trimmed();
+        
+        if (command.isEmpty()) {
+            return;
+        }
+        
+        // Special commands (case-insensitive)
+        QString lowerCmd = command.toLower();
+        
+        if (lowerCmd == "restart") {
+            terminalOutput->setTextColor(QColor("#FFFF00"));
+            terminalOutput->append("\n🔄 Restarting calculator...\n\n");
+            terminalOutput->setTextColor(QColor("#CCCCCC"));
+            
+            if (process->state() == QProcess::Running) {
+                process->kill();
+                process->waitForFinished();
+            }
+            terminalOutput->clear();
+            startCalculator();
+            terminalInput->clear();
+            return;
+        }
+        
+        if (lowerCmd == "clear" || lowerCmd == "cls") {
+            terminalOutput->clear();
+            terminalOutput->setTextColor(QColor("#00FFFF"));
+            terminalOutput->append("Terminal cleared. Process still running (PID: " + 
+                                  QString::number(process->processId()) + ")\n\n");
+            terminalOutput->setTextColor(QColor("#CCCCCC"));
+            terminalInput->clear();
+            return;
+        }
+        
+        if (lowerCmd == "help") {
+            terminalOutput->setTextColor(QColor("#00FFFF"));
+            terminalOutput->append("\n════════════════════════════════════════════════════════════\n");
+            terminalOutput->append("  Embedded Terminal Commands\n");
+            terminalOutput->append("════════════════════════════════════════════════════════════\n");
+            terminalOutput->setTextColor(QColor("#CCCCCC"));
+            terminalOutput->append("  restart - Restart MAIN_1_CoAnQi.exe\n");
+            terminalOutput->append("  clear   - Clear terminal output (process keeps running)\n");
+            terminalOutput->append("  help    - Show this help message\n");
+            terminalOutput->append("  1-16    - MAIN_1_CoAnQi menu options\n\n");
+            terminalOutput->setTextColor(QColor("#00FF00"));
+            terminalOutput->append("All other input is sent directly to MAIN_1_CoAnQi.exe\n\n");
+            terminalOutput->setTextColor(QColor("#CCCCCC"));
+            terminalInput->clear();
+            return;
+        }
+        
+        // Echo command to output (green color for user input)
+        terminalOutput->moveCursor(QTextCursor::End);
+        terminalOutput->setTextColor(QColor("#00FF00"));  // Green for input
+        terminalOutput->insertPlainText(">> " + command + "\n");
+        terminalOutput->setTextColor(QColor("#CCCCCC"));
+        
+        // Send to process
+        if (process->state() == QProcess::Running) {
+            process->write(command.toLocal8Bit() + "\n");
+        } else {
+            terminalOutput->setTextColor(QColor("#FF0000"));
+            terminalOutput->append("❌ Process not running. Type 'restart' to restart.\n");
+            terminalOutput->setTextColor(QColor("#CCCCCC"));
+        }
+        
+        terminalInput->clear();
+    }
+
+private:
+    QTextEdit* terminalOutput;
+    QLineEdit* terminalInput;
+    QLabel* promptLabel;
+    QProcess* process;
 };
 
 // ============================================================================
@@ -7439,11 +7708,17 @@ MainWindow::MainWindow()
         browserWindows = new BrowserWindow *[MAX_WINDOWS]; // Allocate array of pointers
         for (int i = 0; i < MAX_WINDOWS; ++i)
         {
-            // Create each browser window with numbered title
-            browserWindows[i] = new BrowserWindow(QString("Tab %1").arg(i + 1), this);
-
-            // Add placeholder widget to tab (actual content loaded later)
-            tabs->addTab(new QWidget(), QString("Tab %1").arg(i + 1));
+            // Special case: Tab 1 (index 0) reserved for embedded MAIN_1_CoAnQi.exe terminal
+            if (i == 0) {
+                // Tab 1: Embedded calculator terminal with 16-option interactive menu
+                PowerShellTerminalWidget* terminal = new PowerShellTerminalWidget(this);
+                tabs->addTab(terminal, "🎛️ Calculator Terminal");
+                browserWindows[0] = nullptr;  // No browser window for Tab 1
+            } else {
+                // Tabs 2-21: Standard browser windows
+                browserWindows[i] = new BrowserWindow(QString("Tab %1").arg(i + 1), this);
+                tabs->addTab(new QWidget(), QString("Tab %1").arg(i + 1));
+            }
         }
 
         // Special case: Tab 21 preloaded with ALMA Cycle 12 observing tool
@@ -7534,6 +7809,11 @@ MainWindow::MainWindow()
             
             // Update all browser windows with results
             for (int i = 0; i < MAX_WINDOWS; ++i) {
+                // Skip Tab 1 (calculator terminal, no browser window)
+                if (browserWindows[i] == nullptr) {
+                    continue;
+                }
+                
                 // Build HTML list of results for this window
                 QString html = "<ul>";  // Start unordered list
                 
@@ -7623,8 +7903,11 @@ MainWindow::MainWindow()
 MainWindow::~MainWindow()
 {
     // Delete all 21 browser windows
-    for (int i = 0; i < MAX_WINDOWS; ++i)
-        delete browserWindows[i]; // Free each BrowserWindow object
+    for (int i = 0; i < MAX_WINDOWS; ++i) {
+        if (browserWindows[i] != nullptr) {
+            delete browserWindows[i]; // Free each BrowserWindow object
+        }
+    }
 
     // Delete array itself
     delete[] browserWindows;
@@ -7817,3 +8100,7 @@ int main(int argc, char *argv[])
     // Returns exit code when application quits (0 = normal exit)
     return app.exec();
 }
+
+// Include MOC file for Q_OBJECT classes defined in this .cpp file
+// Required for PowerShellTerminalWidget to have signal/slot support
+#include "source2.moc"

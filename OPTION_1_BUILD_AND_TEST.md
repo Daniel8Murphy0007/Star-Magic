@@ -22,6 +22,12 @@
 - **test_integration.py** (320 lines) → Automated test suite with 6 test cases
 
 ### Source2 GUI Integration (COMPLETE - February 11, 2026)
+- **Tab 1: Embedded Calculator Terminal** (NEW - February 11, 2026)
+  - PowerShell-style terminal running MAIN_1_CoAnQi.exe directly in Tab 1
+  - 16-option interactive menu access (Calculate systems, mutations, Wolfram, Cosmic Egg, Grok AI, SOURCE4)
+  - Special commands: `restart` (relaunch calculator), `clear` (clear output), `help` (show terminal commands)
+  - Auto-start on Source2 launch, clean shutdown on tab close (sends Exit command)
+  - Terminal styling: PowerShell black background (#0C0C0C), green input echo (#00FF00), red errors (#FF0000)
 - **UQFF Physics:** QProcess integration with CoAnQi_Wrapper.py (source2.cpp lines 7645-7700)
 - **Number Theory Tool:** SymbolicMath_Wrapper.py integration (source2.cpp lines 5803-5843)
   - Functions: p(n) partition, tau(n) Ramanujan tau, sigma(n) divisor sum, factors(n)
@@ -295,6 +301,110 @@ F_gw_rel: [value] N
    - Integral: `"Integral: Use Number Theory tool (bottom panel)"`
    - System solving: `"[System solving: Use Number Theory tool for symbolic math]"`
 3. These messages confirm Python IS available via QProcess (not embedded pybind11)
+
+---
+
+## 🎛️ Using Tab 1: Embedded Calculator Terminal (NEW)
+
+**What is Tab 1?**
+Tab 1 in Source2.exe is now a dedicated embedded terminal running MAIN_1_CoAnQi.exe directly. This provides seamless access to the C++ calculator's 16-option interactive menu without leaving the GUI.
+
+### Quick Start
+1. Launch Source2.exe: `.\build_msvc\Release\Source2.exe`
+2. Tab 1 automatically opens with "🎛️ Calculator Terminal"
+3. MAIN_1_CoAnQi.exe starts automatically (PID displayed)
+4. Wait for menu to appear (16 options displayed automatically)
+
+### Terminal Features
+- **PowerShell-style interface** - Black background (#0C0C0C), green input echo
+- **Direct stdin/stdout** - Type menu options (1-16) and press Enter
+- **Error display** - Red text for stderr/errors
+- **Auto-scroll** - Terminal automatically scrolls to bottom for new output
+- **Process monitoring** - PID displayed, status tracked
+
+### Special Terminal Commands
+These commands are handled by the terminal widget itself (NOT sent to MAIN_1_CoAnQi.exe):
+
+| Command | Action |
+|---------|--------|
+| `restart` | Kill and relaunch MAIN_1_CoAnQi.exe (useful if stuck) |
+| `clear` or `cls` | Clear terminal output (process keeps running) |
+| `help` | Show terminal command reference |
+
+All other input (menu options 1-16, system names, etc.) is sent directly to MAIN_1_CoAnQi.exe.
+
+### Example Usage: Calculate Sagittarius A*
+```
+1. Wait for menu to appear in Tab 1 terminal
+2. Type: 1   (Option 1: Calculate system - single)
+3. Press Enter
+4. At prompt "Enter system name:", type: Sagittarius A*
+5. Press Enter
+6. View results in terminal (F_U_Bi_i, g_compressed, validation pipeline)
+```
+
+### Example Usage: Access Wolfram Integration (Cosmic Egg Build)
+```
+1. Type: 9   (Option 9: WSTP kernel interface - Cosmic Egg build)
+2. Press Enter
+3. At prompt, enter Wolfram Language command: Integrate[x^2, x]
+4. View result: x^3/3
+```
+
+### Clean Shutdown
+- **Close Tab 1**: Terminal automatically sends Exit command (option 16 for Cosmic Egg build, varies by build)
+- **Process kill**: If process doesn't exit within 3 seconds, terminal force-kills it
+- **No orphaned processes**: All cleanup handled automatically
+
+### Troubleshooting Tab 1 Terminal
+
+#### Error: "MAIN_1_CoAnQi.exe not found"
+**Solution:**
+1. Build the calculator first:
+   ```powershell
+   cmake --build build_msvc --config Release --target MAIN_1_CoAnQi
+   ```
+2. Or copy MAIN_1_CoAnQi.exe to the same directory as Source2.exe:
+   ```powershell
+   Copy-Item .\build_msvc\Release\MAIN_1_CoAnQi.exe .\build_msvc\Release\
+   ```
+
+#### Error: "Failed to start MAIN_1_CoAnQi.exe"
+**Possible Causes:**
+- Missing DLL dependencies (Wolfram WSTP, OpenSSL)
+- Incorrect working directory
+- Antivirus blocking execution
+
+**Solution:**
+1. Run dependency check:
+   ```powershell
+   dumpbin /dependents .\build_msvc\Release\MAIN_1_CoAnQi.exe
+   ```
+2. Verify DLLs exist in same directory as executable
+3. Check Windows Event Viewer for blocked execution errors
+
+#### Process Crashes on Startup
+**Symptoms:**
+- Terminal shows "Process Terminated" immediately after "Calculator started"
+- Exit code: Non-zero
+
+**Solution:**
+1. Run MAIN_1_CoAnQi.exe directly in PowerShell to see crash details:
+   ```powershell
+   .\build_msvc\Release\MAIN_1_CoAnQi.exe
+   ```
+2. Check for missing configuration files (if any required by your build)
+3. Verify Wolfram WSTP kernel is accessible (for Wolfram-enabled builds)
+
+#### Terminal Doesn't Respond to Input
+**Symptoms:**
+- Typing commands shows in terminal but nothing happens
+- No output from MAIN_1_CoAnQi.exe
+
+**Solution:**
+1. Type `restart` to relaunch the process
+2. If still frozen, close and reopen Source2.exe
+3. Check if MAIN_1_CoAnQi.exe is waiting for specific input format
 
 ---
 
