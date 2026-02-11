@@ -17,6 +17,8 @@
 #include <QVBoxLayout>      // Vertical box layout manager - arranges widgets vertically
 #include <QHBoxLayout>      // Horizontal box layout manager - arranges widgets horizontally
 #include <QPushButton>      // Push button widget - command button user can click
+#include <QComboBox>        // Combo box widget - dropdown selection list
+#include <QGroupBox>        // Group box widget - container with title frame
 #include <QLabel>           // Text/image display widget - displays static text or images
 #include <QDockWidget>      // Dockable window - can be docked in QMainWindow or float as separate window
 #include <QDialog>          // Base class for dialog windows - modal or non-modal popup windows
@@ -189,7 +191,7 @@ struct SearchResult
 /**
  * @brief Interactive terminal widget for MAIN_1_CoAnQi.exe calculator
  * 
- * Provides embedded terminal access to the C++ calculator's 16-option interactive menu:
+ * Provides embedded terminal access to the C++ calculator's 18-option interactive menu:
  * 1. Calculate system (single) - F_U_Bi_i, g_compressed, validation_pipeline
  * 2. Calculate ALL systems (parallel) - Windows threading, SimpleMutex
  * 3. Clone and mutate system - SystemParams deep copy + parameter perturbation
@@ -198,7 +200,16 @@ struct SearchResult
  * 6. Run simulations - Time-series evolution
  * 7. Statistical analysis - Ensemble statistics
  * 8. Self-optimization - Learning rate auto-tuning
- * 9-16. Wolfram/Cosmic Egg/Grok/SOURCE4 features
+ * 9. WSTP kernel interface (Wolfram)
+ * 10. Auto-export full UQFF to Wolfram
+ * 11. Run Wolfram Field Unity Simulation
+ * 12. Run Cosmic Quantum Egg (26D) Simulation
+ * 13. Configure Grok API Key
+ * 14. Test Grok AI Integration
+ * 15. SOURCE4 Unified Field Validation
+ * 16. Information Paradox Tests (BH Info)
+ * 17. BSM Physics Validation
+ * 18. Exit
  * 
  * Reserved for Tab 1 (index 0) exclusively at Source2 startup.
  */
@@ -246,7 +257,7 @@ public:
             "border: none; "
             "padding: 5px;"
         );
-        terminalInput->setPlaceholderText("Enter menu option (1-16) or 'help' for commands...");
+        terminalInput->setPlaceholderText("Enter menu option (1-18) or 'help' for commands...");
         inputLayout->addWidget(terminalInput);
         
         layout->addLayout(inputLayout);
@@ -272,8 +283,8 @@ public:
     
     ~PowerShellTerminalWidget() {
         if (process && process->state() == QProcess::Running) {
-            // Send Exit command (option 16 for Cosmic Egg build, varies by build)
-            process->write("16\n");  
+            // Send Exit command (option 18 for Cosmic Egg build)
+            process->write("18\n");  
             process->waitForFinished(3000);
             if (process->state() == QProcess::Running) {
                 process->kill();
@@ -417,7 +428,7 @@ private slots:
             terminalOutput->append("  restart - Restart MAIN_1_CoAnQi.exe\n");
             terminalOutput->append("  clear   - Clear terminal output (process keeps running)\n");
             terminalOutput->append("  help    - Show this help message\n");
-            terminalOutput->append("  1-16    - MAIN_1_CoAnQi menu options\n\n");
+            terminalOutput->append("  1-18    - MAIN_1_CoAnQi menu options (18-option Cosmic Egg build)\n\n");
             terminalOutput->setTextColor(QColor("#00FF00"));
             terminalOutput->append("All other input is sent directly to MAIN_1_CoAnQi.exe\n\n");
             terminalOutput->setTextColor(QColor("#CCCCCC"));
@@ -448,6 +459,549 @@ private:
     QLineEdit* terminalInput;
     QLabel* promptLabel;
     QProcess* process;
+};
+
+// ============================================================================
+// PYTHON TERMINAL WIDGET - Embedded terminal for QCalc.py (UQFF Quantum Calculator)
+// ============================================================================
+
+/**
+ * @brief Interactive Python terminal widget for QCalc.py
+ * 
+ * QCalc.py is a pure physics solver implementing 8 UQFF Master Equations:
+ * 1. UQFF (Base Unified Field) - Complete unified force calculation
+ * 2. UQFF_Compressed (Newtonian + 9 corrections) - Standard gravity model
+ * 3. UQFF_Resonant (aDPM + 13 frequency modes) - Oscillatory behavior
+ * 4. UQFF_Superconductive (SCm vacuum modulation) - Quantum field effects
+ * 5. UQFF_Buoyant (F_U_Bi) - Atomic scale Inside→Out forces
+ * 6. UQFF_Master_Buoyant (F_U_Bi_i) - Cosmic scale Outside→In forces
+ * 7. UQFF_Triadic (26-layer gravitational scaling) - Multi-dimensional gravity
+ * 8. UQFF_Quadratic (Root solutions) - Dual-solution physics
+ * 
+ * Reserved for Tab 2 (index 1) exclusively at Source2 startup.
+ */
+class PythonTerminalWidget : public QWidget {
+    Q_OBJECT
+
+public:
+    explicit PythonTerminalWidget(QWidget* parent = nullptr)
+        : QWidget(parent) {
+        
+        QVBoxLayout* layout = new QVBoxLayout(this);
+        
+        // Output display (read-only terminal output)
+        terminalOutput = new QTextEdit(this);
+        terminalOutput->setReadOnly(true);
+        terminalOutput->setStyleSheet(
+            "background-color: #1E1E1E; "  // Python dark theme
+            "color: #D4D4D4; "              // VS Code text color
+            "font-family: 'Consolas', 'Courier New', monospace; "
+            "font-size: 10pt; "
+            "padding: 10px;"
+        );
+        terminalOutput->setLineWrapMode(QTextEdit::NoWrap);
+        layout->addWidget(terminalOutput);
+        
+        // Input field with prompt
+        QHBoxLayout* inputLayout = new QHBoxLayout();
+        
+        promptLabel = new QLabel(">>>", this);
+        promptLabel->setStyleSheet(
+            "color: #569CD6; "  // Python blue prompt
+            "font-family: 'Consolas', 'Courier New', monospace; "
+            "font-size: 10pt; "
+            "font-weight: bold; "
+            "padding: 5px;"
+        );
+        inputLayout->addWidget(promptLabel);
+        
+        terminalInput = new QLineEdit(this);
+        terminalInput->setStyleSheet(
+            "background-color: #1E1E1E; "
+            "color: #D4D4D4; "
+            "font-family: 'Consolas', 'Courier New', monospace; "
+            "font-size: 10pt; "
+            "border: none; "
+            "padding: 5px;"
+        );
+        terminalInput->setPlaceholderText("Enter Python command or 'help' for UQFF equations...");
+        inputLayout->addWidget(terminalInput);
+        
+        layout->addLayout(inputLayout);
+        setLayout(layout);
+        
+        // Create process for Python interactive mode
+        process = new QProcess(this);
+        process->setWorkingDirectory(QCoreApplication::applicationDirPath());
+        
+        // Connect process signals
+        connect(process, &QProcess::readyReadStandardOutput, this, &PythonTerminalWidget::handleStdout);
+        connect(process, &QProcess::readyReadStandardError, this, &PythonTerminalWidget::handleStderr);
+        connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
+                this, &PythonTerminalWidget::handleProcessFinished);
+        
+        // Connect input field
+        connect(terminalInput, &QLineEdit::returnPressed, this, &PythonTerminalWidget::sendCommand);
+        
+        // Start Python with QCalc.py in interactive mode
+        startPython();
+    }
+    
+    ~PythonTerminalWidget() {
+        if (process && process->state() == QProcess::Running) {
+            process->write("exit()\n");  // Python exit command
+            process->waitForFinished(3000);
+            if (process->state() == QProcess::Running) {
+                process->kill();
+            }
+        }
+    }
+
+private slots:
+    void startPython() {
+        // Find Python executable and QCalc.py
+        QString pythonExe = "python";  // Try "python" command first
+        QString qcalcPath = QCoreApplication::applicationDirPath() + "/QCalc.py";
+        
+        if (!QFile::exists(qcalcPath)) {
+            // Try parent directory (project root)
+            qcalcPath = QCoreApplication::applicationDirPath() + "/../QCalc.py";
+            if (!QFile::exists(qcalcPath)) {
+                terminalOutput->setTextColor(QColor("#FF0000"));
+                terminalOutput->append("❌ Error: QCalc.py not found\n");
+                terminalOutput->setTextColor(QColor("#FFFF00"));
+                terminalOutput->append("   Expected locations:\n");
+                terminalOutput->append("   - " + QCoreApplication::applicationDirPath() + "/QCalc.py\n");
+                terminalOutput->append("   - Project root/QCalc.py\n\n");
+                terminalOutput->setTextColor(QColor("#D4D4D4"));
+                terminalOutput->append("Please ensure QCalc.py is in the application directory.\n");
+                return;
+            }
+        }
+        
+        terminalOutput->setTextColor(QColor("#569CD6"));  // Blue header
+        terminalOutput->append("════════════════════════════════════════════════════════════\n");
+        terminalOutput->append("  QCalc.py - UQFF Quantum Calculator (8 Master Equations)\n");
+        terminalOutput->append("════════════════════════════════════════════════════════════\n\n");
+        terminalOutput->setTextColor(QColor("#D4D4D4"));
+        terminalOutput->append("Starting Python interactive session with QCalc.py...\n\n");
+        
+        // Start Python in interactive mode with QCalc.py pre-imported
+        QStringList args;
+        args << "-i" << qcalcPath;  // -i = interactive mode
+        
+        process->start(pythonExe, args);
+        
+        if (!process->waitForStarted(5000)) {
+            terminalOutput->setTextColor(QColor("#FF0000"));
+            terminalOutput->append("❌ Failed to start Python\n");
+            terminalOutput->append("   Error: " + process->errorString() + "\n");
+            terminalOutput->setTextColor(QColor("#D4D4D4"));
+        } else {
+            terminalOutput->setTextColor(QColor("#00FF00"));
+            terminalOutput->append("✅ Python started successfully\n");
+            terminalOutput->setTextColor(QColor("#D4D4D4"));
+            terminalOutput->append("   PID: " + QString::number(process->processId()) + "\n\n");
+            terminalOutput->append("Type Python commands or use QCalc functions:\n");
+            terminalOutput->append("  - from QCalc import *\n");
+            terminalOutput->append("  - help(QCalc)\n");
+            terminalOutput->append("  - calc = UQFFCalculator()\n\n");
+        }
+    }
+    
+    void handleStdout() {
+        QByteArray data = process->readAllStandardOutput();
+        QString text = QString::fromLocal8Bit(data);
+        
+        terminalOutput->moveCursor(QTextCursor::End);
+        terminalOutput->insertPlainText(text);
+        terminalOutput->moveCursor(QTextCursor::End);
+        
+        QScrollBar* scrollBar = terminalOutput->verticalScrollBar();
+        scrollBar->setValue(scrollBar->maximum());
+    }
+    
+    void handleStderr() {
+        QByteArray data = process->readAllStandardError();
+        QString text = QString::fromLocal8Bit(data);
+        
+        terminalOutput->moveCursor(QTextCursor::End);
+        terminalOutput->setTextColor(QColor("#FF0000"));
+        terminalOutput->insertPlainText(text);
+        terminalOutput->setTextColor(QColor("#D4D4D4"));
+        terminalOutput->moveCursor(QTextCursor::End);
+    }
+    
+    void handleProcessFinished(int exitCode, QProcess::ExitStatus exitStatus) {
+        terminalOutput->append("\n");
+        terminalOutput->setTextColor(QColor("#FFFF00"));
+        terminalOutput->append("════════════════════════════════════════════════════════════\n");
+        terminalOutput->append("  Python Process Terminated\n");
+        terminalOutput->append("════════════════════════════════════════════════════════════\n");
+        terminalOutput->setTextColor(QColor("#D4D4D4"));
+        terminalOutput->append("Exit Code: " + QString::number(exitCode) + "\n");
+        
+        if (exitStatus == QProcess::CrashExit) {
+            terminalOutput->setTextColor(QColor("#FF0000"));
+            terminalOutput->append("Status: CRASHED\n");
+        } else {
+            terminalOutput->setTextColor(QColor("#00FF00"));
+            terminalOutput->append("Status: Normal Exit\n");
+        }
+        
+        terminalOutput->setTextColor(QColor("#D4D4D4"));
+        terminalOutput->append("\nType 'restart' to restart Python.\n");
+        terminalInput->setEnabled(true);
+    }
+    
+    void sendCommand() {
+        QString command = terminalInput->text().trimmed();
+        
+        if (command.isEmpty()) {
+            return;
+        }
+        
+        QString lowerCmd = command.toLower();
+        
+        if (lowerCmd == "restart") {
+            terminalOutput->setTextColor(QColor("#FFFF00"));
+            terminalOutput->append("\n🔄 Restarting Python...\n\n");
+            terminalOutput->setTextColor(QColor("#D4D4D4"));
+            
+            if (process->state() == QProcess::Running) {
+                process->kill();
+                process->waitForFinished();
+            }
+            terminalOutput->clear();
+            startPython();
+            terminalInput->clear();
+            return;
+        }
+        
+        if (lowerCmd == "clear" || lowerCmd == "cls") {
+            terminalOutput->clear();
+            terminalOutput->setTextColor(QColor("#569CD6"));
+            terminalOutput->append("Terminal cleared. Python still running (PID: " + 
+                                  QString::number(process->processId()) + ")\n\n");
+            terminalOutput->setTextColor(QColor("#D4D4D4"));
+            terminalInput->clear();
+            return;
+        }
+        
+        if (lowerCmd == "help") {
+            terminalOutput->setTextColor(QColor("#569CD6"));
+            terminalOutput->append("\n════════════════════════════════════════════════════════════\n");
+            terminalOutput->append("  UQFF Quantum Calculator - Quick Reference\n");
+            terminalOutput->append("════════════════════════════════════════════════════════════\n");
+            terminalOutput->setTextColor(QColor("#D4D4D4"));
+            terminalOutput->append("Special Commands:\n");
+            terminalOutput->append("  restart - Restart Python interpreter\n");
+            terminalOutput->append("  clear   - Clear terminal output\n");
+            terminalOutput->append("  help    - Show this help\n\n");
+            terminalOutput->append("8 UQFF Master Equations:\n");
+            terminalOutput->append("  1. UQFF (Base Unified Field)\n");
+            terminalOutput->append("  2. UQFF_Compressed (Newtonian + 9 corrections)\n");
+            terminalOutput->append("  3. UQFF_Resonant (aDPM + 13 frequency modes)\n");
+            terminalOutput->append("  4. UQFF_Superconductive (SCm vacuum modulation)\n");
+            terminalOutput->append("  5. UQFF_Buoyant (F_U_Bi) - Atomic scale\n");
+            terminalOutput->append("  6. UQFF_Master_Buoyant (F_U_Bi_i) - Cosmic scale\n");
+            terminalOutput->append("  7. UQFF_Triadic (26-layer gravity)\n");
+            terminalOutput->append("  8. UQFF_Quadratic (Root solutions)\n\n");
+            terminalOutput->setTextColor(QColor("#00FF00"));
+            terminalOutput->append("Usage: Import QCalc and create calculator instance\n");
+            terminalOutput->append("  from QCalc import *\n");
+            terminalOutput->append("  calc = UQFFCalculator()\n\n");
+            terminalOutput->setTextColor(QColor("#D4D4D4"));
+            terminalInput->clear();
+            return;
+        }
+        
+        // Echo command (Python blue)
+        terminalOutput->moveCursor(QTextCursor::End);
+        terminalOutput->setTextColor(QColor("#569CD6"));
+        terminalOutput->insertPlainText(">>> " + command + "\n");
+        terminalOutput->setTextColor(QColor("#D4D4D4"));
+        
+        // Send to Python
+        if (process->state() == QProcess::Running) {
+            process->write(command.toLocal8Bit() + "\n");
+        } else {
+            terminalOutput->setTextColor(QColor("#FF0000"));
+            terminalOutput->append("❌ Python not running. Type 'restart' to restart.\n");
+            terminalOutput->setTextColor(QColor("#D4D4D4"));
+        }
+        
+        terminalInput->clear();
+    }
+
+private:
+    QTextEdit* terminalOutput;
+    QLineEdit* terminalInput;
+    QLabel* promptLabel;
+    QProcess* process;
+};
+
+// ============================================================================
+// SCIENTIFIC CALCULATOR WIDGET - Advanced Standard Model Physics Calculator
+// ============================================================================
+
+/**
+ * @brief Advanced scientific calculator widget with API integration options
+ * 
+ * Provides access to Standard Model physics calculations similar to:
+ * - Wolfram Alpha (computational intelligence)
+ * - MATLAB (numerical computing)
+ * - Mathematica (symbolic math)
+ * 
+ * Features:
+ * - Equation solving (algebraic, differential, integral)
+ * - Matrix operations (linear algebra)
+ * - Statistical analysis (distributions, hypothesis testing)
+ * - Physics constants and unit conversions
+ * - Symbolic differentiation and integration
+ * - Numerical root finding and optimization
+ * 
+ * API Integration Options:
+ * 1. Wolfram Alpha API (commercial, register at developer.wolframalpha.com)
+ * 2. SymPy (open source Python library for symbolic mathematics)
+ * 3. SciPy (open source scientific computing)
+ * 4. NumPy (open source numerical arrays and linear algebra)
+ * 
+ * Reserved for Tab 3 (index 2) exclusively at Source2 startup.
+ */
+class ScientificCalculatorWidget : public QWidget {
+    Q_OBJECT
+
+public:
+    explicit ScientificCalculatorWidget(QWidget* parent = nullptr)
+        : QWidget(parent) {
+        
+        QVBoxLayout* mainLayout = new QVBoxLayout(this);
+        
+        // API Selection Panel
+        QGroupBox* apiGroup = new QGroupBox("Computation Engine", this);
+        QVBoxLayout* apiLayout = new QVBoxLayout(apiGroup);
+        
+        apiComboBox = new QComboBox(this);
+        apiComboBox->addItem("🐍 SymPy (Open Source - Symbolic Math)");
+        apiComboBox->addItem("🔬 SciPy (Open Source - Scientific Computing)");
+        apiComboBox->addItem("🔢 NumPy (Open Source - Numerical Arrays)");
+        apiComboBox->addItem("🧮 Wolfram Alpha API (Commercial - Requires API Key)");
+        apiComboBox->setToolTip("Select computational engine for physics calculations");
+        apiLayout->addWidget(apiComboBox);
+        
+        // API Key input (hidden unless Wolfram selected)
+        apiKeyLayout = new QHBoxLayout();
+        QLabel* apiKeyLabel = new QLabel("API Key:", this);
+        apiKeyInput = new QLineEdit(this);
+        apiKeyInput->setPlaceholderText("Enter Wolfram Alpha API Key (get from developer.wolframalpha.com)");
+        apiKeyInput->setEchoMode(QLineEdit::Password);
+        apiKeyLayout->addWidget(apiKeyLabel);
+        apiKeyLayout->addWidget(apiKeyInput);
+        apiKeyWidget = new QWidget(this);
+        apiKeyWidget->setLayout(apiKeyLayout);
+        apiKeyWidget->setVisible(false);  // Hidden by default
+        apiLayout->addWidget(apiKeyWidget);
+        
+        connect(apiComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), 
+                this, &ScientificCalculatorWidget::onEngineChanged);
+        
+        QPushButton* infoBtn = new QPushButton("ℹ️ API Registration Info", this);
+        infoBtn->setToolTip("Open browser to API registration pages");
+        connect(infoBtn, &QPushButton::clicked, this, &ScientificCalculatorWidget::showAPIInfo);
+        apiLayout->addWidget(infoBtn);
+        
+        mainLayout->addWidget(apiGroup);
+        
+        // Calculator Display
+        QGroupBox* calcGroup = new QGroupBox("Advanced Physics Calculator", this);
+        QVBoxLayout* calcLayout = new QVBoxLayout(calcGroup);
+        
+        // Output display
+        outputDisplay = new QTextEdit(this);
+        outputDisplay->setReadOnly(true);
+        outputDisplay->setStyleSheet(
+            "background-color: #FFFFFF; "
+            "color: #000000; "
+            "font-family: 'Consolas', 'Courier New', monospace; "
+            "font-size: 10pt; "
+            "padding: 10px; "
+            "border: 1px solid #CCCCCC;"
+        );
+        calcLayout->addWidget(outputDisplay);
+        
+        // Input field
+        QHBoxLayout* inputLayout = new QHBoxLayout();
+        QLabel* inputLabel = new QLabel("Expression:", this);
+        expressionInput = new QLineEdit(this);
+        expressionInput->setPlaceholderText("Enter equation (e.g., integrate(x^2, x) or solve(x^2 - 4 = 0, x))");
+        connect(expressionInput, &QLineEdit::returnPressed, this, &ScientificCalculatorWidget::computeExpression);
+        
+        inputLayout->addWidget(inputLabel);
+        inputLayout->addWidget(expressionInput);
+        
+        QPushButton* computeBtn = new QPushButton("⚡ Compute", this);
+        computeBtn->setStyleSheet("background-color: #4CAF50; color: white; font-weight: bold; padding: 8px;");
+        connect(computeBtn, &QPushButton::clicked, this, &ScientificCalculatorWidget::computeExpression);
+        inputLayout->addWidget(computeBtn);
+        
+        calcLayout->addLayout(inputLayout);
+        
+        mainLayout->addWidget(calcGroup);
+        
+        // Quick Reference Panel
+        QGroupBox* refGroup = new QGroupBox("Quick Reference", this);
+        QVBoxLayout* refLayout = new QVBoxLayout(refGroup);
+        
+        QTextEdit* refText = new QTextEdit(this);
+        refText->setReadOnly(true);
+        refText->setMaximumHeight(150);
+        refText->setStyleSheet("background-color: #F5F5F5; font-size: 9pt;");
+        refText->setPlainText(
+            "Supported Operations:\n"
+            "• Algebra: solve(x^2 - 4 = 0, x), expand((x+1)^2), factor(x^2-1)\n"
+            "• Calculus: integrate(x^2, x), diff(sin(x), x), limit(1/x, x, 0)\n"
+            "• Linear Algebra: matrix([[1,2],[3,4]]).inv(), det(A), eigenvals(M)\n"
+            "• Physics: constants (c, h, G, k_B), unit conversions\n"
+            "• Statistics: mean([1,2,3]), std([...]), normal_dist(mu, sigma)\n"
+        );
+        refLayout->addWidget(refText);
+        
+        mainLayout->addWidget(refGroup);
+        
+        setLayout(mainLayout);
+        
+        // Display welcome message
+        displayWelcome();
+    }
+
+private slots:
+    void onEngineChanged(int index) {
+        // Show API key input only for Wolfram Alpha
+        apiKeyWidget->setVisible(index == 3);
+        
+        QString engine = apiComboBox->currentText();
+        outputDisplay->append("\n✅ Switched to: " + engine + "\n");
+        
+        if (index == 3) {
+            outputDisplay->append("⚠️  Wolfram Alpha requires API key. Register at:\n");
+            outputDisplay->append("   https://developer.wolframalpha.com/\n\n");
+        }
+    }
+    
+    void showAPIInfo() {
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle("API Registration Information");
+        msgBox.setTextFormat(Qt::RichText);
+        msgBox.setText(
+            "<h3>Computational Engine Options</h3>"
+            "<p><b>🐍 SymPy (Free, Open Source)</b><br>"
+            "No registration required. Install: <code>pip install sympy</code><br>"
+            "Symbolic mathematics in pure Python.</p>"
+            
+            "<p><b>🔬 SciPy (Free, Open Source)</b><br>"
+            "No registration required. Install: <code>pip install scipy</code><br>"
+            "Scientific computing and numerical methods.</p>"
+            
+            "<p><b>🔢 NumPy (Free, Open Source)</b><br>"
+            "No registration required. Install: <code>pip install numpy</code><br>"
+            "Numerical arrays and linear algebra.</p>"
+            
+            "<p><b>🧮 Wolfram Alpha API (Commercial)</b><br>"
+            "Requires registration and API key.<br>"
+            "Register at: <a href='https://developer.wolframalpha.com/'>developer.wolframalpha.com</a><br>"
+            "Free tier: 2,000 queries/month</p>"
+            
+            "<p><i>Recommended: Start with SymPy (free) for most calculations.</i></p>"
+        );
+        msgBox.exec();
+    }
+    
+    void computeExpression() {
+        QString expr = expressionInput->text().trimmed();
+        
+        if (expr.isEmpty()) {
+            return;
+        }
+        
+        // Display user input
+        outputDisplay->append("\n>>> " + expr);
+        
+        int engineIndex = apiComboBox->currentIndex();
+        
+        if (engineIndex == 3) {  // Wolfram Alpha API
+            QString apiKey = apiKeyInput->text().trimmed();
+            if (apiKey.isEmpty()) {
+                outputDisplay->append("❌ Error: API Key required for Wolfram Alpha");
+                outputDisplay->append("   Get your API key at: https://developer.wolframalpha.com/\n");
+                return;
+            }
+            
+            // TODO: Implement Wolfram Alpha API call
+            outputDisplay->append("⚠️  Wolfram Alpha integration not yet implemented\n");
+            outputDisplay->append("   Using SymPy fallback...\n");
+            engineIndex = 0;  // Fallback to SymPy
+        }
+        
+        // Use Python subprocess for open-source engines
+        if (engineIndex >= 0 && engineIndex <= 2) {
+            QString pythonCmd;
+            
+            switch(engineIndex) {
+                case 0:  // SymPy
+                    pythonCmd = QString("python -c \"from sympy import *; x, y, z = symbols('x y z'); print(%1)\"").arg(expr);
+                    break;
+                case 1:  // SciPy
+                    pythonCmd = QString("python -c \"import scipy; import numpy as np; print(%1)\"").arg(expr);
+                    break;
+                case 2:  // NumPy
+                    pythonCmd = QString("python -c \"import numpy as np; print(%1)\"").arg(expr);
+                    break;
+            }
+            
+            QProcess process;
+            process.start(pythonCmd);
+            
+            if (!process.waitForFinished(5000)) {
+                outputDisplay->append("❌ Computation timeout (>5s)\n");
+                return;
+            }
+            
+            QString output = process.readAllStandardOutput();
+            QString error = process.readAllStandardError();
+            
+            if (!error.isEmpty()) {
+                outputDisplay->setTextColor(QColor("#FF0000"));
+                outputDisplay->append("Error: " + error);
+                outputDisplay->setTextColor(QColor("#000000"));
+            } else {
+                outputDisplay->setTextColor(QColor("#0000FF"));
+                outputDisplay->append("Result: " + output);
+                outputDisplay->setTextColor(QColor("#000000"));
+            }
+        }
+        
+        expressionInput->clear();
+    }
+    
+    void displayWelcome() {
+        outputDisplay->setTextColor(QColor("#0066CC"));
+        outputDisplay->append("════════════════════════════════════════════════════════════");
+        outputDisplay->append("  Advanced Scientific Calculator - Standard Model Physics");
+        outputDisplay->append("════════════════════════════════════════════════════════════\n");
+        outputDisplay->setTextColor(QColor("#000000"));
+        outputDisplay->append("Select a computational engine above and enter your equation.\n");
+        outputDisplay->append("Supports: Algebra, Calculus, Linear Algebra, Physics, Statistics\n");
+        outputDisplay->append("Example: integrate(x^2, x) or solve(x^2 - 4 = 0, x)\n");
+    }
+
+private:
+    QComboBox* apiComboBox;
+    QLineEdit* apiKeyInput;
+    QWidget* apiKeyWidget;
+    QHBoxLayout* apiKeyLayout;
+    QTextEdit* outputDisplay;
+    QLineEdit* expressionInput;
 };
 
 // ============================================================================
@@ -7710,12 +8264,37 @@ MainWindow::MainWindow()
         {
             // Special case: Tab 1 (index 0) reserved for embedded MAIN_1_CoAnQi.exe terminal
             if (i == 0) {
-                // Tab 1: Embedded calculator terminal with 16-option interactive menu
+                // Tab 1: Embedded C++ calculator terminal (18-option Cosmic Egg build)
                 PowerShellTerminalWidget* terminal = new PowerShellTerminalWidget(this);
-                tabs->addTab(terminal, "🎛️ Calculator Terminal");
+                tabs->addTab(terminal, "🎛️ MAIN_1 Calculator");
                 browserWindows[0] = nullptr;  // No browser window for Tab 1
-            } else {
-                // Tabs 2-21: Standard browser windows
+            }
+            // Special case: Tab 2 (index 1) reserved for QCalc.py Python terminal
+            else if (i == 1) {
+                // Tab 2: UQFF Quantum Calculator (8 Master Equations)
+                PythonTerminalWidget* pythonTerminal = new PythonTerminalWidget(this);
+                tabs->addTab(pythonTerminal, "🐍 QCalc.py (UQFF)");
+                browserWindows[1] = nullptr;  // No browser window for Tab 2
+            }
+            // Special case: Tab 3 (index 2) reserved for Scientific Calculator
+            else if (i == 2) {
+                // Tab 3: Advanced physics calculator (Wolfram/SymPy/SciPy/NumPy)
+                ScientificCalculatorWidget* sciCalc = new ScientificCalculatorWidget(this);
+                tabs->addTab(sciCalc, "🧮 Scientific Calculator");
+                browserWindows[2] = nullptr;  // No browser window for Tab 3
+            }
+            // Special case: Tab 4 (index 3) reserved for Notes/Scratch Pad
+            else if (i == 3) {
+                // Tab 4: General purpose notes/scratch pad
+                QTextEdit* scratchPad = new QTextEdit(this);
+                scratchPad->setPlaceholderText("Notes & Scratch Pad\n\nUse this tab for:\n• Quick calculations\n• Research notes\n• Copy/paste from other tabs\n• Draft queries before searching");
+                scratchPad->setStyleSheet("font-family: 'Consolas', 'Courier New', monospace; font-size: 10pt; padding: 10px;");
+                tabs->addTab(scratchPad, "📝 Notes");
+                browserWindows[3] = nullptr;  // No browser window for Tab 4
+            }
+            // Tabs 5-21 (indices 4-20): Query fetch results display
+            else {
+                // Standard browser windows for search results
                 browserWindows[i] = new BrowserWindow(QString("Tab %1").arg(i + 1), this);
                 tabs->addTab(new QWidget(), QString("Tab %1").arg(i + 1));
             }
