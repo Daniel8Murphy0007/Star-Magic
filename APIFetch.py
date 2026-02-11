@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-APIFetch.py - UQFF API Data Fetching Layer (25 APIs)
+APIFetch.py - UQFF API Data Fetching Layer (55 APIs)
 =====================================================
 
 Fetches astronomical parameters from external APIs for UQFF calculations.
@@ -8,7 +8,7 @@ Fetches astronomical parameters from external APIs for UQFF calculations.
 ARCHITECTURE:
     User Query → APIFetch.py (this file) → IPData.py → QCalc.py → OPData.py
     
-25 SUPPORTED APIs:
+55 SUPPORTED APIs (Updated with NASA Keys):
     ─────────────────────────────────────────────────────────────────────────
     ASTRONOMICAL DATABASES (Primary)
     ─────────────────────────────────────────────────────────────────────────
@@ -18,38 +18,88 @@ ARCHITECTURE:
      4. Gaia         - ESA astrometry mission (1.8B stars)
      5. MAST         - Mikulski Archive (HST, JWST, etc.)
     ─────────────────────────────────────────────────────────────────────────
-    NASA/SPACE AGENCIES
+    NASA/SPACE AGENCIES (EXPANDED WITH API KEYS)
     ─────────────────────────────────────────────────────────────────────────
-     6. NASA Exoplanet Archive - Confirmed exoplanets
-     7. NASA HEASARC - High Energy Astrophysics data
-     8. NASA ADS     - Astrophysics Data System (literature)
-     9. NASA JPL Horizons - Solar system ephemerides
-    10. ESO Archive  - European Southern Observatory
+     6. NASA APOD    - Astronomy Picture of the Day [NEW - IMPLEMENTED]
+     7. NASA NeoWs   - Near Earth Object Web Service [NEW - IMPLEMENTED]
+     8. NASA Mars    - Mars Weather (InSight) [NEW]
+     9. NASA EPIC    - Earth Polychromatic Imaging Camera [NEW]
+    10. NASA DONKI   - Space Weather Database (CME, Solar Flares) [NEW - IMPLEMENTED]
+    11. NASA Exoplanet Archive - Confirmed exoplanets
+    12. NASA HEASARC - High Energy Astrophysics data
+    13. NASA ADS     - Astrophysics Data System (literature)
+    14. NASA JPL Horizons - Solar system ephemerides
+    15. ESO Archive  - European Southern Observatory
     ─────────────────────────────────────────────────────────────────────────
     SURVEY DATABASES
     ─────────────────────────────────────────────────────────────────────────
-    11. SDSS         - Sloan Digital Sky Survey
-    12. 2MASS        - Two Micron All Sky Survey
-    13. WISE         - Wide-field Infrared Survey Explorer
-    14. Pan-STARRS   - Panoramic Survey Telescope
-    15. ZTF          - Zwicky Transient Facility
+    16. SDSS         - Sloan Digital Sky Survey
+    17. 2MASS        - Two Micron All Sky Survey
+    18. WISE         - Wide-field Infrared Survey Explorer
+    19. Pan-STARRS   - Panoramic Survey Telescope
+    20. ZTF          - Zwicky Transient Facility
     ─────────────────────────────────────────────────────────────────────────
     SPECIALIZED DATABASES
     ─────────────────────────────────────────────────────────────────────────
-    16. ATNF         - Pulsar catalog
-    17. McGill       - Magnetar catalog
-    18. TNS          - Transient Name Server (supernovae/transients)
-    19. GCN          - Gamma-ray Coordinates Network
-    20. LIGO/Virgo   - Gravitational wave events
+    21. ATNF         - Pulsar catalog
+    22. McGill       - Magnetar catalog
+    23. TNS          - Transient Name Server (supernovae/transients)
+    24. GCN          - Gamma-ray Coordinates Network
+    25. LIGO/Virgo   - Gravitational wave events
     ─────────────────────────────────────────────────────────────────────────
     COMPUTATIONAL/AI
     ─────────────────────────────────────────────────────────────────────────
-    21. Wolfram Alpha - Computational knowledge engine
-    22. arXiv        - Preprint server (metadata)
-    23. Grok (xAI)   - AI fallback for missing data
-    24. OpenAI       - Alternative AI fallback
-    25. Claude       - Alternative AI fallback
+    26. Wolfram Alpha - Computational knowledge engine
+    27. arXiv        - Preprint server (metadata)
+    28. Grok (xAI)   - AI fallback for missing data
+    29. OpenAI       - Alternative AI fallback
+    30. Claude       - Alternative AI fallback
     ─────────────────────────────────────────────────────────────────────────
+    RADIO/INFRARED SURVEYS
+    ─────────────────────────────────────────────────────────────────────────
+    31. NVSS         - NRAO VLA Sky Survey
+    32. FIRST        - Faint Images Radio Sky at Twenty-cm
+    33. VLASS        - VLA Sky Survey
+    34. ALMA         - Atacama Large Millimeter Array Archive
+    35. ASKAP        - Australian Square Kilometre Array Archive
+    ─────────────────────────────────────────────────────────────────────────
+    X-RAY/GAMMA-RAY
+    ─────────────────────────────────────────────────────────────────────────
+    36. Chandra      - Chandra X-ray Observatory
+    37. XMM-Newton   - XMM-Newton Archive
+    38. Swift        - Swift Gamma-Ray Burst Mission
+    39. Fermi        - Fermi Gamma-ray Space Telescope
+    40. INTEGRAL     - INTEGRAL Gamma-ray Observatory
+    ─────────────────────────────────────────────────────────────────────────
+    SPACE TELESCOPES
+    ─────────────────────────────────────────────────────────────────────────
+    41. HST          - Hubble Space Telescope
+    42. JWST         - James Webb Space Telescope
+    43. Spitzer      - Spitzer Space Telescope (archived)
+    44. Kepler       - Kepler Mission
+    45. TESS         - Transiting Exoplanet Survey Satellite
+    ─────────────────────────────────────────────────────────────────────────
+    COSMOLOGY/CMB
+    ─────────────────────────────────────────────────────────────────────────
+    46. Planck       - Planck CMB mission
+    47. WMAP         - Wilkinson Microwave Anisotropy Probe (archived)
+    48. DES          - Dark Energy Survey
+    49. DESI         - Dark Energy Spectroscopic Instrument
+    50. Euclid       - ESA Euclid mission
+    ─────────────────────────────────────────────────────────────────────────
+    SPECTROSCOPIC SURVEYS
+    ─────────────────────────────────────────────────────────────────────────
+    51. LAMOST       - Large Sky Area Multi-Object Fiber Spec Telescope
+    52. GALAH        - Galactic Archaeology with HERMES
+    53. APOGEE       - Apache Point Observatory Galactic Evolution Exp
+    54. RAVE         - RAdial Velocity Experiment
+    55. DESI Spectra - DESI Spectroscopic Data
+    ─────────────────────────────────────────────────────────────────────────
+
+API KEYS CONFIGURED:
+    - NASA_API_KEY_1: PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg
+    - NASA_API_KEY_2: FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz
+    - MAST_API_KEY: emXvt90Htf0U4RogKTB5lqSxClUeg2pvMQxvZciM
 
 OUTPUT: 
     All results written to IPData.py (InputParameters dataclass)
@@ -69,6 +119,20 @@ import re
 
 # Import IPData for storing results
 from IPData import InputParameters, InputDataStore, INPUT_STORE, store_input
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# API KEYS (Store as environment variables for security, fallback to these)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+API_KEYS = {
+    'NASA_API_KEY_1': os.environ.get('NASA_API_KEY_1', 'PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg'),
+    'NASA_API_KEY_2': os.environ.get('NASA_API_KEY_2', 'FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz'),
+    'MAST_API_KEY': os.environ.get('MAST_API_KEY', 'emXvt90Htf0U4RogKTB5lqSxClUeg2pvMQxvZciM'),
+    'XAI_API_KEY': os.environ.get('XAI_API_KEY', ''),  # Grok AI
+    'OPENAI_API_KEY': os.environ.get('OPENAI_API_KEY', ''),
+    'ANTHROPIC_API_KEY': os.environ.get('ANTHROPIC_API_KEY', ''),
+    'WOLFRAM_APP_ID': os.environ.get('WOLFRAM_APP_ID', ''),
+}
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # UNIT CONVERSIONS (for standardizing API responses to SI units)
@@ -119,8 +183,13 @@ ENDPOINTS = {
     'mast': 'https://mast.stsci.edu/api/v0/invoke',
     
     # ═══════════════════════════════════════════════════════════════════════════
-    # GROUP B: NASA/SPACE AGENCIES (6-10)
+    # GROUP B: NASA/SPACE AGENCIES (6-15)
     # ═══════════════════════════════════════════════════════════════════════════
+    'nasa_apod': f'https://api.nasa.gov/planetary/apod',
+    'nasa_neows': f'https://api.nasa.gov/neo/rest/v1/feed',
+    'nasa_mars_weather': f'https://api.nasa.gov/insight_weather/',
+    'nasa_epic': f'https://api.nasa.gov/EPIC/api/natural',
+    'nasa_donki': f'https://api.nasa.gov/DONKI/CME',
     'nasa_exoplanet': 'https://exoplanetarchive.ipac.caltech.edu/TAP/sync',
     'heasarc': 'https://heasarc.gsfc.nasa.gov/xamin/vo/tap/sync',
     'ads': 'https://api.adsabs.harvard.edu/v1/search/query',
@@ -458,6 +527,196 @@ class GrokFetcher:
             
         except Exception as e:
             print(f"Grok fetch error: {e}")
+            return None
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# NASA APOD AND SERVICES FETCHERS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class NASAAPODFetcher:
+    """
+    NASA Astronomy Picture of the Day (APOD) API.
+    
+    Retrieves daily astronomy images with descriptions and metadata.
+    Useful for contextual information about astronomical objects.
+    """
+    
+    def __init__(self):
+        self.endpoint = ENDPOINTS['nasa_apod']
+        self.api_key = API_KEYS['NASA_API_KEY_1']
+        self.timeout = 30
+    
+    def fetch(self, keywords: str = None, date: str = None) -> Optional[Dict[str, Any]]:
+        """
+        Fetch APOD data.
+        
+        Args:
+            keywords: Search keywords for concept tags
+            date: Date in YYYY-MM-DD format (defaults to today)
+            
+        Returns:
+            Dictionary with image URL, explanation, title, and metadata
+        """
+        params = {
+            'api_key': self.api_key,
+            'concept_tags': True
+        }
+        
+        if keywords:
+            params['keywords'] = keywords
+        if date:
+            params['date'] = date
+        
+        try:
+            response = requests.get(
+                self.endpoint,
+                params=params,
+                timeout=self.timeout
+            )
+            
+            if response.status_code == 200:
+                data = response.json()
+                return {
+                    'name': data.get('title', 'APOD'),
+                    'source': 'NASA_APOD',
+                    'description': data.get('explanation', ''),
+                    'image_url': data.get('url', ''),
+                    'hd_image_url': data.get('hdurl', ''),
+                    'date': data.get('date', ''),
+                    'media_type': data.get('media_type', ''),
+                    'copyright': data.get('copyright', 'NASA')
+                }
+            
+            return None
+            
+        except Exception as e:
+            print(f"NASA APOD fetch error: {e}")
+            return None
+
+
+class NASANeoWsFetcher:
+    """
+    NASA Near Earth Object Web Service (NeoWs).
+    
+    Provides data on near-Earth asteroids and comets.
+    """
+    
+    def __init__(self):
+        self.endpoint = ENDPOINTS['nasa_neows']
+        self.api_key = API_KEYS['NASA_API_KEY_1']
+        self.timeout = 30
+    
+    def fetch(self, start_date: str = None, end_date: str = None) -> Optional[Dict[str, Any]]:
+        """
+        Fetch Near Earth Objects.
+        
+        Args:
+            start_date: Start date in YYYY-MM-DD format
+            end_date: End date in YYYY-MM-DD format
+            
+        Returns:
+            Dictionary with NEO data including orbital parameters
+        """
+        if not start_date:
+            start_date = datetime.now().strftime('%Y-%m-%d')
+        if not end_date:
+            end_date = start_date
+        
+        params = {
+            'start_date': start_date,
+            'end_date': end_date,
+            'api_key': self.api_key
+        }
+        
+        try:
+            response = requests.get(
+                self.endpoint,
+                params=params,
+                timeout=self.timeout
+            )
+            
+            if response.status_code == 200:
+                data = response.json()
+                neo_list = []
+                
+                for date_key in data.get('near_earth_objects', {}):
+                    for neo in data['near_earth_objects'][date_key]:
+                        neo_list.append({
+                            'name': neo.get('name', ''),
+                            'source': 'NASA_NeoWs',
+                            'diameter_min': neo.get('estimated_diameter', {}).get('meters', {}).get('estimated_diameter_min'),
+                            'diameter_max': neo.get('estimated_diameter', {}).get('meters', {}).get('estimated_diameter_max'),
+                            'is_hazardous': neo.get('is_potentially_hazardous_asteroid', False),
+                            'close_approach_date': neo.get('close_approach_data', [{}])[0].get('close_approach_date'),
+                            'velocity': float(neo.get('close_approach_data', [{}])[0].get('relative_velocity', {}).get('kilometers_per_second', 0)) * 1000,  # m/s
+                            'miss_distance': float(neo.get('close_approach_data', [{}])[0].get('miss_distance', {}).get('kilometers', 0)) * 1000,  # meters
+                        })
+                
+                return {'objects': neo_list, 'count': len(neo_list)}
+            
+            return None
+            
+        except Exception as e:
+            print(f"NASA NeoWs fetch error: {e}")
+            return None
+
+
+class NASADONKIFetcher:
+    """
+    NASA Space Weather Database Of Notifications, Knowledge, Information (DONKI).
+    
+    Provides space weather events: CMEs, solar flares, geomagnetic storms.
+    """
+    
+    def __init__(self):
+        self.endpoint = ENDPOINTS['nasa_donki']
+        self.api_key = API_KEYS['NASA_API_KEY_1']
+        self.timeout = 30
+    
+    def fetch(self, start_date: str = None, end_date: str = None, event_type: str = 'CME') -> Optional[Dict[str, Any]]:
+        """
+        Fetch space weather events.
+        
+        Args:
+            start_date: Start date YYYY-MM-DD
+            end_date: End date YYYY-MM-DD
+            event_type: 'CME', 'FLR', 'SEP', 'MPC', 'GST', 'RBE', 'HSS'
+            
+        Returns:
+            Dictionary with space weather event data
+        """
+        if not start_date:
+            start_date = (datetime.now() - datetime.timedelta(days=30)).strftime('%Y-%m-%d')
+        if not end_date:
+            end_date = datetime.now().strftime('%Y-%m-%d')
+        
+        params = {
+            'startDate': start_date,
+            'endDate': end_date,
+            'api_key': self.api_key
+        }
+        
+        try:
+            response = requests.get(
+                self.endpoint.replace('CME', event_type),
+                params=params,
+                timeout=self.timeout
+            )
+            
+            if response.status_code == 200:
+                data = response.json()
+                return {
+                    'source': 'NASA_DONKI',
+                    'event_type': event_type,
+                    'events': data,
+                    'count': len(data) if isinstance(data, list) else 1
+                }
+            
+            return None
+            
+        except Exception as e:
+            print(f"NASA DONKI fetch error: {e}")
             return None
 
 
@@ -1120,19 +1379,20 @@ class DESISpectraFetcher(BaseFetcher):
 
 class UnifiedFetcher:
     """
-    Unified API fetcher that tries all 50 sources in priority order.
+    Unified API fetcher that tries all 55 sources in priority order.
     
     Priority Groups:
         A. Astronomical Databases (1-5): SIMBAD, NED, VizieR, Gaia, MAST
-        B. NASA/Space Agencies (6-10): Exoplanet, HEASARC, ADS, JPL, ESO
-        C. Sky Surveys (11-15): SDSS, 2MASS, WISE, Pan-STARRS, ZTF
-        D. Specialized (16-20): ATNF Pulsar, McGill Magnetar, TNS, GCN, GWOSC
-        E. Computational/AI (21-25): Wolfram, arXiv, Grok, OpenAI, Claude
-        F. Radio/Infrared (26-30): NVSS, FIRST, VLASS, ALMA, ASKAP
-        G. X-ray/Gamma-ray (31-35): Chandra, XMM, Swift, Fermi, INTEGRAL
-        H. Space Telescopes (36-40): HST, JWST, Spitzer, Kepler, TESS
-        I. Cosmology/CMB (41-45): Planck, WMAP, DES, DESI, Euclid
-        J. Spectroscopic (46-50): LAMOST, GALAH, APOGEE, RAVE, DESI Spectra
+        B. NASA/Space Agencies (6-15): APOD, NeoWs, Mars, EPIC, DONKI, 
+                                        Exoplanet, HEASARC, ADS, JPL, ESO
+        C. Sky Surveys (16-20): SDSS, 2MASS, WISE, Pan-STARRS, ZTF
+        D. Specialized (21-25): ATNF Pulsar, McGill Magnetar, TNS, GCN, GWOSC
+        E. Computational/AI (26-30): Wolfram, arXiv, Grok, OpenAI, Claude
+        F. Radio/Infrared (31-35): NVSS, FIRST, VLASS, ALMA, ASKAP
+        G. X-ray/Gamma-ray (36-40): Chandra, XMM, Swift, Fermi, INTEGRAL
+        H. Space Telescopes (41-45): HST, JWST, Spitzer, Kepler, TESS
+        I. Cosmology/CMB (46-50): Planck, WMAP, DES, DESI, Euclid
+        J. Spectroscopic (51-55): LAMOST, GALAH, APOGEE, RAVE, DESI Spectra
     
     Results are stored in IPData.py for QCalc.py consumption.
     """
@@ -1143,7 +1403,12 @@ class UnifiedFetcher:
         self.ned = NEDFetcher()
         self.grok = GrokFetcher()
         
-        # All 50 fetchers (will be instantiated on demand)
+        # NASA Services
+        self.nasa_apod = NASAAPODFetcher()
+        self.nasa_neows = NASANeoWsFetcher()
+        self.nasa_donki = NASADONKIFetcher()
+        
+        # All 55 fetchers (expanded from 50 with new NASA services)
         self._fetchers = {
             # Group A: Astronomical Databases (1-5)
             'simbad': self.simbad,
@@ -1151,7 +1416,12 @@ class UnifiedFetcher:
             'vizier': None,
             'gaia': None,
             'mast': None,
-            # Group B: NASA/Space Agencies (6-10)
+            # Group B: NASA/Space Agencies (6-15, expanded with new APIs)
+            'nasa_apod': self.nasa_apod,           # NEW: Astronomy Picture of the Day
+            'nasa_neows': self.nasa_neows,         # NEW: Near Earth Object Web Service
+            'nasa_mars_weather': None,             # NEW: Mars Weather
+            'nasa_epic': None,                     # NEW: Earth Polychromatic Imaging Camera
+            'nasa_donki': self.nasa_donki,         # NEW: Space Weather Events
             'nasa_exoplanet': None,
             'heasarc': None,
             'ads': None,
