@@ -435,6 +435,24 @@ else()
     message(WARNING "Extract to C:/Tools/upx/ and add to PATH")
 endif()
 
+# OpenSSL DLL Auto-Copy for Qt6 TLS/HTTPS Support (Grok API Integration)
+# Automatically copies OpenSSL DLLs after building MAIN_1_CoAnQi
+# Required for: Grok AI integration (Option 13), Qt6 QNetworkAccessManager HTTPS requests
+# Installation: winget install ShiningLight.OpenSSL.Light
+if(EXISTS "C:/Program Files/OpenSSL-Win64/bin/libssl-3-x64.dll")
+    add_custom_command(TARGET MAIN_1_CoAnQi POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "C:/Program Files/OpenSSL-Win64/bin/libssl-3-x64.dll"
+            "C:/Program Files/OpenSSL-Win64/bin/libcrypto-3-x64.dll"
+            $<TARGET_FILE_DIR:MAIN_1_CoAnQi>
+        COMMENT "Copying OpenSSL DLLs for Qt6 TLS/HTTPS support (Grok API)"
+    )
+    message(STATUS "OpenSSL DLL auto-copy ENABLED for MAIN_1_CoAnQi")
+else()
+    message(STATUS "OpenSSL not found at 'C:/Program Files/OpenSSL-Win64/' - Grok API will require manual DLL setup")
+    message(STATUS "Install via: winget install ShiningLight.OpenSSL.Light")
+endif()
+
 # Source2: HEAD PROGRAM - Primary User Base Platform (Qt6 + optional VTK, AWS SDK, OpenCV, etc.)
 # Status: ENABLED with Qt6 - optional dependencies compile conditionally
 # To install missing dependencies via vcpkg (x64-windows for MSVC):
