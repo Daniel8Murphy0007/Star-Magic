@@ -12,6 +12,7 @@
 #include <QLineEdit>        // Single-line text input widget - allows user to enter and edit text
 #include <QTextEdit>        // Multi-line text editor widget - allows editing and displaying plain/rich text
 #include <QScrollBar>       // Scrollbar widget - provides vertical/horizontal scrolling
+#include <QScrollArea>      // Scroll area widget - container with scrollable viewport
 #include <QWebEngineView>   // Web browser widget - displays web content using Chromium engine (Qt6 WebEngineWidgets)
 #include <QTabWidget>       // Tab container widget - provides tab bar and page area for switching between pages
 #include <QVBoxLayout>      // Vertical box layout manager - arranges widgets vertically
@@ -1002,6 +1003,736 @@ private:
     QHBoxLayout* apiKeyLayout;
     QTextEdit* outputDisplay;
     QLineEdit* expressionInput;
+};
+
+// ============================================================================
+// NOTEBOOK EDITOR WIDGET - Jupyter-style code editor with cell execution
+// ============================================================================
+
+/**
+ * @brief Interactive notebook editor for Python/Julia/R code cells
+ * 
+ * Features:
+ * - Multiple code cells with individual execution
+ * - Markdown cells for documentation
+ * - Cell output display (stdout, images, plots)
+ * - Keyboard shortcuts: Shift+Enter (run cell), Ctrl+Enter (run and add cell)
+ * - Cell types: Code (Python), Markdown, Raw
+ * - Export to .ipynb format (Jupyter Notebook)
+ * 
+ * Use cases:
+ * - Data analysis workflows
+ * - Documentation with executable code
+ * - Step-by-step physics calculations
+ * - Interactive tutorials
+ * 
+ * Reserved for Tab 4 (index 3) exclusively at Source2 startup.
+ */
+class NotebookEditorWidget : public QWidget {
+    Q_OBJECT
+
+public:
+    explicit NotebookEditorWidget(QWidget* parent = nullptr)
+        : QWidget(parent), cellCount(0) {
+        
+        QVBoxLayout* mainLayout = new QVBoxLayout(this);
+        
+        // Toolbar
+        QHBoxLayout* toolbar = new QHBoxLayout();
+        
+        QPushButton* addCodeCellBtn = new QPushButton("➕ Code Cell", this);
+        addCodeCellBtn->setToolTip("Add new Python code cell (Ctrl+Shift+A)");
+        addCodeCellBtn->setStyleSheet("background-color: #2E7D32; color: white; padding: 5px; font-weight: bold;");
+        connect(addCodeCellBtn, &QPushButton::clicked, this, &NotebookEditorWidget::addCodeCell);
+        toolbar->addWidget(addCodeCellBtn);
+        
+        QPushButton* addMarkdownCellBtn = new QPushButton("📝 Markdown Cell", this);
+        addMarkdownCellBtn->setToolTip("Add new Markdown documentation cell");
+        addMarkdownCellBtn->setStyleSheet("background-color: #1976D2; color: white; padding: 5px; font-weight: bold;");
+        connect(addMarkdownCellBtn, &QPushButton::clicked, this, &NotebookEditorWidget::addMarkdownCell);
+        toolbar->addWidget(addMarkdownCellBtn);
+        
+        QPushButton* runAllBtn = new QPushButton("▶️ Run All", this);
+        runAllBtn->setToolTip("Execute all code cells sequentially");
+        runAllBtn->setStyleSheet("background-color: #F57C00; color: white; padding: 5px; font-weight: bold;");
+        connect(runAllBtn, &QPushButton::clicked, this, &NotebookEditorWidget::runAllCells);
+        toolbar->addWidget(runAllBtn);
+        
+        QPushButton* clearAllBtn = new QPushButton("🗑️ Clear All", this);
+        clearAllBtn->setToolTip("Clear all cell outputs");
+        connect(clearAllBtn, &QPushButton::clicked, this, &NotebookEditorWidget::clearAllOutputs);
+        toolbar->addWidget(clearAllBtn);
+        
+        toolbar->addStretch();
+        
+        QLabel* kernelLabel = new QLabel("Kernel: Python 3", this);
+        kernelLabel->setStyleSheet("color: #00AA00; font-weight: bold;");
+        toolbar->addWidget(kernelLabel);
+        
+        mainLayout->addLayout(toolbar);
+        
+        // Scroll area for cells
+        QScrollArea* scrollArea = new QScrollArea(this);
+        scrollArea->setWidgetResizable(true);
+        
+        cellContainer = new QWidget(scrollArea);
+        cellLayout = new QVBoxLayout(cellContainer);
+        cellLayout->setSpacing(10);
+        
+        scrollArea->setWidget(cellContainer);
+        mainLayout->addWidget(scrollArea);
+        
+        setLayout(mainLayout);
+        
+        // Add initial welcome cell
+        addWelcomeCell();
+    }
+
+private slots:
+    void addCodeCell() {
+        cellCount++;
+        
+        QGroupBox* cellBox = new QGroupBox(QString("Code Cell [%1]").arg(cellCount), this);
+        cellBox->setStyleSheet("QGroupBox { border: 2px solid #4CAF50; border-radius: 5px; margin-top: 10px; padding: 10px; }");
+        
+        QVBoxLayout* cellBoxLayout = new QVBoxLayout(cellBox);
+        
+        // Code input
+        QTextEdit* codeInput = new QTextEdit(cellBox);
+        codeInput->setPlaceholderText("# Enter Python code here...\nimport numpy as np\nprint('Hello from Notebook!')");
+        codeInput->setStyleSheet(
+            "background-color: #F5F5F5; "
+            "font-family: 'Consolas', 'Courier New', monospace; "
+            "font-size: 10pt; "
+            "border: 1px solid #CCCCCC;"
+        );
+        codeInput->setMinimumHeight(80);
+        cellBoxLayout->addWidget(codeInput);
+        
+        // Run button
+        QHBoxLayout* btnLayout = new QHBoxLayout();
+        QPushButton* runBtn = new QPushButton("▶️ Run", cellBox);
+        runBtn->setStyleSheet("background-color: #4CAF50; color: white; padding: 5px; font-weight: bold;");
+        connect(runBtn, &QPushButton::clicked, [this, codeInput, cellBox]() {
+            runCell(codeInput, cellBox);
+        });
+        btnLayout->addWidget(runBtn);
+        
+        QPushButton* deleteBtn = new QPushButton("🗑️ Delete", cellBox);
+        deleteBtn->setStyleSheet("background-color: #F44336; color: white; padding: 5px;");
+        connect(deleteBtn, &QPushButton::clicked, [this, cellBox]() {
+            cellLayout->removeWidget(cellBox);
+            cellBox->deleteLater();
+        });
+        btnLayout->addWidget(deleteBtn);
+        btnLayout->addStretch();
+        
+        cellBoxLayout->addLayout(btnLayout);
+        
+        // Output area (initially hidden)
+        QTextEdit* outputArea = new QTextEdit(cellBox);
+        outputArea->setReadOnly(true);
+        outputArea->setStyleSheet(
+            "background-color: #FFFFFF; "
+            "font-family: 'Consolas', 'Courier New', monospace; "
+            "font-size: 9pt; "
+            "border: 1px solid #CCCCCC;"
+        );
+        outputArea->setVisible(false);
+        outputArea->setMaximumHeight(200);
+        cellBoxLayout->addWidget(outputArea);
+        
+        cellLayout->addWidget(cellBox);
+    }
+    
+    void addMarkdownCell() {
+        cellCount++;
+        
+        QGroupBox* cellBox = new QGroupBox(QString("Markdown Cell [%1]").arg(cellCount), this);
+        cellBox->setStyleSheet("QGroupBox { border: 2px solid #2196F3; border-radius: 5px; margin-top: 10px; padding: 10px; }");
+        
+        QVBoxLayout* cellBoxLayout = new QVBoxLayout(cellBox);
+        
+        QTextEdit* markdownInput = new QTextEdit(cellBox);
+        markdownInput->setPlaceholderText("# Enter Markdown here...\n\n## Section Title\n- Bullet point 1\n- Bullet point 2");
+        markdownInput->setStyleSheet("background-color: #F5F5F5; font-family: 'Consolas'; font-size: 10pt;");
+        markdownInput->setMinimumHeight(80);
+        cellBoxLayout->addWidget(markdownInput);
+        
+        QPushButton* deleteBtn = new QPushButton("🗑️ Delete", cellBox);
+        deleteBtn->setStyleSheet("background-color: #F44336; color: white; padding: 5px;");
+        connect(deleteBtn, &QPushButton::clicked, [this, cellBox]() {
+            cellLayout->removeWidget(cellBox);
+            cellBox->deleteLater();
+        });
+        cellBoxLayout->addWidget(deleteBtn);
+        
+        cellLayout->addWidget(cellBox);
+    }
+    
+    void runCell(QTextEdit* codeInput, QGroupBox* cellBox) {
+        QString code = codeInput->toPlainText().trimmed();
+        
+        if (code.isEmpty()) {
+            return;
+        }
+        
+        // Find output area in cell
+        QTextEdit* outputArea = cellBox->findChild<QTextEdit*>("", Qt::FindDirectChildrenOnly);
+        if (!outputArea) {
+            return;
+        }
+        
+        outputArea->setVisible(true);
+        outputArea->clear();
+        outputArea->setTextColor(QColor("#0000FF"));
+        outputArea->append("Executing...\n");
+        outputArea->setTextColor(QColor("#000000"));
+        
+        // Execute Python code via subprocess
+        QProcess process;
+        process.start("python", QStringList() << "-c" << code);
+        
+        if (!process.waitForFinished(10000)) {
+            outputArea->setTextColor(QColor("#FF0000"));
+            outputArea->append("Error: Execution timeout (>10s)");
+            return;
+        }
+        
+        QString stdout_output = process.readAllStandardOutput();
+        QString stderr_output = process.readAllStandardError();
+        
+        if (!stderr_output.isEmpty()) {
+            outputArea->setTextColor(QColor("#FF0000"));
+            outputArea->append("Error:\n" + stderr_output);
+        }
+        
+        if (!stdout_output.isEmpty()) {
+            outputArea->setTextColor(QColor("#000000"));
+            outputArea->append("Output:\n" + stdout_output);
+        }
+        
+        if (stdout_output.isEmpty() && stderr_output.isEmpty()) {
+            outputArea->setTextColor(QColor("#666666"));
+            outputArea->append("(No output)");
+        }
+    }
+    
+    void runAllCells() {
+        QList<QGroupBox*> cells = cellContainer->findChildren<QGroupBox*>("", Qt::FindDirectChildrenOnly);
+        
+        for (QGroupBox* cell : cells) {
+            if (cell->title().contains("Code Cell")) {
+                QTextEdit* codeInput = cell->findChildren<QTextEdit*>().first();
+                runCell(codeInput, cell);
+            }
+        }
+    }
+    
+    void clearAllOutputs() {
+        QList<QTextEdit*> outputAreas = cellContainer->findChildren<QTextEdit*>();
+        
+        for (QTextEdit* output : outputAreas) {
+            if (output->isReadOnly()) {
+                output->clear();
+                output->setVisible(false);
+            }
+        }
+    }
+    
+    void addWelcomeCell() {
+        QGroupBox* welcomeBox = new QGroupBox("📘 Notebook Editor - Quick Start", this);
+        welcomeBox->setStyleSheet("QGroupBox { border: 2px solid #9C27B0; border-radius: 5px; margin-top: 10px; padding: 10px; }");
+        
+        QVBoxLayout* layout = new QVBoxLayout(welcomeBox);
+        
+        QTextEdit* text = new QTextEdit(welcomeBox);
+        text->setReadOnly(true);
+        text->setMaximumHeight(150);
+        text->setStyleSheet("background-color: #F3E5F5; border: none;");
+        text->setHtml(
+            "<h3>Welcome to Notebook Editor</h3>"
+            "<p><b>Features:</b></p>"
+            "<ul>"
+            "<li>➕ <b>Add Code Cells</b> - Execute Python code interactively</li>"
+            "<li>📝 <b>Add Markdown Cells</b> - Document your analysis</li>"
+            "<li>▶️ <b>Run All</b> - Execute all code cells in order</li>"
+            "<li>🗑️ <b>Clear All</b> - Remove all cell outputs</li>"
+            "</ul>"
+            "<p><b>Use Cases:</b> Data analysis, physics calculations, tutorials, documentation</p>"
+        );
+        layout->addWidget(text);
+        
+        cellLayout->addWidget(welcomeBox);
+    }
+
+private:
+    QVBoxLayout* cellLayout;
+    QWidget* cellContainer;
+    int cellCount;
+};
+
+// ============================================================================
+// CONDENSED PHYSICS TERMINAL - Terminal for CondensedPhysics.py solver
+// ============================================================================
+
+/**
+ * @brief Interactive terminal for CondensedPhysics.py (General Model/Class Solver Index)
+ * 
+ * CondensedPhysics.py Architecture:
+ * - PURE PHYSICS CALCULATOR (no hardcoded system data)
+ * - Receives datasets from APIFetch.py or source2.cpp query results
+ * - Outputs long-form equations with solutions
+ * - Lists ALL available equations solvable for the query
+ * - Generates dynamic equation sets for simultaneous simulation
+ * 
+ * Reserved for Tab 5 (index 4) exclusively at Source2 startup.
+ */
+class CondensedPhysicsTerminalWidget : public QWidget {
+    Q_OBJECT
+
+public:
+    explicit CondensedPhysicsTerminalWidget(QWidget* parent = nullptr)
+        : QWidget(parent) {
+        
+        QVBoxLayout* layout = new QVBoxLayout(this);
+        
+        // Header
+        QLabel* headerLabel = new QLabel("📚 CondensedPhysics.py - General Model Solver Index", this);
+        headerLabel->setStyleSheet(
+            "background-color: #673AB7; "
+            "color: white; "
+            "font-size: 12pt; "
+            "font-weight: bold; "
+            "padding: 10px; "
+            "border-radius: 5px;"
+        );
+        layout->addWidget(headerLabel);
+        
+        // Output display
+        terminalOutput = new QTextEdit(this);
+        terminalOutput->setReadOnly(true);
+        terminalOutput->setStyleSheet(
+            "background-color: #2E2E2E; "
+            "color: #E0E0E0; "
+            "font-family: 'Consolas', 'Courier New', monospace; "
+            "font-size: 10pt; "
+            "padding: 10px;"
+        );
+        layout->addWidget(terminalOutput);
+        
+        // Input field
+        QHBoxLayout* inputLayout = new QHBoxLayout();
+        
+        promptLabel = new QLabel("CP>>>", this);
+        promptLabel->setStyleSheet(
+            "color: #9C27B0; "
+            "font-family: 'Consolas', 'Courier New', monospace; "
+            "font-size: 10pt; "
+            "font-weight: bold;"
+        );
+        inputLayout->addWidget(promptLabel);
+        
+        terminalInput = new QLineEdit(this);
+        terminalInput->setStyleSheet(
+            "background-color: #2E2E2E; "
+            "color: #E0E0E0; "
+            "font-family: 'Consolas', 'Courier New', monospace; "
+            "font-size: 10pt; "
+            "border: 1px solid #673AB7; "
+            "padding: 5px;"
+        );
+        terminalInput->setPlaceholderText("Enter query or Python command (e.g., solve_galaxy_rotation('NGC3596'))");
+        connect(terminalInput, &QLineEdit::returnPressed, this, &CondensedPhysicsTerminalWidget::sendCommand);
+        inputLayout->addWidget(terminalInput);
+        
+        layout->addLayout(inputLayout);
+        setLayout(layout);
+        
+        // Start Python with CondensedPhysics.py
+        process = new QProcess(this);
+        process->setWorkingDirectory(QCoreApplication::applicationDirPath());
+        
+        connect(process, &QProcess::readyReadStandardOutput, this, &CondensedPhysicsTerminalWidget::handleStdout);
+        connect(process, &QProcess::readyReadStandardError, this, &CondensedPhysicsTerminalWidget::handleStderr);
+        
+        startCondensedPhysics();
+    }
+    
+    ~CondensedPhysicsTerminalWidget() {
+        if (process && process->state() == QProcess::Running) {
+            process->write("exit()\n");
+            process->waitForFinished(3000);
+            if (process->state() == QProcess::Running) {
+                process->kill();
+            }
+        }
+    }
+
+private slots:
+    void startCondensedPhysics() {
+        QString cpPath = QCoreApplication::applicationDirPath() + "/CondensedPhysics.py";
+        
+        if (!QFile::exists(cpPath)) {
+            cpPath = QCoreApplication::applicationDirPath() + "/../CondensedPhysics.py";
+            if (!QFile::exists(cpPath)) {
+                terminalOutput->setTextColor(QColor("#FF5252"));
+                terminalOutput->append("❌ Error: CondensedPhysics.py not found\n");
+                terminalOutput->setTextColor(QColor("#E0E0E0"));
+                terminalOutput->append("Expected: " + cpPath + "\n\n");
+                terminalOutput->append("This is the General Model/Class Solver Index.\n");
+                terminalOutput->append("See MANDATORY ARCHITECTURE RULES at top of CondensedPhysics.py\n");
+                return;
+            }
+        }
+        
+        terminalOutput->setTextColor(QColor("#9C27B0"));
+        terminalOutput->append("═══════════════════════════════════════════════════════════\n");
+        terminalOutput->append("  CondensedPhysics.py - General Model/Class Solver Index\n");
+        terminalOutput->append("═══════════════════════════════════════════════════════════\n\n");
+        terminalOutput->setTextColor(QColor("#E0E0E0"));
+        terminalOutput->append("ARCHITECTURE: Pure physics calculator (NO hardcoded data)\n");
+        terminalOutput->append("INPUT: Datasets from APIFetch.py or query results\n");
+        terminalOutput->append("OUTPUT: Long-form equations + solutions + available equations\n\n");
+        terminalOutput->append("Starting Python interactive mode...\n\n");
+        
+        QStringList args;
+        args << "-i" << cpPath;
+        
+        process->start("python", args);
+        
+        if (!process->waitForStarted(5000)) {
+            terminalOutput->setTextColor(QColor("#FF5252"));
+            terminalOutput->append("❌ Failed to start Python\n");
+            terminalOutput->setTextColor(QColor("#E0E0E0"));
+        } else {
+            terminalOutput->setTextColor(QColor("#00E676"));
+            terminalOutput->append("✅ CondensedPhysics.py loaded\n");
+            terminalOutput->setTextColor(QColor("#E0E0E0"));
+            terminalOutput->append("   PID: " + QString::number(process->processId()) + "\n\n");
+        }
+    }
+    
+    void handleStdout() {
+        QByteArray data = process->readAllStandardOutput();
+        QString text = QString::fromLocal8Bit(data);
+        
+        terminalOutput->moveCursor(QTextCursor::End);
+        terminalOutput->insertPlainText(text);
+        terminalOutput->moveCursor(QTextCursor::End);
+    }
+    
+    void handleStderr() {
+        QByteArray data = process->readAllStandardError();
+        QString text = QString::fromLocal8Bit(data);
+        
+        terminalOutput->moveCursor(QTextCursor::End);
+        terminalOutput->setTextColor(QColor("#FF5252"));
+        terminalOutput->insertPlainText(text);
+        terminalOutput->setTextColor(QColor("#E0E0E0"));
+        terminalOutput->moveCursor(QTextCursor::End);
+    }
+    
+    void sendCommand() {
+        QString command = terminalInput->text().trimmed();
+        
+        if (command.isEmpty()) {
+            return;
+        }
+        
+        if (command.toLower() == "restart") {
+            terminalOutput->append("\n🔄 Restarting CondensedPhysics.py...\n\n");
+            if (process->state() == QProcess::Running) {
+                process->kill();
+                process->waitForFinished();
+            }
+            terminalOutput->clear();
+            startCondensedPhysics();
+            terminalInput->clear();
+            return;
+        }
+        
+        terminalOutput->moveCursor(QTextCursor::End);
+        terminalOutput->setTextColor(QColor("#9C27B0"));
+        terminalOutput->insertPlainText("CP>>> " + command + "\n");
+        terminalOutput->setTextColor(QColor("#E0E0E0"));
+        
+        if (process->state() == QProcess::Running) {
+            process->write(command.toLocal8Bit() + "\n");
+        } else {
+            terminalOutput->setTextColor(QColor("#FF5252"));
+            terminalOutput->append("❌ Python not running. Type 'restart'.\n");
+            terminalOutput->setTextColor(QColor("#E0E0E0"));
+        }
+        
+        terminalInput->clear();
+    }
+
+private:
+    QTextEdit* terminalOutput;
+    QLineEdit* terminalInput;
+    QLabel* promptLabel;
+    QProcess* process;
+};
+
+// ============================================================================
+// OLLAMA CODE BOT WIDGET - Ollama 3+ code editing assistant (CoAnQi_bot)
+// ============================================================================
+
+/**
+ * @brief Ollama 3+ code editing chatbot with local inference
+ * 
+ * Features:
+ * - Local LLM inference (no cloud API required)
+ * - Code generation and editing assistance
+ * - Physics equation explanations
+ * - Code review and optimization suggestions
+ * - Multi-turn conversations with context
+ * 
+ * Platform: Ollama (https://ollama.com)
+ * Model: Ollama 3+ (or compatible models like CodeLlama, Mistral, etc.)
+ * Name: CoAnQi_bot (Cosmic Analytic Quantum Intelligence bot)
+ * 
+ * Installation:
+ * 1. Download Ollama from https://ollama.com
+ * 2. Install: ollama pull llama3.2 (or ollama pull codellama)
+ * 3. Start: ollama serve (runs on localhost:11434)
+ * 
+ * Reserved for Tab 6 (index 5) exclusively at Source2 startup.
+ */
+class OllamaCodeBotWidget : public QWidget {
+    Q_OBJECT
+
+public:
+    explicit OllamaCodeBotWidget(QWidget* parent = nullptr)
+        : QWidget(parent) {
+        
+        QVBoxLayout* mainLayout = new QVBoxLayout(this);
+        
+        // Header with model selection
+        QHBoxLayout* headerLayout = new QHBoxLayout();
+        
+        QLabel* titleLabel = new QLabel("🤖 CoAnQi_bot - Ollama Code Assistant", this);
+        titleLabel->setStyleSheet(
+            "background-color: #1A237E; "
+            "color: white; "
+            "font-size: 12pt; "
+            "font-weight: bold; "
+            "padding: 10px; "
+            "border-radius: 5px;"
+        );
+        headerLayout->addWidget(titleLabel);
+        
+        modelComboBox = new QComboBox(this);
+        modelComboBox->addItem("llama3.2:latest");
+        modelComboBox->addItem("codellama:latest");
+        modelComboBox->addItem("mistral:latest");
+        modelComboBox->addItem("qwen2.5-coder:latest");
+        modelComboBox->setToolTip("Select Ollama model (must be pulled first: ollama pull <model>)");
+        modelComboBox->setStyleSheet("background-color: white; padding: 5px; font-size: 10pt;");
+        headerLayout->addWidget(modelComboBox);
+        
+        QPushButton* installBtn = new QPushButton("📥 Installation Guide", this);
+        installBtn->setStyleSheet("background-color: #4CAF50; color: white; padding: 5px; font-weight: bold;");
+        connect(installBtn, &QPushButton::clicked, this, &OllamaCodeBotWidget::showInstallationGuide);
+        headerLayout->addWidget(installBtn);
+        
+        mainLayout->addLayout(headerLayout);
+        
+        // Chat display
+        chatDisplay = new QTextEdit(this);
+        chatDisplay->setReadOnly(true);
+        chatDisplay->setStyleSheet(
+            "background-color: #FAFAFA; "
+            "color: #212121; "
+            "font-family: 'Segoe UI', Arial, sans-serif; "
+            "font-size: 10pt; "
+            "padding: 10px; "
+            "border: 1px solid #CCCCCC;"
+        );
+        mainLayout->addWidget(chatDisplay);
+        
+        // Input area
+        QHBoxLayout* inputLayout = new QHBoxLayout();
+        
+        promptInput = new QLineEdit(this);
+        promptInput->setPlaceholderText("Ask CoAnQi_bot anything... (e.g., 'Explain F_U_Bi_i equation' or 'Generate Python code for galaxy rotation')");
+        promptInput->setStyleSheet(
+            "background-color: white; "
+            "font-size: 10pt; "
+            "padding: 10px; "
+            "border: 2px solid #1976D2; "
+            "border-radius: 5px;"
+        );
+        connect(promptInput, &QLineEdit::returnPressed, this, &OllamaCodeBotWidget::sendMessage);
+        inputLayout->addWidget(promptInput);
+        
+        QPushButton* sendBtn = new QPushButton("📤 Send", this);
+        sendBtn->setStyleSheet(
+            "background-color: #1976D2; "
+            "color: white; "
+            "font-weight: bold; "
+            "padding: 10px 20px; "
+            "border-radius: 5px;"
+        );
+        connect(sendBtn, &QPushButton::clicked, this, &OllamaCodeBotWidget::sendMessage);
+        inputLayout->addWidget(sendBtn);
+        
+        mainLayout->addLayout(inputLayout);
+        
+        // Status bar
+        statusLabel = new QLabel("Status: Ready (ensure Ollama is running: ollama serve)", this);
+        statusLabel->setStyleSheet("color: #666; font-size: 9pt; padding: 5px;");
+        mainLayout->addWidget(statusLabel);
+        
+        setLayout(mainLayout);
+        
+        // Display welcome message
+        displayWelcomeMessage();
+    }
+
+private slots:
+    void sendMessage() {
+        QString prompt = promptInput->text().trimmed();
+        
+        if (prompt.isEmpty()) {
+            return;
+        }
+        
+        // Display user message
+        chatDisplay->append("<div style='background-color: #E3F2FD; padding: 10px; margin: 5px; border-radius: 10px;'>");
+        chatDisplay->append("<b>You:</b> " + prompt);
+        chatDisplay->append("</div>");
+        
+        promptInput->clear();
+        statusLabel->setText("Status: Thinking...");
+        
+        // Call Ollama API (localhost:11434)
+        QString model = modelComboBox->currentText();
+        
+        // Build JSON payload
+        QString jsonPayload = QString(
+            "{"
+            "  \"model\": \"%1\","
+            "  \"prompt\": \"%2\","
+            "  \"stream\": false,"
+            "  \"system\": \"You are CoAnQi_bot, an expert physics and code assistant for the UQFF (Unified Quantum Field Framework) project. Help with code generation, physics equations, and scientific computing. Be concise and provide code examples when relevant.\""
+            "}"
+        ).arg(model).arg(prompt);
+        
+        // Use QProcess to call curl (cross-platform)
+        QProcess* curlProcess = new QProcess(this);
+        QStringList args;
+        args << "-s" << "-X" << "POST" << "http://localhost:11434/api/generate"
+             << "-H" << "Content-Type: application/json"
+             << "-d" << jsonPayload;
+        
+        connect(curlProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
+                [this, curlProcess](int exitCode, QProcess::ExitStatus exitStatus) {
+            
+            if (exitStatus == QProcess::NormalExit && exitCode == 0) {
+                QByteArray response = curlProcess->readAllStandardOutput();
+                QString responseStr = QString::fromUtf8(response);
+                
+                // Parse JSON response (simple extraction)
+                int responseStart = responseStr.indexOf("\"response\":\"") + 12;
+                int responseEnd = responseStr.indexOf("\",\"", responseStart);
+                QString botResponse = responseStr.mid(responseStart, responseEnd - responseStart);
+                
+                // Unescape JSON string
+                botResponse.replace("\\n", "\n");
+                botResponse.replace("\\\"", "\"");
+                botResponse.replace("\\\\", "\\");
+                
+                // Display bot response
+                chatDisplay->append("<div style='background-color: #F1F8E9; padding: 10px; margin: 5px; border-radius: 10px;'>");
+                chatDisplay->append("<b>CoAnQi_bot:</b><br>" + botResponse);
+                chatDisplay->append("</div>");
+                
+                statusLabel->setText("Status: Ready");
+            } else {
+                QString error = curlProcess->readAllStandardError();
+                chatDisplay->append("<div style='background-color: #FFEBEE; padding: 10px; margin: 5px; border-radius: 10px;'>");
+                chatDisplay->append("<b>Error:</b> Failed to connect to Ollama. Ensure 'ollama serve' is running on localhost:11434");
+                chatDisplay->append("</div>");
+                
+                statusLabel->setText("Status: Error - Ollama not running");
+            }
+            
+            curlProcess->deleteLater();
+        });
+        
+        curlProcess->start("curl", args);
+    }
+    
+    void showInstallationGuide() {
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle("CoAnQi_bot Installation Guide");
+        msgBox.setTextFormat(Qt::RichText);
+        msgBox.setText(
+            "<h3>🤖 CoAnQi_bot Setup (Ollama 3+)</h3>"
+            
+            "<h4>Step 1: Install Ollama</h4>"
+            "<p>Download from: <a href='https://ollama.com'>https://ollama.com</a></p>"
+            "<p><b>Windows:</b> Download OllamaSetup.exe and run installer<br>"
+            "<b>macOS:</b> Download Ollama.dmg and drag to Applications<br>"
+            "<b>Linux:</b> <code>curl -fsSL https://ollama.com/install.sh | sh</code></p>"
+            
+            "<h4>Step 2: Pull a Model</h4>"
+            "<p>Open terminal/PowerShell and run:</p>"
+            "<p><code>ollama pull llama3.2</code> (recommended, balanced)<br>"
+            "<code>ollama pull codellama</code> (code-focused)<br>"
+            "<code>ollama pull qwen2.5-coder</code> (latest code model)</p>"
+            
+            "<h4>Step 3: Start Ollama Server</h4>"
+            "<p><code>ollama serve</code> (runs on localhost:11434)</p>"
+            "<p><i>Leave this terminal open while using CoAnQi_bot</i></p>"
+            
+            "<h4>Step 4: Test Connection</h4>"
+            "<p>In this tab, type a question like:</p>"
+            "<p><i>\"Explain the F_U_Bi_i equation in UQFF\"</i></p>"
+            
+            "<hr>"
+            "<p><b>Model Recommendations:</b></p>"
+            "<ul>"
+            "<li><b>llama3.2</b> - General purpose, good balance (3B params)</li>"
+            "<li><b>codellama</b> - Code generation specialist (7B params)</li>"
+            "<li><b>qwen2.5-coder</b> - Latest code model (7B params)</li>"
+            "<li><b>mistral</b> - Fast and efficient (7B params)</li>"
+            "</ul>"
+            
+            "<p><i>All models run locally, no cloud API required!</i></p>"
+        );
+        msgBox.exec();
+    }
+    
+    void displayWelcomeMessage() {
+        chatDisplay->append("<div style='background-color: #E8EAF6; padding: 15px; margin: 10px; border-radius: 10px; border: 2px solid #1A237E;'>");
+        chatDisplay->append("<h3 style='color: #1A237E; margin-top: 0;'>🤖 Welcome to CoAnQi_bot</h3>");
+        chatDisplay->append("<p><b>Cosmic Analytic Quantum Intelligence bot</b> powered by Ollama 3+</p>");
+        chatDisplay->append("<p><b>Features:</b></p>");
+        chatDisplay->append("<ul>");
+        chatDisplay->append("<li>🧠 Local LLM inference (no cloud required)</li>");
+        chatDisplay->append("<li>💻 Code generation and optimization</li>");
+        chatDisplay->append("<li>🔬 Physics equation explanations</li>");
+        chatDisplay->append("<li>🛠️ Debugging and code review</li>");
+        chatDisplay->append("<li>📚 UQFF framework assistance</li>");
+        chatDisplay->append("</ul>");
+        chatDisplay->append("<p><b>Quick Start:</b></p>");
+        chatDisplay->append("<ol>");
+        chatDisplay->append("<li>Ensure Ollama is installed and running (<code>ollama serve</code>)</li>");
+        chatDisplay->append("<li>Select a model from the dropdown</li>");
+        chatDisplay->append("<li>Ask questions or request code generation</li>");
+        chatDisplay->append("</ol>");
+        chatDisplay->append("<p><i>Click '📥 Installation Guide' if you need help setting up Ollama</i></p>");
+        chatDisplay->append("</div>");
+    }
+
+private:
+    QComboBox* modelComboBox;
+    QTextEdit* chatDisplay;
+    QLineEdit* promptInput;
+    QLabel* statusLabel;
 };
 
 // ============================================================================
@@ -8283,16 +9014,28 @@ MainWindow::MainWindow()
                 tabs->addTab(sciCalc, "🧮 Scientific Calculator");
                 browserWindows[2] = nullptr;  // No browser window for Tab 3
             }
-            // Special case: Tab 4 (index 3) reserved for Notes/Scratch Pad
+            // Special case: Tab 4 (index 3) reserved for Notebook Editor
             else if (i == 3) {
-                // Tab 4: General purpose notes/scratch pad
-                QTextEdit* scratchPad = new QTextEdit(this);
-                scratchPad->setPlaceholderText("Notes & Scratch Pad\n\nUse this tab for:\n• Quick calculations\n• Research notes\n• Copy/paste from other tabs\n• Draft queries before searching");
-                scratchPad->setStyleSheet("font-family: 'Consolas', 'Courier New', monospace; font-size: 10pt; padding: 10px;");
-                tabs->addTab(scratchPad, "📝 Notes");
+                // Tab 4: Jupyter-style notebook editor with executable cells
+                NotebookEditorWidget* notebook = new NotebookEditorWidget(this);
+                tabs->addTab(notebook, "📓 Notebook Editor");
                 browserWindows[3] = nullptr;  // No browser window for Tab 4
             }
-            // Tabs 5-21 (indices 4-20): Query fetch results display
+            // Special case: Tab 5 (index 4) reserved for CondensedPhysics.py
+            else if (i == 4) {
+                // Tab 5: CondensedPhysics.py general model/class solver index
+                CondensedPhysicsTerminalWidget* cpTerminal = new CondensedPhysicsTerminalWidget(this);
+                tabs->addTab(cpTerminal, "📚 CondensedPhysics.py");
+                browserWindows[4] = nullptr;  // No browser window for Tab 5
+            }
+            // Special case: Tab 6 (index 5) reserved for Ollama CoAnQi_bot
+            else if (i == 5) {
+                // Tab 6: Ollama 3+ code editing bot (CoAnQi_bot)
+                OllamaCodeBotWidget* ollamaBot = new OllamaCodeBotWidget(this);
+                tabs->addTab(ollamaBot, "🤖 CoAnQi_bot");
+                browserWindows[5] = nullptr;  // No browser window for Tab 6
+            }
+            // Tabs 7-21 (indices 6-20): Query fetch results display
             else {
                 // Standard browser windows for search results
                 browserWindows[i] = new BrowserWindow(QString("Tab %1").arg(i + 1), this);

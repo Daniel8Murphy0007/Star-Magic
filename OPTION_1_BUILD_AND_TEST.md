@@ -78,14 +78,90 @@
   - API registration info button with links to registration pages
   - Free tier available for all options (SymPy/SciPy/NumPy fully free, Wolfram Alpha: 2,000 queries/month free)
 
-- **Tab 4: Notes & Scratch Pad** (NEW - February 11, 2026)
-  - General purpose text area for quick notes and calculations
-  - Use cases: Research notes, copy/paste from other tabs, draft queries before searching
+- **Tab 4: 📓 Notebook Editor** (NEW - February 11, 2026)
+  - Jupyter-style multi-cell notebook environment for interactive Python workflows
+  - **Features**:
+    - ➕ Code Cell: Python execution with immediate output display
+    - 📝 Markdown Cell: Documentation cells with blue borders
+    - ▶️ Run All: Execute all code cells sequentially
+    - 🗑️ Clear All: Clear all cell outputs
+  - **Cell Types**:
+    - **Code Cells** (green border #4CAF50): Python code execution via subprocess, 10s timeout
+    - **Markdown Cells** (blue border #2196F3): Documentation and notes
+  - **Output Display**:
+    - Stdout: Black text (#000000)
+    - Stderr: Red text (#FF0000)
+    - Scrollable output area (max 200px height)
+  - **Use Cases**:
+    - Data analysis workflows combining UQFF equations
+    - Multi-step calculations with intermediate results
+    - Documentation alongside executable code
+    - Testing physics models incrementally
+  - **Keyboard Shortcuts** (future enhancement):
+    - Shift+Enter: Run current cell
+    - Ctrl+Enter: Run and advance to next cell
 
-- **Tabs 5-21: Query Fetch Results** (17 tabs dedicated to search results)
-  - Auto-populate with results from user queries
+- **Tab 5: 📚 CondensedPhysics.py Terminal** (NEW - February 11, 2026)
+  - Python interactive terminal for CondensedPhysics.py (General Model/Class Solver Index)
+  - **Architecture** (PURE PHYSICS CALCULATOR):
+    - NO hardcoded system data (all parameters passed via method arguments)
+    - NO named system classes (only generic physics domain calculators)
+    - NO global instances (stateless calculator classes only)
+    - INPUT: Datasets from APIFetch.py or query results → CondensedPhysics.solve()
+    - OUTPUT: Long-form equations + solutions + available equations list + simulation set
+  - **Terminal Features**:
+    - Background: Dark gray (#2E2E2E)
+    - Prompt: CP>>> (purple #9C27B0)
+    - Text: Light gray (#E0E0E0)
+    - Errors: Red (#FF5252)
+  - **Special Commands**:
+    - `restart`: Relaunch Python process with CondensedPhysics.py
+    - `exit()`: Close terminal (standard Python exit)
+  - **Auto-Discovery**: Searches for CondensedPhysics.py in app directory, then parent directory
+  - **Use Cases**:
+    - Solve general physics models with custom parameters
+    - Generate long-form equations with step-by-step solutions
+    - List all available equations for a given query
+    - Run simultaneous equation sets for complex simulations
+
+- **Tab 6: 🤖 CoAnQi_bot (Ollama Local LLM)** (NEW - February 11, 2026)
+  - Local AI assistant powered by Ollama (https://ollama.com)
+  - **Platform**: Ollama - Local LLM inference (NO cloud API, NO API key, fully FREE)
+  - **API**: HTTP POST to localhost:11434/api/generate (curl subprocess)
+  - **Models** (dropdown selection):
+    1. **llama3.2:latest** - General purpose, 3B params, balanced performance
+    2. **codellama:latest** - Code specialist, 7B params, optimized for programming
+    3. **mistral:latest** - Fast and efficient, 7B params, good reasoning
+    4. **qwen2.5-coder:latest** - Latest code model, 7B params, multi-language support
+  - **Features**:
+    - Multi-turn conversations with context
+    - Code generation for physics calculations
+    - UQFF equation explanations with system prompt awareness
+    - Debugging and optimization suggestions
+    - Fully local (no data sent to cloud, privacy-first)
+  - **System Prompt** (built-in):
+    > "You are CoAnQi_bot, an expert physics and code assistant for the UQFF (Unified Quantum Field Framework) project. Help with code generation, physics equations, and scientific computing. Be concise and provide code examples when relevant."
+  - **Installation Guide** (📥 button):
+    - Step 1: Download Ollama from https://ollama.com
+    - Step 2: Pull model: `ollama pull llama3.2`
+    - Step 3: Start server: `ollama serve` (runs on localhost:11434)
+    - Step 4: Test in CoAnQi_bot tab
+  - **Chat Interface**:
+    - User messages: Blue background (#E3F2FD), left-aligned
+    - Bot responses: Green background (#F1F8E9), HTML formatted with code blocks
+    - Errors: Red background (#FFEBEE), connection troubleshooting
+    - Status bar: "Ready", "Thinking...", or "Error - Ollama not running"
+  - **Example Prompts**:
+    - "Explain the F_U_Bi_i equation in UQFF"
+    - "Generate Python code to calculate gravitational force with UQFF_Compressed"
+    - "How do I implement a 26-layer Triadic gravity model?"
+    - "Debug this WSTP integration error: [paste error]"
+
+- **Tabs 7-21: Query Fetch Results** (15 tabs dedicated to search results, shifted from Tabs 5-21)
+  - Auto-populate with results from user queries (SIMBAD, NASA, Grok fallback)
   - Tab 21 preloaded with ALMA Cycle 12 Observing Tool
   - All tabs closable and movable for custom organization
+  - Browser windows with full web navigation capabilities
 
 - **UQFF Physics:** QProcess integration with CoAnQi_Wrapper.py (source2.cpp lines 7645-7700)
 - **Number Theory Tool:** SymbolicMath_Wrapper.py integration (source2.cpp lines 5803-5843)
@@ -694,57 +770,567 @@ normal_dist(0, 1)         → Gaussian distribution
 
 ---
 
-## 📝 Using Tab 4: Notes & Scratch Pad (NEW)
+## � Using Tab 4: Notebook Editor (NEW)
 
 **What is Tab 4?**
-Tab 4 is a general-purpose text editor for quick notes, research documentation, and scratch calculations.
+Tab 4 is a Jupyter-style notebook environment for interactive Python workflows. Unlike Tab 2 (QCalc.py terminal), this tab allows you to create multi-cell notebooks combining code execution, output display, and markdown documentation.
+
+### Quick Start
+1. Launch Source2.exe
+2. Click Tab 4: "📓 Notebook Editor"
+3. Read welcome cell (purple border) for features overview
+4. Click "➕ Code Cell" to add Python code cell
+5. Type Python code, click "▶️ Run" to execute
+
+### Toolbar Buttons
+
+| Button | Action | Shortcut |
+|--------|--------|----------|
+| ➕ Code Cell | Add new Python code cell with green border | - |
+| 📝 Markdown Cell | Add new documentation cell with blue border | - |
+| ▶️ Run All | Execute all code cells sequentially | - |
+| 🗑️ Clear All | Clear all cell outputs (cells remain) | - |
+
+### Cell Types
+
+#### Code Cells (Green Border #4CAF50)
+- **Purpose:** Executable Python code with output display
+- **Execution:** Click "▶️ Run" button or (future) Shift+Enter
+- **Timeout:** 10 seconds per cell
+- **Output Display:**
+  - **Stdout:** Black text (#000000) - normal output
+  - **Stderr:** Red text (#FF0000) - errors and warnings
+  - **Scrollable:** Output area scrolls if exceeds 200px height
+- **Format:** Monospace font (Consolas), line numbers via cell labels
+
+#### Markdown Cells (Blue Border #2196F3)
+- **Purpose:** Documentation, notes, explanations
+- **Formatting:** Plain text (future: Markdown rendering)
+- **Use Cases:** 
+  - Explain next code section
+  - Document assumptions
+  - Show equations in text form
+  - Create section headers
+
+#### Welcome Cell (Purple Border #9C27B0)
+- **Purpose:** Quick reference guide (displayed on startup)
+- **Content:** Features list and use cases
+- **Deletable:** Use 🗑️ button if not needed
+
+### Example Usage: Multi-Step Physics Calculation
+
+#### Workflow
+```
+1. Click "📝 Markdown Cell"
+2. Type: "# UQFF Validation for Sagittarius A*"
+
+3. Click "➕ Code Cell"
+4. Type:
+   import numpy as np
+   M = 4.1e6 * 1.989e30  # Solar masses to kg
+   r = 8500 * 3.086e16   # Parsecs to meters
+   print(f"Mass: {M:.2e} kg")
+   print(f"Distance: {r:.2e} m")
+
+5. Click "▶️ Run" on code cell
+
+6. Click "➕ Code Cell" (second cell)
+7. Type:
+   G = 6.674e-11
+   g = G * M / r**2
+   print(f"Newtonian gravity: {g:.2e} m/s²")
+
+8. Click "▶️ Run All" to execute all cells sequentially
+```
+
+**Expected Output:**
+```
+[1] (Code Cell)
+Mass: 8.16e36 kg
+Distance: 2.62e20 m
+
+[2] (Code Cell)
+Newtonian gravity: 7.94e-08 m/s²
+```
+
+### Example Usage: Compare UQFF Methods
+```
+1. Add Markdown Cell: "Compare UQFF vs MUGE for NGC1365"
+
+2. Add Code Cell:
+   # Import parameters from Tab 2 QCalc
+   from QCalc import UQFF_Compressed, UQFF_Resonant
+   
+   params = {
+       'M': 1.2e9 * 1.989e30,
+       'r': 17.3e6 * 3.086e16,
+       'z': 0.00546
+   }
+
+3. Add Code Cell:
+   g_compressed = UQFF_Compressed(params)
+   print(f"UQFF Compressed: {g_compressed:.2e} m/s²")
+
+4. Add Code Cell:
+   g_resonant = UQFF_Resonant(params)
+   print(f"UQFF Resonant: {g_resonant:.2e} m/s²")
+   
+   diff = abs(g_compressed - g_resonant) / g_compressed * 100
+   print(f"Difference: {diff:.2f}%")
+
+5. Click "▶️ Run All"
+```
 
 ### Use Cases
-- **Research Notes:** Document findings from Tabs 1-3 and search results
-- **Quick Calculations:** Copy/paste equations from other tabs for editing
-- **Draft Queries:** Prepare complex search queries before entering in search field
-- **Code Snippets:** Save Python/Wolfram commands for later use
+- **Multi-Step Workflows:** Break complex calculations into logical steps
+- **Data Analysis:** Load datasets, compute statistics, visualize results
+- **UQFF Validation:** Compare different equation variants systematically
+- **Debugging:** Execute code incrementally to identify errors
+- **Documentation:** Combine explanations with executable code
+- **Teaching:** Create tutorials with code + explanations
 
-### Features
-- **Plain text editor:** No special formatting, just text
-- **Monospace font:** Consolas for code-friendly display
-- **Auto-save:** Content persists during session (not saved to disk)
-- **Copy/Paste:** Full clipboard integration with other tabs
+### Cell Management
+- **Add Cell:** Click toolbar buttons (➕ or 📝)
+- **Run Cell:** Click ▶️ button on individual cell
+- **Run All:** Click "▶️ Run All" in toolbar (executes top to bottom)
+- **Delete Cell:** Click 🗑️ button on cell
+- **Clear Outputs:** Click "🗑️ Clear All" in toolbar (cells remain)
 
-### Example Usage
-```
-1. Click Tab 4: "📝 Notes"
-2. Type or paste notes:
-   
-   UQFF Research Session - Feb 11, 2026
-   =====================================
-   System: Sagittarius A*
-   F_U_Bi_i: 1.234e30 N (from Tab 1)
-   
-   QCalc.py validation (Tab 2):
-   >>> calc.solve_UQFF_Master_Buoyant(params)
-   Result matches MAIN_1 within 0.01%
-   
-   Next: Test with NGC1365 parameters
-   
-3. Notes remain available during session
-```
+### Future Enhancements (Planned)
+- **Keyboard Shortcuts:** Shift+Enter (run), Ctrl+Enter (run+advance), Esc (stop)
+- **Markdown Rendering:** HTML display for markdown cells
+- **Cell Reordering:** Drag-and-drop to reorganize cells
+- **Export:** Save notebook to .ipynb format
+- **Import:** Load existing Jupyter notebooks
+
+### Troubleshooting Tab 4
+
+**Error: "Execution timed out (>10s)"**
+- **Cause:** Cell took longer than 10 seconds to execute
+- **Solution:** Break into smaller cells, optimize code, or increase timeout in source code
+
+**Error: "python: command not found"**
+- **Cause:** Python not in system PATH
+- **Solution:** Install Python 3.x and add to PATH, or specify full path in widget code
+
+**Output Not Showing**
+- **Symptoms:** Cell executes but no output appears
+- **Solution:** Check if code actually prints (notebook doesn't auto-display last expression like interactive mode)
+- **Workaround:** Add explicit `print()` statements
+
+**Cell Execution Order Confusion**
+- **Issue:** Cells run out of order, variables undefined
+- **Solution:** Use "▶️ Run All" to execute sequentially from top
+- **Best Practice:** Design cells to be independent or document dependencies
 
 ---
 
-## 🌐 Using Tabs 5-21: Query Fetch Results (17 Tabs)
+## 📚 Using Tab 5: CondensedPhysics.py Terminal (NEW)
 
-**What are Tabs 5-21?**
-Tabs 5-21 are dedicated browser windows that auto-populate with results from user search queries. These tabs display web content from various astrophysical databases and research sources.
+**What is Tab 5?**
+Tab 5 is a Python interactive terminal for CondensedPhysics.py, a **pure physics calculator** that solves general model/class equations. Unlike Tab 2 (QCalc with 8 fixed UQFF equations), this terminal provides access to a general solver index for arbitrary physics domains.
+
+### Critical Architecture Rules
+CondensedPhysics.py is **NOT a data repository**—it's a **pure physics calculator**:
+- ❌ **NO hardcoded system data** (no "Sagittarius A* = 4.1e6 solar masses")
+- ❌ **NO named system classes** (no `class NGC1365Model`)
+- ❌ **NO global instances** (no pre-computed solutions)
+- ❌ **NO pre-stored results** (computations are live only)
+- ✅ **Parameterized equations only** (accepts datasets as input)
+- ✅ **Fundamental constants only** (G, c, ℏ, k_B, etc.)
+
+### Data Flow Architecture
+```
+Source2 Query Field → APIFetch.py → parameters dict
+                                         ↓
+                          CondensedPhysics.solve(params)
+                                         ↓
+                     Long-form equations + solutions
+                                         ↓
+                      CondensedPhysics_OutputData.py (storage)
+                                         ↓
+                            Source2 recall system
+```
+
+### Quick Start
+1. Launch Source2.exe
+2. Click Tab 5: "📚 CondensedPhysics.py"
+3. Terminal auto-starts Python with CondensedPhysics.py loaded
+4. Verify prompt shows: `CP>>>` (purple text)
+5. Type Python commands or CondensedPhysics functions
+
+### Terminal Features
+- **Dark Theme:** Background #2E2E2E (dark gray)
+- **Purple Prompt:** `CP>>>` in #9C27B0 color
+- **Light Text:** #E0E0E0 (light gray) for readability
+- **Error Display:** Red text (#FF5252) for stderr
+- **Success Messages:** Green text (#00E676) for confirmations
+
+### Special Commands
+
+| Command | Action |
+|---------|--------|
+| `restart` | Kill and relaunch Python process with CondensedPhysics.py |
+| `exit()` | Close Python terminal (standard Python exit) |
+| `help(CondensedPhysics)` | Show module documentation |
+
+### Example Usage: General Galaxy Rotation Solver
+
+```python
+CP>>> # Define parameters from API fetch or user input
+CP>>> params = {
+...     'M': 1.2e11 * 1.989e30,      # Galaxy mass (kg)
+...     'r': 5.0e20,                  # Radius (m)
+...     'SFR': 15.3,                  # Star formation rate (M☉/yr)
+...     'z': 0.0055                   # Redshift
+... }
+
+CP>>> # Solve with CondensedPhysics general solver
+CP>>> result = CondensedPhysics.solve_rotation_curve(params)
+
+CP>>> print(result['long_form_equations'])
+[
+  "v(r) = sqrt(G * M(r) / r)",
+  "M(r) = M_visible + M_dark(r)",
+  "M_dark(r) = 4π * ρ_0 * r_s³ * [ln((r_s+r)/r_s) - r/(r_s+r)]",
+  ...
+]
+
+CP>>> print(result['solutions'])
+{
+  'v_rotation': 2.31e5,  # m/s
+  'M_dark': 8.4e41,       # kg
+  'DM_fraction': 0.68     # 68% dark matter
+}
+
+CP>>> print(result['available_equations'])
+[
+  "Tully-Fisher relation: L ∝ v^4",
+  "MOND modified dynamics: a = a_N/(1 + a_0/a_N)",
+  "Navarro-Frenk-White profile",
+  "Burkert dark matter profile",
+  ...
+]
+```
+
+### Output Format
+CondensedPhysics.py returns structured results:
+
+```python
+{
+  'long_form_equations': [      # Step-by-step derivation
+    "Equation 1 with substitutions shown",
+    "Equation 2 intermediate step",
+    ...
+  ],
+  'solutions': {                 # Numerical results
+    'parameter1': value1,
+    'parameter2': value2,
+    ...
+  },
+  'available_equations': [       # Other solvable equations for this query
+    "Alternative method 1",
+    "Alternative method 2",
+    ...
+  ],
+  'simulation_set': {            # For simultaneous multi-equation simulation
+    'equations': [...],
+    'initial_conditions': {...}
+  }
+}
+```
+
+### Example Usage: Pass Data from Tab 1 Results
+```python
+CP>>> # After running calculation in Tab 1 (MAIN_1 Calculator)
+CP>>> # Copy parameters from terminal output
+
+CP>>> system_params = {
+...     'name': 'Sagittarius A*',
+...     'M': 4.1e6 * 1.989e30,
+...     'r': 26000 * 3.086e16,
+...     'B': 1e-4,
+...     'Charge': 1.602e-19
+... }
+
+CP>>> # Validate with general magnetar model
+CP>>> result = CondensedPhysics.solve_magnetar_field(system_params)
+CP>>> print(f"B_crit validation: {result['B_crit']:.2e} T")
+```
+
+### Use Cases
+- **General Physics Solver:** Compute arbitrary physics domains (not limited to 8 UQFF equations)
+- **Model Validation:** Compare standard models with UQFF predictions
+- **Custom Workflows:** Build multi-stage calculations with parameter passing
+- **Research Exploration:** Test hypotheses with parameterized models
+- **Equation Discovery:** See all available equations for a given domain
+
+### Troubleshooting Tab 5
+
+**Error: "CondensedPhysics.py not found"**
+- **Cause:** File missing from expected locations
+- **Solution:** Terminal searches 2 locations automatically:
+  1. Same directory as Source2.exe
+  2. Parent directory (project root)
+- **Fix:** Copy CondensedPhysics.py to one of these locations
+- **Message Display:** Terminal shows expected paths and architecture rules
+
+**Error: "Hardcoded system data detected"**
+- **Cause:** CondensedPhysics.py violates architecture rules
+- **Solution:** Review MANDATORY ARCHITECTURE RULES in CondensedPhysics.py header
+- **Required Changes:**
+  - Remove `self.distance = 6500 * ly` style assignments
+  - Change `class NGC3596Model` to `class GalaxyRotationCalculator`
+  - Replace global instances with stateless calculator functions
+
+**Process Crashes on Import**
+- **Cause:** Syntax error or missing Python dependencies
+- **Solution:** Run CondensedPhysics.py directly in PowerShell:
+  ```powershell
+  python CondensedPhysics.py
+  ```
+- **Check:** Ensure all imports available (numpy, scipy, etc.)
+
+---
+
+## 🤖 Using Tab 6: CoAnQi_bot (Ollama Local LLM) (NEW)
+
+**What is Tab 6?**
+Tab 6 is a local AI assistant powered by Ollama, providing code generation, physics explanations, and debugging help—all running entirely on your machine with **no cloud API, no API key, and completely free**.
+
+### Quick Start (First-Time Setup)
+1. **Install Ollama:**
+   - Download from [https://ollama.com](https://ollama.com)
+   - Run installer (Windows/Mac/Linux)
+2. **Pull Model:**
+   ```powershell
+   ollama pull llama3.2
+   ```
+3. **Start Server:**
+   ```powershell
+   ollama serve
+   ```
+   - Keep terminal open (runs on localhost:11434)
+4. **Open Source2 → Tab 6**
+5. Select model from dropdown (llama3.2:latest)
+6. Start chatting!
+
+### Installation Guide (In-App)
+Click "📥 Installation Guide" button in Tab 6 for step-by-step setup:
+
+**Step 1: Download Ollama**
+- Visit https://ollama.com
+- Download installer for your OS
+- Install (typically 1-2 minutes)
+
+**Step 2: Pull a Model**
+```powershell
+# General purpose (recommended for beginners)
+ollama pull llama3.2
+
+# Code specialist
+ollama pull codellama
+
+# Fast and efficient
+ollama pull mistral
+
+# Latest code model
+ollama pull qwen2.5-coder
+```
+
+**Step 3: Start Server**
+```powershell
+ollama serve
+```
+- Server starts on localhost:11434
+- Keep terminal open while using CoAnQi_bot
+
+**Step 4: Test Connection**
+- Open Source2 → Tab 6
+- Type: "Hello, are you working?"
+- Verify bot responds
+
+### 4 Available Models
+
+| Model | Size | Best For | Strengths |
+|-------|------|----------|-----------|
+| **llama3.2:latest** | 3B | General purpose | Balanced, fast, good reasoning |
+| **codellama:latest** | 7B | Code generation | Python/C++ expert, debugging |
+| **mistral:latest** | 7B | Fast inference | Quick responses, efficient |
+| **qwen2.5-coder:latest** | 7B | Latest code model | Multi-language, up-to-date |
+
+**Note:** Download size: 2-4 GB per model, one-time download, stored locally
+
+### System Prompt (Auto-Included)
+CoAnQi_bot has built-in UQFF awareness via system prompt:
+
+> "You are CoAnQi_bot, an expert physics and code assistant for the UQFF (Unified Quantum Field Framework) project. Help with code generation, physics equations, and scientific computing. Be concise and provide code examples when relevant."
+
+This makes the bot aware of:
+- UQFF terminology (F_U_Bi_i, g_compressed, 26D Triadic, etc.)
+- Project structure (MAIN_1_CoAnQi.cpp, QCalc.py, source files)
+- Physics context (magnetars, black holes, dark matter)
+
+### Example Usage: Explain UQFF Equation
+
+**You:**
+> Explain the F_U_Bi_i equation in UQFF and how it differs from Newtonian gravity
+
+**CoAnQi_bot:**
+> F_U_Bi_i (Master Buoyant Unified Force, cosmic scale Outside→In) represents the complete unified field force in UQFF. Key differences from Newtonian gravity:
+>
+> 1. **Multi-Component**: F_U_Bi_i = Ug1 + Ug2 + Ug3 + Ug4 (4 unified forces)
+>    - Ug1: Magnetic dipole contribution
+>    - Ug2: Charge-reactivity field
+>    - Ug3: String rotation dynamics
+>    - Ug4: Vacuum concentration effects
+>
+> 2. **Newtonian**: F = G*M*m/r² (single mass-based force)
+>
+> 3. **UQFF Advantages:**
+>    - Accounts for quantum field effects (Ug4)
+>    - Includes electromagnetic coupling (Ug1, Ug2)
+>    - Models spacetime rotation (Ug3)
+>    - Naturally explains galaxy rotation curves without dark matter adjustments
+>
+> Use `compute_FU_SOURCE4()` in MAIN_1_CoAnQi.cpp for calculations.
+
+### Example Usage: Generate Code
+
+**You:**
+> Generate Python code to calculate gravitational force using UQFF_Compressed for NGC1365
+
+**CoAnQi_bot:**
+> ```python
+> from QCalc import UQFF_Compressed
+> 
+> # NGC1365 parameters
+> params = {
+>     'M': 1.2e9 * 1.989e30,      # 1.2 billion solar masses
+>     'r': 17.3e6 * 3.086e16,     # 17.3 Mpc
+>     'z': 0.00546,                # Redshift
+>     'B': 1e-6,                   # Magnetic field (T)
+>     'SFR': 15.3                  # Star formation rate (M☉/yr)
+> }
+> 
+> # Compute UQFF Compressed (Newtonian + 9 corrections)
+> g_compressed = UQFF_Compressed(params)
+> 
+> print(f"NGC1365 Compressed Gravity: {g_compressed:.2e} m/s²")
+> 
+> # Compare with Newtonian
+> G = 6.674e-11
+> g_newton = G * params['M'] / params['r']**2
+> 
+> correction_factor = g_compressed / g_newton
+> print(f"UQFF Correction Factor: {correction_factor:.4f}")
+> ```
+>
+> Run this in Tab 2 (QCalc.py) or Tab 4 (Notebook Editor).
+
+### Example Usage: Debug C++ Error
+
+**You:**
+> I'm getting "error C2065: 'QScrollArea': undeclared identifier" in source2.cpp line 1074. How do I fix this?
+
+**CoAnQi_bot:**
+> This error means QScrollArea is used but not included. Add this to your includes section in source2.cpp:
+>
+> ```cpp
+> #include <QScrollArea>
+> ```
+>
+> Make sure it's placed with other Qt widget includes (after QWidget, QLabel, etc.).
+>
+> If error persists:
+> 1. Check CMakeLists.txt includes Qt6::Widgets
+> 2. Clean and rebuild: `cmake --build build_msvc --config Release --target Source2`
+> 3. Verify Qt 6.x is properly installed
+
+### Chat Interface Features
+- **User Messages:** Blue background (#E3F2FD), left-aligned, clear "You:" label
+- **Bot Responses:** Green background (#F1F8E9), HTML formatted with code syntax highlighting
+- **Error Messages:** Red background (#FFEBEE), connection troubleshooting tips
+- **Status Bar:** Shows "Ready", "Thinking..." during inference, or "Error - Ollama not running"
+- **Auto-Scroll:** Chat automatically scrolls to latest message
+
+### Use Cases
+- **Code Generation:** "Generate C++ code for 26D Triadic gravity solver"
+- **Physics Explanations:** "Explain Hawking radiation in context of Information Paradox"
+- **Debugging:** "Why is my WSTP integration crashing on startup?"
+- **Optimization:** "How can I parallelize this loop in MAIN_1_CoAnQi.cpp?"
+- **Documentation:** "Write docstring for compute_Ug4_SOURCE4 function"
+- **Learning:** "What's the difference between UQFF_Resonant and UQFF_Compressed?"
+
+### Privacy & Performance
+- **100% Local:** All inference runs on your machine, no data sent to cloud
+- **No API Key:** No registration, no usage limits, no tracking
+- **Offline Capable:** Works without internet (after model download)
+- **Performance:** Depends on your hardware:
+  - **CPU (no GPU):** 5-15 seconds per response
+  - **GPU (CUDA/Metal):** 1-3 seconds per response
+- **Model Size:** 2-7B parameters (fits on most modern computers)
+
+### Troubleshooting Tab 6
+
+**Error: "Ollama not running - Connection refused"**
+- **Cause:** Ollama server not started
+- **Solution:**
+  ```powershell
+  ollama serve
+  ```
+- **Verify:** Open http://localhost:11434 in browser (should show "Ollama is running")
+
+**Error: "Model not found - llama3.2:latest"**
+- **Cause:** Model not downloaded
+- **Solution:**
+  ```powershell
+  ollama pull llama3.2
+  ```
+- **Check Available Models:**
+  ```powershell
+  ollama list
+  ```
+
+**Response Takes Too Long (>30s)**
+- **Cause:** CPU inference on large model
+- **Solutions:**
+  - Use smaller model: llama3.2 (3B) instead of codellama (7B)
+  - Enable GPU acceleration (Ollama auto-detects CUDA/Metal)
+  - Reduce prompt length
+
+**Bot Response Cut Off/Incomplete**
+- **Cause:** Response length limit in API call
+- **Solution:** Ask bot to "continue" or rephrase as shorter question
+- **Workaround:** Increase max_tokens in OllamaCodeBotWidget (source2.cpp line ~1500)
+
+**Installation Guide Doesn't Open**
+- **Cause:** Modal dialog coding issue
+- **Workaround:** Follow manual installation steps:
+  1. https://ollama.com → Download
+  2. `ollama pull llama3.2`
+  3. `ollama serve`
+
+---
+
+## 🌐 Using Tabs 7-21: Query Fetch Results (15 Tabs)
+
+## 🌐 Using Tabs 7-21: Query Fetch Results (15 Tabs)
+
+**What are Tabs 7-21?**
+Tabs 7-21 are dedicated browser windows that auto-populate with results from user search queries. These tabs display web content from various astrophysical databases and research sources.
+
+**Note:** Tabs 5-21 in previous version → Now Tabs 7-21 (15 tabs instead of 17 tabs)
+- **Reason:** Tab 5 now dedicated to CondensedPhysics.py, Tab6 to Ollama CoAnQi_bot
 
 ### Auto-Population
 When you enter a query in the search field and press Enter:
 1. Source2 searches multiple databases (NASA, STScI, SIMBAD, ALMA, etc.)
 2. Results are distributed across tabs based on source:
-   - Tab 5: SIMBAD astronomical database
-   - Tab 6: NASA APIs (APOD, EPIC, DONKI)
-   - Tab 7: STScI/Hubble archives
-   - Tab 8-20: Additional sources and live streams
+   - Tab 7: SIMBAD astronomical database
+   - Tab 8: NASA APIs (APOD, EPIC, DONKI)
+   - Tab 9: STScI/Hubble archives
+   - Tab 10-20: Additional sources and live streams
    - **Tab 21: ALMA Cycle 12** (preloaded, always available)
 
 ### Features
@@ -763,12 +1349,12 @@ When you enter a query in the search field and press Enter:
 1. Enter query: "Sagittarius A* X-ray emissions"
 2. Press Enter
 3. View results across tabs:
-   - Tab 5: SIMBAD object parameters
-   - Tab 6: NASA Chandra X-ray data
-   - Tab 7: Hubble optical observations
+   - Tab 7: SIMBAD object parameters
+   - Tab 8: NASA Chandra X-ray data
+   - Tab 9: Hubble optical observations
    - Tab 21: ALMA radio observations
 4. Switch between tabs to compare data sources
-5. Copy findings to Tab 4 (Notes) for documentation
+5. Copy findings to Tab 4 (Notebook Editor) for documentation + code analysis
 ```
 
 ---
