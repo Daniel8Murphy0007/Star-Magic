@@ -23693,6 +23693,110 @@ int main(int argc, char *argv[])
     cout << "Total systems loaded: " << systems.size() << endl;
     cout << "Use Menu Option 1 to browse systems by category" << endl;
 
+    // ========== CLI ACCESS POINT FOR PYTHON INTEGRATION ==========
+    // Enables subprocess calls from APIFetch.py/QCalc.py/CoAnQi_Wrapper.py
+    // Usage: MAIN_1_CoAnQi.exe --batch "Sagittarius A*"
+    // Output: JSON to stdout for parsing
+    if (argc >= 3 && std::string(argv[1]) == "--batch") {
+        std::string system_name = argv[2];
+        
+        // Validate system exists
+        if (systems.find(system_name) == systems.end()) {
+            std::cerr << "{" << std::endl;
+            std::cerr << "  \"error\": \"System not found: " << system_name << "\"," << std::endl;
+            std::cerr << "  \"available_systems\": " << systems.size() << std::endl;
+            std::cerr << "}" << std::endl;
+            return 1;
+        }
+        
+        SystemParams p = systems[system_name];
+        
+        // Compute UQFF with tracing
+        auto batchSpan = UQFFTracer::getInstance().createSpan("batch_calculation_" + system_name, SpanType::SYSTEM_CALCULATION);
+        if (batchSpan) {
+            batchSpan->setAttribute("mode", "cli_batch");
+            batchSpan->setAttribute("system_name", system_name);
+        }
+        
+        double F_result = F_U_Bi_i(p);
+        double g_result = compressed_g(p);
+        double F_jet = F_jet_rel(p);
+        double E_acc = E_acc_rel(p);
+        double F_drag = F_drag_rel(p);
+        double F_gw = F_gw_rel(p);
+        
+        // Output JSON for Python parsing
+        std::cout << "{" << std::endl;
+        std::cout << "  \"system\": \"" << system_name << "\"," << std::endl;
+        std::cout << "  \"F_U_Bi_i\": " << std::scientific << std::setprecision(10) << F_result << "," << std::endl;
+        std::cout << "  \"g_compressed\": " << g_result << "," << std::endl;
+        std::cout << "  \"F_jet_rel\": " << F_jet << "," << std::endl;
+        std::cout << "  \"E_acc_rel\": " << E_acc << "," << std::endl;
+        std::cout << "  \"F_drag_rel\": " << F_drag << "," << std::endl;
+        std::cout << "  \"F_gw_rel\": " << F_gw << "," << std::endl;
+        std::cout << "  \"units\": {" << std::endl;
+        std::cout << "    \"F_U_Bi_i\": \"N\"," << std::endl;
+        std::cout << "    \"g_compressed\": \"m/s^2\"," << std::endl;
+        std::cout << "    \"F_jet_rel\": \"N\"," << std::endl;
+        std::cout << "    \"E_acc_rel\": \"J\"," << std::endl;
+        std::cout << "    \"F_drag_rel\": \"N\"," << std::endl;
+        std::cout << "    \"F_gw_rel\": \"N\"" << std::endl;
+        std::cout << "  }" << std::endl;
+        std::cout << "}" << std::endl;
+        
+        if (batchSpan)
+            batchSpan->end();
+        
+        TRACE_SHUTDOWN();
+        return 0;  // Exit without interactive menu
+    }
+    
+    // Optional: Add --list-systems flag to enumerate available systems
+    if (argc >= 2 && std::string(argv[1]) == "--list-systems") {
+        std::cout << "{" << std::endl;
+        std::cout << "  \"total_systems\": " << systems.size() << "," << std::endl;
+        std::cout << "  \"systems\": [" << std::endl;
+        
+        int count = 0;
+        for (const auto &pair : systems) {
+            std::cout << "    \"" << pair.first << "\"";
+            if (++count < systems.size())
+                std::cout << ",";
+            std::cout << std::endl;
+        }
+        
+        std::cout << "  ]" << std::endl;
+        std::cout << "}" << std::endl;
+        
+        return 0;
+    }
+    
+    // Optional: Add --system-info flag for detailed system parameters
+    if (argc >= 3 && std::string(argv[1]) == "--system-info") {
+        std::string system_name = argv[2];
+        
+        if (systems.find(system_name) == systems.end()) {
+            std::cerr << "{\"error\": \"System not found\"}" << std::endl;
+            return 1;
+        }
+        
+        SystemParams p = systems[system_name];
+        
+        std::cout << "{" << std::endl;
+        std::cout << "  \"name\": \"" << p.name << "\"," << std::endl;
+        std::cout << "  \"M\": " << std::scientific << p.M << "," << std::endl;
+        std::cout << "  \"r\": " << p.r << "," << std::endl;
+        std::cout << "  \"L_X\": " << p.L_X << "," << std::endl;
+        std::cout << "  \"B0\": " << p.B0 << "," << std::endl;
+        std::cout << "  \"omega0\": " << p.omega0 << "," << std::endl;
+        std::cout << "  \"v\": " << p.v << "," << std::endl;
+        std::cout << "  \"T\": " << p.T << std::endl;
+        std::cout << "}" << std::endl;
+        
+        return 0;
+    }
+    // ========== END CLI ACCESS POINT ==========
+
     // Main interactive loop
     while (true)
     {
