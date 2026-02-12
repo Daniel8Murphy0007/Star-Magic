@@ -161,6 +161,53 @@ CONSTANTS = {
     'n_quantum_states': 26,    # Number of quantum states
     'f_TRZ': 0.1,              # Time-reversal zone factor
     'f_quasi': 0.01,           # Quasi-longitudinal wave factor
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # STAR MAGIC 26-LEVEL STRUCTURE CONSTANTS (Phase 1 Integration)
+    # ═══════════════════════════════════════════════════════════════════════════
+    'E_0': 1e-20,              # Base quantum energy for 26-level structure (J)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # ENHANCED Ug PARAMETERS (Star Magic Extensions)
+    # ═══════════════════════════════════════════════════════════════════════════
+    'beta_def': 0.1,           # Defect parameter for Ug1 irregularities
+    'delta_sw': 0.01,          # Solar wind modulation factor (dimensionless)
+    'v_sw_ref': 5e5,           # Reference solar wind velocity (m/s)
+    'P_core_star': 1.0,        # Core penetration factor for stars
+    'P_core_planet': 1e-3,     # Core penetration factor for planets
+    'P_SCm_star': 1.0,         # SCm penetration factor for stars
+    'P_SCm_planet': 1e-3,      # SCm penetration factor for planets
+    'f_feedback': 0.1,         # Feedback factor for Ug4
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # UNIVERSAL MAGNETISM (Um) PARAMETERS
+    # ═══════════════════════════════════════════════════════════════════════════
+    'mu_0_mag': 1e3,           # Base magnetic moment (T·m³)
+    'A_osc_mag': 1.352e20,     # Oscillation amplitude (T·m³): 0.4 × 3.38e20
+    'r_string_ref': 1.496e13,  # Reference string distance (m, ~1 AU)
+    'phi_disk': 1.0,           # Disk unit vector (dimensionless)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # GALACTIC COUPLING CONSTANTS (Enhanced Ub_i)
+    # ═══════════════════════════════════════════════════════════════════════════
+    'omega_g': 7.3e-16,        # Galactic spin (rad/s, Milky Way reference)
+    'omega_c': 7.27e-5,        # Cosmic oscillation frequency (rad/s, ~1 day period)
+    'M_bh_SgrA': 8.15e36,      # Sgr A* black hole mass (kg) - REFERENCE ONLY
+    'd_g_SunSgrA': 2.44e20,    # Sun-Sgr A* distance (m) - REFERENCE ONLY
+    'UA_charge_ref': 1e-11,    # Trapped aether charge density (C)
+    'rho_A': 1e-23,            # Aether mass density (kg/m³)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # REACTOR EFFICIENCY PARAMETERS
+    # ═══════════════════════════════════════════════════════════════════════════
+    'E_react_0': 1e46,         # Base reactor power (W/m³)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # AETHER METRIC PARAMETERS (Advanced - Phase 4)
+    # ═══════════════════════════════════════════════════════════════════════════
+    'eta': 1e-22,              # Aether coupling constant (dimensionless)
+    'T_stress_base': 1.27e3,   # Base stress-energy (kg/m³ c²)
+    'T_stress_cosmic': 1.11e7, # Cosmic stress-energy (kg/m³ c²)
 }
 
 
@@ -286,8 +333,1030 @@ class EquationResult:
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 1: STAR MAGIC CALCULATOR CLASSES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class Energy26LevelCalculator:
+    """
+    Computes the 26-level polynomial energy structure (E_n = E_0 × 10^n).
+    
+    Spans quantum (10^{-20} J) to cosmological (10^{6} J) scales.
+    Inspired by bosonic string theory's 26 dimensions, applied to nuclear/cosmic hierarchies.
+    
+    Scale Mapping:
+        n=1-4:   Sub-quantum/Weak (10^{-19} to 10^{-16} J)
+        n=5-10:  Atomic/Nuclear (10^{-15} to 10^{-10} J)
+        n=11-13: Molecular/Plasma (10^{-9} to 10^{-7} J)
+        n=14-18: Astrophysical/Higgs (10^{-6} to 10^{-2} J)
+        n=19-26: Galactic/Cosmic (10^{-1} to 10^{6} J)
+    """
+    
+    def __init__(self):
+        """Initialize with fundamental constants."""
+        self.C = CONSTANTS
+        self.E_0 = self.C['E_0']  # 10^{-20} J
+    
+    def compute_level_energy(self, n: int) -> float:
+        """
+        Compute energy at level n.
+        
+        Args:
+            n: Level number (1-26)
+        
+        Returns:
+            E_n in Joules
+        
+        Raises:
+            ValueError: If n not in [1, 26]
+        """
+        if not 1 <= n <= 26:
+            raise ValueError(f"Level n must be 1-26, got {n}")
+        
+        return self.E_0 * (10 ** n)
+    
+    def compute_spectrum(self, n_max: int = 26) -> List[float]:
+        """
+        Compute full energy spectrum from n=1 to n_max.
+        
+        Args:
+            n_max: Maximum level (default 26)
+        
+        Returns:
+            List of E_n values in Joules
+        """
+        return [self.compute_level_energy(n) for n in range(1, n_max + 1)]
+    
+    def map_energy_to_scale(self, E_joules: float) -> str:
+        """
+        Map energy to physical scale.
+        
+        Args:
+            E_joules: Energy in Joules
+        
+        Returns:
+            Scale name (e.g., "Atomic", "Galactic")
+        """
+        if E_joules <= 0:
+            return "Invalid (E <= 0)"
+        
+        n_approx = np.log10(E_joules / self.E_0)
+        
+        if n_approx < 5:
+            return "Sub-quantum/Weak"
+        elif n_approx < 11:
+            return "Atomic/Nuclear"
+        elif n_approx < 14:
+            return "Molecular/Plasma"
+        elif n_approx < 19:
+            return "Astrophysical/Higgs"
+        else:
+            return "Galactic/Cosmic"
+    
+    def compute_results(self, n_levels: int = 26) -> List[EquationResult]:
+        """
+        Generate EquationResult objects for 26-level structure.
+        
+        Args:
+            n_levels: Number of levels to compute (default 26)
+        
+        Returns:
+            List of EquationResult objects
+        """
+        results = []
+        spectrum = self.compute_spectrum(n_levels)
+        
+        for n, E_n in enumerate(spectrum, start=1):
+            scale = self.map_energy_to_scale(E_n)
+            result = EquationResult(
+                name=f"E_{n}",
+                latex=f"E_{{{n}}} = E_0 \\times 10^{{{n}}}",
+                substituted=f"E_{n} = {self.E_0:.2e} × 10^{n} = {E_n:.4e} J",
+                result=E_n,
+                unit="J",
+                parameters_used={
+                    'E_0': self.E_0,
+                    'n': n,
+                    'scale': scale
+                }
+            )
+            results.append(result)
+        
+        return results
+
+
+class ReactorEfficiencyCalculator:
+    """
+    Computes reactor efficiency E_react for SCm/UA nuclear reactivity.
+    
+    Model: E_react(t, M, r) = E_0 × e^{-κ t} × (M / M_sun)^{1/3} × (R_sun / r)^{1/2}
+    
+    Applications:
+        - Quasar luminosity (10^{39-47} W)
+        - Magnetar X-ray emission
+        - Planetary core heat generation
+        - Stellar SCm/UA reactivity
+    """
+    
+    def __init__(self):
+        """Initialize with fundamental constants."""
+        self.C = CONSTANTS
+        self.E_react_0 = self.C['E_react_0']  # 10^{46} W/m³
+        self.kappa = self.C['kappa']          # 0.0005 day^{-1}
+        self.M_sun = self.C['M_sun']
+        self.R_sun = self.C['R_sun']
+    
+    def compute_E_react(self, t_days: float, M_kg: float, r_m: float) -> float:
+        """
+        Compute reactor efficiency.
+        
+        Args:
+            t_days: Time in days
+            M_kg: System mass in kg
+            r_m: System radius in meters
+        
+        Returns:
+            E_react in W/m³
+        """
+        # Time decay
+        time_factor = np.exp(-self.kappa * t_days)
+        
+        # Mass scaling (cube root for volume considerations)
+        mass_factor = (M_kg / self.M_sun) ** (1.0 / 3.0)
+        
+        # Radius scaling (inverse square root for surface effects)
+        radius_factor = (self.R_sun / r_m) ** 0.5 if r_m > 0 else 0
+        
+        E_react = self.E_react_0 * time_factor * mass_factor * radius_factor
+        
+        return E_react
+    
+    def compute_luminosity(self, t_days: float, M_kg: float, r_m: float, V_m3: float) -> float:
+        """
+        Compute total luminosity from reactor efficiency.
+        
+        Args:
+            t_days: Time in days
+            M_kg: System mass in kg
+            r_m: System radius in meters
+            V_m3: System volume in m³
+        
+        Returns:
+            Luminosity in Watts
+        """
+        E_react = self.compute_E_react(t_days, M_kg, r_m)
+        L = E_react * V_m3
+        return L
+    
+    def compute_time_evolution(self, t_days_array: np.ndarray, M_kg: float, r_m: float) -> np.ndarray:
+        """
+        Compute reactor efficiency over time array.
+        
+        Args:
+            t_days_array: Array of time values in days
+            M_kg: System mass in kg
+            r_m: System radius in meters
+        
+        Returns:
+            Array of E_react values in W/m³
+        """
+        return np.array([self.compute_E_react(t, M_kg, r_m) for t in t_days_array])
+    
+    def compute_results(self, params: ComputeParams) -> List[EquationResult]:
+        """
+        Generate EquationResult for reactor efficiency.
+        
+        Args:
+            params: ComputeParams with M, r, t
+        
+        Returns:
+            List with one EquationResult
+        """
+        if params.M is None or params.r is None:
+            return []
+        
+        t_days = params.t / 86400 if params.t is not None else 0  # Convert seconds to days
+        
+        E_react = self.compute_E_react(t_days, params.M, params.r)
+        
+        result = EquationResult(
+            name="E_react",
+            latex=r"E_{\text{react}}(t, M, r) = E_0 e^{-\kappa t} \left(\frac{M}{M_{\odot}}\right)^{1/3} \left(\frac{R_{\odot}}{r}\right)^{1/2}",
+            substituted=f"E_react({t_days:.2e} days, {params.M:.3e} kg, {params.r:.3e} m) = {E_react:.4e} W/m³",
+            result=E_react,
+            unit="W/m³",
+            parameters_used={
+                'E_react_0': self.E_react_0,
+                'kappa': self.kappa,
+                't_days': t_days,
+                'M': params.M,
+                'r': params.r
+            }
+        )
+        
+        return [result]
+
+
+class VacuumEnergyCalculator:
+    """
+    Computes vacuum energy density λ_vac from 26-level energy spectrum.
+    
+    Formula: λ_vac = Σ (f_i × E_i) / V
+    
+    Where:
+        f_i = occupation fraction for level i
+        E_i = energy at level i (from Energy26LevelCalculator)
+        V = system volume
+    
+    Components:
+        λ_vac,[UA]  - Aether component
+        λ_vac,[SCm] - Superconducting medium component
+        λ_vac,A     - Aether mass component
+    """
+    
+    def __init__(self):
+        """Initialize with fundamental constants."""
+        self.C = CONSTANTS
+        self.rho_vac_UA = self.C['rho_vac_UA']      # 7.09e-36 J/m³
+        self.rho_vac_SCm = self.C['rho_vac_SCm']    # 7.09e-37 J/m³
+        self.rho_A = self.C['rho_A']                # 1e-23 kg/m³
+        self.c = self.C['c']                        # Speed of light
+        self.energy_calc = Energy26LevelCalculator()
+    
+    def compute_lambda_vac_total(self, f_list: List[float], E_list: List[float], V_m3: float) -> float:
+        """
+        Compute total vacuum energy density.
+        
+        Args:
+            f_list: Occupation fractions for each level (length 26)
+            E_list: Energy values for each level (length 26, in Joules)
+            V_m3: System volume in m³
+        
+        Returns:
+            λ_vac in J/m³
+        """
+        if len(f_list) != len(E_list):
+            raise ValueError(f"f_list and E_list must have same length, got {len(f_list)} and {len(E_list)}")
+        
+        if V_m3 <= 0:
+            raise ValueError(f"Volume must be positive, got {V_m3}")
+        
+        lambda_vac = sum(f * E for f, E in zip(f_list, E_list)) / V_m3
+        return lambda_vac
+    
+    def compute_lambda_vac_UA(self) -> float:
+        """
+        Get UA component vacuum energy density.
+        
+        Returns:
+            λ_vac,[UA] in J/m³
+        """
+        return self.rho_vac_UA
+    
+    def compute_lambda_vac_SCm(self) -> float:
+        """
+        Get SCm component vacuum energy density.
+        
+        Returns:
+            λ_vac,[SCm] in J/m³
+        """
+        return self.rho_vac_SCm
+    
+    def compute_lambda_vac_A(self) -> float:
+        """
+        Get aether mass energy density (E = mc²).
+        
+        Returns:
+            λ_vac,A in J/m³
+        """
+        return self.rho_A * self.c ** 2
+    
+    def compute_default_occupation(self, n_levels: int = 26) -> List[float]:
+        """
+        Compute default occupation fractions using Boltzmann-like distribution.
+        
+        Args:
+            n_levels: Number of levels (default 26)
+        
+        Returns:
+            List of occupation fractions
+        """
+        # Simple exponential decay: f_i = e^{-i/10}
+        f_list = [np.exp(-i / 10.0) for i in range(1, n_levels + 1)]
+        # Normalize to sum = 1
+        total = sum(f_list)
+        f_list = [f / total for f in f_list]
+        return f_list
+    
+    def compute_results(self, params: ComputeParams, f_list: Optional[List[float]] = None) -> List[EquationResult]:
+        """
+        Generate EquationResult for vacuum energy density.
+        
+        Args:
+            params: ComputeParams with R (radius) to compute volume
+            f_list: Optional occupation fractions (default: exponential decay)
+        
+        Returns:
+            List of EquationResult objects
+        """
+        results = []
+        
+        # Compute volume from radius
+        if params.R is not None:
+            V_m3 = (4.0 / 3.0) * np.pi * params.R ** 3
+        elif params.r is not None:
+            # Use r as radius if R not provided
+            V_m3 = (4.0 / 3.0) * np.pi * params.r ** 3
+        else:
+            # Default to 1 m³ for density calculation
+            V_m3 = 1.0
+        
+        # Get 26-level energy spectrum
+        E_list = self.energy_calc.compute_spectrum(26)
+        
+        # Use default occupation if not provided
+        if f_list is None:
+            f_list = self.compute_default_occupation(26)
+        
+        # Compute total vacuum energy
+        lambda_vac_total = self.compute_lambda_vac_total(f_list, E_list, V_m3)
+        
+        results.append(EquationResult(
+            name="lambda_vac_total",
+            latex=r"\lambda_{\text{vac}} = \frac{1}{V} \sum_{i=1}^{26} f_i E_i",
+            substituted=f"λ_vac = (Σ f_i E_i) / {V_m3:.3e} m³ = {lambda_vac_total:.4e} J/m³",
+            result=lambda_vac_total,
+            unit="J/m³",
+            parameters_used={'V': V_m3, 'n_levels': 26}
+        ))
+        
+        # Component densities
+        lambda_UA = self.compute_lambda_vac_UA()
+        lambda_SCm = self.compute_lambda_vac_SCm()
+        lambda_A = self.compute_lambda_vac_A()
+        
+        results.append(EquationResult(
+            name="lambda_vac_UA",
+            latex=r"\lambda_{\text{vac},[UA]}",
+            substituted=f"λ_vac,[UA] = {lambda_UA:.4e} J/m³",
+            result=lambda_UA,
+            unit="J/m³",
+            parameters_used={'rho_vac_UA': self.rho_vac_UA}
+        ))
+        
+        results.append(EquationResult(
+            name="lambda_vac_SCm",
+            latex=r"\lambda_{\text{vac},[SCm]}",
+            substituted=f"λ_vac,[SCm] = {lambda_SCm:.4e} J/m³",
+            result=lambda_SCm,
+            unit="J/m³",
+            parameters_used={'rho_vac_SCm': self.rho_vac_SCm}
+        ))
+        
+        results.append(EquationResult(
+            name="lambda_vac_A",
+            latex=r"\lambda_{\text{vac},A} = \rho_A c^2",
+            substituted=f"λ_vac,A = {self.rho_A:.3e} × ({self.c:.3e})² = {lambda_A:.4e} J/m³",
+            result=lambda_A,
+            unit="J/m³",
+            parameters_used={'rho_A': self.rho_A, 'c': self.c}
+        ))
+        
+        return results
+
+
+class MagneticStringsCalculator:
+    """
+    Computes Universal Magnetism (Um) from magnetic string contributions.
+    
+    Formula: Um = Σ_j [μ_j(t)/r_j × (1-e^(-γt cos(ωt_n))) × ϕ_j] × P_SCm × E_react
+    
+    Where:
+        μ_j(t) = μ_0 + A_osc × sin(ω_c t) - Time-varying magnetic moment
+        γ = decay constant for time-dependent component
+        ϕ_j = unit vector (disk orientation)
+        P_SCm = SCm penetration factor
+        E_react = reactor efficiency from ReactorEfficiencyCalculator
+    
+    Physical Interpretation:
+        - Magnetic strings represent flux tubes in plasma/aether
+        - Time-varying moments model oscillating magnetic structures
+        - Decay term captures relaxation of magnetic fields
+        - SCm penetration links to superconducting medium coupling
+    """
+    
+    def __init__(self):
+        """Initialize with fundamental constants."""
+        self.C = CONSTANTS
+        self.mu_0_mag = self.C['mu_0_mag']          # 1e3 T·m³
+        self.A_osc_mag = self.C['A_osc_mag']        # 1.352e20 T·m³
+        self.r_string_ref = self.C['r_string_ref']  # 1.496e13 m (~1 AU)
+        self.phi_disk = self.C['phi_disk']          # 1.0 (unit vector)
+        self.omega_c = self.C['omega_c']            # Cosmic oscillation frequency
+        self.P_SCm_star = self.C['P_SCm_star']      # 1.0
+        self.P_SCm_planet = self.C['P_SCm_planet']  # 1e-3
+        self.G = self.C['G']
+        self.M_sun = self.C['M_sun']
+        self.reactor_calc = ReactorEfficiencyCalculator()
+    
+    def compute_magnetic_moment(self, t: float) -> float:
+        """
+        Compute time-varying magnetic moment.
+        
+        Formula: μ_j(t) = μ_0 + A_osc × sin(ω_c t)
+        
+        Args:
+            t: Time in seconds
+        
+        Returns:
+            Magnetic moment in T·m³
+        """
+        mu_t = self.mu_0_mag + self.A_osc_mag * np.sin(self.omega_c * t)
+        return mu_t
+    
+    def compute_single_string(self, j: int, r_j: float, t: float, t_n: float, 
+                             P_SCm: float, E_react: float, gamma: float = 1e-10) -> float:
+        """
+        Compute single magnetic string contribution.
+        
+        Formula: Um_j = [μ_j(t)/r_j × (1-e^(-γt cos(ωt_n))) × ϕ_j] × P_SCm × E_react
+        
+        Args:
+            j: String index
+            r_j: Distance to string j (m)
+            t: Time in seconds
+            t_n: Negative time parameter (s)
+            P_SCm: SCm penetration factor
+            E_react: Reactor efficiency (W/m³)
+            gamma: Decay constant (s^-1, default 1e-10)
+        
+        Returns:
+            Um_j in Tesla (T)
+        """
+        # Time-varying magnetic moment
+        mu_t = self.compute_magnetic_moment(t)
+        
+        # Oscillation with negative time
+        oscillation = np.cos(self.omega_c * t_n)
+        
+        # Time decay factor
+        time_decay = 1.0 - np.exp(-gamma * t * oscillation)
+        
+        # Single string contribution
+        Um_j = (mu_t / r_j) * time_decay * self.phi_disk * P_SCm * (E_react / 1e46)
+        
+        return Um_j
+    
+    def compute_Um_total(self, n_strings: int, r_list: List[float], t: float, t_n: float,
+                         M: float, P_SCm: Optional[float] = None, 
+                         E_react: Optional[float] = None) -> float:
+        """
+        Compute total Universal Magnetism from all strings.
+        
+        Formula: Um = Σ_j Um_j
+        
+        Args:
+            n_strings: Number of magnetic strings
+            r_list: List of distances to each string (m)
+            t: Time in seconds
+            t_n: Negative time parameter (s)
+            M: System mass (kg) for SCm penetration determination
+            P_SCm: SCm penetration factor (optional, auto-determined from M)
+            E_react: Reactor efficiency (optional, computed if not provided)
+        
+        Returns:
+            Um_total in Tesla (T)
+        """
+        if len(r_list) != n_strings:
+            raise ValueError(f"r_list length {len(r_list)} must match n_strings {n_strings}")
+        
+        # Determine P_SCm if not provided (star vs planet)
+        if P_SCm is None:
+            P_SCm = self.P_SCm_star if M > 0.01 * self.M_sun else self.P_SCm_planet
+        
+        # Compute E_react if not provided
+        if E_react is None:
+            t_days = t / 86400.0
+            r_avg = np.mean(r_list)
+            E_react = self.reactor_calc.compute_E_react(t_days, M, r_avg)
+        
+        # Sum over all strings
+        Um_total = 0.0
+        for j, r_j in enumerate(r_list):
+            Um_j = self.compute_single_string(j, r_j, t, t_n, P_SCm, E_react)
+            Um_total += Um_j
+        
+        return Um_total
+    
+    def compute_results(self, params: ComputeParams, n_strings: int = 3) -> List[EquationResult]:
+        """
+        Compute Universal Magnetism results for given parameters.
+        
+        Args:
+            params: ComputeParams with M, r, t, t_n
+            n_strings: Number of magnetic strings (default 3)
+        
+        Returns:
+            List of EquationResult objects
+        """
+        results = []
+        
+        # Generate string positions (equally spaced from r/2 to 2r)
+        if params.r is not None:
+            r_list = np.linspace(params.r / 2, 2 * params.r, n_strings).tolist()
+        else:
+            r_list = [self.r_string_ref] * n_strings
+        
+        t = params.t if params.t is not None else 0.0
+        t_n = params.t_n if params.t_n is not None else -t
+        M = params.M if params.M is not None else self.M_sun
+        
+        # Compute magnetic moment
+        mu_t = self.compute_magnetic_moment(t)
+        results.append(EquationResult(
+            name='magnetic_moment',
+            latex=r'\mu_j(t) = \mu_0 + A_{\text{osc}} \times \sin(\omega_c t)',
+            substituted=f'μ_j(t) = {self.mu_0_mag:.3e} + {self.A_osc_mag:.3e} × sin({self.omega_c:.3e}×{t:.3e})',
+            result=mu_t,
+            unit='T·m³',
+            parameters_used={'mu_0': self.mu_0_mag, 'A_osc': self.A_osc_mag, 'omega_c': self.omega_c, 't': t}
+        ))
+        
+        # Compute total Um
+        Um_total = self.compute_Um_total(n_strings, r_list, t, t_n, M)
+        results.append(EquationResult(
+            name='Um_total',
+            latex=r'U_m = \sum_{j} \left[ \frac{\mu_j(t)}{r_j} \times (1-e^{-\gamma t \cos(\omega t_n)}) \times \phi_j \right] \times P_{\text{SCm}} \times E_{\text{react}}',
+            substituted=f'Um = Σ[μ_j(t)/r_j × time_decay × ϕ] × P_SCm × E_react, n={n_strings} strings',
+            result=Um_total,
+            unit='T',
+            parameters_used={
+                'n_strings': n_strings, 'r_list': r_list, 't': t, 't_n': t_n,
+                'M': M, 'mu_t': mu_t
+            }
+        ))
+        
+        return results
+
+
+class EnhancedBuoyancyCalculator:
+    """
+    Computes Enhanced Buoyancy (Ub_i) with galactic coupling and solar wind effects.
+    
+    Formula: Ub_i = -β_i × Ug_i × ω_g × M_bh/d_g × (1+δ_sw λ_vac,sw) × [UA] × cos(ωt_n)
+    
+    Where:
+        β_i = buoyancy coefficient for component i (dimensionless)
+        Ug_i = gravitational component from Phase 2
+        ω_g = galactic spin (rad/s)
+        M_bh/d_g = galactic black hole coupling
+        δ_sw = solar wind modulation
+        λ_vac,sw = vacuum energy from solar wind
+        [UA] = aether charge density
+        cos(ωt_n) = oscillation with negative time parameter
+    
+    Physical Interpretation:
+        - Buoyancy opposes gravity (negative sign)
+        - Each Ug component has corresponding Ub component
+        - Galactic coupling (M_bh/d_g) provides large-scale influence
+        - Solar wind modulates local vacuum energy
+        - Aether charge mediates buoyancy force
+    """
+    
+    def __init__(self):
+        """Initialize with fundamental constants."""
+        self.C = CONSTANTS
+        self.omega_g = self.C['omega_g']              # 7.3e-16 rad/s
+        self.M_bh_SgrA = self.C['M_bh_SgrA']          # 8.15e36 kg
+        self.d_g_SunSgrA = self.C['d_g_SunSgrA']      # 2.44e20 m
+        self.UA_charge_ref = self.C['UA_charge_ref']  # 1e-11 C
+        self.delta_sw = self.C['delta_sw']            # 0.01
+        self.omega_c = self.C['omega_c']              # Cosmic oscillation
+        
+        # Buoyancy coefficients (from Star Magic theory)
+        self.beta_1 = 0.603  # Ug1 buoyancy coefficient
+        self.beta_2 = 0.450  # Ug2 buoyancy coefficient
+        self.beta_3 = 0.300  # Ug3 buoyancy coefficient
+        self.beta_4 = 0.150  # Ug4 buoyancy coefficient
+        
+        self.vacuum_calc = VacuumEnergyCalculator()
+    
+    def compute_Ub_i(self, i: int, Ug_i: float, t_n: float, 
+                     M_bh: Optional[float] = None, d_g: Optional[float] = None,
+                     lambda_vac_sw: Optional[float] = None, UA_charge: Optional[float] = None) -> float:
+        """
+        Compute buoyancy for component i.
+        
+        Formula: Ub_i = -β_i × Ug_i × ω_g × M_bh/d_g × (1+δ_sw λ_vac,sw) × [UA] × cos(ωt_n)
+        
+        Args:
+            i: Component index (1-4)
+            Ug_i: Gravitational acceleration for component i (m/s²)
+            t_n: Negative time parameter (s)
+            M_bh: Galactic black hole mass (kg, default Sgr A*)
+            d_g: Distance to galactic center (m, default Sun-Sgr A*)
+            lambda_vac_sw: Vacuum energy from solar wind (J/m³, default computed)
+            UA_charge: Aether charge density (C, default reference value)
+        
+        Returns:
+            Ub_i in m/s²
+        """
+        # Select beta coefficient
+        beta_dict = {1: self.beta_1, 2: self.beta_2, 3: self.beta_3, 4: self.beta_4}
+        if i not in beta_dict:
+            raise ValueError(f"Component i must be 1-4, got {i}")
+        beta_i = beta_dict[i]
+        
+        # Use defaults if not provided
+        if M_bh is None:
+            M_bh = self.M_bh_SgrA
+        if d_g is None:
+            d_g = self.d_g_SunSgrA
+        if lambda_vac_sw is None:
+            # Approximate solar wind contribution (small compared to [UA], [SCm])
+            lambda_vac_sw = 1e-30  # J/m³
+        if UA_charge is None:
+            UA_charge = self.UA_charge_ref
+        
+        # Galactic coupling
+        galactic_coupling = M_bh / d_g
+        
+        # Solar wind modulation
+        wind_modulation = 1.0 + self.delta_sw * lambda_vac_sw
+        
+        # Oscillation with negative time
+        oscillation = np.cos(self.omega_c * t_n)
+        
+        # Enhanced buoyancy (negative sign opposes gravity)
+        Ub_i = -beta_i * Ug_i * self.omega_g * galactic_coupling * wind_modulation * UA_charge * oscillation
+        
+        return Ub_i
+    
+    def compute_Ub_total(self, Ug_dict: Dict[str, float], t_n: float,
+                         M_bh: Optional[float] = None, d_g: Optional[float] = None) -> Dict[str, float]:
+        """
+        Compute all buoyancy components from Ug components.
+        
+        Args:
+            Ug_dict: Dictionary with keys 'Ug1', 'Ug2', 'Ug3', 'Ug4' (m/s²)
+            t_n: Negative time parameter (s)
+            M_bh: Galactic black hole mass (kg, optional)
+            d_g: Distance to galactic center (m, optional)
+        
+        Returns:
+            Dictionary with 'Ub1', 'Ub2', 'Ub3', 'Ub4', 'Ub_total'
+        """
+        result = {}
+        
+        # Compute individual components
+        for i in range(1, 5):
+            key = f'Ug{i}'
+            if key in Ug_dict:
+                Ub_i = self.compute_Ub_i(i, Ug_dict[key], t_n, M_bh, d_g)
+                result[f'Ub{i}'] = Ub_i
+            else:
+                result[f'Ub{i}'] = 0.0
+        
+        # Total buoyancy
+        result['Ub_total'] = sum(result[f'Ub{i}'] for i in range(1, 5))
+        
+        return result
+    
+    def compute_results(self, params: ComputeParams, Ug_dict: Dict[str, float]) -> List[EquationResult]:
+        """
+        Compute Enhanced Buoyancy results for given parameters.
+        
+        Args:
+            params: ComputeParams with t_n, M_bh, d_g
+            Ug_dict: Dictionary with Ug1-4 values
+        
+        Returns:
+            List of EquationResult objects
+        """
+        results = []
+        
+        t_n = params.t_n if params.t_n is not None else -(params.t if params.t is not None else 0.0)
+        M_bh = params.M_bh if hasattr(params, 'M_bh') and params.M_bh is not None else self.M_bh_SgrA
+        d_g = params.d_g if hasattr(params, 'd_g') and params.d_g is not None else self.d_g_SunSgrA
+        
+        # Compute all Ub components
+        Ub_results = self.compute_Ub_total(Ug_dict, t_n, M_bh, d_g)
+        
+        # Add individual component results
+        for i in range(1, 5):
+            Ug_i = Ug_dict.get(f'Ug{i}', 0.0)
+            Ub_i = Ub_results[f'Ub{i}']
+            beta_i = [self.beta_1, self.beta_2, self.beta_3, self.beta_4][i-1]
+            
+            results.append(EquationResult(
+                name=f'Ub{i}',
+                latex=f'U_{{b{i}}} = -\\beta_{i} \\times U_{{g{i}}} \\times \\omega_g \\times \\frac{{M_{{bh}}}}{{d_g}} \\times (1+\\delta_{{sw}} \\lambda_{{vac,sw}}) \\times [UA] \\times \\cos(\\omega t_n)',
+                substituted=f'Ub{i} = -{beta_i} × {Ug_i:.3e} × {self.omega_g:.3e} × ({M_bh:.3e}/{d_g:.3e}) × ... × cos({self.omega_c:.3e}×{t_n})',
+                result=Ub_i,
+                unit='m/s²',
+                parameters_used={
+                    'beta': beta_i, f'Ug{i}': Ug_i, 'omega_g': self.omega_g,
+                    'M_bh': M_bh, 'd_g': d_g, 't_n': t_n
+                }
+            ))
+        
+        # Add total
+        results.append(EquationResult(
+            name='Ub_total',
+            latex=r'U_b = \sum_{i=1}^{4} U_{bi}',
+            substituted=f'Ub_total = Ub1 + Ub2 + Ub3 + Ub4',
+            result=Ub_results['Ub_total'],
+            unit='m/s²',
+            parameters_used={'Ub1': Ub_results['Ub1'], 'Ub2': Ub_results['Ub2'], 
+                           'Ub3': Ub_results['Ub3'], 'Ub4': Ub_results['Ub4']}
+        ))
+        
+        return results
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # UNIFIED FIELD SOLVER - The Core Calculator
 # ═══════════════════════════════════════════════════════════════════════════════
+
+class AetherMetricCalculator:
+    """
+    Computes Aether Metric Tensor (UA_μν) and Stress-Energy Tensor (T_s^μν).
+    
+    Formula: UA_μν = g_μν + η × T_s^μν
+    
+    Where:
+        g_μν = Minkowski metric (diag[1, -1, -1, -1] in flat spacetime)
+        η = aether coupling constant (10^-22)
+        T_s^μν = stress-energy tensor from vacuum densities
+    
+    Physical Interpretation:
+        - UA_μν represents spacetime modified by aether currents
+        - Small perturbations (η ~ 10^-22) ensure compatibility with GR
+        - Vacuum densities (λ_vac,[UA], λ_vac,[SCm], λ_vac,A) source the metric
+        - Negative time parameter allows for advanced/retarded solutions
+    """
+    
+    def __init__(self):
+        """Initialize with fundamental constants."""
+        self.C = CONSTANTS
+        self.eta = self.C['eta']                      # 1e-22 aether coupling
+        self.c = self.C['c']                          # Speed of light
+        self.T_stress_base = self.C['T_stress_base']  # 1.27e3 kg/m³ c²
+        self.T_stress_cosmic = self.C['T_stress_cosmic']  # 1.11e7 kg/m³ c²
+        self.vacuum_calc = VacuumEnergyCalculator()
+    
+    def compute_minkowski_metric(self) -> np.ndarray:
+        """
+        Compute flat spacetime Minkowski metric.
+        
+        Returns 4x4 tensor:
+            [[ 1,  0,  0,  0],
+             [ 0, -1,  0,  0],
+             [ 0,  0, -1,  0],
+             [ 0,  0,  0, -1]]
+        
+        Returns:
+            4x4 numpy array (dimensionless)
+        """
+        g_mu_nu = np.diag([1.0, -1.0, -1.0, -1.0])
+        return g_mu_nu
+    
+    def compute_stress_energy_tensor(self, lambda_vac_UA: float, lambda_vac_SCm: float,
+                                    lambda_vac_A: float, t_n: float) -> np.ndarray:
+        """
+        Compute stress-energy tensor from vacuum densities.
+        
+        Formula: T_s^μν = T_base × (λ_UA + λ_SCm) + T_cosmic × λ_A × f(t_n)
+        
+        Where:
+            - Diagonal components represent energy density and pressures
+            - Time modulation: f(t_n) = 1 + 0.1 × cos(ω_c × t_n)
+            - Off-diagonal terms represent momentum flux (set to 0 for simplicity)
+        
+        Args:
+            lambda_vac_UA: Aether vacuum density (J/m³)
+            lambda_vac_SCm: SCm vacuum density (J/m³)
+            lambda_vac_A: Aether mass vacuum density (J/m³)
+            t_n: Negative time parameter (s)
+        
+        Returns:
+            4x4 numpy array in units kg/m³ c² (equivalent to Pa/c²)
+        """
+        omega_c = self.C['omega_c']
+        
+        # Time modulation factor
+        time_mod = 1.0 + 0.1 * np.cos(omega_c * t_n)
+        
+        # Base contribution (quantum vacuum)
+        T_quantum = self.T_stress_base * (lambda_vac_UA + lambda_vac_SCm) / 1e-36
+        
+        # Cosmic contribution (aether mass)
+        T_aether = self.T_stress_cosmic * lambda_vac_A / 1e-7 * time_mod
+        
+        # Total stress-energy density
+        T_total = T_quantum + T_aether
+        
+        # Construct tensor (diagonal, perfect fluid approximation)
+        # T^00 = ρ c² (energy density)
+        # T^11 = T^22 = T^33 = -P (pressure, negative for tension)
+        T_s = np.zeros((4, 4))
+        T_s[0, 0] = T_total           # Energy density
+        T_s[1, 1] = -T_total / 3.0    # Pressure (1/3 for relativistic fluid)
+        T_s[2, 2] = -T_total / 3.0
+        T_s[3, 3] = -T_total / 3.0
+        
+        return T_s
+    
+    def compute_metric_perturbation(self, lambda_vac_UA: float, lambda_vac_SCm: float,
+                                    lambda_vac_A: float, t_n: float) -> np.ndarray:
+        """
+        Compute aether-induced metric perturbation.
+        
+        Formula: δg_μν = η × T_s^μν
+        
+        Args:
+            lambda_vac_UA: Aether vacuum density (J/m³)
+            lambda_vac_SCm: SCm vacuum density (J/m³)
+            lambda_vac_A: Aether mass vacuum density (J/m³)
+            t_n: Negative time parameter (s)
+        
+        Returns:
+            4x4 numpy array (dimensionless perturbation)
+        """
+        T_s = self.compute_stress_energy_tensor(lambda_vac_UA, lambda_vac_SCm, lambda_vac_A, t_n)
+        delta_g = self.eta * T_s
+        return delta_g
+    
+    def compute_aether_metric(self, lambda_vac_UA: float, lambda_vac_SCm: float,
+                             lambda_vac_A: float, t_n: float) -> np.ndarray:
+        """
+        Compute full aether metric tensor.
+        
+        Formula: UA_μν = g_μν + η × T_s^μν
+        
+        Args:
+            lambda_vac_UA: Aether vacuum density (J/m³)
+            lambda_vac_SCm: SCm vacuum density (J/m³)
+            lambda_vac_A: Aether mass vacuum density (J/m³)
+            t_n: Negative time parameter (s)
+        
+        Returns:
+            4x4 numpy array (modified metric tensor)
+        """
+        g_mu_nu = self.compute_minkowski_metric()
+        delta_g = self.compute_metric_perturbation(lambda_vac_UA, lambda_vac_SCm, lambda_vac_A, t_n)
+        UA_mu_nu = g_mu_nu + delta_g
+        return UA_mu_nu
+    
+    def compute_metric_determinant(self, UA_mu_nu: np.ndarray) -> float:
+        """
+        Compute determinant of metric tensor.
+        
+        For Minkowski: det(g) = -1
+        For perturbed metric: det(UA) ≈ -1 + corrections
+        
+        Args:
+            UA_mu_nu: 4x4 metric tensor
+        
+        Returns:
+            Determinant (dimensionless)
+        """
+        return np.linalg.det(UA_mu_nu)
+    
+    def compute_inverse_metric(self, UA_mu_nu: np.ndarray) -> np.ndarray:
+        """
+        Compute inverse metric tensor UA^μν.
+        
+        Satisfies: UA_μα × UA^αν = δ_μ^ν
+        
+        Args:
+            UA_mu_nu: 4x4 metric tensor (covariant)
+        
+        Returns:
+            4x4 numpy array (contravariant metric)
+        """
+        return np.linalg.inv(UA_mu_nu)
+    
+    def compute_christoffel_symbols(self, UA_mu_nu: np.ndarray, h: float = 1e-6) -> np.ndarray:
+        """
+        Compute Christoffel symbols Γ^λ_μν (connection coefficients).
+        
+        Formula: Γ^λ_μν = (1/2) g^λα (∂_μ g_αν + ∂_ν g_αμ - ∂_α g_μν)
+        
+        For small perturbations, computed numerically via finite differences.
+        
+        Args:
+            UA_mu_nu: 4x4 metric tensor
+            h: Step size for numerical derivatives (m or s)
+        
+        Returns:
+            4x4x4 numpy array (Γ^λ_μν)
+        """
+        # For constant metric (no spatial/time variation), all Christoffel symbols vanish
+        # This is a placeholder for future implementations with spatial gradients
+        Gamma = np.zeros((4, 4, 4))
+        return Gamma
+    
+    def compute_ricci_scalar(self, UA_mu_nu: np.ndarray) -> float:
+        """
+        Compute Ricci curvature scalar R.
+        
+        For Minkowski: R = 0
+        For small perturbations: R ≈ η × Tr(T_s)
+        
+        Args:
+            UA_mu_nu: 4x4 metric tensor
+        
+        Returns:
+            Ricci scalar (m⁻²)
+        """
+        # For constant metric with small perturbations
+        g_min = self.compute_minkowski_metric()
+        delta_g = UA_mu_nu - g_min
+        
+        # Linearized Ricci scalar
+        R = -np.trace(delta_g) / 2.0
+        return R
+    
+    def compute_results(self, params: ComputeParams) -> List[EquationResult]:
+        """
+        Compute all aether metric results for given parameters.
+        
+        Args:
+            params: ComputeParams with t_n
+        
+        Returns:
+            List of EquationResult objects
+        """
+        results = []
+        
+        # Get vacuum densities
+        lambda_vac_UA = self.vacuum_calc.compute_lambda_vac_UA()
+        lambda_vac_SCm = self.vacuum_calc.compute_lambda_vac_SCm()
+        lambda_vac_A = self.vacuum_calc.compute_lambda_vac_A()
+        
+        t_n = params.t_n if params.t_n is not None else -(params.t if params.t is not None else 0.0)
+        
+        # Compute stress-energy tensor
+        T_s = self.compute_stress_energy_tensor(lambda_vac_UA, lambda_vac_SCm, lambda_vac_A, t_n)
+        results.append(EquationResult(
+            name='stress_energy_tensor',
+            latex=r'T_s^{\mu\nu} = T_{\text{base}} \times (\lambda_{UA} + \lambda_{SCm}) + T_{\text{cosmic}} \times \lambda_A \times f(t_n)',
+            substituted=f'T_s = {T_s[0,0]:.4e} kg/m³ c² (4×4 tensor)',
+            result=T_s[0, 0],  # Return T^00 component
+            unit='kg/m³ c²',
+            parameters_used={
+                'lambda_vac_UA': lambda_vac_UA, 'lambda_vac_SCm': lambda_vac_SCm,
+                'lambda_vac_A': lambda_vac_A, 't_n': t_n,
+                'T_base': self.T_stress_base, 'T_cosmic': self.T_stress_cosmic
+            }
+        ))
+        
+        # Compute metric perturbation
+        delta_g = self.compute_metric_perturbation(lambda_vac_UA, lambda_vac_SCm, lambda_vac_A, t_n)
+        results.append(EquationResult(
+            name='metric_perturbation',
+            latex=r'\delta g_{\mu\nu} = \eta \times T_s^{\mu\nu}',
+            substituted=f'δg = {self.eta} × T_s, δg_00 = {delta_g[0,0]:.4e}',
+            result=delta_g[0, 0],  # Return δg_00 component
+            unit='dimensionless',
+            parameters_used={'eta': self.eta, 'T_s_00': T_s[0, 0]}
+        ))
+        
+        # Compute full aether metric
+        UA_mu_nu = self.compute_aether_metric(lambda_vac_UA, lambda_vac_SCm, lambda_vac_A, t_n)
+        results.append(EquationResult(
+            name='aether_metric',
+            latex=r'UA_{\mu\nu} = g_{\mu\nu} + \eta \times T_s^{\mu\nu}',
+            substituted=f'UA_00 = {UA_mu_nu[0,0]:.10f}, UA_11 = {UA_mu_nu[1,1]:.10f}',
+            result=UA_mu_nu[0, 0],  # Return UA_00 component
+            unit='dimensionless',
+            parameters_used={'g_00': 1.0, 'delta_g_00': delta_g[0, 0]}
+        ))
+        
+        # Compute metric determinant
+        det_UA = self.compute_metric_determinant(UA_mu_nu)
+        results.append(EquationResult(
+            name='metric_determinant',
+            latex=r'\det(UA_{\mu\nu})',
+            substituted=f'det(UA) = {det_UA:.10f} (Minkowski: -1)',
+            result=det_UA,
+            unit='dimensionless',
+            parameters_used={}
+        ))
+        
+        # Compute Ricci scalar
+        R = self.compute_ricci_scalar(UA_mu_nu)
+        results.append(EquationResult(
+            name='ricci_scalar',
+            latex=r'R = -\frac{1}{2} \text{Tr}(\delta g_{\mu\nu})',
+            substituted=f'R = {R:.4e} m⁻² (Minkowski: 0)',
+            result=R,
+            unit='m⁻²',
+            parameters_used={'trace_delta_g': np.trace(delta_g)}
+        ))
+        
+        return results
+
 
 class UnifiedFieldSolver:
     """
@@ -336,7 +1405,8 @@ class UnifiedFieldSolver:
             # Check which parameters are available and compute applicable equations
             if params.M is not None and params.r is not None:
                 # Gravitational equations applicable
-                ug_results = self._compute_universal_gravity(params)
+                # PHASE 2: Use enhanced gravity (includes basic + Star Magic extensions)
+                ug_results = self._compute_enhanced_universal_gravity(params)
                 equations.extend(ug_results)
                 for eq in ug_results:
                     solutions[eq.name] = eq.result
@@ -354,6 +1424,38 @@ class UnifiedFieldSolver:
                 equations.extend(um_results)
                 for eq in um_results:
                     solutions[eq.name] = eq.result
+            
+            # PHASE 3: Universal Magnetism and Enhanced Buoyancy
+            if params.M is not None and params.r is not None:
+                # Universal Magnetism (Um) - Phase 3
+                try:
+                    um_phase3_results = self._compute_universal_magnetism_phase3(params)
+                    equations.extend(um_phase3_results)
+                    for eq in um_phase3_results:
+                        solutions[eq.name] = eq.result
+                except Exception as e:
+                    # Continue if Phase 3 Um fails
+                    pass
+                
+                # Enhanced Buoyancy (Ub_i) - Phase 3
+                try:
+                    ub_phase3_results = self._compute_enhanced_buoyancy_phase3(params)
+                    equations.extend(ub_phase3_results)
+                    for eq in ub_phase3_results:
+                        solutions[eq.name] = eq.result
+                except Exception as e:
+                    # Continue if Phase 3 Ub fails
+                    pass
+            
+            # PHASE 4: Aether Metric Tensor and Stress-Energy
+            try:
+                aether_results = self._compute_aether_metric_phase4(params)
+                equations.extend(aether_results)
+                for eq in aether_results:
+                    solutions[eq.name] = eq.result
+            except Exception as e:
+                # Continue if Phase 4 fails
+                pass
             
             # NEW: UQFF Master Equations
             if params.M is not None and params.r is not None:
@@ -392,6 +1494,29 @@ class UnifiedFieldSolver:
                 buoyant_results = self._compute_buoyant_forces(params)
                 equations.extend(buoyant_results)
                 for eq in buoyant_results:
+                    solutions[eq.name] = eq.result
+            
+            # PHASE 1: STAR MAGIC ENHANCEMENTS
+            # Always computable - no parameter requirements
+            
+            # 26-Level Energy Structure
+            level_results = self._compute_26_level_structure(params)
+            equations.extend(level_results)
+            for eq in level_results:
+                solutions[eq.name] = eq.result
+            
+            # Reactor Efficiency (requires M and r)
+            if params.M is not None and params.r is not None:
+                reactor_results = self._compute_reactor_efficiency(params)
+                equations.extend(reactor_results)
+                for eq in reactor_results:
+                    solutions[eq.name] = eq.result
+            
+            # Vacuum Energy Density (requires R or r for volume)
+            if params.R is not None or params.r is not None:
+                vacuum_results = self._compute_vacuum_energy(params)
+                equations.extend(vacuum_results)
+                for eq in vacuum_results:
                     solutions[eq.name] = eq.result
         
         except ValueError as e:
@@ -515,6 +1640,346 @@ class UnifiedFieldSolver:
         ))
         
         return results
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # PHASE 2: ENHANCED Ug COMPONENTS (Star Magic Extensions)
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def _compute_magnetic_susceptibility(self, t: float, lambda_vac_SCm: float) -> float:
+        """
+        Compute time-varying magnetic susceptibility μ_s(t, λ_vac,[SCm]).
+        
+        Args:
+            t: Time (seconds or days)
+            lambda_vac_SCm: SCm vacuum energy density (J/m³)
+        
+        Returns:
+            μ_s in T·m³/kg
+        """
+        mu_0 = self.C['mu_0_mag']  # Base magnetic moment
+        # Time modulation with SCm influence
+        mu_s = mu_0 * (1.0 + 0.1 * np.sin(2 * np.pi * t / 86400)) * (lambda_vac_SCm / self.C['rho_vac_SCm'])
+        return mu_s
+    
+    def _heaviside_step(self, x: float) -> float:
+        """
+        Heaviside step function S(x).
+        
+        Args:
+            x: Input value
+        
+        Returns:
+            0 if x < 0, 1 if x >= 0
+        """
+        return 0.0 if x < 0 else 1.0
+    
+    def _compute_enhanced_Ug1(self, params: ComputeParams) -> EquationResult:
+        """
+        Enhanced Ug1 with time decay, oscillation, and defects.
+        
+        Formula: Ug_1 = k_1 × μ_s(t, λ_vac,[SCm]) × (M_s / r) × e^(-α t) × cos(ω t_n) × (1 + β_def)
+        """
+        k_1 = self.C['k_1']
+        G = self.C['G']
+        alpha = self.C['alpha']
+        beta_def = self.C['beta_def']
+        lambda_vac_SCm = self.C['rho_vac_SCm']
+        
+        M = params.M
+        r = params.r
+        t = params.t if params.t is not None else 0.0
+        t_n = params.t_n if params.t_n is not None else 0.0
+        omega = params.omega if params.omega is not None else 2 * np.pi / 86400  # Default: 1 day period
+        
+        # Magnetic susceptibility (time-varying)
+        mu_s = self._compute_magnetic_susceptibility(t, lambda_vac_SCm)
+        
+        # Time decay factor
+        time_decay = np.exp(-alpha * t)
+        
+        # Oscillation with negative time
+        oscillation = np.cos(omega * t_n)
+        
+        # Defect factor
+        defect_factor = 1.0 + beta_def
+        
+        # Base gravitational acceleration
+        base_gravity = G * M / (r ** 2)
+        
+        # Enhanced Ug1
+        Ug1_enhanced = k_1 * base_gravity * time_decay * oscillation * defect_factor
+        
+        return EquationResult(
+            name='Ug1_enhanced',
+            latex=r'U_{g1}^* = k_1 \times \frac{GM}{r^2} \times e^{-\alpha t} \times \cos(\omega t_n) \times (1 + \beta_{\text{def}})',
+            substituted=f'Ug1* = {k_1} × ({G:.3e}×{M:.3e}/{r:.3e}²) × e^(-{alpha}×{t:.3e}) × cos({omega:.3e}×{t_n}) × (1+{beta_def})',
+            result=Ug1_enhanced,
+            unit='m/s²',
+            parameters_used={
+                'k_1': k_1, 'G': G, 'M': M, 'r': r, 'alpha': alpha,
+                'beta_def': beta_def, 't': t, 't_n': t_n, 'omega': omega,
+                'time_decay': time_decay, 'oscillation': oscillation
+            }
+        )
+    
+    def _compute_enhanced_Ug2(self, params: ComputeParams) -> EquationResult:
+        """
+        Enhanced Ug2 with step function, solar wind, and reactor efficiency.
+        
+        Formula: Ug_2 = k_2 × (λ_vac,[UA] + λ_vac,[SCm]) × M_s / r² × S(r - R_b) × (1 + δ_sw v_sw) × H_SCm × E_react
+        """
+        k_2 = self.C['k_2']
+        G = self.C['G']
+        H_SCm = self.C['H_SCm']
+        delta_sw = self.C['delta_sw']
+        v_sw_ref = self.C['v_sw_ref']
+        lambda_UA = self.C['rho_vac_UA']
+        lambda_SCm = self.C['rho_vac_SCm']
+        
+        M = params.M
+        r = params.r
+        t = params.t if params.t is not None else 0.0
+        
+        # Heliosphere bubble radius (default: ~120 AU for stellar systems)
+        R_b = params.R if params.R is not None else 120 * self.C['AU']
+        
+        # Step function: 1 inside bubble (r > R_b), 0 outside
+        step_func = self._heaviside_step(r - R_b)
+        
+        # Solar wind modulation (normalized)
+        v_sw = params.v if params.v is not None else v_sw_ref
+        wind_factor = 1.0 + delta_sw * (v_sw / v_sw_ref)
+        
+        # Reactor efficiency
+        reactor_calc = ReactorEfficiencyCalculator()
+        t_days = t / 86400
+        E_react = reactor_calc.compute_E_react(t_days, M, r)
+        
+        # Vacuum energy sum
+        lambda_vac_total = lambda_UA + lambda_SCm
+        
+        # Base gravity
+        base_gravity = G * M / (r ** 2)
+        
+        # Enhanced Ug2 (convert energy density to acceleration units)
+        Ug2_enhanced = k_2 * base_gravity * step_func * wind_factor * H_SCm * (E_react / 1e46)
+        
+        return EquationResult(
+            name='Ug2_enhanced',
+            latex=r'U_{g2}^* = k_2 \times \frac{GM}{r^2} \times S(r-R_b) \times (1 + \delta_{sw} v_{sw}) \times H_{SCm} \times E_{\text{react}}',
+            substituted=f'Ug2* = {k_2} × ({G:.3e}×{M:.3e}/{r:.3e}²) × S({r:.3e}-{R_b:.3e}) × (1+{delta_sw}×{v_sw:.3e}) × {H_SCm} × {E_react:.3e}',
+            result=Ug2_enhanced,
+            unit='m/s²',
+            parameters_used={
+                'k_2': k_2, 'G': G, 'M': M, 'r': r, 'R_b': R_b,
+                'step_func': step_func, 'delta_sw': delta_sw, 'v_sw': v_sw,
+                'H_SCm': H_SCm, 'E_react': E_react
+            }
+        )
+    
+    def _compute_enhanced_Ug3(self, params: ComputeParams) -> EquationResult:
+        """
+        Enhanced Ug3 with magnetic field summation, stellar rotation, and core penetration.
+        
+        Formula: Ug_3 = k_3 × Σ_j B_j(r, θ, t) × cos(ω_s t) × P_core × E_react
+        """
+        k_3 = self.C['k_3']
+        G = self.C['G']
+        
+        M = params.M
+        r = params.r
+        t = params.t if params.t is not None else 0.0
+        B = params.B if params.B is not None else 1e-4  # Default: Solar-like magnetic field
+        omega = params.omega if params.omega is not None else 2.865e-6  # Solar rotation rate
+        
+        # Core penetration factor (star vs planet)
+        # Heuristic: if M > 0.01 M_sun, it's a star
+        P_core = self.C['P_core_star'] if M > 0.01 * self.C['M_sun'] else self.C['P_core_planet']
+        
+        # Stellar rotation modulation
+        rotation_factor = np.cos(omega * t)
+        
+        # Reactor efficiency
+        reactor_calc = ReactorEfficiencyCalculator()
+        t_days = t / 86400
+        E_react = reactor_calc.compute_E_react(t_days, M, r)
+        
+        # Magnetic field contribution (simplified single-component)
+        # In full theory: would sum over J magnetic string components
+        B_contribution = B * rotation_factor
+        
+        # Base gravity
+        base_gravity = G * M / (r ** 2)
+        
+        # Enhanced Ug3
+        Ug3_enhanced = k_3 * base_gravity * B_contribution * P_core * (E_react / 1e46)
+        
+        return EquationResult(
+            name='Ug3_enhanced',
+            latex=r'U_{g3}^* = k_3 \times \frac{GM}{r^2} \times B \cos(\omega_s t) \times P_{\text{core}} \times E_{\text{react}}',
+            substituted=f'Ug3* = {k_3} × ({G:.3e}×{M:.3e}/{r:.3e}²) × {B:.3e}×cos({omega:.3e}×{t:.3e}) × {P_core} × {E_react:.3e}',
+            result=Ug3_enhanced,
+            unit='m/s²',
+            parameters_used={
+                'k_3': k_3, 'G': G, 'M': M, 'r': r, 'B': B,
+                'omega': omega, 't': t, 'P_core': P_core,
+                'rotation_factor': rotation_factor, 'E_react': E_react
+            }
+        )
+    
+    def _compute_enhanced_Ug4(self, params: ComputeParams) -> EquationResult:
+        """
+        Enhanced Ug4 with feedback factors and galactic black hole coupling.
+        
+        Formula: Ug_4 = k_4 × λ_vac,[SCm] × M_bh / d_g × e^(-α t) × cos(ω t_n) × (1 + f_feedback)
+        """
+        k_4 = self.C['k_4']
+        G = self.C['G']
+        alpha = self.C['alpha']
+        f_feedback = self.C['f_feedback']
+        lambda_vac_SCm = self.C['rho_vac_SCm']
+        
+        M = params.M
+        r = params.r
+        t = params.t if params.t is not None else 0.0
+        t_n = params.t_n if params.t_n is not None else 0.0
+        omega = params.omega if params.omega is not None else 2 * np.pi / 86400
+        
+        # Galactic black hole parameters (from params or defaults)
+        M_bh = params.M_bh if params.M_bh is not None else self.C['M_bh_SgrA']
+        d_g = params.d_g if params.d_g is not None else self.C['d_g_SunSgrA']
+        
+        # Time decay
+        time_decay = np.exp(-alpha * t)
+        
+        # Oscillation
+        oscillation = np.cos(omega * t_n)
+        
+        # Feedback factor (galactic dynamics)
+        feedback_factor = 1.0 + f_feedback
+        
+        # Base gravity with galactic coupling
+        base_gravity = G * M / (r ** 2)
+        galactic_coupling = M_bh / d_g
+        
+        # Enhanced Ug4
+        Ug4_enhanced = k_4 * base_gravity * galactic_coupling * time_decay * oscillation * feedback_factor
+        
+        return EquationResult(
+            name='Ug4_enhanced',
+            latex=r'U_{g4}^* = k_4 \times \frac{GM}{r^2} \times \frac{M_{bh}}{d_g} \times e^{-\alpha t} \times \cos(\omega t_n) \times (1 + f_{\text{fb}})',
+            substituted=f'Ug4* = {k_4} × ({G:.3e}×{M:.3e}/{r:.3e}²) × ({M_bh:.3e}/{d_g:.3e}) × e^(-{alpha}×{t:.3e}) × cos({omega:.3e}×{t_n}) × (1+{f_feedback})',
+            result=Ug4_enhanced,
+            unit='m/s²',
+            parameters_used={
+                'k_4': k_4, 'G': G, 'M': M, 'r': r, 'M_bh': M_bh, 'd_g': d_g,
+                'alpha': alpha, 't': t, 't_n': t_n, 'omega': omega,
+                'f_feedback': f_feedback, 'time_decay': time_decay, 'oscillation': oscillation
+            }
+        )
+    
+    def _compute_enhanced_universal_gravity(self, params: ComputeParams) -> List[EquationResult]:
+        """
+        Compute all enhanced Ug components (Phase 2 Star Magic extensions).
+        
+        Returns both basic and enhanced versions for comparison.
+        """
+        results = []
+        
+        # Compute basic versions first
+        basic_results = self._compute_universal_gravity(params)
+        results.extend(basic_results)
+        
+        # Add enhanced versions
+        try:
+            results.append(self._compute_enhanced_Ug1(params))
+        except Exception as e:
+            # If enhanced computation fails, continue with basic
+            pass
+        
+        try:
+            results.append(self._compute_enhanced_Ug2(params))
+        except Exception as e:
+            pass
+        
+        try:
+            results.append(self._compute_enhanced_Ug3(params))
+        except Exception as e:
+            pass
+        
+        try:
+            results.append(self._compute_enhanced_Ug4(params))
+        except Exception as e:
+            pass
+        
+        # Compute total enhanced gravity
+        enhanced_total = sum(eq.result for eq in results if '_enhanced' in eq.name)
+        if enhanced_total != 0:
+            results.append(EquationResult(
+                name='Ug_enhanced_total',
+                latex=r'U_g^* = U_{g1}^* + U_{g2}^* + U_{g3}^* + U_{g4}^*',
+                substituted=f'Ug* = Sum of enhanced components',
+                result=enhanced_total,
+                unit='m/s²',
+                parameters_used={'component_count': 4}
+            ))
+        
+        return results
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # PHASE 3: UNIVERSAL MAGNETISM (Um) AND ENHANCED BUOYANCY (Ub_i)
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def _compute_universal_magnetism_phase3(self, params: ComputeParams, n_strings: int = 3) -> List[EquationResult]:
+        """
+        Compute Universal Magnetism using Phase 3 MagneticStringsCalculator.
+        
+        Args:
+            params: ComputeParams with M, r, t, t_n
+            n_strings: Number of magnetic strings (default 3)
+        
+        Returns:
+            List of EquationResult objects
+        """
+        mag_calc = MagneticStringsCalculator()
+        return mag_calc.compute_results(params, n_strings)
+    
+    def _compute_enhanced_buoyancy_phase3(self, params: ComputeParams, 
+                                          Ug_dict: Optional[Dict[str, float]] = None) -> List[EquationResult]:
+        """
+        Compute Enhanced Buoyancy using Phase 3 EnhancedBuoyancyCalculator.
+        
+        Args:
+            params: ComputeParams with t_n, M_bh, d_g
+            Ug_dict: Dictionary with Ug1-4 values (if None, computes from params)
+        
+        Returns:
+            List of EquationResult objects
+        """
+        # If Ug_dict not provided, compute basic Ug values
+        if Ug_dict is None:
+            ug_results = self._compute_universal_gravity(params)
+            Ug_dict = {eq.name: eq.result for eq in ug_results if eq.name.startswith('Ug') and not '_' in eq.name[2:]}
+        
+        buoy_calc = EnhancedBuoyancyCalculator()
+        return buoy_calc.compute_results(params, Ug_dict)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # PHASE 4: AETHER METRIC TENSOR (UA_μν) AND STRESS-ENERGY
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def _compute_aether_metric_phase4(self, params: ComputeParams) -> List[EquationResult]:
+        """
+        Compute Aether Metric Tensor using Phase 4 AetherMetricCalculator.
+        
+        Args:
+            params: ComputeParams with t_n
+        
+        Returns:
+            List of EquationResult objects (5 tensorial results)
+        """
+        aether_calc = AetherMetricCalculator()
+        return aether_calc.compute_results(params)
     
     # ═══════════════════════════════════════════════════════════════════════════
     # UNIVERSAL BUOYANCY (Ub) EQUATIONS
@@ -949,6 +2414,25 @@ class UnifiedFieldSolver:
         return results
     
     # ═══════════════════════════════════════════════════════════════════════════
+    # PHASE 1: STAR MAGIC CALCULATOR INTEGRATION
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def _compute_26_level_structure(self, params: ComputeParams) -> List[EquationResult]:
+        """Compute 26-level polynomial energy structure (E_n = E_0 × 10^n)."""
+        calc = Energy26LevelCalculator()
+        return calc.compute_results(n_levels=26)
+    
+    def _compute_reactor_efficiency(self, params: ComputeParams) -> List[EquationResult]:
+        """Compute reactor efficiency for SCm/UA nuclear reactivity."""
+        calc = ReactorEfficiencyCalculator()
+        return calc.compute_results(params)
+    
+    def _compute_vacuum_energy(self, params: ComputeParams) -> List[EquationResult]:
+        """Compute vacuum energy density from 26-level spectrum."""
+        calc = VacuumEnergyCalculator()
+        return calc.compute_results(params)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
     # AVAILABLE EQUATIONS DETECTION
     # ═══════════════════════════════════════════════════════════════════════════
     
@@ -965,7 +2449,22 @@ class UnifiedFieldSolver:
                 # NEW: Master UQFF equations
                 'compute_UQFF_Compressed', 'compute_UQFF_Triadic',
                 'compute_UQFF_Superconductive', 'compute_UQFF_Quadratic',
-                'compute_F_U_Bi', 'compute_F_U_Bi_i'
+                'compute_F_U_Bi', 'compute_F_U_Bi_i',
+                # PHASE 1: Star Magic enhancements
+                'compute_26_level_structure', 'compute_reactor_efficiency',
+                'compute_vacuum_energy',
+                # PHASE 2: Enhanced Ug components
+                'compute_Ug1_enhanced', 'compute_Ug2_enhanced',
+                'compute_Ug3_enhanced', 'compute_Ug4_enhanced',
+                'compute_Ug_enhanced_total',
+                # PHASE 3: Universal Magnetism and Enhanced Buoyancy
+                'compute_magnetic_moment', 'compute_Um_total',
+                'compute_Ub1', 'compute_Ub2', 'compute_Ub3', 'compute_Ub4',
+                'compute_Ub_total',
+                # PHASE 4: Aether Metric and Stress-Energy
+                'compute_stress_energy_tensor', 'compute_metric_perturbation',
+                'compute_aether_metric', 'compute_metric_determinant',
+                'compute_ricci_scalar'
             ])
         
         # UQFF_Resonant requires rotation data
