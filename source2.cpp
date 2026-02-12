@@ -1782,7 +1782,12 @@ public:
         // Chat display
         chatDisplay = new QTextEdit();
         chatDisplay->setReadOnly(true);
-        chatDisplay->setStyleSheet("background-color: #FAFAFA; border: 2px solid #E0E0E0; padding: 10px;");
+        chatDisplay->setStyleSheet(
+            "background-color: #000000; "  // Black background
+            "color: #FFFFFF; "              // White text
+            "border: 2px solid #333333; "   // Dark gray border
+            "padding: 10px;"
+        );
         layout->addWidget(chatDisplay, 1);
         
         // Prompt input
