@@ -1,0 +1,1608 @@
+{
+  "test_compact_object_20260212T023557770007": {
+    "timestamp": "2026-02-12T02:35:57.770007",
+    "input_params": {
+      "query_name": "test_compact_object",
+      "scale": "UQFFScale.STELLAR",
+      "M": 8.25435e+36,
+      "r": 2.49966e+20,
+      "T": 10000000.0,
+      "t": 0.0,
+      "t_n": 0.0,
+      "k_coupling": 1.0,
+      "beta_coupling": 0.6
+    },
+    "long_form_equations": [
+      {
+        "name": "Ug1",
+        "latex": "U_{g1} = k_1 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug1 = 1.5 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 1.3225679109295565e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug2",
+        "latex": "U_{g2} = k_2 \\times \\frac{G \\times M}{r^2} \\times H_{SCm}",
+        "substituted": "Ug2 = 1.2 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2 \u00d7 0.99",
+        "result": 1.0474737854562087e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "Ug3",
+        "latex": "U_{g3} = k_3 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug3 = 1.8 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 1.5870814931154677e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug4",
+        "latex": "U_{g4} = k_4 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug4 = 1.0 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 8.817119406197045e-15,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_4": 1.0,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug",
+        "latex": "U_g = U_{g1} + U_{g2} + U_{g3} + U_{g4}",
+        "substituted": "Ug = 1.3226e-14 + 1.0475e-14 + 1.5871e-14 + 8.8171e-15",
+        "result": 4.8388351301209374e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "Ug1": 1.3225679109295565e-14,
+          "Ug2": 1.0474737854562087e-14,
+          "Ug3": 1.5870814931154677e-14,
+          "Ug4": 8.817119406197045e-15
+        }
+      },
+      {
+        "name": "UQFF_Compressed",
+        "latex": "g_{comp} = g_{base} \\times (1+H_0 t) \\times (1-B/B_{crit}) + \\Lambda c^2/3 + g_{quantum}",
+        "substituted": "g_comp = 8.8171e-15 \u00d7 1.0000 \u00d7 1.0000 + 3.2956e-36 + 1.5233e+17",
+        "result": 1.5232752241268026e+17,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "t": 0.0,
+          "H0": 2.18e-18,
+          "B": 0.0,
+          "B_crit": 44000000000000.0
+        }
+      },
+      {
+        "name": "F_U_Bi",
+        "latex": "F_{U,Bi} = -\\beta \\times \\rho_{vac,[UA]} \\times V_{atom}",
+        "substituted": "F_U_Bi = -0.6 \u00d7 7.0900e-36 \u00d7 (4\u03c0r\u00b3/3)",
+        "result": -2.783100675241053e+26,
+        "unit": "N",
+        "parameters_used": {
+          "beta": 0.6,
+          "rho_vac_UA": 7.09e-36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "F_U_Bi_i",
+        "latex": "F_{U,Bi,i} = -\\beta \\times \\rho_{vac,[UA]} \\times \\frac{M}{r} \\times V",
+        "substituted": "F_U_Bi_i = -0.6 \u00d7 7.0900e-36 \u00d7 (8.2543e+36/2.4997e+20) \u00d7 V",
+        "result": -9.190324707630634e+42,
+        "unit": "N",
+        "parameters_used": {
+          "beta": 0.6,
+          "rho_vac_UA": 7.09e-36,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      }
+    ],
+    "solutions": {
+      "Ug1": 1.3225679109295565e-14,
+      "Ug2": 1.0474737854562087e-14,
+      "Ug3": 1.5870814931154677e-14,
+      "Ug4": 8.817119406197045e-15,
+      "Ug": 4.8388351301209374e-14,
+      "UQFF_Compressed": 1.5232752241268026e+17,
+      "F_U_Bi": -2.783100675241053e+26,
+      "F_U_Bi_i": -9.190324707630634e+42
+    },
+    "available_equations": [
+      "compute_Ug1",
+      "compute_Ug2",
+      "compute_Ug3",
+      "compute_Ug4",
+      "compute_Ug_total",
+      "compute_Ub",
+      "compute_F_U",
+      "compute_schwarzschild_radius",
+      "compute_escape_velocity",
+      "compute_stefan_boltzmann",
+      "compute_wien_peak",
+      "compute_thermal_energy",
+      "compute_blackbody_spectrum"
+    ],
+    "simulation_set": {
+      "coupled_equations": [
+        {
+          "name": "Ug-Ub coupling",
+          "description": "Gravity-Buoyancy balance"
+        },
+        {
+          "name": "F_U evolution",
+          "description": "Unified field time evolution"
+        }
+      ],
+      "initial_conditions": {
+        "query_name": "test_compact_object",
+        "scale": "UQFFScale.STELLAR",
+        "M": 8.25435e+36,
+        "r": 2.49966e+20,
+        "T": 10000000.0,
+        "t": 0.0,
+        "t_n": 0.0,
+        "k_coupling": 1.0,
+        "beta_coupling": 0.6
+      },
+      "solutions_at_t0": {
+        "Ug1": 1.3225679109295565e-14,
+        "Ug2": 1.0474737854562087e-14,
+        "Ug3": 1.5870814931154677e-14,
+        "Ug4": 8.817119406197045e-15,
+        "Ug": 4.8388351301209374e-14,
+        "UQFF_Compressed": 1.5232752241268026e+17,
+        "F_U_Bi": -2.783100675241053e+26,
+        "F_U_Bi_i": -9.190324707630634e+42
+      },
+      "time_range": {
+        "t_min": 0,
+        "t_max": 100000000.0,
+        "unit": "days"
+      }
+    }
+  },
+  "test_compact_object_20260212T023623134845": {
+    "timestamp": "2026-02-12T02:36:23.134845",
+    "input_params": {
+      "query_name": "test_compact_object",
+      "scale": "UQFFScale.STELLAR",
+      "M": 8.25435e+36,
+      "r": 2.49966e+20,
+      "T": 10000000.0,
+      "t": 0.0,
+      "t_n": 0.0,
+      "k_coupling": 1.0,
+      "beta_coupling": 0.6
+    },
+    "long_form_equations": [
+      {
+        "name": "Ug1",
+        "latex": "U_{g1} = k_1 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug1 = 1.5 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 1.3225679109295565e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug2",
+        "latex": "U_{g2} = k_2 \\times \\frac{G \\times M}{r^2} \\times H_{SCm}",
+        "substituted": "Ug2 = 1.2 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2 \u00d7 0.99",
+        "result": 1.0474737854562087e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "Ug3",
+        "latex": "U_{g3} = k_3 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug3 = 1.8 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 1.5870814931154677e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug4",
+        "latex": "U_{g4} = k_4 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug4 = 1.0 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 8.817119406197045e-15,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_4": 1.0,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug",
+        "latex": "U_g = U_{g1} + U_{g2} + U_{g3} + U_{g4}",
+        "substituted": "Ug = 1.3226e-14 + 1.0475e-14 + 1.5871e-14 + 8.8171e-15",
+        "result": 4.8388351301209374e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "Ug1": 1.3225679109295565e-14,
+          "Ug2": 1.0474737854562087e-14,
+          "Ug3": 1.5870814931154677e-14,
+          "Ug4": 8.817119406197045e-15
+        }
+      },
+      {
+        "name": "UQFF_Compressed",
+        "latex": "g_{comp} = g_{base} \\times (1+H_0 t) \\times (1-B/B_{crit}) + \\Lambda c^2/3 + g_{quantum}",
+        "substituted": "g_comp = 8.8171e-15 \u00d7 1.0000 \u00d7 1.0000 + 3.2956e-36 + 1.5233e+17",
+        "result": 1.5232752241268026e+17,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "t": 0.0,
+          "H0": 2.18e-18,
+          "B": 0.0,
+          "B_crit": 44000000000000.0
+        }
+      },
+      {
+        "name": "F_U_Bi",
+        "latex": "F_{U,Bi} = -\\beta \\times \\rho_{vac,[UA]} \\times V_{atom}",
+        "substituted": "F_U_Bi = -0.6 \u00d7 7.0900e-36 \u00d7 (4\u03c0r\u00b3/3)",
+        "result": -2.783100675241053e+26,
+        "unit": "N",
+        "parameters_used": {
+          "beta": 0.6,
+          "rho_vac_UA": 7.09e-36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "F_U_Bi_i",
+        "latex": "F_{U,Bi,i} = -\\beta \\times \\rho_{vac,[UA]} \\times \\frac{M}{r} \\times V",
+        "substituted": "F_U_Bi_i = -0.6 \u00d7 7.0900e-36 \u00d7 (8.2543e+36/2.4997e+20) \u00d7 V",
+        "result": -9.190324707630634e+42,
+        "unit": "N",
+        "parameters_used": {
+          "beta": 0.6,
+          "rho_vac_UA": 7.09e-36,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      }
+    ],
+    "solutions": {
+      "Ug1": 1.3225679109295565e-14,
+      "Ug2": 1.0474737854562087e-14,
+      "Ug3": 1.5870814931154677e-14,
+      "Ug4": 8.817119406197045e-15,
+      "Ug": 4.8388351301209374e-14,
+      "UQFF_Compressed": 1.5232752241268026e+17,
+      "F_U_Bi": -2.783100675241053e+26,
+      "F_U_Bi_i": -9.190324707630634e+42
+    },
+    "available_equations": [
+      "compute_Ug1",
+      "compute_Ug2",
+      "compute_Ug3",
+      "compute_Ug4",
+      "compute_Ug_total",
+      "compute_Ub",
+      "compute_F_U",
+      "compute_schwarzschild_radius",
+      "compute_escape_velocity",
+      "compute_stefan_boltzmann",
+      "compute_wien_peak",
+      "compute_thermal_energy",
+      "compute_blackbody_spectrum"
+    ],
+    "simulation_set": {
+      "coupled_equations": [
+        {
+          "name": "Ug-Ub coupling",
+          "description": "Gravity-Buoyancy balance"
+        },
+        {
+          "name": "F_U evolution",
+          "description": "Unified field time evolution"
+        }
+      ],
+      "initial_conditions": {
+        "query_name": "test_compact_object",
+        "scale": "UQFFScale.STELLAR",
+        "M": 8.25435e+36,
+        "r": 2.49966e+20,
+        "T": 10000000.0,
+        "t": 0.0,
+        "t_n": 0.0,
+        "k_coupling": 1.0,
+        "beta_coupling": 0.6
+      },
+      "solutions_at_t0": {
+        "Ug1": 1.3225679109295565e-14,
+        "Ug2": 1.0474737854562087e-14,
+        "Ug3": 1.5870814931154677e-14,
+        "Ug4": 8.817119406197045e-15,
+        "Ug": 4.8388351301209374e-14,
+        "UQFF_Compressed": 1.5232752241268026e+17,
+        "F_U_Bi": -2.783100675241053e+26,
+        "F_U_Bi_i": -9.190324707630634e+42
+      },
+      "time_range": {
+        "t_min": 0,
+        "t_max": 100000000.0,
+        "unit": "days"
+      }
+    }
+  },
+  "test_sgr_a_star_20260212T024642506992": {
+    "timestamp": "2026-02-12T02:46:42.506992",
+    "input_params": {
+      "query_name": "test_sgr_a_star",
+      "scale": "UQFFScale.STELLAR",
+      "M": 8.25435e+36,
+      "r": 2.49966e+20,
+      "T": 10000000.0,
+      "t": 0.0,
+      "t_n": 0.0,
+      "k_coupling": 1.0,
+      "beta_coupling": 0.6
+    },
+    "long_form_equations": [
+      {
+        "name": "Ug1",
+        "latex": "U_{g1} = k_1 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug1 = 1.5 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 1.3225679109295565e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug2",
+        "latex": "U_{g2} = k_2 \\times \\frac{G \\times M}{r^2} \\times H_{SCm}",
+        "substituted": "Ug2 = 1.2 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2 \u00d7 0.99",
+        "result": 1.0474737854562087e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "Ug3",
+        "latex": "U_{g3} = k_3 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug3 = 1.8 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 1.5870814931154677e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug4",
+        "latex": "U_{g4} = k_4 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug4 = 1.0 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 8.817119406197045e-15,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_4": 1.0,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug",
+        "latex": "U_g = U_{g1} + U_{g2} + U_{g3} + U_{g4}",
+        "substituted": "Ug = 1.3226e-14 + 1.0475e-14 + 1.5871e-14 + 8.8171e-15",
+        "result": 4.8388351301209374e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "Ug1": 1.3225679109295565e-14,
+          "Ug2": 1.0474737854562087e-14,
+          "Ug3": 1.5870814931154677e-14,
+          "Ug4": 8.817119406197045e-15
+        }
+      },
+      {
+        "name": "UQFF_Compressed",
+        "latex": "g_{comp} = g_{base} \\times (1+H_0 t) \\times (1-B/B_{crit}) + \\Lambda c^2/3 + g_{quantum}",
+        "substituted": "g_comp = 8.8171e-15 \u00d7 1.0000 \u00d7 1.0000 + 3.2956e-36 + 1.5233e+17",
+        "result": 1.5232752241268026e+17,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "t": 0.0,
+          "H0": 2.18e-18,
+          "B": 0.0,
+          "B_crit": 44000000000000.0
+        }
+      },
+      {
+        "name": "UQFF_Triadic",
+        "latex": "g_{triadic}(r,t) = \\sum_{i=1}^{26} \\left[ U_{g1,i} + U_{g2,i} + U_{g3,i} + U_{g4,i} \\right]",
+        "substituted": "g_triadic = sum(26 layers) = 1.1949e-09 (Layer 1: 9.6988e-15 m/s\u00b2, Layer 2: 7.7591e-14 m/s\u00b2, ...)",
+        "result": 1.1949057207591704e-09,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "t": 0.0,
+          "omega0": 6.283185307179586e-05,
+          "num_layers": 26,
+          "rho_vac_UA": 7.09e-36
+        }
+      },
+      {
+        "name": "UQFF_Superconductive",
+        "latex": "g_{SC} = \\sum_{j=1}^{4} k_j \\times \\frac{GM}{r^2} \\times H_{SCm}^{n_j}",
+        "substituted": "g_SC = (1.5+1.2+1.8+1.0) \u00d7 8.8171e-15 \u00d7 H_SCm^n = 4.7904e-14",
+        "result": 4.790446778819729e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "UQFF_Quadratic_Complex",
+        "latex": "g_{\\pm} = \\frac{-b \\pm i\\sqrt{|\\Delta|}}{2a}, \\quad \\Delta < 0",
+        "substituted": "g_+ = 4.4086e-15+5.5467e-15j, g_- = 4.4086e-15-5.5467e-15j (oscillatory states)",
+        "result": 4.408559703098523e-15,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "a": 1.0,
+          "b": -8.817119406197045e-15,
+          "c": 5.0201080627692855e-29,
+          "discriminant": -1.2306272788763487e-28
+        }
+      },
+      {
+        "name": "F_U_Bi",
+        "latex": "F_{U,Bi} = -\\beta \\times \\rho_{vac,[UA]} \\times V_{atom}",
+        "substituted": "F_U_Bi = -0.6 \u00d7 7.0900e-36 \u00d7 (4\u03c0r\u00b3/3)",
+        "result": -2.783100675241053e+26,
+        "unit": "N",
+        "parameters_used": {
+          "beta": 0.6,
+          "rho_vac_UA": 7.09e-36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "F_U_Bi_i",
+        "latex": "F_{U,Bi,i} = -\\beta \\times \\rho_{vac,[UA]} \\times \\frac{M}{r} \\times V",
+        "substituted": "F_U_Bi_i = -0.6 \u00d7 7.0900e-36 \u00d7 (8.2543e+36/2.4997e+20) \u00d7 V",
+        "result": -9.190324707630634e+42,
+        "unit": "N",
+        "parameters_used": {
+          "beta": 0.6,
+          "rho_vac_UA": 7.09e-36,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      }
+    ],
+    "solutions": {
+      "Ug1": 1.3225679109295565e-14,
+      "Ug2": 1.0474737854562087e-14,
+      "Ug3": 1.5870814931154677e-14,
+      "Ug4": 8.817119406197045e-15,
+      "Ug": 4.8388351301209374e-14,
+      "UQFF_Compressed": 1.5232752241268026e+17,
+      "UQFF_Triadic": 1.1949057207591704e-09,
+      "UQFF_Superconductive": 4.790446778819729e-14,
+      "UQFF_Quadratic_Complex": 4.408559703098523e-15,
+      "F_U_Bi": -2.783100675241053e+26,
+      "F_U_Bi_i": -9.190324707630634e+42
+    },
+    "available_equations": [
+      "compute_Ug1",
+      "compute_Ug2",
+      "compute_Ug3",
+      "compute_Ug4",
+      "compute_Ug_total",
+      "compute_Ub",
+      "compute_F_U",
+      "compute_schwarzschild_radius",
+      "compute_escape_velocity",
+      "compute_UQFF_Compressed",
+      "compute_UQFF_Triadic",
+      "compute_UQFF_Superconductive",
+      "compute_UQFF_Quadratic",
+      "compute_F_U_Bi",
+      "compute_F_U_Bi_i",
+      "compute_stefan_boltzmann",
+      "compute_wien_peak",
+      "compute_thermal_energy",
+      "compute_blackbody_spectrum"
+    ],
+    "simulation_set": {
+      "coupled_equations": [
+        {
+          "name": "Ug-Ub coupling",
+          "description": "Gravity-Buoyancy balance"
+        },
+        {
+          "name": "F_U evolution",
+          "description": "Unified field time evolution"
+        }
+      ],
+      "initial_conditions": {
+        "query_name": "test_sgr_a_star",
+        "scale": "UQFFScale.STELLAR",
+        "M": 8.25435e+36,
+        "r": 2.49966e+20,
+        "T": 10000000.0,
+        "t": 0.0,
+        "t_n": 0.0,
+        "k_coupling": 1.0,
+        "beta_coupling": 0.6
+      },
+      "solutions_at_t0": {
+        "Ug1": 1.3225679109295565e-14,
+        "Ug2": 1.0474737854562087e-14,
+        "Ug3": 1.5870814931154677e-14,
+        "Ug4": 8.817119406197045e-15,
+        "Ug": 4.8388351301209374e-14,
+        "UQFF_Compressed": 1.5232752241268026e+17,
+        "UQFF_Triadic": 1.1949057207591704e-09,
+        "UQFF_Superconductive": 4.790446778819729e-14,
+        "UQFF_Quadratic_Complex": 4.408559703098523e-15,
+        "F_U_Bi": -2.783100675241053e+26,
+        "F_U_Bi_i": -9.190324707630634e+42
+      },
+      "time_range": {
+        "t_min": 0,
+        "t_max": 100000000.0,
+        "unit": "days"
+      }
+    }
+  },
+  "test_sgr_a_star_20260212T024654958786": {
+    "timestamp": "2026-02-12T02:46:54.958786",
+    "input_params": {
+      "query_name": "test_sgr_a_star",
+      "scale": "UQFFScale.STELLAR",
+      "M": 8.25435e+36,
+      "r": 2.49966e+20,
+      "T": 10000000.0,
+      "t": 0.0,
+      "t_n": 0.0,
+      "k_coupling": 1.0,
+      "beta_coupling": 0.6
+    },
+    "long_form_equations": [
+      {
+        "name": "Ug1",
+        "latex": "U_{g1} = k_1 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug1 = 1.5 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 1.3225679109295565e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug2",
+        "latex": "U_{g2} = k_2 \\times \\frac{G \\times M}{r^2} \\times H_{SCm}",
+        "substituted": "Ug2 = 1.2 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2 \u00d7 0.99",
+        "result": 1.0474737854562087e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "Ug3",
+        "latex": "U_{g3} = k_3 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug3 = 1.8 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 1.5870814931154677e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug4",
+        "latex": "U_{g4} = k_4 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug4 = 1.0 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 8.817119406197045e-15,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_4": 1.0,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug",
+        "latex": "U_g = U_{g1} + U_{g2} + U_{g3} + U_{g4}",
+        "substituted": "Ug = 1.3226e-14 + 1.0475e-14 + 1.5871e-14 + 8.8171e-15",
+        "result": 4.8388351301209374e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "Ug1": 1.3225679109295565e-14,
+          "Ug2": 1.0474737854562087e-14,
+          "Ug3": 1.5870814931154677e-14,
+          "Ug4": 8.817119406197045e-15
+        }
+      },
+      {
+        "name": "UQFF_Compressed",
+        "latex": "g_{comp} = g_{base} \\times (1+H_0 t) \\times (1-B/B_{crit}) + \\Lambda c^2/3 + g_{quantum}",
+        "substituted": "g_comp = 8.8171e-15 \u00d7 1.0000 \u00d7 1.0000 + 3.2956e-36 + 1.5233e+17",
+        "result": 1.5232752241268026e+17,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "t": 0.0,
+          "H0": 2.18e-18,
+          "B": 0.0,
+          "B_crit": 44000000000000.0
+        }
+      },
+      {
+        "name": "UQFF_Triadic",
+        "latex": "g_{triadic}(r,t) = \\sum_{i=1}^{26} \\left[ U_{g1,i} + U_{g2,i} + U_{g3,i} + U_{g4,i} \\right]",
+        "substituted": "g_triadic = sum(26 layers) = 1.1949e-09 (Layer 1: 9.6988e-15 m/s\u00b2, Layer 2: 7.7591e-14 m/s\u00b2, ...)",
+        "result": 1.1949057207591704e-09,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "t": 0.0,
+          "omega0": 6.283185307179586e-05,
+          "num_layers": 26,
+          "rho_vac_UA": 7.09e-36
+        }
+      },
+      {
+        "name": "UQFF_Superconductive",
+        "latex": "g_{SC} = \\sum_{j=1}^{4} k_j \\times \\frac{GM}{r^2} \\times H_{SCm}^{n_j}",
+        "substituted": "g_SC = (1.5+1.2+1.8+1.0) \u00d7 8.8171e-15 \u00d7 H_SCm^n = 4.7904e-14",
+        "result": 4.790446778819729e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "UQFF_Quadratic_Complex",
+        "latex": "g_{\\pm} = \\frac{-b \\pm i\\sqrt{|\\Delta|}}{2a}, \\quad \\Delta < 0",
+        "substituted": "g_+ = 4.4086e-15+5.5467e-15j, g_- = 4.4086e-15-5.5467e-15j (oscillatory states)",
+        "result": 4.408559703098523e-15,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "a": 1.0,
+          "b": -8.817119406197045e-15,
+          "c": 5.0201080627692855e-29,
+          "discriminant": -1.2306272788763487e-28
+        }
+      },
+      {
+        "name": "F_U_Bi",
+        "latex": "F_{U,Bi} = -\\beta \\times \\rho_{vac,[UA]} \\times V_{atom}",
+        "substituted": "F_U_Bi = -0.6 \u00d7 7.0900e-36 \u00d7 (4\u03c0r\u00b3/3)",
+        "result": -2.783100675241053e+26,
+        "unit": "N",
+        "parameters_used": {
+          "beta": 0.6,
+          "rho_vac_UA": 7.09e-36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "F_U_Bi_i",
+        "latex": "F_{U,Bi,i} = -\\beta \\times \\rho_{vac,[UA]} \\times \\frac{M}{r} \\times V",
+        "substituted": "F_U_Bi_i = -0.6 \u00d7 7.0900e-36 \u00d7 (8.2543e+36/2.4997e+20) \u00d7 V",
+        "result": -9.190324707630634e+42,
+        "unit": "N",
+        "parameters_used": {
+          "beta": 0.6,
+          "rho_vac_UA": 7.09e-36,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      }
+    ],
+    "solutions": {
+      "Ug1": 1.3225679109295565e-14,
+      "Ug2": 1.0474737854562087e-14,
+      "Ug3": 1.5870814931154677e-14,
+      "Ug4": 8.817119406197045e-15,
+      "Ug": 4.8388351301209374e-14,
+      "UQFF_Compressed": 1.5232752241268026e+17,
+      "UQFF_Triadic": 1.1949057207591704e-09,
+      "UQFF_Superconductive": 4.790446778819729e-14,
+      "UQFF_Quadratic_Complex": 4.408559703098523e-15,
+      "F_U_Bi": -2.783100675241053e+26,
+      "F_U_Bi_i": -9.190324707630634e+42
+    },
+    "available_equations": [
+      "compute_Ug1",
+      "compute_Ug2",
+      "compute_Ug3",
+      "compute_Ug4",
+      "compute_Ug_total",
+      "compute_Ub",
+      "compute_F_U",
+      "compute_schwarzschild_radius",
+      "compute_escape_velocity",
+      "compute_UQFF_Compressed",
+      "compute_UQFF_Triadic",
+      "compute_UQFF_Superconductive",
+      "compute_UQFF_Quadratic",
+      "compute_F_U_Bi",
+      "compute_F_U_Bi_i",
+      "compute_stefan_boltzmann",
+      "compute_wien_peak",
+      "compute_thermal_energy",
+      "compute_blackbody_spectrum"
+    ],
+    "simulation_set": {
+      "coupled_equations": [
+        {
+          "name": "Ug-Ub coupling",
+          "description": "Gravity-Buoyancy balance"
+        },
+        {
+          "name": "F_U evolution",
+          "description": "Unified field time evolution"
+        }
+      ],
+      "initial_conditions": {
+        "query_name": "test_sgr_a_star",
+        "scale": "UQFFScale.STELLAR",
+        "M": 8.25435e+36,
+        "r": 2.49966e+20,
+        "T": 10000000.0,
+        "t": 0.0,
+        "t_n": 0.0,
+        "k_coupling": 1.0,
+        "beta_coupling": 0.6
+      },
+      "solutions_at_t0": {
+        "Ug1": 1.3225679109295565e-14,
+        "Ug2": 1.0474737854562087e-14,
+        "Ug3": 1.5870814931154677e-14,
+        "Ug4": 8.817119406197045e-15,
+        "Ug": 4.8388351301209374e-14,
+        "UQFF_Compressed": 1.5232752241268026e+17,
+        "UQFF_Triadic": 1.1949057207591704e-09,
+        "UQFF_Superconductive": 4.790446778819729e-14,
+        "UQFF_Quadratic_Complex": 4.408559703098523e-15,
+        "F_U_Bi": -2.783100675241053e+26,
+        "F_U_Bi_i": -9.190324707630634e+42
+      },
+      "time_range": {
+        "t_min": 0,
+        "t_max": 100000000.0,
+        "unit": "days"
+      }
+    }
+  },
+  "test_20260212T024712109709": {
+    "timestamp": "2026-02-12T02:47:12.109709",
+    "input_params": {
+      "query_name": "test",
+      "scale": "UQFFScale.STELLAR",
+      "M": 8.25435e+36,
+      "r": 2.49966e+20,
+      "t": 0.0,
+      "t_n": 0.0,
+      "k_coupling": 1.0,
+      "beta_coupling": 0.6
+    },
+    "long_form_equations": [
+      {
+        "name": "Ug1",
+        "latex": "U_{g1} = k_1 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug1 = 1.5 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 1.3225679109295565e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug2",
+        "latex": "U_{g2} = k_2 \\times \\frac{G \\times M}{r^2} \\times H_{SCm}",
+        "substituted": "Ug2 = 1.2 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2 \u00d7 0.99",
+        "result": 1.0474737854562087e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "Ug3",
+        "latex": "U_{g3} = k_3 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug3 = 1.8 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 1.5870814931154677e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug4",
+        "latex": "U_{g4} = k_4 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug4 = 1.0 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 8.817119406197045e-15,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_4": 1.0,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug",
+        "latex": "U_g = U_{g1} + U_{g2} + U_{g3} + U_{g4}",
+        "substituted": "Ug = 1.3226e-14 + 1.0475e-14 + 1.5871e-14 + 8.8171e-15",
+        "result": 4.8388351301209374e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "Ug1": 1.3225679109295565e-14,
+          "Ug2": 1.0474737854562087e-14,
+          "Ug3": 1.5870814931154677e-14,
+          "Ug4": 8.817119406197045e-15
+        }
+      },
+      {
+        "name": "UQFF_Compressed",
+        "latex": "g_{comp} = g_{base} \\times (1+H_0 t) \\times (1-B/B_{crit}) + \\Lambda c^2/3 + g_{quantum}",
+        "substituted": "g_comp = 8.8171e-15 \u00d7 1.0000 \u00d7 1.0000 + 3.2956e-36 + 1.5233e+17",
+        "result": 1.5232752241268026e+17,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "t": 0.0,
+          "H0": 2.18e-18,
+          "B": 0.0,
+          "B_crit": 44000000000000.0
+        }
+      },
+      {
+        "name": "UQFF_Triadic",
+        "latex": "g_{triadic}(r,t) = \\sum_{i=1}^{26} \\left[ U_{g1,i} + U_{g2,i} + U_{g3,i} + U_{g4,i} \\right]",
+        "substituted": "g_triadic = sum(26 layers) = 1.1949e-09 (Layer 1: 9.6988e-15 m/s\u00b2, Layer 2: 7.7591e-14 m/s\u00b2, ...)",
+        "result": 1.1949057207591704e-09,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "t": 0.0,
+          "omega0": 6.283185307179586e-05,
+          "num_layers": 26,
+          "rho_vac_UA": 7.09e-36
+        }
+      },
+      {
+        "name": "UQFF_Superconductive",
+        "latex": "g_{SC} = \\sum_{j=1}^{4} k_j \\times \\frac{GM}{r^2} \\times H_{SCm}^{n_j}",
+        "substituted": "g_SC = (1.5+1.2+1.8+1.0) \u00d7 8.8171e-15 \u00d7 H_SCm^n = 4.7904e-14",
+        "result": 4.790446778819729e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "UQFF_Quadratic_Complex",
+        "latex": "g_{\\pm} = \\frac{-b \\pm i\\sqrt{|\\Delta|}}{2a}, \\quad \\Delta < 0",
+        "substituted": "g_+ = 4.4086e-15+5.5467e-15j, g_- = 4.4086e-15-5.5467e-15j (oscillatory states)",
+        "result": 4.408559703098523e-15,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "a": 1.0,
+          "b": -8.817119406197045e-15,
+          "c": 5.0201080627692855e-29,
+          "discriminant": -1.2306272788763487e-28
+        }
+      },
+      {
+        "name": "F_U_Bi",
+        "latex": "F_{U,Bi} = -\\beta \\times \\rho_{vac,[UA]} \\times V_{atom}",
+        "substituted": "F_U_Bi = -0.6 \u00d7 7.0900e-36 \u00d7 (4\u03c0r\u00b3/3)",
+        "result": -2.783100675241053e+26,
+        "unit": "N",
+        "parameters_used": {
+          "beta": 0.6,
+          "rho_vac_UA": 7.09e-36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "F_U_Bi_i",
+        "latex": "F_{U,Bi,i} = -\\beta \\times \\rho_{vac,[UA]} \\times \\frac{M}{r} \\times V",
+        "substituted": "F_U_Bi_i = -0.6 \u00d7 7.0900e-36 \u00d7 (8.2543e+36/2.4997e+20) \u00d7 V",
+        "result": -9.190324707630634e+42,
+        "unit": "N",
+        "parameters_used": {
+          "beta": 0.6,
+          "rho_vac_UA": 7.09e-36,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      }
+    ],
+    "solutions": {
+      "Ug1": 1.3225679109295565e-14,
+      "Ug2": 1.0474737854562087e-14,
+      "Ug3": 1.5870814931154677e-14,
+      "Ug4": 8.817119406197045e-15,
+      "Ug": 4.8388351301209374e-14,
+      "UQFF_Compressed": 1.5232752241268026e+17,
+      "UQFF_Triadic": 1.1949057207591704e-09,
+      "UQFF_Superconductive": 4.790446778819729e-14,
+      "UQFF_Quadratic_Complex": 4.408559703098523e-15,
+      "F_U_Bi": -2.783100675241053e+26,
+      "F_U_Bi_i": -9.190324707630634e+42
+    },
+    "available_equations": [
+      "compute_Ug1",
+      "compute_Ug2",
+      "compute_Ug3",
+      "compute_Ug4",
+      "compute_Ug_total",
+      "compute_Ub",
+      "compute_F_U",
+      "compute_schwarzschild_radius",
+      "compute_escape_velocity",
+      "compute_UQFF_Compressed",
+      "compute_UQFF_Triadic",
+      "compute_UQFF_Superconductive",
+      "compute_UQFF_Quadratic",
+      "compute_F_U_Bi",
+      "compute_F_U_Bi_i"
+    ],
+    "simulation_set": {
+      "coupled_equations": [
+        {
+          "name": "Ug-Ub coupling",
+          "description": "Gravity-Buoyancy balance"
+        },
+        {
+          "name": "F_U evolution",
+          "description": "Unified field time evolution"
+        }
+      ],
+      "initial_conditions": {
+        "query_name": "test",
+        "scale": "UQFFScale.STELLAR",
+        "M": 8.25435e+36,
+        "r": 2.49966e+20,
+        "t": 0.0,
+        "t_n": 0.0,
+        "k_coupling": 1.0,
+        "beta_coupling": 0.6
+      },
+      "solutions_at_t0": {
+        "Ug1": 1.3225679109295565e-14,
+        "Ug2": 1.0474737854562087e-14,
+        "Ug3": 1.5870814931154677e-14,
+        "Ug4": 8.817119406197045e-15,
+        "Ug": 4.8388351301209374e-14,
+        "UQFF_Compressed": 1.5232752241268026e+17,
+        "UQFF_Triadic": 1.1949057207591704e-09,
+        "UQFF_Superconductive": 4.790446778819729e-14,
+        "UQFF_Quadratic_Complex": 4.408559703098523e-15,
+        "F_U_Bi": -2.783100675241053e+26,
+        "F_U_Bi_i": -9.190324707630634e+42
+      },
+      "time_range": {
+        "t_min": 0,
+        "t_max": 100000000.0,
+        "unit": "days"
+      }
+    }
+  },
+  "test_sgr_a_star_20260212T024742976400": {
+    "timestamp": "2026-02-12T02:47:42.976400",
+    "input_params": {
+      "query_name": "test_sgr_a_star",
+      "scale": "UQFFScale.STELLAR",
+      "M": 8.25435e+36,
+      "r": 2.49966e+20,
+      "T": 10000000.0,
+      "omega": 7.3e-16,
+      "P": 100000000.0,
+      "t": 1.420092e+17,
+      "t_n": 0.0,
+      "k_coupling": 1.0,
+      "beta_coupling": 0.6
+    },
+    "long_form_equations": [
+      {
+        "name": "Ug1",
+        "latex": "U_{g1} = k_1 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug1 = 1.5 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 1.3225679109295565e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug2",
+        "latex": "U_{g2} = k_2 \\times \\frac{G \\times M}{r^2} \\times H_{SCm}",
+        "substituted": "Ug2 = 1.2 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2 \u00d7 0.99",
+        "result": 1.0474737854562087e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "Ug3",
+        "latex": "U_{g3} = k_3 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug3 = 1.8 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 1.5870814931154677e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug4",
+        "latex": "U_{g4} = k_4 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug4 = 1.0 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 8.817119406197045e-15,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_4": 1.0,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug",
+        "latex": "U_g = U_{g1} + U_{g2} + U_{g3} + U_{g4}",
+        "substituted": "Ug = 1.3226e-14 + 1.0475e-14 + 1.5871e-14 + 8.8171e-15",
+        "result": 4.8388351301209374e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "Ug1": 1.3225679109295565e-14,
+          "Ug2": 1.0474737854562087e-14,
+          "Ug3": 1.5870814931154677e-14,
+          "Ug4": 8.817119406197045e-15
+        }
+      },
+      {
+        "name": "UQFF_Compressed",
+        "latex": "g_{comp} = g_{base} \\times (1+H_0 t) \\times (1-B/B_{crit}) + \\Lambda c^2/3 + g_{quantum}",
+        "substituted": "g_comp = 8.8171e-15 \u00d7 1.3096 \u00d7 1.0000 + 3.2956e-36 + 1.5233e+17",
+        "result": 1.5232752241268026e+17,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "t": 1.420092e+17,
+          "H0": 2.18e-18,
+          "B": 0.0,
+          "B_crit": 44000000000000.0
+        }
+      },
+      {
+        "name": "UQFF_Resonant",
+        "latex": "g_{res} = a_{DPM} + \\sum_{i=1}^{13} a_i(\\omega, E_{vac}, t)",
+        "substituted": "g_res = 5.0758e+63 + [13 resonance modes] = 5.5529e+63",
+        "result": 5.552895253383756e+63,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "omega1": 7.3e-16,
+          "omega2": 6.935e-16,
+          "I": 1e+45,
+          "A": 10000000000.0
+        }
+      },
+      {
+        "name": "UQFF_Triadic",
+        "latex": "g_{triadic}(r,t) = \\sum_{i=1}^{26} \\left[ U_{g1,i} + U_{g2,i} + U_{g3,i} + U_{g4,i} \\right]",
+        "substituted": "g_triadic = sum(26 layers) = 1.1949e-09 (Layer 1: 9.6988e-15 m/s\u00b2, Layer 2: 7.7591e-14 m/s\u00b2, ...)",
+        "result": 1.1949057207591704e-09,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "t": 1.420092e+17,
+          "omega0": 7.3e-16,
+          "num_layers": 26,
+          "rho_vac_UA": 7.09e-36
+        }
+      },
+      {
+        "name": "UQFF_Superconductive",
+        "latex": "g_{SC} = \\sum_{j=1}^{4} k_j \\times \\frac{GM}{r^2} \\times H_{SCm}^{n_j}",
+        "substituted": "g_SC = (1.5+1.2+1.8+1.0) \u00d7 8.8171e-15 \u00d7 H_SCm^n = 4.7904e-14",
+        "result": 4.790446778819729e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "UQFF_Quadratic_Complex",
+        "latex": "g_{\\pm} = \\frac{-b \\pm i\\sqrt{|\\Delta|}}{2a}, \\quad \\Delta < 0",
+        "substituted": "g_+ = 4.4086e-15+5.5467e-15j, g_- = 4.4086e-15-5.5467e-15j (oscillatory states)",
+        "result": 4.408559703098523e-15,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "a": 1.0,
+          "b": -8.817119406197045e-15,
+          "c": 5.0201080627692855e-29,
+          "discriminant": -1.2306272788763487e-28
+        }
+      },
+      {
+        "name": "F_U_Bi",
+        "latex": "F_{U,Bi} = -\\beta \\times \\rho_{vac,[UA]} \\times V_{atom}",
+        "substituted": "F_U_Bi = -0.6 \u00d7 7.0900e-36 \u00d7 (4\u03c0r\u00b3/3)",
+        "result": -2.783100675241053e+26,
+        "unit": "N",
+        "parameters_used": {
+          "beta": 0.6,
+          "rho_vac_UA": 7.09e-36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "F_U_Bi_i",
+        "latex": "F_{U,Bi,i} = -\\beta \\times \\rho_{vac,[UA]} \\times \\frac{M}{r} \\times V",
+        "substituted": "F_U_Bi_i = -0.6 \u00d7 7.0900e-36 \u00d7 (8.2543e+36/2.4997e+20) \u00d7 V",
+        "result": -9.190324707630634e+42,
+        "unit": "N",
+        "parameters_used": {
+          "beta": 0.6,
+          "rho_vac_UA": 7.09e-36,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      }
+    ],
+    "solutions": {
+      "Ug1": 1.3225679109295565e-14,
+      "Ug2": 1.0474737854562087e-14,
+      "Ug3": 1.5870814931154677e-14,
+      "Ug4": 8.817119406197045e-15,
+      "Ug": 4.8388351301209374e-14,
+      "UQFF_Compressed": 1.5232752241268026e+17,
+      "UQFF_Resonant": 5.552895253383756e+63,
+      "UQFF_Triadic": 1.1949057207591704e-09,
+      "UQFF_Superconductive": 4.790446778819729e-14,
+      "UQFF_Quadratic_Complex": 4.408559703098523e-15,
+      "F_U_Bi": -2.783100675241053e+26,
+      "F_U_Bi_i": -9.190324707630634e+42
+    },
+    "available_equations": [
+      "compute_Ug1",
+      "compute_Ug2",
+      "compute_Ug3",
+      "compute_Ug4",
+      "compute_Ug_total",
+      "compute_Ub",
+      "compute_F_U",
+      "compute_schwarzschild_radius",
+      "compute_escape_velocity",
+      "compute_UQFF_Compressed",
+      "compute_UQFF_Triadic",
+      "compute_UQFF_Superconductive",
+      "compute_UQFF_Quadratic",
+      "compute_F_U_Bi",
+      "compute_F_U_Bi_i",
+      "compute_UQFF_Resonant",
+      "compute_stefan_boltzmann",
+      "compute_wien_peak",
+      "compute_thermal_energy",
+      "compute_blackbody_spectrum"
+    ],
+    "simulation_set": {
+      "coupled_equations": [
+        {
+          "name": "Ug-Ub coupling",
+          "description": "Gravity-Buoyancy balance"
+        },
+        {
+          "name": "F_U evolution",
+          "description": "Unified field time evolution"
+        }
+      ],
+      "initial_conditions": {
+        "query_name": "test_sgr_a_star",
+        "scale": "UQFFScale.STELLAR",
+        "M": 8.25435e+36,
+        "r": 2.49966e+20,
+        "T": 10000000.0,
+        "omega": 7.3e-16,
+        "P": 100000000.0,
+        "t": 1.420092e+17,
+        "t_n": 0.0,
+        "k_coupling": 1.0,
+        "beta_coupling": 0.6
+      },
+      "solutions_at_t0": {
+        "Ug1": 1.3225679109295565e-14,
+        "Ug2": 1.0474737854562087e-14,
+        "Ug3": 1.5870814931154677e-14,
+        "Ug4": 8.817119406197045e-15,
+        "Ug": 4.8388351301209374e-14,
+        "UQFF_Compressed": 1.5232752241268026e+17,
+        "UQFF_Resonant": 5.552895253383756e+63,
+        "UQFF_Triadic": 1.1949057207591704e-09,
+        "UQFF_Superconductive": 4.790446778819729e-14,
+        "UQFF_Quadratic_Complex": 4.408559703098523e-15,
+        "F_U_Bi": -2.783100675241053e+26,
+        "F_U_Bi_i": -9.190324707630634e+42
+      },
+      "time_range": {
+        "t_min": 0,
+        "t_max": 100000000.0,
+        "unit": "days"
+      }
+    }
+  },
+  "test_sgr_a_star_20260212T024847503770": {
+    "timestamp": "2026-02-12T02:48:47.503770",
+    "input_params": {
+      "query_name": "test_sgr_a_star",
+      "scale": "UQFFScale.STELLAR",
+      "M": 8.25435e+36,
+      "r": 2.49966e+20,
+      "T": 10000000.0,
+      "omega": 7.3e-16,
+      "P": 100000000.0,
+      "t": 1.420092e+17,
+      "t_n": 0.0,
+      "k_coupling": 1.0,
+      "beta_coupling": 0.6
+    },
+    "long_form_equations": [
+      {
+        "name": "Ug1",
+        "latex": "U_{g1} = k_1 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug1 = 1.5 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 1.3225679109295565e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug2",
+        "latex": "U_{g2} = k_2 \\times \\frac{G \\times M}{r^2} \\times H_{SCm}",
+        "substituted": "Ug2 = 1.2 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2 \u00d7 0.99",
+        "result": 1.0474737854562087e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "Ug3",
+        "latex": "U_{g3} = k_3 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug3 = 1.8 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 1.5870814931154677e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug4",
+        "latex": "U_{g4} = k_4 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug4 = 1.0 \u00d7 (6.6743e-11 \u00d7 8.2543e+36) / (2.4997e+20)\u00b2",
+        "result": 8.817119406197045e-15,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_4": 1.0,
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "Ug",
+        "latex": "U_g = U_{g1} + U_{g2} + U_{g3} + U_{g4}",
+        "substituted": "Ug = 1.3226e-14 + 1.0475e-14 + 1.5871e-14 + 8.8171e-15",
+        "result": 4.8388351301209374e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "Ug1": 1.3225679109295565e-14,
+          "Ug2": 1.0474737854562087e-14,
+          "Ug3": 1.5870814931154677e-14,
+          "Ug4": 8.817119406197045e-15
+        }
+      },
+      {
+        "name": "UQFF_Compressed",
+        "latex": "g_{comp} = g_{base} \\times (1+H_0 t) \\times (1-B/B_{crit}) + \\Lambda c^2/3 + g_{quantum}",
+        "substituted": "g_comp = 8.8171e-15 \u00d7 1.3096 \u00d7 1.0000 + 3.2956e-36 + 1.5233e+17",
+        "result": 1.5232752241268026e+17,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "t": 1.420092e+17,
+          "H0": 2.18e-18,
+          "B": 0.0,
+          "B_crit": 44000000000000.0
+        }
+      },
+      {
+        "name": "UQFF_Resonant",
+        "latex": "g_{res} = a_{DPM} + \\sum_{i=1}^{13} a_i(\\omega, E_{vac}, t)",
+        "substituted": "g_res = 5.0758e+63 + [13 resonance modes] = 5.5529e+63",
+        "result": 5.552895253383756e+63,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "omega1": 7.3e-16,
+          "omega2": 6.935e-16,
+          "I": 1e+45,
+          "A": 10000000000.0
+        }
+      },
+      {
+        "name": "UQFF_Triadic",
+        "latex": "g_{triadic}(r,t) = \\sum_{i=1}^{26} \\left[ U_{g1,i} + U_{g2,i} + U_{g3,i} + U_{g4,i} \\right]",
+        "substituted": "g_triadic = sum(26 layers) = 1.1949e-09 (Layer 1: 9.6988e-15 m/s\u00b2, Layer 2: 7.7591e-14 m/s\u00b2, ...)",
+        "result": 1.1949057207591704e-09,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "t": 1.420092e+17,
+          "omega0": 7.3e-16,
+          "num_layers": 26,
+          "rho_vac_UA": 7.09e-36
+        }
+      },
+      {
+        "name": "UQFF_Superconductive",
+        "latex": "g_{SC} = \\sum_{j=1}^{4} k_j \\times \\frac{GM}{r^2} \\times H_{SCm}^{n_j}",
+        "substituted": "g_SC = (1.5+1.2+1.8+1.0) \u00d7 8.8171e-15 \u00d7 H_SCm^n = 4.7904e-14",
+        "result": 4.790446778819729e-14,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "UQFF_Quadratic_Complex",
+        "latex": "g_{\\pm} = \\frac{-b \\pm i\\sqrt{|\\Delta|}}{2a}, \\quad \\Delta < 0",
+        "substituted": "g_+ = 4.4086e-15+5.5467e-15j, g_- = 4.4086e-15-5.5467e-15j (oscillatory states)",
+        "result": 4.408559703098523e-15,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "a": 1.0,
+          "b": -8.817119406197045e-15,
+          "c": 5.0201080627692855e-29,
+          "discriminant": -1.2306272788763487e-28
+        }
+      },
+      {
+        "name": "F_U_Bi",
+        "latex": "F_{U,Bi} = -\\beta \\times \\rho_{vac,[UA]} \\times V_{atom}",
+        "substituted": "F_U_Bi = -0.6 \u00d7 7.0900e-36 \u00d7 (4\u03c0r\u00b3/3)",
+        "result": -2.783100675241053e+26,
+        "unit": "N",
+        "parameters_used": {
+          "beta": 0.6,
+          "rho_vac_UA": 7.09e-36,
+          "r": 2.49966e+20
+        }
+      },
+      {
+        "name": "F_U_Bi_i",
+        "latex": "F_{U,Bi,i} = -\\beta \\times \\rho_{vac,[UA]} \\times \\frac{M}{r} \\times V",
+        "substituted": "F_U_Bi_i = -0.6 \u00d7 7.0900e-36 \u00d7 (8.2543e+36/2.4997e+20) \u00d7 V",
+        "result": -9.190324707630634e+42,
+        "unit": "N",
+        "parameters_used": {
+          "beta": 0.6,
+          "rho_vac_UA": 7.09e-36,
+          "M": 8.25435e+36,
+          "r": 2.49966e+20
+        }
+      }
+    ],
+    "solutions": {
+      "Ug1": 1.3225679109295565e-14,
+      "Ug2": 1.0474737854562087e-14,
+      "Ug3": 1.5870814931154677e-14,
+      "Ug4": 8.817119406197045e-15,
+      "Ug": 4.8388351301209374e-14,
+      "UQFF_Compressed": 1.5232752241268026e+17,
+      "UQFF_Resonant": 5.552895253383756e+63,
+      "UQFF_Triadic": 1.1949057207591704e-09,
+      "UQFF_Superconductive": 4.790446778819729e-14,
+      "UQFF_Quadratic_Complex": 4.408559703098523e-15,
+      "F_U_Bi": -2.783100675241053e+26,
+      "F_U_Bi_i": -9.190324707630634e+42
+    },
+    "available_equations": [
+      "compute_Ug1",
+      "compute_Ug2",
+      "compute_Ug3",
+      "compute_Ug4",
+      "compute_Ug_total",
+      "compute_Ub",
+      "compute_F_U",
+      "compute_schwarzschild_radius",
+      "compute_escape_velocity",
+      "compute_UQFF_Compressed",
+      "compute_UQFF_Triadic",
+      "compute_UQFF_Superconductive",
+      "compute_UQFF_Quadratic",
+      "compute_F_U_Bi",
+      "compute_F_U_Bi_i",
+      "compute_UQFF_Resonant",
+      "compute_stefan_boltzmann",
+      "compute_wien_peak",
+      "compute_thermal_energy",
+      "compute_blackbody_spectrum"
+    ],
+    "simulation_set": {
+      "coupled_equations": [
+        {
+          "name": "Ug-Ub coupling",
+          "description": "Gravity-Buoyancy balance"
+        },
+        {
+          "name": "F_U evolution",
+          "description": "Unified field time evolution"
+        }
+      ],
+      "initial_conditions": {
+        "query_name": "test_sgr_a_star",
+        "scale": "UQFFScale.STELLAR",
+        "M": 8.25435e+36,
+        "r": 2.49966e+20,
+        "T": 10000000.0,
+        "omega": 7.3e-16,
+        "P": 100000000.0,
+        "t": 1.420092e+17,
+        "t_n": 0.0,
+        "k_coupling": 1.0,
+        "beta_coupling": 0.6
+      },
+      "solutions_at_t0": {
+        "Ug1": 1.3225679109295565e-14,
+        "Ug2": 1.0474737854562087e-14,
+        "Ug3": 1.5870814931154677e-14,
+        "Ug4": 8.817119406197045e-15,
+        "Ug": 4.8388351301209374e-14,
+        "UQFF_Compressed": 1.5232752241268026e+17,
+        "UQFF_Resonant": 5.552895253383756e+63,
+        "UQFF_Triadic": 1.1949057207591704e-09,
+        "UQFF_Superconductive": 4.790446778819729e-14,
+        "UQFF_Quadratic_Complex": 4.408559703098523e-15,
+        "F_U_Bi": -2.783100675241053e+26,
+        "F_U_Bi_i": -9.190324707630634e+42
+      },
+      "time_range": {
+        "t_min": 0,
+        "t_max": 100000000.0,
+        "unit": "days"
+      }
+    }
+  }
+}

@@ -601,6 +601,14 @@ if(Qt6_FOUND)
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
                 "${CMAKE_SOURCE_DIR}/ValidationData.py"
                 "$<TARGET_FILE_DIR:Source2>/ValidationData.py"
+            # Copy GrokAPI.py (Tab 7 - xAI Grok API wrapper for SuperGrok4)
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/GrokAPI.py"
+                "$<TARGET_FILE_DIR:Source2>/GrokAPI.py"
+            # Copy OllamaAPI.py (Tab 6 - Ollama API wrapper for CoAnQi_bot)
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/OllamaAPI.py"
+                "$<TARGET_FILE_DIR:Source2>/OllamaAPI.py"
             # Copy CondensedPhysics dependency files (data modules)
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
                 "${CMAKE_SOURCE_DIR}/CondensedPhysics_InputData.py"
@@ -629,7 +637,7 @@ if(Qt6_FOUND)
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
                 "C:/Program Files/Wolfram Research/Wolfram Engine/14.3/SystemFiles/Links/WSTP/DeveloperKit/Windows-x86-64/SystemAdditions/wstp64i4.dll"
                 "$<TARGET_FILE_DIR:Source2>/"
-            COMMAND ${CMAKE_COMMAND} -E echo "✅ MAIN_1_CoAnQi.exe + Python wrappers (UQFF, QCalc, CondensedPhysics, ValidationData) + OpenSSL + VC++ Runtime + WSTP DLLs deployed"
+            COMMAND ${CMAKE_COMMAND} -E echo "✅ MAIN_1_CoAnQi.exe + Python wrappers (UQFF, QCalc, CondensedPhysics, ValidationData, GrokAPI, OllamaAPI) + OpenSSL + VC++ Runtime + WSTP DLLs deployed"
             COMMENT "Deploying MAIN_1_CoAnQi.exe, Python wrappers, OpenSSL, VC++ Runtime, and Wolfram WSTP for cross-platform integration"
         )
     endif()

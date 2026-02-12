@@ -149,6 +149,7 @@ extern void WolframEmbeddedBridge();
 // Threading enabled for parallel system calculations
 // Using Windows threads for compatibility
 #ifdef _WIN32
+#define NOMINMAX  // Prevent Windows.h from defining min/max macros that conflict with std::min/std::max
 #include <windows.h>
 #include <process.h>
 #else
@@ -206,12 +207,7 @@ using SimpleLockGuard = std::lock_guard<T>;
 #include "Core/Modules/InformationParadoxUQFFModule.cpp"
 
 // Grok AI Integration - Error Diagnostics and Code Assistance (November 22, 2025)
-// Requires QCoreApplication for Qt networking (QNetworkAccessManager)
-#if defined(HAVE_QT6)
-#include <QCoreApplication>
-#elif defined(HAVE_QT5)
-#include <QCoreApplication>
-#endif
+// Updated: 2026-02-13 - Uses Python wrapper (GrokAPI.py), no Qt dependency required
 #include "source178_grok_api.cpp"
 
 // Cosmic Quantum Egg - 26D Chaotic Dynamics (November 25, 2025)
@@ -23612,11 +23608,6 @@ namespace SOURCE4 {
 
 int main(int argc, char *argv[])
 {
-// Initialize Qt Core Application for Grok API networking (QNetworkAccessManager requires QCoreApplication)
-#if defined(HAVE_QT6) || defined(HAVE_QT5)
-    QCoreApplication app(argc, argv);
-#endif
-
     // ========== CLI ACCESS POINT FOR PYTHON INTEGRATION ==========
     // MUST be BEFORE any logger output to avoid JSON contamination
     // Disable global logger for CLI mode

@@ -1049,31 +1049,32 @@ public:
         
         QPushButton* addCodeCellBtn = new QPushButton("➕ Code Cell", this);
         addCodeCellBtn->setToolTip("Add new Python code cell (Ctrl+Shift+A)");
-        addCodeCellBtn->setStyleSheet("background-color: #2E7D32; color: white; padding: 5px; font-weight: bold;");
+        addCodeCellBtn->setStyleSheet("background-color: #000000; color: white; padding: 5px; font-weight: bold; border: 1px solid #2E7D32;");
         connect(addCodeCellBtn, &QPushButton::clicked, this, &NotebookEditorWidget::addCodeCell);
         toolbar->addWidget(addCodeCellBtn);
         
         QPushButton* addMarkdownCellBtn = new QPushButton("📝 Markdown Cell", this);
         addMarkdownCellBtn->setToolTip("Add new Markdown documentation cell");
-        addMarkdownCellBtn->setStyleSheet("background-color: #1976D2; color: white; padding: 5px; font-weight: bold;");
+        addMarkdownCellBtn->setStyleSheet("background-color: #000000; color: white; padding: 5px; font-weight: bold; border: 1px solid #1976D2;");
         connect(addMarkdownCellBtn, &QPushButton::clicked, this, &NotebookEditorWidget::addMarkdownCell);
         toolbar->addWidget(addMarkdownCellBtn);
         
         QPushButton* runAllBtn = new QPushButton("▶️ Run All", this);
         runAllBtn->setToolTip("Execute all code cells sequentially");
-        runAllBtn->setStyleSheet("background-color: #F57C00; color: white; padding: 5px; font-weight: bold;");
+        runAllBtn->setStyleSheet("background-color: #000000; color: white; padding: 5px; font-weight: bold; border: 1px solid #F57C00;");
         connect(runAllBtn, &QPushButton::clicked, this, &NotebookEditorWidget::runAllCells);
         toolbar->addWidget(runAllBtn);
         
         QPushButton* clearAllBtn = new QPushButton("🗑️ Clear All", this);
         clearAllBtn->setToolTip("Clear all cell outputs");
+        clearAllBtn->setStyleSheet("background-color: #000000; color: white; padding: 5px; border: 1px solid #666;");
         connect(clearAllBtn, &QPushButton::clicked, this, &NotebookEditorWidget::clearAllOutputs);
         toolbar->addWidget(clearAllBtn);
         
         toolbar->addStretch();
         
         QLabel* kernelLabel = new QLabel("Kernel: Python 3", this);
-        kernelLabel->setStyleSheet("color: #00AA00; font-weight: bold;");
+        kernelLabel->setStyleSheet("color: #00FF00; font-weight: bold;");
         toolbar->addWidget(kernelLabel);
         
         mainLayout->addLayout(toolbar);
@@ -1100,7 +1101,7 @@ private slots:
         cellCount++;
         
         QGroupBox* cellBox = new QGroupBox(QString("Code Cell [%1]").arg(cellCount), this);
-        cellBox->setStyleSheet("QGroupBox { border: 2px solid #4CAF50; border-radius: 5px; margin-top: 10px; padding: 10px; }");
+        cellBox->setStyleSheet("QGroupBox { border: 2px solid #4CAF50; border-radius: 5px; margin-top: 10px; padding: 10px; background-color: #000000; color: white; }");
         
         QVBoxLayout* cellBoxLayout = new QVBoxLayout(cellBox);
         
@@ -1108,10 +1109,11 @@ private slots:
         QTextEdit* codeInput = new QTextEdit(cellBox);
         codeInput->setPlaceholderText("# Enter Python code here...\nimport numpy as np\nprint('Hello from Notebook!')");
         codeInput->setStyleSheet(
-            "background-color: #F5F5F5; "
+            "background-color: #1A1A1A; "
+            "color: white; "
             "font-family: 'Consolas', 'Courier New', monospace; "
             "font-size: 10pt; "
-            "border: 1px solid #CCCCCC;"
+            "border: 1px solid #4CAF50;"
         );
         codeInput->setMinimumHeight(80);
         cellBoxLayout->addWidget(codeInput);
@@ -1119,14 +1121,14 @@ private slots:
         // Run button
         QHBoxLayout* btnLayout = new QHBoxLayout();
         QPushButton* runBtn = new QPushButton("▶️ Run", cellBox);
-        runBtn->setStyleSheet("background-color: #4CAF50; color: white; padding: 5px; font-weight: bold;");
+        runBtn->setStyleSheet("background-color: #000000; color: white; padding: 5px; font-weight: bold; border: 1px solid #4CAF50;");
         connect(runBtn, &QPushButton::clicked, [this, codeInput, cellBox]() {
             runCell(codeInput, cellBox);
         });
         btnLayout->addWidget(runBtn);
         
         QPushButton* deleteBtn = new QPushButton("🗑️ Delete", cellBox);
-        deleteBtn->setStyleSheet("background-color: #F44336; color: white; padding: 5px;");
+        deleteBtn->setStyleSheet("background-color: #000000; color: white; padding: 5px; border: 1px solid #F44336;");
         connect(deleteBtn, &QPushButton::clicked, [this, cellBox]() {
             cellLayout->removeWidget(cellBox);
             cellBox->deleteLater();
@@ -1140,10 +1142,11 @@ private slots:
         QTextEdit* outputArea = new QTextEdit(cellBox);
         outputArea->setReadOnly(true);
         outputArea->setStyleSheet(
-            "background-color: #FFFFFF; "
+            "background-color: #000000; "
+            "color: white; "
             "font-family: 'Consolas', 'Courier New', monospace; "
             "font-size: 9pt; "
-            "border: 1px solid #CCCCCC;"
+            "border: 1px solid #444;"
         );
         outputArea->setVisible(false);
         outputArea->setMaximumHeight(200);
@@ -1156,18 +1159,18 @@ private slots:
         cellCount++;
         
         QGroupBox* cellBox = new QGroupBox(QString("Markdown Cell [%1]").arg(cellCount), this);
-        cellBox->setStyleSheet("QGroupBox { border: 2px solid #2196F3; border-radius: 5px; margin-top: 10px; padding: 10px; }");
+        cellBox->setStyleSheet("QGroupBox { border: 2px solid #2196F3; border-radius: 5px; margin-top: 10px; padding: 10px; background-color: #000000; color: white; }");
         
         QVBoxLayout* cellBoxLayout = new QVBoxLayout(cellBox);
         
         QTextEdit* markdownInput = new QTextEdit(cellBox);
         markdownInput->setPlaceholderText("# Enter Markdown here...\n\n## Section Title\n- Bullet point 1\n- Bullet point 2");
-        markdownInput->setStyleSheet("background-color: #F5F5F5; font-family: 'Consolas'; font-size: 10pt;");
+        markdownInput->setStyleSheet("background-color: #1A1A1A; color: white; font-family: 'Consolas'; font-size: 10pt; border: 1px solid #2196F3;");
         markdownInput->setMinimumHeight(80);
         cellBoxLayout->addWidget(markdownInput);
         
         QPushButton* deleteBtn = new QPushButton("🗑️ Delete", cellBox);
-        deleteBtn->setStyleSheet("background-color: #F44336; color: white; padding: 5px;");
+        deleteBtn->setStyleSheet("background-color: #000000; color: white; padding: 5px; border: 1px solid #F44336;");
         connect(deleteBtn, &QPushButton::clicked, [this, cellBox]() {
             cellLayout->removeWidget(cellBox);
             cellBox->deleteLater();
@@ -1192,9 +1195,9 @@ private slots:
         
         outputArea->setVisible(true);
         outputArea->clear();
-        outputArea->setTextColor(QColor("#0000FF"));
+        outputArea->setTextColor(QColor("#00AAFF"));
         outputArea->append("Executing...\n");
-        outputArea->setTextColor(QColor("#000000"));
+        outputArea->setTextColor(QColor("#FFFFFF"));
         
         // Execute Python code via subprocess
         QProcess process;
@@ -1215,12 +1218,12 @@ private slots:
         }
         
         if (!stdout_output.isEmpty()) {
-            outputArea->setTextColor(QColor("#000000"));
+            outputArea->setTextColor(QColor("#FFFFFF"));
             outputArea->append("Output:\n" + stdout_output);
         }
         
         if (stdout_output.isEmpty() && stderr_output.isEmpty()) {
-            outputArea->setTextColor(QColor("#666666"));
+            outputArea->setTextColor(QColor("#999999"));
             outputArea->append("(No output)");
         }
     }
@@ -1249,24 +1252,24 @@ private slots:
     
     void addWelcomeCell() {
         QGroupBox* welcomeBox = new QGroupBox("📘 Notebook Editor - Quick Start", this);
-        welcomeBox->setStyleSheet("QGroupBox { border: 2px solid #9C27B0; border-radius: 5px; margin-top: 10px; padding: 10px; }");
+        welcomeBox->setStyleSheet("QGroupBox { border: 2px solid #9C27B0; border-radius: 5px; margin-top: 10px; padding: 10px; background-color: #000000; color: white; }");
         
         QVBoxLayout* layout = new QVBoxLayout(welcomeBox);
         
         QTextEdit* text = new QTextEdit(welcomeBox);
         text->setReadOnly(true);
         text->setMaximumHeight(150);
-        text->setStyleSheet("background-color: #F3E5F5; border: none;");
+        text->setStyleSheet("background-color: #1A1A1A; border: none; color: white;");
         text->setHtml(
-            "<h3>Welcome to Notebook Editor</h3>"
-            "<p><b>Features:</b></p>"
-            "<ul>"
+            "<h3 style='color: white;'>Welcome to Notebook Editor</h3>"
+            "<p style='color: white;'><b>Features:</b></p>"
+            "<ul style='color: white;'>"
             "<li>➕ <b>Add Code Cells</b> - Execute Python code interactively</li>"
             "<li>📝 <b>Add Markdown Cells</b> - Document your analysis</li>"
             "<li>▶️ <b>Run All</b> - Execute all code cells in order</li>"
             "<li>🗑️ <b>Clear All</b> - Remove all cell outputs</li>"
             "</ul>"
-            "<p><b>Use Cases:</b> Data analysis, physics calculations, tutorials, documentation</p>"
+            "<p style='color: white;'><b>Use Cases:</b> Data analysis, physics calculations, tutorials, documentation</p>"
         );
         layout->addWidget(text);
         
@@ -1521,7 +1524,7 @@ public:
         
         QLabel* titleLabel = new QLabel("🤖 CoAnQi_bot - Ollama Code Assistant", this);
         titleLabel->setStyleSheet(
-            "background-color: #1A237E; "
+            "background-color: #000000; "
             "color: white; "
             "font-size: 12pt; "
             "font-weight: bold; "
@@ -1535,12 +1538,13 @@ public:
         modelComboBox->addItem("codellama:latest");
         modelComboBox->addItem("mistral:latest");
         modelComboBox->addItem("qwen2.5-coder:latest");
+        modelComboBox->addItem("deepseek-r1:8b");
         modelComboBox->setToolTip("Select Ollama model (must be pulled first: ollama pull <model>)");
-        modelComboBox->setStyleSheet("background-color: white; padding: 5px; font-size: 10pt;");
+        modelComboBox->setStyleSheet("background-color: #000000; color: white; padding: 5px; font-size: 10pt;");
         headerLayout->addWidget(modelComboBox);
         
         QPushButton* installBtn = new QPushButton("📥 Installation Guide", this);
-        installBtn->setStyleSheet("background-color: #4CAF50; color: white; padding: 5px; font-weight: bold;");
+        installBtn->setStyleSheet("background-color: #000000; color: white; padding: 5px; font-weight: bold; border: 1px solid #444;");
         connect(installBtn, &QPushButton::clicked, this, &OllamaCodeBotWidget::showInstallationGuide);
         headerLayout->addWidget(installBtn);
         
@@ -1550,12 +1554,12 @@ public:
         chatDisplay = new QTextEdit(this);
         chatDisplay->setReadOnly(true);
         chatDisplay->setStyleSheet(
-            "background-color: #FAFAFA; "
-            "color: #212121; "
+            "background-color: #000000; "
+            "color: #FFFFFF; "
             "font-family: 'Segoe UI', Arial, sans-serif; "
             "font-size: 10pt; "
             "padding: 10px; "
-            "border: 1px solid #CCCCCC;"
+            "border: 1px solid #444444;"
         );
         mainLayout->addWidget(chatDisplay);
         
@@ -1565,10 +1569,11 @@ public:
         promptInput = new QLineEdit(this);
         promptInput->setPlaceholderText("Ask CoAnQi_bot anything... (e.g., 'Explain F_U_Bi_i equation' or 'Generate Python code for galaxy rotation')");
         promptInput->setStyleSheet(
-            "background-color: white; "
+            "background-color: #000000; "
+            "color: white; "
             "font-size: 10pt; "
             "padding: 10px; "
-            "border: 2px solid #1976D2; "
+            "border: 2px solid #444444; "
             "border-radius: 5px;"
         );
         connect(promptInput, &QLineEdit::returnPressed, this, &OllamaCodeBotWidget::sendMessage);
@@ -1576,10 +1581,11 @@ public:
         
         QPushButton* sendBtn = new QPushButton("📤 Send", this);
         sendBtn->setStyleSheet(
-            "background-color: #1976D2; "
+            "background-color: #000000; "
             "color: white; "
             "font-weight: bold; "
             "padding: 10px 20px; "
+            "border: 1px solid #444444; "
             "border-radius: 5px;"
         );
         connect(sendBtn, &QPushButton::clicked, this, &OllamaCodeBotWidget::sendMessage);
@@ -1589,7 +1595,7 @@ public:
         
         // Status bar
         statusLabel = new QLabel("Status: Ready (ensure Ollama is running: ollama serve)", this);
-        statusLabel->setStyleSheet("color: #666; font-size: 9pt; padding: 5px;");
+        statusLabel->setStyleSheet("color: white; font-size: 9pt; padding: 5px;");
         mainLayout->addWidget(statusLabel);
         
         setLayout(mainLayout);
@@ -1607,69 +1613,183 @@ private slots:
         }
         
         // Display user message
-        chatDisplay->append("<div style='background-color: #E3F2FD; padding: 10px; margin: 5px; border-radius: 10px;'>");
-        chatDisplay->append("<b>You:</b> " + prompt);
+        chatDisplay->append("<div style='background-color: #1A1A1A; padding: 10px; margin: 5px; border-radius: 10px; border: 1px solid #333;'>");
+        chatDisplay->append("<b style='color: white;'>You:</b> <span style='color: white;'>" + prompt + "</span>");
         chatDisplay->append("</div>");
         
         promptInput->clear();
         statusLabel->setText("Status: Thinking...");
         
-        // Call Ollama API (localhost:11434)
+        // Get selected model
         QString model = modelComboBox->currentText();
         
-        // Build JSON payload
-        QString jsonPayload = QString(
-            "{"
-            "  \"model\": \"%1\","
-            "  \"prompt\": \"%2\","
-            "  \"stream\": false,"
-            "  \"system\": \"You are CoAnQi_bot, an expert physics and code assistant for the UQFF (Unified Quantum Field Framework) project. Help with code generation, physics equations, and scientific computing. Be concise and provide code examples when relevant.\""
-            "}"
-        ).arg(model).arg(prompt);
+        qDebug() << "Sending request to Ollama via Python wrapper...";
+        qDebug() << "Model:" << model;
         
-        // Use QProcess to call curl (cross-platform)
-        QProcess* curlProcess = new QProcess(this);
+        // ===================================================================
+        // PYTHON WRAPPER APPROACH - Reliable Ollama API access
+        // ===================================================================
+        // Use Python requests library via QProcess instead of curl
+        // More reliable cross-platform, better error handling
+        // ===================================================================
+        
+        QString pythonCmd = "python";
+        QString scriptPath = QCoreApplication::applicationDirPath() + "/OllamaAPI.py";
+        
+        // Check if script exists
+        if (!QFile::exists(scriptPath)) {
+            chatDisplay->append("<div style='background-color: #2A0000; padding: 10px; margin: 5px; border-radius: 10px; border: 1px solid #660000;'>");
+            chatDisplay->append("<b style='color: #FF6666;'>Error:</b> <span style='color: white;'>OllamaAPI.py not found</span>");
+            chatDisplay->append("<br><b style='color: white;'>Expected location:</b> <span style='color: white;'>" + scriptPath + "</span>");
+            chatDisplay->append("<br><br><b style='color: white;'>To fix:</b> <span style='color: white;'>Rebuild with: <code style='background: #000; color: white; padding: 2px;'>cmake --build build_msvc --config Release</code></span>");
+            chatDisplay->append("</div>");
+            statusLabel->setText("Status: Missing Python Script");
+            return;
+        }
+        
+        // Build Python command arguments
         QStringList args;
-        args << "-s" << "-X" << "POST" << "http://localhost:11434/api/generate"
-             << "-H" << "Content-Type: application/json"
-             << "-d" << jsonPayload;
+        args << scriptPath << prompt << model;
         
-        connect(curlProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
-                [this, curlProcess](int exitCode, QProcess::ExitStatus exitStatus) {
+        qDebug() << "Python command:" << pythonCmd << args.join(" ");
+        
+        // Create and configure QProcess
+        QProcess* process = new QProcess(this);
+        process->setProgram(pythonCmd);
+        process->setArguments(args);
+        process->setWorkingDirectory(QCoreApplication::applicationDirPath());
+        
+        // Connect to finished signal for response handling
+        connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
+                this, [this, process, prompt, model](int exitCode, QProcess::ExitStatus exitStatus) {
             
-            if (exitStatus == QProcess::NormalExit && exitCode == 0) {
-                QByteArray response = curlProcess->readAllStandardOutput();
-                QString responseStr = QString::fromUtf8(response);
+            qDebug() << "Python process finished - Exit code:" << exitCode << "Status:" << exitStatus;
+            
+            if (exitCode == 0 && exitStatus == QProcess::NormalExit) {
+                // Success - parse JSON response from stdout
+                QByteArray output = process->readAllStandardOutput();
+                qDebug() << "Python stdout:" << QString::fromUtf8(output);
                 
-                // Parse JSON response (simple extraction)
-                int responseStart = responseStr.indexOf("\"response\":\"") + 12;
-                int responseEnd = responseStr.indexOf("\",\"", responseStart);
-                QString botResponse = responseStr.mid(responseStart, responseEnd - responseStart);
-                
-                // Unescape JSON string
-                botResponse.replace("\\n", "\n");
-                botResponse.replace("\\\"", "\"");
-                botResponse.replace("\\\\", "\\");
-                
-                // Display bot response
-                chatDisplay->append("<div style='background-color: #F1F8E9; padding: 10px; margin: 5px; border-radius: 10px;'>");
-                chatDisplay->append("<b>CoAnQi_bot:</b><br>" + botResponse);
-                chatDisplay->append("</div>");
-                
-                statusLabel->setText("Status: Ready");
+                QJsonDocument doc = QJsonDocument::fromJson(output);
+                if (doc.isNull() || !doc.isObject()) {
+                    chatDisplay->append("<div style='background-color: #2A0000; padding: 10px; margin: 5px; border-radius: 10px; border: 1px solid #660000;'>");
+                    chatDisplay->append("<b style='color: #FF6666;'>Error:</b> <span style='color: white;'>Invalid JSON response from Python script</span>");
+                    chatDisplay->append("<br><b style='color: white;'>Raw output:</b> <pre style='color: white;'>" + QString::fromUtf8(output.left(500)) + "</pre>");
+                    chatDisplay->append("</div>");
+                    statusLabel->setText("Status: Parse Error");
+                } else {
+                    QJsonObject obj = doc.object();
+                    bool success = obj["success"].toBool();
+                    QString response = obj["response"].toString();
+                    QString error = obj["error"].toString();
+                    
+                    if (success) {
+                        // Convert markdown code blocks to HTML
+                        response.replace("```cpp", "<pre style='background:#1A1A1A;color:#E0E0E0;padding:10px;border-radius:5px;border:1px solid #333;'>");
+                        response.replace("```python", "<pre style='background:#1A1A1A;color:#E0E0E0;padding:10px;border-radius:5px;border:1px solid #333;'>");
+                        response.replace("```json", "<pre style='background:#1A1A1A;color:#E0E0E0;padding:10px;border-radius:5px;border:1px solid #333;'>");
+                        response.replace("```c++", "<pre style='background:#1A1A1A;color:#E0E0E0;padding:10px;border-radius:5px;border:1px solid #333;'>");
+                        response.replace("```", "</pre>");
+                        
+                        // Convert newlines to HTML breaks
+                        response.replace("\n", "<br>");
+                        
+                        // Display bot response
+                        chatDisplay->append("<div style='background-color: #1A1A1A; padding: 10px; margin: 5px; border-radius: 10px; border: 1px solid #333;'>");
+                        chatDisplay->append("<b style='color: white;'>CoAnQi_bot:</b><br><span style='color: white;'>" + response + "</span>");
+                        chatDisplay->append("</div>");
+                        
+                        statusLabel->setText("Status: Ready (Ollama: " + model + ")");
+                    } else {
+                        // API error
+                        chatDisplay->append("<div style='background-color: #2A0000; padding: 10px; margin: 5px; border-radius: 10px; border: 1px solid #660000;'>");
+                        chatDisplay->append("<b style='color: #FF6666;'>Error:</b> <span style='color: white;'>Ollama request failed</span>");
+                        chatDisplay->append("<br><b style='color: white;'>Details:</b> <span style='color: white;'>" + error + "</span>");
+                        
+                        // Provide context-specific troubleshooting
+                        if (error.contains("Cannot connect") || error.contains("ConnectionError")) {
+                            chatDisplay->append("<br><br><b style='color: white;'>Solution:</b>");
+                            chatDisplay->append("<br><span style='color: white;'>1. Open PowerShell/Terminal</span>");
+                            chatDisplay->append("<br><span style='color: white;'>2. Run: <code style='background: #000; color: white; padding: 2px;'>ollama serve</code></span>");
+                            chatDisplay->append("<br><span style='color: white;'>3. Keep terminal open while using CoAnQi_bot</span>");
+                            chatDisplay->append("<br><span style='color: white;'>4. Try your question again</span>");
+                        } else if (error.contains("not found") || error.contains("404")) {
+                            chatDisplay->append("<br><br><b style='color: white;'>Model not installed:</b>");
+                            chatDisplay->append("<br><span style='color: white;'>Run: <code style='background: #000; color: white; padding: 2px;'>ollama pull " + model + "</code></span>");
+                            chatDisplay->append("<br><span style='color: white;'>Or select a different model from the dropdown</span>");
+                        } else if (error.contains("timeout")) {
+                            chatDisplay->append("<br><br><b style='color: white;'>Timeout:</b> <span style='color: white;'>Model may be loading (first run) or prompt too complex</span>");
+                            chatDisplay->append("<br><span style='color: white;'>Wait a moment and try a simpler question first</span>");
+                        }
+                        
+                        chatDisplay->append("</div>");
+                        statusLabel->setText("Status: Ollama Error");
+                    }
+                }
             } else {
-                QString error = curlProcess->readAllStandardError();
-                chatDisplay->append("<div style='background-color: #FFEBEE; padding: 10px; margin: 5px; border-radius: 10px;'>");
-                chatDisplay->append("<b>Error:</b> Failed to connect to Ollama. Ensure 'ollama serve' is running on localhost:11434");
-                chatDisplay->append("</div>");
+                // Process error
+                QString stderr_output = QString::fromUtf8(process->readAllStandardError());
+                QString stdout_output = QString::fromUtf8(process->readAllStandardOutput());
                 
-                statusLabel->setText("Status: Error - Ollama not running");
+                qDebug() << "Python process error - Exit code:" << exitCode;
+                qDebug() << "Stderr:" << stderr_output;
+                qDebug() << "Stdout:" << stdout_output;
+                
+                chatDisplay->append("<div style='background-color: #2A0000; padding: 10px; margin: 5px; border-radius: 10px; border: 1px solid #660000;'>");
+                chatDisplay->append("<b style='color: #FF6666;'>Error:</b> <span style='color: white;'>Python process failed</span>");
+                chatDisplay->append("<br><b style='color: white;'>Exit code:</b> <span style='color: white;'>" + QString::number(exitCode) + "</span>");
+                
+                if (!stderr_output.isEmpty()) {
+                    chatDisplay->append("<br><b style='color: white;'>Error output:</b> <pre style='color: white;'>" + stderr_output.left(500) + "</pre>");
+                    
+                    // Detect common Python errors
+                    if (stderr_output.contains("ModuleNotFoundError: No module named 'requests'")) {
+                        chatDisplay->append("<br><br><b style='color: white;'>Missing dependency:</b> <span style='color: white;'>Python requests library not installed</span>");
+                        chatDisplay->append("<br><b style='color: white;'>To fix:</b> <span style='color: white;'>Run <code style='background: #000; color: white; padding: 2px;'>pip install requests</code></span>");
+                    } else if (stderr_output.contains("python") && stderr_output.contains("not recognized")) {
+                        chatDisplay->append("<br><br><b style='color: white;'>Python not found</b> <span style='color: white;'>- Ensure Python is installed and in PATH</span>");
+                    }
+                }
+                
+                if (!stdout_output.isEmpty()) {
+                    chatDisplay->append("<br><b style='color: white;'>Output:</b> <pre style='color: white;'>" + stdout_output.left(500) + "</pre>");
+                }
+                
+                chatDisplay->append("</div>");
+                statusLabel->setText("Status: Python Error");
             }
             
-            curlProcess->deleteLater();
+            process->deleteLater();
         });
         
-        curlProcess->start("curl", args);
+        // Connect to error signal for process launch failures
+        connect(process, &QProcess::errorOccurred, this, [this, process](QProcess::ProcessError error) {
+            qDebug() << "Python process launch error:" << error;
+            
+            chatDisplay->append("<div style='background-color: #FFEBEE; padding: 10px; margin: 5px; border-radius: 10px;'>");
+            chatDisplay->append("<b>Error:</b> Failed to launch Python");
+            
+            if (error == QProcess::FailedToStart) {
+                chatDisplay->append("<br><b>Details:</b> Python executable not found");
+                chatDisplay->append("<br><br><b>To fix:</b>");
+                chatDisplay->append("<br>1. Install Python 3.x from python.org");
+                chatDisplay->append("<br>2. Ensure Python is in system PATH");
+                chatDisplay->append("<br>3. Restart Source2.exe");
+            } else if (error == QProcess::Crashed) {
+                chatDisplay->append("<br><b>Details:</b> Python process crashed");
+            } else {
+                chatDisplay->append("<br><b>Error code:</b> " + QString::number(error));
+            }
+            
+            chatDisplay->append("</div>");
+            statusLabel->setText("Status: Launch Error");
+            
+            process->deleteLater();
+        });
+        
+        // Start the Python process
+        process->start();
+        qDebug() << "Python process started, waiting for response...";
     }
     
     void showInstallationGuide() {
@@ -1714,24 +1834,24 @@ private slots:
     }
     
     void displayWelcomeMessage() {
-        chatDisplay->append("<div style='background-color: #E8EAF6; padding: 15px; margin: 10px; border-radius: 10px; border: 2px solid #1A237E;'>");
-        chatDisplay->append("<h3 style='color: #1A237E; margin-top: 0;'>🤖 Welcome to CoAnQi_bot</h3>");
-        chatDisplay->append("<p><b>Cosmic Analytic Quantum Intelligence bot</b> powered by Ollama 3+</p>");
-        chatDisplay->append("<p><b>Features:</b></p>");
-        chatDisplay->append("<ul>");
+        chatDisplay->append("<div style='background-color: #1A1A1A; padding: 15px; margin: 10px; border-radius: 10px; border: 2px solid #333333;'>");
+        chatDisplay->append("<h3 style='color: #FFFFFF; margin-top: 0;'>🤖 Welcome to CoAnQi_bot</h3>");
+        chatDisplay->append("<p style='color: white;'><b>Cosmic Analytic Quantum Intelligence bot</b> powered by Ollama 3+</p>");
+        chatDisplay->append("<p style='color: white;'><b>Features:</b></p>");
+        chatDisplay->append("<ul style='color: white;'>");
         chatDisplay->append("<li>🧠 Local LLM inference (no cloud required)</li>");
         chatDisplay->append("<li>💻 Code generation and optimization</li>");
         chatDisplay->append("<li>🔬 Physics equation explanations</li>");
         chatDisplay->append("<li>🛠️ Debugging and code review</li>");
         chatDisplay->append("<li>📚 UQFF framework assistance</li>");
         chatDisplay->append("</ul>");
-        chatDisplay->append("<p><b>Quick Start:</b></p>");
-        chatDisplay->append("<ol>");
-        chatDisplay->append("<li>Ensure Ollama is installed and running (<code>ollama serve</code>)</li>");
+        chatDisplay->append("<p style='color: white;'><b>Quick Start:</b></p>");
+        chatDisplay->append("<ol style='color: white;'>");
+        chatDisplay->append("<li>Ensure Ollama is installed and running (<code style='background: #000; color: white; padding: 2px;'>ollama serve</code>)</li>");
         chatDisplay->append("<li>Select a model from the dropdown</li>");
         chatDisplay->append("<li>Ask questions or request code generation</li>");
         chatDisplay->append("</ol>");
-        chatDisplay->append("<p><i>Click '📥 Installation Guide' if you need help setting up Ollama</i></p>");
+        chatDisplay->append("<p style='color: white;'><i>Click '📥 Installation Guide' if you need help setting up Ollama</i></p>");
         chatDisplay->append("</div>");
     }
 
@@ -1779,9 +1899,9 @@ public:
         modelLayout->addWidget(modelLabel);
         
         modelComboBox = new QComboBox();
-        modelComboBox->addItem("grok-beta (Latest, General Purpose)");
-        modelComboBox->addItem("grok-2 (Advanced Reasoning)");
-        modelComboBox->addItem("grok-vision-beta (Multimodal with Vision)");
+        modelComboBox->addItem("grok-4-1-fast-reasoning (Latest, Fast Reasoning)");
+        modelComboBox->addItem("grok-4-1 (General Purpose, Most Capable)");
+        modelComboBox->addItem("grok-4-1-vision (Multimodal with Vision)");
         modelComboBox->setStyleSheet(
             "QComboBox {"
             "  background-color: #000000;"
@@ -1809,7 +1929,7 @@ public:
             "  border: 2px solid #2196F3;"
             "}"
         );
-        modelComboBox->setToolTip("Select Grok xAI model - Requires XAI_API_KEY\n\nNote: 'grok-beta' is the model name from xAI API, not beta software");
+        modelComboBox->setToolTip("Select Grok xAI model - Requires XAI_API_KEY\n\ngrok-4-1-fast-reasoning: Optimized for speed\ngrok-4-1: Most capable general model\ngrok-4-1-vision: Multimodal with image analysis");
         modelLayout->addWidget(modelComboBox, 1);
         
         layout->addLayout(modelLayout);
@@ -1988,102 +2108,99 @@ private slots:
         
         // Get selected model
         QString selectedModel = modelComboBox->currentText();
-        QString model = "grok-beta";
-        if (selectedModel.contains("grok-2")) {
-            model = "grok-2";
-        } else if (selectedModel.contains("vision")) {
-            model = "grok-vision-beta";
+        QString model = "grok-4-1-fast-reasoning";
+        if (selectedModel.contains("grok-4-1-vision")) {
+            model = "grok-4-1-vision";
+        } else if (selectedModel.contains("grok-4-1") && !selectedModel.contains("fast") && !selectedModel.contains("vision")) {
+            model = "grok-4-1";
         }
         
-        // Build JSON payload for Grok xAI API
-        QJsonObject systemMessage;
-        systemMessage["role"] = "system";
-        systemMessage["content"] = "You are SuperGrok4, an expert physics and research assistant for the UQFF (Unified Quantum Field Framework) project. You have deep knowledge of astrophysics, quantum mechanics, UQFF equations, and scientific computing. Provide detailed explanations with equations, code examples, and references to research papers when relevant. Be precise and comprehensive.";
-        
-        QJsonObject userMessage;
-        userMessage["role"] = "user";
-        userMessage["content"] = prompt;
-        
-        QJsonArray messages;
-        messages.append(systemMessage);
-        messages.append(userMessage);
-        
-        QJsonObject payload;
-        payload["model"] = model;
-        payload["messages"] = messages;
-        payload["temperature"] = 0.3;
-        
-        QJsonDocument doc(payload);
-        QByteArray jsonData = doc.toJson();
-        
         // Debug output
-        qDebug() << "Sending request to xAI API...";
+        qDebug() << "Sending request to xAI API via Python wrapper...";
         qDebug() << "Model:" << model;
-        qDebug() << "JSON payload size:" << jsonData.size() << "bytes";
+        qDebug() << "API Key prefix:" << apiKey.left(10) + "...";
         
-        // Create HTTP request using Qt Network
-        QNetworkRequest request(QUrl("https://api.x.ai/v1/chat/completions"));
-        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-        request.setRawHeader("Authorization", QString("Bearer %1").arg(apiKey).toUtf8());
+        // ===================================================================
+        // PYTHON WRAPPER APPROACH - Workaround for Qt6 without OpenSSL
+        // ===================================================================
+        // Qt6 from qt.io lacks OpenSSL support (uses Schannel backend only)
+        // Use Python requests library via QProcess as HTTP client
+        // ===================================================================
         
-        // Configure SSL for secure connection
-        QSslConfiguration sslConfig = QSslConfiguration::defaultConfiguration();
-        sslConfig.setProtocol(QSsl::TlsV1_2OrLater);  // Use TLS 1.2 or higher
-        sslConfig.setPeerVerifyMode(QSslSocket::VerifyNone);  // Skip cert verification for xAI
-        request.setSslConfiguration(sslConfig);
+        QString pythonCmd = "python";
+        QString scriptPath = QCoreApplication::applicationDirPath() + "/GrokAPI.py";
         
-        // Debug authorization header (safely)
-        qDebug() << "Authorization header set with key prefix:" << apiKey.left(10) + "...";
-        qDebug() << "SSL configured: TLS 1.2+, verification disabled for xAI";
+        // Check if script exists
+        if (!QFile::exists(scriptPath)) {
+            chatDisplay->append("<div style='background-color: #FFEBEE; padding: 10px; margin: 5px; border-radius: 10px;'>");
+            chatDisplay->append("<b>Error:</b> GrokAPI.py not found");
+            chatDisplay->append("<br><b>Expected location:</b> " + scriptPath);
+            chatDisplay->append("<br><br><b>To fix:</b> Rebuild with: <code>cmake --build build_msvc --config Release</code>");
+            chatDisplay->append("</div>");
+            statusLabel->setText("Status: Missing Python Script");
+            statusLabel->setStyleSheet("color: #F44336; font-weight: bold; background-color: #000000; padding: 5px; border-radius: 3px;");
+            return;
+        }
         
-        // Send POST request
-        QNetworkReply* reply = networkManager->post(request, jsonData);
+        // Build Python command arguments
+        QStringList args;
+        args << scriptPath << prompt << model << "0.3";  // temperature = 0.3
         
-        // Handle SSL errors proactively
-        connect(reply, QOverload<const QList<QSslError>&>::of(&QNetworkReply::sslErrors),
-                [reply](const QList<QSslError>& errors) {
-            qDebug() << "SSL errors detected (ignoring for xAI):"; 
-            for (const auto& error : errors) {
-                qDebug() << "  -" << error.errorString();
-            }
-            reply->ignoreSslErrors();
-        });
+        qDebug() << "Python command:" << pythonCmd << args.join(" ");
         
-        // Handle response
-        connect(reply, &QNetworkReply::finished, this, [this, reply, prompt, model]() {
-            if (reply->error() == QNetworkReply::NoError) {
-                // Success - parse response
-                QByteArray responseData = reply->readAll();
-                QJsonDocument responseDoc = QJsonDocument::fromJson(responseData);
-                QJsonObject responseObj = responseDoc.object();
+        // Create and configure QProcess
+        QProcess* process = new QProcess(this);
+        process->setProgram(pythonCmd);
+        process->setArguments(args);
+        
+        // Set working directory to application directory
+        process->setWorkingDirectory(QCoreApplication::applicationDirPath());
+        
+        // Connect to finished signal for response handling
+        connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
+                this, [this, process, prompt, model](int exitCode, QProcess::ExitStatus exitStatus) {
+            
+            qDebug() << "Python process finished - Exit code:" << exitCode << "Status:" << exitStatus;
+            
+            if (exitCode == 0 && exitStatus == QProcess::NormalExit) {
+                // Success - parse JSON response from stdout
+                QByteArray output = process->readAllStandardOutput();
+                qDebug() << "Python stdout:" << QString::fromUtf8(output);
                 
-                // Extract content from response
-                if (responseObj.contains("choices") && responseObj["choices"].isArray()) {
-                    QJsonArray choices = responseObj["choices"].toArray();
-                    if (!choices.isEmpty()) {
-                        QJsonObject firstChoice = choices[0].toObject();
-                        QJsonObject message = firstChoice["message"].toObject();
-                        QString botResponse = message["content"].toString();
-                        
+                QJsonDocument doc = QJsonDocument::fromJson(output);
+                if (doc.isNull() || !doc.isObject()) {
+                    chatDisplay->append("<div style='background-color: #FFEBEE; padding: 10px; margin: 5px; border-radius: 10px;'>");
+                    chatDisplay->append("<b>Error:</b> Invalid JSON response from Python script");
+                    chatDisplay->append("<br><b>Raw output:</b> <pre>" + QString::fromUtf8(output.left(500)) + "</pre>");
+                    chatDisplay->append("</div>");
+                    statusLabel->setText("Status: Parse Error");
+                    statusLabel->setStyleSheet("color: #F44336; font-weight: bold; background-color: #000000; padding: 5px; border-radius: 3px;");
+                } else {
+                    QJsonObject obj = doc.object();
+                    bool success = obj["success"].toBool();
+                    QString response = obj["response"].toString();
+                    QString error = obj["error"].toString();
+                    
+                    if (success) {
                         // Convert markdown code blocks to HTML
-                        botResponse.replace("```cpp", "<pre style='background:#2E2E2E;color:#E0E0E0;padding:10px;border-radius:5px;'>");
-                        botResponse.replace("```python", "<pre style='background:#2E2E2E;color:#E0E0E0;padding:10px;border-radius:5px;'>");
-                        botResponse.replace("```json", "<pre style='background:#2E2E2E;color:#E0E0E0;padding:10px;border-radius:5px;'>");
-                        botResponse.replace("```", "</pre>");
+                        response.replace("```cpp", "<pre style='background:#2E2E2E;color:#E0E0E0;padding:10px;border-radius:5px;'>");
+                        response.replace("```python", "<pre style='background:#2E2E2E;color:#E0E0E0;padding:10px;border-radius:5px;'>");
+                        response.replace("```json", "<pre style='background:#2E2E2E;color:#E0E0E0;padding:10px;border-radius:5px;'>");
+                        response.replace("```", "</pre>");
                         
                         // Convert newlines to HTML breaks
-                        botResponse.replace("\n", "<br>");
+                        response.replace("\n", "<br>");
                         
                         // Display bot response
                         chatDisplay->append("<div style='background-color: #E8F5E9; padding: 10px; margin: 5px; border-radius: 10px;'>");
-                        chatDisplay->append("<b>SuperGrok4:</b><br>" + botResponse);
+                        chatDisplay->append("<b>SuperGrok4:</b><br>" + response);
                         chatDisplay->append("</div>");
                         
                         // Save conversation history
                         ConversationEntry entry;
                         entry.timestamp = QDateTime::currentDateTime();
                         entry.userPrompt = prompt;
-                        entry.botResponse = botResponse;
+                        entry.botResponse = response;
                         entry.model = model;
                         conversationHistory.append(entry);
                         
@@ -2093,97 +2210,97 @@ private slots:
                         statusLabel->setText("Status: Ready");
                         statusLabel->setStyleSheet("color: #4CAF50; font-weight: bold; background-color: #000000; padding: 5px; border-radius: 3px;");
                     } else {
-                        // No choices in response
-                        chatDisplay->append("<div style='background-color: #FFF3E0; padding: 10px; margin: 5px; border-radius: 10px;'>");
-                        chatDisplay->append("<b>Warning:</b> API returned empty response");
+                        // API error
+                        chatDisplay->append("<div style='background-color: #FFEBEE; padding: 10px; margin: 5px; border-radius: 10px;'>");
+                        chatDisplay->append("<b>Error:</b> API request failed");
+                        chatDisplay->append("<br><b>Details:</b> " + error);
+                        
+                        // Provide context-specific troubleshooting
+                        if (error.contains("XAI_API_KEY not set")) {
+                            chatDisplay->append("<br><br><b>Solution:</b> Click '🔑 Configure API Key' button to set your xAI API key");
+                        } else if (error.contains("401") || error.contains("Unauthorized") || error.contains("authentication")) {
+                            chatDisplay->append("<br><br><b>Possible causes:</b>");
+                            chatDisplay->append("<br>• Invalid API key - Verify XAI_API_KEY is correct");
+                            chatDisplay->append("<br>• API key not activated - Check your xAI account status");
+                        } else if (error.contains("429") || error.contains("rate limit")) {
+                            chatDisplay->append("<br><br><b>Rate limit exceeded</b> - Wait a few moments and try again");
+                        } else if (error.contains("timeout") || error.contains("connection")) {
+                            chatDisplay->append("<br><br><b>Network issue</b> - Check internet connection and proxy settings");
+                        } else if (error.contains("500") || error.contains("502") || error.contains("503")) {
+                            chatDisplay->append("<br><br><b>xAI API server error</b> - The service may be temporarily unavailable");
+                        }
+                        
                         chatDisplay->append("</div>");
-                        statusLabel->setText("Status: Empty Response");
-                        statusLabel->setStyleSheet("color: #FF9800; font-weight: bold; background-color: #000000; padding: 5px; border-radius: 3px;");
+                        statusLabel->setText("Status: API Error");
+                        statusLabel->setStyleSheet("color: #F44336; font-weight: bold; background-color: #000000; padding: 5px; border-radius: 3px;");
                     }
-                } else {
-                    // Unexpected response format
-                    chatDisplay->append("<div style='background-color: #FFF3E0; padding: 10px; margin: 5px; border-radius: 10px;'>");
-                    chatDisplay->append("<b>Warning:</b> Unexpected API response format");
-                    chatDisplay->append("<br><pre>" + QString::fromUtf8(responseData.left(500)) + "</pre>");
-                    chatDisplay->append("</div>");
-                    statusLabel->setText("Status: Parse Error");
-                    statusLabel->setStyleSheet("color: #FF9800; font-weight: bold; background-color: #000000; padding: 5px; border-radius: 3px;");
                 }
             } else {
-                // Error occurred
-                QString errorString = reply->errorString();
-                QByteArray errorData = reply->readAll();
-                int httpStatus = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
-                QNetworkReply::NetworkError errorCode = reply->error();
+                // Process error
+                QString stderr_output = QString::fromUtf8(process->readAllStandardError());
+                QString stdout_output = QString::fromUtf8(process->readAllStandardOutput());
                 
-                // Debug output
-                qDebug() << "API Error - HTTP Status:" << httpStatus;
-                qDebug() << "Network Error Code:" << errorCode;
-                qDebug() << "Error String:" << errorString;
-                qDebug() << "Response Data:" << QString::fromUtf8(errorData);
-                
-                // Check for SSL-specific errors
-                bool isSslError = (errorCode == QNetworkReply::SslHandshakeFailedError ||
-                                   errorString.contains("TLS", Qt::CaseInsensitive) ||
-                                   errorString.contains("SSL", Qt::CaseInsensitive));
+                qDebug() << "Python process error - Exit code:" << exitCode;
+                qDebug() << "Stderr:" << stderr_output;
+                qDebug() << "Stdout:" << stdout_output;
                 
                 chatDisplay->append("<div style='background-color: #FFEBEE; padding: 10px; margin: 5px; border-radius: 10px;'>");
+                chatDisplay->append("<b>Error:</b> Python process failed");
+                chatDisplay->append("<br><b>Exit code:</b> " + QString::number(exitCode));
                 
-                if (isSslError) {
-                    // SSL/TLS specific error
-                    chatDisplay->append("<b style='color: #F44336;'>⚠️ SSL/TLS Connection Error</b>");
-                    chatDisplay->append("<br><b>Error Code:</b> " + QString::number(errorCode));
-                    chatDisplay->append("<br><b>Details:</b> " + errorString);
-                    chatDisplay->append("<br><br><b style='color: #F44336;'>SSL/TLS initialization failed</b>");
-                    chatDisplay->append("<br><br><i>This typically means:</i>");
-                    chatDisplay->append("<br>• <b>OpenSSL DLLs are missing</b> - Check for libssl-3-x64.dll and libcrypto-3-x64.dll");
-                    chatDisplay->append("<br>• <b>DLLs in wrong location</b> - Must be in same folder as Source2.exe");
-                    chatDisplay->append("<br>• <b>Incompatible OpenSSL version</b> - Requires OpenSSL 3.x for Qt6");
-                    chatDisplay->append("<br><br><b>To Fix:</b>");
-                    chatDisplay->append("<br>1. Check build_msvc\\Release\\ directory for OpenSSL DLLs");
-                    chatDisplay->append("<br>2. If missing, rebuild: <code>cmake --build build_msvc --config Release</code>");
-                    chatDisplay->append("<br>3. CMake should auto-deploy OpenSSL DLLs from vcpkg");
-                    chatDisplay->append("<br>4. Restart Source2.exe after DLLs are in place");
-                    chatDisplay->append("<br><br><i>Build system message should show: 'Copying OpenSSL DLLs for Qt6 TLS/HTTPS support'</i>");
-                } else {
-                    // General network error
-                    chatDisplay->append("<b>Error:</b> Failed to connect to Grok xAI API");
-                    chatDisplay->append("<br><b>HTTP Status:</b> " + QString::number(httpStatus));
-                    chatDisplay->append("<br><b>Error Code:</b> " + QString::number(errorCode));
-                    chatDisplay->append("<br><b>Details:</b> " + errorString);
+                if (!stderr_output.isEmpty()) {
+                    chatDisplay->append("<br><b>Error output:</b> <pre>" + stderr_output.left(500) + "</pre>");
                     
-                    if (!errorData.isEmpty()) {
-                        // Try to parse JSON error response
-                        QJsonDocument errorDoc = QJsonDocument::fromJson(errorData);
-                        if (!errorDoc.isNull() && errorDoc.isObject()) {
-                            QJsonObject errorObj = errorDoc.object();
-                            if (errorObj.contains("error")) {
-                                QJsonObject errorDetail = errorObj["error"].toObject();
-                                QString errorMessage = errorDetail["message"].toString();
-                                QString errorType = errorDetail["type"].toString();
-                                chatDisplay->append("<br><b>API Error Type:</b> " + errorType);
-                                chatDisplay->append("<br><b>API Error Message:</b> " + errorMessage);
-                            }
-                        } else {
-                            chatDisplay->append("<br><b>Server Response:</b> <pre>" + QString::fromUtf8(errorData.left(500)) + "</pre>");
-                        }
+                    // Detect common Python errors
+                    if (stderr_output.contains("ModuleNotFoundError: No module named 'requests'")) {
+                        chatDisplay->append("<br><br><b>Missing dependency:</b> Python requests library not installed");
+                        chatDisplay->append("<br><b>To fix:</b> Run <code>pip install requests</code>");
+                    } else if (stderr_output.contains("python") && stderr_output.contains("not recognized")) {
+                        chatDisplay->append("<br><br><b>Python not found</b> - Ensure Python is installed and in PATH");
                     }
-                    
-                    chatDisplay->append("<br><br><i>Common issues:</i>");
-                    chatDisplay->append("<br>• Invalid API key - Verify XAI_API_KEY is correct");
-                    chatDisplay->append("<br>• API key not activated - Check your xAI account status");
-                    chatDisplay->append("<br>• Rate limit exceeded - Wait a few moments and try again");
-                    chatDisplay->append("<br>• Network connection - Ensure internet access and proxy settings");
+                }
+                
+                if (!stdout_output.isEmpty()) {
+                    chatDisplay->append("<br><b>Output:</b> <pre>" + stdout_output.left(500) + "</pre>");
                 }
                 
                 chatDisplay->append("</div>");
-                
-                statusLabel->setText("Status: Connection Error");
+                statusLabel->setText("Status: Python Error");
                 statusLabel->setStyleSheet("color: #F44336; font-weight: bold; background-color: #000000; padding: 5px; border-radius: 3px;");
             }
             
-            reply->deleteLater();
+            process->deleteLater();
         });
+        
+        // Connect to error signal for process launch failures
+        connect(process, &QProcess::errorOccurred, this, [this, process](QProcess::ProcessError error) {
+            qDebug() << "Python process launch error:" << error;
+            
+            chatDisplay->append("<div style='background-color: #FFEBEE; padding: 10px; margin: 5px; border-radius: 10px;'>");
+            chatDisplay->append("<b>Error:</b> Failed to launch Python");
+            
+            if (error == QProcess::FailedToStart) {
+                chatDisplay->append("<br><b>Details:</b> Python executable not found");
+                chatDisplay->append("<br><br><b>To fix:</b>");
+                chatDisplay->append("<br>1. Install Python 3.x from python.org");
+                chatDisplay->append("<br>2. Ensure Python is in system PATH");
+                chatDisplay->append("<br>3. Restart Source2.exe");
+            } else if (error == QProcess::Crashed) {
+                chatDisplay->append("<br><b>Details:</b> Python process crashed");
+            } else {
+                chatDisplay->append("<br><b>Error code:</b> " + QString::number(error));
+            }
+            
+            chatDisplay->append("</div>");
+            statusLabel->setText("Status: Launch Error");
+            statusLabel->setStyleSheet("color: #F44336; font-weight: bold; background-color: #000000; padding: 5px; border-radius: 3px;");
+            
+            process->deleteLater();
+        });
+        
+        // Start the Python process
+        process->start();
+        qDebug() << "Python process started, waiting for response...";
     }
     
     void showApiKeyConfig() {
@@ -2227,9 +2344,9 @@ private slots:
             
             "<p style='color: #FFFFFF;'><b>Models Available (Official xAI Names):</b></p>"
             "<ul style='color: #FFFFFF;'>"
-            "<li><b>grok-beta</b> - Latest general purpose model (production-ready, 'beta' is xAI's model name)</li>"
-            "<li><b>grok-2</b> - Advanced reasoning capabilities</li>"
-            "<li><b>grok-vision-beta</b> - Multimodal with vision support (production-ready)</li>"
+            "<li><b>grok-4-1-fast-reasoning</b> - Optimized for speed and efficiency</li>"
+            "<li><b>grok-4-1</b> - Most capable general purpose model</li>"
+            "<li><b>grok-4-1-vision</b> - Multimodal with vision and image analysis</li>"
             "</ul>"
             "<p style='background:#1A1A1A; color:#FFFFFF; padding:8px; border-radius:5px;'>"
             "<b>Note:</b> The 'beta' in model names is xAI's official designation, NOT beta software. "
@@ -2267,7 +2384,7 @@ private slots:
             "<li><b>Advanced Code Generation</b> - C++20, Python, CUDA for physics simulations</li>"
             "<li><b>Mathematical Derivations</b> - Step-by-step equation derivations with LaTeX</li>"
             "<li><b>Astronomical Data</b> - Query SIMBAD, NED, Gaia, discuss observational systems</li>"
-            "<li><b>Vision Capabilities</b> - Analyze plots, diagrams, spectra (grok-vision-beta)</li>"
+            "<li><b>Vision Capabilities</b> - Analyze plots, diagrams, spectra (grok-4-1-vision)</li>"
             "</ul>"
             
             "<h4 style='color: #2196F3;'>🚀 Quick Start Examples:</h4>"
@@ -2293,7 +2410,7 @@ private slots:
             "<td style='border: 1px solid #2196F3; padding: 5px; background: #000000; color: #FFFFFF;'>~300B params</td>"
             "<td style='border: 1px solid #2196F3; padding: 5px; background: #000000; color: #FFFFFF;'>3-7B params</td></tr>"
             "<tr><td style='border: 1px solid #2196F3; padding: 5px; background: #000000; color: #FFFFFF;'><b>Reasoning</b></td>"
-            "<td style='border: 1px solid #2196F3; padding: 5px; background: #000000; color: #FFFFFF;'>Advanced (Grok-2)</td>"
+            "<td style='border: 1px solid #2196F3; padding: 5px; background: #000000; color: #FFFFFF;'>Advanced (Grok-4-1)</td>"
             "<td style='border: 1px solid #2196F3; padding: 5px; background: #000000; color: #FFFFFF;'>Basic-Moderate</td></tr>"
             "<tr><td style='border: 1px solid #2196F3; padding: 5px; background: #000000; color: #FFFFFF;'><b>Vision</b></td>"
             "<td style='border: 1px solid #2196F3; padding: 5px; background: #000000; color: #FFFFFF;'>✅ Yes (grok-vision)</td>"
@@ -2312,15 +2429,13 @@ private slots:
             "<hr style='border-color: #333333;'>"
             "<h4 style='color: #2196F3;'>🤔 About Model Names:</h4>"
             "<p style='background:#1A1A1A; color:#FFFFFF; padding:10px; border-left: 4px solid #FBC02D; border-radius: 5px;'>"
-            "<b style='color: #FBC02D;'>Important:</b> 'grok-beta' and 'grok-vision-beta' are <b>official model names</b> from xAI API, "
-            "NOT beta software! These are production-ready models. The 'beta' refers to xAI's model designation, "
-            "not the quality or stability. Your API key works with all three models:"
+            "<b style='color: #FBC02D;'>Available Models:</b> Current xAI Grok models (as of February 2026):"
             "<ul style='margin: 5px 0; color: #FFFFFF;'>"
-            "<li><b>grok-beta</b> - Latest production model (general purpose)</li>"
-            "<li><b>grok-2</b> - Advanced reasoning (no 'beta' in name)</li>"
-            "<li><b>grok-vision-beta</b> - Multimodal with vision (production-ready)</li>"
+            "<li><b>grok-4-1-fast-reasoning</b> - Optimized for speed, fast responses</li>"
+            "<li><b>grok-4-1</b> - Most capable general purpose model</li>"
+            "<li><b>grok-4-1-vision</b> - Multimodal with vision and image analysis</li>"
             "</ul>"
-            "All models are fully functional and supported by your xAI API subscription."
+            "<b>Note:</b> Deprecated models (grok-beta, grok-2, grok-vision-beta) are no longer supported by xAI API."
             "</p>"
             
             "<hr style='border-color: #333333;'>"
