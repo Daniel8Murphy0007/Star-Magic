@@ -583,6 +583,28 @@ if(Qt6_FOUND)
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
                 "${CMAKE_SOURCE_DIR}/APIFetch.py"
                 "$<TARGET_FILE_DIR:Source2>/APIFetch.py"
+            # Copy QCalc.py (Tab 2 - 8 UQFF Master Equations)
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/QCalc.py"
+                "$<TARGET_FILE_DIR:Source2>/QCalc.py"
+            # Copy CondensedPhysics.py (Tab 5 - General Model Solver)
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/CondensedPhysics.py"
+                "$<TARGET_FILE_DIR:Source2>/CondensedPhysics.py"
+            # Copy ValidationData.py (Tab 7 - Validation wrapper for 6000+ URLs)
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/ValidationData.py"
+                "$<TARGET_FILE_DIR:Source2>/ValidationData.py"
+            # Copy CondensedPhysics dependency files (data modules)
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/CondensedPhysics_InputData.py"
+                "$<TARGET_FILE_DIR:Source2>/CondensedPhysics_InputData.py"
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/CondensedPhysics_OutputData.py"
+                "$<TARGET_FILE_DIR:Source2>/CondensedPhysics_OutputData.py"
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/CondensedPhysics_Validation.py"
+                "$<TARGET_FILE_DIR:Source2>/CondensedPhysics_Validation.py"
             # Copy OpenSSL DLLs (required for MAIN_1_CoAnQi.exe Grok integration)
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
                 "C:/Program Files/OpenSSL-Win64/bin/libssl-3-x64.dll"
@@ -601,7 +623,7 @@ if(Qt6_FOUND)
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
                 "C:/Program Files/Wolfram Research/Wolfram Engine/14.3/SystemFiles/Links/WSTP/DeveloperKit/Windows-x86-64/SystemAdditions/wstp64i4.dll"
                 "$<TARGET_FILE_DIR:Source2>/"
-            COMMAND ${CMAKE_COMMAND} -E echo "✅ Python wrappers + OpenSSL + VC++ Runtime + WSTP DLLs deployed"
+            COMMAND ${CMAKE_COMMAND} -E echo "✅ Python wrappers (UQFF, QCalc, CondensedPhysics, ValidationData) + OpenSSL + VC++ Runtime + WSTP DLLs deployed"
             COMMENT "Deploying Python wrappers, OpenSSL, VC++ Runtime, and Wolfram WSTP for cross-platform integration"
         )
     endif()
