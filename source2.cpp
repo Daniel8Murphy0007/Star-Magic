@@ -1778,8 +1778,34 @@ public:
         modelComboBox->addItem("grok-beta (Latest, General Purpose)");
         modelComboBox->addItem("grok-2 (Advanced Reasoning)");
         modelComboBox->addItem("grok-vision-beta (Multimodal with Vision)");
-        modelComboBox->setStyleSheet("background-color: #000000; color: #FFFFFF; border: 2px solid #2196F3; padding: 8px; border-radius: 5px;");
-        modelComboBox->setToolTip("Select Grok xAI model - Requires XAI_API_KEY");
+        modelComboBox->setStyleSheet(
+            "QComboBox {"
+            "  background-color: #000000;"
+            "  color: #FFFFFF;"
+            "  border: 2px solid #2196F3;"
+            "  padding: 8px;"
+            "  border-radius: 5px;"
+            "}"
+            "QComboBox::drop-down {"
+            "  border: none;"
+            "  background-color: #2196F3;"
+            "}"
+            "QComboBox::down-arrow {"
+            "  image: none;"
+            "  border-left: 5px solid transparent;"
+            "  border-right: 5px solid transparent;"
+            "  border-top: 5px solid #FFFFFF;"
+            "  margin-right: 5px;"
+            "}"
+            "QComboBox QAbstractItemView {"
+            "  background-color: #000000;"
+            "  color: #FFFFFF;"
+            "  selection-background-color: #2196F3;"
+            "  selection-color: #FFFFFF;"
+            "  border: 2px solid #2196F3;"
+            "}"
+        );
+        modelComboBox->setToolTip("Select Grok xAI model - Requires XAI_API_KEY\n\nNote: 'grok-beta' is the model name from xAI API, not beta software");
         modelLayout->addWidget(modelComboBox, 1);
         
         layout->addLayout(modelLayout);
@@ -1803,7 +1829,20 @@ public:
         
         promptInput = new QLineEdit();
         promptInput->setPlaceholderText("Ask SuperGrok4 about physics, code, or research...");
-        promptInput->setStyleSheet("background-color: #000000; color: #FFFFFF; padding: 10px; border: 2px solid #2196F3; border-radius: 5px;");
+        promptInput->setStyleSheet(
+            "QLineEdit {"
+            "  background-color: #000000;"
+            "  color: #FFFFFF;"
+            "  padding: 10px;"
+            "  border: 2px solid #2196F3;"
+            "  border-radius: 5px;"
+            "  selection-background-color: #2196F3;"
+            "  selection-color: #FFFFFF;"
+            "}"
+            "QLineEdit::placeholder {"
+            "  color: #808080;"
+            "}"
+        );
         connect(promptInput, &QLineEdit::returnPressed, this, &SuperGrok4Widget::sendMessage);
         inputLayout->addWidget(promptInput, 1);
         
@@ -2042,12 +2081,16 @@ private slots:
             "<p>This widget uses the same XAI_API_KEY as APIFetch.py Grok fallback</p>"
             "<p><b>Cost:</b> Check xAI pricing at <a href='https://x.ai/api'>https://x.ai/api</a></p>"
             
-            "<p><b>Models Available:</b></p>"
+            "<p><b>Models Available (Official xAI Names):</b></p>"
             "<ul>"
-            "<li><b>grok-beta</b> - Latest general purpose model</li>"
+            "<li><b>grok-beta</b> - Latest general purpose model (production-ready, 'beta' is xAI's model name)</li>"
             "<li><b>grok-2</b> - Advanced reasoning capabilities</li>"
-            "<li><b>grok-vision-beta</b> - Multimodal with vision support</li>"
+            "<li><b>grok-vision-beta</b> - Multimodal with vision support (production-ready)</li>"
             "</ul>"
+            "<p style='background:#FFF9C4; padding:8px; border-radius:5px;'>"
+            "<b>Note:</b> The 'beta' in model names is xAI's official designation, NOT beta software. "
+            "Your API key works with all models listed above."
+            "</p>"
         ).arg(statusText));
         
         msgBox.setStandardButtons(QMessageBox::Ok);
@@ -2108,6 +2151,20 @@ private slots:
             "<td style='border: 1px solid #01579B; padding: 5px;'>Research, complex derivations</td>"
             "<td style='border: 1px solid #01579B; padding: 5px;'>Quick code help</td></tr>"
             "</table>"
+            
+            "<hr>"
+            "<h4 style='color: #0277BD;'>🤔 About Model Names:</h4>"
+            "<p style='background:#FFF9C4; padding:10px; border-left: 4px solid #FBC02D;'>"
+            "<b>Important:</b> 'grok-beta' and 'grok-vision-beta' are <b>official model names</b> from xAI API, "
+            "NOT beta software! These are production-ready models. The 'beta' refers to xAI's model designation, "
+            "not the quality or stability. Your API key works with all three models:"
+            "<ul style='margin: 5px 0;'>"
+            "<li><b>grok-beta</b> - Latest production model (general purpose)</li>"
+            "<li><b>grok-2</b> - Advanced reasoning (no 'beta' in name)</li>"
+            "<li><b>grok-vision-beta</b> - Multimodal with vision (production-ready)</li>"
+            "</ul>"
+            "All models are fully functional and supported by your xAI API subscription."
+            "</p>"
             
             "<hr>"
             "<p style='color: #F44336; font-weight: bold;'>⚠️ Requires XAI_API_KEY environment variable</p>"
