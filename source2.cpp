@@ -1753,10 +1753,11 @@ public:
         // Header with status
         QHBoxLayout* headerLayout = new QHBoxLayout();
         QLabel* titleLabel = new QLabel("<h2>🧠 SuperGrok4 - xAI Expert Assistant</h2>");
+        titleLabel->setStyleSheet("color: #FFFFFF;");  // White text
         headerLayout->addWidget(titleLabel, 1);
         
         statusLabel = new QLabel("Status: Ready");
-        statusLabel->setStyleSheet("color: #4CAF50; font-weight: bold;");
+        statusLabel->setStyleSheet("color: #4CAF50; font-weight: bold; background-color: #000000; padding: 5px; border-radius: 3px;");
         headerLayout->addWidget(statusLabel);
         
         // API Key configuration button
@@ -1770,13 +1771,14 @@ public:
         // Model selector (Grok models)
         QHBoxLayout* modelLayout = new QHBoxLayout();
         QLabel* modelLabel = new QLabel("Model:");
-        modelLabel->setStyleSheet("font-weight: bold;");
+        modelLabel->setStyleSheet("font-weight: bold; color: #FFFFFF; background-color: #000000; padding: 5px;");
         modelLayout->addWidget(modelLabel);
         
         modelComboBox = new QComboBox();
         modelComboBox->addItem("grok-beta (Latest, General Purpose)");
         modelComboBox->addItem("grok-2 (Advanced Reasoning)");
         modelComboBox->addItem("grok-vision-beta (Multimodal with Vision)");
+        modelComboBox->setStyleSheet("background-color: #000000; color: #FFFFFF; border: 2px solid #2196F3; padding: 8px; border-radius: 5px;");
         modelComboBox->setToolTip("Select Grok xAI model - Requires XAI_API_KEY");
         modelLayout->addWidget(modelComboBox, 1);
         
@@ -1796,12 +1798,12 @@ public:
         // Prompt input
         QHBoxLayout* inputLayout = new QHBoxLayout();
         QLabel* promptLabel = new QLabel("Prompt:");
-        promptLabel->setStyleSheet("font-weight: bold;");
+        promptLabel->setStyleSheet("font-weight: bold; color: #FFFFFF; background-color: #000000; padding: 5px;");
         inputLayout->addWidget(promptLabel);
         
         promptInput = new QLineEdit();
         promptInput->setPlaceholderText("Ask SuperGrok4 about physics, code, or research...");
-        promptInput->setStyleSheet("padding: 10px; border: 2px solid #2196F3; border-radius: 5px;");
+        promptInput->setStyleSheet("background-color: #000000; color: #FFFFFF; padding: 10px; border: 2px solid #2196F3; border-radius: 5px;");
         connect(promptInput, &QLineEdit::returnPressed, this, &SuperGrok4Widget::sendMessage);
         inputLayout->addWidget(promptInput, 1);
         
@@ -1827,14 +1829,19 @@ private slots:
             return;
         }
         
-        // Check for API key
-        QString apiKey = QString::fromLocal8Bit(qgetenv("XAI_API_KEY"));
+        // Check for API key (trim any whitespace)
+        QString apiKey = QString::fromLocal8Bit(qgetenv("XAI_API_KEY")).trimmed();
+        
+        // Debug output for API key status
+        qDebug() << "API Key length:" << apiKey.length();
+        qDebug() << "API Key starts with:" << (apiKey.isEmpty() ? "EMPTY" : apiKey.left(10) + "...");
+        
         if (apiKey.isEmpty()) {
             chatDisplay->append("<div style='background-color: #FFEBEE; padding: 10px; margin: 5px; border-radius: 10px;'>");
             chatDisplay->append("<b>Error:</b> XAI_API_KEY not set. Click '🔑 Configure API Key' button to set it.");
             chatDisplay->append("</div>");
             statusLabel->setText("Status: API Key Required");
-            statusLabel->setStyleSheet("color: #F44336; font-weight: bold;");
+            statusLabel->setStyleSheet("color: #F44336; font-weight: bold; background-color: #000000; padding: 5px; border-radius: 3px;");
             return;
         }
         
@@ -1845,7 +1852,7 @@ private slots:
         
         promptInput->clear();
         statusLabel->setText("Status: Thinking...");
-        statusLabel->setStyleSheet("color: #FF9800; font-weight: bold;");
+        statusLabel->setStyleSheet("color: #FF9800; font-weight: bold; background-color: #000000; padding: 5px; border-radius: 3px;");
         
         // Get selected model
         QString selectedModel = modelComboBox->currentText();
@@ -1877,13 +1884,28 @@ private slots:
         QJsonDocument doc(payload);
         QByteArray jsonData = doc.toJson();
         
+        // Debug output
+        qDebug() << "Sending request to xAI API...";
+        qDebug() << "Model:" << model;
+        qDebug() << "JSON payload size:" << jsonData.size() << "bytes";
+        
         // Create HTTP request using Qt Network
         QNetworkRequest request(QUrl("https://api.x.ai/v1/chat/completions"));
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
         request.setRawHeader("Authorization", QString("Bearer %1").arg(apiKey).toUtf8());
         
+        // Debug authorization header (safely)
+        qDebug() << "Authorization header set with key prefix:" << apiKey.left(10) + "...";
+        
         // Send POST request
         QNetworkReply* reply = networkManager->post(request, jsonData);
+        
+        // Handle SSL errors (ignore for xAI API)
+        connect(reply, QOverload<const QList<QSslError>&>::of(&QNetworkReply::sslErrors),
+                [reply](const QList<QSslError>& errors) {
+            qDebug() << "SSL errors (ignoring for xAI):" << errors;
+            reply->ignoreSslErrors();
+        });
         
         // Handle response
         connect(reply, &QNetworkReply::finished, this, [this, reply]() {
@@ -1916,14 +1938,14 @@ private slots:
                         chatDisplay->append("</div>");
                         
                         statusLabel->setText("Status: Ready");
-                        statusLabel->setStyleSheet("color: #4CAF50; font-weight: bold;");
+                        statusLabel->setStyleSheet("color: #4CAF50; font-weight: bold; background-color: #000000; padding: 5px; border-radius: 3px;");
                     } else {
                         // No choices in response
                         chatDisplay->append("<div style='background-color: #FFF3E0; padding: 10px; margin: 5px; border-radius: 10px;'>");
                         chatDisplay->append("<b>Warning:</b> API returned empty response");
                         chatDisplay->append("</div>");
                         statusLabel->setText("Status: Empty Response");
-                        statusLabel->setStyleSheet("color: #FF9800; font-weight: bold;");
+                        statusLabel->setStyleSheet("color: #FF9800; font-weight: bold; background-color: #000000; padding: 5px; border-radius: 3px;");
                     }
                 } else {
                     // Unexpected response format
@@ -1932,25 +1954,49 @@ private slots:
                     chatDisplay->append("<br><pre>" + QString::fromUtf8(responseData.left(500)) + "</pre>");
                     chatDisplay->append("</div>");
                     statusLabel->setText("Status: Parse Error");
-                    statusLabel->setStyleSheet("color: #FF9800; font-weight: bold;");
+                    statusLabel->setStyleSheet("color: #FF9800; font-weight: bold; background-color: #000000; padding: 5px; border-radius: 3px;");
                 }
             } else {
                 // Error occurred
                 QString errorString = reply->errorString();
                 QByteArray errorData = reply->readAll();
+                int httpStatus = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
+                
+                // Debug output
+                qDebug() << "API Error - HTTP Status:" << httpStatus;
+                qDebug() << "Error String:" << errorString;
+                qDebug() << "Response Data:" << QString::fromUtf8(errorData);
                 
                 chatDisplay->append("<div style='background-color: #FFEBEE; padding: 10px; margin: 5px; border-radius: 10px;'>");
                 chatDisplay->append("<b>Error:</b> Failed to connect to Grok xAI API");
+                chatDisplay->append("<br><b>HTTP Status:</b> " + QString::number(httpStatus));
                 chatDisplay->append("<br><b>Error Code:</b> " + QString::number(reply->error()));
                 chatDisplay->append("<br><b>Details:</b> " + errorString);
                 if (!errorData.isEmpty()) {
-                    chatDisplay->append("<br><b>Server Response:</b> " + QString::fromUtf8(errorData.left(200)));
+                    // Try to parse JSON error response
+                    QJsonDocument errorDoc = QJsonDocument::fromJson(errorData);
+                    if (!errorDoc.isNull() && errorDoc.isObject()) {
+                        QJsonObject errorObj = errorDoc.object();
+                        if (errorObj.contains("error")) {
+                            QJsonObject errorDetail = errorObj["error"].toObject();
+                            QString errorMessage = errorDetail["message"].toString();
+                            QString errorType = errorDetail["type"].toString();
+                            chatDisplay->append("<br><b>API Error Type:</b> " + errorType);
+                            chatDisplay->append("<br><b>API Error Message:</b> " + errorMessage);
+                        }
+                    } else {
+                        chatDisplay->append("<br><b>Server Response:</b> <pre>" + QString::fromUtf8(errorData.left(500)) + "</pre>");
+                    }
                 }
-                chatDisplay->append("<br><br><i>Ensure XAI_API_KEY is valid and you have internet connection</i>");
+                chatDisplay->append("<br><br><i>Common issues:</i>");
+                chatDisplay->append("<br>• Invalid API key - Verify XAI_API_KEY is correct");
+                chatDisplay->append("<br>• API key not activated - Check your xAI account status");
+                chatDisplay->append("<br>• Rate limit exceeded - Wait a few moments and try again");
+                chatDisplay->append("<br>• Network connection - Ensure internet access and proxy settings");
                 chatDisplay->append("</div>");
                 
                 statusLabel->setText("Status: Connection Error");
-                statusLabel->setStyleSheet("color: #F44336; font-weight: bold;");
+                statusLabel->setStyleSheet("color: #F44336; font-weight: bold; background-color: #000000; padding: 5px; border-radius: 3px;");
             }
             
             reply->deleteLater();
