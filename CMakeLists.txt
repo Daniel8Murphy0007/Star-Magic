@@ -573,6 +573,10 @@ if(Qt6_FOUND)
     if(WIN32)
         add_custom_command(TARGET Source2 POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E echo "Deploying Python wrappers and dependencies for Source2..."
+            # Copy MAIN_1_CoAnQi.exe (Tab 1 - Embedded Calculator Terminal)
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "$<TARGET_FILE:MAIN_1_CoAnQi>"
+                "$<TARGET_FILE_DIR:Source2>/MAIN_1_CoAnQi.exe"
             # Copy Python wrappers (UQFF, Symbolic Math, API Fetch)
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
                 "${CMAKE_SOURCE_DIR}/CoAnQi_Wrapper.py"
@@ -623,8 +627,8 @@ if(Qt6_FOUND)
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
                 "C:/Program Files/Wolfram Research/Wolfram Engine/14.3/SystemFiles/Links/WSTP/DeveloperKit/Windows-x86-64/SystemAdditions/wstp64i4.dll"
                 "$<TARGET_FILE_DIR:Source2>/"
-            COMMAND ${CMAKE_COMMAND} -E echo "✅ Python wrappers (UQFF, QCalc, CondensedPhysics, ValidationData) + OpenSSL + VC++ Runtime + WSTP DLLs deployed"
-            COMMENT "Deploying Python wrappers, OpenSSL, VC++ Runtime, and Wolfram WSTP for cross-platform integration"
+            COMMAND ${CMAKE_COMMAND} -E echo "✅ MAIN_1_CoAnQi.exe + Python wrappers (UQFF, QCalc, CondensedPhysics, ValidationData) + OpenSSL + VC++ Runtime + WSTP DLLs deployed"
+            COMMENT "Deploying MAIN_1_CoAnQi.exe, Python wrappers, OpenSSL, VC++ Runtime, and Wolfram WSTP for cross-platform integration"
         )
     endif()
     
