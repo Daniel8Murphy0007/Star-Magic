@@ -44,6 +44,8 @@
 #include <QNetworkAccessManager> // Network manager - handles HTTP requests
 #include <QNetworkRequest>       // Network request - represents HTTP request
 #include <QNetworkReply>         // Network reply - contains HTTP response data
+#include <QSslConfiguration>     // SSL configuration - configure SSL/TLS settings
+#include <QSslSocket>            // SSL socket - provides SSL/TLS support checking
 
 // VTK (Visualization Toolkit) - For scientific data visualization (3D plots, charts, graphs)
 #ifndef NO_VTK
@@ -1882,6 +1884,63 @@ public:
         // Initialize network manager for API requests
         networkManager = new QNetworkAccessManager(this);
         
+        // Check SSL support
+        if (!QSslSocket::supportsSsl()) {
+            // Detailed SSL diagnostics
+            QString exePath = QCoreApplication::applicationDirPath();
+            bool libsslExists = QFile::exists(exePath + "/libssl-3-x64.dll");
+            bool libcryptoExists = QFile::exists(exePath + "/libcrypto-3-x64.dll");
+            
+            chatDisplay->append("<div style='background-color: #FFEBEE; padding: 10px; margin: 5px; border-radius: 10px;'>");
+            chatDisplay->append("<b style='color: #F44336;'>⚠️ SSL/TLS Not Available</b><br>");
+            chatDisplay->append("<span style='color: #000000;'>OpenSSL libraries are missing or not loaded. SuperGrok4 requires SSL for API communication.</span><br><br>");
+            
+            chatDisplay->append("<span style='color: #000000;'><b>Diagnostic Information:</b></span><br>");
+            chatDisplay->append("<span style='color: #000000;'>• Application Path: " + exePath + "</span><br>");
+            chatDisplay->append("<span style='color: " + QString(libsslExists ? "#4CAF50" : "#F44336") + ";'>• libssl-3-x64.dll: " + QString(libsslExists ? "✅ Found" : "❌ Missing") + "</span><br>");
+            chatDisplay->append("<span style='color: " + QString(libcryptoExists ? "#4CAF50" : "#F44336") + ";'>• libcrypto-3-x64.dll: " + QString(libcryptoExists ? "✅ Found" : "❌ Missing") + "</span><br>");
+            chatDisplay->append("<span style='color: #000000;'>• Qt Build SSL: " + QSslSocket::sslLibraryBuildVersionString() + "</span><br>");
+            chatDisplay->append("<span style='color: #000000;'>• Qt Runtime SSL: " + QSslSocket::sslLibraryVersionString() + "</span><br><br>");
+            
+            if (libsslExists && libcryptoExists) {
+                chatDisplay->append("<span style='color: #FF9800;'><b>⚠️ DLLs Found but Qt Cannot Load Them</b></span><br>");
+                chatDisplay->append("<span style='color: #000000;'>This usually means:</span><br>");
+                chatDisplay->append("<span style='color: #000000;'>• Incompatible OpenSSL version (need OpenSSL 3.x for Qt6)</span><br>");
+                chatDisplay->append("<span style='color: #000000;'>• Qt6 built without OpenSSL support (unlikely with vcpkg)</span><br>");
+                chatDisplay->append("<span style='color: #000000;'>• System PATH issues blocking DLL loading</span><br><br>");
+                chatDisplay->append("<span style='color: #000000;'><b>Solution:</b> Reinstall OpenSSL:</span><br>");
+                chatDisplay->append("<span style='color: #000000;'><code>winget install ShiningLight.OpenSSL.Light</code></span><br>");
+                chatDisplay->append("<span style='color: #000000;'>Then rebuild: <code>cmake --build build_msvc --config Release</code></span><br>");
+            } else {
+                chatDisplay->append("<span style='color: #000000;'><b>Required Files (Must be in same directory as Source2.exe):</b></span><br>");
+                chatDisplay->append("<span style='color: #000000;'>• libssl-3-x64.dll " + QString(libsslExists ? "✅" : "❌") + "</span><br>");
+                chatDisplay->append("<span style='color: #000000;'>• libcrypto-3-x64.dll " + QString(libcryptoExists ? "✅" : "❌") + "</span><br><br>");
+                chatDisplay->append("<span style='color: #000000;'><b>To Fix (Automatic via Build System):</b></span><br>");
+                chatDisplay->append("<span style='color: #000000;'>1. Install OpenSSL: <code>winget install ShiningLight.OpenSSL.Light</code></span><br>");
+                chatDisplay->append("<span style='color: #000000;'>2. Rebuild: <code>cmake --build build_msvc --config Release --target Source2</code></span><br>");
+                chatDisplay->append("<span style='color: #000000;'>3. CMake will auto-copy DLLs from C:\\Program Files\\OpenSSL-Win64\\bin\\</span><br>");
+                chatDisplay->append("<span style='color: #000000;'>4. Look for: 'Copying OpenSSL DLLs for Qt6 TLS/HTTPS support'</span><br><br>");
+                chatDisplay->append("<span style='color: #000000;'><b>Manual Workaround:</b></span><br>");
+                chatDisplay->append("<span style='color: #000000;'>Copy DLLs directly from:</span><br>");
+                chatDisplay->append("<span style='color: #000000;'>C:\\Program Files\\OpenSSL-Win64\\bin\\ → " + exePath + "\\</span><br>");
+            }
+            
+            chatDisplay->append("</div>");
+            
+            qDebug() << "===== SSL DIAGNOSTIC REPORT =====";
+            qDebug() << "SSL Support:" << QSslSocket::supportsSsl();
+            qDebug() << "Application Path:" << exePath;
+            qDebug() << "libssl-3-x64.dll exists:" << libsslExists;
+            qDebug() << "libcrypto-3-x64.dll exists:" << libcryptoExists;
+            qDebug() << "SSL Build Version:" << QSslSocket::sslLibraryBuildVersionString();
+            qDebug() << "SSL Runtime Version:" << QSslSocket::sslLibraryVersionString();
+            qDebug() << "=================================";
+        } else {
+            qDebug() << "SSL Support: Enabled";
+            qDebug() << "SSL Build Version:" << QSslSocket::sslLibraryBuildVersionString();
+            qDebug() << "SSL Runtime Version:" << QSslSocket::sslLibraryVersionString();
+        }
+        
         // Initialize restore point counter
         restorePointCounter = 0;
         
@@ -1967,16 +2026,26 @@ private slots:
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
         request.setRawHeader("Authorization", QString("Bearer %1").arg(apiKey).toUtf8());
         
+        // Configure SSL for secure connection
+        QSslConfiguration sslConfig = QSslConfiguration::defaultConfiguration();
+        sslConfig.setProtocol(QSsl::TlsV1_2OrLater);  // Use TLS 1.2 or higher
+        sslConfig.setPeerVerifyMode(QSslSocket::VerifyNone);  // Skip cert verification for xAI
+        request.setSslConfiguration(sslConfig);
+        
         // Debug authorization header (safely)
         qDebug() << "Authorization header set with key prefix:" << apiKey.left(10) + "...";
+        qDebug() << "SSL configured: TLS 1.2+, verification disabled for xAI";
         
         // Send POST request
         QNetworkReply* reply = networkManager->post(request, jsonData);
         
-        // Handle SSL errors (ignore for xAI API)
+        // Handle SSL errors proactively
         connect(reply, QOverload<const QList<QSslError>&>::of(&QNetworkReply::sslErrors),
                 [reply](const QList<QSslError>& errors) {
-            qDebug() << "SSL errors (ignoring for xAI):" << errors;
+            qDebug() << "SSL errors detected (ignoring for xAI):"; 
+            for (const auto& error : errors) {
+                qDebug() << "  -" << error.errorString();
+            }
             reply->ignoreSslErrors();
         });
         
@@ -2045,38 +2114,68 @@ private slots:
                 QString errorString = reply->errorString();
                 QByteArray errorData = reply->readAll();
                 int httpStatus = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
+                QNetworkReply::NetworkError errorCode = reply->error();
                 
                 // Debug output
                 qDebug() << "API Error - HTTP Status:" << httpStatus;
+                qDebug() << "Network Error Code:" << errorCode;
                 qDebug() << "Error String:" << errorString;
                 qDebug() << "Response Data:" << QString::fromUtf8(errorData);
                 
+                // Check for SSL-specific errors
+                bool isSslError = (errorCode == QNetworkReply::SslHandshakeFailedError ||
+                                   errorString.contains("TLS", Qt::CaseInsensitive) ||
+                                   errorString.contains("SSL", Qt::CaseInsensitive));
+                
                 chatDisplay->append("<div style='background-color: #FFEBEE; padding: 10px; margin: 5px; border-radius: 10px;'>");
-                chatDisplay->append("<b>Error:</b> Failed to connect to Grok xAI API");
-                chatDisplay->append("<br><b>HTTP Status:</b> " + QString::number(httpStatus));
-                chatDisplay->append("<br><b>Error Code:</b> " + QString::number(reply->error()));
-                chatDisplay->append("<br><b>Details:</b> " + errorString);
-                if (!errorData.isEmpty()) {
-                    // Try to parse JSON error response
-                    QJsonDocument errorDoc = QJsonDocument::fromJson(errorData);
-                    if (!errorDoc.isNull() && errorDoc.isObject()) {
-                        QJsonObject errorObj = errorDoc.object();
-                        if (errorObj.contains("error")) {
-                            QJsonObject errorDetail = errorObj["error"].toObject();
-                            QString errorMessage = errorDetail["message"].toString();
-                            QString errorType = errorDetail["type"].toString();
-                            chatDisplay->append("<br><b>API Error Type:</b> " + errorType);
-                            chatDisplay->append("<br><b>API Error Message:</b> " + errorMessage);
+                
+                if (isSslError) {
+                    // SSL/TLS specific error
+                    chatDisplay->append("<b style='color: #F44336;'>⚠️ SSL/TLS Connection Error</b>");
+                    chatDisplay->append("<br><b>Error Code:</b> " + QString::number(errorCode));
+                    chatDisplay->append("<br><b>Details:</b> " + errorString);
+                    chatDisplay->append("<br><br><b style='color: #F44336;'>SSL/TLS initialization failed</b>");
+                    chatDisplay->append("<br><br><i>This typically means:</i>");
+                    chatDisplay->append("<br>• <b>OpenSSL DLLs are missing</b> - Check for libssl-3-x64.dll and libcrypto-3-x64.dll");
+                    chatDisplay->append("<br>• <b>DLLs in wrong location</b> - Must be in same folder as Source2.exe");
+                    chatDisplay->append("<br>• <b>Incompatible OpenSSL version</b> - Requires OpenSSL 3.x for Qt6");
+                    chatDisplay->append("<br><br><b>To Fix:</b>");
+                    chatDisplay->append("<br>1. Check build_msvc\\Release\\ directory for OpenSSL DLLs");
+                    chatDisplay->append("<br>2. If missing, rebuild: <code>cmake --build build_msvc --config Release</code>");
+                    chatDisplay->append("<br>3. CMake should auto-deploy OpenSSL DLLs from vcpkg");
+                    chatDisplay->append("<br>4. Restart Source2.exe after DLLs are in place");
+                    chatDisplay->append("<br><br><i>Build system message should show: 'Copying OpenSSL DLLs for Qt6 TLS/HTTPS support'</i>");
+                } else {
+                    // General network error
+                    chatDisplay->append("<b>Error:</b> Failed to connect to Grok xAI API");
+                    chatDisplay->append("<br><b>HTTP Status:</b> " + QString::number(httpStatus));
+                    chatDisplay->append("<br><b>Error Code:</b> " + QString::number(errorCode));
+                    chatDisplay->append("<br><b>Details:</b> " + errorString);
+                    
+                    if (!errorData.isEmpty()) {
+                        // Try to parse JSON error response
+                        QJsonDocument errorDoc = QJsonDocument::fromJson(errorData);
+                        if (!errorDoc.isNull() && errorDoc.isObject()) {
+                            QJsonObject errorObj = errorDoc.object();
+                            if (errorObj.contains("error")) {
+                                QJsonObject errorDetail = errorObj["error"].toObject();
+                                QString errorMessage = errorDetail["message"].toString();
+                                QString errorType = errorDetail["type"].toString();
+                                chatDisplay->append("<br><b>API Error Type:</b> " + errorType);
+                                chatDisplay->append("<br><b>API Error Message:</b> " + errorMessage);
+                            }
+                        } else {
+                            chatDisplay->append("<br><b>Server Response:</b> <pre>" + QString::fromUtf8(errorData.left(500)) + "</pre>");
                         }
-                    } else {
-                        chatDisplay->append("<br><b>Server Response:</b> <pre>" + QString::fromUtf8(errorData.left(500)) + "</pre>");
                     }
+                    
+                    chatDisplay->append("<br><br><i>Common issues:</i>");
+                    chatDisplay->append("<br>• Invalid API key - Verify XAI_API_KEY is correct");
+                    chatDisplay->append("<br>• API key not activated - Check your xAI account status");
+                    chatDisplay->append("<br>• Rate limit exceeded - Wait a few moments and try again");
+                    chatDisplay->append("<br>• Network connection - Ensure internet access and proxy settings");
                 }
-                chatDisplay->append("<br><br><i>Common issues:</i>");
-                chatDisplay->append("<br>• Invalid API key - Verify XAI_API_KEY is correct");
-                chatDisplay->append("<br>• API key not activated - Check your xAI account status");
-                chatDisplay->append("<br>• Rate limit exceeded - Wait a few moments and try again");
-                chatDisplay->append("<br>• Network connection - Ensure internet access and proxy settings");
+                
                 chatDisplay->append("</div>");
                 
                 statusLabel->setText("Status: Connection Error");
