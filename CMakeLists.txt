@@ -421,19 +421,21 @@ endif()
 # Requirements: UPX 5.0.2+ installed at C:/Tools/upx/upx.exe
 # Trade-offs: Slower startup (decompression overhead ~50-200ms), incompatible with some antivirus
 # VS2022 Property Pages: Build Events → Post-Build Event → Command Line
-find_program(UPX_EXECUTABLE upx PATHS "C:/Tools/upx" "C:/Tools/UPX" "C:/Program Files/upx" ENV PATH DOC "UPX 5.0.2 executable packer")
-if(UPX_EXECUTABLE)
-    add_custom_command(TARGET MAIN_1_CoAnQi POST_BUILD
-        COMMAND "${UPX_EXECUTABLE}" --best --lzma "$<TARGET_FILE:MAIN_1_CoAnQi>"
-        COMMENT "STEP 8: Compressing MAIN_1_CoAnQi.exe with UPX 5.0.2 (--best --lzma)"
-        VERBATIM
-    )
-    message(STATUS "UPX compression ENABLED for MAIN_1_CoAnQi (found at ${UPX_EXECUTABLE})")
-else()
-    message(WARNING "UPX not found - executable will not be compressed.")
-    message(WARNING "Download UPX 5.0.2: https://github.com/upx/upx/releases/download/v5.0.2/upx-5.0.2-win64.zip")
-    message(WARNING "Extract to C:/Tools/upx/ and add to PATH")
-endif()
+# NOTE: UPX compression DISABLED to avoid "already packed" errors during rebuilds
+#find_program(UPX_EXECUTABLE upx PATHS "C:/Tools/upx" "C:/Tools/UPX" "C:/Program Files/upx" ENV PATH DOC "UPX 5.0.2 executable packer")
+#if(UPX_EXECUTABLE)
+#    add_custom_command(TARGET MAIN_1_CoAnQi POST_BUILD
+#        COMMAND "${UPX_EXECUTABLE}" --best --lzma "$<TARGET_FILE:MAIN_1_CoAnQi>"
+#        COMMENT "STEP 8: Compressing MAIN_1_CoAnQi.exe with UPX 5.0.2 (--best --lzma)"
+#        VERBATIM
+#    )
+#    message(STATUS "UPX compression ENABLED for MAIN_1_CoAnQi (found at ${UPX_EXECUTABLE})")
+#else()
+#    message(WARNING "UPX not found - executable will not be compressed.")
+#    message(WARNING "Download UPX 5.0.2: https://github.com/upx/upx/releases/download/v5.0.2/upx-5.0.2-win64.zip")
+#    message(WARNING "Extract to C:/Tools/upx/ and add to PATH")
+#endif()
+message(STATUS "UPX compression DISABLED for MAIN_1_CoAnQi during development")
 
 # OpenSSL DLL Auto-Copy for Qt6 TLS/HTTPS Support (Grok API Integration)
 # Automatically copies OpenSSL DLLs after building MAIN_1_CoAnQi
