@@ -30,6 +30,8 @@
 #include <QDropEvent>       // Drag-and-drop drop event - sent when user drops data on widget
 #include <QMimeData>        // MIME data container - holds data in different formats for clipboard/drag-drop
 #include <QFile>            // File I/O operations - interface for reading/writing files
+#include <QFileInfo>        // File information - provides system-independent file information
+#include <QDateTime>        // Date and time - represents date and time information
 #include <QDir>             // Directory operations - access to directory structures and contents
 #include <QProcess>         // Process control - run external programs (Python wrappers)
 #include <QJsonDocument>    // JSON document - parse and create JSON documents
@@ -1853,11 +1855,43 @@ public:
         
         layout->addLayout(inputLayout);
         
+        // History management buttons
+        QHBoxLayout* historyLayout = new QHBoxLayout();
+        historyLayout->addStretch();
+        
+        QPushButton* clearButton = new QPushButton("🗑️ Clear History");
+        clearButton->setStyleSheet("background-color: #F44336; color: white; padding: 5px 15px; border-radius: 3px;");
+        clearButton->setToolTip("Clear conversation history and restore points");
+        connect(clearButton, &QPushButton::clicked, this, &SuperGrok4Widget::clearHistory);
+        historyLayout->addWidget(clearButton);
+        
+        QPushButton* exportButton = new QPushButton("💾 Export Chat");
+        exportButton->setStyleSheet("background-color: #4CAF50; color: white; padding: 5px 15px; border-radius: 3px;");
+        exportButton->setToolTip("Export conversation to HTML file");
+        connect(exportButton, &QPushButton::clicked, this, &SuperGrok4Widget::exportConversation);
+        historyLayout->addWidget(exportButton);
+        
+        QPushButton* restoreButton = new QPushButton("📂 Load History");
+        restoreButton->setStyleSheet("background-color: #FF9800; color: white; padding: 5px 15px; border-radius: 3px;");
+        restoreButton->setToolTip("Load previous conversation history from restore point");
+        connect(restoreButton, &QPushButton::clicked, this, &SuperGrok4Widget::loadRestorePoint);
+        historyLayout->addWidget(restoreButton);
+        
+        layout->addLayout(historyLayout);
+        
         // Initialize network manager for API requests
         networkManager = new QNetworkAccessManager(this);
         
-        // Display welcome message
-        displayWelcomeMessage();
+        // Initialize restore point counter
+        restorePointCounter = 0;
+        
+        // Load previous session if exists
+        loadRestorePoint();
+        
+        // If no previous session, display welcome message
+        if (conversationHistory.isEmpty()) {
+            displayWelcomeMessage();
+        }
     }
 
 private slots:
@@ -1947,7 +1981,7 @@ private slots:
         });
         
         // Handle response
-        connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+        connect(reply, &QNetworkReply::finished, this, [this, reply, prompt, model]() {
             if (reply->error() == QNetworkReply::NoError) {
                 // Success - parse response
                 QByteArray responseData = reply->readAll();
@@ -1975,6 +2009,17 @@ private slots:
                         chatDisplay->append("<div style='background-color: #E8F5E9; padding: 10px; margin: 5px; border-radius: 10px;'>");
                         chatDisplay->append("<b>SuperGrok4:</b><br>" + botResponse);
                         chatDisplay->append("</div>");
+                        
+                        // Save conversation history
+                        ConversationEntry entry;
+                        entry.timestamp = QDateTime::currentDateTime();
+                        entry.userPrompt = prompt;
+                        entry.botResponse = botResponse;
+                        entry.model = model;
+                        conversationHistory.append(entry);
+                        
+                        // Create restore point after each response
+                        saveRestorePoint();
                         
                         statusLabel->setText("Status: Ready");
                         statusLabel->setStyleSheet("color: #4CAF50; font-weight: bold; background-color: #000000; padding: 5px; border-radius: 3px;");
@@ -2187,6 +2232,214 @@ private slots:
     }
 
 private:
+    // Conversation history structure
+    struct ConversationEntry {
+        QDateTime timestamp;
+        QString userPrompt;
+        QString botResponse;
+        QString model;
+    };
+    
+    QVector<ConversationEntry> conversationHistory;
+    int restorePointCounter;
+    
+    // Utility methods
+    void saveRestorePoint() {
+        if (conversationHistory.isEmpty()) {
+            qDebug() << "No conversation history to save";
+            return;
+        }
+        
+        restorePointCounter++;
+        QString timestamp = QDateTime::currentDateTime().toString("yyyyMMdd_HHmmss");
+        QString filename = QString("SuperGrok4_RestorePoint_%1.json").arg(timestamp);
+        
+        QJsonArray historyArray;
+        for (const auto& entry : conversationHistory) {
+            QJsonObject entryObj;
+            entryObj["timestamp"] = entry.timestamp.toString(Qt::ISODate);
+            entryObj["user"] = entry.userPrompt;
+            entryObj["bot"] = entry.botResponse;
+            entryObj["model"] = entry.model;
+            historyArray.append(entryObj);
+        }
+        
+        QJsonObject rootObj;
+        rootObj["version"] = "1.0";
+        rootObj["session_start"] = conversationHistory.first().timestamp.toString(Qt::ISODate);
+        rootObj["last_update"] = QDateTime::currentDateTime().toString(Qt::ISODate);
+        rootObj["total_exchanges"] = conversationHistory.size();
+        rootObj["history"] = historyArray;
+        
+        QJsonDocument doc(rootObj);
+        QFile file(filename);
+        if (file.open(QIODevice::WriteOnly)) {
+            file.write(doc.toJson(QJsonDocument::Indented));
+            file.close();
+            qDebug() << "Restore point saved:" << filename << "(" << conversationHistory.size() << "exchanges)";
+        } else {
+            qDebug() << "Failed to save restore point:" << filename;
+        }
+    }
+    
+    void loadRestorePoint() {
+        // Find most recent restore point
+        QDir dir("." );
+        QStringList filters;
+        filters << "SuperGrok4_RestorePoint_*.json";
+        QFileInfoList files = dir.entryInfoList(filters, QDir::Files, QDir::Time);
+        
+        if (files.isEmpty()) {
+            qDebug() << "No previous restore points found";
+            return;
+        }
+        
+        QString filename = files.first().fileName();
+        QFile file(filename);
+        
+        if (!file.open(QIODevice::ReadOnly)) {
+            qDebug() << "Failed to open restore point:" << filename;
+            return;
+        }
+        
+        QByteArray data = file.readAll();
+        file.close();
+        
+        QJsonDocument doc = QJsonDocument::fromJson(data);
+        if (doc.isNull() || !doc.isObject()) {
+            qDebug() << "Invalid restore point format:" << filename;
+            return;
+        }
+        
+        QJsonObject rootObj = doc.object();
+        QJsonArray historyArray = rootObj["history"].toArray();
+        
+        conversationHistory.clear();
+        chatDisplay->clear();
+        
+        for (const QJsonValue& val : historyArray) {
+            QJsonObject entryObj = val.toObject();
+            
+            ConversationEntry entry;
+            entry.timestamp = QDateTime::fromString(entryObj["timestamp"].toString(), Qt::ISODate);
+            entry.userPrompt = entryObj["user"].toString();
+            entry.botResponse = entryObj["bot"].toString();
+            entry.model = entryObj["model"].toString();
+            conversationHistory.append(entry);
+            
+            // Restore to display
+            chatDisplay->append("<div style='background-color: #E8EAF6; padding: 10px; margin: 5px; border-radius: 10px;'>");
+            chatDisplay->append("<b>You:</b> " + entry.userPrompt);
+            chatDisplay->append("</div>");
+            
+            chatDisplay->append("<div style='background-color: #E8F5E9; padding: 10px; margin: 5px; border-radius: 10px;'>");
+            chatDisplay->append("<b>SuperGrok4:</b><br>" + entry.botResponse);
+            chatDisplay->append("</div>");
+        }
+        
+        qDebug() << "Loaded restore point:" << filename << "(" << conversationHistory.size() << "exchanges)";
+        
+        // Show notification
+        if (!conversationHistory.isEmpty()) {
+            chatDisplay->append("<div style='background-color: #1A1A1A; padding: 8px; margin: 5px; border-radius: 5px; text-align: center; color: #4CAF50;'>");
+            chatDisplay->append(QString("<i>📂 Loaded previous session from %1 (%2 exchanges)</i>")
+                .arg(conversationHistory.first().timestamp.toString("yyyy-MM-dd HH:mm"))
+                .arg(conversationHistory.size()));
+            chatDisplay->append("</div>");
+        }
+    }
+    
+    void clearHistory() {
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle("Clear History");
+        msgBox.setText("Are you sure you want to clear the conversation history?\n\nThis will remove all messages from the display but preserve restore point files.");
+        msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+        msgBox.setDefaultButton(QMessageBox::No);
+        msgBox.setStyleSheet(
+            "QMessageBox { background-color: #000000; }"
+            "QLabel { color: #FFFFFF; }"
+            "QPushButton { background-color: #2196F3; color: white; padding: 6px 20px; border-radius: 3px; }"
+        );
+        
+        if (msgBox.exec() == QMessageBox::Yes) {
+            conversationHistory.clear();
+            chatDisplay->clear();
+            displayWelcomeMessage();
+            qDebug() << "Conversation history cleared";
+        }
+    }
+    
+    void exportConversation() {
+        if (conversationHistory.isEmpty()) {
+            QMessageBox::information(this, "Export", "No conversation to export.");
+            return;
+        }
+        
+        QString timestamp = QDateTime::currentDateTime().toString("yyyyMMdd_HHmmss");
+        QString filename = QString("SuperGrok4_Export_%1.html").arg(timestamp);
+        
+        QFile file(filename);
+        if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QMessageBox::critical(this, "Export Error", "Failed to create export file.");
+            return;
+        }
+        
+        QTextStream out(&file);
+        out << "<!DOCTYPE html>\n<html>\n<head>\n";
+        out << "<meta charset='UTF-8'>\n";
+        out << "<title>SuperGrok4 Conversation Export</title>\n";
+        out << "<style>\n";
+        out << "body { font-family: Arial, sans-serif; background: #1A1A1A; color: #FFFFFF; padding: 20px; }\n";
+        out << ".header { background: #2196F3; padding: 20px; border-radius: 10px; margin-bottom: 20px; }\n";
+        out << ".user { background: #E8EAF6; color: #000; padding: 15px; margin: 10px 0; border-radius: 10px; }\n";
+        out << ".bot { background: #E8F5E9; color: #000; padding: 15px; margin: 10px 0; border-radius: 10px; }\n";
+        out << ".timestamp { color: #666; font-size: 0.9em; }\n";
+        out << "pre { background: #2E2E2E; padding: 10px; border-radius: 5px; overflow-x: auto; }\n";
+        out << "</style>\n</head>\n<body>\n";
+        
+        out << "<div class='header'>\n";
+        out << "<h1>🧠 SuperGrok4 Conversation Export</h1>\n";
+        out << "<p>Total Exchanges: " << conversationHistory.size() << "</p>\n";
+        out << "<p>Session: " << conversationHistory.first().timestamp.toString("yyyy-MM-dd HH:mm") 
+            << " to " << conversationHistory.last().timestamp.toString("yyyy-MM-dd HH:mm") << "</p>\n";
+        out << "</div>\n";
+        
+        for (const auto& entry : conversationHistory) {
+            out << "<div class='user'>\n";
+            out << "<div class='timestamp'>" << entry.timestamp.toString("yyyy-MM-dd HH:mm:ss") << "</div>\n";
+            out << "<strong>You:</strong> " << entry.userPrompt << "\n";
+            out << "</div>\n";
+            
+            out << "<div class='bot'>\n";
+            out << "<strong>SuperGrok4 (" << entry.model << "):</strong><br>\n";
+            out << entry.botResponse << "\n";
+            out << "</div>\n";
+        }
+        
+        out << "<div style='text-align: center; margin-top: 40px; color: #666;'>\n";
+        out << "<p>Generated by Star-Magic UQFF Source2</p>\n";
+        out << "<p>Export Date: " << QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss") << "</p>\n";
+        out << "</div>\n";
+        out << "</body>\n</html>\n";
+        
+        file.close();
+        
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle("Export Successful");
+        msgBox.setText(QString("Conversation exported to:\n%1\n\nTotal exchanges: %2")
+            .arg(filename)
+            .arg(conversationHistory.size()));
+        msgBox.setStandardButtons(QMessageBox::Ok);
+        msgBox.setStyleSheet(
+            "QMessageBox { background-color: #000000; }"
+            "QLabel { color: #FFFFFF; }"
+            "QPushButton { background-color: #4CAF50; color: white; padding: 6px 20px; border-radius: 3px; }"
+        );
+        msgBox.exec();
+        
+        qDebug() << "Conversation exported:" << filename;
+    }
+    
     QComboBox* modelComboBox;
     QTextEdit* chatDisplay;
     QLineEdit* promptInput;
