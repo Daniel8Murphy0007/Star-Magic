@@ -1735,6 +1735,324 @@ private:
     QLabel* statusLabel;
 };
 
+
+// ============================================================================
+// SuperGrok4Widget - Grok xAI Expert Assistant (Tab 7)
+// ============================================================================
+
+class SuperGrok4Widget : public QWidget {
+    Q_OBJECT
+
+public:
+    SuperGrok4Widget(QWidget* parent = nullptr) : QWidget(parent) {
+        QVBoxLayout* layout = new QVBoxLayout(this);
+        
+        // Header with status
+        QHBoxLayout* headerLayout = new QHBoxLayout();
+        QLabel* titleLabel = new QLabel("<h2>🧠 SuperGrok4 - xAI Expert Assistant</h2>");
+        headerLayout->addWidget(titleLabel, 1);
+        
+        statusLabel = new QLabel("Status: Ready");
+        statusLabel->setStyleSheet("color: #4CAF50; font-weight: bold;");
+        headerLayout->addWidget(statusLabel);
+        
+        // API Key configuration button
+        QPushButton* configButton = new QPushButton("🔑 Configure API Key");
+        configButton->setStyleSheet("background-color: #FF9800; color: white; padding: 8px; border-radius: 5px;");
+        connect(configButton, &QPushButton::clicked, this, &SuperGrok4Widget::showApiKeyConfig);
+        headerLayout->addWidget(configButton);
+        
+        layout->addLayout(headerLayout);
+        
+        // Model selector (Grok models)
+        QHBoxLayout* modelLayout = new QHBoxLayout();
+        QLabel* modelLabel = new QLabel("Model:");
+        modelLabel->setStyleSheet("font-weight: bold;");
+        modelLayout->addWidget(modelLabel);
+        
+        modelComboBox = new QComboBox();
+        modelComboBox->addItem("grok-beta (Latest, General Purpose)");
+        modelComboBox->addItem("grok-2 (Advanced Reasoning)");
+        modelComboBox->addItem("grok-vision-beta (Multimodal with Vision)");
+        modelComboBox->setToolTip("Select Grok xAI model - Requires XAI_API_KEY");
+        modelLayout->addWidget(modelComboBox, 1);
+        
+        layout->addLayout(modelLayout);
+        
+        // Chat display
+        chatDisplay = new QTextEdit();
+        chatDisplay->setReadOnly(true);
+        chatDisplay->setStyleSheet("background-color: #FAFAFA; border: 2px solid #E0E0E0; padding: 10px;");
+        layout->addWidget(chatDisplay, 1);
+        
+        // Prompt input
+        QHBoxLayout* inputLayout = new QHBoxLayout();
+        QLabel* promptLabel = new QLabel("Prompt:");
+        promptLabel->setStyleSheet("font-weight: bold;");
+        inputLayout->addWidget(promptLabel);
+        
+        promptInput = new QLineEdit();
+        promptInput->setPlaceholderText("Ask SuperGrok4 about physics, code, or research...");
+        promptInput->setStyleSheet("padding: 10px; border: 2px solid #2196F3; border-radius: 5px;");
+        connect(promptInput, &QLineEdit::returnPressed, this, &SuperGrok4Widget::sendMessage);
+        inputLayout->addWidget(promptInput, 1);
+        
+        QPushButton* sendButton = new QPushButton("➤ Send");
+        sendButton->setStyleSheet("background-color: #2196F3; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;");
+        connect(sendButton, &QPushButton::clicked, this, &SuperGrok4Widget::sendMessage);
+        inputLayout->addWidget(sendButton);
+        
+        layout->addLayout(inputLayout);
+        
+        // Display welcome message
+        displayWelcomeMessage();
+    }
+
+private slots:
+    void sendMessage() {
+        QString prompt = promptInput->text().trimmed();
+        
+        if (prompt.isEmpty()) {
+            return;
+        }
+        
+        // Check for API key
+        QString apiKey = QString::fromLocal8Bit(qgetenv("XAI_API_KEY"));
+        if (apiKey.isEmpty()) {
+            chatDisplay->append("<div style='background-color: #FFEBEE; padding: 10px; margin: 5px; border-radius: 10px;'>");
+            chatDisplay->append("<b>Error:</b> XAI_API_KEY not set. Click '🔑 Configure API Key' button to set it.");
+            chatDisplay->append("</div>");
+            statusLabel->setText("Status: API Key Required");
+            statusLabel->setStyleSheet("color: #F44336; font-weight: bold;");
+            return;
+        }
+        
+        // Display user message
+        chatDisplay->append("<div style='background-color: #E8EAF6; padding: 10px; margin: 5px; border-radius: 10px;'>");
+        chatDisplay->append("<b>You:</b> " + prompt);
+        chatDisplay->append("</div>");
+        
+        promptInput->clear();
+        statusLabel->setText("Status: Thinking...");
+        statusLabel->setStyleSheet("color: #FF9800; font-weight: bold;");
+        
+        // Get selected model
+        QString selectedModel = modelComboBox->currentText();
+        QString model = "grok-beta";
+        if (selectedModel.contains("grok-2")) {
+            model = "grok-2";
+        } else if (selectedModel.contains("vision")) {
+            model = "grok-vision-beta";
+        }
+        
+        // Build JSON payload for Grok xAI API
+        QString jsonPayload = QString(
+            "{"
+            "  \"model\": \"%1\","
+            "  \"messages\": ["
+            "    {"
+            "      \"role\": \"system\","
+            "      \"content\": \"You are SuperGrok4, an expert physics and research assistant for the UQFF (Unified Quantum Field Framework) project. You have deep knowledge of astrophysics, quantum mechanics, UQFF equations, and scientific computing. Provide detailed explanations with equations, code examples, and references to research papers when relevant. Be precise and comprehensive.\""
+            "    },"
+            "    {"
+            "      \"role\": \"user\","
+            "      \"content\": \"%2\""
+            "    }"
+            "  ],"
+            "  \"temperature\": 0.3"
+            "}"
+        ).arg(model).arg(prompt.replace("\"", "\\\"").replace("\n", "\\n"));
+        
+        // Use QProcess to call curl with xAI API
+        QProcess* curlProcess = new QProcess(this);
+        QStringList args;
+        args << "-s" << "-X" << "POST" << "https://api.x.ai/v1/chat/completions"
+             << "-H" << QString("Authorization: Bearer %1").arg(apiKey)
+             << "-H" << "Content-Type: application/json"
+             << "-d" << jsonPayload;
+        
+        connect(curlProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
+                [this, curlProcess](int exitCode, QProcess::ExitStatus exitStatus) {
+            
+            if (exitStatus == QProcess::NormalExit && exitCode == 0) {
+                QByteArray response = curlProcess->readAllStandardOutput();
+                QString responseStr = QString::fromUtf8(response);
+                
+                // Parse JSON response (extract content from choices[0].message.content)
+                int contentStart = responseStr.indexOf("\"content\":\"") + 11;
+                if (contentStart > 10) {
+                    int contentEnd = responseStr.indexOf("\",\"role\"", contentStart);
+                    if (contentEnd < 0) {
+                        contentEnd = responseStr.indexOf("\"}", contentStart);
+                    }
+                    QString botResponse = responseStr.mid(contentStart, contentEnd - contentStart);
+                    
+                    // Unescape JSON string
+                    botResponse.replace("\\n", "\n");
+                    botResponse.replace("\\\"", "\"");
+                    botResponse.replace("\\\\", "\\");
+                    botResponse.replace("\\t", "    ");
+                    
+                    // Convert markdown code blocks to HTML
+                    botResponse.replace("```cpp", "<pre style='background:#2E2E2E;color:#E0E0E0;padding:10px;border-radius:5px;'>");
+                    botResponse.replace("```python", "<pre style='background:#2E2E2E;color:#E0E0E0;padding:10px;border-radius:5px;'>");
+                    botResponse.replace("```", "</pre>");
+                    
+                    // Display bot response
+                    chatDisplay->append("<div style='background-color: #E8F5E9; padding: 10px; margin: 5px; border-radius: 10px;'>");
+                    chatDisplay->append("<b>SuperGrok4:</b><br>" + botResponse);
+                    chatDisplay->append("</div>");
+                    
+                    statusLabel->setText("Status: Ready");
+                    statusLabel->setStyleSheet("color: #4CAF50; font-weight: bold;");
+                } else {
+                    // Error parsing response
+                    chatDisplay->append("<div style='background-color: #FFF3E0; padding: 10px; margin: 5px; border-radius: 10px;'>");
+                    chatDisplay->append("<b>Warning:</b> Unexpected API response format");
+                    chatDisplay->append("<br><pre>" + responseStr.left(500) + "</pre>");
+                    chatDisplay->append("</div>");
+                    statusLabel->setText("Status: Parse Error");
+                    statusLabel->setStyleSheet("color: #FF9800; font-weight: bold;");
+                }
+            } else {
+                QString error = curlProcess->readAllStandardError();
+                chatDisplay->append("<div style='background-color: #FFEBEE; padding: 10px; margin: 5px; border-radius: 10px;'>");
+                chatDisplay->append("<b>Error:</b> Failed to connect to Grok xAI API");
+                chatDisplay->append("<br><b>Details:</b> " + error);
+                chatDisplay->append("<br><br><i>Ensure XAI_API_KEY is valid and you have internet connection</i>");
+                chatDisplay->append("</div>");
+                
+                statusLabel->setText("Status: Connection Error");
+                statusLabel->setStyleSheet("color: #F44336; font-weight: bold;");
+            }
+            
+            curlProcess->deleteLater();
+        });
+        
+        curlProcess->start("curl", args);
+    }
+    
+    void showApiKeyConfig() {
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle("SuperGrok4 API Key Configuration");
+        msgBox.setTextFormat(Qt::RichText);
+        
+        QString statusText = QString::fromLocal8Bit(qgetenv("XAI_API_KEY")).isEmpty() ? 
+            "<span style='color:red'>❌ NOT SET</span>" : 
+            "<span style='color:green'>✅ SET</span>";
+        
+        msgBox.setText(QString(
+            "<h3>🔑 Grok xAI API Key Setup</h3>"
+            
+            "<h4>Step 1: Get Your API Key</h4>"
+            "<p>Sign up for xAI access at: <a href='https://x.ai'>https://x.ai</a></p>"
+            "<p>Navigate to API settings and generate your API key</p>"
+            
+            "<h4>Step 2: Set Environment Variable</h4>"
+            "<p><b>Windows (PowerShell):</b></p>"
+            "<p><code>$env:XAI_API_KEY = \"your-api-key-here\"</code></p>"
+            "<p><i>For permanent:</i> System Properties → Environment Variables → New</p>"
+            
+            "<p><b>macOS/Linux (Terminal):</b></p>"
+            "<p><code>export XAI_API_KEY=\"your-api-key-here\"</code></p>"
+            "<p><i>For permanent:</i> Add to ~/.bashrc or ~/.zshrc</p>"
+            
+            "<h4>Step 3: Restart Source2.exe</h4>"
+            "<p>Close and reopen Source2.exe to load the new environment variable</p>"
+            
+            "<h4>Step 4: Verify API Key</h4>"
+            "<p>Check current API key status:</p>"
+            "<p style='background:#F0F0F0;padding:8px;border-radius:5px;'>"
+            "<b>Current Status:</b> %1"
+            "</p>"
+            
+            "<hr>"
+            "<p><b>API Key from APIFetch.py:</b></p>"
+            "<p>This widget uses the same XAI_API_KEY as APIFetch.py Grok fallback</p>"
+            "<p><b>Cost:</b> Check xAI pricing at <a href='https://x.ai/api'>https://x.ai/api</a></p>"
+            
+            "<p><b>Models Available:</b></p>"
+            "<ul>"
+            "<li><b>grok-beta</b> - Latest general purpose model</li>"
+            "<li><b>grok-2</b> - Advanced reasoning capabilities</li>"
+            "<li><b>grok-vision-beta</b> - Multimodal with vision support</li>"
+            "</ul>"
+        ).arg(statusText));
+        
+        msgBox.setStandardButtons(QMessageBox::Ok);
+        msgBox.exec();
+    }
+    
+    void displayWelcomeMessage() {
+        chatDisplay->setHtml(
+            "<div style='background-color: #E1F5FE; padding: 15px; margin: 10px; border-radius: 10px; border: 2px solid #03A9F4;'>"
+            "<h3 style='color: #01579B; margin-top: 0;'>🧠 Welcome to SuperGrok4</h3>"
+            "<p><b>Expert Physics & Research Assistant powered by Grok xAI</b></p>"
+            
+            "<h4 style='color: #0277BD;'>✨ Features:</h4>"
+            "<ul>"
+            "<li><b>Deep UQFF Knowledge</b> - Expert on all 8 Master Equations</li>"
+            "<li><b>Research Paper Analysis</b> - Analyze arXiv papers, JCAP articles, validation data</li>"
+            "<li><b>Advanced Code Generation</b> - C++20, Python, CUDA for physics simulations</li>"
+            "<li><b>Mathematical Derivations</b> - Step-by-step equation derivations with LaTeX</li>"
+            "<li><b>Astronomical Data</b> - Query SIMBAD, NED, Gaia, discuss observational systems</li>"
+            "<li><b>Vision Capabilities</b> - Analyze plots, diagrams, spectra (grok-vision-beta)</li>"
+            "</ul>"
+            
+            "<h4 style='color: #0277BD;'>🚀 Quick Start Examples:</h4>"
+            "<ul>"
+            "<li><i>\"Derive the F_U_Bi_i equation from first principles with all 4 Ug components\"</i></li>"
+            "<li><i>\"Analyze GW170817 r-process yields - compare UQFF predictions with observations\"</i></li>"
+            "<li><i>\"Generate C++ code for 26-layer Triadic gravity with polynomial coefficients\"</i></li>"
+            "<li><i>\"Explain the cosmological constant problem and UQFF's vacuum energy solution\"</i></li>"
+            "<li><i>\"Compare magnetar field calculations: dipole vs UQFF Ug1 magnetic contribution\"</i></li>"
+            "</ul>"
+            
+            "<h4 style='color: #0277BD;'>📊 SuperGrok4 vs CoAnQi_bot (Tab 6):</h4>"
+            "<table style='width:100%; border-collapse: collapse; margin-top: 10px;'>"
+            "<tr style='background: #B3E5FC;'>"
+            "<th style='border: 1px solid #01579B; padding: 8px;'>Feature</th>"
+            "<th style='border: 1px solid #01579B; padding: 8px;'>SuperGrok4 (Tab 7)</th>"
+            "<th style='border: 1px solid #01579B; padding: 8px;'>CoAnQi_bot (Tab 6)</th>"
+            "</tr>"
+            "<tr><td style='border: 1px solid #01579B; padding: 5px;'><b>Platform</b></td>"
+            "<td style='border: 1px solid #01579B; padding: 5px;'>Grok xAI (Cloud)</td>"
+            "<td style='border: 1px solid #01579B; padding: 5px;'>Ollama (Local)</td></tr>"
+            "<tr><td style='border: 1px solid #01579B; padding: 5px;'><b>Model Size</b></td>"
+            "<td style='border: 1px solid #01579B; padding: 5px;'>~300B params</td>"
+            "<td style='border: 1px solid #01579B; padding: 5px;'>3-7B params</td></tr>"
+            "<tr><td style='border: 1px solid #01579B; padding: 5px;'><b>Reasoning</b></td>"
+            "<td style='border: 1px solid #01579B; padding: 5px;'>Advanced (Grok-2)</td>"
+            "<td style='border: 1px solid #01579B; padding: 5px;'>Basic-Moderate</td></tr>"
+            "<tr><td style='border: 1px solid #01579B; padding: 5px;'><b>Vision</b></td>"
+            "<td style='border: 1px solid #01579B; padding: 5px;'>✅ Yes (grok-vision)</td>"
+            "<td style='border: 1px solid #01579B; padding: 5px;'>❌ No</td></tr>"
+            "<tr><td style='border: 1px solid #01579B; padding: 5px;'><b>Cost</b></td>"
+            "<td style='border: 1px solid #01579B; padding: 5px;'>Paid API</td>"
+            "<td style='border: 1px solid #01579B; padding: 5px;'>Free (local)</td></tr>"
+            "<tr><td style='border: 1px solid #01579B; padding: 5px;'><b>Privacy</b></td>"
+            "<td style='border: 1px solid #01579B; padding: 5px;'>Cloud-based</td>"
+            "<td style='border: 1px solid #01579B; padding: 5px;'>100% Local</td></tr>"
+            "<tr><td style='border: 1px solid #01579B; padding: 5px;'><b>Best For</b></td>"
+            "<td style='border: 1px solid #01579B; padding: 5px;'>Research, complex derivations</td>"
+            "<td style='border: 1px solid #01579B; padding: 5px;'>Quick code help</td></tr>"
+            "</table>"
+            
+            "<hr>"
+            "<p style='color: #F44336; font-weight: bold;'>⚠️ Requires XAI_API_KEY environment variable</p>"
+            "<p>Click '🔑 Configure API Key' button for setup instructions</p>"
+            "</div>"
+        );
+    }
+
+private:
+    QComboBox* modelComboBox;
+    QTextEdit* chatDisplay;
+    QLineEdit* promptInput;
+    QLabel* statusLabel;
+};
+
+
 // ============================================================================
 // GLOBAL VARIABLES - Data shared across the entire application
 // ============================================================================
@@ -9035,7 +9353,14 @@ MainWindow::MainWindow()
                 tabs->addTab(ollamaBot, "🤖 CoAnQi_bot");
                 browserWindows[5] = nullptr;  // No browser window for Tab 6
             }
-            // Tabs 7-21 (indices 6-20): Query fetch results display
+            // Special case: Tab 7 (index 6) reserved for SuperGrok4 xAI Expert
+            else if (i == 6) {
+                // Tab 7: SuperGrok4 - Grok xAI expert assistant for research
+               SuperGrok4Widget* grokExpert = new SuperGrok4Widget(this);
+                tabs->addTab(grokExpert, "🧠 SuperGrok4");
+                browserWindows[6] = nullptr;  // No browser window for Tab 7
+            }
+            // Tabs 8-21 (indices 7-20): Query fetch results display
             else {
                 // Standard browser windows for search results
                 browserWindows[i] = new BrowserWindow(QString("Tab %1").arg(i + 1), this);

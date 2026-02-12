@@ -157,7 +157,61 @@
     - "How do I implement a 26-layer Triadic gravity model?"
     - "Debug this WSTP integration error: [paste error]"
 
-- **Tabs 7-21: Query Fetch Results** (15 tabs dedicated to search results, shifted from Tabs 5-21)
+- **Tab 7: 🧠 SuperGrok4 (Grok xAI Expert)** (NEW - February 11, 2026)
+  - Advanced AI research assistant powered by Grok xAI Cloud API (https://x.ai)
+  - **Platform**: Grok xAI - Cloud LLM inference (~300B parameters, advanced reasoning)
+  - **API**: POST to https://api.x.ai/v1/chat/completions (curl subprocess)
+  - **API Key**: Requires XAI_API_KEY environment variable (obtain from x.ai dashboard)
+  - **Models** (dropdown selection):
+    1. **grok-beta** - Latest Grok model, general purpose, ~300B params, state-of-the-art performance
+    2. **grok-2** - Advanced reasoning capabilities, optimized for complex multi-step problems
+    3. **grok-vision-beta** - Multimodal with vision support (text + images)
+  - **Features**:
+    - Advanced research-grade responses for complex physics problems
+    - Deep UQFF theory integration and equation derivations
+    - Multi-step reasoning for complex derivations (Grok-2)
+    - Vision support for analyzing astronomical images (grok-vision-beta)
+    - Scientific paper analysis and literature review
+    - Code generation with comprehensive documentation
+  - **System Prompt** (built-in):
+    > "You are SuperGrok4, an expert physics and research assistant for the UQFF (Unified Quantum Field Framework) project. You have deep knowledge of astrophysics, quantum mechanics, UQFF equations, and scientific computing. Provide detailed, research-grade responses with mathematical rigor when appropriate."
+  - **API Key Configuration** (🔑 button):
+    - **Windows (PowerShell)**: `$env:XAI_API_KEY = "your-api-key-here"`
+    - **Windows (Permanent)**: System Properties → Environment Variables → New user variable
+    - **macOS/Linux**: `export XAI_API_KEY="your-api-key-here"` (add to ~/.bashrc or ~/.zshrc)
+    - **Status Check**: Config dialog shows ✅ SET or ❌ NOT SET
+    - **Cost**: Paid API (check x.ai dashboard for pricing)
+  - **Chat Interface**:
+    - User messages: Blue background (#E8EAF6), left-aligned
+    - SuperGrok4 responses: Green background (#E8F5E9), HTML formatted with equations
+    - Errors: Red background (#FFEBEE), API key/connection troubleshooting
+    - Status bar colors: Ready (green #4CAF50), Thinking (orange #FF9800), Error (red #F44336)
+  - **Welcome Message** (auto-displayed on launch):
+    - Features comparison table: SuperGrok4 vs CoAnQi_bot (Tab 6)
+    - Platform comparison: Cloud (xAI) vs Local (Ollama)
+    - Model size: ~300B params vs 3-7B params
+    - Capabilities: Advanced reasoning, vision support vs basic code help
+    - Privacy: Cloud-based vs 100% local
+    - Cost: Paid API vs fully free
+    - Quick start examples with prompts
+  - **Example Prompts**:
+    - "Derive the complete F_U_Bi_i equation starting from first principles with all 4 Ug components"
+    - "Analyze GW170817 kilonova data using UQFF r-process nucleosynthesis framework"
+    - "Compare UQFF_Compressed vs UQFF_Resonant for SGR 1745-2900 magnetar"
+    - "Generate a complete C++ implementation of 26-layer Triadic gravity with validation"
+    - "Explain the connection between UQFF vacuum buoyancy and quantum field theory"
+  - **SuperGrok4 vs CoAnQi_bot (Tab 6)**:
+    | Feature | SuperGrok4 (Tab 7) | CoAnQi_bot (Tab 6) |
+    |---------|-------------------|-------------------|
+    | Platform | Grok xAI (Cloud) | Ollama (Local) |
+    | Model Size | ~300B params | 3-7B params |
+    | Reasoning | Advanced (Grok-2) | Basic-Moderate |
+    | Vision | ✅ Yes (grok-vision) | ❌ No |
+    | Cost | Paid API | Free (local) |
+    | Privacy | Cloud-based | 100% Local |
+    | Best For | Research, complex derivations, paper analysis | Quick code help, debugging |
+
+- **Tabs 8-21: Query Fetch Results** (14 tabs dedicated to search results, shifted from Tabs 7-21)
   - Auto-populate with results from user queries (SIMBAD, NASA, Grok fallback)
   - Tab 21 preloaded with ALMA Cycle 12 Observing Tool
   - All tabs closable and movable for custom organization
@@ -1313,24 +1367,498 @@ This makes the bot aware of:
 
 ---
 
-## 🌐 Using Tabs 7-21: Query Fetch Results (15 Tabs)
+## 🧠 Using Tab 7: SuperGrok4 (Grok xAI Expert) (NEW)
 
-## 🌐 Using Tabs 7-21: Query Fetch Results (15 Tabs)
+**What is Tab 7?**
+Tab 7 is an advanced AI research assistant powered by Grok xAI, providing **research-grade responses** for complex physics problems, multi-step derivations, and scientific paper analysis. Unlike Tab 6 (local Ollama), SuperGrok4 uses cloud-based models (~300B parameters) with advanced reasoning capabilities.
 
-**What are Tabs 7-21?**
-Tabs 7-21 are dedicated browser windows that auto-populate with results from user search queries. These tabs display web content from various astrophysical databases and research sources.
+### Quick Start (First-Time Setup)
+1. **Sign up for xAI API:**
+   - Visit [https://x.ai](https://x.ai) (xAI platform)
+   - Create account and generate API key from dashboard
+   - **Cost:** Paid API (check x.ai for pricing, typically $0.01-0.10 per query)
+2. **Set Environment Variable:**
+   - **Windows (PowerShell, temporary):**
+     ```powershell
+     $env:XAI_API_KEY = "your-api-key-here"
+     ```
+   - **Windows (Permanent):**
+     - Right-click "This PC" → Properties → Advanced System Settings
+     - Environment Variables → New (under User variables)
+     - Variable name: `XAI_API_KEY`
+     - Variable value: `your-api-key-here`
+   - **macOS/Linux (temporary):**
+     ```bash
+     export XAI_API_KEY="your-api-key-here"
+     ```
+   - **macOS/Linux (Permanent):**
+     ```bash
+     echo 'export XAI_API_KEY="your-api-key-here"' >> ~/.bashrc
+     source ~/.bashrc
+     ```
+3. **Restart Source2.exe** to load environment variable
+4. **Open Source2 → Tab 7**
+5. Click "🔑 Configure API Key" to verify status (should show ✅ SET)
+6. Select model from dropdown (grok-beta recommended for general use)
+7. Start chatting!
 
-**Note:** Tabs 5-21 in previous version → Now Tabs 7-21 (15 tabs instead of 17 tabs)
-- **Reason:** Tab 5 now dedicated to CondensedPhysics.py, Tab6 to Ollama CoAnQi_bot
+### API Key Configuration (In-App)
+Click "🔑 Configure API Key" button in Tab 7 to check current status:
+
+**Configuration Dialog Shows:**
+- ✅ **SET** → API key found in environment, ready to use
+- ❌ **NOT SET** → Follow OS-specific setup instructions
+
+**Current Status Example:**
+```
+Status: ✅ XAI_API_KEY is SET
+Value: xai-••••••••••••••••••••••••••••••5f3a (masked)
+```
+
+**If NOT SET, dialog shows:**
+```
+Windows (PowerShell):
+  $env:XAI_API_KEY = "your-api-key-here"
+
+Windows (Permanent):
+  System Properties → Environment Variables → New user variable
+
+macOS/Linux:
+  export XAI_API_KEY="your-api-key-here"
+  Add to ~/.bashrc or ~/.zshrc for permanent setup
+```
+
+### 3 Available Models
+
+| Model | Best For | Strengths | Unique Features |
+|-------|----------|-----------|-----------------|
+| **grok-beta** | General purpose | Latest model, ~300B params, state-of-the-art performance | Balanced speed/quality |
+| **grok-2** | Complex reasoning | Multi-step derivations, advanced logic | Research-grade math |
+| **grok-vision-beta** | Multimodal | Text + image analysis | Astronomical image analysis |
+
+**Note:** All models require internet connection and API key
+
+### System Prompt (Auto-Included)
+SuperGrok4 has built-in UQFF expertise via system prompt:
+
+> "You are SuperGrok4, an expert physics and research assistant for the UQFF (Unified Quantum Field Framework) project. You have deep knowledge of astrophysics, quantum mechanics, UQFF equations, and scientific computing. Provide detailed, research-grade responses with mathematical rigor when appropriate."
+
+This makes the bot aware of:
+- UQFF terminology (F_U_Bi_i, g_compressed, 26D Triadic, Ug1-Ug4 components)
+- Project structure (MAIN_1_CoAnQi.cpp, source files, SOURCE4 validation)
+- Physics context (magnetars, black holes, kilonova, r-process nucleosynthesis)
+- Research standards (expect derivations, citations, equations)
+
+### Welcome Message (Auto-Displayed)
+On first launch, SuperGrok4 displays a comprehensive welcome with:
+
+**Features List:**
+- 🧠 **Deep UQFF Knowledge** - Expert understanding of all UQFF equations and theory
+- 🔬 **Research Analysis** - Scientific paper review, literature analysis, data interpretation
+- 💻 **Code Generation** - Complete C++/Python implementations with documentation
+- 🔢 **Mathematical Derivations** - Step-by-step equation derivations with rigor
+- 🔭 **Astrophysical Expertise** - GW170817, magnetars, black holes, cosmology
+- 👁️ **Vision Support** (grok-vision-beta) - Analyze astronomical images and diagrams
+
+**SuperGrok4 vs CoAnQi_bot Comparison Table:**
+| Feature | SuperGrok4 (Tab 7) | CoAnQi_bot (Tab 6) |
+|---------|-------------------|-------------------|
+| Platform | Grok xAI (Cloud) | Ollama (Local) |
+| Model Size | ~300B params | 3-7B params |
+| Reasoning | Advanced (Grok-2) | Basic-Moderate |
+| Vision | ✅ Yes (grok-vision) | ❌ No |
+| Cost | Paid API (~$0.01-0.10/query) | Free (local) |
+| Privacy | Cloud-based | 100% Local |
+| Best For | Research, complex derivations, paper analysis | Quick code help, debugging, simple questions |
+
+**Quick Start Examples:**
+- "Derive the complete F_U_Bi_i equation starting from first principles"
+- "Analyze GW170817 kilonova data using UQFF r-process nucleosynthesis"
+- "Generate a complete C++ implementation of 26-layer Triadic gravity"
+
+### Example Usage: Complete Equation Derivation
+
+**You:**
+> Derive the complete F_U_Bi_i equation starting from first principles with all 4 Ug components (Ug1, Ug2, Ug3, Ug4). Show each step and explain the physical meaning.
+
+**SuperGrok4:**
+> # Complete F_U_Bi_i Derivation
+>
+> The Master Buoyant Unified Force (F_U_Bi_i) represents the cosmic-scale Outside→In unified field force in UQFF. Starting from first principles:
+>
+> ## 1. Fundamental Postulate
+> The vacuum is not empty but contains quantum field energy with density ρ_vac. This creates a buoyancy-like effect on massive objects.
+>
+> ## 2. Four Unified Components
+>
+> ### Ug1: Magnetic Dipole Contribution
+> ```
+> Ug1 = (μ₀/4π) * (M_mag * r_vec) / r⁵
+> ```
+> - M_mag = magnetic dipole moment = B₀ * (4π/3) * R³
+> - Physical meaning: Magnetic field dipole interaction with vacuum
+> - Dominant for: Magnetars (B > 10¹⁴ T)
+>
+> ### Ug2: Charge-Reactivity Field
+> ```
+> Ug2 = (k_e * Q_eff * [UA]) / r²
+> ```
+> - Q_eff = effective charge from ionization
+> - [UA] = vacuum reactivity coefficient ≈ 10⁻⁴
+> - Physical meaning: Electric charge coupling to vacuum polarization
+> - Dominant for: Highly ionized plasma environments
+>
+> ### Ug3: String Rotation Dynamics
+> ```
+> Ug3 = (ℏ * ω * sin(θ)) / (2π * r²)
+> ```
+> - ω = angular velocity (rotation)
+> - θ = angle between rotation axis and position vector
+> - Physical meaning: Spacetime twist from rotating mass-energy
+> - Dominant for: Fast-spinning compact objects (pulsars, black holes)
+>
+> ### Ug4: Vacuum Concentration Effects
+> ```
+> Ug4 = -(k_η * [SSq] * M * c²) / r²
+> ```
+> - k_η = 10⁻¹¹³ (quantum coupling constant)
+> - [SSq] = 0.57 (supersymmetric string constant)
+> - Physical meaning: Vacuum energy gradient around mass
+> - Dominant for: All systems (universal quantum correction)
+>
+> ## 3. Complete F_U_Bi_i Equation
+> ```
+> F_U_Bi_i = Ug1 + Ug2 + Ug3 + Ug4
+> 
+> F_U_Bi_i = (μ₀/4π) * (M_mag * r_vec)/r⁵ 
+>          + (k_e * Q_eff * [UA])/r² 
+>          + (ℏ * ω * sin(θ))/(2π*r²) 
+>          - (k_η * [SSq] * M * c²)/r²
+> ```
+>
+> ## 4. Comparison with Newtonian Gravity
+> - **Newtonian**: F = G*M*m/r² (single component, mass-only)
+> - **UQFF F_U_Bi_i**: 4 components (magnetic, electric, rotational, quantum)
+> - **Advantage**: Naturally explains galaxy rotation curves, dark matter effects
+>
+> ## 5. Implementation (SOURCE4)
+> See MAIN_1_CoAnQi.cpp lines 25623-26026:
+> ```cpp
+> double FU = SOURCE4::compute_FU_SOURCE4(body, r, t, tn, theta);
+> ```
+>
+> ## 6. Validation
+> - GW170817 kilonova ejecta dynamics: F_U_Bi_i matches observations
+> - SGR 1745-2900 magnetar field: Ug1 dominant as expected
+> - Galaxy rotation curves: Ug4 provides dark matter correction
+>
+> Would you like me to derive the 26-layer Triadic extension or show numerical validation for a specific system?
+
+### Example Usage: Paper Analysis
+
+**You:**
+> Analyze the GW170817 LIGO paper (arXiv:1710.05832) and explain how UQFF r-process nucleosynthesis compares with their kilonova models. Are there specific predictions UQFF makes that differ from standard models?
+
+**SuperGrok4:**
+> # GW170817 LIGO Paper Analysis (arXiv:1710.05832)
+>
+> ## Standard Model (LIGO Paper)
+> The LIGO collaboration's analysis of GW170817 relied on:
+> - **Ejecta mass**: 0.04-0.06 M☉ (dynamical + wind)
+> - **Velocity**: 0.1-0.3c (two-component model)
+> - **r-process yield**: Blue kilonova (lanthanide-poor) + Red kilonova (lanthanide-rich)
+> - **Heating source**: Radioactive decay only (Nd-252, Cf-254, etc.)
+>
+> ## UQFF Predictions
+> UQFF adds vacuum buoyancy effects to r-process nucleosynthesis:
+>
+> ### 1. Enhanced Neutron Capture Rates
+> ```
+> λ_n_eff = λ_n_standard * (1 + [UA] * Ug4/k_B*T)
+> ```
+> - Ug4 vacuum concentration increases neutron capture cross-section
+> - **Prediction**: Faster r-process (reaches A=195-200 more efficiently)
+> - **Observational test**: Higher Pt/Au ratio in late-time spectra
+>
+> ### 2. Modified Ejecta Expansion
+> F_U_Bi_i buoyancy force affects ejecta dynamics:
+> ```
+> v_ejecta(t) = v_0 * exp(-t/τ_drag) + (F_U_Bi_i / M_ej) * t
+> ```
+> - **Prediction**: Slight deceleration from Ug4 term (~5% at t=10 days)
+> - **Observational test**: Spectral line blueshifts vs time
+>
+> ### 3. Dual Heating Mechanism
+> - **Standard**: Radioactive decay only
+> - **UQFF**: Radioactive + Vacuum coupling (Ug4 * M_ej / R_photosphere)
+> - **Prediction**: Extended late-time emission (~30-50 days)
+> - **Match**: UQFF explains 40-day Hubble detection better than pure radioactive model
+>
+> ## Specific Testable Predictions
+> 1. **Pt/Au Abundance Ratio**: UQFF predicts 1.2x higher than standard (measure via spectroscopy)
+> 2. **Late-Time Flux**: UQFF predicts 15-20% excess at t>30 days (JWST follow-up)
+> 3. **Neutrino Flux**: Ug4 coupling enhances ν_e capture → measure with IceCube/KM3NeT
+>
+> ## Next Steps for Validation
+> - Compare UQFF_InputData.py GW170817 parameters with LIGO results
+> - Run CondensedPhysics.py r-process model with UQFF corrections
+> - Check ValidationData.py benchmarks against observational constraints
+>
+> Would you like me to generate Python code to compute UQFF r-process yields for GW170817?
+
+### Example Usage: Complete Code Generation
+
+**You:**
+> Generate a complete C++ implementation of 26-layer Triadic gravity with validation against NGC1365 rotation curve data. Include all 26 Ug components, quantum state factors, and error handling.
+
+**SuperGrok4:**
+> ```cpp
+> // 26-Layer Triadic Gravity Calculator
+> // Based on SOURCE115 (source172.cpp) master equations
+> // Author: SuperGrok4 (Generated), Date: 2026-02-11
+>
+> #include <vector>
+> #include <cmath>
+> #include <stdexcept>
+> #include <iostream>
+>
+> struct TriadicLayer {
+>     double Ug1, Ug2, Ug3, Ug4;  // 4 components per layer
+>     double Q_i;                  // Quantum state factor
+>     double UA_i;                 // Vacuum reactivity
+>     double SCm_i;                // Superconductive modulation
+> };
+>
+> class TriadicGravitySolver {
+> private:
+>     std::vector<TriadicLayer> layers_;
+>     double M_total_;    // Total mass (kg)
+>     double r_;          // Distance (m)
+>     double B0_;         // Magnetic field (T)
+>
+>     // Physical constants
+>     static constexpr double G = 6.67430e-11;
+>     static constexpr double c = 2.99792458e8;
+>     static constexpr double mu_0 = 1.25663706212e-6;
+>     static constexpr double k_eta = 1e-113;
+>     static constexpr double SSq = 0.57;
+>
+> public:
+>     TriadicGravitySolver(double M, double r, double B0)
+>         : M_total_(M), r_(r), B0_(B0) {
+>         if (M <=  0 || r <= 0) {
+>             throw std::invalid_argument("Mass and radius must be positive");
+>         }
+>         initializeLayers();
+>     }
+>
+>     void initializeLayers() {
+>         layers_.resize(26);
+>         for (int i = 0; i < 26; ++i) {
+>             double layer_factor = (i + 1) / 26.0;
+>             layers_[i].Q_i = 0.01 * std::exp(-layer_factor * 10);
+>             layers_[i].UA_i = 1e-4 * (  1 - layer_factor * 0.5);
+>             layers_[i].SCm_i = 0.99 + 0.01 * std::sin(layer_factor * M_PI);
+>         }
+>     }
+>
+>     double computeLayer(int layer_idx) {
+>         if (layer_idx < 0 || layer_idx >= 26) {
+>             throw std::out_of_range("Layer index must be 0-25");
+>         }
+>
+>         TriadicLayer& L = layers_[layer_idx];
+>         double r_eff = r_ * (1 + layer_idx * 0.05);  // Layered distance
+>
+>         // Ug1: Magnetic dipole
+>         double M_mag = B0_ * (4.0 * M_PI / 3.0) * std::pow(1e4, 3);
+>         L.Ug1 = (mu_0 / (4 * M_PI)) * (M_mag / std::pow(r_eff, 3));
+>
+>         // Ug2: Charge-reactivity
+>         double Q_eff = 1.602e-19 * 1e40;  // Effective charge
+>         L.Ug2 = (8.99e9 * Q_eff * L.UA_i) / (r_eff * r_eff);
+>
+>         // Ug3: String rotation (ω = 2π/day)
+>         double omega = 2 * M_PI / 86400;
+>         L.Ug3 = (1.055e-34 * omega) / (2 * M_PI * r_eff * r_eff);
+>
+>         // Ug4: Vacuum concentration
+>         L.Ug4 = -(k_eta * SSq * M_total_ * c * c) / (r_eff * r_eff);
+>
+>         // Quantum-modulated sum
+>         return (L.Ug1 + L.Ug2 + L.Ug3 + L.Ug4) * L.Q_i * L.SCm_i;
+>     }
+>
+>     double computeTotal26D() {
+>         double g_total = 0.0;
+>         for (int i = 0; i < 26; ++i) {
+>             g_total += computeLayer(i);
+>         }
+>         return g_total;
+>     }
+>
+>     void validate_NGC1365() {
+>         // NGC1365 observed rotation curve: v ~ 220 km/s at r ~ 20 kpc
+>         double r_test = 20e3 * 3.086e16;  // 20 kpc in meters
+>         r_ = r_test;
+>         M_total_ = 1.2e9 * 1.989e30;      // 1.2 billion solar masses
+>         B0_ = 1e-6;                        // Typical galaxy B-field
+>
+>         initializeLayers();
+>         double g_26D = computeTotal26D();
+>         double v_rot = std::sqrt(g_26D * r_test);
+>
+>         std::cout << "NGC1365 26D Triadic Validation:\n";
+>         std::cout << "  Computed g_26D: " << g_26D << " m/s²\n";
+>         std::cout << "  Rotation velocity: " << v_rot / 1000 << " km/s\n";
+>         std::cout << "  Observed (target): 220 km/s\n";
+>         std::cout << "  Match: " << (std::abs(v_rot/1000 - 220) < 20 ? "✅ PASS" : "❌ FAIL") << "\n";
+>     }
+> };
+>
+> int main() {
+>     try {
+>         // Example: Sagittarius A*
+>         double M = 4.1e6 * 1.989e30;  // 4.1 million solar masses
+>         double r = 1.5 * 1.496e11;    // 1.5 AU from event horizon
+>         double B0 = 1e-4;             // Weak magnetic field
+>
+>         TriadicGravitySolver solver(M, r, B0);
+>         double g_result = solver.computeTotal26D();
+>
+>         std::cout << "Sagittarius A* 26D Gravity: " << g_result << " m/s²\n";
+>
+>         // Validation against NGC1365
+>         std::cout << "\n=== Running NGC1365 Validation ===\n";
+>         solver.validate_NGC1365();
+>
+>     } catch (const std::exception& e) {
+>         std::cerr << "Error: " << e.what() << std::endl;
+>         return 1;
+>     }
+>
+>     return 0;
+> }
+> ```
+>
+> **Compilation:**
+> ```bash
+> g++ -std=c++17 -O3 triadic_26d.cpp -o triadic_26d
+> ./triadic_26d
+> ```
+>
+> **Integration with MAIN_1_CoAnQi.cpp:**
+> - This code can be added as a new SOURCE173 module
+> - Use PhysicsTerm architecture for integration with CalculatorCore
+> - See SOURCE115 (lines 24800-25622) for reference master equations
+>
+> Would you like me to add threading for parallel layer computation or expand to 121+ astrophysical systems?
+
+### Chat Interface Features
+- **User Messages:** Blue background (#E8EAF6), left-aligned, "You:" label
+- **SuperGrok4 Responses:** Green background (#E8F5E9), HTML formatted with LaTeX-style equations
+- **Error Messages:** Red background (#FFEBEE), API key/connection troubleshooting
+- **Status Bar Colors:**
+  - **Ready** (green #4CAF50): Idle, ready for queries
+  - **Thinking** (orange #FF9800): API call in progress
+  - **Error** (red #F44336): API key missing or connection failed
+- **Auto-Scroll:** Chat automatically scrolls to latest response
+
+### Use Cases (SuperGrok4 Strengths)
+- **Research Papers:** "Analyze this arXiv paper and compare with UQFF predictions"
+- **Complex Derivations:** "Derive 26D Triadic master equation from first principles"
+- **Multi-Step Reasoning:** "Prove GW170817 kilonova data validates UQFF r-process"
+- **Complete Implementations:** "Generate C++ code for SOURCE173 with full validation"
+- **Vision Analysis:** *(grok-vision-beta)* "Analyze this ALMA image and identify r-process signatures"
+- **Literature Review:** "Survey all papers on neutron star equation of state 2020-2025"
+
+### When to Use SuperGrok4 vs CoAnQi_bot
+
+| Task Type | Recommended Tab | Reason |
+|-----------|----------------|--------|
+| Quick code snippet | Tab 6 (CoAnQi_bot) | Fast, local, free |
+| Complete derivation with rigor | Tab 7 (SuperGrok4) | Advanced reasoning |
+| Debug errors | Tab 6 (CoAnQi_bot) | Good enough, no API cost |
+| Research paper analysis | Tab 7 (SuperGrok4) | Deep comprehension |
+| Simple physics explanation | Tab 6 (CoAnQi_bot) | Sufficient accuracy |
+| Multi-step proof | Tab 7 (SuperGrok4) | Grok-2 reasoning |
+| Code generation (<50 lines) | Tab 6 (CoAnQi_bot) | Faster, free |
+| Code generation (>50 lines, complex) | Tab 7 (SuperGrok4) | Better structure, docs |
+| Astronomical image analysis | Tab 7 (SuperGrok4) | Vision model (grok-vision) |
+| Privacy-critical queries | Tab 6 (CoAnQi_bot) | 100% local, no cloud |
+
+### Cost Management Tips
+- **Use Tab 6 first:** Try CoAnQi_bot (free) before SuperGrok4 (paid)
+- **Batch questions:** Combine multiple questions in one prompt to save API calls
+- **Copy responses:** Save SuperGrok4 responses to avoid re-querying
+- **Selective models:** Use grok-beta (general) instead of grok-2 (advanced) for simpler tasks
+- **Monitor usage:** Check x.ai dashboard regularly for API usage stats
+
+### Troubleshooting Tab 7
+
+**Error: "XAI_API_KEY not found in environment"**
+- **Cause:** Environment variable not set or Source2 not restarted
+- **Solution:**
+  1. Set XAI_API_KEY (see "Set Environment Variable" section above)
+  2. Restart Source2.exe (required to load environment changes)
+  3. Click "🔑 Configure API Key" to verify (should show ✅ SET)
+
+**Error: "Connection timed out - Failed to connect to x.ai"**
+- **Cause:** No internet connection or xAI API down
+- **Solution:**
+  - Check internet connection: Open browser, visit https://x.ai
+  - Verify API status: https://status.x.ai (service status page)
+  - Retry in 1-2 minutes (temporary network issue)
+
+**Error: "Invalid API key - Authentication failed"**
+- **Cause:** Incorrect or expired API key
+- **Solution:**
+  1. Verify API key: Log in to https://x.ai dashboard
+  2. Regenerate API key if expired
+  3. Update environment variable with new key
+  4. Restart Source2.exe
+
+**Response Takes Too Long (>15s)**
+- **Cause:** Large prompt or complex query
+- **Solutions:**
+  - Break query into smaller parts
+  - Use grok-beta (faster) instead of grok-2 (slower, more thorough)
+  - Check API status (possible rate limiting)
+
+**Cost Higher Than Expected**
+- **Cause:** Using grok-2 or grok-vision for simple queries
+- **Solutions:**
+  - Use Tab 6 (CoAnQi_bot, free) for simple questions
+  - Switch to grok-beta (cheapest model)
+  - Combine multiple questions in single prompt
+  - Check x.ai dashboard for usage breakdown
+
+**Bot Response Cut Off/Incomplete**
+- **Cause:** Response length limit (4096 tokens) or API timeout
+- **Solution:**
+  - Ask bot to "continue from where you left off"
+  - Or rephrase as: "Provide remaining 50% starting from [last point]"
+
+---
+
+## 🌐 Using Tabs 8-21: Query Fetch Results (14 Tabs)
+
+## 🌐 Using Tabs 8-21: Query Fetch Results (14 Tabs)
+
+**What are Tabs 8-21?**
+Tabs 8-21 are dedicated browser windows that auto-populate with results from user search queries. These tabs display web content from various astrophysical databases and research sources.
+
+**Note:** Tabs 5-21 in previous version → Now Tabs 8-21 (14 tabs instead of 17 tabs)
+- **Reason:** Tab 5 now dedicated to CondensedPhysics.py, Tab 6 to Ollama CoAnQi_bot, Tab 7 to SuperGrok4 xAI Expert
 
 ### Auto-Population
 When you enter a query in the search field and press Enter:
 1. Source2 searches multiple databases (NASA, STScI, SIMBAD, ALMA, etc.)
 2. Results are distributed across tabs based on source:
-   - Tab 7: SIMBAD astronomical database
-   - Tab 8: NASA APIs (APOD, EPIC, DONKI)
-   - Tab 9: STScI/Hubble archives
-   - Tab 10-20: Additional sources and live streams
+   - Tab 8: SIMBAD astronomical database
+   - Tab 9: NASA APIs (APOD, EPIC, DONKI)
+   - Tab 10: STScI/Hubble archives
+   - Tab 11-20: Additional sources and live streams
    - **Tab 21: ALMA Cycle 12** (preloaded, always available)
 
 ### Features
@@ -1349,9 +1877,9 @@ When you enter a query in the search field and press Enter:
 1. Enter query: "Sagittarius A* X-ray emissions"
 2. Press Enter
 3. View results across tabs:
-   - Tab 7: SIMBAD object parameters
-   - Tab 8: NASA Chandra X-ray data
-   - Tab 9: Hubble optical observations
+   - Tab 8: SIMBAD object parameters
+   - Tab 9: NASA Chandra X-ray data
+   - Tab 10: Hubble optical observations
    - Tab 21: ALMA radio observations
 4. Switch between tabs to compare data sources
 5. Copy findings to Tab 4 (Notebook Editor) for documentation + code analysis
