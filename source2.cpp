@@ -39,6 +39,9 @@
 #include <QKeyEvent>        // Keyboard event - sent when user presses/releases keys
 #include <QCoreApplication> // Core application class - provides event loop for non-GUI applications
 #include <QListWidget>      // List widget - displays a list of items
+#include <QNetworkAccessManager> // Network manager - handles HTTP requests
+#include <QNetworkRequest>       // Network request - represents HTTP request
+#include <QNetworkReply>         // Network reply - contains HTTP response data
 
 // VTK (Visualization Toolkit) - For scientific data visualization (3D plots, charts, graphs)
 #ifndef NO_VTK
@@ -1809,6 +1812,9 @@ public:
         
         layout->addLayout(inputLayout);
         
+        // Initialize network manager for API requests
+        networkManager = new QNetworkAccessManager(this);
+        
         // Display welcome message
         displayWelcomeMessage();
     }
@@ -1851,79 +1857,95 @@ private slots:
         }
         
         // Build JSON payload for Grok xAI API
-        QString jsonPayload = QString(
-            "{"
-            "  \"model\": \"%1\","
-            "  \"messages\": ["
-            "    {"
-            "      \"role\": \"system\","
-            "      \"content\": \"You are SuperGrok4, an expert physics and research assistant for the UQFF (Unified Quantum Field Framework) project. You have deep knowledge of astrophysics, quantum mechanics, UQFF equations, and scientific computing. Provide detailed explanations with equations, code examples, and references to research papers when relevant. Be precise and comprehensive.\""
-            "    },"
-            "    {"
-            "      \"role\": \"user\","
-            "      \"content\": \"%2\""
-            "    }"
-            "  ],"
-            "  \"temperature\": 0.3"
-            "}"
-        ).arg(model).arg(prompt.replace("\"", "\\\"").replace("\n", "\\n"));
+        QJsonObject systemMessage;
+        systemMessage["role"] = "system";
+        systemMessage["content"] = "You are SuperGrok4, an expert physics and research assistant for the UQFF (Unified Quantum Field Framework) project. You have deep knowledge of astrophysics, quantum mechanics, UQFF equations, and scientific computing. Provide detailed explanations with equations, code examples, and references to research papers when relevant. Be precise and comprehensive.";
         
-        // Use QProcess to call curl with xAI API
-        QProcess* curlProcess = new QProcess(this);
-        QStringList args;
-        args << "-s" << "-X" << "POST" << "https://api.x.ai/v1/chat/completions"
-             << "-H" << QString("Authorization: Bearer %1").arg(apiKey)
-             << "-H" << "Content-Type: application/json"
-             << "-d" << jsonPayload;
+        QJsonObject userMessage;
+        userMessage["role"] = "user";
+        userMessage["content"] = prompt;
         
-        connect(curlProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
-                [this, curlProcess](int exitCode, QProcess::ExitStatus exitStatus) {
-            
-            if (exitStatus == QProcess::NormalExit && exitCode == 0) {
-                QByteArray response = curlProcess->readAllStandardOutput();
-                QString responseStr = QString::fromUtf8(response);
+        QJsonArray messages;
+        messages.append(systemMessage);
+        messages.append(userMessage);
+        
+        QJsonObject payload;
+        payload["model"] = model;
+        payload["messages"] = messages;
+        payload["temperature"] = 0.3;
+        
+        QJsonDocument doc(payload);
+        QByteArray jsonData = doc.toJson();
+        
+        // Create HTTP request using Qt Network
+        QNetworkRequest request(QUrl("https://api.x.ai/v1/chat/completions"));
+        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+        request.setRawHeader("Authorization", QString("Bearer %1").arg(apiKey).toUtf8());
+        
+        // Send POST request
+        QNetworkReply* reply = networkManager->post(request, jsonData);
+        
+        // Handle response
+        connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+            if (reply->error() == QNetworkReply::NoError) {
+                // Success - parse response
+                QByteArray responseData = reply->readAll();
+                QJsonDocument responseDoc = QJsonDocument::fromJson(responseData);
+                QJsonObject responseObj = responseDoc.object();
                 
-                // Parse JSON response (extract content from choices[0].message.content)
-                int contentStart = responseStr.indexOf("\"content\":\"") + 11;
-                if (contentStart > 10) {
-                    int contentEnd = responseStr.indexOf("\",\"role\"", contentStart);
-                    if (contentEnd < 0) {
-                        contentEnd = responseStr.indexOf("\"}", contentStart);
+                // Extract content from response
+                if (responseObj.contains("choices") && responseObj["choices"].isArray()) {
+                    QJsonArray choices = responseObj["choices"].toArray();
+                    if (!choices.isEmpty()) {
+                        QJsonObject firstChoice = choices[0].toObject();
+                        QJsonObject message = firstChoice["message"].toObject();
+                        QString botResponse = message["content"].toString();
+                        
+                        // Convert markdown code blocks to HTML
+                        botResponse.replace("```cpp", "<pre style='background:#2E2E2E;color:#E0E0E0;padding:10px;border-radius:5px;'>");
+                        botResponse.replace("```python", "<pre style='background:#2E2E2E;color:#E0E0E0;padding:10px;border-radius:5px;'>");
+                        botResponse.replace("```json", "<pre style='background:#2E2E2E;color:#E0E0E0;padding:10px;border-radius:5px;'>");
+                        botResponse.replace("```", "</pre>");
+                        
+                        // Convert newlines to HTML breaks
+                        botResponse.replace("\n", "<br>");
+                        
+                        // Display bot response
+                        chatDisplay->append("<div style='background-color: #E8F5E9; padding: 10px; margin: 5px; border-radius: 10px;'>");
+                        chatDisplay->append("<b>SuperGrok4:</b><br>" + botResponse);
+                        chatDisplay->append("</div>");
+                        
+                        statusLabel->setText("Status: Ready");
+                        statusLabel->setStyleSheet("color: #4CAF50; font-weight: bold;");
+                    } else {
+                        // No choices in response
+                        chatDisplay->append("<div style='background-color: #FFF3E0; padding: 10px; margin: 5px; border-radius: 10px;'>");
+                        chatDisplay->append("<b>Warning:</b> API returned empty response");
+                        chatDisplay->append("</div>");
+                        statusLabel->setText("Status: Empty Response");
+                        statusLabel->setStyleSheet("color: #FF9800; font-weight: bold;");
                     }
-                    QString botResponse = responseStr.mid(contentStart, contentEnd - contentStart);
-                    
-                    // Unescape JSON string
-                    botResponse.replace("\\n", "\n");
-                    botResponse.replace("\\\"", "\"");
-                    botResponse.replace("\\\\", "\\");
-                    botResponse.replace("\\t", "    ");
-                    
-                    // Convert markdown code blocks to HTML
-                    botResponse.replace("```cpp", "<pre style='background:#2E2E2E;color:#E0E0E0;padding:10px;border-radius:5px;'>");
-                    botResponse.replace("```python", "<pre style='background:#2E2E2E;color:#E0E0E0;padding:10px;border-radius:5px;'>");
-                    botResponse.replace("```", "</pre>");
-                    
-                    // Display bot response
-                    chatDisplay->append("<div style='background-color: #E8F5E9; padding: 10px; margin: 5px; border-radius: 10px;'>");
-                    chatDisplay->append("<b>SuperGrok4:</b><br>" + botResponse);
-                    chatDisplay->append("</div>");
-                    
-                    statusLabel->setText("Status: Ready");
-                    statusLabel->setStyleSheet("color: #4CAF50; font-weight: bold;");
                 } else {
-                    // Error parsing response
+                    // Unexpected response format
                     chatDisplay->append("<div style='background-color: #FFF3E0; padding: 10px; margin: 5px; border-radius: 10px;'>");
                     chatDisplay->append("<b>Warning:</b> Unexpected API response format");
-                    chatDisplay->append("<br><pre>" + responseStr.left(500) + "</pre>");
+                    chatDisplay->append("<br><pre>" + QString::fromUtf8(responseData.left(500)) + "</pre>");
                     chatDisplay->append("</div>");
                     statusLabel->setText("Status: Parse Error");
                     statusLabel->setStyleSheet("color: #FF9800; font-weight: bold;");
                 }
             } else {
-                QString error = curlProcess->readAllStandardError();
+                // Error occurred
+                QString errorString = reply->errorString();
+                QByteArray errorData = reply->readAll();
+                
                 chatDisplay->append("<div style='background-color: #FFEBEE; padding: 10px; margin: 5px; border-radius: 10px;'>");
                 chatDisplay->append("<b>Error:</b> Failed to connect to Grok xAI API");
-                chatDisplay->append("<br><b>Details:</b> " + error);
+                chatDisplay->append("<br><b>Error Code:</b> " + QString::number(reply->error()));
+                chatDisplay->append("<br><b>Details:</b> " + errorString);
+                if (!errorData.isEmpty()) {
+                    chatDisplay->append("<br><b>Server Response:</b> " + QString::fromUtf8(errorData.left(200)));
+                }
                 chatDisplay->append("<br><br><i>Ensure XAI_API_KEY is valid and you have internet connection</i>");
                 chatDisplay->append("</div>");
                 
@@ -1931,10 +1953,8 @@ private slots:
                 statusLabel->setStyleSheet("color: #F44336; font-weight: bold;");
             }
             
-            curlProcess->deleteLater();
+            reply->deleteLater();
         });
-        
-        curlProcess->start("curl", args);
     }
     
     void showApiKeyConfig() {
@@ -2055,6 +2075,7 @@ private:
     QTextEdit* chatDisplay;
     QLineEdit* promptInput;
     QLabel* statusLabel;
+    QNetworkAccessManager* networkManager;
 };
 
 
