@@ -3,11 +3,14 @@
 QCalc_test.py - Unit Tests for Wolfram Extracted Physics Functions
 ===================================================================
 
-Pytest unit tests for 27 Wolfram physics functions extracted from source14/15.
+Pytest unit tests for Wolfram physics functions extracted from UQFF framework.
 
 Test Coverage:
 - SOURCE14: 12 magnetar physics terms (SGR 0501+4516)
 - SOURCE15: 15 SMBH physics terms (Sagittarius A*)
+- SOURCE16: 3 star formation terms (Tapestry Nebula)
+- SOURCE17: 2 cluster terms (Westerlund 2)
+- SOURCE26: 3 cosmological terms (HUDF)
 - Integration: QCalc.py UnifiedFieldSolver Wolfram integration
 
 Architecture Validation:
@@ -15,9 +18,11 @@ Architecture Validation:
 - Generic function names (not system-specific)
 - EquationResult metadata completeness
 - Realistic physics values and units
+- m/s² vacuum proof unit consistency
 
 Author: Daniel T. Murphy
 Date: February 13, 2026
+Updated: February 13, 2026 (Added SOURCE16,17,26 tests)
 """
 
 import pytest
@@ -347,6 +352,113 @@ class TestSource15SMBHPhysics:
         assert result.result == pytest.approx(r_s_expected, rel=1e-6), "r_s = 2GM/c²"
         assert result.unit == 'm', "Unit should be meters"
         assert 1e10 < result.result < 2e10, f"Sgr A* r_s ≈ 1.27×10^10 m, got {result.result:.3e}"
+
+
+class TestSource16StarFormation:
+    """Test 3 star formation functions from SOURCE16."""
+    
+    @pytest.fixture
+    def star_formation_params(self):
+        """Tapestry Nebula star formation test parameters."""
+        return create_manual_input(
+            "Tapestry Star Formation Test",
+            M=5e3 * CONSTANTS['M_sun'],  # 5,000 solar masses
+            r=5e16,                      # ~1.5 pc radius
+            SFR=0.05,                    # 0.05 M_sun/year star formation rate
+            rho=1e-18,                   # 10^-18 kg/m³ cloud density
+            v_surf=1e4                   # 10 km/s stellar wind velocity
+        )
+    
+    def test_star_formation_mass_growth(self, star_formation_params):
+        """Test star formation mass growth rate."""
+        t = 1e6 * 3.156e7  # 1 Myr
+        result = calculate_star_formation_mass_growth(star_formation_params, t)
+        
+        assert result.result != 0, "Mass growth should be non-zero"
+        assert result.unit == 'm/s²', "Unit should be m/s² (vacuum proof)"
+        assert 'SFR' in result.parameters_used or 'M' in result.parameters_used, "Should track SFR or mass"
+    
+    def test_stellar_wind_ram_pressure(self, star_formation_params):
+        """Test stellar wind ram pressure contribution."""
+        result = calculate_stellar_wind_ram_pressure(star_formation_params)
+        
+        assert result.result != 0, "Wind pressure should be non-zero"
+        assert result.unit == 'm/s²', "Unit should be m/s² (vacuum proof)"
+    
+    def test_tapestry_radiation_pressure(self, star_formation_params):
+        """Test Tapestry radiation pressure term."""
+        result = calculate_tapestry_radiation_pressure(star_formation_params)
+        
+        assert result.result != 0, "Radiation pressure should be non-zero"
+        assert result.unit == 'm/s²', "Unit should be m/s² (vacuum proof)"
+
+
+class TestSource17Clusters:
+    """Test 2 cluster functions from SOURCE17."""
+    
+    @pytest.fixture
+    def cluster_params(self):
+        """Westerlund 2 cluster test parameters."""
+        return create_manual_input(
+            "Westerlund 2 Test",
+            M=1e4 * CONSTANTS['M_sun'],  # 10,000 solar masses
+            r=2e16,                      # ~0.6 pc radius
+            age=2e6 * 3.156e7            # 2 Myr age
+        )
+    
+    def test_cluster_mass_evolution(self, cluster_params):
+        """Test cluster mass evolution over time."""
+        t = 1e6 * 3.156e7  # 1 Myr
+        result = calculate_cluster_mass_evolution(cluster_params, t)
+        
+        assert result.result != 0, "Cluster evolution should produce non-zero acceleration"
+        assert result.unit == 'm/s²', "Unit should be m/s² (vacuum proof)"
+    
+    def test_westerlund2_composite_muge(self, cluster_params):
+        """Test Westerlund2 composite MUGE calculation."""
+        t = 1e6 * 3.156e7  # 1 Myr
+        result = calculate_westerlund2_composite_muge(cluster_params, t)
+        
+        assert result.result != 0, "Composite MUGE should be non-zero"
+        assert result.unit == 'm/s²', "Unit should be m/s² (vacuum proof)"
+
+
+class TestSource26Cosmological:
+    """Test 3 HUDF cosmological functions from SOURCE26."""
+    
+    @pytest.fixture
+    def hudf_params(self):
+        """Hubble Ultra Deep Field test parameters."""
+        return create_manual_input(
+            "HUDF Galaxy Test",
+            M=1e11 * CONSTANTS['M_sun'],  # 100 billion solar masses
+            r=1e22,                        # ~3 Mpc
+            z=6.5,                         # High redshift
+            SFR=100.0                      # 100 M_sun/year
+        )
+    
+    def test_hudf_star_formation_mass(self, hudf_params):
+        """Test HUDF star formation mass contribution."""
+        t = 1e9 * 3.156e7  # 1 Gyr
+        result = calculate_hudf_star_formation_mass(hudf_params, t)
+        
+        assert result.result != 0, "HUDF SFR contribution should be non-zero"
+        assert result.unit == 'm/s²', "Unit should be m/s² (vacuum proof)"
+    
+    def test_hudf_intergalaxy_interaction(self, hudf_params):
+        """Test HUDF intergalaxy interaction term."""
+        result = calculate_hudf_intergalaxy_interaction(hudf_params)
+        
+        assert result.result != 0, "Intergalaxy interaction should be non-zero"
+        assert result.unit == 'm/s²', "Unit should be m/s² (vacuum proof)"
+    
+    def test_hudf_complete_muge(self, hudf_params):
+        """Test HUDF complete MUGE calculation."""
+        t = 1e9 * 3.156e7  # 1 Gyr
+        result = calculate_hudf_complete_muge(hudf_params, t)
+        
+        assert result.result != 0, "Complete MUGE should be non-zero"
+        assert result.unit == 'm/s²', "Unit should be m/s² (vacuum proof)"
 
 
 class TestQCalcIntegration:
