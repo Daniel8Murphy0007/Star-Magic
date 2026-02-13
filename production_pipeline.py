@@ -113,9 +113,10 @@ class ProductionPipeline:
         # Step 3: Statistical analysis
         print("[3/4] Computing triple point statistical analysis...")
         try:
+            # Remove unit filter to analyze all equations
             analysis = compute_triple_point_analysis(
                 qcalc_result,
-                unit_filter=unit_filter
+                unit_filter=None  # Analyze all equations regardless of unit
             )
             print(f"    ✓ Range: {analysis.range.min_value:.3e} to {analysis.range.max_value:.3e}")
             print(f"    ✓ Scale: 10^{analysis.scale.order_of_magnitude}")
@@ -220,8 +221,18 @@ class ProductionPipeline:
             filename = f"{query_name}_{timestamp}.json"
         
         output_path = self.output_dir / filename
+        
+        # Custom JSON encoder for enum and other non-serializable types
+        def json_serializer(obj):
+            if hasattr(obj, '__class__') and hasattr(obj.__class__, '__name__'):
+                if 'UQFFScale' in obj.__class__.__name__:
+                    return str(obj.name) if hasattr(obj, 'name') else str(obj)
+                if hasattr(obj, 'value'):
+                    return obj.value
+            return str(obj)
+        
         with open(output_path, 'w') as f:
-            json.dump(result, f, indent=2)
+            json.dump(result, f, indent=2, default=json_serializer)
         
         print(f"✓ Exported JSON: {output_path}")
         return output_path
@@ -323,7 +334,7 @@ class ProductionPipeline:
         
         output_path = self.output_dir / filename
         
-        with open(output_path, 'w') as f:
+        with open(output_path, 'w', encoding='utf-8') as f:
             f.write("Equation,Result,Unit,Description\n")
             equations = result['qcalc_result'].get('long_form_equations', [])
             for eq in equations:
