@@ -12,10 +12,8 @@ import os
 # Add parent directory to path for QCalc imports
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# LaTeX-style fonts for publication quality
-rc('font', **{'family': 'serif', 'serif': ['Computer Modern Roman']})
-rc('text', usetex=True)
-plt.rcParams.update({'font.size': 11})
+# Standard fonts (no LaTeX required)
+plt.rcParams.update({'font.size': 11, 'font.family': 'serif'})
 
 # Import UQFF components
 try:
@@ -110,8 +108,8 @@ def figure2_wormhole_metric():
     r = np.linspace(b0, 10 * b0, 500)
     
     # Compute metric components
-    g_tt = np.array([-wormhole.metric_components(ri, 0)[0] for ri in r])
-    g_rr = np.array([wormhole.metric_components(ri, 0)[1] for ri in r])
+    g_tt = np.array([-wormhole.metric_components(ri, 0)['g_tt'] for ri in r])
+    g_rr = np.array([wormhole.metric_components(ri, 0)['g_rr'] for ri in r])
     
     # Throat function
     b_r = np.array([wormhole.throat_function(ri) for ri in r])
@@ -299,7 +297,7 @@ def figure4_cosmology():
     Omega_Lambda = 0.685
     Omega_aether = 1e-10
     
-    cosmo = CosmologicalEvolution(H0, Omega_m, Omega_Lambda)
+    cosmo = CosmologicalEvolution(H0, Omega_m)
     
     # Redshift range
     z_arr = np.linspace(0, 5, 100)
@@ -310,8 +308,8 @@ def figure4_cosmology():
     H_standard = np.array([cosmo.hubble_parameter(z, 0) for z in z_arr])
     H_aether = np.array([cosmo.hubble_parameter(z, Omega_aether) for z in z_arr])
     
-    ax1.plot(z_arr, H_standard / H0, 'b-', linewidth=2.5, label='Standard $\Lambda$CDM')
-    ax1.plot(z_arr, H_aether / H0, 'r--', linewidth=2, label=f'With aether ($\Omega_a = 10^{{-10}}$)')
+    ax1.plot(z_arr, H_standard / H0, 'b-', linewidth=2.5, label=r'Standard $\Lambda$CDM')
+    ax1.plot(z_arr, H_aether / H0, 'r--', linewidth=2, label=r'With aether ($\Omega_a = 10^{-10}$)')
     ax1.set_xlabel('Redshift $z$', fontsize=12)
     ax1.set_ylabel('$H(z)/H_0$', fontsize=12)
     ax1.set_title('(a) Hubble Parameter Evolution', fontsize=13, fontweight='bold')
@@ -324,8 +322,8 @@ def figure4_cosmology():
     d_c_aether = np.array([cosmo.comoving_distance(z, Omega_aether, n_points=200) / 3.086e22 
                           for z in z_arr])
     
-    ax2.plot(z_arr, d_c_standard, 'b-', linewidth=2.5, label='Standard $\Lambda$CDM')
-    ax2.plot(z_arr, d_c_aether, 'r--', linewidth=2, label=f'With aether')
+    ax2.plot(z_arr, d_c_standard, 'b-', linewidth=2.5, label=r'Standard $\Lambda$CDM')
+    ax2.plot(z_arr, d_c_aether, 'r--', linewidth=2, label=r'With aether')
     ax2.set_xlabel('Redshift $z$', fontsize=12)
     ax2.set_ylabel('Comoving Distance (Mpc)', fontsize=12)
     ax2.set_title('(b) Comoving Distance', fontsize=13, fontweight='bold')
@@ -358,27 +356,26 @@ def figure4_cosmology():
     # Panel D: CMB constraints
     ax4.axis('off')
     
-    cmb_text = r"""
-    \textbf{CMB Epoch Constraints} ($z = 1000$)
-    
-    \textbf{Aether contribution at CMB:}
-    $$\frac{\Omega_{\rm aether}(z=1000)}{\Omega_m(z=1000)} = \frac{\Omega_a (1001)^4}{\Omega_m (1001)^3} \approx 10^{-6}$$
-    
-    \textbf{Equation of state:}
-    $\bullet$ Matter: $w = 0$ (non-relativistic)
-    $\bullet$ $\Lambda$: $w = -1$ (cosmological constant)
-    $\bullet$ \textbf{Aether}: $w = -1/3$ (radiation-like)
-    
-    \textbf{Power spectrum impact:}
-    Aether contribution $< 0.01\%$ at CMB epoch,
+    cmb_text = r"""CMB Epoch Constraints (z = 1000)
+
+Aether contribution at CMB:
+    $\Omega_{aether}(z=1000) / \Omega_m(z=1000) \approx 10^{-6}$
+
+Equation of state:
+    - Matter: $w = 0$ (non-relativistic)
+    - $\Lambda$: $w = -1$ (cosmological constant)
+    - Aether: $w = -1/3$ (radiation-like)
+
+Power spectrum impact:
+    Aether contribution < 0.01% at CMB epoch,
     consistent with Planck 2018 constraints on
     additional radiation-like components.
-    
-    \textbf{Future tests:}
-    $\bullet$ High-$z$ supernovae ($z > 5$)
-    $\bullet$ CMB $B$-mode polarization
-    $\bullet$ 21-cm cosmology (epoch of reionization)
-    $\bullet$ Gravitational wave standard sirens
+
+Future tests:
+    - High-z supernovae (z > 5)
+    - CMB B-mode polarization
+    - 21-cm cosmology (epoch of reionization)
+    - Gravitational wave standard sirens
     """
     
     ax4.text(0.1, 0.95, cmb_text, transform=ax4.transAxes, 
@@ -455,29 +452,28 @@ def figure5_higher_order_gr():
     # Panel D: Summary table
     ax4.axis('off')
     
-    summary_text = r"""
-    \textbf{Higher-Order GR Corrections Summary}
-    
-    \textbf{Metric Expansion:}
-    $$g_{\mu\nu} = \eta_{\mu\nu} + \epsilon \delta g^{(1)} + \epsilon^2 \delta g^{(2)} + \mathcal{O}(\epsilon^3)$$
-    
-    \textbf{Current UQFF ($\eta = 10^{-22}$):}
-    $\bullet$ $|\delta g^{(1)}| \sim 10^{-14}$
-    $\bullet$ $|\delta g^{(2)}| \sim 4 \times 10^{-28}$
-    $\bullet$ Ratio: $4 \times 10^{-14} \ll 1$
-    
-    \textbf{Observational Precision:}
-    $\bullet$ GPS timing: $\sim 10^{-12}$ (far above $\delta g^{(2)}$)
-    $\bullet$ LIGO: $\sim 10^{-21}$ (still above $\delta g^{(2)}$)
-    $\bullet$ Future quantum clocks: $\sim 10^{-18}$ (approaching)
-    
-    \textbf{Conclusion:}
+    summary_text = r"""Higher-Order GR Corrections Summary
+
+Metric Expansion:
+    $g_{\mu\nu} = \eta_{\mu\nu} + \epsilon \delta g^{(1)} + \epsilon^2 \delta g^{(2)} + O(\epsilon^3)$
+
+Current UQFF ($\eta = 10^{-22}$):
+    - $|\delta g^{(1)}| \sim 10^{-14}$
+    - $|\delta g^{(2)}| \sim 4 \times 10^{-28}$
+    - Ratio: $4 \times 10^{-14} \ll 1$
+
+Observational Precision:
+    - GPS timing: $\sim 10^{-12}$ (far above $\delta g^{(2)}$)
+    - LIGO: $\sim 10^{-21}$ (still above $\delta g^{(2)}$)
+    - Future quantum clocks: $\sim 10^{-18}$ (approaching)
+
+Conclusion:
     First-order treatment sufficient for all current
     and near-future observations. Second-order becomes
     relevant only if $\eta$ increases to $\sim 10^{-10}$
     or in ultra-strong field regimes.
-    
-    \textbf{Note:} Higher-order corrections contain
+
+Note: Higher-order corrections contain
     nonlinear terms: $(\delta g^{(1)})^2$ and $(\partial T_s)^2$.
     """
     

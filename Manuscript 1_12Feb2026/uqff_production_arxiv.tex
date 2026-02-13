@@ -16,7 +16,7 @@
 Production-Scale Implementation and Advanced Theoretical Extensions}}
 
 \author{
-Daniel J. Murphy\textsuperscript{1} \\
+Daniel T. Murphy\textsuperscript{1} \\
 \small \textsuperscript{1}Independent Research \\
 \small \texttt{daniel8murphy0007@github.com}
 }
@@ -196,32 +196,32 @@ Our implementation follows strict separation of concerns:
 \begin{figure}[H]
 \centering
 \begin{verbatim}
-┌─────────────────────────────────────┐
-│    REST API (QCalc_API.py)          │
-│    8 endpoints, Flask + CORS        │
-└──────────────┬──────────────────────┘
-               │
-               ▼
-┌─────────────────────────────────────┐
-│  Performance Layer                  │
-│  (QCalc_Performance.py)             │
-│  • Cache: 640× speedup              │
-│  • Vectorization: 50-200× speedup   │
-└──────────────┬──────────────────────┘
-               │
-               ▼
-┌─────────────────────────────────────┐
-│  Physics Calculator (QCalc.py)      │
-│  Pure equations, no I/O             │
-│  2,753 lines, 36 equations          │
-└──────────────┬──────────────────────┘
-               │
-               ▼
-┌─────────────────────────────────────┐
-│  Advanced Extensions                │
-│  (QCalc_Advanced.py)                │
-│  Wormholes, GR, Cosmology           │
-└─────────────────────────────────────┘
++-------------------------------------+
+|    REST API (QCalc_API.py)          |
+|    8 endpoints, Flask + CORS        |
++-----------------+-------------------+
+                  |
+                  v
++-------------------------------------+
+|  Performance Layer                  |
+|  (QCalc_Performance.py)             |
+|  - Cache: 640x speedup              |
+|  - Vectorization: 50-200x speedup   |
++-----------------+-------------------+
+                  |
+                  v
++-------------------------------------+
+|  Physics Calculator (QCalc.py)      |
+|  Pure equations, no I/O             |
+|  2,753 lines, 36 equations          |
++-----------------+-------------------+
+                  |
+                  v
++-------------------------------------+
+|  Advanced Extensions                |
+|  (QCalc_Advanced.py)                |
+|  Wormholes, GR, Cosmology           |
++-------------------------------------+
 \end{verbatim}
 \caption{Software architecture with strict layer separation}
 \label{fig:architecture}
@@ -401,9 +401,9 @@ Throat radius $b_0$ & $1.00 \times 10^3$ m & Given \\
 Test radius $r$ & $2.00 \times 10^3$ m & $2 \times b_0$ \\
 $g_{tt}$ & $-1.000$ & Correct sign \\
 $g_{rr}$ & $1.288$ & $> 1$ (outside throat) \\
-$b(r)$ & $1.55 \times 10^3$ m & $< r$ ✓ \\
-$db/dr$ & $0.603$ & $< 1$ ✓ \\
-$\rho + P$ & $-1.75 \times 10^5$ kg/m$^3$ & $< 0$ ✓ \\
+$b(r)$ & $1.55 \times 10^3$ m & $< r$ (Yes) \\
+$db/dr$ & $0.603$ & $< 1$ (Yes) \\
+$\rho + P$ & $-1.75 \times 10^5$ kg/m$^3$ & $< 0$ (Yes) \\
 \textbf{Traversable?} & \textbf{YES} & \textbf{All criteria met} \\
 \bottomrule
 \end{tabular}
