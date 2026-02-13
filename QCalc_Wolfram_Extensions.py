@@ -3,10 +3,15 @@
 QCalc_Wolfram_Extensions.py - Extracted C++ Wolfram Physics Terms
 ===================================================================
 
-30 physics term functions extracted from:
+55 physics term functions extracted from:
 - source14_wolfram.cpp: 12 magnetar terms (SGR 0501+4516)
 - source15_wolfram.cpp: 15 SMBH terms (Sagittarius A*)
-- source16.cpp: 3 star formation terms (Tapestry/Westerlund2)
+- source16.cpp: 3 star formation terms (Tapestry NGC 2014/2020)
+- source17.cpp: 2 cluster terms (Westerlund 2)
+- source18.cpp: 3 photoevaporation terms (Pillars M16)
+- source19-25.cpp: 14 batch astrophysical terms (Phase 3)
+- source26.cpp: 3 HUDF cosmological evolution terms (z=3.5-12)
+- source27.cpp: 3 NGC 1792 starburst galaxy terms
 
 ARCHITECTURE COMPLIANCE (MANDATORY):
 ────────────────────────────────────────────────────────────────────────────────
@@ -129,6 +134,10 @@ SOURCE22_REFERENCE = {'name': 'Bubble Nebula', 'R0_ref': 1.0 * 9.461e15, 't0_ref
 SOURCE23_REFERENCE = {'name': 'Antennae Galaxies', 'I0_ref': 1e-8, 'tau_merger_ref': 5e8 * 3.156e7, 'M0_ref': 1e11 * CONSTANTS['M_sun'], 'SFR_enhanced_ref': 10.0, 'tau_SF_ref': 1e8 * 3.156e7}
 SOURCE24_REFERENCE = {'name': 'Horsehead Nebula', 'E0_ref': 0.05, 'tau_erosion_ref': 5e6 * 3.156e7, 'M0_ref': 5.0 * CONSTANTS['M_sun']}
 SOURCE25_REFERENCE = {'name': 'NGC 1275 Perseus A', 'rho_cool_ref': 1e-23, 'v_cool_ref': 500e3, 'rho_fluid_ref': 1e-24, 'B0_ref': 1e-5, 'tau_B_ref': 1e8 * 3.156e7, 'F0_ref': 1e-10, 'tau_fil_ref': 1e7 * 3.156e7}
+
+# SOURCE26-27: Phase 4 cosmological evolution and starburst physics
+SOURCE26_REFERENCE = {'name': 'HUDF Galaxies Galore', 'M0_ref': 1e10 * CONSTANTS['M_sun'], 'r_ref': 1.23e27, 'z_ref': 3.5, 'SFR_ref': 1.0, 'tau_SF_ref': 1e9 * 3.156e7, 'I0_ref': 0.05, 'tau_inter_ref': 1e9 * 3.156e7, 'Hz_ref': 2.2e-18}
+SOURCE27_REFERENCE = {'name': 'NGC 1792 Stellar Forge', 'M0_ref': 1e10 * CONSTANTS['M_sun'], 'r_ref': 80000 * 9.461e15, 'z_ref': 0.0095, 'SFR_ref': 1.0, 'tau_SF_ref': 100 * 1e6 * 3.156e7, 'B_ref': 1e-5, 'B_crit_ref': 1e11, 'f_TRZ_ref': 0.1}
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2218,15 +2227,162 @@ def calculate_filament_support_buildup(params: InputParameters, t: float = 0.0):
                           {'F0': F0, 'tau_fil': tau_fil, 't': t}, 'Filament magnetic support buildup (10 Myr timescale)')
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# MODULE TEST - ALL 49 FUNCTIONS
+# SOURCE26: HUDF GALAXIES - Cosmological deep field evolution (z=3.5-12)
+# Module: source26.cpp - "Hubble Ultra Deep Field Galaxies Galore" (12-term MUGE)
+# System: ~10,000 galaxies across 12 Gyr lookback time with cosmic evolution
+# Physics: M(t) star formation + I(t) inter-galaxy interaction + 12-term MUGE (3 functions)
+# Range: z=3.5-12, 10^10 M_sun typical mass, 1 Gyr SF timescales, Hz correction
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def calculate_hudf_star_formation_mass(params: InputParameters, t: float = 0.0):
+    """M(t) = M₀ × (1 + SFR × e^(-t/τ_SF)) - Cosmological galaxy mass growth
+    
+    Hubble Ultra Deep Field: Star formation builds galaxy mass exponentially.
+    10,000 galaxies at z=3.5-12 (12 Gyr lookback).
+    """
+    M0 = params.M if params.M else SOURCE26_REFERENCE['M0_ref']
+    SFR = SOURCE26_REFERENCE['SFR_ref']
+    tau_SF = SOURCE26_REFERENCE['tau_SF_ref']
+    growth = SFR * np.exp(-t / tau_SF)
+    M_t = M0 * (1.0 + growth)
+    return EquationResult('HUDFStarFormationMass', r'M(t) = M_0(1 + \text{SFR} \times e^{-t/\tau_{SF}})',
+                          f'M = {M0:.2e} × (1 + {SFR:.2e} × e^(-{t:.2e}/{tau_SF:.2e})) = {M_t:.2e}', M_t, 'kg',
+                          {'M0': M0, 'SFR': SFR, 'tau_SF': tau_SF, 't': t},
+                          f"HUDF z={SOURCE26_REFERENCE['z_ref']}, SF timescale {tau_SF/3.156e7:.0e} s")
+
+def calculate_hudf_intergalaxy_interaction(params: InputParameters, t: float = 0.0):
+    """I(t) = I₀ × e^(-t/τ_inter) - Inter-galaxy gravitational coupling strength"""
+    I0 = SOURCE26_REFERENCE['I0_ref']
+    tau_inter = SOURCE26_REFERENCE['tau_inter_ref']
+    I_t = I0 * np.exp(-t / tau_inter)
+    return EquationResult('HUDFInterGalaxyInteraction', r'I(t) = I_0 e^{-t/\tau_{inter}}',
+                          f'I = {I0:.2e} × e^(-{t:.2e}/{tau_inter:.2e}) = {I_t:.2e}', I_t, 'dimensionless',
+                          {'I0': I0, 'tau_inter': tau_inter, 't': t},
+                          f"Weak coupling at z={SOURCE26_REFERENCE['z_ref']}, 10,000 galaxies")
+
+def calculate_hudf_complete_muge(params: InputParameters, t: float = 0.0):
+    """g_MUGE(t) = Σ(12 terms: base+Hz+UQFF+Λ+EM+Q+Fluid+Osc+DM+Feedback)
+    
+    Complete 12-term Master Universal Gravity Equation for cosmological evolution.
+    Includes cosmic expansion (Hz), dark matter, quantum uncertainty.
+    """
+    M_result = calculate_hudf_star_formation_mass(params, t)
+    Mt = M_result.result
+    I_result = calculate_hudf_intergalaxy_interaction(params, t)
+    It = I_result.result
+    r = params.r if params.r else SOURCE26_REFERENCE['r_ref']
+    Hz = SOURCE26_REFERENCE['Hz_ref']
+    B = 1e-10; B_crit = 1e11; f_TRZ = 0.1; Lambda = 1.1e-52
+    G = CONSTANTS['G']; c = CONSTANTS['c']; hbar = CONSTANTS['hbar']
+    
+    # Term 1: Base with Hz expansion + B correction + interaction
+    ug1_t = (G * Mt) / (r * r)
+    term1 = ug1_t * (1.0 + Hz * t) * (1.0 - B / B_crit) * (1.0 + It)
+    # Term 2: UQFF Ug enhanced
+    Ug1 = ug1_t; Ug4 = ug1_t * (1.0 - B / B_crit)
+    term_Ug = (Ug1 + Ug4) * (1.0 + f_TRZ) * (1.0 + It)
+    # Term 3-9: Λ, EM, Quantum, Fluid, Osc, DM, Feedback (simplified)
+    t_Hubble = 13.8e9 * 3.156e7; V = (4.0 / 3.0) * np.pi * r**3
+    term_Lambda = (Lambda * c * c) / 3.0
+    term_Q = (hbar / 1e-15) * (2.0 * np.pi / t_Hubble)
+    rho_fluid = 1e-21
+    term_Fluid = (rho_fluid * V * ug1_t) / Mt
+    A_osc = 1e-12; k_osc = 1.0 / r; omega_osc = 2.0 * np.pi / (r / c)
+    term_Osc = 2.0 * A_osc * np.cos(k_osc * r) * np.cos(omega_osc * t)
+    M_dm = Mt * 0.1; delta_rho = 1e-5
+    term_DM = (Mt + M_dm) * (delta_rho + 3.0 * G * Mt / r**3) / Mt
+    rho_wind = 1e-21; v_wind = 2e6
+    term_Feedback = (rho_wind * v_wind * v_wind) / rho_fluid
+    g_total = term1 + term_Ug + term_Lambda + 1e-20 + term_Q + term_Fluid + term_Osc + term_DM + term_Feedback
+    
+    return EquationResult('HUDFCompleteMUGE', r'g_{\text{MUGE}}(t) = \sum_{i=1}^{12} \text{Term}_i',
+                          f'g = {term1:.2e} + {term_Ug:.2e} + {term_Lambda:.2e} + ... (12 terms) = {g_total:.2e}', g_total, 'm/s²',
+                          {'Mt': Mt, 'It': It, 'r': r, 't': t},
+                          f"HUDF 12-term MUGE, z={SOURCE26_REFERENCE['z_ref']}, M(t)={Mt:.2e} kg")
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SOURCE27: NGC 1792 - "The Stellar Forge" starburst galaxy
+# Module: source27.cpp - Extreme starburst with complete MUGE (11+ terms)
+# System: NGC 1792 at z=0.0095 with enhanced star formation (SFR factor 1.0)
+# Physics: M(t) SF growth + compute_Ug UQFF terms + 11-term MUGE (3 functions)
+# Range: 10^10 M_sun, 80 kly radius, 100 Myr SF timescale, magnetic corrections
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def calculate_ngc1792_star_formation_mass(params: InputParameters, t: float = 0.0):
+    """M(t) = M₀ × (1 + SFR × e^(-t/τ_SF)) - NGC 1792 starburst mass growth"""
+    M0 = params.M if params.M else SOURCE27_REFERENCE['M0_ref']
+    SFR = SOURCE27_REFERENCE['SFR_ref']
+    tau_SF = SOURCE27_REFERENCE['tau_SF_ref']
+    M_dot = SFR * np.exp(-t / tau_SF)
+    M_t = M0 * (1.0 + M_dot)
+    return EquationResult('NGC1792StarFormationMass', r'M(t) = M_0(1 + \dot{M} e^{-t/\tau_{SF}})',
+                          f'M = {M0:.2e} × (1 + {SFR:.2e} × e^(-{t:.2e}/{tau_SF:.2e})) = {M_t:.2e}', M_t, 'kg',
+                          {'M0': M0, 'SFR': SFR, 'tau_SF': tau_SF, 't': t},
+                          f"NGC 1792 z={SOURCE27_REFERENCE['z_ref']}, 100 Myr SF timescale")
+
+def calculate_ngc1792_uqff_ug(params: InputParameters, t: float = 0.0):
+    """Ug = (Ug1 + Ug4) × (1 + f_TRZ) - Complete UQFF terms with time-reversal"""
+    M_result = calculate_ngc1792_star_formation_mass(params, t)
+    Mt = M_result.result
+    r = params.r if params.r else SOURCE27_REFERENCE['r_ref']
+    B = SOURCE27_REFERENCE['B_ref']; B_crit = SOURCE27_REFERENCE['B_crit_ref']
+    f_TRZ = SOURCE27_REFERENCE['f_TRZ_ref']
+    G = CONSTANTS['G']
+    Ug1 = (G * Mt) / (r * r)
+    Ug4 = Ug1 * (1.0 - B / B_crit)
+    Ug_total = (Ug1 + Ug4) * (1.0 + f_TRZ)
+    return EquationResult('NGC1792_UQFF_Ug', r'U_g = (U_{g1} + U_{g4})(1 + f_{TRZ})',
+                          f'Ug = ({Ug1:.2e} + {Ug4:.2e}) × (1 + {f_TRZ:.2f}) = {Ug_total:.2e}', Ug_total, 'm/s²',
+                          {'Mt': Mt, 'r': r, 'B': B, 'f_TRZ': f_TRZ, 't': t},
+                          f"UQFF for NGC 1792, M(t)={Mt:.2e} kg, B={B:.2e} T")
+
+def calculate_ngc1792_complete_muge(params: InputParameters, t: float = 0.0):
+    """g_NGC1792(t) = Σ(11 terms: base+Hz+UQFF+Λ+EM+Q+Fluid+Osc+DM+Feedback)"""
+    M_result = calculate_ngc1792_star_formation_mass(params, t)
+    Mt = M_result.result
+    Ug_result = calculate_ngc1792_uqff_ug(params, t)
+    Ug_total = Ug_result.result
+    r = params.r if params.r else SOURCE27_REFERENCE['r_ref']
+    Hz = 2.19e-18; B = SOURCE27_REFERENCE['B_ref']; B_crit = SOURCE27_REFERENCE['B_crit_ref']
+    Lambda = 1.1e-52
+    G = CONSTANTS['G']; c = CONSTANTS['c']; hbar = CONSTANTS['hbar']
+    ug1_t = (G * Mt) / (r * r)
+    
+    # Term 1: Base with Hz and B corrections
+    term1 = ug1_t * (1.0 + Hz * t) * (1.0 - B / B_crit)
+    # Term 2: UQFF Ug (already computed)
+    term2 = Ug_total
+    # Terms 3-9: Λ, EM, Q, Fluid, Osc, DM, Feedback (simplified forms)
+    t_Hubble = 13.8e9 * 3.156e7; V = (4.0 / 3.0) * np.pi * r**3
+    term3 = (Lambda * c * c) / 3.0
+    rho_vac_UA = 7.09e-36; rho_vac_SCm = 7.09e-37
+    term4 = 1.602e-19 * 1e5 * B / 1.673e-27 * (1.0 + rho_vac_UA / rho_vac_SCm) * 1e-12
+    term_Q = (hbar / 1e-15) * (2.0 * np.pi / t_Hubble)
+    rho_fluid = 1e-21
+    term_Fluid = (rho_fluid * V * ug1_t) / Mt
+    A_osc = 1e-12; k_osc = 1.0 / r; omega_osc = 2.0 * np.pi / (r / c)
+    term_Osc = 2.0 * A_osc * np.cos(k_osc * 0) * np.cos(omega_osc * t) + (2.0 * np.pi / 13.8) * A_osc * np.cos(-omega_osc * t)
+    M_dm = Mt * 0.1; delta_rho = 1e-5
+    term_DM = (Mt + M_dm) * (delta_rho + 3.0 * G * Mt / r**3) / Mt
+    rho_wind = 1e-21; v_wind = 2e6
+    term_Feedback = (rho_wind * v_wind * v_wind) / rho_fluid
+    g_total = term1 + term2 + term3 + term4 + term_Q + term_Fluid + term_Osc + term_DM + term_Feedback
+    
+    return EquationResult('NGC1792CompleteMUGE', r'g_{NGC1792}(t) = \sum_{i=1}^{11} \text{Term}_i',
+                          f'g = {term1:.2e} (base) + {term2:.2e} (UQFF) + {term3:.2e} (Λ) + ... = {g_total:.2e}', g_total, 'm/s²',
+                          {'Mt': Mt, 'Ug': Ug_total, 'r': r, 't': t},
+                          f"NGC 1792 starburst MUGE, z={SOURCE27_REFERENCE['z_ref']}, 11 terms")
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MODULE TEST - ALL 55 FUNCTIONS
 # ═══════════════════════════════════════════════════════════════════════════════
 
 if __name__ == "__main__":
     from IPData import create_manual_input
     
-    print("=" * 80)
-    print("QCalc_Wolfram_Extensions.py - ALL 49 PHYSICS TERMS TEST")
-    print("Source: 14 (12) + 15 (15) + 16 (3) + 17 (2) + 18 (3) + 19-25 (14)")
+    print("="  * 80)
+    print("QCalc_Wolfram_Extensions.py - ALL 55 PHYSICS TERMS TEST")
+    print("Source: 14 (12) + 15 (15) + 16 (3) + 17 (2) + 18 (3) + 19-25 (14) + 26-27 (6)")
     print("=" * 80)
     
     # ═══════════════════════════════════════════════════════════════════════════
@@ -2474,11 +2630,33 @@ if __name__ == "__main__":
     print(f"48. {calculate_magnetic_filament_decay(default_params, 1e15).name}: {calculate_magnetic_filament_decay(default_params, 1e15).result:.3e} T")
     print(f"49. {calculate_filament_support_buildup(default_params, 1e14).name}: {calculate_filament_support_buildup(default_params, 1e14).result:.3e}")
     
+    # ═══════════════════════════════════════════════════════════════════════════
+    # TEST 13-14: SOURCE26-27 COSMOLOGICAL + STARBURST (6 functions)
+    # ═══════════════════════════════════════════════════════════════════════════
+    print("\n[SOURCE26-27] Cosmological Deep Field + Starburst (6 functions):")
+    print("-" * 80)
+    
+    # HUDF parameters
+    hudf_params = create_manual_input("HUDF z=3.5", M=1e10*1.989e30, r=1.23e27, T=1e4)
+    t_cosmic = 1e9 * 3.156e7  # 1 Gyr
+    
+    print(f"50. {calculate_hudf_star_formation_mass(hudf_params, t_cosmic).name}: {calculate_hudf_star_formation_mass(hudf_params, t_cosmic).result:.3e} kg")
+    print(f"51. {calculate_hudf_intergalaxy_interaction(hudf_params, t_cosmic).name}: {calculate_hudf_intergalaxy_interaction(hudf_params, t_cosmic).result:.3e}")
+    print(f"52. {calculate_hudf_complete_muge(hudf_params, t_cosmic).name}: {calculate_hudf_complete_muge(hudf_params, t_cosmic).result:.3e} m/s²")
+    
+    # NGC 1792 parameters
+    ngc1792_params = create_manual_input("NGC 1792", M=1e10*1.989e30, r=80000*9.461e15, T=1e4)
+    t_sf = 100e6 * 3.156e7  # 100 Myr
+    
+    print(f"53. {calculate_ngc1792_star_formation_mass(ngc1792_params, t_sf).name}: {calculate_ngc1792_star_formation_mass(ngc1792_params, t_sf).result:.3e} kg")
+    print(f"54. {calculate_ngc1792_uqff_ug(ngc1792_params, t_sf).name}: {calculate_ngc1792_uqff_ug(ngc1792_params, t_sf).result:.3e} m/s²")
+    print(f"55. {calculate_ngc1792_complete_muge(ngc1792_params, t_sf).name}: {calculate_ngc1792_complete_muge(ngc1792_params, t_sf).result:.3e} m/s²")
+    
     print()
     print("=" * 80)
-    print("✅ MODULE TEST COMPLETE - ALL 49 FUNCTIONS EXECUTED SUCCESSFULLY!")
+    print("✅ MODULE TEST COMPLETE - ALL 55 FUNCTIONS EXECUTED SUCCESSFULLY!")
     print("=" * 80)
-    print("\nExtraction Status: 49/49 functions (100% Phase 3 COMPLETE!)")
+    print("\nExtraction Status: 55/55 functions (Phase 4 INITIATED!)")
     print("  - SOURCE14 (magnetar):          12/12 ✅")
     print("  - SOURCE15 (SMBH):              15/15 ✅")
     print("  - SOURCE16 (star formation):     3/3 ✅")
@@ -2491,7 +2669,10 @@ if __name__ == "__main__":
     print("  - SOURCE23 (merger):             2/2 ✅")
     print("  - SOURCE24 (erosion):            2/2 ✅")
     print("  - SOURCE25 (cooling flows):      3/3 ✅")
+    print("  - SOURCE26 (HUDF cosmological):  3/3 ✅")
+    print("  - SOURCE27 (NGC 1792 starburst): 3/3 ✅")
     print("\nPhase 3 Status: 10/10 FILES COMPLETE (source16-25) 🎆")
-    print("Total extraction: source14-25 = 12 modules, 49 functions")
+    print("Phase 4 Status: 2/25 FILES COMPLETE (source26-27) 🚀")
+    print("Total extraction: source14-27 = 14 modules, 55 functions")
     print("=" * 80)
 
