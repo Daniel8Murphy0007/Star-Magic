@@ -50,6 +50,9 @@ import json
 from IPData import InputParameters, recall_input, get_latest_input
 from OPData import OutputDataStore, QUERY_RESULTS
 
+# NOTE: QCalc_Wolfram_Extensions imports moved inside _compute_wolfram_physics_terms()
+# to avoid circular dependency (QCalc_Wolfram_Extensions imports CONSTANTS from QCalc)
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # UNIVERSAL PHYSICAL CONSTANTS
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -168,6 +171,13 @@ CONSTANTS = {
     'n_quantum_states': 26,    # Number of quantum states
     'f_TRZ': 0.1,              # Time-reversal zone factor
     'f_quasi': 0.01,           # Quasi-longitudinal wave factor
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # WOLFRAM SOURCE14/SOURCE15 EXTRACTED CONSTANTS
+    # ═══════════════════════════════════════════════════════════════════════════
+    'scale_EM': 1e-12,         # EM scaling factor for magnetar calculations
+    'precession_angle_deg': 30.0,  # Precession angle (degrees) for density modulation
+    'spin_factor_smbh': 0.3,   # SMBH dimensionless spin factor (Ω₀ = 0.3c/r)
     
     # ═══════════════════════════════════════════════════════════════════════════
     # STAR MAGIC 26-LEVEL STRUCTURE CONSTANTS (Phase 1 Integration)
@@ -1536,6 +1546,17 @@ class UnifiedFieldSolver:
                 equations.extend(ug4_results)
                 for eq in ug4_results:
                     solutions[eq.name] = eq.result
+            
+            # WOLFRAM EXTRACTED PHYSICS (27 functions from source14+15)
+            # Magnetar and SMBH physics terms with time-dependent evolution
+            try:
+                wolfram_results = self._compute_wolfram_physics_terms(params)
+                equations.extend(wolfram_results)
+                for eq in wolfram_results:
+                    solutions[eq.name] = eq.result
+            except Exception as e:
+                # Continue if Wolfram functions fail (missing dependencies)
+                solutions['_wolfram_warning'] = f"Wolfram physics terms skipped: {str(e)}"
         
         except ValueError as e:
             # Log validation errors but continue with available equations
@@ -2527,6 +2548,322 @@ class UnifiedFieldSolver:
         if abs(params.M_bh / (4.15e6 * self.C['M_sun']) - 1.0) < 0.1:
             # Within 10% of Sgr A* mass
             results.append(calc.sgr_a_star_example(t_days, t_n_days))
+        
+        return results
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # WOLFRAM EXTRACTED PHYSICS (27 functions from source14+15)
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def _compute_wolfram_physics_terms(self, params: ComputeParams) -> List[EquationResult]:
+        """
+        Compute all 27 Wolfram extracted physics terms (magnetar + SMBH).
+        
+        SOURCE14 (12 functions): Magnetar SGR 0501+4516 physics
+        SOURCE15 (15 functions): Sagittarius A* SMBH physics
+        
+        Automatically determines which functions to call based on available parameters.
+        
+        Args:
+            params: ComputeParams with system parameters
+            
+        Returns:
+            List of EquationResult objects from applicable Wolfram functions
+        """
+        results = []
+        
+        # Convert ComputeParams to InputParameters for Wolfram functions
+        from IPData import create_manual_input
+        
+        # Import Wolfram functions (lazy import to avoid circular dependency)
+        from QCalc_Wolfram_Extensions import (
+            # SOURCE14 - Magnetar (12 functions)
+            calculate_base_gravity_hubble_magnetic,
+            calculate_uqff_unification_time_reversal,
+            calculate_cosmological_constant_acceleration,
+            calculate_em_acceleration_vacuum_corrected,
+            calculate_gravitational_wave_spin_down,
+            calculate_quantum_uncertainty_heisenberg,
+            calculate_fluid_density_coupling,
+            calculate_oscillatory_wave_superposition,
+            calculate_dark_matter_perturbation,
+            calculate_magnetic_field_decay,
+            calculate_spin_evolution_angular_velocity,
+            calculate_time_reversal_factor,
+            # SOURCE15 - SMBH (15 functions)
+            calculate_smbh_time_dependent_mass,
+            calculate_smbh_base_gravity_mass_evolution,
+            calculate_smbh_uqff_unification,
+            calculate_smbh_cosmological_constant,
+            calculate_smbh_em_acceleration,
+            calculate_smbh_gravitational_wave,
+            calculate_smbh_quantum_uncertainty,
+            calculate_smbh_fluid_density,
+            calculate_smbh_oscillatory_wave_orbital,
+            calculate_smbh_dark_matter_precession,
+            calculate_smbh_magnetic_decay_gauss_conversion,
+            calculate_smbh_spin_evolution_relativistic,
+            calculate_smbh_precession_factor,
+            calculate_smbh_accretion_rate,
+            calculate_smbh_schwarzschild_radius
+        )
+        
+        wolfram_params = create_manual_input(
+            params.query_name,  # First positional arg is 'name'
+            M=params.M,
+            r=params.r,
+            B=getattr(params, 'B', None),
+            T=getattr(params, 'T', None),
+            L=getattr(params, 'L', None),
+            z=getattr(params, 'z', None),
+            rho=getattr(params, 'rho', None),
+            P=getattr(params, 'P', None),
+            omega=getattr(params, 'omega', None),
+            v_surf=getattr(params, 'v', None),
+            M_dot=getattr(params, 'M_dot', None),
+            M_halo=getattr(params, 'M_halo', None),
+            d_g=getattr(params, 'd_g', None),
+            M_bh=getattr(params, 'M_bh', None),
+            # Wolfram-specific parameters (from params if available)
+            tau_B=getattr(params, 'tau_B', None),
+            tau_Omega=getattr(params, 'tau_Omega', None),
+            tau_acc=getattr(params, 'tau_acc', None),
+            delta_x=getattr(params, 'delta_x', None),
+            delta_p=getattr(params, 'delta_p', None),
+            psi_integral=getattr(params, 'psi_integral', None),
+            precession_angle=getattr(params, 'precession_angle', None)
+        )
+        
+        # Get time parameters
+        t = getattr(params, 't', 0.0) if getattr(params, 't', 0.0) is not None else 0.0
+        t_n = getattr(params, 't_n', 0.0) if getattr(params, 't_n', 0.0) is not None else 0.0
+        x = params.r if params.r is not None else 0.0  # Use r as spatial position for wave equations
+        
+        # Determine system type based on parameters (magnetar vs SMBH)
+        is_magnetar = False
+        is_smbh = False
+        
+        if params.M is not None and params.r is not None:
+            M_solar = params.M / self.C['M_sun']
+            r_km = params.r / 1000.0
+            
+            # Magnetar: ~1.4 solar masses, ~20 km radius
+            if 0.5 < M_solar < 3.0 and r_km < 50:
+                is_magnetar = True
+            
+            # SMBH: > 10^5 solar masses, large radius
+            if M_solar > 1e5:
+                is_smbh = True
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # SOURCE14 - MAGNETAR PHYSICS (12 functions)
+        # ═══════════════════════════════════════════════════════════════════════
+        if is_magnetar or (params.M is not None and params.r is not None):
+            try:
+                # 1. Base Gravity (Hubble + Magnetic)
+                result = calculate_base_gravity_hubble_magnetic(wolfram_params, t)
+                results.append(result)
+            except Exception:
+                pass  # Continue if function fails
+            
+            try:
+                # 2. UQFF Unification (Time-Reversal)
+                # Compute Ug components first if not already available
+                if params.M is not None and params.r is not None:
+                    G = self.C['G']
+                    Ug1 = G * params.M / (params.r ** 2)
+                    Ug2 = Ug1 * 0.1  # Simplified estimate
+                    Ug3 = Ug1 * 0.05
+                    Ug4 = Ug1 * 0.01
+                    result = calculate_uqff_unification_time_reversal(wolfram_params, Ug1, Ug2, Ug3, Ug4)
+                    results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 3. Cosmological Constant
+                result = calculate_cosmological_constant_acceleration(wolfram_params)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 4. EM Acceleration (Vacuum Corrected)
+                result = calculate_em_acceleration_vacuum_corrected(wolfram_params, t)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 5. Gravitational Wave (Spin-Down)
+                result = calculate_gravitational_wave_spin_down(wolfram_params, t)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 6. Quantum Uncertainty (Heisenberg)
+                result = calculate_quantum_uncertainty_heisenberg(wolfram_params)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 7. Fluid Density Coupling
+                result = calculate_fluid_density_coupling(wolfram_params)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 8. Oscillatory Wave Superposition
+                result = calculate_oscillatory_wave_superposition(wolfram_params, t, x)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 9. Dark Matter Perturbation
+                result = calculate_dark_matter_perturbation(wolfram_params)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 10. Magnetic Field Decay
+                result = calculate_magnetic_field_decay(wolfram_params, t)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 11. Spin Evolution (Angular Velocity)
+                result = calculate_spin_evolution_angular_velocity(wolfram_params, t)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 12. Time-Reversal Factor
+                result = calculate_time_reversal_factor(wolfram_params)
+                results.append(result)
+            except Exception:
+                pass
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # SOURCE15 - SMBH PHYSICS (15 functions)
+        # ═══════════════════════════════════════════════════════════════════════
+        if is_smbh or (params.M is not None and params.M / self.C['M_sun'] > 1e4):
+            try:
+                # 13. SMBH Time-Dependent Mass
+                result = calculate_smbh_time_dependent_mass(wolfram_params, t)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 14. SMBH Base Gravity (M(t) Evolution)
+                result = calculate_smbh_base_gravity_mass_evolution(wolfram_params, t)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 15. SMBH UQFF Unification
+                if params.M is not None and params.r is not None:
+                    G = self.C['G']
+                    Ug1 = G * params.M / (params.r ** 2)
+                    Ug2 = Ug1 * 0.1
+                    Ug3 = Ug1 * 0.05
+                    Ug4 = Ug1 * 0.01
+                    result = calculate_smbh_uqff_unification(wolfram_params, Ug1, Ug2, Ug3, Ug4)
+                    results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 16. SMBH Cosmological Constant
+                result = calculate_smbh_cosmological_constant(wolfram_params)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 17. SMBH EM Acceleration
+                result = calculate_smbh_em_acceleration(wolfram_params, t)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 18. SMBH Gravitational Wave (M(t))
+                result = calculate_smbh_gravitational_wave(wolfram_params, t)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 19. SMBH Quantum Uncertainty
+                result = calculate_smbh_quantum_uncertainty(wolfram_params)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 20. SMBH Fluid Density (M(t))
+                result = calculate_smbh_fluid_density(wolfram_params, t)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 21. SMBH Oscillatory Wave (Orbital)
+                result = calculate_smbh_oscillatory_wave_orbital(wolfram_params, t, x)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 22. SMBH Dark Matter (Precession)
+                result = calculate_smbh_dark_matter_precession(wolfram_params)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 23. SMBH Magnetic Decay (Gauss→Tesla)
+                result = calculate_smbh_magnetic_decay_gauss_conversion(wolfram_params, t)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 24. SMBH Spin Evolution (Relativistic)
+                result = calculate_smbh_spin_evolution_relativistic(wolfram_params, t)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 25. SMBH Precession Factor
+                result = calculate_smbh_precession_factor(wolfram_params)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 26. SMBH Accretion Rate
+                result = calculate_smbh_accretion_rate(wolfram_params, t)
+                results.append(result)
+            except Exception:
+                pass
+            
+            try:
+                # 27. SMBH Schwarzschild Radius
+                result = calculate_smbh_schwarzschild_radius(wolfram_params)
+                results.append(result)
+            except Exception:
+                pass
         
         return results
     

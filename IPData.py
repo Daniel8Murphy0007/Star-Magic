@@ -144,6 +144,7 @@ class InputParameters:
     # ───────────────────────────────────────────────────────────────────────────
     psi: complex = 1.0 + 0j                 # Order parameter
     psi_magnitude: Optional[float] = None   # |ψ|²
+    psi_integral: Optional[float] = None    # Wavefunction integral ∫|ψ|²
     xi: Optional[float] = None              # Coherence length
     lambda_L: Optional[float] = None        # London penetration depth
     Q: complex = 0j                         # Charge parameter
@@ -152,6 +153,25 @@ class InputParameters:
     eta_coupling: float = 1e-22             # Aether coupling η
     kappa: float = 0.0005                   # κ calibration constant
     SSq: float = 0.57                       # [SSq] constant
+    
+    # ───────────────────────────────────────────────────────────────────────────
+    # DECAY/EVOLUTION TIMESCALES (Wolfram source14/source15)
+    # ───────────────────────────────────────────────────────────────────────────
+    tau_B: Optional[float] = None           # Magnetic decay timescale (s)
+    tau_Omega: Optional[float] = None       # Spin-down timescale (s)
+    tau_acc: Optional[float] = None         # Accretion timescale (s)
+    
+    # ───────────────────────────────────────────────────────────────────────────
+    # QUANTUM UNCERTAINTY PARAMETERS (Wolfram source14)
+    # ───────────────────────────────────────────────────────────────────────────
+    delta_x: Optional[float] = None         # Position uncertainty (m)
+    delta_p: Optional[float] = None         # Momentum uncertainty (kg·m/s)
+    
+    # ───────────────────────────────────────────────────────────────────────────
+    # SURFACE/VELOCITY PARAMETERS (Wolfram source14/source15)
+    # ───────────────────────────────────────────────────────────────────────────
+    v_surf: Optional[float] = None          # Surface velocity (m/s)
+    precession_angle: Optional[float] = None  # Precession angle (rad)
     
     # ───────────────────────────────────────────────────────────────────────────
     # OBSERVATIONAL PARAMETERS
