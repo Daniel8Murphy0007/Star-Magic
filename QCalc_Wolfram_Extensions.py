@@ -121,6 +121,15 @@ SOURCE18_REFERENCE = {
     'B_crit_ref': 4.4e13,                           # Critical B field (T)
 }
 
+# SOURCE19-25: Batch reference constants for remaining Phase 3 modules
+SOURCE19_REFERENCE = {'name': 'Rings of Relativity', 'M_cluster_ref': 1e14 * CONSTANTS['M_sun'], 'r_einstein_ref': 10.0 * 3.086e19, 'z_ref': 0.5, 'D_LS_over_D_S_ref': 0.67}
+SOURCE20_REFERENCE = {'name': 'NGC 2525 + SN 2018gv', 'M_BH_ref': 1e7 * CONSTANTS['M_sun'], 'r_BH_ref': 100.0 * 3.086e16, 'M_SN0_ref': 1.4 * CONSTANTS['M_sun'], 'tau_SN_ref': 3.156e7}
+SOURCE21_REFERENCE = {'name': 'NGC 3603', 'P0_ref': 1e-10, 'tau_exp_ref': 1e6 * 3.156e7, 'M0_ref': 400000.0 * CONSTANTS['M_sun'], 'SFR_ref': 0.1, 'tau_SF_ref': 2e6 * 3.156e7}
+SOURCE22_REFERENCE = {'name': 'Bubble Nebula', 'R0_ref': 1.0 * 9.461e15, 't0_ref': 1e5 * 3.156e7, 'v_wind_ref': 2000e3, 'M_star_ref': 46.0 * CONSTANTS['M_sun']}
+SOURCE23_REFERENCE = {'name': 'Antennae Galaxies', 'I0_ref': 1e-8, 'tau_merger_ref': 5e8 * 3.156e7, 'M0_ref': 1e11 * CONSTANTS['M_sun'], 'SFR_enhanced_ref': 10.0, 'tau_SF_ref': 1e8 * 3.156e7}
+SOURCE24_REFERENCE = {'name': 'Horsehead Nebula', 'E0_ref': 0.05, 'tau_erosion_ref': 5e6 * 3.156e7, 'M0_ref': 5.0 * CONSTANTS['M_sun']}
+SOURCE25_REFERENCE = {'name': 'NGC 1275 Perseus A', 'rho_cool_ref': 1e-23, 'v_cool_ref': 500e3, 'rho_fluid_ref': 1e-24, 'B0_ref': 1e-5, 'tau_B_ref': 1e8 * 3.156e7, 'F0_ref': 1e-10, 'tau_fil_ref': 1e7 * 3.156e7}
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # HELPER FUNCTIONS
@@ -2065,15 +2074,159 @@ def calculate_pillars_mass_with_erosion(params: InputParameters, t: float = 0.0)
     )
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# MODULE TEST - ALL 35 FUNCTIONS (12 source14 + 15 source15 + 3 source16 + 2 source17 + 3 source18)
+# SOURCE19-25 BATCH EXTRACTED FUNCTIONS (14 functions from 7 modules)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# SOURCE19: Rings of Relativity (GAL-CLUS-022058s) - 1 function
+def calculate_gravitational_lensing_amplification(params: InputParameters):
+    """Einstein ring lensing: L = (GM/c²r) × (D_LS/D_S)"""
+    M = _get_param_or_default(params, 'M', SOURCE19_REFERENCE['M_cluster_ref'])
+    r = _get_param_or_default(params, 'r', SOURCE19_REFERENCE['r_einstein_ref'])
+    D_LS_over_D_S = SOURCE19_REFERENCE['D_LS_over_D_S_ref']
+    G, c = CONSTANTS['G'], CONSTANTS['c']
+    theta_E = (G * M) / (c * c * r)
+    L = theta_E * D_LS_over_D_S * c * c / r
+    return EquationResult('GravitationalLensingAmplification', r'L = \frac{GM}{c^2 r} \cdot \frac{D_{LS}}{D_S}',
+                          f'L = {theta_E:.3e} × {D_LS_over_D_S:.3f} × {c*c/r:.3e} = {L:.3e} m/s²', L, 'm/s²',
+                          {'M': M, 'r_einstein': r, 'theta_E': theta_E}, 'Einstein ring at z=0.5, 10^14 M_sun cluster')
+
+# SOURCE20: NGC 2525 + SN 2018gv - 2 functions
+def calculate_central_smbh_contribution(params: InputParameters):
+    """SMBH gravity: g_BH = GM_BH/r_BH²"""
+    M_BH = _get_param_or_default(params, 'M_bh', SOURCE20_REFERENCE['M_BH_ref'])
+    r_BH = _get_param_or_default(params, 'r', SOURCE20_REFERENCE['r_BH_ref'])
+    G = CONSTANTS['G']
+    g_BH = (G * M_BH) / (r_BH * r_BH)
+    return EquationResult('CentralSMBHContribution', r'g_{BH} = \frac{GM_{BH}}{r_{BH}^2}',
+                          f'g_BH = {G:.3e} × {M_BH:.3e} / ({r_BH:.3e})² = {g_BH:.3e} m/s²', g_BH, 'm/s²',
+                          {'M_BH': M_BH, 'r_BH': r_BH}, 'NGC 2525 central SMBH (10^7 M_sun)')
+
+def calculate_supernova_mass_ejection(params: InputParameters, t: float = 0.0):
+    """SN mass loss: M_SN(t) = M_SN₀ × e^(-t/τ_SN)"""
+    M_SN0 = SOURCE20_REFERENCE['M_SN0_ref']
+    tau_SN = SOURCE20_REFERENCE['tau_SN_ref']
+    M_SN = M_SN0 * np.exp(-t / tau_SN)
+    return EquationResult('SupernovaMassEjection', r'M_{SN}(t) = M_{SN_0} e^{-t/\tau_{SN}}',
+                          f'M_SN = {M_SN0:.3e} × e^(-{t:.3e}/{tau_SN:.3e}) = {M_SN:.3e} kg', M_SN, 'kg',
+                          {'M_SN0': M_SN0, 'tau_SN': tau_SN, 't': t}, 'SN 2018gv Type Ia mass ejection (1.4 M_sun)')
+
+# SOURCE21: NGC 3603 - 2 functions
+def calculate_cavity_pressure_decay(params: InputParameters, t: float = 0.0):
+    """Cavity pressure: P(t) = P₀ × e^(-t/τ_exp)"""
+    P0 = SOURCE21_REFERENCE['P0_ref']
+    tau_exp = SOURCE21_REFERENCE['tau_exp_ref']
+    P_t = P0 * np.exp(-t / tau_exp)
+    return EquationResult('CavityPressureDecay', r'P(t) = P_0 e^{-t/\tau_{exp}}',
+                          f'P = {P0:.3e} × e^(-{t:.3e}/{tau_exp:.3e}) = {P_t:.3e} Pa', P_t, 'Pa',
+                          {'P0': P0, 'tau_exp': tau_exp, 't': t}, 'NGC 3603 stellar wind cavity (400,000 M_sun cluster)')
+
+def calculate_starburst_mass_growth(params: InputParameters, t: float = 0.0):
+    """SF mass growth: M(t) = M₀ × [1 + SFR × (1 - e^(-t/τ_SF))]"""
+    M0 = SOURCE21_REFERENCE['M0_ref']
+    SFR = SOURCE21_REFERENCE['SFR_ref']
+    tau_SF = SOURCE21_REFERENCE['tau_SF_ref']
+    M_t = M0 * (1 + SFR * (1 - np.exp(-t / tau_SF)))
+    return EquationResult('StarburstMassGrowth', r'M(t) = M_0[1 + \text{SFR}(1 - e^{-t/\tau_{SF}})]',
+                          f'M = {M0:.3e} × [1 + {SFR:.3f} × (1 - e^(-{t:.3e}/{tau_SF:.3e}))] = {M_t:.3e} kg', M_t, 'kg',
+                          {'M0': M0, 'SFR': SFR, 'tau_SF': tau_SF, 't': t}, 'Extreme starburst region (SFR enhanced)')
+
+# SOURCE22: Bubble Nebula - 2 functions
+def calculate_bubble_expansion_radius(params: InputParameters, t: float = 1e5 * 3.156e7):
+    """Weaver model: R_bubble(t) = R₀ × (t/t₀)^(3/5)"""
+    R0 = SOURCE22_REFERENCE['R0_ref']
+    t0 = SOURCE22_REFERENCE['t0_ref']
+    R_bubble = R0 * np.power(t / t0, 3.0 / 5.0)
+    return EquationResult('BubbleExpansionRadius', r'R_{bubble}(t) = R_0 \left(\frac{t}{t_0}\right)^{3/5}',
+                          f'R = {R0:.3e} × ({t:.3e}/{t0:.3e})^0.6 = {R_bubble:.3e} m', R_bubble, 'm',
+                          {'R0': R0, 't': t, 't0': t0}, 'Bubble Nebula expansion (BD+60°2522, 46 M_sun star)')
+
+def calculate_stellar_wind_feedback_acceleration(params: InputParameters, t: float = 1e5 * 3.156e7):
+    """Wind feedback: g_wind = v_wind² / R_bubble"""
+    v_wind = SOURCE22_REFERENCE['v_wind_ref']
+    R_bubble = SOURCE22_REFERENCE['R0_ref'] * np.power(t / SOURCE22_REFERENCE['t0_ref'], 3.0 / 5.0)
+    g_wind = v_wind * v_wind / R_bubble
+    return EquationResult('StellarWindFeedbackAcceleration', r'g_{wind} = \frac{v_{wind}^2}{R_{bubble}}',
+                          f'g = ({v_wind:.3e})² / {R_bubble:.3e} = {g_wind:.3e} m/s²', g_wind, 'm/s²',
+                          {'v_wind': v_wind, 'R_bubble': R_bubble}, 'Wind-driven bubble dynamics (2000 km/s)')
+
+# SOURCE23: Antennae Galaxies - 2 functions
+def calculate_tidal_interaction_strength(params: InputParameters, t: float = 0.0):
+    """Tidal interaction: I(t) = I₀ × e^(-t/τ_merger)"""
+    I0 = SOURCE23_REFERENCE['I0_ref']
+    tau_merger = SOURCE23_REFERENCE['tau_merger_ref']
+    I_t = I0 * np.exp(-t / tau_merger)
+    return EquationResult('TidalInteractionStrength', r'I(t) = I_0 e^{-t/\tau_{merger}}',
+                          f'I = {I0:.3e} × e^(-{t:.3e}/{tau_merger:.3e}) = {I_t:.3e}', I_t, 'dimensionless',
+                          {'I0': I0, 'tau_merger': tau_merger, 't': t}, 'Antennae merger (NGC 4038/4039) tidal strength')
+
+def calculate_merger_enhanced_star_formation(params: InputParameters, t: float = 0.0):
+    """Merger SF: M(t) = M₀ × [1 + SFR_enhanced × e^(-t/τ_SF)]"""
+    M0 = SOURCE23_REFERENCE['M0_ref']
+    SFR_enhanced = SOURCE23_REFERENCE['SFR_enhanced_ref']
+    tau_SF = SOURCE23_REFERENCE['tau_SF_ref']
+    M_t = M0 * (1 + SFR_enhanced * np.exp(-t / tau_SF))
+    return EquationResult('MergerEnhancedStarFormation', r'M(t) = M_0[1 + \text{SFR}_{enh} e^{-t/\tau_{SF}}]',
+                          f'M = {M0:.3e} × [1 + {SFR_enhanced:.3f} × e^(-{t:.3e}/{tau_SF:.3e})] = {M_t:.3e} kg', M_t, 'kg',
+                          {'M0': M0, 'SFR_enhanced': SFR_enhanced, 'tau_SF': tau_SF, 't': t}, '10x enhanced SF rate during merger')
+
+# SOURCE24: Horsehead Nebula - 2 functions
+def calculate_horsehead_erosion_mass_loss(params: InputParameters, t: float = 0.0):
+    """Erosion: E(t) = E₀ × (1 - e^(-t/τ_erosion))"""
+    E0 = SOURCE24_REFERENCE['E0_ref']
+    tau_erosion = SOURCE24_REFERENCE['tau_erosion_ref']
+    E_t = E0 * (1 - np.exp(-t / tau_erosion))
+    return EquationResult('HorseheadErosionMassLoss', r'E(t) = E_0[1 - e^{-t/\tau_{erosion}}]',
+                          f'E = {E0:.3f} × [1 - e^(-{t:.3e}/{tau_erosion:.3e})] = {E_t:.6f}', E_t, 'dimensionless',
+                          {'E0': E0, 'tau_erosion': tau_erosion, 't': t}, 'Horsehead photoevaporation (5% erosion, 5 Myr)')
+
+def calculate_nebula_mass_decay(params: InputParameters, t: float = 0.0):
+    """Mass decay: M(t) = M₀ × e^(-t/τ_erosion)"""
+    M0 = SOURCE24_REFERENCE['M0_ref']
+    tau_erosion = SOURCE24_REFERENCE['tau_erosion_ref']
+    M_t = M0 * np.exp(-t / tau_erosion)
+    return EquationResult('NebulaMassDecay', r'M(t) = M_0 e^{-t/\tau_{erosion}}',
+                          f'M = {M0:.3e} × e^(-{t:.3e}/{tau_erosion:.3e}) = {M_t:.3e} kg', M_t, 'kg',
+                          {'M0': M0, 'tau_erosion': tau_erosion, 't': t}, 'Dark nebula mass decay (Barnard 33, 5 M_sun)')
+
+# SOURCE25: NGC 1275 Perseus A - 3 functions
+def calculate_cooling_flow_contribution(params: InputParameters):
+    """Cooling flow: C = (ρ_cool × v_cool²) / ρ_fluid"""
+    rho_cool = SOURCE25_REFERENCE['rho_cool_ref']
+    v_cool = SOURCE25_REFERENCE['v_cool_ref']
+    rho_fluid = SOURCE25_REFERENCE['rho_fluid_ref']
+    C = (rho_cool * v_cool * v_cool) / rho_fluid
+    return EquationResult('CoolingFlowContribution', r'C = \frac{\rho_{cool} v_{cool}^2}{\rho_{fluid}}',
+                          f'C = {rho_cool:.3e} × ({v_cool:.3e})² / {rho_fluid:.3e} = {C:.3e} m/s²', C, 'm/s²',
+                          {'rho_cool': rho_cool, 'v_cool': v_cool, 'rho_fluid': rho_fluid}, 'Perseus A cooling flows (500 km/s)')
+
+def calculate_magnetic_filament_decay(params: InputParameters, t: float = 0.0):
+    """B-field decay: B(t) = B₀ × e^(-t/τ_B)"""
+    B0 = SOURCE25_REFERENCE['B0_ref']
+    tau_B = SOURCE25_REFERENCE['tau_B_ref']
+    B_t = B0 * np.exp(-t / tau_B)
+    return EquationResult('MagneticFilamentDecay', r'B(t) = B_0 e^{-t/\tau_B}',
+                          f'B = {B0:.3e} × e^(-{t:.3e}/{tau_B:.3e}) = {B_t:.3e} T', B_t, 'T',
+                          {'B0': B0, 'tau_B': tau_B, 't': t}, 'Magnetic filament decay (100 Myr timescale)')
+
+def calculate_filament_support_buildup(params: InputParameters, t: float = 0.0):
+    """Filament support: F(t) = F₀ × [1 - e^(-t/τ_fil)]"""
+    F0 = SOURCE25_REFERENCE['F0_ref']
+    tau_fil = SOURCE25_REFERENCE['tau_fil_ref']
+    F_t = F0 * (1 - np.exp(-t / tau_fil))
+    return EquationResult('FilamentSupportBuildup', r'F(t) = F_0[1 - e^{-t/\tau_{fil}}]',
+                          f'F = {F0:.3e} × [1 - e^(-{t:.3e}/{tau_fil:.3e})] = {F_t:.3e}', F_t, 'dimensionless',
+                          {'F0': F0, 'tau_fil': tau_fil, 't': t}, 'Filament magnetic support buildup (10 Myr timescale)')
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MODULE TEST - ALL 49 FUNCTIONS
 # ═══════════════════════════════════════════════════════════════════════════════
 
 if __name__ == "__main__":
     from IPData import create_manual_input
     
     print("=" * 80)
-    print("QCalc_Wolfram_Extensions.py - ALL 35 PHYSICS TERMS TEST")
-    print("Source: source14 (12 magnetar) + source15 (15 SMBH) + source16 (3 star formation) + source17 (2 cluster) + source18 (3 pillars)")
+    print("QCalc_Wolfram_Extensions.py - ALL 49 PHYSICS TERMS TEST")
+    print("Source: 14 (12) + 15 (15) + 16 (3) + 17 (2) + 18 (3) + 19-25 (14)")
     print("=" * 80)
     
     # ═══════════════════════════════════════════════════════════════════════════
@@ -2296,19 +2449,49 @@ if __name__ == "__main__":
     print(f"35. {calculate_pillars_mass_with_erosion(pillars_params, t_pillar).name}: "
           f"{calculate_pillars_mass_with_erosion(pillars_params, t_pillar).result:.3e} kg")
     
+    # ═══════════════════════════════════════════════════════════════════════════
+    # TEST 6-12: SOURCE19-25 BATCH (14 functions)
+    # ═══════════════════════════════════════════════════════════════════════════
+    print("\n[SOURCE19-25] Batch Astrophysical Physics (14 functions):")
+    print("-" * 80)
+    
+    # Quick parameter setup (use T for temperature, not t)
+    default_params = create_manual_input("Batch Test", M=1e14*1.989e30, r=1e20, T=1e4)
+    
+    # All 14 source19-25 functions
+    print(f"36. {calculate_gravitational_lensing_amplification(default_params).name}: {calculate_gravitational_lensing_amplification(default_params).result:.3e} m/s²")
+    print(f"37. {calculate_central_smbh_contribution(default_params).name}: {calculate_central_smbh_contribution(default_params).result:.3e} m/s²")
+    print(f"38. {calculate_supernova_mass_ejection(default_params, 1e7).name}: {calculate_supernova_mass_ejection(default_params, 1e7).result:.3e} kg")
+    print(f"39. {calculate_cavity_pressure_decay(default_params, 1e13).name}: {calculate_cavity_pressure_decay(default_params, 1e13).result:.3e} Pa")
+    print(f"40. {calculate_starburst_mass_growth(default_params, 1e14).name}: {calculate_starburst_mass_growth(default_params, 1e14).result:.3e} kg")
+    print(f"41. {calculate_bubble_expansion_radius(default_params, 1e13).name}: {calculate_bubble_expansion_radius(default_params, 1e13).result:.3e} m")
+    print(f"42. {calculate_stellar_wind_feedback_acceleration(default_params, 1e13).name}: {calculate_stellar_wind_feedback_acceleration(default_params, 1e13).result:.3e} m/s²")
+    print(f"43. {calculate_tidal_interaction_strength(default_params, 1e15).name}: {calculate_tidal_interaction_strength(default_params, 1e15).result:.3e}")
+    print(f"44. {calculate_merger_enhanced_star_formation(default_params, 1e15).name}: {calculate_merger_enhanced_star_formation(default_params, 1e15).result:.3e} kg")
+    print(f"45. {calculate_horsehead_erosion_mass_loss(default_params, 1e14).name}: {calculate_horsehead_erosion_mass_loss(default_params, 1e14).result:.6f}")
+    print(f"46. {calculate_nebula_mass_decay(default_params, 1e14).name}: {calculate_nebula_mass_decay(default_params, 1e14).result:.3e} kg")
+    print(f"47. {calculate_cooling_flow_contribution(default_params).name}: {calculate_cooling_flow_contribution(default_params).result:.3e} m/s²")
+    print(f"48. {calculate_magnetic_filament_decay(default_params, 1e15).name}: {calculate_magnetic_filament_decay(default_params, 1e15).result:.3e} T")
+    print(f"49. {calculate_filament_support_buildup(default_params, 1e14).name}: {calculate_filament_support_buildup(default_params, 1e14).result:.3e}")
+    
     print()
     print("=" * 80)
-    print("✅ MODULE TEST COMPLETE - ALL 35 FUNCTIONS EXECUTED SUCCESSFULLY!")
+    print("✅ MODULE TEST COMPLETE - ALL 49 FUNCTIONS EXECUTED SUCCESSFULLY!")
     print("=" * 80)
-    print("\nExtraction Status: 35/35 functions (100% complete)")
-    print("  - SOURCE14 (magnetar):         12/12 ✅")
-    print("  - SOURCE15 (SMBH):             15/15 ✅")
-    print("  - SOURCE16 (star formation):    3/3 ✅")
-    print("  - SOURCE17 (cluster):           2/2 ✅")
-    print("  - SOURCE18 (photoevaporation):  3/3 ✅")
-    print("\nNext Steps:")
-    print("  1. Integrate all 35 functions into QCalc.py UnifiedFieldSolver")
-    print("  2. Update QCalc_test.py with 8 new pytest tests (31→39 total)")
-    print("  3. Continue Phase 3 extraction (source19-source25 = 7 more files)")
+    print("\nExtraction Status: 49/49 functions (100% Phase 3 COMPLETE!)")
+    print("  - SOURCE14 (magnetar):          12/12 ✅")
+    print("  - SOURCE15 (SMBH):              15/15 ✅")
+    print("  - SOURCE16 (star formation):     3/3 ✅")
+    print("  - SOURCE17 (cluster):            2/2 ✅")
+    print("  - SOURCE18 (photoevaporation):   3/3 ✅")
+    print("  - SOURCE19 (lensing):            1/1 ✅")
+    print("  - SOURCE20 (supernova):          2/2 ✅")
+    print("  - SOURCE21 (starburst):          2/2 ✅")
+    print("  - SOURCE22 (bubble):             2/2 ✅")
+    print("  - SOURCE23 (merger):             2/2 ✅")
+    print("  - SOURCE24 (erosion):            2/2 ✅")
+    print("  - SOURCE25 (cooling flows):      3/3 ✅")
+    print("\nPhase 3 Status: 10/10 FILES COMPLETE (source16-25) 🎆")
+    print("Total extraction: source14-25 = 12 modules, 49 functions")
     print("=" * 80)
 
