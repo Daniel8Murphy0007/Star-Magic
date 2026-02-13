@@ -82,6 +82,28 @@ SOURCE16_REFERENCE = {
     'L_star_ref': 1e6 * 3.828e26,                 # 10^6 L_sun luminosity
 }
 
+# SOURCE17: Westerlund 2 Super Star Cluster Reference Constants
+SOURCE17_REFERENCE = {
+    'name': 'Westerlund 2 Super Star Cluster',
+    'M_initial_ref': 30000.0 * CONSTANTS['M_sun'],  # 30,000 M_sun (125x more massive than Tapestry)
+    'r_ref': 9.461e16,                             # ~10 light-years cluster radius
+    'M_dot_factor_ref': 100000.0 / 30000.0,        # Cluster formation rate factor (3.33)
+    'tau_SF_ref': 2e6 * 3.156e7,                   # 2 Myr timescale (younger, faster SF than Tapestry)
+    'H0_ref': 2.184e-18,                           # Hubble constant (s⁻¹)
+    'B_ref': 1e-5,                                 # Magnetic field (T)
+    'B_crit_ref': 1e11,                            # Critical B field (T)
+    'Lambda_ref': 1.1e-52,                         # Cosmological constant (m⁻²)
+    'f_TRZ_ref': 0.1,                              # Time-reversal zone factor
+    'rho_wind_ref': 1e-20,                         # Stellar wind density (10x Tapestry)
+    'v_wind_ref': 2e6,                             # 2000 km/s wind velocity
+    'rho_fluid_ref': 1e-20,                        # ISM density (10x Tapestry)
+    'L_star_ref': 1e7 * 3.828e26,                  # 10^7 L_sun (10x more luminous than Tapestry)
+    't_Hubble_ref': 13.8e9 * 3.156e7,              # Hubble time (s)
+    'delta_x_ref': 1e-10,                          # Position uncertainty (m)
+    'M_DM_factor_ref': 0.1,                        # Dark matter fraction
+    'delta_rho_over_rho_ref': 1e-5,                # Density perturbation
+}
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # HELPER FUNCTIONS
@@ -1695,15 +1717,181 @@ def calculate_tapestry_radiation_pressure(
     )
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# MODULE TEST - ALL 30 FUNCTIONS (12 source14 + 15 source15 + 3 source16)
+# SOURCE17 EXTRACTED FUNCTIONS (2 Cluster Formation Terms)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def calculate_cluster_mass_evolution(params: InputParameters, t: float = 0.0):
+    """
+    M(t) = M₀ × [1 + M_dot × exp(-t/τ_SF)]
+    
+    Physical Interpretation:
+    Time-dependent cluster mass as stars form. Initial burst of star formation
+    (M_dot factor) decays exponentially over timescale τ_SF. Westerlund 2 forms
+    30,000 M_sun over ~2 Myr, much faster than Tapestry's 5 Myr timescale.
+    
+    Key Insight: Younger clusters have shorter τ_SF → more rapid mass buildup.
+    Westerlund 2 (2 Myr) vs Tapestry (5 Myr) shows age-dependent SF rates.
+    
+    Equation: M(t) = M₀ × [1 + M_dot × e^(-t/τ_SF)]
+    
+    Relevant for: Westerlund 2, young massive clusters, starburst regions
+    
+    Parameters:
+        params: InputParameters containing M, M_dot, tau_SF
+        t: Time since cluster formation (s)
+        
+    Returns:
+        EquationResult with cluster mass (kg)
+    """
+    # Extract parameters
+    M_initial = _get_param_or_default(params, 'M', SOURCE17_REFERENCE['M_initial_ref'])
+    M_dot_factor = _get_param_or_default(params, 'M_dot', SOURCE17_REFERENCE['M_dot_factor_ref'])
+    tau_SF = _get_param_or_default(params, 'tau_SF', SOURCE17_REFERENCE['tau_SF_ref'])
+    
+    # Compute mass evolution
+    exp_decay = np.exp(-t / tau_SF)
+    M_t = M_initial * (1 + M_dot_factor * exp_decay)
+    
+    return EquationResult(
+        name='ClusterMassEvolution',
+        latex=r'M(t) = M_0 \left[1 + \dot{M}_{factor} \cdot e^{-t/\tau_{SF}}\right]',
+        substituted=f'M(t) = {M_initial:.3e} × [1 + {M_dot_factor:.3f} × e^(-{t:.3e}/{tau_SF:.3e})] = {M_t:.3e} kg',
+        result=M_t,
+        unit='kg',
+        parameters_used={'M_initial': M_initial, 'M_dot_factor': M_dot_factor, 'tau_SF': tau_SF, 't': t},
+        notes='Westerlund 2: 30,000 M_sun over 2 Myr (younger/faster than Tapestry)'
+    )
+
+
+def calculate_westerlund2_composite_muge(params: InputParameters, t: float = 0.0):
+    """
+    g_MUGE = Σ[11 terms] = base + Hubble + magnetic + Ug + Λ + EM + quantum + fluid + osc + DM + wind + rad
+    
+    Physical Interpretation:
+    **COMPLETE MUGE FRAMEWORK** - demonstrates how all UQFF physics terms combine.
+    This is the ONLY function showing the full 11-term integration:
+    
+    1. Base gravity: G×M(t)/r² with time-dependent mass
+    2. Hubble expansion: (1 + H₀×t) cosmological correction
+    3. Magnetic suppression: (1 - B/B_crit) field coupling
+    4. Ug terms: (Ug1 + Ug4) × (1 + f_TRZ) time-reversal zones
+    5. Cosmological: (Λ×c²)/3 dark energy acceleration
+    6. Electromagnetic: (q×B/m) × corrections
+    7. Quantum: (ℏ/√(Δx×Δp)) × (2π/t_Hubble) uncertainty
+    8. Fluid density: (ρ×V×g)/M coupling
+    9. Oscillatory: 2×A×cos(kr)×cos(ωt) wave superposition
+    10. Dark matter: (M_dm×Δρ)/M perturbations
+    11. Wind + radiation: Stellar feedback (ram pressure + luminosity)
+    
+    Key Insight: Shows MUGE is NOT just Newtonian + corrections, but a
+    **unified field theory** where quantum, relativistic, and classical
+    physics emerge from the same buoyant vacuum framework.
+    
+    Westerlund 2 demonstrates this at 30,000 M_sun cluster scale.
+    
+    Equation: g = term_base + Σ[10 correction terms]
+    
+    Relevant for: Complete MUGE validation, multi-physics coupling studies
+    
+    Parameters:
+        params: InputParameters (full set: M, r, B, tau_SF, rho_wind, etc.)
+        t: Time since formation (s)
+        
+    Returns:
+        EquationResult with composite acceleration (m/s²)
+    """
+    # Extract all parameters
+    M_initial = _get_param_or_default(params, 'M', SOURCE17_REFERENCE['M_initial_ref'])
+    r = _get_param_or_default(params, 'r', SOURCE17_REFERENCE['r_ref'])
+    H0 = _get_param_or_default(params, 'H_0', SOURCE17_REFERENCE['H0_ref'])
+    B = _get_param_or_default(params, 'B', SOURCE17_REFERENCE['B_ref'])
+    B_crit = SOURCE17_REFERENCE['B_crit_ref']
+    Lambda = SOURCE17_REFERENCE['Lambda_ref']
+    f_TRZ = SOURCE17_REFERENCE['f_TRZ_ref']
+    M_dot_factor = _get_param_or_default(params, 'M_dot', SOURCE17_REFERENCE['M_dot_factor_ref'])
+    tau_SF = _get_param_or_default(params, 'tau_SF', SOURCE17_REFERENCE['tau_SF_ref'])
+    rho_wind = _get_param_or_default(params, 'rho_wind', SOURCE17_REFERENCE['rho_wind_ref'])
+    v_wind = _get_param_or_default(params, 'v_wind', SOURCE17_REFERENCE['v_wind_ref'])
+    rho_fluid = _get_param_or_default(params, 'rho_fluid', SOURCE17_REFERENCE['rho_fluid_ref'])
+    L_star = SOURCE17_REFERENCE['L_star_ref']
+    t_Hubble = SOURCE17_REFERENCE['t_Hubble_ref']
+    delta_x = SOURCE17_REFERENCE['delta_x_ref']
+    M_DM_factor = SOURCE17_REFERENCE['M_DM_factor_ref']
+    delta_rho_over_rho = SOURCE17_REFERENCE['delta_rho_over_rho_ref']
+    
+    # Constants
+    G = CONSTANTS['G']
+    c = CONSTANTS['c']
+    hbar = CONSTANTS['hbar']
+    
+    # Time-dependent mass
+    M_t = M_initial * (1 + M_dot_factor * np.exp(-t / tau_SF))
+    
+    # Compute all 11 MUGE terms
+    # 1. Base gravity with time/magnetic corrections
+    ug1_t = (G * M_t) / (r * r)
+    term_base = ug1_t * (1 + H0 * t) * (1 - B / B_crit)
+    
+    # 2. Ug terms with time-reversal zones
+    Ug1 = ug1_t
+    Ug4 = Ug1 * (1 - B / B_crit)
+    term_Ug = (Ug1 + Ug4) * (1 + f_TRZ)
+    
+    # 3. Cosmological constant (dark energy)
+    term_Lambda = (Lambda * c * c) / 3.0
+    
+    # 4. Electromagnetic term (simplified vacuum correction)
+    q_e = 1.602e-19  # electron charge
+    m_p = 1.673e-27  # proton mass
+    term_EM = (q_e * 1e5 * B / m_p) * 11 * 1e-12
+    
+    # 5. Quantum uncertainty
+    delta_p = hbar / delta_x
+    term_Q = (hbar / np.sqrt(delta_x * delta_p)) * (2 * np.pi / t_Hubble)
+    
+    # 6. Fluid density coupling
+    V = (4.0 / 3.0) * np.pi * r * r * r
+    term_Fluid = (rho_fluid * V * ug1_t) / M_t
+    
+    # 7. Oscillatory wave superposition
+    A_osc = 1e-10
+    k_osc = 1.0 / r
+    omega_osc = 2 * np.pi / (r / c)
+    term_Osc = 2 * A_osc * np.cos(k_osc * r) * np.cos(omega_osc * t)
+    
+    # 8. Dark matter perturbation
+    M_dm = M_t * M_DM_factor
+    term_DM = ((M_t + M_dm) * (delta_rho_over_rho + 3 * G * M_t / (r * r * r))) / M_t
+    
+    # 9. Stellar wind ram pressure
+    term_Wind = (rho_wind * v_wind * v_wind) / rho_fluid
+    
+    # 10. Radiation pressure
+    term_Rad = L_star / (4 * np.pi * r * r * c * rho_fluid)
+    
+    # Sum all terms
+    g_composite = term_base + term_Ug + term_Lambda + term_EM + term_Q + term_Fluid + term_Osc + term_DM + term_Wind + term_Rad
+    
+    return EquationResult(
+        name='Westerlund2CompositeMUGE',
+        latex=r'g_{MUGE} = \sum_{i=1}^{11} \text{term}_i = \text{base} + \text{Hubble} + \text{magnetic} + U_g + \Lambda + \text{EM} + Q + \text{fluid} + \text{osc} + \text{DM} + \text{wind} + \text{rad}',
+        substituted=f'g_MUGE = {term_base:.3e} + {term_Ug:.3e} + {term_Lambda:.3e} + {term_EM:.3e} + {term_Q:.3e} + {term_Fluid:.3e} + {term_Osc:.3e} + {term_DM:.3e} + {term_Wind:.3e} + {term_Rad:.3e} = {g_composite:.3e} m/s²',
+        result=g_composite,
+        unit='m/s²',
+        parameters_used={'M_t': M_t, 'r': r, 't': t, 'B': B, 'H0': H0, 'Lambda': Lambda, 'rho_wind': rho_wind, 'v_wind': v_wind, 'L_star': L_star},
+        notes='Complete 11-term MUGE framework for Westerlund 2 (30,000 M_sun cluster). Demonstrates full UQFF unification: quantum + relativistic + classical physics from buoyant vacuum.'
+    )
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MODULE TEST - ALL 32 FUNCTIONS (12 source14 + 15 source15 + 3 source16 + 2 source17)
 # ═══════════════════════════════════════════════════════════════════════════════
 
 if __name__ == "__main__":
     from IPData import create_manual_input
     
     print("=" * 80)
-    print("QCalc_Wolfram_Extensions.py - ALL 30 PHYSICS TERMS TEST")
-    print("Source: source14 (12 magnetar) + source15 (15 SMBH) + source16 (3 star formation)")
+    print("QCalc_Wolfram_Extensions.py - ALL 32 PHYSICS TERMS TEST")
+    print("Source: source14 (12 magnetar) + source15 (15 SMBH) + source16 (3 star formation) + source17 (2 cluster)")
     print("=" * 80)
     
     # ═══════════════════════════════════════════════════════════════════════════
@@ -1871,17 +2059,45 @@ if __name__ == "__main__":
     print(f"30. {calculate_tapestry_radiation_pressure(tapestry_params).name}: "
           f"{calculate_tapestry_radiation_pressure(tapestry_params).result:.3e} m/s²")
     
+    # ═══════════════════════════════════════════════════════════════════════════
+    # TEST 4: SOURCE17 CLUSTER FORMATION TERMS (2 functions)
+    # ═══════════════════════════════════════════════════════════════════════════
+    print("\n[SOURCE17] Westerlund 2 Super Star Cluster Physics Terms (2 functions):")
+    print("-" * 80)
+    
+    westerlund2_params = create_manual_input(
+        "Westerlund 2",
+        M=30000.0 * 1.989e30,         # 30,000 solar masses
+        r=9.461e16,                   # ~10 light-years
+        M_dot=100000.0 / 30000.0,     # Cluster formation rate
+        tau_SF=2e6 * 3.156e7,         # 2 Myr timescale
+        B=1e-5,                       # Magnetic field
+        rho_wind=1e-20,               # Stellar wind density
+        v_wind=2e6,                   # Wind velocity (2000 km/s)
+        rho_fluid=1e-20               # ISM density
+    )
+    
+    t_cluster = 1e6 * 3.156e7  # 1 Myr
+    
+    # All 2 source17 functions
+    print(f"31. {calculate_cluster_mass_evolution(westerlund2_params, t_cluster).name}: "
+          f"{calculate_cluster_mass_evolution(westerlund2_params, t_cluster).result:.3e} kg")
+    
+    print(f"32. {calculate_westerlund2_composite_muge(westerlund2_params, t_cluster).name}: "
+          f"{calculate_westerlund2_composite_muge(westerlund2_params, t_cluster).result:.3e} m/s²")
+    
     print()
     print("=" * 80)
-    print("✅ MODULE TEST COMPLETE - ALL 30 FUNCTIONS EXECUTED SUCCESSFULLY!")
+    print("✅ MODULE TEST COMPLETE - ALL 32 FUNCTIONS EXECUTED SUCCESSFULLY!")
     print("=" * 80)
-    print("\nExtraction Status: 30/30 functions (100% complete)")
-    print("  - SOURCE14 (magnetar):       12/12 ✅")
-    print("  - SOURCE15 (SMBH):           15/15 ✅")
-    print("  - SOURCE16 (star formation):  3/3 ✅")
+    print("\nExtraction Status: 32/32 functions (100% complete)")
+    print("  - SOURCE14 (magnetar):        12/12 ✅")
+    print("  - SOURCE15 (SMBH):            15/15 ✅")
+    print("  - SOURCE16 (star formation):   3/3 ✅")
+    print("  - SOURCE17 (cluster):          2/2 ✅")
     print("\nNext Steps:")
-    print("  1. Integrate all 30 functions into QCalc.py UnifiedFieldSolver")
-    print("  2. Update QCalc_test.py with 3 new pytest tests (31→34 total)")
-    print("  3. Continue Phase 3 extraction (source17-source25 = 9 more files)")
+    print("  1. Integrate all 32 functions into QCalc.py UnifiedFieldSolver")
+    print("  2. Update QCalc_test.py with 5 new pytest tests (31→36 total)")
+    print("  3. Continue Phase 3 extraction (source18-source25 = 8 more files)")
     print("=" * 80)
 
