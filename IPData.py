@@ -107,6 +107,7 @@ class InputParameters:
     v_rot: Optional[float] = None           # Rotational velocity
     v_disp: Optional[float] = None          # Velocity dispersion σ
     v_rad: Optional[float] = None           # Radial velocity
+    v_wind: Optional[float] = None          # Stellar wind velocity (m/s)
     omega: Optional[float] = None           # Angular velocity (rad/s)
     Omega_g: Optional[float] = None         # Galactic angular velocity
     P: Optional[float] = None               # Period (s)
@@ -119,6 +120,8 @@ class InputParameters:
     rho: Optional[float] = None             # Density
     rho_central: Optional[float] = None     # Central density
     rho_crit: Optional[float] = None        # Critical density
+    rho_wind: Optional[float] = None        # Stellar wind density (kg/m³)
+    rho_fluid: Optional[float] = None       # ISM/fluid density (kg/m³)
     n_e: Optional[float] = None             # Electron number density (m⁻³)
     n_H: Optional[float] = None             # Hydrogen number density
     
@@ -155,11 +158,12 @@ class InputParameters:
     SSq: float = 0.57                       # [SSq] constant
     
     # ───────────────────────────────────────────────────────────────────────────
-    # DECAY/EVOLUTION TIMESCALES (Wolfram source14/source15)
+    # DECAY/EVOLUTION TIMESCALES (Wolfram source14/source15/source16)
     # ───────────────────────────────────────────────────────────────────────────
     tau_B: Optional[float] = None           # Magnetic decay timescale (s)
     tau_Omega: Optional[float] = None       # Spin-down timescale (s)
     tau_acc: Optional[float] = None         # Accretion timescale (s)
+    tau_SF: Optional[float] = None          # Star formation timescale (s)
     
     # ───────────────────────────────────────────────────────────────────────────
     # QUANTUM UNCERTAINTY PARAMETERS (Wolfram source14)

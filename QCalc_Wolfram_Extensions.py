@@ -3,9 +3,10 @@
 QCalc_Wolfram_Extensions.py - Extracted C++ Wolfram Physics Terms
 ===================================================================
 
-27 physics term functions extracted from:
+30 physics term functions extracted from:
 - source14_wolfram.cpp: 12 magnetar terms (SGR 0501+4516)
 - source15_wolfram.cpp: 15 SMBH terms (Sagittarius A*)
+- source16.cpp: 3 star formation terms (Tapestry/Westerlund2)
 
 ARCHITECTURE COMPLIANCE (MANDATORY):
 ────────────────────────────────────────────────────────────────────────────────
@@ -21,7 +22,7 @@ DATA FLOW:
 Author: Daniel T. Murphy (daniel.murphy00@gmail.com)
 Framework: UQFF 99.9% Solvability (Star-Magic)
 Copyright: © 2025-2026 Daniel T. Murphy - All Rights Reserved
-Extracted: February 3, 2026 from complete_physics_integration.cpp
+Extracted: February 3-13, 2026 from complete_physics_integration.cpp
 """
 
 import numpy as np
@@ -54,7 +55,7 @@ SOURCE15_REFERENCE = {
     'name': 'Sagittarius A* SMBH',
     'M_sgra_ref': 4.3e6 * CONSTANTS['M_sun'],     # 4.3 million solar masses
     'r_s_sgra_ref': 1.27e10,                      # Schwarzschild radius (m)
-    'B0_sgra_gauss_ref': 1e4,                     # 10^4 Gauss initial  field
+    'B0_sgra_gauss_ref': 1e4,                     # 10^4 Gauss initial magnetic field
     'B0_sgra_tesla_ref': 1.0,                     # 1 Tesla (10^4 G → 1 T)
     'tau_B_sgra_ref': 1e6 * 3.156e7,              # 1 million years → seconds
     'tau_acc_sgra_ref': 9e9 * 3.156e7,            # 9 Gyr accretion timescale
@@ -63,6 +64,24 @@ SOURCE15_REFERENCE = {
     'spin_factor_sgra_ref': 0.3,                  # Dimensionless spin (Ω₀ = 0.3c/r)
     'precession_angle_sgra_ref': 30.0 * np.pi / 180,  # 30 degrees → radians
 }
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SOURCE16 EXTRACTED CONSTANTS (Tapestry/Westerlund2 Star Formation)
+# ═══════════════════════════════════════════════════════════════════════════════
+# These are REFERENCE values ONLY - actual calculations use InputParameters
+
+SOURCE16_REFERENCE = {
+    'name': 'Tapestry Starbirth (NGC 2014/2020)',
+    'M_initial_ref': 240.0 * CONSTANTS['M_sun'],  # 240 solar masses
+    'r_region_ref': 10.0 * 9.461e15,              # 10 light-years → meters
+    'M_dot_factor_ref': 10000.0 / 240.0,          # Star formation rate factor (dimensionless)
+    'tau_SF_ref': 5e6 * 3.156e7,                  # 5 Myr star formation timescale → seconds
+    'rho_wind_ref': 1e-21,                        # Stellar wind density (kg/m³)
+    'v_wind_ref': 2e6,                            # Stellar wind velocity (m/s)
+    'rho_fluid_ref': 1e-21,                       # ISM fluid density (kg/m³)
+    'L_star_ref': 1e6 * 3.828e26,                 # 10^6 L_sun luminosity
+}
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # HELPER FUNCTIONS
@@ -1532,15 +1551,159 @@ def calculate_smbh_schwarzschild_radius(
     )
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# MODULE TEST - ALL 27 FUNCTIONS (12 source14 + 15 source15)
+# SOURCE16 EXTRACTED FUNCTIONS (3 Star Formation Terms - Tapestry/Westerlund2)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def calculate_star_formation_mass_growth(
+    params: InputParameters,
+    t: float = 0.0
+) -> EquationResult:
+    """
+    Star formation mass growth gravitational acceleration.
+    
+    Equation:
+        g_SF = (G × ΔM(t)) / r²
+        ΔM(t) = M₀ × M_dot × exp(-t/τ_SF)
+        
+    Where:
+        M_dot = Star formation rate factor (dimensionless)
+        τ_SF = Star formation timescale (typically ~5 Myr)
+        
+    Physical Interpretation:
+        Gravitational contribution from newly formed stars. Mass grows exponentially
+        with time, then decays as star formation slows. Relevant for young star-forming
+        regions like Tapestry (NGC 2014/2020), Westerlund 2, Carina Nebula.
+    
+    Args:
+        params: InputParameters with M (initial mass), r (region radius)
+        t: Time in seconds (default: 0)
+        
+    Returns:
+        EquationResult with star formation mass term in m/s²
+    """
+    # Extract parameters
+    M = _get_param_or_default(params, 'M', SOURCE16_REFERENCE['M_initial_ref'])
+    r = _get_param_or_default(params, 'r', SOURCE16_REFERENCE['r_region_ref'])
+    M_dot_factor = _get_param_or_default(params, 'M_dot', SOURCE16_REFERENCE['M_dot_factor_ref'])
+    tau_SF = _get_param_or_default(params, 'tau_SF', SOURCE16_REFERENCE['tau_SF_ref'])
+    
+    G = CONSTANTS['G']
+    
+    # Compute star formation contribution
+    M_dot_exp = M_dot_factor * np.exp(-t / tau_SF)
+    dM = M * M_dot_exp
+    g_SF = (G * dM) / (r * r)
+    
+    return EquationResult(
+        name='StarFormationMass',
+        latex=r'g_{SF} = \frac{G \times \Delta M(t)}{r^2}, \Delta M = M_0 \times M_{dot} \times e^{-t/\tau_{SF}}',
+        substituted=f'g_SF = ({G:.3e} × {M:.3e} × {M_dot_exp:.3e}) / ({r:.3e})² = {g_SF:.3e} m/s²',
+        result=g_SF,
+        unit='m/s²',
+        parameters_used={'G': G, 'M': M, 'r': r, 'M_dot': M_dot_factor, 'tau_SF': tau_SF, 't': t},
+        notes='Star formation mass growth (Tapestry NGC 2014/2020: ~240 M_sun over 5 Myr)'
+    )
+
+def calculate_stellar_wind_ram_pressure(
+    params: InputParameters
+) -> EquationResult:
+    """
+    Stellar wind ram pressure acceleration.
+    
+    Equation:
+        g_wind = (ρ_wind × v_wind²) / ρ_fluid
+        
+    Where:
+        ρ_wind = Stellar wind density (kg/m³)
+        v_wind = Wind velocity (m/s, typically ~2000 km/s for hot stars)
+        ρ_fluid = Interstellar medium density (kg/m³)
+        
+    Physical Interpretation:
+        Acceleration from stellar wind ram pressure pushing against ISM. In young
+        star-forming regions, massive O/B stars drive powerful winds that compress
+        and heat surrounding gas, triggering further star formation.
+    
+    Args:
+        params: InputParameters with rho_wind (wind density), v_wind (wind velocity),
+                rho_fluid (ISM density)
+        
+    Returns:
+        EquationResult with stellar wind ram pressure in m/s²
+    """
+    # Extract parameters
+    rho_wind = _get_param_or_default(params, 'rho_wind', SOURCE16_REFERENCE['rho_wind_ref'])
+    v_wind = _get_param_or_default(params, 'v_wind', SOURCE16_REFERENCE['v_wind_ref'])
+    rho_fluid = _get_param_or_default(params, 'rho_fluid', SOURCE16_REFERENCE['rho_fluid_ref'])
+    
+    # Compute wind ram pressure
+    g_wind = (rho_wind * v_wind * v_wind) / rho_fluid
+    
+    return EquationResult(
+        name='StellarWindRamPressure',
+        latex=r'g_{wind} = \frac{\rho_{wind} \times v_{wind}^2}{\rho_{fluid}}',
+        substituted=f'g_wind = ({rho_wind:.3e} × ({v_wind:.3e})²) / {rho_fluid:.3e} = {g_wind:.3e} m/s²',
+        result=g_wind,
+        unit='m/s²',
+        parameters_used={'rho_wind': rho_wind, 'v_wind': v_wind, 'rho_fluid': rho_fluid},
+        notes='Stellar wind feedback (hot star winds: ~2000 km/s, pressure ~10⁶ K)'
+    )
+
+def calculate_tapestry_radiation_pressure(
+    params: InputParameters
+) -> EquationResult:
+    """
+    Radiation pressure acceleration from luminous stars.
+    
+    Equation:
+        g_rad = L_star / (4π × r² × c × ρ_fluid)
+        
+    Where:
+        L_star = Total stellar luminosity (W)
+        r = Distance from star cluster (m)
+        c = Speed of light (m/s)
+        ρ_fluid = ISM density (kg/m³)
+        
+    Physical Interpretation:
+        Radiation pressure acts as an outward force, opposing gravity. In young
+        star-forming regions with massive luminous stars (L ~ 10⁶ L_sun), radiation
+        pressure shapes molecular clouds and limits star formation efficiency.
+    
+    Args:
+        params: InputParameters with L (luminosity), r (radius), rho_fluid (ISM density)
+        
+    Returns:
+        EquationResult with radiation pressure acceleration in m/s²
+    """
+    # Extract parameters
+    L_star = _get_param_or_default(params, 'L', SOURCE16_REFERENCE['L_star_ref'])
+    r = _get_param_or_default(params, 'r', SOURCE16_REFERENCE['r_region_ref'])
+    rho_fluid = _get_param_or_default(params, 'rho_fluid', SOURCE16_REFERENCE['rho_fluid_ref'])
+    
+    c = CONSTANTS['c']
+    
+    # Compute radiation pressure
+    g_rad = L_star / (4 * np.pi * r * r * c * rho_fluid)
+    
+    return EquationResult(
+        name='TapestryRadiationPressure',
+        latex=r'g_{rad} = \frac{L_{star}}{4\pi r^2 c \rho_{fluid}}',
+        substituted=f'g_rad = {L_star:.3e} / (4π × ({r:.3e})² × {c:.3e} × {rho_fluid:.3e}) = {g_rad:.3e} m/s²',
+        result=g_rad,
+        unit='m/s²',
+        parameters_used={'L_star': L_star, 'r': r, 'c': c, 'rho_fluid': rho_fluid},
+        notes='Radiation pressure (Tapestry ~10⁶ L_sun opposes gravity, limits SF efficiency)'
+    )
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MODULE TEST - ALL 30 FUNCTIONS (12 source14 + 15 source15 + 3 source16)
 # ═══════════════════════════════════════════════════════════════════════════════
 
 if __name__ == "__main__":
     from IPData import create_manual_input
     
     print("=" * 80)
-    print("QCalc_Wolfram_Extensions.py - ALL 27 PHYSICS TERMS TEST")
-    print("Source: source14_wolfram.cpp (12 magnetar) + source15_wolfram.cpp (15 SMBH)")
+    print("QCalc_Wolfram_Extensions.py - ALL 30 PHYSICS TERMS TEST")
+    print("Source: source14 (12 magnetar) + source15 (15 SMBH) + source16 (3 star formation)")
     print("=" * 80)
     
     # ═══════════════════════════════════════════════════════════════════════════
@@ -1678,16 +1841,47 @@ if __name__ == "__main__":
     print(f"27. {calculate_smbh_schwarzschild_radius(smbh_params).name}: "
           f"{calculate_smbh_schwarzschild_radius(smbh_params).result:.3e} m")
     
+    # ═══════════════════════════════════════════════════════════════════════════
+    # TEST 3: SOURCE16 STAR FORMATION TERMS (3 functions)
+    # ═══════════════════════════════════════════════════════════════════════════
+    print("\n[SOURCE16] Tapestry Starbirth (NGC 2014/2020) Physics Terms (3 functions):")
+    print("-" * 80)
+    
+    tapestry_params = create_manual_input(
+        "Tapestry (NGC 2014/2020)",
+        M=240.0 * 1.989e30,           # 240 solar masses
+        r=10.0 * 9.461e15,            # 10 light-years
+        M_dot=10000.0 / 240.0,        # SF rate factor
+        tau_SF=5e6 * 3.156e7,         # 5 Myr timescale
+        rho_wind=1e-21,               # Wind density (kg/m³)
+        v_wind=2e6,                   # Wind velocity (2000 km/s)
+        rho_fluid=1e-21,              # ISM density (kg/m³)
+        L=1e6 * 3.828e26              # 10^6 L_sun luminosity
+    )
+    
+    t_sf = 1e6 * 3.156e7  # 1 Myr
+    
+    # All 3 source16 functions
+    print(f"28. {calculate_star_formation_mass_growth(tapestry_params, t_sf).name}: "
+          f"{calculate_star_formation_mass_growth(tapestry_params, t_sf).result:.3e} m/s²")
+    
+    print(f"29. {calculate_stellar_wind_ram_pressure(tapestry_params).name}: "
+          f"{calculate_stellar_wind_ram_pressure(tapestry_params).result:.3e} m/s²")
+    
+    print(f"30. {calculate_tapestry_radiation_pressure(tapestry_params).name}: "
+          f"{calculate_tapestry_radiation_pressure(tapestry_params).result:.3e} m/s²")
+    
     print()
     print("=" * 80)
-    print("✅ MODULE TEST COMPLETE - ALL 27 FUNCTIONS EXECUTED SUCCESSFULLY!")
+    print("✅ MODULE TEST COMPLETE - ALL 30 FUNCTIONS EXECUTED SUCCESSFULLY!")
     print("=" * 80)
-    print("\nExtraction Status: 27/27 functions (100% complete)")
-    print("  - SOURCE14 (magnetar): 12/12 ✅")
-    print("  - SOURCE15 (SMBH):     15/15 ✅")
+    print("\nExtraction Status: 30/30 functions (100% complete)")
+    print("  - SOURCE14 (magnetar):       12/12 ✅")
+    print("  - SOURCE15 (SMBH):           15/15 ✅")
+    print("  - SOURCE16 (star formation):  3/3 ✅")
     print("\nNext Steps:")
-    print("  1. Integrate all 27 functions into QCalc.py UnifiedFieldSolver")
-    print("  2. Create QCalc_test.py with pytest unit tests")
-    print("  3. Extract remaining 122 Wolfram files (source16-source175)")
+    print("  1. Integrate all 30 functions into QCalc.py UnifiedFieldSolver")
+    print("  2. Update QCalc_test.py with 3 new pytest tests (31→34 total)")
+    print("  3. Continue Phase 3 extraction (source17-source25 = 9 more files)")
     print("=" * 80)
 
