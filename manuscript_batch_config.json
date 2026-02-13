@@ -1,0 +1,123 @@
+{
+  "batch_name": "UQFF Production ArXiv Manuscript",
+  "description": "Batch processing for 15 diverse astrophysical systems covering magnetars, SMBHs, galaxies, pulsars, and nebulae",
+  "created": "2026-02-13",
+  "queries": [
+    {
+      "name": "SGR 0501+4516",
+      "category": "Magnetar",
+      "unit_filter": "m/s²",
+      "priority": 1,
+      "notes": "Primary magnetar validation case"
+    },
+    {
+      "name": "Sagittarius A*",
+      "category": "SMBH",
+      "unit_filter": "m/s²",
+      "priority": 1,
+      "notes": "Galactic center SMBH"
+    },
+    {
+      "name": "M87",
+      "category": "SMBH",
+      "unit_filter": "m/s²",
+      "priority": 1,
+      "notes": "First black hole image (EHT)"
+    },
+    {
+      "name": "NGC 1365",
+      "category": "Galaxy",
+      "unit_filter": "m/s²",
+      "priority": 2,
+      "notes": "Great Barred Spiral Galaxy"
+    },
+    {
+      "name": "Vela Pulsar",
+      "category": "Pulsar",
+      "unit_filter": "m/s²",
+      "priority": 2,
+      "notes": "Young pulsar in Vela SNR"
+    },
+    {
+      "name": "Crab Pulsar",
+      "category": "Pulsar",
+      "unit_filter": "m/s²",
+      "priority": 2,
+      "notes": "Famous pulsar in Crab Nebula"
+    },
+    {
+      "name": "Betelgeuse",
+      "category": "Star",
+      "unit_filter": "m/s²",
+      "priority": 3,
+      "notes": "Red supergiant candidate supernova"
+    },
+    {
+      "name": "NGC 3596",
+      "category": "Galaxy",
+      "unit_filter": "m/s²",
+      "priority": 2,
+      "notes": "Interacting galaxy system"
+    },
+    {
+      "name": "Carina Nebula",
+      "category": "Nebula",
+      "unit_filter": "m/s²",
+      "priority": 3,
+      "notes": "Star-forming region"
+    },
+    {
+      "name": "Orion Nebula",
+      "category": "Nebula",
+      "unit_filter": "m/s²",
+      "priority": 3,
+      "notes": "M42 - Nearest star formation region"
+    },
+    {
+      "name": "NGC 253",
+      "category": "Galaxy",
+      "unit_filter": "m/s²",
+      "priority": 2,
+      "notes": "Sculptor Galaxy - starburst galaxy"
+    },
+    {
+      "name": "Centaurus A",
+      "category": "AGN",
+      "unit_filter": "m/s²",
+      "priority": 2,
+      "notes": "Active galactic nucleus with jets"
+    },
+    {
+      "name": "Westerlund 2",
+      "category": "Cluster",
+      "unit_filter": "m/s²",
+      "priority": 3,
+      "notes": "Young massive star cluster"
+    },
+    {
+      "name": "Helix Nebula",
+      "category": "Nebula",
+      "unit_filter": "m/s²",
+      "priority": 3,
+      "notes": "Planetary nebula NGC 7293"
+    },
+    {
+      "name": "M31",
+      "category": "Galaxy",
+      "unit_filter": "m/s²",
+      "priority": 2,
+      "notes": "Andromeda Galaxy - nearest large galaxy"
+    }
+  ],
+  "export_formats": [
+    "json",
+    "latex",
+    "csv"
+  ],
+  "analysis_options": {
+    "unit_filter": "m/s²",
+    "include_statistical_analysis": true,
+    "outlier_threshold": 3.0,
+    "save_to_opdata": true
+  }
+}
