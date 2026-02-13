@@ -52,7 +52,7 @@ class ProductionPipeline:
             output_dir: Directory for output files (JSON, LaTeX, CSV)
         """
         self.output_dir = Path(output_dir)
-        self.output_dir.mkdir(exist_ok=True)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
         self.solver = UnifiedFieldSolver()
         self.results_cache: Dict[str, Dict] = {}
         
@@ -145,7 +145,11 @@ class ProductionPipeline:
         
         # Save to OPData
         if save_to_opdata:
-            save_query_result(query_name, qcalc_result)
+            # OPData.store() expects a single dict with query_name inside
+            save_query_result({
+                'query_name': query_name,
+                **qcalc_result
+            })
             print(f"    ✓ Saved to OPData.py")
         
         print(f"\n{'='*80}")
@@ -341,19 +345,14 @@ class ProductionPipeline:
             B=api_data.get('B', 1e-5),
             t=api_data.get('t', 1e8),
             z=api_data.get('z', 0.0),
-            E=api_data.get('E', 1e10),
-            SFR=api_data.get('SFR', 0.0),
-            tn_years=api_data.get('tn_years', 1e6),
-            theta=api_data.get('theta', 0.0),
-            # Wolfram parameters
-            P_ms=api_data.get('P_ms', None),
-            Pdot=api_data.get('Pdot', None),
-            f_THz=api_data.get('f_THz', None),
-            DM=api_data.get('DM', None),
-            RM=api_data.get('RM', None),
-            Lx_erg_s=api_data.get('Lx_erg_s', None),
-            kT_keV=api_data.get('kT_keV', None),
-            NH_cm2=api_data.get('NH_cm2', None)
+            T=api_data.get('T', None),
+            L=api_data.get('L', None),
+            R=api_data.get('R', None),
+            d=api_data.get('d', None),
+            v=api_data.get('v', None),
+            omega=api_data.get('omega', None),
+            P=api_data.get('P', None),
+            t_n=api_data.get('tn_years', 0.0)  # Map tn_years → t_n
         )
     
     def _load_from_csv(self, query_name: str) -> Dict:
