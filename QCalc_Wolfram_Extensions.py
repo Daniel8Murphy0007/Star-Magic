@@ -104,6 +104,23 @@ SOURCE17_REFERENCE = {
     'delta_rho_over_rho_ref': 1e-5,                # Density perturbation
 }
 
+# SOURCE18: Pillars of Creation (Eagle Nebula M16) Reference Constants
+SOURCE18_REFERENCE = {
+    'name': 'Pillars of Creation (Eagle Nebula M16)',
+    'M_initial_ref': 10100.0 * CONSTANTS['M_sun'],  # 10,100 M_sun (smaller than clusters)
+    'r_ref': 5.0 * 9.461e15,                       # 5 light-years pillar height
+    'M_dot_factor_ref': 1.0,                       # Star formation rate factor
+    'tau_SF_ref': 1e6 * 3.156e7,                   # 1 Myr star formation timescale
+    'E0_ref': 0.1,                                  # Initial erosion coefficient (10% mass loss)
+    'tau_erosion_ref': 1e6 * 3.156e7,               # 1 Myr erosion timescale (NGC 6611 OB stars)
+    'T_ionization_ref': 1e4,                        # 10,000 K ionization front temperature
+    'rho_fluid_ref': 1e-18,                         # Lower ISM density (kg/m³)
+    'L_OB_ref': 1e6 * 3.828e26,                     # 10^6 L_sun from NGC 6611 O-stars
+    'H0_ref': 2.184e-18,                            # Hubble constant (s⁻¹)
+    'B_ref': 1e-9,                                  # Weak magnetic field (T)
+    'B_crit_ref': 4.4e13,                           # Critical B field (T)
+}
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # HELPER FUNCTIONS
@@ -1883,15 +1900,180 @@ def calculate_westerlund2_composite_muge(params: InputParameters, t: float = 0.0
     )
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# MODULE TEST - ALL 32 FUNCTIONS (12 source14 + 15 source15 + 3 source16 + 2 source17)
+# SOURCE18 EXTRACTED FUNCTIONS (3 Pillars of Creation Physics Terms)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def calculate_photoevaporation_erosion(params: InputParameters, t: float = 0.0):
+    """
+    g_erosion = -ug1 × E₀ × exp(-t/τ_erosion)
+    
+    Physical Interpretation:
+    **NEGATIVE ACCELERATION** - Photoevaporation by NGC 6611 OB stars erodes pillar mass.
+    As mass M(t) decreases, gravitational binding weakens. This is DESTRUCTIVE physics:
+    the pillars are being slowly vaporized by intense UV radiation from young O-stars.
+    
+    Key Insight: Unlike previous modules (all ADDITIVE), erosion is SUBTRACTIVE.
+    The pillars have ~1 Myr left before complete evaporation. This demonstrates
+    **competing physics**: star formation (growth) vs photoevaporation (decay).
+    
+    Timescale: τ_erosion ≈ 1 Myr (much faster than galaxy evolution timescales)
+    Current age: ~6 Myr, so erosion is in exponential decay phase
+    
+    Equation: g_erosion = -ug1 × E₀ × e^(-t/τ_erosion)
+    
+    Relevant for: Pillars of Creation, photoevaporated regions, star-forming pillars near O-stars
+    
+    Parameters:
+        params: InputParameters containing M, r (for ug1 calculation), and optionally E0, tau_erosion
+        t: Time since erosion started (s)
+        
+    Returns:
+        EquationResult with negative acceleration (m/s²)
+    """
+    # Extract parameters
+    M = _get_param_or_default(params, 'M', SOURCE18_REFERENCE['M_initial_ref'])
+    r = _get_param_or_default(params, 'r', SOURCE18_REFERENCE['r_ref'])
+    E0 = _get_param_or_default(params, 'E0', SOURCE18_REFERENCE['E0_ref']) if hasattr(params, 'E0') else SOURCE18_REFERENCE['E0_ref']
+    tau_erosion = _get_param_or_default(params, 'tau_erosion', SOURCE18_REFERENCE['tau_erosion_ref']) if hasattr(params, 'tau_erosion') else SOURCE18_REFERENCE['tau_erosion_ref']
+    
+    G = CONSTANTS['G']
+    
+    # Compute base gravity
+    ug1 = (G * M) / (r * r)
+    
+    # Erosion factor (exponential decay)
+    erosion_factor = E0 * np.exp(-t / tau_erosion)
+    
+    # Negative acceleration (mass loss)
+    g_erosion = -ug1 * erosion_factor
+    
+    return EquationResult(
+        name='PhotoevaporationErosion',
+        latex=r'g_{erosion} = -u_{g1} \cdot E_0 \cdot e^{-t/\tau_{erosion}}',
+        substituted=f'g_erosion = -({ug1:.3e}) × {E0:.3f} × e^(-{t:.3e}/{tau_erosion:.3e}) = {g_erosion:.3e} m/s²',
+        result=g_erosion,
+        unit='m/s²',
+        parameters_used={'ug1': ug1, 'E0': E0, 'tau_erosion': tau_erosion, 't': t},
+        notes='NEGATIVE: Photoevaporation by NGC 6611 O-stars erodes pillar mass (~1 Myr remaining)'
+    )
+
+
+def calculate_ionization_front_pressure(params: InputParameters):
+    """
+    g_ion = c_s² / r   where c_s = √(2k_B T_ion / m_H)
+    
+    Physical Interpretation:
+    Ionization front driven by NGC 6611 O-star UV radiation creates pressure.
+    Hot ionized gas (T ≈ 10,000 K) expands at sound speed c_s. This pressure
+    pushes against neutral pillar material, compressing it and triggering SF.
+    
+    Key Insight: Ionization fronts are **BOTH destructive AND creative**:
+    - Destructive: erode outer layers via photoevaporation
+    - Creative: compress neutral cores, triggering Jeans instability → SF
+    
+    Sound speed in 10,000 K gas: c_s ≈ 10 km/s
+    Pressure acceleration scales as 1/r (closer regions feel stronger push)
+    
+    Equation: g_ion = c_s² / r = (2k_B T_ion / m_H) / r
+    
+    Relevant for: Pillars, cometary knots, ionization fronts around HII regions
+    
+    Parameters:
+        params: InputParameters containing r, and optionally T (ionization temperature)
+        
+    Returns:
+        EquationResult with pressure-driven acceleration (m/s²)
+    """
+    # Extract parameters
+    r = _get_param_or_default(params, 'r', SOURCE18_REFERENCE['r_ref'])
+    T_ion = _get_param_or_default(params, 'T', SOURCE18_REFERENCE['T_ionization_ref'])
+    
+    # Constants
+    k_B = 1.38e-23  # Boltzmann constant (J/K)
+    m_H = 1.673e-27  # Hydrogen mass (kg)
+    
+    # Sound speed in ionized gas
+    c_s = np.sqrt(2 * k_B * T_ion / m_H)
+    
+    # Pressure-driven acceleration
+    g_ion = c_s * c_s / r
+    
+    return EquationResult(
+        name='IonizationFrontPressure',
+        latex=r'g_{ion} = \frac{c_s^2}{r} \quad \text{where} \quad c_s = \sqrt{\frac{2k_B T_{ion}}{m_H}}',
+        substituted=f'g_ion = ({c_s:.3e})² / {r:.3e} = {g_ion:.3e} m/s²',
+        result=g_ion,
+        unit='m/s²',
+        parameters_used={'c_s': c_s, 'r': r, 'T_ion': T_ion},
+        notes='Ionization front pressure from NGC 6611 O-stars (T≈10,000 K, c_s≈10 km/s)'
+    )
+
+
+def calculate_pillars_mass_with_erosion(params: InputParameters, t: float = 0.0):
+    """
+    M(t) = M₀ × [1 + M_dot × e^(-t/τ_SF)] × [1 - E₀ × (1 - e^(-t/τ_erosion))]
+    
+    Physical Interpretation:
+    **COMPETING PROCESSES**: Star formation (growth) vs photoevaporation (decay).
+    
+    - Growth term: [1 + M_dot × e^(-t/τ_SF)] - exponential SF burst
+    - Erosion term: [1 - E₀ × (1 - e^(-t/τ_erosion))] - mass loss approaches E₀ limit
+    
+    Key Insight: The pillars are in a **race against time**. Star formation creates
+    new stars that compress surrounding gas, while photoevaporation strips outer
+    layers. Eventually erosion wins, pillars disappear (~1 Myr from now).
+    
+    Current state (t ≈ 6 Myr):
+    - SF burst mostly completed (e^(-6) ≈ 0.0025)
+    - Erosion ongoing (e^(-6) ≈ 0.0025 means ~99.75% of eventual mass loss happened)
+    
+    Equation: M(t) = M₀ × SF_growth(t) × erosion_loss(t)
+    
+    Relevant for: Pillars, photoevaporated regions, time-dependent mass evolution
+    
+    Parameters:
+        params: InputParameters containing M, M_dot, tau_SF, E0, tau_erosion
+        t: Time since formation (s)
+        
+    Returns:
+        EquationResult with time-dependent mass (kg)
+    """
+    # Extract parameters
+    M_initial = _get_param_or_default(params, 'M', SOURCE18_REFERENCE['M_initial_ref'])
+    M_dot_factor = _get_param_or_default(params, 'M_dot', SOURCE18_REFERENCE['M_dot_factor_ref'])
+    tau_SF = _get_param_or_default(params, 'tau_SF', SOURCE18_REFERENCE['tau_SF_ref'])
+    E0 = _get_param_or_default(params, 'E0', SOURCE18_REFERENCE['E0_ref']) if hasattr(params, 'E0') else SOURCE18_REFERENCE['E0_ref']
+    tau_erosion = _get_param_or_default(params, 'tau_erosion', SOURCE18_REFERENCE['tau_erosion_ref']) if hasattr(params, 'tau_erosion') else SOURCE18_REFERENCE['tau_erosion_ref']
+    
+    # SF growth factor
+    sf_growth = 1 + M_dot_factor * np.exp(-t / tau_SF)
+    
+    # Erosion loss factor
+    erosion_loss = 1 - E0 * (1 - np.exp(-t / tau_erosion))
+    
+    # Combined mass evolution
+    M_t = M_initial * sf_growth * erosion_loss
+    
+    return EquationResult(
+        name='PillarsMassWithErosion',
+        latex=r'M(t) = M_0 \left[1 + \dot{M} e^{-t/\tau_{SF}}\right] \left[1 - E_0 (1 - e^{-t/\tau_{erosion}})\right]',
+        substituted=f'M(t) = {M_initial:.3e} × [{sf_growth:.6f}] × [{erosion_loss:.6f}] = {M_t:.3e} kg',
+        result=M_t,
+        unit='kg',
+        parameters_used={'M_initial': M_initial, 'sf_growth': sf_growth, 'erosion_loss': erosion_loss, 't': t},
+        notes='Competing physics: SF growth vs photoevaporation decay (pillars have ~1 Myr remaining)'
+    )
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MODULE TEST - ALL 35 FUNCTIONS (12 source14 + 15 source15 + 3 source16 + 2 source17 + 3 source18)
 # ═══════════════════════════════════════════════════════════════════════════════
 
 if __name__ == "__main__":
     from IPData import create_manual_input
     
     print("=" * 80)
-    print("QCalc_Wolfram_Extensions.py - ALL 32 PHYSICS TERMS TEST")
-    print("Source: source14 (12 magnetar) + source15 (15 SMBH) + source16 (3 star formation) + source17 (2 cluster)")
+    print("QCalc_Wolfram_Extensions.py - ALL 35 PHYSICS TERMS TEST")
+    print("Source: source14 (12 magnetar) + source15 (15 SMBH) + source16 (3 star formation) + source17 (2 cluster) + source18 (3 pillars)")
     print("=" * 80)
     
     # ═══════════════════════════════════════════════════════════════════════════
@@ -2086,18 +2268,47 @@ if __name__ == "__main__":
     print(f"32. {calculate_westerlund2_composite_muge(westerlund2_params, t_cluster).name}: "
           f"{calculate_westerlund2_composite_muge(westerlund2_params, t_cluster).result:.3e} m/s²")
     
+    # ═══════════════════════════════════════════════════════════════════════════
+    # TEST 5: SOURCE18 PILLARS OF CREATION TERMS (3 functions)
+    # ═══════════════════════════════════════════════════════════════════════════
+    print("\n[SOURCE18] Pillars of Creation (Eagle Nebula M16) Physics Terms (3 functions):")
+    print("-" * 80)
+    
+    pillars_params = create_manual_input(
+        "Pillars of Creation",
+        M=10100.0 * 1.989e30,         # 10,100 solar masses
+        r=5.0 * 9.461e15,             # 5 light-years pillar height
+        M_dot=1.0,                    # SF rate factor
+        tau_SF=1e6 * 3.156e7,         # 1 Myr SF timescale
+        T=1e4,                         # 10,000 K ionization temperature
+        rho_fluid=1e-18                # ISM density
+    )
+    
+    t_pillar = 6e6 * 3.156e7  # 6 Myr (current age)
+    
+    # All 3 source18 functions
+    print(f"33. {calculate_photoevaporation_erosion(pillars_params, t_pillar).name}: "
+          f"{calculate_photoevaporation_erosion(pillars_params, t_pillar).result:.3e} m/s²")
+    
+    print(f"34. {calculate_ionization_front_pressure(pillars_params).name}: "
+          f"{calculate_ionization_front_pressure(pillars_params).result:.3e} m/s²")
+    
+    print(f"35. {calculate_pillars_mass_with_erosion(pillars_params, t_pillar).name}: "
+          f"{calculate_pillars_mass_with_erosion(pillars_params, t_pillar).result:.3e} kg")
+    
     print()
     print("=" * 80)
-    print("✅ MODULE TEST COMPLETE - ALL 32 FUNCTIONS EXECUTED SUCCESSFULLY!")
+    print("✅ MODULE TEST COMPLETE - ALL 35 FUNCTIONS EXECUTED SUCCESSFULLY!")
     print("=" * 80)
-    print("\nExtraction Status: 32/32 functions (100% complete)")
-    print("  - SOURCE14 (magnetar):        12/12 ✅")
-    print("  - SOURCE15 (SMBH):            15/15 ✅")
-    print("  - SOURCE16 (star formation):   3/3 ✅")
-    print("  - SOURCE17 (cluster):          2/2 ✅")
+    print("\nExtraction Status: 35/35 functions (100% complete)")
+    print("  - SOURCE14 (magnetar):         12/12 ✅")
+    print("  - SOURCE15 (SMBH):             15/15 ✅")
+    print("  - SOURCE16 (star formation):    3/3 ✅")
+    print("  - SOURCE17 (cluster):           2/2 ✅")
+    print("  - SOURCE18 (photoevaporation):  3/3 ✅")
     print("\nNext Steps:")
-    print("  1. Integrate all 32 functions into QCalc.py UnifiedFieldSolver")
-    print("  2. Update QCalc_test.py with 5 new pytest tests (31→36 total)")
-    print("  3. Continue Phase 3 extraction (source18-source25 = 8 more files)")
+    print("  1. Integrate all 35 functions into QCalc.py UnifiedFieldSolver")
+    print("  2. Update QCalc_test.py with 8 new pytest tests (31→39 total)")
+    print("  3. Continue Phase 3 extraction (source19-source25 = 7 more files)")
     print("=" * 80)
 
