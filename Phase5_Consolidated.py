@@ -60,7 +60,15 @@ class Source52_MultiUQFF:
     def calculate_system_compressed(params: InputParameters, system: str = 'OrionNebula') -> EquationResult:
         """SOURCE52: MultiUQFF compressed mode for selected system"""
         if system not in Source52_MultiUQFF.SYSTEMS:
-            return EquationResult('source52_multiuqff', 0.0, 'Invalid system', 'm/s²')
+            return EquationResult(
+                name='source52_multiuqff',
+                latex=r'g_{total} = 0',
+                substituted='Invalid system',
+                result=0.0,
+                unit='m/s²',
+                parameters_used={},
+                notes='Invalid system name'
+            )
         
         sys_params = Source52_MultiUQFF.SYSTEMS[system]
         M = params.get('M', sys_params['M'])
@@ -104,7 +112,15 @@ class Source52_MultiUQFF:
         equation += f"  g_dm = G*M*δρ/ρ/r² = {g_dm:.3e} m/s²\n"
         equation += f"  TOTAL = {g_total:.3e} m/s²"
         
-        return EquationResult('source52_multiuqff_' + system.lower(), g_total, equation, 'm/s²')
+        return EquationResult(
+            name='source52_multiuqff_' + system.lower(),
+            latex=r'g_{total} = g_{base} + g_{\Lambda} + g_{quantum} + g_{fluid} + g_{dm}',
+            substituted=equation,
+            result=g_total,
+            unit='m/s²',
+            parameters_used={'M': M, 'r': r, 'z': z, 't': t},
+            notes=f'SOURCE52 {system} compressed UQFF'
+        )
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -170,7 +186,15 @@ def calculate_young_stars_outflows_uqff(params: InputParameters) -> EquationResu
     equation += f"  a_lorentz = q*v*B/(ρr) = {a_lorentz:.3e} m/s²\n"
     equation += f"  TOTAL = {a_total:.3e} m/s²"
     
-    return EquationResult('source54_young_stars_outflows', a_total, equation, 'm/s²')
+    return EquationResult(
+        name='source54_young_stars_outflows',
+        latex=r'a_{total} = g_{base} + a_{outflow} + a_{Lorentz} + a_{\Lambda} + a_{quantum}',
+        substituted=equation,
+        result=a_total,
+        unit='m/s²',
+        parameters_used={'M': M, 'r': r, 't': t, 'SFR': SFR, 'v_out': v_out, 'B': B, 'z': z},
+        notes='SOURCE54 young stars sculpting gas with outflows'
+    )
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -232,7 +256,15 @@ def calculate_bigbang_gravity_evolution(params: InputParameters) -> EquationResu
     equation += f"  GW_term = {GW_term:.3e} m/s²\n"
     equation += f"  TOTAL = {a_total:.3e} m/s²"
     
-    return EquationResult('source56_bigbang_evolution', a_total, equation, 'm/s²')
+    return EquationResult(
+        name='source56_bigbang_evolution',
+        latex=r'a_{total} = g_{base} + a_{QG} + a_{DM} + GW',
+        substituted=equation,
+        result=a_total,
+        unit='m/s²',
+        parameters_used={'M_total': M_total, 't': t, 't_Hubble': t_Hubble, 'h_strain': h_strain, 'lambda_gw': lambda_gw},
+        notes='SOURCE56 Big Bang gravity evolution with QG + DM + GW'
+    )
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -292,7 +324,15 @@ def calculate_ufe_plasma_orb_UP(params: InputParameters) -> EquationResult:
     equation += f"  U_b(t⁻) = {U_b:.3e} J\n"
     equation += f"  UP_TOTAL = {UP:.3e} J"
     
-    return EquationResult('source64_ufe_orb_UP', UP, equation, 'J')
+    return EquationResult(
+        name='source64_ufe_orb_UP',
+        latex=r'UP(t) = \sum_{i=1}^{26} \kappa_i U_{g,i} + \sum_{j=1}^{10} U_{m,j} + U_b(t^-)',
+        substituted=equation,
+        result=UP,
+        unit='J',
+        parameters_used={'t_n': t_n, 'kappa': kappa, 'SCm': SCm, 'UA': UA, 'r_cyl': r_cyl, 'h_cyl': h_cyl},
+        notes='SOURCE64 UFE plasma orb unified potential (26 quantum levels)'
+    )
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -322,7 +362,15 @@ class Source57_MultiCompressed:
     def calculate_system_compressed(params: InputParameters, system: str = 'MagnetarSGR1745') -> EquationResult:
         """SOURCE57: Compressed UQFF with environmental forcing"""
         if system not in Source57_MultiCompressed.SYSTEMS:
-            return EquationResult('source57_compressed', 0.0, 'Invalid system', 'm/s²')
+            return EquationResult(
+                name='source57_compressed',
+                latex=r'g_{total} = 0',
+                substituted='Invalid system',
+                result=0.0,
+                unit='m/s²',
+                parameters_used={},
+                notes='Invalid system name'
+            )
         
         sys_params = Source57_MultiCompressed.SYSTEMS[system]
         M = params.get('M', sys_params['M'])
@@ -368,7 +416,15 @@ class Source57_MultiCompressed:
         equation += f"  g_lambda(H_tz) = {g_lambda:.3e} m/s²\n"
         equation += f"  TOTAL = {g_total:.3e} m/s²"
         
-        return EquationResult('source57_' + system.lower(), g_total, equation, 'm/s²')
+        return EquationResult(
+            name='source57_' + system.lower(),
+            latex=r"g_{total} = g_{base} + g_{ext} + a_{env} + g_{\Lambda}(H_{tz}) + g_{quantum} + g_{fluid}",
+            substituted=equation,
+            result=g_total,
+            unit='m/s²',
+            parameters_used={'M': M, 'r': r, 'z': z, 'M_ext': M_ext, 'v_wind': v_wind, 't': t},
+            notes=f'SOURCE57 {system} compressed UQFF with F_env and Ug3\''
+        )
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -412,7 +468,15 @@ class Source60_MegaCompression:
     def calculate_system_comprehensive(params: InputParameters, system: str = 'NGC2525') -> EquationResult:
         """SOURCE60: Comprehensive UQFF with F_env summation"""
         if system not in Source60_MegaCompression.SYSTEMS:
-            return EquationResult('source60_comprehensive', 0.0, 'Invalid system', 'm/s²')
+            return EquationResult(
+                name='source60_comprehensive',
+                latex=r'g_{total} = 0',
+                substituted='Invalid system',
+                result=0.0,
+                unit='m/s²',
+                parameters_used={},
+                notes='Invalid system name'
+            )
         
         sys_params = Source60_MegaCompression.SYSTEMS[system]
         M = params.get('M', sys_params['M'])
@@ -462,7 +526,15 @@ class Source60_MegaCompression:
         equation += f"  g_lambda(H_tz) = {g_lambda:.3e} m/s²\n"
         equation += f"  TOTAL = {g_total:.3e} m/s² (19-system MEGA)"
         
-        return EquationResult('source60_' + system.lower(), g_total, equation, 'm/s²')
+        return EquationResult(
+            name='source60_' + system.lower(),
+            latex=r'g_{total} = g_{base} + a_{env} + g_{\Lambda}(H_{tz}) + g_{quantum} + g_{fluid} + g_{dm}',
+            substituted=equation,
+            result=g_total,
+            unit='m/s²',
+            parameters_used={'M': M, 'r': r, 'z': z, 't': t},
+            notes=f'SOURCE60 {system} comprehensive UQFF with F_env summation (MEGA module)'
+        )
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -478,7 +550,15 @@ def calculate_nebular_electric_field(params: InputParameters) -> EquationResult:
     E = UA / (SCm * epsilon_0)
     
     equation = f"SOURCE65 Nebular E-field (Eq14-18):\n  E = [UA]/([SCm]*ε₀) = {E:.3e} V/m"
-    return EquationResult('source65_nebular_efield', E, equation, 'V/m')
+    return EquationResult(
+        name='source65_nebular_efield',
+        latex=r'E = \frac{[UA]}{[SCm] \epsilon_0}',
+        substituted=equation,
+        result=E,
+        unit='V/m',
+        parameters_used={'UA': UA, 'SCm': SCm},
+        notes='SOURCE65 Eq14-18: Nebular electric field'
+    )
 
 
 def calculate_nebular_neutron_rate(params: InputParameters) -> EquationResult:
@@ -491,7 +571,15 @@ def calculate_nebular_neutron_rate(params: InputParameters) -> EquationResult:
     lambda_neutron = lambda_0 * np.exp(-E / E_threshold)
     
     equation = f"SOURCE65 Neutron Rate (Eq15-17,19 LENR):\n  λ_n = λ_0 * exp(-E/E_th) = {lambda_neutron:.3e} s⁻¹"
-    return EquationResult('source65_neutron_rate', lambda_neutron, equation, 's⁻¹')
+    return EquationResult(
+        name='source65_neutron_rate',
+        latex=r'\lambda_n = \lambda_0 \exp(-E/E_{threshold})',
+        substituted=equation,
+        result=lambda_neutron,
+        unit='s⁻¹',
+        parameters_used={'lambda_0': lambda_0, 'E': E, 'E_threshold': E_threshold},
+        notes='SOURCE65 Eq15-17,19: LENR neutron production rate'
+    )
 
 
 def calculate_nebular_transmutation_energy(params: InputParameters) -> EquationResult:
@@ -506,7 +594,15 @@ def calculate_nebular_transmutation_energy(params: InputParameters) -> EquationR
     E_MeV = E_transmute / CONSTANTS['eV'] / 1e6
     
     equation = f"SOURCE65 Transmutation Energy (Eq20 LENR):\n  E = |Δm|c² = {E_transmute:.3e} J = {E_MeV:.3f} MeV"
-    return EquationResult('source65_transmutation_energy', E_transmute, equation, 'J')
+    return EquationResult(
+        name='source65_transmutation_energy',
+        latex=r'E = |\Delta m| c^2',
+        substituted=equation,
+        result=E_transmute,
+        unit='J',
+        parameters_used={'m_initial': m_initial, 'm_final': m_final},
+        notes='SOURCE65 Eq20: LENR transmutation energy release'
+    )
 
 
 def calculate_nebular_higgs_mass(params: InputParameters) -> EquationResult:
@@ -518,7 +614,15 @@ def calculate_nebular_higgs_mass(params: InputParameters) -> EquationResult:
     M_H_GeV = M_H / (CONSTANTS['GeV'] / CONSTANTS['c'] ** 2)
     
     equation = f"SOURCE65 Higgs Mass (Eq24):\n  M_H = √2 * μ / v = {M_H:.3e} kg = {M_H_GeV:.2f} GeV/c²"
-    return EquationResult('source65_higgs_mass', M_H, equation, 'kg')
+    return EquationResult(
+        name='source65_higgs_mass',
+        latex=r'M_H = \frac{\sqrt{2} \mu}{v}',
+        substituted=equation,
+        result=M_H,
+        unit='kg',
+        parameters_used={'mu': mu, 'v': v},
+        notes='SOURCE65 Eq24: Higgs boson mass via UQFF'
+    )
 
 
 def calculate_nebular_star_formation_temp(params: InputParameters) -> EquationResult:
@@ -538,7 +642,15 @@ def calculate_nebular_star_formation_temp(params: InputParameters) -> EquationRe
     T = abs(Ug3) / k_B
     
     equation = f"SOURCE65 Star Formation Temp (Eq28):\n  T ~ Ug3/k_B = {T:.3e} K"
-    return EquationResult('source65_star_formation_temp', T, equation, 'K')
+    return EquationResult(
+        name='source65_star_formation_temp',
+        latex=r'T \sim \frac{U_{g3}}{k_B}',
+        substituted=equation,
+        result=T,
+        unit='K',
+        parameters_used={'t': t, 'r': r, 'M': M, 'theta': theta},
+        notes='SOURCE65 Eq28: Star formation temperature via Ug3'
+    )
 
 
 def calculate_nebular_radial_velocity(params: InputParameters) -> EquationResult:
@@ -550,7 +662,15 @@ def calculate_nebular_radial_velocity(params: InputParameters) -> EquationResult
     v_radial = c * delta_lambda_over_lambda
     
     equation = f"SOURCE65 Radial Velocity (Eq29):\n  v_r = c * (Δλ/λ) = {v_radial:.3e} m/s"
-    return EquationResult('source65_radial_velocity', v_radial, equation, 'm/s')
+    return EquationResult(
+        name='source65_radial_velocity',
+        latex=r'v_r = c \frac{\Delta \lambda}{\lambda}',
+        substituted=equation,
+        result=v_radial,
+        unit='m/s',
+        parameters_used={'delta_lambda_over_lambda': delta_lambda_over_lambda},
+        notes='SOURCE65 Eq29: Radial velocity from Doppler blueshift'
+    )
 
 
 def calculate_nebular_neutrino_proto(params: InputParameters) -> EquationResult:
@@ -562,7 +682,15 @@ def calculate_nebular_neutrino_proto(params: InputParameters) -> EquationResult:
     E_nu = E_0 * (1 + 0.1 * t)
     
     equation = f"SOURCE65 Neutrino Proto (Eq30):\n  E_ν = E_0 * (1 + 0.1t) = {E_nu:.3e} J"
-    return EquationResult('source65_neutrino_proto', E_nu, equation, 'J')
+    return EquationResult(
+        name='source65_neutrino_proto',
+        latex=r'E_{\nu} = E_0 (1 + 0.1t)',
+        substituted=equation,
+        result=E_nu,
+        unit='J',
+        parameters_used={'t': t, 'E_0': E_0},
+        notes='SOURCE65 Eq30: Neutrino proto energy in star formation'
+    )
 
 
 def calculate_nebular_universal_decay(params: InputParameters) -> EquationResult:
@@ -574,7 +702,15 @@ def calculate_nebular_universal_decay(params: InputParameters) -> EquationResult
     tau_decay = tau_0 * np.exp(-t / tau_0)
     
     equation = f"SOURCE65 Universal Decay (Eq31):\n  τ(t) = τ_0 * exp(-t/τ_0) = {tau_decay:.3e} s"
-    return EquationResult('source65_universal_decay', tau_decay, equation, 's')
+    return EquationResult(
+        name='source65_universal_decay',
+        latex=r'\tau(t) = \tau_0 \exp(-t/\tau_0)',
+        substituted=equation,
+        result=tau_decay,
+        unit='s',
+        parameters_used={'t': t, 'tau_0': tau_0},
+        notes='SOURCE65 Eq31: Universal decay rate'
+    )
 
 
 def calculate_nebular_dna_energy_flow(params: InputParameters) -> EquationResult:
@@ -601,7 +737,15 @@ def calculate_nebular_dna_energy_flow(params: InputParameters) -> EquationResult
     equation += f"  E_DNA = {E_dna:.3e} J\n"
     equation += f"  *** CONSCIOUSNESS SUBSTRATE COUPLING ***"
     
-    return EquationResult('source65_dna_energy', E_dna, equation, 'J')
+    return EquationResult(
+        name='source65_dna_energy',
+        latex=r'E_{DNA} = E_{base} [SSq]^{26} e^{-(p+t)} (1 + \kappa t)',
+        substituted=equation,
+        result=E_dna,
+        unit='J',
+        parameters_used={'t': t, 'E_dna_base': E_dna_base, 'kappa': kappa},
+        notes='SOURCE65 Eq32: DNA energy flow via UQFF - CONSCIOUSNESS SUBSTRATE'
+    )
 
 
 def calculate_nebular_buoyancy_ratio(params: InputParameters) -> EquationResult:
@@ -613,7 +757,15 @@ def calculate_nebular_buoyancy_ratio(params: InputParameters) -> EquationResult:
     F_b = V_little / V_big
     
     equation = f"SOURCE65 Buoyancy (Eq33):\n  F_b = V_little / V_big = {F_b:.3e}"
-    return EquationResult('source65_buoyancy_ratio', F_b, equation, 'dimensionless')
+    return EquationResult(
+        name='source65_buoyancy_ratio',
+        latex=r'F_b = \frac{V_{little}}{V_{big}}',
+        substituted=equation,
+        result=F_b,
+        unit='dimensionless',
+        parameters_used={'V_little': V_little, 'V_big': V_big},
+        notes='SOURCE65 Eq33: Buoyancy force ratio'
+    )
 
 
 def calculate_nebular_geometric_condition(params: InputParameters) -> EquationResult:
@@ -636,7 +788,15 @@ def calculate_nebular_geometric_condition(params: InputParameters) -> EquationRe
     avg_angle = np.mean(angles) if angles else 0
     
     equation = f"SOURCE65 Geometric Condition:\n  Average angle = {avg_angle:.3e} rad ({np.degrees(avg_angle):.2f}°)"
-    return EquationResult('source65_geometric_condition', avg_angle, equation, 'rad')
+    return EquationResult(
+        name='source65_geometric_condition',
+        latex=r'\theta_{avg} = \frac{1}{N} \sum_{i} \arctan2(\Delta y_i, \Delta x_i)',
+        substituted=equation,
+        result=avg_angle,
+        unit='rad',
+        parameters_used={'n_stars': len(star_positions)},
+        notes='SOURCE65: Star geometry angles and distances'
+    )
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

@@ -24,70 +24,70 @@ class TestParams:
 print("\n[ SOURCE52: Multi-UQFF (8 systems) ]")
 params = TestParams(t=3.156e7)
 result = PHASE5_CATALOG['source52_orionnebula'](params)
-print(f"✓ Orion Nebula: g = {result.result:.3e} {result.units}")
+print(f"✓ Orion Nebula: g = {result.result:.3e} {result.unit}")
 
 result = PHASE5_CATALOG['source52_hydrogenatom'](params)
-print(f"✓ Hydrogen Atom: g = {result.result:.3e} {result.units}")
+print(f"✓ Hydrogen Atom: g = {result.result:.3e} {result.unit}")
 
 # Test SOURCE54
 print("\n[ SOURCE54: Young Stars Outflows ]")
 result = PHASE5_CATALOG['source54_young_stars_outflows'](params)
-print(f"✓ Young stars: a = {result.result:.3e} {result.units}")
+print(f"✓ Young stars: a = {result.result:.3e} {result.unit}")
 
 # Test SOURCE56
 print("\n[ SOURCE56: Big Bang Evolution ]")
 result = PHASE5_CATALOG['source56_bigbang_evolution'](params)
-print(f"✓ Big Bang: a = {result.result:.3e} {result.units}")
+print(f"✓ Big Bang: a = {result.result:.3e} {result.unit}")
 
 # Test SOURCE57 (7 systems)
 print("\n[ SOURCE57: Compressed UQFF (7 systems) ]")
 result = PHASE5_CATALOG['source57_magnetar_sgr1745'](params)
-print(f"✓ SGR1745 Magnetar: g = {result.result:.3e} {result.units}")
+print(f"✓ SGR1745 Magnetar: g = {result.result:.3e} {result.unit}")
 
 result = PHASE5_CATALOG['source57_pillars_creation'](params)
-print(f"✓ Pillars of Creation: g = {result.result:.3e} {result.units}")
+print(f"✓ Pillars of Creation: g = {result.result:.3e} {result.unit}")
 
 # Test SOURCE60 (16 systems)
 print("\n[ SOURCE60: Comprehensive UQFF (16 systems) ]")
 result = PHASE5_CATALOG['source60_ngc2525'](params)
-print(f"✓ NGC2525: g = {result.result:.3e} {result.units}")
+print(f"✓ NGC2525: g = {result.result:.3e} {result.unit}")
 
 result = PHASE5_CATALOG['source60_bubble_nebula'](params)
-print(f"✓ Bubble Nebula: g = {result.result:.3e} {result.units}")
+print(f"✓ Bubble Nebula: g = {result.result:.3e} {result.unit}")
 
 result = PHASE5_CATALOG['source60_hubble_ultra_deep_field'](params)
-print(f"✓ Hubble Ultra Deep Field: g = {result.result:.3e} {result.units}")
+print(f"✓ Hubble Ultra Deep Field: g = {result.result:.3e} {result.unit}")
 
 # Test SOURCE64
 print("\n[ SOURCE64: UFE Plasma Orb (Laboratory) ]")
 result = PHASE5_CATALOG['source64_ufe_orb_UP'](params)
-print(f"✓ Plasma Orb UP: {result.result:.3e} {result.units}")
+print(f"✓ Plasma Orb UP: {result.result:.3e} {result.unit}")
 
 # Test SOURCE65 (11 functions)
 print("\n[ SOURCE65: Nebular UQFF (11 specialized equations) ]")
 result = PHASE5_CATALOG['source65_efield'](params)
-print(f"✓ E-field: {result.result:.3e} {result.units}")
+print(f"✓ E-field: {result.result:.3e} {result.unit}")
 
 result = PHASE5_CATALOG['source65_neutron_rate'](params)
-print(f"✓ Neutron rate (LENR): {result.result:.3e} {result.units}")
+print(f"✓ Neutron rate (LENR): {result.result:.3e} {result.unit}")
 
 result = PHASE5_CATALOG['source65_higgs_mass'](params)
-print(f"✓ Higgs mass: {result.result:.3e} {result.units}")
+print(f"✓ Higgs mass: {result.result:.3e} {result.unit}")
 
 result = PHASE5_CATALOG['source65_dna_energy'](params)
-print(f"✓ DNA energy (CONSCIOUSNESS): {result.result:.3e} {result.units}")
+print(f"✓ DNA energy (CONSCIOUSNESS): {result.result:.3e} {result.unit}")
 
 result = PHASE5_CATALOG['source65_star_formation_temp'](params)
-print(f"✓ Star formation temp: {result.result:.3e} {result.units}")
+print(f"✓ Star formation temp: {result.result:.3e} {result.unit}")
 
 result = PHASE5_CATALOG['source65_radial_velocity'](params)
-print(f"✓ Radial velocity: {result.result:.3e} {result.units}")
+print(f"✓ Radial velocity: {result.result:.3e} {result.unit}")
 
 result = PHASE5_CATALOG['source65_universal_decay'](params)
-print(f"✓ Universal decay: {result.result:.3e} {result.units}")
+print(f"✓ Universal decay: {result.result:.3e} {result.unit}")
 
 result = PHASE5_CATALOG['source65_buoyancy_ratio'](params)
-print(f"✓ Buoyancy ratio: {result.result:.3e} {result.units}")
+print(f"✓ Buoyancy ratio: {result.result:.3e} {result.unit}")
 
 print("\n" + "="*80)
 print("PHASE 5 COMPLETE TEST SUCCESSFUL ✓")
