@@ -407,12 +407,13 @@ class TestSource17Clusters:
         )
     
     def test_cluster_mass_evolution(self, cluster_params):
-        """Test cluster mass evolution over time."""
+        """Test cluster mass evolution over time - returns mass M(t), not acceleration."""
         t = 1e6 * 3.156e7  # 1 Myr
         result = calculate_cluster_mass_evolution(cluster_params, t)
         
-        assert result.result != 0, "Cluster evolution should produce non-zero acceleration"
-        assert result.unit == 'm/s²', "Unit should be m/s² (vacuum proof)"
+        assert result.result != 0, "Cluster evolution should produce non-zero mass"
+        assert result.unit == 'kg', "Unit should be kg (mass evolution)"
+        assert result.result > 0, "Mass should be positive"
     
     def test_westerlund2_composite_muge(self, cluster_params):
         """Test Westerlund2 composite MUGE calculation."""
@@ -438,19 +439,21 @@ class TestSource26Cosmological:
         )
     
     def test_hudf_star_formation_mass(self, hudf_params):
-        """Test HUDF star formation mass contribution."""
+        """Test HUDF star formation mass contribution - returns M(t), not acceleration."""
         t = 1e9 * 3.156e7  # 1 Gyr
         result = calculate_hudf_star_formation_mass(hudf_params, t)
         
         assert result.result != 0, "HUDF SFR contribution should be non-zero"
-        assert result.unit == 'm/s²', "Unit should be m/s² (vacuum proof)"
+        assert result.unit == 'kg', "Unit should be kg (mass from star formation)"
+        assert result.result > 0, "Mass should be positive"
     
     def test_hudf_intergalaxy_interaction(self, hudf_params):
-        """Test HUDF intergalaxy interaction term."""
+        """Test HUDF intergalaxy interaction term - returns coupling strength I(t)."""
         result = calculate_hudf_intergalaxy_interaction(hudf_params)
         
         assert result.result != 0, "Intergalaxy interaction should be non-zero"
-        assert result.unit == 'm/s²', "Unit should be m/s² (vacuum proof)"
+        assert result.unit == 'dimensionless', "Unit should be dimensionless (coupling strength)"
+        assert 0 <= result.result <= 1.0, "Coupling strength should be normalized"
     
     def test_hudf_complete_muge(self, hudf_params):
         """Test HUDF complete MUGE calculation."""
