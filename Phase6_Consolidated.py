@@ -4,7 +4,7 @@ Phase6_Consolidated.py - Phase 6 Unified Extraction (SOURCE70-71, 80)
 ======================================================================
 
 CONSOLIDATED APPROACH: 31 functions across 3 C++ modules extracted as
-unified Python interface with self-expanding metadata preserved.
+unified Python interface with static calculation methods.
 
 PHILOSOPHY: "Complete compact extraction" - Full coverage of galactic
 and binary SMBH systems without code duplication.
@@ -14,7 +14,11 @@ MODULES EXTRACTED:
 - SOURCE71: NGC1316UQFFModule (Fornax A Radio Galaxy - 11 functions)
 - SOURCE80: SMBHBinaryUQFFModule (Binary SMBH Coalescence - 9 functions)
 
-TOTAL: 31 functions, 3 astrophysical systems, 100% self-expanding
+TOTAL: 31 functions, 3 astrophysical systems
+
+ARCHITECTURE:
+- Static calculation methods (backward compatible)
+- For self-expanding framework capabilities, see Phase6_Enhanced.py
 
 Systems:
 - M51: Whirlpool Galaxy interacting with NGC5195 (1.6e11 M_sun, z=0.002)
@@ -50,7 +54,8 @@ class Source70_M51:
     Complete equation:
     g = g_base * (1+H(t,z)) * (1-B/B_crit) * (1+F_env) + Ug_sum + Lambda + Ui + Quantum + Fluid + DM
     
-    Self-Expanding: ✅ YES
+    Architecture: Static calculation methods
+    For self-expanding framework, use Phase6_Enhanced.M51GravityCalculator
     """
     
     DEFAULT_PARAMS = {
@@ -200,7 +205,8 @@ class Source71_NGC1316:
     Complete equation:
     g = g_base * (1+H(t,z)) * (1-B/B_crit) * (1+F_env) + Ug_sum + Lambda + Ui + Quantum + Fluid(dust) + DM
     
-    Self-Expanding: ✅ YES
+    Architecture: Static calculation methods
+    For self-expanding framework, use Phase6_Enhanced.NGC1316GravityCalculator
     """
     
     DEFAULT_PARAMS = {
@@ -352,7 +358,8 @@ class Source80_SMBHBinary:
     Complete equation:
     g = (f_super + f_fluid + f_quantum + f_aether + f_react + f_res + f_DPM + f_THz + f_Ug4i) * λ_P / (2π)
     
-    Self-Expanding: ✅ YES
+    Architecture: Static calculation methods
+    For self-expanding framework, use Phase6_Enhanced.SMBHBinaryCalculator
     """
     
     DEFAULT_PARAMS = {
@@ -495,6 +502,6 @@ if __name__ == '__main__':
     print(f"\n✓ Galactic dynamics: M51 + NGC1316")
     print(f"✓ Binary SMBH: Frequency-based framework")
     print(f"✓ All 3 Phase 6 sources integrated")
-    print(f"✓ Self-Expanding: 100%")
+    print(f"✓ Architecture: Static methods (use Phase6_Enhanced for self-expanding framework)")
     print(f"✓ Aether cosmology: f_Aether replaces dark energy")
     print("="*80)

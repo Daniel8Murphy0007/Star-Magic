@@ -50,6 +50,14 @@ import json
 from IPData import InputParameters, recall_input, get_latest_input
 from OPData import OutputDataStore, QUERY_RESULTS
 
+# Phase6 integration: Galaxy-scale and SMBH binary physics
+try:
+    import Phase6_Consolidated as Phase6
+    import Phase6_Enhanced
+    PHASE6_AVAILABLE = True
+except ImportError:
+    PHASE6_AVAILABLE = False
+
 # NOTE: QCalc_Wolfram_Extensions imports moved inside _compute_wolfram_physics_terms()
 # to avoid circular dependency (QCalc_Wolfram_Extensions imports CONSTANTS from QCalc)
 
@@ -1517,6 +1525,17 @@ class UnifiedFieldSolver:
                 for eq in buoyant_results:
                     solutions[eq.name] = eq.result
             
+            # PHASE 6: GALAXY-SCALE AND SMBH BINARY PHYSICS
+            if PHASE6_AVAILABLE and params.M is not None and params.r is not None:
+                try:
+                    phase6_results = self._compute_phase6_galaxy_physics(params)
+                    equations.extend(phase6_results)
+                    for eq in phase6_results:
+                        solutions[eq.name] = eq.result
+                except Exception as e:
+                    # Continue if Phase 6 fails
+                    pass
+            
             # PHASE 1: STAR MAGIC ENHANCEMENTS
             # Always computable - no parameter requirements
             
@@ -2449,6 +2468,90 @@ class UnifiedFieldSolver:
             unit='N',
             parameters_used={'beta': beta, 'rho_vac_UA': rho_vac_UA, 'M': M, 'r': r_cosmic}
         ))
+        
+        return results
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # PHASE 6: GALAXY-SCALE AND SMBH BINARY PHYSICS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def _compute_phase6_galaxy_physics(self, params: ComputeParams) -> List[EquationResult]:
+        """
+        Compute Phase6 galaxy-scale and SMBH binary physics.
+        
+        SOURCE70: M51 Whirlpool Galaxy (interacting with NGC5195)
+        SOURCE71: NGC1316 Fornax A (post-merger radio galaxy)
+        SOURCE80: SMBH Binary Coalescence (frequency-based gravity)
+        
+        Automatically detects system type from parameters and computes applicable equations.
+        
+        Returns:
+            List of EquationResult objects from Phase6 modules
+        """
+        if not PHASE6_AVAILABLE:
+            return []
+        
+        results = []
+        
+        # Convert ComputeParams to InputParameters for Phase6
+        phase6_params = InputParameters()
+        
+        # Copy all available parameters
+        if params.M is not None:
+            phase6_params.M_visible = params.M  # Treat as visible mass
+        if params.r is not None:
+            phase6_params.r = params.r
+        if params.z is not None:
+            phase6_params.z = params.z
+        if params.t is not None:
+            phase6_params.t = params.t
+        
+        # Galaxy-scale parameters (M51, NGC1316)
+        if params.SFR is not None:
+            phase6_params.SFR = params.SFR
+        if params.B is not None:
+            phase6_params.B = params.B
+        
+        # SMBH binary parameters (SOURCE80)
+        if hasattr(params, 'M1') and params.M1 is not None:
+            phase6_params.M1 = params.M1
+        if hasattr(params, 'M2') and params.M2 is not None:
+            phase6_params.M2 = params.M2
+        if hasattr(params, 'a') and params.a is not None:
+            phase6_params.a = params.a  # Semi-major axis
+        
+        # Attempt M51 computation (galaxy-galaxy interaction)
+        # Only if we have typical M51 parameters (M > 1e10 M_sun, z ~ 0.001-0.01)
+        if (params.M is not None and params.M > 1e40 and  # > 1e10 M_sun
+            params.z is not None and 0.0001 < params.z < 0.1):
+            try:
+                m51_result = Phase6.Source70_M51.calculate_m51_gravity(phase6_params)
+                results.append(m51_result)
+            except Exception as e:
+                # M51 not applicable, continue
+                pass
+        
+        # Attempt NGC1316 computation (post-merger galaxy)
+        # Triggered by larger mass range (> 5e10 M_sun) or dust parameters
+        if (params.M is not None and params.M > 5e40):  # > 5e10 M_sun
+            try:
+                ngc1316_result = Phase6.Source71_NGC1316.calculate_ngc1316_gravity(phase6_params)
+                results.append(ngc1316_result)
+            except Exception as e:
+                # NGC1316 not applicable, continue
+                pass
+        
+        # Attempt SMBH binary computation (SOURCE80)
+        # Requires M1, M2 (both > 1e5 M_sun typically)
+        if (hasattr(params, 'M1') and params.M1 is not None and
+            hasattr(params, 'M2') and params.M2 is not None and
+            params.M1 > 1e35 and params.M2 > 1e35):  # > 1e5 M_sun each
+            try:
+                smbh_result = Phase6.Source80_SMBHBinary.calculate_smbh_binary_gravity(phase6_params)
+                results.append(smbh_result)
+            except Exception as e:
+                # SMBH binary not applicable, continue
+                pass
         
         return results
     
