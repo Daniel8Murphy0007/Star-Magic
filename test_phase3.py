@@ -15,12 +15,18 @@ from QCalc import (
     ComputeParams, UnifiedFieldSolver, CONSTANTS,
     MagneticStringsCalculator, EnhancedBuoyancyCalculator
 )
+from QCalc_validation import ReferenceSystemLibrary
 
 print("=" * 80)
 print("PHASE 3 IMPLEMENTATION TEST")
 print("Universal Magnetism (Um) and Enhanced Buoyancy (Ub_i)")
 print("=" * 80)
 print()
+
+# Reference system values for Enhanced Buoyancy calculations
+# (Moved from CONSTANTS to ReferenceSystemLibrary in Feb 2026 refactoring)
+M_bh_SgrA = ReferenceSystemLibrary.SGR_A_STAR.M_bh
+d_g_SunSgrA = ReferenceSystemLibrary.SGR_A_STAR.d_g
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # TEST 1: MagneticStringsCalculator - Magnetic Moment
@@ -113,7 +119,7 @@ print()
 print("Computing Ub components (buoyancy opposing gravity):")
 for i in range(1, 5):
     Ug_i = Ug_dict[f'Ug{i}']
-    Ub_i = buoy_calc.compute_Ub_i(i, Ug_i, t_n)
+    Ub_i = buoy_calc.compute_Ub_i(i, Ug_i, t_n, M_bh_SgrA, d_g_SunSgrA)
     beta_i = [buoy_calc.beta_1, buoy_calc.beta_2, buoy_calc.beta_3, buoy_calc.beta_4][i-1]
     print(f"  Ub{i} = {Ub_i:.4e} m/s² (β_{i} = {beta_i})")
 
@@ -127,7 +133,7 @@ print()
 print("[TEST 5] EnhancedBuoyancyCalculator - Total Buoyancy")
 print("-" * 80)
 
-Ub_results = buoy_calc.compute_Ub_total(Ug_dict, t_n)
+Ub_results = buoy_calc.compute_Ub_total(Ug_dict, t_n, M_bh_SgrA, d_g_SunSgrA)
 
 print("Buoyancy results:")
 for key, val in Ub_results.items():
@@ -162,7 +168,9 @@ params = ComputeParams(
     t=0.0,
     t_n=-86400.0,
     B=1e-4,  # 0.1 mT
-    mu=1e3
+    mu=1e3,
+    M_bh=M_bh_SgrA,      # Required for Enhanced Buoyancy
+    d_g=d_g_SunSgrA      # Required for Enhanced Buoyancy
 )
 
 # Test Phase 3 Um method
@@ -265,7 +273,7 @@ print()
 print("Buoyancy response to varying gravity:")
 Ug_test_values = [1e-4, 1e-3, 1e-2, 1e-1]  # m/s²
 for Ug_val in Ug_test_values:
-    Ub_val = buoy_calc.compute_Ub_i(1, Ug_val, t_n)
+    Ub_val = buoy_calc.compute_Ub_i(1, Ug_val, t_n, M_bh_SgrA, d_g_SunSgrA)
     print(f"  Ug = {Ug_val:.1e} → Ub1 = {Ub_val:.4e} (ratio = {abs(Ub_val/Ug_val):.6f})")
 
 print("✓ Buoyancy coefficients verified")
@@ -278,8 +286,7 @@ print()
 print("[TEST 10] Galactic Coupling Parameters")
 print("-" * 80)
 
-M_bh_SgrA = CONSTANTS['M_bh_SgrA']
-d_g_SunSgrA = CONSTANTS['d_g_SunSgrA']
+# Reference system values already defined at top of file
 omega_g = CONSTANTS['omega_g']
 UA_charge = CONSTANTS['UA_charge_ref']
 

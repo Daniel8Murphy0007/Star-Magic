@@ -58,6 +58,13 @@ try:
 except ImportError:
     PHASE6_AVAILABLE = False
 
+# Phase7 integration: Cosmological systems & advanced galaxies
+try:
+    import Phase7_Consolidated as Phase7
+    PHASE7_AVAILABLE = True
+except ImportError:
+    PHASE7_AVAILABLE = False
+
 # NOTE: QCalc_Wolfram_Extensions imports moved inside _compute_wolfram_physics_terms()
 # to avoid circular dependency (QCalc_Wolfram_Extensions imports CONSTANTS from QCalc)
 
@@ -217,8 +224,8 @@ CONSTANTS = {
     # ═══════════════════════════════════════════════════════════════════════════
     'omega_g': 7.3e-16,        # Galactic spin (rad/s, Milky Way reference)
     'omega_c': 7.27e-5,        # Cosmic oscillation frequency (rad/s, ~1 day period)
-    'M_bh_SgrA': 8.15e36,      # Sgr A* black hole mass (kg) - REFERENCE ONLY
-    'd_g_SunSgrA': 2.44e20,    # Sun-Sgr A* distance (m) - REFERENCE ONLY
+    # Sgr A* reference values moved to QCalc_validation.py::ReferenceSystemLibrary
+    # Use params.M_bh and params.d_g from API or manual input
     'UA_charge_ref': 1e-11,    # Trapped aether charge density (C)
     'rho_A': 1e-23,            # Aether mass density (kg/m³)
     
@@ -955,8 +962,8 @@ class EnhancedBuoyancyCalculator:
         """Initialize with fundamental constants."""
         self.C = CONSTANTS
         self.omega_g = self.C['omega_g']              # 7.3e-16 rad/s
-        self.M_bh_SgrA = self.C['M_bh_SgrA']          # 8.15e36 kg
-        self.d_g_SunSgrA = self.C['d_g_SunSgrA']      # 2.44e20 m
+        # Sgr A* reference values removed - use params.M_bh and params.d_g
+        # For Sgr A* defaults, import: from QCalc_validation import ReferenceSystemLibrary
         self.UA_charge_ref = self.C['UA_charge_ref']  # 1e-11 C
         self.delta_sw = self.C['delta_sw']            # 0.01
         self.omega_c = self.C['omega_c']              # Cosmic oscillation
@@ -997,9 +1004,9 @@ class EnhancedBuoyancyCalculator:
         
         # Use defaults if not provided
         if M_bh is None:
-            M_bh = self.M_bh_SgrA
+            raise ValueError("M_bh required for Ub_i calculation. Use params.M_bh or import ReferenceSystemLibrary.SGR_A_STAR from QCalc_validation.py")
         if d_g is None:
-            d_g = self.d_g_SunSgrA
+            raise ValueError("d_g required for Ub_i calculation. Use params.d_g or import ReferenceSystemLibrary.SGR_A_STAR from QCalc_validation.py")
         if lambda_vac_sw is None:
             # Approximate solar wind contribution (small compared to [UA], [SCm])
             lambda_vac_sw = 1e-30  # J/m³
@@ -1064,8 +1071,15 @@ class EnhancedBuoyancyCalculator:
         results = []
         
         t_n = params.t_n if params.t_n is not None else -(params.t if params.t is not None else 0.0)
-        M_bh = params.M_bh if hasattr(params, 'M_bh') and params.M_bh is not None else self.M_bh_SgrA
-        d_g = params.d_g if hasattr(params, 'd_g') and params.d_g is not None else self.d_g_SunSgrA
+        
+        # Require explicit M_bh and d_g parameters (no defaults)
+        if not hasattr(params, 'M_bh') or params.M_bh is None:
+            raise ValueError("params.M_bh required for Enhanced Buoyancy. Use QCalc_validation.ReferenceSystemLibrary.SGR_A_STAR.M_bh for Sgr A*")
+        if not hasattr(params, 'd_g') or params.d_g is None:
+            raise ValueError("params.d_g required for Enhanced Buoyancy. Use QCalc_validation.ReferenceSystemLibrary.SGR_A_STAR.d_g for Sgr A*")
+        
+        M_bh = params.M_bh
+        d_g = params.d_g
         
         # Compute all Ub components
         Ub_results = self.compute_Ub_total(Ug_dict, t_n, M_bh, d_g)
@@ -1536,6 +1550,17 @@ class UnifiedFieldSolver:
                     # Continue if Phase 6 fails
                     pass
             
+            # PHASE 7: COSMOLOGICAL SYSTEMS & ADVANCED GALAXIES
+            if PHASE7_AVAILABLE and params.M is not None and params.r is not None:
+                try:
+                    phase7_results = self._compute_phase7_cosmological_physics(params)
+                    equations.extend(phase7_results)
+                    for eq in phase7_results:
+                        solutions[eq.name] = eq.result
+                except Exception as e:
+                    # Continue if Phase 7 fails
+                    pass
+            
             # PHASE 1: STAR MAGIC ENHANCEMENTS
             # Always computable - no parameter requirements
             
@@ -1903,9 +1928,14 @@ class UnifiedFieldSolver:
         t_n = params.t_n if params.t_n is not None else 0.0
         omega = params.omega if params.omega is not None else 2 * np.pi / 86400
         
-        # Galactic black hole parameters (from params or defaults)
-        M_bh = params.M_bh if params.M_bh is not None else self.C['M_bh_SgrA']
-        d_g = params.d_g if params.d_g is not None else self.C['d_g_SunSgrA']
+        # Galactic black hole parameters (require explicit values, no defaults)
+        if params.M_bh is None:
+            raise ValueError("params.M_bh required for Ug4 calculation. Use QCalc_validation.ReferenceSystemLibrary.SGR_A_STAR.M_bh for Sgr A*")
+        if params.d_g is None:
+            raise ValueError("params.d_g required for Ug4 calculation. Use QCalc_validation.ReferenceSystemLibrary.SGR_A_STAR.d_g for Sgr A*")
+        
+        M_bh = params.M_bh
+        d_g = params.d_g
         
         # Time decay
         time_decay = np.exp(-alpha * t)
@@ -2552,6 +2582,174 @@ class UnifiedFieldSolver:
             except Exception as e:
                 # SMBH binary not applicable, continue
                 pass
+        
+        return results
+    
+    def _compute_phase7_cosmological_physics(self, params: ComputeParams) -> List[EquationResult]:
+        """
+        Compute Phase7 cosmological systems and advanced galaxy physics.
+        
+        SOURCE88: Andromeda Galaxy M31 (blueshift, z=-0.001)
+        SOURCE82: SMBH M-σ Relation (z=0-6, M_BH=10^11-10^14 M_sun)
+        SOURCE89: Aether Coupling (metric perturbation A_μν = g_μν + η × T_s)
+        SOURCE81: NGC346 Nebula (Small Magellanic Cloud, SFR=0.1 M_sun/yr)
+        SOURCE86: Extended Fields MUGE (7 systems, dual compressed/resonance modes)
+        SOURCE87: Resonance MUGE (12 systems, pure frequency-domain)
+        
+        Automatically detects system type from parameters and computes applicable equations.
+        
+        Detection Logic:
+        ----------------
+        - Andromeda: z < 0 (blueshift) OR M ~ 10^12 M_sun with low T
+        - SMBH M-σ: M > 10^11 M_sun, sigma > 50 km/s
+        - Aether: Always computed (universal field)
+        - NGC346: SFR > 0, M < 10^4 M_sun (star-forming region)
+        - Extended MUGE: B > 10^9 T (magnetar) OR M > 10^5 M_sun (SMBH)
+        - Resonance MUGE: Always attempted (pure resonance, 12 systems)
+        
+        Returns:
+            List of EquationResult objects from Phase7 modules
+        """
+        if not PHASE7_AVAILABLE:
+            return []
+        
+        results = []
+        
+        # Build Phase7-compatible parameter dict
+        phase7_params = {}
+        if params.M is not None:
+            phase7_params['M'] = params.M
+        if params.r is not None:
+            phase7_params['r'] = params.r
+        if params.z is not None:
+            phase7_params['z'] = params.z
+        if params.t is not None:
+            phase7_params['t'] = params.t
+        if params.B is not None:
+            phase7_params['B'] = params.B
+        if params.T is not None:
+            phase7_params['T'] = params.T
+        if params.sigma is not None:
+            phase7_params['sigma'] = params.sigma
+        if hasattr(params, 'SFR') and params.SFR is not None:
+            phase7_params['SFR'] = params.SFR
+        if hasattr(params, 'v_orbit') and params.v_orbit is not None:
+            phase7_params['v_orbit'] = params.v_orbit
+        if hasattr(params, 'rho_dust') and params.rho_dust is not None:
+            phase7_params['rho_dust'] = params.rho_dust
+        
+        # SOURCE88: Andromeda M31 (blueshift galaxy)
+        # Detect: z < 0 OR (M ~ 10^42 kg = 10^12 M_sun AND z ~ -0.001 to 0.001)
+        if (params.z is not None and params.z < 0) or \
+           (params.M is not None and 5e41 < params.M < 5e42):  # 2.5e11 to 2.5e12 M_sun
+            try:
+                andromeda_result = Phase7.Source88_Andromeda.calculate_andromeda_gravity(phase7_params)
+                # Convert dict result to EquationResult
+                eq = EquationResult(
+                    name="Andromeda_M31_Gravity",
+                    equation="g_total = g_grav + g_BH + a_dust + em_term",
+                    result=andromeda_result['g_total'],
+                    unit="m/s²",
+                    description="SOURCE88: Andromeda blueshift galaxy (dust-dominated)"
+                )
+                results.append(eq)
+            except Exception as e:
+                pass  # Andromeda not applicable
+        
+        # SOURCE82: SMBH M-σ Relation
+        # Detect: M > 10^11 M_sun (>2e41 kg) OR sigma > 50 km/s
+        if (params.M is not None and params.M > 2e41) or \
+           (params.sigma is not None and params.sigma > 5e4):  # > 50 km/s
+            try:
+                smbh_result = Phase7.Source82_SMBH.calculate_smbh_gravity(phase7_params)
+                eq = EquationResult(
+                    name="SMBH_M_Sigma_Gravity",
+                    equation="g_total = Um + Ug1 + omega_s_contrib + E_react_contrib",
+                    result=smbh_result['g_total'],
+                    unit="m/s²",
+                    description="SOURCE82: SMBH M-σ relation (z=0-6)"
+                )
+                results.append(eq)
+            except Exception as e:
+                pass
+        
+        # SOURCE89: Aether Coupling (universal field - always compute)
+        try:
+            aether_result = Phase7.Source89_Aether.calculate_aether_metric(phase7_params)
+            eq = EquationResult(
+                name="Aether_Perturbation",
+                equation="A_μν = g_μν + η × T_s",
+                result=aether_result['perturbation'],
+                unit="dimensionless",
+                description="SOURCE89: Aether metric perturbation (η coupling)"
+            )
+            results.append(eq)
+        except Exception as e:
+            pass
+        
+        # SOURCE81: NGC346 Nebula (star-forming region)
+        # Detect: SFR > 0 OR (M < 10^4 M_sun AND T > 10^3 K)
+        has_sfr = hasattr(params, 'SFR') and params.SFR is not None and params.SFR > 0
+        is_small_hot = (params.M is not None and params.M < 2e34 and  # < 10^4 M_sun
+                       params.T is not None and params.T > 1000)
+        if has_sfr or is_small_hot:
+            try:
+                ngc346_result = Phase7.Source81_NGC346.calculate_ngc346_gravity(phase7_params)
+                eq = EquationResult(
+                    name="NGC346_Nebula_Gravity",
+                    equation="g_total = g_base + Ug_sum + lambda + quantum + fluid + dm",
+                    result=ngc346_result['g_total'],
+                    unit="m/s²",
+                    description="SOURCE81: NGC346 star-forming nebula (Ug3 collapse dominant)"
+                )
+                results.append(eq)
+            except Exception as e:
+                pass
+        
+        # SOURCE86: Extended Fields MUGE (dual-mode: compressed + resonance)
+        # Detect: B > 10^9 T (magnetar) OR M > 10^5 M_sun (compact objects)
+        has_strong_B = params.B is not None and params.B > 1e9
+        is_compact = params.M is not None and params.M > 2e35  # > 10^5 M_sun
+        if has_strong_B or is_compact:
+            try:
+                # Compressed mode
+                extended_compressed = Phase7.Source86_Extended.calculate_muge_compressed(t=params.t or 3.799e10, params=phase7_params)
+                eq_comp = EquationResult(
+                    name="Extended_MUGE_Compressed",
+                    equation="g = g_base × expansion × sc_corr + Ug_sum + Lambda + quantum + EM + fluid + resonant + DM + sys",
+                    result=extended_compressed['g_total'],
+                    unit="m/s²",
+                    description="SOURCE86: Extended MUGE compressed (7 systems)"
+                )
+                results.append(eq_comp)
+                
+                # Resonance mode
+                extended_resonance = Phase7.Source86_Extended.calculate_muge_resonance(t=params.t or 3.799e10, params=phase7_params)
+                eq_res = EquationResult(
+                    name="Extended_MUGE_Resonance",
+                    equation="g = a_DPM + a_THz + a_vac_diff + a_super + a_aether_res + Ug4i + a_quantum + a_aether + a_fluid + osc + a_exp + f_TRZ",
+                    result=extended_resonance['g_total'],
+                    unit="m/s²",
+                    description="SOURCE86: Extended MUGE resonance (frequency modes)"
+                )
+                results.append(eq_res)
+            except Exception as e:
+                pass
+        
+        # SOURCE87: Resonance MUGE (pure frequency-domain, 12 systems)
+        # Always attempt - supports widest range (magnetar to galaxy)
+        try:
+            resonance_result = Phase7.Source87_Resonance.calculate_resonance_muge(t=params.t or 3.799e10, params=phase7_params)
+            eq = EquationResult(
+                name="Resonance_MUGE_Pure",
+                equation="g = a_DPM + a_THz + a_vac_diff + a_super + a_aether_res + Ug4i + a_quantum + a_aether + a_fluid + osc + a_exp + f_TRZ",
+                result=resonance_result['g_total'],
+                unit="m/s²",
+                description="SOURCE87: Pure resonance MUGE (12 systems, vortex flux)"
+            )
+            results.append(eq)
+        except Exception as e:
+            pass
         
         return results
     

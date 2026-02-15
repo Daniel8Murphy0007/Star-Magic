@@ -193,6 +193,80 @@ class NuclearData:
 
 
 @dataclass
+class ReferenceSystem:
+    """Reference astronomical system for validation benchmarks."""
+    name: str
+    M: Optional[float]           # Mass (kg)
+    r: Optional[float]           # Radius/distance (m)
+    M_bh: Optional[float]        # Central black hole mass (kg)
+    d_g: Optional[float]         # Galactic distance (m)
+    B: Optional[float]           # Magnetic field (T)
+    T: Optional[float]           # Temperature (K)
+    L: Optional[float]           # Luminosity (W)
+    z: Optional[float]           # Redshift
+    source: str                  # Literature reference
+    metadata: Dict[str, Any] = field(default_factory=dict)
+
+
+class ReferenceSystemLibrary:
+    """
+    Library of well-studied astronomical systems for validation.
+    
+    These are REFERENCE systems with observational data from literature.
+    Use these for validation benchmarks, examples, and default parameters
+    when testing/demonstrating UQFF calculations.
+    
+    DO NOT import these into QCalc.py CONSTANTS - keep QCalc.py pure.
+    Import into test files, examples, or use as params.M_bh = SGR_A_STAR.M_bh
+    """
+    
+    # Sagittarius A* (Milky Way SMBH)
+    SGR_A_STAR = ReferenceSystem(
+        name="Sagittarius A*",
+        M=None,  # Not a star mass
+        r=None,
+        M_bh=8.15e36,  # 4.15e6 M_sun (GAIA/VERA 2025)
+        d_g=2.44e20,   # 25,800 ly from Sun (GAIA DR3)
+        B=None,
+        T=None,
+        L=None,
+        z=0.0,
+        source="GAIA DR3 (2025), VERA (2024)",
+        metadata={'schwarzschild_radius_m': 1.2e10}
+    )
+    
+    # Sun (Solar System reference)
+    SUN = ReferenceSystem(
+        name="Sun",
+        M=1.989e30,
+        r=6.96e8,
+        M_bh=None,
+        d_g=2.44e20,  # Distance to Sgr A*
+        B=1e-4,  # Average photospheric field
+        T=5778,
+        L=3.828e26,
+        z=0.0,
+        source="IAU 2015 Resolution B3",
+        metadata={}
+    )
+    
+    # SGR 1745-2900 (Magnetar near Sgr A*)
+    SGR_1745 = ReferenceSystem(
+        name="SGR 1745-2900",
+        M=2.8e30,  # ~1.4 M_sun
+        r=2e4,     # ~20 km
+        M_bh=None,
+        d_g=2.44e20,  # Same as Sgr A* (0.1 pc separation)
+        B=4.4e13,  # Critical magnetar field
+        T=1e7,
+        L=1e35,  # X-ray luminosity
+        z=0.0,
+        source="Chandra X-ray Observatory (2013)",
+        metadata={'discovery_year': 2013}
+    )
+
+
+@dataclass
 class AstrophysicalData:
     """Astrophysical object data from catalogs."""
     name: str
