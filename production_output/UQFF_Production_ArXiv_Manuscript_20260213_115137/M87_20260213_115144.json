@@ -1,0 +1,13 @@
+{
+  "query_name": "M87",
+  "timestamp": "2026-02-13T11:51:41.732866",
+  "api_data": {
+    "name": "M87",
+    "sources": []
+  },
+  "qcalc_result": {
+    "query_id": "M87_20260213T115143776678",
+    "timestamp": "2026-02-13T11:51:43.776678",
+    "input_params": {
+      "query_name": "M87",
+      "scale": 

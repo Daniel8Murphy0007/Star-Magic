@@ -1,0 +1,13 @@
+{
+  "query_name": "Crab Pulsar",
+  "timestamp": "2026-02-13T11:51:49.023107",
+  "api_data": {
+    "name": "Crab Pulsar",
+    "sources": []
+  },
+  "qcalc_result": {
+    "query_id": "Crab Pulsar_20260213T115151040503",
+    "timestamp": "2026-02-13T11:51:51.040503",
+    "input_params": {
+      "query_name": "Crab Pulsar",
+      "scale": 

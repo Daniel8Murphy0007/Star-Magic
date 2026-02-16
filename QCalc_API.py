@@ -19,6 +19,10 @@ ENDPOINTS:
     GET  /api/v1/health             - Health check
     GET  /api/v1/cache/stats        - Cache statistics
 
+PHASE 6: QCalc automatically includes Phase 6 galaxy physics (M51, NGC1316,
+SMBH binaries) when appropriate parameters are detected. Use GET /api/v1/phases
+for complete phase documentation.
+
 Author: Daniel T. Murphy (daniel.murphy00@gmail.com)
 Framework: UQFF 99.9% Solvability (Star-Magic)
 Copyright: © 2025-2026 Daniel T. Murphy - All Rights Reserved

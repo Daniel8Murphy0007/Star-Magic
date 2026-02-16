@@ -481,6 +481,51 @@ CONSTANTS = {
     'beta_4': 0.6,             # β₄ for Ug4 (Vacuum Concentration / star-BH interactions)
     
     # ═══════════════════════════════════════════════════════════════════════════
+    # TRIADIC UQFF CONSTANTS (from Pillars of Creation June 2025 session)
+    # ═══════════════════════════════════════════════════════════════════════════
+    # Master Triadic UQFF Framework:
+    #   Compressed: F_U_g1 = Σ k_k × (f_UA' × f_SCm × R_EB)² / r² × G_k
+    #   Resonance:  R(t) = Σ_{i=1}^{26} R_Ug,i × cos(ω_i × t)
+    #   Buoyancy:   F_U_Bi = k_Ub × (f_UA' × f_SCm) / r² × H_k × f_Ub
+    #
+    # Boyle's Law Buoyancy Factor:
+    #   f_Ub = 0.1 × Δk_η × (ρ_UA/ρ_SCm) × (1/33) ≈ 2.20×10⁷
+    # ─────────────────────────────────────────────────────────────────────────
+    
+    # Core triadic constants
+    'Delta_k_eta': 7.25e8,         # Δk_η: Key buoyancy scaling constant
+    'BOYLE_RATIO': 1.0/33.0,       # Boyle's Law ratio (1/33)
+    'UNIVERSE_DECAY_RATE': 0.0963, # Universe decay rate (from Page 5)
+    
+    # Precomputed Boyle's Law buoyancy factor:
+    #   f_Ub = 0.1 × Δk_η × (ρ_UA/ρ_SCm) × (1/33)
+    #        = 0.1 × 7.25e8 × 10 × (1/33) ≈ 2.20×10⁷
+    'f_Ub_triadic': 2.20e7,        # Precomputed f_Ub for triadic mode
+    
+    # 26-Layer Resonance Frequencies (rad/s):
+    #   ω_Ug1,1 = 1.989×10⁻¹³ (base Ug1 frequency)
+    #   ω_Ug2,1 = 2 × ω_Ug1,1 = 3.978×10⁻¹³
+    #   ω_Ug3,1 = 100 × ω_Ug1,1 = 1.989×10⁻¹¹
+    #   ω_Ug4i,1 = 2π × 10¹² = 6.283×10¹² (THz-scale reactive control)
+    'omega_Ug1_1': 1.989e-13,      # ω_Ug1,1: Layer 1 Ug1 frequency (rad/s)
+    'omega_Ug2_1': 3.978e-13,      # ω_Ug2,1: Layer 1 Ug2 frequency (rad/s)
+    'omega_Ug3_1': 1.989e-11,      # ω_Ug3,1: Layer 1 Ug3 frequency (rad/s)
+    'omega_Ug4i_1': 6.283e12,      # ω_Ug4i,1: Layer 1 Ug4i frequency (rad/s) - THz scale
+    
+    # Decay rates for triadic mode
+    'gamma_decay_triadic': 5e-5,   # γ: Reciprocation decay (day⁻¹)
+    'alpha_decay_triadic': 1e-10,  # α: Time decay for Ug components (s⁻¹)
+    'kappa_SCm_triadic': 0.0005,   # κ: [SCm] reactivity decay (day⁻¹)
+    
+    # DPM (Dual Phase Material) constants
+    'Delta_1': 1.047,              # δ_1: Pseudo-monopole angle (rad, ≈60°)
+    'mu_J_base': 3.38e23,          # μ_J: Base magnetic moment (A·m²)
+    'lambda_H': 1e-4,              # λ_H: Helicity coupling
+    'lambda_I': 1e-3,              # λ_I: Inertia coupling
+    'P_SCm': 1e20,                 # P_SCm: [SCm] pressure (Pa)
+    'omega_c': 2.998e8,            # ω_c: Speed of light angular scale (m/s)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
     # δ_def - Ug1 DEFECT FACTOR
     # ═══════════════════════════════════════════════════════════════════════════
     # Definition: δ_def = Ug1 defect factor (unitless scalar)
@@ -818,9 +863,287 @@ CONSTANTS = {
     #   - Final Parsec Problem (Drawing 3): SMBH binary merger dynamics
     #   - Galactic Evolution: Star formation regulation
     #   - Quasar Activity (Drawing 1): Jet enhancement from mass growth
-    'f_feedback': 0.1,         # f_feedback: BH feedback factor for ΔM_BH = 1 dex (unitless)
-    'f_feedback_per_dex': 0.1, # Feedback scaling: 0.1 per logarithmic decade
+    #
+    # CALIBRATED VALUE (SMBH Document June 06, 2025):
+    #   f_feedback = 0.063 aligns with χ = min[0.1, 0.002(M_BH/10^9 M_sun)^2]
+    #   This calibrated value is used for metal retention in CGM modeling
+    'f_feedback': 0.063,       # f_feedback: Calibrated BH feedback factor (SMBH doc June 2025)
+    'f_feedback_calibrated': 0.063,  # f_feedback_calibrated: Metal retention calibration
+    'f_feedback_per_dex': 0.1, # Feedback scaling: 0.1 per logarithmic decade (for ΔM_BH scaling)
     'delta_M_BH_dex': 1.0,     # Default ΔM_BH in dex (1 dex = 10× mass increase)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # NGC 685 / NGC 3507 / NGC 3511 / AT2024tvd SYSTEM PARAMETERS
+    # From: SMBH Comparison to UQFF (June 06, 2025) document
+    # ═══════════════════════════════════════════════════════════════════════════
+    # NGC 685: Barred spiral galaxy, ~60 Mly, SMBH ~10^8 M_sun
+    'NGC685_r': 2.83e20,       # r = 30,000 ly in meters
+    'NGC685_M_BH': 1.989e38,   # M_BH = 10^8 M_sun in kg (1.989e30 × 10^8)
+    'NGC685_sigma': 1.5e5,     # σ = 150 km/s velocity dispersion (m/s)
+    'NGC685_SFR': 1.0,         # Star Formation Rate = 1 M_sun/yr
+    'NGC685_z': 0.004,         # Redshift
+    'NGC685_B': 1e-5,          # Magnetic field (T)
+    # NGC 3507: Spiral galaxy, ~60 Mly, SMBH ~10^7.5 M_sun
+    'NGC3507_r': 2.36e20,      # r = 25,000 ly in meters
+    'NGC3507_M_BH': 6.29e37,   # M_BH = 10^7.5 M_sun in kg
+    'NGC3507_sigma': 1.2e5,    # σ = 120 km/s (m/s)
+    'NGC3507_SFR': 0.8,        # Star Formation Rate = 0.8 M_sun/yr
+    'NGC3507_z': 0.004,        # Redshift
+    'NGC3507_B': 1e-5,         # Magnetic field (T)
+    # NGC 3511: Spiral galaxy, ~40 Mly, SMBH ~10^7 M_sun
+    'NGC3511_r': 1.89e20,      # r = 20,000 ly in meters
+    'NGC3511_M_BH': 1.989e37,  # M_BH = 10^7 M_sun in kg
+    'NGC3511_sigma': 1.0e5,    # σ = 100 km/s (m/s)
+    'NGC3511_SFR': 0.6,        # Star Formation Rate = 0.6 M_sun/yr
+    'NGC3511_z': 0.0027,       # Redshift
+    'NGC3511_B': 1e-5,         # Magnetic field (T)
+    # AT2024tvd: Tidal Disruption Event, 2600 ly offset from SMBH
+    'AT2024tvd_r': 2.46e19,    # r = 2600 ly offset in meters
+    'AT2024tvd_M_BH': 6.29e36, # M_BH = 10^6.5 M_sun in kg
+    'AT2024tvd_sigma': 8.0e4,  # σ = 80 km/s estimated (m/s)
+    'AT2024tvd_L_bol': 1e35,   # Bolometric luminosity ~10^42 erg/s = 10^35 W
+    'AT2024tvd_z': 0.004,      # Redshift (host galaxy)
+    'AT2024tvd_B': 1e-5,       # Magnetic field (T)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # SMBH TRIADIC DOCUMENT SYSTEMS (June 06, 2025) - 8 Astrophysical Systems
+    # ═══════════════════════════════════════════════════════════════════════════
+    # Carina Nebula (NGC 3372/3324): Giant H II region with active star formation
+    # Document: r = 20 ly = 1.89×10^17 m, SFR = 2 M_sun/yr
+    'Carina_r': 1.89e17,        # r = 20 ly in meters (document value)
+    'Carina_SFR': 6.34e22,      # SFR = 2 M_sun/yr in kg/s (2 × 1.989e30 / 3.156e7)
+    'Carina_B': 1e-5,           # Magnetic field (T)
+    'Carina_M': 1.989e35,       # M = 10^5 M_sun (from source172.cpp)
+    
+    # NGC 2014/2020 (Tapestry of Blazing Starbirth): LMC nebula complex
+    # Document: r = 10 ly = 9.46×10^16 m, B = 10^-4 T
+    'Tapestry_r': 9.46e16,      # r = 10 ly in meters (document value)
+    'Tapestry_B': 1e-4,         # B = 10^-4 T (document value)
+    'Tapestry_M': 1.989e33,     # M = 1000 M_sun (cluster mass estimate)
+    'NGC2014_r': 9.46e16,       # r = 10 ly (alias for NGC 2014)
+    'NGC2020_r': 9.46e16,       # r = 10 ly (alias for NGC 2020)
+    
+    # Pillars of Creation (M16 Eagle Nebula): Star-forming molecular cloud
+    # Document: r = 5 ly = 4.73×10^16 m, SFR = 0.2 M_sun/yr
+    'Pillars_r': 4.73e16,       # r = 5 ly in meters (document value)
+    'Pillars_SFR': 6.34e21,     # SFR = 0.2 M_sun/yr in kg/s (0.2 × 1.989e30 / 3.156e7)
+    'Pillars_B': 1e-5,          # Magnetic field (T)
+    'Pillars_M': 1.989e32,      # M = 100 M_sun (pillar mass)
+    
+    # Crab Nebula (M1): Supernova remnant with central pulsar
+    # Document: r = 5.5 ly = 5.20×10^16 m, B = 10^-4 T (confirmed matches source32.cpp)
+    'Crab_r': 5.20e16,          # r = 5.5 ly in meters (matches source32.cpp)
+    'Crab_B': 1e-4,             # B = 10^-4 T (document value)
+    'Crab_M': 9.15e30,          # M = 4.6 M_sun (source32.cpp)
+    'Crab_v_exp': 1.5e6,        # v_exp = 1500 km/s expansion velocity
+    'Crab_P_pulsar': 5e31,      # P_pulsar = 5×10^31 W (pulsar power)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # AFGL/LMC/NGC SYSTEMS (June 06, 2025 - DeepSearch Document)
+    # ═══════════════════════════════════════════════════════════════════════════
+    # AFGL 5180: Massive star-forming region in Gemini (~6,500 ly)
+    # Document: r = 10 ly = 9.46×10^16 m, SFR = 0.5 M_sun/yr
+    'AFGL5180_r': 9.46e16,      # r = 10 ly in meters
+    'AFGL5180_SFR': 3.17e22,    # SFR = 0.5 M_sun/yr in kg/s (0.5 × 1.989e30 / 3.156e7)
+    'AFGL5180_B': 1e-5,         # B = 10^-5 T (magnetic field)
+    'AFGL5180_z': 0.0022,       # Redshift
+    'AFGL5180_rho_gas': 1e-20,  # Gas density (kg/m^3)
+    
+    # NGC 346: Star-forming region in Small Magellanic Cloud (~200,000 ly)
+    # Document: r = 650 ly = 6.15×10^18 m, SFR = 0.1 M_sun/yr
+    'NGC346_r': 6.15e18,        # r = 650 ly in meters
+    'NGC346_SFR': 6.34e21,      # SFR = 0.1 M_sun/yr in kg/s (0.1 × 1.989e30 / 3.156e7)
+    'NGC346_B': 1e-5,           # B = 10^-5 T (magnetic field)
+    'NGC346_z': 0.00067,        # Redshift (SMC distance)
+    'NGC346_rho_gas': 1e-21,    # Gas density (kg/m^3)
+    'NGC346_M': 1.989e33,       # M ~ 1000-1200 M_sun (from Phase7 source81)
+    
+    # NGC 2174 (Monkey Head Nebula): Star-forming region in Orion (~6,400 ly)
+    # Document: r = 15 ly = 1.42×10^17 m, SFR = 0.3 M_sun/yr
+    'NGC2174_r': 1.42e17,       # r = 15 ly in meters
+    'NGC2174_SFR': 1.90e22,     # SFR = 0.3 M_sun/yr in kg/s (0.3 × 1.989e30 / 3.156e7)
+    'NGC2174_B': 1e-5,          # B = 10^-5 T (magnetic field)
+    'NGC2174_z': 0.0021,        # Redshift
+    'NGC2174_rho_gas': 1e-20,   # Gas density (kg/m^3)
+    'NGC2174_M': 1e35,          # M ~ 10^5 M_sun (from RUN_VS_BUILD_ANALYSIS.md)
+    
+    # Tarantula Nebula (30 Doradus) / LMC: Star-forming region in LMC (~163,000 ly)
+    # Document: r = 650 ly = 6.15×10^18 m, SFR = 5 M_sun/yr, B = 10^-4 T
+    'Tarantula_r': 6.15e18,     # r = 650 ly in meters (same extent as NGC 346)
+    'Tarantula_SFR': 3.17e23,   # SFR = 5 M_sun/yr in kg/s (5 × 1.989e30 / 3.156e7)
+    'Tarantula_B': 1e-4,        # B = 10^-4 T (magnetic field, stronger)
+    'Tarantula_z': 0.0005,      # Redshift (LMC distance)
+    'Tarantula_rho_gas': 1e-20, # Gas density (kg/m^3)
+    'Tarantula_M': 1.989e35,    # M = 10^5 M_sun (from source172.cpp)
+    'LMC_distance': 1.54e21,    # 163,000 ly in meters (LMC distance)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # RESONANCE TIMESCALES (June 06, 2025 - Triadic UQFF Document)
+    # ═══════════════════════════════════════════════════════════════════════════
+    # T_shell = 5×10^5 years (electron shell formation timescale)
+    # T_sweep = 10^4 years (galactic sweep timescale)
+    # T_THz = 10^-12 s (THz hole resonance period)
+    # tau_erode = 2×10^6 years (photoevaporation erosion timescale)
+    'T_shell': 1.578e13,        # 5×10^5 years in seconds
+    'T_sweep': 3.156e11,        # 10^4 years in seconds
+    'T_THz': 1e-12,             # THz resonance period (s)
+    'tau_erode': 6.312e13,      # 2×10^6 years in seconds (erosion timescale)
+    'tau_erode_M16': 9.468e13,  # 3×10^6 years for M16 Eagle Nebula (source31.cpp)
+    'E_0': 0.2,                 # Initial erosion coefficient
+    'E_0_M16': 0.3,             # M16 Eagle Nebula erosion coefficient (source31.cpp)
+    
+    # Associated angular frequencies (ω = 2π/T)
+    'omega_Ug2': 3.978e-13,     # ω_Ug2 = 2π / T_shell (rad/s)
+    'omega_Ug3': 1.989e-11,     # ω_Ug3 = 2π / T_sweep (rad/s)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # BUOYANCY CALIBRATION CONSTANTS (U_Bi System - June 06, 2025)
+    # ═══════════════════════════════════════════════════════════════════════════
+    # F_U_Bi = k_Ub × (f_UA' × f_SCm × R_EB) / r² × H_k × f_Ub
+    # f_Ub ∝ Δk_η (calibration difference from LENR reference)
+    # Δk_η = expected_k_η - actual_k_η ≈ 10^9 - 2.75×10^8 = 7.25×10^8
+    'k_Ub': 0.1,                # Base buoyancy coefficient
+    'k_eta': 2.75e8,            # Actual k_η (metallic hydride cells, LENR)
+    'k_eta_expected': 1e9,      # Expected k_η (hypothetical)
+    'Delta_k_eta': 7.25e8,      # Δk_η = k_eta_expected - k_eta (buoyancy scaling)
+    'f_Ub_scale': 1e9,          # f_Ub proportionality scale (∝ Δk_η)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # 26D QUANTUM STATE FRAMEWORK PARAMETERS (Feb 16, 2026 - NGC 2264 Document)
+    # ═══════════════════════════════════════════════════════════════════════════
+    # Master Universal Gravity Compressed UQFF: g = Σ(Ug1_i + Ug2_i + Ug3_i + Ug4i_i)
+    # 26 quantum states (i = 1 to 26), mediated by DPM, [SCm], [UA]
+    #
+    # Lock timescale parameters (T_lock dynamics):
+    #   T_lock(t) = T_0 × (1 - exp(-t/tau_lock))
+    'T_0_lock': 0.1,            # T_0: Lock amplitude (dimensionless)
+    'tau_lock': 1.578e14,       # tau_lock = 5×10^6 years (s) - locking timescale
+    
+    # THz hole communication parameters (Ug4i term):
+    #   r_THz,i = r_THz_base / i, with i = 1 to 26
+    #   Ug4i_i = (ℏc/r_THz,i) × (1 + f_Um,i) × (1 + ρ_UA/ρ_SCm)
+    'r_THz_base': 1e-9,         # Base THz hole scale (m)
+    
+    # Cosmological communication factor (f_Um):
+    #   f_Um,i = f_Um_scale × i/26
+    'f_Um_scale': 0.05,         # f_Um scaling factor (dimensionless)
+    
+    # Angular parameters for SM-effective buoyancy (Ug1 term):
+    #   θ_i = theta_base - (i-1) × theta_step
+    #   Ug1_i ∝ cos(θ_i)
+    'theta_base': 90.0,         # Base angle (degrees) for Ug1
+    'theta_step': 3.346,        # Angular step per quantum state (degrees)
+    
+    # Time-reversal zone scaling (f_TRZ):
+    #   f_TRZ,i = f_TRZ_scale × i/26
+    'f_TRZ_scale': 0.1,         # f_TRZ scaling factor (dimensionless)
+    
+    # Characteristic velocity for Ug3 inertial sweeping:
+    #   Ug3_i ∝ (q × v × B) / m_p
+    'v_char': 1e5,              # Characteristic velocity (m/s) for Ug3
+    
+    # Critical magnetic field for UQFF (different from magnetar B_crit):
+    #   Ug2_i ∝ (1 - B/B_crit_UQFF)
+    'B_crit_UQFF': 1e8,         # Critical B-field for UQFF framework (T)
+    'B_crit_SM': 1e11,          # SM-effective critical B-field (T) for Ug2 calculations
+    
+    # Vacuum energy density scaling ([UA] and [SCm]):
+    #   ρ_vac,[UA],i = rho_UA_scale × i J/m³
+    #   ρ_vac,[SCm],i = rho_SCm_scale × i J/m³
+    #   Ratio: ρ_UA/ρ_SCm = 10 (constant)
+    'rho_UA_scale': 7.09e-36,   # [UA] vacuum density scale (J/m³ per state)
+    'rho_SCm_scale': 7.09e-37,  # [SCm] vacuum density scale (J/m³ per state)
+    'rho_UA_SCm_ratio': 10.0,   # Ratio ρ_UA/ρ_SCm (constant across states)
+    
+    # Superconductive magnetism scaling ([SCm]_i):
+    #   [SCm]_i = SCm_B_scale × i² T
+    'SCm_B_scale': 1e-5,        # [SCm]_i base scale (T)
+    
+    # E_DPM (Di-Pseudo-Monopole energy) definition:
+    #   E_DPM,i = (ℏc/r_i²) × Q_i × [SCm]_i
+    #   r_i = r / i (scaled radius)
+    #   Q_i = i (quantum state factor, 1-26)
+    # Pre-computed: ℏc = 3.164×10^-26 J·m
+    'hbar_c': 3.164e-26,        # ℏc product (J·m)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # NGC/CASSINI/ESO SYSTEMS (June 06, 2025 - Buoyancy Document)
+    # ═══════════════════════════════════════════════════════════════════════════
+    # NGC 4826 (Black Eye Galaxy): Spiral galaxy, counter-rotating disk
+    # Document: r = 2.83×10^20 m, SFR = 0.5 M_sun/yr
+    'NGC4826_r': 2.83e20,       # r in meters (spiral galaxy extent)
+    'NGC4826_SFR': 3.17e22,     # SFR = 0.5 M_sun/yr in kg/s
+    'NGC4826_B': 1e-5,          # B = 10^-5 T (magnetic field)
+    'NGC4826_z': 0.0014,        # Redshift
+    
+    # NGC 1805: LMC star cluster
+    # Document: r = 9.46×10^16 m (~10 ly), SFR = 0.2 M_sun/yr
+    'NGC1805_r': 9.46e16,       # r = 10 ly in meters
+    'NGC1805_SFR': 1.27e22,     # SFR = 0.2 M_sun/yr in kg/s
+    'NGC1805_B': 1e-5,          # B = 10^-5 T (magnetic field)
+    'NGC1805_z': 0.0005,        # Redshift (LMC)
+    
+    # NGC 6307 & NGC 7027: Planetary nebulae
+    # Document: r = 9.46×10^15 m (~1 ly), wind = 1500 km/s
+    'NGC6307_r': 9.46e15,       # r = 1 ly in meters
+    'NGC6307_v_wind': 1.5e6,    # v_wind = 1500 km/s
+    'NGC6307_B': 1e-5,          # B = 10^-5 T (magnetic field)
+    'NGC6307_z': 0.0007,        # Redshift
+    'NGC7027_r': 9.46e15,       # r = 1 ly in meters
+    'NGC7027_v_wind': 1.5e6,    # v_wind = 1500 km/s
+    'NGC7027_B': 1e-5,          # B = 10^-5 T (magnetic field)
+    'NGC7027_z': 0.001,         # Redshift
+    
+    # 2018 Cassini Mission: Saturn ring gaps (source169.cpp)
+    # Encke Gap: r = 1.335×10^8 m, Cassini Division: r = 1.2×10^8 m, Maxwell Gap: r = 8.75×10^7 m
+    'Encke_r': 1.335e8,         # Encke Gap orbital radius (m)
+    'CassiniDiv_r': 1.2e8,      # Cassini Division radius (m)
+    'Maxwell_r': 8.75e7,        # Maxwell Gap radius (m)
+    'Saturn_B': 1e-7,           # B = 10^-7 T (Saturn magnetic field in rings)
+    'Saturn_M': 5.683e26,       # Saturn mass (kg)
+    'Saturn_rotation': 3.84e4,  # Saturn rotation period (s) ~10.7 hours
+    
+    # ESO 391-12: Lenticular galaxy
+    # Document: r = 4.73×10^20 m, SFR = 0.2 M_sun/yr
+    'ESO391_r': 4.73e20,        # r in meters (lenticular galaxy)
+    'ESO391_SFR': 1.27e22,      # SFR = 0.2 M_sun/yr in kg/s
+    'ESO391_B': 1e-5,           # B = 10^-5 T (magnetic field)
+    'ESO391_z': 0.0067,         # Redshift
+    
+    # Messier 57 (Ring Nebula): Planetary nebula
+    # Document: r = 1.89×10^15 m, wind = 1500 km/s
+    'M57_r': 1.89e15,           # r in meters (Ring Nebula)
+    'M57_v_wind': 1.5e6,        # v_wind = 1500 km/s
+    'M57_B': 1e-5,              # B = 10^-5 T (magnetic field)
+    'M57_z': 0.0008,            # Redshift
+    'M57_M_wd': 1.19e30,        # M ~ 0.6 M_sun (white dwarf central star)
+    
+    # ESO 510-G13: Spiral galaxy (warped disk)
+    # Document: r = 3.78×10^20 m, SFR = 1 M_sun/yr, M ~ 10^11 M_sun
+    'ESO510_r': 3.78e20,        # r in meters (spiral galaxy)
+    'ESO510_SFR': 6.34e22,      # SFR = 1 M_sun/yr in kg/s
+    'ESO510_B': 1e-5,           # B = 10^-5 T (magnetic field)
+    'ESO510_z': 0.010,          # Redshift
+    'ESO510_M': 1.989e41,       # M ~ 10^11 M_sun (kg)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # SYSTEM MASS PARAMETERS (June 06, 2025 - DeepSearch Documents)
+    # ═══════════════════════════════════════════════════════════════════════════
+    # NGC 4826 (Black Eye Galaxy): M ~ 10^11 M_sun
+    'NGC4826_M': 1.989e41,      # M ~ 10^11 M_sun (kg)
+    # NGC 1805 (LMC cluster): M ~ 10^4 M_sun
+    'NGC1805_M': 1.989e34,      # M ~ 10^4 M_sun (kg)
+    # NGC 6307/7027 (planetary nebulae): M ~ 0.6 M_sun (white dwarf)
+    'NGC6307_M_wd': 1.19e30,    # M ~ 0.6 M_sun (white dwarf, kg)
+    'NGC7027_M_wd': 1.19e30,    # M ~ 0.6 M_sun (white dwarf, kg)
+    # ESO 391-12 (lenticular galaxy): M ~ 10^11 M_sun
+    'ESO391_M': 1.989e41,       # M ~ 10^11 M_sun (kg)
+    # LMC: r ~ 7,000 ly, M ~ 10^10 M_sun, SFR ~ 0.4 M_sun/yr
+    'LMC_r': 6.62e19,           # r ~ 7,000 ly extent (m)
+    'LMC_M': 1.989e40,          # M ~ 10^10 M_sun (kg)
+    'LMC_SFR': 2.54e22,         # SFR ~ 0.4 M_sun/yr (kg/s)
+    'LMC_B': 1e-5,              # B = 10^-5 T (magnetic field)
+    'LMC_z': 0.0005,            # Redshift
     
     # ═══════════════════════════════════════════════════════════════════════════
     # GALACTIC DYNAMICS PARAMETERS (for U_bi and Ug4 calculations)
@@ -2621,6 +2944,211 @@ CONSTANTS = {
     'f_feedback_per_dex': 0.1,         # f_feedback scaling per dex of ΔM_BH
     'f_CGM_typical': 0.15,             # Typical CGM baryon fraction (M_CGM/M_vir)
     'metallicity_gradient_flat_threshold': 0.5,  # ΔM_BH (dex) for flat gradients
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # 19-SYSTEM 26D POLYNOMIAL FRAMEWORK (source172.cpp - SOURCE115)
+    # ═══════════════════════════════════════════════════════════════════════════
+    # Master Universal Gravity Compressed UQFF: g = Σ(Ug1_i + Ug2_i + Ug3_i + Ug4i_i)
+    # 26 quantum states mediated by DPM, SCm, UA
+    # Each system has: M (kg), r (m), SFR (M_sun/yr), B (T), z, t_age (s)
+    
+    # NGC 2264 (Christmas Tree Cluster - Star-forming region)
+    'NGC2264_M': 1.989e36,              # M ~ 10^6 M_sun (kg) [source172.cpp - entire complex]
+    'NGC2264_r': 2e19,                  # r ~ 20 ly (m) [source172.cpp - entire complex]
+    'NGC2264_SFR': 0.5,                 # SFR = 0.5 M_sun/yr
+    'NGC2264_B': 1e-5,                  # B = 10^-5 T
+    'NGC2264_z': 0.0006,                # Redshift
+    'NGC2264_t_age': 9.46e13,           # Age ~ 3 Myr (s)
+    # Document variant: Inner cluster only (~2000 M_sun, ~5 pc)
+    'NGC2264_M_doc': 3.978e33,          # M ~ 2000 M_sun (kg) [Feb 2026 document - cluster core]
+    'NGC2264_r_doc': 1.54e17,           # r ~ 5 pc (m) [Feb 2026 document - cluster core]
+    'NGC2264_SFR_doc': 0.1,             # SFR = 0.1 M_sun/yr [document - cluster only]
+    'NGC2264_t_evol': 3.156e14,         # t = 10^7 years (s) [document evolution time]
+    'NGC2264_d_ly': 2300,               # Distance ~ 2,300 ly
+    'NGC2264_rho_gas': 1e-20,           # Gas density ~ 10^-20 kg/m³
+    'NGC2264_N_stars': 100,             # ~100 young stars (0.5-10 M_sun)
+    
+    # UGC 10214 (Tadpole Galaxy - Interacting galaxy)
+    'UGC10214_M': 1.989e41,             # M ~ 10^11 M_sun (kg)
+    'UGC10214_r': 1.3e21,               # r ~ 140,000 ly (m)
+    'UGC10214_d_Mly': 420,              # Distance ~ 420 Mly
+    'UGC10214_tail_ly': 280000,         # Tidal tail length ~ 280,000 ly
+    'UGC10214_SFR': 1.0,                # SFR = 1.0 M_sun/yr
+    'UGC10214_SFR_doc': 5.0,            # SFR = 5.0 M_sun/yr [document variant]
+    'UGC10214_B': 1e-5,                 # B = 10^-5 T
+    'UGC10214_z': 0.028,                # Redshift z = 0.028
+    'UGC10214_t_age': 9.46e13,          # Age ~ 3 Gyr (s)
+    
+    # NGC 4676 (Mice Galaxies - Interacting pair)
+    'NGC4676_M': 3.978e41,              # M ~ 2×10^11 M_sun (kg)
+    'NGC4676_r': 3e20,                  # r ~ 30 kly (m)
+    'NGC4676_d_Mly': 290,               # Distance ~ 290 Mly
+    'NGC4676_SFR': 10.0,                # SFR = 10 M_sun/yr (merger-enhanced)
+    'NGC4676_B': 1e-4,                  # B = 10^-4 T
+    'NGC4676_z': 0.022,                 # Redshift z = 0.022
+    'NGC4676_t_age': 9.46e13,           # Age ~ 3 Gyr (s)
+    
+    # NGC 6537 (Red Spider Nebula - Planetary nebula)
+    'RedSpider_M': 1.989e30,            # M ~ 1 M_sun (white dwarf)
+    'RedSpider_M_wd': 1.19e30,          # M_wd ~ 0.6 M_sun (central white dwarf)
+    'RedSpider_r': 1e16,                # r ~ 1 ly (m)
+    'RedSpider_d_ly': 4000,             # Distance ~ 4,000 ly
+    'RedSpider_SFR': 0.0,               # SFR = 0 (PNe - no star formation)
+    'RedSpider_B': 1e-5,                # B = 10^-5 T
+    'RedSpider_z': 0.0013,              # Redshift
+    'RedSpider_t_age': 3.15e11,         # Age ~ 10,000 yr (s)
+    'RedSpider_v_wind': 2e6,            # v_wind = 2,000 km/s (high-speed outflow)
+    'RedSpider_rho_gas': 1e-21,         # Gas density ~ 10^-21 kg/m³
+    
+    # NGC 3372 (Carina Nebula - Star-forming region)
+    # Note: Carina_* params already exist (lines 913-916)
+    'NGC3372_M': 1.989e35,              # M ~ 10^5 M_sun (kg)
+    'NGC3372_r': 2e17,                  # r ~ 65 ly (m)
+    'NGC3372_d_ly': 7500,               # Distance ~ 7,500 ly
+    'NGC3372_SFR': 2.0,                 # SFR = 2 M_sun/yr
+    'NGC3372_B': 1e-5,                  # B = 10^-5 T
+    'NGC3372_z': 0.0025,                # Redshift
+    'NGC3372_t_age': 6.31e13,           # Age ~ 2 Myr (s)
+    'NGC3372_rho_gas': 1e-20,           # Gas density ~ 10^-20 kg/m³
+    'EtaCarinae_M': 2.98e32,            # Eta Carinae mass ~ 150 M_sun (kg)
+    
+    # AG Carinae (Luminous blue variable nebula - Wolf-Rayet star)
+    'AGCarinae_M': 3.978e31,            # M ~ 20 M_sun (kg)
+    'AGCarinae_r': 1e16,                # r ~ 1 ly (m)
+    'AGCarinae_d_ly': 6000,             # Distance ~ 6,000 ly
+    'AGCarinae_SFR': 0.0,               # SFR = 0 (evolved star)
+    'AGCarinae_B': 1e-5,                # B = 10^-5 T
+    'AGCarinae_z': 0.002,               # Redshift
+    'AGCarinae_t_age': 1.26e14,         # Age ~ 4 Myr (s)
+    'AGCarinae_v_wind': 1e6,            # v_wind = 1,000 km/s (LBV wind)
+    'AGCarinae_rho_gas': 1e-21,         # Gas density ~ 10^-21 kg/m³
+    
+    # Messier 42 (Orion Nebula - Star-forming region)
+    'M42_M': 3.978e33,                  # M ~ 2000 M_sun (kg)
+    'M42_r': 2e16,                      # r ~ 24 ly (m)
+    'M42_d_ly': 1344,                   # Distance ~ 1,344 ly
+    'M42_rho_gas': 1e-20,               # Gas density ~ 10^-20 kg/m³
+    'M42_SFR': 0.3,                     # SFR = 0.3 M_sun/yr
+    'M42_B': 1e-5,                      # B = 10^-5 T
+    'M42_z': 0.0004,                    # Redshift
+    'M42_t_age': 9.46e13,               # Age ~ 3 Myr (s)
+    
+    # 30 Doradus (Tarantula Nebula - LMC star-forming region)
+    # Note: Tarantula_* params already exist (lines 972-976)
+    'Tarantula_M': 1.989e35,            # M ~ 10^5 M_sun (kg)
+    'Tarantula_d_ly': 161000,           # Distance ~ 161,000 ly (in LMC)
+    'Tarantula_SFR': 5.0,               # SFR = 5 M_sun/yr
+    'Tarantula_B': 1e-4,                # B = 10^-4 T
+    'Tarantula_z': 0.0005,              # Redshift (LMC)
+    'Tarantula_t_age': 9.46e13,         # Age ~ 3 Myr (s)
+    
+    # NGC 2841 (Spiral galaxy)
+    'NGC2841_M': 1.989e41,              # M ~ 10^11 M_sun (kg)
+    'NGC2841_r': 5e20,                  # r ~ 50 kly (m)
+    'NGC2841_d_Mly': 46,                # Distance ~ 46 Mly
+    'NGC2841_SFR': 0.5,                 # SFR = 0.5 M_sun/yr
+    'NGC2841_B': 1e-5,                  # B = 10^-5 T
+    'NGC2841_z': 0.0031,                # Redshift
+    'NGC2841_t_age': 3.15e17,           # Age ~ 10 Gyr (s)
+    
+    # Mystic Mountain (Carina pillar - Star-forming region)
+    'MysticMountain_M': 1.989e32,       # M ~ 100 M_sun (kg)
+    'MysticMountain_r': 1e16,           # r ~ 1 ly (m)
+    'MysticMountain_d_ly': 7500,        # Distance ~ 7,500 ly (same as Carina)
+    'MysticMountain_SFR': 0.1,          # SFR = 0.1 M_sun/yr
+    'MysticMountain_B': 1e-5,           # B = 10^-5 T
+    'MysticMountain_z': 0.0025,         # Redshift (same as Carina)
+    'MysticMountain_t_age': 6.31e13,    # Age ~ 2 Myr (s)
+    'MysticMountain_rho_gas': 1e-20,    # Gas density ~ 10^-20 kg/m³
+    
+    # NGC 6217 (Barred spiral galaxy)
+    'NGC6217_M': 1.989e41,              # M ~ 10^11 M_sun (kg)
+    'NGC6217_r': 3e20,                  # r ~ 30 kly (m)
+    'NGC6217_d_Mly': 67,                # Distance ~ 67 Mly
+    'NGC6217_SFR': 1.0,                 # SFR = 1.0 M_sun/yr
+    'NGC6217_B': 1e-5,                  # B = 10^-5 T
+    'NGC6217_z': 0.0045,                # Redshift
+    'NGC6217_t_age': 3.15e17,           # Age ~ 10 Gyr (s)
+    'NGC6217_rho_gas': 1e-20,           # Gas density ~ 10^-20 kg/m³
+    
+    # HCG 92 (Stephan's Quintet - Compact galaxy group)
+    'StephansQuintet_M': 9.945e41,      # M ~ 5×10^11 M_sun (kg, total group)
+    'StephansQuintet_r': 1e21,          # r ~ 100 kly (m)
+    'StephansQuintet_d_Mly': 290,       # Distance ~ 290 Mly
+    'StephansQuintet_N_galaxies': 5,    # 5 galaxies (4 at z~0.022, 1 at z~0.0027)
+    'StephansQuintet_SFR': 10.0,        # SFR = 10 M_sun/yr (interaction-enhanced)
+    'StephansQuintet_B': 1e-4,          # B = 10^-4 T
+    'StephansQuintet_z': 0.022,         # Redshift
+    'StephansQuintet_z_foreground': 0.0027,  # Foreground galaxy redshift
+    'StephansQuintet_t_age': 3.15e17,   # Age ~ 10 Gyr (s)
+    
+    # NGC 7049 (Lenticular galaxy)
+    'NGC7049_M': 1.989e41,              # M ~ 10^11 M_sun (kg)
+    'NGC7049_r': 5e20,                  # r ~ 50 kly (m)
+    'NGC7049_d_Mly': 100,               # Distance ~ 100 Mly
+    'NGC7049_SFR': 0.2,                 # SFR = 0.2 M_sun/yr
+    'NGC7049_B': 1e-5,                  # B = 10^-5 T
+    'NGC7049_z': 0.0067,                # Redshift
+    'NGC7049_t_age': 3.15e17,           # Age ~ 10 Gyr (s)
+    
+    # NGC 3324 (Carina Nebula region - Star-forming region, Cosmic Cliffs)
+    'NGC3324_M': 1.989e35,              # M ~ 10^5 M_sun (kg)
+    'NGC3324_r': 2e17,                  # r ~ 65 ly (m)
+    'NGC3324_d_ly': 7600,               # Distance ~ 7,600 ly
+    'NGC3324_SFR': 2.0,                 # SFR = 2 M_sun/yr
+    'NGC3324_B': 1e-5,                  # B = 10^-5 T
+    'NGC3324_z': 0.0025,                # Redshift
+    'NGC3324_t_age': 6.31e13,           # Age ~ 2 Myr (s)
+    'NGC3324_rho_gas': 1e-20,           # Gas density ~ 10^-20 kg/m³
+    
+    # Messier 74 (Phantom Galaxy - Grand-design spiral)
+    'M74_M': 1.989e41,                  # M ~ 10^11 M_sun (kg)
+    'M74_r': 5e20,                      # r ~ 50 kly (m)
+    'M74_d_Mly': 32,                    # Distance ~ 32 Mly
+    'M74_SFR': 1.0,                     # SFR = 1.0 M_sun/yr
+    'M74_B': 1e-5,                      # B = 10^-5 T
+    'M74_z': 0.0022,                    # Redshift
+    'M74_t_age': 3.15e17,               # Age ~ 10 Gyr (s)
+    
+    # NGC 1672 (Barred spiral galaxy)
+    'NGC1672_M': 1.989e41,              # M ~ 10^11 M_sun (kg)
+    'NGC1672_r': 3e20,                  # r ~ 30 kly (m)
+    'NGC1672_d_Mly': 60,                # Distance ~ 60 Mly
+    'NGC1672_SFR': 2.0,                 # SFR = 2.0 M_sun/yr
+    'NGC1672_B': 1e-5,                  # B = 10^-5 T
+    'NGC1672_z': 0.004,                 # Redshift
+    'NGC1672_t_age': 3.15e17,           # Age ~ 10 Gyr (s)
+    
+    # NGC 5866 (Spindle Galaxy - Lenticular)
+    'NGC5866_M': 1.989e41,              # M ~ 10^11 M_sun (kg)
+    'NGC5866_r': 3e20,                  # r ~ 30 kly (m)
+    'NGC5866_d_Mly': 44,                # Distance ~ 44 Mly
+    'NGC5866_SFR': 0.3,                 # SFR = 0.3 M_sun/yr
+    'NGC5866_B': 1e-5,                  # B = 10^-5 T
+    'NGC5866_z': 0.0029,                # Redshift
+    'NGC5866_t_age': 3.15e17,           # Age ~ 10 Gyr (s)
+    
+    # Messier 82 (Cigar Galaxy - Starburst)
+    'M82_M': 1.989e40,                  # M ~ 10^10 M_sun (kg)
+    'M82_r': 2e20,                      # r ~ 20 kly (m)
+    'M82_d_Mly': 12,                    # Distance ~ 12 Mly
+    'M82_SFR': 10.0,                    # SFR = 10 M_sun/yr (starburst!)
+    'M82_B': 1e-4,                      # B = 10^-4 T (enhanced from starburst)
+    'M82_z': 0.0008,                    # Redshift
+    'M82_t_age': 3.15e17,               # Age ~ 10 Gyr (s)
+    'M82_rho_gas': 1e-20,               # Gas density ~ 10^-20 kg/m³
+    
+    # IC 418 (Spirograph Nebula - Planetary nebula)
+    'Spirograph_M': 1.989e30,           # M ~ 1 M_sun (white dwarf)
+    'Spirograph_M_wd': 1.19e30,         # M_wd ~ 0.6 M_sun (central white dwarf)
+    'Spirograph_r': 1e16,               # r ~ 1 ly (m)
+    'Spirograph_d_ly': 2000,            # Distance ~ 2,000 ly
+    'Spirograph_SFR': 0.0,              # SFR = 0 (PNe - no star formation)
+    'Spirograph_B': 1e-5,               # B = 10^-5 T
+    'Spirograph_z': 0.0007,             # Redshift
+    'Spirograph_t_age': 3.15e13,        # Age ~ 1,000 yr (s)
+    'Spirograph_v_wind': 1.5e6,         # v_wind = 1,500 km/s
+    'Spirograph_rho_gas': 1e-21,        # Gas density ~ 10^-21 kg/m³
 }
 
 
@@ -2725,6 +3253,32 @@ class MultiScaleParams:
     k_coupling: float = 1.0       # k₁-k₄ unified
     beta_coupling: float = 0.6    # β_i buoyancy coupling
     eta_coupling: float = 1e-22   # η aether coupling
+    
+    # Magnetic/Field Parameters (extended)
+    B0: float = 0.0               # Initial/nominal magnetic field (T)
+    theta: float = 0.0            # Helical/field angle (rad)
+    
+    # Astrophysical Parameters
+    L_X: float = 1e30             # X-ray luminosity (W)
+    M_BH: float = 8.15e36         # Black hole mass (kg) - alias for M_bh
+    R_b: float = 1e15             # Bubble/boundary radius (m)
+    
+    # SCm/Superconductive Parameters
+    P_SCm: float = 1.0            # SCm probability/presence factor
+    P_core: float = 1.0           # Core probability/presence factor
+    
+    # Fluid/Perturbation Parameters
+    rho_fluid: float = 1e-20      # Fluid density (kg/m³)
+    V_sys: float = 1e45           # System volume (m³)
+    g_local: float = 9.8          # Local gravitational acceleration (m/s²)
+    delta_rho: float = 1e-26      # Density perturbation (kg/m³)
+    
+    # Time/Frequency Parameters (extended)
+    t_n: float = 0.0              # Normalized time (dimensionless)
+    omega_s: float = 1e-6         # String/spin rotation frequency (rad/s)
+    
+    # Feedback Parameters
+    f_feedback: float = 0.0       # Feedback factor (dimensionless)
     
     def __post_init__(self):
         """Initialize scale-dependent defaults and derived quantities."""
@@ -5901,6 +6455,139 @@ class UQFFTriadic(UQFFMasterEquation):
          Ub_triad  = {result['Ub_triad']:.4e} (geometric mean term)
 ═══════════════════════════════════════════════════════════════════════════════
 """
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    # TRIADIC HELPER METHODS (from Pillars of Creation June 2025 session)
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    @staticmethod
+    def compute_f_Ub_triadic(delta_k_eta: float = None) -> float:
+        """
+        Compute Boyle's Law buoyancy factor for Triadic UQFF.
+        
+        Formula: f_Ub = 0.1 × Δk_η × (ρ_UA/ρ_SCm) × (1/33)
+        
+        Args:
+            delta_k_eta: Δk_η scaling constant (default: 7.25e8 from CONSTANTS)
+        
+        Returns:
+            f_Ub value (≈2.20×10⁷ with default constants)
+        """
+        if delta_k_eta is None:
+            delta_k_eta = CONSTANTS.get('Delta_k_eta', 7.25e8)
+        
+        rho_UA = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        rho_SCm = CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        boyle_ratio = CONSTANTS.get('BOYLE_RATIO', 1.0/33.0)
+        
+        # f_Ub = 0.1 × Δk_η × (ρ_UA/ρ_SCm) × (1/33)
+        rho_ratio = rho_UA / rho_SCm if rho_SCm != 0 else 10.0
+        f_Ub = 0.1 * delta_k_eta * rho_ratio * boyle_ratio
+        
+        return f_Ub
+    
+    @staticmethod
+    def compute_species_index(n_layer: int, rho_SCm: float = None, 
+                              rho_UA_prime: float = None) -> float:
+        """
+        Compute DPM Species Index for a given layer.
+        
+        Formula: Species_Index = log₁₀(ρ_SCm / ρ_UA') × n
+        
+        Args:
+            n_layer: Quantum layer number (1-26)
+            rho_SCm: [SCm] vacuum density (default from CONSTANTS)
+            rho_UA_prime: [UA'] vacuum density (default from CONSTANTS)
+        
+        Returns:
+            Species index value for the given layer
+        """
+        if rho_SCm is None:
+            rho_SCm = CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        if rho_UA_prime is None:
+            rho_UA_prime = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        
+        # Species Index = log₁₀(ρ_SCm / ρ_UA') × n
+        if rho_UA_prime != 0 and rho_SCm > 0:
+            ratio = rho_SCm / rho_UA_prime
+            species_index = np.log10(ratio) * n_layer
+        else:
+            species_index = 0.0
+        
+        return species_index
+    
+    @staticmethod
+    def compute_f_z_CGM_uqff(U_i: float, U_m: float) -> float:
+        """
+        Compute UQFF-based CGM metallicity factor.
+        
+        Formula: f_z,CGM = U_i / (U_i + U_m)
+        
+        Args:
+            U_i: Inertia energy density (J/m³)
+            U_m: Magnetism energy density (J/m³)
+        
+        Returns:
+            CGM metallicity factor (0 to 1)
+        """
+        denominator = U_i + U_m
+        if denominator != 0:
+            return U_i / denominator
+        return 0.0
+    
+    @staticmethod
+    def compute_resonance_frequency(layer: int, component: str = 'Ug1') -> float:
+        """
+        Compute 26-layer resonance frequency for a given layer and component.
+        
+        Frequencies scale geometrically with layer number:
+            ω_i = ω_base × (i / 13)  for i = 1..26
+        
+        Base frequencies (rad/s):
+            ω_Ug1,1 = 1.989×10⁻¹³
+            ω_Ug2,1 = 3.978×10⁻¹³ (2× Ug1)
+            ω_Ug3,1 = 1.989×10⁻¹¹ (100× Ug1)
+        
+        Args:
+            layer: Layer number (1-26)
+            component: 'Ug1', 'Ug2', or 'Ug3'
+        
+        Returns:
+            Angular frequency ω_i (rad/s)
+        """
+        base_freqs = {
+            'Ug1': CONSTANTS.get('omega_Ug1_1', 1.989e-13),
+            'Ug2': CONSTANTS.get('omega_Ug2_1', 3.978e-13),
+            'Ug3': CONSTANTS.get('omega_Ug3_1', 1.989e-11),
+        }
+        
+        omega_base = base_freqs.get(component, base_freqs['Ug1'])
+        
+        # Layer scaling: ω_i = ω_base × (i / 13) for symmetric distribution
+        layer_factor = layer / 13.0 if layer > 0 else 1.0
+        omega_i = omega_base * layer_factor
+        
+        return omega_i
+    
+    @staticmethod
+    def compute_universe_decay(t_days: float, kappa: float = None) -> float:
+        """
+        Compute universe decay factor.
+        
+        Universe Decay Rate = 0.0963 (dimensional analysis from document)
+        Decay factor = exp(-κ × t)
+        
+        Args:
+            t_days: Time in days
+            kappa: Decay rate (default: 0.0005 day⁻¹)
+        
+        Returns:
+            Decay factor (0 to 1)
+        """
+        if kappa is None:
+            kappa = CONSTANTS.get('kappa_SCm_triadic', 0.0005)
+        
+        return np.exp(-kappa * t_days)
 
 
 # ───────────────────────────────────────────────────────────────────────────────
@@ -9898,6 +10585,972 @@ class AtomicModelUQFF:
 
 # Global Atomic Model UQFF instance (Equations of The Atom)
 ATOMIC_MODEL_UQFF = AtomicModelUQFF()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PROTO-NUCLEUS SHELL FORMATION MODEL (ACP Stage)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class ProtoNucleusShellModel:
+    """
+    Proto-Nucleus Shell Formation Model
+    
+    Models the fundamental process of nuclear shell formation within the
+    Atomic Creation Process (ACP) framework. This is the process by which
+    [UA] trapped by [SCm] forms nuclear shells, with subsequent electron
+    settlement and shell dynamics.
+    
+    KEY PROCESSES (from Gas Nebula observation 19April2025):
+    ────────────────────────────────────────────────────────────────────────────
+    1. DPM INITIATION: UA' + SCm reactions form Dual Phase Material (DPM)
+    2. VACUUM DENSITY: DPM produces vacuum energy density (ρ_vac)
+    3. U_i CREATION: Vacuum density creates Universal Inertia (U_i)
+    4. U_m STRINGS: U_i forms Universal Magnetic strings (U_m)
+    5. PROTO-NUCLEUS: U_m strings build the proto-nucleus
+    6. SHELL CRACKING: Quantum ripples crack the proto-shell
+    7. ELECTRON SETTLEMENT: Electrons settle into U_g2 shells via gravitational descent
+    8. NEUTRINO INFLATION: Energy inflation due to neutrino interactions
+    
+    SPECIES INDEX:
+        log(ρ_vac,[SCm] / ρ_vac,[UA']) × n → determines atomic species
+    
+    SHELL ENERGY:
+        E_shell(n) = -13.6 eV / n² × (1 + f_UQFF)
+        
+    where f_UQFF incorporates vacuum buoyancy corrections
+    """
+    
+    # ACP Stage definitions
+    ACP_STAGES = {
+        1: {'name': 'DPM_INITIATION', 'description': "UA' + SCm → DPM"},
+        2: {'name': 'VACUUM_DENSITY', 'description': 'DPM produces ρ_vac'},
+        3: {'name': 'U_I_CREATION', 'description': 'ρ_vac → U_i (Universal Inertia)'},
+        4: {'name': 'U_M_STRINGS', 'description': 'U_i → U_m (Magnetic Strings)'},
+        5: {'name': 'PROTO_NUCLEUS', 'description': 'U_m strings build proto-nucleus'},
+        6: {'name': 'SHELL_CRACKING', 'description': 'Quantum ripples crack proto-shell'},
+        7: {'name': 'ELECTRON_SETTLEMENT', 'description': 'Electrons settle to U_g2 shells'},
+        8: {'name': 'NEUTRINO_INFLATION', 'description': 'Energy inflation via neutrinos'},
+        9: {'name': 'ATOM_COMPLETE', 'description': 'Stable atom achieved'},
+    }
+    
+    def __init__(self):
+        """Initialize Proto-Nucleus model with UQFF constants"""
+        self.rho_vac_SCm = CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        self.rho_vac_UA = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        self.hbar = CONSTANTS['hbar']
+        self.c = CONSTANTS['c']
+        self.q = CONSTANTS['q']
+        self.m_e = CONSTANTS['m_e']
+        self.SSq = CONSTANTS.get('SSq', 0.57)
+        self.beta_i = CONSTANTS.get('beta_i', 0.603)
+        
+        # Shell cracking threshold energy
+        self.E_crack_threshold = 13.6 * self.q  # 13.6 eV in Joules
+        
+    def compute_species_index(self, n_shell: int = 1) -> Tuple[float, str]:
+        """
+        Compute Species Index to determine atomic species.
+        
+        Formula: Species_Index = log₁₀(ρ_vac,[SCm] / ρ_vac,[UA']) × n
+        
+        Args:
+            n_shell: Shell quantum number (1 to 26)
+        
+        Returns:
+            Tuple of (species_index, interpretation_string)
+        """
+        if self.rho_vac_UA == 0:
+            return 0.0, "Error: rho_vac_UA is zero"
+        
+        ratio = self.rho_vac_SCm / self.rho_vac_UA
+        species_index = np.log10(ratio) * n_shell if ratio > 0 else 0.0
+        
+        # Interpretation based on index value
+        if abs(species_index) < 0.5:
+            element_hint = "Hydrogen-like (Z ≈ 1)"
+        elif abs(species_index) < 1.0:
+            element_hint = "Helium-like (Z ≈ 2)"
+        elif abs(species_index) < 2.0:
+            element_hint = "Light element (Z = 3-10)"
+        elif abs(species_index) < 3.0:
+            element_hint = "Medium element (Z = 11-30)"
+        else:
+            element_hint = "Heavy element (Z > 30)"
+        
+        steps = f"""
+    ═══════════════════════════════════════════════════════════════════════════
+    SPECIES INDEX CALCULATION
+    ═══════════════════════════════════════════════════════════════════════════
+    
+    Formula: Species_Index = log₁₀(ρ_vac,[SCm] / ρ_vac,[UA']) × n
+    
+    Step 1: Vacuum density ratio
+            ρ_vac,[SCm] = {self.rho_vac_SCm:.4e} J/m³
+            ρ_vac,[UA'] = {self.rho_vac_UA:.4e} J/m³
+            Ratio = {ratio:.6e}
+    
+    Step 2: Logarithm
+            log₁₀({ratio:.6e}) = {np.log10(ratio):.6f}
+    
+    Step 3: Multiply by shell number
+            Species_Index = {np.log10(ratio):.6f} × {n_shell}
+            Species_Index = {species_index:.6f}
+    
+    Interpretation: {element_hint}
+    ═══════════════════════════════════════════════════════════════════════════
+"""
+        return species_index, steps
+    
+    def compute_shell_energy(self, n: int, Z: int = 1,
+                            include_uqff: bool = True) -> Tuple[float, str]:
+        """
+        Compute nuclear shell energy with UQFF corrections.
+        
+        Formula: E_shell(n) = -13.6 eV × Z² / n² × (1 + f_UQFF)
+        
+        f_UQFF = β_i × [SSq]^(n/26) → buoyancy correction
+        
+        Args:
+            n: Principal quantum number (1, 2, 3, ...)
+            Z: Atomic number (proton count)
+            include_uqff: Include UQFF buoyancy correction
+        
+        Returns:
+            Tuple of (shell_energy_J, calculation_steps)
+        """
+        # Base Rydberg energy
+        E_rydberg_eV = -13.6  # eV
+        E_base = E_rydberg_eV * (Z ** 2) / (n ** 2)
+        
+        # UQFF buoyancy correction
+        if include_uqff:
+            SSq_power = self.SSq ** (n / 26.0)
+            f_UQFF = self.beta_i * SSq_power
+        else:
+            f_UQFF = 0.0
+        
+        # Final shell energy
+        E_shell_eV = E_base * (1 + f_UQFF)
+        E_shell_J = E_shell_eV * self.q
+        
+        steps = f"""
+    ═══════════════════════════════════════════════════════════════════════════
+    SHELL ENERGY CALCULATION (Z={Z}, n={n})
+    ═══════════════════════════════════════════════════════════════════════════
+    
+    Base Formula: E_shell = -13.6 eV × Z² / n²
+    UQFF Correction: × (1 + f_UQFF)
+    
+    Step 1: Base Rydberg energy
+            E_base = -13.6 × {Z}² / {n}²
+            E_base = -13.6 × {Z**2} / {n**2}
+            E_base = {E_base:.4f} eV
+    
+    Step 2: UQFF buoyancy correction
+            f_UQFF = β_i × [SSq]^(n/26)
+            f_UQFF = {self.beta_i:.4f} × {self.SSq:.4f}^({n}/26)
+            f_UQFF = {self.beta_i:.4f} × {self.SSq ** (n/26.0):.6f}
+            f_UQFF = {f_UQFF:.6f}
+    
+    Step 3: Apply correction
+            E_shell = {E_base:.4f} × (1 + {f_UQFF:.6f})
+            E_shell = {E_shell_eV:.4f} eV
+            E_shell = {E_shell_J:.4e} J
+    
+    ═══════════════════════════════════════════════════════════════════════════
+"""
+        return E_shell_J, steps
+    
+    def compute_shell_cracking_energy(self, n: int,
+                                      E_neutrino: float = 1e-12) -> Tuple[float, bool, str]:
+        """
+        Compute energy required to crack the proto-nuclear shell.
+        
+        Shell cracking occurs when quantum ripples (from neutrino interactions)
+        exceed the shell binding energy.
+        
+        Formula: E_crack = E_shell × (1 - [SSq]^(n/26)) + E_neutrino
+        
+        Args:
+            n: Shell quantum number
+            E_neutrino: Neutrino energy contribution (J)
+        
+        Returns:
+            Tuple of (crack_energy_J, shell_cracked_flag, calculation_steps)
+        """
+        E_shell, _ = self.compute_shell_energy(n)
+        E_shell = abs(E_shell)  # Use magnitude
+        
+        # SSq decay factor
+        SSq_factor = self.SSq ** (n / 26.0)
+        
+        # Crack energy
+        E_crack = E_shell * (1 - SSq_factor) + E_neutrino
+        
+        # Determine if shell cracks
+        shell_cracked = E_crack > self.E_crack_threshold
+        
+        steps = f"""
+    ═══════════════════════════════════════════════════════════════════════════
+    SHELL CRACKING ENERGY CALCULATION (n={n})
+    ═══════════════════════════════════════════════════════════════════════════
+    
+    Formula: E_crack = |E_shell| × (1 - [SSq]^(n/26)) + E_neutrino
+    
+    Step 1: Shell binding energy (magnitude)
+            |E_shell| = {E_shell:.4e} J
+    
+    Step 2: [SSq] decay factor
+            [SSq]^(n/26) = {self.SSq:.4f}^({n}/26)
+            [SSq]^(n/26) = {SSq_factor:.6f}
+    
+    Step 3: Energy available for cracking
+            E_crack = {E_shell:.4e} × (1 - {SSq_factor:.6f}) + {E_neutrino:.4e}
+            E_crack = {E_shell * (1 - SSq_factor):.4e} + {E_neutrino:.4e}
+            E_crack = {E_crack:.4e} J
+    
+    Step 4: Compare to threshold
+            E_crack_threshold = {self.E_crack_threshold:.4e} J (13.6 eV)
+            Shell cracked? {shell_cracked} ({E_crack:.4e} {'>' if shell_cracked else '<='} {self.E_crack_threshold:.4e})
+    
+    ═══════════════════════════════════════════════════════════════════════════
+"""
+        return E_crack, shell_cracked, steps
+    
+    def compute_electron_settlement(self, n_initial: int, n_final: int,
+                                    U_g2: float = 1e6) -> Tuple[float, str]:
+        """
+        Compute electron settlement from initial to final quantum state.
+        
+        Electron settles into lower quantum state via U_g2 (Surface Charge-
+        Reactivity component of universal gravity).
+        
+        From Page 1: "electron settles into lower quantum state due to U_g2"
+        
+        Formula: ΔE_settle = (E_n_initial - E_n_final) × f_U_g2
+        
+        Args:
+            n_initial: Initial shell quantum number
+            n_final: Final shell quantum number (n_final < n_initial)
+            U_g2: Surface charge-reactivity gravity component (J/m³)
+        
+        Returns:
+            Tuple of (energy_released_J, calculation_steps)
+        """
+        E_initial, _ = self.compute_shell_energy(n_initial)
+        E_final, _ = self.compute_shell_energy(n_final)
+        
+        # Energy difference (should be positive when settling to lower state)
+        delta_E = E_initial - E_final  # E_initial more negative, so this is negative
+        # Energy released = |delta_E| since electron loses potential energy
+        E_released = -delta_E if delta_E < 0 else delta_E
+        
+        # U_g2 modulation factor
+        f_U_g2 = 1.0 + np.log10(abs(U_g2)) / 100.0 if U_g2 > 0 else 1.0
+        E_settle = E_released * f_U_g2
+        
+        steps = f"""
+    ═══════════════════════════════════════════════════════════════════════════
+    ELECTRON SETTLEMENT CALCULATION (n={n_initial} → n={n_final})
+    ═══════════════════════════════════════════════════════════════════════════
+    
+    Process: Electron descends via U_g2 gravitational interaction
+    
+    Step 1: Initial shell energy
+            E_n={n_initial} = {E_initial:.4e} J = {E_initial/self.q:.4f} eV
+    
+    Step 2: Final shell energy
+            E_n={n_final} = {E_final:.4e} J = {E_final/self.q:.4f} eV
+    
+    Step 3: Energy difference
+            ΔE = E_initial - E_final
+            ΔE = {delta_E:.4e} J
+    
+    Step 4: Energy released (magnitude)
+            E_released = |ΔE| = {E_released:.4e} J
+    
+    Step 5: U_g2 modulation
+            U_g2 = {U_g2:.4e} J/m³
+            f_U_g2 = 1 + log₁₀(U_g2)/100
+            f_U_g2 = {f_U_g2:.6f}
+    
+    Step 6: Settlement energy
+            E_settle = E_released × f_U_g2
+            E_settle = {E_settle:.4e} J = {E_settle/self.q:.4f} eV
+    
+    Physical Meaning: This energy is released as photon(s) when electron
+                     settles from n={n_initial} to n={n_final} shell.
+    
+    ═══════════════════════════════════════════════════════════════════════════
+"""
+        return E_settle, steps
+    
+    def compute_neutrino_inflation(self, E_neutrino: float,
+                                   n_shell: int = 1) -> Tuple[float, str]:
+        """
+        Compute neutrino energy inflation dynamics.
+        
+        From Page 2: "Energy inflation due to neutrinos"
+        
+        Neutrinos are ethereal energy not bound by gravity (Page 3).
+        They provide energy inflation to the proto-nuclear system.
+        
+        Formula: E_inflated = E_neutrino × exp(n/26) × (1 + f_TRZ)
+        
+        Args:
+            E_neutrino: Initial neutrino energy (J)
+            n_shell: Quantum shell affected
+        
+        Returns:
+            Tuple of (inflated_energy_J, calculation_steps)
+        """
+        # Exponential inflation factor based on quantum state
+        exp_factor = np.exp(n_shell / 26.0)
+        
+        # Time-reversal zone factor (neutrinos can access TRZ)
+        f_TRZ = 0.1  # Standard TRZ amplification
+        
+        # Inflated energy
+        E_inflated = E_neutrino * exp_factor * (1 + f_TRZ)
+        
+        steps = f"""
+    ═══════════════════════════════════════════════════════════════════════════
+    NEUTRINO ENERGY INFLATION CALCULATION
+    ═══════════════════════════════════════════════════════════════════════════
+    
+    Formula: E_inflated = E_neutrino × exp(n/26) × (1 + f_TRZ)
+    
+    From Page 3: "neutrinos as ethereal energy not bound by gravity"
+    
+    Step 1: Initial neutrino energy
+            E_neutrino = {E_neutrino:.4e} J
+    
+    Step 2: Quantum state exponential factor
+            exp(n/26) = exp({n_shell}/26)
+            exp(n/26) = {exp_factor:.6f}
+    
+    Step 3: Time-reversal zone amplification
+            f_TRZ = {f_TRZ:.2f} (neutrinos can access TRZ)
+            (1 + f_TRZ) = {1 + f_TRZ:.2f}
+    
+    Step 4: Inflated energy
+            E_inflated = {E_neutrino:.4e} × {exp_factor:.6f} × {1 + f_TRZ:.2f}
+            E_inflated = {E_inflated:.4e} J
+    
+    Energy Amplification: {E_inflated / E_neutrino:.2f}× (or infinite if E_ν=0)
+    
+    ═══════════════════════════════════════════════════════════════════════════
+"""
+        return E_inflated, steps
+    
+    def get_acp_stage(self, stage_number: int) -> Dict[str, Any]:
+        """Get ACP stage information."""
+        if stage_number in self.ACP_STAGES:
+            return self.ACP_STAGES[stage_number]
+        return {'name': 'UNKNOWN', 'description': 'Invalid stage number'}
+    
+    def simulate_acp_sequence(self, Z: int = 1, n_shells: int = 4,
+                             E_neutrino: float = 1e-12) -> Dict[str, Any]:
+        """
+        Simulate complete Atomic Creation Process sequence.
+        
+        Args:
+            Z: Target atomic number
+            n_shells: Number of shells to populate
+            E_neutrino: Neutrino energy contribution (J)
+        
+        Returns:
+            Dictionary with complete ACP simulation results
+        """
+        results = {
+            'Z': Z,
+            'n_shells': n_shells,
+            'stages': [],
+            'shell_energies': [],
+            'crack_events': [],
+            'electron_settlements': [],
+            'total_energy_released': 0.0,
+        }
+        
+        # Stage 1-5: Formation (calculated but not detailed here)
+        for stage in range(1, 6):
+            results['stages'].append({
+                'number': stage,
+                **self.ACP_STAGES[stage],
+                'status': 'complete'
+            })
+        
+        # Stage 6: Shell cracking
+        for n in range(1, n_shells + 1):
+            E_shell, _ = self.compute_shell_energy(n, Z)
+            results['shell_energies'].append({
+                'n': n,
+                'E_shell_J': E_shell,
+                'E_shell_eV': E_shell / self.q
+            })
+            
+            E_crack, cracked, _ = self.compute_shell_cracking_energy(n, E_neutrino)
+            results['crack_events'].append({
+                'n': n,
+                'E_crack_J': E_crack,
+                'cracked': cracked
+            })
+        
+        results['stages'].append({
+            'number': 6,
+            **self.ACP_STAGES[6],
+            'status': 'complete',
+            'shells_cracked': sum(1 for c in results['crack_events'] if c['cracked'])
+        })
+        
+        # Stage 7: Electron settlement
+        for n in range(n_shells, 1, -1):
+            E_settle, _ = self.compute_electron_settlement(n, n - 1)
+            results['electron_settlements'].append({
+                'transition': f"n={n} → n={n-1}",
+                'E_released_J': E_settle,
+                'E_released_eV': E_settle / self.q
+            })
+            results['total_energy_released'] += E_settle
+        
+        results['stages'].append({
+            'number': 7,
+            **self.ACP_STAGES[7],
+            'status': 'complete',
+            'transitions': len(results['electron_settlements'])
+        })
+        
+        # Stage 8: Neutrino inflation
+        E_inflated, _ = self.compute_neutrino_inflation(E_neutrino, n_shells)
+        results['stages'].append({
+            'number': 8,
+            **self.ACP_STAGES[8],
+            'status': 'complete',
+            'E_inflated_J': E_inflated
+        })
+        
+        # Stage 9: Complete
+        results['stages'].append({
+            'number': 9,
+            **self.ACP_STAGES[9],
+            'status': 'complete'
+        })
+        
+        return results
+
+
+# Global Proto-Nucleus model instance
+PROTO_NUCLEUS_MODEL = ProtoNucleusShellModel()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ACP STAGE TRACKER - Atomic Creation Process Monitoring
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class ACPStageTracker:
+    """
+    Atomic Creation Process (ACP) Stage Tracker
+    
+    Monitors and tracks the progression of atomic creation from initial DPM
+    reactions through to stable atom formation. Integrates with ProtoNucleusModel
+    for detailed physics calculations.
+    
+    ACP STAGES (9 total):
+    ════════════════════════════════════════════════════════════════════════════
+    Stage 1: DPM_INITIATION     - UA' + SCm reactions form Dual Phase Material
+    Stage 2: VACUUM_DENSITY     - DPM produces vacuum energy density (ρ_vac)
+    Stage 3: U_I_CREATION       - Vacuum density creates Universal Inertia
+    Stage 4: U_M_STRINGS        - U_i forms Universal Magnetic strings
+    Stage 5: PROTO_NUCLEUS      - U_m strings build the proto-nucleus
+    Stage 6: SHELL_CRACKING     - Quantum ripples crack the proto-shell
+    Stage 7: ELECTRON_SETTLEMENT - Electrons settle into U_g2 shells
+    Stage 8: NEUTRINO_INFLATION - Energy inflation via neutrino interactions
+    Stage 9: ATOM_COMPLETE      - Stable atom achieved
+    
+    DIPOLE VORTEX FORMATION:
+        ([SCm] - [UA'])² forms a dipole vortex that creates U_g3
+        Implosion enhances U_g1, U_g2, U_g3
+    
+    From Page 6: "type of shell indicates [UA] and [SCm] entanglement"
+    """
+    
+    def __init__(self):
+        """Initialize ACP tracker with stage state"""
+        self.current_stage = 0
+        self.stage_history = []
+        self.time_in_stage = {}  # days
+        self.proto_model = PROTO_NUCLEUS_MODEL
+        
+        # Energy tracking
+        self.total_energy_input = 0.0
+        self.total_energy_output = 0.0
+        
+        # Particle tracking
+        self.particles_created = {
+            'protons': 0,
+            'neutrons': 0,
+            'electrons': 0,
+            'neutrinos': 0,
+        }
+        
+    def advance_stage(self, energy_input: float = 0.0,
+                     energy_output: float = 0.0,
+                     time_elapsed_days: float = 1.0) -> Dict[str, Any]:
+        """
+        Advance to next ACP stage.
+        
+        Args:
+            energy_input: Energy added at this stage (J)
+            energy_output: Energy released at this stage (J)
+            time_elapsed_days: Time spent in previous stage
+        
+        Returns:
+            Dictionary with new stage info
+        """
+        previous_stage = self.current_stage
+        self.current_stage = min(self.current_stage + 1, 9)
+        
+        # Record history
+        if previous_stage > 0:
+            self.time_in_stage[previous_stage] = time_elapsed_days
+        
+        self.stage_history.append({
+            'from_stage': previous_stage,
+            'to_stage': self.current_stage,
+            'energy_input': energy_input,
+            'energy_output': energy_output,
+            'time_days': time_elapsed_days,
+        })
+        
+        self.total_energy_input += energy_input
+        self.total_energy_output += energy_output
+        
+        stage_info = self.proto_model.get_acp_stage(self.current_stage)
+        
+        return {
+            'current_stage': self.current_stage,
+            'stage_name': stage_info['name'],
+            'description': stage_info['description'],
+            'total_energy_in': self.total_energy_input,
+            'total_energy_out': self.total_energy_output,
+            'net_energy': self.total_energy_input - self.total_energy_output,
+        }
+    
+    def compute_dipole_vortex_energy(self, rho_SCm: float = None,
+                                     rho_UA_prime: float = None) -> Tuple[float, str]:
+        """
+        Compute dipole vortex energy from ([SCm] - [UA'])² interaction.
+        
+        From Page 6: "([SCm] – [UA'])² forms a dipole"
+        
+        This dipole creates U_g3 (String Rotation component).
+        
+        Formula: E_dipole = ([SCm] - [UA'])² × V_interaction × c²
+        
+        Args:
+            rho_SCm: [SCm] vacuum density (J/m³)
+            rho_UA_prime: [UA'] vacuum density (J/m³)
+        
+        Returns:
+            Tuple of (dipole_energy_J, calculation_steps)
+        """
+        if rho_SCm is None:
+            rho_SCm = CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        if rho_UA_prime is None:
+            rho_UA_prime = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        
+        c = CONSTANTS['c']
+        
+        # Density difference squared
+        delta_rho = rho_SCm - rho_UA_prime
+        delta_rho_sq = delta_rho ** 2
+        
+        # Interaction volume (characteristic nuclear scale)
+        V_interaction = (1e-15) ** 3  # 1 fm³
+        
+        # Dipole vortex energy
+        E_dipole = delta_rho_sq * V_interaction * (c ** 2)
+        
+        steps = f"""
+    ═══════════════════════════════════════════════════════════════════════════
+    DIPOLE VORTEX ENERGY CALCULATION
+    ═══════════════════════════════════════════════════════════════════════════
+    
+    Formula: E_dipole = ([SCm] - [UA'])² × V_interaction × c²
+    
+    From Page 6: "([SCm] – [UA'])² forms a dipole, creating U_g3"
+    
+    Step 1: Vacuum densities
+            ρ_vac,[SCm] = {rho_SCm:.4e} J/m³
+            ρ_vac,[UA'] = {rho_UA_prime:.4e} J/m³
+    
+    Step 2: Density difference
+            Δρ = [SCm] - [UA']
+            Δρ = {rho_SCm:.4e} - {rho_UA_prime:.4e}
+            Δρ = {delta_rho:.4e} J/m³
+    
+    Step 3: Difference squared
+            (Δρ)² = ({delta_rho:.4e})²
+            (Δρ)² = {delta_rho_sq:.4e} (J/m³)²
+    
+    Step 4: Interaction volume (nuclear scale)
+            V_interaction = (1 fm)³ = {V_interaction:.4e} m³
+    
+    Step 5: Energy (E = ρV·c²)
+            E_dipole = {delta_rho_sq:.4e} × {V_interaction:.4e} × ({c:.4e})²
+            E_dipole = {E_dipole:.4e} J
+    
+    Physical Meaning: This energy drives U_g3 (string rotation) formation
+                     and subsequent implosion enhancing U_g1, U_g2, U_g3.
+    
+    ═══════════════════════════════════════════════════════════════════════════
+"""
+        return E_dipole, steps
+    
+    def get_stage_report(self) -> str:
+        """Generate comprehensive stage report."""
+        stage_info = self.proto_model.get_acp_stage(self.current_stage)
+        
+        report = f"""
+═══════════════════════════════════════════════════════════════════════════════
+                     ATOMIC CREATION PROCESS (ACP) STATUS REPORT
+═══════════════════════════════════════════════════════════════════════════════
+
+Current Stage: {self.current_stage} - {stage_info['name']}
+Description:   {stage_info['description']}
+
+────────────────────────────────────────────────────────────────────────────────
+ENERGY BALANCE
+────────────────────────────────────────────────────────────────────────────────
+Total Energy Input:  {self.total_energy_input:.4e} J
+Total Energy Output: {self.total_energy_output:.4e} J
+Net Energy:          {self.total_energy_input - self.total_energy_output:.4e} J
+
+────────────────────────────────────────────────────────────────────────────────
+STAGE PROGRESSION
+────────────────────────────────────────────────────────────────────────────────
+"""
+        for stage_num in range(1, self.current_stage + 1):
+            info = self.proto_model.get_acp_stage(stage_num)
+            time_str = f"{self.time_in_stage.get(stage_num, 0):.2e} days" if stage_num < self.current_stage else "in progress"
+            status = "✓" if stage_num < self.current_stage else "→" if stage_num == self.current_stage else "○"
+            report += f"  {status} Stage {stage_num}: {info['name']:<20} [{time_str}]\n"
+        
+        for stage_num in range(self.current_stage + 1, 10):
+            info = self.proto_model.get_acp_stage(stage_num)
+            report += f"  ○ Stage {stage_num}: {info['name']:<20} [pending]\n"
+        
+        report += """
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return report
+    
+    def reset(self):
+        """Reset tracker to initial state."""
+        self.current_stage = 0
+        self.stage_history = []
+        self.time_in_stage = {}
+        self.total_energy_input = 0.0
+        self.total_energy_output = 0.0
+        self.particles_created = {k: 0 for k in self.particles_created}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# UNIVERSAL CYCLE TRACKING MODEL
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UniversalCycleTracker:
+    """
+    Universal Cycle Tracking Model
+    
+    Tracks [UA] and [SCm] consumption and the "third decay cycle" matter trapping
+    mechanism described in the Gas Nebula observations.
+    
+    UNIVERSAL CYCLE (from Pages 7, 10, 11):
+    ════════════════════════════════════════════════════════════════════════════
+    1. [UA] and [SCm] derivatives drive cosmic matter constancy (Page 7)
+    2. Father, Son, Holy Spirit ↔ [UA], [SCm], [EM] trinity (Page 10)
+    3. Light speed applies only to matter, not to aether (Page 10)
+    4. Universe expansion consumes [UA]/[SCm] (Page 11)
+    5. Matter is trapped in a "third decay cycle" (Page 11)
+    
+    DECAY RATE (from Page 5):
+        [SCm] decay rate ≈ 0.0963 determines universe end
+        
+    CONSUMPTION TRACKING:
+        d[UA]/dt = -k_UA × [UA] × [SCm] × V_universe
+        d[SCm]/dt = -k_SCm × [UA] × [SCm] × V_universe
+    """
+    
+    # Decay rate from Page 5
+    SCM_DECAY_RATE = 0.0963  # Universe decay rate
+    
+    # Three decay cycles
+    DECAY_CYCLES = {
+        1: {'name': 'PRIMARY_DECAY', 'description': '[SCm] initial decay to UA', 'rate': 0.0963},
+        2: {'name': 'SECONDARY_DECAY', 'description': '[UA] reaction with matter', 'rate': 0.05},
+        3: {'name': 'THIRD_DECAY', 'description': 'Matter trapping cycle', 'rate': 0.01},
+    }
+    
+    def __init__(self, initial_UA: float = 1.0, initial_SCm: float = 1.0):
+        """
+        Initialize universal cycle tracker.
+        
+        Args:
+            initial_UA: Initial [UA] fraction (normalized)
+            initial_SCm: Initial [SCm] fraction (normalized)
+        """
+        self.UA_current = initial_UA
+        self.SCm_current = initial_SCm
+        self.matter_trapped = 0.0
+        self.time_elapsed_days = 0.0
+        
+        # History tracking
+        self.history = [{
+            't': 0.0,
+            'UA': initial_UA,
+            'SCm': initial_SCm,
+            'matter': 0.0,
+        }]
+        
+        # Consumption rates (day⁻¹)
+        self.k_UA = 1e-10  # [UA] consumption rate
+        self.k_SCm = 0.0005  # [SCm] consumption rate (κ from UQFF)
+        
+    def compute_consumption_rates(self, V_universe: float = 1.0) -> Dict[str, float]:
+        """
+        Compute instantaneous [UA] and [SCm] consumption rates.
+        
+        Formula:
+            d[UA]/dt = -k_UA × [UA] × [SCm] × V_universe
+            d[SCm]/dt = -k_SCm × [UA] × [SCm] × V_universe
+        
+        Args:
+            V_universe: Universe volume factor (normalized)
+        
+        Returns:
+            Dictionary with consumption rates
+        """
+        interaction = self.UA_current * self.SCm_current * V_universe
+        
+        dUA_dt = -self.k_UA * interaction
+        dSCm_dt = -self.k_SCm * interaction
+        
+        # Matter production rate (from consumed aether)
+        dmatter_dt = -dUA_dt - dSCm_dt  # Matter is produced from consumed aether
+        
+        return {
+            'dUA_dt': dUA_dt,
+            'dSCm_dt': dSCm_dt,
+            'dmatter_dt': dmatter_dt,
+            'interaction_factor': interaction,
+        }
+    
+    def evolve(self, dt_days: float, V_universe: float = 1.0) -> Dict[str, Any]:
+        """
+        Evolve the universal cycle by time step dt.
+        
+        Uses simple Euler integration for the coupled ODEs.
+        
+        Args:
+            dt_days: Time step in days
+            V_universe: Universe volume factor
+        
+        Returns:
+            Dictionary with new state
+        """
+        rates = self.compute_consumption_rates(V_universe)
+        
+        # Euler step
+        self.UA_current += rates['dUA_dt'] * dt_days
+        self.SCm_current += rates['dSCm_dt'] * dt_days
+        self.matter_trapped += rates['dmatter_dt'] * dt_days
+        
+        # Ensure non-negative
+        self.UA_current = max(0.0, self.UA_current)
+        self.SCm_current = max(0.0, self.SCm_current)
+        
+        self.time_elapsed_days += dt_days
+        
+        # Record history
+        state = {
+            't': self.time_elapsed_days,
+            'UA': self.UA_current,
+            'SCm': self.SCm_current,
+            'matter': self.matter_trapped,
+        }
+        self.history.append(state)
+        
+        return state
+    
+    def compute_universe_decay_time(self) -> Tuple[float, str]:
+        """
+        Compute estimated time to universe decay.
+        
+        Based on [SCm] decay rate ≈ 0.0963 from Page 5.
+        
+        Formula: t_decay = 1 / (0.0963) × correction_factor
+        
+        Returns:
+            Tuple of (decay_time_days, calculation_steps)
+        """
+        base_decay_rate = self.SCM_DECAY_RATE
+        
+        # Current [SCm] affects remaining time
+        if self.SCm_current > 0:
+            t_decay_base = 1.0 / base_decay_rate
+            # Adjust for remaining [SCm]
+            t_remaining = t_decay_base * np.log(1.0 / self.SCm_current) if self.SCm_current < 1.0 else t_decay_base
+        else:
+            t_remaining = 0.0
+        
+        steps = f"""
+    ═══════════════════════════════════════════════════════════════════════════
+    UNIVERSE DECAY TIME CALCULATION
+    ═══════════════════════════════════════════════════════════════════════════
+    
+    From Page 5: "[SCm] decay rate (~0.0963) determines universe end"
+    
+    Step 1: Base decay rate
+            γ_decay = {base_decay_rate:.4f} day⁻¹
+    
+    Step 2: Characteristic decay time
+            τ_base = 1 / γ_decay
+            τ_base = 1 / {base_decay_rate:.4f}
+            τ_base = {1.0/base_decay_rate:.4f} days
+    
+    Step 3: Current [SCm] fraction
+            [SCm]_current = {self.SCm_current:.6f}
+    
+    Step 4: Remaining decay time
+            t_remaining = τ_base × ln(1 / [SCm]_current)
+            t_remaining = {t_remaining:.4e} days
+            t_remaining = {t_remaining / 365.25:.4e} years
+    
+    Physical Meaning: Time until [SCm] depletes, triggering universe decay
+    
+    ═══════════════════════════════════════════════════════════════════════════
+"""
+        return t_remaining, steps
+    
+    def compute_third_decay_trapping(self, matter_density: float) -> Tuple[float, str]:
+        """
+        Compute matter trapping in the third decay cycle.
+        
+        From Page 11: "Universe expansion consumes [UA]/[SCm], trapping
+                      matter in a third decay cycle"
+        
+        Formula: f_trapped = (1 - exp(-k_trap × t)) × [matter density]
+        
+        Args:
+            matter_density: Current matter density (kg/m³)
+        
+        Returns:
+            Tuple of (trapped_fraction, calculation_steps)
+        """
+        k_trap = self.DECAY_CYCLES[3]['rate']
+        t = self.time_elapsed_days
+        
+        # Trapping efficiency increases with time
+        trapping_factor = 1 - np.exp(-k_trap * t)
+        f_trapped = trapping_factor * matter_density
+        
+        steps = f"""
+    ═══════════════════════════════════════════════════════════════════════════
+    THIRD DECAY CYCLE - MATTER TRAPPING
+    ═══════════════════════════════════════════════════════════════════════════
+    
+    From Page 11: "Matter is trapped in a third decay cycle"
+    
+    DECAY CYCLES:
+        Cycle 1: PRIMARY_DECAY   - [SCm] initial decay to UA (rate: 0.0963)
+        Cycle 2: SECONDARY_DECAY - [UA] reaction with matter (rate: 0.05)
+        Cycle 3: THIRD_DECAY     - Matter trapping cycle (rate: {k_trap})
+    
+    Formula: f_trapped = (1 - exp(-k_trap × t)) × ρ_matter
+    
+    Step 1: Trapping rate constant
+            k_trap = {k_trap:.4f} day⁻¹
+    
+    Step 2: Time elapsed
+            t = {t:.4e} days
+    
+    Step 3: Trapping factor
+            (1 - exp(-k_trap × t)) = 1 - exp(-{k_trap:.4f} × {t:.4e})
+            Trapping factor = {trapping_factor:.6f}
+    
+    Step 4: Trapped matter fraction
+            f_trapped = {trapping_factor:.6f} × {matter_density:.4e}
+            f_trapped = {f_trapped:.4e} kg/m³
+    
+    Physical Meaning: As universe evolves, matter becomes increasingly
+                     trapped in this cycle, preventing escape to [UA]/[SCm] pool.
+    
+    ═══════════════════════════════════════════════════════════════════════════
+"""
+        return f_trapped, steps
+    
+    def get_cycle_report(self) -> str:
+        """Generate universal cycle status report."""
+        rates = self.compute_consumption_rates()
+        t_decay, _ = self.compute_universe_decay_time()
+        
+        report = f"""
+═══════════════════════════════════════════════════════════════════════════════
+                        UNIVERSAL CYCLE STATUS REPORT
+═══════════════════════════════════════════════════════════════════════════════
+
+Time Elapsed: {self.time_elapsed_days:.4e} days ({self.time_elapsed_days/365.25:.4e} years)
+
+────────────────────────────────────────────────────────────────────────────────
+AETHER FRACTIONS (Normalized)
+────────────────────────────────────────────────────────────────────────────────
+[UA] Current:  {self.UA_current:.6f} ({self.UA_current * 100:.4f}%)
+[SCm] Current: {self.SCm_current:.6f} ({self.SCm_current * 100:.4f}%)
+Matter Trapped: {self.matter_trapped:.6f}
+
+────────────────────────────────────────────────────────────────────────────────
+CONSUMPTION RATES (day⁻¹)
+────────────────────────────────────────────────────────────────────────────────
+d[UA]/dt:     {rates['dUA_dt']:.4e}
+d[SCm]/dt:    {rates['dSCm_dt']:.4e}
+dMatter/dt:   {rates['dmatter_dt']:.4e}
+
+────────────────────────────────────────────────────────────────────────────────
+DECAY CYCLES
+────────────────────────────────────────────────────────────────────────────────
+Cycle 1: PRIMARY_DECAY   - Rate: 0.0963 day⁻¹ (Universe baseline)
+Cycle 2: SECONDARY_DECAY - Rate: 0.05 day⁻¹ ([UA] + matter)
+Cycle 3: THIRD_DECAY     - Rate: 0.01 day⁻¹ (Matter trapping)
+
+────────────────────────────────────────────────────────────────────────────────
+PROJECTIONS
+────────────────────────────────────────────────────────────────────────────────
+Estimated Decay Time: {t_decay:.4e} days ({t_decay/365.25:.4e} years)
+
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return report
+    
+    def reset(self, initial_UA: float = 1.0, initial_SCm: float = 1.0):
+        """Reset tracker to initial state."""
+        self.UA_current = initial_UA
+        self.SCm_current = initial_SCm
+        self.matter_trapped = 0.0
+        self.time_elapsed_days = 0.0
+        self.history = [{
+            't': 0.0,
+            'UA': initial_UA,
+            'SCm': initial_SCm,
+            'matter': 0.0,
+        }]
+
+
+# Global ACP Stage Tracker instance
+ACP_TRACKER = ACPStageTracker()
+
+# Global Universal Cycle Tracker instance
+UNIVERSAL_CYCLE = UniversalCycleTracker()
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -45354,6 +47007,93 @@ class CondensedPhysicsCalculator:
         
         return results
     
+    def solve(self, query: str, equations: List[int] = None, t: float = 1.0, 
+              output_format: str = 'longform') -> Dict[str, Any]:
+        """
+        PRIMARY ENTRY POINT: Query a system and compute UQFF equations.
+        
+        This is the main solve() method that:
+        1. Fetches system parameters from APIs (SIMBAD → NASA → NED → Grok)
+        2. Writes timestamped CSV for reproducibility
+        3. Computes selected or all 8 UQFF master equations
+        4. Returns long-form step-by-step physics solutions
+        
+        Args:
+            query: System name (e.g., "Sagittarius A*", "Betelgeuse", "M87")
+            equations: List of equation numbers [1-8], or None for all 8
+            t: Time parameter in seconds (default 1.0)
+            output_format: 'longform' (step-by-step), 'values' (numeric only), 
+                          'both' (values + equations)
+        
+        Returns:
+            Dict containing:
+              - 'system': SystemParams object with all input parameters
+              - 'proof_set': Input parameter summary
+              - 'csv_path': Path to timestamped CSV file
+              - 'results': Dict of equation outputs (keyed by eq number)
+              - 'long_form': Dict of step-by-step derivations (if requested)
+        
+        Example:
+            >>> calc = CondensedPhysicsCalculator()
+            >>> result = calc.solve("Sagittarius A*")
+            >>> print(result['long_form'][1])  # UQFF Base equation derivation
+        """
+        # Step 1: Fetch system from APIs
+        try:
+            self.query_system(query)
+        except Exception as e:
+            return {'error': f'Failed to fetch system: {e}', 'system': None}
+        
+        if self.current_system is None:
+            return {'error': 'System not found', 'system': None}
+        
+        # Step 2: Determine which equations to solve
+        if equations is None:
+            equations = list(range(1, 9))  # All 8
+        else:
+            equations = [eq for eq in equations if 1 <= eq <= 8]
+        
+        # Step 3: Compute equations
+        results = {}
+        long_form = {}
+        
+        for eq_num in equations:
+            if eq_num in self.equations:
+                # Numeric values
+                results[eq_num] = self.equations[eq_num].compute(self.current_system, t)
+                results[eq_num]['equation_name'] = self.equations[eq_num].name
+                
+                # Long-form derivation (if requested)
+                if output_format in ('longform', 'both'):
+                    long_form[eq_num] = self.equations[eq_num].long_form_solution(
+                        self.current_system, t
+                    )
+        
+        # Step 4: Build output
+        output = {
+            'system': self.current_system,
+            'system_name': self.current_system.name,
+            'proof_set': {
+                'M': self.current_system.M,
+                'r': self.current_system.r,
+                'T': self.current_system.T,
+                'B0': self.current_system.B0,
+                'omega_s': self.current_system.omega_s,
+                'M_BH': self.current_system.M_BH,
+                'd_g': self.current_system.d_g,
+            },
+            'csv_path': self.last_csv_path,
+            'equations_computed': equations,
+        }
+        
+        if output_format in ('values', 'both'):
+            output['results'] = results
+        
+        if output_format in ('longform', 'both'):
+            output['long_form'] = long_form
+        
+        return output
+    
     def interactive_menu(self) -> None:
         """Run interactive calculator menu"""
         print("\n" + "═" * 79)
@@ -64011,6 +65751,40 @@ class PvsNPComplexityModel:
 
 
 # ARCHITECTURAL COMPLIANCE: No global instance - use PvsNPComplexityModel() on demand
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MODULE-LEVEL CONVENIENCE FUNCTIONS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def solve(query: str, equations: list = None, t: float = 1.0, 
+          output_format: str = 'longform') -> Dict[str, Any]:
+    """
+    Module-level convenience function for solving UQFF equations.
+    
+    This is the PRIMARY entry point for the CondensedPhysics module.
+    
+    Args:
+        query: System name (e.g., "Sagittarius A*", "Betelgeuse", "M87")
+        equations: List of equation numbers [1-8], or None for all 8
+        t: Time parameter in seconds (default 1.0)
+        output_format: 'longform' (step-by-step), 'values' (numeric only), 
+                      'both' (values + equations)
+    
+    Returns:
+        Dict containing system params, proof set, CSV path, results, long_form derivations
+    
+    Example:
+        >>> import CondensedPhysics as CP
+        >>> result = CP.solve("Sagittarius A*")
+        >>> print(result['long_form'][1])  # UQFF Base equation derivation
+        >>> 
+        >>> # Get just numeric values
+        >>> result = CP.solve("Betelgeuse", equations=[1,2,3], output_format='values')
+        >>> print(result['results'][1]['primary_result'])
+    """
+    calc = CondensedPhysicsCalculator()
+    return calc.solve(query, equations, t, output_format)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

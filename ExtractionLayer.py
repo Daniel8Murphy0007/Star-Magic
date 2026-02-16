@@ -5,15 +5,22 @@ ExtractionLayer.py - UQFF Complete Data Extraction & Computation Pipeline
 
 Orchestrates the complete data flow from user queries to UQFF calculations:
 
-    User Query → APIFetch → IPData → QCalc → OPData → Results
+    User Query > APIFetch > IPData > QCalc > OPData > Results
 
 FEATURES:
     - Single query or batch processing
-    - Multi-source API fallback (SIMBAD → NED → Grok)
+    - Multi-source API fallback (SIMBAD > NED > Grok)
     - Automatic CSV export (bodies_YYYYMMDD_HHMMSS.csv)
     - Progress tracking with ETA
     - Error handling with graceful degradation
     - Complete audit trail (sources, timestamps, parameters)
+
+PHASE 6: QCalc automatically includes Phase 6 galaxy physics (M51, NGC1316,
+SMBH binaries) when appropriate parameters are detected.
+
+PHASE 7: QCalc automatically includes Phase 7 cosmological systems (SOURCE81-95:
+Andromeda, SMBH M-σ, NGC346, LENR, Aether, DPM Birth, coupling constants) with
+14 complete modules and 110 functions.
 
 USAGE:
     # Single object

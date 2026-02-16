@@ -1,0 +1,13 @@
+{
+  "query_name": "NGC 1365",
+  "timestamp": "2026-02-13T11:51:44.106921",
+  "api_data": {
+    "name": "NGC 1365",
+    "sources": []
+  },
+  "qcalc_result": {
+    "query_id": "NGC 1365_20260213T115146177152",
+    "timestamp": "2026-02-13T11:51:46.177152",
+    "input_params": {
+      "query_name": "NGC 1365",
+      "scale": 

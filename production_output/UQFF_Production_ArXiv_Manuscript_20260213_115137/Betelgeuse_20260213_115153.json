@@ -1,0 +1,13 @@
+{
+  "query_name": "Betelgeuse",
+  "timestamp": "2026-02-13T11:51:51.367912",
+  "api_data": {
+    "name": "Betelgeuse",
+    "sources": []
+  },
+  "qcalc_result": {
+    "query_id": "Betelgeuse_20260213T115153497145",
+    "timestamp": "2026-02-13T11:51:53.497145",
+    "input_params": {
+      "query_name": "Betelgeuse",
+      "scale": 

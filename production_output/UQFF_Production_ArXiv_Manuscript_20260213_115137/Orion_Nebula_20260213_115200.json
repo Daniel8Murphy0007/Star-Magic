@@ -1,0 +1,13 @@
+{
+  "query_name": "Orion Nebula",
+  "timestamp": "2026-02-13T11:51:58.517680",
+  "api_data": {
+    "name": "Orion Nebula",
+    "sources": []
+  },
+  "qcalc_result": {
+    "query_id": "Orion Nebula_20260213T115200641376",
+    "timestamp": "2026-02-13T11:52:00.641376",
+    "input_params": {
+      "query_name": "Orion Nebula",
+      "scale": 

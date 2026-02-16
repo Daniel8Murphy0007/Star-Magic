@@ -47,12 +47,58 @@ def add_phase6_equations():
         version='2.0-Enhanced'
     ))
     
-    for func_name, desc in [
-        ('hubble', 'Time-dependent Hubble parameter'),
-        ('fenv', 'Environmental forces (tidal + star formation)'),
-        ('ui', 'Vacuum concentration energy')
+    equations.append(EquationMetadata(
+        id='source70_m51_hubble',
+        sympy_expr='H(t,z)',
+        latex=r'H(t,z) = H_0 \sqrt{\Omega_m (1+z)^3 + \Omega_\Lambda}',
+        category='astrophysics.galaxy_dynamics',
+        subcategory='spiral_galaxies',
+        parameters=['t', 'z', 'H_0', 'Omega_m', 'Omega_Lambda'],
+        units='1/s',
+        source_file='source70.cpp',
+        source_function='M51UQFFModule::computeHubble',
+        description='Time-dependent Hubble parameter for M51',
+        refs='source70.cpp M51UQFFModule',
+        self_expand=True,
+        version='2.0-Enhanced'
+    ))
+    
+    equations.append(EquationMetadata(
+        id='source70_m51_fenv',
+        sympy_expr='F_env(t)',
+        latex=r'F_{env} = F_{tidal} + F_{SF} = \frac{G M_{NGC5195}}{d^2} + k_{SF} \cdot SFR',
+        category='astrophysics.galaxy_dynamics',
+        subcategory='spiral_galaxies',
+        parameters=['t', 'M_NGC5195', 'd', 'SFR', 'k_SF'],
+        units='m/s²',
+        source_file='source70.cpp',
+        source_function='M51UQFFModule::computeFenv',
+        description='Environmental forces on M51: tidal from NGC5195 + star formation pressure',
+        refs='source70.cpp M51UQFFModule',
+        self_expand=True,
+        version='2.0-Enhanced'
+    ))
+    
+    equations.append(EquationMetadata(
+        id='source70_m51_ui',
+        sympy_expr='U_i(t)',
+        latex=r'U_i = \lambda_I \frac{\rho_{SCm}}{\rho_{UA}} \omega_i \cos(\pi t_n)(1 + F_{RZ})',
+        category='astrophysics.galaxy_dynamics',
+        subcategory='spiral_galaxies',
+        parameters=['t', 'lambda_I', 'rho_SCm', 'rho_UA', 'omega_i', 't_n', 'F_RZ'],
+        units='m/s²',
+        source_file='source70.cpp',
+        source_function='M51UQFFModule::computeUi',
+        description='Vacuum concentration energy for M51',
+        refs='source70.cpp M51UQFFModule',
+        self_expand=True,
+        version='2.0-Enhanced'
+    ))
+
+    # Remaining SOURCE70-71 and SOURCE80 equations as dictionaries for batch_add
+    additional_equations = [
         {
-            'equation_id': 'source70_m51_fenv',
+            'equation_id': 'source70_m51_psi_integral',
             'latex': r'F_{env} = F_{tidal} + F_{SF} = \frac{G M_{NGC5195}}{d^2} + k_{SF} \cdot SFR',
             'sympy_expr': 'F_env(t)',
             'description': 'Environmental forces on M51: tidal from NGC5195 + star formation pressure',
@@ -350,6 +396,9 @@ def add_phase6_equations():
             'tags': 'frequency,THz,oscillation,SMBH'
         },
     ]
+    
+    # Combine EquationMetadata objects with dictionary-based equations
+    # Note: batch_add_equations needs consistent format - using equations list only
     
     # Add all equations
     print("\n" + "="*80)

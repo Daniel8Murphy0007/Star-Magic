@@ -1,0 +1,1318 @@
+{
+  "query_name": "NGC 1365",
+  "timestamp": "2026-02-13T12:41:04.215068",
+  "api_data": {
+    "name": "NGC 1365",
+    "sources": []
+  },
+  "qcalc_result": {
+    "query_id": "NGC 1365_20260213T124106215005",
+    "timestamp": "2026-02-13T12:41:06.215005",
+    "input_params": {
+      "query_name": "NGC 1365",
+      "scale": "STELLAR",
+      "M": 1e+30,
+      "r": 1000000.0,
+      "z": 0.0,
+      "B": 1e-05,
+      "t": 100000000.0,
+      "t_n": 0.0,
+      "k_coupling": 1.0,
+      "beta_coupling": 0.6
+    },
+    "long_form_equations": [
+      {
+        "name": "Ug1",
+        "latex": "U_{g1} = k_1 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug1 = 1.5 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 100114500.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug2",
+        "latex": "U_{g2} = k_2 \\times \\frac{G \\times M}{r^2} \\times H_{SCm}",
+        "substituted": "Ug2 = 1.2 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2 \u00d7 0.99",
+        "result": 79290683.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "Ug3",
+        "latex": "U_{g3} = k_3 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug3 = 1.8 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 120137399.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug4",
+        "latex": "U_{g4} = k_4 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug4 = 1.0 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 66742999.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_4": 1.0,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug",
+        "latex": "U_g = U_{g1} + U_{g2} + U_{g3} + U_{g4}",
+        "substituted": "Ug = 1.0011e+08 + 7.9291e+07 + 1.2014e+08 + 6.6743e+07",
+        "result": 366285584.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "Ug1": 100114500.0,
+          "Ug2": 79290683.99999999,
+          "Ug3": 120137399.99999999,
+          "Ug4": 66742999.99999999
+        }
+      },
+      {
+        "name": "Ug1_enhanced",
+        "latex": "U_{g1}^* = k_1 \\times \\frac{GM}{r^2} \\times e^{-\\alpha t} \\times \\cos(\\omega t_n) \\times (1 + \\beta_{\\text{def}})",
+        "substituted": "Ug1* = 1.5 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 e^(-1e-10\u00d71.000e+08) \u00d7 cos(7.272e-05\u00d70.0) \u00d7 (1+0.1)",
+        "result": 109030178.48896919,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "alpha": 1e-10,
+          "beta_def": 0.1,
+          "t": 100000000.0,
+          "t_n": 0.0,
+          "omega": 7.27220521664304e-05,
+          "time_decay": 0.9900498337491681,
+          "oscillation": 1.0
+        }
+      },
+      {
+        "name": "Ug2_enhanced",
+        "latex": "U_{g2}^* = k_2 \\times \\frac{GM}{r^2} \\times S(r-R_b) \\times (1 + \\delta_{sw} v_{sw}) \\times H_{SCm} \\times E_{\\text{react}}",
+        "substituted": "Ug2* = 1.2 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 S(1.000e+06-1.795e+13) \u00d7 (1+0.01\u00d75.000e+05) \u00d7 0.99 \u00d7 1.176e+47",
+        "result": 0.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "R_b": 17952000000000.0,
+          "step_func": 0.0,
+          "delta_sw": 0.01,
+          "v_sw": 500000.0,
+          "H_SCm": 0.99,
+          "E_react": 1.176066466304271e+47
+        }
+      },
+      {
+        "name": "Ug3_enhanced",
+        "latex": "U_{g3}^* = k_3 \\times \\frac{GM}{r^2} \\times B \\cos(\\omega_s t) \\times P_{\\text{core}} \\times E_{\\text{react}}",
+        "substituted": "Ug3* = 1.8 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 1.000e-05\u00d7cos(2.865e-06\u00d71.000e+08) \u00d7 1.0 \u00d7 1.176e+47",
+        "result": -11539.59808783778,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "B": 1e-05,
+          "omega": 2.865e-06,
+          "t": 100000000.0,
+          "P_core": 1.0,
+          "rotation_factor": -0.8167339098647604,
+          "E_react": 1.176066466304271e+47
+        }
+      },
+      {
+        "name": "Ug4_enhanced",
+        "latex": "U_{g4}^* = k_4 \\times \\frac{GM}{r^2} \\times \\frac{M_{bh}}{d_g} \\times e^{-\\alpha t} \\times \\cos(\\omega t_n) \\times (1 + f_{\\text{fb}})",
+        "substituted": "Ug4* = 1.0 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 (8.150e+36/2.440e+20) \u00d7 e^(-1e-10\u00d71.000e+08) \u00d7 cos(7.272e-05\u00d70.0) \u00d7 (1+0.1)",
+        "result": 2.4278577996860626e+24,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_4": 1.0,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "M_bh": 8.15e+36,
+          "d_g": 2.44e+20,
+          "alpha": 1e-10,
+          "t": 100000000.0,
+          "t_n": 0.0,
+          "omega": 7.27220521664304e-05,
+          "f_feedback": 0.1,
+          "time_decay": 0.9900498337491681,
+          "oscillation": 1.0
+        }
+      },
+      {
+        "name": "Ug_enhanced_total",
+        "latex": "U_g^* = U_{g1}^* + U_{g2}^* + U_{g3}^* + U_{g4}^*",
+        "substituted": "Ug* = Sum of enhanced components",
+        "result": 2.4278577996860626e+24,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "component_count": 4
+        }
+      },
+      {
+        "name": "Um",
+        "latex": "U_m = \\frac{\\mu}{r} \\times (1 - e^{-\\gamma t \\cos(\\pi t_n)})",
+        "substituted": "Um = (1.0000e+23 / 1.0000e+06) \u00d7 (1 - exp(-5e-05 \u00d7 100000000.0 \u00d7 cos(\u03c0 \u00d7 0.0)))",
+        "result": 9.999999999999998e+16,
+        "unit": "J/m\u00b3",
+        "parameters_used": {
+          "mu": 1e+23,
+          "r": 1000000.0,
+          "gamma": 5e-05,
+          "t": 100000000.0,
+          "t_n": 0.0,
+          "time_factor": 1.0
+        }
+      },
+      {
+        "name": "magnetic_moment",
+        "latex": "\\mu_j(t) = \\mu_0 + A_{\\text{osc}} \\times \\sin(\\omega_c t)",
+        "substituted": "\u03bc_j(t) = 1.000e+03 + 1.352e+20 \u00d7 sin(7.270e-05\u00d71.000e+08)",
+        "result": 4.694345412442819e+19,
+        "unit": "T\u00b7m\u00b3",
+        "parameters_used": {
+          "mu_0": 1000.0,
+          "A_osc": 1.352e+20,
+          "omega_c": 7.27e-05,
+          "t": 100000000.0
+        }
+      },
+      {
+        "name": "Um_total",
+        "latex": "U_m = \\sum_{j} \\left[ \\frac{\\mu_j(t)}{r_j} \\times (1-e^{-\\gamma t \\cos(\\omega t_n)}) \\times \\phi_j \\right] \\times P_{\\text{SCm}} \\times E_{\\text{react}}",
+        "substituted": "Um = \u03a3[\u03bc_j(t)/r_j \u00d7 time_decay \u00d7 \u03d5] \u00d7 P_SCm \u00d7 E_react, n=3 strings",
+        "result": 16214224410263.205,
+        "unit": "T",
+        "parameters_used": {
+          "n_strings": 3,
+          "r_list": [
+            500000.0,
+            1250000.0,
+            2000000.0
+          ],
+          "t": 100000000.0,
+          "t_n": 0.0,
+          "M": 1e+30,
+          "mu_t": 4.694345412442819e+19
+        }
+      },
+      {
+        "name": "Ub1",
+        "latex": "U_{b1} = -\\beta_1 \\times U_{g1} \\times \\omega_g \\times \\frac{M_{bh}}{d_g} \\times (1+\\delta_{sw} \\lambda_{vac,sw}) \\times [UA] \\times \\cos(\\omega t_n)",
+        "substituted": "Ub1 = -0.603 \u00d7 1.001e+08 \u00d7 7.300e-16 \u00d7 (8.150e+36/2.440e+20) \u00d7 ... \u00d7 cos(7.270e-05\u00d70.0)",
+        "result": -0.014719902635379098,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "beta": 0.603,
+          "Ug1": 100114500.0,
+          "omega_g": 7.3e-16,
+          "M_bh": 8.15e+36,
+          "d_g": 2.44e+20,
+          "t_n": 0.0
+        }
+      },
+      {
+        "name": "Ub2",
+        "latex": "U_{b2} = -\\beta_2 \\times U_{g2} \\times \\omega_g \\times \\frac{M_{bh}}{d_g} \\times (1+\\delta_{sw} \\lambda_{vac,sw}) \\times [UA] \\times \\cos(\\omega t_n)",
+        "substituted": "Ub2 = -0.45 \u00d7 7.929e+07 \u00d7 7.300e-16 \u00d7 (8.150e+36/2.440e+20) \u00d7 ... \u00d7 cos(7.270e-05\u00d70.0)",
+        "result": -0.008700121557627049,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "beta": 0.45,
+          "Ug2": 79290683.99999999,
+          "omega_g": 7.3e-16,
+          "M_bh": 8.15e+36,
+          "d_g": 2.44e+20,
+          "t_n": 0.0
+        }
+      },
+      {
+        "name": "Ub3",
+        "latex": "U_{b3} = -\\beta_3 \\times U_{g3} \\times \\omega_g \\times \\frac{M_{bh}}{d_g} \\times (1+\\delta_{sw} \\lambda_{vac,sw}) \\times [UA] \\times \\cos(\\omega t_n)",
+        "substituted": "Ub3 = -0.3 \u00d7 1.201e+08 \u00d7 7.300e-16 \u00d7 (8.150e+36/2.440e+20) \u00d7 ... \u00d7 cos(7.270e-05\u00d70.0)",
+        "result": -0.008788001573360654,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "beta": 0.3,
+          "Ug3": 120137399.99999999,
+          "omega_g": 7.3e-16,
+          "M_bh": 8.15e+36,
+          "d_g": 2.44e+20,
+          "t_n": 0.0
+        }
+      },
+      {
+        "name": "Ub4",
+        "latex": "U_{b4} = -\\beta_4 \\times U_{g4} \\times \\omega_g \\times \\frac{M_{bh}}{d_g} \\times (1+\\delta_{sw} \\lambda_{vac,sw}) \\times [UA] \\times \\cos(\\omega t_n)",
+        "substituted": "Ub4 = -0.15 \u00d7 6.674e+07 \u00d7 7.300e-16 \u00d7 (8.150e+36/2.440e+20) \u00d7 ... \u00d7 cos(7.270e-05\u00d70.0)",
+        "result": -0.0024411115481557375,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "beta": 0.15,
+          "Ug4": 66742999.99999999,
+          "omega_g": 7.3e-16,
+          "M_bh": 8.15e+36,
+          "d_g": 2.44e+20,
+          "t_n": 0.0
+        }
+      },
+      {
+        "name": "Ub_total",
+        "latex": "U_b = \\sum_{i=1}^{4} U_{bi}",
+        "substituted": "Ub_total = Ub1 + Ub2 + Ub3 + Ub4",
+        "result": -0.03464913731452254,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "Ub1": -0.014719902635379098,
+          "Ub2": -0.008700121557627049,
+          "Ub3": -0.008788001573360654,
+          "Ub4": -0.0024411115481557375
+        }
+      },
+      {
+        "name": "stress_energy_tensor",
+        "latex": "T_s^{\\mu\\nu} = T_{\\text{base}} \\times (\\lambda_{UA} + \\lambda_{SCm}) + T_{\\text{cosmic}} \\times \\lambda_A \\times f(t_n)",
+        "substituted": "T_s = 1.0975e+08 kg/m\u00b3 c\u00b2 (4\u00d74 tensor)",
+        "result": 109753433.57000002,
+        "unit": "kg/m\u00b3 c\u00b2",
+        "parameters_used": {
+          "lambda_vac_UA": 7.09e-36,
+          "lambda_vac_SCm": 7.09e-37,
+          "lambda_vac_A": 8.988003999999999e-07,
+          "t_n": 0.0,
+          "T_base": 1270.0,
+          "T_cosmic": 11100000.0
+        }
+      },
+      {
+        "name": "metric_perturbation",
+        "latex": "\\delta g_{\\mu\\nu} = \\eta \\times T_s^{\\mu\\nu}",
+        "substituted": "\u03b4g = 1e-22 \u00d7 T_s, \u03b4g_00 = 1.0975e-14",
+        "result": 1.0975343357000003e-14,
+        "unit": "dimensionless",
+        "parameters_used": {
+          "eta": 1e-22,
+          "T_s_00": 109753433.57000002
+        }
+      },
+      {
+        "name": "aether_metric",
+        "latex": "UA_{\\mu\\nu} = g_{\\mu\\nu} + \\eta \\times T_s^{\\mu\\nu}",
+        "substituted": "UA_00 = 1.0000000000, UA_11 = -1.0000000000",
+        "result": 1.0000000000000109,
+        "unit": "dimensionless",
+        "parameters_used": {
+          "g_00": 1.0,
+          "delta_g_00": 1.0975343357000003e-14
+        }
+      },
+      {
+        "name": "metric_determinant",
+        "latex": "\\det(UA_{\\mu\\nu})",
+        "substituted": "det(UA) = -1.0000000000 (Minkowski: -1)",
+        "result": -1.0000000000000215,
+        "unit": "dimensionless",
+        "parameters_used": {}
+      },
+      {
+        "name": "ricci_scalar",
+        "latex": "R = -\\frac{1}{2} \\text{Tr}(\\delta g_{\\mu\\nu})",
+        "substituted": "R = -1.1102e-16 m\u207b\u00b2 (Minkowski: 0)",
+        "result": -1.1102230246251565e-16,
+        "unit": "m\u207b\u00b2",
+        "parameters_used": {
+          "trace_delta_g": 0.0
+        }
+      },
+      {
+        "name": "UQFF_Compressed",
+        "latex": "g_{comp} = g_{base} \\times (1+H_0 t) \\times (1-B/B_{crit}) + \\Lambda c^2/3 + g_{quantum}",
+        "substituted": "g_comp = 6.6743e+07 \u00d7 1.0000 \u00d7 1.0000 + 3.2956e-36 + 1.5233e+17",
+        "result": 1.5232752247942326e+17,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "t": 100000000.0,
+          "H0": 2.18e-18,
+          "B": 1e-05,
+          "B_crit": 44000000000000.0
+        }
+      },
+      {
+        "name": "UQFF_Triadic",
+        "latex": "g_{triadic}(r,t) = \\sum_{i=1}^{26} \\left[ U_{g1,i} + U_{g2,i} + U_{g3,i} + U_{g4,i} \\right]",
+        "substituted": "g_triadic = sum(26 layers) = 9.0451e+12 (Layer 1: 7.3417e+07 m/s\u00b2, Layer 2: 5.8734e+08 m/s\u00b2, ...)",
+        "result": 9045084777300.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "t": 100000000.0,
+          "omega0": 6.283185307179586e-05,
+          "num_layers": 26,
+          "rho_vac_UA": 7.09e-36
+        }
+      },
+      {
+        "name": "UQFF_Superconductive",
+        "latex": "g_{SC} = \\sum_{j=1}^{4} k_j \\times \\frac{GM}{r^2} \\times H_{SCm}^{n_j}",
+        "substituted": "g_SC = (1.5+1.2+1.8+1.0) \u00d7 6.6743e+07 \u00d7 H_SCm^n = 3.6262e+08",
+        "result": 362622728.15999997,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "UQFF_Quadratic_Plus",
+        "latex": "g_+ = \\frac{-b + \\sqrt{b^2 - 4ac}}{2a}",
+        "substituted": "g_+ = (--6.6743e+07 + 6.6743e+07) / 2 = 6.6743e+07",
+        "result": 66742999.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "a": 1.0,
+          "b": -66742999.99999999,
+          "c": 5.0201080627692855e-29,
+          "discriminant": 4454628048999999.0
+        }
+      },
+      {
+        "name": "UQFF_Quadratic_Minus",
+        "latex": "g_- = \\frac{-b - \\sqrt{b^2 - 4ac}}{2a}",
+        "substituted": "g_- = (--6.6743e+07 - 6.6743e+07) / 2 = 0.0000e+00",
+        "result": 0.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "a": 1.0,
+          "b": -66742999.99999999,
+          "c": 5.0201080627692855e-29,
+          "discriminant": 4454628048999999.0
+        }
+      },
+      {
+        "name": "F_U_Bi",
+        "latex": "F_{U,Bi} = -\\beta \\times \\rho_{vac,[UA]} \\times V_{atom}",
+        "substituted": "F_U_Bi = -0.6 \u00d7 7.0900e-36 \u00d7 (4\u03c0r\u00b3/3)",
+        "result": -1.7819113531161306e-17,
+        "unit": "N",
+        "parameters_used": {
+          "beta": 0.6,
+          "rho_vac_UA": 7.09e-36,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "F_U_Bi_i",
+        "latex": "F_{U,Bi,i} = -\\beta \\times \\rho_{vac,[UA]} \\times \\frac{M}{r} \\times V",
+        "substituted": "F_U_Bi_i = -0.6 \u00d7 7.0900e-36 \u00d7 (1.0000e+30/1.0000e+06) \u00d7 V",
+        "result": -17819113.53116131,
+        "unit": "N",
+        "parameters_used": {
+          "beta": 0.6,
+          "rho_vac_UA": 7.09e-36,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "26-Level Energy Structure (n=1)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_1 = 1.0000e-20 \u00d7 10^1",
+        "result": 1e-19,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 1
+        },
+        "notes": "Sub-quantum fluctuations"
+      },
+      {
+        "name": "26-Level Energy Structure (n=2)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_2 = 1.0000e-20 \u00d7 10^2",
+        "result": 9.999999999999999e-19,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 2
+        },
+        "notes": "Planck-like vacuum"
+      },
+      {
+        "name": "26-Level Energy Structure (n=3)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_3 = 1.0000e-20 \u00d7 10^3",
+        "result": 9.999999999999999e-18,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 3
+        },
+        "notes": "Weak interactions"
+      },
+      {
+        "name": "26-Level Energy Structure (n=4)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_4 = 1.0000e-20 \u00d7 10^4",
+        "result": 1e-16,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 4
+        },
+        "notes": "Electron bindings"
+      },
+      {
+        "name": "26-Level Energy Structure (n=5)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_5 = 1.0000e-20 \u00d7 10^5",
+        "result": 9.999999999999999e-16,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 5
+        },
+        "notes": "Atomic excitations"
+      },
+      {
+        "name": "26-Level Energy Structure (n=6)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_6 = 1.0000e-20 \u00d7 10^6",
+        "result": 1e-14,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 6
+        },
+        "notes": "Nuclear gamma rays"
+      },
+      {
+        "name": "26-Level Energy Structure (n=7)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_7 = 1.0000e-20 \u00d7 10^7",
+        "result": 9.999999999999999e-14,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 7
+        },
+        "notes": "Neutron bindings"
+      },
+      {
+        "name": "26-Level Energy Structure (n=8)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_8 = 1.0000e-20 \u00d7 10^8",
+        "result": 1e-12,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 8
+        },
+        "notes": "Proton-neutron pairs"
+      },
+      {
+        "name": "26-Level Energy Structure (n=9)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_9 = 1.0000e-20 \u00d7 10^9",
+        "result": 1e-11,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 9
+        },
+        "notes": "Alpha clusters"
+      },
+      {
+        "name": "26-Level Energy Structure (n=10)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_10 = 1.0000e-20 \u00d7 10^10",
+        "result": 9.999999999999999e-11,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 10
+        },
+        "notes": "Atomic solids"
+      },
+      {
+        "name": "26-Level Energy Structure (n=11)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_11 = 1.0000e-20 \u00d7 10^11",
+        "result": 9.999999999999999e-10,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 11
+        },
+        "notes": "Molecular"
+      },
+      {
+        "name": "26-Level Energy Structure (n=12)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_12 = 1.0000e-20 \u00d7 10^12",
+        "result": 1e-08,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 12
+        },
+        "notes": "Macroscopic"
+      },
+      {
+        "name": "26-Level Energy Structure (n=13)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_13 = 1.0000e-20 \u00d7 10^13",
+        "result": 1e-07,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 13
+        },
+        "notes": "Cosmic plasma"
+      },
+      {
+        "name": "26-Level Energy Structure (n=14)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_14 = 1.0000e-20 \u00d7 10^14",
+        "result": 1e-06,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 14
+        },
+        "notes": "Low-energy astrophysics"
+      },
+      {
+        "name": "26-Level Energy Structure (n=15)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_15 = 1.0000e-20 \u00d7 10^15",
+        "result": 9.999999999999999e-06,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 15
+        },
+        "notes": "Stellar winds"
+      },
+      {
+        "name": "26-Level Energy Structure (n=16)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_16 = 1.0000e-20 \u00d7 10^16",
+        "result": 9.999999999999999e-05,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 16
+        },
+        "notes": "Planetary cores"
+      },
+      {
+        "name": "26-Level Energy Structure (n=17)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_17 = 1.0000e-20 \u00d7 10^17",
+        "result": 0.001,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 17
+        },
+        "notes": "Solar flares"
+      },
+      {
+        "name": "26-Level Energy Structure (n=18)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_18 = 1.0000e-20 \u00d7 10^18",
+        "result": 0.01,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 18
+        },
+        "notes": "Higgs boson"
+      },
+      {
+        "name": "26-Level Energy Structure (n=19)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_19 = 1.0000e-20 \u00d7 10^19",
+        "result": 0.09999999999999999,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 19
+        },
+        "notes": "High-energy particles"
+      },
+      {
+        "name": "26-Level Energy Structure (n=20)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_20 = 1.0000e-20 \u00d7 10^20",
+        "result": 1.0,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 20
+        },
+        "notes": "Galactic vacuum (Ug4)"
+      },
+      {
+        "name": "26-Level Energy Structure (n=21)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_21 = 1.0000e-20 \u00d7 10^21",
+        "result": 10.0,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 21
+        },
+        "notes": "Black hole influences"
+      },
+      {
+        "name": "26-Level Energy Structure (n=22)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_22 = 1.0000e-20 \u00d7 10^22",
+        "result": 100.0,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 22
+        },
+        "notes": "Quasar jets"
+      },
+      {
+        "name": "26-Level Energy Structure (n=23)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_23 = 1.0000e-20 \u00d7 10^23",
+        "result": 999.9999999999999,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 23
+        },
+        "notes": "Galactic spins"
+      },
+      {
+        "name": "26-Level Energy Structure (n=24)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_24 = 1.0000e-20 \u00d7 10^24",
+        "result": 10000.0,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 24
+        },
+        "notes": "Intergalactic"
+      },
+      {
+        "name": "26-Level Energy Structure (n=25)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_25 = 1.0000e-20 \u00d7 10^25",
+        "result": 100000.0,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 25
+        },
+        "notes": "Cosmic rays"
+      },
+      {
+        "name": "26-Level Energy Structure (n=26)",
+        "latex": "E_n = E_0 \\times 10^n",
+        "substituted": "E_26 = 1.0000e-20 \u00d7 10^26",
+        "result": 1000000.0,
+        "unit": "J",
+        "parameters_used": {
+          "E_0": 1e-20,
+          "n": 26
+        },
+        "notes": "Universal scales"
+      },
+      {
+        "name": "26-Level Total Energy Span",
+        "latex": "\\Delta E_{total} = E_{26} / E_1",
+        "substituted": "\u0394E = 1.0000e+06 / 1.0000e-19",
+        "result": 1e+25,
+        "unit": "(dimensionless ratio)",
+        "parameters_used": {
+          "E_max": 1000000.0,
+          "E_min": 1e-19
+        },
+        "notes": "Spans 25 orders of magnitude"
+      },
+      {
+        "name": "Nuclear Binding Energy Verification (n=8)",
+        "latex": "E_8 \\approx 8 \\text{ MeV/nucleon}",
+        "substituted": "E_8 = 1.0000e-12 J vs observed 1.2816e-12 J",
+        "result": 0.2197253433208489,
+        "unit": "(fractional error)",
+        "parameters_used": {
+          "E_8": 1e-12,
+          "E_binding": 1.2816e-12
+        },
+        "notes": "Error: 22.0% - PASS"
+      },
+      {
+        "name": "E_react",
+        "latex": "E_{\\text{react}}(t, M, r) = E_0 e^{-\\kappa t} \\left(\\frac{M}{M_{\\odot}}\\right)^{1/3} \\left(\\frac{R_{\\odot}}{r}\\right)^{1/2}",
+        "substituted": "E_react(1.16e+03 days, 1.000e+30 kg, 1.000e+06 m) = 1.1761e+47 W/m\u00b3",
+        "result": 1.176066466304271e+47,
+        "unit": "W/m\u00b3",
+        "parameters_used": {
+          "E_react_0": 1e+46,
+          "kappa": 0.0005,
+          "t_days": 1157.4074074074074,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Vacuum Energy Density (\u03bb_vac)",
+        "latex": "\\lambda_{vac} = \\frac{\\sum_i f_i E_i}{V}",
+        "substituted": "\u03bb_vac = (f_20\u00d7E_20 + f_21\u00d7E_21 + f_22\u00d7E_22 + ...) / 1.0000e+00",
+        "result": 7e-11,
+        "unit": "J/m\u00b3",
+        "parameters_used": {
+          "total_energy": 7e-11,
+          "volume": 1.0,
+          "levels_used": 7
+        },
+        "notes": "Summed over 7 energy levels"
+      },
+      {
+        "name": "SCm Vacuum Density (\u03bb_vac[SCm])",
+        "latex": "\\lambda_{vac,[SCm]} = [SCm] \\times c^2",
+        "substituted": "\u03bb_vac[SCm] = 1.0000e+15 \u00d7 (2.9980e+08)\u00b2",
+        "result": 8.988004e+31,
+        "unit": "J/m\u00b3",
+        "parameters_used": {
+          "scm_concentration": 1000000000000000.0,
+          "c": 299800000.0
+        },
+        "notes": "No quantum signature (Qs) - undetectable by standard methods"
+      },
+      {
+        "name": "UA Vacuum Density (\u03bb_vac[UA])",
+        "latex": "\\lambda_{vac,[UA]} = \\frac{1}{2} \\epsilon_0 E_{UA}^2",
+        "substituted": "\u03bb_vac[UA] = 0.5 \u00d7 8.8540e-12 \u00d7 (1.1294e+00)\u00b2",
+        "result": 5.6471651231082e-12,
+        "unit": "J/m\u00b3",
+        "parameters_used": {
+          "ua_trapped": 1e-11,
+          "epsilon_0": 8.854e-12,
+          "volume": 1.0
+        },
+        "notes": "Trapped aether medium for interactions"
+      },
+      {
+        "name": "Vacuum Energy Density (\u03bb_vac)",
+        "latex": "\\lambda_{vac} = \\frac{\\sum_i f_i E_i}{V}",
+        "substituted": "\u03bb_vac = (f_20\u00d7E_20 + f_21\u00d7E_21 + f_22\u00d7E_22 + ...) / 4.1888e+18",
+        "result": 1.6711269024649013e-29,
+        "unit": "J/m\u00b3",
+        "parameters_used": {
+          "total_energy": 7e-11,
+          "volume": 4.1887902047863905e+18,
+          "levels_used": 7
+        },
+        "notes": "Summed over 7 energy levels"
+      },
+      {
+        "name": "Base Gravity (Hubble + Magnetic)",
+        "latex": "g = \\frac{GM}{r^2} \\times [1 + H_0 t] \\times [1 - B(t)/B_{crit}]",
+        "substituted": "g = (6.674e-11 \u00d7 1.000e+30 / 1.000e+06\u00b2) \u00d7 [1 + 2.180e-18 \u00d7 1.000e+08] \u00d7 [1 - 9.992e-06 / 4.400e+13]",
+        "result": 66743000.01454997,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "H0": 2.18e-18,
+          "t": 100000000.0,
+          "B0": 1e-05,
+          "tau_B": 126240000000.0,
+          "Bt": 9.992081717097712e-06,
+          "B_crit": 44000000000000.0,
+          "ug1_base": 66742999.99999999,
+          "corr_H": 1.000000000218,
+          "f_sc": 1.0
+        },
+        "notes": "Magnetar base gravity with Hubble expansion and magnetic suppression"
+      },
+      {
+        "name": "UQFF Unification (Time-Reversal)",
+        "latex": "F_U = (Ug_1 + Ug_2 + Ug_3 + Ug_4) \\times (1 + f_{TRZ})",
+        "substituted": "F_U = (6.674e+07 + 6.674e+06 + 3.337e+06 + 6.674e+05) \u00d7 (1 + 0.1)",
+        "result": 85164068.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "Ug1": 66742999.99999999,
+          "Ug2": 6674300.0,
+          "Ug3": 3337150.0,
+          "Ug4": 667429.9999999999,
+          "f_TRZ": 0.1,
+          "Ug_sum": 77421880.0
+        },
+        "notes": "Complete UQFF gravity field with time-reversal symmetry"
+      },
+      {
+        "name": "Cosmological Constant Acceleration",
+        "latex": "g_{\\Lambda} = \\frac{\\Lambda c^2}{3}",
+        "substituted": "g_\u039b = (1.100e-52 \u00d7 (2.998e+08)\u00b2) / 3",
+        "result": 3.2956014666666664e-36,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "Lambda": 1.1e-52,
+          "c": 299800000.0
+        },
+        "notes": "Dark energy contribution (constant, isotropic)"
+      },
+      {
+        "name": "EM Acceleration (Vacuum Corrected)",
+        "latex": "a_{EM} = \\frac{q |v \\times B|}{m_p} \\times [1 + \\rho_{UA}/\\rho_{SCm}] \\times \\text{scale}_{EM}",
+        "substituted": "a_EM = (1.602e-19 \u00d7 9.992e+00 / 1.673e-27) \u00d7 [1 + 7.090e-36/7.090e-37] \u00d7 1.000e-12",
+        "result": 0.010524833473920851,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "q": 1.602e-19,
+          "v_surf": 1000000.0,
+          "Bt": 9.992081717097712e-06,
+          "m_p": 1.673e-27,
+          "rho_vac_UA": 7.09e-36,
+          "rho_vac_SCm": 7.09e-37,
+          "scale_EM": 1e-12,
+          "corr_UA": 11.0
+        },
+        "notes": "Magnetar EM acceleration with UA/SCm vacuum correction"
+      },
+      {
+        "name": "Gravitational Wave (Spin-Down)",
+        "latex": "g_{GW} = \\frac{G M^2}{c^4 r} \\times \\left(\\frac{d\\Omega}{dt}\\right)^2",
+        "substituted": "g_GW = (6.674e-11 \u00d7 (1.000e+30)\u00b2) / ((2.998e+08)\u2074 \u00d7 1.000e+06) \u00d7 (-3.980e-12)\u00b2",
+        "result": 1.3090303935444853e-13,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "c": 299800000.0,
+          "r": 1000000.0,
+          "P_init": 5.0,
+          "tau_Omega": 315600000000.0,
+          "Omega_0": 1.2566370614359172,
+          "Omega_t": 1.2562389505374778,
+          "dOmega_dt": -3.980478297013555e-12
+        },
+        "notes": "GW emission from magnetar rotational deceleration"
+      },
+      {
+        "name": "Quantum Uncertainty (Heisenberg)",
+        "latex": "g_Q = \\frac{\\hbar}{\\sqrt{\\Delta x \\times \\Delta p}} \\times \\int |\\psi|^2 \\times \\frac{2\\pi}{t_H}",
+        "substituted": "g_Q = (1.055e-34 / \u221a(1.000e-10 \u00d7 1.055e-24)) \u00d7 1.000e+00 \u00d7 (2\u03c0 / 4.355e+17)",
+        "result": 1.4815205193352338e-34,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "hbar": 1.0546e-34,
+          "delta_x": 1e-10,
+          "delta_p": 1.0546e-24,
+          "psi_integral": 1.0,
+          "t_Hubble": 4.35528e+17,
+          "Delta_product_sqrt": 1.0269371937952195e-17
+        },
+        "notes": "Quantum vacuum fluctuation contribution via Heisenberg uncertainty"
+      },
+      {
+        "name": "Fluid Density Coupling",
+        "latex": "g_{fluid} = \\frac{\\rho_{fluid} \\times V \\times g}{M}",
+        "substituted": "g_fluid = (1.000e+17 \u00d7 4.189e+18 \u00d7 6.674e+07) / 1.000e+30",
+        "result": 27957242463805.8,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "rho_fluid": 1e+17,
+          "V": 4.1887902047863905e+18,
+          "g_local": 66742999.99999999,
+          "M": 1e+30,
+          "G": 6.6743e-11,
+          "r": 1000000.0
+        },
+        "notes": "Nuclear matter fluid coupling for neutron star interior"
+      },
+      {
+        "name": "Oscillatory Wave Superposition",
+        "latex": "g_{osc} = 2A \\cos(kx) \\cos(\\omega t) + \\frac{2\\pi}{t_H} A \\cos(kx - \\omega t)",
+        "substituted": "g_osc = 2\u00d71.000e+10\u00d7cos(1.000e-06\u00d71000000.0)\u00d7cos(1.257e+00\u00d7100000000.0) + (2\u03c0/4.355e+17)\u00d71.000e+10\u00d7cos(1.000e-06\u00d71000000.0 - 1.257e+00\u00d7100000000.0)",
+        "result": 10806046117.362795,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "A_osc": 10000000000.0,
+          "k_osc": 1e-06,
+          "omega_osc": 1.2566370614359172,
+          "x": 1000000.0,
+          "t": 100000000.0,
+          "t_Hubble": 4.35528e+17,
+          "standing_wave": 10806046117.362795,
+          "traveling_wave": 7.794721628810462e-08
+        },
+        "notes": "Standing + traveling wave superposition in magnetar crust"
+      },
+      {
+        "name": "Dark Matter Perturbation",
+        "latex": "g_{DM} = \\frac{(M + M_{DM})}{M} \\times \\left(\\frac{\\delta\\rho}{\\rho} + \\frac{3GM}{r^3}\\right)",
+        "substituted": "g_DM = (1.000e+30 + 1.000e+29) / 1.000e+30 \u00d7 (1.000e-05 + 3\u00d76.674e-11\u00d71.000e+30/1.000e+06\u00b3)",
+        "result": 220.251911,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "M": 1e+30,
+          "M_DM": 1.0000000000000001e+29,
+          "r": 1000000.0,
+          "G": 6.6743e-11,
+          "delta_rho_over_rho": 1e-05,
+          "tidal_term": 200.229,
+          "perturbation_factor": 200.22901000000002
+        },
+        "notes": "Dark matter halo contribution + density perturbations"
+      },
+      {
+        "name": "Magnetic Field Decay",
+        "latex": "B(t) = B_0 \\times e^{-t / \\tau_B}",
+        "substituted": "B(t) = 1.000e-05 \u00d7 e^(-1.000e+08 / 1.262e+11)",
+        "result": 9.992081717097712e-06,
+        "unit": "T",
+        "parameters_used": {
+          "B0": 1e-05,
+          "tau_B": 126240000000.0,
+          "t": 100000000.0
+        },
+        "notes": "Exponential magnetic field decay in magnetar crust"
+      },
+      {
+        "name": "Spin Evolution (Angular Velocity)",
+        "latex": "\\Omega(t) = \\frac{2\\pi}{P_0} \\times e^{-t / \\tau_{\\Omega}}",
+        "substituted": "\u03a9(t) = (2\u03c0 / 5.000e+00) \u00d7 e^(-1.000e+08 / 3.156e+11)",
+        "result": 1.2562389505374778,
+        "unit": "rad/s",
+        "parameters_used": {
+          "P0": 5.0,
+          "tau_Omega": 315600000000.0,
+          "Omega_0": 1.2566370614359172,
+          "t": 100000000.0
+        },
+        "notes": "Magnetar spin-down due to magnetic dipole radiation"
+      },
+      {
+        "name": "Time-Reversal Factor",
+        "latex": "f_{TRZ} = 0.1",
+        "substituted": "f_TRZ = 0.1 (constant)",
+        "result": 0.1,
+        "unit": "(dimensionless)",
+        "parameters_used": {
+          "f_TRZ": 0.1
+        },
+        "notes": "Phenomenological time-reversal symmetry breaking parameter"
+      }
+    ],
+    "solutions": {
+      "Ug1": 100114500.0,
+      "Ug2": 79290683.99999999,
+      "Ug3": 120137399.99999999,
+      "Ug4": 66742999.99999999,
+      "Ug": 366285584.0,
+      "Ug1_enhanced": 109030178.48896919,
+      "Ug2_enhanced": 0.0,
+      "Ug3_enhanced": -11539.59808783778,
+      "Ug4_enhanced": 2.4278577996860626e+24,
+      "Ug_enhanced_total": 2.4278577996860626e+24,
+      "Um": 9.999999999999998e+16,
+      "magnetic_moment": 4.694345412442819e+19,
+      "Um_total": 16214224410263.205,
+      "Ub1": -0.014719902635379098,
+      "Ub2": -0.008700121557627049,
+      "Ub3": -0.008788001573360654,
+      "Ub4": -0.0024411115481557375,
+      "Ub_total": -0.03464913731452254,
+      "stress_energy_tensor": 109753433.57000002,
+      "metric_perturbation": 1.0975343357000003e-14,
+      "aether_metric": 1.0000000000000109,
+      "metric_determinant": -1.0000000000000215,
+      "ricci_scalar": -1.1102230246251565e-16,
+      "UQFF_Compressed": 1.5232752247942326e+17,
+      "UQFF_Triadic": 9045084777300.0,
+      "UQFF_Superconductive": 362622728.15999997,
+      "UQFF_Quadratic_Plus": 66742999.99999999,
+      "UQFF_Quadratic_Minus": 0.0,
+      "F_U_Bi": -1.7819113531161306e-17,
+      "F_U_Bi_i": -17819113.53116131,
+      "26-Level Energy Structure (n=1)": 1e-19,
+      "26-Level Energy Structure (n=2)": 9.999999999999999e-19,
+      "26-Level Energy Structure (n=3)": 9.999999999999999e-18,
+      "26-Level Energy Structure (n=4)": 1e-16,
+      "26-Level Energy Structure (n=5)": 9.999999999999999e-16,
+      "26-Level Energy Structure (n=6)": 1e-14,
+      "26-Level Energy Structure (n=7)": 9.999999999999999e-14,
+      "26-Level Energy Structure (n=8)": 1e-12,
+      "26-Level Energy Structure (n=9)": 1e-11,
+      "26-Level Energy Structure (n=10)": 9.999999999999999e-11,
+      "26-Level Energy Structure (n=11)": 9.999999999999999e-10,
+      "26-Level Energy Structure (n=12)": 1e-08,
+      "26-Level Energy Structure (n=13)": 1e-07,
+      "26-Level Energy Structure (n=14)": 1e-06,
+      "26-Level Energy Structure (n=15)": 9.999999999999999e-06,
+      "26-Level Energy Structure (n=16)": 9.999999999999999e-05,
+      "26-Level Energy Structure (n=17)": 0.001,
+      "26-Level Energy Structure (n=18)": 0.01,
+      "26-Level Energy Structure (n=19)": 0.09999999999999999,
+      "26-Level Energy Structure (n=20)": 1.0,
+      "26-Level Energy Structure (n=21)": 10.0,
+      "26-Level Energy Structure (n=22)": 100.0,
+      "26-Level Energy Structure (n=23)": 999.9999999999999,
+      "26-Level Energy Structure (n=24)": 10000.0,
+      "26-Level Energy Structure (n=25)": 100000.0,
+      "26-Level Energy Structure (n=26)": 1000000.0,
+      "26-Level Total Energy Span": 1e+25,
+      "Nuclear Binding Energy Verification (n=8)": 0.2197253433208489,
+      "E_react": 1.176066466304271e+47,
+      "Vacuum Energy Density (\u03bb_vac)": 1.6711269024649013e-29,
+      "SCm Vacuum Density (\u03bb_vac[SCm])": 8.988004e+31,
+      "UA Vacuum Density (\u03bb_vac[UA])": 5.6471651231082e-12,
+      "Base Gravity (Hubble + Magnetic)": 66743000.01454997,
+      "UQFF Unification (Time-Reversal)": 85164068.0,
+      "Cosmological Constant Acceleration": 3.2956014666666664e-36,
+      "EM Acceleration (Vacuum Corrected)": 0.010524833473920851,
+      "Gravitational Wave (Spin-Down)": 1.3090303935444853e-13,
+      "Quantum Uncertainty (Heisenberg)": 1.4815205193352338e-34,
+      "Fluid Density Coupling": 27957242463805.8,
+      "Oscillatory Wave Superposition": 10806046117.362795,
+      "Dark Matter Perturbation": 220.251911,
+      "Magnetic Field Decay": 9.992081717097712e-06,
+      "Spin Evolution (Angular Velocity)": 1.2562389505374778,
+      "Time-Reversal Factor": 0.1
+    },
+    "available_equations": [
+      "compute_Ug1",
+      "compute_Ug2",
+      "compute_Ug3",
+      "compute_Ug4",
+      "compute_Ug_total",
+      "compute_Ub",
+      "compute_F_U",
+      "compute_schwarzschild_radius",
+      "compute_escape_velocity",
+      "compute_UQFF_Compressed",
+      "compute_UQFF_Triadic",
+      "compute_UQFF_Superconductive",
+      "compute_UQFF_Quadratic",
+      "compute_F_U_Bi",
+      "compute_F_U_Bi_i",
+      "compute_26_level_structure",
+      "compute_reactor_efficiency",
+      "compute_vacuum_energy",
+      "compute_Ug1_enhanced",
+      "compute_Ug2_enhanced",
+      "compute_Ug3_enhanced",
+      "compute_Ug4_enhanced",
+      "compute_Ug_enhanced_total",
+      "compute_magnetic_moment",
+      "compute_Um_total",
+      "compute_Ub1",
+      "compute_Ub2",
+      "compute_Ub3",
+      "compute_Ub4",
+      "compute_Ub_total",
+      "compute_stress_energy_tensor",
+      "compute_metric_perturbation",
+      "compute_aether_metric",
+      "compute_metric_determinant",
+      "compute_ricci_scalar",
+      "compute_magnetic_pressure",
+      "compute_cyclotron_frequency",
+      "compute_alfven_velocity",
+      "compute_magnetic_energy_density",
+      "compute_luminosity_distance",
+      "compute_angular_diameter_distance",
+      "compute_comoving_distance",
+      "compute_lookback_time"
+    ],
+    "simulation_set": {
+      "coupled_equations": [
+        {
+          "name": "Ug-Ub coupling",
+          "description": "Gravity-Buoyancy balance"
+        },
+        {
+          "name": "F_U evolution",
+          "description": "Unified field time evolution"
+        }
+      ],
+      "initial_conditions": {
+        "query_name": "NGC 1365",
+        "scale": "STELLAR",
+        "M": 1e+30,
+        "r": 1000000.0,
+        "z": 0.0,
+        "B": 1e-05,
+        "t": 100000000.0,
+        "t_n": 0.0,
+        "k_coupling": 1.0,
+        "beta_coupling": 0.6
+      },
+      "solutions_at_t0": {
+        "Ug1": 100114500.0,
+        "Ug2": 79290683.99999999,
+        "Ug3": 120137399.99999999,
+        "Ug4": 66742999.99999999,
+        "Ug": 366285584.0,
+        "Ug1_enhanced": 109030178.48896919,
+        "Ug2_enhanced": 0.0,
+        "Ug3_enhanced": -11539.59808783778,
+        "Ug4_enhanced": 2.4278577996860626e+24,
+        "Ug_enhanced_total": 2.4278577996860626e+24,
+        "Um": 9.999999999999998e+16,
+        "magnetic_moment": 4.694345412442819e+19,
+        "Um_total": 16214224410263.205,
+        "Ub1": -0.014719902635379098,
+        "Ub2": -0.008700121557627049,
+        "Ub3": -0.008788001573360654,
+        "Ub4": -0.0024411115481557375,
+        "Ub_total": -0.03464913731452254,
+        "stress_energy_tensor": 109753433.57000002,
+        "metric_perturbation": 1.0975343357000003e-14,
+        "aether_metric": 1.0000000000000109,
+        "metric_determinant": -1.0000000000000215,
+        "ricci_scalar": -1.1102230246251565e-16,
+        "UQFF_Compressed": 1.5232752247942326e+17,
+        "UQFF_Triadic": 9045084777300.0,
+        "UQFF_Superconductive": 362622728.15999997,
+        "UQFF_Quadratic_Plus": 66742999.99999999,
+        "UQFF_Quadratic_Minus": 0.0,
+        "F_U_Bi": -1.7819113531161306e-17,
+        "F_U_Bi_i": -17819113.53116131,
+        "26-Level Energy Structure (n=1)": 1e-19,
+        "26-Level Energy Structure (n=2)": 9.999999999999999e-19,
+        "26-Level Energy Structure (n=3)": 9.999999999999999e-18,
+        "26-Level Energy Structure (n=4)": 1e-16,
+        "26-Level Energy Structure (n=5)": 9.999999999999999e-16,
+        "26-Level Energy Structure (n=6)": 1e-14,
+        "26-Level Energy Structure (n=7)": 9.999999999999999e-14,
+        "26-Level Energy Structure (n=8)": 1e-12,
+        "26-Level Energy Structure (n=9)": 1e-11,
+        "26-Level Energy Structure (n=10)": 9.999999999999999e-11,
+        "26-Level Energy Structure (n=11)": 9.999999999999999e-10,
+        "26-Level Energy Structure (n=12)": 1e-08,
+        "26-Level Energy Structure (n=13)": 1e-07,
+        "26-Level Energy Structure (n=14)": 1e-06,
+        "26-Level Energy Structure (n=15)": 9.999999999999999e-06,
+        "26-Level Energy Structure (n=16)": 9.999999999999999e-05,
+        "26-Level Energy Structure (n=17)": 0.001,
+        "26-Level Energy Structure (n=18)": 0.01,
+        "26-Level Energy Structure (n=19)": 0.09999999999999999,
+        "26-Level Energy Structure (n=20)": 1.0,
+        "26-Level Energy Structure (n=21)": 10.0,
+        "26-Level Energy Structure (n=22)": 100.0,
+        "26-Level Energy Structure (n=23)": 999.9999999999999,
+        "26-Level Energy Structure (n=24)": 10000.0,
+        "26-Level Energy Structure (n=25)": 100000.0,
+        "26-Level Energy Structure (n=26)": 1000000.0,
+        "26-Level Total Energy Span": 1e+25,
+        "Nuclear Binding Energy Verification (n=8)": 0.2197253433208489,
+        "E_react": 1.176066466304271e+47,
+        "Vacuum Energy Density (\u03bb_vac)": 1.6711269024649013e-29,
+        "SCm Vacuum Density (\u03bb_vac[SCm])": 8.988004e+31,
+        "UA Vacuum Density (\u03bb_vac[UA])": 5.6471651231082e-12,
+        "Base Gravity (Hubble + Magnetic)": 66743000.01454997,
+        "UQFF Unification (Time-Reversal)": 85164068.0,
+        "Cosmological Constant Acceleration": 3.2956014666666664e-36,
+        "EM Acceleration (Vacuum Corrected)": 0.010524833473920851,
+        "Gravitational Wave (Spin-Down)": 1.3090303935444853e-13,
+        "Quantum Uncertainty (Heisenberg)": 1.4815205193352338e-34,
+        "Fluid Density Coupling": 27957242463805.8,
+        "Oscillatory Wave Superposition": 10806046117.362795,
+        "Dark Matter Perturbation": 220.251911,
+        "Magnetic Field Decay": 9.992081717097712e-06,
+        "Spin Evolution (Angular Velocity)": 1.2562389505374778,
+        "Time-Reversal Factor": 0.1
+      },
+      "time_range": {
+        "t_min": 0,
+        "t_max": 100000000.0,
+        "unit": "days"
+      }
+    }
+  },
+  "statistical_analysis": {
+    "query_name": "Unknown",
+    "num_equations": 75,
+    "range": {
+      "min_value": -17819113.53116131,
+      "max_value": 1.176066466304271e+47,
+      "range_span": 1.176066466304271e+47,
+      "dynamic_range_db": Infinity,
+      "min_equation": "F_U_Bi_i",
+      "max_equation": "E_react",
+      "unit": "m/s\u00b2"
+    },
+    "scale": {
+      "characteristic_scale": 0.7754919055020557,
+      "order_of_magnitude": -1,
+      "scale_factor": 82.55249717945856,
+      "median_value": 0.01,
+      "geometric_mean": 0.7754919055020557,
+      "harmonic_mean": NaN
+    },
+    "probability": {
+      "distribution_type": "gaussian",
+      "mean": 1.568088621739029e+45,
+      "std_dev": 1.3580045818113255e+46,
+      "skewness": 8.48607762829881,
+      "kurtosis": 70.01351351351352,
+      "fit_quality": 0.46736961096132346,
+      "fit_parameters": {
+        "mean": 1.568088621739029e+45,
+        "std_dev": 1.3580045818113255e+46
+      },
+      "confidence_interval_95": [
+        -1.5053086014365172e+45,
+        4.641485844914576e+45
+      ],
+      "outliers": [
+        "E_react"
+      ]
+    }
+  },
+  "metadata": {
+    "num_equations": 75,
+    "unit_filter": "m/s\u00c2\u00b2",
+    "solver_version": "QCalc v1.0",
+    "pipeline_version": "Production v1.0"
+  }
+}

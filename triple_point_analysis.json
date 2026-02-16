@@ -1,0 +1,41 @@
+{
+  "query_name": "Unknown",
+  "num_equations": 29,
+  "range": {
+    "min_value": -7.991582471326129e+23,
+    "max_value": 1.6901532072514523e+28,
+    "range_span": 1.6902331230761657e+28,
+    "dynamic_range_db": Infinity,
+    "min_equation": "Ug3_enhanced",
+    "max_equation": "Ug4_enhanced",
+    "unit": "m/s\u00b2"
+  },
+  "scale": {
+    "characteristic_scale": 41140165.39626764,
+    "order_of_magnitude": 7,
+    "scale_factor": 63.709991386409826,
+    "median_value": 464631394499.9999,
+    "geometric_mean": 41140165.39626764,
+    "harmonic_mean": NaN
+  },
+  "probability": {
+    "distribution_type": "gaussian",
+    "mean": 1.1655677871982791e+27,
+    "std_dev": 4.358483764642313e+27,
+    "skewness": 3.4020690839080565,
+    "kurtosis": 9.57407407904182,
+    "fit_quality": 0.46353647018791766,
+    "fit_parameters": {
+      "mean": 1.1655677871982791e+27,
+      "std_dev": 4.358483764642313e+27
+    },
+    "confidence_interval_95": [
+      -4.20729292249325e+26,
+      2.751864866645883e+27
+    ],
+    "outliers": [
+      "Ug4_enhanced",
+      "Ug_enhanced_total"
+    ]
+  }
+}

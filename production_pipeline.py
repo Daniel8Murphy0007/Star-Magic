@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """
-Production Pipeline - Unified UQFF Query → Analysis → Export
+Production Pipeline - Unified UQFF Query to Analysis to Export
 
 Integrates APIFetch.py, QCalc.py, and QCalc_stat.py into single production pipeline.
 Supports batch processing, LaTeX export, and JSON persistence.
+
+PHASE 6: QCalc automatically includes Phase 6 galaxy physics (M51, NGC1316, SMBH
+binaries) when appropriate parameters are detected.
 
 Author: Daniel T. Murphy (daniel.murphy00@gmail.com)
 Copyright: © 2025-2026 Daniel T. Murphy - All Rights Reserved

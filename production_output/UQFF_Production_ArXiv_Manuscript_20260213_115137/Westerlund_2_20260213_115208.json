@@ -1,0 +1,13 @@
+{
+  "query_name": "Westerlund 2",
+  "timestamp": "2026-02-13T11:52:05.671999",
+  "api_data": {
+    "name": "Westerlund 2",
+    "sources": []
+  },
+  "qcalc_result": {
+    "query_id": "Westerlund 2_20260213T115207652667",
+    "timestamp": "2026-02-13T11:52:07.652667",
+    "input_params": {
+      "query_name": "Westerlund 2",
+      "scale": 

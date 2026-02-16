@@ -1,0 +1,13 @@
+{
+  "query_name": "Carina Nebula",
+  "timestamp": "2026-02-13T11:51:56.162552",
+  "api_data": {
+    "name": "Carina Nebula",
+    "sources": []
+  },
+  "qcalc_result": {
+    "query_id": "Carina Nebula_20260213T115158177287",
+    "timestamp": "2026-02-13T11:51:58.177287",
+    "input_params": {
+      "query_name": "Carina Nebula",
+      "scale": 

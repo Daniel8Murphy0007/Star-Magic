@@ -413,9 +413,13 @@ public:
     }
     
     static double compute_MagneticSuppression(const MUGESystem& sys) {
-        // Magnetic field suppression
+        // Magnetic field pressure gradient contribution to effective gravity
+        // P_mag = B²/(2μ₀), then g_B = (P_mag × r²) / M = magnetic pressure effect
+        // This converts magnetic energy density to acceleration: [J/m³] × [m³/kg] = [m/s²]
         double mu_0 = 4.0 * M_PI * 1e-7;
-        return -(mu_0 * sys.B0 * sys.B0) / (8.0 * M_PI);
+        double P_mag = (sys.B0 * sys.B0) / (2.0 * mu_0);  // Magnetic pressure (Pa)
+        double r3_over_M = (sys.r * sys.r * sys.r) / sys.M;  // Volume/Mass
+        return -P_mag * r3_over_M / sys.r;  // Converts to acceleration, negative = suppression
     }
     
     static double compute_CosmologicalConstant(const MUGESystem& sys) {

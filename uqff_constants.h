@@ -157,6 +157,41 @@ constexpr double omega_aether = 1e10;        // Aether resonance frequency (rad/
 constexpr double omega_fluid = 1e6;          // Fluid frequency (rad/s)
 constexpr double omega_exp = 1e3;            // Expansion frequency (rad/s)
 
+// ============================================================================
+// TRIADIC UQFF CONSTANTS (From Pillars of Creation session, June 2025)
+// ============================================================================
+
+// Vacuum energy densities (J/m³)
+constexpr double rho_vac_SCm = 7.09e-37;    // [SCm] vacuum density
+constexpr double rho_vac_UA = 7.09e-36;     // [UA] vacuum density (10x SCm)
+
+// Buoyancy factor components
+constexpr double Delta_k_eta = 7.25e8;      // Calibration constant for U_Bi
+constexpr double BOYLE_RATIO = 1.0 / 33.0;  // V_little / V_big from Boyle's Law
+
+// Universe decay rate (Page 5, handwritten notes)
+constexpr double UNIVERSE_DECAY_RATE = 0.0963;  // [SCm] decay → determines universe end
+
+// Pseudo-monopole parameters
+constexpr double DELTA_1 = 1.047;           // Pseudo-monopole angle (rad, ~60°)
+constexpr double MU_J_BASE = 3.38e23;       // Magnetic moment base (T·pm³)
+
+// 26-level polynomial resonance frequencies (rad/s) - Pillars M16
+constexpr double OMEGA_UG1_1 = 1.989e-13;   // U_g1 layer 1 resonance
+constexpr double OMEGA_UG2_1 = 3.978e-13;   // U_g2 layer 1 resonance
+constexpr double OMEGA_UG3_1 = 1.989e-11;   // U_g3 layer 1 resonance
+
+// Decay constants (day⁻¹)
+constexpr double GAMMA_DECAY = 0.00005;     // γ decay rate (0.05 per 1000 days)
+constexpr double ALPHA_DECAY = 0.001;       // α decay rate (1 per 1000 days)
+constexpr double KAPPA_SCM = 0.0005;        // κ: [SCm] reactivity decay (day⁻¹)
+
+// DPM coupling constants
+constexpr double LAMBDA_H = 1.0;            // Hubble coupling
+constexpr double LAMBDA_I = 1.0;            // Interaction coupling
+constexpr double P_SCM = 1.0;               // [SCm] polarization factor
+constexpr double OMEGA_C = 1.585e-8;        // Critical angular frequency (rad/s)
+
 // Dark matter halo parameters
 constexpr double rho_DM_local = 0.3;         // Local DM density (GeV/cm³)
 constexpr double r_s_NFW = 20e3 * pc;        // NFW scale radius (m)

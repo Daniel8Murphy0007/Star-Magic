@@ -1,0 +1,13 @@
+{
+  "query_name": "NGC 253",
+  "timestamp": "2026-02-13T11:52:00.962533",
+  "api_data": {
+    "name": "NGC 253",
+    "sources": []
+  },
+  "qcalc_result": {
+    "query_id": "NGC 253_20260213T115202906753",
+    "timestamp": "2026-02-13T11:52:02.906753",
+    "input_params": {
+      "query_name": "NGC 253",
+      "scale": 

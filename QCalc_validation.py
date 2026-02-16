@@ -206,6 +206,13 @@ class ReferenceSystem:
     z: Optional[float]           # Redshift
     source: str                  # Literature reference
     metadata: Dict[str, Any] = field(default_factory=dict)
+    
+    # UQFF Triadic Solution Values (June 2025 validation)
+    F_Ug1_compressed: Optional[float] = None   # Compressed UQFF force (N)
+    R_t_resonance: Optional[float] = None      # Resonance UQFF (N)
+    F_UBi_buoyancy: Optional[float] = None     # Buoyancy UQFF (N)
+    U_m_magnetism: Optional[float] = None      # Magnetism energy density (J/m³)
+    U_i_inertia: Optional[float] = None        # Inertia energy density (J/m³)
 
 
 class ReferenceSystemLibrary:
@@ -263,6 +270,296 @@ class ReferenceSystemLibrary:
         z=0.0,
         source="Chandra X-ray Observatory (2013)",
         metadata={'discovery_year': 2013}
+    )
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # PHASE 5 REFERENCE SYSTEMS (SOURCE52-65)
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # Universe-scale (SOURCE52)
+    UNIVERSE_DIAMETER = ReferenceSystem(
+        name="Universe Diameter",
+        M=1e53,
+        r=4.4e26,  # Observable universe radius
+        M_bh=None,
+        d_g=None,
+        B=None,
+        T=None,
+        L=None,
+        z=0.0,
+        source="Planck 2018 Cosmology",
+        metadata={'type': 'cosmological'}
+    )
+    
+    # Atomic scale (SOURCE52)
+    HYDROGEN_ATOM = ReferenceSystem(
+        name="Hydrogen Atom",
+        M=1.673e-27,  # Proton mass
+        r=5.29e-11,   # Bohr radius
+        M_bh=None,
+        d_g=None,
+        B=None,
+        T=None,
+        L=None,
+        z=0.0,
+        source="CODATA 2018",
+        metadata={'type': 'atomic'}
+    )
+    
+    # Lagoon Nebula M8 (SOURCE52)
+    LAGOON_NEBULA = ReferenceSystem(
+        name="Lagoon Nebula (M8)",
+        M=1.989e33,  # 1000 M_sun
+        r=1e17,
+        M_bh=None,
+        d_g=None,
+        B=None,
+        T=None,
+        L=None,
+        z=0.001,
+        source="Hubble Space Telescope",
+        metadata={'type': 'nebula'}
+    )
+    
+    # Orion Nebula M42 (SOURCE52)
+    ORION_NEBULA = ReferenceSystem(
+        name="Orion Nebula (M42)",
+        M=3.978e33,  # 2000 M_sun
+        r=2e17,
+        M_bh=None,
+        d_g=None,
+        B=None,
+        T=None,
+        L=None,
+        z=0.0004,
+        source="Hubble Space Telescope",
+        metadata={'type': 'nebula'}
+    )
+    
+    # NGC 6302 Bug Nebula (SOURCE52)
+    NGC6302 = ReferenceSystem(
+        name="NGC 6302 (Bug Nebula)",
+        M=1.989e30,  # 1 M_sun
+        r=1e16,
+        M_bh=None,
+        d_g=None,
+        B=None,
+        T=None,
+        L=None,
+        z=0.001,
+        source="Hubble Space Telescope",
+        metadata={'type': 'planetary_nebula'}
+    )
+    
+    # Spiral Galaxies w/ Supernovae (SOURCE52)
+    SPIRALS_SUPERNOVAE = ReferenceSystem(
+        name="Spiral Galaxies (supernovae regions)",
+        M=1.989e42,  # 1e12 M_sun
+        r=1e21,
+        M_bh=None,
+        d_g=None,
+        B=None,
+        T=None,
+        L=None,
+        z=0.1,
+        source="Generic spiral galaxy model",
+        metadata={'type': 'galaxy'}
+    )
+    
+    # Tapestry (NGC 2014/2020)  (SOURCE57)
+    TAPESTRY_STARBIRTH = ReferenceSystem(
+        name="Tapestry (NGC 2014/2020)",
+        M=1.989e34,  # 1e4 M_sun
+        r=1e18,
+        M_bh=None,
+        d_g=None,
+        B=None,
+        T=None,
+        L=None,
+        z=0.001,
+        source="Hubble Space Telescope LMC survey",
+        metadata={'type': 'star_formation_region'}
+    )
+    
+    # Westerlund 2 (SOURCE57) - Updated with June 2025 UQFF Solutions
+    # System: ~3,000 stars, Wolf-Rayet WR20a/WR20b, age ~2 Myr, SFR ~0.5 M_sun/yr
+    WESTERLUND2 = ReferenceSystem(
+        name="Westerlund 2",
+        M=1.989e34,  # 1e4 M_sun
+        r=1.89e16,   # Document: 1.89×10¹⁶ m (~20,000 ly)
+        M_bh=None,
+        d_g=None,
+        B=1e-4,      # ~10⁻⁴ T cluster field
+        T=1e4,       # ~10⁴ K gas temperature
+        L=None,
+        z=0.0067,    # Document: blueshifted outflows
+        source="Hubble Heritage Team, Westerlund 2 Science Team, ACS/WFC3",
+        metadata={
+            'type': 'star_cluster',
+            'age_Myr': 2,
+            'SFR_Msun_yr': 0.5,
+            'n_stars': 3000,
+            'gas_density_kg_m3': 1e-20,
+            'v_radial_km_s': -10,  # Blueshift
+            'date': '2025-06-07'
+        },
+        # UQFF Triadic Solution Values (June 2025 session)
+        # Variables: t = 7.30×10¹⁰ days, M_sf(t) = 0.1
+        F_Ug1_compressed=2.43e-40,  # Compressed UQFF: F_Ug1 (N)
+        R_t_resonance=-2.29e-41,    # Resonance UQFF: R(t) (N)
+        F_UBi_buoyancy=6.14e-33,    # Buoyancy UQFF: F_UBi (N)
+        U_m_magnetism=1.80e-5,      # U_m magnetism (J/m³)
+        U_i_inertia=1.26e-78        # U_i inertia (J/m³)
+    )
+    
+    # Pillars of Creation (M16/Eagle Nebula) (SOURCE57)
+    PILLARS_CREATION = ReferenceSystem(
+        name="Pillars of Creation (M16)",
+        M=1.591e33,  # 800 M_sun
+        r=3e17,
+        M_bh=None,
+        d_g=None,
+        B=None,
+        T=None,
+        L=None,
+        z=0.0018,
+        source="Hubble Space Telescope",
+        metadata={'type': 'star_formation_region'}
+    )
+    
+    # Einstein Ring GAL-CLUS-022058s (SOURCE57)
+    RINGS_RELATIVITY = ReferenceSystem(
+        name="Einstein Ring (GAL-CLUS-022058s)",
+        M=1.989e41,  # 1e11 M_sun (lensing galaxy)
+        r=1e21,
+        M_bh=None,
+        d_g=None,
+        B=None,
+        T=None,
+        L=None,
+        z=0.5,
+        source="Hubble COSMOS survey",
+        metadata={'type': 'gravitational_lens'}
+    )
+    
+    # NGC 2525 (SOURCE60)
+    NGC2525 = ReferenceSystem(
+        name="NGC 2525",
+        M=1.989e41,  # 1e11 M_sun
+        r=2e21,
+        M_bh=None,
+        d_g=None,
+        B=None,
+        T=None,
+        L=None,
+        z=0.01,
+        source="Hubble SN monitoring",
+        metadata={'type': 'spiral_galaxy'}
+    )
+    
+    # NGC 3603 (SOURCE60)
+    NGC3603 = ReferenceSystem(
+        name="NGC 3603",
+        M=1.989e34,  # 1e4 M_sun
+        r=1e18,
+        M_bh=None,
+        d_g=None,
+        B=None,
+        T=None,
+        L=None,
+        z=0.007,
+        source="Hubble + VLT observations",
+        metadata={'type': 'young_star_cluster'}
+    )
+    
+    # Bubble Nebula NGC 7635 (SOURCE60)
+    BUBBLE_NEBULA = ReferenceSystem(
+        name="Bubble Nebula (NGC 7635)",
+        M=1.989e31,  # 10 M_sun
+        r=3e16,
+        M_bh=None,
+        d_g=None,
+        B=None,
+        T=None,
+        L=None,
+        z=0.002,
+        source="Hubble Space Telescope",
+        metadata={'type': 'emission_nebula'}
+    )
+    
+    # Antennae Galaxies NGC 4038/4039 (SOURCE60)
+    ANTENNAE_GALAXIES = ReferenceSystem(
+        name="Antennae Galaxies (NGC 4038/4039)",
+        M=1.989e41,  # 1e11 M_sun
+        r=2e21,
+        M_bh=None,
+        d_g=None,
+        B=None,
+        T=None,
+        L=None,
+        z=0.005,
+        source="Hubble + ALMA observations",
+        metadata={'type': 'merging_galaxies'}
+    )
+    
+    # Horsehead Nebula Barnard 33 (SOURCE60)
+    HORSEHEAD_NEBULA = ReferenceSystem(
+        name="Horsehead Nebula (Barnard 33)",
+        M=5.967e32,  # 300 M_sun
+        r=1e17,
+        M_bh=None,
+        d_g=None,
+        B=None,
+        T=None,
+        L=None,
+        z=0.0004,
+        source="Hubble Space Telescope",
+        metadata={'type': 'dark_nebula'}
+    )
+    
+    # NGC 1275 Perseus A (SOURCE60)
+    NGC1275 = ReferenceSystem(
+        name="NGC 1275 (Perseus A)",
+        M=1.989e42,  # 1e12 M_sun
+        r=3e21,
+        M_bh=None,
+        d_g=None,
+        B=None,
+        T=None,
+        L=None,
+        z=0.018,
+        source="Chandra + Hubble observations",
+        metadata={'type': 'active_galaxy'}
+    )
+    
+    # NGC 1792 (SOURCE60)
+    NGC1792 = ReferenceSystem(
+        name="NGC 1792",
+        M=9.945e40,  # 5e10 M_sun
+        r=1.5e21,
+        M_bh=None,
+        d_g=None,
+        B=None,
+        T=None,
+        L=None,
+        z=0.003,
+        source="NED database",
+        metadata={'type': 'starburst_galaxy'}
+    )
+    
+    # Hubble Ultra Deep Field (SOURCE60)
+    HUBBLE_ULTRA_DEEP_FIELD = ReferenceSystem(
+        name="Hubble Ultra Deep Field",
+        M=1.989e41,  # 1e11 M_sun (typical galaxy)
+        r=5e21,
+        M_bh=None,
+        d_g=None,
+        B=None,
+        T=None,
+        L=None,
+        z=1.0,
+        source="Hubble Space Telescope deep field",
+        metadata={'type': 'deep_field'}
     )
 
 

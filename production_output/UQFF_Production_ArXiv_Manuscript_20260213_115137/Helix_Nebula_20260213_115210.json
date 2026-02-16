@@ -1,0 +1,13 @@
+{
+  "query_name": "Helix Nebula",
+  "timestamp": "2026-02-13T11:52:08.026761",
+  "api_data": {
+    "name": "Helix Nebula",
+    "sources": []
+  },
+  "qcalc_result": {
+    "query_id": "Helix Nebula_20260213T115210026682",
+    "timestamp": "2026-02-13T11:52:10.026682",
+    "input_params": {
+      "query_name": "Helix Nebula",
+      "scale": 

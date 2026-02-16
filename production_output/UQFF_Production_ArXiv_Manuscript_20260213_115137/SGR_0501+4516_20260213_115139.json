@@ -1,0 +1,13 @@
+{
+  "query_name": "SGR 0501+4516",
+  "timestamp": "2026-02-13T11:51:37.075299",
+  "api_data": {
+    "name": "SGR 0501+4516",
+    "sources": []
+  },
+  "qcalc_result": {
+    "query_id": "SGR 0501+4516_20260213T115139172094",
+    "timestamp": "2026-02-13T11:51:39.172094",
+    "input_params": {
+      "query_name": "SGR 0501+4516",
+      "scale": 

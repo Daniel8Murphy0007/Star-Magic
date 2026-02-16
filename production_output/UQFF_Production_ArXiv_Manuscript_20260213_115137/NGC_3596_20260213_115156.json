@@ -1,0 +1,13 @@
+{
+  "query_name": "NGC 3596",
+  "timestamp": "2026-02-13T11:51:53.858904",
+  "api_data": {
+    "name": "NGC 3596",
+    "sources": []
+  },
+  "qcalc_result": {
+    "query_id": "NGC 3596_20260213T115155846949",
+    "timestamp": "2026-02-13T11:51:55.846949",
+    "input_params": {
+      "query_name": "NGC 3596",
+      "scale": 

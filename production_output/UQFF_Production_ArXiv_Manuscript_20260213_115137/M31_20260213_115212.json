@@ -1,0 +1,13 @@
+{
+  "query_name": "M31",
+  "timestamp": "2026-02-13T11:52:10.385145",
+  "api_data": {
+    "name": "M31",
+    "sources": []
+  },
+  "qcalc_result": {
+    "query_id": "M31_20260213T115212531849",
+    "timestamp": "2026-02-13T11:52:12.531849",
+    "input_params": {
+      "query_name": "M31",
+      "scale": 

@@ -1,0 +1,13 @@
+{
+  "query_name": "Vela Pulsar",
+  "timestamp": "2026-02-13T11:51:46.484038",
+  "api_data": {
+    "name": "Vela Pulsar",
+    "sources": []
+  },
+  "qcalc_result": {
+    "query_id": "Vela Pulsar_20260213T115148652283",
+    "timestamp": "2026-02-13T11:51:48.652283",
+    "input_params": {
+      "query_name": "Vela Pulsar",
+      "scale": 

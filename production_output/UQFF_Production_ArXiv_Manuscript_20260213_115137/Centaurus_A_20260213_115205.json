@@ -1,0 +1,13 @@
+{
+  "query_name": "Centaurus A",
+  "timestamp": "2026-02-13T11:52:03.238198",
+  "api_data": {
+    "name": "Centaurus A",
+    "sources": []
+  },
+  "qcalc_result": {
+    "query_id": "Centaurus A_20260213T115205347307",
+    "timestamp": "2026-02-13T11:52:05.347307",
+    "input_params": {
+      "query_name": "Centaurus A",
+      "scale": 

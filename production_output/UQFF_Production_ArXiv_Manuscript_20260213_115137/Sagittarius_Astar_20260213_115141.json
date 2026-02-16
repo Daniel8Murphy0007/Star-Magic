@@ -1,0 +1,13 @@
+{
+  "query_name": "Sagittarius A*",
+  "timestamp": "2026-02-13T11:51:39.522841",
+  "api_data": {
+    "name": "Sagittarius A*",
+    "sources": []
+  },
+  "qcalc_result": {
+    "query_id": "Sagittarius A*_20260213T115141457219",
+    "timestamp": "2026-02-13T11:51:41.457219",
+    "input_params": {
+      "query_name": "Sagittarius A*",
+      "scale": 

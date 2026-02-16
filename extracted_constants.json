@@ -1,0 +1,1422 @@
+{
+  "T_val": {
+    "value": "1e7",
+    "comment": "",
+    "source": "Source156.js"
+  },
+  "V": {
+    "value": "1e5",
+    "comment": "",
+    "source": "Source156.js"
+  },
+  "n_e": {
+    "value": "1e6",
+    "comment": "",
+    "source": "Source156.js"
+  },
+  "k_DE": {
+    "value": "1e-16",
+    "comment": "",
+    "source": "Source156.js"
+  },
+  "k_act": {
+    "value": "1e-14",
+    "comment": "",
+    "source": "Source156.js"
+  },
+  "DPM_momentum": {
+    "value": "0.93",
+    "comment": "",
+    "source": "Source156.js"
+  },
+  "DPM_gravity": {
+    "value": "1.0",
+    "comment": "",
+    "source": "Source156.js"
+  },
+  "DPM_stability": {
+    "value": "0.01",
+    "comment": "",
+    "source": "Source156.js"
+  },
+  "k_LENR": {
+    "value": "1e-10",
+    "comment": "",
+    "source": "Source156.js"
+  },
+  "beta_i": {
+    "value": "0.6",
+    "comment": "",
+    "source": "Source156.js"
+  },
+  "F_CNB": {
+    "value": "9.07e-42",
+    "comment": "Cosmic Neutrino Background force",
+    "source": "Source156.js"
+  },
+  "G": {
+    "value": "6.67430e-11",
+    "comment": "",
+    "source": "Source156.js"
+  },
+  "c": {
+    "value": "299792458.0",
+    "comment": "",
+    "source": "Source156.js"
+  },
+  "hbar": {
+    "value": "1.054571817e-34",
+    "comment": "",
+    "source": "Source156.js"
+  },
+  "m_n": {
+    "value": "1.674927498e-27",
+    "comment": "",
+    "source": "Source156.js"
+  },
+  "k_B": {
+    "value": "1.380649e-23",
+    "comment": "",
+    "source": "Source156.js"
+  },
+  "E_cm": {
+    "value": "2.18e-6",
+    "comment": "",
+    "source": "Source157.js"
+  },
+  "learningRate": {
+    "value": "0.001",
+    "comment": "",
+    "source": "source100.js"
+  },
+  "p_core": {
+    "value": "1.0",
+    "comment": "",
+    "source": "source104.js"
+  },
+  "phi_hat": {
+    "value": "1.0",
+    "comment": "",
+    "source": "source106.js"
+  },
+  "t": {
+    "value": "1000.0",
+    "comment": "",
+    "source": "source106.js"
+  },
+  "M": {
+    "value": "1.4 * 1.989e30",
+    "comment": "1.4 M_sun in kg",
+    "source": "source13.js"
+  },
+  "r": {
+    "value": "1e4",
+    "comment": "10 km radius",
+    "source": "source13.js"
+  },
+  "Hz": {
+    "value": "2.269e-18",
+    "comment": "H(z) in s^-1",
+    "source": "source13.js"
+  },
+  "B0": {
+    "value": "2e10",
+    "comment": "Initial B field",
+    "source": "source13.js"
+  },
+  "tau_B": {
+    "value": "4000 * 3.15576e7",
+    "comment": "B decay timescale (not used)",
+    "source": "source13.js"
+  },
+  "B_crit": {
+    "value": "1e11",
+    "comment": "Critical B field",
+    "source": "source13.js"
+  },
+  "Lambda": {
+    "value": "1.1e-52",
+    "comment": "Cosmological constant",
+    "source": "source13.js"
+  },
+  "c_light": {
+    "value": "3e8",
+    "comment": "Speed of light",
+    "source": "source13.js"
+  },
+  "q_charge": {
+    "value": "1.602e-19",
+    "comment": "Proton charge",
+    "source": "source13.js"
+  },
+  "v_surf": {
+    "value": "1e6",
+    "comment": "Surface velocity",
+    "source": "source13.js"
+  },
+  "f_sc": {
+    "value": "1",
+    "comment": "",
+    "source": "source13.js"
+  },
+  "rho_vac_UA": {
+    "value": "7.09e-36",
+    "comment": "UA vacuum density",
+    "source": "source13.js"
+  },
+  "rho_vac_SCm": {
+    "value": "7.09e-37",
+    "comment": "SCm vacuum density",
+    "source": "source13.js"
+  },
+  "P_init": {
+    "value": "3.76",
+    "comment": "Pulse period in seconds",
+    "source": "source13.js"
+  },
+  "tau_Omega": {
+    "value": "10000 * 3.15576e7",
+    "comment": "Omega decay timescale",
+    "source": "source13.js"
+  },
+  "scale_EM": {
+    "value": "1e-12",
+    "comment": "EM scaling factor",
+    "source": "source13.js"
+  },
+  "proton_mass": {
+    "value": "1.673e-27",
+    "comment": "Proton mass",
+    "source": "source13.js"
+  },
+  "M_BH": {
+    "value": "4e6 * 1.989e30",
+    "comment": "Sgr A* mass",
+    "source": "source13.js"
+  },
+  "r_BH": {
+    "value": "2.83e16",
+    "comment": "Distance to Sgr A*",
+    "source": "source13.js"
+  },
+  "mu0": {
+    "value": "4",
+    "comment": "",
+    "source": "source13.js"
+  },
+  "L0_W": {
+    "value": "5e28",
+    "comment": "Initial luminosity (W)",
+    "source": "source13.js"
+  },
+  "tau_decay": {
+    "value": "3.5 * 365.25",
+    "comment": "",
+    "source": "source13.js"
+  },
+  "t_Hubble": {
+    "value": "13.8e9 * 3.15576e7",
+    "comment": "Hubble time in seconds",
+    "source": "source13.js"
+  },
+  "t_Hubble_gyr": {
+    "value": "13.8",
+    "comment": "Hubble time in Gyr",
+    "source": "source13.js"
+  },
+  "delta_x": {
+    "value": "1e-10",
+    "comment": "Position uncertainty",
+    "source": "source13.js"
+  },
+  "integral_psi": {
+    "value": "1.0",
+    "comment": "Wavefunction integral",
+    "source": "source13.js"
+  },
+  "rho_fluid": {
+    "value": "1e17",
+    "comment": "Fluid density",
+    "source": "source13.js"
+  },
+  "A_osc": {
+    "value": "1e10",
+    "comment": "Oscillatory amplitude",
+    "source": "source13.js"
+  },
+  "k_osc": {
+    "value": "1.0",
+    "comment": "",
+    "source": "source13.js"
+  },
+  "omega_osc": {
+    "value": "2",
+    "comment": "",
+    "source": "source13.js"
+  },
+  "M_DM_factor": {
+    "value": "0.1",
+    "comment": "Dark matter mass fraction",
+    "source": "source13.js"
+  },
+  "delta_rho_over_rho": {
+    "value": "1e-5",
+    "comment": "Density perturbation",
+    "source": "source13.js"
+  },
+  "M_sun": {
+    "value": "1.989e30",
+    "comment": "",
+    "source": "source132.js"
+  },
+  "dpm_curv": {
+    "value": "1e-22",
+    "comment": "",
+    "source": "source134.js"
+  },
+  "v": {
+    "value": "1.7e6",
+    "comment": "",
+    "source": "source134.js"
+  },
+  "dpm_phase": {
+    "value": "2.36e-3",
+    "comment": "",
+    "source": "source134.js"
+  },
+  "gridPoints": {
+    "value": "10",
+    "comment": "",
+    "source": "source134.js"
+  },
+  "pi_val": {
+    "value": "3.141592653589793",
+    "comment": "",
+    "source": "source134_backup.js"
+  },
+  "rho_gas": {
+    "value": "1e-24",
+    "comment": "Gas density (kg/m^3)",
+    "source": "source135.js"
+  },
+  "L_X": {
+    "value": "1e41",
+    "comment": "X-ray luminosity (W)",
+    "source": "source135.js"
+  },
+  "V_jet": {
+    "value": "0.99 * 299792458",
+    "comment": "Relativistic jet velocity",
+    "source": "source135.js"
+  },
+  "omega0": {
+    "value": "1e-16",
+    "comment": "Angular frequency (rad/s)",
+    "source": "source135.js"
+  },
+  "k_jet": {
+    "value": "1e-12",
+    "comment": "Jet coupling constant",
+    "source": "source135.js"
+  },
+  "x2": {
+    "value": "-1.35e172",
+    "comment": "UQFF coupling constant",
+    "source": "source135.js"
+  },
+  "epsilon": {
+    "value": "0.01",
+    "comment": "Constants",
+    "source": "source135.js"
+  },
+  "m_e": {
+    "value": "9.10938356e-31",
+    "comment": "",
+    "source": "source135.js"
+  },
+  "M_shell": {
+    "value": "2e10 * 1.989e30",
+    "comment": "Shell mass from merger",
+    "source": "source136.js"
+  },
+  "r_shell": {
+    "value": "2e22",
+    "comment": "Shell radius (20 kpc)",
+    "source": "source136.js"
+  },
+  "T_merger": {
+    "value": "3e9 * 365.25",
+    "comment": "",
+    "source": "source136.js"
+  },
+  "V_infall": {
+    "value": "500e3",
+    "comment": "Infall velocity (m/s)",
+    "source": "source136.js"
+  },
+  "L_radio": {
+    "value": "1e39",
+    "comment": "Radio luminosity (W)",
+    "source": "source136.js"
+  },
+  "k_merger": {
+    "value": "1e-14",
+    "comment": "Merger coupling constant",
+    "source": "source136.js"
+  },
+  "M_bulge": {
+    "value": "5e11 * 1.989e30",
+    "comment": "Bulge mass",
+    "source": "source137.js"
+  },
+  "M_disk": {
+    "value": "3e11 * 1.989e30",
+    "comment": "Disk mass",
+    "source": "source137.js"
+  },
+  "h_disk": {
+    "value": "1e21",
+    "comment": "Disk scale height (1 kpc)",
+    "source": "source137.js"
+  },
+  "rho_dust": {
+    "value": "1e-23",
+    "comment": "Dust density (kg/m^3)",
+    "source": "source137.js"
+  },
+  "k_dust": {
+    "value": "1e-15",
+    "comment": "Dust lane coupling",
+    "source": "source137.js"
+  },
+  "L_gamma": {
+    "value": "1e39",
+    "comment": "Gamma-ray luminosity (W)",
+    "source": "source138.js"
+  },
+  "k_AGN": {
+    "value": "1e-13",
+    "comment": "AGN coupling constant",
+    "source": "source138.js"
+  },
+  "M_companion": {
+    "value": "8e10 * 1.989e30",
+    "comment": "NGC 5195 mass (80 billion M\u2609)",
+    "source": "source139.js"
+  },
+  "d_sep": {
+    "value": "1e22",
+    "comment": "Separation distance (10 kpc)",
+    "source": "source139.js"
+  },
+  "SFR": {
+    "value": "3 * 1.989e30",
+    "comment": "",
+    "source": "source139.js"
+  },
+  "V_rot": {
+    "value": "200e3",
+    "comment": "Rotation velocity (m/s)",
+    "source": "source139.js"
+  },
+  "k_tidal": {
+    "value": "1e-13",
+    "comment": "Tidal coupling constant",
+    "source": "source139.js"
+  },
+  "H0": {
+    "value": "2.184e-18",
+    "comment": "Different Hubble constant",
+    "source": "source14.js"
+  },
+  "f_TRZ": {
+    "value": "0.1",
+    "comment": "Time-reversal factor (unique to SGR 0501+4516)",
+    "source": "source14.js"
+  },
+  "t_example": {
+    "value": "5000 * 3.15576e7",
+    "comment": "",
+    "source": "source14.js"
+  },
+  "r_HII": {
+    "value": "5e21",
+    "comment": "HII region scale (5 kpc)",
+    "source": "source140.js"
+  },
+  "n_HII": {
+    "value": "3000",
+    "comment": "Number of HII regions",
+    "source": "source140.js"
+  },
+  "L_UV": {
+    "value": "1e43",
+    "comment": "UV luminosity (W)",
+    "source": "source140.js"
+  },
+  "k_asym": {
+    "value": "1e-14",
+    "comment": "Asymmetry coupling",
+    "source": "source140.js"
+  },
+  "M_M31": {
+    "value": "1.5e12 * 1.989e30",
+    "comment": "Andromeda mass (M31 host)",
+    "source": "source141.js"
+  },
+  "d_M31": {
+    "value": "2e23",
+    "comment": "Distance to M31 (200 kpc)",
+    "source": "source141.js"
+  },
+  "L_Halpha": {
+    "value": "1e40",
+    "comment": "H-alpha luminosity (W)",
+    "source": "source141.js"
+  },
+  "k_LG": {
+    "value": "1e-15",
+    "comment": "Local Group coupling",
+    "source": "source141.js"
+  },
+  "L_jet": {
+    "value": "1e24",
+    "comment": "Jet length (100 kpc)",
+    "source": "source142.js"
+  },
+  "P_jet": {
+    "value": "1e40",
+    "comment": "Jet power (W)",
+    "source": "source142.js"
+  },
+  "M_cluster": {
+    "value": "1.2e15 * 1.989e30",
+    "comment": "Total cluster mass (1.2 quadrillion M\u2609)",
+    "source": "source143.js"
+  },
+  "M_M87": {
+    "value": "6.5e12 * 1.989e30",
+    "comment": "M87 mass (central giant)",
+    "source": "source143.js"
+  },
+  "r_core": {
+    "value": "1e23",
+    "comment": "Core radius (100 kpc)",
+    "source": "source143.js"
+  },
+  "N_galaxies": {
+    "value": "1300",
+    "comment": "Number of galaxies",
+    "source": "source143.js"
+  },
+  "rho_ICM": {
+    "value": "1e-26",
+    "comment": "Intracluster medium density (kg/m^3)",
+    "source": "source143.js"
+  },
+  "T_ICM": {
+    "value": "3e7",
+    "comment": "ICM temperature (K)",
+    "source": "source143.js"
+  },
+  "sigma_v": {
+    "value": "700e3",
+    "comment": "Velocity dispersion (m/s)",
+    "source": "source143.js"
+  },
+  "k_cluster": {
+    "value": "1e-16",
+    "comment": "Cluster coupling constant",
+    "source": "source143.js"
+  },
+  "f_DM": {
+    "value": "0.85",
+    "comment": "Dark matter fraction",
+    "source": "source144.js"
+  },
+  "M_bullet": {
+    "value": "1e14 * 1.989e30",
+    "comment": "Bullet subcluster mass",
+    "source": "source145.js"
+  },
+  "M_main": {
+    "value": "2e15 * 1.989e30",
+    "comment": "Main cluster mass",
+    "source": "source145.js"
+  },
+  "V_merger": {
+    "value": "4500e3",
+    "comment": "Merger velocity (4500 km/s)",
+    "source": "source145.js"
+  },
+  "M_NGC1275": {
+    "value": "1e12 * 1.989e30",
+    "comment": "NGC 1275 (Perseus A) mass",
+    "source": "source146.js"
+  },
+  "P_AGN": {
+    "value": "1e43",
+    "comment": "AGN outburst power (W)",
+    "source": "source146.js"
+  },
+  "t_outburst": {
+    "value": "1e7 * 365.25",
+    "comment": "",
+    "source": "source146.js"
+  },
+  "M_initial": {
+    "value": "4.3e6 * 1.989e30",
+    "comment": "4.3 million solar masses in kg",
+    "source": "source15.js"
+  },
+  "B0_G": {
+    "value": "1e4",
+    "comment": "Initial magnetic field (Gauss)",
+    "source": "source15.js"
+  },
+  "M_dot_0": {
+    "value": "0.01",
+    "comment": "Initial mass accretion rate factor",
+    "source": "source15.js"
+  },
+  "tau_acc": {
+    "value": "9e9 * 3.15576e7",
+    "comment": "Accretion timescale (9 billion years)",
+    "source": "source15.js"
+  },
+  "spin_factor": {
+    "value": "0.3",
+    "comment": "Spin factor",
+    "source": "source15.js"
+  },
+  "precession_angle_deg": {
+    "value": "30.0",
+    "comment": "Precession angle (degrees)",
+    "source": "source15.js"
+  },
+  "B_s_min": {
+    "value": "1e-4",
+    "comment": "T (quiet Sun)",
+    "source": "source154.js"
+  },
+  "B_s_max": {
+    "value": "0.4",
+    "comment": "T (sunspot)",
+    "source": "source154.js"
+  },
+  "B_ref": {
+    "value": "0.4",
+    "comment": "T (reference max)",
+    "source": "source154.js"
+  },
+  "k_3": {
+    "value": "1.8",
+    "comment": "Coupling constant",
+    "source": "source154.js"
+  },
+  "omega_s": {
+    "value": "2.5e-6",
+    "comment": "rad/s (solar cycle)",
+    "source": "source154.js"
+  },
+  "P_core": {
+    "value": "1.0",
+    "comment": "Core pressure factor",
+    "source": "source154.js"
+  },
+  "E_react": {
+    "value": "1e46",
+    "comment": "J (reaction energy)",
+    "source": "source154.js"
+  },
+  "Z": {
+    "value": "1",
+    "comment": "Atomic number",
+    "source": "source154.js"
+  },
+  "A": {
+    "value": "1",
+    "comment": "Mass number",
+    "source": "source154.js"
+  },
+  "f_res": {
+    "value": "1.0",
+    "comment": "Resonance factor",
+    "source": "source154.js"
+  },
+  "f_dp": {
+    "value": "0.1",
+    "comment": "Deep pairing factor",
+    "source": "source154.js"
+  },
+  "m_p": {
+    "value": "1.672621898e-27",
+    "comment": "Initialize variable storage",
+    "source": "source154.js"
+  },
+  "k_neutron": {
+    "value": "1e10",
+    "comment": "",
+    "source": "source155.js"
+  },
+  "sigma_n": {
+    "value": "1e-4",
+    "comment": "",
+    "source": "source155.js"
+  },
+  "k_rel": {
+    "value": "1e-10",
+    "comment": "",
+    "source": "source155.js"
+  },
+  "E_cm_astro": {
+    "value": "1.24e24",
+    "comment": "Buoyancy parameters",
+    "source": "source155.js"
+  },
+  "V_infl_UA": {
+    "value": "1e-6",
+    "comment": "",
+    "source": "source155.js"
+  },
+  "rho_vac_A": {
+    "value": "1e-30",
+    "comment": "",
+    "source": "source155.js"
+  },
+  "a_universal": {
+    "value": "1e12",
+    "comment": "Superconductive parameters",
+    "source": "source155.js"
+  },
+  "lambda_i": {
+    "value": "1.0",
+    "comment": "",
+    "source": "source155.js"
+  },
+  "t_scale": {
+    "value": "1e16",
+    "comment": "Constants",
+    "source": "source155.js"
+  },
+  "q": {
+    "value": "1.602176634e-19",
+    "comment": "Initialize variable storage",
+    "source": "source155.js"
+  },
+  "F0": {
+    "value": "1.83e71",
+    "comment": "",
+    "source": "source155.js"
+  },
+  "B": {
+    "value": "1e-6",
+    "comment": "Static magnetic field (T)",
+    "source": "source16.js"
+  },
+  "tau_SF": {
+    "value": "5e6 * 3.156e7",
+    "comment": "Star formation timescale (5 Myr in seconds)",
+    "source": "source16.js"
+  },
+  "gas_v": {
+    "value": "1e5",
+    "comment": "Gas velocity for EM (m/s)",
+    "source": "source16.js"
+  },
+  "rho_wind": {
+    "value": "1e-21",
+    "comment": "Wind density (kg/m^3)",
+    "source": "source16.js"
+  },
+  "v_wind": {
+    "value": "2e6",
+    "comment": "Wind velocity (m/s)",
+    "source": "source16.js"
+  },
+  "M_initial_sun": {
+    "value": "240.0",
+    "comment": "",
+    "source": "source16.js"
+  },
+  "ly_to_m": {
+    "value": "9.461e15",
+    "comment": "",
+    "source": "source16.js"
+  },
+  "gas_mass_sun": {
+    "value": "10000.0",
+    "comment": "",
+    "source": "source16.js"
+  },
+  "M_dot_factor": {
+    "value": "1e5",
+    "comment": "",
+    "source": "source17.js"
+  },
+  "E_0": {
+    "value": "0.1",
+    "comment": "Initial erosion factor",
+    "source": "source18.js"
+  },
+  "tau_erosion": {
+    "value": "1e6 * 3.156e7",
+    "comment": "Erosion timescale",
+    "source": "source18.js"
+  },
+  "z_gal": {
+    "value": "0.016",
+    "comment": "Galaxy redshift",
+    "source": "source20.js"
+  },
+  "M_SN0": {
+    "value": "1.4",
+    "comment": "",
+    "source": "source20.js"
+  },
+  "tau_SN": {
+    "value": "1 * 3.156e7",
+    "comment": "SN decay timescale (s)",
+    "source": "source20.js"
+  },
+  "M0": {
+    "value": "400000.0 * 1.989e30",
+    "comment": "Initial mass (kg) - 400,000 Msun",
+    "source": "source21.js"
+  },
+  "P0": {
+    "value": "4e-8",
+    "comment": "Initial pressure (Pa)",
+    "source": "source21.js"
+  },
+  "tau_exp": {
+    "value": "1e6 * 3.156e7",
+    "comment": "Expansion timescale (s)",
+    "source": "source21.js"
+  },
+  "progenitor_mass": {
+    "value": "20 * 1.989e30",
+    "comment": "Solar masses",
+    "source": "source22.js"
+  },
+  "ejecta_mass": {
+    "value": "15 * 1.989e30",
+    "comment": "Solar masses",
+    "source": "source22.js"
+  },
+  "explosion_energy": {
+    "value": "1e44",
+    "comment": "Joules",
+    "source": "source22.js"
+  },
+  "distance": {
+    "value": "1.5e5 * 3.086e16",
+    "comment": "Light years to meters",
+    "source": "source22.js"
+  },
+  "ns_mass": {
+    "value": "1.4 * 1.989e30",
+    "comment": "",
+    "source": "source22.js"
+  },
+  "length": {
+    "value": "2e17",
+    "comment": "meters",
+    "source": "source23.js"
+  },
+  "density": {
+    "value": "100",
+    "comment": "Particles/cm\u00b3",
+    "source": "source23.js"
+  },
+  "temperature": {
+    "value": "50",
+    "comment": "K",
+    "source": "source23.js"
+  },
+  "ionizing_flux": {
+    "value": "1e8",
+    "comment": "Photons/m\u00b2/s",
+    "source": "source23.js"
+  },
+  "magnetic_field": {
+    "value": "1e-4",
+    "comment": "T",
+    "source": "source23.js"
+  },
+  "primary_mass": {
+    "value": "5e10 * 1.989e30",
+    "comment": "Solar masses",
+    "source": "source24.js"
+  },
+  "secondary_mass": {
+    "value": "1e10 * 1.989e30",
+    "comment": "Solar masses",
+    "source": "source24.js"
+  },
+  "separation": {
+    "value": "5e20",
+    "comment": "meters",
+    "source": "source24.js"
+  },
+  "relative_velocity": {
+    "value": "3e5",
+    "comment": "m/s",
+    "source": "source24.js"
+  },
+  "tidal_radius": {
+    "value": "1e21",
+    "comment": "meters",
+    "source": "source24.js"
+  },
+  "stars_count": {
+    "value": "10000",
+    "comment": "",
+    "source": "source25.js"
+  },
+  "pillar_count": {
+    "value": "3",
+    "comment": "Famous pillars",
+    "source": "source25.js"
+  },
+  "gas_mass": {
+    "value": "1e4 * 1.989e30",
+    "comment": "Solar masses",
+    "source": "source25.js"
+  },
+  "uv_luminosity": {
+    "value": "1e6",
+    "comment": "Solar luminosities",
+    "source": "source25.js"
+  },
+  "trigger_term": {
+    "value": "1e-10",
+    "comment": "",
+    "source": "source25.js"
+  },
+  "evaporation_term": {
+    "value": "1e-12",
+    "comment": "",
+    "source": "source25.js"
+  },
+  "trap_mass": {
+    "value": "1e3 * 1.989e30",
+    "comment": "Solar masses",
+    "source": "source26.js"
+  },
+  "ionizing_stars": {
+    "value": "4",
+    "comment": "Theta1 Ori C and companions",
+    "source": "source26.js"
+  },
+  "size": {
+    "value": "24 * 3.086e16",
+    "comment": "Light years across",
+    "source": "source26.js"
+  },
+  "mass": {
+    "value": "9 * 1.989e30",
+    "comment": "Solar masses",
+    "source": "source27.js"
+  },
+  "radius": {
+    "value": "200 * 6.96e8",
+    "comment": "Solar radii",
+    "source": "source27.js"
+  },
+  "period": {
+    "value": "41.4 * 24",
+    "comment": "",
+    "source": "source27.js"
+  },
+  "pulsation_amplitude": {
+    "value": "0.1",
+    "comment": "Magnitude",
+    "source": "source27.js"
+  },
+  "age": {
+    "value": "5e6",
+    "comment": "years",
+    "source": "source28.js"
+  },
+  "metallicity": {
+    "value": "0.2",
+    "comment": "Solar units",
+    "source": "source28.js"
+  },
+  "M_sun_val": {
+    "value": "1.989e30",
+    "comment": "",
+    "source": "source29.js"
+  },
+  "Ug1_proxy": {
+    "value": "1.0",
+    "comment": "",
+    "source": "source37.js"
+  },
+  "fDPM": {
+    "value": "1e12",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "fTHz": {
+    "value": "1e12",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "Evac_neb": {
+    "value": "7.09e-36",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "Evac_ISM": {
+    "value": "7.09e-37",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "Delta_Evac": {
+    "value": "6.381e-36",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "Fsuper": {
+    "value": "6.287e-19",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "UA_SCM": {
+    "value": "10",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "omega_i": {
+    "value": "1e-8",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "k4_res": {
+    "value": "1.0",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "freact": {
+    "value": "1e10",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "fquantum": {
+    "value": "1.445e-17",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "fAether": {
+    "value": "1.576e-35",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "fosc": {
+    "value": "4.57e14",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "fTRZ": {
+    "value": "0.1",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "c_res": {
+    "value": "3e8",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "Omega_g": {
+    "value": "7.3e-16",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "M_bh": {
+    "value": "8.15e36",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "d_g": {
+    "value": "8.178e3",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "rho_A": {
+    "value": "1e-23",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "rho_sw": {
+    "value": "1e-21",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "v_sw": {
+    "value": "4e5",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "Q_A": {
+    "value": "1.602e-19",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "Q_s": {
+    "value": "1.602e-19",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "alpha_t": {
+    "value": "1e-9",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "kappa_t": {
+    "value": "5e-4",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "n_t": {
+    "value": "1.0",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "eta_A": {
+    "value": "0.01",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "C_vac": {
+    "value": "1.0",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "f_feedback": {
+    "value": "1.0",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "H_SCM": {
+    "value": "1.0",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "U_UA": {
+    "value": "1.0",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "S_wind": {
+    "value": "1.0",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "num_magnetic_strings": {
+    "value": "10",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "rho_v": {
+    "value": "6e-27",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "evolution_timescale": {
+    "value": "8e14",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "r_j": {
+    "value": "1e10",
+    "comment": "",
+    "source": "source4.js"
+  },
+  "learning_rate": {
+    "value": "0.01",
+    "comment": "",
+    "source": "source5.js"
+  },
+  "PI": {
+    "value": "3.141592653589793",
+    "comment": "",
+    "source": "source5.js"
+  },
+  "num_strings": {
+    "value": "1e9",
+    "comment": "",
+    "source": "source5.js"
+  },
+  "N": {
+    "value": "32",
+    "comment": "",
+    "source": "source5.js"
+  },
+  "dt_ns": {
+    "value": "0.1",
+    "comment": "",
+    "source": "source5.js"
+  },
+  "visc": {
+    "value": "0.0001",
+    "comment": "",
+    "source": "source5.js"
+  },
+  "force_jet": {
+    "value": "10.0",
+    "comment": "",
+    "source": "source5.js"
+  },
+  "g_earth": {
+    "value": "9.80665",
+    "comment": "",
+    "source": "source50.js"
+  },
+  "B_t": {
+    "value": "1e-9",
+    "comment": "Current magnetic field",
+    "source": "source50.js"
+  },
+  "Delta_x_Delta_p": {
+    "value": "1e-68",
+    "comment": "Uncertainty principle",
+    "source": "source50.js"
+  },
+  "M_DM_default": {
+    "value": "1e40",
+    "comment": "Default DM mass",
+    "source": "source50.js"
+  },
+  "E_vac_neb": {
+    "value": "1e-9",
+    "comment": "Vacuum energy in nebula",
+    "source": "source50.js"
+  },
+  "E_vac_ISM": {
+    "value": "1e-10",
+    "comment": "Vacuum energy in ISM",
+    "source": "source50.js"
+  },
+  "Delta_E_vac": {
+    "value": "1e-8",
+    "comment": "Vacuum energy differential",
+    "source": "source50.js"
+  },
+  "F_super": {
+    "value": "1e12",
+    "comment": "Superconductor frequency factor",
+    "source": "source50.js"
+  },
+  "k_4": {
+    "value": "1e-40",
+    "comment": "Aether constant",
+    "source": "source50.js"
+  },
+  "UA_SC_m": {
+    "value": "1e-20",
+    "comment": "Superconductive correction",
+    "source": "source50.js"
+  },
+  "f_quantum": {
+    "value": "1e14",
+    "comment": "Quantum frequency",
+    "source": "source50.js"
+  },
+  "f_Aether": {
+    "value": "1e13",
+    "comment": "Aether frequency",
+    "source": "source50.js"
+  },
+  "m_factor": {
+    "value": "1.0",
+    "comment": "",
+    "source": "source56.js"
+  },
+  "M_mag": {
+    "value": "1e40",
+    "comment": "",
+    "source": "source57.js"
+  },
+  "omega_dot": {
+    "value": "1e-3",
+    "comment": "",
+    "source": "source57.js"
+  },
+  "yaw": {
+    "value": "-90.0",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "fov": {
+    "value": "45.0",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "movementSpeed": {
+    "value": "2.5",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "mouseSensitivity": {
+    "value": "0.1",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "pitch": {
+    "value": "89.0",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "Mbh": {
+    "value": "8.15e36",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "dg": {
+    "value": "2.55e20",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "QA": {
+    "value": "1e-10",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "kappa": {
+    "value": "0.0005",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "alpha": {
+    "value": "0.001",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "gamma": {
+    "value": "0.00005",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "delta_sw": {
+    "value": "0.01",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "epsilon_sw": {
+    "value": "0.001",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "delta_def": {
+    "value": "0.01",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "HSCm": {
+    "value": "1.0",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "UUA": {
+    "value": "1.0",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "eta": {
+    "value": "1e-22",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "k1": {
+    "value": "1.5",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "k2": {
+    "value": "1.2",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "k3": {
+    "value": "1.8",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "k4": {
+    "value": "2.0",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "C_concentration": {
+    "value": "1.0",
+    "comment": "",
+    "source": "source6.js"
+  },
+  "rhoUa": {
+    "value": "7.09e-36",
+    "comment": "",
+    "source": "source66.js"
+  },
+  "tn": {
+    "value": "1e-10",
+    "comment": "",
+    "source": "source6_direct_test.js"
+  },
+  "M_halo": {
+    "value": "1e12 * 1.989e30",
+    "comment": "",
+    "source": "source6_direct_test.js"
+  },
+  "r_s": {
+    "value": "20000",
+    "comment": "",
+    "source": "source6_direct_test.js"
+  },
+  "kpc_val": {
+    "value": "3.086e19",
+    "comment": "",
+    "source": "source70.js"
+  },
+  "m": {
+    "value": "2.0",
+    "comment": "",
+    "source": "source70.js"
+  },
+  "L_sun_val": {
+    "value": "3.826e26",
+    "comment": "",
+    "source": "source72.js"
+  },
+  "ly_val": {
+    "value": "9.461e15",
+    "comment": "",
+    "source": "source76.js"
+  },
+  "M_star": {
+    "value": "20 * 1.989e30",
+    "comment": "",
+    "source": "source76.js"
+  },
+  "r_star": {
+    "value": "1e10",
+    "comment": "",
+    "source": "source76.js"
+  },
+  "pc_val": {
+    "value": "3.086e16",
+    "comment": "",
+    "source": "source81.js"
+  },
+  "n": {
+    "value": "1",
+    "comment": "",
+    "source": "source82.js"
+  },
+  "Delta": {
+    "value": "1.3e6 * 1.602e-19",
+    "comment": "",
+    "source": "source83.js"
+  }
+}

@@ -86,6 +86,129 @@ public:
     void optimize(double lr, double err) override { T_ion *= (1.0 - lr * err * 0.02); }
 };
 
+// ============================================================================
+// TRIADIC UQFF TERMS (From Pillars of Creation session, June 2025)
+// Adds: Compressed UQFF, Resonance UQFF, Buoyancy UQFF (U_Bi)
+// ============================================================================
+
+// Complete Boyle's Law buoyancy factor: f_Ub = 0.1 × Δk_η × (ρ_UA/ρ_SCm) × (1/33)
+class TriadicBuoyancyTerm : public PhysicsTerm {
+    double delta_k_eta;
+public:
+    TriadicBuoyancyTerm(double dk = UQFF::Delta_k_eta) : delta_k_eta(dk) {}
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        // f_Ub = 0.1 × Δk_η × (ρ_vac,[UA] / ρ_vac,[SCm]) × (1/33)
+        double rho_ratio = UQFF::rho_vac_UA / UQFF::rho_vac_SCm;  // = 10
+        double f_Ub = 0.1 * delta_k_eta * rho_ratio * UQFF::BOYLE_RATIO;
+        // F_U_Bi = k_Ub × (f_UA' × f_SCm × R_EB) / r² × H_k × f_Ub
+        double f_UA = params.count("f_UA") ? params.at("f_UA") : 0.999;
+        double f_SCm = params.count("f_SCm") ? params.at("f_SCm") : 0.001;
+        double r = params.count("r") ? params.at("r") : 4.73e16;
+        double k_Ub = 0.1;
+        double H_k = 1.0;
+        return k_Ub * (f_UA * f_SCm * 1.0) / (r * r) * H_k * f_Ub;
+    }
+    std::string getName() const override { return "TriadicBuoyancy"; }
+    std::string getDescription() const override {
+        return "F_U_Bi = k_Ub × (f_UA' × f_SCm × R_EB) / r² × H_k × f_Ub (Boyle's Law: 1/33)";
+    }
+    void optimize(double lr, double err) override { delta_k_eta *= (1.0 - lr * err * 0.01); }
+    
+    // Static helper: compute f_Ub factor
+    static double compute_f_Ub(double dk_eta = UQFF::Delta_k_eta) {
+        return 0.1 * dk_eta * (UQFF::rho_vac_UA / UQFF::rho_vac_SCm) * UQFF::BOYLE_RATIO;
+    }
+};
+
+// DPM Species Index: log(ρ_vac,[SCm] / ρ_vac,[UA']) × n
+class SpeciesIndexTerm : public PhysicsTerm {
+    int n_layer;  // 1 to 26
+public:
+    SpeciesIndexTerm(int n = 1) : n_layer(n) {}
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        // Species Index = log₁₀(ρ_vac,[SCm] / ρ_vac,[UA']) × n
+        double ratio = UQFF::rho_vac_SCm / UQFF::rho_vac_UA;  // ~0.1
+        return std::log10(ratio) * n_layer;  // Returns -n for ratio = 0.1
+    }
+    std::string getName() const override { return "SpeciesIndex_n" + std::to_string(n_layer); }
+    std::string getDescription() const override {
+        return "DPM Species Index = log(ρ_vac,[SCm]/ρ_vac,[UA']) × n";
+    }
+    void optimize(double lr, double err) override { /* n_layer is discrete */ }
+};
+
+// UQFF-based CGM metallicity fraction: f_z,CGM = U_i / (U_i + U_m)
+class CGMMetallicityTerm : public PhysicsTerm {
+public:
+    CGMMetallicityTerm() {}
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        // U_i = Z × ρ_vac,[SCm] × ρ_vac,[UA] × ω_s × λ_i × k_4
+        double U_i = params.count("U_i") ? params.at("U_i") : 5.52e-79;
+        // U_m ≈ 3.78e-6 J/m³ (typical nebula)
+        double U_m = params.count("U_m") ? params.at("U_m") : 3.78e-6;
+        // f_z,CGM = U_i / (U_i + U_m)
+        return U_i / (U_i + U_m);
+    }
+    std::string getName() const override { return "CGMMetallicity"; }
+    std::string getDescription() const override {
+        return "f_z,CGM = U_i / (U_i + U_m) - UQFF metal retention fraction";
+    }
+    void optimize(double lr, double err) override { /* No tunable params */ }
+};
+
+// 26-layer Resonance UQFF: R(t) = Σ_{i=1}^{26} R_Ug,i × cos(ω_i × t)
+class ResonanceUQFFTerm : public PhysicsTerm {
+    int max_layers;
+public:
+    ResonanceUQFFTerm(int layers = 26) : max_layers(layers) {}
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        double base_ug1 = params.count("ug1_base") ? params.at("ug1_base") : 1e-15;
+        double M_sf = params.count("M_sf") ? params.at("M_sf") : 0.03;  // Star formation factor
+        double f_Ub = TriadicBuoyancyTerm::compute_f_Ub();
+        
+        double R_total = 0.0;
+        for (int i = 1; i <= max_layers; ++i) {
+            // ω_Ug1,i = base × i, ω_Ug2,i = 2×base×i, ω_Ug3,i = 100×base×i
+            double omega_1 = UQFF::OMEGA_UG1_1 * i;
+            double omega_2 = UQFF::OMEGA_UG2_1 * i;
+            double omega_3 = UQFF::OMEGA_UG3_1 * i;
+            
+            // R_Ug,i ≈ g_i × M_sf × (1 + f_Ub_scale)
+            double R_layer = base_ug1 * M_sf / std::pow(i, 2);
+            R_total += R_layer * (std::cos(omega_1 * t) + 
+                                  std::cos(omega_2 * t) + 
+                                  std::cos(omega_3 * t)) / 3.0;
+        }
+        return R_total * (1 - std::exp(-t / (1.5e6 * 3.156e7)));  // E_rad(t) factor
+    }
+    std::string getName() const override { return "ResonanceUQFF_26Layer"; }
+    std::string getDescription() const override {
+        return "R(t) = Σ_{i=1}^{26} R_Ug,i × cos(ω_i × t) - 26-layer polynomial resonance";
+    }
+    void optimize(double lr, double err) override { /* Layer count is fixed */ }
+};
+
+// Universe decay term: Decay = (ρ_SCm/ρ_UA) × e^{-[SSq]^26 × e^{-(π+t)}} ≈ 0.0963
+class UniverseDecayTerm : public PhysicsTerm {
+    double SSq;  // [SSq] = 0.57 (calibrated)
+public:
+    UniverseDecayTerm(double ssq = 0.57) : SSq(ssq) {}
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        // Decay = (ρ_vac,[SCm] / ρ_vac,[UA]) × e^{-[SSq]^26 × e^{-(π+t)}}
+        double rho_ratio = UQFF::rho_vac_SCm / UQFF::rho_vac_UA;  // 0.1
+        double ssq_26 = std::pow(SSq, 26);  // Very small (~1.3e-7)
+        double exp_inner = std::exp(-(M_PI + t / (1e6 * 3.156e7)));  // t in Myr
+        double decay = rho_ratio * std::exp(-ssq_26 * exp_inner);
+        // Should approach ~0.0963 for steady-state universe
+        return decay;
+    }
+    std::string getName() const override { return "UniverseDecay"; }
+    std::string getDescription() const override {
+        return "Decay ≈ 0.0963 - [SCm] decay rate determining universe end (Page 5)";
+    }
+    void optimize(double lr, double err) override { SSq *= (1.0 - lr * err * 0.01); }
+};
+
 class PillarsOfCreation {
     double M_initial, r, H0, B, B_crit, Lambda, f_TRZ;
     double M_dot_factor, tau_SF, E0, tau_erosion, T_ionization, rho_fluid;
@@ -158,7 +281,16 @@ public:
         params["tau_erosion"] = cfg.tau_erosion;
         registerDynamicTerm(std::make_unique<ErosionTerm>(cfg.E0, cfg.tau_erosion));
         registerDynamicTerm(std::make_unique<IonizationFrontTerm>(cfg.T_ionization, cfg.rho_fluid));
+        
+        // Triadic UQFF terms (June 2025 session)
+        registerDynamicTerm(std::make_unique<TriadicBuoyancyTerm>(UQFF::Delta_k_eta));
+        registerDynamicTerm(std::make_unique<SpeciesIndexTerm>(1));
+        registerDynamicTerm(std::make_unique<CGMMetallicityTerm>());
+        registerDynamicTerm(std::make_unique<ResonanceUQFFTerm>(26));
+        registerDynamicTerm(std::make_unique<UniverseDecayTerm>(0.57));
+        
         setMetadata("object", "Pillars of Creation (Eagle Nebula M16)");
+        setMetadata("triadic_uqff", "Compressed + Resonance + Buoyancy (June 2025)");
     }
     double compute(double t) {
         double base = pillars.compute_g_MUGE(t), dynamic = computeDynamicTerms(t);
