@@ -916,12 +916,25 @@ CONSTANTS = {
     'Carina_M': 1.989e35,       # M = 10^5 M_sun (from source172.cpp)
     
     # NGC 2014/2020 (Tapestry of Blazing Starbirth): LMC nebula complex
-    # Document: r = 10 ly = 9.46×10^16 m, B = 10^-4 T
+    # Document: r = 10-20 ly = 9.46e16-1.89e17 m, B = 10^-5 T, SFR ~1 M_sun/yr
+    # Feb 2026 document: 26D UQFF analysis with E_DPM replacing G
     'Tapestry_r': 9.46e16,      # r = 10 ly in meters (document value)
-    'Tapestry_B': 1e-4,         # B = 10^-4 T (document value)
+    'Tapestry_r_max': 1.89e17,  # r_max = 20 ly (region spans 10-20 ly)
+    'Tapestry_B': 1e-5,         # B = 10^-5 T (Feb 2026 document - LMC field)
     'Tapestry_M': 1.989e33,     # M = 1000 M_sun (cluster mass estimate)
+    'Tapestry_SFR': 1.0,        # SFR = 1 M_sun/yr (Feb 2026 document)
+    'Tapestry_z': 0.0005,       # Redshift z ~ 0.0005 (LMC)
+    'Tapestry_d_ly': 163000,    # Distance ~ 163,000 ly (LMC)
+    'Tapestry_rho_gas': 1e-20,  # Gas density ~ 10^-20 kg/m³
+    'Tapestry_v_wind': 2e6,     # v_wind = 2,000 km/s (NGC 2014 stellar winds)
+    # NGC 2014 (red nebula): Massive stars 10-20 M_sun, UV-driven star formation
     'NGC2014_r': 9.46e16,       # r = 10 ly (alias for NGC 2014)
+    'NGC2014_M_star': 1.989e31, # M ~ 10 M_sun (massive stars)
+    'NGC2014_M_star_max': 3.978e31, # M ~ 20 M_sun (upper mass limit)
+    # NGC 2020 (blue nebula): Wolf-Rayet star, L ~ 200,000 L_sun
     'NGC2020_r': 9.46e16,       # r = 10 ly (alias for NGC 2020)
+    'NGC2020_L_WR': 7.68e31,    # L ~ 200,000 L_sun (Wolf-Rayet luminosity, W)
+    'NGC2020_T_gas': 1.1e4,     # T ~ 11,000°C gas ejection temperature (K)
     
     # Pillars of Creation (M16 Eagle Nebula): Star-forming molecular cloud
     # Document: r = 5 ly = 4.73×10^16 m, SFR = 0.2 M_sun/yr
@@ -929,14 +942,57 @@ CONSTANTS = {
     'Pillars_SFR': 6.34e21,     # SFR = 0.2 M_sun/yr in kg/s (0.2 × 1.989e30 / 3.156e7)
     'Pillars_B': 1e-5,          # Magnetic field (T)
     'Pillars_M': 1.989e32,      # M = 100 M_sun (pillar mass)
+    'Pillars_length_ly': 4.5,   # Pillar length ~ 4-5 ly
     
-    # Crab Nebula (M1): Supernova remnant with central pulsar
+    # M16 (Eagle Nebula) - Whole Nebula Parameters
+    # Master UQFF document: May 09, 2025 - "New stars shed light on the past"
+    'M16_M': 2.387e33,          # M = 1,200 M_sun total (gas + stars)
+    'M16_M_gas': 1.989e33,      # M_gas = 1,000 M_sun (gas and dust)
+    'M16_M_stars': 3.978e32,    # M_stars = 200 M_sun (~20 young stars)
+    'M16_r': 3.31e17,           # r = 35 ly half-span (m)
+    'M16_span_ly': 70,          # Full nebula span ~ 70 ly
+    'M16_d_ly': 6500,           # Distance = 6,500 light-years
+    'M16_z': 0.0015,            # Redshift (from distance)
+    'M16_SFR': 1.0,             # SFR = 1 M_sun/yr (average per pillar)
+    'M16_B': 1e-5,              # B = 10^-5 T (nebula magnetic field)
+    'M16_rho_gas': 1e-20,       # Gas density ~ 10^-20 kg/m³
+    'M16_v_gas': 1e5,           # Gas velocity ~ 10^5 m/s
+    'M16_t_age': 1.578e14,      # Age ~ 5 Myr (s)
+    'M16_t_age_stars': 1.734e14,  # Star age ~ 5.5 Myr (s)
+    'M16_N_stars': 20,          # ~20 young O-type stars (~10 M_sun each)
+    'M16_L_O_star': 3.828e31,   # O-type star luminosity = 10^5 L_sun (W)
+    # M16 Computed UQFF Benchmarks (May 2025 document at t = 5 Myr)
+    'g_grav_M16': 1.454e-12,        # Base gravitational acceleration (m/s²)
+    'M_sf_factor_M16': 4.472,       # Star formation growth factor at t=5 Myr
+    'E_rad_factor_M16': 0.2433,     # Erosion factor at t=5 Myr
+    'g_M16_total': 1.053e-3,        # Total UQFF gravity (m/s²)
+    
+    # Crab Nebula (M1, NGC 1952): Supernova remnant with central pulsar
     # Document: r = 5.5 ly = 5.20×10^16 m, B = 10^-4 T (confirmed matches source32.cpp)
+    # Master UQFF document: May 09, 2025 - Crab Nebula Evolution
     'Crab_r': 5.20e16,          # r = 5.5 ly in meters (matches source32.cpp)
-    'Crab_B': 1e-4,             # B = 10^-4 T (document value)
-    'Crab_M': 9.15e30,          # M = 4.6 M_sun (source32.cpp)
+    'Crab_B': 1e-4,             # B = 10^-4 T (near pulsar, document value)
+    'Crab_B_avg': 1e-8,         # B = 10^-8 T (average nebula field)
+    'Crab_M': 9.15e30,          # M = 4.6 M_sun total (source32.cpp)
+    'Crab_M_pulsar': 2.78e30,   # M_pulsar = 1.4 M_sun (neutron star)
+    'Crab_M_ejecta': 6.36e30,   # M_ejecta = 3.2 M_sun (supernova ejecta)
     'Crab_v_exp': 1.5e6,        # v_exp = 1500 km/s expansion velocity
     'Crab_P_pulsar': 5e31,      # P_pulsar = 5×10^31 W (pulsar power)
+    'Crab_spin_Hz': 30.2,       # f_spin = 30.2 Hz (pulsar rotation rate)
+    'Crab_spin_slowdown': 3.8e-10,  # df/dt = 3.8×10^-10 Hz/s (slowdown rate)
+    'Crab_d_ly': 6500,          # Distance = 6,500 light-years
+    'Crab_z': 0.0015,           # Redshift (from distance)
+    'Crab_t_age': 3.064e10,     # Age = 971 years since 1054 AD (s)
+    'Crab_rho_filament': 1e-21, # Filament density ~ 10^-21 kg/m³
+    'Crab_r_pulsar': 1.5e4,     # Pulsar radius ~ 15 km (m)
+    'Crab_r_shock': 3e15,       # Shock front ~ 0.1 pc from pulsar (m)
+    # Master UQFF Computed Benchmarks (May 2025 document at t = 971 yr)
+    'g_grav_Crab': 2.258e-13,       # Base gravitational acceleration (m/s²)
+    'a_wind_Crab': 1.481e6,         # Pulsar wind acceleration (m/s², scaled)
+    'M_mag_Crab': 2.638e-3,         # Magnetic acceleration (m/s², scaled)
+    'g_Crab_total': 1.481e6,        # Total UQFF gravity (dominated by wind)
+    # Resonance frequency for Crab pulsar
+    'omega_pulsar_Crab': 189.8,     # ω_pulsar = 2π × 30.2 Hz (rad/s)
     
     # ═══════════════════════════════════════════════════════════════════════════
     # AFGL/LMC/NGC SYSTEMS (June 06, 2025 - DeepSearch Document)
@@ -986,15 +1042,18 @@ CONSTANTS = {
     # tau_erode = 2×10^6 years (photoevaporation erosion timescale)
     'T_shell': 1.578e13,        # 5×10^5 years in seconds
     'T_sweep': 3.156e11,        # 10^4 years in seconds
+    'T_wind': 3.156e11,         # T_wind = 10^4 years (wind cycle, alias for T_sweep)
     'T_THz': 1e-12,             # THz resonance period (s)
     'tau_erode': 6.312e13,      # 2×10^6 years in seconds (erosion timescale)
     'tau_erode_M16': 9.468e13,  # 3×10^6 years for M16 Eagle Nebula (source31.cpp)
-    'E_0': 0.2,                 # Initial erosion coefficient
+    'E_0': 0.2,                 # Initial erosion coefficient (20% mass loss)
     'E_0_M16': 0.3,             # M16 Eagle Nebula erosion coefficient (source31.cpp)
     
     # Associated angular frequencies (ω = 2π/T)
     'omega_Ug2': 3.978e-13,     # ω_Ug2 = 2π / T_shell (rad/s)
     'omega_Ug3': 1.989e-11,     # ω_Ug3 = 2π / T_sweep (rad/s)
+    'omega_grav': 1.989e-13,    # ω_grav = 2π / T_sf (star formation resonance, rad/s)
+    'omega_mag': 1.989e-11,     # ω_mag = 2π / T_wind (wind/magnetic resonance, rad/s)
     
     # ═══════════════════════════════════════════════════════════════════════════
     # BUOYANCY CALIBRATION CONSTANTS (U_Bi System - June 06, 2025)
@@ -1066,6 +1125,26 @@ CONSTANTS = {
     # Pre-computed: ℏc = 3.164×10^-26 J·m
     'hbar_c': 3.164e-26,        # ℏc product (J·m)
     
+    # Additional UQFF timescales (Feb 2026 Tapestry document):
+    #   T_sf = Star formation timescale for resonance calculations
+    #   theta_eff = Effective angle for near-90° Ug1 calculations
+    #   v_ionized = Ionized gas velocity in THz hole regions
+    'T_sf': 3.156e13,           # T_sf = 10^6 years (s) - star formation timescale
+    'theta_eff': 85.0,          # θ_eff = 85° (effective angle, cos(85°) = 0.0872)
+    'v_ionized': 1e6,           # v_ionized = 10^6 m/s (ionized gas velocity)
+    
+    # Computed UQFF benchmark values (Tapestry validation):
+    #   g_Tapestry ≈ 6.258×10^-2 m/s² (dominated by Ug3 inertial sweeping)
+    #   R_Tapestry ≈ 5.975×10^-2 m/s² (dominated by Ug3 resonance)
+    'g_Tapestry_computed': 6.258e-2,    # Computed gravity (m/s²)
+    'R_Tapestry_computed': 5.975e-2,    # Computed resonance (m/s²)
+    
+    # Individual Ug component benchmarks (Tapestry t=3e6 yr):
+    'Ug1_Tapestry': 4.385e-13,  # Ug1: SM attractive gravity (m/s²)
+    'Ug2_Tapestry': 1.533e-8,   # Ug2: Shell gravity at r_shell (m/s²)
+    'Ug3_Tapestry': 6.258e-2,   # Ug3: Inertial THz hole sweeping (m/s²)
+    'Ug4i_Tapestry': 3.654e-16, # Ug4i: Cosmological communication (m/s²)
+    
     # ═══════════════════════════════════════════════════════════════════════════
     # NGC/CASSINI/ESO SYSTEMS (June 06, 2025 - Buoyancy Document)
     # ═══════════════════════════════════════════════════════════════════════════
@@ -1102,6 +1181,26 @@ CONSTANTS = {
     'Saturn_B': 1e-7,           # B = 10^-7 T (Saturn magnetic field in rings)
     'Saturn_M': 5.683e26,       # Saturn mass (kg)
     'Saturn_rotation': 3.84e4,  # Saturn rotation period (s) ~10.7 hours
+    # Master UQFF document: May 09, 2025 - Saturn Evolution
+    'Saturn_r_eq': 6.0268e7,    # Saturn equatorial radius (m) = 60,268 km
+    'Saturn_r_orbit': 1.43e12,  # Saturn orbital distance (m) = 9.58 AU
+    'Saturn_orbit_period': 9.30e8,  # Orbital period = 29.5 years (s)
+    'Saturn_diameter_km': 120536,   # Equatorial diameter (km)
+    'Saturn_oblateness': 1.12,  # Equatorial/polar diameter ratio
+    'Saturn_M_ring': 1.5e19,    # Ring system mass (kg)
+    'Saturn_r_ring': 7e7,       # Average ring radius (m) = 70,000 km
+    'Saturn_r_ring_outer': 1.4e8,   # Outer ring extent (m) = 140,000 km
+    'Saturn_ring_loss_rate': 100,   # Ring mass loss rate (kg/s)
+    'Saturn_ring_lifetime': 3.15e15,  # Estimated ring lifetime ~ 100 Myr (s)
+    'Saturn_rho_atm': 2e-4,     # Upper atmosphere density (kg/m³)
+    'Saturn_v_wind': 500,       # Average wind speed (m/s) = 1,800 km/h
+    'Saturn_v_wind_max': 1800,  # Maximum wind speed (km/h)
+    # Saturn Computed UQFF Benchmarks (May 2025 document at t = 4.5 Gyr)
+    'g_sun_Saturn': 6.494e-5,   # Solar gravitational acceleration at Saturn orbit (m/s²)
+    'g_Saturn_surface': 10.44,  # Saturn surface gravity (m/s²)
+    'T_ring_accel': 2.043e-7,   # Ring tidal acceleration (m/s²)
+    'a_wind_Saturn': 2.5e-7,    # Atmospheric wind acceleration (scaled, m/s²)
+    'g_Saturn_total': 10.44,    # Total UQFF gravity (dominated by surface g)
     
     # ESO 391-12: Lenticular galaxy
     # Document: r = 4.73×10^20 m, SFR = 0.2 M_sun/yr
@@ -2951,6 +3050,29 @@ CONSTANTS = {
     # Master Universal Gravity Compressed UQFF: g = Σ(Ug1_i + Ug2_i + Ug3_i + Ug4i_i)
     # 26 quantum states mediated by DPM, SCm, UA
     # Each system has: M (kg), r (m), SFR (M_sun/yr), B (T), z, t_age (s)
+    #
+    # ── MASTER COMPRESSED UQFF EQUATION (May 2025 Document) ──────────────────────
+    # g(r,t) = (G×M)/(r²) × (1+H(z)×t) × (1+M_sf(t)) × (1-E_rad(t)) × (1+f_TRZ)
+    #          + q×(v×B) × (1 + ρ_UA/ρ_SCm) × 10^-12
+    #
+    # Where:
+    #   M_sf(t) = M_0 × (1 + SFR × t / M_0)          (star formation growth)
+    #   E_rad(t) = E_0 × (1 - exp(-t/τ_erode))      (radiation erosion)
+    #   H(z) = H_0 × sqrt(Ω_m(1+z)³ + Ω_Λ)          (Hubble parameter)
+    #   ρ_UA/ρ_SCm = 7.09e-36 / 7.09e-37 = 10       (Aether correction)
+    #
+    # ── MASTER RESONANCE UQFF EQUATION ───────────────────────────────────────────
+    # R(t) = R_grav × cos(ω_grav × t) + R_mag × cos(ω_mag × t) × (1+ρ_UA/ρ_SCm) × (1+f_TRZ)
+    #
+    # Where:
+    #   R_grav = (G×M)/(r²) × M_sf(t)               (gravitational resonance amplitude)
+    #   R_mag = q×v×B / m_p × 10^-12                (magnetic resonance amplitude)
+    #   ω_grav = 2π / T_sf (star formation cycle)
+    #   ω_mag = 2π / T_wind (wind/magnetic cycle)
+    #
+    # ── GRAVITY FORMS ────────────────────────────────────────────────────────────
+    # ATTRACTIVE: (G×M)/(r²) classical gravity modulated by M_sf(t) and H(z)×t
+    # REPULSIVE: E_rad(t) radiation erosion, q×(v×B)×ρ_UA/ρ_SCm Aether-mediated
     
     # NGC 2264 (Christmas Tree Cluster - Star-forming region)
     'NGC2264_M': 1.989e36,              # M ~ 10^6 M_sun (kg) [source172.cpp - entire complex]
@@ -2967,6 +3089,20 @@ CONSTANTS = {
     'NGC2264_d_ly': 2300,               # Distance ~ 2,300 ly
     'NGC2264_rho_gas': 1e-20,           # Gas density ~ 10^-20 kg/m³
     'NGC2264_N_stars': 100,             # ~100 young stars (0.5-10 M_sun)
+    # Master UQFF parameters (May 2025 document - focused calculation)
+    'NGC2264_M_May2025': 1.989e33,      # M = 1000 M_sun (focused region)
+    'NGC2264_r_May2025': 4.73e16,       # r = 5 ly half-radius (m)
+    'NGC2264_v_wind': 1e6,              # v_wind = 10^6 m/s (stellar wind)
+    'NGC2264_L_O_star': 3.828e31,       # O-type star luminosity = 10^5 L_sun (W)
+    # NGC 2264 Computed UQFF Benchmarks (May 2025 document at t = 3 Myr)
+    'g_grav_NGC2264': 5.927e-11,        # Base gravitational acceleration (m/s²)
+    'g_NGC2264_Compressed': 1.053e-2,   # Master Compressed UQFF gravity (m/s²)
+    'R_NGC2264_Resonance': 1.161e-2,    # Master Resonance UQFF (m/s²)
+    'R_grav_NGC2264': 1.482e-10,        # Gravitational resonance amplitude (m/s²)
+    'R_mag_NGC2264': 9.575e-4,          # Magnetic resonance amplitude (scaled, m/s²)
+    # Resonance frequencies for NGC 2264
+    'omega_grav_NGC2264': 1.989e-13,    # ω_grav = 2π/T_sf (star formation, rad/s)
+    'omega_mag_NGC2264': 1.989e-11,     # ω_mag = 2π/T_wind (wind cycle, rad/s)
     
     # UGC 10214 (Tadpole Galaxy - Interacting galaxy)
     'UGC10214_M': 1.989e41,             # M ~ 10^11 M_sun (kg)
@@ -2978,6 +3114,8 @@ CONSTANTS = {
     'UGC10214_B': 1e-5,                 # B = 10^-5 T
     'UGC10214_z': 0.028,                # Redshift z = 0.028
     'UGC10214_t_age': 9.46e13,          # Age ~ 3 Gyr (s)
+    # Master UQFF resonance (May 2025 document)
+    'omega_tidal_UGC10214': 1.989e-16,  # ω_tidal = 2π / 10^9 yr (tidal resonance, rad/s)
     
     # NGC 4676 (Mice Galaxies - Interacting pair)
     'NGC4676_M': 3.978e41,              # M ~ 2×10^11 M_sun (kg)
@@ -2987,6 +3125,8 @@ CONSTANTS = {
     'NGC4676_B': 1e-4,                  # B = 10^-4 T
     'NGC4676_z': 0.022,                 # Redshift z = 0.022
     'NGC4676_t_age': 9.46e13,           # Age ~ 3 Gyr (s)
+    # Master UQFF resonance (May 2025 document)
+    'omega_merge_NGC4676': 1.989e-15,   # ω_merge = 2π / 10^8 yr (merger resonance, rad/s)
     
     # NGC 6537 (Red Spider Nebula - Planetary nebula)
     'RedSpider_M': 1.989e30,            # M ~ 1 M_sun (white dwarf)
@@ -2999,6 +3139,8 @@ CONSTANTS = {
     'RedSpider_t_age': 3.15e11,         # Age ~ 10,000 yr (s)
     'RedSpider_v_wind': 2e6,            # v_wind = 2,000 km/s (high-speed outflow)
     'RedSpider_rho_gas': 1e-21,         # Gas density ~ 10^-21 kg/m³
+    # Master UQFF resonance (May 2025 document)
+    'omega_wind_RedSpider': 1.989e-10,  # ω_wind = 2π / 10^3 yr (wind resonance, rad/s)
     
     # NGC 3372 (Carina Nebula - Star-forming region)
     # Note: Carina_* params already exist (lines 913-916)
@@ -3011,6 +3153,8 @@ CONSTANTS = {
     'NGC3372_t_age': 6.31e13,           # Age ~ 2 Myr (s)
     'NGC3372_rho_gas': 1e-20,           # Gas density ~ 10^-20 kg/m³
     'EtaCarinae_M': 2.98e32,            # Eta Carinae mass ~ 150 M_sun (kg)
+    # Master UQFF resonance (May 2025 document)
+    'omega_wind_NGC3372': 1.989e-11,    # ω_wind = 2π / 10^4 yr (stellar wind resonance, rad/s)
     
     # AG Carinae (Luminous blue variable nebula - Wolf-Rayet star)
     'AGCarinae_M': 3.978e31,            # M ~ 20 M_sun (kg)
@@ -3022,6 +3166,8 @@ CONSTANTS = {
     'AGCarinae_t_age': 1.26e14,         # Age ~ 4 Myr (s)
     'AGCarinae_v_wind': 1e6,            # v_wind = 1,000 km/s (LBV wind)
     'AGCarinae_rho_gas': 1e-21,         # Gas density ~ 10^-21 kg/m³
+    # Master UQFF resonance (May 2025 document)
+    'omega_wind_AGCarinae': 1.989e-10,  # ω_wind = 2π / 10^3 yr (LBV wind resonance, rad/s)
     
     # Messier 42 (Orion Nebula - Star-forming region)
     'M42_M': 3.978e33,                  # M ~ 2000 M_sun (kg)
@@ -3032,6 +3178,32 @@ CONSTANTS = {
     'M42_B': 1e-5,                      # B = 10^-5 T
     'M42_z': 0.0004,                    # Redshift
     'M42_t_age': 9.46e13,               # Age ~ 3 Myr (s)
+    # Master UQFF resonance (May 2025 document)
+    'omega_protostellar_M42': 1.989e-11,  # ω_protostellar = 2π / 10^4 yr (outflow resonance, rad/s)
+    
+    # Barnard 33 / Horsehead Nebula (Dark nebula in Orion Molecular Cloud - Infrared view)
+    # Master UQFF document: May 09, 2025 - "Master Universal Gravity Equation for Horsehead Nebula Evolution"
+    # Watermark: Daniel T. Murphy, 01:40 AM EDT, Youngstown, OH, USA
+    'Horsehead_M': 2.387e32,            # M = 120 M_sun (100 gas/dust + 20 young stars, kg)
+    'Horsehead_M_gas': 1.989e32,        # M_gas = 100 M_sun (kg)
+    'Horsehead_M_stars': 3.978e31,      # M_stars = 20 M_sun (2 young stars @ ~10 M_sun each, kg)
+    'Horsehead_r': 1.182e16,            # r = half-diameter (m, 1.25 ly)
+    'Horsehead_span_ly': 2.5,           # Full span ~ 2.5 ly (5.75 arcmin)
+    'Horsehead_d_ly': 1500,             # Distance ~ 1,500 ly
+    'Horsehead_z': 0.0003,              # Redshift
+    'Horsehead_rho_gas': 1e-21,         # Gas density ~ 10^-21 kg/m³
+    'Horsehead_B': 1e-5,                # B = 10^-5 T (nebula magnetic field)
+    'Horsehead_v_gas': 1e5,             # Gas velocity ~ 10^5 m/s
+    'Horsehead_L_SigmaOrionis': 3.826e31,  # Sigma Orionis luminosity ~ 10^5 L_sun (W)
+    'Horsehead_tau_erode': 1.578e14,    # Erosion timescale ~ 5 Myr (s)
+    'Horsehead_E_0': 0.2,               # Erosion factor E_0
+    # Horsehead Computed UQFF Benchmarks (at t = 1 Myr)
+    'g_grav_Horsehead': 1.141e-10,      # Base gravitational acceleration (m/s²)
+    'E_Horsehead': 0.03626,             # Erosion E(t) at t = 1 Myr
+    'Hz_factor_Horsehead': 1.00007161,  # 1 + H(z)*t cosmic expansion factor
+    'P_rad_Horsehead': 4.347e-5,        # Radiation pressure from Sigma Orionis (m/s²)
+    'a_mag_Horsehead': 1.053e-3,        # q*(v×B)*UA_correction*10^-12 (m/s²)
+    'g_Horsehead_total': 1.097e-3,      # Total UQFF gravity (m/s²) - Aether/magnetic dominant
     
     # 30 Doradus (Tarantula Nebula - LMC star-forming region)
     # Note: Tarantula_* params already exist (lines 972-976)
@@ -3041,6 +3213,8 @@ CONSTANTS = {
     'Tarantula_B': 1e-4,                # B = 10^-4 T
     'Tarantula_z': 0.0005,              # Redshift (LMC)
     'Tarantula_t_age': 9.46e13,         # Age ~ 3 Myr (s)
+    # Master UQFF resonance (May 2025 document)
+    'omega_cluster_Tarantula': 1.989e-12,  # ω_cluster = 2π / 10^5 yr (star cluster resonance, rad/s)
     
     # NGC 2841 (Spiral galaxy)
     'NGC2841_M': 1.989e41,              # M ~ 10^11 M_sun (kg)
@@ -3050,6 +3224,8 @@ CONSTANTS = {
     'NGC2841_B': 1e-5,                  # B = 10^-5 T
     'NGC2841_z': 0.0031,                # Redshift
     'NGC2841_t_age': 3.15e17,           # Age ~ 10 Gyr (s)
+    # Master UQFF resonance (May 2025 document)
+    'omega_spiral_NGC2841': 1.989e-15,  # ω_spiral = 2π / 10^8 yr (spiral arm resonance, rad/s)
     
     # Mystic Mountain (Carina pillar - Star-forming region)
     'MysticMountain_M': 1.989e32,       # M ~ 100 M_sun (kg)
@@ -3060,6 +3236,8 @@ CONSTANTS = {
     'MysticMountain_z': 0.0025,         # Redshift (same as Carina)
     'MysticMountain_t_age': 6.31e13,    # Age ~ 2 Myr (s)
     'MysticMountain_rho_gas': 1e-20,    # Gas density ~ 10^-20 kg/m³
+    # Master UQFF resonance (May 2025 document)
+    'omega_jet_MysticMountain': 1.989e-10,  # ω_jet = 2π / 10^3 yr (protostellar jet resonance, rad/s)
     
     # NGC 6217 (Barred spiral galaxy)
     'NGC6217_M': 1.989e41,              # M ~ 10^11 M_sun (kg)
@@ -3070,6 +3248,107 @@ CONSTANTS = {
     'NGC6217_z': 0.0045,                # Redshift
     'NGC6217_t_age': 3.15e17,           # Age ~ 10 Gyr (s)
     'NGC6217_rho_gas': 1e-20,           # Gas density ~ 10^-20 kg/m³
+    
+    # M104 / NGC 4594 (Sombrero Galaxy - Spiral galaxy with prominent bulge/dust lane)
+    # Master UQFF document: May 09, 2025 - "Hubble mosaic of the majestic Sombrero Galaxy"
+    # Located in Virgo Cluster, 28 Mly away, SMBH ~1 billion M_sun
+    'M104_M': 2.009e41,                 # M ~ 10^11 M_sun (galaxy + SMBH, kg)
+    'M104_M_galaxy': 1.989e41,          # M_galaxy ~ 10^11 M_sun (kg)
+    'M104_M_BH': 1.989e39,              # M_BH ~ 10^9 M_sun (SMBH, kg)
+    'M104_r': 2.36e20,                  # r ~ 25,000 ly half-diameter (m)
+    'M104_diameter_ly': 50000,          # Full diameter ~ 50,000 ly
+    'M104_d_Mly': 28,                   # Distance ~ 28 Mly (Virgo Cluster)
+    'M104_z': 0.0063,                   # Redshift
+    'M104_B': 1e-5,                     # B = 10^-5 T (galactic magnetic field)
+    'M104_t_age': 3.156e17,             # Age ~ 10 Gyr (s)
+    'M104_rho_dust': 1e-20,             # Dust lane density ~ 10^-20 kg/m³
+    'M104_v_orbit': 2e5,                # Orbital velocity ~ 200 km/s
+    'M104_r_BH': 1e15,                  # SMBH influence scale ~ 0.1 pc (m)
+    'M104_N_globular': 2000,            # 2,000 globular clusters (2x Milky Way)
+    'M104_M_globular_avg': 1.989e35,    # Average globular cluster mass ~ 10^5 M_sun (kg)
+    # M104 Computed UQFF Benchmarks (May 2025 document at t = 10 Gyr)
+    'g_grav_M104': 2.408e-10,           # Base galactic gravitational acceleration (m/s²)
+    'g_BH_M104': 1.327e-1,              # SMBH gravitational influence (m/s²)
+    'a_dust_M104': 4e-1,                # Dust lane dynamical friction (m/s²)
+    'g_M104_total': 5.351e-1,           # Total UQFF gravity (m/s²)
+    
+    # NGC 1792 "The Stellar Forge" (Starburst spiral galaxy in Columba)
+    # Master UQFF document: May 09, 2025 - "Master Universal Gravity Equation for NGC 1792 Evolution"
+    # Watermark: Daniel T. Murphy, 02:40 AM EDT, Youngstown, OH, USA
+    'NGC1792_M': 1.989e40,              # M = 10^10 M_sun (kg)
+    'NGC1792_r': 3.78e20,               # r = half-diameter (m, 40,000 ly)
+    'NGC1792_diameter_ly': 80000,       # Full diameter ~ 80,000 ly
+    'NGC1792_d_Mly': 42,                # Distance ~ 42 Mly
+    'NGC1792_z': 0.0095,                # Redshift (computed from distance)
+    'NGC1792_SFR': 10.0,                # SFR = 10 M_sun/yr (10× Milky Way)
+    'NGC1792_B': 1e-5,                  # B = 10^-5 T (galactic magnetic field)
+    'NGC1792_rho_gas': 1e-21,           # Gas density ~ 10^-21 kg/m³ (starburst region)
+    'NGC1792_v_wind': 1e6,              # Supernova wind speed ~ 10^6 m/s
+    'NGC1792_tau_starburst': 3.156e15,  # Starburst phase duration ~ 100 Myr (s)
+    'NGC1792_F_sn_0': 0.05,             # Supernova feedback factor F_0
+    # NGC 1792 Computed UQFF Benchmarks (at t = 100 Myr starburst phase)
+    'g_grav_NGC1792': 9.293e-12,        # Base gravitational acceleration (m/s²)
+    'M_sf_factor_NGC1792': 1.1,         # 1 + M_sf(t) mass growth factor
+    'F_sn_NGC1792': 0.031605,           # Supernova feedback F_sn(t)
+    'Hz_factor_NGC1792': 1.007189,      # 1 + H(z)*t cosmic expansion factor
+    'a_mag_NGC1792': 1.053e-2,          # q*(v×B)*UA_correction*10^-12 (m/s²)
+    'g_NGC1792_total': 1.053e-2,        # Total UQFF gravity (m/s²) - magnetic dominant
+    
+    # Hubble Ultra Deep Field (HUDF) - "Galaxies Galore" cosmological deep field in Fornax
+    # Master UQFF document: May 09, 2025 - "Master Universal Gravity Equation for HUDF Evolution"
+    # Watermark: Daniel T. Murphy, 02:20 AM EDT, Youngstown, OH, USA
+    # Observation: Sept 24, 2003 - Jan 16, 2004 (800 exposures, 11.3 days total)
+    'HUDF_M': 1.989e42,                 # M = 10^12 M_sun (kg, total field mass)
+    'HUDF_r': 1.5e22,                   # r = 1.5 Mpc field scale (m)
+    'HUDF_N_galaxies': 10000,           # ~10,000 galaxies in 2.4 arcminute patch
+    'HUDF_angular_size_arcmin': 2.4,    # Angular size of field (arcminutes)
+    'HUDF_z_min': 0.1,                  # Minimum redshift (nearby galaxies)
+    'HUDF_z_max': 7.0,                  # Maximum redshift (z ~ 6-7, earliest galaxies)
+    'HUDF_z_avg': 3.0,                  # Average redshift for calculations
+    'HUDF_d_lookback_Gly': 13.0,        # Lookback distance ~ 13 Gly (z ~ 6-7)
+    'HUDF_t_lookback': 4.103e17,        # Lookback time ~ 13 Gyr (s)
+    'HUDF_SFR': 10000.0,                # SFR = 10,000 M_sun/yr (total field, ~1/galaxy)
+    'HUDF_B': 1e-6,                     # B = 10^-6 T (intergalactic magnetic field)
+    'HUDF_v_galaxy': 1e6,               # Typical galaxy velocity ~ 10^6 m/s
+    'HUDF_tau_merge': 3.156e16,         # Merger timescale ~ 1 Gyr (s)
+    'HUDF_M_merge_0': 0.2,              # Merger adjustment factor
+    # HUDF Computed UQFF Benchmarks (at t = 13 Gyr cosmic evolution)
+    'g_grav_HUDF': 5.902e-13,           # Base gravitational acceleration (m/s²)
+    'M_evo_factor_HUDF': 1.13,          # 1 + M_evo(t) galaxy formation factor
+    'M_merge_HUDF': 0.2,                # M_merge(t) at t = 13 Gyr
+    'Hz_factor_HUDF': 5.148,            # 1 + H(z)*t cosmic expansion factor (z=3 avg)
+    'a_mag_HUDF': 1.053e-3,             # q*(v×B)*UA_correction*10^-12 (m/s²)
+    'g_HUDF_total': 1.053e-3,           # Total UQFF gravity (m/s²) - Aether/EM dominant
+    
+    # NGC 1275 "Magnetic Monster" / Perseus A (Type 1.5 Seyfert galaxy in Perseus Cluster)
+    # Master UQFF document: May 09, 2025 - "Master Universal Gravity Equation for NGC 1275 Evolution"
+    # Watermark: Daniel T. Murphy, 02:00 AM EDT, Youngstown, OH, USA
+    'NGC1275_M': 1.991e42,              # M = 10^12 M_sun galaxy + 8e8 M_sun SMBH (kg)
+    'NGC1275_M_galaxy': 1.989e42,       # M_galaxy ~ 10^12 M_sun (kg)
+    'NGC1275_M_BH': 1.591e39,           # M_BH = 800 million M_sun (kg)
+    'NGC1275_r': 9.46e20,               # r = half-diameter (m, 100,000 ly)
+    'NGC1275_diameter_ly': 200000,      # Full diameter ~ 200,000 ly
+    'NGC1275_d_Mly': 237,               # Distance ~ 237 Mly (Perseus Cluster)
+    'NGC1275_z': 0.0176,                # Redshift
+    'NGC1275_B_filament': 1e-8,         # B = 10^-8 T (filament magnetic field)
+    'NGC1275_v_HVS': 3e6,               # High-velocity system merger speed ~ 3000 km/s
+    'NGC1275_rho_ICM': 1e-24,           # Intracluster medium density ~ 10^-24 kg/m³
+    'NGC1275_rho_filament': 1e-21,      # Filament density ~ 10^-21 kg/m³
+    'NGC1275_T_filament': 1e4,          # Filament temperature ~ 10,000 K
+    'NGC1275_T_ICM': 5.5e7,             # ICM temperature ~ 55 million °C
+    'NGC1275_filament_extent_ly': 20000,  # Filament extent ~ 20,000 ly
+    'NGC1275_filament_width_ly': 200,   # Filament width ~ 200 ly
+    'NGC1275_M_filament': 1.989e36,     # Single filament mass ~ 10^6 M_sun (kg)
+    'NGC1275_tau_filament': 3.156e15,   # Filament lifetime ~ 100 Myr (s)
+    'NGC1275_F_BH_0': 0.1,              # SMBH feedback factor
+    'NGC1275_M_cooling_flow': 2.58e40,  # 13 billion M_sun molecular H₂ infall (kg)
+    # NGC 1275 Computed UQFF Benchmarks (at t = 50 Myr)
+    'g_grav_NGC1275': 1.485e-10,        # Base gravitational acceleration (m/s²)
+    'F_BH_NGC1275': 0.03935,            # SMBH feedback F_BH(t) at t = 50 Myr
+    'Hz_factor_NGC1275': 1.003609,      # 1 + H(z)*t cosmic expansion factor
+    'a_fil_NGC1275': 2.840e-9,          # Magnetic filament support acceleration (m/s²)
+    'a_mag_NGC1275': 3.160e-5,          # q*(v×B)*UA_correction*10^-12 (m/s²)
+    'g_NGC1275_total': 3.160e-5,        # Total UQFF gravity (m/s²) - HVS magnetic dominant
     
     # HCG 92 (Stephan's Quintet - Compact galaxy group)
     'StephansQuintet_M': 9.945e41,      # M ~ 5×10^11 M_sun (kg, total group)
