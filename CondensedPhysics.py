@@ -3714,7 +3714,335 @@ CONSTANTS = {
     'Spirograph_t_age': 3.15e13,        # Age ~ 1,000 yr (s)
     'Spirograph_v_wind': 1.5e6,         # v_wind = 1,500 km/s
     'Spirograph_rho_gas': 1e-21,        # Gas density ~ 10^-21 kg/m³
+    
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # VACUUM FLUCTUATION CONSTANTS (Floyd Sweet, Kozima, Cosmic Egg)
+    # ═══════════════════════════════════════════════════════════════════════════════
+    'omega_vac': 1.99e-7,               # Yearly vacuum oscillation (rad/s) = 2π/(365.25*86400)
+    'delta_V_26D': 0.01,                # 1% volume fluctuation amplitude per 26D layer
+    'k_vac': 1e-20,                     # Vacuum repulsion constant (N·m³/kg²)
+    'omega_cosmic': 6.28e-18,           # Cosmic oscillation (rad/s) ~ 1/age_universe
+    'V_void_0': 1e78,                   # Base void volume (m³) ~ observable universe
+    'E_vac_base': 1e-9,                 # Base vacuum energy (J/m³)
+    'Floyd_Sweet_k': 1e-15,             # Floyd Sweet vacuum coupling constant
+    'Kozima_lambda': 1e-6,              # Kozima LENR screening length (m)
+    'hbar': 1.055e-34,                  # Reduced Planck constant (J·s)
+    'Delta_t_min': 5.39e-44,            # Planck time (s) - minimum Δt
+    'Delta_x_min': 1.616e-35,           # Planck length (m) - minimum Δx
 }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# VACUUM FLUCTUATION CALCULATOR (Floyd Sweet, Heisenberg, 26D Volume Dynamics)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class VacuumFluctuationCalculator:
+    """Time-varying vacuum dynamics: Floyd Sweet vacuum repulsion, 26D volume fluctuations, Heisenberg vacuum energy."""
+    
+    def __init__(self):
+        self.omega_vac = CONSTANTS.get('omega_vac', 1.99e-7)
+        self.delta_V_26D = CONSTANTS.get('delta_V_26D', 0.01)
+        self.k_vac = CONSTANTS.get('k_vac', 1e-20)
+        self.hbar = CONSTANTS.get('hbar', 1.055e-34)
+        self.rho_vac_UA = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        self.rho_vac_SCm = CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+    
+    def compute_time_varying_vacuum(self, t: float, rho_base: float = None) -> tuple:
+        if rho_base is None: rho_base = self.rho_vac_UA
+        modulation = 1 + 0.1 * np.cos(self.omega_vac * t)
+        rho_vac_t = rho_base * modulation
+        steps = f"ρ_vac(t) = {rho_base:.3e} × (1 + 0.1 × cos({self.omega_vac:.3e} × {t:.3e})) = {rho_vac_t:.3e} J/m³"
+        return rho_vac_t, steps
+    
+    def compute_volume_fluctuation_26D(self, i: int, t: float, V_base: float) -> tuple:
+        omega_i = self.omega_vac * i
+        delta_V_i = self.delta_V_26D * (1 + 0.05 * (i - 13))
+        modulation = 1 + delta_V_i * np.sin(omega_i * t)
+        V_i = V_base * modulation
+        steps = f"Layer {i}: V_i(t) = {V_base:.3e} × {modulation:.6f} = {V_i:.3e} m³"
+        return V_i, steps
+    
+    def compute_heisenberg_vacuum_energy(self, Delta_t: float = None) -> tuple:
+        if Delta_t is None: Delta_t = CONSTANTS.get('Delta_t_min', 5.39e-44)
+        E_vac = self.hbar / (2 * Delta_t)
+        steps = f"E_vac = ℏ / (2 × Δt) = {self.hbar:.3e} / (2 × {Delta_t:.3e}) = {E_vac:.3e} J"
+        return E_vac, steps
+    
+    def compute_floyd_sweet_force(self, M: float, v: float, t: float, Delta_rho: float = None) -> tuple:
+        if Delta_rho is None: Delta_rho = self.rho_vac_UA - self.rho_vac_SCm
+        F_vac = self.k_vac * Delta_rho * M * v * np.cos(self.omega_vac * t)
+        steps = f"F_vac_rep = k_vac × Δρ_vac × M × v × cos(ω_c × t) = {F_vac:.3e} N"
+        return F_vac, steps
+
+
+VACUUM_CALCULATOR = VacuumFluctuationCalculator()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MAGNETIC CALCULATOR (Dipole, Magnetar, Flux Dynamics)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class MagneticCalculator:
+    """Magnetic field physics: Ug1 dipole component, magnetar suppression, 26D magnetic sums."""
+    
+    def __init__(self):
+        self.mu_0 = CONSTANTS.get('mu_0', 1.2566e-6)
+        self.B_crit = CONSTANTS.get('B_crit_magnetar', 4.414e13)
+    
+    def compute_Ug1_dipole(self, m_d: float, r: float, UA_i: float = 1.0) -> tuple:
+        Ug1 = (self.mu_0 * m_d * UA_i) / (4 * np.pi * r**3)
+        steps = f"Ug1_i = (μ_0 × m_d × [UA]_i) / (4π × r³) = {Ug1:.3e} m/s²"
+        return Ug1, steps
+    
+    def compute_magnetar_suppression(self, B: float) -> tuple:
+        suppression = 1 - min(B / self.B_crit, 0.99)
+        steps = f"H_SCm = 1 - (B / B_crit) = 1 - ({B:.3e} / {self.B_crit:.3e}) = {suppression:.6f}"
+        return suppression, steps
+
+
+MAGNETIC_CALCULATOR = MagneticCalculator()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# QUANTUM CALCULATOR (ℏ-Scaled Effects, Tunneling, Superposition)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class QuantumCalculator:
+    """Quantum-scale physics: Ug_quantum, tunneling probability, quantum gravity correction."""
+    
+    def __init__(self):
+        self.hbar = CONSTANTS.get('hbar', 1.055e-34)
+        self.c = CONSTANTS.get('c', 2.998e8)
+        self.G = CONSTANTS.get('G', 6.674e-11)
+    
+    def compute_Ug_quantum(self, omega_q: float, m: float, r: float) -> tuple:
+        Ug_q = (self.hbar * omega_q) / (m * self.c**2 * r)
+        steps = f"Ug_quantum = (ℏ × ω_q) / (m × c² × r) = {Ug_q:.3e} m/s²"
+        return Ug_q, steps
+    
+    def compute_tunneling_probability(self, V: float, E: float, L: float, m: float) -> tuple:
+        if V <= E: return 1.0, "V ≤ E: No barrier, P = 1.0"
+        kappa = np.sqrt(2 * m * (V - E)) / self.hbar
+        P = np.exp(-2 * kappa * L)
+        steps = f"P = exp(-2κL) = exp(-2 × {kappa:.3e} × {L:.3e}) = {P:.6e}"
+        return P, steps
+
+
+QUANTUM_CALCULATOR = QuantumCalculator()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# RESONANCE CALCULATOR (MUGE 13 Resonance Terms, Frequency Modes)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class ResonanceCalculator:
+    """MUGE Resonance: aSuperFreq, aQuantumFreq, aAetherFreq, aFluidFreq, aExpFreq, aAetherRes, fTRZ, Wormhole metric."""
+    
+    def __init__(self):
+        self.c = CONSTANTS.get('c', 2.998e8)
+        self.G = CONSTANTS.get('G', 6.674e-11)
+        self.H_0 = CONSTANTS.get('H_0', 2.268e-18)
+    
+    def compute_aSuperFreq(self, M: float, r: float, omega_super: float, t: float) -> tuple:
+        a = (self.G * M / r**2) * np.sin(omega_super * t) * 0.001
+        return a, f"aSuperFreq = (G×M/r²) × sin(ω_super×t) × 0.001 = {a:.3e} m/s²"
+    
+    def compute_aQuantumFreq(self, hbar: float, omega_q: float, m: float, r: float) -> tuple:
+        a = (hbar * omega_q) / (m * r**2)
+        return a, f"aQuantumFreq = (ℏ×ω_q)/(m×r²) = {a:.3e} m/s²"
+    
+    def compute_aAetherFreq(self, rho_aether: float, v: float, omega_a: float, t: float) -> tuple:
+        a = rho_aether * v**2 * np.cos(omega_a * t) / (4 * np.pi)
+        return a, f"aAetherFreq = ρ_aether×v²×cos(ω_a×t)/(4π) = {a:.3e} m/s²"
+    
+    def compute_aFluidFreq(self, rho: float, v: float, eta: float, L: float, omega_f: float, t: float) -> tuple:
+        a = (eta * v / (rho * L**2)) * np.sin(omega_f * t)
+        return a, f"aFluidFreq = (η×v/(ρ×L²))×sin(ω_f×t) = {a:.3e} m/s²"
+    
+    def compute_aExpFreq(self, r: float, t: float) -> tuple:
+        a = self.H_0 * self.c * np.sin(self.H_0 * t)
+        return a, f"aExpFreq = H_0×c×sin(H_0×t) = {a:.3e} m/s²"
+    
+    def compute_aAetherRes(self, Delta_rho: float, r: float) -> tuple:
+        a = self.G * Delta_rho * (4 * np.pi * r / 3)
+        return a, f"aAetherRes = G×Δρ_aether×(4π×r/3) = {a:.3e} m/s²"
+    
+    def compute_fTRZ(self, r: float, r_inner: float, r_outer: float) -> tuple:
+        if r_inner <= r <= r_outer: f = 1.0
+        elif r < r_inner: f = np.exp(-(r_inner - r) / r_inner)
+        else: f = np.exp(-(r - r_outer) / r_outer)
+        return f, f"fTRZ(r={r:.3e}) = {f:.6f}"
+    
+    def compute_Wormhole_metric(self, r: float, r_throat: float, b_shape: float = 1.0) -> tuple:
+        b_r = b_shape * r_throat
+        g_tt = -(1 - b_r / r) if r > b_r else -0.01
+        return g_tt, f"g_tt = -(1 - b(r)/r) = {g_tt:.6f}"
+
+
+RESONANCE_CALCULATOR = ResonanceCalculator()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# TRIADIC CALCULATOR (3-Body Interactions, L4/L5 Points, Triple Resonance)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class TriadicCalculator:
+    """Three-body dynamics: triadic gravity sum, Lagrange L4/L5 stability, triple resonance."""
+    
+    def __init__(self):
+        self.G = CONSTANTS.get('G', 6.674e-11)
+    
+    def compute_triadic_gravity(self, M1: float, M2: float, M3: float, r12: float, r13: float, r23: float, pos: tuple) -> tuple:
+        g1 = self.G * M1 / pos[0]**2 if pos[0] > 0 else 0
+        g2 = self.G * M2 / pos[1]**2 if pos[1] > 0 else 0
+        g3 = self.G * M3 / pos[2]**2 if pos[2] > 0 else 0
+        g_coupling = self.G * (M1*M2/r12**2 + M2*M3/r23**2 + M1*M3/r13**2) * 1e-6
+        g_total = g1 + g2 + g3 + g_coupling
+        return g_total, f"g_triadic = g₁+g₂+g₃+g_coupling = {g_total:.3e} m/s²"
+    
+    def compute_lagrange_L4_L5(self, M1: float, M2: float, a: float) -> tuple:
+        mu = M2 / (M1 + M2)
+        L4 = (a * (0.5 - mu), a * np.sqrt(3) / 2)
+        L5 = (a * (0.5 - mu), -a * np.sqrt(3) / 2)
+        stable = mu < 0.0385
+        return L4, L5, stable, f"L4={L4}, L5={L5}, Stable={stable}"
+
+
+TRIADIC_CALCULATOR = TriadicCalculator()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# BUOYANCY CALCULATOR (Archimedes, Vacuum Buoyancy, UQFF Ub/Ui)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class BuoyancyCalculator:
+    """UQFF Buoyancy: vacuum buoyancy force, Ub component, Ui inertial, master buoyant equation."""
+    
+    def __init__(self):
+        self.G = CONSTANTS.get('G', 6.674e-11)
+        self.c = CONSTANTS.get('c', 2.998e8)
+        self.rho_vac_UA = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        self.k_eta = CONSTANTS.get('k_eta', 1e-113)
+    
+    def compute_vacuum_buoyancy_force(self, V: float, g_local: float, rho_vac: float = None) -> tuple:
+        if rho_vac is None: rho_vac = self.rho_vac_UA
+        F_b = -rho_vac * V * g_local
+        return F_b, f"F_b = -ρ_vac × V × g_local = {F_b:.3e} N"
+    
+    def compute_Ub(self, M: float, V: float, g_local: float, SCm_i: float = 1.0, rho_vac: float = None) -> tuple:
+        if rho_vac is None: rho_vac = self.rho_vac_UA
+        Ub = (rho_vac * V * g_local * SCm_i) / M
+        return Ub, f"Ub_i = (ρ_vac × V × g_local × [SCm]_i) / M = {Ub:.3e} m/s²"
+    
+    def compute_Ui(self, V: float, v: float, UA_i: float = 1.0, rho_vac: float = None) -> tuple:
+        if rho_vac is None: rho_vac = self.rho_vac_UA
+        Ui = -self.k_eta * rho_vac * V * (v / self.c)**2 * UA_i
+        return Ui, f"Ui_i = -k_η × ρ_vac × V × (v/c)² × [UA]_i = {Ui:.3e} m/s²"
+    
+    def compute_master_buoyant(self, M: float, V: float, r: float, v: float = 0, UA_i: float = 1.0, SCm_i: float = 1.0) -> tuple:
+        g_local = self.G * M / r**2
+        Ub, _ = self.compute_Ub(M, V, g_local, SCm_i)
+        Ui, _ = self.compute_Ui(V, v, UA_i)
+        a_net = g_local - Ub + Ui
+        F_net = M * a_net
+        return F_net, f"F_U_Bi_i = M×(g - Ub + Ui) = {F_net:.3e} N"
+
+
+BUOYANCY_CALCULATOR = BuoyancyCalculator()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# COSMOLOGICAL CALCULATOR (Hubble, Dark Energy, Expansion Dynamics)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class CosmologicalCalculator:
+    """Large-scale cosmology: Hubble acceleration, dark energy, cosmic-corrected gravity."""
+    
+    def __init__(self):
+        self.H_0 = CONSTANTS.get('H_0', 2.268e-18)
+        self.c = CONSTANTS.get('c', 2.998e8)
+        self.Lambda = 1.11e-52  # Cosmological constant (m⁻²)
+        self.G = CONSTANTS.get('G', 6.674e-11)
+    
+    def compute_hubble_acceleration(self, r: float) -> tuple:
+        a = self.H_0**2 * r
+        return a, f"a_Hubble = H₀² × r = {a:.3e} m/s²"
+    
+    def compute_dark_energy_acceleration(self, r: float) -> tuple:
+        a = (self.Lambda * self.c**2 / 3) * r
+        return a, f"a_Λ = (Λ × c² / 3) × r = {a:.3e} m/s²"
+    
+    def compute_cosmic_corrected_gravity(self, M: float, r: float) -> tuple:
+        g_newton = self.G * M / r**2
+        a_H, _ = self.compute_hubble_acceleration(r)
+        a_L, _ = self.compute_dark_energy_acceleration(r)
+        g_cosmic = g_newton - a_H - a_L
+        return g_cosmic, f"g_cosmic = G×M/r² - a_H - a_Λ = {g_cosmic:.3e} m/s²"
+
+
+COSMOLOGICAL_CALCULATOR = CosmologicalCalculator()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SUPERCONDUCTIVE CALCULATOR (BCS, Flux Quantization, Cooper Pairs)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class SuperconductiveCalculator:
+    """Superconductivity: H_SCm coefficient, Cooper pair density, London depth, BCS gap."""
+    
+    def __init__(self):
+        self.mu_0 = CONSTANTS.get('mu_0', 1.2566e-6)
+        self.e = 1.602e-19
+        self.m_e = 9.109e-31
+        self.Phi_0 = 2.068e-15
+        self.k_B = 1.381e-23
+    
+    def compute_H_SCm(self, T: float, T_c: float) -> tuple:
+        if T >= T_c: return 0.0, f"T ≥ T_c: H_SCm = 0 (normal state)"
+        H_SCm = 1 - (T / T_c)**4
+        return H_SCm, f"H_SCm = 1 - (T/T_c)⁴ = {H_SCm:.6f}"
+    
+    def compute_cooper_pair_density(self, n_0: float, T: float, T_c: float) -> tuple:
+        if T >= T_c: return 0.0, "n_s = 0 (normal state)"
+        n_s = n_0 * (1 - (T / T_c)**2)
+        return n_s, f"n_s = n_0 × (1 - (T/T_c)²) = {n_s:.3e} m⁻³"
+    
+    def compute_london_depth(self, n_s: float) -> tuple:
+        if n_s <= 0: return float('inf'), "n_s = 0: λ_L → ∞"
+        lambda_L = np.sqrt(2 * self.m_e / (self.mu_0 * n_s * self.e**2))
+        return lambda_L, f"λ_L = √(m/(μ_0×n_s×e²)) = {lambda_L:.3e} m"
+    
+    def compute_BCS_gap(self, T_c: float, T: float = 0) -> tuple:
+        Delta_0 = 1.764 * self.k_B * T_c
+        if T == 0: Delta_T = Delta_0
+        elif T >= T_c: Delta_T = 0.0
+        else: Delta_T = Delta_0 * np.sqrt(1 - (T / T_c)**2)
+        return Delta_T, f"Δ(0) = 1.764×k_B×T_c = {Delta_0:.3e} J, Δ({T}K) = {Delta_T:.3e} J"
+
+
+SUPERCONDUCTIVE_CALCULATOR = SuperconductiveCalculator()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ALL CALCULATORS TEST RUNNER
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def run_all_calculator_tests() -> dict:
+    """Run tests for all 8 calculator classes"""
+    results = {'VacuumFluctuation': True, 'Magnetic': True, 'Quantum': True, 'Resonance': True,
+               'Triadic': True, 'Buoyancy': True, 'Cosmological': True, 'Superconductive': True}
+    try:
+        VACUUM_CALCULATOR.compute_time_varying_vacuum(1e10)
+        MAGNETIC_CALCULATOR.compute_Ug1_dipole(1e25, 1e6)
+        QUANTUM_CALCULATOR.compute_Ug_quantum(1e15, 1e-27, 1e-10)
+        RESONANCE_CALCULATOR.compute_aSuperFreq(1e30, 1e8, 1e-5, 1e10)
+        TRIADIC_CALCULATOR.compute_triadic_gravity(1e30, 1e28, 1e26, 1e11, 2e11, 1.5e11, (1e10, 2e10, 3e10))
+        BUOYANCY_CALCULATOR.compute_vacuum_buoyancy_force(1e20, 10)
+        COSMOLOGICAL_CALCULATOR.compute_hubble_acceleration(1e26)
+        SUPERCONDUCTIVE_CALCULATOR.compute_H_SCm(4.2, 9.2)
+    except Exception as e:
+        return {'error': str(e), 'all_passed': False}
+    return {'all_passed': True, **results}
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
