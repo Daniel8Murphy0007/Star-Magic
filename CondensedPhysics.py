@@ -3946,6 +3946,141 @@ class BuoyancyCalculator:
         a_net = g_local - Ub + Ui
         F_net = M * a_net
         return F_net, f"F_U_Bi_i = M×(g - Ub + Ui) = {F_net:.3e} N"
+    
+    def compute_Ubi(self, Ug_i: float, beta_i: float = 0.603, Omega_g: float = 7.3e-16,
+                    M_bh: float = 8.155e36, d_g: float = 2.55e20, epsilon_sw: float = 0.001,
+                    rho_sw: float = 8e-21, U_UA: float = 0.0001, t_n: float = 0.1) -> tuple:
+        """
+        Compute Universal Buoyancy (per layer) - source6.cpp formula
+        Ub_i = -β_i × Ug_i × Ω_g × M_bh/d_g × wind_mod × U_UA × cos(πt_n)
+        
+        Parameters:
+            Ug_i: Gravity component for layer i (m/s²)
+            beta_i: Buoyancy coupling constant (default 0.603)
+            Omega_g: Galactic spin rate (rad/s)
+            M_bh: Black hole mass (kg)
+            d_g: Distance from galactic center (m)
+            epsilon_sw: Solar wind modulation factor
+            rho_sw: Solar wind density (kg/m³)
+            U_UA: Universal Aether buoyancy factor
+            t_n: Normalized time parameter
+        """
+        import math
+        PI = math.pi
+        if d_g <= 0:
+            raise ValueError("d_g must be positive")
+        wind_mod = 1.0 + epsilon_sw * rho_sw
+        Ub_i = -beta_i * Ug_i * Omega_g * M_bh / d_g * wind_mod * U_UA * math.cos(PI * t_n)
+        return Ub_i, f"Ub_i = -β_i × Ug_i × Ω_g × (M_bh/d_g) × wind × U_UA × cos(πt_n) = {Ub_i:.3e} m/s²"
+    
+    def compute_F_U_Bi_i(self, M: float, r: float, v: float = 0, B0: float = 1e-4, t: float = 0) -> tuple:
+        """
+        Compute F_U_Bi_i: Universal Buoyancy Integral (11-term force) - source2.cpp
+        
+        F_U_Bi_i = integrand × x₂
+        integrand = F_LENR + F_act + F_DE + F_neutron + F_relativistic + 
+                    F_vac_rep + F_thz_shock + F_conduit + F_spooky
+        
+        Parameters:
+            M: Mass (kg)
+            r: Radius (m)
+            v: Velocity (m/s)
+            B0: Magnetic field (T)
+            t: Time (s)
+        """
+        import math
+        PI = math.pi
+        
+        # UQFF Constants
+        k_LENR = 1e-10
+        k_act = 1e-14
+        k_DE = 1e-16
+        k_neutron = 1e-20
+        k_rel = 1e-12
+        k_vac = 1e-10
+        k_thz = 1e-15
+        k_conduit = 1e-18
+        k_spooky = 1e-20
+        omega0 = 1e-16
+        rho_vac_UA = 7.09e-36
+        rho_vac_SCm = 7.09e-37
+        
+        # 1. LENR term (1.2 THz)
+        omega_LENR = 1.2e12
+        Q_wave = 1e6
+        F_LENR = k_LENR * (omega_LENR / omega0)**2 * Q_wave
+        
+        # 2. Activation term (Colman-Gillespie 300 Hz)
+        omega_act = 2 * PI * 300
+        F_act = k_act * (omega_act / omega0)**2
+        
+        # 3. Directed Energy term
+        F_DE = k_DE * M * v * v / r if r > 0 else 0
+        
+        # 4. Neutron term
+        n_neutron = 1e20
+        sigma_n = 1e-28
+        F_neutron = k_neutron * n_neutron * sigma_n
+        
+        # 5. Relativistic term (LEP reference)
+        F_rel = 4.30e33
+        F_relativistic = k_rel * F_rel
+        
+        # 6. Vacuum repulsion term
+        Delta_rho_vac = rho_vac_UA - rho_vac_SCm
+        F_vac_rep = k_vac * Delta_rho_vac * M * v
+        
+        # 7. THz shock wave term
+        omega_thz = 2 * PI * 1e12
+        F_thz_shock = k_thz * (omega_thz / omega0)**2
+        
+        # 8. Conduit term
+        F_conduit = k_conduit * B0
+        
+        # 9. Spooky action term
+        string_wave = 1e15
+        F_spooky = k_spooky * (string_wave / omega0)
+        
+        # Combined integrand
+        integrand = (F_LENR + F_act + F_DE + F_neutron + F_relativistic + 
+                     F_vac_rep + F_thz_shock + F_conduit + F_spooky)
+        
+        # Quadratic approximation scaling factor x_2
+        std_scale = 1.0
+        V_void_fraction = 0.01
+        a_quad = std_scale
+        b_quad = -integrand / 1e12
+        c_quad = V_void_fraction * 1e12
+        discriminant = b_quad * b_quad - 4 * a_quad * c_quad
+        x_2 = (-b_quad + math.sqrt(discriminant)) / (2 * a_quad) if discriminant >= 0 else 1.0
+        
+        F_U_Bi_i = integrand * x_2
+        
+        derivation = f"""F_U_Bi_i Universal Buoyancy Integral (11-term force)
+═══════════════════════════════════════════════════════════════════════════════
+Formula: F_U_Bi_i = (F_LENR + F_act + F_DE + F_neutron + F_relativistic + 
+                     F_vac_rep + F_thz_shock + F_conduit + F_spooky) × x₂
+
+INDIVIDUAL TERMS:
+  1. F_LENR (1.2 THz):        {F_LENR:.4e} N
+  2. F_act (300 Hz):          {F_act:.4e} N
+  3. F_DE (directed energy):  {F_DE:.4e} N
+  4. F_neutron:               {F_neutron:.4e} N
+  5. F_relativistic (LEP):    {F_relativistic:.4e} N
+  6. F_vac_rep:               {F_vac_rep:.4e} N
+  7. F_thz_shock:             {F_thz_shock:.4e} N
+  8. F_conduit:               {F_conduit:.4e} N
+  9. F_spooky:                {F_spooky:.4e} N
+
+INTERMEDIATE:
+  integrand = {integrand:.4e} N
+  x₂ (quadratic scaling) = {x_2:.4e}
+
+FINAL RESULT:
+  F_U_Bi_i = {F_U_Bi_i:.4e} N
+═══════════════════════════════════════════════════════════════════════════════"""
+        
+        return F_U_Bi_i, derivation
 
 
 BUOYANCY_CALCULATOR = BuoyancyCalculator()
@@ -4021,6 +4156,521 @@ class SuperconductiveCalculator:
 
 
 SUPERCONDUCTIVE_CALCULATOR = SuperconductiveCalculator()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MUGE CALCULATOR (Compressed + Resonance MUGE - 9-term and 13-term)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class MUGECalculator:
+    """
+    Master Universal Gravity Equation Calculator
+    
+    Two modes:
+    1. Compressed MUGE (9 terms): base × expansion × super_adj × env + corrections
+    2. Resonance MUGE (13 terms): aDPM + frequency modes
+    
+    From source5.cpp and MAIN_1_CoAnQi.cpp (SOURCE4)
+    """
+    
+    def __init__(self):
+        self.G = CONSTANTS.get('G', 6.674e-11)
+        self.c = CONSTANTS.get('c', 2.998e8)
+        self.hbar = CONSTANTS.get('hbar', 1.055e-34)
+        self.H_0 = CONSTANTS.get('H_0', 2.268e-18)
+        self.Lambda = 1.11e-52  # Cosmological constant (m⁻²)
+        self.PI = 3.14159265358979323846
+        self.t_Hubble = 4.35e17  # Hubble time (s)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # COMPRESSED MUGE: 9-TERM FORMULATION
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_g_Newtonian(self, M: float, r: float) -> tuple:
+        """Term 1: Newtonian base gravity g_base = G×M/r²"""
+        if r <= 0:
+            raise ValueError("r must be positive")
+        g = self.G * M / (r * r)
+        return g, f"g_Newtonian = G×M/r² = {g:.4e} m/s²"
+    
+    def compute_a_Expansion(self, t: float) -> tuple:
+        """Term 2: Hubble expansion factor exp(2πH₀t/c)"""
+        expansion = np.exp(2 * self.PI * self.H_0 * t / self.c)
+        return expansion, f"a_Expansion = exp(2πH₀t/c) = {expansion:.6f}"
+    
+    def compute_super_adj(self, B: float, B_crit: float = 4.4e13) -> tuple:
+        """Term 3: Magnetic suppression 1 - B/B_crit"""
+        if B_crit <= 0:
+            raise ValueError("B_crit must be positive")
+        super_adj = 1.0 - B / B_crit
+        return super_adj, f"super_adj = 1 - B/B_crit = {super_adj:.6f}"
+    
+    def compute_a_Envelope(self) -> tuple:
+        """Term 4: Envelope factor (default 1.0)"""
+        env = 1.0
+        return env, f"a_Envelope = {env:.6f}"
+    
+    def compute_Ug_sum(self, Ug1: float = 0, Ug2: float = 0, Ug3: float = 0, Ug4: float = 0) -> tuple:
+        """Term 5: Sum of Ug1-4 components"""
+        Ug_sum = Ug1 + Ug2 + Ug3 + Ug4
+        return Ug_sum, f"Ug_sum = Ug1 + Ug2 + Ug3 + Ug4 = {Ug_sum:.4e} m/s²"
+    
+    def compute_cosm_term(self, r: float = 1e20) -> tuple:
+        """Term 6: Cosmological constant term Λc²/3"""
+        cosm = (self.Lambda * self.c * self.c / 3)
+        return cosm, f"cosm = Λc²/3 = {cosm:.4e} m/s²"
+    
+    def compute_quantum_term(self, Delta_x_p: float = 1e-68, integral_psi: float = 2.176e-18) -> tuple:
+        """Term 7: Quantum term (ℏ/Δx·Δp)×⟨ψ|H|ψ⟩×(2π/t_H)"""
+        if Delta_x_p == 0:
+            raise ValueError("Delta_x_p cannot be zero")
+        quantum = (self.hbar / Delta_x_p) * integral_psi * (2 * self.PI / self.t_Hubble)
+        return quantum, f"quantum = (ℏ/Δx·Δp)×⟨ψ|H|ψ⟩×(2π/t_H) = {quantum:.4e} m/s²"
+    
+    def compute_fluid_term(self, rho_fluid: float, V_sys: float, g_local: float) -> tuple:
+        """Term 8: Fluid dynamics term ρ_fluid×V_sys×g_local"""
+        fluid = rho_fluid * V_sys * g_local
+        return fluid, f"fluid = ρ_fluid×V_sys×g_local = {fluid:.4e} N"
+    
+    def compute_perturbation(self, M: float, M_DM: float, delta_rho_rho: float, r: float) -> tuple:
+        """Term 9: Dark matter perturbation (M + M_DM)×(δρ/ρ + 3GM/r³)"""
+        if r <= 0:
+            raise ValueError("r must be positive")
+        perturbation = (M + M_DM) * (delta_rho_rho + 3 * self.G * M / (r * r * r))
+        return perturbation, f"perturbation = (M + M_DM)×(δρ/ρ + 3GM/r³) = {perturbation:.4e}"
+    
+    def compute_compressed_MUGE(self, M: float, r: float, t: float = 0, B: float = 0,
+                                  B_crit: float = 4.4e13, Ug1: float = 0, Ug2: float = 0,
+                                  Ug3: float = 0, Ug4: float = 0, rho_fluid: float = 1e-20,
+                                  V_sys: float = 1e30, M_DM: float = 0, delta_rho_rho: float = 0.01) -> tuple:
+        """
+        Complete Compressed MUGE (9-term formulation)
+        
+        g_compressed = (g_base × expansion × super_adj × env) + Ug_sum + cosm + quantum + fluid + perturbation
+        """
+        # Term 1: Newtonian base
+        g_base, _ = self.compute_g_Newtonian(M, r)
+        
+        # Term 2: Hubble expansion factor
+        expansion, _ = self.compute_a_Expansion(t)
+        
+        # Term 3: Magnetic suppression
+        super_adj, _ = self.compute_super_adj(B, B_crit)
+        
+        # Term 4: Envelope
+        env, _ = self.compute_a_Envelope()
+        
+        # Adjusted base
+        adjusted_base = g_base * expansion * super_adj * env
+        
+        # Term 5: Ug sum
+        Ug_sum, _ = self.compute_Ug_sum(Ug1, Ug2, Ug3, Ug4)
+        
+        # Term 6: Cosmological
+        cosm, _ = self.compute_cosm_term(r)
+        
+        # Term 7: Quantum
+        quantum, _ = self.compute_quantum_term()
+        
+        # Term 8: Fluid
+        g_local = g_base
+        fluid, _ = self.compute_fluid_term(rho_fluid, V_sys, g_local)
+        
+        # Term 9: Perturbation
+        perturbation, _ = self.compute_perturbation(M, M_DM, delta_rho_rho, r)
+        
+        # Total
+        g_compressed = adjusted_base + Ug_sum + cosm + quantum + fluid + perturbation
+        
+        derivation = f"""Compressed MUGE (9-term Master Universal Gravity Equation)
+═══════════════════════════════════════════════════════════════════════════════
+Formula: g = (g_base × expansion × super_adj × env) + Ug_sum + cosm + quantum + fluid + perturbation
+
+TERM BREAKDOWN:
+  1. g_Newtonian = G×M/r²         = {g_base:.4e} m/s²
+  2. a_Expansion = exp(2πH₀t/c)   = {expansion:.6f}
+  3. super_adj = 1 - B/B_crit     = {super_adj:.6f}
+  4. a_Envelope                    = {env:.6f}
+     → adjusted_base              = {adjusted_base:.4e} m/s²
+  5. Ug_sum = Ug1+Ug2+Ug3+Ug4     = {Ug_sum:.4e} m/s²
+  6. cosm = Λc²/3                 = {cosm:.4e} m/s²
+  7. quantum = (ℏ/Δx·Δp)×⟨ψ|H|ψ⟩  = {quantum:.4e} m/s²
+  8. fluid = ρ×V×g                = {fluid:.4e} N
+  9. perturbation = (M+M_DM)×...  = {perturbation:.4e}
+
+FINAL RESULT:
+  g_compressed = {g_compressed:.4e} m/s²
+═══════════════════════════════════════════════════════════════════════════════"""
+        
+        return g_compressed, derivation
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # RESONANCE MUGE: 13-TERM FORMULATION
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_aDPM(self, I: float, A: float, omega1: float, omega2: float, 
+                     V_sys: float, f_DPM: float = 1.0, E_vac_neb: float = 7.09e-36, 
+                     c_res: float = 3e8) -> tuple:
+        """Term 1: Dipole Moment Acceleration"""
+        F_DPM = I * A * (omega1 - omega2)
+        a_DPM = F_DPM * f_DPM * E_vac_neb * c_res * V_sys
+        return a_DPM, f"a_DPM = F_DPM × f_DPM × E_vac × c × V_sys = {a_DPM:.4e} m/s²"
+    
+    def compute_aTHz(self, a_DPM: float, v_exp: float, f_THz: float = 1e12,
+                     E_vac_neb: float = 7.09e-36, E_vac_ISM: float = 6.381e-36,
+                     c_res: float = 3e8) -> tuple:
+        """Term 2: THz Vacuum Energy"""
+        if E_vac_ISM == 0 or c_res == 0:
+            return 0.0, "a_THz = 0 (E_vac_ISM or c_res = 0)"
+        a_THz = f_THz * E_vac_neb * v_exp * a_DPM / (E_vac_ISM * c_res)
+        return a_THz, f"a_THz = f_THz × E_vac_neb × v_exp × a_DPM / (E_vac_ISM × c) = {a_THz:.4e} m/s²"
+    
+    def compute_avac_diff(self, a_DPM: float, v_exp: float, Delta_E_vac: float = 7.09e-37,
+                          E_vac_neb: float = 7.09e-36, c_res: float = 3e8) -> tuple:
+        """Term 3: Vacuum Energy Differential"""
+        if E_vac_neb == 0 or c_res == 0:
+            return 0.0, "a_vac_diff = 0 (E_vac_neb or c_res = 0)"
+        a_vac_diff = Delta_E_vac * v_exp * v_exp * a_DPM / (E_vac_neb * c_res * c_res)
+        return a_vac_diff, f"a_vac_diff = ΔE_vac × v_exp² × a_DPM / (E_vac_neb × c²) = {a_vac_diff:.4e} m/s²"
+    
+    def compute_aSuperFreq(self, a_DPM: float, F_super: float = 1e-8, f_THz: float = 1e12,
+                           E_vac_neb: float = 7.09e-36, c_res: float = 3e8) -> tuple:
+        """Term 4: Superfluid Frequency"""
+        if E_vac_neb == 0 or c_res == 0:
+            return 0.0, "a_SuperFreq = 0 (E_vac_neb or c_res = 0)"
+        a_SuperFreq = F_super * f_THz * a_DPM / (E_vac_neb * c_res)
+        return a_SuperFreq, f"a_SuperFreq = F_super × f_THz × a_DPM / (E_vac_neb × c) = {a_SuperFreq:.4e} m/s²"
+    
+    def compute_aAetherRes(self, a_DPM: float, UA_SCM: float = 0.0001, omega_i: float = 1e-10,
+                           f_THz: float = 1e12, f_TRZ: float = 0.1) -> tuple:
+        """Term 5: Aether Resonance"""
+        a_Aether = UA_SCM * omega_i * f_THz * a_DPM * (1 + f_TRZ)
+        return a_Aether, f"a_Aether = UA_SCM × ω_i × f_THz × a_DPM × (1 + f_TRZ) = {a_Aether:.4e} m/s²"
+    
+    def compute_Ug4i(self, a_DPM: float, t: float, k4_res: float = 2.0, f_react: float = 1.0,
+                     E_vac_neb: float = 7.09e-36, c_res: float = 3e8, kappa: float = 0.0005) -> tuple:
+        """Term 6: Wave Dissipation (Ug4i)"""
+        E_react = 1046 * np.exp(-kappa * t)
+        if E_vac_neb == 0:
+            return 0.0, "Ug4i = 0 (E_vac_neb = 0)"
+        Ug4i = k4_res * E_react * f_react * a_DPM / E_vac_neb * c_res
+        return Ug4i, f"Ug4i = k4 × E_react × f_react × a_DPM × c / E_vac_neb = {Ug4i:.4e} m/s²"
+    
+    def compute_aQuantumFreq(self, a_DPM: float, f_quantum: float = 1e-20,
+                              E_vac_neb: float = 7.09e-36, E_vac_ISM: float = 6.381e-36,
+                              c_res: float = 3e8) -> tuple:
+        """Term 7: Quantum Frequency"""
+        if E_vac_ISM == 0 or c_res == 0:
+            return 0.0, "a_quantum_freq = 0 (E_vac_ISM or c_res = 0)"
+        a_quantum = f_quantum * E_vac_neb * a_DPM / (E_vac_ISM * c_res)
+        return a_quantum, f"a_quantum_freq = f_quantum × E_vac_neb × a_DPM / (E_vac_ISM × c) = {a_quantum:.4e} m/s²"
+    
+    def compute_aAetherFreq(self, a_DPM: float, f_Aether: float = 1e-15,
+                            E_vac_neb: float = 7.09e-36, E_vac_ISM: float = 6.381e-36,
+                            c_res: float = 3e8) -> tuple:
+        """Term 8: Aether Frequency"""
+        if E_vac_ISM == 0 or c_res == 0:
+            return 0.0, "a_Aether_freq = 0 (E_vac_ISM or c_res = 0)"
+        a_Aether = f_Aether * E_vac_neb * a_DPM / (E_vac_ISM * c_res)
+        return a_Aether, f"a_Aether_freq = f_Aether × E_vac_neb × a_DPM / (E_vac_ISM × c) = {a_Aether:.4e} m/s²"
+    
+    def compute_aFluidFreq(self, f_fluid: float, V_sys: float, E_vac_neb: float = 7.09e-36,
+                           E_vac_ISM: float = 6.381e-36, c_res: float = 3e8) -> tuple:
+        """Term 9: Fluid Frequency"""
+        if E_vac_ISM == 0 or c_res == 0:
+            return 0.0, "a_fluid_freq = 0 (E_vac_ISM or c_res = 0)"
+        a_fluid = f_fluid * E_vac_neb * V_sys / (E_vac_ISM * c_res)
+        return a_fluid, f"a_fluid_freq = f_fluid × E_vac_neb × V_sys / (E_vac_ISM × c) = {a_fluid:.4e} m/s²"
+    
+    def compute_Osc_term(self) -> tuple:
+        """Term 10: Oscillation term (placeholder)"""
+        return 0.0, "Osc_term = 0 (placeholder)"
+    
+    def compute_aExpFreq(self, a_DPM: float, t: float, E_vac_neb: float = 7.09e-36,
+                         E_vac_ISM: float = 6.381e-36, c_res: float = 3e8,
+                         H_z: float = 2.270e-18) -> tuple:
+        """Term 11: Expansion Frequency"""
+        if E_vac_ISM == 0 or c_res == 0:
+            return 0.0, "a_exp_freq = 0 (E_vac_ISM or c_res = 0)"
+        f_exp = 2 * self.PI * H_z * t
+        a_exp = f_exp * E_vac_neb * a_DPM / (E_vac_ISM * c_res)
+        return a_exp, f"a_exp_freq = f_exp × E_vac_neb × a_DPM / (E_vac_ISM × c) = {a_exp:.4e} m/s²"
+    
+    def compute_fTRZ(self, t: float = 0, tau_TRZ: float = 1e10) -> tuple:
+        """Term 12: Time-Reversal Zone Factor"""
+        f_TRZ = np.exp(-t / tau_TRZ) if tau_TRZ > 0 else 1.0
+        return f_TRZ, f"f_TRZ = exp(-t/τ_TRZ) = {f_TRZ:.6f}"
+    
+    def compute_a_wormhole(self, r: float, b: float = 1.0, f_worm: float = 1.0,
+                           E_vac_neb: float = 7.09e-36) -> tuple:
+        """Term 13: Wormhole metric acceleration"""
+        a_worm = f_worm * E_vac_neb * (1.0 / (b * b + r * r))
+        return a_worm, f"a_wormhole = f_worm × E_vac / (b² + r²) = {a_worm:.4e} m/s²"
+    
+    def compute_resonance_MUGE(self, I: float, A: float, omega1: float, omega2: float,
+                                V_sys: float, v_exp: float, t: float = 0, r: float = 1e20,
+                                f_fluid: float = 1e-15, b: float = 1.0) -> tuple:
+        """
+        Complete Resonance MUGE (13-term formulation)
+        
+        g_resonance = aDPM + aTHz + avac_diff + aSuperFreq + aAetherRes + Ug4i + 
+                      aQuantumFreq + aAetherFreq + aFluidFreq + Osc + aExpFreq + fTRZ + a_wormhole
+        """
+        # Term 1: aDPM
+        a_DPM, _ = self.compute_aDPM(I, A, omega1, omega2, V_sys)
+        
+        # Terms 2-5
+        a_THz, _ = self.compute_aTHz(a_DPM, v_exp)
+        a_vac_diff, _ = self.compute_avac_diff(a_DPM, v_exp)
+        a_SuperFreq, _ = self.compute_aSuperFreq(a_DPM)
+        a_Aether, _ = self.compute_aAetherRes(a_DPM)
+        
+        # Terms 6-9
+        Ug4i, _ = self.compute_Ug4i(a_DPM, t)
+        a_quantum, _ = self.compute_aQuantumFreq(a_DPM)
+        a_Aether_freq, _ = self.compute_aAetherFreq(a_DPM)
+        a_fluid, _ = self.compute_aFluidFreq(f_fluid, V_sys)
+        
+        # Terms 10-13
+        Osc, _ = self.compute_Osc_term()
+        a_exp, _ = self.compute_aExpFreq(a_DPM, t)
+        f_TRZ, _ = self.compute_fTRZ(t)
+        a_worm, _ = self.compute_a_wormhole(r, b)
+        
+        # Total (f_TRZ is a factor, not added)
+        g_resonance = (a_DPM + a_THz + a_vac_diff + a_SuperFreq + a_Aether + Ug4i +
+                       a_quantum + a_Aether_freq + a_fluid + Osc + a_exp + a_worm) * (1 + f_TRZ)
+        
+        derivation = f"""Resonance MUGE (13-term Master Universal Gravity Equation)
+═══════════════════════════════════════════════════════════════════════════════
+Formula: g = (Σ 11 frequency terms + a_wormhole) × (1 + f_TRZ)
+
+TERM BREAKDOWN:
+   1. a_DPM (dipole moment)     = {a_DPM:.4e} m/s²
+   2. a_THz (THz vacuum)        = {a_THz:.4e} m/s²
+   3. a_vac_diff                = {a_vac_diff:.4e} m/s²
+   4. a_SuperFreq               = {a_SuperFreq:.4e} m/s²
+   5. a_Aether_res              = {a_Aether:.4e} m/s²
+   6. Ug4i (wave dissipation)   = {Ug4i:.4e} m/s²
+   7. a_quantum_freq            = {a_quantum:.4e} m/s²
+   8. a_Aether_freq             = {a_Aether_freq:.4e} m/s²
+   9. a_fluid_freq              = {a_fluid:.4e} m/s²
+  10. Osc_term                  = {Osc:.4e} m/s²
+  11. a_exp_freq                = {a_exp:.4e} m/s²
+  12. f_TRZ (multiplier)        = {f_TRZ:.6f}
+  13. a_wormhole                = {a_worm:.4e} m/s²
+
+FINAL RESULT:
+  g_resonance = {g_resonance:.4e} m/s²
+═══════════════════════════════════════════════════════════════════════════════"""
+        
+        return g_resonance, derivation
+
+
+MUGE_CALCULATOR = MUGECalculator()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# QUANTUM/WAVE MIXIN CLASS - Adds quantum/wave methods to all Model classes
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class QuantumWaveMixin:
+    """
+    Mixin providing quantum/wave methods for all Model classes.
+    
+    Methods:
+    - compute_quantum_uncertainty_term: Quantum coherence effects
+    - compute_dark_matter_perturbation: DM and density fluctuations
+    - compute_standing_wave_term: Cavity resonance standing waves
+    - compute_traveling_wave_term: Propagating wave disturbances
+    
+    These methods use CONSTANTS for physical values and accept system
+    parameters as arguments for flexibility across different models.
+    """
+    
+    @staticmethod
+    def compute_quantum_uncertainty_term(Delta_x: float = 1e-10, 
+                                          Delta_p: float = 1e-24,
+                                          T_gas: float = 1e4) -> tuple:
+        """
+        Compute quantum uncertainty term for dense gas collapse dynamics.
+        
+        Q = (ℏ / √(Δx·Δp)) × ∫ψ*Hψ dV × (2π/t_Hubble)
+        
+        Args:
+            Delta_x: Position uncertainty (m), default ~atomic scale
+            Delta_p: Momentum uncertainty (kg·m/s)
+            T_gas: Gas temperature (K) for thermal energy estimate
+            
+        Returns:
+            Q: Quantum term contribution (m/s²)
+            steps: Calculation explanation
+        """
+        import math
+        
+        hbar = CONSTANTS.get('hbar', 1.055e-34)
+        k_B = CONSTANTS.get('k_B', 1.381e-23)
+        t_Hubble = 4.35e17  # Hubble time in seconds
+        
+        uncertainty_product = Delta_x * Delta_p
+        sqrt_product = math.sqrt(uncertainty_product)
+        hbar_factor = hbar / sqrt_product
+        psi_H_psi = k_B * T_gas  # Thermal energy
+        time_factor = 2 * math.pi / t_Hubble
+        
+        Q = hbar_factor * psi_H_psi * time_factor
+        
+        steps = f"""Quantum Uncertainty Term:
+  Q = (ℏ / √(Δx·Δp)) × ∫ψ*Hψ dV × (2π/t_Hubble)
+  
+  Parameters:
+    ℏ = {hbar:.4e} J·s, Δx = {Delta_x:.4e} m, Δp = {Delta_p:.4e} kg·m/s
+    √(Δx·Δp) = {sqrt_product:.4e}, ℏ/√(Δx·Δp) = {hbar_factor:.4e}
+    ∫ψ*Hψ dV ≈ k_B × T = {psi_H_psi:.4e} J
+    2π/t_Hubble = {time_factor:.4e} s⁻¹
+  
+  Result: Q = {Q:.4e} m/s²
+"""
+        return Q, steps
+    
+    @staticmethod
+    def compute_dark_matter_perturbation(M_visible: float = 1e30, 
+                                         r: float = 1e10, 
+                                         f_DM: float = 0.1) -> tuple:
+        """
+        Compute dark matter and density perturbation term.
+        
+        a_DM = g_base × (δρ/ρ) × (1 + f_DM) + G × M_DM / r² + g_base × (r/r_tidal)²
+        
+        Args:
+            M_visible: Visible mass (kg)
+            r: Radius from center (m)
+            f_DM: Dark matter fraction (default: 0.1 = 10%)
+            
+        Returns:
+            a_DM: Dark matter perturbation acceleration (m/s²)
+            steps: Calculation explanation
+        """
+        G = CONSTANTS.get('G', 6.674e-11)
+        M_sun = CONSTANTS.get('M_sun', 1.989e30)
+        
+        M_DM = f_DM * M_visible
+        g_base = G * M_visible / (r**2)
+        delta_rho_over_rho = 1e-5
+        g_DM = G * M_DM / (r**2)
+        r_tidal = 10 * r
+        tidal_factor = (r / r_tidal)**2
+        
+        a_DM = g_base * delta_rho_over_rho * (1 + f_DM) + g_DM + g_base * tidal_factor
+        
+        steps = f"""Dark Matter Perturbation Term:
+  a_DM = g_base × (δρ/ρ) × (1 + f_DM) + G × M_DM / r² + g_base × (r/r_tidal)²
+  
+  Parameters:
+    M_visible = {M_visible:.4e} kg = {M_visible / M_sun:.4e} M_☉
+    f_DM = {f_DM}, M_DM = {M_DM:.4e} kg, r = {r:.4e} m
+    g_base = G × M / r² = {g_base:.4e} m/s²
+    δρ/ρ = {delta_rho_over_rho:.4e}
+    
+  Components:
+    Density term = {g_base * delta_rho_over_rho * (1 + f_DM):.4e} m/s²
+    DM gravity = {g_DM:.4e} m/s²
+    Tidal correction = {g_base * tidal_factor:.4e} m/s²
+  
+  Result: a_DM = {a_DM:.4e} m/s²
+"""
+        return a_DM, steps
+    
+    @staticmethod
+    def compute_standing_wave_term(x: float = 1e10, t: float = 0,
+                                   A: float = 1e-8, 
+                                   wavelength: float = 1e15) -> tuple:
+        """
+        Compute standing wave term for cavity resonance.
+        
+        W_standing = 2A × cos(kx) × cos(ωt)
+        
+        Args:
+            x: Position (m)
+            t: Time (s)
+            A: Wave amplitude (m/s²)
+            wavelength: Characteristic wavelength (m)
+            
+        Returns:
+            W_standing: Standing wave acceleration (m/s²)
+            steps: Calculation explanation
+        """
+        import math
+        
+        c = CONSTANTS.get('c', 2.998e8)
+        k = 2 * math.pi / wavelength
+        omega = c / wavelength
+        
+        cos_kx = math.cos(k * x)
+        cos_omega_t = math.cos(omega * t)
+        W_standing = 2 * A * cos_kx * cos_omega_t
+        
+        steps = f"""Standing Wave Term:
+  W_standing = 2A × cos(kx) × cos(ωt)
+  
+  Parameters:
+    A = {A:.4e} m/s², λ = {wavelength:.4e} m
+    k = 2π/λ = {k:.4e} rad/m, ω = c/λ = {omega:.4e} rad/s
+    cos(kx) = {cos_kx:.6f}, cos(ωt) = {cos_omega_t:.6f}
+  
+  Result: W_standing = {W_standing:.4e} m/s²
+"""
+        return W_standing, steps
+    
+    @staticmethod
+    def compute_traveling_wave_term(x: float = 1e10, t: float = 0,
+                                    A: float = 1e-8,
+                                    wavelength: float = 1e15) -> tuple:
+        """
+        Compute traveling wave term for propagating disturbances.
+        
+        W_traveling = (2π/13.8) × A × cos(kx - ωt)
+        
+        Args:
+            x: Position (m)
+            t: Time (s)
+            A: Wave amplitude (m/s²)
+            wavelength: Characteristic wavelength (m)
+            
+        Returns:
+            W_traveling: Traveling wave acceleration (m/s²)
+            steps: Calculation explanation
+        """
+        import math
+        
+        c = CONSTANTS.get('c', 2.998e8)
+        k = 2 * math.pi / wavelength
+        omega = c / wavelength
+        hubble_coeff = 2 * math.pi / 13.8
+        phase = k * x - omega * t
+        cos_phase = math.cos(phase)
+        
+        W_traveling = hubble_coeff * A * cos_phase
+        
+        steps = f"""Traveling Wave Term:
+  W_traveling = (2π/13.8) × A × cos(kx - ωt)
+  
+  Parameters:
+    A = {A:.4e} m/s², λ = {wavelength:.4e} m
+    k = {k:.4e} rad/m, ω = {omega:.4e} rad/s
+    2π/13.8 = {hubble_coeff:.4f}
+    phase = kx - ωt = {phase:.4e}, cos(phase) = {cos_phase:.6f}
+  
+  Result: W_traveling = {W_traveling:.4e} m/s²
+"""
+        return W_traveling, steps
+
+
+# Create standalone callable functions for convenience
+compute_quantum_uncertainty_term = QuantumWaveMixin.compute_quantum_uncertainty_term
+compute_dark_matter_perturbation = QuantumWaveMixin.compute_dark_matter_perturbation
+compute_standing_wave_term = QuantumWaveMixin.compute_standing_wave_term
+compute_traveling_wave_term = QuantumWaveMixin.compute_traveling_wave_term
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -74353,3 +75003,457 @@ class MysticMountainModel:
 # Global Mystic Mountain (Carina Pillar) instance
 MYSTICMOUNTAIN_MODEL = MysticMountainModel()
 
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SOLVE() ENTRY POINT - MAIN INTERFACE FOR UQFF PHYSICS CALCULATION
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def solve(query: str = None, params: dict = None, equations: list = None, 
+          output_format: str = 'both') -> dict:
+    """
+    Main entry point for UQFF physics computation.
+    
+    This is the single function to call that:
+    1. Takes a query (system name) or params dict
+    2. Computes ALL applicable UQFF equations
+    3. Returns long-form derivations and solutions
+    
+    Parameters:
+        query: System name (e.g., "Sun", "Sagittarius A*", "M87")
+        params: Dict with physics parameters (M, r, B0, t, v, etc.)
+        equations: List of specific equations to compute (default: all 8)
+        output_format: 'long_form', 'summary', or 'both'
+    
+    Returns:
+        Dict with:
+            - system_name: Query or "Custom"
+            - parameters: Input parameters used
+            - long_form_equations: Full derivations for each equation
+            - solutions: Computed values
+            - all_equations: List of all equations computed
+            - csv_path: Optional output file path
+    
+    Examples:
+        >>> result = solve("Sun")
+        >>> result = solve(params={'M': 1.989e30, 'r': 6.96e8})
+        >>> result = solve("Sagittarius A*", equations=['UQFF', 'Compressed'])
+    """
+    import datetime
+    import math
+    
+    # Default parameters (Sun-like)
+    default_params = {
+        'M': 1.989e30,      # Mass (kg)
+        'r': 6.96e8,        # Radius (m)
+        'B0': 1e-4,         # Magnetic field (T)
+        't': 0,             # Time (s)
+        'v': 0,             # Velocity (m/s)
+        'omega_s': 2.87e-6, # Rotation rate (rad/s)
+        'theta': 0.5,       # Parameter theta
+        'M_BH': 8.155e36,   # Black hole mass (default SgrA*)
+        'd_g': 2.55e20,     # Distance to galactic center
+        'V': 1e27,          # Volume (m³)
+        'rho_fluid': 1e-20, # Fluid density (kg/m³)
+        'V_sys': 1e30,      # System volume (m³)
+        'M_DM': 0,          # Dark matter mass (kg)
+        'I': 1e40,          # Moment of inertia
+        'A': 1e10,          # Amplitude
+        'omega1': 1e-10,    # Frequency 1
+        'omega2': 1e-11,    # Frequency 2
+        'v_exp': 1e5,       # Expansion velocity (m/s)
+    }
+    
+    # Merge with provided params
+    if params:
+        default_params.update(params)
+    p = default_params
+    
+    system_name = query or "Custom"
+    
+    # Initialize results
+    results = {
+        'system_name': system_name,
+        'parameters': p,
+        'long_form_equations': {},
+        'solutions': {},
+        'all_equations': [],
+        'compute_time': datetime.datetime.now().isoformat(),
+    }
+    
+    # Constants
+    G = 6.674e-11
+    c = 2.998e8
+    hbar = 1.055e-34
+    PI = math.pi
+    
+    # Define all 8 UQFF equations
+    all_equations = ['UQFF', 'Compressed', 'Resonant', 'Superconductive', 
+                     'Buoyant', 'MasterBuoyant', 'Triadic', 'Quadratic']
+    
+    # If specific equations requested, use those
+    if equations:
+        eq_to_compute = [e for e in equations if e in all_equations]
+    else:
+        eq_to_compute = all_equations
+    
+    results['all_equations'] = eq_to_compute
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # COMPUTE EACH EQUATION
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # 1. UQFF BASE: F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ubi + Um
+    if 'UQFF' in eq_to_compute:
+        g_base = G * p['M'] / (p['r'] ** 2)
+        Ug1 = g_base * (1 + 0.01 * math.sin(0.001 * p['t']))
+        Ug2 = g_base * 0.1
+        Ug3 = g_base * 0.05 * math.cos(p['omega_s'] * p['t'])
+        Ug4 = g_base * 0.02
+        
+        # Add buoyancy
+        Ubi = -0.603 * (Ug1 + Ug2 + Ug3 + Ug4) * 7.3e-16 * p['M_BH'] / p['d_g'] * 0.0001 * math.cos(PI * 0.1)
+        
+        # Add magnetism
+        Um = 1e-20 * p['B0']
+        
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ubi + Um
+        
+        derivation = f"""UQFF Base Unified Field Equation
+═══════════════════════════════════════════════════════════════════════════════
+System: {system_name}
+Formula: F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ubi + Um
+
+STEP 1: Compute base gravity
+    g_base = G × M / r²
+    g_base = (6.674e-11) × ({p['M']:.4e}) / ({p['r']:.4e})²
+    g_base = {g_base:.6e} m/s²
+
+STEP 2: Compute Ug1 (Magnetic Dipole Defects)
+    Ug1 = g_base × (1 + δ × sin(0.001 × t))
+    Ug1 = {Ug1:.6e} m/s²
+
+STEP 3: Compute Ug2 (Charge-Reactivity)
+    Ug2 = g_base × 0.1
+    Ug2 = {Ug2:.6e} m/s²
+
+STEP 4: Compute Ug3 (String Rotation)
+    Ug3 = g_base × 0.05 × cos(ω_s × t)
+    Ug3 = {Ug3:.6e} m/s²
+
+STEP 5: Compute Ug4 (Vacuum Concentration)
+    Ug4 = g_base × 0.02
+    Ug4 = {Ug4:.6e} m/s²
+
+STEP 6: Compute Ubi (Buoyancy Opposition)
+    Ubi = -β_i × ΣUg × Ω_g × (M_BH/d_g) × U_UA × cos(πt_n)
+    Ubi = {Ubi:.6e} m/s²
+
+STEP 7: Compute Um (Magnetism String Sum)
+    Um = 1e-20 × B₀
+    Um = {Um:.6e} m/s²
+
+FINAL RESULT:
+    F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ubi + Um
+    F_U = {F_U:.6e} m/s²
+═══════════════════════════════════════════════════════════════════════════════"""
+        
+        results['long_form_equations']['UQFF'] = derivation
+        results['solutions']['F_U'] = F_U
+        results['solutions']['Ug1'] = Ug1
+        results['solutions']['Ug2'] = Ug2
+        results['solutions']['Ug3'] = Ug3
+        results['solutions']['Ug4'] = Ug4
+        results['solutions']['Ubi'] = Ubi
+        results['solutions']['Um'] = Um
+    
+    # 2. COMPRESSED MUGE
+    if 'Compressed' in eq_to_compute:
+        g_compressed, derivation = MUGE_CALCULATOR.compute_compressed_MUGE(
+            M=p['M'], r=p['r'], t=p['t'], B=p['B0'],
+            rho_fluid=p['rho_fluid'], V_sys=p['V_sys'], M_DM=p['M_DM']
+        )
+        results['long_form_equations']['Compressed'] = derivation
+        results['solutions']['g_compressed'] = g_compressed
+    
+    # 3. RESONANCE MUGE
+    if 'Resonant' in eq_to_compute:
+        g_resonance, derivation = MUGE_CALCULATOR.compute_resonance_MUGE(
+            I=p['I'], A=p['A'], omega1=p['omega1'], omega2=p['omega2'],
+            V_sys=p['V_sys'], v_exp=p['v_exp'], t=p['t'], r=p['r']
+        )
+        results['long_form_equations']['Resonant'] = derivation
+        results['solutions']['g_resonance'] = g_resonance
+    
+    # 4. SUPERCONDUCTIVE
+    if 'Superconductive' in eq_to_compute:
+        T = 4.2  # Default temperature
+        T_c = 9.2  # Critical temperature
+        H_SCm, _ = SUPERCONDUCTIVE_CALCULATOR.compute_H_SCm(T, T_c)
+        tau_SC = 1e-3  # Time constant
+        F_SC = results['solutions'].get('F_U', G * p['M'] / p['r']**2)
+        F_SC_mod = F_SC * (1 - math.exp(-p['t'] / tau_SC)) if p['t'] > 0 else F_SC
+        
+        derivation = f"""UQFF Superconductive Equation
+═══════════════════════════════════════════════════════════════════════════════
+System: {system_name}
+Formula: F_SC = F_U × (1 - e^(-t/τ_SC)) × H_SCm
+
+STEP 1: Compute H_SCm (superconductivity coefficient)
+    H_SCm = 1 - (T/T_c)² = 1 - ({T}/{T_c})²
+    H_SCm = {H_SCm:.6f}
+
+STEP 2: Apply time evolution
+    τ_SC = {tau_SC:.3e} s
+    time_factor = 1 - e^(-t/τ_SC) = 1 - e^(-{p['t']}/{tau_SC})
+    time_factor = {(1 - math.exp(-p['t'] / tau_SC)) if p['t'] > 0 else 1:.6f}
+
+STEP 3: Final superconductive field
+    F_SC = F_U × time_factor × H_SCm
+    F_SC = {F_SC_mod:.6e} m/s²
+═══════════════════════════════════════════════════════════════════════════════"""
+        
+        results['long_form_equations']['Superconductive'] = derivation
+        results['solutions']['H_SCm'] = H_SCm
+        results['solutions']['F_SC'] = F_SC_mod
+    
+    # 5. BUOYANT
+    if 'Buoyant' in eq_to_compute:
+        g_local = G * p['M'] / (p['r'] ** 2)
+        Ub, _ = BUOYANCY_CALCULATOR.compute_Ub(p['M'], p['V'], g_local)
+        Ui, _ = BUOYANCY_CALCULATOR.compute_Ui(p['V'], p['v'])
+        
+        derivation = f"""UQFF Buoyant Equation
+═══════════════════════════════════════════════════════════════════════════════
+System: {system_name}
+Formula: F_U_Bi = g_local - Ub + Ui (inside → out atomic scale)
+
+STEP 1: Compute local gravity
+    g_local = G × M / r²
+    g_local = {g_local:.6e} m/s²
+
+STEP 2: Compute Ub (vacuum buoyancy)
+    Ub = (ρ_vac × V × g_local × [SCm]_i) / M
+    Ub = {Ub:.6e} m/s²
+
+STEP 3: Compute Ui (inertial resistance)
+    Ui = -k_η × ρ_vac × V × (v/c)² × [UA]_i
+    Ui = {Ui:.6e} m/s²
+
+STEP 4: Net buoyant acceleration
+    a_net = g_local - Ub + Ui
+    a_net = {g_local - Ub + Ui:.6e} m/s²
+═══════════════════════════════════════════════════════════════════════════════"""
+        
+        results['long_form_equations']['Buoyant'] = derivation
+        results['solutions']['Ub'] = Ub
+        results['solutions']['Ui'] = Ui
+        results['solutions']['a_buoyant'] = g_local - Ub + Ui
+    
+    # 6. MASTER BUOYANT (F_U_Bi_i)
+    if 'MasterBuoyant' in eq_to_compute:
+        F_U_Bi_i, derivation = BUOYANCY_CALCULATOR.compute_F_U_Bi_i(
+            M=p['M'], r=p['r'], v=p['v'], B0=p['B0'], t=p['t']
+        )
+        results['long_form_equations']['MasterBuoyant'] = derivation
+        results['solutions']['F_U_Bi_i'] = F_U_Bi_i
+    
+    # 7. TRIADIC
+    if 'Triadic' in eq_to_compute:
+        # 26-layer gravitational scaling
+        g_triadic = 0
+        for i in range(1, 27):
+            r_i = p['r'] / i
+            Q_i = i
+            SCm_i = i * i
+            E_DPM_i = (hbar * c / (r_i * r_i)) * Q_i * SCm_i
+            g_i = G * p['M'] / (r_i * r_i) * (1 + E_DPM_i / 1e50)
+            g_triadic += g_i / i
+        
+        derivation = f"""UQFF Triadic Equation (26-Layer Gravitational Scaling)
+═══════════════════════════════════════════════════════════════════════════════
+System: {system_name}
+Formula: g_triadic = Σᵢ₌₁²⁶ [Ug1_i + Ug2_i + Ug3_i + Ug4_i] / i
+
+Each layer has:
+  r_i = r / i
+  Q_i = i (quantum state)
+  SCm_i = i² (superconductivity factor)
+  E_DPM_i = (ℏc/r_i²) × Q_i × SCm_i
+
+COMPUTATION:
+  Layer 1:  r_1 = {p['r']:.3e} m        → g_1 = {G * p['M'] / (p['r']**2):.4e} m/s²
+  Layer 2:  r_2 = {p['r']/2:.3e} m      → g_2 = {G * p['M'] / ((p['r']/2)**2) / 2:.4e} m/s²
+  Layer 13: r_13 = {p['r']/13:.3e} m    → g_13 = (intermediate)
+  Layer 26: r_26 = {p['r']/26:.3e} m    → g_26 = (outermost)
+  
+FINAL RESULT:
+  g_triadic = Σ g_i/i = {g_triadic:.6e} m/s²
+═══════════════════════════════════════════════════════════════════════════════"""
+        
+        results['long_form_equations']['Triadic'] = derivation
+        results['solutions']['g_triadic'] = g_triadic
+    
+    # 8. QUADRATIC
+    if 'Quadratic' in eq_to_compute:
+        # Dual-root solutions
+        g_base = G * p['M'] / (p['r'] ** 2)
+        a = 1.0
+        b = -g_base
+        c_coef = g_base * 0.01  # Small perturbation
+        discriminant = b * b - 4 * a * c_coef
+        g_plus = (-b + math.sqrt(abs(discriminant))) / (2 * a) if discriminant >= 0 else g_base
+        g_minus = (-b - math.sqrt(abs(discriminant))) / (2 * a) if discriminant >= 0 else g_base
+        
+        derivation = f"""UQFF Quadratic Equation (Dual-Root Solutions)
+═══════════════════════════════════════════════════════════════════════════════
+System: {system_name}
+Formula: ax² + bx + c = 0 → x = (-b ± √(b²-4ac)) / 2a
+
+For gravity: g² - g_base×g + perturbation = 0
+
+COEFFICIENTS:
+  a = {a}
+  b = -g_base = {-g_base:.4e}
+  c = perturbation = {c_coef:.4e}
+
+DISCRIMINANT:
+  Δ = b² - 4ac = {discriminant:.4e}
+
+SOLUTIONS:
+  g₊ = (-b + √Δ) / 2a = {g_plus:.6e} m/s²
+  g₋ = (-b - √Δ) / 2a = {g_minus:.6e} m/s²
+
+Physical interpretation:
+  g₊ corresponds to outward (repulsive) mode
+  g₋ corresponds to inward (attractive) mode
+═══════════════════════════════════════════════════════════════════════════════"""
+        
+        results['long_form_equations']['Quadratic'] = derivation
+        results['solutions']['g_plus'] = g_plus
+        results['solutions']['g_minus'] = g_minus
+    
+    # Format output based on request
+    if output_format == 'summary':
+        return {
+            'system_name': results['system_name'],
+            'solutions': results['solutions'],
+            'all_equations': results['all_equations'],
+        }
+    elif output_format == 'long_form':
+        return {
+            'system_name': results['system_name'],
+            'long_form_equations': results['long_form_equations'],
+        }
+    
+    # 'both' - return full results
+    return results
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# INJECT QUANTUM/WAVE METHODS INTO ALL MODEL CLASSES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def _inject_quantum_wave_methods():
+    """
+    Dynamically inject quantum/wave methods into all Model classes.
+    
+    This ensures all 103 Model classes have access to:
+    - compute_quantum_uncertainty_term
+    - compute_dark_matter_perturbation
+    - compute_standing_wave_term
+    - compute_traveling_wave_term
+    
+    Methods are injected as bound methods using QuantumWaveMixin static methods.
+    """
+    import sys
+    
+    # Get all classes defined in this module
+    current_module = sys.modules[__name__]
+    
+    # Find all Model classes
+    model_classes = []
+    for name in dir(current_module):
+        if name.endswith('Model'):
+            obj = getattr(current_module, name)
+            if isinstance(obj, type):  # It's a class
+                model_classes.append((name, obj))
+    
+    # Methods to inject
+    methods_to_inject = [
+        ('compute_quantum_uncertainty_term', QuantumWaveMixin.compute_quantum_uncertainty_term),
+        ('compute_dark_matter_perturbation', QuantumWaveMixin.compute_dark_matter_perturbation),
+        ('compute_standing_wave_term', QuantumWaveMixin.compute_standing_wave_term),
+        ('compute_traveling_wave_term', QuantumWaveMixin.compute_traveling_wave_term),
+    ]
+    
+    # Inject methods into each Model class that doesn't already have them
+    # Use staticmethod() wrapper to ensure they work as static methods
+    injected_count = 0
+    for class_name, model_class in model_classes:
+        for method_name, method_func in methods_to_inject:
+            if not hasattr(model_class, method_name):
+                # Wrap as staticmethod so self is not passed
+                setattr(model_class, method_name, staticmethod(method_func))
+                injected_count += 1
+    
+    return len(model_classes), injected_count
+
+# Run injection at module load time
+_MODEL_COUNT, _INJECTED_COUNT = _inject_quantum_wave_methods()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MODULE EXPORTS AND TEST
+# ═══════════════════════════════════════════════════════════════════════════════
+
+__all__ = [
+    # Calculators
+    'VACUUM_CALCULATOR', 'MAGNETIC_CALCULATOR', 'QUANTUM_CALCULATOR',
+    'RESONANCE_CALCULATOR', 'TRIADIC_CALCULATOR', 'BUOYANCY_CALCULATOR',
+    'COSMOLOGICAL_CALCULATOR', 'SUPERCONDUCTIVE_CALCULATOR', 'MUGE_CALCULATOR',
+    
+    # Main entry point
+    'solve',
+    
+    # Quantum/Wave functions (standalone)
+    'compute_quantum_uncertainty_term', 'compute_dark_matter_perturbation',
+    'compute_standing_wave_term', 'compute_traveling_wave_term',
+    'QuantumWaveMixin',
+    
+    # Classes
+    'VacuumFluctuationCalculator', 'MagneticCalculator', 'QuantumCalculator',
+    'ResonanceCalculator', 'TriadicCalculator', 'BuoyancyCalculator',
+    'CosmologicalCalculator', 'SuperconductiveCalculator', 'MUGECalculator',
+    
+    # Constants
+    'CONSTANTS',
+]
+
+
+if __name__ == "__main__":
+    # Test the solve() function
+    print("Testing CondensedPhysics.py solve() entry point...")
+    print("=" * 80)
+    
+    # Test 1: Default (Sun-like)
+    result = solve("Sun")
+    print(f"System: {result['system_name']}")
+    print(f"Equations computed: {len(result['all_equations'])}")
+    print(f"Solutions:")
+    for key, value in result['solutions'].items():
+        print(f"  {key}: {value:.4e}")
+    print()
+    
+    # Test 2: Custom parameters
+    custom_result = solve(params={'M': 8.155e36, 'r': 2.55e20, 'B0': 1e-4})
+    print(f"Custom system solutions: {len(custom_result['solutions'])} values")
+    print()
+    
+    # Test 3: Specific equations
+    specific = solve("Test", equations=['UQFF', 'MasterBuoyant'])
+    print(f"Specific equations: {specific['all_equations']}")
+    print(f"F_U_Bi_i = {specific['solutions'].get('F_U_Bi_i', 'N/A')}")
+    
+    print()
+    print("=" * 80)
+    print("CondensedPhysics.py solve() tests COMPLETE")
