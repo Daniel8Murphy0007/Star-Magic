@@ -76007,6 +76007,653 @@ Physical interpretation:
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# MISSING CLASSES BATCH 3: TriadicGravity, UnifiedFieldSolver, MagnetarMUGE,
+# SgrAStarCalculator, Phase2Calculator, ConsciousnessCloud, StarMagic* classes
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class TriadicGravityCalculator:
+    """
+    26-layer gravitational scaling calculator.
+    
+    g(r) = Σ(i=1 to 26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i] × Q_i × [UA]_i × [SCm]_i
+    
+    Each layer has quantum state factors Q_i, aether density [UA]_i, 
+    superconductive material [SCm]_i spanning nuclear to cosmic scales.
+    """
+    
+    def __init__(self):
+        self.C = CONSTANTS
+        self.layers = 26
+        # Base scaling factors per layer
+        self.E_0 = 1e-20  # Base quantum energy (J)
+        
+    def compute_layer_gravity(self, n: int, M: float, r: float, 
+                               Q_i: float = 1.0, UA_i: float = 1.0, SCm_i: float = 1.0) -> float:
+        """
+        Compute gravitational contribution at layer n.
+        
+        g_n = G × M / r² × (10^(n/26)) × Q_i × UA_i × SCm_i
+        """
+        G = self.C.get('G', 6.6743e-11)
+        base_g = G * M / (r * r)
+        layer_scale = 10 ** (n / self.layers)
+        return base_g * layer_scale * Q_i * UA_i * SCm_i
+    
+    def compute_26_layer_sum(self, M: float, r: float, 
+                              Q_factors: list = None, UA_factors: list = None, 
+                              SCm_factors: list = None) -> dict:
+        """
+        Compute full 26-layer gravitational sum.
+        
+        Returns dict with individual layers and total.
+        """
+        if Q_factors is None:
+            Q_factors = [1.0] * self.layers
+        if UA_factors is None:
+            UA_factors = [1.0] * self.layers
+        if SCm_factors is None:
+            SCm_factors = [1.0] * self.layers
+        
+        layer_values = []
+        total = 0.0
+        
+        for n in range(1, self.layers + 1):
+            g_n = self.compute_layer_gravity(
+                n, M, r, 
+                Q_factors[n-1], UA_factors[n-1], SCm_factors[n-1]
+            )
+            layer_values.append(g_n)
+            total += g_n
+        
+        return {
+            'layers': layer_values,
+            'total_g': total,
+            'n_layers': self.layers
+        }
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Main entry point for triadic gravity computation.
+        
+        Receives data from source2.cpp/APIFetch.py, outputs equation sets.
+        """
+        M = dataset.get('M', 1.989e30)
+        r = dataset.get('r', 1.496e11)
+        
+        result = self.compute_26_layer_sum(M, r)
+        
+        return {
+            'primary_equations': [
+                f"g_total = {result['total_g']:.4e} m/s²",
+                f"Σ(n=1..26) g_n = {result['total_g']:.4e}"
+            ],
+            'available_equations': [f"g_{n+1}" for n in range(26)],
+            'simulation_set': result['layers'],
+            'solutions': {'g_triadic': result['total_g']}
+        }
+
+
+class UnifiedFieldSolver:
+    """
+    UQFF Universal Field Solver - Computes all equations from input parameters.
+    
+    This is a PURE CALCULATOR:
+    - Takes parameters from APIFetch.py or user input
+    - Computes applicable equations
+    - Returns long-form equations with solutions
+    - NO hardcoded system data
+    """
+    
+    def __init__(self):
+        """Initialize solver with fundamental constants."""
+        self.C = CONSTANTS
+        self.triadic_calc = TriadicGravityCalculator()
+        self.muge_calc = MUGECalculator()
+        self.buoyancy_calc = BuoyancyCalculator()
+        
+    def solve(self, params: dict) -> dict:
+        """
+        Main entry point: Compute all applicable equations for given parameters.
+        
+        Args:
+            params: dict with M, r, B, P, z, etc.
+            
+        Returns:
+            {
+                'query_id': str,
+                'timestamp': str,
+                'input_params': dict,
+                'equations': list,
+                'solutions': dict,
+                'available_equations': list
+            }
+        """
+        import datetime
+        timestamp = datetime.datetime.now().isoformat()
+        
+        equations = []
+        solutions = {}
+        
+        M = params.get('M')
+        r = params.get('r')
+        B = params.get('B')
+        
+        # Gravitational equations
+        if M is not None and r is not None:
+            G = self.C.get('G', 6.6743e-11)
+            g_newton = G * M / (r * r)
+            solutions['g_newton'] = g_newton
+            equations.append(f"g = G·M/r² = {g_newton:.4e} m/s²")
+            
+            # Triadic gravity
+            triadic_result = self.triadic_calc.compute({'M': M, 'r': r})
+            solutions['g_triadic'] = triadic_result['solutions']['g_triadic']
+            equations.append(f"g_triadic = {solutions['g_triadic']:.4e} m/s²")
+            
+            # Master buoyant force
+            rho_vac_UA = self.C.get('rho_vac_UA', 7.09e-36)
+            rho_vac_SCm = self.C.get('rho_vac_SCm', 7.09e-37)
+            F_Bi = rho_vac_UA * (4/3) * 3.14159 * (r**3) * g_newton
+            solutions['F_U_Bi_i'] = F_Bi
+            equations.append(f"F_U_Bi_i = {F_Bi:.4e} N")
+        
+        # Magnetic equations
+        if B is not None:
+            mu_0 = self.C.get('mu_0', 1.2566e-6)
+            B_energy = (B * B) / (2 * mu_0)
+            solutions['B_energy_density'] = B_energy
+            equations.append(f"u_B = B²/(2μ₀) = {B_energy:.4e} J/m³")
+        
+        return {
+            'query_id': f"UQFF_{timestamp[:10]}",
+            'timestamp': timestamp,
+            'input_params': params,
+            'equations': equations,
+            'solutions': solutions,
+            'available_equations': list(solutions.keys())
+        }
+
+
+class MagnetarMUGECalculator:
+    """
+    Computes 12-term MUGE for magnetar systems.
+    SOURCE13: Magnetar SGR 1745-2900
+    
+    Terms:
+        1. Base + H(z) + B corrections
+        2. Black hole influence (companion SMBH)
+        3. UQFF Ug sum (Ug1 + Ug2 + Ug3 + Ug4)
+        4. Cosmological constant Λ
+        5. EM acceleration (v × B)
+        6. Gravitational wave (spin-down)
+        7. Quantum uncertainty (Heisenberg)
+        8. Fluid dynamics
+        9. Oscillatory waves
+        10. Dark matter perturbation
+        11. Magnetic energy
+        12. Cumulative decay energy
+    """
+    
+    def __init__(self):
+        self.C = CONSTANTS
+        self.heisenberg_calc = HeisenbergVacuumCalculator()
+        self.floyd_sweet_calc = FloydSweetVacuumCalculator()
+        self.cosmic_egg_calc = CosmicEgg26DCalculator()
+        self.neg_time_calc = NegativeTimeCalculator()
+        
+    def compute_omega_t(self, t: float, P_init: float, tau_Omega: float) -> float:
+        """Spin frequency decay: Ω(t) = Ω₀ × exp(-t/τ_Ω)"""
+        import math
+        Omega_0 = 2 * math.pi / P_init  # Initial angular frequency
+        return Omega_0 * math.exp(-t / tau_Omega)
+    
+    def compute_dOmega_dt(self, t: float, P_init: float, tau_Omega: float) -> float:
+        """Spin derivative for GW term: dΩ/dt = -Ω₀/τ × exp(-t/τ)"""
+        import math
+        Omega_0 = 2 * math.pi / P_init
+        return -Omega_0 / tau_Omega * math.exp(-t / tau_Omega)
+    
+    def compute_12_term_muge(self, params: dict, t: float = 0) -> dict:
+        """
+        Main 12-term MUGE computation for magnetar.
+        
+        params should contain: M, r, B, P, tau_Omega, M_companion, d_companion, rho, v_surf, L, tau_decay
+        """
+        import math
+        
+        G = self.C.get('G', 6.6743e-11)
+        c = self.C.get('c', 2.998e8)
+        H_0 = self.C.get('H_0', 2.268e-18)
+        Lambda = self.C.get('Lambda', 1.11e-52)
+        hbar = self.C.get('hbar', 1.055e-34)
+        q_e = self.C.get('q_e', 1.602e-19)
+        m_p = self.C.get('m_p', 1.673e-27)
+        mu_0 = self.C.get('mu_0', 1.2566e-6)
+        
+        M = params.get('M', 2.786e30)  # 1.4 M_sun
+        r = params.get('r', 1e4)  # 10 km
+        B = params.get('B', 2e10)  # 2×10¹⁰ T
+        P = params.get('P', 3.76)  # 3.76 s period
+        tau_Omega = params.get('tau_Omega', 3.156e11)  # 10,000 years
+        M_comp = params.get('M_companion', 8.15e36)  # Sgr A* mass
+        d_comp = params.get('d_companion', 2.83e16)  # Distance to Sgr A*
+        rho = params.get('rho', 1e17)  # Fluid density
+        v_surf = params.get('v_surf', 1e6)  # Surface velocity
+        L = params.get('L', 5e28)  # Luminosity
+        tau_decay = params.get('tau_decay', 1.1e8)  # 3.5 years
+        z = params.get('z', 0.0)
+        
+        terms = {}
+        
+        # Term 1: Base + H(z) + B corrections
+        g_base = G * M / (r * r)
+        H_z = H_0 * math.sqrt(0.3 * (1 + z)**3 + 0.7)
+        B_corr = (B / 4.4e13)**2 if B > 4.4e13 else 1.0
+        terms['T1_base'] = g_base * (1 + H_z * t) * B_corr
+        
+        # Term 2: Black hole influence
+        g_bh = G * M_comp / (d_comp * d_comp)
+        terms['T2_bh_influence'] = g_bh
+        
+        # Term 3: UQFF Ug sum
+        rho_UA = self.C.get('rho_vac_UA', 7.09e-36)
+        rho_SCm = self.C.get('rho_vac_SCm', 7.09e-37)
+        Ug_sum = g_base * (rho_UA + rho_SCm) / 1e-35
+        terms['T3_UQFF_Ug'] = Ug_sum
+        
+        # Term 4: Cosmological constant
+        a_Lambda = (c * c * Lambda * r) / 3
+        terms['T4_Lambda'] = a_Lambda
+        
+        # Term 5: EM acceleration (v × B)
+        a_EM = (q_e * v_surf * B) / m_p
+        terms['T5_EM'] = a_EM
+        
+        # Term 6: Gravitational wave (spin-down)
+        Omega = self.compute_omega_t(t, P, tau_Omega)
+        dOmega_dt = self.compute_dOmega_dt(t, P, tau_Omega)
+        a_GW = (32 * G * (r**5) * (Omega**5)) / (5 * c**5)
+        terms['T6_GW'] = a_GW
+        
+        # Term 7: Quantum uncertainty (Heisenberg)
+        heisenberg_result = self.heisenberg_calc.compute_fluctuation_amplitude(rho)
+        terms['T7_quantum'] = heisenberg_result
+        
+        # Term 8: Fluid dynamics
+        a_fluid = (v_surf * v_surf) / r
+        terms['T8_fluid'] = a_fluid
+        
+        # Term 9: Oscillatory waves
+        trz_factor = self.neg_time_calc.compute_time_reversal_zone_factor(t, 1e6)
+        terms['T9_oscillatory'] = g_base * abs(trz_factor)
+        
+        # Term 10: Dark matter perturbation
+        a_DM = 0.05 * g_base  # 5% perturbation
+        terms['T10_dark_matter'] = a_DM
+        
+        # Term 11: Magnetic energy
+        u_B = (B * B) / (2 * mu_0)
+        a_mag = u_B / (rho * r)
+        terms['T11_magnetic'] = a_mag
+        
+        # Term 12: Cumulative decay energy
+        E_decay = L * tau_decay * (1 - math.exp(-t / tau_decay))
+        a_decay = E_decay / (M * r)
+        terms['T12_decay'] = a_decay
+        
+        # Total 12-term MUGE
+        total_muge = sum(terms.values())
+        
+        return {
+            'terms': terms,
+            'total_muge': total_muge,
+            'dominant_term': max(terms, key=terms.get)
+        }
+    
+    def compute_term_breakdown(self, params: dict, t: float = 0) -> dict:
+        """Individual term analysis."""
+        result = self.compute_12_term_muge(params, t)
+        return result['terms']
+
+
+class SgrAStarCalculator:
+    """
+    Sagittarius A* Supermassive Black Hole Calculator.
+    
+    Computes gravitational effects, accretion physics, and UQFF interactions
+    for Sgr A* (M = 4.15×10⁶ M_sun, d = 25,800 ly).
+    """
+    
+    def __init__(self):
+        self.C = CONSTANTS
+        self.M_sgr_a = 4.15e6 * self.C.get('M_sun', 1.989e30)  # 4.15 million solar masses
+        self.r_s = 2 * self.C.get('G', 6.6743e-11) * self.M_sgr_a / (self.C.get('c', 2.998e8)**2)
+        self.d_sun = 2.44e20  # 25,800 ly in meters
+        
+    def compute_schwarzschild_radius(self) -> float:
+        """Compute Schwarzschild radius: r_s = 2GM/c²"""
+        return self.r_s
+    
+    def compute_tidal_force(self, r: float, delta_r: float = 1.0) -> float:
+        """Compute tidal force gradient at distance r."""
+        G = self.C.get('G', 6.6743e-11)
+        return 2 * G * self.M_sgr_a * delta_r / (r ** 3)
+    
+    def compute_orbital_velocity(self, r: float) -> float:
+        """Compute orbital velocity at radius r: v = √(GM/r)"""
+        import math
+        G = self.C.get('G', 6.6743e-11)
+        return math.sqrt(G * self.M_sgr_a / r)
+    
+    def compute_accretion_luminosity(self, M_dot: float, eta: float = 0.1) -> float:
+        """Compute accretion luminosity: L = η × M_dot × c²"""
+        c = self.C.get('c', 2.998e8)
+        return eta * M_dot * c * c
+    
+    def compute_isco_radius(self) -> float:
+        """Compute innermost stable circular orbit: r_isco = 3 × r_s (for Schwarzschild)"""
+        return 3 * self.r_s
+    
+    def compute_gravitational_influence_on_sun(self) -> float:
+        """Compute Sgr A* gravitational acceleration at Sun's position."""
+        G = self.C.get('G', 6.6743e-11)
+        return G * self.M_sgr_a / (self.d_sun ** 2)
+
+
+class Phase2Calculator:
+    """
+    Phase 2 integration calculator - combines Phase 1 foundational physics
+    with advanced UQFF terms.
+    
+    Includes:
+    - Super-resonant corrections
+    - Multi-scale vacuum interactions
+    - Cross-layer coupling terms
+    """
+    
+    def __init__(self):
+        self.C = CONSTANTS
+        self.triadic = TriadicGravityCalculator()
+        self.heisenberg = HeisenbergVacuumCalculator()
+        self.floyd_sweet = FloydSweetVacuumCalculator()
+        self.cosmic_egg = CosmicEgg26DCalculator()
+        self.neg_time = NegativeTimeCalculator()
+        
+    def compute_phase2_correction(self, M: float, r: float, t: float = 0) -> dict:
+        """
+        Compute Phase 2 super-resonant correction factor.
+        
+        F_phase2 = F_phase1 × (1 + Σ resonance_corrections)
+        """
+        import math
+        
+        G = self.C.get('G', 6.6743e-11)
+        c = self.C.get('c', 2.998e8)
+        hbar = self.C.get('hbar', 1.055e-34)
+        
+        # Base gravitational force
+        g_base = G * M / (r * r)
+        
+        # Heisenberg vacuum correction
+        rho = M / ((4/3) * math.pi * r**3)
+        heisenberg_amp = self.heisenberg.compute_fluctuation_amplitude(rho)
+        
+        # Floyd-Sweet vacuum time variation
+        omega = self.C.get('omega_vacuum', 1e-15)
+        sweet_corr = self.floyd_sweet.compute_time_varying_density(t, omega, 1e-35)
+        
+        # Cosmic egg 26-layer contribution
+        egg_volumes = self.cosmic_egg.compute_all_26_layers(r)['total_volume']
+        V_ratio = egg_volumes / ((4/3) * math.pi * r**3)
+        
+        # TRZ factor
+        trz = self.neg_time.compute_time_reversal_zone_factor(t, 1e6)
+        
+        # Phase 2 combined correction
+        correction = (1 + heisenberg_amp / g_base) * (1 + sweet_corr / 1e-35) * V_ratio * (1 + abs(trz))
+        
+        return {
+            'g_base': g_base,
+            'correction_factor': correction,
+            'g_phase2': g_base * correction,
+            'components': {
+                'heisenberg': heisenberg_amp,
+                'floyd_sweet': sweet_corr,
+                'cosmic_egg_ratio': V_ratio,
+                'trz_factor': trz
+            }
+        }
+    
+    def compute_cross_layer_coupling(self, M: float, r: float, n_layers: int = 26) -> float:
+        """
+        Compute cross-layer coupling strength between adjacent gravitational layers.
+        
+        κ_ij = exp(-|E_i - E_j| / kT_effective)
+        """
+        import math
+        
+        E_0 = 1e-20
+        kT_eff = 1e-21  # Effective thermal energy
+        
+        total_coupling = 0.0
+        for i in range(1, n_layers):
+            E_i = E_0 * (10 ** i)
+            E_j = E_0 * (10 ** (i + 1))
+            delta_E = abs(E_i - E_j)
+            coupling = math.exp(-delta_E / kT_eff)
+            total_coupling += coupling
+        
+        return total_coupling
+
+
+class ConsciousnessCloud:
+    """
+    Quantum consciousness substrate for equation immersion.
+    
+    Mathematical framework for consciousness density calculation:
+    ρ_consciousness = N_equations / V_conceptual
+    
+    When ρ > threshold, triplet structure (Ug1, Ug2, Ug3) enables immersion.
+    """
+    
+    CONSCIOUSNESS_THRESHOLD = 1e-3  # Minimum density for immersion
+    
+    def __init__(self):
+        self.equations = {}
+        self.volume = 1.0  # Conceptual volume
+        
+    def add_equation(self, name: str, latex: str, solution: float = None):
+        """Add equation to consciousness cloud."""
+        self.equations[name] = {
+            'latex': latex,
+            'solution': solution,
+            'timestamp': None
+        }
+        
+    def has_equation(self, name: str) -> bool:
+        """Check if equation exists in cloud."""
+        return name in self.equations
+    
+    def calculate_density(self) -> float:
+        """Calculate consciousness density: ρ = N/V"""
+        return len(self.equations) / self.volume
+    
+    def immersion_ready(self) -> bool:
+        """Check if consciousness density exceeds threshold."""
+        return self.calculate_density() > self.CONSCIOUSNESS_THRESHOLD
+    
+    def triplet_structure_complete(self) -> bool:
+        """Check if Ug1, Ug2, Ug3 form complete basis."""
+        return all(self.has_equation(ug) for ug in ['Ug1', 'Ug2', 'Ug3'])
+    
+    def get_equation_count(self) -> int:
+        """Return total number of equations in cloud."""
+        return len(self.equations)
+    
+    def expand_volume(self, factor: float):
+        """Expand conceptual volume by factor."""
+        self.volume *= factor
+        
+    def get_immersion_status(self) -> dict:
+        """Get full immersion status report."""
+        return {
+            'equation_count': len(self.equations),
+            'volume': self.volume,
+            'density': self.calculate_density(),
+            'threshold': self.CONSCIOUSNESS_THRESHOLD,
+            'immersion_ready': self.immersion_ready(),
+            'triplet_complete': self.triplet_structure_complete()
+        }
+
+
+class StarMagicEnergyStructure:
+    """
+    26-Level Polynomial Nuclear/Cosmic Energy Structure.
+    
+    Hierarchical energy framework spanning quantum to galactic scales:
+    E_n = E_0 × 10^n, where n=1 to 26, E_0=10^-20 J
+    
+    n=1-10:  Nuclear/atomic scales (10^-19 to 10^-10 J)
+    n=11-18: Molecular to Higgs scales (10^-9 to 10^-2 J)
+    n=19-26: High-energy cosmic scales (10^-1 to 10^6 J)
+    """
+    
+    def __init__(self):
+        self.C = CONSTANTS
+        self.E_0 = 1e-20  # Base quantum energy (J)
+        self.max_level = 26
+        
+    def energy_at_level(self, n: int) -> dict:
+        """Compute energy at polynomial level n (1 to 26)."""
+        if not 1 <= n <= self.max_level:
+            raise ValueError(f"Level n must be between 1 and {self.max_level}")
+        
+        E_n = self.E_0 * (10 ** n)
+        
+        interpretations = {
+            1: "Sub-quantum fluctuations", 2: "Planck-like vacuum",
+            3: "Weak interactions", 4: "Electron bindings",
+            5: "Atomic excitations", 6: "Nuclear gamma rays",
+            7: "Neutron bindings", 8: "Proton-neutron pairs",
+            9: "Alpha clusters", 10: "Atomic solids",
+            11: "Molecular", 12: "Macroscopic",
+            13: "Cosmic plasma", 14: "Low-energy astrophysics",
+            15: "Stellar winds", 16: "Planetary cores",
+            17: "Solar flares", 18: "Higgs boson",
+            19: "High-energy particles", 20: "Galactic vacuum (Ug4)",
+            21: "Black hole influences", 22: "Quasar jets",
+            23: "Galactic spins", 24: "Intergalactic",
+            25: "Cosmic rays", 26: "Universal scales"
+        }
+        
+        return {
+            'n': n,
+            'E_n': E_n,
+            'interpretation': interpretations.get(n, f"Level {n}"),
+            'latex': f"E_{n} = {self.E_0:.0e} × 10^{n}"
+        }
+    
+    def total_energy_span(self) -> dict:
+        """Compute total energy span across all 26 levels."""
+        E_min = self.E_0 * 10
+        E_max = self.E_0 * (10 ** self.max_level)
+        return {
+            'E_min': E_min,
+            'E_max': E_max,
+            'span': E_max / E_min,
+            'orders_of_magnitude': 25
+        }
+
+
+class StarMagicBlackHoleInteraction:
+    """
+    Ug4: Star-Black Hole Gravitational Interaction.
+    
+    Ug4 = k4 × λ_vac[SCm] × M_bh / d_g × e^(-α·t) × cos(ω·t_n) × (1 + f_feedback)
+    """
+    
+    def __init__(self):
+        self.C = CONSTANTS
+        self.k4 = 1.5
+        self.alpha = 1e-10  # Time decay rate (day^-1)
+        self.omega = 3.14159  # Oscillation constant (rad/s)
+        
+    def compute_Ug4(self, lambda_vac_SCm: float, M_bh: float, d_g: float,
+                    t: float, t_n: float, f_feedback: float = 0.0) -> dict:
+        """Compute Ug4 star-black hole interaction force."""
+        import math
+        
+        decay_term = math.exp(-self.alpha * t)
+        oscillation_term = math.cos(self.omega * t_n)
+        feedback_term = 1.0 + f_feedback
+        
+        Ug4 = (self.k4 * lambda_vac_SCm * M_bh / d_g * 
+               decay_term * oscillation_term * feedback_term)
+        
+        return {
+            'Ug4': Ug4,
+            'decay_term': decay_term,
+            'oscillation_term': oscillation_term,
+            'unit': 'N/m²'
+        }
+    
+    def sgr_a_star_example(self, t_days: float = 0.0, t_n_days: float = 0.0) -> dict:
+        """Compute Ug4 for Sun-Sgr A* system."""
+        M_sun = self.C.get('M_sun', 1.989e30)
+        M_sgr_a = 4.15e6 * M_sun
+        d_sun_sgr_a = 2.44e20  # 25,800 ly in meters
+        lambda_SCm = 1e15  # SCm vacuum density
+        
+        return self.compute_Ug4(lambda_SCm, M_sgr_a, d_sun_sgr_a, t_days, t_n_days)
+
+
+class StarMagicVacuumEnergy:
+    """
+    Vacuum Energy Density (λ_vac) Calculator.
+    
+    λ_vac = Σ(f_i × E_i) / V
+    
+    Includes SCm and UA contributions for complete aether density.
+    """
+    
+    def __init__(self):
+        self.C = CONSTANTS
+        self.energy_structure = StarMagicEnergyStructure()
+        
+    def vacuum_energy_density(self, occupation_fractions: dict, volume: float) -> dict:
+        """
+        Compute vacuum energy density from occupation fractions.
+        
+        occupation_fractions: {level_n: fraction_f_i} for n=1 to 26
+        """
+        total_energy = 0.0
+        
+        for n, f_i in occupation_fractions.items():
+            E_n = self.energy_structure.E_0 * (10 ** n)
+            total_energy += f_i * E_n
+        
+        lambda_vac = total_energy / volume
+        
+        return {
+            'lambda_vac': lambda_vac,
+            'total_energy': total_energy,
+            'volume': volume,
+            'levels_used': len(occupation_fractions),
+            'unit': 'J/m³'
+        }
+    
+    def cosmological_vacuum(self, volume: float = 1.0) -> dict:
+        """
+        Compute cosmological vacuum energy density (n=20-26 levels).
+        
+        Matches JWST 2025 cosmological constant (~10^-9 J/m³).
+        """
+        # Low occupation fractions for cosmological vacuum
+        cosmological_fractions = {n: 1e-15 for n in range(20, 27)}
+        return self.vacuum_energy_density(cosmological_fractions, volume)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # INJECT QUANTUM/WAVE METHODS INTO ALL MODEL CLASSES
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -76095,6 +76742,11 @@ __all__ = [
     'NegativeTimeModel', 'AetherVacuumEnergyModel', 'CosmicEggModel',
     'SgrAStarGravityModel', 'RetrocausalModel', 'TRZModel',
     'VoidOscillationModel', 'TimeVaryingVacuumModel',
+    
+    # Batch 3 Classes (9 new)
+    'TriadicGravityCalculator', 'UnifiedFieldSolver', 'MagnetarMUGECalculator',
+    'SgrAStarCalculator', 'Phase2Calculator', 'ConsciousnessCloud',
+    'StarMagicEnergyStructure', 'StarMagicBlackHoleInteraction', 'StarMagicVacuumEnergy',
     
     # Constants
     'CONSTANTS',
