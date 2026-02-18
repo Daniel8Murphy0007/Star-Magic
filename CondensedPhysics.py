@@ -10092,6 +10092,63 @@ class DPMModel:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -11210,6 +11267,63 @@ class HydrogenEvolutionModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -12669,6 +12783,63 @@ class AtomicModelUQFF:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -13888,6 +14059,63 @@ Estimated Decay Time: {t_decay:.4e} days ({t_decay/365.25:.4e} years)
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -14676,6 +14904,63 @@ class UniversalGravityModel:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -15103,6 +15388,63 @@ class UniversalMagnetismModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -15703,6 +16045,63 @@ class MagneticStringModel:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -16084,6 +16483,63 @@ class HeavisideComponentModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -16579,6 +17035,63 @@ class HeliosphereThicknessModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -17233,6 +17746,63 @@ class UniversalInertiaModel:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -17785,6 +18355,63 @@ class UniversalInertiaVacuumModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -18660,6 +19287,63 @@ class SuperconductiveMaterialVacuumModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -20522,6 +21206,63 @@ class UnifiedFieldEquation:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -21319,6 +22060,63 @@ Physical Interpretation (Ideal Gravity):
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -21866,6 +22664,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -22437,6 +23292,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -22889,6 +23801,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -23281,6 +24250,63 @@ KEY EQUATIONS INTEGRATED:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -23787,6 +24813,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -24238,6 +25321,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -24649,6 +25789,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -25348,6 +26545,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -25787,6 +27041,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -26331,6 +27642,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -26810,6 +28178,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -27309,6 +28734,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -27768,6 +29250,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -28248,6 +29787,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -28764,6 +30360,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -29241,6 +30894,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -29707,6 +31417,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -30178,6 +31945,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -30622,6 +32446,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -31081,6 +32962,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -31598,6 +33536,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -32046,6 +34041,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -32462,6 +34514,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -32968,6 +35077,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -33445,6 +35611,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -33906,6 +36129,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -34334,6 +36614,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -34732,6 +37069,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -35125,6 +37519,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -35527,6 +37978,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -35989,6 +38497,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -36413,6 +38978,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -36862,6 +39484,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -37321,6 +40000,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -37702,6 +40438,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -38136,6 +40929,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -38576,6 +41426,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -39044,6 +41951,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -39517,6 +42481,63 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -39911,6 +42932,63 @@ class GinzburgLandauFieldModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -40315,6 +43393,63 @@ class BogoliubovDeGennesModel:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -40710,6 +43845,63 @@ class QWaveResonanceModel:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -41092,6 +44284,63 @@ class TemporalDynamicsModel:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -41453,6 +44702,63 @@ class AmplitudeStabilityModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -41822,6 +45128,63 @@ class SuperconductingCoherenceModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -42200,6 +45563,63 @@ class GravitationalTimeDilationModel:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -42563,6 +45983,63 @@ class GravitationalRedshiftModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -42979,6 +46456,63 @@ class TidalForceModel:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -43356,6 +46890,63 @@ class BHMFEvolutionModel:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -43717,6 +47308,63 @@ class BondiAccretionModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -44107,6 +47755,63 @@ class EddingtonRatioModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -44506,6 +48211,63 @@ class TidalDisruptionEventModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -44924,6 +48686,63 @@ class SMBHSpinEvolutionModel:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -45226,6 +49045,63 @@ class SMBHUg1Model:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -45508,6 +49384,63 @@ class SMBHUg2Model:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -45796,6 +49729,63 @@ class SMBHUg3Model:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -46079,6 +50069,63 @@ class SMBHUg4Model:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -46354,6 +50401,63 @@ class SMBHBulgeGravityModel:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -46617,6 +50721,63 @@ class SMBHOmegaSGalacticModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -46914,6 +51075,63 @@ class SMBHCosmicTimeModel:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -47186,6 +51404,63 @@ class VirgoClusterMassModel:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -47437,6 +51712,63 @@ class VirgoClusterDarkMatterModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -47697,6 +52029,63 @@ class VirgoClusterVirialModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -47982,6 +52371,63 @@ class VirgoClusterICMModel:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -48240,6 +52686,63 @@ class VirgoClusterGravPotentialModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -48526,6 +53029,63 @@ class VirgoClusterM87JetModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -48817,6 +53377,63 @@ class VirgoClusterTidalStrippingModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -49120,6 +53737,63 @@ class VirgoClusterXRayModel:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -49405,6 +54079,63 @@ class VirgoClusterVelocityDispersionModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -52459,6 +57190,63 @@ VALIDATION RESULTS:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -53523,6 +58311,63 @@ VALIDATION RESULTS:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -54612,6 +59457,63 @@ VALIDATION RESULTS:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -55752,6 +60654,63 @@ VALIDATION RESULTS:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -56820,6 +61779,63 @@ Watermark: May 09, 2025, 02:20 AM EDT, Youngstown, OH, USA (41.0997Â°N, 80.6495Â
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -57881,6 +62897,63 @@ Watermark: May 09, 2025, 02:40 AM EDT, Youngstown, OH, USA (41.0997Â°N, 80.6495Â
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -58699,6 +63772,63 @@ class SombreroGalaxyModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -59565,6 +64695,63 @@ class SaturnModel:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -60410,6 +65597,63 @@ class M16EagleNebulaModel:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 
@@ -61249,6 +66493,63 @@ class CrabNebulaModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -62123,6 +67424,63 @@ class NGC2264Model:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 # Global NGC 2264 Model instance
@@ -62828,6 +68186,63 @@ class UGC10214Model:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -63535,6 +68950,63 @@ class NGC4676Model:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 # Global NGC 4676 (Mice Galaxies) instance
@@ -64240,6 +69712,63 @@ class RedSpiderNebulaModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -64947,6 +70476,63 @@ class NGC3372Model:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 # Global NGC 3372 (Carina Nebula) instance
@@ -65652,6 +71238,63 @@ class AGCarinaeModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -66359,6 +72002,63 @@ class M42Model:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 # Global M42 (Orion Nebula) instance
@@ -67064,6 +72764,63 @@ class TarantulaNebulaModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
@@ -67771,6 +73528,63 @@ class NGC2841Model:
             'long_form': '\n'.join(steps)
         }
 
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
+
 
 
 # Global NGC 2841 instance
@@ -68476,6 +74290,63 @@ class MysticMountainModel:
             'results': results,
             'long_form': '\n'.join(steps)
         }
+
+    def compute_master_gravity(self, r=None, t=0, include_all=True):
+        """
+        Master Gravity: Complete UQFF gravity computation.
+        
+        g_master = g_N * (1 - Ub/g_N + Ui/g_N) * H_SCm * fTRZ
+        
+        Combines: Newtonian, buoyancy, inertia, superconductivity, triadic zone
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Base Newtonian gravity
+        g_N = G * M / r**2
+        
+        # Get buoyancy correction
+        buoy = self.compute_buoyant_equation(r)
+        Ub = buoy['Ub']
+        
+        # Get superconductive coefficient
+        sc = self.compute_superconductive_equation()
+        H_SCm = sc['H_SCm']
+        
+        # Get triadic factor (default: in resonance zone)
+        fTRZ = 1.0
+        
+        # Compute master gravity
+        if g_N != 0:
+            correction = 1 - Ub / g_N
+        else:
+            correction = 1.0
+        
+        g_master = g_N * correction * max(0.01, H_SCm) * fTRZ
+        
+        # Collect additional terms if requested
+        if include_all:
+            comp = self.compute_compressed_equation(r)
+            res = self.compute_resonance_equation(r, t)
+            tri = self.compute_triadic_equation(r)
+            return {
+                'g_master': g_master,
+                'g_N': g_N,
+                'Ub': Ub,
+                'H_SCm': H_SCm,
+                'fTRZ': fTRZ,
+                'correction': correction,
+                'g_compressed': comp['g_compressed'],
+                'g_resonance': res['g_resonance'],
+                'g_triadic': tri['g_triadic'],
+                'equation': f"g_master = g_N * (1 - Ub/g_N) * H_SCm * fTRZ = {g_master:.6e} m/s^2"
+            }
+        
+        return {'g_master': g_master, 'g_N': g_N}
+
 
 
 
