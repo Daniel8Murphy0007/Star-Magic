@@ -41,6 +41,10 @@
 #include <QKeyEvent>        // Keyboard event - sent when user presses/releases keys
 #include <QCoreApplication> // Core application class - provides event loop for non-GUI applications
 #include <QListWidget>      // List widget - displays a list of items
+#include <QSlider>          // Slider widget - for parameter adjustment (UQFF Simulator)
+#include <QSplitter>        // Splitter widget - resizable split views (UQFF Simulator)
+#include <QTimer>           // Timer - for animation loops (UQFF Simulator 60 FPS)
+#include <QGridLayout>      // Grid layout manager - for parameter sliders grid
 #include <QNetworkAccessManager> // Network manager - handles HTTP requests
 #include <QNetworkRequest>       // Network request - represents HTTP request
 #include <QNetworkReply>         // Network reply - contains HTTP response data
@@ -126,6 +130,10 @@
 #include "uqff_self_expanding.h"
 #include "uqff_dual_physics.h"
 using namespace UQFF;
+
+// UQFF Inter-Component Communication and Enhanced Widgets
+#include "source2_event_bus.h"       // Event bus for cross-widget communication
+#include "source2_widgets_enhanced.h" // SessionLogWidget, PythonBridge, ComparisonDashboard, SessionPersistence
 
 // Define M_PI if not available (not part of C++ standard, POSIX extension)
 // Note: UQFF::PI is preferred, M_PI kept for legacy compatibility
@@ -2659,6 +2667,548 @@ private:
     QLineEdit* promptInput;
     QLabel* statusLabel;
     QNetworkAccessManager* networkManager;
+};
+
+
+// ============================================================================
+// UQFF LIVE SIMULATOR WIDGET - Real-Time 3D Field Visualization (Tab 8)
+// ============================================================================
+
+/**
+ * @brief Real-time UQFF field calculator with 3D VTK visualization
+ * 
+ * Implements the core UQFF equations from MAIN_1_CoAnQi.cpp:
+ * - F_U_Bi_i: Universal Buoyancy Integral (11-term force integrand × x₂)
+ * - compressed_g: 26-layer Ug1-Ug4 gravitational polynomial
+ * 
+ * Compatible with:
+ * - MAIN_1_CoAnQi.cpp: C++ equations (F_U_Bi_i, compressed_g)
+ * - QCalc.py: Python 8 Master Equations (UQFF_Triadic, UQFF_Compressed)
+ * - CondensedPhysics.py: CONSTANTS validation benchmarks
+ * 
+ * Features:
+ * - Real-time parameter adjustment via sliders (M, r, B, v, t)
+ * - 60 FPS animation loop via QTimer
+ * - VTK 3D field visualization (when available)
+ * - Live equation display with step-by-step calculations
+ * - Time evolution play/pause controls
+ * 
+ * Reserved for Tab 8 (index 7) exclusively at Source2 startup.
+ */
+class UQFFSimulatorWidget : public QWidget {
+    Q_OBJECT
+    
+public:
+    UQFFSimulatorWidget(QWidget* parent = nullptr) : QWidget(parent) {
+        setupUI();
+        initializeTimer();
+        updateCalculations();
+    }
+    
+private:
+    void setupUI() {
+        setStyleSheet("background-color: #1A1A2E; color: #FFFFFF;");
+        
+        QVBoxLayout* mainLayout = new QVBoxLayout(this);
+        
+        // ═══════════════════════════════════════════════════════════════════
+        // TITLE HEADER
+        // ═══════════════════════════════════════════════════════════════════
+        QLabel* titleLabel = new QLabel("🌌 UQFF Live Field Simulator", this);
+        titleLabel->setStyleSheet("font-size: 24px; font-weight: bold; color: #00D4FF; padding: 10px;");
+        titleLabel->setAlignment(Qt::AlignCenter);
+        mainLayout->addWidget(titleLabel);
+        
+        // ═══════════════════════════════════════════════════════════════════
+        // PARAMETER SLIDERS PANEL
+        // ═══════════════════════════════════════════════════════════════════
+        QGroupBox* paramGroup = new QGroupBox("System Parameters", this);
+        paramGroup->setStyleSheet(
+            "QGroupBox { font-weight: bold; color: #00D4FF; border: 2px solid #00D4FF; "
+            "border-radius: 5px; margin-top: 10px; padding-top: 15px; }"
+            "QGroupBox::title { subcontrol-origin: margin; left: 10px; padding: 0 5px; }"
+        );
+        QGridLayout* paramLayout = new QGridLayout(paramGroup);
+        
+        // Mass slider (1e20 - 1e40 kg, log scale)
+        QLabel* massLabel = new QLabel("M (Mass):", this);
+        massLabel->setStyleSheet("color: #FFFFFF;");
+        massSlider = new QSlider(Qt::Horizontal, this);
+        massSlider->setRange(20, 40);  // Log scale: 10^20 to 10^40
+        massSlider->setValue(30);      // Default: 10^30 kg (solar mass)
+        massSlider->setStyleSheet("QSlider::groove:horizontal { background: #333; height: 8px; border-radius: 4px; }"
+                                   "QSlider::handle:horizontal { background: #00D4FF; width: 18px; margin: -5px 0; border-radius: 9px; }");
+        massValueLabel = new QLabel("1.00e+30 kg", this);
+        massValueLabel->setStyleSheet("color: #FFD700; font-family: monospace;");
+        massValueLabel->setMinimumWidth(120);
+        paramLayout->addWidget(massLabel, 0, 0);
+        paramLayout->addWidget(massSlider, 0, 1);
+        paramLayout->addWidget(massValueLabel, 0, 2);
+        connect(massSlider, &QSlider::valueChanged, this, &UQFFSimulatorWidget::onParameterChanged);
+        
+        // Radius slider (1e3 - 1e20 m, log scale)
+        QLabel* radiusLabel = new QLabel("r (Distance):", this);
+        radiusLabel->setStyleSheet("color: #FFFFFF;");
+        radiusSlider = new QSlider(Qt::Horizontal, this);
+        radiusSlider->setRange(3, 20);   // Log scale: 10^3 to 10^20
+        radiusSlider->setValue(8);       // Default: 10^8 m (solar radius)
+        radiusSlider->setStyleSheet(massSlider->styleSheet());
+        radiusValueLabel = new QLabel("1.00e+08 m", this);
+        radiusValueLabel->setStyleSheet("color: #FFD700; font-family: monospace;");
+        radiusValueLabel->setMinimumWidth(120);
+        paramLayout->addWidget(radiusLabel, 1, 0);
+        paramLayout->addWidget(radiusSlider, 1, 1);
+        paramLayout->addWidget(radiusValueLabel, 1, 2);
+        connect(radiusSlider, &QSlider::valueChanged, this, &UQFFSimulatorWidget::onParameterChanged);
+        
+        // Magnetic field slider (1e-10 - 1e15 T, log scale)
+        QLabel* fieldLabel = new QLabel("B (Magnetic):", this);
+        fieldLabel->setStyleSheet("color: #FFFFFF;");
+        fieldSlider = new QSlider(Qt::Horizontal, this);
+        fieldSlider->setRange(-10, 15);  // Log scale: 10^-10 to 10^15 T
+        fieldSlider->setValue(0);        // Default: 1 T
+        fieldSlider->setStyleSheet(massSlider->styleSheet());
+        fieldValueLabel = new QLabel("1.00e+00 T", this);
+        fieldValueLabel->setStyleSheet("color: #FFD700; font-family: monospace;");
+        fieldValueLabel->setMinimumWidth(120);
+        paramLayout->addWidget(fieldLabel, 2, 0);
+        paramLayout->addWidget(fieldSlider, 2, 1);
+        paramLayout->addWidget(fieldValueLabel, 2, 2);
+        connect(fieldSlider, &QSlider::valueChanged, this, &UQFFSimulatorWidget::onParameterChanged);
+        
+        // Velocity slider (1e0 - 3e8 m/s, log scale)
+        QLabel* velocityLabel = new QLabel("v (Velocity):", this);
+        velocityLabel->setStyleSheet("color: #FFFFFF;");
+        velocitySlider = new QSlider(Qt::Horizontal, this);
+        velocitySlider->setRange(0, 85);  // 0-85% of c (scaled)
+        velocitySlider->setValue(10);     // Default: ~10% of c
+        velocitySlider->setStyleSheet(massSlider->styleSheet());
+        velocityValueLabel = new QLabel("3.00e+07 m/s", this);
+        velocityValueLabel->setStyleSheet("color: #FFD700; font-family: monospace;");
+        velocityValueLabel->setMinimumWidth(120);
+        paramLayout->addWidget(velocityLabel, 3, 0);
+        paramLayout->addWidget(velocitySlider, 3, 1);
+        paramLayout->addWidget(velocityValueLabel, 3, 2);
+        connect(velocitySlider, &QSlider::valueChanged, this, &UQFFSimulatorWidget::onParameterChanged);
+        
+        // Time slider (0 - 1e18 s, log scale for cosmic timescales)
+        QLabel* timeLabel = new QLabel("t (Time):", this);
+        timeLabel->setStyleSheet("color: #FFFFFF;");
+        timeSlider = new QSlider(Qt::Horizontal, this);
+        timeSlider->setRange(0, 180);    // 0 to 18 (×10^17 s steps for animation)
+        timeSlider->setValue(0);         // Default: t=0
+        timeSlider->setStyleSheet(massSlider->styleSheet());
+        timeValueLabel = new QLabel("0.00e+00 s", this);
+        timeValueLabel->setStyleSheet("color: #FFD700; font-family: monospace;");
+        timeValueLabel->setMinimumWidth(120);
+        paramLayout->addWidget(timeLabel, 4, 0);
+        paramLayout->addWidget(timeSlider, 4, 1);
+        paramLayout->addWidget(timeValueLabel, 4, 2);
+        connect(timeSlider, &QSlider::valueChanged, this, &UQFFSimulatorWidget::onParameterChanged);
+        
+        mainLayout->addWidget(paramGroup);
+        
+        // ═══════════════════════════════════════════════════════════════════
+        // ANIMATION CONTROLS
+        // ═══════════════════════════════════════════════════════════════════
+        QHBoxLayout* controlLayout = new QHBoxLayout();
+        
+        playPauseBtn = new QPushButton("▶ Play Time Evolution", this);
+        playPauseBtn->setStyleSheet("background-color: #4CAF50; color: white; font-weight: bold; padding: 10px 20px; border-radius: 5px;");
+        connect(playPauseBtn, &QPushButton::clicked, this, &UQFFSimulatorWidget::toggleAnimation);
+        controlLayout->addWidget(playPauseBtn);
+        
+        QPushButton* resetBtn = new QPushButton("↺ Reset", this);
+        resetBtn->setStyleSheet("background-color: #FF5722; color: white; font-weight: bold; padding: 10px 20px; border-radius: 5px;");
+        connect(resetBtn, &QPushButton::clicked, this, &UQFFSimulatorWidget::resetParameters);
+        controlLayout->addWidget(resetBtn);
+        
+        // Preset system selector
+        QComboBox* presetCombo = new QComboBox(this);
+        presetCombo->setStyleSheet("background-color: #333; color: white; padding: 8px; border-radius: 5px;");
+        presetCombo->addItem("Custom Parameters");
+        presetCombo->addItem("🌟 Sun (Sol)");
+        presetCombo->addItem("⭐ Magnetar SGR1745");
+        presetCombo->addItem("🕳️ Sagittarius A*");
+        presetCombo->addItem("🌌 M87 SMBH");
+        presetCombo->addItem("💫 Crab Pulsar");
+        presetCombo->addItem("🌀 NGC 1275");
+        connect(presetCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &UQFFSimulatorWidget::loadPreset);
+        controlLayout->addWidget(presetCombo);
+        
+        mainLayout->addLayout(controlLayout);
+        
+        // ═══════════════════════════════════════════════════════════════════
+        // RESULTS DISPLAY (Split: equations left, visualization right)
+        // ═══════════════════════════════════════════════════════════════════
+        QSplitter* resultsSplitter = new QSplitter(Qt::Horizontal, this);
+        
+        // Left panel: Live equations
+        QGroupBox* equationGroup = new QGroupBox("UQFF Equations (Live)", this);
+        equationGroup->setStyleSheet(paramGroup->styleSheet());
+        QVBoxLayout* eqLayout = new QVBoxLayout(equationGroup);
+        
+        equationDisplay = new QTextEdit(this);
+        equationDisplay->setReadOnly(true);
+        equationDisplay->setStyleSheet(
+            "background-color: #0D0D1A; color: #00FF88; font-family: 'Consolas', monospace; "
+            "font-size: 12px; border: 1px solid #333; border-radius: 5px; padding: 10px;"
+        );
+        eqLayout->addWidget(equationDisplay);
+        resultsSplitter->addWidget(equationGroup);
+        
+        // Right panel: 3D Visualization (VTK or fallback)
+        QGroupBox* vizGroup = new QGroupBox("Field Visualization", this);
+        vizGroup->setStyleSheet(paramGroup->styleSheet());
+        QVBoxLayout* vizLayout = new QVBoxLayout(vizGroup);
+        
+#ifndef NO_VTK
+        // VTK real 3D field visualization
+        // TODO: Add QVTKWidget when VTK-Qt integration available
+        vizPlaceholder = new QLabel("🌐 VTK 3D Field Renderer\n\n(Initializing...)", this);
+#else
+        // Fallback when VTK not available
+        vizPlaceholder = new QLabel("📊 Field Visualization\n\n(VTK not available - showing numerical output)", this);
+#endif
+        vizPlaceholder->setStyleSheet(
+            "background-color: #0D0D1A; color: #888; font-size: 14px; "
+            "border: 1px solid #333; border-radius: 5px; padding: 20px;"
+        );
+        vizPlaceholder->setAlignment(Qt::AlignCenter);
+        vizPlaceholder->setMinimumHeight(300);
+        vizLayout->addWidget(vizPlaceholder);
+        resultsSplitter->addWidget(vizGroup);
+        
+        resultsSplitter->setSizes({400, 600});
+        mainLayout->addWidget(resultsSplitter);
+        
+        // ═══════════════════════════════════════════════════════════════════
+        // STATUS BAR
+        // ═══════════════════════════════════════════════════════════════════
+        statusLabel = new QLabel("Ready - Adjust parameters to compute UQFF fields", this);
+        statusLabel->setStyleSheet("color: #888; font-style: italic; padding: 5px;");
+        mainLayout->addWidget(statusLabel);
+    }
+    
+    void initializeTimer() {
+        animationTimer = new QTimer(this);
+        animationTimer->setInterval(16);  // ~60 FPS
+        connect(animationTimer, &QTimer::timeout, this, &UQFFSimulatorWidget::animationStep);
+        isAnimating = false;
+    }
+    
+    // ═══════════════════════════════════════════════════════════════════════
+    // UQFF CORE EQUATIONS (Compatible with MAIN_1_CoAnQi.cpp)
+    // ═══════════════════════════════════════════════════════════════════════
+    
+    /**
+     * F_U_Bi_i: Universal Buoyancy Integral (from MAIN_1_CoAnQi.cpp line 12821)
+     * 
+     * F_U_Bi_i = integrand × x₂
+     * 
+     * integrand = F_LENR + F_act + F_DE + F_neutron + F_relativistic + 
+     *             F_vac_rep + F_thz_shock + F_conduit + F_spooky
+     */
+    double compute_F_U_Bi_i(double M, double r, double v, double B0, double t) {
+        // UQFF Constants (from uqff_constants.h)
+        const double k_LENR = 1e-10;
+        const double k_act = 1e-14;
+        const double k_DE = 1e-16;
+        const double k_neutron = 1e-20;
+        const double k_rel = 1e-12;
+        const double k_vac = 1e-10;
+        const double k_thz = 1e-15;
+        const double k_conduit = 1e-18;
+        const double k_spooky = 1e-20;
+        const double omega0 = 1e-16;
+        const double rho_vac_UA = 7.09e-36;
+        const double rho_vac_SCm = 7.09e-37;
+        
+        // LENR term (1.2 THz)
+        double omega_LENR = 1.2e12;
+        double Q_wave = 1e6;
+        double F_LENR = k_LENR * std::pow(omega_LENR / omega0, 2) * Q_wave;
+        
+        // Activation term (Colman-Gillespie 300 Hz)
+        double omega_act = 2 * UQFF::PI * 300;
+        double F_act = k_act * std::pow(omega_act / omega0, 2);
+        
+        // Directed Energy term
+        double F_DE = k_DE * M * v * v / r;
+        
+        // Neutron term
+        double n_neutron = 1e20;
+        double sigma_n = 1e-28;
+        double F_neutron = k_neutron * n_neutron * sigma_n;
+        
+        // Relativistic term
+        double F_rel = 4.30e33;  // LEP reference
+        double F_relativistic = k_rel * F_rel;
+        
+        // Vacuum repulsion term
+        double Delta_rho_vac = rho_vac_UA - rho_vac_SCm;
+        double F_vac_rep = k_vac * Delta_rho_vac * M * v;
+        
+        // THz shock wave term
+        double omega_thz = 2 * UQFF::PI * 1e12;
+        double F_thz_shock = k_thz * std::pow(omega_thz / omega0, 2);
+        
+        // Conduit term
+        double F_conduit = k_conduit * B0;
+        
+        // Spooky action term
+        double string_wave = 1e15;
+        double F_spooky = k_spooky * (string_wave / omega0);
+        
+        // Combined integrand
+        double integrand = F_LENR + F_act + F_DE + F_neutron + F_relativistic + 
+                          F_vac_rep + F_thz_shock + F_conduit + F_spooky;
+        
+        // Quadratic approximation scaling factor x_2
+        double std_scale = 1.0;
+        double V_void_fraction = 0.01;
+        double a_quad = std_scale;
+        double b_quad = -integrand / 1e12;
+        double c_quad = V_void_fraction * 1e12;
+        double discriminant = b_quad * b_quad - 4 * a_quad * c_quad;
+        double x_2 = (discriminant >= 0) ? (-b_quad + std::sqrt(discriminant)) / (2 * a_quad) : 1.0;
+        
+        return integrand * x_2;
+    }
+    
+    /**
+     * compressed_g: 26-Layer Gravitational Polynomial (from MAIN_1_CoAnQi.cpp line 12885)
+     * 
+     * g(r,t) = Σ(i=1 to 26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i]
+     */
+    double compute_compressed_g(double M, double r, double B0, double t) {
+        double g_total = 0.0;
+        
+        for (int i = 1; i <= 26; ++i) {
+            double r_i = r / i;
+            double Q_i = i;
+            double SCm_i = i * i;
+            double f_TRZ_i = 1.0 / i;
+            double f_Um_i = i;
+            double omega_i = 1e-16;  // omega0
+            double f_i = omega_i / (2 * UQFF::PI);
+            double alpha_i = 0.01;
+            
+            // E_DPM for this layer
+            double E_DPM_i = (UQFF::hbar * UQFF::c / (r_i * r_i)) * Q_i * SCm_i;
+            
+            // Ug1: Dipole/spin term
+            double Ug1_i = E_DPM_i / (r_i * r_i) * UQFF::rho_vac_UA * f_TRZ_i;
+            
+            // Ug2: Superconductor quality
+            double Ug2_i = E_DPM_i / (r_i * r_i) * SCm_i * f_Um_i;
+            
+            // Ug3: Resonance/magnetic disk with reverse polarity
+            double Ug3_i = (UQFF::hbar * omega_i / 2) * Q_i * std::cos(2 * UQFF::PI * f_i * t) / r_i;
+            
+            // Ug4: Adjusted Newtonian gravity
+            double M_i = M / i;
+            double Ug4_i = (UQFF::G * M_i / (r_i * r_i)) * (1 + alpha_i) * SCm_i;
+            
+            g_total += Ug1_i + Ug2_i + Ug3_i + Ug4_i;
+        }
+        
+        return g_total;
+    }
+    
+    /**
+     * Get current parameter values from sliders
+     */
+    void getCurrentParams(double& M, double& r, double& B, double& v, double& t) {
+        M = std::pow(10.0, massSlider->value());
+        r = std::pow(10.0, radiusSlider->value());
+        B = std::pow(10.0, fieldSlider->value());
+        v = (velocitySlider->value() / 100.0) * UQFF::c;
+        t = timeSlider->value() * 1e16;  // Scale to cosmic timescales
+    }
+    
+private slots:
+    void onParameterChanged() {
+        updateSliderLabels();
+        updateCalculations();
+    }
+    
+    void updateSliderLabels() {
+        double M, r, B, v, t;
+        getCurrentParams(M, r, B, v, t);
+        
+        massValueLabel->setText(QString("%1 kg").arg(M, 0, 'e', 2));
+        radiusValueLabel->setText(QString("%1 m").arg(r, 0, 'e', 2));
+        fieldValueLabel->setText(QString("%1 T").arg(B, 0, 'e', 2));
+        velocityValueLabel->setText(QString("%1 m/s").arg(v, 0, 'e', 2));
+        timeValueLabel->setText(QString("%1 s").arg(t, 0, 'e', 2));
+    }
+    
+    void updateCalculations() {
+        double M, r, B, v, t;
+        getCurrentParams(M, r, B, v, t);
+        
+        // Compute UQFF fields
+        double F_U_Bi_i = compute_F_U_Bi_i(M, r, v, B, t);
+        double g_compressed = compute_compressed_g(M, r, B, t);
+        
+        // Newtonian comparison
+        double g_newton = UQFF::G * M / (r * r);
+        
+        // Format equations display
+        QString eqText;
+        eqText += "═══════════════════════════════════════════════════════════\n";
+        eqText += "                    UQFF LIVE CALCULATION\n";
+        eqText += "═══════════════════════════════════════════════════════════\n\n";
+        
+        eqText += "INPUT PARAMETERS:\n";
+        eqText += QString("  M = %1 kg\n").arg(M, 0, 'e', 4);
+        eqText += QString("  r = %1 m\n").arg(r, 0, 'e', 4);
+        eqText += QString("  B = %1 T\n").arg(B, 0, 'e', 4);
+        eqText += QString("  v = %1 m/s (%2% c)\n").arg(v, 0, 'e', 4).arg(v / UQFF::c * 100, 0, 'f', 1);
+        eqText += QString("  t = %1 s\n\n").arg(t, 0, 'e', 4);
+        
+        eqText += "───────────────────────────────────────────────────────────\n";
+        eqText += "F_U_Bi_i (Universal Buoyancy Integral)\n";
+        eqText += "───────────────────────────────────────────────────────────\n";
+        eqText += "Formula: F_U_Bi_i = integrand × x₂\n";
+        eqText += "         integrand = ΣF (LENR + activation + DE + neutron + ...\n";
+        eqText += "                         + relativistic + vacuum + THz + conduit + spooky)\n\n";
+        eqText += QString("  F_U_Bi_i = %1 N\n\n").arg(F_U_Bi_i, 0, 'e', 6);
+        
+        eqText += "───────────────────────────────────────────────────────────\n";
+        eqText += "compressed_g (26-Layer Triadic Gravity)\n";
+        eqText += "───────────────────────────────────────────────────────────\n";
+        eqText += "Formula: g(r,t) = Σ(i=1→26) [Ug1ᵢ + Ug2ᵢ + Ug3ᵢ + Ug4ᵢ]\n";
+        eqText += "  Ug1: Dipole/spin      Ug2: SCm quality\n";
+        eqText += "  Ug3: Resonance        Ug4: Adjusted Newton\n\n";
+        eqText += QString("  g_compressed = %1 m/s²\n\n").arg(g_compressed, 0, 'e', 6);
+        
+        eqText += "───────────────────────────────────────────────────────────\n";
+        eqText += "COMPARISON WITH NEWTONIAN GRAVITY\n";
+        eqText += "───────────────────────────────────────────────────────────\n";
+        eqText += QString("  g_newton = G×M/r² = %1 m/s²\n").arg(g_newton, 0, 'e', 6);
+        eqText += QString("  UQFF / Newton ratio = %1\n").arg(g_compressed / g_newton, 0, 'e', 4);
+        eqText += QString("  UQFF correction = %1%\n").arg((g_compressed / g_newton - 1) * 100, 0, 'f', 2);
+        
+        equationDisplay->setText(eqText);
+        
+        // Update visualization placeholder with field magnitudes
+        QString vizText;
+        vizText += "📊 FIELD MAGNITUDES\n\n";
+        vizText += QString("F_U_Bi_i: %1 N\n").arg(F_U_Bi_i, 0, 'e', 3);
+        vizText += QString("g_compressed: %1 m/s²\n").arg(g_compressed, 0, 'e', 3);
+        vizText += QString("g_newton: %1 m/s²\n\n").arg(g_newton, 0, 'e', 3);
+        vizText += "─────────────────\n";
+        vizText += QString("UQFF Correction: %1%\n").arg((g_compressed / g_newton - 1) * 100, 0, 'f', 2);
+        vizPlaceholder->setText(vizText);
+        
+        statusLabel->setText(QString("Computed at t=%1s | F_U_Bi_i=%2 N | g=%3 m/s²")
+            .arg(t, 0, 'e', 2)
+            .arg(F_U_Bi_i, 0, 'e', 3)
+            .arg(g_compressed, 0, 'e', 3));
+    }
+    
+    void toggleAnimation() {
+        if (isAnimating) {
+            animationTimer->stop();
+            isAnimating = false;
+            playPauseBtn->setText("▶ Play Time Evolution");
+            playPauseBtn->setStyleSheet("background-color: #4CAF50; color: white; font-weight: bold; padding: 10px 20px; border-radius: 5px;");
+        } else {
+            animationTimer->start();
+            isAnimating = true;
+            playPauseBtn->setText("⏸ Pause");
+            playPauseBtn->setStyleSheet("background-color: #FF9800; color: white; font-weight: bold; padding: 10px 20px; border-radius: 5px;");
+        }
+    }
+    
+    void animationStep() {
+        // Advance time slider
+        int current = timeSlider->value();
+        if (current < timeSlider->maximum()) {
+            timeSlider->setValue(current + 1);
+        } else {
+            timeSlider->setValue(0);  // Loop
+        }
+    }
+    
+    void resetParameters() {
+        massSlider->setValue(30);
+        radiusSlider->setValue(8);
+        fieldSlider->setValue(0);
+        velocitySlider->setValue(10);
+        timeSlider->setValue(0);
+        if (isAnimating) {
+            toggleAnimation();
+        }
+    }
+    
+    void loadPreset(int index) {
+        switch (index) {
+            case 1:  // Sun
+                massSlider->setValue(30);   // 10^30 kg
+                radiusSlider->setValue(9);  // ~7×10^8 m
+                fieldSlider->setValue(-4);  // ~10^-4 T
+                velocitySlider->setValue(0);
+                break;
+            case 2:  // Magnetar SGR1745
+                massSlider->setValue(30);   // ~1.4 solar mass
+                radiusSlider->setValue(4);  // ~10 km
+                fieldSlider->setValue(11);  // ~10^11 T
+                velocitySlider->setValue(5);
+                break;
+            case 3:  // Sagittarius A*
+                massSlider->setValue(36);   // ~4×10^6 solar masses
+                radiusSlider->setValue(13); // ~10^13 m
+                fieldSlider->setValue(-2);
+                velocitySlider->setValue(1);
+                break;
+            case 4:  // M87 SMBH
+                massSlider->setValue(39);   // ~6.5×10^9 solar masses
+                radiusSlider->setValue(16); // ~10^16 m
+                fieldSlider->setValue(-3);
+                velocitySlider->setValue(1);
+                break;
+            case 5:  // Crab Pulsar
+                massSlider->setValue(30);
+                radiusSlider->setValue(4);
+                fieldSlider->setValue(8);   // ~10^8 T
+                velocitySlider->setValue(3);
+                break;
+            case 6:  // NGC 1275
+                massSlider->setValue(39);
+                radiusSlider->setValue(20);
+                fieldSlider->setValue(-6);
+                velocitySlider->setValue(1);
+                break;
+            default:
+                break;
+        }
+    }
+    
+private:
+    // UI Elements
+    QSlider* massSlider;
+    QSlider* radiusSlider;
+    QSlider* fieldSlider;
+    QSlider* velocitySlider;
+    QSlider* timeSlider;
+    
+    QLabel* massValueLabel;
+    QLabel* radiusValueLabel;
+    QLabel* fieldValueLabel;
+    QLabel* velocityValueLabel;
+    QLabel* timeValueLabel;
+    
+    QTextEdit* equationDisplay;
+    QLabel* vizPlaceholder;
+    QLabel* statusLabel;
+    QPushButton* playPauseBtn;
+    
+    // Animation
+    QTimer* animationTimer;
+    bool isAnimating;
 };
 
 
@@ -9969,7 +10519,28 @@ MainWindow::MainWindow()
                 tabs->addTab(grokExpert, "🧠 SuperGrok4");
                 browserWindows[6] = nullptr;  // No browser window for Tab 7
             }
-            // Tabs 8-21 (indices 7-20): Query fetch results display
+            // Special case: Tab 8 (index 7) reserved for UQFF Live Simulator
+            else if (i == 7) {
+                // Tab 8: UQFF Live Simulator - Real-time 3D field visualization
+                UQFFSimulatorWidget* uqffSim = new UQFFSimulatorWidget(this);
+                tabs->addTab(uqffSim, "🌌 UQFF Simulator");
+                browserWindows[7] = nullptr;  // No browser window for Tab 8
+            }
+            // Special case: Tab 9 (index 8) reserved for Session Logger
+            else if (i == 8) {
+                // Tab 9: Session Logger - Real-time cross-component logging
+                SessionLogWidget* sessionLog = new SessionLogWidget(this);
+                tabs->addTab(sessionLog, "📋 Session Logger");
+                browserWindows[8] = nullptr;  // No browser window for Tab 9
+            }
+            // Special case: Tab 10 (index 9) reserved for Comparison Dashboard
+            else if (i == 9) {
+                // Tab 10: Comparison Dashboard - C++ vs Python results validation
+                ComparisonDashboard* compDash = new ComparisonDashboard(this);
+                tabs->addTab(compDash, "⚖️ Compare C++/Python");
+                browserWindows[9] = nullptr;  // No browser window for Tab 10
+            }
+            // Tabs 11-21 (indices 10-20): Query fetch results display
             else {
                 // Standard browser windows for search results
                 browserWindows[i] = new BrowserWindow(QString("Tab %1").arg(i + 1), this);
@@ -10034,6 +10605,34 @@ MainWindow::MainWindow()
 
         // SIGNAL/SLOT CONNECTIONS: Wire up all button clicks and events
         // Qt's signal/slot mechanism connects events (signals) to handlers (slots/lambdas)
+
+        // 0. EVENT BUS INITIALIZATION: Cross-component communication
+        auto& eventBus = UQFFEventBus::instance();
+        UQFF_LOG_INFO("EnhancedMainWindow", "Source2.cpp GUI initialized with 10 tabs + EventBus");
+        
+        // Initialize Python Bridge for CondensedPhysics.py communication
+        PythonBridge* pythonBridge = new PythonBridge(this);
+        pythonBridge->setPythonScript("CondensedPhysics.py");
+        
+        // Initialize Session Persistence
+        SessionPersistence& persistence = SessionPersistence::instance();
+        
+        // Connect EventBus to Session Logger (Tab 9 will auto-connect via constructor)
+        // Log all physics computations from any widget
+        connect(&eventBus, &UQFFEventBus::computationCompleted, [this](const QString& source, const QString& system, const QJsonObject& result) {
+            UQFF_LOG_PHYSICS(source.toStdString(), QString("Computed %1: F_U_Bi=%2")
+                .arg(system)
+                .arg(result["F_U_Bi"].toDouble()).toStdString());
+        });
+        
+        // Log all validation results
+        connect(&eventBus, &UQFFEventBus::validationResult, [this](const QString& system, bool passed, double diff, const QString& message) {
+            if (passed) {
+                UQFF_LOG_INFO("Validation", QString("%1: PASSED (diff=%2%)").arg(system).arg(diff * 100).toStdString());
+            } else {
+                UQFF_LOG_WARNING("Validation", QString("%1: FAILED - %2").arg(system).arg(message).toStdString());
+            }
+        });
 
         // 1. SEARCH SUBMISSION: When user presses Enter in query field
         connect(queryField, &QLineEdit::returnPressed, [=]()
