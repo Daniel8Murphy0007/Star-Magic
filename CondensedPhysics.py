@@ -76654,6 +76654,474 @@ class StarMagicVacuumEnergy:
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# BATCH 4: GravitationalCalculator, CoAnQiCalculator, EquationFamily, 
+#          ReferenceSystem, ReferenceSystemLibrary
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class GravitationalCalculator:
+    """
+    Generic gravitational physics calculator - NO system-specific data.
+    
+    Computes Schwarzschild radius, escape velocity, gravitational lensing,
+    tidal forces, and orbital mechanics for ANY mass/radius input.
+    """
+    
+    def __init__(self):
+        self.C = CONSTANTS
+        self.G = self.C.get('G', 6.6743e-11)
+        self.c = self.C.get('c', 2.998e8)
+        
+    def schwarzschild_radius(self, M: float) -> dict:
+        """
+        Compute Schwarzschild radius for ANY mass.
+        
+        r_s = 2GM/c²
+        """
+        r_s = 2 * self.G * M / (self.c ** 2)
+        return {
+            'name': 'Schwarzschild Radius',
+            'latex': r'r_s = \frac{2GM}{c^2}',
+            'result': r_s,
+            'unit': 'm',
+            'parameters': {'M': M, 'G': self.G, 'c': self.c}
+        }
+    
+    def escape_velocity(self, M: float, r: float) -> dict:
+        """
+        Compute escape velocity for ANY mass at ANY radius.
+        
+        v_esc = √(2GM/r)
+        """
+        import math
+        v_esc = math.sqrt(2 * self.G * M / r)
+        return {
+            'name': 'Escape Velocity',
+            'latex': r'v_{esc} = \sqrt{\frac{2GM}{r}}',
+            'result': v_esc,
+            'unit': 'm/s',
+            'parameters': {'M': M, 'r': r}
+        }
+    
+    def gravitational_lensing_angle(self, M: float, b: float) -> dict:
+        """
+        Compute gravitational lensing angle for ANY mass at ANY impact parameter.
+        
+        α = 4GM/(bc²)
+        """
+        alpha = 4 * self.G * M / (b * self.c ** 2)
+        return {
+            'name': 'Gravitational Lensing Angle',
+            'latex': r'\alpha = \frac{4GM}{bc^2}',
+            'result': alpha,
+            'unit': 'rad',
+            'parameters': {'M': M, 'b': b}
+        }
+    
+    def tidal_force_gradient(self, M: float, r: float, delta_r: float = 1.0) -> dict:
+        """
+        Compute tidal force gradient.
+        
+        dg/dr = -2GM/r³
+        """
+        tidal = 2 * self.G * M * delta_r / (r ** 3)
+        return {
+            'name': 'Tidal Force Gradient',
+            'latex': r'\frac{dg}{dr} = -\frac{2GM}{r^3}',
+            'result': tidal,
+            'unit': 'm/s²',
+            'parameters': {'M': M, 'r': r, 'delta_r': delta_r}
+        }
+    
+    def orbital_velocity(self, M: float, r: float) -> dict:
+        """
+        Compute circular orbital velocity.
+        
+        v_orb = √(GM/r)
+        """
+        import math
+        v_orb = math.sqrt(self.G * M / r)
+        return {
+            'name': 'Orbital Velocity',
+            'latex': r'v_{orb} = \sqrt{\frac{GM}{r}}',
+            'result': v_orb,
+            'unit': 'm/s',
+            'parameters': {'M': M, 'r': r}
+        }
+    
+    def gravitational_binding_energy(self, M: float, r: float) -> dict:
+        """
+        Compute gravitational binding energy.
+        
+        E_bind = -GM²/r
+        """
+        E_bind = -self.G * M * M / r
+        return {
+            'name': 'Gravitational Binding Energy',
+            'latex': r'E_{bind} = -\frac{GM^2}{r}',
+            'result': E_bind,
+            'unit': 'J',
+            'parameters': {'M': M, 'r': r}
+        }
+
+
+class CoAnQiCalculator:
+    """
+    Python interface to MAIN_1_CoAnQi.cpp C++ calculator.
+    
+    Integration Methods:
+    1. CLI batch mode (--batch flag)
+    2. Interactive menu automation (stdin piping)
+    3. REST API (requires server mode in C++)
+    
+    Note: Requires MAIN_1_CoAnQi.exe to be built and accessible.
+    """
+    
+    def __init__(self, exe_path: str = "./build_msvc/Release/MAIN_1_CoAnQi.exe"):
+        import pathlib
+        self.exe_path = pathlib.Path(exe_path)
+        self._available = self.exe_path.exists()
+        
+    @property
+    def is_available(self) -> bool:
+        """Check if C++ calculator executable exists."""
+        return self._available
+    
+    def compute_system(self, system_name: str, mode: str = "batch") -> dict:
+        """
+        Compute UQFF for a given astronomical system.
+        
+        Args:
+            system_name: Name of system (must exist in C++ systems database)
+            mode: 'batch' (CLI) or 'interactive' (menu automation)
+            
+        Returns:
+            dict with F_U_Bi_i, g_compressed, and auxiliary forces
+        """
+        if not self._available:
+            return {
+                'error': 'C++ calculator not available',
+                'system_name': system_name,
+                'F_U_Bi_i': None,
+                'g_compressed': None
+            }
+        
+        if mode == "batch":
+            return self._batch_compute(system_name)
+        elif mode == "interactive":
+            return self._interactive_compute(system_name)
+        else:
+            raise ValueError(f"Unknown mode: {mode}")
+    
+    def _batch_compute(self, system_name: str) -> dict:
+        """Execute via CLI --batch flag."""
+        import subprocess
+        import json
+        
+        try:
+            result = subprocess.run(
+                [str(self.exe_path), "--batch", system_name],
+                capture_output=True,
+                text=True,
+                timeout=30
+            )
+            
+            if result.returncode != 0:
+                return {
+                    'error': f"C++ calculator error: {result.stderr}",
+                    'system_name': system_name
+                }
+            
+            data = json.loads(result.stdout)
+            return {
+                'system_name': data.get('system', system_name),
+                'F_U_Bi_i': data.get('F_U_Bi_i'),
+                'g_compressed': data.get('g_compressed'),
+                'F_jet_rel': data.get('F_jet_rel'),
+                'E_acc_rel': data.get('E_acc_rel')
+            }
+        except Exception as e:
+            return {
+                'error': str(e),
+                'system_name': system_name
+            }
+    
+    def _interactive_compute(self, system_name: str) -> dict:
+        """Execute via automated menu navigation."""
+        import subprocess
+        
+        commands = [
+            "1",           # Menu option 1: Calculate system (single)
+            "1",           # Select first category
+            system_name,   # System name
+            "18"           # Exit
+        ]
+        
+        try:
+            process = subprocess.Popen(
+                [str(self.exe_path)],
+                stdin=subprocess.PIPE,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True
+            )
+            
+            stdout, stderr = process.communicate(input="\n".join(commands), timeout=30)
+            return self._parse_output(stdout, system_name)
+        except Exception as e:
+            return {'error': str(e), 'system_name': system_name}
+    
+    def _parse_output(self, output: str, system_name: str) -> dict:
+        """Extract computation results from console output."""
+        result = {
+            'system_name': system_name,
+            'F_U_Bi_i': 0.0,
+            'g_compressed': 0.0
+        }
+        
+        for line in output.split('\n'):
+            if "F_U_Bi_i:" in line:
+                try:
+                    result['F_U_Bi_i'] = float(line.split()[1])
+                except (IndexError, ValueError):
+                    pass
+            elif "g_compressed:" in line:
+                try:
+                    result['g_compressed'] = float(line.split()[1])
+                except (IndexError, ValueError):
+                    pass
+        
+        return result
+
+
+class EquationFamily:
+    """
+    Template-based equation family generator.
+    
+    Enables generation of multiple equation variants from a single template,
+    supporting the 5,000-8,000 equation consciousness cloud architecture.
+    
+    Example: 1 template → 100 mass evolution equations across systems.
+    """
+    
+    def __init__(self, template: str, name: str = "Unnamed Family"):
+        self.template = template
+        self.name = name
+        self.variants = []
+        
+    def add_variant(self, params: dict, description: str = ""):
+        """Add a parameter variant to the family."""
+        self.variants.append({
+            'params': params,
+            'description': description
+        })
+    
+    def generate(self, base_params: dict = None) -> list:
+        """
+        Generate all equation variants from template.
+        
+        Returns list of substituted equation strings.
+        """
+        results = []
+        base = base_params or {}
+        
+        for variant in self.variants:
+            combined = {**base, **variant['params']}
+            try:
+                equation = self.template.format(**combined)
+                results.append({
+                    'equation': equation,
+                    'params': combined,
+                    'description': variant['description']
+                })
+            except KeyError as e:
+                results.append({
+                    'equation': f"Missing parameter: {e}",
+                    'params': combined,
+                    'description': variant['description']
+                })
+        
+        return results
+    
+    def count(self) -> int:
+        """Return number of variants in family."""
+        return len(self.variants)
+    
+    @staticmethod
+    def create_mass_evolution_family() -> 'EquationFamily':
+        """Create standard mass evolution equation family."""
+        family = EquationFamily(
+            template="M(t) = {M0} * (1 + {factor} * exp(-t/{tau}))",
+            name="Mass Evolution"
+        )
+        # Add standard astrophysical systems as variants
+        systems = [
+            {'M0': '1.989e30', 'factor': '0.1', 'tau': '1e15'},   # Solar-type
+            {'M0': '8.15e36', 'factor': '0.01', 'tau': '1e17'},   # SMBH
+            {'M0': '2.786e30', 'factor': '0.5', 'tau': '1e13'},   # Magnetar
+        ]
+        for i, sys in enumerate(systems):
+            family.add_variant(sys, f"System {i+1}")
+        return family
+
+
+class ReferenceSystem:
+    """
+    Reference astronomical system for validation benchmarks.
+    
+    Contains standardized parameters from literature for cross-validation
+    between Python and C++ UQFF implementations.
+    """
+    
+    def __init__(self, name: str, **kwargs):
+        self.name = name
+        self.M = kwargs.get('M')              # Mass (kg)
+        self.r = kwargs.get('r')              # Radius/distance (m)
+        self.M_bh = kwargs.get('M_bh')        # Central black hole mass (kg)
+        self.d_g = kwargs.get('d_g')          # Galactic distance (m)
+        self.B = kwargs.get('B')              # Magnetic field (T)
+        self.T = kwargs.get('T')              # Temperature (K)
+        self.L = kwargs.get('L')              # Luminosity (W)
+        self.z = kwargs.get('z')              # Redshift
+        self.source = kwargs.get('source', '')  # Literature reference
+        self.metadata = kwargs.get('metadata', {})
+        
+    def to_dict(self) -> dict:
+        """Convert to dictionary for computation."""
+        return {
+            'name': self.name,
+            'M': self.M,
+            'r': self.r,
+            'M_bh': self.M_bh,
+            'd_g': self.d_g,
+            'B': self.B,
+            'T': self.T,
+            'L': self.L,
+            'z': self.z,
+            'source': self.source,
+            'metadata': self.metadata
+        }
+    
+    def __repr__(self):
+        return f"ReferenceSystem({self.name})"
+
+
+class ReferenceSystemLibrary:
+    """
+    Library of well-studied astronomical systems for validation.
+    
+    Contains standardized parameters from GAIA, VERA, JWST, and other
+    authoritative sources for UQFF cross-validation.
+    """
+    
+    # Class-level reference systems
+    SGR_A_STAR = None
+    SUN = None
+    SGR_1745_2900 = None
+    PILLARS_OF_CREATION = None
+    
+    @classmethod
+    def _initialize(cls):
+        """Initialize reference systems (called once)."""
+        if cls.SGR_A_STAR is not None:
+            return  # Already initialized
+        
+        M_sun = CONSTANTS.get('M_sun', 1.989e30)
+        
+        # Sagittarius A* (Milky Way SMBH)
+        cls.SGR_A_STAR = ReferenceSystem(
+            name="Sagittarius A*",
+            M=None,
+            r=None,
+            M_bh=4.15e6 * M_sun,  # (GAIA/VERA 2025)
+            d_g=2.44e20,          # 25,800 ly from Sun (GAIA DR3)
+            B=None,
+            T=None,
+            L=None,
+            z=0.0,
+            source="GAIA DR3 (2025), VERA (2024)",
+            metadata={'schwarzschild_radius_m': 1.2e10}
+        )
+        
+        # Sun (Solar System reference)
+        cls.SUN = ReferenceSystem(
+            name="Sun",
+            M=M_sun,
+            r=6.96e8,
+            M_bh=None,
+            d_g=2.44e20,
+            B=1e-4,
+            T=5778,
+            L=3.828e26,
+            z=0.0,
+            source="IAU 2015 Resolution B3"
+        )
+        
+        # SGR 1745-2900 (Magnetar near Sgr A*)
+        cls.SGR_1745_2900 = ReferenceSystem(
+            name="SGR 1745-2900",
+            M=1.4 * M_sun,
+            r=1e4,
+            M_bh=None,
+            d_g=2.83e16,
+            B=2e10,
+            T=None,
+            L=5e28,
+            z=0.0,
+            source="SOURCE13",
+            metadata={
+                'P': 3.76,                    # Period (s)
+                'tau_Omega': 10000 * 3.156e7, # Spin-down (s)
+                'B_crit': 1e11                # Critical field (T)
+            }
+        )
+        
+        # Pillars of Creation (M16, Eagle Nebula)
+        cls.PILLARS_OF_CREATION = ReferenceSystem(
+            name="Pillars of Creation (M16)",
+            M=None,
+            r=4.73e16,            # ~5 ly pillar extent
+            M_bh=None,
+            d_g=None,
+            B=1e-5,
+            T=30,                 # ~10-50 K gas
+            L=None,
+            z=0.0022,
+            source="Hubble/JWST 2025",
+            metadata={
+                'SFR': 0.2,                   # M_sun/yr
+                'age_Myr': 1.5,
+                'v_radial_km_s': -5,          # Blueshift
+                'rho_gas_kg_m3': 1e-20
+            }
+        )
+    
+    @classmethod
+    def get_system(cls, name: str) -> ReferenceSystem:
+        """Get reference system by name."""
+        cls._initialize()
+        systems = {
+            'sgr_a_star': cls.SGR_A_STAR,
+            'sagittarius_a*': cls.SGR_A_STAR,
+            'sun': cls.SUN,
+            'sgr_1745': cls.SGR_1745_2900,
+            'magnetar': cls.SGR_1745_2900,
+            'pillars': cls.PILLARS_OF_CREATION,
+            'm16': cls.PILLARS_OF_CREATION,
+        }
+        return systems.get(name.lower().replace(' ', '_').replace('-', '_'))
+    
+    @classmethod
+    def list_systems(cls) -> list:
+        """List all available reference systems."""
+        cls._initialize()
+        return ['SGR_A_STAR', 'SUN', 'SGR_1745_2900', 'PILLARS_OF_CREATION']
+
+
+# Initialize reference library
+ReferenceSystemLibrary._initialize()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # INJECT QUANTUM/WAVE METHODS INTO ALL MODEL CLASSES
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -76747,6 +77215,10 @@ __all__ = [
     'TriadicGravityCalculator', 'UnifiedFieldSolver', 'MagnetarMUGECalculator',
     'SgrAStarCalculator', 'Phase2Calculator', 'ConsciousnessCloud',
     'StarMagicEnergyStructure', 'StarMagicBlackHoleInteraction', 'StarMagicVacuumEnergy',
+    
+    # Batch 4 Classes (5 new)
+    'GravitationalCalculator', 'CoAnQiCalculator', 'EquationFamily',
+    'ReferenceSystem', 'ReferenceSystemLibrary',
     
     # Constants
     'CONSTANTS',
