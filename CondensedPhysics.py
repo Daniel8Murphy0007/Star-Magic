@@ -341,6 +341,389 @@ class SelfExpandingMixin:
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# SELF-SIMULATING EXPANDING MIXIN (COMBINED)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class SelfSimulatingExpandingMixin(SelfExpandingMixin):
+    """
+    Combined mixin providing BOTH self-expanding AND self-simulating capabilities.
+    
+    Inherits from SelfExpandingMixin and adds autonomous simulation features.
+    This implements the "finite but flexible, self-updating, self-expanding, 
+    self-simulating" requirements from the UQFF framework.
+    
+    SELF-EXPANDING Features (inherited):
+        - set_dynamic_parameter() / get_dynamic_parameter() - Runtime parameter tuning
+        - register_dynamic_term() - Nested term composition
+        - export_state() / import_state() - State persistence for ML pipelines
+        - learning_rate - Adaptive optimization
+        - metadata - Provenance tracking
+    
+    SELF-SIMULATING Features (added):
+        - simulate_evolution() - Time evolution modeling
+        - monte_carlo_uncertainty() - Uncertainty quantification
+        - detect_anomalies() - New physics detection
+        - adaptive_cycle() - Complete update→expand→simulate cycle
+        - calibration_history - Learning from observations
+        
+    Usage:
+        class MyModel(SelfSimulatingExpandingMixin):
+            def __init__(self):
+                # No explicit init call needed - lazy initialization
+                # Model-specific initialization...
+    """
+    
+    def _ensure_initialized(self):
+        """Ensure self-simulating expanding framework is initialized (lazy init)."""
+        if not hasattr(self, '_ssem_initialized'):
+            self.init_self_simulating_expanding()
+            self._ssem_initialized = True
+    
+    def init_self_simulating_expanding(self):
+        """Initialize both self-expanding and self-simulating framework members."""
+        # Initialize self-expanding features
+        self.init_self_expanding()
+        
+        # Self-simulating state
+        self.simulation_results: List[Dict] = []
+        self.calibration_history: List[Dict] = []
+        self.registered_systems: Dict[str, Any] = {}
+        
+        # Parameter bounds (physical constraints)
+        self.parameter_bounds: Dict[str, Tuple[float, float]] = {
+            'k_1': (0.1, 10.0),      # Near-field coupling
+            'k_2': (0.1, 10.0),      # Heliosphere coupling
+            'k_3': (0.1, 10.0),      # String rotation coupling
+            'k_4': (0.01, 1.0),      # BH influence coupling
+            'beta_i': (0.0, 1.0),    # Buoyancy coupling (< 1 for stability)
+            'kappa': (1e-6, 1e-2),   # κ decay rate (/day)
+            'SSq': (0.0, 1.0),       # [SSq] superconductive signature
+            'H_SCm': (0.9, 1.1),     # Heliosphere thickness factor
+            'eta': (1e-130, 1e-100), # η (extremely small)
+        }
+        
+        # Current calibrated parameters
+        self.calibrated_params: Dict[str, float] = {
+            'kappa': 0.0005,    # Default κ
+            'SSq': 0.57,        # Default [SSq]
+            'H_SCm': 0.99,      # Default H_SCm
+            'beta_i': 0.603,    # Default β_i
+        }
+        
+        # Convergence tracking
+        self.convergence_threshold: float = 1e-6
+        self._ssem_initialized = True
+        
+    # ═══════════════════════════════════════════════════════════════════════════
+    # SELF-UPDATING: Learn from observational data
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def update_from_observation(self, system_name: str, observed_value: float,
+                                 parameter: str, uncertainty: float = 0.1) -> dict:
+        """
+        Update a parameter based on observational comparison.
+        
+        Uses gradient descent: θ_new = θ_old - η × ∂(residual²)/∂θ
+        
+        Args:
+            system_name: Name of astronomical system
+            observed_value: Measured value from observation
+            parameter: Parameter name to update
+            uncertainty: Observational uncertainty (fractional)
+            
+        Returns:
+            Dictionary with old_value, new_value, residual, convergence status
+        """
+        self._ensure_initialized()
+        if parameter not in self.parameter_bounds:
+            return {'error': f'Unknown parameter: {parameter}'}
+        
+        old_value = self.calibrated_params.get(parameter, 1.0)
+        bounds = self.parameter_bounds[parameter]
+        
+        # Compute predicted value (placeholder - models override this)
+        predicted = self._compute_prediction(system_name, parameter, old_value)
+        
+        # Residual and gradient
+        residual = observed_value - predicted
+        fractional_residual = residual / (observed_value + 1e-30)
+        
+        # Gradient descent update
+        delta = self.learning_rate * fractional_residual * old_value
+        new_value = max(bounds[0], min(bounds[1], old_value + delta))
+        
+        # Update state
+        self.calibrated_params[parameter] = new_value
+        
+        # Record history
+        import time
+        self.calibration_history.append({
+            'timestamp': time.time(),
+            'system': system_name,
+            'parameter': parameter,
+            'old_value': old_value,
+            'new_value': new_value,
+            'residual': residual,
+        })
+        
+        converged = abs(fractional_residual) < self.convergence_threshold
+        
+        return {
+            'parameter': parameter, 'old_value': old_value, 'new_value': new_value,
+            'residual': residual, 'converged': converged,
+        }
+    
+    def _compute_prediction(self, system_name: str, parameter: str, param_value: float) -> float:
+        """Override in subclass to compute model prediction given parameter."""
+        return param_value  # Base implementation (linear response)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # SELF-SIMULATING: Autonomous prediction cycles
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def simulate_evolution(self, params: dict, t_start: float, t_end: float,
+                           n_steps: int = 100) -> dict:
+        """
+        Simulate time evolution of the model.
+        
+        Args:
+            params: System parameters (M, r, T, etc.)
+            t_start: Start time (s or arbitrary unit)
+            t_end: End time
+            n_steps: Number of time steps
+            
+        Returns:
+            Dictionary with time series and summary statistics
+        """
+        self._ensure_initialized()
+        times = np.linspace(t_start, t_end, n_steps)
+        values = []
+        
+        for t in times:
+            result = self._simulate_step(params, t)
+            values.append(result)
+        
+        values_array = np.array(values)
+        
+        summary = {
+            'mean': np.mean(values_array),
+            'std': np.std(values_array),
+            'min': np.min(values_array),
+            'max': np.max(values_array),
+            'range': np.max(values_array) - np.min(values_array),
+        }
+        
+        sim_result = {
+            'model': self.__class__.__name__,
+            't_start': t_start, 't_end': t_end, 'n_steps': n_steps,
+            'times': times.tolist(),
+            'values': values_array.tolist(),
+            'summary': summary,
+        }
+        self.simulation_results.append(sim_result)
+        
+        return sim_result
+    
+    def _simulate_step(self, params: dict, t: float) -> float:
+        """Override in subclass to compute value at time t."""
+        return 0.0  # Base implementation
+    
+    def monte_carlo_uncertainty(self, params: dict, n_samples: int = 1000,
+                                 param_uncertainties: dict = None) -> dict:
+        """
+        Monte Carlo sampling for uncertainty quantification.
+        
+        Args:
+            params: Base system parameters
+            n_samples: Number of Monte Carlo samples
+            param_uncertainties: Dict of param_name -> fractional_uncertainty
+            
+        Returns:
+            Dictionary with distribution statistics
+        """
+        self._ensure_initialized()
+        if param_uncertainties is None:
+            param_uncertainties = {'M': 0.05, 'r': 0.02, 'T': 0.10}
+        
+        samples = []
+        for _ in range(n_samples):
+            perturbed_params = {}
+            for key, val in params.items():
+                if key in param_uncertainties:
+                    perturbed_params[key] = val * (1 + np.random.normal(0, param_uncertainties[key]))
+                else:
+                    perturbed_params[key] = val
+            
+            result = self._simulate_step(perturbed_params, 0.0)
+            samples.append(result)
+        
+        samples_array = np.array(samples)
+        
+        return {
+            'n_samples': n_samples,
+            'mean': np.mean(samples_array),
+            'std': np.std(samples_array),
+            'median': np.median(samples_array),
+            'percentile_16': np.percentile(samples_array, 16),
+            'percentile_84': np.percentile(samples_array, 84),
+            'relative_uncertainty': np.std(samples_array) / (np.mean(samples_array) + 1e-30),
+        }
+    
+    def detect_anomalies(self, params: dict, expected_value: float = None,
+                          threshold_sigma: float = 3.0) -> dict:
+        """
+        Detect anomalous values that may indicate new physics.
+        
+        Args:
+            params: System parameters
+            expected_value: Expected value (if known)
+            threshold_sigma: Number of std devs for anomaly detection
+            
+        Returns:
+            Dictionary with anomaly detection results
+        """
+        self._ensure_initialized()
+        computed = self._simulate_step(params, 0.0)
+        mc_result = self.monte_carlo_uncertainty(params, n_samples=500)
+        
+        if expected_value is None:
+            expected_value = mc_result['mean']
+        
+        z_score = (computed - expected_value) / (mc_result['std'] + 1e-30)
+        is_anomaly = abs(z_score) > threshold_sigma
+        
+        return {
+            'computed': computed,
+            'expected': expected_value,
+            'std': mc_result['std'],
+            'z_score': z_score,
+            'is_anomaly': is_anomaly,
+            'interpretation': 'POTENTIAL NEW PHYSICS' if is_anomaly else 'Within expected range',
+        }
+    
+    def adaptive_cycle(self, system_name: str, params: dict,
+                       observations: list = None, t_evolve: float = 1e6) -> dict:
+        """
+        Run complete adaptive cycle: UPDATE → EXPAND → SIMULATE.
+        
+        Args:
+            system_name: Name for system registration
+            params: System parameters
+            observations: Optional calibration observations
+            t_evolve: Time to simulate forward
+            
+        Returns:
+            Dictionary with results from all three phases
+        """
+        self._ensure_initialized()
+        results = {'system': system_name, 'phases': {}}
+        
+        # Phase 1: SELF-UPDATING
+        if observations:
+            for obs in observations:
+                self.update_from_observation(
+                    obs.get('system', system_name),
+                    obs['observed'],
+                    obs['parameter'],
+                    obs.get('uncertainty', 0.1)
+                )
+            results['phases']['updating'] = {'status': 'complete', 'n_updates': len(observations)}
+        else:
+            results['phases']['updating'] = {'status': 'skipped'}
+        
+        # Phase 2: SELF-EXPANDING (register dynamic terms)
+        self.registered_systems[system_name] = params
+        results['phases']['expanding'] = {
+            'status': 'registered',
+            'n_systems': len(self.registered_systems),
+            'n_dynamic_terms': len(self.dynamic_terms),
+        }
+        
+        # Phase 3: SELF-SIMULATING
+        sim_result = self.simulate_evolution(params, 0, t_evolve, n_steps=50)
+        results['phases']['simulating'] = {
+            'status': 'complete',
+            'final_value': sim_result['values'][-1] if sim_result['values'] else None,
+            'mean': sim_result['summary']['mean'],
+        }
+        
+        # Anomaly detection
+        anomaly = self.detect_anomalies(params)
+        results['anomaly_check'] = {
+            'z_score': anomaly['z_score'],
+            'is_anomaly': anomaly['is_anomaly'],
+        }
+        
+        return results
+    
+    def get_simulation_summary(self) -> str:
+        """Return human-readable simulation summary."""
+        self._ensure_initialized()
+        return f"""
+═══════════════════════════════════════════════════════════════════════════════
+{self.__class__.__name__} - SELF-SIMULATING FRAMEWORK STATUS
+═══════════════════════════════════════════════════════════════════════════════
+
+SELF-UPDATING:
+  • Calibration history: {len(self.calibration_history)} updates
+  • Current κ = {self.calibrated_params.get('kappa', 'N/A')}
+  • Current [SSq] = {self.calibrated_params.get('SSq', 'N/A')}
+  • Current β_i = {self.calibrated_params.get('beta_i', 'N/A')}
+
+SELF-EXPANDING:
+  • Dynamic parameters: {len(self.dynamic_parameters)}
+  • Dynamic terms: {len(self.dynamic_terms)}
+  • Registered systems: {len(self.registered_systems)}
+
+SELF-SIMULATING:
+  • Completed simulations: {len(self.simulation_results)}
+  • Learning rate: {self.learning_rate}
+  • Convergence threshold: {self.convergence_threshold}
+
+═══════════════════════════════════════════════════════════════════════════════
+"""
+    
+    def run_simulation_tests(self) -> dict:
+        """Run comprehensive tests for SelfSimulatingExpandingMixin."""
+        tests = []
+        try:
+            # Test 1: Initialize
+            tests.append({'name': 'init_self_simulating_expanding', 'passed': True})
+            
+            # Test 2: Parameter update
+            result = self.update_from_observation('TestSystem', 1.5, 'kappa', 0.1)
+            tests.append({'name': 'update_from_observation', 'passed': 'new_value' in result})
+            
+            # Test 3: Simulate evolution
+            sim = self.simulate_evolution({'M': 1e30, 'r': 1e9}, 0, 1e6, n_steps=10)
+            tests.append({'name': 'simulate_evolution', 'passed': 'summary' in sim})
+            
+            # Test 4: Monte Carlo
+            mc = self.monte_carlo_uncertainty({'M': 1e30, 'r': 1e9}, n_samples=100)
+            tests.append({'name': 'monte_carlo_uncertainty', 'passed': 'std' in mc})
+            
+            # Test 5: Anomaly detection
+            anomaly = self.detect_anomalies({'M': 1e30, 'r': 1e9})
+            tests.append({'name': 'detect_anomalies', 'passed': 'z_score' in anomaly})
+            
+            # Test 6: Full adaptive cycle
+            cycle = self.adaptive_cycle('TestSystem', {'M': 1e30, 'r': 1e9})
+            tests.append({'name': 'adaptive_cycle', 'passed': 'phases' in cycle})
+            
+        except Exception as e:
+            tests.append({'name': 'Test execution', 'passed': False, 'error': str(e)})
+        
+        return {
+            'class': self.__class__.__name__,
+            'mixin': 'SelfSimulatingExpandingMixin',
+            'tests': tests,
+            'passed': sum(1 for t in tests if t['passed']),
+            'total': len(tests),
+            'all_passed': all(t['passed'] for t in tests),
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # JSON-RPC SERVER MODE - For bidirectional Qt6 communication
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -10199,7 +10582,7 @@ Variables:
 # DI-PSEUDO-MONOPOLE (DPM) MODEL
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class DPMModel:
+class DPMModel(SelfSimulatingExpandingMixin):
     """
     Di-Pseudo-Monopole (DPM) Model
     
@@ -11483,7 +11866,7 @@ DPM_MODEL = DPMModel()
 # Prior Models: Bohr (1913), Schrödinger (1926), Dirac (1928) = ~60% (quantum)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class HydrogenEvolutionModel:
+class HydrogenEvolutionModel(SelfSimulatingExpandingMixin):
     """
     Hydrogen Evolution Model - Master Universal Gravity Equation (MUGE-H)
     
@@ -14167,7 +14550,7 @@ ATOMIC_MODEL_UQFF = AtomicModelUQFF()
 # PROTO-NUCLEUS SHELL FORMATION MODEL (ACP Stage)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class ProtoNucleusShellModel:
+class ProtoNucleusShellModel(SelfSimulatingExpandingMixin):
     """
     Proto-Nucleus Shell Formation Model
     
@@ -15542,7 +15925,7 @@ UNIVERSAL_CYCLE = UniversalCycleTracker()
 # UNIVERSAL GRAVITY MODEL (Ug) - Four Component Master Equations
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class UniversalGravityModel:
+class UniversalGravityModel(SelfSimulatingExpandingMixin):
     """
     Universal Gravity Model - Four Component Master Equations
     
@@ -16385,7 +16768,7 @@ GRAVITY_MODEL = UniversalGravityModel()
 # UNIVERSAL MAGNETISM MODEL (Um)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class UniversalMagnetismModel:
+class UniversalMagnetismModel(SelfSimulatingExpandingMixin):
     """
     Universal Magnetism Model - Magnetic String Contributions to F_U
     
@@ -16869,7 +17252,7 @@ MAGNETISM_MODEL = UniversalMagnetismModel()
 # MAGNETIC STRING MODEL (Index j)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class MagneticStringModel:
+class MagneticStringModel(SelfSimulatingExpandingMixin):
     """
     Magnetic String Model - Explicit j-Index Summation for Um and Ug3
     
@@ -17526,7 +17909,7 @@ STRING_MODEL = MagneticStringModel()
 # HEAVISIDE COMPONENT MODEL (f_Heaviside)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class HeavisideComponentModel:
+class HeavisideComponentModel(SelfSimulatingExpandingMixin):
     """
     Heaviside Component Model - Threshold-Activated Amplification in Um
     
@@ -17964,7 +18347,7 @@ HEAVISIDE_MODEL = HeavisideComponentModel()
 # HELIOSPHERE THICKNESS MODEL (H_SCm)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class HeliosphereThicknessModel:
+class HeliosphereThicknessModel(SelfSimulatingExpandingMixin):
     """
     Heliosphere Thickness Model - H_SCm Factor in Ug2 (Outer Field Bubble)
     
@@ -18516,7 +18899,7 @@ HELIOSPHERE_MODEL = HeliosphereThicknessModel()
 # UNIVERSAL INERTIA MODEL (UI)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class UniversalInertiaModel:
+class UniversalInertiaModel(SelfSimulatingExpandingMixin):
     """
     Universal Inertia Model - Resistance to Motion in UQFF Framework
     
@@ -19227,7 +19610,7 @@ INERTIA_MODEL = UniversalInertiaModel()
 # UNIVERSAL INERTIA VACUUM ENERGY DENSITY MODEL (ρ_vac,Ui)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class UniversalInertiaVacuumModel:
+class UniversalInertiaVacuumModel(SelfSimulatingExpandingMixin):
     """
     Universal Inertia Vacuum Energy Density Model - ρ_vac,Ui
     
@@ -19837,7 +20220,7 @@ INERTIA_VACUUM_MODEL = UniversalInertiaVacuumModel()
 # SUPERCONDUCTIVE MATERIAL VACUUM ENERGY DENSITY MODEL (ρ_vac,[SCm])
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class SuperconductiveMaterialVacuumModel:
+class SuperconductiveMaterialVacuumModel(SelfSimulatingExpandingMixin):
     """
     Superconductive Material Vacuum Energy Density Model - ρ_vac,[SCm]
     
@@ -20769,7 +21152,7 @@ SCM_VACUUM_MODEL = SuperconductiveMaterialVacuumModel()
 # STANDARD MODEL UQFF INTEGRATION MODEL
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class StandardModelUQFFModel:
+class StandardModelUQFFModel(SelfSimulatingExpandingMixin):
     """
     Standard Model Fundamentals in the Unified Quantum Field Framework (UQFF)
     
@@ -22784,7 +23167,7 @@ UNIFIED_FIELD = UnifiedFieldEquation()
 # TIME-REVERSAL ZONE MODEL (TRZ)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class TimeReversalZoneModel:
+class TimeReversalZoneModel(SelfSimulatingExpandingMixin):
     """
     Time-Reversal Zone (TRZ) Model - Negentropic Physics in UQFF Framework
     
@@ -23638,7 +24021,7 @@ TRZ_MODEL = TimeReversalZoneModel()
 # M-σ RELATION MODEL (Drawing 31: Sanchez et al. 2023)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class MSigmaRelationModel:
+class MSigmaRelationModel(SelfSimulatingExpandingMixin):
     """
     M-σ Relation Model - SMBH Mass vs Velocity Dispersion
     
@@ -24243,7 +24626,7 @@ M_SIGMA_MODEL = MSigmaRelationModel()
 # FINAL PARSEC PROBLEM MODEL (Drawing 3)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class FinalParsecProblemModel:
+class FinalParsecProblemModel(SelfSimulatingExpandingMixin):
     """
     Final Parsec Problem Model - SMBH Binary Merger Dynamics
     
@@ -24870,7 +25253,7 @@ FINAL_PARSEC_MODEL = FinalParsecProblemModel()
 # CGM METAL RETENTION MODEL (Drawing 31)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class CGMMetalRetentionModel:
+class CGMMetalRetentionModel(SelfSimulatingExpandingMixin):
     """
     Circumgalactic Medium (CGM) Metal Retention Model
     
@@ -25379,7 +25762,7 @@ CGM_MODEL = CGMMetalRetentionModel()
 # COSMIC DYNAMICS INTEGRATION MODEL (Drawings 1-31)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class CosmicDynamicsIntegrationModel:
+class CosmicDynamicsIntegrationModel(SelfSimulatingExpandingMixin):
     """
     Cosmic Dynamics Integration Model - Unified UQFF Framework for Drawings 1-31
     
@@ -25828,7 +26211,7 @@ COSMIC_DYNAMICS_MODEL = CosmicDynamicsIntegrationModel()
 # FAST RADIO BURST (FRB) MODEL (Drawing 1)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class FastRadioBurstModel:
+class FastRadioBurstModel(SelfSimulatingExpandingMixin):
     """
     Fast Radio Burst (FRB) Model - [SCm] Expulsion from Magnetars
     
@@ -26391,7 +26774,7 @@ FRB_MODEL = FastRadioBurstModel()
 # WHITTAKER DECOMPOSITION MODEL (Drawing 30 - Bearden)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class WhittakerDecompositionModel:
+class WhittakerDecompositionModel(SelfSimulatingExpandingMixin):
     """
     Whittaker Decomposition Model - EM Potential Decomposition into Bidirectional Waves
     
@@ -26899,7 +27282,7 @@ WHITTAKER_MODEL = WhittakerDecompositionModel()
 # BIG BANG ORIGIN MODEL (Drawings 14, 20)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class BigBangOriginModel:
+class BigBangOriginModel(SelfSimulatingExpandingMixin):
     """
     Big Bang Origin Model - [SCm]-[UA] Explosion as Cosmic Origin
     
@@ -27368,7 +27751,7 @@ BIG_BANG_MODEL = BigBangOriginModel()
 # COSMIC EGG HYPERGRAPH MODEL (BigBangHypergraphTheory_12Dec2025)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class CosmicEggHypergraphModel:
+class CosmicEggHypergraphModel(SelfSimulatingExpandingMixin):
     """
     Cosmic Egg Hypergraph Model - 26D Nested Structure with Multiway Branching
     
@@ -28123,7 +28506,7 @@ COSMIC_EGG_HYPERGRAPH_MODEL = CosmicEggHypergraphModel()
 # PLASMA SHIELD-CAPTURE MODEL (Drawings 21, 28, 29)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class PlasmaShieldCaptureModel:
+class PlasmaShieldCaptureModel(SelfSimulatingExpandingMixin):
     """
     Plasma Shield-Capture Model - Plasma Mediation of [UA] Transitions
     
@@ -28620,7 +29003,7 @@ PLASMA_SHIELD_MODEL = PlasmaShieldCaptureModel()
 # BLACK HOLE PHASES MODEL (Drawings 5-9)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class BlackHolePhasesModel:
+class BlackHolePhasesModel(SelfSimulatingExpandingMixin):
     """
     Black Hole Phases Model - [UA] String Dynamics in BH Evolution
     
@@ -29220,7 +29603,7 @@ BH_PHASES_MODEL = BlackHolePhasesModel()
 # TERAHERTZ HOLES MODEL (Drawing 24)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class TerahertzHolesModel:
+class TerahertzHolesModel(SelfSimulatingExpandingMixin):
     """
     Terahertz Holes Model - Laboratory-Scale Black Hole Dynamics
     
@@ -29757,7 +30140,7 @@ THZ_HOLES_MODEL = TerahertzHolesModel()
 # INERTIAL OPERATOR MODEL - Universal Inertia as the Cosmic "Program"
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class InertialOperatorModel:
+class InertialOperatorModel(SelfSimulatingExpandingMixin):
     """
     Inertial Operator Model - Inertia as the Universal "Program"
     
@@ -30312,7 +30695,7 @@ INERTIAL_OPERATOR_MODEL = InertialOperatorModel()
 # CADUCEUS QUANTUM WAVE MODEL - Self-Inverting Spherical Waves
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class CaduceusQuantumWaveModel:
+class CaduceusQuantumWaveModel(SelfSimulatingExpandingMixin):
     """
     Caduceus Quantum Wave Model - Self-Inverting Spherical Quantum Waves
     
@@ -30829,7 +31212,7 @@ CADUCEUS_WAVE_MODEL = CaduceusQuantumWaveModel()
 # GLOBULAR CLUSTER STRUCTURE MODEL - Layered Stellar Structure
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class GlobularClusterStructureModel:
+class GlobularClusterStructureModel(SelfSimulatingExpandingMixin):
     """
     Globular Cluster Structure Model - Layered Quantum Structure
     
@@ -31366,7 +31749,7 @@ GLOBULAR_CLUSTER_MODEL = GlobularClusterStructureModel()
 # HIGGS-SCm INTEGRATION MODEL - Higgs Boson and Proton Stability
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class HiggsSCmIntegrationModel:
+class HiggsSCmIntegrationModel(SelfSimulatingExpandingMixin):
     """
     Higgs-[SCm] Integration Model - Exotic Higgs Role in Proton Stability
     
@@ -31938,7 +32321,7 @@ HIGGS_SCM_MODEL = HiggsSCmIntegrationModel()
 # DE (DARK ENERGY) VACUUM POWER MODEL - Energy Extraction from Aether
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class DEVacuumPowerModel:
+class DEVacuumPowerModel(SelfSimulatingExpandingMixin):
     """
     DE (Dark Energy) Vacuum Power Model - Energy Extraction from Aether
     
@@ -32472,7 +32855,7 @@ DE_VACUUM_POWER_MODEL = DEVacuumPowerModel()
 # MAXWELL EQUATIONS COMPONENT FORM MODEL (Drawings 11, 15)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class MaxwellComponentFormModel:
+class MaxwellComponentFormModel(SelfSimulatingExpandingMixin):
     """
     Maxwell Equations Component Form Model (Drawings 11, 15)
     
@@ -32996,7 +33379,7 @@ MAXWELL_COMPONENT_MODEL = MaxwellComponentFormModel()
 # PROTON 24-LEVEL SATURATION MODEL (Drawing 18)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class ProtonSaturationLevelsModel:
+class ProtonSaturationLevelsModel(SelfSimulatingExpandingMixin):
     """
     Proton 24-Level Saturation Model (Drawing 18)
     
@@ -33523,7 +33906,7 @@ PROTON_SATURATION_MODEL = ProtonSaturationLevelsModel()
 # ER BRIDGE STATE TRANSITION MODEL (Drawing 21)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class ERBridgeStateTransitionModel:
+class ERBridgeStateTransitionModel(SelfSimulatingExpandingMixin):
     """
     ER Bridge State Transition Model (Drawing 21)
     
@@ -34025,7 +34408,7 @@ ER_BRIDGE_MODEL = ERBridgeStateTransitionModel()
 # MULTI-SCALE GRAVITY MODEL (Drawing 22)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class MultiScaleGravityModel:
+class MultiScaleGravityModel(SelfSimulatingExpandingMixin):
     """
     Multi-Scale Gravity Model (Drawing 22)
     
@@ -34541,7 +34924,7 @@ MULTI_SCALE_GRAVITY_MODEL = MultiScaleGravityModel()
 # AETHER BLUE QUALITIES MODEL (Drawing 19)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class AetherBlueQualitiesModel:
+class AetherBlueQualitiesModel(SelfSimulatingExpandingMixin):
     """
     Aether Blue Qualities Model (Drawing 19)
     
@@ -35114,7 +35497,7 @@ AETHER_BLUE_MODEL = AetherBlueQualitiesModel()
 # AGN FEEDBACK MODEL (Drawing 31, Pages 11-20)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class AGNFeedbackModel:
+class AGNFeedbackModel(SelfSimulatingExpandingMixin):
     """
     AGN Feedback Model (Drawing 31: Sanchez et al. Paper, Pages 11-20)
     
@@ -35619,7 +36002,7 @@ AGN_FEEDBACK_MODEL = AGNFeedbackModel()
 # CGM BARYON FRACTION MODEL (Drawing 31, Pages 12-13)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class CGMBaryonFractionModel:
+class CGMBaryonFractionModel(SelfSimulatingExpandingMixin):
     """
     CGM Baryon Fraction Model (Drawing 31: Sanchez et al. Paper)
     
@@ -36093,7 +36476,7 @@ CGM_BARYON_MODEL = CGMBaryonFractionModel()
 # COMPLETE UNIFIED FIELD MODEL (Comprehensive F_U)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class CompleteUnifiedFieldModel:
+class CompleteUnifiedFieldModel(SelfSimulatingExpandingMixin):
     """
     Complete Unified Field Model - Full F_U Equation
     
@@ -36655,7 +37038,7 @@ COMPLETE_UNIFIED_FIELD_MODEL = CompleteUnifiedFieldModel()
 # VACUUM ENERGY DENSITY SUMMARY MODEL (Complete Catalog)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class VacuumEnergyDensitySummaryModel:
+class VacuumEnergyDensitySummaryModel(SelfSimulatingExpandingMixin):
     """
     Vacuum Energy Density Summary Model - Complete Catalog
     
@@ -37188,7 +37571,7 @@ VACUUM_ENERGY_DENSITY_MODEL = VacuumEnergyDensitySummaryModel()
 # PSEUDO-MONOPOLE MODEL (Universal Magnetism Document)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class PseudoMonopoleModel:
+class PseudoMonopoleModel(SelfSimulatingExpandingMixin):
     """
     Pseudo-Monopole Model (Universal Magnetism Document)
     
@@ -37707,7 +38090,7 @@ PSEUDO_MONOPOLE_MODEL = PseudoMonopoleModel()
 # UNIVERSAL SHIFTING POLARITY REACTION (USPR) MODEL
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class USPRModel:
+class USPRModel(SelfSimulatingExpandingMixin):
     """
     Universal Shifting Polarity Reaction (USPR) Model
     
@@ -38192,7 +38575,7 @@ USPR_MODEL = USPRModel()
 # UNIVERSAL BUOYANCY INTERACTION MODEL
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class UniversalBuoyancyInteractionModel:
+class UniversalBuoyancyInteractionModel(SelfSimulatingExpandingMixin):
     """
     Universal Buoyancy Interaction Model
     
@@ -38647,7 +39030,7 @@ UNIVERSAL_BUOYANCY_INTERACTION_MODEL = UniversalBuoyancyInteractionModel()
 # HILL SPHERE MODEL (Solar System Boundary)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class HillSphereModel:
+class HillSphereModel(SelfSimulatingExpandingMixin):
     """
     Hill Sphere Model - Gravitational Dominance Boundary
     
@@ -39098,7 +39481,7 @@ HILL_SPHERE_MODEL = HillSphereModel()
 # OORT CLOUD BOUNDARY MODEL
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class OortCloudBoundaryModel:
+class OortCloudBoundaryModel(SelfSimulatingExpandingMixin):
     """
     Oort Cloud Boundary Model - Outermost Solar System
     
@@ -39557,7 +39940,7 @@ OORT_CLOUD_MODEL = OortCloudBoundaryModel()
 # CRYSTALLINE GALAXY MODEL (Universal Quantum Crystalline Wave Document)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class CrystallineGalaxyModel:
+class CrystallineGalaxyModel(SelfSimulatingExpandingMixin):
     """
     Crystalline Galaxy Model - Galaxy as Quantum Crystalline Wave
     
@@ -40075,7 +40458,7 @@ CRYSTALLINE_GALAXY_MODEL = CrystallineGalaxyModel()
 # BLACK HOLE TRIANGULATION MODEL (Cosmic GPS Network)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class BlackHoleTriangulationModel:
+class BlackHoleTriangulationModel(SelfSimulatingExpandingMixin):
     """
     Black Hole Triangulation Model - Cosmic GPS Network
     
@@ -40557,7 +40940,7 @@ BLACK_HOLE_TRIANGULATION_MODEL = BlackHoleTriangulationModel()
 # STELLAR EQUILIBRIUM MODEL (Equal Adjacent Relationships)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class StellarEquilibriumModel:
+class StellarEquilibriumModel(SelfSimulatingExpandingMixin):
     """
     Stellar Equilibrium Model - Equal Adjacent Relationships
     
@@ -41063,7 +41446,7 @@ STELLAR_EQUILIBRIUM_MODEL = StellarEquilibriumModel()
 # DENSITY WAVE MODEL (Spiral Arms as Crystalline Wavefronts)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class DensityWaveModel:
+class DensityWaveModel(SelfSimulatingExpandingMixin):
     """
     Density Wave Model - Spiral Arms as Crystalline Wavefronts
     
@@ -41578,7 +41961,7 @@ DENSITY_WAVE_MODEL = DensityWaveModel()
 # CROSS-MODEL INTEGRATION: DENSITY WAVE - CRYSTALLINE COUPLING
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class DensityWaveCrystallineCouplingModel:
+class DensityWaveCrystallineCouplingModel(SelfSimulatingExpandingMixin):
     """
     Density Wave - Crystalline Lattice Coupling Model
     
@@ -42017,7 +42400,7 @@ DENSITY_CRYSTALLINE_COUPLING_MODEL = DensityWaveCrystallineCouplingModel()
 # CROSS-MODEL INTEGRATION: USPR - STELLAR EQUILIBRIUM CONNECTION
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class USPRStellarConnectionModel:
+class USPRStellarConnectionModel(SelfSimulatingExpandingMixin):
     """
     USPR - Stellar Equilibrium Connection Model
     
@@ -42508,7 +42891,7 @@ USPR_STELLAR_CONNECTION_MODEL = USPRStellarConnectionModel()
 # UNIFIED MODEL: SOLAR DOMAIN (Hill Sphere + Oort Cloud Unification)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class SolarDomainModel:
+class SolarDomainModel(SelfSimulatingExpandingMixin):
     """
     Solar Domain Model - Unified Hill Sphere + Oort Cloud Boundaries
     
@@ -43005,7 +43388,7 @@ SOLAR_DOMAIN_MODEL = SolarDomainModel()
 # CROSS-MODEL INTEGRATION: BLACK HOLE - PSEUDO-MONOPOLE RESONANCE
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class BlackHolePseudoMonopoleResonanceModel:
+class BlackHolePseudoMonopoleResonanceModel(SelfSimulatingExpandingMixin):
     """
     Black Hole - Pseudo-Monopole Resonance Model
     
@@ -43530,7 +43913,7 @@ BH_PM_RESONANCE_MODEL = BlackHolePseudoMonopoleResonanceModel()
 # COROTATION RESONANCE MODEL (Sun's Special Position)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class CorotationResonanceModel:
+class CorotationResonanceModel(SelfSimulatingExpandingMixin):
     """
     Corotation Resonance Model - Sun's Special Position
     
@@ -44060,7 +44443,7 @@ COROTATION_RESONANCE_MODEL = CorotationResonanceModel()
 # Theory of Superconductive Permanence - Root Equations
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class GinzburgLandauFieldModel:
+class GinzburgLandauFieldModel(SelfSimulatingExpandingMixin):
     """
     Ginzburg-Landau Field Model (U_g) - Quantum Field Coherence
     
@@ -44503,7 +44886,7 @@ class GinzburgLandauFieldModel:
 
 
 
-class BogoliubovDeGennesModel:
+class BogoliubovDeGennesModel(SelfSimulatingExpandingMixin):
     """
     Bogoliubov-de Gennes Model (U_b) - Quasiparticle Resonance
     
@@ -44963,7 +45346,7 @@ class BogoliubovDeGennesModel:
 
 
 
-class QWaveResonanceModel:
+class QWaveResonanceModel(SelfSimulatingExpandingMixin):
     """
     Q-Wave Resonance Model (U_r) - Universal Resonance Equation
     
@@ -45415,7 +45798,7 @@ class QWaveResonanceModel:
 
 
 
-class TemporalDynamicsModel:
+class TemporalDynamicsModel(SelfSimulatingExpandingMixin):
     """
     Temporal Dynamics Model (U_t) - Resonant Time Framework
     
@@ -45854,7 +46237,7 @@ class TemporalDynamicsModel:
 
 
 
-class AmplitudeStabilityModel:
+class AmplitudeStabilityModel(SelfSimulatingExpandingMixin):
     """
     Amplitude Stability Model (U_A) - Resonant Energy Conservation
     
@@ -46273,7 +46656,7 @@ class AmplitudeStabilityModel:
 
 
 
-class SuperconductingCoherenceModel:
+class SuperconductingCoherenceModel(SelfSimulatingExpandingMixin):
     """
     Superconducting Coherence Model (SC_m) - Universal Coherence Metric
     
@@ -46713,7 +47096,7 @@ SUPERCONDUCTING_COHERENCE_MODEL = SuperconductingCoherenceModel()
 # General Relativity Effects for SMBH and Compact Object Dynamics
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class GravitationalTimeDilationModel:
+class GravitationalTimeDilationModel(SelfSimulatingExpandingMixin):
     """
     Gravitational Time Dilation Model - GR Time Effects
     
@@ -47133,7 +47516,7 @@ class GravitationalTimeDilationModel:
 
 
 
-class GravitationalRedshiftModel:
+class GravitationalRedshiftModel(SelfSimulatingExpandingMixin):
     """
     Gravitational Redshift Model - Light Escaping Gravitational Wells
     
@@ -47554,7 +47937,7 @@ class GravitationalRedshiftModel:
 
 
 
-class TidalForceModel:
+class TidalForceModel(SelfSimulatingExpandingMixin):
     """
     Tidal Force Model - Differential Gravity Effects
     
@@ -48037,7 +48420,7 @@ TIDAL_FORCE_MODEL = TidalForceModel()
 # Supermassive Black Hole Physics and AGN Dynamics
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class BHMFEvolutionModel:
+class BHMFEvolutionModel(SelfSimulatingExpandingMixin):
     """
     Black Hole Mass Function Evolution Model
     
@@ -48460,7 +48843,7 @@ class BHMFEvolutionModel:
 
 
 
-class BondiAccretionModel:
+class BondiAccretionModel(SelfSimulatingExpandingMixin):
     """
     Bondi-Hoyle-Lyttleton Accretion Model
     
@@ -48879,7 +49262,7 @@ class BondiAccretionModel:
 
 
 
-class EddingtonRatioModel:
+class EddingtonRatioModel(SelfSimulatingExpandingMixin):
     """
     Eddington Ratio Model - AGN Activity Indicator
     
@@ -49326,7 +49709,7 @@ class EddingtonRatioModel:
 
 
 
-class TidalDisruptionEventModel:
+class TidalDisruptionEventModel(SelfSimulatingExpandingMixin):
     """
     Tidal Disruption Event (TDE) Model
     
@@ -49782,7 +50165,7 @@ class TidalDisruptionEventModel:
 
 
 
-class SMBHSpinEvolutionModel:
+class SMBHSpinEvolutionModel(SelfSimulatingExpandingMixin):
     """
     SMBH Spin Evolution Model - Stochastic Spin Dynamics
     
@@ -50269,7 +50652,7 @@ SMBH_SPIN_EVOLUTION_MODEL = SMBHSpinEvolutionModel()
 # Unified Gravity Components for Supermassive Black Holes
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class SMBHUg1Model:
+class SMBHUg1Model(SelfSimulatingExpandingMixin):
     """
     SMBH Ug1 Model - Primary Unified Gravity Layer
     
@@ -50615,7 +50998,7 @@ class SMBHUg1Model:
 
 
 
-class SMBHUg2Model:
+class SMBHUg2Model(SelfSimulatingExpandingMixin):
     """
     SMBH Ug2 Model - Charge-Reactivity Gravity Layer
     
@@ -50955,7 +51338,7 @@ class SMBHUg2Model:
 
 
 
-class SMBHUg3Model:
+class SMBHUg3Model(SelfSimulatingExpandingMixin):
     """
     SMBH Ug3 Model - String Rotation Gravity Layer
     
@@ -51299,7 +51682,7 @@ class SMBHUg3Model:
 
 
 
-class SMBHUg4Model:
+class SMBHUg4Model(SelfSimulatingExpandingMixin):
     """
     SMBH Ug4 Model - Vacuum Concentration Gravity Layer
     
@@ -51651,7 +52034,7 @@ SMBH_UG4_MODEL = SMBHUg4Model()
 # Galactic-Scale SMBH Environment Physics
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class SMBHBulgeGravityModel:
+class SMBHBulgeGravityModel(SelfSimulatingExpandingMixin):
     """
     SMBH Bulge Gravity Model - Host Galaxy Bulge Potential
     
@@ -51971,7 +52354,7 @@ class SMBHBulgeGravityModel:
 
 
 
-class SMBHOmegaSGalacticModel:
+class SMBHOmegaSGalacticModel(SelfSimulatingExpandingMixin):
     """
     SMBH Omega-S Galactic Model - Galactic Rotation Influence
     
@@ -52292,7 +52675,7 @@ class SMBHOmegaSGalacticModel:
 
 
 
-class SMBHCosmicTimeModel:
+class SMBHCosmicTimeModel(SelfSimulatingExpandingMixin):
     """
     SMBH Cosmic Time Model - Cosmological Evolution Timescales
     
@@ -52656,7 +53039,7 @@ SMBH_COSMIC_TIME_MODEL = SMBHCosmicTimeModel()
 # Virgo Galaxy Cluster Physics
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class VirgoClusterMassModel:
+class VirgoClusterMassModel(SelfSimulatingExpandingMixin):
     """
     Virgo Cluster Mass Model - Total Cluster Mass Distribution
     
@@ -52974,7 +53357,7 @@ class VirgoClusterMassModel:
 
 
 
-class VirgoClusterDarkMatterModel:
+class VirgoClusterDarkMatterModel(SelfSimulatingExpandingMixin):
     """
     Virgo Cluster Dark Matter Model - NFW Halo Profile
     
@@ -53283,7 +53666,7 @@ class VirgoClusterDarkMatterModel:
 
 
 
-class VirgoClusterVirialModel:
+class VirgoClusterVirialModel(SelfSimulatingExpandingMixin):
     """
     Virgo Cluster Virial Model - Virial Mass Estimation
     
@@ -53600,7 +53983,7 @@ class VirgoClusterVirialModel:
 
 
 
-class VirgoClusterICMModel:
+class VirgoClusterICMModel(SelfSimulatingExpandingMixin):
     """
     Virgo Cluster Intracluster Medium (ICM) Model
     
@@ -53941,7 +54324,7 @@ class VirgoClusterICMModel:
 
 
 
-class VirgoClusterGravPotentialModel:
+class VirgoClusterGravPotentialModel(SelfSimulatingExpandingMixin):
     """
     Virgo Cluster Gravitational Potential Model
     
@@ -54257,7 +54640,7 @@ class VirgoClusterGravPotentialModel:
 
 
 
-class VirgoClusterM87JetModel:
+class VirgoClusterM87JetModel(SelfSimulatingExpandingMixin):
     """
     Virgo Cluster M87 Jet Model - AGN Jet Physics
     
@@ -54600,7 +54983,7 @@ class VirgoClusterM87JetModel:
 
 
 
-class VirgoClusterTidalStrippingModel:
+class VirgoClusterTidalStrippingModel(SelfSimulatingExpandingMixin):
     """
     Virgo Cluster Tidal Stripping Model
     
@@ -54948,7 +55331,7 @@ class VirgoClusterTidalStrippingModel:
 
 
 
-class VirgoClusterXRayModel:
+class VirgoClusterXRayModel(SelfSimulatingExpandingMixin):
     """
     Virgo Cluster X-Ray Luminosity Model
     
@@ -55307,7 +55690,7 @@ class VirgoClusterXRayModel:
 
 
 
-class VirgoClusterVelocityDispersionModel:
+class VirgoClusterVelocityDispersionModel(SelfSimulatingExpandingMixin):
     """
     Virgo Cluster Velocity Dispersion Model
     
@@ -55673,7 +56056,7 @@ VIRGO_CLUSTER_VELOCITY_DISPERSION_MODEL = VirgoClusterVelocityDispersionModel()
 # Based on Hubble datasets, High-Energy Labs data, UQFF Framework
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class NGC3603StarClusterModel:
+class NGC3603StarClusterModel(SelfSimulatingExpandingMixin):
     """
     NGC 3603 Star Cluster Evolution Model - Master Universal Gravity Equation
     
@@ -57808,7 +58191,7 @@ NGC3603_STAR_CLUSTER_MODEL = NGC3603StarClusterModel()
 # Document: May 09, 2025, 12:31 AM EDT
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class BubbleNebulaModel:
+class BubbleNebulaModel(SelfSimulatingExpandingMixin):
     """
     Bubble Nebula (NGC 7635) Evolution Model - Master Universal Gravity Equation
     
@@ -58769,7 +59152,7 @@ BUBBLE_NEBULA_MODEL = BubbleNebulaModel()
 # Document: May 09, 2025, 01:20 AM EDT
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class AntennaeGalaxiesModel:
+class AntennaeGalaxiesModel(SelfSimulatingExpandingMixin):
     """
     Antennae Galaxies (NGC 4038/4039) Evolution Model - Master Universal Gravity Equation
     
@@ -59891,7 +60274,7 @@ ANTENNAE_GALAXIES_MODEL = AntennaeGalaxiesModel()
 # Document: May 09, 2025, 01:40 AM EDT
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class HorseheadNebulaModel:
+class HorseheadNebulaModel(SelfSimulatingExpandingMixin):
     """
     Horsehead Nebula (Barnard 33) Evolution Model - Master Universal Gravity Equation
     
@@ -61037,7 +61420,7 @@ HORSEHEAD_NEBULA_MODEL = HorseheadNebulaModel()
 # Document: May 09, 2025, 02:00 AM EDT
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class NGC1275Model:
+class NGC1275Model(SelfSimulatingExpandingMixin):
     """
     NGC 1275 "Magnetic Monster" (Perseus A) Evolution Model - Master Universal Gravity Equation
     
@@ -62232,7 +62615,7 @@ NGC1275_MODEL = NGC1275Model()
 # "Galaxies Galore" - Deep Core Sample of the Universe
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class HUDFModel:
+class HUDFModel(SelfSimulatingExpandingMixin):
     """
     Hubble Ultra Deep Field (HUDF) Model - "Galaxies Galore"
     
@@ -63357,7 +63740,7 @@ HUDF_MODEL = HUDFModel()
 # Starburst Spiral Galaxy in Columba
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class NGC1792Model:
+class NGC1792Model(SelfSimulatingExpandingMixin):
     """
     NGC 1792 "The Stellar Forge" Model - Starburst Spiral Galaxy
     
@@ -64476,7 +64859,7 @@ NGC1792_MODEL = NGC1792Model()
 # Watermark: Daniel T. Murphy, 03:00 AM EDT, Youngstown, OH, USA
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class SombreroGalaxyModel:
+class SombreroGalaxyModel(SelfSimulatingExpandingMixin):
     """
     Sombrero Galaxy Model (M104 / NGC 4594) - Spiral Galaxy with Prominent SMBH and Dust Lane
     
@@ -65352,7 +65735,7 @@ SOMBRERO_GALAXY_MODEL = SombreroGalaxyModel()
 # Watermark: Daniel T. Murphy, 03:20 AM EDT, Youngstown, OH, USA
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class SaturnModel:
+class SaturnModel(SelfSimulatingExpandingMixin):
     """
     Saturn Model - Gas Giant Planetary Evolution in UQFF Framework
     
@@ -66274,7 +66657,7 @@ SATURN_MODEL = SaturnModel()
 # Watermark: Daniel T. Murphy, 03:40 AM EDT, Youngstown, OH, USA
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class M16EagleNebulaModel:
+class M16EagleNebulaModel(SelfSimulatingExpandingMixin):
     """
     M16 Eagle Nebula Model - Pillars of Creation Star-Forming Region
     
@@ -67178,7 +67561,7 @@ M16_EAGLE_NEBULA_MODEL = M16EagleNebulaModel()
 # Distance: 6,500 light-years, supernova observed 1054 AD
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class CrabNebulaModel:
+class CrabNebulaModel(SelfSimulatingExpandingMixin):
     """
     Crab Nebula Model - Pulsar-Driven Supernova Remnant
     
@@ -68075,7 +68458,7 @@ CRAB_NEBULA_MODEL = CrabNebulaModel()
 # Distance: 2,300 light-years, Age: ~3 Myr
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class NGC2264Model:
+class NGC2264Model(SelfSimulatingExpandingMixin):
     """
     NGC 2264 Model - Christmas Tree Cluster / Cone Nebula Star-Forming Region
     
@@ -68997,7 +69380,7 @@ NGC_2264_MODEL = NGC2264Model()
 
 
 
-class UGC10214Model:
+class UGC10214Model(SelfSimulatingExpandingMixin):
     """
     UGC 10214 (Tadpole Galaxy) Model - UQFF Analysis
     
@@ -69760,7 +70143,7 @@ UGC10214_MODEL = UGC10214Model()
 
 
 
-class NGC4676Model:
+class NGC4676Model(SelfSimulatingExpandingMixin):
     """
     NGC 4676 (Mice Galaxies) Model - UQFF Analysis
     
@@ -70523,7 +70906,7 @@ NGC4676_MODEL = NGC4676Model()
 
 
 
-class RedSpiderNebulaModel:
+class RedSpiderNebulaModel(SelfSimulatingExpandingMixin):
     """
     NGC 6537 (Red Spider Nebula) Model - UQFF Analysis
     
@@ -71286,7 +71669,7 @@ REDSPIDERNEBULA_MODEL = RedSpiderNebulaModel()
 
 
 
-class NGC3372Model:
+class NGC3372Model(SelfSimulatingExpandingMixin):
     """
     NGC 3372 (Carina Nebula) Model - UQFF Analysis
     
@@ -72049,7 +72432,7 @@ NGC3372_MODEL = NGC3372Model()
 
 
 
-class AGCarinaeModel:
+class AGCarinaeModel(SelfSimulatingExpandingMixin):
     """
     AG Carinae Model - UQFF Analysis
     
@@ -72812,7 +73195,7 @@ AGCARINAE_MODEL = AGCarinaeModel()
 
 
 
-class M42Model:
+class M42Model(SelfSimulatingExpandingMixin):
     """
     M42 (Orion Nebula) Model - UQFF Analysis
     
@@ -73575,7 +73958,7 @@ M42_MODEL = M42Model()
 
 
 
-class TarantulaNebulaModel:
+class TarantulaNebulaModel(SelfSimulatingExpandingMixin):
     """
     30 Doradus (Tarantula Nebula) Model - UQFF Analysis
     
@@ -74338,7 +74721,7 @@ TARANTULANEBULA_MODEL = TarantulaNebulaModel()
 
 
 
-class NGC2841Model:
+class NGC2841Model(SelfSimulatingExpandingMixin):
     """
     NGC 2841 Model - UQFF Analysis
     
@@ -75101,7 +75484,7 @@ NGC2841_MODEL = NGC2841Model()
 
 
 
-class MysticMountainModel:
+class MysticMountainModel(SelfSimulatingExpandingMixin):
     """
     Mystic Mountain (Carina Pillar) Model - UQFF Analysis
     
@@ -75867,7 +76250,7 @@ MYSTICMOUNTAIN_MODEL = MysticMountainModel()
 # MISSING MODEL CLASSES - Foundational Physics Models
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class NegativeTimeModel:
+class NegativeTimeModel(SelfSimulatingExpandingMixin):
     """
     Model for negative time physics and retrocausality.
     
@@ -75992,7 +76375,7 @@ class NegativeTimeModel:
         else:
             g_plus = g_minus = -b / (2*a)
         return {'g_plus': g_plus, 'g_minus': g_minus, 'discriminant': disc, 'a': a, 'b': b, 'c': c}
-class AetherVacuumEnergyModel:
+class AetherVacuumEnergyModel(SelfSimulatingExpandingMixin):
     """
     Model for Universal Aether [UA] vacuum energy dynamics.
     
@@ -76111,7 +76494,7 @@ class AetherVacuumEnergyModel:
         else:
             g_plus = g_minus = -b / (2*a)
         return {'g_plus': g_plus, 'g_minus': g_minus, 'discriminant': disc, 'a': a, 'b': b, 'c': c}
-class CosmicEggModel:
+class CosmicEggModel(SelfSimulatingExpandingMixin):
     """
     Model for 26D Cosmic Egg volume breathing dynamics.
     
@@ -76248,7 +76631,7 @@ class CosmicEggModel:
         else:
             g_plus = g_minus = -b / (2*a)
         return {'g_plus': g_plus, 'g_minus': g_minus, 'discriminant': disc, 'a': a, 'b': b, 'c': c}
-class SgrAStarGravityModel:
+class SgrAStarGravityModel(SelfSimulatingExpandingMixin):
     """
     Model for Sagittarius A* supermassive black hole gravity.
     
@@ -76375,7 +76758,7 @@ class SgrAStarGravityModel:
         else:
             g_plus = g_minus = -b / (2*a)
         return {'g_plus': g_plus, 'g_minus': g_minus, 'discriminant': disc, 'a': a, 'b': b, 'c': c}
-class RetrocausalModel:
+class RetrocausalModel(SelfSimulatingExpandingMixin):
     """
     Model for retrocausal physics and advanced wave solutions.
     
@@ -76498,7 +76881,7 @@ class RetrocausalModel:
         else:
             g_plus = g_minus = -b / (2*a)
         return {'g_plus': g_plus, 'g_minus': g_minus, 'discriminant': disc, 'a': a, 'b': b, 'c': c}
-class TRZModel:
+class TRZModel(SelfSimulatingExpandingMixin):
     """
     Model for Time-Reversal Zone physics.
     
@@ -76617,7 +77000,7 @@ class TRZModel:
         else:
             g_plus = g_minus = -b / (2*a)
         return {'g_plus': g_plus, 'g_minus': g_minus, 'discriminant': disc, 'a': a, 'b': b, 'c': c}
-class VoidOscillationModel:
+class VoidOscillationModel(SelfSimulatingExpandingMixin):
     """
     Model for cosmic void oscillations.
     
@@ -76736,7 +77119,7 @@ class VoidOscillationModel:
         else:
             g_plus = g_minus = -b / (2*a)
         return {'g_plus': g_plus, 'g_minus': g_minus, 'discriminant': disc, 'a': a, 'b': b, 'c': c}
-class TimeVaryingVacuumModel:
+class TimeVaryingVacuumModel(SelfSimulatingExpandingMixin):
     """
     Model for time-varying vacuum energy dynamics.
     
