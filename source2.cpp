@@ -10620,17 +10620,17 @@ MainWindow::MainWindow()
         // Connect EventBus to Session Logger (Tab 9 will auto-connect via constructor)
         // Log all physics computations from any widget
         connect(&eventBus, &UQFFEventBus::computationCompleted, [this](const QString& source, const QString& system, const QJsonObject& result) {
-            UQFF_LOG_PHYSICS(source.toStdString(), QString("Computed %1: F_U_Bi=%2")
+            UQFF_LOG_PHYSICS(source, QString("Computed %1: F_U_Bi=%2")
                 .arg(system)
-                .arg(result["F_U_Bi"].toDouble()).toStdString());
+                .arg(result["F_U_Bi"].toDouble()), result);
         });
         
         // Log all validation results
         connect(&eventBus, &UQFFEventBus::validationResult, [this](const QString& system, bool passed, double diff, const QString& message) {
             if (passed) {
-                UQFF_LOG_INFO("Validation", QString("%1: PASSED (diff=%2%)").arg(system).arg(diff * 100).toStdString());
+                UQFF_LOG_INFO("Validation", QString("%1: PASSED (diff=%2%)").arg(system).arg(diff * 100));
             } else {
-                UQFF_LOG_WARNING("Validation", QString("%1: FAILED - %2").arg(system).arg(message).toStdString());
+                UQFF_LOG_WARNING("Validation", QString("%1: FAILED - %2").arg(system).arg(message));
             }
         });
 
@@ -10959,3 +10959,7 @@ int main(int argc, char *argv[])
 // Include MOC file for Q_OBJECT classes defined in this .cpp file
 // Required for PowerShellTerminalWidget to have signal/slot support
 #include "source2.moc"
+
+// Include MOC files for Q_OBJECT classes in header files
+#include "moc_source2_event_bus.cpp"
+#include "moc_source2_widgets_enhanced.cpp"
