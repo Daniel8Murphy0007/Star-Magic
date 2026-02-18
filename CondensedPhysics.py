@@ -10030,6 +10030,69 @@ class DPMModel:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global DPM model instance
@@ -11085,6 +11148,69 @@ class HydrogenEvolutionModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -12481,6 +12607,69 @@ class AtomicModelUQFF:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Atomic Model UQFF instance (Equations of The Atom)
@@ -13637,6 +13826,69 @@ Estimated Decay Time: {t_decay:.4e} days ({t_decay/365.25:.4e} years)
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global ACP Stage Tracker instance
@@ -14362,6 +14614,69 @@ class UniversalGravityModel:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Universal Gravity Model instance
@@ -14726,6 +15041,69 @@ class UniversalMagnetismModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -15263,6 +15641,69 @@ class MagneticStringModel:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Magnetic String Model instance
@@ -15581,6 +16022,69 @@ class HeavisideComponentModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -16013,6 +16517,69 @@ class HeliosphereThicknessModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -16604,6 +17171,69 @@ class UniversalInertiaModel:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Universal Inertia Model instance
@@ -17093,6 +17723,69 @@ class UniversalInertiaVacuumModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -17905,6 +18598,69 @@ class SuperconductiveMaterialVacuumModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -19704,6 +20460,69 @@ class UnifiedFieldEquation:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Unified Field Equation instance
@@ -20438,6 +21257,69 @@ Physical Interpretation (Ideal Gravity):
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Time-Reversal Zone Model instance
@@ -20922,6 +21804,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -21430,6 +22375,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Final Parsec Problem Model instance
@@ -21819,6 +22827,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global CGM Metal Retention Model instance
@@ -22148,6 +23219,69 @@ KEY EQUATIONS INTEGRATED:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -22591,6 +23725,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global FRB Model instance
@@ -22979,6 +24176,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Whittaker Decomposition Model instance
@@ -23327,6 +24587,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -23963,6 +25286,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Cosmic Egg Hypergraph Model instance
@@ -24339,6 +25725,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -24820,6 +26269,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Black Hole Phases Model instance
@@ -25236,6 +26748,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -25672,6 +27247,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Inertial Operator Model instance
@@ -26068,6 +27706,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -26485,6 +28186,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -26938,6 +28702,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Higgs-SCm Integration Model instance
@@ -27352,6 +29179,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global DE Vacuum Power Model instance
@@ -27755,6 +29645,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -28163,6 +30116,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Proton Saturation Levels Model instance
@@ -28544,6 +30560,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -28940,6 +31019,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -29394,6 +31536,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Aether Blue Qualities Model instance
@@ -29779,6 +31984,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global AGN Feedback Model instance
@@ -30132,6 +32400,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -30575,6 +32906,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Complete Unified Field Model instance
@@ -30989,6 +33383,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Vacuum Energy Density Summary Model instance
@@ -31387,6 +33844,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Pseudo-Monopole Model instance
@@ -31752,6 +34272,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global USPR Model instance
@@ -32087,6 +34670,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Universal Buoyancy Interaction Model instance
@@ -32417,6 +35063,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -32756,6 +35465,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -33155,6 +35927,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Crystalline Galaxy Model instance
@@ -33516,6 +36351,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -33902,6 +36800,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -34298,6 +37259,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Density Wave Model instance
@@ -34616,6 +37640,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -34987,6 +38074,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -35364,6 +38514,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -35769,6 +38982,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -36179,6 +39455,69 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Corotation Resonance Model instance
@@ -36510,6 +39849,69 @@ class GinzburgLandauFieldModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -36851,6 +40253,69 @@ class BogoliubovDeGennesModel:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 
@@ -37183,6 +40648,69 @@ class QWaveResonanceModel:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 
@@ -37502,6 +41030,69 @@ class TemporalDynamicsModel:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 
@@ -37800,6 +41391,69 @@ class AmplitudeStabilityModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -38106,6 +41760,69 @@ class SuperconductingCoherenceModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -38421,6 +42138,69 @@ class GravitationalTimeDilationModel:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 
@@ -38721,6 +42501,69 @@ class GravitationalRedshiftModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -39074,6 +42917,69 @@ class TidalForceModel:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global SM Gravity Model instances
@@ -39388,6 +43294,69 @@ class BHMFEvolutionModel:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 
@@ -39686,6 +43655,69 @@ class BondiAccretionModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -40013,6 +44045,69 @@ class EddingtonRatioModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -40349,6 +44444,69 @@ class TidalDisruptionEventModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -40704,6 +44862,69 @@ class SMBHSpinEvolutionModel:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global SMBH Dynamics Model instances
@@ -40943,6 +45164,69 @@ class SMBHUg1Model:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 
@@ -41162,6 +45446,69 @@ class SMBHUg2Model:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -41387,6 +45734,69 @@ class SMBHUg3Model:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 
@@ -41607,6 +46017,69 @@ class SMBHUg4Model:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global SMBH Ug Layer Model instances
@@ -41819,6 +46292,69 @@ class SMBHBulgeGravityModel:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 
@@ -42019,6 +46555,69 @@ class SMBHOmegaSGalacticModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -42253,6 +46852,69 @@ class SMBHCosmicTimeModel:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global SMBH Galactic Model instances
@@ -42462,6 +47124,69 @@ class VirgoClusterMassModel:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 
@@ -42650,6 +47375,69 @@ class VirgoClusterDarkMatterModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -42847,6 +47635,69 @@ class VirgoClusterVirialModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -43069,6 +47920,69 @@ class VirgoClusterICMModel:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 
@@ -43264,6 +48178,69 @@ class VirgoClusterGravPotentialModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -43487,6 +48464,69 @@ class VirgoClusterM87JetModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -43715,6 +48755,69 @@ class VirgoClusterTidalStrippingModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -43955,6 +49058,69 @@ class VirgoClusterXRayModel:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 
@@ -44177,6 +49343,69 @@ class VirgoClusterVelocityDispersionModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -46264,6 +51493,69 @@ VALIDATION RESULTS:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global NGC 3603 Model instance
@@ -47104,6 +52396,69 @@ VALIDATION RESULTS:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -48106,6 +53461,69 @@ VALIDATION RESULTS:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -49132,6 +54550,69 @@ VALIDATION RESULTS:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -50209,6 +55690,69 @@ VALIDATION RESULTS:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global NGC 1275 Model instance
@@ -51214,6 +56758,69 @@ Watermark: May 09, 2025, 02:20 AM EDT, Youngstown, OH, USA (41.0997Â°N, 80.6495Â
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global HUDF Model instance
@@ -52212,6 +57819,69 @@ Watermark: May 09, 2025, 02:40 AM EDT, Youngstown, OH, USA (41.0997Â°N, 80.6495Â
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global NGC 1792 Model instance
@@ -52967,6 +58637,69 @@ class SombreroGalaxyModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -53770,6 +59503,69 @@ class SaturnModel:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global Saturn Model instance
@@ -54552,6 +60348,69 @@ class M16EagleNebulaModel:
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 
 # Global M16 Eagle Nebula Model instance
@@ -55328,6 +61187,69 @@ class CrabNebulaModel:
         g_base = G * M / r**2
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 
@@ -56139,6 +62061,69 @@ class NGC2264Model:
             'R_amplitude': resonance['R_amplitude']
         }
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 # Global NGC 2264 Model instance
 NGC_2264_MODEL = NGC2264Model()
@@ -56781,6 +62766,69 @@ class UGC10214Model:
             'g_compressed': compressed['g_compressed'],
             'R_amplitude': resonance['R_amplitude']
         }
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 # Global UGC 10214 (Tadpole Galaxy) instance
@@ -57425,6 +63473,69 @@ class NGC4676Model:
             'R_amplitude': resonance['R_amplitude']
         }
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 # Global NGC 4676 (Mice Galaxies) instance
 NGC4676_MODEL = NGC4676Model()
@@ -58067,6 +64178,69 @@ class RedSpiderNebulaModel:
             'g_compressed': compressed['g_compressed'],
             'R_amplitude': resonance['R_amplitude']
         }
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 # Global NGC 6537 (Red Spider Nebula) instance
@@ -58711,6 +64885,69 @@ class NGC3372Model:
             'R_amplitude': resonance['R_amplitude']
         }
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 # Global NGC 3372 (Carina Nebula) instance
 NGC3372_MODEL = NGC3372Model()
@@ -59353,6 +65590,69 @@ class AGCarinaeModel:
             'g_compressed': compressed['g_compressed'],
             'R_amplitude': resonance['R_amplitude']
         }
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 # Global AG Carinae instance
@@ -59997,6 +66297,69 @@ class M42Model:
             'R_amplitude': resonance['R_amplitude']
         }
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 # Global M42 (Orion Nebula) instance
 M42_MODEL = M42Model()
@@ -60639,6 +67002,69 @@ class TarantulaNebulaModel:
             'g_compressed': compressed['g_compressed'],
             'R_amplitude': resonance['R_amplitude']
         }
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 # Global 30 Doradus (Tarantula Nebula) instance
@@ -61283,6 +67709,69 @@ class NGC2841Model:
             'R_amplitude': resonance['R_amplitude']
         }
 
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
+
 
 # Global NGC 2841 instance
 NGC2841_MODEL = NGC2841Model()
@@ -61925,6 +68414,69 @@ class MysticMountainModel:
             'g_compressed': compressed['g_compressed'],
             'R_amplitude': resonance['R_amplitude']
         }
+
+    def long_form_solution(self, r=None, t=0):
+        """
+        Long-form solution with complete equation display.
+        Returns detailed step-by-step calculation for all UQFF equations.
+        """
+        import numpy as np
+        G = 6.674e-11
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None:
+            r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        
+        # Collect all equation results
+        results = {}
+        steps = []
+        
+        # 1. UQFF Base
+        uqff = self.compute_UQFF_base(r, t)
+        results['UQFF_base'] = uqff
+        steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+        
+        # 2. Compressed equation
+        comp = self.compute_compressed_equation(r)
+        results['compressed'] = comp
+        steps.append(f"Compressed: g = g_N - g_H = {comp['g_compressed']:.6e} m/s^2")
+        
+        # 3. Resonance equation
+        res = self.compute_resonance_equation(r, t)
+        results['resonance'] = res
+        steps.append(f"Resonance: g_res = aDPM + aExpFreq = {res['g_resonance']:.6e} m/s^2")
+        
+        # 4. Superconductive
+        sc = self.compute_superconductive_equation()
+        results['superconductive'] = sc
+        steps.append(f"Superconductive: H_SCm = {sc['H_SCm']:.6f}")
+        
+        # 5. Buoyant equation
+        buoy = self.compute_buoyant_equation(r)
+        results['buoyant'] = buoy
+        steps.append(f"Buoyancy: Ub = {buoy['Ub']:.6e} m/s^2")
+        
+        # 6. Master buoyant
+        master = self.compute_master_buoyant_equation(r)
+        results['master_buoyant'] = master
+        steps.append(f"Master Buoyant: F_U_Bi_i = {master['F_U_Bi_i']:.6e} N")
+        
+        # 7. Triadic
+        tri = self.compute_triadic_equation(r)
+        results['triadic'] = tri
+        steps.append(f"Triadic: g_triadic = {tri['g_triadic']:.6e} m/s^2")
+        
+        # 8. Quadratic
+        quad = self.compute_quadratic_equation(r)
+        results['quadratic'] = quad
+        steps.append(f"Quadratic: g_quad = {quad['g_quad']:.6e} m/s^2")
+        
+        return {
+            'model': self.__class__.__name__,
+            'parameters': {'M': M, 'r': r, 't': t},
+            'results': results,
+            'long_form': '\n'.join(steps)
+        }
+
 
 
 # Global Mystic Mountain (Carina Pillar) instance
