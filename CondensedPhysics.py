@@ -41,6 +41,38 @@ import time
 import sys
 import argparse
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE INTEGRATION & SELF-EXPANDING FRAMEWORK IMPORTS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# PhysicsFramework - Self-expanding physics term system
+try:
+    from PhysicsFramework import PhysicsTerm, DynamicVacuumTerm, QuantumCouplingTerm, DarkMatterHaloTerm
+    PHYSICS_FRAMEWORK_AVAILABLE = True
+except ImportError:
+    PHYSICS_FRAMEWORK_AVAILABLE = False
+
+# Phase5 - Atomic & particle physics
+try:
+    import Phase5_Consolidated as Phase5
+    PHASE5_AVAILABLE = True
+except ImportError:
+    PHASE5_AVAILABLE = False
+
+# Phase6 - Galaxy physics (M51, NGC1316, SMBH Binary)
+try:
+    import Phase6_Consolidated as Phase6
+    PHASE6_AVAILABLE = True
+except ImportError:
+    PHASE6_AVAILABLE = False
+
+# Phase7 - Cosmological systems (Andromeda, M-σ relation, Extended MUGE)
+try:
+    import Phase7_Consolidated as Phase7
+    PHASE7_AVAILABLE = True
+except ImportError:
+    PHASE7_AVAILABLE = False
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # UQFF LOGGER - Shared logging for Qt6 integration
@@ -99,6 +131,213 @@ class UQFFLogger:
     @staticmethod
     def error(source: str, message: str, data: dict = None):
         UQFFLogger.log("ERROR", source, message, data)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SELF-EXPANDING FRAMEWORK MIXIN
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class SelfExpandingMixin:
+    """
+    Mixin class providing self-expanding framework capabilities.
+    
+    Port of C++ PhysicsTerm framework from source70.cpp to Python.
+    Provides dynamic parameter management, term registration, state persistence,
+    adaptive learning, and metadata tracking.
+    
+    Features:
+        - set_dynamic_parameter() / get_dynamic_parameter() - Runtime parameter tuning
+        - register_dynamic_term() - Nested term composition
+        - export_state() / import_state() - State persistence for ML pipelines
+        - learning_rate - Adaptive optimization
+        - metadata - Provenance tracking
+    
+    Usage:
+        class MyCalculator(SelfExpandingMixin):
+            def __init__(self):
+                self.init_self_expanding()
+                ...
+    """
+    
+    def init_self_expanding(self):
+        """Initialize self-expanding framework members."""
+        self.dynamic_parameters: Dict[str, float] = {}
+        self.dynamic_terms: List[Any] = []
+        self.metadata: Dict[str, str] = {
+            'version': '2.0-Enhanced',
+            'created': datetime.now().isoformat(),
+            'framework': 'CondensedPhysics.py-SelfExpandingMixin'
+        }
+        self.enable_dynamic_terms: bool = False  # Disabled by default (additive to core)
+        self.enable_logging: bool = False
+        self.learning_rate: float = 0.001
+    
+    def set_dynamic_parameter(self, name: str, value: float) -> None:
+        """
+        Set or update a dynamic parameter at runtime.
+        
+        Args:
+            name: Parameter identifier
+            value: New parameter value
+        """
+        if self.enable_logging:
+            UQFFLogger.debug('SelfExpanding', f'Set {name} = {value}')
+        self.dynamic_parameters[name] = value
+    
+    def get_dynamic_parameter(self, name: str, default: float = 0.0) -> float:
+        """
+        Get dynamic parameter value.
+        
+        Args:
+            name: Parameter identifier
+            default: Return value if parameter not found
+        
+        Returns:
+            Parameter value or default
+        """
+        return self.dynamic_parameters.get(name, default)
+    
+    def register_dynamic_term(self, term: Any) -> None:
+        """
+        Register a nested physics term for additive contribution.
+        
+        Nested terms are computed and added to base calculation if enable_dynamic_terms=True.
+        
+        Args:
+            term: PhysicsTerm instance (or any object with compute() method)
+        """
+        if self.enable_logging:
+            term_name = getattr(term, 'getName', lambda: term.__class__.__name__)()
+            UQFFLogger.debug('SelfExpanding', f'Registered term: {term_name}')
+        self.dynamic_terms.append(term)
+    
+    def export_state(self, filepath: str = None) -> dict:
+        """
+        Export current state to dictionary (and optionally file).
+        
+        Args:
+            filepath: Optional JSON file path to save state
+        
+        Returns:
+            State dictionary
+        """
+        state = {
+            'class': self.__class__.__name__,
+            'dynamic_parameters': self.dynamic_parameters.copy(),
+            'metadata': self.metadata.copy(),
+            'enable_dynamic_terms': self.enable_dynamic_terms,
+            'enable_logging': self.enable_logging,
+            'learning_rate': self.learning_rate,
+            'num_dynamic_terms': len(self.dynamic_terms),
+            'exported_at': datetime.now().isoformat()
+        }
+        
+        if filepath:
+            with open(filepath, 'w') as f:
+                json.dump(state, f, indent=2)
+            if self.enable_logging:
+                UQFFLogger.info('SelfExpanding', f'State exported to {filepath}')
+        
+        return state
+    
+    def import_state(self, filepath: str = None, state: dict = None) -> None:
+        """
+        Import state from file or dictionary.
+        
+        Args:
+            filepath: JSON file path to load state from
+            state: State dictionary to import (alternative to filepath)
+        """
+        if filepath:
+            with open(filepath, 'r') as f:
+                state = json.load(f)
+        
+        if state:
+            self.dynamic_parameters = state.get('dynamic_parameters', {})
+            self.metadata.update(state.get('metadata', {}))
+            self.enable_dynamic_terms = state.get('enable_dynamic_terms', False)
+            self.enable_logging = state.get('enable_logging', False)
+            self.learning_rate = state.get('learning_rate', 0.001)
+            
+            if self.enable_logging:
+                UQFFLogger.info('SelfExpanding', f'State imported from {filepath or "dict"}')
+    
+    def set_metadata(self, key: str, value: str) -> None:
+        """Set metadata field for provenance tracking."""
+        self.metadata[key] = value
+    
+    def get_metadata(self, key: str) -> Optional[str]:
+        """Get metadata field value."""
+        return self.metadata.get(key)
+    
+    def compute_with_dynamic_terms(self, base_value: float, t: float = 0.0, params: dict = None) -> float:
+        """
+        Add contributions from registered dynamic terms to base value.
+        
+        Args:
+            base_value: Base calculation result
+            t: Time parameter
+            params: Parameter dictionary for dynamic terms
+        
+        Returns:
+            Total value (base + dynamic contributions if enabled)
+        """
+        if not self.enable_dynamic_terms:
+            return base_value
+        
+        total = base_value
+        params = params or {}
+        
+        for term in self.dynamic_terms:
+            try:
+                if hasattr(term, 'compute'):
+                    contribution = term.compute(t, params)
+                    total += contribution
+                    if self.enable_logging:
+                        term_name = getattr(term, 'getName', lambda: term.__class__.__name__)()
+                        UQFFLogger.debug('SelfExpanding', f'  + {term_name}: {contribution:.6e}')
+            except Exception as e:
+                if self.enable_logging:
+                    UQFFLogger.warning('SelfExpanding', f'Term computation failed: {e}')
+        
+        return total
+    
+    @staticmethod
+    def run_tests() -> dict:
+        """Run self-diagnostic tests for SelfExpandingMixin."""
+        tests = []
+        try:
+            # Create test class using mixin
+            class TestClass(SelfExpandingMixin):
+                def __init__(self):
+                    self.init_self_expanding()
+            
+            instance = TestClass()
+            tests.append({'name': 'Instantiation', 'passed': True})
+            
+            # Test parameter setting
+            instance.set_dynamic_parameter('test_param', 1.23)
+            got = instance.get_dynamic_parameter('test_param')
+            tests.append({'name': 'set/get_dynamic_parameter', 'passed': abs(got - 1.23) < 1e-10})
+            
+            # Test export/import
+            state = instance.export_state()
+            tests.append({'name': 'export_state', 'passed': 'dynamic_parameters' in state})
+            
+            instance2 = TestClass()
+            instance2.import_state(state=state)
+            tests.append({'name': 'import_state', 'passed': instance2.get_dynamic_parameter('test_param') == 1.23})
+            
+        except Exception as e:
+            tests.append({'name': 'Test execution', 'passed': False, 'error': str(e)})
+        
+        return {
+            'class': 'SelfExpandingMixin',
+            'tests': tests,
+            'passed': sum(1 for t in tests if t['passed']),
+            'total': len(tests),
+            'all_passed': all(t['passed'] for t in tests)
+        }
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
