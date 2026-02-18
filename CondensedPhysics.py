@@ -3745,63 +3745,6 @@ CONSTANTS = {
     'kappa_time': 0.1,                  # κ: Negative time operator decay parameter
     't_n_threshold': 0.0,               # Threshold for time-reversal activation (t_n < 0)
     'f_TRZ': 0.1,                       # f_TRZ: Time-reversal zone factor (10%)
-    
-    # ═══════════════════════════════════════════════════════════════════════════════
-    # TRIADIC UQFF / DPM / GALACTIC CONSTANTS (From conversation analysis)
-    # ═══════════════════════════════════════════════════════════════════════════════
-    #
-    # a_DPM - DPM Foundation Term:
-    # ─────────────────────────────────────────────────────────────────────────────
-    #   The DPM (Dipole Molecular) acceleration is the foundation term in the
-    #   UQFF Resonant equation system. It represents the base acceleration from
-    #   vacuum polarization and [UA]/[SCm] reactions.
-    #
-    #   In UQFF_Resonant: g = a_DPM + a_THz + a_vac_diff + a_SuperFreq + ...
-    #
-    'a_DPM': 1.34e15,                   # DPM foundation acceleration (m/s²)
-    
-    # k_galactic - Galactic Coupling Constant:
-    # ─────────────────────────────────────────────────────────────────────────────
-    #   Coupling constant for galactic-scale UQFF interactions. Used in:
-    #   - Galaxy rotation curve corrections
-    #   - Dark matter halo modeling
-    #   - Phase7_Consolidated.py galactic calculations
-    #
-    #   From: source82.cpp, Phase7_Consolidated.py
-    #
-    'k_galactic': 2.59e-9,              # Galactic coupling constant (dimensionless)
-    
-    # omega_shell - Shell Resonance Frequency:
-    # ─────────────────────────────────────────────────────────────────────────────
-    #   Angular frequency for spherical shell resonance in nebular/stellar systems.
-    #   Related to 26-layer polynomial structure where each shell has:
-    #
-    #   ω_shell_j = 2π / (T_shell / j)
-    #
-    #   where T_shell = 5×10⁵ years = 1.578×10¹³ s (typical nebular timescale)
-    #
-    'omega_shell': 3.98e-13,            # Base shell frequency (rad/s) = 2π/(1.578e13)
-    'T_shell': 1.578e13,                # Shell resonance period (s) = 500,000 years
-    
-    # aaether_res - Dominant Aether Resonance:
-    # ─────────────────────────────────────────────────────────────────────────────
-    #   The dominant resonance term in UQFF_Resonant for magnetar/high-gravity systems.
-    #   Represents maximum aether ([UA]) resonance acceleration.
-    #
-    'aaether_res': 1.47e20,             # Aether resonance acceleration (m/s²) - magnetar scale
-    
-    # Pillars of Creation (M16) Constants:
-    # ─────────────────────────────────────────────────────────────────────────────
-    #   Star-forming region constants for triadic UQFF validation.
-    #   From: JWST/Hubble 2025 data, ~6,500 ly distance
-    #
-    'M16_r': 4.73e16,                   # Pillar extent (m) ~ 5 ly
-    'M16_SFR': 0.2,                     # Star formation rate (M_sun/yr)
-    'M16_age_Myr': 1.5,                 # Age (million years)
-    'M16_v_radial': -5e3,               # Blueshift outflow velocity (m/s) = -5 km/s
-    'M16_B': 1e-5,                      # Magnetic field (T)
-    'M16_rho_gas': 1e-20,               # Gas density (kg/m³)
-    'M16_z': 0.0022,                    # Redshift
 }
 
 
@@ -14469,6 +14412,103 @@ class ProtoNucleusShellModel:
             'summary': f"ProtoNucleusShellModel: {tests_passed}/{tests_total} tests passed"
         }
 
+    # ═══════════════════════════════════════════════════════════════════════════
+    # 8 UQFF MASTER EQUATIONS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_UQFF_base(self, params=None) -> dict:
+        """UQFF Base: F_U = Σ(Ug_i + Ub_i) + Um + Ur + Ut + Ui + UA + SCm"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        Ug1 = 1.5 * g_base; Ug2 = 1.2 * g_base; Ug3 = 0.8 * g_base * np.sin(np.pi/4); Ug4 = 0.5 * g_base
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        Ub = beta * (g_base - rho_vac * G)
+        Um = CONSTANTS.get('mu_0', 4e-7) * 1e6 / (4 * np.pi * r**2) if r > 0 else 0
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub + Um
+        return {'F_U': F_U, 'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4, 'Ub': Ub, 'Um': Um, 'g_base': g_base}
+    
+    def compute_compressed_equation(self, params=None, t=None) -> dict:
+        """UQFF Compressed: g = g_N × (1+H·t) × (1+M_sf) × (1-E_rad) × (1+f_TRZ) + a_EM"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        t = t if t is not None else getattr(self, 't', 3.156e13)
+        g_N = G * M / (r ** 2) if r > 0 else 0
+        H_0 = CONSTANTS.get('H_0', 2.268e-18)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        hubble = 1 + H_0 * t; trz = 1 + f_TRZ
+        g_compressed = g_N * hubble * trz
+        return {'g_compressed': g_compressed, 'g_N': g_N, 'hubble_factor': hubble, 'trz_factor': trz}
+    
+    def compute_resonance_equation(self, params=None, t=None) -> dict:
+        """UQFF Resonance: R = Σ(a_i × cos(ω_i × t))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        omega_grav = 2 * np.pi / 3.156e13
+        omega_mag = 2 * np.pi / 3.156e11
+        R_grav = CONSTANTS.get('G', 6.6743e-11) * 1e30 / 1e20 * np.cos(omega_grav * t)
+        R_mag = 1e-5 * np.cos(omega_mag * t)
+        UA_factor = 1 + CONSTANTS.get('rho_vac_UA', 7.09e-36) / CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        R_total = R_grav + R_mag * UA_factor
+        return {'R_total': R_total, 'R_grav': R_grav, 'R_mag': R_mag, 'UA_factor': UA_factor}
+    
+    def compute_superconductive_equation(self, params=None, t=None) -> dict:
+        """UQFF Superconductive: [SCm](t) = [SCm]₀ × e^(-κt) × (1 - cos(ωt))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        SCm_0 = CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        kappa = CONSTANTS.get('kappa', 0.0005) / 86400
+        omega = 2 * np.pi / 3.156e13
+        SCm_t = SCm_0 * np.exp(-kappa * t) * (1 - np.cos(omega * t))
+        return {'SCm_t': SCm_t, 'SCm_0': SCm_0, 'decay': np.exp(-kappa * t)}
+    
+    def compute_buoyant_equation(self, params=None) -> dict:
+        """UQFF Buoyant (F_U_Bi): F_Bi = β × (Ug - ρ_vac × G)"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        F_Bi = beta * (g_base - rho_vac * G)
+        return {'F_Bi': F_Bi, 'g_base': g_base, 'beta': beta, 'rho_vac': rho_vac}
+    
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+    def compute_triadic_equation(self, params=None, n_layers=26) -> dict:
+        """UQFF Triadic: g_26 = Σ(i=1 to 26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i]"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        k_values = [1.5, 1.2, 0.8, 0.5]
+        g_layers = []; total = 0
+        for i in range(1, n_layers + 1):
+            scale = 1 + 0.1 * (i - 13) / 13
+            Ug_i = sum(k * g_base * scale for k in k_values)
+            g_layers.append(Ug_i); total += Ug_i
+        return {'g_triadic': total, 'g_layers': g_layers, 'n_layers': n_layers}
+    
+    def compute_quadratic_equation(self, params=None) -> dict:
+        """UQFF Quadratic: Solves g² + b·g + c = 0 for unified field roots"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        a = 1; b = -G * M / (r ** 2) if r > 0 else 1e-10; c = CONSTANTS.get('Lambda', 1.1e-52) * r**2 / 3
+        disc = b**2 - 4*a*c
+        if disc >= 0:
+            g_plus = (-b + np.sqrt(disc)) / (2*a); g_minus = (-b - np.sqrt(disc)) / (2*a)
+        else:
+            g_plus = g_minus = -b / (2*a)
+        return {'g_plus': g_plus, 'g_minus': g_minus, 'discriminant': disc, 'a': a, 'b': b, 'c': c}
+
 
 # Global Proto-Nucleus model instance
 PROTO_NUCLEUS_MODEL = ProtoNucleusShellModel()
@@ -21655,6 +21695,103 @@ class StandardModelUQFFModel:
             tests.append({'name': 'Has compute method', 'passed': False, 'error': str(e)})
         all_passed = all(t['passed'] for t in tests)
         return {'class': 'StandardModelUQFFModel', 'tests': tests, 'passed': sum(1 for t in tests if t['passed']), 'total': len(tests), 'all_passed': all_passed}
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    # 8 UQFF MASTER EQUATIONS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_UQFF_base(self, params=None) -> dict:
+        """UQFF Base: F_U = Σ(Ug_i + Ub_i) + Um + Ur + Ut + Ui + UA + SCm"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        Ug1 = 1.5 * g_base; Ug2 = 1.2 * g_base; Ug3 = 0.8 * g_base * np.sin(np.pi/4); Ug4 = 0.5 * g_base
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        Ub = beta * (g_base - rho_vac * G)
+        Um = CONSTANTS.get('mu_0', 4e-7) * 1e6 / (4 * np.pi * r**2) if r > 0 else 0
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub + Um
+        return {'F_U': F_U, 'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4, 'Ub': Ub, 'Um': Um, 'g_base': g_base}
+    
+    def compute_compressed_equation(self, params=None, t=None) -> dict:
+        """UQFF Compressed: g = g_N × (1+H·t) × (1+M_sf) × (1-E_rad) × (1+f_TRZ) + a_EM"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        t = t if t is not None else getattr(self, 't', 3.156e13)
+        g_N = G * M / (r ** 2) if r > 0 else 0
+        H_0 = CONSTANTS.get('H_0', 2.268e-18)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        hubble = 1 + H_0 * t; trz = 1 + f_TRZ
+        g_compressed = g_N * hubble * trz
+        return {'g_compressed': g_compressed, 'g_N': g_N, 'hubble_factor': hubble, 'trz_factor': trz}
+    
+    def compute_resonance_equation(self, params=None, t=None) -> dict:
+        """UQFF Resonance: R = Σ(a_i × cos(ω_i × t))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        omega_grav = 2 * np.pi / 3.156e13
+        omega_mag = 2 * np.pi / 3.156e11
+        R_grav = CONSTANTS.get('G', 6.6743e-11) * 1e30 / 1e20 * np.cos(omega_grav * t)
+        R_mag = 1e-5 * np.cos(omega_mag * t)
+        UA_factor = 1 + CONSTANTS.get('rho_vac_UA', 7.09e-36) / CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        R_total = R_grav + R_mag * UA_factor
+        return {'R_total': R_total, 'R_grav': R_grav, 'R_mag': R_mag, 'UA_factor': UA_factor}
+    
+    def compute_superconductive_equation(self, params=None, t=None) -> dict:
+        """UQFF Superconductive: [SCm](t) = [SCm]₀ × e^(-κt) × (1 - cos(ωt))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        SCm_0 = CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        kappa = CONSTANTS.get('kappa', 0.0005) / 86400
+        omega = 2 * np.pi / 3.156e13
+        SCm_t = SCm_0 * np.exp(-kappa * t) * (1 - np.cos(omega * t))
+        return {'SCm_t': SCm_t, 'SCm_0': SCm_0, 'decay': np.exp(-kappa * t)}
+    
+    def compute_buoyant_equation(self, params=None) -> dict:
+        """UQFF Buoyant (F_U_Bi): F_Bi = β × (Ug - ρ_vac × G)"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        F_Bi = beta * (g_base - rho_vac * G)
+        return {'F_Bi': F_Bi, 'g_base': g_base, 'beta': beta, 'rho_vac': rho_vac}
+    
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+    def compute_triadic_equation(self, params=None, n_layers=26) -> dict:
+        """UQFF Triadic: g_26 = Σ(i=1 to 26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i]"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        k_values = [1.5, 1.2, 0.8, 0.5]
+        g_layers = []; total = 0
+        for i in range(1, n_layers + 1):
+            scale = 1 + 0.1 * (i - 13) / 13
+            Ug_i = sum(k * g_base * scale for k in k_values)
+            g_layers.append(Ug_i); total += Ug_i
+        return {'g_triadic': total, 'g_layers': g_layers, 'n_layers': n_layers}
+    
+    def compute_quadratic_equation(self, params=None) -> dict:
+        """UQFF Quadratic: Solves g² + b·g + c = 0 for unified field roots"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        a = 1; b = -G * M / (r ** 2) if r > 0 else 1e-10; c = CONSTANTS.get('Lambda', 1.1e-52) * r**2 / 3
+        disc = b**2 - 4*a*c
+        if disc >= 0:
+            g_plus = (-b + np.sqrt(disc)) / (2*a); g_minus = (-b - np.sqrt(disc)) / (2*a)
+        else:
+            g_plus = g_minus = -b / (2*a)
+        return {'g_plus': g_plus, 'g_minus': g_minus, 'discriminant': disc, 'a': a, 'b': b, 'c': c}
 
 
 # Global Standard Model UQFF Model instance
@@ -75519,6 +75656,103 @@ class NegativeTimeModel:
         return self.t_n < CONSTANTS.get('t_n_threshold', 0.0)
 
 
+
+    # 
+    # 8 UQFF MASTER EQUATIONS
+    # 
+    
+    def compute_UQFF_base(self, params=None) -> dict:
+        """UQFF Base: F_U = Σ(Ug_i + Ub_i) + Um + Ur + Ut + Ui + UA + SCm"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        Ug1 = 1.5 * g_base; Ug2 = 1.2 * g_base; Ug3 = 0.8 * g_base * np.sin(np.pi/4); Ug4 = 0.5 * g_base
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        Ub = beta * (g_base - rho_vac * G)
+        Um = CONSTANTS.get('mu_0', 4e-7) * 1e6 / (4 * np.pi * r**2) if r > 0 else 0
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub + Um
+        return {'F_U': F_U, 'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4, 'Ub': Ub, 'Um': Um, 'g_base': g_base}
+    
+    def compute_compressed_equation(self, params=None, t=None) -> dict:
+        """UQFF Compressed: g = g_N  (1+Ht)  (1+M_sf)  (1-E_rad)  (1+f_TRZ) + a_EM"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        t = t if t is not None else getattr(self, 't', 3.156e13)
+        g_N = G * M / (r ** 2) if r > 0 else 0
+        H_0 = CONSTANTS.get('H_0', 2.268e-18)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        hubble = 1 + H_0 * t; trz = 1 + f_TRZ
+        g_compressed = g_N * hubble * trz
+        return {'g_compressed': g_compressed, 'g_N': g_N, 'hubble_factor': hubble, 'trz_factor': trz}
+    
+    def compute_resonance_equation(self, params=None, t=None) -> dict:
+        """UQFF Resonance: R = Σ(a_i  cos(ω_i  t))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        omega_grav = 2 * np.pi / 3.156e13
+        omega_mag = 2 * np.pi / 3.156e11
+        R_grav = CONSTANTS.get('G', 6.6743e-11) * 1e30 / 1e20 * np.cos(omega_grav * t)
+        R_mag = 1e-5 * np.cos(omega_mag * t)
+        UA_factor = 1 + CONSTANTS.get('rho_vac_UA', 7.09e-36) / CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        R_total = R_grav + R_mag * UA_factor
+        return {'R_total': R_total, 'R_grav': R_grav, 'R_mag': R_mag, 'UA_factor': UA_factor}
+    
+    def compute_superconductive_equation(self, params=None, t=None) -> dict:
+        """UQFF Superconductive: [SCm](t) = [SCm]  e^(-κt)  (1 - cos(ωt))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        SCm_0 = CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        kappa = CONSTANTS.get('kappa', 0.0005) / 86400
+        omega = 2 * np.pi / 3.156e13
+        SCm_t = SCm_0 * np.exp(-kappa * t) * (1 - np.cos(omega * t))
+        return {'SCm_t': SCm_t, 'SCm_0': SCm_0, 'decay': np.exp(-kappa * t)}
+    
+    def compute_buoyant_equation(self, params=None) -> dict:
+        """UQFF Buoyant (F_U_Bi): F_Bi = β  (Ug - ρ_vac  G)"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        F_Bi = beta * (g_base - rho_vac * G)
+        return {'F_Bi': F_Bi, 'g_base': g_base, 'beta': beta, 'rho_vac': rho_vac}
+    
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+    def compute_triadic_equation(self, params=None, n_layers=26) -> dict:
+        """UQFF Triadic: g_26 = Σ(i=1 to 26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i]"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        k_values = [1.5, 1.2, 0.8, 0.5]
+        g_layers = []; total = 0
+        for i in range(1, n_layers + 1):
+            scale = 1 + 0.1 * (i - 13) / 13
+            Ug_i = sum(k * g_base * scale for k in k_values)
+            g_layers.append(Ug_i); total += Ug_i
+        return {'g_triadic': total, 'g_layers': g_layers, 'n_layers': n_layers}
+    
+    def compute_quadratic_equation(self, params=None) -> dict:
+        """UQFF Quadratic: Solves g + bg + c = 0 for unified field roots"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        a = 1; b = -G * M / (r ** 2) if r > 0 else 1e-10; c = CONSTANTS.get('Lambda', 1.1e-52) * r**2 / 3
+        disc = b**2 - 4*a*c
+        if disc >= 0:
+            g_plus = (-b + np.sqrt(disc)) / (2*a); g_minus = (-b - np.sqrt(disc)) / (2*a)
+        else:
+            g_plus = g_minus = -b / (2*a)
+        return {'g_plus': g_plus, 'g_minus': g_minus, 'discriminant': disc, 'a': a, 'b': b, 'c': c}
 class AetherVacuumEnergyModel:
     """
     Model for Universal Aether [UA] vacuum energy dynamics.
@@ -75541,6 +75775,103 @@ class AetherVacuumEnergyModel:
         return result.result, result.substituted
 
 
+
+    # 
+    # 8 UQFF MASTER EQUATIONS
+    # 
+    
+    def compute_UQFF_base(self, params=None) -> dict:
+        """UQFF Base: F_U = Σ(Ug_i + Ub_i) + Um + Ur + Ut + Ui + UA + SCm"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        Ug1 = 1.5 * g_base; Ug2 = 1.2 * g_base; Ug3 = 0.8 * g_base * np.sin(np.pi/4); Ug4 = 0.5 * g_base
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        Ub = beta * (g_base - rho_vac * G)
+        Um = CONSTANTS.get('mu_0', 4e-7) * 1e6 / (4 * np.pi * r**2) if r > 0 else 0
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub + Um
+        return {'F_U': F_U, 'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4, 'Ub': Ub, 'Um': Um, 'g_base': g_base}
+    
+    def compute_compressed_equation(self, params=None, t=None) -> dict:
+        """UQFF Compressed: g = g_N  (1+Ht)  (1+M_sf)  (1-E_rad)  (1+f_TRZ) + a_EM"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        t = t if t is not None else getattr(self, 't', 3.156e13)
+        g_N = G * M / (r ** 2) if r > 0 else 0
+        H_0 = CONSTANTS.get('H_0', 2.268e-18)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        hubble = 1 + H_0 * t; trz = 1 + f_TRZ
+        g_compressed = g_N * hubble * trz
+        return {'g_compressed': g_compressed, 'g_N': g_N, 'hubble_factor': hubble, 'trz_factor': trz}
+    
+    def compute_resonance_equation(self, params=None, t=None) -> dict:
+        """UQFF Resonance: R = Σ(a_i  cos(ω_i  t))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        omega_grav = 2 * np.pi / 3.156e13
+        omega_mag = 2 * np.pi / 3.156e11
+        R_grav = CONSTANTS.get('G', 6.6743e-11) * 1e30 / 1e20 * np.cos(omega_grav * t)
+        R_mag = 1e-5 * np.cos(omega_mag * t)
+        UA_factor = 1 + CONSTANTS.get('rho_vac_UA', 7.09e-36) / CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        R_total = R_grav + R_mag * UA_factor
+        return {'R_total': R_total, 'R_grav': R_grav, 'R_mag': R_mag, 'UA_factor': UA_factor}
+    
+    def compute_superconductive_equation(self, params=None, t=None) -> dict:
+        """UQFF Superconductive: [SCm](t) = [SCm]  e^(-κt)  (1 - cos(ωt))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        SCm_0 = CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        kappa = CONSTANTS.get('kappa', 0.0005) / 86400
+        omega = 2 * np.pi / 3.156e13
+        SCm_t = SCm_0 * np.exp(-kappa * t) * (1 - np.cos(omega * t))
+        return {'SCm_t': SCm_t, 'SCm_0': SCm_0, 'decay': np.exp(-kappa * t)}
+    
+    def compute_buoyant_equation(self, params=None) -> dict:
+        """UQFF Buoyant (F_U_Bi): F_Bi = β  (Ug - ρ_vac  G)"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        F_Bi = beta * (g_base - rho_vac * G)
+        return {'F_Bi': F_Bi, 'g_base': g_base, 'beta': beta, 'rho_vac': rho_vac}
+    
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+    def compute_triadic_equation(self, params=None, n_layers=26) -> dict:
+        """UQFF Triadic: g_26 = Σ(i=1 to 26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i]"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        k_values = [1.5, 1.2, 0.8, 0.5]
+        g_layers = []; total = 0
+        for i in range(1, n_layers + 1):
+            scale = 1 + 0.1 * (i - 13) / 13
+            Ug_i = sum(k * g_base * scale for k in k_values)
+            g_layers.append(Ug_i); total += Ug_i
+        return {'g_triadic': total, 'g_layers': g_layers, 'n_layers': n_layers}
+    
+    def compute_quadratic_equation(self, params=None) -> dict:
+        """UQFF Quadratic: Solves g + bg + c = 0 for unified field roots"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        a = 1; b = -G * M / (r ** 2) if r > 0 else 1e-10; c = CONSTANTS.get('Lambda', 1.1e-52) * r**2 / 3
+        disc = b**2 - 4*a*c
+        if disc >= 0:
+            g_plus = (-b + np.sqrt(disc)) / (2*a); g_minus = (-b - np.sqrt(disc)) / (2*a)
+        else:
+            g_plus = g_minus = -b / (2*a)
+        return {'g_plus': g_plus, 'g_minus': g_minus, 'discriminant': disc, 'a': a, 'b': b, 'c': c}
 class CosmicEggModel:
     """
     Model for 26D Cosmic Egg volume breathing dynamics.
@@ -75581,6 +75912,103 @@ class CosmicEggModel:
         return E_total, f"E_26D = V_total × E_vac_base = {E_total:.4e} J"
 
 
+
+    # 
+    # 8 UQFF MASTER EQUATIONS
+    # 
+    
+    def compute_UQFF_base(self, params=None) -> dict:
+        """UQFF Base: F_U = Σ(Ug_i + Ub_i) + Um + Ur + Ut + Ui + UA + SCm"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        Ug1 = 1.5 * g_base; Ug2 = 1.2 * g_base; Ug3 = 0.8 * g_base * np.sin(np.pi/4); Ug4 = 0.5 * g_base
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        Ub = beta * (g_base - rho_vac * G)
+        Um = CONSTANTS.get('mu_0', 4e-7) * 1e6 / (4 * np.pi * r**2) if r > 0 else 0
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub + Um
+        return {'F_U': F_U, 'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4, 'Ub': Ub, 'Um': Um, 'g_base': g_base}
+    
+    def compute_compressed_equation(self, params=None, t=None) -> dict:
+        """UQFF Compressed: g = g_N  (1+Ht)  (1+M_sf)  (1-E_rad)  (1+f_TRZ) + a_EM"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        t = t if t is not None else getattr(self, 't', 3.156e13)
+        g_N = G * M / (r ** 2) if r > 0 else 0
+        H_0 = CONSTANTS.get('H_0', 2.268e-18)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        hubble = 1 + H_0 * t; trz = 1 + f_TRZ
+        g_compressed = g_N * hubble * trz
+        return {'g_compressed': g_compressed, 'g_N': g_N, 'hubble_factor': hubble, 'trz_factor': trz}
+    
+    def compute_resonance_equation(self, params=None, t=None) -> dict:
+        """UQFF Resonance: R = Σ(a_i  cos(ω_i  t))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        omega_grav = 2 * np.pi / 3.156e13
+        omega_mag = 2 * np.pi / 3.156e11
+        R_grav = CONSTANTS.get('G', 6.6743e-11) * 1e30 / 1e20 * np.cos(omega_grav * t)
+        R_mag = 1e-5 * np.cos(omega_mag * t)
+        UA_factor = 1 + CONSTANTS.get('rho_vac_UA', 7.09e-36) / CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        R_total = R_grav + R_mag * UA_factor
+        return {'R_total': R_total, 'R_grav': R_grav, 'R_mag': R_mag, 'UA_factor': UA_factor}
+    
+    def compute_superconductive_equation(self, params=None, t=None) -> dict:
+        """UQFF Superconductive: [SCm](t) = [SCm]  e^(-κt)  (1 - cos(ωt))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        SCm_0 = CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        kappa = CONSTANTS.get('kappa', 0.0005) / 86400
+        omega = 2 * np.pi / 3.156e13
+        SCm_t = SCm_0 * np.exp(-kappa * t) * (1 - np.cos(omega * t))
+        return {'SCm_t': SCm_t, 'SCm_0': SCm_0, 'decay': np.exp(-kappa * t)}
+    
+    def compute_buoyant_equation(self, params=None) -> dict:
+        """UQFF Buoyant (F_U_Bi): F_Bi = β  (Ug - ρ_vac  G)"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        F_Bi = beta * (g_base - rho_vac * G)
+        return {'F_Bi': F_Bi, 'g_base': g_base, 'beta': beta, 'rho_vac': rho_vac}
+    
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+    def compute_triadic_equation(self, params=None, n_layers=26) -> dict:
+        """UQFF Triadic: g_26 = Σ(i=1 to 26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i]"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        k_values = [1.5, 1.2, 0.8, 0.5]
+        g_layers = []; total = 0
+        for i in range(1, n_layers + 1):
+            scale = 1 + 0.1 * (i - 13) / 13
+            Ug_i = sum(k * g_base * scale for k in k_values)
+            g_layers.append(Ug_i); total += Ug_i
+        return {'g_triadic': total, 'g_layers': g_layers, 'n_layers': n_layers}
+    
+    def compute_quadratic_equation(self, params=None) -> dict:
+        """UQFF Quadratic: Solves g + bg + c = 0 for unified field roots"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        a = 1; b = -G * M / (r ** 2) if r > 0 else 1e-10; c = CONSTANTS.get('Lambda', 1.1e-52) * r**2 / 3
+        disc = b**2 - 4*a*c
+        if disc >= 0:
+            g_plus = (-b + np.sqrt(disc)) / (2*a); g_minus = (-b - np.sqrt(disc)) / (2*a)
+        else:
+            g_plus = g_minus = -b / (2*a)
+        return {'g_plus': g_plus, 'g_minus': g_minus, 'discriminant': disc, 'a': a, 'b': b, 'c': c}
 class SgrAStarGravityModel:
     """
     Model for Sagittarius A* supermassive black hole gravity.
@@ -75611,6 +76039,103 @@ class SgrAStarGravityModel:
         return g_BH, f"g_BH = g_N × (1 - r_s/r) = {g_BH:.4e} m/s²"
 
 
+
+    # 
+    # 8 UQFF MASTER EQUATIONS
+    # 
+    
+    def compute_UQFF_base(self, params=None) -> dict:
+        """UQFF Base: F_U = Σ(Ug_i + Ub_i) + Um + Ur + Ut + Ui + UA + SCm"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        Ug1 = 1.5 * g_base; Ug2 = 1.2 * g_base; Ug3 = 0.8 * g_base * np.sin(np.pi/4); Ug4 = 0.5 * g_base
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        Ub = beta * (g_base - rho_vac * G)
+        Um = CONSTANTS.get('mu_0', 4e-7) * 1e6 / (4 * np.pi * r**2) if r > 0 else 0
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub + Um
+        return {'F_U': F_U, 'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4, 'Ub': Ub, 'Um': Um, 'g_base': g_base}
+    
+    def compute_compressed_equation(self, params=None, t=None) -> dict:
+        """UQFF Compressed: g = g_N  (1+Ht)  (1+M_sf)  (1-E_rad)  (1+f_TRZ) + a_EM"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        t = t if t is not None else getattr(self, 't', 3.156e13)
+        g_N = G * M / (r ** 2) if r > 0 else 0
+        H_0 = CONSTANTS.get('H_0', 2.268e-18)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        hubble = 1 + H_0 * t; trz = 1 + f_TRZ
+        g_compressed = g_N * hubble * trz
+        return {'g_compressed': g_compressed, 'g_N': g_N, 'hubble_factor': hubble, 'trz_factor': trz}
+    
+    def compute_resonance_equation(self, params=None, t=None) -> dict:
+        """UQFF Resonance: R = Σ(a_i  cos(ω_i  t))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        omega_grav = 2 * np.pi / 3.156e13
+        omega_mag = 2 * np.pi / 3.156e11
+        R_grav = CONSTANTS.get('G', 6.6743e-11) * 1e30 / 1e20 * np.cos(omega_grav * t)
+        R_mag = 1e-5 * np.cos(omega_mag * t)
+        UA_factor = 1 + CONSTANTS.get('rho_vac_UA', 7.09e-36) / CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        R_total = R_grav + R_mag * UA_factor
+        return {'R_total': R_total, 'R_grav': R_grav, 'R_mag': R_mag, 'UA_factor': UA_factor}
+    
+    def compute_superconductive_equation(self, params=None, t=None) -> dict:
+        """UQFF Superconductive: [SCm](t) = [SCm]  e^(-κt)  (1 - cos(ωt))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        SCm_0 = CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        kappa = CONSTANTS.get('kappa', 0.0005) / 86400
+        omega = 2 * np.pi / 3.156e13
+        SCm_t = SCm_0 * np.exp(-kappa * t) * (1 - np.cos(omega * t))
+        return {'SCm_t': SCm_t, 'SCm_0': SCm_0, 'decay': np.exp(-kappa * t)}
+    
+    def compute_buoyant_equation(self, params=None) -> dict:
+        """UQFF Buoyant (F_U_Bi): F_Bi = β  (Ug - ρ_vac  G)"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        F_Bi = beta * (g_base - rho_vac * G)
+        return {'F_Bi': F_Bi, 'g_base': g_base, 'beta': beta, 'rho_vac': rho_vac}
+    
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+    def compute_triadic_equation(self, params=None, n_layers=26) -> dict:
+        """UQFF Triadic: g_26 = Σ(i=1 to 26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i]"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        k_values = [1.5, 1.2, 0.8, 0.5]
+        g_layers = []; total = 0
+        for i in range(1, n_layers + 1):
+            scale = 1 + 0.1 * (i - 13) / 13
+            Ug_i = sum(k * g_base * scale for k in k_values)
+            g_layers.append(Ug_i); total += Ug_i
+        return {'g_triadic': total, 'g_layers': g_layers, 'n_layers': n_layers}
+    
+    def compute_quadratic_equation(self, params=None) -> dict:
+        """UQFF Quadratic: Solves g + bg + c = 0 for unified field roots"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        a = 1; b = -G * M / (r ** 2) if r > 0 else 1e-10; c = CONSTANTS.get('Lambda', 1.1e-52) * r**2 / 3
+        disc = b**2 - 4*a*c
+        if disc >= 0:
+            g_plus = (-b + np.sqrt(disc)) / (2*a); g_minus = (-b - np.sqrt(disc)) / (2*a)
+        else:
+            g_plus = g_minus = -b / (2*a)
+        return {'g_plus': g_plus, 'g_minus': g_minus, 'discriminant': disc, 'a': a, 'b': b, 'c': c}
 class RetrocausalModel:
     """
     Model for retrocausal physics and advanced wave solutions.
@@ -75637,6 +76162,103 @@ class RetrocausalModel:
         return self.calc.compute_retrocausal_evolution(self.t_n, {})
 
 
+
+    # 
+    # 8 UQFF MASTER EQUATIONS
+    # 
+    
+    def compute_UQFF_base(self, params=None) -> dict:
+        """UQFF Base: F_U = Σ(Ug_i + Ub_i) + Um + Ur + Ut + Ui + UA + SCm"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        Ug1 = 1.5 * g_base; Ug2 = 1.2 * g_base; Ug3 = 0.8 * g_base * np.sin(np.pi/4); Ug4 = 0.5 * g_base
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        Ub = beta * (g_base - rho_vac * G)
+        Um = CONSTANTS.get('mu_0', 4e-7) * 1e6 / (4 * np.pi * r**2) if r > 0 else 0
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub + Um
+        return {'F_U': F_U, 'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4, 'Ub': Ub, 'Um': Um, 'g_base': g_base}
+    
+    def compute_compressed_equation(self, params=None, t=None) -> dict:
+        """UQFF Compressed: g = g_N  (1+Ht)  (1+M_sf)  (1-E_rad)  (1+f_TRZ) + a_EM"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        t = t if t is not None else getattr(self, 't', 3.156e13)
+        g_N = G * M / (r ** 2) if r > 0 else 0
+        H_0 = CONSTANTS.get('H_0', 2.268e-18)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        hubble = 1 + H_0 * t; trz = 1 + f_TRZ
+        g_compressed = g_N * hubble * trz
+        return {'g_compressed': g_compressed, 'g_N': g_N, 'hubble_factor': hubble, 'trz_factor': trz}
+    
+    def compute_resonance_equation(self, params=None, t=None) -> dict:
+        """UQFF Resonance: R = Σ(a_i  cos(ω_i  t))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        omega_grav = 2 * np.pi / 3.156e13
+        omega_mag = 2 * np.pi / 3.156e11
+        R_grav = CONSTANTS.get('G', 6.6743e-11) * 1e30 / 1e20 * np.cos(omega_grav * t)
+        R_mag = 1e-5 * np.cos(omega_mag * t)
+        UA_factor = 1 + CONSTANTS.get('rho_vac_UA', 7.09e-36) / CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        R_total = R_grav + R_mag * UA_factor
+        return {'R_total': R_total, 'R_grav': R_grav, 'R_mag': R_mag, 'UA_factor': UA_factor}
+    
+    def compute_superconductive_equation(self, params=None, t=None) -> dict:
+        """UQFF Superconductive: [SCm](t) = [SCm]  e^(-κt)  (1 - cos(ωt))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        SCm_0 = CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        kappa = CONSTANTS.get('kappa', 0.0005) / 86400
+        omega = 2 * np.pi / 3.156e13
+        SCm_t = SCm_0 * np.exp(-kappa * t) * (1 - np.cos(omega * t))
+        return {'SCm_t': SCm_t, 'SCm_0': SCm_0, 'decay': np.exp(-kappa * t)}
+    
+    def compute_buoyant_equation(self, params=None) -> dict:
+        """UQFF Buoyant (F_U_Bi): F_Bi = β  (Ug - ρ_vac  G)"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        F_Bi = beta * (g_base - rho_vac * G)
+        return {'F_Bi': F_Bi, 'g_base': g_base, 'beta': beta, 'rho_vac': rho_vac}
+    
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+    def compute_triadic_equation(self, params=None, n_layers=26) -> dict:
+        """UQFF Triadic: g_26 = Σ(i=1 to 26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i]"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        k_values = [1.5, 1.2, 0.8, 0.5]
+        g_layers = []; total = 0
+        for i in range(1, n_layers + 1):
+            scale = 1 + 0.1 * (i - 13) / 13
+            Ug_i = sum(k * g_base * scale for k in k_values)
+            g_layers.append(Ug_i); total += Ug_i
+        return {'g_triadic': total, 'g_layers': g_layers, 'n_layers': n_layers}
+    
+    def compute_quadratic_equation(self, params=None) -> dict:
+        """UQFF Quadratic: Solves g + bg + c = 0 for unified field roots"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        a = 1; b = -G * M / (r ** 2) if r > 0 else 1e-10; c = CONSTANTS.get('Lambda', 1.1e-52) * r**2 / 3
+        disc = b**2 - 4*a*c
+        if disc >= 0:
+            g_plus = (-b + np.sqrt(disc)) / (2*a); g_minus = (-b - np.sqrt(disc)) / (2*a)
+        else:
+            g_plus = g_minus = -b / (2*a)
+        return {'g_plus': g_plus, 'g_minus': g_minus, 'discriminant': disc, 'a': a, 'b': b, 'c': c}
 class TRZModel:
     """
     Model for Time-Reversal Zone physics.
@@ -75659,6 +76281,103 @@ class TRZModel:
         return self.t_n < 0
 
 
+
+    # 
+    # 8 UQFF MASTER EQUATIONS
+    # 
+    
+    def compute_UQFF_base(self, params=None) -> dict:
+        """UQFF Base: F_U = Σ(Ug_i + Ub_i) + Um + Ur + Ut + Ui + UA + SCm"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        Ug1 = 1.5 * g_base; Ug2 = 1.2 * g_base; Ug3 = 0.8 * g_base * np.sin(np.pi/4); Ug4 = 0.5 * g_base
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        Ub = beta * (g_base - rho_vac * G)
+        Um = CONSTANTS.get('mu_0', 4e-7) * 1e6 / (4 * np.pi * r**2) if r > 0 else 0
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub + Um
+        return {'F_U': F_U, 'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4, 'Ub': Ub, 'Um': Um, 'g_base': g_base}
+    
+    def compute_compressed_equation(self, params=None, t=None) -> dict:
+        """UQFF Compressed: g = g_N  (1+Ht)  (1+M_sf)  (1-E_rad)  (1+f_TRZ) + a_EM"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        t = t if t is not None else getattr(self, 't', 3.156e13)
+        g_N = G * M / (r ** 2) if r > 0 else 0
+        H_0 = CONSTANTS.get('H_0', 2.268e-18)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        hubble = 1 + H_0 * t; trz = 1 + f_TRZ
+        g_compressed = g_N * hubble * trz
+        return {'g_compressed': g_compressed, 'g_N': g_N, 'hubble_factor': hubble, 'trz_factor': trz}
+    
+    def compute_resonance_equation(self, params=None, t=None) -> dict:
+        """UQFF Resonance: R = Σ(a_i  cos(ω_i  t))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        omega_grav = 2 * np.pi / 3.156e13
+        omega_mag = 2 * np.pi / 3.156e11
+        R_grav = CONSTANTS.get('G', 6.6743e-11) * 1e30 / 1e20 * np.cos(omega_grav * t)
+        R_mag = 1e-5 * np.cos(omega_mag * t)
+        UA_factor = 1 + CONSTANTS.get('rho_vac_UA', 7.09e-36) / CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        R_total = R_grav + R_mag * UA_factor
+        return {'R_total': R_total, 'R_grav': R_grav, 'R_mag': R_mag, 'UA_factor': UA_factor}
+    
+    def compute_superconductive_equation(self, params=None, t=None) -> dict:
+        """UQFF Superconductive: [SCm](t) = [SCm]  e^(-κt)  (1 - cos(ωt))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        SCm_0 = CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        kappa = CONSTANTS.get('kappa', 0.0005) / 86400
+        omega = 2 * np.pi / 3.156e13
+        SCm_t = SCm_0 * np.exp(-kappa * t) * (1 - np.cos(omega * t))
+        return {'SCm_t': SCm_t, 'SCm_0': SCm_0, 'decay': np.exp(-kappa * t)}
+    
+    def compute_buoyant_equation(self, params=None) -> dict:
+        """UQFF Buoyant (F_U_Bi): F_Bi = β  (Ug - ρ_vac  G)"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        F_Bi = beta * (g_base - rho_vac * G)
+        return {'F_Bi': F_Bi, 'g_base': g_base, 'beta': beta, 'rho_vac': rho_vac}
+    
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+    def compute_triadic_equation(self, params=None, n_layers=26) -> dict:
+        """UQFF Triadic: g_26 = Σ(i=1 to 26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i]"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        k_values = [1.5, 1.2, 0.8, 0.5]
+        g_layers = []; total = 0
+        for i in range(1, n_layers + 1):
+            scale = 1 + 0.1 * (i - 13) / 13
+            Ug_i = sum(k * g_base * scale for k in k_values)
+            g_layers.append(Ug_i); total += Ug_i
+        return {'g_triadic': total, 'g_layers': g_layers, 'n_layers': n_layers}
+    
+    def compute_quadratic_equation(self, params=None) -> dict:
+        """UQFF Quadratic: Solves g + bg + c = 0 for unified field roots"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        a = 1; b = -G * M / (r ** 2) if r > 0 else 1e-10; c = CONSTANTS.get('Lambda', 1.1e-52) * r**2 / 3
+        disc = b**2 - 4*a*c
+        if disc >= 0:
+            g_plus = (-b + np.sqrt(disc)) / (2*a); g_minus = (-b - np.sqrt(disc)) / (2*a)
+        else:
+            g_plus = g_minus = -b / (2*a)
+        return {'g_plus': g_plus, 'g_minus': g_minus, 'discriminant': disc, 'a': a, 'b': b, 'c': c}
 class VoidOscillationModel:
     """
     Model for cosmic void oscillations.
@@ -75681,6 +76400,103 @@ class VoidOscillationModel:
         return dV_dt, f"dV/dt = {dV_dt:.4e} m³/s"
 
 
+
+    # 
+    # 8 UQFF MASTER EQUATIONS
+    # 
+    
+    def compute_UQFF_base(self, params=None) -> dict:
+        """UQFF Base: F_U = Σ(Ug_i + Ub_i) + Um + Ur + Ut + Ui + UA + SCm"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        Ug1 = 1.5 * g_base; Ug2 = 1.2 * g_base; Ug3 = 0.8 * g_base * np.sin(np.pi/4); Ug4 = 0.5 * g_base
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        Ub = beta * (g_base - rho_vac * G)
+        Um = CONSTANTS.get('mu_0', 4e-7) * 1e6 / (4 * np.pi * r**2) if r > 0 else 0
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub + Um
+        return {'F_U': F_U, 'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4, 'Ub': Ub, 'Um': Um, 'g_base': g_base}
+    
+    def compute_compressed_equation(self, params=None, t=None) -> dict:
+        """UQFF Compressed: g = g_N  (1+Ht)  (1+M_sf)  (1-E_rad)  (1+f_TRZ) + a_EM"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        t = t if t is not None else getattr(self, 't', 3.156e13)
+        g_N = G * M / (r ** 2) if r > 0 else 0
+        H_0 = CONSTANTS.get('H_0', 2.268e-18)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        hubble = 1 + H_0 * t; trz = 1 + f_TRZ
+        g_compressed = g_N * hubble * trz
+        return {'g_compressed': g_compressed, 'g_N': g_N, 'hubble_factor': hubble, 'trz_factor': trz}
+    
+    def compute_resonance_equation(self, params=None, t=None) -> dict:
+        """UQFF Resonance: R = Σ(a_i  cos(ω_i  t))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        omega_grav = 2 * np.pi / 3.156e13
+        omega_mag = 2 * np.pi / 3.156e11
+        R_grav = CONSTANTS.get('G', 6.6743e-11) * 1e30 / 1e20 * np.cos(omega_grav * t)
+        R_mag = 1e-5 * np.cos(omega_mag * t)
+        UA_factor = 1 + CONSTANTS.get('rho_vac_UA', 7.09e-36) / CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        R_total = R_grav + R_mag * UA_factor
+        return {'R_total': R_total, 'R_grav': R_grav, 'R_mag': R_mag, 'UA_factor': UA_factor}
+    
+    def compute_superconductive_equation(self, params=None, t=None) -> dict:
+        """UQFF Superconductive: [SCm](t) = [SCm]  e^(-κt)  (1 - cos(ωt))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        SCm_0 = CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        kappa = CONSTANTS.get('kappa', 0.0005) / 86400
+        omega = 2 * np.pi / 3.156e13
+        SCm_t = SCm_0 * np.exp(-kappa * t) * (1 - np.cos(omega * t))
+        return {'SCm_t': SCm_t, 'SCm_0': SCm_0, 'decay': np.exp(-kappa * t)}
+    
+    def compute_buoyant_equation(self, params=None) -> dict:
+        """UQFF Buoyant (F_U_Bi): F_Bi = β  (Ug - ρ_vac  G)"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        F_Bi = beta * (g_base - rho_vac * G)
+        return {'F_Bi': F_Bi, 'g_base': g_base, 'beta': beta, 'rho_vac': rho_vac}
+    
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+    def compute_triadic_equation(self, params=None, n_layers=26) -> dict:
+        """UQFF Triadic: g_26 = Σ(i=1 to 26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i]"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        k_values = [1.5, 1.2, 0.8, 0.5]
+        g_layers = []; total = 0
+        for i in range(1, n_layers + 1):
+            scale = 1 + 0.1 * (i - 13) / 13
+            Ug_i = sum(k * g_base * scale for k in k_values)
+            g_layers.append(Ug_i); total += Ug_i
+        return {'g_triadic': total, 'g_layers': g_layers, 'n_layers': n_layers}
+    
+    def compute_quadratic_equation(self, params=None) -> dict:
+        """UQFF Quadratic: Solves g + bg + c = 0 for unified field roots"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        a = 1; b = -G * M / (r ** 2) if r > 0 else 1e-10; c = CONSTANTS.get('Lambda', 1.1e-52) * r**2 / 3
+        disc = b**2 - 4*a*c
+        if disc >= 0:
+            g_plus = (-b + np.sqrt(disc)) / (2*a); g_minus = (-b - np.sqrt(disc)) / (2*a)
+        else:
+            g_plus = g_minus = -b / (2*a)
+        return {'g_plus': g_plus, 'g_minus': g_minus, 'discriminant': disc, 'a': a, 'b': b, 'c': c}
 class TimeVaryingVacuumModel:
     """
     Model for time-varying vacuum energy dynamics.
@@ -75716,6 +76532,103 @@ class TimeVaryingVacuumModel:
         
         E_total = floyd_rho * egg['V_total'] + heis['E_vac']
         return E_total, f"E_combined = ρ_floyd × V_26D + E_heisenberg = {E_total:.4e} J"
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    # 8 UQFF MASTER EQUATIONS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_UQFF_base(self, params=None) -> dict:
+        """UQFF Base: F_U = Σ(Ug_i + Ub_i) + Um + Ur + Ut + Ui + UA + SCm"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        Ug1 = 1.5 * g_base; Ug2 = 1.2 * g_base; Ug3 = 0.8 * g_base * np.sin(np.pi/4); Ug4 = 0.5 * g_base
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        Ub = beta * (g_base - rho_vac * G)
+        Um = CONSTANTS.get('mu_0', 4e-7) * 1e6 / (4 * np.pi * r**2) if r > 0 else 0
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub + Um
+        return {'F_U': F_U, 'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4, 'Ub': Ub, 'Um': Um, 'g_base': g_base}
+    
+    def compute_compressed_equation(self, params=None, t=None) -> dict:
+        """UQFF Compressed: g = g_N × (1+H·t) × (1+M_sf) × (1-E_rad) × (1+f_TRZ) + a_EM"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        t = t if t is not None else getattr(self, 't', 3.156e13)
+        g_N = G * M / (r ** 2) if r > 0 else 0
+        H_0 = CONSTANTS.get('H_0', 2.268e-18)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        hubble = 1 + H_0 * t; trz = 1 + f_TRZ
+        g_compressed = g_N * hubble * trz
+        return {'g_compressed': g_compressed, 'g_N': g_N, 'hubble_factor': hubble, 'trz_factor': trz}
+    
+    def compute_resonance_equation(self, params=None, t=None) -> dict:
+        """UQFF Resonance: R = Σ(a_i × cos(ω_i × t))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        omega_grav = 2 * np.pi / 3.156e13
+        omega_mag = 2 * np.pi / 3.156e11
+        R_grav = CONSTANTS.get('G', 6.6743e-11) * 1e30 / 1e20 * np.cos(omega_grav * t)
+        R_mag = 1e-5 * np.cos(omega_mag * t)
+        UA_factor = 1 + CONSTANTS.get('rho_vac_UA', 7.09e-36) / CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        R_total = R_grav + R_mag * UA_factor
+        return {'R_total': R_total, 'R_grav': R_grav, 'R_mag': R_mag, 'UA_factor': UA_factor}
+    
+    def compute_superconductive_equation(self, params=None, t=None) -> dict:
+        """UQFF Superconductive: [SCm](t) = [SCm]₀ × e^(-κt) × (1 - cos(ωt))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        SCm_0 = CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        kappa = CONSTANTS.get('kappa', 0.0005) / 86400
+        omega = 2 * np.pi / 3.156e13
+        SCm_t = SCm_0 * np.exp(-kappa * t) * (1 - np.cos(omega * t))
+        return {'SCm_t': SCm_t, 'SCm_0': SCm_0, 'decay': np.exp(-kappa * t)}
+    
+    def compute_buoyant_equation(self, params=None) -> dict:
+        """UQFF Buoyant (F_U_Bi): F_Bi = β × (Ug - ρ_vac × G)"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        F_Bi = beta * (g_base - rho_vac * G)
+        return {'F_Bi': F_Bi, 'g_base': g_base, 'beta': beta, 'rho_vac': rho_vac}
+    
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+    def compute_triadic_equation(self, params=None, n_layers=26) -> dict:
+        """UQFF Triadic: g_26 = Σ(i=1 to 26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i]"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        k_values = [1.5, 1.2, 0.8, 0.5]
+        g_layers = []; total = 0
+        for i in range(1, n_layers + 1):
+            scale = 1 + 0.1 * (i - 13) / 13
+            Ug_i = sum(k * g_base * scale for k in k_values)
+            g_layers.append(Ug_i); total += Ug_i
+        return {'g_triadic': total, 'g_layers': g_layers, 'n_layers': n_layers}
+    
+    def compute_quadratic_equation(self, params=None) -> dict:
+        """UQFF Quadratic: Solves g² + b·g + c = 0 for unified field roots"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        a = 1; b = -G * M / (r ** 2) if r > 0 else 1e-10; c = CONSTANTS.get('Lambda', 1.1e-52) * r**2 / 3
+        disc = b**2 - 4*a*c
+        if disc >= 0:
+            g_plus = (-b + np.sqrt(disc)) / (2*a); g_minus = (-b - np.sqrt(disc)) / (2*a)
+        else:
+            g_plus = g_minus = -b / (2*a)
+        return {'g_plus': g_plus, 'g_minus': g_minus, 'discriminant': disc, 'a': a, 'b': b, 'c': c}
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -76068,6 +76981,103 @@ Physical interpretation:
 # SgrAStarCalculator, Phase2Calculator, ConsciousnessCloud, StarMagic* classes
 # ═══════════════════════════════════════════════════════════════════════════════
 
+
+    # 
+    # 8 UQFF MASTER EQUATIONS
+    # 
+    
+    def compute_UQFF_base(self, params=None) -> dict:
+        """UQFF Base: F_U = Σ(Ug_i + Ub_i) + Um + Ur + Ut + Ui + UA + SCm"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        Ug1 = 1.5 * g_base; Ug2 = 1.2 * g_base; Ug3 = 0.8 * g_base * np.sin(np.pi/4); Ug4 = 0.5 * g_base
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        Ub = beta * (g_base - rho_vac * G)
+        Um = CONSTANTS.get('mu_0', 4e-7) * 1e6 / (4 * np.pi * r**2) if r > 0 else 0
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub + Um
+        return {'F_U': F_U, 'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4, 'Ub': Ub, 'Um': Um, 'g_base': g_base}
+    
+    def compute_compressed_equation(self, params=None, t=None) -> dict:
+        """UQFF Compressed: g = g_N  (1+Ht)  (1+M_sf)  (1-E_rad)  (1+f_TRZ) + a_EM"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        t = t if t is not None else getattr(self, 't', 3.156e13)
+        g_N = G * M / (r ** 2) if r > 0 else 0
+        H_0 = CONSTANTS.get('H_0', 2.268e-18)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        hubble = 1 + H_0 * t; trz = 1 + f_TRZ
+        g_compressed = g_N * hubble * trz
+        return {'g_compressed': g_compressed, 'g_N': g_N, 'hubble_factor': hubble, 'trz_factor': trz}
+    
+    def compute_resonance_equation(self, params=None, t=None) -> dict:
+        """UQFF Resonance: R = Σ(a_i  cos(ω_i  t))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        omega_grav = 2 * np.pi / 3.156e13
+        omega_mag = 2 * np.pi / 3.156e11
+        R_grav = CONSTANTS.get('G', 6.6743e-11) * 1e30 / 1e20 * np.cos(omega_grav * t)
+        R_mag = 1e-5 * np.cos(omega_mag * t)
+        UA_factor = 1 + CONSTANTS.get('rho_vac_UA', 7.09e-36) / CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        R_total = R_grav + R_mag * UA_factor
+        return {'R_total': R_total, 'R_grav': R_grav, 'R_mag': R_mag, 'UA_factor': UA_factor}
+    
+    def compute_superconductive_equation(self, params=None, t=None) -> dict:
+        """UQFF Superconductive: [SCm](t) = [SCm]  e^(-κt)  (1 - cos(ωt))"""
+        t = t if t is not None else getattr(self, 't', 1e8)
+        SCm_0 = CONSTANTS.get('rho_vac_SCm', 7.09e-37)
+        kappa = CONSTANTS.get('kappa', 0.0005) / 86400
+        omega = 2 * np.pi / 3.156e13
+        SCm_t = SCm_0 * np.exp(-kappa * t) * (1 - np.cos(omega * t))
+        return {'SCm_t': SCm_t, 'SCm_0': SCm_0, 'decay': np.exp(-kappa * t)}
+    
+    def compute_buoyant_equation(self, params=None) -> dict:
+        """UQFF Buoyant (F_U_Bi): F_Bi = β  (Ug - ρ_vac  G)"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        beta = CONSTANTS.get('beta_i', 0.6)
+        rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
+        F_Bi = beta * (g_base - rho_vac * G)
+        return {'F_Bi': F_Bi, 'g_base': g_base, 'beta': beta, 'rho_vac': rho_vac}
+    
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+    def compute_triadic_equation(self, params=None, n_layers=26) -> dict:
+        """UQFF Triadic: g_26 = Σ(i=1 to 26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i]"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        g_base = G * M / (r ** 2) if r > 0 else 0
+        k_values = [1.5, 1.2, 0.8, 0.5]
+        g_layers = []; total = 0
+        for i in range(1, n_layers + 1):
+            scale = 1 + 0.1 * (i - 13) / 13
+            Ug_i = sum(k * g_base * scale for k in k_values)
+            g_layers.append(Ug_i); total += Ug_i
+        return {'g_triadic': total, 'g_layers': g_layers, 'n_layers': n_layers}
+    
+    def compute_quadratic_equation(self, params=None) -> dict:
+        """UQFF Quadratic: Solves g + bg + c = 0 for unified field roots"""
+        G = CONSTANTS.get('G', 6.6743e-11)
+        M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
+        r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
+        a = 1; b = -G * M / (r ** 2) if r > 0 else 1e-10; c = CONSTANTS.get('Lambda', 1.1e-52) * r**2 / 3
+        disc = b**2 - 4*a*c
+        if disc >= 0:
+            g_plus = (-b + np.sqrt(disc)) / (2*a); g_minus = (-b - np.sqrt(disc)) / (2*a)
+        else:
+            g_plus = g_minus = -b / (2*a)
+        return {'g_plus': g_plus, 'g_minus': g_minus, 'discriminant': disc, 'a': a, 'b': b, 'c': c}
 class TriadicGravityCalculator:
     """
     26-layer gravitational scaling calculator.
