@@ -3745,6 +3745,63 @@ CONSTANTS = {
     'kappa_time': 0.1,                  # κ: Negative time operator decay parameter
     't_n_threshold': 0.0,               # Threshold for time-reversal activation (t_n < 0)
     'f_TRZ': 0.1,                       # f_TRZ: Time-reversal zone factor (10%)
+    
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # TRIADIC UQFF / DPM / GALACTIC CONSTANTS (From conversation analysis)
+    # ═══════════════════════════════════════════════════════════════════════════════
+    #
+    # a_DPM - DPM Foundation Term:
+    # ─────────────────────────────────────────────────────────────────────────────
+    #   The DPM (Dipole Molecular) acceleration is the foundation term in the
+    #   UQFF Resonant equation system. It represents the base acceleration from
+    #   vacuum polarization and [UA]/[SCm] reactions.
+    #
+    #   In UQFF_Resonant: g = a_DPM + a_THz + a_vac_diff + a_SuperFreq + ...
+    #
+    'a_DPM': 1.34e15,                   # DPM foundation acceleration (m/s²)
+    
+    # k_galactic - Galactic Coupling Constant:
+    # ─────────────────────────────────────────────────────────────────────────────
+    #   Coupling constant for galactic-scale UQFF interactions. Used in:
+    #   - Galaxy rotation curve corrections
+    #   - Dark matter halo modeling
+    #   - Phase7_Consolidated.py galactic calculations
+    #
+    #   From: source82.cpp, Phase7_Consolidated.py
+    #
+    'k_galactic': 2.59e-9,              # Galactic coupling constant (dimensionless)
+    
+    # omega_shell - Shell Resonance Frequency:
+    # ─────────────────────────────────────────────────────────────────────────────
+    #   Angular frequency for spherical shell resonance in nebular/stellar systems.
+    #   Related to 26-layer polynomial structure where each shell has:
+    #
+    #   ω_shell_j = 2π / (T_shell / j)
+    #
+    #   where T_shell = 5×10⁵ years = 1.578×10¹³ s (typical nebular timescale)
+    #
+    'omega_shell': 3.98e-13,            # Base shell frequency (rad/s) = 2π/(1.578e13)
+    'T_shell': 1.578e13,                # Shell resonance period (s) = 500,000 years
+    
+    # aaether_res - Dominant Aether Resonance:
+    # ─────────────────────────────────────────────────────────────────────────────
+    #   The dominant resonance term in UQFF_Resonant for magnetar/high-gravity systems.
+    #   Represents maximum aether ([UA]) resonance acceleration.
+    #
+    'aaether_res': 1.47e20,             # Aether resonance acceleration (m/s²) - magnetar scale
+    
+    # Pillars of Creation (M16) Constants:
+    # ─────────────────────────────────────────────────────────────────────────────
+    #   Star-forming region constants for triadic UQFF validation.
+    #   From: JWST/Hubble 2025 data, ~6,500 ly distance
+    #
+    'M16_r': 4.73e16,                   # Pillar extent (m) ~ 5 ly
+    'M16_SFR': 0.2,                     # Star formation rate (M_sun/yr)
+    'M16_age_Myr': 1.5,                 # Age (million years)
+    'M16_v_radial': -5e3,               # Blueshift outflow velocity (m/s) = -5 km/s
+    'M16_B': 1e-5,                      # Magnetic field (T)
+    'M16_rho_gas': 1e-20,               # Gas density (kg/m³)
+    'M16_z': 0.0022,                    # Redshift
 }
 
 
