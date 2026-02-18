@@ -1,15 +1,15 @@
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════════════════
 // SOURCE2_WIDGETS_ENHANCED.H - Enhanced Widgets for Source2 GUI
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════════════════
 // 
 // Contains:
 //   1. SessionLogWidget - Real-time log viewer (Tab 9)
-//   2. PythonBridge - Bidirectional C++ â†” Python communication
+//   2. PythonBridge - Bidirectional C++ ↔ Python communication
 //   3. ComparisonDashboard - Split-view results comparison
 //   4. SessionPersistence - Save/restore session state
 //
-// Â© 2025-2026 Daniel T. Murphy - Star-Magic UQFF Framework
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// © 2025-2026 Daniel T. Murphy - Star-Magic UQFF Framework
+// ═══════════════════════════════════════════════════════════════════════════════
 
 #ifndef SOURCE2_WIDGETS_ENHANCED_H
 #define SOURCE2_WIDGETS_ENHANCED_H
@@ -40,9 +40,9 @@
 
 #include "source2_event_bus.h"
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════════════════
 // 1. SESSION LOG WIDGET - Real-Time Log Viewer (Tab 9)
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════════════════
 
 class SessionLogWidget : public QWidget {
     Q_OBJECT
@@ -62,19 +62,19 @@ private:
         mainLayout->setSpacing(5);
         mainLayout->setContentsMargins(10, 10, 10, 10);
         
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        // ═══════════════════════════════════════════════════════════════════════
         // HEADER
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        // ═══════════════════════════════════════════════════════════════════════
         
         QLabel* header = new QLabel(
-            "<h2 style='color: #4CAF50;'>ðŸ“‹ Session Log Viewer</h2>"
+            "<h2 style='color: #4CAF50;'>📋 Session Log Viewer</h2>"
             "<p style='color: #888;'>Real-time logging from all Source2 components</p>"
         );
         mainLayout->addWidget(header);
         
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        // ═══════════════════════════════════════════════════════════════════════
         // FILTER CONTROLS
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        // ═══════════════════════════════════════════════════════════════════════
         
         QGroupBox* filterGroup = new QGroupBox("Filters");
         QHBoxLayout* filterLayout = new QHBoxLayout(filterGroup);
@@ -123,9 +123,9 @@ private:
         filterLayout->addStretch();
         mainLayout->addWidget(filterGroup);
         
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        // ═══════════════════════════════════════════════════════════════════════
         // LOG DISPLAY
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        // ═══════════════════════════════════════════════════════════════════════
         
         logDisplay = new QTextEdit();
         logDisplay->setReadOnly(true);
@@ -140,9 +140,9 @@ private:
         );
         mainLayout->addWidget(logDisplay, 1);
         
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        // ═══════════════════════════════════════════════════════════════════════
         // STATISTICS BAR
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        // ═══════════════════════════════════════════════════════════════════════
         
         QHBoxLayout* statsLayout = new QHBoxLayout();
         
@@ -153,15 +153,15 @@ private:
         statsLayout->addStretch();
         
         // Action buttons
-        QPushButton* clearBtn = new QPushButton("ðŸ—‘ï¸ Clear");
+        QPushButton* clearBtn = new QPushButton("🗑️ Clear");
         connect(clearBtn, &QPushButton::clicked, this, &SessionLogWidget::clearLogs);
         statsLayout->addWidget(clearBtn);
         
-        QPushButton* exportBtn = new QPushButton("ðŸ“¥ Export");
+        QPushButton* exportBtn = new QPushButton("📥 Export");
         connect(exportBtn, &QPushButton::clicked, this, &SessionLogWidget::exportLogs);
         statsLayout->addWidget(exportBtn);
         
-        QPushButton* pauseBtn = new QPushButton("â¸ï¸ Pause");
+        QPushButton* pauseBtn = new QPushButton("⏸️ Pause");
         pauseBtn->setCheckable(true);
         connect(pauseBtn, &QPushButton::toggled, this, &SessionLogWidget::togglePause);
         statsLayout->addWidget(pauseBtn);
@@ -323,9 +323,9 @@ private:
 };
 
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-// 2. PYTHON BRIDGE - Bidirectional C++ â†” Python Communication
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════════════════
+// 2. PYTHON BRIDGE - Bidirectional C++ ↔ Python Communication
+// ═══════════════════════════════════════════════════════════════════════════════
 
 class PythonBridge : public QObject {
     Q_OBJECT
@@ -382,9 +382,9 @@ public:
     
     bool isRunning() const { return m_running; }
     
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // ═══════════════════════════════════════════════════════════════════════════
     // REMOTE PROCEDURE CALLS
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // ═══════════════════════════════════════════════════════════════════════════
     
     void callAsync(const QString& method, const QJsonObject& params) {
         if (!m_running) {
@@ -511,16 +511,16 @@ private:
     bool m_running = false;
     int m_requestId = 1;
     QString m_scriptPath = "CondensedPhysics.py";
-
+    
 public:
     void setPythonScript(const QString& path) { m_scriptPath = path; }
     QString pythonScript() const { return m_scriptPath; }
 };
 
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════════════════
 // 3. COMPARISON DASHBOARD - Split-View Results Comparison (Tab 10)
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════════════════
 
 class ComparisonDashboard : public QWidget {
     Q_OBJECT
@@ -539,7 +539,7 @@ private:
         
         // Header
         QLabel* header = new QLabel(
-            "<h2 style='color: #9C27B0;'>ðŸ“Š Comparison Dashboard</h2>"
+            "<h2 style='color: #9C27B0;'>📊 Comparison Dashboard</h2>"
             "<p style='color: #888;'>Real-time comparison: MAIN_1_CoAnQi.cpp vs CondensedPhysics.py</p>"
         );
         mainLayout->addWidget(header);
@@ -552,7 +552,7 @@ private:
         systemSelector->setEditable(true);
         selectorLayout->addWidget(systemSelector);
         
-        QPushButton* compareBtn = new QPushButton("ðŸ”„ Compare");
+        QPushButton* compareBtn = new QPushButton("🔄 Compare");
         connect(compareBtn, &QPushButton::clicked, this, &ComparisonDashboard::runComparison);
         selectorLayout->addWidget(compareBtn);
         
@@ -563,14 +563,14 @@ private:
         QSplitter* splitter = new QSplitter(Qt::Horizontal);
         
         // Left side: C++ results
-        QGroupBox* cppGroup = new QGroupBox("ðŸ”§ MAIN_1_CoAnQi.cpp (C++)");
+        QGroupBox* cppGroup = new QGroupBox("🔧 MAIN_1_CoAnQi.cpp (C++)");
         QVBoxLayout* cppLayout = new QVBoxLayout(cppGroup);
         cppTable = createResultsTable();
         cppLayout->addWidget(cppTable);
         splitter->addWidget(cppGroup);
         
         // Right side: Python results
-        QGroupBox* pyGroup = new QGroupBox("ðŸ CondensedPhysics.py (Python)");
+        QGroupBox* pyGroup = new QGroupBox("🐍 CondensedPhysics.py (Python)");
         QVBoxLayout* pyLayout = new QVBoxLayout(pyGroup);
         pythonTable = createResultsTable();
         pyLayout->addWidget(pythonTable);
@@ -579,12 +579,12 @@ private:
         mainLayout->addWidget(splitter, 1);
         
         // Difference summary
-        QGroupBox* diffGroup = new QGroupBox("ðŸ“ˆ Difference Analysis");
+        QGroupBox* diffGroup = new QGroupBox("📈 Difference Analysis");
         QVBoxLayout* diffLayout = new QVBoxLayout(diffGroup);
         
         diffTable = new QTableWidget();
         diffTable->setColumnCount(5);
-        diffTable->setHorizontalHeaderLabels({"Component", "C++ Value", "Python Value", "Î” (Abs)", "Î” (%)"});
+        diffTable->setHorizontalHeaderLabels({"Component", "C++ Value", "Python Value", "Δ (Abs)", "Δ (%)"});
         diffTable->horizontalHeader()->setStretchLastSection(true);
         diffTable->setStyleSheet("QTableWidget { font-family: 'Consolas', monospace; }");
         diffLayout->addWidget(diffTable);
@@ -601,7 +601,7 @@ private:
     QTableWidget* createResultsTable() {
         QTableWidget* table = new QTableWidget();
         table->setColumnCount(2);
-        table->setHorizontalHeaderLabels({"Component", "Value (J/mÂ³)"});
+        table->setHorizontalHeaderLabels({"Component", "Value (J/m³)"});
         table->horizontalHeader()->setStretchLastSection(true);
         table->setStyleSheet(
             "QTableWidget { font-family: 'Consolas', monospace; background: #1a1a1a; color: #e0e0e0; }"
@@ -716,7 +716,7 @@ private slots:
         }
         
         // Summary
-        QString status = (maxError < 1) ? "âœ… EXCELLENT" : (maxError < 10) ? "âš ï¸ ACCEPTABLE" : "âŒ DIVERGENT";
+        QString status = (maxError < 1) ? "✅ EXCELLENT" : (maxError < 10) ? "⚠️ ACCEPTABLE" : "❌ DIVERGENT";
         summaryLabel->setText(QString("%1 | Max error: %2% | %3/%4 components within 1%")
                               .arg(status).arg(maxError, 0, 'f', 2)
                               .arg(passCount).arg(keys.size()));
@@ -742,9 +742,9 @@ private:
 };
 
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════════════════
 // 4. SESSION PERSISTENCE - Save/Restore Session State
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════════════════
 
 class SessionPersistence : public QObject {
     Q_OBJECT
@@ -755,9 +755,9 @@ public:
         return sp;
     }
     
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // ═══════════════════════════════════════════════════════════════════════════
     // SAVE SESSION
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // ═══════════════════════════════════════════════════════════════════════════
     
     bool saveSession(const QString& filepath = "") {
         QString path = filepath;
@@ -811,9 +811,9 @@ public:
         return false;
     }
     
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // ═══════════════════════════════════════════════════════════════════════════
     // LOAD SESSION
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // ═══════════════════════════════════════════════════════════════════════════
     
     bool loadSession(const QString& filepath) {
         QFile file(filepath);
@@ -853,9 +853,9 @@ public:
         return true;
     }
     
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // ═══════════════════════════════════════════════════════════════════════════
     // STATE MANAGEMENT
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // ═══════════════════════════════════════════════════════════════════════════
     
     void addSystem(const QJsonObject& system) {
         m_systems.append(system);
