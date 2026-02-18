@@ -3729,6 +3729,22 @@ CONSTANTS = {
     'hbar': 1.055e-34,                  # Reduced Planck constant (J·s)
     'Delta_t_min': 5.39e-44,            # Planck time (s) - minimum Δt
     'Delta_x_min': 1.616e-35,           # Planck length (m) - minimum Δx
+    
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # FOUNDATIONAL PHYSICS CONSTANTS (Floyd Sweet, Heisenberg, Cosmic Egg, Negative Time)
+    # ═══════════════════════════════════════════════════════════════════════════════
+    'rho_vac_amplitude': 0.1,           # A: Vacuum oscillation amplitude (10% variation)
+    'omega_vacuum': 1.587e-8,           # ω_c: Vacuum cycle frequency (rad/s, ~12.5 year period)
+    'k_vac_rep': 1e-10,                 # k_vac: Vacuum repulsion coefficient
+    'k_phonon': 1e-12,                  # k_phonon: Kozima THz-phonon coupling
+    'omega_phonon_0': 2 * np.pi * 1e12, # ω₀: Reference phonon frequency (1 THz)
+    'omega_THz': 2 * np.pi * 1.2e12,    # ω_THz: 1.2 THz phonon frequency
+    'delta_V_base': 0.01,               # δV base amplitude per layer (1% variation)
+    'omega_volume_0': 2 * np.pi / (365.25 * 86400),  # ω₀: Base volume frequency (1/year)
+    'tau_coherence': 1e-15,             # τ: Coherence time (s, femtosecond scale)
+    'kappa_time': 0.1,                  # κ: Negative time operator decay parameter
+    't_n_threshold': 0.0,               # Threshold for time-reversal activation (t_n < 0)
+    'f_TRZ': 0.1,                       # f_TRZ: Time-reversal zone factor (10%)
 }
 
 
@@ -4468,6 +4484,416 @@ FINAL RESULT:
 
 
 MUGE_CALCULATOR = MUGECalculator()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# FOUNDATIONAL PHYSICS CALCULATORS (Floyd Sweet, Cosmic Egg, Heisenberg, Negative Time)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class EquationResult:
+    """Container for physics equation results with full derivation."""
+    def __init__(self, name: str, latex: str, substituted: str, result: float,
+                 unit: str, parameters_used: dict = None, notes: str = ""):
+        self.name = name
+        self.latex = latex
+        self.substituted = substituted
+        self.result = result
+        self.unit = unit
+        self.parameters_used = parameters_used or {}
+        self.notes = notes
+
+
+class FloydSweetVacuumCalculator:
+    """
+    Floyd Sweet Time-Varying Vacuum Dynamics
+    
+    Implements Kozima THz-phonon coupled vacuum with time modulation.
+    
+    Key equations:
+        ρ_vac(t) = ρ₀ * (1 + A * cos(ω_c * t))
+        F_vac_rep = k_vac * Δρ_vac * M * v * cos(ω_c * t)
+        F_phonon = k_phonon * (ω_phonon / ω₀)² * cos(ω_THz * t)
+    """
+    
+    def __init__(self):
+        self.C = CONSTANTS
+    
+    def compute_time_varying_density(
+        self, 
+        rho_0: float,
+        t: float,
+        A: float = None,
+        omega_c: float = None
+    ) -> EquationResult:
+        """
+        Compute time-varying vacuum density.
+        ρ_vac(t) = ρ₀ * (1 + A * cos(ω_c * t))
+        """
+        A = A if A is not None else self.C.get('rho_vac_amplitude', 0.1)
+        omega_c = omega_c if omega_c is not None else self.C.get('omega_vacuum', 1.587e-8)
+        
+        rho_vac_t = rho_0 * (1 + A * np.cos(omega_c * t))
+        
+        return EquationResult(
+            name='Floyd Sweet Time-Varying Vacuum Density',
+            latex=r'\rho_{vac}(t) = \rho_0 (1 + A \cos(\omega_c t))',
+            substituted=f'ρ_vac(t) = {rho_0:.4e} × (1 + {A:.4f} × cos({omega_c:.4e} × {t:.4e})) = {rho_vac_t:.4e}',
+            result=rho_vac_t,
+            unit='J/m³',
+            parameters_used={'rho_0': rho_0, 't': t, 'A': A, 'omega_c': omega_c},
+            notes='Time-varying vacuum density (NOT static) - Floyd Sweet mechanism'
+        )
+    
+    def compute_vacuum_repulsion_force(
+        self,
+        Delta_rho: float,
+        M: float,
+        v: float,
+        t: float,
+        omega_c: float = None,
+        k_vac: float = None
+    ) -> EquationResult:
+        """
+        Vacuum repulsion force with time modulation.
+        F_vac_rep = k_vac * Δρ_vac * M * v * cos(ω_c * t)
+        """
+        omega_c = omega_c if omega_c is not None else self.C.get('omega_vacuum', 1.587e-8)
+        k_vac = k_vac if k_vac is not None else self.C.get('k_vac_rep', 1e-10)
+        
+        F_vac_rep = k_vac * Delta_rho * M * v * np.cos(omega_c * t)
+        
+        return EquationResult(
+            name='Vacuum Repulsion Force (Floyd Sweet)',
+            latex=r'F_{vac,rep} = k_{vac} \Delta\rho_{vac} M v \cos(\omega_c t)',
+            substituted=f'F_vac_rep = {k_vac:.4e} × {Delta_rho:.4e} × {M:.4e} × {v:.4e} × cos(...) = {F_vac_rep:.4e}',
+            result=F_vac_rep,
+            unit='N',
+            parameters_used={'k_vac': k_vac, 'Delta_rho': Delta_rho, 'M': M, 'v': v, 't': t, 'omega_c': omega_c},
+            notes='Vacuum energy extraction force - enables COP > 1.0 devices'
+        )
+    
+    def compute_kozima_phonon_coupling(
+        self,
+        omega_phonon: float,
+        t: float,
+        k_phonon: float = None,
+        omega_0: float = None,
+        omega_THz: float = None
+    ) -> EquationResult:
+        """
+        Kozima THz-phonon coupling force.
+        F_phonon = k_phonon * (ω_phonon / ω₀)² * cos(ω_THz * t)
+        """
+        k_phonon = k_phonon if k_phonon is not None else self.C.get('k_phonon', 1e-12)
+        omega_0 = omega_0 if omega_0 is not None else self.C.get('omega_phonon_0', 2 * np.pi * 1e12)
+        omega_THz = omega_THz if omega_THz is not None else self.C.get('omega_THz', 2 * np.pi * 1.2e12)
+        
+        ratio_sq = (omega_phonon / omega_0) ** 2
+        F_phonon = k_phonon * ratio_sq * np.cos(omega_THz * t)
+        
+        return EquationResult(
+            name='Kozima THz-Phonon Coupling',
+            latex=r'F_{phonon} = k_{phonon} (\omega_{phonon} / \omega_0)^2 \cos(\omega_{THz} t)',
+            substituted=f'F_phonon = {k_phonon:.4e} × ({omega_phonon:.4e}/{omega_0:.4e})² × cos(...) = {F_phonon:.4e}',
+            result=F_phonon,
+            unit='N',
+            parameters_used={'k_phonon': k_phonon, 'omega_phonon': omega_phonon, 'omega_0': omega_0, 'omega_THz': omega_THz, 't': t},
+            notes='Kozima THz-phonon resonance in condensed matter LENR'
+        )
+
+
+FLOYD_SWEET_CALCULATOR = FloydSweetVacuumCalculator()
+
+
+class CosmicEgg26DCalculator:
+    """
+    Cosmic Egg 26D Volume Breathing Dynamics
+    
+    Implements multi-dimensional volume fluctuations across 26 quantum layers.
+    
+    Key equation:
+        V_i(t) = V₀ * (1 + δV_i * sin(ω_i * t))  for i = 1 to 26
+        where ω_i = ω₀ * i (each layer has different frequency)
+    """
+    
+    def __init__(self):
+        self.C = CONSTANTS
+        self.n_layers = 26
+    
+    def compute_layer_volume(
+        self,
+        i: int,
+        V_0: float,
+        t: float,
+        delta_V_base: float = None,
+        omega_0: float = None
+    ) -> EquationResult:
+        """
+        Compute volume for a single 26D layer.
+        V_i(t) = V₀ * (1 + δV_i * sin(ω_i * t))
+        """
+        if not (1 <= i <= 26):
+            raise ValueError(f"Layer index i must be 1-26, got {i}")
+        
+        delta_V_base = delta_V_base if delta_V_base is not None else self.C.get('delta_V_base', 0.01)
+        omega_0 = omega_0 if omega_0 is not None else self.C.get('omega_volume_0', 2 * np.pi / (365.25 * 86400))
+        
+        delta_V_i = delta_V_base * i
+        omega_i = omega_0 * i
+        
+        V_i_t = V_0 * (1 + delta_V_i * np.sin(omega_i * t))
+        
+        return EquationResult(
+            name=f'Cosmic Egg Layer {i} Volume',
+            latex=r'V_i(t) = V_0 (1 + \delta V_i \sin(\omega_i t))',
+            substituted=f'V_{i}(t) = {V_0:.4e} × (1 + {delta_V_i:.6f} × sin({omega_i:.4e} × {t:.4e})) = {V_i_t:.4e}',
+            result=V_i_t,
+            unit='m³',
+            parameters_used={'layer': i, 'V_0': V_0, 't': t, 'delta_V_i': delta_V_i, 'omega_i': omega_i},
+            notes=f'Layer {i}/26 breathing volume - each layer oscillates independently'
+        )
+    
+    def compute_all_26_layers(
+        self,
+        V_0: float,
+        t: float,
+        delta_V_base: float = None,
+        omega_0: float = None
+    ) -> dict:
+        """
+        Compute volumes for all 26 layers simultaneously.
+        """
+        delta_V_base = delta_V_base if delta_V_base is not None else self.C.get('delta_V_base', 0.01)
+        omega_0 = omega_0 if omega_0 is not None else self.C.get('omega_volume_0', 2 * np.pi / (365.25 * 86400))
+        
+        volumes = {}
+        equations = []
+        
+        for i in range(1, 27):
+            result = self.compute_layer_volume(i, V_0, t, delta_V_base, omega_0)
+            volumes[f'V_{i}'] = result.result
+            equations.append(result)
+        
+        V_total = sum(volumes.values())
+        
+        return {
+            'volumes': volumes,
+            'V_total': V_total,
+            'V_min': min(volumes.values()),
+            'V_max': max(volumes.values()),
+            'V_mean': np.mean(list(volumes.values())),
+            'equations': equations,
+            'n_layers': 26,
+            't': t,
+            'V_0': V_0,
+            'unit': 'm³',
+            'notes': '26D Cosmic Egg complete breathing pattern'
+        }
+
+
+COSMIC_EGG_CALCULATOR = CosmicEgg26DCalculator()
+
+
+class HeisenbergVacuumCalculator:
+    """
+    Heisenberg Uncertainty Vacuum Energy (Time-Dependent)
+    
+    Key equations:
+        E_vac(t) = ℏ / (2 * Δt)
+        A_vac = √E_vac * exp(-t / τ_coherence)
+    """
+    
+    def __init__(self):
+        self.C = CONSTANTS
+    
+    def compute_uncertainty_energy(
+        self,
+        Delta_t: float
+    ) -> EquationResult:
+        """
+        Compute vacuum energy from time uncertainty.
+        E_vac(t) = ℏ / (2 * Δt)
+        """
+        hbar = self.C.get('hbar', 1.055e-34)
+        
+        if Delta_t <= 0:
+            raise ValueError(f"Time uncertainty must be positive, got {Delta_t}")
+        
+        E_vac = hbar / (2 * Delta_t)
+        
+        return EquationResult(
+            name='Heisenberg Uncertainty Vacuum Energy',
+            latex=r'E_{vac} = \frac{\hbar}{2 \Delta t}',
+            substituted=f'E_vac = {hbar:.4e} / (2 × {Delta_t:.4e}) = {E_vac:.4e}',
+            result=E_vac,
+            unit='J',
+            parameters_used={'hbar': hbar, 'Delta_t': Delta_t},
+            notes='Time-dependent vacuum energy from Heisenberg uncertainty'
+        )
+    
+    def compute_fluctuation_amplitude(
+        self,
+        E_vac: float,
+        t: float,
+        tau_coherence: float = None
+    ) -> EquationResult:
+        """
+        Compute vacuum fluctuation amplitude with coherence decay.
+        A_vac = √E_vac * exp(-t / τ_coherence)
+        """
+        tau_coherence = tau_coherence if tau_coherence is not None else self.C.get('tau_coherence', 1e-15)
+        
+        A_vac = np.sqrt(E_vac) * np.exp(-t / tau_coherence)
+        
+        return EquationResult(
+            name='Vacuum Fluctuation Amplitude',
+            latex=r'A_{vac} = \sqrt{E_{vac}} e^{-t / \tau_{coh}}',
+            substituted=f'A_vac = √({E_vac:.4e}) × exp(-{t:.4e} / {tau_coherence:.4e}) = {A_vac:.4e}',
+            result=A_vac,
+            unit='J^(1/2)',
+            parameters_used={'E_vac': E_vac, 't': t, 'tau_coherence': tau_coherence},
+            notes='Vacuum amplitude with exponential coherence decay'
+        )
+    
+    def compute_time_dependent_vacuum_density(
+        self,
+        Delta_t: float,
+        t: float,
+        volume: float = 1.0,
+        tau_coherence: float = None
+    ) -> dict:
+        """
+        Complete time-dependent vacuum energy density.
+        """
+        E_result = self.compute_uncertainty_energy(Delta_t)
+        E_vac = E_result.result
+        
+        A_result = self.compute_fluctuation_amplitude(E_vac, t, tau_coherence)
+        A_vac = A_result.result
+        
+        rho_vac = (A_vac ** 2) / volume
+        
+        return {
+            'E_vac': E_vac,
+            'A_vac': A_vac,
+            'rho_vac': rho_vac,
+            'E_equation': E_result,
+            'A_equation': A_result,
+            'Delta_t': Delta_t,
+            't': t,
+            'volume': volume,
+            'unit': 'J/m³',
+            'notes': 'Complete time-dependent vacuum energy density (NOT fixed)'
+        }
+
+
+HEISENBERG_CALCULATOR = HeisenbergVacuumCalculator()
+
+
+class NegativeTimeCalculator:
+    """
+    Negative Time Physics and Retrocausality
+    
+    Key equations:
+        t⁻ = -t_n * exp(κ - t_n)  (negative time operator)
+        if t_n < 0: compute advanced wave solutions (retrocausality)
+        f_TRZ factor enables time-reversal zones
+    """
+    
+    def __init__(self):
+        self.C = CONSTANTS
+    
+    def compute_negative_time_operator(
+        self,
+        t_n: float,
+        kappa: float = None
+    ) -> EquationResult:
+        """
+        Compute negative time operator t⁻.
+        t⁻ = -t_n * exp(κ - t_n)
+        """
+        kappa = kappa if kappa is not None else self.C.get('kappa_time', 0.1)
+        
+        t_minus = -t_n * np.exp(kappa - t_n)
+        
+        return EquationResult(
+            name='Negative Time Operator',
+            latex=r't^- = -t_n e^{\kappa - t_n}',
+            substituted=f't⁻ = -{t_n:.6f} × exp({kappa:.4f} - {t_n:.6f}) = {t_minus:.6f}',
+            result=t_minus,
+            unit='s (negative time)',
+            parameters_used={'t_n': t_n, 'kappa': kappa, 'is_retrocausal': t_minus < 0},
+            notes='Negative time operator - enables backward time flow when t_n < 0'
+        )
+    
+    def compute_retrocausal_evolution(
+        self,
+        t_n: float,
+        params: dict = None,
+        kappa: float = None
+    ) -> dict:
+        """
+        Compute retrocausal evolution for t_n < 0.
+        """
+        kappa = kappa if kappa is not None else self.C.get('kappa_time', 0.1)
+        f_TRZ = self.C.get('f_TRZ', 0.1)
+        t_n_threshold = self.C.get('t_n_threshold', 0.0)
+        
+        t_minus_result = self.compute_negative_time_operator(t_n, kappa)
+        t_minus = t_minus_result.result
+        
+        is_retrocausal = t_n < t_n_threshold
+        
+        if is_retrocausal:
+            evolution_type = 'advanced'
+            phase_factor = np.cos(np.pi * t_n)
+            TRZ_amplification = 1 + f_TRZ
+        else:
+            evolution_type = 'retarded'
+            phase_factor = np.cos(np.pi * t_n)
+            TRZ_amplification = 1.0
+        
+        return {
+            't_minus': t_minus,
+            't_n': t_n,
+            'kappa': kappa,
+            'is_retrocausal': is_retrocausal,
+            'evolution_type': evolution_type,
+            'phase_factor': phase_factor,
+            'cos_pi_tn': phase_factor,
+            'f_TRZ': f_TRZ,
+            'TRZ_amplification': TRZ_amplification,
+            't_minus_equation': t_minus_result,
+            'unit': 'dimensionless',
+            'notes': f'Negative time evolution: {evolution_type} waves, TRZ active: {is_retrocausal}'
+        }
+    
+    def compute_time_reversal_zone_factor(
+        self,
+        t_n: float,
+        base_value: float
+    ) -> EquationResult:
+        """
+        Apply time-reversal zone (TRZ) factor to a physics quantity.
+        modulated_value = base_value * (1 + f_TRZ) * cos(π t_n)
+        """
+        f_TRZ = self.C.get('f_TRZ', 0.1)
+        cos_pi_tn = np.cos(np.pi * t_n)
+        
+        modulated_value = base_value * (1 + f_TRZ) * cos_pi_tn
+        
+        return EquationResult(
+            name='Time-Reversal Zone Modulation',
+            latex=r'X_{TRZ} = X_0 (1 + f_{TRZ}) \cos(\pi t_n)',
+            substituted=f'X_TRZ = {base_value:.4e} × (1 + {f_TRZ:.4f}) × cos(π × {t_n:.6f}) = {modulated_value:.4e}',
+            result=modulated_value,
+            unit='same as base_value',
+            parameters_used={'base_value': base_value, 't_n': t_n, 'f_TRZ': f_TRZ, 'cos_pi_tn': cos_pi_tn},
+            notes='TRZ modulation - enables negentropic effects when t_n < 0'
+        )
+
+
+NEGATIVE_TIME_CALCULATOR = NegativeTimeCalculator()
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -75005,6 +75431,237 @@ MYSTICMOUNTAIN_MODEL = MysticMountainModel()
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# MISSING MODEL CLASSES - Foundational Physics Models
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class NegativeTimeModel:
+    """
+    Model for negative time physics and retrocausality.
+    
+    Implements t⁻ = -t_n × exp(κ - t_n) and TRZ physics.
+    """
+    
+    def __init__(self, t_n: float = 0.0, kappa: float = 0.1):
+        self.t_n = t_n
+        self.kappa = kappa
+        self.f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        self.calc = NEGATIVE_TIME_CALCULATOR
+    
+    def compute_t_minus(self) -> tuple:
+        """t⁻ = -t_n × exp(κ - t_n)"""
+        result = self.calc.compute_negative_time_operator(self.t_n, self.kappa)
+        return result.result, result.substituted
+    
+    def compute_retrocausal_factor(self, base_value: float) -> tuple:
+        """Apply TRZ modulation to base value"""
+        result = self.calc.compute_time_reversal_zone_factor(self.t_n, base_value)
+        return result.result, result.substituted
+    
+    def is_retrocausal(self) -> bool:
+        """Check if evolution is retrocausal (t_n < 0)"""
+        return self.t_n < CONSTANTS.get('t_n_threshold', 0.0)
+
+
+class AetherVacuumEnergyModel:
+    """
+    Model for Universal Aether [UA] vacuum energy dynamics.
+    
+    Implements time-varying vacuum density from Floyd Sweet mechanism.
+    """
+    
+    def __init__(self, rho_0: float = 7.09e-36):
+        self.rho_0 = rho_0
+        self.calc = FLOYD_SWEET_CALCULATOR
+    
+    def compute_time_varying_density(self, t: float, A: float = 0.1) -> tuple:
+        """ρ_vac(t) = ρ₀ × (1 + A × cos(ω_c × t))"""
+        result = self.calc.compute_time_varying_density(self.rho_0, t, A)
+        return result.result, result.substituted
+    
+    def compute_vacuum_repulsion(self, M: float, v: float, t: float, Delta_rho: float = 1e-36) -> tuple:
+        """F_vac_rep = k_vac × Δρ_vac × M × v × cos(ω_c × t)"""
+        result = self.calc.compute_vacuum_repulsion_force(Delta_rho, M, v, t)
+        return result.result, result.substituted
+
+
+class CosmicEggModel:
+    """
+    Model for 26D Cosmic Egg volume breathing dynamics.
+    
+    Implements V_i(t) = V₀ × (1 + δV_i × sin(ω_i × t)) for i = 1 to 26.
+    """
+    
+    def __init__(self, V_0: float = 1e78):
+        self.V_0 = V_0
+        self.calc = COSMIC_EGG_CALCULATOR
+    
+    def compute_layer_volume(self, i: int, t: float) -> tuple:
+        """Compute volume for layer i at time t"""
+        result = self.calc.compute_layer_volume(i, self.V_0, t)
+        return result.result, result.substituted
+    
+    def compute_all_layers(self, t: float) -> dict:
+        """Compute all 26 layer volumes"""
+        return self.calc.compute_all_26_layers(self.V_0, t)
+    
+    def compute_layer_radius(self, i: int, t: float) -> tuple:
+        """Compute radius of layer i assuming spherical geometry"""
+        V_i, _ = self.compute_layer_volume(i, t)
+        r_i = (3 * V_i / (4 * np.pi)) ** (1/3)
+        return r_i, f"r_{i}(t) = (3V_{i}/(4π))^(1/3) = {r_i:.4e} m"
+    
+    def compute_grinding_opposition(self, i: int, j: int, t: float) -> tuple:
+        """Compute grinding opposition between layers i and j"""
+        V_i, _ = self.compute_layer_volume(i, t)
+        V_j, _ = self.compute_layer_volume(j, t)
+        G_ij = abs(V_i - V_j) / max(V_i, V_j)
+        return G_ij, f"G_{i},{j} = |V_{i} - V_{j}| / max(V) = {G_ij:.6f}"
+    
+    def compute_26D_egg_energy(self, t: float) -> tuple:
+        """Total energy across all 26D layers"""
+        layers = self.compute_all_layers(t)
+        E_total = layers['V_total'] * CONSTANTS.get('E_vac_base', 1e-9)
+        return E_total, f"E_26D = V_total × E_vac_base = {E_total:.4e} J"
+
+
+class SgrAStarGravityModel:
+    """
+    Model for Sagittarius A* supermassive black hole gravity.
+    
+    Implements SMBH gravitational dynamics with UQFF corrections.
+    """
+    
+    def __init__(self):
+        self.M_BH = 8.155e36  # 4.1 million solar masses
+        self.r_s = 2 * CONSTANTS['G'] * self.M_BH / (CONSTANTS['c'] ** 2)  # Schwarzschild radius
+        self.G = CONSTANTS['G']
+    
+    def compute_newtonian_gravity(self, r: float) -> tuple:
+        """g_N = G × M_BH / r²"""
+        g_N = self.G * self.M_BH / (r ** 2)
+        return g_N, f"g_N = G × M_BH / r² = {g_N:.4e} m/s²"
+    
+    def compute_relativistic_correction(self, r: float) -> tuple:
+        """Schwarzschild correction factor"""
+        corr = 1 - self.r_s / r if r > self.r_s else 0.01
+        return corr, f"(1 - r_s/r) = (1 - {self.r_s:.4e}/{r:.4e}) = {corr:.6f}"
+    
+    def compute_smbh_gravity(self, r: float) -> tuple:
+        """Full SMBH gravity with relativistic correction"""
+        g_N, _ = self.compute_newtonian_gravity(r)
+        corr, _ = self.compute_relativistic_correction(r)
+        g_BH = g_N * corr
+        return g_BH, f"g_BH = g_N × (1 - r_s/r) = {g_BH:.4e} m/s²"
+
+
+class RetrocausalModel:
+    """
+    Model for retrocausal physics and advanced wave solutions.
+    
+    Implements Wheeler-Feynman absorber theory in UQFF framework.
+    """
+    
+    def __init__(self, t_n: float = -0.5):
+        self.t_n = t_n
+        self.calc = NEGATIVE_TIME_CALCULATOR
+    
+    def compute_advanced_wave(self, A_0: float, omega: float, k: float, x: float, t: float) -> tuple:
+        """Advanced wave (backward propagating): ψ_adv = A₀ × exp(i(kx + ωt))"""
+        psi_adv = A_0 * np.exp(1j * (k * x + omega * t))
+        return abs(psi_adv), f"ψ_adv = A₀ × exp(i(kx + ωt)) = {abs(psi_adv):.4e}"
+    
+    def compute_retarded_wave(self, A_0: float, omega: float, k: float, x: float, t: float) -> tuple:
+        """Retarded wave (forward propagating): ψ_ret = A₀ × exp(i(kx - ωt))"""
+        psi_ret = A_0 * np.exp(1j * (k * x - omega * t))
+        return abs(psi_ret), f"ψ_ret = A₀ × exp(i(kx - ωt)) = {abs(psi_ret):.4e}"
+    
+    def compute_retrocausal_evolution(self) -> dict:
+        """Full retrocausal evolution calculation"""
+        return self.calc.compute_retrocausal_evolution(self.t_n, {})
+
+
+class TRZModel:
+    """
+    Model for Time-Reversal Zone physics.
+    
+    Implements entropy reversal and negentropic effects.
+    """
+    
+    def __init__(self, t_n: float = -0.5):
+        self.t_n = t_n
+        self.f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+    
+    def compute_TRZ_amplification(self, base_value: float) -> tuple:
+        """X_TRZ = X₀ × (1 + f_TRZ) × cos(π × t_n)"""
+        cos_term = np.cos(np.pi * self.t_n)
+        X_TRZ = base_value * (1 + self.f_TRZ) * cos_term
+        return X_TRZ, f"X_TRZ = {base_value:.4e} × {1 + self.f_TRZ:.4f} × cos(π×{self.t_n:.4f}) = {X_TRZ:.4e}"
+    
+    def is_TRZ_active(self) -> bool:
+        """Check if time-reversal zone is active"""
+        return self.t_n < 0
+
+
+class VoidOscillationModel:
+    """
+    Model for cosmic void oscillations.
+    
+    Implements breathing dynamics of inter-galactic voids.
+    """
+    
+    def __init__(self, V_0: float = 1e75):
+        self.V_0 = V_0  # Void volume (m³)
+        self.omega_void = CONSTANTS.get('omega_cosmic', 6.28e-18)
+    
+    def compute_void_volume(self, t: float, delta_V: float = 0.05) -> tuple:
+        """V_void(t) = V₀ × (1 + δV × sin(ω_void × t))"""
+        V_t = self.V_0 * (1 + delta_V * np.sin(self.omega_void * t))
+        return V_t, f"V_void(t) = {self.V_0:.4e} × (1 + {delta_V:.4f} × sin({self.omega_void:.4e} × {t:.4e})) = {V_t:.4e} m³"
+    
+    def compute_void_expansion_rate(self, t: float, delta_V: float = 0.05) -> tuple:
+        """dV/dt = V₀ × δV × ω_void × cos(ω_void × t)"""
+        dV_dt = self.V_0 * delta_V * self.omega_void * np.cos(self.omega_void * t)
+        return dV_dt, f"dV/dt = {dV_dt:.4e} m³/s"
+
+
+class TimeVaryingVacuumModel:
+    """
+    Model for time-varying vacuum energy dynamics.
+    
+    Combines Floyd Sweet, Heisenberg, and Cosmic Egg mechanisms.
+    """
+    
+    def __init__(self, rho_0: float = 7.09e-36, V_0: float = 1e50):
+        self.rho_0 = rho_0
+        self.V_0 = V_0
+        self.floyd = FLOYD_SWEET_CALCULATOR
+        self.heisenberg = HEISENBERG_CALCULATOR
+        self.cosmic_egg = COSMIC_EGG_CALCULATOR
+    
+    def compute_floyd_sweet_vacuum(self, t: float) -> tuple:
+        """Time-varying vacuum density (Floyd Sweet)"""
+        result = self.floyd.compute_time_varying_density(self.rho_0, t)
+        return result.result, result.substituted
+    
+    def compute_heisenberg_vacuum(self, Delta_t: float = 1e-15, t: float = 1e-12) -> dict:
+        """Time-dependent vacuum from Heisenberg uncertainty"""
+        return self.heisenberg.compute_time_dependent_vacuum_density(Delta_t, t)
+    
+    def compute_26D_volume(self, t: float) -> dict:
+        """26D volume breathing dynamics"""
+        return self.cosmic_egg.compute_all_26_layers(self.V_0, t)
+    
+    def compute_combined_vacuum_energy(self, t: float, Delta_t: float = 1e-15) -> tuple:
+        """Combined vacuum energy from all three mechanisms"""
+        floyd_rho, _ = self.compute_floyd_sweet_vacuum(t)
+        heis = self.compute_heisenberg_vacuum(Delta_t, t)
+        egg = self.compute_26D_volume(t)
+        
+        E_total = floyd_rho * egg['V_total'] + heis['E_vac']
+        return E_total, f"E_combined = ρ_floyd × V_26D + E_heisenberg = {E_total:.4e} J"
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # SOLVE() ENTRY POINT - MAIN INTERFACE FOR UQFF PHYSICS CALCULATION
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -75412,6 +76069,10 @@ __all__ = [
     'RESONANCE_CALCULATOR', 'TRIADIC_CALCULATOR', 'BUOYANCY_CALCULATOR',
     'COSMOLOGICAL_CALCULATOR', 'SUPERCONDUCTIVE_CALCULATOR', 'MUGE_CALCULATOR',
     
+    # Foundational Physics Calculators (4 new)
+    'FLOYD_SWEET_CALCULATOR', 'COSMIC_EGG_CALCULATOR', 
+    'HEISENBERG_CALCULATOR', 'NEGATIVE_TIME_CALCULATOR',
+    
     # Main entry point
     'solve',
     
@@ -75420,10 +76081,20 @@ __all__ = [
     'compute_standing_wave_term', 'compute_traveling_wave_term',
     'QuantumWaveMixin',
     
-    # Classes
+    # Calculator Classes
     'VacuumFluctuationCalculator', 'MagneticCalculator', 'QuantumCalculator',
     'ResonanceCalculator', 'TriadicCalculator', 'BuoyancyCalculator',
     'CosmologicalCalculator', 'SuperconductiveCalculator', 'MUGECalculator',
+    
+    # Foundational Physics Calculator Classes (4 new)
+    'FloydSweetVacuumCalculator', 'CosmicEgg26DCalculator',
+    'HeisenbergVacuumCalculator', 'NegativeTimeCalculator',
+    'EquationResult',
+    
+    # Missing Model Classes (8 new)
+    'NegativeTimeModel', 'AetherVacuumEnergyModel', 'CosmicEggModel',
+    'SgrAStarGravityModel', 'RetrocausalModel', 'TRZModel',
+    'VoidOscillationModel', 'TimeVaryingVacuumModel',
     
     # Constants
     'CONSTANTS',
