@@ -151,15 +151,15 @@ GW_Merger_Remnant,1.193e32,1.77e5,1e9,1.03e-9,0.7,1e-8,1e32,1e-22,1.0,1.0,0.0
 # UQFF 99.7% solvability, calibrated constants: kappa=0.0005/day, H_SCm=0.99, beta_i=0.603
 # ===========================================================================================
 # ASKAP_J1832: Long Period Radio Transient, 44-min period, NS/WD candidate, 15 kpc
-ASKAP_J1832_0911,2.785e30,1e11,1e8,0.0,0.0,2652.0,1e32,1e22,0.99,0.0001,0.5
+ASKAP_J1832_0911_B22,2.785e30,1e11,1e8,1e6,1e-4,2652.0,1e32,1e22,0.99,0.0001,0.5
 # Helix_Nebula: NGC 7293, destroyed planet X-ray signal, WD central star T=120kK, 200 pc
-Helix_Nebula_NGC7293,1.27e30,8.5e6,1e3,0.0,0.0,0.0,1e30,1e20,0.99,0.0001,0.5
+Helix_Nebula_NGC7293_B22,1.27e30,8.5e6,1e3,1.2e5,1e-6,1e-4,1e30,1e20,0.99,0.0001,0.5
 # R_Aquarii: Symbiotic binary, Mira+WD, jet velocity 600 km/s, 44-yr precession, 218 pc
-R_Aquarii_Symbiotic,3.978e30,2.99e11,1e6,0.0,0.0,1.39e9,1e31,1e21,0.99,0.0001,0.5
+R_Aquarii_Symbiotic_B22,3.978e30,2.99e11,1e6,3500.0,1e-8,1.39e9,1e31,1e21,0.99,0.0001,0.5
 # PN_Template: Generic planetary nebula template, 0.6 M_sun WD, T=100kK, v_exp=25 km/s
-PN_Template_Generic,1.19e30,9e6,1e2,0.0,0.0,0.0,1e29,1e19,0.99,0.0001,0.5
+PN_Template_Generic,1.19e30,9e6,1e2,1e5,1e-6,1e-4,1e29,1e19,0.99,0.0001,0.5
 # SuperFlare_Star: Typical super-flaring G/K star, B_spot=3000 G, f_spot=10%, E~10^38 erg
-SuperFlare_Star_Generic,1.989e30,6.957e8,3000.0,0.0,0.0,4.32e5,1e27,1e17,0.99,0.0001,0.5
+SuperFlare_Star_Generic,1.989e30,6.957e8,3000.0,5500.0,2.5e-6,4.32e5,1e27,1e17,0.99,0.0001,0.5
 # ===========================================================================================
 # BATCH 23: Advanced UQFF Validation (Jan 28, 2026) - Grok 4 Analysis Sept 14-21, 2025
 # UQFF 99.9% solvability, kappa=0.0005/day, SSq=0.57, U_UA=0.0001, beta_i=0.603, k_eta=1e-113

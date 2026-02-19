@@ -93,6 +93,70 @@ struct CelestialBodyCSV {
     bool is_valid() const {
         return !name.empty() && (mass > 0 || radius > 0 || distance > 0);
     }
+    
+    /**
+     * Validation result with warnings for suspicious values.
+     */
+    struct ValidationResult {
+        bool valid = true;
+        std::vector<std::string> warnings;
+        std::vector<std::string> errors;
+    };
+    
+    /**
+     * Validate physical plausibility of values.
+     * Returns warnings for zero/negative values that should be positive.
+     */
+    ValidationResult validate() const {
+        ValidationResult result;
+        
+        // Critical errors
+        if (name.empty()) {
+            result.errors.push_back("Empty name");
+            result.valid = false;
+        }
+        if (mass < 0) {
+            result.errors.push_back("Negative mass: " + std::to_string(mass));
+            result.valid = false;
+        }
+        if (radius < 0) {
+            result.errors.push_back("Negative radius: " + std::to_string(radius));
+            result.valid = false;
+        }
+        
+        // Warnings for zero values that are physically suspicious
+        if (mass == 0 && radius == 0 && distance == 0) {
+            result.warnings.push_back("All spatial parameters are zero");
+        }
+        if (temperature == 0) {
+            result.warnings.push_back("Temperature is 0 K (absolute zero) - possibly invalid");
+        }
+        if (temperature < 0) {
+            result.errors.push_back("Negative temperature: " + std::to_string(temperature));
+            result.valid = false;
+        }
+        
+        // Physical range warnings
+        if (temperature > 1e12) {
+            result.warnings.push_back("Extremely high temperature: " + std::to_string(temperature) + " K");
+        }
+        if (B_field < 0) {
+            result.warnings.push_back("Negative B_field (magnitude should be positive): " + std::to_string(B_field));
+        }
+        if (spin_period < 0) {
+            result.warnings.push_back("Negative spin_period: " + std::to_string(spin_period));
+        }
+        
+        return result;
+    }
+    
+    /**
+     * Check if body passes strict validation (no errors, no critical warnings).
+     */
+    bool is_physically_valid() const {
+        auto vr = validate();
+        return vr.valid && vr.warnings.empty();
+    }
 };
 
 
@@ -203,6 +267,57 @@ public:
         
         std::sort(files.begin(), files.end());
         return files;
+    }
+    
+    /**
+     * Read and validate bodies, returning validation reports.
+     */
+    static std::vector<std::pair<CelestialBodyCSV, CelestialBodyCSV::ValidationResult>> 
+    read_with_validation(const std::string& filepath) {
+        auto bodies = read(filepath);
+        std::vector<std::pair<CelestialBodyCSV, CelestialBodyCSV::ValidationResult>> results;
+        results.reserve(bodies.size());
+        
+        for (const auto& body : bodies) {
+            results.emplace_back(body, body.validate());
+        }
+        return results;
+    }
+    
+    /**
+     * Read latest file and return only physically valid bodies.
+     * Logs warnings for skipped entries.
+     */
+    static std::vector<CelestialBodyCSV> read_validated(const std::string& directory = ".", 
+                                                         std::ostream* log = nullptr) {
+        auto bodies = read_latest(directory);
+        std::vector<CelestialBodyCSV> valid_bodies;
+        valid_bodies.reserve(bodies.size());
+        
+        for (const auto& body : bodies) {
+            auto vr = body.validate();
+            if (vr.valid) {
+                valid_bodies.push_back(body);
+                // Log warnings for valid but suspicious entries
+                if (log && !vr.warnings.empty()) {
+                    *log << "[WARN] " << body.name << ":";
+                    for (const auto& w : vr.warnings) {
+                        *log << " " << w << ";";
+                    }
+                    *log << "\n";
+                }
+            } else {
+                // Log errors for invalid entries
+                if (log) {
+                    *log << "[ERR] Skipping " << body.name << ":";
+                    for (const auto& e : vr.errors) {
+                        *log << " " << e << ";";
+                    }
+                    *log << "\n";
+                }
+            }
+        }
+        return valid_bodies;
     }
 
 private:
