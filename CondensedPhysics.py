@@ -42,6 +42,10 @@ import sys
 import argparse
 import math
 
+# NumPy 2.0 compatibility: trapz was renamed to trapezoid
+if not hasattr(np, 'trapz'):
+    np.trapz = np.trapezoid
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # NUMERICAL LIBRARIES - scipy, sympy (with graceful fallback)
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -716,6 +720,1250 @@ class NumericalMethods:
             'total': len(results),
             'results': results,
             'status': NumericalMethods.get_status()
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# NAVIER-STOKES FLUID DYNAMICS SOLVER
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class NavierStokesSolver:
+    """
+    Navier-Stokes equation solver for incompressible fluid dynamics.
+    
+    Solves:
+        ∂u/∂t + (u·∇)u = -∇p/ρ + ν∇²u + f
+        ∇·u = 0 (incompressibility)
+    
+    Implements:
+        - 2D incompressible flow (lid-driven cavity, channel flow)
+        - Projection method (Chorin splitting)
+        - Finite difference discretization
+        - Pressure-Poisson solver
+        - Vorticity-streamfunction formulation
+    
+    Applications:
+        - UQFF aDPM fluid resonance modes
+        - Stellar atmosphere dynamics
+        - Accretion disk flows
+        - Cosmic plasma dynamics
+    """
+    
+    def __init__(self, nx: int = 50, ny: int = 50, Lx: float = 1.0, Ly: float = 1.0,
+                 nu: float = 0.01, rho: float = 1.0):
+        """
+        Initialize Navier-Stokes solver grid.
+        
+        Args:
+            nx, ny: Grid points in x, y directions
+            Lx, Ly: Domain size in x, y
+            nu: Kinematic viscosity (m²/s)
+            rho: Fluid density (kg/m³)
+        """
+        self.nx, self.ny = nx, ny
+        self.Lx, self.Ly = Lx, Ly
+        self.dx = Lx / (nx - 1)
+        self.dy = Ly / (ny - 1)
+        self.nu = nu
+        self.rho = rho
+        
+        # Velocity fields (staggered grid)
+        self.u = np.zeros((ny, nx))  # x-velocity
+        self.v = np.zeros((ny, nx))  # y-velocity
+        self.p = np.zeros((ny, nx))  # pressure
+        
+        # Intermediate velocities
+        self.u_star = np.zeros((ny, nx))
+        self.v_star = np.zeros((ny, nx))
+        
+        # Vorticity and streamfunction
+        self.omega = np.zeros((ny, nx))
+        self.psi = np.zeros((ny, nx))
+    
+    def set_lid_driven_cavity(self, u_lid: float = 1.0):
+        """Set up lid-driven cavity boundary conditions."""
+        self.u[-1, :] = u_lid  # Top lid moving right
+        self.u[0, :] = 0.0     # Bottom wall
+        self.u[:, 0] = 0.0     # Left wall
+        self.u[:, -1] = 0.0    # Right wall
+        self.v[:, :] = 0.0     # No vertical velocity at walls
+        self.bc_type = 'lid_cavity'
+        self.u_lid = u_lid
+    
+    def set_channel_flow(self, dp_dx: float = -1.0):
+        """Set up Poiseuille channel flow (pressure-driven)."""
+        self.dp_dx = dp_dx
+        self.bc_type = 'channel'
+    
+    def laplacian(self, f: np.ndarray) -> np.ndarray:
+        """Compute Laplacian ∇²f using central differences."""
+        lap = np.zeros_like(f)
+        lap[1:-1, 1:-1] = (
+            (f[1:-1, 2:] - 2*f[1:-1, 1:-1] + f[1:-1, :-2]) / self.dx**2 +
+            (f[2:, 1:-1] - 2*f[1:-1, 1:-1] + f[:-2, 1:-1]) / self.dy**2
+        )
+        return lap
+    
+    def convection(self, u: np.ndarray, v: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+        """Compute convective terms (u·∇)u using upwind scheme."""
+        conv_u = np.zeros_like(u)
+        conv_v = np.zeros_like(v)
+        
+        # Central differences for convection
+        for i in range(1, self.ny - 1):
+            for j in range(1, self.nx - 1):
+                # du/dx, du/dy
+                dudx = (u[i, j+1] - u[i, j-1]) / (2 * self.dx)
+                dudy = (u[i+1, j] - u[i-1, j]) / (2 * self.dy)
+                # dv/dx, dv/dy
+                dvdx = (v[i, j+1] - v[i, j-1]) / (2 * self.dx)
+                dvdy = (v[i+1, j] - v[i-1, j]) / (2 * self.dy)
+                
+                conv_u[i, j] = u[i, j] * dudx + v[i, j] * dudy
+                conv_v[i, j] = u[i, j] * dvdx + v[i, j] * dvdy
+        
+        return conv_u, conv_v
+    
+    def pressure_poisson(self, rhs: np.ndarray, tol: float = 1e-6, maxiter: int = 5000) -> np.ndarray:
+        """
+        Solve pressure Poisson equation: ∇²p = rhs
+        
+        Uses Successive Over-Relaxation (SOR) method.
+        """
+        p = self.p.copy()
+        omega_sor = 1.7  # SOR relaxation parameter
+        
+        for iteration in range(maxiter):
+            p_old = p.copy()
+            
+            for i in range(1, self.ny - 1):
+                for j in range(1, self.nx - 1):
+                    p[i, j] = (1 - omega_sor) * p[i, j] + omega_sor / (
+                        2 / self.dx**2 + 2 / self.dy**2
+                    ) * (
+                        (p[i, j+1] + p[i, j-1]) / self.dx**2 +
+                        (p[i+1, j] + p[i-1, j]) / self.dy**2 -
+                        rhs[i, j]
+                    )
+            
+            # Neumann BC: dp/dn = 0 on walls
+            p[:, 0] = p[:, 1]
+            p[:, -1] = p[:, -2]
+            p[0, :] = p[1, :]
+            p[-1, :] = p[-2, :]
+            
+            # Convergence check
+            error = np.max(np.abs(p - p_old))
+            if error < tol:
+                break
+        
+        return p
+    
+    def step(self, dt: float) -> Tuple[float, float]:
+        """
+        Advance solution by one time step using projection method.
+        
+        Returns:
+            (max_u, max_div) - Maximum velocity and divergence for monitoring
+        """
+        # Step 1: Compute intermediate velocity (without pressure)
+        conv_u, conv_v = self.convection(self.u, self.v)
+        lap_u = self.laplacian(self.u)
+        lap_v = self.laplacian(self.v)
+        
+        self.u_star = self.u + dt * (-conv_u + self.nu * lap_u)
+        self.v_star = self.v + dt * (-conv_v + self.nu * lap_v)
+        
+        # Apply boundary conditions to intermediate velocity
+        if hasattr(self, 'bc_type') and self.bc_type == 'lid_cavity':
+            self.u_star[-1, :] = self.u_lid
+            self.u_star[0, :] = 0.0
+            self.u_star[:, 0] = 0.0
+            self.u_star[:, -1] = 0.0
+            self.v_star[:, :] = np.where(
+                (np.arange(self.nx) == 0) | (np.arange(self.nx) == self.nx-1),
+                0.0, self.v_star
+            )
+        
+        # Step 2: Solve pressure Poisson equation
+        # ∇²p = (ρ/dt) ∇·u*
+        div_u_star = np.zeros((self.ny, self.nx))
+        div_u_star[1:-1, 1:-1] = (
+            (self.u_star[1:-1, 2:] - self.u_star[1:-1, :-2]) / (2 * self.dx) +
+            (self.v_star[2:, 1:-1] - self.v_star[:-2, 1:-1]) / (2 * self.dy)
+        )
+        rhs = self.rho / dt * div_u_star
+        self.p = self.pressure_poisson(rhs)
+        
+        # Step 3: Project velocity to be divergence-free
+        self.u[1:-1, 1:-1] = self.u_star[1:-1, 1:-1] - dt / self.rho * (
+            self.p[1:-1, 2:] - self.p[1:-1, :-2]
+        ) / (2 * self.dx)
+        self.v[1:-1, 1:-1] = self.v_star[1:-1, 1:-1] - dt / self.rho * (
+            self.p[2:, 1:-1] - self.p[:-2, 1:-1]
+        ) / (2 * self.dy)
+        
+        # Reapply boundary conditions
+        if hasattr(self, 'bc_type') and self.bc_type == 'lid_cavity':
+            self.u[-1, :] = self.u_lid
+            self.u[0, :] = 0.0
+            self.u[:, 0] = 0.0
+            self.u[:, -1] = 0.0
+            self.v[-1, :] = 0.0
+            self.v[0, :] = 0.0
+            self.v[:, 0] = 0.0
+            self.v[:, -1] = 0.0
+        
+        # Compute diagnostics
+        max_u = np.sqrt(np.max(self.u**2 + self.v**2))
+        max_div = np.max(np.abs(div_u_star))
+        
+        return max_u, max_div
+    
+    def compute_vorticity(self) -> np.ndarray:
+        """Compute vorticity ω = ∂v/∂x - ∂u/∂y."""
+        self.omega[1:-1, 1:-1] = (
+            (self.v[1:-1, 2:] - self.v[1:-1, :-2]) / (2 * self.dx) -
+            (self.u[2:, 1:-1] - self.u[:-2, 1:-1]) / (2 * self.dy)
+        )
+        return self.omega
+    
+    def compute_streamfunction(self) -> np.ndarray:
+        """Solve for streamfunction: ∇²ψ = -ω."""
+        self.compute_vorticity()
+        self.psi = self.pressure_poisson(-self.omega)
+        return self.psi
+    
+    def compute_reynolds_number(self, L_char: float = None, U_char: float = None) -> float:
+        """Compute Reynolds number Re = UL/ν."""
+        if L_char is None:
+            L_char = self.Lx
+        if U_char is None:
+            U_char = np.max(np.abs(self.u)) if np.max(np.abs(self.u)) > 0 else 1.0
+        return U_char * L_char / self.nu
+    
+    def solve_steady(self, dt: float = 0.001, max_steps: int = 10000,
+                     tol: float = 1e-6) -> dict:
+        """
+        Solve to steady state.
+        
+        Returns:
+            dict with convergence info, final Re, vorticity, etc.
+        """
+        history = {'u_max': [], 'div_max': [], 'steps': 0}
+        
+        for step in range(max_steps):
+            u_old = self.u.copy()
+            max_u, max_div = self.step(dt)
+            
+            history['u_max'].append(max_u)
+            history['div_max'].append(max_div)
+            
+            # Check convergence
+            du = np.max(np.abs(self.u - u_old))
+            if du < tol:
+                history['steps'] = step + 1
+                break
+        else:
+            history['steps'] = max_steps
+        
+        history['converged'] = history['steps'] < max_steps
+        history['Re'] = self.compute_reynolds_number()
+        history['omega_max'] = np.max(np.abs(self.compute_vorticity()))
+        
+        return history
+    
+    @staticmethod
+    def stokes_drag(mu: float, R: float, U: float) -> float:
+        """Stokes drag on a sphere: F = 6πμRU."""
+        return 6 * np.pi * mu * R * U
+    
+    @staticmethod
+    def poiseuille_velocity(y: float, H: float, dp_dx: float, mu: float) -> float:
+        """Analytical Poiseuille velocity profile: u(y) = (1/2μ)(-dp/dx)(Hy - y²)."""
+        return (1 / (2 * mu)) * (-dp_dx) * (H * y - y**2)
+    
+    @staticmethod
+    def reynolds_stress(u_prime: np.ndarray, v_prime: np.ndarray) -> float:
+        """Reynolds stress tensor component: τ_xy = -ρ<u'v'>."""
+        return -np.mean(u_prime * v_prime)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# TENSOR ALGEBRA FOR GENERAL RELATIVITY
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class TensorAlgebra:
+    """
+    Tensor algebra for General Relativity calculations.
+    
+    Implements:
+        - Metric tensors (Minkowski, Schwarzschild, Kerr, FLRW)
+        - Christoffel symbols Γ^α_βγ
+        - Riemann curvature tensor R^ρ_σμν
+        - Ricci tensor R_μν and scalar R
+        - Einstein tensor G_μν
+        - Geodesic equations
+        - Covariant derivatives
+    
+    Coordinate systems:
+        - Cartesian (t, x, y, z)
+        - Spherical (t, r, θ, φ)
+        - Boyer-Lindquist for Kerr
+    
+    Applications:
+        - UQFF gravitational field equations
+        - Black hole spacetimes
+        - Gravitational wave propagation
+        - Cosmological models
+    """
+    
+    # Metric signature convention: (-1, +1, +1, +1)
+    ETA = np.diag([-1.0, 1.0, 1.0, 1.0])  # Minkowski metric
+    
+    @staticmethod
+    def minkowski_metric() -> np.ndarray:
+        """Return 4x4 Minkowski metric tensor η_μν."""
+        return TensorAlgebra.ETA.copy()
+    
+    @staticmethod
+    def schwarzschild_metric(r: float, M: float, c: float = 2.998e8,
+                              G: float = 6.674e-11) -> np.ndarray:
+        """
+        Schwarzschild metric for non-rotating black hole.
+        
+        ds² = -(1-r_s/r)c²dt² + (1-r_s/r)⁻¹dr² + r²dθ² + r²sin²θdφ²
+        
+        Args:
+            r: Radial coordinate (m)
+            M: Black hole mass (kg)
+            c: Speed of light (m/s)
+            G: Gravitational constant
+            
+        Returns:
+            4x4 metric tensor g_μν at (r, θ=π/2)
+        """
+        r_s = 2 * G * M / c**2  # Schwarzschild radius
+        
+        if r <= r_s:
+            raise ValueError(f"r={r} <= r_s={r_s}: inside event horizon")
+        
+        f = 1 - r_s / r
+        g = np.zeros((4, 4))
+        g[0, 0] = -f * c**2          # g_tt
+        g[1, 1] = 1 / f              # g_rr
+        g[2, 2] = r**2               # g_θθ
+        g[3, 3] = r**2               # g_φφ (at θ=π/2)
+        
+        return g
+    
+    @staticmethod
+    def kerr_metric(r: float, theta: float, M: float, a: float,
+                    c: float = 2.998e8, G: float = 6.674e-11) -> np.ndarray:
+        """
+        Kerr metric for rotating black hole (Boyer-Lindquist coordinates).
+        
+        Args:
+            r: Radial coordinate (m)
+            theta: Polar angle (rad)
+            M: Black hole mass (kg)
+            a: Spin parameter = J/(Mc) (m)
+            c: Speed of light
+            G: Gravitational constant
+            
+        Returns:
+            4x4 metric tensor g_μν
+        """
+        r_s = 2 * G * M / c**2
+        
+        # Kerr metric functions
+        Sigma = r**2 + a**2 * np.cos(theta)**2
+        Delta = r**2 - r_s * r + a**2
+        
+        if Delta <= 0:
+            raise ValueError("Inside ergosphere or horizon")
+        
+        sin2 = np.sin(theta)**2
+        
+        g = np.zeros((4, 4))
+        g[0, 0] = -(1 - r_s * r / Sigma) * c**2
+        g[0, 3] = -r_s * r * a * sin2 / Sigma * c
+        g[3, 0] = g[0, 3]
+        g[1, 1] = Sigma / Delta
+        g[2, 2] = Sigma
+        g[3, 3] = (r**2 + a**2 + r_s * r * a**2 * sin2 / Sigma) * sin2
+        
+        return g
+    
+    @staticmethod
+    def flrw_metric(t: float, a_func: Callable, k: int = 0) -> np.ndarray:
+        """
+        FLRW (Friedmann-Lemaître-Robertson-Walker) cosmological metric.
+        
+        ds² = -c²dt² + a(t)²[dr²/(1-kr²) + r²dΩ²]
+        
+        Args:
+            t: Cosmic time
+            a_func: Scale factor function a(t)
+            k: Curvature parameter (-1, 0, +1)
+            
+        Returns:
+            4x4 metric tensor (at r=1, θ=π/2 for simplicity)
+        """
+        a = a_func(t)
+        c = 2.998e8
+        r = 1.0  # Unit radius
+        
+        g = np.zeros((4, 4))
+        g[0, 0] = -c**2
+        g[1, 1] = a**2 / (1 - k * r**2)
+        g[2, 2] = a**2 * r**2
+        g[3, 3] = a**2 * r**2  # at θ=π/2
+        
+        return g
+    
+    @staticmethod
+    def inverse_metric(g: np.ndarray) -> np.ndarray:
+        """Compute inverse metric g^μν from g_μν."""
+        return np.linalg.inv(g)
+    
+    @staticmethod
+    def christoffel_symbols_numerical(metric_func: Callable, x: np.ndarray,
+                                       h: float = 1e-8) -> np.ndarray:
+        """
+        Compute Christoffel symbols Γ^α_βγ numerically.
+        
+        Γ^α_βγ = (1/2) g^αδ (∂_β g_δγ + ∂_γ g_δβ - ∂_δ g_βγ)
+        
+        Args:
+            metric_func: Function that returns g_μν at coordinates x
+            x: Current coordinates (4-vector)
+            h: Step size for numerical differentiation
+            
+        Returns:
+            4x4x4 array of Christoffel symbols
+        """
+        g = metric_func(x)
+        g_inv = TensorAlgebra.inverse_metric(g)
+        
+        # Numerical partial derivatives of metric
+        dg = np.zeros((4, 4, 4))  # ∂_α g_βγ
+        
+        for alpha in range(4):
+            x_plus = x.copy()
+            x_minus = x.copy()
+            x_plus[alpha] += h
+            x_minus[alpha] -= h
+            
+            g_plus = metric_func(x_plus)
+            g_minus = metric_func(x_minus)
+            
+            dg[alpha] = (g_plus - g_minus) / (2 * h)
+        
+        # Christoffel symbols
+        Gamma = np.zeros((4, 4, 4))
+        
+        for alpha in range(4):
+            for beta in range(4):
+                for gamma in range(4):
+                    for delta in range(4):
+                        Gamma[alpha, beta, gamma] += 0.5 * g_inv[alpha, delta] * (
+                            dg[beta, delta, gamma] + 
+                            dg[gamma, delta, beta] - 
+                            dg[delta, beta, gamma]
+                        )
+        
+        return Gamma
+    
+    @staticmethod
+    def riemann_tensor_numerical(metric_func: Callable, x: np.ndarray,
+                                  h: float = 1e-6) -> np.ndarray:
+        """
+        Compute Riemann curvature tensor R^ρ_σμν numerically.
+        
+        R^ρ_σμν = ∂_μ Γ^ρ_νσ - ∂_ν Γ^ρ_μσ + Γ^ρ_μλ Γ^λ_νσ - Γ^ρ_νλ Γ^λ_μσ
+        
+        Returns:
+            4x4x4x4 Riemann tensor
+        """
+        Gamma = TensorAlgebra.christoffel_symbols_numerical(metric_func, x, h)
+        
+        # Numerical derivatives of Christoffel symbols
+        dGamma = np.zeros((4, 4, 4, 4))  # ∂_α Γ^β_γδ
+        
+        for alpha in range(4):
+            x_plus = x.copy()
+            x_minus = x.copy()
+            x_plus[alpha] += h
+            x_minus[alpha] -= h
+            
+            Gamma_plus = TensorAlgebra.christoffel_symbols_numerical(metric_func, x_plus, h)
+            Gamma_minus = TensorAlgebra.christoffel_symbols_numerical(metric_func, x_minus, h)
+            
+            dGamma[alpha] = (Gamma_plus - Gamma_minus) / (2 * h)
+        
+        # Riemann tensor
+        R = np.zeros((4, 4, 4, 4))
+        
+        for rho in range(4):
+            for sigma in range(4):
+                for mu in range(4):
+                    for nu in range(4):
+                        R[rho, sigma, mu, nu] = (
+                            dGamma[mu, rho, nu, sigma] - 
+                            dGamma[nu, rho, mu, sigma]
+                        )
+                        for lam in range(4):
+                            R[rho, sigma, mu, nu] += (
+                                Gamma[rho, mu, lam] * Gamma[lam, nu, sigma] -
+                                Gamma[rho, nu, lam] * Gamma[lam, mu, sigma]
+                            )
+        
+        return R
+    
+    @staticmethod
+    def ricci_tensor(R: np.ndarray) -> np.ndarray:
+        """
+        Contract Riemann tensor to get Ricci tensor.
+        
+        R_μν = R^ρ_μρν
+        """
+        Ric = np.zeros((4, 4))
+        for mu in range(4):
+            for nu in range(4):
+                for rho in range(4):
+                    Ric[mu, nu] += R[rho, mu, rho, nu]
+        return Ric
+    
+    @staticmethod
+    def ricci_scalar(Ric: np.ndarray, g_inv: np.ndarray) -> float:
+        """
+        Contract Ricci tensor to get Ricci scalar.
+        
+        R = g^μν R_μν
+        """
+        return np.sum(g_inv * Ric)
+    
+    @staticmethod
+    def einstein_tensor(Ric: np.ndarray, R_scalar: float, g: np.ndarray) -> np.ndarray:
+        """
+        Compute Einstein tensor.
+        
+        G_μν = R_μν - (1/2) g_μν R
+        """
+        return Ric - 0.5 * g * R_scalar
+    
+    @staticmethod
+    def geodesic_equation(Gamma: np.ndarray, x: np.ndarray,
+                          v: np.ndarray) -> np.ndarray:
+        """
+        Compute geodesic acceleration.
+        
+        d²x^μ/dτ² = -Γ^μ_αβ (dx^α/dτ)(dx^β/dτ)
+        
+        Args:
+            Gamma: Christoffel symbols Γ^μ_αβ
+            x: Current position (4-vector)
+            v: Current velocity dx^μ/dτ (4-vector)
+            
+        Returns:
+            Acceleration d²x^μ/dτ² (4-vector)
+        """
+        a = np.zeros(4)
+        for mu in range(4):
+            for alpha in range(4):
+                for beta in range(4):
+                    a[mu] -= Gamma[mu, alpha, beta] * v[alpha] * v[beta]
+        return a
+    
+    @staticmethod
+    def integrate_geodesic(metric_func: Callable, x0: np.ndarray, v0: np.ndarray,
+                           tau_span: Tuple[float, float], n_steps: int = 1000) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        Integrate geodesic equation using RK4.
+        
+        Args:
+            metric_func: Function returning metric at coordinates
+            x0: Initial position (4-vector)
+            v0: Initial velocity (4-vector)
+            tau_span: (tau_start, tau_end) proper time interval
+            n_steps: Number of integration steps
+            
+        Returns:
+            (tau, trajectory) - proper time array and (n_steps, 8) state array
+        """
+        tau = np.linspace(tau_span[0], tau_span[1], n_steps)
+        dtau = (tau_span[1] - tau_span[0]) / (n_steps - 1)
+        
+        # State vector: [x0, x1, x2, x3, v0, v1, v2, v3]
+        state = np.zeros((n_steps, 8))
+        state[0, :4] = x0
+        state[0, 4:] = v0
+        
+        def derivatives(s):
+            x = s[:4]
+            v = s[4:]
+            Gamma = TensorAlgebra.christoffel_symbols_numerical(metric_func, x)
+            a = TensorAlgebra.geodesic_equation(Gamma, x, v)
+            return np.concatenate([v, a])
+        
+        # RK4 integration
+        for i in range(n_steps - 1):
+            s = state[i]
+            k1 = dtau * derivatives(s)
+            k2 = dtau * derivatives(s + k1/2)
+            k3 = dtau * derivatives(s + k2/2)
+            k4 = dtau * derivatives(s + k3)
+            state[i+1] = s + (k1 + 2*k2 + 2*k3 + k4) / 6
+        
+        return tau, state
+    
+    @staticmethod
+    def covariant_derivative(T: np.ndarray, Gamma: np.ndarray,
+                              indices: str = 'u') -> np.ndarray:
+        """
+        Compute covariant derivative of a tensor.
+        
+        Args:
+            T: Tensor (vector or 2-tensor)
+            Gamma: Christoffel symbols
+            indices: 'u' for upper, 'd' for lower index
+            
+        Returns:
+            Covariant derivative ∇_μ T^ν or ∇_μ T_ν
+        """
+        if T.ndim == 1:  # Vector
+            nabla_T = np.zeros((4, 4))
+            for mu in range(4):
+                for nu in range(4):
+                    if indices == 'u':
+                        # ∇_μ V^ν = ∂_μ V^ν + Γ^ν_μρ V^ρ
+                        for rho in range(4):
+                            nabla_T[mu, nu] += Gamma[nu, mu, rho] * T[rho]
+                    else:
+                        # ∇_μ V_ν = ∂_μ V_ν - Γ^ρ_μν V_ρ
+                        for rho in range(4):
+                            nabla_T[mu, nu] -= Gamma[rho, mu, nu] * T[rho]
+            return nabla_T
+        
+        return T  # For higher-rank tensors, return unchanged (placeholder)
+    
+    @staticmethod
+    def kretschmann_scalar(R: np.ndarray, g: np.ndarray) -> float:
+        """
+        Compute Kretschmann scalar K = R_αβγδ R^αβγδ.
+        
+        Measures curvature invariant (diverges at singularities).
+        """
+        g_inv = TensorAlgebra.inverse_metric(g)
+        
+        # Lower all indices of Riemann (using metric)
+        R_lower = np.zeros((4, 4, 4, 4))
+        for a in range(4):
+            for b in range(4):
+                for c in range(4):
+                    for d in range(4):
+                        for e in range(4):
+                            R_lower[a, b, c, d] += g[a, e] * R[e, b, c, d]
+        
+        # Contract with R^αβγδ
+        K = 0.0
+        for a in range(4):
+            for b in range(4):
+                for c in range(4):
+                    for d in range(4):
+                        for e in range(4):
+                            for f in range(4):
+                                for h in range(4):
+                                    for i in range(4):
+                                        K += (g_inv[a, e] * g_inv[b, f] * 
+                                              g_inv[c, h] * g_inv[d, i] *
+                                              R_lower[a, b, c, d] * R_lower[e, f, h, i])
+        return K
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SCHRÖDINGER EQUATION SOLVER
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class SchrodingerSolver:
+    """
+    Time-dependent and time-independent Schrödinger equation solver.
+    
+    Implements:
+        - 1D/2D/3D time-independent eigenvalue problems
+        - Time evolution via split-operator method
+        - Common potentials: harmonic oscillator, hydrogen, well, barrier
+        - Expectation values and observables
+        - Wavepacket dynamics
+    
+    Equations:
+        Time-independent: Ĥψ = Eψ
+        Time-dependent: iℏ ∂ψ/∂t = Ĥψ
+        
+        Ĥ = -ℏ²/(2m) ∇² + V(r)
+    
+    Applications:
+        - UQFF quantum coupling terms
+        - Atomic/molecular energy levels
+        - Tunneling calculations
+        - Quantum coherence in UQFF
+    """
+    
+    # Physical constants
+    HBAR = 1.054571817e-34  # Reduced Planck constant (J·s)
+    M_E = 9.10938e-31       # Electron mass (kg)
+    E_H = 4.3597e-18        # Hartree energy (J)
+    A_0 = 5.29177e-11       # Bohr radius (m)
+    
+    def __init__(self, n_points: int = 200, x_min: float = -10.0, x_max: float = 10.0,
+                 mass: float = None, hbar: float = 1.0, use_atomic_units: bool = True):
+        """
+        Initialize 1D Schrödinger solver.
+        
+        Args:
+            n_points: Grid points
+            x_min, x_max: Domain boundaries (in chosen units)
+            mass: Particle mass (default: electron mass or 1 in atomic units)
+            hbar: Reduced Planck constant (default: 1 in atomic units)
+            use_atomic_units: If True, ℏ=m_e=e=1, lengths in a_0, energies in Hartree
+        """
+        self.n = n_points
+        self.x_min, self.x_max = x_min, x_max
+        self.x = np.linspace(x_min, x_max, n_points)
+        self.dx = (x_max - x_min) / (n_points - 1)
+        
+        self.use_atomic_units = use_atomic_units
+        if use_atomic_units:
+            self.hbar = 1.0
+            self.m = 1.0
+        else:
+            self.hbar = hbar if hbar != 1.0 else self.HBAR
+            self.m = mass if mass else self.M_E
+        
+        # Potential and wavefunction storage
+        self.V = np.zeros(n_points)
+        self.psi = np.zeros(n_points, dtype=complex)
+        self.energies = []
+        self.eigenstates = []
+    
+    def set_potential(self, V_func: Callable):
+        """Set potential V(x) from a function."""
+        self.V = np.array([V_func(xi) for xi in self.x])
+    
+    def harmonic_oscillator_potential(self, omega: float = 1.0, x0: float = 0.0):
+        """V(x) = (1/2) m ω² (x - x0)²"""
+        self.V = 0.5 * self.m * omega**2 * (self.x - x0)**2
+        self.omega = omega
+    
+    def infinite_well_potential(self, L: float = None):
+        """Infinite square well: V=0 inside, V=∞ outside."""
+        if L is None:
+            L = self.x_max - self.x_min
+        center = (self.x_max + self.x_min) / 2
+        self.V = np.where(np.abs(self.x - center) < L/2, 0.0, 1e10)
+    
+    def finite_well_potential(self, V0: float = 10.0, L: float = 2.0):
+        """Finite square well: V = -V0 inside, V = 0 outside."""
+        center = (self.x_max + self.x_min) / 2
+        self.V = np.where(np.abs(self.x - center) < L/2, -V0, 0.0)
+    
+    def barrier_potential(self, V0: float = 5.0, L: float = 1.0, x0: float = 0.0):
+        """Rectangular barrier: V = V0 for |x-x0| < L/2."""
+        self.V = np.where(np.abs(self.x - x0) < L/2, V0, 0.0)
+    
+    def coulomb_potential(self, Z: float = 1.0, softening: float = 0.1):
+        """Regularized Coulomb: V(x) = -Z / sqrt(x² + ε²) (1D approximation)."""
+        # In atomic units: V = -Z/r
+        self.V = -Z / np.sqrt(self.x**2 + softening**2)
+    
+    def build_hamiltonian(self) -> np.ndarray:
+        """
+        Build Hamiltonian matrix using finite differences.
+        
+        H = T + V where T = -ℏ²/(2m) d²/dx²
+        """
+        # Kinetic energy: second derivative via central difference
+        coeff = -self.hbar**2 / (2 * self.m * self.dx**2)
+        
+        H = np.zeros((self.n, self.n))
+        
+        # Tridiagonal kinetic energy
+        for i in range(self.n):
+            H[i, i] = -2 * coeff + self.V[i]
+            if i > 0:
+                H[i, i-1] = coeff
+            if i < self.n - 1:
+                H[i, i+1] = coeff
+        
+        return H
+    
+    def solve_eigenstates(self, n_states: int = 10) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        Solve time-independent Schrödinger equation.
+        
+        Returns:
+            (energies, eigenstates) - n_states lowest energy solutions
+        """
+        H = self.build_hamiltonian()
+        
+        if SCIPY_AVAILABLE:
+            from scipy.linalg import eigh
+            energies, eigenstates = eigh(H)
+        else:
+            energies, eigenstates = np.linalg.eigh(H)
+        
+        # Sort by energy and take n_states lowest
+        idx = np.argsort(energies)[:n_states]
+        self.energies = energies[idx]
+        self.eigenstates = eigenstates[:, idx].T  # Shape: (n_states, n_points)
+        
+        # Normalize
+        for i in range(len(self.eigenstates)):
+            norm = np.sqrt(np.trapz(np.abs(self.eigenstates[i])**2, self.x))
+            self.eigenstates[i] /= norm
+        
+        return self.energies, self.eigenstates
+    
+    def gaussian_wavepacket(self, x0: float = 0.0, sigma: float = 1.0,
+                             k0: float = 0.0) -> np.ndarray:
+        """
+        Initialize Gaussian wavepacket.
+        
+        ψ(x) = (2πσ²)^(-1/4) exp[-(x-x0)²/(4σ²)] exp(ik0·x)
+        """
+        self.psi = ((2 * np.pi * sigma**2)**(-0.25) *
+                    np.exp(-(self.x - x0)**2 / (4 * sigma**2)) *
+                    np.exp(1j * k0 * self.x))
+        return self.psi
+    
+    def normalize(self):
+        """Normalize wavefunction."""
+        norm = np.sqrt(np.trapz(np.abs(self.psi)**2, self.x))
+        if norm > 0:
+            self.psi /= norm
+    
+    def time_evolve_split_operator(self, dt: float, n_steps: int) -> List[np.ndarray]:
+        """
+        Time evolution using split-operator method.
+        
+        exp(-iĤdt/ℏ) ≈ exp(-iV̂dt/2ℏ) exp(-iT̂dt/ℏ) exp(-iV̂dt/2ℏ)
+        
+        Returns:
+            List of wavefunctions at each time step
+        """
+        # Potential half-step operator
+        exp_V_half = np.exp(-1j * self.V * dt / (2 * self.hbar))
+        
+        # Momentum space kinetic operator
+        k = 2 * np.pi * np.fft.fftfreq(self.n, self.dx)
+        T_k = self.hbar**2 * k**2 / (2 * self.m)
+        exp_T = np.exp(-1j * T_k * dt / self.hbar)
+        
+        history = [self.psi.copy()]
+        
+        for _ in range(n_steps):
+            # Half potential step
+            self.psi = exp_V_half * self.psi
+            
+            # Full kinetic step (in momentum space)
+            psi_k = np.fft.fft(self.psi)
+            psi_k = exp_T * psi_k
+            self.psi = np.fft.ifft(psi_k)
+            
+            # Half potential step
+            self.psi = exp_V_half * self.psi
+            
+            history.append(self.psi.copy())
+        
+        return history
+    
+    def time_evolve_crank_nicolson(self, dt: float, n_steps: int) -> List[np.ndarray]:
+        """
+        Time evolution using Crank-Nicolson method.
+        
+        (1 + iĤdt/2ℏ) ψ(t+dt) = (1 - iĤdt/2ℏ) ψ(t)
+        
+        Unconditionally stable, unitary.
+        """
+        H = self.build_hamiltonian()
+        I = np.eye(self.n)
+        
+        alpha = 1j * dt / (2 * self.hbar)
+        A = I + alpha * H  # Implicit side
+        B = I - alpha * H  # Explicit side
+        
+        history = [self.psi.copy()]
+        
+        for _ in range(n_steps):
+            rhs = B @ self.psi
+            self.psi = np.linalg.solve(A, rhs)
+            history.append(self.psi.copy())
+        
+        return history
+    
+    def expectation_value(self, operator: np.ndarray = None) -> complex:
+        """
+        Compute expectation value <ψ|Ô|ψ>.
+        
+        If operator is None, returns <ψ|ψ> (norm squared).
+        """
+        if operator is None:
+            return np.trapz(np.abs(self.psi)**2, self.x)
+        else:
+            return np.trapz(np.conj(self.psi) * (operator @ self.psi), self.x)
+    
+    def position_expectation(self) -> float:
+        """Compute <x>."""
+        return np.real(np.trapz(np.conj(self.psi) * self.x * self.psi, self.x))
+    
+    def momentum_expectation(self) -> float:
+        """Compute <p> = -iℏ <d/dx>."""
+        dpsi_dx = np.gradient(self.psi, self.dx)
+        return np.real(-1j * self.hbar * np.trapz(np.conj(self.psi) * dpsi_dx, self.x))
+    
+    def energy_expectation(self) -> float:
+        """Compute <E> = <ψ|Ĥ|ψ>."""
+        H = self.build_hamiltonian()
+        return np.real(self.expectation_value(H))
+    
+    def uncertainty_position(self) -> float:
+        """Compute Δx = sqrt(<x²> - <x>²)."""
+        x_avg = self.position_expectation()
+        x2_avg = np.real(np.trapz(np.conj(self.psi) * self.x**2 * self.psi, self.x))
+        return np.sqrt(max(0, x2_avg - x_avg**2))
+    
+    def uncertainty_momentum(self) -> float:
+        """Compute Δp."""
+        p_avg = self.momentum_expectation()
+        d2psi_dx2 = np.gradient(np.gradient(self.psi, self.dx), self.dx)
+        p2_psi = -self.hbar**2 * d2psi_dx2
+        p2_avg = np.real(np.trapz(np.conj(self.psi) * p2_psi, self.x))
+        return np.sqrt(max(0, p2_avg - p_avg**2))
+    
+    def tunneling_coefficient(self, E: float = None) -> float:
+        """
+        Estimate tunneling coefficient through barrier.
+        
+        Uses WKB approximation: T ≈ exp(-2∫√(2m(V-E))/ℏ dx)
+        """
+        if E is None:
+            E = self.energy_expectation()
+        
+        # Find barrier region where V > E
+        barrier_mask = self.V > E
+        if not np.any(barrier_mask):
+            return 1.0  # No barrier
+        
+        integrand = np.sqrt(2 * self.m * np.maximum(0, self.V - E)) / self.hbar
+        integral = np.trapz(integrand * barrier_mask, self.x)
+        
+        return np.exp(-2 * integral)
+    
+    @staticmethod
+    def analytical_harmonic_energy(n: int, omega: float = 1.0, hbar: float = 1.0) -> float:
+        """Analytical energy: E_n = ℏω(n + 1/2)."""
+        return hbar * omega * (n + 0.5)
+    
+    @staticmethod
+    def analytical_infinite_well_energy(n: int, L: float, m: float = 1.0,
+                                         hbar: float = 1.0) -> float:
+        """Analytical energy: E_n = n²π²ℏ²/(2mL²)."""
+        return (n**2 * np.pi**2 * hbar**2) / (2 * m * L**2)
+    
+    @staticmethod
+    def hydrogen_energy(n: int) -> float:
+        """Hydrogen energy levels: E_n = -13.6 eV / n² (in atomic units: -0.5/n²)."""
+        return -0.5 / n**2  # Hartree
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# FINITE ELEMENT METHOD (FEM)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class FiniteElementMethod:
+    """
+    Finite Element Method solver for PDEs.
+    
+    Implements:
+        - 1D/2D Poisson equation: -∇²u = f
+        - 1D/2D heat equation: ∂u/∂t = α∇²u
+        - 1D/2D elasticity (simple bar/membrane)
+        - Linear and quadratic elements
+        - Dirichlet and Neumann boundary conditions
+    
+    Applications:
+        - UQFF field solutions
+        - Gravitational potential distribution
+        - Thermal diffusion in stellar cores
+        - Structural analysis
+    """
+    
+    def __init__(self, n_elements: int = 20, x_min: float = 0.0, x_max: float = 1.0):
+        """
+        Initialize 1D FEM mesh.
+        
+        Args:
+            n_elements: Number of elements
+            x_min, x_max: Domain boundaries
+        """
+        self.n_elements = n_elements
+        self.n_nodes = n_elements + 1
+        self.x_min, self.x_max = x_min, x_max
+        
+        # Node coordinates
+        self.nodes = np.linspace(x_min, x_max, self.n_nodes)
+        self.h = (x_max - x_min) / n_elements  # Element size
+        
+        # Element connectivity (element i has nodes i and i+1)
+        self.elements = [(i, i+1) for i in range(n_elements)]
+        
+        # Global matrices
+        self.K = None  # Stiffness matrix
+        self.M = None  # Mass matrix
+        self.F = None  # Load vector
+        self.u = None  # Solution vector
+    
+    def local_stiffness_1d(self) -> np.ndarray:
+        """Local stiffness matrix for linear 1D element."""
+        return np.array([
+            [1, -1],
+            [-1, 1]
+        ]) / self.h
+    
+    def local_mass_1d(self) -> np.ndarray:
+        """Local mass matrix for linear 1D element (consistent)."""
+        return self.h / 6 * np.array([
+            [2, 1],
+            [1, 2]
+        ])
+    
+    def assemble_stiffness(self) -> np.ndarray:
+        """Assemble global stiffness matrix."""
+        K_local = self.local_stiffness_1d()
+        self.K = np.zeros((self.n_nodes, self.n_nodes))
+        
+        for elem_idx, (i, j) in enumerate(self.elements):
+            self.K[i, i] += K_local[0, 0]
+            self.K[i, j] += K_local[0, 1]
+            self.K[j, i] += K_local[1, 0]
+            self.K[j, j] += K_local[1, 1]
+        
+        return self.K
+    
+    def assemble_mass(self) -> np.ndarray:
+        """Assemble global mass matrix."""
+        M_local = self.local_mass_1d()
+        self.M = np.zeros((self.n_nodes, self.n_nodes))
+        
+        for elem_idx, (i, j) in enumerate(self.elements):
+            self.M[i, i] += M_local[0, 0]
+            self.M[i, j] += M_local[0, 1]
+            self.M[j, i] += M_local[1, 0]
+            self.M[j, j] += M_local[1, 1]
+        
+        return self.M
+    
+    def assemble_load(self, f: Callable) -> np.ndarray:
+        """
+        Assemble load vector from source function f(x).
+        
+        F_i = ∫ f(x) N_i(x) dx
+        """
+        self.F = np.zeros(self.n_nodes)
+        
+        for elem_idx, (i, j) in enumerate(self.elements):
+            x_mid = (self.nodes[i] + self.nodes[j]) / 2
+            f_mid = f(x_mid)
+            
+            # Integrate using midpoint rule (simple)
+            self.F[i] += f_mid * self.h / 2
+            self.F[j] += f_mid * self.h / 2
+        
+        return self.F
+    
+    def apply_dirichlet_bc(self, node_idx: int, value: float):
+        """Apply Dirichlet boundary condition u(x_i) = value."""
+        # Modify stiffness matrix and load vector
+        self.K[node_idx, :] = 0
+        self.K[:, node_idx] = 0
+        self.K[node_idx, node_idx] = 1
+        self.F[node_idx] = value
+    
+    def apply_neumann_bc(self, node_idx: int, flux: float):
+        """Apply Neumann boundary condition du/dx = flux."""
+        self.F[node_idx] += flux
+    
+    def solve_poisson(self, f: Callable, u_left: float = 0.0,
+                      u_right: float = 0.0) -> np.ndarray:
+        """
+        Solve 1D Poisson equation: -d²u/dx² = f(x)
+        
+        with Dirichlet BC: u(x_min) = u_left, u(x_max) = u_right
+        
+        Returns:
+            Solution vector u at nodes
+        """
+        self.assemble_stiffness()
+        self.assemble_load(f)
+        
+        # Apply boundary conditions
+        self.apply_dirichlet_bc(0, u_left)
+        self.apply_dirichlet_bc(self.n_nodes - 1, u_right)
+        
+        # Solve
+        self.u = np.linalg.solve(self.K, self.F)
+        return self.u
+    
+    def solve_heat_equation(self, u0: np.ndarray, alpha: float = 1.0,
+                            dt: float = 0.001, n_steps: int = 100,
+                            T_left: float = 0.0, T_right: float = 0.0) -> List[np.ndarray]:
+        """
+        Solve 1D heat equation: ∂u/∂t = α ∂²u/∂x²
+        
+        Using implicit Euler (backward difference in time).
+        
+        Args:
+            u0: Initial temperature distribution
+            alpha: Thermal diffusivity
+            dt: Time step
+            n_steps: Number of time steps
+            T_left, T_right: Boundary temperatures
+            
+        Returns:
+            List of solution vectors at each time step
+        """
+        self.assemble_stiffness()
+        self.assemble_mass()
+        
+        # Implicit Euler: (M + α·dt·K) u^{n+1} = M u^n
+        A = self.M + alpha * dt * self.K
+        
+        # Apply boundary conditions
+        A[0, :] = 0
+        A[0, 0] = 1
+        A[-1, :] = 0
+        A[-1, -1] = 1
+        
+        u = u0.copy()
+        history = [u.copy()]
+        
+        for _ in range(n_steps):
+            rhs = self.M @ u
+            rhs[0] = T_left
+            rhs[-1] = T_right
+            
+            u = np.linalg.solve(A, rhs)
+            history.append(u.copy())
+        
+        return history
+    
+    def solve_eigenvalue(self, n_modes: int = 5) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        Solve eigenvalue problem: K u = λ M u
+        
+        Used for vibration modes, buckling, etc.
+        
+        Returns:
+            (eigenvalues, eigenvectors)
+        """
+        self.assemble_stiffness()
+        self.assemble_mass()
+        
+        # Apply homogeneous Dirichlet BC (remove boundary DOFs)
+        K_int = self.K[1:-1, 1:-1]
+        M_int = self.M[1:-1, 1:-1]
+        
+        if SCIPY_AVAILABLE:
+            from scipy.linalg import eigh
+            eigenvalues, eigenvectors = eigh(K_int, M_int)
+        else:
+            # Solve M^{-1}K v = λv instead
+            M_inv = np.linalg.inv(M_int)
+            eigenvalues, eigenvectors = np.linalg.eig(M_inv @ K_int)
+            eigenvalues = np.real(eigenvalues)
+            eigenvectors = np.real(eigenvectors)
+        
+        # Sort and take first n_modes
+        idx = np.argsort(eigenvalues)[:n_modes]
+        eigenvalues = eigenvalues[idx]
+        eigenvectors = eigenvectors[:, idx]
+        
+        # Pad with zeros for boundary nodes
+        full_modes = np.zeros((self.n_nodes, n_modes))
+        full_modes[1:-1, :] = eigenvectors
+        
+        return eigenvalues, full_modes
+    
+    def error_estimate(self, u_exact: Callable) -> dict:
+        """
+        Compute error metrics between FEM solution and exact solution.
+        
+        Returns:
+            dict with L2 error, H1 error (gradient), max error
+        """
+        if self.u is None:
+            raise ValueError("No solution computed yet")
+        
+        u_ex = np.array([u_exact(x) for x in self.nodes])
+        error = self.u - u_ex
+        
+        # L2 norm
+        L2 = np.sqrt(np.trapz(error**2, self.nodes))
+        
+        # Max norm
+        Linf = np.max(np.abs(error))
+        
+        # H1 seminorm (gradient error)
+        grad_u = np.gradient(self.u, self.h)
+        # Need exact gradient - use numerical differentiation
+        grad_ex = np.gradient(u_ex, self.h)
+        H1_semi = np.sqrt(np.trapz((grad_u - grad_ex)**2, self.nodes))
+        
+        return {
+            'L2': L2,
+            'Linf': Linf,
+            'H1_semi': H1_semi,
+            'relative_L2': L2 / np.sqrt(np.trapz(u_ex**2, self.nodes)) if np.any(u_ex) else float('inf')
+        }
+    
+    @staticmethod
+    def convergence_study(f: Callable, u_exact: Callable, u_left: float = 0.0,
+                          u_right: float = 0.0, n_elements_list: List[int] = None) -> dict:
+        """
+        Perform convergence study with varying mesh sizes.
+        
+        Returns:
+            dict with element counts, h values, and errors
+        """
+        if n_elements_list is None:
+            n_elements_list = [5, 10, 20, 40, 80, 160]
+        
+        h_values = []
+        L2_errors = []
+        
+        for n_elem in n_elements_list:
+            fem = FiniteElementMethod(n_elements=n_elem)
+            fem.solve_poisson(f, u_left, u_right)
+            errors = fem.error_estimate(u_exact)
+            
+            h_values.append(fem.h)
+            L2_errors.append(errors['L2'])
+        
+        # Compute convergence rate
+        rates = []
+        for i in range(1, len(L2_errors)):
+            if L2_errors[i] > 0 and L2_errors[i-1] > 0:
+                rate = np.log(L2_errors[i-1] / L2_errors[i]) / np.log(h_values[i-1] / h_values[i])
+                rates.append(rate)
+            else:
+                rates.append(float('nan'))
+        
+        return {
+            'n_elements': n_elements_list,
+            'h': h_values,
+            'L2_error': L2_errors,
+            'convergence_rate': rates
         }
 
 
