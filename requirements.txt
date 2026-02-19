@@ -1,3 +1,18 @@
 # Python dependencies for Star-Magic project
-# Anthropic's Claude API client
+
+# Core numerical computing
+numpy>=1.24.0
+
+# Scientific computing (integration, optimization, linear algebra)
+scipy>=1.10.0
+
+# Symbolic mathematics / Computer Algebra System
+sympy>=1.12
+
+# API clients
 anthropic>=0.40.0
+requests>=2.28.0
+
+# Optional: HTTP server for production deployment
+# uvicorn>=0.22.0
+# fastapi>=0.100.0

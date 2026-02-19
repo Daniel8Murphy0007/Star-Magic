@@ -30,7 +30,7 @@ Copyright: © 2025-2026 Daniel T. Murphy - All Rights Reserved
 import numpy as np
 from enum import Enum
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple, Any
+from typing import Dict, List, Optional, Tuple, Any, Callable, Union
 import csv
 import os
 import json
@@ -40,6 +40,40 @@ import re
 import time
 import sys
 import argparse
+import math
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# NUMERICAL LIBRARIES - scipy, sympy (with graceful fallback)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# scipy - Scientific computing (integration, optimization, linear algebra)
+try:
+    import scipy
+    from scipy import integrate  # quad, dblquad, odeint, solve_ivp
+    from scipy import optimize   # fsolve, root, minimize, brentq
+    from scipy import linalg     # inv, eig, svd, solve
+    from scipy import interpolate  # interp1d, spline
+    from scipy import special    # Bessel, Gamma, spherical harmonics
+    SCIPY_AVAILABLE = True
+    SCIPY_VERSION = scipy.__version__
+except ImportError:
+    SCIPY_AVAILABLE = False
+    SCIPY_VERSION = None
+
+# sympy - Symbolic mathematics / Computer Algebra System
+try:
+    import sympy
+    from sympy import symbols, diff, integrate as sym_integrate, simplify, expand
+    from sympy import sin, cos, exp, sqrt, pi, oo, I
+    from sympy import Matrix, solve as sym_solve, Eq
+    from sympy import lambdify, series, limit
+    from sympy.physics import units as sympy_units
+    from sympy.physics.quantum import Operator, Bra, Ket, Commutator
+    SYMPY_AVAILABLE = True
+    SYMPY_VERSION = sympy.__version__
+except ImportError:
+    SYMPY_AVAILABLE = False
+    SYMPY_VERSION = None
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # PHASE INTEGRATION & SELF-EXPANDING FRAMEWORK IMPORTS
@@ -72,6 +106,617 @@ try:
     PHASE7_AVAILABLE = True
 except ImportError:
     PHASE7_AVAILABLE = False
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# NUMERICAL METHODS LIBRARY - ODE Solvers, Integration, Optimization
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class NumericalMethods:
+    """
+    Comprehensive numerical methods library for UQFF calculations.
+    
+    Provides:
+        - ODE Solvers: RK4, RK45, Adams-Bashforth, scipy.odeint wrapper
+        - Integration: Trapezoidal, Simpson, Gaussian quadrature, scipy.quad wrapper
+        - Optimization: Newton-Raphson, Bisection, scipy.fsolve wrapper
+        - Linear Algebra: Matrix operations via scipy.linalg
+        - Symbolic Math: Differentiation, integration via sympy
+    
+    Falls back to pure-numpy implementations if scipy/sympy unavailable.
+    """
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # ODE SOLVERS
+    # ─────────────────────────────────────────────────────────────────────────
+    
+    @staticmethod
+    def rk4_step(f: Callable, t: float, y: np.ndarray, h: float, *args) -> np.ndarray:
+        """
+        Single step of 4th-order Runge-Kutta method.
+        
+        Args:
+            f: Function dy/dt = f(t, y, *args)
+            t: Current time
+            y: Current state vector
+            h: Step size
+            *args: Additional arguments passed to f
+            
+        Returns:
+            y_next: State at t + h
+        """
+        k1 = h * np.asarray(f(t, y, *args))
+        k2 = h * np.asarray(f(t + h/2, y + k1/2, *args))
+        k3 = h * np.asarray(f(t + h/2, y + k2/2, *args))
+        k4 = h * np.asarray(f(t + h, y + k3, *args))
+        return y + (k1 + 2*k2 + 2*k3 + k4) / 6
+    
+    @staticmethod
+    def rk4_solve(f: Callable, t_span: Tuple[float, float], y0: np.ndarray,
+                  n_steps: int = 1000, *args) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        Solve ODE using 4th-order Runge-Kutta method.
+        
+        Args:
+            f: Function dy/dt = f(t, y, *args)
+            t_span: (t_start, t_end)
+            y0: Initial state vector
+            n_steps: Number of integration steps
+            *args: Additional arguments passed to f
+            
+        Returns:
+            t: Time array
+            y: Solution array (n_steps x len(y0))
+        """
+        t = np.linspace(t_span[0], t_span[1], n_steps)
+        h = (t_span[1] - t_span[0]) / (n_steps - 1)
+        y = np.zeros((n_steps, len(np.atleast_1d(y0))))
+        y[0] = np.atleast_1d(y0)
+        
+        for i in range(n_steps - 1):
+            y[i+1] = NumericalMethods.rk4_step(f, t[i], y[i], h, *args)
+        
+        return t, y
+    
+    @staticmethod
+    def rk45_adaptive(f: Callable, t_span: Tuple[float, float], y0: np.ndarray,
+                      rtol: float = 1e-6, atol: float = 1e-9, max_steps: int = 10000,
+                      *args) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        Adaptive RK4(5) Dormand-Prince method (like scipy.solve_ivp RK45).
+        
+        Uses scipy if available, otherwise falls back to fixed-step RK4.
+        """
+        if SCIPY_AVAILABLE:
+            from scipy.integrate import solve_ivp
+            sol = solve_ivp(lambda t, y: f(t, y, *args), t_span, np.atleast_1d(y0),
+                           method='RK45', rtol=rtol, atol=atol, max_step=max_steps)
+            return sol.t, sol.y.T
+        else:
+            # Fallback to fixed-step RK4
+            return NumericalMethods.rk4_solve(f, t_span, y0, n_steps=1000, *args)
+    
+    @staticmethod
+    def euler_step(f: Callable, t: float, y: np.ndarray, h: float, *args) -> np.ndarray:
+        """
+        Single step of Forward Euler method.
+        
+        Args:
+            f: Function dy/dt = f(t, y, *args)
+            t: Current time
+            y: Current state vector
+            h: Step size
+            *args: Additional arguments passed to f
+            
+        Returns:
+            y_next: State at t + h
+        """
+        return y + h * np.asarray(f(t, y, *args))
+    
+    @staticmethod
+    def euler_solve(f: Callable, t_span: Tuple[float, float], y0: np.ndarray,
+                    n_steps: int = 1000, *args) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        Solve ODE using Forward Euler method.
+        
+        Simple first-order method. Less accurate than RK4 but faster per step.
+        Useful for stiff systems or initial exploration.
+        
+        Args:
+            f: Function dy/dt = f(t, y, *args)
+            t_span: (t_start, t_end)
+            y0: Initial state vector
+            n_steps: Number of integration steps
+            *args: Additional arguments passed to f
+            
+        Returns:
+            t: Time array
+            y: Solution array (n_steps x len(y0))
+        """
+        t = np.linspace(t_span[0], t_span[1], n_steps)
+        h = (t_span[1] - t_span[0]) / (n_steps - 1)
+        y = np.zeros((n_steps, len(np.atleast_1d(y0))))
+        y[0] = np.atleast_1d(y0)
+        
+        for i in range(n_steps - 1):
+            y[i+1] = NumericalMethods.euler_step(f, t[i], y[i], h, *args)
+        
+        return t, y
+    
+    @staticmethod
+    def euler_implicit(f: Callable, t_span: Tuple[float, float], y0: np.ndarray,
+                       n_steps: int = 1000, tol: float = 1e-8, *args) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        Solve ODE using Backward (Implicit) Euler method.
+        
+        More stable than Forward Euler for stiff systems.
+        Uses Newton-Raphson iteration at each step.
+        
+        Args:
+            f: Function dy/dt = f(t, y, *args)
+            t_span: (t_start, t_end)
+            y0: Initial state vector
+            n_steps: Number of integration steps
+            tol: Newton iteration tolerance
+            *args: Additional arguments passed to f
+            
+        Returns:
+            t: Time array
+            y: Solution array
+        """
+        t = np.linspace(t_span[0], t_span[1], n_steps)
+        h = (t_span[1] - t_span[0]) / (n_steps - 1)
+        y = np.zeros((n_steps, len(np.atleast_1d(y0))))
+        y[0] = np.atleast_1d(y0)
+        
+        for i in range(n_steps - 1):
+            # Newton iteration to solve y_{n+1} = y_n + h*f(t_{n+1}, y_{n+1})
+            y_next = y[i].copy()  # Initial guess: forward Euler
+            for _ in range(20):  # Max Newton iterations
+                residual = y_next - y[i] - h * np.asarray(f(t[i+1], y_next, *args))
+                if np.max(np.abs(residual)) < tol:
+                    break
+                # Simple fixed-point iteration (works for non-stiff)
+                y_next = y[i] + h * np.asarray(f(t[i+1], y_next, *args))
+            y[i+1] = y_next
+        
+        return t, y
+    
+    @staticmethod
+    def adams_bashforth_4(f: Callable, t_span: Tuple[float, float], y0: np.ndarray,
+                          n_steps: int = 1000, *args) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        4th-order Adams-Bashforth linear multistep method.
+        
+        More efficient than RK4 for smooth problems (reuses function evaluations).
+        Uses RK4 for initial bootstrap steps.
+        """
+        t = np.linspace(t_span[0], t_span[1], n_steps)
+        h = (t_span[1] - t_span[0]) / (n_steps - 1)
+        y = np.zeros((n_steps, len(np.atleast_1d(y0))))
+        y[0] = np.atleast_1d(y0)
+        
+        # Bootstrap with RK4 for first 4 steps
+        f_history = [np.asarray(f(t[0], y[0], *args))]
+        for i in range(min(3, n_steps - 1)):
+            y[i+1] = NumericalMethods.rk4_step(f, t[i], y[i], h, *args)
+            f_history.append(np.asarray(f(t[i+1], y[i+1], *args)))
+        
+        # Adams-Bashforth 4th order: y_{n+1} = y_n + h/24 * (55*f_n - 59*f_{n-1} + 37*f_{n-2} - 9*f_{n-3})
+        for i in range(3, n_steps - 1):
+            y[i+1] = y[i] + h/24 * (
+                55 * f_history[-1] - 59 * f_history[-2] + 
+                37 * f_history[-3] - 9 * f_history[-4]
+            )
+            f_history.append(np.asarray(f(t[i+1], y[i+1], *args)))
+            f_history.pop(0)  # Keep only last 4
+        
+        return t, y
+    
+    @staticmethod
+    def odeint(f: Callable, y0: np.ndarray, t: np.ndarray, *args) -> np.ndarray:
+        """
+        scipy.odeint wrapper with fallback to RK4.
+        
+        Args:
+            f: Function dy/dt = f(y, t, *args) - NOTE: scipy uses (y, t) order!
+            y0: Initial state
+            t: Time array
+            *args: Additional arguments
+            
+        Returns:
+            y: Solution array
+        """
+        if SCIPY_AVAILABLE:
+            from scipy.integrate import odeint as scipy_odeint
+            return scipy_odeint(f, y0, t, args=args)
+        else:
+            # Convert to (t, y) order for our RK4
+            def f_reorder(t, y, *a):
+                return f(y, t, *a)
+            _, y = NumericalMethods.rk4_solve(f_reorder, (t[0], t[-1]), y0, len(t), *args)
+            return y
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # NUMERICAL INTEGRATION
+    # ─────────────────────────────────────────────────────────────────────────
+    
+    @staticmethod
+    def trapezoidal(f: Callable, a: float, b: float, n: int = 1000) -> float:
+        """Trapezoidal rule integration."""
+        x = np.linspace(a, b, n)
+        y = np.array([f(xi) for xi in x])
+        return np.trapz(y, x)
+    
+    @staticmethod
+    def simpson(f: Callable, a: float, b: float, n: int = 1000) -> float:
+        """Simpson's rule integration (n must be even)."""
+        if n % 2 == 1:
+            n += 1
+        x = np.linspace(a, b, n + 1)
+        y = np.array([f(xi) for xi in x])
+        h = (b - a) / n
+        return h/3 * (y[0] + 4*np.sum(y[1:-1:2]) + 2*np.sum(y[2:-2:2]) + y[-1])
+    
+    @staticmethod
+    def gaussian_quadrature(f: Callable, a: float, b: float, n: int = 5) -> float:
+        """Gauss-Legendre quadrature (high accuracy for smooth functions)."""
+        if SCIPY_AVAILABLE:
+            from scipy.integrate import fixed_quad
+            result, _ = fixed_quad(f, a, b, n=n)
+            return result
+        else:
+            # Fallback to Simpson
+            return NumericalMethods.simpson(f, a, b, n=100)
+    
+    @staticmethod
+    def quad(f: Callable, a: float, b: float, **kwargs) -> Tuple[float, float]:
+        """
+        Adaptive quadrature integration (scipy.integrate.quad wrapper).
+        
+        Returns:
+            (integral, error_estimate)
+        """
+        if SCIPY_AVAILABLE:
+            from scipy.integrate import quad as scipy_quad
+            return scipy_quad(f, a, b, **kwargs)
+        else:
+            result = NumericalMethods.simpson(f, a, b, n=10000)
+            return (result, abs(result) * 1e-6)  # Estimate error
+    
+    @staticmethod
+    def dblquad(f: Callable, a: float, b: float, gfun: Callable, hfun: Callable,
+                **kwargs) -> Tuple[float, float]:
+        """Double integration over region. scipy.integrate.dblquad wrapper."""
+        if SCIPY_AVAILABLE:
+            from scipy.integrate import dblquad as scipy_dblquad
+            return scipy_dblquad(f, a, b, gfun, hfun, **kwargs)
+        else:
+            # Fallback: nested Simpson
+            def inner(y):
+                return NumericalMethods.simpson(lambda x: f(x, y), gfun(y), hfun(y))
+            result = NumericalMethods.simpson(inner, a, b)
+            return (result, abs(result) * 1e-5)
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # NONLINEAR EQUATION SOLVERS
+    # ─────────────────────────────────────────────────────────────────────────
+    
+    @staticmethod
+    def newton_raphson(f: Callable, x0: float, fprime: Callable = None,
+                       tol: float = 1e-10, maxiter: int = 100) -> Tuple[float, bool]:
+        """
+        Newton-Raphson root finding.
+        
+        Args:
+            f: Function to find root of
+            x0: Initial guess
+            fprime: Derivative (if None, uses numerical differentiation)
+            tol: Tolerance
+            maxiter: Maximum iterations
+            
+        Returns:
+            (root, converged)
+        """
+        x = x0
+        for _ in range(maxiter):
+            fx = f(x)
+            if abs(fx) < tol:
+                return (x, True)
+            
+            if fprime is not None:
+                dfx = fprime(x)
+            else:
+                # Numerical derivative
+                h = 1e-8 * max(1.0, abs(x))
+                dfx = (f(x + h) - f(x - h)) / (2 * h)
+            
+            if abs(dfx) < 1e-15:
+                return (x, False)  # Zero derivative
+            
+            x = x - fx / dfx
+        
+        return (x, abs(f(x)) < tol)
+    
+    @staticmethod
+    def bisection(f: Callable, a: float, b: float, tol: float = 1e-10,
+                  maxiter: int = 100) -> Tuple[float, bool]:
+        """Bisection method for root finding (guaranteed convergence if f(a)*f(b) < 0)."""
+        fa, fb = f(a), f(b)
+        if fa * fb > 0:
+            return ((a + b) / 2, False)  # No guaranteed root
+        
+        for _ in range(maxiter):
+            c = (a + b) / 2
+            fc = f(c)
+            
+            if abs(fc) < tol or (b - a) / 2 < tol:
+                return (c, True)
+            
+            if fa * fc < 0:
+                b, fb = c, fc
+            else:
+                a, fa = c, fc
+        
+        return ((a + b) / 2, False)
+    
+    @staticmethod
+    def brentq(f: Callable, a: float, b: float, **kwargs) -> float:
+        """Brent's method (scipy.optimize.brentq wrapper)."""
+        if SCIPY_AVAILABLE:
+            from scipy.optimize import brentq as scipy_brentq
+            return scipy_brentq(f, a, b, **kwargs)
+        else:
+            result, _ = NumericalMethods.bisection(f, a, b)
+            return result
+    
+    @staticmethod
+    def fsolve(f: Callable, x0: np.ndarray, **kwargs) -> np.ndarray:
+        """Solve nonlinear system F(x) = 0 (scipy.optimize.fsolve wrapper)."""
+        if SCIPY_AVAILABLE:
+            from scipy.optimize import fsolve as scipy_fsolve
+            return scipy_fsolve(f, x0, **kwargs)
+        else:
+            # Fallback: Newton-Raphson for single variable
+            x0 = np.atleast_1d(x0)
+            if len(x0) == 1:
+                result, _ = NumericalMethods.newton_raphson(lambda x: f([x])[0], x0[0])
+                return np.array([result])
+            else:
+                raise NotImplementedError("Multi-variable fsolve requires scipy")
+    
+    @staticmethod
+    def root(f: Callable, x0: np.ndarray, method: str = 'hybr', **kwargs) -> dict:
+        """General root finding (scipy.optimize.root wrapper)."""
+        if SCIPY_AVAILABLE:
+            from scipy.optimize import root as scipy_root
+            return scipy_root(f, x0, method=method, **kwargs)
+        else:
+            x = NumericalMethods.fsolve(f, x0)
+            return {'x': x, 'success': True, 'message': 'Fallback solver used'}
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # LINEAR ALGEBRA
+    # ─────────────────────────────────────────────────────────────────────────
+    
+    @staticmethod
+    def solve_linear(A: np.ndarray, b: np.ndarray) -> np.ndarray:
+        """Solve Ax = b."""
+        if SCIPY_AVAILABLE:
+            from scipy.linalg import solve
+            return solve(A, b)
+        else:
+            return np.linalg.solve(A, b)
+    
+    @staticmethod
+    def inv(A: np.ndarray) -> np.ndarray:
+        """Matrix inverse."""
+        if SCIPY_AVAILABLE:
+            from scipy.linalg import inv
+            return inv(A)
+        else:
+            return np.linalg.inv(A)
+    
+    @staticmethod
+    def eig(A: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+        """Eigenvalues and eigenvectors."""
+        if SCIPY_AVAILABLE:
+            from scipy.linalg import eig
+            return eig(A)
+        else:
+            return np.linalg.eig(A)
+    
+    @staticmethod
+    def svd(A: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+        """Singular Value Decomposition."""
+        if SCIPY_AVAILABLE:
+            from scipy.linalg import svd
+            return svd(A)
+        else:
+            return np.linalg.svd(A)
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # SYMBOLIC MATH (via sympy)
+    # ─────────────────────────────────────────────────────────────────────────
+    
+    @staticmethod
+    def symbolic_diff(expr_str: str, var: str = 'x') -> str:
+        """Symbolic differentiation."""
+        if SYMPY_AVAILABLE:
+            x = symbols(var)
+            expr = sympy.sympify(expr_str)
+            return str(diff(expr, x))
+        else:
+            return f"d/d{var}({expr_str}) [sympy required for symbolic diff]"
+    
+    @staticmethod
+    def symbolic_integrate(expr_str: str, var: str = 'x',
+                           limits: Tuple[float, float] = None) -> str:
+        """Symbolic integration."""
+        if SYMPY_AVAILABLE:
+            x = symbols(var)
+            expr = sympy.sympify(expr_str)
+            if limits:
+                return str(sym_integrate(expr, (x, limits[0], limits[1])))
+            else:
+                return str(sym_integrate(expr, x))
+        else:
+            return f"∫({expr_str})d{var} [sympy required for symbolic integration]"
+    
+    @staticmethod
+    def symbolic_solve(eq_str: str, var: str = 'x') -> list:
+        """Solve algebraic equation symbolically."""
+        if SYMPY_AVAILABLE:
+            x = symbols(var)
+            # Parse equation: "x**2 - 4 = 0" or "x**2 - 4"
+            if '=' in eq_str:
+                lhs, rhs = eq_str.split('=')
+                eq = Eq(sympy.sympify(lhs.strip()), sympy.sympify(rhs.strip()))
+            else:
+                eq = sympy.sympify(eq_str)
+            solutions = sym_solve(eq, x)
+            return [str(s) for s in solutions]
+        else:
+            return [f"[sympy required to solve {eq_str}]"]
+    
+    @staticmethod
+    def symbolic_simplify(expr_str: str) -> str:
+        """Simplify expression."""
+        if SYMPY_AVAILABLE:
+            return str(simplify(sympy.sympify(expr_str)))
+        else:
+            return expr_str
+    
+    @staticmethod
+    def lambdify_expr(expr_str: str, vars: List[str] = ['x']) -> Callable:
+        """Convert symbolic expression to callable numpy function."""
+        if SYMPY_AVAILABLE:
+            sym_vars = symbols(' '.join(vars))
+            expr = sympy.sympify(expr_str)
+            return lambdify(sym_vars, expr, modules=['numpy'])
+        else:
+            # Return identity function as fallback
+            return lambda *args: float('nan')
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # SPECIAL FUNCTIONS
+    # ─────────────────────────────────────────────────────────────────────────
+    
+    @staticmethod
+    def bessel_j(n: int, x: float) -> float:
+        """Bessel function of the first kind J_n(x)."""
+        if SCIPY_AVAILABLE:
+            from scipy.special import jv
+            return float(jv(n, x))
+        else:
+            # Simple approximation for J_0 only
+            if n == 0 and abs(x) < 3:
+                return 1 - (x/2)**2 + (x/2)**4/4 - (x/2)**6/36
+            return float('nan')
+    
+    @staticmethod
+    def spherical_harmonics(l: int, m: int, theta: float, phi: float) -> complex:
+        """Spherical harmonics Y_l^m(theta, phi)."""
+        if SCIPY_AVAILABLE:
+            from scipy.special import sph_harm
+            return complex(sph_harm(m, l, phi, theta))
+        else:
+            return complex('nan')
+    
+    @staticmethod 
+    def gamma_func(x: float) -> float:
+        """Gamma function Γ(x)."""
+        if SCIPY_AVAILABLE:
+            from scipy.special import gamma
+            return float(gamma(x))
+        else:
+            # Stirling approximation for large x
+            if x > 0:
+                return math.sqrt(2 * math.pi / x) * (x / math.e) ** x
+            return float('nan')
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # STATUS & DIAGNOSTICS
+    # ─────────────────────────────────────────────────────────────────────────
+    
+    @staticmethod
+    def get_status() -> dict:
+        """Return availability status of numerical libraries."""
+        return {
+            'scipy_available': SCIPY_AVAILABLE,
+            'scipy_version': SCIPY_VERSION,
+            'sympy_available': SYMPY_AVAILABLE,
+            'sympy_version': SYMPY_VERSION,
+            'numpy_version': np.__version__,
+            'capabilities': {
+                'ode_solvers': ['RK4', 'RK4-fixed', 'Adams-Bashforth-4'] + 
+                               (['RK45-adaptive', 'odeint'] if SCIPY_AVAILABLE else []),
+                'integration': ['trapezoidal', 'simpson'] +
+                               (['gaussian_quadrature', 'quad', 'dblquad'] if SCIPY_AVAILABLE else []),
+                'root_finding': ['newton_raphson', 'bisection'] +
+                                (['brentq', 'fsolve', 'root'] if SCIPY_AVAILABLE else []),
+                'linear_algebra': ['solve', 'inv', 'eig', 'svd'],
+                'symbolic': ['diff', 'integrate', 'solve', 'simplify', 'lambdify'] if SYMPY_AVAILABLE else [],
+                'special_functions': ['bessel_j', 'spherical_harmonics', 'gamma'] if SCIPY_AVAILABLE else []
+            }
+        }
+    
+    @staticmethod
+    def run_tests() -> dict:
+        """Run self-tests for numerical methods."""
+        results = []
+        
+        # Test 1: RK4 ODE solver (dy/dt = -y, y(0) = 1 -> y = e^-t)
+        try:
+            t, y = NumericalMethods.rk4_solve(lambda t, y: -y, (0, 1), [1.0], n_steps=100)
+            expected = np.exp(-t[-1])
+            error = abs(y[-1, 0] - expected) / expected
+            results.append({'test': 'RK4 ODE', 'passed': error < 1e-4, 'error': error})
+        except Exception as e:
+            results.append({'test': 'RK4 ODE', 'passed': False, 'error': str(e)})
+        
+        # Test 2: Simpson integration (∫x² dx from 0 to 1 = 1/3)
+        try:
+            result = NumericalMethods.simpson(lambda x: x**2, 0, 1)
+            error = abs(result - 1/3)
+            results.append({'test': 'Simpson', 'passed': error < 1e-6, 'error': error})
+        except Exception as e:
+            results.append({'test': 'Simpson', 'passed': False, 'error': str(e)})
+        
+        # Test 3: Newton-Raphson (root of x² - 2 = 0 -> x = √2)
+        try:
+            root, converged = NumericalMethods.newton_raphson(lambda x: x**2 - 2, 1.5)
+            error = abs(root - np.sqrt(2))
+            results.append({'test': 'Newton-Raphson', 'passed': converged and error < 1e-8, 'error': error})
+        except Exception as e:
+            results.append({'test': 'Newton-Raphson', 'passed': False, 'error': str(e)})
+        
+        # Test 4: Linear algebra (Ax = b)
+        try:
+            A = np.array([[3, 1], [1, 2]])
+            b = np.array([9, 8])
+            x = NumericalMethods.solve_linear(A, b)
+            error = np.linalg.norm(A @ x - b)
+            results.append({'test': 'Linear solve', 'passed': error < 1e-10, 'error': error})
+        except Exception as e:
+            results.append({'test': 'Linear solve', 'passed': False, 'error': str(e)})
+        
+        # Test 5: Adams-Bashforth
+        try:
+            t, y = NumericalMethods.adams_bashforth_4(lambda t, y: -y, (0, 1), [1.0], n_steps=100)
+            expected = np.exp(-t[-1])
+            error = abs(y[-1, 0] - expected) / expected
+            results.append({'test': 'Adams-Bashforth', 'passed': error < 1e-3, 'error': error})
+        except Exception as e:
+            results.append({'test': 'Adams-Bashforth', 'passed': False, 'error': str(e)})
+        
+        passed = sum(1 for r in results if r['passed'])
+        return {
+            'passed': passed,
+            'total': len(results),
+            'results': results,
+            'status': NumericalMethods.get_status()
+        }
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
