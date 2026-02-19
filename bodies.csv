@@ -159,7 +159,8 @@ R_Aquarii_Symbiotic,3.978e30,2.99e11,1e6,0.0,0.0,1.39e9,1e31,1e21,0.99,0.0001,0.
 # PN_Template: Generic planetary nebula template, 0.6 M_sun WD, T=100kK, v_exp=25 km/s
 PN_Template_Generic,1.19e30,9e6,1e2,0.0,0.0,0.0,1e29,1e19,0.99,0.0001,0.5
 # SuperFlare_Star: Typical super-flaring G/K star, B_spot=3000 G, f_spot=10%, E~10^38 erg
-SuperFlare_Star_Generic,1.989e30,6.957e8,3000.0,0.0,0.0,4.32e5,1e27,1e17,0.99,0.0001,0.5# ===========================================================================================
+SuperFlare_Star_Generic,1.989e30,6.957e8,3000.0,0.0,0.0,4.32e5,1e27,1e17,0.99,0.0001,0.5
+# ===========================================================================================
 # BATCH 23: Advanced UQFF Validation (Jan 28, 2026) - Grok 4 Analysis Sept 14-21, 2025
 # UQFF 99.9% solvability, kappa=0.0005/day, SSq=0.57, U_UA=0.0001, beta_i=0.603, k_eta=1e-113
 # ===========================================================================================

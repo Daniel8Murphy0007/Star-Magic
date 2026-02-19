@@ -409,4 +409,95 @@ process.on('SIGINT', () => {
     });
 });
 
-module.exports = { server, computeFull, CONSTANTS, SYSTEMS };
+// ═══════════════════════════════════════════════════════════════════════════════
+// FILE-BASED RPC SUPPORT (for FTPS Integration)
+// Watches for request files and writes response files
+// ═══════════════════════════════════════════════════════════════════════════════
+
+const FILE_RPC_CONFIG = {
+    enabled: process.env.UQFF_FILE_RPC === 'true',
+    requestDir: process.env.UQFF_REQUEST_DIR || './uqff_data/requests',
+    responseDir: process.env.UQFF_RESPONSE_DIR || './uqff_data/responses',
+    pollInterval: parseInt(process.env.UQFF_POLL_INTERVAL) || 1000  // ms
+};
+
+/**
+ * Process a file-based RPC request.
+ * @param {string} requestPath - Path to request JSON file
+ */
+async function processFileRequest(requestPath) {
+    try {
+        const requestData = JSON.parse(fs.readFileSync(requestPath, 'utf8'));
+        const requestId = requestData.request_id || path.basename(requestPath, '.json');
+        
+        console.log(`[File-RPC] Processing request: ${requestId}`);
+        
+        // Compute result
+        const result = computeFull(requestData.params || {});
+        
+        // Write response
+        const response = {
+            request_id: requestId,
+            timestamp: new Date().toISOString(),
+            status: 'success',
+            result: result
+        };
+        
+        // Ensure response directory exists
+        if (!fs.existsSync(FILE_RPC_CONFIG.responseDir)) {
+            fs.mkdirSync(FILE_RPC_CONFIG.responseDir, { recursive: true });
+        }
+        
+        const responsePath = path.join(FILE_RPC_CONFIG.responseDir, `resp_${requestId}.json`);
+        fs.writeFileSync(responsePath, JSON.stringify(response, null, 2));
+        
+        // Remove processed request
+        fs.unlinkSync(requestPath);
+        
+        console.log(`[File-RPC] Response written: ${responsePath}`);
+        
+    } catch (err) {
+        console.error(`[File-RPC] Error processing ${requestPath}:`, err.message);
+    }
+}
+
+/**
+ * Watch for file-based RPC requests.
+ */
+function startFileRPCWatcher() {
+    if (!FILE_RPC_CONFIG.enabled) {
+        return;
+    }
+    
+    console.log('[File-RPC] Starting file watcher...');
+    console.log(`[File-RPC] Request dir: ${FILE_RPC_CONFIG.requestDir}`);
+    console.log(`[File-RPC] Response dir: ${FILE_RPC_CONFIG.responseDir}`);
+    
+    // Ensure directories exist
+    if (!fs.existsSync(FILE_RPC_CONFIG.requestDir)) {
+        fs.mkdirSync(FILE_RPC_CONFIG.requestDir, { recursive: true });
+    }
+    if (!fs.existsSync(FILE_RPC_CONFIG.responseDir)) {
+        fs.mkdirSync(FILE_RPC_CONFIG.responseDir, { recursive: true });
+    }
+    
+    // Poll for new request files
+    setInterval(() => {
+        try {
+            const files = fs.readdirSync(FILE_RPC_CONFIG.requestDir);
+            const requestFiles = files.filter(f => f.startsWith('req_') && f.endsWith('.json'));
+            
+            for (const file of requestFiles) {
+                const requestPath = path.join(FILE_RPC_CONFIG.requestDir, file);
+                processFileRequest(requestPath);
+            }
+        } catch (err) {
+            // Directory may not exist yet
+        }
+    }, FILE_RPC_CONFIG.pollInterval);
+}
+
+// Start file-based RPC if enabled
+startFileRPCWatcher();
+
+module.exports = { server, computeFull, CONSTANTS, SYSTEMS, FILE_RPC_CONFIG };

@@ -140,6 +140,15 @@ try:
 except ImportError:
     SHARED_CONSTANTS_AVAILABLE = False
 
+# uqff_ftps_client - FTPS transfer for distributed UQFF computation
+try:
+    from uqff_ftps_client import UQFFFTPSClient, FTPSConfig, TransferStats
+    FTPS_AVAILABLE = True
+except ImportError:
+    FTPS_AVAILABLE = False
+    UQFFFTPSClient = None
+    FTPSConfig = None
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # NUMERICAL METHODS LIBRARY - ODE Solvers, Integration, Optimization

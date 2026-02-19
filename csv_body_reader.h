@@ -248,6 +248,8 @@ private:
     
     /**
      * Parse a body from header-value pairs.
+     * Supports both APIFetch.py format (mass, radius, distance) and 
+     * bodies.csv format (Ms, Rs, Rb, Ts_surface, omega_s, Bs_avg, etc.)
      */
     static CelestialBodyCSV parse_body(const std::vector<std::string>& headers,
                                         const std::vector<std::string>& values) {
@@ -262,17 +264,60 @@ private:
             }
             
             try {
+                // === Name/Identifier ===
                 if (key == "name" || key == "object" || key == "identifier") {
                     body.name = val;
-                } else if (key == "mass" || key == "m" || key == "mass_kg") {
+                }
+                // === Mass (APIFetch or bodies.csv format) ===
+                else if (key == "mass" || key == "m" || key == "mass_kg" || key == "ms") {
                     body.mass = parse_number(val);
-                } else if (key == "radius" || key == "r" || key == "radius_m") {
+                }
+                // === Radius (APIFetch or bodies.csv format) ===
+                else if (key == "radius" || key == "r" || key == "radius_m" || key == "rs") {
                     body.radius = parse_number(val);
-                } else if (key == "distance" || key == "d" || key == "distance_m") {
+                }
+                // === Distance/Boundary (APIFetch or bodies.csv Rb) ===
+                else if (key == "distance" || key == "d" || key == "distance_m" || key == "rb") {
                     body.distance = parse_number(val);
-                } else if (key == "b_field" || key == "b" || key == "magnetic_field") {
+                }
+                // === Magnetic field (bodies.csv: Bs_avg) ===
+                else if (key == "b_field" || key == "b" || key == "magnetic_field" || key == "bs_avg") {
                     body.B_field = parse_number(val);
-                } else if (key == "sfr" || key == "star_formation_rate") {
+                }
+                // === Temperature (bodies.csv: Ts_surface) ===
+                else if (key == "temperature" || key == "t" || key == "temp" || key == "t_eff" || key == "ts_surface") {
+                    body.temperature = parse_number(val);
+                }
+                // === Spin rate (bodies.csv: omega_s maps to spin via period) ===
+                else if (key == "omega_s") {
+                    double omega = parse_number(val);
+                    if (omega > 0) {
+                        body.spin_period = 2.0 * 3.14159265358979 / omega;  // T = 2π/ω
+                    }
+                    body.extra_params["omega_s"] = omega;
+                }
+                // === SCm density (bodies.csv unique) ===
+                else if (key == "scm_density") {
+                    body.extra_params["scm_density"] = parse_number(val);
+                }
+                // === QUA - Universal Aether charge (bodies.csv unique) ===
+                else if (key == "qua") {
+                    body.extra_params["qua"] = parse_number(val);
+                }
+                // === Pcore - Core pressure ratio (bodies.csv unique) ===
+                else if (key == "pcore") {
+                    body.extra_params["pcore"] = parse_number(val);
+                }
+                // === PSCm - SCm pressure ratio (bodies.csv unique) ===
+                else if (key == "pscm") {
+                    body.extra_params["pscm"] = parse_number(val);
+                }
+                // === omega_c - Core spin (bodies.csv unique) ===
+                else if (key == "omega_c") {
+                    body.extra_params["omega_c"] = parse_number(val);
+                }
+                // === Standard fields ===
+                else if (key == "sfr" || key == "star_formation_rate") {
                     body.SFR = parse_number(val);
                 } else if (key == "z" || key == "redshift") {
                     body.z = parse_number(val);
@@ -280,8 +325,6 @@ private:
                     body.v_rot = parse_number(val);
                 } else if (key == "luminosity" || key == "l" || key == "luminosity_w") {
                     body.luminosity = parse_number(val);
-                } else if (key == "temperature" || key == "t" || key == "temp" || key == "t_eff") {
-                    body.temperature = parse_number(val);
                 } else if (key == "metallicity" || key == "feh" || key == "[fe/h]") {
                     body.metallicity = parse_number(val);
                 } else if (key == "age" || key == "age_s") {
@@ -296,7 +339,7 @@ private:
                     body.dec = parse_number(val);
                 } else if (key == "l" || key == "galactic_l" || key == "glon") {
                     body.galactic_l = parse_number(val);
-                } else if (key == "b" || key == "galactic_b" || key == "glat") {
+                } else if (key == "galactic_b" || key == "glat") {
                     body.galactic_b = parse_number(val);
                 } else if (key == "source" || key == "api" || key == "source_api") {
                     body.source_api = val;
