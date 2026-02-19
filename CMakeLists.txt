@@ -1189,6 +1189,40 @@ else()
     message(STATUS "    test_ml_integration.cpp")
 endif()
 
+# ========== PYBIND11 PYTHON BINDINGS ==========
+option(BUILD_PYTHON_BINDINGS "Build Python bindings via PyBind11" OFF)
+
+if(BUILD_PYTHON_BINDINGS)
+    message(STATUS "PyBind11: Looking for Python and pybind11...")
+    
+    find_package(Python3 COMPONENTS Interpreter Development QUIET)
+    find_package(pybind11 CONFIG QUIET)
+    
+    if(Python3_FOUND AND pybind11_FOUND)
+        message(STATUS "PyBind11: Python ${Python3_VERSION} found at ${Python3_EXECUTABLE}")
+        message(STATUS "PyBind11: pybind11 found at ${pybind11_DIR}")
+        
+        pybind11_add_module(uqff_core uqff_pybind.cpp)
+        target_compile_features(uqff_core PRIVATE cxx_std_17)
+        target_compile_definitions(uqff_core PRIVATE VERSION_INFO="3.0.0")
+        
+        # Install to Python site-packages
+        install(TARGETS uqff_core
+            LIBRARY DESTINATION ${Python3_SITELIB}
+            RUNTIME DESTINATION ${Python3_SITELIB}
+        )
+        
+        message(STATUS "PyBind11: uqff_core module target created")
+    elseif(Python3_FOUND AND NOT pybind11_FOUND)
+        message(STATUS "PyBind11: pybind11 not found - install via 'pip install pybind11' and rerun cmake")
+        message(STATUS "PyBind11: Or use 'pip install .' from the project root")
+    else()
+        message(STATUS "PyBind11: Python3 not found - skipping Python bindings")
+    endif()
+else()
+    message(STATUS "PyBind11: Disabled (use -DBUILD_PYTHON_BINDINGS=ON to enable)")
+endif()
+
 # ========== ENHANCEMENT SUMMARY ==========
 message(STATUS "==========================================")
 message(STATUS "CoAnQi Enhancement Features")

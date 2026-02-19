@@ -1,0 +1,319 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UQFF Star-Magic Data Exchange Schema",
+  "description": "Standard JSON format for data exchange between source2.cpp, MAIN_1_CoAnQi.cpp, and CondensedPhysics.py",
+  "version": "3.0.0",
+  "definitions": {
+    "SystemParams": {
+      "type": "object",
+      "description": "Input parameters for UQFF calculations",
+      "required": ["name", "M", "r"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "System identifier (e.g., 'Sagittarius A*', 'NGC 1365')"
+        },
+        "M": {
+          "type": "number",
+          "description": "Mass (kg)"
+        },
+        "r": {
+          "type": "number",
+          "description": "Characteristic radius or distance (m)"
+        },
+        "v": {
+          "type": "number",
+          "default": 0,
+          "description": "Velocity (m/s)"
+        },
+        "B0": {
+          "type": "number",
+          "default": 1e-4,
+          "description": "Magnetic field strength (T)"
+        },
+        "t": {
+          "type": "number",
+          "default": 0,
+          "description": "Time parameter (s)"
+        },
+        "t_n": {
+          "type": "number",
+          "default": 0.1,
+          "description": "Normalized time parameter"
+        },
+        "theta": {
+          "type": "number",
+          "default": 0,
+          "description": "Angle parameter (radians)"
+        },
+        "SFR": {
+          "type": "number",
+          "default": 0,
+          "description": "Star Formation Rate (M_sun/yr)"
+        },
+        "z": {
+          "type": "number",
+          "default": 0,
+          "description": "Redshift"
+        },
+        "L": {
+          "type": "number",
+          "default": 0,
+          "description": "Luminosity (W)"
+        },
+        "rho_vac_UA": {
+          "type": "number",
+          "default": 7.09e-36,
+          "description": "Universal Aether vacuum density (kg/m³)"
+        },
+        "rho_vac_SCm": {
+          "type": "number",
+          "default": 7.09e-37,
+          "description": "SCm vacuum density (kg/m³)"
+        },
+        "source_api": {
+          "type": "string",
+          "enum": ["SIMBAD", "NASA", "NED", "Grok", "Manual"],
+          "description": "Data source API"
+        }
+      }
+    },
+    "UQFFResult": {
+      "type": "object",
+      "description": "UQFF calculation output",
+      "required": ["system_name", "F_U_Bi_i", "g_compressed", "status"],
+      "properties": {
+        "system_name": {
+          "type": "string",
+          "description": "System identifier"
+        },
+        "F_U_Bi_i": {
+          "type": "number",
+          "description": "Universal buoyancy force (N) - Master equation Outside→In"
+        },
+        "g_compressed": {
+          "type": "number",
+          "description": "Compressed gravity (m/s²) - 26-layer triadic"
+        },
+        "F_U": {
+          "type": "number",
+          "description": "Unified field force (N)"
+        },
+        "Ug1": {
+          "type": "number",
+          "description": "Magnetic dipole gravity component (m/s²)"
+        },
+        "Ug2": {
+          "type": "number",
+          "description": "Charge/reactivity gravity component (m/s²)"
+        },
+        "Ug3": {
+          "type": "number",
+          "description": "String rotation gravity component (m/s²)"
+        },
+        "Ug4": {
+          "type": "number",
+          "description": "Vacuum concentration gravity component (m/s²)"
+        },
+        "Ug_sum": {
+          "type": "number",
+          "description": "Sum of Ug1-4 components (m/s²)"
+        },
+        "F_jet_rel": {
+          "type": ["number", "null"],
+          "description": "Relativistic jet force (N)"
+        },
+        "E_acc_rel": {
+          "type": ["number", "null"],
+          "description": "Relativistic accretion energy (J)"
+        },
+        "F_drag_rel": {
+          "type": ["number", "null"],
+          "description": "Relativistic drag force (N)"
+        },
+        "F_gw_rel": {
+          "type": ["number", "null"],
+          "description": "Gravitational wave force (N)"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["success", "error", "timeout", "partial"],
+          "description": "Computation status"
+        },
+        "error_message": {
+          "type": ["string", "null"],
+          "description": "Error description if status is not 'success'"
+        },
+        "computation_time_s": {
+          "type": ["number", "null"],
+          "description": "Computation time (seconds)"
+        },
+        "metadata": {
+          "$ref": "#/definitions/ResultMetadata"
+        }
+      }
+    },
+    "ResultMetadata": {
+      "type": "object",
+      "properties": {
+        "calculator": {
+          "type": "string",
+          "enum": ["MAIN_1_CoAnQi", "CondensedPhysics", "index.js"],
+          "description": "Which calculator produced this result"
+        },
+        "version": {
+          "type": "string",
+          "description": "Calculator version"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp"
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["UQFF", "UQFF_Compressed", "UQFF_Resonant", "UQFF_Buoyant", "MUGE_Compressed", "MUGE_Resonance"],
+          "description": "Calculation mode used"
+        },
+        "constants_hash": {
+          "type": "string",
+          "description": "Hash of constants used for reproducibility"
+        }
+      }
+    },
+    "ValidationResult": {
+      "type": "object",
+      "description": "Dual-method validation output",
+      "required": ["uqff", "muge", "agreement"],
+      "properties": {
+        "uqff": {
+          "type": "number",
+          "description": "UQFF calculation result"
+        },
+        "muge": {
+          "type": "number",
+          "description": "MUGE calculation result"
+        },
+        "newtonian": {
+          "type": "number",
+          "description": "Newtonian reference"
+        },
+        "observed": {
+          "type": ["number", "null"],
+          "description": "Observed value (if available)"
+        },
+        "agreement": {
+          "type": "number",
+          "description": "Agreement factor (0-1, 1 = perfect)"
+        },
+        "uqff_obs_error": {
+          "type": ["number", "null"],
+          "description": "UQFF vs observed relative error"
+        },
+        "muge_obs_error": {
+          "type": ["number", "null"],
+          "description": "MUGE vs observed relative error"
+        },
+        "winner": {
+          "type": "string",
+          "enum": ["UQFF", "MUGE", "GR", "TIE"],
+          "description": "Which method best matches observation"
+        }
+      }
+    },
+    "LongFormSolution": {
+      "type": "object",
+      "description": "Human-readable equation derivation (CondensedPhysics.py only)",
+      "properties": {
+        "equation_name": {
+          "type": "string"
+        },
+        "equation_latex": {
+          "type": "string",
+          "description": "LaTeX representation"
+        },
+        "equation_text": {
+          "type": "string",
+          "description": "Plain text representation"
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "description": {"type": "string"},
+              "expression": {"type": "string"},
+              "value": {"type": "number"}
+            }
+          }
+        },
+        "final_result": {
+          "type": "number"
+        },
+        "units": {
+          "type": "string"
+        }
+      }
+    },
+    "BatchRequest": {
+      "type": "object",
+      "description": "Batch computation request",
+      "required": ["systems"],
+      "properties": {
+        "systems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SystemParams"
+          }
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["batch", "parallel", "sequential"],
+          "default": "batch"
+        },
+        "include_validation": {
+          "type": "boolean",
+          "default": false
+        },
+        "include_long_form": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "BatchResponse": {
+      "type": "object",
+      "description": "Batch computation response",
+      "required": ["results", "summary"],
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UQFFResult"
+          }
+        },
+        "validations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ValidationResult"
+          }
+        },
+        "long_forms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LongFormSolution"
+          }
+        },
+        "summary": {
+          "type": "object",
+          "properties": {
+            "total": {"type": "integer"},
+            "success": {"type": "integer"},
+            "failed": {"type": "integer"},
+            "total_time_s": {"type": "number"}
+          }
+        }
+      }
+    }
+  }
+}

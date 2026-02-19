@@ -24,27 +24,73 @@ from dataclasses import dataclass, asdict
 import time
 
 
+from datetime import datetime
+
+
+@dataclass
+class ResultMetadata:
+    """Metadata for calculation results (per uqff_schema.json)"""
+    calculator: str = "MAIN_1_CoAnQi"
+    version: str = "3.0.0"
+    timestamp: str = ""
+    mode: str = "UQFF_Buoyant"
+    constants_hash: str = ""
+    
+    def __post_init__(self):
+        if not self.timestamp:
+            self.timestamp = datetime.utcnow().isoformat() + "Z"
+
+
 @dataclass
 class CoAnQiResult:
-    """Results from C++ MAIN_1_CoAnQi calculator"""
+    """
+    Results from C++ MAIN_1_CoAnQi calculator.
+    Schema: uqff_schema.json#/definitions/UQFFResult
+    """
     system_name: str
     F_U_Bi_i: float                 # Universal buoyancy force (N)
     g_compressed: float             # Compressed gravity (m/s²)
+    
+    # Additional UQFF components
+    F_U: Optional[float] = None            # Unified field force (N)
+    Ug1: Optional[float] = None            # Magnetic dipole component
+    Ug2: Optional[float] = None            # Charge/reactivity component
+    Ug3: Optional[float] = None            # String rotation component
+    Ug4: Optional[float] = None            # Vacuum concentration component
+    Ug_sum: Optional[float] = None         # Sum of Ug1-4
+    
+    # Relativistic forces
     F_jet_rel: Optional[float] = None      # Relativistic jet force (N)
     E_acc_rel: Optional[float] = None      # Relativistic accretion energy (J)
     F_drag_rel: Optional[float] = None     # Relativistic drag force (N)
     F_gw_rel: Optional[float] = None       # Gravitational wave force (N)
-    computation_time: Optional[float] = None  # Execution time (seconds)
-    status: str = "success"         # "success", "error", "timeout"
+    
+    # Status and timing
+    computation_time_s: Optional[float] = None  # Execution time (seconds)
+    status: str = "success"         # "success", "error", "timeout", "partial"
     error_message: Optional[str] = None
     
+    # Metadata
+    metadata: Optional[ResultMetadata] = None
+    
+    def __post_init__(self):
+        if self.metadata is None:
+            self.metadata = ResultMetadata()
+        # Compute Ug_sum if components are present
+        if all(x is not None for x in [self.Ug1, self.Ug2, self.Ug3, self.Ug4]):
+            self.Ug_sum = self.Ug1 + self.Ug2 + self.Ug3 + self.Ug4
+    
     def to_dict(self) -> Dict:
-        """Convert to dictionary for JSON serialization"""
-        return asdict(self)
+        """Convert to dictionary for JSON serialization (schema compliant)"""
+        d = asdict(self)
+        # Rename computation_time to match schema
+        if 'computation_time' in d:
+            d['computation_time_s'] = d.pop('computation_time')
+        return d
     
     def to_json(self) -> str:
-        """Convert to JSON string"""
-        return json.dumps(self.to_dict(), indent=2)
+        """Convert to JSON string (schema compliant)"""
+        return json.dumps(self.to_dict(), indent=2, default=str)
 
 
 class CoAnQiCalculator:
@@ -140,10 +186,10 @@ class CoAnQiCalculator:
         else:
             raise ValueError(f"Unknown mode: {mode}. Use 'batch' or 'interactive'")
         
-        result.computation_time = time.time() - start_time
+        result.computation_time_s = time.time() - start_time
         
         if self.verbose:
-            print(f"[CoAnQi_Wrapper] Computed {system_name} in {result.computation_time:.2f}s")
+            print(f"[CoAnQi_Wrapper] Computed {system_name} in {result.computation_time_s:.2f}s")
         
         return result
     
@@ -177,18 +223,40 @@ class CoAnQiCalculator:
                     error_message=f"C++ calculator error (code {result.returncode}): {result.stderr}"
                 )
             
-            # Parse JSON output
+            # Parse JSON output (schema: uqff_schema.json#/definitions/UQFFResult)
             try:
                 data = json.loads(result.stdout)
+                
+                # Build metadata if present
+                metadata = None
+                if 'metadata' in data:
+                    meta = data['metadata']
+                    metadata = ResultMetadata(
+                        calculator=meta.get('calculator', 'MAIN_1_CoAnQi'),
+                        version=meta.get('version', '3.0.0'),
+                        timestamp=meta.get('timestamp', ''),
+                        mode=meta.get('mode', 'UQFF_Buoyant'),
+                        constants_hash=meta.get('constants_hash', '')
+                    )
+                
                 return CoAnQiResult(
-                    system_name=data['system_name'],  # Fixed: C++ outputs 'system_name' not 'system'
-                    F_U_Bi_i=data['F_U_Bi_i'],
-                    g_compressed=data['g_compressed'],
+                    system_name=data.get('system_name', system_name),
+                    F_U_Bi_i=data.get('F_U_Bi_i', 0.0),
+                    g_compressed=data.get('g_compressed', 0.0),
+                    F_U=data.get('F_U'),
+                    Ug1=data.get('Ug1'),
+                    Ug2=data.get('Ug2'),
+                    Ug3=data.get('Ug3'),
+                    Ug4=data.get('Ug4'),
+                    Ug_sum=data.get('Ug_sum'),
                     F_jet_rel=data.get('F_jet_rel'),
                     E_acc_rel=data.get('E_acc_rel'),
                     F_drag_rel=data.get('F_drag_rel'),
                     F_gw_rel=data.get('F_gw_rel'),
-                    status="success"
+                    computation_time_s=data.get('computation_time_s'),
+                    status=data.get('status', 'success'),
+                    error_message=data.get('error_message'),
+                    metadata=metadata
                 )
             except json.JSONDecodeError as e:
                 return CoAnQiResult(
