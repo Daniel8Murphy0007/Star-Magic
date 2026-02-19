@@ -1381,6 +1381,187 @@ class TensorAlgebra:
                                               R_lower[a, b, c, d] * R_lower[e, f, h, i])
         return K
 
+    # ─────────────────────────────────────────────────────────────────────────
+    # STRESS-ENERGY TENSOR
+    # ─────────────────────────────────────────────────────────────────────────
+    
+    @staticmethod
+    def stress_energy_perfect_fluid(rho: float, p: float, u: np.ndarray,
+                                     g: np.ndarray) -> np.ndarray:
+        """
+        Stress-energy tensor for perfect fluid.
+        
+        T^μν = (ρ + p)u^μu^ν + p g^μν
+        
+        Args:
+            rho: Energy density (J/m³)
+            p: Pressure (Pa)
+            u: 4-velocity u^μ (normalized: g_μν u^μ u^ν = -c²)
+            g: Metric tensor g_μν
+            
+        Returns:
+            4x4 stress-energy tensor T^μν
+        """
+        g_inv = TensorAlgebra.inverse_metric(g)
+        
+        T = np.zeros((4, 4))
+        for mu in range(4):
+            for nu in range(4):
+                T[mu, nu] = (rho + p) * u[mu] * u[nu] + p * g_inv[mu, nu]
+        
+        return T
+    
+    @staticmethod
+    def stress_energy_electromagnetic(F: np.ndarray, g: np.ndarray,
+                                       mu_0: float = 1.257e-6) -> np.ndarray:
+        """
+        Stress-energy tensor for electromagnetic field.
+        
+        T^μν = (1/μ₀)[F^μα F_α^ν - (1/4)g^μν F_αβ F^αβ]
+        
+        Args:
+            F: Electromagnetic field tensor F^μν (antisymmetric 4x4)
+            g: Metric tensor g_μν
+            mu_0: Vacuum permeability
+            
+        Returns:
+            4x4 stress-energy tensor T^μν
+        """
+        g_inv = TensorAlgebra.inverse_metric(g)
+        
+        # Lower indices: F_μν = g_μα g_νβ F^αβ
+        F_lower = np.zeros((4, 4))
+        for mu in range(4):
+            for nu in range(4):
+                for alpha in range(4):
+                    for beta in range(4):
+                        F_lower[mu, nu] += g[mu, alpha] * g[nu, beta] * F[alpha, beta]
+        
+        # F^αβ F_αβ scalar
+        F_squared = np.sum(F * F_lower)
+        
+        # T^μν
+        T = np.zeros((4, 4))
+        for mu in range(4):
+            for nu in range(4):
+                for alpha in range(4):
+                    T[mu, nu] += F[mu, alpha] * F_lower[alpha, nu]
+                T[mu, nu] = (1/mu_0) * (T[mu, nu] - 0.25 * g_inv[mu, nu] * F_squared)
+        
+        return T
+    
+    @staticmethod
+    def stress_energy_scalar_field(phi: float, dphi: np.ndarray, V: float,
+                                    g: np.ndarray) -> np.ndarray:
+        """
+        Stress-energy tensor for scalar field (inflation, dark energy).
+        
+        T^μν = ∂^μφ ∂^νφ - g^μν[(1/2)∂_α φ ∂^α φ + V(φ)]
+        
+        Args:
+            phi: Scalar field value
+            dphi: Gradient ∂_μ φ (covariant)
+            V: Potential energy V(φ)
+            g: Metric tensor
+            
+        Returns:
+            4x4 stress-energy tensor
+        """
+        g_inv = TensorAlgebra.inverse_metric(g)
+        
+        # Raise index: ∂^μ φ = g^μν ∂_ν φ
+        dphi_up = g_inv @ dphi
+        
+        # Kinetic term: (1/2) ∂_α φ ∂^α φ
+        kinetic = 0.5 * np.dot(dphi, dphi_up)
+        
+        T = np.zeros((4, 4))
+        for mu in range(4):
+            for nu in range(4):
+                T[mu, nu] = dphi_up[mu] * dphi_up[nu] - g_inv[mu, nu] * (kinetic + V)
+        
+        return T
+    
+    @staticmethod
+    def stress_energy_cosmological(Lambda: float, g: np.ndarray,
+                                    c: float = 2.998e8) -> np.ndarray:
+        """
+        Stress-energy tensor for cosmological constant (dark energy).
+        
+        T^μν = -(Λc⁴/8πG) g^μν = -ρ_Λ g^μν
+        
+        Args:
+            Lambda: Cosmological constant (m⁻²)
+            g: Metric tensor
+            c: Speed of light
+            
+        Returns:
+            4x4 stress-energy tensor
+        """
+        G = 6.674e-11
+        rho_Lambda = Lambda * c**4 / (8 * np.pi * G)
+        g_inv = TensorAlgebra.inverse_metric(g)
+        return -rho_Lambda * g_inv
+    
+    @staticmethod
+    def stress_energy_dust(rho: float, u: np.ndarray) -> np.ndarray:
+        """
+        Stress-energy tensor for pressureless dust (cold matter).
+        
+        T^μν = ρ u^μ u^ν
+        
+        Args:
+            rho: Mass-energy density
+            u: 4-velocity
+            
+        Returns:
+            4x4 stress-energy tensor
+        """
+        T = np.zeros((4, 4))
+        for mu in range(4):
+            for nu in range(4):
+                T[mu, nu] = rho * u[mu] * u[nu]
+        return T
+    
+    @staticmethod
+    def stress_energy_uqff_vacuum(rho_vac: float, UA: float, SCm: float,
+                                   g: np.ndarray) -> np.ndarray:
+        """
+        UQFF Aether vacuum stress-energy tensor.
+        
+        T_s^μν = ρ_vac · [UA] · H_SCm · g^μν
+        
+        Implements the vacuum contribution in UQFF framework with
+        unit amplitude [UA] and superconductive modulator H_SCm.
+        
+        Args:
+            rho_vac: Vacuum energy density (J/m³)
+            UA: Unit Amplitude [UA] ∈ [0,1]
+            SCm: Superconductive modulator H_SCm ∈ [0,1]
+            g: Metric tensor
+            
+        Returns:
+            4x4 stress-energy tensor for UQFF vacuum
+        """
+        g_inv = TensorAlgebra.inverse_metric(g)
+        effective_density = rho_vac * UA * SCm
+        return effective_density * g_inv
+    
+    @staticmethod
+    def einstein_field_equations(G_mu_nu: np.ndarray, T_mu_nu: np.ndarray,
+                                  Lambda: float = 0.0,
+                                  G: float = 6.674e-11,
+                                  c: float = 2.998e8) -> np.ndarray:
+        """
+        Check Einstein field equations residual.
+        
+        G_μν + Λg_μν = (8πG/c⁴) T_μν
+        
+        Returns residual matrix (should be zero if equations satisfied).
+        """
+        kappa = 8 * np.pi * G / c**4
+        return G_mu_nu - kappa * T_mu_nu
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SCHRÖDINGER EQUATION SOLVER
@@ -1964,6 +2145,615 @@ class FiniteElementMethod:
             'h': h_values,
             'L2_error': L2_errors,
             'convergence_rate': rates
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PATH INTEGRALS FOR QUANTUM FIELD THEORY
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class PathIntegrals:
+    """
+    Path integral methods for Quantum Field Theory calculations.
+    
+    Implements:
+        - Feynman path integrals for quantum mechanics
+        - Lattice discretization for field theory
+        - Monte Carlo path sampling
+        - Propagator calculations
+        - Partition function estimation
+    
+    Mathematical Framework:
+        ⟨x_f|e^{-iHt/ℏ}|x_i⟩ = ∫ Dx(t) exp(iS[x]/ℏ)
+        
+        where S[x] = ∫ L(x, ẋ) dt is the action.
+    
+    Applications:
+        - UQFF vacuum fluctuations
+        - Quantum tunneling rates
+        - Particle propagators
+        - Effective actions
+    """
+    
+    # Physical constants
+    HBAR = 1.054571817e-34  # J·s
+    
+    @staticmethod
+    def discretize_path(x_i: float, x_f: float, n_slices: int,
+                        t_total: float) -> Tuple[np.ndarray, float]:
+        """
+        Discretize path into time slices for path integral.
+        
+        Args:
+            x_i: Initial position
+            x_f: Final position
+            n_slices: Number of time slices (N)
+            t_total: Total time
+            
+        Returns:
+            (path, epsilon) - path array and time step
+        """
+        epsilon = t_total / n_slices
+        path = np.linspace(x_i, x_f, n_slices + 1)
+        return path, epsilon
+    
+    @staticmethod
+    def free_particle_action(path: np.ndarray, epsilon: float,
+                              mass: float = 1.0) -> float:
+        """
+        Compute action for free particle path.
+        
+        S = Σ (m/2ε) (x_{j+1} - x_j)²
+        
+        Args:
+            path: Discretized path x_0, ..., x_N
+            epsilon: Time step
+            mass: Particle mass
+            
+        Returns:
+            Action S
+        """
+        dx = np.diff(path)
+        return np.sum(0.5 * mass * dx**2 / epsilon)
+    
+    @staticmethod
+    def harmonic_action(path: np.ndarray, epsilon: float,
+                        mass: float = 1.0, omega: float = 1.0) -> float:
+        """
+        Compute action for harmonic oscillator path.
+        
+        S = Σ [(m/2ε)(x_{j+1} - x_j)² - (ε/2)mω²(x_{j+1}² + x_j²)/2]
+        
+        Args:
+            path: Discretized path
+            epsilon: Time step
+            mass: Particle mass
+            omega: Angular frequency
+            
+        Returns:
+            Action S
+        """
+        dx = np.diff(path)
+        kinetic = np.sum(0.5 * mass * dx**2 / epsilon)
+        potential = np.sum(0.5 * mass * omega**2 * 
+                          (path[:-1]**2 + path[1:]**2) / 2 * epsilon)
+        return kinetic - potential
+    
+    @staticmethod
+    def general_action(path: np.ndarray, epsilon: float, V_func: Callable,
+                       mass: float = 1.0) -> float:
+        """
+        Compute action for general potential V(x).
+        
+        S = Σ [(m/2ε)(x_{j+1} - x_j)² - ε V((x_{j+1} + x_j)/2)]
+        
+        Args:
+            path: Discretized path
+            epsilon: Time step
+            V_func: Potential energy function V(x)
+            mass: Particle mass
+            
+        Returns:
+            Action S
+        """
+        dx = np.diff(path)
+        kinetic = np.sum(0.5 * mass * dx**2 / epsilon)
+        
+        # Midpoint rule for potential
+        x_mid = 0.5 * (path[:-1] + path[1:])
+        potential = np.sum(V_func(x_mid) * epsilon)
+        
+        return kinetic - potential
+    
+    @staticmethod
+    def monte_carlo_path_integral(x_i: float, x_f: float, t_total: float,
+                                   V_func: Callable, n_slices: int = 100,
+                                   n_samples: int = 10000, mass: float = 1.0,
+                                   hbar: float = 1.0, beta: float = None,
+                                   temperature: float = None) -> Dict[str, float]:
+        """
+        Compute path integral using Monte Carlo sampling.
+        
+        For imaginary time (thermal/Euclidean):
+            Z = ∫ Dx exp(-S_E/ℏ)
+        
+        Args:
+            x_i: Initial position
+            x_f: Final position
+            t_total: Total (imaginary) time or β=1/kT
+            V_func: Potential function
+            n_slices: Time discretization
+            n_samples: Number of MC samples
+            mass: Particle mass
+            hbar: Reduced Planck constant
+            beta: Inverse temperature (if thermal)
+            temperature: Temperature (alternative to beta)
+            
+        Returns:
+            Dictionary with propagator estimate and uncertainty
+        """
+        if temperature is not None:
+            beta = 1.0 / (1.38e-23 * temperature)  # k_B T
+        
+        epsilon = t_total / n_slices
+        
+        # Initial straight-line path
+        path = np.linspace(x_i, x_f, n_slices + 1)
+        
+        # Monte Carlo sampling
+        action_values = []
+        
+        for _ in range(n_samples):
+            # Propose random displacement at interior points
+            trial_path = path.copy()
+            idx = np.random.randint(1, n_slices)  # Don't move endpoints
+            delta = np.random.uniform(-0.5, 0.5)
+            trial_path[idx] += delta
+            
+            # Compute actions
+            S_old = PathIntegrals.general_action(path, epsilon, V_func, mass)
+            S_new = PathIntegrals.general_action(trial_path, epsilon, V_func, mass)
+            
+            # Metropolis acceptance (imaginary time = Boltzmann weight)
+            dS = S_new - S_old
+            if dS < 0 or np.random.random() < np.exp(-dS / hbar):
+                path = trial_path
+                S_old = S_new
+            
+            action_values.append(S_old)
+        
+        # Estimate propagator
+        actions = np.array(action_values)
+        weights = np.exp(-actions / hbar)
+        
+        return {
+            'propagator': np.mean(weights),
+            'propagator_std': np.std(weights) / np.sqrt(n_samples),
+            'action_mean': np.mean(actions),
+            'action_std': np.std(actions),
+            'acceptance_rate': len(set(action_values)) / n_samples
+        }
+    
+    @staticmethod
+    def free_particle_propagator(x_i: float, x_f: float, t: float,
+                                  mass: float = 1.0, hbar: float = 1.054e-34) -> complex:
+        """
+        Exact free particle propagator (analytical).
+        
+        K(x_f, t; x_i, 0) = √(m/2πiℏt) exp(im(x_f-x_i)²/2ℏt)
+        
+        Args:
+            x_i: Initial position
+            x_f: Final position
+            t: Time
+            mass: Particle mass
+            hbar: Reduced Planck constant
+            
+        Returns:
+            Complex propagator amplitude
+        """
+        prefactor = np.sqrt(mass / (2 * np.pi * 1j * hbar * t))
+        phase = 1j * mass * (x_f - x_i)**2 / (2 * hbar * t)
+        return prefactor * np.exp(phase)
+    
+    @staticmethod
+    def harmonic_propagator(x_i: float, x_f: float, t: float,
+                            mass: float = 1.0, omega: float = 1.0,
+                            hbar: float = 1.054e-34) -> complex:
+        """
+        Exact harmonic oscillator propagator (analytical).
+        
+        K(x_f, t; x_i, 0) = √(mω/2πiℏsin(ωt)) × 
+            exp(imω/2ℏsin(ωt)[(x_i² + x_f²)cos(ωt) - 2x_i x_f])
+        
+        Returns:
+            Complex propagator amplitude
+        """
+        sin_wt = np.sin(omega * t)
+        cos_wt = np.cos(omega * t)
+        
+        if abs(sin_wt) < 1e-10:
+            # Near classical period, use limiting form
+            return PathIntegrals.free_particle_propagator(x_i, x_f, t, mass, hbar)
+        
+        prefactor = np.sqrt(mass * omega / (2 * np.pi * 1j * hbar * sin_wt))
+        exponent = (1j * mass * omega / (2 * hbar * sin_wt) * 
+                   ((x_i**2 + x_f**2) * cos_wt - 2 * x_i * x_f))
+        
+        return prefactor * np.exp(exponent)
+    
+    @staticmethod
+    def partition_function_ho(omega: float, temperature: float,
+                              hbar: float = 1.054e-34,
+                              k_B: float = 1.38e-23) -> float:
+        """
+        Exact partition function for quantum harmonic oscillator.
+        
+        Z = 1/(2sinh(ℏω/2k_B T))
+        
+        Args:
+            omega: Angular frequency
+            temperature: Temperature (K)
+            hbar: Reduced Planck constant
+            k_B: Boltzmann constant
+            
+        Returns:
+            Partition function Z
+        """
+        beta = 1 / (k_B * temperature)
+        x = hbar * omega * beta / 2
+        return 1 / (2 * np.sinh(x))
+    
+    @staticmethod
+    def wkb_tunneling_rate(V_func: Callable, E: float, x_turn: Tuple[float, float],
+                           mass: float = 1.0, hbar: float = 1.054e-34,
+                           n_points: int = 1000) -> float:
+        """
+        WKB approximation for tunneling rate through barrier.
+        
+        T ≈ exp(-2∫√(2m(V-E))/ℏ dx)
+        
+        Args:
+            V_func: Potential barrier function
+            E: Particle energy
+            x_turn: (x1, x2) classical turning points
+            mass: Particle mass
+            hbar: Reduced Planck constant
+            n_points: Integration points
+            
+        Returns:
+            Tunneling probability T
+        """
+        x = np.linspace(x_turn[0], x_turn[1], n_points)
+        V = np.array([V_func(xi) for xi in x])
+        
+        # Classical forbidden region: V > E
+        integrand = np.sqrt(2 * mass * np.maximum(V - E, 0)) / hbar
+        
+        gamma = np.trapz(integrand, x)
+        return np.exp(-2 * gamma)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SPECTRAL DECOMPOSITION
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class SpectralDecomposition:
+    """
+    Spectral decomposition methods for operators and matrices.
+    
+    Implements:
+        - Eigenvalue decomposition
+        - Singular Value Decomposition (SVD)
+        - Spectral theorem applications
+        - Power spectral density
+        - Fourier spectral methods
+        - Operator function evaluation via spectra
+    
+    Mathematical Framework:
+        For Hermitian A: A = Σ λ_i |ψ_i⟩⟨ψ_i|
+        For general A: A = U Σ V^†  (SVD)
+    
+    Applications:
+        - UQFF Hamiltonian diagonalization
+        - Principal component analysis
+        - Signal processing
+        - Quantum state analysis
+    """
+    
+    @staticmethod
+    def eigendecomposition(A: np.ndarray, hermitian: bool = True) -> Dict[str, np.ndarray]:
+        """
+        Compute eigenvalue decomposition of matrix.
+        
+        Args:
+            A: Square matrix (n×n)
+            hermitian: If True, use optimized Hermitian solver
+            
+        Returns:
+            Dictionary with eigenvalues, eigenvectors, and reconstruction
+        """
+        if hermitian:
+            if SCIPY_AVAILABLE:
+                from scipy.linalg import eigh
+                eigenvalues, eigenvectors = eigh(A)
+            else:
+                eigenvalues, eigenvectors = np.linalg.eigh(A)
+        else:
+            if SCIPY_AVAILABLE:
+                from scipy.linalg import eig
+                eigenvalues, eigenvectors = eig(A)
+            else:
+                eigenvalues, eigenvectors = np.linalg.eig(A)
+        
+        # Sort by eigenvalue magnitude
+        idx = np.argsort(np.abs(eigenvalues))[::-1]
+        eigenvalues = eigenvalues[idx]
+        eigenvectors = eigenvectors[:, idx]
+        
+        return {
+            'eigenvalues': eigenvalues,
+            'eigenvectors': eigenvectors,
+            'n_eigenvalues': len(eigenvalues),
+            'spectral_radius': np.max(np.abs(eigenvalues)),
+            'trace': np.sum(eigenvalues),
+            'determinant': np.prod(eigenvalues)
+        }
+    
+    @staticmethod
+    def svd(A: np.ndarray, full_matrices: bool = False) -> Dict[str, np.ndarray]:
+        """
+        Singular Value Decomposition: A = U Σ V^†
+        
+        Args:
+            A: Matrix (m×n)
+            full_matrices: If True, compute full U and V
+            
+        Returns:
+            Dictionary with U, singular values, V^†, and diagnostics
+        """
+        if SCIPY_AVAILABLE:
+            from scipy.linalg import svd as scipy_svd
+            U, s, Vh = scipy_svd(A, full_matrices=full_matrices)
+        else:
+            U, s, Vh = np.linalg.svd(A, full_matrices=full_matrices)
+        
+        # Condition number
+        cond = s[0] / s[-1] if s[-1] > 1e-15 else float('inf')
+        
+        # Effective rank (singular values > tolerance)
+        tol = max(A.shape) * s[0] * np.finfo(float).eps
+        rank = np.sum(s > tol)
+        
+        return {
+            'U': U,
+            'singular_values': s,
+            'Vh': Vh,
+            'condition_number': cond,
+            'effective_rank': rank,
+            'frobenius_norm': np.sqrt(np.sum(s**2)),
+            'nuclear_norm': np.sum(s),
+            'spectral_norm': s[0]
+        }
+    
+    @staticmethod
+    def low_rank_approximation(A: np.ndarray, k: int) -> np.ndarray:
+        """
+        Compute rank-k approximation using truncated SVD.
+        
+        A_k = Σ_{i=1}^k σ_i u_i v_i^†
+        
+        Args:
+            A: Original matrix
+            k: Target rank
+            
+        Returns:
+            Rank-k approximation
+        """
+        result = SpectralDecomposition.svd(A, full_matrices=False)
+        U, s, Vh = result['U'], result['singular_values'], result['Vh']
+        
+        k = min(k, len(s))
+        return U[:, :k] @ np.diag(s[:k]) @ Vh[:k, :]
+    
+    @staticmethod
+    def matrix_function(A: np.ndarray, func: Callable,
+                        hermitian: bool = True) -> np.ndarray:
+        """
+        Evaluate matrix function f(A) via spectral decomposition.
+        
+        f(A) = V f(Λ) V^†  where A = V Λ V^†
+        
+        Args:
+            A: Square matrix
+            func: Scalar function to apply to eigenvalues
+            hermitian: If True, assume Hermitian matrix
+            
+        Returns:
+            f(A) matrix
+        """
+        result = SpectralDecomposition.eigendecomposition(A, hermitian)
+        eigenvalues = result['eigenvalues']
+        V = result['eigenvectors']
+        
+        # Apply function to eigenvalues
+        f_lambda = np.array([func(lam) for lam in eigenvalues])
+        
+        # Reconstruct: f(A) = V diag(f(λ)) V^†
+        if hermitian:
+            return V @ np.diag(f_lambda) @ V.T.conj()
+        else:
+            return V @ np.diag(f_lambda) @ np.linalg.inv(V)
+    
+    @staticmethod
+    def matrix_exponential(A: np.ndarray, hermitian: bool = True) -> np.ndarray:
+        """
+        Compute matrix exponential exp(A) via spectral decomposition.
+        
+        exp(A) = V exp(Λ) V^†
+        
+        Useful for quantum time evolution: |ψ(t)⟩ = exp(-iHt/ℏ)|ψ(0)⟩
+        """
+        return SpectralDecomposition.matrix_function(A, np.exp, hermitian)
+    
+    @staticmethod
+    def matrix_logarithm(A: np.ndarray, hermitian: bool = True) -> np.ndarray:
+        """
+        Compute matrix logarithm log(A) via spectral decomposition.
+        
+        log(A) = V log(Λ) V^†
+        
+        Requires positive definite matrix for real result.
+        """
+        return SpectralDecomposition.matrix_function(A, np.log, hermitian)
+    
+    @staticmethod
+    def matrix_sqrt(A: np.ndarray, hermitian: bool = True) -> np.ndarray:
+        """
+        Compute matrix square root √A via spectral decomposition.
+        
+        √A = V √Λ V^†
+        
+        Requires positive semidefinite matrix.
+        """
+        return SpectralDecomposition.matrix_function(A, np.sqrt, hermitian)
+    
+    @staticmethod
+    def power_spectral_density(signal: np.ndarray, fs: float = 1.0,
+                                window: str = 'hann',
+                                nperseg: int = None) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        Compute power spectral density of a signal.
+        
+        PSD(f) = |FFT(signal)|² / N
+        
+        Args:
+            signal: Time-domain signal
+            fs: Sampling frequency (Hz)
+            window: Window function ('hann', 'hamming', 'blackman', 'none')
+            nperseg: Segment length for Welch method
+            
+        Returns:
+            (frequencies, psd) arrays
+        """
+        n = len(signal)
+        
+        # Apply window
+        if window == 'hann':
+            w = np.hanning(n)
+        elif window == 'hamming':
+            w = np.hamming(n)
+        elif window == 'blackman':
+            w = np.blackman(n)
+        else:
+            w = np.ones(n)
+        
+        windowed = signal * w
+        
+        # FFT
+        fft = np.fft.rfft(windowed)
+        freqs = np.fft.rfftfreq(n, 1/fs)
+        
+        # Power spectral density
+        psd = np.abs(fft)**2 / (fs * np.sum(w**2))
+        
+        return freqs, psd
+    
+    @staticmethod
+    def fourier_spectral_derivative(f: np.ndarray, dx: float,
+                                     order: int = 1) -> np.ndarray:
+        """
+        Compute derivative using Fourier spectral method.
+        
+        d^n f/dx^n via (ik)^n F(k) in Fourier space
+        
+        Args:
+            f: Function values on uniform grid
+            dx: Grid spacing
+            order: Derivative order
+            
+        Returns:
+            Derivative approximation on same grid
+        """
+        n = len(f)
+        k = np.fft.fftfreq(n, dx) * 2 * np.pi
+        
+        f_hat = np.fft.fft(f)
+        df_hat = (1j * k)**order * f_hat
+        
+        return np.real(np.fft.ifft(df_hat))
+    
+    @staticmethod
+    def principal_components(X: np.ndarray, n_components: int = None,
+                             center: bool = True) -> Dict[str, np.ndarray]:
+        """
+        Principal Component Analysis via SVD.
+        
+        Args:
+            X: Data matrix (samples × features)
+            n_components: Number of components to keep
+            center: Whether to center data
+            
+        Returns:
+            Dictionary with components, explained variance, projections
+        """
+        if center:
+            X_centered = X - np.mean(X, axis=0)
+        else:
+            X_centered = X
+        
+        # SVD
+        result = SpectralDecomposition.svd(X_centered)
+        
+        # Singular values to variance
+        n_samples = X.shape[0]
+        explained_variance = result['singular_values']**2 / (n_samples - 1)
+        explained_variance_ratio = explained_variance / np.sum(explained_variance)
+        
+        # Principal components (rows of Vh)
+        if n_components is None:
+            n_components = min(X.shape)
+        
+        components = result['Vh'][:n_components]
+        
+        # Project data
+        projections = X_centered @ components.T
+        
+        return {
+            'components': components,
+            'explained_variance': explained_variance[:n_components],
+            'explained_variance_ratio': explained_variance_ratio[:n_components],
+            'cumulative_variance_ratio': np.cumsum(explained_variance_ratio)[:n_components],
+            'projections': projections,
+            'mean': np.mean(X, axis=0) if center else np.zeros(X.shape[1])
+        }
+    
+    @staticmethod
+    def quantum_state_decomposition(psi: np.ndarray, 
+                                     basis: np.ndarray) -> Dict[str, np.ndarray]:
+        """
+        Decompose quantum state in given basis.
+        
+        |ψ⟩ = Σ c_i |φ_i⟩
+        
+        Args:
+            psi: State vector
+            basis: Basis vectors (columns)
+            
+        Returns:
+            Coefficients and probabilities
+        """
+        # Project onto basis
+        coefficients = basis.T.conj() @ psi
+        probabilities = np.abs(coefficients)**2
+        
+        return {
+            'coefficients': coefficients,
+            'probabilities': probabilities,
+            'normalization': np.sum(probabilities),
+            'entropy': -np.sum(probabilities * np.log(probabilities + 1e-15)),
+            'dominant_state': np.argmax(probabilities),
+            'dominant_amplitude': np.max(np.abs(coefficients))
         }
 
 
