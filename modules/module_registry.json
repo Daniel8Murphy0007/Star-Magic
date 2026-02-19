@@ -1,0 +1,109 @@
+{
+  "version": "3.0.0",
+  "name": "Star-Magic Module Registry",
+  "description": "Global registry of all plug/play modules",
+  "updated_at": "2026-02-19T00:00:00Z",
+  "modules": {
+    "ai_clones": {
+      "description": "AI Clone calculators (encryption, astrological, quantum)",
+      "registry_path": "ai_clones/registry.json",
+      "modules": [
+        "ai_clones/encryption/aes_256_uqff.py",
+        "ai_clones/encryption/rsa_8192_cosmic.py",
+        "ai_clones/encryption/lattice_crypto.py",
+        "ai_clones/astrological/magnetar_cycles.py",
+        "ai_clones/astrological/pulsar_harmonics.py",
+        "ai_clones/astrological/gw_event_predictor.py",
+        "ai_clones/astrological/solar_flare_index.py",
+        "ai_clones/astrological/cosmic_ray_flux.py",
+        "ai_clones/quantum/bec_condensate.py",
+        "ai_clones/quantum/entanglement_net.py",
+        "ai_clones/quantum/decoherence_tracker.py"
+      ]
+    },
+    "gaming": {
+      "description": "Gaming modules (Wormhole Traveler, Cosmic Mapping, Physics Paradigm)",
+      "registry_path": "gaming/registry.json",
+      "modules": [
+        "gaming/wormhole_traveler/trajectories.py",
+        "gaming/wormhole_traveler/exotic_matter.py",
+        "gaming/wormhole_traveler/throat_stability.py",
+        "gaming/wormhole_traveler/tipler_cylinder.py",
+        "gaming/cosmic_mapping/galaxy_render.py",
+        "gaming/cosmic_mapping/dark_matter_overlay.py",
+        "gaming/cosmic_mapping/gravitational_lens.py",
+        "gaming/cosmic_mapping/cosmic_web.py",
+        "gaming/cosmic_mapping/void_mapping.py",
+        "gaming/physics_paradigm/uqff_vs_gr.py",
+        "gaming/physics_paradigm/dark_energy_models.py",
+        "gaming/physics_paradigm/modified_gravity.py",
+        "gaming/physics_paradigm/emergent_spacetime.py"
+      ]
+    },
+    "debug": {
+      "description": "Debug and maintenance modules",
+      "registry_path": "debug/registry.json",
+      "modules": [
+        "debug/master_debugger.py"
+      ]
+    }
+  },
+  "formats": {
+    "cpp": {
+      "extension": ".cpp",
+      "loader": "ctypes/pybind11",
+      "hot_reload": false,
+      "sandbox": true
+    },
+    "json": {
+      "extension": ".json",
+      "loader": "json.load",
+      "hot_reload": true,
+      "sandbox": false
+    },
+    "python": {
+      "extension": ".py",
+      "loader": "importlib",
+      "hot_reload": true,
+      "sandbox": true
+    },
+    "qt": {
+      "extension": ".cpp",
+      "loader": "QPluginLoader",
+      "hot_reload": false,
+      "sandbox": true
+    },
+    "db": {
+      "extension": ".db",
+      "loader": "sqlite3/cosmosdb",
+      "hot_reload": true,
+      "sandbox": true
+    },
+    "jit": {
+      "extension": ".py",
+      "loader": "numba/llvmlite",
+      "hot_reload": true,
+      "sandbox": true
+    }
+  },
+  "communication": {
+    "eventbus": {
+      "type": "sync",
+      "description": "In-process event dispatch"
+    },
+    "messagequeue": {
+      "type": "async",
+      "description": "Background task queue"
+    },
+    "sharedstate": {
+      "type": "sync",
+      "backend": "redis",
+      "description": "Cross-module state sharing"
+    },
+    "pubsub": {
+      "type": "async",
+      "protocol": "websocket",
+      "description": "Real-time updates"
+    }
+  }
+}
