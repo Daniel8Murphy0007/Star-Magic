@@ -100,6 +100,13 @@
 #include <pybind11/embed.h> // pybind11 - embeds Python interpreter for running Python code (AI models)
 #endif                      // NO_PYTHON
 
+// ============================================================================
+// UQFF Integration Components (Phase 2 wiring - Feb 2026)
+// ============================================================================
+#include "csv_body_reader.h"     // CSV parsing for bodies_*.csv from APIFetch.py
+#include "shared_constants.h"    // Unified UQFF constants (G, c, hbar, kappa, SSq, etc.)
+#include "equation_renderer.h"   // Qt widget for long-form UQFF equation display
+
 // Astronomical Coordinate System Support
 // Note: Astropy is accessed via Python/pybind11 for coordinate transformations
 // Supports ICRS, Galactic, Ecliptic, FK4, FK5, and other astronomical reference frames
@@ -10913,6 +10920,73 @@ void MainWindow::parseAndDisplayUQFFResults(const QString& jsonStr) {
             QString("Failed to parse UQFF results:\n%1\n\nRaw output:\n%2")
                    .arg(e.what()).arg(jsonStr));
     }
+}
+
+// ============================================================================
+// CSV BODY LOADING (Phase 2 Integration - Feb 2026)
+// Uses csv_body_reader.h to load bodies_*.csv from APIFetch.py
+// ============================================================================
+
+void MainWindow::loadBodiesFromCSV(const QString& csvPath) {
+    try {
+        std::string path = csvPath.isEmpty() 
+            ? "." 
+            : csvPath.toStdString();
+        
+        // Use csv_body_reader to load latest CSV or specific file
+        std::vector<UQFF::CelestialBodyCSV> bodies;
+        
+        if (csvPath.isEmpty()) {
+            // Load most recent bodies_YYYYMMDD_HHMMSS.csv
+            bodies = UQFF::CSVBodyReader::read_latest(path);
+        } else if (csvPath.endsWith(".csv")) {
+            // Load specific CSV file
+            bodies = UQFF::CSVBodyReader::read_file(path);
+        } else {
+            // Load latest from specified directory
+            bodies = UQFF::CSVBodyReader::read_latest(path);
+        }
+        
+        if (bodies.empty()) {
+            QMessageBox::warning(this, "CSV Load", 
+                "No celestial bodies found in CSV file.\n"
+                "Run APIFetch.py to generate bodies_*.csv data.");
+            return;
+        }
+        
+        // Cache loaded bodies
+        loadedBodies = std::move(bodies);
+        
+        // Notify handlers
+        onBodiesLoaded(loadedBodies);
+        
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, "CSV Load Error",
+            QString("Failed to load bodies CSV:\n%1").arg(e.what()));
+    }
+}
+
+void MainWindow::onBodiesLoaded(const std::vector<UQFF::CelestialBodyCSV>& bodies) {
+    // Display summary
+    QString summary = QString("✅ Loaded %1 celestial bodies from CSV:\n\n").arg(bodies.size());
+    
+    int shown = 0;
+    for (const auto& body : bodies) {
+        if (shown++ >= 10) {
+            summary += QString("... and %1 more\n").arg(bodies.size() - 10);
+            break;
+        }
+        summary += QString("• %1 (%2): M=%3 kg, r=%4 m\n")
+            .arg(QString::fromStdString(body.name))
+            .arg(QString::fromStdString(body.object_type))
+            .arg(body.mass, 0, 'e', 2)
+            .arg(body.radius > 0 ? body.radius : body.distance, 0, 'e', 2);
+    }
+    
+    QMessageBox::information(this, "Bodies Loaded", summary);
+    
+    // TODO: Populate system selector dropdown with loaded bodies
+    // TODO: Enable batch UQFF computation button
 }
 
 // main() - Application entry point (where program execution begins)

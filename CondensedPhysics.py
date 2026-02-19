@@ -111,6 +111,35 @@ try:
 except ImportError:
     PHASE7_AVAILABLE = False
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# UQFF C++ BINDINGS (Phase 2 Integration - Feb 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# uqff_core - PyBind11 bindings to C++ UQFF physics engine
+try:
+    import uqff_core
+    from uqff_core import (
+        SystemParams, ComputationResult,
+        compute_Ug1, compute_Ug2, compute_Ug3, compute_Ug4,
+        compute_F_U_Bi_i, compute_compressed_g,
+        PhysicsTerm, MagneticDipoleTerm, DynamicVacuumTerm as CppDynamicVacuumTerm,
+        PhysicsTermRegistry
+    )
+    # Import constants sub-module
+    from uqff_core import constants as UQFF_CPP_CONSTANTS
+    UQFF_CORE_AVAILABLE = True
+    UQFF_CORE_VERSION = uqff_core.__version__
+except ImportError:
+    UQFF_CORE_AVAILABLE = False
+    UQFF_CORE_VERSION = None
+
+# shared_constants - Unified Python constants matching C++ shared_constants.h
+try:
+    import shared_constants as uqff_constants
+    SHARED_CONSTANTS_AVAILABLE = True
+except ImportError:
+    SHARED_CONSTANTS_AVAILABLE = False
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # NUMERICAL METHODS LIBRARY - ODE Solvers, Integration, Optimization

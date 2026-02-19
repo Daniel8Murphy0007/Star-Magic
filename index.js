@@ -74,6 +74,103 @@ const COUPLING = {
     Delta_k_eta: 7.25e8  // Buoyancy scaling factor
 };
 
+// ═══════════════════════════════════════════════════════════════════════════════
+// UQFF SERVER INTEGRATION (Phase 2 wiring - Feb 2026)
+// HTTP client to call uqff_server.js REST API for C++ PyBind11 computation
+// ═══════════════════════════════════════════════════════════════════════════════
+
+const UQFF_SERVER_CONFIG = {
+    host: process.env.UQFF_HOST || '127.0.0.1',
+    port: parseInt(process.env.UQFF_PORT) || 3141,  // π × 1000
+    timeout: 30000  // 30 second timeout
+};
+
+/**
+ * Call UQFF Server REST API for computation.
+ * Falls back to local JS calculation if server unavailable.
+ * 
+ * @param {Object} params - System parameters {name, M, r, B0, ...}
+ * @returns {Promise<Object>} - Computation results
+ */
+async function callUQFFServer(params) {
+    const http = require('http');
+    
+    return new Promise((resolve, reject) => {
+        const postData = JSON.stringify(params);
+        
+        const options = {
+            hostname: UQFF_SERVER_CONFIG.host,
+            port: UQFF_SERVER_CONFIG.port,
+            path: '/api/compute',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Content-Length': Buffer.byteLength(postData)
+            },
+            timeout: UQFF_SERVER_CONFIG.timeout
+        };
+        
+        const req = http.request(options, (res) => {
+            let data = '';
+            res.on('data', chunk => data += chunk);
+            res.on('end', () => {
+                try {
+                    const result = JSON.parse(data);
+                    resolve(result);
+                } catch (e) {
+                    reject(new Error(`Invalid JSON response: ${e.message}`));
+                }
+            });
+        });
+        
+        req.on('error', (e) => {
+            // Server not available - fallback to local computation
+            console.log('[UQFF] Server unavailable, using local JS engine:', e.message);
+            resolve(null);  // null signals fallback needed
+        });
+        
+        req.on('timeout', () => {
+            req.destroy();
+            reject(new Error('UQFF Server request timeout'));
+        });
+        
+        req.write(postData);
+        req.end();
+    });
+}
+
+/**
+ * Check if UQFF Server is running.
+ * @returns {Promise<boolean>}
+ */
+async function isUQFFServerAvailable() {
+    const http = require('http');
+    
+    return new Promise((resolve) => {
+        const options = {
+            hostname: UQFF_SERVER_CONFIG.host,
+            port: UQFF_SERVER_CONFIG.port,
+            path: '/api/health',
+            method: 'GET',
+            timeout: 2000
+        };
+        
+        const req = http.request(options, (res) => {
+            resolve(res.statusCode === 200);
+        });
+        
+        req.on('error', () => resolve(false));
+        req.on('timeout', () => { req.destroy(); resolve(false); });
+        req.end();
+    });
+}
+
+// Export server integration functions
+module.exports = module.exports || {};
+module.exports.callUQFFServer = callUQFFServer;
+module.exports.isUQFFServerAvailable = isUQFFServerAvailable;
+module.exports.UQFF_SERVER_CONFIG = UQFF_SERVER_CONFIG;
+
 // 26-Layer Compressed Gravity Framework from MAIN_1.cpp
 // g(r,t) = sum_{i=1 to 26} (Ug1_i + Ug2_i + Ug3_i + Ug4_i)
 

@@ -17,6 +17,9 @@
 #include <QProcess>
 #include "UQFFResultsWidget.h"
 
+// UQFF Integration Components (Phase 2 - Feb 2026)
+#include "csv_body_reader.h"  // For UQFF::CelestialBodyCSV
+
 #ifdef _WIN32
 #include <windows.h>
 #include <shellapi.h>
@@ -39,10 +42,15 @@ private slots:
     // UQFF Physics Integration
     void computeUQFF(const QString& systemName);
     void parseAndDisplayUQFFResults(const QString& jsonStr);
+    
+    // CSV Body Loading (Phase 2 integration - Feb 2026)
+    void loadBodiesFromCSV(const QString& csvPath = QString());
+    void onBodiesLoaded(const std::vector<UQFF::CelestialBodyCSV>& bodies);
 
 private:
     BrowserWindow **browserWindows;
     UQFFResultsWidget* uqffResultsWidget;
+    std::vector<UQFF::CelestialBodyCSV> loadedBodies;  // Cached bodies from CSV
 };
 
 #endif // SOURCE2_MAINWINDOW_H

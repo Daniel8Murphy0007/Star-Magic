@@ -141,6 +141,13 @@
 // Observational Systems Configuration - 35+ astronomical systems with categorization
 #include "observational_systems_config.h"
 
+// UQFF Unified Constants (Phase 2 integration - Feb 2026)
+// Provides constexpr G, c, hbar, M_sun, kappa, SSq, beta_i, etc. in UQFF:: namespace
+#include "shared_constants.h"
+
+// CSV Body Reader for loading bodies_*.csv from APIFetch.py (Phase 2 integration)
+#include "csv_body_reader.h"
+
 // Wolfram WSTP integration (optional)
 #ifdef USE_EMBEDDED_WOLFRAM
 extern void WolframEmbeddedBridge();
