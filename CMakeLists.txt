@@ -457,11 +457,14 @@ endif()
 
 # ========== IPC LIBRARY (Phase 1 - VR Architecture) ==========
 # Shared memory and gRPC channels for UQFF inter-process communication
+# Phase 2: Added PhysicsService for backend service mode
 set(IPC_SOURCES
     ipc/uqff_ipc.cpp
+    ipc/physics_service.cpp
 )
 set(IPC_HEADERS
     ipc/uqff_ipc.h
+    ipc/physics_service.h
 )
 
 # Source2: HEAD PROGRAM - Primary User Base Platform (Qt6 + optional VTK, AWS SDK, OpenCV, etc.)

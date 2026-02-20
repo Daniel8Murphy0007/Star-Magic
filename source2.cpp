@@ -106,6 +106,7 @@
 #include "csv_body_reader.h"     // CSV parsing for bodies_*.csv from APIFetch.py
 #include "shared_constants.h"    // Unified UQFF constants (G, c, hbar, kappa, SSq, etc.)
 #include "equation_renderer.h"   // Qt widget for long-form UQFF equation display
+#include "physics_service.h"     // Phase 2: Physics Backend Service Mode
 
 // Astronomical Coordinate System Support
 // Note: Astropy is accessed via Python/pybind11 for coordinate transformations
@@ -10997,6 +10998,18 @@ void MainWindow::onBodiesLoaded(const std::vector<UQFF::CelestialBodyCSV>& bodie
 // Qt applications follow standard C++ main() pattern but use QApplication
 int main(int argc, char *argv[])
 {
+    // ========================================================================
+    // SERVICE MODE CHECK (Phase 2 - Physics Backend)
+    // ========================================================================
+    // If --service or -s flag is passed, run as headless physics service
+    // instead of Qt GUI application. This enables VR runtime integration.
+    if (UQFF::is_service_mode(argc, argv)) {
+        return UQFF::run_physics_service(argc, argv);
+    }
+    
+    // ========================================================================
+    // GUI MODE (Default)
+    // ========================================================================
     // Create QApplication object (required for all Qt GUI applications)
     // QApplication manages:
     //   - Event loop (processes mouse/keyboard events, timers, signals/slots)
