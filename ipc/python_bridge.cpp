@@ -33,6 +33,9 @@ namespace UQFF {
 struct PythonBridge::Impl {
     std::unique_ptr<py::scoped_interpreter> interpreter;
     py::object condensed_physics_module;
+    py::object condensed_input_module;   // CondensedPhysics_InputData.py (3249 lines)
+    py::object condensed_output_module;  // CondensedPhysics_OutputData.py (5378 lines)
+    py::object condensed_validation_module; // CondensedPhysics_Validation.py (5926 lines)
     py::object qcalc_module;
     py::object apifetch_module;
     py::object ipdata_module;
@@ -77,6 +80,28 @@ bool PythonBridge::initialize() {
             std::cout << "[PythonBridge] CondensedPhysics.py loaded (81K lines)" << std::endl;
         } catch (const py::error_already_set& e) {
             std::cerr << "[PythonBridge] WARNING: CondensedPhysics.py failed: " << e.what() << std::endl;
+        }
+        
+        // CondensedPhysics support modules
+        try {
+            impl_->condensed_input_module = py::module_::import("CondensedPhysics_InputData");
+            std::cout << "[PythonBridge] CondensedPhysics_InputData.py loaded (3249 lines)" << std::endl;
+        } catch (const py::error_already_set& e) {
+            std::cerr << "[PythonBridge] WARNING: CondensedPhysics_InputData.py failed: " << e.what() << std::endl;
+        }
+        
+        try {
+            impl_->condensed_output_module = py::module_::import("CondensedPhysics_OutputData");
+            std::cout << "[PythonBridge] CondensedPhysics_OutputData.py loaded (5378 lines)" << std::endl;
+        } catch (const py::error_already_set& e) {
+            std::cerr << "[PythonBridge] WARNING: CondensedPhysics_OutputData.py failed: " << e.what() << std::endl;
+        }
+        
+        try {
+            impl_->condensed_validation_module = py::module_::import("CondensedPhysics_Validation");
+            std::cout << "[PythonBridge] CondensedPhysics_Validation.py loaded (5926 lines)" << std::endl;
+        } catch (const py::error_already_set& e) {
+            std::cerr << "[PythonBridge] WARNING: CondensedPhysics_Validation.py failed: " << e.what() << std::endl;
         }
         
         try {

@@ -4,6 +4,9 @@
  * 
  * Provides pybind11-based integration with:
  * - CondensedPhysics.py (81K lines, 8 UQFF Master Equations)
+ * - CondensedPhysics_InputData.py (3249 lines, observational parameters)
+ * - CondensedPhysics_OutputData.py (5378 lines, query result storage)
+ * - CondensedPhysics_Validation.py (5926 lines, validation references)
  * - QCalc.py (9K lines, Pure Physics Solver)
  * - IPData.py / OPData.py (Data layer)
  * - APIFetch.py (SIMBAD/NASA parameter fetching)
