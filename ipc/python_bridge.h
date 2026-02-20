@@ -7,6 +7,9 @@
  * - QCalc.py (9K lines, Pure Physics Solver)
  * - IPData.py / OPData.py (Data layer)
  * - APIFetch.py (SIMBAD/NASA parameter fetching)
+ * - Phase5_Consolidated.py (838 lines, SOURCE52-65: 57 funcs, 41 systems)
+ * - Phase6_Consolidated.py (487 lines, SOURCE70-80: 31 funcs, 3 systems)
+ * - Phase7_Consolidated.py (3581 lines, SOURCE81-95: 110 funcs, 14 systems)
  * 
  * Author: Daniel T. Murphy
  * Framework: UQFF Star-Magic v3.0

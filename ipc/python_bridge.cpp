@@ -37,6 +37,9 @@ struct PythonBridge::Impl {
     py::object apifetch_module;
     py::object ipdata_module;
     py::object opdata_module;
+    py::object phase5_module;  // SOURCE52-65: 57 funcs, 41 systems
+    py::object phase6_module;  // SOURCE70-80: 31 funcs, 3 systems
+    py::object phase7_module;  // SOURCE81-95: 110 funcs, 14 systems
 };
 
 PythonBridge& PythonBridge::instance() {
@@ -102,6 +105,28 @@ bool PythonBridge::initialize() {
             std::cout << "[PythonBridge] OPData.py loaded" << std::endl;
         } catch (const py::error_already_set& e) {
             std::cerr << "[PythonBridge] WARNING: OPData.py failed: " << e.what() << std::endl;
+        }
+        
+        // Phase 5-7 Consolidated modules (extracted C++ SOURCE files)
+        try {
+            impl_->phase5_module = py::module_::import("Phase5_Consolidated");
+            std::cout << "[PythonBridge] Phase5_Consolidated.py loaded (SOURCE52-65: 57 funcs)" << std::endl;
+        } catch (const py::error_already_set& e) {
+            std::cerr << "[PythonBridge] WARNING: Phase5_Consolidated.py failed: " << e.what() << std::endl;
+        }
+        
+        try {
+            impl_->phase6_module = py::module_::import("Phase6_Consolidated");
+            std::cout << "[PythonBridge] Phase6_Consolidated.py loaded (SOURCE70-80: 31 funcs)" << std::endl;
+        } catch (const py::error_already_set& e) {
+            std::cerr << "[PythonBridge] WARNING: Phase6_Consolidated.py failed: " << e.what() << std::endl;
+        }
+        
+        try {
+            impl_->phase7_module = py::module_::import("Phase7_Consolidated");
+            std::cout << "[PythonBridge] Phase7_Consolidated.py loaded (SOURCE81-95: 110 funcs)" << std::endl;
+        } catch (const py::error_already_set& e) {
+            std::cerr << "[PythonBridge] WARNING: Phase7_Consolidated.py failed: " << e.what() << std::endl;
         }
         
         initialized_ = true;
