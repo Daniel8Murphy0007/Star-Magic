@@ -455,6 +455,15 @@ else()
     message(STATUS "Install via: winget install ShiningLight.OpenSSL.Light")
 endif()
 
+# ========== IPC LIBRARY (Phase 1 - VR Architecture) ==========
+# Shared memory and gRPC channels for UQFF inter-process communication
+set(IPC_SOURCES
+    ipc/uqff_ipc.cpp
+)
+set(IPC_HEADERS
+    ipc/uqff_ipc.h
+)
+
 # Source2: HEAD PROGRAM - Primary User Base Platform (Qt6 + optional VTK, AWS SDK, OpenCV, etc.)
 # Status: ENABLED with Qt6 - optional dependencies compile conditionally
 # To install missing dependencies via vcpkg (x64-windows for MSVC):
@@ -463,7 +472,7 @@ endif()
 #   vcpkg install curl:x64-windows sqlite3:x64-windows
 #   vcpkg install aws-sdk-cpp[cognito-idp,s3]:x64-windows
 if(Qt6_FOUND)
-    add_executable(Source2 source2.cpp source2_mainwindow.h UQFFResultsWidget.h)
+    add_executable(Source2 source2.cpp source2_mainwindow.h UQFFResultsWidget.h ${IPC_SOURCES} ${IPC_HEADERS})
     
     # Enable Qt AUTOMOC/AUTOUIC/AUTORCC for Source2 (Q_OBJECT in header file)
     set_target_properties(Source2 PROPERTIES 
@@ -473,6 +482,9 @@ if(Qt6_FOUND)
         # Use dynamic CRT (required for vcpkg AWS SDK compatibility)
         MSVC_RUNTIME_LIBRARY "MultiThreadedDLL$<$<CONFIG:Debug>:Debug>"
     )
+    
+    # IPC include directory (Phase 1 - VR Architecture)
+    target_include_directories(Source2 PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/ipc)
     
     # Base Qt6 dependencies (always required)
     target_link_libraries(Source2 PRIVATE 
