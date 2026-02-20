@@ -10941,7 +10941,7 @@ void MainWindow::loadBodiesFromCSV(const QString& csvPath) {
             bodies = UQFF::CSVBodyReader::read_latest(path);
         } else if (csvPath.endsWith(".csv")) {
             // Load specific CSV file
-            bodies = UQFF::CSVBodyReader::read_file(path);
+            bodies = UQFF::CSVBodyReader::read(path);
         } else {
             // Load latest from specified directory
             bodies = UQFF::CSVBodyReader::read_latest(path);

@@ -25,7 +25,9 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QFont>
+#include <QFontDatabase>
 #include <QApplication>
+#include <QClipboard>
 #include <QScrollBar>
 
 /**
