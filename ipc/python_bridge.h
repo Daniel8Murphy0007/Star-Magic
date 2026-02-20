@@ -7,12 +7,18 @@
  * - CondensedPhysics_InputData.py (3249 lines, observational parameters)
  * - CondensedPhysics_OutputData.py (5378 lines, query result storage)
  * - CondensedPhysics_Validation.py (5926 lines, validation references)
- * - QCalc.py (9K lines, Pure Physics Solver)
+ * - QCalc.py (9K lines, Pure Physics Solver) + 12 support modules (~157K lines):
+ *   - QCalc_cpp_equations.py (50K), QCalc_extracted.py (43K), QCalc_cpp_extracted.py (31K)
+ *   - QCalc_js_extracted.py (13K), QCalc_Wolfram_Extensions.py (6K), QCalc_core_uqff.py (1K)
+ *   - QCalc_validation.py, QCalc_Advanced.py, QCalc_stat.py, QCalc_Phase1_Validation.py
+ *   - QCalc_API.py, QCalc_Performance.py
  * - IPData.py / OPData.py (Data layer)
  * - APIFetch.py (SIMBAD/NASA parameter fetching)
  * - Phase5_Consolidated.py (838 lines, SOURCE52-65: 57 funcs, 41 systems)
  * - Phase6_Consolidated.py (487 lines, SOURCE70-80: 31 funcs, 3 systems)
  * - Phase7_Consolidated.py (3581 lines, SOURCE81-95: 110 funcs, 14 systems)
+ * 
+ * Total Python ecosystem: ~270K lines
  * 
  * Author: Daniel T. Murphy
  * Framework: UQFF Star-Magic v3.0

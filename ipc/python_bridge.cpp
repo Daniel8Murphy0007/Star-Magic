@@ -37,6 +37,19 @@ struct PythonBridge::Impl {
     py::object condensed_output_module;  // CondensedPhysics_OutputData.py (5378 lines)
     py::object condensed_validation_module; // CondensedPhysics_Validation.py (5926 lines)
     py::object qcalc_module;
+    // QCalc ecosystem (12 modules, ~157K lines)
+    py::object qcalc_cpp_equations;      // 49984 lines - ALL equations from C++
+    py::object qcalc_extracted;          // 43145 lines - Auto-generated extractors
+    py::object qcalc_cpp_extracted;      // 30903 lines - C++ extracted physics
+    py::object qcalc_js_extracted;       // 13367 lines - JS extracted physics
+    py::object qcalc_wolfram_ext;        // 5561 lines - Wolfram functions
+    py::object qcalc_core_uqff;          // 1223 lines - Core UQFF equations
+    py::object qcalc_validation;         // 1109 lines - Validation data fetcher
+    py::object qcalc_advanced;           // 789 lines - Advanced physics
+    py::object qcalc_stat;               // 719 lines - Statistical analysis
+    py::object qcalc_phase1_val;         // 527 lines - Phase 1 validation
+    py::object qcalc_api;                // 492 lines - REST API
+    py::object qcalc_performance;        // 480 lines - Performance optimization
     py::object apifetch_module;
     py::object ipdata_module;
     py::object opdata_module;
@@ -109,6 +122,91 @@ bool PythonBridge::initialize() {
             std::cout << "[PythonBridge] QCalc.py loaded (9K lines)" << std::endl;
         } catch (const py::error_already_set& e) {
             std::cerr << "[PythonBridge] WARNING: QCalc.py failed: " << e.what() << std::endl;
+        }
+        
+        // QCalc ecosystem modules (~157K lines total)
+        try {
+            impl_->qcalc_cpp_equations = py::module_::import("QCalc_cpp_equations");
+            std::cout << "[PythonBridge] QCalc_cpp_equations.py loaded (50K lines)" << std::endl;
+        } catch (const py::error_already_set& e) {
+            std::cerr << "[PythonBridge] WARNING: QCalc_cpp_equations.py failed: " << e.what() << std::endl;
+        }
+        
+        try {
+            impl_->qcalc_extracted = py::module_::import("QCalc_extracted");
+            std::cout << "[PythonBridge] QCalc_extracted.py loaded (43K lines)" << std::endl;
+        } catch (const py::error_already_set& e) {
+            std::cerr << "[PythonBridge] WARNING: QCalc_extracted.py failed: " << e.what() << std::endl;
+        }
+        
+        try {
+            impl_->qcalc_cpp_extracted = py::module_::import("QCalc_cpp_extracted");
+            std::cout << "[PythonBridge] QCalc_cpp_extracted.py loaded (31K lines)" << std::endl;
+        } catch (const py::error_already_set& e) {
+            std::cerr << "[PythonBridge] WARNING: QCalc_cpp_extracted.py failed: " << e.what() << std::endl;
+        }
+        
+        try {
+            impl_->qcalc_js_extracted = py::module_::import("QCalc_js_extracted");
+            std::cout << "[PythonBridge] QCalc_js_extracted.py loaded (13K lines)" << std::endl;
+        } catch (const py::error_already_set& e) {
+            std::cerr << "[PythonBridge] WARNING: QCalc_js_extracted.py failed: " << e.what() << std::endl;
+        }
+        
+        try {
+            impl_->qcalc_wolfram_ext = py::module_::import("QCalc_Wolfram_Extensions");
+            std::cout << "[PythonBridge] QCalc_Wolfram_Extensions.py loaded (6K lines)" << std::endl;
+        } catch (const py::error_already_set& e) {
+            std::cerr << "[PythonBridge] WARNING: QCalc_Wolfram_Extensions.py failed: " << e.what() << std::endl;
+        }
+        
+        try {
+            impl_->qcalc_core_uqff = py::module_::import("QCalc_core_uqff");
+            std::cout << "[PythonBridge] QCalc_core_uqff.py loaded (1K lines)" << std::endl;
+        } catch (const py::error_already_set& e) {
+            std::cerr << "[PythonBridge] WARNING: QCalc_core_uqff.py failed: " << e.what() << std::endl;
+        }
+        
+        try {
+            impl_->qcalc_validation = py::module_::import("QCalc_validation");
+            std::cout << "[PythonBridge] QCalc_validation.py loaded" << std::endl;
+        } catch (const py::error_already_set& e) {
+            std::cerr << "[PythonBridge] WARNING: QCalc_validation.py failed: " << e.what() << std::endl;
+        }
+        
+        try {
+            impl_->qcalc_advanced = py::module_::import("QCalc_Advanced");
+            std::cout << "[PythonBridge] QCalc_Advanced.py loaded" << std::endl;
+        } catch (const py::error_already_set& e) {
+            std::cerr << "[PythonBridge] WARNING: QCalc_Advanced.py failed: " << e.what() << std::endl;
+        }
+        
+        try {
+            impl_->qcalc_stat = py::module_::import("QCalc_stat");
+            std::cout << "[PythonBridge] QCalc_stat.py loaded" << std::endl;
+        } catch (const py::error_already_set& e) {
+            std::cerr << "[PythonBridge] WARNING: QCalc_stat.py failed: " << e.what() << std::endl;
+        }
+        
+        try {
+            impl_->qcalc_phase1_val = py::module_::import("QCalc_Phase1_Validation");
+            std::cout << "[PythonBridge] QCalc_Phase1_Validation.py loaded" << std::endl;
+        } catch (const py::error_already_set& e) {
+            std::cerr << "[PythonBridge] WARNING: QCalc_Phase1_Validation.py failed: " << e.what() << std::endl;
+        }
+        
+        try {
+            impl_->qcalc_api = py::module_::import("QCalc_API");
+            std::cout << "[PythonBridge] QCalc_API.py loaded" << std::endl;
+        } catch (const py::error_already_set& e) {
+            std::cerr << "[PythonBridge] WARNING: QCalc_API.py failed: " << e.what() << std::endl;
+        }
+        
+        try {
+            impl_->qcalc_performance = py::module_::import("QCalc_Performance");
+            std::cout << "[PythonBridge] QCalc_Performance.py loaded" << std::endl;
+        } catch (const py::error_already_set& e) {
+            std::cerr << "[PythonBridge] WARNING: QCalc_Performance.py failed: " << e.what() << std::endl;
         }
         
         try {
