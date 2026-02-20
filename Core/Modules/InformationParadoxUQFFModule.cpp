@@ -814,37 +814,37 @@ MicroBHResult InformationParadoxUQFFModule::computeMicroBHPrediction(double sqrt
 }
 
 RingdownResult InformationParadoxUQFFModule::computeRingdownPrediction(double M_final, double a_final) {
-    using namespace InfoParadox;
+    // Using explicit InfoParadox:: prefix to avoid ambiguity with UQFF::Constants
     
     RingdownResult result;
     
     // Quasi-normal mode frequency for Kerr BH (fundamental l=m=2 mode)
     // f_QNM ≈ c³/(2π G M) × F(a) where F(a) ≈ 1 - 0.63(1-a)^0.3
     double F_a = 1.0 - 0.63 * std::pow(1.0 - a_final, 0.3);
-    result.f_quasi_normal = (c * c * c) / (2.0 * M_PI * G * M_final) * F_a;
+    result.f_quasi_normal = (InfoParadox::c * InfoParadox::c * InfoParadox::c) / (2.0 * M_PI * InfoParadox::G * M_final) * F_a;
     
     // Damping time
     // τ ≈ 2 G M / (c³) × Q(a) where Q(a) ≈ 2(1-a)^(-0.45)
     double Q_a = 2.0 * std::pow(1.0 - a_final + 1e-10, -0.45);
-    result.tau_damping = 2.0 * G * M_final / (c * c * c) * Q_a;
+    result.tau_damping = 2.0 * InfoParadox::G * M_final / (InfoParadox::c * InfoParadox::c * InfoParadox::c) * Q_a;
     
     // 26D corrections from UQFF
     // Extra dimensions modify the Green's function of gravitational perturbations
-    double dim_correction_f = (DIMENSIONS - 4.0) / DIMENSIONS / 1e6; // Very small
-    double dim_correction_tau = (DIMENSIONS - 4.0) / DIMENSIONS / 1e6;
+    double dim_correction_f = (InfoParadox::DIMENSIONS - 4.0) / InfoParadox::DIMENSIONS / 1e6; // Very small
+    double dim_correction_tau = (InfoParadox::DIMENSIONS - 4.0) / InfoParadox::DIMENSIONS / 1e6;
     
     result.delta_f_26D = result.f_quasi_normal * dim_correction_f;
     result.delta_tau_26D = result.tau_damping * dim_correction_tau;
     
     // Energy leakage to extra dimensions
     // Fraction ~ (l_p / r_s)^(26-4) where r_s >> l_p
-    double r_s = 2.0 * G * M_final / (c * c);
-    result.energy_leakage_fraction = std::pow(l_planck / r_s, DIMENSIONS - 4);
+    double r_s = 2.0 * InfoParadox::G * M_final / (InfoParadox::c * InfoParadox::c);
+    result.energy_leakage_fraction = std::pow(InfoParadox::l_planck / r_s, InfoParadox::DIMENSIONS - 4);
     
     if (verbose) {
         std::cout << "\n=== GW Ringdown Prediction ===" << std::endl;
         std::cout << "Final mass: " << std::scientific << M_final << " kg = " 
-                  << M_final / M_sun << " M_sun" << std::endl;
+                  << M_final / InfoParadox::M_sun << " M_sun" << std::endl;
         std::cout << "Final spin: a = " << std::fixed << a_final << std::endl;
         std::cout << "QNM frequency: " << result.f_quasi_normal << " Hz" << std::endl;
         std::cout << "Damping time: " << std::scientific << result.tau_damping << " s" << std::endl;
@@ -856,7 +856,7 @@ RingdownResult InformationParadoxUQFFModule::computeRingdownPrediction(double M_
 }
 
 PBHEvaporationResult InformationParadoxUQFFModule::computePBHEvaporationPrediction(double M_pbh_gram) {
-    using namespace InfoParadox;
+    // Using explicit InfoParadox:: prefix to avoid ambiguity with UQFF::Constants
     
     PBHEvaporationResult result;
     
@@ -864,14 +864,14 @@ PBHEvaporationResult InformationParadoxUQFFModule::computePBHEvaporationPredicti
     
     // Final burst energy ~ remaining mass × c²
     // Near Planck mass, quantum effects dominate
-    double M_remnant = M_planck * std::sqrt(DIMENSIONS / 4.0); // 26D stabilization
-    result.planck_remnant = (M_kg < 100.0 * M_planck);
+    double M_remnant = InfoParadox::M_planck * std::sqrt(InfoParadox::DIMENSIONS / 4.0); // 26D stabilization
+    result.planck_remnant = (M_kg < 100.0 * InfoParadox::M_planck);
     
     if (result.planck_remnant) {
-        result.final_burst_energy = (M_kg - M_remnant) * c * c;
+        result.final_burst_energy = (M_kg - M_remnant) * InfoParadox::c * InfoParadox::c;
         result.information_recovery = 0.9; // Most info in remnant
     } else {
-        result.final_burst_energy = M_kg * c * c;
+        result.final_burst_energy = M_kg * InfoParadox::c * InfoParadox::c;
         result.information_recovery = 1.0; // Full Hawking evaporation
     }
     
@@ -886,8 +886,8 @@ PBHEvaporationResult InformationParadoxUQFFModule::computePBHEvaporationPredicti
         double E = E_max * (static_cast<double>(i) + 0.5) / n_bins;
         double T_final = computeHawkingTemperature(M_remnant, 0);
         // Planck spectrum with DPM modulation
-        double spectrum_val = E * E * E / (std::exp(E / (k_B * T_final)) - 1.0);
-        double DPM_mod = 1.0 + 0.1 * std::sin(E / (k_B * T_final) * DIMENSIONS);
+        double spectrum_val = E * E * E / (std::exp(E / (InfoParadox::k_B * T_final)) - 1.0);
+        double DPM_mod = 1.0 + 0.1 * std::sin(E / (InfoParadox::k_B * T_final) * InfoParadox::DIMENSIONS);
         result.spectrum.push_back(spectrum_val * DPM_mod);
     }
     
@@ -905,7 +905,7 @@ PBHEvaporationResult InformationParadoxUQFFModule::computePBHEvaporationPredicti
 }
 
 CMBDistortionResult InformationParadoxUQFFModule::computeCMBDistortionPrediction(double z_evaporation, double M_pbh) {
-    using namespace InfoParadox;
+    // Using explicit InfoParadox:: prefix to avoid ambiguity with UQFF::Constants
     
     CMBDistortionResult result;
     
@@ -921,7 +921,7 @@ CMBDistortionResult InformationParadoxUQFFModule::computeCMBDistortionPrediction
     double rho_CMB = a_rad * std::pow(T_CMB_z, 4);
     
     // Injected energy from PBH evaporation
-    double E_inject = M_pbh * c * c;
+    double E_inject = M_pbh * InfoParadox::c * InfoParadox::c;
     
     // Fractional energy injection
     double delta_E_over_E = E_inject / (rho_CMB * std::pow(1.0 + z_evaporation, -3));
@@ -939,7 +939,7 @@ CMBDistortionResult InformationParadoxUQFFModule::computeCMBDistortionPrediction
     
     // DPM correlation signal in CMB
     // 26D vacuum fluctuations leave imprint at ~1e-10 level
-    result.DPM_correlation_signal = delta_E_over_E * (DIMENSIONS - 4.0) / DIMENSIONS / 1e4;
+    result.DPM_correlation_signal = delta_E_over_E * (InfoParadox::DIMENSIONS - 4.0) / InfoParadox::DIMENSIONS / 1e4;
     
     if (verbose) {
         std::cout << "\n=== CMB Distortion Prediction ===" << std::endl;
@@ -955,14 +955,14 @@ CMBDistortionResult InformationParadoxUQFFModule::computeCMBDistortionPrediction
 }
 
 DarkMatterRemnantResult InformationParadoxUQFFModule::computeDMRemnantPrediction(double M_initial) {
-    using namespace InfoParadox;
+    // Using explicit InfoParadox:: prefix to avoid ambiguity with UQFF::Constants
     
     DarkMatterRemnantResult result;
     
     // Remnant mass stabilized by 26D effects
     // M_remnant ~ M_planck × √(D/4) × (1 + quantum corrections)
-    double quantum_correction = std::log(M_initial / M_planck) / FACTORIAL_26;
-    result.remnant_mass = M_planck * std::sqrt(DIMENSIONS / 4.0) * (1.0 + quantum_correction);
+    double quantum_correction = std::log(M_initial / InfoParadox::M_planck) / InfoParadox::FACTORIAL_26;
+    result.remnant_mass = InfoParadox::M_planck * std::sqrt(InfoParadox::DIMENSIONS / 4.0) * (1.0 + quantum_correction);
     
     // Number density from cosmological considerations
     // n_remnant ~ ρ_DM / M_remnant
@@ -977,14 +977,14 @@ DarkMatterRemnantResult InformationParadoxUQFFModule::computeDMRemnantPrediction
     // Detection cross section (gravitational only at leading order)
     // σ ~ G² M_remnant² / v⁴ for gravitational scattering
     double v_typical = 220e3; // m/s (galactic rotation)
-    result.detection_cross_section = G * G * result.remnant_mass * result.remnant_mass 
+    result.detection_cross_section = InfoParadox::G * InfoParadox::G * result.remnant_mass * result.remnant_mass 
                                      / std::pow(v_typical, 4);
     
     if (verbose) {
         std::cout << "\n=== Dark Matter Remnant Prediction ===" << std::endl;
         std::cout << "Initial BH mass: " << std::scientific << M_initial << " kg" << std::endl;
         std::cout << "Remnant mass: " << result.remnant_mass << " kg = " 
-                  << result.remnant_mass / M_planck << " M_planck" << std::endl;
+                  << result.remnant_mass / InfoParadox::M_planck << " M_planck" << std::endl;
         std::cout << "Number density: " << result.number_density << " /m³" << std::endl;
         std::cout << "Relic abundance Ω_remnant: " << std::fixed << std::setprecision(6) 
                   << result.relic_abundance << std::endl;

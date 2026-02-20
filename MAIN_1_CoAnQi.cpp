@@ -231,12 +231,17 @@ using namespace std;
 // GLOBAL CONSTANTS AND CONFIGURATION
 // ===========================================================================================
 
-const double G = 6.6743e-11;              // Gravitational constant
-const double c_light = 3e8;               // Speed of light
-const double hbar = 1.0546e-34;           // Reduced Planck constant
-const double M_sun = 1.989e30;            // Solar mass
-const double epsilon_0 = 8.854187817e-12; // Vacuum permittivity
-const double mu_0 = 4 * M_PI * 1e-7;      // Vacuum permeability
+// Physical constants from shared_constants.h via UQFF::Constants namespace
+// Exposed at file scope for legacy code compatibility (after module includes to avoid conflicts)
+using UQFF::Constants::G;
+using UQFF::Constants::c;
+using UQFF::Constants::hbar;
+using UQFF::Constants::M_sun;
+using UQFF::Constants::epsilon_0;
+using UQFF::Constants::mu_0;
+
+// c_light alias for legacy code expecting c_light instead of c
+constexpr double c_light = UQFF::Constants::c;
 
 // ===========================================================================================
 // PHYSICS TERM FRAMEWORK - Runtime Extensible Physics Engine

@@ -307,12 +307,8 @@ constexpr double integral_psi = 2.176e-18;
 } // namespace Constants
 } // namespace UQFF
 
-// For backward compatibility - expose commonly used constants at global scope
-using UQFF::Constants::G;
-using UQFF::Constants::c;
-using UQFF::Constants::hbar;
-using UQFF::Constants::M_sun;
-using UQFF::Constants::epsilon_0;
-using UQFF::Constants::mu_0;
+// NOTE: Global using declarations removed to prevent namespace conflicts.
+// Files should use qualified names: UQFF::Constants::G, UQFF::Constants::c, etc.
+// Or add local using declarations within function/class scope as needed.
 
 #endif // SHARED_CONSTANTS_H
