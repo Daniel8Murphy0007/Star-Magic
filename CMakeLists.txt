@@ -681,86 +681,110 @@ if(Qt6_FOUND)
     
     message(STATUS "Source2 (HEAD PROGRAM) build target ENABLED")
     
-    # ========== VR RUNTIME (Phase 3 - DEFERRED) ==========
-    # Built from source2(HEAD PROGRAM).cpp - lightweight VR compositor
-    # DEFERRED: File requires comprehensive conditional compilation for optional dependencies
-    # Full VR integration (OpenXR, Vulkan) will be properly scaffolded in Phase 3
+    # ========== VR RUNTIME (Phase 3 - SCAFFOLDED) ==========
+    # Phase 3: VR Runtime scaffold with OpenXR + Vulkan
+    # Uses dedicated vr/ directory with modular components:
+    #   - vr_runtime.cpp: Main VR compositor
+    #   - openxr_session.cpp: OpenXR session management
+    #   - vulkan_compositor.cpp: Vulkan GPU rendering
+    #   - task_bot.cpp: Voice/gesture command processing
+    #   - astro_graphics.cpp: Astronomical visualization
     # Note: Phase 2 Python bridge is complete in Source2.exe --service mode
+    
     option(BUILD_VR_RUNTIME "Build VRRuntime target (Phase 3)" OFF)
     if(BUILD_VR_RUNTIME)
-        set(VR_RUNTIME_SOURCE_ORIG "${CMAKE_SOURCE_DIR}/source2(HEAD PROGRAM).cpp")
-        set(VR_RUNTIME_SOURCE "${CMAKE_BINARY_DIR}/vr_runtime_main.cpp")
-        if(EXISTS "${VR_RUNTIME_SOURCE_ORIG}")
-            # Copy to build dir with simple name (avoids AUTOMOC parentheses issue)
-            configure_file("${VR_RUNTIME_SOURCE_ORIG}" "${VR_RUNTIME_SOURCE}" COPYONLY)
-            
-            add_executable(VRRuntime "${VR_RUNTIME_SOURCE}")
-            
-            set_target_properties(VRRuntime PROPERTIES 
-                AUTOMOC ON 
-                AUTOUIC ON 
-                AUTORCC ON
-                MSVC_RUNTIME_LIBRARY "MultiThreadedDLL$<$<CONFIG:Debug>:Debug>"
-            )
-        
-        # Link all Qt6 dependencies that source2(HEAD PROGRAM).cpp uses
-        target_link_libraries(VRRuntime PRIVATE 
-            Qt6::Core 
-            Qt6::Widgets 
-            Qt6::Network
-        )
-        
-        if(TARGET Qt6::WebEngineWidgets)
-            target_link_libraries(VRRuntime PRIVATE Qt6::WebEngineWidgets)
+        # Find OpenXR (optional - stubs used if not found)
+        find_package(OpenXR CONFIG QUIET)
+        if(OpenXR_FOUND)
+            message(STATUS "OpenXR found - VR headset support enabled")
+            add_definitions(-DHAVE_OPENXR)
         else()
-            target_compile_definitions(VRRuntime PRIVATE NO_WEBENGINE)
+            message(STATUS "OpenXR NOT found - using stub implementation")
+            message(STATUS "  To enable: vcpkg install openxr-loader[vulkan]:x64-windows")
         endif()
         
-        # VTK for scientific visualization
+        # Find Vulkan (optional - stubs used if not found)
+        find_package(Vulkan QUIET)
+        if(Vulkan_FOUND)
+            message(STATUS "Vulkan found at ${Vulkan_VERSION} - GPU compositor enabled")
+            add_definitions(-DHAVE_VULKAN)
+        else()
+            message(STATUS "Vulkan NOT found - using stub implementation")
+            message(STATUS "  To enable: Install Vulkan SDK from https://vulkan.lunarg.com/")
+        endif()
+        
+        # VR Runtime source files
+        set(VR_RUNTIME_SOURCES
+            ${CMAKE_SOURCE_DIR}/vr/vr_runtime.cpp
+            ${CMAKE_SOURCE_DIR}/vr/openxr_session.cpp
+            ${CMAKE_SOURCE_DIR}/vr/vulkan_compositor.cpp
+            ${CMAKE_SOURCE_DIR}/vr/task_bot.cpp
+            ${CMAKE_SOURCE_DIR}/vr/astro_graphics.cpp
+            ${CMAKE_SOURCE_DIR}/ipc/uqff_ipc.cpp
+        )
+        
+        set(VR_RUNTIME_HEADERS
+            ${CMAKE_SOURCE_DIR}/vr/vr_runtime.h
+            ${CMAKE_SOURCE_DIR}/vr/openxr_session.h
+            ${CMAKE_SOURCE_DIR}/vr/vulkan_compositor.h
+            ${CMAKE_SOURCE_DIR}/vr/task_bot.h
+            ${CMAKE_SOURCE_DIR}/vr/astro_graphics.h
+            ${CMAKE_SOURCE_DIR}/ipc/uqff_ipc.h
+        )
+        
+        add_executable(VRRuntime ${VR_RUNTIME_SOURCES} ${VR_RUNTIME_HEADERS})
+        
+        target_compile_definitions(VRRuntime PRIVATE VR_RUNTIME_STANDALONE)
+        
+        set_target_properties(VRRuntime PROPERTIES 
+            MSVC_RUNTIME_LIBRARY "MultiThreadedDLL$<$<CONFIG:Debug>:Debug>"
+        )
+        
+        target_include_directories(VRRuntime PRIVATE
+            ${CMAKE_SOURCE_DIR}
+            ${CMAKE_SOURCE_DIR}/vr
+            ${CMAKE_SOURCE_DIR}/ipc
+        )
+        
+        # OpenXR linking
+        if(OpenXR_FOUND)
+            target_link_libraries(VRRuntime PRIVATE OpenXR::openxr_loader)
+        endif()
+        
+        # Vulkan linking
+        if(Vulkan_FOUND)
+            target_link_libraries(VRRuntime PRIVATE Vulkan::Vulkan)
+        endif()
+        
+        # VTK for scientific visualization (optional)
         if(VTK_FOUND)
             target_link_libraries(VRRuntime PRIVATE ${VTK_LIBRARIES})
             target_include_directories(VRRuntime PRIVATE ${VTK_INCLUDE_DIRS})
-        else()
-            target_compile_definitions(VRRuntime PRIVATE NO_VTK)
+            target_compile_definitions(VRRuntime PRIVATE HAVE_VTK)
         endif()
         
-        # CURL for web APIs
+        # CURL for web APIs (optional)
         if(CURL_FOUND)
             target_link_libraries(VRRuntime PRIVATE CURL::libcurl)
-        else()
-            target_compile_definitions(VRRuntime PRIVATE NO_CURL)
+            target_compile_definitions(VRRuntime PRIVATE HAVE_CURL)
         endif()
         
-        # SQLite3 for caching
-        if(unofficial-sqlite3_FOUND)
-            target_link_libraries(VRRuntime PRIVATE unofficial::sqlite3::sqlite3)
-        else()
-            target_compile_definitions(VRRuntime PRIVATE NO_SQLITE)
-        endif()
-        
-        # AWS SDK - disabled for VR runtime (not needed)
-        target_compile_definitions(VRRuntime PRIVATE NO_AWS)
-        
-        # Python - disabled until Phase 3
-        target_compile_definitions(VRRuntime PRIVATE NO_PYTHON)
-        
-        # Qalculate - disabled (not needed for VR)
-        target_compile_definitions(VRRuntime PRIVATE NO_QALCULATE)
-        
-        # PocketSphinx - voice commands (optional)
-        target_compile_definitions(VRRuntime PRIVATE NO_POCKETSPHINX)
-        
-        # OpenCV - gesture recognition (optional)
+        # OpenCV for gesture recognition (optional)
         if(OpenCV_FOUND)
             target_link_libraries(VRRuntime PRIVATE ${OpenCV_LIBS})
-        else()
-            target_compile_definitions(VRRuntime PRIVATE NO_OPENCV)
+            target_compile_definitions(VRRuntime PRIVATE HAVE_OPENCV)
         endif()
         
-        message(STATUS "VRRuntime build target ENABLED (from 'source2(HEAD PROGRAM).cpp')")
-    else()
-        message(STATUS "VRRuntime DISABLED - source2(HEAD PROGRAM).cpp not found")
-    endif()
+        # JSON library for catalog parsing
+        find_package(nlohmann_json CONFIG QUIET)
+        if(nlohmann_json_FOUND)
+            target_link_libraries(VRRuntime PRIVATE nlohmann_json::nlohmann_json)
+            target_compile_definitions(VRRuntime PRIVATE HAVE_NLOHMANN_JSON)
+        endif()
+        
+        message(STATUS "VRRuntime build target ENABLED (Phase 3 scaffold)")
+        message(STATUS "  Sources: vr/vr_runtime.cpp, vr/openxr_session.cpp, vr/vulkan_compositor.cpp")
+        message(STATUS "           vr/task_bot.cpp, vr/astro_graphics.cpp")
     else()
         message(STATUS "VRRuntime DISABLED - set BUILD_VR_RUNTIME=ON to enable (Phase 3)")
     endif()
