@@ -42,25 +42,37 @@
 
 // Network and Web Communication Libraries
 #include <curl/curl.h> // libcurl - HTTP/HTTPS requests for fetching data from web APIs
-#include <websocket.h> // WebSocket protocol - real-time bidirectional communication with servers
+// #include <websocket.h> // WebSocket protocol - DISABLED (not available)
 
 // Database and Cloud Storage
+#ifndef NO_SQLITE
 #include <sqlite3.h> // SQLite database - embedded SQL database for local caching
+#endif
 
 // AWS (Amazon Web Services) SDK - Cloud services integration
+#ifndef NO_AWS
 #include <aws/core/Aws.h>                                  // AWS SDK core - initialization and configuration
 #include <aws/s3/S3Client.h>                               // AWS S3 client - cloud object storage for syncing cached data
 #include <aws/cognito-idp/CognitoIdentityProviderClient.h> // AWS Cognito - user authentication and authorization
+#endif
 
 // Speech and Vision Processing
+#ifndef NO_POCKETSPHINX
 #include <pocketsphinx.h>     // PocketSphinx - speech recognition for voice input commands
+#endif
+#ifndef NO_OPENCV
 #include <opencv2/opencv.hpp> // OpenCV - computer vision library for video/image processing
+#endif
 
 // Python Integration
+#ifndef NO_PYTHON
 #include <pybind11/embed.h> // pybind11 - embeds Python interpreter for running Python code (AI models)
+#endif
 
 // Mathematical Computation
+#ifndef NO_QALCULATE
 #include <qalculate.h> // Qalculate - powerful calculator library for symbolic math
+#endif
 
 // System and Standard Libraries
 #include <windows.h>         // Windows API - Windows-specific system functions
@@ -158,9 +170,13 @@ std::vector<SearchResult> results[MAX_WINDOWS];
 
 // Database and Cloud Storage Pointers
 // These are initialized in main() and used throughout the application
-sqlite3 *db;                                                                 // SQLite database for local caching of search results (offline access)
-Aws::S3::S3Client *s3_client;                                                // AWS S3 client for syncing cached data to cloud storage
-Aws::CognitoIdentityProvider::CognitoIdentityProviderClient *cognito_client; // AWS Cognito for user authentication
+#ifndef NO_SQLITE
+sqlite3 *db = nullptr;                                                       // SQLite database for local caching of search results (offline access)
+#endif
+#ifndef NO_AWS
+Aws::S3::S3Client *s3_client = nullptr;                                      // AWS S3 client for syncing cached data to cloud storage
+Aws::CognitoIdentityProvider::CognitoIdentityProviderClient *cognito_client = nullptr; // AWS Cognito for user authentication
+#endif
 
 // ============================================================================
 // NASA DONKI API FUNCTION - Fetches space weather data
@@ -820,12 +836,14 @@ void on_message(void *user, const char *data, size_t len)
     // Add result to first browser window's results
     results[0].push_back(result);
 
+#ifndef NO_SQLITE
     // Cache to SQLite database for offline access (mark as live data)
     sqlite3_exec(db,
                  ("INSERT INTO cache (url, title, summary, isLive) VALUES ('" +
                   result.url + "', '" + result.title + "', '" + result.summary + "', 1)")
                      .c_str(),
                  nullptr, nullptr, nullptr);
+#endif
 }
 
 // WriteCallback - cURL callback for handling HTTP response data
@@ -1073,6 +1091,7 @@ void OfflineSearch(const std::string &query, std::vector<SearchResult> &offlineR
     }
 
     sqlite3_finalize(stmt); // Clean up prepared statement (free memory)
+#endif // !NO_SQLITE
 }
 
 // ============================================================================
@@ -1089,6 +1108,7 @@ void OfflineSearch(const std::string &query, std::vector<SearchResult> &offlineR
 //
 std::string ProcessVoiceInput()
 {
+#ifndef NO_POCKETSPHINX
     // Initialize PocketSphinx decoder with default configuration
     ps_decoder_t *ps = ps_init(cmd_ln_init(nullptr, ps_args(), true, nullptr));
 
@@ -1110,6 +1130,10 @@ std::string ProcessVoiceInput()
 
     // Return the recognized text query (will be used for search)
     return text;
+#else
+    // Voice input disabled - return empty string
+    return "";
+#endif
 }
 
 // ProcessVideoInput - Captures video from webcam and recognizes hand gestures
@@ -1122,6 +1146,7 @@ std::string ProcessVoiceInput()
 // Use case: Hands-free operation (e.g., gesture to submit query without typing)
 std::string ProcessVideoInput()
 {
+#ifndef NO_OPENCV
     // Open video capture from default camera (device index 0)
     // cv::VideoCapture is RAII - automatically closes camera when destroyed
     cv::VideoCapture cap(0);
@@ -1148,6 +1173,10 @@ std::string ProcessVideoInput()
 
     // Return the command string (will trigger action in main application)
     return command;
+#else
+    // Video input disabled - return empty string
+    return "";
+#endif
 }
 
 // RenderScatterPlot - Visualizes 2D data using VTK scatter plot
@@ -2180,3 +2209,7 @@ int main(int argc, char *argv[])
     // Returns exit code when application quits (0 = normal exit)
     return app.exec();
 }
+
+// MOC include required for Q_OBJECT in .cpp file
+// This must be at the END of the file after the class definition
+#include "vr_runtime_main.moc"

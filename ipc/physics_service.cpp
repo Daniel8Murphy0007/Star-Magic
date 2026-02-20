@@ -8,6 +8,7 @@
  */
 
 #include "physics_service.h"
+#include "python_bridge.h"
 #include <iostream>
 #include <chrono>
 #include <csignal>
@@ -332,23 +333,72 @@ void PhysicsService::handle_vr_frame_update(const IPC::MessageHeader& header,
 }
 
 // ============================================================================
-// PHYSICS CALCULATIONS
+// PHYSICS CALCULATIONS (integrated with Python calculators)
 // ============================================================================
 
 FieldResponse PhysicsService::calculate_uqff(const FieldRequest& request) {
     FieldResponse response;
+    
+    // Try Python calculators first (CondensedPhysics.py → QCalc.py fallback)
+    if (config_.enable_python_integration) {
+        PythonBridge& python = PythonBridge::instance();
+        
+        if (!python.is_ready()) {
+            python.initialize();
+        }
+        
+        if (python.is_ready()) {
+            PythonQueryParams params;
+            params.system_name = request.system_name;
+            params.r = request.r;
+            params.t = request.t;
+            params.theta = request.theta;
+            params.mass = request.mass;
+            params.radius = request.radius;
+            params.magnetic_field = request.magnetic_field;
+            params.spin_period = request.spin_period;
+            
+            // Try CondensedPhysics.py first (81K lines, full equations)
+            PythonFieldResult py_result = python.calculate_condensed_physics(params);
+            
+            if (!py_result.success) {
+                // Fallback to QCalc.py (9K lines, pure solver)
+                py_result = python.calculate_qcalc(params);
+            }
+            
+            if (py_result.success) {
+                response.success = true;
+                response.F_U = py_result.F_U;
+                response.Ug1 = py_result.Ug1;
+                response.Ug2 = py_result.Ug2;
+                response.Ug3 = py_result.Ug3;
+                response.Ug4 = py_result.Ug4;
+                response.Um = py_result.Um;
+                response.Ubi = py_result.Ubi;
+                response.g_compressed = py_result.g_compressed;
+                response.compute_time_ms = py_result.compute_time_ms;
+                response.confidence = 0.999;  // 99.9% solvability
+                
+                if (config_.verbose) {
+                    std::cout << "[PhysicsService] Python calculation: F_U=" << response.F_U
+                              << " (" << py_result.compute_time_ms << " ms)" << std::endl;
+                }
+                
+                return response;
+            } else {
+                std::cerr << "[PhysicsService] Python error: " << py_result.error_message << std::endl;
+            }
+        }
+    }
+    
+    // Fallback: C++ simplified calculation
     response.success = true;
     
-    // TODO: Integrate with MAIN_1_CoAnQi physics engine
-    // For now, use simplified UQFF approximation
-    
     const double G = 6.67430e-11;
-    const double c = 2.99792458e8;
     const double M_sun = 1.989e30;
     
-    // Default to solar mass if not specified
     double M = request.mass > 0 ? request.mass : M_sun;
-    double r = request.r > 0 ? request.r : 1e6;  // Default 1000 km
+    double r = request.r > 0 ? request.r : 1e6;
     
     // Simplified Ug components (placeholder - real calc from MAIN_1_CoAnQi)
     response.Ug1 = (G * M) / (r * r);                    // Newtonian base

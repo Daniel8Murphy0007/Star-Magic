@@ -458,13 +458,16 @@ endif()
 # ========== IPC LIBRARY (Phase 1 - VR Architecture) ==========
 # Shared memory and gRPC channels for UQFF inter-process communication
 # Phase 2: Added PhysicsService for backend service mode
+# Phase 2 Fix: Added PythonBridge for CondensedPhysics.py/QCalc.py integration
 set(IPC_SOURCES
     ipc/uqff_ipc.cpp
     ipc/physics_service.cpp
+    ipc/python_bridge.cpp
 )
 set(IPC_HEADERS
     ipc/uqff_ipc.h
     ipc/physics_service.h
+    ipc/python_bridge.h
 )
 
 # Source2: HEAD PROGRAM - Primary User Base Platform (Qt6 + optional VTK, AWS SDK, OpenCV, etc.)
@@ -579,9 +582,28 @@ if(Qt6_FOUND)
     #     message(STATUS "Source2: AWS SDK disabled (not found)")
     # endif()
     
-    # Python (pybind11) - Disabled temporarily due to compilation conflicts
-    # TODO: Fix pybind11 integration conflicts with Qt/AWS SDK
-    target_compile_definitions(Source2 PRIVATE NO_PYTHON)
+    # Python (pybind11) - Phase 2 Fix: HYBRID APPROACH
+    # - Source2 GUI code uses NO_PYTHON to avoid Qt+pybind conflicts
+    # - IPC layer (python_bridge.cpp) uses PYTHON_BRIDGE_ENABLED for --service mode
+    # - CondensedPhysics.py (81K lines) and QCalc.py (9K lines) work via IPC
+    find_package(Python3 COMPONENTS Interpreter Development QUIET)
+    find_package(pybind11 CONFIG QUIET)
+    
+    if(Python3_FOUND AND pybind11_FOUND)
+        # Link pybind11 for python_bridge.cpp in IPC layer
+        target_link_libraries(Source2 PRIVATE 
+            Python3::Python
+            pybind11::embed
+        )
+        target_include_directories(Source2 PRIVATE ${Python3_INCLUDE_DIRS})
+        # NO_PYTHON: Skips Qt-conflicting code in source2.cpp
+        # PYTHON_BRIDGE_ENABLED: Enables python_bridge.cpp for --service mode
+        target_compile_definitions(Source2 PRIVATE NO_PYTHON PYTHON_BRIDGE_ENABLED)
+        message(STATUS "Source2: Python via IPC (--service mode uses CondensedPhysics.py/QCalc.py)")
+    else()
+        target_compile_definitions(Source2 PRIVATE NO_PYTHON)
+        message(STATUS "Source2: Python disabled (pybind11 not found)")
+    endif()
     
     # Qalculate and PocketSphinx - Not installed, always disabled
     target_compile_definitions(Source2 PRIVATE NO_QALCULATE NO_POCKETSPHINX)
@@ -658,6 +680,90 @@ if(Qt6_FOUND)
     endif()
     
     message(STATUS "Source2 (HEAD PROGRAM) build target ENABLED")
+    
+    # ========== VR RUNTIME (Phase 3 - DEFERRED) ==========
+    # Built from source2(HEAD PROGRAM).cpp - lightweight VR compositor
+    # DEFERRED: File requires comprehensive conditional compilation for optional dependencies
+    # Full VR integration (OpenXR, Vulkan) will be properly scaffolded in Phase 3
+    # Note: Phase 2 Python bridge is complete in Source2.exe --service mode
+    option(BUILD_VR_RUNTIME "Build VRRuntime target (Phase 3)" OFF)
+    if(BUILD_VR_RUNTIME)
+        set(VR_RUNTIME_SOURCE_ORIG "${CMAKE_SOURCE_DIR}/source2(HEAD PROGRAM).cpp")
+        set(VR_RUNTIME_SOURCE "${CMAKE_BINARY_DIR}/vr_runtime_main.cpp")
+        if(EXISTS "${VR_RUNTIME_SOURCE_ORIG}")
+            # Copy to build dir with simple name (avoids AUTOMOC parentheses issue)
+            configure_file("${VR_RUNTIME_SOURCE_ORIG}" "${VR_RUNTIME_SOURCE}" COPYONLY)
+            
+            add_executable(VRRuntime "${VR_RUNTIME_SOURCE}")
+            
+            set_target_properties(VRRuntime PROPERTIES 
+                AUTOMOC ON 
+                AUTOUIC ON 
+                AUTORCC ON
+                MSVC_RUNTIME_LIBRARY "MultiThreadedDLL$<$<CONFIG:Debug>:Debug>"
+            )
+        
+        # Link all Qt6 dependencies that source2(HEAD PROGRAM).cpp uses
+        target_link_libraries(VRRuntime PRIVATE 
+            Qt6::Core 
+            Qt6::Widgets 
+            Qt6::Network
+        )
+        
+        if(TARGET Qt6::WebEngineWidgets)
+            target_link_libraries(VRRuntime PRIVATE Qt6::WebEngineWidgets)
+        else()
+            target_compile_definitions(VRRuntime PRIVATE NO_WEBENGINE)
+        endif()
+        
+        # VTK for scientific visualization
+        if(VTK_FOUND)
+            target_link_libraries(VRRuntime PRIVATE ${VTK_LIBRARIES})
+            target_include_directories(VRRuntime PRIVATE ${VTK_INCLUDE_DIRS})
+        else()
+            target_compile_definitions(VRRuntime PRIVATE NO_VTK)
+        endif()
+        
+        # CURL for web APIs
+        if(CURL_FOUND)
+            target_link_libraries(VRRuntime PRIVATE CURL::libcurl)
+        else()
+            target_compile_definitions(VRRuntime PRIVATE NO_CURL)
+        endif()
+        
+        # SQLite3 for caching
+        if(unofficial-sqlite3_FOUND)
+            target_link_libraries(VRRuntime PRIVATE unofficial::sqlite3::sqlite3)
+        else()
+            target_compile_definitions(VRRuntime PRIVATE NO_SQLITE)
+        endif()
+        
+        # AWS SDK - disabled for VR runtime (not needed)
+        target_compile_definitions(VRRuntime PRIVATE NO_AWS)
+        
+        # Python - disabled until Phase 3
+        target_compile_definitions(VRRuntime PRIVATE NO_PYTHON)
+        
+        # Qalculate - disabled (not needed for VR)
+        target_compile_definitions(VRRuntime PRIVATE NO_QALCULATE)
+        
+        # PocketSphinx - voice commands (optional)
+        target_compile_definitions(VRRuntime PRIVATE NO_POCKETSPHINX)
+        
+        # OpenCV - gesture recognition (optional)
+        if(OpenCV_FOUND)
+            target_link_libraries(VRRuntime PRIVATE ${OpenCV_LIBS})
+        else()
+            target_compile_definitions(VRRuntime PRIVATE NO_OPENCV)
+        endif()
+        
+        message(STATUS "VRRuntime build target ENABLED (from 'source2(HEAD PROGRAM).cpp')")
+    else()
+        message(STATUS "VRRuntime DISABLED - source2(HEAD PROGRAM).cpp not found")
+    endif()
+    else()
+        message(STATUS "VRRuntime DISABLED - set BUILD_VR_RUNTIME=ON to enable (Phase 3)")
+    endif()
 else()
     message(STATUS "Source2 DISABLED - Qt6 required (install qt6-base:x64-windows)")
 endif()
