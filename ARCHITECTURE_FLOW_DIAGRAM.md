@@ -1,8 +1,8 @@
 # Star-Magic UQFF Architecture Flow Diagram
 
-> **Version:** 4.1 (CANONICAL - DO NOT DEVIATE)
+> **Version:** 4.2 (CANONICAL - DO NOT DEVIATE)
 > **Generated:** 2026-02-21
-> **Updated:** 2026-02-21 (Phase 3 gRPC Complete)
+> **Updated:** 2026-02-21 (v3.1 Self-Expanding Physics Backend)
 > **Author:** Daniel T. Murphy
 > **CRITICAL:** This is the MASTER architecture document. All other docs must match.
 
@@ -17,7 +17,7 @@
 5. **Recirculation Loop** = bodies_*.csv → IPData → Calculators → OPData → OutputData → RECALL
 6. **Simultaneous Joint Pipeline** = All 5 calculators run in parallel via IPC layer (Phase 1-5 complete)
 
-## IPC Pipeline Status (Phases 1-5 Complete)
+## IPC Pipeline Status (Phases 1-5 Complete + v3.1)
 
 | Phase | Description | Status | Commit |
 |-------|-------------|--------|--------|
@@ -25,7 +25,9 @@
 | Phase 2 | Physics Backend Service Mode | ✅ Complete | 0b1e737 |
 | Phase 3 | Full gRPC Implementation | ✅ Complete | 1e5a722 |
 | Phase 4 | Astro Graphics IPC Integration | ✅ Complete | 3351f42 |
-| Phase 5 | Full VR Experience | ✅ Complete | (pending) |
+| Phase 5 | Full VR Experience | ✅ Complete | e84c434 |
+| v3.1a | Cross-Platform IPC (NamedPipeChannel) | ✅ Complete | 8967469 |
+| v3.1b | Self-Expanding Physics Backend | ✅ Complete | 81097a8 |
 
 ---
 
@@ -227,19 +229,20 @@
 │                                                                                                               │
 │   ┌───────────────────────┐    ┌───────────────────────┐    ┌───────────────────────┐                        │
 │   │     uqff_ipc.h        │    │   python_bridge.h     │    │   physics_service.h   │                        │
-│   │     403 lines         │    │   (pybind11 bridge)   │    │   (gRPC service)      │                        │
+│   │     515 lines (v3.1)  │    │   (pybind11 bridge)   │    │   470 lines (v3.1)    │                        │
 │   │                       │    │                       │    │                       │                        │
-│   │ MessageTypes:         │    │ Embeds Python in C++: │    │ Service endpoints:    │                        │
-│   │ - CALCULATE_FIELD     │    │ - CondensedPhysics.py │    │ - CalculateField()    │                        │
-│   │ - CALCULATE_GRAVITY   │    │ - QCalc.py            │    │ - RegisterTerm()      │                        │
-│   │ - VR_FRAME_UPDATE     │    │ - Phase5-7.py         │    │ - UpdateParameter()   │                        │
-│   │ - REGISTER_TERM       │    │                       │    │ - GetSystemList()     │                        │
-│   │ - UPDATE_PARAMETER    │    │                       │    │                       │                        │
-│   │ - SYNC_STATE          │    │                       │    │                       │                        │
+│   │ MessageTypes:         │    │ Embeds Python in C++: │    │ Self-Expand (v3.1):   │                        │
+│   │ - CALCULATE_FIELD     │    │ - CondensedPhysics.py │    │ - onRegisterTerm()    │                        │
+│   │ - CALCULATE_GRAVITY   │    │ - QCalc.py            │    │ - evaluateDynamicTerms│                        │
+│   │ - VR_FRAME_UPDATE     │    │ - Phase5-7.py         │    │ Self-Update (v3.1):   │                        │
+│   │ - REGISTER_TERM       │    │                       │    │ - onUpdateParameter() │                        │
+│   │ - UPDATE_PARAMETER    │    │                       │    │ - κ, [SSq], β_i tuning│                        │
+│   │ - SIM_START/FRAME     │    │                       │    │ Self-Simulate (v3.1): │                        │
+│   │ - SIM_COMPLETE        │    │                       │    │ - startSimulation()   │                        │
 │   └───────────────────────┘    └───────────────────────┘    └───────────────────────┘                        │
 │                                                                                                               │
-│   Channels: SharedMemoryChannel (low-latency VR), GrpcChannel (structured commands)                          │
-│   Named Pipe: \\.\pipe\StarMagic_UQFF                                                                        │
+│   Channels: SharedMemoryChannel + NamedPipeChannel + GrpcChannel (all cross-platform)                        │
+│   Windows: Named Pipes (CreateNamedPipe) | Linux/macOS: Unix Domain Sockets                                  │
 └──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
                                               │
                           ┌───────────────────┴───────────────────┐
@@ -248,11 +251,11 @@
 ┌─────────────────────────────────────────────┐    ┌─────────────────────────────────────────────┐
 │   source2(HEAD PROGRAM).cpp                 │    │   physics_backend.cpp (CPU Heavy Server)    │
 │   (VR/VM BACKEND - NOT A GUI)               │    │   (Headless physics computation)            │
-│   2,452 lines | VR namespace merged         │    │                                             │
+│   2,625 lines | VR namespace merged         │    │                                             │
 │   PURPOSE: Heavy GPU simulations in VR      │    │   PURPOSE: CPU-bound physics computation    │
-│   - Virtual space rendering                 │    │   - Self-Expanding (registerDynamicTerm)    │
-│   - Virtual keyboard input                  │    │   - Self-Updating (learning rate opt)       │
-│   - Virtual goggles (OpenXR headset)        │    │   - Self-Simulating (time evolution)        │
+│   - Virtual space rendering                 │    │   - Self-Expanding (onRegisterTerm)         │
+│   - Virtual keyboard input                  │    │   - Self-Updating (onUpdateParameter)       │
+│   - Virtual goggles (OpenXR headset)        │    │   - Self-Simulating (startSimulation)       │
 │   - Astro Graphics Program (GPU tasking)    │    │   - Distributed Computing pool              │
 │   - --service flag for headless mode        │    │                                             │
 │   ASSOCIATED HEADERS (vr/ directory):       │    │   Handles IPC messages from VR backend:     │
@@ -326,5 +329,5 @@ CondensedPhysics_OutputData.py
 
 ---
 
-*CANONICAL DOCUMENT - Version 4.1 - DO NOT DEVIATE*
-*Updated: 2026-02-21 (Phase 3 gRPC Complete) by Daniel T. Murphy*
+*CANONICAL DOCUMENT - Version 4.2 - DO NOT DEVIATE*
+*Updated: 2026-02-21 (v3.1 Self-Expanding Physics Backend) by Daniel T. Murphy*

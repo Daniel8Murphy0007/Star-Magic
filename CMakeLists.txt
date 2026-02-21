@@ -10,34 +10,21 @@ if(NOT DEFINED CMAKE_TOOLCHAIN_FILE AND EXISTS "C:/vcpkg/scripts/buildsystems/vc
 endif()
 
 # Project name and programming language
-# Build Status: January 28, 2026 - Batch 23 COMPLETE UQFF Validation Integration
-# Session: Integrated 13 PhysicsTerm classes from Complete UQFF Validation module
-# Previous: Batch 22 (5 classes) Transients + Batch 21 (15 classes) Info Paradox + Batch 20 (12 classes)
+# Build Status: February 21, 2026 - v3.1 Self-Expanding Physics Backend
+# Session: Integrated self-expand/self-update/self-simulate into PhysicsService
+# IPC Layer: Cross-platform (Windows + Linux/macOS) with NamedPipeChannel + SharedMemoryChannel + gRPC
+# v3.1 Features:
+#   Self-Expand: onRegisterTerm() - dynamic physics terms from VR/external
+#   Self-Update: onUpdateParameter() - runtime κ, [SSq], β_i tuning
+#   Self-Simulate: startSimulation() - time evolution with VR streaming
+# Previous: Batch 23 Complete UQFF Validation (Jan 28, 2026)
 # Framework Status: 99.9% solvability (Grok 4 analysis Sept 14-21, 2025)
 # Calibrated Variables: κ=0.0005/day, [SSq]=0.57, H_SCm=0.99, U_UA=0.0001, k_η=10⁻¹¹³, β_i=0.603
-# PhysicsTerm Classes: 6,688+ registered (6,675 + 13 new Batch 23)
-# Batch 23 Classes (13 total):
-#   Core Calibrations (6):
-#     KappaDecayTerm (JWST quasar τ~2000 days, MCMC κ=0.0005/day)
-#     SSqShellQuotientTerm (Nebula Ye~0.1 mapping, [SSq]=0.57)
-#     GaiaBinaryInclinationTerm (DR4 i~90° binaries, U_UA damping)
-#     LIGOGravitationalWaveTerm (GWTC-4.0 218 events, Ug4 validation)
-#     NeutrinoSEDTerm (RIAF pp/pγ soft <0.1 PeV, NGC 1068 4.2σ)
-#     AT2019qizTDETerm (Closest optical TDE 66 Mpc, QPEs)
-#   Extended Terms (7):
-#     WidomLarsenLENRTerm (Hydride η~10¹³, Wires η~10⁸, Corona η~7×10⁻³ cm⁻²/s)
-#     BECIntegrationTerm (N_B=1/(exp(ΔE/kT)-1), nuclear collisions)
-#     F_U_Bi_i_IntegralTerm (10+ DPM factors, x₂ quadratic limits)
-#     UQFFCompressedTerm (Newtonian + 9 MUGE corrections)
-#     UQFFResonantTerm (aDPM + 5 frequency resonances)
-#     UQFFBuoyantTerm (Ub_i opposition with β_i=0.603)
-#     UQFFSuperconductiveTerm (SCm P_SCm, H_SCm~0.99)
-# Source: Core/Modules/UQFFValidationBatch23Module.cpp (1600+ lines)
-# Data: Gaia DR4 (March 2025), LIGO GWTC-4.0 (Aug 2025), JWST, IceCube
+# PhysicsTerm Classes: 6,688+ registered
 # Compiler: MSVC 19.44.35219.0 (Visual Studio 2022)
 # Standard: C++20 strict compliance
 # Executable: 1.43 MB (9,217,024 -> 1,429,504 bytes, 15.51% UPX compression)
-# Last Update: January 28, 2026 @ Batch 23 COMPLETE - 45 new classes total (Batch 20-23)
+# Last Update: February 21, 2026 @ v3.1 Self-Expanding Physics Backend
 project(StarMagic_UQFF LANGUAGES CXX)
 
 # ========== BUILD OPTIONS ==========

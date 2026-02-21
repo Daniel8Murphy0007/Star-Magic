@@ -1,11 +1,11 @@
 # 🏛️ Star-Magic UQFF Architecture Analysis
 
-> **NOTICE:** See ARCHITECTURE_FLOW_DIAGRAM.md v4.1 CANONICAL for authoritative architecture.
+> **NOTICE:** See ARCHITECTURE_FLOW_DIAGRAM.md v4.2 CANONICAL for authoritative architecture.
 > **Key Clarifications:**
 > - source2.cpp = PRINCIPAL GUI (user-facing, 21 tabs, Qt6) - **USER STARTS HERE**
-> - source2(HEAD PROGRAM).cpp = VR/VM developer backend (GPU-heavy, 2,452 lines)
+> - source2(HEAD PROGRAM).cpp = VR/VM developer backend (GPU-heavy, 2,625 lines)
 > - index.js = LIBRARY INDEX (NOT a calculator)
-> **IPC Status:** Phase 1-3 Complete (SharedMemory + NamedPipe + gRPC)
+> **IPC Status:** Phase 1-5 + v3.1 Complete (SharedMemory + NamedPipe + gRPC + Self-Expanding)
 
 **Analysis Date:** February 11, 2026  
 **Updated:** February 21, 2026 (Phase 3 gRPC Complete)  
