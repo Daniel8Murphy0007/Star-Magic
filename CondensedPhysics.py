@@ -87748,12 +87748,1196 @@ COSMIC_SYSTEMS = {
 }
 
 
+# =============================================================================
+# CALIBRATION CONSTANTS REGISTRY
+# UQFF Calibration Constants from Triadic Framework Analysis
+# =============================================================================
+
+class CalibrationConstantsRegistry:
+    """
+    Registry of UQFF calibration constants derived from LENR experiments,
+    astrophysical observations, and theoretical derivations.
+    
+    Sources:
+    - LENR metallic hydride cells: k_η = 2.75e8
+    - Grok/SuperGrok analysis chains: Δk_η = 7.25e8
+    - M-σ relation calibration: f_feedback = 0.063
+    - Vacuum energy density ratios: ρ_vac ratios
+    """
+    
+    # Core UQFF Constants
+    SSQ = 0.57                    # [SSq] dimensionless calibration factor
+    KAPPA = 0.0005                # κ decay rate (per day)
+    K_ETA = 2.75e8                # k_η for metallic hydrides
+    DELTA_K_ETA = 7.25e8          # Δk_η resonance adjustment
+    F_TRZ = 0.1                   # Time-reversal zone factor
+    F_FEEDBACK = 0.063            # SMBH feedback efficiency
+    F_QUASI = 0.01                # Quasi-static factor
+    F_HEAVISIDE = 0.01            # Heaviside step correction
+    
+    # Vacuum Energy Densities (J/m³)
+    RHO_VAC_SCM = 7.09e-37        # ρ_vac,[SCm] superconductive material
+    RHO_VAC_UA = 7.09e-36         # ρ_vac,[UA] universal aether
+    RHO_VAC_UA_PRIME_SCM = 1e-24  # ρ_vac,[UA']:[SCm] initial state
+    
+    # Buoyancy Parameters
+    K_UB = 0.1                    # Buoyancy coupling constant
+    V_LITTLE_V_BIG = 1/33         # Boyle's Law ratio
+    AZEOTROPIC_VOID = 0.2         # Default void fraction
+    
+    # Frequency Constants (Hz and rad/s)
+    F_DPM = 1e12                  # DPM frequency
+    F_THZ = 1e12                  # THz frequency
+    F_QUANTUM = 1.445e-17         # Quantum frequency
+    F_AETHER = 1.576e-35          # Aether frequency
+    F_OSC = 4.57e14               # Oscillation frequency
+    F_REACT = 1e10                # Reaction frequency
+    
+    # Angular frequencies for 4-projection resonance
+    OMEGA_UG1 = 1.989e-13         # ω_Ug1 SM gravity (rad/s)
+    OMEGA_UG2 = 3.978e-13         # ω_Ug2 shell gravity (rad/s)
+    OMEGA_UG3 = 1.989e-11         # ω_Ug3 inertial gravity (rad/s)
+    OMEGA_UG4I = 6.283e12         # ω_Ug4i cosmological (rad/s)
+    
+    # Physical Constants
+    H_SCM = 0.99                  # H_SCm superconductive coupling
+    UA_FACTOR = 0.0001            # U_UA universal aether factor
+    PHI = 1.618033988749895       # Golden ratio φ
+    
+    # Species and Evolution
+    DECAY_RATE = 0.0963           # Universal [SCm] decay rate
+    
+    @classmethod
+    def get_all(cls):
+        """Return all constants as a dictionary."""
+        return {
+            'SSQ': cls.SSQ,
+            'KAPPA': cls.KAPPA,
+            'K_ETA': cls.K_ETA,
+            'DELTA_K_ETA': cls.DELTA_K_ETA,
+            'F_TRZ': cls.F_TRZ,
+            'F_FEEDBACK': cls.F_FEEDBACK,
+            'RHO_VAC_SCM': cls.RHO_VAC_SCM,
+            'RHO_VAC_UA': cls.RHO_VAC_UA,
+            'K_UB': cls.K_UB,
+            'V_LITTLE_V_BIG': cls.V_LITTLE_V_BIG,
+            'AZEOTROPIC_VOID': cls.AZEOTROPIC_VOID,
+            'OMEGA_UG1': cls.OMEGA_UG1,
+            'OMEGA_UG2': cls.OMEGA_UG2,
+            'OMEGA_UG3': cls.OMEGA_UG3,
+            'OMEGA_UG4I': cls.OMEGA_UG4I,
+            'PHI': cls.PHI,
+            'DECAY_RATE': cls.DECAY_RATE
+        }
+    
+    @classmethod
+    def pseudo_monopole_shift(cls, n: int, t: float = 1.0):
+        """
+        Compute pseudo-monopole state shift δ_n.
+        
+        δ_n = φ · (2π)^(n/6)
+        
+        Args:
+            n: Quantum state index (1-26)
+            t: Time in days
+            
+        Returns:
+            tuple: (δ_n, equation_string)
+        """
+        delta_n = cls.PHI * (2 * np.pi) ** (n / 6)
+        equation = f"δ_{n} = φ · (2π)^({n}/6) = {delta_n:.4f} rad"
+        return delta_n, equation
+    
+    @classmethod
+    def vacuum_density_ratio(cls, n: int, t: float = 1.0):
+        """
+        Compute vacuum energy density ratio for state n.
+        
+        ρ_vac,[UA']:[SCm] = ρ_vac,[UA'] · (ρ_vac,[SCm]/ρ_vac,[UA])^n · 
+                            e^(-[SSq]·n/26) · e^(-(π-t))
+        
+        Args:
+            n: Quantum state index (1-26)
+            t: Time in days
+            
+        Returns:
+            tuple: (ρ ratio, equation_string)
+        """
+        rho_ratio = (cls.RHO_VAC_UA_PRIME_SCM * 
+                     (cls.RHO_VAC_SCM / cls.RHO_VAC_UA) ** n *
+                     np.exp(-cls.SSQ * n / 26) *
+                     np.exp(-(np.pi - t / 365.25)))
+        
+        equation = (f"ρ_vac,[UA']:[SCm](n={n}) = {cls.RHO_VAC_UA_PRIME_SCM:.2e} · "
+                   f"(ρ_SCm/ρ_UA)^{n} · e^(-[SSq]·{n}/26) · e^(-(π-t)) = {rho_ratio:.4e} J/m³")
+        return rho_ratio, equation
+
+
+# =============================================================================
+# FOUR-PROJECTION RESONANCE CALCULATOR
+# R(t) with R_Ug1, R_Ug2, R_Ug3, R_Ug4i components
+# =============================================================================
+
+class FourProjectionResonanceCalculator:
+    """
+    Four-Projection Resonance UQFF Calculator.
+    
+    Computes resonance dynamics with four distinct gravity projections:
+    - R_Ug1: SM (Standard Model) Gravity Resonance
+    - R_Ug2: Shell Gravity Resonance (electron shells)
+    - R_Ug3: Inertial Gravity Resonance (THz hole-mediated orbital sweeping)
+    - R_Ug4i: Cosmological Communication Resonance
+    
+    Master Equation:
+    R(t) = Σᵢ₌₁²⁶ [R_Ug1,i·cos(ω_Ug1,i·t) + R_Ug2,i·cos(ω_Ug2,i·t) + 
+                    R_Ug3,i·cos(ω_Ug3,i·t) + R_Ug4i,i·cos(ω_Ug4i,i·t)]
+    """
+    
+    C = CalibrationConstantsRegistry
+    
+    def __init__(self, params: dict = None):
+        """Initialize with system parameters."""
+        self.params = params or {}
+        self.r = self.params.get('r', 1e16)      # Characteristic distance (m)
+        self.t = self.params.get('t', 3e6 * 365.25 * 86400)  # Time (s)
+        self.M_sf_t = self.params.get('M_sf_t', 1e-5)  # Star formation mass fraction
+        self.F_U_g1 = self.params.get('F_U_g1', 1e-40)  # Compressed UQFF solution
+    
+    def compute_R_Ug1(self, i: int = 1):
+        """
+        Compute R_Ug1: SM Gravity Resonance for quantum state i.
+        
+        R_Ug1,i = F_U_g1,i · (1 + M_sf(t)) · cos(ω_Ug1,i · t)
+        
+        For Tapestry: R_Ug1 ~ 1.096e-12 m/s², ω_Ug1 = 1.989e-13 rad/s
+        """
+        omega = self.C.OMEGA_UG1 * i  # Scale frequency by state
+        R_Ug1 = self.F_U_g1 * (1 + self.M_sf_t) * np.cos(omega * self.t)
+        
+        equation = (f"R_Ug1,{i} = F_U_g1 · (1 + M_sf(t)) · cos(ω_Ug1·t)\n"
+                   f"         = {self.F_U_g1:.4e} · (1 + {self.M_sf_t:.4e}) · "
+                   f"cos({omega:.4e} · {self.t:.4e})\n"
+                   f"         = {R_Ug1:.4e} m/s²")
+        return R_Ug1, equation
+    
+    def compute_R_Ug2(self, i: int = 1):
+        """
+        Compute R_Ug2: Shell Gravity Resonance for quantum state i.
+        
+        R_Ug2 models electron shell dynamics.
+        For Tapestry: R_Ug2 ~ 3.833e-8 m/s², ω_Ug2 = 3.978e-13 rad/s
+        """
+        omega = self.C.OMEGA_UG2 * i
+        # Shell resonance scales with vacuum energy ratio
+        R_Ug2_base = self.F_U_g1 * (self.C.RHO_VAC_UA / self.C.RHO_VAC_SCM)
+        R_Ug2 = R_Ug2_base * np.cos(omega * self.t)
+        
+        equation = (f"R_Ug2,{i} = F_U_g1 · (ρ_UA/ρ_SCm) · cos(ω_Ug2·t)\n"
+                   f"         = {self.F_U_g1:.4e} · 10 · cos({omega:.4e} · {self.t:.4e})\n"
+                   f"         = {R_Ug2:.4e} m/s²")
+        return R_Ug2, equation
+    
+    def compute_R_Ug3(self, i: int = 1):
+        """
+        Compute R_Ug3: Inertial Gravity Resonance for quantum state i.
+        
+        R_Ug3 dominates in active star-forming regions (THz hole-mediated sweeping).
+        For Tapestry: R_Ug3 ~ 5.976e-2 m/s², ω_Ug3 = 1.989e-11 rad/s
+        """
+        omega = self.C.OMEGA_UG3 * i
+        # Inertial resonance is dominant - scales strongly
+        R_Ug3_base = self.F_U_g1 * (self.C.RHO_VAC_UA / self.C.RHO_VAC_SCM) ** 2 * 1e8
+        R_Ug3 = R_Ug3_base * np.cos(omega * self.t)
+        
+        equation = (f"R_Ug3,{i} = F_U_g1 · (ρ_UA/ρ_SCm)² · 10⁸ · cos(ω_Ug3·t)\n"
+                   f"         = {R_Ug3:.4e} m/s² [DOMINANT in star-forming regions]")
+        return R_Ug3, equation
+    
+    def compute_R_Ug4i(self, i: int = 1):
+        """
+        Compute R_Ug4i: Cosmological Communication Resonance.
+        
+        R_Ug4i operates at THz frequencies for near-instantaneous effects.
+        For Tapestry: R_Ug4i ~ 3.837e-16 m/s², ω_Ug4i = 6.283e12 rad/s
+        """
+        omega = self.C.OMEGA_UG4I * i
+        # Cosmological resonance is weak but fast
+        R_Ug4i_base = self.F_U_g1 * self.C.F_TRZ * 1e-6
+        R_Ug4i = R_Ug4i_base * np.cos(omega * self.t)
+        
+        equation = (f"R_Ug4i,{i} = F_U_g1 · f_TRZ · 10⁻⁶ · cos(ω_Ug4i·t)\n"
+                   f"          = {R_Ug4i:.4e} m/s² [Cosmological communication]")
+        return R_Ug4i, equation
+    
+    def compute_total_resonance(self, n_states: int = 26):
+        """
+        Compute total four-projection resonance across all quantum states.
+        
+        R(t) = Σᵢ₌₁ⁿ [R_Ug1,i + R_Ug2,i + R_Ug3,i + R_Ug4i,i]
+        
+        Args:
+            n_states: Number of quantum states (default 26)
+            
+        Returns:
+            tuple: (R_total, equations_dict, components_dict)
+        """
+        R_total = 0
+        components = {'R_Ug1': [], 'R_Ug2': [], 'R_Ug3': [], 'R_Ug4i': []}
+        equations = []
+        
+        for i in range(1, n_states + 1):
+            R1, eq1 = self.compute_R_Ug1(i)
+            R2, eq2 = self.compute_R_Ug2(i)
+            R3, eq3 = self.compute_R_Ug3(i)
+            R4, eq4 = self.compute_R_Ug4i(i)
+            
+            components['R_Ug1'].append(R1)
+            components['R_Ug2'].append(R2)
+            components['R_Ug3'].append(R3)
+            components['R_Ug4i'].append(R4)
+            
+            R_total += R1 + R2 + R3 + R4
+        
+        # Sum contributions by type
+        sums = {k: sum(v) for k, v in components.items()}
+        
+        master_equation = (
+            f"R(t) = Σᵢ₌₁²⁶ [R_Ug1,i·cos(ω_Ug1,i·t) + R_Ug2,i·cos(ω_Ug2,i·t) + \n"
+            f"              R_Ug3,i·cos(ω_Ug3,i·t) + R_Ug4i,i·cos(ω_Ug4i,i·t)]\n\n"
+            f"Component Sums:\n"
+            f"  Σ R_Ug1  = {sums['R_Ug1']:.4e} m/s² (SM Gravity)\n"
+            f"  Σ R_Ug2  = {sums['R_Ug2']:.4e} m/s² (Shell)\n"
+            f"  Σ R_Ug3  = {sums['R_Ug3']:.4e} m/s² (Inertial) [DOMINANT]\n"
+            f"  Σ R_Ug4i = {sums['R_Ug4i']:.4e} m/s² (Cosmological)\n\n"
+            f"R_total = {R_total:.4e} m/s²"
+        )
+        
+        return R_total, master_equation, components
+
+
+# =============================================================================
+# MASTER U_Bi BUOYANCY CALCULATOR WITH BOYLE'S LAW
+# =============================================================================
+
+class MasterUBiBuoyancyCalculator:
+    """
+    Master Universal Equation of Buoyancy (U_Bi) Calculator.
+    
+    U_Bi models the superconducting, massless counterforce to SM_gravity,
+    integrated with Boyle's Law and azeotropic void space dynamics.
+    
+    Master Equation:
+    U_Bi = k_Ub · Δk_η · (ρ_vac,[UA] / ρ_vac,[SCm]) · (V_void/V_total) · g_H
+    
+    Calibration via:
+    - Boyle's Law: V_little/V_big = 1/33
+    - NOAA oceanic salinity gradients
+    - High-pressure metallic hydrogen experiments
+    """
+    
+    C = CalibrationConstantsRegistry
+    
+    def __init__(self, params: dict = None):
+        """Initialize with system parameters."""
+        self.params = params or {}
+        self.r = self.params.get('r', 1e16)
+        self.g_H = self.params.get('g_H', 1.252e46)  # Hydrogen resonance gravity
+        self.V_void_fraction = self.params.get('V_void_fraction', self.C.AZEOTROPIC_VOID)
+    
+    def compute_boyle_factor(self):
+        """
+        Compute Boyle's Law buoyancy factor.
+        
+        Buoyancy ∝ (ρ_vac,[UA] / ρ_vac,[SCm]) · (V_little/V_big)
+        
+        Returns:
+            tuple: (factor, equation_string)
+        """
+        rho_ratio = self.C.RHO_VAC_UA / self.C.RHO_VAC_SCM
+        boyle_factor = rho_ratio * self.C.V_LITTLE_V_BIG
+        
+        equation = (f"Boyle Factor = (ρ_UA/ρ_SCm) · (V_little/V_big)\n"
+                   f"             = ({self.C.RHO_VAC_UA:.2e} / {self.C.RHO_VAC_SCM:.2e}) · (1/33)\n"
+                   f"             = {rho_ratio:.2f} · {self.C.V_LITTLE_V_BIG:.4f}\n"
+                   f"             = {boyle_factor:.4f}")
+        return boyle_factor, equation
+    
+    def compute_U_Bi(self):
+        """
+        Compute Master U_Bi buoyancy.
+        
+        U_Bi = k_Ub · Δk_η · (ρ_UA/ρ_SCm) · (V_void/V_total) · g_H
+        
+        Returns:
+            tuple: (U_Bi, equation_string)
+        """
+        rho_ratio = self.C.RHO_VAC_UA / self.C.RHO_VAC_SCM
+        
+        U_Bi = (self.C.K_UB * 
+                self.C.DELTA_K_ETA * 
+                rho_ratio * 
+                self.V_void_fraction * 
+                self.g_H)
+        
+        equation = (
+            f"MASTER BUOYANCY EQUATION (U_Bi):\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"U_Bi = k_Ub · Δk_η · (ρ_vac,[UA] / ρ_vac,[SCm]) · (V_void/V_total) · g_H\n\n"
+            f"Variables:\n"
+            f"  k_Ub           = {self.C.K_UB} (buoyancy coupling constant)\n"
+            f"  Δk_η           = {self.C.DELTA_K_ETA:.2e} (resonance adjustment from LENR)\n"
+            f"  ρ_vac,[UA]     = {self.C.RHO_VAC_UA:.2e} J/m³\n"
+            f"  ρ_vac,[SCm]    = {self.C.RHO_VAC_SCM:.2e} J/m³\n"
+            f"  ρ_UA/ρ_SCm     = {rho_ratio:.2f}\n"
+            f"  V_void/V_total = {self.V_void_fraction} (azeotropic void fraction)\n"
+            f"  g_H            = {self.g_H:.4e} m/s² (hydrogen resonance gravity)\n\n"
+            f"Calculation:\n"
+            f"  U_Bi = {self.C.K_UB} · {self.C.DELTA_K_ETA:.2e} · {rho_ratio:.2f} · "
+            f"{self.V_void_fraction} · {self.g_H:.4e}\n"
+            f"       = {U_Bi:.4e} m/s²\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        )
+        
+        return U_Bi, equation
+    
+    def compute_effective_gravity(self, g: float):
+        """
+        Compute effective gravity after buoyancy correction.
+        
+        g_eff = g - U_Bi
+        
+        Args:
+            g: Raw gravitational acceleration (m/s²)
+            
+        Returns:
+            tuple: (g_eff, equation_string, dominant_force)
+        """
+        U_Bi, U_Bi_eq = self.compute_U_Bi()
+        g_eff = g - U_Bi
+        
+        # Determine dominance
+        if abs(U_Bi) > abs(g):
+            dominant = "BUOYANCY DOMINANT"
+        elif abs(g) > abs(U_Bi):
+            dominant = "GRAVITY DOMINANT"
+        else:
+            dominant = "BALANCED"
+        
+        equation = (
+            f"EFFECTIVE GRAVITY:\n"
+            f"g_eff = g - U_Bi\n"
+            f"      = {g:.4e} - {U_Bi:.4e}\n"
+            f"      = {g_eff:.4e} m/s²\n"
+            f"Status: {dominant}"
+        )
+        
+        return g_eff, equation, dominant
+    
+    def calibrate_from_LENR(self, measured_delta_k_eta: float = None):
+        """
+        Calibration technique using LENR experimental data.
+        
+        Adjusts Δk_η based on metallic hydride cell measurements.
+        """
+        if measured_delta_k_eta:
+            delta_k_old = self.C.DELTA_K_ETA
+            # Update class constant (note: this affects all instances)
+            CalibrationConstantsRegistry.DELTA_K_ETA = measured_delta_k_eta
+            
+            calibration_report = (
+                f"LENR CALIBRATION:\n"
+                f"  Previous Δk_η = {delta_k_old:.2e}\n"
+                f"  Measured Δk_η = {measured_delta_k_eta:.2e}\n"
+                f"  Adjustment    = {(measured_delta_k_eta/delta_k_old - 1)*100:.2f}%"
+            )
+            return calibration_report
+        
+        return "No calibration data provided."
+
+
+# =============================================================================
+# SMBH DYNAMICS CALCULATOR
+# M-σ Relation, Metal Retention, Feedback
+# =============================================================================
+
+class SMBHDynamicsCalculator:
+    """
+    Supermassive Black Hole Dynamics Calculator.
+    
+    Integrates UQFF forces with SMBH feedback mechanisms:
+    - M-σ Relation: log M_BH = 0.309(log σ/200 km/s) + 4.38
+    - Metal Retention: f_Z,CGM = U_i / (U_i + Um)
+    - Feedback Efficiency: f_feedback = 0.063
+    
+    Based on "The Scatter Matters" (Sanchez et al., 2023) and
+    SMBH comparison to UQFF document.
+    """
+    
+    C = CalibrationConstantsRegistry
+    M_SUN = 1.989e30  # Solar mass in kg
+    
+    def __init__(self, params: dict = None):
+        """Initialize with galaxy parameters."""
+        self.params = params or {}
+        self.sigma = self.params.get('sigma', 150e3)  # Velocity dispersion (m/s)
+        self.M_BH = self.params.get('M_BH', 1e8 * self.M_SUN)  # SMBH mass
+        self.R_bulge = self.params.get('R_bulge', 3.086e19)  # Bulge radius (m, ~1 kpc)
+        self.U_i = self.params.get('U_i', 1e-80)  # Intelligent force density
+        self.U_m = self.params.get('U_m', 1e-10)  # Magnetic force density
+    
+    def compute_M_sigma_relation(self, sigma_km_s: float = None):
+        """
+        Compute SMBH mass from M-σ relation.
+        
+        log M_BH = 0.309 · log(σ/200 km/s) + 4.38
+        
+        Args:
+            sigma_km_s: Velocity dispersion in km/s
+            
+        Returns:
+            tuple: (M_BH in solar masses, equation_string)
+        """
+        if sigma_km_s is None:
+            sigma_km_s = self.sigma / 1000  # Convert from m/s
+        
+        log_M_BH = 0.309 * np.log10(sigma_km_s / 200) + 4.38
+        M_BH_solar = 10 ** log_M_BH
+        
+        equation = (
+            f"M-σ RELATION:\n"
+            f"log(M_BH/M_☉) = 0.309 · log(σ/200 km/s) + 4.38\n"
+            f"             = 0.309 · log({sigma_km_s:.1f}/200) + 4.38\n"
+            f"             = 0.309 · {np.log10(sigma_km_s/200):.4f} + 4.38\n"
+            f"             = {log_M_BH:.4f}\n"
+            f"M_BH = 10^{log_M_BH:.4f} M_☉ = {M_BH_solar:.4e} M_☉"
+        )
+        
+        return M_BH_solar, equation
+    
+    def compute_metal_retention(self, U_i: float = None, U_m: float = None):
+        """
+        Compute CGM metal retention fraction.
+        
+        f_Z,CGM = U_i / (U_i + Um)
+        
+        Higher U_i (under-massive SMBH) → higher metal retention (~0.89)
+        Lower U_i (over-massive SMBH) → lower metal retention (~0.1)
+        
+        Args:
+            U_i: Intelligent force density (J/m³)
+            U_m: Magnetic force density (J/m³)
+            
+        Returns:
+            tuple: (f_Z_CGM, equation_string)
+        """
+        U_i = U_i if U_i is not None else self.U_i
+        U_m = U_m if U_m is not None else self.U_m
+        
+        if U_i + U_m == 0:
+            f_Z_CGM = 0.5  # Default for zero denominator
+        else:
+            f_Z_CGM = U_i / (U_i + U_m)
+        
+        equation = (
+            f"METAL RETENTION (CGM):\n"
+            f"f_Z,CGM = U_i / (U_i + Um)\n"
+            f"        = {U_i:.4e} / ({U_i:.4e} + {U_m:.4e})\n"
+            f"        = {f_Z_CGM:.6f}\n\n"
+            f"Interpretation:\n"
+            f"  f_Z,CGM ≈ 0.89 → Under-massive SMBH, high metal retention\n"
+            f"  f_Z,CGM ≈ 0.10 → Over-massive SMBH, metals ejected"
+        )
+        
+        return f_Z_CGM, equation
+    
+    def compute_omega_s(self, sigma: float = None, R_bulge: float = None):
+        """
+        Compute galactic angular velocity ω_s.
+        
+        ω_s(t) = σ / R_bulge
+        
+        Returns:
+            tuple: (ω_s in rad/s, equation_string)
+        """
+        sigma = sigma if sigma is not None else self.sigma
+        R_bulge = R_bulge if R_bulge is not None else self.R_bulge
+        
+        omega_s = sigma / R_bulge
+        
+        equation = (
+            f"GALACTIC ANGULAR VELOCITY:\n"
+            f"ω_s = σ / R_bulge\n"
+            f"    = {sigma:.4e} m/s / {R_bulge:.4e} m\n"
+            f"    = {omega_s:.4e} rad/s"
+        )
+        
+        return omega_s, equation
+    
+    def compute_Ug4_feedback(self, t: float = 1e11, t_n: float = 0):
+        """
+        Compute U_g4 SMBH feedback term.
+        
+        U_g4 = k_4 · ρ_vac,[SCm] · M_BH / r · e^(-α·t) · cos(π·t_n) · (1 + f_feedback)
+        
+        Args:
+            t: Time in days
+            t_n: Normalized time for periodic feedback
+            
+        Returns:
+            tuple: (U_g4, equation_string)
+        """
+        k_4 = 1.1
+        alpha = 0.001
+        
+        # Distance from SMBH (use R_bulge as characteristic scale)
+        r = self.R_bulge
+        
+        U_g4 = (k_4 * self.C.RHO_VAC_SCM * self.M_BH / r * 
+                np.exp(-alpha * t / 365.25) * 
+                np.cos(np.pi * t_n) * 
+                (1 + self.C.F_FEEDBACK))
+        
+        equation = (
+            f"U_g4 SMBH FEEDBACK:\n"
+            f"U_g4 = k_4 · ρ_vac,[SCm] · M_BH / r · e^(-α·t) · cos(π·t_n) · (1 + f_feedback)\n"
+            f"     = {k_4} · {self.C.RHO_VAC_SCM:.2e} · {self.M_BH:.2e} / {r:.2e}\n"
+            f"       · e^(-{alpha}·{t/365.25:.2e}) · cos(π·{t_n}) · (1 + {self.C.F_FEEDBACK})\n"
+            f"     = {U_g4:.4e} N\n\n"
+            f"f_feedback = {self.C.F_FEEDBACK} (calibrated from χ = 0.063)"
+        )
+        
+        return U_g4, equation
+
+
+# =============================================================================
+# ATOMIC CREATION PROCESS (ACP) CALCULATOR
+# Static shock → Universal Resonant Bang → Halogen separation
+# =============================================================================
+
+class ACPCalculator:
+    """
+    Atomic Creation Process Calculator.
+    
+    Models the evolution from hydrogen proto-gas atoms to the periodic table:
+    1. Static shock release against background "belly button"
+    2. Universal Resonant Bang (still resounding)
+    3. Magnetic dispersion into clustered amorphous groups
+    4. Superluminal travel during early expansion
+    5. Morphing into globular clusters with diverse elements
+    6. Halogen gas separation between element groups
+    7. Mass balance maintained across all clusters
+    
+    Species Index = log(ρ_vac,[SCm] / ρ_vac,[UA']) · n
+    """
+    
+    C = CalibrationConstantsRegistry
+    
+    # Periodic Table Halogen Boundaries
+    HALOGEN_BOUNDARIES = {
+        'H-He': ('Hydrogen', 'Helium', 1, 2),
+        'Li-Ne': ('Lithium', 'Neon', 3, 10),
+        'Na-Ar': ('Sodium', 'Argon', 11, 18),
+        'K-Kr': ('Potassium', 'Krypton', 19, 36),
+        'Rb-Xe': ('Rubidium', 'Xenon', 37, 54),
+        'Cs-Rn': ('Cesium', 'Radon', 55, 86),
+        'Fr-Og': ('Francium', 'Oganesson', 87, 118)
+    }
+    
+    def __init__(self, params: dict = None):
+        """Initialize with proto-system parameters."""
+        self.params = params or {}
+        self.Z = self.params.get('Z', 1)  # Atomic number
+        self.n = self.params.get('n', 1)  # Quantum state
+    
+    def compute_species_index(self, n: int = None):
+        """
+        Compute species index for element determination.
+        
+        Species_index = log(ρ_vac,[SCm] / ρ_vac,[UA']) · n
+        
+        Args:
+            n: Quantum state index
+            
+        Returns:
+            tuple: (species_index, equation_string)
+        """
+        n = n if n is not None else self.n
+        
+        # Use approximate [UA'] as 10x [SCm]
+        rho_UA_prime = self.C.RHO_VAC_SCM * 10
+        
+        if rho_UA_prime == 0:
+            species_index = 0
+        else:
+            species_index = np.log10(self.C.RHO_VAC_SCM / rho_UA_prime) * n
+        
+        equation = (
+            f"SPECIES INDEX (ACP):\n"
+            f"Species_index = log(ρ_vac,[SCm] / ρ_vac,[UA']) · n\n"
+            f"              = log({self.C.RHO_VAC_SCM:.2e} / {rho_UA_prime:.2e}) · {n}\n"
+            f"              = {np.log10(self.C.RHO_VAC_SCM / rho_UA_prime):.4f} · {n}\n"
+            f"              = {species_index:.4f}\n\n"
+            f"Interpretation: Maps quantum state to element species"
+        )
+        
+        return species_index, equation
+    
+    def compute_dipole_vortex(self, SCm_density: float = None, UA_prime_density: float = None):
+        """
+        Compute dipole vortex intensity.
+        
+        Dipole = ([SCm] - [UA'])²
+        
+        This creates U_g3's aethereal reality through oppositely spinning vortices.
+        
+        Returns:
+            tuple: (dipole_intensity, equation_string)
+        """
+        SCm = SCm_density if SCm_density is not None else self.C.RHO_VAC_SCM
+        UA_prime = UA_prime_density if UA_prime_density is not None else self.C.RHO_VAC_SCM * 10
+        
+        dipole = (SCm - UA_prime) ** 2
+        
+        equation = (
+            f"DIPOLE VORTEX (ACP):\n"
+            f"Dipole = ([SCm] - [UA'])²\n"
+            f"       = ({SCm:.2e} - {UA_prime:.2e})²\n"
+            f"       = {dipole:.4e}\n\n"
+            f"Physics: Creates U_g3 aethereal reality through\n"
+            f"         oppositely spinning vortices. Implosion\n"
+            f"         enhances U_g1, U_g2, U_g3 field strengths."
+        )
+        
+        return dipole, equation
+    
+    def compute_hydrogen_resonance(self, t: float = None):
+        """
+        Compute hydrogen proto-gas resonance.
+        
+        This models the initial static shock release and
+        Universal Resonant Bang dynamics.
+        
+        Returns:
+            tuple: (f_H_resonance, equation_string)
+        """
+        t = t if t is not None else 1e10  # Default: 10 billion seconds
+        
+        # Hydrogen resonance based on THz frequency modulation
+        f_H = self.C.F_THZ * np.exp(-self.C.DECAY_RATE * t / (1e17))
+        
+        equation = (
+            f"HYDROGEN RESONANCE (ACP):\n"
+            f"f_H = f_THz · e^(-Decay_rate · t/τ)\n"
+            f"    = {self.C.F_THZ:.2e} · e^(-{self.C.DECAY_RATE} · {t:.2e}/{1e17:.2e})\n"
+            f"    = {f_H:.4e} Hz\n\n"
+            f"Context: Models static shock release frequency\n"
+            f"         during Universal Resonant Bang"
+        )
+        
+        return f_H, equation
+    
+    def compute_halogen_separation(self, Z: int):
+        """
+        Determine halogen gas boundary for element Z.
+        
+        Elements are separated by heavier halogen gases
+        at period boundaries in the periodic table.
+        
+        Args:
+            Z: Atomic number
+            
+        Returns:
+            tuple: (boundary_info, equation_string)
+        """
+        for boundary_name, (start_elem, end_elem, z_start, z_end) in self.HALOGEN_BOUNDARIES.items():
+            if z_start <= Z <= z_end:
+                boundary_info = {
+                    'period': boundary_name,
+                    'range': f"Z = {z_start} to {z_end}",
+                    'elements': f"{start_elem} to {end_elem}",
+                    'halogen_index': list(self.HALOGEN_BOUNDARIES.keys()).index(boundary_name)
+                }
+                
+                equation = (
+                    f"HALOGEN SEPARATION (ACP):\n"
+                    f"Element Z = {Z} belongs to period: {boundary_name}\n"
+                    f"Element range: {start_elem} (Z={z_start}) to {end_elem} (Z={z_end})\n"
+                    f"Halogen index: {boundary_info['halogen_index']}\n\n"
+                    f"Physics: Elements form in globular clusters,\n"
+                    f"         separated by heavier halogen gases\n"
+                    f"         at period boundaries."
+                )
+                
+                return boundary_info, equation
+        
+        return None, f"Z = {Z} not found in periodic table boundaries"
+    
+    def compute_proto_mass_clustering(self, v_expansion: float = None, t: float = None):
+        """
+        Compute proto-mass clustering dynamics.
+        
+        Models superluminal travel during early expansion and
+        subsequent slowing into globular clusters.
+        
+        Returns:
+            tuple: (cluster_state, equation_string)
+        """
+        v_expansion = v_expansion if v_expansion is not None else 3e9  # > c initially
+        t = t if t is not None else 1e10
+        c = 2.998e8
+        
+        # Velocity decay from superluminal to subluminal
+        v_current = v_expansion * np.exp(-t / 1e16)
+        
+        # Cluster morphing fraction (1 = fully morphed)
+        morph_fraction = 1 - np.exp(-t / 1e15)
+        
+        cluster_state = {
+            'v_initial': v_expansion,
+            'v_current': v_current,
+            'superluminal': v_current > c,
+            'morph_fraction': morph_fraction,
+            'c': c
+        }
+        
+        equation = (
+            f"PROTO-MASS CLUSTERING (ACP):\n"
+            f"v(t) = v_initial · e^(-t/τ)\n"
+            f"     = {v_expansion:.2e} · e^(-{t:.2e}/{1e16:.2e})\n"
+            f"     = {v_current:.2e} m/s\n\n"
+            f"Status: {'Superluminal (faster than light)' if v_current > c else 'Subluminal'}\n"
+            f"Morph fraction: {morph_fraction:.4f} (1.0 = fully globular)\n\n"
+            f"Physics: Proto-mass clusters initially travel many times\n"
+            f"         faster than visible light, then slow and morph\n"
+            f"         into globular amorphous clusters with diverse elements."
+        )
+        
+        return cluster_state, equation
+
+
+# =============================================================================
+# 26-QUANTUM-STATE POLYNOMIAL CALCULATOR
+# g(r,t) = Σᵢ₌₁²⁶ (Ug1_i + Ug2_i + Ug3_i + Ug4i_i)
+# =============================================================================
+
+class QuantumState26PolynomialCalculator:
+    """
+    26-Quantum-State Polynomial Calculator.
+    
+    Computes the full 26-dimensional gravity summation:
+    
+    g(r,t) = Σᵢ₌₁²⁶ [Ug1_i + Ug2_i + Ug3_i + Ug4i_i]
+    
+    Each quantum state i has:
+    - Q_i: Quantum state factor
+    - [SCm]_i: Superconductive magnetism (scales as 10⁻⁵ · i² T)
+    - [UA]_i: Universal aether factor
+    - E_DPM_i: Energy replacing Newton's G
+    
+    E_DPM_i = (ℏ · c / r_i²) · Q_i · [SCm]_i
+    """
+    
+    C = CalibrationConstantsRegistry
+    HBAR = 1.055e-34  # Reduced Planck constant (J·s)
+    C_LIGHT = 2.998e8  # Speed of light (m/s)
+    
+    def __init__(self, params: dict = None):
+        """Initialize with system parameters."""
+        self.params = params or {}
+        self.r = self.params.get('r', 1e16)
+        self.t = self.params.get('t', 1e14)
+        self.n_states = self.params.get('n_states', 26)
+    
+    def compute_Q_i(self, i: int):
+        """
+        Compute quantum state factor Q_i.
+        
+        Q_i represents the quantum configuration for state i.
+        """
+        Q_i = i * (1 + 0.1 * np.sin(i * np.pi / 13))
+        return Q_i, f"Q_{i} = {Q_i:.4f}"
+    
+    def compute_SCm_i(self, i: int):
+        """
+        Compute superconductive magnetism [SCm]_i.
+        
+        [SCm]_i = 10⁻⁵ · i² T
+        """
+        SCm_i = 1e-5 * i ** 2
+        return SCm_i, f"[SCm]_{i} = 10⁻⁵ · {i}² = {SCm_i:.4e} T"
+    
+    def compute_E_DPM_i(self, i: int, r: float = None):
+        """
+        Compute E_DPM for quantum state i.
+        
+        E_DPM_i = (ℏ · c / r_i²) · Q_i · [SCm]_i
+        
+        This REPLACES Newton's G with buoyancy-based gravity.
+        """
+        r = r if r is not None else self.r
+        
+        Q_i, _ = self.compute_Q_i(i)
+        SCm_i, _ = self.compute_SCm_i(i)
+        
+        # Characteristic radius for state i
+        r_i = r / i  # Scales inversely with quantum state
+        
+        E_DPM_i = (self.HBAR * self.C_LIGHT / r_i ** 2) * Q_i * SCm_i
+        
+        equation = (
+            f"E_DPM_{i} = (ℏ · c / r_{i}²) · Q_{i} · [SCm]_{i}\n"
+            f"         = ({self.HBAR:.3e} · {self.C_LIGHT:.3e} / {r_i:.3e}²) · {Q_i:.4f} · {SCm_i:.4e}\n"
+            f"         = {E_DPM_i:.4e} J/m²"
+        )
+        
+        return E_DPM_i, equation
+    
+    def compute_Ug_components(self, i: int):
+        """
+        Compute all four Ug components for quantum state i.
+        
+        Returns Ug1_i, Ug2_i, Ug3_i, Ug4i_i
+        """
+        E_DPM_i, _ = self.compute_E_DPM_i(i)
+        Q_i, _ = self.compute_Q_i(i)
+        
+        # Ug1: DPM-based SM gravity analog
+        Ug1_i = E_DPM_i * Q_i / self.r
+        
+        # Ug2: Shell gravity (electron shells)
+        Ug2_i = E_DPM_i * Q_i / self.r * (self.C.RHO_VAC_UA / self.C.RHO_VAC_SCM) ** 0.5
+        
+        # Ug3: Inertial gravity (dominant, THz-mediated)
+        Ug3_i = E_DPM_i * Q_i / self.r * (self.C.RHO_VAC_UA / self.C.RHO_VAC_SCM) * i
+        
+        # Ug4i: Cosmological communication
+        Ug4i_i = E_DPM_i * Q_i / self.r * self.C.F_TRZ * 1e-6
+        
+        return Ug1_i, Ug2_i, Ug3_i, Ug4i_i
+    
+    def compute_full_polynomial(self):
+        """
+        Compute the full 26-state polynomial gravity.
+        
+        g(r,t) = Σᵢ₌₁²⁶ [Ug1_i + Ug2_i + Ug3_i + Ug4i_i]
+        
+        Returns:
+            tuple: (g_total, equations_string, components_by_state)
+        """
+        g_total = 0
+        components = {
+            'Ug1': [], 'Ug2': [], 'Ug3': [], 'Ug4i': []
+        }
+        
+        for i in range(1, self.n_states + 1):
+            Ug1_i, Ug2_i, Ug3_i, Ug4i_i = self.compute_Ug_components(i)
+            
+            components['Ug1'].append(Ug1_i)
+            components['Ug2'].append(Ug2_i)
+            components['Ug3'].append(Ug3_i)
+            components['Ug4i'].append(Ug4i_i)
+            
+            g_total += Ug1_i + Ug2_i + Ug3_i + Ug4i_i
+        
+        # Sum by component type
+        sums = {k: sum(v) for k, v in components.items()}
+        
+        equation = (
+            f"26-QUANTUM-STATE POLYNOMIAL GRAVITY:\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"g(r,t) = Σᵢ₌₁²⁶ [Ug1_i + Ug2_i + Ug3_i + Ug4i_i]\n\n"
+            f"System Parameters:\n"
+            f"  r = {self.r:.4e} m\n"
+            f"  t = {self.t:.4e} s\n"
+            f"  n_states = {self.n_states}\n\n"
+            f"Component Totals:\n"
+            f"  Σ Ug1  = {sums['Ug1']:.4e} m/s² (DPM SM-gravity analog)\n"
+            f"  Σ Ug2  = {sums['Ug2']:.4e} m/s² (Shell gravity)\n"
+            f"  Σ Ug3  = {sums['Ug3']:.4e} m/s² (Inertial) [DOMINANT]\n"
+            f"  Σ Ug4i = {sums['Ug4i']:.4e} m/s² (Cosmological)\n\n"
+            f"TOTAL GRAVITY:\n"
+            f"  g(r,t) = {g_total:.4e} m/s²\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        )
+        
+        return g_total, equation, components
+
+
+# =============================================================================
+# EXTENDED ASTROPHYSICAL SYSTEMS (30+)
+# =============================================================================
+
+EXTENDED_ASTROPHYSICAL_SYSTEMS = {
+    # From NGC 685, NGC 3507, NGC 3511 analysis
+    'NGC_685': {
+        'name': 'NGC 685 Barred Spiral',
+        'r': 2.83e20,       # 30,000 ly
+        'M_0': 1e42,
+        'B0': 1e-5,
+        'M_BH': 1e8 * 1.989e30,
+        'sigma': 150e3,
+        'SFR': 1.0,
+        't': 3e6 * 365.25 * 86400,
+        'z': 0.004,
+        'f_Ub': 7.25e8,
+        'g_solution': 6.59e-9
+    },
+    'NGC_3507': {
+        'name': 'NGC 3507 Spiral Galaxy',
+        'r': 2.36e20,       # 25,000 ly
+        'M_0': 1e41,
+        'B0': 1e-5,
+        'M_BH': 10**7.5 * 1.989e30,
+        'sigma': 120e3,
+        'SFR': 0.8,
+        't': 3e6 * 365.25 * 86400,
+        'z': 0.004,
+        'f_Ub': 7e8,
+        'g_solution': 2.47e-9
+    },
+    'NGC_3511': {
+        'name': 'NGC 3511 Spiral Galaxy',
+        'r': 1.89e20,       # 20,000 ly
+        'M_0': 1e41,
+        'B0': 1e-5,
+        'M_BH': 1e7 * 1.989e30,
+        'sigma': 100e3,
+        'SFR': 0.6,
+        't': 3e6 * 365.25 * 86400,
+        'z': 0.0027,
+        'f_Ub': 6.5e8,
+        'g_solution': 7.80e-10
+    },
+    # TDE AT2024tvd
+    'TDE_AT2024tvd': {
+        'name': 'Tidal Disruption Event AT2024tvd',
+        'r': 2.46e19,       # 2600 ly offset from SMBH
+        'M_0': 1e40,
+        'B0': 1e-5,
+        'M_BH': 10**6.5 * 1.989e30,
+        'sigma': 80e3,
+        'SFR': 0,
+        't': 1e6 * 365.25 * 86400,
+        'z': 0.004,
+        'f_Ub': 6e7,
+        'g_solution': 2.47e-7
+    },
+    # From NGC 3596, NGC 1961, NGC 5335 analysis
+    'NGC_3596': {
+        'name': 'NGC 3596 Spiral Galaxy',
+        'r': 2.83e20,
+        'M_0': 1e42,
+        'B0': 1e-5,
+        'M_BH': 1e8 * 1.989e30,
+        'sigma': 150e3,
+        'SFR': 0.9,
+        't': 3e6 * 365.25 * 86400,
+        'z': 0.0047,
+        'f_Ub': 2.20e8,
+        'g_solution': 6.63e-9
+    },
+    'NGC_1961': {
+        'name': 'NGC 1961 Large Spiral',
+        'r': 5.66e20,       # 60,000 ly
+        'M_0': 1e43,
+        'B0': 1e-5,
+        'M_BH': 10**8.5 * 1.989e30,
+        'sigma': 180e3,
+        'SFR': 1.2,
+        't': 3e6 * 365.25 * 86400,
+        'z': 0.013,
+        'f_Ub': 2.5e8,
+        'g_solution': 1.95e-9
+    },
+    'NGC_5335': {
+        'name': 'NGC 5335 Spiral Galaxy',
+        'r': 3.78e20,       # 40,000 ly
+        'M_0': 1e42,
+        'B0': 1e-5,
+        'M_BH': 1e8 * 1.989e30,
+        'sigma': 150e3,
+        'SFR': 1.0,
+        't': 3e6 * 365.25 * 86400,
+        'z': 0.0067,
+        'f_Ub': 2.3e8,
+        'g_solution': 4.39e-9
+    },
+    # NGC 2014, NGC 2020 (LMC nebulae)
+    'NGC_2014': {
+        'name': 'NGC 2014 LMC Star-Forming',
+        'r': 9.46e16,       # 10 ly
+        'M_0': 1e38,
+        'B0': 1e-4,
+        'M_BH': 0,
+        'sigma': 0,
+        'SFR': 1.0,
+        't': 2e6 * 365.25 * 86400,
+        'z': 0.0005,
+        'f_Ub': 2e8,
+        'g_solution': 1.12e-40
+    },
+    'NGC_2020': {
+        'name': 'NGC 2020 LMC Star-Forming',
+        'r': 9.46e16,
+        'M_0': 1e38,
+        'B0': 1e-4,
+        'M_BH': 0,
+        'sigma': 0,
+        'SFR': 1.0,
+        't': 2e6 * 365.25 * 86400,
+        'z': 0.0005,
+        'f_Ub': 2e8,
+        'g_solution': 1.12e-40
+    },
+    # Carina, Pillars, Crab
+    'Carina_Nebula_NGC3372': {
+        'name': 'Carina Nebula NGC 3372',
+        'r': 1.89e17,
+        'M_0': 1e39,
+        'B0': 1e-4,
+        'M_BH': 0,
+        'SFR': 0.5,
+        't': 3e6 * 365.25 * 86400,
+        'z': 0.00023,
+        'f_Ub': 1e8,
+        'g_solution': 2.36e-41
+    },
+    'Crab_Nebula': {
+        'name': 'Crab Nebula M1',
+        'r': 5.20e16,
+        'M_0': 1e38,
+        'B0': 1e-4,
+        'M_BH': 0,
+        'SFR': 0,
+        't': 968 * 365.25 * 86400,  # ~968 years since 1054 AD
+        'z': 0.00021,
+        'f_Ub': 1e8,
+        'g_solution': 3.12e-40
+    },
+    # From Resonance Superconductive document
+    'Magnetar_SGR1745': {
+        'name': 'Magnetar SGR 1745-2900',
+        'r': 1e4,           # 10 km radius
+        'M_0': 2.8e30,      # ~1.4 solar masses
+        'B0': 1e14,         # Extreme magnetic field
+        'I': 1e21,          # Current
+        'A': 3.142e8,       # Area
+        'V_sys': 4.189e12,
+        'v_exp': 1e3,
+        't': 3.799e10,
+        'z': 0.0009,
+        'g_solution': 1.773e-9  # Resonance superconductive
+    },
+    'NGC_2525': {
+        'name': 'NGC 2525 Spiral Galaxy',
+        'r': 7.487e42,
+        'M_0': 1e43,
+        'B0': 1e-5,
+        'M_BH': 1e8 * 1.989e30,
+        'I': 1e24,
+        'V_sys': 1.543e64,
+        'v_exp': 1e5,
+        't': 4.35e17,
+        'z': 0.005,
+        'g_solution': 4.353e35
+    },
+    'NGC_3603': {
+        'name': 'NGC 3603 Giant HII Region',
+        'r': 2.83e17,
+        'M_0': 1e40,
+        'B0': 1e-4,
+        'M_BH': 0,
+        'SFR': 1.5,
+        't': 1e6 * 365.25 * 86400,
+        'z': 0.00023,
+        'f_Ub': 1e8,
+        'g_solution': 1.001e27
+    },
+    'Bubble_Nebula_NGC7635': {
+        'name': 'Bubble Nebula NGC 7635',
+        'r': 7.032e33,
+        'M_0': 1e38,
+        'B0': 1e-5,
+        'I': 1e21,
+        'V_sys': 4.442e50,
+        'v_exp': 5e4,
+        't': 3.156e12,
+        'z': 0.0002,
+        'g_solution': 1.253e25
+    },
+    'Antennae_Galaxies': {
+        'name': 'Antennae Galaxies NGC 4038/4039',
+        'r': 6.734e43,
+        'M_0': 1e44,
+        'B0': 1e-5,
+        'M_BH': 1e9 * 1.989e30,
+        'I': 1e24,
+        'V_sys': 4.163e65,
+        'v_exp': 2e5,
+        't': 4.35e17,
+        'z': 0.002,
+        'g_solution': 5.876e35
+    },
+    'Horsehead_Nebula': {
+        'name': 'Horsehead Nebula B33',
+        'r': 2.813e32,
+        'M_0': 1e37,
+        'B0': 1e-5,
+        'I': 1e21,
+        'V_sys': 3.552e48,
+        'v_exp': 2e3,
+        't': 3.156e13,
+        'z': 0.00004,
+        'g_solution': 1.001e23
+    },
+    'NGC_1275': {
+        'name': 'NGC 1275 Perseus A (Magnetic Monster)',
+        'r': 2.995e43,
+        'M_0': 1e44,
+        'B0': 1e-4,
+        'M_BH': 8e8 * 1.989e30,
+        'I': 1e24,
+        'V_sys': 1.234e65,
+        'v_exp': 5e5,
+        't': 4.35e17,
+        'z': 0.017,
+        'g_solution': 3.484e36
+    },
+    'Rings_of_Relativity': {
+        'name': 'Rings of Relativity Gravitational Lens',
+        'r': 2.995e43,
+        'M_0': 1e45,
+        'B0': 1e-5,
+        'M_BH': 1e10 * 1.989e30,
+        'I': 1e24,
+        'V_sys': 1.234e65,
+        'v_exp': 1e5,
+        't': 4.35e17,
+        'z': 0.001,
+        'g_solution': 3.484e34
+    },
+    'Students_Guide_Universe': {
+        'name': "Student's Guide to the Universe",
+        'r': 7.032e22,
+        'M_0': 1e40,
+        'B0': 1e-5,
+        'I': 1e20,
+        'V_sys': 1.403e34,
+        'v_exp': 3e4,
+        't': 4.35e17,
+        'z': 0,
+        'g_solution': 3.958e14
+    }
+}
+
+
 # Global Framework Instance
 TRIADIC_UQFF = TriadicUQFFFramework()
 
 
 # Add to __all__
 __all__.extend([
+    # Original Triadic Framework Classes
     'EDPMCalculator',
     'DPMGravityProjections',
     'UBiBuoyancyCalculator',
@@ -87761,7 +88945,15 @@ __all__.extend([
     'HydrogenEvolutionCalculator',
     'TriadicUQFFFramework',
     'COSMIC_SYSTEMS',
-    'TRIADIC_UQFF'
+    'TRIADIC_UQFF',
+    # New Classes from Triadic Clone Analysis (Feb 2026)
+    'CalibrationConstantsRegistry',
+    'FourProjectionResonanceCalculator',
+    'MasterUBiBuoyancyCalculator',
+    'SMBHDynamicsCalculator',
+    'ACPCalculator',
+    'QuantumState26PolynomialCalculator',
+    'EXTENDED_ASTROPHYSICAL_SYSTEMS'
 ])
 
 
