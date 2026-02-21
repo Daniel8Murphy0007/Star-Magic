@@ -6,7 +6,7 @@
  * 
  * Author: Daniel T. Murphy
  * Framework: UQFF Star-Magic v3.0
- * Phase: 4 - Astro Graphics IPC Integration
+ * Phase: 5 - Full VR Experience
  */
 
 #include "vr_runtime.h"
@@ -613,8 +613,8 @@ bool VRRuntime::loadAstroProgram(const std::string& path) {
 
 int main(int argc, char* argv[]) {
     std::cout << "Star-Magic UQFF VR Runtime v3.0" << std::endl;
-    std::cout << "Phase 4 - Astro Graphics IPC Integration" << std::endl;
-    std::cout << "=========================================" << std::endl;
+    std::cout << "Phase 5 - Full VR Experience" << std::endl;
+    std::cout << "=============================" << std::endl;
     
     // Parse command line
     VR::RuntimeConfig config = VR::RuntimeConfig::from_args(argc, argv);

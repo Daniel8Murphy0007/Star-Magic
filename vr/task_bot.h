@@ -17,7 +17,7 @@
  * 
  * Author: Daniel T. Murphy
  * Framework: UQFF Star-Magic v3.0
- * Phase: 3 - VR Runtime Scaffold
+ * Phase: 5 - Full VR Experience
  */
 
 #ifndef TASK_BOT_H

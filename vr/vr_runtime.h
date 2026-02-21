@@ -16,7 +16,7 @@
  * 
  * Author: Daniel T. Murphy
  * Framework: UQFF Star-Magic v3.0
- * Phase: 4 - Astro Graphics IPC Integration
+ * Phase: 5 - Full VR Experience
  */
 
 #ifndef VR_RUNTIME_H

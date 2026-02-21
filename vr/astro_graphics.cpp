@@ -1,12 +1,17 @@
 /**
  * @file astro_graphics.cpp
- * @brief Astronomical Graphics Engine Implementation for UQFF Star-Magic VR Runtime
+ * @brief Star-Magic Astrological Tracking and Mapping Program Engine
  * 
- * Integration point for astronomical visualization
+ * Core engine for the Star-Magic astronomical graphics visualization system.
+ * Provides:
+ * - Celestial object tracking and catalog management
+ * - UQFF field overlay on astronomical scenes
+ * - Real-time physics data via IPC from physics backend
+ * - VR/GPU rendering integration for immersive experience
  * 
  * Author: Daniel T. Murphy
  * Framework: UQFF Star-Magic v3.0
- * Phase: 4 - Astro Graphics IPC Integration
+ * Phase: 5 - Full VR Experience
  */
 
 #include "astro_graphics.h"

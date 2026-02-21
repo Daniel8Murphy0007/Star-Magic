@@ -1,12 +1,12 @@
 /**
  * @file astro_graphics.h
- * @brief Astronomical Graphics Engine for UQFF Star-Magic VR Runtime
+ * @brief Star-Magic Astrological Tracking and Mapping Program Header
  * 
- * Integration point for third-party astronomical graphics programs:
- * - Load external executable or library
- * - GPU tasking for astronomical visualization
- * - Data streaming from physics backend
- * - Real-time UQFF field overlay
+ * Core header for astronomical graphics visualization:
+ * - Celestial object catalog management (SIMBAD, Gaia, Hipparcos)
+ * - UQFF field overlay configuration and rendering
+ * - IPC integration with physics backend for real-time F_U calculation
+ * - GPU tasking for VR/VM astronomical visualization
  * 
  * Supported Graphics Backends:
  * - Custom OpenGL/Vulkan programs
@@ -21,7 +21,7 @@
  * 
  * Author: Daniel T. Murphy
  * Framework: UQFF Star-Magic v3.0
- * Phase: 4 - Astro Graphics IPC Integration
+ * Phase: 5 - Full VR Experience
  */
 
 #ifndef ASTRO_GRAPHICS_H

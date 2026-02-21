@@ -305,6 +305,137 @@ public:
         }
     }
     
+    // ========================================================================
+    // PHASE 5: Full VR Experience - Gesture → Physics → Render Loop
+    // ========================================================================
+    
+    /**
+     * @struct GesturePhysicsEvent
+     * @brief Links gesture input to physics calculation request
+     */
+    struct GesturePhysicsEvent {
+        enum class Type { PointAt, Select, Orbit, CalculateField, ZoomIn, ZoomOut };
+        Type type = Type::PointAt;
+        double target_position[3] = {0, 0, 0};
+        std::string target_object_id;
+        double gesture_strength = 0.0;  // 0-1 for analog gestures
+    };
+    
+    /**
+     * Process VR gesture and dispatch physics calculation
+     * Implements: Gesture → Physics → Render pipeline
+     */
+    void processGesturePhysicsEvent(const GesturePhysicsEvent& event) {
+        if (!isPhysicsConnected() || !astro_graphics_) return;
+        
+        switch (event.type) {
+            case GesturePhysicsEvent::Type::PointAt:
+                // Ray cast to find target object
+                if (!event.target_object_id.empty()) {
+                    auto* entry = astro_graphics_->findEntry(event.target_object_id);
+                    if (entry) {
+                        astro_graphics_->selectObject(event.target_object_id);
+                    }
+                }
+                break;
+                
+            case GesturePhysicsEvent::Type::CalculateField:
+                // Request field calculation at target position
+                {
+                    double r = std::sqrt(event.target_position[0] * event.target_position[0] +
+                                         event.target_position[1] * event.target_position[1] +
+                                         event.target_position[2] * event.target_position[2]);
+                    requestFieldUpdate(r, 1.989e30, 0.0);  // Default solar mass
+                }
+                break;
+                
+            case GesturePhysicsEvent::Type::Orbit:
+                // Fly to and orbit target
+                if (!event.target_object_id.empty()) {
+                    astro_graphics_->flyTo(event.target_object_id, 2.0);
+                }
+                break;
+                
+            case GesturePhysicsEvent::Type::ZoomIn:
+            case GesturePhysicsEvent::Type::ZoomOut:
+                // Adjust camera (handled by graphics engine)
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    /**
+     * VR Frame Update - Called each frame for gesture processing
+     * Part of Phase 5: Full VR Experience
+     */
+    void onVRFrameUpdate(const UQFF::IPC::VRFrameUpdate& frame_data) {
+        metrics_.rendered_frames++;
+        metrics_.physics_samples++;
+        
+        // Process field probe position from VR controller
+        if (astro_graphics_ && isPhysicsConnected()) {
+            double F_U = 0, compressed_g = 0;
+            double probe_r = std::sqrt(
+                frame_data.field_probe_position[0] * frame_data.field_probe_position[0] +
+                frame_data.field_probe_position[1] * frame_data.field_probe_position[1] +
+                frame_data.field_probe_position[2] * frame_data.field_probe_position[2]
+            );
+            
+            // Request field at probe position (async)
+            requestFieldUpdate(probe_r * 3.086e16, 1.989e30, 0.0);  // Convert pc to m
+        }
+        
+        // Handle gesture flags from VR frame
+        if (frame_data.gesture_flags & 0x01) {
+            // Pinch detected - calculate field at probe
+            GesturePhysicsEvent event;
+            event.type = GesturePhysicsEvent::Type::CalculateField;
+            std::copy(frame_data.field_probe_position, 
+                      frame_data.field_probe_position + 3, 
+                      event.target_position);
+            processGesturePhysicsEvent(event);
+        }
+    }
+    
+    /**
+     * Task Bot Command Handler - Voice/gesture automation
+     * Part of Phase 5: Full VR Experience
+     */
+    struct TaskBotCommand {
+        std::string intent;
+        std::map<std::string, std::string> params;
+    };
+    
+    void executeTaskBotCommand(const TaskBotCommand& cmd) {
+        if (cmd.intent == "calculate_field") {
+            auto it = cmd.params.find("object");
+            if (it != cmd.params.end() && astro_graphics_) {
+                auto* entry = astro_graphics_->findEntry(it->second);
+                if (entry) {
+                    double r = entry->distance_pc * 3.086e16;  // Convert to meters
+                    requestFieldUpdate(r, entry->mass_solar * 1.989e30, 0.0);
+                }
+            }
+        } else if (cmd.intent == "navigate_to") {
+            auto it = cmd.params.find("target");
+            if (it != cmd.params.end() && astro_graphics_) {
+                astro_graphics_->flyTo(it->second, 3.0);
+            }
+        } else if (cmd.intent == "calculate_all") {
+            calculateAllAstroFields();
+        } else if (cmd.intent == "show_field_overlay") {
+            if (astro_graphics_) {
+                VR::FieldOverlayConfig config;
+                config.enabled = true;
+                config.show_field_magnitude = true;
+                config.show_field_lines = (cmd.params.count("lines") > 0);
+                astro_graphics_->setFieldOverlayConfig(config);
+            }
+        }
+    }
+    
 private:
     VRRuntime() = default;
     VRRuntime(const VRRuntime&) = delete;
