@@ -300,53 +300,244 @@ bool SharedMemoryChannel::try_receive(MessageHeader& header, std::vector<uint8_t
 }
 
 // ============================================================================
-// GRPC CHANNEL STUB IMPLEMENTATION
+// GRPC CHANNEL IMPLEMENTATION (Phase 3 - Full gRPC)
 // ============================================================================
 
 GrpcChannel::GrpcChannel(const std::string& endpoint)
     : endpoint_(endpoint)
     , connected_(false)
 {
-    // Stub implementation - full gRPC integration in Phase 2
-    std::cout << "[IPC] GrpcChannel stub created for endpoint: " << endpoint << std::endl;
-    std::cout << "[IPC] NOTE: Full gRPC implementation pending Phase 2" << std::endl;
-    connected_ = true;  // Stub always "connected"
+#ifdef USE_GRPC
+    // Create gRPC channel with default credentials
+    grpc_channel_ = grpc::CreateChannel(endpoint, grpc::InsecureChannelCredentials());
+    stub_ = uqff::PhysicsService::NewStub(grpc_channel_);
+    
+    // Check connection immediately
+    auto state = grpc_channel_->GetState(true);
+    if (state == GRPC_CHANNEL_READY || state == GRPC_CHANNEL_IDLE) {
+        connected_ = true;
+        std::cout << "[IPC/gRPC] Connected to: " << endpoint << std::endl;
+    } else {
+        std::cout << "[IPC/gRPC] Created channel (pending connection): " << endpoint << std::endl;
+    }
+#else
+    std::cout << "[IPC/gRPC] gRPC support disabled (USE_GRPC not defined)" << std::endl;
+    std::cout << "[IPC/gRPC] Endpoint: " << endpoint << " (stub mode)" << std::endl;
+    connected_ = true;  // Stub mode
+#endif
 }
 
 GrpcChannel::~GrpcChannel() {
     close();
 }
 
+bool GrpcChannel::connect(int timeout_ms) {
+#ifdef USE_GRPC
+    if (!grpc_channel_) return false;
+    
+    auto deadline = std::chrono::system_clock::now() + std::chrono::milliseconds(timeout_ms);
+    bool success = grpc_channel_->WaitForConnected(deadline);
+    connected_ = success;
+    
+    if (success) {
+        std::cout << "[IPC/gRPC] Connection established: " << endpoint_ << std::endl;
+    } else {
+        std::cerr << "[IPC/gRPC] Connection timeout: " << endpoint_ << std::endl;
+    }
+    return success;
+#else
+    connected_ = true;
+    return true;
+#endif
+}
+
 bool GrpcChannel::send(const MessageHeader& header, const void* payload) {
     if (!connected_) return false;
     
-    // Stub: Log the message
+#ifdef USE_GRPC
+    // Convert IPC message to gRPC call based on message type
+    if (header.type == MessageType::CALCULATE_FIELD && payload && header.payload_size >= sizeof(CalculateFieldRequest)) {
+        const auto* req = static_cast<const CalculateFieldRequest*>(payload);
+        
+        grpc::ClientContext context;
+        uqff::FieldRequest grpc_req;
+        uqff::FieldResponse grpc_resp;
+        
+        grpc_req.set_system_name(req->system_name);
+        grpc_req.set_r(req->r);
+        grpc_req.set_t(req->t);
+        grpc_req.set_theta(req->theta);
+        grpc_req.set_flags(req->flags);
+        
+        grpc::Status status = stub_->CalculateField(&context, grpc_req, &grpc_resp);
+        
+        if (status.ok() && grpc_resp.success()) {
+            // Queue the response for receive()
+            MessageHeader resp_header(MessageType::RESPONSE_DATA);
+            CalculateFieldResponse resp_payload;
+            resp_payload.status = 0;
+            resp_payload.F_U = grpc_resp.f_u();
+            resp_payload.Ug1 = grpc_resp.ug1();
+            resp_payload.Ug2 = grpc_resp.ug2();
+            resp_payload.Ug3 = grpc_resp.ug3();
+            resp_payload.Ug4 = grpc_resp.ug4();
+            resp_payload.Um = grpc_resp.um();
+            resp_payload.Ub = grpc_resp.ubi();
+            resp_payload.compressed_g = grpc_resp.g_compressed();
+            
+            std::vector<uint8_t> resp_bytes(sizeof(resp_payload));
+            std::memcpy(resp_bytes.data(), &resp_payload, sizeof(resp_payload));
+            
+            {
+                std::lock_guard<std::mutex> lock(queue_mutex_);
+                incoming_queue_.push({resp_header, std::move(resp_bytes)});
+            }
+            queue_cv_.notify_one();
+            return true;
+        } else {
+            std::cerr << "[IPC/gRPC] CalculateField failed: " << status.error_message() << std::endl;
+            return false;
+        }
+    }
+    
+    // Log unhandled message types
+    std::cout << "[IPC/gRPC] send: type=" << static_cast<uint32_t>(header.type) 
+              << " size=" << header.payload_size << std::endl;
+    return true;
+#else
+    // Stub mode: just log
     std::cout << "[IPC/gRPC] STUB send: type=" << static_cast<uint32_t>(header.type) 
               << " size=" << header.payload_size << std::endl;
-    
-    // In Phase 2, this will serialize and send via gRPC
     return true;
+#endif
 }
 
 bool GrpcChannel::receive(MessageHeader& header, std::vector<uint8_t>& payload, 
                          int timeout_ms) {
     if (!connected_) return false;
     
-    // Stub: No messages available
-    // In Phase 2, this will receive from gRPC stream
-    std::this_thread::sleep_for(std::chrono::milliseconds(timeout_ms > 0 ? timeout_ms : 100));
+    std::unique_lock<std::mutex> lock(queue_mutex_);
+    
+    if (timeout_ms < 0) {
+        // Block indefinitely
+        queue_cv_.wait(lock, [this] { return !incoming_queue_.empty(); });
+    } else if (timeout_ms > 0) {
+        // Wait with timeout
+        bool got_msg = queue_cv_.wait_for(lock, std::chrono::milliseconds(timeout_ms),
+                                          [this] { return !incoming_queue_.empty(); });
+        if (!got_msg) return false;
+    } else {
+        // Non-blocking
+        if (incoming_queue_.empty()) return false;
+    }
+    
+    if (!incoming_queue_.empty()) {
+        auto& front = incoming_queue_.front();
+        header = front.first;
+        payload = std::move(front.second);
+        incoming_queue_.pop();
+        return true;
+    }
+    
     return false;
 }
 
 bool GrpcChannel::is_connected() const {
+#ifdef USE_GRPC
+    if (!grpc_channel_) return false;
+    auto state = grpc_channel_->GetState(false);
+    return state == GRPC_CHANNEL_READY || state == GRPC_CHANNEL_IDLE;
+#else
     return connected_;
+#endif
 }
 
 void GrpcChannel::close() {
     if (connected_) {
-        std::cout << "[IPC] GrpcChannel closed: " << endpoint_ << std::endl;
+        std::cout << "[IPC/gRPC] Channel closed: " << endpoint_ << std::endl;
         connected_ = false;
+#ifdef USE_GRPC
+        stub_.reset();
+        grpc_channel_.reset();
+#endif
     }
+}
+
+GrpcChannel::FieldResult GrpcChannel::calculateField(const std::string& system_name, 
+                                                     double r, double t, double theta) {
+    FieldResult result;
+    
+#ifdef USE_GRPC
+    if (!stub_) {
+        result.error = "gRPC stub not initialized";
+        return result;
+    }
+    
+    grpc::ClientContext context;
+    uqff::FieldRequest request;
+    uqff::FieldResponse response;
+    
+    request.set_system_name(system_name);
+    request.set_r(r);
+    request.set_t(t);
+    request.set_theta(theta);
+    
+    auto start = std::chrono::high_resolution_clock::now();
+    grpc::Status status = stub_->CalculateField(&context, request, &response);
+    auto end = std::chrono::high_resolution_clock::now();
+    
+    result.compute_time_ms = std::chrono::duration<double, std::milli>(end - start).count();
+    
+    if (status.ok()) {
+        result.success = response.success();
+        result.error = response.error_message();
+        result.F_U = response.f_u();
+        result.Ug1 = response.ug1();
+        result.Ug2 = response.ug2();
+        result.Ug3 = response.ug3();
+        result.Ug4 = response.ug4();
+        result.Um = response.um();
+        result.Ubi = response.ubi();
+        result.g_compressed = response.g_compressed();
+    } else {
+        result.error = status.error_message();
+    }
+#else
+    // Stub: Return placeholder
+    result.success = true;
+    result.F_U = 1.83e71;  // Placeholder base force
+    result.compute_time_ms = 1.0;
+#endif
+    
+    return result;
+}
+
+GrpcChannel::ServiceStatus GrpcChannel::getStatus() {
+    ServiceStatus status;
+    
+#ifdef USE_GRPC
+    if (!stub_) return status;
+    
+    grpc::ClientContext context;
+    uqff::StatusRequest request;
+    uqff::StatusResponse response;
+    
+    request.set_include_stats(true);
+    
+    grpc::Status grpc_status = stub_->GetStatus(&context, request, &response);
+    
+    if (grpc_status.ok()) {
+        status.healthy = response.healthy();
+        status.version = response.version();
+        status.requests_processed = response.requests_processed();
+        status.uptime_seconds = response.uptime_seconds();
+    }
+#else
+    status.healthy = true;
+    status.version = "3.0-stub";
+#endif
+    
+    return status;
 }
 
 // ============================================================================

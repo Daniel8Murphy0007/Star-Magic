@@ -4,13 +4,13 @@
  * 
  * Provides message types and channel abstractions for communication between:
  * - source2.cpp (GUI Orchestrator)
- * - vr_runtime (VR/VM + GPU Runtime)
+ * - source2(HEAD PROGRAM).cpp (VR/VM Backend)
  * - MAIN_1_CoAnQi.exe (Physics Engine)
  * - Python calculators (CondensedPhysics.py, QCalc.py)
  * 
  * Author: Daniel T. Murphy
  * Framework: UQFF Star-Magic v3.0
- * Phase: 1 - IPC Foundation
+ * Phase: 3 - Full gRPC Implementation
  */
 
 #ifndef UQFF_IPC_H
@@ -24,6 +24,10 @@
 #include <mutex>
 #include <atomic>
 #include <chrono>
+#include <thread>
+#include <queue>
+#include <condition_variable>
+#include <unordered_map>
 
 #ifdef _WIN32
 #include <windows.h>
@@ -31,6 +35,12 @@
 #include <sys/mman.h>
 #include <fcntl.h>
 #include <unistd.h>
+#endif
+
+// gRPC support (Phase 3)
+#ifdef USE_GRPC
+#include <grpcpp/grpcpp.h>
+#include "uqff_service.grpc.pb.h"
 #endif
 
 namespace UQFF {
@@ -293,14 +303,15 @@ private:
 };
 
 // ============================================================================
-// GRPC CHANNEL (STUB)
+// GRPC CHANNEL (Phase 3 - Full Implementation)
 // ============================================================================
 
 /**
  * @class GrpcChannel
  * @brief Structured command channel via gRPC (for complex operations)
  * 
- * Stub implementation - full gRPC integration in Phase 2
+ * Phase 3: Full gRPC implementation for structured physics commands.
+ * Uses uqff_service.proto for message definitions.
  */
 class GrpcChannel : public IChannel {
 public:
@@ -314,10 +325,42 @@ public:
     void close() override;
     std::string name() const override { return endpoint_; }
     
+    // gRPC-specific methods (Phase 3)
+    bool connect(int timeout_ms = 5000);
+    
+    // Field calculation via gRPC
+    struct FieldResult {
+        bool success = false;
+        std::string error;
+        double F_U = 0, Ug1 = 0, Ug2 = 0, Ug3 = 0, Ug4 = 0;
+        double Um = 0, Ubi = 0, g_compressed = 0;
+        double compute_time_ms = 0;
+    };
+    FieldResult calculateField(const std::string& system_name, double r, double t, double theta);
+    
+    // Service status
+    struct ServiceStatus {
+        bool healthy = false;
+        std::string version;
+        uint64_t requests_processed = 0;
+        uint64_t uptime_seconds = 0;
+    };
+    ServiceStatus getStatus();
+    
 private:
     std::string endpoint_;
     std::atomic<bool> connected_;
-    // gRPC stub placeholder - to be added in Phase 2
+    std::mutex channel_mutex_;
+    
+    // Incoming message queue (for async receive)
+    std::queue<std::pair<MessageHeader, std::vector<uint8_t>>> incoming_queue_;
+    std::mutex queue_mutex_;
+    std::condition_variable queue_cv_;
+    
+#ifdef USE_GRPC
+    std::shared_ptr<grpc::Channel> grpc_channel_;
+    std::unique_ptr<uqff::PhysicsService::Stub> stub_;
+#endif
 };
 
 // ============================================================================

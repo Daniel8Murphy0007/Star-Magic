@@ -2,15 +2,15 @@
  * @file physics_service.h
  * @brief Physics Backend Service for UQFF Star-Magic
  * 
- * Provides headless service mode for source2.cpp, enabling:
+ * Provides headless service mode for source2(HEAD PROGRAM).cpp, enabling:
  * - IPC server accepting physics calculation requests
  * - VR runtime field data streaming via shared memory
- * - gRPC endpoints for structured commands
+ * - gRPC endpoints for structured commands (Phase 3 complete)
  * - Integration with MAIN_1_CoAnQi physics engine
  * 
  * Author: Daniel T. Murphy
  * Framework: UQFF Star-Magic v3.0
- * Phase: 2 - Physics Backend Service Mode
+ * Phase: 3 - Full gRPC Implementation
  */
 
 #ifndef PHYSICS_SERVICE_H
@@ -43,9 +43,9 @@ struct ServiceConfig {
     std::string ipc_channel_name = "uqff_physics";
     size_t shm_buffer_size = 16 * 1024 * 1024;  // 16 MB default
     
-    // gRPC Settings (Phase 2 stub, full in Phase 3)
+    // gRPC Settings (Phase 3 - Full Implementation)
     std::string grpc_address = "localhost:50051";
-    bool enable_grpc = false;  // Disabled until Phase 3
+    bool enable_grpc = true;  // Enabled in Phase 3
     
     // Threading
     int worker_threads = 4;

@@ -4,7 +4,7 @@
  * 
  * Author: Daniel T. Murphy
  * Framework: UQFF Star-Magic v3.0
- * Phase: 2 - Physics Backend Service Mode
+ * Phase: 3 - Full gRPC Implementation
  */
 
 #include "physics_service.h"
@@ -122,10 +122,15 @@ bool PhysicsService::start() {
         return false;
     }
     
-    // Create gRPC channel if enabled (stub for Phase 2)
+    // Create gRPC channel if enabled (Phase 3 - full implementation)
     if (config_.enable_grpc) {
         grpc_channel_ = std::make_unique<IPC::GrpcChannel>(config_.grpc_address);
-        std::cout << "[PhysicsService] gRPC stub created (full impl in Phase 3)" << std::endl;
+        if (grpc_channel_->is_connected()) {
+            std::cout << "[PhysicsService] gRPC channel ready: " << config_.grpc_address << std::endl;
+        } else {
+            std::cout << "[PhysicsService] gRPC channel created (pending connection): " 
+                      << config_.grpc_address << std::endl;
+        }
     }
     
     running_ = true;

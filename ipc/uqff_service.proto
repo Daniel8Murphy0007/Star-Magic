@@ -1,0 +1,200 @@
+// uqff_service.proto - UQFF Physics Service gRPC Definitions
+// Phase 3: Full gRPC Implementation
+// Author: Daniel T. Murphy (daniel.murphy00@gmail.com)
+// Framework: UQFF Star-Magic v3.0
+
+syntax = "proto3";
+
+package uqff;
+
+option cc_namespace = "UQFF::Proto";
+
+// ============================================================================
+// FIELD CALCULATION SERVICE
+// ============================================================================
+
+// Main physics calculation service
+service PhysicsService {
+    // Calculate unified field for a system
+    rpc CalculateField(FieldRequest) returns (FieldResponse);
+    
+    // Batch calculate multiple systems
+    rpc CalculateBatch(BatchRequest) returns (BatchResponse);
+    
+    // Stream field updates (for VR real-time)
+    rpc StreamFieldUpdates(StreamRequest) returns (stream FieldResponse);
+    
+    // Register a dynamic physics term
+    rpc RegisterTerm(RegisterTermRequest) returns (RegisterTermResponse);
+    
+    // Update runtime parameter
+    rpc UpdateParameter(UpdateParameterRequest) returns (UpdateParameterResponse);
+    
+    // Get service health/status
+    rpc GetStatus(StatusRequest) returns (StatusResponse);
+    
+    // List available systems
+    rpc ListSystems(ListSystemsRequest) returns (ListSystemsResponse);
+}
+
+// ============================================================================
+// FIELD CALCULATION MESSAGES
+// ============================================================================
+
+// Request for field calculation
+message FieldRequest {
+    string system_name = 1;        // e.g., "Sagittarius A*", "M87"
+    double r = 2;                  // Radial distance [m]
+    double t = 3;                  // Time [s]
+    double theta = 4;              // Angle [rad]
+    uint32 flags = 5;              // Calculation options
+    
+    // Optional parameter overrides
+    SystemParams params = 6;
+}
+
+// System parameters (optional override)
+message SystemParams {
+    double mass = 1;               // Mass [kg]
+    double radius = 2;             // Radius [m]
+    double magnetic_field = 3;     // B0 [T]
+    double spin_period = 4;        // Rotation period [s]
+    double distance = 5;           // Distance from observer [m]
+    double redshift = 6;           // Cosmological redshift z
+    double temperature = 7;        // Temperature [K]
+    double luminosity = 8;         // Luminosity [W]
+}
+
+// Response with calculated field values
+message FieldResponse {
+    bool success = 1;
+    string error_message = 2;
+    
+    // UQFF Field Components
+    double F_U = 3;                // Total unified field
+    double Ug1 = 4;                // Magnetic dipole field
+    double Ug2 = 5;                // Charge-reactivity field
+    double Ug3 = 6;                // String rotation field
+    double Ug4 = 7;                // Vacuum concentration field
+    double Um = 8;                 // Magnetism field
+    double Ubi = 9;                // Buoyancy opposition
+    
+    // MUGE Compressed gravity
+    double g_compressed = 10;
+    
+    // Validation metrics
+    double residual = 11;          // |calculated - observed|
+    double confidence = 12;        // 0-1 confidence score
+    
+    // Timing
+    double compute_time_ms = 13;
+    
+    // Long-form equations (optional)
+    repeated string equations = 14;
+}
+
+// ============================================================================
+// BATCH CALCULATION MESSAGES
+// ============================================================================
+
+message BatchRequest {
+    repeated FieldRequest requests = 1;
+    bool parallel = 2;             // Execute in parallel
+}
+
+message BatchResponse {
+    repeated FieldResponse responses = 1;
+    double total_time_ms = 2;
+}
+
+// ============================================================================
+// STREAMING MESSAGES (VR Real-time)
+// ============================================================================
+
+message StreamRequest {
+    string system_name = 1;
+    double update_rate_hz = 2;     // Target update rate
+    uint32 max_updates = 3;        // 0 = infinite
+}
+
+// ============================================================================
+// DYNAMIC TERM REGISTRATION
+// ============================================================================
+
+message RegisterTermRequest {
+    string term_name = 1;
+    string term_type = 2;          // e.g., "VacuumTerm", "CouplingTerm"
+    map<string, double> parameters = 3;
+    string description = 4;
+}
+
+message RegisterTermResponse {
+    bool success = 1;
+    string error_message = 2;
+    uint32 term_id = 3;            // Assigned ID for the term
+}
+
+// ============================================================================
+// PARAMETER UPDATE
+// ============================================================================
+
+message UpdateParameterRequest {
+    string parameter_name = 1;
+    double value = 2;
+    string scope = 3;              // "global", "system:NAME", "term:ID"
+}
+
+message UpdateParameterResponse {
+    bool success = 1;
+    string error_message = 2;
+    double old_value = 3;
+}
+
+// ============================================================================
+// SERVICE STATUS
+// ============================================================================
+
+message StatusRequest {
+    bool include_stats = 1;
+    bool include_systems = 2;
+}
+
+message StatusResponse {
+    bool healthy = 1;
+    string version = 2;
+    uint64 uptime_seconds = 3;
+    
+    // Statistics
+    uint64 requests_processed = 4;
+    uint64 requests_failed = 5;
+    double avg_compute_time_ms = 6;
+    
+    // System counts
+    uint32 systems_loaded = 7;
+    uint32 terms_registered = 8;
+    
+    // Capabilities
+    bool python_available = 9;
+    bool main1_available = 10;
+}
+
+// ============================================================================
+// SYSTEM LISTING
+// ============================================================================
+
+message ListSystemsRequest {
+    string category_filter = 1;    // Empty = all, e.g., "galactic", "stellar"
+    uint32 limit = 2;              // 0 = no limit
+}
+
+message ListSystemsResponse {
+    repeated SystemInfo systems = 1;
+}
+
+message SystemInfo {
+    string name = 1;
+    string category = 2;
+    double mass = 3;
+    double distance = 4;
+    string description = 5;
+}
