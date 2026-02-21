@@ -368,6 +368,247 @@ class NumericalMethods:
         
         return t, y
     
+    # ─────────────────────────────────────────────────────────────────────────
+    # SYMPLECTIC INTEGRATORS (Energy-Conserving for N-Body/Orbital Mechanics)
+    # ─────────────────────────────────────────────────────────────────────────
+    
+    @staticmethod
+    def leapfrog_step(x: np.ndarray, v: np.ndarray, a_func: Callable, 
+                      dt: float, *args) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        Single step of Leapfrog (Störmer-Verlet) symplectic integrator.
+        
+        CRITICAL for UQFF: Preserves phase-space volume (Liouville's theorem).
+        Energy conservation for Hamiltonian systems over long timescales.
+        
+        Args:
+            x: Position vector(s)
+            v: Velocity vector(s)
+            a_func: Acceleration function a = a_func(x, *args)
+            dt: Time step
+            *args: Additional arguments to a_func
+            
+        Returns:
+            (x_new, v_new): Updated position and velocity
+        """
+        x = np.atleast_1d(x)
+        v = np.atleast_1d(v)
+        
+        # Kick-Drift-Kick (KDK) form
+        a = np.asarray(a_func(x, *args))
+        v_half = v + 0.5 * dt * a          # Half kick
+        x_new = x + dt * v_half             # Drift
+        a_new = np.asarray(a_func(x_new, *args))
+        v_new = v_half + 0.5 * dt * a_new   # Half kick
+        
+        return x_new, v_new
+    
+    @staticmethod
+    def leapfrog_solve(x0: np.ndarray, v0: np.ndarray, a_func: Callable,
+                       t_span: Tuple[float, float], n_steps: int = 1000,
+                       *args) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+        """
+        Solve 2nd-order ODE using Leapfrog method.
+        
+        UQFF Application: Orbital mechanics, N-body gravity simulations,
+        planetary system evolution, binary star dynamics.
+        
+        Args:
+            x0: Initial position
+            v0: Initial velocity
+            a_func: Acceleration function a = a_func(x, *args)
+            t_span: (t_start, t_end)
+            n_steps: Number of integration steps
+            *args: Additional arguments to a_func
+            
+        Returns:
+            t: Time array
+            x: Position array (n_steps x dim)
+            v: Velocity array (n_steps x dim)
+        """
+        t = np.linspace(t_span[0], t_span[1], n_steps)
+        dt = (t_span[1] - t_span[0]) / (n_steps - 1)
+        
+        x0 = np.atleast_1d(x0)
+        v0 = np.atleast_1d(v0)
+        
+        x = np.zeros((n_steps, len(x0)))
+        v = np.zeros((n_steps, len(v0)))
+        x[0], v[0] = x0, v0
+        
+        for i in range(n_steps - 1):
+            x[i+1], v[i+1] = NumericalMethods.leapfrog_step(x[i], v[i], a_func, dt, *args)
+        
+        return t, x, v
+    
+    @staticmethod
+    def velocity_verlet_step(x: np.ndarray, v: np.ndarray, a: np.ndarray,
+                             a_func: Callable, dt: float, *args) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+        """
+        Single step of Velocity-Verlet (optimized for N-body).
+        
+        Returns current acceleration for reuse in next step (efficiency).
+        
+        Args:
+            x: Position
+            v: Velocity
+            a: Current acceleration (from previous step or initial)
+            a_func: Acceleration function a = a_func(x, *args)
+            dt: Time step
+            *args: Additional arguments
+            
+        Returns:
+            (x_new, v_new, a_new)
+        """
+        x = np.atleast_1d(x)
+        v = np.atleast_1d(v)
+        a = np.atleast_1d(a)
+        
+        x_new = x + v * dt + 0.5 * a * dt**2
+        a_new = np.asarray(a_func(x_new, *args))
+        v_new = v + 0.5 * (a + a_new) * dt
+        
+        return x_new, v_new, a_new
+    
+    @staticmethod
+    def velocity_verlet_solve(x0: np.ndarray, v0: np.ndarray, a_func: Callable,
+                              t_span: Tuple[float, float], n_steps: int = 1000,
+                              *args) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+        """
+        Solve 2nd-order ODE using Velocity-Verlet.
+        
+        Mathematically equivalent to Leapfrog but with better velocity accuracy
+        at output times. Preferred for N-body gravity simulations.
+        
+        Returns:
+            t, x, v arrays
+        """
+        t = np.linspace(t_span[0], t_span[1], n_steps)
+        dt = (t_span[1] - t_span[0]) / (n_steps - 1)
+        
+        x0 = np.atleast_1d(x0)
+        v0 = np.atleast_1d(v0)
+        
+        x = np.zeros((n_steps, len(x0)))
+        v = np.zeros((n_steps, len(v0)))
+        x[0], v[0] = x0, v0
+        
+        # Initial acceleration
+        a = np.asarray(a_func(x0, *args))
+        
+        for i in range(n_steps - 1):
+            x[i+1], v[i+1], a = NumericalMethods.velocity_verlet_step(
+                x[i], v[i], a, a_func, dt, *args)
+        
+        return t, x, v
+    
+    @staticmethod
+    def yoshida4_step(x: np.ndarray, v: np.ndarray, a_func: Callable,
+                      dt: float, *args) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        Single step of 4th-order Yoshida symplectic integrator.
+        
+        Higher order symplectic method for long-term orbital stability.
+        Used in UQFF for high-precision planetary ephemerides.
+        
+        Reference: Yoshida (1990), Phys. Lett. A 150, 262
+        """
+        # Yoshida 4th order coefficients
+        w0 = -2**(1/3) / (2 - 2**(1/3))
+        w1 = 1 / (2 - 2**(1/3))
+        c1 = c4 = w1 / 2
+        c2 = c3 = (w0 + w1) / 2
+        d1 = d3 = w1
+        d2 = w0
+        
+        x = np.atleast_1d(x)
+        v = np.atleast_1d(v)
+        
+        # Symplectic chain: x-v-x-v-x-v-x
+        x = x + c1 * dt * v
+        v = v + d1 * dt * np.asarray(a_func(x, *args))
+        x = x + c2 * dt * v
+        v = v + d2 * dt * np.asarray(a_func(x, *args))
+        x = x + c3 * dt * v
+        v = v + d3 * dt * np.asarray(a_func(x, *args))
+        x = x + c4 * dt * v
+        
+        return x, v
+    
+    @staticmethod
+    def yoshida4_solve(x0: np.ndarray, v0: np.ndarray, a_func: Callable,
+                       t_span: Tuple[float, float], n_steps: int = 1000,
+                       *args) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+        """
+        4th-order Yoshida symplectic integrator for orbital mechanics.
+        
+        UQFF Application: High-precision long-term orbital evolution,
+        galactic dynamics, UQFF gravity field trajectories.
+        
+        Returns:
+            t, x, v arrays
+        """
+        t = np.linspace(t_span[0], t_span[1], n_steps)
+        dt = (t_span[1] - t_span[0]) / (n_steps - 1)
+        
+        x0 = np.atleast_1d(x0)
+        v0 = np.atleast_1d(v0)
+        
+        x = np.zeros((n_steps, len(x0)))
+        v = np.zeros((n_steps, len(v0)))
+        x[0], v[0] = x0, v0
+        
+        for i in range(n_steps - 1):
+            x[i+1], v[i+1] = NumericalMethods.yoshida4_step(x[i], v[i], a_func, dt, *args)
+        
+        return t, x, v
+    
+    @staticmethod
+    def compute_orbital_energy(x: np.ndarray, v: np.ndarray, m: float, 
+                               M: float, G: float = 6.674e-11) -> float:
+        """
+        Compute total orbital energy (kinetic + potential).
+        
+        For symplectic integrator validation: E should remain constant.
+        
+        Args:
+            x: Position vector
+            v: Velocity vector
+            m: Orbiting mass
+            M: Central mass
+            G: Gravitational constant
+            
+        Returns:
+            Total energy (negative for bound orbits)
+        """
+        x = np.atleast_1d(x)
+        v = np.atleast_1d(v)
+        r = np.linalg.norm(x)
+        v_mag = np.linalg.norm(v)
+        
+        kinetic = 0.5 * m * v_mag**2
+        potential = -G * M * m / r
+        
+        return kinetic + potential
+    
+    @staticmethod
+    def compute_angular_momentum(x: np.ndarray, v: np.ndarray, m: float) -> np.ndarray:
+        """
+        Compute angular momentum vector L = m * (x × v).
+        
+        For symplectic integrator validation: L should remain constant.
+        """
+        x = np.atleast_1d(x)
+        v = np.atleast_1d(v)
+        
+        if len(x) == 2:
+            # 2D: return scalar Lz
+            return m * (x[0] * v[1] - x[1] * v[0])
+        elif len(x) == 3:
+            return m * np.cross(x, v)
+        else:
+            raise ValueError("Position must be 2D or 3D")
+    
     @staticmethod
     def odeint(f: Callable, y0: np.ndarray, t: np.ndarray, *args) -> np.ndarray:
         """
@@ -691,6 +932,301 @@ class NumericalMethods:
             return float('nan')
     
     # ─────────────────────────────────────────────────────────────────────────
+    # STIFF ODE SOLVERS (BDF, Radau)
+    # ─────────────────────────────────────────────────────────────────────────
+    
+    @staticmethod
+    def bdf_solve(f: Callable, t_span: Tuple[float, float], y0: np.ndarray,
+                  rtol: float = 1e-6, atol: float = 1e-9, max_step: float = np.inf,
+                  *args) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        Solve stiff ODEs using Backward Differentiation Formula (BDF).
+        
+        UQFF Application: Stellar evolution, nuclear reaction networks,
+        chemical kinetics in astrophysical plasmas.
+        
+        Args:
+            f: Function dy/dt = f(t, y, *args)
+            t_span: (t_start, t_end)
+            y0: Initial state
+            rtol, atol: Tolerances
+            max_step: Maximum step size
+            *args: Additional arguments
+            
+        Returns:
+            t, y arrays
+        """
+        if SCIPY_AVAILABLE:
+            from scipy.integrate import solve_ivp
+            sol = solve_ivp(lambda t, y: f(t, y, *args), t_span, np.atleast_1d(y0),
+                           method='BDF', rtol=rtol, atol=atol, max_step=max_step)
+            return sol.t, sol.y.T
+        else:
+            # Fallback to implicit Euler (first-order BDF)
+            return NumericalMethods.euler_implicit(f, t_span, y0, n_steps=1000, *args)
+    
+    @staticmethod
+    def radau_solve(f: Callable, t_span: Tuple[float, float], y0: np.ndarray,
+                    rtol: float = 1e-6, atol: float = 1e-9,
+                    *args) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        Solve stiff ODEs using implicit Radau IIA method (5th order).
+        
+        More stable than BDF for extremely stiff problems.
+        """
+        if SCIPY_AVAILABLE:
+            from scipy.integrate import solve_ivp
+            sol = solve_ivp(lambda t, y: f(t, y, *args), t_span, np.atleast_1d(y0),
+                           method='Radau', rtol=rtol, atol=atol)
+            return sol.t, sol.y.T
+        else:
+            return NumericalMethods.euler_implicit(f, t_span, y0, n_steps=1000, *args)
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # OPTIMIZATION
+    # ─────────────────────────────────────────────────────────────────────────
+    
+    @staticmethod
+    def minimize(f: Callable, x0: np.ndarray, method: str = 'BFGS',
+                 bounds: List[Tuple[float, float]] = None,
+                 constraints: dict = None, **kwargs) -> dict:
+        """
+        General-purpose optimization (scipy.optimize.minimize wrapper).
+        
+        UQFF Application: Parameter fitting, energy minimization,
+        orbital element optimization, UQFF constant calibration.
+        
+        Args:
+            f: Objective function to minimize
+            x0: Initial guess
+            method: 'BFGS', 'L-BFGS-B', 'Nelder-Mead', 'Powell', 'SLSQP'
+            bounds: List of (min, max) for each variable (for L-BFGS-B, SLSQP)
+            constraints: Constraint dict (for SLSQP)
+            **kwargs: Additional arguments
+            
+        Returns:
+            dict with 'x' (solution), 'fun' (minimum value), 'success'
+        """
+        if SCIPY_AVAILABLE:
+            from scipy.optimize import minimize as scipy_minimize
+            result = scipy_minimize(f, x0, method=method, bounds=bounds,
+                                   constraints=constraints, **kwargs)
+            return {
+                'x': result.x,
+                'fun': result.fun,
+                'success': result.success,
+                'message': result.message,
+                'nit': getattr(result, 'nit', 0)
+            }
+        else:
+            # Fallback: Simple gradient descent
+            x = np.atleast_1d(x0).copy().astype(float)
+            learning_rate = kwargs.get('learning_rate', 0.01)
+            maxiter = kwargs.get('maxiter', 1000)
+            tol = kwargs.get('tol', 1e-8)
+            
+            for i in range(maxiter):
+                # Numerical gradient
+                grad = np.zeros_like(x)
+                h = 1e-8
+                fx = f(x)
+                for j in range(len(x)):
+                    x_h = x.copy()
+                    x_h[j] += h
+                    grad[j] = (f(x_h) - fx) / h
+                
+                x_new = x - learning_rate * grad
+                
+                # Apply bounds if provided
+                if bounds:
+                    for j, (lo, hi) in enumerate(bounds):
+                        if lo is not None:
+                            x_new[j] = max(lo, x_new[j])
+                        if hi is not None:
+                            x_new[j] = min(hi, x_new[j])
+                
+                if np.linalg.norm(x_new - x) < tol:
+                    break
+                x = x_new
+            
+            return {'x': x, 'fun': f(x), 'success': True, 'message': 'Gradient descent fallback', 'nit': i+1}
+    
+    @staticmethod
+    def curve_fit(f: Callable, xdata: np.ndarray, ydata: np.ndarray,
+                  p0: np.ndarray = None, bounds: Tuple = (-np.inf, np.inf),
+                  **kwargs) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        Nonlinear curve fitting (scipy.optimize.curve_fit wrapper).
+        
+        UQFF Application: Fitting rotation curves, luminosity functions,
+        spectral energy distributions.
+        
+        Args:
+            f: Model function f(x, *params)
+            xdata: x values
+            ydata: y values
+            p0: Initial parameter guesses
+            bounds: Parameter bounds
+            
+        Returns:
+            (optimal_params, covariance_matrix)
+        """
+        if SCIPY_AVAILABLE:
+            from scipy.optimize import curve_fit as scipy_curve_fit
+            return scipy_curve_fit(f, xdata, ydata, p0=p0, bounds=bounds, **kwargs)
+        else:
+            # Very basic least squares via minimize
+            if p0 is None:
+                p0 = np.ones(3)  # Default guess
+            
+            def residual(params):
+                return np.sum((ydata - f(xdata, *params))**2)
+            
+            result = NumericalMethods.minimize(residual, p0)
+            return result['x'], np.eye(len(p0)) * 0.01  # Dummy covariance
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # INTERPOLATION
+    # ─────────────────────────────────────────────────────────────────────────
+    
+    @staticmethod
+    def interp1d(x: np.ndarray, y: np.ndarray, kind: str = 'linear') -> Callable:
+        """
+        1D interpolation (scipy.interpolate.interp1d wrapper).
+        
+        Args:
+            x: x data points (must be sorted)
+            y: y data points
+            kind: 'linear', 'cubic', 'quadratic', 'nearest'
+            
+        Returns:
+            Interpolation function
+        """
+        if SCIPY_AVAILABLE:
+            from scipy.interpolate import interp1d as scipy_interp1d
+            return scipy_interp1d(x, y, kind=kind, fill_value='extrapolate')
+        else:
+            # Linear interpolation fallback
+            def linear_interp(xi):
+                xi = np.atleast_1d(xi)
+                result = np.zeros_like(xi)
+                for i, xv in enumerate(xi):
+                    idx = np.searchsorted(x, xv)
+                    if idx == 0:
+                        result[i] = y[0]
+                    elif idx >= len(x):
+                        result[i] = y[-1]
+                    else:
+                        t = (xv - x[idx-1]) / (x[idx] - x[idx-1])
+                        result[i] = y[idx-1] + t * (y[idx] - y[idx-1])
+                return result if len(result) > 1 else result[0]
+            return linear_interp
+    
+    @staticmethod
+    def cubic_spline(x: np.ndarray, y: np.ndarray) -> Callable:
+        """
+        Cubic spline interpolation.
+        
+        UQFF Application: Smooth interpolation of rotation curves,
+        spectral data, time series.
+        """
+        if SCIPY_AVAILABLE:
+            from scipy.interpolate import CubicSpline
+            return CubicSpline(x, y, extrapolate=True)
+        else:
+            return NumericalMethods.interp1d(x, y, kind='linear')
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # MONTE CARLO METHODS
+    # ─────────────────────────────────────────────────────────────────────────
+    
+    @staticmethod
+    def monte_carlo_integrate(f: Callable, bounds: List[Tuple[float, float]],
+                              n_samples: int = 100000, seed: int = None) -> Tuple[float, float]:
+        """
+        Monte Carlo integration over hyperrectangle.
+        
+        UQFF Application: High-dimensional phase space integrals,
+        partition functions, path integrals.
+        
+        Args:
+            f: Integrand function
+            bounds: List of (min, max) for each dimension
+            n_samples: Number of random samples
+            seed: Random seed for reproducibility
+            
+        Returns:
+            (integral_estimate, standard_error)
+        """
+        if seed is not None:
+            np.random.seed(seed)
+        
+        ndim = len(bounds)
+        volume = np.prod([b[1] - b[0] for b in bounds])
+        
+        # Generate random samples
+        samples = np.zeros((n_samples, ndim))
+        for i, (lo, hi) in enumerate(bounds):
+            samples[:, i] = np.random.uniform(lo, hi, n_samples)
+        
+        # Evaluate function
+        values = np.array([f(*s) for s in samples])
+        
+        # Estimate and error
+        mean_val = np.mean(values)
+        integral = volume * mean_val
+        variance = np.var(values, ddof=1)
+        std_error = volume * np.sqrt(variance / n_samples)
+        
+        return integral, std_error
+    
+    @staticmethod
+    def metropolis_hastings(log_prob: Callable, x0: np.ndarray, n_samples: int = 10000,
+                            proposal_std: float = 1.0, burn_in: int = 1000,
+                            seed: int = None) -> np.ndarray:
+        """
+        Metropolis-Hastings MCMC sampler.
+        
+        UQFF Application: Bayesian parameter estimation, posterior sampling,
+        thermodynamic ensemble generation.
+        
+        Args:
+            log_prob: Log probability function (unnormalized)
+            x0: Initial state
+            n_samples: Number of samples after burn-in
+            proposal_std: Standard deviation of Gaussian proposal
+            burn_in: Number of burn-in samples to discard
+            seed: Random seed
+            
+        Returns:
+            samples: Array of shape (n_samples, dim)
+        """
+        if seed is not None:
+            np.random.seed(seed)
+        
+        x = np.atleast_1d(x0).copy().astype(float)
+        ndim = len(x)
+        
+        samples = []
+        n_accept = 0
+        
+        for i in range(n_samples + burn_in):
+            # Propose new state
+            x_new = x + np.random.normal(0, proposal_std, ndim)
+            
+            # Accept/reject
+            log_alpha = log_prob(x_new) - log_prob(x)
+            
+            if np.log(np.random.random()) < log_alpha:
+                x = x_new
+                n_accept += 1
+            
+            if i >= burn_in:
+                samples.append(x.copy())
+        
+        return np.array(samples)
+    
+    # ─────────────────────────────────────────────────────────────────────────
     # STATUS & DIAGNOSTICS
     # ─────────────────────────────────────────────────────────────────────────
     
@@ -704,15 +1240,22 @@ class NumericalMethods:
             'sympy_version': SYMPY_VERSION,
             'numpy_version': np.__version__,
             'capabilities': {
-                'ode_solvers': ['RK4', 'RK4-fixed', 'Adams-Bashforth-4'] + 
-                               (['RK45-adaptive', 'odeint'] if SCIPY_AVAILABLE else []),
-                'integration': ['trapezoidal', 'simpson'] +
+                'ode_solvers': ['RK4', 'RK4-fixed', 'Adams-Bashforth-4', 'Euler', 'Euler-implicit'] + 
+                               (['RK45-adaptive', 'odeint', 'BDF', 'Radau'] if SCIPY_AVAILABLE else []),
+                'symplectic_integrators': ['leapfrog', 'velocity_verlet', 'yoshida4'],
+                'integration': ['trapezoidal', 'simpson', 'monte_carlo'] +
                                (['gaussian_quadrature', 'quad', 'dblquad'] if SCIPY_AVAILABLE else []),
                 'root_finding': ['newton_raphson', 'bisection'] +
                                 (['brentq', 'fsolve', 'root'] if SCIPY_AVAILABLE else []),
+                'optimization': ['gradient_descent'] +
+                                (['minimize', 'curve_fit'] if SCIPY_AVAILABLE else []),
+                'interpolation': ['linear'] +
+                                 (['interp1d', 'cubic_spline'] if SCIPY_AVAILABLE else []),
+                'monte_carlo': ['monte_carlo_integrate', 'metropolis_hastings'],
                 'linear_algebra': ['solve', 'inv', 'eig', 'svd'],
                 'symbolic': ['diff', 'integrate', 'solve', 'simplify', 'lambdify'] if SYMPY_AVAILABLE else [],
-                'special_functions': ['bessel_j', 'spherical_harmonics', 'gamma'] if SCIPY_AVAILABLE else []
+                'special_functions': ['bessel_j', 'spherical_harmonics', 'gamma'] if SCIPY_AVAILABLE else [],
+                'orbital_mechanics': ['compute_orbital_energy', 'compute_angular_momentum']
             }
         }
     
