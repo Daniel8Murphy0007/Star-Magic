@@ -85,6 +85,15 @@ enum class MessageType : uint32_t {
     VR_GESTURE_INPUT        = 0x0101,  // Gesture command from VR
     VR_RENDER_REQUEST       = 0x0102,  // Request visualization data
     
+    // Simulation control (v3.1 - Self-Simulate)
+    SIM_START               = 0x0200,  // Start time evolution simulation
+    SIM_STOP                = 0x0201,  // Stop active simulation
+    SIM_PAUSE               = 0x0202,  // Pause simulation
+    SIM_RESUME              = 0x0203,  // Resume paused simulation
+    SIM_FRAME               = 0x0210,  // Simulation frame output (streamed)
+    SIM_PROGRESS            = 0x0211,  // Simulation progress update
+    SIM_COMPLETE            = 0x0212,  // Simulation completed
+    
     // Responses
     RESPONSE_SUCCESS        = 0x1000,  // Operation completed
     RESPONSE_ERROR          = 0x1001,  // Operation failed

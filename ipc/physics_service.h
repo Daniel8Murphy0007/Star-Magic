@@ -7,10 +7,13 @@
  * - VR runtime field data streaming via shared memory
  * - gRPC endpoints for structured commands (Phase 3 complete)
  * - Integration with MAIN_1_CoAnQi physics engine
+ * - Self-Expand: Dynamic term registration from VR/external (v3.1)
+ * - Self-Update: Runtime parameter tuning for κ, [SSq], etc. (v3.1)
+ * - Self-Simulate: Time evolution with VR streaming (v3.1)
  * 
  * Author: Daniel T. Murphy
- * Framework: UQFF Star-Magic v3.0
- * Phase: 3 - Full gRPC Implementation
+ * Framework: UQFF Star-Magic v3.1
+ * Phase: 3.1 - Self-Expanding Physics Backend
  */
 
 #ifndef PHYSICS_SERVICE_H
@@ -24,6 +27,8 @@
 #include <atomic>
 #include <functional>
 #include <unordered_map>
+#include <map>
+#include <shared_mutex>
 
 // Forward declarations for Qt types (optional GUI support)
 class QCoreApplication;
@@ -109,6 +114,141 @@ struct FieldResponse {
     double compute_time_ms = 0;
 };
 
+// ============================================================================
+// SELF-EXPAND: Dynamic Physics Terms (v3.1)
+// ============================================================================
+
+/**
+ * @enum DynamicTermType
+ * @brief Types of dynamically registered physics terms
+ */
+enum class DynamicTermType : uint32_t {
+    GRAVITY_MODIFIER    = 0x0001,  // Modifies Ug1-Ug4
+    VACUUM_ENERGY       = 0x0002,  // Vacuum fluctuation term
+    QUANTUM_COUPLING    = 0x0003,  // Quantum field coupling
+    DARK_MATTER         = 0x0004,  // Dark matter halo contribution
+    TORSION_FIELD       = 0x0005,  // Spacetime torsion
+    CUSTOM              = 0xFFFF   // User-defined
+};
+
+/**
+ * @struct DynamicTerm
+ * @brief Runtime-registered physics term from VR or external source
+ */
+struct DynamicTerm {
+    std::string name;
+    DynamicTermType type = DynamicTermType::CUSTOM;
+    std::string description;
+    double coefficient = 1.0;           // Multiplier
+    double base_value = 0.0;            // Base contribution
+    double r_dependence = -2.0;         // Power law: term ∝ r^exponent
+    double t_dependence = 0.0;          // Time dependence exponent
+    bool enabled = true;
+    uint64_t registered_at = 0;         // Timestamp
+    std::string source;                 // "VR", "external", "script"
+    
+    // Calculate term contribution at (r, t)
+    double evaluate(double r, double t) const {
+        if (!enabled) return 0.0;
+        double r_factor = (r_dependence != 0.0) ? std::pow(r, r_dependence) : 1.0;
+        double t_factor = (t_dependence != 0.0) ? std::pow(t, t_dependence) : 1.0;
+        return coefficient * base_value * r_factor * t_factor;
+    }
+};
+
+// ============================================================================
+// SELF-UPDATE: Calibrated Parameters (v3.1)
+// ============================================================================
+
+/**
+ * @struct CalibratedParameters
+ * @brief UQFF calibrated constants (runtime-tunable)
+ * 
+ * Default values from UQFF validation (κ=0.0005/day, [SSq]=0.57, etc.)
+ */
+struct CalibratedParameters {
+    // Core UQFF parameters
+    double kappa = 0.0005;              // κ - decay rate [1/day]
+    double SSq = 0.57;                  // [SSq] - string squeeze factor
+    double H_SCm = 0.99;                // H_SCm - superconducting efficiency
+    double U_UA = 0.0001;               // U_UA - vacuum coupling
+    double k_eta = 1e-113;              // k_η - Planck area ratio
+    double beta_i = 0.603;              // β_i - buoyancy coefficient
+    
+    // MUGE parameters
+    double alpha_DPM = 1.0;             // Dark matter amplitude
+    double Omega_Lambda = 0.69;         // Cosmological constant fraction
+    double H_0 = 67.4;                  // Hubble constant [km/s/Mpc]
+    
+    // 26-layer compression
+    int active_layers = 26;             // Number of active compression layers
+    double layer_coupling[26] = {1.0};  // Per-layer coupling factors
+    
+    // Learning / optimization
+    double learning_rate = 0.001;       // For self-optimization
+    bool auto_optimize = false;
+    
+    // Metadata
+    uint64_t last_updated = 0;
+    std::string update_source;
+};
+
+// ============================================================================
+// SELF-SIMULATE: Time Evolution (v3.1)
+// ============================================================================
+
+/**
+ * @struct SimulationConfig
+ * @brief Configuration for time evolution simulation
+ */
+struct SimulationConfig {
+    std::string system_name;
+    double r_start = 1e6;               // Starting radius [m]
+    double r_end = 1e12;                // Ending radius [m]
+    double t_start = 0.0;               // Start time [s]
+    double t_end = 3.156e7;             // End time [s] (1 year default)
+    double dt = 3600.0;                 // Time step [s] (1 hour default)
+    double dr = 0.0;                    // Radial increment (0 = fixed r)
+    int frames = 1000;                  // Number of output frames
+    bool stream_to_vr = true;           // Stream results to VR
+    bool save_to_file = false;          // Save to CSV/JSON
+    std::string output_path;
+    
+    // Derived
+    int total_steps() const { 
+        return static_cast<int>((t_end - t_start) / dt); 
+    }
+    int steps_per_frame() const { 
+        return std::max(1, total_steps() / frames); 
+    }
+};
+
+/**
+ * @struct SimulationFrame
+ * @brief Single frame of simulation output (streamed to VR)
+ */
+struct SimulationFrame {
+    uint64_t frame_number = 0;
+    double t = 0.0;                     // Current time [s]
+    double r = 0.0;                     // Current radius [m]
+    double theta = 0.0;                 // Current angle [rad]
+    
+    // Field values at this point
+    double F_U = 0.0;
+    double Ug1 = 0.0, Ug2 = 0.0, Ug3 = 0.0, Ug4 = 0.0;
+    double Um = 0.0, Ubi = 0.0;
+    double g_compressed = 0.0;
+    
+    // Derived quantities
+    double dF_dt = 0.0;                 // Field time derivative
+    double orbital_velocity = 0.0;      // v = sqrt(F_U * r)
+    double escape_velocity = 0.0;       // v_esc = sqrt(2 * F_U * r)
+    
+    // Progress
+    double progress = 0.0;              // 0-1 completion
+    bool is_final = false;
+};
+
 /**
  * @class PhysicsService
  * @brief Headless physics computation service
@@ -176,6 +316,103 @@ public:
     using FieldHandler = std::function<FieldResponse(const FieldRequest&)>;
     void register_system_handler(const std::string& system_name, FieldHandler handler);
     
+    // ========================================================================
+    // SELF-EXPAND: Dynamic Term Registration (v3.1)
+    // ========================================================================
+    
+    /**
+     * @brief Register a new physics term at runtime (from VR or external)
+     * @param term The dynamic term to register
+     * @return true if registered successfully
+     */
+    bool onRegisterTerm(const DynamicTerm& term);
+    
+    /**
+     * @brief Unregister a dynamic term by name
+     * @param name Term name to remove
+     * @return true if found and removed
+     */
+    bool unregisterTerm(const std::string& name);
+    
+    /**
+     * @brief Get all registered dynamic terms
+     * @return Map of term name -> DynamicTerm
+     */
+    std::map<std::string, DynamicTerm> getDynamicTerms() const;
+    
+    /**
+     * @brief Calculate total contribution from dynamic terms at (r, t)
+     */
+    double evaluateDynamicTerms(double r, double t) const;
+    
+    // Callback for term registration events
+    using TermCallback = std::function<void(const DynamicTerm&, bool registered)>;
+    void setTermCallback(TermCallback callback) { term_callback_ = std::move(callback); }
+    
+    // ========================================================================
+    // SELF-UPDATE: Runtime Parameter Tuning (v3.1)
+    // ========================================================================
+    
+    /**
+     * @brief Update a calibrated parameter at runtime
+     * @param param_name Parameter name (kappa, SSq, beta_i, etc.)
+     * @param value New value
+     * @param source Update source ("VR", "optimization", "user")
+     * @return true if parameter exists and was updated
+     */
+    bool onUpdateParameter(const std::string& param_name, double value, 
+                          const std::string& source = "external");
+    
+    /**
+     * @brief Get current value of a calibrated parameter
+     */
+    double getParameter(const std::string& param_name) const;
+    
+    /**
+     * @brief Get all calibrated parameters
+     */
+    CalibratedParameters getParameters() const;
+    
+    /**
+     * @brief Reset parameters to validated defaults
+     */
+    void resetParameters();
+    
+    // Callback for parameter updates
+    using ParameterCallback = std::function<void(const std::string& name, double old_val, double new_val)>;
+    void setParameterCallback(ParameterCallback callback) { param_callback_ = std::move(callback); }
+    
+    // ========================================================================
+    // SELF-SIMULATE: Time Evolution (v3.1)
+    // ========================================================================
+    
+    /**
+     * @brief Start a time evolution simulation
+     * @param config Simulation configuration
+     * @return Simulation ID (for tracking/cancellation)
+     */
+    uint64_t startSimulation(const SimulationConfig& config);
+    
+    /**
+     * @brief Stop an active simulation
+     * @param sim_id Simulation ID from startSimulation
+     */
+    void stopSimulation(uint64_t sim_id);
+    
+    /**
+     * @brief Check if simulation is running
+     */
+    bool isSimulationRunning(uint64_t sim_id) const;
+    
+    /**
+     * @brief Get simulation progress (0-1)
+     */
+    double getSimulationProgress(uint64_t sim_id) const;
+    
+    // Callback for simulation frame output (streamed to VR)
+    using FrameCallback = std::function<void(const SimulationFrame&)>;
+    void setFrameCallback(FrameCallback callback) { frame_callback_ = std::move(callback); }
+    
 private:
     ServiceConfig config_;
     std::atomic<bool> running_{false};
@@ -196,6 +433,32 @@ private:
     // Custom handlers
     std::unordered_map<std::string, FieldHandler> system_handlers_;
     
+    // ========== Self-Expand: Dynamic Terms ==========
+    mutable std::shared_mutex terms_mutex_;
+    std::map<std::string, DynamicTerm> dynamic_terms_;
+    TermCallback term_callback_;
+    
+    // ========== Self-Update: Calibrated Parameters ==========
+    mutable std::shared_mutex params_mutex_;
+    CalibratedParameters calibrated_params_;
+    ParameterCallback param_callback_;
+    
+    // ========== Self-Simulate: Time Evolution ==========
+    struct SimulationState {
+        SimulationConfig config;
+        std::atomic<bool> running{false};
+        std::atomic<double> progress{0.0};
+        std::thread thread;
+        uint64_t start_time = 0;
+    };
+    mutable std::mutex sim_mutex_;
+    std::map<uint64_t, std::unique_ptr<SimulationState>> simulations_;
+    std::atomic<uint64_t> next_sim_id_{1};
+    FrameCallback frame_callback_;
+    
+    // Simulation worker
+    void simulation_loop(uint64_t sim_id);
+    
     // Internal methods
     void worker_loop();
     void handle_calculate_field(const IPC::MessageHeader& header, 
@@ -206,6 +469,8 @@ private:
                                 const std::vector<uint8_t>& payload);
     void handle_vr_frame_update(const IPC::MessageHeader& header,
                                const std::vector<uint8_t>& payload);
+    void handle_start_simulation(const IPC::MessageHeader& header,
+                                const std::vector<uint8_t>& payload);
     
     // Physics calculations (delegates to MAIN_1_CoAnQi or Python)
     FieldResponse calculate_uqff(const FieldRequest& request);
