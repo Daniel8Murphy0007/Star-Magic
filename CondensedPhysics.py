@@ -92426,6 +92426,1385 @@ class ExtendedEnvironmentalForcesCalculator:
         }
 
 
+# =============================================================================
+# PART 5: ASTROPHYSICAL PROCESS CALCULATORS (Triadic Clone_2 Analysis)
+# Pulsar Wind Nebula, Galaxy Merger Dynamics, Supernova Feedback,
+# Radiation Pressure, Stellar Wind Feedback, Gravitational Lensing,
+# Magnetic Filament Support
+# =============================================================================
+
+class PulsarWindNebulaCalculator:
+    """
+    Pulsar Wind Nebula Calculator for supernova remnant dynamics.
+    
+    Master Equations:
+    - F_wind = P_pulsar / (4π r²) × (1 + v_shock/c) : Wind pressure
+    - a_wind = F_wind / ρ : Wind-driven acceleration
+    - M_mag = (q × v × B) / m_e : Magnetic acceleration of electrons
+    - g_PWN = g_grav × (1 + H×t) × (1 + f_TRZ) + a_wind + M_mag
+    
+    Based on Crab Nebula analysis (pulsar 30.2 Hz, ~5×10³¹ W luminosity).
+    
+    Reference: Document 24 (Crab Nebula) lines 8076-8200
+    """
+    
+    # Physical constants
+    G = 6.674e-11       # m³/(kg·s²)
+    c = 2.998e8         # m/s
+    q_e = 1.602e-19     # C (electron charge)
+    m_e = 9.109e-31     # kg (electron mass)
+    M_sun = 1.989e30    # kg
+    ly = 9.461e15       # m (light-year)
+    
+    def __init__(self):
+        """Initialize Pulsar Wind Nebula calculator."""
+        self.f_TRZ = 0.1  # Time-reversal zone correction
+    
+    def compute_F_wind(self, P_pulsar: float, r: float, v_shock: float) -> dict:
+        """
+        Compute pulsar wind pressure force.
+        F_wind = P_pulsar / (4π r²) × (1 + v_shock/c)
+        
+        Args:
+            P_pulsar: Pulsar luminosity/power (W)
+            r: Distance from pulsar (m)
+            v_shock: Shock velocity (m/s)
+            
+        Returns:
+            dict with wind force
+        """
+        # Wind pressure (N/m²)
+        F_wind = (P_pulsar / (4 * math.pi * r**2)) * (1 + v_shock / self.c)
+        
+        return {
+            'F_wind': F_wind,
+            'F_wind_N_m2': F_wind,
+            'P_pulsar': P_pulsar,
+            'r': r,
+            'v_shock': v_shock,
+            'relativistic_factor': 1 + v_shock / self.c,
+            'equation': 'F_wind = P_pulsar/(4πr²) × (1 + v_shock/c)'
+        }
+    
+    def compute_a_wind(self, F_wind: float, rho: float, scale_factor: float = 1e-12) -> dict:
+        """
+        Compute wind-driven acceleration.
+        a_wind = F_wind / ρ × scale_factor
+        
+        Args:
+            F_wind: Wind pressure (N/m²)
+            rho: Gas density (kg/m³)
+            scale_factor: Macroscopic scaling (default 1e-12)
+            
+        Returns:
+            dict with wind acceleration
+        """
+        if rho > 0:
+            a_wind_raw = F_wind / rho
+            a_wind = a_wind_raw * scale_factor
+        else:
+            a_wind_raw = 0
+            a_wind = 0
+        
+        return {
+            'a_wind': a_wind,
+            'a_wind_raw': a_wind_raw,
+            'F_wind': F_wind,
+            'rho': rho,
+            'scale_factor': scale_factor,
+            'equation': 'a_wind = F_wind/ρ × scale'
+        }
+    
+    def compute_M_mag(self, v: float, B: float, scale_factor: float = 1e-12) -> dict:
+        """
+        Compute magnetic acceleration of charged particles.
+        M_mag = (q × v × B) / m_e × scale
+        
+        Args:
+            v: Particle velocity (m/s)
+            B: Magnetic field (T)
+            scale_factor: Macroscopic scaling
+            
+        Returns:
+            dict with magnetic acceleration
+        """
+        F_mag = self.q_e * v * B
+        M_mag_raw = F_mag / self.m_e
+        M_mag = M_mag_raw * scale_factor
+        
+        return {
+            'M_mag': M_mag,
+            'M_mag_raw': M_mag_raw,
+            'F_magnetic': F_mag,
+            'v': v,
+            'B': B,
+            'equation': 'M_mag = (q×v×B)/m_e'
+        }
+    
+    def compute_g_PWN(self, M: float, r: float, t: float,
+                       P_pulsar: float, v_shock: float,
+                       rho: float, B: float, z: float = 0.0015) -> dict:
+        """
+        Compute complete pulsar wind nebula gravity.
+        g_PWN = g_grav × (1 + H×t) × (1 + f_TRZ) + a_wind + M_mag
+        
+        Args:
+            M: Nebula mass (kg)
+            r: Radius (m)
+            t: Time since supernova (s)
+            P_pulsar: Pulsar power (W)
+            v_shock: Shock velocity (m/s)
+            rho: Gas density (kg/m³)
+            B: Magnetic field (T)
+            z: Redshift
+            
+        Returns:
+            dict with PWN gravity
+        """
+        # Gravitational base
+        g_grav = self.G * M / r**2
+        
+        # Hubble expansion
+        H_0 = 2.27e-18  # s⁻¹
+        H_z = H_0 * math.sqrt(0.3 * (1 + z)**3 + 0.7)
+        expansion_factor = 1 + H_z * t
+        
+        # Components
+        F_wind_result = self.compute_F_wind(P_pulsar, r, v_shock)
+        a_wind_result = self.compute_a_wind(F_wind_result['F_wind'], rho)
+        M_mag_result = self.compute_M_mag(v_shock, B)
+        
+        # Final equation
+        g_PWN = g_grav * expansion_factor * (1 + self.f_TRZ) + a_wind_result['a_wind'] + M_mag_result['M_mag']
+        
+        return {
+            'g_PWN': g_PWN,
+            'g_grav': g_grav,
+            'expansion_factor': expansion_factor,
+            'f_TRZ': self.f_TRZ,
+            'F_wind': F_wind_result,
+            'a_wind': a_wind_result,
+            'M_mag': M_mag_result,
+            'equation': 'g_PWN = g_grav × (1+H×t) × (1+f_TRZ) + a_wind + M_mag'
+        }
+    
+    # Crab Nebula specific parameters
+    CRAB_PARAMS = {
+        'M': 4.6 * 1.989e30,           # kg (pulsar + ejecta)
+        'M_pulsar': 1.4 * 1.989e30,    # kg
+        'M_ejecta': 3.2 * 1.989e30,    # kg
+        'r': 5.2e16,                    # m (5.5 ly radius)
+        'P_pulsar': 5e31,              # W (pulsar luminosity)
+        'f_spin': 30.2,                # Hz (pulsar rotation)
+        'v_shock': 1.5e6,              # m/s (expansion velocity)
+        'rho': 1e-21,                  # kg/m³ (filament density)
+        'B_average': 1e-8,             # T (nebula average)
+        'B_near_pulsar': 1e-4,         # T (near pulsar)
+        't_since_SN': 971 * 3.156e7,   # s (since 1054 AD)
+        'z': 0.0015,
+        'distance_ly': 6500,
+    }
+    
+    def solve_crab(self, params: dict = None) -> dict:
+        """
+        Solve Crab Nebula specific model.
+        
+        Args:
+            params: Override Crab parameters
+            
+        Returns:
+            dict with Crab Nebula calculations
+        """
+        p = self.CRAB_PARAMS.copy()
+        if params:
+            p.update(params)
+        
+        return {
+            'g_PWN': self.compute_g_PWN(
+                p['M'], p['r'], p['t_since_SN'],
+                p['P_pulsar'], p['v_shock'],
+                p['rho'], p['B_average'], p['z']
+            ),
+            'parameters': p,
+            'framework': 'UQFF_CrabNebula_v1.0'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Pulsar Wind Nebula solution.
+        
+        Args:
+            params: Dictionary with M, r, t, P_pulsar, v_shock, rho, B
+            
+        Returns:
+            dict with all PWN calculations
+        """
+        params = params or {}
+        M = params.get('M', 4.6 * self.M_sun)
+        r = params.get('r', 5.2e16)
+        t = params.get('t', 971 * 3.156e7)
+        P_pulsar = params.get('P_pulsar', 5e31)
+        v_shock = params.get('v_shock', 1.5e6)
+        rho = params.get('rho', 1e-21)
+        B = params.get('B', 1e-8)
+        
+        return {
+            'g_PWN': self.compute_g_PWN(M, r, t, P_pulsar, v_shock, rho, B),
+            'framework': 'UQFF_PulsarWindNebula_v1.0'
+        }
+
+
+class GalaxyMergerDynamicsCalculator:
+    """
+    Galaxy Merger Dynamics Calculator.
+    
+    Master Equations:
+    - M_coll(t) = M₀ × (1 - e^(-t/τ_merge)) : Coalescence factor
+    - M_merge(t) = SFR × t / M_initial : Mass growth from merging
+    - M(t) = M_initial × (1 + M_merge(t)) : Time-evolved mass
+    - g_merger = g_base × (1 - M_coll(t)) : Effective gravity during merger
+    
+    Based on Antennae Galaxies (NGC 4038/4039) and HUDF analysis.
+    
+    Reference: Document 14 (Antennae), Document 18 (HUDF) lines 112-125, 7269-7307
+    """
+    
+    # Physical constants
+    G = 6.674e-11       # m³/(kg·s²)
+    M_sun = 1.989e30    # kg
+    yr = 3.156e7        # s
+    Myr = 3.156e13      # s
+    Gyr = 3.156e16      # s
+    kpc = 3.086e19      # m
+    
+    def __init__(self):
+        """Initialize Galaxy Merger calculator."""
+        pass
+    
+    def compute_M_coll(self, M_0: float, t: float, tau_merge: float) -> dict:
+        """
+        Compute merger coalescence factor.
+        M_coll(t) = M₀ × (1 - e^(-t/τ_merge))
+        
+        Args:
+            M_0: Initial coalescence amplitude (0-1)
+            t: Time since merger start (s)
+            tau_merge: Merger timescale (s)
+            
+        Returns:
+            dict with coalescence factor
+        """
+        if tau_merge > 0:
+            x = t / tau_merge
+            M_coll = M_0 * (1 - math.exp(-x))
+        else:
+            M_coll = 0
+        
+        # Effective gravity modifier
+        gravity_modifier = 1 - M_coll
+        
+        return {
+            'M_coll': M_coll,
+            'gravity_modifier': gravity_modifier,
+            'M_0': M_0,
+            't': t,
+            't_Myr': t / self.Myr,
+            'tau_merge': tau_merge,
+            'tau_merge_Myr': tau_merge / self.Myr,
+            'merger_progress': M_coll / M_0 if M_0 > 0 else 0,
+            'equation': 'M_coll(t) = M₀ × (1 - e^(-t/τ_merge))'
+        }
+    
+    def compute_M_merge(self, SFR: float, t: float, M_initial: float) -> dict:
+        """
+        Compute mass growth from star formation during merger.
+        M_merge(t) = SFR × t / M_initial
+        
+        Args:
+            SFR: Star formation rate (M_sun/yr)
+            t: Time (s)
+            M_initial: Initial galaxy mass (M_sun or kg)
+            
+        Returns:
+            dict with merger mass growth
+        """
+        # Convert units
+        if SFR < 1e10:  # In M_sun/yr
+            SFR_kg_s = SFR * self.M_sun / self.yr
+        else:
+            SFR_kg_s = SFR
+        
+        if M_initial < 1e20:  # In M_sun
+            M_initial_kg = M_initial * self.M_sun
+        else:
+            M_initial_kg = M_initial
+        
+        M_merge = SFR_kg_s * t / M_initial_kg
+        
+        return {
+            'M_merge': M_merge,
+            'SFR': SFR,
+            'SFR_kg_s': SFR_kg_s,
+            't': t,
+            'M_initial': M_initial,
+            'mass_growth_factor': 1 + M_merge,
+            'equation': 'M_merge(t) = SFR × t / M_initial'
+        }
+    
+    def compute_M_evolved(self, M_initial: float, M_merge: float) -> dict:
+        """
+        Compute evolved galaxy mass.
+        M(t) = M_initial × (1 + M_merge(t))
+        
+        Args:
+            M_initial: Initial mass (kg or M_sun)
+            M_merge: Merger growth factor
+            
+        Returns:
+            dict with evolved mass
+        """
+        if M_initial < 1e20:
+            M_initial_kg = M_initial * self.M_sun
+        else:
+            M_initial_kg = M_initial
+        
+        M_evolved = M_initial_kg * (1 + M_merge)
+        delta_M = M_initial_kg * M_merge
+        
+        return {
+            'M_evolved': M_evolved,
+            'M_evolved_solar': M_evolved / self.M_sun,
+            'M_initial': M_initial_kg,
+            'delta_M': delta_M,
+            'growth_factor': 1 + M_merge,
+            'equation': 'M(t) = M_initial × (1 + M_merge)'
+        }
+    
+    def compute_merger_timescale(self, M_1: float, M_2: float, 
+                                   d: float, v_rel: float) -> dict:
+        """
+        Estimate merger timescale.
+        τ_merge ≈ d/v × f(M_1, M_2)
+        
+        Args:
+            M_1: Primary mass (M_sun or kg)
+            M_2: Secondary mass (M_sun or kg)
+            d: Separation (m or kpc)
+            v_rel: Relative velocity (m/s)
+            
+        Returns:
+            dict with merger timescale
+        """
+        # Convert if needed
+        if d < 1e10:
+            d_m = d * self.kpc
+        else:
+            d_m = d
+        
+        # Simple dynamical timescale
+        t_dyn = d_m / v_rel if v_rel > 0 else float('inf')
+        
+        # Mass ratio factor (more massive pairs merge slower)
+        mass_ratio = M_1 / M_2 if M_2 > 0 else 1
+        merger_factor = 1 + 0.5 * math.log10(max(mass_ratio, 0.1))
+        
+        tau_merge = t_dyn * merger_factor
+        
+        return {
+            'tau_merge': tau_merge,
+            'tau_merge_Myr': tau_merge / self.Myr,
+            'tau_merge_Gyr': tau_merge / self.Gyr,
+            't_dyn': t_dyn,
+            'mass_ratio': mass_ratio,
+            'equation': 'τ_merge ≈ d/v × f(mass_ratio)'
+        }
+    
+    # Antennae Galaxies parameters
+    ANTENNAE_PARAMS = {
+        'M_total': 2e11,           # M_sun
+        'd': 50,                    # kpc (separation)
+        'tau_merge': 400e6 * 3.156e7,  # s (400 Myr)
+        't': 300e6 * 3.156e7,      # s (300 Myr since interaction)
+        'M_coll_0': 0.5,           # Coalescence amplitude
+        'SFR': 20,                 # M_sun/yr
+        'z': 0.0055,
+    }
+    
+    def solve_antennae(self, params: dict = None) -> dict:
+        """
+        Solve Antennae Galaxies specific model.
+        """
+        p = self.ANTENNAE_PARAMS.copy()
+        if params:
+            p.update(params)
+        
+        M_coll_result = self.compute_M_coll(p['M_coll_0'], p['t'], p['tau_merge'])
+        M_merge_result = self.compute_M_merge(p['SFR'], p['t'], p['M_total'])
+        
+        return {
+            'M_coll': M_coll_result,
+            'M_merge': M_merge_result,
+            'M_evolved': self.compute_M_evolved(p['M_total'], M_merge_result['M_merge']),
+            'parameters': p,
+            'framework': 'UQFF_Antennae_v1.0'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Galaxy Merger solution.
+        """
+        params = params or {}
+        M_0 = params.get('M_coll_0', 0.5)
+        t = params.get('t', 300e6 * self.yr)
+        tau_merge = params.get('tau_merge', 400e6 * self.yr)
+        
+        return {
+            'M_coll': self.compute_M_coll(M_0, t, tau_merge),
+            'framework': 'UQFF_GalaxyMerger_v1.0'
+        }
+
+
+class SupernovaFeedbackCalculator:
+    """
+    Supernova Feedback Calculator.
+    
+    Master Equations:
+    - M_SN(t) = M_SN_0 × e^(-t/τ_SN) : Supernova mass loss decay
+    - a_SN = G × M_SN(t) / r² : Gravitational acceleration from SN ejecta
+    - E_SN = M_SN × c² : Supernova energy release
+    - F_sn = dM_SN/dt × v_ejecta : Supernova momentum feedback
+    
+    Based on NGC 2525 (SN 2018gv) and NGC 1792 analysis.
+    
+    Reference: Lines 6680-6882 (M_SN equations)
+    """
+    
+    # Physical constants
+    G = 6.674e-11       # m³/(kg·s²)
+    c = 2.998e8         # m/s
+    M_sun = 1.989e30    # kg
+    yr = 3.156e7        # s
+    
+    # Supernova types
+    SN_TYPES = {
+        'Ia': {'M_ejecta': 1.4, 'tau_SN': 1.0, 'E_typical': 1e44},  # Chandrasekhar mass
+        'II': {'M_ejecta': 10.0, 'tau_SN': 0.5, 'E_typical': 1e46},
+        'Ibc': {'M_ejecta': 3.0, 'tau_SN': 0.3, 'E_typical': 1e45},
+    }
+    
+    def __init__(self):
+        """Initialize Supernova Feedback calculator."""
+        pass
+    
+    def compute_M_SN(self, M_SN_0: float, t: float, tau_SN: float) -> dict:
+        """
+        Compute time-decaying supernova mass.
+        M_SN(t) = M_SN_0 × e^(-t/τ_SN)
+        
+        Args:
+            M_SN_0: Initial ejecta mass (kg or M_sun)
+            t: Time since SN (s or yr)
+            tau_SN: Decay timescale (s or yr)
+            
+        Returns:
+            dict with SN mass
+        """
+        # Convert units
+        if M_SN_0 < 1e10:
+            M_SN_0_kg = M_SN_0 * self.M_sun
+        else:
+            M_SN_0_kg = M_SN_0
+        
+        if tau_SN < 1e6:  # Assume years
+            tau_SN_s = tau_SN * self.yr
+        else:
+            tau_SN_s = tau_SN
+        
+        if t < 1e6:  # Assume years
+            t_s = t * self.yr
+        else:
+            t_s = t
+        
+        M_SN = M_SN_0_kg * math.exp(-t_s / tau_SN_s)
+        mass_lost = M_SN_0_kg - M_SN
+        
+        return {
+            'M_SN': M_SN,
+            'M_SN_solar': M_SN / self.M_sun,
+            'M_SN_0': M_SN_0_kg,
+            'mass_lost': mass_lost,
+            'decay_factor': math.exp(-t_s / tau_SN_s),
+            't': t_s,
+            't_yr': t_s / self.yr,
+            'tau_SN': tau_SN_s,
+            'equation': 'M_SN(t) = M_SN_0 × e^(-t/τ_SN)'
+        }
+    
+    def compute_a_SN(self, M_SN: float, r: float) -> dict:
+        """
+        Compute gravitational acceleration from SN ejecta.
+        a_SN = G × M_SN / r²
+        
+        Args:
+            M_SN: Current SN mass (kg)
+            r: Distance from SN (m)
+            
+        Returns:
+            dict with SN acceleration
+        """
+        a_SN = self.G * M_SN / r**2 if r > 0 else 0
+        
+        return {
+            'a_SN': a_SN,
+            'M_SN': M_SN,
+            'r': r,
+            'equation': 'a_SN = G×M_SN/r²'
+        }
+    
+    def compute_E_SN(self, M_SN: float, efficiency: float = 0.001) -> dict:
+        """
+        Compute supernova energy release.
+        E_SN = M_SN × c² × efficiency
+        
+        Args:
+            M_SN: Mass converted to energy (kg)
+            efficiency: Mass-energy conversion efficiency
+            
+        Returns:
+            dict with SN energy
+        """
+        E_SN = M_SN * self.c**2 * efficiency
+        
+        return {
+            'E_SN': E_SN,
+            'E_SN_erg': E_SN * 1e7,  # Convert J to erg
+            'E_SN_foe': E_SN / 1e44,  # 1 foe = 10^51 erg = 10^44 J
+            'M_SN': M_SN,
+            'efficiency': efficiency,
+            'equation': 'E_SN = M_SN × c² × η'
+        }
+    
+    def compute_F_sn(self, dM_dt: float, v_ejecta: float) -> dict:
+        """
+        Compute supernova momentum feedback.
+        F_sn = dM/dt × v_ejecta
+        
+        Args:
+            dM_dt: Mass ejection rate (kg/s)
+            v_ejecta: Ejecta velocity (m/s)
+            
+        Returns:
+            dict with SN feedback force
+        """
+        F_sn = dM_dt * v_ejecta
+        
+        return {
+            'F_sn': F_sn,
+            'dM_dt': dM_dt,
+            'dM_dt_solar_yr': dM_dt / self.M_sun * self.yr,
+            'v_ejecta': v_ejecta,
+            'v_ejecta_km_s': v_ejecta / 1000,
+            'equation': 'F_sn = dM/dt × v_ejecta'
+        }
+    
+    def solve_by_type(self, sn_type: str = 'Ia', t: float = 7,
+                       r: float = 1e20) -> dict:
+        """
+        Solve for specific SN type.
+        
+        Args:
+            sn_type: 'Ia', 'II', or 'Ibc'
+            t: Time since SN (years)
+            r: Distance (m)
+            
+        Returns:
+            dict with SN calculations
+        """
+        params = self.SN_TYPES.get(sn_type, self.SN_TYPES['Ia'])
+        
+        M_SN_result = self.compute_M_SN(params['M_ejecta'], t, params['tau_SN'])
+        a_SN_result = self.compute_a_SN(M_SN_result['M_SN'], r)
+        E_SN_result = self.compute_E_SN(params['M_ejecta'] * self.M_sun)
+        
+        return {
+            'type': sn_type,
+            'M_SN': M_SN_result,
+            'a_SN': a_SN_result,
+            'E_SN': E_SN_result,
+            'framework': f'UQFF_SN{sn_type}_v1.0'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Supernova Feedback solution.
+        """
+        params = params or {}
+        M_SN_0 = params.get('M_SN_0', 1.4)
+        t = params.get('t', 7)
+        tau_SN = params.get('tau_SN', 1)
+        r = params.get('r', 1e20)
+        
+        M_SN_result = self.compute_M_SN(M_SN_0, t, tau_SN)
+        
+        return {
+            'M_SN': M_SN_result,
+            'a_SN': self.compute_a_SN(M_SN_result['M_SN'], r),
+            'framework': 'UQFF_SupernovaFeedback_v1.0'
+        }
+
+
+class RadiationPressureCalculator:
+    """
+    Radiation Pressure Calculator for stellar feedback.
+    
+    Master Equations:
+    - P_rad = L / (4π r² c) × (ρ / m_H) : Radiation pressure
+    - a_rad = P_rad / ρ : Radiation-driven acceleration
+    - F_rad = L × σ_T / (4π r² c × m_p) : Thomson scattering force
+    - L_Edd = 4π G M c / σ_T : Eddington luminosity
+    
+    Based on Horsehead Nebula, Orion Nebula, Lagoon Nebula analysis.
+    
+    Reference: Lines 116-117, 432-453, 7358-7384
+    """
+    
+    # Physical constants
+    G = 6.674e-11       # m³/(kg·s²)
+    c = 2.998e8         # m/s
+    m_H = 1.673e-27     # kg (hydrogen mass)
+    m_p = 1.673e-27     # kg (proton mass)
+    sigma_T = 6.652e-29 # m² (Thomson cross section)
+    L_sun = 3.826e26    # W
+    M_sun = 1.989e30    # kg
+    
+    def __init__(self):
+        """Initialize Radiation Pressure calculator."""
+        pass
+    
+    def compute_P_rad(self, L: float, r: float, rho: float = None) -> dict:
+        """
+        Compute radiation pressure.
+        P_rad = L / (4π r² c)
+        If rho given: P_rad_effective = P_rad × (ρ / m_H)
+        
+        Args:
+            L: Luminosity (W or L_sun)
+            r: Distance from source (m)
+            rho: Gas density (kg/m³, optional)
+            
+        Returns:
+            dict with radiation pressure
+        """
+        # Convert luminosity if needed
+        if L < 1e20:
+            L_W = L * self.L_sun
+        else:
+            L_W = L
+        
+        # Base radiation pressure
+        P_rad = L_W / (4 * math.pi * r**2 * self.c)
+        
+        # Density-weighted effective pressure
+        if rho is not None and rho > 0:
+            P_rad_effective = P_rad * (rho / self.m_H)
+            n_H = rho / self.m_H  # Number density
+        else:
+            P_rad_effective = P_rad
+            n_H = None
+        
+        return {
+            'P_rad': P_rad,
+            'P_rad_Pa': P_rad,
+            'P_rad_effective': P_rad_effective,
+            'L': L_W,
+            'L_solar': L_W / self.L_sun,
+            'r': r,
+            'rho': rho,
+            'n_H': n_H,
+            'equation': 'P_rad = L/(4πr²c)'
+        }
+    
+    def compute_a_rad(self, P_rad: float, rho: float) -> dict:
+        """
+        Compute radiation-driven acceleration.
+        a_rad = P_rad / ρ
+        
+        Args:
+            P_rad: Radiation pressure (Pa)
+            rho: Gas density (kg/m³)
+            
+        Returns:
+            dict with radiation acceleration
+        """
+        a_rad = P_rad / rho if rho > 0 else 0
+        
+        return {
+            'a_rad': a_rad,
+            'P_rad': P_rad,
+            'rho': rho,
+            'equation': 'a_rad = P_rad/ρ'
+        }
+    
+    def compute_L_Eddington(self, M: float) -> dict:
+        """
+        Compute Eddington luminosity.
+        L_Edd = 4π G M c / σ_T
+        
+        Args:
+            M: Mass (kg or M_sun)
+            
+        Returns:
+            dict with Eddington luminosity
+        """
+        if M < 1e20:
+            M_kg = M * self.M_sun
+        else:
+            M_kg = M
+        
+        L_Edd = 4 * math.pi * self.G * M_kg * self.c / self.sigma_T
+        
+        return {
+            'L_Eddington': L_Edd,
+            'L_Edd_solar': L_Edd / self.L_sun,
+            'M': M_kg,
+            'M_solar': M_kg / self.M_sun,
+            'equation': 'L_Edd = 4πGMc/σ_T'
+        }
+    
+    def compute_Eddington_ratio(self, L: float, M: float) -> dict:
+        """
+        Compute ratio of luminosity to Eddington limit.
+        
+        Args:
+            L: Actual luminosity (W or L_sun)
+            M: Mass (kg or M_sun)
+            
+        Returns:
+            dict with Eddington ratio
+        """
+        L_Edd_result = self.compute_L_Eddington(M)
+        
+        if L < 1e20:
+            L_W = L * self.L_sun
+        else:
+            L_W = L
+        
+        ratio = L_W / L_Edd_result['L_Eddington']
+        
+        if ratio > 1:
+            regime = 'super-Eddington (radiation dominated)'
+        elif ratio > 0.1:
+            regime = 'sub-Eddington (radiation significant)'
+        else:
+            regime = 'low luminosity (gravity dominated)'
+        
+        return {
+            'Eddington_ratio': ratio,
+            'L': L_W,
+            'L_Eddington': L_Edd_result['L_Eddington'],
+            'regime': regime
+        }
+    
+    # System-specific parameters
+    SYSTEMS = {
+        'Sigma_Orionis': {'L': 1e5, 'M': 18, 'r': 1e17},
+        'O_type_star': {'L': 1e5, 'M': 30, 'r': 1e16},
+        'B_type_star': {'L': 1e3, 'M': 10, 'r': 1e16},
+    }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Radiation Pressure solution.
+        """
+        params = params or {}
+        L = params.get('L', 1e5)  # L_sun
+        r = params.get('r', 1e17)
+        rho = params.get('rho', 1e-20)
+        M = params.get('M', 30)  # M_sun
+        
+        P_rad_result = self.compute_P_rad(L, r, rho)
+        
+        return {
+            'P_rad': P_rad_result,
+            'a_rad': self.compute_a_rad(P_rad_result['P_rad'], rho),
+            'L_Eddington': self.compute_L_Eddington(M),
+            'Eddington_ratio': self.compute_Eddington_ratio(L, M),
+            'framework': 'UQFF_RadiationPressure_v1.0'
+        }
+
+
+class StellarWindFeedbackCalculator:
+    """
+    Stellar Wind Feedback Calculator.
+    
+    Master Equations:
+    - W_stellar = ρ × v_wind² : Wind ram pressure
+    - P_outflow = (M_dot × v_wind) / A : Outflow pressure
+    - E_wind = ½ × M_dot × v_wind² × t : Wind kinetic energy
+    - a_wind = W_stellar / ρ_ambient : Wind-driven acceleration
+    
+    Based on M16, NGC 3603, Eagle Nebula, Young Stars Outflows analysis.
+    
+    Reference: Lines 322, 474-475, 6285
+    """
+    
+    # Physical constants
+    M_sun = 1.989e30    # kg
+    yr = 3.156e7        # s
+    km = 1000           # m
+    pc = 3.086e16       # m
+    
+    def __init__(self):
+        """Initialize Stellar Wind Feedback calculator."""
+        pass
+    
+    def compute_W_stellar(self, rho: float, v_wind: float) -> dict:
+        """
+        Compute stellar wind ram pressure.
+        W_stellar = ρ × v_wind²
+        
+        Args:
+            rho: Gas density (kg/m³)
+            v_wind: Wind velocity (m/s)
+            
+        Returns:
+            dict with wind pressure
+        """
+        W_stellar = rho * v_wind**2
+        
+        return {
+            'W_stellar': W_stellar,
+            'W_stellar_Pa': W_stellar,
+            'rho': rho,
+            'v_wind': v_wind,
+            'v_wind_km_s': v_wind / self.km,
+            'equation': 'W_stellar = ρ × v_wind²'
+        }
+    
+    def compute_P_outflow(self, M_dot: float, v_wind: float, A: float) -> dict:
+        """
+        Compute outflow pressure.
+        P_outflow = (M_dot × v_wind) / A
+        
+        Args:
+            M_dot: Mass loss rate (kg/s or M_sun/yr)
+            v_wind: Wind velocity (m/s)
+            A: Cross-sectional area (m²)
+            
+        Returns:
+            dict with outflow pressure
+        """
+        # Convert M_dot if needed
+        if M_dot < 1e10:  # Assume M_sun/yr
+            M_dot_kg_s = M_dot * self.M_sun / self.yr
+        else:
+            M_dot_kg_s = M_dot
+        
+        P_outflow = (M_dot_kg_s * v_wind) / A if A > 0 else 0
+        
+        return {
+            'P_outflow': P_outflow,
+            'P_outflow_Pa': P_outflow,
+            'M_dot': M_dot,
+            'M_dot_kg_s': M_dot_kg_s,
+            'v_wind': v_wind,
+            'A': A,
+            'equation': 'P_outflow = (M_dot × v_wind)/A'
+        }
+    
+    def compute_E_wind(self, M_dot: float, v_wind: float, t: float) -> dict:
+        """
+        Compute wind kinetic energy.
+        E_wind = ½ × M_dot × v_wind² × t
+        
+        Args:
+            M_dot: Mass loss rate (kg/s or M_sun/yr)
+            v_wind: Wind velocity (m/s)
+            t: Time (s)
+            
+        Returns:
+            dict with wind energy
+        """
+        if M_dot < 1e10:
+            M_dot_kg_s = M_dot * self.M_sun / self.yr
+        else:
+            M_dot_kg_s = M_dot
+        
+        E_wind = 0.5 * M_dot_kg_s * v_wind**2 * t
+        
+        return {
+            'E_wind': E_wind,
+            'E_wind_erg': E_wind * 1e7,
+            'M_dot': M_dot_kg_s,
+            'v_wind': v_wind,
+            't': t,
+            'equation': 'E_wind = ½ × M_dot × v²_wind × t'
+        }
+    
+    def compute_mass_loss_rate(self, L: float, v_wind: float,
+                                 alpha: float = 1e-7) -> dict:
+        """
+        Estimate mass loss rate from luminosity.
+        M_dot ≈ α × L / v_wind (simplified)
+        
+        Args:
+            L: Stellar luminosity (W)
+            v_wind: Wind velocity (m/s)
+            alpha: Efficiency factor
+            
+        Returns:
+            dict with mass loss rate
+        """
+        M_dot = alpha * L / v_wind if v_wind > 0 else 0
+        
+        return {
+            'M_dot': M_dot,
+            'M_dot_solar_yr': M_dot / self.M_sun * self.yr,
+            'L': L,
+            'v_wind': v_wind,
+            'alpha': alpha,
+            'equation': 'M_dot ≈ α×L/v_wind'
+        }
+    
+    # O-type star typical parameters
+    O_STAR_PARAMS = {
+        'v_wind': 2000 * 1000,      # m/s (2000 km/s)
+        'M_dot': 1e-6,              # M_sun/yr
+        'L': 1e5 * 3.826e26,        # W (10^5 L_sun)
+        'rho_ambient': 1e-20,       # kg/m³
+    }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Stellar Wind Feedback solution.
+        """
+        params = params or {}
+        rho = params.get('rho', 1e-20)
+        v_wind = params.get('v_wind', 1000 * self.km)
+        M_dot = params.get('M_dot', 1e-6)
+        t = params.get('t', 1e6 * self.yr)
+        
+        return {
+            'W_stellar': self.compute_W_stellar(rho, v_wind),
+            'E_wind': self.compute_E_wind(M_dot, v_wind, t),
+            'framework': 'UQFF_StellarWindFeedback_v1.0'
+        }
+
+
+class GravitationalLensingCalculator:
+    """
+    Gravitational Lensing Calculator.
+    
+    Master Equations:
+    - α = 4GM / (c² b) : Deflection angle (weak lensing)
+    - θ_E = √(4GM D_LS / (c² D_L D_S)) : Einstein radius
+    - L(t) = lens amplification factor
+    - g_lens = g_base × (1 + L(t)) : Lensing-modified gravity
+    
+    Based on Rings of Relativity (GAL-CLUS-022058s) analysis.
+    
+    Reference: Document 8, lines 6536-6680
+    """
+    
+    # Physical constants
+    G = 6.674e-11       # m³/(kg·s²)
+    c = 2.998e8         # m/s
+    M_sun = 1.989e30    # kg
+    kpc = 3.086e19      # m
+    Mpc = 3.086e22      # m
+    arcsec = 4.848e-6   # radians
+    
+    def __init__(self):
+        """Initialize Gravitational Lensing calculator."""
+        pass
+    
+    def compute_deflection_angle(self, M: float, b: float) -> dict:
+        """
+        Compute gravitational deflection angle.
+        α = 4GM / (c² b)
+        
+        Args:
+            M: Lens mass (kg or M_sun)
+            b: Impact parameter (m)
+            
+        Returns:
+            dict with deflection angle
+        """
+        if M < 1e20:
+            M_kg = M * self.M_sun
+        else:
+            M_kg = M
+        
+        alpha = 4 * self.G * M_kg / (self.c**2 * b) if b > 0 else 0
+        alpha_arcsec = alpha / self.arcsec
+        
+        return {
+            'alpha': alpha,
+            'alpha_rad': alpha,
+            'alpha_arcsec': alpha_arcsec,
+            'M': M_kg,
+            'M_solar': M_kg / self.M_sun,
+            'b': b,
+            'equation': 'α = 4GM/(c²b)'
+        }
+    
+    def compute_Einstein_radius(self, M: float, D_L: float, D_S: float,
+                                  D_LS: float = None) -> dict:
+        """
+        Compute Einstein radius.
+        θ_E = √(4GM D_LS / (c² D_L D_S))
+        
+        Args:
+            M: Lens mass (kg or M_sun)
+            D_L: Distance to lens (m or Mpc)
+            D_S: Distance to source (m or Mpc)
+            D_LS: Distance lens to source (m or Mpc), computed if not given
+            
+        Returns:
+            dict with Einstein radius
+        """
+        # Convert units
+        if M < 1e20:
+            M_kg = M * self.M_sun
+        else:
+            M_kg = M
+        
+        if D_L < 1e10:
+            D_L_m = D_L * self.Mpc
+        else:
+            D_L_m = D_L
+        
+        if D_S < 1e10:
+            D_S_m = D_S * self.Mpc
+        else:
+            D_S_m = D_S
+        
+        if D_LS is None:
+            D_LS_m = D_S_m - D_L_m
+        elif D_LS < 1e10:
+            D_LS_m = D_LS * self.Mpc
+        else:
+            D_LS_m = D_LS
+        
+        # Einstein radius in radians
+        theta_E = math.sqrt(4 * self.G * M_kg * D_LS_m / (self.c**2 * D_L_m * D_S_m)) if D_L_m > 0 and D_S_m > 0 else 0
+        theta_E_arcsec = theta_E / self.arcsec
+        
+        # Physical Einstein radius at lens distance
+        R_E = theta_E * D_L_m
+        
+        return {
+            'theta_E': theta_E,
+            'theta_E_rad': theta_E,
+            'theta_E_arcsec': theta_E_arcsec,
+            'R_E': R_E,
+            'R_E_kpc': R_E / self.kpc,
+            'M': M_kg,
+            'D_L': D_L_m,
+            'D_S': D_S_m,
+            'D_LS': D_LS_m,
+            'equation': 'θ_E = √(4GM D_LS/(c² D_L D_S))'
+        }
+    
+    def compute_magnification(self, u: float) -> dict:
+        """
+        Compute lensing magnification.
+        μ = (u² + 2) / (u × √(u² + 4))
+        
+        Args:
+            u: Source position in Einstein radius units
+            
+        Returns:
+            dict with magnification
+        """
+        if u > 0:
+            mu = (u**2 + 2) / (u * math.sqrt(u**2 + 4))
+        else:
+            mu = float('inf')  # Perfect alignment
+        
+        return {
+            'magnification': mu,
+            'u': u,
+            'equation': 'μ = (u²+2)/(u×√(u²+4))'
+        }
+    
+    def compute_L_t(self, t: float, tau_lens: float = 1e15,
+                     L_max: float = 0.1) -> dict:
+        """
+        Compute time-dependent lensing factor.
+        L(t) = L_max × (1 - e^(-t/τ_lens))
+        
+        Args:
+            t: Time (s)
+            tau_lens: Lensing timescale (s)
+            L_max: Maximum lensing amplitude
+            
+        Returns:
+            dict with lensing factor
+        """
+        L_t = L_max * (1 - math.exp(-t / tau_lens)) if tau_lens > 0 else 0
+        
+        return {
+            'L_t': L_t,
+            't': t,
+            'tau_lens': tau_lens,
+            'L_max': L_max,
+            'equation': 'L(t) = L_max × (1 - e^(-t/τ))'
+        }
+    
+    # Rings of Relativity (GAL-CLUS-022058s) parameters
+    MOLTEN_RING_PARAMS = {
+        'M_cluster': 1e14,          # M_sun
+        'z_lens': 0.5,
+        'z_source': 2.0,
+        'D_L': 2000,                # Mpc
+        'D_S': 5000,                # Mpc
+        'ring_diameter_arcsec': 1.5,
+    }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Gravitational Lensing solution.
+        """
+        params = params or {}
+        M = params.get('M', 1e14)
+        D_L = params.get('D_L', 2000)
+        D_S = params.get('D_S', 5000)
+        b = params.get('b', 10 * self.kpc)
+        u = params.get('u', 1.0)
+        
+        return {
+            'deflection': self.compute_deflection_angle(M, b),
+            'Einstein_radius': self.compute_Einstein_radius(M, D_L, D_S),
+            'magnification': self.compute_magnification(u),
+            'framework': 'UQFF_GravitationalLensing_v1.0'
+        }
+
+
+class MagneticFilamentCalculator:
+    """
+    Magnetic Filament Support Calculator.
+    
+    Master Equations:
+    - M_fil = B² / (2μ₀) × V_fil : Magnetic energy in filament
+    - P_mag = B² / (2μ₀) : Magnetic pressure
+    - β = P_gas / P_mag : Plasma beta (gas vs magnetic pressure)
+    - F_mag = ∇(B²/2μ₀) × V : Magnetic gradient force
+    
+    Based on NGC 1275 (Perseus A) magnetic filament analysis.
+    
+    Reference: Lines 120-121, 7487
+    """
+    
+    # Physical constants
+    mu_0 = 4 * math.pi * 1e-7  # H/m (vacuum permeability)
+    k_B = 1.381e-23            # J/K (Boltzmann constant)
+    m_H = 1.673e-27            # kg (hydrogen mass)
+    M_sun = 1.989e30           # kg
+    kpc = 3.086e19             # m
+    pc = 3.086e16              # m
+    
+    def __init__(self):
+        """Initialize Magnetic Filament calculator."""
+        pass
+    
+    def compute_P_mag(self, B: float) -> dict:
+        """
+        Compute magnetic pressure.
+        P_mag = B² / (2μ₀)
+        
+        Args:
+            B: Magnetic field strength (T)
+            
+        Returns:
+            dict with magnetic pressure
+        """
+        P_mag = B**2 / (2 * self.mu_0)
+        
+        return {
+            'P_mag': P_mag,
+            'P_mag_Pa': P_mag,
+            'B': B,
+            'mu_0': self.mu_0,
+            'equation': 'P_mag = B²/(2μ₀)'
+        }
+    
+    def compute_M_fil(self, B: float, V_fil: float) -> dict:
+        """
+        Compute magnetic energy in filament.
+        M_fil = B² / (2μ₀) × V_fil
+        
+        Args:
+            B: Magnetic field (T)
+            V_fil: Filament volume (m³)
+            
+        Returns:
+            dict with magnetic energy
+        """
+        P_mag = B**2 / (2 * self.mu_0)
+        M_fil = P_mag * V_fil
+        
+        return {
+            'M_fil': M_fil,
+            'M_fil_J': M_fil,
+            'M_fil_erg': M_fil * 1e7,
+            'P_mag': P_mag,
+            'B': B,
+            'V_fil': V_fil,
+            'equation': 'M_fil = B²/(2μ₀) × V_fil'
+        }
+    
+    def compute_plasma_beta(self, P_gas: float, P_mag: float) -> dict:
+        """
+        Compute plasma beta.
+        β = P_gas / P_mag
+        
+        Args:
+            P_gas: Gas pressure (Pa)
+            P_mag: Magnetic pressure (Pa)
+            
+        Returns:
+            dict with plasma beta
+        """
+        beta = P_gas / P_mag if P_mag > 0 else float('inf')
+        
+        if beta > 1:
+            regime = 'gas-dominated'
+        elif beta < 1:
+            regime = 'magnetically-dominated'
+        else:
+            regime = 'equipartition'
+        
+        return {
+            'beta': beta,
+            'P_gas': P_gas,
+            'P_mag': P_mag,
+            'regime': regime,
+            'equation': 'β = P_gas/P_mag'
+        }
+    
+    def compute_P_gas(self, n: float, T: float) -> dict:
+        """
+        Compute gas thermal pressure.
+        P_gas = n × k_B × T
+        
+        Args:
+            n: Number density (m⁻³)
+            T: Temperature (K)
+            
+        Returns:
+            dict with gas pressure
+        """
+        P_gas = n * self.k_B * T
+        
+        return {
+            'P_gas': P_gas,
+            'P_gas_Pa': P_gas,
+            'n': n,
+            'T': T,
+            'equation': 'P_gas = n × k_B × T'
+        }
+    
+    def compute_filament_stability(self, B: float, n: float, T: float,
+                                     L: float, r: float) -> dict:
+        """
+        Assess filament stability against gravitational collapse.
+        
+        Args:
+            B: Magnetic field (T)
+            n: Number density (m⁻³)
+            T: Temperature (K)
+            L: Filament length (m)
+            r: Filament radius (m)
+            
+        Returns:
+            dict with stability analysis
+        """
+        # Pressures
+        P_mag_result = self.compute_P_mag(B)
+        P_gas_result = self.compute_P_gas(n, T)
+        beta_result = self.compute_plasma_beta(P_gas_result['P_gas'], P_mag_result['P_mag'])
+        
+        # Filament volume (cylinder)
+        V_fil = math.pi * r**2 * L
+        
+        # Magnetic energy
+        M_fil_result = self.compute_M_fil(B, V_fil)
+        
+        # Mass
+        rho = n * self.m_H
+        M_fil_mass = rho * V_fil
+        
+        # Alfvén velocity
+        v_A = B / math.sqrt(self.mu_0 * rho) if rho > 0 else 0
+        
+        # Stability criterion: magnetic pressure vs gravitational
+        # For stability: P_mag > G × ρ² × L²
+        G = 6.674e-11
+        P_grav = G * rho**2 * L**2
+        is_stable = P_mag_result['P_mag'] > P_grav
+        
+        return {
+            'P_mag': P_mag_result,
+            'P_gas': P_gas_result,
+            'beta': beta_result,
+            'M_fil_energy': M_fil_result,
+            'M_fil_mass': M_fil_mass,
+            'M_fil_mass_solar': M_fil_mass / self.M_sun,
+            'V_fil': V_fil,
+            'v_Alfven': v_A,
+            'is_stable': is_stable,
+            'P_gravitational': P_grav
+        }
+    
+    # NGC 1275 (Perseus A) parameters
+    NGC1275_PARAMS = {
+        'B': 1e-9,                  # T (~10 μG)
+        'n': 1e4,                   # m⁻³ (0.01 cm⁻³)
+        'T': 1e7,                   # K (hot ICM)
+        'L': 50 * 3.086e19,         # m (50 kpc)
+        'r': 0.1 * 3.086e19,        # m (100 pc)
+        'M_filament': 1e6,          # M_sun per filament
+    }
+    
+    def solve_NGC1275(self, params: dict = None) -> dict:
+        """
+        Solve NGC 1275 filament model.
+        """
+        p = self.NGC1275_PARAMS.copy()
+        if params:
+            p.update(params)
+        
+        return {
+            'stability': self.compute_filament_stability(
+                p['B'], p['n'], p['T'], p['L'], p['r']
+            ),
+            'parameters': p,
+            'framework': 'UQFF_NGC1275_v1.0'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Magnetic Filament solution.
+        """
+        params = params or {}
+        B = params.get('B', 1e-9)
+        V_fil = params.get('V_fil', 1e50)
+        n = params.get('n', 1e4)
+        T = params.get('T', 1e7)
+        
+        P_mag = self.compute_P_mag(B)
+        P_gas = self.compute_P_gas(n, T)
+        
+        return {
+            'P_mag': P_mag,
+            'M_fil': self.compute_M_fil(B, V_fil),
+            'P_gas': P_gas,
+            'beta': self.compute_plasma_beta(P_gas['P_gas'], P_mag['P_mag']),
+            'framework': 'UQFF_MagneticFilament_v1.0'
+        }
+
+
 # Global Framework Instance
 TRIADIC_UQFF = TriadicUQFFFramework()
 
@@ -92466,7 +93845,15 @@ __all__.extend([
     'GalaxyInteractionCalculator',
     'UniverseDiameterCalculator',
     'NuclearBindingCalculator',
-    'ExtendedEnvironmentalForcesCalculator'
+    'ExtendedEnvironmentalForcesCalculator',
+    # Astrophysical Process Calculators (Triadic Clone_2 Analysis Feb 2026)
+    'PulsarWindNebulaCalculator',
+    'GalaxyMergerDynamicsCalculator',
+    'SupernovaFeedbackCalculator',
+    'RadiationPressureCalculator',
+    'StellarWindFeedbackCalculator',
+    'GravitationalLensingCalculator',
+    'MagneticFilamentCalculator'
 ])
 
 
