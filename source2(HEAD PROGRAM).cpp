@@ -90,6 +90,7 @@
 
 // VR Runtime Integration (merged from vr_runtime.cpp)
 #include "ipc/uqff_ipc.h"    // IPC layer - Named Pipes, SharedMem for pipeline communication
+#include "ipc/physics_service.h"  // Physics Backend Service (Phase 2 - headless mode)
 
 // ============================================================================
 // VR/VM RUNTIME LAYER (Merged from vr/vr_runtime.cpp)
@@ -2376,6 +2377,15 @@ private:
 // Qt applications follow standard C++ main() pattern but use QApplication
 int main(int argc, char *argv[])
 {
+    // ========================================================================
+    // SERVICE MODE CHECK (Phase 2 - Physics Backend)
+    // If --service flag is passed, run headless physics service (no GUI)
+    // ========================================================================
+    if (UQFF::is_service_mode(argc, argv)) {
+        std::cout << "Starting Physics Backend Service Mode..." << std::endl;
+        return UQFF::run_physics_service(argc, argv);
+    }
+    
     // Create QApplication object (required for all Qt GUI applications)
     // QApplication manages:
     //   - Event loop (processes mouse/keyboard events, timers, signals/slots)
