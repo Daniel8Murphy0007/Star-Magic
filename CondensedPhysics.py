@@ -1233,6 +1233,13 @@ class NumericalMethods:
     @staticmethod
     def get_status() -> dict:
         """Return availability status of numerical libraries."""
+        # Check joblib availability
+        try:
+            import joblib
+            joblib_available = True
+        except ImportError:
+            joblib_available = False
+        
         return {
             'scipy_available': SCIPY_AVAILABLE,
             'scipy_version': SCIPY_VERSION,
@@ -1255,7 +1262,9 @@ class NumericalMethods:
                 'linear_algebra': ['solve', 'inv', 'eig', 'svd'],
                 'symbolic': ['diff', 'integrate', 'solve', 'simplify', 'lambdify'] if SYMPY_AVAILABLE else [],
                 'special_functions': ['bessel_j', 'spherical_harmonics', 'gamma'] if SCIPY_AVAILABLE else [],
-                'orbital_mechanics': ['compute_orbital_energy', 'compute_angular_momentum']
+                'orbital_mechanics': ['compute_orbital_energy', 'compute_angular_momentum'],
+                'parallel': ['parallel_map', 'parallel_starmap', 'batch_process', 'parallel_monte_carlo', 'parallel_grid_evaluation'] +
+                            (['joblib_backend'] if joblib_available else [])
             }
         }
     
@@ -3348,6 +3357,260 @@ class SpectralDecomposition:
             'entropy': -np.sum(probabilities * np.log(probabilities + 1e-15)),
             'dominant_state': np.argmax(probabilities),
             'dominant_amplitude': np.max(np.abs(coefficients))
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PARALLEL COMPUTATION (Multiprocessing / Joblib)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class ParallelComputation:
+    """
+    Parallel computation utilities for UQFF physics calculations.
+    
+    Implements:
+        - Multiprocessing pool for CPU-bound tasks
+        - Joblib wrapper for embarrassingly parallel operations
+        - Batch processing for large datasets
+        - Progress tracking for long computations
+    
+    Applications:
+        - Multi-system UQFF calculations
+        - Parameter space exploration
+        - Monte Carlo sampling parallelization
+        - Large-scale N-body simulations
+    
+    Usage:
+        # Parallel map
+        results = ParallelComputation.parallel_map(compute_uqff, systems, n_jobs=4)
+        
+        # Batch processing with progress
+        results = ParallelComputation.batch_process(heavy_func, data, batch_size=100)
+    """
+    
+    # Try to import joblib for enhanced parallelism
+    try:
+        from joblib import Parallel, delayed
+        JOBLIB_AVAILABLE = True
+    except ImportError:
+        JOBLIB_AVAILABLE = False
+    
+    @staticmethod
+    def get_cpu_count() -> int:
+        """Get number of available CPU cores."""
+        import multiprocessing
+        return multiprocessing.cpu_count()
+    
+    @staticmethod
+    def parallel_map(func: Callable, items: List, n_jobs: int = -1,
+                     backend: str = 'auto', verbose: int = 0) -> List:
+        """
+        Apply function to items in parallel.
+        
+        Args:
+            func: Function to apply to each item
+            items: List of inputs
+            n_jobs: Number of parallel jobs (-1 = all CPUs, 1 = sequential)
+            backend: 'joblib', 'multiprocessing', or 'auto'
+            verbose: Verbosity level for joblib
+            
+        Returns:
+            List of results in same order as inputs
+        """
+        if n_jobs == 1 or len(items) == 0:
+            return [func(item) for item in items]
+        
+        if n_jobs == -1:
+            n_jobs = ParallelComputation.get_cpu_count()
+        
+        # Auto-select backend
+        if backend == 'auto':
+            backend = 'joblib' if ParallelComputation.JOBLIB_AVAILABLE else 'multiprocessing'
+        
+        if backend == 'joblib' and ParallelComputation.JOBLIB_AVAILABLE:
+            from joblib import Parallel, delayed
+            return Parallel(n_jobs=n_jobs, verbose=verbose)(
+                delayed(func)(item) for item in items
+            )
+        else:
+            # Fallback to multiprocessing
+            import multiprocessing
+            with multiprocessing.Pool(n_jobs) as pool:
+                return pool.map(func, items)
+    
+    @staticmethod
+    def parallel_starmap(func: Callable, args_list: List[Tuple],
+                         n_jobs: int = -1) -> List:
+        """
+        Apply function with multiple arguments in parallel.
+        
+        Args:
+            func: Function taking multiple arguments
+            args_list: List of argument tuples
+            n_jobs: Number of parallel jobs
+            
+        Returns:
+            List of results
+        """
+        if n_jobs == 1 or len(args_list) == 0:
+            return [func(*args) for args in args_list]
+        
+        if n_jobs == -1:
+            n_jobs = ParallelComputation.get_cpu_count()
+        
+        if ParallelComputation.JOBLIB_AVAILABLE:
+            from joblib import Parallel, delayed
+            return Parallel(n_jobs=n_jobs)(
+                delayed(func)(*args) for args in args_list
+            )
+        else:
+            import multiprocessing
+            with multiprocessing.Pool(n_jobs) as pool:
+                return pool.starmap(func, args_list)
+    
+    @staticmethod
+    def batch_process(func: Callable, data: List, batch_size: int = 100,
+                      n_jobs: int = -1, progress_callback: Callable = None) -> List:
+        """
+        Process data in batches with optional parallelism.
+        
+        UQFF Application: Process 100+ astronomical systems in parallel
+        with progress tracking for long computations.
+        
+        Args:
+            func: Function to apply to each item
+            data: Full dataset
+            batch_size: Items per batch
+            n_jobs: Parallel jobs per batch
+            progress_callback: Called with (batch_idx, total_batches, batch_results)
+            
+        Returns:
+            Combined results from all batches
+        """
+        n_items = len(data)
+        n_batches = (n_items + batch_size - 1) // batch_size
+        
+        all_results = []
+        
+        for i in range(n_batches):
+            start = i * batch_size
+            end = min(start + batch_size, n_items)
+            batch = data[start:end]
+            
+            # Process batch
+            if n_jobs == 1:
+                batch_results = [func(item) for item in batch]
+            else:
+                batch_results = ParallelComputation.parallel_map(func, batch, n_jobs)
+            
+            all_results.extend(batch_results)
+            
+            # Progress callback
+            if progress_callback:
+                progress_callback(i + 1, n_batches, batch_results)
+        
+        return all_results
+    
+    @staticmethod
+    def parallel_monte_carlo(sampler_func: Callable, n_samples: int,
+                             n_jobs: int = -1, seed_base: int = 42) -> np.ndarray:
+        """
+        Run Monte Carlo sampling in parallel with independent seeds.
+        
+        Args:
+            sampler_func: Function that takes (n_samples, seed) and returns samples
+            n_samples: Total number of samples
+            n_jobs: Number of parallel jobs
+            seed_base: Base seed (each worker gets seed_base + worker_id)
+            
+        Returns:
+            Combined samples array
+        """
+        if n_jobs == -1:
+            n_jobs = ParallelComputation.get_cpu_count()
+        
+        samples_per_job = n_samples // n_jobs
+        remainder = n_samples % n_jobs
+        
+        # Create argument list: (n_samples_for_job, seed)
+        args_list = []
+        for i in range(n_jobs):
+            n = samples_per_job + (1 if i < remainder else 0)
+            args_list.append((n, seed_base + i))
+        
+        # Run in parallel
+        results = ParallelComputation.parallel_starmap(sampler_func, args_list, n_jobs)
+        
+        # Combine
+        return np.concatenate(results)
+    
+    @staticmethod
+    def parallel_grid_evaluation(func: Callable, grid_points: List[np.ndarray],
+                                  n_jobs: int = -1) -> np.ndarray:
+        """
+        Evaluate function on a grid in parallel.
+        
+        UQFF Application: Parameter space exploration, computing F_U_Bi_i
+        over (r, t, θ) grid for visualization.
+        
+        Args:
+            func: Function f(x1, x2, ..., xn) -> scalar
+            grid_points: List of 1D arrays for each dimension
+            n_jobs: Parallel jobs
+            
+        Returns:
+            N-dimensional array of function values on grid
+        """
+        # Create meshgrid
+        grids = np.meshgrid(*grid_points, indexing='ij')
+        shape = grids[0].shape
+        
+        # Flatten to list of points
+        points = np.stack([g.ravel() for g in grids], axis=1)
+        
+        # Evaluate in parallel
+        values = ParallelComputation.parallel_map(
+            lambda p: func(*p), [tuple(p) for p in points], n_jobs
+        )
+        
+        # Reshape to grid
+        return np.array(values).reshape(shape)
+    
+    @staticmethod
+    def async_computation(func: Callable, *args, callback: Callable = None, 
+                          **kwargs) -> 'multiprocessing.pool.AsyncResult':
+        """
+        Start an asynchronous computation.
+        
+        Args:
+            func: Function to run
+            *args: Function arguments
+            callback: Called with result when done
+            **kwargs: Function keyword arguments
+            
+        Returns:
+            AsyncResult that can be queried for completion
+        """
+        import multiprocessing
+        
+        pool = multiprocessing.Pool(1)
+        
+        def wrapper():
+            return func(*args, **kwargs)
+        
+        result = pool.apply_async(wrapper, callback=callback)
+        return result
+    
+    @staticmethod
+    def get_status() -> dict:
+        """Get parallel computation status and capabilities."""
+        import multiprocessing
+        
+        return {
+            'cpu_count': multiprocessing.cpu_count(),
+            'joblib_available': ParallelComputation.JOBLIB_AVAILABLE,
+            'recommended_n_jobs': max(1, multiprocessing.cpu_count() - 1),
+            'backends': ['multiprocessing'] + (['joblib'] if ParallelComputation.JOBLIB_AVAILABLE else [])
         }
 
 
