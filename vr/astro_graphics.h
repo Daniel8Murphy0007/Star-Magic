@@ -21,7 +21,7 @@
  * 
  * Author: Daniel T. Murphy
  * Framework: UQFF Star-Magic v3.0
- * Phase: 3 - VR Runtime Scaffold
+ * Phase: 4 - Astro Graphics IPC Integration
  */
 
 #ifndef ASTRO_GRAPHICS_H
@@ -32,6 +32,9 @@
 #include <memory>
 #include <functional>
 #include <map>
+
+// IPC Integration (Phase 4)
+#include "../ipc/uqff_ipc.h"
 
 namespace VR {
 
@@ -152,10 +155,16 @@ public:
     std::vector<CatalogEntry*> searchByName(const std::string& pattern);
     int getCatalogSize() const { return static_cast<int>(catalog_.size()); }
     
-    // UQFF integration
+    // UQFF integration (Phase 4 - IPC)
     void setFieldOverlayConfig(const FieldOverlayConfig& config);
     void updateFieldData(const double* grid_data, int grid_dims[3], double grid_origin[3], double cell_size);
     void calculateFieldAtObjects();      // Batch calculate F_U for all objects
+    
+    // IPC connection (Phase 4)
+    void setPhysicsChannel(UQFF::IPC::IChannel* channel) { physics_channel_ = channel; }
+    bool calculateFieldViaIPC(const std::string& system_name, double r, double t,
+                              double& F_U_out, double& compressed_g_out);
+    void calculateAllFieldsViaIPC();     // Batch IPC for all catalog objects
     
     // Scene control
     void setSceneConfig(const SceneConfig& config);
@@ -190,6 +199,9 @@ public:
 private:
     // Vulkan integration
     VulkanCompositor* compositor_ = nullptr;
+    
+    // IPC channel to physics backend (Phase 4)
+    UQFF::IPC::IChannel* physics_channel_ = nullptr;
     
     // External program (optional)
     void* external_program_ = nullptr;

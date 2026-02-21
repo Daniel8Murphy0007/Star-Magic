@@ -6,7 +6,7 @@
  * 
  * Author: Daniel T. Murphy
  * Framework: UQFF Star-Magic v3.0
- * Phase: 3 - VR Runtime Scaffold
+ * Phase: 4 - Astro Graphics IPC Integration
  */
 
 #include "vr_runtime.h"
@@ -583,6 +583,14 @@ bool VRRuntime::loadAstroProgram(const std::string& path) {
         return false;
     }
     
+    // Phase 4: Connect IPC channel to AstroGraphics for physics backend communication
+    if (physics_channel_ && physics_channel_->is_connected()) {
+        astro_graphics_->setPhysicsChannel(physics_channel_.get());
+        if (config_.verbose) {
+            std::cout << "  Astro Graphics: IPC channel connected" << std::endl;
+        }
+    }
+    
     if (!astro_graphics_->loadExternalProgram(path)) {
         std::cerr << "VRRuntime: Failed to load program: " << path << std::endl;
         // Continue - can work without external program
@@ -605,8 +613,8 @@ bool VRRuntime::loadAstroProgram(const std::string& path) {
 
 int main(int argc, char* argv[]) {
     std::cout << "Star-Magic UQFF VR Runtime v3.0" << std::endl;
-    std::cout << "Phase 3 - VR Runtime Scaffold" << std::endl;
-    std::cout << "==============================" << std::endl;
+    std::cout << "Phase 4 - Astro Graphics IPC Integration" << std::endl;
+    std::cout << "=========================================" << std::endl;
     
     // Parse command line
     VR::RuntimeConfig config = VR::RuntimeConfig::from_args(argc, argv);

@@ -1,13 +1,13 @@
 /**
  * @file vr_runtime.h
- * @brief VR Runtime Layer for UQFF Star-Magic (Phase 3)
+ * @brief VR Runtime Layer for UQFF Star-Magic (Phase 4)
  * 
  * VR Compositor evolved from source2(HEAD PROGRAM).cpp
  * Provides:
  * - OpenXR session management for VR headset interaction
  * - Vulkan/DirectX12 GPU compositing
  * - Task Bot agent for voice/gesture commands
- * - Astro Graphics Engine integration
+ * - Astro Graphics Engine integration with IPC (Phase 4)
  * - IPC connection to Physics Backend Service
  * 
  * Architecture:
@@ -16,7 +16,7 @@
  * 
  * Author: Daniel T. Murphy
  * Framework: UQFF Star-Magic v3.0
- * Phase: 3 - VR Runtime Scaffold
+ * Phase: 4 - Astro Graphics IPC Integration
  */
 
 #ifndef VR_RUNTIME_H

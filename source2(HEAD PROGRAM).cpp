@@ -91,6 +91,7 @@
 // VR Runtime Integration (merged from vr_runtime.cpp)
 #include "ipc/uqff_ipc.h"    // IPC layer - Named Pipes, SharedMem for pipeline communication
 #include "ipc/physics_service.h"  // Physics Backend Service (Phase 2 - headless mode)
+#include "vr/astro_graphics.h"    // Phase 4: Astronomical Graphics Engine IPC Integration
 
 // ============================================================================
 // VR/VM RUNTIME LAYER (Merged from vr/vr_runtime.cpp)
@@ -266,6 +267,44 @@ public:
         return false;
     }
     
+    // Phase 4: Astro Graphics Integration
+    bool loadAstroGraphics(const std::string& catalog_path = "") {
+        astro_graphics_ = std::make_unique<VR::AstroGraphics>();
+        
+        if (!astro_graphics_->initialize(nullptr)) {  // No Vulkan compositor in Qt mode
+            std::cerr << "VRRuntime: Failed to initialize Astro Graphics" << std::endl;
+            astro_graphics_.reset();
+            return false;
+        }
+        
+        // Connect IPC channel to AstroGraphics for physics backend communication
+        if (physics_channel_ && physics_channel_->is_connected()) {
+            astro_graphics_->setPhysicsChannel(physics_channel_.get());
+            if (config_.verbose) {
+                std::cout << "  Astro Graphics: IPC channel connected" << std::endl;
+            }
+        }
+        
+        // Load catalog if provided
+        if (!catalog_path.empty()) {
+            astro_graphics_->loadCatalog(catalog_path);
+        }
+        
+        if (config_.verbose) {
+            std::cout << "  Astro Graphics: Loaded (Phase 4)" << std::endl;
+        }
+        return true;
+    }
+    
+    VR::AstroGraphics* getAstroGraphics() { return astro_graphics_.get(); }
+    
+    // Calculate fields for all catalog objects via IPC
+    void calculateAllAstroFields() {
+        if (astro_graphics_) {
+            astro_graphics_->calculateAllFieldsViaIPC();
+        }
+    }
+    
 private:
     VRRuntime() = default;
     VRRuntime(const VRRuntime&) = delete;
@@ -278,6 +317,9 @@ private:
     
     // IPC channel for physics communication
     std::unique_ptr<UQFF::IPC::SharedMemoryChannel> physics_channel_;
+    
+    // Phase 4: Astro Graphics Engine
+    std::unique_ptr<VR::AstroGraphics> astro_graphics_;
 };
 
 } // namespace VR

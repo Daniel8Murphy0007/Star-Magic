@@ -6,7 +6,7 @@
  * 
  * Author: Daniel T. Murphy
  * Framework: UQFF Star-Magic v3.0
- * Phase: 3 - VR Runtime Scaffold
+ * Phase: 4 - Astro Graphics IPC Integration
  */
 
 #include "astro_graphics.h"
@@ -17,6 +17,7 @@
 #include <sstream>
 #include <algorithm>
 #include <cmath>
+#include <cstring>  // Phase 4: for memset, strncpy
 
 // Define M_PI for Windows compatibility
 #ifndef M_PI
@@ -305,6 +306,86 @@ void AstroGraphics::calculateFieldAtObjects() {
             }
         }
     }
+}
+
+// ============================================================================
+// IPC-Based Field Calculation (Phase 4)
+// ============================================================================
+
+bool AstroGraphics::calculateFieldViaIPC(const std::string& system_name, double r, double t,
+                                         double& F_U_out, double& compressed_g_out) {
+    if (!physics_channel_ || !physics_channel_->is_connected()) {
+        std::cerr << "AstroGraphics: No IPC channel to physics backend" << std::endl;
+        return false;
+    }
+    
+    // Build request
+    UQFF::IPC::CalculateFieldRequest request;
+    std::memset(&request, 0, sizeof(request));
+    std::strncpy(request.system_name, system_name.c_str(), 
+                 std::min(system_name.size(), size_t(63)));
+    request.r = r;
+    request.t = t;
+    request.tn = 1.0;
+    request.theta = 0.0;
+    request.flags = 0;
+    
+    // Send request
+    UQFF::IPC::MessageHeader header(UQFF::IPC::MessageType::CALCULATE_FIELD, 
+                                    sizeof(UQFF::IPC::CalculateFieldRequest));
+    
+    if (!physics_channel_->send(header, &request)) {
+        std::cerr << "AstroGraphics: Failed to send IPC request" << std::endl;
+        return false;
+    }
+    
+    // Receive response
+    UQFF::IPC::MessageHeader response_header;
+    std::vector<uint8_t> payload;
+    
+    if (!physics_channel_->receive(response_header, payload, 5000)) {  // 5s timeout
+        std::cerr << "AstroGraphics: IPC response timeout" << std::endl;
+        return false;
+    }
+    
+    if (response_header.type == UQFF::IPC::MessageType::RESPONSE_DATA &&
+        payload.size() >= sizeof(UQFF::IPC::CalculateFieldResponse)) {
+        const auto* response = reinterpret_cast<const UQFF::IPC::CalculateFieldResponse*>(payload.data());
+        F_U_out = response->F_U;
+        compressed_g_out = response->compressed_g;
+        return true;
+    }
+    
+    return false;
+}
+
+void AstroGraphics::calculateAllFieldsViaIPC() {
+    if (!physics_channel_ || !physics_channel_->is_connected()) {
+        std::cerr << "AstroGraphics: No IPC channel - using local field grid" << std::endl;
+        calculateFieldAtObjects();
+        return;
+    }
+    
+    std::cout << "AstroGraphics: Calculating fields for " << catalog_.size() 
+              << " objects via IPC..." << std::endl;
+    
+    int success_count = 0;
+    for (auto& entry : catalog_) {
+        // Convert position to radial distance from galactic center
+        double ra_rad = entry.ra * M_PI / 180.0;
+        double dec_rad = entry.dec * M_PI / 180.0;
+        double d = entry.distance_pc * 3.086e16;  // pc to meters
+        
+        double F_U = 0, compressed_g = 0;
+        if (calculateFieldViaIPC(entry.id, d, 0.0, F_U, compressed_g)) {
+            entry.F_U = F_U;
+            entry.field_gradient = compressed_g;  // Store compressed_g in gradient field
+            success_count++;
+        }
+    }
+    
+    std::cout << "AstroGraphics: Successfully calculated " << success_count 
+              << " / " << catalog_.size() << " field values via IPC" << std::endl;
 }
 
 // ============================================================================
