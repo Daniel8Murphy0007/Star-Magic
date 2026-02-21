@@ -90932,6 +90932,1500 @@ class CompressedMUGECalculator:
         }
 
 
+# =============================================================================
+# PART 4: SPECIALIZED PHYSICS CALCULATORS (Triadic Clone Extended Analysis)
+# Hydrogen Resonance, Cosmic Evolution, Galaxy Interactions, Universe Diameter,
+# Nuclear Binding, Extended Environmental Forces
+# =============================================================================
+
+class HydrogenResonanceCalculator:
+    """
+    Hydrogen Resonance Calculator for Nuclear and Atomic Systems.
+    
+    Master Equation:
+    H_res = A_res × sin(2π f_res t) + U_dp × SC_m × k_nuc + S_shell
+    
+    Where:
+    - A_res = k_A × Z × (A/A_H) × (1 + δ_pair) : Resonance amplitude
+    - f_res = (E_bind/h) × (A_H/A) × (1 + S_shell) : Resonance frequency
+    - U_dp = k × (A₁ × A₂ / f_dp²) × cos(φ_dp) : Dipole coupling
+    - SC_m ≈ 1 : Superconductivity modifier
+    - k_nuc = k₀ × (N/Z) × (1 + δ_pair) : Nuclear coupling
+    - S_shell = 0.1 × (Z_magic + N_magic) : Shell correction
+    
+    Reference: Document 28 (Hydrogen Resonance Equations) lines 278-284
+    """
+    
+    # Physical constants
+    h = 6.626e-34      # J·s (Planck constant)
+    A_H = 1            # Hydrogen mass number
+    
+    # Magic numbers for shell effects
+    MAGIC_NUMBERS = [2, 8, 20, 28, 50, 82, 126]
+    
+    def __init__(self):
+        """Initialize Hydrogen Resonance calculator."""
+        self.k_A = 1.0          # Amplitude calibration
+        self.k_0 = 1.0          # Base nuclear coupling
+        self.k_dipole = 1.0     # Dipole coupling constant
+        self.SC_m = 1.0         # Superconductivity modifier
+    
+    def compute_shell_correction(self, Z: int, N: int) -> dict:
+        """
+        Compute shell correction factor.
+        S_shell = 0.1 × (Z_magic + N_magic)
+        
+        Args:
+            Z: Atomic number (protons)
+            N: Neutron number
+            
+        Returns:
+            dict with shell correction
+        """
+        Z_magic = 1 if Z in self.MAGIC_NUMBERS else 0
+        N_magic = 1 if N in self.MAGIC_NUMBERS else 0
+        S_shell = 0.1 * (Z_magic + N_magic)
+        
+        return {
+            'S_shell': S_shell,
+            'Z': Z,
+            'N': N,
+            'Z_magic': Z_magic,
+            'N_magic': N_magic,
+            'is_doubly_magic': Z_magic and N_magic,
+            'equation': 'S_shell = 0.1 × (Z_magic + N_magic)'
+        }
+    
+    def compute_pairing_correction(self, Z: int, N: int) -> dict:
+        """
+        Compute pairing energy correction δ_pair.
+        
+        Args:
+            Z: Atomic number
+            N: Neutron number
+            
+        Returns:
+            dict with pairing correction
+        """
+        A = Z + N
+        
+        # Pairing: even-even (+), odd-odd (-), odd-A (0)
+        if Z % 2 == 0 and N % 2 == 0:
+            delta_pair = 12.0 / math.sqrt(A) if A > 0 else 0
+            pairing_type = 'even-even'
+        elif Z % 2 == 1 and N % 2 == 1:
+            delta_pair = -12.0 / math.sqrt(A) if A > 0 else 0
+            pairing_type = 'odd-odd'
+        else:
+            delta_pair = 0
+            pairing_type = 'odd-A'
+        
+        return {
+            'delta_pair': delta_pair,
+            'pairing_type': pairing_type,
+            'A': A,
+            'equation': 'δ_pair = ±12/√A (even-even/odd-odd), 0 (odd-A)'
+        }
+    
+    def compute_A_res(self, Z: int, A: int, delta_pair: float = 0) -> dict:
+        """
+        Compute resonance amplitude.
+        A_res = k_A × Z × (A/A_H) × (1 + δ_pair)
+        
+        Args:
+            Z: Atomic number
+            A: Mass number
+            delta_pair: Pairing correction
+            
+        Returns:
+            dict with resonance amplitude
+        """
+        A_res = self.k_A * Z * (A / self.A_H) * (1 + delta_pair)
+        
+        return {
+            'A_res': A_res,
+            'Z': Z,
+            'A': A,
+            'k_A': self.k_A,
+            'delta_pair': delta_pair,
+            'equation': 'A_res = k_A × Z × (A/A_H) × (1 + δ_pair)'
+        }
+    
+    def compute_f_res(self, E_bind: float, A: int, S_shell: float = 0) -> dict:
+        """
+        Compute resonance frequency.
+        f_res = (E_bind/h) × (A_H/A) × (1 + S_shell)
+        
+        Args:
+            E_bind: Binding energy (J)
+            A: Mass number
+            S_shell: Shell correction
+            
+        Returns:
+            dict with resonance frequency
+        """
+        f_res = (E_bind / self.h) * (self.A_H / A) * (1 + S_shell)
+        
+        return {
+            'f_res': f_res,
+            'f_res_Hz': f_res,
+            'E_bind': E_bind,
+            'E_bind_MeV': E_bind / 1.602e-13,
+            'A': A,
+            'S_shell': S_shell,
+            'equation': 'f_res = (E_bind/h) × (A_H/A) × (1 + S_shell)'
+        }
+    
+    def compute_U_dp(self, A1: int, A2: int, f_dp: float, phi_dp: float = 0) -> dict:
+        """
+        Compute dipole coupling energy.
+        U_dp = k × (A₁ × A₂ / f_dp²) × cos(φ_dp)
+        
+        Args:
+            A1: First mass number
+            A2: Second mass number
+            f_dp: Dipole frequency (Hz)
+            phi_dp: Dipole phase angle (rad)
+            
+        Returns:
+            dict with dipole coupling
+        """
+        U_dp = self.k_dipole * (A1 * A2 / f_dp**2) * math.cos(phi_dp)
+        
+        return {
+            'U_dp': U_dp,
+            'A1': A1,
+            'A2': A2,
+            'f_dp': f_dp,
+            'phi_dp': phi_dp,
+            'equation': 'U_dp = k × (A₁ × A₂ / f_dp²) × cos(φ_dp)'
+        }
+    
+    def compute_k_nuc(self, N: int, Z: int, delta_pair: float = 0) -> dict:
+        """
+        Compute nuclear coupling constant.
+        k_nuc = k₀ × (N/Z) × (1 + δ_pair)
+        
+        Args:
+            N: Neutron number
+            Z: Atomic number
+            delta_pair: Pairing correction
+            
+        Returns:
+            dict with nuclear coupling
+        """
+        if Z == 0:
+            k_nuc = 0
+        else:
+            k_nuc = self.k_0 * (N / Z) * (1 + delta_pair)
+        
+        return {
+            'k_nuc': k_nuc,
+            'N': N,
+            'Z': Z,
+            'k_0': self.k_0,
+            'equation': 'k_nuc = k₀ × (N/Z) × (1 + δ_pair)'
+        }
+    
+    def compute_H_res(self, Z: int, A: int, E_bind: float, t: float,
+                       A1: int = 1, A2: int = 1, f_dp: float = 1e10,
+                       phi_dp: float = 0) -> dict:
+        """
+        Compute complete hydrogen resonance.
+        H_res = A_res × sin(2π f_res t) + U_dp × SC_m × k_nuc + S_shell
+        
+        Args:
+            Z: Atomic number
+            A: Mass number
+            E_bind: Binding energy (J)
+            t: Time (s)
+            A1, A2: Mass numbers for dipole coupling
+            f_dp: Dipole frequency
+            phi_dp: Dipole phase
+            
+        Returns:
+            dict with all resonance calculations
+        """
+        N = A - Z
+        
+        # Compute components
+        shell_result = self.compute_shell_correction(Z, N)
+        pair_result = self.compute_pairing_correction(Z, N)
+        A_res_result = self.compute_A_res(Z, A, pair_result['delta_pair'])
+        f_res_result = self.compute_f_res(E_bind, A, shell_result['S_shell'])
+        U_dp_result = self.compute_U_dp(A1, A2, f_dp, phi_dp)
+        k_nuc_result = self.compute_k_nuc(N, Z, pair_result['delta_pair'])
+        
+        # Main equation
+        oscillation = A_res_result['A_res'] * math.sin(2 * math.pi * f_res_result['f_res'] * t)
+        coupling = U_dp_result['U_dp'] * self.SC_m * k_nuc_result['k_nuc']
+        H_res = oscillation + coupling + shell_result['S_shell']
+        
+        return {
+            'H_res': H_res,
+            'oscillation_term': oscillation,
+            'coupling_term': coupling,
+            'A_res': A_res_result,
+            'f_res': f_res_result,
+            'U_dp': U_dp_result,
+            'k_nuc': k_nuc_result,
+            'S_shell': shell_result,
+            'pairing': pair_result,
+            'SC_m': self.SC_m,
+            'equation': 'H_res = A_res × sin(2πf_res t) + U_dp × SC_m × k_nuc + S_shell'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Hydrogen Resonance solution.
+        
+        Args:
+            params: Dictionary with Z, A, E_bind, t, etc.
+            
+        Returns:
+            dict with all resonance calculations
+        """
+        params = params or {}
+        Z = params.get('Z', 1)  # Hydrogen default
+        A = params.get('A', 1)
+        E_bind = params.get('E_bind', 2.225e-13)  # ~1.4 MeV
+        t = params.get('t', 0)
+        
+        return {
+            'H_res': self.compute_H_res(Z, A, E_bind, t),
+            'framework': 'UQFF_HydrogenResonance_v1.0'
+        }
+
+
+class CosmicEvolutionCalculator:
+    """
+    Cosmic Evolution Calculator with QG, DM, and GW Terms.
+    
+    Master Equations:
+    - g_cosmic = g_base + QG_term + DM_term + GW_term
+    - QG_term: Quantum gravity corrections at Planck scale
+    - DM_term: Dark matter clustering and dynamics
+    - GW_term = (G × M²) / (c⁴ × r) × (dΩ/dt)² : Gravitational wave emission
+    
+    Additional terms from Document 38:
+    - Models cosmic evolution from Big Bang to present
+    - Integrates quantum gravity, dark matter, gravitational waves
+    - F_cosmo = D_p + k × r_c² + QG_term + DM_term + GW_term
+    
+    Reference: Document 38 (Gravity Since Big Bang) lines 457-458, 492, 570-571
+    """
+    
+    # Physical constants
+    G = 6.674e-11      # m³/(kg·s²)
+    c = 2.998e8        # m/s
+    hbar = 1.055e-34   # J·s
+    l_Planck = 1.616e-35  # m (Planck length)
+    t_Planck = 5.391e-44  # s (Planck time)
+    m_Planck = 2.176e-8   # kg (Planck mass)
+    H_0 = 2.27e-18     # s⁻¹ (Hubble constant, ~70 km/s/Mpc)
+    
+    def __init__(self):
+        """Initialize Cosmic Evolution calculator."""
+        self.k_QG = 1.0    # Quantum gravity coupling
+        self.k_DM = 1.0    # Dark matter coupling
+        self.k_GW = 1.0    # Gravitational wave coupling
+    
+    def compute_QG_term(self, r: float, M: float, n: int = 1) -> dict:
+        """
+        Compute quantum gravity correction term.
+        QG_term = k_QG × (l_P² / r²) × (m_P / M) × ℏω_P
+        
+        Args:
+            r: Distance scale (m)
+            M: Mass scale (kg)
+            n: Quantum number
+            
+        Returns:
+            dict with QG term
+        """
+        omega_Planck = 1 / self.t_Planck
+        
+        # Quantum gravity correction
+        QG_term = self.k_QG * (self.l_Planck**2 / r**2) * (self.m_Planck / M) * self.hbar * omega_Planck
+        
+        # Check if QG effects are significant
+        r_ratio = self.l_Planck / r
+        is_significant = r_ratio > 1e-30
+        
+        return {
+            'QG_term': QG_term,
+            'l_Planck': self.l_Planck,
+            'r_ratio': r_ratio,
+            'is_QG_significant': is_significant,
+            'n': n,
+            'equation': 'QG_term = k_QG × (l_P²/r²) × (m_P/M) × ℏω_P'
+        }
+    
+    def compute_DM_term(self, r: float, M_DM: float, rho_0: float = 1e-21,
+                         r_s: float = 20e3 * 3.086e16) -> dict:
+        """
+        Compute dark matter clustering term (NFW profile).
+        DM_term = (G × M_DM / r²) × f_NFW(r/r_s)
+        f_NFW(x) = 1 / (x × (1+x)²)
+        
+        Args:
+            r: Distance from center (m)
+            M_DM: Dark matter mass (kg)
+            rho_0: Central density (kg/m³)
+            r_s: Scale radius (m), default 20 kpc
+            
+        Returns:
+            dict with DM term
+        """
+        # NFW profile factor
+        x = r / r_s
+        if x > 1e-10:
+            f_NFW = 1 / (x * (1 + x)**2)
+        else:
+            f_NFW = 1e10  # Cusp limit
+        
+        # Enclosed mass at radius r (simplified NFW)
+        M_enclosed = M_DM * (math.log(1 + x) - x / (1 + x)) if x > 1e-10 else M_DM * x**2
+        
+        DM_term = self.k_DM * (self.G * M_enclosed / r**2)
+        
+        return {
+            'DM_term': DM_term,
+            'M_DM': M_DM,
+            'M_enclosed': M_enclosed,
+            'f_NFW': f_NFW,
+            'r_s': r_s,
+            'x': x,
+            'equation': 'DM_term = (G × M_DM/r²) × f_NFW(r/r_s)'
+        }
+    
+    def compute_GW_term(self, M: float, r: float, dOmega_dt: float) -> dict:
+        """
+        Compute gravitational wave emission term.
+        GW_term = (G × M²) / (c⁴ × r) × (dΩ/dt)²
+        
+        Args:
+            M: Binary system mass (kg)
+            r: Orbital separation (m)
+            dOmega_dt: Rate of change of orbital frequency (rad/s²)
+            
+        Returns:
+            dict with GW term
+        """
+        GW_term = self.k_GW * (self.G * M**2) / (self.c**4 * r) * dOmega_dt**2
+        
+        # Characteristic strain estimate
+        h_c = (self.G * M) / (self.c**2 * r)
+        
+        return {
+            'GW_term': GW_term,
+            'h_c': h_c,
+            'M': M,
+            'r': r,
+            'dOmega_dt': dOmega_dt,
+            'equation': 'GW_term = (G × M²) / (c⁴ × r) × (dΩ/dt)²'
+        }
+    
+    def compute_F_cosmo(self, D_p: float, r_c: float, k: float = 1.0,
+                         QG_term: float = 0, DM_term: float = 0, 
+                         GW_term: float = 0) -> dict:
+        """
+        Compute cosmological environmental force.
+        F_cosmo = D_p + k × r_c² + QG_term + DM_term + GW_term
+        
+        Args:
+            D_p: Particle horizon distance (m)
+            r_c: Comoving radius (m)
+            k: Curvature factor
+            QG_term: Quantum gravity contribution
+            DM_term: Dark matter contribution
+            GW_term: Gravitational wave contribution
+            
+        Returns:
+            dict with cosmological force
+        """
+        F_cosmo = D_p + k * r_c**2 + QG_term + DM_term + GW_term
+        
+        return {
+            'F_cosmo': F_cosmo,
+            'D_p': D_p,
+            'k_r_c_sq': k * r_c**2,
+            'QG_term': QG_term,
+            'DM_term': DM_term,
+            'GW_term': GW_term,
+            'equation': 'F_cosmo = D_p + k×r_c² + QG_term + DM_term + GW_term'
+        }
+    
+    def compute_cosmic_age(self, z: float) -> dict:
+        """
+        Compute cosmic age at redshift z.
+        t(z) ≈ (2/3H_0) × (1+z)^(-3/2) for matter-dominated
+        
+        Args:
+            z: Redshift
+            
+        Returns:
+            dict with cosmic age
+        """
+        # Matter-dominated approximation
+        t_z = (2 / (3 * self.H_0)) * (1 + z)**(-1.5)
+        t_z_Gyr = t_z / (365.25 * 24 * 3600 * 1e9)
+        
+        return {
+            't_z': t_z,
+            't_z_Gyr': t_z_Gyr,
+            'z': z,
+            'equation': 't(z) ≈ (2/3H_0) × (1+z)^(-3/2)'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Cosmic Evolution solution.
+        
+        Args:
+            params: Dictionary with r, M, M_DM, dOmega_dt, etc.
+            
+        Returns:
+            dict with all cosmic evolution calculations
+        """
+        params = params or {}
+        r = params.get('r', 1e22)
+        M = params.get('M', 1e42)
+        M_DM = params.get('M_DM', 5e42)
+        dOmega_dt = params.get('dOmega_dt', 1e-20)
+        z = params.get('z', 0)
+        
+        QG = self.compute_QG_term(r, M)
+        DM = self.compute_DM_term(r, M_DM)
+        GW = self.compute_GW_term(M, r, dOmega_dt)
+        
+        return {
+            'QG_term': QG,
+            'DM_term': DM,
+            'GW_term': GW,
+            'F_cosmo': self.compute_F_cosmo(r, r, 1.0, QG['QG_term'], DM['DM_term'], GW['GW_term']),
+            'cosmic_age': self.compute_cosmic_age(z),
+            'framework': 'UQFF_CosmicEvolution_v1.0'
+        }
+
+
+class GalaxyInteractionCalculator:
+    """
+    Galaxy Interaction Calculator for Tidal Forces and Spiral Dynamics.
+    
+    Master Equations:
+    - F_tidal = G × M_ext / d² : Tidal force from companion
+    - ψ_spiral = A × e^(-r²/(2σ²)) × e^(i(mθ - ωt)) : Density wave function
+    - M(t) = M₀ + SFR × t : Star formation mass accumulation
+    - g_M51 = g_base × (1 + F_env) + Ug_sum + U_i + quantum + DM
+    
+    Based on M51 (Whirlpool Galaxy) analysis with NGC 5195 interaction.
+    
+    Reference: Lines 2585-2720 (M51 MUGE Development)
+    """
+    
+    # Physical constants
+    G = 6.674e-11      # m³/(kg·s²)
+    M_sun = 1.989e30   # kg
+    kpc = 3.086e19     # m
+    
+    def __init__(self):
+        """Initialize Galaxy Interaction calculator."""
+        pass
+    
+    def compute_F_tidal(self, M_ext: float, d: float) -> dict:
+        """
+        Compute tidal force from companion galaxy.
+        F_tidal = G × M_ext / d²
+        
+        Args:
+            M_ext: Companion mass (kg or M_sun)
+            d: Separation distance (m or kpc)
+            
+        Returns:
+            dict with tidal force
+        """
+        # Convert units if needed
+        if M_ext < 1e20:
+            M_ext_kg = M_ext * self.M_sun
+        else:
+            M_ext_kg = M_ext
+        
+        if d < 1e10:
+            d_m = d * self.kpc
+        else:
+            d_m = d
+        
+        F_tidal = self.G * M_ext_kg / d_m**2
+        
+        return {
+            'F_tidal': F_tidal,
+            'M_ext': M_ext,
+            'M_ext_kg': M_ext_kg,
+            'd': d,
+            'd_m': d_m,
+            'equation': 'F_tidal = G × M_ext / d²'
+        }
+    
+    def compute_psi_spiral(self, r: float, theta: float, t: float,
+                            A: float = 1e-10, sigma: float = 1e3,
+                            m: int = 2, omega: float = 1e-15) -> dict:
+        """
+        Compute spiral density wave function.
+        ψ_spiral = A × e^(-r²/(2σ²)) × e^(i(mθ - ωt))
+        
+        Args:
+            r: Radial distance (m or kpc)
+            theta: Azimuthal angle (rad)
+            t: Time (s)
+            A: Amplitude
+            sigma: Width parameter (m or kpc)
+            m: Spiral arm number (typically 2)
+            omega: Pattern speed (rad/s)
+            
+        Returns:
+            dict with spiral wave function
+        """
+        # Convert if needed
+        if r < 1e10:
+            r_m = r * self.kpc
+        else:
+            r_m = r
+        
+        if sigma < 1e10:
+            sigma_m = sigma * self.kpc
+        else:
+            sigma_m = sigma
+        
+        # Gaussian envelope
+        gaussian = math.exp(-r_m**2 / (2 * sigma_m**2))
+        
+        # Phase
+        phase = m * theta - omega * t
+        
+        # Complex wave function
+        psi_real = A * gaussian * math.cos(phase)
+        psi_imag = A * gaussian * math.sin(phase)
+        psi_magnitude = A * gaussian
+        
+        # Density perturbation (|ψ|²)
+        density_perturbation = psi_magnitude**2
+        
+        return {
+            'psi_real': psi_real,
+            'psi_imag': psi_imag,
+            'psi_magnitude': psi_magnitude,
+            'density_perturbation': density_perturbation,
+            'gaussian_envelope': gaussian,
+            'phase': phase,
+            'm': m,
+            'omega': omega,
+            'equation': 'ψ_spiral = A × e^(-r²/(2σ²)) × e^(i(mθ-ωt))'
+        }
+    
+    def compute_M_t(self, M_0: float, SFR: float, t: float) -> dict:
+        """
+        Compute time-evolved mass with star formation.
+        M(t) = M₀ + SFR × t
+        
+        Args:
+            M_0: Initial mass (kg or M_sun)
+            SFR: Star formation rate (kg/s or M_sun/yr)
+            t: Time (s or yr)
+            
+        Returns:
+            dict with evolved mass
+        """
+        # Convert units if needed
+        if M_0 < 1e20:
+            M_0_kg = M_0 * self.M_sun
+        else:
+            M_0_kg = M_0
+        
+        # Assume SFR in M_sun/yr if small
+        if SFR < 1e10:
+            SFR_kg_s = SFR * self.M_sun / (365.25 * 24 * 3600)
+        else:
+            SFR_kg_s = SFR
+        
+        M_t = M_0_kg + SFR_kg_s * t
+        delta_M = SFR_kg_s * t
+        
+        return {
+            'M_t': M_t,
+            'M_0': M_0_kg,
+            'delta_M': delta_M,
+            'delta_M_solar': delta_M / self.M_sun,
+            'SFR': SFR,
+            'SFR_kg_s': SFR_kg_s,
+            't': t,
+            'equation': 'M(t) = M₀ + SFR × t'
+        }
+    
+    def compute_interaction_timescale(self, M_1: float, M_2: float, 
+                                        d: float, v: float) -> dict:
+        """
+        Compute galaxy interaction timescale.
+        t_interaction ≈ d / v
+        t_merge ≈ d / v × (1 + M_1/M_2)
+        
+        Args:
+            M_1: Primary galaxy mass
+            M_2: Companion mass
+            d: Separation
+            v: Relative velocity
+            
+        Returns:
+            dict with interaction timescales
+        """
+        t_crossing = d / v if v > 0 else float('inf')
+        t_merge = t_crossing * (1 + M_1 / M_2) if M_2 > 0 else float('inf')
+        
+        return {
+            't_crossing': t_crossing,
+            't_crossing_Myr': t_crossing / (3.156e7 * 1e6),
+            't_merge': t_merge,
+            't_merge_Gyr': t_merge / (3.156e7 * 1e9),
+            'equation': 't_merge ≈ d/v × (1 + M_1/M_2)'
+        }
+    
+    # M51 specific parameters
+    M51_PARAMS = {
+        'M_visible': 1.2e11,    # M_sun
+        'M_DM': 4e10,           # M_sun
+        'M_NGC5195': 1e10,      # M_sun
+        'r_0': 23.58,           # kpc (M51 radius)
+        'd_companion': 50,      # kpc (separation with NGC 5195)
+        'SFR': 1.0,             # M_sun/yr
+        'z': 0.002,
+        'B': 1e-5,              # T
+    }
+    
+    def solve_M51(self, params: dict = None) -> dict:
+        """
+        Solve M51-specific galaxy interaction model.
+        
+        Args:
+            params: Override M51 parameters
+            
+        Returns:
+            dict with M51 calculations
+        """
+        p = self.M51_PARAMS.copy()
+        if params:
+            p.update(params)
+        
+        t = params.get('t', 1e6 * 365.25 * 24 * 3600) if params else 1e6 * 365.25 * 24 * 3600  # 1 Myr default
+        theta = params.get('theta', 0) if params else 0
+        
+        return {
+            'F_tidal': self.compute_F_tidal(p['M_NGC5195'], p['d_companion']),
+            'psi_spiral': self.compute_psi_spiral(p['r_0'], theta, t),
+            'M_evolution': self.compute_M_t(p['M_visible'] + p['M_DM'], p['SFR'], t),
+            'parameters': p,
+            'framework': 'UQFF_M51_v1.0'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Galaxy Interaction solution.
+        
+        Args:
+            params: Dictionary with M_ext, d, M_0, SFR, etc.
+            
+        Returns:
+            dict with all galaxy interaction calculations
+        """
+        params = params or {}
+        M_ext = params.get('M_ext', 1e10)
+        d = params.get('d', 50)
+        M_0 = params.get('M_0', 1e11)
+        SFR = params.get('SFR', 1.0)
+        t = params.get('t', 1e15)
+        
+        return {
+            'F_tidal': self.compute_F_tidal(M_ext, d),
+            'M_evolution': self.compute_M_t(M_0, SFR, t),
+            'framework': 'UQFF_GalaxyInteraction_v1.0'
+        }
+
+
+class UniverseDiameterCalculator:
+    """
+    Universe Diameter Calculator.
+    
+    Master Equation:
+    D_universe = 2 × D_p × (1 + H(z) × t₀) × (1 + Λc²/(3H₀²)) 
+                 × (1 + quantum_correction) × (1 + k × r_c²)
+    
+    Where:
+    - D_p: Particle horizon distance
+    - H(z): Hubble parameter at redshift z
+    - t₀: Current cosmic time
+    - Λ: Cosmological constant
+    - k: Curvature parameter
+    - r_c: Comoving radius
+    
+    Estimated diameter: ~93 billion light-years (observable)
+    Full universe: possibly infinite or ~182 billion ly from UQFF
+    
+    Reference: Document 26/29 (Universe Diameter) lines 287-289
+    """
+    
+    # Physical constants
+    c = 2.998e8        # m/s
+    H_0 = 2.27e-18     # s⁻¹ (~70 km/s/Mpc)
+    Lambda = 1.1e-52   # m⁻² (cosmological constant)
+    hbar = 1.055e-34   # J·s
+    G = 6.674e-11      # m³/(kg·s²)
+    
+    # Cosmological parameters
+    t_0 = 4.35e17      # s (cosmic age ~13.8 Gyr)
+    ly = 9.461e15      # m (light-year)
+    
+    def __init__(self):
+        """Initialize Universe Diameter calculator."""
+        pass
+    
+    def compute_particle_horizon(self, t: float = None) -> dict:
+        """
+        Compute particle horizon distance.
+        D_p = c × t (simplified)
+        D_p ≈ 3c/H_0 × (integral correction) for matter-dominated
+        
+        Args:
+            t: Cosmic time (s), defaults to current age
+            
+        Returns:
+            dict with particle horizon
+        """
+        if t is None:
+            t = self.t_0
+        
+        # Simple estimate
+        D_p_simple = self.c * t
+        
+        # More accurate estimate with expansion
+        D_p_corrected = 3 * self.c / self.H_0  # ~46 billion ly
+        
+        return {
+            'D_p': D_p_corrected,
+            'D_p_simple': D_p_simple,
+            'D_p_ly': D_p_corrected / self.ly,
+            'D_p_Gly': D_p_corrected / (self.ly * 1e9),
+            't': t,
+            'equation': 'D_p ≈ 3c/H_0'
+        }
+    
+    def compute_H_z(self, z: float) -> dict:
+        """
+        Compute Hubble parameter at redshift z.
+        H(z) = H_0 × √(Ω_m(1+z)³ + Ω_Λ)
+        
+        Args:
+            z: Redshift
+            
+        Returns:
+            dict with Hubble parameter
+        """
+        Omega_m = 0.3    # Matter density parameter
+        Omega_Lambda = 0.7  # Dark energy density parameter
+        
+        H_z = self.H_0 * math.sqrt(Omega_m * (1 + z)**3 + Omega_Lambda)
+        
+        return {
+            'H_z': H_z,
+            'H_z_over_H_0': H_z / self.H_0,
+            'z': z,
+            'Omega_m': Omega_m,
+            'Omega_Lambda': Omega_Lambda,
+            'equation': 'H(z) = H_0 × √(Ω_m(1+z)³ + Ω_Λ)'
+        }
+    
+    def compute_cosmological_correction(self) -> dict:
+        """
+        Compute cosmological constant correction.
+        Λc²/(3H₀²)
+        
+        Returns:
+            dict with cosmological correction
+        """
+        correction = self.Lambda * self.c**2 / (3 * self.H_0**2)
+        
+        return {
+            'Lambda_correction': correction,
+            'Lambda': self.Lambda,
+            'equation': 'Λc²/(3H₀²)'
+        }
+    
+    def compute_quantum_correction(self, Delta_x: float = 1e-35,
+                                     Delta_p: float = 1e-24,
+                                     psi_integral: float = 1e-100,
+                                     M_total: float = 1e53) -> dict:
+        """
+        Compute quantum correction term.
+        (ℏ/√(Δx×Δp)) × ∫(ψ*Hψ dV) / (G × M_total)
+        
+        Args:
+            Delta_x: Position uncertainty (m)
+            Delta_p: Momentum uncertainty (kg·m/s)
+            psi_integral: Wave function integral
+            M_total: Total universe mass (kg)
+            
+        Returns:
+            dict with quantum correction
+        """
+        uncertainty_factor = self.hbar / math.sqrt(Delta_x * Delta_p)
+        quantum_correction = uncertainty_factor * psi_integral / (self.G * M_total)
+        
+        return {
+            'quantum_correction': quantum_correction,
+            'uncertainty_factor': uncertainty_factor,
+            'psi_integral': psi_integral,
+            'M_total': M_total,
+            'equation': '(ℏ/√(Δx×Δp)) × ψ_int / (G×M_total)'
+        }
+    
+    def compute_curvature_term(self, k: float, r_c: float) -> dict:
+        """
+        Compute curvature correction.
+        k × r_c²
+        
+        Args:
+            k: Curvature parameter (-1, 0, +1 or continuous)
+            r_c: Comoving radius (m)
+            
+        Returns:
+            dict with curvature term
+        """
+        curvature_term = k * r_c**2
+        
+        # Interpret curvature
+        if k > 0:
+            geometry = 'closed (spherical)'
+        elif k < 0:
+            geometry = 'open (hyperbolic)'
+        else:
+            geometry = 'flat (Euclidean)'
+        
+        return {
+            'curvature_term': curvature_term,
+            'k': k,
+            'r_c': r_c,
+            'geometry': geometry,
+            'equation': 'k × r_c²'
+        }
+    
+    def compute_D_universe(self, z: float = 0, k: float = 0,
+                            r_c: float = 4.4e26) -> dict:
+        """
+        Compute full universe diameter.
+        D = 2 × D_p × (1 + H×t₀) × (1 + Λc²/3H₀²) × (1 + quantum) × (1 + k×r_c²)
+        
+        Args:
+            z: Redshift (0 for current epoch)
+            k: Curvature parameter
+            r_c: Comoving radius
+            
+        Returns:
+            dict with universe diameter
+        """
+        # Component calculations
+        D_p_result = self.compute_particle_horizon()
+        H_z_result = self.compute_H_z(z)
+        Lambda_result = self.compute_cosmological_correction()
+        quantum_result = self.compute_quantum_correction()
+        curvature_result = self.compute_curvature_term(k, r_c)
+        
+        # Full calculation
+        D_p = D_p_result['D_p']
+        factor_H = 1 + H_z_result['H_z'] * self.t_0
+        factor_Lambda = 1 + Lambda_result['Lambda_correction']
+        factor_quantum = 1 + quantum_result['quantum_correction']
+        factor_curvature = 1 + curvature_result['curvature_term']
+        
+        D_universe = 2 * D_p * factor_H * factor_Lambda * factor_quantum * factor_curvature
+        
+        # Observable diameter (simpler)
+        D_observable = 2 * D_p  # ~93 billion ly
+        
+        return {
+            'D_universe': D_universe,
+            'D_universe_ly': D_universe / self.ly,
+            'D_universe_Gly': D_universe / (self.ly * 1e9),
+            'D_observable_ly': D_observable / self.ly,
+            'D_observable_Gly': D_observable / (self.ly * 1e9),
+            'D_p': D_p_result,
+            'H_z': H_z_result,
+            'Lambda_correction': Lambda_result,
+            'quantum_correction': quantum_result,
+            'curvature': curvature_result,
+            'factors': {
+                'factor_H': factor_H,
+                'factor_Lambda': factor_Lambda,
+                'factor_quantum': factor_quantum,
+                'factor_curvature': factor_curvature
+            },
+            'equation': 'D = 2×D_p × (1+H×t₀) × (1+Λc²/3H₀²) × (1+quantum) × (1+k×r_c²)'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Universe Diameter solution.
+        
+        Args:
+            params: Dictionary with z, k, r_c
+            
+        Returns:
+            dict with all universe diameter calculations
+        """
+        params = params or {}
+        z = params.get('z', 0)
+        k = params.get('k', 0)
+        r_c = params.get('r_c', 4.4e26)
+        
+        return {
+            'D_universe': self.compute_D_universe(z, k, r_c),
+            'framework': 'UQFF_UniverseDiameter_v1.0'
+        }
+
+
+class NuclearBindingCalculator:
+    """
+    Nuclear Binding Energy and Resonance Calculator.
+    
+    Master Equations:
+    - A_res = k_A × Z × (A/A_H) × (1 + δ_pair)
+    - f_res = (E_bind/h) × (A_H/A) × (1 + S_shell)
+    - S_shell = 0.1 × (Z_magic + N_magic)
+    - E_bind ≈ a_V×A - a_S×A^(2/3) - a_C×Z(Z-1)/A^(1/3) - a_A×(A-2Z)²/A + δ_pair
+    
+    Semi-empirical mass formula (Weizsäcker formula) with UQFF extensions.
+    
+    Reference: Document 28 lines 279-284
+    """
+    
+    # Weizsäcker mass formula coefficients (MeV)
+    a_V = 15.75     # Volume term
+    a_S = 17.8      # Surface term
+    a_C = 0.711     # Coulomb term
+    a_A = 23.7      # Asymmetry term
+    a_P = 11.2      # Pairing term
+    
+    # Physical constants
+    h = 6.626e-34   # J·s
+    MeV_to_J = 1.602e-13
+    
+    # Magic numbers
+    MAGIC_NUMBERS = [2, 8, 20, 28, 50, 82, 126]
+    
+    def __init__(self):
+        """Initialize Nuclear Binding calculator."""
+        self.k_A = 1.0
+        self.A_H = 1  # Hydrogen reference
+    
+    def compute_binding_energy(self, Z: int, A: int) -> dict:
+        """
+        Compute nuclear binding energy using semi-empirical mass formula.
+        E_bind = a_V×A - a_S×A^(2/3) - a_C×Z(Z-1)/A^(1/3) - a_A×(A-2Z)²/A + δ
+        
+        Args:
+            Z: Atomic number
+            A: Mass number
+            
+        Returns:
+            dict with binding energy
+        """
+        N = A - Z
+        
+        # Individual terms
+        E_volume = self.a_V * A
+        E_surface = -self.a_S * A**(2/3)
+        E_coulomb = -self.a_C * Z * (Z - 1) / A**(1/3) if A > 0 else 0
+        E_asymmetry = -self.a_A * (A - 2*Z)**2 / A if A > 0 else 0
+        
+        # Pairing term
+        if Z % 2 == 0 and N % 2 == 0:
+            delta = self.a_P / A**(0.5) if A > 0 else 0
+            pairing_type = 'even-even'
+        elif Z % 2 == 1 and N % 2 == 1:
+            delta = -self.a_P / A**(0.5) if A > 0 else 0
+            pairing_type = 'odd-odd'
+        else:
+            delta = 0
+            pairing_type = 'odd-A'
+        
+        # Total binding energy
+        E_bind_MeV = E_volume + E_surface + E_coulomb + E_asymmetry + delta
+        E_bind_J = E_bind_MeV * self.MeV_to_J
+        E_bind_per_nucleon = E_bind_MeV / A if A > 0 else 0
+        
+        return {
+            'E_bind_MeV': E_bind_MeV,
+            'E_bind_J': E_bind_J,
+            'E_bind_per_nucleon_MeV': E_bind_per_nucleon,
+            'E_volume': E_volume,
+            'E_surface': E_surface,
+            'E_coulomb': E_coulomb,
+            'E_asymmetry': E_asymmetry,
+            'delta_pairing': delta,
+            'pairing_type': pairing_type,
+            'Z': Z,
+            'A': A,
+            'N': N,
+            'equation': 'E = a_V×A - a_S×A^(2/3) - a_C×Z(Z-1)/A^(1/3) - a_A×(A-2Z)²/A + δ'
+        }
+    
+    def compute_stability(self, Z: int, A: int) -> dict:
+        """
+        Compute nuclear stability indicators.
+        
+        Args:
+            Z: Atomic number
+            A: Mass number
+            
+        Returns:
+            dict with stability indicators
+        """
+        N = A - Z
+        
+        # Check magic numbers
+        Z_magic = Z in self.MAGIC_NUMBERS
+        N_magic = N in self.MAGIC_NUMBERS
+        doubly_magic = Z_magic and N_magic
+        
+        # N/Z ratio
+        N_Z_ratio = N / Z if Z > 0 else 0
+        
+        # Stability line approximation: N ≈ Z for light, N > Z for heavy
+        if A <= 40:
+            N_stable = Z
+        else:
+            N_stable = 1.98 * Z**(0.5) + 0.015 * Z  # Approximate
+        
+        deviation = abs(N - N_stable)
+        
+        # Stability assessment
+        if doubly_magic:
+            stability = 'highly stable (doubly magic)'
+        elif Z_magic or N_magic:
+            stability = 'enhanced stability (magic number)'
+        elif deviation < 3:
+            stability = 'stable'
+        elif deviation < 10:
+            stability = 'marginally stable'
+        else:
+            stability = 'unstable'
+        
+        return {
+            'Z_magic': Z_magic,
+            'N_magic': N_magic,
+            'doubly_magic': doubly_magic,
+            'N_Z_ratio': N_Z_ratio,
+            'N_stable': N_stable,
+            'deviation': deviation,
+            'stability': stability
+        }
+    
+    def compute_S_shell(self, Z: int, N: int) -> dict:
+        """
+        Compute shell correction factor.
+        S_shell = 0.1 × (Z_magic + N_magic)
+        
+        Args:
+            Z: Atomic number
+            N: Neutron number
+            
+        Returns:
+            dict with shell correction
+        """
+        Z_magic = 1 if Z in self.MAGIC_NUMBERS else 0
+        N_magic = 1 if N in self.MAGIC_NUMBERS else 0
+        S_shell = 0.1 * (Z_magic + N_magic)
+        
+        return {
+            'S_shell': S_shell,
+            'Z_magic': Z_magic,
+            'N_magic': N_magic,
+            'equation': 'S_shell = 0.1 × (Z_magic + N_magic)'
+        }
+    
+    def compute_resonance_parameters(self, Z: int, A: int) -> dict:
+        """
+        Compute resonance amplitude and frequency for nucleus.
+        
+        Args:
+            Z: Atomic number
+            A: Mass number
+            
+        Returns:
+            dict with resonance parameters
+        """
+        N = A - Z
+        
+        # Get components
+        E_bind_result = self.compute_binding_energy(Z, A)
+        S_shell_result = self.compute_S_shell(Z, N)
+        
+        # Pairing correction
+        delta_pair = E_bind_result['delta_pairing'] / self.a_P if self.a_P > 0 else 0
+        
+        # Resonance amplitude
+        A_res = self.k_A * Z * (A / self.A_H) * (1 + delta_pair)
+        
+        # Resonance frequency
+        f_res = (E_bind_result['E_bind_J'] / self.h) * (self.A_H / A) * (1 + S_shell_result['S_shell'])
+        
+        return {
+            'A_res': A_res,
+            'f_res': f_res,
+            'f_res_Hz': f_res,
+            'delta_pair': delta_pair,
+            'S_shell': S_shell_result['S_shell'],
+            'E_bind': E_bind_result,
+            'stability': self.compute_stability(Z, A),
+            'equations': {
+                'A_res': 'A_res = k_A × Z × (A/A_H) × (1 + δ_pair)',
+                'f_res': 'f_res = (E_bind/h) × (A_H/A) × (1 + S_shell)'
+            }
+        }
+    
+    # Common isotopes for reference
+    ISOTOPES = {
+        'H-1': {'Z': 1, 'A': 1, 'name': 'Hydrogen'},
+        'H-2': {'Z': 1, 'A': 2, 'name': 'Deuterium'},
+        'He-4': {'Z': 2, 'A': 4, 'name': 'Helium-4'},
+        'C-12': {'Z': 6, 'A': 12, 'name': 'Carbon-12'},
+        'O-16': {'Z': 8, 'A': 16, 'name': 'Oxygen-16'},
+        'Fe-56': {'Z': 26, 'A': 56, 'name': 'Iron-56'},
+        'Pb-208': {'Z': 82, 'A': 208, 'name': 'Lead-208'},
+        'U-238': {'Z': 92, 'A': 238, 'name': 'Uranium-238'},
+    }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Nuclear Binding solution.
+        
+        Args:
+            params: Dictionary with Z, A or isotope name
+            
+        Returns:
+            dict with all nuclear binding calculations
+        """
+        params = params or {}
+        
+        # Get Z, A from params or isotope name
+        if 'isotope' in params:
+            iso = self.ISOTOPES.get(params['isotope'], self.ISOTOPES['Fe-56'])
+            Z = iso['Z']
+            A = iso['A']
+        else:
+            Z = params.get('Z', 26)  # Iron default
+            A = params.get('A', 56)
+        
+        return {
+            'binding_energy': self.compute_binding_energy(Z, A),
+            'stability': self.compute_stability(Z, A),
+            'resonance': self.compute_resonance_parameters(Z, A),
+            'framework': 'UQFF_NuclearBinding_v1.0'
+        }
+
+
+class ExtendedEnvironmentalForcesCalculator:
+    """
+    Extended Environmental Forces Calculator.
+    
+    Additional F_env components beyond basic EnvironmentalInteractionsCalculator:
+    - F_torque (T_spiral): Spiral arm torques
+    - F_shock (W_shock): Wind/shock interactions
+    - F_cosmo (QG_term + DM_term + GW_term + D_p + k×r_c²): Cosmological forces
+    - F_mag (M_mag + D(t)): Magnetic field evolution
+    - F_tech (F_tech + P_term): Technological/pressure terms
+    - F_shell (S_shell): Nuclear shell corrections
+    
+    Reference: Lines 506-508, 531 (Documents 30-38 analysis)
+    """
+    
+    # Physical constants
+    G = 6.674e-11   # m³/(kg·s²)
+    c = 2.998e8     # m/s
+    
+    def __init__(self):
+        """Initialize Extended Environmental Forces calculator."""
+        pass
+    
+    def compute_F_torque(self, T_spiral: float, r: float, M: float) -> dict:
+        """
+        Compute spiral arm torque force.
+        F_torque = T_spiral / r (simplified)
+        
+        Args:
+            T_spiral: Spiral arm torque (N·m)
+            r: Distance from center (m)
+            M: Mass affected (kg)
+            
+        Returns:
+            dict with torque force
+        """
+        if r > 0:
+            F_torque = T_spiral / r
+            a_torque = F_torque / M if M > 0 else 0
+        else:
+            F_torque = 0
+            a_torque = 0
+        
+        return {
+            'F_torque': F_torque,
+            'a_torque': a_torque,
+            'T_spiral': T_spiral,
+            'r': r,
+            'equation': 'F_torque = T_spiral / r'
+        }
+    
+    def compute_F_shock(self, rho: float, v_shock: float, A_shock: float = 1.0) -> dict:
+        """
+        Compute wind/shock interaction force.
+        F_shock = W_shock = ½ × ρ × v_shock² × A
+        
+        Args:
+            rho: Density (kg/m³)
+            v_shock: Shock velocity (m/s)
+            A_shock: Cross-sectional area (m²)
+            
+        Returns:
+            dict with shock force
+        """
+        F_shock = 0.5 * rho * v_shock**2 * A_shock
+        
+        # Ram pressure
+        P_ram = 0.5 * rho * v_shock**2
+        
+        return {
+            'F_shock': F_shock,
+            'P_ram': P_ram,
+            'rho': rho,
+            'v_shock': v_shock,
+            'A_shock': A_shock,
+            'equation': 'F_shock = ½ × ρ × v²_shock × A'
+        }
+    
+    def compute_F_mag(self, M_mag: float, D_t: float, B: float = 1e-5,
+                       tau_decay: float = 1e10) -> dict:
+        """
+        Compute magnetic field evolution force.
+        F_mag = M_mag × (1 - D(t))
+        D(t) = 1 - e^(-t/τ) : decay function
+        
+        Args:
+            M_mag: Magnetic energy term (J)
+            D_t: Decay time parameter (s)
+            B: Magnetic field (T)
+            tau_decay: Decay timescale (s)
+            
+        Returns:
+            dict with magnetic force
+        """
+        # Decay function
+        D = 1 - math.exp(-D_t / tau_decay) if tau_decay > 0 else 0
+        
+        F_mag = M_mag * (1 - D)
+        
+        return {
+            'F_mag': F_mag,
+            'M_mag': M_mag,
+            'D_decay': D,
+            'D_t': D_t,
+            'tau_decay': tau_decay,
+            'B': B,
+            'equation': 'F_mag = M_mag × (1 - D(t))'
+        }
+    
+    def compute_F_tech(self, P_term: float, F_tech_base: float,
+                        V: float = 1.0, A: float = 1.0) -> dict:
+        """
+        Compute technological/pressure forces.
+        F_tech = P_term × A + F_tech_base
+        
+        Args:
+            P_term: Pressure term (Pa)
+            F_tech_base: Base technological force (N)
+            V: Volume (m³)
+            A: Area (m²)
+            
+        Returns:
+            dict with tech force
+        """
+        F_tech = P_term * A + F_tech_base
+        
+        return {
+            'F_tech': F_tech,
+            'P_term': P_term,
+            'F_tech_base': F_tech_base,
+            'A': A,
+            'equation': 'F_tech = P_term × A + F_tech_base'
+        }
+    
+    def compute_F_shell(self, Z: int, N: int) -> dict:
+        """
+        Compute nuclear shell correction force.
+        F_shell = S_shell × k_shell
+        S_shell = 0.1 × (Z_magic + N_magic)
+        
+        Args:
+            Z: Atomic number
+            N: Neutron number
+            
+        Returns:
+            dict with shell force
+        """
+        MAGIC = [2, 8, 20, 28, 50, 82, 126]
+        Z_magic = 1 if Z in MAGIC else 0
+        N_magic = 1 if N in MAGIC else 0
+        S_shell = 0.1 * (Z_magic + N_magic)
+        
+        # Shell force (proportional to binding energy correction)
+        k_shell = 1e-12  # N per shell correction unit
+        F_shell = S_shell * k_shell
+        
+        return {
+            'F_shell': F_shell,
+            'S_shell': S_shell,
+            'Z_magic': Z_magic,
+            'N_magic': N_magic,
+            'equation': 'F_shell = S_shell × k_shell'
+        }
+    
+    def compute_F_cosmo(self, D_p: float, k: float, r_c: float,
+                         QG_term: float = 0, DM_term: float = 0,
+                         GW_term: float = 0) -> dict:
+        """
+        Compute cosmological force.
+        F_cosmo = D_p + k × r_c² + QG_term + DM_term + GW_term
+        
+        Args:
+            D_p: Particle horizon (m)
+            k: Curvature parameter
+            r_c: Comoving radius (m)
+            QG_term: Quantum gravity term
+            DM_term: Dark matter term
+            GW_term: Gravitational wave term
+            
+        Returns:
+            dict with cosmological force
+        """
+        curvature_term = k * r_c**2
+        F_cosmo = D_p + curvature_term + QG_term + DM_term + GW_term
+        
+        return {
+            'F_cosmo': F_cosmo,
+            'D_p': D_p,
+            'curvature_term': curvature_term,
+            'QG_term': QG_term,
+            'DM_term': DM_term,
+            'GW_term': GW_term,
+            'equation': 'F_cosmo = D_p + k×r_c² + QG_term + DM_term + GW_term'
+        }
+    
+    def compute_F_env_extended(self, params: dict = None) -> dict:
+        """
+        Compute total extended environmental force.
+        F_env_ext = F_torque + F_shock + F_mag + F_tech + F_shell + F_cosmo
+        
+        Args:
+            params: Dictionary with all component parameters
+            
+        Returns:
+            dict with total extended F_env
+        """
+        params = params or {}
+        
+        components = {}
+        F_total = 0
+        
+        # Torque
+        if 'T_spiral' in params:
+            torque = self.compute_F_torque(
+                params.get('T_spiral', 0),
+                params.get('r', 1e20),
+                params.get('M', 1e40)
+            )
+            components['F_torque'] = torque
+            F_total += torque['F_torque']
+        
+        # Shock
+        if 'v_shock' in params:
+            shock = self.compute_F_shock(
+                params.get('rho', 1e-20),
+                params.get('v_shock', 1e5),
+                params.get('A_shock', 1e20)
+            )
+            components['F_shock'] = shock
+            F_total += shock['F_shock']
+        
+        # Magnetic
+        if 'M_mag' in params:
+            mag = self.compute_F_mag(
+                params.get('M_mag', 1e30),
+                params.get('D_t', 1e6),
+                params.get('B', 1e-5)
+            )
+            components['F_mag'] = mag
+            F_total += mag['F_mag']
+        
+        # Tech/Pressure
+        if 'P_term' in params:
+            tech = self.compute_F_tech(
+                params.get('P_term', 1e-10),
+                params.get('F_tech_base', 0)
+            )
+            components['F_tech'] = tech
+            F_total += tech['F_tech']
+        
+        # Shell
+        if 'Z' in params:
+            shell = self.compute_F_shell(
+                params.get('Z', 26),
+                params.get('N', 30)
+            )
+            components['F_shell'] = shell
+            F_total += shell['F_shell']
+        
+        # Cosmological
+        if 'D_p' in params:
+            cosmo = self.compute_F_cosmo(
+                params.get('D_p', 4.4e26),
+                params.get('k', 0),
+                params.get('r_c', 4.4e26),
+                params.get('QG_term', 0),
+                params.get('DM_term', 0),
+                params.get('GW_term', 0)
+            )
+            components['F_cosmo'] = cosmo
+            F_total += cosmo['F_cosmo']
+        
+        return {
+            'F_env_extended': F_total,
+            'components': components,
+            'num_components': len(components),
+            'equation': 'F_env_ext = Σ(F_torque + F_shock + F_mag + F_tech + F_shell + F_cosmo)'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Extended Environmental Forces solution.
+        
+        Args:
+            params: Dictionary with all component parameters
+            
+        Returns:
+            dict with all calculations
+        """
+        return {
+            'F_env_extended': self.compute_F_env_extended(params),
+            'framework': 'UQFF_ExtendedEnv_v1.0'
+        }
+
+
 # Global Framework Instance
 TRIADIC_UQFF = TriadicUQFFFramework()
 
@@ -90965,7 +92459,14 @@ __all__.extend([
     'JeansMassCalculator',
     'QuantumWaveFunctionCalculator',
     'AetherSuperconductiveCalculator',
-    'CompressedMUGECalculator'
+    'CompressedMUGECalculator',
+    # Specialized Physics Calculators (Extended Analysis Feb 2026)
+    'HydrogenResonanceCalculator',
+    'CosmicEvolutionCalculator',
+    'GalaxyInteractionCalculator',
+    'UniverseDiameterCalculator',
+    'NuclearBindingCalculator',
+    'ExtendedEnvironmentalForcesCalculator'
 ])
 
 
