@@ -96019,8 +96019,1245 @@ __all__.extend([
     'SolarCycleModulatorCalculator',
     'CompressionCycleF_envCalculator',
     'DPMEnergyCalculator',
-    'QuantumState26GravityCalculator'
+    'QuantumState26GravityCalculator',
+    # Third Clone_2 Analysis Calculators (Feb 2026 - 8 new)
+    'VacuumEnergyDensityCalculator',
+    'THzResonanceBundleCalculator',
+    'NeutronProductionRateCalculator',
+    'HiggsFieldUQFFCalculator',
+    'MetalRetentionCGMCalculator',
+    'BoyleLawBuoyancyCalculator',
+    'SCmVelocityCalculator',
+    'PseudoMonopoleStateCalculator'
 ])
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# TRIADIC CLONE_2 THIRD ANALYSIS - 8 NEW CALCULATORS
+# From: Triadic Clone_2_08June2025.txt (Third Deep Analysis Pass)
+# Lines: 4400-10400 - Vacuum Energy, THz Resonance, LENR, Higgs, CGM
+# ═══════════════════════════════════════════════════════════════════════════════
+
+
+class VacuumEnergyDensityCalculator:
+    """
+    Vacuum Energy Density Calculator for [UA], [SCm], Aether, and Inertia.
+    
+    Master Equations:
+    - ρ_vac,[UA] = 7.09×10⁻³⁶ J/m³ (Universal Aether, level 13)
+    - ρ_vac,[SCm] = 7.09×10⁻³⁷ J/m³ (Superconductive Material, level 13)
+    - ρ_vac,A = 10⁻²³ J/m³ (Constant Aether background)
+    - ρ_vac,Ui = 2.84×10⁻³⁶ J/m³ (Universal Inertia, level 13)
+    - Level scaling: ρ_vac(n) = ρ_vac,base × (n/13)
+    
+    Reference: Clone_2 Lines 4400-4600. Quantum level scaling across 26 states.
+    """
+    
+    # Base vacuum energy densities (level 13 - Sun)
+    rho_vac_UA_base = 7.09e-36      # J/m³ - Universal Aether
+    rho_vac_SCm_base = 7.09e-37     # J/m³ - Superconductive Material
+    rho_vac_A = 1e-23               # J/m³ - Constant Aether background
+    rho_vac_Ui_base = 2.84e-36      # J/m³ - Universal Inertia
+    rho_vac_cosmological = 5.96e-27 # J/m³ - Cosmological vacuum (Λ)
+    
+    # Reference level
+    REFERENCE_LEVEL = 13
+    
+    def __init__(self):
+        """Initialize Vacuum Energy Density calculator."""
+        pass
+    
+    def compute_rho_vac_UA(self, n: int = 13) -> dict:
+        """
+        Compute Universal Aether vacuum energy density at quantum level n.
+        ρ_vac,[UA](n) = ρ_vac,[UA]_base × (n/13)
+        
+        Args:
+            n: Quantum state level (1-26)
+            
+        Returns:
+            dict with vacuum energy density
+        """
+        n = max(1, min(26, n))
+        rho = self.rho_vac_UA_base * (n / self.REFERENCE_LEVEL)
+        
+        return {
+            'rho_vac_UA': rho,
+            'rho_vac_UA_J_m3': rho,
+            'quantum_level': n,
+            'reference_level': self.REFERENCE_LEVEL,
+            'base_value': self.rho_vac_UA_base,
+            'equation': 'ρ_vac,[UA](n) = 7.09×10⁻³⁶ × (n/13) J/m³'
+        }
+    
+    def compute_rho_vac_SCm(self, n: int = 13) -> dict:
+        """
+        Compute Superconductive Material vacuum energy density at level n.
+        ρ_vac,[SCm](n) = ρ_vac,[SCm]_base × (n/13)
+        
+        Args:
+            n: Quantum state level (1-26)
+            
+        Returns:
+            dict with vacuum energy density
+        """
+        n = max(1, min(26, n))
+        rho = self.rho_vac_SCm_base * (n / self.REFERENCE_LEVEL)
+        
+        return {
+            'rho_vac_SCm': rho,
+            'rho_vac_SCm_J_m3': rho,
+            'quantum_level': n,
+            'equation': 'ρ_vac,[SCm](n) = 7.09×10⁻³⁷ × (n/13) J/m³'
+        }
+    
+    def compute_rho_vac_ratio(self, n: int = 13) -> dict:
+        """
+        Compute ratio of [UA] to [SCm] vacuum energy densities.
+        Ratio = ρ_vac,[UA] / ρ_vac,[SCm] = 10 (constant across levels)
+        
+        Args:
+            n: Quantum state level (1-26)
+            
+        Returns:
+            dict with ratio
+        """
+        rho_UA = self.compute_rho_vac_UA(n)['rho_vac_UA']
+        rho_SCm = self.compute_rho_vac_SCm(n)['rho_vac_SCm']
+        ratio = rho_UA / rho_SCm if rho_SCm > 0 else 10.0
+        
+        return {
+            'UA_SCm_ratio': ratio,
+            'rho_vac_UA': rho_UA,
+            'rho_vac_SCm': rho_SCm,
+            'quantum_level': n,
+            '1_plus_ratio': 1 + ratio,
+            'equation': 'ratio = ρ_vac,[UA] / ρ_vac,[SCm] = 10'
+        }
+    
+    def compute_all_densities(self, n: int = 13) -> dict:
+        """
+        Compute all five vacuum energy densities at quantum level n.
+        
+        Args:
+            n: Quantum state level (1-26)
+            
+        Returns:
+            dict with all vacuum energy densities
+        """
+        n = max(1, min(26, n))
+        scale_factor = n / self.REFERENCE_LEVEL
+        
+        rho_UA = self.rho_vac_UA_base * scale_factor
+        rho_SCm = self.rho_vac_SCm_base * scale_factor
+        rho_Ui = self.rho_vac_Ui_base * scale_factor
+        rho_A = self.rho_vac_A  # Constant, not scaled
+        rho_cosm = self.rho_vac_cosmological
+        
+        return {
+            'rho_vac_UA': rho_UA,
+            'rho_vac_SCm': rho_SCm,
+            'rho_vac_Ui': rho_Ui,
+            'rho_vac_A': rho_A,
+            'rho_vac_cosmological': rho_cosm,
+            'quantum_level': n,
+            'scale_factor': scale_factor,
+            'total_quantum_vac': rho_UA + rho_SCm + rho_Ui,
+            'equation': 'ρ(n) = ρ_base × (n/13)'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Vacuum Energy Density solution.
+        """
+        params = params or {}
+        n = params.get('n', 13)
+        
+        return {
+            'all_densities': self.compute_all_densities(n),
+            'ratio': self.compute_rho_vac_ratio(n),
+            'framework': 'UQFF_VacuumEnergyDensity_v1.0'
+        }
+
+
+class THzResonanceBundleCalculator:
+    """
+    THz Resonance Bundle Calculator for oscilloscope signal analysis.
+    
+    Master Equations:
+    - f_THz = 1.2-1.3 THz (resonance range)
+    - ω = 2πf ≈ 7.85×10¹² rad/s (angular frequency)
+    - U_m = Σ[μ_j/r_j × (1-e^(-γt)×cos(πt_n)) × φ̂_j] × P_SCm × E_react
+    - Power: P = V_eff² / Z
+    
+    Reference: Clone_2 Lines 5500-5700. THz hole communication bundle analysis.
+    """
+    
+    # Physical constants
+    c = 2.998e8           # m/s
+    hbar = 1.055e-34      # J·s
+    
+    # THz hole parameters
+    f_THz_min = 1.2e12    # Hz (1.2 THz)
+    f_THz_max = 1.3e12    # Hz (1.3 THz)
+    f_THz_center = 1.246e12  # Hz (observed sampling)
+    Z_typical = 50        # Ω (impedance)
+    
+    def __init__(self):
+        """Initialize THz Resonance Bundle calculator."""
+        pass
+    
+    def compute_angular_frequency(self, f: float = None) -> dict:
+        """
+        Compute angular frequency from THz frequency.
+        ω = 2πf
+        
+        Args:
+            f: Frequency in Hz (default: center THz frequency)
+            
+        Returns:
+            dict with angular frequency
+        """
+        f = f or self.f_THz_center
+        omega = 2 * math.pi * f
+        
+        return {
+            'omega': omega,
+            'omega_rad_s': omega,
+            'f': f,
+            'f_THz': f / 1e12,
+            'period': 1 / f if f > 0 else 0,
+            'equation': 'ω = 2πf'
+        }
+    
+    def compute_signal_power(self, V_pp: float, V_eff: float = None,
+                              Z: float = None) -> dict:
+        """
+        Compute signal power from voltage measurements.
+        P = V_eff² / Z
+        
+        Args:
+            V_pp: Peak-to-peak voltage (V)
+            V_eff: Effective (RMS) voltage (V), computed if not given
+            Z: Impedance (Ω)
+            
+        Returns:
+            dict with power
+        """
+        Z = Z or self.Z_typical
+        
+        # Compute V_eff if not provided (sinusoidal assumption)
+        if V_eff is None:
+            V_eff = V_pp / (2 * math.sqrt(2))
+        
+        P = V_eff**2 / Z if Z > 0 else 0
+        
+        return {
+            'P': P,
+            'P_W': P,
+            'P_mW': P * 1e3,
+            'V_pp': V_pp,
+            'V_eff': V_eff,
+            'Z': Z,
+            'equation': 'P = V_eff²/Z'
+        }
+    
+    def compute_Um_resonance(self, mu_j: float = 3.38e23, r_j: float = 1e16,
+                              gamma: float = 5e-5, t: float = 1.0,
+                              t_n: float = 0.0, P_SCm: float = 1.0,
+                              E_react: float = 1e46) -> dict:
+        """
+        Compute Universal Magnetism contribution from THz bundle.
+        U_m = Σ[μ_j/r_j × (1-e^(-γt)×cos(πt_n)) × φ̂_j] × P_SCm × E_react
+        
+        Args:
+            mu_j: Magnetic moment (T·pm³)
+            r_j: Distance (m)
+            gamma: Decay rate (day⁻¹)
+            t: Time (days)
+            t_n: Normalized time
+            P_SCm: SCm power factor
+            E_react: Reaction energy
+            
+        Returns:
+            dict with U_m contribution
+        """
+        # Magnetic field contribution
+        B_contrib = mu_j / r_j if r_j > 0 else 0
+        
+        # Time factor
+        exp_term = math.exp(-gamma * t)
+        cos_term = math.cos(math.pi * t_n)
+        time_factor = 1 - exp_term * cos_term
+        
+        # Full U_m
+        U_m = B_contrib * time_factor * P_SCm * E_react
+        
+        return {
+            'U_m': U_m,
+            'U_m_J_m3': U_m,
+            'B_contrib': B_contrib,
+            'time_factor': time_factor,
+            'mu_j': mu_j,
+            'r_j': r_j,
+            'gamma': gamma,
+            't': t,
+            'P_SCm': P_SCm,
+            'E_react': E_react,
+            'equation': 'U_m = μ_j/r_j × (1-e^(-γt)×cos(πt_n)) × P_SCm × E_react'
+        }
+    
+    def compute_dual_channel_phase(self, V_pp_ch1: float, V_pp_ch2: float,
+                                    f_ch1: float = None, f_ch2: float = None) -> dict:
+        """
+        Analyze dual-channel oscilloscope signals for phase relationship.
+        
+        Args:
+            V_pp_ch1: Channel 1 peak-to-peak voltage
+            V_pp_ch2: Channel 2 peak-to-peak voltage
+            f_ch1: Channel 1 frequency
+            f_ch2: Channel 2 frequency
+            
+        Returns:
+            dict with phase analysis
+        """
+        f_ch1 = f_ch1 or self.f_THz_center
+        f_ch2 = f_ch2 or self.f_THz_center
+        
+        # Determine relative phase (simplified)
+        amplitude_ratio = V_pp_ch2 / V_pp_ch1 if V_pp_ch1 > 0 else 1.0
+        freq_ratio = f_ch2 / f_ch1 if f_ch1 > 0 else 1.0
+        
+        # Signal shape classification
+        if amplitude_ratio < 0.5:
+            shape_ch2 = 'suppressed'
+        elif amplitude_ratio > 1.5:
+            shape_ch2 = 'amplified'
+        else:
+            shape_ch2 = 'balanced'
+        
+        return {
+            'amplitude_ratio': amplitude_ratio,
+            'freq_ratio': freq_ratio,
+            'V_pp_ch1': V_pp_ch1,
+            'V_pp_ch2': V_pp_ch2,
+            'f_ch1': f_ch1,
+            'f_ch2': f_ch2,
+            'shape_ch2': shape_ch2,
+            'phase_locked': abs(freq_ratio - 1.0) < 0.01,
+            'equation': 'ratio = V_ch2/V_ch1, f_ratio = f_ch2/f_ch1'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive THz Resonance Bundle solution.
+        """
+        params = params or {}
+        f = params.get('f', self.f_THz_center)
+        V_pp = params.get('V_pp', 0.8)
+        
+        return {
+            'angular_frequency': self.compute_angular_frequency(f),
+            'signal_power': self.compute_signal_power(V_pp),
+            'Um_resonance': self.compute_Um_resonance(),
+            'framework': 'UQFF_THzResonanceBundle_v1.0'
+        }
+
+
+class NeutronProductionRateCalculator:
+    """
+    LENR Neutron Production Rate Calculator.
+    
+    Master Equations:
+    - η = k_η × e^(-[SSq]×n/26) × e^(-(π-t)) × (U_m / ρ_vac,[UA])
+    - LENR: η ≈ 10¹³ cm⁻²/s (metallic hydride cells)
+    - Exploding wires: η ≈ 10⁸ cm⁻²/s
+    - Solar corona: η ≈ 7×10⁻³ cm⁻²/s
+    - Calibration: k_η = 10⁻¹¹³
+    
+    Reference: Clone_2 Lines 1000-1200, 4400-4600. LENR validation.
+    """
+    
+    # LENR calibration constants
+    k_eta = 1e-113        # Master calibration constant
+    SSq = 0.57            # Superconductive state quotient
+    
+    # Reference production rates (cm⁻²/s)
+    eta_metallic_hydride = 1e13
+    eta_exploding_wires = 1e8
+    eta_solar_corona = 7e-3
+    
+    # Reference electric fields (V/m)
+    E_metallic_hydride = 2e11
+    E_exploding_wires = 2.88e12
+    E_solar_corona = 1.2e-3
+    
+    def __init__(self):
+        """Initialize Neutron Production Rate calculator."""
+        pass
+    
+    def compute_eta_UQFF(self, n: int = 13, t: float = 1.0,
+                         U_m: float = 1e50, rho_vac_UA: float = 7.09e-36) -> dict:
+        """
+        Compute LENR neutron production rate using UQFF.
+        η = k_η × e^(-[SSq]×n/26) × e^(-(π-t)) × (U_m / ρ_vac,[UA])
+        
+        Args:
+            n: Quantum state level (1-26)
+            t: Time parameter (normalized)
+            U_m: Universal magnetism value
+            rho_vac_UA: Vacuum energy density of [UA]
+            
+        Returns:
+            dict with production rate
+        """
+        n = max(1, min(26, n))
+        
+        # Exponential factors
+        exp_SSq = math.exp(-self.SSq * n / 26)
+        exp_pi_t = math.exp(-(math.pi - t))
+        
+        # U_m ratio
+        Um_ratio = U_m / rho_vac_UA if rho_vac_UA > 0 else 0
+        
+        # Full production rate
+        eta = self.k_eta * exp_SSq * exp_pi_t * Um_ratio
+        
+        return {
+            'eta': eta,
+            'eta_cm2_s': eta,
+            'k_eta': self.k_eta,
+            'SSq': self.SSq,
+            'n': n,
+            't': t,
+            'exp_SSq_factor': exp_SSq,
+            'exp_pi_t_factor': exp_pi_t,
+            'Um_ratio': Um_ratio,
+            'equation': 'η = k_η × e^(-[SSq]×n/26) × e^(-(π-t)) × (U_m/ρ_vac,[UA])'
+        }
+    
+    def compute_eta_from_E_field(self, E: float, regime: str = 'custom') -> dict:
+        """
+        Estimate neutron production from electric field strength.
+        
+        Args:
+            E: Electric field strength (V/m)
+            regime: 'metallic', 'exploding', 'solar', or 'custom'
+            
+        Returns:
+            dict with estimated production rate
+        """
+        # Reference scaling (empirical)
+        if regime == 'metallic':
+            eta_ref = self.eta_metallic_hydride
+            E_ref = self.E_metallic_hydride
+        elif regime == 'exploding':
+            eta_ref = self.eta_exploding_wires
+            E_ref = self.E_exploding_wires
+        elif regime == 'solar':
+            eta_ref = self.eta_solar_corona
+            E_ref = self.E_solar_corona
+        else:
+            # Custom: scale from metallic hydride
+            eta_ref = self.eta_metallic_hydride
+            E_ref = self.E_metallic_hydride
+        
+        # Linear scaling assumption
+        eta = eta_ref * (E / E_ref) if E_ref > 0 else 0
+        
+        return {
+            'eta': eta,
+            'eta_cm2_s': eta,
+            'E_field': E,
+            'E_ref': E_ref,
+            'eta_ref': eta_ref,
+            'regime': regime,
+            'equation': 'η ∝ E/E_ref × η_ref'
+        }
+    
+    def validate_against_srivastava(self, eta_measured: float,
+                                     system: str = 'metallic_hydride') -> dict:
+        """
+        Validate neutron production rate against Srivastava et al. data.
+        
+        Args:
+            eta_measured: Measured production rate (cm⁻²/s)
+            system: 'metallic_hydride', 'exploding_wires', 'solar_corona'
+            
+        Returns:
+            dict with validation results
+        """
+        if system == 'metallic_hydride':
+            eta_expected = self.eta_metallic_hydride
+        elif system == 'exploding_wires':
+            eta_expected = self.eta_exploding_wires
+        elif system == 'solar_corona':
+            eta_expected = self.eta_solar_corona
+        else:
+            eta_expected = self.eta_metallic_hydride
+        
+        # Percent difference
+        if eta_expected > 0:
+            percent_diff = abs(eta_measured - eta_expected) / eta_expected * 100
+            match_quality = max(0, 100 - percent_diff)
+        else:
+            percent_diff = 0
+            match_quality = 100
+        
+        return {
+            'eta_measured': eta_measured,
+            'eta_expected': eta_expected,
+            'percent_difference': percent_diff,
+            'match_quality': match_quality,
+            'validated': match_quality >= 90,
+            'system': system,
+            'reference': 'Srivastava et al. LENR Theory'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Neutron Production Rate solution.
+        """
+        params = params or {}
+        n = params.get('n', 13)
+        
+        return {
+            'eta_UQFF': self.compute_eta_UQFF(n),
+            'eta_metallic': self.compute_eta_from_E_field(2e11, 'metallic'),
+            'framework': 'UQFF_NeutronProduction_v1.0'
+        }
+
+
+class HiggsFieldUQFFCalculator:
+    """
+    Higgs Field UQFF Integration Calculator.
+    
+    Master Equations:
+    - m_H ≈ 125 GeV (Higgs boson mass)
+    - U_H = λ_H × ρ_vac,[UA']:[SCm] × ω_H(t) × e^(-[SSq]×n/26) × (1+f_quasi)
+    - k_Higgs ≈ 1.79×10¹⁸ (calibration constant)
+    
+    Reference: Clone_2 Lines 4400-4600, 10200. Higgs physics integration.
+    """
+    
+    # Physical constants
+    c = 2.998e8              # m/s
+    hbar = 1.055e-34         # J·s
+    eV_to_J = 1.602e-19      # J/eV
+    GeV_to_J = 1.602e-10     # J/GeV
+    
+    # Higgs parameters
+    m_H_GeV = 125.0          # Higgs boson mass (GeV)
+    m_H_kg = 125.0 * 1.602e-10 / (2.998e8)**2  # ~2.23×10⁻²⁵ kg
+    k_Higgs = 1.79e18        # UQFF calibration constant
+    
+    # UQFF integration parameters
+    SSq = 0.57               # Superconductive state quotient
+    lambda_H = 0.13          # Higgs self-coupling (approximate)
+    f_quasi = 0.01           # Quasi-particle factor
+    
+    def __init__(self):
+        """Initialize Higgs Field UQFF calculator."""
+        pass
+    
+    def compute_U_H(self, n: int = 13, t: float = 1.0,
+                    rho_vac_ratio: float = 1e-36,
+                    omega_H: float = 1e15) -> dict:
+        """
+        Compute Higgs field contribution to UQFF.
+        U_H = λ_H × ρ_vac,[UA']:[SCm] × ω_H(t) × e^(-[SSq]×n/26) × (1+f_quasi)
+        
+        Args:
+            n: Quantum state level (1-26)
+            t: Time parameter
+            rho_vac_ratio: Combined vacuum energy density ratio
+            omega_H: Higgs field angular frequency
+            
+        Returns:
+            dict with Higgs field contribution
+        """
+        n = max(1, min(26, n))
+        
+        # Exponential suppression
+        exp_factor = math.exp(-self.SSq * n / 26)
+        
+        # Quasi-particle enhancement
+        quasi_factor = 1 + self.f_quasi
+        
+        # Full Higgs field contribution
+        U_H = self.lambda_H * rho_vac_ratio * omega_H * exp_factor * quasi_factor
+        
+        return {
+            'U_H': U_H,
+            'U_H_J_m3': U_H,
+            'lambda_H': self.lambda_H,
+            'rho_vac_ratio': rho_vac_ratio,
+            'omega_H': omega_H,
+            'exp_factor': exp_factor,
+            'quasi_factor': quasi_factor,
+            'n': n,
+            'equation': 'U_H = λ_H × ρ_vac × ω_H × e^(-[SSq]×n/26) × (1+f_quasi)'
+        }
+    
+    def compute_Higgs_mass_UQFF(self, v_ew: float = 246.0) -> dict:
+        """
+        Compute Higgs boson mass in UQFF framework.
+        m_H = √(2λ_H) × v_EW (electroweak VEV)
+        
+        Args:
+            v_ew: Electroweak vacuum expectation value (GeV)
+            
+        Returns:
+            dict with Higgs mass
+        """
+        m_H_computed = math.sqrt(2 * self.lambda_H) * v_ew
+        m_H_kg = m_H_computed * self.GeV_to_J / self.c**2
+        
+        # Comparison with observed
+        percent_diff = abs(m_H_computed - self.m_H_GeV) / self.m_H_GeV * 100
+        
+        return {
+            'm_H': m_H_computed,
+            'm_H_GeV': m_H_computed,
+            'm_H_kg': m_H_kg,
+            'm_H_observed': self.m_H_GeV,
+            'lambda_H': self.lambda_H,
+            'v_ew': v_ew,
+            'percent_difference': percent_diff,
+            'UQFF_valid': percent_diff < 5,
+            'equation': 'm_H = √(2λ_H) × v_EW'
+        }
+    
+    def compute_k_Higgs_calibration(self, E_LHC: float = 14e12) -> dict:
+        """
+        Compute UQFF Higgs calibration constant.
+        k_Higgs = E_LHC / m_H_c²
+        
+        Args:
+            E_LHC: LHC collision energy (eV)
+            
+        Returns:
+            dict with calibration constant
+        """
+        m_H_eV = self.m_H_GeV * 1e9  # Convert to eV
+        k_Higgs_computed = E_LHC / m_H_eV if m_H_eV > 0 else 0
+        
+        return {
+            'k_Higgs': self.k_Higgs,
+            'k_Higgs_computed': k_Higgs_computed,
+            'E_LHC': E_LHC,
+            'm_H_eV': m_H_eV,
+            'equation': 'k_Higgs ≈ 1.79×10¹⁸'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Higgs Field UQFF solution.
+        """
+        params = params or {}
+        n = params.get('n', 13)
+        
+        return {
+            'U_H': self.compute_U_H(n),
+            'mass': self.compute_Higgs_mass_UQFF(),
+            'calibration': self.compute_k_Higgs_calibration(),
+            'framework': 'UQFF_HiggsField_v1.0'
+        }
+
+
+class MetalRetentionCGMCalculator:
+    """
+    Circumgalactic Medium (CGM) Metal Retention Calculator.
+    
+    Master Equations:
+    - f_Z,CGM = U_i / (U_i + U_m) : Metal retention fraction
+    - U_i: Universal Inertia (collapse resistance)
+    - U_m: Universal Magnetism (outflow driving)
+    - Typical: f_Z,CGM ≈ 0.5 for star-forming galaxies
+    
+    Reference: Clone_2 Lines 10200-10400. Galaxy feedback modeling.
+    """
+    
+    # Typical parameters
+    f_feedback = 0.063       # Feedback efficiency
+    f_quasi = 0.01           # Quasi-particle factor
+    f_TRZ = 0.1              # Time-reversal zone factor
+    
+    def __init__(self):
+        """Initialize Metal Retention CGM calculator."""
+        pass
+    
+    def compute_f_Z_CGM(self, U_i: float, U_m: float) -> dict:
+        """
+        Compute CGM metal retention fraction.
+        f_Z,CGM = U_i / (U_i + U_m)
+        
+        Args:
+            U_i: Universal Inertia value
+            U_m: Universal Magnetism value
+            
+        Returns:
+            dict with metal retention fraction
+        """
+        total = U_i + U_m
+        f_Z = U_i / total if total > 0 else 0.5
+        
+        # Classification
+        if f_Z > 0.7:
+            classification = 'metal-rich CGM'
+        elif f_Z > 0.4:
+            classification = 'star-forming galaxy'
+        else:
+            classification = 'outflow-dominated'
+        
+        return {
+            'f_Z_CGM': f_Z,
+            'U_i': U_i,
+            'U_m': U_m,
+            'U_total': total,
+            'classification': classification,
+            'metal_expelled_fraction': 1 - f_Z,
+            'equation': 'f_Z,CGM = U_i / (U_i + U_m)'
+        }
+    
+    def compute_U_i(self, lambda_i: float = 1.0, rho_vac_SCm: float = 7.09e-37,
+                    rho_vac_UA: float = 7.09e-36, omega_s: float = 1e-6,
+                    t_n: float = 0.0) -> dict:
+        """
+        Compute Universal Inertia.
+        U_i = λ_i × ρ_vac,[SCm] × ρ_vac,[UA] × ω_s(t) × cos(πt_n) × (1+f_TRZ)
+        
+        Args:
+            lambda_i: Inertia scaling factor
+            rho_vac_SCm: SCm vacuum energy density
+            rho_vac_UA: UA vacuum energy density
+            omega_s: Angular frequency
+            t_n: Normalized time
+            
+        Returns:
+            dict with Universal Inertia
+        """
+        cos_term = math.cos(math.pi * t_n)
+        trz_factor = 1 + self.f_TRZ
+        
+        U_i = lambda_i * rho_vac_SCm * rho_vac_UA * omega_s * cos_term * trz_factor
+        
+        return {
+            'U_i': U_i,
+            'U_i_J_m3': U_i,
+            'lambda_i': lambda_i,
+            'rho_vac_SCm': rho_vac_SCm,
+            'rho_vac_UA': rho_vac_UA,
+            'omega_s': omega_s,
+            'cos_pi_tn': cos_term,
+            'f_TRZ': self.f_TRZ,
+            'equation': 'U_i = λ_i × ρ_SCm × ρ_UA × ω_s × cos(πt_n) × (1+f_TRZ)'
+        }
+    
+    def compute_feedback_enhanced(self, f_Z_base: float, M_BH: float = 1e8,
+                                   sigma: float = 150e3) -> dict:
+        """
+        Compute feedback-enhanced metal retention.
+        
+        Args:
+            f_Z_base: Base metal retention fraction
+            M_BH: SMBH mass (M_sun)
+            sigma: Velocity dispersion (m/s)
+            
+        Returns:
+            dict with enhanced retention
+        """
+        # M-sigma relation feedback
+        M_sigma_ratio = (M_BH / 1e8) / ((sigma / 150e3)**4)
+        f_feedback_eff = self.f_feedback * M_sigma_ratio
+        
+        f_Z_enhanced = f_Z_base * (1 - f_feedback_eff)
+        f_Z_enhanced = max(0, min(1, f_Z_enhanced))
+        
+        return {
+            'f_Z_CGM': f_Z_enhanced,
+            'f_Z_base': f_Z_base,
+            'f_feedback': self.f_feedback,
+            'f_feedback_eff': f_feedback_eff,
+            'M_BH': M_BH,
+            'sigma': sigma,
+            'M_sigma_ratio': M_sigma_ratio,
+            'equation': 'f_Z = f_Z_base × (1 - f_feedback_eff)'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive CGM Metal Retention solution.
+        """
+        params = params or {}
+        U_i = params.get('U_i', 1e-47)
+        U_m = params.get('U_m', 1e-47)
+        
+        return {
+            'f_Z_CGM': self.compute_f_Z_CGM(U_i, U_m),
+            'U_i_computed': self.compute_U_i(),
+            'framework': 'UQFF_MetalRetentionCGM_v1.0'
+        }
+
+
+class BoyleLawBuoyancyCalculator:
+    """
+    Boyle's Law Buoyancy Calculator for vacuum energy relationships.
+    
+    Master Equations:
+    - Buoyancy ∝ (ρ_vac,[UA] / ρ_vac,[SCm]) × (V_little / V_big)
+    - V_little = 1 atm, V_big = 33 atm (reference pressures)
+    - Pressure-volume inverse relationship in vacuum
+    
+    Reference: Clone_2 Lines 4400-4600. Buoyancy as Boyle's Law analog.
+    """
+    
+    # Reference pressures
+    V_little = 1.0         # Reference pressure (atm) - surface
+    V_big = 33.0           # Reference pressure (atm) - depth
+    
+    # Vacuum densities
+    rho_vac_UA = 7.09e-36  # J/m³
+    rho_vac_SCm = 7.09e-37 # J/m³
+    
+    def __init__(self):
+        """Initialize Boyle Law Buoyancy calculator."""
+        pass
+    
+    def compute_buoyancy_factor(self, rho_UA: float = None, rho_SCm: float = None,
+                                 V_little: float = None, V_big: float = None) -> dict:
+        """
+        Compute buoyancy factor using Boyle's Law analog.
+        Buoyancy ∝ (ρ_vac,[UA] / ρ_vac,[SCm]) × (V_little / V_big)
+        
+        Args:
+            rho_UA: UA vacuum energy density
+            rho_SCm: SCm vacuum energy density
+            V_little: Small volume/pressure (atm)
+            V_big: Large volume/pressure (atm)
+            
+        Returns:
+            dict with buoyancy factor
+        """
+        rho_UA = rho_UA or self.rho_vac_UA
+        rho_SCm = rho_SCm or self.rho_vac_SCm
+        V_little = V_little or self.V_little
+        V_big = V_big or self.V_big
+        
+        # Density ratio
+        density_ratio = rho_UA / rho_SCm if rho_SCm > 0 else 10.0
+        
+        # Volume ratio (inverse pressure)
+        volume_ratio = V_little / V_big if V_big > 0 else 1/33
+        
+        # Buoyancy factor
+        buoyancy = density_ratio * volume_ratio
+        
+        return {
+            'buoyancy': buoyancy,
+            'density_ratio': density_ratio,
+            'volume_ratio': volume_ratio,
+            'rho_UA': rho_UA,
+            'rho_SCm': rho_SCm,
+            'V_little': V_little,
+            'V_big': V_big,
+            'normalized_buoyancy': buoyancy / 0.303,  # Normalize to reference
+            'equation': 'Buoyancy ∝ (ρ_UA/ρ_SCm) × (V_little/V_big)'
+        }
+    
+    def compute_depth_buoyancy(self, depth_atm: float) -> dict:
+        """
+        Compute buoyancy factor at given depth pressure.
+        
+        Args:
+            depth_atm: Ambient pressure at depth (atm)
+            
+        Returns:
+            dict with depth-dependent buoyancy
+        """
+        volume_ratio = self.V_little / depth_atm if depth_atm > 0 else 1.0
+        buoyancy = (self.rho_vac_UA / self.rho_vac_SCm) * volume_ratio
+        
+        # Physical interpretation
+        if volume_ratio > 0.5:
+            regime = 'surface-like (high buoyancy)'
+        elif volume_ratio > 0.1:
+            regime = 'intermediate (moderate buoyancy)'
+        else:
+            regime = 'deep (compressed)'
+        
+        return {
+            'buoyancy': buoyancy,
+            'depth_atm': depth_atm,
+            'volume_ratio': volume_ratio,
+            'regime': regime,
+            'equation': 'Buoyancy = 10 × (1/depth_atm)'
+        }
+    
+    def compute_cosmic_buoyancy(self, n: int = 13, r: float = 1e20) -> dict:
+        """
+        Compute cosmic-scale buoyancy using quantum state.
+        
+        Args:
+            n: Quantum state level (1-26)
+            r: Distance scale (m)
+            
+        Returns:
+            dict with cosmic buoyancy
+        """
+        n = max(1, min(26, n))
+        
+        # Scale vacuum densities by quantum level
+        rho_UA_n = self.rho_vac_UA * (n / 13)
+        rho_SCm_n = self.rho_vac_SCm * (n / 13)
+        
+        # Effective "pressure" scales with distance
+        V_ratio = (1e16 / r) if r > 0 else 1e-4
+        
+        buoyancy = (rho_UA_n / rho_SCm_n) * V_ratio
+        
+        return {
+            'cosmic_buoyancy': buoyancy,
+            'quantum_level': n,
+            'r': r,
+            'rho_UA_n': rho_UA_n,
+            'rho_SCm_n': rho_SCm_n,
+            'V_ratio': V_ratio,
+            'equation': 'Buoyancy_cosmic = (ρ_UA(n)/ρ_SCm(n)) × (r_ref/r)'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Boyle Law Buoyancy solution.
+        """
+        params = params or {}
+        depth = params.get('depth_atm', 1.0)
+        
+        return {
+            'standard_buoyancy': self.compute_buoyancy_factor(),
+            'depth_buoyancy': self.compute_depth_buoyancy(depth),
+            'cosmic_buoyancy': self.compute_cosmic_buoyancy(),
+            'framework': 'UQFF_BoyleLawBuoyancy_v1.0'
+        }
+
+
+class SCmVelocityCalculator:
+    """
+    Superconductive Material (SCm) Propagation Velocity Calculator.
+    
+    Master Equations:
+    - v_SCm = 10⁸ m/s ≈ c/3 (SCm propagation speed)
+    - E_react = (ρ_vac,[SCm] × v_SCm²) / ρ_vac,A × e^(-κt)
+    - Relativistic energy transfer at sub-light speeds
+    
+    Reference: Clone_2 Lines 4400-4600. SCm velocity and energy.
+    """
+    
+    # Physical constants
+    c = 2.998e8             # m/s (speed of light)
+    
+    # SCm parameters
+    v_SCm = 1e8             # m/s (SCm propagation speed ≈ c/3)
+    kappa = 0.0005          # day⁻¹ (decay rate)
+    
+    # Vacuum densities
+    rho_vac_SCm = 7.09e-37  # J/m³
+    rho_vac_A = 1e-23       # J/m³ (Aether background)
+    
+    def __init__(self):
+        """Initialize SCm Velocity calculator."""
+        pass
+    
+    def compute_v_SCm_ratio(self) -> dict:
+        """
+        Compute SCm velocity as fraction of speed of light.
+        v_SCm / c ≈ 1/3
+        
+        Returns:
+            dict with velocity ratio
+        """
+        ratio = self.v_SCm / self.c
+        
+        return {
+            'v_SCm': self.v_SCm,
+            'c': self.c,
+            'v_SCm_c_ratio': ratio,
+            'percent_c': ratio * 100,
+            'gamma_factor': 1 / math.sqrt(1 - ratio**2),  # Lorentz factor
+            'equation': 'v_SCm ≈ c/3 = 10⁸ m/s'
+        }
+    
+    def compute_E_react(self, t: float = 0.0) -> dict:
+        """
+        Compute reaction energy from SCm propagation.
+        E_react = (ρ_vac,[SCm] × v_SCm²) / ρ_vac,A × e^(-κt)
+        
+        Args:
+            t: Time (days)
+            
+        Returns:
+            dict with reaction energy
+        """
+        # Energy density from SCm motion
+        E_kinetic = self.rho_vac_SCm * self.v_SCm**2
+        
+        # Ratio to Aether
+        E_ratio = E_kinetic / self.rho_vac_A if self.rho_vac_A > 0 else 0
+        
+        # Time decay
+        decay_factor = math.exp(-self.kappa * t)
+        
+        # Full reaction energy (normalized to 10^46 scale)
+        E_react = E_ratio * decay_factor
+        E_react_normalized = 1e46 * decay_factor
+        
+        return {
+            'E_react': E_react,
+            'E_react_normalized': E_react_normalized,
+            'E_kinetic': E_kinetic,
+            'E_ratio': E_ratio,
+            'decay_factor': decay_factor,
+            't': t,
+            'kappa': self.kappa,
+            'equation': 'E_react = (ρ_SCm × v_SCm²)/ρ_A × e^(-κt) ≈ 10⁴⁶ × e^(-κt)'
+        }
+    
+    def compute_Um_contribution(self, mu_j: float = 3.38e23, r_j: float = 1e16,
+                                  P_SCm: float = 1.0, t: float = 0.0) -> dict:
+        """
+        Compute Universal Magnetism contribution via SCm velocity.
+        U_m ∝ v_SCm × E_react × P_SCm
+        
+        Args:
+            mu_j: Magnetic moment
+            r_j: Distance
+            P_SCm: SCm power factor
+            t: Time
+            
+        Returns:
+            dict with U_m contribution
+        """
+        E_react = self.compute_E_react(t)['E_react_normalized']
+        
+        # Magnetic contribution
+        B_contrib = mu_j / r_j if r_j > 0 else 0
+        
+        # U_m scaling
+        U_m = B_contrib * (self.v_SCm / self.c) * E_react * P_SCm
+        
+        return {
+            'U_m': U_m,
+            'U_m_J_m3': U_m,
+            'v_SCm': self.v_SCm,
+            'E_react': E_react,
+            'B_contrib': B_contrib,
+            'P_SCm': P_SCm,
+            'equation': 'U_m ∝ v_SCm × E_react × P_SCm'
+        }
+    
+    def compute_relativistic_effects(self) -> dict:
+        """
+        Compute relativistic effects at SCm velocity.
+        
+        Returns:
+            dict with relativistic parameters
+        """
+        beta = self.v_SCm / self.c
+        gamma = 1 / math.sqrt(1 - beta**2)
+        
+        # Relativistic kinetic energy factor
+        KE_factor = gamma - 1
+        
+        # Time dilation
+        time_dilation = 1 / gamma
+        
+        return {
+            'beta': beta,
+            'gamma': gamma,
+            'KE_factor': KE_factor,
+            'time_dilation': time_dilation,
+            'length_contraction': 1 / gamma,
+            'v_SCm': self.v_SCm,
+            'c': self.c,
+            'equation': 'γ = 1/√(1-β²), β = v/c'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive SCm Velocity solution.
+        """
+        params = params or {}
+        t = params.get('t', 0.0)
+        
+        return {
+            'velocity_ratio': self.compute_v_SCm_ratio(),
+            'E_react': self.compute_E_react(t),
+            'relativistic': self.compute_relativistic_effects(),
+            'framework': 'UQFF_SCmVelocity_v1.0'
+        }
+
+
+class PseudoMonopoleStateCalculator:
+    """
+    Pseudo-Monopole Quantum State Calculator for 26 DPM states.
+    
+    Master Equations:
+    - δ_n = φ × (2π)^(n/6) : State angle
+    - ρ_vac,[UA']:[SCm](n,t) = ρ_vac,[UA'] × (ρ_SCm/ρ_UA)^n × e^(-[SSq]×n/26) × e^(-(π-t))
+    - Species index = log(ρ_vac,[SCm]/ρ_vac,[UA']) × n
+    
+    Reference: Clone_2 Lines 10200-10400. DPM 26 quantum states.
+    """
+    
+    # Physical constants
+    phi = (1 + math.sqrt(5)) / 2  # Golden ratio ≈ 1.618
+    pi = math.pi
+    
+    # UQFF parameters
+    SSq = 0.57               # Superconductive state quotient
+    rho_vac_UA_prime = 1e-23 # J/m³ (UA' reference)
+    rho_vac_SCm = 7.09e-37   # J/m³
+    rho_vac_UA = 7.09e-36    # J/m³
+    
+    def __init__(self):
+        """Initialize Pseudo-Monopole State calculator."""
+        pass
+    
+    def compute_delta_n(self, n: int) -> dict:
+        """
+        Compute pseudo-monopole state angle.
+        δ_n = φ × (2π)^(n/6)
+        
+        Args:
+            n: Quantum state (1-26)
+            
+        Returns:
+            dict with state angle
+        """
+        n = max(1, min(26, n))
+        
+        delta_n = self.phi * (2 * self.pi) ** (n / 6)
+        delta_n_rad = delta_n % (2 * self.pi)  # Normalize to [0, 2π)
+        delta_n_deg = math.degrees(delta_n_rad)
+        
+        return {
+            'delta_n': delta_n,
+            'delta_n_rad': delta_n_rad,
+            'delta_n_deg': delta_n_deg,
+            'n': n,
+            'phi': self.phi,
+            'equation': 'δ_n = φ × (2π)^(n/6)'
+        }
+    
+    def compute_rho_vac_state(self, n: int, t: float = 1.0) -> dict:
+        """
+        Compute vacuum energy density at state n.
+        ρ_vac,[UA']:[SCm](n,t) = ρ_vac,[UA'] × (ρ_SCm/ρ_UA)^n × e^(-[SSq]×n/26) × e^(-(π-t))
+        
+        Args:
+            n: Quantum state (1-26)
+            t: Time parameter
+            
+        Returns:
+            dict with vacuum energy density
+        """
+        n = max(1, min(26, n))
+        
+        # Ratio factor
+        ratio_factor = (self.rho_vac_SCm / self.rho_vac_UA) ** n
+        
+        # Exponential factors
+        exp_SSq = math.exp(-self.SSq * n / 26)
+        exp_pi_t = math.exp(-(self.pi - t))
+        
+        # Full density
+        rho_state = self.rho_vac_UA_prime * ratio_factor * exp_SSq * exp_pi_t
+        
+        return {
+            'rho_vac_state': rho_state,
+            'rho_vac_J_m3': rho_state,
+            'n': n,
+            't': t,
+            'ratio_factor': ratio_factor,
+            'exp_SSq': exp_SSq,
+            'exp_pi_t': exp_pi_t,
+            'equation': 'ρ(n,t) = ρ_UA\' × (ρ_SCm/ρ_UA)^n × e^(-[SSq]×n/26) × e^(-(π-t))'
+        }
+    
+    def compute_species_index(self, n: int) -> dict:
+        """
+        Compute species index from pseudo-monopole state.
+        Species index = log(ρ_vac,[SCm]/ρ_vac,[UA']) × n
+        
+        Args:
+            n: Quantum state (1-26)
+            
+        Returns:
+            dict with species index
+        """
+        n = max(1, min(26, n))
+        
+        ratio = self.rho_vac_SCm / self.rho_vac_UA_prime if self.rho_vac_UA_prime > 0 else 0
+        log_ratio = math.log10(ratio) if ratio > 0 else -14
+        species_index = log_ratio * n
+        
+        # Map to element-like interpretation
+        if abs(species_index) < 10:
+            classification = 'light element analog'
+        elif abs(species_index) < 50:
+            classification = 'medium element analog'
+        else:
+            classification = 'heavy element analog'
+        
+        return {
+            'species_index': species_index,
+            'n': n,
+            'log_ratio': log_ratio,
+            'rho_ratio': ratio,
+            'classification': classification,
+            'atomic_number_analog': int(abs(species_index)) % 118 + 1,
+            'equation': 'species_index = log(ρ_SCm/ρ_UA\') × n'
+        }
+    
+    def compute_all_26_states(self, t: float = 1.0) -> dict:
+        """
+        Compute all 26 pseudo-monopole states.
+        
+        Args:
+            t: Time parameter
+            
+        Returns:
+            dict with all 26 states
+        """
+        states = {}
+        for n in range(1, 27):
+            states[f'state_{n}'] = {
+                'delta': self.compute_delta_n(n),
+                'rho_vac': self.compute_rho_vac_state(n, t),
+                'species': self.compute_species_index(n)
+            }
+        
+        return {
+            'states': states,
+            'n_states': 26,
+            't': t,
+            'framework': 'DPM 26-State Russian Doll Structure'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Pseudo-Monopole State solution.
+        """
+        params = params or {}
+        n = params.get('n', 13)
+        t = params.get('t', 1.0)
+        
+        return {
+            'delta_n': self.compute_delta_n(n),
+            'rho_vac_state': self.compute_rho_vac_state(n, t),
+            'species_index': self.compute_species_index(n),
+            'framework': 'UQFF_PseudoMonopoleState_v1.0'
+        }
 
 
 if __name__ == "__main__":
