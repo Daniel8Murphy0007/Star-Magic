@@ -142,6 +142,7 @@ using namespace UQFF;
 // UQFF Inter-Component Communication and Enhanced Widgets
 #include "source2_event_bus.h"       // Event bus for cross-widget communication
 #include "source2_widgets_enhanced.h" // SessionLogWidget, PythonBridge, ComparisonDashboard, SessionPersistence
+#include "ipc/uqff_ipc.h"            // IPC layer - Pipeline communication to calculators
 
 // Define M_PI if not available (not part of C++ standard, POSIX extension)
 // Note: UQFF::PI is preferred, M_PI kept for legacy compatibility
@@ -11036,6 +11037,25 @@ int main(int argc, char *argv[])
     //   - Platform-specific initialization (Windows, macOS, Linux)
     //   - Application-wide resources (fonts, colors, settings)
     QApplication app(argc, argv);
+    
+    // ========================================================================
+    // IPC CHANNEL INITIALIZATION (Phase 1 - Simultaneous Joint Pipeline)
+    // ========================================================================
+    // Connect to the shared IPC channel for pipeline communication
+    std::unique_ptr<UQFF::IPC::SharedMemoryChannel> ipc_channel;
+    try {
+        ipc_channel = std::make_unique<UQFF::IPC::SharedMemoryChannel>(
+            "StarMagic_UQFF", 1024 * 1024, true);  // 1MB, create if not exists
+        if (ipc_channel->is_connected()) {
+            std::cout << "IPC Channel: CONNECTED (StarMagic_UQFF)" << std::endl;
+        } else {
+            std::cout << "IPC Channel: Created, waiting for connections" << std::endl;
+        }
+    } catch (const std::exception& e) {
+        std::cerr << "IPC Channel: Failed to initialize - " << e.what() << std::endl;
+        std::cerr << "  Pipeline communication will use file-based fallback" << std::endl;
+        // Non-fatal - continue with file-based pipeline
+    }
 
     // Create main window object
     // This calls MainWindow constructor (which creates entire UI)

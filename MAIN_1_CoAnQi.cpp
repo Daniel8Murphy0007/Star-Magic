@@ -144,6 +144,9 @@
 // CSV Body Reader - loads astronomical data from bodies_*.csv files (APIFetch.py output)
 #include "csv_body_reader.h"
 
+// IPC Layer - SharedMemory/NamedPipe for SIMULTANEOUS JOINT OPERATION pipeline
+#include "ipc/uqff_ipc.h"
+
 // Wolfram WSTP integration (optional)
 #ifdef USE_EMBEDDED_WOLFRAM
 extern void WolframEmbeddedBridge();
@@ -23947,6 +23950,21 @@ int main(int argc, char *argv[])
         return 0;
     }
     // ========== END CLI ACCESS POINT ==========
+
+    // ========== IPC PIPELINE CONNECTION ==========
+    // Connect to SIMULTANEOUS JOINT OPERATION pipeline via SharedMemory/NamedPipe
+    std::unique_ptr<UQFF_IPC::SharedMemoryChannel> ipc_channel;
+    try {
+        ipc_channel = std::make_unique<UQFF_IPC::SharedMemoryChannel>("MAIN_1_CoAnQi");
+        if (ipc_channel->connect()) {
+            g_logger.log("IPC: Connected to UQFF Simultaneous Joint Operation pipeline", 1);
+        } else {
+            g_logger.log("IPC: Running in standalone mode (no pipeline connection)", 2);
+        }
+    } catch (const std::exception& e) {
+        g_logger.log("IPC: Init error: " + std::string(e.what()) + " - running standalone", 2);
+    }
+    // ========== END IPC CONNECTION ==========
 
     // Main interactive loop
     while (true)

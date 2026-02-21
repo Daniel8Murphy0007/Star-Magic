@@ -130,6 +130,19 @@ except ImportError:
 # to avoid circular dependency (QCalc_Wolfram_Extensions imports CONSTANTS from QCalc)
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# IPC PIPELINE CONNECTION - SIMULTANEOUS JOINT OPERATION
+# ═══════════════════════════════════════════════════════════════════════════════
+# Connect to the 5 Principal Programs pipeline via SharedMemory/NamedPipe
+try:
+    from ipc.uqff_ipc import UQFFIPCClient, get_ipc_client, ipc_connected
+    IPC_AVAILABLE = True
+    _qcalc_ipc = get_ipc_client("QCalc")
+except ImportError:
+    IPC_AVAILABLE = False
+    _qcalc_ipc = None
+    def ipc_connected(): return False
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # UNIVERSAL PHYSICAL CONSTANTS
 # ═══════════════════════════════════════════════════════════════════════════════
 # These are FUNDAMENTAL physics constants - NOT system-specific data.

@@ -149,6 +149,19 @@ except ImportError:
     UQFFFTPSClient = None
     FTPSConfig = None
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# IPC PIPELINE CONNECTION - SIMULTANEOUS JOINT OPERATION
+# ═══════════════════════════════════════════════════════════════════════════════
+# Connect to the 5 Principal Programs pipeline via SharedMemory/NamedPipe
+try:
+    from ipc.uqff_ipc import UQFFIPCClient, get_ipc_client, ipc_connected
+    IPC_AVAILABLE = True
+    _condensed_ipc = get_ipc_client("CondensedPhysics")
+except ImportError:
+    IPC_AVAILABLE = False
+    _condensed_ipc = None
+    def ipc_connected(): return False
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # NUMERICAL METHODS LIBRARY - ODE Solvers, Integration, Optimization

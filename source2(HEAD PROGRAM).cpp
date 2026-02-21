@@ -84,6 +84,205 @@
 #include <algorithm>         // std algorithms - searching, sorting, and other operations
 #include <fstream>           // File streams - file input/output operations
 #include <chrono>            // Time library - date/time operations and timing
+#include <functional>        // std::function - for callbacks
+#include <atomic>            // std::atomic - for thread-safe flags
+#include <mutex>             // std::mutex - for thread synchronization
+
+// VR Runtime Integration (merged from vr_runtime.cpp)
+#include "ipc/uqff_ipc.h"    // IPC layer - Named Pipes, SharedMem for pipeline communication
+
+// ============================================================================
+// VR/VM RUNTIME LAYER (Merged from vr/vr_runtime.cpp)
+// Part of 5 Principal Programs - Simultaneous Joint Operation Pipeline
+// ============================================================================
+
+namespace VR {
+
+// Runtime state enumeration
+enum class RuntimeState {
+    Uninitialized,
+    Initializing,
+    Ready,
+    Running,
+    Paused,
+    ShuttingDown,
+    Error
+};
+
+// VR Runtime configuration
+struct RuntimeConfig {
+    std::string application_name = "Star-Magic UQFF VR";
+    uint32_t engine_version = 1;
+    uint32_t render_width = 2048;
+    uint32_t render_height = 2048;
+    float refresh_rate = 90.0f;
+    bool enable_voice_commands = true;
+    bool enable_gesture_recognition = true;
+    bool enable_performance_overlay = false;
+    bool use_shared_memory = true;
+    bool verbose = false;
+    std::string physics_ipc_channel = "StarMagic_UQFF";
+    uint16_t physics_port = 3141;
+    std::string astro_program_path;
+    std::string voice_model_path;
+    
+    static RuntimeConfig from_args(int argc, char* argv[]) {
+        RuntimeConfig config;
+        for (int i = 1; i < argc; ++i) {
+            std::string arg = argv[i];
+            if (arg == "--verbose" || arg == "-v") config.verbose = true;
+            else if (arg == "--vr-mode") config.use_shared_memory = true;
+            else if (arg == "--physics-port" && i + 1 < argc) 
+                config.physics_port = static_cast<uint16_t>(std::stoi(argv[++i]));
+            else if (arg == "--no-voice") config.enable_voice_commands = false;
+            else if (arg == "--no-gesture") config.enable_gesture_recognition = false;
+            else if (arg == "--perf-overlay") config.enable_performance_overlay = true;
+        }
+        return config;
+    }
+};
+
+// Performance metrics
+struct PerformanceMetrics {
+    double frame_time_ms = 0.0;
+    double avg_fps = 0.0;
+    uint64_t frames_rendered = 0;
+    double physics_latency_ms = 0.0;
+};
+
+// Frame state for VR rendering
+struct FrameState {
+    uint64_t frame_number = 0;
+    std::chrono::steady_clock::time_point timestamp;
+    double predicted_display_time = 0.0;
+    
+    struct Pose {
+        float position[3] = {0, 0, 0};
+        float orientation[4] = {0, 0, 0, 1};
+    } head_pose;
+    
+    struct HandPose {
+        bool valid = false;
+        float position[3] = {0, 0, 0};
+        float orientation[4] = {0, 0, 0, 1};
+    } left_hand, right_hand;
+    
+    struct PhysicsData {
+        bool valid = false;
+        double F_U = 0.0;
+        double field_gradient[3] = {0, 0, 0};
+        double timestamp = 0.0;
+    } physics_data;
+};
+
+/**
+ * @class VRRuntime
+ * @brief VR/VM GPU Runtime for Star-Magic UQFF
+ * 
+ * Manages VR headset integration, GPU simulations, and physics IPC.
+ * Part of 5 Principal Programs - Simultaneous Joint Operation Pipeline.
+ */
+class VRRuntime {
+public:
+    static VRRuntime& instance() {
+        static VRRuntime instance;
+        return instance;
+    }
+    
+    ~VRRuntime() { shutdown(); }
+    
+    // Lifecycle
+    bool initialize(const RuntimeConfig& config) {
+        if (state_ != RuntimeState::Uninitialized) return false;
+        config_ = config;
+        state_ = RuntimeState::Initializing;
+        
+        if (config_.verbose) {
+            std::cout << "VRRuntime: Initializing..." << std::endl;
+            std::cout << "  Physics IPC: " << config_.physics_ipc_channel << std::endl;
+        }
+        
+        // Initialize IPC connection to physics backend
+        if (!initPhysicsConnection()) {
+            std::cerr << "VRRuntime: Physics IPC connection failed (non-fatal)" << std::endl;
+        }
+        
+        state_ = RuntimeState::Ready;
+        return true;
+    }
+    
+    void shutdown() {
+        if (state_ == RuntimeState::Uninitialized) return;
+        state_ = RuntimeState::ShuttingDown;
+        shutdown_requested_ = true;
+        physics_channel_.reset();
+        state_ = RuntimeState::Uninitialized;
+    }
+    
+    bool isReady() const { return state_ == RuntimeState::Ready || state_ == RuntimeState::Running; }
+    RuntimeState getState() const { return state_; }
+    const PerformanceMetrics& getMetrics() const { return metrics_; }
+    
+    // IPC Physics connection
+    bool initPhysicsConnection() {
+        try {
+            physics_channel_ = std::make_unique<UQFF::IPC::SharedMemoryChannel>(
+                config_.physics_ipc_channel, 1024 * 1024, true);  // 1MB, create
+            return physics_channel_->is_connected();
+        } catch (const std::exception& e) {
+            std::cerr << "VRRuntime: IPC init failed: " << e.what() << std::endl;
+            return false;
+        }
+    }
+    
+    bool isPhysicsConnected() const {
+        return physics_channel_ && physics_channel_->is_connected();
+    }
+    
+    // Request field calculation via IPC
+    void requestFieldUpdate(double r, double M, double t) {
+        if (!isPhysicsConnected()) return;
+        
+        UQFF::IPC::MessageHeader header(UQFF::IPC::MessageType::CALCULATE_FIELD, sizeof(double) * 3);
+        double params[3] = {r, M, t};
+        physics_channel_->send(header, params);
+    }
+    
+    // Get field result from IPC
+    bool getFieldResult(double& F_U, double& Ug_sum) {
+        if (!isPhysicsConnected()) return false;
+        
+        UQFF::IPC::MessageHeader header;
+        std::vector<uint8_t> buffer;
+        if (!physics_channel_->receive(header, buffer, 0)) return false;  // Non-blocking
+        
+        if (header.type == UQFF::IPC::MessageType::RESPONSE_DATA && buffer.size() >= sizeof(double) * 2) {
+            const double* data = reinterpret_cast<const double*>(buffer.data());
+            F_U = data[0];
+            Ug_sum = data[1];
+            return true;
+        }
+        return false;
+    }
+    
+private:
+    VRRuntime() = default;
+    VRRuntime(const VRRuntime&) = delete;
+    VRRuntime& operator=(const VRRuntime&) = delete;
+    
+    RuntimeConfig config_;
+    RuntimeState state_ = RuntimeState::Uninitialized;
+    std::atomic<bool> shutdown_requested_{false};
+    PerformanceMetrics metrics_;
+    
+    // IPC channel for physics communication
+    std::unique_ptr<UQFF::IPC::SharedMemoryChannel> physics_channel_;
+};
+
+} // namespace VR
+
+// Global VR runtime accessor
+VR::VRRuntime& getVRRuntime() { return VR::VRRuntime::instance(); }
 
 // ============================================================================
 // PREPROCESSOR DEFINITIONS - Constants and API keys used throughout the program
@@ -2184,6 +2383,28 @@ int main(int argc, char *argv[])
     //   - Platform-specific initialization (Windows, macOS, Linux)
     //   - Application-wide resources (fonts, colors, settings)
     QApplication app(argc, argv);
+    
+    // ========================================================================
+    // VR RUNTIME INITIALIZATION (Merged from vr_runtime.cpp)
+    // Part of 5 Principal Programs - Simultaneous Joint Operation Pipeline
+    // ========================================================================
+    VR::RuntimeConfig vrConfig = VR::RuntimeConfig::from_args(argc, argv);
+    VR::VRRuntime& vrRuntime = VR::VRRuntime::instance();
+    
+    if (!vrRuntime.initialize(vrConfig)) {
+        std::cerr << "Warning: VR Runtime initialization failed (non-fatal)" << std::endl;
+        std::cerr << "  IPC physics channel: " << vrConfig.physics_ipc_channel << std::endl;
+        // Continue - VR is optional, GUI still works
+    } else {
+        std::cout << "VR Runtime initialized successfully" << std::endl;
+        std::cout << "  IPC Channel: " << vrConfig.physics_ipc_channel << std::endl;
+        std::cout << "  Physics Port: " << vrConfig.physics_port << std::endl;
+        if (vrRuntime.isPhysicsConnected()) {
+            std::cout << "  Physics IPC: CONNECTED" << std::endl;
+        } else {
+            std::cout << "  Physics IPC: Not connected (start physics backend)" << std::endl;
+        }
+    }
 
     // Create main window object
     // This calls MainWindow constructor (which creates entire UI)
@@ -2207,9 +2428,15 @@ int main(int argc, char *argv[])
     //   - Signal/slot activations
     //   - Window repaints
     // Returns exit code when application quits (0 = normal exit)
-    return app.exec();
+    int result = app.exec();
+    
+    // Shutdown VR Runtime (cleanup IPC channels)
+    VR::VRRuntime::instance().shutdown();
+    std::cout << "VR Runtime shutdown complete" << std::endl;
+    
+    return result;
 }
 
 // MOC include required for Q_OBJECT in .cpp file
 // This must be at the END of the file after the class definition
-#include "vr_runtime_main.moc"
+#include "source2_head_program.moc"
