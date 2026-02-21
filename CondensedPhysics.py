@@ -4859,8 +4859,23 @@ CONSTANTS = {
     'rho_vac_sw': 8e-21,       # ρ_vac,sw: Solar wind vacuum energy density (J/m³)
                                # Energy density from [SCm]/[UA] interactions in solar wind
     
-    # Vacuum Energy Densities
-    'rho_vac_UA': 7.09e-36,    # [UA] vacuum density (J/m³)
+    # ═══════════════════════════════════════════════════════════════════════════
+    # VACUUM DENSITY GRADIENT SYSTEM - DUAL-SCALE PHYSICS
+    # ═══════════════════════════════════════════════════════════════════════════
+    # The UQFF framework uses TWO vacuum density scales that create a GRADIENT:
+    #
+    # 1. GRAVITATIONAL SCALE (rho_vac_UA): 7.09e-36 J/m³
+    #    - Used in: Ug1-4 equations, cosmological terms, UQFF buoyancy
+    #
+    # 2. FIELD SCALE (rho_vac_UA_field): 1e-27 J/m³
+    #    - Used in: Electric field terms, neutron production, magnetism
+    #
+    # GRADIENT RATIO: ~7.09e-9 drives DPM field-gravity coupling
+    # DO NOT UNIFY - THE GRADIENT IS INTENTIONAL PHYSICS
+    # ═══════════════════════════════════════════════════════════════════════════
+    'rho_vac_UA': 7.09e-36,          # GRAVITATIONAL SCALE: Ug1-4, buoyancy (J/m³)
+    'rho_vac_UA_field': 1e-27,       # FIELD SCALE: E-field, neutron prod (J/m³)
+    'rho_vac_gradient_ratio': 7.09e-9,  # Gradient drives DPM coupling
     
     # ═══════════════════════════════════════════════════════════════════════════
     # ρ_vac,[SCm] - SUPERCONDUCTIVE MATERIAL VACUUM ENERGY DENSITY

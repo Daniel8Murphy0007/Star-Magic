@@ -26,9 +26,23 @@ const CONSTANTS = {
     GRAVITATIONAL_CONSTANT: 6.674e-11, // G (m�/kg�s�)
     BOHR_RADIUS: 0.529e-10,        // a0 (m)
 
-    // UQFF Specific Constants
-    RHO_VAC_UA: 7.09e-36,          // Universal Aether vacuum density (J/m�)
-    RHO_VAC_SCM: 7.09e-37,         // SCm vacuum density (J/m�) 
+    // UQFF Specific Constants - VACUUM DENSITY GRADIENT SYSTEM
+    // ═══════════════════════════════════════════════════════════════════════════════
+    // The UQFF framework uses TWO vacuum density scales that create a GRADIENT:
+    //
+    // 1. GRAVITATIONAL SCALE (RHO_VAC_UA): 7.09e-36 J/m³
+    //    - Used in: Ug1-4 equations, cosmological terms, UQFF buoyancy
+    //
+    // 2. FIELD SCALE (RHO_VAC_UA_FIELD): 1e-27 J/m³
+    //    - Used in: Electric field terms, neutron production, magnetism
+    //
+    // GRADIENT RATIO: ~7.09e-9 drives DPM field-gravity coupling
+    // DO NOT UNIFY - THE GRADIENT IS INTENTIONAL PHYSICS
+    // ═══════════════════════════════════════════════════════════════════════════════
+    RHO_VAC_UA: 7.09e-36,          // GRAVITATIONAL SCALE: Ug1-4, buoyancy (J/m³)
+    RHO_VAC_UA_FIELD: 1e-27,       // FIELD SCALE: E-field, neutron prod (J/m³)
+    RHO_VAC_GRADIENT_RATIO: 7.09e-9, // Gradient drives DPM coupling
+    RHO_VAC_SCM: 7.09e-37,         // SCm vacuum density (J/m³) 
     HUBBLE_TIME: 13.8e9 * 365 * 86400, // t_Hubble (s)
     LAMBDA_COSMO: 1.1e-52,         // Cosmological constant (m^-2�)
 

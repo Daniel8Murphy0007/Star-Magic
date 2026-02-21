@@ -157,10 +157,43 @@ class Constants:
     # UQFF-SPECIFIC CONSTANTS (Murphy Framework)
     # ═══════════════════════════════════════════════════════════════════════════
     
-    # Universal Aether vacuum density ρ_UA (kg/m³)
+    # ═══════════════════════════════════════════════════════════════════════════
+    # VACUUM DENSITY GRADIENT SYSTEM
+    # ═══════════════════════════════════════════════════════════════════════════
+    #
+    # The UQFF framework uses TWO vacuum density scales that create a GRADIENT:
+    #
+    # 1. GRAVITATIONAL SCALE (rho_vac_UA): 7.09e-36 J/m³
+    #    - Used in: Ug1-4 equations, cosmological terms, UQFF buoyancy
+    #    - Represents: Cosmic vacuum energy density (dark energy scale)
+    #    - Derived from: Λc²/8πG ≈ 5.96e-27 J/m³ modified by SCm factor
+    #
+    # 2. FIELD SCALE (rho_vac_UA_field): 1e-27 J/m³
+    #    - Used in: Electric field terms, neutron production, magnetism
+    #    - Represents: Local field coupling vacuum density
+    #    - Derived from: Critical density ρ_c ≈ 9.47e-27 kg/m³
+    #
+    # GRADIENT RATIO: rho_vac_UA / rho_vac_UA_field = 7.09e-9
+    #    - This ~10^9 ratio creates coupling between gravitational and field sectors
+    #    - The gradient drives energy flow in DPM (Di-Pseudo-Monopole) interactions
+    #    - Mathematically: ∇ρ_vac = (ρ_UA - ρ_field) / L_transition
+    #
+    # DO NOT "FIX" THIS BY UNIFYING - THE GRADIENT IS INTENTIONAL PHYSICS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # Universal Aether vacuum density ρ_UA (J/m³) - GRAVITATIONAL SCALE
+    # Used in: UQFF gravity (Ug1-4), buoyancy (Ub_i), cosmological terms
     rho_vac_UA: float = 7.09e-36
     
-    # SCm vacuum density ρ_SCm (kg/m³)
+    # Universal Aether vacuum density ρ_UA_field (J/m³) - FIELD SCALE
+    # Used in: Electric field (E = U_m/ρ_field/r), neutron production (η)
+    rho_vac_UA_field: float = 1e-27
+    
+    # Vacuum density gradient ratio (dimensionless)
+    # ∇ρ_ratio = rho_vac_UA / rho_vac_UA_field ≈ 7.09e-9
+    rho_vac_gradient_ratio: float = 7.09e-9
+    
+    # SCm vacuum density ρ_SCm (J/m³) - Superconductive medium
     rho_vac_SCm: float = 7.09e-37
     
     # UQFF decay constant κ (day⁻¹)

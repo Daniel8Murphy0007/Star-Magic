@@ -198,10 +198,23 @@ CONSTANTS = {
     'beta_4': 0.6,             # β₄ for Ug4
     
     # ═══════════════════════════════════════════════════════════════════════════
-    # VACUUM ENERGY DENSITIES (Scale-neutral reference values)
+    # VACUUM DENSITY GRADIENT SYSTEM - DUAL-SCALE PHYSICS
     # ═══════════════════════════════════════════════════════════════════════════
-    'rho_vac_SCm': 7.09e-37,   # ρ_vac,[SCm] reference (J/m³)
-    'rho_vac_UA': 7.09e-36,    # ρ_vac,[UA] reference (J/m³)
+    # The UQFF framework uses TWO vacuum density scales that create a GRADIENT:
+    #
+    # 1. GRAVITATIONAL SCALE (rho_vac_UA): 7.09e-36 J/m³
+    #    - Used in: Ug1-4 equations, cosmological terms, UQFF buoyancy
+    #
+    # 2. FIELD SCALE (rho_vac_UA_field): 1e-27 J/m³
+    #    - Used in: Electric field terms, neutron production, magnetism
+    #
+    # GRADIENT RATIO: ~7.09e-9 drives DPM field-gravity coupling
+    # DO NOT UNIFY - THE GRADIENT IS INTENTIONAL PHYSICS
+    # ═══════════════════════════════════════════════════════════════════════════
+    'rho_vac_SCm': 7.09e-37,         # ρ_vac,[SCm] reference (J/m³)
+    'rho_vac_UA': 7.09e-36,          # GRAVITATIONAL SCALE: Ug1-4, buoyancy (J/m³)
+    'rho_vac_UA_field': 1e-27,       # FIELD SCALE: E-field, neutron prod (J/m³)
+    'rho_vac_gradient_ratio': 7.09e-9,  # Gradient drives DPM coupling
     'rho_vac_cosmological': 5.96e-27,  # Cosmological vacuum energy (J/m³)
     
     # ═══════════════════════════════════════════════════════════════════════════
@@ -827,7 +840,9 @@ CONSTANTS = {
     "Q_wave": 1000000.0,
     "REACTOR_EFFICIENCY": 555.0,
     "RHO_VAC_SCM": 7.09e-37,
-    "RHO_VAC_UA": 7.09e-36,
+    "RHO_VAC_UA": 7.09e-36,           # GRAVITATIONAL SCALE
+    "RHO_VAC_UA_FIELD": 1e-27,        # FIELD SCALE: E-field, neutron prod
+    "RHO_VAC_GRADIENT_RATIO": 7.09e-9, # Gradient drives DPM coupling
     "RHO_VAC_UA_S114": 7.09e-36,
     "RHO_VAC_UA_S115": 7.09e-36,
     "R_EB": 1.0,

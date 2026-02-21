@@ -18,6 +18,7 @@ Date: February 11, 2026
 import subprocess
 import json
 import os
+import platform
 from pathlib import Path
 from typing import Dict, List, Optional, Union
 from dataclasses import dataclass, asdict
@@ -110,7 +111,7 @@ class CoAnQiCalculator:
     
     def __init__(
         self, 
-        exe_path: str = "./build_msvc/Release/MAIN_1_CoAnQi.exe",
+        exe_path: str = None,
         timeout: float = 60.0,
         verbose: bool = False
     ):
@@ -118,43 +119,80 @@ class CoAnQiCalculator:
         Initialize CoAnQi calculator interface
         
         Args:
-            exe_path: Path to MAIN_1_CoAnQi.exe (default: ./build_msvc/Release/MAIN_1_CoAnQi.exe)
+            exe_path: Path to MAIN_1_CoAnQi executable (auto-detected if None)
             timeout: Maximum execution time in seconds (default: 60.0)
             verbose: Enable verbose output (default: False)
         
         Raises:
             FileNotFoundError: If C++ calculator executable not found
         """
-        # Try multiple locations for MAIN_1_CoAnQi.exe (cross-platform support)
-        # 1. Same directory as wrapper (deployed with Source2.exe)
-        # 2. Default relative path from repo root
-        # 3. User-specified path
-        
+        # Cross-platform executable detection
+        system = platform.system()
         script_dir = Path(__file__).parent
-        search_paths = [
-            Path(exe_path),  # User-specified or default
-            script_dir / "MAIN_1_CoAnQi.exe",  # Same directory as wrapper
-            script_dir / "../build_msvc/Release/MAIN_1_CoAnQi.exe",  # Relative from wrapper in Release
-        ]
+        
+        # Platform-specific executable names and build paths
+        if system == "Windows":
+            exe_names = ["MAIN_1_CoAnQi.exe"]
+            build_dirs = [
+                "build_msvc/Release",
+                "build_msvc/Debug",
+                "build/Release",
+                "build/Debug",
+            ]
+        elif system == "Darwin":  # macOS
+            exe_names = ["MAIN_1_CoAnQi", "MAIN_1_CoAnQi.app/Contents/MacOS/MAIN_1_CoAnQi"]
+            build_dirs = [
+                "build",
+                "build/Release",
+                "cmake-build-release",
+            ]
+        else:  # Linux
+            exe_names = ["MAIN_1_CoAnQi"]
+            build_dirs = [
+                "build",
+                "build/Release",
+                "cmake-build-release",
+            ]
+        
+        # Build search paths (prioritize build directories over same-directory)
+        search_paths = []
+        
+        # User-specified path first
+        if exe_path:
+            search_paths.append(Path(exe_path))
+        
+        # Build directories relative to repo root (PRIORITY - most recent builds)
+        for build_dir in build_dirs:
+            for name in exe_names:
+                search_paths.append(script_dir / build_dir / name)
+                search_paths.append(script_dir / ".." / build_dir / name)
+        
+        # Same directory as wrapper (fallback - may be stale)
+        for name in exe_names:
+            search_paths.append(script_dir / name)
         
         found_path = None
         for path in search_paths:
-            if path.exists():
-                found_path = path
+            if path.exists() and path.is_file():
+                found_path = path.resolve()
                 break
         
         if found_path is None:
+            build_cmd = "cmake --build build_msvc --config Release" if system == "Windows" else "cmake --build build --config Release"
             raise FileNotFoundError(
-                f"C++ calculator not found in any of these locations:\n" +
-                "\n".join(f"  - {p}" for p in search_paths) +
-                f"\n\nBuild it first with: cmake --build build_msvc --config Release"
+                f"C++ calculator not found. Searched {len(search_paths)} locations including:\n" +
+                "\n".join(f"  - {p}" for p in search_paths[:6]) +
+                f"\n  ... and {len(search_paths)-6} more\n" +
+                f"\nBuild it first with: {build_cmd}"
             )
         
         self.exe_path = found_path
         self.timeout = timeout
         self.verbose = verbose
+        self.platform = system
         
         if self.verbose:
+            print(f"[CoAnQi_Wrapper] Platform: {system}")
             print(f"[CoAnQi_Wrapper] Initialized with exe: {self.exe_path}")
     
     def compute_system(

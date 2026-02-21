@@ -2929,8 +2929,13 @@ private:
         const double k_conduit = 1e-18;
         const double k_spooky = 1e-20;
         const double omega0 = 1e-16;
-        const double rho_vac_UA = 7.09e-36;
-        const double rho_vac_SCm = 7.09e-37;
+        // ═══════════════════════════════════════════════════════════════════════════
+        // VACUUM DENSITY GRADIENT SYSTEM - Uses shared_constants.h values
+        // GRAVITATIONAL SCALE: rho_vac_UA = 7.09e-36 J/m³ → Ug1-4, buoyancy
+        // FIELD SCALE: rho_vac_UA_field = 1e-27 J/m³ → E-field, neutron production
+        // GRADIENT RATIO: 7.09e-9 → DPM field-gravity coupling
+        // ═══════════════════════════════════════════════════════════════════════════
+        // Using UQFF::rho_vac_UA and UQFF::rho_vac_SCm from shared_constants.h
         
         // LENR term (1.2 THz)
         double omega_LENR = 1.2e12;
@@ -2953,8 +2958,8 @@ private:
         double F_rel = 4.30e33;  // LEP reference
         double F_relativistic = k_rel * F_rel;
         
-        // Vacuum repulsion term
-        double Delta_rho_vac = rho_vac_UA - rho_vac_SCm;
+        // Vacuum repulsion term (using GRAVITATIONAL SCALE from shared_constants.h)
+        double Delta_rho_vac = UQFF::rho_vac_UA - UQFF::rho_vac_SCm;
         double F_vac_rep = k_vac * Delta_rho_vac * M * v;
         
         // THz shock wave term
@@ -10548,7 +10553,21 @@ MainWindow::MainWindow()
                 tabs->addTab(compDash, "⚖️ Compare C++/Python");
                 browserWindows[9] = nullptr;  // No browser window for Tab 10
             }
-            // Tabs 11-21 (indices 10-20): Query fetch results display
+            // Special case: Tab 11 (index 10) reserved for Equation Renderer (Gap #4 Fix)
+            else if (i == 10) {
+                // Tab 11: Long-form UQFF Equation Display with IPC to QCalc.py
+                EquationRendererWidget* eqRenderer = new EquationRendererWidget(this);
+                tabs->addTab(eqRenderer, "📐 Equation Display");
+                browserWindows[10] = nullptr;  // No browser window for Tab 11
+            }
+            // Special case: Tab 12 (index 11) reserved for JavaScript Server (Gap #5 Fix)
+            else if (i == 11) {
+                // Tab 12: UQFF JavaScript Engine HTTP client to uqff_server.js
+                UQFFJavaScriptWidget* jsWidget = new UQFFJavaScriptWidget(this);
+                tabs->addTab(jsWidget, "🌐 JS Engine");
+                browserWindows[11] = nullptr;  // No browser window for Tab 12
+            }
+            // Tabs 13-21 (indices 12-20): Query fetch results display
             else {
                 // Standard browser windows for search results
                 browserWindows[i] = new BrowserWindow(QString("Tab %1").arg(i + 1), this);

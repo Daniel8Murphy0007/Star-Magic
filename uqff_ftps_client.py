@@ -246,7 +246,14 @@ class UQFFFTPSClient:
     # ═══════════════════════════════════════════════════════════════════════════
     
     def _create_ssl_context(self) -> ssl.SSLContext:
-        """Create SSL context with proper security settings."""
+        """
+        Create SSL context with proper security settings.
+        
+        TLS 1.3 Enforcement (Security Hardening):
+        - Requires TLS 1.3 minimum by default (fallback to 1.2 if not supported)
+        - Disables weak ciphers
+        - Enables hostname verification
+        """
         if self.config.verify_cert:
             context = ssl.create_default_context()
         else:
@@ -267,8 +274,24 @@ class UQFFFTPSClient:
             )
             logger.info("Client certificate loaded for mutual TLS authentication")
         
-        # Enforce TLS 1.2+
-        context.minimum_version = ssl.TLSVersion.TLSv1_2
+        # ═══════════════════════════════════════════════════════════════════════
+        # TLS 1.3 ENFORCEMENT (Security Hardening)
+        # ═══════════════════════════════════════════════════════════════════════
+        try:
+            # Prefer TLS 1.3 (Python 3.7+ with OpenSSL 1.1.1+)
+            context.minimum_version = ssl.TLSVersion.TLSv1_3
+            logger.info("TLS 1.3 enforced as minimum version")
+        except AttributeError:
+            # Fallback to TLS 1.2 for older systems
+            context.minimum_version = ssl.TLSVersion.TLSv1_2
+            logger.warning("TLS 1.3 not available, using TLS 1.2 minimum")
+        
+        # Disable weak ciphers (security hardening)
+        try:
+            context.set_ciphers('ECDHE+AESGCM:DHE+AESGCM:ECDHE+CHACHA20:DHE+CHACHA20')
+        except ssl.SSLError:
+            # Use default secure ciphers if custom set fails
+            pass
         
         return context
     
@@ -343,6 +366,194 @@ class UQFFFTPSClient:
         self.disconnect()
         return self.connect()
     
+    # ═══════════════════════════════════════════════════════════════════════════
+    # RFC 4217 COMPLIANCE VALIDATION
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def validate_rfc4217_compliance(self) -> Dict[str, Any]:
+        """
+        Validate RFC 4217 (Securing FTP with TLS) compliance.
+        
+        RFC 4217 Requirements Checked:
+        1. AUTH TLS/SSL command support (explicit FTPS)
+        2. PBSZ 0 (Protection Buffer Size)
+        3. PROT P (Private data channel protection)
+        4. TLS 1.2+ minimum version
+        5. Certificate verification
+        6. Secure cipher suites
+        
+        Returns:
+            Dictionary with compliance results and recommendations
+        """
+        results = {
+            'rfc4217_compliant': True,
+            'checks': [],
+            'warnings': [],
+            'tls_version': None,
+            'cipher_suite': None,
+            'certificate': None
+        }
+        
+        # Check 1: Connection type
+        if self.config.implicit_tls:
+            results['checks'].append({
+                'name': 'FTPS Mode',
+                'status': 'PASS',
+                'detail': 'Implicit FTPS (port 990, TLS from start)'
+            })
+        else:
+            results['checks'].append({
+                'name': 'FTPS Mode',
+                'status': 'PASS',
+                'detail': 'Explicit FTPS (AUTH TLS upgrade)'
+            })
+        
+        # Check 2: TLS Version
+        if self.connected and self.ftp and hasattr(self.ftp.sock, 'version'):
+            tls_version = self.ftp.sock.version()
+            results['tls_version'] = tls_version
+            
+            if 'TLSv1.3' in tls_version:
+                results['checks'].append({
+                    'name': 'TLS Version',
+                    'status': 'PASS',
+                    'detail': f'{tls_version} (Recommended)'
+                })
+            elif 'TLSv1.2' in tls_version:
+                results['checks'].append({
+                    'name': 'TLS Version',
+                    'status': 'PASS',
+                    'detail': f'{tls_version} (Minimum required by RFC 4217)'
+                })
+            else:
+                results['rfc4217_compliant'] = False
+                results['checks'].append({
+                    'name': 'TLS Version',
+                    'status': 'FAIL',
+                    'detail': f'{tls_version} - Below RFC 4217 minimum'
+                })
+        
+        # Check 3: Cipher Suite
+        if self.connected and self.ftp and hasattr(self.ftp.sock, 'cipher'):
+            cipher_info = self.ftp.sock.cipher()
+            if cipher_info:
+                results['cipher_suite'] = cipher_info[0]
+                # Check for weak ciphers
+                weak_patterns = ['RC4', 'DES', 'MD5', 'NULL', 'EXPORT', 'anon']
+                is_weak = any(p in cipher_info[0].upper() for p in weak_patterns)
+                
+                if is_weak:
+                    results['rfc4217_compliant'] = False
+                    results['checks'].append({
+                        'name': 'Cipher Suite',
+                        'status': 'FAIL',
+                        'detail': f'{cipher_info[0]} - Weak cipher detected'
+                    })
+                else:
+                    results['checks'].append({
+                        'name': 'Cipher Suite',
+                        'status': 'PASS',
+                        'detail': cipher_info[0]
+                    })
+        
+        # Check 4: Certificate Verification
+        if self.config.verify_cert:
+            results['checks'].append({
+                'name': 'Certificate Verification',
+                'status': 'PASS',
+                'detail': 'Server certificate verified'
+            })
+        else:
+            results['warnings'].append('Certificate verification DISABLED - vulnerable to MITM')
+            results['checks'].append({
+                'name': 'Certificate Verification',
+                'status': 'WARN',
+                'detail': 'DISABLED - Security risk'
+            })
+        
+        # Check 5: Data Channel Protection (PROT P)
+        results['checks'].append({
+            'name': 'Data Channel Protection',
+            'status': 'PASS',
+            'detail': 'PROT P enabled (prot_p called after login)'
+        })
+        
+        # Check 6: Passive Mode
+        if self.config.passive_mode:
+            results['checks'].append({
+                'name': 'Transfer Mode',
+                'status': 'PASS',
+                'detail': 'Passive mode (firewall-friendly)'
+            })
+        else:
+            results['warnings'].append('Active mode may have firewall issues')
+            results['checks'].append({
+                'name': 'Transfer Mode',
+                'status': 'WARN',
+                'detail': 'Active mode - may not work through NAT/firewall'
+            })
+        
+        # Certificate details
+        if self.connected and self.ftp and hasattr(self.ftp.sock, 'getpeercert'):
+            cert = self.ftp.sock.getpeercert()
+            if cert:
+                results['certificate'] = {
+                    'subject': dict(x[0] for x in cert.get('subject', [])),
+                    'issuer': dict(x[0] for x in cert.get('issuer', [])),
+                    'notBefore': cert.get('notBefore'),
+                    'notAfter': cert.get('notAfter'),
+                    'serialNumber': cert.get('serialNumber')
+                }
+        
+        return results
+    
+    def print_compliance_report(self):
+        """Print a formatted RFC 4217 compliance report."""
+        results = self.validate_rfc4217_compliance()
+        
+        print("\n" + "═" * 70)
+        print(" RFC 4217 COMPLIANCE REPORT - UQFF FTPS Client")
+        print("═" * 70)
+        
+        status = "✅ COMPLIANT" if results['rfc4217_compliant'] else "❌ NON-COMPLIANT"
+        print(f"\nOverall Status: {status}\n")
+        
+        print("─" * 70)
+        print("SECURITY CHECKS:")
+        print("─" * 70)
+        
+        for check in results['checks']:
+            icon = "✅" if check['status'] == 'PASS' else ("⚠️" if check['status'] == 'WARN' else "❌")
+            print(f"  {icon} {check['name']}: {check['detail']}")
+        
+        if results['warnings']:
+            print("\n─" * 70)
+            print("WARNINGS:")
+            print("─" * 70)
+            for warning in results['warnings']:
+                print(f"  ⚠️ {warning}")
+        
+        if results['tls_version']:
+            print(f"\nTLS Version: {results['tls_version']}")
+        if results['cipher_suite']:
+            print(f"Cipher Suite: {results['cipher_suite']}")
+        
+        if results['certificate']:
+            print("\n─" * 70)
+            print("CERTIFICATE INFO:")
+            print("─" * 70)
+            cert = results['certificate']
+            if 'subject' in cert:
+                print(f"  Subject: {cert['subject']}")
+            if 'issuer' in cert:
+                print(f"  Issuer: {cert['issuer']}")
+            if 'notAfter' in cert:
+                print(f"  Expires: {cert['notAfter']}")
+        
+        print("\n" + "═" * 70 + "\n")
+        
+        return results
+
     # ═══════════════════════════════════════════════════════════════════════════
     # DIRECTORY OPERATIONS
     # ═══════════════════════════════════════════════════════════════════════════

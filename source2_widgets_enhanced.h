@@ -892,5 +892,331 @@ private:
     QList<QJsonObject> m_simulationHistory;
 };
 
+// ═══════════════════════════════════════════════════════════════════════════════
+// 5. UQFF JAVASCRIPT SERVER WIDGET - HTTP Client for uqff_server.js (Gap #5 Fix)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QUrl>
+#include <QUrlQuery>
+#include <QProgressBar>
+
+/**
+ * @class UQFFJavaScriptWidget
+ * @brief HTTP client widget for communicating with uqff_server.js (port 3141)
+ * 
+ * Bridges the Qt/C++ GUI to the 23,790-line index.js JavaScript engine
+ * via the REST API provided by uqff_server.js.
+ * 
+ * Endpoints used:
+ *   GET  /api/health     - Check if server is running
+ *   GET  /api/systems    - List available systems
+ *   POST /api/compute    - Compute UQFF for a system
+ *   GET  /api/constants  - Get physics constants
+ */
+class UQFFJavaScriptWidget : public QWidget {
+    Q_OBJECT
+
+public:
+    explicit UQFFJavaScriptWidget(QWidget* parent = nullptr)
+        : QWidget(parent), serverAvailable(false) {
+        
+        setupUI();
+        networkManager = new QNetworkAccessManager(this);
+        
+        connect(networkManager, &QNetworkAccessManager::finished,
+                this, &UQFFJavaScriptWidget::handleNetworkReply);
+        
+        // Check server health on startup
+        QTimer::singleShot(1000, this, &UQFFJavaScriptWidget::checkServerHealth);
+    }
+
+private:
+    void setupUI() {
+        QVBoxLayout* mainLayout = new QVBoxLayout(this);
+        mainLayout->setSpacing(10);
+        mainLayout->setContentsMargins(15, 15, 15, 15);
+        
+        // ═══════════════════════════════════════════════════════════════════════
+        // HEADER
+        // ═══════════════════════════════════════════════════════════════════════
+        
+        QLabel* header = new QLabel(this);
+        header->setText(
+            "<h2 style='color: #FF9800;'>🌐 UQFF JavaScript Engine</h2>"
+            "<p style='color: #888;'>HTTP client for uqff_server.js (port 3141)</p>"
+        );
+        mainLayout->addWidget(header);
+        
+        // ═══════════════════════════════════════════════════════════════════════
+        // SERVER STATUS
+        // ═══════════════════════════════════════════════════════════════════════
+        
+        QHBoxLayout* statusLayout = new QHBoxLayout();
+        
+        statusLabel = new QLabel("⏳ Checking server...", this);
+        statusLabel->setStyleSheet("font-size: 11pt; padding: 5px;");
+        statusLayout->addWidget(statusLabel);
+        
+        statusLayout->addStretch();
+        
+        QPushButton* startServerBtn = new QPushButton("▶ Start Server", this);
+        startServerBtn->setStyleSheet(
+            "background-color: #4CAF50; "
+            "color: white; "
+            "padding: 8px 16px; "
+            "font-weight: bold;"
+        );
+        connect(startServerBtn, &QPushButton::clicked, this, &UQFFJavaScriptWidget::startServer);
+        statusLayout->addWidget(startServerBtn);
+        
+        QPushButton* refreshBtn = new QPushButton("🔄", this);
+        refreshBtn->setToolTip("Check server status");
+        connect(refreshBtn, &QPushButton::clicked, this, &UQFFJavaScriptWidget::checkServerHealth);
+        statusLayout->addWidget(refreshBtn);
+        
+        mainLayout->addLayout(statusLayout);
+        
+        // ═══════════════════════════════════════════════════════════════════════
+        // COMPUTATION INPUT
+        // ═══════════════════════════════════════════════════════════════════════
+        
+        QGroupBox* computeGroup = new QGroupBox("UQFF Computation", this);
+        QVBoxLayout* computeLayout = new QVBoxLayout(computeGroup);
+        
+        // System selector
+        QHBoxLayout* systemLayout = new QHBoxLayout();
+        systemLayout->addWidget(new QLabel("System:", this));
+        
+        systemCombo = new QComboBox(this);
+        systemCombo->addItem("Sagittarius A* (SgrA*)");
+        systemCombo->addItem("SGR1745 Magnetar");
+        systemCombo->addItem("M87* Black Hole");
+        systemCombo->addItem("Sun");
+        systemCombo->addItem("NGC 3596");
+        systemCombo->addItem("Custom");
+        systemLayout->addWidget(systemCombo);
+        
+        computeLayout->addLayout(systemLayout);
+        
+        // Custom parameters
+        QHBoxLayout* paramsLayout = new QHBoxLayout();
+        
+        paramsLayout->addWidget(new QLabel("M:", this));
+        massInput = new QLineEdit("8.155e36", this);
+        massInput->setMaximumWidth(120);
+        paramsLayout->addWidget(massInput);
+        
+        paramsLayout->addWidget(new QLabel("r:", this));
+        radiusInput = new QLineEdit("4.4e19", this);
+        radiusInput->setMaximumWidth(120);
+        paramsLayout->addWidget(radiusInput);
+        
+        paramsLayout->addWidget(new QLabel("B₀:", this));
+        bFieldInput = new QLineEdit("1e-4", this);
+        bFieldInput->setMaximumWidth(120);
+        paramsLayout->addWidget(bFieldInput);
+        
+        paramsLayout->addStretch();
+        computeLayout->addLayout(paramsLayout);
+        
+        // Compute button
+        QPushButton* computeBtn = new QPushButton("🔬 Compute UQFF", this);
+        computeBtn->setStyleSheet(
+            "background-color: #2196F3; "
+            "color: white; "
+            "padding: 10px 20px; "
+            "font-size: 12pt; "
+            "font-weight: bold;"
+        );
+        connect(computeBtn, &QPushButton::clicked, this, &UQFFJavaScriptWidget::computeUQFF);
+        computeLayout->addWidget(computeBtn);
+        
+        mainLayout->addWidget(computeGroup);
+        
+        // Progress bar
+        progressBar = new QProgressBar(this);
+        progressBar->setVisible(false);
+        mainLayout->addWidget(progressBar);
+        
+        // ═══════════════════════════════════════════════════════════════════════
+        // RESULTS DISPLAY
+        // ═══════════════════════════════════════════════════════════════════════
+        
+        resultsDisplay = new QTextEdit(this);
+        resultsDisplay->setReadOnly(true);
+        resultsDisplay->setStyleSheet(
+            "background-color: #1E1E1E; "
+            "color: #D4D4D4; "
+            "font-family: 'Consolas', 'Courier New', monospace; "
+            "font-size: 10pt; "
+            "padding: 10px;"
+        );
+        resultsDisplay->setPlainText(
+            "═══════════════════════════════════════════════════════════════════════════════\n"
+            " UQFF JavaScript Engine (index.js)\n"
+            " Connected via: uqff_server.js REST API (port 3141)\n"
+            "═══════════════════════════════════════════════════════════════════════════════\n\n"
+            " This widget provides HTTP client access to the 23,790-line index.js\n"
+            " JavaScript engine, which contains 106 astrophysical systems.\n\n"
+            " To start the server:\n"
+            "   1. Open a terminal\n"
+            "   2. Run: node uqff_server.js\n"
+            "   3. Server will listen on http://127.0.0.1:3141\n\n"
+            " Or click 'Start Server' above to auto-launch.\n"
+            "═══════════════════════════════════════════════════════════════════════════════\n"
+        );
+        mainLayout->addWidget(resultsDisplay);
+        
+        setLayout(mainLayout);
+    }
+
+private slots:
+    void checkServerHealth() {
+        QUrl url("http://127.0.0.1:3141/api/health");
+        QNetworkRequest request(url);
+        request.setAttribute(QNetworkRequest::User, QString("health"));
+        
+        statusLabel->setText("⏳ Checking server...");
+        networkManager->get(request);
+    }
+    
+    void startServer() {
+        // Start uqff_server.js via QProcess
+        serverProcess = new QProcess(this);
+        serverProcess->setWorkingDirectory(QCoreApplication::applicationDirPath());
+        
+        // Try to find node.js executable
+        QStringList nodeExes = {"node", "node.exe", "C:/Program Files/nodejs/node.exe"};
+        QString nodeExe;
+        for (const QString& exe : nodeExes) {
+            if (QFile::exists(exe) || exe == "node") {
+                nodeExe = exe;
+                break;
+            }
+        }
+        
+        QString serverPath = QCoreApplication::applicationDirPath() + "/uqff_server.js";
+        if (!QFile::exists(serverPath)) {
+            serverPath = QCoreApplication::applicationDirPath() + "/../uqff_server.js";
+        }
+        
+        if (QFile::exists(serverPath) || serverPath.contains("uqff_server.js")) {
+            serverProcess->start(nodeExe, QStringList() << serverPath);
+            
+            if (serverProcess->waitForStarted(5000)) {
+                resultsDisplay->append("\n✅ Server process started (PID: " + 
+                                       QString::number(serverProcess->processId()) + ")\n");
+                resultsDisplay->append("   Waiting for server to initialize...\n\n");
+                
+                // Check health after delay
+                QTimer::singleShot(2000, this, &UQFFJavaScriptWidget::checkServerHealth);
+            } else {
+                resultsDisplay->append("\n❌ Failed to start server process\n");
+                resultsDisplay->append("   Make sure Node.js is installed and in PATH\n\n");
+            }
+        } else {
+            resultsDisplay->append("\n❌ uqff_server.js not found\n");
+            resultsDisplay->append("   Expected: " + serverPath + "\n\n");
+        }
+    }
+    
+    void computeUQFF() {
+        if (!serverAvailable) {
+            resultsDisplay->append("\n❌ Server not available. Start the server first.\n");
+            return;
+        }
+        
+        progressBar->setVisible(true);
+        progressBar->setRange(0, 0);  // Indeterminate
+        
+        // Build request JSON
+        QJsonObject params;
+        params["M"] = massInput->text().toDouble();
+        params["r"] = radiusInput->text().toDouble();
+        params["B0"] = bFieldInput->text().toDouble();
+        params["system"] = systemCombo->currentText().split(" ").first();
+        
+        QJsonDocument doc(params);
+        QByteArray jsonData = doc.toJson();
+        
+        QUrl url("http://127.0.0.1:3141/api/compute");
+        QNetworkRequest request(url);
+        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+        request.setAttribute(QNetworkRequest::User, QString("compute"));
+        
+        resultsDisplay->append("\n🔄 Computing UQFF for: " + systemCombo->currentText() + "\n");
+        resultsDisplay->append("   M = " + massInput->text() + " kg\n");
+        resultsDisplay->append("   r = " + radiusInput->text() + " m\n");
+        resultsDisplay->append("   B₀ = " + bFieldInput->text() + " T\n\n");
+        
+        networkManager->post(request, jsonData);
+    }
+    
+    void handleNetworkReply(QNetworkReply* reply) {
+        progressBar->setVisible(false);
+        
+        QString requestType = reply->request().attribute(QNetworkRequest::User).toString();
+        
+        if (reply->error() != QNetworkReply::NoError) {
+            if (requestType == "health") {
+                serverAvailable = false;
+                statusLabel->setText("❌ Server offline");
+                statusLabel->setStyleSheet("color: #FF5252; font-size: 11pt; padding: 5px;");
+            } else {
+                resultsDisplay->append("❌ Error: " + reply->errorString() + "\n");
+            }
+            reply->deleteLater();
+            return;
+        }
+        
+        QByteArray responseData = reply->readAll();
+        QJsonDocument doc = QJsonDocument::fromJson(responseData);
+        QJsonObject response = doc.object();
+        
+        if (requestType == "health") {
+            serverAvailable = true;
+            statusLabel->setText("✅ Server online (port 3141)");
+            statusLabel->setStyleSheet("color: #4CAF50; font-size: 11pt; padding: 5px;");
+            
+            resultsDisplay->append("\n✅ Connected to uqff_server.js\n");
+            resultsDisplay->append("   Status: " + response["status"].toString() + "\n");
+            resultsDisplay->append("   Timestamp: " + response["timestamp"].toString() + "\n\n");
+            
+        } else if (requestType == "compute") {
+            resultsDisplay->append("═══════════════════════════════════════════════════════════════════════════════\n");
+            resultsDisplay->append(" COMPUTATION RESULTS\n");
+            resultsDisplay->append("═══════════════════════════════════════════════════════════════════════════════\n\n");
+            
+            QJsonObject result = response["result"].toObject();
+            
+            resultsDisplay->append(QString("   Ug1 = %1\n").arg(result["Ug1"].toDouble(), 0, 'e', 6));
+            resultsDisplay->append(QString("   Ug2 = %1\n").arg(result["Ug2"].toDouble(), 0, 'e', 6));
+            resultsDisplay->append(QString("   Ug3 = %1\n").arg(result["Ug3"].toDouble(), 0, 'e', 6));
+            resultsDisplay->append(QString("   Ug4 = %1\n").arg(result["Ug4"].toDouble(), 0, 'e', 6));
+            resultsDisplay->append(QString("\n   F_U_Bi_i = %1\n").arg(result["F_U_Bi_i"].toDouble(), 0, 'e', 6));
+            resultsDisplay->append(QString("   compressed_g = %1\n").arg(result["compressed_g"].toDouble(), 0, 'e', 6));
+            
+            resultsDisplay->append("\n═══════════════════════════════════════════════════════════════════════════════\n\n");
+        }
+        
+        reply->deleteLater();
+    }
+
+private:
+    QNetworkAccessManager* networkManager;
+    QProcess* serverProcess = nullptr;
+    QLabel* statusLabel;
+    QComboBox* systemCombo;
+    QLineEdit* massInput;
+    QLineEdit* radiusInput;
+    QLineEdit* bFieldInput;
+    QProgressBar* progressBar;
+    QTextEdit* resultsDisplay;
+    bool serverAvailable;
+};
+
 
 #endif // SOURCE2_WIDGETS_ENHANCED_H

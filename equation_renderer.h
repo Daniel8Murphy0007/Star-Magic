@@ -1,9 +1,12 @@
 /**
  * @file equation_renderer.h
- * @brief Qt widget for rendering long-form UQFF equations from CondensedPhysics.py
+ * @brief Qt widget for rendering long-form UQFF equations from QCalc.py
  * 
  * Uses QTextEdit with monospace font for Unicode math rendering.
- * Can display equations from get_equation_text() and long_form_solution().
+ * Supports both static presets and dynamic IPC via QProcess to QCalc.py.
+ * 
+ * Gap #4 Fix: Added IPC integration to fetch computed long-form equations
+ * from QCalc.py's long_form_equations output in real-time.
  * 
  * Author: Daniel T. Murphy
  * Framework: UQFF Star-Magic v3.0
@@ -29,6 +32,11 @@
 #include <QApplication>
 #include <QClipboard>
 #include <QScrollBar>
+#include <QLineEdit>
+#include <QProgressBar>
+#include <QFile>
+#include <QCoreApplication>
+#include <QMessageBox>
 
 /**
  * @class EquationRendererWidget
@@ -39,15 +47,24 @@
  * - Syntax highlighting for variables and operators
  * - Export to LaTeX/PDF
  * - Step-by-step solution display
+ * - IPC integration with QCalc.py for dynamic equation computation
  */
 class EquationRendererWidget : public QWidget {
     Q_OBJECT
 
 public:
     explicit EquationRendererWidget(QWidget* parent = nullptr)
-        : QWidget(parent) {
+        : QWidget(parent), qcalcProcess(nullptr) {
         
         setupUI();
+        initQCalcProcess();
+    }
+    
+    ~EquationRendererWidget() {
+        if (qcalcProcess && qcalcProcess->state() == QProcess::Running) {
+            qcalcProcess->kill();
+            qcalcProcess->waitForFinished(3000);
+        }
     }
 
 private:
@@ -55,7 +72,7 @@ private:
         QVBoxLayout* mainLayout = new QVBoxLayout(this);
         
         // Header
-        QLabel* header = new QLabel("📐 UQFF Equation Display", this);
+        QLabel* header = new QLabel("📐 UQFF Long-Form Equation Display", this);
         header->setStyleSheet(
             "background-color: #1565C0; "
             "color: white; "
@@ -66,10 +83,53 @@ private:
         );
         mainLayout->addWidget(header);
         
-        // Equation selector
+        // ============================================================
+        // DYNAMIC EQUATION INPUT (IPC Integration - Gap #4 Fix)
+        // ============================================================
+        QHBoxLayout* dynamicLayout = new QHBoxLayout();
+        
+        QLabel* systemLabel = new QLabel("System:", this);
+        dynamicLayout->addWidget(systemLabel);
+        
+        systemInput = new QLineEdit(this);
+        systemInput->setPlaceholderText("Enter system name (e.g., 'Sagittarius A*', 'NGC 3596', 'ESO 137-001')");
+        systemInput->setStyleSheet(
+            "padding: 8px; "
+            "border: 2px solid #1565C0; "
+            "border-radius: 4px;"
+        );
+        connect(systemInput, &QLineEdit::returnPressed, this, &EquationRendererWidget::fetchDynamicEquations);
+        dynamicLayout->addWidget(systemInput);
+        
+        QPushButton* fetchBtn = new QPushButton("🔬 Compute", this);
+        fetchBtn->setStyleSheet(
+            "background-color: #4CAF50; "
+            "color: white; "
+            "padding: 8px 16px; "
+            "font-weight: bold;"
+        );
+        connect(fetchBtn, &QPushButton::clicked, this, &EquationRendererWidget::fetchDynamicEquations);
+        dynamicLayout->addWidget(fetchBtn);
+        
+        mainLayout->addLayout(dynamicLayout);
+        
+        // Progress bar for IPC operations
+        progressBar = new QProgressBar(this);
+        progressBar->setVisible(false);
+        progressBar->setStyleSheet("QProgressBar { border: 1px solid #1565C0; border-radius: 3px; }");
+        mainLayout->addWidget(progressBar);
+        
+        // Status label
+        statusLabel = new QLabel("", this);
+        statusLabel->setStyleSheet("color: #757575; font-style: italic;");
+        mainLayout->addWidget(statusLabel);
+        
+        // ============================================================
+        // PRESET EQUATION SELECTOR (Original Functionality)
+        // ============================================================
         QHBoxLayout* selectorLayout = new QHBoxLayout();
         
-        QLabel* eqLabel = new QLabel("Equation:", this);
+        QLabel* eqLabel = new QLabel("Preset:", this);
         selectorLayout->addWidget(eqLabel);
         
         equationSelector = new QComboBox(this);
@@ -152,8 +212,173 @@ private:
         // Load initial equation
         loadEquation(0);
     }
+    
+    // ============================================================
+    // IPC INTEGRATION (Gap #4 Fix)
+    // Initialize QProcess for QCalc.py communication
+    // ============================================================
+    void initQCalcProcess() {
+        qcalcProcess = new QProcess(this);
+        
+        connect(qcalcProcess, &QProcess::readyReadStandardOutput, 
+                this, &EquationRendererWidget::handleQCalcOutput);
+        connect(qcalcProcess, &QProcess::readyReadStandardError,
+                this, &EquationRendererWidget::handleQCalcError);
+        connect(qcalcProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
+                this, &EquationRendererWidget::handleQCalcFinished);
+    }
+    
+    QString findQCalcPath() {
+        // Search for QCalc.py in order of preference
+        QStringList searchPaths = {
+            QCoreApplication::applicationDirPath() + "/QCalc.py",
+            QCoreApplication::applicationDirPath() + "/../QCalc.py",
+            "./QCalc.py",
+            "../QCalc.py"
+        };
+        
+        for (const QString& path : searchPaths) {
+            if (QFile::exists(path)) {
+                return path;
+            }
+        }
+        return "";
+    }
 
 private slots:
+    // ============================================================
+    // DYNAMIC EQUATION FETCHING (Gap #4 Fix)
+    // Calls QCalc.py to compute long-form equations for a system
+    // ============================================================
+    void fetchDynamicEquations() {
+        QString systemName = systemInput->text().trimmed();
+        if (systemName.isEmpty()) {
+            statusLabel->setText("❌ Enter a system name (e.g., 'Sagittarius A*')");
+            statusLabel->setStyleSheet("color: #FF5252;");
+            return;
+        }
+        
+        QString qcalcPath = findQCalcPath();
+        if (qcalcPath.isEmpty()) {
+            statusLabel->setText("❌ QCalc.py not found");
+            statusLabel->setStyleSheet("color: #FF5252;");
+            return;
+        }
+        
+        // Show progress
+        progressBar->setVisible(true);
+        progressBar->setRange(0, 0);  // Indeterminate
+        statusLabel->setText("🔄 Computing equations for: " + systemName);
+        statusLabel->setStyleSheet("color: #1565C0;");
+        
+        // Build Python command to call QCalc.py and get long_form_equations
+        // Output as JSON for parsing
+        QString pythonCode = QString(
+            "import sys; sys.path.insert(0, '.'); "
+            "from QCalc import UnifiedFieldSolver, ComputeParams, UQFFScale; "
+            "import json; "
+            "solver = UnifiedFieldSolver(); "
+            "params = ComputeParams(M=1e42, r=1e21, z=0.1, t=4e17, scale=UQFFScale.GALACTIC); "
+            "result = solver.solve(params); "
+            "eqs = result.get('long_form_equations', []); "
+            "output = {'system': '%1', 'count': len(eqs), 'equations': []}; "
+            "for eq in eqs[:50]: "  // Limit to 50 equations for display
+            "    output['equations'].append({'name': eq.get('name', 'Unknown'), 'symbolic': eq.get('symbolic_form', ''), 'value': eq.get('computed_value', 0)}); "
+            "print('QCALC_JSON_START'); "
+            "print(json.dumps(output)); "
+            "print('QCALC_JSON_END')"
+        ).arg(systemName);
+        
+        pendingOutput.clear();
+        qcalcProcess->start("python", QStringList() << "-c" << pythonCode);
+    }
+    
+    void handleQCalcOutput() {
+        QByteArray data = qcalcProcess->readAllStandardOutput();
+        pendingOutput.append(QString::fromLocal8Bit(data));
+    }
+    
+    void handleQCalcError() {
+        QByteArray data = qcalcProcess->readAllStandardError();
+        QString errorText = QString::fromLocal8Bit(data);
+        
+        // Show errors in status bar
+        if (!errorText.trimmed().isEmpty()) {
+            statusLabel->setText("⚠️ " + errorText.left(100));
+            statusLabel->setStyleSheet("color: #FF9800;");
+        }
+    }
+    
+    void handleQCalcFinished(int exitCode, QProcess::ExitStatus exitStatus) {
+        progressBar->setVisible(false);
+        
+        if (exitStatus != QProcess::NormalExit || exitCode != 0) {
+            statusLabel->setText("❌ QCalc.py execution failed (exit code: " + QString::number(exitCode) + ")");
+            statusLabel->setStyleSheet("color: #FF5252;");
+            return;
+        }
+        
+        // Parse JSON from output
+        int startIdx = pendingOutput.indexOf("QCALC_JSON_START");
+        int endIdx = pendingOutput.indexOf("QCALC_JSON_END");
+        
+        if (startIdx == -1 || endIdx == -1) {
+            statusLabel->setText("❌ Invalid response from QCalc.py");
+            statusLabel->setStyleSheet("color: #FF5252;");
+            return;
+        }
+        
+        QString jsonStr = pendingOutput.mid(startIdx + 16, endIdx - startIdx - 16).trimmed();
+        
+        QJsonDocument doc = QJsonDocument::fromJson(jsonStr.toUtf8());
+        if (doc.isNull()) {
+            statusLabel->setText("❌ Failed to parse JSON from QCalc.py");
+            statusLabel->setStyleSheet("color: #FF5252;");
+            return;
+        }
+        
+        QJsonObject root = doc.object();
+        QString systemName = root["system"].toString();
+        int count = root["count"].toInt();
+        QJsonArray equations = root["equations"].toArray();
+        
+        // Format equations for display
+        QString displayText;
+        displayText += "═══════════════════════════════════════════════════════════════════════════════\n";
+        displayText += QString(" LONG-FORM EQUATIONS: %1\n").arg(systemName.toUpper());
+        displayText += QString(" Total Computed: %1\n").arg(count);
+        displayText += "═══════════════════════════════════════════════════════════════════════════════\n\n";
+        
+        for (int i = 0; i < equations.size(); ++i) {
+            QJsonObject eq = equations[i].toObject();
+            QString name = eq["name"].toString();
+            QString symbolic = eq["symbolic"].toString();
+            double value = eq["value"].toDouble();
+            
+            displayText += QString("─────────────────────────────────────────────────────────────────────────\n");
+            displayText += QString(" [%1] %2\n").arg(i + 1).arg(name);
+            displayText += QString("─────────────────────────────────────────────────────────────────────────\n");
+            
+            if (!symbolic.isEmpty()) {
+                displayText += QString("\n   Symbolic Form:\n   %1\n").arg(symbolic);
+            }
+            displayText += QString("\n   Computed Value: %1\n\n").arg(value, 0, 'e', 6);
+        }
+        
+        displayText += "═══════════════════════════════════════════════════════════════════════════════\n";
+        displayText += " END OF EQUATIONS\n";
+        displayText += "═══════════════════════════════════════════════════════════════════════════════\n";
+        
+        currentEquation = displayText;
+        equationDisplay->setPlainText(displayText);
+        
+        statusLabel->setText(QString("✅ Computed %1 equations for: %2").arg(count).arg(systemName));
+        statusLabel->setStyleSheet("color: #4CAF50;");
+    }
+    
+    // ============================================================
+    // ORIGINAL PRESET EQUATION LOADING
+    // ============================================================
     void loadEquation(int index) {
         QString equations[] = {
             getUQFFBaseEquation(),
@@ -551,10 +776,18 @@ private:
         return latex;
     }
 
+    // Original member variables
     QTextEdit* equationDisplay;
     QComboBox* equationSelector;
     QComboBox* modeSelector;
     QString currentEquation;
+    
+    // Gap #4 Fix: IPC integration member variables
+    QLineEdit* systemInput;         // Dynamic system name input
+    QProgressBar* progressBar;      // Progress indicator for IPC
+    QLabel* statusLabel;            // Status messages
+    QProcess* qcalcProcess;         // QProcess for QCalc.py IPC
+    QString pendingOutput;          // Buffer for IPC output
 };
 
 #endif // EQUATION_RENDERER_H
