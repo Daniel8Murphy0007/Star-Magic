@@ -1,8 +1,8 @@
 # Star-Magic UQFF Architecture Flow Diagram
 
-> **Version:** 4.2.1 (CANONICAL - DO NOT DEVIATE)
+> **Version:** 4.2.2 (CANONICAL - DO NOT DEVIATE)
 > **Generated:** 2026-02-21
-> **Updated:** 2026-02-21 (v4.2.1 Poseidon TaskBot Integration)
+> **Updated:** 2026-02-21 (v4.2.2 Dual Bot Architecture: CoAnQi + Poseidon)
 > **Author:** Daniel T. Murphy
 > **CRITICAL:** This is the MASTER architecture document. All other docs must match.
 
@@ -17,6 +17,7 @@
 5. **Recirculation Loop** = bodies_*.csv → IPData → Calculators → OPData → OutputData → RECALL
 6. **Simultaneous Joint Pipeline** = All 5 calculators run in parallel via IPC layer (Phase 1-5 complete)
 7. **Poseidon TaskBot** = Offline physics maintenance (read/write/compare/validate/update cross-platform)
+8. **CoAnQi_bot** = MAIN_1_CoAnQi.cpp EXCLUSIVE specialist (PhysicsTerm mgmt, self-expand, self-update)
 
 ## IPC Pipeline Status (Phases 1-5 Complete + v4.2.1)
 
@@ -29,7 +30,8 @@
 | Phase 5 | Full VR Experience | ✅ Complete | e84c434 |
 | v3.1a | Cross-Platform IPC (NamedPipeChannel) | ✅ Complete | 8967469 |
 | v3.1b | Self-Expanding Physics Backend | ✅ Complete | 81097a8 |
-| v4.2.1 | Poseidon TaskBot Integration | ✅ Complete | f645053 |
+| v4.2.1 | Poseidon TaskBot Integration | ✅ Complete | 277f954 |
+| v4.2.2 | Dual Bot Architecture (CoAnQi + Poseidon) | ✅ Complete | 7436b0c |
 
 ---
 
@@ -265,7 +267,8 @@
 │   ├── openxr_session.h                      │    │   - VR_FRAME_UPDATE → stream field data    │
 │   ├── vulkan_compositor.h                   │    │   - REGISTER_TERM → add physics term       │
 │   ├── task_bot.h (voice/gesture bot)        │    │   - SYNC_STATE → synchronize modules       │
-│   ├── poseidon_task_bot.h (offline maint)   │    │                                             │
+│   ├── poseidon_task_bot.h (general maint)   │    │                                             │
+│   ├── CoAnQi_bot.h (MAIN_1 specialist)      │    │                                             │
 │   └── astro_graphics.h                      │    │                                             │
 │                                             │    │                                             │
 │   [Lightweight: ~5K lines | GPU-bound]      │    │   [Heavy: ~12K lines | CPU-bound | Async]   │
@@ -289,6 +292,36 @@
 │                                                                                                               │
 │   INTEGRATION: Uses physics_service.h (v3.1), python_bridge.h (pybind11), NamedPipeChannel                  │
 │   OFFLINE-FIRST: All operations work without internet; FTPS only for local/network share                    │
+└──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                       COANQI BOT (v4.2.2 - MAIN_1_CoAnQi.cpp EXCLUSIVE Specialist)                           │
+│                                                                                                               │
+│   Files: vr/CoAnQi_bot.h, vr/CoAnQi_bot.cpp, task_bot_maintenance.py                                         │
+│                                                                                                               │
+│   PURPOSE: Dedicated maintenance bot that services MAIN_1_CoAnQi.cpp EXCLUSIVELY.                            │
+│            Provides continuity for the 107K+ line C++ physics engine (6,688+ PhysicsTerms).                  │
+│                                                                                                               │
+│   CAPABILITIES:                                                                                               │
+│   ├── RegisterPhysicsTerm()  : Add new PhysicsTerm to MAIN_1_CoAnQi registry                                │
+│   ├── UpdatePhysicsTerm()    : Modify existing term parameters dynamically                                   │
+│   ├── ValidatePhysicsTerm()  : Validate term against observational data                                     │
+│   ├── InjectDynamicTerm()    : Runtime term injection (Self-Expanding v3.1)                                 │
+│   ├── OptimizeParameters()   : Self-updating parameter optimization (gradient descent)                      │
+│   ├── CloneAndMutate()       : Self-cloning with mutation for parameter sensitivity                         │
+│   ├── CalculateSystem()      : Compute UQFF physics for single system                                       │
+│   ├── CalculateAllSystems()  : Batch process all 26+ predefined systems                                     │
+│   ├── RunSimulation()        : Execute one of 6 simulation modes                                            │
+│   ├── PerformStatisticalAnalysis(): Full statistical suite (mean, stddev, correlation)                      │
+│   ├── CompareWithQCalc()     : Cross-validate with QCalc.py results                                         │
+│   ├── CompareWithCondensedPhysics(): Cross-validate with CondensedPhysics.py                                │
+│   └── ExecuteMenuOption()    : Programmatically execute MAIN_1_CoAnQi menu options                          │
+│                                                                                                               │
+│   DISTINCTION FROM POSEIDON:                                                                                  │
+│   ├── CoAnQi_bot = SPECIALIZED for MAIN_1_CoAnQi.cpp ONLY (PhysicsTerm mgmt, simulations)                   │
+│   └── Poseidon   = GENERAL CONTRACTOR for entire codebase (all languages, cross-platform)                   │
+│                                                                                                               │
+│   INTEGRATION: Uses python_bridge.h (pybind11 → task_bot_maintenance.py), physics_service.h, IPC            │
 └──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -318,7 +351,7 @@
 | Python Support | 30+ | CondensedPhysics*.py, Phase*_Consolidated.py, IP/OPData.py, APIFetch.py |
 | JavaScript | 3 | index.js (LIBRARY), uqff_server.js, automated_legacy_converter.js |
 | IPC Layer | 3 | ipc/uqff_ipc.h, python_bridge.h, physics_service.h |
-| VR Layer | 6 | vr/*.h (runtime, openxr, vulkan, task_bot, poseidon_task_bot, astro_graphics) |
+| VR Layer | 7 | vr/*.h (runtime, openxr, vulkan, task_bot, poseidon_task_bot, CoAnQi_bot, astro_graphics) |
 | Modules System | 10+ | modules/*.py (loader, interface, gaming/*, debug/*) |
 | Config/Data | 20+ | *.json, *.csv, observational_systems_config.h |
 
@@ -352,5 +385,5 @@ CondensedPhysics_OutputData.py
 
 ---
 
-*CANONICAL DOCUMENT - Version 4.2.1 - DO NOT DEVIATE*
-*Updated: 2026-02-21 (v4.2.1 Poseidon TaskBot Integration) by Daniel T. Murphy*
+*CANONICAL DOCUMENT - Version 4.2.2 - DO NOT DEVIATE*
+*Updated: 2026-02-21 (v4.2.2 Dual Bot Architecture: CoAnQi + Poseidon) by Daniel T. Murphy*

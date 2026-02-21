@@ -708,6 +708,7 @@ if(Qt6_FOUND)
             ${CMAKE_SOURCE_DIR}/vr/vulkan_compositor.cpp
             ${CMAKE_SOURCE_DIR}/vr/task_bot.cpp
             ${CMAKE_SOURCE_DIR}/vr/poseidon_task_bot.cpp
+            ${CMAKE_SOURCE_DIR}/vr/CoAnQi_bot.cpp
             ${CMAKE_SOURCE_DIR}/vr/astro_graphics.cpp
             ${CMAKE_SOURCE_DIR}/ipc/uqff_ipc.cpp
         )
@@ -718,6 +719,7 @@ if(Qt6_FOUND)
             ${CMAKE_SOURCE_DIR}/vr/vulkan_compositor.h
             ${CMAKE_SOURCE_DIR}/vr/task_bot.h
             ${CMAKE_SOURCE_DIR}/vr/poseidon_task_bot.h
+            ${CMAKE_SOURCE_DIR}/vr/CoAnQi_bot.h
             ${CMAKE_SOURCE_DIR}/vr/astro_graphics.h
             ${CMAKE_SOURCE_DIR}/ipc/uqff_ipc.h
         )
@@ -772,9 +774,10 @@ if(Qt6_FOUND)
             target_compile_definitions(VRRuntime PRIVATE HAVE_NLOHMANN_JSON)
         endif()
         
-        message(STATUS "VRRuntime build target ENABLED (Phase 3 scaffold)")
+        message(STATUS "VRRuntime build target ENABLED (Phase 3 scaffold + v4.2.1 Dual Bot)")
         message(STATUS "  Sources: vr/vr_runtime.cpp, vr/openxr_session.cpp, vr/vulkan_compositor.cpp")
-        message(STATUS "           vr/task_bot.cpp, vr/poseidon_task_bot.cpp, vr/astro_graphics.cpp")
+        message(STATUS "           vr/task_bot.cpp, vr/poseidon_task_bot.cpp, vr/CoAnQi_bot.cpp, vr/astro_graphics.cpp")
+        message(STATUS "  Bots: CoAnQi_bot (MAIN_1_CoAnQi.cpp specialist), Poseidon (general contractor)")
     else()
         message(STATUS "VRRuntime DISABLED - set BUILD_VR_RUNTIME=ON to enable (Phase 3)")
     endif()
