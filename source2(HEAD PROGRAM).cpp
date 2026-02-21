@@ -75,7 +75,18 @@
 #endif
 
 // System and Standard Libraries
+#ifdef _WIN32
 #include <windows.h>         // Windows API - Windows-specific system functions
+#else
+// POSIX system headers for Linux/macOS
+#include <unistd.h>          // POSIX API - close(), read(), write(), pipe()
+#include <sys/types.h>       // POSIX types - pid_t, size_t, ssize_t
+#include <sys/stat.h>        // File status - mkdir(), mode flags
+#include <sys/socket.h>      // Berkeley sockets - for Unix domain sockets
+#include <sys/un.h>          // Unix domain socket address structure
+#include <fcntl.h>           // File control - open(), O_* flags
+#include <signal.h>          // Signal handling - SIGTERM, SIGINT
+#endif
 #include <string>            // std::string - standard string class for text manipulation
 #include <vector>            // std::vector - dynamic array container for storing collections
 #include <thread>            // std::thread - multithreading support for parallel operations

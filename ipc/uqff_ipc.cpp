@@ -4,7 +4,12 @@
  * 
  * Author: Daniel T. Murphy
  * Framework: UQFF Star-Magic v3.0
- * Phase: 1 - IPC Foundation
+ * Phase: 3 - Full gRPC + Cross-Platform Named Pipes
+ * 
+ * Channels implemented:
+ * - SharedMemoryChannel: Cross-platform (Windows CreateFileMapping / POSIX shm_open)
+ * - GrpcChannel: Full gRPC implementation for physics service
+ * - NamedPipeChannel: Cross-platform (Windows Named Pipes / Unix Domain Sockets)
  */
 
 #include "uqff_ipc.h"
@@ -12,6 +17,11 @@
 #include <thread>
 #include <cstring>
 #include <unordered_map>
+
+#ifndef _WIN32
+#include <cerrno>
+#include <poll.h>
+#endif
 
 namespace UQFF {
 namespace IPC {
@@ -538,6 +548,452 @@ GrpcChannel::ServiceStatus GrpcChannel::getStatus() {
 #endif
     
     return status;
+}
+
+// ============================================================================
+// NAMED PIPE CHANNEL IMPLEMENTATION (Cross-Platform)
+// ============================================================================
+
+NamedPipeChannel::NamedPipeChannel(const std::string& name, Mode mode)
+    : pipe_name_(name)
+    , mode_(mode)
+    , connected_(false)
+#ifdef _WIN32
+    , pipe_handle_(INVALID_HANDLE_VALUE)
+    , connect_event_(nullptr)
+#else
+    , listen_fd_(-1)
+    , conn_fd_(-1)
+#endif
+{
+#ifdef _WIN32
+    // Windows: pipe path is \\.\pipe\UQFF_<name>
+    pipe_name_ = "\\\\.\\pipe\\UQFF_" + name;
+#else
+    // Unix: socket path in /tmp
+    socket_path_ = "/tmp/uqff_pipe_" + name + ".sock";
+#endif
+
+    if (mode == Mode::SERVER) {
+        if (init_server()) {
+            std::cout << "[IPC/Pipe] Server created: " << pipe_name_ << std::endl;
+        } else {
+            std::cerr << "[IPC/Pipe] Failed to create server: " << pipe_name_ << std::endl;
+        }
+    } else {
+        // Client mode: connection deferred to connect()
+        std::cout << "[IPC/Pipe] Client initialized for: " << pipe_name_ << std::endl;
+    }
+}
+
+NamedPipeChannel::~NamedPipeChannel() {
+    close();
+}
+
+bool NamedPipeChannel::init_server() {
+#ifdef _WIN32
+    // Create named pipe with overlapped I/O for async operations
+    pipe_handle_ = CreateNamedPipeA(
+        pipe_name_.c_str(),
+        PIPE_ACCESS_DUPLEX | FILE_FLAG_OVERLAPPED,
+        PIPE_TYPE_MESSAGE | PIPE_READMODE_MESSAGE | PIPE_WAIT,
+        1,                      // Max instances
+        1024 * 64,             // Out buffer size
+        1024 * 64,             // In buffer size
+        0,                      // Default timeout
+        nullptr                 // Security attributes
+    );
+    
+    if (pipe_handle_ == INVALID_HANDLE_VALUE) {
+        std::cerr << "[IPC/Pipe] CreateNamedPipe failed: " << GetLastError() << std::endl;
+        return false;
+    }
+    
+    // Create event for overlapped connect
+    connect_event_ = CreateEvent(nullptr, TRUE, FALSE, nullptr);
+    return true;
+    
+#else
+    // Unix domain socket
+    // Remove existing socket file
+    unlink(socket_path_.c_str());
+    
+    listen_fd_ = socket(AF_UNIX, SOCK_STREAM, 0);
+    if (listen_fd_ < 0) {
+        std::cerr << "[IPC/Pipe] socket() failed: " << strerror(errno) << std::endl;
+        return false;
+    }
+    
+    struct sockaddr_un addr;
+    memset(&addr, 0, sizeof(addr));
+    addr.sun_family = AF_UNIX;
+    strncpy(addr.sun_path, socket_path_.c_str(), sizeof(addr.sun_path) - 1);
+    
+    if (bind(listen_fd_, (struct sockaddr*)&addr, sizeof(addr)) < 0) {
+        std::cerr << "[IPC/Pipe] bind() failed: " << strerror(errno) << std::endl;
+        ::close(listen_fd_);
+        listen_fd_ = -1;
+        return false;
+    }
+    
+    if (listen(listen_fd_, 1) < 0) {
+        std::cerr << "[IPC/Pipe] listen() failed: " << strerror(errno) << std::endl;
+        ::close(listen_fd_);
+        listen_fd_ = -1;
+        return false;
+    }
+    
+    return true;
+#endif
+}
+
+bool NamedPipeChannel::init_client() {
+#ifdef _WIN32
+    // Client initialization is done in connect()
+    return true;
+#else
+    return true;
+#endif
+}
+
+bool NamedPipeChannel::accept_connection(int timeout_ms) {
+    if (mode_ != Mode::SERVER) return false;
+    
+#ifdef _WIN32
+    if (pipe_handle_ == INVALID_HANDLE_VALUE) return false;
+    
+    OVERLAPPED overlapped = {0};
+    overlapped.hEvent = connect_event_;
+    
+    if (ConnectNamedPipe(pipe_handle_, &overlapped)) {
+        connected_ = true;
+        return true;
+    }
+    
+    DWORD error = GetLastError();
+    if (error == ERROR_IO_PENDING) {
+        DWORD wait_result = WaitForSingleObject(connect_event_, 
+            timeout_ms < 0 ? INFINITE : static_cast<DWORD>(timeout_ms));
+        if (wait_result == WAIT_OBJECT_0) {
+            DWORD bytes_transferred;
+            if (GetOverlappedResult(pipe_handle_, &overlapped, &bytes_transferred, FALSE)) {
+                connected_ = true;
+                std::cout << "[IPC/Pipe] Client connected" << std::endl;
+                return true;
+            }
+        }
+    } else if (error == ERROR_PIPE_CONNECTED) {
+        // Client already connected
+        connected_ = true;
+        return true;
+    }
+    
+    return false;
+    
+#else
+    // Unix: use poll for timeout
+    if (listen_fd_ < 0) return false;
+    
+    if (timeout_ms >= 0) {
+        struct pollfd pfd;
+        pfd.fd = listen_fd_;
+        pfd.events = POLLIN;
+        
+        int ret = poll(&pfd, 1, timeout_ms);
+        if (ret <= 0) {
+            return false;  // Timeout or error
+        }
+    }
+    
+    conn_fd_ = accept(listen_fd_, nullptr, nullptr);
+    if (conn_fd_ < 0) {
+        std::cerr << "[IPC/Pipe] accept() failed: " << strerror(errno) << std::endl;
+        return false;
+    }
+    
+    connected_ = true;
+    std::cout << "[IPC/Pipe] Client connected (fd=" << conn_fd_ << ")" << std::endl;
+    return true;
+#endif
+}
+
+bool NamedPipeChannel::connect(int timeout_ms) {
+    if (mode_ != Mode::CLIENT) return false;
+    
+#ifdef _WIN32
+    auto start = std::chrono::steady_clock::now();
+    
+    while (true) {
+        pipe_handle_ = CreateFileA(
+            pipe_name_.c_str(),
+            GENERIC_READ | GENERIC_WRITE,
+            0,
+            nullptr,
+            OPEN_EXISTING,
+            FILE_FLAG_OVERLAPPED,
+            nullptr
+        );
+        
+        if (pipe_handle_ != INVALID_HANDLE_VALUE) {
+            // Set message mode
+            DWORD mode = PIPE_READMODE_MESSAGE;
+            SetNamedPipeHandleState(pipe_handle_, &mode, nullptr, nullptr);
+            connected_ = true;
+            std::cout << "[IPC/Pipe] Connected to server: " << pipe_name_ << std::endl;
+            return true;
+        }
+        
+        DWORD error = GetLastError();
+        if (error != ERROR_PIPE_BUSY) {
+            std::cerr << "[IPC/Pipe] CreateFile failed: " << error << std::endl;
+            return false;
+        }
+        
+        // Check timeout
+        auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(
+            std::chrono::steady_clock::now() - start).count();
+        if (timeout_ms >= 0 && elapsed >= timeout_ms) {
+            return false;
+        }
+        
+        // Wait for pipe to become available
+        if (!WaitNamedPipeA(pipe_name_.c_str(), 500)) {
+            // Check timeout again
+            elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(
+                std::chrono::steady_clock::now() - start).count();
+            if (timeout_ms >= 0 && elapsed >= timeout_ms) {
+                return false;
+            }
+        }
+    }
+    
+#else
+    // Unix domain socket connect
+    conn_fd_ = socket(AF_UNIX, SOCK_STREAM, 0);
+    if (conn_fd_ < 0) {
+        std::cerr << "[IPC/Pipe] socket() failed: " << strerror(errno) << std::endl;
+        return false;
+    }
+    
+    struct sockaddr_un addr;
+    memset(&addr, 0, sizeof(addr));
+    addr.sun_family = AF_UNIX;
+    strncpy(addr.sun_path, socket_path_.c_str(), sizeof(addr.sun_path) - 1);
+    
+    // Set non-blocking for timeout support
+    int flags = fcntl(conn_fd_, F_GETFL, 0);
+    fcntl(conn_fd_, F_SETFL, flags | O_NONBLOCK);
+    
+    auto start = std::chrono::steady_clock::now();
+    
+    while (true) {
+        int ret = ::connect(conn_fd_, (struct sockaddr*)&addr, sizeof(addr));
+        if (ret == 0) {
+            // Connected immediately
+            fcntl(conn_fd_, F_SETFL, flags);  // Restore blocking
+            connected_ = true;
+            std::cout << "[IPC/Pipe] Connected to server: " << socket_path_ << std::endl;
+            return true;
+        }
+        
+        if (errno == EISCONN) {
+            // Already connected
+            fcntl(conn_fd_, F_SETFL, flags);
+            connected_ = true;
+            return true;
+        }
+        
+        if (errno != EINPROGRESS && errno != EAGAIN && errno != ENOENT) {
+            std::cerr << "[IPC/Pipe] connect() failed: " << strerror(errno) << std::endl;
+            ::close(conn_fd_);
+            conn_fd_ = -1;
+            return false;
+        }
+        
+        // Check timeout
+        auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(
+            std::chrono::steady_clock::now() - start).count();
+        if (timeout_ms >= 0 && elapsed >= timeout_ms) {
+            ::close(conn_fd_);
+            conn_fd_ = -1;
+            return false;
+        }
+        
+        // Wait a bit and retry
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+#endif
+}
+
+bool NamedPipeChannel::send(const MessageHeader& header, const void* payload) {
+    if (!connected_) return false;
+    
+    const size_t total_size = sizeof(MessageHeader) + header.payload_size;
+    std::vector<uint8_t> buffer(total_size);
+    
+    std::memcpy(buffer.data(), &header, sizeof(MessageHeader));
+    if (payload && header.payload_size > 0) {
+        std::memcpy(buffer.data() + sizeof(MessageHeader), payload, header.payload_size);
+    }
+    
+#ifdef _WIN32
+    DWORD bytes_written = 0;
+    OVERLAPPED overlapped = {0};
+    overlapped.hEvent = CreateEvent(nullptr, TRUE, FALSE, nullptr);
+    
+    BOOL success = WriteFile(pipe_handle_, buffer.data(), 
+                             static_cast<DWORD>(total_size), &bytes_written, &overlapped);
+    
+    if (!success && GetLastError() == ERROR_IO_PENDING) {
+        WaitForSingleObject(overlapped.hEvent, INFINITE);
+        GetOverlappedResult(pipe_handle_, &overlapped, &bytes_written, FALSE);
+        success = (bytes_written == total_size);
+    }
+    
+    CloseHandle(overlapped.hEvent);
+    return success && bytes_written == total_size;
+    
+#else
+    ssize_t written = write(conn_fd_, buffer.data(), total_size);
+    return written == static_cast<ssize_t>(total_size);
+#endif
+}
+
+bool NamedPipeChannel::receive(MessageHeader& header, std::vector<uint8_t>& payload, 
+                               int timeout_ms) {
+    if (!connected_) return false;
+    
+#ifdef _WIN32
+    // Read header first
+    DWORD bytes_read = 0;
+    OVERLAPPED overlapped = {0};
+    overlapped.hEvent = CreateEvent(nullptr, TRUE, FALSE, nullptr);
+    
+    BOOL success = ReadFile(pipe_handle_, &header, sizeof(MessageHeader), 
+                            &bytes_read, &overlapped);
+    
+    if (!success && GetLastError() == ERROR_IO_PENDING) {
+        DWORD wait_result = WaitForSingleObject(overlapped.hEvent,
+            timeout_ms < 0 ? INFINITE : static_cast<DWORD>(timeout_ms));
+        if (wait_result != WAIT_OBJECT_0) {
+            CancelIo(pipe_handle_);
+            CloseHandle(overlapped.hEvent);
+            return false;
+        }
+        GetOverlappedResult(pipe_handle_, &overlapped, &bytes_read, FALSE);
+    }
+    
+    CloseHandle(overlapped.hEvent);
+    
+    if (bytes_read != sizeof(MessageHeader) || !header.is_valid()) {
+        return false;
+    }
+    
+    // Read payload
+    if (header.payload_size > 0) {
+        payload.resize(header.payload_size);
+        overlapped = {0};
+        overlapped.hEvent = CreateEvent(nullptr, TRUE, FALSE, nullptr);
+        
+        success = ReadFile(pipe_handle_, payload.data(), header.payload_size, 
+                          &bytes_read, &overlapped);
+        
+        if (!success && GetLastError() == ERROR_IO_PENDING) {
+            WaitForSingleObject(overlapped.hEvent, INFINITE);
+            GetOverlappedResult(pipe_handle_, &overlapped, &bytes_read, FALSE);
+        }
+        
+        CloseHandle(overlapped.hEvent);
+        
+        if (bytes_read != header.payload_size) {
+            return false;
+        }
+    } else {
+        payload.clear();
+    }
+    
+    return true;
+    
+#else
+    // Unix: use poll for timeout
+    if (timeout_ms >= 0) {
+        struct pollfd pfd;
+        pfd.fd = conn_fd_;
+        pfd.events = POLLIN;
+        
+        int ret = poll(&pfd, 1, timeout_ms);
+        if (ret <= 0) {
+            return false;  // Timeout or error
+        }
+    }
+    
+    // Read header
+    ssize_t bytes_read = read(conn_fd_, &header, sizeof(MessageHeader));
+    if (bytes_read != sizeof(MessageHeader) || !header.is_valid()) {
+        if (bytes_read == 0) {
+            // Connection closed
+            connected_ = false;
+        }
+        return false;
+    }
+    
+    // Read payload
+    if (header.payload_size > 0) {
+        payload.resize(header.payload_size);
+        bytes_read = read(conn_fd_, payload.data(), header.payload_size);
+        if (bytes_read != static_cast<ssize_t>(header.payload_size)) {
+            return false;
+        }
+    } else {
+        payload.clear();
+    }
+    
+    return true;
+#endif
+}
+
+bool NamedPipeChannel::is_connected() const {
+    return connected_;
+}
+
+void NamedPipeChannel::close() {
+    if (!connected_ && 
+#ifdef _WIN32
+        pipe_handle_ == INVALID_HANDLE_VALUE
+#else
+        listen_fd_ < 0 && conn_fd_ < 0
+#endif
+    ) return;
+    
+    connected_ = false;
+    
+#ifdef _WIN32
+    if (pipe_handle_ != INVALID_HANDLE_VALUE) {
+        if (mode_ == Mode::SERVER) {
+            DisconnectNamedPipe(pipe_handle_);
+        }
+        CloseHandle(pipe_handle_);
+        pipe_handle_ = INVALID_HANDLE_VALUE;
+    }
+    if (connect_event_) {
+        CloseHandle(connect_event_);
+        connect_event_ = nullptr;
+    }
+#else
+    if (conn_fd_ >= 0) {
+        ::close(conn_fd_);
+        conn_fd_ = -1;
+    }
+    if (listen_fd_ >= 0) {
+        ::close(listen_fd_);
+        listen_fd_ = -1;
+    }
+    if (mode_ == Mode::SERVER && !socket_path_.empty()) {
+        unlink(socket_path_.c_str());
+    }
+#endif
+    
+    std::cout << "[IPC/Pipe] Channel closed: " << pipe_name_ << std::endl;
 }
 
 // ============================================================================

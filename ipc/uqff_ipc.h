@@ -33,8 +33,11 @@
 #include <windows.h>
 #else
 #include <sys/mman.h>
+#include <sys/socket.h>
+#include <sys/un.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <poll.h>
 #endif
 
 // gRPC support (Phase 3)
@@ -361,6 +364,72 @@ private:
     std::shared_ptr<grpc::Channel> grpc_channel_;
     std::unique_ptr<uqff::PhysicsService::Stub> stub_;
 #endif
+};
+
+// ============================================================================
+// NAMED PIPE CHANNEL (Cross-Platform)
+// ============================================================================
+
+/**
+ * @class NamedPipeChannel
+ * @brief Cross-platform named pipe IPC channel
+ * 
+ * Windows: Uses native named pipes (CreateNamedPipe/CreateFile)
+ * Linux/macOS: Uses Unix domain sockets (equivalent semantics)
+ * 
+ * Provides reliable, connection-oriented communication between processes.
+ * Suitable for command/response patterns (vs SharedMemory for streaming).
+ */
+class NamedPipeChannel : public IChannel {
+public:
+    enum class Mode { SERVER, CLIENT };
+    
+    /**
+     * Create a named pipe channel
+     * @param name Pipe name (automatically prefixed with platform path)
+     * @param mode SERVER to create/listen, CLIENT to connect
+     */
+    NamedPipeChannel(const std::string& name, Mode mode);
+    ~NamedPipeChannel() override;
+    
+    bool send(const MessageHeader& header, const void* payload = nullptr) override;
+    bool receive(MessageHeader& header, std::vector<uint8_t>& payload, 
+                int timeout_ms = -1) override;
+    bool is_connected() const override;
+    void close() override;
+    std::string name() const override { return pipe_name_; }
+    
+    /**
+     * Accept a client connection (SERVER mode only)
+     * @param timeout_ms Wait timeout (-1 = infinite)
+     * @return true if client connected
+     */
+    bool accept_connection(int timeout_ms = -1);
+    
+    /**
+     * Connect to server (CLIENT mode only)
+     * @param timeout_ms Connection timeout
+     * @return true if connected
+     */
+    bool connect(int timeout_ms = 5000);
+    
+private:
+    std::string pipe_name_;
+    Mode mode_;
+    std::atomic<bool> connected_;
+    
+#ifdef _WIN32
+    HANDLE pipe_handle_;
+    HANDLE connect_event_;  // For overlapped I/O
+#else
+    int listen_fd_;         // Server: listening socket
+    int conn_fd_;           // Connected socket (server: accepted, client: connected)
+    std::string socket_path_;
+#endif
+    
+    // Platform-specific initialization
+    bool init_server();
+    bool init_client();
 };
 
 // ============================================================================
