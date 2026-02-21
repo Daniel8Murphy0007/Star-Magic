@@ -1,55 +1,86 @@
 # VR Compositor + Physics Backend Architecture Strategy
 
-**Date:** February 19, 2026  
-**Author:** GitHub Copilot (Claude Opus 4.5) + Daniel Murphy  
-**Branch:** master  
-**Repository:** Daniel8Murphy0007/Star-Magic  
+> **Version:** 2.0 CANONICAL (matches ARCHITECTURE_FLOW_DIAGRAM.md v4.0)
+> **Date:** February 21, 2026  
+> **Author:** GitHub Copilot (Claude Opus 4.5) + Daniel Murphy  
+> **Branch:** master  
+> **Repository:** Daniel8Murphy0007/Star-Magic  
+
+---
+
+## CANONICAL ARCHITECTURE RULES
+
+1. **USER INPUT goes FIRST** → enters through `source2.cpp` (Principal GUI)
+2. **source2.cpp** = Principal GUI application (user-facing, 21 tabs, Qt6)
+3. **vr_runtime.cpp** = VR/VM developer backend (GPU-heavy, virtual space)
+4. **physics_backend.cpp** = CPU-bound physics server (headless)
+5. **index.js** = LIBRARY INDEX (NOT a calculator) - exports 106 systems for require()
 
 ---
 
 ## Executive Summary
 
-This document formalizes the architectural evolution of Star-Magic UQFF from a single-program physics calculator into a **VR-capable distributed computation platform** consisting of:
+This document formalizes the architectural evolution of Star-Magic UQFF consisting of:
 
-1. **VR Runtime Layer** (`vr_runtime.cpp`, evolved from `source2(HEAD PROGRAM).cpp`)
-2. **Physics Backend Service** (`physics_backend.cpp`, evolved from `source2.cpp`)
-3. **Core Computation Engine** (`MAIN_1_CoAnQi.cpp`, unchanged - library mode)
+1. **Principal GUI** (`source2.cpp`) - User-facing Qt6 application with 21 tabs
+2. **VR Runtime Layer** (`vr_runtime.cpp`) - Developer VR/VM backend for GPU-heavy simulations
+3. **Physics Backend Service** (`physics_backend.cpp`) - Headless computation server
+4. **Core Computation Engine** (`MAIN_1_CoAnQi.cpp`) - Library mode or interactive calculator
 
 ---
 
 ## 1. Dual-Program Role Clarification
 
-### 1.1 source2(HEAD PROGRAM).cpp → VR Runtime
+### 1.1 source2.cpp → Principal GUI (USER STARTS HERE)
 
-| Aspect | Current | Future |
-|--------|---------|--------|
-| **Lines** | 2,182 | ~5,000 (with VR) |
-| **Purpose** | Astronomical Search Browser | VR Compositor + GPU Dispatch |
-| **Dependencies** | Direct (no guards) | OpenXR, Vulkan, Astro Graphics |
-| **Thread Model** | Qt Event Loop | GPU-bound, real-time priority |
+| Aspect | Description |
+|--------|-------------|
+| **Lines** | 11,058 |
+| **Purpose** | **PRINCIPAL GUI** - User-facing entry point |
+| **Dependencies** | Qt6 + VTK + Chromium |
+| **Tabs** | 21 tabs including calculators, AI bots, session logger |
+| **Thread Model** | Qt Event Loop + Worker Threads |
 
 **Key Characteristics:**
-- Lightweight, focused on rendering and user interaction
-- Direct GUI → GPU command submission (no CPU stalls)
+- **THIS IS THE ENTRY POINT** - User launches this application first
+- User query field for astronomical object names
+- APIFetch.py integration for 55 API sources
+- Dispatches to calculators (MAIN_1, QCalc.py, CondensedPhysics.py, uqff_server.js)
+- Session Logger (Tab 9) for RECALL functionality
+- Cross-validation between C++ and Python (Tab 10)
+
+### 1.2 vr_runtime.cpp → VR/VM Developer Backend
+
+| Aspect | Description |
+|--------|-------------|
+| **Lines** | ~5,000 (projected) |
+| **Purpose** | VR/VM developer backend - GPU-heavy simulations in virtual space |
+| **Dependencies** | OpenXR, Vulkan, Astro Graphics |
+| **Thread Model** | GPU-bound, real-time priority |
+
+**Key Characteristics:**
+- **NOT the user entry point** - Developer backend for heavy GPU work
+- Runs in virtual space (VR headset environment)
+- Virtual keyboard input, virtual goggles (OpenXR)
 - Manages astronomical graphics program (GPU tasking)
-- Runs Task-Oriented Bot for automation
-- Voice/gesture input already present (PocketSphinx, OpenCV)
+- Task-Oriented Bot for automation (voice/gesture input)
+- Communicates with physics_backend.cpp via IPC
 
-### 1.2 source2.cpp → Physics Backend Service
+### 1.3 physics_backend.cpp → CPU-Bound Physics Server
 
-| Aspect | Current | Future |
-|--------|---------|--------|
-| **Lines** | 11,040 | ~12,000 (with IPC) |
-| **Purpose** | Physics Orchestrator + GUI | Headless Computation Server |
-| **Dependencies** | Conditional (`#ifndef NO_*`) | Same + gRPC/SharedMem |
-| **Thread Model** | Qt + Worker Threads | Distributed Computing Pool |
+| Aspect | Description |
+|--------|-------------|
+| **Lines** | ~12,000 (projected) |
+| **Purpose** | Headless computation server for heavy physics calculations |
+| **Dependencies** | MAIN_1_CoAnQi.cpp (library mode), pybind11, gRPC |
+| **Thread Model** | Distributed Computing Pool |
 
 **Key Characteristics:**
-- Heavy computation, CPU-bound with async operations
-- Already has: `DistributedComputing`, `MLIntegration`, `PluginManager`
 - Self-Expanding Framework (register terms at runtime)
 - Self-Updating (parameter optimization via learning rate)
 - Self-Simulating (time evolution, validation pipeline)
+- Handles IPC requests from vr_runtime.cpp
+- Can run headless on server machines
 
 ---
 
@@ -110,70 +141,92 @@ namespace SGR1745 {
 
 ---
 
-## 3. VR Architecture Data Flow
+## 3. VR Architecture Data Flow (CANONICAL)
 
 ```
-┌──────────────────────────────────────────────────────────────────────────┐
-│                     USER (VR/3D Workspace)                               │
-│                  [Headset, Controllers, Gestures]                        │
-└───────────────────────────────┬──────────────────────────────────────────┘
-                                │
-                                ▼
-┌──────────────────────────────────────────────────────────────────────────┐
-│           vr_runtime.cpp (from source2 HEAD PROGRAM)                     │
-│                                                                          │
-│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐          │
-│  │ OpenXR Runtime  │  │ Vulkan/DirectX  │  │ Astro Graphics  │          │
-│  │ (VR Session)    │  │ (GPU Compositor)│  │ (Your Program)  │          │
-│  └────────┬────────┘  └────────┬────────┘  └────────┬────────┘          │
-│           │                    │                    │                    │
-│           └────────────────────┼────────────────────┘                    │
-│                                │                                         │
-│  ┌─────────────────────────────┴─────────────────────────────┐          │
-│  │                     Task Bot Agent                         │          │
-│  │   - Voice commands (PocketSphinx)                          │          │
-│  │   - Gesture recognition (OpenCV)                           │          │
-│  │   - Automated task execution                               │          │
-│  └─────────────────────────────┬─────────────────────────────┘          │
-│                                │                                         │
-│  [Lightweight: ~5K lines, GPU-bound, real-time priority]                │
-└───────────────────────────────┬──────────────────────────────────────────┘
-                                │ IPC (SharedMemory / gRPC)
-                                ▼
-┌──────────────────────────────────────────────────────────────────────────┐
-│              physics_backend.cpp (from source2.cpp)                       │
-│                                                                          │
-│  ┌───────────────────────────────────────────────────────────────────┐  │
-│  │                    IPC Server Layer                                │  │
-│  │   - gRPC endpoints for structured requests                         │  │
-│  │   - Shared memory for low-latency field data                       │  │
-│  └───────────────────────────────────────────────────────────────────┘  │
-│                                                                          │
-│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐          │
-│  │ Self-Expanding  │  │ Self-Updating   │  │ Self-Simulating │          │
-│  │ (Register Term) │  │ (Optimize κ)    │  │ (Time Evolve)   │          │
-│  └─────────────────┘  └─────────────────┘  └─────────────────┘          │
-│                                                                          │
-│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐          │
-│  │ UQFF Calculator │  │ Distributed     │  │ ML Models       │          │
-│  │ (492 terms)     │  │ Computing       │  │ (PyTorch)       │          │
-│  └─────────────────┘  └─────────────────┘  └─────────────────┘          │
-│                                                                          │
-│  [Heavy: ~12K lines, CPU-bound, async calculations]                     │
-└───────────────────────────────┬──────────────────────────────────────────┘
-                                │ Library calls
-                                ▼
-┌──────────────────────────────────────────────────────────────────────────┐
-│              MAIN_1_CoAnQi.cpp (Core Physics Engine)                     │
-│                                                                          │
-│  ┌───────────────────────────────────────────────────────────────────┐  │
-│  │  492 PhysicsTerm classes | 116 SOURCE blocks | 121+ systems       │  │
-│  │  SOURCE1-SOURCE116 integrated modules                              │  │
-│  │  source13.cpp - source200.cpp (173 files)                          │  │
-│  └───────────────────────────────────────────────────────────────────┘  │
-│                                                                          │
-│  [Core: 108K lines, 18-option menu, standalone or library mode]         │
-└──────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│                              USER (starts here)                                       │
+│                          [Desktop, CLI, Web Browser]                                  │
+└───────────────────────────────────┬──────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│                 source2.cpp (PRINCIPAL GUI APPLICATION)                              │
+│                           11,058 lines | Qt6 + VTK + Chromium                        │
+│                                                                                       │
+│  ┌─────────────────────────────────────────────────────────────────────────────────┐ │
+│  │                           USER QUERY FIELD                                       │ │
+│  │   "Sagittarius A*", "M87", "Betelgeuse", "NGC 3596"...                          │ │
+│  └─────────────────────────────────────────────────────────────────────────────────┘ │
+│                                    │                                                  │
+│                                    ▼                                                  │
+│  ┌─────────────────────────────────────────────────────────────────────────────────┐ │
+│  │                    API FETCH LAYER (APIFetch.py)                                 │ │
+│  │   55 APIs: SIMBAD → NASA → VizieR → NED → Gaia → Grok fallback                  │ │
+│  │   Output: bodies_YYYYMMDD_HHMMSS.csv → IPData.py                                │ │
+│  └─────────────────────────────────────────────────────────────────────────────────┘ │
+│                                    │                                                  │
+│                                    ▼                                                  │
+│  ┌─────────────────────────────────────────────────────────────────────────────────┐ │
+│  │             SIMULTANEOUS JOINT OPERATION PIPELINE                                │ │
+│  │                    (parallel dispatch to calculators)                            │ │
+│  │                                                                                  │ │
+│  │  ┌────────────────┐ ┌────────────────┐ ┌────────────────┐ ┌────────────────┐    │ │
+│  │  │ MAIN_1_CoAnQi  │ │   QCalc.py     │ │ CondensedPhys  │ │ uqff_server.js │    │ │
+│  │  │ (C++ 107K)     │ │ (Python 9K)    │ │ (Python 81K)   │ │ (HTTP:3141)    │    │ │
+│  │  └────────────────┘ └────────────────┘ └────────────────┘ └────────────────┘    │ │
+│  └─────────────────────────────────────────────────────────────────────────────────┘ │
+│                                    │                                                  │
+│                                    ▼                                                  │
+│  ┌─────────────────────────────────────────────────────────────────────────────────┐ │
+│  │                    RECIRCULATION LOOP                                            │ │
+│  │   OPData.py → uqff_results.json → CondensedPhysics_OutputData.py → RECALL       │ │
+│  └─────────────────────────────────────────────────────────────────────────────────┘ │
+│                                                                                       │
+│  [PRINCIPAL: User-facing, 21 tabs, query/recall workflow]                            │
+└──────────────────────────────────────────────────────────────────────────────────────┘
+                   │
+                   │ Optional IPC for VR/GPU workloads
+                   ▼
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│                     VR/VM BACKEND LAYER (Developer Side)                             │
+│                                                                                       │
+│  ┌─────────────────────────────────────────────────────────────────────────────────┐ │
+│  │                    IPC LAYER (Named Pipes + SharedMem + gRPC)                   │ │
+│  │   Named Pipe: \\.\pipe\StarMagic_UQFF                                           │ │
+│  │   SharedMem: Low-latency VR frame data                                          │ │
+│  │   Messages: CALCULATE_FIELD, VR_FRAME_UPDATE, REGISTER_TERM, etc.              │ │
+│  └─────────────────────────────────────────────────────────────────────────────────┘ │
+│                         │                     │                                       │
+│                         ▼                     ▼                                       │
+│  ┌─────────────────────────────┐  ┌─────────────────────────────────────────────┐   │
+│  │     vr_runtime.cpp          │  │     physics_backend.cpp                      │   │
+│  │     (GPU-bound VR)          │  │     (CPU-bound Physics)                      │   │
+│  │                             │  │                                              │   │
+│  │  - Virtual space render     │  │  - Self-Expanding (registerDynamicTerm)     │   │
+│  │  - Virtual keyboard         │  │  - Self-Updating (learning rate opt)        │   │
+│  │  - Virtual goggles (XR)     │  │  - Self-Simulating (time evolution)         │   │
+│  │  - Astro Graphics (GPU)     │  │  - Distributed Computing pool               │   │
+│  │  - Task Bot (voice/gesture) │  │  - ML Integration (PyTorch)                 │   │
+│  │                             │  │                                              │   │
+│  │  [~5K lines, GPU-bound]     │  │  [~12K lines, CPU-bound, async]             │   │
+│  └─────────────────────────────┘  └─────────────────────────────────────────────┘   │
+│                                                                                       │
+│  [DEVELOPER BACKEND: Heavy GPU/CPU simulations in virtual space]                     │
+└──────────────────────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼ Library calls
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│                 MAIN_1_CoAnQi.cpp (Core Physics Engine)                              │
+│                                                                                       │
+│  ┌─────────────────────────────────────────────────────────────────────────────────┐ │
+│  │  6,688+ PhysicsTerm classes | 116 SOURCE blocks | 121+ systems                  │ │
+│  │  SOURCE1-SOURCE116 integrated modules (446 unique modules)                      │ │
+│  │  source1.cpp - source173.cpp (173 files)                                        │ │
+│  └─────────────────────────────────────────────────────────────────────────────────┘ │
+│                                                                                       │
+│  [Core: 107K lines, 16-option menu, standalone or library mode]                      │
+└──────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -194,22 +247,21 @@ namespace SGR1745 {
 - **New files, no breaking changes**
 
 ### Phase 2: Physics Backend Service Mode
-- Add `--service` flag to `source2.cpp`
-- Implement `runPhysicsService()` with gRPC server
+- Create `physics_backend.cpp` as headless computation server
+- Implement gRPC server for IPC requests
 - Register handlers for VR requests
-- Preserve full GUI mode as default
 - **Additive changes only**
 
-### Phase 3: VR Runtime Scaffold
-- Rename `source2(HEAD PROGRAM).cpp` → `vr_runtime.cpp`
+### Phase 3: VR Runtime Development
+- Create `vr_runtime.cpp` for VR/VM developer backend
 - Add OpenXR session management
 - Add Vulkan/DirectX 12 compositor
 - Integrate Task Bot command routing
 - Stub for Astro Graphics Engine
-- **Gradual evolution**
+- **New development**
 
 ### Phase 4: Astro Graphics Integration
-- Load your astronomical graphics program
+- Load astronomical graphics program
 - Connect GPU tasking from VR runtime
 - Real-time field visualization
 - **Your code integration**
@@ -244,51 +296,44 @@ namespace SGR1745 {
 | pybind11 | ⚠️ Conditional | Python integration |
 | Wolfram WSTP | ⚠️ Optional | Symbolic math |
 
-### 5.3 Current Build Blockers
-1. `InformationParadoxUQFFModule.cpp` - Ambiguous symbol `c`, `G`, `hbar`
-2. `MAIN_1_CoAnQi.cpp` line 234-239 - Redefinition of `UQFF::Constants::*`
-3. Source2 target blocked by above errors
+---
 
-### 5.4 Repository State
-- **Branch:** master
-- **Last commit:** Cross-platform harmonization + Wolfram WSTP Runtime
-- **Working tree:** Modified (architecture analysis)
+## 6. Port Assignments
+
+| Port | Service | Protocol | Description |
+|------|---------|----------|-------------|
+| 990 | FTPS Implicit | TLS | External secure (TLS from start) |
+| 21 | FTPS Explicit | STARTTLS | External (upgrade to TLS) |
+| 3141 | uqff_server.js | HTTP | REST API (π×1000) |
+| 8443 | QCalc_API.py | HTTPS | FastAPI (optional) |
+| N/A | Named Pipe | IPC | \\.\pipe\StarMagic_UQFF |
+| N/A | SharedMem | IPC | Low-latency VR data |
 
 ---
 
-## 6. File Utilization Plan
+## 7. File Utilization Plan
 
 **Goal:** Tie/utilize every file in the worktree within this framework.
 
 | File Category | Count | Integration Point |
 |---------------|-------|-------------------|
-| `source1.cpp` - `source200.cpp` | 173 | Physics engine via SOURCE blocks |
+| `source1.cpp` - `source173.cpp` | 173 | Physics engine via SOURCE blocks |
 | `*_wolfram.cpp` | 50+ | Wolfram export via source174 |
 | `Core/Modules/*.cpp` | 20+ | Dynamic term registration |
-| `Python (*.py)` | 30+ | pybind11 integration |
-| `JavaScript (*.js)` | 5+ | WASM plugin system |
+| Python (`*.py`) | 30+ | pybind11 integration |
+| JavaScript (`*.js`) | 3 | index.js LIBRARY, uqff_server.js REST |
 | Headers (`*.h`) | 40+ | Shared constants, IPC layer |
 | Config (`*.json`, `*.csv`) | 20+ | System parameters, bodies data |
 
 ---
 
-## 7. Self-* Capability Preservation
+## 8. Self-* Capability Preservation
 
 | Capability | Current Implementation | VR Architecture |
 |------------|------------------------|-----------------|
 | **Self-Expand** | `registerDynamicTerm()` | IPC: `onRegisterTerm()` from VR |
 | **Self-Update** | `setDynamicParameter()`, learning rate | IPC: `onUpdateParameter()` loop |
 | **Self-Simulate** | `validation_pipeline()`, time evolution | IPC: `onSimulationStep()` streaming |
-
----
-
-## 8. Multi-Machine Deployment (Future)
-
-| Machine | Role | Program |
-|---------|------|---------|
-| **Windows 11 Pro** | Development + Physics Backend | `physics_backend.exe` |
-| **Ubuntu Server** | Database + API Cache | SQLite + REST wrapper |
-| **Web Server** | User Access | Static files or WebRTC for VR streaming |
 
 ---
 
@@ -314,5 +359,6 @@ k_η     = 10⁻¹¹³          // String tension (varies by module)
 
 ---
 
-*Document generated: February 19, 2026*  
+**CANONICAL DOCUMENT** - Version 2.0 - Matches ARCHITECTURE_FLOW_DIAGRAM.md v4.0  
+*Document generated: February 21, 2026*  
 *Next action: Git commit, then Phase 0 build fixes*

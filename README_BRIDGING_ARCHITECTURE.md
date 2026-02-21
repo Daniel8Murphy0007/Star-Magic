@@ -1,5 +1,8 @@
 # UQFF Bridging Architecture
 
+> **Version:** 2.0 CANONICAL (matches ARCHITECTURE_FLOW_DIAGRAM.md v4.0)
+> **CRITICAL:** source2.cpp = PRINCIPAL GUI (FIRST), VR/VM = Developer Backend
+
 ## Complete Data Flow Diagram
 
 This document describes the integration architecture between all UQFF Star-Magic components, including the FTPS bridging layer, JavaScript engine, C++ calculators, Python calculators, and the Qt GUI.
@@ -64,16 +67,19 @@ This document describes the integration architecture between all UQFF Star-Magic
 │   │  POST /api/batch                │  │                                  │         │
 │   └─────────────────────────────────┘  └─────────────────────────────────┘         │
 │                                                                                      │
-│   Imports: index.js (23,790 lines, 106 astrophysical systems)                       │
+│   Imports: index.js LIBRARY INDEX (23,790 lines, 106 astrophysical systems)         │
+│            Usage: const UQFF = require('./index.js'); UQFF.computeSagA(params);     │
 └─────────────────────────────────────────────────────────────────────────────────────┘
                                         │
                                         ▼
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
-│                         index.js (JavaScript UQFF Engine)                            │
+│                         index.js (JavaScript UQFF LIBRARY INDEX)                     │
 │                                                                                      │
 │   Lines: 23,790+ | Systems: 106 astrophysical bodies                                │
+│   ** NOTE: This is a LIBRARY INDEX, NOT a calculator **                             │
+│   ** uqff_server.js imports this library to serve REST API **                       │
 │                                                                                      │
-│   Core Computations:                                                                 │
+│   Core Computations (exported for require()):                                       │
 │   ├── Ug1: Magnetic dipole gravity                                                  │
 │   ├── Ug2: Charge/reactivity gravity                                                │
 │   ├── Ug3: String rotation gravity                                                  │
@@ -128,13 +134,27 @@ This document describes the integration architecture between all UQFF Star-Magic
 └─────────────────────────────────────────────────────────────────────────────────────┘
 
 ═══════════════════════════════════════════════════════════════════════════════════════
-                          LOCAL/GUI COMPUTATION PATH
+           source2.cpp - PRINCIPAL GUI APPLICATION (USER STARTS HERE)
 ═══════════════════════════════════════════════════════════════════════════════════════
 
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
-│                          source2.cpp (Qt GUI Application)                            │
+│                   source2.cpp (PRINCIPAL GUI - USER STARTS HERE)                    │
 │                                                                                      │
 │   Lines: 11,058+ | Tabs: 21 | Qt6 + VTK + Chromium                                  │
+│                                                                                      │
+│   ** THIS IS THE ENTRY POINT - USER LAUNCHES THIS APPLICATION FIRST **              │
+│                                                                                      │
+│   ┌─────────────────────────────────────────────────────────────────────────────┐   │
+│   │                         USER QUERY FIELD                                     │   │
+│   │   "Sagittarius A*", "M87", "Betelgeuse", "NGC 3596"...                      │   │
+│   └─────────────────────────────────────────────────────────────────────────────┘   │
+│                                        │                                             │
+│                                        ▼                                             │
+│   ┌─────────────────────────────────────────────────────────────────────────────┐   │
+│   │                    API FETCH LAYER (APIFetch.py)                             │   │
+│   │   55 APIs: SIMBAD → NASA → VizieR → NED → Gaia → Grok fallback              │   │
+│   │   Output: bodies_YYYYMMDD_HHMMSS.csv                                         │   │
+│   └─────────────────────────────────────────────────────────────────────────────┘   │
 │                                                                                      │
 │   Tab Layout:                                                                        │
 │   ├── Tab 1:  🎛️ MAIN_1 Calculator (PowerShellTerminalWidget)                      │
@@ -145,7 +165,7 @@ This document describes the integration architecture between all UQFF Star-Magic
 │   ├── Tab 6:  🤖 CoAnQi_bot (Ollama)                                                │
 │   ├── Tab 7:  🧠 SuperGrok4 (xAI)                                                   │
 │   ├── Tab 8:  🌌 UQFF Simulator (3D VTK)                                            │
-│   ├── Tab 9:  📋 Session Logger                                                     │
+│   ├── Tab 9:  📋 Session Logger (RECALL ACCESS)                                     │
 │   ├── Tab 10: ⚖️ Compare C++/Python                                                 │
 │   ├── Tab 11: 📐 Equation Display (IPC to QCalc.py)                                 │
 │   ├── Tab 12: 🌐 JS Engine (HTTP to uqff_server.js)                                 │
@@ -153,19 +173,21 @@ This document describes the integration architecture between all UQFF Star-Magic
 │                                                                                      │
 │   Includes:                                                                          │
 │   ├── equation_renderer.h - Long-form equation display with IPC                    │
-│   ├── source2_widgets_enhanced.h - UQFFJavaScriptWidget (Gap #5 fix)               │
+│   ├── source2_widgets_enhanced.h - UQFFJavaScriptWidget                            │
 │   ├── source2_mainwindow.h - Qt MOC declarations                                   │
+│   ├── source2_event_bus.h - Inter-widget events                                    │
 │   └── shared_constants.h - UQFF:: namespace constants                              │
 └─────────────────────────────────────────────────────────────────────────────────────┘
          │                    │                    │                    │
+         │     SIMULTANEOUS JOINT OPERATION PIPELINE (parallel dispatch)             │
          ▼                    ▼                    ▼                    ▼
 ┌────────────────┐  ┌────────────────┐  ┌────────────────┐  ┌────────────────┐
 │ MAIN_1_CoAnQi  │  │   QCalc.py     │  │ CondensedPhys  │  │ uqff_server.js │
 │    .cpp/.exe   │  │  (Python)      │  │    ics.py      │  │  (HTTP 3141)   │
 │                │  │                │  │                │  │                │
-│ 107,019 lines  │  │  9,100+ lines  │  │  5,500+ lines  │  │   504 lines    │
-│ 446 modules    │  │  8 equations   │  │  Pure physics  │  │  REST API      │
-│ 100 systems    │  │  long_form_eqs │  │  calculator    │  │  → index.js    │
+│ 107,019 lines  │  │  9,100+ lines  │  │  81,626 lines  │  │   504 lines    │
+│ 446 modules    │  │  16 assoc.     │  │  12+ assoc.    │  │  imports       │
+│ 15+ headers    │  │  programs      │  │  programs      │  │  index.js LIB  │
 │ 6,688+ terms   │  │                │  │                │  │                │
 └────────────────┘  └────────────────┘  └────────────────┘  └────────────────┘
          │                    │                    │                    │
@@ -175,7 +197,7 @@ This document describes the integration architecture between all UQFF Star-Magic
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
 │                            shared_constants.h / .py / .js                            │
 │                                                                                      │
-│   Synchronized Constants (Gap #1 Fix):                                              │
+│   Synchronized Constants:                                                           │
 │   ├── rho_vac_UA = 7.09e-36 J/m³ (gravitational scale)                              │
 │   ├── rho_vac_UA_field = 1e-27 J/m³ (field scale)                                   │
 │   ├── GRADIENT_RATIO = 7.09e-9 (DPM field-gravity coupling)                         │
@@ -183,58 +205,71 @@ This document describes the integration architecture between all UQFF Star-Magic
 └─────────────────────────────────────────────────────────────────────────────────────┘
 
 ═══════════════════════════════════════════════════════════════════════════════════════
-                    source2(HEAD PROGRAM).cpp - ORCHESTRATOR
+                    RECIRCULATION LOOP (Shared Files Persistence)
 ═══════════════════════════════════════════════════════════════════════════════════════
 
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
-│                    source2(HEAD PROGRAM).cpp (Qt Orchestrator)                       │
+│                     RECIRCULATION PERSISTENCE LOOP                                   │
 │                                                                                      │
-│   Purpose: Main entry point, orchestrates all data flows                            │
+│   FLOW: APIFetch → IPData.py → CALCULATORS → OPData.py → OutputData → RECALL       │
+│                                                                                      │
+│   1. bodies_*.csv → IPData.py (input parameters, 431 lines)                         │
+│   2. Calculators process → OPData.py (output results, 327 lines)                    │
+│   3. OPData.py → uqff_results.json (JSON storage)                                   │
+│   4. uqff_results.json → CondensedPhysics_OutputData.py (RECALL STORAGE)            │
+│   5. Session Logger (Tab 9) → session_*.json (GUI state persist)                    │
+│   6. MAIN_1_CoAnQi → coAnQi_log_*.txt (computation logs)                            │
+│   7. Query history → USER RECALL (back to Query Field)                              │
 │                                                                                      │
 │   ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│   │                         USER QUERY FIELD                                     │   │
-│   │   "Sagittarius A*", "M87", "Betelgeuse", "NGC 3596"...                      │   │
+│   │                    PERSISTENCE FILES                                         │   │
+│   │   ├── bodies_*.csv (timestamped API fetch results)                          │   │
+│   │   ├── IPData.py (input parameter storage)                                   │   │
+│   │   ├── OPData.py (output results storage)                                    │   │
+│   │   ├── uqff_results.json (JSON computation results)                          │   │
+│   │   ├── CondensedPhysics_OutputData.py (RECALL STORAGE)                       │   │
+│   │   ├── session_*.json (GUI session state)                                    │   │
+│   │   ├── coAnQi_log_*.txt (C++ computation logs)                               │   │
+│   │   └── ./uqff_data/*.json (RPC requests/responses)                           │   │
 │   └─────────────────────────────────────────────────────────────────────────────┘   │
-│                                        │                                             │
-│                                        ▼                                             │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════════════
+                VR/VM BACKEND LAYER (DEVELOPER SIDE - GPU HEAVY)
+═══════════════════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                     VR/VM BACKEND (Developer Side - GPU Heavy)                       │
+│                                                                                      │
+│   ** NOT the entry point - this is for DEVELOPER heavy simulations **               │
+│   ** Runs in virtual space with virtual keyboard, virtual goggles **                │
+│                                                                                      │
+│   ┌────────────────────────────┐    ┌────────────────────────────────────┐          │
+│   │     vr_runtime.cpp         │    │     physics_backend.cpp            │          │
+│   │     (GPU Heavy VR)         │    │     (CPU Heavy Physics)            │          │
+│   │                            │    │                                    │          │
+│   │   - Virtual space render   │    │   - Self-Expanding Framework       │          │
+│   │   - Virtual keyboard       │    │   - Self-Updating (learning rate)  │          │
+│   │   - Virtual goggles (XR)   │    │   - Self-Simulating (time evol)    │          │
+│   │   - Astro Graphics (GPU)   │    │   - Distributed Computing pool     │          │
+│   └────────────────────────────┘    └────────────────────────────────────┘          │
+│                            │                    │                                    │
+│                            └────────┬───────────┘                                    │
+│                                     ▼                                                │
 │   ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│   │                    API FETCH LAYER (APIFetch.py)                             │   │
-│   │   SIMBAD → NASA → Grok fallback → bodies_YYYYMMDD_HHMMSS.csv                │   │
-│   └─────────────────────────────────────────────────────────────────────────────┘   │
-│                                        │                                             │
-│                                        ▼                                             │
-│   ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│   │                    DISPATCH TO CALCULATORS                                   │   │
+│   │                    IPC LAYER (Named Pipes + SharedMem + gRPC)                │   │
 │   │                                                                              │   │
-│   │   ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐       │   │
-│   │   │ MAIN_1_CoAnQi│ │   QCalc.py   │ │ Condensed    │ │ index.js     │       │   │
-│   │   │ (C++ native) │ │ (subprocess) │ │ Physics.py   │ │ (HTTP/file)  │       │   │
-│   │   └──────────────┘ └──────────────┘ └──────────────┘ └──────────────┘       │   │
-│   └─────────────────────────────────────────────────────────────────────────────┘   │
-│                                        │                                             │
-│                                        ▼                                             │
-│   ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│   │                    RESULTS AGGREGATION                                       │   │
-│   │   Long-form equations, Ug1-4, F_U_Bi_i, compressed_g, validation            │   │
-│   └─────────────────────────────────────────────────────────────────────────────┘   │
-│                                        │                                             │
-│                                        ▼                                             │
-│   ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│   │                    RECIRCULATION PERSISTENCE LOOP                            │   │
+│   │   Named Pipe: \\.\pipe\StarMagic_UQFF                                       │   │
+│   │   SharedMem:  Low-latency VR frame data                                     │   │
+│   │   gRPC:       Structured commands (optional deployment)                     │   │
 │   │                                                                              │   │
-│   │   1. Store results → CondensedPhysics_OutputData.py                         │   │
-│   │   2. Update session → SessionPersistence (source2_widgets_enhanced.h)       │   │
-│   │   3. Log to Session Logger (Tab 9)                                          │   │
-│   │   4. Available for user recall via query history                            │   │
-│   │   5. Cross-validation → Compare C++/Python (Tab 10)                         │   │
-│   │                                                                              │   │
-│   │   ┌─────────────────────────────────────────────────────────────────────┐   │   │
-│   │   │                    PERSISTENCE FILES                                 │   │   │
-│   │   │   ├── bodies_*.csv (timestamped query results)                      │   │   │
-│   │   │   ├── session_*.json (GUI session state)                            │   │   │
-│   │   │   ├── coAnQi_log_*.txt (computation logs)                           │   │   │
-│   │   │   └── ./uqff_data/*.json (RPC requests/responses)                   │   │   │
-│   │   └─────────────────────────────────────────────────────────────────────┘   │   │
+│   │   Message Types (uqff_ipc.h, 403 lines):                                    │   │
+│   │   - CALCULATE_FIELD → F_U computation                                       │   │
+│   │   - CALCULATE_GRAVITY → Ug1-4 computation                                   │   │
+│   │   - VR_FRAME_UPDATE → stream field data to VR                               │   │
+│   │   - REGISTER_TERM → add dynamic physics term                                │   │
+│   │   - UPDATE_PARAMETER → modify runtime parameter                             │   │
+│   │   - SYNC_STATE → synchronize module states                                  │   │
 │   └─────────────────────────────────────────────────────────────────────────────┘   │
 └─────────────────────────────────────────────────────────────────────────────────────┘
 
@@ -244,23 +279,39 @@ This document describes the integration architecture between all UQFF Star-Magic
 
 | File | Purpose | Lines | Key Functions |
 |------|---------|-------|---------------|
-| `source2.cpp` | Qt GUI main application | 11,058 | MainWindow, 21 tabs |
-| `source2(HEAD PROGRAM).cpp` | Query orchestrator | ~3,000 | API dispatch, results |
+| `source2.cpp` | **PRINCIPAL GUI** (user starts here) | 11,058 | MainWindow, 21 tabs |
 | `source2_mainwindow.h` | Qt MOC declarations | ~50 | Q_OBJECT macro |
 | `source2_widgets_enhanced.h` | Enhanced widgets | 897+ | UQFFJavaScriptWidget |
 | `source2_event_bus.h` | Inter-widget events | ~200 | UQFF_LOG_* macros |
 | `equation_renderer.h` | Long-form equation display | 790 | IPC to QCalc.py |
-| `shared_constants.h` | UQFF C++ constants | 200 | UQFF:: namespace |
+| `shared_constants.h` | UQFF C++ constants | 351 | UQFF:: namespace |
 | `shared_constants.py` | UQFF Python constants | 250 | UQFFConstants dataclass |
-| `MAIN_1_CoAnQi.cpp` | C++ UQFF calculator | 107,019 | 446 modules, 100 systems |
+| `MAIN_1_CoAnQi.cpp` | C++ UQFF calculator | 107,019 | 446 modules, 6,688+ terms |
 | `QCalc.py` | Python solver | 9,100+ | UnifiedFieldSolver |
-| `CondensedPhysics.py` | Pure physics calculator | 5,500+ | No hardcoded data |
-| `CondensedPhysics_OutputData.py` | Output storage | ~500 | Query recall |
-| `index.js` | JavaScript UQFF engine | 23,790 | 106 systems, Ug1-4 |
-| `uqff_server.js` | REST API + File RPC | 504 | HTTP 3141, polls files |
+| `CondensedPhysics.py` | Pure physics calculator | 81,626 | 176 calculator classes |
+| `CondensedPhysics_OutputData.py` | **RECALL STORAGE** | ~500 | Query recall |
+| `IPData.py` | Input parameter storage | 431 | Input schema |
+| `OPData.py` | Output results storage | 327 | Output schema |
+| `index.js` | **LIBRARY INDEX** (NOT calculator) | 23,790 | 106 systems, Ug1-4 |
+| `uqff_server.js` | REST API (imports index.js) | 504 | HTTP 3141, polls files |
 | `uqff_ftps_client.py` | FTPS client | 890+ | RFC 4217, TLS 1.3 |
-| `APIFetch.py` | SIMBAD/NASA API client | ~800 | bodies_*.csv output |
-| `CoAnQi_Wrapper.py` | Python↔C++ bridge | 250 | subprocess to .exe |
+| `APIFetch.py` | 55 API client | 1,722 | bodies_*.csv output |
+| `vr_runtime.cpp` | VR/VM GPU runtime | ~5K | Developer VR backend |
+| `physics_backend.cpp` | CPU physics server | ~12K | Developer physics backend |
+| `ipc/uqff_ipc.h` | IPC layer | 403 | Named Pipes, SharedMem |
+
+═══════════════════════════════════════════════════════════════════════════════════════
+                           PORT ASSIGNMENTS
+═══════════════════════════════════════════════════════════════════════════════════════
+
+| Port | Service | Protocol | Description |
+|------|---------|----------|-------------|
+| 990 | FTPS Implicit | TLS | External secure (TLS from start) |
+| 21 | FTPS Explicit | STARTTLS | External (upgrade to TLS) |
+| 3141 | uqff_server.js | HTTP | REST API (π×1000) |
+| 8443 | QCalc_API.py | HTTPS | FastAPI (optional) |
+| N/A | Named Pipe | IPC | \\.\pipe\StarMagic_UQFF |
+| N/A | SharedMem | IPC | Low-latency VR data |
 
 ═══════════════════════════════════════════════════════════════════════════════════════
                            ENVIRONMENT VARIABLES
@@ -314,6 +365,7 @@ python test_uqff_ftps_client.py
 
 ---
 
+**CANONICAL DOCUMENT** - Version 2.0 - Matches ARCHITECTURE_FLOW_DIAGRAM.md v4.0
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic v3.0  
+**Framework:** UQFF Star-Magic v4.0 CANONICAL  
 **Copyright:** © 2025-2026 Daniel T. Murphy - All Rights Reserved

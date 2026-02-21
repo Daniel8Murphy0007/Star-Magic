@@ -141,6 +141,9 @@
 // Observational Systems Configuration - 35+ astronomical systems with categorization
 #include "observational_systems_config.h"
 
+// CSV Body Reader - loads astronomical data from bodies_*.csv files (APIFetch.py output)
+#include "csv_body_reader.h"
+
 // Wolfram WSTP integration (optional)
 #ifdef USE_EMBEDDED_WOLFRAM
 extern void WolframEmbeddedBridge();
@@ -2321,6 +2324,11 @@ public:
 /**
  * Electric Field Term (from Source167)
  * E-field derived from Universal Magnetism U_m
+ * 
+ * USES FIELD-SCALE VACUUM DENSITY (1e-27 J/m³)
+ * - See shared_constants.h: rho_vac_UA_field = 1e-27
+ * - Creates GRADIENT with gravitational scale (7.09e-36)
+ * - Ratio 7.09e-9 drives DPM field-gravity coupling
  */
 class ElectricFieldTerm : public PhysicsTerm
 {
@@ -2329,28 +2337,35 @@ public:
     {
         setMetadata("version", "1.0");
         setMetadata("source", "Source167.cpp");
-        setMetadata("equation", "E = (U_m / rho_vac_UA) * (1/r)");
+        setMetadata("equation", "E = (U_m / rho_vac_UA_field) * (1/r)");
+        setMetadata("vacuum_scale", "FIELD (1e-27 J/m³)");
     }
 
     double compute(double /* t */, const std::map<std::string, double> & /* params */) const override
     {
         double U_m = getDynamicParameter("U_m", 7.97717e-22); // From Source167 test
         double r = getDynamicParameter("r_distance", 1e20);
-        double rho_vac_UA = getDynamicParameter("rho_vac_UA", 1e-27);
+        // FIELD-SCALE vacuum density (NOT gravitational scale 7.09e-36)
+        double rho_vac_UA_field = getDynamicParameter("rho_vac_UA_field", 1e-27);
 
-        return (U_m / rho_vac_UA) * (1.0 / r);
+        return (U_m / rho_vac_UA_field) * (1.0 / r);
     }
 
     std::string getName() const override { return "ElectricField"; }
     std::string getDescription() const override
     {
-        return "Electric field derived from Universal Magnetism";
+        return "Electric field E = U_m/(ρ_UA_field·r) using FIELD-SCALE vacuum density";
     }
 };
 
 /**
  * Neutron Production Term (from Source167)
  * eta: Neutron production rate with 26 quantum states
+ * 
+ * USES FIELD-SCALE VACUUM DENSITY (1e-27 J/m³)
+ * - See shared_constants.h: rho_vac_UA_field = 1e-27
+ * - Creates GRADIENT with gravitational scale (7.09e-36)
+ * - Ratio 7.09e-9 drives neutron-gravity coupling
  */
 class NeutronProductionTerm : public PhysicsTerm
 {
@@ -2359,7 +2374,8 @@ public:
     {
         setMetadata("version", "1.0");
         setMetadata("source", "Source167.cpp");
-        setMetadata("equation", "eta = k_eta * exp(-SSQ*n/26) * exp(-(pi-t)) * (U_m/rho_vac)");
+        setMetadata("equation", "eta = k_eta * exp(-SSQ*n/26) * exp(-(pi-t)) * (U_m/rho_vac_UA_field)");
+        setMetadata("vacuum_scale", "FIELD (1e-27 J/m³)");
     }
 
     double compute(double t, const std::map<std::string, double> & /* params */) const override
@@ -2369,11 +2385,12 @@ public:
         const double N_QUANTUM = 26.0;
         double n = getDynamicParameter("quantum_state_n", 26.0);
         double U_m = getDynamicParameter("U_m", 7.97717e-22);
-        double rho_vac_UA = getDynamicParameter("rho_vac_UA", 1e-27);
+        // FIELD-SCALE vacuum density (NOT gravitational scale 7.09e-36)
+        double rho_vac_UA_field = getDynamicParameter("rho_vac_UA_field", 1e-27);
 
         double exp_ssq = std::exp(-SSQ * n / N_QUANTUM);
         double exp_pi_t = std::exp(-(M_PI - t));
-        double field_term = U_m / rho_vac_UA;
+        double field_term = U_m / rho_vac_UA_field;
 
         return k_eta * exp_ssq * exp_pi_t * field_term;
     }
@@ -2381,7 +2398,7 @@ public:
     std::string getName() const override { return "NeutronProduction"; }
     std::string getDescription() const override
     {
-        return "Neutron production rate with 26 quantum states";
+        return "Neutron production η = k_η·exp(-SSQ·n/26)·exp(-(π-t))·(U_m/ρ_field) using FIELD-SCALE vacuum";
     }
 };
 
@@ -12588,6 +12605,10 @@ struct SystemParams
     double alpha_i;
     double std_scale;
 
+    // Cosmological parameters
+    double SFR;       // Star Formation Rate (M_sun/yr)
+    double z;         // Redshift
+
     // Computed values
     double F_U_Bi_i;     // UQFF buoyancy force
     double g_compressed; // Compressed gravity field
@@ -12600,7 +12621,8 @@ struct SystemParams
                      k_rel(1.0), F_rel(4.30e33), k_vac(1e-10), k_thz(1e15), omega_thz(1.2e12),
                      neutron_factor(1.0), conduit_scale(1.0), k_conduit(1e15), water_state(1.0),
                      k_spooky(1e-40), string_wave(1e-15), H_abundance(0.7), Delta_k_eta(1e-5),
-                     V_void_fraction(0.01), alpha_i(0.01), std_scale(1.0), F_U_Bi_i(0), g_compressed(0) {}
+                     V_void_fraction(0.01), alpha_i(0.01), std_scale(1.0), SFR(0.0), z(0.0),
+                     F_U_Bi_i(0), g_compressed(0) {}
 };
 
 // ===========================================================================================
@@ -23621,6 +23643,16 @@ int main(int argc, char *argv[])
     // Enables subprocess calls from APIFetch.py/QCalc.py/CoAnQi_Wrapper.py
     // Usage: MAIN_1_CoAnQi.exe --batch "Sagittarius A*"
     // Output: JSON to stdout for parsing
+    
+    // Helper lambda for JSON-safe double output (handles inf/nan)
+    auto jsonDouble = [](double val) -> std::string {
+        if (std::isinf(val)) return val > 0 ? "\"Infinity\"" : "\"-Infinity\"";
+        if (std::isnan(val)) return "\"NaN\"";
+        std::ostringstream oss;
+        oss << std::scientific << val;
+        return oss.str();
+    };
+    
     if (argc >= 2) {
         std::string arg1 = argv[1];
         
@@ -23650,16 +23682,40 @@ int main(int argc, char *argv[])
             double F_drag = F_drag_rel(p);
             double F_gw = F_gw_rel(p);
             
-            // Output JSON for Python parsing
+            // Compute individual Ug1-4 totals (sum over 26 layers)
+            double Ug1_total = 0.0, Ug2_total = 0.0, Ug3_total = 0.0, Ug4_total = 0.0;
+            for (int i = 1; i <= 26; ++i) {
+                double r_i = p.r / i;
+                double Q_i = i;
+                double SCm_i = i * i;
+                double f_TRZ_i = 1.0 / i;
+                double f_Um_i = i;
+                double omega_i = p.omega0;
+                double f_i = omega_i / (2 * M_PI);
+                double alpha_i = p.alpha_i;
+                double E_DPM_i = (hbar * c_light / (r_i * r_i)) * Q_i * SCm_i;
+                
+                Ug1_total += E_DPM_i / (r_i * r_i) * p.rho_vac_UA * f_TRZ_i;
+                Ug2_total += E_DPM_i / (r_i * r_i) * SCm_i * f_Um_i;
+                Ug3_total += (hbar * omega_i / 2) * Q_i * cos(2 * M_PI * f_i * p.t) / r_i;
+                double M_i = p.M / i;
+                Ug4_total += (G * M_i / (r_i * r_i)) * (1 + alpha_i) * SCm_i;
+            }
+            
+            // Output JSON for Python parsing (using jsonDouble for inf/nan safety)
             std::cout << "{" << std::endl;
             std::cout << "  \"status\": \"success\"," << std::endl;
             std::cout << "  \"system_name\": \"" << system_name << "\"," << std::endl;
-            std::cout << "  \"F_U_Bi_i\": " << std::scientific << F_result << "," << std::endl;
-            std::cout << "  \"g_compressed\": " << std::scientific << g_result << "," << std::endl;
-            std::cout << "  \"F_jet_rel\": " << std::scientific << F_jet << "," << std::endl;
-            std::cout << "  \"E_acc_rel\": " << std::scientific << E_acc << "," << std::endl;
-            std::cout << "  \"F_drag_rel\": " << std::scientific << F_drag << "," << std::endl;
-            std::cout << "  \"F_gw_rel\": " << std::scientific << F_gw << std::endl;
+            std::cout << "  \"F_U_Bi_i\": " << jsonDouble(F_result) << "," << std::endl;
+            std::cout << "  \"g_compressed\": " << jsonDouble(g_result) << "," << std::endl;
+            std::cout << "  \"Ug1\": " << jsonDouble(Ug1_total) << "," << std::endl;
+            std::cout << "  \"Ug2\": " << jsonDouble(Ug2_total) << "," << std::endl;
+            std::cout << "  \"Ug3\": " << jsonDouble(Ug3_total) << "," << std::endl;
+            std::cout << "  \"Ug4\": " << jsonDouble(Ug4_total) << "," << std::endl;
+            std::cout << "  \"F_jet_rel\": " << jsonDouble(F_jet) << "," << std::endl;
+            std::cout << "  \"E_acc_rel\": " << jsonDouble(E_acc) << "," << std::endl;
+            std::cout << "  \"F_drag_rel\": " << jsonDouble(F_drag) << "," << std::endl;
+            std::cout << "  \"F_gw_rel\": " << jsonDouble(F_gw) << std::endl;
             std::cout << "}" << std::endl;
             return 0;
         }
@@ -24174,20 +24230,99 @@ int main(int argc, char *argv[])
 
         case 4:
         {
-            // Add custom system (simplified input)
-            SystemParams custom;
-            cout << "Enter system name: ";
-            getline(cin, custom.name);
-            cout << "Enter mass (kg): ";
-            cin >> custom.M;
-            cout << "Enter radius (m): ";
-            cin >> custom.r;
-            cout << "Enter velocity (m/s): ";
-            cin >> custom.v;
+            // Add custom system - manual entry or CSV import
+            cout << "\n=== Add System ==="  << endl;
+            cout << "1. Manual entry" << endl;
+            cout << "2. Load from CSV file (bodies_*.csv)" << endl;
+            cout << "3. Load latest CSV automatically" << endl;
+            cout << "Enter choice: ";
+            
+            int add_choice;
+            cin >> add_choice;
             cin.ignore();
+            
+            if (add_choice == 1) {
+                // Manual entry (original code)
+                SystemParams custom;
+                cout << "Enter system name: ";
+                getline(cin, custom.name);
+                cout << "Enter mass (kg): ";
+                cin >> custom.M;
+                cout << "Enter radius (m): ";
+                cin >> custom.r;
+                cout << "Enter velocity (m/s): ";
+                cin >> custom.v;
+                cin.ignore();
 
-            systems[custom.name] = custom;
-            g_logger.log("Custom system added: " + custom.name, 1);
+                systems[custom.name] = custom;
+                g_logger.log("Custom system added: " + custom.name, 1);
+            }
+            else if (add_choice == 2) {
+                // Load from specific CSV file
+                cout << "\nAvailable CSV files:" << endl;
+                try {
+                    auto csv_files = UQFF::CSVBodyReader::list_csv_files(".");
+                    for (size_t i = 0; i < csv_files.size(); ++i) {
+                        cout << "  " << (i+1) << ". " << csv_files[i] << endl;
+                    }
+                    if (csv_files.empty()) {
+                        cout << "  No CSV files found in current directory." << endl;
+                        break;
+                    }
+                    cout << "Enter file number or path: ";
+                    string input;
+                    getline(cin, input);
+                    
+                    string filepath;
+                    try {
+                        size_t idx = std::stoul(input) - 1;
+                        if (idx < csv_files.size()) {
+                            filepath = csv_files[idx];
+                        } else {
+                            filepath = input;
+                        }
+                    } catch (...) {
+                        filepath = input;
+                    }
+                    
+                    auto bodies = UQFF::CSVBodyReader::read(filepath);
+                    int loaded = 0;
+                    for (const auto& body : bodies) {
+                        SystemParams sys = body.to_system_params<SystemParams>();
+                        // Add L_X and other fields if available
+                        sys.L_X = body.luminosity;
+                        sys.B0 = body.B_field;
+                        sys.T = body.temperature;
+                        sys.omega0 = body.extra_params.count("omega_s") ? body.extra_params.at("omega_s") : 0.0;
+                        systems[sys.name] = sys;
+                        loaded++;
+                    }
+                    cout << "Loaded " << loaded << " systems from " << filepath << endl;
+                    g_logger.log("CSV import: " + to_string(loaded) + " systems from " + filepath, 1);
+                } catch (const std::exception& e) {
+                    cout << "Error: " << e.what() << endl;
+                }
+            }
+            else if (add_choice == 3) {
+                // Auto-load latest CSV
+                try {
+                    auto bodies = UQFF::CSVBodyReader::read_validated(".", &cout);
+                    int loaded = 0;
+                    for (const auto& body : bodies) {
+                        SystemParams sys = body.to_system_params<SystemParams>();
+                        sys.L_X = body.luminosity;
+                        sys.B0 = body.B_field;
+                        sys.T = body.temperature;
+                        sys.omega0 = body.extra_params.count("omega_s") ? body.extra_params.at("omega_s") : 0.0;
+                        systems[sys.name] = sys;
+                        loaded++;
+                    }
+                    cout << "Loaded " << loaded << " validated systems from latest CSV" << endl;
+                    g_logger.log("CSV auto-import: " + to_string(loaded) + " systems", 1);
+                } catch (const std::exception& e) {
+                    cout << "Error: " << e.what() << endl;
+                }
+            }
             break;
         }
 

@@ -1,5 +1,46 @@
 # Copilot Instructions for Star-Magic UQFF Codebase
 
+## CANONICAL ARCHITECTURE RULES (DO NOT DEVIATE)
+
+> **CRITICAL:** Read ARCHITECTURE_FLOW_DIAGRAM.md v4.0 CANONICAL for complete architecture.
+
+1. **USER INPUT goes FIRST** → enters through `source2.cpp` (Principal GUI)
+2. **source2.cpp** = Principal GUI application (user-facing, 21 tabs, Qt6) - **USER STARTS HERE**
+3. **vr_runtime.cpp** = VR/VM developer backend (GPU-heavy simulations in virtual space)
+4. **physics_backend.cpp** = CPU-bound physics server (headless)
+5. **index.js** = LIBRARY INDEX (NOT a calculator) - exports 106 systems for require()
+6. **uqff_server.js** = REST API server that imports index.js library (Port 3141)
+
+### Port Assignments (CANONICAL)
+| Port | Service | Description |
+|------|---------|-------------|
+| 990 | FTPS Implicit | TLS from connection start |
+| 21 | FTPS Explicit | Upgrade via STARTTLS |
+| 3141 | uqff_server.js | HTTP REST API (π×1000) |
+| 8443 | QCalc_API.py | HTTPS FastAPI (optional) |
+| N/A | Named Pipe | \\.\pipe\StarMagic_UQFF (IPC) |
+
+### Data Flow (CANONICAL)
+```
+USER QUERY → source2.cpp (PRINCIPAL GUI) → APIFetch.py → bodies_*.csv → IPData.py
+                    ↓
+         SIMULTANEOUS JOINT OPERATION
+   ┌───────────┬────────────┬────────────┐
+   ▼           ▼            ▼            ▼
+MAIN_1     QCalc.py   CondensedPhys  uqff_server.js
+CoAnQi.cpp  (9K)      ics.py (81K)    (index.js LIB)
+   │           │            │            │
+   └───────────┴────────────┴────────────┘
+                    ↓
+        OPData.py → uqff_results.json
+                    ↓
+    CondensedPhysics_OutputData.py (RECALL STORAGE)
+                    ↓
+         Session Logger (Tab 9) → USER RECALL
+```
+
+---
+
 ## Big Picture Architecture
 - **Dual-Platform System:**
   - **C++ Core:** `MAIN_1_CoAnQi.cpp` (108,000+ lines, 446 integrated modules SOURCE1-116 + **SOURCE4**, **6,688+ physics terms registered**, **121+ astronomical systems**) - Production calculator with 16-option interactive menu (includes SOURCE4 validation + Wolfram WSTP + Cosmic Egg + Grok AI + Exit)
@@ -236,10 +277,10 @@ B_CRIT_MAGNETAR: 4.4e13 T
 
 **CondensedPhysics.py is a PURE PHYSICS CALCULATOR, NOT a data repository.**
 
-### System Architecture:
+### System Architecture (CANONICAL):
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        source2.cpp (HEAD PROGRAM)                           │
+│              source2.cpp (PRINCIPAL GUI - USER STARTS HERE)                 │
 │  ┌───────────────────────────────────────────────────────────────────────┐ │
 │  │                     USER QUERY FIELD                                   │ │
 │  │  "Sagittarius A*", "M87", "Betelgeuse", "NGC 3596"...                 │ │
@@ -247,8 +288,9 @@ B_CRIT_MAGNETAR: 4.4e13 T
 │                              │                                              │
 │                              ▼                                              │
 │  ┌───────────────────────────────────────────────────────────────────────┐ │
-│  │                    API FETCH LAYER                                     │ │
-│  │  SIMBAD → NASA → Grok fallback → bodies_YYYYMMDD_HHMMSS.csv           │ │
+│  │                    API FETCH LAYER (APIFetch.py)                       │ │
+│  │  55 APIs: SIMBAD → NASA → VizieR → NED → Gaia → Grok fallback         │ │
+│  │  Output: bodies_YYYYMMDD_HHMMSS.csv                                    │ │
 │  └───────────────────────────────────────────────────────────────────────┘ │
 └─────────────────────────────────────────────────────────────────────────────┘
                                    │
@@ -256,6 +298,7 @@ B_CRIT_MAGNETAR: 4.4e13 T
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                    CondensedPhysics.py (CALCULATOR)                         │
 │                       PURE PHYSICS EQUATIONS                                │
+│                         81,626 lines | 176 calculators                      │
 │                                                                             │
 │  INPUT:  Dataset from source2.cpp (parameters: M, r, z, SFR, etc.)         │
 │                                                                             │
@@ -266,23 +309,23 @@ B_CRIT_MAGNETAR: 4.4e13 T
                                    │
                                    ▼ (Output stored for recall)
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│              CondensedPhysics_OutputData.py (OUTPUT STORAGE)                │
+│              CondensedPhysics_OutputData.py (RECALL STORAGE)                │
 │                                                                             │
 │  STORES: Computed equation solutions, available equation lists,             │
 │          simulation sets - organized by query for user recall               │
 │                                                                             │
-│  SHARED WITH: source2.cpp head program for user query recall                │
+│  SHARED WITH: source2.cpp for user query recall (Tab 9 Session Logger)     │
 └─────────────────────────────────────────────────────────────────────────────┘
                                    │
-                                   ▼ (Recall loop)
+                                   ▼ (Recirculation loop)
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        source2.cpp (HEAD PROGRAM)                           │
-│                     User can recall previous queries                        │
+│              source2.cpp (PRINCIPAL GUI - Session Logger Tab 9)             │
+│                     User can RECALL previous queries                        │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### What This File Does:
-1. Receives datasets from source2.cpp head program (or direct user input)
+1. Receives datasets from source2.cpp PRINCIPAL GUI (or direct user input)
 2. Inputs that data into parameterized physics equations
 3. Produces visible, long-form physics equations with solutions
 4. Lists ALL other equations it can solve specific to the query
@@ -299,13 +342,13 @@ B_CRIT_MAGNETAR: 4.4e13 T
 | No pre-computed solutions | `TRIADIC: g = 1.47e-8` | Dynamic equation output |
 
 ### Where System Data Belongs:
-- `source2.cpp` query field → API fetch → `bodies_YYYYMMDD_HHMMSS.csv`
+- `source2.cpp` query field (PRINCIPAL GUI) → API fetch → `bodies_YYYYMMDD_HHMMSS.csv`
 - JSON configuration files (external)
 - API responses (SIMBAD, NASA, Grok)
 
 ### Where Output Data Goes:
 - `CondensedPhysics_OutputData.py` - Stores computed solutions for user recall
-- Shared with source2.cpp for query history access
+- Shared with source2.cpp (PRINCIPAL GUI) for query history access via Tab 9 Session Logger
 
 ### Correct Pattern:
 ```python

@@ -1,4 +1,11 @@
 # 🏛️ Star-Magic UQFF Architecture Analysis
+
+> **NOTICE:** See ARCHITECTURE_FLOW_DIAGRAM.md v4.0 CANONICAL for authoritative architecture.
+> **Key Clarifications:**
+> - source2.cpp = PRINCIPAL GUI (user-facing, 21 tabs, Qt6) - **USER STARTS HERE**
+> - vr_runtime.cpp = VR/VM developer backend (GPU-heavy simulations)
+> - index.js = LIBRARY INDEX (NOT a calculator)
+
 **Analysis Date:** February 11, 2026  
 **Analyst:** GitHub Copilot (Claude Sonnet 4.5)  
 **Repository:** Daniel8Murphy0007/Star-Magic  
@@ -10,7 +17,7 @@
 
 **MAIN_1_CoAnQi.cpp** serves as the **base computational library** for Star-Magic's Unified Quantum Field Framework (UQFF), hosting **492 extracted physics terms** across **150+ source module integrations** (source13-source200). It provides **self-expanding, self-updating, and self-simulating** capabilities through a modular PhysicsTerm plugin architecture.
 
-**source2.cpp** functions as the **GUI head program** ("Poseidon 21-Window Scientific Search Browser"), providing user interface access to astronomical data via 55+ APIs, with Qt6-based windowing, voice/video input, and scientific calculators.
+**source2.cpp** functions as the **PRINCIPAL GUI** ("Poseidon 21-Window Scientific Search Browser"), providing user interface access to astronomical data via 55+ APIs, with Qt6-based windowing, voice/video input, and scientific calculators. **USER STARTS HERE.**
 
 **Current Gap:** The two systems operate **independently** with no integration bridge. This analysis proposes integration architecture to unify them.
 
