@@ -1,8 +1,8 @@
 # Star-Magic UQFF Architecture Flow Diagram
 
-> **Version:** 4.2 (CANONICAL - DO NOT DEVIATE)
+> **Version:** 4.2.1 (CANONICAL - DO NOT DEVIATE)
 > **Generated:** 2026-02-21
-> **Updated:** 2026-02-21 (v3.1 Self-Expanding Physics Backend)
+> **Updated:** 2026-02-21 (v4.2.1 Poseidon TaskBot Integration)
 > **Author:** Daniel T. Murphy
 > **CRITICAL:** This is the MASTER architecture document. All other docs must match.
 
@@ -16,8 +16,9 @@
 4. **index.js** = LIBRARY INDEX (NOT a calculator) - exports 106 systems for require()
 5. **Recirculation Loop** = bodies_*.csv → IPData → Calculators → OPData → OutputData → RECALL
 6. **Simultaneous Joint Pipeline** = All 5 calculators run in parallel via IPC layer (Phase 1-5 complete)
+7. **Poseidon TaskBot** = Offline physics maintenance (read/write/compare/validate/update cross-platform)
 
-## IPC Pipeline Status (Phases 1-5 Complete + v3.1)
+## IPC Pipeline Status (Phases 1-5 Complete + v4.2.1)
 
 | Phase | Description | Status | Commit |
 |-------|-------------|--------|--------|
@@ -28,6 +29,7 @@
 | Phase 5 | Full VR Experience | ✅ Complete | e84c434 |
 | v3.1a | Cross-Platform IPC (NamedPipeChannel) | ✅ Complete | 8967469 |
 | v3.1b | Self-Expanding Physics Backend | ✅ Complete | 81097a8 |
+| v4.2.1 | Poseidon TaskBot Integration | ✅ Complete | f645053 |
 
 ---
 
@@ -263,10 +265,31 @@
 │   ├── openxr_session.h                      │    │   - VR_FRAME_UPDATE → stream field data    │
 │   ├── vulkan_compositor.h                   │    │   - REGISTER_TERM → add physics term       │
 │   ├── task_bot.h (voice/gesture bot)        │    │   - SYNC_STATE → synchronize modules       │
+│   ├── poseidon_task_bot.h (offline maint)   │    │                                             │
 │   └── astro_graphics.h                      │    │                                             │
 │                                             │    │                                             │
 │   [Lightweight: ~5K lines | GPU-bound]      │    │   [Heavy: ~12K lines | CPU-bound | Async]   │
 └─────────────────────────────────────────────┘    └─────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                POSEIDON TASK BOT (v4.2.1 - Offline Physics Maintenance)                      │
+│                                                                                                               │
+│   Files: vr/poseidon_task_bot.h, vr/poseidon_task_bot.cpp, poseidon_maintenance.py                           │
+│                                                                                                               │
+│   CAPABILITIES:                                                                                               │
+│   ├── ProcessNewPhysics()    : Read/parse/integrate new physics equations                                    │
+│   ├── CompareAllCalculators(): Cross-validate C++/Python/JS implementations                                  │
+│   ├── ValidatePhysics()      : Run QCalc_validation.py + CondensedPhysics_Validation.py + UnitTests.h        │
+│   ├── UpdateAndExpandPhysics(): Register dynamic terms via Self-Expanding Backend (v3.1)                    │
+│   ├── SyncConstantsAcrossLanguages(): shared_constants.h ↔ .py ↔ index.js                                   │
+│   ├── RegenerateExtractedFiles(): QCalc_cpp_extracted.py, QCalc_js_extracted.py                             │
+│   ├── BackupAllPhysicsFiles(): Timestamped backups before any change                                        │
+│   ├── FTPSPushMaintenanceBundle(): Secure offline bundle via uqff_ftps_client.py                            │
+│   └── ExecuteCommand()       : Voice/script command interface                                                │
+│                                                                                                               │
+│   INTEGRATION: Uses physics_service.h (v3.1), python_bridge.h (pybind11), NamedPipeChannel                  │
+│   OFFLINE-FIRST: All operations work without internet; FTPS only for local/network share                    │
+└──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -295,7 +318,7 @@
 | Python Support | 30+ | CondensedPhysics*.py, Phase*_Consolidated.py, IP/OPData.py, APIFetch.py |
 | JavaScript | 3 | index.js (LIBRARY), uqff_server.js, automated_legacy_converter.js |
 | IPC Layer | 3 | ipc/uqff_ipc.h, python_bridge.h, physics_service.h |
-| VR Layer | 5 | vr/*.h (runtime, openxr, vulkan, task_bot, astro_graphics) |
+| VR Layer | 6 | vr/*.h (runtime, openxr, vulkan, task_bot, poseidon_task_bot, astro_graphics) |
 | Modules System | 10+ | modules/*.py (loader, interface, gaming/*, debug/*) |
 | Config/Data | 20+ | *.json, *.csv, observational_systems_config.h |
 
@@ -329,5 +352,5 @@ CondensedPhysics_OutputData.py
 
 ---
 
-*CANONICAL DOCUMENT - Version 4.2 - DO NOT DEVIATE*
-*Updated: 2026-02-21 (v3.1 Self-Expanding Physics Backend) by Daniel T. Murphy*
+*CANONICAL DOCUMENT - Version 4.2.1 - DO NOT DEVIATE*
+*Updated: 2026-02-21 (v4.2.1 Poseidon TaskBot Integration) by Daniel T. Murphy*
