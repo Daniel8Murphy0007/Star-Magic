@@ -85321,6 +85321,47 @@ __all__ = [
     
     # Constants
     'CONSTANTS',
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # FOURTH CLONE_2 ANALYSIS PASS (21Feb2026) - 16 NEW EXPORTS
+    # From: Triadic Clone_2_08June2025.txt (11,041 lines) - Pass 4
+    # Galactic dynamics, boundary functions, oscilloscope bundles, Aether tensor
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # Galactic Spin Rate Calculator
+    'GalacticSpinRateCalculator',
+    'GALACTIC_SPIN_CALC',
+    
+    # Galactic Center Distance Calculator
+    'GalacticCenterDistanceCalculator',
+    'GALACTIC_CENTER_CALC',
+    
+    # Step Function Boundary Calculator
+    'StepFunctionBoundaryCalculator',
+    'STEP_FUNCTION_CALC',
+    
+    # Defect Factor Calculator
+    'DefectFactorCalculator',
+    'DEFECT_FACTOR_CALC',
+    
+    # Aether Stress-Energy Calculator
+    'AetherStressEnergyCalculator',
+    'AETHER_STRESS_CALC',
+    
+    # Disk Unit Vector Calculator
+    'DiskUnitVectorCalculator',
+    'DISK_UNIT_VECTOR_CALC',
+    
+    # Heliosphere Thickness Calculator
+    'HeliosphereThicknessCalculator',
+    'HELIOSPHERE_THICKNESS_CALC',
+    
+    # Oscilloscope Signal Bundle Calculator
+    'OscilloscopeSignalBundleCalculator',
+    'OSCILLOSCOPE_BUNDLE_CALC',
+    
+    # Fourth Pass Calculators Dictionary
+    'FOURTH_PASS_CALCULATORS',
 ]
 
 
@@ -97354,3 +97395,940 @@ if __name__ == "__main__":
     print("=" * 80)
     print("CondensedPhysics.py ALL solve() + Git_clone_4 tests COMPLETE")
     print(f"Total __all__ exports: {len(__all__)}")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# FOURTH CLONE_2 ANALYSIS PASS - 8 NEW CALCULATOR CLASSES
+# From: Triadic Clone_2_08June2025.txt (11,041 lines)
+# Pass 4: Galactic dynamics, boundary functions, oscilloscope bundles
+# Commit: Fourth analysis pass extraction
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class GalacticSpinRateCalculator:
+    """
+    Galactic Spin Rate Calculator - Ω_g dynamics
+    
+    From Clone_2 lines 3700-3900:
+    - Ω_g = 7.3×10⁻¹⁶ rad/s (Milky Way angular velocity)
+    - Rotational period T = 2π/Ω_g ≈ 8.61×10¹⁵ s ≈ 273 million years
+    
+    Used in Universal Buoyancy (Ubi):
+    Ubi = -β_i × Ugi × Ω_g × (M_bh/d_g) × (1 + ε_sw×ρ_vac,sw) × U_UA × cos(πt_n)
+    
+    Applications:
+    - Galactic disk stability modeling
+    - Star formation region dynamics
+    - Molecular cloud collapse timescales
+    """
+    
+    # Default: Milky Way parameters
+    OMEGA_G = 7.3e-16   # rad/s - Milky Way angular velocity
+    T_ROTATION = 2 * np.pi / OMEGA_G  # s - Rotational period
+    T_ROTATION_YR = T_ROTATION / (365.25 * 24 * 3600)  # years
+    
+    # Related constants
+    M_BH = 8.15e36      # kg - SMBH mass (Sagittarius A*)
+    D_G = 2.55e20       # m - Distance to galactic center (~27,000 ly)
+    BETA_I = 0.603      # Buoyancy coupling
+    
+    def __init__(self, omega_g: float = None, d_g: float = None):
+        """Initialize with optional custom galactic parameters."""
+        self.omega_g = omega_g if omega_g else self.OMEGA_G
+        self.d_g = d_g if d_g else self.D_G
+    
+    def compute_rotation_period(self) -> tuple:
+        """
+        Compute galactic rotation period.
+        
+        T = 2π / Ω_g
+        
+        Returns:
+            tuple: (T_seconds, T_years, equation_string)
+        """
+        T_s = 2 * np.pi / self.omega_g
+        T_yr = T_s / (365.25 * 24 * 3600)
+        
+        eq = f"T = 2π / Ω_g = 2π / {self.omega_g:.3e} = {T_s:.4e} s ≈ {T_yr:.2e} years"
+        return T_s, T_yr, eq
+    
+    def compute_buoyancy_rotational(self, Ugi: float, t_n: float = 0, 
+                                     epsilon_sw: float = 0.001,
+                                     rho_vac_sw: float = 8e-21,
+                                     U_UA: float = 0.0001) -> tuple:
+        """
+        Compute rotational contribution to Universal Buoyancy.
+        
+        Ubi = -β_i × Ugi × Ω_g × (M_bh/d_g) × (1 + ε_sw×ρ_vac,sw) × U_UA × cos(πt_n)
+        
+        Args:
+            Ugi: Universal gravity energy density (J/m³)
+            t_n: Temporal index (dimensionless)
+            epsilon_sw: Solar wind coupling (default 0.001)
+            rho_vac_sw: Solar wind vacuum density (default 8e-21 J/m³)
+            U_UA: Universal aether coupling (default 0.0001)
+        
+        Returns:
+            tuple: (Ubi_value, equation_string)
+        """
+        mass_ratio = self.M_BH / self.d_g
+        sw_factor = 1 + epsilon_sw * rho_vac_sw
+        temporal = np.cos(np.pi * t_n)
+        
+        Ubi = -self.BETA_I * Ugi * self.omega_g * mass_ratio * sw_factor * U_UA * temporal
+        
+        eq = (f"Ubi = -β_i × Ugi × Ω_g × (M_bh/d_g) × (1 + ε_sw×ρ_vac,sw) × U_UA × cos(πt_n)\n"
+              f"    = -{self.BETA_I} × {Ugi:.3e} × {self.omega_g:.3e} × {mass_ratio:.3e} × "
+              f"{sw_factor:.6f} × {U_UA} × {temporal:.6f}\n"
+              f"    = {Ubi:.4e} J/m³")
+        
+        return Ubi, eq
+    
+    def compute_orbital_velocity(self, r: float) -> tuple:
+        """
+        Compute orbital velocity at radius r from galactic center.
+        
+        v = r × Ω_g
+        
+        Args:
+            r: Distance from galactic center (m)
+        
+        Returns:
+            tuple: (v_orbital, equation_string)
+        """
+        v = r * self.omega_g
+        v_km_s = v / 1000
+        
+        eq = f"v = r × Ω_g = {r:.3e} × {self.omega_g:.3e} = {v:.4e} m/s = {v_km_s:.2f} km/s"
+        return v, eq
+
+
+GALACTIC_SPIN_CALC = GalacticSpinRateCalculator()
+
+
+class GalacticCenterDistanceCalculator:
+    """
+    Galactic Center Distance Calculator - d_g dynamics
+    
+    From Clone_2 lines 3700-3900:
+    - d_g = 2.55×10²⁰ m ≈ 27,000 light-years (Sun to Milky Way center)
+    - M_bh = 8.15×10³⁶ kg (Sagittarius A* mass)
+    
+    Used in Ug4:
+    Ug4 = k_4 × (ρ_vac,[SCm] × M_bh / d_g) × e^(-αt) × cos(πt_n) × (1 + f_feedback)
+    
+    Applications:
+    - SMBH gravitational influence scaling
+    - Star formation region dynamics
+    - Final parsec resolution modeling
+    """
+    
+    # Canonical values
+    D_G_MILKY_WAY = 2.55e20   # m - Distance to galactic center
+    M_BH_SGR_A = 8.15e36      # kg - Sagittarius A* mass
+    
+    # Light-year conversion
+    LY = 9.461e15  # m per light-year
+    D_G_LY = D_G_MILKY_WAY / LY  # ~27,000 light-years
+    
+    # Constants for Ug4
+    K_4 = 1.0
+    RHO_VAC_SCM = 7.09e-37    # J/m³ - SCm vacuum density
+    ALPHA = 0.001              # day⁻¹ - Decay constant
+    F_FEEDBACK = 0.1           # Feedback factor
+    
+    def __init__(self, d_g: float = None, M_bh: float = None):
+        """Initialize with optional custom galactic parameters."""
+        self.d_g = d_g if d_g else self.D_G_MILKY_WAY
+        self.M_bh = M_bh if M_bh else self.M_BH_SGR_A
+    
+    def compute_mass_distance_ratio(self) -> tuple:
+        """
+        Compute M_bh / d_g ratio for gravitational scaling.
+        
+        Returns:
+            tuple: (ratio_value, equation_string)
+        """
+        ratio = self.M_bh / self.d_g
+        
+        eq = f"M_bh/d_g = {self.M_bh:.3e} / {self.d_g:.3e} = {ratio:.4e} kg/m"
+        return ratio, eq
+    
+    def compute_Ug4(self, t: float = 0, t_n: float = 0) -> tuple:
+        """
+        Compute Ug4 - Vacuum concentration gravity term.
+        
+        Ug4 = k_4 × (ρ_vac,[SCm] × M_bh / d_g) × e^(-αt) × cos(πt_n) × (1 + f_feedback)
+        
+        Args:
+            t: Time in days
+            t_n: Temporal index (dimensionless)
+        
+        Returns:
+            tuple: (Ug4_value, equation_string)
+        """
+        base = self.K_4 * self.RHO_VAC_SCM * self.M_bh / self.d_g
+        decay = np.exp(-self.ALPHA * t)
+        temporal = np.cos(np.pi * t_n)
+        feedback = 1 + self.F_FEEDBACK
+        
+        Ug4 = base * decay * temporal * feedback
+        
+        eq = (f"Ug4 = k_4 × (ρ_vac,[SCm] × M_bh / d_g) × e^(-αt) × cos(πt_n) × (1 + f_feedback)\n"
+              f"    = {self.K_4} × ({self.RHO_VAC_SCM:.3e} × {self.M_bh:.3e} / {self.d_g:.3e})"
+              f" × e^(-{self.ALPHA}×{t}) × cos(π×{t_n}) × {feedback}\n"
+              f"    = {Ug4:.4e} J/m³")
+        
+        return Ug4, eq
+    
+    def compute_SMBH_influence_radius(self) -> tuple:
+        """
+        Compute radius of significant SMBH gravitational influence.
+        
+        r_influence ≈ √(G × M_bh / Ω_g²)
+        
+        Returns:
+            tuple: (r_influence, equation_string)
+        """
+        G = 6.6743e-11
+        OMEGA_G = 7.3e-16
+        
+        r_infl = np.sqrt(G * self.M_bh / OMEGA_G**2)
+        r_pc = r_infl / 3.086e16  # parsecs
+        
+        eq = f"r_influence = √(G×M_bh/Ω_g²) = √({G:.3e}×{self.M_bh:.3e}/{OMEGA_G:.3e}²) = {r_infl:.4e} m ≈ {r_pc:.2f} pc"
+        return r_infl, eq
+
+
+GALACTIC_CENTER_CALC = GalacticCenterDistanceCalculator()
+
+
+class StepFunctionBoundaryCalculator:
+    """
+    Step Function Boundary Calculator - S(r - R_b)
+    
+    From Clone_2 lines 4200-4400:
+    - S(r - R_b) = 1 for r > R_b, 0 otherwise
+    - Defines outer field bubble boundary (heliosphere)
+    - R_b = 1.496×10¹³ m (100 AU, heliopause)
+    
+    Used in Ug2:
+    Ug2 = k_2 × (ρ_vac,[UA] + ρ_vac,[SCm]) × (M_s/r²) × S(r-R_b) × (1 + δ_sw×v_sw) × H_SCm × E_react
+    
+    Applications:
+    - Heliospheric boundary modeling
+    - External gravitational field activation
+    - Solar wind interaction regions
+    """
+    
+    # Default boundary: Heliopause (~100 AU)
+    R_B_HELIOPAUSE = 1.496e13     # m - 100 AU
+    R_B_122_AU = 1.825e13         # m - Voyager 1 crossing distance
+    
+    # Ug2 parameters
+    K_2 = 1.2
+    RHO_VAC_UA = 7.09e-36         # J/m³
+    RHO_VAC_SCM = 7.09e-37        # J/m³
+    M_S = 1.989e30                # kg - Solar mass
+    DELTA_SW = 0.01               # Solar wind coupling
+    V_SW = 5e5                    # m/s - Solar wind speed
+    H_SCM = 0.99                  # Heliosphere thickness factor
+    E_REACT = 1e46                # Reactivity energy
+    
+    def __init__(self, R_b: float = None):
+        """Initialize with optional custom boundary radius."""
+        self.R_b = R_b if R_b else self.R_B_HELIOPAUSE
+    
+    def compute_step_function(self, r: float) -> tuple:
+        """
+        Compute step function S(r - R_b).
+        
+        S(r - R_b) = 1 if r > R_b, else 0
+        
+        Args:
+            r: Distance from origin (m)
+        
+        Returns:
+            tuple: (S_value, equation_string)
+        """
+        S = 1.0 if r > self.R_b else 0.0
+        
+        r_AU = r / 1.496e11
+        Rb_AU = self.R_b / 1.496e11
+        
+        eq = (f"S(r - R_b) = S({r:.3e} - {self.R_b:.3e}) = S({r_AU:.2f} AU - {Rb_AU:.2f} AU)\n"
+              f"           = {S:.0f} (r {'>' if S == 1 else '<='} R_b)")
+        
+        return S, eq
+    
+    def compute_Ug2(self, r: float) -> tuple:
+        """
+        Compute Ug2 with step function boundary.
+        
+        Ug2 = k_2 × (ρ_vac,[UA] + ρ_vac,[SCm]) × (M_s/r²) × S(r-R_b) × (1 + δ_sw×v_sw) × H_SCm × E_react
+        
+        Args:
+            r: Distance from Sun (m)
+        
+        Returns:
+            tuple: (Ug2_value, equation_string)
+        """
+        S, _ = self.compute_step_function(r)
+        
+        if S == 0:
+            return 0.0, f"Ug2 = 0 (inside heliospheric boundary, S(r-R_b) = 0)"
+        
+        rho_sum = self.RHO_VAC_UA + self.RHO_VAC_SCM
+        mass_term = self.M_S / (r**2)
+        sw_factor = 1 + self.DELTA_SW * self.V_SW
+        
+        Ug2 = self.K_2 * rho_sum * mass_term * S * sw_factor * self.H_SCM * self.E_REACT
+        
+        eq = (f"Ug2 = k_2 × (ρ_vac,[UA] + ρ_vac,[SCm]) × (M_s/r²) × S(r-R_b) × (1 + δ_sw×v_sw) × H_SCm × E_react\n"
+              f"    = {self.K_2} × {rho_sum:.3e} × {mass_term:.3e} × {S:.0f} × {sw_factor:.2f} × {self.H_SCM} × {self.E_REACT:.3e}\n"
+              f"    = {Ug2:.4e} J/m³")
+        
+        return Ug2, eq
+    
+    def compute_boundary_transition(self, r_start: float, r_end: float, n_points: int = 100) -> dict:
+        """
+        Compute step function transition across a range of radii.
+        
+        Returns:
+            dict: {radii, S_values, Ug2_values, transition_radius}
+        """
+        radii = np.linspace(r_start, r_end, n_points)
+        S_values = [self.compute_step_function(r)[0] for r in radii]
+        Ug2_values = [self.compute_Ug2(r)[0] for r in radii]
+        
+        return {
+            'radii_m': radii,
+            'radii_AU': radii / 1.496e11,
+            'S_values': np.array(S_values),
+            'Ug2_values': np.array(Ug2_values),
+            'boundary_R_b': self.R_b,
+            'boundary_AU': self.R_b / 1.496e11
+        }
+
+
+STEP_FUNCTION_CALC = StepFunctionBoundaryCalculator()
+
+
+class DefectFactorCalculator:
+    """
+    Defect Factor Calculator - δ_def dynamics
+    
+    From Clone_2 lines 4200-4400:
+    - δ_def = 0.01 × sin(0.001t)
+    - Period: T = 2π/0.001 ≈ 6,283 days ≈ 17.22 years
+    - Oscillatory correction for internal gravitational perturbations
+    
+    Used in Ug1:
+    Ug1 = k_1 × μ_s(t,ρ_vac,[SCm]) × ∇(M_s/r) × e^(-αt) × cos(πt_n) × (1 + δ_def)
+    
+    Applications:
+    - Stellar interior perturbation modeling
+    - Long-term gravitational field variations
+    - Solar cycle correlations
+    """
+    
+    # Default parameters
+    AMPLITUDE = 0.01           # Defect amplitude
+    OMEGA_DEF = 0.001          # day⁻¹ - Angular frequency
+    PERIOD_DAYS = 2 * np.pi / OMEGA_DEF  # ~6,283 days
+    PERIOD_YEARS = PERIOD_DAYS / 365.25  # ~17.22 years
+    
+    # Ug1 parameters
+    K_1 = 1.5
+    MU_S = 3.38e23             # T·m³ - Magnetic dipole moment
+    M_S = 1.989e30             # kg - Solar mass
+    ALPHA = 0.001              # day⁻¹ - Decay constant
+    
+    def __init__(self, amplitude: float = None, omega: float = None):
+        """Initialize with optional custom defect parameters."""
+        self.amplitude = amplitude if amplitude else self.AMPLITUDE
+        self.omega = omega if omega else self.OMEGA_DEF
+    
+    def compute_defect_factor(self, t_days: float) -> tuple:
+        """
+        Compute defect factor δ_def(t).
+        
+        δ_def = A × sin(ωt)
+        
+        Args:
+            t_days: Time in days
+        
+        Returns:
+            tuple: (delta_def, equation_string)
+        """
+        delta_def = self.amplitude * np.sin(self.omega * t_days)
+        
+        eq = f"δ_def = {self.amplitude} × sin({self.omega}×{t_days}) = {delta_def:.6f}"
+        return delta_def, eq
+    
+    def compute_period(self) -> tuple:
+        """
+        Compute defect oscillation period.
+        
+        T = 2π / ω
+        
+        Returns:
+            tuple: (T_days, T_years, equation_string)
+        """
+        T_days = 2 * np.pi / self.omega
+        T_years = T_days / 365.25
+        
+        eq = f"T = 2π / ω = 2π / {self.omega} = {T_days:.2f} days ≈ {T_years:.2f} years"
+        return T_days, T_years, eq
+    
+    def compute_Ug1_with_defect(self, r: float, t_days: float, t_n: float = 0) -> tuple:
+        """
+        Compute Ug1 with defect factor.
+        
+        Ug1 = k_1 × μ_s × ∇(M_s/r) × e^(-αt) × cos(πt_n) × (1 + δ_def)
+        
+        For ∇(M_s/r), we use ∂/∂r(M_s/r) = -M_s/r²
+        
+        Args:
+            r: Distance from center (m)
+            t_days: Time in days
+            t_n: Temporal index (dimensionless)
+        
+        Returns:
+            tuple: (Ug1_value, equation_string)
+        """
+        delta_def, _ = self.compute_defect_factor(t_days)
+        
+        grad_term = abs(-self.M_S / (r**2))  # |∇(M_s/r)|
+        decay = np.exp(-self.ALPHA * t_days)
+        temporal = np.cos(np.pi * t_n)
+        defect_factor = 1 + delta_def
+        
+        Ug1 = self.K_1 * self.MU_S * grad_term * decay * temporal * defect_factor
+        
+        eq = (f"Ug1 = k_1 × μ_s × |∇(M_s/r)| × e^(-αt) × cos(πt_n) × (1 + δ_def)\n"
+              f"    = {self.K_1} × {self.MU_S:.3e} × {grad_term:.3e} × {decay:.6f} × {temporal:.6f} × {defect_factor:.6f}\n"
+              f"    = {Ug1:.4e} J/m³")
+        
+        return Ug1, eq
+    
+    def compute_defect_cycle(self, t_start: float, t_end: float, n_points: int = 100) -> dict:
+        """
+        Compute defect factor over a time range.
+        
+        Returns:
+            dict: {times_days, times_years, delta_def_values}
+        """
+        times = np.linspace(t_start, t_end, n_points)
+        deltas = [self.compute_defect_factor(t)[0] for t in times]
+        
+        return {
+            'times_days': times,
+            'times_years': times / 365.25,
+            'delta_def_values': np.array(deltas),
+            'period_days': self.PERIOD_DAYS,
+            'period_years': self.PERIOD_YEARS
+        }
+
+
+DEFECT_FACTOR_CALC = DefectFactorCalculator()
+
+
+class AetherStressEnergyCalculator:
+    """
+    Aether Stress-Energy Tensor Calculator - A_μν dynamics
+    
+    From Clone_2 lines 4200-4400:
+    - A_μν = g_μν + η × T_s^μν
+    - η = 1×10⁻²² (Aether coupling)
+    - T_s^μν = 1.123×10⁷ J/m³ (diagonal components)
+    
+    Extends Minkowski metric with Aether perturbations:
+    g_μν = diag(1, -1, -1, -1)
+    
+    Applications:
+    - Relativistic Aether corrections
+    - Vacuum energy tensor modifications
+    - Nebular and jet dynamics modeling
+    """
+    
+    # Minkowski metric (signature +---)
+    G_MU_NU = np.diag([1.0, -1.0, -1.0, -1.0])
+    
+    # Aether coupling
+    ETA = 1e-22
+    
+    # Default stress-energy (diagonal)
+    T_S_MU_NU_DEFAULT = 1.123e7   # J/m³
+    
+    def __init__(self, eta: float = None, T_s: float = None):
+        """Initialize with optional custom Aether parameters."""
+        self.eta = eta if eta else self.ETA
+        self.T_s = T_s if T_s else self.T_S_MU_NU_DEFAULT
+    
+    def compute_Aether_tensor(self) -> tuple:
+        """
+        Compute Aether tensor A_μν.
+        
+        A_μν = g_μν + η × T_s^μν
+        
+        For diagonal stress-energy: T_s^μν = T_s × g_μν
+        
+        Returns:
+            tuple: (A_tensor, equation_string, perturbation_magnitude)
+        """
+        T_tensor = self.T_s * self.G_MU_NU
+        perturbation = self.eta * T_tensor
+        A_tensor = self.G_MU_NU + perturbation
+        
+        pert_mag = self.eta * self.T_s
+        
+        eq = (f"A_μν = g_μν + η × T_s^μν\n"
+              f"     = diag(1,-1,-1,-1) + {self.eta:.3e} × {self.T_s:.3e} × g_μν\n"
+              f"     = diag(1,-1,-1,-1) + {pert_mag:.3e} × diag(1,-1,-1,-1)\n"
+              f"A_00 = {A_tensor[0,0]:.15f}\n"
+              f"A_ii = {A_tensor[1,1]:.15f} (spatial diagonal)")
+        
+        return A_tensor, eq, pert_mag
+    
+    def compute_vacuum_energy_correction(self, rho_vac_base: float = 7.09e-36) -> tuple:
+        """
+        Compute vacuum energy density correction from Aether tensor.
+        
+        ρ_vac_corrected = ρ_vac × (1 + η×T_s)
+        
+        Args:
+            rho_vac_base: Base vacuum energy density (J/m³)
+        
+        Returns:
+            tuple: (rho_corrected, equation_string)
+        """
+        correction_factor = 1 + self.eta * self.T_s
+        rho_corrected = rho_vac_base * correction_factor
+        
+        eq = (f"ρ_vac_corrected = ρ_vac × (1 + η×T_s)\n"
+              f"                = {rho_vac_base:.3e} × (1 + {self.eta:.3e}×{self.T_s:.3e})\n"
+              f"                = {rho_vac_base:.3e} × {correction_factor:.15f}\n"
+              f"                = {rho_corrected:.6e} J/m³")
+        
+        return rho_corrected, eq
+    
+    def compute_metric_deviation(self) -> tuple:
+        """
+        Compute fractional deviation from Minkowski metric.
+        
+        δg/g = η × T_s
+        
+        Returns:
+            tuple: (deviation, equation_string)
+        """
+        deviation = self.eta * self.T_s
+        
+        eq = f"δg/g = η × T_s = {self.eta:.3e} × {self.T_s:.3e} = {deviation:.6e}"
+        return deviation, eq
+
+
+AETHER_STRESS_CALC = AetherStressEnergyCalculator()
+
+
+class DiskUnitVectorCalculator:
+    """
+    Disk Unit Vector Calculator - φ̂_j dynamics
+    
+    From Clone_2 lines 5000-5200:
+    - φ̂_j ≈ 1 (normalized, unitless)
+    - Azimuthal direction of magnetic strings in disk plane
+    - j-indexed for multiple magnetic string contributions
+    
+    Used in Universal Magnetism (Um):
+    Um = Σ_j [μ_j(t,ρ_vac,[SCm]) / r_j × (1 - e^(-γt)×cos(πt_n)) × φ̂_j] × P_SCm × E_react × ...
+    
+    Applications:
+    - Magnetic field orientation modeling
+    - Accretion disk dynamics
+    - Galactic disk structure
+    """
+    
+    # Default: Normalized unit vector magnitude
+    PHI_HAT_J_DEFAULT = 1.0  # Normalized
+    
+    # Um parameters
+    MU_J = 3.38e23             # T·m³ - Magnetic moment
+    R_J = 1.496e13             # m - 100 AU (magnetic string distance)
+    GAMMA = 0.00005            # day⁻¹ - Decay constant
+    P_SCM = 1.0                # SCm penetration factor
+    E_REACT = 1e46             # Reactivity energy
+    F_HEAVISIDE = 0.01         # Heaviside fraction
+    F_QUASI = 0.01             # Quasi-wave factor
+    
+    def __init__(self, n_strings: int = 1):
+        """Initialize with number of magnetic strings."""
+        self.n_strings = n_strings
+    
+    def compute_unit_vector(self, theta: float) -> tuple:
+        """
+        Compute azimuthal unit vector in disk plane.
+        
+        φ̂ = (-sin(θ), cos(θ), 0) in cylindrical coordinates
+        
+        Args:
+            theta: Azimuthal angle (radians)
+        
+        Returns:
+            tuple: (phi_hat_vector, equation_string)
+        """
+        phi_hat = np.array([-np.sin(theta), np.cos(theta), 0.0])
+        magnitude = np.linalg.norm(phi_hat)
+        
+        eq = (f"φ̂(θ={theta:.4f} rad) = (-sin(θ), cos(θ), 0)\n"
+              f"                     = ({phi_hat[0]:.6f}, {phi_hat[1]:.6f}, {phi_hat[2]:.6f})\n"
+              f"                     |φ̂| = {magnitude:.6f}")
+        
+        return phi_hat, eq
+    
+    def compute_magnetic_string_contribution(self, j: int, t_days: float, t_n: float = 0) -> tuple:
+        """
+        Compute j-th magnetic string contribution to Um.
+        
+        Um_j = (μ_j / r_j) × (1 - e^(-γt)×cos(πt_n)) × φ̂_j
+        
+        Args:
+            j: String index (1-based)
+            t_days: Time in days
+            t_n: Temporal index (dimensionless)
+        
+        Returns:
+            tuple: (Um_j, equation_string)
+        """
+        base = self.MU_J / self.R_J
+        temporal = 1 - np.exp(-self.GAMMA * t_days) * np.cos(np.pi * t_n)
+        phi_j = self.PHI_HAT_J_DEFAULT  # ||φ̂_j|| = 1
+        
+        Um_j = base * temporal * phi_j
+        
+        eq = (f"Um_j[{j}] = (μ_j / r_j) × (1 - e^(-γt)×cos(πt_n)) × |φ̂_j|\n"
+              f"         = ({self.MU_J:.3e} / {self.R_J:.3e}) × {temporal:.6f} × {phi_j}\n"
+              f"         = {Um_j:.4e} T")
+        
+        return Um_j, eq
+    
+    def compute_total_Um(self, t_days: float, t_n: float = 0) -> tuple:
+        """
+        Compute total Universal Magnetism from all strings.
+        
+        Um = Σ_j Um_j × P_SCm × E_react × (1 + 10¹³×f_Heaviside) × (1 + f_quasi)
+        
+        Args:
+            t_days: Time in days
+            t_n: Temporal index (dimensionless)
+        
+        Returns:
+            tuple: (Um_total, equation_string)
+        """
+        # Sum over all strings
+        Um_sum = 0
+        for j in range(1, self.n_strings + 1):
+            Um_j, _ = self.compute_magnetic_string_contribution(j, t_days, t_n)
+            Um_sum += Um_j
+        
+        # Apply scaling factors
+        heaviside_factor = 1 + 1e13 * self.F_HEAVISIDE
+        quasi_factor = 1 + self.F_QUASI
+        
+        Um_total = Um_sum * self.P_SCM * self.E_REACT * heaviside_factor * quasi_factor
+        
+        eq = (f"Um = Σ_j Um_j × P_SCm × E_react × (1 + 10¹³×f_Heaviside) × (1 + f_quasi)\n"
+              f"   = {Um_sum:.3e} × {self.P_SCM} × {self.E_REACT:.3e} × {heaviside_factor:.3e} × {quasi_factor}\n"
+              f"   = {Um_total:.4e} J/m³")
+        
+        return Um_total, eq
+
+
+DISK_UNIT_VECTOR_CALC = DiskUnitVectorCalculator(n_strings=1)
+
+
+class HeliosphereThicknessCalculator:
+    """
+    Heliosphere Thickness Factor Calculator - H_SCm dynamics
+    
+    From Clone_2 lines 4200-4400:
+    - H_SCm ≈ 0.99-1.0 (unitless)
+    - Scales heliospheric thickness effects in Ug2
+    - Flexibility for solar cycle variations
+    
+    Used in Ug2:
+    Ug2 = k_2 × (ρ_vac,[UA] + ρ_vac,[SCm]) × (M_s/r²) × S(r-R_b) × (1 + δ_sw×v_sw) × H_SCm × E_react
+    
+    Applications:
+    - Solar wind interaction modeling
+    - Outer field boundary dynamics
+    - Voyager mission data correlation
+    """
+    
+    # Default heliosphere thickness factor
+    H_SCM_DEFAULT = 0.99
+    H_SCM_MIN = 0.95
+    H_SCM_MAX = 1.05
+    
+    # Heliosphere parameters
+    R_TERMINATION_SHOCK = 94 * 1.496e11   # m - ~94 AU
+    R_HELIOPAUSE = 122 * 1.496e11          # m - ~122 AU (Voyager 1)
+    R_BOW_SHOCK = 230 * 1.496e11           # m - ~230 AU (estimated)
+    
+    # Solar cycle parameters
+    SOLAR_CYCLE_YEARS = 11.0
+    SOLAR_CYCLE_AMPLITUDE = 0.02  # ±2% variation in H_SCm
+    
+    def __init__(self, H_SCm: float = None):
+        """Initialize with optional custom thickness factor."""
+        self.H_SCm = H_SCm if H_SCm else self.H_SCM_DEFAULT
+    
+    def compute_thickness_factor(self, solar_cycle_phase: float = 0) -> tuple:
+        """
+        Compute heliosphere thickness factor with solar cycle modulation.
+        
+        H_SCm(φ) = H_SCm_base × (1 + A × sin(2πφ))
+        
+        Args:
+            solar_cycle_phase: Phase in solar cycle (0-1)
+        
+        Returns:
+            tuple: (H_SCm_value, equation_string)
+        """
+        modulation = self.SOLAR_CYCLE_AMPLITUDE * np.sin(2 * np.pi * solar_cycle_phase)
+        H_value = self.H_SCm * (1 + modulation)
+        
+        eq = (f"H_SCm(φ={solar_cycle_phase:.2f}) = H_SCm_base × (1 + A×sin(2πφ))\n"
+              f"                              = {self.H_SCm} × (1 + {self.SOLAR_CYCLE_AMPLITUDE}×sin(2π×{solar_cycle_phase:.2f}))\n"
+              f"                              = {self.H_SCm} × {1 + modulation:.6f}\n"
+              f"                              = {H_value:.6f}")
+        
+        return H_value, eq
+    
+    def compute_heliosheath_thickness(self) -> tuple:
+        """
+        Compute heliosheath thickness (termination shock to heliopause).
+        
+        Δr = R_heliopause - R_termination_shock
+        
+        Returns:
+            tuple: (thickness_m, thickness_AU, equation_string)
+        """
+        thickness = self.R_HELIOPAUSE - self.R_TERMINATION_SHOCK
+        thickness_AU = thickness / 1.496e11
+        
+        eq = (f"Δr = R_heliopause - R_termination_shock\n"
+              f"   = {self.R_HELIOPAUSE:.3e} - {self.R_TERMINATION_SHOCK:.3e}\n"
+              f"   = {thickness:.3e} m ≈ {thickness_AU:.1f} AU")
+        
+        return thickness, thickness_AU, eq
+    
+    def compute_Ug2_scaling(self, base_Ug2: float = 1e53, solar_cycle_phase: float = 0) -> tuple:
+        """
+        Compute Ug2 with H_SCm scaling.
+        
+        Ug2_scaled = base_Ug2 × H_SCm
+        
+        Args:
+            base_Ug2: Base Ug2 value without H_SCm (J/m³)
+            solar_cycle_phase: Phase in solar cycle (0-1)
+        
+        Returns:
+            tuple: (Ug2_scaled, equation_string)
+        """
+        H_value, _ = self.compute_thickness_factor(solar_cycle_phase)
+        Ug2_scaled = base_Ug2 * H_value
+        
+        eq = (f"Ug2_scaled = base_Ug2 × H_SCm\n"
+              f"           = {base_Ug2:.3e} × {H_value:.6f}\n"
+              f"           = {Ug2_scaled:.4e} J/m³")
+        
+        return Ug2_scaled, eq
+
+
+HELIOSPHERE_THICKNESS_CALC = HeliosphereThicknessCalculator()
+
+
+class OscilloscopeSignalBundleCalculator:
+    """
+    Oscilloscope Signal Bundle Calculator - THz Hole Analysis
+    
+    From Clone_2 lines 5000-5200:
+    - Bundle of 50+ signals capturing THz hole at Earth's core
+    - Frequency range: 1.2-1.3 THz resonance (f ≈ 1.246 THz)
+    - Angular frequency: ω ≈ 7.83×10¹² rad/s
+    - Amperage range: ±3.102 A (dA = 6.205 A)
+    
+    Q-scope captures waveless Um array signature via inductive magnetic circuit.
+    Reveals ACE/DCE (convertible AC/DC energy) dynamics.
+    
+    Applications:
+    - THz hole signature validation
+    - Um magnetic string frequency analysis
+    - Time-reversal zone (f_TRZ) modeling
+    """
+    
+    # THz resonance parameters
+    F_THZ_CENTER = 1.246e12    # Hz - Bundle center frequency
+    F_THZ_MIN = 1.2e12         # Hz - Lower bound
+    F_THZ_MAX = 1.3e12         # Hz - Upper bound
+    OMEGA_THZ = 2 * np.pi * F_THZ_CENTER  # rad/s ≈ 7.83×10¹² rad/s
+    
+    # Oscilloscope parameters
+    AMPERAGE_RANGE = 6.205     # A - Total amperage range (±3.102 A)
+    AMPERAGE_HALF = 3.102      # A - Half-range
+    TIME_DIV_DEFAULT = 200e-9  # s - 200 ns per division
+    IMPEDANCE = 50             # Ω - Standard oscilloscope impedance
+    
+    # Bundle parameters
+    N_SIGNALS_BUNDLE = 50      # Signals per bundle
+    
+    def __init__(self, n_signals: int = None):
+        """Initialize with number of signals in bundle."""
+        self.n_signals = n_signals if n_signals else self.N_SIGNALS_BUNDLE
+    
+    def compute_angular_frequency(self, f_Hz: float = None) -> tuple:
+        """
+        Compute angular frequency from linear frequency.
+        
+        ω = 2πf
+        
+        Args:
+            f_Hz: Frequency in Hz (default: F_THZ_CENTER)
+        
+        Returns:
+            tuple: (omega, equation_string)
+        """
+        f = f_Hz if f_Hz else self.F_THZ_CENTER
+        omega = 2 * np.pi * f
+        
+        eq = f"ω = 2πf = 2π × {f:.3e} Hz = {omega:.4e} rad/s"
+        return omega, eq
+    
+    def compute_signal_power(self, V_pp: float, Z: float = None) -> tuple:
+        """
+        Compute signal power from peak-to-peak voltage.
+        
+        P = (V_pp/2√2)² / Z = V_rms² / Z
+        
+        Args:
+            V_pp: Peak-to-peak voltage (V)
+            Z: Impedance (Ω, default: 50)
+        
+        Returns:
+            tuple: (power_W, equation_string)
+        """
+        Z = Z if Z else self.IMPEDANCE
+        V_rms = V_pp / (2 * np.sqrt(2))  # V_pp to V_rms
+        power = V_rms**2 / Z
+        
+        eq = (f"P = V_rms² / Z = (V_pp/(2√2))² / Z\n"
+              f"  = ({V_pp}/(2√2))² / {Z}\n"
+              f"  = {V_rms:.4f}² / {Z}\n"
+              f"  = {power:.6f} W = {power*1000:.4f} mW")
+        
+        return power, eq
+    
+    def compute_energy_density_contribution(self, V_pp: float, volume: float = 1e-6) -> tuple:
+        """
+        Compute energy density contribution from oscilloscope signal.
+        
+        Um_contribution = P×t / V (simplified for steady-state)
+        
+        Args:
+            V_pp: Peak-to-peak voltage (V)
+            volume: Effective volume (m³)
+        
+        Returns:
+            tuple: (Um_contrib, equation_string)
+        """
+        power, _ = self.compute_signal_power(V_pp)
+        
+        # For steady-state, use P/V as power density
+        power_density = power / volume
+        
+        eq = (f"Um_contribution = P / V\n"
+              f"               = {power:.6f} W / {volume:.3e} m³\n"
+              f"               = {power_density:.4e} W/m³")
+        
+        return power_density, eq
+    
+    def compute_phase_inversion_indicator(self, V_ch1: float, V_ch2: float) -> tuple:
+        """
+        Compute phase inversion indicator from dual-channel signals.
+        
+        If V_ch2 has opposite sign to expected → phase inversion detected
+        
+        Args:
+            V_ch1: Channel 1 voltage
+            V_ch2: Channel 2 voltage
+        
+        Returns:
+            tuple: (phase_inverted, equation_string)
+        """
+        # Simple phase check: if channels have opposite signs
+        phase_inverted = (V_ch1 * V_ch2) < 0
+        
+        eq = (f"Phase inversion check:\n"
+              f"  V_ch1 = {V_ch1:.4f} V, V_ch2 = {V_ch2:.4f} V\n"
+              f"  V_ch1 × V_ch2 = {V_ch1 * V_ch2:.4f}\n"
+              f"  Phase inverted: {phase_inverted} (indicates f_TRZ active)")
+        
+        return phase_inverted, eq
+    
+    def compute_bundle_frequency_spread(self) -> tuple:
+        """
+        Compute frequency spread across bundle.
+        
+        Δf = (f_max - f_min) / n_signals
+        
+        Returns:
+            tuple: (delta_f, frequencies, equation_string)
+        """
+        delta_f = (self.F_THZ_MAX - self.F_THZ_MIN) / self.n_signals
+        frequencies = np.linspace(self.F_THZ_MIN, self.F_THZ_MAX, self.n_signals)
+        
+        eq = (f"Δf = (f_max - f_min) / n_signals\n"
+              f"   = ({self.F_THZ_MAX:.3e} - {self.F_THZ_MIN:.3e}) / {self.n_signals}\n"
+              f"   = {delta_f:.4e} Hz per signal\n"
+              f"   Frequency range: {self.F_THZ_MIN:.3e} - {self.F_THZ_MAX:.3e} Hz")
+        
+        return delta_f, frequencies, eq
+    
+    def compute_Um_resonance_relation(self) -> tuple:
+        """
+        Compute Um - THz resonance relationship.
+        
+        [Um:SM_m] / [Ug1 = UQFF_g + SM_g]^(SCm) → THz resonance
+        
+        Returns:
+            tuple: (resonance_frequency, equation_string)
+        """
+        # From Clone_2: THz hole originates between two pseudo-monopoles
+        # Total frequencies in bundle achieve fluctuating resonance
+        
+        f_resonance = self.F_THZ_CENTER
+        omega_resonance = self.OMEGA_THZ
+        
+        eq = (f"THz Resonance: [{self.F_THZ_MIN/1e12:.2f} - {self.F_THZ_MAX/1e12:.2f}] THz\n"
+              f"Center frequency: f = {f_resonance:.3e} Hz = {f_resonance/1e12:.4f} THz\n"
+              f"Angular frequency: ω = {omega_resonance:.4e} rad/s\n"
+              f"Relation: [Um:SM_m] / [Ug1 = UQFF_g + SM_g]^(SCm) → THz resonance\n"
+              f"Origin: Between two pseudo-monopoles in Earth's core")
+        
+        return f_resonance, eq
+
+
+OSCILLOSCOPE_BUNDLE_CALC = OscilloscopeSignalBundleCalculator()
+
+
+# Global instances for Fourth Clone_2 Analysis Pass
+FOURTH_PASS_CALCULATORS = {
+    'GalacticSpinRateCalculator': GALACTIC_SPIN_CALC,
+    'GalacticCenterDistanceCalculator': GALACTIC_CENTER_CALC,
+    'StepFunctionBoundaryCalculator': STEP_FUNCTION_CALC,
+    'DefectFactorCalculator': DEFECT_FACTOR_CALC,
+    'AetherStressEnergyCalculator': AETHER_STRESS_CALC,
+    'DiskUnitVectorCalculator': DISK_UNIT_VECTOR_CALC,
+    'HeliosphereThicknessCalculator': HELIOSPHERE_THICKNESS_CALC,
+    'OscilloscopeSignalBundleCalculator': OSCILLOSCOPE_BUNDLE_CALC,
+}
