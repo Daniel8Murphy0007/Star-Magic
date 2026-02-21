@@ -82419,6 +82419,596 @@ _MODEL_COUNT, _INJECTED_COUNT = _inject_quantum_wave_methods()
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# WOLFRAM FIELD UNITY - SACRED TIME CONSTANTS & PI INFINITY DECODER
+# From: Git_clone_3_b33aa6c_22nov2025_806AM.txt (WolframFieldUnity.cpp integration)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Sacred Time Constants (your exact physics from the original C++ code)
+class SacredTime:
+    """
+    Sacred Time Constants namespace - YOUR physics from WolframFieldUnity.cpp
+    These constants encode cosmological, biblical, and consciousness frequencies.
+    """
+    MAYAN_BAKTUN = 144000.0        # 1 Baktun = 144,000 days
+    MAYAN_KATUN = 7200.0           # 1 Katun = 7,200 days
+    MAYAN_TUN = 360.0              # 1 Tun = 360 days
+    BIBLE_GENERATION = 33.333333333333333  # 33⅓ years per generation
+    GOLDEN_CYCLE = 25920.0         # Precession of equinoxes in years
+    CONSCIOUSNESS_FREQ = 7.83      # Schumann resonance (Hz)
+    INFINITY_RATIO = 1.000000001   # Near-unity infinite limit
+    PI_UNITY = 3.14159265358979323846264338327950288419716939937510
+    
+    @classmethod
+    def get_all_constants(cls) -> dict:
+        """Return all sacred time constants as a dictionary."""
+        return {
+            'MAYAN_BAKTUN': cls.MAYAN_BAKTUN,
+            'MAYAN_KATUN': cls.MAYAN_KATUN,
+            'MAYAN_TUN': cls.MAYAN_TUN,
+            'BIBLE_GENERATION': cls.BIBLE_GENERATION,
+            'GOLDEN_CYCLE': cls.GOLDEN_CYCLE,
+            'CONSCIOUSNESS_FREQ': cls.CONSCIOUSNESS_FREQ,
+            'INFINITY_RATIO': cls.INFINITY_RATIO,
+            'PI_UNITY': cls.PI_UNITY,
+        }
+
+
+# DPM 8-Tuple Structure (Dimensional Polynomial Modulator)
+@dataclass
+class DPM_8Tuple:
+    """
+    Dual Phase Matter / Dimensional Polynomial Modulator 8-tuple structure.
+    Extended from original UA_prime/SCm to include stability, momentum, gravity,
+    light, phase, and curvature coefficients.
+    
+    From Git_clone_3 lines 760-785.
+    """
+    UA_prime: float = 0.5      # Unbound Aether fraction = (Z_max - Z_eff) / Z_max
+    SCm: float = 0.5           # Super-Conductive mass fraction = Z_eff / Z_max
+    stability: float = 0.01    # From Kozima neutron drop stability
+    momentum: float = 0.93     # Calibration factor
+    gravity: float = 1.0       # No G used - buoyancy replaces
+    light: float = 0.01        # Light coupling
+    phase: float = 2.36e-3     # rad/s
+    curvature: float = 1e-22   # Spacetime curvature coefficient
+    
+    def compute_DPM_core_term(self, R_EB: float = 1.0) -> float:
+        """
+        Central DPM term: f_UA_prime × f_SCm × R_EB
+        This appears in almost every force equation.
+        """
+        return self.UA_prime * self.SCm * R_EB
+    
+    def to_array(self) -> np.ndarray:
+        """Return as numpy array for vectorized operations."""
+        return np.array([
+            self.UA_prime, self.SCm, self.stability, self.momentum,
+            self.gravity, self.light, self.phase, self.curvature
+        ])
+    
+    @classmethod
+    def from_Z_ratio(cls, Z_eff: float, Z_max: float = 118.0) -> 'DPM_8Tuple':
+        """Create DPM tuple from effective atomic number ratio."""
+        UA_prime = (Z_max - Z_eff) / Z_max
+        SCm = Z_eff / Z_max
+        return cls(UA_prime=UA_prime, SCm=SCm)
+
+
+class PI_Infinity_Decoder:
+    """
+    PI Infinity Decoder - THE TRUE INFINITE CURVE
+    
+    From Git_clone_3 lines 20-60: WolframFieldUnity.cpp
+    
+    312 digits of PI are embedded (312 = 26 × 12 - your sacred number).
+    The 7 sacred time equations are encoded as phase modulators.
+    """
+    
+    QUANTUM_STATES = 26
+    
+    # First 312 digits of PI after decimal point (your sacred 312 = 26×12)
+    # Verified: exactly 312 digits
+    PI_DIGITS = [
+        1,4,1,5,9,2,6,5,3,5,8,9,7,9,3,2,3,8,4,6,2,6,4,3,3,8,3,2,7,9,  # 30
+        5,0,2,8,8,4,1,9,7,1,6,9,3,9,9,3,7,5,1,0,5,8,2,0,9,7,4,9,4,4,  # 60
+        5,9,2,3,0,7,8,1,6,4,0,6,2,8,6,2,0,8,9,9,8,6,2,8,0,3,4,8,2,5,  # 90
+        3,4,2,1,1,7,0,6,7,9,8,2,1,4,8,0,8,6,5,1,3,2,8,2,3,0,6,6,4,7,  # 120
+        0,9,3,8,4,4,6,0,9,5,5,0,5,8,2,2,3,1,7,2,5,3,5,9,4,0,8,1,2,8,  # 150
+        4,8,1,1,1,7,4,5,0,2,8,4,1,0,2,7,0,1,9,3,8,5,2,1,1,0,5,5,5,9,  # 180
+        6,4,4,6,2,2,9,4,8,9,5,4,9,3,0,3,8,1,9,6,4,4,2,8,8,1,0,9,7,5,  # 210
+        6,6,5,9,3,3,4,4,6,1,2,8,4,7,5,6,4,8,2,3,3,7,8,6,7,8,3,1,6,5,  # 240
+        2,7,1,2,0,1,9,0,9,1,4,5,6,4,8,5,6,6,9,2,3,4,6,0,3,4,8,6,1,0,  # 270
+        4,5,4,3,2,6,6,4,8,2,1,3,3,9,3,6,0,7,2,6,0,2,4,9,1,4,1,2,7,3,  # 300
+        7,2,4,5,8,7,0,0,6,6,0,6                                        # 312
+    ]
+    
+    def __init__(self):
+        """Initialize the infinite curve from PI digits."""
+        n_digits = len(self.PI_DIGITS)
+        self.infinite_curve = np.zeros(n_digits)
+        
+        phase = 0.0
+        for i in range(n_digits):
+            digit = self.PI_DIGITS[i]
+            phase += digit * SacredTime.INFINITY_RATIO
+            self.infinite_curve[i] = (
+                np.sin(phase * 2.0 * SacredTime.PI_UNITY) * 
+                (1.0 + np.cos(phase * SacredTime.CONSCIOUSNESS_FREQ))
+            )
+    
+    def get_magnetic_field(self, quantum_state: int, time_phase: float) -> float:
+        """
+        Your exact magnetic orbit equation — no gravity, pure PI resonance.
+        
+        From Git_clone_3 lines 35-40.
+        """
+        idx = quantum_state % len(self.infinite_curve)
+        base = self.infinite_curve[idx]
+        return base * np.sin(time_phase * SacredTime.GOLDEN_CYCLE / SacredTime.MAYAN_BAKTUN)
+    
+    def get_consciousness_resonance(self, lineage_level: int) -> float:
+        """
+        7 sacred time equations fused into one resonance.
+        
+        From Git_clone_3 lines 42-52.
+        """
+        resonance = 0.0
+        resonance += np.sin(lineage_level * SacredTime.BIBLE_GENERATION)
+        resonance += np.cos(lineage_level * SacredTime.MAYAN_KATUN)
+        resonance += np.sin(lineage_level * SacredTime.MAYAN_TUN)
+        resonance += np.cos(lineage_level * SacredTime.GOLDEN_CYCLE)
+        resonance += np.sin(lineage_level * SacredTime.CONSCIOUSNESS_FREQ)
+        resonance += np.cos(lineage_level * 7.83)  # Schumann
+        resonance += np.sin(lineage_level * SacredTime.INFINITY_RATIO)
+        return resonance / 7.0
+    
+    def get_DPM_pair(self, state: int) -> complex:
+        """
+        UA' + i•SCm directly from PI curve.
+        
+        From Git_clone_3 lines 54-60.
+        """
+        n = len(self.infinite_curve)
+        real_part = self.infinite_curve[state % n]
+        imag_part = self.infinite_curve[(state + 13) % n]  # 13-baktun offset
+        return complex(real_part, imag_part)
+    
+    def decode_star_magic_seed(self) -> str:
+        """
+        Decode the base64 star magic seed from the PI curve.
+        
+        From Git_clone_3 lines 780-795: Encoded 312-digit PI extension table.
+        """
+        import base64
+        # The encoded star magic seed
+        encoded = "U1RBUi1NQUdJQy1TRUVELTE3MTE4MjAyNVZFUlNJT04tQkFTRTY0"
+        try:
+            decoded = base64.b64decode(encoded).decode('utf-8')
+            return decoded
+        except Exception:
+            return "STAR-MAGIC-SEED-17112025VERSION-BASE64"
+    
+    @staticmethod
+    def get_all_312_digits() -> List[int]:
+        """Return the full 312 PI digits array."""
+        return PI_Infinity_Decoder.PI_DIGITS.copy()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# HYPERGRAPH EVOLUTION RULES - WOLFRAM FIELD UNITY ENGINE
+# From: Git_clone_3 lines 155-230
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class HypergraphEngine:
+    """
+    Wolfram Field Unity (Hypergraph) Engine Implementation.
+    
+    The hypergraph is the computational substrate that runs UNDER UQFF law.
+    Every rule is filtered through UQFF invariants (26-state symmetry, PI-resonance).
+    
+    From Git_clone_3 lines 65-250.
+    """
+    
+    def __init__(self):
+        """Initialize the hypergraph engine."""
+        self.pi_decoder = PI_Infinity_Decoder()
+        self.QUANTUM_STATES = 26
+        self.current_graph: List[List[int]] = self._initial_consciousness_seed()
+        self.current_max_node = 26
+        self.quantum_amplitudes = np.ones(self.QUANTUM_STATES) / np.sqrt(self.QUANTUM_STATES)
+        self.multiway_universe: List[List[List[int]]] = []
+    
+    @staticmethod
+    def _initial_consciousness_seed() -> List[List[int]]:
+        """
+        YOUR 16 years of work encoded - the initial consciousness seed.
+        
+        From Git_clone_3 lines 200-210.
+        """
+        return [
+            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],      # Decadic resonance
+            [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+            [21, 22, 23, 24, 25, 26]               # 26-state closure
+        ]
+    
+    @staticmethod
+    def initial_biblical_genealogy() -> List[List[int]]:
+        """
+        Initial condition: Biblical Genealogy Seed (33-node Adam-to-Christ chain).
+        
+        From Git_clone_3 lines 210-225: Adam = 1, Seth = 2, ... Christ = 33
+        The number 33 is deliberate: ~33 generations from Adam to Christ,
+        and 33 is the age of Jesus at the crucifixion.
+        """
+        g = []
+        for i in range(1, 33):
+            g.append([i, i + 1])  # father → son edge
+        g.append([33])  # Terminal node = Christ / Resurrection node
+        return g
+    
+    @staticmethod
+    def initial_mayan_long_count() -> List[List[int]]:
+        """
+        Initial condition: Mayan Long Count seed.
+        
+        From Git_clone_3 lines 215-220.
+        """
+        g = []
+        for i in range(13):
+            g.append([i])  # 13 baktuns
+        g.append([0])  # Termination node
+        return g
+    
+    def biblical_creation_rule(self, g: List[List[int]], max_node: int) -> Tuple[List[List[int]], int]:
+        """
+        Evolution Rule: 7-Day Creation Splitting (Genesis 1 pattern).
+        
+        From Git_clone_3 lines 175-195:
+        - On "day 1" it splits every existing edge that has at least 1 node
+        - On "day 2" it splits every edge that has at least 2 nodes, etc.
+        - Each split adds exactly one new node and preserves the original edge
+        - Mirrors "and God saw that it was good" (old is kept) while creating new
+        """
+        new_g = []
+        current_max = max_node
+        
+        for day in range(1, 8):  # 7 days
+            for edge in g:
+                if len(edge) >= day:
+                    current_max += 1
+                    split = edge.copy()
+                    split.append(current_max)  # "Let there be..." → new entity
+                    new_g.append(split)
+                new_g.append(edge)  # Original edge always preserved
+        
+        return new_g, current_max
+    
+    def sacred_magnetic_orbit_rule(self, g: List[List[int]], max_node: int) -> Tuple[List[List[int]], int]:
+        """
+        Rule: Sacred Magnetic Orbit - creates stable orbits from PI alone.
+        
+        From Git_clone_3 lines 155-175:
+        Pattern: {{x,y}} → {{x,y},{y,z},{z,x}} with z = new node weighted by PI curve.
+        """
+        new_edges = []
+        current_max = max_node
+        
+        for edge in g:
+            if len(edge) == 2:
+                x, y = edge[0], edge[1]
+                current_max += 1
+                z = current_max
+                weight = self.pi_decoder.get_magnetic_field(z % self.QUANTUM_STATES, 1.0)
+                if weight > 0.5:  # Resonance threshold
+                    new_edges.append([x, y])
+                    new_edges.append([y, z])
+                    new_edges.append([z, x])
+                else:
+                    new_edges.append(edge)
+            else:
+                new_edges.append(edge)
+        
+        return new_edges, current_max
+    
+    def mayan_time_rule(self, g: List[List[int]], max_node: int) -> Tuple[List[List[int]], int]:
+        """
+        Rule: 13-baktun termination node.
+        
+        From Git_clone_3 lines 195-205: 12-21-2012 to 2025 transition encoded.
+        """
+        current_max = max_node
+        if len(g) % 13 == 0:
+            current_max += 1
+            g.append([current_max, current_max + 1])  # Self-loop resonance
+            current_max += 1
+        return g, current_max
+    
+    def measure_dimension(self, center: int, radius: int = 3) -> float:
+        """
+        Measure emergent fractal dimension from hypergraph BFS.
+        
+        From Git_clone_3 lines 90-110.
+        
+        Returns:
+            Fractal dimension estimate log(visited) / log(radius + 1)
+        """
+        visited = {center}
+        queue = [(center, 0)]
+        
+        while queue:
+            node, dist = queue.pop(0)
+            if dist >= radius:
+                continue
+            
+            # Find all hyperedges containing node
+            for edge in self.current_graph:
+                if node in edge:
+                    for n in edge:
+                        if n not in visited:
+                            visited.add(n)
+                            queue.append((n, dist + 1))
+        
+        return np.log(len(visited)) / np.log(radius + 1.0) if radius > 0 else 0.0
+    
+    def measure_buoyant_gravity(self, center: int) -> float:
+        """
+        Pure PI-driven "gravity" — no G, only magnetic resonance.
+        
+        From Git_clone_3 lines 115-125.
+        """
+        flux = 0.0
+        for edge in self.current_graph:
+            if center in edge:
+                flux += self.pi_decoder.get_magnetic_field(len(edge), 1.0)
+        return flux
+    
+    def measure_consciousness_field(self) -> float:
+        """
+        Density of causal connections modulated by 7 sacred equations.
+        
+        From Git_clone_3 lines 125-135.
+        """
+        density = len(self.current_graph) / (self.current_max_node + 1.0)
+        return density * self.pi_decoder.get_consciousness_resonance(7)
+    
+    def constrained_evolve(self, rule_name: str = 'magnetic') -> bool:
+        """
+        UQFF Invariant Checker: Apply rule ONLY if it satisfies UQFF invariants.
+        
+        From Git_clone_3 lines 320-350:
+        - 26-state symmetry must be preserved
+        - PI resonance must be maintained
+        - If invariant violated, rule is silently rejected
+        """
+        # Make test copy
+        test_graph = [edge.copy() for edge in self.current_graph]
+        test_max = self.current_max_node
+        
+        # Apply candidate rule
+        if rule_name == 'magnetic':
+            test_graph, test_max = self.sacred_magnetic_orbit_rule(test_graph, test_max)
+        elif rule_name == 'biblical':
+            test_graph, test_max = self.biblical_creation_rule(test_graph, test_max)
+        elif rule_name == 'mayan':
+            test_graph, test_max = self.mayan_time_rule(test_graph, test_max)
+        else:
+            return False
+        
+        # UQFF LAW CHECK: does new state preserve 26-state symmetry + PI resonance?
+        symmetry_error = 0.0
+        for i in range(self.QUANTUM_STATES):
+            symmetry_error += abs(self.pi_decoder.get_magnetic_field(i, 1.0))
+        
+        if symmetry_error / self.QUANTUM_STATES < 1e-12:  # UQFF invariant held
+            self.current_graph = test_graph
+            self.current_max_node = test_max
+            return True
+        
+        # Otherwise silently reject — hypergraph must obey UQFF, never the reverse
+        return False
+    
+    def evolve_multiway(self, depth: int = 6) -> List[List[List[int]]]:
+        """
+        Evolve multiway universe branches.
+        
+        From Git_clone_3 lines 75-90.
+        """
+        self.multiway_universe = [self.current_graph.copy()]
+        
+        for _ in range(depth):
+            branches = []
+            for g in self.multiway_universe:
+                branch = [edge.copy() for edge in g]
+                branch, _ = self.sacred_magnetic_orbit_rule(branch, self.current_max_node)
+                branches.append(branch)
+            self.multiway_universe.extend(branches)
+        
+        return self.multiway_universe
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# UQFF MASTER ENGINE - THE TOP LEVEL
+# From: Git_clone_3 lines 280-400 (UQFFMasterEngine.cpp)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UQFFMasterEngine:
+    """
+    UNIFIED QUANTUM FORCE FIELD - THE ONE AND ONLY MASTER FRAMEWORK
+    
+    Wolfram Physics is correctly positioned as the computational substrate that SERVES UQFF.
+    UQFF is the Law. Hypergraphs are the canvas that obeys the Law.
+    
+    From Git_clone_3 lines 280-400.
+    """
+    
+    def __init__(self):
+        """Initialize the UQFF Master Engine."""
+        self.QUANTUM_STATES = 26
+        self.quantum_amplitudes = np.ones(self.QUANTUM_STATES) / np.sqrt(self.QUANTUM_STATES)
+        self.master_buoyancy_field = complex(1.83e71, 0.0)  # F0
+        self.master_consciousness_resonance = 1.0
+        
+        # Hypergraph subsystem - runs UNDER UQFF law
+        self.hypergraph_engine = HypergraphEngine()
+        self.pi_decoder = PI_Infinity_Decoder()
+    
+    def evaluate_unity_polynomial(self, coeffs: np.ndarray, x: float) -> float:
+        """
+        Unity Polynomial Evaluator - 26-coefficient polynomial for quantum amplitudes.
+        
+        From Git_clone_3 lines 135-145.
+        """
+        result = 0.0
+        power = 1.0
+        for c in coeffs[:self.QUANTUM_STATES]:
+            result += c * power
+            power *= x
+        return result
+    
+    def evolve_universe(self, steps: int = 7) -> None:
+        """
+        Evolve universe through 7 sacred steps.
+        
+        From Git_clone_3 lines 355-370.
+        """
+        for step in range(steps):
+            # Sacred sequence: biblical → magnetic → mayan → consciousness modulation
+            self.hypergraph_engine.constrained_evolve('biblical')
+            self.hypergraph_engine.constrained_evolve('magnetic')
+            self.hypergraph_engine.constrained_evolve('mayan')
+            self.master_consciousness_resonance = self.pi_decoder.get_consciousness_resonance(step + 1)
+    
+    def calculate_master_force(self, system_name: str = "default") -> float:
+        """
+        Master Force Calculator: F0 × density × consciousness_resonance.
+        
+        From Git_clone_3 lines 355-370:
+        F = 1.83e71 × substrate_density × consciousness_resonance
+        """
+        substrate_density = (
+            len(self.hypergraph_engine.current_graph) / 
+            (self.hypergraph_engine.current_max_node + 1.0)
+        )
+        return 1.83e71 * substrate_density * self.master_consciousness_resonance
+    
+    def calculate_consciousness_field(self) -> float:
+        """Return the current consciousness resonance state."""
+        return self.master_consciousness_resonance
+    
+    def calculate_buoyant_gravity(self, center: int) -> float:
+        """Calculate buoyant gravity at a given center node."""
+        return self.hypergraph_engine.measure_buoyant_gravity(center)
+    
+    def get_DPM_state(self, state: int) -> complex:
+        """Get DPM complex state from PI decoder."""
+        return self.pi_decoder.get_DPM_pair(state)
+    
+    def get_full_status(self) -> dict:
+        """Return full engine status for debugging/reporting."""
+        return {
+            'quantum_states': self.QUANTUM_STATES,
+            'master_buoyancy_field': self.master_buoyancy_field,
+            'master_consciousness_resonance': self.master_consciousness_resonance,
+            'hypergraph_nodes': self.hypergraph_engine.current_max_node,
+            'hypergraph_edges': len(self.hypergraph_engine.current_graph),
+            'emergent_dimension': self.hypergraph_engine.measure_dimension(1),
+            'consciousness_field': self.hypergraph_engine.measure_consciousness_field(),
+            'star_magic_seed': self.pi_decoder.decode_star_magic_seed(),
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CONSCIOUSNESS RESONANCE CALCULATOR
+# From: Git_clone_3 lines 40-52
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class ConsciousnessResonanceCalculator:
+    """
+    7 Sacred Time Equations Calculator - Consciousness Resonance.
+    
+    Fuses biblical, Mayan, golden cycle, and Schumann frequencies into 
+    a single resonance value.
+    """
+    
+    def __init__(self):
+        """Initialize calculator."""
+        self.sacred_time = SacredTime()
+    
+    def compute_full_resonance(self, lineage_level: int) -> Tuple[float, dict]:
+        """
+        Compute full 7-equation resonance with component breakdown.
+        
+        Args:
+            lineage_level: Generation/lineage level (integer)
+        
+        Returns:
+            Tuple of (total_resonance, component_dict)
+        """
+        components = {
+            'bible_generation': np.sin(lineage_level * SacredTime.BIBLE_GENERATION),
+            'mayan_katun': np.cos(lineage_level * SacredTime.MAYAN_KATUN),
+            'mayan_tun': np.sin(lineage_level * SacredTime.MAYAN_TUN),
+            'golden_cycle': np.cos(lineage_level * SacredTime.GOLDEN_CYCLE),
+            'consciousness_freq': np.sin(lineage_level * SacredTime.CONSCIOUSNESS_FREQ),
+            'schumann': np.cos(lineage_level * 7.83),
+            'infinity_ratio': np.sin(lineage_level * SacredTime.INFINITY_RATIO),
+        }
+        
+        total = sum(components.values()) / 7.0
+        return total, components
+    
+    def compute_schumann_resonance(self, t: float) -> float:
+        """
+        Compute Schumann resonance (7.83 Hz Earth resonance).
+        
+        Args:
+            t: Time in seconds
+        
+        Returns:
+            Schumann modulation factor
+        """
+        return np.sin(2 * np.pi * 7.83 * t)
+    
+    def compute_golden_modulation(self, year: float) -> float:
+        """
+        Compute 25,920-year precession cycle modulation.
+        
+        Args:
+            year: Year (e.g., 2025.0)
+        
+        Returns:
+            Golden cycle modulation factor
+        """
+        return np.cos(2 * np.pi * year / SacredTime.GOLDEN_CYCLE)
+    
+    def compute_mayan_alignment(self, days_since_creation: float) -> dict:
+        """
+        Compute Mayan calendar alignment factors.
+        
+        Args:
+            days_since_creation: Days since Mayan creation date
+        
+        Returns:
+            Dictionary with baktun, katun, tun alignment factors
+        """
+        return {
+            'baktun_phase': (days_since_creation / SacredTime.MAYAN_BAKTUN) % 1.0,
+            'katun_phase': (days_since_creation / SacredTime.MAYAN_KATUN) % 1.0,
+            'tun_phase': (days_since_creation / SacredTime.MAYAN_TUN) % 1.0,
+            'baktun_resonance': np.cos(2 * np.pi * days_since_creation / SacredTime.MAYAN_BAKTUN),
+            'katun_resonance': np.cos(2 * np.pi * days_since_creation / SacredTime.MAYAN_KATUN),
+            'tun_resonance': np.cos(2 * np.pi * days_since_creation / SacredTime.MAYAN_TUN),
+        }
+
+
+# Global instances for easy access
+GLOBAL_UQFF_ENGINE = UQFFMasterEngine()
+GLOBAL_PI_DECODER = PI_Infinity_Decoder()
+GLOBAL_HYPERGRAPH = HypergraphEngine()
+CONSCIOUSNESS_CALC = ConsciousnessResonanceCalculator()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # MODULE EXPORTS AND TEST
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -82463,6 +83053,13 @@ __all__ = [
     # Batch 4 Classes (5 new)
     'GravitationalCalculator', 'CoAnQiCalculator', 'EquationFamily',
     'ReferenceSystem', 'ReferenceSystemLibrary',
+    
+    # Wolfram Field Unity Integration (Git_clone_3 b33aa6c - 14 new items)
+    'SacredTime', 'DPM_8Tuple', 'PI_Infinity_Decoder',
+    'HypergraphEngine', 'UQFFMasterEngine', 'ConsciousnessResonanceCalculator',
+    
+    # Global Instances (Wolfram Field Unity)
+    'GLOBAL_UQFF_ENGINE', 'GLOBAL_PI_DECODER', 'GLOBAL_HYPERGRAPH', 'CONSCIOUSNESS_CALC',
     
     # Constants
     'CONSTANTS',
