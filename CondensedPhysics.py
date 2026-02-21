@@ -93805,6 +93805,2156 @@ class MagneticFilamentCalculator:
         }
 
 
+# =============================================================================
+# PART 6: ADVANCED PHYSICS CALCULATORS (Triadic Clone_2 Deep Analysis)
+# Gravitational Waves, Accretion, Shell Erosion, Outburst Decay, Cavity Pressure,
+# Spiral Arms, Bipolar Shocks, Ring Dynamics, Dust Drag, Cosmic Evolution,
+# Unified Wave Functions, Solar Cycle, F_env Compression, DPM Energy, 26D Gravity
+# =============================================================================
+
+class GravitationalWaveRadiationCalculator:
+    """
+    Gravitational Wave Radiation Calculator.
+    
+    Master Equations:
+    - h_GW = (G × M²) / (c⁴ × r) × (dΩ/dt)² : Strain amplitude
+    - P_GW = (32/5) × (G⁴/c⁵) × (M₁M₂)² × (M₁+M₂) / r⁵ : Power radiated
+    - f_GW = 2 × f_orbital : GW frequency (circular orbit)
+    - τ_inspiral = (5/256) × c⁵ × r⁴ / (G³ × M₁ × M₂ × (M₁+M₂))
+    
+    Based on Sagittarius A* and LIGO/Virgo analysis.
+    
+    Reference: Document 3 (Sgr A*), lines 19-20, gravitational waves
+    """
+    
+    # Physical constants
+    G = 6.674e-11       # m³/(kg·s²)
+    c = 2.998e8         # m/s
+    M_sun = 1.989e30    # kg
+    pc = 3.086e16       # m
+    yr = 3.156e7        # s
+    
+    def __init__(self):
+        """Initialize GW Radiation calculator."""
+        pass
+    
+    def compute_gw_strain(self, M: float, r: float, dOmega_dt: float) -> dict:
+        """
+        Compute gravitational wave strain.
+        h = (G × M²) / (c⁴ × r) × (dΩ/dt)²
+        
+        Args:
+            M: Source mass (kg or M_sun)
+            r: Distance to source (m)
+            dOmega_dt: Angular frequency derivative (rad/s²)
+            
+        Returns:
+            dict with GW strain
+        """
+        if M < 1e20:
+            M_kg = M * self.M_sun
+        else:
+            M_kg = M
+        
+        # GW strain (dimensionless)
+        h = (self.G * M_kg**2) / (self.c**4 * r) * dOmega_dt**2
+        
+        return {
+            'h': h,
+            'h_strain': h,
+            'M': M_kg,
+            'M_solar': M_kg / self.M_sun,
+            'r': r,
+            'dOmega_dt': dOmega_dt,
+            'equation': 'h = (G×M²)/(c⁴r) × (dΩ/dt)²'
+        }
+    
+    def compute_gw_power(self, M1: float, M2: float, r: float) -> dict:
+        """
+        Compute gravitational wave power (Peters formula).
+        P_GW = (32/5) × (G⁴/c⁵) × (M₁M₂)² × (M₁+M₂) / r⁵
+        
+        Args:
+            M1, M2: Binary masses (kg or M_sun)
+            r: Separation (m)
+            
+        Returns:
+            dict with GW power
+        """
+        if M1 < 1e20:
+            M1_kg = M1 * self.M_sun
+        else:
+            M1_kg = M1
+        if M2 < 1e20:
+            M2_kg = M2 * self.M_sun
+        else:
+            M2_kg = M2
+        
+        M_total = M1_kg + M2_kg
+        mu = (M1_kg * M2_kg) / M_total  # Reduced mass
+        
+        P_GW = (32/5) * (self.G**4 / self.c**5) * (M1_kg * M2_kg)**2 * M_total / r**5
+        
+        return {
+            'P_GW': P_GW,
+            'P_GW_W': P_GW,
+            'P_GW_L_sun': P_GW / 3.826e26,
+            'M1': M1_kg,
+            'M2': M2_kg,
+            'M_total': M_total,
+            'mu_reduced': mu,
+            'r': r,
+            'equation': 'P_GW = (32/5)×(G⁴/c⁵)×(M₁M₂)²(M₁+M₂)/r⁵'
+        }
+    
+    def compute_inspiral_time(self, M1: float, M2: float, r: float) -> dict:
+        """
+        Compute inspiral timescale.
+        τ = (5/256) × c⁵ × r⁴ / (G³ × M₁ × M₂ × (M₁+M₂))
+        
+        Args:
+            M1, M2: Binary masses (kg or M_sun)
+            r: Initial separation (m)
+            
+        Returns:
+            dict with inspiral time
+        """
+        if M1 < 1e20:
+            M1_kg = M1 * self.M_sun
+        else:
+            M1_kg = M1
+        if M2 < 1e20:
+            M2_kg = M2 * self.M_sun
+        else:
+            M2_kg = M2
+        
+        M_total = M1_kg + M2_kg
+        
+        tau = (5/256) * self.c**5 * r**4 / (self.G**3 * M1_kg * M2_kg * M_total)
+        
+        return {
+            'tau_inspiral': tau,
+            'tau_yr': tau / self.yr,
+            'tau_Myr': tau / (1e6 * self.yr),
+            'tau_Gyr': tau / (1e9 * self.yr),
+            'r': r,
+            'equation': 'τ = (5/256)×c⁵r⁴/(G³M₁M₂(M₁+M₂))'
+        }
+    
+    def compute_gw_frequency(self, M_total: float, r: float) -> dict:
+        """
+        Compute gravitational wave frequency.
+        f_GW = 2 × f_orbital = (1/π) × √(GM/r³)
+        
+        Args:
+            M_total: Total mass (kg or M_sun)
+            r: Orbital separation (m)
+            
+        Returns:
+            dict with GW frequency
+        """
+        if M_total < 1e20:
+            M_kg = M_total * self.M_sun
+        else:
+            M_kg = M_total
+        
+        f_orbital = math.sqrt(self.G * M_kg / r**3) / (2 * math.pi)
+        f_GW = 2 * f_orbital
+        
+        return {
+            'f_GW': f_GW,
+            'f_orbital': f_orbital,
+            'period': 1/f_GW if f_GW > 0 else float('inf'),
+            'M_total': M_kg,
+            'r': r,
+            'equation': 'f_GW = (1/π)×√(GM/r³)'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive GW Radiation solution.
+        """
+        params = params or {}
+        M1 = params.get('M1', 4e6)  # M_sun
+        M2 = params.get('M2', 30)   # M_sun
+        r = params.get('r', 1e12)   # m
+        
+        return {
+            'P_GW': self.compute_gw_power(M1, M2, r),
+            'f_GW': self.compute_gw_frequency(M1 + M2, r),
+            'tau_inspiral': self.compute_inspiral_time(M1, M2, r),
+            'framework': 'UQFF_GravitationalWave_v1.0'
+        }
+
+
+class AccretionDynamicsCalculator:
+    """
+    Accretion Dynamics Calculator for black holes and compact objects.
+    
+    Master Equations:
+    - M(t) = M₀ + Ṁ × t : Mass evolution
+    - Ṁ_Edd = L_Edd / (η c²) : Eddington accretion rate
+    - L_acc = η × Ṁ × c² : Accretion luminosity
+    - r_ISCO = 6 GM/c² (Schwarzschild) : Innermost stable orbit
+    
+    Based on Sagittarius A*, NGC 2525, and SMBH dynamics.
+    
+    Reference: Documents 3, 10, 18
+    """
+    
+    # Physical constants
+    G = 6.674e-11       # m³/(kg·s²)
+    c = 2.998e8         # m/s
+    M_sun = 1.989e30    # kg
+    sigma_T = 6.652e-29 # m² (Thomson cross section)
+    m_p = 1.673e-27     # kg
+    yr = 3.156e7        # s
+    
+    def __init__(self):
+        """Initialize Accretion Dynamics calculator."""
+        self.eta_efficiency = 0.1  # Radiative efficiency
+    
+    def compute_M_t(self, M_0: float, M_dot: float, t: float) -> dict:
+        """
+        Compute time-evolved mass.
+        M(t) = M₀ + Ṁ × t
+        
+        Args:
+            M_0: Initial mass (kg or M_sun)
+            M_dot: Accretion rate (kg/s or M_sun/yr)
+            t: Time (s or yr)
+            
+        Returns:
+            dict with evolved mass
+        """
+        # Convert units
+        if M_0 < 1e20:
+            M_0_kg = M_0 * self.M_sun
+        else:
+            M_0_kg = M_0
+        
+        if M_dot < 1e10:  # M_sun/yr
+            M_dot_kg_s = M_dot * self.M_sun / self.yr
+        else:
+            M_dot_kg_s = M_dot
+        
+        if t < 1e10:  # years
+            t_s = t * self.yr
+        else:
+            t_s = t
+        
+        M_t = M_0_kg + M_dot_kg_s * t_s
+        delta_M = M_dot_kg_s * t_s
+        
+        return {
+            'M_t': M_t,
+            'M_t_solar': M_t / self.M_sun,
+            'M_0': M_0_kg,
+            'delta_M': delta_M,
+            'M_dot': M_dot_kg_s,
+            't': t_s,
+            'equation': 'M(t) = M₀ + Ṁ×t'
+        }
+    
+    def compute_Eddington_rate(self, M: float, eta: float = None) -> dict:
+        """
+        Compute Eddington accretion rate.
+        Ṁ_Edd = L_Edd / (η c²) = 4π G M m_p / (η c σ_T)
+        
+        Args:
+            M: Mass (kg or M_sun)
+            eta: Radiative efficiency (default 0.1)
+            
+        Returns:
+            dict with Eddington rate
+        """
+        if M < 1e20:
+            M_kg = M * self.M_sun
+        else:
+            M_kg = M
+        
+        eta = eta or self.eta_efficiency
+        
+        # Eddington luminosity
+        L_Edd = 4 * math.pi * self.G * M_kg * self.c / self.sigma_T
+        
+        # Eddington accretion rate
+        M_dot_Edd = L_Edd / (eta * self.c**2)
+        
+        return {
+            'M_dot_Edd': M_dot_Edd,
+            'M_dot_Edd_solar_yr': M_dot_Edd / self.M_sun * self.yr,
+            'L_Eddington': L_Edd,
+            'eta': eta,
+            'M': M_kg,
+            'equation': 'Ṁ_Edd = L_Edd/(ηc²)'
+        }
+    
+    def compute_accretion_luminosity(self, M_dot: float, eta: float = None) -> dict:
+        """
+        Compute accretion luminosity.
+        L_acc = η × Ṁ × c²
+        
+        Args:
+            M_dot: Accretion rate (kg/s or M_sun/yr)
+            eta: Radiative efficiency
+            
+        Returns:
+            dict with accretion luminosity
+        """
+        if M_dot < 1e10:
+            M_dot_kg_s = M_dot * self.M_sun / self.yr
+        else:
+            M_dot_kg_s = M_dot
+        
+        eta = eta or self.eta_efficiency
+        
+        L_acc = eta * M_dot_kg_s * self.c**2
+        
+        return {
+            'L_acc': L_acc,
+            'L_acc_L_sun': L_acc / 3.826e26,
+            'M_dot': M_dot_kg_s,
+            'eta': eta,
+            'equation': 'L_acc = η×Ṁ×c²'
+        }
+    
+    def compute_ISCO(self, M: float, a: float = 0) -> dict:
+        """
+        Compute innermost stable circular orbit.
+        r_ISCO = 6 GM/c² (Schwarzschild, a=0)
+        r_ISCO = GM/c² to 9 GM/c² depending on spin
+        
+        Args:
+            M: Mass (kg or M_sun)
+            a: Spin parameter (0 to 1)
+            
+        Returns:
+            dict with ISCO radius
+        """
+        if M < 1e20:
+            M_kg = M * self.M_sun
+        else:
+            M_kg = M
+        
+        r_g = self.G * M_kg / self.c**2  # Gravitational radius
+        r_s = 2 * r_g  # Schwarzschild radius
+        
+        # ISCO depends on spin
+        if a == 0:
+            r_ISCO = 6 * r_g
+        else:
+            # Simplified Kerr formula
+            r_ISCO = r_g * (3 + 2 * math.sqrt(3 - 2*a) - 2 * a)
+        
+        return {
+            'r_ISCO': r_ISCO,
+            'r_g': r_g,
+            'r_s': r_s,
+            'r_ISCO_r_g': r_ISCO / r_g,
+            'a': a,
+            'M': M_kg,
+            'equation': 'r_ISCO = 6GM/c² (Schwarzschild)'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Accretion Dynamics solution.
+        """
+        params = params or {}
+        M = params.get('M', 4e6)  # M_sun
+        M_dot = params.get('M_dot', 1e-4)  # M_sun/yr
+        t = params.get('t', 1e6)  # yr
+        
+        return {
+            'M_t': self.compute_M_t(M, M_dot, t),
+            'M_dot_Edd': self.compute_Eddington_rate(M),
+            'L_acc': self.compute_accretion_luminosity(M_dot),
+            'r_ISCO': self.compute_ISCO(M),
+            'framework': 'UQFF_Accretion_v1.0'
+        }
+
+
+class ShellExpansionErosionCalculator:
+    """
+    Shell Expansion and Erosion Calculator.
+    
+    Master Equations:
+    - E(t) = E₀ × (1 - e^(-t/τ_erode)) : Erosion factor
+    - r(t) = r₀ + v_exp × t : Shell expansion
+    - M_shell(t) = M₀ × (1 - E(t)) : Remaining shell mass
+    - (1 ± E(t)) terms in gravity equations
+    
+    Based on Bubble Nebula, Pillars of Creation, Horsehead Nebula.
+    
+    Reference: Documents 7, 12, 15
+    """
+    
+    # Physical constants
+    M_sun = 1.989e30    # kg
+    yr = 3.156e7        # s
+    Myr = 3.156e13      # s
+    pc = 3.086e16       # m
+    ly = 9.461e15       # m
+    
+    def __init__(self):
+        """Initialize Shell Expansion Erosion calculator."""
+        pass
+    
+    def compute_E_t(self, t: float, tau_erode: float, E_0: float = 1.0) -> dict:
+        """
+        Compute erosion factor.
+        E(t) = E₀ × (1 - e^(-t/τ_erode))
+        
+        Args:
+            t: Time (s or Myr)
+            tau_erode: Erosion timescale (s or Myr)
+            E_0: Maximum erosion amplitude (0-1)
+            
+        Returns:
+            dict with erosion factor
+        """
+        # Convert units
+        if t < 1e8:  # Assume Myr
+            t_s = t * self.Myr
+        else:
+            t_s = t
+        
+        if tau_erode < 1e8:
+            tau_s = tau_erode * self.Myr
+        else:
+            tau_s = tau_erode
+        
+        x = t_s / tau_s if tau_s > 0 else 0
+        E_t = E_0 * (1 - math.exp(-x))
+        
+        # Gravity modifiers
+        gravity_eroded = 1 - E_t  # Pillars, Horsehead
+        gravity_expanded = 1 + E_t  # Bubble Nebula
+        
+        return {
+            'E_t': E_t,
+            'gravity_eroded': gravity_eroded,
+            'gravity_expanded': gravity_expanded,
+            'E_0': E_0,
+            't': t_s,
+            't_Myr': t_s / self.Myr,
+            'tau_erode': tau_s,
+            'tau_Myr': tau_s / self.Myr,
+            'erosion_progress': E_t / E_0 if E_0 > 0 else 0,
+            'equation': 'E(t) = E₀ × (1 - e^(-t/τ))'
+        }
+    
+    def compute_shell_expansion(self, r_0: float, v_exp: float, t: float) -> dict:
+        """
+        Compute shell expansion radius.
+        r(t) = r₀ + v_exp × t
+        
+        Args:
+            r_0: Initial radius (m)
+            v_exp: Expansion velocity (m/s)
+            t: Time (s)
+            
+        Returns:
+            dict with expanded radius
+        """
+        r_t = r_0 + v_exp * t
+        
+        return {
+            'r_t': r_t,
+            'r_0': r_0,
+            'v_exp': v_exp,
+            't': t,
+            'delta_r': v_exp * t,
+            'expansion_factor': r_t / r_0 if r_0 > 0 else float('inf'),
+            'equation': 'r(t) = r₀ + v_exp×t'
+        }
+    
+    def compute_M_shell(self, M_0: float, E_t: float) -> dict:
+        """
+        Compute remaining shell mass.
+        M_shell(t) = M₀ × (1 - E(t))
+        
+        Args:
+            M_0: Initial mass (kg or M_sun)
+            E_t: Erosion factor (0-1)
+            
+        Returns:
+            dict with remaining mass
+        """
+        if M_0 < 1e20:
+            M_0_kg = M_0 * self.M_sun
+        else:
+            M_0_kg = M_0
+        
+        M_shell = M_0_kg * (1 - E_t)
+        M_lost = M_0_kg * E_t
+        
+        return {
+            'M_shell': M_shell,
+            'M_shell_solar': M_shell / self.M_sun,
+            'M_0': M_0_kg,
+            'M_lost': M_lost,
+            'fraction_remaining': 1 - E_t,
+            'equation': 'M_shell = M₀ × (1 - E(t))'
+        }
+    
+    # System parameters
+    SYSTEMS = {
+        'Pillars': {'tau_erode': 3, 'E_0': 0.5, 'r_0': 4 * 9.461e15},  # 4 ly
+        'Bubble': {'tau_erode': 0.5, 'E_0': 0.3, 'r_0': 3.5 * 9.461e15},
+        'Horsehead': {'tau_erode': 5, 'E_0': 0.4, 'r_0': 1.5 * 9.461e15},
+    }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Shell Expansion Erosion solution.
+        """
+        params = params or {}
+        t = params.get('t', 2)  # Myr
+        tau_erode = params.get('tau_erode', 3)  # Myr
+        E_0 = params.get('E_0', 0.5)
+        
+        E_result = self.compute_E_t(t, tau_erode, E_0)
+        
+        return {
+            'E_t': E_result,
+            'framework': 'UQFF_ShellErosion_v1.0'
+        }
+
+
+class OutburstDecayCalculator:
+    """
+    Outburst Decay Calculator for transient events.
+    
+    Master Equations:
+    - D(t) = D₀ × e^(-t/τ_decay) : Outburst decay
+    - L(t) = L_peak × e^(-t/τ_L) : Luminosity decay
+    - B(t) = B₀ × e^(-γt) : Magnetic field decay
+    
+    Based on Magnetar SGR 1745-2900 outbursts.
+    
+    Reference: Document 2.a (Magnetar), lines 15-16
+    """
+    
+    # Physical constants
+    yr = 3.156e7        # s
+    day = 86400         # s
+    
+    def __init__(self):
+        """Initialize Outburst Decay calculator."""
+        pass
+    
+    def compute_D_t(self, D_0: float, t: float, tau_decay: float) -> dict:
+        """
+        Compute outburst decay.
+        D(t) = D₀ × e^(-t/τ_decay)
+        
+        Args:
+            D_0: Initial outburst amplitude
+            t: Time since outburst (s or days)
+            tau_decay: Decay timescale (s or days)
+            
+        Returns:
+            dict with decay
+        """
+        # Convert units
+        if t < 1e5:  # Assume days
+            t_s = t * self.day
+        else:
+            t_s = t
+        
+        if tau_decay < 1e5:
+            tau_s = tau_decay * self.day
+        else:
+            tau_s = tau_decay
+        
+        D_t = D_0 * math.exp(-t_s / tau_s) if tau_s > 0 else 0
+        
+        return {
+            'D_t': D_t,
+            'D_0': D_0,
+            't': t_s,
+            't_days': t_s / self.day,
+            'tau_decay': tau_s,
+            'tau_days': tau_s / self.day,
+            'decay_fraction': D_t / D_0 if D_0 > 0 else 0,
+            'half_life': tau_s * math.log(2),
+            'equation': 'D(t) = D₀ × e^(-t/τ)'
+        }
+    
+    def compute_B_decay(self, B_0: float, t: float, gamma: float = 0.00005) -> dict:
+        """
+        Compute magnetic field decay.
+        B(t) = B₀ × e^(-γt)
+        
+        Args:
+            B_0: Initial field (T)
+            t: Time (days)
+            gamma: Decay rate (day⁻¹), default 0.00005 day⁻¹ (~55 yr timescale)
+            
+        Returns:
+            dict with magnetic decay
+        """
+        B_t = B_0 * math.exp(-gamma * t)
+        
+        timescale_days = 1 / gamma if gamma > 0 else float('inf')
+        timescale_yr = timescale_days / 365.25
+        
+        return {
+            'B_t': B_t,
+            'B_0': B_0,
+            't_days': t,
+            'gamma': gamma,
+            'decay_fraction': B_t / B_0 if B_0 > 0 else 0,
+            'timescale_yr': timescale_yr,
+            'equation': 'B(t) = B₀ × e^(-γt)'
+        }
+    
+    def compute_L_decay(self, L_peak: float, t: float, tau_L: float) -> dict:
+        """
+        Compute luminosity decay.
+        L(t) = L_peak × e^(-t/τ_L)
+        """
+        L_t = L_peak * math.exp(-t / tau_L) if tau_L > 0 else 0
+        
+        return {
+            'L_t': L_t,
+            'L_peak': L_peak,
+            't': t,
+            'tau_L': tau_L,
+            'decay_fraction': L_t / L_peak if L_peak > 0 else 0,
+            'equation': 'L(t) = L_peak × e^(-t/τ)'
+        }
+    
+    # Magnetar parameters
+    MAGNETAR_PARAMS = {
+        'D_0': 1.0,
+        'tau_decay': 100,  # days
+        'B_0': 1e15,       # T (10^15 G)
+        'gamma': 0.00005,  # day⁻¹
+    }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Outburst Decay solution.
+        """
+        params = params or {}
+        D_0 = params.get('D_0', 1.0)
+        t = params.get('t', 100)  # days
+        tau_decay = params.get('tau_decay', 50)
+        
+        return {
+            'D_t': self.compute_D_t(D_0, t, tau_decay),
+            'framework': 'UQFF_OutburstDecay_v1.0'
+        }
+
+
+class CavityPressureCalculator:
+    """
+    Cavity Pressure Calculator for stellar wind-blown cavities.
+    
+    Master Equations:
+    - P(t) = P₀ × (1 - t/τ_SF) : Linear pressure evolution
+    - P_wind = ½ρv_wind² : Wind ram pressure
+    - R_cavity = (L_wind × t / ρ_ISM)^(1/5) : Cavity radius (Weaver)
+    
+    Based on NGC 3603 star-forming region.
+    
+    Reference: Document 11 (NGC 3603), lines 104-105
+    """
+    
+    # Physical constants
+    M_sun = 1.989e30    # kg
+    yr = 3.156e7        # s
+    Myr = 3.156e13      # s
+    pc = 3.086e16       # m
+    
+    def __init__(self):
+        """Initialize Cavity Pressure calculator."""
+        pass
+    
+    def compute_P_t(self, P_0: float, t: float, tau_SF: float) -> dict:
+        """
+        Compute linear pressure evolution.
+        P(t) = P₀ × (1 - t/τ_SF)
+        
+        Args:
+            P_0: Initial pressure amplitude
+            t: Time (Myr)
+            tau_SF: Star formation timescale (Myr)
+            
+        Returns:
+            dict with pressure evolution
+        """
+        ratio = t / tau_SF if tau_SF > 0 else 0
+        P_t = P_0 * max(0, 1 - ratio)
+        
+        # Gravity modifier
+        gravity_modifier = 1 - P_t if P_t <= 1 else 0
+        
+        return {
+            'P_t': P_t,
+            'gravity_modifier': gravity_modifier,
+            'P_0': P_0,
+            't': t,
+            'tau_SF': tau_SF,
+            't_over_tau': ratio,
+            'pressure_remaining': P_t / P_0 if P_0 > 0 else 0,
+            'equation': 'P(t) = P₀ × (1 - t/τ_SF)'
+        }
+    
+    def compute_P_wind(self, rho: float, v_wind: float) -> dict:
+        """
+        Compute wind ram pressure.
+        P_wind = ½ρv_wind²
+        
+        Args:
+            rho: Gas density (kg/m³)
+            v_wind: Wind velocity (m/s)
+            
+        Returns:
+            dict with wind pressure
+        """
+        P_wind = 0.5 * rho * v_wind**2
+        
+        return {
+            'P_wind': P_wind,
+            'P_wind_Pa': P_wind,
+            'rho': rho,
+            'v_wind': v_wind,
+            'equation': 'P_wind = ½ρv²'
+        }
+    
+    def compute_R_cavity(self, L_wind: float, t: float, rho_ISM: float) -> dict:
+        """
+        Compute cavity radius (Weaver et al. solution).
+        R(t) = (L_wind × t / ρ_ISM)^(1/5)
+        
+        Args:
+            L_wind: Wind mechanical luminosity (W)
+            t: Time (s)
+            rho_ISM: ISM density (kg/m³)
+            
+        Returns:
+            dict with cavity radius
+        """
+        R_cavity = (L_wind * t / rho_ISM)**(0.2) if rho_ISM > 0 else 0
+        
+        return {
+            'R_cavity': R_cavity,
+            'R_cavity_pc': R_cavity / self.pc,
+            'L_wind': L_wind,
+            't': t,
+            't_Myr': t / self.Myr,
+            'rho_ISM': rho_ISM,
+            'equation': 'R = (L_wind×t/ρ)^(1/5)'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Cavity Pressure solution.
+        """
+        params = params or {}
+        P_0 = params.get('P_0', 0.5)
+        t = params.get('t', 1)  # Myr
+        tau_SF = params.get('tau_SF', 5)  # Myr
+        
+        return {
+            'P_t': self.compute_P_t(P_0, t, tau_SF),
+            'framework': 'UQFF_CavityPressure_v1.0'
+        }
+
+
+class SpiralArmDynamicsCalculator:
+    """
+    Spiral Arm Dynamics Calculator.
+    
+    Master Equations:
+    - T_spiral = Ω_pattern × r : Spiral arm torque
+    - Ω_pattern = constant (pattern speed)
+    - v_corotation = Ω_pattern × r_CR : Corotation velocity
+    - Lindblad resonance: Ω = Ω_pattern ± κ/m
+    
+    Based on Spirals and Supernovae (Document 31).
+    
+    Reference: Lines 436-437
+    """
+    
+    # Physical constants
+    kpc = 3.086e19      # m
+    yr = 3.156e7        # s
+    Myr = 3.156e13      # s
+    km = 1000           # m
+    
+    def __init__(self):
+        """Initialize Spiral Arm Dynamics calculator."""
+        pass
+    
+    def compute_T_spiral(self, Omega_pattern: float, r: float) -> dict:
+        """
+        Compute spiral arm torque.
+        T_spiral = Ω_pattern × r
+        
+        Args:
+            Omega_pattern: Pattern speed (rad/s or km/s/kpc)
+            r: Galactocentric radius (m or kpc)
+            
+        Returns:
+            dict with spiral torque
+        """
+        # Convert units
+        if Omega_pattern < 1e-10:  # Already in rad/s
+            Omega_rad_s = Omega_pattern
+        else:  # km/s/kpc
+            Omega_rad_s = Omega_pattern * self.km / self.kpc
+        
+        if r < 1e10:  # kpc
+            r_m = r * self.kpc
+        else:
+            r_m = r
+        
+        T_spiral = Omega_rad_s * r_m
+        
+        return {
+            'T_spiral': T_spiral,
+            'Omega_pattern': Omega_rad_s,
+            'Omega_km_s_kpc': Omega_rad_s * self.kpc / self.km,
+            'r': r_m,
+            'r_kpc': r_m / self.kpc,
+            'gravity_modifier': 1 + T_spiral,
+            'equation': 'T_spiral = Ω_pattern × r'
+        }
+    
+    def compute_corotation(self, Omega_pattern: float, v_c: float) -> dict:
+        """
+        Compute corotation radius.
+        r_CR = v_c / Ω_pattern
+        
+        Args:
+            Omega_pattern: Pattern speed (km/s/kpc)
+            v_c: Circular velocity (km/s)
+            
+        Returns:
+            dict with corotation radius
+        """
+        r_CR = v_c / Omega_pattern if Omega_pattern > 0 else float('inf')
+        
+        return {
+            'r_CR': r_CR,
+            'r_CR_kpc': r_CR,
+            'Omega_pattern': Omega_pattern,
+            'v_c': v_c,
+            'equation': 'r_CR = v_c/Ω_pattern'
+        }
+    
+    def compute_epicyclic_frequency(self, v_c: float, r: float, 
+                                      d_vc_dr: float = 0) -> dict:
+        """
+        Compute epicyclic frequency κ.
+        κ² = (2Ω/r) × d(r²Ω)/dr
+        For flat rotation curve: κ = √2 × Ω
+        
+        Args:
+            v_c: Circular velocity (km/s)
+            r: Radius (kpc)
+            d_vc_dr: Velocity gradient (km/s/kpc)
+            
+        Returns:
+            dict with epicyclic frequency
+        """
+        Omega = v_c / r  # km/s/kpc
+        
+        # For flat rotation curve (d_vc_dr ≈ 0)
+        kappa = math.sqrt(2) * Omega
+        
+        return {
+            'kappa': kappa,
+            'Omega': Omega,
+            'kappa_over_Omega': kappa / Omega if Omega > 0 else 0,
+            'v_c': v_c,
+            'r': r,
+            'equation': 'κ = √2 × Ω (flat curve)'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Spiral Arm Dynamics solution.
+        """
+        params = params or {}
+        Omega_pattern = params.get('Omega_pattern', 25)  # km/s/kpc
+        r = params.get('r', 8)  # kpc
+        v_c = params.get('v_c', 220)  # km/s
+        
+        return {
+            'T_spiral': self.compute_T_spiral(Omega_pattern, r),
+            'corotation': self.compute_corotation(Omega_pattern, v_c),
+            'epicyclic': self.compute_epicyclic_frequency(v_c, r),
+            'framework': 'UQFF_SpiralArm_v1.0'
+        }
+
+
+class BipolarWindShockCalculator:
+    """
+    Bipolar Wind Shock Calculator.
+    
+    Master Equations:
+    - W_shock = ρ × v_shock² : Shock pressure
+    - v_shock = (E_SN / M_ej)^(1/2) : Shock velocity
+    - R_shock(t) = (E_SN × t² / ρ)^(1/5) : Sedov-Taylor expansion
+    
+    Based on NGC 6302 (Butterfly Nebula) bipolar outflow.
+    
+    Reference: Document 32, lines 440-441
+    """
+    
+    # Physical constants
+    M_sun = 1.989e30    # kg
+    yr = 3.156e7        # s
+    pc = 3.086e16       # m
+    
+    def __init__(self):
+        """Initialize Bipolar Wind Shock calculator."""
+        pass
+    
+    def compute_W_shock(self, rho: float, v_shock: float) -> dict:
+        """
+        Compute shock pressure.
+        W_shock = ρ × v_shock²
+        
+        Args:
+            rho: Pre-shock density (kg/m³)
+            v_shock: Shock velocity (m/s)
+            
+        Returns:
+            dict with shock pressure
+        """
+        W_shock = rho * v_shock**2
+        
+        return {
+            'W_shock': W_shock,
+            'W_shock_Pa': W_shock,
+            'rho': rho,
+            'v_shock': v_shock,
+            'v_shock_km_s': v_shock / 1000,
+            'equation': 'W_shock = ρ × v²'
+        }
+    
+    def compute_v_shock(self, E: float, M_ej: float) -> dict:
+        """
+        Compute shock velocity from energy.
+        v_shock = √(2E / M_ej)
+        
+        Args:
+            E: Energy (J)
+            M_ej: Ejecta mass (kg or M_sun)
+            
+        Returns:
+            dict with shock velocity
+        """
+        if M_ej < 1e20:
+            M_ej_kg = M_ej * self.M_sun
+        else:
+            M_ej_kg = M_ej
+        
+        v_shock = math.sqrt(2 * E / M_ej_kg) if M_ej_kg > 0 else 0
+        
+        return {
+            'v_shock': v_shock,
+            'v_shock_km_s': v_shock / 1000,
+            'E': E,
+            'M_ej': M_ej_kg,
+            'equation': 'v_shock = √(2E/M_ej)'
+        }
+    
+    def compute_R_Sedov(self, E: float, rho: float, t: float) -> dict:
+        """
+        Compute Sedov-Taylor shock radius.
+        R(t) = (E × t² / ρ)^(1/5) × 1.15
+        
+        Args:
+            E: Explosion energy (J)
+            rho: Ambient density (kg/m³)
+            t: Time (s)
+            
+        Returns:
+            dict with shock radius
+        """
+        R = 1.15 * (E * t**2 / rho)**(0.2) if rho > 0 else 0
+        
+        return {
+            'R_shock': R,
+            'R_pc': R / self.pc,
+            'E': E,
+            'rho': rho,
+            't': t,
+            't_yr': t / self.yr,
+            'equation': 'R = 1.15(Et²/ρ)^(1/5)'
+        }
+    
+    # NGC 6302 parameters
+    NGC6302_PARAMS = {
+        'v_shock': 200e3,      # m/s (200 km/s)
+        'rho': 1e-21,          # kg/m³
+        't_age': 2200 * 3.156e7,  # s (2200 yr)
+    }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Bipolar Wind Shock solution.
+        """
+        params = params or {}
+        rho = params.get('rho', 1e-21)
+        v_shock = params.get('v_shock', 200e3)
+        
+        return {
+            'W_shock': self.compute_W_shock(rho, v_shock),
+            'framework': 'UQFF_BipolarShock_v1.0'
+        }
+
+
+class PlanetaryRingDynamicsCalculator:
+    """
+    Planetary Ring Dynamics Calculator.
+    
+    Master Equations:
+    - T_ring = (3GM_p) / (2r³) × Δr : Tidal torque
+    - Ω_kepler = √(GM/r³) : Keplerian angular velocity
+    - T_orbital = 2π × √(r³ / GM) : Orbital period
+    - H_ring = c_s / Ω : Ring scale height
+    
+    Based on Saturn ring system (Document 22).
+    
+    Reference: Lines 261-262
+    """
+    
+    # Physical constants
+    G = 6.674e-11       # m³/(kg·s²)
+    M_sun = 1.989e30    # kg
+    M_earth = 5.972e24  # kg
+    M_saturn = 5.683e26 # kg
+    R_saturn = 5.8232e7 # m
+    AU = 1.496e11       # m
+    
+    def __init__(self):
+        """Initialize Planetary Ring Dynamics calculator."""
+        pass
+    
+    def compute_T_ring(self, M_p: float, r: float, delta_r: float) -> dict:
+        """
+        Compute tidal ring torque.
+        T_ring = (3GM_p) / (2r³) × Δr
+        
+        Args:
+            M_p: Planet mass (kg)
+            r: Orbital radius (m)
+            delta_r: Ring width (m)
+            
+        Returns:
+            dict with tidal torque
+        """
+        T_ring = (3 * self.G * M_p) / (2 * r**3) * delta_r
+        
+        return {
+            'T_ring': T_ring,
+            'M_p': M_p,
+            'r': r,
+            'delta_r': delta_r,
+            'equation': 'T_ring = (3GM)/(2r³) × Δr'
+        }
+    
+    def compute_Omega_kepler(self, M: float, r: float) -> dict:
+        """
+        Compute Keplerian angular velocity.
+        Ω = √(GM/r³)
+        
+        Args:
+            M: Central mass (kg)
+            r: Orbital radius (m)
+            
+        Returns:
+            dict with angular velocity
+        """
+        Omega = math.sqrt(self.G * M / r**3)
+        T_orbital = 2 * math.pi / Omega
+        
+        return {
+            'Omega': Omega,
+            'T_orbital': T_orbital,
+            'T_hours': T_orbital / 3600,
+            'M': M,
+            'r': r,
+            'equation': 'Ω = √(GM/r³)'
+        }
+    
+    def compute_ring_scale_height(self, c_s: float, Omega: float) -> dict:
+        """
+        Compute ring scale height.
+        H = c_s / Ω
+        
+        Args:
+            c_s: Sound speed or velocity dispersion (m/s)
+            Omega: Angular velocity (rad/s)
+            
+        Returns:
+            dict with scale height
+        """
+        H = c_s / Omega if Omega > 0 else float('inf')
+        
+        return {
+            'H': H,
+            'c_s': c_s,
+            'Omega': Omega,
+            'equation': 'H = c_s/Ω'
+        }
+    
+    def compute_Roche_limit(self, M_p: float, R_p: float, rho_particle: float) -> dict:
+        """
+        Compute Roche limit.
+        d = R_p × (2 × M_p / M_particle)^(1/3) ≈ 2.44 × R_p × (ρ_p/ρ_sat)^(1/3)
+        
+        Args:
+            M_p: Planet mass (kg)
+            R_p: Planet radius (m)
+            rho_particle: Particle density (kg/m³)
+            
+        Returns:
+            dict with Roche limit
+        """
+        rho_p = M_p / ((4/3) * math.pi * R_p**3)
+        d_Roche = 2.44 * R_p * (rho_p / rho_particle)**(1/3)
+        
+        return {
+            'd_Roche': d_Roche,
+            'd_Roche_R_p': d_Roche / R_p,
+            'rho_planet': rho_p,
+            'rho_particle': rho_particle,
+            'equation': 'd = 2.44 R_p (ρ_p/ρ_sat)^(1/3)'
+        }
+    
+    # Saturn ring parameters
+    SATURN_RINGS = {
+        'D_ring': {'inner': 66900e3, 'outer': 74510e3},
+        'C_ring': {'inner': 74658e3, 'outer': 92000e3},
+        'B_ring': {'inner': 92000e3, 'outer': 117580e3},
+        'A_ring': {'inner': 122170e3, 'outer': 136775e3},
+        'F_ring': {'inner': 140180e3, 'outer': 140680e3},
+    }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Planetary Ring Dynamics solution.
+        """
+        params = params or {}
+        M_p = params.get('M_p', self.M_saturn)
+        r = params.get('r', 100000e3)
+        delta_r = params.get('delta_r', 1000e3)
+        
+        return {
+            'T_ring': self.compute_T_ring(M_p, r, delta_r),
+            'Omega': self.compute_Omega_kepler(M_p, r),
+            'framework': 'UQFF_PlanetaryRing_v1.0'
+        }
+
+
+class DustDragCalculator:
+    """
+    Dust Drag Calculator.
+    
+    Master Equations:
+    - D_dust = ρ_dust × v × σ_geo : Dust drag force density
+    - F_drag = ½ × C_D × ρ × v² × A : Aerodynamic drag
+    - τ_dust = ρ_dust × κ_dust : Optical depth
+    
+    Based on Sombrero Galaxy dust lane (Document 20).
+    
+    Reference: Lines 257-258
+    """
+    
+    # Physical constants
+    M_sun = 1.989e30    # kg
+    pc = 3.086e16       # m
+    
+    def __init__(self):
+        """Initialize Dust Drag calculator."""
+        pass
+    
+    def compute_D_dust(self, rho_dust: float, v: float, sigma_geo: float) -> dict:
+        """
+        Compute dust drag force density.
+        D_dust = ρ_dust × v × σ_geo
+        
+        Args:
+            rho_dust: Dust density (kg/m³)
+            v: Relative velocity (m/s)
+            sigma_geo: Geometric cross section per mass (m²/kg)
+            
+        Returns:
+            dict with dust drag
+        """
+        D_dust = rho_dust * v * sigma_geo
+        
+        return {
+            'D_dust': D_dust,
+            'rho_dust': rho_dust,
+            'v': v,
+            'v_km_s': v / 1000,
+            'sigma_geo': sigma_geo,
+            'equation': 'D_dust = ρ_dust × v × σ_geo'
+        }
+    
+    def compute_F_drag(self, C_D: float, rho: float, v: float, A: float) -> dict:
+        """
+        Compute aerodynamic drag force.
+        F_drag = ½ × C_D × ρ × v² × A
+        
+        Args:
+            C_D: Drag coefficient (~1 for dust)
+            rho: Gas density (kg/m³)
+            v: Velocity (m/s)
+            A: Cross-sectional area (m²)
+            
+        Returns:
+            dict with drag force
+        """
+        F_drag = 0.5 * C_D * rho * v**2 * A
+        
+        return {
+            'F_drag': F_drag,
+            'C_D': C_D,
+            'rho': rho,
+            'v': v,
+            'A': A,
+            'equation': 'F_drag = ½ C_D ρv²A'
+        }
+    
+    def compute_tau_dust(self, rho_dust: float, kappa_dust: float, L: float) -> dict:
+        """
+        Compute dust optical depth.
+        τ = ρ_dust × κ_dust × L
+        
+        Args:
+            rho_dust: Dust density (kg/m³)
+            kappa_dust: Dust opacity (m²/kg)
+            L: Path length (m)
+            
+        Returns:
+            dict with optical depth
+        """
+        tau = rho_dust * kappa_dust * L
+        
+        return {
+            'tau': tau,
+            'rho_dust': rho_dust,
+            'kappa_dust': kappa_dust,
+            'L': L,
+            'extinction': 1 - math.exp(-tau),
+            'equation': 'τ = ρ_dust × κ × L'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Dust Drag solution.
+        """
+        params = params or {}
+        rho_dust = params.get('rho_dust', 1e-22)
+        v = params.get('v', 1e4)
+        sigma_geo = params.get('sigma_geo', 1e3)
+        
+        return {
+            'D_dust': self.compute_D_dust(rho_dust, v, sigma_geo),
+            'framework': 'UQFF_DustDrag_v1.0'
+        }
+
+
+class CosmicGravityEvolutionCalculator:
+    """
+    Cosmic Gravity Evolution Calculator.
+    
+    Master Equations:
+    - g(t) = g_base + QG_term + DM_term + GW_term
+    - QG_term = (ℏ/c³) × (G/r²) × E_Planck : Quantum gravity correction
+    - DM_term = G × M_DM(r) / r² : Dark matter contribution
+    - GW_term = (G × M²) / (c⁴ × r) × (dΩ/dt)² : GW strain contribution
+    
+    Based on Gravity Since the Big Bang (Document 38).
+    
+    Reference: Big Bang cosmic evolution
+    """
+    
+    # Physical constants
+    G = 6.674e-11       # m³/(kg·s²)
+    c = 2.998e8         # m/s
+    hbar = 1.055e-34    # J·s
+    M_sun = 1.989e30    # kg
+    Gyr = 3.156e16      # s
+    Mpc = 3.086e22      # m
+    
+    # Planck scales
+    l_Planck = 1.616e-35  # m
+    t_Planck = 5.391e-44  # s
+    E_Planck = 1.956e9    # J
+    
+    def __init__(self):
+        """Initialize Cosmic Gravity Evolution calculator."""
+        self.H_0 = 2.27e-18  # s⁻¹ (70 km/s/Mpc)
+        self.Omega_m = 0.3
+        self.Omega_Lambda = 0.7
+    
+    def compute_QG_term(self, r: float, E: float = None) -> dict:
+        """
+        Compute quantum gravity correction.
+        QG = (ℏ/c³) × (G/r²) × E
+        
+        Args:
+            r: Length scale (m)
+            E: Energy scale (J), default Planck energy
+            
+        Returns:
+            dict with QG correction
+        """
+        E = E or self.E_Planck
+        
+        QG = (self.hbar / self.c**3) * (self.G / r**2) * E
+        
+        return {
+            'QG_term': QG,
+            'r': r,
+            'E': E,
+            'r_over_l_Planck': r / self.l_Planck,
+            'significance': 'negligible' if r > 1e-20 else 'significant',
+            'equation': 'QG = (ℏ/c³)×(G/r²)×E'
+        }
+    
+    def compute_DM_term(self, M_DM: float, r: float) -> dict:
+        """
+        Compute dark matter gravity contribution.
+        DM_term = G × M_DM / r²
+        
+        Args:
+            M_DM: Dark matter mass (kg or M_sun)
+            r: Radius (m)
+            
+        Returns:
+            dict with DM contribution
+        """
+        if M_DM < 1e20:
+            M_DM_kg = M_DM * self.M_sun
+        else:
+            M_DM_kg = M_DM
+        
+        DM_term = self.G * M_DM_kg / r**2
+        
+        return {
+            'DM_term': DM_term,
+            'M_DM': M_DM_kg,
+            'M_DM_solar': M_DM_kg / self.M_sun,
+            'r': r,
+            'equation': 'DM = G×M_DM/r²'
+        }
+    
+    def compute_g_cosmic(self, t: float, z: float = 0) -> dict:
+        """
+        Compute cosmic gravity at epoch.
+        Includes Hubble expansion, dark energy, matter density.
+        
+        Args:
+            t: Cosmic time (s or Gyr)
+            z: Redshift
+            
+        Returns:
+            dict with cosmic gravity
+        """
+        if t < 1e8:  # Assume Gyr
+            t_s = t * self.Gyr
+        else:
+            t_s = t
+        
+        # Hubble parameter at z
+        H_z = self.H_0 * math.sqrt(self.Omega_m * (1 + z)**3 + self.Omega_Lambda)
+        
+        # Deceleration parameter
+        q = 0.5 * self.Omega_m * (1 + z)**3 / (self.Omega_m * (1 + z)**3 + self.Omega_Lambda) - self.Omega_Lambda
+        
+        return {
+            'H_z': H_z,
+            'q_decel': q,
+            't': t_s,
+            't_Gyr': t_s / self.Gyr,
+            'z': z,
+            'expanding': q < 0.5,
+            'accelerating': q < 0
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Cosmic Gravity Evolution solution.
+        """
+        params = params or {}
+        t = params.get('t', 13.8)  # Gyr
+        z = params.get('z', 0)
+        M_DM = params.get('M_DM', 1e12)
+        r = params.get('r', 1e21)
+        
+        return {
+            'cosmic': self.compute_g_cosmic(t, z),
+            'DM_term': self.compute_DM_term(M_DM, r),
+            'QG_term': self.compute_QG_term(r),
+            'framework': 'UQFF_CosmicEvolution_v1.0'
+        }
+
+
+class UnifiedWaveFunctionCalculator:
+    """
+    Unified Wave Function Calculator.
+    
+    Master Equations:
+    - ψ_total = ψ_mag + ψ_standing + ψ_quantum
+    - ψ_mag = q × (v × B) : Magnetic wave component
+    - ψ_standing = 2A × cos(kx) × cos(ωt) : Standing wave
+    - ψ_quantum = (2π/13.8) × A × e^(i(kx-ωt)) : Quantum wave
+    
+    Based on UQFF Compression Cycle unified framework.
+    
+    Reference: Lines 61, 69, 158
+    """
+    
+    # Physical constants
+    hbar = 1.055e-34    # J·s
+    c = 2.998e8         # m/s
+    q_e = 1.602e-19     # C
+    t_Hubble = 13.8e9 * 3.156e7  # s
+    
+    def __init__(self):
+        """Initialize Unified Wave Function calculator."""
+        pass
+    
+    def compute_psi_mag(self, q: float, v: float, B: float) -> dict:
+        """
+        Compute magnetic wave function component.
+        ψ_mag = q × v × B (scalar approximation)
+        
+        Args:
+            q: Charge (C)
+            v: Velocity (m/s)
+            B: Magnetic field (T)
+            
+        Returns:
+            dict with magnetic wave
+        """
+        psi_mag = q * v * B
+        
+        return {
+            'psi_mag': psi_mag,
+            'q': q,
+            'v': v,
+            'B': B,
+            'equation': 'ψ_mag = q×v×B'
+        }
+    
+    def compute_psi_standing(self, A: float, k: float, x: float,
+                               omega: float, t: float) -> dict:
+        """
+        Compute standing wave component.
+        ψ_standing = 2A × cos(kx) × cos(ωt)
+        
+        Args:
+            A: Amplitude
+            k: Wave number (rad/m)
+            x: Position (m)
+            omega: Angular frequency (rad/s)
+            t: Time (s)
+            
+        Returns:
+            dict with standing wave
+        """
+        psi_standing = 2 * A * math.cos(k * x) * math.cos(omega * t)
+        
+        return {
+            'psi_standing': psi_standing,
+            'A': A,
+            'k': k,
+            'x': x,
+            'omega': omega,
+            't': t,
+            'wavelength': 2 * math.pi / k if k > 0 else float('inf'),
+            'period': 2 * math.pi / omega if omega > 0 else float('inf'),
+            'equation': 'ψ_standing = 2A×cos(kx)×cos(ωt)'
+        }
+    
+    def compute_psi_quantum(self, A: float, k: float, x: float,
+                              omega: float, t: float) -> dict:
+        """
+        Compute quantum wave component.
+        ψ_quantum = (2π/13.8) × A × e^(i(kx-ωt))
+        Returns magnitude and phase.
+        
+        Args:
+            A: Amplitude
+            k: Wave number (rad/m)
+            x: Position (m)
+            omega: Angular frequency (rad/s)
+            t: Time (s)
+            
+        Returns:
+            dict with quantum wave
+        """
+        cosmological_factor = 2 * math.pi / 13.8  # Hubble-normalized
+        phase = k * x - omega * t
+        
+        # Complex wave
+        psi_real = cosmological_factor * A * math.cos(phase)
+        psi_imag = cosmological_factor * A * math.sin(phase)
+        psi_magnitude = cosmological_factor * A
+        
+        return {
+            'psi_quantum_real': psi_real,
+            'psi_quantum_imag': psi_imag,
+            'psi_magnitude': psi_magnitude,
+            'phase': phase,
+            'cosmological_factor': cosmological_factor,
+            'equation': 'ψ_quantum = (2π/13.8)×A×e^(i(kx-ωt))'
+        }
+    
+    def compute_psi_total(self, psi_mag: float, psi_standing: float,
+                            psi_quantum_mag: float) -> dict:
+        """
+        Compute total unified wave function.
+        ψ_total = ψ_mag + ψ_standing + ψ_quantum
+        
+        Args:
+            psi_mag: Magnetic component
+            psi_standing: Standing wave component
+            psi_quantum_mag: Quantum magnitude
+            
+        Returns:
+            dict with total wave
+        """
+        psi_total = psi_mag + psi_standing + psi_quantum_mag
+        
+        return {
+            'psi_total': psi_total,
+            'psi_mag': psi_mag,
+            'psi_standing': psi_standing,
+            'psi_quantum': psi_quantum_mag,
+            'equation': 'ψ_total = ψ_mag + ψ_standing + ψ_quantum'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Unified Wave Function solution.
+        """
+        params = params or {}
+        A = params.get('A', 1e-10)
+        k = params.get('k', 1e-10)
+        x = params.get('x', 1e16)
+        omega = params.get('omega', 1e-10)
+        t = params.get('t', 1e10)
+        
+        mag = self.compute_psi_mag(self.q_e, 1e4, 1e-5)
+        standing = self.compute_psi_standing(A, k, x, omega, t)
+        quantum = self.compute_psi_quantum(A, k, x, omega, t)
+        
+        return {
+            'psi_mag': mag,
+            'psi_standing': standing,
+            'psi_quantum': quantum,
+            'psi_total': self.compute_psi_total(
+                mag['psi_mag'], standing['psi_standing'], quantum['psi_magnitude']
+            ),
+            'framework': 'UQFF_UnifiedWave_v1.0'
+        }
+
+
+class SolarCycleModulatorCalculator:
+    """
+    Solar Cycle Modulator Calculator.
+    
+    Master Equations:
+    - ω_c = 2π / (3.96×10⁸ s) : Solar cycle frequency (~12.55 yr)
+    - δ_sw = 0.01 : Solar wind modulation factor
+    - κ = 0.0005 day⁻¹ : [SCm] reactivity decay (~5.5 yr)
+    - P_SCm ~ 1 : Superconductive penetration factor
+    - v_sw = 5×10⁵ m/s : Solar wind velocity
+    
+    Based on Solar Wind/Cycle documents.
+    
+    Reference: Lines 4056-4200 (quantum variables)
+    """
+    
+    # Physical constants
+    day = 86400         # s
+    yr = 3.156e7        # s
+    
+    # Solar cycle parameters
+    SOLAR_PARAMS = {
+        'omega_c': 2 * math.pi / (3.96e8),  # rad/s
+        'T_cycle': 12.55,                    # years
+        'delta_sw': 0.01,                    # unitless
+        'kappa': 0.0005,                     # day⁻¹
+        'P_SCm': 1.0,                        # unitless
+        'v_sw': 5e5,                         # m/s
+        'gamma_mag': 0.00005,                # day⁻¹ (~55 yr)
+        'E_react': 1e46,                     # reactor efficiency
+        'f_quasi': 0.01,                     # quasi-longitudinal factor
+        'R_b': 100 * 1.496e11,               # m (100 AU)
+    }
+    
+    def __init__(self):
+        """Initialize Solar Cycle Modulator calculator."""
+        self.params = self.SOLAR_PARAMS.copy()
+    
+    def compute_solar_modulation(self, t: float) -> dict:
+        """
+        Compute solar cycle modulation.
+        μ(t) = (10³ + 0.4×sin(ω_c×t)) × 3.38×10²⁰ T·m³
+        
+        Args:
+            t: Time (s)
+            
+        Returns:
+            dict with modulation
+        """
+        omega_c = self.params['omega_c']
+        base = 1e3
+        amplitude = 0.4
+        
+        mu_factor = base + amplitude * math.sin(omega_c * t)
+        mu = mu_factor * 3.38e20  # T·m³
+        
+        return {
+            'mu': mu,
+            'mu_factor': mu_factor,
+            't': t,
+            't_yr': t / self.yr,
+            'phase': (omega_c * t) % (2 * math.pi),
+            'cycle_position': ((omega_c * t) % (2 * math.pi)) / (2 * math.pi),
+            'equation': 'μ(t) = (10³ + 0.4×sin(ω_c×t)) × 3.38×10²⁰'
+        }
+    
+    def compute_wind_modulation(self, v_sw: float = None) -> dict:
+        """
+        Compute solar wind modulation factor.
+        (1 + δ_sw × v_sw)
+        
+        Args:
+            v_sw: Solar wind velocity (m/s)
+            
+        Returns:
+            dict with wind factor
+        """
+        v_sw = v_sw or self.params['v_sw']
+        delta_sw = self.params['delta_sw']
+        
+        factor = 1 + delta_sw * v_sw
+        
+        return {
+            'wind_factor': factor,
+            'delta_sw': delta_sw,
+            'v_sw': v_sw,
+            'v_sw_km_s': v_sw / 1000,
+            'equation': '(1 + δ_sw × v_sw)'
+        }
+    
+    def compute_SCm_decay(self, t: float) -> dict:
+        """
+        Compute [SCm] reactivity decay.
+        E_react(t) = E_react_0 × e^(-κt)
+        
+        Args:
+            t: Time (days)
+            
+        Returns:
+            dict with decay
+        """
+        kappa = self.params['kappa']
+        E_0 = self.params['E_react']
+        
+        E_t = E_0 * math.exp(-kappa * t)
+        timescale_days = 1 / kappa
+        timescale_yr = timescale_days / 365.25
+        
+        return {
+            'E_react': E_t,
+            'E_0': E_0,
+            't_days': t,
+            'kappa': kappa,
+            'timescale_yr': timescale_yr,
+            'decay_fraction': E_t / E_0,
+            'equation': 'E_react = E₀ × e^(-κt)'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive Solar Cycle Modulator solution.
+        """
+        params = params or {}
+        t = params.get('t', 0)
+        
+        return {
+            'solar_modulation': self.compute_solar_modulation(t),
+            'wind_factor': self.compute_wind_modulation(),
+            'SCm_decay': self.compute_SCm_decay(params.get('t_days', 1000)),
+            'parameters': self.params,
+            'framework': 'UQFF_SolarCycle_v1.0'
+        }
+
+
+class CompressionCycleF_envCalculator:
+    """
+    Compression Cycle F_env Calculator.
+    
+    Master Equations:
+    - F_env(t) = Σ F_i(t) : Sum of all environmental forces
+    - Components: F_wind, F_erode, F_merge, F_SN, F_rad, F_fil, F_BH,
+                  F_dust, F_ring, F_mag, F_tech, F_shell, F_cosmo
+    
+    Based on UQFF Compression Cycle master aggregator.
+    
+    Reference: Lines 67, 321-330
+    """
+    
+    def __init__(self):
+        """Initialize F_env Compression calculator."""
+        # Component calculators
+        self.components = {}
+    
+    def compute_F_wind(self, rho: float, v_wind: float, scale: float = 1e-12) -> float:
+        """Stellar/pulsar wind: ρ × v²"""
+        return rho * v_wind**2 * scale
+    
+    def compute_F_erode(self, E_t: float) -> float:
+        """Erosion factor: E(t)"""
+        return E_t
+    
+    def compute_F_merge(self, M_coll: float) -> float:
+        """Merger coalescence: M_coll(t)"""
+        return M_coll
+    
+    def compute_F_SN(self, M_SN: float, M_0: float) -> float:
+        """Supernova feedback: M_SN(t)/M_0"""
+        return M_SN / M_0 if M_0 > 0 else 0
+    
+    def compute_F_rad(self, P_rad: float, scale: float = 1e-12) -> float:
+        """Radiation pressure: scaled P_rad"""
+        return P_rad * scale
+    
+    def compute_F_fil(self, M_fil: float, scale: float = 1e-50) -> float:
+        """Magnetic filament: scaled M_fil"""
+        return M_fil * scale
+    
+    def compute_F_BH(self, g_BH: float, g_ref: float = 1e-10) -> float:
+        """Black hole feedback: g_BH/g_ref"""
+        return g_BH / g_ref if g_ref > 0 else 0
+    
+    def compute_F_dust(self, D_dust: float) -> float:
+        """Dust drag: D_dust"""
+        return D_dust
+    
+    def compute_F_ring(self, T_ring: float) -> float:
+        """Ring tidal: T_ring"""
+        return T_ring
+    
+    def compute_F_mag(self, M_mag: float, scale: float = 1e-20) -> float:
+        """Magnetic energy: scaled M_mag"""
+        return M_mag * scale
+    
+    def compute_F_env_total(self, components: dict) -> dict:
+        """
+        Compute total F_env from all components.
+        F_env(t) = Σ F_i(t)
+        
+        Args:
+            components: Dictionary of F_i values
+            
+        Returns:
+            dict with total F_env
+        """
+        F_env = sum(components.values())
+        
+        return {
+            'F_env': F_env,
+            'components': components,
+            'n_components': len(components),
+            'gravity_modifier': 1 + F_env,
+            'equation': 'F_env(t) = Σ F_i(t)'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive F_env solution.
+        """
+        params = params or {}
+        
+        components = {
+            'F_wind': params.get('F_wind', 0),
+            'F_erode': params.get('F_erode', 0),
+            'F_merge': params.get('F_merge', 0),
+            'F_SN': params.get('F_SN', 0),
+            'F_rad': params.get('F_rad', 0),
+        }
+        
+        return {
+            'F_env': self.compute_F_env_total(components),
+            'framework': 'UQFF_F_env_v1.0'
+        }
+
+
+class DPMEnergyCalculator:
+    """
+    Di-Pseudo-Monopole (DPM) Energy Calculator.
+    
+    Master Equations:
+    - E_DPM = (ℏ × c / r²) × Q × [SCm] : DPM energy density
+    - Replaces G in gravity calculations
+    - Q_i = i (quantum state factor, 1-26)
+    - [SCm]_i = 10⁻⁵ × i² T (superconductive magnetism)
+    
+    Based on UQFF 26D DPM framework.
+    
+    Reference: Lines 8900-9100 (E_DPM definition)
+    """
+    
+    # Physical constants
+    hbar = 1.055e-34    # J·s
+    c = 2.998e8         # m/s
+    G = 6.674e-11       # m³/(kg·s²)
+    
+    def __init__(self):
+        """Initialize DPM Energy calculator."""
+        pass
+    
+    def compute_E_DPM(self, r: float, Q: int, SCm: float) -> dict:
+        """
+        Compute DPM energy density.
+        E_DPM = (ℏ × c / r²) × Q × [SCm]
+        
+        Args:
+            r: Radius (m)
+            Q: Quantum state factor (1-26)
+            SCm: Superconductive magnetism (T)
+            
+        Returns:
+            dict with DPM energy
+        """
+        E_DPM = (self.hbar * self.c / r**2) * Q * SCm
+        
+        return {
+            'E_DPM': E_DPM,
+            'hbar': self.hbar,
+            'c': self.c,
+            'r': r,
+            'Q': Q,
+            'SCm': SCm,
+            'equation': 'E_DPM = (ℏc/r²) × Q × [SCm]'
+        }
+    
+    def compute_E_DPM_26(self, r: float) -> dict:
+        """
+        Compute E_DPM for all 26 quantum states.
+        E_DPM_i = (ℏc / r_i²) × Q_i × [SCm]_i
+        where r_i = r/i, Q_i = i, [SCm]_i = 10⁻⁵ × i² T
+        
+        Args:
+            r: Characteristic radius (m)
+            
+        Returns:
+            dict with all 26 E_DPM values
+        """
+        E_DPM_values = {}
+        E_DPM_total = 0
+        
+        for i in range(1, 27):
+            r_i = r / i
+            Q_i = i
+            SCm_i = 1e-5 * i**2  # T
+            
+            E_i = (self.hbar * self.c / r_i**2) * Q_i * SCm_i
+            E_DPM_values[f'E_DPM_{i}'] = E_i
+            E_DPM_total += E_i
+        
+        return {
+            'E_DPM_states': E_DPM_values,
+            'E_DPM_total': E_DPM_total,
+            'r': r,
+            'n_states': 26,
+            'equation': 'E_DPM_i = (ℏc/r_i²) × Q_i × [SCm]_i'
+        }
+    
+    def compute_G_effective(self, E_DPM: float, r: float) -> dict:
+        """
+        Compute effective gravitational constant from E_DPM.
+        G_eff such that g = G_eff × M / r² behaves like E_DPM system
+        
+        Args:
+            E_DPM: DPM energy
+            r: Radius (m)
+            
+        Returns:
+            dict with effective G
+        """
+        # G ratio
+        G_ratio = E_DPM * r**2 / (self.hbar * self.c) if self.hbar * self.c > 0 else 1
+        
+        return {
+            'G_classical': self.G,
+            'G_ratio': G_ratio,
+            'E_DPM': E_DPM,
+            'r': r
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive DPM Energy solution.
+        """
+        params = params or {}
+        r = params.get('r', 1e17)
+        Q = params.get('Q', 1)
+        SCm = params.get('SCm', 1e-5)
+        
+        return {
+            'E_DPM': self.compute_E_DPM(r, Q, SCm),
+            'E_DPM_26': self.compute_E_DPM_26(r),
+            'framework': 'UQFF_DPMEnergy_v1.0'
+        }
+
+
+class QuantumState26GravityCalculator:
+    """
+    26D Quantum State Gravity Calculator.
+    
+    Master Equations:
+    - g(r,t) = Σᵢ₌₁²⁶ (Ug1_i + Ug2_i + Ug3_i + Ug4_i)
+    - Ug1_i: SM-effective buoyancy at ~90° angles
+    - Ug2_i: Multiple resonant shells
+    - Ug3_i: Inertial sweeping via THz holes
+    - Ug4_i: THz hole cosmological communication
+    
+    Based on UQFF 26D compressed gravity framework.
+    
+    Reference: Lines 8900-9100 (26D framework)
+    """
+    
+    # Physical constants
+    G = 6.674e-11       # m³/(kg·s²)
+    hbar = 1.055e-34    # J·s
+    c = 2.998e8         # m/s
+    M_sun = 1.989e30    # kg
+    
+    def __init__(self):
+        """Initialize 26D Quantum State Gravity calculator."""
+        self.H_0 = 2.27e-18  # s⁻¹
+        self.B_crit = 1e15   # T
+        self.f_TRZ = 0.1     # Time-reversal zone correction
+    
+    def compute_Ug1_i(self, i: int, E_DPM_i: float, H_z: float, t: float,
+                       E_rad: float, theta_i: float) -> dict:
+        """
+        Compute Ug1 for quantum state i.
+        Ug1_i = E_DPM_i × (1 + H(z)×t) × (1 - E_rad) × cos(θ_i) × (1 + f_TRZ)
+        
+        Args:
+            i: Quantum state (1-26)
+            E_DPM_i: DPM energy for state i
+            H_z: Hubble parameter at redshift
+            t: Time (s)
+            E_rad: Erosion factor
+            theta_i: Angle for state i (deg)
+            
+        Returns:
+            dict with Ug1_i
+        """
+        expansion = 1 + H_z * t
+        erosion = 1 - E_rad
+        angle = math.cos(math.radians(theta_i))
+        TRZ = 1 + self.f_TRZ
+        
+        Ug1_i = E_DPM_i * expansion * erosion * angle * TRZ
+        
+        return {
+            'Ug1_i': Ug1_i,
+            'i': i,
+            'E_DPM_i': E_DPM_i,
+            'expansion_factor': expansion,
+            'erosion_factor': erosion,
+            'angle_factor': angle,
+            'TRZ_factor': TRZ,
+            'equation': 'Ug1_i = E_DPM × (1+Ht) × (1-E_rad) × cos(θ) × (1+f_TRZ)'
+        }
+    
+    def compute_Ug2_i(self, i: int, E_DPM_i: float, B: float,
+                       M_sf: float, rho_UA: float, rho_SCm: float,
+                       omega_shells: list, t: float) -> dict:
+        """
+        Compute Ug2 for quantum state i (resonant shells).
+        Ug2_i = E_DPM × (1 - B/B_crit) × (1 + M_sf) × (1 + ρ_UA/ρ_SCm) × Σcos(ω_j×t)
+        
+        Args:
+            i: Quantum state (1-26)
+            E_DPM_i: DPM energy for state i
+            B: Magnetic field (T)
+            M_sf: Star formation factor
+            rho_UA, rho_SCm: Aether and SCm densities
+            omega_shells: List of shell frequencies
+            t: Time (s)
+            
+        Returns:
+            dict with Ug2_i
+        """
+        SC_factor = 1 - B / self.B_crit if self.B_crit > 0 else 1
+        SF_factor = 1 + M_sf
+        rho_ratio = 1 + rho_UA / rho_SCm if rho_SCm > 0 else 1
+        
+        # Sum over resonant shells
+        shell_sum = sum(math.cos(omega * t) for omega in omega_shells)
+        
+        Ug2_i = E_DPM_i * SC_factor * SF_factor * rho_ratio * shell_sum
+        
+        return {
+            'Ug2_i': Ug2_i,
+            'i': i,
+            'SC_factor': SC_factor,
+            'SF_factor': SF_factor,
+            'rho_ratio': rho_ratio,
+            'shell_sum': shell_sum,
+            'n_shells': len(omega_shells),
+            'equation': 'Ug2_i = E_DPM × (1-B/B_crit) × (1+M_sf) × Σcos(ω_j×t)'
+        }
+    
+    def compute_Ug3_i(self, i: int, E_DPM_i: float, q: float, v: float,
+                       B: float, m: float, T_lock: float) -> dict:
+        """
+        Compute Ug3 for quantum state i (inertial/THz).
+        Ug3_i = E_DPM × (qvB/m) × (1 - T_lock) × (1 + f_TRZ)
+        
+        Args:
+            i: Quantum state (1-26)
+            E_DPM_i: DPM energy
+            q, v, B, m: Lorentz force parameters
+            T_lock: Temporal locking factor
+            
+        Returns:
+            dict with Ug3_i
+        """
+        Lorentz = q * v * B / m if m > 0 else 0
+        lock_factor = 1 - T_lock
+        TRZ = 1 + self.f_TRZ
+        
+        Ug3_i = E_DPM_i * Lorentz * lock_factor * TRZ
+        
+        return {
+            'Ug3_i': Ug3_i,
+            'i': i,
+            'Lorentz_factor': Lorentz,
+            'lock_factor': lock_factor,
+            'equation': 'Ug3_i = E_DPM × (qvB/m) × (1-T_lock) × (1+f_TRZ)'
+        }
+    
+    def compute_Ug4_i(self, i: int, r_THz: float, f_Um: float,
+                       rho_UA: float, rho_SCm: float) -> dict:
+        """
+        Compute Ug4 for quantum state i (THz communication).
+        Ug4_i = (ℏc/r_THz) × (1 + f_Um) × (1 + ρ_UA/ρ_SCm)
+        
+        Args:
+            i: Quantum state (1-26)
+            r_THz: THz hole scale (m)
+            f_Um: Universal magnetism factor
+            rho_UA, rho_SCm: Densities
+            
+        Returns:
+            dict with Ug4_i
+        """
+        base = self.hbar * self.c / r_THz if r_THz > 0 else 0
+        Um_factor = 1 + f_Um
+        rho_ratio = 1 + rho_UA / rho_SCm if rho_SCm > 0 else 1
+        
+        Ug4_i = base * Um_factor * rho_ratio
+        
+        return {
+            'Ug4_i': Ug4_i,
+            'i': i,
+            'base': base,
+            'Um_factor': Um_factor,
+            'rho_ratio': rho_ratio,
+            'equation': 'Ug4_i = (ℏc/r_THz) × (1+f_Um) × (1+ρ_UA/ρ_SCm)'
+        }
+    
+    def compute_g_26D(self, r: float, t: float, system_params: dict = None) -> dict:
+        """
+        Compute full 26D gravity.
+        g = Σᵢ₌₁²⁶ (Ug1_i + Ug2_i + Ug3_i + Ug4_i)
+        
+        Args:
+            r: Characteristic radius (m)
+            t: Time (s)
+            system_params: System-specific parameters
+            
+        Returns:
+            dict with total 26D gravity
+        """
+        system_params = system_params or {}
+        
+        H_z = system_params.get('H_z', self.H_0)
+        B = system_params.get('B', 1e-5)
+        E_rad = system_params.get('E_rad', 0.1)
+        M_sf = system_params.get('M_sf', 0.1)
+        
+        g_total = 0
+        Ug_components = {'Ug1': 0, 'Ug2': 0, 'Ug3': 0, 'Ug4': 0}
+        
+        for i in range(1, 27):
+            # Compute E_DPM_i
+            r_i = r / i
+            Q_i = i
+            SCm_i = 1e-5 * i**2
+            E_DPM_i = (self.hbar * self.c / r_i**2) * Q_i * SCm_i
+            
+            # Angles
+            theta_i = 90 - (i - 1) * 3.346
+            
+            # Shell frequencies
+            omega_shells = [2 * math.pi / (t / j) for j in range(1, i + 1)] if t > 0 else [0]
+            
+            # THz scale
+            r_THz = 1e-9 / i
+            
+            # Compute each Ug
+            Ug1 = self.compute_Ug1_i(i, E_DPM_i, H_z, t, E_rad, theta_i)['Ug1_i']
+            Ug2 = self.compute_Ug2_i(i, E_DPM_i, B, M_sf, 7.09e-36, 7.09e-37, omega_shells, t)['Ug2_i']
+            Ug3 = self.compute_Ug3_i(i, E_DPM_i, 1.6e-19, 1e4, B, 1.67e-27, 0.1)['Ug3_i']
+            Ug4 = self.compute_Ug4_i(i, r_THz, 0.1, 7.09e-36, 7.09e-37)['Ug4_i']
+            
+            Ug_components['Ug1'] += Ug1
+            Ug_components['Ug2'] += Ug2
+            Ug_components['Ug3'] += Ug3
+            Ug_components['Ug4'] += Ug4
+            
+            g_total += Ug1 + Ug2 + Ug3 + Ug4
+        
+        return {
+            'g_26D': g_total,
+            'Ug_components': Ug_components,
+            'r': r,
+            't': t,
+            'n_states': 26,
+            'equation': 'g = Σᵢ₌₁²⁶ (Ug1_i + Ug2_i + Ug3_i + Ug4_i)'
+        }
+    
+    def solve(self, params: dict = None) -> dict:
+        """
+        Comprehensive 26D Quantum State Gravity solution.
+        """
+        params = params or {}
+        r = params.get('r', 1.54e17)  # 5 pc
+        t = params.get('t', 3.156e14)  # 10 Myr
+        
+        return {
+            'g_26D': self.compute_g_26D(r, t, params),
+            'framework': 'UQFF_26DGravity_v1.0'
+        }
+
+
 # Global Framework Instance
 TRIADIC_UQFF = TriadicUQFFFramework()
 
@@ -93853,7 +96003,23 @@ __all__.extend([
     'RadiationPressureCalculator',
     'StellarWindFeedbackCalculator',
     'GravitationalLensingCalculator',
-    'MagneticFilamentCalculator'
+    'MagneticFilamentCalculator',
+    # Advanced Physics Calculators (Triadic Clone_2 Deep Analysis Feb 2026)
+    'GravitationalWaveRadiationCalculator',
+    'AccretionDynamicsCalculator',
+    'ShellExpansionErosionCalculator',
+    'OutburstDecayCalculator',
+    'CavityPressureCalculator',
+    'SpiralArmDynamicsCalculator',
+    'BipolarWindShockCalculator',
+    'PlanetaryRingDynamicsCalculator',
+    'DustDragCalculator',
+    'CosmicGravityEvolutionCalculator',
+    'UnifiedWaveFunctionCalculator',
+    'SolarCycleModulatorCalculator',
+    'CompressionCycleF_envCalculator',
+    'DPMEnergyCalculator',
+    'QuantumState26GravityCalculator'
 ])
 
 
