@@ -86774,6 +86774,997 @@ class DynamicResonanceCalculator:
 DYNAMIC_RESONANCE_CALC = DynamicResonanceCalculator()
 
 
+# =============================================================================
+# TRIADIC UQFF FRAMEWORK - Triadic Clone_1_08June2025.txt IMPLEMENTATION
+# Three Simultaneous Master Equation Systems:
+#   1. UQFF Compressed (Gravity)
+#   2. UQFF Resonance (Oscillatory Dynamics)
+#   3. UQFF Buoyancy (U_Bi - Superconducting Counterforce)
+# =============================================================================
+
+class EDPMCalculator:
+    """
+    E_DPM Calculator - Replaces Newton's Gravitational Constant G.
+    
+    From Triadic Clone analysis: E_DPM_i = (ℏ × c / r_i²) × Q_i × [SCm]_i
+    
+    This represents the Di-Pseudo-Monopole energy density per quantum state,
+    forming the foundation of the 26D polynomial gravity framework.
+    """
+    
+    def __init__(self):
+        self.hbar = CONSTANTS['hbar']  # 1.0546e-34 J·s
+        self.c = CONSTANTS['c']        # 2.998e8 m/s
+        self.n_states = 26             # 26 quantum states (Russian dolls)
+        
+    def compute_SCm_i(self, i: int, SCm_base: float = 1e-5) -> float:
+        """
+        Superconductive Magnetism scaling with quantum state.
+        [SCm]_i = SCm_base × i² T
+        
+        Args:
+            i: Quantum state (1-26)
+            SCm_base: Base superconductive magnetism (default 1e-5 T)
+            
+        Returns:
+            [SCm]_i value in Tesla
+        """
+        return SCm_base * (i ** 2)
+    
+    def compute_r_i(self, r: float, i: int) -> float:
+        """
+        Radius scaling inversely with quantum state.
+        r_i = r / i
+        
+        Args:
+            r: Base radius (m)
+            i: Quantum state (1-26)
+            
+        Returns:
+            Scaled radius r_i
+        """
+        return r / i if i > 0 else r
+    
+    def compute_Q_i(self, i: int) -> float:
+        """
+        Quantum state factor Q_i (1-26).
+        Represents the quantum weight of each layer in the 26D polynomial.
+        """
+        return float(i)
+    
+    def compute_E_DPM_i(self, r: float, i: int, SCm_base: float = 1e-5) -> dict:
+        """
+        Compute E_DPM for quantum state i.
+        
+        E_DPM_i = (ℏ × c / r_i²) × Q_i × [SCm]_i
+        
+        Args:
+            r: Base radius (m)
+            i: Quantum state (1-26)
+            SCm_base: Base superconductive magnetism
+            
+        Returns:
+            dict with E_DPM_i value and equation components
+        """
+        r_i = self.compute_r_i(r, i)
+        Q_i = self.compute_Q_i(i)
+        SCm_i = self.compute_SCm_i(i, SCm_base)
+        
+        E_DPM_i = (self.hbar * self.c / (r_i ** 2)) * Q_i * SCm_i
+        
+        return {
+            'E_DPM_i': E_DPM_i,
+            'i': i,
+            'r_i': r_i,
+            'Q_i': Q_i,
+            'SCm_i': SCm_i,
+            'equation': f"E_DPM_{i} = (ℏc/r_{i}²) × Q_{i} × [SCm]_{i} = {E_DPM_i:.4e} J/m³"
+        }
+    
+    def compute_E_DPM_total(self, r: float, SCm_base: float = 1e-5) -> dict:
+        """
+        Compute total E_DPM across all 26 quantum states.
+        
+        E_DPM_total = Σ_{i=1}^{26} E_DPM_i
+        
+        Args:
+            r: Base radius (m)
+            SCm_base: Base superconductive magnetism
+            
+        Returns:
+            dict with E_DPM_total and breakdown by state
+        """
+        E_DPM_total = 0.0
+        states = []
+        
+        for i in range(1, 27):
+            state_data = self.compute_E_DPM_i(r, i, SCm_base)
+            E_DPM_total += state_data['E_DPM_i']
+            states.append(state_data)
+        
+        return {
+            'E_DPM_total': E_DPM_total,
+            'n_states': 26,
+            'states': states,
+            'equation': f"E_DPM_total = Σ(i=1..26) E_DPM_i = {E_DPM_total:.4e} J/m³"
+        }
+
+
+class DPMGravityProjections:
+    """
+    Four Universal Gravity Projections from Di-Pseudo-Monopole (DPM).
+    
+    Each DPM contains 4 gravity projections:
+    - Ug1: SM gravity (attractive, ~90° angles)
+    - Ug2: Shell gravity (resonant equilibrium shells)
+    - Ug3: Inertial gravity (THz hole sweeping, tidal locking)
+    - Ug4i: Cosmological communication (THz hole to galactic center)
+    """
+    
+    def __init__(self):
+        self.E_DPM_calc = EDPMCalculator()
+        self.f_THz = 1e12  # THz frequency
+        self.f_TRZ = 0.1   # Time reversal zone factor
+        
+    def compute_Ug1(self, params: dict) -> dict:
+        """
+        Ug1 - Standard Model effective gravity at 90° angles.
+        
+        Ug1 = k_1 × (f_UA' × f_SCm × R_EB)² / r² × sin(θ)
+        
+        Args:
+            params: dict with f_UA', f_SCm, R_EB, r, theta
+            
+        Returns:
+            dict with Ug1 value and equation
+        """
+        f_UA = params.get('f_UA', 0.999)
+        f_SCm = params.get('f_SCm', 0.001)
+        R_EB = params.get('R_EB', 1.0)
+        r = params.get('r', 1e16)
+        theta = params.get('theta', math.pi / 2)
+        k_1 = params.get('k_1', 1.0)
+        
+        numerator = (f_UA * f_SCm * R_EB) ** 2
+        Ug1 = k_1 * numerator / (r ** 2) * math.sin(theta)
+        
+        return {
+            'Ug1': Ug1,
+            'k_1': k_1,
+            'f_UA': f_UA,
+            'f_SCm': f_SCm,
+            'R_EB': R_EB,
+            'r': r,
+            'theta': theta,
+            'equation': f"Ug1 = k₁(f_UA'×f_SCm×R_EB)²/r²×sin(θ) = {Ug1:.4e} m/s²"
+        }
+    
+    def compute_Ug2(self, params: dict) -> dict:
+        """
+        Ug2 - Resonant shell gravity forming electron shells via U_m.
+        
+        Ug2 creates multiple equilibrium shells, not just the final parsec.
+        
+        Args:
+            params: dict with f_UA', f_SCm, r, omega_shell
+            
+        Returns:
+            dict with Ug2 value and equation
+        """
+        f_UA = params.get('f_UA', 0.999)
+        f_SCm = params.get('f_SCm', 0.001)
+        r = params.get('r', 1e16)
+        omega_shell = params.get('omega_shell', 1e-13)
+        k_2 = params.get('k_2', 1.0)
+        
+        Ug2 = k_2 * f_UA * f_SCm / (r ** 2) * math.cos(omega_shell * r)
+        
+        return {
+            'Ug2': Ug2,
+            'k_2': k_2,
+            'omega_shell': omega_shell,
+            'equation': f"Ug2 = k₂×f_UA'×f_SCm/r²×cos(ω_shell×r) = {Ug2:.4e} m/s²"
+        }
+    
+    def compute_Ug3(self, params: dict) -> dict:
+        """
+        Ug3 - Inertial gravity via THz hole (orbital sweeping, tidal locking).
+        
+        Ug3 = U_i + U_m (tags electrons)
+        
+        Args:
+            params: dict with f_UA', f_SCm, r, nu_THz
+            
+        Returns:
+            dict with Ug3 value and equation
+        """
+        f_UA = params.get('f_UA', 0.999)
+        f_SCm = params.get('f_SCm', 0.001)
+        r = params.get('r', 1e16)
+        nu_THz = params.get('nu_THz', 1e12)
+        k_3 = params.get('k_3', 1.0)
+        
+        # THz modulation creates dipole vortex ([SCm] - [UA'])²
+        dipole = (f_SCm - f_UA) ** 2
+        Ug3 = k_3 * dipole * nu_THz / (r ** 2) * (1 + self.f_TRZ)
+        
+        return {
+            'Ug3': Ug3,
+            'k_3': k_3,
+            'dipole': dipole,
+            'nu_THz': nu_THz,
+            'equation': f"Ug3 = k₃×([SCm]-[UA'])²×ν_THz/r²×(1+f_TRZ) = {Ug3:.4e} m/s²"
+        }
+    
+    def compute_Ug4i(self, params: dict) -> dict:
+        """
+        Ug4i - Cosmological THz hole communication to galactic center.
+        
+        Central control via U_m, models SMBH feedback.
+        
+        Args:
+            params: dict with rho_vac_SCm, M_BH, r, alpha, t, f_feedback
+            
+        Returns:
+            dict with Ug4i value and equation
+        """
+        rho_vac_SCm = params.get('rho_vac_SCm', 7.09e-37)
+        M_BH = params.get('M_BH', 0)  # No SMBH by default
+        r = params.get('r', 1e16)
+        alpha = params.get('alpha', 0.001)
+        t = params.get('t', 3.156e13)
+        t_n = params.get('t_n', 0)
+        f_feedback = params.get('f_feedback', 0.063)
+        k_4 = params.get('k_4', 1.1)
+        
+        if M_BH == 0:
+            Ug4i = 0.0
+        else:
+            M_sun = 1.989e30
+            M_BH_kg = M_BH * M_sun if M_BH < 1e20 else M_BH
+            Ug4i = k_4 * rho_vac_SCm * M_BH_kg / r * math.exp(-alpha * t) * math.cos(math.pi * t_n) * (1 + f_feedback)
+        
+        return {
+            'Ug4i': Ug4i,
+            'k_4': k_4,
+            'M_BH': M_BH,
+            'f_feedback': f_feedback,
+            'equation': f"Ug4i = k₄×ρ_vac,[SCm]×M_BH/r×e^(-αt)×cos(πt_n)×(1+f_fb) = {Ug4i:.4e} m/s²"
+        }
+    
+    def compute_total_gravity(self, params: dict) -> dict:
+        """
+        Compute total gravity from all 4 DPM projections.
+        
+        g_DPM = Ug1 + Ug2 + Ug3 + Ug4i
+        
+        Args:
+            params: Combined parameters for all projections
+            
+        Returns:
+            dict with total gravity and breakdown
+        """
+        Ug1_result = self.compute_Ug1(params)
+        Ug2_result = self.compute_Ug2(params)
+        Ug3_result = self.compute_Ug3(params)
+        Ug4i_result = self.compute_Ug4i(params)
+        
+        g_total = Ug1_result['Ug1'] + Ug2_result['Ug2'] + Ug3_result['Ug3'] + Ug4i_result['Ug4i']
+        
+        return {
+            'g_DPM_total': g_total,
+            'Ug1': Ug1_result['Ug1'],
+            'Ug2': Ug2_result['Ug2'],
+            'Ug3': Ug3_result['Ug3'],
+            'Ug4i': Ug4i_result['Ug4i'],
+            'equation': f"g_DPM = Ug1 + Ug2 + Ug3 + Ug4i = {g_total:.4e} m/s²"
+        }
+
+
+class UBiBuoyancyCalculator:
+    """
+    Master Universal Equation of Buoyancy (U_Bi).
+    
+    Third component of the Triadic UQFF Framework.
+    Models superconducting, massless counterforce to SM_gravity.
+    
+    U_Bi = k_Ub × Δk_η × (ρ_vac,[UA] / ρ_vac,[SCm]) × (V_void / V_total) × g_H
+    
+    Buoyancy via Boyle's Law in vacuum energy density terms:
+    Buoyancy ∝ (ρ_vac,[UA] / ρ_vac,[SCm]) × (V_little / V_big)
+    V_little / V_big = 1/33
+    """
+    
+    def __init__(self):
+        self.k_Ub = 0.1                      # Calibration constant
+        self.delta_k_eta = 7.25e8            # Resonance adjustment
+        self.rho_vac_UA = 7.09e-36           # J/m³
+        self.rho_vac_SCm = 7.09e-37          # J/m³
+        self.V_little_V_big = 1.0 / 33.0     # Boyle's Law ratio
+        
+    def compute_f_Ub(self, V_void: float = None, V_total: float = None) -> float:
+        """
+        Compute buoyancy factor f_Ub.
+        
+        f_Ub = k_Ub × Δk_η × (ρ_vac,[UA] / ρ_vac,[SCm]) × (V_void / V_total)
+        
+        Args:
+            V_void: Void volume (m³), default uses V_little/V_big ratio
+            V_total: Total volume (m³)
+            
+        Returns:
+            Buoyancy factor f_Ub
+        """
+        if V_void is not None and V_total is not None and V_total > 0:
+            void_ratio = V_void / V_total
+        else:
+            void_ratio = self.V_little_V_big
+        
+        rho_ratio = self.rho_vac_UA / self.rho_vac_SCm
+        f_Ub = self.k_Ub * self.delta_k_eta * rho_ratio * void_ratio
+        
+        return f_Ub
+    
+    def compute_U_Bi(self, params: dict) -> dict:
+        """
+        Compute Master Universal Buoyancy Force.
+        
+        Args:
+            params: dict with f_UA', f_SCm, R_EB, r, g_reference, V_void, V_total
+            
+        Returns:
+            dict with U_Bi value and equation
+        """
+        f_UA = params.get('f_UA', 0.999)
+        f_SCm = params.get('f_SCm', 0.001)
+        R_EB = params.get('R_EB', 1.0)
+        r = params.get('r', 1e16)
+        g_reference = params.get('g_reference', 1.0)
+        V_void = params.get('V_void', None)
+        V_total = params.get('V_total', None)
+        k_Ub_k = params.get('k_Ub_k', 0.1)
+        H_k = params.get('H_k', 1.0)  # cos(φ) × f(ν_THz)
+        
+        f_Ub = self.compute_f_Ub(V_void, V_total)
+        
+        # F_U_Bi = k_Ub,k × f_UA' × f_SCm × R_EB / r² × H_k × f_Ub
+        numerator = f_UA * f_SCm * R_EB
+        F_U_Bi = k_Ub_k * numerator / (r ** 2) * H_k * f_Ub
+        
+        return {
+            'F_U_Bi': F_U_Bi,
+            'f_Ub': f_Ub,
+            'k_Ub_k': k_Ub_k,
+            'H_k': H_k,
+            'rho_ratio': self.rho_vac_UA / self.rho_vac_SCm,
+            'equation': f"F_U_Bi = k_Ub×f_UA'×f_SCm×R_EB/r²×H_k×f_Ub = {F_U_Bi:.4e} N"
+        }
+    
+    def compute_effective_gravity(self, g_compressed: float, U_Bi: float) -> dict:
+        """
+        Compute effective gravity after buoyancy counterforce.
+        
+        g_eff = g_compressed - U_Bi
+        
+        Args:
+            g_compressed: Compressed UQFF gravity (m/s²)
+            U_Bi: Buoyancy force (N, converted to m/s²)
+            
+        Returns:
+            dict with effective gravity and analysis
+        """
+        g_eff = g_compressed - U_Bi
+        
+        if g_eff < 0:
+            dominance = "Buoyancy dominates (repulsive)"
+        elif g_eff > 0:
+            dominance = "Gravity dominates (attractive)"
+        else:
+            dominance = "Equilibrium"
+        
+        return {
+            'g_effective': g_eff,
+            'g_compressed': g_compressed,
+            'U_Bi': U_Bi,
+            'dominance': dominance,
+            'ratio': abs(U_Bi / g_compressed) if g_compressed != 0 else float('inf'),
+            'equation': f"g_eff = g_compressed - U_Bi = {g_eff:.4e} m/s²"
+        }
+
+
+class ResonanceSuperconductive:
+    """
+    Resonance Superconductive UQFF Module.
+    
+    Computes resonance-based gravity using 11 frequency components:
+    g(r,t) = aDPM + aTHz + avac_diff + asuper_freq + aaether_res 
+             + Ug4i + aquantum_freq + aAether_freq + afluid_freq 
+             + Osc_term + aexp_freq + fTRZ
+    """
+    
+    def __init__(self):
+        # Standard frequency parameters
+        self.f_DPM = 1e12       # Hz
+        self.f_THz = 1e12       # Hz
+        self.E_vac_neb = 7.09e-36   # J/m³ (nebula vacuum energy)
+        self.E_vac_ISM = 7.09e-37   # J/m³ (ISM vacuum energy)
+        self.delta_E_vac = 6.381e-36  # J/m³
+        self.F_super = 6.287e-19
+        self.UA_SCm_ratio = 10.0
+        self.omega_i = 1e-8     # rad/s
+        self.k_4 = 1.0
+        self.f_react = 1e10     # Hz
+        self.f_quantum = 1.445e-17  # Hz
+        self.f_Aether = 1.576e-35   # Hz
+        self.f_osc = 4.57e14    # Hz
+        self.f_TRZ = 0.1
+        self.c = CONSTANTS['c']
+        
+    def compute_aDPM(self, F_DPM: float, V_sys: float) -> float:
+        """aDPM = (F_DPM × f_DPM × E_vac,neb × V_sys) / (c × V_sys)"""
+        return (F_DPM * self.f_DPM * self.E_vac_neb * V_sys) / (self.c * V_sys)
+    
+    def compute_aTHz(self, v_exp: float, aDPM: float) -> float:
+        """aTHz = (f_THz × E_vac,neb × v_exp × aDPM) / (E_vac,ISM × c)"""
+        return (self.f_THz * self.E_vac_neb * v_exp * aDPM) / (self.E_vac_ISM * self.c)
+    
+    def compute_avac_diff(self, v_exp: float, aDPM: float) -> float:
+        """avac_diff = (ΔE_vac × v_exp² × aDPM) / (E_vac,neb × c²)"""
+        return (self.delta_E_vac * (v_exp ** 2) * aDPM) / (self.E_vac_neb * (self.c ** 2))
+    
+    def compute_asuper_freq(self, aDPM: float) -> float:
+        """asuper_freq = (F_super × f_THz × aDPM) / (E_vac,neb × c)"""
+        return (self.F_super * self.f_THz * aDPM) / (self.E_vac_neb * self.c)
+    
+    def compute_aaether_res(self, aDPM: float) -> float:
+        """aaether_res = [(UA')]:[SCm] × ω_i × f_THz × aDPM × (1 + f_TRZ)"""
+        return self.UA_SCm_ratio * self.omega_i * self.f_THz * aDPM * (1 + self.f_TRZ)
+    
+    def compute_aquantum_freq(self, aDPM: float) -> float:
+        """aquantum_freq = (f_quantum × E_vac,neb × aDPM) / (E_vac,ISM × c)"""
+        return (self.f_quantum * self.E_vac_neb * aDPM) / (self.E_vac_ISM * self.c)
+    
+    def compute_aAether_freq(self, aDPM: float) -> float:
+        """aAether_freq = (f_Aether × E_vac,neb × aDPM) / (E_vac,ISM × c)"""
+        return (self.f_Aether * self.E_vac_neb * aDPM) / (self.E_vac_ISM * self.c)
+    
+    def compute_afluid_freq(self, f_fluid: float, V_sys: float) -> float:
+        """afluid_freq = (f_fluid × E_vac,neb × V_sys) / (E_vac,ISM × c)"""
+        return (f_fluid * self.E_vac_neb * V_sys) / (self.E_vac_ISM * self.c)
+    
+    def compute_aexp_freq(self, z: float, aDPM: float) -> float:
+        """aexp_freq = (f_exp × E_vac,neb × aDPM) / (E_vac,ISM × c)"""
+        H_z = 2.27e-18 * math.sqrt(1 + z)  # Simplified Hubble
+        f_exp = H_z / (2 * math.pi)
+        return (f_exp * self.E_vac_neb * aDPM) / (self.E_vac_ISM * self.c)
+    
+    def compute_resonance_gravity(self, params: dict) -> dict:
+        """
+        Compute full resonance superconductive gravity.
+        
+        Args:
+            params: dict with F_DPM, V_sys, v_exp, z, f_fluid
+            
+        Returns:
+            dict with total g and all components
+        """
+        F_DPM = params.get('F_DPM', 1e30)
+        V_sys = params.get('V_sys', 1e30)
+        v_exp = params.get('v_exp', 1e3)
+        z = params.get('z', 0.001)
+        f_fluid = params.get('f_fluid', 1e-14)
+        
+        aDPM = self.compute_aDPM(F_DPM, V_sys)
+        aTHz = self.compute_aTHz(v_exp, aDPM)
+        avac_diff = self.compute_avac_diff(v_exp, aDPM)
+        asuper_freq = self.compute_asuper_freq(aDPM)
+        aaether_res = self.compute_aaether_res(aDPM)
+        aquantum_freq = self.compute_aquantum_freq(aDPM)
+        aAether_freq = self.compute_aAether_freq(aDPM)
+        afluid_freq = self.compute_afluid_freq(f_fluid, V_sys)
+        aexp_freq = self.compute_aexp_freq(z, aDPM)
+        
+        g_total = (aDPM + aTHz + avac_diff + asuper_freq + aaether_res +
+                   aquantum_freq + aAether_freq + afluid_freq + aexp_freq + self.f_TRZ)
+        
+        return {
+            'g_resonance': g_total,
+            'aDPM': aDPM,
+            'aTHz': aTHz,
+            'avac_diff': avac_diff,
+            'asuper_freq': asuper_freq,
+            'aaether_res': aaether_res,
+            'aquantum_freq': aquantum_freq,
+            'aAether_freq': aAether_freq,
+            'afluid_freq': afluid_freq,
+            'aexp_freq': aexp_freq,
+            'f_TRZ': self.f_TRZ,
+            'equation': f"g_res = aDPM + aTHz + ... + f_TRZ = {g_total:.4e} m/s²"
+        }
+
+
+class HydrogenEvolutionCalculator:
+    """
+    Hydrogen Atom Evolution Calculator.
+    
+    Models hydrogen's role as the foundation of the periodic table:
+    - Universal Resonant Bang from proto-gas expansion
+    - Evolution from H → He → heavier elements
+    - Halogen gas separation boundaries
+    - Mass balance across globular clusters
+    
+    g_H ≈ 1.252e46 m/s² (hydrogen atom resonance)
+    """
+    
+    def __init__(self):
+        self.m_p = 1.673e-27     # Proton mass (kg)
+        self.m_e = 9.109e-31     # Electron mass (kg)
+        self.r_bohr = 5.29e-11   # Bohr radius (m)
+        self.v_orbital = 2.18e6  # Orbital velocity (m/s)
+        self.t_universe = 4.355e17  # Universe age (s)
+        
+        self.resonance_calc = ResonanceSuperconductive()
+        self.buoyancy_calc = UBiBuoyancyCalculator()
+        
+    def compute_hydrogen_resonance(self) -> dict:
+        """
+        Compute hydrogen atom resonance gravity.
+        
+        Reference from Triadic Clone: g_H ≈ 1.252e46 m/s²
+        
+        Returns:
+            dict with hydrogen resonance parameters
+        """
+        V_atom = (4.0 / 3.0) * math.pi * (self.r_bohr ** 3)
+        
+        # Using resonance superconductive model for hydrogen
+        params = {
+            'F_DPM': 1e20,  # Hydrogen-scale
+            'V_sys': V_atom,
+            'v_exp': self.v_orbital,
+            'z': 0,
+            'f_fluid': 1e-14
+        }
+        
+        res = self.resonance_calc.compute_resonance_gravity(params)
+        
+        # Reference value from document
+        g_H_reference = 1.252e46
+        
+        return {
+            'g_H': g_H_reference,
+            'g_computed': res['g_resonance'],
+            'V_atom': V_atom,
+            'r_bohr': self.r_bohr,
+            'equation': f"g_H,ref = 1.252×10⁴⁶ m/s² (proto-hydrogen resonance)"
+        }
+    
+    def compute_periodic_evolution(self, Z: int) -> dict:
+        """
+        Compute elemental evolution from hydrogen.
+        
+        Models how hydrogen evolves into heavier elements via
+        cluster dynamics and halogen gas boundaries.
+        
+        Args:
+            Z: Atomic number (1=H, 2=He, etc.)
+            
+        Returns:
+            dict with evolution parameters
+        """
+        # Resonance frequency scales with atomic number
+        f_element = 1e12 / Z  # THz frequency scaling
+        
+        # Halogen boundaries at Z = 9, 17, 35, 53, 85
+        halogens = [9, 17, 35, 53, 85]
+        nearest_halogen = min(halogens, key=lambda x: abs(x - Z))
+        halogen_distance = abs(Z - nearest_halogen)
+        
+        # Mass balance factor (increases with Z)
+        mass_factor = Z * self.m_p / self.m_p
+        
+        # Cluster velocity (slows as elements form)
+        v_cluster = self.v_orbital / (1 + 0.1 * Z)
+        
+        return {
+            'Z': Z,
+            'f_element': f_element,
+            'nearest_halogen': nearest_halogen,
+            'halogen_distance': halogen_distance,
+            'mass_factor': mass_factor,
+            'v_cluster': v_cluster,
+            'equation': f"Element Z={Z}: f={f_element:.4e} Hz, halogen boundary at Z={nearest_halogen}"
+        }
+    
+    def compute_universal_resonant_bang(self, t: float) -> dict:
+        """
+        Model the Universal Resonant Bang dynamics.
+        
+        Proto-gas atoms rapidly expand via electromagnetic force
+        (static shock release), producing resonance still echoing.
+        
+        Args:
+            t: Time since bang (s)
+            
+        Returns:
+            dict with bang dynamics
+        """
+        # Expansion factor (decays over cosmic time)
+        expansion_factor = math.exp(-t / self.t_universe)
+        
+        # Resonance amplitude (still resounding)
+        resonance_amplitude = 1e46 * expansion_factor
+        
+        # Superluminal phase (faster than visible light initially)
+        if t < 1e10:
+            phase = "superluminal"
+            v_proto = 10 * CONSTANTS['c']
+        else:
+            phase = "subluminal"
+            v_proto = CONSTANTS['c'] * (1e10 / t)
+        
+        return {
+            't': t,
+            'expansion_factor': expansion_factor,
+            'resonance_amplitude': resonance_amplitude,
+            'phase': phase,
+            'v_proto': v_proto,
+            'equation': f"Bang resonance at t={t:.2e}s: A={resonance_amplitude:.4e}, phase={phase}"
+        }
+
+
+class TriadicUQFFFramework:
+    """
+    Master Triadic UQFF Framework.
+    
+    Integrates all three simultaneous equation systems:
+    1. UQFF Compressed (Gravity) - Master Universal Gravity Equations
+    2. UQFF Resonance (Oscillatory Dynamics) - 26-state polynomial
+    3. UQFF Buoyancy (U_Bi) - Superconducting counterforce
+    
+    Solves all three systems simultaneously to construct
+    a comprehensive quantum force diagram.
+    """
+    
+    def __init__(self):
+        self.E_DPM_calc = EDPMCalculator()
+        self.DPM_gravity = DPMGravityProjections()
+        self.buoyancy_calc = UBiBuoyancyCalculator()
+        self.resonance_calc = ResonanceSuperconductive()
+        self.hydrogen_calc = HydrogenEvolutionCalculator()
+        
+        # Standard parameters
+        self.f_UA = 0.999
+        self.f_SCm = 0.001
+        self.R_EB = 1.0
+        self.f_TRZ = 0.1
+        self.rho_vac_SCm = 7.09e-37
+        self.rho_vac_UA = 7.09e-36
+        
+    def solve_triadic_system(self, system_params: dict) -> dict:
+        """
+        Simultaneously solve all three UQFF systems.
+        
+        Args:
+            system_params: dict with system-specific parameters:
+                - r: radius (m)
+                - t: time (s)
+                - z: redshift
+                - M_BH: SMBH mass (M_sun), 0 if none
+                - SFR: star formation rate (M_sun/yr)
+                - v_exp: expansion velocity (m/s)
+                - F_DPM: DPM force parameter
+                - V_sys: system volume (m³)
+                
+        Returns:
+            dict with all three solutions and combined analysis
+        """
+        r = system_params.get('r', 1e16)
+        t = system_params.get('t', 3.156e13)
+        z = system_params.get('z', 0.001)
+        M_BH = system_params.get('M_BH', 0)
+        SFR = system_params.get('SFR', 0.5)
+        v_exp = system_params.get('v_exp', 1e3)
+        F_DPM = system_params.get('F_DPM', 1e30)
+        V_sys = system_params.get('V_sys', 1e30)
+        system_name = system_params.get('name', 'Unknown')
+        
+        # ----- 1. COMPRESSED UQFF (Gravity) -----
+        gravity_params = {
+            'f_UA': self.f_UA,
+            'f_SCm': self.f_SCm,
+            'R_EB': self.R_EB,
+            'r': r,
+            'theta': math.pi / 2,
+            'k_1': 1.0,
+            'k_2': 1.0,
+            'k_3': 1.0,
+            'k_4': 1.1,
+            'omega_shell': 1e-13,
+            'nu_THz': 1e12,
+            'rho_vac_SCm': self.rho_vac_SCm,
+            'M_BH': M_BH,
+            'alpha': 0.001,
+            't': t,
+            't_n': 0,
+            'f_feedback': 0.063
+        }
+        
+        gravity_result = self.DPM_gravity.compute_total_gravity(gravity_params)
+        g_compressed = gravity_result['g_DPM_total']
+        
+        # Apply cosmic expansion and radiation erosion corrections
+        H_z = 2.268e-18 * math.sqrt(1 + z)
+        expansion_factor = 1 + H_z * t
+        
+        t_years = t / (365.25 * 24 * 3600)
+        tau_erode = 2e6
+        E_rad = 0.2 * (1 - math.exp(-t_years / tau_erode))
+        erosion_factor = 1 - E_rad
+        
+        g_compressed_corrected = g_compressed * expansion_factor * erosion_factor
+        
+        # ----- 2. RESONANCE UQFF -----
+        resonance_params = {
+            'F_DPM': F_DPM,
+            'V_sys': V_sys,
+            'v_exp': v_exp,
+            'z': z,
+            'f_fluid': 1e-14
+        }
+        
+        resonance_result = self.resonance_calc.compute_resonance_gravity(resonance_params)
+        g_resonance = resonance_result['g_resonance']
+        
+        # Apply SFR modulation
+        M_sf_t = SFR * t_years / 1e11
+        R_t = M_sf_t * g_resonance * erosion_factor * math.cos(1.989e-13 * t)
+        
+        # ----- 3. BUOYANCY UQFF (U_Bi) -----
+        buoyancy_params = {
+            'f_UA': self.f_UA,
+            'f_SCm': self.f_SCm,
+            'R_EB': self.R_EB,
+            'r': r,
+            'g_reference': g_compressed,
+            'k_Ub_k': 0.1,
+            'H_k': 1.0
+        }
+        
+        buoyancy_result = self.buoyancy_calc.compute_U_Bi(buoyancy_params)
+        F_U_Bi = buoyancy_result['F_U_Bi']
+        
+        # ----- COMBINED ANALYSIS -----
+        effective_gravity = self.buoyancy_calc.compute_effective_gravity(g_compressed_corrected, F_U_Bi)
+        
+        return {
+            'system': system_name,
+            'compressed_uqff': {
+                'g_raw': g_compressed,
+                'g_corrected': g_compressed_corrected,
+                'expansion_factor': expansion_factor,
+                'erosion_factor': erosion_factor,
+                'Ug1': gravity_result['Ug1'],
+                'Ug2': gravity_result['Ug2'],
+                'Ug3': gravity_result['Ug3'],
+                'Ug4i': gravity_result['Ug4i']
+            },
+            'resonance_uqff': {
+                'g_resonance': g_resonance,
+                'R_t': R_t,
+                'M_sf_t': M_sf_t,
+                'components': resonance_result
+            },
+            'buoyancy_uqff': {
+                'F_U_Bi': F_U_Bi,
+                'f_Ub': buoyancy_result['f_Ub'],
+                'result': buoyancy_result
+            },
+            'effective_gravity': effective_gravity,
+            'quantum_force_diagram': {
+                'attractive': g_compressed_corrected,
+                'oscillatory': R_t,
+                'repulsive': F_U_Bi,
+                'net': effective_gravity['g_effective']
+            },
+            'equations': {
+                'compressed': f"F_U_g1 = Σ(Ug1+Ug2+Ug3+Ug4i) × (1+Hz×t) × (1-E_rad) = {g_compressed_corrected:.4e} m/s²",
+                'resonance': f"R(t) = M_sf(t) × g_res × (1-E_rad) × cos(ωt) = {R_t:.4e} N",
+                'buoyancy': f"F_U_Bi = k_Ub × f_UA' × f_SCm × R_EB / r² × H_k × f_Ub = {F_U_Bi:.4e} N"
+            }
+        }
+    
+    def compute_26D_polynomial_sum(self, r: float, system_params: dict = None) -> dict:
+        """
+        Compute complete 26-layer polynomial gravity sum.
+        
+        g(r,t) = Σ_{i=1}^{26} [Ug1_i + Ug2_i + Ug3_i + Ug4i_i]
+        
+        Each layer i has quantum state factors Q_i, [UA]_i, [SCm]_i
+        
+        Args:
+            r: Base radius (m)
+            system_params: Optional system-specific parameters
+            
+        Returns:
+            dict with 26-layer breakdown and total
+        """
+        g_total = 0.0
+        layers = []
+        
+        params = system_params or {}
+        
+        for i in range(1, 27):
+            # Scale parameters by quantum state
+            r_i = r / i
+            Q_i = float(i)
+            SCm_i = 1e-5 * (i ** 2)
+            
+            layer_params = {
+                'f_UA': self.f_UA,
+                'f_SCm': self.f_SCm * Q_i / 26,
+                'R_EB': self.R_EB,
+                'r': r_i,
+                'theta': math.pi / 2,
+                'k_1': 1.0 * Q_i,
+                'k_2': 1.0 * Q_i,
+                'k_3': 1.0 * Q_i,
+                'k_4': 1.1 * Q_i,
+                'omega_shell': 1e-13 * i,
+                'nu_THz': 1e12 / i,
+                'rho_vac_SCm': self.rho_vac_SCm * SCm_i,
+                'M_BH': params.get('M_BH', 0),
+                'alpha': 0.001,
+                't': params.get('t', 3.156e13),
+                't_n': 0,
+                'f_feedback': 0.063
+            }
+            
+            layer_result = self.DPM_gravity.compute_total_gravity(layer_params)
+            g_i = layer_result['g_DPM_total']
+            g_total += g_i
+            
+            layers.append({
+                'i': i,
+                'Q_i': Q_i,
+                'SCm_i': SCm_i,
+                'r_i': r_i,
+                'g_i': g_i,
+                'Ug1_i': layer_result['Ug1'],
+                'Ug2_i': layer_result['Ug2'],
+                'Ug3_i': layer_result['Ug3'],
+                'Ug4i_i': layer_result['Ug4i']
+            })
+        
+        return {
+            'g_26D_total': g_total,
+            'n_layers': 26,
+            'layers': layers,
+            'equation': f"g_26D = Σ(i=1..26) [Ug1_i + Ug2_i + Ug3_i + Ug4i_i] = {g_total:.4e} m/s²"
+        }
+
+
+# Predefined Cosmic System Calculators for 30+ systems from Triadic Clone
+COSMIC_SYSTEMS = {
+    'Magnetar_SGR1745': {
+        'name': 'Magnetar SGR 1745-2900',
+        'r': 1e4,           # ~10 km radius
+        'M_BH': 0,
+        'SFR': 0,
+        't': 3.799e10,      # ~1200 years
+        'z': 0.0009,
+        'v_exp': 1e3,
+        'F_DPM': 6.284e29,
+        'V_sys': 4.189e12
+    },
+    'SgrA_Star': {
+        'name': 'Sagittarius A*',
+        'r': 1.2e10,        # Schwarzschild radius
+        'M_BH': 4e6,        # 4 million M_sun
+        'SFR': 0.1,
+        't': 3.786e14,
+        'z': 0.0009,
+        'v_exp': 5e6,
+        'F_DPM': 5.626e48,
+        'V_sys': 3.552e45
+    },
+    'Westerlund2': {
+        'name': 'Westerlund 2 (Hubble 25th Anniversary)',
+        'r': 1.89e16,       # ~2 ly
+        'M_BH': 0,
+        'SFR': 0.5,
+        't': 6.307e13,      # ~2 Myr
+        'z': 0.0067,
+        'v_exp': 1e4,
+        'F_DPM': 5.626e54,
+        'V_sys': 3.552e51
+    },
+    'Pillars_of_Creation': {
+        'name': 'Pillars of Creation (M16)',
+        'r': 4.73e16,       # ~5 ly
+        'M_BH': 0,
+        'SFR': 0.2,
+        't': 4.705e13,      # ~1.5 Myr
+        'z': 0.0022,
+        'v_exp': 5e3,
+        'F_DPM': 2.250e51,
+        'V_sys': 2.842e49
+    },
+    'Crab_Nebula': {
+        'name': 'Crab Nebula (M1)',
+        'r': 5.20e16,       # ~5.5 ly
+        'M_BH': 0,
+        'SFR': 0,
+        't': 3.06e10,       # ~971 years since 1054 AD
+        'z': 0.0022,
+        'v_exp': 1.5e6,
+        'F_DPM': 1e45,
+        'V_sys': 1e48
+    },
+    'NGC_3596': {
+        'name': 'NGC 3596',
+        'r': 2.83e20,       # ~30,000 ly
+        'M_BH': 1e8,
+        'SFR': 0.9,
+        't': 9.468e13,
+        'z': 0.0047,
+        'v_exp': 1e5,
+        'F_DPM': 1e60,
+        'V_sys': 1e62
+    },
+    'Tarantula_Nebula': {
+        'name': 'Tarantula Nebula (30 Doradus)',
+        'r': 6.15e18,       # ~650 ly
+        'M_BH': 0,
+        'SFR': 5.0,
+        't': 6.307e13,
+        'z': 0.0005,
+        'v_exp': 2e4,
+        'F_DPM': 1e55,
+        'V_sys': 1e55
+    },
+    'Eagle_Nebula_M16': {
+        'name': 'Eagle Nebula (M16)',
+        'r': 3.31e17,       # ~35 ly
+        'M_BH': 0,
+        'SFR': 1.0,
+        't': 9.468e13,
+        'z': 0.0022,
+        'v_exp': 1e4,
+        'F_DPM': 1e52,
+        'V_sys': 1e50
+    },
+    'Hydrogen_Atom': {
+        'name': 'Hydrogen Atom (Foundation)',
+        'r': 5.29e-11,      # Bohr radius
+        'M_BH': 0,
+        'SFR': 0,
+        't': 4.355e17,
+        'z': 0,
+        'v_exp': 2.18e6,
+        'F_DPM': 1e20,
+        'V_sys': 6.214e-32
+    }
+}
+
+
+# Global Framework Instance
+TRIADIC_UQFF = TriadicUQFFFramework()
+
+
+# Add to __all__
+__all__.extend([
+    'EDPMCalculator',
+    'DPMGravityProjections',
+    'UBiBuoyancyCalculator',
+    'ResonanceSuperconductive',
+    'HydrogenEvolutionCalculator',
+    'TriadicUQFFFramework',
+    'COSMIC_SYSTEMS',
+    'TRIADIC_UQFF'
+])
+
+
 if __name__ == "__main__":
     # Test the solve() function
     print("Testing CondensedPhysics.py solve() entry point...")
