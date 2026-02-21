@@ -1,7 +1,32 @@
 # Source2.cpp Architecture Report & Integration Analysis
 
 > **Generated:** 2026-02-09
+> **Updated:** 2026-02-21 (Phase 3 gRPC Complete)
 > **Purpose:** Full analysis of source2.cpp Qt6 GUI for Option 1 (pybind11) and Option 3 (FastAPI REST) integration
+
+---
+
+## CRITICAL ARCHITECTURE NOTE
+
+**DO NOT CONFUSE** these two files:
+
+| File | Role | Lines | Description |
+|------|------|-------|-------------|
+| **source2.cpp** | PRINCIPAL GUI | 11,058 | Qt6 user-facing application (THIS DOCUMENT) |
+| **source2(HEAD PROGRAM).cpp** | VR/VM BACKEND | 2,452 | GPU-heavy developer backend (NOT a GUI) |
+
+**USER FLOW:** User starts with source2.cpp → query field → APIFetch.py → calculators → results.
+
+---
+
+## IPC Pipeline Status (Phase 1-3 Complete)
+
+| Phase | Status | Description |
+|-------|--------|-------------|
+| Phase 1 | ✅ COMPLETE | IPC Pipeline Connection (SharedMemory + NamedPipe) |
+| Phase 2 | ✅ COMPLETE | Physics Backend Service Mode (--service flag) |
+| Phase 3 | ✅ COMPLETE | Full gRPC Implementation (port 50051) |
+| Phase 4 | ⏳ PENDING | Astro Graphics Integration |
 
 ---
 

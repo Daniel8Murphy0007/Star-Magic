@@ -1,7 +1,17 @@
 # UQFF Bridging Architecture
 
-> **Version:** 2.0 CANONICAL (matches ARCHITECTURE_FLOW_DIAGRAM.md v4.0)
-> **CRITICAL:** source2.cpp = PRINCIPAL GUI (FIRST), VR/VM = Developer Backend
+> **Version:** 2.1 CANONICAL (matches ARCHITECTURE_FLOW_DIAGRAM.md v4.1)
+> **Updated:** February 21, 2026 (Phase 3 gRPC Complete)
+> **CRITICAL:** source2.cpp = PRINCIPAL GUI (FIRST), source2(HEAD PROGRAM).cpp = VR/VM Backend
+
+## IPC Pipeline Status
+
+| Phase | Status | Description |
+|-------|--------|-------------|
+| Phase 1 | ✅ COMPLETE | IPC Pipeline Connection (SharedMemory + NamedPipe) |
+| Phase 2 | ✅ COMPLETE | Physics Backend Service Mode (--service flag) |
+| Phase 3 | ✅ COMPLETE | Full gRPC Implementation (port 50051) |
+| Phase 4 | ⏳ PENDING | Astro Graphics Integration |
 
 ## Complete Data Flow Diagram
 

@@ -1,7 +1,8 @@
 # Star-Magic UQFF Architecture Flow Diagram
 
-> **Version:** 4.0 (CANONICAL - DO NOT DEVIATE)
+> **Version:** 4.1 (CANONICAL - DO NOT DEVIATE)
 > **Generated:** 2026-02-21
+> **Updated:** 2026-02-21 (Phase 3 gRPC Complete)
 > **Author:** Daniel T. Murphy
 > **CRITICAL:** This is the MASTER architecture document. All other docs must match.
 
@@ -10,11 +11,20 @@
 ## CANONICAL ARCHITECTURE RULES (MEMORIZE THESE)
 
 1. **USER INPUT goes FIRST** → enters through `source2.cpp` (Principal GUI)
-2. **source2.cpp** = Principal GUI application (user-facing, 21 tabs, Qt6)
-3. **source2(HEAD PROGRAM).cpp / vr_runtime.cpp** = VR/VM developer backend (GPU-heavy)
+2. **source2.cpp** = Principal GUI application (user-facing, 21 tabs, Qt6) - USER-FACING
+3. **source2(HEAD PROGRAM).cpp** = VR/VM developer backend (GPU-heavy, headless capable) - BACKEND
 4. **index.js** = LIBRARY INDEX (NOT a calculator) - exports 106 systems for require()
 5. **Recirculation Loop** = bodies_*.csv → IPData → Calculators → OPData → OutputData → RECALL
-6. **Simultaneous Joint Pipeline** = All calculators run in parallel via IPC layer
+6. **Simultaneous Joint Pipeline** = All 5 calculators run in parallel via IPC layer (Phase 1 complete)
+
+## IPC Pipeline Status (Phases 1-3 Complete)
+
+| Phase | Description | Status | Commit |
+|-------|-------------|--------|--------|
+| Phase 1 | IPC Pipeline Connection | ✅ Complete | 87168f3 |
+| Phase 2 | Physics Backend Service Mode | ✅ Complete | 0b1e737 |
+| Phase 3 | Full gRPC Implementation | ✅ Complete | 1e5a722 |
+| Phase 4 | Astro Graphics Integration | 🔄 Next | - |
 
 ---
 
@@ -235,17 +245,17 @@
                           │                                       │
                           ▼                                       ▼
 ┌─────────────────────────────────────────────┐    ┌─────────────────────────────────────────────┐
-│   vr_runtime.cpp (VR/VM GPU Runtime)        │    │   physics_backend.cpp (CPU Heavy Server)    │
-│   (Evolved from source2 HEAD PROGRAM)       │    │   (Evolved from source2.cpp for headless)   │
-│                                             │    │                                             │
+│   source2(HEAD PROGRAM).cpp                 │    │   physics_backend.cpp (CPU Heavy Server)    │
+│   (VR/VM BACKEND - NOT A GUI)               │    │   (Headless physics computation)            │
+│   2,452 lines | VR namespace merged         │    │                                             │
 │   PURPOSE: Heavy GPU simulations in VR      │    │   PURPOSE: CPU-bound physics computation    │
 │   - Virtual space rendering                 │    │   - Self-Expanding (registerDynamicTerm)    │
 │   - Virtual keyboard input                  │    │   - Self-Updating (learning rate opt)       │
 │   - Virtual goggles (OpenXR headset)        │    │   - Self-Simulating (time evolution)        │
 │   - Astro Graphics Program (GPU tasking)    │    │   - Distributed Computing pool              │
-│                                             │    │                                             │
-│   ASSOCIATED HEADERS (vr/ directory):       │    │   Handles IPC messages from vr_runtime:     │
-│   ├── vr_runtime.h                          │    │   - CALCULATE_FIELD → F_U computation      │
+│   - --service flag for headless mode        │    │                                             │
+│   ASSOCIATED HEADERS (vr/ directory):       │    │   Handles IPC messages from VR backend:     │
+│   ├── vr_runtime.h (merged content)         │    │   - CALCULATE_FIELD → F_U computation      │
 │   ├── openxr_session.h                      │    │   - VR_FRAME_UPDATE → stream field data    │
 │   ├── vulkan_compositor.h                   │    │   - REGISTER_TERM → add physics term       │
 │   ├── task_bot.h (voice/gesture bot)        │    │   - SYNC_STATE → synchronize modules       │
@@ -315,5 +325,5 @@ CondensedPhysics_OutputData.py
 
 ---
 
-*CANONICAL DOCUMENT - Version 4.0 - DO NOT DEVIATE*
-*Last updated: 2026-02-21 by Daniel T. Murphy*
+*CANONICAL DOCUMENT - Version 4.1 - DO NOT DEVIATE*
+*Updated: 2026-02-21 (Phase 3 gRPC Complete) by Daniel T. Murphy*
