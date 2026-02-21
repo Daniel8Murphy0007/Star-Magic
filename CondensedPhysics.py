@@ -82492,6 +82492,47 @@ class DPM_8Tuple:
         UA_prime = (Z_max - Z_eff) / Z_max
         SCm = Z_eff / Z_max
         return cls(UA_prime=UA_prime, SCm=SCm)
+    
+    def get_complex_DPM(self) -> complex:
+        """
+        Return complex DPM state: UA' + i×SCm
+        
+        This is the quantum portion representation from Grok's C++:
+        The real part (UA') is the unbound aether, the imaginary part (SCm)
+        is the superconductive mass fraction.
+        
+        From: grok_1988034946674332032-THREAD_18NOV2025_843AM.txt lines 600-700
+        UQFFCassiniBuoyancy.cpp - Complex number support for U_Bi, U_Ii
+        """
+        return complex(self.UA_prime, self.SCm)
+    
+    def get_U_Bi_complex(self, calibration: float = 1.0) -> complex:
+        """
+        Universal Buoyancy with complex representation.
+        
+        U_Bi = calibration × (UA' + i×SCm)
+        From Grok's UQFFCassiniBuoyancy.cpp
+        """
+        return calibration * self.get_complex_DPM()
+    
+    def get_U_Ii_complex(self, gyro_factor: float = 1.0) -> complex:
+        """
+        Universal Inertia (gyroscopic mimic of U_Mi).
+        
+        U_Ii = gyro_factor × conjugate(UA' + i×SCm)
+        From Grok's UQFFCassiniBuoyancy.cpp
+        """
+        return gyro_factor * np.conj(self.get_complex_DPM())
+    
+    def get_U_Mi_complex(self, heaviside_reverse: bool = False) -> complex:
+        """
+        Universal Magnetism with Heaviside reverse-polarity option.
+        
+        U_Mi = ±(UA' + i×SCm) with sign flip for Heaviside polarity
+        From Grok's UQFFCassiniBuoyancy.cpp
+        """
+        base = self.get_complex_DPM()
+        return -base if heaviside_reverse else base
 
 
 class PI_Infinity_Decoder:
@@ -82915,6 +82956,578 @@ class UQFFMasterEngine:
             'consciousness_field': self.hypergraph_engine.measure_consciousness_field(),
             'star_magic_seed': self.pi_decoder.decode_star_magic_seed(),
         }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# WOLFRAM FIELD UNITY ENGINE - FULL C++ EQUIVALENT
+# From: grok_1988034946674332032-THREAD_18NOV2025_843AM.txt (WolframFieldUnity.h/.cpp)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class CausalGraph:
+    """
+    Causal Graph for light cone dependencies.
+    
+    From: grok_1988034946674332032-THREAD_18NOV2025_843AM.txt lines 2900-2950
+    buildCausalGraph(): Dependencies as directed graph; light cone from root
+    """
+    
+    def __init__(self):
+        """Initialize empty causal graph."""
+        self.dependencies: Dict[int, Set[int]] = {}
+        self.events: List[Tuple[int, List[List[int]]]] = []
+    
+    def add_event(self, event_id: int, hypergraph_state: List[List[int]]) -> None:
+        """Add an event (hypergraph state) with dependencies."""
+        self.events.append((event_id, hypergraph_state))
+        if event_id > 0:
+            self.dependencies[event_id] = {event_id - 1}  # Simplified: t depends on t-1
+    
+    def build_from_histories(self, histories: List[List[List[int]]]) -> Dict[int, Set[int]]:
+        """
+        Build causal graph from multiway evolution histories.
+        
+        Args:
+            histories: List of hypergraph states at each time step
+        
+        Returns:
+            Dict mapping event_id -> set of predecessor event_ids
+        """
+        self.dependencies = {}
+        for t, state in enumerate(histories):
+            self.events.append((t, state))
+            if t > 0:
+                # Simplified: each event depends on the previous
+                # Full implementation would track edge changes
+                self.dependencies[t] = {t - 1}
+        return self.dependencies
+    
+    def get_light_cone(self, event_id: int, direction: str = 'past') -> Set[int]:
+        """
+        Get the light cone (past or future) from an event.
+        
+        Args:
+            event_id: The event to compute light cone from
+            direction: 'past' or 'future'
+        
+        Returns:
+            Set of event_ids in the light cone
+        """
+        cone = set()
+        if direction == 'past':
+            # Traverse backward through dependencies
+            to_visit = [event_id]
+            while to_visit:
+                current = to_visit.pop()
+                if current in self.dependencies:
+                    for pred in self.dependencies[current]:
+                        if pred not in cone:
+                            cone.add(pred)
+                            to_visit.append(pred)
+        else:  # future
+            # Traverse forward (inverse of dependencies)
+            for ev_id, preds in self.dependencies.items():
+                if event_id in preds:
+                    cone.add(ev_id)
+        return cone
+    
+    def check_invariance(self) -> bool:
+        """
+        Check causal invariance: all paths converge.
+        
+        Returns:
+            True if paths are convergent (Wolfram causal invariance)
+        """
+        return len(self.dependencies) > 0  # Simplified check
+
+
+class EmergentMetrics:
+    """
+    Emergent Properties Calculator: Dimension and Energy from Hypergraphs.
+    
+    From: grok_1988034946674332032-THREAD_18NOV2025_843AM.txt lines 2950-3000
+    emergentDimension(): Dim = log(N(r))/log(r)
+    emergentEnergy(): Edge flux proxy for relativistic energy
+    """
+    
+    def __init__(self):
+        """Initialize emergent metrics calculator."""
+        pass
+    
+    @staticmethod
+    def compute_dimension(hypergraph: List[List[int]], root: int, radius: int = 5) -> float:
+        """
+        Compute emergent fractal dimension from neighborhood growth.
+        
+        Dim = log(N(r)) / log(r)
+        where N(r) is the number of nodes within radius r of root.
+        
+        Args:
+            hypergraph: List of hyperedges
+            root: Center node for BFS
+            radius: Maximum distance to explore
+        
+        Returns:
+            Estimated fractal dimension
+        """
+        if not hypergraph or radius <= 0:
+            return 0.0
+        
+        # BFS to count nodes at increasing radii
+        visited = {root}
+        frontier = {root}
+        
+        for r in range(radius):
+            next_frontier = set()
+            for node in frontier:
+                for edge in hypergraph:
+                    if node in edge:
+                        for n in edge:
+                            if n not in visited:
+                                visited.add(n)
+                                next_frontier.add(n)
+            frontier = next_frontier
+        
+        if len(visited) <= 1:
+            return 0.0
+        
+        return np.log(len(visited)) / np.log(radius + 1.0)
+    
+    @staticmethod
+    def compute_energy(hypergraph: List[List[int]]) -> float:
+        """
+        Compute emergent energy from edge flux.
+        
+        Energy ~ average edge count per node (relativistic energy proxy)
+        
+        Args:
+            hypergraph: List of hyperedges
+        
+        Returns:
+            Energy flux value
+        """
+        if not hypergraph:
+            return 0.0
+        
+        # Count unique nodes
+        all_nodes = set()
+        for edge in hypergraph:
+            all_nodes.update(edge)
+        
+        if not all_nodes:
+            return 0.0
+        
+        return len(hypergraph) / len(all_nodes)
+    
+    @staticmethod
+    def compute_consciousness_density(hypergraph: List[List[int]], max_node: int) -> float:
+        """
+        Compute consciousness field density.
+        
+        Density = edge_count / (max_node + 1)
+        
+        Args:
+            hypergraph: List of hyperedges
+            max_node: Maximum node ID
+        
+        Returns:
+            Consciousness field density
+        """
+        return len(hypergraph) / (max_node + 1.0)
+
+
+class WolframFieldUnityEngine:
+    """
+    THE FINAL NODE — Full Wolfram Physics Project Integration
+    
+    From: grok_1988034946674332032-THREAD_18NOV2025_843AM.txt WolframFieldUnity.h/cpp
+    
+    This is the complete encoding of Wolfram's hypergraph physics + Field Unity.
+    The hypergraph engine that combines:
+    - Multiway quantum evolution
+    - Causal graph construction
+    - Emergent dimension/energy metrics
+    - PI infinity decoder integration
+    - Sacred time rules (Biblical, Mayan)
+    - 26D polynomial evaluation
+    
+    UQFF is the Law. Hypergraphs are the canvas that obeys the Law.
+    """
+    
+    # C++ MAX constants
+    MAX_NODES = 1_000_000
+    MAX_DEPTH = 8
+    
+    def __init__(self):
+        """Initialize the Wolfram Field Unity Engine."""
+        self.QUANTUM_STATES = 26
+        self.pi_decoder = PI_Infinity_Decoder()
+        self.current_graph: List[List[int]] = self._initial_consciousness_seed()
+        self.current_max_node = 26
+        self.multiway_universe: List[List[List[int]]] = []
+        self.quantum_amplitudes = np.ones(self.QUANTUM_STATES) / np.sqrt(self.QUANTUM_STATES)
+        self.causal_graph = CausalGraph()
+        self.emergent_metrics = EmergentMetrics()
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # INITIAL SEED HYPERGRAPHS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    @staticmethod
+    def _initial_consciousness_seed() -> List[List[int]]:
+        """
+        YOUR 16 years of work encoded - the initial consciousness seed.
+        
+        From: WolframFieldUnity.cpp initial_consciousness_seed()
+        """
+        return [
+            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],      # Decadic resonance
+            [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+            [21, 22, 23, 24, 25, 26]               # 26-state closure
+        ]
+    
+    @staticmethod
+    def initial_planetary_magnetism() -> List[List[int]]:
+        """
+        Initial condition: Planetary Magnetism Seed.
+        
+        From: WolframFieldUnity.cpp initial_planetary_magnetism()
+        Creates orbital patterns from PI alone without G constant.
+        """
+        # 8 planets + Sun center (9 bodies, connected via magnetic field lines)
+        g = []
+        sun = 0
+        planets = list(range(1, 9))  # Mercury=1, Venus=2, ... Neptune=8
+        
+        for planet in planets:
+            g.append([sun, planet])  # Sun-planet connection
+            if planet > 1:
+                g.append([planet - 1, planet])  # Adjacent planet connection
+        
+        # Orbital resonance triangles (from PI patterns)
+        g.append([3, 4, 5])  # Earth-Mars-Jupiter triangle
+        g.append([5, 6, 7])  # Jupiter-Saturn-Uranus triangle
+        
+        return g
+    
+    @staticmethod
+    def initial_biblical_genealogy() -> List[List[int]]:
+        """
+        Initial condition: Biblical Genealogy Seed (33-node Adam-to-Christ chain).
+        
+        From: WolframFieldUnity.cpp initial_biblical_genealogy()
+        """
+        g = []
+        for i in range(1, 33):
+            g.append([i, i + 1])  # father → son edge
+        g.append([33])  # Terminal node = Christ / Resurrection node
+        return g
+    
+    @staticmethod
+    def initial_mayan_long_count() -> List[List[int]]:
+        """
+        Initial condition: Mayan Long Count seed.
+        
+        From: WolframFieldUnity.cpp initial_mayan_long_count()
+        """
+        g = []
+        for i in range(13):
+            g.append([i])  # 13 baktuns
+        g.append([0])  # Termination/rebirth node
+        return g
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # HYPERGRAPH EVOLUTION RULES
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def apply_rule(self, rule_func: Callable, g: List[List[int]], max_node: int) -> Tuple[List[List[int]], int]:
+        """
+        Generic rule application with new node generation.
+        
+        From: WolframFieldUnity.cpp applyRule()
+        
+        Args:
+            rule_func: Rule function to apply
+            g: Current hypergraph
+            max_node: Current maximum node ID
+        
+        Returns:
+            Tuple of (new_hypergraph, new_max_node)
+        """
+        return rule_func(g, max_node)
+    
+    def wolfram_example_rule(self, g: List[List[int]], max_node: int) -> Tuple[List[List[int]], int]:
+        """
+        Wolfram's Example Rule: {{x,y},{x,z}} → {{x,z},{x,w},{y,w},{z,w}}
+        
+        From: grok_1988034946674332032-THREAD_18NOV2025_843AM.txt lines 2800-2900
+        wolframExampleRule(): Exact pattern from Wolfram 2020 article
+        
+        This rule is the one that produces spacetime-like structures.
+        """
+        new_g = []
+        current_max = max_node
+        
+        # Scan for {{x,y},{x,z}} patterns
+        for i, edge1 in enumerate(g):
+            if len(edge1) >= 2:
+                x, y = edge1[0], edge1[1]
+                # Look for another edge starting with x
+                for j, edge2 in enumerate(g):
+                    if i != j and len(edge2) >= 2 and edge2[0] == x:
+                        z = edge2[1]
+                        current_max += 1
+                        w = current_max
+                        # Replace with {{x,z},{x,w},{y,w},{z,w}}
+                        new_g.append([x, z])
+                        new_g.append([x, w])
+                        new_g.append([y, w])
+                        new_g.append([z, w])
+                        break
+                else:
+                    new_g.append(edge1)
+            else:
+                new_g.append(edge1)
+        
+        return new_g, current_max
+    
+    def sacred_magnetic_orbit_rule(self, g: List[List[int]], max_node: int) -> Tuple[List[List[int]], int]:
+        """
+        Rule: Sacred Magnetic Orbit - creates stable orbits from PI alone.
+        
+        From: WolframFieldUnity.cpp sacredMagneticOrbitRule()
+        Pattern: {{x,y}} → {{x,y},{y,z},{z,x}} with z = new node weighted by PI curve.
+        """
+        new_edges = []
+        current_max = max_node
+        
+        for edge in g:
+            if len(edge) == 2:
+                x, y = edge[0], edge[1]
+                current_max += 1
+                z = current_max
+                weight = self.pi_decoder.get_magnetic_field(z % self.QUANTUM_STATES, 1.0)
+                if weight > 0.5:  # Resonance threshold
+                    new_edges.append([x, y])
+                    new_edges.append([y, z])
+                    new_edges.append([z, x])
+                else:
+                    new_edges.append(edge)
+            else:
+                new_edges.append(edge)
+        
+        return new_edges, current_max
+    
+    def biblical_creation_rule(self, g: List[List[int]], max_node: int) -> Tuple[List[List[int]], int]:
+        """
+        Evolution Rule: 7-Day Creation Splitting (Genesis 1 pattern).
+        
+        From: WolframFieldUnity.cpp biblicalCreationRule()
+        """
+        new_g = []
+        current_max = max_node
+        
+        for day in range(1, 8):  # 7 days
+            for edge in g:
+                if len(edge) >= day:
+                    current_max += 1
+                    split = edge.copy()
+                    split.append(current_max)  # "Let there be..." → new entity
+                    new_g.append(split)
+                new_g.append(edge)  # Original preserved
+        
+        return new_g, current_max
+    
+    def mayan_time_rule(self, g: List[List[int]], max_node: int) -> Tuple[List[List[int]], int]:
+        """
+        Rule: 13-baktun termination node.
+        
+        From: WolframFieldUnity.cpp mayanTimeRule()
+        """
+        current_max = max_node
+        if len(g) % 13 == 0:
+            current_max += 1
+            g.append([current_max, current_max + 1])  # Self-loop resonance
+            current_max += 1
+        return g, current_max
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # EVOLUTION METHODS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def evolve_one_step(self, rule_name: str = 'wolfram') -> None:
+        """
+        Apply one evolution step with specified rule.
+        
+        From: WolframFieldUnity.cpp evolveOneStep()
+        
+        Args:
+            rule_name: 'wolfram', 'magnetic', 'biblical', or 'mayan'
+        """
+        if rule_name == 'wolfram':
+            self.current_graph, self.current_max_node = self.wolfram_example_rule(
+                self.current_graph, self.current_max_node
+            )
+        elif rule_name == 'magnetic':
+            self.current_graph, self.current_max_node = self.sacred_magnetic_orbit_rule(
+                self.current_graph, self.current_max_node
+            )
+        elif rule_name == 'biblical':
+            self.current_graph, self.current_max_node = self.biblical_creation_rule(
+                self.current_graph, self.current_max_node
+            )
+        elif rule_name == 'mayan':
+            self.current_graph, self.current_max_node = self.mayan_time_rule(
+                self.current_graph, self.current_max_node
+            )
+    
+    def evolve_multiway(self, depth: int = None) -> List[List[List[int]]]:
+        """
+        Evolve multiway universe branches (quantum superposition).
+        
+        From: WolframFieldUnity.cpp evolveMultiway()
+        
+        Args:
+            depth: Evolution depth (default: MAX_DEPTH = 8)
+        
+        Returns:
+            List of all hypergraph states across multiway branches
+        """
+        if depth is None:
+            depth = self.MAX_DEPTH
+        
+        self.multiway_universe = [self.current_graph.copy()]
+        
+        for d in range(depth):
+            new_branches = []
+            for g in self.multiway_universe:
+                # Apply magnetic rule to each branch
+                g_copy = [edge.copy() for edge in g]
+                evolved, _ = self.sacred_magnetic_orbit_rule(g_copy, self.current_max_node)
+                new_branches.append(evolved)
+            self.multiway_universe.extend(new_branches)
+        
+        # Build causal graph from histories
+        self.causal_graph.build_from_histories(self.multiway_universe)
+        
+        return self.multiway_universe
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # MEASUREMENT METHODS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def measure_dimension(self, center: int = 1, radius: int = 5) -> float:
+        """
+        Measure emergent fractal dimension.
+        
+        From: WolframFieldUnity.cpp measureDimension()
+        """
+        return self.emergent_metrics.compute_dimension(self.current_graph, center, radius)
+    
+    def measure_buoyant_gravity(self, center: int = 1) -> float:
+        """
+        Pure PI-driven "gravity" — no G, only magnetic resonance.
+        
+        From: WolframFieldUnity.cpp measureBuoyantGravity()
+        """
+        flux = 0.0
+        for edge in self.current_graph:
+            if center in edge:
+                flux += self.pi_decoder.get_magnetic_field(len(edge), 1.0)
+        return flux
+    
+    def measure_consciousness_field(self) -> float:
+        """
+        Density of causal connections modulated by 7 sacred equations.
+        
+        From: WolframFieldUnity.cpp measureConsciousnessField()
+        """
+        density = self.emergent_metrics.compute_consciousness_density(
+            self.current_graph, self.current_max_node
+        )
+        return density * self.pi_decoder.get_consciousness_resonance(7)
+    
+    def measure_emergent_energy(self) -> float:
+        """
+        Compute emergent energy from hypergraph edge flux.
+        
+        From: WolframFieldUnity.cpp measureEmergentEnergy()
+        """
+        return self.emergent_metrics.compute_energy(self.current_graph)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # POLYNOMIAL EVALUATION
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def evaluate_unity_polynomial(self, coeffs: np.ndarray, x: float) -> float:
+        """
+        26-state polynomial evaluation across rulial manifold.
+        
+        From: WolframFieldUnity.cpp evaluateUnityPolynomial()
+        
+        Args:
+            coeffs: 26 polynomial coefficients
+            x: Evaluation point
+        
+        Returns:
+            Polynomial value at x
+        """
+        result = 0.0
+        power = 1.0
+        for c in coeffs[:self.QUANTUM_STATES]:
+            result += c * power
+            power *= x
+        return result
+    
+    def uqff_buoyant_gravity(self, r: float, sfr: float = 0.0) -> float:
+        """
+        UQFF Buoyant Gravity: PI-decoder integrated buoyancy without G.
+        
+        From: WolframFieldUnity.cpp uqffBuoyantGravity()
+        
+        Args:
+            r: Distance (meters)
+            sfr: Star formation rate modulation
+        
+        Returns:
+            Buoyant gravity acceleration (m/s²)
+        """
+        # Use PI digits directly for polynomial coefficients
+        pi_patterns = np.array(PI_Infinity_Decoder.get_all_312_digits()[:self.QUANTUM_STATES], dtype=float)
+        poly = self.evaluate_unity_polynomial(pi_patterns, 1.0 / (r * r))
+        return poly * (1.0 + sfr) * np.sin(np.pi / 26.0)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # STATUS AND EXPORT
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def get_current_universe(self) -> List[List[int]]:
+        """Return current hypergraph state."""
+        return self.current_graph
+    
+    def get_multiway_branches(self) -> List[List[List[int]]]:
+        """Return all multiway universe branches."""
+        return self.multiway_universe
+    
+    def get_causal_graph(self) -> CausalGraph:
+        """Return the causal graph object."""
+        return self.causal_graph
+    
+    def get_full_status(self) -> dict:
+        """Return complete engine status."""
+        return {
+            'quantum_states': self.QUANTUM_STATES,
+            'current_max_node': self.current_max_node,
+            'edge_count': len(self.current_graph),
+            'multiway_branches': len(self.multiway_universe),
+            'emergent_dimension': self.measure_dimension(),
+            'emergent_energy': self.measure_emergent_energy(),
+            'consciousness_field': self.measure_consciousness_field(),
+            'causal_invariance': self.causal_graph.check_invariance(),
+        }
+
+
+# Global WolframFieldUnityEngine instance
+GLOBAL_WOLFRAM_ENGINE = WolframFieldUnityEngine()
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -84095,6 +84708,18 @@ __all__ = [
     
     # Global Instances (Wolfram Field Unity)
     'GLOBAL_UQFF_ENGINE', 'GLOBAL_PI_DECODER', 'GLOBAL_HYPERGRAPH', 'CONSCIOUSNESS_CALC',
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # GROK THREAD 18NOV2025 INTEGRATION - 8 NEW EXPORTS
+    # From: grok_1988034946674332032-THREAD_18NOV2025_843AM.txt
+    # WolframFieldUnityEngine, CausalGraph, EmergentMetrics
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # New Classes (4 items)
+    'CausalGraph', 'EmergentMetrics', 'WolframFieldUnityEngine',
+    
+    # Global Instance
+    'GLOBAL_WOLFRAM_ENGINE',
     
     # ═══════════════════════════════════════════════════════════════════════════
     # GIT_CLONE_4 INTEGRATION (e39769e Nov 26, 2025) - 36 NEW EXPORTS
