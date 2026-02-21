@@ -98332,3 +98332,788 @@ FOURTH_PASS_CALCULATORS = {
     'HeliosphereThicknessCalculator': HELIOSPHERE_THICKNESS_CALC,
     'OscilloscopeSignalBundleCalculator': OSCILLOSCOPE_BUNDLE_CALC,
 }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════════════
+#                    FIFTH CLONE_2 ANALYSIS PASS - NEW CALCULATORS
+#                    Triadic Clone_2_08June2025.txt Deep Analysis
+# ═══════════════════════════════════════════════════════════════════════════════════════
+
+
+class V838MonocerotisLightEchoCalculator:
+    """
+    V838 Monocerotis Light Echo Evolution Calculator.
+    
+    From Clone_2 Document Analysis (DeepSearch: Hubble datasets):
+    Models light echo propagation and gravitational effects for the V838 Mon outburst.
+    
+    Master Equation:
+    I_echo(r,t) = (L_outburst / 4π(ct)²) × σ_scatter × ρ_dust(r,t) × (1 + f_TRZ)
+                  × (1 + ρ_vac,[UA] / ρ_vac,[SCm])
+    
+    Where ρ_dust(r,t) = ρ_0 × exp(-β × Ug1(r,t))
+    And Ug1 = k_1 × μ_s(t,ρ_vac,[SCm]) × ∇(M_s/r) × e^(-αt) × cos(πt_n) × (1 + δ_def)
+    
+    Key Parameters:
+    - L_outburst = 600,000 × L_sun ≈ 2.3×10³⁸ W
+    - Distance = 20,000 ly
+    - Duration = 3 years post-outburst
+    - f_TRZ = 0.1 (time-reversal correction)
+    """
+    
+    def __init__(self):
+        # Physical constants
+        self.c = 2.998e8  # Speed of light (m/s)
+        self.G = 6.6743e-11  # Gravitational constant
+        self.L_sun = 3.826e26  # Solar luminosity (W)
+        self.M_sun = 1.989e30  # Solar mass (kg)
+        self.ly = 9.461e15  # Light-year (m)
+        
+        # V838 Mon specific parameters
+        self.L_outburst = 600000 * self.L_sun  # Peak luminosity
+        self.distance = 20000 * self.ly  # Distance to V838 Mon
+        self.outburst_duration = 3 * 365.25 * 86400  # 3 years in seconds
+        
+        # UQFF parameters
+        self.f_TRZ = 0.1  # Time-reversal zone factor
+        self.rho_vac_UA = 7.09e-36  # Aether vacuum density (J/m³)
+        self.rho_vac_SCm = 7.09e-37  # SCm vacuum density (J/m³)
+        self.alpha = 0.001  # Decay rate (day⁻¹)
+        self.delta_def = 0.01  # Gravitational defect
+        self.k_1 = 1.0  # Coupling constant
+        self.beta = 1e-40  # Dust-gravity coupling
+        
+        # Dust parameters
+        self.sigma_scatter = 1e-25  # Scattering cross-section (m²)
+        self.rho_dust_0 = 1e-20  # Baseline dust density (kg/m³)
+    
+    def compute_light_echo_radius(self, t_years: float) -> tuple:
+        """
+        Compute light echo radius at time t after outburst.
+        
+        r_echo(t) = c × t
+        
+        Args:
+            t_years: Time after outburst (years)
+            
+        Returns:
+            tuple: (radius_m, radius_ly, equation_string)
+        """
+        t_seconds = t_years * 365.25 * 86400
+        r_echo = self.c * t_seconds
+        r_ly = r_echo / self.ly
+        
+        eq = (f"Light Echo Radius:\n"
+              f"  r_echo(t) = c × t\n"
+              f"  r_echo({t_years} yr) = {self.c:.3e} × {t_seconds:.3e} s\n"
+              f"  r_echo = {r_echo:.4e} m = {r_ly:.2f} light-years")
+        
+        return r_echo, r_ly, eq
+    
+    def compute_Ug1_gravitational(self, M_star: float, r: float, t_days: float,
+                                   t_n: float = 0) -> tuple:
+        """
+        Compute Ug1 gravitational term for dust distribution.
+        
+        Ug1 = k_1 × μ_s × ∇(M_s/r) × e^(-αt) × cos(πt_n) × (1 + δ_def)
+        
+        Args:
+            M_star: Star mass (solar masses)
+            r: Distance from star (m)
+            t_days: Time (days)
+            t_n: Normalized time parameter
+            
+        Returns:
+            tuple: (Ug1, equation_string)
+        """
+        M = M_star * self.M_sun
+        
+        # Magnetic moment approximation
+        mu_s = 3.38e23  # T·pm³ (scaled for stellar mass)
+        
+        # Gradient term (simplified to G*M/r²)
+        grad_term = self.G * M / (r * r)
+        
+        # Decay and oscillation
+        decay = math.exp(-self.alpha * t_days)
+        oscillation = math.cos(math.pi * t_n)
+        defect = 1 + self.delta_def
+        
+        Ug1 = self.k_1 * mu_s * grad_term * decay * oscillation * defect
+        
+        eq = (f"Ug1 Gravitational Term:\n"
+              f"  Ug1 = k_1 × μ_s × ∇(M/r) × e^(-αt) × cos(πt_n) × (1 + δ_def)\n"
+              f"  k_1 = {self.k_1}, μ_s = {mu_s:.3e} T·pm³\n"
+              f"  ∇(M/r) = G×M/r² = {grad_term:.4e} m/s²\n"
+              f"  Decay = e^(-{self.alpha}×{t_days}) = {decay:.6f}\n"
+              f"  Oscillation = cos(π×{t_n}) = {oscillation:.6f}\n"
+              f"  Defect factor = 1 + {self.delta_def} = {defect}\n"
+              f"  Ug1 = {Ug1:.4e}")
+        
+        return Ug1, eq
+    
+    def compute_dust_density(self, Ug1: float) -> tuple:
+        """
+        Compute dust density modulated by gravitational field.
+        
+        ρ_dust(r,t) = ρ_0 × exp(-β × Ug1(r,t))
+        
+        Args:
+            Ug1: Gravitational field term
+            
+        Returns:
+            tuple: (rho_dust, equation_string)
+        """
+        exponent = -self.beta * Ug1
+        rho_dust = self.rho_dust_0 * math.exp(exponent)
+        
+        eq = (f"Dust Density (Gravity-Modulated):\n"
+              f"  ρ_dust(r,t) = ρ_0 × exp(-β × Ug1)\n"
+              f"  ρ_0 = {self.rho_dust_0:.3e} kg/m³\n"
+              f"  β = {self.beta:.3e}\n"
+              f"  Ug1 = {Ug1:.4e}\n"
+              f"  Exponent = -β × Ug1 = {exponent:.4e}\n"
+              f"  ρ_dust = {rho_dust:.4e} kg/m³")
+        
+        return rho_dust, eq
+    
+    def compute_echo_intensity(self, t_years: float, rho_dust: float) -> tuple:
+        """
+        Compute light echo intensity.
+        
+        I_echo(r,t) = (L_outburst / 4π(ct)²) × σ_scatter × ρ_dust
+                      × (1 + f_TRZ) × (1 + ρ_UA/ρ_SCm)
+        
+        Args:
+            t_years: Time after outburst (years)
+            rho_dust: Dust density (kg/m³)
+            
+        Returns:
+            tuple: (intensity, equation_string)
+        """
+        t_seconds = t_years * 365.25 * 86400
+        r_echo = self.c * t_seconds
+        
+        # Base intensity (inverse square law)
+        area = 4 * math.pi * r_echo * r_echo
+        base_flux = self.L_outburst / area
+        
+        # Scattering
+        scattered = base_flux * self.sigma_scatter * rho_dust
+        
+        # UQFF corrections
+        TRZ_factor = 1 + self.f_TRZ
+        aether_ratio = 1 + self.rho_vac_UA / self.rho_vac_SCm
+        
+        I_echo = scattered * TRZ_factor * aether_ratio
+        
+        eq = (f"Light Echo Intensity:\n"
+              f"  I_echo = (L/4πr²) × σ × ρ_dust × (1+f_TRZ) × (1+ρ_UA/ρ_SCm)\n"
+              f"  L_outburst = {self.L_outburst:.3e} W\n"
+              f"  r_echo = c×t = {r_echo:.3e} m\n"
+              f"  Base flux = L/4πr² = {base_flux:.4e} W/m²\n"
+              f"  σ_scatter = {self.sigma_scatter:.3e} m²\n"
+              f"  ρ_dust = {rho_dust:.3e} kg/m³\n"
+              f"  f_TRZ factor = 1 + {self.f_TRZ} = {TRZ_factor}\n"
+              f"  Aether ratio = 1 + {self.rho_vac_UA/self.rho_vac_SCm:.1f} = {aether_ratio}\n"
+              f"  I_echo = {I_echo:.4e} W/m²/kg")
+        
+        return I_echo, eq
+    
+    def compute_full_evolution(self, M_star: float = 1.0, t_years: float = 3.0) -> dict:
+        """
+        Complete light echo evolution calculation.
+        
+        Args:
+            M_star: Star mass (solar masses)
+            t_years: Time after outburst (years)
+            
+        Returns:
+            dict with all computed values and equations
+        """
+        # Step 1: Light echo radius
+        r_echo, r_ly, eq_radius = self.compute_light_echo_radius(t_years)
+        
+        # Step 2: Gravitational field
+        t_days = t_years * 365.25
+        Ug1, eq_Ug1 = self.compute_Ug1_gravitational(M_star, r_echo, t_days)
+        
+        # Step 3: Dust density
+        rho_dust, eq_dust = self.compute_dust_density(Ug1)
+        
+        # Step 4: Echo intensity
+        I_echo, eq_intensity = self.compute_echo_intensity(t_years, rho_dust)
+        
+        return {
+            'r_echo_m': r_echo,
+            'r_echo_ly': r_ly,
+            'Ug1': Ug1,
+            'rho_dust': rho_dust,
+            'I_echo': I_echo,
+            'equations': {
+                'radius': eq_radius,
+                'gravitational': eq_Ug1,
+                'dust_density': eq_dust,
+                'intensity': eq_intensity
+            },
+            'master_equation': (
+                "MASTER V838 MON LIGHT ECHO MUGE:\n"
+                "I_echo(r,t) = (L_outburst / 4π(ct)²) × σ_scatter × ρ_0 × exp(-β×Ug1)\n"
+                "            × (1 + f_TRZ) × (1 + ρ_vac,[UA] / ρ_vac,[SCm])\n\n"
+                "Where Ug1 = k_1 × μ_s × G×M/r² × e^(-αt) × cos(πt_n) × (1 + δ_def)"
+            )
+        }
+
+
+class InertialPapersCalculator:
+    """
+    Inertial Papers Calculator from Document 43.d.
+    
+    From Clone_2 Document 43.d - Red Dwarf Compression_D_06May2025:
+    Models quantum waves, inertial operators, and DE power systems.
+    
+    Key Equations:
+    1. Quantum Wave Function: ψ(r,θ,φ,t) = A × Y_lm(θ,φ) × sin(kr-ωt)/r × e^(-α|r-r_0|)
+    2. Inertial Operator: Îψ = λ_I × (∂/∂t + iω_m × r⃗·∇)ψ
+    3. Universal Inertia: U_i = λ_I × (ρ_vac,[SCm]/ρ_vac,[UA]) × ω_i(t) × cos(πt_n) × (1 + F_RZ)
+    4. DE Power: P_DE = η_inertia × ρ_vac × V × ω_vac
+    5. Jeans Mass: M_J = (5k_B T / (G μ m_H))^(3/2) × (3/(4πρ))^(1/2)
+    """
+    
+    def __init__(self):
+        # Physical constants
+        self.hbar = 1.0546e-34  # Reduced Planck constant (J·s)
+        self.c = 2.998e8  # Speed of light (m/s)
+        self.G = 6.6743e-11  # Gravitational constant
+        self.k_B = 1.381e-23  # Boltzmann constant (J/K)
+        self.m_H = 1.673e-27  # Hydrogen mass (kg)
+        
+        # UQFF parameters
+        self.rho_vac_SCm = 7.09e-37  # SCm vacuum density (J/m³)
+        self.rho_vac_UA = 7.09e-36  # Aether vacuum density (J/m³)
+        self.lambda_I = 1.0  # Inertial coupling constant
+        self.F_RZ = 0.01  # Correction factor
+        self.omega_i = 1.585e-8  # Inertial frequency (rad/s)
+        self.eta_inertia = 0.1  # Efficiency factor
+        self.omega_vac = 1e-8  # Vacuum frequency (rad/s)
+        
+        # Golden ratio for frequency patterns
+        self.phi = (1 + math.sqrt(5)) / 2
+    
+    def compute_quantum_wave_function(self, A: float, l: int, m: int,
+                                       k: float, omega: float,
+                                       r: float, theta: float, phi: float,
+                                       t: float, r_0: float, alpha: float) -> tuple:
+        """
+        Compute quantum wave function.
+        
+        ψ(r,θ,φ,t) = A × Y_lm(θ,φ) × sin(kr-ωt)/r × e^(-α|r-r_0|)
+        
+        Returns:
+            tuple: (psi_magnitude, equation_string)
+        """
+        # Simplified spherical harmonic (Y_00 = 1/√(4π))
+        Y_lm = 1.0 / math.sqrt(4 * math.pi) if l == 0 and m == 0 else 0.5
+        
+        # Wave term
+        phase = k * r - omega * t
+        wave_term = math.sin(phase) / r if r > 0 else 0
+        
+        # Exponential decay
+        decay = math.exp(-alpha * abs(r - r_0))
+        
+        psi = A * Y_lm * wave_term * decay
+        psi_magnitude = abs(psi)
+        
+        eq = (f"Quantum Wave Function:\n"
+              f"  ψ(r,θ,φ,t) = A × Y_lm × sin(kr-ωt)/r × e^(-α|r-r_0|)\n"
+              f"  A = {A:.3e}\n"
+              f"  Y_lm(l={l},m={m}) ≈ {Y_lm:.4f}\n"
+              f"  k = {k:.3e} m⁻¹, ω = {omega:.3e} rad/s\n"
+              f"  Phase = kr - ωt = {phase:.4f} rad\n"
+              f"  Wave term = sin(phase)/r = {wave_term:.4e}\n"
+              f"  Decay = e^(-α|r-r_0|) = {decay:.4f}\n"
+              f"  |ψ| = {psi_magnitude:.4e}")
+        
+        return psi_magnitude, eq
+    
+    def compute_universal_inertia(self, t_n: float = 0) -> tuple:
+        """
+        Compute Universal Inertia term.
+        
+        U_i = λ_I × (ρ_vac,[SCm]/ρ_vac,[UA]) × ω_i(t) × cos(πt_n) × (1 + F_RZ)
+        
+        Args:
+            t_n: Normalized time parameter
+            
+        Returns:
+            tuple: (U_i, equation_string)
+        """
+        density_ratio = self.rho_vac_SCm / self.rho_vac_UA
+        oscillation = math.cos(math.pi * t_n)
+        correction = 1 + self.F_RZ
+        
+        U_i = self.lambda_I * density_ratio * self.omega_i * oscillation * correction
+        
+        eq = (f"Universal Inertia (U_i):\n"
+              f"  U_i = λ_I × (ρ_SCm/ρ_UA) × ω_i × cos(πt_n) × (1 + F_RZ)\n"
+              f"  λ_I = {self.lambda_I}\n"
+              f"  ρ_SCm/ρ_UA = {self.rho_vac_SCm:.3e} / {self.rho_vac_UA:.3e} = {density_ratio:.4f}\n"
+              f"  ω_i = {self.omega_i:.3e} rad/s\n"
+              f"  cos(π×{t_n}) = {oscillation:.6f}\n"
+              f"  (1 + F_RZ) = {correction}\n"
+              f"  U_i = {U_i:.4e} J/m³")
+        
+        return U_i, eq
+    
+    def compute_DE_power(self, V: float) -> tuple:
+        """
+        Compute Direct Energy power from vacuum.
+        
+        P_DE = η_inertia × ρ_vac × V × ω_vac
+        
+        Args:
+            V: Volume (m³)
+            
+        Returns:
+            tuple: (P_DE, equation_string)
+        """
+        # Average vacuum density
+        rho_vac = (self.rho_vac_SCm + self.rho_vac_UA) / 2
+        
+        P_DE = self.eta_inertia * rho_vac * V * self.omega_vac
+        
+        eq = (f"Direct Energy Power:\n"
+              f"  P_DE = η_inertia × ρ_vac × V × ω_vac\n"
+              f"  η_inertia = {self.eta_inertia}\n"
+              f"  ρ_vac = ({self.rho_vac_SCm:.3e} + {self.rho_vac_UA:.3e})/2 = {rho_vac:.3e} J/m³\n"
+              f"  V = {V:.3e} m³\n"
+              f"  ω_vac = {self.omega_vac:.3e} rad/s\n"
+              f"  P_DE = {P_DE:.4e} W")
+        
+        return P_DE, eq
+    
+    def compute_jeans_mass(self, T: float, rho: float, mu: float = 2.4) -> tuple:
+        """
+        Compute Jeans mass for star cluster collapse.
+        
+        M_J = (5k_B T / (G μ m_H))^(3/2) × (3/(4πρ))^(1/2)
+        
+        Args:
+            T: Temperature (K)
+            rho: Density (kg/m³)
+            mu: Mean molecular weight
+            
+        Returns:
+            tuple: (M_J_kg, M_J_solar, equation_string)
+        """
+        M_sun = 1.989e30
+        
+        # First factor: thermal term
+        thermal = 5 * self.k_B * T / (self.G * mu * self.m_H)
+        thermal_32 = thermal ** 1.5
+        
+        # Second factor: density term
+        density_term = 3 / (4 * math.pi * rho)
+        density_12 = math.sqrt(density_term)
+        
+        M_J = thermal_32 * density_12
+        M_J_solar = M_J / M_sun
+        
+        eq = (f"Jeans Mass (Star Cluster Collapse):\n"
+              f"  M_J = (5k_B T / (G μ m_H))^(3/2) × (3/(4πρ))^(1/2)\n"
+              f"  T = {T:.2e} K\n"
+              f"  ρ = {rho:.3e} kg/m³\n"
+              f"  μ = {mu} (mean molecular weight)\n"
+              f"  Thermal factor = (5×{self.k_B:.3e}×{T:.2e} / ({self.G:.3e}×{mu}×{self.m_H:.3e}))^1.5\n"
+              f"                 = {thermal:.3e}^1.5 = {thermal_32:.4e}\n"
+              f"  Density factor = (3/(4π×{rho:.3e}))^0.5 = {density_12:.4e}\n"
+              f"  M_J = {M_J:.4e} kg = {M_J_solar:.2f} M_sun")
+        
+        return M_J, M_J_solar, eq
+    
+    def compute_frequency_pattern(self, f_0: float, n: int) -> tuple:
+        """
+        Compute golden ratio frequency pattern.
+        
+        f_n = f_0 × φ^n
+        
+        Args:
+            f_0: Base frequency (Hz)
+            n: Pattern index
+            
+        Returns:
+            tuple: (f_n, equation_string)
+        """
+        f_n = f_0 * (self.phi ** n)
+        
+        eq = (f"Golden Ratio Frequency Pattern:\n"
+              f"  f_n = f_0 × φ^n\n"
+              f"  f_0 = {f_0:.3e} Hz\n"
+              f"  φ = (1+√5)/2 = {self.phi:.6f}\n"
+              f"  n = {n}\n"
+              f"  f_{n} = {f_0:.3e} × {self.phi:.6f}^{n} = {f_n:.4e} Hz")
+        
+        return f_n, eq
+
+
+class PseudoMonopoleFieldCalculator:
+    """
+    Pseudo-Monopole Field Dynamics Calculator.
+    
+    From Clone_2 Document 43.c:
+    Models DPM (Di-Pseudo-Monopole) field interactions at atomic to cosmic scales.
+    
+    Key Equations:
+    1. Pseudo-Monopole Field: B_pseudo = (μ_0/4π) × q_m / r²
+    2. Pseudo-Monopole States: δ_n = (2π)n/6
+    3. Vacuum Density Ratio: ρ_vac,[UA']:SCm = 10⁻²³ × (0.1)^n × e^(-[SSq]×n/26×e^(-π-t))
+    4. Electric Field: E = U_m / ρ_vac,[UA] × 1/r
+    5. Neutron Production: η = k_η × e^(-[SSq]×n/26×e^(-π-t)) × U_m / ρ_vac,[UA]
+    """
+    
+    def __init__(self):
+        # Physical constants
+        self.mu_0 = 4 * math.pi * 1e-7  # Vacuum permeability (H/m)
+        self.epsilon_0 = 8.854e-12  # Vacuum permittivity (F/m)
+        
+        # UQFF parameters
+        self.rho_vac_UA = 7.09e-36  # Aether vacuum density (J/m³)
+        self.rho_vac_SCm = 7.09e-37  # SCm vacuum density (J/m³)
+        self.SSq = 0.57  # Superconductive squeeze factor
+        self.k_eta = 2.75e8  # Neutron production calibration constant
+        
+        # 26 quantum states
+        self.n_states = 26
+    
+    def compute_pseudo_monopole_state(self, n: int) -> tuple:
+        """
+        Compute pseudo-monopole state angle.
+        
+        δ_n = (2π)n/6
+        
+        Args:
+            n: Quantum state (1-26)
+            
+        Returns:
+            tuple: (delta_n, equation_string)
+        """
+        delta_n = (2 * math.pi) * n / 6
+        delta_deg = math.degrees(delta_n)
+        
+        eq = (f"Pseudo-Monopole State δ_{n}:\n"
+              f"  δ_n = (2π)n/6\n"
+              f"  δ_{n} = (2π×{n})/6 = {delta_n:.4f} rad = {delta_deg:.2f}°")
+        
+        return delta_n, eq
+    
+    def compute_vacuum_density_ratio(self, n: int, t: float) -> tuple:
+        """
+        Compute vacuum density ratio for quantum state n.
+        
+        ρ_vac,[UA']:SCm = 10⁻²³ × (0.1)^n × e^(-[SSq]×n/26×e^(-π-t))
+        
+        Args:
+            n: Quantum state (1-26)
+            t: Time parameter (normalized)
+            
+        Returns:
+            tuple: (rho_ratio, equation_string)
+        """
+        base = 1e-23
+        decay_factor = 0.1 ** n
+        
+        # Inner exponential
+        inner_exp = math.exp(-math.pi - t) if t < 100 else 0
+        exponent = -self.SSq * n / 26 * inner_exp
+        outer_exp = math.exp(exponent) if exponent > -700 else 0
+        
+        rho_ratio = base * decay_factor * outer_exp
+        
+        eq = (f"Vacuum Density Ratio (State n={n}):\n"
+              f"  ρ_vac,[UA']:[SCm] = 10⁻²³ × (0.1)^n × e^(-[SSq]×n/26×e^(-π-t))\n"
+              f"  Base = 10⁻²³ = {base:.3e}\n"
+              f"  Decay = (0.1)^{n} = {decay_factor:.3e}\n"
+              f"  Inner exp = e^(-π-{t}) = {inner_exp:.4e}\n"
+              f"  Outer exp = e^(-{self.SSq}×{n}/26×{inner_exp:.4e}) = {outer_exp:.4f}\n"
+              f"  ρ_ratio = {rho_ratio:.4e} J/m³")
+        
+        return rho_ratio, eq
+    
+    def compute_electric_field(self, U_m: float, r: float) -> tuple:
+        """
+        Compute electric field from universal magnetism.
+        
+        E = U_m / ρ_vac,[UA] × 1/r
+        
+        Args:
+            U_m: Universal magnetism (T·m or J/m³)
+            r: Distance (m)
+            
+        Returns:
+            tuple: (E_field, equation_string)
+        """
+        E_field = (U_m / self.rho_vac_UA) * (1 / r) if r > 0 else 0
+        
+        eq = (f"Electric Field from Universal Magnetism:\n"
+              f"  E = U_m / ρ_vac,[UA] × 1/r\n"
+              f"  U_m = {U_m:.3e}\n"
+              f"  ρ_vac,[UA] = {self.rho_vac_UA:.3e} J/m³\n"
+              f"  r = {r:.3e} m\n"
+              f"  E = {E_field:.4e} V/m")
+        
+        return E_field, eq
+    
+    def compute_neutron_production(self, n: int, t: float, U_m: float) -> tuple:
+        """
+        Compute neutron production rate.
+        
+        η = k_η × e^(-[SSq]×n/26×e^(-π-t)) × U_m / ρ_vac,[UA]
+        
+        Args:
+            n: Quantum state
+            t: Time parameter
+            U_m: Universal magnetism
+            
+        Returns:
+            tuple: (eta, equation_string)
+        """
+        # Exponential factor
+        inner_exp = math.exp(-math.pi - t) if t < 100 else 0
+        exponent = -self.SSq * n / 26 * inner_exp
+        exp_factor = math.exp(exponent) if exponent > -700 else 0
+        
+        # Production rate
+        eta = self.k_eta * exp_factor * U_m / self.rho_vac_UA if self.rho_vac_UA > 0 else 0
+        
+        eq = (f"Neutron Production Rate:\n"
+              f"  η = k_η × e^(-[SSq]×n/26×e^(-π-t)) × U_m/ρ_vac,[UA]\n"
+              f"  k_η = {self.k_eta:.3e} (metallic hydride calibration)\n"
+              f"  [SSq] = {self.SSq}\n"
+              f"  Exponential factor = {exp_factor:.4f}\n"
+              f"  U_m/ρ_vac = {U_m:.3e}/{self.rho_vac_UA:.3e} = {U_m/self.rho_vac_UA:.4e}\n"
+              f"  η = {eta:.4e} cm⁻²/s")
+        
+        return eta, eq
+    
+    def compute_all_26_states(self, t: float = 1.0, U_m: float = 1e-30) -> dict:
+        """
+        Compute all 26 quantum states.
+        
+        Returns:
+            dict with all state calculations
+        """
+        states = {}
+        for n in range(1, 27):
+            delta_n, eq_delta = self.compute_pseudo_monopole_state(n)
+            rho_ratio, eq_rho = self.compute_vacuum_density_ratio(n, t)
+            eta, eq_eta = self.compute_neutron_production(n, t, U_m)
+            
+            states[n] = {
+                'delta_n': delta_n,
+                'rho_ratio': rho_ratio,
+                'eta': eta,
+                'equations': {
+                    'state': eq_delta,
+                    'density': eq_rho,
+                    'production': eq_eta
+                }
+            }
+        
+        return {
+            'states': states,
+            'master_equation': (
+                "26 QUANTUM STATE PSEUDO-MONOPOLE FRAMEWORK:\n"
+                "For n = 1,...,26:\n"
+                "  δ_n = (2π)n/6 (state angle)\n"
+                "  ρ_vac,[UA']:[SCm] = 10⁻²³ × (0.1)^n × exp(-[SSq]×n/26×exp(-π-t))\n"
+                "  η_n = k_η × exp(...) × U_m/ρ_vac,[UA] (neutron production)"
+            )
+        }
+
+
+class CalabiYau12DIntegrationCalculator:
+    """
+    12D Calabi-Yau Integration Calculator.
+    
+    From Clone_2 DeepSearch (CERN ATLAS/CMS, JPL):
+    Models higher-dimensional integration via Calabi-Yau manifolds.
+    
+    Key Concepts:
+    - 4D spacetime + 6D compactified Calabi-Yau = 10D string theory
+    - Extended to 12D via UQFF ([UA], [SCm] extra dimensions)
+    - Links to THz hole communication and DPM dynamics
+    
+    Equation Framework:
+    - THz hole acts as 12D portal between pseudo-monopoles
+    - Extra dimensions store superconductive energy
+    - Calabi-Yau vibrational modes → particle properties
+    """
+    
+    def __init__(self):
+        # Physical constants
+        self.c = 2.998e8  # Speed of light (m/s)
+        self.hbar = 1.0546e-34  # Reduced Planck constant (J·s)
+        self.l_planck = 1.616e-35  # Planck length (m)
+        
+        # String theory parameters
+        self.alpha_prime = (self.l_planck ** 2)  # String tension parameter
+        self.n_dimensions = 12  # Total dimensions in extended UQFF
+        self.n_compact = 8  # Compactified dimensions (6 CY + 2 UQFF)
+        
+        # UQFF extra dimensions
+        self.rho_vac_UA = 7.09e-36  # [UA] dimension density
+        self.rho_vac_SCm = 7.09e-37  # [SCm] dimension density
+        
+        # THz hole parameters
+        self.f_THz_center = 1.25e12  # Central THz frequency (Hz)
+        self.r_THz = 1e-9  # THz hole characteristic scale (m)
+    
+    def compute_dimensional_structure(self) -> tuple:
+        """
+        Compute 12D dimensional structure.
+        
+        Returns:
+            tuple: (structure_dict, equation_string)
+        """
+        structure = {
+            'd_spacetime': 4,  # t, x, y, z
+            'd_calabi_yau': 6,  # 6D compactified manifold
+            'd_UA': 1,  # [UA] Aether dimension
+            'd_SCm': 1,  # [SCm] Superconductive dimension
+            'd_total': 12
+        }
+        
+        eq = (f"12D Dimensional Structure:\n"
+              f"  D_total = D_spacetime + D_Calabi-Yau + D_UQFF\n"
+              f"  D_spacetime = 4 (t, x, y, z)\n"
+              f"  D_Calabi-Yau = 6 (compactified string theory dimensions)\n"
+              f"  D_[UA] = 1 (Universal Aether dimension)\n"
+              f"  D_[SCm] = 1 (Superconductive Magnetism dimension)\n"
+              f"  D_total = 4 + 6 + 1 + 1 = 12 dimensions")
+        
+        return structure, eq
+    
+    def compute_compactification_radius(self, n: int = 1) -> tuple:
+        """
+        Compute Calabi-Yau compactification radius.
+        
+        R_compact = l_Planck × (n × α')^(1/2)
+        
+        Args:
+            n: Mode number
+            
+        Returns:
+            tuple: (R_compact, equation_string)
+        """
+        R_compact = self.l_planck * math.sqrt(n * self.alpha_prime / (self.l_planck ** 2))
+        
+        eq = (f"Calabi-Yau Compactification Radius:\n"
+              f"  R_compact = l_Planck × (n × α')^(1/2)\n"
+              f"  l_Planck = {self.l_planck:.3e} m\n"
+              f"  α' = l_Planck² = {self.alpha_prime:.3e} m²\n"
+              f"  n = {n}\n"
+              f"  R_compact = {R_compact:.4e} m")
+        
+        return R_compact, eq
+    
+    def compute_THz_hole_12D_portal(self) -> tuple:
+        """
+        Compute THz hole as 12D portal energy.
+        
+        E_portal = (ℏ × c / r_THz) × (1 + ρ_UA/ρ_SCm) × N_compact
+        
+        Returns:
+            tuple: (E_portal, equation_string)
+        """
+        base_energy = self.hbar * self.c / self.r_THz
+        aether_factor = 1 + self.rho_vac_UA / self.rho_vac_SCm
+        
+        E_portal = base_energy * aether_factor * self.n_compact
+        E_portal_eV = E_portal / 1.602e-19  # Convert to eV
+        
+        eq = (f"THz Hole 12D Portal Energy:\n"
+              f"  E_portal = (ℏc/r_THz) × (1 + ρ_UA/ρ_SCm) × N_compact\n"
+              f"  ℏc/r_THz = {self.hbar:.3e}×{self.c:.3e}/{self.r_THz:.3e} = {base_energy:.4e} J\n"
+              f"  Aether factor = 1 + {self.rho_vac_UA/self.rho_vac_SCm:.1f} = {aether_factor}\n"
+              f"  N_compact = {self.n_compact}\n"
+              f"  E_portal = {E_portal:.4e} J = {E_portal_eV:.4e} eV")
+        
+        return E_portal, eq
+    
+    def compute_cross_dimensional_coupling(self, Ug4i: float) -> tuple:
+        """
+        Compute cross-dimensional coupling strength.
+        
+        g_12D = Ug4i × (r_THz/l_Planck)² × exp(-R_compact/r_THz)
+        
+        Args:
+            Ug4i: Cosmological communication term
+            
+        Returns:
+            tuple: (g_12D, equation_string)
+        """
+        R_compact, _ = self.compute_compactification_radius(1)
+        
+        ratio_squared = (self.r_THz / self.l_planck) ** 2
+        exp_factor = math.exp(-R_compact / self.r_THz)
+        
+        g_12D = Ug4i * ratio_squared * exp_factor
+        
+        eq = (f"Cross-Dimensional Coupling:\n"
+              f"  g_12D = Ug4i × (r_THz/l_Planck)² × exp(-R_compact/r_THz)\n"
+              f"  Ug4i = {Ug4i:.4e}\n"
+              f"  (r_THz/l_Planck)² = ({self.r_THz:.3e}/{self.l_planck:.3e})² = {ratio_squared:.4e}\n"
+              f"  exp(-R_compact/r_THz) = exp(-{R_compact:.3e}/{self.r_THz:.3e}) = {exp_factor:.4e}\n"
+              f"  g_12D = {g_12D:.4e}")
+        
+        return g_12D, eq
+    
+    def compute_full_12D_framework(self, Ug4i: float = 1e-16) -> dict:
+        """
+        Complete 12D integration framework.
+        
+        Args:
+            Ug4i: Cosmological communication term
+            
+        Returns:
+            dict with full 12D analysis
+        """
+        structure, eq_struct = self.compute_dimensional_structure()
+        R_compact, eq_radius = self.compute_compactification_radius()
+        E_portal, eq_portal = self.compute_THz_hole_12D_portal()
+        g_12D, eq_coupling = self.compute_cross_dimensional_coupling(Ug4i)
+        
+        return {
+            'structure': structure,
+            'R_compact': R_compact,
+            'E_portal': E_portal,
+            'g_12D': g_12D,
+            'equations': {
+                'structure': eq_struct,
+                'radius': eq_radius,
+                'portal': eq_portal,
+                'coupling': eq_coupling
+            },
+            'master_equation': (
+                "12D CALABI-YAU UQFF INTEGRATION:\n"
+                "D_total = 4 (spacetime) + 6 (CY) + 1 ([UA]) + 1 ([SCm]) = 12D\n"
+                "THz hole portal: E = (ℏc/r_THz) × (1 + ρ_UA/ρ_SCm) × N_compact\n"
+                "Cross-dimensional: g_12D = Ug4i × (r_THz/l_P)² × exp(-R_c/r_THz)\n"
+                "Validates UQFF extension to string theory framework"
+            )
+        }
+
+
+# Global instances for Fifth Clone_2 Analysis Pass
+V838_LIGHT_ECHO_CALC = V838MonocerotisLightEchoCalculator()
+INERTIAL_PAPERS_CALC = InertialPapersCalculator()
+PSEUDO_MONOPOLE_CALC = PseudoMonopoleFieldCalculator()
+CALABI_YAU_12D_CALC = CalabiYau12DIntegrationCalculator()
+
+FIFTH_PASS_CALCULATORS = {
+    'V838MonocerotisLightEchoCalculator': V838_LIGHT_ECHO_CALC,
+    'InertialPapersCalculator': INERTIAL_PAPERS_CALC,
+    'PseudoMonopoleFieldCalculator': PSEUDO_MONOPOLE_CALC,
+    'CalabiYau12DIntegrationCalculator': CALABI_YAU_12D_CALC,
+}
