@@ -478,7 +478,7 @@ set(IPC_HEADERS
 #   vcpkg install curl:x64-windows sqlite3:x64-windows
 #   vcpkg install aws-sdk-cpp[cognito-idp,s3]:x64-windows
 if(Qt6_FOUND)
-    add_executable(Source2 source2.cpp source2_mainwindow.h UQFFResultsWidget.h ${IPC_SOURCES} ${IPC_HEADERS})
+    add_executable(Source2 source2.cpp source2_mainwindow.h UQFFResultsWidget.h equation_renderer.h ${IPC_SOURCES} ${IPC_HEADERS})
     
     # Enable Qt AUTOMOC/AUTOUIC/AUTORCC for Source2 (Q_OBJECT in header file)
     set_target_properties(Source2 PROPERTIES 
