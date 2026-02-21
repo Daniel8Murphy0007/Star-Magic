@@ -85301,6 +85301,24 @@ __all__ = [
     # Global Instance
     'TRIADIC_38_CALCULATOR',
     
+    # ═══════════════════════════════════════════════════════════════════════════
+    # TRIADIC CLONE EXTENDED EXTRACTION (08Jun2025) - 6 NEW EXPORTS
+    # THzHoleOscilloscopeAnalyzer, Extended18SystemCalculator, DynamicResonanceCalculator
+    # 26D Quantum State Framework with E_DPM Buoyancy-Based Gravity
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # THz Hole Oscilloscope Analyzer
+    'THzHoleOscilloscopeAnalyzer',
+    'THZ_HOLE_ANALYZER',
+    
+    # Extended 18-System MUGE Calculator
+    'Extended18SystemCalculator',
+    'EXTENDED_18_CALCULATOR',
+    
+    # Dynamic Resonance Calculator (26D)
+    'DynamicResonanceCalculator',
+    'DYNAMIC_RESONANCE_CALC',
+    
     # Constants
     'CONSTANTS',
 ]
@@ -85920,6 +85938,840 @@ class TriadicClone38SystemCalculator:
 
 # Global Instance
 TRIADIC_38_CALCULATOR = TriadicClone38SystemCalculator('Sun')
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# THZ HOLE OSCILLOSCOPE ANALYZER
+# From: Triadic Clone_08June2025.txt (Lines 4400-5200)
+# THz frequency extraction, ACE/DCE energy dynamics, quantum vacuum analysis
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class THzHoleOscilloscopeAnalyzer:
+    """
+    THz Hole Oscilloscope Data Analyzer
+    
+    Analyzes THz hole communication signals with:
+    - Frequency extraction (1.246 THz baseline)
+    - Voltage analysis (V_p-p, V_eff)
+    - Amperage range processing (±3.102 A, dA = 6.205 A)
+    - ACE/DCE reversing flow pattern detection
+    - Quantum vacuum energy density calculations
+    
+    From: Triadic Clone_08June2025.txt
+    """
+    
+    # THz Hole Signal Constants
+    f_THz: float = 1.246e12  # THz hole frequency (Hz)
+    omega_THz: float = 7.83e12  # Angular frequency (rad/s)
+    A_positive: float = 3.102  # Positive amperage peak (A)
+    A_negative: float = -3.102  # Negative amperage peak (A)
+    dA: float = 6.205  # Amperage swing (A)
+    
+    # Vacuum Energy Densities (J/m³)
+    rho_vac_UA: float = 7.09e-36  # Universal Aether vacuum energy
+    rho_vac_Ui: float = 1e-28  # DPM universal interaction
+    rho_vac_A: float = 1e-30  # Aether field density
+    rho_vac_SCm: float = 7.09e-37  # Superconductive material
+    
+    # System velocity for SCm computation
+    v_SCm: float = 3e8  # Speed of light (m/s)
+    
+    def __init__(self, f_THz: float = 1.246e12):
+        """Initialize with THz frequency."""
+        self.f_THz = f_THz
+        self.omega_THz = 2 * CONSTANTS['pi'] * f_THz
+    
+    def compute_signal_parameters(self, V_pp: float = 1.0) -> dict:
+        """
+        Compute THz signal parameters from peak-to-peak voltage.
+        
+        Args:
+            V_pp: Peak-to-peak voltage (V)
+            
+        Returns:
+            dict with V_eff, frequency, period, angular frequency
+        """
+        V_eff = V_pp / (2 * 2**0.5)  # RMS voltage
+        T = 1.0 / self.f_THz  # Period (s)
+        
+        return {
+            'V_pp': V_pp,
+            'V_eff': V_eff,
+            'f_THz': self.f_THz,
+            'T': T,
+            'omega_THz': self.omega_THz,
+            'equation': f"V_eff = V_pp / (2√2) = {V_pp:.4e} / 2.828 = {V_eff:.4e} V"
+        }
+    
+    def compute_amperage_flow(self, t: float) -> dict:
+        """
+        Compute ACE/DCE reversing amperage flow at time t.
+        
+        Args:
+            t: Time (s)
+            
+        Returns:
+            dict with instantaneous amperage, flow direction, equation
+        """
+        import math
+        
+        # ACE/DCE reversing flow: A(t) = A_max × sin(ω × t)
+        A_t = self.A_positive * math.sin(self.omega_THz * t)
+        flow_direction = "ACE (outward)" if A_t > 0 else "DCE (inward)" if A_t < 0 else "null"
+        
+        return {
+            'A_t': A_t,
+            'A_max': self.A_positive,
+            'dA': self.dA,
+            'flow_direction': flow_direction,
+            'equation': f"A(t) = {self.A_positive:.3f} × sin({self.omega_THz:.2e} × {t:.2e}) = {A_t:.4e} A"
+        }
+    
+    def compute_vacuum_energy_ratios(self) -> dict:
+        """
+        Compute quantum vacuum energy density ratios.
+        
+        Returns:
+            dict with rho_vac ratios and physical interpretations
+        """
+        ratio_UA_SCm = self.rho_vac_UA / self.rho_vac_SCm  # = 10
+        ratio_Ui_A = self.rho_vac_Ui / self.rho_vac_A  # = 100
+        ratio_UA_A = self.rho_vac_UA / self.rho_vac_A  # ≈ 7.09e-6
+        
+        return {
+            'rho_vac_UA': self.rho_vac_UA,
+            'rho_vac_Ui': self.rho_vac_Ui,
+            'rho_vac_A': self.rho_vac_A,
+            'rho_vac_SCm': self.rho_vac_SCm,
+            'ratio_UA_SCm': ratio_UA_SCm,
+            'ratio_Ui_A': ratio_Ui_A,
+            'ratio_UA_A': ratio_UA_A,
+            'equation': f"ρ_vac,[UA]/ρ_vac,[SCm] = {self.rho_vac_UA:.2e} / {self.rho_vac_SCm:.2e} = {ratio_UA_SCm:.1f}"
+        }
+    
+    def compute_DPM_energy(self, r: float = 1e-9) -> dict:
+        """
+        Compute Di-Pseudo-Monopole (DPM) energy at THz hole scale.
+        
+        E_DPM = (ℏ × c) / r²
+        
+        Args:
+            r: THz hole radius (m)
+            
+        Returns:
+            dict with E_DPM in J and equation
+        """
+        hbar = CONSTANTS['hbar']
+        c = CONSTANTS['c']
+        
+        E_DPM = (hbar * c) / (r ** 2)
+        
+        return {
+            'E_DPM': E_DPM,
+            'r': r,
+            'equation': f"E_DPM = (ℏ × c) / r² = ({hbar:.4e} × {c:.2e}) / ({r:.2e})² = {E_DPM:.4e} J/m"
+        }
+    
+    def compute_THz_communication_term(self, r_THz: float = 1e-9, f_Um: float = 0.05) -> dict:
+        """
+        Compute Ug4i THz hole communication term.
+        
+        Ug4i = (ℏ × c / r_THz) × (1 + f_Um) × (1 + ρ_vac,[UA] / ρ_vac,[SCm])
+        
+        Args:
+            r_THz: THz hole radius (m)
+            f_Um: Cosmological communication factor
+            
+        Returns:
+            dict with Ug4i and equation
+        """
+        hbar = CONSTANTS['hbar']
+        c = CONSTANTS['c']
+        
+        base_term = (hbar * c) / r_THz
+        Um_factor = 1 + f_Um
+        vacuum_ratio = 1 + (self.rho_vac_UA / self.rho_vac_SCm)
+        
+        Ug4i = base_term * Um_factor * vacuum_ratio
+        
+        return {
+            'Ug4i': Ug4i,
+            'r_THz': r_THz,
+            'f_Um': f_Um,
+            'vacuum_ratio': vacuum_ratio,
+            'equation': (f"Ug4i = (ℏc/r_THz) × (1+f_Um) × (1+ρ_UA/ρ_SCm) = "
+                        f"({base_term:.4e}) × {Um_factor:.2f} × {vacuum_ratio:.1f} = {Ug4i:.4e} m/s²")
+        }
+    
+    def analyze_full_signal(self, V_pp: float = 1.0, t: float = 0.0) -> dict:
+        """
+        Perform full THz hole signal analysis.
+        
+        Args:
+            V_pp: Peak-to-peak voltage
+            t: Time for instantaneous analysis
+            
+        Returns:
+            Complete analysis dict
+        """
+        signal = self.compute_signal_parameters(V_pp)
+        amperage = self.compute_amperage_flow(t)
+        vacuum = self.compute_vacuum_energy_ratios()
+        DPM = self.compute_DPM_energy()
+        communication = self.compute_THz_communication_term()
+        
+        return {
+            'signal_parameters': signal,
+            'amperage_flow': amperage,
+            'vacuum_energies': vacuum,
+            'DPM_energy': DPM,
+            'THz_communication': communication,
+            'summary': {
+                'f_THz': self.f_THz,
+                'V_eff': signal['V_eff'],
+                'A_t': amperage['A_t'],
+                'Ug4i': communication['Ug4i']
+            }
+        }
+
+
+# Global Instance
+THZ_HOLE_ANALYZER = THzHoleOscilloscopeAnalyzer()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# EXTENDED 18-SYSTEM MUGE CALCULATOR
+# From: Triadic Clone_08June2025.txt (Lines 6800-9200)
+# NGC 2264, UGC 10214, NGC 4676, Red Spider, NGC 3372, AG Carinae,
+# M42, Tarantula, NGC 2841, Mystic Mountain, NGC 6217, Stephan's Quintet,
+# NGC 7049, Carina (NGC 3324), M74, NGC 1672, NGC 5866, M82, Spirograph
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class Extended18SystemCalculator:
+    """
+    Extended 18-System MUGE Calculator
+    
+    Computes Master Universal Gravity Equations for 18+ astrophysical systems
+    using the E_DPM buoyancy-based framework with 26D quantum states.
+    
+    Master Equation:
+        g(r,t) = Σ(i=1 to 26) [Ug1_i + Ug2_i + Ug3_i + Ug4i_i]
+        
+    Where E_DPM_i = (ℏ × c / r_i²) × Q_i × [SCm]_i replaces G
+    
+    Systems: NGC 2264, UGC 10214, NGC 4676, Red Spider, NGC 3372, AG Carinae,
+             M42, Tarantula, NGC 2841, Mystic Mountain, NGC 6217, Stephan's Quintet,
+             NGC 7049, Carina, M74, NGC 1672, NGC 5866, M82, Spirograph, NGC 2525,
+             NGC 3603, Bubble Nebula, Antennae Galaxies, Horsehead Nebula, NGC 1275
+             
+    From: Triadic Clone_08June2025.txt
+    """
+    
+    # Extended 18+ System Parameters
+    # Format: {name: (M_kg, r_m, SFR_Msun_yr, B_T, z, tau_erode_s, description)}
+    EXTENDED_SYSTEMS = {
+        'NGC_2264': (3.978e33, 1.54e17, 0.1, 1e-5, 0.0006, 6.312e13, 'Cone Nebula/Christmas Tree Cluster'),
+        'UGC_10214': (1.989e41, 1.24e21, 1.0, 1e-5, 0.028, 1e15, 'Tadpole Galaxy tidal tail'),
+        'NGC_4676': (3.978e41, 3e20, 10.0, 1e-4, 0.022, 1.26e16, 'Mice Galaxies merger tau=400 Myr'),
+        'Red_Spider': (1.193e30, 1e16, 0.0, 1e-5, 0.0013, 3e13, 'NGC 6537 planetary nebula'),
+        'NGC_3372': (1.989e35, 2e17, 2.0, 1e-5, 0.0025, 1e14, 'Carina Nebula Eta Carinae'),
+        'AG_Carinae': (3.978e31, 1e16, 0.0, 1e-5, 0.002, 5e13, 'Wolf-Rayet star nebula'),
+        'M42': (3.978e33, 2e16, 0.3, 1e-5, 0.0004, 5e13, 'Orion Nebula'),
+        'Tarantula': (1.989e35, 3e17, 5.0, 1e-4, 0.0005, 1e14, '30 Doradus starburst'),
+        'NGC_2841': (1.989e41, 5e20, 0.5, 1e-5, 0.0031, 1e15, 'Spiral galaxy'),
+        'Mystic_Mountain': (1.989e32, 1e16, 0.1, 1e-5, 0.0025, 3e13, 'Carina dust pillar'),
+        'NGC_6217': (1.989e41, 3e20, 1.0, 1e-5, 0.0045, 1e15, 'Barred spiral galaxy'),
+        'Stephans_Quintet': (9.945e41, 1e21, 10.0, 1e-4, 0.022, 1e16, 'Compact galaxy group'),
+        'NGC_7049': (1.989e41, 5e20, 0.2, 1e-5, 0.0067, 1e15, 'Lenticular galaxy'),
+        'Carina_NGC_3324': (1.989e35, 2e17, 2.0, 1e-5, 0.0025, 1e14, 'Cosmic Cliffs'),
+        'M74': (1.989e41, 5e20, 1.0, 1e-5, 0.0022, 1e15, 'Phantom Galaxy'),
+        'NGC_1672': (1.989e41, 3e20, 2.0, 1e-5, 0.004, 1e15, 'Barred spiral galaxy'),
+        'NGC_5866': (1.989e41, 3e20, 0.3, 1e-5, 0.0029, 1e15, 'Lenticular galaxy'),
+        'M82': (1.989e40, 2e20, 10.0, 1e-4, 0.0008, 1e14, 'Cigar Galaxy starburst'),
+        'Spirograph': (1.193e30, 1e16, 0.0, 1e-5, 0.0007, 3e13, 'IC 418 planetary nebula'),
+        # Additional systems from Triadic Clone lines 6800-7500
+        'NGC_2525': (1.993e40, 5e20, 0.5, 1e-5, 0.016, 1e15, 'Supernova host SN2018gv'),
+        'NGC_3603': (7.956e35, 1e17, 3.0, 1e-4, 0.0025, 5e13, '400kmMsun cluster'),
+        'Bubble_Nebula': (8.95e31, 3e16, 0.0, 1e-5, 0.0025, 3e13, 'NGC 7635 Wolf-Rayet BD+60°2522'),
+        'Antennae': (3.978e41, 5e20, 20.0, 1e-4, 0.0055, 1.26e16, 'NGC 4038/4039 tau_merge=400 Myr'),
+        'Horsehead': (2.387e32, 1e17, 0.0, 1e-5, 0.0015, 1.578e14, 'Barnard 33 tau_erode=5 Myr'),
+        'NGC_1275': (1.991e42, 1e21, 5.0, 1e-8, 0.0176, 1e16, 'Perseus A SMBH 800M Msun'),
+    }
+    
+    def __init__(self, system_name: str = 'NGC_2264'):
+        """Initialize with system name."""
+        if system_name not in self.EXTENDED_SYSTEMS:
+            raise ValueError(f"Unknown system: {system_name}. Available: {list(self.EXTENDED_SYSTEMS.keys())}")
+        
+        self.system_name = system_name
+        params = self.EXTENDED_SYSTEMS[system_name]
+        self.M = params[0]
+        self.r = params[1]
+        self.SFR = params[2]
+        self.B = params[3]
+        self.z = params[4]
+        self.tau_erode = params[5]
+        self.description = params[6]
+        
+        # UQFF Constants
+        self.B_crit = 1e11  # Critical magnetic field (T)
+        self.rho_vac_UA = 7.09e-36  # J/m³
+        self.rho_vac_SCm = 7.09e-37  # J/m³
+        self.f_TRZ = 0.1  # Time-reversal factor
+        self.H_0 = 70 * 1000 / 3.086e22  # Hubble constant (s⁻¹)
+    
+    def compute_H_z(self, t: float) -> dict:
+        """
+        Compute Hubble parameter H(z) at redshift z.
+        
+        H(z) = H_0 × sqrt(Ω_m × (1+z)³ + Ω_Λ)
+        
+        Args:
+            t: Time (s)
+            
+        Returns:
+            dict with H_z, cosmic expansion factor
+        """
+        import math
+        
+        Omega_m = 0.3
+        Omega_Lambda = 0.7
+        
+        H_z = self.H_0 * math.sqrt(Omega_m * (1 + self.z)**3 + Omega_Lambda)
+        expansion_factor = 1 + H_z * t
+        
+        return {
+            'H_z': H_z,
+            'z': self.z,
+            'expansion_factor': expansion_factor,
+            'equation': f"H(z) = H_0 × √(Ω_m(1+z)³ + Ω_Λ) = {H_z:.4e} s⁻¹, 1+H×t = {expansion_factor:.6f}"
+        }
+    
+    def compute_E_DPM_i(self, i: int) -> dict:
+        """
+        Compute E_DPM for quantum state i.
+        
+        E_DPM_i = (ℏ × c / r_i²) × Q_i × [SCm]_i
+        
+        Where:
+            r_i = r / i (scales inversely with state)
+            Q_i = i (quantum state factor)
+            [SCm]_i = 10⁻⁵ × i² T
+        
+        Args:
+            i: Quantum state (1-26)
+            
+        Returns:
+            dict with E_DPM_i and equation
+        """
+        hbar = CONSTANTS['hbar']
+        c = CONSTANTS['c']
+        
+        r_i = self.r / i
+        Q_i = i
+        SCm_i = 1e-5 * (i ** 2)
+        
+        E_DPM_i = (hbar * c / (r_i ** 2)) * Q_i * SCm_i
+        
+        return {
+            'E_DPM_i': E_DPM_i,
+            'i': i,
+            'r_i': r_i,
+            'Q_i': Q_i,
+            'SCm_i': SCm_i,
+            'equation': f"E_DPM_{i} = (ℏc/r_{i}²)×Q_{i}×[SCm]_{i} = {E_DPM_i:.4e} m/s²"
+        }
+    
+    def compute_Ug1_i(self, i: int, t: float) -> dict:
+        """
+        Compute Ug1 (SM-effective buoyancy) for quantum state i.
+        
+        Ug1_i = E_DPM_i × (1 + H(z)×t) × (1 - E_rad(t)) × cos(θ_i) × (1 + f_TRZ_i)
+        
+        Args:
+            i: Quantum state (1-26)
+            t: Time (s)
+            
+        Returns:
+            dict with Ug1_i and equation
+        """
+        import math
+        
+        E_DPM = self.compute_E_DPM_i(i)['E_DPM_i']
+        H_z_data = self.compute_H_z(t)
+        expansion_factor = H_z_data['expansion_factor']
+        
+        # Erosion term
+        E_rad = 0.2 * (1 - math.exp(-t / self.tau_erode))
+        rad_factor = 1 - E_rad
+        
+        # Angle: 90° for i=1, decreasing to 5° for i=26
+        theta_i = math.radians(90 - (i - 1) * 3.346)
+        cos_theta = math.cos(theta_i)
+        
+        # Time-reversal factor
+        f_TRZ_i = self.f_TRZ * i / 26
+        TRZ_factor = 1 + f_TRZ_i
+        
+        Ug1_i = E_DPM * expansion_factor * rad_factor * cos_theta * TRZ_factor
+        
+        return {
+            'Ug1_i': Ug1_i,
+            'i': i,
+            'E_DPM_i': E_DPM,
+            'expansion_factor': expansion_factor,
+            'rad_factor': rad_factor,
+            'cos_theta': cos_theta,
+            'TRZ_factor': TRZ_factor,
+            'equation': (f"Ug1_{i} = E_DPM × (1+H×t) × (1-E_rad) × cos(θ) × (1+f_TRZ) = {Ug1_i:.4e} m/s²")
+        }
+    
+    def compute_Ug2_i(self, i: int, t: float) -> dict:
+        """
+        Compute Ug2 (resonant shells) for quantum state i.
+        
+        Ug2_i = E_DPM_i × (1 - B/B_crit) × (1 + M_sf) × (1 + ρ_UA/ρ_SCm) × Σcos(ω_j×t)
+        
+        Args:
+            i: Quantum state (1-26)
+            t: Time (s)
+            
+        Returns:
+            dict with Ug2_i and equation
+        """
+        import math
+        
+        E_DPM = self.compute_E_DPM_i(i)['E_DPM_i']
+        
+        # Magnetic factor
+        B_factor = 1 - self.B / self.B_crit
+        
+        # Star formation mass accumulation
+        t_years = t / (3600 * 24 * 365.25)
+        M_sf = self.SFR * t_years / (self.M / 1.989e30) if self.M > 0 else 0
+        M_sf_factor = 1 + min(M_sf, 10)  # Cap at 10x
+        
+        # Vacuum ratio
+        vacuum_ratio = 1 + (self.rho_vac_UA / self.rho_vac_SCm)
+        
+        # Sum of 26 shell resonances
+        T_shell = 1e6 * 3.156e7  # 1 Myr baseline
+        shell_sum = 0.0
+        for j in range(1, 27):
+            omega_j = 2 * math.pi * j / T_shell
+            shell_sum += math.cos(omega_j * t)
+        
+        Ug2_i = E_DPM * B_factor * M_sf_factor * vacuum_ratio * shell_sum
+        
+        return {
+            'Ug2_i': Ug2_i,
+            'i': i,
+            'B_factor': B_factor,
+            'M_sf_factor': M_sf_factor,
+            'vacuum_ratio': vacuum_ratio,
+            'shell_sum': shell_sum,
+            'equation': f"Ug2_{i} = E_DPM × B × M_sf × (ρ_UA/ρ_SCm) × Σcos = {Ug2_i:.4e} m/s²"
+        }
+    
+    def compute_Ug3_i(self, i: int, t: float) -> dict:
+        """
+        Compute Ug3 (inertial sweeping via THz holes) for quantum state i.
+        
+        Ug3_i = E_DPM_i × (q×v×B/m_p) × (1 - T_lock(t)) × (1 + f_TRZ_i)
+        
+        Args:
+            i: Quantum state (1-26)
+            t: Time (s)
+            
+        Returns:
+            dict with Ug3_i and equation
+        """
+        import math
+        
+        E_DPM = self.compute_E_DPM_i(i)['E_DPM_i']
+        
+        # Lorentz force term (q×v×B/m_p)
+        q = 1.602e-19  # C
+        v = 1e5  # m/s typical orbital velocity
+        m_p = 1.673e-27  # kg
+        Lorentz = (q * v * self.B) / m_p
+        
+        # Time lock factor
+        tau_lock = 5e6 * 3.156e7  # 5 Myr
+        T_lock = 0.1 * (1 - math.exp(-t / tau_lock))
+        lock_factor = 1 - T_lock
+        
+        # Time-reversal factor
+        f_TRZ_i = self.f_TRZ * i / 26
+        TRZ_factor = 1 + f_TRZ_i
+        
+        Ug3_i = E_DPM * Lorentz * lock_factor * TRZ_factor
+        
+        return {
+            'Ug3_i': Ug3_i,
+            'i': i,
+            'Lorentz': Lorentz,
+            'lock_factor': lock_factor,
+            'TRZ_factor': TRZ_factor,
+            'equation': f"Ug3_{i} = E_DPM × (qvB/m_p) × (1-T_lock) × (1+f_TRZ) = {Ug3_i:.4e} m/s²"
+        }
+    
+    def compute_Ug4i_i(self, i: int) -> dict:
+        """
+        Compute Ug4i (THz hole communication) for quantum state i.
+        
+        Ug4i_i = (ℏ×c/r_THz_i) × (1 + f_Um_i) × (1 + ρ_UA/ρ_SCm)
+        
+        Args:
+            i: Quantum state (1-26)
+            
+        Returns:
+            dict with Ug4i_i and equation
+        """
+        hbar = CONSTANTS['hbar']
+        c = CONSTANTS['c']
+        
+        r_THz_i = 1e-9 / i  # THz hole scale
+        f_Um_i = 0.05 * i / 26  # Cosmological communication
+        
+        base_term = (hbar * c) / r_THz_i
+        Um_factor = 1 + f_Um_i
+        vacuum_ratio = 1 + (self.rho_vac_UA / self.rho_vac_SCm)
+        
+        Ug4i_i = base_term * Um_factor * vacuum_ratio
+        
+        return {
+            'Ug4i_i': Ug4i_i,
+            'i': i,
+            'r_THz_i': r_THz_i,
+            'f_Um_i': f_Um_i,
+            'vacuum_ratio': vacuum_ratio,
+            'equation': f"Ug4i_{i} = (ℏc/r_THz) × (1+f_Um) × (1+ρ_UA/ρ_SCm) = {Ug4i_i:.4e} m/s²"
+        }
+    
+    def compute_26D_gravity(self, t: float = 3.156e14) -> dict:
+        """
+        Compute full 26D gravity equation.
+        
+        g(r,t) = Σ(i=1 to 26) [Ug1_i + Ug2_i + Ug3_i + Ug4i_i]
+        
+        Args:
+            t: Time (s), default 10 Myr
+            
+        Returns:
+            dict with total gravity, component sums, all 26 state contributions
+        """
+        Ug1_sum = 0.0
+        Ug2_sum = 0.0
+        Ug3_sum = 0.0
+        Ug4i_sum = 0.0
+        
+        state_data = []
+        
+        for i in range(1, 27):
+            Ug1_i = self.compute_Ug1_i(i, t)['Ug1_i']
+            Ug2_i = self.compute_Ug2_i(i, t)['Ug2_i']
+            Ug3_i = self.compute_Ug3_i(i, t)['Ug3_i']
+            Ug4i_i = self.compute_Ug4i_i(i)['Ug4i_i']
+            
+            Ug1_sum += Ug1_i
+            Ug2_sum += Ug2_i
+            Ug3_sum += Ug3_i
+            Ug4i_sum += Ug4i_i
+            
+            state_data.append({
+                'i': i,
+                'Ug1_i': Ug1_i,
+                'Ug2_i': Ug2_i,
+                'Ug3_i': Ug3_i,
+                'Ug4i_i': Ug4i_i,
+                'total_i': Ug1_i + Ug2_i + Ug3_i + Ug4i_i
+            })
+        
+        g_total = Ug1_sum + Ug2_sum + Ug3_sum + Ug4i_sum
+        
+        return {
+            'system': self.system_name,
+            'description': self.description,
+            'g_total': g_total,
+            'Ug1_sum': Ug1_sum,
+            'Ug2_sum': Ug2_sum,
+            'Ug3_sum': Ug3_sum,
+            'Ug4i_sum': Ug4i_sum,
+            'dominant_term': max([('Ug1', Ug1_sum), ('Ug2', Ug2_sum), ('Ug3', Ug3_sum), ('Ug4i', Ug4i_sum)], key=lambda x: abs(x[1]))[0],
+            'state_data': state_data,
+            'equation': f"g_{self.system_name}(r,t) = Σ(Ug1+Ug2+Ug3+Ug4i) = {g_total:.4e} m/s²"
+        }
+    
+    @classmethod
+    def compute_all_systems(cls, t: float = 3.156e14) -> dict:
+        """
+        Compute 26D gravity for all 25 extended systems.
+        
+        Args:
+            t: Time (s)
+            
+        Returns:
+            dict with all system results
+        """
+        results = {}
+        for system_name in cls.EXTENDED_SYSTEMS.keys():
+            calc = cls(system_name)
+            results[system_name] = calc.compute_26D_gravity(t)
+        return results
+
+
+# Global Instance
+EXTENDED_18_CALCULATOR = Extended18SystemCalculator('NGC_2264')
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# DYNAMIC RESONANCE CALCULATOR (26D)
+# From: Triadic Clone_08June2025.txt (Lines 8500-9239)
+# R(t) = Σ(R_Ug1×cos(ω_Ug1×t) + R_Ug2×cos(ω_Ug2×t) + R_Ug3×cos(ω_Ug3×t) + R_Ug4i×cos(ω_Ug4i×t))
+# Master Resonance UQFF Equation for periodic dynamics
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class DynamicResonanceCalculator:
+    """
+    Dynamic Resonance Calculator (26D)
+    
+    Computes Master Resonance UQFF Equations for periodic astrophysical dynamics.
+    
+    R(t) = Σ(i=1 to 26) [R_Ug1_i×cos(ω_Ug1_i×t) + R_Ug2_i×cos(ω_Ug2_i×t) + 
+                         R_Ug3_i×cos(ω_Ug3_i×t) + R_Ug4i_i×cos(ω_Ug4i_i×t)]
+    
+    Resonance Frequencies:
+        ω_Ug1 = 2π/T_sf (star formation cycles)
+        ω_Ug2 = 2π/T_shell (orbital shell equilibrium)
+        ω_Ug3 = 2π/T_sweep (THz hole sweeping)
+        ω_Ug4i = 2π/T_THz (THz communication timescale)
+        
+    Amplitudes from gravity projections:
+        R_Ug1 = Ug1 × (1 + M_sf)
+        R_Ug2 = Ug2 × (1 + M_sf)
+        R_Ug3 = Ug3 × (1 - T_lock)
+        R_Ug4i = Ug4i × (1 + f_Um)
+        
+    From: Triadic Clone_08June2025.txt
+    """
+    
+    # Resonance Timescales
+    T_sf: float = 1e6 * 3.156e7  # Star formation cycle: 1 Myr (s)
+    T_shell: float = 5e5 * 3.156e7  # Orbital shell equilibrium: 500 kyr (s)
+    T_sweep: float = 1e4 * 3.156e7  # THz hole sweeping cycle: 10 kyr (s)
+    T_THz: float = 1e-12  # THz communication timescale (s)
+    
+    # Angular Frequencies (rad/s)
+    omega_Ug1: float = 1.989e-13  # 2π/T_sf
+    omega_Ug2: float = 3.978e-13  # 2π/T_shell
+    omega_Ug3: float = 1.989e-11  # 2π/T_sweep
+    omega_Ug4i: float = 6.283e12  # 2π/T_THz
+    
+    def __init__(self, system_calculator: Extended18SystemCalculator = None):
+        """Initialize with an Extended18SystemCalculator for gravity values."""
+        if system_calculator is None:
+            system_calculator = Extended18SystemCalculator('NGC_2264')
+        self.system_calc = system_calculator
+    
+    def compute_resonance_frequencies(self, i: int) -> dict:
+        """
+        Compute resonance frequencies for quantum state i.
+        
+        ω_Ug_i = ω_Ug × i (frequencies scale with quantum state)
+        
+        Args:
+            i: Quantum state (1-26)
+            
+        Returns:
+            dict with all four resonance frequencies
+        """
+        omega_Ug1_i = self.omega_Ug1 * i
+        omega_Ug2_i = self.omega_Ug2 * i
+        omega_Ug3_i = self.omega_Ug3 * i
+        omega_Ug4i_i = self.omega_Ug4i * i
+        
+        return {
+            'omega_Ug1_i': omega_Ug1_i,
+            'omega_Ug2_i': omega_Ug2_i,
+            'omega_Ug3_i': omega_Ug3_i,
+            'omega_Ug4i_i': omega_Ug4i_i,
+            'equation': f"ω_Ug1_{i} = {omega_Ug1_i:.4e}, ω_Ug2_{i} = {omega_Ug2_i:.4e}, ω_Ug3_{i} = {omega_Ug3_i:.4e}, ω_Ug4i_{i} = {omega_Ug4i_i:.4e} rad/s"
+        }
+    
+    def compute_resonance_amplitudes(self, i: int, t: float) -> dict:
+        """
+        Compute resonance amplitudes from gravity projections.
+        
+        R_Ug1 = Ug1 × (1 + M_sf)
+        R_Ug2 = Ug2 × (1 + M_sf)
+        R_Ug3 = Ug3 × (1 - T_lock)
+        R_Ug4i = Ug4i × (1 + f_Um)
+        
+        Args:
+            i: Quantum state (1-26)
+            t: Time (s)
+            
+        Returns:
+            dict with resonance amplitudes
+        """
+        import math
+        
+        # Get gravity projections
+        Ug1_data = self.system_calc.compute_Ug1_i(i, t)
+        Ug2_data = self.system_calc.compute_Ug2_i(i, t)
+        Ug3_data = self.system_calc.compute_Ug3_i(i, t)
+        Ug4i_data = self.system_calc.compute_Ug4i_i(i)
+        
+        # Amplitude factors
+        M_sf_factor = Ug2_data['M_sf_factor']
+        lock_factor = Ug3_data['lock_factor']
+        f_Um_i = 0.05 * i / 26
+        Um_factor = 1 + f_Um_i
+        
+        R_Ug1_i = Ug1_data['Ug1_i'] * M_sf_factor
+        R_Ug2_i = Ug2_data['Ug2_i'] * M_sf_factor
+        R_Ug3_i = Ug3_data['Ug3_i'] * lock_factor
+        R_Ug4i_i = Ug4i_data['Ug4i_i'] * Um_factor
+        
+        return {
+            'R_Ug1_i': R_Ug1_i,
+            'R_Ug2_i': R_Ug2_i,
+            'R_Ug3_i': R_Ug3_i,
+            'R_Ug4i_i': R_Ug4i_i,
+            'equation': f"R_Ug1_{i}={R_Ug1_i:.4e}, R_Ug2_{i}={R_Ug2_i:.4e}, R_Ug3_{i}={R_Ug3_i:.4e}, R_Ug4i_{i}={R_Ug4i_i:.4e} m/s²"
+        }
+    
+    def compute_resonance_term_i(self, i: int, t: float) -> dict:
+        """
+        Compute single resonance term for quantum state i at time t.
+        
+        R_i(t) = R_Ug1_i×cos(ω_Ug1×t) + R_Ug2_i×cos(ω_Ug2×t) + 
+                 R_Ug3_i×cos(ω_Ug3×t) + R_Ug4i_i×cos(ω_Ug4i×t)
+        
+        Args:
+            i: Quantum state (1-26)
+            t: Time (s)
+            
+        Returns:
+            dict with resonance contribution
+        """
+        import math
+        
+        frequencies = self.compute_resonance_frequencies(i)
+        amplitudes = self.compute_resonance_amplitudes(i, t)
+        
+        # Compute cosine terms
+        cos_Ug1 = math.cos(frequencies['omega_Ug1_i'] * t)
+        cos_Ug2 = math.cos(frequencies['omega_Ug2_i'] * t)
+        cos_Ug3 = math.cos(frequencies['omega_Ug3_i'] * t)
+        cos_Ug4i = math.cos(frequencies['omega_Ug4i_i'] * t)
+        
+        # Resonance terms
+        term_Ug1 = amplitudes['R_Ug1_i'] * cos_Ug1
+        term_Ug2 = amplitudes['R_Ug2_i'] * cos_Ug2
+        term_Ug3 = amplitudes['R_Ug3_i'] * cos_Ug3
+        term_Ug4i = amplitudes['R_Ug4i_i'] * cos_Ug4i
+        
+        R_i_t = term_Ug1 + term_Ug2 + term_Ug3 + term_Ug4i
+        
+        return {
+            'R_i_t': R_i_t,
+            'i': i,
+            'term_Ug1': term_Ug1,
+            'term_Ug2': term_Ug2,
+            'term_Ug3': term_Ug3,
+            'term_Ug4i': term_Ug4i,
+            'cos_values': {'Ug1': cos_Ug1, 'Ug2': cos_Ug2, 'Ug3': cos_Ug3, 'Ug4i': cos_Ug4i},
+            'equation': f"R_{i}(t) = {term_Ug1:.4e} + {term_Ug2:.4e} + {term_Ug3:.4e} + {term_Ug4i:.4e} = {R_i_t:.4e} m/s²"
+        }
+    
+    def compute_26D_resonance(self, t: float = 9.468e13) -> dict:
+        """
+        Compute full 26D resonance equation.
+        
+        R(t) = Σ(i=1 to 26) R_i(t)
+        
+        Args:
+            t: Time (s), default 3 Myr
+            
+        Returns:
+            dict with total resonance, component sums, dominant term
+        """
+        R_total = 0.0
+        term_Ug1_sum = 0.0
+        term_Ug2_sum = 0.0
+        term_Ug3_sum = 0.0
+        term_Ug4i_sum = 0.0
+        
+        state_data = []
+        
+        for i in range(1, 27):
+            res_i = self.compute_resonance_term_i(i, t)
+            R_total += res_i['R_i_t']
+            term_Ug1_sum += res_i['term_Ug1']
+            term_Ug2_sum += res_i['term_Ug2']
+            term_Ug3_sum += res_i['term_Ug3']
+            term_Ug4i_sum += res_i['term_Ug4i']
+            state_data.append(res_i)
+        
+        dominant = max([
+            ('R_Ug1', abs(term_Ug1_sum)),
+            ('R_Ug2', abs(term_Ug2_sum)),
+            ('R_Ug3', abs(term_Ug3_sum)),
+            ('R_Ug4i', abs(term_Ug4i_sum))
+        ], key=lambda x: x[1])
+        
+        return {
+            'system': self.system_calc.system_name,
+            'R_total': R_total,
+            'term_Ug1_sum': term_Ug1_sum,
+            'term_Ug2_sum': term_Ug2_sum,
+            'term_Ug3_sum': term_Ug3_sum,
+            'term_Ug4i_sum': term_Ug4i_sum,
+            'dominant_resonance': dominant[0],
+            'dominant_magnitude': dominant[1],
+            'state_data': state_data,
+            'equation': f"R_{self.system_calc.system_name}(t) = Σ(R_Ug1×cos + R_Ug2×cos + R_Ug3×cos + R_Ug4i×cos) = {R_total:.4e} m/s²"
+        }
+    
+    def compute_time_series(self, t_start: float = 0.0, t_end: float = 3.156e14, n_points: int = 100) -> dict:
+        """
+        Compute resonance time series for animation/analysis.
+        
+        Args:
+            t_start: Start time (s)
+            t_end: End time (s)
+            n_points: Number of time points
+            
+        Returns:
+            dict with time array and resonance values
+        """
+        times = []
+        R_values = []
+        dominant_terms = []
+        
+        dt = (t_end - t_start) / n_points
+        
+        for n in range(n_points + 1):
+            t = t_start + n * dt
+            res = self.compute_26D_resonance(t)
+            times.append(t)
+            R_values.append(res['R_total'])
+            dominant_terms.append(res['dominant_resonance'])
+        
+        return {
+            'system': self.system_calc.system_name,
+            'times': times,
+            'R_values': R_values,
+            'dominant_terms': dominant_terms,
+            'n_points': n_points,
+            't_range': (t_start, t_end)
+        }
+
+
+# Global Instance
+DYNAMIC_RESONANCE_CALC = DynamicResonanceCalculator()
 
 
 if __name__ == "__main__":
