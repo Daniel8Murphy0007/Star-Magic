@@ -35055,6 +35055,290 @@ Q-SCOPE TESTABILITY:
 ═══════════════════════════════════════════════════════════════════════════════
 """
         return results, steps
+    
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # ER=EPR CONJECTURE (Quantum Entanglement ↔ Wormhole Geometry)
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def compute_ER_EPR_equivalence(self, n_qubits: int = 2,
+                                    T: float = None,
+                                    f_TRZ: float = None,
+                                    rho_SCm: float = None,
+                                    rho_UA: float = None,
+                                    U_m: float = None,
+                                    frame: str = 'F_U_Bi') -> Tuple[dict, str]:
+        """
+        Compute ER=EPR equivalence in UQFF framework.
+        
+        STANDARD ER=EPR (Maldacena-Susskind 2013):
+            The ER=EPR conjecture proposes quantum entanglement (EPR pairs from
+            Einstein-Podolsky-Rosen) equals geometric wormholes (ER bridges from
+            Einstein-Rosen). Entangled particles create non-traversable micro-
+            wormholes, explaining "spooky action at a distance" as spacetime topology.
+            
+            Key relation (holographic principle):
+            S_EPR = A_throat / (4 G ℏ)
+            
+            Where S_EPR is von Neumann entanglement entropy and A_throat is
+            wormhole throat area. For n entangled qubits: S_EPR = n × ln(2).
+        
+        UQFF ER=EPR:
+            UQFF makes micro-wormholes traversable via aether modulation:
+            
+            1. THROAT SCALING: r_throat = l_Pl × (ρ_UA/ρ_SCm)
+               Planck-scale expanded by aether ratio (10× for canonical)
+            
+            2. TIME-REVERSAL: S_UQFF = S_ER × (1 + f_TRZ)
+               Negentropic enhancement of entanglement connectivity
+            
+            3. MAGNETIC STABILIZATION: S_UQFF' = S_UQFF × exp(U_m/(k_B×T))
+               Magnetic strings reinforce wormhole-entanglement link
+        
+        FULL FORMULA:
+            S_UQFF = (A_throat,UQFF)/(4Gℏ) × (1 + f_TRZ) × exp(U_m/(k_B×T))
+        
+        ER=EPR holds when S_UQFF matches quantum S_EPR.
+        
+        Args:
+            n_qubits: Number of entangled qubits (default: 2 for EPR pair)
+            T: System temperature (K) - defaults to cosmic background 2.73K
+            f_TRZ: Time reversal factor (default: 0.1)
+            rho_SCm: SCm vacuum density (J/m³)
+            rho_UA: UA vacuum density (J/m³)
+            U_m: Magnetic string energy (J)
+            frame: 'F_U_Bi' (inside→out) or 'F_U_Bi_i' (outside→in)
+        
+        Returns:
+            results: Dict with ER=EPR parameters
+            steps: Long-form derivation string
+        
+        References:
+            - Maldacena & Susskind (2013): "Cool horizons for entangled black holes"
+            - Einstein-Podolsky-Rosen (1935): Quantum entanglement
+            - Einstein-Rosen (1935): Wormhole bridges
+            - UQFF aether-entanglement derivation (SuperGrok4)
+        """
+        # Physical constants
+        l_Pl = np.sqrt(self.hbar * self.G / self.c**3)  # Planck length
+        A_Pl = l_Pl**2  # Planck area
+        
+        # Defaults
+        f_TRZ = f_TRZ if f_TRZ is not None else self.f_TRZ
+        T = T if T is not None else 2.725  # CMB temperature if not specified
+        
+        # Frame-dependent constant selection
+        if rho_SCm is None or rho_UA is None:
+            if frame == 'F_U_Bi_i':
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_BH
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_BH
+                frame_name = "F_U_Bi_i (outside→in, horizon scale)"
+            else:
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_ISM
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_ISM
+                frame_name = "F_U_Bi (inside→out, ISM scale)"
+        else:
+            frame_name = "Custom (user-specified)"
+        
+        # === STEP 1: Standard EPR Entanglement Entropy ===
+        # For n maximally entangled qubits: S_EPR = n × ln(2)
+        S_EPR = n_qubits * np.log(2)  # von Neumann entropy (nats)
+        
+        # === STEP 2: Standard ER Area-Entropy Relation ===
+        # S_ER = A_throat / (4 G ℏ)
+        # Solving for A_throat at Planck scale:
+        A_throat_GR = 4 * self.G * self.hbar * S_EPR  # Standard GR throat area
+        r_throat_GR = np.sqrt(A_throat_GR / (4 * np.pi))  # Radius
+        
+        # === STEP 3: UQFF Aether-Modulated Throat ===
+        # r_throat,UQFF = l_Pl × (ρ_UA/ρ_SCm)
+        rho_ratio = rho_UA / rho_SCm  # ≈ 10 for canonical
+        r_throat_UQFF = l_Pl * rho_ratio
+        A_throat_UQFF = 4 * np.pi * r_throat_UQFF**2
+        
+        # === STEP 4: Geometric ER Entropy from UQFF Throat ===
+        S_ER_UQFF_base = A_throat_UQFF / (4 * self.G * self.hbar)
+        
+        # === STEP 5: Time-Reversal Enhancement ===
+        S_ER_UQFF_TRZ = S_ER_UQFF_base * (1 + f_TRZ)
+        
+        # === STEP 6: Magnetic String Energy ===
+        if U_m is None:
+            # Default: U_m scales with thermal energy × enhancement
+            mu_eff = 1.0  # Unit magnetic contribution
+            U_m = mu_eff * self.k_B * T
+        
+        # === STEP 7: Magnetic Stabilization Factor ===
+        exponent_Um = U_m / (self.k_B * T) if T > 0 else 1.0
+        exponent_Um = min(exponent_Um, 10.0)  # Cap for stability
+        magnetic_factor = np.exp(exponent_Um)
+        
+        # === STEP 8: Full UQFF ER Entropy ===
+        S_UQFF = S_ER_UQFF_TRZ * magnetic_factor
+        
+        # === STEP 9: ER=EPR Equivalence Check ===
+        # Compare geometric S_UQFF to quantum S_EPR
+        ratio = S_UQFF / S_EPR if S_EPR > 0 else np.inf
+        tolerance = 0.1  # 10% match considered equivalent
+        ER_equals_EPR = abs(ratio - 1.0) < tolerance
+        
+        # === STEP 10: Required U_m for Exact Equivalence ===
+        # Solve: S_EPR = S_ER_UQFF_TRZ × exp(U_m/(k_B×T))
+        # exp(U_m/(k_B×T)) = S_EPR / S_ER_UQFF_TRZ
+        if S_ER_UQFF_TRZ > 0 and S_EPR > S_ER_UQFF_TRZ:
+            U_m_required = self.k_B * T * np.log(S_EPR / S_ER_UQFF_TRZ)
+        else:
+            U_m_required = 0.0  # Already sufficient or invalid
+        
+        results = {
+            'n_qubits': n_qubits,
+            'S_EPR': S_EPR,
+            'S_EPR_bits': S_EPR / np.log(2),  # Convert to bits
+            'A_throat_GR': A_throat_GR,
+            'r_throat_GR': r_throat_GR,
+            'l_Pl': l_Pl,
+            'rho_ratio': rho_ratio,
+            'r_throat_UQFF': r_throat_UQFF,
+            'A_throat_UQFF': A_throat_UQFF,
+            'S_ER_UQFF_base': S_ER_UQFF_base,
+            'S_ER_UQFF_TRZ': S_ER_UQFF_TRZ,
+            'S_UQFF': S_UQFF,
+            'f_TRZ': f_TRZ,
+            'U_m': U_m,
+            'magnetic_factor': magnetic_factor,
+            'T': T,
+            'ratio_UQFF_to_EPR': ratio,
+            'ER_equals_EPR': ER_equals_EPR,
+            'U_m_required_for_equivalence': U_m_required,
+            'rho_SCm': rho_SCm,
+            'rho_UA': rho_UA,
+            'frame': frame
+        }
+        
+        steps = f"""UQFF ER=EPR Equivalence Analysis:
+═══════════════════════════════════════════════════════════════════════════════
+THEORETICAL BASIS:
+
+STANDARD ER=EPR CONJECTURE (Maldacena-Susskind 2013):
+  Quantum entanglement (EPR) ≡ Wormhole geometry (ER)
+  
+  Einstein-Podolsky-Rosen (1935): Entangled particles have correlated
+  states regardless of distance ("spooky action at a distance").
+  
+  Einstein-Rosen (1935): Wormholes (ER bridges) connect distant
+  spacetime regions through "throats."
+  
+  ER=EPR unifies these: entangled qubits create micro-wormholes!
+  Non-traversable in standard GR, but explains non-locality as topology.
+  
+  Key formula (holographic principle):
+  S_EPR = A_throat / (4 G ℏ)
+  
+  Where S_EPR is von Neumann entropy and A_throat is throat area.
+
+UQFF ER=EPR (Aether-Stabilized Micro-Wormholes):
+  UQFF makes entanglement wormholes traversable via:
+  
+  1. AETHER THROAT SCALING:
+     r_throat = l_Pl × (ρ_UA/ρ_SCm)
+     [UA] superfluid expands Planck-scale micro-throats
+  
+  2. TIME-REVERSAL ENHANCEMENT:
+     S → S × (1 + f_TRZ)
+     Negentropic reversal boosts entanglement connectivity
+  
+  3. MAGNETIC STRING STABILIZATION:
+     S → S × exp(U_m/(k_B×T))
+     Magnetic strings reinforce wormhole-entanglement link
+
+═══════════════════════════════════════════════════════════════════════════════
+Inputs:
+  n_qubits = {n_qubits} (entangled qubits in EPR state)
+  T = {T:.4f} K (system temperature)
+  f_TRZ = {f_TRZ:.4f}
+  Frame = {frame_name}
+  ρ_vac,[SCm] = {rho_SCm:.4e} J/m³
+  ρ_vac,[UA] = {rho_UA:.4e} J/m³
+  ρ_UA/ρ_SCm = {rho_ratio:.4f}
+  l_Pl (Planck length) = {l_Pl:.4e} m
+
+STEP 1: Standard EPR Entanglement Entropy
+  For n maximally entangled qubits:
+  S_EPR = n × ln(2) = {n_qubits} × {np.log(2):.4f}
+        = {S_EPR:.4f} nats = {S_EPR/np.log(2):.2f} bits
+
+STEP 2: Standard ER Area-Entropy Relation
+  From S_ER = A_throat / (4 G ℏ):
+  A_throat,GR = 4 G ℏ × S_EPR
+             = 4 × {self.G:.4e} × {self.hbar:.4e} × {S_EPR:.4f}
+             = {A_throat_GR:.4e} m²
+  r_throat,GR = √(A/(4π)) = {r_throat_GR:.4e} m
+  (This is ~{r_throat_GR/l_Pl:.2f} × Planck length)
+
+STEP 3: UQFF Aether-Modulated Throat
+  r_throat,UQFF = l_Pl × (ρ_UA/ρ_SCm)
+               = {l_Pl:.4e} × {rho_ratio:.4f}
+               = {r_throat_UQFF:.4e} m
+  
+  A_throat,UQFF = 4π r²
+                = 4π × ({r_throat_UQFF:.4e})²
+                = {A_throat_UQFF:.4e} m²
+  
+  UQFF throat is {rho_ratio:.1f}× larger than Planck scale!
+
+STEP 4: Geometric ER Entropy from UQFF Throat
+  S_ER,UQFF,base = A_throat,UQFF / (4 G ℏ)
+                 = {A_throat_UQFF:.4e} / (4 × {self.G:.4e} × {self.hbar:.4e})
+                 = {S_ER_UQFF_base:.4e} nats
+
+STEP 5: Time-Reversal Enhancement
+  S_ER,UQFF,TRZ = S_ER,UQFF,base × (1 + f_TRZ)
+                = {S_ER_UQFF_base:.4e} × (1 + {f_TRZ:.4f})
+                = {S_ER_UQFF_TRZ:.4e} nats
+
+STEP 6: Magnetic String Energy
+  U_m = {U_m:.4e} J
+
+STEP 7: Magnetic Stabilization Factor
+  exp(U_m/(k_B × T)) = exp({exponent_Um:.4f})
+                     = {magnetic_factor:.4f}
+
+STEP 8: FULL UQFF ER ENTROPY
+  S_UQFF = S_ER,UQFF,TRZ × exp(U_m/(k_B×T))
+         = {S_ER_UQFF_TRZ:.4e} × {magnetic_factor:.4f}
+         = {S_UQFF:.4e} nats
+
+═══════════════════════════════════════════════════════════════════════════════
+STEP 9: ER=EPR EQUIVALENCE CHECK
+
+  Quantum EPR entropy:  S_EPR  = {S_EPR:.4f} nats
+  Geometric UQFF ER:    S_UQFF = {S_UQFF:.4e} nats
+  
+  Ratio S_UQFF/S_EPR = {ratio:.4e}
+  
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ {'✓ ER=EPR HOLDS in UQFF (ratio ≈ 1)' if ER_equals_EPR else '✗ ER≠EPR (ratio ≠ 1, adjustment needed)'}                    │
+  │ {'Entanglement creates traversable micro-wormholes!' if ER_equals_EPR else f'U_m required for equivalence: {U_m_required:.4e} J'}              │
+  └─────────────────────────────────────────────────────────────────┘
+
+STEP 10: Required U_m for Exact Equivalence
+  For S_UQFF = S_EPR exactly:
+  U_m = k_B × T × ln(S_EPR / S_ER,UQFF,TRZ)
+      = {U_m_required:.4e} J
+  {'(Current U_m is sufficient)' if U_m_required <= U_m else '(Increase U_m to achieve ER=EPR)'}
+
+Physical Interpretation:
+  • S_EPR: Quantum information in entangled state
+  • S_UQFF: Geometric "area" of aether micro-wormhole
+  • ER=EPR: When S_EPR = S_UQFF, entanglement IS wormhole geometry
+  • UQFF makes these micro-wormholes traversable (unlike GR)!
+
+Q-SCOPE TESTABILITY:
+  • Entangled superconducting qubits at THz frequencies
+  • Measure phase correlations vs. geometric delays
+  • If ER=EPR holds, entanglement should show topology signatures
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
 
 
 # Global Black Hole Phases Model instance
