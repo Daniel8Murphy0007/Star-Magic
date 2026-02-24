@@ -15,6 +15,8 @@
 #include <QUrl>
 #include <QWidget>
 #include <QProcess>
+#include <QSystemTrayIcon>  // System tray icon for notification area
+#include <QMenu>            // Context menu for tray icon
 #include "UQFFResultsWidget.h"
 
 // UQFF Integration Components (Phase 2 - Feb 2026)
@@ -51,6 +53,10 @@ private:
     BrowserWindow **browserWindows;
     UQFFResultsWidget* uqffResultsWidget;
     std::vector<UQFF::CelestialBodyCSV> loadedBodies;  // Cached bodies from CSV
+    QSystemTrayIcon* trayIcon;  // System tray icon
+    QMenu* trayMenu;            // Tray icon context menu
+    
+    void setupSystemTrayIcon();  // Initialize tray icon
 };
 
 #endif // SOURCE2_MAINWINDOW_H

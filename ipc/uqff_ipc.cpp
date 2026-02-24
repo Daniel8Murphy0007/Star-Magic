@@ -128,10 +128,11 @@ SharedMemoryChannel::SharedMemoryChannel(const std::string& name,
     if (connected_) {
         std::cout << "[IPC] SharedMemoryChannel '" << name << "' " 
                   << (create ? "created" : "opened") << " successfully" << std::endl;
-    } else {
-        std::cerr << "[IPC] Failed to " << (create ? "create" : "open") 
-                  << " SharedMemoryChannel '" << name << "'" << std::endl;
+    } else if (create) {
+        // Creation failure is an error
+        std::cerr << "[IPC] Failed to create SharedMemoryChannel '" << name << "'" << std::endl;
     }
+    // Note: Open failure is expected when running standalone (no orchestrator)
 }
 
 SharedMemoryChannel::~SharedMemoryChannel() {

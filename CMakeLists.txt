@@ -345,6 +345,7 @@ if(USE_EMBEDDED_WOLFRAM)
     # Phase 4 Wolfram extraction: Files included directly in MAIN_1_CoAnQi.cpp, not compiled separately
     add_executable(MAIN_1_CoAnQi 
         MAIN_1_CoAnQi.cpp
+        ipc/uqff_ipc.cpp
     )
     
     # Disable AUTOMOC for MAIN_1_CoAnQi - it's a pure C++ physics calculator, not a Qt GUI app
@@ -393,7 +394,10 @@ if(USE_EMBEDDED_WOLFRAM)
     message(STATUS "MAIN_1_CoAnQi compiled WITH Wolfram WSTP support")
     message(STATUS "PhysicsTermExtractor compiled WITH Wolfram WSTP support")
 else()
-    add_executable(MAIN_1_CoAnQi MAIN_1_CoAnQi.cpp)
+    add_executable(MAIN_1_CoAnQi 
+        MAIN_1_CoAnQi.cpp
+        ipc/uqff_ipc.cpp
+    )
     
     # Disable AUTOMOC for MAIN_1_CoAnQi - pure C++ physics calculator
     set_target_properties(MAIN_1_CoAnQi PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF)
@@ -600,10 +604,11 @@ if(Qt6_FOUND)
     if(WIN32)
         add_custom_command(TARGET Source2 POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E echo "Deploying Python wrappers and dependencies for Source2..."
+            # TEMPORARILY DISABLED: MAIN_1_CoAnQi.exe copy (has build errors)
             # Copy MAIN_1_CoAnQi.exe (Tab 1 - Embedded Calculator Terminal)
-            COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                "$<TARGET_FILE:MAIN_1_CoAnQi>"
-                "$<TARGET_FILE_DIR:Source2>/MAIN_1_CoAnQi.exe"
+            # COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            #     "$<TARGET_FILE:MAIN_1_CoAnQi>"
+            #     "$<TARGET_FILE_DIR:Source2>/MAIN_1_CoAnQi.exe"
             # Copy Python wrappers (UQFF, Symbolic Math, API Fetch)
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
                 "${CMAKE_SOURCE_DIR}/CoAnQi_Wrapper.py"

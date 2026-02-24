@@ -16,6 +16,11 @@
  * Phase: 3.1 - Self-Expanding Physics Backend
  */
 
+// Prevent Windows min/max macro conflicts with std::min/std::max
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+
 #ifndef PHYSICS_SERVICE_H
 #define PHYSICS_SERVICE_H
 

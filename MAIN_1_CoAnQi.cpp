@@ -23953,10 +23953,10 @@ int main(int argc, char *argv[])
 
     // ========== IPC PIPELINE CONNECTION ==========
     // Connect to SIMULTANEOUS JOINT OPERATION pipeline via SharedMemory/NamedPipe
-    std::unique_ptr<UQFF_IPC::SharedMemoryChannel> ipc_channel;
+    std::unique_ptr<UQFF::IPC::SharedMemoryChannel> ipc_channel;
     try {
-        ipc_channel = std::make_unique<UQFF_IPC::SharedMemoryChannel>("MAIN_1_CoAnQi");
-        if (ipc_channel->connect()) {
+        ipc_channel = std::make_unique<UQFF::IPC::SharedMemoryChannel>("MAIN_1_CoAnQi");
+        if (ipc_channel->is_connected()) {
             g_logger.log("IPC: Connected to UQFF Simultaneous Joint Operation pipeline", 1);
         } else {
             g_logger.log("IPC: Running in standalone mode (no pipeline connection)", 2);

@@ -42,7 +42,11 @@
 #include <QCoreApplication> // Core application class - provides event loop for non-GUI applications
 #include <QListWidget>      // List widget - displays a list of items
 #include <QSlider>          // Slider widget - for parameter adjustment (UQFF Simulator)
+#include <QDoubleSpinBox>   // Double spin box - for numeric input with decimals (Quantum Design Calculator)
 #include <QSplitter>        // Splitter widget - resizable split views (UQFF Simulator)
+#include <QPainter>         // Painter - for drawing on QPixmap (tray icon)
+#include <QPixmap>          // Pixmap - image for tray icon
+#include <QFont>            // Font - for text rendering on icon
 #include <QTimer>           // Timer - for animation loops (UQFF Simulator 60 FPS)
 #include <QGridLayout>      // Grid layout manager - for parameter sliders grid
 #include <QNetworkAccessManager> // Network manager - handles HTTP requests
@@ -584,8 +588,44 @@ public:
 
 private slots:
     void startPython() {
-        // Find Python executable and QCalc.py
-        QString pythonExe = "python";  // Try "python" command first
+        // Find Python executable - check multiple locations
+        QString pythonExe;
+        QString projectRoot = QCoreApplication::applicationDirPath();
+        
+        // Check for project .venv first (most reliable)
+        QStringList pythonPaths = {
+            projectRoot + "/../.venv/Scripts/python.exe",      // Windows venv
+            projectRoot + "/../../.venv/Scripts/python.exe",   // Build subdirectory
+            projectRoot + "/../../../.venv/Scripts/python.exe", // Deep build dir
+            "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/.venv/Scripts/python.exe",  // Absolute path
+            "C:/Python313/python.exe",                         // Common install
+            "C:/Python312/python.exe",
+            "C:/Python311/python.exe",
+            "C:/Python310/python.exe",
+            "python"                                           // System PATH fallback
+        };
+        
+        for (const QString& path : pythonPaths) {
+            if (path == "python" || QFile::exists(path)) {
+                pythonExe = path;
+                break;
+            }
+        }
+        
+        if (pythonExe.isEmpty()) {
+            pythonExe = "python";  // Last resort
+        }
+        
+        // Set up environment with Python in PATH
+        QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+        QString venvPath = "C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/.venv";
+        if (QDir(venvPath).exists()) {
+            env.insert("VIRTUAL_ENV", venvPath);
+            env.insert("PATH", venvPath + "/Scripts;" + env.value("PATH"));
+            env.remove("PYTHONHOME");  // MUST remove this for venv to work
+        }
+        process->setProcessEnvironment(env);
+        
         QString qcalcPath = QCoreApplication::applicationDirPath() + "/QCalc.py";
         
         if (!QFile::exists(qcalcPath)) {
@@ -4695,9 +4735,14 @@ public:
         nid.uID = 1;
         nid.uFlags = NIF_ICON | NIF_TIP | NIF_MESSAGE;
         nid.uCallbackMessage = WM_USER + 1; // Custom message for tray events
-        nid.hIcon = LoadIcon(GetModuleHandle(nullptr), L"Z.ico");
+        // Try loading custom icon, fallback to system application icon
+        nid.hIcon = (HICON)LoadImageW(nullptr, L"Z.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE);
+        if (!nid.hIcon) {
+            nid.hIcon = LoadIcon(nullptr, IDI_APPLICATION); // System default
+        }
         wcscpy_s(nid.szTip, L"CoAnQi Scientific Platform");
         Shell_NotifyIcon(NIM_ADD, &nid);
+        std::cout << "System tray icon: ADDED" << std::endl;
 #else
         // For non-Windows platforms, use Qt's cross-platform QSystemTrayIcon
         // (Implementation requires QSystemTrayIcon* to be created in Qt context)
@@ -8971,6 +9016,377 @@ private:
     }
 };
 
+// ============================================================================
+// QUANTUM DESIGN CALCULATOR WIDGET - Floating MUGE Applet (Drag/Drop)
+// ============================================================================
+
+/**
+ * @brief 1990s-style scientific calculator for MUGE (Master Universal Gravity Equation)
+ * 
+ * Based on: Quantum Design Calculator Complete Implementation_css_10Jan2026
+ * 
+ * Features:
+ * - Green LCD display (#8fbc8f) with monospace font
+ * - Dark gray plastic casing (#333333) with tactile buttons
+ * - 30+ MUGE variable input fields with scientific notation
+ * - Math shortcut buttons: Algebra (sin/cos/tan), Quantum (ħ/ψ/E/P), 
+ *   Relativity (G/c/Λ), Number Theory (π/φ)
+ * - DeepSearch suggestions for missing inputs
+ * - Full MUGE equation computation with real-time results
+ * 
+ * MUGE Equation:
+ * g_UQFF = (G * M_t) / r_t² * (1 + H_t_z) * (1 - B_t / B_crit) * (1 + F_env)
+ *        + (U_g1 + U_g2 + G*M_ext/r_ext² + U_g4)
+ *        + U_i + (Λc²/3) + quantum_term
+ *        + ρ_fluid * V * g_local
+ *        + (M_visible + M_DM) * (δ_ρ/ρ + 3*G*M_t/r_t³)
+ * 
+ * Placement: Floating QDockWidget, drag/drop anywhere, dockable to any edge
+ * 
+ * Copyright - Daniel T. Murphy, May 07, 2025
+ */
+class QuantumDesignCalculatorWidget : public QWidget {
+    Q_OBJECT
+
+public:
+    explicit QuantumDesignCalculatorWidget(QWidget* parent = nullptr)
+        : QWidget(parent) {
+        
+        // 1990s Calculator Aesthetic
+        setStyleSheet(
+            "QWidget { background-color: #333333; }"
+            "QLabel { color: #FFFFFF; font-family: 'Courier New', monospace; font-size: 11px; }"
+            "QDoubleSpinBox { background-color: #FFFFFF; border: 1px solid #1A1A1A; "
+            "    font-family: 'Courier New', monospace; font-size: 10px; padding: 2px; }"
+            "QPushButton { background-color: #666666; color: #FFFFFF; border: 2px solid #1A1A1A; "
+            "    border-radius: 5px; font-family: 'Courier New', monospace; font-size: 11px; "
+            "    min-width: 50px; min-height: 35px; }"
+            "QPushButton:hover { background-color: #888888; }"
+            "QPushButton:pressed { background-color: #555555; }"
+            "QGroupBox { color: #FFFFFF; font-weight: bold; border: 1px solid #4A4A4A; "
+            "    border-radius: 5px; margin-top: 10px; padding-top: 15px; }"
+            "QGroupBox::title { subcontrol-origin: margin; left: 10px; padding: 0 5px; }"
+        );
+        
+        QVBoxLayout* mainLayout = new QVBoxLayout(this);
+        mainLayout->setSpacing(10);
+        mainLayout->setContentsMargins(15, 15, 15, 15);
+        
+        // =====================================================================
+        // LCD DISPLAY (Green monochrome)
+        // =====================================================================
+        QGroupBox* displayGroup = new QGroupBox("MUGE Result", this);
+        QVBoxLayout* displayLayout = new QVBoxLayout(displayGroup);
+        
+        lcdDisplay = new QLineEdit("0.00000e+00", this);
+        lcdDisplay->setReadOnly(true);
+        lcdDisplay->setAlignment(Qt::AlignRight);
+        lcdDisplay->setStyleSheet(
+            "background-color: #8FBC8F; color: #000000; border: 3px inset #1A1A1A; "
+            "font-family: 'Courier New', monospace; font-size: 18px; font-weight: bold; "
+            "padding: 10px; min-height: 30px;"
+        );
+        displayLayout->addWidget(lcdDisplay);
+        
+        // Suggestions display
+        suggestionsLabel = new QLabel("Ready for calculation", this);
+        suggestionsLabel->setWordWrap(true);
+        suggestionsLabel->setStyleSheet("color: #AAFFAA; font-size: 10px;");
+        displayLayout->addWidget(suggestionsLabel);
+        
+        mainLayout->addWidget(displayGroup);
+        
+        // =====================================================================
+        // MUGE VARIABLE INPUTS (Scrollable grid)
+        // =====================================================================
+        QGroupBox* inputGroup = new QGroupBox("MUGE Variables", this);
+        QScrollArea* scrollArea = new QScrollArea(this);
+        scrollArea->setWidgetResizable(true);
+        scrollArea->setMaximumHeight(250);
+        scrollArea->setStyleSheet("QScrollArea { border: none; background: transparent; }");
+        
+        QWidget* inputContainer = new QWidget();
+        QGridLayout* inputGrid = new QGridLayout(inputContainer);
+        inputGrid->setSpacing(5);
+        
+        // Create input fields with defaults from document
+        int row = 0, col = 0;
+        addInputField(inputGrid, "M_0", "kg", 1e30, row, col);
+        addInputField(inputGrid, "M_dot", "kg/s", 1e20, row, col);
+        addInputField(inputGrid, "t", "s", 1e10, row, col);
+        addInputField(inputGrid, "r_0", "m", 1e10, row, col);
+        addInputField(inputGrid, "v_r", "m/s", 1e3, row, col);
+        addInputField(inputGrid, "z", "", 0.002, row, col);
+        addInputField(inputGrid, "B_t", "T", 1e-5, row, col);
+        addInputField(inputGrid, "F_wind", "N", 1e-10, row, col);
+        addInputField(inputGrid, "F_rad", "N", 1e-10, row, col);
+        addInputField(inputGrid, "F_SN", "N", 1e-10, row, col);
+        addInputField(inputGrid, "F_BH", "N", 1e-10, row, col);
+        addInputField(inputGrid, "F_η", "", 1e-10, row, col);
+        addInputField(inputGrid, "U_g1", "J/m³", 1e-5, row, col);
+        addInputField(inputGrid, "U_g2", "J/m³", 1e-5, row, col);
+        addInputField(inputGrid, "M_ext", "kg", 1e30, row, col);
+        addInputField(inputGrid, "r_ext", "m", 1e10, row, col);
+        addInputField(inputGrid, "U_g4", "J/m³", 1e-5, row, col);
+        addInputField(inputGrid, "λ_I", "", 1.0, row, col);
+        addInputField(inputGrid, "ω_i", "rad/s", 1e-8, row, col);
+        addInputField(inputGrid, "t_n", "", 0.0, row, col);
+        addInputField(inputGrid, "F_RZ", "", 0.01, row, col);  // Default from doc
+        addInputField(inputGrid, "Δx", "m", 1e-10, row, col);
+        addInputField(inputGrid, "Δp", "kg·m/s", 1e-20, row, col);
+        addInputField(inputGrid, "ψ_int", "", 1.0, row, col);
+        addInputField(inputGrid, "ρ_fluid", "kg/m³", 1e-20, row, col);  // Default from doc
+        addInputField(inputGrid, "V", "m³", 1e50, row, col);
+        addInputField(inputGrid, "g_local", "m/s²", 1e-10, row, col);
+        addInputField(inputGrid, "M_vis", "kg", 1e40, row, col);
+        addInputField(inputGrid, "M_DM", "kg", 1e39, row, col);
+        addInputField(inputGrid, "δ_ρ", "kg/m³", 1e-5, row, col);  // Default from doc
+        addInputField(inputGrid, "ρ", "kg/m³", 1e-20, row, col);
+        
+        scrollArea->setWidget(inputContainer);
+        QVBoxLayout* inputGroupLayout = new QVBoxLayout(inputGroup);
+        inputGroupLayout->addWidget(scrollArea);
+        mainLayout->addWidget(inputGroup);
+        
+        // =====================================================================
+        // MATH SHORTCUT BUTTONS
+        // =====================================================================
+        QGroupBox* buttonGroup = new QGroupBox("Math Systems", this);
+        QVBoxLayout* buttonGroupLayout = new QVBoxLayout(buttonGroup);
+        
+        // Algebra buttons
+        QHBoxLayout* algebraRow = new QHBoxLayout();
+        addMathButton(algebraRow, "sin", [this](){ applyFunction("sin"); });
+        addMathButton(algebraRow, "cos", [this](){ applyFunction("cos"); });
+        addMathButton(algebraRow, "tan", [this](){ applyFunction("tan"); });
+        addMathButton(algebraRow, "log", [this](){ applyFunction("log"); });
+        addMathButton(algebraRow, "ln", [this](){ applyFunction("ln"); });
+        addMathButton(algebraRow, "exp", [this](){ applyFunction("exp"); });
+        addMathButton(algebraRow, "x²", [this](){ applyFunction("x^2"); });
+        addMathButton(algebraRow, "√", [this](){ applyFunction("sqrt"); });
+        buttonGroupLayout->addLayout(algebraRow);
+        
+        // Quantum Mechanics + Relativity
+        QHBoxLayout* physicsRow = new QHBoxLayout();
+        addMathButton(physicsRow, "ħ", [this](){ insertConstant(1.0546e-34); });
+        addMathButton(physicsRow, "G", [this](){ insertConstant(6.6743e-11); });
+        addMathButton(physicsRow, "c", [this](){ insertConstant(2.998e8); });
+        addMathButton(physicsRow, "Λ", [this](){ insertConstant(1.1e-52); });
+        addMathButton(physicsRow, "π", [this](){ insertConstant(3.141592653589793); });
+        addMathButton(physicsRow, "φ", [this](){ insertConstant(1.618033988749895); });
+        addMathButton(physicsRow, "k_B", [this](){ insertConstant(1.380649e-23); });
+        addMathButton(physicsRow, "H₀", [this](){ insertConstant(70e3/3.086e22); });  // Hubble constant
+        buttonGroupLayout->addLayout(physicsRow);
+        
+        mainLayout->addWidget(buttonGroup);
+        
+        // =====================================================================
+        // CALCULATE BUTTON
+        // =====================================================================
+        calculateButton = new QPushButton("⚡ CALCULATE MUGE", this);
+        calculateButton->setStyleSheet(
+            "QPushButton { background-color: #FF4500; color: white; font-size: 14px; "
+            "    font-weight: bold; min-height: 45px; border-radius: 8px; }"
+            "QPushButton:hover { background-color: #FF6347; }"
+            "QPushButton:pressed { background-color: #E03C00; }"
+        );
+        connect(calculateButton, &QPushButton::clicked, this, &QuantumDesignCalculatorWidget::computeMUGE);
+        mainLayout->addWidget(calculateButton);
+        
+        // =====================================================================
+        // EQUATION DISPLAY
+        // =====================================================================
+        equationDisplay = new QLabel(this);
+        equationDisplay->setWordWrap(true);
+        equationDisplay->setStyleSheet("color: #88AAFF; font-size: 9px; font-family: 'Courier New';");
+        equationDisplay->setText("g_UQFF = (G·M_t)/r_t² × (1+H_t_z) × (1-B_t/B_crit) × (1+F_env) + ...");
+        mainLayout->addWidget(equationDisplay);
+        
+        setLayout(mainLayout);
+    }
+
+private slots:
+    void computeMUGE() {
+        // Physical constants
+        const double G = 6.6743e-11;
+        const double c = 2.998e8;
+        const double Lambda = 1.1e-52;
+        const double hbar = 1.0546e-34;
+        const double t_Hubble = 4.35e17;
+        const double B_crit = 1e11;
+        const double H_0 = 70e3 / 3.086e22;
+        
+        // Get input values
+        double M_0 = inputFields["M_0"]->value();
+        double M_dot = inputFields["M_dot"]->value();
+        double t = inputFields["t"]->value();
+        double r_0 = inputFields["r_0"]->value();
+        double v_r = inputFields["v_r"]->value();
+        double z = inputFields["z"]->value();
+        double B_t = inputFields["B_t"]->value();
+        
+        // Compute time-varying parameters
+        double M_t = M_0 + M_dot * t;
+        double r_t = r_0 + v_r * t;
+        if (r_t <= 0) r_t = 1e-10;  // Avoid division by zero
+        
+        // Hubble parameter at redshift z
+        double H_t_z = H_0 * std::sqrt(0.3 * std::pow(1 + z, 3) + 0.7);
+        
+        // Environmental forces
+        double F_env = inputFields["F_wind"]->value() + inputFields["F_rad"]->value() +
+                       inputFields["F_SN"]->value() + inputFields["F_BH"]->value() +
+                       inputFields["F_η"]->value();
+        
+        // Base gravitational term
+        double base = (G * M_t) / (r_t * r_t) * (1 + H_t_z) * (1 - B_t / B_crit) * (1 + F_env);
+        
+        // Sum of Ug terms
+        double M_ext = inputFields["M_ext"]->value();
+        double r_ext = inputFields["r_ext"]->value();
+        if (r_ext <= 0) r_ext = 1e-10;
+        double sum_u_g = inputFields["U_g1"]->value() + inputFields["U_g2"]->value() +
+                         (G * M_ext) / (r_ext * r_ext) + inputFields["U_g4"]->value();
+        
+        // Inertial term U_i
+        double lambda_I = inputFields["λ_I"]->value();
+        double omega_i = inputFields["ω_i"]->value();
+        double t_n = inputFields["t_n"]->value();
+        double F_RZ = inputFields["F_RZ"]->value();
+        double U_i = lambda_I * (7.09e-37 / 7.09e-36) * omega_i * std::cos(M_PI * t_n) * (1 + F_RZ);
+        
+        // Cosmological constant term
+        double cosmo = Lambda * c * c / 3.0;
+        
+        // Quantum term
+        double Delta_x = inputFields["Δx"]->value();
+        double Delta_p = inputFields["Δp"]->value();
+        double psi_integral = inputFields["ψ_int"]->value();
+        double quantum_term = 0.0;
+        if (Delta_x > 0 && Delta_p > 0) {
+            quantum_term = hbar / std::sqrt(Delta_x * Delta_p) * psi_integral * (2 * M_PI / t_Hubble);
+        }
+        
+        // Fluid buoyancy term
+        double rho_fluid = inputFields["ρ_fluid"]->value();
+        double V = inputFields["V"]->value();
+        double g_local = inputFields["g_local"]->value();
+        double fluid = rho_fluid * V * g_local;
+        
+        // Dark matter perturbation
+        double M_visible = inputFields["M_vis"]->value();
+        double M_DM = inputFields["M_DM"]->value();
+        double delta_rho = inputFields["δ_ρ"]->value();
+        double rho = inputFields["ρ"]->value();
+        if (rho <= 0) rho = 1e-30;
+        double dm_pert = (M_visible + M_DM) * (delta_rho / rho + (3 * G * M_t) / (r_t * r_t * r_t));
+        
+        // Final MUGE
+        double g_UQFF = base + sum_u_g + U_i + cosmo + quantum_term + fluid + dm_pert;
+        
+        // Display result
+        QString result = QString::number(g_UQFF, 'e', 5);
+        lcdDisplay->setText(result);
+        
+        // Update suggestions
+        checkMissingInputs();
+        
+        // Log to EventBus
+        emit computationCompleted("QuantumDesignCalculator", "MUGE", g_UQFF);
+    }
+    
+    void applyFunction(const QString& func) {
+        // Apply math function to currently focused input
+        QDoubleSpinBox* focused = qobject_cast<QDoubleSpinBox*>(QApplication::focusWidget());
+        if (!focused) return;
+        
+        double val = focused->value();
+        double result = val;
+        
+        if (func == "sin") result = std::sin(val);
+        else if (func == "cos") result = std::cos(val);
+        else if (func == "tan") result = std::tan(val);
+        else if (func == "log") result = std::log10(val);
+        else if (func == "ln") result = std::log(val);
+        else if (func == "exp") result = std::exp(val);
+        else if (func == "x^2") result = val * val;
+        else if (func == "sqrt") result = std::sqrt(val);
+        
+        if (!std::isnan(result) && !std::isinf(result)) {
+            focused->setValue(result);
+        }
+    }
+    
+    void insertConstant(double value) {
+        // Insert constant into focused input
+        QDoubleSpinBox* focused = qobject_cast<QDoubleSpinBox*>(QApplication::focusWidget());
+        if (focused) {
+            focused->setValue(value);
+        } else {
+            // Show in display
+            lcdDisplay->setText(QString::number(value, 'e', 10));
+        }
+    }
+    
+    void checkMissingInputs() {
+        QStringList missing;
+        for (auto it = inputFields.begin(); it != inputFields.end(); ++it) {
+            if (it.value()->value() == 0.0) {
+                missing << it.key() + ": Try DeepSearch on Hubble/JWST datasets";
+            }
+        }
+        
+        if (missing.isEmpty()) {
+            suggestionsLabel->setText("✓ All inputs provided");
+            suggestionsLabel->setStyleSheet("color: #00FF00; font-size: 10px;");
+        } else {
+            suggestionsLabel->setText("Missing: " + missing.join(", ").left(200));
+            suggestionsLabel->setStyleSheet("color: #FFAA00; font-size: 10px;");
+        }
+    }
+
+signals:
+    void computationCompleted(const QString& source, const QString& system, double result);
+
+private:
+    void addInputField(QGridLayout* grid, const QString& name, const QString& unit, 
+                       double defaultVal, int& row, int& col) {
+        QString labelText = unit.isEmpty() ? name : QString("%1 (%2):").arg(name, unit);
+        QLabel* label = new QLabel(labelText, this);
+        label->setStyleSheet("font-size: 10px;");
+        
+        QDoubleSpinBox* spin = new QDoubleSpinBox(this);
+        spin->setDecimals(10);
+        spin->setRange(-1e308, 1e308);
+        spin->setValue(defaultVal);
+        spin->setMinimumWidth(100);
+        
+        grid->addWidget(label, row, col * 2);
+        grid->addWidget(spin, row, col * 2 + 1);
+        
+        inputFields[name] = spin;
+        
+        col++;
+        if (col >= 2) {
+            col = 0;
+            row++;
+        }
+    }
+    
+    void addMathButton(QHBoxLayout* layout, const QString& text, std::function<void()> callback) {
+        QPushButton* btn = new QPushButton(text, this);
+        btn->setMinimumSize(40, 35);
+        connect(btn, &QPushButton::clicked, callback);
+        layout->addWidget(btn);
+    }
+    
+    QLineEdit* lcdDisplay;
+    QLabel* suggestionsLabel;
+    QLabel* equationDisplay;
+    QPushButton* calculateButton;
+    QMap<QString, QDoubleSpinBox*> inputFields;
+};
+
 // Calculus Button Field
 class CalculusButtonField : public QDockWidget
 {
@@ -10593,6 +11009,19 @@ MainWindow::MainWindow()
         CalculusButtonField *calcField = new CalculusButtonField(this);
         addDockWidget(Qt::RightDockWidgetArea, calcField); // Attach to right edge
 
+        // QUANTUM DESIGN CALCULATOR: Floating MUGE applet (drag/drop anywhere)
+        // Based on: Quantum Design Calculator Complete Implementation_css_10Jan2026
+        // Features: 1990s LCD aesthetic, MUGE equation computation, math shortcuts
+        QDockWidget* quantumCalcDock = new QDockWidget("⚛️ Quantum Design Calculator", this);
+        QuantumDesignCalculatorWidget* quantumCalc = new QuantumDesignCalculatorWidget(this);
+        quantumCalcDock->setWidget(quantumCalc);
+        quantumCalcDock->setFloating(true);              // Start as floating window
+        quantumCalcDock->setAllowedAreas(Qt::AllDockWidgetAreas);  // Can dock anywhere
+        quantumCalcDock->resize(550, 650);               // Match 1990s calculator form factor
+        quantumCalcDock->move(150, 100);                 // Initial position on screen
+        addDockWidget(Qt::RightDockWidgetArea, quantumCalcDock);
+        quantumCalcDock->setFloating(true);              // Ensure floating after addDockWidget
+
         // CALCULATOR DIALOGS: Create and show scientific and Ramanujan calculators
         ScientificCalculatorDialog *sciCalcDialog = new ScientificCalculatorDialog(this);
         sciCalcDialog->move(50, 50); // Position on screen (50, 50 pixels from top-left)
@@ -10779,6 +11208,69 @@ MainWindow::MainWindow()
                 if (!line.isEmpty())
                     focusList.push_back(line.toStdString());  // Convert QString to std::string
             } });
+    
+    // Setup system tray icon (Qt-based, cross-platform)
+    setupSystemTrayIcon();
+}
+
+// setupSystemTrayIcon - Initialize system tray icon with context menu
+void MainWindow::setupSystemTrayIcon()
+{
+    // Check if system tray is available
+    if (!QSystemTrayIcon::isSystemTrayAvailable()) {
+        qWarning() << "System tray not available on this system";
+        return;
+    }
+    
+    // Create tray icon with application icon
+    trayIcon = new QSystemTrayIcon(this);
+    
+    // Create a simple colored pixmap as icon (guaranteed to work)
+    QPixmap pixmap(32, 32);
+    pixmap.fill(QColor(0, 100, 200));  // Blue color
+    // Draw a "C" for CoAnQi
+    QPainter painter(&pixmap);
+    painter.setPen(Qt::white);
+    painter.setFont(QFont("Arial", 20, QFont::Bold));
+    painter.drawText(pixmap.rect(), Qt::AlignCenter, "C");
+    painter.end();
+    
+    QIcon icon(pixmap);
+    trayIcon->setIcon(icon);
+    trayIcon->setToolTip("CoAnQi Scientific Platform - UQFF");
+    
+    // Create context menu for tray icon
+    trayMenu = new QMenu(this);
+    
+    QAction* showAction = trayMenu->addAction("Show Window");
+    connect(showAction, &QAction::triggered, this, &QMainWindow::showNormal);
+    
+    QAction* hideAction = trayMenu->addAction("Minimize to Tray");
+    connect(hideAction, &QAction::triggered, this, &QMainWindow::hide);
+    
+    trayMenu->addSeparator();
+    
+    QAction* quitAction = trayMenu->addAction("Quit");
+    connect(quitAction, &QAction::triggered, qApp, &QCoreApplication::quit);
+    
+    trayIcon->setContextMenu(trayMenu);
+    
+    // Double-click to show/hide window
+    connect(trayIcon, &QSystemTrayIcon::activated, [this](QSystemTrayIcon::ActivationReason reason) {
+        if (reason == QSystemTrayIcon::DoubleClick) {
+            if (isVisible()) {
+                hide();
+            } else {
+                showNormal();
+                activateWindow();
+            }
+        }
+    });
+    
+    // Show the tray icon
+    trayIcon->show();
+    
+    qDebug() << "System tray icon: ACTIVE";
 }
 
 // Destructor - Called when MainWindow object is destroyed

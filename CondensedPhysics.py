@@ -30,7 +30,7 @@ Copyright: © 2025-2026 Daniel T. Murphy - All Rights Reserved
 import numpy as np
 from enum import Enum
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple, Any, Callable, Union
+from typing import Dict, List, Optional, Tuple, Any, Callable, Union, Set
 import csv
 import os
 import json
@@ -85182,6 +85182,579 @@ MUGE_PERTURBATION = MUGECompressedPerturbation()
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# YANG-MILLS INSTANTON CALCULATOR MODULE
+# Integration from SuperGrok4 Export (Feb 23, 2026)
+# BPST Instanton (Belavin-Polyakov-Schwarz-Tyupkin, 1975)
+# Non-perturbative soliton solutions in Euclidean Yang-Mills theory
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class YangMillsInstantonCalculator:
+    """
+    Yang-Mills Instanton Calculator - BPST and UQFF Extensions
+    
+    Instantons are non-perturbative soliton solutions in Euclidean Yang-Mills theory,
+    representing tunneling events between vacua. Self-dual solutions saturate the
+    Bogomol'nyi bound: S = 8*pi^2 * |k| where k is topological charge.
+    
+    Key equations:
+    - Field strength: F_mu_nu^a = d_mu A_nu^a - d_nu A_mu^a + g * f^abc * A_mu^b * A_nu^c
+    - Self-duality: F_mu_nu = +/- F_dual_mu_nu (BPS equation)
+    - BPST: A_mu^a = 2 * eta^a_mu_nu * x^nu / (x^2 + rho^2)
+    - Action: S = 8*pi^2 (topological, independent of rho)
+    
+    References:
+    - Belavin et al., Phys. Lett. B 59, 85 (1975)
+    - 't Hooft, Phys. Rev. D 14, 3432 (1976)
+    - ADHM: Atiyah et al., Phys. Lett. A 65, 185 (1978)
+    """
+    
+    def __init__(self, gauge_group: str = 'SU2', coupling: float = 1.0):
+        """
+        Initialize Yang-Mills Instanton Calculator
+        
+        Args:
+            gauge_group: 'SU2' or 'SU3' (default SU2 for BPST)
+            coupling: Gauge coupling constant g
+        """
+        self.gauge_group = gauge_group
+        self.g = coupling
+        self.N = 2 if gauge_group == 'SU2' else 3
+        
+        # Physical constants
+        self.action_unit = 8 * np.pi**2  # S = 8*pi^2 for single instanton
+        
+        # Precompute Levi-Civita tensor for efficiency
+        self._levi_civita = self._build_levi_civita()
+        
+    def _build_levi_civita(self) -> np.ndarray:
+        """Build 3D Levi-Civita tensor epsilon_ijk"""
+        eps = np.zeros((3, 3, 3))
+        eps[0, 1, 2] = eps[1, 2, 0] = eps[2, 0, 1] = 1
+        eps[0, 2, 1] = eps[2, 1, 0] = eps[1, 0, 2] = -1
+        return eps
+    
+    def eta_symbol(self, a: int, mu: int, nu: int) -> float:
+        """
+        Compute 't Hooft eta symbol: eta^a_mu_nu
+        
+        't Hooft symbols generalize Pauli matrices to 4D:
+        - eta^a_ij = epsilon_aij (i,j = 1,2,3)
+        - eta^a_i4 = delta_ai
+        - eta^a_4j = -delta_aj
+        
+        Args:
+            a: Color index (1, 2, 3)
+            mu: Spacetime index (1, 2, 3, 4) - Euclidean
+            nu: Spacetime index (1, 2, 3, 4)
+            
+        Returns:
+            eta^a_mu_nu value (-1, 0, or 1)
+        """
+        if mu == nu:
+            return 0.0
+        
+        # Antisymmetric
+        if mu > nu:
+            return -self.eta_symbol(a, nu, mu)
+        
+        # Convert to 0-indexed
+        a_idx = a - 1
+        mu_idx = mu - 1
+        nu_idx = nu - 1
+        
+        if mu == 4:
+            # eta^a_4j = -delta_aj
+            return -1.0 if a == nu else 0.0
+        elif nu == 4:
+            # eta^a_i4 = delta_ai
+            return 1.0 if a == mu else 0.0
+        else:
+            # eta^a_ij = epsilon_aij for i,j = 1,2,3
+            return self._levi_civita[a_idx, mu_idx, nu_idx]
+    
+    def eta_bar_symbol(self, a: int, mu: int, nu: int) -> float:
+        """
+        Compute anti-self-dual 't Hooft symbol: eta_bar^a_mu_nu
+        
+        Related to eta by: eta_bar^a_mu_nu = eta^a_mu_nu with sign flip on 4-components
+        - eta_bar^a_ij = epsilon_aij
+        - eta_bar^a_i4 = -delta_ai
+        - eta_bar^a_4j = delta_aj
+        """
+        if mu == nu:
+            return 0.0
+        if mu > nu:
+            return -self.eta_bar_symbol(a, nu, mu)
+            
+        if mu == 4:
+            return 1.0 if a == nu else 0.0
+        elif nu == 4:
+            return -1.0 if a == mu else 0.0
+        else:
+            return self._levi_civita[a - 1, mu - 1, nu - 1]
+    
+    def gauge_potential(self, x: np.ndarray, rho: float = 1.0, 
+                        x0: np.ndarray = None, anti: bool = False) -> np.ndarray:
+        """
+        BPST instanton gauge potential A_mu^a in singular gauge
+        
+        A_mu^a(x) = 2 * eta^a_mu_nu * (x - x0)^nu / ((x - x0)^2 + rho^2)
+        
+        Args:
+            x: 4D position vector (x1, x2, x3, x4) in Euclidean space
+            rho: Instanton size/scale modulus (default 1.0)
+            x0: Instanton center (default origin)
+            anti: If True, use anti-instanton (eta_bar instead of eta)
+            
+        Returns:
+            A[mu, a] array shape (4, 3) - gauge potential components
+        """
+        if x0 is None:
+            x0 = np.zeros(4)
+        
+        dx = x - x0
+        r2 = np.sum(dx**2)
+        
+        A = np.zeros((4, 3))  # A[mu-1, a-1]
+        
+        eta_func = self.eta_bar_symbol if anti else self.eta_symbol
+        
+        for mu in range(1, 5):
+            for a in range(1, 4):
+                sum_nu = 0.0
+                for nu in range(1, 5):
+                    sum_nu += eta_func(a, mu, nu) * dx[nu - 1]
+                A[mu - 1, a - 1] = 2 * sum_nu / (r2 + rho**2)
+        
+        return A
+    
+    def field_strength(self, x: np.ndarray, rho: float = 1.0,
+                       x0: np.ndarray = None, anti: bool = False) -> np.ndarray:
+        """
+        BPST instanton field strength tensor F_mu_nu^a
+        
+        For self-dual instanton (analytic form):
+        F_mu_nu^a = 12 * rho^2 * eta^a_mu_nu / ((x - x0)^2 + rho^2)^2
+        
+        Args:
+            x: 4D position vector
+            rho: Instanton size
+            x0: Instanton center
+            anti: Anti-instanton flag
+            
+        Returns:
+            F[mu, nu, a] array shape (4, 4, 3)
+        """
+        if x0 is None:
+            x0 = np.zeros(4)
+        
+        dx = x - x0
+        r2 = np.sum(dx**2)
+        
+        F = np.zeros((4, 4, 3))
+        
+        eta_func = self.eta_bar_symbol if anti else self.eta_symbol
+        prefactor = 12 * rho**2 / (r2 + rho**2)**2
+        
+        for mu in range(1, 5):
+            for nu in range(1, 5):
+                if mu == nu:
+                    continue
+                for a in range(1, 4):
+                    F[mu - 1, nu - 1, a - 1] = prefactor * eta_func(a, mu, nu)
+        
+        return F
+    
+    def action_density(self, x: np.ndarray, rho: float = 1.0,
+                       x0: np.ndarray = None) -> float:
+        """
+        Instanton action density: E(x) = (1/4) * F_mu_nu^a * F^mu_nu_a
+        
+        Analytic form: E(x) = 192 * rho^4 / ((x - x0)^2 + rho^2)^4
+        
+        Args:
+            x: 4D position vector
+            rho: Instanton size
+            x0: Instanton center
+            
+        Returns:
+            Action density at point x
+        """
+        if x0 is None:
+            x0 = np.zeros(4)
+        
+        dx = x - x0
+        r2 = np.sum(dx**2)
+        
+        # Analytic form (more efficient than tensor contraction)
+        return 192 * rho**4 / (r2 + rho**2)**4
+    
+    def topological_charge_density(self, x: np.ndarray, rho: float = 1.0,
+                                   x0: np.ndarray = None) -> float:
+        """
+        Topological charge density: q(x) = (1/32*pi^2) * F_mu_nu^a * F_dual^mu_nu_a
+        
+        For self-dual instanton: q(x) = E(x) / (8*pi^2)
+        """
+        return self.action_density(x, rho, x0) / (8 * np.pi**2)
+    
+    def compute_action(self, rho: float = 1.0, n_instantons: int = 1) -> Tuple[float, str]:
+        """
+        Compute total instanton action (topological invariant)
+        
+        S = 8*pi^2 * |k| where k = number of instantons
+        
+        Returns:
+            (action_value, equation_string)
+        """
+        S = self.action_unit * abs(n_instantons)
+        eq = f"S = 8*pi^2 * |k| = 8*pi^2 * {n_instantons} = {S:.6f}"
+        return S, eq
+    
+    def compute_topological_charge(self, n_instantons: int = 1, 
+                                   n_anti: int = 0) -> Tuple[int, str]:
+        """
+        Compute topological (Pontryagin) charge
+        
+        k = (1/32*pi^2) * integral(F wedge F_dual)
+        k = n_instantons - n_anti_instantons
+        """
+        k = n_instantons - n_anti
+        eq = f"k = n_inst - n_anti = {n_instantons} - {n_anti} = {k}"
+        return k, eq
+    
+    def compute_tunneling_rate(self, rho: float = 1.0, g: float = None) -> Tuple[float, str]:
+        """
+        Compute instanton-induced tunneling rate (dilute gas approximation)
+        
+        Gamma ~ exp(-S) * D(rho) * (determinant factors)
+        
+        For vacuum tunneling: Gamma ~ exp(-8*pi^2/g^2)
+        """
+        if g is None:
+            g = self.g
+        
+        S_eff = 8 * np.pi**2 / g**2
+        Gamma = np.exp(-S_eff)
+        
+        eq = f"Gamma ~ exp(-8*pi^2/g^2) = exp(-{S_eff:.2f}) = {Gamma:.4e}"
+        return Gamma, eq
+    
+    def compute_instanton_profile(self, r_range: np.ndarray = None, 
+                                  rho: float = 1.0) -> Dict[str, np.ndarray]:
+        """
+        Compute radial instanton profile at x4=0 slice
+        
+        Returns:
+            Dictionary with 'r', 'action_density', 'A_magnitude', 'F_magnitude'
+        """
+        if r_range is None:
+            r_range = np.linspace(0.01, 5 * rho, 100)
+        
+        E = np.zeros_like(r_range)
+        A_mag = np.zeros_like(r_range)
+        F_mag = np.zeros_like(r_range)
+        
+        for i, r in enumerate(r_range):
+            x = np.array([r, 0, 0, 0])
+            E[i] = self.action_density(x, rho)
+            A = self.gauge_potential(x, rho)
+            A_mag[i] = np.sqrt(np.sum(A**2))
+            F = self.field_strength(x, rho)
+            F_mag[i] = np.sqrt(np.sum(F**2))
+        
+        return {
+            'r': r_range,
+            'action_density': E,
+            'A_magnitude': A_mag,
+            'F_magnitude': F_mag,
+            'rho': rho
+        }
+    
+    def compute(self, x: np.ndarray = None, rho: float = 1.0, 
+                mode: str = 'full') -> Dict[str, Any]:
+        """
+        Main compute interface for BPST instanton
+        
+        Args:
+            x: 4D position (default: origin)
+            rho: Instanton size
+            mode: 'full', 'action', 'field', or 'profile'
+            
+        Returns:
+            Dictionary with computed quantities and equations
+        """
+        if x is None:
+            x = np.array([1.0, 0, 0, 0])
+        
+        result = {
+            'gauge_group': self.gauge_group,
+            'rho': rho,
+            'x': x.tolist(),
+        }
+        
+        if mode in ['full', 'field']:
+            A = self.gauge_potential(x, rho)
+            F = self.field_strength(x, rho)
+            result['A_mu_a'] = A
+            result['F_mu_nu_a'] = F
+            result['A_equation'] = "A_mu^a = 2 * eta^a_mu_nu * x^nu / (x^2 + rho^2)"
+            result['F_equation'] = "F_mu_nu^a = 12 * rho^2 * eta^a_mu_nu / (x^2 + rho^2)^2"
+        
+        if mode in ['full', 'action']:
+            E = self.action_density(x, rho)
+            S, S_eq = self.compute_action(rho)
+            k, k_eq = self.compute_topological_charge()
+            Gamma, Gamma_eq = self.compute_tunneling_rate(rho)
+            
+            result['action_density'] = E
+            result['total_action'] = S
+            result['topological_charge'] = 1
+            result['tunneling_rate'] = Gamma
+            result['action_equation'] = S_eq
+            result['charge_equation'] = k_eq
+            result['tunneling_equation'] = Gamma_eq
+        
+        if mode == 'profile':
+            result['profile'] = self.compute_instanton_profile(rho=rho)
+        
+        return result
+
+
+class UQFFInstantonExtension:
+    """
+    UQFF Extensions for Yang-Mills Instantons
+    
+    Extends standard 4D instantons to higher-dimensional UQFF framework:
+    - 10D/11D embedding with Kaluza-Klein modes
+    - Dilaton coupling for string theory connection
+    - Gravitational instanton interactions
+    - Connection to UQFF 26-layer gravity model
+    
+    UQFF Action: S_UQFF = integral d^10z sqrt(-g) [ R + Tr(F_MN^2) + ... ]
+    """
+    
+    def __init__(self, base_calculator: YangMillsInstantonCalculator = None):
+        """Initialize with base 4D instanton calculator"""
+        self.base = base_calculator or YangMillsInstantonCalculator()
+        
+        # UQFF constants
+        self.uqff_kappa = 0.0005  # UQFF calibration constant
+        self.alpha_prime = 1e-34  # String scale squared (m^2)
+        self.n_extra_dims = 6  # Calabi-Yau dimensions
+        
+    def dilaton_coupling(self, phi: float) -> float:
+        """
+        String dilaton coupling factor
+        
+        g_s = exp(phi) (string coupling from dilaton VEV)
+        """
+        return np.exp(phi)
+    
+    def kaluza_klein_warping(self, y_kk: np.ndarray) -> float:
+        """
+        Metric warping factor from extra dimensions
+        
+        Args:
+            y_kk: Coordinates in extra dimensions (6D array)
+            
+        Returns:
+            Warping factor sqrt(det(g_internal))
+        """
+        # Toy metric: g_ii = 1 + 0.1*sin(y_i)^2 (Calabi-Yau approximation)
+        return np.sqrt(np.prod([1 + 0.1 * np.sin(y)**2 for y in y_kk]))
+    
+    def uqff_action_density(self, x: np.ndarray, y_kk: np.ndarray,
+                            rho: float = 1.0, phi: float = 0.0) -> float:
+        """
+        UQFF-extended instanton action density
+        
+        E_UQFF = E_4D / g_s^2 * sqrt(det(g_KK))
+        
+        Args:
+            x: 4D spacetime coordinates
+            y_kk: 6D internal (Kaluza-Klein) coordinates
+            rho: Instanton size
+            phi: Dilaton field value
+            
+        Returns:
+            UQFF action density
+        """
+        E_4d = self.base.action_density(x, rho)
+        g_s = self.dilaton_coupling(phi)
+        kk_factor = self.kaluza_klein_warping(y_kk)
+        
+        return E_4d / g_s**2 * kk_factor
+    
+    def gravitational_instanton_coupling(self, M: float, r: float) -> float:
+        """
+        Coupling to gravitational instantons (Euclidean black holes)
+        
+        In UQFF, YM instantons couple to spacetime curvature:
+        R_mu_nu = Tr(F_mu_lambda * F_nu^lambda)
+        
+        Returns effective Hawking-Turok instanton contribution
+        """
+        G = 6.67430e-11  # Gravitational constant
+        c = 2.998e8  # Speed of light
+        
+        # Schwarzschild radius
+        r_s = 2 * G * M / c**2
+        
+        # Gravitational instanton action ~ M^2/M_pl^2
+        M_pl = 2.176e-8  # Planck mass (kg)
+        S_grav = (M / M_pl)**2
+        
+        return np.exp(-S_grav) * (1 - r_s / max(r, r_s + 1e-10))
+    
+    def uqff_layer_connection(self, layer: int, x: np.ndarray, 
+                              rho: float = 1.0) -> Dict[str, float]:
+        """
+        Connect instanton to UQFF 26-layer gravity model
+        
+        Each gravity layer delta_Ug_i couples to instantons via:
+        delta_Ug_i_inst = delta_Ug_i * exp(-S_inst/kappa_i)
+        
+        Args:
+            layer: UQFF layer index (1-26)
+            x: Position in 4D
+            rho: Instanton size
+            
+        Returns:
+            Layer-specific instanton corrections
+        """
+        # Base instanton contribution
+        E = self.base.action_density(x, rho)
+        S, _ = self.base.compute_action(rho)
+        
+        # Layer-dependent UQFF coupling
+        kappa_layer = self.uqff_kappa * (1 + 0.05 * layer)
+        
+        # Instanton tunneling factor for this layer
+        tunnel_factor = np.exp(-S / (8 * np.pi**2 * kappa_layer))
+        
+        return {
+            'layer': layer,
+            'instanton_action_density': E,
+            'tunnel_factor': tunnel_factor,
+            'uqff_correction': E * tunnel_factor,
+            'equation': f"delta_Ug_{layer}_inst = E(x) * exp(-S/(8*pi^2*kappa_{layer}))"
+        }
+    
+    def fermion_zero_modes(self, n_flavors: int = 2, k: int = 1) -> Tuple[int, str]:
+        """
+        Compute instanton-induced fermion zero modes
+        
+        Index theorem: n_zero = 2 * N_f * |k|
+        
+        These zero modes induce 't Hooft vertices violating
+        axial U(1)_A symmetry (strong CP, baryogenesis).
+        """
+        n_zero = 2 * n_flavors * abs(k)
+        eq = f"n_zero = 2 * N_f * |k| = 2 * {n_flavors} * {abs(k)} = {n_zero}"
+        return n_zero, eq
+    
+    def sphaleron_barrier(self, T: float, v: float = 246.0) -> Tuple[float, str]:
+        """
+        Compute thermal sphaleron barrier energy
+        
+        E_sph ~ v/g ~ 10 TeV for electroweak
+        
+        Args:
+            T: Temperature (GeV)
+            v: Higgs VEV (GeV, default 246 for electroweak)
+            
+        Returns:
+            Sphaleron energy and equation
+        """
+        g_weak = 0.65  # Weak coupling
+        E_sph = v / g_weak  # Rough estimate
+        
+        # Thermal rate
+        kappa = 10  # Numerical coefficient
+        Gamma_sph = kappa * (g_weak * T)**4 * np.exp(-E_sph / T) if T > 0 else 0
+        
+        eq = f"E_sph ~ v/g = {v}/{g_weak:.2f} = {E_sph:.1f} GeV"
+        return E_sph, eq
+    
+    def compute(self, x: np.ndarray = None, y_kk: np.ndarray = None,
+                rho: float = 1.0, phi: float = 0.0,
+                layer: int = 13) -> Dict[str, Any]:
+        """
+        Comprehensive UQFF instanton computation
+        
+        Args:
+            x: 4D position
+            y_kk: 6D Kaluza-Klein coordinates
+            rho: Instanton size
+            phi: Dilaton field
+            layer: UQFF gravity layer
+            
+        Returns:
+            Dictionary with all UQFF instanton quantities
+        """
+        if x is None:
+            x = np.array([1.0, 0, 0, 0])
+        if y_kk is None:
+            y_kk = np.zeros(6)
+        
+        # Base 4D calculation
+        base_result = self.base.compute(x, rho, mode='full')
+        
+        # UQFF extensions
+        E_uqff = self.uqff_action_density(x, y_kk, rho, phi)
+        g_s = self.dilaton_coupling(phi)
+        kk_factor = self.kaluza_klein_warping(y_kk)
+        layer_result = self.uqff_layer_connection(layer, x, rho)
+        n_zero, zero_eq = self.fermion_zero_modes()
+        
+        return {
+            **base_result,
+            'uqff_action_density': E_uqff,
+            'dilaton_coupling': g_s,
+            'kaluza_klein_factor': kk_factor,
+            'layer_connection': layer_result,
+            'fermion_zero_modes': n_zero,
+            'zero_mode_equation': zero_eq,
+            'uqff_equation': "E_UQFF = E_4D / g_s^2 * sqrt(det(g_KK))",
+            'framework': 'UQFF 26-Layer Instanton Extension'
+        }
+
+
+# Global instances for easy access
+YANG_MILLS_INSTANTON = YangMillsInstantonCalculator()
+UQFF_INSTANTON = UQFFInstantonExtension(YANG_MILLS_INSTANTON)
+
+
+def solve_yang_mills_instanton(rho: float = 1.0, x: np.ndarray = None,
+                               mode: str = 'full') -> Dict[str, Any]:
+    """
+    User-friendly interface to solve Yang-Mills instanton problem
+    
+    Example:
+        >>> result = solve_yang_mills_instanton(rho=2.0)
+        >>> print(result['total_action'])  # 78.9568...
+        >>> print(result['tunneling_rate'])  # exp(-8*pi^2)
+    """
+    return YANG_MILLS_INSTANTON.compute(x, rho, mode)
+
+
+def solve_uqff_instanton(rho: float = 1.0, layer: int = 13,
+                         phi: float = 0.0) -> Dict[str, Any]:
+    """
+    Solve UQFF-extended instanton with 26-layer gravity coupling
+    
+    Example:
+        >>> result = solve_uqff_instanton(rho=1.0, layer=13)
+        >>> print(result['uqff_action_density'])
+        >>> print(result['layer_connection']['tunnel_factor'])
+    """
+    x = np.array([1.0, 0, 0, 0])
+    y_kk = np.zeros(6)
+    return UQFF_INSTANTON.compute(x, y_kk, rho, phi, layer)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # MODULE EXPORTS AND TEST
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -85195,8 +85768,9 @@ __all__ = [
     'FLOYD_SWEET_CALCULATOR', 'COSMIC_EGG_CALCULATOR', 
     'HEISENBERG_CALCULATOR', 'NEGATIVE_TIME_CALCULATOR',
     
-    # Main entry point
+    # Main entry points
     'solve',
+    'solve_galaxy_rotation',
     
     # Quantum/Wave functions (standalone)
     'compute_quantum_uncertainty_term', 'compute_dark_matter_perturbation',
@@ -85362,7 +85936,104 @@ __all__ = [
     
     # Fourth Pass Calculators Dictionary
     'FOURTH_PASS_CALCULATORS',
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # YANG-MILLS INSTANTON CALCULATOR (Feb 23, 2026)
+    # BPST Instanton + UQFF Extensions from SuperGrok4 Export
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # Yang-Mills Instanton Classes
+    'YangMillsInstantonCalculator',
+    'UQFFInstantonExtension',
+    
+    # Global Instances
+    'YANG_MILLS_INSTANTON',
+    'UQFF_INSTANTON',
+    
+    # Solver Functions
+    'solve_yang_mills_instanton',
+    'solve_uqff_instanton',
 ]
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CONVENIENCE FUNCTION: solve_galaxy_rotation
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Known galaxy catalog with default parameters
+_GALAXY_CATALOG = {
+    'NGC3596': {'M': 5e10 * 1.989e30, 'r': 2e20, 'type': 'Spiral'},
+    'M31': {'M': 1.5e12 * 1.989e30, 'r': 7.5e20, 'type': 'Spiral'},
+    'M51': {'M': 1.6e11 * 1.989e30, 'r': 2.5e20, 'type': 'Spiral'},
+    'NGC1365': {'M': 2e11 * 1.989e30, 'r': 3e20, 'type': 'Barred Spiral'},
+    'NGC4038': {'M': 1e11 * 1.989e30, 'r': 2e20, 'type': 'Interacting'},
+    'M87': {'M': 6.5e12 * 1.989e30, 'r': 1e21, 'type': 'Elliptical'},
+    'Milky_Way': {'M': 1.5e12 * 1.989e30, 'r': 5e20, 'type': 'Spiral'},
+    'Sgr_A': {'M': 4e6 * 1.989e30, 'r': 1.3e17, 'type': 'SMBH'},
+}
+
+def solve_galaxy_rotation(galaxy_name: str, r: float = None, M: float = None) -> dict:
+    """
+    Solve galaxy rotation curve using 26-layer UQFF triadic gravity.
+    
+    Parameters:
+        galaxy_name: Galaxy identifier (e.g., 'NGC3596', 'M31', 'M51')
+        r: Override radius (m), uses catalog default if None
+        M: Override mass (kg), uses catalog default if None
+    
+    Returns:
+        dict with:
+            - 'name': Galaxy name
+            - 'total_g': Total 26-layer gravitational acceleration (m/s^2)
+            - 'v_circ': Circular rotation velocity (m/s)
+            - 'v_circ_km_s': Circular velocity in km/s
+            - 'layers': Individual layer contributions
+            - 'equation': Long-form equation string
+    
+    Example:
+        >>> solve_galaxy_rotation('NGC3596')
+        >>> solve_galaxy_rotation('M31', r=5e20)
+    """
+    # Get galaxy data from catalog or use generic defaults
+    galaxy_data = _GALAXY_CATALOG.get(galaxy_name, {
+        'M': 1e11 * 1.989e30,  # Default: 10^11 solar masses
+        'r': 2e20,             # Default: ~6.5 kpc
+        'type': 'Unknown'
+    })
+    
+    # Override with user-provided values
+    M_use = M if M is not None else galaxy_data['M']
+    r_use = r if r is not None else galaxy_data['r']
+    
+    # Use TriadicGravityCalculator for 26-layer computation
+    calc = TriadicGravityCalculator()
+    result = calc.compute_26_layer_sum(M=M_use, r=r_use)
+    
+    # Compute circular rotation velocity: v = sqrt(g * r)
+    total_g = result['total_g']
+    v_circ = np.sqrt(total_g * r_use) if total_g > 0 else 0.0
+    
+    # Build long-form equation string
+    equation = (
+        f"g_UQFF({galaxy_name}) = sum(i=1 to 26) [G*M/r^2 * 10^(i/26) * Q_i * [UA]_i * [SCm]_i]\n"
+        f"  M = {M_use:.3e} kg ({M_use / 1.989e30:.2e} M_sun)\n"
+        f"  r = {r_use:.3e} m ({r_use / 3.086e16:.2f} pc)\n"
+        f"  g_total = {total_g:.4e} m/s^2\n"
+        f"  v_circ = sqrt(g * r) = {v_circ:.4e} m/s = {v_circ/1e3:.2f} km/s"
+    )
+    
+    return {
+        'name': galaxy_name,
+        'type': galaxy_data.get('type', 'Unknown'),
+        'M': M_use,
+        'r': r_use,
+        'total_g': total_g,
+        'v_circ': v_circ,
+        'v_circ_km_s': v_circ / 1e3,
+        'layers': result['layers'],
+        'n_layers': result['n_layers'],
+        'equation': equation
+    }
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -97333,19 +98004,19 @@ if __name__ == "__main__":
     # Test SOURCE4_WOLFRAM Helpers
     print("\n[SOURCE4_WOLFRAM Helper Functions]")
     mu_s, mu_s_eq = MU_S_HELPER.compute()
-    print(f"  MuSTerm: μS = {mu_s:.4e} H/m")
+    print(f"  MuSTerm: mu_S = {mu_s:.4e} H/m")
     
     grad_ms, grad_eq = GRAD_MS_R_HELPER.compute(M_s=1e25, R=1e7)
-    print(f"  GradMsRTerm: ∇M_s/R = {grad_ms:.4e} A/m³")
+    print(f"  GradMsRTerm: grad(M_s/R) = {grad_ms:.4e} A/m^3")
     
     B_j, B_eq = B_J_HELPER.compute(B_0=1e11, r=1e4, j=13)
     print(f"  BjTerm (layer 13): B_j = {B_j:.4e} T")
     
     omega_st, omega_eq = OMEGA_ST_HELPER.compute(r=1e-10)
-    print(f"  OmegaSTTerm: ω_ST = {omega_st:.4e} rad/s")
+    print(f"  OmegaSTTerm: omega_ST = {omega_st:.4e} rad/s")
     
     mu_J, mu_J_eq = MU_J_HELPER.compute_electron_spin()
-    print(f"  MuJTerm (electron): μJ = {mu_J:.4e} J/T")
+    print(f"  MuJTerm (electron): mu_J = {mu_J:.4e} J/T")
     
     # Test MUGE Compressed Components
     print("\n[MUGE Compressed 9-Term Gravity]")
@@ -97371,16 +98042,16 @@ if __name__ == "__main__":
     print(f"  NegativeMassTrappingModel: F_trap = {F_trap:.4e} N")
     
     Phi_wall, Phi_eq = GRAVITY_WALL_CALC.compute_wall_potential(r=1e20)
-    print(f"  UniversalGravityWallCalculator: Φ_wall = {Phi_wall:.4e} J")
+    print(f"  UniversalGravityWallCalculator: Phi_wall = {Phi_wall:.4e} J")
     
     delta_chaos, chaos_eq = PI_CHAOS_CALC.compute_chaotic_decimal(t=1e10)
-    print(f"  PiMeanChaosGradientCalculator: δ_chaos = {delta_chaos:.4e}")
+    print(f"  PiMeanChaosGradientCalculator: delta_chaos = {delta_chaos:.4e}")
     
     f_quantum, f_eq = VOLUME_FOCUS_CALC.compute_quantum_focus_frequency(V_void=1e15)
     print(f"  VolumeCubedVacuumFocusCalculator: f_quantum = {f_quantum:.4e} Hz")
     
     delta_p, p_eq = NEUTRINO_PUSH_CALC.compute_momentum_push()
-    print(f"  NeutrinoPushCalculator: Δp = {delta_p:.4e} kg·m/s")
+    print(f"  NeutrinoPushCalculator: Delta_p = {delta_p:.4e} kg*m/s")
     
     f_io, io_eq = MANIFOLD_TRANSITION_CALC.compute_inside_out_factor(t=1e15)
     print(f"  MultiManifoldTransitionCalculator: f_io = {f_io:.4f}")

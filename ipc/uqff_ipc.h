@@ -30,6 +30,9 @@
 #include <unordered_map>
 
 #ifdef _WIN32
+#ifndef NOMINMAX
+#define NOMINMAX  // Prevent min/max macro conflicts with std::min/std::max
+#endif
 #include <windows.h>
 #else
 #include <sys/mman.h>
