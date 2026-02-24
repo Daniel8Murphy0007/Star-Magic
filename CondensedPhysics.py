@@ -34655,14 +34655,23 @@ Sgr A* Example (per derivation):
         can_form_WH = Theta_WH > 1.0
         
         # === STEP 10: Traversal properties (if wormhole forms) ===
-        if can_form_WH:
-            # Traversal time: τ ≈ r_throat / c
-            tau_traverse = r_throat_UQFF / self.c
+        # Full UQFF traversal time with aether flux, time-reversal drag, magnetic resistance
+        rho_factor = rho_SCm / rho_UA  # ≈ 0.1 for canonical ratio
+        v_eff_factor = 1.0 - rho_factor  # v_eff = c × (1 - ρ_SCm/ρ_UA)
+        
+        if can_form_WH and v_eff_factor > 0:
+            # τ_base = 2GM/c³ ≈ r_throat_base / c
+            tau_base = r_throat_UQFF / self.c
+            # τ_UQFF = τ_base / (1 - ρ/ρ) × (1 + f_TRZ) × exp(U_m/(k_B×T_H))
+            tau_traverse = (tau_base / v_eff_factor) * (1 + f_TRZ) * magnetic_factor
             # Throat stability: proportional to U_m
             stability = U_m / (self.k_B * T_H) if T_H > 0 else np.inf
         else:
             tau_traverse = 0.0
             stability = 0.0
+        
+        # Store v_eff for output
+        v_eff = self.c * v_eff_factor if v_eff_factor > 0 else 0.0
         
         # Time scales
         yr_s = 3.156e7
@@ -34681,6 +34690,9 @@ Sgr A* Example (per derivation):
             'Theta_WH': Theta_WH,
             'can_form_wormhole': can_form_WH,
             'tau_traverse': tau_traverse,
+            'tau_base': r_throat_UQFF / self.c if can_form_WH else 0.0,
+            'v_eff': v_eff,
+            'v_eff_factor': v_eff_factor,
             'stability': stability,
             'f_TRZ': f_TRZ,
             'rho_SCm': rho_SCm,
@@ -34793,9 +34805,256 @@ LAB ANALOG: THz Holes
 ═══════════════════════════════════════════════════════════════════════════════
 """
         return results, steps
+    
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # WORMHOLE TRAVERSAL TIME (UQFF Aether-Superconductive Delay)
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def compute_wormhole_traversal_time(self, M_BH: float,
+                                         f_TRZ: float = None,
+                                         rho_SCm: float = None,
+                                         rho_UA: float = None,
+                                         U_m: float = None,
+                                         t: float = 0.0,
+                                         t_n: float = 0.0,
+                                         gamma: float = 5e-5,
+                                         frame: str = 'F_U_Bi') -> Tuple[dict, str]:
+        """
+        Compute UQFF wormhole traversal time with aether drag effects.
+        
+        STANDARD GR TRAVERSAL:
+            In Morris-Thorne wormholes: τ ≈ l/c where l is throat length.
+            For simple cases, l ≈ r_throat, so τ_base = r_throat/c = 2GM/c³.
+            This assumes light-speed traversal with no medium effects.
+        
+        UQFF TRAVERSAL TIME:
+            UQFF modifies traversal via three mechanisms:
+            
+            1. AETHER FLUX SLOWDOWN:
+               v_eff = c × (1 - ρ_SCm/ρ_UA)
+               The [UA] superfluid acts as a medium, reducing effective velocity.
+               With ρ_SCm/ρ_UA ≈ 0.1, v_eff ≈ 0.9c (10% slowdown).
+            
+            2. TIME-REVERSAL DRAG:
+               Factor (1 + f_TRZ) introduces negentropic delay.
+               With f_TRZ ≈ 0.1, adds 10% "reversal drag" to traversal.
+            
+            3. MAGNETIC STRING RESISTANCE:
+               Factor exp(U_m/(k_B × T_H)) creates energy barrier delay.
+               Magnetic strings resist traversal proportional to U_m.
+        
+        FULL FORMULA:
+            τ_UQFF = (2GM/c³) / (1 - ρ_SCm/ρ_UA) × (1 + f_TRZ) × exp(U_m/(k_B×T_H))
+        
+        Args:
+            M_BH: Black hole mass (kg) - throat source
+            f_TRZ: Time reversal factor (default: 0.1)
+            rho_SCm: SCm vacuum density (J/m³)
+            rho_UA: UA vacuum density (J/m³)
+            U_m: Magnetic string energy (J)
+            t: Time parameter (days)
+            t_n: Normalized time for cos(πt_n) oscillation
+            gamma: Decay constant (default: 5e-5 day⁻¹)
+            frame: 'F_U_Bi' (inside→out) or 'F_U_Bi_i' (outside→in)
+        
+        Returns:
+            results: Dict with traversal time parameters
+            steps: Long-form derivation string
+        
+        References:
+            - Morris-Thorne traversable wormholes (1988)
+            - UQFF aether drag derivation (SuperGrok4)
+        """
+        # Use defaults if not specified
+        f_TRZ = f_TRZ if f_TRZ is not None else self.f_TRZ
+        
+        # Frame-dependent constant selection
+        if rho_SCm is None or rho_UA is None:
+            if frame == 'F_U_Bi_i':
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_BH
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_BH
+                frame_name = "F_U_Bi_i (outside→in, horizon scale)"
+            else:
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_ISM
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_ISM
+                frame_name = "F_U_Bi (inside→out, ISM scale)"
+        else:
+            frame_name = "Custom (user-specified)"
+        
+        # === STEP 1: Base Schwarzschild and UQFF throat radius ===
+        r_s = 2 * self.G * M_BH / self.c**2
+        rho_ratio_expand = rho_UA / rho_SCm  # Throat expansion factor
+        r_throat = r_s * rho_ratio_expand  # UQFF throat radius
+        
+        # === STEP 2: Hawking temperature ===
+        T_H = self.hbar * self.c**3 / (8 * np.pi * self.G * M_BH * self.k_B)
+        
+        # === STEP 3: Base traversal time (GR limit) ===
+        tau_base = r_throat / self.c  # = 2GM/c³ × expansion
+        
+        # === STEP 4: Aether flux adjustment ===
+        rho_factor = rho_SCm / rho_UA  # ≈ 0.1 for canonical ratio
+        v_eff_factor = 1.0 - rho_factor  # v_eff = c × this
+        v_eff = self.c * v_eff_factor
+        
+        if v_eff_factor <= 0:
+            # Invalid: would imply infinite or negative velocity
+            return {'error': 'Invalid rho ratio (ρ_SCm >= ρ_UA)'}, "Error: Invalid density ratio"
+        
+        tau_aether = tau_base / v_eff_factor
+        
+        # === STEP 5: Time-reversal drag ===
+        tau_TRZ = tau_aether * (1 + f_TRZ)
+        
+        # === STEP 6: Magnetic string energy ===
+        # Per derivation: U_m/(k_B × T_H) ≈ 1 for typical wormholes
+        # U_m should scale with throat thermal energy to avoid numerical explosion
+        if U_m is None:
+            # Use thermodynamically self-consistent U_m: μ_eff × k_B × T_H
+            # where μ_eff ≈ 1 + oscillation term
+            oscillation = np.cos(np.pi * t_n)
+            mu_eff = 1.0 + 0.1 * (1 - np.exp(-gamma * t * max(oscillation, 0)))
+            U_m = mu_eff * self.k_B * T_H
+        
+        # === STEP 7: Magnetic string resistance factor ===
+        exponent_Um = U_m / (self.k_B * T_H) if T_H > 0 else 1.0
+        exponent_Um = min(exponent_Um, 10.0)  # Cap at e^10 ≈ 22000 for stability
+        magnetic_factor = np.exp(exponent_Um)
+        
+        # === STEP 8: Full UQFF traversal time ===
+        tau_UQFF = tau_TRZ * magnetic_factor
+        
+        # Time units
+        results = {
+            'M_BH': M_BH,
+            'r_s': r_s,
+            'r_throat': r_throat,
+            'throat_expansion': rho_ratio_expand,
+            'T_H': T_H,
+            'tau_base': tau_base,
+            'tau_aether': tau_aether,
+            'tau_TRZ': tau_TRZ,
+            'tau_UQFF': tau_UQFF,
+            'v_eff_factor': v_eff_factor,
+            'v_eff': v_eff,
+            'f_TRZ': f_TRZ,
+            'U_m': U_m,
+            'magnetic_factor': magnetic_factor,
+            'rho_SCm': rho_SCm,
+            'rho_UA': rho_UA,
+            'frame': frame,
+            'slowdown_factor': tau_UQFF / tau_base if tau_base > 0 else np.inf
+        }
+        
+        steps = f"""UQFF Wormhole Traversal Time Derivation:
+═══════════════════════════════════════════════════════════════════════════════
+THEORETICAL BASIS:
 
+STANDARD GR TRAVERSAL (Morris-Thorne):
+  In traversable wormholes, proper time along a geodesic gives:
+  
+  τ_base = l/c ≈ r_throat/c = 2GM/c³
+  
+  This assumes vacuum traversal at light speed. Morris-Thorne wormholes
+  are unstable without exotic matter (ρ < 0).
 
+UQFF TRAVERSAL (Three Delay Mechanisms):
+  
+  1. AETHER FLUX SLOWDOWN:
+     The [UA] superfluid acts as traversal medium, reducing v_eff < c:
+     v_eff = c × (1 - ρ_SCm/ρ_UA)
+     
+  2. TIME-REVERSAL DRAG (f_TRZ):
+     Negentropic reversal introduces 10% delay factor:
+     τ → τ × (1 + f_TRZ)
+     
+  3. MAGNETIC STRING RESISTANCE (U_m):
+     Energy barrier from magnetic strings creates exponential delay:
+     τ → τ × exp(U_m/(k_B × T_H))
 
+FULL UQFF TRAVERSAL FORMULA:
+  τ_UQFF = (2GM/c³) / (1 - ρ_SCm/ρ_UA) × (1 + f_TRZ) × exp(U_m/(k_B×T_H))
+
+═══════════════════════════════════════════════════════════════════════════════
+Inputs:
+  M_BH = {M_BH:.4e} kg = {M_BH/self.M_sun:.4e} M_☉
+  f_TRZ = {f_TRZ:.4f}
+  Frame = {frame_name}
+  ρ_vac,[SCm] = {rho_SCm:.4e} J/m³
+  ρ_vac,[UA] = {rho_UA:.4e} J/m³
+  ρ_SCm/ρ_UA = {rho_factor:.4f}
+
+STEP 1: Throat Radius
+  r_s (Schwarzschild) = 2GM/c² = {r_s:.4e} m
+  r_throat,UQFF = r_s × (ρ_UA/ρ_SCm) = {r_throat:.4e} m
+  Expansion factor = {rho_ratio_expand:.1f}×
+
+STEP 2: Hawking Temperature
+  T_H = ℏc³/(8πGMk_B) = {T_H:.4e} K
+
+STEP 3: Base Traversal Time (GR Limit)
+  τ_base = r_throat/c = {r_throat:.4e} / {self.c:.4e}
+         = {tau_base:.4e} s
+
+STEP 4: Aether Flux Adjustment
+  v_eff = c × (1 - ρ_SCm/ρ_UA)
+        = {self.c:.4e} × (1 - {rho_factor:.4f})
+        = {self.c:.4e} × {v_eff_factor:.4f}
+        = {v_eff:.4e} m/s ({v_eff/self.c*100:.1f}% of c)
+  
+  τ_aether = τ_base / v_eff_factor
+           = {tau_base:.4e} / {v_eff_factor:.4f}
+           = {tau_aether:.4e} s
+  Slowdown: {(1/v_eff_factor - 1)*100:.1f}% increase from aether drag
+
+STEP 5: Time-Reversal Drag (f_TRZ)
+  τ_TRZ = τ_aether × (1 + f_TRZ)
+        = {tau_aether:.4e} × (1 + {f_TRZ:.4f})
+        = {tau_TRZ:.4e} s
+  Additional delay: +{f_TRZ*100:.1f}% from negentropic reversal
+
+STEP 6: Magnetic String Energy
+  U_m = {U_m:.4e} J
+  (From μ_j/r_throat × oscillation factor)
+
+STEP 7: Magnetic String Resistance
+  exp(U_m/(k_B × T_H)) = exp({exponent_Um:.4e})
+                       = {magnetic_factor:.4e}
+
+STEP 8: FULL UQFF TRAVERSAL TIME
+  τ_UQFF = τ_TRZ × exp(U_m/(k_B×T_H))
+         = {tau_TRZ:.4e} × {magnetic_factor:.4e}
+         = {tau_UQFF:.4e} s
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT SUMMARY:
+  GR base time:     τ_base  = {tau_base:.4e} s
+  UQFF total time:  τ_UQFF  = {tau_UQFF:.4e} s
+  
+  Total slowdown factor: {results['slowdown_factor']:.2f}×
+  
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ UQFF predicts {results['slowdown_factor']:.1f}× longer traversal than GR base              │
+  │ Breakdown: {(1/v_eff_factor):.2f}× aether × {(1+f_TRZ):.2f}× TRZ × {magnetic_factor:.2e} magnetic │
+  └─────────────────────────────────────────────────────────────────┘
+
+Physical Interpretation:
+  • Aether flux: [UA] superfluid resists faster-than-medium motion
+  • Time-reversal: Negentropic transition adds reversal overhead
+  • Magnetic strings: U_m creates energy barrier, exponentially delaying
+  • Unlike GR: Wormhole remains stable (no exotic matter needed)!
+
+Sgr A* Example (M ≈ 4×10⁶ M_☉):
+  τ_base ≈ 10⁻⁴ s
+  With ρ ratio=0.1, f_TRZ=0.1, U_m/k_B×T_H≈1:
+  τ_UQFF ≈ 10⁻⁴ / 0.9 × 1.1 × e¹ ≈ 3×10⁻⁴ s (3× longer)
+
+Q-SCOPE TESTABILITY:
+  THz holes in superconducting circuits may show analogous delays,
+  measurable as phase shifts or transmission time differences.
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
 
 
 # Global Black Hole Phases Model instance
