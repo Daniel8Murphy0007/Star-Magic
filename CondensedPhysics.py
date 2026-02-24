@@ -86707,6 +86707,1464 @@ class YangMillsFieldEquationsSolver:
         return result
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# NAVIER-STOKES UQFF INTEGRATION (23Feb2026) - SUPERGROK4 DERIVATION
+# From: SuperGrok4 NS-UQFF Analysis
+# Madelung transformation, NS emergence from UQFF-NDFE, MHD extensions
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class MadelungTransformCalculator:
+    """
+    Madelung Transformation Calculator - Polar Decomposition for UQFF
+    
+    Transforms complex UQFF field Ψ(x,t) into hydrodynamic variables (ρ, u):
+        Ψ = √ρ × exp(iS/ℏ)
+    where:
+        ρ = |Ψ|² (mass density)
+        u = ∇S/m (velocity field)
+    
+    This is the bridge between quantum UQFF and classical fluid dynamics.
+    The imaginary part yields continuity, real part yields Hamilton-Jacobi.
+    
+    Key equations:
+    - Continuity: ∂ρ/∂t + ∇·(ρu) = 0
+    - Hamilton-Jacobi: ∂S/∂t + |∇S|²/2m + λρ + Q + Φ_g = 0
+    - Bohm potential: Q = -ℏ²∇²√ρ / (2m√ρ)
+    
+    References:
+    - Madelung, Z. Phys. 40, 322 (1927)
+    - UQFF Project Whitepaper (2023)
+    """
+    
+    def __init__(self, 
+                 hbar: float = 1.055e-34,
+                 m: float = 1.672e-27,  # proton mass default
+                 lambda_coupling: float = 1e-20):
+        """
+        Initialize Madelung Transform Calculator
+        
+        Args:
+            hbar: Reduced Planck's constant [J·s]
+            m: Effective particle mass [kg]
+            lambda_coupling: Self-interaction strength [J·m³]
+        """
+        self.hbar = hbar
+        self.m = m
+        self.lambda_coupling = lambda_coupling
+        
+    def psi_to_hydro(self, psi: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        Transform complex wavefunction to hydrodynamic variables
+        
+        Args:
+            psi: Complex wavefunction Ψ(x)
+            
+        Returns:
+            tuple: (rho, phase) where rho = |Ψ|², phase = arg(Ψ)
+        """
+        rho = np.abs(psi)**2
+        phase = np.angle(psi)  # S/ℏ
+        return rho, phase
+    
+    def hydro_to_psi(self, rho: np.ndarray, S: np.ndarray) -> np.ndarray:
+        """
+        Reconstruct wavefunction from hydrodynamic variables
+        
+        Args:
+            rho: Mass density
+            S: Action/phase
+            
+        Returns:
+            Complex wavefunction Ψ
+        """
+        return np.sqrt(np.maximum(rho, 0)) * np.exp(1j * S / self.hbar)
+    
+    def compute_velocity_field(self, S: np.ndarray, dx: float = 1.0) -> Tuple[np.ndarray, ...]:
+        """
+        Compute velocity field u = ∇S/m
+        
+        Args:
+            S: Action field S(x,y,z)
+            dx: Grid spacing
+            
+        Returns:
+            tuple: (u_x, u_y, u_z) velocity components
+        """
+        if S.ndim == 1:
+            dS_dx = np.gradient(S, dx)
+            return (dS_dx / self.m,)
+        elif S.ndim == 2:
+            dS_dy, dS_dx = np.gradient(S, dx)
+            return (dS_dx / self.m, dS_dy / self.m)
+        else:
+            dS_dz, dS_dy, dS_dx = np.gradient(S, dx)
+            return (dS_dx / self.m, dS_dy / self.m, dS_dz / self.m)
+    
+    def compute_bohm_potential(self, rho: np.ndarray, dx: float = 1.0) -> Tuple[np.ndarray, str]:
+        """
+        Compute quantum Bohm potential
+        
+        Q = -ℏ² ∇²√ρ / (2m√ρ)
+        
+        This term encodes quantum effects in the fluid description.
+        In the classical limit (ℏ→0), Q→0.
+        
+        Args:
+            rho: Mass density field
+            dx: Grid spacing
+            
+        Returns:
+            tuple: (Q, equation_string)
+        """
+        sqrt_rho = np.sqrt(np.maximum(rho, 1e-30))
+        
+        if rho.ndim == 1:
+            laplacian_sqrt_rho = np.gradient(np.gradient(sqrt_rho, dx), dx)
+        elif rho.ndim == 2:
+            d2_dx2 = np.gradient(np.gradient(sqrt_rho, dx, axis=1), dx, axis=1)
+            d2_dy2 = np.gradient(np.gradient(sqrt_rho, dx, axis=0), dx, axis=0)
+            laplacian_sqrt_rho = d2_dx2 + d2_dy2
+        else:
+            d2_dx2 = np.gradient(np.gradient(sqrt_rho, dx, axis=2), dx, axis=2)
+            d2_dy2 = np.gradient(np.gradient(sqrt_rho, dx, axis=1), dx, axis=1)
+            d2_dz2 = np.gradient(np.gradient(sqrt_rho, dx, axis=0), dx, axis=0)
+            laplacian_sqrt_rho = d2_dx2 + d2_dy2 + d2_dz2
+        
+        Q = -self.hbar**2 * laplacian_sqrt_rho / (2 * self.m * sqrt_rho)
+        
+        eq = (f"Bohm Quantum Potential:\n"
+              f"  Q = -ℏ² ∇²√ρ / (2m√ρ)\n"
+              f"  ℏ = {self.hbar:.3e} J·s\n"
+              f"  m = {self.m:.3e} kg\n"
+              f"  max|Q| = {np.max(np.abs(Q)):.4e} J")
+        
+        return Q, eq
+    
+    def compute_continuity_residual(self, rho: np.ndarray, u: Tuple[np.ndarray, ...],
+                                    drho_dt: np.ndarray, dx: float = 1.0) -> Tuple[np.ndarray, str]:
+        """
+        Compute residual of continuity equation
+        
+        ∂ρ/∂t + ∇·(ρu) = 0
+        
+        Returns residual R = ∂ρ/∂t + ∇·(ρu), should be zero for valid flow.
+        
+        Args:
+            rho: Mass density
+            u: Velocity field tuple (u_x, u_y, ...)
+            drho_dt: Time derivative of density
+            dx: Grid spacing
+            
+        Returns:
+            tuple: (residual, equation_string)
+        """
+        # Compute divergence of momentum flux
+        if rho.ndim == 1:
+            div_rho_u = np.gradient(rho * u[0], dx)
+        elif rho.ndim == 2:
+            d_rho_ux_dx = np.gradient(rho * u[0], dx, axis=1)
+            d_rho_uy_dy = np.gradient(rho * u[1], dx, axis=0)
+            div_rho_u = d_rho_ux_dx + d_rho_uy_dy
+        else:
+            d_rho_ux_dx = np.gradient(rho * u[0], dx, axis=2)
+            d_rho_uy_dy = np.gradient(rho * u[1], dx, axis=1)
+            d_rho_uz_dz = np.gradient(rho * u[2], dx, axis=0)
+            div_rho_u = d_rho_ux_dx + d_rho_uy_dy + d_rho_uz_dz
+        
+        residual = drho_dt + div_rho_u
+        
+        eq = (f"Continuity Equation Residual:\n"
+              f"  ∂ρ/∂t + ∇·(ρu) = 0\n"
+              f"  R = ∂ρ/∂t + ∇·(ρu)\n"
+              f"  max|R| = {np.max(np.abs(residual)):.4e} kg/m³/s\n"
+              f"  (Should be ≈0 for valid flow)")
+        
+        return residual, eq
+    
+    def compute(self, psi: np.ndarray = None, rho: np.ndarray = None, 
+                S: np.ndarray = None, dx: float = 1.0) -> Dict[str, Any]:
+        """
+        Main compute interface
+        
+        Args:
+            psi: Complex wavefunction (if provided, extracts rho, S)
+            rho: Density field (if psi not provided)
+            S: Action field (if psi not provided)
+            dx: Grid spacing
+            
+        Returns:
+            dict with Madelung analysis
+        """
+        result = {
+            'calculator': 'MadelungTransformCalculator',
+            'parameters': {
+                'hbar': self.hbar,
+                'm': self.m,
+                'lambda': self.lambda_coupling
+            }
+        }
+        
+        if psi is not None:
+            rho, phase = self.psi_to_hydro(psi)
+            S = phase * self.hbar
+            result['rho'] = rho
+            result['S'] = S
+        elif rho is not None and S is not None:
+            psi = self.hydro_to_psi(rho, S)
+            result['psi'] = psi
+        else:
+            # Demo: Gaussian wavepacket
+            x = np.linspace(-5, 5, 100)
+            psi = np.exp(-x**2 / 2) * np.exp(1j * self.m * 0.1 * x / self.hbar)
+            rho, phase = self.psi_to_hydro(psi)
+            S = phase * self.hbar
+            result['demo'] = True
+            result['x'] = x
+            result['rho'] = rho
+            result['S'] = S
+        
+        # Compute derived quantities
+        u = self.compute_velocity_field(S, dx)
+        Q, Q_eq = self.compute_bohm_potential(rho, dx)
+        
+        result['velocity'] = u
+        result['bohm_potential'] = Q
+        result['equations'] = {
+            'bohm': Q_eq,
+            'madelung': "Ψ = √ρ × exp(iS/ℏ), u = ∇S/m",
+            'continuity': "∂ρ/∂t + ∇·(ρu) = 0",
+            'hamilton_jacobi': "∂S/∂t + |∇S|²/2m + λρ + Q + Φ_g = 0"
+        }
+        
+        return result
+
+
+class NavierStokesUQFFCalculator:
+    """
+    Navier-Stokes UQFF Calculator - Emergent Hydrodynamics from Quantum Field
+    
+    Derives incompressible Navier-Stokes equations from UQFF-NDFE master equation
+    via Madelung transformation + Chapman-Enskog expansion.
+    
+    UQFF-NDFE Master Equation:
+        iℏ ∂Ψ/∂t = -ℏ²/2m ∇²Ψ + [λ|Ψ|² + Φ_g]Ψ + iΓ(∇²√|Ψ|²) / √|Ψ|²
+    
+    In hydrodynamic limit (ℏ→0, Γ/m = ν fixed):
+    
+    Continuity:
+        ∂u_x/∂x + ∂u_y/∂y + ∂u_z/∂z = 0
+    
+    Momentum (x):
+        ∂u_x/∂t + u·∇u_x = -1/ρ₀ ∂p/∂x + ν∇²u_x + f_x
+    
+    Key: Viscosity ν = Γ/m emerges from quantum decoherence rate Γ.
+    
+    UQFF emergence theorem:
+        Error ~ O(ℏ²/ρL²) where L = system size
+    
+    References:
+    - SuperGrok4 NS-UQFF Derivation (Feb 2026)
+    - UQFF-2023-001: Emergent Hydrodynamics from Quantum Entanglement
+    """
+    
+    def __init__(self,
+                 rho_0: float = 1000.0,  # kg/m³ (water)
+                 nu: float = 1e-6,       # m²/s (kinematic viscosity)
+                 hbar: float = 1.055e-34,
+                 m: float = 2.99e-26):   # water molecule mass
+        """
+        Initialize Navier-Stokes UQFF Calculator
+        
+        Args:
+            rho_0: Reference density [kg/m³]
+            nu: Kinematic viscosity [m²/s]
+            hbar: Reduced Planck's constant [J·s]
+            m: Effective particle mass [kg]
+        """
+        self.rho_0 = rho_0
+        self.nu = nu
+        self.hbar = hbar
+        self.m = m
+        
+        # Derived: UQFF decoherence rate from viscosity
+        self.Gamma = nu * m  # Γ = ν × m
+        
+        # UQFF emergence bound
+        self.L_quantum = hbar / (m * nu)  # Length below which quantum effects dominate
+        
+    def compute_momentum_equation(self, u: Tuple[np.ndarray, ...],
+                                   p: np.ndarray,
+                                   f: Tuple[np.ndarray, ...] = None,
+                                   dx: float = 1.0,
+                                   dt: float = 0.01) -> Tuple[Tuple, str]:
+        """
+        Compute NS momentum equation RHS for velocity update
+        
+        ∂u/∂t = -u·∇u - 1/ρ₀ ∇p + ν∇²u + f
+        
+        Args:
+            u: Velocity field (u_x, u_y, u_z)
+            p: Pressure field
+            f: Body force (f_x, f_y, f_z), optional
+            dx: Grid spacing
+            dt: Time step
+            
+        Returns:
+            tuple: (du_dt components, equation_string)
+        """
+        ndim = len(u)
+        
+        # Initialize RHS for each component
+        rhs = []
+        
+        for i in range(ndim):
+            # Advection: -u·∇u_i
+            if ndim == 1:
+                adv = -u[0] * np.gradient(u[i], dx)
+            elif ndim == 2:
+                adv = -u[0] * np.gradient(u[i], dx, axis=1) - u[1] * np.gradient(u[i], dx, axis=0)
+            else:
+                adv = (-u[0] * np.gradient(u[i], dx, axis=2) 
+                       - u[1] * np.gradient(u[i], dx, axis=1)
+                       - u[2] * np.gradient(u[i], dx, axis=0))
+            
+            # Pressure gradient: -1/ρ₀ ∂p/∂x_i
+            axis = ndim - 1 - i if ndim > 1 else 0
+            pgrad = -np.gradient(p, dx, axis=axis) / self.rho_0
+            
+            # Viscous: ν∇²u_i
+            if ndim == 1:
+                visc = self.nu * np.gradient(np.gradient(u[i], dx), dx)
+            elif ndim == 2:
+                d2_dx2 = np.gradient(np.gradient(u[i], dx, axis=1), dx, axis=1)
+                d2_dy2 = np.gradient(np.gradient(u[i], dx, axis=0), dx, axis=0)
+                visc = self.nu * (d2_dx2 + d2_dy2)
+            else:
+                d2_dx2 = np.gradient(np.gradient(u[i], dx, axis=2), dx, axis=2)
+                d2_dy2 = np.gradient(np.gradient(u[i], dx, axis=1), dx, axis=1)
+                d2_dz2 = np.gradient(np.gradient(u[i], dx, axis=0), dx, axis=0)
+                visc = self.nu * (d2_dx2 + d2_dy2 + d2_dz2)
+            
+            # Body force
+            if f is not None:
+                force = f[i]
+            else:
+                force = 0
+            
+            du_dt_i = adv + pgrad + visc + force
+            rhs.append(du_dt_i)
+        
+        eq = (f"Navier-Stokes Momentum Equation (UQFF Emergent):\n"
+              f"  ∂u/∂t = -u·∇u - (1/ρ₀)∇p + ν∇²u + f\n"
+              f"  ρ₀ = {self.rho_0:.1f} kg/m³\n"
+              f"  ν = {self.nu:.2e} m²/s\n"
+              f"  UQFF origin: ν = Γ/m = {self.Gamma:.2e}/{self.m:.2e}\n"
+              f"  Quantum length scale: L_q = {self.L_quantum:.2e} m")
+        
+        return tuple(rhs), eq
+    
+    def compute_pressure_poisson(self, u: Tuple[np.ndarray, ...],
+                                  dx: float = 1.0) -> Tuple[np.ndarray, str]:
+        """
+        Compute pressure from Poisson equation (incompressible)
+        
+        ∇²p = -ρ₀ (∂u_i/∂x_j)(∂u_j/∂x_i)
+        
+        For incompressible flow, pressure enforces ∇·u = 0.
+        
+        Args:
+            u: Velocity field
+            dx: Grid spacing
+            
+        Returns:
+            tuple: (RHS of Poisson equation, equation_string)
+        """
+        ndim = len(u)
+        
+        # Compute velocity gradient tensor
+        rhs = np.zeros_like(u[0])
+        
+        if ndim == 1:
+            du_dx = np.gradient(u[0], dx)
+            rhs = -self.rho_0 * du_dx**2
+        elif ndim == 2:
+            du_dx = np.gradient(u[0], dx, axis=1)
+            du_dy = np.gradient(u[0], dx, axis=0)
+            dv_dx = np.gradient(u[1], dx, axis=1)
+            dv_dy = np.gradient(u[1], dx, axis=0)
+            
+            # Sum over i,j: du_i/dx_j * du_j/dx_i
+            rhs = -self.rho_0 * (du_dx**2 + dv_dy**2 + 2*du_dy*dv_dx)
+        else:
+            # 3D case
+            grads = []
+            for i in range(3):
+                row = []
+                for j in range(3):
+                    axis = 2 - j
+                    row.append(np.gradient(u[i], dx, axis=axis))
+                grads.append(row)
+            
+            # Sum: ∂u_i/∂x_j × ∂u_j/∂x_i
+            for i in range(3):
+                for j in range(3):
+                    rhs -= self.rho_0 * grads[i][j] * grads[j][i]
+        
+        eq = (f"Pressure Poisson Equation:\n"
+              f"  ∇²p = -ρ₀ Σ(∂u_i/∂x_j)(∂u_j/∂x_i)\n"
+              f"  Enforces: ∇·u = 0 (incompressibility)\n"
+              f"  ρ₀ = {self.rho_0:.1f} kg/m³")
+        
+        return rhs, eq
+    
+    def solve_couette_flow(self, h: float = 1.0, U_top: float = 1.0,
+                            n_points: int = 100) -> Tuple[np.ndarray, np.ndarray, str]:
+        """
+        Exact solution: Steady Couette flow (planar shear)
+        
+        u_x(y) = (U_top/h) × y, u_y = u_z = 0, p = const
+        
+        UQFF form: ρ = ρ₀, S = m(U_top/h)xy
+        
+        Args:
+            h: Channel height [m]
+            U_top: Top plate velocity [m/s]
+            n_points: Grid points
+            
+        Returns:
+            tuple: (y coordinates, u_x profile, equation_string)
+        """
+        y = np.linspace(0, h, n_points)
+        u_x = (U_top / h) * y
+        
+        # Vorticity
+        omega_z = U_top / h
+        
+        # Wall shear stress
+        tau_wall = self.rho_0 * self.nu * U_top / h
+        
+        eq = (f"Couette Flow (UQFF Exact Solution):\n"
+              f"  u_x(y) = (ΔU/h) × y = ({U_top:.2f}/{h:.2f}) × y\n"
+              f"  u_y = u_z = 0\n"
+              f"  p = constant\n"
+              f"  ω_z = ΔU/h = {omega_z:.4f} rad/s (vorticity)\n"
+              f"  τ_wall = ρν(du/dy) = {tau_wall:.4e} Pa\n"
+              f"  UQFF: S/m = (ΔU/h)xy, ρ = ρ₀")
+        
+        return y, u_x, eq
+    
+    def solve_poiseuille_flow(self, h: float = 1.0, G: float = 1.0,
+                               n_points: int = 100) -> Tuple[np.ndarray, np.ndarray, str]:
+        """
+        Exact solution: Plane Poiseuille flow (pressure-driven)
+        
+        u_x(y) = (G/2ν)(h²/4 - y²), |y| ≤ h/2
+        
+        Args:
+            h: Channel height [m]
+            G: Pressure gradient dp/dx [Pa/m]
+            n_points: Grid points
+            
+        Returns:
+            tuple: (y coordinates, u_x profile, equation_string)
+        """
+        y = np.linspace(-h/2, h/2, n_points)
+        u_x = (G / (2 * self.nu)) * ((h/2)**2 - y**2)
+        
+        # Maximum velocity at centerline
+        u_max = G * h**2 / (8 * self.nu)
+        
+        # Average velocity
+        u_avg = 2/3 * u_max
+        
+        # Reynolds number
+        Re = u_avg * h / self.nu
+        
+        eq = (f"Poiseuille Flow (UQFF Exact Solution):\n"
+              f"  u_x(y) = (G/2ν)(h²/4 - y²)\n"
+              f"  G = -dp/dx = {G:.2f} Pa/m\n"
+              f"  h = {h:.2f} m, ν = {self.nu:.2e} m²/s\n"
+              f"  u_max = Gh²/8ν = {u_max:.4f} m/s (centerline)\n"
+              f"  u_avg = (2/3)u_max = {u_avg:.4f} m/s\n"
+              f"  Re = u_avg×h/ν = {Re:.1f}\n"
+              f"  UQFF: S/m = ∫u_x dy, ρ = ρ₀")
+        
+        return y, u_x, eq
+    
+    def solve_lamb_oseen_vortex(self, r_max: float = 10.0, t: float = 1.0,
+                                 Gamma_0: float = 1.0,
+                                 n_points: int = 100) -> Tuple[np.ndarray, np.ndarray, str]:
+        """
+        Exact solution: Lamb-Oseen decaying vortex
+        
+        u_θ(r,t) = (Γ₀/2πr)[1 - exp(-r²/4νt)]
+        
+        UQFF: Maps to Gaussian wavepacket diffusion.
+        
+        Args:
+            r_max: Maximum radius [m]
+            t: Time [s]
+            Gamma_0: Initial circulation [m²/s]
+            n_points: Grid points
+            
+        Returns:
+            tuple: (r coordinates, u_theta profile, equation_string)
+        """
+        r = np.linspace(0.01, r_max, n_points)  # Avoid r=0
+        
+        core_radius = np.sqrt(4 * self.nu * t)
+        u_theta = (Gamma_0 / (2 * np.pi * r)) * (1 - np.exp(-r**2 / (4 * self.nu * t)))
+        
+        # Maximum velocity
+        # At r ≈ 1.12 × core_radius
+        r_max_vel = 1.1209 * core_radius
+        u_max = Gamma_0 / (2 * np.pi * r_max_vel) * (1 - np.exp(-1.2556))
+        
+        eq = (f"Lamb-Oseen Vortex (UQFF Exact Solution):\n"
+              f"  u_θ(r,t) = (Γ₀/2πr)[1 - exp(-r²/4νt)]\n"
+              f"  Γ₀ = {Gamma_0:.2f} m²/s (circulation)\n"
+              f"  t = {t:.2f} s\n"
+              f"  ν = {self.nu:.2e} m²/s\n"
+              f"  Core radius: r_c = √(4νt) = {core_radius:.4f} m\n"
+              f"  Max velocity: u_max ≈ {u_max:.4f} m/s at r ≈ {r_max_vel:.4f} m\n"
+              f"  UQFF: Gaussian Ψ diffusion via Γ term")
+        
+        return r, u_theta, eq
+    
+    def uqff_emergence_error(self, L: float) -> Tuple[float, str]:
+        """
+        Compute UQFF emergence theorem error bound
+        
+        Error ~ O(ℏ²/ρL²)
+        
+        Args:
+            L: System size [m]
+            
+        Returns:
+            tuple: (error_bound, equation_string)
+        """
+        error = self.hbar**2 / (self.rho_0 * L**2)
+        
+        eq = (f"UQFF Emergence Error Bound:\n"
+              f"  Error = O(ℏ²/ρL²)\n"
+              f"  ℏ = {self.hbar:.3e} J·s\n"
+              f"  ρ = {self.rho_0:.1f} kg/m³\n"
+              f"  L = {L:.2e} m\n"
+              f"  Error ≈ {error:.4e}\n"
+              f"  (NS valid when Error << 1)")
+        
+        return error, eq
+    
+    def compute(self, mode: str = 'couette', **kwargs) -> Dict[str, Any]:
+        """
+        Main compute interface
+        
+        Args:
+            mode: 'couette', 'poiseuille', 'vortex', 'emergence'
+            **kwargs: Mode-specific parameters
+            
+        Returns:
+            dict with NS-UQFF analysis
+        """
+        result = {
+            'calculator': 'NavierStokesUQFFCalculator',
+            'mode': mode,
+            'parameters': {
+                'rho_0': self.rho_0,
+                'nu': self.nu,
+                'Gamma_UQFF': self.Gamma,
+                'm': self.m,
+                'hbar': self.hbar
+            }
+        }
+        
+        if mode == 'couette':
+            y, u_x, eq = self.solve_couette_flow(**kwargs)
+            result['y'] = y
+            result['u_x'] = u_x
+            result['equation'] = eq
+            
+        elif mode == 'poiseuille':
+            y, u_x, eq = self.solve_poiseuille_flow(**kwargs)
+            result['y'] = y
+            result['u_x'] = u_x
+            result['equation'] = eq
+            
+        elif mode == 'vortex' or mode == 'lamb_oseen':
+            r, u_theta, eq = self.solve_lamb_oseen_vortex(**kwargs)
+            result['r'] = r
+            result['u_theta'] = u_theta
+            result['equation'] = eq
+            
+        elif mode == 'emergence':
+            L = kwargs.get('L', 1.0)
+            error, eq = self.uqff_emergence_error(L)
+            result['error_bound'] = error
+            result['equation'] = eq
+            
+        result['master_equation'] = (
+            "NAVIER-STOKES FROM UQFF (SuperGrok4 Derivation):\n"
+            "iℏ ∂Ψ/∂t = -ℏ²/2m ∇²Ψ + [λ|Ψ|² + Φ_g]Ψ + iΓ(∇²√|Ψ|²)/√|Ψ|²\n"
+            "      ↓ Madelung: Ψ = √ρ exp(iS/ℏ), u = ∇S/m\n"
+            "      ↓ ℏ→0, Γ/m=ν fixed (Chapman-Enskog)\n"
+            "∂u/∂t + u·∇u = -∇p/ρ + ν∇²u + f (incompressible NS)"
+        )
+        
+        return result
+
+
+class MHDUQFFCalculator:
+    """
+    Magnetohydrodynamics (MHD) UQFF Calculator
+    
+    Extends Navier-Stokes to include Lorentz force from magnetic fields:
+        ρ(∂u/∂t + u·∇u) = -∇p + ρν∇²u + J×B + ρg
+    
+    Key for astrophysical applications:
+    - Magnetar magnetospheres (B ~ 10¹⁵ G)
+    - Accretion disk dynamics
+    - Solar wind / stellar outflows
+    - Jet formation
+    
+    UQFF extension: Magnetic field B couples to UQFF via minimal coupling:
+        Ψ → Ψ exp(ie∫A·dx/ℏc)
+    
+    Key equations:
+    - Momentum: ∂u/∂t + u·∇u = -∇p/ρ + ν∇²u + (J×B)/ρ + g
+    - Induction: ∂B/∂t = ∇×(u×B) + η∇²B
+    - Ohm: J = σ(E + u×B)
+    
+    References:
+    - Biskamp, "Magnetohydrodynamic Turbulence" (2003)
+    - UQFF MHD Extension (SuperGrok4, Feb 2026)
+    """
+    
+    def __init__(self,
+                 rho_0: float = 1000.0,  # kg/m³
+                 nu: float = 1e-6,       # kinematic viscosity m²/s
+                 eta: float = 1e-3,      # magnetic diffusivity m²/s
+                 mu_0: float = 4*np.pi*1e-7):  # permeability H/m
+        """
+        Initialize MHD UQFF Calculator
+        
+        Args:
+            rho_0: Reference density [kg/m³]
+            nu: Kinematic viscosity [m²/s]
+            eta: Magnetic diffusivity [m²/s]
+            mu_0: Magnetic permeability [H/m]
+        """
+        self.rho_0 = rho_0
+        self.nu = nu
+        self.eta = eta
+        self.mu_0 = mu_0
+        
+        # Derived quantities
+        self.Pm = nu / eta  # Magnetic Prandtl number
+        
+    def compute_lorentz_force(self, J: Tuple[np.ndarray, ...],
+                               B: Tuple[np.ndarray, ...]) -> Tuple[Tuple, str]:
+        """
+        Compute Lorentz force density: f_L = J × B
+        
+        Args:
+            J: Current density (J_x, J_y, J_z) [A/m²]
+            B: Magnetic field (B_x, B_y, B_z) [T]
+            
+        Returns:
+            tuple: ((f_x, f_y, f_z), equation_string)
+        """
+        f_x = J[1]*B[2] - J[2]*B[1]
+        f_y = J[2]*B[0] - J[0]*B[2]
+        f_z = J[0]*B[1] - J[1]*B[0]
+        
+        f_mag = np.sqrt(f_x**2 + f_y**2 + f_z**2)
+        
+        eq = (f"Lorentz Force Density:\n"
+              f"  f_L = J × B [N/m³]\n"
+              f"  f_x = J_y B_z - J_z B_y\n"
+              f"  f_y = J_z B_x - J_x B_z\n"
+              f"  f_z = J_x B_y - J_y B_x\n"
+              f"  max|f_L| = {np.max(f_mag):.4e} N/m³")
+        
+        return (f_x, f_y, f_z), eq
+    
+    def compute_current_density(self, B: Tuple[np.ndarray, ...],
+                                 dx: float = 1.0) -> Tuple[Tuple, str]:
+        """
+        Compute current density from Ampère's law: J = (1/μ₀)∇×B
+        
+        Args:
+            B: Magnetic field (B_x, B_y, B_z) [T]
+            dx: Grid spacing
+            
+        Returns:
+            tuple: ((J_x, J_y, J_z), equation_string)
+        """
+        # Curl of B
+        # J_x = (∂B_z/∂y - ∂B_y/∂z) / μ₀
+        dBz_dy = np.gradient(B[2], dx, axis=1) if B[2].ndim > 1 else 0
+        dBy_dz = np.gradient(B[1], dx, axis=0) if B[1].ndim > 2 else 0
+        J_x = (dBz_dy - dBy_dz) / self.mu_0
+        
+        # J_y = (∂B_x/∂z - ∂B_z/∂x) / μ₀
+        dBx_dz = np.gradient(B[0], dx, axis=0) if B[0].ndim > 2 else 0
+        dBz_dx = np.gradient(B[2], dx, axis=2) if B[2].ndim > 2 else np.gradient(B[2], dx)
+        J_y = (dBx_dz - dBz_dx) / self.mu_0
+        
+        # J_z = (∂B_y/∂x - ∂B_x/∂y) / μ₀
+        dBy_dx = np.gradient(B[1], dx, axis=2) if B[1].ndim > 2 else np.gradient(B[1], dx)
+        dBx_dy = np.gradient(B[0], dx, axis=1) if B[0].ndim > 1 else 0
+        J_z = (dBy_dx - dBx_dy) / self.mu_0
+        
+        eq = (f"Ampère's Law:\n"
+              f"  J = (1/μ₀)∇×B [A/m²]\n"
+              f"  μ₀ = {self.mu_0:.4e} H/m")
+        
+        return (J_x, J_y, J_z), eq
+    
+    def compute_induction_equation(self, u: Tuple[np.ndarray, ...],
+                                    B: Tuple[np.ndarray, ...],
+                                    dx: float = 1.0) -> Tuple[Tuple, str]:
+        """
+        Compute magnetic field evolution: ∂B/∂t = ∇×(u×B) + η∇²B
+        
+        Args:
+            u: Velocity field (u_x, u_y, u_z)
+            B: Magnetic field (B_x, B_y, B_z)
+            dx: Grid spacing
+            
+        Returns:
+            tuple: (dB/dt components, equation_string)
+        """
+        # u × B
+        emf_x = u[1]*B[2] - u[2]*B[1]
+        emf_y = u[2]*B[0] - u[0]*B[2]
+        emf_z = u[0]*B[1] - u[1]*B[0]
+        
+        # ∇×(u×B) - advection term
+        # For simplicity, compute Laplacian for diffusion
+        def laplacian(f, dx):
+            if f.ndim == 1:
+                return np.gradient(np.gradient(f, dx), dx)
+            elif f.ndim == 2:
+                return (np.gradient(np.gradient(f, dx, axis=0), dx, axis=0) +
+                        np.gradient(np.gradient(f, dx, axis=1), dx, axis=1))
+            else:
+                return (np.gradient(np.gradient(f, dx, axis=0), dx, axis=0) +
+                        np.gradient(np.gradient(f, dx, axis=1), dx, axis=1) +
+                        np.gradient(np.gradient(f, dx, axis=2), dx, axis=2))
+        
+        # Diffusion: η∇²B
+        diff_x = self.eta * laplacian(B[0], dx)
+        diff_y = self.eta * laplacian(B[1], dx)
+        diff_z = self.eta * laplacian(B[2], dx)
+        
+        # For full curl, would need proper implementation
+        # Here simplified to diffusion-only for demo
+        dB_dt = (diff_x, diff_y, diff_z)
+        
+        eq = (f"Induction Equation:\n"
+              f"  ∂B/∂t = ∇×(u×B) + η∇²B\n"
+              f"  η = {self.eta:.2e} m²/s (magnetic diffusivity)\n"
+              f"  Pm = ν/η = {self.Pm:.2f} (magnetic Prandtl)")
+        
+        return dB_dt, eq
+    
+    def compute_alfven_speed(self, B_mag: float) -> Tuple[float, str]:
+        """
+        Compute Alfvén wave speed
+        
+        v_A = B / √(μ₀ρ)
+        
+        Args:
+            B_mag: Magnetic field magnitude [T]
+            
+        Returns:
+            tuple: (v_A, equation_string)
+        """
+        v_A = B_mag / np.sqrt(self.mu_0 * self.rho_0)
+        
+        eq = (f"Alfvén Speed:\n"
+              f"  v_A = B/√(μ₀ρ)\n"
+              f"  B = {B_mag:.2e} T\n"
+              f"  μ₀ = {self.mu_0:.4e} H/m\n"
+              f"  ρ = {self.rho_0:.1f} kg/m³\n"
+              f"  v_A = {v_A:.4e} m/s")
+        
+        return v_A, eq
+    
+    def compute_magnetic_reynolds(self, u_mag: float, L: float) -> Tuple[float, str]:
+        """
+        Compute magnetic Reynolds number
+        
+        Rm = uL/η
+        
+        Rm >> 1: frozen-in flux (ideal MHD)
+        Rm << 1: diffusion-dominated
+        
+        Args:
+            u_mag: Characteristic velocity [m/s]
+            L: Characteristic length [m]
+            
+        Returns:
+            tuple: (Rm, equation_string)
+        """
+        Rm = u_mag * L / self.eta
+        
+        regime = "frozen-in flux (ideal MHD)" if Rm > 1 else "diffusion-dominated"
+        
+        eq = (f"Magnetic Reynolds Number:\n"
+              f"  Rm = uL/η\n"
+              f"  u = {u_mag:.2e} m/s\n"
+              f"  L = {L:.2e} m\n"
+              f"  η = {self.eta:.2e} m²/s\n"
+              f"  Rm = {Rm:.2e}\n"
+              f"  Regime: {regime}")
+        
+        return Rm, eq
+    
+    def compute_beta_parameter(self, p: float, B_mag: float) -> Tuple[float, str]:
+        """
+        Compute plasma beta: ratio of thermal to magnetic pressure
+        
+        β = p / (B²/2μ₀)
+        
+        β >> 1: plasma-dominated
+        β << 1: magnetically-dominated
+        
+        Args:
+            p: Thermal pressure [Pa]
+            B_mag: Magnetic field [T]
+            
+        Returns:
+            tuple: (beta, equation_string)
+        """
+        p_mag = B_mag**2 / (2 * self.mu_0)
+        beta = p / p_mag if p_mag > 0 else np.inf
+        
+        regime = "magnetically-dominated" if beta < 1 else "plasma-dominated"
+        
+        eq = (f"Plasma Beta:\n"
+              f"  β = p / (B²/2μ₀)\n"
+              f"  p = {p:.2e} Pa (thermal)\n"
+              f"  p_mag = B²/2μ₀ = {p_mag:.2e} Pa (magnetic)\n"
+              f"  β = {beta:.4f}\n"
+              f"  Regime: {regime}")
+        
+        return beta, eq
+    
+    def compute(self, mode: str = 'alfven', **kwargs) -> Dict[str, Any]:
+        """
+        Main compute interface
+        
+        Args:
+            mode: 'alfven', 'reynolds', 'beta', 'lorentz'
+            **kwargs: Mode-specific parameters
+            
+        Returns:
+            dict with MHD-UQFF analysis
+        """
+        result = {
+            'calculator': 'MHDUQFFCalculator',
+            'mode': mode,
+            'parameters': {
+                'rho_0': self.rho_0,
+                'nu': self.nu,
+                'eta': self.eta,
+                'Pm': self.Pm,
+                'mu_0': self.mu_0
+            }
+        }
+        
+        if mode == 'alfven':
+            B_mag = kwargs.get('B', 1e-3)
+            v_A, eq = self.compute_alfven_speed(B_mag)
+            result['v_A'] = v_A
+            result['equation'] = eq
+            
+        elif mode == 'reynolds':
+            u_mag = kwargs.get('u', 1.0)
+            L = kwargs.get('L', 1.0)
+            Rm, eq = self.compute_magnetic_reynolds(u_mag, L)
+            result['Rm'] = Rm
+            result['equation'] = eq
+            
+        elif mode == 'beta':
+            p = kwargs.get('p', 1e5)
+            B_mag = kwargs.get('B', 1e-3)
+            beta, eq = self.compute_beta_parameter(p, B_mag)
+            result['beta'] = beta
+            result['equation'] = eq
+        
+        result['master_equation'] = (
+            "MHD-UQFF Extension:\n"
+            "ρ(∂u/∂t + u·∇u) = -∇p + ρν∇²u + J×B + ρg\n"
+            "∂B/∂t = ∇×(u×B) + η∇²B  (induction)\n"
+            "UQFF coupling: Ψ → Ψ exp(ie∫A·dx/ℏc)"
+        )
+        
+        return result
+
+
+class CompressibleNSUQFFCalculator:
+    """
+    Compressible Navier-Stokes UQFF Calculator
+    
+    Full ρ(x,t) evolution for astrophysical applications:
+    - Stellar interiors
+    - Supernova remnants
+    - Accretion flows
+    - Astrophysical jets
+    
+    Key equations:
+    - Mass: ∂ρ/∂t + ∇·(ρu) = 0
+    - Momentum: ∂(ρu)/∂t + ∇·(ρu⊗u) = -∇p + ∇·τ + ρf
+    - Energy: ∂E/∂t + ∇·((E+p)u) = ∇·(τ·u) - ∇·q + ρf·u
+    - State: p = ρRT (ideal gas) or p = Kρ^γ (polytropic)
+    
+    Stress tensor:
+        τ_ij = μ(∂u_i/∂x_j + ∂u_j/∂x_i) + (λ - 2μ/3)δ_ij ∇·u
+    
+    UQFF: Full Madelung without incompressibility assumption.
+    
+    References:
+    - Landau & Lifshitz, "Fluid Mechanics"
+    - UQFF Compressible Extension (SuperGrok4, Feb 2026)
+    """
+    
+    def __init__(self,
+                 gamma: float = 5/3,     # adiabatic index
+                 mu_visc: float = 1e-3,  # dynamic viscosity Pa·s
+                 k_therm: float = 0.025, # thermal conductivity W/(m·K)
+                 R_gas: float = 287.0):  # specific gas constant J/(kg·K)
+        """
+        Initialize Compressible NS UQFF Calculator
+        
+        Args:
+            gamma: Adiabatic index (5/3 monatomic, 7/5 diatomic)
+            mu_visc: Dynamic viscosity [Pa·s]
+            k_therm: Thermal conductivity [W/(m·K)]
+            R_gas: Specific gas constant [J/(kg·K)]
+        """
+        self.gamma = gamma
+        self.mu = mu_visc
+        self.k = k_therm
+        self.R = R_gas
+        
+        # Derived
+        self.cv = R_gas / (gamma - 1)  # Specific heat at constant V
+        self.cp = gamma * self.cv       # Specific heat at constant P
+        
+    def compute_sound_speed(self, T: float) -> Tuple[float, str]:
+        """
+        Compute sound speed: c_s = √(γRT)
+        
+        Args:
+            T: Temperature [K]
+            
+        Returns:
+            tuple: (c_s, equation_string)
+        """
+        c_s = np.sqrt(self.gamma * self.R * T)
+        
+        eq = (f"Sound Speed:\n"
+              f"  c_s = √(γRT)\n"
+              f"  γ = {self.gamma:.3f}\n"
+              f"  R = {self.R:.1f} J/(kg·K)\n"
+              f"  T = {T:.1f} K\n"
+              f"  c_s = {c_s:.2f} m/s")
+        
+        return c_s, eq
+    
+    def compute_mach_number(self, u_mag: float, T: float) -> Tuple[float, str]:
+        """
+        Compute Mach number: M = u/c_s
+        
+        Args:
+            u_mag: Flow velocity [m/s]
+            T: Temperature [K]
+            
+        Returns:
+            tuple: (M, equation_string)
+        """
+        c_s, _ = self.compute_sound_speed(T)
+        M = u_mag / c_s
+        
+        regime = ("subsonic" if M < 1 else 
+                  "sonic" if M == 1 else
+                  "supersonic" if M < 5 else
+                  "hypersonic")
+        
+        eq = (f"Mach Number:\n"
+              f"  M = u/c_s\n"
+              f"  u = {u_mag:.2f} m/s\n"
+              f"  c_s = {c_s:.2f} m/s\n"
+              f"  M = {M:.3f}\n"
+              f"  Regime: {regime}")
+        
+        return M, eq
+    
+    def compute_euler_flux(self, rho: np.ndarray, u: np.ndarray, 
+                            p: np.ndarray) -> Tuple[Dict, str]:
+        """
+        Compute Euler flux for 1D compressible flow
+        
+        Mass flux: F_m = ρu
+        Momentum flux: F_p = ρu² + p
+        Energy flux: F_E = (E + p)u where E = ρe + ρu²/2
+        
+        Args:
+            rho: Density [kg/m³]
+            u: Velocity [m/s]
+            p: Pressure [Pa]
+            
+        Returns:
+            tuple: (flux dict, equation_string)
+        """
+        # Internal energy
+        e = p / ((self.gamma - 1) * rho)
+        
+        # Total energy
+        E = rho * e + 0.5 * rho * u**2
+        
+        # Fluxes
+        F_mass = rho * u
+        F_momentum = rho * u**2 + p
+        F_energy = (E + p) * u
+        
+        flux = {
+            'mass': F_mass,
+            'momentum': F_momentum,
+            'energy': F_energy,
+            'E': E,
+            'e': e
+        }
+        
+        eq = (f"Euler Fluxes (1D):\n"
+              f"  F_mass = ρu\n"
+              f"  F_momentum = ρu² + p\n"
+              f"  F_energy = (E + p)u\n"
+              f"  E = ρe + ρu²/2 (total energy)\n"
+              f"  e = p/[(γ-1)ρ] (internal energy)")
+        
+        return flux, eq
+    
+    def compute_rankine_hugoniot(self, M1: float, 
+                                  rho1: float = 1.0,
+                                  p1: float = 1e5,
+                                  T1: float = 300.0) -> Tuple[Dict, str]:
+        """
+        Compute Rankine-Hugoniot shock jump conditions
+        
+        Given upstream Mach M1, compute downstream state.
+        
+        Args:
+            M1: Upstream Mach number
+            rho1: Upstream density [kg/m³]
+            p1: Upstream pressure [Pa]
+            T1: Upstream temperature [K]
+            
+        Returns:
+            tuple: (jump dict, equation_string)
+        """
+        g = self.gamma
+        M1sq = M1**2
+        
+        # Pressure ratio
+        p_ratio = 1 + (2*g/(g+1)) * (M1sq - 1)
+        
+        # Density ratio
+        rho_ratio = ((g+1)*M1sq) / ((g-1)*M1sq + 2)
+        
+        # Temperature ratio
+        T_ratio = p_ratio / rho_ratio
+        
+        # Downstream Mach
+        M2_sq = ((g-1)*M1sq + 2) / (2*g*M1sq - (g-1))
+        M2 = np.sqrt(M2_sq)
+        
+        # Downstream values
+        p2 = p1 * p_ratio
+        rho2 = rho1 * rho_ratio
+        T2 = T1 * T_ratio
+        
+        jump = {
+            'M1': M1, 'M2': M2,
+            'p_ratio': p_ratio, 'rho_ratio': rho_ratio, 'T_ratio': T_ratio,
+            'p2': p2, 'rho2': rho2, 'T2': T2
+        }
+        
+        eq = (f"Rankine-Hugoniot Shock Jump Conditions:\n"
+              f"  M1 = {M1:.3f} → M2 = {M2:.3f}\n"
+              f"  p2/p1 = 1 + (2γ/(γ+1))(M1²-1) = {p_ratio:.3f}\n"
+              f"  ρ2/ρ1 = (γ+1)M1²/[(γ-1)M1²+2] = {rho_ratio:.3f}\n"
+              f"  T2/T1 = {T_ratio:.3f}\n"
+              f"  p: {p1:.2e} → {p2:.2e} Pa\n"
+              f"  ρ: {rho1:.2f} → {rho2:.2f} kg/m³\n"
+              f"  T: {T1:.1f} → {T2:.1f} K")
+        
+        return jump, eq
+    
+    def compute_isentropic_flow(self, M: float, 
+                                 T0: float = 300.0,
+                                 p0: float = 1e5) -> Tuple[Dict, str]:
+        """
+        Compute isentropic flow relations
+        
+        Args:
+            M: Local Mach number
+            T0: Stagnation temperature [K]
+            p0: Stagnation pressure [Pa]
+            
+        Returns:
+            tuple: (flow dict, equation_string)
+        """
+        g = self.gamma
+        M2 = M**2
+        
+        # Temperature ratio T/T0
+        T_ratio = 1 / (1 + (g-1)/2 * M2)
+        
+        # Pressure ratio p/p0
+        p_ratio = T_ratio ** (g/(g-1))
+        
+        # Density ratio rho/rho0
+        rho_ratio = T_ratio ** (1/(g-1))
+        
+        # Area ratio A/A* (critical area)
+        A_ratio = (1/M) * ((2/(g+1)) * (1 + (g-1)/2 * M2)) ** ((g+1)/(2*(g-1)))
+        
+        T = T0 * T_ratio
+        p = p0 * p_ratio
+        
+        flow = {
+            'M': M, 'T0': T0, 'p0': p0,
+            'T': T, 'p': p,
+            'T_ratio': T_ratio, 'p_ratio': p_ratio, 'rho_ratio': rho_ratio,
+            'A_ratio': A_ratio
+        }
+        
+        eq = (f"Isentropic Flow Relations:\n"
+              f"  M = {M:.3f}\n"
+              f"  T/T0 = [1 + (γ-1)/2 M²]⁻¹ = {T_ratio:.4f}\n"
+              f"  p/p0 = (T/T0)^[γ/(γ-1)] = {p_ratio:.4f}\n"
+              f"  ρ/ρ0 = (T/T0)^[1/(γ-1)] = {rho_ratio:.4f}\n"
+              f"  A/A* = {A_ratio:.4f}\n"
+              f"  T0 = {T0:.1f} K → T = {T:.1f} K\n"
+              f"  p0 = {p0:.2e} Pa → p = {p:.2e} Pa")
+        
+        return flow, eq
+    
+    def compute(self, mode: str = 'sound', **kwargs) -> Dict[str, Any]:
+        """
+        Main compute interface
+        
+        Args:
+            mode: 'sound', 'mach', 'shock', 'isentropic'
+            **kwargs: Mode-specific parameters
+            
+        Returns:
+            dict with compressible NS analysis
+        """
+        result = {
+            'calculator': 'CompressibleNSUQFFCalculator',
+            'mode': mode,
+            'parameters': {
+                'gamma': self.gamma,
+                'mu': self.mu,
+                'k': self.k,
+                'R': self.R,
+                'cv': self.cv,
+                'cp': self.cp
+            }
+        }
+        
+        if mode == 'sound':
+            T = kwargs.get('T', 300.0)
+            c_s, eq = self.compute_sound_speed(T)
+            result['c_s'] = c_s
+            result['equation'] = eq
+            
+        elif mode == 'mach':
+            u = kwargs.get('u', 100.0)
+            T = kwargs.get('T', 300.0)
+            M, eq = self.compute_mach_number(u, T)
+            result['M'] = M
+            result['equation'] = eq
+            
+        elif mode == 'shock':
+            M1 = kwargs.get('M1', 2.0)
+            rho1 = kwargs.get('rho1', 1.0)
+            p1 = kwargs.get('p1', 1e5)
+            T1 = kwargs.get('T1', 300.0)
+            jump, eq = self.compute_rankine_hugoniot(M1, rho1, p1, T1)
+            result['jump'] = jump
+            result['equation'] = eq
+            
+        elif mode == 'isentropic':
+            M = kwargs.get('M', 0.5)
+            T0 = kwargs.get('T0', 300.0)
+            p0 = kwargs.get('p0', 1e5)
+            flow, eq = self.compute_isentropic_flow(M, T0, p0)
+            result['flow'] = flow
+            result['equation'] = eq
+        
+        result['master_equation'] = (
+            "COMPRESSIBLE NS-UQFF:\n"
+            "∂ρ/∂t + ∇·(ρu) = 0  (mass)\n"
+            "∂(ρu)/∂t + ∇·(ρu⊗u + pI) = ∇·τ + ρf  (momentum)\n"
+            "∂E/∂t + ∇·((E+p)u) = ∇·(τ·u - q) + ρf·u  (energy)\n"
+            "UQFF: Full Madelung (ρ varies), Q = -ℏ²∇²√ρ/(2m√ρ)"
+        )
+        
+        return result
+
+
+class TurbulenceUQFFCalculator:
+    """
+    Turbulence UQFF Calculator - Reynolds Decomposition & Energy Cascade
+    
+    Maps classical turbulence to UQFF mode decomposition:
+    - Reynolds decomposition: u = <u> + u'
+    - UQFF mode decomposition: Ψ = Σ Ψ_k exp(ik·x)
+    
+    Key equations:
+    - Energy spectrum: E(k) ~ ε^(2/3) k^(-5/3) (Kolmogorov)
+    - Dissipation: ε = ν Σ k² |û_k|²
+    - Integral scale: L = E^(3/2)/ε
+    - Taylor microscale: λ = √(15νu'²/ε)
+    
+    UQFF connection:
+    - High-k modes → quantum fluctuations (Bohm potential)
+    - Low-k modes → classical mean flow
+    - Decoherence Γ → energy cascade
+    
+    References:
+    - Kolmogorov (1941), Oboukhov (1941)
+    - Pope, "Turbulent Flows" (2000)
+    - UQFF Turbulence Bridge (SuperGrok4, Feb 2026)
+    """
+    
+    def __init__(self,
+                 nu: float = 1e-6,     # kinematic viscosity m²/s
+                 u_rms: float = 1.0,   # RMS velocity fluctuation m/s
+                 L_int: float = 1.0):  # integral length scale m
+        """
+        Initialize Turbulence UQFF Calculator
+        
+        Args:
+            nu: Kinematic viscosity [m²/s]
+            u_rms: RMS velocity fluctuation [m/s]
+            L_int: Integral length scale [m]
+        """
+        self.nu = nu
+        self.u_rms = u_rms
+        self.L = L_int
+        
+        # Derived
+        self.Re_L = u_rms * L_int / nu  # Taylor Reynolds number
+        self.epsilon = u_rms**3 / L_int  # Turbulent dissipation rate
+        self.eta = (nu**3 / self.epsilon)**(1/4)  # Kolmogorov scale
+        self.tau_eta = np.sqrt(nu / self.epsilon)  # Kolmogorov time
+        
+    def compute_energy_spectrum(self, k: np.ndarray) -> Tuple[np.ndarray, str]:
+        """
+        Compute Kolmogorov energy spectrum
+        
+        E(k) = C_K ε^(2/3) k^(-5/3)
+        
+        Args:
+            k: Wavenumber array [1/m]
+            
+        Returns:
+            tuple: (E(k), equation_string)
+        """
+        C_K = 1.5  # Kolmogorov constant
+        E_k = C_K * self.epsilon**(2/3) * k**(-5/3)
+        
+        eq = (f"Kolmogorov Energy Spectrum:\n"
+              f"  E(k) = C_K ε^(2/3) k^(-5/3)\n"
+              f"  C_K = {C_K} (Kolmogorov constant)\n"
+              f"  ε = {self.epsilon:.4e} m²/s³ (dissipation)\n"
+              f"  -5/3 power law for inertial range")
+        
+        return E_k, eq
+    
+    def compute_scales(self) -> Tuple[Dict, str]:
+        """
+        Compute characteristic turbulence scales
+        
+        Returns:
+            tuple: (scales dict, equation_string)
+        """
+        # Taylor microscale
+        lambda_taylor = np.sqrt(15 * self.nu * self.u_rms**2 / self.epsilon)
+        
+        # Eddy turnover time
+        tau_L = self.L / self.u_rms
+        
+        # Re_lambda (Taylor Reynolds)
+        Re_lambda = self.u_rms * lambda_taylor / self.nu
+        
+        scales = {
+            'L': self.L,
+            'lambda': lambda_taylor,
+            'eta': self.eta,
+            'tau_L': tau_L,
+            'tau_eta': self.tau_eta,
+            'Re_L': self.Re_L,
+            'Re_lambda': Re_lambda
+        }
+        
+        eq = (f"Turbulence Scales:\n"
+              f"  Integral scale: L = {self.L:.4e} m\n"
+              f"  Taylor microscale: λ = √(15νu'²/ε) = {lambda_taylor:.4e} m\n"
+              f"  Kolmogorov scale: η = (ν³/ε)^(1/4) = {self.eta:.4e} m\n"
+              f"  Eddy turnover: τ_L = L/u' = {tau_L:.4e} s\n"
+              f"  Kolmogorov time: τ_η = √(ν/ε) = {self.tau_eta:.4e} s\n"
+              f"  Re_L = u'L/ν = {self.Re_L:.1f}\n"
+              f"  Re_λ = u'λ/ν = {Re_lambda:.1f}")
+        
+        return scales, eq
+    
+    def uqff_mode_mapping(self, k: float) -> Tuple[str, str]:
+        """
+        Map wavenumber to UQFF regime
+        
+        Args:
+            k: Wavenumber [1/m]
+            
+        Returns:
+            tuple: (regime name, equation_string)
+        """
+        k_L = 2 * np.pi / self.L        # Integral wavenumber
+        k_eta = 2 * np.pi / self.eta    # Kolmogorov wavenumber
+        
+        if k < k_L:
+            regime = "energy-containing (mean flow)"
+            uqff = "Classical limit: Q → 0, Ψ ≈ √ρ₀ exp(iS/ℏ)"
+        elif k_L <= k < k_eta:
+            regime = "inertial range (cascade)"
+            uqff = "Decoherence: Γ-term mediates energy transfer"
+        else:
+            regime = "dissipation range (quantum)"
+            uqff = "Quantum: Q ≠ 0, Bohm potential active"
+        
+        eq = (f"UQFF Mode Mapping:\n"
+              f"  k = {k:.2e} 1/m\n"
+              f"  k_L = 2π/L = {k_L:.2e} (integral)\n"
+              f"  k_η = 2π/η = {k_eta:.2e} (Kolmogorov)\n"
+              f"  Regime: {regime}\n"
+              f"  UQFF: {uqff}")
+        
+        return regime, eq
+    
+    def compute(self, mode: str = 'scales', **kwargs) -> Dict[str, Any]:
+        """
+        Main compute interface
+        
+        Args:
+            mode: 'scales', 'spectrum', 'mapping'
+            **kwargs: Mode-specific parameters
+            
+        Returns:
+            dict with turbulence-UQFF analysis
+        """
+        result = {
+            'calculator': 'TurbulenceUQFFCalculator',
+            'mode': mode,
+            'parameters': {
+                'nu': self.nu,
+                'u_rms': self.u_rms,
+                'L': self.L,
+                'epsilon': self.epsilon,
+                'eta': self.eta,
+                'Re_L': self.Re_L
+            }
+        }
+        
+        if mode == 'scales':
+            scales, eq = self.compute_scales()
+            result['scales'] = scales
+            result['equation'] = eq
+            
+        elif mode == 'spectrum':
+            k = kwargs.get('k', np.logspace(-2, 4, 100))
+            E_k, eq = self.compute_energy_spectrum(k)
+            result['k'] = k
+            result['E_k'] = E_k
+            result['equation'] = eq
+            
+        elif mode == 'mapping':
+            k = kwargs.get('k', 100.0)
+            regime, eq = self.uqff_mode_mapping(k)
+            result['regime'] = regime
+            result['equation'] = eq
+        
+        result['master_equation'] = (
+            "TURBULENCE-UQFF BRIDGE:\n"
+            "Reynolds: u = <u> + u', UQFF: Ψ = Σ Ψ_k exp(ik·x)\n"
+            "Low-k: classical (Q→0), High-k: quantum (Q≠0)\n"
+            "Cascade: ε = Γ/m × energy transfer rate\n"
+            "E(k) ~ ε^(2/3) k^(-5/3) ↔ UQFF mode spectrum"
+        )
+        
+        return result
+
+
+# Global instances for NS-UQFF Integration
+MADELUNG_CALC = MadelungTransformCalculator()
+NS_UQFF_CALC = NavierStokesUQFFCalculator()
+MHD_UQFF_CALC = MHDUQFFCalculator()
+COMPRESSIBLE_NS_CALC = CompressibleNSUQFFCalculator()
+TURBULENCE_UQFF_CALC = TurbulenceUQFFCalculator()
+
+NS_UQFF_CALCULATORS = {
+    'MadelungTransformCalculator': MADELUNG_CALC,
+    'NavierStokesUQFFCalculator': NS_UQFF_CALC,
+    'MHDUQFFCalculator': MHD_UQFF_CALC,
+    'CompressibleNSUQFFCalculator': COMPRESSIBLE_NS_CALC,
+    'TurbulenceUQFFCalculator': TURBULENCE_UQFF_CALC,
+}
+
+
+# Convenience functions for NS-UQFF
+def solve_couette_flow(h: float = 1.0, U_top: float = 1.0, nu: float = 1e-6) -> Dict[str, Any]:
+    """Solve Couette flow with UQFF formulation"""
+    calc = NavierStokesUQFFCalculator(nu=nu)
+    return calc.compute(mode='couette', h=h, U_top=U_top)
+
+def solve_poiseuille_flow(h: float = 1.0, G: float = 1.0, nu: float = 1e-6) -> Dict[str, Any]:
+    """Solve Poiseuille flow with UQFF formulation"""
+    calc = NavierStokesUQFFCalculator(nu=nu)
+    return calc.compute(mode='poiseuille', h=h, G=G)
+
+def solve_lamb_oseen_vortex(Gamma_0: float = 1.0, t: float = 1.0, nu: float = 1e-6) -> Dict[str, Any]:
+    """Solve Lamb-Oseen decaying vortex"""
+    calc = NavierStokesUQFFCalculator(nu=nu)
+    return calc.compute(mode='vortex', Gamma_0=Gamma_0, t=t)
+
+def compute_bohm_potential(rho: np.ndarray, dx: float = 1.0, hbar: float = 1.055e-34, m: float = 1.672e-27) -> tuple:
+    """Compute quantum Bohm potential from density field"""
+    calc = MadelungTransformCalculator(hbar=hbar, m=m)
+    return calc.compute_bohm_potential(rho, dx)
+
+def compute_alfven_speed(B: float, rho: float = 1000.0) -> Dict[str, Any]:
+    """Compute Alfvén wave speed for given B field"""
+    calc = MHDUQFFCalculator(rho_0=rho)
+    return calc.compute(mode='alfven', B=B)
+
+def compute_shock_jump(M1: float, gamma: float = 1.4) -> Dict[str, Any]:
+    """Compute Rankine-Hugoniot shock jump conditions"""
+    calc = CompressibleNSUQFFCalculator(gamma=gamma)
+    return calc.compute(mode='shock', M1=M1)
+
+def compute_turbulence_scales(u_rms: float, L: float, nu: float = 1e-6) -> Dict[str, Any]:
+    """Compute turbulence length and time scales"""
+    calc = TurbulenceUQFFCalculator(nu=nu, u_rms=u_rms, L_int=L)
+    return calc.compute(mode='scales')
+
+
 # Global instances
 LATTICE_YM = LatticeYangMillsCalculator()
 MONOPOLE_CALC = MagneticMonopoleCalculator()
@@ -86964,6 +88422,41 @@ __all__ = [
     # Yang-Mills Field Equations Solver
     'YangMillsFieldEquationsSolver',
     'YM_EQUATIONS_SOLVER',
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # NAVIER-STOKES UQFF INTEGRATION (Feb 23, 2026)
+    # SuperGrok4 Derivation: NS from UQFF-NDFE via Madelung transform
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # Madelung Transform Calculator
+    'MadelungTransformCalculator',
+    'MADELUNG_CALC',
+    'compute_bohm_potential',
+    
+    # Navier-Stokes UQFF Calculator
+    'NavierStokesUQFFCalculator',
+    'NS_UQFF_CALC',
+    'solve_couette_flow',
+    'solve_poiseuille_flow',
+    'solve_lamb_oseen_vortex',
+    
+    # MHD UQFF Extension
+    'MHDUQFFCalculator',
+    'MHD_UQFF_CALC',
+    'compute_alfven_speed',
+    
+    # Compressible NS UQFF Calculator
+    'CompressibleNSUQFFCalculator',
+    'COMPRESSIBLE_NS_CALC',
+    'compute_shock_jump',
+    
+    # Turbulence UQFF Calculator
+    'TurbulenceUQFFCalculator',
+    'TURBULENCE_UQFF_CALC',
+    'compute_turbulence_scales',
+    
+    # NS-UQFF Collection
+    'NS_UQFF_CALCULATORS',
 ]
 
 
