@@ -90372,13 +90372,26 @@ class UQFFPipeline:
             'DarkMatterHaloUQFFCalculator',
         ],
         'neutron_star': [
+            'NeutronStarEOSUQFFCalculator',  # NEW: TOV, mass-radius, EOS
             'MHDUQFFCalculator',
             'PlasmaInstabilityUQFFCalculator',
             'GravitationalWaveUQFFCalculator',
         ],
         'magnetar': [
+            'NeutronStarEOSUQFFCalculator',  # NEW: NS structure
+            'FastRadioBurstUQFFCalculator',  # NEW: FRB from reconnection
             'MHDUQFFCalculator',
             'PlasmaInstabilityUQFFCalculator',
+        ],
+        'pulsar': [  # NEW: Pulsar-specific route
+            'NeutronStarEOSUQFFCalculator',
+            'MHDUQFFCalculator',
+            'GravitationalWaveUQFFCalculator',
+        ],
+        'frb': [  # NEW: Fast Radio Burst sources
+            'FastRadioBurstUQFFCalculator',
+            'PlasmaInstabilityUQFFCalculator',
+            'MHDUQFFCalculator',
         ],
         'galaxy': [
             'DarkMatterHaloUQFFCalculator',
@@ -90390,6 +90403,10 @@ class UQFFPipeline:
         ],
         'binary': [
             'GravitationalWaveUQFFCalculator',
+        ],
+        'cosmological': [  # NEW: CMB and large-scale structure
+            'CMBAnomalyUQFFCalculator',
+            'DarkMatterHaloUQFFCalculator',
         ],
         'default': [
             'NavierStokesUQFFCalculator',
@@ -90442,6 +90459,17 @@ class UQFFPipeline:
             'UQFFConstantMapper': UQFFConstantMapper,
             'Layer26DGravityCoupling': Layer26DGravityCoupling,
             'MadelungTransformCalculator': MadelungTransformCalculator,
+            # NEW: NS EOS, FRB, CMB calculators (Feb 24, 2026) - lazy loaded
+            'NeutronStarEOSUQFFCalculator': 'NeutronStarEOSUQFFCalculator',
+            'FastRadioBurstUQFFCalculator': 'FastRadioBurstUQFFCalculator',
+            'CMBAnomalyUQFFCalculator': 'CMBAnomalyUQFFCalculator',
+        }
+        
+        # Register for lazy loading (resolve at runtime)
+        self._lazy_calcs = {
+            'NeutronStarEOSUQFFCalculator',
+            'FastRadioBurstUQFFCalculator',
+            'CMBAnomalyUQFFCalculator',
         }
         
     def _log(self, msg: str) -> None:
@@ -90455,16 +90483,29 @@ class UQFFPipeline:
         obj_type = str(params.get('object_type', '')).lower()
         
         # Classification by name patterns
-        if any(x in name for x in ['sgr', 'sag', 'a*', 'm87*']):
-            return 'black_hole'
-        if any(x in name for x in ['psr', 'pulsar', 'crab', 'vela']):
-            return 'neutron_star'
-        if any(x in name for x in ['sgr', 'magnetar']):
+        # Note: Order matters - more specific patterns first
+        
+        # SGR magnetars (Soft Gamma Repeaters) - SGR followed by numbers
+        import re
+        if re.search(r'sgr[\s_-]?\d', name) or 'magnetar' in name:
             return 'magnetar'
+        
+        # Sagittarius A* black hole
+        if any(x in name for x in ['sgr a', 'sag a', 'a*', 'm87*', 'sagittarius a']):
+            return 'black_hole'
+        
+        if any(x in name for x in ['psr', 'pulsar']):
+            return 'pulsar'
+        if any(x in name for x in ['crab', 'vela']):
+            return 'neutron_star'
+        if any(x in name for x in ['frb', 'fast radio']):
+            return 'frb'
         if any(x in name for x in ['ngc', 'm31', 'm51', 'm33', 'galaxy']):
             return 'galaxy'
         if any(x in name for x in ['gw', 'binary']):
             return 'binary'
+        if any(x in name for x in ['cmb', 'planck', 'cold spot', 'cosmolog']):
+            return 'cosmological'
         
         # Classification by type field
         if 'black' in obj_type or 'agn' in obj_type:
@@ -90583,6 +90624,13 @@ class UQFFPipeline:
                     # Instantiate calculator with available params
                     CalcClass = self._calculators[calc_name]
                     
+                    # Resolve lazy-loaded calculators at runtime
+                    if calc_name in self._lazy_calcs and isinstance(CalcClass, str):
+                        import sys
+                        module = sys.modules[__name__]
+                        CalcClass = getattr(module, calc_name)
+                        self._calculators[calc_name] = CalcClass  # Cache for future
+                    
                     # Build constructor args based on class signature
                     if calc_name == 'GravitationalWaveUQFFCalculator':
                         M = mapped_params.get('mass', 10 * 1.989e30)
@@ -90627,7 +90675,24 @@ class UQFFPipeline:
                     elif calc_name == 'NavierStokesUQFFCalculator':
                         calc = CalcClass()
                         result = calc.compute(mode='couette')
-                        
+                    
+                    elif calc_name == 'NeutronStarEOSUQFFCalculator':
+                        # Use APR4 EOS by default, compute TOV or mass-radius
+                        calc = CalcClass(eos_model='APR4')
+                        rho_c = mapped_params.get('central_density', 5e17)
+                        result = calc.compute(mode='tov', rho_c=rho_c)
+                    
+                    elif calc_name == 'FastRadioBurstUQFFCalculator':
+                        # FRB from magnetar with magnetic field
+                        B = mapped_params.get('magnetic_field', 1e10)
+                        calc = CalcClass(B=B)
+                        result = calc.compute(mode='burst')
+                    
+                    elif calc_name == 'CMBAnomalyUQFFCalculator':
+                        # CMB anomaly with cold spot by default
+                        calc = CalcClass()
+                        result = calc.compute(mode='cold_spot')
+                    
                     else:
                         # Generic instantiation
                         calc = CalcClass()
@@ -90789,6 +90854,150 @@ class UQFFPipeline:
             'results': results,
             'statistics': self.get_statistics(),
         }
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # REAL-TIME CALLBACK SUPPORT
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def register_callback(self, callback) -> None:
+        """
+        Register a real-time callback for pipeline events.
+        
+        Callback signature: callback(event_type: str, data: dict)
+        
+        Event types:
+            - 'fetch_start': Object fetch started
+            - 'fetch_complete': Object fetch completed
+            - 'calc_start': Calculator started
+            - 'calc_complete': Calculator completed
+            - 'process_complete': Full process completed
+            
+        Example:
+            def my_callback(event_type, data):
+                if event_type == 'process_complete':
+                    print(f"Processed {data['object_name']}")
+            
+            pipeline.register_callback(my_callback)
+        """
+        if not hasattr(self, '_callbacks'):
+            self._callbacks = []
+        self._callbacks.append(callback)
+    
+    def _emit_event(self, event_type: str, data: Dict[str, Any]) -> None:
+        """Emit event to all registered callbacks."""
+        if hasattr(self, '_callbacks'):
+            for callback in self._callbacks:
+                try:
+                    callback(event_type, data)
+                except Exception as e:
+                    self._log(f"Callback error: {e}")
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # OPDATA INTEGRATION (source2.cpp Tab 9 Session Logger)
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def store_to_opdata(self, result: Dict[str, Any]) -> bool:
+        """
+        Store pipeline result to CondensedPhysics_OutputData.py for recall.
+        
+        This enables source2.cpp Tab 9 Session Logger to retrieve past queries.
+        
+        Args:
+            result: Pipeline result dict
+            
+        Returns:
+            True if stored successfully
+        """
+        try:
+            from CondensedPhysics_OutputData import OUTPUT_STORE, QueryResult, EquationSolution
+            
+            # Convert pipeline calculations to EquationSolutions
+            primary_equations = []
+            for calc_name, calc_result in result.get('calculations', {}).items():
+                if 'equation' in calc_result:
+                    eq = EquationSolution(
+                        equation_name=calc_name,
+                        symbolic_form=str(calc_result.get('equation', '')),
+                        numeric_solution=calc_result.get('result', 0.0),
+                        units=calc_result.get('units', ''),
+                        parameters_used=calc_result.get('params', {}),
+                        long_form_breakdown=str(calc_result)
+                    )
+                    primary_equations.append(eq)
+            
+            # Create QueryResult from pipeline output
+            query_result = QueryResult(
+                query_id=result['query_id'],
+                timestamp=result['timestamp'],
+                object_name=result['object_name'],
+                input_dataset=result.get('params', {}),
+                primary_equations=primary_equations,
+                available_equations=[result['object_type']],
+                simulation_sets=[]
+            )
+            
+            # Store to global OutputDataStore
+            OUTPUT_STORE.store_result(query_result)
+            
+            self._log(f"  Stored to OPData: {result['query_id']}")
+            return True
+            
+        except ImportError:
+            self._log("  Warning: CondensedPhysics_OutputData.py not available")
+            return False
+        except Exception as e:
+            self._log(f"  Error storing to OPData: {e}")
+            return False
+    
+    def export_for_cpp(self, query_id: str) -> Dict[str, Any]:
+        """
+        Export result in C++-compatible format for named pipe IPC.
+        
+        Returns a dict with simplified types (no numpy arrays, etc.).
+        This can be JSON-serialized for IPC with MAIN_1_CoAnQi.cpp.
+        
+        Args:
+            query_id: The query ID to export
+            
+        Returns:
+            C++-compatible dict ready for JSON serialization
+        """
+        result = self._results_cache.get(query_id)
+        if not result:
+            return {'error': 'Query not found', 'query_id': query_id}
+        
+        # Convert to C++-compatible format
+        cpp_result = {
+            'query_id': str(result['query_id']),
+            'object_name': str(result['object_name']),
+            'object_type': str(result['object_type']),
+            'timestamp': str(result['timestamp']),
+            'calculators_run': int(result['calculators_run']),
+            'success': int(result['success']),
+            'calculations': {},
+        }
+        
+        # Process calculations - convert numpy to native types
+        import numpy as np
+        for calc_name, calc_result in result.get('calculations', {}).items():
+            cpp_calc = {}
+            for key, value in calc_result.items():
+                if isinstance(value, np.ndarray):
+                    cpp_calc[key] = value.tolist()
+                elif isinstance(value, (np.float64, np.float32)):
+                    cpp_calc[key] = float(value)
+                elif isinstance(value, (np.int64, np.int32)):
+                    cpp_calc[key] = int(value)
+                else:
+                    cpp_calc[key] = value
+            cpp_result['calculations'][calc_name] = cpp_calc
+        
+        return cpp_result
+    
+    def get_cpp_json(self, query_id: str) -> str:
+        """Get JSON string for C++ IPC."""
+        import json
+        return json.dumps(self.export_for_cpp(query_id))
 
 
 # Global pipeline instance
@@ -90818,6 +91027,18 @@ def pipeline_recall(query_id: str) -> Optional[Dict[str, Any]]:
 def pipeline_stats() -> Dict[str, Any]:
     """Get pipeline statistics."""
     return UQFF_PIPELINE.get_statistics()
+
+def pipeline_register_callback(callback) -> None:
+    """Register a real-time callback for pipeline events."""
+    UQFF_PIPELINE.register_callback(callback)
+
+def pipeline_export_cpp(query_id: str) -> str:
+    """Export pipeline result as JSON for C++ IPC."""
+    return UQFF_PIPELINE.get_cpp_json(query_id)
+
+def pipeline_store_opdata(result: Dict[str, Any]) -> bool:
+    """Store pipeline result to OPData for Tab 9 Session Logger."""
+    return UQFF_PIPELINE.store_to_opdata(result)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -91987,6 +92208,9 @@ __all__ = [
     'pipeline_batch',
     'pipeline_recall',
     'pipeline_stats',
+    'pipeline_register_callback',  # Real-time event callbacks
+    'pipeline_export_cpp',         # C++ IPC JSON export
+    'pipeline_store_opdata',       # Tab 9 Session Logger storage
     
     # NS EOS, FRB, CMB Calculators (Feb 24, 2026 - Priority 4 Physics)
     # Neutron Star EOS
