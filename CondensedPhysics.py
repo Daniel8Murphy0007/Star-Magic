@@ -90340,6 +90340,486 @@ def run_uqff_validation(mode: str = 'summary') -> Dict[str, Any]:
     return UQFF_TEST_SUITE.compute(mode=mode)
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# UQFF PIPELINE - END-TO-END DATA FLOW (Feb 24, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# Architecture: APIFetch.py → IPData.py → CondensedPhysics.py → OPData.py
+#               User Query → API Fetch → Calculator → Recall Storage
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UQFFPipeline:
+    """
+    End-to-end UQFF calculation pipeline.
+    
+    Connects:
+        - APIFetch.py: Fetch data from 55 APIs (SIMBAD, Gaia, NASA, etc.)
+        - IPData.py: Input parameter storage
+        - CondensedPhysics.py: All 281 calculator exports
+        - OPData.py / CondensedPhysics_OutputData.py: Result storage for recall
+    
+    Usage:
+        pipeline = UQFFPipeline()
+        result = pipeline.process("Sagittarius A*")
+        result = pipeline.process_csv("bodies_20260216_031358.csv")
+    """
+    
+    # Calculator routing based on object type
+    CALCULATOR_ROUTES = {
+        # Object type → List of applicable calculators
+        'black_hole': [
+            'GRMHDUQFFCalculator',
+            'GravitationalWaveUQFFCalculator',
+            'DarkMatterHaloUQFFCalculator',
+        ],
+        'neutron_star': [
+            'MHDUQFFCalculator',
+            'PlasmaInstabilityUQFFCalculator',
+            'GravitationalWaveUQFFCalculator',
+        ],
+        'magnetar': [
+            'MHDUQFFCalculator',
+            'PlasmaInstabilityUQFFCalculator',
+        ],
+        'galaxy': [
+            'DarkMatterHaloUQFFCalculator',
+            'TurbulenceUQFFCalculator',
+        ],
+        'star': [
+            'CompressibleNSUQFFCalculator',
+            'MHDUQFFCalculator',
+        ],
+        'binary': [
+            'GravitationalWaveUQFFCalculator',
+        ],
+        'default': [
+            'NavierStokesUQFFCalculator',
+            'MHDUQFFCalculator',
+        ],
+    }
+    
+    # Parameter mapping: CSV column → calculator parameter
+    PARAM_MAPPING = {
+        'M': 'mass',
+        'r': 'radius',
+        'T': 'temperature',
+        'B0': 'magnetic_field',
+        'B': 'magnetic_field',
+        'omega_s': 'spin_frequency',
+        'omega_c': 'cyclotron_frequency',
+        'distance_m': 'distance',
+        'distance_pc': 'distance_pc',
+        'redshift': 'z',
+        'ra': 'ra',
+        'dec': 'dec',
+        'radial_velocity': 'v_radial',
+        'luminosity': 'L',
+        'L': 'L',
+    }
+    
+    def __init__(self, output_dir: str = ".", verbose: bool = True):
+        """
+        Initialize UQFF Pipeline.
+        
+        Args:
+            output_dir: Directory for output files
+            verbose: Print progress messages
+        """
+        self.output_dir = output_dir
+        self.verbose = verbose
+        self._results_cache = {}
+        
+        # All available calculators
+        self._calculators = {
+            'NavierStokesUQFFCalculator': NavierStokesUQFFCalculator,
+            'MHDUQFFCalculator': MHDUQFFCalculator,
+            'CompressibleNSUQFFCalculator': CompressibleNSUQFFCalculator,
+            'TurbulenceUQFFCalculator': TurbulenceUQFFCalculator,
+            'GravitationalWaveUQFFCalculator': GravitationalWaveUQFFCalculator,
+            'DarkMatterHaloUQFFCalculator': DarkMatterHaloUQFFCalculator,
+            'PlasmaInstabilityUQFFCalculator': PlasmaInstabilityUQFFCalculator,
+            'GRMHDUQFFCalculator': GRMHDUQFFCalculator,
+            'NonNewtonianUQFFCalculator': NonNewtonianUQFFCalculator,
+            'UQFFConstantMapper': UQFFConstantMapper,
+            'Layer26DGravityCoupling': Layer26DGravityCoupling,
+            'MadelungTransformCalculator': MadelungTransformCalculator,
+        }
+        
+    def _log(self, msg: str) -> None:
+        """Print if verbose mode enabled."""
+        if self.verbose:
+            print(f"[UQFF Pipeline] {msg}")
+    
+    def _classify_object(self, params: Dict[str, Any]) -> str:
+        """Classify astronomical object based on parameters."""
+        name = str(params.get('name', '')).lower()
+        obj_type = str(params.get('object_type', '')).lower()
+        
+        # Classification by name patterns
+        if any(x in name for x in ['sgr', 'sag', 'a*', 'm87*']):
+            return 'black_hole'
+        if any(x in name for x in ['psr', 'pulsar', 'crab', 'vela']):
+            return 'neutron_star'
+        if any(x in name for x in ['sgr', 'magnetar']):
+            return 'magnetar'
+        if any(x in name for x in ['ngc', 'm31', 'm51', 'm33', 'galaxy']):
+            return 'galaxy'
+        if any(x in name for x in ['gw', 'binary']):
+            return 'binary'
+        
+        # Classification by type field
+        if 'black' in obj_type or 'agn' in obj_type:
+            return 'black_hole'
+        if 'neutron' in obj_type or 'pulsar' in obj_type:
+            return 'neutron_star'
+        if 'galax' in obj_type:
+            return 'galaxy'
+        if 'star' in obj_type:
+            return 'star'
+        
+        # Classification by physical parameters
+        M = params.get('M') or params.get('mass')
+        B = params.get('B0') or params.get('B') or params.get('magnetic_field')
+        
+        # Convert string values to float
+        if M is not None:
+            try:
+                M = float(M) if isinstance(M, str) else M
+            except (ValueError, TypeError):
+                M = None
+        
+        if B is not None:
+            try:
+                B = float(B) if isinstance(B, str) else B
+            except (ValueError, TypeError):
+                B = None
+        
+        if M is not None:
+            M_solar = 1.989e30
+            if M > 1e6 * M_solar:  # > 10^6 M_sun
+                return 'black_hole'
+            elif M > 1e10 * M_solar:  # Galaxy-scale
+                return 'galaxy'
+        
+        if B is not None and B > 1e8:  # > 100 MG
+            return 'neutron_star'
+        
+        return 'default'
+    
+    def _get_calculators_for_object(self, obj_type: str) -> List[str]:
+        """Get list of applicable calculators for object type."""
+        return self.CALCULATOR_ROUTES.get(obj_type, self.CALCULATOR_ROUTES['default'])
+    
+    def _map_params(self, raw_params: Dict[str, Any]) -> Dict[str, Any]:
+        """Map raw CSV/API params to calculator parameters."""
+        mapped = {}
+        for raw_key, mapped_key in self.PARAM_MAPPING.items():
+            if raw_key in raw_params and raw_params[raw_key] is not None:
+                value = raw_params[raw_key]
+                # Convert string values to float
+                if isinstance(value, str):
+                    try:
+                        value = float(value) if value.strip() else None
+                    except ValueError:
+                        value = None
+                if value is not None:
+                    mapped[mapped_key] = value
+        
+        # Pass through unmapped params
+        for key, value in raw_params.items():
+            if key not in self.PARAM_MAPPING and key not in mapped:
+                mapped[key] = value
+        
+        return mapped
+    
+    def process(self, object_name: str, params: Dict[str, Any] = None) -> Dict[str, Any]:
+        """
+        Process a single object through the pipeline.
+        
+        Args:
+            object_name: Name of the astronomical object
+            params: Optional pre-fetched parameters (if None, fetches from API)
+            
+        Returns:
+            Complete result dict with all calculator outputs
+        """
+        from datetime import datetime
+        import uuid
+        
+        query_id = f"{object_name}_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:8]}"
+        self._log(f"Processing: {object_name} (ID: {query_id})")
+        
+        # Step 1: Fetch data if not provided
+        if params is None:
+            try:
+                # Try importing APIFetch
+                from APIFetch import fetch
+                params = fetch(object_name)
+                self._log(f"  Fetched from APIs: {params.get('sources', ['unknown'])}")
+            except ImportError:
+                self._log("  Warning: APIFetch.py not available, using minimal params")
+                params = {'name': object_name}
+        
+        params['name'] = object_name
+        
+        # Step 2: Classify object
+        obj_type = self._classify_object(params)
+        self._log(f"  Classified as: {obj_type}")
+        
+        # Step 3: Map parameters
+        mapped_params = self._map_params(params)
+        
+        # Step 4: Get applicable calculators
+        calc_names = self._get_calculators_for_object(obj_type)
+        self._log(f"  Running calculators: {calc_names}")
+        
+        # Step 5: Run all applicable calculators
+        calculations = {}
+        equations_solved = []
+        available_equations = []
+        
+        for calc_name in calc_names:
+            if calc_name in self._calculators:
+                try:
+                    # Instantiate calculator with available params
+                    CalcClass = self._calculators[calc_name]
+                    
+                    # Build constructor args based on class signature
+                    if calc_name == 'GravitationalWaveUQFFCalculator':
+                        M = mapped_params.get('mass', 10 * 1.989e30)
+                        calc = CalcClass(M_chirp=M / 1.989e30 if M else 10)
+                        result = calc.compute(mode='waveform')
+                        
+                    elif calc_name == 'DarkMatterHaloUQFFCalculator':
+                        # Try named system first
+                        name_upper = object_name.upper().replace(' ', '')
+                        known_systems = ['M31', 'MW', 'NGC253', 'M33', 'NGC1365']
+                        matched = next((s for s in known_systems if s in name_upper), None)
+                        if matched:
+                            calc = CalcClass.from_system(matched)
+                        else:
+                            calc = CalcClass()
+                        result = calc.compute(mode='rotation')
+                        
+                    elif calc_name == 'MHDUQFFCalculator':
+                        rho = mapped_params.get('mass', 1000)
+                        calc = CalcClass(rho_0=rho)
+                        B = mapped_params.get('magnetic_field', 1e-4)
+                        result = calc.compute(mode='alfven', B=B)
+                        
+                    elif calc_name == 'PlasmaInstabilityUQFFCalculator':
+                        B = mapped_params.get('magnetic_field', 100e-4)
+                        calc = CalcClass(B=B)
+                        result = calc.compute(mode='flare', Vol=1e24)
+                        
+                    elif calc_name == 'GRMHDUQFFCalculator':
+                        M = mapped_params.get('mass', 10 * 1.989e30)
+                        calc = CalcClass(M=M)
+                        result = calc.compute(mode='jet')
+                        
+                    elif calc_name == 'TurbulenceUQFFCalculator':
+                        calc = CalcClass()
+                        result = calc.compute(mode='scales')
+                        
+                    elif calc_name == 'CompressibleNSUQFFCalculator':
+                        calc = CalcClass()
+                        result = calc.compute(mode='sound_speed')
+                        
+                    elif calc_name == 'NavierStokesUQFFCalculator':
+                        calc = CalcClass()
+                        result = calc.compute(mode='couette')
+                        
+                    else:
+                        # Generic instantiation
+                        calc = CalcClass()
+                        result = calc.compute() if hasattr(calc, 'compute') else {}
+                    
+                    calculations[calc_name] = result
+                    
+                    if 'equation' in result:
+                        equations_solved.append({
+                            'calculator': calc_name,
+                            'equation': result['equation'],
+                            'mode': result.get('mode', 'unknown')
+                        })
+                    
+                    available_equations.append(calc_name)
+                    self._log(f"    ✓ {calc_name}: {result.get('mode', 'computed')}")
+                    
+                except Exception as e:
+                    self._log(f"    ✗ {calc_name}: {str(e)}")
+                    calculations[calc_name] = {'error': str(e)}
+        
+        # Step 6: Build result
+        result = {
+            'query_id': query_id,
+            'timestamp': datetime.now().isoformat(),
+            'object_name': object_name,
+            'object_type': obj_type,
+            'input_params': mapped_params,
+            'raw_params': params,
+            'calculations': calculations,
+            'equations_solved': equations_solved,
+            'available_equations': available_equations,
+            'calculators_run': len(calculations),
+            'success': sum(1 for c in calculations.values() if 'error' not in c),
+        }
+        
+        # Step 7: Cache result
+        self._results_cache[query_id] = result
+        
+        # Step 8: Store to OPData (attempt)
+        try:
+            self._store_to_opdata(result)
+        except Exception as e:
+            self._log(f"  Warning: Could not store to OPData: {e}")
+        
+        self._log(f"  Complete: {result['success']}/{result['calculators_run']} calculators succeeded")
+        
+        return result
+    
+    def process_csv(self, csv_path: str) -> List[Dict[str, Any]]:
+        """
+        Process all objects from a bodies_*.csv file.
+        
+        Args:
+            csv_path: Path to bodies_YYYYMMDD_HHMMSS.csv
+            
+        Returns:
+            List of results for each object
+        """
+        import csv
+        import os
+        
+        if not os.path.exists(csv_path):
+            raise FileNotFoundError(f"CSV file not found: {csv_path}")
+        
+        self._log(f"Processing CSV: {csv_path}")
+        
+        results = []
+        with open(csv_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                object_name = row.get('name', 'Unknown')
+                result = self.process(object_name, params=row)
+                results.append(result)
+        
+        self._log(f"Processed {len(results)} objects from CSV")
+        return results
+    
+    def _store_to_opdata(self, result: Dict[str, Any]) -> None:
+        """Store result to OPData for recall."""
+        try:
+            from CondensedPhysics_OutputData import OutputDataStore, QueryResult, EquationSolution
+            
+            # Build QueryResult
+            equations = []
+            for eq in result.get('equations_solved', []):
+                equations.append(EquationSolution(
+                    equation_name=eq['calculator'],
+                    symbolic_form=eq.get('equation', ''),
+                    numeric_solution=0.0,  # Would need actual value
+                    units='varies',
+                ))
+            
+            query_result = QueryResult(
+                query_id=result['query_id'],
+                timestamp=result['timestamp'],
+                object_name=result['object_name'],
+                input_dataset=result['input_params'],
+                primary_equations=equations,
+                available_equations=result['available_equations'],
+            )
+            
+            store = OutputDataStore()
+            store.store_result(query_result)
+            
+        except ImportError:
+            pass  # OPData not available
+    
+    def recall(self, query_id: str) -> Optional[Dict[str, Any]]:
+        """Recall a cached result by query ID."""
+        return self._results_cache.get(query_id)
+    
+    def list_results(self) -> List[str]:
+        """List all cached query IDs."""
+        return list(self._results_cache.keys())
+    
+    def get_statistics(self) -> Dict[str, Any]:
+        """Get pipeline statistics."""
+        if not self._results_cache:
+            return {'queries': 0, 'objects': 0, 'calculators': len(self._calculators)}
+        
+        return {
+            'queries': len(self._results_cache),
+            'objects': len(set(r['object_name'] for r in self._results_cache.values())),
+            'total_calculations': sum(r['calculators_run'] for r in self._results_cache.values()),
+            'success_rate': sum(r['success'] for r in self._results_cache.values()) / 
+                           max(1, sum(r['calculators_run'] for r in self._results_cache.values())),
+            'calculators': len(self._calculators),
+        }
+    
+    def run_batch(self, objects: List[str]) -> Dict[str, Any]:
+        """
+        Process multiple objects in batch.
+        
+        Args:
+            objects: List of object names to process
+            
+        Returns:
+            Summary dict with all results
+        """
+        self._log(f"Batch processing {len(objects)} objects")
+        
+        results = []
+        for obj in objects:
+            try:
+                result = self.process(obj)
+                results.append(result)
+            except Exception as e:
+                self._log(f"  Error processing {obj}: {e}")
+                results.append({'object_name': obj, 'error': str(e)})
+        
+        # Summary
+        successful = [r for r in results if 'error' not in r]
+        
+        return {
+            'batch_size': len(objects),
+            'successful': len(successful),
+            'failed': len(results) - len(successful),
+            'results': results,
+            'statistics': self.get_statistics(),
+        }
+
+
+# Global pipeline instance
+UQFF_PIPELINE = UQFFPipeline(verbose=False)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PIPELINE CONVENIENCE FUNCTIONS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def pipeline_process(object_name: str) -> Dict[str, Any]:
+    """Process single object through UQFF pipeline."""
+    return UQFF_PIPELINE.process(object_name)
+
+def pipeline_process_csv(csv_path: str) -> List[Dict[str, Any]]:
+    """Process all objects from bodies_*.csv file."""
+    return UQFF_PIPELINE.process_csv(csv_path)
+
+def pipeline_batch(objects: List[str]) -> Dict[str, Any]:
+    """Process multiple objects in batch."""
+    return UQFF_PIPELINE.run_batch(objects)
+
+def pipeline_recall(query_id: str) -> Optional[Dict[str, Any]]:
+    """Recall a pipeline result by query ID."""
+    return UQFF_PIPELINE.recall(query_id)
+
+def pipeline_stats() -> Dict[str, Any]:
+    """Get pipeline statistics."""
+    return UQFF_PIPELINE.get_statistics()
+
+
 # Global instances for NS-UQFF Integration
 MADELUNG_CALC = MadelungTransformCalculator()
 NS_UQFF_CALC = NavierStokesUQFFCalculator()
@@ -90736,6 +91216,15 @@ __all__ = [
     
     # Collection
     'HIGH_VALUE_PHYSICS_CALCULATORS',
+    
+    # UQFF Pipeline (Feb 24, 2026 - End-to-End Data Flow)
+    'UQFFPipeline',
+    'UQFF_PIPELINE',
+    'pipeline_process',
+    'pipeline_process_csv',
+    'pipeline_batch',
+    'pipeline_recall',
+    'pipeline_stats',
 ]
 
 
