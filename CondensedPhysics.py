@@ -35339,6 +35339,300 @@ Q-SCOPE TESTABILITY:
 ═══════════════════════════════════════════════════════════════════════════════
 """
         return results, steps
+    
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # ER=EPR Q-SCOPE TEST (Experimental Prediction)
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def compute_ER_EPR_qscope_test(self, n_qubits: int = 2,
+                                    T: float = None,
+                                    tau_coh: float = 1e-12,
+                                    Delta_t: float = 1e-13,
+                                    f_TRZ: float = None,
+                                    rho_SCm: float = None,
+                                    rho_UA: float = None,
+                                    U_m: float = None,
+                                    t: float = 0.0,
+                                    t_n: float = 0.0,
+                                    gamma: float = 5e-5,
+                                    frame: str = 'F_U_Bi') -> Tuple[dict, str]:
+        """
+        Compute ER=EPR testable predictions for q-scope experiments.
+        
+        Q-SCOPE CONCEPT:
+            A quantum oscilloscope for THz/hole dynamics, designed to detect
+            aether-superconductive effects. For ER=EPR testing, it measures
+            correlation anomalies in entangled systems that would indicate
+            micro-wormhole enhancement.
+        
+        TESTABLE PREDICTIONS:
+            
+            1. PHASE SHIFT (f_TRZ-induced):
+               φ_shift = 2π × f_TRZ × (Δt/τ_coh)
+               Time-reversal factor introduces negentropic delay in
+               entangled wavefunction correlations.
+            
+            2. FIDELITY DAMPING (U_m-induced):
+               F_UQFF = exp(-U_m/(k_B×T))
+               Magnetic strings damp signal through aether wormhole,
+               reducing entanglement fidelity.
+            
+            3. CORRELATION ANOMALY (Observable):
+               ΔC = S_UQFF × (1 + f_TRZ) × exp(-U_m/(k_B×T)) - S_expected
+               If ΔC > 0: UQFF wormhole enhancement detected
+               If ΔC = 0: Standard QM (no aether effect)
+               If ΔC < 0: Anomalous decoherence
+        
+        EXPERIMENTAL SETUP:
+            - Entangle particles (photons/electrons) in q-scope chamber
+            - Measure correlation time/phase vs. physical separation
+            - Compare measured S to predicted S_expected = n × ln(2)
+            - Anomalous persistence indicates aether tunnel formation
+        
+        Args:
+            n_qubits: Number of entangled qubits (default: 2 for EPR pair)
+            T: System temperature (K) - defaults to lab 300K
+            tau_coh: Coherence time (s) - default 1 ps
+            Delta_t: Measurement delay (s) - default 0.1 ps
+            f_TRZ: Time reversal factor (default: 0.1)
+            rho_SCm: SCm vacuum density (J/m³)
+            rho_UA: UA vacuum density (J/m³)
+            U_m: Magnetic string energy (J)
+            t: Time parameter (days) for U_m oscillation
+            t_n: Normalized time for cos(πt_n)
+            gamma: Decay constant (default: 5e-5 day⁻¹)
+            frame: 'F_U_Bi' (inside→out) or 'F_U_Bi_i' (outside→in)
+        
+        Returns:
+            results: Dict with q-scope test parameters
+            steps: Long-form derivation string
+        
+        References:
+            - Maldacena & Susskind (2013): ER=EPR conjecture
+            - UQFF q-scope test derivation (SuperGrok4)
+        """
+        # Physical constants
+        l_Pl = np.sqrt(self.hbar * self.G / self.c**3)  # Planck length
+        
+        # Defaults
+        f_TRZ = f_TRZ if f_TRZ is not None else self.f_TRZ
+        T = T if T is not None else 300.0  # Lab temperature
+        
+        # Frame-dependent constant selection
+        if rho_SCm is None or rho_UA is None:
+            if frame == 'F_U_Bi_i':
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_BH
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_BH
+                frame_name = "F_U_Bi_i (outside→in, horizon scale)"
+            else:
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_ISM
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_ISM
+                frame_name = "F_U_Bi (inside→out, ISM scale)"
+        else:
+            frame_name = "Custom (user-specified)"
+        
+        # === STEP 1: Standard EPR Entropy (Expected) ===
+        S_expected = n_qubits * np.log(2)  # von Neumann entropy (nats)
+        
+        # === STEP 2: UQFF Aether-Modulated Throat ===
+        rho_ratio = rho_UA / rho_SCm  # ≈ 10 for canonical
+        r_throat_UQFF = l_Pl * rho_ratio
+        A_throat_UQFF = 4 * np.pi * r_throat_UQFF**2
+        
+        # === STEP 3: Geometric UQFF Entropy ===
+        S_ER_UQFF = A_throat_UQFF / (4 * self.G * self.hbar)
+        
+        # === STEP 4: Phase Shift (f_TRZ) ===
+        # φ_shift = 2π × f_TRZ × (Δt/τ_coh)
+        phi_shift = 2 * np.pi * f_TRZ * (Delta_t / tau_coh) if tau_coh > 0 else 0.0
+        phi_shift_degrees = np.degrees(phi_shift)
+        
+        # === STEP 5: Magnetic String Energy ===
+        if U_m is None:
+            # U_m = μ_j / r_throat × (1 - exp(-γt × cos(πt_n)))
+            mu_j = 1e15  # Magnetic string tension
+            oscillation = np.cos(np.pi * t_n)
+            U_m = (mu_j / r_throat_UQFF) * (1 - np.exp(-gamma * t * max(oscillation, 0)))
+            U_m = max(U_m, self.k_B * T * 0.5)  # Minimum ≈ 0.5 k_B T for test
+        
+        # === STEP 6: Fidelity Damping ===
+        # F_UQFF = exp(-U_m/(k_B×T))
+        exponent_fidelity = -U_m / (self.k_B * T) if T > 0 else 0
+        F_UQFF = np.exp(max(exponent_fidelity, -700))
+        
+        # === STEP 7: UQFF Enhancement Factor ===
+        # S_UQFF = S × ρ_ratio (aether expansion)
+        S_UQFF_enhanced = S_expected * rho_ratio
+        
+        # === STEP 8: Correlation Anomaly ΔC ===
+        # ΔC = S_UQFF × (1 + f_TRZ) × exp(-U_m/(k_B×T)) - S_expected
+        Delta_C = S_UQFF_enhanced * (1 + f_TRZ) * F_UQFF - S_expected
+        
+        # === STEP 9: Anomaly Assessment ===
+        if Delta_C > 0:
+            anomaly_status = "POSITIVE: UQFF wormhole enhancement detected"
+            test_result = "SUPPORTS_UQFF"
+        elif Delta_C < 0:
+            anomaly_status = "NEGATIVE: Anomalous decoherence"
+            test_result = "DECOHERENCE"
+        else:
+            anomaly_status = "ZERO: Standard QM (no aether effect)"
+            test_result = "STANDARD_QM"
+        
+        # === STEP 10: Effective Correlation Strength ===
+        # Ratio of observed to expected correlation
+        if S_expected > 0:
+            correlation_ratio = (S_UQFF_enhanced * (1 + f_TRZ) * F_UQFF) / S_expected
+        else:
+            correlation_ratio = np.inf
+        
+        results = {
+            'n_qubits': n_qubits,
+            'S_expected': S_expected,
+            'S_expected_bits': S_expected / np.log(2),
+            'rho_ratio': rho_ratio,
+            'S_UQFF_enhanced': S_UQFF_enhanced,
+            'l_Pl': l_Pl,
+            'r_throat_UQFF': r_throat_UQFF,
+            'A_throat_UQFF': A_throat_UQFF,
+            'S_ER_UQFF': S_ER_UQFF,
+            'tau_coh': tau_coh,
+            'Delta_t': Delta_t,
+            'phi_shift': phi_shift,
+            'phi_shift_degrees': phi_shift_degrees,
+            'U_m': U_m,
+            'F_UQFF': F_UQFF,
+            'Delta_C': Delta_C,
+            'test_result': test_result,
+            'anomaly_status': anomaly_status,
+            'correlation_ratio': correlation_ratio,
+            'f_TRZ': f_TRZ,
+            'T': T,
+            'rho_SCm': rho_SCm,
+            'rho_UA': rho_UA,
+            'frame': frame
+        }
+        
+        steps = f"""UQFF ER=EPR Q-Scope Test Derivation:
+═══════════════════════════════════════════════════════════════════════════════
+EXPERIMENTAL CONCEPT:
+
+Q-SCOPE (Quantum Oscilloscope):
+  A THz-frequency setup for detecting aether-superconductive effects.
+  For ER=EPR testing, measures correlation anomalies in entangled systems
+  that indicate micro-wormhole enhancement via [UA] tunneling.
+
+TESTABLE PREDICTIONS:
+  1. Phase shift φ from time-reversal (f_TRZ)
+  2. Fidelity damping F from magnetic strings (U_m)
+  3. Correlation anomaly ΔC (observable signal)
+
+DETECTION CRITERION:
+  ΔC > 0 → UQFF wormhole enhancement
+  ΔC = 0 → Standard QM predictions
+  ΔC < 0 → Anomalous decoherence
+
+═══════════════════════════════════════════════════════════════════════════════
+Inputs:
+  n_qubits = {n_qubits} entangled qubits
+  T = {T:.2f} K (system temperature)
+  τ_coh = {tau_coh:.4e} s (coherence time)
+  Δt = {Delta_t:.4e} s (measurement delay)
+  f_TRZ = {f_TRZ:.4f}
+  Frame = {frame_name}
+  ρ_UA/ρ_SCm = {rho_ratio:.4f}
+
+STEP 1: Standard EPR Entropy (Expected from QM)
+  S_expected = n × ln(2) = {n_qubits} × {np.log(2):.4f}
+             = {S_expected:.4f} nats
+             = {S_expected/np.log(2):.2f} bits
+
+STEP 2: UQFF Aether-Modulated Throat
+  r_throat,UQFF = l_Pl × (ρ_UA/ρ_SCm)
+               = {l_Pl:.4e} × {rho_ratio:.4f}
+               = {r_throat_UQFF:.4e} m
+  
+  A_throat = 4π r² = {A_throat_UQFF:.4e} m²
+
+STEP 3: Geometric UQFF Entropy
+  S_ER,UQFF = A_throat / (4Gℏ) = {S_ER_UQFF:.4e} nats
+
+STEP 4: PHASE SHIFT (f_TRZ-Induced)
+  φ_shift = 2π × f_TRZ × (Δt/τ_coh)
+          = 2π × {f_TRZ:.4f} × ({Delta_t:.4e}/{tau_coh:.4e})
+          = 2π × {f_TRZ:.4f} × {Delta_t/tau_coh:.4f}
+          = {phi_shift:.6f} rad
+          = {phi_shift_degrees:.4f}°
+  
+  This phase shift appears in entangled wavefunction correlations:
+  |ψ⟩ = (|00⟩ + e^(iφ)|11⟩) / √2
+  
+  {'→ Measurable phase shift (>1°)' if phi_shift_degrees > 1 else '→ Small phase shift (<1°)'}
+
+STEP 5: Magnetic String Energy
+  U_m = {U_m:.4e} J
+  U_m/(k_B×T) = {U_m/(self.k_B*T):.4f}
+
+STEP 6: FIDELITY DAMPING (U_m-Induced)
+  F_UQFF = exp(-U_m/(k_B×T))
+         = exp({exponent_fidelity:.4f})
+         = {F_UQFF:.4f}
+  
+  Fidelity: {F_UQFF*100:.1f}% of entanglement survives aether tunnel
+  {'→ Good fidelity (>50%)' if F_UQFF > 0.5 else '→ Strong damping (<50%)'}
+
+STEP 7: UQFF Enhancement Factor
+  S_UQFF,enhanced = S_expected × ρ_ratio
+                  = {S_expected:.4f} × {rho_ratio:.4f}
+                  = {S_UQFF_enhanced:.4f} nats
+  
+  Aether expansion amplifies effective entropy by {rho_ratio:.1f}×
+
+STEP 8: CORRELATION ANOMALY ΔC (Observable!)
+  ΔC = S_UQFF × (1 + f_TRZ) × exp(-U_m/(k_B×T)) - S_expected
+     = {S_UQFF_enhanced:.4f} × (1 + {f_TRZ:.4f}) × {F_UQFF:.4f} - {S_expected:.4f}
+     = {S_UQFF_enhanced:.4f} × {1+f_TRZ:.4f} × {F_UQFF:.4f} - {S_expected:.4f}
+     = {S_UQFF_enhanced * (1+f_TRZ) * F_UQFF:.4f} - {S_expected:.4f}
+     = {Delta_C:.4f}
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: CORRELATION ANOMALY
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ ΔC = {Delta_C:+.4f} nats                                         │
+  │                                                                 │
+  │ {anomaly_status:^50s} │
+  └─────────────────────────────────────────────────────────────────┘
+
+  Correlation ratio (observed/expected): {correlation_ratio:.2f}×
+  
+  {'If measured ΔC > 0, this supports UQFF ER=EPR with aether wormholes!' if Delta_C > 0 else 'Adjust experimental parameters or increase ρ ratio for positive anomaly'}
+
+STEP 9: Q-SCOPE MEASUREMENT PROTOCOL
+
+  1. SETUP: Entangle {n_qubits} qubits (photons/electrons) in THz chamber
+  2. SEPARATE: Increase physical distance while maintaining coherence
+  3. MEASURE: Record correlation strength S_obs over time τ
+  4. COMPARE: Calculate ΔC = S_obs - S_expected
+  5. VERIFY: Positive ΔC persisting beyond τ_coh indicates aether tunnel
+
+  Expected signatures:
+  • Phase shift ≈ {phi_shift_degrees:.2f}° in interference patterns
+  • Fidelity ≈ {F_UQFF*100:.1f}% (vs 100% in ideal QM)
+  • Correlation enhancement ≈ {correlation_ratio:.2f}× if ΔC > 0
+
+Physical Interpretation:
+  • ΔC > 0: Entanglement creates aether micro-wormhole, enhancing correlations
+  • Phase shift: f_TRZ introduces negentropic "echo" in correlations
+  • Fidelity: U_m damps signal, but aether expansion compensates
+  • Net effect: UQFF predicts {correlation_ratio:.1f}× correlation ratio
+
+Numerical Example (from derivation):
+  S_expected = ln(2) ≈ 0.69, ρ_ratio = 10, f_TRZ = 0.1, U_m/(k_B×T) ≈ 0.5
+  ΔC ≈ (0.69 × 10) × 1.1 × e^(-0.5) - 0.69 ≈ 5.2 (positive anomaly)
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
 
 
 # Global Black Hole Phases Model instance
