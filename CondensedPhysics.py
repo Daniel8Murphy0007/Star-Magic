@@ -33428,21 +33428,43 @@ Physical Interpretation:
         Args:
             M_BH: Black hole mass (kg)
             U_m: Magnetic string energy (J), default from UQFF constants
-            f_TRZ: Time reversal factor for T_UQFF calculation
-            rho_SCm: Override SCm vacuum density for T_UQFF
-            rho_UA: Override UA vacuum density for T_UQFF
+            f_TRZ: Time reversal factor (default: self.f_TRZ ≈ 0.1)
+            rho_SCm: Override SCm vacuum density (J/m³)
+            rho_UA: Override UA vacuum density (J/m³)
             frame: 'F_U_Bi' (inside→out) or 'F_U_Bi_i' (outside→in)
-            rho_UA: UA vacuum density for T_UQFF
         
         Returns:
             L_standard: Standard Hawking luminosity (W)
             L_UQFF: UQFF-corrected luminosity (W)
             steps: Long-form derivation string
         
+        FORMULA (per SuperGrok4 derivation):
+            L_UQFF = L_H × (1 - f_TRZ) × (1 - ρ_SCm/ρ_UA) × exp(-U_m/(k_B × T_H))
+        
+        Note: Unlike temperature (which uses 1+f_TRZ), luminosity uses (1-f_TRZ)
+              because reversal REDUCES emission by partially un-escaping pairs.
+              Magnetic damping uses T_H (not T_UQFF) per derivation.
+        
         References:
             - Hawking radiation power: L = ℏc⁶/(15360π G²M²)
             - UQFF magnetic string damping model
         """
+        # Use defaults if not specified
+        f_TRZ = f_TRZ if f_TRZ is not None else self.f_TRZ
+        
+        # Frame-dependent constant selection (piecewise constants)
+        if rho_SCm is None or rho_UA is None:
+            if frame == 'F_U_Bi_i':
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_BH
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_BH
+                frame_name = "F_U_Bi_i (outside→in, horizon scale)"
+            else:
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_ISM
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_ISM
+                frame_name = "F_U_Bi (inside→out, ISM scale)"
+        else:
+            frame_name = "Custom (user-specified)"
+        
         # Default U_m from UQFF magnetic string energy (scale with BH mass)
         # Typical U_m ~ 10⁻¹⁵ to 10⁻¹² J depending on BH size
         if U_m is None:
@@ -33454,58 +33476,89 @@ Physical Interpretation:
         # Standard Hawking luminosity
         L_standard = self.hbar * self.c**6 / (15360 * np.pi * self.G**2 * M_BH**2)
         
-        # Get UQFF-corrected temperature for damping calculation (pass frame)
-        T_H, T_UQFF, _ = self.compute_Hawking_temperature_UQFF(M_BH, f_TRZ, rho_SCm, rho_UA, frame)
+        # Standard Hawking temperature (for damping calculation - per derivation uses T_H not T_UQFF)
+        T_H = self.hbar * self.c**3 / (8 * np.pi * self.G * M_BH * self.k_B)
         
-        # Magnetic string damping factor
+        # === THREE INDEPENDENT UQFF FACTORS (per derivation) ===
+        
+        # Factor 1: Time-reversal correction (SUBTRACTION for luminosity, unlike temperature)
+        # TRZ reversal REDUCES emission by partially "reversing" pair escape
+        negentropic_factor = 1 - f_TRZ  # Note: (1 - f_TRZ) not (1 + f_TRZ)
+        
+        # Factor 2: Aether-superconductive ratio (applied directly to L, not via T)
+        # ρ_SCm/ρ_UA ≈ 0.1 → suppresses by 10%
+        rho_ratio = rho_SCm / rho_UA
+        aether_factor = 1 - rho_ratio
+        
+        # Factor 3: Magnetic string damping (uses T_H per derivation, not T_UQFF)
         # Prevent overflow for very cold BHs
-        exponent = -U_m / (self.k_B * T_UQFF) if T_UQFF > 0 else -np.inf
-        damping_factor = np.exp(max(exponent, -700))  # Clamp to avoid underflow
+        exponent = -U_m / (self.k_B * T_H) if T_H > 0 else -np.inf
+        magnetic_damping = np.exp(max(exponent, -700))  # Clamp to avoid underflow
         
-        # UQFF-corrected luminosity
-        L_UQFF = L_standard * damping_factor
+        # UQFF-corrected luminosity: L_UQFF = L_H × (1-f_TRZ) × (1-ρ_ratio) × exp(-U_m/kT_H)
+        L_UQFF = L_standard * negentropic_factor * aether_factor * magnetic_damping
         
-        # Time scales
-        yr_s = 3.156e7  # seconds per year
+        # Total suppression factor
+        total_suppression = negentropic_factor * aether_factor * magnetic_damping
         
         steps = f"""UQFF-Corrected Hawking Luminosity Calculation:
 ═══════════════════════════════════════════════════════════════════════════════
 Inputs:
   M_BH = {M_BH:.4e} kg = {M_BH/self.M_sun:.4e} M_☉
+  f_TRZ = {f_TRZ:.4f}
+  Frame = {frame_name}
+  ρ_vac,[SCm] = {rho_SCm:.4e} J/m³
+  ρ_vac,[UA] = {rho_UA:.4e} J/m³
   U_m = {U_m:.4e} J (magnetic string energy)
-  T_UQFF = {T_UQFF:.4e} K
+  T_H = {T_H:.4e} K (standard Hawking - used for damping)
 
 STEP 1: Standard Hawking Luminosity
-  Formula: L = ℏc⁶/(15360π G²M²)
-  L = {self.hbar:.4e} × ({self.c:.4e})⁶ / (15360π × ({self.G:.4e})² × ({M_BH:.4e})²)
-    = {L_standard:.4e} W
-    = {L_standard/3.828e26:.4e} L_☉
+  Formula: L_H = ℏc⁶/(15360π G²M²)
+  L_H = {self.hbar:.4e} × ({self.c:.4e})⁶ / (15360π × ({self.G:.4e})² × ({M_BH:.4e})²)
+      = {L_standard:.4e} W
+      = {L_standard/3.828e26:.4e} L_☉
 
-STEP 2: Magnetic String Damping
-  Formula: damping = exp(-U_m/(k_B × T_UQFF))
-  exponent = -{U_m:.4e} / ({self.k_B:.4e} × {T_UQFF:.4e})
+STEP 2: Time-Reversal Correction (1 - f_TRZ)
+  Note: Luminosity uses (1-f_TRZ) because TRZ REDUCES emission
+        by partially reversing pair escape (unlike T which uses 1+f_TRZ)
+  negentropic_factor = 1 - {f_TRZ:.4f} = {negentropic_factor:.4f}
+
+STEP 3: Aether-Superconductive Damping (1 - ρ_SCm/ρ_UA)
+  This is applied DIRECTLY to L (not via temperature)
+  ρ_ratio = {rho_SCm:.4e} / {rho_UA:.4e} = {rho_ratio:.4f}
+  aether_factor = 1 - {rho_ratio:.4f} = {aether_factor:.4f}
+
+STEP 4: Magnetic String Damping exp(-U_m/(k_B × T_H))
+  Note: Uses T_H (standard Hawking), not T_UQFF per derivation
+  exponent = -{U_m:.4e} / ({self.k_B:.4e} × {T_H:.4e})
            = {exponent:.4e}
-  damping_factor = exp({exponent:.4e}) = {damping_factor:.4e}
+  magnetic_damping = exp({exponent:.4e}) = {magnetic_damping:.4e}
 
-STEP 3: UQFF-Corrected Luminosity
-  Formula: L_UQFF = L × exp(-U_m/(k_B × T))
-  L_UQFF = {L_standard:.4e} × {damping_factor:.4e}
+STEP 5: UQFF-Corrected Luminosity
+  Formula: L_UQFF = L_H × (1-f_TRZ) × (1-ρ_SCm/ρ_UA) × exp(-U_m/(k_B×T_H))
+  L_UQFF = {L_standard:.4e} × {negentropic_factor:.4f} × {aether_factor:.4f} × {magnetic_damping:.4e}
          = {L_UQFF:.4e} W
 
 Comparison:
-  L (standard) = {L_standard:.4e} W
+  L_H (standard) = {L_standard:.4e} W
   L_UQFF (corrected) = {L_UQFF:.4e} W
-  Suppression ratio = {L_UQFF/L_standard if L_standard > 0 else 0:.4e}
+  Total suppression = {total_suppression:.4e}
+  L_UQFF/L_H = {L_UQFF/L_standard if L_standard > 0 else 0:.4e}
+
+Factor Breakdown:
+  • (1 - f_TRZ) = {negentropic_factor:.4f} → {(1-negentropic_factor)*100:.1f}% reduction from TRZ
+  • (1 - ρ_ratio) = {aether_factor:.4f} → {(1-aether_factor)*100:.1f}% reduction from aether
+  • exp(-U_m/kT) = {magnetic_damping:.4e} → {'dominant suppression' if magnetic_damping < 0.1 else 'minor/no suppression'}
 
 Evaporation Rate:
-  dM/dt (standard) = L/c² = {L_standard/self.c**2:.4e} kg/s
-  dM/dt (UQFF) = {L_UQFF/self.c**2:.4e} kg/s
+  dM/dt (standard) = L_H/c² = {L_standard/self.c**2:.4e} kg/s
+  dM/dt (UQFF) = L_UQFF/c² = {L_UQFF/self.c**2:.4e} kg/s
 
 Physical Interpretation:
-  • U_m (magnetic strings) damps Hawking emission
-  • {'Strong damping → BH appears non-evaporating' if damping_factor < 0.01 else 'Weak damping → near-standard evaporation'}
-  • Links to Sgr A* observations: coherence near horizon modifies predictions
-  • UQFF suggests BHs in dense [UA] environments evaporate more slowly
+  • THREE independent UQFF factors multiply to give total suppression
+  • {'Strong damping → BH appears non-evaporating' if total_suppression < 0.01 else 'Moderate suppression → slower evaporation'}
+  • Sgr A* example: L_H ~10⁻⁵ W → L_UQFF ~3×10⁻⁶ W (per derivation)
+  • Frame: {frame_name}
 ═══════════════════════════════════════════════════════════════════════════════
 """
         return L_standard, L_UQFF, steps
