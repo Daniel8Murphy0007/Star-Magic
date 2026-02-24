@@ -24,6 +24,8 @@
 #include <QDockWidget>      // Dockable window - can be docked in QMainWindow or float as separate window
 #include <QDialog>          // Base class for dialog windows - modal or non-modal popup windows
 #include <QMessageBox>      // Modal dialog for informing user - shows messages, warnings, errors
+#include <QInputDialog>     // Input dialog - simple dialogs for user input (text, item selection)
+#include <algorithm>        // STL algorithms - std::reverse, std::sort, etc.
 #include <QToolBar>         // Toolbar container - holds action buttons and widgets
 #include <QScreen>          // Screen information - provides info about physical screen properties
 #include <QDragEnterEvent>  // Drag-and-drop enter event - sent when drag operation enters a widget
@@ -2523,7 +2525,7 @@ private:
         
         restorePointCounter++;
         QString timestamp = QDateTime::currentDateTime().toString("yyyyMMdd_HHmmss");
-        QString filename = QString("SuperGrok4_RestorePoint_%1.json").arg(timestamp);
+        QString filename = "SuperGrok4_RestorePoint.json";  // Consolidated file
         
         QJsonArray historyArray;
         for (const auto& entry : conversationHistory) {
@@ -2535,38 +2537,47 @@ private:
             historyArray.append(entryObj);
         }
         
+        QJsonObject sessionObj;
+        sessionObj["history"] = historyArray;
+        
+        // Load existing consolidated file or create new
         QJsonObject rootObj;
-        rootObj["version"] = "1.0";
-        rootObj["session_start"] = conversationHistory.first().timestamp.toString(Qt::ISODate);
-        rootObj["last_update"] = QDateTime::currentDateTime().toString(Qt::ISODate);
-        rootObj["total_exchanges"] = conversationHistory.size();
-        rootObj["history"] = historyArray;
+        QFile file(filename);
+        if (file.exists() && file.open(QIODevice::ReadOnly)) {
+            QByteArray existingData = file.readAll();
+            file.close();
+            // Handle BOM if present
+            if (existingData.startsWith("\xEF\xBB\xBF")) {
+                existingData = existingData.mid(3);
+            }
+            QJsonDocument existingDoc = QJsonDocument::fromJson(existingData);
+            if (existingDoc.isObject()) {
+                rootObj = existingDoc.object();
+            }
+        }
+        
+        // Add new session with timestamp key
+        rootObj[timestamp] = sessionObj;
         
         QJsonDocument doc(rootObj);
-        QFile file(filename);
         if (file.open(QIODevice::WriteOnly)) {
             file.write(doc.toJson(QJsonDocument::Indented));
             file.close();
-            qDebug() << "Restore point saved:" << filename << "(" << conversationHistory.size() << "exchanges)";
+            qDebug() << "Restore point saved:" << timestamp << "(" << conversationHistory.size() << "exchanges) to" << filename;
         } else {
             qDebug() << "Failed to save restore point:" << filename;
         }
     }
     
     void loadRestorePoint() {
-        // Find most recent restore point
-        QDir dir("." );
-        QStringList filters;
-        filters << "SuperGrok4_RestorePoint_*.json";
-        QFileInfoList files = dir.entryInfoList(filters, QDir::Files, QDir::Time);
+        QString filename = "SuperGrok4_RestorePoint.json";  // Consolidated file
+        QFile file(filename);
         
-        if (files.isEmpty()) {
-            qDebug() << "No previous restore points found";
+        if (!file.exists()) {
+            qDebug() << "No restore point file found:" << filename;
+            QMessageBox::information(this, "Load History", "No restore point file found.");
             return;
         }
-        
-        QString filename = files.first().fileName();
-        QFile file(filename);
         
         if (!file.open(QIODevice::ReadOnly)) {
             qDebug() << "Failed to open restore point:" << filename;
@@ -2576,6 +2587,11 @@ private:
         QByteArray data = file.readAll();
         file.close();
         
+        // Handle BOM if present
+        if (data.startsWith("\xEF\xBB\xBF")) {
+            data = data.mid(3);
+        }
+        
         QJsonDocument doc = QJsonDocument::fromJson(data);
         if (doc.isNull() || !doc.isObject()) {
             qDebug() << "Invalid restore point format:" << filename;
@@ -2583,7 +2599,43 @@ private:
         }
         
         QJsonObject rootObj = doc.object();
-        QJsonArray historyArray = rootObj["history"].toArray();
+        QStringList timestamps = rootObj.keys();
+        timestamps.sort();
+        std::reverse(timestamps.begin(), timestamps.end());  // Most recent first
+        
+        if (timestamps.isEmpty()) {
+            QMessageBox::information(this, "Load History", "No restore points found in file.");
+            return;
+        }
+        
+        // Let user select which restore point to load
+        bool ok;
+        QStringList displayList;
+        for (const QString& ts : timestamps) {
+            QJsonObject session = rootObj[ts].toObject();
+            QJsonArray history = session["history"].toArray();
+            int count = history.size();
+            QString firstMsg = count > 0 ? history[0].toObject()["user"].toString().left(50) + "..." : "";
+            displayList << QString("%1 (%2 exchanges) - %3").arg(ts).arg(count).arg(firstMsg);
+        }
+        
+        QString selected = QInputDialog::getItem(this, "Load History", 
+            "Select restore point:", displayList, 0, false, &ok);
+        
+        if (!ok || selected.isEmpty()) {
+            return;
+        }
+        
+        // Extract timestamp from selection
+        QString selectedTimestamp = selected.split(" ").first();
+        
+        if (!rootObj.contains(selectedTimestamp)) {
+            qDebug() << "Timestamp not found:" << selectedTimestamp;
+            return;
+        }
+        
+        QJsonObject sessionObj = rootObj[selectedTimestamp].toObject();
+        QJsonArray historyArray = sessionObj["history"].toArray();
         
         conversationHistory.clear();
         chatDisplay->clear();
@@ -2608,13 +2660,13 @@ private:
             chatDisplay->append("</div>");
         }
         
-        qDebug() << "Loaded restore point:" << filename << "(" << conversationHistory.size() << "exchanges)";
+        qDebug() << "Loaded restore point:" << selectedTimestamp << "(" << conversationHistory.size() << "exchanges)";
         
         // Show notification
         if (!conversationHistory.isEmpty()) {
             chatDisplay->append("<div style='background-color: #1A1A1A; padding: 8px; margin: 5px; border-radius: 5px; text-align: center; color: #4CAF50;'>");
-            chatDisplay->append(QString("<i>📂 Loaded previous session from %1 (%2 exchanges)</i>")
-                .arg(conversationHistory.first().timestamp.toString("yyyy-MM-dd HH:mm"))
+            chatDisplay->append(QString("<i>📂 Loaded session %1 (%2 exchanges)</i>")
+                .arg(selectedTimestamp)
                 .arg(conversationHistory.size()));
             chatDisplay->append("</div>");
         }
