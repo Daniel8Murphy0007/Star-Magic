@@ -7364,17 +7364,47 @@ CONSTANTS = {
     # SCALE-SPECIFIC VACUUM ENERGY DENSITIES (J/m³) - Drawings 1-31
     # ═══════════════════════════════════════════════════════════════════════════
     # ρ_vac values at different scales from Star Magic framework
+    # 
+    # IMPORTANT: These are piecewise constants - fixed within each magnitude regime
+    # but stepping to new values at regime boundaries. Think "running constants."
+    #
+    # Frame conventions:
+    #   F_U_Bi   (inside→out): Local frame, object looks at surrounding aether
+    #   F_U_Bi_i (outside→in): Master frame, aether looks at object (integrated view)
+    #
+    # Scale hierarchy (by mass/energy density):
+    #   cosmic < ISM/solar < stellar < neutron_star < magnetar < black_hole < atomic
+    # 
+    # ═══════════════════════════════════════════════════════════════════════════
     
-    # [SCm] Vacuum Energy Density at different scales
-    'rho_vac_SCm_atomic': 1.60e19,     # ρ_vac,[SCm] at atomic scale (J/m³)
+    # [SCm] Superconductive Material Vacuum Energy Density at different scales
+    # SCm concentrates at high-curvature regions (horizons, neutron star surfaces)
+    'rho_vac_SCm_cosmic': 7.09e-89,    # ρ_vac,[SCm] cosmic/void scale (J/m³)
+    'rho_vac_SCm_ISM': 7.09e-37,       # ρ_vac,[SCm] interstellar medium (J/m³)
     'rho_vac_SCm_solar': 7.09e-37,     # ρ_vac,[SCm] at solar scale (J/m³)
+    'rho_vac_SCm_stellar': 7.09e-34,   # ρ_vac,[SCm] stellar interior (J/m³)
+    'rho_vac_SCm_neutron_star': 2.39e-26, # ρ_vac,[SCm] for neutron star (J/m³)
     'rho_vac_SCm_magnetar': 2.39e-22,  # ρ_vac,[SCm] for magnetar (J/m³)
-    'rho_vac_SCm_black_hole': 2.39e-22,  # ρ_vac,[SCm] for black hole level 13 (J/m³)
+    'rho_vac_SCm_black_hole': 2.39e-22,  # ρ_vac,[SCm] for black hole horizon (J/m³)
+    'rho_vac_SCm_atomic': 1.60e19,     # ρ_vac,[SCm] at atomic scale (J/m³)
     
-    # [UA] Vacuum Energy Density at different scales
-    'rho_vac_UA_atomic': 1.60e20,      # ρ_vac,[UA] at atomic scale (J/m³)
+    # [UA] Universal Aether Vacuum Energy Density at different scales
+    # UA is the background medium, less concentrated, more uniform
+    'rho_vac_UA_cosmic': 7.09e-88,     # ρ_vac,[UA] cosmic/void scale (J/m³)
+    'rho_vac_UA_ISM': 7.09e-36,        # ρ_vac,[UA] interstellar medium (J/m³)
     'rho_vac_UA_solar': 7.09e-36,      # ρ_vac,[UA] at solar scale (J/m³)
-    'rho_vac_UA_black_hole': 7.09e-36, # ρ_vac,[UA] for black hole (J/m³)
+    'rho_vac_UA_stellar': 7.09e-33,    # ρ_vac,[UA] stellar interior (J/m³)
+    'rho_vac_UA_neutron_star': 2.39e-25, # ρ_vac,[UA] for neutron star (J/m³)
+    'rho_vac_UA_magnetar': 2.39e-21,   # ρ_vac,[UA] for magnetar (J/m³)
+    'rho_vac_UA_black_hole': 2.39e-21, # ρ_vac,[UA] for black hole environment (J/m³)
+    'rho_vac_UA_atomic': 1.60e20,      # ρ_vac,[UA] at atomic scale (J/m³)
+    
+    # Ratio SCm/UA at each scale (should be ~0.1 for standard UQFF aether factor)
+    # When ratio < 1: aether_factor = 1 - ratio (suppression)
+    # When ratio > 1: aether_factor = 1 - 1/ratio (enhancement)
+    'rho_ratio_SCm_UA_ISM': 0.1,       # 7.09e-37 / 7.09e-36 = 0.1
+    'rho_ratio_SCm_UA_magnetar': 0.1,  # 2.39e-22 / 2.39e-21 = 0.1
+    'rho_ratio_SCm_UA_black_hole': 0.1, # 2.39e-22 / 2.39e-21 = 0.1
     
     # Universal Gravity Vacuum Energy Density
     'rho_vac_Ug_cosmic': 5.0e-89,      # ρ_vac,Ug at cosmic scale (J/m³)
@@ -33152,11 +33182,20 @@ class BlackHolePhasesModel(SelfSimulatingExpandingMixin):
         self.k_B = CONSTANTS.get('k_Boltzmann', 1.381e-23)  # J/K
         self.M_sun = CONSTANTS.get('M_sun', 1.989e30)  # kg
         
-        # UQFF parameters
-        self.rho_vac_SCm_BH = CONSTANTS.get('rho_vac_SCm_black_hole', 9.95e-8)  # J/m³
-        self.rho_vac_UA_BH = CONSTANTS.get('rho_vac_UA_black_hole', 9.95e-7)  # J/m³
+        # UQFF parameters - scale-dependent vacuum densities
+        # Per UQFF derivation: SCm/UA ratio = 0.1 → aether_factor = 0.9
+        # These are piecewise constants that step at magnitude boundaries
+        # F_U_Bi (inside→out): local frame; F_U_Bi_i (outside→in): master frame
+        self.rho_vac_SCm_BH = CONSTANTS.get('rho_vac_SCm_black_hole', 2.39e-22)  # J/m³ (horizon concentration)
+        self.rho_vac_UA_BH = CONSTANTS.get('rho_vac_UA_black_hole', 2.39e-21)   # J/m³ (BH environment)
+        # ISM/solar scale for F_U_Bi frame (inside looking out at cosmic medium)
+        self.rho_vac_SCm_ISM = CONSTANTS.get('rho_vac_SCm_ISM', 7.09e-37)  # J/m³
+        self.rho_vac_UA_ISM = CONSTANTS.get('rho_vac_UA_ISM', 7.09e-36)    # J/m³
         self.k_Ug4 = CONSTANTS.get('k_Ug4', 1.0e-10)
         self.f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        
+        # Canonical SCm/UA ratio (should be ~0.1 at all scales per UQFF theory)
+        self.rho_ratio_canonical = 0.1  # ρ_vac,[SCm] / ρ_vac,[UA]
         
         # Phase transition thresholds
         self.phase_thresholds = {
@@ -33257,7 +33296,8 @@ UQFF Interpretation:
     def compute_Hawking_temperature_UQFF(self, M_BH: float, 
                                           f_TRZ: float = None,
                                           rho_SCm: float = None,
-                                          rho_UA: float = None) -> Tuple[float, float, str]:
+                                          rho_UA: float = None,
+                                          frame: str = 'F_U_Bi') -> Tuple[float, float, str]:
         """
         Compute UQFF-corrected Hawking temperature with negentropic and aether effects.
         
@@ -33269,11 +33309,18 @@ UQFF Interpretation:
         - ρ ratio: Accounts for aether-superconductive imbalance, suppressing
                    radiation in dense [UA] environments
         
+        FRAME CONVENTIONS (piecewise constants per magnitude regime):
+        - F_U_Bi (inside→out): Object's local frame looking at surrounding aether
+          Uses ISM/solar scale: SCm=7.09e-37, UA=7.09e-36 → ratio=0.1, factor=0.9
+        - F_U_Bi_i (outside→in): Master frame, aether looking at object
+          Uses horizon scale: SCm=2.39e-22, UA=2.39e-21 → ratio=0.1, factor=0.9
+        
         Args:
             M_BH: Black hole mass (kg)
             f_TRZ: Time reversal factor (default: self.f_TRZ ≈ 0.1)
-            rho_SCm: SCm vacuum density (default: self.rho_vac_SCm_BH)
-            rho_UA: UA vacuum density (default: self.rho_vac_UA_BH)
+            rho_SCm: Override SCm vacuum density (J/m³)
+            rho_UA: Override UA vacuum density (J/m³)
+            frame: 'F_U_Bi' (inside→out, default) or 'F_U_Bi_i' (outside→in)
         
         Returns:
             T_H: Standard Hawking temperature (K)
@@ -33287,20 +33334,31 @@ UQFF Interpretation:
         """
         # Use defaults if not specified
         f_TRZ = f_TRZ if f_TRZ is not None else self.f_TRZ
-        rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_BH
-        rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_BH
+        
+        # Frame-dependent constant selection (piecewise constants)
+        if rho_SCm is None or rho_UA is None:
+            if frame == 'F_U_Bi_i':
+                # Master frame (outside→in): use horizon concentration values
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_BH
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_BH
+                frame_name = "F_U_Bi_i (outside→in, horizon scale)"
+            else:
+                # Local frame (inside→out): use ISM/solar values
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_ISM
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_ISM
+                frame_name = "F_U_Bi (inside→out, ISM scale)"
+        else:
+            frame_name = "Custom (user-specified)"
         
         # Standard Hawking temperature
         T_H = self.hbar * self.c**3 / (8 * np.pi * self.G * M_BH * self.k_B)
         
         # UQFF correction factors
         negentropic_factor = 1 + f_TRZ
-        # When SCm >> UA (typical BH), ratio is small, aether_factor ≈ 1
-        # When UA >> SCm, aether suppresses radiation
-        if rho_SCm > rho_UA:
-            aether_factor = 1 - (rho_UA / rho_SCm)  # SCm dominated: minimal suppression
-        else:
-            aether_factor = 1 - (rho_SCm / rho_UA)  # UA dominated: significant suppression
+        
+        # Aether factor: canonical ratio should be ~0.1 at all scales
+        ratio = rho_SCm / rho_UA
+        aether_factor = 1 - ratio  # Standard form per derivation
         
         # UQFF-corrected temperature
         T_UQFF = T_H * negentropic_factor * aether_factor
@@ -33313,8 +33371,10 @@ UQFF Interpretation:
 Inputs:
   M_BH = {M_BH:.4e} kg = {M_BH/self.M_sun:.4e} M_☉
   f_TRZ = {f_TRZ:.4f} (Time Reversal Zone factor)
+  Frame = {frame_name}
   ρ_vac,[SCm] = {rho_SCm:.4e} J/m³
   ρ_vac,[UA] = {rho_UA:.4e} J/m³
+  SCm/UA ratio = {ratio:.4f} (canonical: 0.1)
 
 STEP 1: Standard Hawking Temperature
   Formula: T_H = ℏc³/(8πGMk_B)
@@ -33326,8 +33386,7 @@ STEP 2: UQFF Correction Factors
     (1 + f_TRZ) = (1 + {f_TRZ:.4f}) = {negentropic_factor:.4f}
   
   Aether-superconductive imbalance factor:
-    (1 - ρ_vac,[SCm]/ρ_vac,[UA]) = (1 - {rho_SCm:.4e}/{rho_UA:.4e})
-                                 = (1 - {rho_SCm/rho_UA:.4f}) = {aether_factor:.4f}
+    (1 - ρ_vac,[SCm]/ρ_vac,[UA]) = (1 - {ratio:.4f}) = {aether_factor:.4f}
 
 STEP 3: UQFF-Corrected Temperature
   Formula: T_UQFF = T_H × (1 + f_TRZ) × (1 - ρ_vac,[SCm]/ρ_vac,[UA])
@@ -33344,9 +33403,9 @@ Comparison:
 
 Physical Interpretation:
   • f_TRZ > 0: Some virtual pairs reverse-annihilate (negentropic effect)
-  • ρ_SCm < ρ_UA: Aether dominance suppresses radiation
+  • ρ_SCm/ρ_UA = {ratio:.4f}: {'Canonical 0.1 ratio → aether_factor = 0.9' if abs(ratio - 0.1) < 0.01 else 'Non-canonical ratio → check scale selection'}
   • UQFF horizon acts as Type-II superconductor (B_crit ≈ 10¹¹ T)
-  • Links to THz hole experiments where superconductivity affects quantum processes
+  • Frame: {frame_name}
 ═══════════════════════════════════════════════════════════════════════════════
 """
         return T_H, T_UQFF, steps
@@ -33355,7 +33414,8 @@ Physical Interpretation:
                                          U_m: float = None,
                                          f_TRZ: float = None,
                                          rho_SCm: float = None,
-                                         rho_UA: float = None) -> Tuple[float, float, str]:
+                                         rho_UA: float = None,
+                                         frame: str = 'F_U_Bi') -> Tuple[float, float, str]:
         """
         Compute UQFF-corrected Hawking luminosity with magnetic string damping.
         
@@ -33369,7 +33429,9 @@ Physical Interpretation:
             M_BH: Black hole mass (kg)
             U_m: Magnetic string energy (J), default from UQFF constants
             f_TRZ: Time reversal factor for T_UQFF calculation
-            rho_SCm: SCm vacuum density for T_UQFF
+            rho_SCm: Override SCm vacuum density for T_UQFF
+            rho_UA: Override UA vacuum density for T_UQFF
+            frame: 'F_U_Bi' (inside→out) or 'F_U_Bi_i' (outside→in)
             rho_UA: UA vacuum density for T_UQFF
         
         Returns:
@@ -33392,8 +33454,8 @@ Physical Interpretation:
         # Standard Hawking luminosity
         L_standard = self.hbar * self.c**6 / (15360 * np.pi * self.G**2 * M_BH**2)
         
-        # Get UQFF-corrected temperature for damping calculation
-        T_H, T_UQFF, _ = self.compute_Hawking_temperature_UQFF(M_BH, f_TRZ, rho_SCm, rho_UA)
+        # Get UQFF-corrected temperature for damping calculation (pass frame)
+        T_H, T_UQFF, _ = self.compute_Hawking_temperature_UQFF(M_BH, f_TRZ, rho_SCm, rho_UA, frame)
         
         # Magnetic string damping factor
         # Prevent overflow for very cold BHs
