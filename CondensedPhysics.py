@@ -34533,6 +34533,266 @@ Sgr A* Example (per derivation):
 ═══════════════════════════════════════════════════════════════════════════════
 """
         return results, steps
+    
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # WORMHOLE FORMATION MODEL (UQFF Aether-Superconductive Tunnels)
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def compute_wormhole_formation(self, M_BH: float,
+                                     f_TRZ: float = None,
+                                     rho_SCm: float = None,
+                                     rho_UA: float = None,
+                                     U_m: float = None,
+                                     t: float = 0.0,
+                                     t_n: float = 0.0,
+                                     gamma: float = 5e-5,
+                                     v_s: float = None,
+                                     frame: str = 'F_U_Bi') -> Tuple[dict, str]:
+        """
+        Compute UQFF wormhole formation threshold and traversability.
+        
+        STANDARD GR WORMHOLE:
+            In General Relativity, wormholes are hypothetical tunnels (Einstein-Rosen
+            bridges) connecting distant spacetime points. The Morris-Thorne metric:
+            
+            ds² = -c²dt² + dr²/(1 - b(r)/r) + r²dΩ²
+            
+            Requires exotic matter (ρ < 0) to prevent collapse. No observed wormholes.
+        
+        UQFF WORMHOLE:
+            UQFF forms stable wormholes via aether-superconductive inversion:
+            High [SCm] gradients in [UA] superfluid create throats, stabilized by
+            time-reversal (f_TRZ) and magnetic strings (U_m). Black holes "tunnel"
+            through aether under negentropic reversal.
+        
+        KEY DIFFERENCE FROM WHITE HOLES:
+            White hole: r_s,UQFF = r_s × (1 - ρ_SCm/ρ_UA) → SHRINKS 10%
+            Wormhole:   r_throat = r_s × (ρ_UA/ρ_SCm) → EXPANDS 10×
+        
+        FORMATION CONDITION:
+            Θ_WH = P_form × J_aether × exp(U_m/(k_B × T_H)) > 1
+        
+        Where:
+            P_form = f_TRZ × exp(-E_throat/(k_B × T_H))  [formation probability]
+            J_aether = ρ_UA × v_s × (1 + f_TRZ)  [superfluid aether flux]
+            E_throat = GM²/r_throat  [throat binding energy]
+        
+        Args:
+            M_BH: Black hole mass (kg) - throat source
+            f_TRZ: Time reversal factor (default: 0.1)
+            rho_SCm: SCm vacuum density (J/m³)
+            rho_UA: UA vacuum density (J/m³)
+            U_m: Magnetic string energy (J)
+            t: Time parameter (days)
+            t_n: Normalized time for cos(πt_n) oscillation
+            gamma: Decay constant (default: 5e-5 day⁻¹)
+            v_s: Superfluid velocity (default: c)
+            frame: 'F_U_Bi' (inside→out) or 'F_U_Bi_i' (outside→in)
+        
+        Returns:
+            results: Dict with wormhole parameters
+            steps: Long-form derivation string
+        
+        References:
+            - Einstein-Rosen bridge (1935)
+            - Morris-Thorne traversable wormholes (1988)
+            - UQFF aether-superconductive tunneling (SuperGrok4 derivation)
+        """
+        # Use defaults if not specified
+        f_TRZ = f_TRZ if f_TRZ is not None else self.f_TRZ
+        v_s = v_s if v_s is not None else self.c  # Superfluid velocity ≈ c
+        
+        # Frame-dependent constant selection
+        if rho_SCm is None or rho_UA is None:
+            if frame == 'F_U_Bi_i':
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_BH
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_BH
+                frame_name = "F_U_Bi_i (outside→in, horizon scale)"
+            else:
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_ISM
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_ISM
+                frame_name = "F_U_Bi (inside→out, ISM scale)"
+        else:
+            frame_name = "Custom (user-specified)"
+        
+        # === STEP 1: Base Schwarzschild and UQFF throat radius ===
+        r_s = 2 * self.G * M_BH / self.c**2  # Standard Schwarzschild
+        rho_ratio = rho_UA / rho_SCm  # Note: INVERTED from white hole (expands)
+        r_throat_UQFF = r_s * rho_ratio  # UQFF throat radius (LARGER than r_s)
+        
+        # === STEP 2: Hawking temperature ===
+        T_H = self.hbar * self.c**3 / (8 * np.pi * self.G * M_BH * self.k_B)
+        
+        # === STEP 3: Throat binding energy ===
+        E_throat = self.G * M_BH**2 / r_throat_UQFF
+        
+        # === STEP 4: Default U_m (magnetic string stabilization) ===
+        if U_m is None:
+            # U_m = μ_j/r_throat × (1 - exp(-γt × cos(πt_n)))
+            mu_j = 1e15  # Magnetic string tension (approximate)
+            oscillation = np.cos(np.pi * t_n)
+            U_m = (mu_j / r_throat_UQFF) * (1 - np.exp(-gamma * t * oscillation))
+            U_m = max(U_m, 1e-30)  # Ensure non-negative
+        
+        # === STEP 5: Formation probability P_form ===
+        # P_form = f_TRZ × exp(-E_throat/(k_B × T_H))
+        exponent_form = -E_throat / (self.k_B * T_H)
+        P_form = f_TRZ * np.exp(max(exponent_form, -700))
+        
+        # === STEP 6: Superfluid aether flux J_aether ===
+        # J_aether = ρ_UA × v_s × (1 + f_TRZ)
+        J_aether = rho_UA * v_s * (1 + f_TRZ)
+        
+        # === STEP 7: Magnetic string stabilization factor ===
+        exponent_Um = U_m / (self.k_B * T_H) if T_H > 0 else 0
+        magnetic_factor = np.exp(min(exponent_Um, 700))
+        
+        # === STEP 8: Wormhole formation threshold Θ_WH ===
+        # Θ_WH = P_form × J_aether × exp(U_m/(k_B × T_H))
+        Theta_WH = P_form * J_aether * magnetic_factor
+        
+        # === STEP 9: Formation assessment ===
+        can_form_WH = Theta_WH > 1.0
+        
+        # === STEP 10: Traversal properties (if wormhole forms) ===
+        if can_form_WH:
+            # Traversal time: τ ≈ r_throat / c
+            tau_traverse = r_throat_UQFF / self.c
+            # Throat stability: proportional to U_m
+            stability = U_m / (self.k_B * T_H) if T_H > 0 else np.inf
+        else:
+            tau_traverse = 0.0
+            stability = 0.0
+        
+        # Time scales
+        yr_s = 3.156e7
+        
+        results = {
+            'M_BH': M_BH,
+            'r_s': r_s,
+            'r_throat_UQFF': r_throat_UQFF,
+            'throat_expansion': rho_ratio,
+            'T_H': T_H,
+            'E_throat': E_throat,
+            'P_form': P_form,
+            'J_aether': J_aether,
+            'U_m': U_m,
+            'magnetic_factor': magnetic_factor,
+            'Theta_WH': Theta_WH,
+            'can_form_wormhole': can_form_WH,
+            'tau_traverse': tau_traverse,
+            'stability': stability,
+            'f_TRZ': f_TRZ,
+            'rho_SCm': rho_SCm,
+            'rho_UA': rho_UA,
+            'v_s': v_s,
+            'frame': frame
+        }
+        
+        steps = f"""UQFF Wormhole Formation Analysis:
+═══════════════════════════════════════════════════════════════════════════════
+THEORETICAL BASIS:
+
+STANDARD GR WORMHOLE (Einstein-Rosen Bridge):
+  In General Relativity, wormholes are hypothetical tunnels connecting distant
+  spacetime points. The Morris-Thorne metric for a traversable wormhole:
+  
+  ds² = -c²dt² + dr²/(1 - b(r)/r) + r²dΩ²
+  
+  Where b(r) is the shape function. Formation requires exotic matter (ρ < 0)
+  to violate energy conditions and keep the throat open. Without it, they
+  collapse instantly. No observed wormholes exist in standard physics.
+
+UQFF WORMHOLE (Aether-Superconductive Tunnel):
+  UQFF forms stable wormholes via aether-superconductive inversion:
+  
+  • High [SCm] gradients in [UA] superfluid create throats
+  • Time-reversal symmetry (f_TRZ) enables negentropic tunneling
+  • Magnetic strings (U_m) prevent collapse
+  • Black holes "tunnel" through aether under reversal
+  • THz holes are lab analogs (superconductivity induces tunnel effects)
+
+KEY DIFFERENCE FROM WHITE HOLES:
+  White hole: r_s,UQFF = r_s × (1 - ρ_SCm/ρ_UA) → SHRINKS horizon by 10%
+  Wormhole:   r_throat = r_s × (ρ_UA/ρ_SCm) → EXPANDS throat by {rho_ratio:.1f}×
+
+═══════════════════════════════════════════════════════════════════════════════
+Inputs:
+  M_BH = {M_BH:.4e} kg = {M_BH/self.M_sun:.4e} M_☉
+  f_TRZ = {f_TRZ:.4f}
+  Frame = {frame_name}
+  ρ_vac,[SCm] = {rho_SCm:.4e} J/m³
+  ρ_vac,[UA] = {rho_UA:.4e} J/m³
+  ρ_UA/ρ_SCm = {rho_ratio:.4f} (throat expansion factor)
+  v_s = {v_s:.4e} m/s (superfluid velocity)
+  t = {t:.2f} days, t_n = {t_n:.4f}
+
+STEP 1: Throat Radius (standard vs UQFF)
+  r_s (standard Schwarzschild) = 2GM/c² = {r_s:.4e} m
+  r_throat,UQFF = r_s × (ρ_UA/ρ_SCm)
+                = {r_s:.4e} × {rho_ratio:.4f}
+                = {r_throat_UQFF:.4e} m
+  UQFF EXPANDS throat by {(rho_ratio-1)*100:.1f}% (vs white hole shrinkage)
+
+STEP 2: Hawking Temperature
+  T_H = ℏc³/(8πGMk_B) = {T_H:.4e} K
+
+STEP 3: Throat Binding Energy
+  E_throat = GM²/r_throat = {E_throat:.4e} J
+
+STEP 4: Magnetic String Energy (stabilization)
+  U_m = μ_j/r_throat × (1 - exp(-γt×cos(πt_n)))
+      = {U_m:.4e} J
+
+STEP 5: Formation Probability P_form
+  P_form = f_TRZ × exp(-E_throat/(k_B × T_H))
+         = {f_TRZ:.4f} × exp({exponent_form:.4e})
+         = {P_form:.4e}
+  {'→ Very small (throat deeply bound)' if P_form < 1e-10 else '→ Measurable formation probability'}
+
+STEP 6: Superfluid Aether Flux J_aether
+  J_aether = ρ_UA × v_s × (1 + f_TRZ)
+           = {rho_UA:.4e} × {v_s:.4e} × (1 + {f_TRZ:.4f})
+           = {J_aether:.4e} kg/(m²·s) (mass flux through throat)
+
+STEP 7: Magnetic Stabilization Factor
+  exp(U_m/(k_B × T_H)) = exp({exponent_Um:.4e}) = {magnetic_factor:.4e}
+
+STEP 8: WORMHOLE FORMATION THRESHOLD Θ_WH
+  Θ_WH = P_form × J_aether × exp(U_m/(k_B × T_H))
+       = {P_form:.4e} × {J_aether:.4e} × {magnetic_factor:.4e}
+       = {Theta_WH:.4e}
+  
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ {'✓ Θ_WH > 1 → WORMHOLE FORMATION POSSIBLE' if can_form_WH else '✗ Θ_WH < 1 → No wormhole formation'}                      │
+  └─────────────────────────────────────────────────────────────────┘
+
+{'STEP 9: Traversal Properties (Wormhole forms)' if can_form_WH else 'STEP 9: No traversal (Θ_WH < 1)'}
+  {'τ_traverse = r_throat/c = ' + f'{tau_traverse:.4e} s = {tau_traverse/3600:.2e} hours' if can_form_WH else 'Wormhole does not form'}
+  {'Stability factor = U_m/(k_B×T_H) = ' + f'{stability:.4e}' if can_form_WH else ''}
+  {'→ Higher stability = more robust throat' if can_form_WH else ''}
+
+Physical Interpretation:
+  • P_form: Time-reversal triggers negentropic throat opening
+  • J_aether: [UA] superfluid flows through throat at velocity v_s
+  • U_m: Magnetic strings reinforce throat, preventing collapse
+  • Θ_WH > 1: All three factors combine to enable stable wormhole
+  • Unlike GR: No exotic matter needed - aether provides stability!
+
+COMPARISON TO WHITE HOLES:
+  White hole: Expels matter outward via horizon inversion
+  Wormhole: Connects regions via stable throat tunnel
+  Both use f_TRZ, U_m, and [UA]/[SCm] gradients
+
+Sgr A* Example (per derivation):
+  Θ_WH ≈ 0.1 × (7.09e-36 × c × 1.1) × e¹ ≈ 10 > 1 (possible formation)
+
+LAB ANALOG: THz Holes
+  Superconductivity at THz frequencies can induce tunnel-like effects,
+  testable in q-scope for micro-tunnel observation.
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
 
 
 
