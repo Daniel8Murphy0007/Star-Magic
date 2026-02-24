@@ -33608,6 +33608,159 @@ UQFF Phase Mapping:
 """
         return tau_BH, steps
     
+    def compute_BH_lifetime_UQFF(self, M_BH: float,
+                                   f_TRZ: float = None,
+                                   rho_SCm: float = None,
+                                   rho_UA: float = None,
+                                   U_m: float = None,
+                                   frame: str = 'F_U_Bi') -> Tuple[float, float, str]:
+        """
+        Compute UQFF-corrected black hole lifetime with enhanced stability.
+        
+        UQFF enhances BH stability by suppressing evaporation through:
+        - Universal Aether [UA] superfluid vacuum (damps pair creation)
+        - Superconducting horizons [SCm] (energy barriers, B_crit ≈ 10¹¹ T)
+        - Time-reversal f_TRZ (reverses ~10% of emissions negentropically)
+        - Magnetic strings U_m (exponential luminosity damping)
+        
+        FORMULA (inverse of luminosity suppression):
+            τ_UQFF = τ × 1/(1-f_TRZ) × 1/(1-ρ_SCm/ρ_UA) × exp(+U_m/(k_B×T_H))
+        
+        Note: Lifetime ∝ 1/Luminosity, so factors are INVERTED from L formula.
+        
+        Args:
+            M_BH: Black hole mass (kg)
+            f_TRZ: Time reversal factor (default: self.f_TRZ ≈ 0.1)
+            rho_SCm: Override SCm vacuum density (J/m³)
+            rho_UA: Override UA vacuum density (J/m³)
+            U_m: Magnetic string energy (J)
+            frame: 'F_U_Bi' (inside→out) or 'F_U_Bi_i' (outside→in)
+        
+        Returns:
+            tau_standard: Standard Hawking lifetime (s)
+            tau_UQFF: UQFF-corrected lifetime (s)
+            steps: Long-form derivation string
+        
+        References:
+            - Standard lifetime: τ = 5120π G²M³/(ℏc⁴)
+            - UQFF stability enhancement model
+        """
+        # Use defaults if not specified
+        f_TRZ = f_TRZ if f_TRZ is not None else self.f_TRZ
+        
+        # Frame-dependent constant selection
+        if rho_SCm is None or rho_UA is None:
+            if frame == 'F_U_Bi_i':
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_BH
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_BH
+                frame_name = "F_U_Bi_i (outside→in, horizon scale)"
+            else:
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_ISM
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_ISM
+                frame_name = "F_U_Bi (inside→out, ISM scale)"
+        else:
+            frame_name = "Custom (user-specified)"
+        
+        # Standard Hawking lifetime
+        tau_standard = 5120 * np.pi * self.G**2 * M_BH**3 / (self.hbar * self.c**4)
+        
+        # Standard Hawking temperature (for magnetic damping)
+        T_H = self.hbar * self.c**3 / (8 * np.pi * self.G * M_BH * self.k_B)
+        
+        # Default U_m from UQFF magnetic string energy
+        if U_m is None:
+            r_s = 2 * self.G * M_BH / self.c**2
+            B_horizon = 1e8 * (self.M_sun / M_BH)
+            U_m = B_horizon * r_s**2 * 1e-20
+        
+        # === THREE INDEPENDENT UQFF FACTORS (INVERTED from luminosity) ===
+        # τ ∝ 1/L, so we INVERT each luminosity factor
+        
+        # Factor 1: Time-reversal extends lifetime (inverse of luminosity reduction)
+        # In luminosity: (1-f_TRZ) reduces L → in lifetime: 1/(1-f_TRZ) extends τ
+        negentropic_factor = 1.0 / (1.0 - f_TRZ)
+        
+        # Factor 2: Aether-superconductive ratio extends lifetime
+        # In luminosity: (1-ρ_ratio) reduces L → in lifetime: 1/(1-ρ_ratio) extends τ
+        rho_ratio = rho_SCm / rho_UA
+        aether_factor = 1.0 / (1.0 - rho_ratio)
+        
+        # Factor 3: Magnetic string damping extends lifetime (sign flip in exponent)
+        # In luminosity: exp(-U_m/kT) → in lifetime: exp(+U_m/kT)
+        exponent = U_m / (self.k_B * T_H) if T_H > 0 else 0
+        # Clamp to prevent overflow for very small BHs
+        magnetic_factor = np.exp(min(exponent, 700))
+        
+        # UQFF-corrected lifetime
+        tau_UQFF = tau_standard * negentropic_factor * aether_factor * magnetic_factor
+        
+        # Total enhancement factor
+        total_enhancement = negentropic_factor * aether_factor * magnetic_factor
+        
+        # Time scales
+        yr_s = 3.156e7  # seconds per year
+        t_universe = 4.35e17  # s (~13.8 Gyr)
+        
+        steps = f"""UQFF-Corrected Black Hole Lifetime Calculation:
+═══════════════════════════════════════════════════════════════════════════════
+Inputs:
+  M_BH = {M_BH:.4e} kg = {M_BH/self.M_sun:.4e} M_☉
+  f_TRZ = {f_TRZ:.4f}
+  Frame = {frame_name}
+  ρ_vac,[SCm] = {rho_SCm:.4e} J/m³
+  ρ_vac,[UA] = {rho_UA:.4e} J/m³
+  U_m = {U_m:.4e} J (magnetic string energy)
+  T_H = {T_H:.4e} K (standard Hawking temperature)
+
+STEP 1: Standard Hawking Lifetime
+  Formula: τ = 5120π G²M³/(ℏc⁴)
+  τ = 5120π × ({self.G:.4e})² × ({M_BH:.4e})³ / ({self.hbar:.4e} × ({self.c:.4e})⁴)
+    = {tau_standard:.4e} s
+    = {tau_standard/yr_s:.4e} years
+
+STEP 2: UQFF Enhancement Factors (INVERTED from luminosity)
+  Since τ ∝ 1/L, each luminosity suppression factor EXTENDS lifetime:
+  
+  2a. Time-Reversal Extension: 1/(1-f_TRZ)
+      = 1/(1 - {f_TRZ:.4f}) = {negentropic_factor:.4f}
+      → {(negentropic_factor-1)*100:.1f}% lifetime extension from TRZ
+  
+  2b. Aether-Superconductive Extension: 1/(1-ρ_SCm/ρ_UA)
+      ρ_ratio = {rho_SCm:.4e} / {rho_UA:.4e} = {rho_ratio:.4f}
+      = 1/(1 - {rho_ratio:.4f}) = {aether_factor:.4f}
+      → {(aether_factor-1)*100:.1f}% lifetime extension from aether
+  
+  2c. Magnetic String Extension: exp(+U_m/(k_B×T_H))
+      exponent = +{U_m:.4e} / ({self.k_B:.4e} × {T_H:.4e}) = {exponent:.4f}
+      = exp({exponent:.4f}) = {magnetic_factor:.4e}
+      → {'Dominant extension (magnetic strings provide huge barrier)' if magnetic_factor > 10 else 'Minor magnetic extension'}
+
+STEP 3: UQFF-Corrected Lifetime
+  Formula: τ_UQFF = τ × 1/(1-f_TRZ) × 1/(1-ρ_ratio) × exp(U_m/kT_H)
+  τ_UQFF = {tau_standard:.4e} × {negentropic_factor:.4f} × {aether_factor:.4f} × {magnetic_factor:.4e}
+         = {tau_UQFF:.4e} s
+         = {tau_UQFF/yr_s:.4e} years
+
+Comparison:
+  τ (standard) = {tau_standard:.4e} s = {tau_standard/yr_s:.4e} years
+  τ_UQFF = {tau_UQFF:.4e} s = {tau_UQFF/yr_s:.4e} years
+  Total enhancement = τ_UQFF/τ = {total_enhancement:.4e}
+
+UQFF Stability Assessment:
+  • τ_standard vs universe age ({t_universe/yr_s:.2e} yr): {'STABLE (standard)' if tau_standard > t_universe else 'EVAPORATING (standard)'}
+  • τ_UQFF vs universe age: {'EFFECTIVELY ETERNAL (UQFF)' if tau_UQFF > 1e100*t_universe else 'STABLE (UQFF)' if tau_UQFF > t_universe else 'EVAPORATING (UQFF)'}
+  
+Physical Interpretation:
+  • UQFF treats BHs as aether-superconductive structures
+  • [UA] superfluid vacuum damps pair creation
+  • [SCm] horizons (B_crit ≈ 10¹¹ T) create energy barriers
+  • f_TRZ reverses ~{f_TRZ*100:.0f}% of emissions negentropically
+  • U_m magnetic strings exponentially block radiation
+  • Frame: {frame_name}
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return tau_standard, tau_UQFF, steps
+    
     def identify_phase(self, M_BH: float, M_initial: float = None) -> Tuple[str, dict, str]:
         """
         Identify current phase of black hole evolution.
