@@ -34131,6 +34131,230 @@ SUMMARY: {sum(t['passed'] for t in tests)}/{len(tests)} tests passed
             }
         
         return {'g_master': g_master, 'g_N': g_N}
+    
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # WHITE HOLE FORMATION MODEL (UQFF BH→WH Transition)
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def compute_white_hole_formation(self, M_BH: float,
+                                       f_TRZ: float = None,
+                                       rho_SCm: float = None,
+                                       rho_UA: float = None,
+                                       U_m: float = None,
+                                       t: float = 0.0,
+                                       t_n: float = 0.0,
+                                       gamma: float = 5e-5,
+                                       frame: str = 'F_U_Bi') -> Tuple[dict, str]:
+        """
+        Compute UQFF white hole formation threshold and properties.
+        
+        In UQFF, white holes are stable structures formed via time-reversal
+        symmetry in superfluid aether ([UA]), superconducting horizons ([SCm]),
+        and negentropic processes. Black holes "invert" under high [SCm] density,
+        expelling matter through magnetic strings (U_m), creating white holes.
+        
+        FORMATION CONDITION:
+            Θ_WH = P_inv × Φ_flux × exp(U_m/(k_B × T_H)) > 1
+        
+        Where:
+            P_inv = f_TRZ × exp(-E_horizon/(k_B × T_H))  [inversion probability]
+            Φ_flux = (ρ_UA/ρ_SCm) × (GM/c) × (1 + f_TRZ)  [aether outflow flux]
+            E_horizon = GM²/r_s  [horizon binding energy]
+        
+        MODIFIED SCHWARZSCHILD RADIUS:
+            r_s,UQFF = (2GM/c²) × (1 - ρ_SCm/ρ_UA)
+        
+        Args:
+            M_BH: Black hole mass (kg)
+            f_TRZ: Time reversal factor (default: self.f_TRZ ≈ 0.1)
+            rho_SCm: SCm vacuum density (J/m³)
+            rho_UA: UA vacuum density (J/m³)
+            U_m: Magnetic string energy (J)
+            t: Time parameter (days)
+            t_n: Normalized time for cos(πt_n) oscillation
+            gamma: Decay constant (default: 5e-5 day⁻¹)
+            frame: 'F_U_Bi' (inside→out) or 'F_U_Bi_i' (outside→in)
+        
+        Returns:
+            results: Dict with formation parameters
+            steps: Long-form derivation string
+        
+        References:
+            - GR white holes: Time-reversal of Schwarzschild metric
+            - UQFF: Aether-mediated BH→WH transition via f_TRZ
+        """
+        # Use defaults if not specified
+        f_TRZ = f_TRZ if f_TRZ is not None else self.f_TRZ
+        
+        # Frame-dependent constant selection
+        if rho_SCm is None or rho_UA is None:
+            if frame == 'F_U_Bi_i':
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_BH
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_BH
+                frame_name = "F_U_Bi_i (outside→in, horizon scale)"
+            else:
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_ISM
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_ISM
+                frame_name = "F_U_Bi (inside→out, ISM scale)"
+        else:
+            frame_name = "Custom (user-specified)"
+        
+        # === STEP 1: Base Schwarzschild radius and UQFF modification ===
+        r_s = 2 * self.G * M_BH / self.c**2  # Standard Schwarzschild
+        rho_ratio = rho_SCm / rho_UA
+        r_s_UQFF = r_s * (1 - rho_ratio)  # UQFF-modified radius (smaller)
+        
+        # === STEP 2: Hawking temperature ===
+        T_H = self.hbar * self.c**3 / (8 * np.pi * self.G * M_BH * self.k_B)
+        
+        # === STEP 3: Horizon binding energy ===
+        E_horizon = self.G * M_BH**2 / r_s  # ~GM²/r_s
+        
+        # === STEP 4: Default U_m (magnetic string stabilization) ===
+        if U_m is None:
+            # U_m = μ_j/r × (1 - exp(-γt × cos(πt_n)))
+            mu_j = 1e15  # Magnetic string tension (approximate)
+            oscillation = np.cos(np.pi * t_n)
+            U_m = (mu_j / r_s) * (1 - np.exp(-gamma * t * oscillation))
+            # Ensure non-negative
+            U_m = max(U_m, 1e-30)
+        
+        # === STEP 5: Inversion probability P_inv ===
+        # P_inv = f_TRZ × exp(-E_horizon/(k_B × T_H))
+        exponent_inv = -E_horizon / (self.k_B * T_H)
+        # Clamp to prevent underflow
+        P_inv = f_TRZ * np.exp(max(exponent_inv, -700))
+        
+        # === STEP 6: Superconductive aether flux Φ_flux ===
+        # Φ_flux = (ρ_UA/ρ_SCm) × (GM/c) × (1 + f_TRZ)
+        if rho_SCm > 0:
+            Phi_flux = (rho_UA / rho_SCm) * (self.G * M_BH / self.c) * (1 + f_TRZ)
+        else:
+            Phi_flux = np.inf
+        
+        # === STEP 7: Magnetic string stabilization factor ===
+        exponent_Um = U_m / (self.k_B * T_H) if T_H > 0 else 0
+        magnetic_factor = np.exp(min(exponent_Um, 700))
+        
+        # === STEP 8: White hole formation threshold Θ_WH ===
+        # Θ_WH = P_inv × Φ_flux × exp(U_m/(k_B × T_H))
+        Theta_WH = P_inv * Phi_flux * magnetic_factor
+        
+        # === STEP 9: Formation assessment ===
+        can_form_WH = Theta_WH > 1.0
+        
+        # === STEP 10: Mass expulsion rate (if WH forms) ===
+        yr_s = 3.156e7
+        if can_form_WH:
+            # dM/dt ≈ -L_UQFF/c² (outward mass flux)
+            L_H = self.hbar * self.c**6 / (15360 * np.pi * self.G**2 * M_BH**2)
+            # UQFF luminosity factors (outward, so sign flipped)
+            negentropic = 1 - f_TRZ
+            aether = 1 - rho_ratio
+            L_UQFF = L_H * negentropic * aether * np.exp(-U_m / (self.k_B * T_H))
+            dM_dt = -L_UQFF / self.c**2  # Negative = mass expelled
+        else:
+            L_UQFF = 0.0
+            dM_dt = 0.0
+        
+        results = {
+            'M_BH': M_BH,
+            'r_s': r_s,
+            'r_s_UQFF': r_s_UQFF,
+            'T_H': T_H,
+            'E_horizon': E_horizon,
+            'P_inv': P_inv,
+            'Phi_flux': Phi_flux,
+            'U_m': U_m,
+            'magnetic_factor': magnetic_factor,
+            'Theta_WH': Theta_WH,
+            'can_form_WH': can_form_WH,
+            'dM_dt': dM_dt,
+            'f_TRZ': f_TRZ,
+            'rho_SCm': rho_SCm,
+            'rho_UA': rho_UA,
+            'rho_ratio': rho_ratio,
+            'frame': frame
+        }
+        
+        steps = f"""UQFF White Hole Formation Analysis:
+═══════════════════════════════════════════════════════════════════════════════
+THEORETICAL BASIS:
+  In General Relativity, white holes are time-reversals of black holes where
+  matter and light can only ESCAPE (anti-horizon). They're unstable in standard
+  cosmology. UQFF reinterprets them as stable structures formed via:
+  
+  • [UA] superfluid aether as vacuum medium
+  • [SCm] superconducting horizons (B_crit ≈ 10¹¹ T)
+  • Time-reversal symmetry via f_TRZ
+  • Magnetic string (U_m) stabilization
+
+═══════════════════════════════════════════════════════════════════════════════
+Inputs:
+  M_BH = {M_BH:.4e} kg = {M_BH/self.M_sun:.4e} M_☉
+  f_TRZ = {f_TRZ:.4f}
+  Frame = {frame_name}
+  ρ_vac,[SCm] = {rho_SCm:.4e} J/m³
+  ρ_vac,[UA] = {rho_UA:.4e} J/m³
+  ρ_ratio = {rho_ratio:.4f}
+  t = {t:.2f} days, t_n = {t_n:.4f}
+
+STEP 1: Schwarzschild Radius (standard vs UQFF)
+  r_s (standard) = 2GM/c² = {r_s:.4e} m
+  r_s,UQFF = r_s × (1 - ρ_SCm/ρ_UA)
+           = {r_s:.4e} × (1 - {rho_ratio:.4f})
+           = {r_s_UQFF:.4e} m
+  UQFF shrinks horizon by {(1-r_s_UQFF/r_s)*100:.2f}%
+
+STEP 2: Hawking Temperature
+  T_H = ℏc³/(8πGMk_B) = {T_H:.4e} K
+
+STEP 3: Horizon Binding Energy
+  E_horizon = GM²/r_s = {E_horizon:.4e} J
+
+STEP 4: Magnetic String Energy (stabilization)
+  U_m = μ_j/r × (1 - exp(-γt×cos(πt_n)))
+      = {U_m:.4e} J
+
+STEP 5: Inversion Probability P_inv
+  P_inv = f_TRZ × exp(-E_horizon/(k_B × T_H))
+        = {f_TRZ:.4f} × exp({exponent_inv:.4e})
+        = {P_inv:.4e}
+  {'→ Very small (horizon deeply bound)' if P_inv < 1e-10 else '→ Measurable inversion probability'}
+
+STEP 6: Superconductive Aether Flux Φ_flux
+  Φ_flux = (ρ_UA/ρ_SCm) × (GM/c) × (1 + f_TRZ)
+         = ({rho_UA:.4e}/{rho_SCm:.4e}) × ({self.G:.4e}×{M_BH:.4e}/{self.c:.4e}) × (1 + {f_TRZ:.4f})
+         = {Phi_flux:.4e} kg·m/s (momentum flux)
+
+STEP 7: Magnetic Stabilization Factor
+  exp(U_m/(k_B × T_H)) = exp({exponent_Um:.4e}) = {magnetic_factor:.4e}
+
+STEP 8: WHITE HOLE FORMATION THRESHOLD Θ_WH
+  Θ_WH = P_inv × Φ_flux × exp(U_m/(k_B × T_H))
+       = {P_inv:.4e} × {Phi_flux:.4e} × {magnetic_factor:.4e}
+       = {Theta_WH:.4e}
+  
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ {'✓ Θ_WH > 1 → WHITE HOLE FORMATION POSSIBLE' if can_form_WH else '✗ Θ_WH < 1 → No white hole formation'}                          │
+  └─────────────────────────────────────────────────────────────────┘
+
+{'STEP 9: Mass Expulsion Rate (WH forms)' if can_form_WH else 'STEP 9: No mass expulsion (Θ_WH < 1)'}
+  {'dM/dt = -L_UQFF/c² = ' + f'{dM_dt:.4e} kg/s' if can_form_WH else 'Black hole remains stable'}
+  {'= ' + f'{abs(dM_dt)*yr_s:.4e} kg/year expelled' if can_form_WH else ''}
+
+Physical Interpretation:
+  • P_inv: Probability of TRZ-induced horizon inversion
+  • Φ_flux: [UA] superfluid outflow rate under [SCm] gradient
+  • U_m: Magnetic strings prevent immediate collapse
+  • Θ_WH > 1: All three factors combine to enable BH→WH transition
+  • White holes expel matter via time-reversal symmetry
+  
+Sgr A* Example (per derivation):
+  Θ_WH ≈ 0.1 × 10 × e¹ ≈ 2.7 > 1 (possible inversion under UQFF)
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
 
 
 
