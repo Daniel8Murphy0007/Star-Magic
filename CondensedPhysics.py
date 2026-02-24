@@ -33254,6 +33254,200 @@ UQFF Interpretation:
 """
         return T_H, steps
     
+    def compute_Hawking_temperature_UQFF(self, M_BH: float, 
+                                          f_TRZ: float = None,
+                                          rho_SCm: float = None,
+                                          rho_UA: float = None) -> Tuple[float, float, str]:
+        """
+        Compute UQFF-corrected Hawking temperature with negentropic and aether effects.
+        
+        T_UQFF = T_H × (1 + f_TRZ) × (1 - ρ_vac,[SCm]/ρ_vac,[UA])
+        
+        The UQFF framework modifies standard Hawking radiation:
+        - f_TRZ: Time Reversal Zone factor introduces negentropic correction,
+                 potentially reducing evaporation by reversing pair annihilations
+        - ρ ratio: Accounts for aether-superconductive imbalance, suppressing
+                   radiation in dense [UA] environments
+        
+        Args:
+            M_BH: Black hole mass (kg)
+            f_TRZ: Time reversal factor (default: self.f_TRZ ≈ 0.1)
+            rho_SCm: SCm vacuum density (default: self.rho_vac_SCm_BH)
+            rho_UA: UA vacuum density (default: self.rho_vac_UA_BH)
+        
+        Returns:
+            T_H: Standard Hawking temperature (K)
+            T_UQFF: UQFF-corrected temperature (K)
+            steps: Long-form derivation string
+        
+        References:
+            - Hawking, S.W. (1974) Nature 248, 30
+            - UQFF Project: Universal Aether superfluid medium
+            - Type-II superconductor horizon model (B_crit ≈ 10¹¹ T)
+        """
+        # Use defaults if not specified
+        f_TRZ = f_TRZ if f_TRZ is not None else self.f_TRZ
+        rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_BH
+        rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_BH
+        
+        # Standard Hawking temperature
+        T_H = self.hbar * self.c**3 / (8 * np.pi * self.G * M_BH * self.k_B)
+        
+        # UQFF correction factors
+        negentropic_factor = 1 + f_TRZ
+        # When SCm >> UA (typical BH), ratio is small, aether_factor ≈ 1
+        # When UA >> SCm, aether suppresses radiation
+        if rho_SCm > rho_UA:
+            aether_factor = 1 - (rho_UA / rho_SCm)  # SCm dominated: minimal suppression
+        else:
+            aether_factor = 1 - (rho_SCm / rho_UA)  # UA dominated: significant suppression
+        
+        # UQFF-corrected temperature
+        T_UQFF = T_H * negentropic_factor * aether_factor
+        
+        # CMB temperature for comparison
+        T_CMB = 2.725  # K
+        
+        steps = f"""UQFF-Corrected Hawking Temperature Calculation:
+═══════════════════════════════════════════════════════════════════════════════
+Inputs:
+  M_BH = {M_BH:.4e} kg = {M_BH/self.M_sun:.4e} M_☉
+  f_TRZ = {f_TRZ:.4f} (Time Reversal Zone factor)
+  ρ_vac,[SCm] = {rho_SCm:.4e} J/m³
+  ρ_vac,[UA] = {rho_UA:.4e} J/m³
+
+STEP 1: Standard Hawking Temperature
+  Formula: T_H = ℏc³/(8πGMk_B)
+  T_H = {self.hbar:.4e} × ({self.c:.4e})³ / (8π × {self.G:.4e} × {M_BH:.4e} × {self.k_B:.4e})
+      = {T_H:.4e} K
+
+STEP 2: UQFF Correction Factors
+  Negentropic factor (TRZ reverses pair annihilations):
+    (1 + f_TRZ) = (1 + {f_TRZ:.4f}) = {negentropic_factor:.4f}
+  
+  Aether-superconductive imbalance factor:
+    (1 - ρ_vac,[SCm]/ρ_vac,[UA]) = (1 - {rho_SCm:.4e}/{rho_UA:.4e})
+                                 = (1 - {rho_SCm/rho_UA:.4f}) = {aether_factor:.4f}
+
+STEP 3: UQFF-Corrected Temperature
+  Formula: T_UQFF = T_H × (1 + f_TRZ) × (1 - ρ_vac,[SCm]/ρ_vac,[UA])
+  T_UQFF = {T_H:.4e} × {negentropic_factor:.4f} × {aether_factor:.4f}
+         = {T_UQFF:.4e} K
+
+Comparison:
+  T_H (standard) = {T_H:.4e} K
+  T_UQFF (corrected) = {T_UQFF:.4e} K
+  UQFF/Standard ratio = {T_UQFF/T_H:.4f}
+  T_CMB = {T_CMB} K
+  
+  {'UQFF predicts FASTER evaporation' if T_UQFF > T_H else 'UQFF predicts SLOWER evaporation (negentropic suppression)'}
+
+Physical Interpretation:
+  • f_TRZ > 0: Some virtual pairs reverse-annihilate (negentropic effect)
+  • ρ_SCm < ρ_UA: Aether dominance suppresses radiation
+  • UQFF horizon acts as Type-II superconductor (B_crit ≈ 10¹¹ T)
+  • Links to THz hole experiments where superconductivity affects quantum processes
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return T_H, T_UQFF, steps
+    
+    def compute_Hawking_luminosity_UQFF(self, M_BH: float,
+                                         U_m: float = None,
+                                         f_TRZ: float = None,
+                                         rho_SCm: float = None,
+                                         rho_UA: float = None) -> Tuple[float, float, str]:
+        """
+        Compute UQFF-corrected Hawking luminosity with magnetic string damping.
+        
+        L_UQFF = L × exp(-U_m/(k_B × T))
+        
+        The UQFF framework introduces magnetic string (U_m) damping:
+        - U_m: Universal Magnetic string energy damps emission
+        - This could explain "non-evaporating" BHs in UQFF
+        
+        Args:
+            M_BH: Black hole mass (kg)
+            U_m: Magnetic string energy (J), default from UQFF constants
+            f_TRZ: Time reversal factor for T_UQFF calculation
+            rho_SCm: SCm vacuum density for T_UQFF
+            rho_UA: UA vacuum density for T_UQFF
+        
+        Returns:
+            L_standard: Standard Hawking luminosity (W)
+            L_UQFF: UQFF-corrected luminosity (W)
+            steps: Long-form derivation string
+        
+        References:
+            - Hawking radiation power: L = ℏc⁶/(15360π G²M²)
+            - UQFF magnetic string damping model
+        """
+        # Default U_m from UQFF magnetic string energy (scale with BH mass)
+        # Typical U_m ~ 10⁻¹⁵ to 10⁻¹² J depending on BH size
+        if U_m is None:
+            # Scale U_m with event horizon: larger BH = stronger magnetic strings
+            r_s = 2 * self.G * M_BH / self.c**2
+            B_horizon = 1e8 * (self.M_sun / M_BH)  # Field strength scales inversely with mass
+            U_m = B_horizon * r_s**2 * 1e-20  # Rough scale for magnetic string energy
+        
+        # Standard Hawking luminosity
+        L_standard = self.hbar * self.c**6 / (15360 * np.pi * self.G**2 * M_BH**2)
+        
+        # Get UQFF-corrected temperature for damping calculation
+        T_H, T_UQFF, _ = self.compute_Hawking_temperature_UQFF(M_BH, f_TRZ, rho_SCm, rho_UA)
+        
+        # Magnetic string damping factor
+        # Prevent overflow for very cold BHs
+        exponent = -U_m / (self.k_B * T_UQFF) if T_UQFF > 0 else -np.inf
+        damping_factor = np.exp(max(exponent, -700))  # Clamp to avoid underflow
+        
+        # UQFF-corrected luminosity
+        L_UQFF = L_standard * damping_factor
+        
+        # Time scales
+        yr_s = 3.156e7  # seconds per year
+        
+        steps = f"""UQFF-Corrected Hawking Luminosity Calculation:
+═══════════════════════════════════════════════════════════════════════════════
+Inputs:
+  M_BH = {M_BH:.4e} kg = {M_BH/self.M_sun:.4e} M_☉
+  U_m = {U_m:.4e} J (magnetic string energy)
+  T_UQFF = {T_UQFF:.4e} K
+
+STEP 1: Standard Hawking Luminosity
+  Formula: L = ℏc⁶/(15360π G²M²)
+  L = {self.hbar:.4e} × ({self.c:.4e})⁶ / (15360π × ({self.G:.4e})² × ({M_BH:.4e})²)
+    = {L_standard:.4e} W
+    = {L_standard/3.828e26:.4e} L_☉
+
+STEP 2: Magnetic String Damping
+  Formula: damping = exp(-U_m/(k_B × T_UQFF))
+  exponent = -{U_m:.4e} / ({self.k_B:.4e} × {T_UQFF:.4e})
+           = {exponent:.4e}
+  damping_factor = exp({exponent:.4e}) = {damping_factor:.4e}
+
+STEP 3: UQFF-Corrected Luminosity
+  Formula: L_UQFF = L × exp(-U_m/(k_B × T))
+  L_UQFF = {L_standard:.4e} × {damping_factor:.4e}
+         = {L_UQFF:.4e} W
+
+Comparison:
+  L (standard) = {L_standard:.4e} W
+  L_UQFF (corrected) = {L_UQFF:.4e} W
+  Suppression ratio = {L_UQFF/L_standard if L_standard > 0 else 0:.4e}
+
+Evaporation Rate:
+  dM/dt (standard) = L/c² = {L_standard/self.c**2:.4e} kg/s
+  dM/dt (UQFF) = {L_UQFF/self.c**2:.4e} kg/s
+
+Physical Interpretation:
+  • U_m (magnetic strings) damps Hawking emission
+  • {'Strong damping → BH appears non-evaporating' if damping_factor < 0.01 else 'Weak damping → near-standard evaporation'}
+  • Links to Sgr A* observations: coherence near horizon modifies predictions
+  • UQFF suggests BHs in dense [UA] environments evaporate more slowly
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return L_standard, L_UQFF, steps
+    
     def compute_BH_lifetime(self, M_BH: float) -> Tuple[float, str]:
         """
         Compute black hole evaporation lifetime.
