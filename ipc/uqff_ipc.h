@@ -97,6 +97,13 @@ enum class MessageType : uint32_t {
     SIM_PROGRESS            = 0x0211,  // Simulation progress update
     SIM_COMPLETE            = 0x0212,  // Simulation completed
     
+    // Pipeline operations (Feb 24, 2026 - CondensedPhysics integration)
+    PIPELINE_PROCESS        = 0x0300,  // Process object through UQFFPipeline
+    PIPELINE_RESULT         = 0x0301,  // Pipeline computation result
+    PIPELINE_STORE          = 0x0302,  // Store result to OutputDataStore
+    PIPELINE_EXPORT         = 0x0303,  // Export result as JSON for IPC
+    PIPELINE_CALLBACK       = 0x0310,  // Real-time callback event
+    
     // Responses
     RESPONSE_SUCCESS        = 0x1000,  // Operation completed
     RESPONSE_ERROR          = 0x1001,  // Operation failed
@@ -209,6 +216,57 @@ struct VRFrameUpdate {
     double field_probe_position[3];  // Where to sample field
     uint32_t gesture_flags;
     uint32_t reserved;
+};
+
+/**
+ * @struct PipelineProcessRequest
+ * @brief Payload for PIPELINE_PROCESS message (Feb 24, 2026)
+ */
+struct PipelineProcessRequest {
+    char object_name[128];       // Object identifier (e.g., "SGR 1935+2154")
+    uint32_t flags;              // Processing flags
+    uint32_t timeout_ms;         // Timeout in milliseconds (0 = default)
+    char callback_id[64];        // Optional callback identifier
+    uint32_t reserved[4];
+};
+
+/**
+ * @struct PipelineResultPayload
+ * @brief Response payload for PIPELINE_RESULT message (Feb 24, 2026)
+ */
+struct PipelineResultPayload {
+    char query_id[64];           // Pipeline query identifier
+    char object_type[32];        // Classification (magnetar, pulsar, etc.)
+    uint32_t calculators_run;    // Number of calculators executed
+    uint32_t calculation_success; // Number successful
+    double compute_time_ms;      // Total computation time
+    
+    // Core UQFF field results
+    double F_U;                  // Total unified field
+    double Ug1, Ug2, Ug3, Ug4;  // Gravity components
+    double Um;                   // Magnetism
+    double Ubi;                  // Buoyancy opposition
+    double g_compressed;         // MUGE Compressed gravity
+    double g_resonant;           // MUGE Resonant gravity
+    
+    uint32_t status;             // 0 = success, non-zero = error code
+    uint32_t json_payload_follows; // 1 if full JSON follows this header
+    
+    // Variable-length JSON payload follows if json_payload_follows == 1
+};
+
+/**
+ * @struct PipelineCallbackPayload
+ * @brief Event payload for PIPELINE_CALLBACK message (Feb 24, 2026)
+ */
+struct PipelineCallbackPayload {
+    char event_type[32];         // fetch_start, calc_complete, process_complete
+    char query_id[64];           // Associated query
+    char object_name[128];       // Object being processed
+    char calculator_name[64];    // Calculator involved (for calc_complete)
+    double elapsed_ms;           // Time since process start
+    uint32_t status;             // 0 = success
+    uint32_t reserved[2];
 };
 
 // ============================================================================
@@ -517,6 +575,65 @@ template<typename T>
 bool deserialize(const std::vector<uint8_t>& bytes, T& payload) {
     if (bytes.size() < sizeof(T)) return false;
     std::memcpy(&payload, bytes.data(), sizeof(T));
+    return true;
+}
+
+// ============================================================================
+// PIPELINE IPC HELPERS (Feb 24, 2026)
+// ============================================================================
+
+/**
+ * Create a pipeline process request
+ */
+inline std::pair<MessageHeader, std::vector<uint8_t>> 
+make_pipeline_process(const std::string& object_name, uint32_t timeout_ms = 30000) {
+    PipelineProcessRequest req{};
+    strncpy(req.object_name, object_name.c_str(), sizeof(req.object_name) - 1);
+    req.timeout_ms = timeout_ms;
+    req.flags = 0;
+    
+    MessageHeader hdr(MessageType::PIPELINE_PROCESS, sizeof(req));
+    return {hdr, serialize(req)};
+}
+
+/**
+ * Create a pipeline store request
+ */
+inline std::pair<MessageHeader, std::vector<uint8_t>> 
+make_pipeline_store(const std::string& query_id) {
+    PipelineProcessRequest req{};  // Reuse structure for query_id transport
+    strncpy(req.callback_id, query_id.c_str(), sizeof(req.callback_id) - 1);
+    
+    MessageHeader hdr(MessageType::PIPELINE_STORE, sizeof(req));
+    return {hdr, serialize(req)};
+}
+
+/**
+ * Create a pipeline export request
+ */
+inline std::pair<MessageHeader, std::vector<uint8_t>> 
+make_pipeline_export(const std::string& query_id) {
+    PipelineProcessRequest req{};
+    strncpy(req.callback_id, query_id.c_str(), sizeof(req.callback_id) - 1);
+    
+    MessageHeader hdr(MessageType::PIPELINE_EXPORT, sizeof(req));
+    return {hdr, serialize(req)};
+}
+
+/**
+ * Parse a pipeline result response
+ */
+inline bool parse_pipeline_result(const std::vector<uint8_t>& bytes, 
+                                   PipelineResultPayload& result,
+                                   std::string& json_payload) {
+    if (!deserialize(bytes, result)) return false;
+    
+    // Check if JSON payload follows
+    if (result.json_payload_follows && bytes.size() > sizeof(result)) {
+        size_t json_start = sizeof(result);
+        size_t json_len = bytes.size() - json_start;
+        json_payload.assign(reinterpret_cast<const char*>(bytes.data() + json_start), json_len);
+    }
     return true;
 }
 

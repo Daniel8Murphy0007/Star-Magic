@@ -366,6 +366,111 @@ PythonFieldResult PythonBridge::calculate_condensed_physics(const PythonQueryPar
     return result;
 }
 
+// ============================================================================
+// UQFF PIPELINE INTEGRATION (Feb 24, 2026)
+// ============================================================================
+
+PythonFieldResult PythonBridge::pipeline_process(const std::string& object_name) {
+    std::lock_guard<std::mutex> lock(python_mutex_);
+    
+    PythonFieldResult result;
+    
+    if (!initialized_ || !impl_ || impl_->condensed_physics_module.is_none()) {
+        result.error_message = "CondensedPhysics module not loaded";
+        return result;
+    }
+    
+    auto start = std::chrono::high_resolution_clock::now();
+    
+    try {
+        // Call pipeline_process from CondensedPhysics
+        py::object pipeline_func = impl_->condensed_physics_module.attr("pipeline_process");
+        py::dict py_result = pipeline_func(object_name).cast<py::dict>();
+        
+        // Extract pipeline result
+        if (py_result.contains("query_id")) {
+            result.query_id = py_result["query_id"].cast<std::string>();
+        }
+        if (py_result.contains("object_type")) {
+            result.object_type = py_result["object_type"].cast<std::string>();
+        }
+        if (py_result.contains("calculators_run")) {
+            result.calculators_run = py_result["calculators_run"].cast<int>();
+        }
+        if (py_result.contains("success")) {
+            result.calculation_success = py_result["success"].cast<int>();
+        }
+        
+        // Extract calculations
+        if (py_result.contains("calculations")) {
+            py::dict calcs = py_result["calculations"].cast<py::dict>();
+            for (auto& item : calcs) {
+                std::string calc_name = item.first.cast<std::string>();
+                py::dict calc_data = item.second.cast<py::dict>();
+                
+                // Store key values in result fields if present
+                if (calc_data.contains("equation")) {
+                    result.long_form_equations.push_back(
+                        calc_name + ": " + calc_data["equation"].cast<std::string>()
+                    );
+                }
+                result.available_equations.push_back(calc_name);
+            }
+        }
+        
+        result.success = true;
+        
+    } catch (const py::error_already_set& e) {
+        result.error_message = std::string("Pipeline error: ") + e.what();
+    } catch (const std::exception& e) {
+        result.error_message = std::string("C++ error: ") + e.what();
+    }
+    
+    auto end = std::chrono::high_resolution_clock::now();
+    result.compute_time_ms = std::chrono::duration<double, std::milli>(end - start).count();
+    
+    return result;
+}
+
+std::string PythonBridge::pipeline_export_cpp(const std::string& query_id) {
+    std::lock_guard<std::mutex> lock(python_mutex_);
+    
+    if (!initialized_ || !impl_ || impl_->condensed_physics_module.is_none()) {
+        return R"({"error": "CondensedPhysics module not loaded"})";
+    }
+    
+    try {
+        py::object export_func = impl_->condensed_physics_module.attr("pipeline_export_cpp");
+        std::string json_result = export_func(query_id).cast<std::string>();
+        return json_result;
+    } catch (const py::error_already_set& e) {
+        return std::string(R"({"error": ")") + e.what() + "\"}";
+    }
+}
+
+int PythonBridge::pipeline_store_opdata(const std::string& query_id) {
+    std::lock_guard<std::mutex> lock(python_mutex_);
+    
+    if (!initialized_ || !impl_ || impl_->condensed_physics_module.is_none()) {
+        return 0;
+    }
+    
+    try {
+        // First recall the result, then store
+        py::object recall_func = impl_->condensed_physics_module.attr("pipeline_recall");
+        py::object result = recall_func(query_id);
+        
+        if (!result.is_none()) {
+            py::object store_func = impl_->condensed_physics_module.attr("pipeline_store_opdata");
+            bool stored = store_func(result).cast<bool>();
+            return stored ? 1 : 0;
+        }
+        return 0;
+    } catch (...) {
+        return 0;
+    }
+}
+
 PythonFieldResult PythonBridge::calculate_qcalc(const PythonQueryParams& params) {
     std::lock_guard<std::mutex> lock(python_mutex_);
     
@@ -591,6 +696,20 @@ std::string PythonBridge::execute_python(const std::string&) {
 
 PythonBridge::ModuleVersions PythonBridge::get_module_versions() {
     return {};
+}
+
+PythonFieldResult PythonBridge::pipeline_process(const std::string&) {
+    PythonFieldResult result;
+    result.error_message = "Python bridge disabled";
+    return result;
+}
+
+std::string PythonBridge::pipeline_export_cpp(const std::string&) {
+    return "{}";  // Empty JSON object
+}
+
+int PythonBridge::pipeline_store_opdata(const std::string&) {
+    return 0;
 }
 
 #endif // PYTHON_BRIDGE_ENABLED

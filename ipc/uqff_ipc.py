@@ -52,10 +52,64 @@ logger = logging.getLogger("UQFF_IPC")
 # ═══════════════════════════════════════════════════════════════════════════════
 class MessageType(IntEnum):
     """IPC Message types - mirror C++ enum from ipc/uqff_ipc.h"""
+    # Field calculations
+    CALCULATE_FIELD = 0x0001
+    CALCULATE_GRAVITY = 0x0002
+    CALCULATE_BUOYANCY = 0x0003
+    CALCULATE_MAGNETISM = 0x0004
+    
+    # Dynamic term management
+    REGISTER_TERM = 0x0010
+    UNREGISTER_TERM = 0x0011
+    UPDATE_PARAMETER = 0x0012
+    GET_PARAMETER = 0x0013
+    
+    # System management
+    GET_SYSTEM_LIST = 0x0020
+    SELECT_SYSTEM = 0x0021
+    ADD_CUSTOM_SYSTEM = 0x0022
+    
+    # State management
+    EXPORT_STATE = 0x0030
+    IMPORT_STATE = 0x0031
+    SYNC_STATE = 0x0032
+    
+    # VR-specific
+    VR_FRAME_UPDATE = 0x0100
+    VR_GESTURE_INPUT = 0x0101
+    VR_RENDER_REQUEST = 0x0102
+    
+    # Simulation control
+    SIM_START = 0x0200
+    SIM_STOP = 0x0201
+    SIM_PAUSE = 0x0202
+    SIM_RESUME = 0x0203
+    SIM_FRAME = 0x0210
+    SIM_PROGRESS = 0x0211
+    SIM_COMPLETE = 0x0212
+    
+    # Pipeline operations (Feb 24, 2026)
+    PIPELINE_PROCESS = 0x0300
+    PIPELINE_RESULT = 0x0301
+    PIPELINE_STORE = 0x0302
+    PIPELINE_EXPORT = 0x0303
+    PIPELINE_CALLBACK = 0x0310
+    
+    # Responses
+    RESPONSE_SUCCESS = 0x1000
+    RESPONSE_ERROR = 0x1001
+    RESPONSE_DATA = 0x1002
+    
+    # Control
+    PING = 0xFF00
+    PONG = 0xFF01
+    SHUTDOWN = 0xFFFF
+    
+    # Legacy types for backward compatibility
     PHYSICS_REQUEST = 0
     PHYSICS_RESPONSE = 1
-    STATE_SYNC = 2
-    CONTROL = 3
+    STATE_SYNC_LEGACY = 2
+    CONTROL_LEGACY = 3
     HEARTBEAT = 4
     ERROR = 5
     JSON_DATA = 6
@@ -473,6 +527,65 @@ class UQFFIPCClient:
             "name": self.name,
             "timestamp": datetime.now().isoformat(),
             "status": "alive"
+        })
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # PIPELINE OPERATIONS (Feb 24, 2026)
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def send_pipeline_process(self, object_name: str, timeout_ms: int = 30000) -> bool:
+        """Request pipeline processing of an object"""
+        if not self.connected or not self.channel:
+            return False
+        
+        return self.channel.send_json(MessageType.PIPELINE_PROCESS, {
+            "object_name": object_name,
+            "timeout_ms": timeout_ms,
+            "timestamp": datetime.now().isoformat()
+        })
+    
+    def send_pipeline_result(self, result: Dict[str, Any]) -> bool:
+        """Send pipeline result to IPC consumers"""
+        if not self.connected or not self.channel:
+            return False
+        
+        return self.channel.send_json(MessageType.PIPELINE_RESULT, result)
+    
+    def send_pipeline_callback(self, event_type: str, query_id: str, 
+                                object_name: str, calculator_name: str = "",
+                                elapsed_ms: float = 0.0, status: int = 0) -> bool:
+        """Send real-time callback event to IPC consumers"""
+        if not self.connected or not self.channel:
+            return False
+        
+        return self.channel.send_json(MessageType.PIPELINE_CALLBACK, {
+            "event_type": event_type,
+            "query_id": query_id,
+            "object_name": object_name,
+            "calculator_name": calculator_name,
+            "elapsed_ms": elapsed_ms,
+            "status": status,
+            "timestamp": datetime.now().isoformat()
+        })
+    
+    def request_pipeline_store(self, query_id: str) -> bool:
+        """Request storage of pipeline result to OutputDataStore"""
+        if not self.connected or not self.channel:
+            return False
+        
+        return self.channel.send_json(MessageType.PIPELINE_STORE, {
+            "query_id": query_id,
+            "timestamp": datetime.now().isoformat()
+        })
+    
+    def request_pipeline_export(self, query_id: str) -> bool:
+        """Request JSON export of pipeline result"""
+        if not self.connected or not self.channel:
+            return False
+        
+        return self.channel.send_json(MessageType.PIPELINE_EXPORT, {
+            "query_id": query_id,
+            "timestamp": datetime.now().isoformat()
         })
 
 # ═══════════════════════════════════════════════════════════════════════════════

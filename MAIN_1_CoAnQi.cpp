@@ -147,6 +147,11 @@
 // IPC Layer - SharedMemory/NamedPipe for SIMULTANEOUS JOINT OPERATION pipeline
 #include "ipc/uqff_ipc.h"
 
+// Python Bridge - pybind11 integration with CondensedPhysics/UQFFPipeline (Feb 24, 2026)
+#ifdef PYTHON_BRIDGE_ENABLED
+#include "ipc/python_bridge.h"
+#endif
+
 // Wolfram WSTP integration (optional)
 #ifdef USE_EMBEDDED_WOLFRAM
 extern void WolframEmbeddedBridge();
@@ -23989,7 +23994,12 @@ int main(int argc, char *argv[])
         cout << "15. SOURCE4 Unified Field Validation" << endl;
         cout << "16. Information Paradox Tests (BH Info)" << endl;
         cout << "17. BSM Physics Validation" << endl;
+#ifdef PYTHON_BRIDGE_ENABLED
+        cout << "18. Python Pipeline (UQFFPipeline)" << endl;
+        cout << "19. Exit" << endl;
+#else
         cout << "18. Exit" << endl;
+#endif
 #else
         cout << "12. Configure Grok API Key" << endl;
         cout << "13. Test Grok AI Integration" << endl;
@@ -23997,12 +24007,22 @@ int main(int argc, char *argv[])
         cout << "15. Information Paradox Tests (BH Info)" << endl;
         cout << "16. Batch 20-23 Validation" << endl;
         cout << "17. BSM Physics Validation" << endl;
+#ifdef PYTHON_BRIDGE_ENABLED
+        cout << "18. Python Pipeline (UQFFPipeline)" << endl;
+        cout << "19. Exit" << endl;
+#else
         cout << "18. Exit" << endl;
+#endif
 #endif
 #else
         cout << "9. SOURCE4 Unified Field Validation" << endl;
         cout << "10. Information Paradox Tests (BH Info)" << endl;
+#ifdef PYTHON_BRIDGE_ENABLED
+        cout << "11. Python Pipeline (UQFFPipeline)" << endl;
+        cout << "12. Exit" << endl;
+#else
         cout << "11. Exit" << endl;
+#endif
 #endif
         cout << "Enter choice: ";
 
@@ -24017,12 +24037,24 @@ int main(int argc, char *argv[])
 
 #ifdef USE_EMBEDDED_WOLFRAM
 #ifdef USE_COSMIC_QUANTUM_EGG
+#ifdef PYTHON_BRIDGE_ENABLED
+        if (choice == 19)  // Exit for Cosmic Egg + Python build (19 options)
+#else
         if (choice == 18)  // Exit for Cosmic Egg build (18 options)
+#endif
+#else
+#ifdef PYTHON_BRIDGE_ENABLED
+        if (choice == 19)  // Exit for Wolfram-only + Python build (19 options)
 #else
         if (choice == 18)  // Exit for Wolfram-only build (18 options)
 #endif
+#endif
+#else
+#ifdef PYTHON_BRIDGE_ENABLED
+        if (choice == 12)  // Exit for No Wolfram + Python build (12 options)
 #else
         if (choice == 11)  // Exit for No Wolfram build (11 options)
+#endif
 #endif
         {
             g_logger.log("=== CoAnQi Shutdown ===", 1);
@@ -24666,12 +24698,70 @@ int main(int argc, char *argv[])
             break;
         }
 
+#ifdef PYTHON_BRIDGE_ENABLED
+        case 18:
+        {
+            // Python Pipeline (UQFFPipeline) - Wolfram-only + Python build
+            cout << "\n=== UQFF PYTHON PIPELINE ===" << endl;
+            cout << "Connecting to CondensedPhysics.py via pybind11..." << endl;
+            
+            auto& bridge = UQFF::PythonBridge::instance();
+            if (!bridge.initialize()) {
+                cout << "ERROR: Failed to initialize Python bridge." << endl;
+                cout << "Make sure CondensedPhysics.py is in the workspace root." << endl;
+                break;
+            }
+            
+            cout << "Python bridge initialized successfully." << endl;
+            cout << "\nEnter object name (e.g., 'SGR 1935+2154', 'M87', 'Crab Nebula'): ";
+            string object_name;
+            getline(cin, object_name);
+            
+            if (object_name.empty()) {
+                cout << "No object specified. Using default: SGR 1935+2154" << endl;
+                object_name = "SGR 1935+2154";
+            }
+            
+            cout << "\nProcessing '" << object_name << "' through UQFFPipeline..." << endl;
+            UQFF::PythonFieldResult result = bridge.pipeline_process(object_name);
+            
+            if (result.success) {
+                cout << "\n=== PIPELINE RESULTS ===" << endl;
+                cout << "Query ID: " << result.query_id << endl;
+                cout << "Object Type: " << result.object_type << endl;
+                cout << "Calculators Run: " << result.calculators_run << endl;
+                cout << "Successful: " << result.calculation_success << endl;
+                cout << "Compute Time: " << result.compute_time_ms << " ms" << endl;
+                
+                cout << "\n--- UQFF Field Components ---" << endl;
+                cout << "F_U (Total): " << scientific << setprecision(6) << result.F_U << " N" << endl;
+                cout << "g_compressed: " << result.g_compressed << " m/s^2" << endl;
+                
+                // Store to OPData for Tab 9 recall
+                cout << "\nStoring results to OutputDataStore for Tab 9 recall..." << endl;
+                int stored = bridge.pipeline_store_opdata(result.query_id);
+                cout << "Stored " << stored << " result(s) to OPData." << endl;
+            } else {
+                cout << "ERROR: " << result.error_message << endl;
+            }
+            
+            break;
+        }
+
+        case 19:
+        {
+            // Exit (Wolfram-only + Python build)
+            cout << "Exiting..." << endl;
+            return 0;
+        }
+#else
         case 18:
         {
             // Exit (Wolfram-only build)
             cout << "Exiting..." << endl;
             return 0;
         }
+#endif
 #endif
 
 #ifdef USE_COSMIC_QUANTUM_EGG
@@ -24786,12 +24876,89 @@ int main(int argc, char *argv[])
             break;
         }
 
+#ifdef PYTHON_BRIDGE_ENABLED
+        case 18:
+        {
+            // Python Pipeline (UQFFPipeline) - Cosmic Egg + Python build
+            cout << "\n=== UQFF PYTHON PIPELINE ===" << endl;
+            cout << "Connecting to CondensedPhysics.py via pybind11..." << endl;
+            
+            auto& bridge = UQFF::PythonBridge::instance();
+            if (!bridge.initialize()) {
+                cout << "ERROR: Failed to initialize Python bridge." << endl;
+                cout << "Make sure CondensedPhysics.py is in the workspace root." << endl;
+                break;
+            }
+            
+            cout << "Python bridge initialized successfully." << endl;
+            cout << "\nEnter object name (e.g., 'SGR 1935+2154', 'M87', 'Crab Nebula'): ";
+            string object_name;
+            getline(cin, object_name);
+            
+            if (object_name.empty()) {
+                cout << "No object specified. Using default: SGR 1935+2154" << endl;
+                object_name = "SGR 1935+2154";
+            }
+            
+            cout << "\nProcessing '" << object_name << "' through UQFFPipeline..." << endl;
+            UQFF::PythonFieldResult result = bridge.pipeline_process(object_name);
+            
+            if (result.success) {
+                cout << "\n=== PIPELINE RESULTS ===" << endl;
+                cout << "Query ID: " << result.query_id << endl;
+                cout << "Object Type: " << result.object_type << endl;
+                cout << "Calculators Run: " << result.calculators_run << endl;
+                cout << "Successful: " << result.calculation_success << endl;
+                cout << "Compute Time: " << result.compute_time_ms << " ms" << endl;
+                
+                cout << "\n--- UQFF Field Components ---" << endl;
+                cout << "F_U (Total): " << scientific << setprecision(6) << result.F_U << " N" << endl;
+                cout << "Ug1: " << result.Ug1 << " m/s^2" << endl;
+                cout << "Ug2: " << result.Ug2 << " m/s^2" << endl;
+                cout << "Ug3: " << result.Ug3 << " m/s^2" << endl;
+                cout << "Ug4: " << result.Ug4 << " m/s^2" << endl;
+                cout << "g_compressed: " << result.g_compressed << " m/s^2" << endl;
+                cout << "g_resonant: " << result.g_resonant << " m/s^2" << endl;
+                
+                if (!result.long_form_equations.empty()) {
+                    cout << "\n--- Long-Form Equations ---" << endl;
+                    for (size_t i = 0; i < min((size_t)5, result.long_form_equations.size()); ++i) {
+                        cout << result.long_form_equations[i] << endl;
+                    }
+                    if (result.long_form_equations.size() > 5) {
+                        cout << "... and " << (result.long_form_equations.size() - 5) << " more equations" << endl;
+                    }
+                }
+                
+                // Store to OPData for Tab 9 recall
+                cout << "\nStoring results to OutputDataStore for Tab 9 recall..." << endl;
+                int stored = bridge.pipeline_store_opdata(result.query_id);
+                cout << "Stored " << stored << " result(s) to OPData." << endl;
+                
+                // Export JSON for other IPC consumers
+                string json = bridge.pipeline_export_cpp(result.query_id);
+                cout << "\nExported " << json.length() << " bytes JSON for IPC." << endl;
+            } else {
+                cout << "ERROR: " << result.error_message << endl;
+            }
+            
+            break;
+        }
+
+        case 19:
+        {
+            // Exit (Cosmic Egg + Python build)
+            cout << "Exiting..." << endl;
+            return 0;
+        }
+#else
         case 18:
         {
             // Exit (Cosmic Egg build)
             cout << "Exiting..." << endl;
             return 0;
         }
+#endif
 #endif
 #endif
 #else
@@ -24825,12 +24992,70 @@ int main(int argc, char *argv[])
             break;
         }
 
+#ifdef PYTHON_BRIDGE_ENABLED
+        case 11:
+        {
+            // Python Pipeline (UQFFPipeline) - No Wolfram + Python build
+            cout << "\n=== UQFF PYTHON PIPELINE ===" << endl;
+            cout << "Connecting to CondensedPhysics.py via pybind11..." << endl;
+            
+            auto& bridge = UQFF::PythonBridge::instance();
+            if (!bridge.initialize()) {
+                cout << "ERROR: Failed to initialize Python bridge." << endl;
+                cout << "Make sure CondensedPhysics.py is in the workspace root." << endl;
+                break;
+            }
+            
+            cout << "Python bridge initialized successfully." << endl;
+            cout << "\nEnter object name (e.g., 'SGR 1935+2154', 'M87', 'Crab Nebula'): ";
+            string object_name;
+            getline(cin, object_name);
+            
+            if (object_name.empty()) {
+                cout << "No object specified. Using default: SGR 1935+2154" << endl;
+                object_name = "SGR 1935+2154";
+            }
+            
+            cout << "\nProcessing '" << object_name << "' through UQFFPipeline..." << endl;
+            UQFF::PythonFieldResult result = bridge.pipeline_process(object_name);
+            
+            if (result.success) {
+                cout << "\n=== PIPELINE RESULTS ===" << endl;
+                cout << "Query ID: " << result.query_id << endl;
+                cout << "Object Type: " << result.object_type << endl;
+                cout << "Calculators Run: " << result.calculators_run << endl;
+                cout << "Successful: " << result.calculation_success << endl;
+                cout << "Compute Time: " << result.compute_time_ms << " ms" << endl;
+                
+                cout << "\n--- UQFF Field Components ---" << endl;
+                cout << "F_U (Total): " << scientific << setprecision(6) << result.F_U << " N" << endl;
+                cout << "g_compressed: " << result.g_compressed << " m/s^2" << endl;
+                
+                // Store to OPData for Tab 9 recall
+                cout << "\nStoring results to OutputDataStore for Tab 9 recall..." << endl;
+                int stored = bridge.pipeline_store_opdata(result.query_id);
+                cout << "Stored " << stored << " result(s) to OPData." << endl;
+            } else {
+                cout << "ERROR: " << result.error_message << endl;
+            }
+            
+            break;
+        }
+
+        case 12:
+        {
+            // Exit (No Wolfram + Python build)
+            cout << "Exiting..." << endl;
+            return 0;
+        }
+#else
         case 11:
         {
             // Exit (No Wolfram build)
             cout << "Exiting..." << endl;
             return 0;
         }
+#endif
 #endif
 
         default:

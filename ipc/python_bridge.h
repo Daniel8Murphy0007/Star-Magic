@@ -69,6 +69,12 @@ struct PythonFieldResult {
     // Available equations for this system
     std::vector<std::string> available_equations;
     
+    // Pipeline fields (Feb 24, 2026)
+    std::string query_id;       // Pipeline query ID
+    std::string object_type;    // Object classification (e.g., "magnetar")
+    int calculators_run = 0;    // Number of calculators executed
+    int calculation_success = 0; // Number of successful calculators
+    
     // Timing
     double compute_time_ms = 0;
 };
@@ -175,6 +181,32 @@ public:
         std::string sympy;
     };
     ModuleVersions get_module_versions();
+    
+    // ========== UQFFPipeline Integration (Feb 24, 2026) ==========
+    
+    /**
+     * @brief Process an object through the UQFFPipeline
+     * @param object_name System or object identifier
+     * @return PythonFieldResult with pipeline results
+     * 
+     * Calls CondensedPhysics.pipeline_process() which routes object
+     * through appropriate calculators (NS EOS, FRB, CMB, etc.)
+     */
+    PythonFieldResult pipeline_process(const std::string& object_name);
+    
+    /**
+     * @brief Export pipeline results as JSON for C++ IPC
+     * @param query_id Pipeline query identifier
+     * @return JSON string with all results (empty on error)
+     */
+    std::string pipeline_export_cpp(const std::string& query_id);
+    
+    /**
+     * @brief Store pipeline results to OutputDataStore for Tab 9 recall
+     * @param query_id Pipeline query identifier
+     * @return Number of results stored (0 on error)
+     */
+    int pipeline_store_opdata(const std::string& query_id);
     
 private:
     PythonBridge() = default;
