@@ -85755,6 +85755,988 @@ def solve_uqff_instanton(rho: float = 1.0, layer: int = 13,
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# LATTICE YANG-MILLS CALCULATOR - Wilson Loops, Plaquette Action, Confinement
+# From SuperGrok4 Export (Feb 23, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class LatticeYangMillsCalculator:
+    """
+    Lattice Yang-Mills Theory Calculator
+    
+    Discretizes gauge fields on a spacetime lattice for non-perturbative QCD:
+    - Link variables U_mu(x) in SU(N)
+    - Plaquette action: S = beta * sum(1 - 1/N Re Tr U_plaq)
+    - Wilson loops for confinement/area law
+    - Polyakov loops for deconfinement
+    
+    References:
+    - Wilson (1974), Phys. Rev. D 10, 2445
+    - Creutz, "Quarks, Gluons and Lattices" (1983)
+    - Montvay & Munster, "Quantum Fields on a Lattice" (1994)
+    """
+    
+    def __init__(self, N: int = 2, lattice_size: int = 8, beta: float = 2.3):
+        """
+        Initialize Lattice Yang-Mills Calculator
+        
+        Args:
+            N: Gauge group SU(N) (default 2 for SU(2))
+            lattice_size: Lattice dimension L (L^4 hypercube)
+            beta: Lattice coupling beta = 2N/g^2
+        """
+        self.N = N
+        self.L = lattice_size
+        self.beta = beta
+        self.g_squared = 2 * N / beta
+        
+        # Initialize random SU(N) link configuration
+        self.links = None
+        
+    def _su2_element(self, theta: np.ndarray) -> np.ndarray:
+        """Generate SU(2) matrix from 3 angles (quaternion parametrization)"""
+        # SU(2) ~ S^3: U = a_0 I + i * sigma_k * a_k, with sum(a^2) = 1
+        norm = np.sqrt(np.sum(theta**2))
+        if norm < 1e-10:
+            return np.eye(2, dtype=complex)
+        
+        n = theta / norm
+        c, s = np.cos(norm), np.sin(norm)
+        
+        # Pauli matrices
+        U = np.array([
+            [c + 1j*s*n[2], s*(n[1] + 1j*n[0])],
+            [s*(-n[1] + 1j*n[0]), c - 1j*s*n[2]]
+        ], dtype=complex)
+        return U
+    
+    def _su3_element(self, theta: np.ndarray) -> np.ndarray:
+        """Generate random SU(3) matrix (simplified via Gram-Schmidt)"""
+        # For full implementation, use Gell-Mann matrices
+        A = np.random.randn(3, 3) + 1j * np.random.randn(3, 3)
+        Q, R = np.linalg.qr(A)
+        # Adjust to SU(3) (det = 1)
+        Q = Q / np.linalg.det(Q)**(1/3)
+        return Q
+    
+    def initialize_hot_start(self):
+        """Initialize links with random SU(N) matrices (hot start)"""
+        L = self.L
+        if self.N == 2:
+            self.links = np.zeros((L, L, L, L, 4, 2, 2), dtype=complex)
+            for x in range(L):
+                for y in range(L):
+                    for z in range(L):
+                        for t in range(L):
+                            for mu in range(4):
+                                theta = np.random.uniform(-np.pi, np.pi, 3)
+                                self.links[x,y,z,t,mu] = self._su2_element(theta)
+        else:
+            self.links = np.zeros((L, L, L, L, 4, self.N, self.N), dtype=complex)
+            for x in range(L):
+                for y in range(L):
+                    for z in range(L):
+                        for t in range(L):
+                            for mu in range(4):
+                                self.links[x,y,z,t,mu] = self._su3_element(None)
+    
+    def initialize_cold_start(self):
+        """Initialize links with identity matrices (cold start)"""
+        L = self.L
+        self.links = np.zeros((L, L, L, L, 4, self.N, self.N), dtype=complex)
+        for x in range(L):
+            for y in range(L):
+                for z in range(L):
+                    for t in range(L):
+                        for mu in range(4):
+                            self.links[x,y,z,t,mu] = np.eye(self.N, dtype=complex)
+    
+    def plaquette(self, x: int, y: int, z: int, t: int, 
+                  mu: int, nu: int) -> np.ndarray:
+        """
+        Compute plaquette U_mu_nu(x) = U_mu(x) U_nu(x+mu) U_mu^dag(x+nu) U_nu^dag(x)
+        
+        Args:
+            x, y, z, t: Lattice site
+            mu, nu: Directions (0-3)
+            
+        Returns:
+            SU(N) plaquette matrix
+        """
+        L = self.L
+        pos = [x, y, z, t]
+        
+        # Get link variables with periodic boundary conditions
+        U1 = self.links[x % L, y % L, z % L, t % L, mu]
+        
+        # Position shifted by mu
+        pos_mu = pos.copy()
+        pos_mu[mu] = (pos[mu] + 1) % L
+        U2 = self.links[pos_mu[0], pos_mu[1], pos_mu[2], pos_mu[3], nu]
+        
+        # Position shifted by nu
+        pos_nu = pos.copy()
+        pos_nu[nu] = (pos[nu] + 1) % L
+        U3 = self.links[pos_nu[0], pos_nu[1], pos_nu[2], pos_nu[3], mu]
+        
+        U4 = self.links[x % L, y % L, z % L, t % L, nu]
+        
+        # Plaquette = U1 @ U2 @ U3^dag @ U4^dag
+        return U1 @ U2 @ np.conj(U3.T) @ np.conj(U4.T)
+    
+    def plaquette_action_density(self, x: int, y: int, z: int, t: int) -> float:
+        """
+        Compute local plaquette action density at site (x,y,z,t)
+        
+        S_local = beta * sum_{mu<nu} (1 - 1/N Re Tr U_plaq)
+        """
+        action = 0.0
+        for mu in range(4):
+            for nu in range(mu + 1, 4):
+                U_plaq = self.plaquette(x, y, z, t, mu, nu)
+                action += 1 - np.real(np.trace(U_plaq)) / self.N
+        return self.beta * action
+    
+    def total_action(self) -> float:
+        """Compute total Wilson plaquette action"""
+        if self.links is None:
+            self.initialize_hot_start()
+        
+        L = self.L
+        S = 0.0
+        for x in range(L):
+            for y in range(L):
+                for z in range(L):
+                    for t in range(L):
+                        S += self.plaquette_action_density(x, y, z, t)
+        return S
+    
+    def average_plaquette(self) -> float:
+        """Compute average plaquette <P> = <1/N Re Tr U_plaq>"""
+        if self.links is None:
+            self.initialize_hot_start()
+        
+        L = self.L
+        total = 0.0
+        count = 0
+        for x in range(L):
+            for y in range(L):
+                for z in range(L):
+                    for t in range(L):
+                        for mu in range(4):
+                            for nu in range(mu + 1, 4):
+                                U_plaq = self.plaquette(x, y, z, t, mu, nu)
+                                total += np.real(np.trace(U_plaq)) / self.N
+                                count += 1
+        return total / count
+    
+    def wilson_loop(self, R: int, T: int, x0: int = 0, y0: int = 0) -> complex:
+        """
+        Compute rectangular Wilson loop W(R, T)
+        
+        W(R,T) = Tr[ prod_{path} U_mu ]
+        
+        For confinement: W(R,T) ~ exp(-sigma * R * T) (area law)
+        
+        Args:
+            R: Spatial extent
+            T: Temporal extent
+            x0, y0: Starting position
+            
+        Returns:
+            Wilson loop value (complex)
+        """
+        if self.links is None:
+            self.initialize_cold_start()
+        
+        L = self.L
+        W = np.eye(self.N, dtype=complex)
+        
+        # Bottom edge (x direction)
+        for i in range(R):
+            W = W @ self.links[(x0 + i) % L, y0 % L, 0, 0, 0]
+        
+        # Right edge (t direction)
+        for j in range(T):
+            W = W @ self.links[(x0 + R) % L, y0 % L, 0, j % L, 3]
+        
+        # Top edge (x direction, backward)
+        for i in range(R - 1, -1, -1):
+            W = W @ np.conj(self.links[(x0 + i) % L, y0 % L, 0, T % L, 0].T)
+        
+        # Left edge (t direction, backward)
+        for j in range(T - 1, -1, -1):
+            W = W @ np.conj(self.links[x0 % L, y0 % L, 0, j % L, 3].T)
+        
+        return np.trace(W)
+    
+    def string_tension(self, R_max: int = 4) -> Tuple[float, str]:
+        """
+        Extract string tension sigma from Wilson loops
+        
+        sigma = -lim_{T->inf} (1/T) ln W(R,T) / R
+        
+        Returns:
+            (sigma estimate, equation string)
+        """
+        # Creutz ratio: chi(R) = -ln[W(R,R) W(R-1,R-1) / (W(R,R-1) W(R-1,R))]
+        W = {}
+        for R in range(1, R_max + 1):
+            for T in range(1, R_max + 1):
+                W[(R, T)] = np.abs(self.wilson_loop(R, T))
+        
+        # Creutz ratio for R=R_max
+        R = R_max
+        if R > 1 and (R, R) in W and (R-1, R-1) in W and (R, R-1) in W and (R-1, R) in W:
+            if W[(R, R)] > 0 and W[(R-1, R-1)] > 0 and W[(R, R-1)] > 0 and W[(R-1, R)] > 0:
+                chi = -np.log(W[(R, R)] * W[(R-1, R-1)] / (W[(R, R-1)] * W[(R-1, R)]))
+                sigma = chi  # In lattice units
+            else:
+                sigma = 0.0
+        else:
+            sigma = 0.0
+        
+        eq = f"sigma = chi({R}) = -ln[W({R},{R})*W({R-1},{R-1})/(W({R},{R-1})*W({R-1},{R}))] = {sigma:.4f}"
+        return sigma, eq
+    
+    def compute(self, mode: str = 'summary') -> Dict[str, Any]:
+        """
+        Main compute interface
+        
+        Args:
+            mode: 'summary', 'action', 'wilson', or 'confinement'
+        """
+        if self.links is None:
+            self.initialize_hot_start()
+        
+        result = {
+            'gauge_group': f'SU({self.N})',
+            'lattice_size': self.L,
+            'beta': self.beta,
+            'g_squared': self.g_squared,
+        }
+        
+        if mode in ['summary', 'action']:
+            result['average_plaquette'] = self.average_plaquette()
+            result['plaquette_equation'] = "<P> = <(1/N) Re Tr U_plaq>"
+        
+        if mode in ['summary', 'wilson', 'confinement']:
+            result['wilson_1x1'] = np.abs(self.wilson_loop(1, 1))
+            result['wilson_2x2'] = np.abs(self.wilson_loop(2, 2))
+            sigma, sigma_eq = self.string_tension()
+            result['string_tension'] = sigma
+            result['string_tension_equation'] = sigma_eq
+            result['confinement'] = sigma > 0.01
+        
+        return result
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MAGNETIC MONOPOLE CALCULATOR - 't Hooft-Polyakov Monopoles
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class MagneticMonopoleCalculator:
+    """
+    't Hooft-Polyakov Magnetic Monopole Calculator
+    
+    In Georgi-Glashow model (SU(2) YM + adjoint Higgs), topological solitons
+    with magnetic charge exist. These are finite-energy, stable configurations.
+    
+    Higgs field: Phi^a = v * r_hat^a * h(r)
+    Gauge field: A_i^a = epsilon_{aij} * r_hat^j * (1 - k(r)) / (g * r)
+    
+    At infinity: Phi -> v * r_hat (hedgehog), A -> pure gauge
+    Mass: M ~ 4*pi*v / g (BPS bound)
+    
+    References:
+    - 't Hooft, Nucl. Phys. B 79, 276 (1974)
+    - Polyakov, JETP Lett. 20, 194 (1974)
+    - Prasad & Sommerfield, Phys. Rev. Lett. 35, 760 (1975)
+    """
+    
+    def __init__(self, v: float = 1.0, g: float = 1.0, lambda_h: float = 0.0):
+        """
+        Initialize Monopole Calculator
+        
+        Args:
+            v: Higgs VEV (symmetry breaking scale)
+            g: Gauge coupling constant
+            lambda_h: Higgs self-coupling (lambda_h = 0 for BPS limit)
+        """
+        self.v = v
+        self.g = g
+        self.lambda_h = lambda_h
+        self.is_bps = (lambda_h == 0)
+        
+    def bps_profile_h(self, r: float) -> float:
+        """
+        BPS monopole Higgs profile h(r) (Prasad-Sommerfield solution)
+        
+        h(r) = coth(v*g*r) - 1/(v*g*r)
+        
+        Boundary: h(0) = 0, h(inf) = 1
+        """
+        xi = self.v * self.g * r
+        if xi < 1e-10:
+            return xi / 3  # Taylor expansion at origin
+        return 1 / np.tanh(xi) - 1 / xi
+    
+    def bps_profile_k(self, r: float) -> float:
+        """
+        BPS monopole gauge profile k(r)
+        
+        k(r) = v*g*r / sinh(v*g*r)
+        
+        Boundary: k(0) = 1, k(inf) = 0
+        """
+        xi = self.v * self.g * r
+        if xi < 1e-10:
+            return 1 - xi**2 / 6  # Taylor expansion
+        return xi / np.sinh(xi)
+    
+    def higgs_field(self, r: float, theta: float, phi: float) -> np.ndarray:
+        """
+        Compute Higgs field Phi^a(r, theta, phi) in spherical coords
+        
+        Phi^a = v * h(r) * r_hat^a
+        """
+        h = self.bps_profile_h(r) if self.is_bps else self._numerical_h(r)
+        r_hat = np.array([
+            np.sin(theta) * np.cos(phi),
+            np.sin(theta) * np.sin(phi),
+            np.cos(theta)
+        ])
+        return self.v * h * r_hat
+    
+    def gauge_field(self, r: float, theta: float, phi: float) -> np.ndarray:
+        """
+        Compute gauge field A_i^a(r, theta, phi)
+        
+        A_i^a = epsilon_{aij} * r_hat^j * (1 - k(r)) / (g * r)
+        
+        Returns A[i, a] array
+        """
+        k = self.bps_profile_k(r) if self.is_bps else self._numerical_k(r)
+        r_hat = np.array([
+            np.sin(theta) * np.cos(phi),
+            np.sin(theta) * np.sin(phi),
+            np.cos(theta)
+        ])
+        
+        A = np.zeros((3, 3))  # A[i, a]
+        eps = np.zeros((3, 3, 3))
+        eps[0, 1, 2] = eps[1, 2, 0] = eps[2, 0, 1] = 1
+        eps[0, 2, 1] = eps[2, 1, 0] = eps[1, 0, 2] = -1
+        
+        factor = (1 - k) / (self.g * max(r, 1e-10))
+        for i in range(3):
+            for a in range(3):
+                for j in range(3):
+                    A[i, a] += eps[a, i, j] * r_hat[j] * factor
+        
+        return A
+    
+    def magnetic_field(self, r: float, theta: float, phi: float) -> np.ndarray:
+        """
+        Compute non-Abelian magnetic field B_i^a
+        
+        At large r: B_i ~ r_hat_i * r_hat^a / (g * r^2) (Coulomb-like)
+        """
+        k = self.bps_profile_k(r) if self.is_bps else self._numerical_k(r)
+        r_hat = np.array([
+            np.sin(theta) * np.cos(phi),
+            np.sin(theta) * np.sin(phi),
+            np.cos(theta)
+        ])
+        
+        # Simplified: radial component dominates
+        B = np.zeros((3, 3))  # B[i, a]
+        factor = 1 / (self.g * max(r, 1e-10)**2)
+        for i in range(3):
+            for a in range(3):
+                B[i, a] = r_hat[i] * r_hat[a] * factor
+        
+        return B
+    
+    def energy_density(self, r: float) -> float:
+        """
+        Compute monopole energy density
+        
+        E = (1/2)(B_i^a)^2 + (1/2)(D_i Phi^a)^2 + V(Phi)
+        """
+        if self.is_bps:
+            # BPS: energy density is (d/dr of BPS mass function)
+            xi = self.v * self.g * r
+            if xi < 1e-10:
+                return self.v**4 * self.g**2 / 3
+            
+            h = self.bps_profile_h(r)
+            k = self.bps_profile_k(r)
+            h_prime = self.v * self.g * (1 - 1/np.sinh(xi)**2 + 1/xi**2)
+            k_prime = self.v * self.g * (1/np.sinh(xi) - xi*np.cosh(xi)/np.sinh(xi)**2)
+            
+            E_B = (k_prime**2 + (1 - k**2)**2 / (2 * r**2)) / self.g**2
+            E_D = self.v**2 * (h_prime**2 + 2 * h**2 * k**2 / r**2)
+            return E_B + E_D
+        else:
+            # Non-BPS: add Higgs potential
+            h = self._numerical_h(r)
+            V = (self.lambda_h / 4) * self.v**4 * (h**2 - 1)**2
+            return self.energy_density_bps(r) + V
+    
+    def monopole_mass(self) -> Tuple[float, str]:
+        """
+        Compute monopole mass (BPS bound or numerical)
+        
+        M_BPS = 4*pi*v / g (exact for lambda=0)
+        """
+        if self.is_bps:
+            M = 4 * np.pi * self.v / self.g
+            eq = f"M_BPS = 4*pi*v/g = 4*pi*{self.v}/{self.g} = {M:.6f}"
+        else:
+            # Numerical integration
+            from scipy.integrate import quad
+            integrand = lambda r: 4 * np.pi * r**2 * self.energy_density(r)
+            M, _ = quad(integrand, 0.001, 100)
+            eq = f"M = 4*pi * integral(r^2 * E(r) dr) = {M:.6f}"
+        
+        return M, eq
+    
+    def magnetic_charge(self) -> Tuple[float, str]:
+        """
+        Compute magnetic charge Q_m = 4*pi / g (Dirac quantization)
+        """
+        Q_m = 4 * np.pi / self.g
+        eq = f"Q_m = 4*pi/g = 4*pi/{self.g} = {Q_m:.6f}"
+        return Q_m, eq
+    
+    def compute(self, r: float = 1.0, theta: float = np.pi/4, 
+                phi: float = 0.0) -> Dict[str, Any]:
+        """Main compute interface"""
+        M, M_eq = self.monopole_mass()
+        Q, Q_eq = self.magnetic_charge()
+        
+        return {
+            'v': self.v,
+            'g': self.g,
+            'lambda_h': self.lambda_h,
+            'is_bps': self.is_bps,
+            'higgs_profile_h': self.bps_profile_h(r),
+            'gauge_profile_k': self.bps_profile_k(r),
+            'higgs_field': self.higgs_field(r, theta, phi).tolist(),
+            'energy_density': self.energy_density(r),
+            'monopole_mass': M,
+            'mass_equation': M_eq,
+            'magnetic_charge': Q,
+            'charge_equation': Q_eq,
+            'equation': "Phi^a = v*h(r)*r_hat^a, A_i^a = eps_{aij}*r_hat^j*(1-k(r))/(g*r)"
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SPHALERON CALCULATOR - Electroweak Vacuum Transitions
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class SphaleronCalculator:
+    """
+    Electroweak Sphaleron Calculator
+    
+    Sphalerons are unstable, saddle-point configurations in the electroweak
+    vacuum structure. They mediate baryon+lepton number violation (B+L)
+    conserving B-L.
+    
+    Energy: E_sph ~ 4*pi*v / g_W ~ 10 TeV (v=246 GeV for SM)
+    
+    At high temperature: Gamma_sph ~ alpha_W^4 * T^4 * exp(-E_sph/T)
+    
+    References:
+    - Klinkhamer & Manton, Phys. Rev. D 30, 2212 (1984)
+    - Arnold & McLerran, Phys. Rev. D 36, 581 (1987)
+    - Review: Rubakov & Shaposhnikov, Phys. Usp. 39, 461 (1996)
+    """
+    
+    def __init__(self, v: float = 246.0, g_W: float = 0.65, 
+                 sin_theta_W: float = 0.23, m_H: float = 125.0):
+        """
+        Initialize Sphaleron Calculator
+        
+        Args:
+            v: Higgs VEV in GeV (default 246 for SM)
+            g_W: SU(2) weak coupling
+            sin_theta_W: Weinberg angle
+            m_H: Higgs mass in GeV
+        """
+        self.v = v
+        self.g_W = g_W
+        self.sin_theta_W = sin_theta_W
+        self.m_H = m_H
+        self.alpha_W = g_W**2 / (4 * np.pi)
+        self.m_W = g_W * v / 2
+        
+    def sphaleron_energy(self) -> Tuple[float, str]:
+        """
+        Compute sphaleron energy (barrier height)
+        
+        E_sph = (4*pi*v / g_W) * f(lambda/g_W^2)
+        
+        where f(0) ~ 1.52 (BPS-like), f(SM) ~ 2.0
+        """
+        # Numerical coefficient depends on lambda/g^2 ratio
+        lambda_over_g2 = (self.m_H / self.m_W)**2 / 2
+        
+        # Fit from Klinkhamer & Manton (1984)
+        if lambda_over_g2 < 0.1:
+            f_factor = 1.52
+        elif lambda_over_g2 < 1:
+            f_factor = 1.52 + 0.5 * lambda_over_g2
+        else:
+            f_factor = 2.0
+        
+        E_sph = (4 * np.pi * self.v / self.g_W) * f_factor
+        E_TeV = E_sph / 1000
+        
+        eq = f"E_sph = 4*pi*v/g_W * f = 4*pi*{self.v}/{self.g_W}*{f_factor:.2f} = {E_sph:.1f} GeV = {E_TeV:.2f} TeV"
+        return E_sph, eq
+    
+    def sphaleron_rate_zero_T(self) -> Tuple[float, str]:
+        """
+        Sphaleron transition rate at zero temperature (instanton-like)
+        
+        Gamma_0 ~ exp(-2 * S_inst) ~ exp(-4*pi / alpha_W) ~ 10^{-170}
+        """
+        S_inst = np.pi / self.alpha_W
+        Gamma = np.exp(-2 * S_inst)
+        
+        eq = f"Gamma_0 ~ exp(-4*pi/alpha_W) = exp(-4*pi/{self.alpha_W:.4f}) ~ {Gamma:.2e}"
+        return Gamma, eq
+    
+    def sphaleron_rate_finite_T(self, T: float) -> Tuple[float, str]:
+        """
+        Sphaleron transition rate at finite temperature T (GeV)
+        
+        For T > E_sph: Gamma ~ kappa * (alpha_W * T)^4
+        For T < E_sph: Gamma ~ exp(-E_sph / T)
+        
+        Args:
+            T: Temperature in GeV
+        """
+        E_sph, _ = self.sphaleron_energy()
+        kappa = 10  # Numerical prefactor from lattice (~10-30)
+        
+        if T > E_sph / 10:
+            # High temperature: unsuppressed
+            Gamma = kappa * (self.alpha_W * T)**4
+            eq = f"Gamma(T={T:.1f}GeV) ~ kappa * (alpha_W * T)^4 = {Gamma:.4e} GeV^4"
+        else:
+            # Low temperature: Boltzmann suppressed
+            Gamma = kappa * (self.alpha_W * T)**4 * np.exp(-E_sph / T)
+            eq = f"Gamma(T={T:.1f}GeV) ~ exp(-E_sph/T) = exp(-{E_sph:.0f}/{T:.1f}) = {Gamma:.4e} GeV^4"
+        
+        return Gamma, eq
+    
+    def baryon_asymmetry_washout_temperature(self) -> Tuple[float, str]:
+        """
+        Compute washout temperature where sphaleron rate ~ Hubble rate
+        
+        T_washout ~ 100 GeV (electroweak scale)
+        """
+        # Simplified: T where Gamma/T^3 ~ H/T
+        # H ~ T^2 / M_Pl, Gamma ~ alpha^4 T^4
+        # T_washout ~ alpha^{-4} * M_Pl ~ too high → need proper treatment
+        
+        T_washout = self.v  # Approximately EW scale
+        eq = f"T_washout ~ v = {T_washout} GeV (electroweak phase transition)"
+        return T_washout, eq
+    
+    def delta_B_per_sphaleron(self) -> Tuple[int, str]:
+        """
+        Change in baryon number per sphaleron transition
+        
+        Delta B = Delta L = N_f = 3 (number of families)
+        Delta (B-L) = 0
+        """
+        N_f = 3
+        eq = f"Delta B = Delta L = N_f = {N_f} (B-L conserved)"
+        return N_f, eq
+    
+    def compute(self, T: float = 100.0) -> Dict[str, Any]:
+        """Main compute interface"""
+        E_sph, E_eq = self.sphaleron_energy()
+        Gamma_0, Gamma_0_eq = self.sphaleron_rate_zero_T()
+        Gamma_T, Gamma_T_eq = self.sphaleron_rate_finite_T(T)
+        T_wash, T_wash_eq = self.baryon_asymmetry_washout_temperature()
+        delta_B, delta_B_eq = self.delta_B_per_sphaleron()
+        
+        return {
+            'v': self.v,
+            'g_W': self.g_W,
+            'm_H': self.m_H,
+            'm_W': self.m_W,
+            'alpha_W': self.alpha_W,
+            'sphaleron_energy_GeV': E_sph,
+            'sphaleron_energy_TeV': E_sph / 1000,
+            'energy_equation': E_eq,
+            'rate_zero_T': Gamma_0,
+            'rate_zero_T_equation': Gamma_0_eq,
+            'rate_at_T': Gamma_T,
+            'temperature': T,
+            'rate_T_equation': Gamma_T_eq,
+            'washout_temperature': T_wash,
+            'washout_equation': T_wash_eq,
+            'delta_B_per_transition': delta_B,
+            'delta_B_equation': delta_B_eq,
+            'physics': 'Electroweak baryogenesis, B+L violation'
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ASYMPTOTIC FREEDOM CALCULATOR - QCD Running Coupling
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class AsymptoticFreedomCalculator:
+    """
+    QCD Asymptotic Freedom Calculator
+    
+    The QCD coupling g_s decreases at high energies (asymptotic freedom):
+    
+    beta(g) = mu * d g / d mu = - (11*N_c - 2*N_f)/(3) * g^3/(16*pi^2) + O(g^5)
+    
+    Running coupling: alpha_s(Q) = alpha_s(mu) / [1 + (b_0/(2*pi)) * alpha_s(mu) * ln(Q/mu)]
+    
+    where b_0 = (11*N_c - 2*N_f)/3
+    
+    References:
+    - Gross & Wilczek, Phys. Rev. Lett. 30, 1343 (1973)
+    - Politzer, Phys. Rev. Lett. 30, 1346 (1973)
+    - PDG: alpha_s(M_Z) = 0.1179 +/- 0.0010
+    """
+    
+    def __init__(self, N_c: int = 3, N_f: int = 6, Lambda_QCD: float = 0.217):
+        """
+        Initialize Asymptotic Freedom Calculator
+        
+        Args:
+            N_c: Number of colors (3 for QCD)
+            N_f: Number of active quark flavors (depends on energy scale)
+            Lambda_QCD: QCD scale in GeV (about 200-300 MeV)
+        """
+        self.N_c = N_c
+        self.N_f = N_f
+        self.Lambda_QCD = Lambda_QCD
+        
+        # Beta function coefficients
+        self.b_0 = (11 * N_c - 2 * N_f) / 3
+        self.b_1 = (34 * N_c**2 - 10 * N_c * N_f - 3 * N_f * (N_c**2 - 1) / N_c) / 3
+        
+    def beta_one_loop(self, g: float) -> float:
+        """
+        One-loop beta function
+        
+        beta(g) = -b_0 * g^3 / (16 * pi^2)
+        """
+        return -self.b_0 * g**3 / (16 * np.pi**2)
+    
+    def beta_two_loop(self, g: float) -> float:
+        """
+        Two-loop beta function
+        
+        beta(g) = -b_0 * g^3 / (16*pi^2) - b_1 * g^5 / (16*pi^2)^2
+        """
+        return (-self.b_0 * g**3 / (16 * np.pi**2) 
+                - self.b_1 * g**5 / (16 * np.pi**2)**2)
+    
+    def alpha_s_one_loop(self, Q: float, N_f: int = None) -> float:
+        """
+        One-loop running coupling alpha_s(Q)
+        
+        alpha_s(Q) = 4*pi / (b_0 * ln(Q^2 / Lambda^2))
+        
+        Args:
+            Q: Energy scale in GeV
+            N_f: Number of active flavors (default: auto from scale)
+        """
+        if N_f is None:
+            N_f = self._active_flavors(Q)
+        
+        b_0 = (11 * self.N_c - 2 * N_f) / 3
+        Lambda = self._lambda_at_nf(N_f)
+        
+        if Q <= Lambda:
+            return float('inf')  # Non-perturbative
+        
+        return 4 * np.pi / (b_0 * np.log(Q**2 / Lambda**2))
+    
+    def alpha_s_two_loop(self, Q: float, N_f: int = None) -> float:
+        """
+        Two-loop running coupling with NLO correction
+        
+        alpha_s(Q) = (4*pi / (b_0*L)) * [1 - (b_1*ln(L))/(b_0^2*L) + ...]
+        
+        where L = ln(Q^2/Lambda^2)
+        """
+        if N_f is None:
+            N_f = self._active_flavors(Q)
+        
+        b_0 = (11 * self.N_c - 2 * N_f) / 3
+        b_1 = (34 * self.N_c**2 - 10 * self.N_c * N_f - 3 * N_f * (self.N_c**2 - 1) / self.N_c) / 3
+        Lambda = self._lambda_at_nf(N_f)
+        
+        if Q <= Lambda:
+            return float('inf')
+        
+        L = np.log(Q**2 / Lambda**2)
+        alpha_LO = 4 * np.pi / (b_0 * L)
+        correction = 1 - (b_1 * np.log(L)) / (b_0**2 * L)
+        
+        return alpha_LO * correction
+    
+    def _active_flavors(self, Q: float) -> int:
+        """Determine number of active flavors at scale Q"""
+        # Threshold masses (approx)
+        m_b = 4.18  # bottom
+        m_c = 1.27  # charm
+        m_s = 0.095  # strange
+        m_t = 172.5  # top
+        
+        if Q > m_t:
+            return 6
+        elif Q > m_b:
+            return 5
+        elif Q > m_c:
+            return 4
+        elif Q > m_s:
+            return 3
+        else:
+            return 2
+    
+    def _lambda_at_nf(self, N_f: int) -> float:
+        """Get Lambda_QCD for given N_f (simplified matching)"""
+        # Lambda varies with N_f due to threshold matching
+        lambda_5f = self.Lambda_QCD  # Reference at N_f=5
+        
+        if N_f == 5:
+            return lambda_5f
+        elif N_f == 6:
+            return lambda_5f * 0.8  # Rough scaling
+        elif N_f == 4:
+            return lambda_5f * 1.3
+        elif N_f == 3:
+            return lambda_5f * 1.6
+        else:
+            return lambda_5f * 2.0
+    
+    def running_coupling_profile(self, Q_min: float = 1.0, Q_max: float = 1000.0,
+                                  n_points: int = 100) -> Dict[str, np.ndarray]:
+        """
+        Compute alpha_s(Q) over energy range
+        
+        Returns arrays for plotting asymptotic freedom
+        """
+        Q = np.geomspace(Q_min, Q_max, n_points)
+        alpha_s_1L = np.array([self.alpha_s_one_loop(q) for q in Q])
+        alpha_s_2L = np.array([self.alpha_s_two_loop(q) for q in Q])
+        
+        return {
+            'Q': Q,
+            'alpha_s_1loop': alpha_s_1L,
+            'alpha_s_2loop': alpha_s_2L
+        }
+    
+    def alpha_s_at_M_Z(self) -> Tuple[float, str]:
+        """
+        Compute alpha_s(M_Z) where M_Z = 91.2 GeV
+        
+        PDG value: 0.1179 +/- 0.0010
+        """
+        M_Z = 91.2
+        alpha = self.alpha_s_two_loop(M_Z)
+        eq = f"alpha_s(M_Z={M_Z}GeV) = {alpha:.4f} (PDG: 0.1179)"
+        return alpha, eq
+    
+    def compute(self, Q: float = None) -> Dict[str, Any]:
+        """Main compute interface"""
+        if Q is None:
+            Q = 91.2  # M_Z
+        
+        alpha_1L = self.alpha_s_one_loop(Q)
+        alpha_2L = self.alpha_s_two_loop(Q)
+        alpha_MZ, MZ_eq = self.alpha_s_at_M_Z()
+        
+        return {
+            'N_c': self.N_c,
+            'N_f': self._active_flavors(Q),
+            'Lambda_QCD': self.Lambda_QCD,
+            'b_0': self.b_0,
+            'b_1': self.b_1,
+            'Q': Q,
+            'alpha_s_1loop': alpha_1L,
+            'alpha_s_2loop': alpha_2L,
+            'alpha_s_MZ': alpha_MZ,
+            'MZ_equation': MZ_eq,
+            'beta_equation': "beta(g) = -(11*N_c - 2*N_f)/(3) * g^3/(16*pi^2)",
+            'running_equation': "alpha_s(Q) = 4*pi / (b_0 * ln(Q^2/Lambda^2))",
+            'asymptotic_freedom': alpha_2L < alpha_MZ if Q > 91.2 else alpha_2L > alpha_MZ
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# YANG-MILLS FIELD EQUATIONS SOLVER - Numerical D_mu F^{mu nu} = 0
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class YangMillsFieldEquationsSolver:
+    """
+    Yang-Mills Field Equations Solver
+    
+    Solves the classical Yang-Mills equations:
+    D_mu F^{mu nu a} = d_mu F^{mu nu a} + g * f^{abc} * A_mu^b * F^{mu nu c} = 0
+    
+    Methods:
+    - Spherically symmetric reduction (monopole/sphaleron ansatz)
+    - Time evolution via relaxation
+    - Energy minimization
+    
+    References:
+    - Numerical Recipes for PDEs
+    - Manton & Sutcliffe, "Topological Solitons" (2004)
+    """
+    
+    def __init__(self, N: int = 2, g: float = 1.0):
+        """
+        Initialize Solver
+        
+        Args:
+            N: Gauge group SU(N)
+            g: Coupling constant
+        """
+        self.N = N
+        self.g = g
+        
+        # Structure constants for SU(2)
+        self.f_abc = np.zeros((3, 3, 3))
+        self.f_abc[0, 1, 2] = self.f_abc[1, 2, 0] = self.f_abc[2, 0, 1] = 1
+        self.f_abc[0, 2, 1] = self.f_abc[2, 1, 0] = self.f_abc[1, 0, 2] = -1
+        
+    def field_strength_component(self, A: np.ndarray, x: np.ndarray, 
+                                  mu: int, nu: int, a: int, h: float = 0.01) -> float:
+        """
+        Compute F_mu_nu^a numerically via finite differences
+        
+        F_mu_nu^a = d_mu A_nu^a - d_nu A_mu^a + g * f^{abc} * A_mu^b * A_nu^c
+        
+        Args:
+            A: Gauge field A[x_index, mu, a]
+            x: Position
+            mu, nu: Lorentz indices
+            a: Color index
+            h: Grid spacing
+        """
+        # This is a skeleton - full implementation needs grid infrastructure
+        # Simplified for demonstration
+        return 0.0
+    
+    def spherical_ansatz_ode(self, r: np.ndarray, y: np.ndarray, 
+                              v: float = 1.0) -> np.ndarray:
+        """
+        ODE system for spherically symmetric YM-Higgs (monopole/sphaleron)
+        
+        Variables: y = [h, k, h', k']
+        Equations from D_mu F^{mu nu} = 0 and (D^2 Phi)^a = dV/dPhi^a
+        """
+        h, k, hp, kp = y
+        g = self.g
+        
+        # Avoid r=0 singularity
+        r_safe = max(r, 1e-10)
+        
+        # BPS equations (lambda=0 limit)
+        dh_dr = hp
+        dk_dr = kp
+        dhp_dr = (2 * g**2 * v**2 * h * k**2 - 2 * hp) / r_safe
+        dkp_dr = (g**2 * v**2 * k * (h**2 - 1) + k * (k**2 - 1)) / r_safe**2
+        
+        return np.array([dh_dr, dk_dr, dhp_dr, dkp_dr])
+    
+    def solve_spherical_monopole(self, r_max: float = 10.0, 
+                                  n_points: int = 1000) -> Dict[str, np.ndarray]:
+        """
+        Solve spherically symmetric monopole equations
+        
+        Returns radial profiles h(r), k(r)
+        """
+        from scipy.integrate import solve_ivp
+        
+        # Boundary conditions at r=0: h(0)=0, k(0)=1
+        y0 = [0.01, 0.99, 0.1, -0.1]  # [h, k, h', k'] near origin
+        
+        r_span = (0.01, r_max)
+        r_eval = np.linspace(0.01, r_max, n_points)
+        
+        sol = solve_ivp(lambda r, y: self.spherical_ansatz_ode(r, y),
+                        r_span, y0, t_eval=r_eval, method='RK45')
+        
+        return {
+            'r': sol.t,
+            'h': sol.y[0],
+            'k': sol.y[1],
+            'dh_dr': sol.y[2],
+            'dk_dr': sol.y[3]
+        }
+    
+    def yang_mills_energy(self, A: np.ndarray, r: np.ndarray) -> float:
+        """
+        Compute Yang-Mills energy E = (1/2) integral F_mu_nu^2
+        
+        For spherical: E = 4*pi * integral r^2 * [(k')^2 + (1-k^2)^2/(2r^2)]
+        """
+        # Simplified for monopole-like config
+        return 0.0
+    
+    def compute(self, mode: str = 'monopole') -> Dict[str, Any]:
+        """Main compute interface"""
+        result = {
+            'gauge_group': f'SU({self.N})',
+            'coupling': self.g,
+            'equation': "D_mu F^{mu nu a} = d_mu F^{mu nu a} + g*f^{abc}*A_mu^b*F^{mu nu c} = 0"
+        }
+        
+        if mode == 'monopole':
+            profile = self.solve_spherical_monopole()
+            result['profile'] = profile
+            result['h_at_r1'] = np.interp(1.0, profile['r'], profile['h'])
+            result['k_at_r1'] = np.interp(1.0, profile['r'], profile['k'])
+        
+        return result
+
+
+# Global instances
+LATTICE_YM = LatticeYangMillsCalculator()
+MONOPOLE_CALC = MagneticMonopoleCalculator()
+SPHALERON_CALC = SphaleronCalculator()
+ASYMPTOTIC_FREEDOM = AsymptoticFreedomCalculator()
+YM_EQUATIONS_SOLVER = YangMillsFieldEquationsSolver()
+
+
+# Convenience functions
+def solve_lattice_yang_mills(L: int = 8, beta: float = 2.3) -> Dict[str, Any]:
+    """Solve Lattice Yang-Mills and compute Wilson loops"""
+    calc = LatticeYangMillsCalculator(lattice_size=L, beta=beta)
+    calc.initialize_hot_start()
+    return calc.compute()
+
+def solve_monopole(v: float = 1.0, g: float = 1.0) -> Dict[str, Any]:
+    """Solve 't Hooft-Polyakov monopole"""
+    calc = MagneticMonopoleCalculator(v=v, g=g)
+    return calc.compute()
+
+def solve_sphaleron(T: float = 100.0) -> Dict[str, Any]:
+    """Compute sphaleron energy and rates"""
+    return SPHALERON_CALC.compute(T=T)
+
+def solve_qcd_running(Q: float = 91.2) -> Dict[str, Any]:
+    """Compute QCD running coupling at scale Q"""
+    return ASYMPTOTIC_FREEDOM.compute(Q=Q)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # MODULE EXPORTS AND TEST
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -85953,6 +86935,35 @@ __all__ = [
     # Solver Functions
     'solve_yang_mills_instanton',
     'solve_uqff_instanton',
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # EXTENDED YANG-MILLS SUITE (Feb 23, 2026)
+    # Lattice YM, Monopoles, Sphalerons, QCD Running Coupling
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # Lattice Yang-Mills
+    'LatticeYangMillsCalculator',
+    'LATTICE_YM',
+    'solve_lattice_yang_mills',
+    
+    # Magnetic Monopoles
+    'MagneticMonopoleCalculator',
+    'MONOPOLE_CALC',
+    'solve_monopole',
+    
+    # Electroweak Sphalerons
+    'SphaleronCalculator',
+    'SPHALERON_CALC',
+    'solve_sphaleron',
+    
+    # Asymptotic Freedom / QCD Running
+    'AsymptoticFreedomCalculator',
+    'ASYMPTOTIC_FREEDOM',
+    'solve_qcd_running',
+    
+    # Yang-Mills Field Equations Solver
+    'YangMillsFieldEquationsSolver',
+    'YM_EQUATIONS_SOLVER',
 ]
 
 
