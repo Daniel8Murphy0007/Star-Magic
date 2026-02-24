@@ -2525,7 +2525,15 @@ private:
         
         restorePointCounter++;
         QString timestamp = QDateTime::currentDateTime().toString("yyyyMMdd_HHmmss");
-        QString filename = "SuperGrok4_RestorePoint.json";  // Consolidated file
+        
+        // Resolve path: executable is in build_msvc/Release/, file is in project root
+        QString exeDir = QCoreApplication::applicationDirPath();
+        QString filename = exeDir + "/../../SuperGrok4_RestorePoint.json";
+        
+        // Also check if file is in same directory as exe (for deployed builds)
+        if (!QFile::exists(filename) && QFile::exists(exeDir + "/SuperGrok4_RestorePoint.json")) {
+            filename = exeDir + "/SuperGrok4_RestorePoint.json";
+        }
         
         QJsonArray historyArray;
         for (const auto& entry : conversationHistory) {
@@ -2570,7 +2578,16 @@ private:
     }
     
     void loadRestorePoint() {
-        QString filename = "SuperGrok4_RestorePoint.json";  // Consolidated file
+        // Resolve path: executable is in build_msvc/Release/, file is in project root
+        QString exeDir = QCoreApplication::applicationDirPath();
+        QString filename = exeDir + "/../../SuperGrok4_RestorePoint.json";
+        
+        // Also check if file is in same directory as exe (for deployed builds)
+        if (!QFile::exists(filename) && QFile::exists(exeDir + "/SuperGrok4_RestorePoint.json")) {
+            filename = exeDir + "/SuperGrok4_RestorePoint.json";
+        }
+        
+        qDebug() << "Looking for restore point at:" << filename;
         QFile file(filename);
         
         if (!file.exists()) {
