@@ -104853,6 +104853,12 @@ class UQFFBlackHoleStabilityCalculator(SelfExpandingMixin):
         "T'' = T' × (1 - ρ_SCm/ρ_UA) - Aether damps temp ~10%",
         "T_UQFF = T'' × C × exp(-U_m/(k_BT'')) - Coherence + string damping",
         "Net: Temperature modulation ~0.99 without damping; suppressed emission",
+        "",
+        "PRIMORDIAL BLACK HOLE (PBH) ANALYSIS:",
+        "Standard: PBHs M < 10¹² kg evaporate before t_universe (Hawking radiation)",
+        "UQFF: Suppresses evaporation ~30×, critical mass drops to ~10¹¹ kg",
+        "Dark Matter: UQFF enables PBH dark matter for smaller masses",
+        "Test: Gamma-ray burst rates, q-scope/THz analogs",
     ]
     
     def __init__(self, params: dict = None):
@@ -105401,6 +105407,381 @@ PHYSICAL INTERPRETATION:
         return report
     
     # ═══════════════════════════════════════════════════════════════════════════
+    # PRIMORDIAL BLACK HOLE (PBH) EVAPORATION (Feb 25, 2026)
+    # ═══════════════════════════════════════════════════════════════════════════
+    # PBHs formed in early universe from density fluctuations.
+    # Standard: M < 10¹² kg evaporate before t_universe (Hawking radiation).
+    # UQFF: Suppresses evaporation, allowing PBHs as dark matter candidates.
+    # Key mass scales:
+    #   - 10¹⁰ kg: τ_std ~ 2.66×10⁶ yr (evaporated long ago)
+    #   - 10¹² kg: τ_std ~ t_universe (critical mass)
+    #   - 10²⁰ kg: τ_std ~ 2.66×10³⁶ yr (survives)
+    # UQFF enhancement: ~11× (f_TRZ + aether) + exp(~2.7) ~ 30×
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_pbh_critical_mass_standard(self) -> float:
+        """
+        Compute critical PBH mass where τ_standard = t_universe.
+        
+        Solving: 5120πG²M³/(ℏc⁴) = t_universe
+        → M_crit = [t_universe × ℏc⁴ / (5120πG²)]^(1/3)
+        
+        Returns:
+            M_critical [kg] (approximately 10¹² kg ≈ 5×10¹¹ kg)
+        """
+        G = self.params['G']
+        hbar = self.params['hbar']
+        c = self.params['c']
+        t_universe = self.params['t_universe']
+        
+        # τ = 5120πG²M³/(ℏc⁴) = t_universe
+        # M³ = t_universe × ℏc⁴ / (5120πG²)
+        M_cubed = t_universe * hbar * c**4 / (5120 * np.pi * G**2)
+        return M_cubed ** (1.0/3.0)
+    
+    def compute_pbh_critical_mass_uqff(self, U_m_kT_ratio: float = 1.0) -> float:
+        """
+        Compute critical PBH mass where τ_UQFF = t_universe.
+        
+        UQFF suppresses evaporation, so critical mass is SMALLER.
+        PBHs that would evaporate in standard model may survive in UQFF.
+        
+        τ_UQFF = τ_std × enhancement_factor = t_universe
+        → M_crit_UQFF = M_crit_std / enhancement^(1/3)
+        
+        Args:
+            U_m_kT_ratio: Assumed U_m/(k_BT_H) ratio
+        
+        Returns:
+            M_critical_UQFF [kg]
+        """
+        M_crit_std = self.compute_pbh_critical_mass_standard()
+        
+        # Enhancement factor
+        f_TRZ = self.params['f_TRZ']
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        
+        enhancement = (1.0 / (1.0 - f_TRZ)) * (rho_UA / rho_SCm) * np.exp(U_m_kT_ratio)
+        
+        # Since τ ∝ M³, and τ_UQFF = τ_std × enhancement,
+        # M_crit_UQFF³ × enhancement = M_crit_std³
+        # M_crit_UQFF = M_crit_std / enhancement^(1/3)
+        return M_crit_std / (enhancement ** (1.0/3.0))
+    
+    def is_pbh_evaporated_standard(self, M: float) -> bool:
+        """
+        Check if PBH has evaporated in standard model by now.
+        
+        Args:
+            M: PBH mass [kg]
+        
+        Returns:
+            True if τ_standard < t_universe (evaporated)
+        """
+        tau = self.compute_tau_standard(M)
+        return tau < self.params['t_universe']
+    
+    def is_pbh_evaporated_uqff(self, M: float, U_m_kT_ratio: float = 1.0) -> bool:
+        """
+        Check if PBH has evaporated in UQFF by now.
+        
+        Args:
+            M: PBH mass [kg]
+            U_m_kT_ratio: Assumed U_m/(k_BT_H) ratio
+        
+        Returns:
+            True if τ_UQFF < t_universe (evaporated)
+        """
+        # Compute UQFF enhancement with fixed ratio
+        tau_std = self.compute_tau_standard(M)
+        f_TRZ = self.params['f_TRZ']
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        
+        tau_uqff = tau_std * (1.0 / (1.0 - f_TRZ)) * (rho_UA / rho_SCm) * np.exp(U_m_kT_ratio)
+        return tau_uqff < self.params['t_universe']
+    
+    def compute_pbh_survival_enhancement(self, M: float, U_m_kT_ratio: float = 1.0) -> dict:
+        """
+        Analyze PBH survival enhancement in UQFF.
+        
+        Args:
+            M: PBH mass [kg]
+            U_m_kT_ratio: Assumed U_m/(k_BT_H) ratio
+        
+        Returns:
+            Dict with survival analysis
+        """
+        year = self.params['year']
+        t_universe = self.params['t_universe']
+        t_universe_yr = t_universe / year
+        
+        # Standard lifetime
+        tau_std = self.compute_tau_standard(M)
+        tau_std_yr = tau_std / year
+        
+        # UQFF enhancement factors
+        f_TRZ = self.params['f_TRZ']
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        
+        factor_TRZ = 1.0 / (1.0 - f_TRZ)
+        factor_rho = rho_UA / rho_SCm
+        factor_exp = np.exp(U_m_kT_ratio)
+        total_enhancement = factor_TRZ * factor_rho * factor_exp
+        
+        # UQFF lifetime
+        tau_uqff = tau_std * total_enhancement
+        tau_uqff_yr = tau_uqff / year
+        
+        # Survival status
+        evaporated_std = tau_std < t_universe
+        evaporated_uqff = tau_uqff < t_universe
+        saved_by_uqff = evaporated_std and not evaporated_uqff
+        
+        return {
+            'M': M,
+            'M_kg': M,
+            
+            # Standard lifetime
+            'tau_standard_s': tau_std,
+            'tau_standard_yr': tau_std_yr,
+            'evaporated_standard': evaporated_std,
+            'ratio_to_universe_std': tau_std / t_universe,
+            
+            # Enhancement factors
+            'factor_TRZ': factor_TRZ,
+            'factor_rho': factor_rho,
+            'factor_exp': factor_exp,
+            'total_enhancement': total_enhancement,
+            'U_m_kT_ratio': U_m_kT_ratio,
+            
+            # UQFF lifetime
+            'tau_UQFF_s': tau_uqff,
+            'tau_UQFF_yr': tau_uqff_yr,
+            'evaporated_UQFF': evaporated_uqff,
+            'ratio_to_universe_UQFF': tau_uqff / t_universe,
+            
+            # Status
+            'saved_by_UQFF': saved_by_uqff,
+            'universe_age_yr': t_universe_yr,
+        }
+    
+    def analyze_pbh_dark_matter_viability(self, U_m_kT_ratio: float = 1.0) -> dict:
+        """
+        Analyze whether UQFF allows PBHs as dark matter candidates.
+        
+        Standard model: PBHs < 10¹² kg evaporated → not dark matter.
+        UQFF: Lower critical mass → more PBHs survive → viable DM.
+        
+        Args:
+            U_m_kT_ratio: Assumed U_m/(k_BT_H) ratio
+        
+        Returns:
+            Dict with dark matter viability analysis
+        """
+        M_sun = self.params['M_sun']
+        year = self.params['year']
+        
+        # Critical masses
+        M_crit_std = self.compute_pbh_critical_mass_standard()
+        M_crit_uqff = self.compute_pbh_critical_mass_uqff(U_m_kT_ratio)
+        
+        # Test masses
+        test_masses = [1e10, 1e11, 5e11, 1e12, 1e13, 1e14, 1e15]
+        
+        results = []
+        for M in test_masses:
+            survival = self.compute_pbh_survival_enhancement(M, U_m_kT_ratio)
+            results.append({
+                'M_kg': M,
+                'tau_std_yr': survival['tau_standard_yr'],
+                'tau_UQFF_yr': survival['tau_UQFF_yr'],
+                'evaporated_std': survival['evaporated_standard'],
+                'evaporated_UQFF': survival['evaporated_UQFF'],
+                'saved_by_UQFF': survival['saved_by_UQFF'],
+            })
+        
+        # Count saved
+        n_saved = sum(1 for r in results if r['saved_by_UQFF'])
+        
+        # Enhancement factor
+        f_TRZ = self.params['f_TRZ']
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        total_enhancement = (1.0 / (1.0 - f_TRZ)) * (rho_UA / rho_SCm) * np.exp(U_m_kT_ratio)
+        
+        return {
+            'title': 'UQFF PBH Dark Matter Viability Analysis',
+            
+            # Critical masses
+            'M_critical_standard_kg': M_crit_std,
+            'M_critical_UQFF_kg': M_crit_uqff,
+            'critical_mass_reduction': M_crit_std / M_crit_uqff,
+            
+            # Enhancement
+            'total_enhancement_factor': total_enhancement,
+            'U_m_kT_ratio': U_m_kT_ratio,
+            
+            # Test results
+            'test_masses_results': results,
+            'n_saved_by_UQFF': n_saved,
+            
+            # Conclusion
+            'uqff_enables_pbh_dm': n_saved > 0,
+            'conclusion': (
+                f"UQFF lowers critical PBH mass from {M_crit_std:.2e} kg to {M_crit_uqff:.2e} kg. "
+                f"{n_saved} masses saved from evaporation. "
+                f"UQFF {'ENABLES' if n_saved > 0 else 'does not enable'} additional PBH dark matter."
+            ),
+        }
+    
+    def pbh_mass_range_analysis(self, M_start: float = 1e10, M_end: float = 1e20,
+                                 n_points: int = 50, U_m_kT_ratio: float = 1.0) -> dict:
+        """
+        Analyze PBH evaporation over mass range.
+        
+        Args:
+            M_start: Starting mass [kg] (default: 10¹⁰)
+            M_end: Ending mass [kg] (default: 10²⁰)
+            n_points: Number of mass points
+            U_m_kT_ratio: Fixed U_m/(k_BT_H) ratio
+        
+        Returns:
+            Dict with arrays for plotting τ vs M
+        """
+        year = self.params['year']
+        t_universe = self.params['t_universe']
+        
+        masses = np.logspace(np.log10(M_start), np.log10(M_end), n_points)
+        tau_std = np.zeros(n_points)
+        tau_uqff = np.zeros(n_points)
+        evaporated_std = np.zeros(n_points, dtype=bool)
+        evaporated_uqff = np.zeros(n_points, dtype=bool)
+        
+        # Enhancement factor (constant for fixed ratio)
+        f_TRZ = self.params['f_TRZ']
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        enhancement = (1.0 / (1.0 - f_TRZ)) * (rho_UA / rho_SCm) * np.exp(U_m_kT_ratio)
+        
+        for i, M in enumerate(masses):
+            tau_std[i] = self.compute_tau_standard(M)
+            tau_uqff[i] = tau_std[i] * enhancement
+            evaporated_std[i] = tau_std[i] < t_universe
+            evaporated_uqff[i] = tau_uqff[i] < t_universe
+        
+        return {
+            'masses_kg': masses,
+            'tau_standard_s': tau_std,
+            'tau_standard_yr': tau_std / year,
+            'tau_UQFF_s': tau_uqff,
+            'tau_UQFF_yr': tau_uqff / year,
+            'evaporated_standard': evaporated_std,
+            'evaporated_UQFF': evaporated_uqff,
+            'saved_by_UQFF': evaporated_std & ~evaporated_uqff,
+            'enhancement_factor': enhancement,
+            'universe_age_yr': t_universe / year,
+        }
+    
+    def pbh_evaporation_report(self, M: float = None, U_m_kT_ratio: float = 1.0) -> str:
+        """
+        Generate detailed PBH evaporation report.
+        
+        Args:
+            M: PBH mass [kg] (default: 10¹² kg critical mass)
+            U_m_kT_ratio: Fixed U_m/(k_BT_H) ratio
+        
+        Returns:
+            Formatted report string
+        """
+        if M is None:
+            M = 1e12  # Default: near critical mass
+        
+        year = self.params['year']
+        t_universe = self.params['t_universe']
+        t_universe_yr = t_universe / year
+        
+        survival = self.compute_pbh_survival_enhancement(M, U_m_kT_ratio)
+        M_crit_std = self.compute_pbh_critical_mass_standard()
+        M_crit_uqff = self.compute_pbh_critical_mass_uqff(U_m_kT_ratio)
+        
+        report = f"""
+════════════════════════════════════════════════════════════════════════════════════════════
+                    PRIMORDIAL BLACK HOLE (PBH) EVAPORATION ANALYSIS
+════════════════════════════════════════════════════════════════════════════════════════════
+
+PBH MASS: M = {M:.3e} kg
+UNIVERSE AGE: t_universe = {t_universe_yr:.2e} years
+
+═══════════════════════════════════════════════════════════════════════════════
+STANDARD MODEL (QFT + GR)
+═══════════════════════════════════════════════════════════════════════════════
+
+Evaporation formula: τ = 5120πG²M³/(ℏc⁴) ∝ M³
+
+Standard Lifetime:
+  τ_standard = {survival['tau_standard_yr']:.2e} years
+
+Comparison to Universe Age:
+  τ_standard / t_universe = {survival['ratio_to_universe_std']:.2e}
+  
+Status: {"⚠️  EVAPORATED (τ < t_universe)" if survival['evaporated_standard'] else "✓ SURVIVES (τ > t_universe)"}
+
+Critical Mass (τ = t_universe):
+  M_critical_standard = {M_crit_std:.2e} kg
+  PBHs with M < {M_crit_std:.2e} kg have evaporated by now.
+
+═══════════════════════════════════════════════════════════════════════════════
+UQFF MODEL (Aether + Time-Reversal + Strings)
+═══════════════════════════════════════════════════════════════════════════════
+
+UQFF formula: τ_UQFF = τ × 1/(1-f_TRZ) × (ρ_UA/ρ_SCm) × exp(U_m/(k_BT_H))
+
+Enhancement Factors:
+  • Time-reversal (1/(1-f_TRZ)): × {survival['factor_TRZ']:.3f}
+  • Aether density (ρ_UA/ρ_SCm): × {survival['factor_rho']:.1f}
+  • Magnetic strings (exp(U_m/k_BT_H)): × {survival['factor_exp']:.3f}
+  ─────────────────────────────────────
+  Total Enhancement: × {survival['total_enhancement']:.1f}
+
+UQFF Lifetime:
+  τ_UQFF = {survival['tau_standard_yr']:.2e} × {survival['total_enhancement']:.1f}
+  τ_UQFF = {survival['tau_UQFF_yr']:.2e} years
+
+Comparison to Universe Age:
+  τ_UQFF / t_universe = {survival['ratio_to_universe_UQFF']:.2e}
+
+Status: {"⚠️  EVAPORATED (τ_UQFF < t_universe)" if survival['evaporated_UQFF'] else "✓ SURVIVES (τ_UQFF > t_universe)"}
+
+Critical Mass (τ_UQFF = t_universe):
+  M_critical_UQFF = {M_crit_uqff:.2e} kg
+  In UQFF, PBHs down to M = {M_crit_uqff:.2e} kg survive!
+
+═══════════════════════════════════════════════════════════════════════════════
+DARK MATTER IMPLICATIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+{"🌟 SAVED BY UQFF: This PBH would evaporate in standard model but survives in UQFF!" if survival['saved_by_UQFF'] else ""}
+{"   → UQFF allows this PBH as a dark matter candidate." if survival['saved_by_UQFF'] else ""}
+
+Mass Range Enabled by UQFF:
+  Standard: Only M > {M_crit_std:.2e} kg survive
+  UQFF:     M > {M_crit_uqff:.2e} kg survive
+  
+  UQFF extends viable PBH dark matter range by factor of {M_crit_std/M_crit_uqff:.1f}×
+
+Test Predictions:
+  • Gamma-ray bursts from evaporating PBHs should be rarer than standard predicts
+  • q-scope/THz analogs can test UQFF suppression factors
+  • Gravitational wave signals from PBH mergers could indicate higher abundance
+
+════════════════════════════════════════════════════════════════════════════════════════════
+"""
+        return report
+    
+    # ═══════════════════════════════════════════════════════════════════════════
     # SELF-EXPANDING / SIMULATION
     # ═══════════════════════════════════════════════════════════════════════════
     
@@ -105539,8 +105920,27 @@ PHYSICAL INTERPRETATION:
             n_points = kwargs.get('n_points', 50)
             return self.modulate_over_mass(M_start, M_end, n_points, **kwargs)
         
+        elif mode == 'pbh_survival':
+            # PBH survival analysis for single mass
+            M = kwargs.get('M', 1e12)  # Default: critical mass
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            return self.compute_pbh_survival_enhancement(M, U_m_kT_ratio)
+        
+        elif mode == 'pbh_dark_matter':
+            # PBH dark matter viability analysis
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            return self.analyze_pbh_dark_matter_viability(U_m_kT_ratio)
+        
+        elif mode == 'pbh_mass_sweep':
+            # PBH evaporation over mass range
+            M_start = kwargs.get('M_start', 1e10)
+            M_end = kwargs.get('M_end', 1e20)
+            n_points = kwargs.get('n_points', 50)
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            return self.pbh_mass_range_analysis(M_start, M_end, n_points, U_m_kT_ratio)
+        
         else:
-            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, standard, simulate, validate_sgr_a, temperature_modulation, modulate_mass_range")
+            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, standard, simulate, validate_sgr_a, temperature_modulation, modulate_mass_range, pbh_survival, pbh_dark_matter, pbh_mass_sweep")
     
     # ═══════════════════════════════════════════════════════════════════════════
     # SURFACE GRAVITY AND ALTERNATIVE TEMPERATURE (Feb 25, 2026 Enhancement)
