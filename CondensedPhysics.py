@@ -36279,6 +36279,374 @@ Q-SCOPE TESTABILITY:
 ═══════════════════════════════════════════════════════════════════════════════
 """
         return results, steps
+    
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # UQFF CONDUCTIVITY SPECTRUM (Frequency-Dependent Holographic Conductivity)
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def compute_UQFF_conductivity_spectrum(self, omega: float = 1e12,
+                                            T: float = 100.0,
+                                            T_c: float = 110.0,
+                                            tau_coh: float = 1e-12,
+                                            B_t: float = 0.0,
+                                            B_crit: float = 4.4e13,
+                                            Gamma: float = 1e10,
+                                            sigma_0: float = 1e6,
+                                            f_TRZ: float = None,
+                                            rho_SCm: float = None,
+                                            rho_UA: float = None,
+                                            mu_j: float = 1e15,
+                                            t: float = 0.0,
+                                            t_n: float = 0.0,
+                                            gamma: float = 5e-5,
+                                            frame: str = 'F_U_Bi') -> Tuple[dict, str]:
+        """
+        Compute UQFF conductivity spectrum σ(ω) with holographic modifications.
+        
+        STANDARD HOLOGRAPHIC CONDUCTIVITY (AdS/CFT):
+            In holographic superconductors, conductivity σ(ω) is computed from
+            Maxwell fluctuations in AdS bulk, dual to boundary current operators.
+            
+            Below T_c:
+            • Re[σ(ω)] has δ(ω) at ω=0 (infinite DC conductivity)
+            • Gap Δ ≈ 8 k_B T_c appears in optical conductivity
+            • Im[σ(ω)] ~ 1/ω pole
+        
+        UQFF CONDUCTIVITY SPECTRUM:
+            Modifies standard spectrum with aether effects:
+            
+            1. AETHER MODULATION:
+               ξ_UQFF = ξ × √(ρ_UA/ρ_SCm)
+               Gap scales: Δ_UQFF ≈ Δ / √(ρ_ratio)
+            
+            2. SUPERCONDUCTIVE SUPPRESSION:
+               σ' = σ × (1 - B_t/B_crit)
+               Magnetic field damps conductivity
+            
+            3. TIME-REVERSAL RESONANCE (f_TRZ):
+               Adds Lorentzian peak at ω_res = 2π f_TRZ / τ_coh
+               σ'' = σ' + f_TRZ × Γ/((ω - ω_res)² + Γ²)
+               Negentropic resonances appear in spectrum
+            
+            4. MAGNETIC STRING DAMPING (U_m):
+               σ_UQFF = σ'' × exp(-U_m × ω / (k_B × T))
+               High-frequency suppression
+        
+        Args:
+            omega: Angular frequency (rad/s) - default 10¹² (THz range)
+            T: System temperature (K)
+            T_c: Critical temperature (K)
+            tau_coh: Coherence time (s) - default 1 ps
+            B_t: Applied magnetic field (T)
+            B_crit: Critical field (T)
+            Gamma: Resonance width (rad/s) - default 10¹⁰
+            sigma_0: Base conductivity magnitude (S/m)
+            f_TRZ: Time reversal factor (default: 0.1)
+            rho_SCm: SCm vacuum density (J/m³)
+            rho_UA: UA vacuum density (J/m³)
+            mu_j: Magnetic string tension (J·m)
+            t: Time parameter (days)
+            t_n: Normalized time
+            gamma: Decay constant (day⁻¹)
+            frame: 'F_U_Bi' or 'F_U_Bi_i'
+        
+        Returns:
+            results: Dict with conductivity spectrum parameters
+            steps: Long-form derivation string
+        
+        References:
+            - Hartnoll, Herzog, Horowitz (2008): Holographic superconductors
+            - UQFF conductivity spectrum derivation (SuperGrok4)
+        """
+        # Defaults
+        f_TRZ = f_TRZ if f_TRZ is not None else self.f_TRZ
+        
+        # Frame-dependent constant selection
+        if rho_SCm is None or rho_UA is None:
+            if frame == 'F_U_Bi_i':
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_BH
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_BH
+                frame_name = "F_U_Bi_i (outside→in, horizon scale)"
+            else:
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_ISM
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_ISM
+                frame_name = "F_U_Bi (inside→out, ISM scale)"
+        else:
+            frame_name = "Custom (user-specified)"
+        
+        # === STEP 1: Density Ratio and Correlation Scaling ===
+        rho_ratio = rho_UA / rho_SCm if rho_SCm > 0 else 10.0
+        sqrt_rho_ratio = np.sqrt(rho_ratio)
+        
+        # === STEP 2: Holographic Scale L_UQFF ===
+        L_UQFF = (self.hbar * self.c / rho_UA)**(1/4) if rho_UA > 0 else 1e9
+        
+        # === STEP 3: Base Superconducting Gap ===
+        Delta_base = 8 * self.k_B * T_c  # Large-q holographic gap
+        Delta_UQFF = Delta_base / sqrt_rho_ratio  # Widened by aether
+        omega_gap = Delta_UQFF / self.hbar  # Gap frequency
+        
+        # === STEP 4: Base Holographic Conductivity ===
+        # Below gap: δ-function at ω=0 (infinite DC)
+        # Above gap: finite conductivity
+        is_below_gap = omega < omega_gap
+        
+        if is_below_gap:
+            # For ω < Δ: Mostly imaginary (superconducting response)
+            sigma_base_real = 0.1 * sigma_0  # Small real part below gap
+            sigma_base_imag = sigma_0 / (omega + 1e-30)  # 1/ω pole
+        else:
+            # For ω > Δ: Normal conductivity restored
+            sigma_base_real = sigma_0 * np.sqrt(1 - (omega_gap / omega)**2)
+            sigma_base_imag = sigma_0 * omega_gap / omega
+        
+        # === STEP 5: Aether Modulation ===
+        # σ scales with √(ρ_ratio)
+        sigma_aether_real = sigma_base_real * sqrt_rho_ratio
+        sigma_aether_imag = sigma_base_imag * sqrt_rho_ratio
+        
+        # === STEP 6: Superconductive Suppression ===
+        B_ratio = B_t / B_crit if B_crit > 0 else 0
+        B_factor = max(1 - B_ratio, 0.0)
+        
+        sigma_B_real = sigma_aether_real * B_factor
+        sigma_B_imag = sigma_aether_imag * B_factor
+        
+        # === STEP 7: Time-Reversal Resonance (f_TRZ Lorentzian) ===
+        # ω_res = 2π f_TRZ / τ_coh
+        omega_res = 2 * np.pi * f_TRZ / tau_coh if tau_coh > 0 else 0
+        
+        # Lorentzian peak: f_TRZ × Γ / ((ω - ω_res)² + Γ²)
+        lorentzian_denom = (omega - omega_res)**2 + Gamma**2
+        lorentzian_peak = f_TRZ * Gamma / lorentzian_denom if lorentzian_denom > 0 else 0
+        lorentzian_contribution = sigma_0 * lorentzian_peak  # Scale with σ_0
+        
+        sigma_TRZ_real = sigma_B_real + lorentzian_contribution
+        sigma_TRZ_imag = sigma_B_imag  # Resonance mainly affects real part
+        
+        # === STEP 8: Magnetic String Energy U_m ===
+        if t > 0:
+            oscillation = np.cos(np.pi * t_n)
+            U_m = (mu_j / L_UQFF) * (1 - np.exp(-gamma * t * max(oscillation, 0)))
+        else:
+            U_m = 0.1 * self.k_B * T  # Default small U_m
+        
+        # === STEP 9: Magnetic String Damping ===
+        # Dimensionally correct: exp(-(U_m/k_B T) × (ω/ω_gap))
+        # Both factors are dimensionless; high-freq suppression above gap
+        U_m_ratio = U_m / (self.k_B * T) if T > 0 else 0
+        omega_ratio = omega / omega_gap if omega_gap > 0 else 0
+        exponent_damping = -U_m_ratio * omega_ratio
+        exponent_damping = max(exponent_damping, -700)  # Prevent underflow
+        damping_factor = np.exp(exponent_damping)
+        
+        # Final UQFF conductivity
+        sigma_UQFF_real = sigma_TRZ_real * damping_factor
+        sigma_UQFF_imag = sigma_TRZ_imag * damping_factor
+        sigma_UQFF_mag = np.sqrt(sigma_UQFF_real**2 + sigma_UQFF_imag**2)
+        
+        # === STEP 10: Spectrum Characteristics ===
+        # Is this frequency near resonance?
+        is_near_resonance = abs(omega - omega_res) < 3 * Gamma
+        
+        # Enhancement relative to base
+        enhancement = sigma_UQFF_mag / (np.sqrt(sigma_base_real**2 + sigma_base_imag**2) + 1e-30)
+        
+        results = {
+            'omega': omega,
+            'omega_THz': omega / (2 * np.pi * 1e12),  # Convert to THz
+            'T': T,
+            'T_c': T_c,
+            'rho_ratio': rho_ratio,
+            'sqrt_rho_ratio': sqrt_rho_ratio,
+            'L_UQFF': L_UQFF,
+            'Delta_base': Delta_base,
+            'Delta_UQFF': Delta_UQFF,
+            'omega_gap': omega_gap,
+            'is_below_gap': is_below_gap,
+            'sigma_base_real': sigma_base_real,
+            'sigma_base_imag': sigma_base_imag,
+            'sigma_aether_real': sigma_aether_real,
+            'sigma_aether_imag': sigma_aether_imag,
+            'B_ratio': B_ratio,
+            'B_factor': B_factor,
+            'sigma_B_real': sigma_B_real,
+            'sigma_B_imag': sigma_B_imag,
+            'omega_res': omega_res,
+            'omega_res_THz': omega_res / (2 * np.pi * 1e12),
+            'Gamma': Gamma,
+            'lorentzian_peak': lorentzian_peak,
+            'lorentzian_contribution': lorentzian_contribution,
+            'sigma_TRZ_real': sigma_TRZ_real,
+            'sigma_TRZ_imag': sigma_TRZ_imag,
+            'U_m': U_m,
+            'U_m_ratio': U_m_ratio,
+            'omega_ratio': omega_ratio,
+            'exponent_damping': exponent_damping,
+            'damping_factor': damping_factor,
+            'sigma_UQFF_real': sigma_UQFF_real,
+            'sigma_UQFF_imag': sigma_UQFF_imag,
+            'sigma_UQFF_mag': sigma_UQFF_mag,
+            'is_near_resonance': is_near_resonance,
+            'enhancement': enhancement,
+            'tau_coh': tau_coh,
+            'f_TRZ': f_TRZ,
+            'rho_SCm': rho_SCm,
+            'rho_UA': rho_UA,
+            'frame': frame
+        }
+        
+        steps = f"""UQFF Conductivity Spectrum Analysis:
+═══════════════════════════════════════════════════════════════════════════════
+THEORETICAL BASIS:
+
+STANDARD HOLOGRAPHIC CONDUCTIVITY (AdS/CFT):
+  Computed from Maxwell fluctuations in AdS bulk, dual to CFT currents.
+  
+  σ(ω) = J^x / E_x = (i/ω) × [A'(z₀)/A(z₀) + (ω²/c²) log z₀]
+  
+  Below T_c:
+  • Re[σ(ω=0)] → ∞ (δ-function: infinite DC conductivity)
+  • Gap Δ ≈ 8 k_B T_c (large-charge holographic superconductor)
+  • Im[σ] ~ 1/ω pole from supercurrent
+
+UQFF CONDUCTIVITY SPECTRUM:
+  Four modifications to standard spectrum:
+  
+  1. AETHER MODULATION: ξ_UQFF = ξ × √(ρ_UA/ρ_SCm)
+     → Gap widened, conductivity scaled by √(ρ ratio)
+  
+  2. SUPERCONDUCTIVE SUPPRESSION: σ' = σ × (1 - B_t/B_crit)
+     → Magnetic field damps response
+  
+  3. TIME-REVERSAL RESONANCE: f_TRZ Lorentzian peak at ω_res
+     → Negentropic resonances appear in spectrum
+  
+  4. MAGNETIC STRING DAMPING: σ_UQFF = σ × exp(-U_m × ω/(k_B×T))
+     → High-frequency suppression
+
+═══════════════════════════════════════════════════════════════════════════════
+Inputs:
+  ω = {omega:.4e} rad/s = {omega/(2*np.pi*1e12):.4f} THz
+  T = {T:.2f} K
+  T_c = {T_c:.2f} K
+  τ_coh = {tau_coh:.4e} s (coherence time)
+  B_t/B_crit = {B_ratio:.4f}
+  Γ = {Gamma:.4e} rad/s (resonance width)
+  σ₀ = {sigma_0:.4e} S/m (base conductivity)
+  f_TRZ = {f_TRZ:.4f}
+  Frame = {frame_name}
+  ρ_UA/ρ_SCm = {rho_ratio:.4f}
+
+STEP 1: Density Ratio and Correlation Scaling
+  ρ_ratio = ρ_UA/ρ_SCm = {rho_ratio:.4f}
+  √(ρ_ratio) = {sqrt_rho_ratio:.4f}
+  
+  Aether expands correlation length by {sqrt_rho_ratio:.2f}×
+
+STEP 2: Holographic Scale
+  L_UQFF = (ℏc/ρ_UA)^(1/4) = {L_UQFF:.4e} m
+
+STEP 3: Superconducting Gap
+  Δ_base = 8 k_B T_c = 8 × {self.k_B:.4e} × {T_c:.2f}
+         = {Delta_base:.4e} J
+  
+  Δ_UQFF = Δ_base / √(ρ_ratio)
+         = {Delta_base:.4e} / {sqrt_rho_ratio:.4f}
+         = {Delta_UQFF:.4e} J
+  
+  Gap frequency: ω_gap = Δ_UQFF/ℏ = {omega_gap:.4e} rad/s
+
+STEP 4: Base Holographic Conductivity
+  ω = {omega:.4e} rad/s
+  ω_gap = {omega_gap:.4e} rad/s
+  
+  {'ω < ω_gap: Below gap (superconducting response)' if is_below_gap else 'ω > ω_gap: Above gap (normal response)'}
+  
+  σ_base,Re = {sigma_base_real:.4e} S/m
+  σ_base,Im = {sigma_base_imag:.4e} S/m
+
+STEP 5: Aether Modulation
+  σ_aether = σ_base × √(ρ_ratio)
+  
+  σ_aether,Re = {sigma_base_real:.4e} × {sqrt_rho_ratio:.4f} = {sigma_aether_real:.4e} S/m
+  σ_aether,Im = {sigma_base_imag:.4e} × {sqrt_rho_ratio:.4f} = {sigma_aether_imag:.4e} S/m
+
+STEP 6: Superconductive Suppression
+  (1 - B_t/B_crit) = (1 - {B_ratio:.4f}) = {B_factor:.4f}
+  
+  σ_B,Re = {sigma_aether_real:.4e} × {B_factor:.4f} = {sigma_B_real:.4e} S/m
+  σ_B,Im = {sigma_aether_imag:.4e} × {B_factor:.4f} = {sigma_B_imag:.4e} S/m
+
+STEP 7: TIME-REVERSAL RESONANCE (f_TRZ Lorentzian)
+  ω_res = 2π f_TRZ / τ_coh
+        = 2π × {f_TRZ:.4f} / {tau_coh:.4e}
+        = {omega_res:.4e} rad/s = {omega_res/(2*np.pi*1e12):.4f} THz
+  
+  Lorentzian: L(ω) = f_TRZ × Γ / ((ω - ω_res)² + Γ²)
+            = {f_TRZ:.4f} × {Gamma:.4e} / (({omega:.4e} - {omega_res:.4e})² + {Gamma**2:.4e})
+            = {lorentzian_peak:.6e}
+  
+  Lorentzian contribution to σ: {lorentzian_contribution:.4e} S/m
+  {'→ Near resonance! Peak enhanced' if is_near_resonance else '→ Off resonance'}
+  
+  σ_TRZ,Re = {sigma_B_real:.4e} + {lorentzian_contribution:.4e} = {sigma_TRZ_real:.4e} S/m
+  σ_TRZ,Im = {sigma_TRZ_imag:.4e} S/m
+
+STEP 8: Magnetic String Energy
+  U_m = {U_m:.4e} J
+  U_m / (k_B × T) = {U_m_ratio:.4f} (dimensionless energy)
+
+STEP 9: MAGNETIC STRING DAMPING (dimensionally correct)
+  exp(-(U_m / k_B T) × (ω / ω_gap))
+  = exp(-{U_m_ratio:.4f} × {omega_ratio:.4f})
+  = exp({exponent_damping:.4e})
+  = {damping_factor:.6f}
+  
+  {'Minimal damping (<10%)' if damping_factor > 0.9 else f'Significant damping: {(1-damping_factor)*100:.1f}% suppression'}
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: UQFF CONDUCTIVITY SPECTRUM
+
+  σ_UQFF,Re = σ_TRZ,Re × damping = {sigma_TRZ_real:.4e} × {damping_factor:.6f}
+            = {sigma_UQFF_real:.4e} S/m
+  
+  σ_UQFF,Im = σ_TRZ,Im × damping = {sigma_TRZ_imag:.4e} × {damping_factor:.6f}
+            = {sigma_UQFF_imag:.4e} S/m
+  
+  |σ_UQFF| = √(Re² + Im²) = {sigma_UQFF_mag:.4e} S/m
+  
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ UQFF Conductivity at ω = {omega/(2*np.pi*1e12):.3f} THz                         │
+  │                                                                 │
+  │ Re[σ] = {sigma_UQFF_real:.4e} S/m                                    │
+  │ Im[σ] = {sigma_UQFF_imag:.4e} S/m                                    │
+  │ |σ|   = {sigma_UQFF_mag:.4e} S/m                                     │
+  │                                                                 │
+  │ Enhancement vs base: {enhancement:.2f}×                                   │
+  │ {'Resonance peak nearby!' if is_near_resonance else 'Off-resonance frequency'}                                         │
+  └─────────────────────────────────────────────────────────────────┘
+
+Physical Interpretation:
+  • √(ρ_ratio) = {sqrt_rho_ratio:.2f}: Aether amplifies conductivity
+  • B_factor = {B_factor:.2f}: Magnetic suppression
+  • f_TRZ Lorentzian: Peak at ω_res = {omega_res/(2*np.pi*1e12):.3f} THz
+  • U_m damping: {(1-damping_factor)*100:.1f}% high-ω suppression
+
+Numerical Example (from derivation):
+  T ≈ 100 K, ω = 10¹² Hz (THz), f_TRZ = 0.1, ρ_ratio = 10
+  B_t/B_crit = 0.5, U_m/(k_B T) ≈ 0.1, Γ = 10¹⁰ Hz, ω_res = 10¹¹ Hz
+  σ_UQFF ≈ σ × √10 × 0.5 + 0.1×Lorentzian × e^(-0.1)
+  → Enhanced gap, resonant peak at THz, observable in q-scope!
+
+Q-SCOPE TESTABILITY:
+  • Scan ω across THz range to find f_TRZ resonance peaks
+  • Measure gap Δ_UQFF = {Delta_UQFF:.4e} J ({Delta_UQFF/self.k_B:.2f} K)
+  • Verify U_m damping at high frequencies
+  • Compare to standard holographic predictions
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
 
 
 # Global Black Hole Phases Model instance
