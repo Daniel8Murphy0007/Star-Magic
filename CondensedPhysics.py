@@ -105149,8 +105149,335 @@ class UQFFBlackHoleStabilityCalculator(SelfExpandingMixin):
             n_points = kwargs.get('n_points', 50)
             return self.simulate_over_mass(M_start, M_end, n_points)
         
+        elif mode == 'validate_sgr_a':
+            # Use user-specified U_m_ratio or default assumption
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            return self.validate_sgr_a_star(U_m_kT_ratio=U_m_kT_ratio)
+        
         else:
-            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, standard, simulate")
+            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, standard, simulate, validate_sgr_a")
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # SURFACE GRAVITY AND ALTERNATIVE TEMPERATURE (Feb 25, 2026 Enhancement)
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_surface_gravity(self, M: float) -> float:
+        """
+        Compute black hole surface gravity via κ = c⁴/(4GM).
+        
+        Alternative derivation: κ = c⁴/(4GM) for Schwarzschild BH.
+        This is the gravitational acceleration at the event horizon
+        as measured from infinity (redshifted).
+        
+        Args:
+            M: Black hole mass [kg]
+        
+        Returns:
+            κ [m/s²]
+        """
+        c = self.params['c']
+        G = self.params['G']
+        return c**4 / (4 * G * M)
+    
+    def compute_T_H_via_kappa(self, kappa: float) -> float:
+        """
+        Compute Hawking temperature from surface gravity.
+        
+        T_H = ℏκ / (2πk_B c)
+        
+        This is mathematically equivalent to T_H = ℏc³/(8πGMk_B)
+        but derived through surface gravity formalism.
+        
+        Args:
+            kappa: Surface gravity [m/s²]
+        
+        Returns:
+            T_H [K]
+        """
+        hbar = self.params['hbar']
+        k_B = self.params['k_B']
+        c = self.params['c']
+        return (hbar * kappa) / (2 * np.pi * k_B * c)
+    
+    def validate_sgr_a_star(self, U_m_kT_ratio: float = 1.0) -> dict:
+        """
+        Validate UQFF stability calculations for Sgr A* with step-by-step
+        numerical derivation matching the canonical example.
+        
+        Uses assumed U_m/(k_B T_H) ratio instead of raw U_m to avoid
+        overflow and match physical expectations.
+        
+        Numerical Values (canonical):
+            M = 4.3 × 10⁶ M☉ ≈ 8.552 × 10³⁶ kg
+            κ ≈ 3.55 × 10⁶ m/s²
+            T_H ≈ 1.44 × 10⁻¹⁴ K
+            τ_standard ≈ 5.23 × 10⁹⁴ s ≈ 1.66 × 10⁸⁷ years
+            
+            UQFF Enhancement (with U_m/(k_BT_H) ≈ 1):
+            - 1/(1-f_TRZ) = 1.111
+            - ρ_UA/ρ_SCm = 10
+            - exp(1) ≈ 2.718
+            - Total factor ≈ 30.2×
+            
+            τ_UQFF ≈ 1.58 × 10⁹⁶ s ≈ 5.01 × 10⁸⁸ years
+        
+        Args:
+            U_m_kT_ratio: Assumed value of U_m/(k_B T_H), default 1.0
+        
+        Returns:
+            Dict with complete numerical derivation
+        """
+        # Constants
+        c = self.params['c']
+        G = self.params['G']
+        hbar = self.params['hbar']
+        k_B = self.params['k_B']
+        M_sun = self.params['M_sun']
+        f_TRZ = self.params['f_TRZ']
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        year = self.params['year']
+        t_universe = 1.38e10 * year  # Age of universe in seconds
+        
+        # Sgr A* mass
+        M_solar_units = 4.3e6
+        M = M_solar_units * M_sun  # ≈ 8.552 × 10³⁶ kg
+        
+        # Step 0: Intermediate values
+        c4 = c**4
+        G2 = G**2
+        M3 = M**3
+        
+        # Step 1: Surface gravity
+        four_GM = 4 * G * M
+        kappa = c4 / four_GM
+        
+        # Step 2: Hawking temperature via surface gravity
+        hbar_kappa = hbar * kappa
+        two_pi_kB_c = 2 * np.pi * k_B * c
+        T_H = hbar_kappa / two_pi_kB_c
+        
+        # Alternative T_H (should match)
+        T_H_alt = self.compute_T_H(M)
+        
+        # Step 3: Standard lifetime
+        numerator_tau = 5120 * np.pi * G2 * M3
+        hbar_c4 = hbar * c4
+        tau_standard = numerator_tau / hbar_c4
+        tau_years = tau_standard / year
+        
+        # Step 4: UQFF modifications with assumed ratio
+        factor_TRZ = 1.0 / (1.0 - f_TRZ)
+        factor_rho = rho_UA / rho_SCm
+        factor_exp = np.exp(U_m_kT_ratio)  # Using assumed ratio
+        total_factor = factor_TRZ * factor_rho * factor_exp
+        
+        tau_UQFF = tau_standard * total_factor
+        tau_UQFF_years = tau_UQFF / year
+        
+        # Comparison to universe age
+        ratio_to_universe = tau_standard / t_universe
+        ratio_UQFF_to_universe = tau_UQFF / t_universe
+        
+        return {
+            'mode': 'validate_sgr_a',
+            'description': 'Numerical Derivation of UQFF Stability for Sgr A*',
+            
+            # Input parameters
+            'M_solar_units': M_solar_units,
+            'M_kg': M,
+            
+            # Step 1: Surface gravity
+            'c4': c4,
+            'four_GM': four_GM,
+            'kappa': kappa,
+            'kappa_expected': 3.55e6,
+            
+            # Step 2: Hawking temperature
+            'hbar_kappa': hbar_kappa,
+            'two_pi_kB_c': two_pi_kB_c,
+            'T_H': T_H,
+            'T_H_alt': T_H_alt,
+            'T_H_expected': 1.44e-14,
+            
+            # Step 3: Standard lifetime
+            'G2': G2,
+            'M3': M3,
+            'G2_M3': G2 * M3,
+            'numerator_tau': numerator_tau,
+            'hbar_c4': hbar_c4,
+            'tau_standard_s': tau_standard,
+            'tau_standard_years': tau_years,
+            'tau_expected_s': 5.23e94,
+            'tau_expected_years': 1.66e87,
+            
+            # Step 4: UQFF modifications
+            'U_m_kT_ratio_assumed': U_m_kT_ratio,
+            'factor_TRZ': factor_TRZ,
+            'factor_rho': factor_rho,
+            'factor_exp': factor_exp,
+            'total_enhancement_factor': total_factor,
+            
+            'tau_UQFF_s': tau_UQFF,
+            'tau_UQFF_years': tau_UQFF_years,
+            'tau_UQFF_expected_s': 1.58e96,
+            'tau_UQFF_expected_years': 5.01e88,
+            
+            # Comparisons
+            'universe_age_years': 1.38e10,
+            'ratio_standard_to_universe': ratio_to_universe,
+            'ratio_UQFF_to_universe': ratio_UQFF_to_universe,
+            'is_effectively_eternal': tau_UQFF > 1e80 * year,
+            
+            # Physics interpretation
+            'interpretation': [
+                f"Standard: τ ≈ {tau_years:.2e} years >> universe age",
+                f"UQFF: Enhances by ~{total_factor:.1f}× via aether/reversal/strings",
+                "Result: Sgr A* is effectively eternal, 'stable aether-structure'",
+                "Testable in quantum-simulator analogs (q-scope)",
+            ],
+        }
+    
+    def numerical_derivation_report(self, M: float = None, U_m_kT_ratio: float = None) -> str:
+        """
+        Generate detailed numerical derivation report like the canonical example.
+        
+        Args:
+            M: Black hole mass [kg] (default: Sgr A*)
+            U_m_kT_ratio: Assumed U_m/(k_BT_H) ratio. If None, uses raw U_m.
+        
+        Returns:
+            Formatted report string
+        """
+        if M is None:
+            M = 4.3e6 * self.params['M_sun']
+        
+        c = self.params['c']
+        G = self.params['G']
+        hbar = self.params['hbar']
+        k_B = self.params['k_B']
+        f_TRZ = self.params['f_TRZ']
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        U_m = self.params['U_m']
+        year = self.params['year']
+        M_sun = self.params['M_sun']
+        
+        # Computations
+        c4 = c**4
+        kappa = c4 / (4 * G * M)
+        T_H = (hbar * kappa) / (2 * np.pi * k_B * c)
+        tau_std = (5120 * np.pi * G**2 * M**3) / (hbar * c4)
+        
+        # UQFF factors
+        f1 = 1.0 / (1.0 - f_TRZ)
+        f2 = rho_UA / rho_SCm
+        
+        if U_m_kT_ratio is not None:
+            exponent = U_m_kT_ratio
+            exp_val = np.exp(exponent)
+            using_assumed = True
+        else:
+            exponent = U_m / (k_B * T_H)
+            if exponent > 700:
+                exp_val = np.inf
+            else:
+                exp_val = np.exp(exponent)
+            using_assumed = False
+        
+        total_factor = f1 * f2 * exp_val if np.isfinite(exp_val) else np.inf
+        tau_UQFF = tau_std * total_factor if np.isfinite(total_factor) else np.inf
+        
+        report = f"""
+════════════════════════════════════════════════════════════════════════════════════════════
+             NUMERICAL DERIVATION OF UQFF STABILITY
+════════════════════════════════════════════════════════════════════════════════════════════
+
+OBJECT: {"Sgr A*" if abs(M - 4.3e6*M_sun) < 1e35 else "Custom Black Hole"}
+MASS: M = {M:.3e} kg ({M/M_sun:.2e} M☉)
+
+═══════════════════════════════════════════════════════════════════════════════
+STEP 1: STANDARD HAWKING TEMPERATURE T_H
+═══════════════════════════════════════════════════════════════════════════════
+
+Surface gravity: κ = c⁴ / (4GM)
+
+Numerically:
+  c = {c:.3e} m/s
+  c⁴ = {c4:.3e}
+  G = {G:.5e}
+  4GM = 4 × {G:.5e} × {M:.3e} = {4*G*M:.3e}
+  
+  κ = {c4:.3e} / {4*G*M:.3e}
+  κ ≈ {kappa:.2e} m/s²
+
+Temperature: T_H = (ℏκ) / (2πk_B c)
+
+  ℏ = {hbar:.7e} J·s
+  ℏκ = {hbar:.4e} × {kappa:.2e} = {hbar*kappa:.2e}
+  2πk_B c = 2 × {np.pi:.4f} × {k_B:.4e} × {c:.3e} = {2*np.pi*k_B*c:.2e}
+  
+  T_H = {hbar*kappa:.2e} / {2*np.pi*k_B*c:.2e}
+  T_H ≈ {T_H:.2e} K
+
+═══════════════════════════════════════════════════════════════════════════════
+STEP 2: STANDARD LIFETIME τ
+═══════════════════════════════════════════════════════════════════════════════
+
+τ = 5120π G² M³ / (ℏc⁴)
+
+  G² = ({G:.5e})² = {G**2:.3e}
+  M³ = ({M:.3e})³ = {M**3:.2e}
+  G²M³ = {G**2:.3e} × {M**3:.2e} = {G**2 * M**3:.2e}
+  5120π = 5120 × {np.pi:.4f} = {5120*np.pi:.2e}
+  
+  Numerator = 5120π × G²M³ = {5120*np.pi:.2e} × {G**2*M**3:.2e} = {5120*np.pi*G**2*M**3:.2e}
+  ℏc⁴ = {hbar:.4e} × {c4:.3e} = {hbar*c4:.2e}
+  
+  τ = {5120*np.pi*G**2*M**3:.2e} / {hbar*c4:.2e}
+  τ ≈ {tau_std:.2e} s
+  τ ≈ {tau_std/year:.2e} years  (>> universe age ~1.38×10¹⁰ years)
+
+═══════════════════════════════════════════════════════════════════════════════
+STEP 3: UQFF MODIFICATIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+τ_UQFF = τ / (1 - f_TRZ) × (ρ_UA / ρ_SCm) × exp(U_m / (k_B T_H))
+
+Time-Reversal Factor:
+  f_TRZ = {f_TRZ:.2f}
+  1/(1 - f_TRZ) = 1/(1 - {f_TRZ:.2f}) = 1/{1-f_TRZ:.2f} = {f1:.3f}
+
+Aether Density Ratio:
+  ρ_UA/ρ_SCm = {rho_UA:.2e} / {rho_SCm:.2e} = {f2:.1f}
+
+Magnetic String Barrier:
+  {"USING ASSUMED RATIO: U_m/(k_B T_H) = " + f"{U_m_kT_ratio:.4f}" if using_assumed else f"U_m/(k_B T_H) = {U_m:.3e} / ({k_B:.3e} × {T_H:.2e}) = {exponent:.2e}"}
+  exp({exponent:.4f}) = {"∞ (overflow)" if np.isinf(exp_val) else f"{exp_val:.3f}"}
+
+Total Enhancement Factor:
+  {f1:.3f} × {f2:.1f} × {"∞" if np.isinf(exp_val) else f"{exp_val:.3f}"} = {"∞" if np.isinf(total_factor) else f"{total_factor:.1f}"}
+
+═══════════════════════════════════════════════════════════════════════════════
+FINAL RESULT
+═══════════════════════════════════════════════════════════════════════════════
+
+  τ_UQFF = {tau_std:.2e} × {"∞" if np.isinf(total_factor) else f"{total_factor:.1f}"}
+  τ_UQFF ≈ {"∞ (INFINITELY STABLE)" if np.isinf(tau_UQFF) else f"{tau_UQFF:.2e} s"}
+  τ_UQFF ≈ {"∞" if np.isinf(tau_UQFF) else f"{tau_UQFF/year:.2e}"} years
+
+═══════════════════════════════════════════════════════════════════════════════
+IMPLICATIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+• Standard: Large BHs like Sgr A* are practically stable (τ >> 10¹⁰ yr)
+• UQFF: Enhances stability by {"∞" if np.isinf(total_factor) else f"~{total_factor:.0f}"}× via aether/reversal/strings
+• Result: {"INFINITE stability → stable aether-superstructure" if np.isinf(tau_UQFF) else "Enhanced stability, effectively eternal"}
+• Testable in quantum-simulator analogs (q-scope)
+
+════════════════════════════════════════════════════════════════════════════════════════════
+"""
+        return report
     
     def long_form_equation(self, M: float = None) -> str:
         """
