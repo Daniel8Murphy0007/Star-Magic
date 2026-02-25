@@ -242,6 +242,35 @@ public:
      */
     double compute_full_vortex_velocity_UQFF(double r, const std::vector<std::pair<double, double>>& vortex_positions);
     
+    // ═══════════════════════════════════════════════════════════════════════════
+    // VORTEX QUANTIZATION (From wavefunction single-valuedness)
+    // ═══════════════════════════════════════════════════════════════════════════
+    
+    /**
+     * @brief Compute effective vortex quantum number with f_TRZ modulation
+     * @return n_eff = n × (1 - f_TRZ)
+     * 
+     * Damps multi-quanta vortices negentropically.
+     */
+    double compute_n_effective();
+    
+    /**
+     * @brief Compute full UQFF circulation quantum (Step 10 formula)
+     * @return κ_UQFF = (h/m_eff) × n × (1-f_TRZ) × (1-B/B_crit) [m²/s]
+     * 
+     * Includes all modulations: quantization, TRZ damping, SCm pinning.
+     * Cosmic scale: ~10^{34} m²/s for m_eff ~ 10^{-68} kg.
+     */
+    double compute_kappa_UQFF_full();
+    
+    /**
+     * @brief Compute UQFF vortex core size
+     * @return ξ_UQFF = ξ × √(ρ_UA/ρ_SCm) [m]
+     * 
+     * Aether density ratio enlarges cores by ~3.16×.
+     */
+    double compute_xi_UQFF();
+    
     /**
      * @brief Compute full UQFF quantum coherence
      * @param r Radial distance from center [m]

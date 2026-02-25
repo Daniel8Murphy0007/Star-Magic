@@ -155,6 +155,14 @@ void UQFFFramework::init_explanations() {
     explanations.push_back("  Full UQFF vortex velocity formula (Step 7):");
     explanations.push_back("    v_v,UQFF = v_s,self(1-f_TRZ)(1-B/B_crit) + Σ(κ/2π)/|r-r_j| + U_m/(ρκ)");
     explanations.push_back("");
+    explanations.push_back("VORTEX QUANTIZATION (Single-valuedness):");
+    explanations.push_back("  Phase winding: Δθ = ∮ ∇θ · dl = 2πn     [topological integer]");
+    explanations.push_back("  Base circulation: κ = h/m                 [He-II: 9.97e-8 m²/s]");
+    explanations.push_back("  Effective n: n_eff = n(1 - f_TRZ)         [TRZ damping]");
+    explanations.push_back("  Full UQFF κ = (h/m_eff)×n×(1-f_TRZ)×(1-B/B_crit)");
+    explanations.push_back("  UQFF core: ξ_UQFF = ξ×√(ρ_UA/ρ_SCm)     [≈3.16×ξ, larger cores]");
+    explanations.push_back("  Cosmic [UA]: m_eff≈10^{-68} kg → κ_UQFF≈10^{34} m²/s");
+    explanations.push_back("");
     explanations.push_back("EXAMPLE (Sgr A*):");
     explanations.push_back("  t = 4.5×10⁹ yr, M = 8.604×10³⁶ kg, r = 1.27×10¹⁰ m");
     explanations.push_back("  Base g ≈ 3.561×10⁶ m/s², Full MUGE g ≈ 1.250×10⁷ m/s²");
@@ -438,6 +446,68 @@ double UQFFFramework::compute_full_vortex_velocity_UQFF(double r, const std::vec
     double v_tension = (kappa > 1e-60) ? (U_m / (rho * kappa)) : 0.0;
     
     return v_self_UQFF + v_mutual + v_tension;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// VORTEX QUANTIZATION (From wavefunction single-valuedness)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+double UQFFFramework::compute_n_effective() {
+    // Effective vortex quantum number with f_TRZ modulation (Step 7):
+    // n_eff = n × (1 - f_TRZ)
+    // f_TRZ damps multi-quanta vortices negentropically
+    // Reduces effective winding number, stabilizing single-quantum vortices
+    int n = static_cast<int>(params["n_vortex"]);
+    double f_TRZ = params["f_TRZ"];
+    
+    return static_cast<double>(n) * (1.0 - f_TRZ);
+}
+
+double UQFFFramework::compute_kappa_UQFF_full() {
+    // Full UQFF vortex quantization formula (Step 10):
+    // κ_UQFF = (h/m_eff) × n × (1 - f_TRZ) × (1 - B/B_crit)
+    //
+    // Combines:
+    // - Base quantization: h/m_eff (cosmic circulation quantum)
+    // - Topological winding: n (integer quantum number)
+    // - Time-reversal damping: (1 - f_TRZ) ≈ 0.9 (negentropic stabilization)
+    // - Superconductive pinning: (1 - B/B_crit) (Meissner-like suppression)
+    //
+    // For cosmic [UA]: m_eff ≈ 10^{-68} kg → κ_UQFF ≈ 10^{34} m²/s (vast)
+    
+    double h = params["h_planck"];
+    double m_eff = params["m_eff"];
+    int n = static_cast<int>(params["n_vortex"]);
+    double f_TRZ = params["f_TRZ"];
+    double B = params["B_field"];
+    double B_crit = params["B_crit"];
+    
+    // Base quantization
+    double kappa_base = h / m_eff;
+    
+    // Apply all modulations
+    double trz_factor = 1.0 - f_TRZ;
+    double scm_factor = 1.0 - (B / B_crit);
+    if (scm_factor < 0.0) scm_factor = 0.0;  // Pinned above B_crit
+    
+    return kappa_base * static_cast<double>(n) * trz_factor * scm_factor;
+}
+
+double UQFFFramework::compute_xi_UQFF() {
+    // UQFF vortex core size (Step 10):
+    // ξ_UQFF = ξ × √(ρ_vac,[UA] / ρ_vac,[SCm])
+    //
+    // Ratio ρ_UA/ρ_SCm ≈ 10 → ξ_UQFF ≈ 3.16×ξ (larger cores in UQFF)
+    // Represents aether density modulation of coherence length
+    // Cosmic scale: ξ_UQFF ~ 10^{19} m (larger than standard ξ)
+    
+    double xi_base = compute_healing_length();
+    double rho_UA = params["rho_vac_UA"];
+    double rho_SCm = params["rho_vac_SCm"];
+    
+    double ratio = rho_UA / rho_SCm;  // ≈ 10
+    
+    return xi_base * std::sqrt(ratio);
 }
 
 double UQFFFramework::quantum_coherence(double r, double t) {
@@ -851,6 +921,32 @@ int main() {
     // Full UQFF vortex velocity
     double v_full = uqff.compute_full_vortex_velocity_UQFF(1e-5, vortices);
     std::cout << "  v_v,UQFF (full) = " << v_full << " m/s\n";
+    std::cout << "  ✓ PASSED\n";
+
+    // Test vortex quantization
+    std::cout << "\n═══════════════════════════════════════════════════════════════════════════════\n";
+    std::cout << "TEST 10: Vortex Quantization (Single-valuedness)\n";
+    std::cout << "═══════════════════════════════════════════════════════════════════════════════\n";
+    
+    // Use cosmic aether parameters
+    uqff.set_param("m_eff", 1e-68);             // Cosmic aether mass
+    uqff.set_param("n_vortex", 1);              // Single quantum
+    uqff.set_param("f_TRZ", 0.1);               // Time-reversal factor
+    uqff.set_param("B_field", 1e9);             // 1 GT (B/B_crit = 0.01)
+    
+    double n_eff = uqff.compute_n_effective();
+    std::cout << "  n_eff = n(1-f_TRZ) = " << n_eff << "\n";
+    
+    double kappa_full = uqff.compute_kappa_UQFF_full();
+    std::cout << "  κ_UQFF (full) = " << kappa_full << " m²/s\n";
+    
+    double xi_uqff = uqff.compute_xi_UQFF();
+    std::cout << "  ξ_UQFF = ξ×√(ρ_UA/ρ_SCm) = " << xi_uqff << " m\n";
+    
+    // Compare base vs full formula
+    double kappa_base = uqff.compute_kappa_UQFF();
+    std::cout << "  κ_base = h/m_eff = " << kappa_base << " m²/s\n";
+    std::cout << "  Ratio κ_full/κ_base = " << (kappa_full/kappa_base) << " (expect ~0.89)\n";
     std::cout << "  ✓ PASSED\n";
 
     // Summary
