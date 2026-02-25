@@ -37009,6 +37009,304 @@ Q-SCOPE TESTABILITY:
 ═══════════════════════════════════════════════════════════════════════════════
 """
         return results, steps
+    
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # UQFF ENTANGLEMENT ENTROPY (Aether-Enhanced von Neumann Entropy)
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def compute_UQFF_entanglement_entropy(self, lambda_base: list = None,
+                                           T: float = 300.0,
+                                           f_TRZ: float = None,
+                                           rho_SCm: float = None,
+                                           rho_UA: float = None,
+                                           mu_j: float = 1e15,
+                                           r: float = 1e9,
+                                           t: float = 0.0,
+                                           t_n: float = 0.0,
+                                           gamma: float = 5e-5,
+                                           frame: str = 'F_U_Bi') -> Tuple[dict, str]:
+        """
+        Compute UQFF-corrected entanglement entropy with aether enhancement.
+        
+        STANDARD ENTANGLEMENT ENTROPY:
+            For bipartite system A∪B in pure state |ψ⟩:
+            ρ_A = Tr_B(|ψ⟩⟨ψ|)
+            
+            S = -Tr(ρ_A log ρ_A) = -Σ λ_i log λ_i
+            
+            • Bell pair: S = ln(2) ≈ 0.693 nats
+            • Maximum: S = ln(N) for N-dimensional system
+            • AdS/CFT: S ~ Area/(4Gℏ) (Ryu-Takayanagi)
+        
+        UQFF ENTANGLEMENT ENTROPY:
+            Three corrections to standard entropy:
+            
+            1. AETHER ENHANCEMENT:
+               d_eff,UQFF = (1/Σλ²) × (ρ_UA/ρ_SCm)
+               Effective dimension boosted by aether density ratio
+            
+            2. TIME-REVERSAL NEGENTROPY:
+               S' = S × (1 - f_TRZ)
+               f_TRZ reduces entropy (negentropic ordering)
+            
+            3. MAGNETIC STRING BOUND:
+               S'' = S' × (1 - exp(-k_B T/U_m))
+               U_m sets thermal activation threshold
+            
+            Full formula:
+            S_UQFF = S × (1 - f_TRZ × log(d_eff × ρ_ratio)/S) × (1 - exp(-k_B T/U_m))
+        
+        Args:
+            lambda_base: Schmidt spectrum {λ_i} (default: [0.5, 0.5] for Bell pair)
+            T: Temperature (K)
+            f_TRZ: Time reversal factor (default: 0.1)
+            rho_SCm: SCm vacuum density (J/m³)
+            rho_UA: UA vacuum density (J/m³)
+            mu_j: Magnetic string tension (J·m)
+            r: Characteristic length scale (m)
+            t: Time (days)
+            t_n: Normalized time
+            gamma: Decay constant (day⁻¹)
+            frame: 'F_U_Bi' or 'F_U_Bi_i'
+        
+        Returns:
+            results: Dict with entropy parameters
+            steps: Long-form derivation string
+        
+        References:
+            - Calabrese & Cardy (2009): Entanglement entropy review
+            - Ryu & Takayanagi (2006): Holographic entanglement
+            - UQFF entanglement entropy derivation (SuperGrok4)
+        """
+        # Defaults
+        f_TRZ = f_TRZ if f_TRZ is not None else self.f_TRZ
+        
+        if lambda_base is None:
+            lambda_base = [0.5, 0.5]  # Bell pair
+        
+        lambda_base = np.array(lambda_base, dtype=float)
+        N = len(lambda_base)
+        
+        # Normalize if needed
+        lambda_sum = np.sum(lambda_base)
+        if abs(lambda_sum - 1.0) > 1e-10:
+            lambda_base = lambda_base / lambda_sum
+        
+        # Frame-dependent constants
+        if rho_SCm is None or rho_UA is None:
+            if frame == 'F_U_Bi_i':
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_BH
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_BH
+                frame_name = "F_U_Bi_i (outside→in, horizon scale)"
+            else:
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_ISM
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_ISM
+                frame_name = "F_U_Bi (inside→out, ISM scale)"
+        else:
+            frame_name = "Custom (user-specified)"
+        
+        # === STEP 1: Standard von Neumann Entropy ===
+        S_base = -np.sum(lambda_base * np.log(lambda_base + 1e-300))
+        S_max = np.log(N)
+        
+        # Standard effective dimension (purity-based)
+        purity = np.sum(lambda_base**2)
+        d_eff_base = 1.0 / purity
+        
+        # === STEP 2: Aether Enhancement ===
+        rho_ratio = rho_UA / rho_SCm if rho_SCm > 0 else 10.0
+        
+        # Boosted effective dimension
+        d_eff_UQFF = d_eff_base * rho_ratio
+        
+        # Log of aether-enhanced dimension (for correction term)
+        log_d_eff_UQFF = np.log(d_eff_UQFF)
+        
+        # === STEP 3: Magnetic String Energy U_m ===
+        L_scale = r if r > 0 else 1e9
+        if t > 0:
+            oscillation = np.cos(np.pi * t_n)
+            U_m = (mu_j / L_scale) * (1 - np.exp(-gamma * t * max(oscillation, 0)))
+        else:
+            U_m = self.k_B * T  # Default: U_m = k_B T
+        
+        # === STEP 4: Thermal Activation Factor ===
+        # (1 - exp(-k_B T/U_m)) → approaches 1 when T >> U_m/k_B
+        kBT_over_Um = self.k_B * T / U_m if U_m > 0 else 1.0
+        thermal_factor = 1.0 - np.exp(-kBT_over_Um)
+        
+        # === STEP 5: Time-Reversal Negentropy ===
+        # S' = S × (1 - f_TRZ)
+        S_TRZ = S_base * (1 - f_TRZ)
+        
+        # === STEP 6: Full UQFF Entropy Formula ===
+        # S_UQFF = S - f_TRZ × log(d_eff × ρ_ratio) × (1 - exp(-k_B T/U_m))
+        # Alternative formulation from derivation
+        negentropy_correction = f_TRZ * log_d_eff_UQFF * thermal_factor
+        
+        S_UQFF = S_base - negentropy_correction
+        
+        # Ensure non-negative
+        S_UQFF = max(S_UQFF, 0.0)
+        
+        # === STEP 7: Analysis ===
+        # Entropy reduction (negentropic effect)
+        Delta_S = S_UQFF - S_base
+        Delta_S_percent = (Delta_S / S_base * 100) if S_base > 0 else 0
+        
+        # Stability metric (lower entropy = more stable)
+        stability = S_max / (S_UQFF + 1e-300)
+        
+        results = {
+            'N': N,
+            'lambda_base': lambda_base.tolist(),
+            'S_base': S_base,
+            'S_max': S_max,
+            'S_base_bits': S_base / np.log(2),  # Convert to bits
+            'purity': purity,
+            'd_eff_base': d_eff_base,
+            'rho_ratio': rho_ratio,
+            'd_eff_UQFF': d_eff_UQFF,
+            'log_d_eff_UQFF': log_d_eff_UQFF,
+            'U_m': U_m,
+            'kBT_over_Um': kBT_over_Um,
+            'thermal_factor': thermal_factor,
+            'f_TRZ': f_TRZ,
+            'S_TRZ': S_TRZ,
+            'negentropy_correction': negentropy_correction,
+            'S_UQFF': S_UQFF,
+            'S_UQFF_bits': S_UQFF / np.log(2),
+            'Delta_S': Delta_S,
+            'Delta_S_percent': Delta_S_percent,
+            'stability': stability,
+            'T': T,
+            'rho_SCm': rho_SCm,
+            'rho_UA': rho_UA,
+            'frame': frame
+        }
+        
+        lambda_str = ', '.join([f'{x:.4f}' for x in lambda_base])
+        
+        steps = f"""UQFF Entanglement Entropy Analysis:
+═══════════════════════════════════════════════════════════════════════════════
+THEORETICAL BASIS:
+
+STANDARD ENTANGLEMENT ENTROPY:
+  For bipartite system A∪B in pure state |ψ⟩:
+  
+  ρ_A = Tr_B(|ψ⟩⟨ψ|) (partial trace over B)
+  
+  S = -Tr(ρ_A log ρ_A) = -Σ λ_i log λ_i
+  
+  • Bell pair (|00⟩+|11⟩)/√2: S = ln(2) ≈ 0.693 nats = 1 bit
+  • Maximum entanglement: S = ln(N) for N states
+  • AdS/CFT: S ~ Area/(4Gℏ) (Ryu-Takayanagi formula)
+
+UQFF MODIFICATIONS:
+  1. Aether enhancement: d_eff,UQFF = d_eff × (ρ_UA/ρ_SCm)
+  2. Time-reversal negentropy: f_TRZ reduces entropy
+  3. Magnetic string bound: Thermal activation threshold
+
+FULL UQFF FORMULA:
+  S_UQFF = S - f_TRZ × log(d_eff,UQFF) × (1 - exp(-k_B T/U_m))
+
+═══════════════════════════════════════════════════════════════════════════════
+Inputs:
+  N = {N} states
+  λ_base = {{{lambda_str}}}
+  T = {T:.2f} K
+  f_TRZ = {f_TRZ:.4f}
+  Frame = {frame_name}
+  ρ_UA/ρ_SCm = {rho_ratio:.4f}
+
+STEP 1: STANDARD VON NEUMANN ENTROPY
+  S = -Σ λ_i log λ_i
+    = {S_base:.6f} nats
+    = {S_base/np.log(2):.6f} bits
+  
+  S_max = log({N}) = {S_max:.6f} nats
+  
+  Purity: Tr(ρ²) = Σ λ_i² = {purity:.6f}
+  Effective dimension: d_eff = 1/Tr(ρ²) = {d_eff_base:.4f}
+
+STEP 2: AETHER ENHANCEMENT
+  d_eff,UQFF = d_eff × (ρ_UA/ρ_SCm)
+             = {d_eff_base:.4f} × {rho_ratio:.4f}
+             = {d_eff_UQFF:.4f}
+  
+  log(d_eff,UQFF) = {log_d_eff_UQFF:.6f}
+  
+  → Aether expands effective Hilbert space by {rho_ratio:.1f}×
+
+STEP 3: MAGNETIC STRING ENERGY
+  U_m = {U_m:.4e} J
+  k_B T / U_m = {kBT_over_Um:.4f}
+
+STEP 4: THERMAL ACTIVATION FACTOR
+  (1 - exp(-k_B T/U_m)) = (1 - exp(-{kBT_over_Um:.4f}))
+                       = (1 - {np.exp(-kBT_over_Um):.6f})
+                       = {thermal_factor:.6f}
+  
+  {'T ≫ U_m/k_B: Full thermal activation' if kBT_over_Um > 2 else 'T ~ U_m/k_B: Partial activation' if kBT_over_Um > 0.5 else 'T ≪ U_m/k_B: Weak activation'}
+
+STEP 5: TIME-REVERSAL NEGENTROPY
+  S' = S × (1 - f_TRZ)
+     = {S_base:.6f} × (1 - {f_TRZ:.4f})
+     = {S_TRZ:.6f} nats
+  
+  → f_TRZ reduces entropy by {f_TRZ*100:.1f}% (negentropic ordering)
+
+STEP 6: FULL UQFF ENTROPY
+  Negentropy correction = f_TRZ × log(d_eff,UQFF) × (1 - exp(-k_B T/U_m))
+                        = {f_TRZ:.4f} × {log_d_eff_UQFF:.6f} × {thermal_factor:.6f}
+                        = {negentropy_correction:.6f}
+  
+  S_UQFF = S - negentropy_correction
+         = {S_base:.6f} - {negentropy_correction:.6f}
+         = {S_UQFF:.6f} nats
+         = {S_UQFF/np.log(2):.6f} bits
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: UQFF ENTANGLEMENT ENTROPY
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ UQFF ENTANGLEMENT ENTROPY                                       │
+  │                                                                 │
+  │ S_base = {S_base:.6f} nats ({S_base/np.log(2):.4f} bits)                     │
+  │ S_UQFF = {S_UQFF:.6f} nats ({S_UQFF/np.log(2):.4f} bits)                     │
+  │                                                                 │
+  │ ΔS = {Delta_S:+.6f} nats ({Delta_S_percent:+.2f}%)                          │
+  │                                                                 │
+  │ {'→ ENTROPY REDUCED: Negentropic stabilization' if Delta_S < 0 else '→ ENTROPY UNCHANGED or INCREASED'}                     │
+  │                                                                 │
+  │ Stability metric: {stability:.4f} (higher = more stable)                │
+  └─────────────────────────────────────────────────────────────────┘
+
+Physical Interpretation:
+  • Aether enhancement: d_eff boosted {rho_ratio:.1f}×
+  • f_TRZ negentropy: {f_TRZ*100:.1f}% ordering effect
+  • Thermal activation: {thermal_factor*100:.1f}% of U_m threshold
+  • Net effect: Entropy reduced by {-Delta_S_percent:.2f}%
+
+Numerical Example (from derivation):
+  Bell pair: λ = {{0.5, 0.5}}, S_base = ln(2) ≈ 0.69 nats
+  ρ_ratio = 10, f_TRZ = 0.1, k_B T/U_m ≈ 1
+  
+  d_eff,UQFF = 2 × 10 = 20
+  log(20) ≈ 3.0
+  Thermal factor = 1 - e^(-1) ≈ 0.63
+  
+  Negentropy = 0.1 × 3.0 × 0.63 ≈ 0.19
+  S_UQFF ≈ 0.69 - 0.19 ≈ 0.50 nats (reduced!)
+
+Q-SCOPE TESTABILITY:
+  • Measure S in entangled THz circuits
+  • Verify f_TRZ × log(d_eff × ρ_ratio) correction
+  • Compare to standard QM entropy predictions
+  • Detect negentropic stabilization effect
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
 
 
 # Global Black Hole Phases Model instance
