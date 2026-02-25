@@ -155,18 +155,20 @@ double UQFFFramework::quantum_coherence(double r, double t) {
     //   k_B T = thermal energy         [decoherence scale]
     
     double distance_from_horizon = r - params["r_horizon"];
-    double sigma_eff = compute_sigma_effective();
-    
-    // Gaussian localization (exponential decay from horizon)
-    double gaussian = std::exp(- (distance_from_horizon * distance_from_horizon) 
-                               / (2.0 * sigma_eff * sigma_eff));
-    
-    // Oscillatory term with f_TRZ frequency adjustment
-    double f_adjusted = params["coherence_freq"] * (1.0 + params["f_TRZ"]);
-    double osc = std::abs(std::cos(2.0 * M_PI * f_adjusted * t));
     
     // Check if using full UQFF formula or simple model
     if (params["use_full_uqff_coherence"] > 0.5) {
+        // Full UQFF coherence measure with aether damping
+        double sigma_eff = compute_sigma_effective();
+        
+        // Gaussian localization (exponential decay from horizon)
+        double gaussian = std::exp(- (distance_from_horizon * distance_from_horizon) 
+                                   / (2.0 * sigma_eff * sigma_eff));
+        
+        // Oscillatory term with f_TRZ frequency adjustment
+        double f_adjusted = params["coherence_freq"] * (1.0 + params["f_TRZ"]);
+        double osc = std::abs(std::cos(2.0 * M_PI * f_adjusted * t));
+        
         // Full UQFF coherence measure:
         // C_UQFF = (ℏ²/2m σ_eff²) × |cos(2πft(1+f_TRZ))| × exp(-U_m/(k_B T)) × gaussian
         
@@ -184,7 +186,11 @@ double UQFFFramework::quantum_coherence(double r, double t) {
         
         return params["coherence_amp"] * quantum_prefactor * gaussian * osc * magnetic_damping;
     } else {
-        // Simple model (original)
+        // Simple model (original): psi(r,t) ≈ amp × exp(-(r-r_h)²/σ²) × cos(2πft)
+        // From UQFF quantum terms: Incorporates wavefunction coherence in ∫ ψ* H ψ
+        double gaussian = std::exp(- (distance_from_horizon * distance_from_horizon) 
+                                   / (params["coherence_sigma"] * params["coherence_sigma"]));
+        double osc = std::cos(2.0 * M_PI * params["coherence_freq"] * t);
         return params["coherence_amp"] * gaussian * osc;
     }
 }
