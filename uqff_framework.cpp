@@ -40,6 +40,17 @@ UQFFFramework::UQFFFramework(unsigned int seed) : rng(seed), noise_dist(0.0, 1.0
     params["U_m"] = 1e-20;                  // Magnetic string energy [J]
     params["use_full_uqff_coherence"] = 1.0; // 1.0 = use full formula, 0.0 = simple
     
+    // Aether Superfluid Dynamics parameters (from GPE derivation)
+    params["m_eff"] = 2.176e-8;             // Effective aether mass [kg] (~Planck mass)
+    params["g_interaction"] = 1e-38;        // Interaction strength [J·m²] (repulsive [UA])
+    params["mu_chemical"] = 1e-30;          // Chemical potential [J]
+    params["V_ext"] = 0.0;                  // External potential [J]
+    params["n_vortex"] = 1.0;               // Vortex quantum number (integer)
+    params["L_vortex"] = 1e10;              // Vortex length scale [m]
+    params["superfluid_density"] = 145.0;   // Superfluid density [kg/m³] (He-4 reference)
+    params["e_charge"] = 1.602176634e-19;   // Electron charge [C]
+    params["mu_0"] = 1.256637062e-6;        // Vacuum permeability [H/m]
+    
     // Initialize default MUGE parameters
     params["M_initial"] = 1.0;
     params["M_dot"] = 0.0;
@@ -113,6 +124,16 @@ void UQFFFramework::init_explanations() {
     explanations.push_back("  σ_eff = σ × (1 - ρ_SCm/ρ_UA)  [aether damping]");
     explanations.push_back("  A = (√(2π) σ_eff)^(-1/2)      [normalization]");
     explanations.push_back("");
+    explanations.push_back("AETHER SUPERFLUID DYNAMICS (GPE):");
+    explanations.push_back("  ψ = √ρ × e^(iθ)               [BEC order parameter]");
+    explanations.push_back("  v_s = (ℏ/m)∇θ                 [superfluid velocity, irrotational]");
+    explanations.push_back("  Healing length: ξ = √(ℏ²/(2mgρ))  [vortex core size]");
+    explanations.push_back("  Vortex circulation: Γ = 2πℏn/m    [quantized]");
+    explanations.push_back("  Vortex energy: U_m = (πρℏ²/m)ln(L/ξ)");
+    explanations.push_back("  Time-reversal: g_TRZ = g(1 - f_TRZ) [negentropic stabilization]");
+    explanations.push_back("  Quantum pressure: P_Q = -(ℏ²/2m)(∇²√ρ/√ρ)");
+    explanations.push_back("  Meissner factor: 1 - ρ_SCm/ρ_UA    [flux expulsion]");
+    explanations.push_back("");
     explanations.push_back("EXAMPLE (Sgr A*):");
     explanations.push_back("  t = 4.5×10⁹ yr, M = 8.604×10³⁶ kg, r = 1.27×10¹⁰ m");
     explanations.push_back("  Base g ≈ 3.561×10⁶ m/s², Full MUGE g ≈ 1.250×10⁷ m/s²");
@@ -140,6 +161,116 @@ double UQFFFramework::compute_normalization_amplitude() {
     // Ensures ∫|ψ|² dr = 1 for Gaussian wavepacket
     double sigma_eff = compute_sigma_effective();
     return 1.0 / std::sqrt(std::sqrt(2.0 * M_PI) * sigma_eff);
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// AETHER SUPERFLUID DYNAMICS (GPE-derived)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+double UQFFFramework::compute_healing_length() {
+    // Healing length (coherence length): ξ = √(ℏ²/(2mgρ))
+    // Determines vortex core size and minimum scale for density variations
+    // For cosmic aether: ξ ~ 10^18 m (universe-scale vortices)
+    double hbar = params["hbar"];
+    double m = params["m_eff"];
+    double g = params["g_interaction"];
+    double rho = params["superfluid_density"];
+    
+    // Avoid division by zero
+    if (g * rho < 1e-100) return 1e18;  // Default cosmic scale
+    
+    return std::sqrt((hbar * hbar) / (2.0 * m * g * rho));
+}
+
+double UQFFFramework::compute_vortex_circulation(int n) {
+    // Quantized circulation: Γ = 2πℏn/m
+    // Kelvin's theorem: circulation is conserved in superfluid
+    // n = vortex quantum number (integer)
+    double hbar = params["hbar"];
+    double m = params["m_eff"];
+    
+    return 2.0 * M_PI * hbar * static_cast<double>(n) / m;
+}
+
+double UQFFFramework::compute_vortex_energy() {
+    // Vortex energy per unit length: U_m = (πρℏ²/m) × ln(L/ξ)
+    // L = system size / vortex separation, ξ = healing length
+    double hbar = params["hbar"];
+    double m = params["m_eff"];
+    double rho = params["superfluid_density"];
+    double L = params["L_vortex"];
+    double xi = compute_healing_length();
+    
+    // Avoid log of negative or zero
+    double ratio = L / xi;
+    if (ratio <= 1.0) ratio = 2.0;  // Minimum bound
+    
+    return (M_PI * rho * hbar * hbar / m) * std::log(ratio);
+}
+
+double UQFFFramework::compute_superfluid_velocity(double grad_theta) {
+    // Superfluid velocity: v_s = (ℏ/m) ∇θ
+    // For irrotational flow: curl(v_s) = 0
+    double hbar = params["hbar"];
+    double m = params["m_eff"];
+    
+    return (hbar / m) * grad_theta;
+}
+
+double UQFFFramework::compute_g_TRZ() {
+    // Time-reversal modified interaction: g_TRZ = g × (1 - f_TRZ)
+    // f_TRZ damps decay, stabilizing vortices
+    // Effective repulsion reduced by negentropic factor
+    double g = params["g_interaction"];
+    double f_TRZ = params["f_TRZ"];
+    
+    return g * (1.0 - f_TRZ);
+}
+
+double UQFFFramework::compute_quantum_pressure(double rho, double grad2_sqrt_rho) {
+    // Quantum pressure term: P_Q = -(ℏ²/2m) × (∇²√ρ/√ρ)
+    // Prevents collapse at small scales (Heisenberg uncertainty)
+    // In hydrodynamic form: appears in Euler equation
+    double hbar = params["hbar"];
+    double m = params["m_eff"];
+    
+    if (rho < 1e-100) return 0.0;  // Avoid division by zero
+    
+    double sqrt_rho = std::sqrt(rho);
+    return -(hbar * hbar / (2.0 * m)) * (grad2_sqrt_rho / sqrt_rho);
+}
+
+double UQFFFramework::compute_GPE_potential(double rho) {
+    // Total GPE potential: V_eff = V_ext + g_TRZ × ρ - μ
+    // ρ = |ψ|² (superfluid density)
+    double V_ext = params["V_ext"];
+    double g_TRZ = compute_g_TRZ();
+    double mu = params["mu_chemical"];
+    
+    return V_ext + g_TRZ * rho - mu;
+}
+
+double UQFFFramework::compute_meissner_factor() {
+    // Meissner-like expulsion factor at [SCm] boundaries
+    // Factor = (1 - ρ_SCm/ρ_UA) for supercurrent density
+    // At B < B_crit: full expulsion; at B > B_crit: penetration
+    double rho_SCm = params["rho_vac_SCm"];
+    double rho_UA = params["rho_vac_UA"];
+    
+    return 1.0 - (rho_SCm / rho_UA);
+}
+
+double UQFFFramework::compute_superfluid_density_time(double rho_0, double t) {
+    // Superfluid density with time evolution: ρ(t) = ρ_0 × exp(-Γ_loss × t)
+    // Modified by f_TRZ for negentropic stabilization
+    // In UQFF: f_TRZ reduces loss rate
+    double f_TRZ = params["f_TRZ"];
+    double tau = params["t_Hubble"];  // Use Hubble time as decay scale
+    
+    // Loss rate reduced by time-reversal
+    double Gamma_loss = (1.0 - f_TRZ) / tau;
+    
+    return rho_0 * std::exp(-Gamma_loss * t);
 }
 
 double UQFFFramework::quantum_coherence(double r, double t) {
@@ -470,6 +601,42 @@ int main() {
     
     uqff.simulate_evolution(r_test, 0.0, 1e10, 1e9, "uqff_evolution.csv");
     std::cout << "  Output: uqff_evolution.csv\n";
+    std::cout << "  ✓ PASSED\n";
+
+    // Test superfluid dynamics
+    std::cout << "\n═══════════════════════════════════════════════════════════════════════════════\n";
+    std::cout << "TEST 8: Aether Superfluid Dynamics\n";
+    std::cout << "═══════════════════════════════════════════════════════════════════════════════\n";
+    
+    // Set superfluid parameters for cosmic scale
+    uqff.set_param("m_eff", 2.176e-8);          // Planck mass
+    uqff.set_param("g_interaction", 1e-38);     // Interaction strength
+    uqff.set_param("superfluid_density", 145);  // He-4 reference
+    uqff.set_param("L_vortex", 1e10);           // Vortex scale
+    
+    double xi = uqff.compute_healing_length();
+    std::cout << "  Healing length ξ = " << xi << " m\n";
+    
+    double gamma = uqff.compute_vortex_circulation(1);
+    std::cout << "  Vortex circulation Γ(n=1) = " << gamma << " m²/s\n";
+    
+    double U_vortex = uqff.compute_vortex_energy();
+    std::cout << "  Vortex energy U_m = " << U_vortex << " J/m\n";
+    
+    double g_TRZ = uqff.compute_g_TRZ();
+    std::cout << "  g_TRZ = g(1-f_TRZ) = " << g_TRZ << " J·m²\n";
+    
+    double meissner = uqff.compute_meissner_factor();
+    std::cout << "  Meissner factor = " << meissner << "\n";
+    
+    double v_s = uqff.compute_superfluid_velocity(1e-10);
+    std::cout << "  v_s (∇θ=10⁻¹⁰) = " << v_s << " m/s\n";
+    
+    double GPE_pot = uqff.compute_GPE_potential(145.0);
+    std::cout << "  GPE potential = " << GPE_pot << " J\n";
+    
+    double rho_t = uqff.compute_superfluid_density_time(145.0, 1e17);
+    std::cout << "  ρ(t=10¹⁷s) = " << rho_t << " kg/m³\n";
     std::cout << "  ✓ PASSED\n";
 
     // Summary

@@ -112,6 +112,73 @@ public:
      */
     double compute_normalization_amplitude();
     
+    // ═══════════════════════════════════════════════════════════════════════════
+    // AETHER SUPERFLUID DYNAMICS (GPE-derived)
+    // ═══════════════════════════════════════════════════════════════════════════
+    
+    /**
+     * @brief Compute healing length (coherence length)
+     * @return ξ = √(ℏ²/(2mgρ)) [m]
+     * 
+     * Determines vortex core size. Cosmic scale: ~10^18 m.
+     */
+    double compute_healing_length();
+    
+    /**
+     * @brief Compute quantized vortex circulation
+     * @param n Vortex quantum number (integer)
+     * @return Γ = 2πℏn/m [m²/s]
+     */
+    double compute_vortex_circulation(int n = 1);
+    
+    /**
+     * @brief Compute vortex energy per unit length
+     * @return U_m = (πρℏ²/m) × ln(L/ξ) [J/m]
+     */
+    double compute_vortex_energy();
+    
+    /**
+     * @brief Compute superfluid velocity from phase gradient
+     * @param grad_theta Phase gradient ∇θ [1/m]
+     * @return v_s = (ℏ/m) × ∇θ [m/s]
+     */
+    double compute_superfluid_velocity(double grad_theta);
+    
+    /**
+     * @brief Compute time-reversal modified interaction strength
+     * @return g_TRZ = g × (1 - f_TRZ)
+     */
+    double compute_g_TRZ();
+    
+    /**
+     * @brief Compute quantum pressure term
+     * @param rho Density ρ
+     * @param grad2_sqrt_rho Laplacian of √ρ
+     * @return P_Q = -(ℏ²/2m) × (∇²√ρ/√ρ) [J/m³]
+     */
+    double compute_quantum_pressure(double rho, double grad2_sqrt_rho);
+    
+    /**
+     * @brief Compute GPE effective potential
+     * @param rho Local density |ψ|²
+     * @return V_eff = V_ext + g_TRZ × ρ - μ [J]
+     */
+    double compute_GPE_potential(double rho);
+    
+    /**
+     * @brief Compute Meissner-like expulsion factor at [SCm]
+     * @return Factor (1 - ρ_SCm/ρ_UA) for supercurrent
+     */
+    double compute_meissner_factor();
+    
+    /**
+     * @brief Compute superfluid density time evolution
+     * @param rho_0 Initial density
+     * @param t Time [s]
+     * @return ρ(t) with f_TRZ stabilization
+     */
+    double compute_superfluid_density_time(double rho_0, double t);
+    
     /**
      * @brief Compute full UQFF quantum coherence
      * @param r Radial distance from center [m]
