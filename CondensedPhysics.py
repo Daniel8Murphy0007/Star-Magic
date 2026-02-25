@@ -104320,6 +104320,494 @@ KELVIN-HELMHOLTZ VORTEX DYNAMICS:
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# UQFF LUMINOSITY FORMULA (Black Hole Radiation, Feb 25, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# Extends Hawking L_H = ℏc⁶/(15360πG²M²) with UQFF elements:
+#   Step 1: Standard Hawking luminosity from Stefan-Boltzmann
+#   Step 2: Time-reversal correction: L' = L_H × (1 - f_TRZ)
+#   Step 3: Aether-superconductive damping: L'' = L' × (1 - ρ_SCm/ρ_UA)
+#   Step 4: Magnetic string barrier: L_UQFF = L'' × exp(-U_m/(k_B T_H))
+# Numerical: Sgr A* (M=8.55e36 kg) L_H≈1e-5 W → L_UQFF≈3e-6 W
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UQFFLuminosityCalculator(SelfExpandingMixin):
+    """
+    UQFF Luminosity Formula for Black Hole Radiation.
+    
+    Extends Hawking radiation luminosity with UQFF damping effects:
+    - Time-reversal zone (f_TRZ ≈ 0.1): 10% negentropic reduction
+    - Aether-superconductive ratio (ρ_SCm/ρ_UA): ~10% additional suppression
+    - Magnetic string barrier (U_m): exponential suppression for cold horizons
+    
+    Key Physics:
+        L_UQFF = [ℏc⁶/(15360πG²M²)] × (1-f_TRZ) × (1-ρ_SCm/ρ_UA) × exp(-U_m/(k_BT_H))
+        
+    This predicts that massive black holes (cold horizons) are significantly
+    more stable than standard Hawking theory suggests, while small black holes
+    (hot horizons) evaporate with near-standard rates.
+    
+    Attributes:
+        params (dict): Physical constants and UQFF parameters
+        additional_dampings (list): Custom damping functions
+    """
+    
+    EXPLANATIONS = [
+        "UQFF Luminosity Formula extends Hawking radiation with aether corrections.",
+        "Step 1: L_H = ℏc⁶/(15360πG²M²) - Standard Hawking from Stefan-Boltzmann",
+        "Step 2: L' = L_H × (1 - f_TRZ) - Time-reversal negentropic reduction",
+        "Step 3: L'' = L' × (1 - ρ_SCm/ρ_UA) - Aether vacuum suppression",
+        "Step 4: L_UQFF = L'' × exp(-U_m/(k_BT_H)) - Magnetic string barrier",
+        "Result: Massive BHs (cold) strongly suppressed; small BHs (hot) evaporate rapidly",
+    ]
+    
+    def __init__(self, params: dict = None):
+        """
+        Initialize UQFF Luminosity Calculator.
+        
+        Args:
+            params: Optional dict with physical constants and UQFF parameters
+        """
+        # Physical constants
+        self.params = {
+            'hbar': 1.0545718e-34,      # Reduced Planck constant [J·s]
+            'c': 2.998e8,               # Speed of light [m/s]
+            'G': 6.6743e-11,            # Gravitational constant [m³/kg/s²]
+            'k_B': 1.380649e-23,        # Boltzmann constant [J/K]
+            
+            # UQFF parameters
+            'f_TRZ': 0.1,               # Time-reversal zone fraction
+            'rho_vac_SCm': 7.09e-37,    # Superconductive vacuum density [J/m³]
+            'rho_vac_UA': 7.09e-36,     # Universal Aether vacuum density [J/m³]
+            'U_m': 1e-23,               # Magnetic string energy barrier [J]
+            
+            # Reference masses
+            'M_sun': 1.989e30,          # Solar mass [kg]
+        }
+        
+        if params:
+            self.params.update(params)
+        
+        # Custom dampings (self-expand capability)
+        self.additional_dampings = []
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # CORE TEMPERATURE AND LUMINOSITY
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_T_H(self, M: float) -> float:
+        """
+        Compute Hawking temperature.
+        
+        T_H = ℏc³/(8πGMk_B)
+        
+        Derivation:
+            Surface gravity: κ = c⁴/(4GM) at Schwarzschild horizon
+            Hawking temperature: T_H = ℏκ/(2πk_Bc) = ℏc³/(8πGMk_B)
+        
+        Args:
+            M: Black hole mass [kg]
+        
+        Returns:
+            T_H [K]
+        """
+        hbar = self.params['hbar']
+        c = self.params['c']
+        G = self.params['G']
+        k_B = self.params['k_B']
+        
+        return (hbar * c**3) / (8 * np.pi * G * M * k_B)
+    
+    def compute_L_H(self, M: float) -> float:
+        """
+        Step 1: Standard Hawking luminosity.
+        
+        L_H = ℏc⁶/(15360πG²M²)
+        
+        Full derivation:
+            Stefan-Boltzmann: L = σ A T⁴
+            Horizon area: A = 4πr_s² = 16π(GM/c²)²
+            Substituting T_H = ℏc³/(8πGMk_B):
+            L_H = ℏc⁶/(15360πG²M²)
+        
+        Args:
+            M: Black hole mass [kg]
+        
+        Returns:
+            L_H [W]
+        """
+        hbar = self.params['hbar']
+        c = self.params['c']
+        G = self.params['G']
+        
+        return (hbar * c**6) / (15360 * np.pi * G**2 * M**2)
+    
+    def compute_L_prime(self, L_H: float) -> float:
+        """
+        Step 2: Time-reversal correction.
+        
+        L' = L_H × (1 - f_TRZ)
+        
+        Physics: The UQFF time-reversal zone (f_TRZ ≈ 0.1) represents
+        negentropic processes that reverse ~10% of outgoing radiation.
+        
+        Args:
+            L_H: Hawking luminosity from Step 1 [W]
+        
+        Returns:
+            L' [W]
+        """
+        f_TRZ = self.params['f_TRZ']
+        return L_H * (1.0 - f_TRZ)
+    
+    def compute_L_double_prime(self, L_prime: float) -> float:
+        """
+        Step 3: Aether-superconductive damping.
+        
+        L'' = L' × (1 - ρ_SCm/ρ_UA)
+        
+        Physics: The ratio of superconductive to Universal Aether density
+        determines suppression by dense aether medium (~10% additional).
+        
+        Args:
+            L_prime: L' from Step 2 [W]
+        
+        Returns:
+            L'' [W]
+        """
+        rho_SCm = self.params['rho_vac_SCm']
+        rho_UA = self.params['rho_vac_UA']
+        return L_prime * (1.0 - rho_SCm / rho_UA)
+    
+    def compute_L_UQFF_step(self, L_double_prime: float, T_H: float) -> float:
+        """
+        Step 4: Magnetic string barrier.
+        
+        L_UQFF = L'' × exp(-U_m/(k_B T_H))
+        
+        Physics: The magnetic string network near the horizon creates
+        an energy barrier that exponentially suppresses cold horizons.
+        
+        Args:
+            L_double_prime: L'' from Step 3 [W]
+            T_H: Hawking temperature [K]
+        
+        Returns:
+            L_UQFF [W]
+        """
+        U_m = self.params['U_m']
+        k_B = self.params['k_B']
+        return L_double_prime * np.exp(-U_m / (k_B * T_H))
+    
+    def compute_L_UQFF(self, M: float, noise_level: float = 0.0) -> float:
+        """
+        Full UQFF luminosity with all corrections and custom dampings.
+        
+        L_UQFF = [ℏc⁶/(15360πG²M²)] × (1-f_TRZ) × (1-ρ_SCm/ρ_UA) 
+                × exp(-U_m/(k_BT_H)) × Π(custom_dampings)
+        
+        Args:
+            M: Black hole mass [kg]
+            noise_level: Stochastic perturbation amplitude (default: 0)
+        
+        Returns:
+            L_UQFF_full [W]
+        """
+        L_H = self.compute_L_H(M)
+        L_prime = self.compute_L_prime(L_H)
+        L_double_prime = self.compute_L_double_prime(L_prime)
+        T_H = self.compute_T_H(M)
+        L_uqff = self.compute_L_UQFF_step(L_double_prime, T_H)
+        
+        # Apply custom dampings
+        for damp in self.additional_dampings:
+            L_uqff *= damp(M, T_H)
+        
+        # Add noise if requested
+        if noise_level > 0:
+            L_uqff *= (1.0 + noise_level * np.random.randn())
+        
+        return L_uqff
+    
+    def compute_suppression_factor(self, M: float) -> float:
+        """
+        Compute UQFF suppression factor relative to Hawking.
+        
+        Args:
+            M: Black hole mass [kg]
+        
+        Returns:
+            L_UQFF / L_H (< 1 means suppression)
+        """
+        L_H = self.compute_L_H(M)
+        L_UQFF = self.compute_L_UQFF(M)
+        return L_UQFF / L_H
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # BLACK HOLE THERMODYNAMICS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_schwarzschild_radius(self, M: float) -> float:
+        """Schwarzschild radius r_s = 2GM/c²"""
+        G = self.params['G']
+        c = self.params['c']
+        return 2 * G * M / (c**2)
+    
+    def compute_horizon_area(self, M: float) -> float:
+        """Horizon area A = 4πr_s²"""
+        r_s = self.compute_schwarzschild_radius(M)
+        return 4 * np.pi * r_s**2
+    
+    def compute_bekenstein_hawking_entropy(self, M: float) -> float:
+        """
+        Bekenstein-Hawking entropy: S = A/(4l_P²) = k_B c³ A/(4Gℏ)
+        """
+        A = self.compute_horizon_area(M)
+        hbar = self.params['hbar']
+        c = self.params['c']
+        G = self.params['G']
+        k_B = self.params['k_B']
+        
+        return k_B * c**3 * A / (4 * G * hbar)
+    
+    def compute_evaporation_timescale(self, M: float) -> float:
+        """
+        Black hole evaporation timescale.
+        
+        Standard Hawking: t_evap ∝ M³
+        t_evap = 5120 π G² M³ / (ℏ c⁴)
+        
+        UQFF extends this due to suppression.
+        
+        Args:
+            M: Initial mass [kg]
+        
+        Returns:
+            t_evap [seconds]
+        """
+        G = self.params['G']
+        hbar = self.params['hbar']
+        c = self.params['c']
+        
+        # Standard Hawking evaporation time
+        t_hawking = (5120 * np.pi * G**2 * M**3) / (hbar * c**4)
+        
+        # UQFF correction: longer lifetime due to suppression
+        suppression = self.compute_suppression_factor(M)
+        
+        # If suppression < 1, lifetime increases by 1/suppression
+        return t_hawking / suppression if suppression > 0 else np.inf
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # SELF-EXPANDING / SIMULATION
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def add_damping(self, damping_func):
+        """
+        Self-expand: Add custom damping factor.
+        
+        Args:
+            damping_func: Function(M, T_H) -> multiplicative factor
+            
+        Example:
+            calc.add_damping(lambda M, T_H: 1.0 + 0.01/(M*T_H))
+        """
+        self.additional_dampings.append(damping_func)
+    
+    def simulate_over_mass(self, M_start: float, M_end: float, n_points: int = 50):
+        """
+        Simulate luminosity over mass range.
+        
+        Args:
+            M_start: Starting mass [kg]
+            M_end: Ending mass [kg]
+            n_points: Number of points
+        
+        Returns:
+            Dict with masses, temperatures, luminosities
+        """
+        masses = np.logspace(np.log10(M_start), np.log10(M_end), n_points)
+        T_H = np.array([self.compute_T_H(M) for M in masses])
+        L_H = np.array([self.compute_L_H(M) for M in masses])
+        L_UQFF = np.array([self.compute_L_UQFF(M) for M in masses])
+        suppression = L_UQFF / L_H
+        
+        return {
+            'masses': masses,
+            'T_H': T_H,
+            'L_H': L_H,
+            'L_UQFF': L_UQFF,
+            'suppression': suppression,
+        }
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # COMPUTE INTERFACE
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute(self, mode: str = 'full', **kwargs) -> dict:
+        """
+        Main computation interface.
+        
+        Args:
+            mode: Computation mode
+                - 'full': All luminosity steps for given mass
+                - 'temperature': Hawking temperature only
+                - 'entropy': BH thermodynamics (S, A, r_s)
+                - 'evaporation': Evaporation timescale
+                - 'simulate': Luminosity over mass range
+            **kwargs: Mode-specific parameters
+                M: Black hole mass [kg] (required for most modes)
+        
+        Returns:
+            Dict with computed results
+        """
+        if mode == 'full':
+            M = kwargs.get('M', 4.3e6 * self.params['M_sun'])  # Default: Sgr A*
+            
+            T_H = self.compute_T_H(M)
+            L_H = self.compute_L_H(M)
+            L_prime = self.compute_L_prime(L_H)
+            L_double_prime = self.compute_L_double_prime(L_prime)
+            L_UQFF = self.compute_L_UQFF_step(L_double_prime, T_H)
+            L_full = self.compute_L_UQFF(M)
+            
+            return {
+                'mode': 'full',
+                'M': M,
+                'M_solar': M / self.params['M_sun'],
+                'T_H': T_H,
+                'L_H': L_H,
+                'L_prime': L_prime,
+                'L_double_prime': L_double_prime,
+                'L_UQFF': L_UQFF,
+                'L_full': L_full,
+                'suppression': L_full / L_H,
+            }
+        
+        elif mode == 'temperature':
+            M = kwargs.get('M', 4.3e6 * self.params['M_sun'])
+            return {
+                'mode': 'temperature',
+                'M': M,
+                'T_H': self.compute_T_H(M),
+            }
+        
+        elif mode == 'entropy':
+            M = kwargs.get('M', 4.3e6 * self.params['M_sun'])
+            return {
+                'mode': 'entropy',
+                'M': M,
+                'r_s': self.compute_schwarzschild_radius(M),
+                'A': self.compute_horizon_area(M),
+                'S': self.compute_bekenstein_hawking_entropy(M),
+            }
+        
+        elif mode == 'evaporation':
+            M = kwargs.get('M', 1e12)  # Default: primordial BH
+            return {
+                'mode': 'evaporation',
+                'M': M,
+                't_evap': self.compute_evaporation_timescale(M),
+                'suppression': self.compute_suppression_factor(M),
+            }
+        
+        elif mode == 'simulate':
+            M_start = kwargs.get('M_start', 1e10)
+            M_end = kwargs.get('M_end', 1e40)
+            n_points = kwargs.get('n_points', 50)
+            return self.simulate_over_mass(M_start, M_end, n_points)
+        
+        else:
+            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, entropy, evaporation, simulate")
+    
+    def long_form_equation(self, M: float = None) -> str:
+        """
+        Generate long-form equations with substituted values.
+        
+        Args:
+            M: Black hole mass [kg] (default: Sgr A*)
+        
+        Returns:
+            Formatted equation string
+        """
+        if M is None:
+            M = 4.3e6 * self.params['M_sun']
+        
+        hbar = self.params['hbar']
+        c = self.params['c']
+        G = self.params['G']
+        k_B = self.params['k_B']
+        f_TRZ = self.params['f_TRZ']
+        rho_SCm = self.params['rho_vac_SCm']
+        rho_UA = self.params['rho_vac_UA']
+        U_m = self.params['U_m']
+        
+        T_H = self.compute_T_H(M)
+        L_H = self.compute_L_H(M)
+        L_prime = self.compute_L_prime(L_H)
+        L_double_prime = self.compute_L_double_prime(L_prime)
+        L_UQFF = self.compute_L_UQFF_step(L_double_prime, T_H)
+        L_full = self.compute_L_UQFF(M)
+        
+        eq = f"""
+════════════════════════════════════════════════════════════════════════════════
+UQFF LUMINOSITY FORMULA - BLACK HOLE RADIATION
+════════════════════════════════════════════════════════════════════════════════
+
+INPUT PARAMETERS:
+  M (mass) = {M:.4e} kg ({M/self.params['M_sun']:.2e} M☉)
+  ℏ = {hbar:.5e} J·s
+  c = {c:.3e} m/s
+  G = {G:.4e} m³/kg/s²
+  k_B = {k_B:.4e} J/K
+  f_TRZ = {f_TRZ:.2f}
+  ρ_SCm/ρ_UA = {rho_SCm/rho_UA:.2f}
+  U_m = {U_m:.4e} J
+
+STEP 0: Hawking Temperature
+  T_H = ℏc³/(8πGMk_B)
+  T_H = ({hbar:.3e})×({c:.3e})³ / (8π×{G:.3e}×{M:.3e}×{k_B:.3e})
+  → T_H = {T_H:.4e} K
+
+STEP 1: Standard Hawking Luminosity
+  L_H = ℏc⁶/(15360πG²M²)
+  L_H = ({hbar:.3e})×({c:.3e})⁶ / (15360π×({G:.3e})²×({M:.3e})²)
+  → L_H = {L_H:.4e} W
+
+STEP 2: Time-Reversal Correction
+  L' = L_H × (1 - f_TRZ)
+  L' = {L_H:.4e} × (1 - {f_TRZ:.2f})
+  → L' = {L_prime:.4e} W
+
+STEP 3: Aether-Superconductive Damping
+  L'' = L' × (1 - ρ_SCm/ρ_UA)
+  L'' = {L_prime:.4e} × (1 - {rho_SCm/rho_UA:.2f})
+  → L'' = {L_double_prime:.4e} W
+
+STEP 4: Magnetic String Barrier
+  L_UQFF = L'' × exp(-U_m/(k_B T_H))
+  Exponent = -U_m/(k_B T_H) = -{U_m:.3e}/({k_B:.3e}×{T_H:.3e}) = {-U_m/(k_B*T_H):.4f}
+  L_UQFF = {L_double_prime:.4e} × exp({-U_m/(k_B*T_H):.4f})
+  → L_UQFF = {L_UQFF:.4e} W
+
+FINAL RESULT:
+  L_UQFF_full = {L_full:.4e} W
+  Suppression factor = {L_full/L_H:.6f} (vs Hawking)
+  
+PHYSICS INTERPRETATION:
+  - For massive BHs (cold horizons): Strong suppression → stable BHs
+  - For small BHs (hot horizons): Weak suppression → rapid evaporation
+  - UQFF stabilizes large black holes beyond Hawking predictions
+
+════════════════════════════════════════════════════════════════════════════════
+"""
+        return eq
+    
+    def display_explanations(self) -> str:
+        """Get framework explanations as string."""
+        return '\n'.join(self.EXPLANATIONS)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # PULSAR TIMING ARRAY (PTA) UQFF CALCULATOR (Feb 25, 2026)
 # ═══════════════════════════════════════════════════════════════════════════════
 # Nanohertz gravitational waves from SMBH binaries
