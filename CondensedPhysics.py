@@ -103223,6 +103223,12 @@ class AetherSuperfluidUQFFCalculator(SelfExpandingMixin):
             "FULL UQFF VORTEX VELOCITY (Step 7):",
             "  v_v,UQFF = v_s,self(1-f_TRZ)(1-B/B_crit) + Σ(κ/2π)/|r-r_j| + U_m/(ρκ)",
             "",
+            "GPE VORTEX SIMULATION (Split-Step Fourier):",
+            "  iℏ ∂ψ/∂t = (-ℏ²/2m)∇²ψ + g|ψ|²ψ - μψ",
+            "  Initial: ψ = √(μ/g) × tanh(r/ξ) × exp(inθ)  [n=winding]",
+            "  Split-step: real-space interaction ↔ k-space kinetic",
+            "  Output: density profile ρ = |ψ|² showing vortex core",
+            "",
             "═══════════════════════════════════════════════════════════════════════════════",
         ]
     
@@ -103720,6 +103726,222 @@ class AetherSuperfluidUQFFCalculator(SelfExpandingMixin):
         
         return v_self_UQFF + v_mutual + v_tension
     
+    # ═══════════════════════════════════════════════════════════════════════════
+    # GROSS-PITAEVSKII VORTEX SIMULATION
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_vortex_wavefunction(self, x: np.ndarray, y: np.ndarray, 
+                                     n: int = None, include_core: bool = True) -> np.ndarray:
+        """
+        Compute initial vortex wavefunction.
+        
+        ψ = √(μ/g) × f(r) × exp(i n θ)
+        
+        Where f(r) is the core depletion function:
+            f(r) = tanh(r/ξ) for r > 0 (Thomas-Fermi with healing)
+        
+        Args:
+            x: X coordinates (2D array from meshgrid)
+            y: Y coordinates (2D array from meshgrid)
+            n: Vortex winding number (default: self.params['n_vortex'])
+            include_core: Include core depletion (default True)
+        
+        Returns:
+            Complex wavefunction ψ(x,y)
+        """
+        if n is None:
+            n = int(self.params['n_vortex'])
+        
+        mu = self.params['mu_chemical']
+        g = self.params['g_interaction']
+        xi = self.compute_healing_length()
+        
+        # Polar coordinates
+        r = np.sqrt(x**2 + y**2)
+        theta = np.arctan2(y, x)
+        
+        # Bulk amplitude: √(μ/g) = Thomas-Fermi density far from core
+        if g > 0:
+            psi_bulk = np.sqrt(np.abs(mu / g))
+        else:
+            psi_bulk = 1.0
+        
+        # Core depletion: f(r) = tanh(r/ξ) 
+        # Smooth transition from 0 at core to 1 far away
+        if include_core:
+            r_safe = np.maximum(r, 1e-20)  # Avoid division by zero
+            f_core = np.tanh(r_safe / xi)
+        else:
+            f_core = np.ones_like(r)
+        
+        # Phase winding: exp(i n θ)
+        phase = np.exp(1j * n * theta)
+        
+        return psi_bulk * f_core * phase
+    
+    def compute_vortex_density_profile(self, x: np.ndarray, y: np.ndarray,
+                                        n: int = None) -> np.ndarray:
+        """
+        Compute vortex density profile ρ = |ψ|².
+        
+        Shows zero density at core, bulk density far away.
+        
+        Args:
+            x: X coordinates (2D array)
+            y: Y coordinates (2D array)
+            n: Vortex winding number
+        
+        Returns:
+            Density array ρ(x,y)
+        """
+        psi = self.compute_vortex_wavefunction(x, y, n)
+        return np.abs(psi)**2
+    
+    def compute_GPE_kinetic_operator(self, kx: np.ndarray, ky: np.ndarray) -> np.ndarray:
+        """
+        Compute kinetic operator in k-space for split-step method.
+        
+        K̂ = ℏ²(kx² + ky²) / (2m)
+        
+        Args:
+            kx: k-space x coordinates (from fftfreq)
+            ky: k-space y coordinates (from fftfreq)
+        
+        Returns:
+            Kinetic operator K(kx,ky)
+        """
+        hbar = self.params['hbar']
+        m = self.params['m_eff']
+        
+        k_squared = kx**2 + ky**2
+        return (hbar**2 / (2 * m)) * k_squared
+    
+    def compute_GPE_interaction_operator(self, psi: np.ndarray) -> np.ndarray:
+        """
+        Compute interaction operator in real space.
+        
+        V_int = g × |ψ|² - μ + V_ext
+        
+        Args:
+            psi: Wavefunction ψ(x,y)
+        
+        Returns:
+            Interaction potential V(x,y)
+        """
+        g_TRZ = self.compute_g_TRZ()  # Time-reversal modified interaction
+        mu = self.params['mu_chemical']
+        V_ext = self.params['V_ext']
+        
+        density = np.abs(psi)**2
+        return g_TRZ * density - mu + V_ext
+    
+    def simulate_GPE_step(self, psi: np.ndarray, kx: np.ndarray, ky: np.ndarray,
+                          dt: float) -> np.ndarray:
+        """
+        Single split-step Fourier evolution step.
+        
+        Split-step method:
+            1. Half-step interaction in real space: ψ → ψ × exp(-i V dt/2ℏ)
+            2. Full step kinetic in k-space: ψ̃ → ψ̃ × exp(-i K dt/ℏ)
+            3. Half-step interaction in real space: ψ → ψ × exp(-i V dt/2ℏ)
+        
+        Args:
+            psi: Current wavefunction
+            kx: k-space x coordinates (2D)
+            ky: k-space y coordinates (2D)
+            dt: Time step
+        
+        Returns:
+            Evolved wavefunction ψ(t + dt)
+        """
+        hbar = self.params['hbar']
+        
+        # Half-step interaction (real space)
+        V = self.compute_GPE_interaction_operator(psi)
+        psi = psi * np.exp(-1j * V * dt / (2 * hbar))
+        
+        # Full step kinetic (k-space via FFT)
+        psi_k = np.fft.fft2(psi)
+        K = self.compute_GPE_kinetic_operator(kx, ky)
+        psi_k = psi_k * np.exp(-1j * K * dt / hbar)
+        psi = np.fft.ifft2(psi_k)
+        
+        # Half-step interaction (real space)
+        V = self.compute_GPE_interaction_operator(psi)
+        psi = psi * np.exp(-1j * V * dt / (2 * hbar))
+        
+        return psi
+    
+    def simulate_GPE_evolution(self, N_grid: int = 128, L_box: float = 20.0,
+                                dt: float = 0.1, n_steps: int = 100,
+                                n_vortex: int = None) -> dict:
+        """
+        Full GPE vortex simulation using split-step Fourier method.
+        
+        Simulates 2D GPE with a single quantized vortex:
+            iℏ ∂ψ/∂t = (-ℏ²/2m)∇²ψ + g|ψ|²ψ - μψ
+        
+        Args:
+            N_grid: Grid size (N × N)
+            L_box: Box size [dimensionless or meters]
+            dt: Time step
+            n_steps: Number of evolution steps
+            n_vortex: Vortex winding number
+        
+        Returns:
+            Dict with simulation results:
+                - 'psi_final': Final wavefunction
+                - 'density_final': Final density |ψ|²
+                - 'x', 'y': Coordinate arrays
+                - 'density_line': Central line cut of density
+                - 'parameters': Simulation parameters
+        """
+        if n_vortex is None:
+            n_vortex = int(self.params['n_vortex'])
+        
+        # Setup grid
+        dx = L_box / N_grid
+        x_1d = np.linspace(-L_box/2, L_box/2, N_grid)
+        y_1d = np.linspace(-L_box/2, L_box/2, N_grid)
+        x, y = np.meshgrid(x_1d, y_1d)
+        
+        # k-space coordinates
+        kx_1d = 2 * np.pi * np.fft.fftfreq(N_grid, dx)
+        ky_1d = 2 * np.pi * np.fft.fftfreq(N_grid, dx)
+        kx, ky = np.meshgrid(kx_1d, ky_1d)
+        
+        # Initial vortex wavefunction
+        psi = self.compute_vortex_wavefunction(x, y, n_vortex)
+        
+        # Time evolution
+        for step in range(n_steps):
+            psi = self.simulate_GPE_step(psi, kx, ky, dt)
+        
+        # Final density
+        density = np.abs(psi)**2
+        
+        # Central line cut (y=0)
+        center_idx = N_grid // 2
+        density_line = density[center_idx, :]
+        
+        return {
+            'psi_final': psi,
+            'density_final': density,
+            'x': x,
+            'y': y,
+            'x_line': x_1d,
+            'density_line': density_line,
+            'parameters': {
+                'N_grid': N_grid,
+                'L_box': L_box,
+                'dt': dt,
+                'n_steps': n_steps,
+                'n_vortex': n_vortex,
+                'healing_length': self.compute_healing_length(),
+                'g_TRZ': self.compute_g_TRZ(),
+            }
+        }
+    
     def compute(self, mode: str = 'full', **kwargs) -> dict:
         """
         Main computation interface.
@@ -103786,8 +104008,27 @@ class AetherSuperfluidUQFFCalculator(SelfExpandingMixin):
                 'n_vortices': len(positions),
             }
         
+        elif mode == 'gpe':
+            # GPE vortex simulation
+            N_grid = kwargs.get('N_grid', 128)
+            L_box = kwargs.get('L_box', 20.0)
+            dt = kwargs.get('dt', 0.1)
+            n_steps = kwargs.get('n_steps', 100)
+            n_vortex = kwargs.get('n_vortex', int(self.params['n_vortex']))
+            return self.simulate_GPE_evolution(N_grid, L_box, dt, n_steps, n_vortex)
+        
+        elif mode == 'quantization':
+            # Vortex quantization results
+            return {
+                'mode': 'quantization',
+                'n_eff': self.compute_n_effective(),
+                'kappa_UQFF_full': self.compute_kappa_UQFF_full(),
+                'xi_UQFF': self.compute_xi_UQFF(),
+                'kappa_base': self.compute_kappa_UQFF(),
+            }
+        
         else:
-            raise ValueError(f"Unknown mode: {mode}. Available: full, energy, healing, circulation, hamiltonian")
+            raise ValueError(f"Unknown mode: {mode}. Available: full, energy, healing, circulation, hamiltonian, gpe, quantization")
     
     def long_form_equation(self, r: float = 1e-5) -> str:
         """
