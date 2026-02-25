@@ -271,6 +271,42 @@ public:
      */
     double compute_xi_UQFF();
     
+    // ═══════════════════════════════════════════════════════════════════════════
+    // GPE VORTEX WAVEFUNCTION HELPERS
+    // ═══════════════════════════════════════════════════════════════════════════
+    
+    /**
+     * @brief Compute vortex wavefunction amplitude
+     * @param r Radial distance from vortex center [m]
+     * @return |ψ| = √(μ/g) × tanh(r/ξ)
+     * 
+     * Core depletion: tanh profile from 0 at center to 1 far away.
+     */
+    double compute_vortex_wavefunction_amplitude(double r);
+    
+    /**
+     * @brief Compute vortex density profile
+     * @param r Radial distance [m]
+     * @return ρ(r) = |ψ(r)|²
+     */
+    double compute_vortex_density(double r);
+    
+    /**
+     * @brief Compute GPE kinetic energy density in k-space
+     * @param k_squared k² = kx² + ky² [1/m²]
+     * @return K = ℏ²k²/(2m) [J]
+     * 
+     * Used in split-step Fourier method.
+     */
+    double compute_GPE_kinetic_energy_density(double k_squared);
+    
+    /**
+     * @brief Compute GPE interaction potential
+     * @param density Local density ρ = |ψ|²
+     * @return V = g_TRZ × ρ - μ + V_ext [J]
+     */
+    double compute_GPE_interaction_potential(double density);
+    
     /**
      * @brief Compute full UQFF quantum coherence
      * @param r Radial distance from center [m]

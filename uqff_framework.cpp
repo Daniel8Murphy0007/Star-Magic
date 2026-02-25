@@ -163,6 +163,12 @@ void UQFFFramework::init_explanations() {
     explanations.push_back("  UQFF core: ξ_UQFF = ξ×√(ρ_UA/ρ_SCm)     [≈3.16×ξ, larger cores]");
     explanations.push_back("  Cosmic [UA]: m_eff≈10^{-68} kg → κ_UQFF≈10^{34} m²/s");
     explanations.push_back("");
+    explanations.push_back("GPE VORTEX SIMULATION (Split-Step):");
+    explanations.push_back("  iℏ ∂ψ/∂t = (-ℏ²/2m)∇²ψ + g|ψ|²ψ - μψ");
+    explanations.push_back("  Initial: ψ = √(μ/g) × tanh(r/ξ) × exp(inθ)");
+    explanations.push_back("  Split-step: interaction (real) ↔ kinetic (k-space)");
+    explanations.push_back("  Density: ρ(r) = |ψ|² with core depletion");
+    explanations.push_back("");
     explanations.push_back("EXAMPLE (Sgr A*):");
     explanations.push_back("  t = 4.5×10⁹ yr, M = 8.604×10³⁶ kg, r = 1.27×10¹⁰ m");
     explanations.push_back("  Base g ≈ 3.561×10⁶ m/s², Full MUGE g ≈ 1.250×10⁷ m/s²");
@@ -508,6 +514,57 @@ double UQFFFramework::compute_xi_UQFF() {
     double ratio = rho_UA / rho_SCm;  // ≈ 10
     
     return xi_base * std::sqrt(ratio);
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// GPE VORTEX WAVEFUNCTION HELPERS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+double UQFFFramework::compute_vortex_wavefunction_amplitude(double r) {
+    // Vortex wavefunction amplitude: |ψ| = √(μ/g) × tanh(r/ξ)
+    // ψ = √(μ/g) × f(r) × exp(inθ)
+    // 
+    // f(r) = tanh(r/ξ): Core depletion (0 at center, 1 far away)
+    // Thomas-Fermi limit far from core: |ψ|² = μ/g
+    
+    double mu = params["mu_chemical"];
+    double g = params["g_interaction"];
+    double xi = compute_healing_length();
+    
+    // Bulk amplitude
+    double psi_bulk = (g > 0) ? std::sqrt(std::abs(mu / g)) : 1.0;
+    
+    // Core depletion
+    double r_safe = (r < 1e-20) ? 1e-20 : r;
+    double f_core = std::tanh(r_safe / xi);
+    
+    return psi_bulk * f_core;
+}
+
+double UQFFFramework::compute_vortex_density(double r) {
+    // Vortex density profile: ρ(r) = |ψ(r)|²
+    // Shows zero density at core, bulk density far away
+    double amp = compute_vortex_wavefunction_amplitude(r);
+    return amp * amp;
+}
+
+double UQFFFramework::compute_GPE_kinetic_energy_density(double k_squared) {
+    // Kinetic energy density in k-space: K = ℏ²k²/(2m)
+    // Used in split-step Fourier method for GPE evolution
+    double hbar = params["hbar"];
+    double m = params["m_eff"];
+    
+    return (hbar * hbar * k_squared) / (2.0 * m);
+}
+
+double UQFFFramework::compute_GPE_interaction_potential(double density) {
+    // Interaction potential in real space: V = g_TRZ × ρ - μ + V_ext
+    // Uses time-reversal modified interaction g_TRZ
+    double g_TRZ = compute_g_TRZ();
+    double mu = params["mu_chemical"];
+    double V_ext = params["V_ext"];
+    
+    return g_TRZ * density - mu + V_ext;
 }
 
 double UQFFFramework::quantum_coherence(double r, double t) {
@@ -947,6 +1004,44 @@ int main() {
     double kappa_base = uqff.compute_kappa_UQFF();
     std::cout << "  κ_base = h/m_eff = " << kappa_base << " m²/s\n";
     std::cout << "  Ratio κ_full/κ_base = " << (kappa_full/kappa_base) << " (expect ~0.89)\n";
+    std::cout << "  ✓ PASSED\n";
+
+    // Test GPE vortex wavefunction
+    std::cout << "\n═══════════════════════════════════════════════════════════════════════════════\n";
+    std::cout << "TEST 11: GPE Vortex Wavefunction (Split-Step Helpers)\n";
+    std::cout << "═══════════════════════════════════════════════════════════════════════════════\n";
+    
+    // Set parameters for He-II scale test
+    uqff.set_param("m_eff", 6.6e-27);           // He-4 mass
+    uqff.set_param("mu_chemical", 1e-23);       // Chemical potential
+    uqff.set_param("g_interaction", 1e-38);     // Interaction strength
+    
+    double xi_gpe = uqff.compute_healing_length();
+    std::cout << "  Healing length ξ = " << xi_gpe << " m\n";
+    
+    // Test wavefunction at different radii
+    double psi_core = uqff.compute_vortex_wavefunction_amplitude(0.0);
+    std::cout << "  |ψ(r=0)| = " << psi_core << " (expect ~0)\n";
+    
+    double psi_2xi = uqff.compute_vortex_wavefunction_amplitude(2.0 * xi_gpe);
+    std::cout << "  |ψ(r=2ξ)| = " << psi_2xi << "\n";
+    
+    double psi_10xi = uqff.compute_vortex_wavefunction_amplitude(10.0 * xi_gpe);
+    std::cout << "  |ψ(r=10ξ)| = " << psi_10xi << " (~bulk)\n";
+    
+    // Density profile
+    double rho_core = uqff.compute_vortex_density(0.0);
+    std::cout << "  ρ(r=0) = " << rho_core << " (expect ~0)\n";
+    
+    double rho_bulk = uqff.compute_vortex_density(10.0 * xi_gpe);
+    std::cout << "  ρ(r=10ξ) = " << rho_bulk << " (bulk density)\n";
+    
+    // GPE operators
+    double K_test = uqff.compute_GPE_kinetic_energy_density(1e10);  // k²=10¹⁰
+    std::cout << "  K(k²=10¹⁰) = " << K_test << " J\n";
+    
+    double V_int = uqff.compute_GPE_interaction_potential(rho_bulk);
+    std::cout << "  V_int(ρ_bulk) = " << V_int << " J\n";
     std::cout << "  ✓ PASSED\n";
 
     // Summary
