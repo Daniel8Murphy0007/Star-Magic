@@ -93782,6 +93782,8 @@ class GravitationalWaveUQFFCalculator:
         """
         if mode == 'waveform':
             return self._compute_waveform(**kwargs)
+        elif mode == 'full_uqff':
+            return self._compute_waveform_full_UQFF(**kwargs)
         elif mode == 'chirp':
             return self._compute_chirp_mapping(**kwargs)
         elif mode == 'memory':
@@ -93909,6 +93911,365 @@ class GravitationalWaveUQFFCalculator:
             'f_start': f_start,
             'f_isco': 4400 / (self.M_chirp / self.M_solar)  # ISCO frequency estimate
         }
+    
+    def _compute_waveform_full_UQFF(self, f_GW: np.ndarray = None, phi0: float = 0.0,
+                                     r: float = 410e6,  # Mpc → converted
+                                     B_t: float = 0.0,
+                                     B_crit: float = 4.4e13,
+                                     f_TRZ: float = 0.1,
+                                     rho_UA: float = 7.09e-36,
+                                     alpha_UA: float = None,
+                                     mu_j: float = 1e15,
+                                     gamma: float = 5e-5,
+                                     t: float = 0.0,
+                                     t_n: float = 0.0,
+                                     T_eff: float = 1e6,
+                                     beta_m: float = 0.01,
+                                     tau_merge: float = 1.0) -> Dict[str, Any]:
+        """
+        Compute FULL UQFF GW waveform with aether damping, SCm, f_TRZ, and U_m.
+        
+        STANDARD GW WAVEFORM (Quadrupole):
+            h = 4G²μM_tot/(c⁴ar) × cos(2ωt)
+            
+            For binary (m1, m2, separation a, ω = √(GM_tot/a³)):
+            h_+ = 2G/(c⁴r) × (Ï̈_xx - Ï̈_yy) × cos(2φ)
+            h_× = 4G/(c⁴r) × Ï̈_xy × sin(2φ)
+        
+        UQFF MODIFICATIONS:
+            1. AETHER ABSORPTION: h' = h × exp(-α_UA × ρ_UA × r/c)
+               [UA] density acts as viscous medium, damping GW over cosmic scales
+               α_UA ≈ G/c² (dimensional absorption coefficient)
+            
+            2. SCm SCREENING: h'' = h' × (1 - B_t/B_crit)
+               Superconducting horizons screen emission when B > B_crit
+            
+            3. TIME-REVERSAL PHASE DAMPING: h''' = h'' × (1-f_TRZ) × cos(2ωt + φ_TRZ)
+               f_TRZ damps phase negentropically, delaying chirp
+               φ_TRZ = 2π × f_TRZ × t / τ_merge
+            
+            4. MAGNETIC STRING INTERFERENCE:
+               h_UQFF = h''' × exp(-U_m/(GM²/a)) × (1 + β_m × sin(U_m × ω / k_B T))
+               U_m adds diffraction-like modulation, β_m ≈ 0.01
+        
+        Args:
+            f_GW: Frequency array (Hz), default 0.1-100 Hz
+            phi0: Initial phase (rad)
+            r: Distance to source in Mpc (default 410 Mpc for GW150914)
+            B_t: Binary magnetic field (T)
+            B_crit: Critical field for superconductivity (T)
+            f_TRZ: Time reversal factor (default 0.1)
+            rho_UA: [UA] vacuum density (J/m³), default 7.09e-36
+            alpha_UA: Aether absorption coefficient (m⁻¹), default G/c²
+            mu_j: Magnetic string tension (J·m)
+            gamma: Decay constant (day⁻¹)
+            t: Time parameter (days)
+            t_n: Normalized time
+            T_eff: Effective temperature for U_m interference (K)
+            beta_m: Interference amplitude (default 0.01)
+            tau_merge: Merger timescale (s) for phase delay
+        
+        Returns:
+            Dict with full UQFF waveform data
+        
+        References:
+            - Peters & Mathews (1963): Quadrupole formula
+            - LIGO GW150914: First detection template
+            - UQFF GW Waveforms derivation (SuperGrok4)
+        """
+        # Physical constants
+        k_B = 1.381e-23  # J/K
+        
+        # Default alpha_UA = G/c² (natural absorption scale)
+        if alpha_UA is None:
+            alpha_UA = self.G / self.c**2
+        
+        # Convert distance to meters
+        r_m = r * self.Mpc
+        
+        # Frequency array
+        if f_GW is None:
+            f_GW = np.logspace(-1, 2, 1000)  # 0.1 to 100 Hz
+        
+        # Angular frequency
+        omega = 2 * np.pi * f_GW
+        
+        # Geometric chirp mass (seconds)
+        M_geo = self.G * self.M_chirp / self.c**3
+        
+        # === STEP 1: STANDARD WAVEFORM (Quadrupole) ===
+        # h = 4(Mω)^(2/3) / D_L × cos(Φ)
+        # Phase evolution
+        Phi0 = phi0 + np.cumsum(omega * np.gradient(np.arange(len(f_GW))))
+        
+        # Amplitude
+        amp_standard = 4 * (M_geo * omega)**(2.0/3.0) / (r_m / self.c)
+        
+        # Polarizations (standard)
+        cos_iota = np.cos(self.iota)
+        h_plus_standard = amp_standard * (1 + cos_iota**2) / 2 * np.cos(Phi0)
+        h_cross_standard = amp_standard * cos_iota * np.sin(Phi0)
+        
+        # === STEP 2: AETHER ABSORPTION ===
+        # h' = h × exp(-α_UA × ρ_UA × r/c)
+        aether_arg = -alpha_UA * rho_UA * r_m / self.c
+        aether_arg = np.maximum(aether_arg, -700)  # Prevent underflow
+        aether_damping = np.exp(aether_arg)
+        
+        h_plus_aether = h_plus_standard * aether_damping
+        h_cross_aether = h_cross_standard * aether_damping
+        
+        # === STEP 3: SCm SCREENING ===
+        # h'' = h' × (1 - B_t/B_crit)
+        B_ratio = B_t / B_crit if B_crit > 0 else 0
+        SCm_factor = max(1 - B_ratio, 0.0)
+        
+        h_plus_SCm = h_plus_aether * SCm_factor
+        h_cross_SCm = h_cross_aether * SCm_factor
+        
+        # === STEP 4: TIME-REVERSAL PHASE DAMPING ===
+        # h''' = h'' × (1 - f_TRZ) × cos(2ωt + φ_TRZ)
+        TRZ_factor = 1 - f_TRZ
+        
+        # Phase delay: φ_TRZ = 2π × f_TRZ × t / τ_merge
+        t_array = np.arange(len(f_GW)) * 0.001  # Time samples in seconds
+        if tau_merge > 0:
+            phi_TRZ = 2 * np.pi * f_TRZ * t_array / tau_merge
+        else:
+            phi_TRZ = np.zeros_like(t_array)
+        
+        # Modified phase
+        Phi_UQFF = Phi0 + phi_TRZ
+        
+        # Recalculate with modified phase and TRZ damping
+        h_plus_TRZ = amp_standard * aether_damping * SCm_factor * TRZ_factor * \
+                     (1 + cos_iota**2) / 2 * np.cos(Phi_UQFF)
+        h_cross_TRZ = amp_standard * aether_damping * SCm_factor * TRZ_factor * \
+                      cos_iota * np.sin(Phi_UQFF)
+        
+        # === STEP 5: MAGNETIC STRING INTERFERENCE ===
+        # U_m = μ_j/a × (1 - exp(-γ t cos(π t_n)))
+        # Estimate orbital separation from frequency: a = (GM/ω²)^(1/3)
+        # Use first frequency as reference
+        omega_ref = omega[0] if len(omega) > 0 else 100
+        a_orbit = (self.G * self.M_chirp / omega_ref**2)**(1.0/3.0)
+        
+        if t > 0:
+            oscillation = np.cos(np.pi * t_n)
+            U_m = (mu_j / a_orbit) * (1 - np.exp(-gamma * t * max(oscillation, 0)))
+        else:
+            U_m = mu_j / a_orbit * 0.1  # Default 10%
+        
+        # Binding energy scale
+        E_binding = self.G * self.M_chirp**2 / a_orbit
+        
+        # String binding factor
+        string_exp = -U_m / E_binding if E_binding > 0 else 0
+        string_exp = max(string_exp, -700)
+        string_binding = np.exp(string_exp)
+        
+        # Interference modulation: (1 + β_m × sin(U_m × ω / k_B T))
+        interference_arg = U_m * omega / (k_B * T_eff)
+        interference_factor = 1 + beta_m * np.sin(interference_arg)
+        
+        # === STEP 6: FULL UQFF WAVEFORM ===
+        h_plus_UQFF = h_plus_TRZ * string_binding * interference_factor
+        h_cross_UQFF = h_cross_TRZ * string_binding * interference_factor
+        
+        # === SUMMARY STATISTICS ===
+        # Combined amplitude reduction
+        amp_ratio = np.mean(np.abs(h_plus_UQFF) / (np.abs(h_plus_standard) + 1e-50))
+        
+        # Peak strains
+        peak_standard = float(np.max(np.abs(h_plus_standard)))
+        peak_UQFF = float(np.max(np.abs(h_plus_UQFF)))
+        
+        # Phase lag (average)
+        avg_phase_lag = float(np.mean(phi_TRZ))
+        
+        # Numerical check for example case
+        example_check = None
+        if len(f_GW) >= 50:
+            # Mid-frequency example
+            idx = len(f_GW) // 2
+            h_std_mid = h_plus_standard[idx]
+            h_uqff_mid = h_plus_UQFF[idx]
+            damping_ratio = abs(h_uqff_mid / h_std_mid) if abs(h_std_mid) > 1e-50 else 0
+            example_check = {
+                'f_Hz': float(f_GW[idx]),
+                'h_standard': float(h_std_mid),
+                'h_UQFF': float(h_uqff_mid),
+                'damping_ratio': float(damping_ratio)
+            }
+        
+        results = {
+            'mode': 'full_uqff',
+            'equation': 'h_UQFF = h × exp(-α_UA ρ r/c) × (1-B/B_crit) × (1-f_TRZ) × exp(-U_m/E) × (1+β_m sin(...))',
+            'f_GW': f_GW,
+            'omega': omega,
+            'h_plus_standard': h_plus_standard,
+            'h_cross_standard': h_cross_standard,
+            'h_plus_UQFF': h_plus_UQFF,
+            'h_cross_UQFF': h_cross_UQFF,
+            'Phi_standard': Phi0,
+            'Phi_UQFF': Phi_UQFF,
+            'phi_TRZ': phi_TRZ,
+            # Damping factors
+            'aether_damping': float(aether_damping),
+            'SCm_factor': SCm_factor,
+            'TRZ_factor': TRZ_factor,
+            'string_binding': float(string_binding),
+            'interference_factor': interference_factor,
+            # U_m details
+            'U_m': float(U_m),
+            'a_orbit': float(a_orbit),
+            'E_binding': float(E_binding),
+            # Statistics
+            'peak_strain_standard': peak_standard,
+            'peak_strain_UQFF': peak_UQFF,
+            'amplitude_ratio': float(amp_ratio),
+            'avg_phase_lag_rad': avg_phase_lag,
+            'example_check': example_check,
+            # Parameters
+            'r_Mpc': r,
+            'r_m': r_m,
+            'B_t': B_t,
+            'B_crit': B_crit,
+            'B_ratio': B_ratio,
+            'f_TRZ': f_TRZ,
+            'rho_UA': rho_UA,
+            'alpha_UA': alpha_UA,
+            'mu_j': mu_j,
+            'beta_m': beta_m,
+            'T_eff': T_eff,
+            'M_chirp_solar': self.M_chirp / self.M_solar,
+            'D_L_Mpc': self.D_L / self.Mpc
+        }
+        
+        return results
+    
+    def compute_waveform_derivation(self, f_GW: np.ndarray = None, **kwargs) -> Tuple[Dict[str, Any], str]:
+        """
+        Compute UQFF GW waveform with full derivation steps.
+        
+        Returns:
+            results: Dict with waveform data
+            steps: Long-form derivation string
+        """
+        results = self._compute_waveform_full_UQFF(f_GW=f_GW, **kwargs)
+        
+        steps = f"""UQFF Gravitational Wave Waveform Derivation:
+═══════════════════════════════════════════════════════════════════════════════
+THEORETICAL BASIS:
+
+STANDARD GW WAVEFORM (Quadrupole Approximation, GR):
+  Linearized gravity → GW strain from quadrupole moment change:
+  
+  h_+ = (2G/c⁴r) × (Ï̈_xx - Ï̈_yy) × cos(2φ)
+  h_× = (4G/c⁴r) × Ï̈_xy × sin(2φ)
+  
+  For circular binary: h = 4G²μM_tot/(c⁴ar) × cos(2ωt)
+  Chirp mass: ℳ = μ^(3/5) × M_tot^(2/5)
+  Phase: df/dt ~ f^(11/3) (chirp)
+
+UQFF MODIFICATIONS:
+  Four mechanisms damp/modulate GW emission:
+  1. [UA] aether absorption (viscous medium)
+  2. [SCm] horizon screening (superconductivity)
+  3. f_TRZ phase damping (time-reversal negentropy)
+  4. U_m string interference (diffraction-like)
+
+═══════════════════════════════════════════════════════════════════════════════
+Inputs:
+  ℳ (chirp mass) = {results['M_chirp_solar']:.2f} M_sun
+  D_L = {results['D_L_Mpc']:.1f} Mpc
+  r (source distance) = {results['r_Mpc']:.1f} Mpc = {results['r_m']:.4e} m
+  B_t/B_crit = {results['B_ratio']:.4f}
+  f_TRZ = {results['f_TRZ']:.4f}
+  ρ_vac,[UA] = {results['rho_UA']:.4e} J/m³
+  α_UA = {results['alpha_UA']:.4e} m⁻¹
+  U_m = {results['U_m']:.4e} J
+  β_m = {results['beta_m']:.4f}
+
+STEP 1: STANDARD WAVEFORM (Quadrupole)
+  h = 4(Mω)^(2/3) / D_L × (1 + cos²ι)/2 × cos(Φ)
+  
+  Peak amplitude: h_standard = {results['peak_strain_standard']:.4e}
+
+STEP 2: AETHER ABSORPTION
+  h' = h × exp(-α_UA × ρ_UA × r/c)
+  
+  Exponent = -{results['alpha_UA']:.4e} × {results['rho_UA']:.4e} × {results['r_m']:.4e} / c
+  
+  Damping = {results['aether_damping']:.6f}
+  
+  {'Negligible aether damping at this distance' if results['aether_damping'] > 0.99 else f'Significant aether damping: {(1-results["aether_damping"])*100:.1f}% reduction'}
+
+STEP 3: SCm HORIZON SCREENING
+  h'' = h' × (1 - B_t/B_crit)
+  
+  B_t/B_crit = {results['B_ratio']:.4f}
+  SCm factor = {results['SCm_factor']:.4f}
+  
+  {'No SCm screening (B_t = 0)' if results['B_ratio'] < 0.01 else f'SCm reduces by {results["B_ratio"]*100:.1f}%'}
+
+STEP 4: TIME-REVERSAL PHASE DAMPING
+  h''' = h'' × (1 - f_TRZ) × cos(2ωt + φ_TRZ)
+  
+  φ_TRZ = 2π × f_TRZ × t / τ_merge
+  TRZ factor = (1 - {results['f_TRZ']}) = {results['TRZ_factor']:.4f}
+  Average phase lag = {results['avg_phase_lag_rad']:.4f} rad
+
+STEP 5: MAGNETIC STRING INTERFERENCE
+  h_UQFF = h''' × exp(-U_m/E_binding) × (1 + β_m sin(U_m ω / k_B T))
+  
+  U_m = {results['U_m']:.4e} J
+  E_binding = G M²/a = {results['E_binding']:.4e} J
+  String binding = exp(-U_m/E) = {results['string_binding']:.4f}
+  β_m = {results['beta_m']:.4f} (interference amplitude)
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: FULL UQFF GW WAVEFORM
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ h_UQFF = h × [aether] × [SCm] × [TRZ] × [string] × [interf]    │
+  │                                                                 │
+  │ DAMPING FACTORS:                                                │
+  │   Aether: {results['aether_damping']:.6f}                                              │
+  │   SCm: {results['SCm_factor']:.4f}                                                  │
+  │   TRZ: {results['TRZ_factor']:.4f}                                                  │
+  │   String: {results['string_binding']:.4f}                                               │
+  │                                                                 │
+  │ PEAK STRAIN:                                                    │
+  │   Standard: h = {results['peak_strain_standard']:.4e}                           │
+  │   UQFF: h_UQFF = {results['peak_strain_UQFF']:.4e}                          │
+  │                                                                 │
+  │ AMPLITUDE RATIO: h_UQFF/h = {results['amplitude_ratio']:.4f}                         │
+  │ PHASE LAG: {results['avg_phase_lag_rad']:.4f} rad (average)                          │
+  └─────────────────────────────────────────────────────────────────┘
+
+Physical Interpretation:
+  • Aether damping: {(1-results['aether_damping'])*100:.2f}% reduction (cosmic scale)
+  • SCm screening: {(1-results['SCm_factor'])*100:.2f}% reduction (horizon effect)
+  • f_TRZ negentropy: {results['f_TRZ']*100:.1f}% amplitude reduction + phase delay
+  • String modulation: {(1-results['string_binding'])*100:.2f}% reduction + β_m oscillation
+
+Numerical Example (GW150914-like):
+  μ ≈ 15 M_sun, M_tot = 65 M_sun, r = 410 Mpc
+  Standard: h ≈ 10^{{-21}}
+  With f_TRZ=0.1, B/B_crit=0.01, U_m factor ~0.37:
+  h_UQFF ≈ 10^{{-21}} × 0.9 × 0.99 × 0.37 × 1.05 ≈ 1.2 × 10^{{-22}}
+  (damped, modulated waveform)
+
+Q-SCOPE TESTABILITY:
+  • Compare LIGO/VIRGO observed waveforms to UQFF predictions
+  • Look for phase lag signatures (delayed chirp)
+  • Search for amplitude reduction vs distance deviation
+  • THz experiments: Micro-GW analogs with controlled U_m
+  • Sonic black hole experiments: Verify aether viscosity
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
