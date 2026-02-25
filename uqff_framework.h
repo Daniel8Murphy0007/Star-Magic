@@ -179,6 +179,69 @@ public:
      */
     double compute_superfluid_density_time(double rho_0, double t);
     
+    // ═══════════════════════════════════════════════════════════════════════════
+    // SUPERFLUID VORTEX DYNAMICS (Kelvin-Helmholtz derived)
+    // ═══════════════════════════════════════════════════════════════════════════
+    
+    /**
+     * @brief Compute vortex core size from chemical potential
+     * @return ξ = ℏ/√(2mμ) [m]
+     */
+    double compute_vortex_core_size_mu();
+    
+    /**
+     * @brief Compute azimuthal vortex velocity field
+     * @param r Radial distance from vortex center [m]
+     * @return v(r) = (ℏn/mr) [m/s] (1/r decay)
+     */
+    double compute_vortex_velocity_field(double r);
+    
+    /**
+     * @brief Compute self-induced velocity for curved vortex
+     * @return v_s,self ≈ (κ/4πR)ln(R/ξ) [m/s]
+     */
+    double compute_self_induced_velocity();
+    
+    /**
+     * @brief Compute 2D point-vortex Hamiltonian
+     * @param positions Vector of (x,y) vortex positions [m]
+     * @return H = -(ρκ²/4π)Σln|r_i-r_j| [J]
+     */
+    double compute_point_vortex_hamiltonian(const std::vector<std::pair<double, double>>& positions);
+    
+    /**
+     * @brief Compute UQFF circulation quantum
+     * @return κ_UQFF = h/m_eff [m²/s]
+     */
+    double compute_kappa_UQFF();
+    
+    /**
+     * @brief Compute UQFF vortex energy with f_TRZ damping
+     * @return E_v,UQFF = E_v × (1 - f_TRZ) [J/m]
+     */
+    double compute_vortex_energy_UQFF();
+    
+    /**
+     * @brief Compute [SCm] damped vortex velocity
+     * @param v_s Input velocity [m/s]
+     * @return v_s × (1 - B/B_crit) [m/s]
+     */
+    double compute_vortex_velocity_SCm(double v_s);
+    
+    /**
+     * @brief Compute vortex energy with U_m line tension
+     * @return E_v + U_m×ln(b/ξ) [J/m]
+     */
+    double compute_vortex_energy_with_tension();
+    
+    /**
+     * @brief Compute full UQFF vortex velocity (Step 7 formula)
+     * @param r Current radial position [m]
+     * @param vortex_positions Vector of other vortex positions (relative) [m]
+     * @return Full vortex velocity with self, mutual, tension contributions [m/s]
+     */
+    double compute_full_vortex_velocity_UQFF(double r, const std::vector<std::pair<double, double>>& vortex_positions);
+    
     /**
      * @brief Compute full UQFF quantum coherence
      * @param r Radial distance from center [m]

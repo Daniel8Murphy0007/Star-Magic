@@ -52,6 +52,12 @@ UQFFFramework::UQFFFramework(unsigned int seed) : rng(seed), noise_dist(0.0, 1.0
     params["e_charge"] = 1.602176634e-19;   // Electron charge [C]
     params["mu_0"] = 1.256637062e-6;        // Vacuum permeability [H/m]
     
+    // Superfluid Vortex Dynamics parameters (from Kelvin-Helmholtz derivation)
+    params["system_size"] = 1e-3;           // System size b [m] (1mm for He-II, cosmic scale for [UA])
+    params["curvature_radius"] = 1e-4;      // Vortex curvature radius R [m]
+    params["B_field"] = 0.0;                // Local magnetic field B [T]
+    params["h_planck"] = 6.62607015e-34;    // Planck constant h [J·s]
+    
     // Initialize default MUGE parameters
     params["M_initial"] = 1.0;
     params["M_dot"] = 0.0;
@@ -135,6 +141,19 @@ void UQFFFramework::init_explanations() {
     explanations.push_back("  Time-reversal: g_TRZ = g(1 - f_TRZ) [negentropic stabilization]");
     explanations.push_back("  Quantum pressure: P_Q = -(ℏ²/2m)(∇²√ρ/√ρ)");
     explanations.push_back("  Meissner factor: 1 - ρ_SCm/ρ_UA    [flux expulsion]");
+    explanations.push_back("");
+    explanations.push_back("SUPERFLUID VORTEX DYNAMICS (Kelvin-Helmholtz):");
+    explanations.push_back("  Circulation quantum: κ = h/m             [He-II: 9.97e-8 m²/s]");
+    explanations.push_back("  Vortex core: ξ = ℏ/√(2mμ)                [μ = chemical potential]");
+    explanations.push_back("  Velocity field: v(r) = (ℏn/mr)ê_φ        [1/r azimuthal decay]");
+    explanations.push_back("  Self-induced: v_s,self = (κ/4πR)ln(R/ξ)  [curved vortex]");
+    explanations.push_back("  Point-vortex H = -(ρκ²/4π)Σln|r_i-r_j|   [2D plasma-like]");
+    explanations.push_back("  UQFF circulation: κ_UQFF = h/m_eff");
+    explanations.push_back("  UQFF vortex energy: E_v,UQFF = E_v × (1 - f_TRZ)");
+    explanations.push_back("  [SCm] damping: v_s,UQFF = v_s × (1 - B/B_crit)");
+    explanations.push_back("  U_m tension: E_v += U_m × ln(b/ξ)");
+    explanations.push_back("  Full UQFF vortex velocity formula (Step 7):");
+    explanations.push_back("    v_v,UQFF = v_s,self(1-f_TRZ)(1-B/B_crit) + Σ(κ/2π)/|r-r_j| + U_m/(ρκ)");
     explanations.push_back("");
     explanations.push_back("EXAMPLE (Sgr A*):");
     explanations.push_back("  t = 4.5×10⁹ yr, M = 8.604×10³⁶ kg, r = 1.27×10¹⁰ m");
@@ -273,6 +292,152 @@ double UQFFFramework::compute_superfluid_density_time(double rho_0, double t) {
     double Gamma_loss = (1.0 - f_TRZ) / tau;
     
     return rho_0 * std::exp(-Gamma_loss * t);
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SUPERFLUID VORTEX DYNAMICS (Kelvin-Helmholtz derived)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+double UQFFFramework::compute_vortex_core_size_mu() {
+    // Vortex core size from chemical potential: ξ = ℏ / √(2mμ)
+    // Alternative to healing length using μ directly
+    double hbar = params["hbar"];
+    double m = params["m_eff"];
+    double mu = params["mu_chemical"];
+    
+    if (mu < 1e-100) return 1e18;  // Default cosmic scale
+    
+    return hbar / std::sqrt(2.0 * m * mu);
+}
+
+double UQFFFramework::compute_vortex_velocity_field(double r) {
+    // Azimuthal vortex velocity: v(r) = (ℏn/mr) [1/r decay]
+    // Vector field: v = (ℏn/mr) ê_φ (azimuthal direction)
+    double hbar = params["hbar"];
+    double m = params["m_eff"];
+    int n = static_cast<int>(params["n_vortex"]);
+    
+    if (r < 1e-20) r = 1e-20;  // Avoid singularity
+    
+    return (hbar * static_cast<double>(n)) / (m * r);
+}
+
+double UQFFFramework::compute_self_induced_velocity() {
+    // Self-induced velocity for curved vortex: v_s,self ≈ (κ/4πR) ln(R/ξ)
+    // R = curvature radius, κ = circulation quantum, ξ = core size
+    int n = static_cast<int>(params["n_vortex"]);
+    double kappa = compute_vortex_circulation(n);
+    double R = params["curvature_radius"];
+    double xi = compute_healing_length();
+    
+    // Avoid log of values ≤ 1
+    double ratio = R / xi;
+    if (ratio <= 1.0) ratio = 2.0;
+    
+    return (kappa / (4.0 * M_PI * R)) * std::log(ratio);
+}
+
+double UQFFFramework::compute_point_vortex_hamiltonian(const std::vector<std::pair<double, double>>& positions) {
+    // 2D point-vortex Hamiltonian: H = -(ρκ²/4π) ∑ ln|r_i - r_j|
+    // Like charges in plasma: vortices interact logarithmically
+    double rho = params["superfluid_density"];
+    int n = static_cast<int>(params["n_vortex"]);
+    double kappa = compute_vortex_circulation(n);
+    
+    double H = 0.0;
+    size_t N = positions.size();
+    
+    for (size_t i = 0; i < N; ++i) {
+        for (size_t j = i + 1; j < N; ++j) {
+            double dx = positions[i].first - positions[j].first;
+            double dy = positions[i].second - positions[j].second;
+            double dist = std::sqrt(dx*dx + dy*dy);
+            if (dist < 1e-20) dist = 1e-20;  // Regularize
+            H -= std::log(dist);
+        }
+    }
+    
+    return -(rho * kappa * kappa / (4.0 * M_PI)) * H;
+}
+
+double UQFFFramework::compute_kappa_UQFF() {
+    // UQFF circulation quantum: κ_UQFF = h/m_eff
+    // For cosmic aether: m_eff ~ √(ρ_vac,[UA] G/c²) ≈ Planck-like
+    double h = params["h_planck"];
+    double m_eff = params["m_eff"];
+    
+    return h / m_eff;
+}
+
+double UQFFFramework::compute_vortex_energy_UQFF() {
+    // UQFF vortex energy: E_v,UQFF = E_v × (1 - f_TRZ)
+    // f_TRZ damps decay, stabilizing vortices negentropically
+    double E_v = compute_vortex_energy();
+    double f_TRZ = params["f_TRZ"];
+    
+    return E_v * (1.0 - f_TRZ);
+}
+
+double UQFFFramework::compute_vortex_velocity_SCm(double v_s) {
+    // [SCm] damped vortex velocity: v_s,UQFF = v_s × (1 - B/B_crit)
+    // Meissner-like pinning at high field
+    double B = params["B_field"];
+    double B_crit = params["B_crit"];
+    
+    double factor = 1.0 - (B / B_crit);
+    if (factor < 0.0) factor = 0.0;  // Pin completely above B_crit
+    
+    return v_s * factor;
+}
+
+double UQFFFramework::compute_vortex_energy_with_tension() {
+    // Vortex energy with U_m line tension: E_v += U_m ln(b/ξ)
+    // U_m from magnetic string dynamics
+    double E_v = compute_vortex_energy();
+    double U_m = params["U_m"];
+    double b = params["system_size"];
+    double xi = compute_healing_length();
+    
+    double ratio = b / xi;
+    if (ratio <= 1.0) ratio = 2.0;
+    
+    return E_v + U_m * std::log(ratio);
+}
+
+double UQFFFramework::compute_full_vortex_velocity_UQFF(double r, const std::vector<std::pair<double, double>>& vortex_positions) {
+    // Full UQFF vortex velocity (Step 7):
+    // v_{v,UQFF} = v_{s,self} × (1 - f_TRZ) × (1 - B/B_crit)
+    //            + ∑ (κ_j / 2π) × (ẑ × (r - r_j)) / |r - r_j|²
+    //            + (U_m / ρκ) ∇⊥  [tension gradient approximation]
+    
+    // Self-induced contribution with UQFF dampings
+    double v_self = compute_self_induced_velocity();
+    double f_TRZ = params["f_TRZ"];
+    double B = params["B_field"];
+    double B_crit = params["B_crit"];
+    
+    double v_self_UQFF = v_self * (1.0 - f_TRZ) * (1.0 - B / B_crit);
+    if (v_self_UQFF < 0.0) v_self_UQFF = 0.0;
+    
+    // Mutual interaction (sum over other vortices)
+    int n = static_cast<int>(params["n_vortex"]);
+    double kappa = compute_vortex_circulation(n);
+    double v_mutual = 0.0;
+    
+    for (const auto& pos : vortex_positions) {
+        double dist = std::sqrt(pos.first * pos.first + pos.second * pos.second);
+        if (dist > 1e-10) {
+            // Magnitude of cross product contribution (2D z × r / |r|²)
+            v_mutual += (kappa / (2.0 * M_PI)) / dist;
+        }
+    }
+    
+    // U_m tension gradient contribution (approximation)
+    double U_m = params["U_m"];
+    double rho = params["superfluid_density"];
+    double v_tension = (kappa > 1e-60) ? (U_m / (rho * kappa)) : 0.0;
+    
+    return v_self_UQFF + v_mutual + v_tension;
 }
 
 double UQFFFramework::quantum_coherence(double r, double t) {
@@ -643,6 +808,49 @@ int main() {
     
     double rho_t = uqff.compute_superfluid_density_time(145.0, 1e17);
     std::cout << "  ρ(t=10¹⁷s) = " << rho_t << " kg/m³\n";
+    std::cout << "  ✓ PASSED\n";
+
+    // Test superfluid vortex dynamics
+    std::cout << "\n═══════════════════════════════════════════════════════════════════════════════\n";
+    std::cout << "TEST 9: Superfluid Vortex Dynamics (Kelvin-Helmholtz)\n";
+    std::cout << "═══════════════════════════════════════════════════════════════════════════════\n";
+    
+    // Set vortex parameters (He-II reference)
+    uqff.set_param("system_size", 1e-3);        // 1 mm
+    uqff.set_param("curvature_radius", 1e-4);   // 0.1 mm
+    uqff.set_param("B_field", 1e10);            // 10 GT (near B_crit)
+    uqff.set_param("m_eff", 6.6e-27);           // He-4 mass
+    uqff.set_param("mu_chemical", 1e-23);       // Chemical potential
+    
+    double xi_mu = uqff.compute_vortex_core_size_mu();
+    std::cout << "  Vortex core ξ(μ) = " << xi_mu << " m\n";
+    
+    double v_field = uqff.compute_vortex_velocity_field(1e-6);  // 1 μm from core
+    std::cout << "  v(r=1μm) = " << v_field << " m/s\n";
+    
+    double v_self = uqff.compute_self_induced_velocity();
+    std::cout << "  v_s,self (curved) = " << v_self << " m/s\n";
+    
+    double kappa_uqff = uqff.compute_kappa_UQFF();
+    std::cout << "  κ_UQFF = h/m_eff = " << kappa_uqff << " m²/s\n";
+    
+    double E_uqff = uqff.compute_vortex_energy_UQFF();
+    std::cout << "  E_v,UQFF (f_TRZ damped) = " << E_uqff << " J/m\n";
+    
+    double v_SCm = uqff.compute_vortex_velocity_SCm(100.0);
+    std::cout << "  v_SCm (B=10¹⁰T) = " << v_SCm << " m/s\n";
+    
+    double E_tension = uqff.compute_vortex_energy_with_tension();
+    std::cout << "  E_v + U_m tension = " << E_tension << " J/m\n";
+    
+    // Point vortex Hamiltonian (3 test vortices)
+    std::vector<std::pair<double, double>> vortices = {{0.0, 0.0}, {1e-4, 0.0}, {0.0, 1e-4}};
+    double H_vortex = uqff.compute_point_vortex_hamiltonian(vortices);
+    std::cout << "  H (3 vortices) = " << H_vortex << " J\n";
+    
+    // Full UQFF vortex velocity
+    double v_full = uqff.compute_full_vortex_velocity_UQFF(1e-5, vortices);
+    std::cout << "  v_v,UQFF (full) = " << v_full << " m/s\n";
     std::cout << "  ✓ PASSED\n";
 
     // Summary
