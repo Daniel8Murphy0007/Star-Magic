@@ -36647,6 +36647,368 @@ Q-SCOPE TESTABILITY:
 ═══════════════════════════════════════════════════════════════════════════════
 """
         return results, steps
+    
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # UQFF ENTANGLEMENT SPECTRUM (Aether-Modulated Reduced Density Matrix)
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def compute_UQFF_entanglement_spectrum(self, lambda_base: list = None,
+                                            epsilon_i: list = None,
+                                            T: float = 1.0,
+                                            Delta: float = 0.0,
+                                            delta: float = 0.01,
+                                            f_TRZ: float = None,
+                                            rho_SCm: float = None,
+                                            rho_UA: float = None,
+                                            mu_j: float = 1e15,
+                                            r: float = 1e9,
+                                            t: float = 0.0,
+                                            t_n: float = 0.0,
+                                            gamma: float = 5e-5,
+                                            frame: str = 'F_U_Bi') -> Tuple[dict, str]:
+        """
+        Compute UQFF-modified entanglement spectrum with aether broadening.
+        
+        STANDARD ENTANGLEMENT SPECTRUM:
+            For bipartite system A∪B in state |ψ⟩:
+            • Reduced density matrix: ρ_A = Tr_B(|ψ⟩⟨ψ|)
+            • Spectrum: {λ_i} eigenvalues of ρ_A
+            • von Neumann entropy: S = -Σ λ_i log λ_i
+            • Effective dimension: d_eff = 1 / Σ λ_i²
+            
+            Entanglement Hamiltonian: H_E = -log ρ_A
+            Pseudo-energies: ε_i = -log λ_i
+        
+        UQFF ENTANGLEMENT SPECTRUM:
+            Four modifications to standard spectrum:
+            
+            1. AETHER BROADENING:
+               λ_{i,UQFF} = λ_i × (1 + δ × ρ_UA/ρ_SCm)
+               [UA] superfluid channels add fluctuations
+            
+            2. TIME-REVERSAL FLATTENING (f_TRZ):
+               λ'' = λ' × (1 - f_TRZ) + f_TRZ/N
+               Negentropic mixing toward uniform distribution
+            
+            3. MAGNETIC STRING CUTOFF (U_m):
+               λ''' = λ'' × exp(-(ε_i - Δ)/(U_m/k_B T))
+               High-energy modes damped by string tension
+            
+            4. RENORMALIZATION:
+               Normalize at each step: Σ λ_i = 1
+        
+        Args:
+            lambda_base: Base spectrum {λ_i} (default: [0.5, 0.5] for 2-qubit)
+            epsilon_i: Pseudo-energies {ε_i} (default: computed from λ)
+            T: Temperature (K)
+            Delta: Gap energy (J)
+            delta: Fluctuation amplitude (default: 0.01)
+            f_TRZ: Time reversal factor (default: 0.1)
+            rho_SCm: SCm vacuum density (J/m³)
+            rho_UA: UA vacuum density (J/m³)
+            mu_j: Magnetic string tension (J·m)
+            r: Characteristic length scale (m)
+            t: Time (days)
+            t_n: Normalized time
+            gamma: Decay constant (day⁻¹)
+            frame: 'F_U_Bi' or 'F_U_Bi_i'
+        
+        Returns:
+            results: Dict with spectrum parameters
+            steps: Long-form derivation string
+        
+        References:
+            - Li & Haldane (2008): Entanglement spectrum in FQHE
+            - Ryu & Takayanagi (2006): Holographic entanglement entropy
+            - UQFF entanglement spectrum derivation (SuperGrok4)
+        """
+        # Defaults
+        f_TRZ = f_TRZ if f_TRZ is not None else self.f_TRZ
+        
+        if lambda_base is None:
+            lambda_base = [0.5, 0.5]  # Maximally entangled 2-qubit
+        
+        lambda_base = np.array(lambda_base, dtype=float)
+        N = len(lambda_base)  # Number of states
+        
+        # Normalize input if needed
+        lambda_sum = np.sum(lambda_base)
+        if abs(lambda_sum - 1.0) > 1e-10:
+            lambda_base = lambda_base / lambda_sum
+        
+        # Frame-dependent constant selection
+        if rho_SCm is None or rho_UA is None:
+            if frame == 'F_U_Bi_i':
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_BH
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_BH
+                frame_name = "F_U_Bi_i (outside→in, horizon scale)"
+            else:
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_ISM
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_ISM
+                frame_name = "F_U_Bi (inside→out, ISM scale)"
+        else:
+            frame_name = "Custom (user-specified)"
+        
+        # === STEP 1: Base Spectrum Statistics ===
+        S_base = -np.sum(lambda_base * np.log(lambda_base + 1e-300))  # von Neumann entropy
+        d_eff_base = 1.0 / np.sum(lambda_base**2)  # Effective dimension
+        
+        # Compute pseudo-energies ε_i = -log λ_i
+        if epsilon_i is None:
+            epsilon_i = -np.log(lambda_base + 1e-300)
+        else:
+            epsilon_i = np.array(epsilon_i, dtype=float)
+        
+        # === STEP 2: Aether Broadening ===
+        rho_ratio = rho_UA / rho_SCm if rho_SCm > 0 else 10.0
+        broadening_factor = 1 + delta * rho_ratio
+        
+        lambda_aether = lambda_base * broadening_factor
+        lambda_aether = lambda_aether / np.sum(lambda_aether)  # Renormalize
+        
+        S_aether = -np.sum(lambda_aether * np.log(lambda_aether + 1e-300))
+        
+        # === STEP 3: Time-Reversal Flattening (f_TRZ) ===
+        # λ'' = λ' × (1 - f_TRZ) + f_TRZ/N
+        uniform = 1.0 / N
+        lambda_TRZ = lambda_aether * (1 - f_TRZ) + f_TRZ * uniform
+        lambda_TRZ = lambda_TRZ / np.sum(lambda_TRZ)  # Renormalize
+        
+        S_TRZ = -np.sum(lambda_TRZ * np.log(lambda_TRZ + 1e-300))
+        S_max = np.log(N)  # Maximum entropy for N states
+        
+        # === STEP 4: Magnetic String Energy U_m ===
+        L_scale = r if r > 0 else 1e9
+        if t > 0:
+            oscillation = np.cos(np.pi * t_n)
+            U_m = (mu_j / L_scale) * (1 - np.exp(-gamma * t * max(oscillation, 0)))
+        else:
+            U_m = 1.0 * self.k_B * T  # Default: U_m/k_B T = 1 for moderate damping
+        
+        U_m_kBT = U_m / (self.k_B * T) if T > 0 else 1.0
+        
+        # === STEP 5: Magnetic String Cutoff ===
+        # λ''' = λ'' × exp(-(ε_i - ε_min)/(U_m/k_B T × ε_spread)) for ε_i > ε_threshold
+        # Use relative pseudo-energy to avoid over-damping
+        Delta_kBT = Delta / (self.k_B * T) if T > 0 else 0
+        
+        # Compute spectrum statistics for scaling
+        eps_min = np.min(epsilon_i)
+        eps_max = np.max(epsilon_i)
+        eps_spread = max(eps_max - eps_min, 0.1)  # Avoid division by zero
+        eps_threshold = eps_min + Delta_kBT  # Threshold is minimum + gap
+        
+        # Scale U_m by spectrum spread for proper damping
+        U_m_scaled = U_m_kBT * eps_spread
+        
+        lambda_cutoff = lambda_TRZ.copy()
+        for i, eps in enumerate(epsilon_i):
+            if eps > eps_threshold and U_m_scaled > 0:
+                # Damp relative to spread: softer damping for small U_m/k_B T
+                damping_exp = -(eps - eps_threshold) / U_m_scaled
+                damping_exp = max(damping_exp, -700)  # Prevent underflow
+                lambda_cutoff[i] *= np.exp(damping_exp)
+        
+        lambda_UQFF = lambda_cutoff / np.sum(lambda_cutoff)  # Final renormalization
+        
+        # === STEP 6: Final Statistics ===
+        S_UQFF = -np.sum(lambda_UQFF * np.log(lambda_UQFF + 1e-300))
+        d_eff_UQFF = 1.0 / np.sum(lambda_UQFF**2)
+        
+        # Entropy changes
+        Delta_S_aether = S_aether - S_base
+        Delta_S_TRZ = S_TRZ - S_aether
+        Delta_S_cutoff = S_UQFF - S_TRZ
+        Delta_S_total = S_UQFF - S_base
+        
+        # Spectrum flatness (1 = uniform, 0 = concentrated)
+        flatness_base = S_base / S_max if S_max > 0 else 0
+        flatness_UQFF = S_UQFF / S_max if S_max > 0 else 0
+        
+        results = {
+            'N': N,
+            'lambda_base': lambda_base.tolist(),
+            'epsilon_i': epsilon_i.tolist(),
+            'S_base': S_base,
+            'd_eff_base': d_eff_base,
+            'rho_ratio': rho_ratio,
+            'delta': delta,
+            'broadening_factor': broadening_factor,
+            'lambda_aether': lambda_aether.tolist(),
+            'S_aether': S_aether,
+            'f_TRZ': f_TRZ,
+            'lambda_TRZ': lambda_TRZ.tolist(),
+            'S_TRZ': S_TRZ,
+            'S_max': S_max,
+            'U_m': U_m,
+            'U_m_kBT': U_m_kBT,
+            'U_m_scaled': U_m_scaled,
+            'eps_min': eps_min,
+            'eps_max': eps_max,
+            'eps_spread': eps_spread,
+            'eps_threshold': eps_threshold,
+            'Delta': Delta,
+            'Delta_kBT': Delta_kBT,
+            'lambda_UQFF': lambda_UQFF.tolist(),
+            'S_UQFF': S_UQFF,
+            'd_eff_UQFF': d_eff_UQFF,
+            'Delta_S_aether': Delta_S_aether,
+            'Delta_S_TRZ': Delta_S_TRZ,
+            'Delta_S_cutoff': Delta_S_cutoff,
+            'Delta_S_total': Delta_S_total,
+            'flatness_base': flatness_base,
+            'flatness_UQFF': flatness_UQFF,
+            'T': T,
+            'rho_SCm': rho_SCm,
+            'rho_UA': rho_UA,
+            'frame': frame
+        }
+        
+        # Format spectrum arrays for display
+        lambda_base_str = ', '.join([f'{x:.4f}' for x in lambda_base])
+        lambda_aether_str = ', '.join([f'{x:.4f}' for x in lambda_aether])
+        lambda_TRZ_str = ', '.join([f'{x:.4f}' for x in lambda_TRZ])
+        lambda_UQFF_str = ', '.join([f'{x:.4f}' for x in lambda_UQFF])
+        epsilon_str = ', '.join([f'{x:.4f}' for x in epsilon_i])
+        
+        steps = f"""UQFF Entanglement Spectrum Analysis:
+═══════════════════════════════════════════════════════════════════════════════
+THEORETICAL BASIS:
+
+STANDARD ENTANGLEMENT SPECTRUM:
+  For bipartite system A∪B in state |ψ⟩ = Σ √λ_i |i_A⟩|i_B⟩:
+  
+  ρ_A = Tr_B(|ψ⟩⟨ψ|) = Σ λ_i |i_A⟩⟨i_A|
+  
+  Spectrum: {{λ_i}}, normalized Σ λ_i = 1
+  von Neumann entropy: S = -Σ λ_i log λ_i
+  Effective dimension: d_eff = 1 / Σ λ_i²
+  
+  Entanglement Hamiltonian: H_E = -log ρ_A
+  Pseudo-energies: ε_i = -log λ_i
+
+UQFF MODIFICATIONS:
+  1. Aether broadening: [UA] superfluid channels add fluctuations
+  2. f_TRZ flattening: Negentropic mixing toward uniform
+  3. U_m cutoff: High-energy modes damped by magnetic strings
+  4. Renormalization: Maintain Σ λ_i = 1 at each step
+
+═══════════════════════════════════════════════════════════════════════════════
+Inputs:
+  N = {N} states
+  λ_base = {{{lambda_base_str}}}
+  T = {T:.2f} K
+  Δ (gap) = {Delta:.4e} J
+  δ (fluctuation amp) = {delta:.4f}
+  f_TRZ = {f_TRZ:.4f}
+  Frame = {frame_name}
+  ρ_UA/ρ_SCm = {rho_ratio:.4f}
+
+STEP 1: BASE SPECTRUM STATISTICS
+  λ_base = {{{lambda_base_str}}}
+  ε_i = -log λ_i = {{{epsilon_str}}}
+  
+  von Neumann entropy: S_base = -Σ λ_i log λ_i
+                     = {S_base:.6f} nats
+  
+  Effective dimension: d_eff = 1 / Σ λ_i²
+                     = {d_eff_base:.4f}
+  
+  Maximum entropy: S_max = log({N}) = {S_max:.6f} nats
+  Flatness: S_base/S_max = {flatness_base:.4f} (1 = uniform)
+
+STEP 2: AETHER BROADENING
+  λ_{{i,UQFF}} = λ_i × (1 + δ × ρ_UA/ρ_SCm)
+  
+  Broadening factor = 1 + {delta:.4f} × {rho_ratio:.4f}
+                    = {broadening_factor:.6f}
+  
+  λ_aether (before renorm) = λ_base × {broadening_factor:.6f}
+  λ_aether (renormalized) = {{{lambda_aether_str}}}
+  
+  S_aether = {S_aether:.6f} nats
+  ΔS (aether) = {Delta_S_aether:+.6f} nats
+  
+  {'→ Entropy increased: aether broadens spectrum' if Delta_S_aether > 0 else '→ Entropy unchanged (symmetric)}'}
+
+STEP 3: TIME-REVERSAL FLATTENING (f_TRZ)
+  λ'' = λ' × (1 - f_TRZ) + f_TRZ/N
+      = λ_aether × (1 - {f_TRZ:.4f}) + {f_TRZ:.4f}/{N}
+  
+  Mixing toward uniform: {f_TRZ*100:.1f}% uniform + {(1-f_TRZ)*100:.1f}% original
+  
+  λ_TRZ = {{{lambda_TRZ_str}}}
+  
+  S_TRZ = {S_TRZ:.6f} nats
+  ΔS (f_TRZ) = {Delta_S_TRZ:+.6f} nats
+  
+  {'→ f_TRZ flattens spectrum toward maximum entropy' if Delta_S_TRZ > 0 else '→ Already near maximum entropy'}
+
+STEP 4: MAGNETIC STRING ENERGY
+  U_m = μ_j/r × (1 - exp(-γ t cos(π t_n)))
+      = {U_m:.4e} J
+  
+  U_m / (k_B T) = {U_m_kBT:.4f} (dimensionless)
+  Δ / (k_B T) = {Delta_kBT:.4f} (gap threshold)
+
+STEP 5: MAGNETIC STRING CUTOFF (relative scaling)
+  ε_min = {eps_min:.4f}, ε_max = {eps_max:.4f}
+  ε_spread = {eps_spread:.4f} (spectrum width)
+  ε_threshold = ε_min + Δ/(k_B T) = {eps_threshold:.4f}
+  
+  U_m,scaled = U_m/(k_B T) × ε_spread = {U_m_scaled:.4f}
+  
+  λ''' = λ'' × exp(-(ε_i - ε_threshold)/U_m,scaled)  for ε_i > ε_threshold
+  
+  High-energy modes (ε_i > ε_threshold) are exponentially suppressed.
+  
+  λ_UQFF (renormalized) = {{{lambda_UQFF_str}}}
+  
+  S_UQFF = {S_UQFF:.6f} nats
+  ΔS (cutoff) = {Delta_S_cutoff:+.6f} nats
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: UQFF ENTANGLEMENT SPECTRUM
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ UQFF ENTANGLEMENT SPECTRUM ({N} states)                         │
+  │                                                                 │
+  │ λ_UQFF = {{{lambda_UQFF_str}}}
+  │                                                                 │
+  │ von Neumann Entropy:                                            │
+  │   S_base = {S_base:.6f} nats                                        │
+  │   S_UQFF = {S_UQFF:.6f} nats                                        │
+  │   ΔS_total = {Delta_S_total:+.6f} nats                               │
+  │                                                                 │
+  │ Effective Dimension:                                            │
+  │   d_eff,base = {d_eff_base:.4f}                                         │
+  │   d_eff,UQFF = {d_eff_UQFF:.4f}                                         │
+  │                                                                 │
+  │ Spectrum Flatness: {flatness_base:.2f} → {flatness_UQFF:.2f}                              │
+  └─────────────────────────────────────────────────────────────────┘
+
+Physical Interpretation:
+  • Aether broadening: {Delta_S_aether*100:+.2f}% entropy change
+  • f_TRZ flattening: {Delta_S_TRZ*100:+.2f}% entropy change (toward uniform)
+  • U_m cutoff: {Delta_S_cutoff*100:+.2f}% entropy change
+  • Net effect: {Delta_S_total*100:+.2f}% total entropy change
+
+Numerical Example (from derivation):
+  2-qubit maximally entangled: λ_base = {{0.5, 0.5}}
+  ρ_ratio = 10, δ = 0.01, f_TRZ = 0.1, U_m/(k_B T) = 1
+  
+  Aether broadens: {{0.55, 0.45}} → asymmetric
+  f_TRZ flattens: {{0.495, 0.505}} → back toward uniform
+  U_m damps high-ε: Selective suppression if ε > Δ
+
+Q-SCOPE TESTABILITY:
+  • Measure spectrum in q-scope entangled THz circuits
+  • Verify aether broadening via δ × ρ_ratio signature
+  • Detect f_TRZ negentropic flattening effect
+  • Compare to standard QM predictions
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
 
 
 # Global Black Hole Phases Model instance
