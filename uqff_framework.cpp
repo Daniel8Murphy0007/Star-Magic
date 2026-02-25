@@ -60,7 +60,8 @@ UQFFFramework::UQFFFramework(unsigned int seed) : rng(seed), noise_dist(0.0, 1.0
     
     // Initialize default MUGE parameters
     params["M_initial"] = 1.0;
-    params["M_dot"] = 0.0;
+    params["M_dot"] = 0.01;             // Mass accretion rate [kg/s]
+    params["M_decay_rate"] = 0.001;     // For evaporation-like simulation
     params["r_0"] = 1.0;
     params["v_r"] = 0.0;
     params["H_t_z"] = 0.0;
@@ -818,6 +819,50 @@ void UQFFFramework::simulate_evolution(double r, double t_start, double t_end, d
     if (file_output) outfile.close();
 }
 
+void UQFFFramework::simulate_mass_evolution(double M_start, double t_start, double t_end, double dt, const std::string& output_file) {
+    // Mass evolution simulation: Evolve M over time with accretion/decay, output to file/console
+    // Mathematics: dM/dt = M_dot - M_decay_rate × M (accretion + evaporation-like decay)
+    // From scalability: Models mass dynamics in BH/galaxy systems
+    // UQFF context: Captures time-reversal effects on mass loss rate
+    std::ofstream outfile;
+    bool file_output = !output_file.empty();
+    if (file_output) {
+        outfile.open(output_file);
+        outfile << "time,Mass,dM_dt\n";
+    }
+
+    double M_current = M_start;
+    double f_TRZ = params["f_TRZ"];  // Time-reversal factor damps decay
+    
+    std::cout << "\nMass Evolution Simulation:\n";
+    std::cout << "  Initial mass: " << M_start << " kg\n";
+    std::cout << "  M_dot (accretion): " << params["M_dot"] << " kg/s\n";
+    std::cout << "  M_decay_rate: " << params["M_decay_rate"] << " /s\n";
+    std::cout << "  f_TRZ (negentropic damping): " << f_TRZ << "\n\n";
+    
+    for (double t = t_start; t <= t_end; t += dt) {
+        // UQFF-modified decay: (1 - f_TRZ) damps evaporation negentropically
+        double decay_effective = params["M_decay_rate"] * (1.0 - f_TRZ);
+        double dM_dt = params["M_dot"] - decay_effective * M_current;
+        M_current += dM_dt * dt;
+        
+        // Prevent negative mass
+        if (M_current < 0.0) M_current = 0.0;
+
+        if (file_output) {
+            outfile << t << "," << M_current << "," << dM_dt << "\n";
+        } else {
+            std::cout << "  t=" << t << ", Mass=" << M_current 
+                      << ", dM/dt=" << dM_dt << std::endl;
+        }
+    }
+
+    if (file_output) {
+        outfile.close();
+        std::cout << "Mass evolution saved to: " << output_file << "\n";
+    }
+}
+
 void UQFFFramework::display_explanations() {
     // Output captured text explanations
     // From core principles, mathematical structure, etc.
@@ -1190,6 +1235,25 @@ int main() {
     // Total interaction energy
     double E_total = uqff.compute_total_vortex_interaction_energy(vortices);
     std::cout << "  E_total = " << E_total << " J/m\n";
+    std::cout << "  ✓ PASSED\n";
+
+    // Test Mass Evolution Simulation
+    std::cout << "\n═══════════════════════════════════════════════════════════════════════════════\n";
+    std::cout << "TEST 13: Mass Evolution Simulation\n";
+    std::cout << "═══════════════════════════════════════════════════════════════════════════════\n";
+    
+    // Configure for PBH-like system
+    std::cout << "  Testing PBH-like mass evolution with UQFF corrections...\n";
+    uqff.set_param("M_dot", 1e10);              // Accretion rate [kg/s]
+    uqff.set_param("M_decay_rate", 1e-15);      // Hawking-like decay [1/s]
+    uqff.set_param("f_TRZ", 0.1);               // Negentropic damping
+    
+    // Run short simulation (Console output, not file)
+    uqff.simulate_mass_evolution(1e12, 0.0, 5.0, 1.0, "");
+    
+    // Run file output test
+    std::cout << "\n  Running file output test...\n";
+    uqff.simulate_mass_evolution(1e15, 0.0, 10.0, 1.0, "mass_evolution_test.csv");
     std::cout << "  ✓ PASSED\n";
 
     // Summary

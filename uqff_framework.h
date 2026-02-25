@@ -405,6 +405,20 @@ public:
                            const std::string& output_file = "");
 
     /**
+     * @brief Simulate mass evolution with accretion/decay (self-simulate)
+     * @param M_start Initial mass [kg]
+     * @param t_start Start time [s]
+     * @param t_end End time [s]
+     * @param dt Time step [s]
+     * @param output_file Optional CSV output file
+     * 
+     * Models: dM/dt = M_dot - M_decay_rate × M × (1 - f_TRZ)
+     * UQFF enhancement: f_TRZ damps evaporation negentropically.
+     */
+    void simulate_mass_evolution(double M_start, double t_start, double t_end, double dt,
+                                 const std::string& output_file = "");
+
+    /**
      * @brief Display framework explanations
      */
     void display_explanations();
