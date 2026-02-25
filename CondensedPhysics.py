@@ -102430,6 +102430,14 @@ class UQFFMUGECalculator:
         'M_DM': 0.0,               # Dark matter mass [kg]
         'delta_rho': 0.0,          # Density perturbation
         'rho': 1e-20,              # Background density [kg/m³]
+        
+        # Full UQFF Quantum Coherence parameters (from derivation)
+        'particle_mass': 9.109e-31,    # Electron mass [kg] (default test particle)
+        'k_B': 1.380649e-23,           # Boltzmann constant [J/K]
+        'T_coherence': 1e6,            # Temperature [K] (near horizon)
+        'U_m': 1e-20,                  # Magnetic string energy [J]
+        'coherence_scale_factor': 1e-5, # Tunable MUGE integration factor
+        'use_full_uqff_coherence': True, # True = full formula, False = simple
     }
     
     # Pre-defined astrophysical systems
@@ -102587,27 +102595,105 @@ class UQFFMUGECalculator:
         """Check if parameter exists."""
         return key in self.params
     
+    def compute_sigma_effective(self) -> float:
+        """
+        Compute effective sigma with aether damping.
+        
+        σ_eff = σ × (1 - ρ_SCm/ρ_UA)
+        
+        Aether vacuum densities modify the coherence length scale.
+        
+        Returns:
+            Effective sigma [m]
+        """
+        rho_ratio = self.params['rho_vac_SCm'] / self.params['rho_vac_UA']  # ~0.1
+        return self.params['coherence_sigma'] * (1.0 - rho_ratio)
+    
+    def compute_normalization_amplitude(self) -> float:
+        """
+        Compute wavefunction normalization amplitude.
+        
+        A = (√(2π) σ_eff)^(-1/2)
+        
+        Ensures ∫|ψ|² dr = 1 for Gaussian wavepacket.
+        
+        Returns:
+            Normalization amplitude A
+        """
+        sigma_eff = self.compute_sigma_effective()
+        return 1.0 / np.sqrt(np.sqrt(2.0 * np.pi) * sigma_eff)
+    
+    def time_reversal_correction(self, base_value: float) -> float:
+        """
+        Apply time-reversal correction factor.
+        
+        Correction: value × (1 + f_TRZ)
+        
+        Args:
+            base_value: Input value to correct
+        
+        Returns:
+            Corrected value with f_TRZ applied
+        """
+        return base_value * (1.0 + self.params['f_TRZ'])
+    
     def quantum_coherence(self, r: float, t: float) -> float:
         """
         Compute quantum coherence contribution near event horizon.
         
-        ψ(r,t) ≈ amp × exp(-(r-r_horizon)²/σ²) × cos(2πft)
+        Full UQFF derivation:
+            ψ(r,t) = A exp(-(r-r_h)²/2σ_eff²) exp(-i 2πft(1+f_TRZ))
+            C_UQFF = (ℏ²/2m σ_eff²) × |cos(2πft(1+f_TRZ))| × exp(-U_m/k_BT) × gaussian × scale
         
-        Models wavefunction coherence effects in extreme gravitational
-        environments, particularly near black hole horizons.
+        Where:
+            σ_eff = σ × (1 - ρ_SCm/ρ_UA)  [aether damping]
+            f_TRZ = 0.1                    [negentropic time-reversal]
+            U_m = magnetic string energy   [THz string damping]
+            k_B T = thermal energy         [decoherence scale]
         
         Args:
             r: Radial distance [m]
             t: Time [s]
         
         Returns:
-            Quantum coherence contribution
+            Quantum coherence contribution (scaled for MUGE integration)
         """
         distance_from_horizon = r - self.params['r_horizon']
-        sigma = self.params['coherence_sigma']
-        gaussian = np.exp(-(distance_from_horizon ** 2) / (sigma ** 2))
-        osc = np.cos(2.0 * np.pi * self.params['coherence_freq'] * t)
-        return self.params['coherence_amp'] * gaussian * osc
+        
+        if self.params.get('use_full_uqff_coherence', True):
+            # Full UQFF coherence with aether damping
+            sigma_eff = self.compute_sigma_effective()
+            
+            # Gaussian localization
+            gaussian = np.exp(-(distance_from_horizon ** 2) / (2.0 * sigma_eff ** 2))
+            
+            # Oscillatory term with f_TRZ frequency adjustment
+            f_adjusted = self.params['coherence_freq'] * (1.0 + self.params['f_TRZ'])
+            osc = np.abs(np.cos(2.0 * np.pi * f_adjusted * t))
+            
+            # Full UQFF coherence: C = (ℏ²/2m σ_eff²) × |cos| × exp(-U_m/k_BT) × gaussian
+            hbar = self.params['hbar']
+            m = self.params['particle_mass']
+            k_B = self.params['k_B']
+            T = self.params['T_coherence']
+            U_m = self.params['U_m']
+            
+            # Quantum kinetic prefactor: ℏ²/(2m σ_eff²)
+            quantum_prefactor = (hbar ** 2) / (2.0 * m * sigma_eff ** 2)
+            
+            # Magnetic string damping: exp(-U_m / k_B T)
+            magnetic_damping = np.exp(-U_m / (k_B * T))
+            
+            # Apply coherence_scale_factor for tunable contribution to MUGE
+            scale = self.params['coherence_scale_factor']
+            return self.params['coherence_amp'] * quantum_prefactor * gaussian * osc * magnetic_damping * scale
+        else:
+            # Simple model (original): psi(r,t) ≈ amp × exp(-(r-r_h)²/σ²) × cos(2πft)
+            sigma = self.params['coherence_sigma']
+            gaussian = np.exp(-(distance_from_horizon ** 2) / (sigma ** 2))
+            osc = np.cos(2.0 * np.pi * self.params['coherence_freq'] * t)
+            scale = self.params.get('coherence_scale_factor', 1e-5)
+            return self.params['coherence_amp'] * gaussian * osc * scale
     
     def compute_base_gravity(self, r: float, t: float) -> float:
         """
@@ -103024,6 +103110,689 @@ TOTAL MUGE GRAVITY: g = {result['g_total']:.6e} m/s²
 ════════════════════════════════════════════════════════════════════════════════
 """
         return eq
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# AETHER SUPERFLUID UQFF CALCULATOR (Feb 25, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# Superfluid vortex dynamics from Kelvin-Helmholtz derivation
+# GPE-derived methods for [UA] cosmic superfluid
+# Quantized vortices, healing length, circulation, and UQFF extensions
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class AetherSuperfluidUQFFCalculator(SelfExpandingMixin):
+    """
+    Aether Superfluid UQFF Calculator.
+    
+    Implements superfluid vortex dynamics from Gross-Pitaevskii and 
+    Kelvin-Helmholtz derivations for the Universal Aether ([UA]) superfluid.
+    
+    Key Physics:
+        - GPE-derived methods: healing length, vortex circulation, energy
+        - Kelvin-Helmholtz vortex dynamics: self-induced velocity, point-vortex Hamiltonian
+        - UQFF extensions: f_TRZ damping, [SCm] pinning, U_m line tension
+        - Full UQFF vortex velocity formula (Step 7)
+    
+    Physical Basis:
+        - [UA] as cosmic superfluid: ρ_vac,[UA] ≈ 7.09e-36 J/m³
+        - Vortices model magnetic strings (U_m), wormholes, GW damping
+        - f_TRZ ≈ 0.1 stabilizes vortices negentropically
+        - [SCm] pins vortices at B ~ B_crit
+    
+    Usage:
+        calc = AetherSuperfluidUQFFCalculator()
+        xi = calc.compute_healing_length()
+        kappa = calc.compute_vortex_circulation()
+        E_v = calc.compute_vortex_energy_uqff()
+    """
+    
+    # Physical Constants (SI units)
+    DEFAULT_PARAMS = {
+        # Fundamental constants
+        'G': 6.6743e-11,           # Gravitational constant [m³/kg/s²]
+        'c': 2.99792458e8,         # Speed of light [m/s]
+        'hbar': 1.0545718e-34,     # Reduced Planck constant [J·s]
+        'h_planck': 6.62607015e-34, # Planck constant [J·s]
+        
+        # UQFF vacuum parameters
+        'rho_vac_UA': 7.09e-36,    # Universal Aether density [kg/m³]
+        'rho_vac_SCm': 7.09e-37,   # Superconductive density [kg/m³]
+        'B_crit': 1e11,            # Critical magnetic field [T]
+        'f_TRZ': 0.1,              # Time Reversal Zone factor
+        't_Hubble': 4.35e17,       # Hubble time [s]
+        
+        # Superfluid parameters
+        'm_eff': 2.176e-8,         # Effective aether mass [kg] (~Planck mass)
+        'g_interaction': 1e-38,    # Interaction strength [J·m²]
+        'mu_chemical': 1e-30,      # Chemical potential [J]
+        'V_ext': 0.0,              # External potential [J]
+        'superfluid_density': 145.0, # Reference density [kg/m³] (He-4)
+        
+        # Vortex parameters
+        'n_vortex': 1,             # Vortex quantum number (integer)
+        'L_vortex': 1e10,          # Vortex length scale [m]
+        'system_size': 1e-3,       # System size b [m] (1mm for He-II)
+        'curvature_radius': 1e-4,  # Vortex curvature radius R [m]
+        'B_field': 0.0,            # Local magnetic field [T]
+        
+        # Magnetic string / tension
+        'U_m': 1e-20,              # Magnetic string energy [J]
+    }
+    
+    def __init__(self, **kwargs):
+        """
+        Initialize AetherSuperfluidUQFFCalculator.
+        
+        Args:
+            **kwargs: Override default parameters
+        """
+        self.params = self.DEFAULT_PARAMS.copy()
+        self.params.update(kwargs)
+        self.additional_terms = []
+        self._initialize_explanations()
+    
+    def _initialize_explanations(self):
+        """Initialize framework explanations."""
+        self.EXPLANATIONS = [
+            "═══════════════════════════════════════════════════════════════════════════════",
+            "AETHER SUPERFLUID UQFF CALCULATOR",
+            "═══════════════════════════════════════════════════════════════════════════════",
+            "",
+            "GPE-DERIVED METHODS:",
+            "  Healing length: ξ = √(ℏ²/(2mgρ))          [vortex core size]",
+            "  Vortex circulation: Γ = 2πℏn/m           [quantized]",
+            "  Vortex energy: E_v = (πρℏ²/m)ln(L/ξ)     [per unit length]",
+            "  Superfluid velocity: v_s = (ℏ/m)∇θ       [irrotational]",
+            "  g_TRZ = g(1 - f_TRZ)                     [negentropic stabilization]",
+            "  Quantum pressure: P_Q = -(ℏ²/2m)(∇²√ρ/√ρ)",
+            "  GPE potential: V_eff = V_ext + g_TRZ×ρ - μ",
+            "  Meissner factor: 1 - ρ_SCm/ρ_UA          [flux expulsion]",
+            "",
+            "KELVIN-HELMHOLTZ VORTEX DYNAMICS:",
+            "  Vortex core (μ): ξ = ℏ/√(2mμ)",
+            "  Velocity field: v(r) = (ℏn/mr)ê_φ        [1/r azimuthal]",
+            "  Self-induced: v_s,self = (κ/4πR)ln(R/ξ)  [curved vortex]",
+            "  Point-vortex H = -(ρκ²/4π)Σln|r_i-r_j|   [2D plasma-like]",
+            "",
+            "UQFF EXTENSIONS:",
+            "  κ_UQFF = h/m_eff                         [cosmic circulation]",
+            "  E_v,UQFF = E_v × (1 - f_TRZ)             [negentropic energy]",
+            "  v_s,UQFF = v_s × (1 - B/B_crit)          [[SCm] pinning]",
+            "  E_v + U_m × ln(b/ξ)                      [U_m line tension]",
+            "",
+            "FULL UQFF VORTEX VELOCITY (Step 7):",
+            "  v_v,UQFF = v_s,self(1-f_TRZ)(1-B/B_crit) + Σ(κ/2π)/|r-r_j| + U_m/(ρκ)",
+            "",
+            "═══════════════════════════════════════════════════════════════════════════════",
+        ]
+    
+    def set_param(self, key: str, value: float) -> None:
+        """Set a single parameter."""
+        self.params[key] = value
+    
+    def get_param(self, key: str) -> float:
+        """Get a parameter value (0.0 if not found)."""
+        return self.params.get(key, 0.0)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # GPE-DERIVED METHODS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_healing_length(self) -> float:
+        """
+        Compute healing length (coherence length).
+        
+        ξ = √(ℏ²/(2mgρ))
+        
+        Determines vortex core size. For cosmic aether: ξ ~ 10^18 m.
+        
+        Returns:
+            Healing length ξ [m]
+        """
+        hbar = self.params['hbar']
+        m = self.params['m_eff']
+        g = self.params['g_interaction']
+        rho = self.params['superfluid_density']
+        
+        denominator = 2.0 * m * g * rho
+        if denominator < 1e-100:
+            return 1e18  # Default cosmic scale
+        
+        return np.sqrt((hbar ** 2) / denominator)
+    
+    def compute_vortex_circulation(self, n: int = None) -> float:
+        """
+        Compute quantized vortex circulation.
+        
+        Γ = 2πℏn/m
+        
+        Kelvin's theorem: circulation is conserved in superfluid.
+        
+        Args:
+            n: Vortex quantum number (default: self.params['n_vortex'])
+        
+        Returns:
+            Circulation Γ [m²/s]
+        """
+        if n is None:
+            n = int(self.params['n_vortex'])
+        
+        hbar = self.params['hbar']
+        m = self.params['m_eff']
+        
+        return 2.0 * np.pi * hbar * float(n) / m
+    
+    def compute_vortex_energy(self) -> float:
+        """
+        Compute vortex energy per unit length.
+        
+        E_v = (πρℏ²/m) × ln(L/ξ)
+        
+        L = system size / vortex separation, ξ = healing length.
+        
+        Returns:
+            Vortex energy [J/m]
+        """
+        hbar = self.params['hbar']
+        m = self.params['m_eff']
+        rho = self.params['superfluid_density']
+        L = self.params['L_vortex']
+        xi = self.compute_healing_length()
+        
+        ratio = L / xi
+        if ratio <= 1.0:
+            ratio = 2.0  # Minimum bound
+        
+        return (np.pi * rho * hbar ** 2 / m) * np.log(ratio)
+    
+    def compute_superfluid_velocity(self, grad_theta: float) -> float:
+        """
+        Compute superfluid velocity from phase gradient.
+        
+        v_s = (ℏ/m) × ∇θ
+        
+        Irrotational flow: curl(v_s) = 0.
+        
+        Args:
+            grad_theta: Phase gradient ∇θ [1/m]
+        
+        Returns:
+            Superfluid velocity v_s [m/s]
+        """
+        hbar = self.params['hbar']
+        m = self.params['m_eff']
+        
+        return (hbar / m) * grad_theta
+    
+    def compute_g_TRZ(self) -> float:
+        """
+        Compute time-reversal modified interaction strength.
+        
+        g_TRZ = g × (1 - f_TRZ)
+        
+        f_TRZ damps decay, stabilizing vortices.
+        
+        Returns:
+            Modified interaction strength g_TRZ [J·m²]
+        """
+        g = self.params['g_interaction']
+        f_TRZ = self.params['f_TRZ']
+        
+        return g * (1.0 - f_TRZ)
+    
+    def compute_quantum_pressure(self, rho: float, grad2_sqrt_rho: float) -> float:
+        """
+        Compute quantum pressure term.
+        
+        P_Q = -(ℏ²/2m) × (∇²√ρ/√ρ)
+        
+        Prevents collapse at small scales (Heisenberg uncertainty).
+        
+        Args:
+            rho: Density ρ [kg/m³]
+            grad2_sqrt_rho: Laplacian of √ρ
+        
+        Returns:
+            Quantum pressure P_Q [J/m³]
+        """
+        if rho < 1e-100:
+            return 0.0
+        
+        hbar = self.params['hbar']
+        m = self.params['m_eff']
+        
+        sqrt_rho = np.sqrt(rho)
+        return -(hbar ** 2 / (2.0 * m)) * (grad2_sqrt_rho / sqrt_rho)
+    
+    def compute_GPE_potential(self, rho: float) -> float:
+        """
+        Compute GPE effective potential.
+        
+        V_eff = V_ext + g_TRZ × ρ - μ
+        
+        Args:
+            rho: Local density |ψ|² [kg/m³]
+        
+        Returns:
+            Effective potential V_eff [J]
+        """
+        V_ext = self.params['V_ext']
+        g_TRZ = self.compute_g_TRZ()
+        mu = self.params['mu_chemical']
+        
+        return V_ext + g_TRZ * rho - mu
+    
+    def compute_meissner_factor(self) -> float:
+        """
+        Compute Meissner-like expulsion factor at [SCm] boundaries.
+        
+        Factor = (1 - ρ_SCm/ρ_UA)
+        
+        At B < B_crit: full expulsion; at B > B_crit: penetration.
+        
+        Returns:
+            Meissner factor (dimensionless)
+        """
+        rho_SCm = self.params['rho_vac_SCm']
+        rho_UA = self.params['rho_vac_UA']
+        
+        return 1.0 - (rho_SCm / rho_UA)
+    
+    def compute_superfluid_density_time(self, rho_0: float, t: float) -> float:
+        """
+        Compute superfluid density with time evolution.
+        
+        ρ(t) = ρ_0 × exp(-Γ_loss × t)
+        
+        Modified by f_TRZ for negentropic stabilization.
+        
+        Args:
+            rho_0: Initial density [kg/m³]
+            t: Time [s]
+        
+        Returns:
+            Density ρ(t) [kg/m³]
+        """
+        f_TRZ = self.params['f_TRZ']
+        tau = self.params['t_Hubble']
+        
+        # Loss rate reduced by time-reversal
+        Gamma_loss = (1.0 - f_TRZ) / tau
+        
+        return rho_0 * np.exp(-Gamma_loss * t)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # KELVIN-HELMHOLTZ VORTEX DYNAMICS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_vortex_core_size_mu(self) -> float:
+        """
+        Compute vortex core size from chemical potential.
+        
+        ξ = ℏ/√(2mμ)
+        
+        Alternative to healing length using μ directly.
+        
+        Returns:
+            Vortex core size ξ [m]
+        """
+        hbar = self.params['hbar']
+        m = self.params['m_eff']
+        mu = self.params['mu_chemical']
+        
+        if mu < 1e-100:
+            return 1e18  # Default cosmic scale
+        
+        return hbar / np.sqrt(2.0 * m * mu)
+    
+    def compute_vortex_velocity_field(self, r: float) -> float:
+        """
+        Compute azimuthal vortex velocity field.
+        
+        v(r) = (ℏn/mr) [1/r decay]
+        
+        Vector field: v = (ℏn/mr) ê_φ (azimuthal direction).
+        
+        Args:
+            r: Radial distance from vortex center [m]
+        
+        Returns:
+            Vortex velocity magnitude [m/s]
+        """
+        if r < 1e-20:
+            r = 1e-20  # Avoid singularity
+        
+        hbar = self.params['hbar']
+        m = self.params['m_eff']
+        n = int(self.params['n_vortex'])
+        
+        return (hbar * float(n)) / (m * r)
+    
+    def compute_self_induced_velocity(self) -> float:
+        """
+        Compute self-induced velocity for curved vortex.
+        
+        v_s,self ≈ (κ/4πR) × ln(R/ξ)
+        
+        R = curvature radius, κ = circulation quantum, ξ = core size.
+        
+        Returns:
+            Self-induced velocity [m/s]
+        """
+        n = int(self.params['n_vortex'])
+        kappa = self.compute_vortex_circulation(n)
+        R = self.params['curvature_radius']
+        xi = self.compute_healing_length()
+        
+        ratio = R / xi
+        if ratio <= 1.0:
+            ratio = 2.0
+        
+        return (kappa / (4.0 * np.pi * R)) * np.log(ratio)
+    
+    def compute_point_vortex_hamiltonian(self, positions: list) -> float:
+        """
+        Compute 2D point-vortex Hamiltonian.
+        
+        H = -(ρκ²/4π) × Σ ln|r_i - r_j|
+        
+        Like charges in plasma: vortices interact logarithmically.
+        
+        Args:
+            positions: List of (x, y) vortex positions [m]
+        
+        Returns:
+            Hamiltonian H [J]
+        """
+        rho = self.params['superfluid_density']
+        n = int(self.params['n_vortex'])
+        kappa = self.compute_vortex_circulation(n)
+        
+        H_sum = 0.0
+        N = len(positions)
+        
+        for i in range(N):
+            for j in range(i + 1, N):
+                dx = positions[i][0] - positions[j][0]
+                dy = positions[i][1] - positions[j][1]
+                dist = np.sqrt(dx ** 2 + dy ** 2)
+                if dist < 1e-20:
+                    dist = 1e-20  # Regularize
+                H_sum -= np.log(dist)
+        
+        return -(rho * kappa ** 2 / (4.0 * np.pi)) * H_sum
+    
+    def compute_kappa_UQFF(self) -> float:
+        """
+        Compute UQFF circulation quantum.
+        
+        κ_UQFF = h/m_eff
+        
+        For cosmic aether: m_eff ~ √(ρ_vac,[UA] G/c²) ≈ Planck-like.
+        
+        Returns:
+            UQFF circulation quantum κ [m²/s]
+        """
+        h = self.params['h_planck']
+        m_eff = self.params['m_eff']
+        
+        return h / m_eff
+    
+    def compute_vortex_energy_uqff(self) -> float:
+        """
+        Compute UQFF vortex energy with f_TRZ damping.
+        
+        E_v,UQFF = E_v × (1 - f_TRZ)
+        
+        f_TRZ damps decay, stabilizing vortices negentropically.
+        
+        Returns:
+            UQFF vortex energy [J/m]
+        """
+        E_v = self.compute_vortex_energy()
+        f_TRZ = self.params['f_TRZ']
+        
+        return E_v * (1.0 - f_TRZ)
+    
+    def compute_vortex_velocity_scm(self, v_s: float) -> float:
+        """
+        Compute [SCm] damped vortex velocity.
+        
+        v_s,UQFF = v_s × (1 - B/B_crit)
+        
+        Meissner-like pinning at high field.
+        
+        Args:
+            v_s: Input velocity [m/s]
+        
+        Returns:
+            Damped velocity [m/s]
+        """
+        B = self.params['B_field']
+        B_crit = self.params['B_crit']
+        
+        factor = 1.0 - (B / B_crit)
+        if factor < 0.0:
+            factor = 0.0  # Pin completely above B_crit
+        
+        return v_s * factor
+    
+    def compute_vortex_energy_with_tension(self) -> float:
+        """
+        Compute vortex energy with U_m line tension.
+        
+        E_v += U_m × ln(b/ξ)
+        
+        U_m from magnetic string dynamics.
+        
+        Returns:
+            Total vortex energy [J/m]
+        """
+        E_v = self.compute_vortex_energy()
+        U_m = self.params['U_m']
+        b = self.params['system_size']
+        xi = self.compute_healing_length()
+        
+        ratio = b / xi
+        if ratio <= 1.0:
+            ratio = 2.0
+        
+        return E_v + U_m * np.log(ratio)
+    
+    def compute_full_vortex_velocity_uqff(self, r: float, vortex_positions: list = None) -> float:
+        """
+        Compute full UQFF vortex velocity (Step 7 formula).
+        
+        v_v,UQFF = v_s,self × (1 - f_TRZ) × (1 - B/B_crit)
+                 + Σ (κ_j / 2π) × (ẑ × (r - r_j)) / |r - r_j|²
+                 + (U_m / ρκ) ∇⊥   [tension gradient]
+        
+        Args:
+            r: Current radial position [m]
+            vortex_positions: List of (x, y) other vortex positions [m]
+        
+        Returns:
+            Full vortex velocity [m/s]
+        """
+        if vortex_positions is None:
+            vortex_positions = []
+        
+        # Self-induced contribution with UQFF dampings
+        v_self = self.compute_self_induced_velocity()
+        f_TRZ = self.params['f_TRZ']
+        B = self.params['B_field']
+        B_crit = self.params['B_crit']
+        
+        v_self_UQFF = v_self * (1.0 - f_TRZ) * (1.0 - B / B_crit)
+        if v_self_UQFF < 0.0:
+            v_self_UQFF = 0.0
+        
+        # Mutual interaction (sum over other vortices)
+        n = int(self.params['n_vortex'])
+        kappa = self.compute_vortex_circulation(n)
+        v_mutual = 0.0
+        
+        for pos in vortex_positions:
+            dist = np.sqrt(pos[0] ** 2 + pos[1] ** 2)
+            if dist > 1e-10:
+                v_mutual += (kappa / (2.0 * np.pi)) / dist
+        
+        # U_m tension gradient contribution (approximation)
+        U_m = self.params['U_m']
+        rho = self.params['superfluid_density']
+        v_tension = (U_m / (rho * kappa)) if kappa > 1e-60 else 0.0
+        
+        return v_self_UQFF + v_mutual + v_tension
+    
+    def compute(self, mode: str = 'full', **kwargs) -> dict:
+        """
+        Main computation interface.
+        
+        Args:
+            mode: Computation mode
+                - 'full': Full vortex velocity with all contributions
+                - 'energy': Vortex energy calculations
+                - 'healing': Healing length and core size
+                - 'circulation': Circulation quantum
+                - 'hamiltonian': Point-vortex Hamiltonian
+            **kwargs: Mode-specific parameters
+        
+        Returns:
+            Dict with computed results
+        """
+        if mode == 'full':
+            r = kwargs.get('r', 1e-5)
+            vortex_positions = kwargs.get('vortex_positions', [])
+            v_full = self.compute_full_vortex_velocity_uqff(r, vortex_positions)
+            
+            return {
+                'mode': 'full',
+                'v_full_uqff': v_full,
+                'v_self_induced': self.compute_self_induced_velocity(),
+                'v_self_uqff': self.compute_vortex_velocity_scm(
+                    self.compute_self_induced_velocity() * (1 - self.params['f_TRZ'])
+                ),
+                'kappa_uqff': self.compute_kappa_UQFF(),
+                'healing_length': self.compute_healing_length(),
+            }
+        
+        elif mode == 'energy':
+            return {
+                'mode': 'energy',
+                'E_v': self.compute_vortex_energy(),
+                'E_v_uqff': self.compute_vortex_energy_uqff(),
+                'E_v_tension': self.compute_vortex_energy_with_tension(),
+                'g_TRZ': self.compute_g_TRZ(),
+            }
+        
+        elif mode == 'healing':
+            return {
+                'mode': 'healing',
+                'xi_healing': self.compute_healing_length(),
+                'xi_mu': self.compute_vortex_core_size_mu(),
+                'meissner_factor': self.compute_meissner_factor(),
+            }
+        
+        elif mode == 'circulation':
+            n = kwargs.get('n', int(self.params['n_vortex']))
+            return {
+                'mode': 'circulation',
+                'circulation': self.compute_vortex_circulation(n),
+                'kappa_uqff': self.compute_kappa_UQFF(),
+                'n': n,
+            }
+        
+        elif mode == 'hamiltonian':
+            positions = kwargs.get('positions', [(0, 0), (1e-4, 0), (0, 1e-4)])
+            return {
+                'mode': 'hamiltonian',
+                'H': self.compute_point_vortex_hamiltonian(positions),
+                'n_vortices': len(positions),
+            }
+        
+        else:
+            raise ValueError(f"Unknown mode: {mode}. Available: full, energy, healing, circulation, hamiltonian")
+    
+    def long_form_equation(self, r: float = 1e-5) -> str:
+        """
+        Generate long-form equations with substituted values.
+        
+        Args:
+            r: Radial distance [m]
+        
+        Returns:
+            Formatted equation string
+        """
+        xi = self.compute_healing_length()
+        xi_mu = self.compute_vortex_core_size_mu()
+        kappa = self.compute_vortex_circulation()
+        E_v = self.compute_vortex_energy()
+        E_uqff = self.compute_vortex_energy_uqff()
+        v_self = self.compute_self_induced_velocity()
+        v_field = self.compute_vortex_velocity_field(r)
+        
+        eq = f"""
+════════════════════════════════════════════════════════════════════════════════
+AETHER SUPERFLUID UQFF CALCULATION
+════════════════════════════════════════════════════════════════════════════════
+
+PARAMETERS:
+  m_eff = {self.params['m_eff']:.3e} kg
+  ℏ = {self.params['hbar']:.5e} J·s
+  g_interaction = {self.params['g_interaction']:.3e} J·m²
+  ρ_superfluid = {self.params['superfluid_density']:.3e} kg/m³
+  f_TRZ = {self.params['f_TRZ']:.3f}
+  B_crit = {self.params['B_crit']:.3e} T
+  B_field = {self.params['B_field']:.3e} T
+
+GPE-DERIVED QUANTITIES:
+  1. Healing Length (coherence length)
+     ξ = √(ℏ²/(2mgρ))
+     ξ = √(({self.params['hbar']:.3e})²/(2×{self.params['m_eff']:.3e}×{self.params['g_interaction']:.3e}×{self.params['superfluid_density']:.3e}))
+     → ξ = {xi:.6e} m
+
+  2. Vortex Core Size (from μ)
+     ξ = ℏ/√(2mμ)
+     → ξ(μ) = {xi_mu:.6e} m
+
+  3. Quantized Circulation
+     Γ = 2πℏn/m
+     Γ = 2π×{self.params['hbar']:.3e}×{int(self.params['n_vortex'])}/{self.params['m_eff']:.3e}
+     → Γ = {kappa:.6e} m²/s
+
+  4. Vortex Energy (per unit length)
+     E_v = (πρℏ²/m) × ln(L/ξ)
+     → E_v = {E_v:.6e} J/m
+
+  5. UQFF Vortex Energy (f_TRZ damped)
+     E_v,UQFF = E_v × (1 - f_TRZ)
+     E_v,UQFF = {E_v:.3e} × (1 - {self.params['f_TRZ']:.3f})
+     → E_v,UQFF = {E_uqff:.6e} J/m
+
+KELVIN-HELMHOLTZ VORTEX DYNAMICS:
+  6. Velocity Field (at r = {r:.3e} m)
+     v(r) = ℏn/(mr)
+     → v = {v_field:.6e} m/s
+
+  7. Self-Induced Velocity (curved vortex)
+     v_s,self = (κ/4πR) × ln(R/ξ)
+     R = {self.params['curvature_radius']:.3e} m
+     → v_s,self = {v_self:.6e} m/s
+
+  8. UQFF Circulation Quantum
+     κ_UQFF = h/m_eff
+     → κ_UQFF = {self.compute_kappa_UQFF():.6e} m²/s
+
+  9. Meissner Factor
+     (1 - ρ_SCm/ρ_UA) = {self.compute_meissner_factor():.6f}
+
+════════════════════════════════════════════════════════════════════════════════
+"""
+        return eq
+    
+    def display_explanations(self) -> str:
+        """Get framework explanations as string."""
+        return '\n'.join(self.EXPLANATIONS)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
