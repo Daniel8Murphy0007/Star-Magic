@@ -37307,6 +37307,317 @@ Q-SCOPE TESTABILITY:
 ═══════════════════════════════════════════════════════════════════════════════
 """
         return results, steps
+    
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # UQFF BLACK HOLE ENTROPY (Aether-Holographic Bekenstein-Hawking)
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def compute_UQFF_black_hole_entropy(self, M: float = None,
+                                         M_solar: float = 1.0,
+                                         f_TRZ: float = None,
+                                         rho_SCm: float = None,
+                                         rho_UA: float = None,
+                                         mu_j: float = 1e15,
+                                         r: float = None,
+                                         t: float = 0.0,
+                                         t_n: float = 0.0,
+                                         gamma: float = 5e-5,
+                                         frame: str = 'F_U_Bi_i') -> Tuple[dict, str]:
+        """
+        Compute UQFF-modified black hole entropy with aether holography.
+        
+        STANDARD BEKENSTEIN-HAWKING ENTROPY (1973-1974):
+            S_BH = k_B × A / (4 × l_Pl²) = k_B × c³ × A / (4 × G × ℏ)
+            
+            Where:
+            • A = 4π r_s² = 4π (2GM/c²)² (horizon area)
+            • l_Pl = √(Gℏ/c³) ≈ 1.616e-35 m (Planck length)
+            
+            For M_sun BH: S_BH ~ 10^77 k_B
+            For Sgr A* (4×10^6 M_sun): S_BH ~ 10^90 k_B
+            
+            Hawking temperature: T_H = ℏc³/(8πGMk_B)
+        
+        UQFF BLACK HOLE ENTROPY:
+            Three modifications to standard formula:
+            
+            1. AETHER HOLOGRAPHIC RESCALING:
+               S' = S_BH × (ρ_UA/ρ_SCm)
+               [UA] inflates effective area → more information capacity
+            
+            2. TIME-REVERSAL NEGENTROPY:
+               S'' = S' × (1 - f_TRZ)
+               f_TRZ "recovers" hidden information
+            
+            3. MAGNETIC STRING COMPRESSION:
+               S_UQFF = S'' × exp(-U_m/(k_B×T_H))
+               U_m damps high-entropy modes
+            
+            Full formula:
+            S_UQFF = (k_B c³ A)/(4Gℏ) × (ρ_UA/ρ_SCm) × (1-f_TRZ) × exp(-U_m/(k_B T_H))
+        
+        Args:
+            M: Black hole mass (kg) - if None, uses M_solar
+            M_solar: Mass in solar masses (default: 1.0)
+            f_TRZ: Time reversal factor (default: 0.1)
+            rho_SCm: SCm vacuum density (J/m³)
+            rho_UA: UA vacuum density (J/m³)
+            mu_j: Magnetic string tension (J·m)
+            r: Length scale for U_m (m) - defaults to r_s
+            t: Time (days)
+            t_n: Normalized time
+            gamma: Decay constant (day⁻¹)
+            frame: 'F_U_Bi' or 'F_U_Bi_i'
+        
+        Returns:
+            results: Dict with entropy parameters
+            steps: Long-form derivation string
+        
+        References:
+            - Bekenstein (1973): Black hole entropy
+            - Hawking (1974): Black hole radiation
+            - UQFF black hole entropy derivation (SuperGrok4)
+        """
+        # Constants
+        G = self.G
+        c = self.c
+        hbar = self.hbar
+        k_B = self.k_B
+        M_sun = 1.989e30  # kg
+        
+        # Defaults
+        f_TRZ = f_TRZ if f_TRZ is not None else self.f_TRZ
+        
+        # Mass
+        if M is None:
+            M = M_solar * M_sun
+        
+        # Frame-dependent constants (use BH scale by default)
+        if rho_SCm is None or rho_UA is None:
+            if frame == 'F_U_Bi_i':
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_BH
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_BH
+                frame_name = "F_U_Bi_i (outside→in, horizon scale)"
+            else:
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_ISM
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_ISM
+                frame_name = "F_U_Bi (inside→out, ISM scale)"
+        else:
+            frame_name = "Custom (user-specified)"
+        
+        # === STEP 1: Schwarzschild Radius and Horizon Area ===
+        r_s = 2 * G * M / c**2  # Schwarzschild radius
+        A = 4 * np.pi * r_s**2  # Horizon area
+        
+        # Planck length
+        l_Pl = np.sqrt(G * hbar / c**3)
+        l_Pl_sq = l_Pl**2
+        
+        # === STEP 2: Standard Bekenstein-Hawking Entropy ===
+        S_BH = k_B * c**3 * A / (4 * G * hbar)
+        S_BH_dimensionless = A / (4 * l_Pl_sq)  # In Planck units
+        S_BH_bits = S_BH / (k_B * np.log(2))  # In bits
+        
+        # === STEP 3: Hawking Temperature ===
+        T_H = hbar * c**3 / (8 * np.pi * G * M * k_B)
+        
+        # === STEP 4: Aether Holographic Rescaling ===
+        rho_ratio = rho_UA / rho_SCm if rho_SCm > 0 else 10.0
+        
+        # Effective area inflated by aether ratio
+        A_UQFF = A * rho_ratio
+        S_aether = S_BH * rho_ratio
+        
+        # === STEP 5: Time-Reversal Negentropy ===
+        TRZ_factor = 1 - f_TRZ
+        S_TRZ = S_aether * TRZ_factor
+        
+        # === STEP 6: Magnetic String Energy U_m ===
+        L_scale = r if r is not None else r_s
+        if t > 0:
+            oscillation = np.cos(np.pi * t_n)
+            U_m = (mu_j / L_scale) * (1 - np.exp(-gamma * t * max(oscillation, 0)))
+        else:
+            # Default: U_m ≈ k_B × T_H for moderate damping
+            U_m = k_B * T_H
+        
+        # === STEP 7: Magnetic String Compression ===
+        # exp(-U_m/(k_B × T_H))
+        Um_over_kBT = U_m / (k_B * T_H) if T_H > 0 else 1.0
+        compression_factor = np.exp(-Um_over_kBT)
+        
+        S_UQFF = S_TRZ * compression_factor
+        S_UQFF_dimensionless = S_UQFF / k_B
+        S_UQFF_bits = S_UQFF / (k_B * np.log(2))
+        
+        # === STEP 8: Analysis ===
+        # Net change
+        ratio_to_BH = S_UQFF / S_BH if S_BH > 0 else 0
+        Delta_S = S_UQFF - S_BH
+        
+        # Information content
+        info_bits_BH = S_BH_bits
+        info_bits_UQFF = S_UQFF_bits
+        
+        results = {
+            'M': M,
+            'M_solar': M / M_sun,
+            'r_s': r_s,
+            'A': A,
+            'l_Pl': l_Pl,
+            'l_Pl_sq': l_Pl_sq,
+            'S_BH': S_BH,
+            'S_BH_dimensionless': S_BH_dimensionless,
+            'S_BH_bits': S_BH_bits,
+            'S_BH_log10': np.log10(S_BH_dimensionless) if S_BH_dimensionless > 0 else 0,
+            'T_H': T_H,
+            'rho_ratio': rho_ratio,
+            'A_UQFF': A_UQFF,
+            'S_aether': S_aether,
+            'f_TRZ': f_TRZ,
+            'TRZ_factor': TRZ_factor,
+            'S_TRZ': S_TRZ,
+            'U_m': U_m,
+            'Um_over_kBT': Um_over_kBT,
+            'compression_factor': compression_factor,
+            'S_UQFF': S_UQFF,
+            'S_UQFF_dimensionless': S_UQFF_dimensionless,
+            'S_UQFF_bits': S_UQFF_bits,
+            'S_UQFF_log10': np.log10(S_UQFF_dimensionless) if S_UQFF_dimensionless > 0 else 0,
+            'ratio_to_BH': ratio_to_BH,
+            'Delta_S': Delta_S,
+            'frame': frame
+        }
+        
+        steps = f"""UQFF Black Hole Entropy Analysis:
+═══════════════════════════════════════════════════════════════════════════════
+THEORETICAL BASIS:
+
+BEKENSTEIN-HAWKING ENTROPY (1973-1974):
+  Black holes have entropy proportional to horizon area:
+  
+  S_BH = k_B × A / (4 × l_Pl²) = k_B × c³ × A / (4 × G × ℏ)
+  
+  Where:
+  • A = 4π r_s² = 4π(2GM/c²)² (horizon area)
+  • l_Pl = √(Gℏ/c³) ≈ 1.616×10⁻³⁵ m (Planck length)
+  
+  Hawking temperature: T_H = ℏc³/(8πGMk_B)
+  
+  For solar-mass BH: S ~ 10⁷⁷ k_B
+  For Sgr A* (4×10⁶ M_sun): S ~ 10⁹⁰ k_B
+
+UQFF MODIFICATIONS:
+  1. Aether holographic rescaling: S' = S_BH × (ρ_UA/ρ_SCm)
+  2. Time-reversal negentropy: S'' = S' × (1 - f_TRZ)
+  3. Magnetic string compression: S_UQFF = S'' × exp(-U_m/(k_B T_H))
+
+═══════════════════════════════════════════════════════════════════════════════
+Inputs:
+  M = {M:.4e} kg = {M/M_sun:.4e} M_sun
+  f_TRZ = {f_TRZ:.4f}
+  Frame = {frame_name}
+  ρ_UA/ρ_SCm = {rho_ratio:.4f}
+
+STEP 1: SCHWARZSCHILD RADIUS AND HORIZON AREA
+  r_s = 2GM/c² = 2 × {G:.4e} × {M:.4e} / ({c:.4e})²
+      = {r_s:.4e} m
+      = {r_s/1000:.4e} km
+  
+  A = 4π r_s² = 4π × ({r_s:.4e})²
+    = {A:.4e} m²
+
+STEP 2: STANDARD BEKENSTEIN-HAWKING ENTROPY
+  l_Pl = √(Gℏ/c³) = {l_Pl:.4e} m
+  l_Pl² = {l_Pl_sq:.4e} m²
+  
+  S_BH = k_B × A / (4 × l_Pl²)
+       = {k_B:.4e} × {A:.4e} / (4 × {l_Pl_sq:.4e})
+       = {S_BH:.4e} J/K
+  
+  In Planck units: S_BH/k_B = {S_BH_dimensionless:.4e}
+  In bits: {S_BH_bits:.4e}
+  Log₁₀(S/k_B) = {np.log10(S_BH_dimensionless) if S_BH_dimensionless > 0 else 0:.2f}
+
+STEP 3: HAWKING TEMPERATURE
+  T_H = ℏc³/(8πGMk_B)
+      = {hbar:.4e} × ({c:.4e})³ / (8π × {G:.4e} × {M:.4e} × {k_B:.4e})
+      = {T_H:.4e} K
+  
+  {'T_H ≈ ' + f'{T_H:.2e} K (extremely cold - only observable for small BHs)' if T_H < 1e-6 else f'T_H = {T_H:.2f} K'}
+
+STEP 4: AETHER HOLOGRAPHIC RESCALING
+  S' = S_BH × (ρ_UA/ρ_SCm)
+     = {S_BH:.4e} × {rho_ratio:.4f}
+     = {S_aether:.4e} J/K
+  
+  A_UQFF = A × ρ_ratio = {A_UQFF:.4e} m²
+  
+  → Aether inflates information capacity by {rho_ratio:.1f}×
+
+STEP 5: TIME-REVERSAL NEGENTROPY
+  S'' = S' × (1 - f_TRZ)
+      = {S_aether:.4e} × (1 - {f_TRZ:.4f})
+      = {S_aether:.4e} × {TRZ_factor:.4f}
+      = {S_TRZ:.4e} J/K
+  
+  → f_TRZ "recovers" {f_TRZ*100:.1f}% of information
+
+STEP 6: MAGNETIC STRING ENERGY
+  U_m = {U_m:.4e} J
+  U_m / (k_B × T_H) = {U_m:.4e} / ({k_B:.4e} × {T_H:.4e})
+                    = {Um_over_kBT:.4f}
+
+STEP 7: MAGNETIC STRING COMPRESSION
+  exp(-U_m/(k_B × T_H)) = exp(-{Um_over_kBT:.4f})
+                        = {compression_factor:.6f}
+  
+  S_UQFF = S'' × compression
+         = {S_TRZ:.4e} × {compression_factor:.6f}
+         = {S_UQFF:.4e} J/K
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: UQFF BLACK HOLE ENTROPY
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ BLACK HOLE: M = {M/M_sun:.2e} M_sun                                   │
+  │                                                                 │
+  │ STANDARD BEKENSTEIN-HAWKING:                                    │
+  │   S_BH = {S_BH:.4e} J/K                                         │
+  │        = 10^{{{np.log10(S_BH_dimensionless):.1f}}} k_B                                           │
+  │        = {S_BH_bits:.4e} bits                                   │
+  │                                                                 │
+  │ UQFF ENTROPY:                                                   │
+  │   S_UQFF = {S_UQFF:.4e} J/K                                     │
+  │          = 10^{{{np.log10(S_UQFF_dimensionless) if S_UQFF_dimensionless > 0 else 0:.1f}}} k_B                                         │
+  │          = {S_UQFF_bits:.4e} bits                               │
+  │                                                                 │
+  │ RATIO: S_UQFF/S_BH = {ratio_to_BH:.4f}                                   │
+  │                                                                 │
+  │ Hawking Temperature: T_H = {T_H:.4e} K                          │
+  └─────────────────────────────────────────────────────────────────┘
+
+Modification Breakdown:
+  • Aether inflation: ×{rho_ratio:.1f}
+  • f_TRZ negentropy: ×{TRZ_factor:.2f}
+  • U_m compression: ×{compression_factor:.4f}
+  • Net factor: ×{ratio_to_BH:.4f}
+
+Numerical Example (from derivation):
+  Sgr A*: M ≈ 4×10⁶ M_sun, A ≈ 10²³ m², S_BH ≈ 10⁹⁰ k_B
+  ρ_ratio = 10, f_TRZ = 0.1, U_m/(k_B T_H) ≈ 1
+  
+  S_UQFF ≈ 10⁹⁰ × 10 × 0.9 × e⁻¹ ≈ 3.3×10⁹⁰ k_B
+  → Enhanced by aether, damped by strings
+
+Q-SCOPE TESTABILITY:
+  • Measure information content in horizon analogs (sonic BHs)
+  • Verify ρ_ratio scaling in aether-filled systems
+  • Detect f_TRZ information recovery signatures
+  • Compare entropy in THz BH simulators
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
 
 
 # Global Black Hole Phases Model instance
