@@ -102302,6 +102302,704 @@ RESULT: T_UQFF / T_H = {result['T_UQFF_to_T_H_ratio']:.6f}
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# UQFF MUGE FRAMEWORK CALCULATOR (Feb 26, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# Python port of uqff_framework.cpp - Full MUGE gravity computation
+# Self-expanding, self-updating, self-simulating capabilities
+# 
+# MUGE equation:
+#   g(r,t) = [GM(t)/r(t)²] × (1+H) × (1-B/B_crit) × (1+F_env)
+#          + ΣU_g + U_i + Λc²/3
+#          + [ℏ/√(Δx·Δp)] ∫ψ*Hψ dV (2π/t_Hub)
+#          + ρ_fluid × V × g_local
+#          + (M_vis + M_DM)(δρ/ρ + 3GM/r³)
+#
+# Reference: C++ module uqff_framework.cpp (commit 56c5304)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UQFFMUGECalculator:
+    """
+    UQFF MUGE (Modified Universal Gravity Equation) Calculator.
+    
+    Python port of the C++ UQFFFramework with full self-expanding,
+    self-updating, and self-simulating capabilities.
+    
+    Core Features:
+        - Full 10-term MUGE gravity computation
+        - Quantum coherence modeling near event horizons
+        - Self-expanding: add custom physics terms at runtime
+        - Self-updating: load parameters from config files
+        - Self-simulating: time evolution of gravity
+    
+    MUGE Equation:
+        g(r,t) = [GM(t)/r(t)²] × (1+H) × (1-B/B_crit) × (1+F_env)
+               + ΣU_g + U_i + Λc²/3
+               + [ℏ/√(Δx·Δp)] ∫ψ*Hψ dV (2π/t_Hub)
+               + ρ_fluid × V × g_local
+               + (M_vis + M_DM)(δρ/ρ + 3GM/r³)
+    
+    Usage:
+        calc = UQFFMUGECalculator()
+        calc.set_param('M_initial', 8.604e36)  # Sgr A*
+        result = calc.compute(mode='muge', r=1.27e10, t=1e9)
+        calc.simulate_evolution(r=1.27e10, t_start=0, t_end=1e10, dt=1e9)
+    """
+    
+    # Physical Constants (SI units)
+    DEFAULT_PARAMS = {
+        # Fundamental constants
+        'G': 6.6743e-11,           # Gravitational constant [m³/kg/s²]
+        'c': 2.99792458e8,         # Speed of light [m/s]
+        'hbar': 1.0545718e-34,     # Reduced Planck constant [J·s]
+        'Lambda': 1.1e-52,         # Cosmological constant [m⁻²]
+        't_Hubble': 4.35e17,       # Hubble time [s]
+        
+        # UQFF vacuum parameters
+        'rho_vac_UA': 7.09e-36,    # Universal Aether density [kg/m³]
+        'rho_vac_SCm': 7.09e-37,   # Superconductive density [kg/m³]
+        'B_crit': 1e11,            # Critical magnetic field [T]
+        'f_TRZ': 0.1,              # Time Reversal Zone factor
+        
+        # Quantum coherence parameters
+        'r_horizon': 1.27e10,      # Event horizon radius [m] (Sgr A*)
+        'coherence_amp': 1.0,      # Coherence amplitude
+        'coherence_sigma': 1e9,    # Coherence length scale [m]
+        'coherence_freq': 1e-15,   # Coherence frequency [Hz]
+        
+        # Mass/orbit parameters
+        'M_initial': 1.0,          # Initial mass [kg]
+        'M_dot': 0.0,              # Mass accretion rate [kg/s]
+        'r_0': 1.0,                # Initial radius [m]
+        'v_r': 0.0,                # Radial velocity [m/s]
+        
+        # Environmental factors
+        'H_t_z': 0.0,              # Hubble expansion factor
+        'B_t': 0.0,                # Magnetic field [T]
+        'F_env': 0.0,              # Environmental force factor
+        
+        # U_g terms (gravity components)
+        'U_g1': 0.0,               # Magnetic dipole term
+        'U_g2': 0.0,               # Superconductive term
+        'U_g3_prime': 0.0,         # External gravity term
+        'U_g4': 0.0,               # Reactivity term
+        
+        # Inertial term parameters
+        'lambda_I': 1.0,           # Inertial coupling
+        'omega_i': 1e-8,           # Angular frequency [rad/s]
+        't_n': 0.0,                # Normalized time
+        'F_RZ': 0.0,               # Time reversal factor
+        
+        # Quantum term parameters
+        'Delta_x': 1e-10,          # Position uncertainty [m]
+        'Delta_p': 1e-20,          # Momentum uncertainty [kg·m/s]
+        'psi_integral': 1.0,       # Wavefunction integral
+        
+        # Fluid term parameters
+        'rho_fluid': 1e-20,        # Fluid density [kg/m³]
+        'V': 1e50,                 # Volume [m³]
+        
+        # Dark matter parameters
+        'M_visible': 1.0,          # Visible mass [kg]
+        'M_DM': 0.0,               # Dark matter mass [kg]
+        'delta_rho': 0.0,          # Density perturbation
+        'rho': 1e-20,              # Background density [kg/m³]
+    }
+    
+    # Pre-defined astrophysical systems
+    ASTROPHYSICAL_SYSTEMS = {
+        'SgrA': {
+            'name': 'Sagittarius A*',
+            'M_initial': 8.604e36,    # 4.3×10⁶ M☉
+            'r_0': 1.27e10,           # Schwarzschild radius
+            'r_horizon': 1.27e10,
+            'B_t': 1e8,
+            'B_crit': 1e11,
+            'U_g1': 1e5,
+            'U_g2': 1e4,
+            'U_g3_prime': 1e3,
+            'U_g4': 1e2,
+        },
+        'M87': {
+            'name': 'M87*',
+            'M_initial': 1.29e40,     # 6.5×10⁹ M☉
+            'r_0': 1.92e13,
+            'r_horizon': 1.92e13,
+            'B_t': 1e6,
+            'B_crit': 1e11,
+            'U_g1': 1e8,
+            'U_g2': 1e7,
+            'U_g3_prime': 1e6,
+            'U_g4': 1e5,
+        },
+        'Sun': {
+            'name': 'Sun',
+            'M_initial': 1.989e30,
+            'r_0': 6.96e8,
+            'r_horizon': 2.95e3,      # Schwarzschild (not a BH)
+            'B_t': 1e-4,
+            'B_crit': 1e11,
+            'U_g1': 1e-2,
+            'U_g2': 1e-3,
+            'U_g3_prime': 1e-4,
+            'U_g4': 1e-5,
+        },
+        'NeutronStar': {
+            'name': 'Typical Neutron Star',
+            'M_initial': 2.8e30,      # 1.4 M☉
+            'r_0': 1e4,               # 10 km
+            'r_horizon': 4.14e3,
+            'B_t': 1e8,               # Strong field
+            'B_crit': 1e11,
+            'U_g1': 1e10,
+            'U_g2': 1e9,
+            'U_g3_prime': 1e8,
+            'U_g4': 1e7,
+        },
+        'Magnetar': {
+            'name': 'SGR 1745-2900',
+            'M_initial': 2.8e30,
+            'r_0': 1e4,
+            'r_horizon': 4.14e3,
+            'B_t': 1e14,              # Extreme field
+            'B_crit': 1e11,
+            'U_g1': 1e15,
+            'U_g2': 1e14,
+            'U_g3_prime': 1e13,
+            'U_g4': 1e12,
+        },
+    }
+    
+    # Framework explanations
+    EXPLANATIONS = [
+        "═══════════════════════════════════════════════════════════════════════════════",
+        "UQFF FRAMEWORK - Unified Quantum Field Framework",
+        "═══════════════════════════════════════════════════════════════════════════════",
+        "",
+        "CORE PRINCIPLES:",
+        "  1. Gravity emerges from quantum-superconductive interactions in aether",
+        "  2. [UA] Universal Aether: superfluid ρ ≈ 7.09e-36 J/m³ modulates energy/light",
+        "  3. [SCm] Type-II superconductivity: B_crit ≈ 10¹¹ T for extreme environments",
+        "  4. f_TRZ = 0.1: Time Reversal Zone negentropic factor (echo contractions/flares)",
+        "  5. U_m: km-scale magnetic/THz string dynamics",
+        "  6. F_env: Environmental forces (tidal, radiation, SN, BH, eta Car)",
+        "  7. Quantum: ℏ/√(Δx·Δp) + ψ wavefunction coherence",
+        "  8. Scalable: reactor to galaxy via U_g1-4 terms",
+        "",
+        "MUGE EQUATION:",
+        "  g(r,t) = [GM(t)/r(t)²] × (1+H) × (1-B/B_crit) × (1+F_env)",
+        "         + ΣU_g + U_i + Λc²/3",
+        "         + [ℏ/√(Δx·Δp)] ∫ψ*Hψ dV (2π/t_Hub)",
+        "         + ρ_fluid × V × g_local",
+        "         + (M_vis + M_DM)(δρ/ρ + 3GM/r³)",
+        "",
+        "TERM DERIVATION:",
+        "  1. Base: GM/r² with time-dep M(t) = M₀ + Ṁ×t",
+        "  2. Expansion: (1+H) where H = H₀√(0.3(1+z)³ + 0.7)",
+        "  3. Superconductive: (1-B/B_crit) where B = B₀exp(-t/τ_B)",
+        "  4. Environment: (1+F_env) = Σ(tidal + k_SF×SFR + ...)",
+        "  5. ΣU_g: U_g1(dipole μB) + U_g2(B²/2μ₀) + U_g3'(ext) + U_g4(reactivity)",
+        "  6. U_i: λ_I(ρ_SCm/ρ_UA)ω_icos(πt_n)(1+F_RZ)",
+        "  7. Cosmological: Λc²/3",
+        "  8. Quantum: ℏ/√(Δx·Δp) × ∫ψ*Hψ × (2π/t_Hub)",
+        "  9. Fluid: ρ_fluid × V × g_local",
+        " 10. Dark Matter: (M_vis+M_DM)(δρ/ρ + 3GM/r³)",
+        "",
+        "═══════════════════════════════════════════════════════════════════════════════",
+    ]
+    
+    def __init__(self, seed: int = None):
+        """
+        Initialize UQFF MUGE Calculator.
+        
+        Args:
+            seed: Random seed for stochastic noise (default: None = random)
+        """
+        # Initialize parameters with defaults
+        self.params = dict(self.DEFAULT_PARAMS)
+        
+        # Random number generator for stochastic terms
+        if seed is not None:
+            np.random.seed(seed)
+        self._rng = np.random.default_rng(seed)
+        
+        # Additional custom terms (callable(r, t) -> float)
+        self._additional_terms: List[callable] = []
+    
+    @classmethod
+    def from_system(cls, system_name: str) -> 'UQFFMUGECalculator':
+        """
+        Create calculator configured for a pre-defined astrophysical system.
+        
+        Args:
+            system_name: Key from ASTROPHYSICAL_SYSTEMS (e.g., 'SgrA', 'M87')
+        
+        Returns:
+            Configured calculator instance
+        """
+        if system_name not in cls.ASTROPHYSICAL_SYSTEMS:
+            available = list(cls.ASTROPHYSICAL_SYSTEMS.keys())
+            raise ValueError(f"Unknown system '{system_name}'. Available: {available}")
+        
+        calc = cls()
+        system = cls.ASTROPHYSICAL_SYSTEMS[system_name]
+        for key, value in system.items():
+            if key != 'name':
+                calc.params[key] = value
+        
+        return calc
+    
+    def set_param(self, key: str, value: float) -> None:
+        """Set a single parameter."""
+        self.params[key] = value
+    
+    def get_param(self, key: str) -> float:
+        """Get a parameter value (0.0 if not found)."""
+        return self.params.get(key, 0.0)
+    
+    def has_param(self, key: str) -> bool:
+        """Check if parameter exists."""
+        return key in self.params
+    
+    def quantum_coherence(self, r: float, t: float) -> float:
+        """
+        Compute quantum coherence contribution near event horizon.
+        
+        ψ(r,t) ≈ amp × exp(-(r-r_horizon)²/σ²) × cos(2πft)
+        
+        Models wavefunction coherence effects in extreme gravitational
+        environments, particularly near black hole horizons.
+        
+        Args:
+            r: Radial distance [m]
+            t: Time [s]
+        
+        Returns:
+            Quantum coherence contribution
+        """
+        distance_from_horizon = r - self.params['r_horizon']
+        sigma = self.params['coherence_sigma']
+        gaussian = np.exp(-(distance_from_horizon ** 2) / (sigma ** 2))
+        osc = np.cos(2.0 * np.pi * self.params['coherence_freq'] * t)
+        return self.params['coherence_amp'] * gaussian * osc
+    
+    def compute_base_gravity(self, r: float, t: float) -> float:
+        """
+        Compute base Newtonian gravity with time-dependent M(t) and r(t).
+        
+        g_base = GM(t)/r(t)² × (1+H) × (1-B/B_crit) × (1+F_env)
+        """
+        G = self.params['G']
+        M_t = self.params['M_initial'] + self.params['M_dot'] * t
+        r_t = self.params['r_0'] + self.params['v_r'] * t
+        
+        if r_t <= 0:
+            r_t = self.params['r_0']  # Prevent division by zero
+        
+        base = G * M_t / (r_t ** 2)
+        H_factor = 1 + self.params['H_t_z']
+        B_factor = 1 - self.params['B_t'] / self.params['B_crit']
+        F_factor = 1 + self.params['F_env']
+        
+        return base * H_factor * B_factor * F_factor
+    
+    def compute_Ug_sum(self) -> float:
+        """Compute sum of U_g terms."""
+        return (self.params['U_g1'] + self.params['U_g2'] + 
+                self.params['U_g3_prime'] + self.params['U_g4'])
+    
+    def compute_U_i(self) -> float:
+        """
+        Compute inertial term.
+        
+        U_i = λ_I × (ρ_SCm/ρ_UA) × ω_i × cos(πt_n) × (1+F_RZ)
+        """
+        ratio = self.params['rho_vac_SCm'] / self.params['rho_vac_UA']
+        return (self.params['lambda_I'] * ratio * self.params['omega_i'] * 
+                np.cos(np.pi * self.params['t_n']) * (1 + self.params['F_RZ']))
+    
+    def compute_cosmological(self) -> float:
+        """Compute cosmological constant term: Λc²/3"""
+        return self.params['Lambda'] * self.params['c'] ** 2 / 3.0
+    
+    def compute_quantum_term(self) -> float:
+        """
+        Compute quantum term.
+        
+        quantum = [ℏ/√(Δx·Δp)] × ∫ψ*Hψ × (2π/t_Hub)
+        """
+        hbar = self.params['hbar']
+        delta_x = self.params['Delta_x']
+        delta_p = self.params['Delta_p']
+        psi = self.params['psi_integral']
+        t_hub = self.params['t_Hubble']
+        
+        return hbar / np.sqrt(delta_x * delta_p) * psi * (2 * np.pi / t_hub)
+    
+    def compute_fluid_term(self, r: float, t: float) -> float:
+        """
+        Compute fluid term.
+        
+        fluid = ρ_fluid × V × g_local
+        """
+        G = self.params['G']
+        M_t = self.params['M_initial'] + self.params['M_dot'] * t
+        r_t = self.params['r_0'] + self.params['v_r'] * t
+        
+        if r_t <= 0:
+            r_t = self.params['r_0']
+        
+        g_local = G * M_t / (r_t ** 2)
+        return self.params['rho_fluid'] * self.params['V'] * g_local
+    
+    def compute_dm_term(self, r: float, t: float) -> float:
+        """
+        Compute dark matter perturbation term.
+        
+        dm = (M_vis + M_DM) × (δρ/ρ + 3GM/r³)
+        """
+        G = self.params['G']
+        M_t = self.params['M_initial'] + self.params['M_dot'] * t
+        r_t = self.params['r_0'] + self.params['v_r'] * t
+        
+        if r_t <= 0:
+            r_t = self.params['r_0']
+        
+        mass_sum = self.params['M_visible'] + self.params['M_DM']
+        density_term = self.params['delta_rho'] / self.params['rho']
+        gravity_term = 3 * G * M_t / (r_t ** 3)
+        
+        return mass_sum * (density_term + gravity_term)
+    
+    def compute_MUGE(self, r: float, t: float, noise_level: float = 0.0) -> float:
+        """
+        Compute full MUGE gravity.
+        
+        g(r,t) = base + ΣU_g + U_i + cosmo + quantum + fluid + dm + coherence
+                 + custom_terms + noise
+        
+        Args:
+            r: Radial distance [m]
+            t: Time [s]
+            noise_level: Amplitude of stochastic noise (default: 0)
+        
+        Returns:
+            Total gravity [m/s²]
+        """
+        # Compute all terms
+        base = self.compute_base_gravity(r, t)
+        sum_Ug = self.compute_Ug_sum()
+        U_i = self.compute_U_i()
+        cosmo = self.compute_cosmological()
+        quantum = self.compute_quantum_term()
+        fluid = self.compute_fluid_term(r, t)
+        dm = self.compute_dm_term(r, t)
+        coherence = self.quantum_coherence(r, t)
+        
+        # Sum all terms
+        total = base + sum_Ug + U_i + cosmo + quantum + fluid + dm + coherence
+        
+        # Add custom terms
+        for term_func in self._additional_terms:
+            total += term_func(r, t)
+        
+        # Add stochastic noise
+        if noise_level > 0:
+            noise = noise_level * self._rng.normal()
+            total += noise
+        
+        return total
+    
+    def add_term(self, term_func: callable) -> None:
+        """
+        Add custom physics term (self-expand).
+        
+        Args:
+            term_func: Function of (r, t) returning gravity contribution
+        
+        Example:
+            calc.add_term(lambda r, t: 0.1 * t / (r + 1))
+        """
+        self._additional_terms.append(term_func)
+    
+    def term_count(self) -> int:
+        """Get number of custom terms."""
+        return len(self._additional_terms)
+    
+    def clear_terms(self) -> None:
+        """Clear all custom terms."""
+        self._additional_terms.clear()
+    
+    def update_from_file(self, config_file: str) -> None:
+        """
+        Load parameters from config file (self-update).
+        
+        File format: key=value (one per line)
+        Lines starting with # are comments.
+        
+        Args:
+            config_file: Path to config file
+        """
+        with open(config_file, 'r') as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#'):
+                    if '=' in line:
+                        key, value = line.split('=', 1)
+                        try:
+                            self.params[key.strip()] = float(value.strip())
+                        except ValueError:
+                            pass  # Skip non-numeric values
+    
+    def export_params(self, output_file: str) -> None:
+        """
+        Export parameters to config file.
+        
+        Args:
+            output_file: Path to output file
+        """
+        with open(output_file, 'w') as f:
+            f.write("# UQFF MUGE Framework Parameters Export\n")
+            f.write("# Generated by UQFFMUGECalculator\n\n")
+            for key, value in sorted(self.params.items()):
+                f.write(f"{key}={value}\n")
+    
+    def simulate_evolution(self, r: float, t_start: float, t_end: float, 
+                          dt: float, noise_level: float = 0.0) -> Dict[str, Any]:
+        """
+        Simulate gravity evolution over time (self-simulate).
+        
+        Args:
+            r: Fixed radial distance [m]
+            t_start: Start time [s]
+            t_end: End time [s]
+            dt: Time step [s]
+            noise_level: Stochastic noise amplitude
+        
+        Returns:
+            Dict with times, gravities, and metadata
+        """
+        times = []
+        gravities = []
+        
+        t = t_start
+        while t <= t_end:
+            g = self.compute_MUGE(r, t, noise_level)
+            times.append(t)
+            gravities.append(g)
+            t += dt
+        
+        return {
+            'mode': 'evolution',
+            'r': r,
+            't_start': t_start,
+            't_end': t_end,
+            'dt': dt,
+            'n_steps': len(times),
+            'times': np.array(times),
+            'gravities': np.array(gravities),
+            'g_min': min(gravities),
+            'g_max': max(gravities),
+            'g_mean': np.mean(gravities),
+        }
+    
+    def compute(self, mode: str = 'muge', **kwargs) -> Dict[str, Any]:
+        """
+        Main computation interface.
+        
+        Modes:
+            'muge': Full MUGE gravity calculation
+            'breakdown': Individual term breakdown
+            'coherence': Quantum coherence analysis
+            'evolution': Time evolution simulation
+            'all_systems': Compute for all pre-defined systems
+        
+        Args:
+            mode: Calculation mode
+            r: Radial distance [m]
+            t: Time [s]
+            noise_level: Stochastic noise amplitude
+        
+        Returns:
+            Dict with calculation results
+        """
+        r = kwargs.get('r', self.params['r_0'])
+        t = kwargs.get('t', 0.0)
+        noise_level = kwargs.get('noise_level', 0.0)
+        
+        if mode == 'muge':
+            g = self.compute_MUGE(r, t, noise_level)
+            return {
+                'mode': 'muge',
+                'r': r,
+                't': t,
+                'g_total': g,
+                'custom_terms': self.term_count(),
+                'noise_level': noise_level,
+            }
+        
+        elif mode == 'breakdown':
+            base = self.compute_base_gravity(r, t)
+            sum_Ug = self.compute_Ug_sum()
+            U_i = self.compute_U_i()
+            cosmo = self.compute_cosmological()
+            quantum = self.compute_quantum_term()
+            fluid = self.compute_fluid_term(r, t)
+            dm = self.compute_dm_term(r, t)
+            coherence = self.quantum_coherence(r, t)
+            
+            return {
+                'mode': 'breakdown',
+                'r': r,
+                't': t,
+                'terms': {
+                    'base_gravity': base,
+                    'sum_Ug': sum_Ug,
+                    'U_i': U_i,
+                    'cosmological': cosmo,
+                    'quantum': quantum,
+                    'fluid': fluid,
+                    'dark_matter': dm,
+                    'coherence': coherence,
+                },
+                'g_total': base + sum_Ug + U_i + cosmo + quantum + fluid + dm + coherence,
+            }
+        
+        elif mode == 'coherence':
+            coh_at_r = self.quantum_coherence(r, t)
+            coh_at_horizon = self.quantum_coherence(self.params['r_horizon'], t)
+            
+            return {
+                'mode': 'coherence',
+                'r': r,
+                't': t,
+                'r_horizon': self.params['r_horizon'],
+                'coherence_at_r': coh_at_r,
+                'coherence_at_horizon': coh_at_horizon,
+                'sigma': self.params['coherence_sigma'],
+                'freq': self.params['coherence_freq'],
+            }
+        
+        elif mode == 'evolution':
+            t_start = kwargs.get('t_start', 0.0)
+            t_end = kwargs.get('t_end', 1e10)
+            dt = kwargs.get('dt', 1e9)
+            return self.simulate_evolution(r, t_start, t_end, dt, noise_level)
+        
+        elif mode == 'all_systems':
+            results = {}
+            for key, system in self.ASTROPHYSICAL_SYSTEMS.items():
+                calc = UQFFMUGECalculator.from_system(key)
+                r_sys = system.get('r_0', 1.0)
+                g = calc.compute_MUGE(r_sys, t, 0.0)
+                results[key] = {
+                    'name': system['name'],
+                    'M_initial': system['M_initial'],
+                    'r_0': r_sys,
+                    'g': g,
+                }
+            
+            return {
+                'mode': 'all_systems',
+                'n_systems': len(results),
+                'systems': results,
+            }
+        
+        else:
+            raise ValueError(f"Unknown mode: {mode}. Available: muge, breakdown, coherence, evolution, all_systems")
+    
+    def display_explanations(self) -> str:
+        """Get framework explanations as string."""
+        return '\n'.join(self.EXPLANATIONS)
+    
+    def long_form_equation(self, r: float, t: float) -> str:
+        """
+        Generate long-form MUGE equation with substituted values.
+        
+        Args:
+            r: Radial distance [m]
+            t: Time [s]
+        
+        Returns:
+            Formatted equation string
+        """
+        result = self.compute(mode='breakdown', r=r, t=t)
+        terms = result['terms']
+        
+        eq = f"""
+════════════════════════════════════════════════════════════════════════════════
+UQFF MUGE GRAVITY CALCULATION
+For r = {r:.3e} m, t = {t:.3e} s
+════════════════════════════════════════════════════════════════════════════════
+
+MUGE EQUATION:
+  g(r,t) = [GM(t)/r(t)²] × (1+H) × (1-B/B_crit) × (1+F_env)
+         + ΣU_g + U_i + Λc²/3
+         + [ℏ/√(Δx·Δp)] ∫ψ*Hψ dV (2π/t_Hub)
+         + ρ_fluid × V × g_local
+         + (M_vis + M_DM)(δρ/ρ + 3GM/r³)
+
+TERM BREAKDOWN:
+
+  1. Base Gravity (GM/r² × factors)
+     G = {self.params['G']:.5e} m³/kg/s²
+     M(t) = {self.params['M_initial']:.3e} + {self.params['M_dot']:.3e} × {t:.3e}
+     r(t) = {self.params['r_0']:.3e} + {self.params['v_r']:.3e} × {t:.3e}
+     H_factor = 1 + {self.params['H_t_z']:.6f} = {1 + self.params['H_t_z']:.6f}
+     B_factor = 1 - {self.params['B_t']:.3e} / {self.params['B_crit']:.3e} = {1 - self.params['B_t']/self.params['B_crit']:.6f}
+     F_factor = 1 + {self.params['F_env']:.6f} = {1 + self.params['F_env']:.6f}
+     → Base = {terms['base_gravity']:.6e} m/s²
+
+  2. Sum of U_g Terms
+     U_g1 = {self.params['U_g1']:.3e}
+     U_g2 = {self.params['U_g2']:.3e}
+     U_g3' = {self.params['U_g3_prime']:.3e}
+     U_g4 = {self.params['U_g4']:.3e}
+     → ΣU_g = {terms['sum_Ug']:.6e}
+
+  3. Inertial Term (U_i)
+     λ_I = {self.params['lambda_I']:.3e}
+     ρ_SCm/ρ_UA = {self.params['rho_vac_SCm']/self.params['rho_vac_UA']:.6f}
+     ω_i = {self.params['omega_i']:.3e}
+     cos(πt_n) = {np.cos(np.pi * self.params['t_n']):.6f}
+     (1+F_RZ) = {1 + self.params['F_RZ']:.6f}
+     → U_i = {terms['U_i']:.6e}
+
+  4. Cosmological (Λc²/3)
+     Λ = {self.params['Lambda']:.3e} m⁻²
+     → Λc²/3 = {terms['cosmological']:.6e}
+
+  5. Quantum Term
+     ℏ = {self.params['hbar']:.5e} J·s
+     √(Δx·Δp) = {np.sqrt(self.params['Delta_x']*self.params['Delta_p']):.3e}
+     ψ_integral = {self.params['psi_integral']:.3e}
+     2π/t_Hub = {2*np.pi/self.params['t_Hubble']:.3e}
+     → Quantum = {terms['quantum']:.6e}
+
+  6. Fluid Term (ρ_fluid × V × g_local)
+     ρ_fluid = {self.params['rho_fluid']:.3e} kg/m³
+     V = {self.params['V']:.3e} m³
+     → Fluid = {terms['fluid']:.6e}
+
+  7. Dark Matter Term
+     M_vis = {self.params['M_visible']:.3e} kg
+     M_DM = {self.params['M_DM']:.3e} kg
+     δρ/ρ = {self.params['delta_rho']/self.params['rho']:.6e}
+     → DM = {terms['dark_matter']:.6e}
+
+  8. Quantum Coherence
+     r_horizon = {self.params['r_horizon']:.3e} m
+     σ = {self.params['coherence_sigma']:.3e} m
+     f = {self.params['coherence_freq']:.3e} Hz
+     → Coherence = {terms['coherence']:.6e}
+
+════════════════════════════════════════════════════════════════════════════════
+TOTAL MUGE GRAVITY: g = {result['g_total']:.6e} m/s²
+════════════════════════════════════════════════════════════════════════════════
+"""
+        return eq
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # GLOBAL INSTANCES - HIGH VALUE PHYSICS (Feb 24, 2026)
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -102324,6 +103022,12 @@ HAWKING_TEMP_PRIMORDIAL = HawkingTemperatureUQFFCalculator()  # Pre-configured f
 # Validation Test Suite
 UQFF_TEST_SUITE = UQFFValidationTestSuite()
 
+# UQFF MUGE Framework (Python port of uqff_framework.cpp)
+UQFF_MUGE_CALC = UQFFMUGECalculator()
+UQFF_MUGE_SGRA = UQFFMUGECalculator.from_system('SgrA')
+UQFF_MUGE_M87 = UQFFMUGECalculator.from_system('M87')
+UQFF_MUGE_MAGNETAR = UQFFMUGECalculator.from_system('Magnetar')
+
 # Collection dict
 HIGH_VALUE_PHYSICS_CALCULATORS = {
     'GravitationalWaveUQFFCalculator': GW_UQFF_CALC,
@@ -102335,6 +103039,10 @@ HIGH_VALUE_PHYSICS_CALCULATORS = {
     'HAWKING_TEMP_SGRA': HAWKING_TEMP_SGRA,
     'HAWKING_TEMP_PRIMORDIAL': HAWKING_TEMP_PRIMORDIAL,
     'UQFFValidationTestSuite': UQFF_TEST_SUITE,
+    'UQFFMUGECalculator': UQFF_MUGE_CALC,
+    'UQFF_MUGE_SGRA': UQFF_MUGE_SGRA,
+    'UQFF_MUGE_M87': UQFF_MUGE_M87,
+    'UQFF_MUGE_MAGNETAR': UQFF_MUGE_MAGNETAR,
 }
 
 
@@ -102428,6 +103136,44 @@ def get_hawking_long_form(M: float) -> str:
     """Get formatted long-form Hawking temperature equation."""
     calc = HawkingTemperatureUQFFCalculator()
     return calc.long_form_equation(M)
+
+
+# UQFF MUGE Convenience Functions (Python port of uqff_framework.cpp)
+def compute_muge_gravity(r: float, t: float, noise_level: float = 0.0) -> Dict[str, Any]:
+    """Compute full MUGE gravity at (r, t)."""
+    return UQFF_MUGE_CALC.compute(mode='muge', r=r, t=t, noise_level=noise_level)
+
+def compute_muge_breakdown(r: float, t: float) -> Dict[str, Any]:
+    """Get breakdown of all MUGE terms."""
+    return UQFF_MUGE_CALC.compute(mode='breakdown', r=r, t=t)
+
+def compute_muge_coherence(r: float, t: float) -> Dict[str, Any]:
+    """Get quantum coherence analysis at (r, t)."""
+    return UQFF_MUGE_CALC.compute(mode='coherence', r=r, t=t)
+
+def simulate_muge_evolution(r: float, t_start: float, t_end: float, dt: float,
+                            noise_level: float = 0.0) -> Dict[str, Any]:
+    """Simulate MUGE gravity evolution over time."""
+    return UQFF_MUGE_CALC.compute(mode='evolution', r=r, t_start=t_start, 
+                                  t_end=t_end, dt=dt, noise_level=noise_level)
+
+def compute_muge_all_systems(t: float = 0.0) -> Dict[str, Any]:
+    """Compute MUGE gravity for all pre-defined astrophysical systems."""
+    return UQFF_MUGE_CALC.compute(mode='all_systems', t=t)
+
+def compute_muge_for_system(system: str = 'SgrA', r: float = None, t: float = 0.0) -> Dict[str, Any]:
+    """Compute MUGE gravity for pre-defined system (SgrA, M87, Sun, NeutronStar, Magnetar)."""
+    calc = UQFFMUGECalculator.from_system(system)
+    r_val = r if r is not None else calc.params['r_0']
+    return calc.compute(mode='muge', r=r_val, t=t)
+
+def get_muge_long_form(r: float, t: float) -> str:
+    """Get formatted long-form MUGE equation with substituted values."""
+    return UQFF_MUGE_CALC.long_form_equation(r, t)
+
+def get_muge_explanations() -> str:
+    """Get UQFF/MUGE framework explanation text."""
+    return UQFF_MUGE_CALC.display_explanations()
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
