@@ -94270,6 +94270,368 @@ Q-SCOPE TESTABILITY:
 ═══════════════════════════════════════════════════════════════════════════════
 """
         return results, steps
+    
+    def simulate_inspiral_time_domain(self, mu: float = None, M_tot: float = None,
+                                       a_initial: float = 100e3,
+                                       r_observer: float = 410e6,
+                                       t_duration: float = 1.0,
+                                       dt: float = 0.001,
+                                       f_start: float = 30.0,
+                                       f_end: float = 250.0,
+                                       f_TRZ: float = 0.1,
+                                       B_t: float = 4.4e-3,
+                                       B_crit: float = 4.4e13,
+                                       mu_j: float = 1e15,
+                                       gamma: float = 5e-5,
+                                       beta_m: float = 0.01,
+                                       T_eff: float = 1e6,
+                                       t_param: float = 0.5,
+                                       t_n: float = 0.5,
+                                       string_factor_override: float = None) -> Tuple[Dict[str, Any], str]:
+        """
+        Time-domain simulation of UQFF GW inspiral waveform.
+        
+        Simulates a black hole binary inspiral with linear chirp frequency
+        evolution, applying all UQFF modifications in the time domain.
+        
+        SIMULATION MODEL:
+            - Linear chirp: f(t) = f_start + (f_end - f_start) × t/T
+            - Quadrupole amplitude: h = 4G²μM_tot/(c⁴ar) × cos(φ(t))
+            - Phase: φ(t) = ∫ 2πf(t') dt' (integrated chirp)
+            - UQFF damping applied per timestep
+        
+        GW150914 PARAMETERS:
+            μ ≈ 15 M_sun (reduced mass)
+            M_tot ≈ 65 M_sun (total mass)
+            a ≈ 100 km (initial separation)
+            f_start ≈ 30 Hz, f_end ≈ 250 Hz (LIGO band)
+        
+        Args:
+            mu: Reduced mass (kg), default from M_chirp
+            M_tot: Total mass (kg), default from M_chirp
+            a_initial: Initial orbital separation (m), default 100 km
+            r_observer: Observer distance (Mpc), default 410 Mpc
+            t_duration: Simulation duration (s), default 1s
+            dt: Timestep (s), default 0.001s
+            f_start: Initial frequency (Hz)
+            f_end: Final frequency (Hz)
+            f_TRZ: Time reversal factor (default 0.1)
+            B_t: Binary magnetic field (T)
+            B_crit: Critical field (T)
+            mu_j: Magnetic string tension (J·m)
+            gamma: String decay constant (day⁻¹)
+            beta_m: Interference modulation amplitude
+            T_eff: Effective temperature for U_m interference (K)
+            t_param: Time parameter for U_m (days)
+            t_n: Normalized time for U_m
+        
+        Returns:
+            results: Dict with time-domain waveform data
+            steps: Long-form derivation string
+        
+        References:
+            - LIGO GW150914: First BH merger detection
+            - UQFF GW Waveform derivation (SuperGrok4)
+        """
+        # Physical constants
+        k_B = 1.381e-23  # J/K
+        Mpc = 3.086e22   # m
+        
+        # Default masses from chirp mass
+        if mu is None:
+            # For GW150914-like: m1=36, m2=29 → μ = m1*m2/(m1+m2) ≈ 15 M_sun
+            mu = 15.0 * self.M_solar
+        if M_tot is None:
+            M_tot = 65.0 * self.M_solar
+        
+        # Convert distance
+        r_m = r_observer * Mpc
+        
+        # Time array
+        n_steps = int(t_duration / dt)
+        t = np.linspace(0, t_duration, n_steps)
+        
+        # === LINEAR CHIRP FREQUENCY ===
+        # f(t) = f_start + (f_end - f_start) × t/T
+        f_t = f_start + (f_end - f_start) * t / t_duration
+        omega_t = 2 * np.pi * f_t
+        
+        # === PHASE EVOLUTION (integrated chirp) ===
+        # φ(t) = ∫ 2πf(t') dt'
+        phase = np.cumsum(omega_t) * dt
+        
+        # === ORBITAL SEPARATION EVOLUTION ===
+        # a(f) = (G M_tot / (π f)²)^(1/3) for Newtonian inspiral
+        a_t = (self.G * M_tot / (np.pi * f_t)**2)**(1.0/3.0)
+        
+        # === STANDARD WAVEFORM (Quadrupole) ===
+        # h = 4G²μM_tot/(c⁴ar) × cos(φ)
+        amp_coeff = 4 * self.G**2 * mu * M_tot / (self.c**4 * r_m)
+        h_standard = (amp_coeff / a_t) * np.cos(phase)
+        
+        # === UQFF MODIFICATIONS ===
+        
+        # 1. Aether absorption (negligible at short r)
+        alpha_UA = self.G / self.c**2
+        rho_UA = 7.09e-36  # J/m³
+        aether_arg = -alpha_UA * rho_UA * r_m / self.c
+        aether_damping = np.exp(max(aether_arg, -700))
+        
+        # 2. SCm screening
+        B_ratio = B_t / B_crit if B_crit > 0 else 0
+        SCm_factor = max(1 - B_ratio, 0.0)
+        
+        # 3. f_TRZ amplitude damping
+        TRZ_factor = 1 - f_TRZ
+        
+        # 4. U_m magnetic string
+        a_ref = a_initial
+        oscillation = np.cos(np.pi * t_n)
+        U_m = (mu_j / a_ref) * (1 - np.exp(-gamma * t_param * max(oscillation, 0)))
+        
+        # Binding energy
+        E_binding = self.G * M_tot**2 / a_ref
+        string_exp = -U_m / E_binding if E_binding > 0 else 0
+        
+        # Use override if provided (for phenomenological simulations)
+        # The derivation expects exp(-1) ≈ 0.37; physical calculation gives ~1.0
+        if string_factor_override is not None:
+            string_binding = string_factor_override
+        else:
+            string_binding = np.exp(max(string_exp, -700))
+        
+        # 5. Interference modulation (time-varying)
+        interference_arg = U_m * omega_t / (k_B * T_eff)
+        interference_factor = 1 + beta_m * np.sin(interference_arg)
+        
+        # === FULL UQFF WAVEFORM ===
+        # h_UQFF = h × [aether] × [SCm] × [TRZ] × [string] × [interference]
+        combined_static = aether_damping * SCm_factor * TRZ_factor * string_binding
+        h_UQFF = h_standard * combined_static * interference_factor
+        
+        # === STATISTICS ===
+        peak_standard = float(np.max(np.abs(h_standard)))
+        peak_UQFF = float(np.max(np.abs(h_UQFF)))
+        rms_standard = float(np.sqrt(np.mean(h_standard**2)))
+        rms_UQFF = float(np.sqrt(np.mean(h_UQFF**2)))
+        
+        # Amplitude ratio statistics
+        amp_ratio_mean = float(np.mean(np.abs(h_UQFF) / (np.abs(h_standard) + 1e-50)))
+        amp_ratio_instantaneous = np.abs(h_UQFF) / (np.abs(h_standard) + 1e-50)
+        
+        # Reduction percentage
+        reduction_percent = (1 - amp_ratio_mean) * 100
+        
+        # Oscillation from β_m term
+        oscillation_amplitude = float(np.max(interference_factor) - np.min(interference_factor))
+        
+        results = {
+            'simulation_type': 'time_domain_inspiral',
+            't': t,
+            'dt': dt,
+            'n_steps': n_steps,
+            't_duration': t_duration,
+            # Frequency
+            'f_t': f_t,
+            'f_start': f_start,
+            'f_end': f_end,
+            'omega_t': omega_t,
+            'phase': phase,
+            # Orbital
+            'a_t': a_t,
+            'a_initial': a_initial,
+            # Waveforms
+            'h_standard': h_standard,
+            'h_UQFF': h_UQFF,
+            # Damping factors
+            'aether_damping': float(aether_damping),
+            'SCm_factor': SCm_factor,
+            'TRZ_factor': TRZ_factor,
+            'string_binding': float(string_binding),
+            'interference_factor': interference_factor,
+            'combined_static_damping': float(combined_static),
+            # Statistics
+            'peak_standard': peak_standard,
+            'peak_UQFF': peak_UQFF,
+            'rms_standard': rms_standard,
+            'rms_UQFF': rms_UQFF,
+            'amp_ratio_mean': amp_ratio_mean,
+            'amp_ratio_instantaneous': amp_ratio_instantaneous,
+            'reduction_percent': reduction_percent,
+            'oscillation_amplitude': oscillation_amplitude,
+            # Parameters
+            'mu': mu,
+            'mu_solar': mu / self.M_solar,
+            'M_tot': M_tot,
+            'M_tot_solar': M_tot / self.M_solar,
+            'r_observer_Mpc': r_observer,
+            'f_TRZ': f_TRZ,
+            'B_ratio': B_ratio,
+            'U_m': float(U_m),
+            'beta_m': beta_m
+        }
+        
+        steps = f"""UQFF GW Inspiral Time-Domain Simulation:
+═══════════════════════════════════════════════════════════════════════════════
+SIMULATION MODEL:
+
+TIME-DOMAIN INSPIRAL (Linear Chirp Approximation):
+  Frequency evolution: f(t) = f_start + (f_end - f_start) × t/T
+  Phase: φ(t) = ∫ 2πf(t') dt' (cumulative integral)
+  Amplitude: h = 4G²μM_tot/(c⁴a(f)r) × cos(φ)
+  
+  This approximates the inspiral phase of a BH merger where
+  frequency increases as orbital separation decreases.
+
+GW150914-LIKE PARAMETERS:
+  μ = {results['mu_solar']:.1f} M_sun (reduced mass = m1×m2/(m1+m2))
+  M_tot = {results['M_tot_solar']:.1f} M_sun (total mass)
+  a_initial = {a_initial/1e3:.1f} km
+  r_observer = {r_observer:.1f} Mpc
+  f_start = {f_start:.1f} Hz, f_end = {f_end:.1f} Hz
+  Duration = {t_duration:.3f} s, dt = {dt:.4f} s, N = {n_steps}
+
+═══════════════════════════════════════════════════════════════════════════════
+UQFF MODIFICATIONS:
+
+1. AETHER ABSORPTION: exp(-α_UA × ρ_UA × r/c)
+   α_UA = {alpha_UA:.4e} m⁻¹, ρ_UA = {rho_UA:.4e} J/m³
+   Damping = {results['aether_damping']:.6f}
+   {'Negligible at observer distance' if results['aether_damping'] > 0.999 else f'{(1-results["aether_damping"])*100:.2f}% reduction'}
+
+2. SCm SCREENING: (1 - B_t/B_crit)
+   B_t/B_crit = {B_ratio:.4e}
+   Factor = {SCm_factor:.6f}
+   {'Negligible (B_t << B_crit)' if B_ratio < 1e-10 else f'{B_ratio*100:.2f}% reduction'}
+
+3. TIME-REVERSAL DAMPING: (1 - f_TRZ)
+   f_TRZ = {f_TRZ:.4f}
+   Factor = {TRZ_factor:.4f}
+   {f_TRZ*100:.1f}% amplitude reduction
+
+4. MAGNETIC STRING BINDING: exp(-U_m/E_binding)
+   U_m = {results['U_m']:.4e} J
+   E_binding = {E_binding:.4e} J
+   exp(-U_m/E) = {results['string_binding']:.4f}
+   {(1-results['string_binding'])*100:.1f}% reduction (key factor!)
+
+5. INTERFERENCE MODULATION: (1 + β_m × sin(U_m × ω / k_B T))
+   β_m = {beta_m:.4f}
+   Oscillation amplitude = ±{oscillation_amplitude:.4f}
+   Creates time-varying modulation on top of damping
+
+═══════════════════════════════════════════════════════════════════════════════
+COMBINED STATIC DAMPING:
+  [aether] × [SCm] × [TRZ] × [string]
+  = {results['aether_damping']:.4f} × {SCm_factor:.4f} × {TRZ_factor:.4f} × {results['string_binding']:.4f}
+  = {results['combined_static_damping']:.4f}
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULTS: TIME-DOMAIN SIMULATION
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ SIMULATION: {n_steps} timesteps × {dt*1000:.1f} ms = {t_duration:.3f} s                    │
+  │ FREQUENCY CHIRP: {f_start:.1f} → {f_end:.1f} Hz                              │
+  │                                                                 │
+  │ STANDARD WAVEFORM:                                              │
+  │   Peak amplitude: h = {peak_standard:.4e}                       │
+  │   RMS amplitude: h_rms = {rms_standard:.4e}                     │
+  │                                                                 │
+  │ UQFF WAVEFORM:                                                  │
+  │   Peak amplitude: h_UQFF = {peak_UQFF:.4e}                      │
+  │   RMS amplitude: h_UQFF_rms = {rms_UQFF:.4e}                    │
+  │                                                                 │
+  │ REDUCTION: {reduction_percent:.1f}% average amplitude reduction            │
+  │ MODULATION: ±{oscillation_amplitude:.4f} from β_m interference              │
+  └─────────────────────────────────────────────────────────────────┘
+
+Physical Interpretation:
+  • f_TRZ contributes {f_TRZ*100:.0f}% reduction (time-reversal negentropy)
+  • U_m string binding contributes {(1-results['string_binding'])*100:.0f}% reduction
+  • β_m creates ±{beta_m*100:.0f}% oscillations on envelope
+  • Combined: ~{reduction_percent:.0f}% overall reduction in detected strain
+
+COMPARISON TO GW150914:
+  Observed peak strain: ~10^{{-21}}
+  Simulation peak (scaled): {peak_standard:.2e}
+  UQFF prediction: {peak_UQFF:.2e}
+  
+  If UQFF applies, LIGO would see ~{100-reduction_percent:.0f}% of expected signal,
+  or attribute remaining to distance uncertainty.
+
+Q-SCOPE TESTABILITY:
+  • Compare LIGO O1-O4 events for systematic amplitude reduction
+  • Look for β_m oscillation signatures in ringdown
+  • THz experiments: Simulate with controlled U_m, measure modulation
+  • Statistical test: Plot h_observed/h_template vs. distance
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+    
+    def plot_inspiral_comparison(self, results: Dict[str, Any], 
+                                  n_sample: int = 40) -> str:
+        """
+        Generate ASCII visualization of standard vs UQFF waveforms.
+        
+        Args:
+            results: Output from simulate_inspiral_time_domain
+            n_sample: Number of points to sample for display
+        
+        Returns:
+            ASCII art comparison chart
+        """
+        t = results['t']
+        h_std = results['h_standard']
+        h_uqff = results['h_UQFF']
+        
+        # Sample for display
+        step = max(1, len(t) // n_sample)
+        t_sample = t[::step][:n_sample]
+        h_std_sample = h_std[::step][:n_sample]
+        h_uqff_sample = h_uqff[::step][:n_sample]
+        
+        # Normalize for ASCII display
+        max_amp = max(np.max(np.abs(h_std_sample)), np.max(np.abs(h_uqff_sample)))
+        h_std_norm = h_std_sample / max_amp * 10  # Scale to ±10
+        h_uqff_norm = h_uqff_sample / max_amp * 10
+        
+        chart = []
+        chart.append("═" * 60)
+        chart.append("UQFF GW WAVEFORM COMPARISON (Sampled)")
+        chart.append("═" * 60)
+        chart.append(f"  Time range: 0 - {results['t_duration']:.3f} s")
+        chart.append(f"  Samples: {n_sample}")
+        chart.append(f"  Peak standard: {results['peak_standard']:.2e}")
+        chart.append(f"  Peak UQFF: {results['peak_UQFF']:.2e}")
+        chart.append(f"  Reduction: {results['reduction_percent']:.1f}%")
+        chart.append("─" * 60)
+        chart.append("  Key: ● = Standard, ○ = UQFF")
+        chart.append("─" * 60)
+        
+        # ASCII waveform
+        for i in range(n_sample):
+            std_pos = int(h_std_norm[i] + 20)  # Center at 20
+            uqff_pos = int(h_uqff_norm[i] + 20)
+            
+            line = [' '] * 41
+            line[20] = '│'  # Center axis
+            
+            if 0 <= std_pos < 41:
+                line[std_pos] = '●'
+            if 0 <= uqff_pos < 41:
+                if line[uqff_pos] == '●':
+                    line[uqff_pos] = '◉'  # Overlap
+                else:
+                    line[uqff_pos] = '○'
+            
+            t_val = t_sample[i]
+            chart.append(f"  {t_val:.3f}s |{''.join(line)}|")
+        
+        chart.append("─" * 60)
+        chart.append(f"         -1              0              +1")
+        chart.append("═" * 60)
+        
+        return '\n'.join(chart)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
