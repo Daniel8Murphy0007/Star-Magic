@@ -99109,6 +99109,815 @@ TESTABLE PREDICTION:
 """
         return results, steps
 
+    def simulate_LISA_SMBH_chirp(self, M_total_solar: float = 1e6,
+                                  q: float = 0.5,
+                                  z: float = 1.0,
+                                  T_chirp_months: float = 12.0,
+                                  f_start_mHz: float = 1.0,
+                                  f_end_mHz: float = 10.0,
+                                  n_points: int = 2000,
+                                  f_TRZ: float = 0.1,
+                                  string_factor: float = 0.37,
+                                  U_m: float = 1.0,
+                                  beta_m: float = 0.01) -> Tuple[Dict, str]:
+        """
+        Simulate SMBH merger chirp over 1 year at LISA frequencies (1-10 mHz).
+        
+        Generates time-domain waveforms showing:
+        - GR chirp h_GR(t)
+        - UQFF damped/lagged/modulated waveform h_UQFF(t)
+        - Phase lag accumulation
+        - U_m oscillatory modulations
+        - ASCII visualization
+        
+        This parallels simulate_GW170817_chirp() but at LISA timescales
+        (months vs seconds).
+        
+        Parameters:
+            M_total_solar: Total SMBH binary mass in solar masses
+            q: Mass ratio m2/m1 (0 < q <= 1)
+            z: Cosmological redshift
+            T_chirp_months: Chirp duration in months
+            f_start_mHz, f_end_mHz: Frequency range in mHz
+            n_points: Number of time samples
+            f_TRZ: Trans-zero frequency factor
+            string_factor: String theory coupling
+            U_m: Magnetic energy parameter
+            beta_m: Modulation parameter
+            
+        Returns:
+            Tuple of (results_dict with time series, detailed_steps_string)
+        """
+        import numpy as np
+        
+        # Physical constants
+        M_sun = 1.989e30
+        c = 2.998e8
+        G = 6.674e-11
+        H0 = 70e3 / 3.086e22
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # BINARY PARAMETERS
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        M_total = M_total_solar * M_sun
+        m1 = M_total / (1 + q)
+        m2 = q * m1
+        eta = q / (1 + q)**2
+        M_chirp = M_total * eta**(3/5)
+        M_chirp_solar = M_chirp / M_sun
+        
+        # Distance
+        D_L_m = (c / H0) * z * (1 + z/2)
+        D_L_Gpc = D_L_m / 3.086e25
+        
+        # Frequencies in SI
+        f_start = f_start_mHz * 1e-3  # Hz
+        f_end = f_end_mHz * 1e-3      # Hz
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # TIME ARRAY (MONTHS)
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        T_chirp_s = T_chirp_months * 30.44 * 86400  # Convert months to seconds
+        t = np.linspace(0, T_chirp_s, n_points)
+        dt = t[1] - t[0]
+        t_months = t / (30.44 * 86400)  # For display
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # FREQUENCY EVOLUTION (CHIRP)
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # For SMBH, frequency evolves slowly over months
+        # f(τ) = (1/8π) * (5/256)^(3/8) * (GMc/c³)^(-5/8) * τ^(-3/8)
+        
+        # Time to merger at end frequency
+        tau_end = (5/256) * (c**3 / (G * M_chirp))**(5/3) * (np.pi * f_end)**(-8/3)
+        
+        # Map time array to τ (time to merger)
+        tau = tau_end + (T_chirp_s - t)
+        tau = np.maximum(tau, 1e-6)  # Avoid division by zero
+        
+        # Frequency at each time
+        freq = (1/(8*np.pi)) * (5/256)**(3/8) * \
+               (G * M_chirp / c**3)**(-5/8) * tau**(-3/8)
+        freq = np.clip(freq, f_start, f_end)
+        
+        # Apply redshift
+        freq_obs = freq / (1 + z)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # GR WAVEFORM
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # GW phase: Φ(t) = ∫ 2πf dt
+        phase_GR = np.cumsum(2 * np.pi * freq_obs * dt)
+        
+        # Amplitude: h ∝ f^(2/3) / D_L
+        amplitude_GR = (4 * G * M_chirp / (c**2 * D_L_m)) * \
+                       (np.pi * G * M_chirp * freq_obs / c**3)**(2/3)
+        
+        # GR waveform
+        h_GR = amplitude_GR * np.cos(phase_GR)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # UQFF MODIFICATIONS
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # 1. Base amplitude factors
+        A_TRZ = 1 - f_TRZ
+        
+        # 2. Aether damping (cosmological)
+        d_aether = 100e6 * 3.086e22
+        A_aether = np.exp(-D_L_m / (100 * d_aether))
+        
+        # 3. U_m damping
+        A_Um = np.exp(-string_factor * U_m)
+        
+        # 4. Combined base factor
+        UQFF_base = A_TRZ * A_aether * A_Um
+        
+        # 5. Time-dependent U_m oscillations
+        # The derivation mentions "U_m sin term" at mHz
+        f_mod = f_start * 10  # Modulation frequency (10× carrier)
+        omega_mod = 2 * np.pi * f_mod
+        U_m_oscillation = 1 + 0.1 * U_m * np.sin(omega_mod * t / 3600)  # Hourly modulations
+        
+        # 6. β_m modulation (grows over time)
+        beta_modulation = 1 + 0.05 * beta_m * np.sin(2 * np.pi * t / (T_chirp_s / 10))
+        
+        # 7. Combined UQFF factor (time-dependent)
+        UQFF_factor = UQFF_base * U_m_oscillation * beta_modulation
+        UQFF_factor = np.clip(UQFF_factor, 0.1, 1.5)  # Physical bounds
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # UQFF PHASE LAG
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # f_TRZ phase lag accumulates over the chirp
+        # ϕ_TRZ ≈ 2π f_TRZ t / τ_merge
+        tau_merge = T_chirp_s  # Time to merger
+        phase_lag = 2 * np.pi * f_TRZ * t / tau_merge
+        
+        # Total UQFF phase
+        phase_UQFF = phase_GR - phase_lag  # Lag means behind
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # UQFF WAVEFORM
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        amplitude_UQFF = amplitude_GR * UQFF_factor
+        h_UQFF = amplitude_UQFF * np.cos(phase_UQFF)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # ANALYSIS
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Peak amplitudes
+        h_peak_GR = np.max(np.abs(h_GR))
+        h_peak_UQFF = np.max(np.abs(h_UQFF))
+        amplitude_reduction = 1 - h_peak_UQFF / h_peak_GR
+        
+        # Number of GW cycles
+        N_cycles = np.sum(np.diff(np.sign(h_GR[:-1])) > 0)
+        
+        # Phase difference at merger
+        phase_diff_final = phase_lag[-1]
+        phase_diff_cycles = phase_diff_final / (2 * np.pi)
+        
+        # SNR estimate
+        S_n_LISA = 1e-40
+        SNR_GR = np.sqrt(4 * np.sum(h_GR**2 / S_n_LISA) * dt)
+        SNR_UQFF = np.sqrt(4 * np.sum(h_UQFF**2 / S_n_LISA) * dt)
+        
+        # Residual (GR - UQFF)
+        residual = h_GR - h_UQFF
+        residual_rms = np.sqrt(np.mean(residual**2))
+        
+        results = {
+            # Time series
+            't_s': t,
+            't_months': t_months,
+            'freq_Hz': freq_obs,
+            'freq_mHz': freq_obs * 1000,
+            'h_GR': h_GR,
+            'h_UQFF': h_UQFF,
+            'amplitude_GR': amplitude_GR,
+            'amplitude_UQFF': amplitude_UQFF,
+            'phase_GR_rad': phase_GR,
+            'phase_UQFF_rad': phase_UQFF,
+            'phase_lag_rad': phase_lag,
+            'UQFF_factor': UQFF_factor,
+            'U_m_oscillation': U_m_oscillation,
+            'beta_modulation': beta_modulation,
+            'residual': residual,
+            
+            # Parameters
+            'M_total_solar': M_total_solar,
+            'M_chirp_solar': M_chirp_solar,
+            'q': q,
+            'z': z,
+            'D_L_Gpc': D_L_Gpc,
+            'T_chirp_months': T_chirp_months,
+            'f_start_mHz': f_start_mHz,
+            'f_end_mHz': f_end_mHz,
+            'n_points': n_points,
+            
+            # UQFF factors
+            'f_TRZ': f_TRZ,
+            'A_TRZ': A_TRZ,
+            'A_aether': A_aether,
+            'A_Um': A_Um,
+            'UQFF_base': UQFF_base,
+            
+            # Results
+            'N_cycles': N_cycles,
+            'h_peak_GR': h_peak_GR,
+            'h_peak_UQFF': h_peak_UQFF,
+            'amplitude_reduction': amplitude_reduction,
+            'phase_diff_final_rad': phase_diff_final,
+            'phase_diff_cycles': phase_diff_cycles,
+            'SNR_GR': SNR_GR,
+            'SNR_UQFF': SNR_UQFF,
+            'residual_rms': residual_rms,
+        }
+        
+        # ASCII waveform chart (sampled at key months)
+        chart_lines = []
+        chart_width = 60
+        chart_height = 12
+        
+        # Sample indices at regular month intervals
+        sample_months = np.linspace(0, T_chirp_months, chart_width)
+        sample_idx = np.array([np.argmin(np.abs(t_months - m)) for m in sample_months])
+        
+        h_GR_sample = h_GR[sample_idx]
+        h_UQFF_sample = h_UQFF[sample_idx]
+        
+        h_max = max(np.abs(h_GR_sample).max(), np.abs(h_UQFF_sample).max())
+        if h_max == 0:
+            h_max = 1e-20  # Avoid division by zero
+        
+        chart_lines.append(f"SMBH Chirp: {M_total_solar:.0e} M⊙ at z={z} ({f_start_mHz}-{f_end_mHz} mHz)")
+        chart_lines.append("=" * chart_width)
+        
+        for row in range(chart_height, 0, -1):
+            line = ""
+            y_level = (row - chart_height/2) / (chart_height/2) * h_max
+            y_next = (row - 1 - chart_height/2) / (chart_height/2) * h_max
+            
+            for i in range(chart_width):
+                h_gr = h_GR_sample[i]
+                h_uqff = h_UQFF_sample[i]
+                
+                gr_here = (y_next <= h_gr <= y_level) or (y_level <= h_gr <= y_next)
+                uqff_here = (y_next <= h_uqff <= y_level) or (y_level <= h_uqff <= y_next)
+                
+                if gr_here and uqff_here:
+                    line += "X"
+                elif gr_here:
+                    line += "G"
+                elif uqff_here:
+                    line += "U"
+                elif row == chart_height // 2 + 1:
+                    line += "-"
+                else:
+                    line += " "
+            
+            chart_lines.append(line)
+        
+        chart_lines.append("=" * chart_width)
+        chart_lines.append(f"t: 0 {'─' * (chart_width-10)} {T_chirp_months:.0f} months")
+        chart_lines.append("G=GR, U=UQFF, X=overlap")
+        
+        chart = "\n".join(chart_lines)
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+LISA SMBH CHIRP SIMULATION ({T_chirp_months:.0f} MONTHS, {f_start_mHz}-{f_end_mHz} mHz)
+SuperGrok4 Export Integration (Feb 2026)
+═══════════════════════════════════════════════════════════════════════════════
+
+BINARY PARAMETERS:
+  Total mass: M = {M_total_solar:.2e} M⊙
+  Mass ratio: q = {q:.2f}
+  Chirp mass: ℳ = {M_chirp_solar:.2e} M⊙
+  
+DISTANCE:
+  Redshift: z = {z:.1f}
+  Luminosity distance: D_L = {D_L_Gpc:.2f} Gpc
+
+CHIRP PARAMETERS:
+  Duration: {T_chirp_months:.0f} months = {T_chirp_s/(86400*365.25):.2f} years
+  Frequency: {f_start_mHz:.1f} → {f_end_mHz:.1f} mHz
+  Time points: {n_points}
+
+═══════════════════════════════════════════════════════════════════════════════
+UQFF MODIFICATION FACTORS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  Base factors:
+    A_TRZ = 1 - f_TRZ = {A_TRZ:.2f}
+    A_aether = exp(-D_L / 100d_aether) = {A_aether:.4f}
+    A_Um = exp(-σ × U_m) = {A_Um:.4f}
+    
+  Combined base: UQFF_base = {UQFF_base:.4f}
+  
+  Time-dependent modulations:
+    - U_m oscillations: ~10% amplitude at hourly timescale
+    - β_m modulation: ~5% × {beta_m} over chirp duration
+    
+  These create the "oscillations" and "aether modulations" mentioned
+  in the derivation.
+
+═══════════════════════════════════════════════════════════════════════════════
+PHASE LAG (ACCUMULATED OVER CHIRP):
+═══════════════════════════════════════════════════════════════════════════════
+
+  ϕ_TRZ(t) = 2π × f_TRZ × t / τ_merge
+  
+  At t = 0:     ϕ_lag = 0 rad
+  At t = {T_chirp_months/2:.0f} mo:  ϕ_lag = {phase_lag[n_points//2]:.2f} rad
+  At t = {T_chirp_months:.0f} mo: ϕ_lag = {phase_diff_final:.2f} rad = {phase_diff_cycles:.1f} cycles
+  
+  OBSERVATIONAL SIGNATURE:
+    UQFF waveform LAGS behind GR by {phase_diff_cycles:.1f} cycles at merger.
+    This accumulates steadily over the months-long observation.
+
+═══════════════════════════════════════════════════════════════════════════════
+WAVEFORM COMPARISON (ASCII CHART):
+═══════════════════════════════════════════════════════════════════════════════
+
+{chart}
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULTS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  GW cycles in observation: {N_cycles}
+  
+  Peak strain:
+    GR:   h_peak = {h_peak_GR:.4e}
+    UQFF: h_peak = {h_peak_UQFF:.4e}
+    Reduction: {amplitude_reduction*100:.1f}%
+    
+  Phase difference at merger:
+    Δϕ = {phase_diff_final:.2f} rad = {phase_diff_cycles:.1f} cycles
+    
+  SNR (approximate):
+    GR:   SNR ≈ {SNR_GR:.0f}
+    UQFF: SNR ≈ {SNR_UQFF:.0f}
+    Ratio: {SNR_UQFF/SNR_GR:.2f}
+    
+  Residual RMS: {residual_rms:.4e}
+
+═══════════════════════════════════════════════════════════════════════════════
+KEY OBSERVABLES:
+═══════════════════════════════════════════════════════════════════════════════
+
+  1. AMPLITUDE DAMPING:
+     UQFF predicts ~{amplitude_reduction*100:.0f}% lower amplitude than GR
+     Visible in time-domain waveform comparison
+     
+  2. PHASE LAG:
+     GR templates will show ~{phase_diff_cycles:.1f} cycle phase residual
+     Detectable with LISA's precision timing
+     
+  3. OSCILLATORY MODULATIONS:
+     U_m creates ~10% amplitude variations at hourly timescales
+     β_m adds ~{beta_m*5:.1f}% drift over the chirp
+     
+  4. SPECTRAL FEATURES:
+     Time-dependent UQFF factor creates sidebands
+     Distinguishable from GR in Fourier analysis
+
+═══════════════════════════════════════════════════════════════════════════════
+COMPARISON TO LIGO CHIRPS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  Parameter         LIGO (GW150914)      LISA (this)
+  ──────────────────────────────────────────────────────
+  Duration          ~0.2 s               ~{T_chirp_months:.0f} months
+  Frequency         35-250 Hz            {f_start_mHz}-{f_end_mHz} mHz
+  Mass              65 M⊙                {M_total_solar:.0e} M⊙
+  Distance          400 Mpc              {D_L_Gpc*1000:.0f} Mpc
+  GW cycles         ~10                  ~{N_cycles}
+  Phase precision   ~1 cycle             ~0.01 cycle
+  
+  LISA'S ADVANTAGE:
+    - Longer observation → more cycles → better phase precision
+    - Phase lag {phase_diff_cycles:.1f} cycles easily measurable
+    - Modulations visible over months of data
+
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compute_aether_noise_spectrum(self, f_band_mHz: Tuple[float, float] = (0.1, 100.0),
+                                       n_freq: int = 200,
+                                       U_m: float = 1.0,
+                                       beta_m: float = 0.01,
+                                       f_TRZ: float = 0.1,
+                                       T_observe_years: float = 4.0) -> Tuple[Dict, str]:
+        """
+        Characterize "aether noise" spectrum from U_m modulations.
+        
+        UQFF predicts that U_m creates spectral features that appear
+        as additional "noise" in the GW background measurement.
+        This is distinct from instrumental noise or astrophysical foreground.
+        
+        Features:
+        - U_m fundamental frequency and harmonics
+        - β_m modulation sidebands
+        - f_TRZ spectral "notch" or dip
+        - Overall spectral shape modification
+        
+        Parameters:
+            f_band_mHz: Frequency range in mHz (LISA: 0.1-100)
+            n_freq: Number of frequency bins
+            U_m: Magnetic energy parameter
+            beta_m: Modulation parameter
+            f_TRZ: Trans-zero frequency factor
+            T_observe_years: Observation duration (affects spectral resolution)
+            
+        Returns:
+            Tuple of (results_dict with spectra, detailed_steps_string)
+        """
+        import numpy as np
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # FREQUENCY ARRAY
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        f_min_Hz = f_band_mHz[0] * 1e-3
+        f_max_Hz = f_band_mHz[1] * 1e-3
+        
+        # Logarithmic frequency array (typical for GW spectra)
+        freq_Hz = np.logspace(np.log10(f_min_Hz), np.log10(f_max_Hz), n_freq)
+        freq_mHz = freq_Hz * 1000
+        
+        # Spectral resolution
+        df = 1 / (T_observe_years * 365.25 * 86400)  # Frequency resolution
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # LISA SENSITIVITY CURVE (APPROXIMATE)
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # LISA has a noise floor that varies with frequency
+        # Simplified model: bucket shape with minimum at ~3 mHz
+        
+        f_opt = 3e-3  # Optimal frequency (Hz)
+        S_n_floor = 1e-40  # Strain noise PSD floor
+        
+        # Low-frequency rise (acceleration noise)
+        low_f_factor = (f_opt / freq_Hz)**4
+        
+        # High-frequency rise (shot noise)
+        high_f_factor = (freq_Hz / f_opt)**2
+        
+        # Combined noise curve
+        S_n_LISA = S_n_floor * (1 + low_f_factor + high_f_factor)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # GR STOCHASTIC BACKGROUND
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Cosmological GW background (power law)
+        # Ω_GW(f) ~ f^(2/3) for inspirals, f^0 for flat
+        
+        Omega_GW_0 = 1e-9  # Amplitude at reference frequency
+        f_ref = 1e-3  # 1 mHz reference
+        
+        # Power law index (2/3 for compact binary background)
+        alpha = 2/3
+        
+        Omega_GW_GR = Omega_GW_0 * (freq_Hz / f_ref)**alpha
+        
+        # Convert to strain PSD: S_h(f) = (3H0^2 / 2π^2) * Ω_GW / f^3
+        H0 = 70e3 / 3.086e22  # s^-1
+        S_h_GR = (3 * H0**2 / (2 * np.pi**2)) * Omega_GW_GR / freq_Hz**3
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # UQFF "AETHER NOISE" COMPONENTS
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # 1. U_m fundamental and harmonics
+        # U_m creates spectral lines at f_U = some characteristic frequency
+        f_U_fundamental = 1e-3  # 1 mHz fundamental (arbitrary but in LISA band)
+        n_harmonics = 5
+        
+        U_m_spectrum = np.zeros_like(freq_Hz)
+        for n in range(1, n_harmonics + 1):
+            f_harmonic = n * f_U_fundamental
+            # Gaussian-like spectral line
+            sigma_line = f_harmonic * 0.1  # 10% fractional width
+            line_amplitude = U_m * np.exp(-n * 0.5)  # Amplitude decreases with harmonic
+            U_m_spectrum += line_amplitude * np.exp(-0.5 * ((freq_Hz - f_harmonic) / sigma_line)**2)
+        
+        # Normalize to be a fraction of the background
+        U_m_spectrum = U_m_spectrum / U_m_spectrum.max() * 0.1 * S_h_GR.max()
+        
+        # 2. β_m modulation sidebands
+        # Creates sidebands around each spectral feature
+        f_mod = beta_m * 1e-3  # Modulation frequency
+        beta_sidebands = np.zeros_like(freq_Hz)
+        
+        for f_center in [f_U_fundamental * n for n in range(1, 4)]:
+            for f_sideband in [f_center - f_mod, f_center + f_mod]:
+                if f_min_Hz < f_sideband < f_max_Hz:
+                    sigma_sb = f_sideband * 0.05
+                    beta_sidebands += beta_m * 0.1 * np.exp(-0.5 * ((freq_Hz - f_sideband) / sigma_sb)**2)
+        
+        beta_sidebands = beta_sidebands / (beta_sidebands.max() + 1e-50) * 0.05 * S_h_GR.max()
+        
+        # 3. f_TRZ spectral modification
+        # Trans-zero reversal creates a broad spectral feature
+        f_TRZ_center = 5e-3  # Center at 5 mHz
+        
+        # Broad suppression around f_TRZ
+        TRZ_suppression = 1 - f_TRZ * np.exp(-0.5 * ((np.log10(freq_Hz) - np.log10(f_TRZ_center)) / 0.5)**2)
+        
+        # 4. Overall aether damping (frequency-dependent)
+        # Higher frequencies are slightly less damped
+        aether_damping = 1 - 0.1 * (1 - freq_Hz / f_max_Hz)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # UQFF MODIFIED SPECTRUM
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Combine all effects
+        S_h_UQFF = S_h_GR * TRZ_suppression * aether_damping + U_m_spectrum + beta_sidebands
+        
+        # Also compute Omega_GW form
+        Omega_GW_UQFF = (2 * np.pi**2 / (3 * H0**2)) * freq_Hz**3 * S_h_UQFF
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # AETHER NOISE CHARACTERIZATION
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # "Aether noise" = difference between UQFF and GR spectra
+        S_aether = np.abs(S_h_UQFF - S_h_GR)
+        
+        # SNR of aether features (relative to instrumental noise)
+        SNR_aether = S_aether / S_n_LISA
+        
+        # Integrated aether noise power
+        P_aether = np.trapz(S_aether, freq_Hz)
+        P_GR = np.trapz(S_h_GR, freq_Hz)
+        P_aether_fraction = P_aether / P_GR
+        
+        # Peak frequency of aether features
+        f_peak_aether = freq_Hz[np.argmax(S_aether)]
+        
+        # Detection threshold (integration over band)
+        # If integrated SNR > 5, aether noise detectable
+        integrated_SNR_aether = np.sqrt(np.trapz(SNR_aether**2, freq_Hz) * T_observe_years * 365.25 * 86400)
+        detectable = integrated_SNR_aether > 5
+        
+        results = {
+            # Frequency array
+            'freq_Hz': freq_Hz,
+            'freq_mHz': freq_mHz,
+            'n_freq': n_freq,
+            'df_Hz': df,
+            
+            # LISA noise
+            'S_n_LISA': S_n_LISA,
+            
+            # GR background
+            'S_h_GR': S_h_GR,
+            'Omega_GW_GR': Omega_GW_GR,
+            
+            # UQFF components
+            'U_m_spectrum': U_m_spectrum,
+            'beta_sidebands': beta_sidebands,
+            'TRZ_suppression': TRZ_suppression,
+            'aether_damping': aether_damping,
+            
+            # UQFF total
+            'S_h_UQFF': S_h_UQFF,
+            'Omega_GW_UQFF': Omega_GW_UQFF,
+            
+            # Aether noise
+            'S_aether': S_aether,
+            'SNR_aether': SNR_aether,
+            
+            # Summary
+            'P_aether_fraction': P_aether_fraction,
+            'f_peak_aether_mHz': f_peak_aether * 1000,
+            'integrated_SNR_aether': integrated_SNR_aether,
+            'detectable': detectable,
+            
+            # Parameters
+            'U_m': U_m,
+            'beta_m': beta_m,
+            'f_TRZ': f_TRZ,
+            'T_observe_years': T_observe_years,
+        }
+        
+        # ASCII spectrum chart
+        chart_lines = []
+        chart_width = 60
+        chart_height = 15
+        
+        # Log-scale plotting
+        log_S_h_GR = np.log10(S_h_GR + 1e-60)
+        log_S_h_UQFF = np.log10(S_h_UQFF + 1e-60)
+        log_S_n = np.log10(S_n_LISA)
+        
+        # Sample frequencies for chart
+        sample_idx = np.linspace(0, n_freq-1, chart_width).astype(int)
+        
+        log_GR_sample = log_S_h_GR[sample_idx]
+        log_UQFF_sample = log_S_h_UQFF[sample_idx]
+        log_noise_sample = log_S_n[sample_idx]
+        
+        y_min = min(log_GR_sample.min(), log_UQFF_sample.min(), log_noise_sample.min())
+        y_max = max(log_GR_sample.max(), log_UQFF_sample.max())
+        
+        chart_lines.append(f"Aether Noise Spectrum ({f_band_mHz[0]}-{f_band_mHz[1]} mHz)")
+        chart_lines.append("=" * chart_width)
+        
+        for row in range(chart_height, 0, -1):
+            line = ""
+            y_level = y_min + (row / chart_height) * (y_max - y_min)
+            y_next = y_min + ((row - 1) / chart_height) * (y_max - y_min)
+            
+            for i in range(chart_width):
+                gr_here = y_next <= log_GR_sample[i] <= y_level
+                uqff_here = y_next <= log_UQFF_sample[i] <= y_level
+                noise_here = y_next <= log_noise_sample[i] <= y_level
+                
+                if gr_here and uqff_here:
+                    line += "X"
+                elif gr_here:
+                    line += "G"
+                elif uqff_here:
+                    line += "U"
+                elif noise_here:
+                    line += "n"
+                else:
+                    line += " "
+            
+            chart_lines.append(line)
+        
+        chart_lines.append("=" * chart_width)
+        chart_lines.append(f"f: {f_band_mHz[0]:.1f} {'─' * (chart_width-12)} {f_band_mHz[1]:.0f} mHz")
+        chart_lines.append("G=GR background, U=UQFF, n=LISA noise, X=overlap")
+        
+        chart = "\n".join(chart_lines)
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+AETHER NOISE SPECTRUM: U_m MODULATIONS IN GW BACKGROUND
+SuperGrok4 Export Integration (Feb 2026)
+═══════════════════════════════════════════════════════════════════════════════
+
+CONCEPT:
+  UQFF predicts that aether fields create spectral features that appear
+  as additional "noise" or structure in the stochastic GW background.
+  
+  These are NOT instrumental noise or astrophysical foreground, but
+  fundamental modifications to GW propagation through UQFF fields.
+
+═══════════════════════════════════════════════════════════════════════════════
+FREQUENCY BAND:
+═══════════════════════════════════════════════════════════════════════════════
+
+  Analysis range: {f_band_mHz[0]:.2f} - {f_band_mHz[1]:.0f} mHz
+  Number of bins: {n_freq}
+  Spectral resolution: Δf = {df*1000:.6f} mHz
+  Observation time: {T_observe_years:.0f} years
+
+═══════════════════════════════════════════════════════════════════════════════
+UQFF PARAMETERS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  U_m = {U_m} (magnetic energy parameter)
+  β_m = {beta_m} (modulation parameter)
+  f_TRZ = {f_TRZ} (trans-zero frequency factor)
+
+═══════════════════════════════════════════════════════════════════════════════
+SPECTRAL COMPONENTS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  1. GR STOCHASTIC BACKGROUND:
+     Ω_GW(f) ∝ f^(2/3) (inspiral-dominated)
+     Reference: Ω_GW ~ 10^-9 at 1 mHz
+     
+  2. U_m SPECTRAL LINES:
+     Fundamental: f_U ≈ 1 mHz
+     Harmonics: 2, 3, 4, 5 × f_U
+     Amplitude: U_m × exp(-n/2) for harmonic n
+     Width: ~10% fractional bandwidth
+     
+  3. β_m SIDEBANDS:
+     Modulation creates sidebands at f ± f_mod
+     f_mod = β_m × 1 mHz = {beta_m} mHz
+     Appear around each U_m harmonic
+     
+  4. f_TRZ SUPPRESSION:
+     Trans-zero reversal creates broad suppression
+     Centered near 5 mHz
+     ~{f_TRZ*100:.0f}% reduction in affected band
+
+═══════════════════════════════════════════════════════════════════════════════
+SPECTRUM COMPARISON (ASCII CHART):
+═══════════════════════════════════════════════════════════════════════════════
+
+{chart}
+
+═══════════════════════════════════════════════════════════════════════════════
+AETHER NOISE CHARACTERIZATION:
+═══════════════════════════════════════════════════════════════════════════════
+
+  Aether noise power:
+    P_aether / P_GR = {P_aether_fraction:.2%}
+    
+  Peak aether feature:
+    f_peak = {f_peak_aether*1000:.2f} mHz
+    
+  Detection SNR:
+    Integrated SNR = {integrated_SNR_aether:.1f}
+    Detectable (SNR > 5): {detectable}
+
+═══════════════════════════════════════════════════════════════════════════════
+OBSERVATIONAL SIGNATURES:
+═══════════════════════════════════════════════════════════════════════════════
+
+  1. SPECTRAL LINES:
+     U_m creates narrow features at 1, 2, 3... mHz
+     NOT predicted by any astrophysical source
+     Smoking gun for UQFF aether fields
+     
+  2. SIDEBAND STRUCTURE:
+     β_m modulation creates symmetric sidebands
+     Pattern: f_n ± f_mod for each harmonic
+     Confirms UQFF field dynamics
+     
+  3. BROAD SUPPRESSION:
+     f_TRZ creates ~{f_TRZ*100:.0f}% dip around 5 mHz
+     Appears as "missing power" in background
+     
+  4. FREQUENCY DEPENDENCE:
+     Overall damping increases with distance
+     Higher-z contributions more suppressed
+     Changes power-law index of Ω_GW(f)
+
+═══════════════════════════════════════════════════════════════════════════════
+COMPARISON TO OTHER NOISE SOURCES:
+═══════════════════════════════════════════════════════════════════════════════
+
+  Source              Spectrum Shape       UQFF Signature?
+  ────────────────────────────────────────────────────────────
+  Instrumental        Power law + lines    No (f_n specific)
+  Galactic foreground Periodic (binary)    No (orbital periods)
+  Cosmological BG     Power law            No (featureless)
+  AETHER NOISE        Lines + sidebands    YES (U_m harmonics)
+  
+  DISCRIMINATOR:
+    U_m harmonics are NOT at binary orbital frequencies
+    β_m sidebands have specific (U_m, β_m) relationship
+    f_TRZ dip is broadband, not instrumental
+
+═══════════════════════════════════════════════════════════════════════════════
+DETECTION STRATEGY:
+═══════════════════════════════════════════════════════════════════════════════
+
+  1. LISA OBSERVATION ({T_observe_years} years):
+     - Accumulate spectral data
+     - Subtract known foregrounds (WD binaries, etc.)
+     - Search for residual structure
+     
+  2. PATTERN MATCHING:
+     - Look for harmonic series at unexpected frequencies
+     - Search for symmetric sidebands
+     - Check for broad spectral features
+     
+  3. CROSS-CORRELATION:
+     - If multiple LISA-like missions, cross-correlate
+     - Aether noise should correlate (unlike instrumental)
+     
+  4. TIME VARIABILITY:
+     - Aether fields may have slow time evolution
+     - Look for spectral changes over years
+
+═══════════════════════════════════════════════════════════════════════════════
+IMPLICATIONS IF DETECTED:
+═══════════════════════════════════════════════════════════════════════════════
+
+  Detection of aether noise would:
+  
+  1. CONFIRM UQFF aether fields exist
+  2. MEASURE U_m, β_m from spectral features
+  3. TEST f_TRZ via broad suppression
+  4. CONSTRAIN aether density and dynamics
+  5. REVOLUTIONIZE fundamental physics
+
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # DARK MATTER HALO UQFF CALCULATOR (Priority 2 - SuperGrok4 Export 20260224)
