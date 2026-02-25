@@ -104808,6 +104808,438 @@ PHYSICS INTERPRETATION:
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# UQFF BLACK HOLE STABILITY (Lifetime Enhancement, Feb 25, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# Models black hole lifetime and stability with UQFF enhancements:
+#   Standard: τ = 5120πG²M³/(ℏc⁴) ∝ M³
+#   Step 1: τ' = τ/(1-f_TRZ) - Time-reversal increases lifetime ~11%
+#   Step 2: τ'' = τ' × (ρ_UA/ρ_SCm) - Aether density ~10× enhancement
+#   Step 3: τ_UQFF = τ'' × exp(U_m/(k_BT_H)) - String barrier (huge for cold BHs)
+# Result: Massive BHs become "infinitely" stable in UQFF framework
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UQFFBlackHoleStabilityCalculator(SelfExpandingMixin):
+    """
+    UQFF Black Hole Stability Calculator.
+    
+    Computes enhanced black hole lifetimes with UQFF damping effects:
+    - Time-reversal zone (f_TRZ): Reverses ~10% of emissions
+    - Aether density ratio (ρ_UA/ρ_SCm): Suppresses pair fluctuations ~10×
+    - Magnetic string barrier (U_m): Exponential enhancement for cold horizons
+    
+    Key Physics:
+        τ_UQFF = [5120πG²M³/(ℏc⁴)] × 1/(1-f_TRZ) × (ρ_UA/ρ_SCm) × exp(U_m/(k_BT_H))
+        
+    This predicts that massive black holes (cold horizons) are essentially
+    infinite-lifetime structures, while small black holes (hot horizons)
+    evaporate at near-Hawking rates.
+    
+    Attributes:
+        params (dict): Physical constants and UQFF parameters
+        additional_scalings (list): Custom scaling functions
+    """
+    
+    EXPLANATIONS = [
+        "UQFF Black Hole Stability enhances Hawking lifetime with aether corrections.",
+        "Standard: τ = 5120πG²M³/(ℏc⁴) - Evaporation time ∝ M³",
+        "Step 1: τ' = τ/(1-f_TRZ) - Time-reversal reverses emissions ~10%",
+        "Step 2: τ'' = τ' × (ρ_UA/ρ_SCm) - Aether density suppresses pair creation",
+        "Step 3: τ_UQFF = τ'' × exp(U_m/(k_BT_H)) - Magnetic string barrier",
+        "Result: Massive BHs → ∞ lifetime; small BHs → near-Hawking evaporation",
+    ]
+    
+    def __init__(self, params: dict = None):
+        """
+        Initialize UQFF Black Hole Stability Calculator.
+        
+        Args:
+            params: Optional dict with physical constants and UQFF parameters
+        """
+        # Physical constants
+        self.params = {
+            'G': 6.6743e-11,            # Gravitational constant [m³/kg/s²]
+            'hbar': 1.0545718e-34,      # Reduced Planck constant [J·s]
+            'c': 2.998e8,               # Speed of light [m/s]
+            'k_B': 1.380649e-23,        # Boltzmann constant [J/K]
+            
+            # UQFF parameters
+            'f_TRZ': 0.1,               # Time-reversal zone fraction
+            'rho_vac_UA': 7.09e-36,     # Universal Aether vacuum density [J/m³]
+            'rho_vac_SCm': 7.09e-37,    # Superconductive vacuum density [J/m³]
+            'U_m': 1e-23,               # Magnetic string energy barrier [J]
+            
+            # Reference values
+            'M_sun': 1.989e30,          # Solar mass [kg]
+            't_universe': 4.35e17,      # Age of universe [s]
+            'year': 3.154e7,            # Seconds per year
+        }
+        
+        if params:
+            self.params.update(params)
+        
+        # Custom scalings (self-expand capability)
+        self.additional_scalings = []
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # CORE TEMPERATURE AND LIFETIME
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_T_H(self, M: float) -> float:
+        """
+        Compute Hawking temperature.
+        
+        T_H = ℏc³/(8πGMk_B)
+        
+        Args:
+            M: Black hole mass [kg]
+        
+        Returns:
+            T_H [K]
+        """
+        hbar = self.params['hbar']
+        c = self.params['c']
+        G = self.params['G']
+        k_B = self.params['k_B']
+        
+        return (hbar * c**3) / (8 * np.pi * G * M * k_B)
+    
+    def compute_tau_standard(self, M: float) -> float:
+        """
+        Standard Hawking evaporation lifetime.
+        
+        τ = 5120πG²M³/(ℏc⁴)
+        
+        Derivation: From dM/dt = -L_H/c² and integrating.
+        Solar mass: τ ≈ 10⁶⁷ years >> universe age
+        Primordial (10¹² kg): τ ≈ 13.8 Gyr (evaporating now)
+        
+        Args:
+            M: Black hole mass [kg]
+        
+        Returns:
+            τ_standard [s]
+        """
+        G = self.params['G']
+        hbar = self.params['hbar']
+        c = self.params['c']
+        
+        return (5120 * np.pi * G**2 * M**3) / (hbar * c**4)
+    
+    def compute_tau_prime(self, tau_std: float) -> float:
+        """
+        Step 1: Time-reversal enhancement.
+        
+        τ' = τ/(1 - f_TRZ)
+        
+        Physics: Negentropic reversal of ~10% of emissions.
+        
+        Args:
+            tau_std: Standard lifetime [s]
+        
+        Returns:
+            τ' [s]
+        """
+        f_TRZ = self.params['f_TRZ']
+        return tau_std / (1.0 - f_TRZ)
+    
+    def compute_tau_double_prime(self, tau_prime: float) -> float:
+        """
+        Step 2: Aether density enhancement.
+        
+        τ'' = τ' × (ρ_UA/ρ_SCm)
+        
+        Physics: Dense [UA] suppresses pair fluctuations.
+        With ρ_UA/ρ_SCm ≈ 10, this gives 10× enhancement.
+        
+        Args:
+            tau_prime: τ' from Step 1 [s]
+        
+        Returns:
+            τ'' [s]
+        """
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        return tau_prime * (rho_UA / rho_SCm)
+    
+    def compute_tau_UQFF_step(self, tau_double_prime: float, T_H: float) -> float:
+        """
+        Step 3: Magnetic string barrier.
+        
+        τ_UQFF = τ'' × exp(U_m/(k_B T_H))
+        
+        Physics: For cold horizons (massive BHs), exponent is huge → infinite lifetime.
+        For hot horizons (small BHs), exponent is small → near-standard lifetime.
+        
+        Args:
+            tau_double_prime: τ'' from Step 2 [s]
+            T_H: Hawking temperature [K]
+        
+        Returns:
+            τ_UQFF [s] or np.inf
+        """
+        U_m = self.params['U_m']
+        k_B = self.params['k_B']
+        
+        exponent = U_m / (k_B * T_H)
+        
+        # Prevent overflow for very cold BHs
+        if exponent > 700:
+            return np.inf
+        
+        return tau_double_prime * np.exp(exponent)
+    
+    def compute_tau_UQFF(self, M: float, noise_level: float = 0.0) -> float:
+        """
+        Full UQFF lifetime with all enhancements and custom scalings.
+        
+        τ_UQFF = [5120πG²M³/(ℏc⁴)] × 1/(1-f_TRZ) × (ρ_UA/ρ_SCm) 
+                × exp(U_m/(k_BT_H)) × Π(custom_scalings)
+        
+        Args:
+            M: Black hole mass [kg]
+            noise_level: Stochastic perturbation amplitude (default: 0)
+        
+        Returns:
+            τ_UQFF_full [s] or np.inf
+        """
+        tau_std = self.compute_tau_standard(M)
+        tau_prime = self.compute_tau_prime(tau_std)
+        tau_double_prime = self.compute_tau_double_prime(tau_prime)
+        T_H = self.compute_T_H(M)
+        tau_uqff = self.compute_tau_UQFF_step(tau_double_prime, T_H)
+        
+        # Apply custom scalings
+        if np.isfinite(tau_uqff):
+            for scale in self.additional_scalings:
+                tau_uqff *= scale(M, T_H)
+            
+            # Add noise if requested
+            if noise_level > 0:
+                tau_uqff *= (1.0 + noise_level * np.random.randn())
+        
+        return tau_uqff
+    
+    def compute_stability_factor(self, M: float) -> float:
+        """
+        Compute stability enhancement relative to Hawking.
+        
+        Args:
+            M: Black hole mass [kg]
+        
+        Returns:
+            τ_UQFF / τ_standard (> 1 means more stable)
+        """
+        tau_std = self.compute_tau_standard(M)
+        tau_uqff = self.compute_tau_UQFF(M)
+        
+        if np.isinf(tau_uqff):
+            return np.inf
+        
+        return tau_uqff / tau_std
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # SELF-EXPANDING / SIMULATION
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def add_scaling(self, scaling_func):
+        """
+        Self-expand: Add custom scaling factor.
+        
+        Args:
+            scaling_func: Function(M, T_H) -> multiplicative factor
+            
+        Example:
+            calc.add_scaling(lambda M, T_H: 1.0 + 1e-10/(M*T_H))
+        """
+        self.additional_scalings.append(scaling_func)
+    
+    def simulate_over_mass(self, M_start: float, M_end: float, n_points: int = 50):
+        """
+        Simulate lifetime over mass range.
+        
+        Args:
+            M_start: Starting mass [kg]
+            M_end: Ending mass [kg]
+            n_points: Number of points
+        
+        Returns:
+            Dict with masses, temperatures, lifetimes
+        """
+        masses = np.logspace(np.log10(M_start), np.log10(M_end), n_points)
+        T_H = np.array([self.compute_T_H(M) for M in masses])
+        tau_std = np.array([self.compute_tau_standard(M) for M in masses])
+        tau_UQFF = np.array([self.compute_tau_UQFF(M) for M in masses])
+        stability = tau_UQFF / tau_std
+        
+        return {
+            'masses': masses,
+            'M_solar': masses / self.params['M_sun'],
+            'T_H': T_H,
+            'tau_standard': tau_std,
+            'tau_UQFF': tau_UQFF,
+            'stability_factor': stability,
+        }
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # COMPUTE INTERFACE
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute(self, mode: str = 'full', **kwargs) -> dict:
+        """
+        Main computation interface.
+        
+        Args:
+            mode: Computation mode
+                - 'full': All lifetime steps for given mass
+                - 'temperature': Hawking temperature only
+                - 'standard': Standard Hawking lifetime only
+                - 'simulate': Lifetime over mass range
+            **kwargs: Mode-specific parameters
+                M: Black hole mass [kg] (required for most modes)
+        
+        Returns:
+            Dict with computed results
+        """
+        if mode == 'full':
+            M = kwargs.get('M', 4.3e6 * self.params['M_sun'])  # Default: Sgr A*
+            
+            T_H = self.compute_T_H(M)
+            tau_std = self.compute_tau_standard(M)
+            tau_prime = self.compute_tau_prime(tau_std)
+            tau_double_prime = self.compute_tau_double_prime(tau_prime)
+            tau_UQFF = self.compute_tau_UQFF_step(tau_double_prime, T_H)
+            tau_full = self.compute_tau_UQFF(M)
+            stability = tau_full / tau_std if np.isfinite(tau_full) else np.inf
+            
+            return {
+                'mode': 'full',
+                'M': M,
+                'M_solar': M / self.params['M_sun'],
+                'T_H': T_H,
+                'tau_standard': tau_std,
+                'tau_prime': tau_prime,
+                'tau_double_prime': tau_double_prime,
+                'tau_UQFF': tau_UQFF,
+                'tau_full': tau_full,
+                'stability_factor': stability,
+                'is_stable': np.isinf(tau_full),
+            }
+        
+        elif mode == 'temperature':
+            M = kwargs.get('M', 4.3e6 * self.params['M_sun'])
+            return {
+                'mode': 'temperature',
+                'M': M,
+                'T_H': self.compute_T_H(M),
+            }
+        
+        elif mode == 'standard':
+            M = kwargs.get('M', 4.3e6 * self.params['M_sun'])
+            tau = self.compute_tau_standard(M)
+            return {
+                'mode': 'standard',
+                'M': M,
+                'tau_standard': tau,
+                'tau_years': tau / self.params['year'],
+            }
+        
+        elif mode == 'simulate':
+            M_start = kwargs.get('M_start', 1e10)
+            M_end = kwargs.get('M_end', 1e40)
+            n_points = kwargs.get('n_points', 50)
+            return self.simulate_over_mass(M_start, M_end, n_points)
+        
+        else:
+            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, standard, simulate")
+    
+    def long_form_equation(self, M: float = None) -> str:
+        """
+        Generate long-form equations with substituted values.
+        
+        Args:
+            M: Black hole mass [kg] (default: Sgr A*)
+        
+        Returns:
+            Formatted equation string
+        """
+        if M is None:
+            M = 4.3e6 * self.params['M_sun']
+        
+        G = self.params['G']
+        hbar = self.params['hbar']
+        c = self.params['c']
+        k_B = self.params['k_B']
+        f_TRZ = self.params['f_TRZ']
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        U_m = self.params['U_m']
+        year = self.params['year']
+        
+        T_H = self.compute_T_H(M)
+        tau_std = self.compute_tau_standard(M)
+        tau_prime = self.compute_tau_prime(tau_std)
+        tau_double_prime = self.compute_tau_double_prime(tau_prime)
+        tau_UQFF = self.compute_tau_UQFF_step(tau_double_prime, T_H)
+        tau_full = self.compute_tau_UQFF(M)
+        stability = tau_full / tau_std if np.isfinite(tau_full) else np.inf
+        
+        exponent = U_m / (k_B * T_H)
+        
+        eq = f"""
+════════════════════════════════════════════════════════════════════════════════
+UQFF BLACK HOLE STABILITY - LIFETIME CALCULATION
+════════════════════════════════════════════════════════════════════════════════
+
+INPUT PARAMETERS:
+  M (mass) = {M:.4e} kg ({M/self.params['M_sun']:.2e} M☉)
+  G = {G:.4e} m³/kg/s²
+  ℏ = {hbar:.5e} J·s
+  c = {c:.3e} m/s
+  k_B = {k_B:.4e} J/K
+  f_TRZ = {f_TRZ:.2f}
+  ρ_UA/ρ_SCm = {rho_UA/rho_SCm:.1f}
+  U_m = {U_m:.4e} J
+
+STEP 0: Hawking Temperature
+  T_H = ℏc³/(8πGMk_B)
+  → T_H = {T_H:.4e} K
+
+STEP 1: Standard Hawking Lifetime
+  τ_standard = 5120πG²M³/(ℏc⁴)
+  → τ_standard = {tau_std:.4e} s ({tau_std/year:.4e} years)
+
+STEP 2: Time-Reversal Enhancement
+  τ' = τ/(1 - f_TRZ) = τ/(1 - {f_TRZ:.2f})
+  → τ' = {tau_prime:.4e} s
+
+STEP 3: Aether Density Enhancement
+  τ'' = τ' × (ρ_UA/ρ_SCm) = τ' × {rho_UA/rho_SCm:.1f}
+  → τ'' = {tau_double_prime:.4e} s
+
+STEP 4: Magnetic String Barrier
+  τ_UQFF = τ'' × exp(U_m/(k_B T_H))
+  Exponent = U_m/(k_B T_H) = {U_m:.3e}/({k_B:.3e}×{T_H:.3e}) = {exponent:.4f}
+  → τ_UQFF = {"∞ (STABLE)" if np.isinf(tau_UQFF) else f"{tau_UQFF:.4e} s"}
+
+FINAL RESULT:
+  τ_UQFF_full = {"∞ (INFINITELY STABLE)" if np.isinf(tau_full) else f"{tau_full:.4e} s"}
+  Stability factor = {"∞" if np.isinf(stability) else f"{stability:.2e}"}× (vs Hawking)
+  
+PHYSICS INTERPRETATION:
+{"  → BLACK HOLE IS EFFECTIVELY ETERNAL in UQFF framework" if np.isinf(tau_full) else ""}
+{"  → Forms stable aether-superstructure" if np.isinf(tau_full) else ""}
+{"  → Near-standard evaporation rate (hot horizon)" if stability < 100 else ""}
+
+════════════════════════════════════════════════════════════════════════════════
+"""
+        return eq
+    
+    def display_explanations(self) -> str:
+        """Get framework explanations as string."""
+        return '\n'.join(self.EXPLANATIONS)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # PULSAR TIMING ARRAY (PTA) UQFF CALCULATOR (Feb 25, 2026)
 # ═══════════════════════════════════════════════════════════════════════════════
 # Nanohertz gravitational waves from SMBH binaries
