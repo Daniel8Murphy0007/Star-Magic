@@ -87,6 +87,20 @@ public:
      * @param r Radial distance [m]
      * @param t Time [s]
      * @return Quantum coherence term contribution
+     * @brief Time-reversal correction factor
+     * @param base_value Input value to correct
+     * @return Corrected value with f_TRZ applied
+     * 
+     * Applies negentropic correction for time-reversal zone effects.
+     * Enhancement: value × (1 + f_TRZ), Suppression: value × (1 - f_TRZ)
+     */
+    double time_reversal_correction(double base_value);
+    
+    /**
+     * @brief Compute quantum coherence at position and time
+     * @param r Radial distance from center [m]
+     * @param t Time [s]
+     * @return Coherence factor
      * 
      * Models wavefunction coherence near event horizons:
      *   ψ(r,t) ≈ amp × exp(-(r-r_horizon)²/σ²) × cos(2πft)
