@@ -99918,6 +99918,1186 @@ IMPLICATIONS IF DETECTED:
 """
         return results, steps
 
+    def predict_multiband_merger_timeline(self, M_total_solar: float = 30.0,
+                                           q: float = 0.8,
+                                           z: float = 0.1,
+                                           f_LISA_start_mHz: float = 0.1,
+                                           f_LISA_end_mHz: float = 10.0,
+                                           f_LIGO_start_Hz: float = 10.0,
+                                           f_TRZ: float = 0.1,
+                                           string_factor: float = 0.37,
+                                           U_m: float = 1.0) -> Tuple[Dict, str]:
+        """
+        Predict multi-band merger timeline: when LISA source enters LIGO band.
+        
+        KEY UQFF PREDICTION:
+        Phase lag accumulated during LISA observation (years) PERSISTS
+        into the LIGO-band signal. This is a testable prediction:
+        - LISA observes source for years, measures phase evolution
+        - Source enters LIGO band with UQFF-accumulated phase offset
+        - LIGO template mismatch reveals UQFF effects
+        
+        This implements "multi-band GW astronomy" with UQFF corrections.
+        
+        Parameters:
+            M_total_solar: Total binary mass in solar masses
+            q: Mass ratio m2/m1 (0 < q <= 1)
+            z: Cosmological redshift
+            f_LISA_start_mHz, f_LISA_end_mHz: LISA frequency band (mHz)
+            f_LIGO_start_Hz: LIGO low-frequency cutoff (Hz)
+            f_TRZ: Trans-zero frequency factor
+            string_factor: String theory coupling
+            U_m: Magnetic energy parameter
+            
+        Returns:
+            Tuple of (results_dict with timeline, detailed_steps_string)
+        """
+        import numpy as np
+        
+        # Physical constants
+        M_sun = 1.989e30
+        c = 2.998e8
+        G = 6.674e-11
+        H0 = 70e3 / 3.086e22
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # BINARY PARAMETERS
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        M_total = M_total_solar * M_sun
+        m1 = M_total / (1 + q)
+        m2 = q * m1
+        eta = q / (1 + q)**2
+        M_chirp = M_total * eta**(3/5)
+        M_chirp_solar = M_chirp / M_sun
+        
+        # Distance
+        D_L_m = (c / H0) * z * (1 + z/2)
+        D_L_Mpc = D_L_m / 3.086e22
+        
+        # Frequencies
+        f_LISA_start = f_LISA_start_mHz * 1e-3  # Hz
+        f_LISA_end = f_LISA_end_mHz * 1e-3      # Hz
+        f_LIGO_start = f_LIGO_start_Hz          # Hz
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # TIME TO MERGER CALCULATION
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # τ(f) = (5/256) * (c³/GMc)^(5/3) * (πf)^(-8/3)
+        def time_to_merger(f):
+            return (5/256) * (c**3 / (G * M_chirp))**(5/3) * (np.pi * f)**(-8/3)
+        
+        # Time to merger at each frequency
+        tau_LISA_start = time_to_merger(f_LISA_start)
+        tau_LISA_end = time_to_merger(f_LISA_end)
+        tau_LIGO_start = time_to_merger(f_LIGO_start)
+        tau_merger = 0  # By definition
+        
+        # LISA observation time
+        T_LISA = tau_LISA_start - tau_LISA_end
+        T_LISA_years = T_LISA / (365.25 * 86400)
+        
+        # Time from LISA-end to LIGO-start (gap or overlap)
+        T_gap = tau_LISA_end - tau_LIGO_start
+        T_gap_hours = T_gap / 3600
+        T_gap_days = T_gap / 86400
+        
+        # LIGO observation time (from entry to merger)
+        T_LIGO = tau_LIGO_start
+        T_LIGO_seconds = T_LIGO
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # GW CYCLES IN EACH BAND
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Number of cycles: N = ∫ f dt
+        # For chirp: N ≈ (1/32π) * (c³/GMc)^(5/3) * [f_low^(-5/3) - f_high^(-5/3)]
+        def cycles_between(f_low, f_high):
+            return (1/(32*np.pi)) * (c**3 / (G * M_chirp))**(5/3) * \
+                   ((np.pi * f_low)**(-5/3) - (np.pi * f_high)**(-5/3))
+        
+        N_cycles_LISA = cycles_between(f_LISA_start, f_LISA_end)
+        N_cycles_gap = cycles_between(f_LISA_end, f_LIGO_start) if f_LISA_end < f_LIGO_start else 0
+        N_cycles_LIGO = cycles_between(f_LIGO_start, 1000)  # Up to 1 kHz
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # UQFF PHASE LAG ACCUMULATION
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Phase lag in LISA band
+        # ϕ_TRZ = 2π * f_TRZ * N_cycles
+        phase_lag_LISA_rad = 2 * np.pi * f_TRZ * N_cycles_LISA
+        phase_lag_LISA_cycles = phase_lag_LISA_rad / (2 * np.pi)
+        
+        # Phase lag in gap (if any)
+        phase_lag_gap_rad = 2 * np.pi * f_TRZ * N_cycles_gap
+        phase_lag_gap_cycles = phase_lag_gap_rad / (2 * np.pi)
+        
+        # Phase lag in LIGO band
+        phase_lag_LIGO_rad = 2 * np.pi * f_TRZ * N_cycles_LIGO
+        phase_lag_LIGO_cycles = phase_lag_LIGO_rad / (2 * np.pi)
+        
+        # TOTAL accumulated phase lag when LIGO starts observing
+        phase_lag_at_LIGO_entry_rad = phase_lag_LISA_rad + phase_lag_gap_rad
+        phase_lag_at_LIGO_entry_cycles = phase_lag_at_LIGO_entry_rad / (2 * np.pi)
+        
+        # Total at merger
+        phase_lag_total_rad = phase_lag_at_LIGO_entry_rad + phase_lag_LIGO_rad
+        phase_lag_total_cycles = phase_lag_total_rad / (2 * np.pi)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # UQFF AMPLITUDE DAMPING
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Amplitude factors (same as other methods)
+        A_TRZ = 1 - f_TRZ
+        A_Um = np.exp(-string_factor * U_m)
+        UQFF_amplitude_factor = A_TRZ * A_Um
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # OBSERVATIONAL IMPLICATIONS
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # SNR impact (simplified)
+        # LISA SNR for this source (very rough estimate)
+        h_LISA = (4 * G * M_chirp / (c**2 * D_L_m)) * \
+                 (np.pi * G * M_chirp * f_LISA_end / c**3)**(2/3)
+        S_n_LISA = 1e-40
+        SNR_LISA_GR = h_LISA / np.sqrt(S_n_LISA) * np.sqrt(T_LISA)
+        SNR_LISA_UQFF = SNR_LISA_GR * UQFF_amplitude_factor
+        
+        # LIGO SNR for this source
+        h_LIGO = (4 * G * M_chirp / (c**2 * D_L_m)) * \
+                 (np.pi * G * M_chirp * 100 / c**3)**(2/3)  # At 100 Hz
+        S_n_LIGO = 1e-46  # Advanced LIGO PSD at 100 Hz
+        SNR_LIGO_GR = h_LIGO / np.sqrt(S_n_LIGO) * np.sqrt(T_LIGO)
+        SNR_LIGO_UQFF = SNR_LIGO_GR * UQFF_amplitude_factor
+        
+        # Template mismatch from phase lag
+        # Match ~ cos(Δϕ) for small Δϕ, drops significantly for Δϕ > π/2
+        mismatch_LIGO = 1 - np.cos(phase_lag_at_LIGO_entry_rad)
+        match_LIGO = np.cos(phase_lag_at_LIGO_entry_rad)
+        
+        # Early warning time (from LISA detection to LIGO detection)
+        early_warning_time = tau_LISA_start - tau_LIGO_start
+        early_warning_years = early_warning_time / (365.25 * 86400)
+        
+        results = {
+            # Binary parameters
+            'M_total_solar': M_total_solar,
+            'M_chirp_solar': M_chirp_solar,
+            'q': q,
+            'z': z,
+            'D_L_Mpc': D_L_Mpc,
+            
+            # Frequency bands
+            'f_LISA_start_mHz': f_LISA_start_mHz,
+            'f_LISA_end_mHz': f_LISA_end_mHz,
+            'f_LIGO_start_Hz': f_LIGO_start_Hz,
+            
+            # Timeline
+            'tau_LISA_start_years': tau_LISA_start / (365.25 * 86400),
+            'tau_LISA_end_days': tau_LISA_end / 86400,
+            'tau_LIGO_start_seconds': tau_LIGO_start,
+            'T_LISA_years': T_LISA_years,
+            'T_gap_hours': T_gap_hours,
+            'T_gap_days': T_gap_days,
+            'T_LIGO_seconds': T_LIGO_seconds,
+            'early_warning_years': early_warning_years,
+            
+            # GW cycles
+            'N_cycles_LISA': N_cycles_LISA,
+            'N_cycles_gap': N_cycles_gap,
+            'N_cycles_LIGO': N_cycles_LIGO,
+            'N_cycles_total': N_cycles_LISA + N_cycles_gap + N_cycles_LIGO,
+            
+            # UQFF phase lag
+            'f_TRZ': f_TRZ,
+            'phase_lag_LISA_cycles': phase_lag_LISA_cycles,
+            'phase_lag_gap_cycles': phase_lag_gap_cycles,
+            'phase_lag_LIGO_cycles': phase_lag_LIGO_cycles,
+            'phase_lag_at_LIGO_entry_cycles': phase_lag_at_LIGO_entry_cycles,
+            'phase_lag_total_cycles': phase_lag_total_cycles,
+            
+            # UQFF amplitude
+            'A_TRZ': A_TRZ,
+            'A_Um': A_Um,
+            'UQFF_amplitude_factor': UQFF_amplitude_factor,
+            
+            # SNR estimates
+            'SNR_LISA_GR': SNR_LISA_GR,
+            'SNR_LISA_UQFF': SNR_LISA_UQFF,
+            'SNR_LIGO_GR': SNR_LIGO_GR,
+            'SNR_LIGO_UQFF': SNR_LIGO_UQFF,
+            
+            # Template matching
+            'mismatch_LIGO': mismatch_LIGO,
+            'match_LIGO': match_LIGO,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+MULTI-BAND MERGER TIMELINE: LISA → LIGO WITH UQFF PHASE CARRYOVER
+SuperGrok4 Export Integration (Feb 2026)
+═══════════════════════════════════════════════════════════════════════════════
+
+CONCEPT:
+  Multi-band GW astronomy observes the SAME source in both LISA and LIGO.
+  LISA detects the inspiral years before merger; LIGO catches the final seconds.
+  
+  UQFF PREDICTION: Phase lag accumulated in LISA band PERSISTS into LIGO signal!
+  This creates a testable mismatch with GR templates.
+
+═══════════════════════════════════════════════════════════════════════════════
+BINARY PARAMETERS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  Total mass: M = {M_total_solar:.1f} M⊙
+  Mass ratio: q = {q:.2f}
+  Chirp mass: ℳ = {M_chirp_solar:.2f} M⊙
+  
+  Redshift: z = {z:.2f}
+  Distance: D_L = {D_L_Mpc:.1f} Mpc
+
+═══════════════════════════════════════════════════════════════════════════════
+FREQUENCY EVOLUTION TIMELINE:
+═══════════════════════════════════════════════════════════════════════════════
+
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │  LISA BAND                    │  GAP  │       LIGO BAND        │MERGER │
+  │  ({f_LISA_start_mHz:.1f} - {f_LISA_end_mHz:.1f} mHz)            │       │       ({f_LIGO_start_Hz:.0f} Hz - 1 kHz)     │       │
+  │  ◄──── {T_LISA_years:.1f} years ────►  │◄{T_gap_hours:.0f}h►│  ◄── {T_LIGO_seconds:.1f}s ──►  │       │
+  └─────────────────────────────────────────────────────────────────────────┘
+       │                                                                  │
+   LISA first                                                         Merger
+   detects here                                                       (t=0)
+   
+   Early warning: {early_warning_years:.1f} years before LIGO
+
+═══════════════════════════════════════════════════════════════════════════════
+TIME TO MERGER AT EACH STAGE:
+═══════════════════════════════════════════════════════════════════════════════
+
+  At LISA-band entry  ({f_LISA_start_mHz:.1f} mHz): τ = {tau_LISA_start/(365.25*86400):.1f} years
+  At LISA-band exit   ({f_LISA_end_mHz:.1f} mHz):  τ = {tau_LISA_end/86400:.1f} days
+  At LIGO-band entry  ({f_LIGO_start_Hz:.0f} Hz):   τ = {tau_LIGO_start:.1f} seconds
+  Merger:                        τ = 0
+
+═══════════════════════════════════════════════════════════════════════════════
+GW CYCLES:
+═══════════════════════════════════════════════════════════════════════════════
+
+  LISA band:  {N_cycles_LISA:.0f} cycles
+  Gap:        {N_cycles_gap:.0f} cycles
+  LIGO band:  {N_cycles_LIGO:.0f} cycles
+  ──────────────────────────────
+  TOTAL:      {N_cycles_LISA + N_cycles_gap + N_cycles_LIGO:.0f} cycles
+
+═══════════════════════════════════════════════════════════════════════════════
+UQFF PHASE LAG ACCUMULATION (f_TRZ = {f_TRZ}):
+═══════════════════════════════════════════════════════════════════════════════
+
+  ϕ_TRZ = 2π × f_TRZ × N_cycles
+  
+  In LISA band:  Δϕ = {phase_lag_LISA_cycles:.1f} cycles ({phase_lag_LISA_rad:.1f} rad)
+  In gap:        Δϕ = {phase_lag_gap_cycles:.1f} cycles ({phase_lag_gap_rad:.1f} rad)
+  In LIGO band:  Δϕ = {phase_lag_LIGO_cycles:.1f} cycles ({phase_lag_LIGO_rad:.1f} rad)
+  
+  ═══════════════════════════════════════════════════════════════════════════
+  CRITICAL: Phase lag at LIGO entry = {phase_lag_at_LIGO_entry_cycles:.1f} cycles
+  ═══════════════════════════════════════════════════════════════════════════
+  
+  This phase lag is ALREADY PRESENT when LIGO starts observing!
+  The waveform enters LIGO's band {phase_lag_at_LIGO_entry_cycles:.1f} cycles behind GR prediction.
+  
+  Total at merger: {phase_lag_total_cycles:.1f} cycles
+
+═══════════════════════════════════════════════════════════════════════════════
+UQFF AMPLITUDE DAMPING:
+═══════════════════════════════════════════════════════════════════════════════
+
+  A_TRZ = 1 - f_TRZ = {A_TRZ:.2f}
+  A_Um = exp(-σ × U_m) = {A_Um:.3f}
+  Combined: UQFF factor = {UQFF_amplitude_factor:.3f}
+  
+  Amplitude reduced by {(1-UQFF_amplitude_factor)*100:.0f}% compared to GR
+
+═══════════════════════════════════════════════════════════════════════════════
+SNR ESTIMATES:
+═══════════════════════════════════════════════════════════════════════════════
+
+  LISA:    SNR_GR ≈ {SNR_LISA_GR:.0f}    SNR_UQFF ≈ {SNR_LISA_UQFF:.0f}
+  LIGO:    SNR_GR ≈ {SNR_LIGO_GR:.0f}    SNR_UQFF ≈ {SNR_LIGO_UQFF:.0f}
+
+═══════════════════════════════════════════════════════════════════════════════
+TEMPLATE MATCHING (GR vs UQFF):
+═══════════════════════════════════════════════════════════════════════════════
+
+  When LIGO analyzes the signal using GR templates:
+  
+  Phase mismatch at LIGO entry: {phase_lag_at_LIGO_entry_cycles:.1f} cycles = {phase_lag_at_LIGO_entry_rad:.2f} rad
+  
+  Template match: cos(Δϕ) = {match_LIGO:.3f}
+  Mismatch: 1 - cos(Δϕ) = {mismatch_LIGO:.3f}
+  
+  SIGNIFICANCE:
+    Match < 0.97 → Signal may be missed or mischaracterized
+    Match < 0.9  → Source parameters significantly biased
+    Match < 0.5  → Template effectively useless
+    
+  Current match: {match_LIGO:.3f} → {"SIGNIFICANT MISMATCH" if match_LIGO < 0.97 else "Minor effect"}
+
+═══════════════════════════════════════════════════════════════════════════════
+OBSERVATIONAL STRATEGY:
+═══════════════════════════════════════════════════════════════════════════════
+
+  1. LISA OBSERVATION ({T_LISA_years:.1f} years):
+     - Track source phase evolution precisely
+     - Measure any deviations from GR inspiral
+     - Accumulate UQFF phase lag measurement
+     
+  2. PREDICTION FOR LIGO:
+     - LISA provides "early warning" {early_warning_years:.1f} years ahead
+     - GR predicts arrival time and phase
+     - UQFF predicts {phase_lag_at_LIGO_entry_cycles:.1f} cycle phase delay
+     
+  3. LIGO DETECTION:
+     - If phase matches GR: constrains f_TRZ
+     - If phase delayed by {phase_lag_at_LIGO_entry_cycles:.1f} cycles: CONFIRMS UQFF
+     
+  4. JOINT ANALYSIS:
+     - Combine LISA + LIGO data
+     - Phase coherence test across 10 decades of frequency
+     - Most stringent test of GW propagation physics
+
+═══════════════════════════════════════════════════════════════════════════════
+EXAMPLE TIMELINE (this binary):
+═══════════════════════════════════════════════════════════════════════════════
+
+  T = -{early_warning_years:.1f} years:  LISA detects at {f_LISA_start_mHz:.1f} mHz
+  T = -{tau_LISA_end/86400:.1f} days:    LISA loses signal at {f_LISA_end_mHz:.1f} mHz
+                          UQFF phase lag = {phase_lag_LISA_cycles:.1f} cycles
+  T = -{tau_LIGO_start:.1f} s:      LIGO detects at {f_LIGO_start_Hz:.0f} Hz
+                          Phase lag = {phase_lag_at_LIGO_entry_cycles:.1f} cycles (ALREADY PRESENT)
+  T = 0:              Merger
+                          Total phase lag = {phase_lag_total_cycles:.1f} cycles
+
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compute_WD_binary_foreground(self, N_WD_binaries: int = 100000,
+                                      f_band_mHz: Tuple[float, float] = (0.1, 10.0),
+                                      n_freq: int = 200,
+                                      f_TRZ: float = 0.1,
+                                      string_factor: float = 0.37,
+                                      U_m: float = 1.0) -> Tuple[Dict, str]:
+        """
+        Compute galactic WD binary foreground ("confusion noise") with UQFF damping.
+        
+        ~10^5 white dwarf binaries in our galaxy create an irreducible
+        "confusion noise" foreground in LISA's band. This foreground
+        must be subtracted to detect cosmological sources.
+        
+        UQFF PREDICTION:
+        UQFF damping reduces WD binary amplitudes, LOWERING the foreground.
+        This could IMPROVE LISA's sensitivity to distant sources!
+        
+        Parameters:
+            N_WD_binaries: Number of galactic WD binaries (typically ~10^5)
+            f_band_mHz: Frequency range in mHz
+            n_freq: Number of frequency bins
+            f_TRZ, string_factor, U_m: UQFF parameters
+            
+        Returns:
+            Tuple of (results_dict with foreground spectra, detailed_steps_string)
+        """
+        import numpy as np
+        
+        # Physical constants
+        M_sun = 1.989e30
+        c = 2.998e8
+        G = 6.674e-11
+        pc = 3.086e16
+        kpc = 1e3 * pc
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # FREQUENCY ARRAY
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        f_min = f_band_mHz[0] * 1e-3  # Hz
+        f_max = f_band_mHz[1] * 1e-3  # Hz
+        freq = np.logspace(np.log10(f_min), np.log10(f_max), n_freq)
+        freq_mHz = freq * 1000
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # WD BINARY POPULATION MODEL
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Distribution of WD binary frequencies (power law + cutoff)
+        # dN/df ∝ f^(-11/3) for GW-driven inspiral
+        f_break = 1e-3  # 1 mHz - transition frequency
+        
+        # Number density per frequency bin
+        df = np.diff(freq)
+        df = np.append(df, df[-1])
+        
+        dN_df = N_WD_binaries * (freq / f_min)**(-11/3)
+        dN_df = dN_df / np.sum(dN_df * df) * N_WD_binaries  # Normalize
+        
+        N_per_bin = dN_df * df
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # TYPICAL WD BINARY PARAMETERS
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Typical WD masses: 0.5-0.6 M_sun each
+        M_WD1 = 0.55 * M_sun
+        M_WD2 = 0.55 * M_sun
+        M_chirp_WD = (M_WD1 * M_WD2)**(3/5) / (M_WD1 + M_WD2)**(1/5)
+        M_chirp_WD_solar = M_chirp_WD / M_sun
+        
+        # Typical distance (galactic): 1-10 kpc, average ~5 kpc
+        D_typical = 5 * kpc
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # GR STRAIN FOR WD BINARIES
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # h = (4π^(2/3) / c⁴) × (G M_c)^(5/3) × f^(2/3) / D
+        h_GR_typical = (4 * np.pi**(2/3) / c**4) * \
+                       (G * M_chirp_WD)**(5/3) * freq**(2/3) / D_typical
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # CONFUSION NOISE (GR)
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Confusion noise: S_h = Σ h² / Δf (incoherent sum)
+        # For many sources: S_h ≈ h² × dN/df
+        S_h_GR = h_GR_typical**2 * dN_df
+        
+        # Total power in band
+        P_GR = np.trapz(S_h_GR, freq)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # UQFF DAMPING
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # WD binaries are in the galaxy, so distance-dependent damping is small
+        # But f_TRZ and U_m still apply
+        
+        A_TRZ = 1 - f_TRZ
+        A_Um = np.exp(-string_factor * U_m)
+        UQFF_factor = A_TRZ * A_Um
+        
+        # UQFF strain
+        h_UQFF_typical = h_GR_typical * UQFF_factor
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # CONFUSION NOISE (UQFF)
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        S_h_UQFF = h_UQFF_typical**2 * dN_df
+        P_UQFF = np.trapz(S_h_UQFF, freq)
+        
+        # Reduction factor
+        foreground_reduction = 1 - P_UQFF / P_GR
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # LISA INSTRUMENTAL NOISE
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # LISA noise curve (simplified)
+        f_opt = 3e-3  # Optimal frequency
+        S_n_floor = 1e-40
+        
+        low_f = (f_opt / freq)**4
+        high_f = (freq / f_opt)**2
+        S_n_LISA = S_n_floor * (1 + low_f + high_f)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # EFFECTIVE SENSITIVITY
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Total noise (instrumental + confusion)
+        S_total_GR = S_n_LISA + S_h_GR
+        S_total_UQFF = S_n_LISA + S_h_UQFF
+        
+        # Sensitivity improvement from UQFF
+        sensitivity_improvement = np.sqrt(S_total_GR / S_total_UQFF)
+        avg_improvement = np.mean(sensitivity_improvement)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # COSMOLOGICAL SOURCE VISIBILITY
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Example: SMBH merger at z=1 at 1 mHz
+        z_SMBH = 1.0
+        M_SMBH = 1e6 * M_sun
+        D_SMBH = (c / (70e3 / 3.086e22)) * z_SMBH * (1 + z_SMBH/2)
+        
+        h_SMBH_1mHz = (4 * np.pi**(2/3) / c**4) * \
+                      (G * M_SMBH)**(5/3) * 1e-3**(2/3) / D_SMBH
+        
+        # SNR for SMBH (limited by confusion)
+        idx_1mHz = np.argmin(np.abs(freq - 1e-3))
+        SNR_SMBH_GR = h_SMBH_1mHz / np.sqrt(S_total_GR[idx_1mHz])
+        SNR_SMBH_UQFF = h_SMBH_1mHz / np.sqrt(S_total_UQFF[idx_1mHz])
+        
+        results = {
+            # Frequency array
+            'freq_Hz': freq,
+            'freq_mHz': freq_mHz,
+            'n_freq': n_freq,
+            
+            # WD population
+            'N_WD_binaries': N_WD_binaries,
+            'M_chirp_WD_solar': M_chirp_WD_solar,
+            'D_typical_kpc': D_typical / kpc,
+            'N_per_bin': N_per_bin,
+            'dN_df': dN_df,
+            
+            # GR foreground
+            'h_GR_typical': h_GR_typical,
+            'S_h_GR': S_h_GR,
+            'P_GR': P_GR,
+            
+            # UQFF foreground
+            'UQFF_factor': UQFF_factor,
+            'h_UQFF_typical': h_UQFF_typical,
+            'S_h_UQFF': S_h_UQFF,
+            'P_UQFF': P_UQFF,
+            'foreground_reduction': foreground_reduction,
+            
+            # Noise
+            'S_n_LISA': S_n_LISA,
+            'S_total_GR': S_total_GR,
+            'S_total_UQFF': S_total_UQFF,
+            
+            # Sensitivity
+            'sensitivity_improvement': sensitivity_improvement,
+            'avg_improvement': avg_improvement,
+            
+            # SMBH visibility
+            'SNR_SMBH_GR': SNR_SMBH_GR,
+            'SNR_SMBH_UQFF': SNR_SMBH_UQFF,
+            
+            # Parameters
+            'f_TRZ': f_TRZ,
+            'A_TRZ': A_TRZ,
+            'A_Um': A_Um,
+        }
+        
+        # ASCII spectrum chart
+        chart_lines = []
+        chart_width = 60
+        chart_height = 12
+        
+        log_S_GR = np.log10(S_h_GR + 1e-60)
+        log_S_UQFF = np.log10(S_h_UQFF + 1e-60)
+        log_S_n = np.log10(S_n_LISA)
+        
+        sample_idx = np.linspace(0, n_freq-1, chart_width).astype(int)
+        
+        log_GR_sample = log_S_GR[sample_idx]
+        log_UQFF_sample = log_S_UQFF[sample_idx]
+        log_noise_sample = log_S_n[sample_idx]
+        
+        y_min = min(log_GR_sample.min(), log_UQFF_sample.min(), log_noise_sample.min()) - 1
+        y_max = max(log_GR_sample.max(), log_UQFF_sample.max())
+        
+        chart_lines.append(f"WD Binary Foreground ({f_band_mHz[0]:.1f}-{f_band_mHz[1]:.0f} mHz)")
+        chart_lines.append("=" * chart_width)
+        
+        for row in range(chart_height, 0, -1):
+            line = ""
+            y_level = y_min + (row / chart_height) * (y_max - y_min)
+            y_next = y_min + ((row - 1) / chart_height) * (y_max - y_min)
+            
+            for i in range(chart_width):
+                gr_here = y_next <= log_GR_sample[i] <= y_level
+                uqff_here = y_next <= log_UQFF_sample[i] <= y_level
+                noise_here = y_next <= log_noise_sample[i] <= y_level
+                
+                if gr_here and uqff_here:
+                    line += "X"
+                elif gr_here:
+                    line += "G"
+                elif uqff_here:
+                    line += "U"
+                elif noise_here:
+                    line += "n"
+                else:
+                    line += " "
+            
+            chart_lines.append(line)
+        
+        chart_lines.append("=" * chart_width)
+        chart_lines.append(f"f: {f_band_mHz[0]:.1f} {'─' * (chart_width-12)} {f_band_mHz[1]:.0f} mHz")
+        chart_lines.append("G=GR foreground, U=UQFF, n=instrumental noise")
+        
+        chart = "\n".join(chart_lines)
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+WHITE DWARF BINARY FOREGROUND ("CONFUSION NOISE") WITH UQFF DAMPING
+SuperGrok4 Export Integration (Feb 2026)
+═══════════════════════════════════════════════════════════════════════════════
+
+BACKGROUND:
+  ~10^5 white dwarf binaries in our galaxy emit GWs in LISA's band.
+  These create an irreducible "confusion noise" foreground below ~3 mHz.
+  Cosmological sources (SMBH mergers) must be detected ABOVE this foreground.
+
+UQFF PREDICTION:
+  UQFF damping reduces ALL GW amplitudes, including WD binaries.
+  This LOWERS the foreground, potentially IMPROVING LISA's sensitivity
+  to cosmological sources!
+
+═══════════════════════════════════════════════════════════════════════════════
+WD BINARY POPULATION:
+═══════════════════════════════════════════════════════════════════════════════
+
+  Number of binaries: N = {N_WD_binaries:,}
+  Typical chirp mass: ℳ = {M_chirp_WD_solar:.2f} M⊙
+  Typical distance: D = {D_typical/kpc:.0f} kpc (galactic)
+  
+  Frequency distribution: dN/df ∝ f^(-11/3) (inspiral-dominated)
+
+═══════════════════════════════════════════════════════════════════════════════
+UQFF DAMPING FACTORS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  A_TRZ = 1 - f_TRZ = {A_TRZ:.2f}
+  A_Um = exp(-σ × U_m) = {A_Um:.3f}
+  Combined: UQFF_factor = {UQFF_factor:.3f}
+  
+  Note: For galactic sources, distance-dependent damping is negligible.
+  The UQFF factor applies equally to all WD binaries.
+
+═══════════════════════════════════════════════════════════════════════════════
+FOREGROUND COMPARISON (ASCII CHART):
+═══════════════════════════════════════════════════════════════════════════════
+
+{chart}
+
+═══════════════════════════════════════════════════════════════════════════════
+CONFUSION NOISE POWER:
+═══════════════════════════════════════════════════════════════════════════════
+
+  GR foreground:   P_GR = {P_GR:.2e}
+  UQFF foreground: P_UQFF = {P_UQFF:.2e}
+  
+  Reduction: {foreground_reduction*100:.1f}%
+  
+  Each binary strain reduced by factor {UQFF_factor:.3f}
+  Confusion noise (∝ h²) reduced by factor {UQFF_factor**2:.3f}
+
+═══════════════════════════════════════════════════════════════════════════════
+SENSITIVITY IMPROVEMENT:
+═══════════════════════════════════════════════════════════════════════════════
+
+  With lower foreground, LISA can see cosmological sources better!
+  
+  Average improvement: {avg_improvement:.2f}×
+  
+  Peak improvement at frequencies where foreground dominates:
+    ~{np.max(sensitivity_improvement):.2f}× at low frequencies
+
+═══════════════════════════════════════════════════════════════════════════════
+SMBH VISIBILITY (EXAMPLE: 10^6 M⊙ at z=1):
+═══════════════════════════════════════════════════════════════════════════════
+
+  SMBH at 1 mHz:
+    GR scenario:   SNR = {SNR_SMBH_GR:.1f} (limited by confusion)
+    UQFF scenario: SNR = {SNR_SMBH_UQFF:.1f} (lower confusion)
+    
+  Improvement: {SNR_SMBH_UQFF/SNR_SMBH_GR:.2f}×
+  
+  THIS IS COUNTERINTUITIVE:
+    UQFF reduces SMBH signal (bad)
+    BUT also reduces foreground (good)
+    Net effect depends on relative distances!
+    
+  For cosmological sources (D >> D_galactic):
+    Foreground reduction dominates → NET IMPROVEMENT
+
+═══════════════════════════════════════════════════════════════════════════════
+OBSERVATIONAL IMPLICATIONS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  1. WD BINARY MAPPING:
+     - LISA will resolve ~10^4 individual WD binaries
+     - If average strain lower than GR prediction → evidence for UQFF
+     - Measure UQFF damping factor directly
+     
+  2. CONFUSION NOISE LEVEL:
+     - Compare measured foreground to GR prediction
+     - Lower foreground → UQFF effect OR fewer binaries
+     - Use resolved binaries to distinguish
+     
+  3. COSMOLOGICAL SOURCE DETECTION:
+     - If UQFF reduces foreground more than signal → improved sensitivity
+     - More SMBH mergers detected than GR predicts
+     - Or: same detections but lower inferred masses
+     
+  4. GALACTIC DISTANCE LADDER:
+     - WD binaries provide distance calibration
+     - UQFF changes inferred distances if not accounted for
+     - Independent test via parallax comparison
+
+═══════════════════════════════════════════════════════════════════════════════
+DISTINGUISHING UQFF FROM OTHER EFFECTS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  UQFF damping:           Uniform factor × h for all sources
+  Fewer WD binaries:      Uniform factor × N, affects foreground shape
+  Different mass dist:    Changes spectral shape
+  
+  To confirm UQFF:
+    - Measure strains of resolved binaries
+    - Compare to electromagnetic mass/distance estimates
+    - UQFF: systematic h offset; other effects: distribution changes
+
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compare_detector_sensitivity_curves(self, f_min_Hz: float = 1e-5,
+                                             f_max_Hz: float = 1e4,
+                                             n_freq: int = 500,
+                                             f_TRZ: float = 0.1,
+                                             string_factor: float = 0.37,
+                                             U_m: float = 1.0) -> Tuple[Dict, str]:
+        """
+        Compare LIGO and LISA sensitivity curves with UQFF modifications.
+        
+        Generates formal strain sensitivity curves S_h(f)^(1/2) for both
+        detectors, showing how UQFF affects detectability across 10 decades
+        of frequency.
+        
+        The key insight: UQFF modifies SIGNALS, not detector noise.
+        But effective sensitivity (minimum detectable strain) changes
+        because UQFF-damped signals are harder to detect.
+        
+        Parameters:
+            f_min_Hz, f_max_Hz: Frequency range (Hz)
+            n_freq: Number of frequency bins
+            f_TRZ, string_factor, U_m: UQFF parameters
+            
+        Returns:
+            Tuple of (results_dict with sensitivity curves, detailed_steps_string)
+        """
+        import numpy as np
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # FREQUENCY ARRAY (10 DECADES)
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        freq = np.logspace(np.log10(f_min_Hz), np.log10(f_max_Hz), n_freq)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # LIGO SENSITIVITY CURVE
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Advanced LIGO design sensitivity (simplified model)
+        # Noise sources: seismic (1/f^4), thermal (1/f), shot (f²)
+        
+        f_seismic = 10  # Hz - seismic wall
+        f_opt_LIGO = 100  # Hz - optimal frequency
+        S_n_LIGO_floor = 1e-47  # Strain PSD floor (Hz^-1)
+        
+        # Seismic noise (dominates below ~10 Hz)
+        seismic_LIGO = np.where(freq < f_seismic, 
+                                 (f_seismic / freq)**10,  # Very steep cutoff
+                                 1.0)
+        
+        # Thermal noise
+        thermal_LIGO = (f_opt_LIGO / freq)**0.5
+        
+        # Shot noise
+        shot_LIGO = (freq / f_opt_LIGO)**2
+        
+        # Combined LIGO noise PSD
+        S_n_LIGO = S_n_LIGO_floor * (seismic_LIGO + thermal_LIGO + shot_LIGO)
+        
+        # Amplitude spectral density
+        ASD_LIGO = np.sqrt(S_n_LIGO)
+        
+        # LIGO detection band
+        LIGO_band = (freq >= 10) & (freq <= 1000)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # LISA SENSITIVITY CURVE
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # LISA design sensitivity
+        f_opt_LISA = 3e-3  # Hz - optimal frequency (3 mHz)
+        S_n_LISA_floor = 1e-40  # Strain PSD floor
+        
+        # Acceleration noise (dominates at low f)
+        accel_LISA = (f_opt_LISA / freq)**4
+        
+        # Displacement/shot noise (dominates at high f)
+        shot_LISA = (freq / f_opt_LISA)**2
+        
+        # Transfer function cutoff at arm crossing frequency
+        f_arm = 0.019  # ~c/(2πL) for L=2.5e9 m
+        transfer_LISA = np.where(freq > f_arm, 
+                                  (freq / f_arm)**2,
+                                  1.0)
+        
+        # Combined LISA noise PSD
+        S_n_LISA = S_n_LISA_floor * (1 + accel_LISA + shot_LISA) * transfer_LISA
+        
+        # Amplitude spectral density
+        ASD_LISA = np.sqrt(S_n_LISA)
+        
+        # LISA detection band
+        LISA_band = (freq >= 1e-4) & (freq <= 1)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # UQFF SIGNAL MODIFICATION
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # UQFF reduces signal amplitude, not noise
+        # But we can express as "effective sensitivity" = noise / UQFF_factor
+        
+        A_TRZ = 1 - f_TRZ
+        A_Um = np.exp(-string_factor * U_m)
+        UQFF_factor = A_TRZ * A_Um
+        
+        # Effective ASD (what strain is needed to achieve same SNR under UQFF)
+        ASD_LIGO_eff = ASD_LIGO / UQFF_factor
+        ASD_LISA_eff = ASD_LISA / UQFF_factor
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # CHARACTERISTIC STRAIN FOR SOURCES
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Physical constants
+        M_sun = 1.989e30
+        c = 2.998e8
+        G = 6.674e-11
+        Mpc = 3.086e22
+        
+        def h_char(M_chirp, D, f):
+            """Characteristic strain for inspiral source."""
+            return (G * M_chirp / c**2)**(5/3) * (np.pi * f)**(2/3) / D * \
+                   np.sqrt(freq / np.maximum(np.gradient(freq), 1e-20))
+        
+        # GW150914-like (30+30 M_sun at 400 Mpc)
+        M_chirp_GW150914 = 30 * M_sun * 0.87  # η^(3/5) for equal mass
+        D_GW150914 = 400 * Mpc
+        h_GW150914 = (4 * G * M_chirp_GW150914 / c**2) * \
+                     (np.pi * G * M_chirp_GW150914 / c**3)**(2/3) * \
+                     freq**(2/3) / D_GW150914
+        
+        # SMBH merger (10^6 M_sun at 1 Gpc)
+        M_chirp_SMBH = 1e6 * M_sun * 0.87
+        D_SMBH = 1e3 * Mpc
+        h_SMBH = (4 * G * M_chirp_SMBH / c**2) * \
+                 (np.pi * G * M_chirp_SMBH / c**3)**(2/3) * \
+                 freq**(2/3) / D_SMBH
+        
+        # WD binary (galactic, 5 kpc)
+        M_chirp_WD = 0.5 * M_sun * 0.87
+        D_WD = 5e3 * 3.086e16
+        h_WD = (4 * G * M_chirp_WD / c**2) * \
+               (np.pi * G * M_chirp_WD / c**3)**(2/3) * \
+               freq**(2/3) / D_WD
+        
+        # UQFF-modified source strains
+        h_GW150914_UQFF = h_GW150914 * UQFF_factor
+        h_SMBH_UQFF = h_SMBH * UQFF_factor
+        h_WD_UQFF = h_WD * UQFF_factor
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # SNR COMPARISON
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Peak SNR for each source (in optimal band)
+        # GW150914 at 100 Hz
+        idx_100Hz = np.argmin(np.abs(freq - 100))
+        SNR_GW150914_GR = h_GW150914[idx_100Hz] / ASD_LIGO[idx_100Hz]
+        SNR_GW150914_UQFF = h_GW150914_UQFF[idx_100Hz] / ASD_LIGO[idx_100Hz]
+        
+        # SMBH at 3 mHz
+        idx_3mHz = np.argmin(np.abs(freq - 3e-3))
+        SNR_SMBH_GR = h_SMBH[idx_3mHz] / ASD_LISA[idx_3mHz]
+        SNR_SMBH_UQFF = h_SMBH_UQFF[idx_3mHz] / ASD_LISA[idx_3mHz]
+        
+        # WD at 1 mHz
+        idx_1mHz = np.argmin(np.abs(freq - 1e-3))
+        SNR_WD_GR = h_WD[idx_1mHz] / ASD_LISA[idx_1mHz]
+        SNR_WD_UQFF = h_WD_UQFF[idx_1mHz] / ASD_LISA[idx_1mHz]
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # HORIZON DISTANCE (SNR = 8 threshold)
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # For LIGO stellar-mass BH (at 100 Hz)
+        h_threshold_LIGO = 8 * ASD_LIGO[idx_100Hz]
+        D_horizon_LIGO_GR = (4 * G * M_chirp_GW150914 / c**2) * \
+                            (np.pi * G * M_chirp_GW150914 * 100 / c**3)**(2/3) / h_threshold_LIGO
+        D_horizon_LIGO_UQFF = D_horizon_LIGO_GR * UQFF_factor
+        
+        # For LISA SMBH (at 3 mHz)
+        h_threshold_LISA = 8 * ASD_LISA[idx_3mHz]
+        D_horizon_LISA_GR = (4 * G * M_chirp_SMBH / c**2) * \
+                            (np.pi * G * M_chirp_SMBH * 3e-3 / c**3)**(2/3) / h_threshold_LISA
+        D_horizon_LISA_UQFF = D_horizon_LISA_GR * UQFF_factor
+        
+        results = {
+            # Frequency array
+            'freq_Hz': freq,
+            'n_freq': n_freq,
+            
+            # LIGO curves
+            'S_n_LIGO': S_n_LIGO,
+            'ASD_LIGO': ASD_LIGO,
+            'ASD_LIGO_eff': ASD_LIGO_eff,
+            'LIGO_band': LIGO_band,
+            
+            # LISA curves
+            'S_n_LISA': S_n_LISA,
+            'ASD_LISA': ASD_LISA,
+            'ASD_LISA_eff': ASD_LISA_eff,
+            'LISA_band': LISA_band,
+            
+            # UQFF factors
+            'f_TRZ': f_TRZ,
+            'A_TRZ': A_TRZ,
+            'A_Um': A_Um,
+            'UQFF_factor': UQFF_factor,
+            
+            # Source strains (GR)
+            'h_GW150914': h_GW150914,
+            'h_SMBH': h_SMBH,
+            'h_WD': h_WD,
+            
+            # Source strains (UQFF)
+            'h_GW150914_UQFF': h_GW150914_UQFF,
+            'h_SMBH_UQFF': h_SMBH_UQFF,
+            'h_WD_UQFF': h_WD_UQFF,
+            
+            # SNR comparisons
+            'SNR_GW150914_GR': SNR_GW150914_GR,
+            'SNR_GW150914_UQFF': SNR_GW150914_UQFF,
+            'SNR_SMBH_GR': SNR_SMBH_GR,
+            'SNR_SMBH_UQFF': SNR_SMBH_UQFF,
+            'SNR_WD_GR': SNR_WD_GR,
+            'SNR_WD_UQFF': SNR_WD_UQFF,
+            
+            # Horizon distances
+            'D_horizon_LIGO_GR_Mpc': D_horizon_LIGO_GR / Mpc,
+            'D_horizon_LIGO_UQFF_Mpc': D_horizon_LIGO_UQFF / Mpc,
+            'D_horizon_LISA_GR_Gpc': D_horizon_LISA_GR / (1e3 * Mpc),
+            'D_horizon_LISA_UQFF_Gpc': D_horizon_LISA_UQFF / (1e3 * Mpc),
+        }
+        
+        # ASCII sensitivity curve chart
+        chart_lines = []
+        chart_width = 70
+        chart_height = 20
+        
+        # Plot log-log
+        log_f = np.log10(freq)
+        log_ASD_LIGO = np.log10(ASD_LIGO)
+        log_ASD_LISA = np.log10(ASD_LISA)
+        log_ASD_LIGO_eff = np.log10(ASD_LIGO_eff)
+        log_ASD_LISA_eff = np.log10(ASD_LISA_eff)
+        log_h_GW150914 = np.log10(h_GW150914 + 1e-30)
+        log_h_SMBH = np.log10(h_SMBH + 1e-30)
+        
+        # Downsample for chart
+        sample_idx = np.linspace(0, n_freq-1, chart_width).astype(int)
+        
+        f_sample = log_f[sample_idx]
+        LIGO_sample = log_ASD_LIGO[sample_idx]
+        LISA_sample = log_ASD_LISA[sample_idx]
+        h_GW_sample = log_h_GW150914[sample_idx]
+        h_SMBH_sample = log_h_SMBH[sample_idx]
+        
+        y_min = -25
+        y_max = -18
+        
+        chart_lines.append("LIGO + LISA Sensitivity Curves (10^-5 to 10^4 Hz)")
+        chart_lines.append("=" * chart_width)
+        
+        for row in range(chart_height, 0, -1):
+            line = ""
+            y_level = y_min + (row / chart_height) * (y_max - y_min)
+            y_next = y_min + ((row - 1) / chart_height) * (y_max - y_min)
+            
+            for i in range(chart_width):
+                ligo_here = y_next <= LIGO_sample[i] <= y_level
+                lisa_here = y_next <= LISA_sample[i] <= y_level
+                gw_here = y_next <= h_GW_sample[i] <= y_level
+                smbh_here = y_next <= h_SMBH_sample[i] <= y_level
+                
+                if ligo_here:
+                    line += "L"
+                elif lisa_here:
+                    line += "A"
+                elif gw_here:
+                    line += "g"
+                elif smbh_here:
+                    line += "s"
+                else:
+                    line += " "
+            
+            chart_lines.append(line)
+        
+        chart_lines.append("=" * chart_width)
+        chart_lines.append("f: 10^-5 ─────────────────── 10^4 Hz")
+        chart_lines.append("L=LIGO, A=LISA, g=GW150914, s=SMBH")
+        
+        chart = "\n".join(chart_lines)
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+DETECTOR SENSITIVITY COMPARISON: LIGO vs LISA WITH UQFF MODIFICATIONS
+SuperGrok4 Export Integration (Feb 2026)
+═══════════════════════════════════════════════════════════════════════════════
+
+OVERVIEW:
+  LIGO and LISA together cover 10 decades of GW frequency:
+    LIGO: 10 Hz - 1 kHz (stellar-mass compact objects)
+    LISA: 0.1 mHz - 1 Hz (supermassive objects)
+    
+  UQFF modifies the SIGNALS, not detector noise.
+  But effective sensitivity changes because damped signals need
+  to be intrinsically stronger to achieve same SNR.
+
+═══════════════════════════════════════════════════════════════════════════════
+DETECTOR PARAMETERS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  LIGO (Advanced LIGO):
+    Arm length: 4 km
+    Optimal frequency: ~100 Hz
+    Best sensitivity: √{S_n_LIGO_floor:.0e} ≈ {np.sqrt(S_n_LIGO_floor):.1e} Hz^(-1/2)
+    Band: 10 Hz - 1 kHz
+    
+  LISA (planned):
+    Arm length: 2.5 million km
+    Optimal frequency: ~3 mHz
+    Best sensitivity: √{S_n_LISA_floor:.0e} ≈ {np.sqrt(S_n_LISA_floor):.1e} Hz^(-1/2)
+    Band: 0.1 mHz - 1 Hz
+
+═══════════════════════════════════════════════════════════════════════════════
+UQFF SIGNAL MODIFICATION:
+═══════════════════════════════════════════════════════════════════════════════
+
+  A_TRZ = 1 - f_TRZ = {A_TRZ:.2f}
+  A_Um = exp(-σ × U_m) = {A_Um:.3f}
+  Combined: UQFF_factor = {UQFF_factor:.3f}
+  
+  All GW signals reduced by factor {UQFF_factor:.3f}
+  
+  EFFECTIVE SENSITIVITY:
+    To detect UQFF-damped signal with same SNR:
+    h_eff = h_noise / UQFF_factor
+    
+    This is {1/UQFF_factor:.2f}× worse than GR case
+
+═══════════════════════════════════════════════════════════════════════════════
+SENSITIVITY CURVE VISUALIZATION (ASCII):
+═══════════════════════════════════════════════════════════════════════════════
+
+{chart}
+
+═══════════════════════════════════════════════════════════════════════════════
+SNR COMPARISON FOR BENCHMARK SOURCES:
+═══════════════════════════════════════════════════════════════════════════════
+
+  GW150914-like (30+30 M⊙ at 400 Mpc, LIGO band):
+    GR:   SNR = {SNR_GW150914_GR:.0f}
+    UQFF: SNR = {SNR_GW150914_UQFF:.0f}
+    Ratio: {SNR_GW150914_UQFF/SNR_GW150914_GR:.2f}
+    
+  SMBH merger (10^6 M⊙ at 1 Gpc, LISA band):
+    GR:   SNR = {SNR_SMBH_GR:.0f}
+    UQFF: SNR = {SNR_SMBH_UQFF:.0f}
+    Ratio: {SNR_SMBH_UQFF/SNR_SMBH_GR:.2f}
+    
+  WD binary (galactic, 5 kpc, LISA band):
+    GR:   SNR = {SNR_WD_GR:.1f}
+    UQFF: SNR = {SNR_WD_UQFF:.1f}
+    Ratio: {SNR_WD_UQFF/SNR_WD_GR:.2f}
+
+═══════════════════════════════════════════════════════════════════════════════
+HORIZON DISTANCES (SNR = 8 THRESHOLD):
+═══════════════════════════════════════════════════════════════════════════════
+
+  LIGO (30+30 M⊙ binary):
+    GR horizon:   {D_horizon_LIGO_GR/Mpc:.0f} Mpc
+    UQFF horizon: {D_horizon_LIGO_UQFF/Mpc:.0f} Mpc
+    Reduction: {(1-D_horizon_LIGO_UQFF/D_horizon_LIGO_GR)*100:.0f}%
+    
+  LISA (10^6 M⊙ SMBH):
+    GR horizon:   {D_horizon_LISA_GR/(1e3*Mpc):.1f} Gpc
+    UQFF horizon: {D_horizon_LISA_UQFF/(1e3*Mpc):.1f} Gpc
+    Reduction: {(1-D_horizon_LISA_UQFF/D_horizon_LISA_GR)*100:.0f}%
+
+═══════════════════════════════════════════════════════════════════════════════
+IMPLICATIONS FOR DETECTION RATES:
+═══════════════════════════════════════════════════════════════════════════════
+
+  Detection volume ∝ D³, so rate reduction:
+  
+  LIGO: Volume reduced by factor {(D_horizon_LIGO_UQFF/D_horizon_LIGO_GR)**3:.2f}
+        Expected rate {(D_horizon_LIGO_UQFF/D_horizon_LIGO_GR)**3*100:.0f}% of GR
+        
+  LISA: Volume reduced by factor {(D_horizon_LISA_UQFF/D_horizon_LISA_GR)**3:.2f}
+        Expected rate {(D_horizon_LISA_UQFF/D_horizon_LISA_GR)**3*100:.0f}% of GR
+        
+  OBSERVATIONAL TEST:
+    If detected event rate matches GR → constrains UQFF
+    If lower rate → consistent with UQFF damping
+    Need population synthesis model to distinguish from astrophysics
+
+═══════════════════════════════════════════════════════════════════════════════
+MULTI-BAND OBSERVATIONS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  For sources in BOTH bands (stellar-mass binaries):
+  
+    LISA observation (years before merger):
+      - Measures binary parameters
+      - Accumulates UQFF phase lag
+      
+    LIGO observation (final seconds):
+      - High-SNR measurement
+      - Phase comparison to LISA prediction
+      
+  MULTI-BAND UQFF TEST:
+    Phase consistency across frequency bands
+    LISA predicts arrival + phase at LIGO
+    UQFF phase lag creates systematic offset
+    Most stringent test of GW propagation physics!
+
+═══════════════════════════════════════════════════════════════════════════════
+FREQUENCY-DEPENDENT EFFECTS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  Current model: UQFF_factor = {UQFF_factor:.3f} (frequency-independent)
+  
+  Possible frequency dependence:
+    - Higher f → more cycles → more phase lag accumulation
+    - Distance damping may vary with wavelength
+    - Aether interactions could be resonant
+    
+  LISA + LIGO together span 10 decades:
+    Can test frequency-dependent UQFF models
+    Constrain any f-dependence to <10%/decade (estimated)
+
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # DARK MATTER HALO UQFF CALCULATOR (Priority 2 - SuperGrok4 Export 20260224)
