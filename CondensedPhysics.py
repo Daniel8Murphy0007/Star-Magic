@@ -104859,6 +104859,12 @@ class UQFFBlackHoleStabilityCalculator(SelfExpandingMixin):
         "UQFF: Suppresses evaporation ~30×, critical mass drops to ~10¹¹ kg",
         "Dark Matter: UQFF enables PBH dark matter for smaller masses",
         "Test: Gamma-ray burst rates, q-scope/THz analogs",
+        "",
+        "PBH DARK MATTER ABUNDANCE (f_PBH = Ω_PBH/Ω_DM):",
+        "Standard viable: 10¹⁷-10²³ g (asteroid window), f_PBH ~ 1 possible",
+        "UQFF opens: 10¹⁰-10¹⁵ g via suppressed evaporation (no gamma excess)",
+        "Constraints: microlensing (unchanged), CMB/GW (relaxed in UQFF)",
+        "Implication: PBHs can be 100% of dark matter in UQFF",
     ]
     
     def __init__(self, params: dict = None):
@@ -105782,6 +105788,429 @@ Test Predictions:
         return report
     
     # ═══════════════════════════════════════════════════════════════════════════
+    # PBH DARK MATTER ABUNDANCE (Feb 25, 2026)
+    # ═══════════════════════════════════════════════════════════════════════════
+    # f_PBH = Ω_PBH / Ω_DM where Ω_DM ≈ 0.26
+    # Standard constraints: microlensing, GW, evaporation (gamma-rays)
+    # Mass windows:
+    #   Standard viable: 10¹⁷-10²³ g (10¹⁴-10²⁰ kg)
+    #   UQFF opens: 10¹⁰-10¹⁵ g (10⁷-10¹² kg) via suppressed evaporation
+    # f_PBH = 1 (100% DM) possible in UQFF for extended mass range
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # Mass windows (in kg) - standard cosmology constraints
+    MASS_WINDOWS_STANDARD = {
+        'evaporation_excluded': (0, 1e12),          # M < 10¹² kg: evaporated (τ < t_universe)
+        'gamma_ray_excluded': (1e11, 1e15),         # 10¹⁴-10¹⁷ g: gamma-ray limits f_PBH < 10⁻³
+        'microlensing_EROS': (1e23, 1e28),          # ~10⁻⁷ - 1 M☉: microlensing constraints
+        'microlensing_HSC': (1e20, 1e24),           # Subaru HSC constraints
+        'CMB_accretion': (1e28, 1e35),              # >1 M☉: CMB distortion from accretion
+        'LIGO_mergers': (1e30, 1e33),               # 10-100 M☉: LIGO merger rate limits
+        
+        # Viable windows (f_PBH ~ 1 possible)
+        'asteroid_window': (1e14, 1e20),            # 10¹⁷-10²³ g: "asteroid mass" window
+        'sublunar_window': (1e20, 1e24),            # Near-lunar masses (partial)
+    }
+    
+    def compute_f_PBH_standard(self, M: float) -> dict:
+        """
+        Estimate PBH dark matter fraction f_PBH in standard cosmology.
+        
+        f_PBH = Ω_PBH / Ω_DM where Ω_DM ≈ 0.26
+        
+        Standard constraints from:
+        - Evaporation (gamma-rays): M < 10¹⁵ g excluded
+        - Microlensing (EROS, HSC): 10⁻⁷ - 10 M☉ constrained
+        - CMB accretion: M > 1 M☉ limited
+        - GW mergers (LIGO): 10-100 M☉ constrained
+        
+        Args:
+            M: PBH mass [kg]
+        
+        Returns:
+            Dict with f_PBH limits and constraint sources
+        """
+        M_sun = self.params['M_sun']
+        t_universe = self.params['t_universe']
+        year = self.params['year']
+        
+        constraints = []
+        f_PBH_max = 1.0  # Start assuming 100% possible
+        
+        # Evaporation constraint
+        tau = self.compute_tau_standard(M)
+        if tau < t_universe:
+            constraints.append(('evaporation', 0.0, 'Evaporated (τ < t_universe)'))
+            f_PBH_max = 0.0
+        elif M < 1e15:  # M < 10¹⁵ kg (10¹⁸ g): gamma-ray limits
+            f_gamma = min(1.0, 1e-3 * (M / 1e12)**0.5)  # Approximate scaling
+            constraints.append(('gamma_ray', f_gamma, 'Gamma-ray emission limits'))
+            f_PBH_max = min(f_PBH_max, f_gamma)
+        
+        # Microlensing (EROS/MACHO)
+        if 1e-7 * M_sun < M < 10 * M_sun:
+            f_micro = 0.1  # Rough upper limit
+            constraints.append(('microlensing_EROS', f_micro, 'EROS/MACHO microlensing'))
+            f_PBH_max = min(f_PBH_max, f_micro)
+        
+        # Subaru HSC (lower masses)
+        if 1e20 < M < 1e24:  # ~10⁻¹⁰ - 10⁻⁶ M☉
+            f_hsc = 0.3
+            constraints.append(('microlensing_HSC', f_hsc, 'Subaru HSC microlensing'))
+            f_PBH_max = min(f_PBH_max, f_hsc)
+        
+        # CMB accretion
+        if M > M_sun:
+            f_cmb = 1e-3 * (M_sun / M)**0.5
+            constraints.append(('CMB_accretion', f_cmb, 'CMB distortion from accretion'))
+            f_PBH_max = min(f_PBH_max, f_cmb)
+        
+        # LIGO merger rate
+        if 10 * M_sun < M < 100 * M_sun:
+            f_ligo = 0.01
+            constraints.append(('LIGO_mergers', f_ligo, 'LIGO merger rate limits'))
+            f_PBH_max = min(f_PBH_max, f_ligo)
+        
+        # Asteroid mass window (viable!)
+        if 1e14 < M < 1e20:
+            constraints.append(('asteroid_window', 1.0, 'Asteroid mass window - viable!'))
+        
+        return {
+            'M_kg': M,
+            'M_g': M * 1e3,
+            'M_solar': M / M_sun,
+            'tau_standard_yr': tau / year,
+            'evaporated': tau < t_universe,
+            'constraints': constraints,
+            'f_PBH_max_standard': f_PBH_max,
+            'viable_100_percent': f_PBH_max >= 0.99,
+        }
+    
+    def compute_f_PBH_UQFF(self, M: float, U_m_kT_ratio: float = 1.0) -> dict:
+        """
+        Estimate PBH dark matter fraction f_PBH in UQFF framework.
+        
+        UQFF suppresses Hawking evaporation, opening new mass windows:
+        - Lighter PBHs survive (M > M_crit_UQFF instead of M_crit_std)
+        - No gamma-ray excess from evaporation → f_PBH = 1 viable
+        - PBHs form via aether fluctuations, stabilized as superfluid vortices
+        
+        Args:
+            M: PBH mass [kg]
+            U_m_kT_ratio: Assumed U_m/(k_BT_H) ratio
+        
+        Returns:
+            Dict with f_PBH limits under UQFF
+        """
+        M_sun = self.params['M_sun']
+        t_universe = self.params['t_universe']
+        year = self.params['year']
+        
+        # UQFF enhancement
+        f_TRZ = self.params['f_TRZ']
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        enhancement = (1.0 / (1.0 - f_TRZ)) * (rho_UA / rho_SCm) * np.exp(U_m_kT_ratio)
+        
+        # UQFF lifetime
+        tau_std = self.compute_tau_standard(M)
+        tau_uqff = tau_std * enhancement
+        
+        constraints_uqff = []
+        f_PBH_max_uqff = 1.0
+        
+        # Evaporation in UQFF
+        if tau_uqff < t_universe:
+            constraints_uqff.append(('evaporation_UQFF', 0.0, 'Evaporated even in UQFF'))
+            f_PBH_max_uqff = 0.0
+        else:
+            # No gamma-ray constraint if not evaporating!
+            if tau_std < t_universe and tau_uqff >= t_universe:
+                constraints_uqff.append(('UQFF_stabilized', 1.0, 'UQFF suppresses evaporation → no gamma limit'))
+        
+        # Microlensing still applies (gravitational, not affected by UQFF)
+        if 1e-7 * M_sun < M < 10 * M_sun:
+            f_micro = 0.1
+            constraints_uqff.append(('microlensing_EROS', f_micro, 'EROS/MACHO (still applies)'))
+            f_PBH_max_uqff = min(f_PBH_max_uqff, f_micro)
+        
+        # CMB accretion slightly modified (less emission)
+        if M > M_sun:
+            f_cmb = 5e-3 * (M_sun / M)**0.4  # Slightly relaxed in UQFF
+            constraints_uqff.append(('CMB_accretion_UQFF', f_cmb, 'CMB (relaxed in UQFF)'))
+            f_PBH_max_uqff = min(f_PBH_max_uqff, f_cmb)
+        
+        # LIGO - UQFF predicts damped luminosity → fewer mergers detected
+        if 10 * M_sun < M < 100 * M_sun:
+            f_ligo = 0.05  # Relaxed due to UQFF damping
+            constraints_uqff.append(('LIGO_UQFF', f_ligo, 'LIGO (relaxed, damped L_UQFF)'))
+            f_PBH_max_uqff = min(f_PBH_max_uqff, f_ligo)
+        
+        # NEW UQFF windows
+        M_crit_std = self.compute_pbh_critical_mass_standard()
+        M_crit_uqff = self.compute_pbh_critical_mass_uqff(U_m_kT_ratio)
+        
+        if M_crit_uqff < M < M_crit_std:
+            constraints_uqff.append(('UQFF_new_window', 1.0, 
+                f'NEW UQFF window: {M_crit_uqff:.1e} < M < {M_crit_std:.1e} kg'))
+        
+        # Extended asteroid window
+        if 1e10 < M < 1e20:
+            constraints_uqff.append(('extended_asteroid', 1.0, 'Extended asteroid window (UQFF)'))
+        
+        # Compare to standard
+        std_result = self.compute_f_PBH_standard(M)
+        
+        return {
+            'M_kg': M,
+            'M_g': M * 1e3,
+            'M_solar': M / M_sun,
+            
+            # Lifetimes
+            'tau_standard_yr': tau_std / year,
+            'tau_UQFF_yr': tau_uqff / year,
+            'enhancement_factor': enhancement,
+            
+            # Evaporation status
+            'evaporated_standard': tau_std < t_universe,
+            'evaporated_UQFF': tau_uqff < t_universe,
+            'saved_by_UQFF': (tau_std < t_universe) and (tau_uqff >= t_universe),
+            
+            # Constraints
+            'constraints_UQFF': constraints_uqff,
+            'f_PBH_max_standard': std_result['f_PBH_max_standard'],
+            'f_PBH_max_UQFF': f_PBH_max_uqff,
+            
+            # Viability
+            'viable_100_percent_standard': std_result['viable_100_percent'],
+            'viable_100_percent_UQFF': f_PBH_max_uqff >= 0.99,
+            'UQFF_improves_viability': f_PBH_max_uqff > std_result['f_PBH_max_standard'],
+        }
+    
+    def compute_pbh_dm_mass_spectrum(self, M_start: float = 1e7, M_end: float = 1e35,
+                                      n_points: int = 100, U_m_kT_ratio: float = 1.0) -> dict:
+        """
+        Compute f_PBH vs mass spectrum for dark matter analysis.
+        
+        Generates data for plotting:
+        - Standard constraints (gray regions)
+        - UQFF viable regions (green)
+        
+        Args:
+            M_start: Starting mass [kg] (default: 10⁷ kg = 10¹⁰ g)
+            M_end: Ending mass [kg] (default: 10³⁵ kg ~ 5×10⁴ M☉)
+            n_points: Number of mass points
+            U_m_kT_ratio: UQFF parameter
+        
+        Returns:
+            Dict with mass array and f_PBH limits
+        """
+        masses = np.logspace(np.log10(M_start), np.log10(M_end), n_points)
+        f_PBH_std = np.zeros(n_points)
+        f_PBH_uqff = np.zeros(n_points)
+        viable_std = np.zeros(n_points, dtype=bool)
+        viable_uqff = np.zeros(n_points, dtype=bool)
+        saved_by_uqff = np.zeros(n_points, dtype=bool)
+        
+        for i, M in enumerate(masses):
+            result = self.compute_f_PBH_UQFF(M, U_m_kT_ratio)
+            f_PBH_std[i] = result['f_PBH_max_standard']
+            f_PBH_uqff[i] = result['f_PBH_max_UQFF']
+            viable_std[i] = result['viable_100_percent_standard']
+            viable_uqff[i] = result['viable_100_percent_UQFF']
+            saved_by_uqff[i] = result['saved_by_UQFF']
+        
+        return {
+            'masses_kg': masses,
+            'masses_g': masses * 1e3,
+            'masses_solar': masses / self.params['M_sun'],
+            'f_PBH_max_standard': f_PBH_std,
+            'f_PBH_max_UQFF': f_PBH_uqff,
+            'viable_100pct_standard': viable_std,
+            'viable_100pct_UQFF': viable_uqff,
+            'saved_by_UQFF': saved_by_uqff,
+            'n_viable_standard': np.sum(viable_std),
+            'n_viable_UQFF': np.sum(viable_uqff),
+        }
+    
+    def pbh_dark_matter_summary(self, U_m_kT_ratio: float = 1.0) -> dict:
+        """
+        Summarize PBH dark matter viability across all mass ranges.
+        
+        Args:
+            U_m_kT_ratio: UQFF parameter
+        
+        Returns:
+            Summary dict with mass windows and observational implications
+        """
+        M_sun = self.params['M_sun']
+        M_crit_std = self.compute_pbh_critical_mass_standard()
+        M_crit_uqff = self.compute_pbh_critical_mass_uqff(U_m_kT_ratio)
+        
+        # Test specific masses
+        test_masses = {
+            '10^10 g': 1e7,    # 10⁷ kg
+            '10^12 g': 1e9,    # 10⁹ kg
+            '10^14 g': 1e11,   # 10¹¹ kg
+            '10^15 g': 1e12,   # 10¹² kg (critical standard)
+            '10^17 g': 1e14,   # 10¹⁴ kg
+            '10^20 g': 1e17,   # 10¹⁷ kg (asteroid window)
+            '10^23 g': 1e20,   # 10²⁰ kg
+            '1 M☉': M_sun,
+            '10 M☉': 10 * M_sun,
+        }
+        
+        results = {}
+        for name, M in test_masses.items():
+            result = self.compute_f_PBH_UQFF(M, U_m_kT_ratio)
+            results[name] = {
+                'f_PBH_std': result['f_PBH_max_standard'],
+                'f_PBH_UQFF': result['f_PBH_max_UQFF'],
+                'improved': result['UQFF_improves_viability'],
+                'saved': result['saved_by_UQFF'],
+            }
+        
+        return {
+            'title': 'PBH Dark Matter Viability Summary',
+            'M_critical_standard': M_crit_std,
+            'M_critical_UQFF': M_crit_uqff,
+            'mass_tests': results,
+            
+            'standard_viable_windows': [
+                '10¹⁷-10²³ g (asteroid mass): f_PBH ~ 1 possible',
+                '10²³-10²⁶ g (sublunar): partially constrained',
+            ],
+            
+            'UQFF_new_windows': [
+                f'10¹⁰-10¹⁵ g ({M_crit_uqff:.1e}-{M_crit_std:.1e} kg): NEW via suppressed evaporation',
+                'Extends asteroid window downward',
+                'PBHs as 100% DM viable for broader range',
+            ],
+            
+            'observational_tests': [
+                'Gamma-ray background: Should be LOWER than standard predicts',
+                'GW mergers (LISA/PTA): Damped L_UQFF → fewer detected binaries',
+                'Microlensing: Unchanged (gravitational only)',
+                'q-scope/THz analogs: Simulate micro-PBH stability',
+            ],
+            
+            'cosmological_implications': [
+                'PBHs can seed galaxies via aether-mediated accretion',
+                'Challenges hierarchical merger paradigm',
+                'Dark matter may be entirely primordial black holes',
+            ],
+        }
+    
+    def pbh_dark_matter_report(self, M: float = None, U_m_kT_ratio: float = 1.0) -> str:
+        """
+        Generate detailed PBH dark matter report.
+        
+        Args:
+            M: PBH mass [kg] (default: 10¹² kg)
+            U_m_kT_ratio: UQFF parameter
+        
+        Returns:
+            Formatted report string
+        """
+        if M is None:
+            M = 1e12
+        
+        M_sun = self.params['M_sun']
+        year = self.params['year']
+        
+        result = self.compute_f_PBH_UQFF(M, U_m_kT_ratio)
+        M_crit_std = self.compute_pbh_critical_mass_standard()
+        M_crit_uqff = self.compute_pbh_critical_mass_uqff(U_m_kT_ratio)
+        summary = self.pbh_dark_matter_summary(U_m_kT_ratio)
+        
+        report = f"""
+════════════════════════════════════════════════════════════════════════════════════════════
+            PBH DARK MATTER ABUNDANCE ANALYSIS
+════════════════════════════════════════════════════════════════════════════════════════════
+
+TARGET MASS: M = {M:.3e} kg ({M*1e3:.3e} g) ({M/M_sun:.2e} M☉)
+
+f_PBH = Ω_PBH / Ω_DM  (where Ω_DM ≈ 0.26)
+f_PBH = 1 means PBHs constitute 100% of dark matter
+
+═══════════════════════════════════════════════════════════════════════════════
+STANDARD COSMOLOGY
+═══════════════════════════════════════════════════════════════════════════════
+
+Lifetime: τ_standard = {result['tau_standard_yr']:.2e} years
+Status:   {"⚠️  EVAPORATED" if result['evaporated_standard'] else "✓ SURVIVES"}
+
+Maximum f_PBH: {result['f_PBH_max_standard']:.3f}
+100% DM viable: {"YES" if result['viable_100_percent_standard'] else "NO"}
+
+Standard Constraints:
+"""
+        for constraint in self.compute_f_PBH_standard(M)['constraints']:
+            report += f"  • {constraint[2]} (f_PBH ≤ {constraint[1]:.3f})\n"
+        
+        report += f"""
+Standard Viable Mass Windows:
+"""
+        for window in summary['standard_viable_windows']:
+            report += f"  • {window}\n"
+
+        report += f"""
+═══════════════════════════════════════════════════════════════════════════════
+UQFF FRAMEWORK
+═══════════════════════════════════════════════════════════════════════════════
+
+Lifetime: τ_UQFF = {result['tau_UQFF_yr']:.2e} years
+Enhancement: {result['enhancement_factor']:.1f}× standard lifetime
+Status:   {"⚠️  EVAPORATED" if result['evaporated_UQFF'] else "✓ SURVIVES"}
+{"🌟 SAVED BY UQFF: Would evaporate in standard model!" if result['saved_by_UQFF'] else ""}
+
+Maximum f_PBH: {result['f_PBH_max_UQFF']:.3f}
+100% DM viable: {"YES" if result['viable_100_percent_UQFF'] else "NO"}
+UQFF improves viability: {"YES ↑" if result['UQFF_improves_viability'] else "No change"}
+
+UQFF Constraints:
+"""
+        for constraint in result['constraints_UQFF']:
+            report += f"  • {constraint[2]}\n"
+
+        report += f"""
+NEW UQFF Mass Windows:
+"""
+        for window in summary['UQFF_new_windows']:
+            report += f"  • {window}\n"
+
+        report += f"""
+═══════════════════════════════════════════════════════════════════════════════
+CRITICAL MASS COMPARISON
+═══════════════════════════════════════════════════════════════════════════════
+
+                        Standard             UQFF
+Critical Mass:     {M_crit_std:.2e} kg    {M_crit_uqff:.2e} kg
+(τ = t_universe)   ({M_crit_std*1e3:.2e} g)      ({M_crit_uqff*1e3:.2e} g)
+
+UQFF extends viable mass range by factor of {M_crit_std/M_crit_uqff:.1f}×
+
+═══════════════════════════════════════════════════════════════════════════════
+OBSERVATIONAL TESTS
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        for test in summary['observational_tests']:
+            report += f"  • {test}\n"
+
+        report += f"""
+═══════════════════════════════════════════════════════════════════════════════
+COSMOLOGICAL IMPLICATIONS
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        for impl in summary['cosmological_implications']:
+            report += f"  • {impl}\n"
+
+        report += """
+════════════════════════════════════════════════════════════════════════════════════════════
+"""
+        return report
+    
+    # ═══════════════════════════════════════════════════════════════════════════
     # SELF-EXPANDING / SIMULATION
     # ═══════════════════════════════════════════════════════════════════════════
     
@@ -105939,8 +106368,32 @@ Test Predictions:
             U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
             return self.pbh_mass_range_analysis(M_start, M_end, n_points, U_m_kT_ratio)
         
+        elif mode == 'f_PBH_standard':
+            # f_PBH in standard cosmology
+            M = kwargs.get('M', 1e12)
+            return self.compute_f_PBH_standard(M)
+        
+        elif mode == 'f_PBH_UQFF':
+            # f_PBH in UQFF framework
+            M = kwargs.get('M', 1e12)
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            return self.compute_f_PBH_UQFF(M, U_m_kT_ratio)
+        
+        elif mode == 'pbh_dm_spectrum':
+            # f_PBH vs mass spectrum
+            M_start = kwargs.get('M_start', 1e7)
+            M_end = kwargs.get('M_end', 1e35)
+            n_points = kwargs.get('n_points', 100)
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            return self.compute_pbh_dm_mass_spectrum(M_start, M_end, n_points, U_m_kT_ratio)
+        
+        elif mode == 'pbh_dm_summary':
+            # PBH dark matter viability summary
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            return self.pbh_dark_matter_summary(U_m_kT_ratio)
+        
         else:
-            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, standard, simulate, validate_sgr_a, temperature_modulation, modulate_mass_range, pbh_survival, pbh_dark_matter, pbh_mass_sweep")
+            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, standard, simulate, validate_sgr_a, temperature_modulation, modulate_mass_range, pbh_survival, pbh_dark_matter, pbh_mass_sweep, f_PBH_standard, f_PBH_UQFF, pbh_dm_spectrum, pbh_dm_summary")
     
     # ═══════════════════════════════════════════════════════════════════════════
     # SURFACE GRAVITY AND ALTERNATIVE TEMPERATURE (Feb 25, 2026 Enhancement)
