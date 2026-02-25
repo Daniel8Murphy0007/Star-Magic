@@ -103538,6 +103538,82 @@ class AetherSuperfluidUQFFCalculator(SelfExpandingMixin):
         
         return h / m_eff
     
+    # ═══════════════════════════════════════════════════════════════════════════
+    # VORTEX QUANTIZATION (From wavefunction single-valuedness)
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_n_effective(self) -> float:
+        """
+        Compute effective vortex quantum number with f_TRZ modulation.
+        
+        n_eff = n × (1 - f_TRZ)
+        
+        f_TRZ damps multi-quanta vortices negentropically,
+        stabilizing single-quantum vortices.
+        
+        Returns:
+            Effective quantum number n_eff
+        """
+        n = int(self.params['n_vortex'])
+        f_TRZ = self.params['f_TRZ']
+        
+        return float(n) * (1.0 - f_TRZ)
+    
+    def compute_kappa_UQFF_full(self) -> float:
+        """
+        Compute full UQFF vortex quantization formula (Step 10).
+        
+        κ_UQFF = (h/m_eff) × n × (1 - f_TRZ) × (1 - B/B_crit)
+        
+        Combines:
+            - Base quantization: h/m_eff (cosmic circulation quantum)
+            - Topological winding: n (integer quantum number)
+            - Time-reversal damping: (1 - f_TRZ) ≈ 0.9 (negentropic)
+            - Superconductive pinning: (1 - B/B_crit) (Meissner-like)
+        
+        For cosmic [UA]: m_eff ≈ 10^{-68} kg → κ_UQFF ≈ 10^{34} m²/s
+        
+        Returns:
+            Full UQFF circulation quantum κ [m²/s]
+        """
+        h = self.params['h_planck']
+        m_eff = self.params['m_eff']
+        n = int(self.params['n_vortex'])
+        f_TRZ = self.params['f_TRZ']
+        B = self.params['B_field']
+        B_crit = self.params['B_crit']
+        
+        # Base quantization
+        kappa_base = h / m_eff
+        
+        # Apply all modulations
+        trz_factor = 1.0 - f_TRZ
+        scm_factor = 1.0 - (B / B_crit)
+        if scm_factor < 0.0:
+            scm_factor = 0.0  # Pinned above B_crit
+        
+        return kappa_base * float(n) * trz_factor * scm_factor
+    
+    def compute_xi_UQFF(self) -> float:
+        """
+        Compute UQFF vortex core size.
+        
+        ξ_UQFF = ξ × √(ρ_vac,[UA] / ρ_vac,[SCm])
+        
+        Ratio ρ_UA/ρ_SCm ≈ 10 → ξ_UQFF ≈ 3.16 × ξ (larger cores)
+        Cosmic scale: ξ_UQFF ~ 10^{19} m
+        
+        Returns:
+            UQFF vortex core size ξ_UQFF [m]
+        """
+        xi_base = self.compute_healing_length()
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        
+        ratio = rho_UA / rho_SCm  # ≈ 10
+        
+        return xi_base * np.sqrt(ratio)
+    
     def compute_vortex_energy_uqff(self) -> float:
         """
         Compute UQFF vortex energy with f_TRZ damping.
