@@ -40,6 +40,7 @@
 #include <map>
 #include <chrono>
 #include <random>
+#include <tuple>
 
 // M_PI fallback for Windows MSVC
 #ifndef M_PI
@@ -306,6 +307,52 @@ public:
      * @return V = g_TRZ × ρ - μ + V_ext [J]
      */
     double compute_GPE_interaction_potential(double density);
+    
+    // ═══════════════════════════════════════════════════════════════════════════
+    // MULTI-VORTEX DYNAMICS
+    // ═══════════════════════════════════════════════════════════════════════════
+    
+    /**
+     * @brief Compute multi-vortex wavefunction amplitude
+     * @param x X coordinate [m or dimensionless]
+     * @param y Y coordinate [m or dimensionless]
+     * @param vortices Vector of (x_v, y_v, n) tuples (n>0: vortex, n<0: antivortex)
+     * @return |ψ| = √(μ/g) × Π_j tanh(|r - r_j|/ξ)
+     */
+    double compute_multi_vortex_amplitude(double x, double y,
+        const std::vector<std::tuple<double, double, int>>& vortices);
+    
+    /**
+     * @brief Compute multi-vortex density profile
+     * @param x X coordinate
+     * @param y Y coordinate
+     * @param vortices Vector of (x_v, y_v, n) tuples
+     * @return ρ(x,y) = |ψ(x,y)|² showing depletions at each core
+     */
+    double compute_multi_vortex_density(double x, double y,
+        const std::vector<std::tuple<double, double, int>>& vortices);
+    
+    /**
+     * @brief Compute pairwise vortex interaction energy
+     * @param x1, y1 Position of vortex 1
+     * @param n1 Winding number of vortex 1
+     * @param x2, y2 Position of vortex 2
+     * @param n2 Winding number of vortex 2
+     * @return E_pair = -(ρ_s κ₁ κ₂ / 4π) × ln(r₁₂/ξ) [J/m]
+     * 
+     * Same-sign: repulsion (orbiting), opposite-sign: attraction (annihilation)
+     */
+    double compute_vortex_pair_interaction_energy(
+        double x1, double y1, int n1,
+        double x2, double y2, int n2);
+    
+    /**
+     * @brief Compute total interaction energy for multi-vortex system
+     * @param vortices Vector of (x_v, y_v, n) tuples
+     * @return E_total = Σ_{i<j} E_pair(i,j) [J/m]
+     */
+    double compute_total_vortex_interaction_energy(
+        const std::vector<std::tuple<double, double, int>>& vortices);
     
     /**
      * @brief Compute full UQFF quantum coherence

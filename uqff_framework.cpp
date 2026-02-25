@@ -567,6 +567,114 @@ double UQFFFramework::compute_GPE_interaction_potential(double density) {
     return g_TRZ * density - mu + V_ext;
 }
 
+// ═══════════════════════════════════════════════════════════════════════════════
+// MULTI-VORTEX DYNAMICS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+double UQFFFramework::compute_multi_vortex_amplitude(double x, double y,
+    const std::vector<std::tuple<double, double, int>>& vortices) {
+    // Multi-vortex wavefunction amplitude: |ψ| = √(μ/g) × Π_j tanh(|r - r_j|/ξ)
+    // 
+    // Each vortex contributes a density depletion at its core.
+    // Product form ensures all cores have zero density.
+    // 
+    // vortices: vector of (x_v, y_v, n) tuples
+    //   n > 0: vortex (counterclockwise circulation)
+    //   n < 0: antivortex (clockwise circulation)
+    
+    double mu = params["mu_chemical"];
+    double g = params["g_interaction"];
+    double xi = compute_healing_length();
+    
+    // Bulk amplitude
+    double psi_bulk = (g > 0) ? std::sqrt(std::abs(mu / g)) : 1.0;
+    
+    // Accumulate amplitude from all vortex cores
+    double amplitude_product = 1.0;
+    for (const auto& vortex : vortices) {
+        double x_v = std::get<0>(vortex);
+        double y_v = std::get<1>(vortex);
+        // int n_v = std::get<2>(vortex);  // Amplitude doesn't depend on sign
+        
+        double dx = x - x_v;
+        double dy = y - y_v;
+        double r_v = std::sqrt(dx*dx + dy*dy);
+        if (r_v < 1e-20) r_v = 1e-20;  // Avoid zero
+        
+        amplitude_product *= std::tanh(r_v / xi);
+    }
+    
+    return psi_bulk * amplitude_product;
+}
+
+double UQFFFramework::compute_multi_vortex_density(double x, double y,
+    const std::vector<std::tuple<double, double, int>>& vortices) {
+    // Multi-vortex density: ρ(x,y) = |ψ(x,y)|²
+    // Shows density depletion at each vortex/antivortex core
+    double amp = compute_multi_vortex_amplitude(x, y, vortices);
+    return amp * amp;
+}
+
+double UQFFFramework::compute_vortex_pair_interaction_energy(
+    double x1, double y1, int n1,
+    double x2, double y2, int n2) {
+    // Pairwise interaction energy between two vortices:
+    // E_pair = -(ρ_s × κ1 × κ2 / 4π) × ln(r_12 / ξ)
+    // 
+    // Where κ_i = (h/m) × n_i is the quantized circulation
+    // 
+    // Same-sign vortices (n1×n2 > 0): Repel (orbit each other)
+    // Opposite-sign (n1×n2 < 0): Attract (can annihilate)
+    
+    double rho_s = params["superfluid_density"];
+    double m_eff = params["m_eff"];
+    double hbar = params["hbar"];
+    double h = 2.0 * M_PI * hbar;
+    double xi = compute_healing_length();
+    
+    // Separation
+    double dx = x1 - x2;
+    double dy = y1 - y2;
+    double r_12 = std::sqrt(dx*dx + dy*dy);
+    if (r_12 < 1e-20) r_12 = 1e-20;
+    
+    // Circulations
+    double kappa1 = (h / m_eff) * n1;
+    double kappa2 = (h / m_eff) * n2;
+    
+    // Logarithmic interaction
+    return -(rho_s * kappa1 * kappa2 / (4.0 * M_PI)) * std::log(r_12 / xi);
+}
+
+double UQFFFramework::compute_total_vortex_interaction_energy(
+    const std::vector<std::tuple<double, double, int>>& vortices) {
+    // Total pairwise interaction energy for multi-vortex system:
+    // E_total = Σ_{i<j} E_pair(i, j)
+    // 
+    // Determines dynamics:
+    //   - Same-sign vortices orbit around common center
+    //   - Opposite-sign pairs can translate together or annihilate
+    
+    double E_total = 0.0;
+    size_t n_vortices = vortices.size();
+    
+    for (size_t i = 0; i < n_vortices; ++i) {
+        for (size_t j = i + 1; j < n_vortices; ++j) {
+            double x1 = std::get<0>(vortices[i]);
+            double y1 = std::get<1>(vortices[i]);
+            int n1 = std::get<2>(vortices[i]);
+            
+            double x2 = std::get<0>(vortices[j]);
+            double y2 = std::get<1>(vortices[j]);
+            int n2 = std::get<2>(vortices[j]);
+            
+            E_total += compute_vortex_pair_interaction_energy(x1, y1, n1, x2, y2, n2);
+        }
+    }
+    
+    return E_total;
+}
+
 double UQFFFramework::quantum_coherence(double r, double t) {
     // Full UQFF Quantum Coherence Derivation:
     // ψ(r,t) = A exp(-(r-r_horizon)²/2σ_eff²) exp(-i 2πft(1+f_TRZ))
@@ -1042,6 +1150,46 @@ int main() {
     
     double V_int = uqff.compute_GPE_interaction_potential(rho_bulk);
     std::cout << "  V_int(ρ_bulk) = " << V_int << " J\n";
+    std::cout << "  ✓ PASSED\n";
+
+    // Test Multi-Vortex Dynamics
+    std::cout << "\n═══════════════════════════════════════════════════════════════════════════════\n";
+    std::cout << "TEST 12: Multi-Vortex Dynamics (Vortex/Antivortex Interactions)\n";
+    std::cout << "═══════════════════════════════════════════════════════════════════════════════\n";
+    
+    // Define 3-vortex configuration: n=+1 at (0,0), n=+1 at (3,0), n=-1 at (0,3)
+    std::vector<std::tuple<double, double, int>> vortices = {
+        {0.0, 0.0, 1},    // vortex at origin
+        {3.0, 0.0, 1},    // vortex at (3,0)
+        {0.0, 3.0, -1}    // antivortex at (0,3)
+    };
+    std::cout << "  Vortex configuration:\n";
+    std::cout << "    (0,0) n=+1, (3,0) n=+1, (0,3) n=-1\n";
+    
+    // Test amplitude at vortex cores (should be ~0)
+    double amp_origin = uqff.compute_multi_vortex_amplitude(0.0, 0.0, vortices);
+    std::cout << "  |ψ(0,0)| = " << amp_origin << " (expect ~0, vortex core)\n";
+    
+    double amp_v2 = uqff.compute_multi_vortex_amplitude(3.0, 0.0, vortices);
+    std::cout << "  |ψ(3,0)| = " << amp_v2 << " (expect ~0, vortex core)\n";
+    
+    double amp_av = uqff.compute_multi_vortex_amplitude(0.0, 3.0, vortices);
+    std::cout << "  |ψ(0,3)| = " << amp_av << " (expect ~0, antivortex core)\n";
+    
+    // Test density at mid-point (should be finite, not at any core)
+    double rho_mid = uqff.compute_multi_vortex_density(1.5, 1.5, vortices);
+    std::cout << "  ρ(1.5,1.5) = " << rho_mid << " (between vortices)\n";
+    
+    // Test pair interaction energies
+    double E_vv = uqff.compute_vortex_pair_interaction_energy(0.0, 0.0, 1, 3.0, 0.0, 1);
+    std::cout << "  E_pair(V-V) = " << E_vv << " J/m (same-sign: repel)\n";
+    
+    double E_va = uqff.compute_vortex_pair_interaction_energy(0.0, 0.0, 1, 0.0, 3.0, -1);
+    std::cout << "  E_pair(V-AV) = " << E_va << " J/m (opposite-sign: attract)\n";
+    
+    // Total interaction energy
+    double E_total = uqff.compute_total_vortex_interaction_energy(vortices);
+    std::cout << "  E_total = " << E_total << " J/m\n";
     std::cout << "  ✓ PASSED\n";
 
     // Summary

@@ -103942,6 +103942,195 @@ class AetherSuperfluidUQFFCalculator(SelfExpandingMixin):
             }
         }
     
+    # ═══════════════════════════════════════════════════════════════════════════
+    # MULTI-VORTEX DYNAMICS (GPE with multiple vortices/antivortices)
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_multi_vortex_wavefunction(self, x: np.ndarray, y: np.ndarray,
+                                          vortices: list) -> np.ndarray:
+        """
+        Compute wavefunction with multiple vortices/antivortices.
+        
+        The multi-vortex wavefunction is the product of individual vortex wavefunctions:
+            ψ_total(r) = √(μ/g) × Π_j [tanh(|r - r_j|/ξ) × exp(i×n_j×θ_j)]
+        
+        Where each vortex j has position (x_j, y_j) and winding number n_j.
+        Positive n = vortex, negative n = antivortex.
+        
+        Args:
+            x, y: 2D coordinate grids
+            vortices: List of (x_v, y_v, n) tuples defining vortex positions and winding numbers
+                      Example: [(0, 0, +1), (3, 0, +1), (0, 3, -1)]
+        
+        Returns:
+            Complex wavefunction array ψ
+        """
+        g = self.params.get('g_interaction', 100.0)
+        mu = self.params.get('chemical_potential', 1.0)
+        xi = self.compute_healing_length()
+        
+        # Start with uniform condensate
+        psi = np.ones_like(x, dtype=complex) * np.sqrt(mu / g)
+        
+        # Multiply by each vortex contribution
+        for (x_v, y_v, n_v) in vortices:
+            # Distance and angle from this vortex center
+            dx = x - x_v
+            dy = y - y_v
+            r_v = np.sqrt(dx**2 + dy**2) + 1e-10  # Avoid division by zero
+            theta_v = np.arctan2(dy, dx)
+            
+            # Vortex contribution: tanh profile × phase winding
+            # For antivortex (n < 0), phase winds opposite direction
+            amplitude = np.tanh(r_v / xi)
+            phase = np.exp(1j * n_v * theta_v)
+            
+            psi = psi * amplitude * phase
+        
+        return psi
+    
+    def compute_multi_vortex_density_profile(self, x: np.ndarray, y: np.ndarray,
+                                              vortices: list) -> np.ndarray:
+        """
+        Compute density profile |ψ|² for multi-vortex configuration.
+        
+        Shows density depletions at each vortex/antivortex core.
+        
+        Args:
+            x, y: 2D coordinate grids
+            vortices: List of (x_v, y_v, n) tuples
+        
+        Returns:
+            Density array ρ = |ψ|²
+        """
+        psi = self.compute_multi_vortex_wavefunction(x, y, vortices)
+        return np.abs(psi)**2
+    
+    def compute_vortex_interaction_energy(self, vortices: list) -> float:
+        """
+        Compute pairwise interaction energy between vortices.
+        
+        For 2D point vortices:
+            E_int = -Σ_{i<j} (ρ_s × κ_i × κ_j / 4π) × ln(|r_i - r_j| / ξ)
+        
+        Where κ_i = (h/m) × n_i is the circulation of vortex i.
+        Vortex-vortex (same sign): repulsion (E > 0 contribution)
+        Vortex-antivortex (opposite sign): attraction (E < 0 contribution)
+        
+        Args:
+            vortices: List of (x_v, y_v, n) tuples
+        
+        Returns:
+            Total interaction energy [J/m]
+        """
+        rho_s = self.params.get('superfluid_density', 145.0)
+        m_eff = self.params.get('m_eff', 1.674e-27)
+        hbar = self.params.get('hbar', 1.054e-34)
+        h = 2 * np.pi * hbar
+        xi = self.compute_healing_length()
+        
+        E_total = 0.0
+        n_vortices = len(vortices)
+        
+        for i in range(n_vortices):
+            for j in range(i + 1, n_vortices):
+                x_i, y_i, n_i = vortices[i]
+                x_j, y_j, n_j = vortices[j]
+                
+                # Separation distance
+                r_ij = np.sqrt((x_i - x_j)**2 + (y_i - y_j)**2)
+                
+                # Circulations
+                kappa_i = (h / m_eff) * n_i
+                kappa_j = (h / m_eff) * n_j
+                
+                # Interaction: negative for same-sign (bound), positive for opposite
+                # Standard convention: E = -ρ_s κ_i κ_j / (4π) * ln(r/ξ)
+                E_pair = -(rho_s * kappa_i * kappa_j / (4 * np.pi)) * np.log(r_ij / xi)
+                E_total += E_pair
+        
+        return E_total
+    
+    def simulate_GPE_multi_vortex_evolution(self, vortices: list,
+                                             N_grid: int = 128,
+                                             L_box: float = 20.0,
+                                             dt: float = 0.1,
+                                             n_steps: int = 100) -> dict:
+        """
+        Simulate multi-vortex GPE dynamics.
+        
+        Evolves GPE with multiple vortices/antivortices showing:
+        - Vortex-vortex interactions (orbiting for same-sign)
+        - Vortex-antivortex interactions (attraction, possible annihilation)
+        - Density depletions at each core
+        
+        Args:
+            vortices: List of (x_v, y_v, n) tuples
+                      Example: [(0, 0, +1), (3, 0, +1), (0, 3, -1)]
+            N_grid: Grid size (N × N)
+            L_box: Box size [dimensionless]
+            dt: Time step
+            n_steps: Number of evolution steps
+        
+        Returns:
+            Dict with:
+                - 'psi_final': Final wavefunction
+                - 'density_final': Final density |ψ|²
+                - 'x', 'y': Coordinate arrays
+                - 'density_line': Central slice density (y=0)
+                - 'vortices_initial': Input vortex configuration
+                - 'interaction_energy': Initial vortex interaction energy
+                - 'parameters': Simulation parameters
+        """
+        # Setup grid
+        dx = L_box / N_grid
+        x_1d = np.linspace(-L_box/2, L_box/2, N_grid)
+        y_1d = np.linspace(-L_box/2, L_box/2, N_grid)
+        x, y = np.meshgrid(x_1d, y_1d)
+        
+        # k-space coordinates
+        kx_1d = 2 * np.pi * np.fft.fftfreq(N_grid, dx)
+        ky_1d = 2 * np.pi * np.fft.fftfreq(N_grid, dx)
+        kx, ky = np.meshgrid(kx_1d, ky_1d)
+        
+        # Initial multi-vortex wavefunction
+        psi = self.compute_multi_vortex_wavefunction(x, y, vortices)
+        
+        # Compute initial interaction energy
+        E_int = self.compute_vortex_interaction_energy(vortices)
+        
+        # Time evolution using split-step Fourier
+        for step in range(n_steps):
+            psi = self.simulate_GPE_step(psi, kx, ky, dt)
+        
+        # Final density
+        density = np.abs(psi)**2
+        
+        # Central line cut (y=0 slice)
+        center_idx = N_grid // 2
+        density_line = density[center_idx, :]
+        
+        return {
+            'psi_final': psi,
+            'density_final': density,
+            'x': x,
+            'y': y,
+            'x_line': x_1d,
+            'density_line': density_line,
+            'vortices_initial': vortices,
+            'n_vortices': len(vortices),
+            'n_antivortices': sum(1 for v in vortices if v[2] < 0),
+            'interaction_energy': E_int,
+            'parameters': {
+                'N_grid': N_grid,
+                'L_box': L_box,
+                'dt': dt,
+                'n_steps': n_steps,
+                'healing_length': self.compute_healing_length(),
+                'g_TRZ': self.compute_g_TRZ(),
+            }
+        }
+    
     def compute(self, mode: str = 'full', **kwargs) -> dict:
         """
         Main computation interface.
@@ -103953,7 +104142,13 @@ class AetherSuperfluidUQFFCalculator(SelfExpandingMixin):
                 - 'healing': Healing length and core size
                 - 'circulation': Circulation quantum
                 - 'hamiltonian': Point-vortex Hamiltonian
+                - 'gpe': Single-vortex GPE simulation
+                - 'quantization': Vortex quantization (n_eff, kappa_UQFF_full, xi_UQFF)
+                - 'multivortex': Multi-vortex GPE dynamics with vortex/antivortex interactions
             **kwargs: Mode-specific parameters
+                For 'multivortex':
+                    vortices: List of (x, y, n) tuples, n>0=vortex, n<0=antivortex
+                    N_grid, L_box, dt, n_steps: Simulation parameters
         
         Returns:
             Dict with computed results
@@ -104027,8 +104222,20 @@ class AetherSuperfluidUQFFCalculator(SelfExpandingMixin):
                 'kappa_base': self.compute_kappa_UQFF(),
             }
         
+        elif mode == 'multivortex':
+            # Multi-vortex GPE simulation
+            # Default: 3 vortices as in user's example (n=+1 at origin and (3,0), n=-1 at (0,3))
+            vortices = kwargs.get('vortices', [(0, 0, 1), (3, 0, 1), (0, 3, -1)])
+            N_grid = kwargs.get('N_grid', 128)
+            L_box = kwargs.get('L_box', 20.0)
+            dt = kwargs.get('dt', 0.1)
+            n_steps = kwargs.get('n_steps', 100)
+            return self.simulate_GPE_multi_vortex_evolution(
+                vortices, N_grid, L_box, dt, n_steps
+            )
+        
         else:
-            raise ValueError(f"Unknown mode: {mode}. Available: full, energy, healing, circulation, hamiltonian, gpe, quantization")
+            raise ValueError(f"Unknown mode: {mode}. Available: full, energy, healing, circulation, hamiltonian, gpe, quantization, multivortex")
     
     def long_form_equation(self, r: float = 1e-5) -> str:
         """
