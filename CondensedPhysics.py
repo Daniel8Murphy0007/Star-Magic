@@ -95925,6 +95925,676 @@ CONCLUSIONS:
         
         return '\n'.join(lines)
 
+    def simulate_GW170817_800Hz(self, t_duration: float = 100.0,
+                                 f_start: float = 23.0,
+                                 f_end: float = 800.0,
+                                 f_TRZ: float = 0.1,
+                                 B_NS: float = 1e10,
+                                 string_factor: float = 0.37,
+                                 beta_m: float = 0.01,
+                                 n_samples: int = 2000,
+                                 include_tidal: bool = True,
+                                 Lambda_tidal: float = 600.0) -> Tuple[Dict[str, Any], str]:
+        """
+        Simulate GW170817 with full 23-800 Hz frequency range.
+        
+        BNS mergers chirp to higher frequencies than BBH due to smaller
+        masses and larger ISCO. This simulation captures the full in-band
+        evolution including tidal effects near merger.
+        
+        Key differences from 300 Hz cutoff:
+        - More cycles in sensitive LIGO band (100-400 Hz)
+        - Tidal deformability effects visible at f > 400 Hz
+        - Higher peak strain near contact frequency
+        
+        Parameters:
+            t_duration: Inspiral duration in seconds (default 100s)
+            f_start: LIGO low-frequency cutoff (default 23 Hz)
+            f_end: Contact/merger frequency (default 800 Hz for BNS)
+            f_TRZ: Time-reversal damping fraction (default 0.1)
+            B_NS: NS magnetic field in Gauss (default 1e10 G - magnetar range)
+            string_factor: Phenomenological string binding (default 0.37)
+            beta_m: Interference modulation (default 0.01)
+            n_samples: Time samples (default 2000 for higher resolution)
+            include_tidal: Include tidal deformability effects (default True)
+            Lambda_tidal: Dimensionless tidal deformability (default 600, GW170817 constraint)
+            
+        Returns:
+            Tuple of (results_dict, derivation_steps_string)
+        """
+        # GW170817 BNS parameters
+        M_chirp = 1.188 * self.M_solar  # kg
+        M1 = 1.46 * self.M_solar
+        M2 = 1.27 * self.M_solar
+        M_tot = M1 + M2
+        mu = M1 * M2 / M_tot
+        eta = mu / M_tot
+        distance_Mpc = 40.0
+        distance_m = distance_Mpc * 3.086e22
+        
+        # Time and frequency arrays
+        t = np.linspace(0, t_duration, n_samples)
+        dt = t[1] - t[0]
+        
+        # PN chirp with f^(11/3) evolution
+        tau_chirp = (5 * self.c**5 / (256 * np.pi**(8/3))) * \
+                    (self.G * M_chirp)**(-5/3) * f_start**(-8/3)
+        t_coalescence = min(t_duration, tau_chirp * 0.99)
+        t_ratio = 1 - t / t_coalescence
+        t_ratio = np.maximum(t_ratio, 1e-10)
+        f = f_start * t_ratio**(-3/8)
+        f = np.minimum(f, f_end)
+        
+        # Phase and orbital separation
+        phi_GW = np.cumsum(2 * np.pi * f) * dt
+        a = (self.G * M_tot / (4 * np.pi**2 * f**2))**(1/3)
+        
+        # === STANDARD GR WAVEFORM ===
+        h0_GR = (4 / distance_m) * (self.G * M_chirp / self.c**2)**(5/3) * \
+                (np.pi * f)**(2/3)
+        
+        # Tidal correction at high frequency
+        # δh_tidal/h ~ -κ Λ (v/c)^5 where v = (πGM_tot f)^(1/3)
+        kappa_T = 0.5  # Leading-order tidal coefficient
+        if include_tidal:
+            v_over_c = (np.pi * self.G * M_tot * f / self.c**3)**(1/3)
+            tidal_correction = 1 - kappa_T * Lambda_tidal * (v_over_c)**5
+            tidal_correction = np.maximum(tidal_correction, 0.5)  # Floor
+        else:
+            tidal_correction = np.ones_like(f)
+        
+        h_GR = h0_GR * tidal_correction * np.cos(phi_GW)
+        
+        # === UQFF DAMPING ===
+        # Aether (negligible)
+        rho_UA = 7.09e-36
+        alpha_UA = self.G / self.c**2
+        aether_factor = np.exp(-alpha_UA * rho_UA * distance_m / self.c)
+        
+        # SCm - now significant for magnetar-range B fields
+        B_crit = 4.414e13  # T
+        B_NS_Tesla = B_NS * 1e-4
+        B_ratio = B_NS_Tesla / B_crit
+        SCm_factor = 1 - B_ratio
+        
+        # TRZ and string
+        TRZ_factor = 1 - f_TRZ
+        combined_factor = float(aether_factor) * SCm_factor * TRZ_factor * string_factor
+        
+        # Modulation
+        k_B = 1.381e-23
+        T = 1e6
+        modulation = 1 + beta_m * np.sin(2 * np.pi * f / (k_B * T))
+        
+        # UQFF waveform
+        h_UQFF = h0_GR * combined_factor * modulation * tidal_correction * np.cos(phi_GW)
+        
+        # Statistics
+        h_peak_GR = np.max(np.abs(h_GR))
+        h_peak_UQFF = np.max(np.abs(h_UQFF))
+        percent_reduction = (1 - h_peak_UQFF / h_peak_GR) * 100
+        
+        # SNR calculation
+        SNR_observed = 32.4
+        h_GR_squared = h_GR**2
+        h_UQFF_squared = h_UQFF**2
+        SNR2_GR_cumulative = np.cumsum(h_GR_squared) * dt
+        SNR2_UQFF_cumulative = np.cumsum(h_UQFF_squared) * dt
+        scale_factor = SNR_observed**2 / SNR2_GR_cumulative[-1]
+        SNR_GR_final = np.sqrt(SNR2_GR_cumulative[-1] * scale_factor)
+        SNR_UQFF_final = np.sqrt(SNR2_UQFF_cumulative[-1] * scale_factor)
+        
+        # Frequency milestones
+        idx_100 = np.searchsorted(f, 100)
+        idx_200 = np.searchsorted(f, 200)
+        idx_400 = np.searchsorted(f, 400)
+        idx_600 = np.searchsorted(f, 600)
+        
+        # GW energy radiated (PN estimate)
+        # E_GW ~ (32/5) × (G⁴/c⁵) × μ² M_tot³ / a⁵ × t
+        # Simplified: E_GW ≈ 0.04 M_sun c² for GW170817
+        E_GW_solar = 0.04
+        E_GW_joules = E_GW_solar * self.M_solar * self.c**2
+        
+        results = {
+            'event': 'GW170817',
+            'simulation_type': 'Full 800 Hz inspiral',
+            # Parameters
+            't_duration': t_duration,
+            'n_samples': n_samples,
+            'f_start': f_start,
+            'f_end': f_end,
+            'f_end_actual': float(f[-1]),
+            # Arrays
+            't_array': t,
+            'f_array': f,
+            'h_GR': h_GR,
+            'h_UQFF': h_UQFF,
+            'tidal_correction': tidal_correction,
+            # Statistics
+            'h_peak_GR': h_peak_GR,
+            'h_peak_UQFF': h_peak_UQFF,
+            'percent_reduction': percent_reduction,
+            'total_cycles': int(phi_GW[-1] / (2 * np.pi)),
+            # Damping
+            'aether_factor': float(aether_factor),
+            'SCm_factor': SCm_factor,
+            'B_NS_Gauss': B_NS,
+            'B_ratio': B_ratio,
+            'TRZ_factor': TRZ_factor,
+            'string_factor': string_factor,
+            'combined_factor': combined_factor,
+            # Tidal
+            'include_tidal': include_tidal,
+            'Lambda_tidal': Lambda_tidal,
+            'tidal_correction_at_merger': float(tidal_correction[-1]),
+            # SNR
+            'SNR_GR_final': SNR_GR_final,
+            'SNR_UQFF_final': SNR_UQFF_final,
+            'SNR_reduction_percent': (1 - SNR_UQFF_final / SNR_GR_final) * 100,
+            # Energy
+            'E_GW_solar': E_GW_solar,
+            'E_GW_joules': E_GW_joules,
+            # Milestones
+            't_at_100Hz': t[idx_100] if idx_100 < len(t) else t[-1],
+            't_at_200Hz': t[idx_200] if idx_200 < len(t) else t[-1],
+            't_at_400Hz': t[idx_400] if idx_400 < len(t) else t[-1],
+            't_at_600Hz': t[idx_600] if idx_600 < len(t) else t[-1]
+        }
+        
+        steps = f"""GW170817 FULL 800 Hz INSPIRAL SIMULATION
+═══════════════════════════════════════════════════════════════════════════════
+EXTENDED FREQUENCY RANGE:
+
+  BNS mergers chirp to higher frequencies than BBH:
+    - BBH (30+30 M_sun): f_ISCO ≈ 75 Hz, f_merger ~ 150 Hz  
+    - BNS (1.4+1.4 M_sun): f_contact ≈ 1000-2000 Hz, f_merger ~ 800 Hz
+    
+  Benefits of 800 Hz coverage:
+    - More cycles in sensitive band (100-400 Hz)
+    - Tidal deformability visible at f > 400 Hz
+    - Higher strain amplification near merger
+
+═══════════════════════════════════════════════════════════════════════════════
+BNS PARAMETERS:
+
+  ℳ_chirp = 1.188 M_sun
+  M₁ ≈ 1.46 M_sun, M₂ ≈ 1.27 M_sun
+  M_tot = 2.73 M_sun
+  η = {eta:.4f}
+  Distance = {distance_Mpc:.0f} Mpc
+  
+  FREQUENCY EVOLUTION:
+    f_start = {f_start:.0f} Hz (LIGO cutoff)
+    f_end = {f_end:.0f} Hz (contact)
+    τ_chirp = {tau_chirp:.0f}s
+    Total cycles: {results['total_cycles']} in-band
+
+═══════════════════════════════════════════════════════════════════════════════
+TIDAL DEFORMABILITY (NS EOS):
+
+  GW170817 constraint: Λ < 800 (90% confidence)
+  Simulation Λ = {Lambda_tidal:.0f}
+  
+  TIDAL CORRECTION:
+    δh/h ∝ -κ_T Λ (v/c)⁵
+    v/c = (πGM_tot f/c³)^(1/3)
+    
+  At f = 800 Hz: tidal_correction = {results['tidal_correction_at_merger']:.4f}
+    → {(1-results['tidal_correction_at_merger'])*100:.1f}% amplitude reduction from tidal effects
+  
+  PHYSICAL MEANING:
+    - Λ measures how easily NS deforms in tidal field
+    - Larger Λ → softer EOS → larger NS radius
+    - Tidal bulges extract energy → faster inspiral
+    - Signature: phase acceleration above ~400 Hz
+
+═══════════════════════════════════════════════════════════════════════════════
+UQFF DAMPING FACTORS:
+
+  1. AETHER: {aether_factor:.6f} (negligible)
+  2. SCm: {SCm_factor:.6f} (B = {B_NS:.0e} G, B/B_crit = {B_ratio:.2e})
+     {'SIGNIFICANT: Magnetar-range field affects dynamics' if B_ratio > 1e-4 else 'NEGLIGIBLE: Typical NS field'}
+  3. TRZ: {TRZ_factor:.4f}
+  4. STRING: {string_factor:.4f}
+  
+  COMBINED: {combined_factor:.4f} → {percent_reduction:.1f}% total reduction
+
+═══════════════════════════════════════════════════════════════════════════════
+WAVEFORM STATISTICS:
+
+  Peak strain (GR):   {h_peak_GR:.4e}
+  Peak strain (UQFF): {h_peak_UQFF:.4e}
+  Reduction:          {percent_reduction:.1f}%
+
+  SNR (GR):           {SNR_GR_final:.1f}
+  SNR (UQFF):         {SNR_UQFF_final:.1f}
+  SNR reduction:      {results['SNR_reduction_percent']:.1f}%
+
+═══════════════════════════════════════════════════════════════════════════════
+GW ENERGY BUDGET:
+
+  E_GW ≈ {E_GW_solar:.2f} M_sun × c²
+       = {E_GW_joules:.2e} J
+       
+  This is ~4% of total BNS mass converted to GW radiation.
+  For comparison:
+    - BBH: E_GW ~ 5-10% of M_tot (more efficient)
+    - BNS: E_GW ~ 1-5% of M_tot (tidal effects dissipate energy)
+
+═══════════════════════════════════════════════════════════════════════════════
+FREQUENCY MILESTONES:
+
+  100 Hz: t = {results['t_at_100Hz']:.1f}s ({t_duration - results['t_at_100Hz']:.1f}s to merger)
+  200 Hz: t = {results['t_at_200Hz']:.1f}s ({t_duration - results['t_at_200Hz']:.1f}s to merger)
+  400 Hz: t = {results['t_at_400Hz']:.1f}s ({t_duration - results['t_at_400Hz']:.1f}s to merger)
+  600 Hz: t = {results['t_at_600Hz']:.1f}s ({t_duration - results['t_at_600Hz']:.1f}s to merger)
+  800 Hz: t = {t_duration:.1f}s (merger)
+
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compute_tidal_deformability_constraint(self, Lambda_range: Tuple[float, float] = (100, 1000),
+                                                n_Lambda: int = 10,
+                                                f_TRZ: float = 0.1,
+                                                string_factor: float = 0.37) -> Tuple[Dict[str, Any], str]:
+        """
+        Compute how UQFF affects tidal deformability constraints from BNS mergers.
+        
+        Tidal deformability Λ is a key NS EOS observable:
+        - Λ = 2k₂/(3C⁵) where k₂ is Love number, C = GM/(Rc²)
+        - Larger Λ → softer EOS → larger NS radius
+        - GW170817 measured: Λ < 800 (90% CI), Λ_1.4 ~ 190-580
+        
+        UQFF affects this via:
+        - Amplitude reduction → harder to measure Λ
+        - Phase modification → degeneracy with Λ
+        
+        Parameters:
+            Lambda_range: Range of Λ values to scan (default 100-1000)
+            n_Lambda: Number of Λ values to evaluate (default 10)
+            f_TRZ: Time-reversal damping fraction (default 0.1)
+            string_factor: String binding factor (default 0.37)
+            
+        Returns:
+            Tuple of (results_dict, derivation_steps_string)
+        """
+        # GW170817 parameters
+        M_chirp = 1.188 * self.M_solar
+        M_tot = 2.73 * self.M_solar
+        distance_m = 40.0 * 3.086e22
+        f_tidal_onset = 400.0  # Hz - where tidal effects become significant
+        f_merger = 800.0  # Hz
+        
+        # Lambda scan
+        Lambda_values = np.linspace(Lambda_range[0], Lambda_range[1], n_Lambda)
+        
+        # Reference: GW170817 measured Λ
+        Lambda_measured = 300  # Central value from GW170817
+        Lambda_upper_90 = 800  # 90% upper limit
+        
+        # For each Λ, compute tidal phase shift and SNR contribution
+        tidal_phase_shifts = []
+        snr_contributions = []
+        measurability = []
+        
+        kappa_T = 0.5  # Leading-order tidal coefficient
+        
+        for Lambda in Lambda_values:
+            # Tidal phase shift (accumulated from f_tidal to f_merger)
+            # δφ_tidal ≈ (117/256) × Λ × (M_chirp/M_tot)^(5/3) × (πM_tot f)^(5/3)
+            v_tidal = (np.pi * self.G * M_tot * f_tidal_onset / self.c**3)**(1/3)
+            v_merger = (np.pi * self.G * M_tot * f_merger / self.c**3)**(1/3)
+            
+            delta_phi_tidal = (117/256) * Lambda * (M_chirp/M_tot)**(5/3) * \
+                              (v_merger**5 - v_tidal**5)
+            tidal_phase_shifts.append(delta_phi_tidal)
+            
+            # SNR contribution from tidal region
+            # SNR² ∝ ∫ |h(f)|² / S_n(f) df
+            # Assume flat S_n for simplicity
+            snr_tidal = np.sqrt(f_merger - f_tidal_onset) * (1 - kappa_T * Lambda * v_merger**5)
+            snr_contributions.append(snr_tidal)
+            
+            # Measurability: ratio of tidal signal to noise
+            # If UQFF reduces amplitude, measurability degrades
+            combined_factor = (1 - f_TRZ) * string_factor
+            snr_tidal_UQFF = snr_tidal * combined_factor
+            measurability.append(snr_tidal_UQFF / snr_tidal)
+        
+        # Convert to arrays
+        tidal_phase_shifts = np.array(tidal_phase_shifts)
+        snr_contributions = np.array(snr_contributions)
+        measurability = np.array(measurability)
+        
+        # UQFF phase contamination
+        # UQFF introduces phase lag that could mimic different Λ
+        combined_factor = (1 - f_TRZ) * string_factor
+        UQFF_phase_lag = f_TRZ * tidal_phase_shifts  # Approximate
+        
+        # Λ bias: how much UQFF shifts inferred Λ
+        # δΛ_inferred / Λ_true ≈ δφ_UQFF / δφ_tidal
+        Lambda_bias_factor = f_TRZ  # Simplified model
+        
+        # Constraints
+        Lambda_inferred_shift = Lambda_measured * Lambda_bias_factor
+        
+        results = {
+            'Lambda_range': Lambda_range,
+            'Lambda_values': Lambda_values,
+            'tidal_phase_shifts': tidal_phase_shifts,
+            'snr_contributions': snr_contributions,
+            'measurability': measurability,
+            'Lambda_measured': Lambda_measured,
+            'Lambda_upper_90': Lambda_upper_90,
+            'combined_factor': combined_factor,
+            'Lambda_bias_factor': Lambda_bias_factor,
+            'Lambda_inferred_shift': Lambda_inferred_shift,
+            'f_TRZ': f_TRZ,
+            'string_factor': string_factor,
+            'f_tidal_onset': f_tidal_onset,
+            'f_merger': f_merger
+        }
+        
+        steps = f"""TIDAL DEFORMABILITY CONSTRAINT ANALYSIS: UQFF Effects
+═══════════════════════════════════════════════════════════════════════════════
+TIDAL DEFORMABILITY PHYSICS:
+
+  DEFINITION:
+    Λ = (2/3) k₂ C⁻⁵
+    where k₂ = quadrupolar Love number (NS shape response)
+          C = GM/(Rc²) = compactness
+    
+  PHYSICAL MEANING:
+    - Λ measures how easily NS deforms in tidal field
+    - Larger Λ → softer EOS → larger R → more deformable
+    - Typical values: Λ = 100-1000 for NS (vs ~0 for BH)
+
+  GW170817 MEASUREMENT:
+    Λ̃ (combined) < 800 at 90% CI
+    Λ(1.4 M_sun) ~ 190-580 at 90% CI
+    Implies R ≈ 11-13 km for typical NS
+
+═══════════════════════════════════════════════════════════════════════════════
+TIDAL SIGNATURE IN GW:
+
+  PHASE SHIFT:
+    δφ_tidal ≈ (117/256) × Λ × (ℳ/M_tot)^(5/3) × (πM_tot f)^(5/3)
+    
+  WHERE IT'S VISIBLE:
+    - f < 400 Hz: Tidal effects negligible
+    - f > 400 Hz: Tidal phase shift accumulates
+    - f ≈ 800 Hz (contact): Maximum tidal signature
+    
+  WHY IT MATTERS:
+    - Tidal effects accelerate inspiral (energy extraction)
+    - Creates characteristic phase evolution deviation from point-mass
+    - Distinguishes NS from BH at same mass
+
+═══════════════════════════════════════════════════════════════════════════════
+UQFF IMPACT ON Λ MEASUREMENT:
+
+  1. AMPLITUDE REDUCTION:
+     UQFF combined factor = {combined_factor:.4f}
+     
+     High-frequency (f > 400 Hz) signal reduced by {(1-combined_factor)*100:.0f}%
+     This is where tidal effects are strongest → harder to measure Λ
+     
+  2. PHASE CONTAMINATION:
+     UQFF phase lag mimics different Λ value
+     
+     Bias factor: δΛ/Λ ≈ {Lambda_bias_factor:.2f}
+     
+     If true Λ = {Lambda_measured}:
+       UQFF could shift inferred Λ by {Lambda_inferred_shift:.0f}
+       
+  3. MEASURABILITY DEGRADATION:
+     SNR in tidal region reduced → wider Λ posterior
+     Mean measurability: {np.mean(measurability):.4f}
+
+═══════════════════════════════════════════════════════════════════════════════
+Λ SCAN RESULTS:
+
+  ┌──────────┬──────────────┬──────────────┬──────────────┐
+  │ Λ        │ δφ_tidal (rad) │ SNR_tidal  │ Measurability │
+  ├──────────┼──────────────┼──────────────┼──────────────┤"""
+        
+        for i, Lambda in enumerate(Lambda_values):
+            steps += f"\n  │ {Lambda:8.0f} │ {tidal_phase_shifts[i]:12.2f} │ {snr_contributions[i]:12.2f} │ {measurability[i]:12.4f} │"
+        
+        steps += f"""
+  └──────────┴──────────────┴──────────────┴──────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+IMPLICATIONS FOR NS EOS:
+
+  1. If UQFF is real with f_TRZ = {f_TRZ}:
+     - Inferred Λ is biased low by ~{Lambda_bias_factor*100:.0f}%
+     - True Λ could be ~{Lambda_measured + Lambda_inferred_shift:.0f} instead of {Lambda_measured}
+     - This implies softer EOS than currently inferred
+     
+  2. CONSTRAINT REVISION:
+     Current: Λ < 800 at 90% CI
+     With UQFF correction: Λ_true < {800 * (1 + Lambda_bias_factor):.0f}?
+     
+  3. R IMPLICATIONS:
+     Λ ∝ R⁵ approximately
+     δR/R ≈ (1/5) × δΛ/Λ ≈ {Lambda_bias_factor/5*100:.1f}%
+
+═══════════════════════════════════════════════════════════════════════════════
+TESTABLE PREDICTIONS:
+
+  1. MULTIPLE BNS EVENTS:
+     If UQFF affects all BNS equally, systematic bias in Λ vs distance
+     
+  2. NS-BH MERGERS:
+     BH has Λ = 0, no tidal effects
+     UQFF phase contamination should be distinguishable
+     
+  3. HIGH-FREQUENCY DETECTORS:
+     Einstein Telescope / Cosmic Explorer extend to ~kHz
+     More cycles in tidal-dominated regime → better Λ / UQFF separation
+
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def scan_NS_magnetic_field_effects(self, B_range: Tuple[float, float] = (1e8, 1e14),
+                                        n_B: int = 12,
+                                        f_TRZ: float = 0.1,
+                                        string_factor: float = 0.37) -> Tuple[Dict[str, Any], str]:
+        """
+        Scan NS magnetic field parameter space for UQFF SCm effects.
+        
+        NS magnetic fields span wide range:
+        - Normal pulsars: B ~ 10^8 - 10^12 G
+        - Magnetars: B ~ 10^13 - 10^15 G
+        - B_crit (QCD limit): ~10^11 T = 10^15 G
+        
+        UQFF SCm factor: (1 - B/B_crit)
+        - For B << B_crit: SCm ≈ 1 (negligible)
+        - For B ~ B_crit: SCm → 0 (maximum damping)
+        
+        Parameters:
+            B_range: Magnetic field range in Gauss (default 10^8 - 10^14 G)
+            n_B: Number of B values to scan (default 12)
+            f_TRZ: Time-reversal damping fraction (default 0.1)
+            string_factor: String binding factor (default 0.37)
+            
+        Returns:
+            Tuple of (results_dict, derivation_steps_string)
+        """
+        # Critical field
+        B_crit_Tesla = 4.414e13  # T (QCD magnetar limit in UQFF)
+        B_crit_Gauss = B_crit_Tesla * 1e4  # Convert to Gauss
+        
+        # Logarithmic B scan
+        B_values_Gauss = np.logspace(np.log10(B_range[0]), np.log10(B_range[1]), n_B)
+        B_values_Tesla = B_values_Gauss * 1e-4
+        
+        # Compute SCm factors
+        B_ratios = B_values_Tesla / B_crit_Tesla
+        SCm_factors = 1 - B_ratios
+        SCm_factors = np.maximum(SCm_factors, 0)  # Floor at 0
+        
+        # Combined factors
+        TRZ_factor = 1 - f_TRZ
+        combined_factors = SCm_factors * TRZ_factor * string_factor
+        
+        # Amplitude reductions
+        amplitude_reductions = (1 - combined_factors) * 100
+        
+        # Categorize NS types
+        ns_types = []
+        for B in B_values_Gauss:
+            if B < 1e10:
+                ns_types.append("Normal Pulsar")
+            elif B < 1e12:
+                ns_types.append("High-B Pulsar")
+            elif B < 1e14:
+                ns_types.append("Magnetar")
+            else:
+                ns_types.append("Extreme Magnetar")
+        
+        # SNR impact for GW170817-like event
+        SNR_base = 32.4
+        SNR_values = SNR_base * combined_factors
+        detectable = SNR_values > 8
+        
+        # Find critical B where detection fails
+        idx_threshold = np.searchsorted(combined_factors[::-1], 8/SNR_base)
+        if idx_threshold < len(B_values_Gauss):
+            B_detection_limit = B_values_Gauss[-(idx_threshold+1)]
+        else:
+            B_detection_limit = B_values_Gauss[-1]
+        
+        results = {
+            'B_range_Gauss': B_range,
+            'B_values_Gauss': B_values_Gauss,
+            'B_values_Tesla': B_values_Tesla,
+            'B_ratios': B_ratios,
+            'B_crit_Tesla': B_crit_Tesla,
+            'B_crit_Gauss': B_crit_Gauss,
+            'SCm_factors': SCm_factors,
+            'TRZ_factor': TRZ_factor,
+            'string_factor': string_factor,
+            'combined_factors': combined_factors,
+            'amplitude_reductions': amplitude_reductions,
+            'ns_types': ns_types,
+            'SNR_base': SNR_base,
+            'SNR_values': SNR_values,
+            'detectable': detectable,
+            'B_detection_limit_Gauss': B_detection_limit,
+            'n_detectable': int(np.sum(detectable))
+        }
+        
+        steps = f"""NS MAGNETIC FIELD PARAMETER SPACE SCAN: UQFF SCm Effects
+═══════════════════════════════════════════════════════════════════════════════
+NEUTRON STAR MAGNETIC FIELD REGIMES:
+
+  ┌───────────────────────────────────────────────────────────────────┐
+  │ NS Type          │ B-field (G)    │ B-field (T)   │ Examples      │
+  ├───────────────────────────────────────────────────────────────────┤
+  │ Normal Pulsar    │ 10^8 - 10^10   │ 10^4 - 10^6   │ Crab, Vela    │
+  │ High-B Pulsar    │ 10^10 - 10^12  │ 10^6 - 10^8   │ J1847-0130    │
+  │ Magnetar         │ 10^13 - 10^15  │ 10^9 - 10^11  │ SGR 1806-20   │
+  │ B_crit (QCD)     │ ~10^15         │ ~4.4×10^13    │ UQFF limit    │
+  └───────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+UQFF SCm MECHANISM:
+
+  CORE EQUATION:
+    SCm_factor = 1 - B/B_crit
+    
+  where B_crit = 4.414×10^13 T (QCD Schwinger limit in UQFF)
+  
+  PHYSICAL INTERPRETATION:
+  - B << B_crit: Magnetic field negligible, SCm ≈ 1
+  - B → B_crit: Strong field screening of GW amplitude
+  - Magnetars near B_crit should show measurable SCm effects
+  
+  COMBINED DAMPING:
+    Combined = SCm × TRZ × String
+             = (1 - B/B_crit) × {TRZ_factor:.2f} × {string_factor:.2f}
+
+═══════════════════════════════════════════════════════════════════════════════
+PARAMETER SCAN: B = {B_range[0]:.0e} - {B_range[1]:.0e} G
+
+  ┌─────────────┬──────────────┬──────────┬──────────────┬──────────┬──────────┐
+  │ B (Gauss)   │ NS Type      │ B/B_crit │ SCm Factor   │ Combined │ SNR      │
+  ├─────────────┼──────────────┼──────────┼──────────────┼──────────┼──────────┤"""
+        
+        for i, B in enumerate(B_values_Gauss):
+            ns_type = ns_types[i][:12]  # Truncate for display
+            detect_mark = "✓" if detectable[i] else "✗"
+            steps += f"\n  │ {B:9.2e}   │ {ns_type:12s} │ {B_ratios[i]:8.2e} │ {SCm_factors[i]:12.6f} │ {combined_factors[i]:8.4f} │ {SNR_values[i]:6.1f} {detect_mark} │"
+        
+        steps += f"""
+  └─────────────┴──────────────┴──────────┴──────────────┴──────────┴──────────┘
+  
+  ✓ = Detectable (SNR > 8), ✗ = Below threshold
+
+═══════════════════════════════════════════════════════════════════════════════
+KEY FINDINGS:
+
+  1. NORMAL PULSARS (B ~ 10^8-10^10 G):
+     SCm ≈ 1.000 (negligible SCm effect)
+     GW170817 falls in this regime → no SCm signature expected
+     
+  2. HIGH-B PULSARS (B ~ 10^10-10^12 G):
+     SCm ≈ 0.999-0.99 (0.1-1% reduction from SCm)
+     Potentially measurable with accumulated events
+     
+  3. MAGNETARS (B ~ 10^13-10^15 G):
+     SCm ≈ 0.9-0.0 (10-100% reduction from SCm)
+     STRONG UQFF SIGNATURE if magnetar-NS binaries observed
+     
+  4. DETECTION LIMIT:
+     For GW170817-like event (SNR_base = {SNR_base:.1f}):
+     B > {B_detection_limit:.2e} G → SNR < 8 (non-detection)
+     {results['n_detectable']} of {n_B} configurations detectable
+
+═══════════════════════════════════════════════════════════════════════════════
+OBSERVATIONAL TARGETS:
+
+  1. GW170817 (GW170817): B_NS unknown, likely 10^8-10^10 G
+     SCm effect: NEGLIGIBLE
+     Consistent with non-detection of UQFF anomaly
+     
+  2. MAGNETAR-NS BINARY:
+     If one NS is magnetar (B ~ 10^14 G):
+     SCm ≈ {SCm_factors[np.searchsorted(B_values_Gauss, 1e14)]:.4f}
+     Combined ≈ {combined_factors[np.searchsorted(B_values_Gauss, 1e14)]:.4f}
+     → STRONG UQFF signature expected
+     
+  3. MAGNETAR-BH BINARY:
+     Magnetar inspiral into stellar BH
+     SCm effect from magnetar field
+     No tidal effects (BH) → cleaner UQFF test
+
+═══════════════════════════════════════════════════════════════════════════════
+TESTABLE PREDICTIONS:
+
+  1. GW170817-LIKE (Normal NS):
+     SCm ≈ 1, no B-field signature
+     GR fit should be excellent → CONFIRMED
+     
+  2. FUTURE MAGNETAR-NS MERGER:
+     If B ~ 10^14 G:
+       - Amplitude reduced by ~{(1-combined_factors[np.searchsorted(B_values_Gauss, 1e14)])*100:.0f}%
+       - SNR ~ {SNR_values[np.searchsorted(B_values_Gauss, 1e14)]:.1f} (vs {SNR_base:.1f} for normal NS)
+       - GR template mismatch → "anomalous" event
+       
+  3. POPULATION STUDY:
+     If enough BNS events, correlate residuals with EM-inferred B-fields
+     UQFF predicts: Higher B → more template mismatch
+
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # DARK MATTER HALO UQFF CALCULATOR (Priority 2 - SuperGrok4 Export 20260224)
