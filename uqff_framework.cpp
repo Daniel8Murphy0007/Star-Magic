@@ -32,6 +32,7 @@ UQFFFramework::UQFFFramework(unsigned int seed) : rng(seed), noise_dist(0.0, 1.0
     params["coherence_amp"] = 1.0;
     params["coherence_sigma"] = 1e9;
     params["coherence_freq"] = 1e-15;
+    params["coherence_scale_factor"] = 1e-5;  // Scaling for integration into quantum term
     
     // Quantum coherence parameters (from derivation)
     params["particle_mass"] = 9.109e-31;    // Electron mass [kg] (default test particle)
@@ -120,9 +121,10 @@ void UQFFFramework::init_explanations() {
     explanations.push_back("");
     explanations.push_back("QUANTUM COHERENCE (Full UQFF):");
     explanations.push_back("  ψ(r,t) = A exp(-(r-r_h)²/2σ_eff²) exp(-i 2πft(1+f_TRZ))");
-    explanations.push_back("  C_UQFF = (ℏ²/2mσ_eff²) × |cos(2πft(1+f_TRZ))| × exp(-U_m/k_BT)");
+    explanations.push_back("  C_UQFF = (ℏ²/2mσ_eff²) × |cos(2πft(1+f_TRZ))| × exp(-U_m/k_BT) × scale");
     explanations.push_back("  σ_eff = σ × (1 - ρ_SCm/ρ_UA)  [aether damping]");
     explanations.push_back("  A = (√(2π) σ_eff)^(-1/2)      [normalization]");
+    explanations.push_back("  coherence_scale_factor = 1e-5 [tunable MUGE integration]");
     explanations.push_back("");
     explanations.push_back("AETHER SUPERFLUID DYNAMICS (GPE):");
     explanations.push_back("  ψ = √ρ × e^(iθ)               [BEC order parameter]");
@@ -315,14 +317,18 @@ double UQFFFramework::quantum_coherence(double r, double t) {
         // Magnetic string damping: exp(-U_m / k_B T)
         double magnetic_damping = std::exp(-U_m / (k_B * T));
         
-        return params["coherence_amp"] * quantum_prefactor * gaussian * osc * magnetic_damping;
+        // Apply coherence_scale_factor for tunable contribution to MUGE
+        double scale = params["coherence_scale_factor"];
+        return params["coherence_amp"] * quantum_prefactor * gaussian * osc * magnetic_damping * scale;
     } else {
         // Simple model (original): psi(r,t) ≈ amp × exp(-(r-r_h)²/σ²) × cos(2πft)
         // From UQFF quantum terms: Incorporates wavefunction coherence in ∫ ψ* H ψ
+        // Enhanced integration: Scaled by coherence_scale_factor for tunable contribution
         double gaussian = std::exp(- (distance_from_horizon * distance_from_horizon) 
                                    / (params["coherence_sigma"] * params["coherence_sigma"]));
         double osc = std::cos(2.0 * M_PI * params["coherence_freq"] * t);
-        return params["coherence_amp"] * gaussian * osc;
+        double scale = params["coherence_scale_factor"];
+        return params["coherence_amp"] * gaussian * osc * scale;
     }
 }
 
