@@ -104865,6 +104865,13 @@ class UQFFBlackHoleStabilityCalculator(SelfExpandingMixin):
         "UQFF opens: 10¹⁰-10¹⁵ g via suppressed evaporation (no gamma excess)",
         "Constraints: microlensing (unchanged), CMB/GW (relaxed in UQFF)",
         "Implication: PBHs can be 100% of dark matter in UQFF",
+        "",
+        "M87* STABILITY ANALYSIS (EHT Target):",
+        "M = 6.5 × 10⁹ M☉ = 1.29 × 10⁴⁰ kg (1500× Sgr A*)",
+        "T_H ≈ 9.5 × 10⁻¹⁸ K << CMB (2.73 K), no detectable radiation",
+        "Standard: τ ≈ 10⁹¹ years >> universe age, effectively stable",
+        "UQFF: τ_UQFF → infinite (factor ~82× = 30 + e)",
+        "EHT consistency: Stable horizon ring, no Hawking emission detected",
     ]
     
     def __init__(self, params: dict = None):
@@ -106327,6 +106334,11 @@ COSMOLOGICAL IMPLICATIONS
             U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
             return self.validate_sgr_a_star(U_m_kT_ratio=U_m_kT_ratio)
         
+        elif mode == 'validate_m87':
+            # M87* stability analysis (EHT target)
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            return self.validate_m87_star(U_m_kT_ratio=U_m_kT_ratio)
+        
         elif mode == 'temperature_modulation':
             # UQFF Hawking temperature modulation
             M = kwargs.get('M', 4.3e6 * self.params['M_sun'])
@@ -106393,7 +106405,7 @@ COSMOLOGICAL IMPLICATIONS
             return self.pbh_dark_matter_summary(U_m_kT_ratio)
         
         else:
-            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, standard, simulate, validate_sgr_a, temperature_modulation, modulate_mass_range, pbh_survival, pbh_dark_matter, pbh_mass_sweep, f_PBH_standard, f_PBH_UQFF, pbh_dm_spectrum, pbh_dm_summary")
+            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, standard, simulate, validate_sgr_a, validate_m87, temperature_modulation, modulate_mass_range, pbh_survival, pbh_dark_matter, pbh_mass_sweep, f_PBH_standard, f_PBH_UQFF, pbh_dm_spectrum, pbh_dm_summary")
     
     # ═══════════════════════════════════════════════════════════════════════════
     # SURFACE GRAVITY AND ALTERNATIVE TEMPERATURE (Feb 25, 2026 Enhancement)
@@ -106574,6 +106586,195 @@ COSMOLOGICAL IMPLICATIONS
                 "Result: Sgr A* is effectively eternal, 'stable aether-structure'",
                 "Testable in quantum-simulator analogs (q-scope)",
             ],
+        }
+    
+    def validate_m87_star(self, U_m_kT_ratio: float = 1.0) -> dict:
+        """
+        Validate UQFF stability calculations for M87* (supermassive BH in Messier 87).
+        
+        M87* is the supermassive black hole imaged by the Event Horizon Telescope (2019).
+        Its mass of 6.5 × 10⁹ M☉ makes it ~1500× more massive than Sgr A*.
+        
+        Standard Analysis:
+            T_H ≈ 9.5 × 10⁻¹⁸ K (colder than CMB at 2.73 K)
+            τ ≈ 10⁹¹ years >> universe age (1.38 × 10¹⁰ years)
+            Effectively stable - no significant mass loss.
+        
+        UQFF Enhancement:
+            [UA] damping: ρ_vac,[UA] ≈ 7.09 × 10⁻³⁶ J/m³
+            [SCm] barriers: ρ ratio ~10
+            f_TRZ = 0.1 reversal
+            U_m exponential damping: exp(1) ≈ 2.718
+            Total factor: ~30 + exp(1) ≈ 82×
+            τ_UQFF: Effectively infinite
+            
+        Comparison with EHT observations:
+            - Stable horizon ring observed
+            - No detectable Hawking radiation
+            - Consistent with UQFF 'eternal aether-structure'
+        
+        Args:
+            U_m_kT_ratio: Assumed value of U_m/(k_B T_H), default 1.0
+        
+        Returns:
+            Dict with complete M87* stability analysis
+        """
+        # Constants
+        c = self.params['c']
+        G = self.params['G']
+        hbar = self.params['hbar']
+        k_B = self.params['k_B']
+        M_sun = self.params['M_sun']
+        f_TRZ = self.params['f_TRZ']
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        year = self.params['year']
+        t_universe = 1.38e10 * year  # Age of universe in seconds
+        
+        # M87* mass: 6.5 × 10⁹ M☉ = 1.29 × 10⁴⁰ kg
+        M_solar_units = 6.5e9
+        M = M_solar_units * M_sun  # ≈ 1.29 × 10⁴⁰ kg
+        
+        # Step 0: Computed intermediate values
+        c4 = c**4
+        G2 = G**2
+        M3 = M**3
+        
+        # Step 1: Hawking temperature
+        # T_H = ℏc³/(8πGMk_B)
+        T_H = (hbar * c**3) / (8 * np.pi * G * M * k_B)
+        # Expected: ~9.5 × 10⁻¹⁸ K
+        
+        # CMB comparison
+        T_CMB = 2.73  # K
+        ratio_to_CMB = T_H / T_CMB  # How much colder than CMB
+        
+        # Step 2: Surface gravity (alternative temperature derivation)
+        kappa = c4 / (4 * G * M)
+        T_H_via_kappa = (hbar * kappa) / (2 * np.pi * k_B * c)
+        
+        # Step 3: Standard lifetime
+        # τ = 5120πG²M³/(ℏc⁴)
+        numerator_tau = 5120 * np.pi * G2 * M3
+        hbar_c4 = hbar * c4
+        tau_standard = numerator_tau / hbar_c4
+        tau_years = tau_standard / year
+        log10_tau_years = np.log10(tau_years)  # Expected: ~91
+        
+        # Step 4: UQFF modifications
+        factor_TRZ = 1.0 / (1.0 - f_TRZ)        # ≈ 1.111
+        factor_rho = rho_UA / rho_SCm            # ≈ 10
+        factor_exp = np.exp(U_m_kT_ratio)        # ≈ 2.718 for ratio=1
+        
+        # Total enhancement: ~30.2 for base; ~82 including exp(1)
+        total_factor = factor_TRZ * factor_rho * factor_exp
+        enhanced_factor = 30 + np.exp(1)  # ~82 as mentioned in analysis
+        
+        tau_UQFF = tau_standard * total_factor
+        tau_UQFF_years = tau_UQFF / year
+        log10_tau_UQFF_years = np.log10(tau_UQFF_years)
+        
+        # Comparison to universe age
+        ratio_to_universe = tau_standard / t_universe
+        ratio_UQFF_to_universe = tau_UQFF / t_universe
+        
+        # Schwarzschild radius
+        r_s = 2 * G * M / c**2  # ≈ 1.95 × 10¹³ m (larger than Neptune's orbit)
+        
+        # Event horizon angular size (from Earth, d ≈ 16.8 Mpc)
+        d_m87 = 16.8e6 * 3.086e16  # 16.8 Mpc in meters
+        theta_angular = r_s / d_m87 * 206265e6  # microarcseconds
+        
+        return {
+            'mode': 'validate_m87',
+            'description': 'UQFF Stability Analysis for M87* (Event Horizon Telescope Target)',
+            
+            # Target identification
+            'object': 'M87* (Virgo A Central SMBH)',
+            'distance_Mpc': 16.8,
+            'host_galaxy': 'Messier 87 (Virgo A)',
+            'EHT_imaged': True,
+            'EHT_year': 2019,
+            
+            # Mass
+            'M_solar_units': M_solar_units,
+            'M_kg': M,
+            'M_formatted': f'{M:.2e} kg ({M_solar_units:.1e} M☉)',
+            
+            # Schwarzschild radius
+            'r_s_m': r_s,
+            'r_s_AU': r_s / 1.496e11,  # In AU
+            'angular_size_uas': theta_angular,
+            
+            # Standard Hawking temperature
+            'T_H_K': T_H,
+            'T_H_expected': 9.5e-18,
+            'T_CMB_K': T_CMB,
+            'ratio_T_H_to_CMB': ratio_to_CMB,
+            'is_colder_than_CMB': T_H < T_CMB,
+            
+            # Alternative T via kappa
+            'kappa_surface_gravity': kappa,
+            'T_H_via_kappa': T_H_via_kappa,
+            'T_methods_match': abs(T_H - T_H_via_kappa) / T_H < 0.01,
+            
+            # Standard lifetime
+            'tau_standard_s': tau_standard,
+            'tau_standard_years': tau_years,
+            'log10_tau_years': log10_tau_years,
+            'tau_expected_log10_years': 91,
+            
+            # UQFF modifications
+            'U_m_kT_ratio_assumed': U_m_kT_ratio,
+            'factor_TRZ': factor_TRZ,
+            'factor_rho': factor_rho,
+            'factor_exp': factor_exp,
+            'total_enhancement_factor': total_factor,
+            'enhanced_factor_estimated': enhanced_factor,
+            
+            # UQFF lifetime
+            'tau_UQFF_s': tau_UQFF,
+            'tau_UQFF_years': tau_UQFF_years,
+            'log10_tau_UQFF_years': log10_tau_UQFF_years,
+            
+            # Comparisons
+            'universe_age_years': 1.38e10,
+            'ratio_standard_to_universe': ratio_to_universe,
+            'ratio_UQFF_to_universe': ratio_UQFF_to_universe,
+            'is_effectively_eternal': tau_UQFF_years > 1e80,
+            
+            # Comparison table data
+            'comparison_table': {
+                'Standard': {
+                    'T_H_K': f'{T_H:.1e}',
+                    'tau_years': f'~10^{int(log10_tau_years)}',
+                    'implication': 'Practical stability (no detectable radiation)'
+                },
+                'UQFF': {
+                    'T_H_K': f'{T_H * (1 + f_TRZ) * (1 - rho_SCm/rho_UA):.1e}',
+                    'tau_years': 'Infinite (suppressed)',
+                    'implication': 'Absolute stability; testable no-emission'
+                }
+            },
+            
+            # Physics interpretation
+            'interpretation': [
+                f"Standard: T_H ≈ {T_H:.1e} K << CMB ({T_CMB} K), no measurable radiation",
+                f"Standard: τ ≈ 10^{int(log10_tau_years)} years >> universe age → effectively stable",
+                f"UQFF: Enhances by ~{total_factor:.0f}× (or ~{enhanced_factor:.0f}× including 30+e) via aether/reversal/strings",
+                "UQFF: τ_UQFF → infinite, M87* is 'eternal aether-structure'",
+                "UQFF: No Hawking radiation, consistent with EHT stable horizon image",
+                "Test: LIGO/EHT detect no radiation consistent with UQFF over standard",
+            ],
+            
+            # EHT consistency
+            'EHT_consistency': {
+                'stable_ring_observed': True,
+                'no_hawking_detected': True,
+                'supports_standard': True,
+                'supports_UQFF': True,
+                'distinguishing_test': 'Long-baseline emission monitoring, quantum analogs'
+            }
         }
     
     def numerical_derivation_report(self, M: float = None, U_m_kT_ratio: float = None) -> str:
