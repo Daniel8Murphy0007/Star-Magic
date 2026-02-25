@@ -95577,6 +95577,354 @@ TESTABLE PREDICTIONS:
         
         return '\n'.join(lines)
 
+    def simulate_GW170817_full_inspiral(self, t_duration: float = 100.0,
+                                         f_start: float = 23.0,
+                                         f_end: float = 300.0,
+                                         f_TRZ: float = 0.1,
+                                         B_NS: float = 1e8,
+                                         string_factor: float = 0.37,
+                                         beta_m: float = 0.01,
+                                         n_samples: int = 1000,
+                                         show_summary: bool = True) -> Tuple[Dict[str, Any], str]:
+        """
+        Simulate full 100s GW170817 inspiral from in-band entry (23 Hz) to merger.
+        
+        Complete in-band evolution:
+        - LIGO sensitivity: ~23 Hz lower cutoff
+        - BNS inspiral: ~100s in-band duration
+        - Frequency chirp: df/dt ~ f^(11/3) (quadrupole)
+        - Amplitude evolution: h ~ f^(2/3)
+        
+        This captures the full observing window for GW170817, not just the
+        final 0.2s chirp, enabling accurate SNR and template matching analysis.
+        
+        Parameters:
+            t_duration: Total inspiral time in seconds (default 100s)
+            f_start: In-band entry frequency Hz (default 23 Hz LIGO cutoff)
+            f_end: Merger frequency Hz (default 300 Hz for BNS)
+            f_TRZ: Time-reversal damping fraction (default 0.1)
+            B_NS: NS surface magnetic field in Gauss (default 1e8 G)
+            string_factor: Override for string binding (default 0.37)
+            beta_m: Interference modulation amplitude (default 0.01)
+            n_samples: Time samples for numerical integration (default 1000)
+            show_summary: Include time-frequency evolution summary (default True)
+            
+        Returns:
+            Tuple of (results_dict, derivation_steps_string)
+        """
+        # GW170817 BNS parameters (from LIGO data release)
+        M_chirp = 1.188 * self.M_solar  # kg
+        M1 = 1.46 * self.M_solar  # kg
+        M2 = 1.27 * self.M_solar  # kg
+        M_tot = M1 + M2
+        mu = M1 * M2 / M_tot  # Reduced mass
+        eta = mu / M_tot  # Symmetric mass ratio
+        distance_Mpc = 40.0
+        distance_m = distance_Mpc * 3.086e22
+        
+        # Time array - logarithmic spacing captures early and late inspiral
+        t = np.linspace(0, t_duration, n_samples)
+        dt = t[1] - t[0]
+        
+        # Frequency evolution: PN approximation
+        # df/dt ∝ f^(11/3) → f(t) = f_0 × (1 - t/τ)^(-3/8)
+        # Where τ = 5c^5/(256π^(8/3))(G ℳ)^(-5/3) f_0^(-8/3)
+        tau_chirp = (5 * self.c**5 / (256 * np.pi**(8/3))) * \
+                    (self.G * M_chirp)**(-5/3) * f_start**(-8/3)
+        
+        # Frequency as function of time (coalescence at t = tau_chirp)
+        t_coalescence = min(t_duration, tau_chirp)
+        t_ratio = 1 - t / t_coalescence
+        t_ratio = np.maximum(t_ratio, 1e-10)  # Prevent divergence
+        f = f_start * t_ratio**(-3/8)
+        f = np.minimum(f, f_end)  # Cap at merger frequency
+        
+        # Phase evolution
+        phi_GW = np.cumsum(2 * np.pi * f) * dt
+        
+        # Orbital separation vs frequency
+        a = (self.G * M_tot / (4 * np.pi**2 * f**2))**(1/3)
+        
+        # === GR WAVEFORM ===
+        # h(t) = (4/r) × (G ℳ/c²)^(5/3) × (π f)^(2/3) × cos(φ)
+        h0_GR = (4 / distance_m) * (self.G * M_chirp / self.c**2)**(5/3) * \
+                (np.pi * f)**(2/3)
+        h_GR = h0_GR * np.cos(phi_GW)
+        
+        # === UQFF DAMPING ===
+        # 1. Aether (negligible at 40 Mpc)
+        rho_UA = 7.09e-36  # J/m³
+        alpha_UA = self.G / self.c**2
+        aether_factor = np.exp(-alpha_UA * rho_UA * distance_m / self.c)
+        
+        # 2. SCm (negligible for NS)
+        B_crit = 4.414e13  # T
+        B_NS_Tesla = B_NS * 1e-4
+        B_ratio = B_NS_Tesla / B_crit
+        SCm_factor = 1 - B_ratio
+        
+        # 3. TRZ damping
+        TRZ_factor = 1 - f_TRZ
+        
+        # 4. String binding
+        # Combined
+        combined_factor = float(aether_factor) * SCm_factor * TRZ_factor * string_factor
+        
+        # 5. Modulation
+        k_B = 1.381e-23
+        T = 1e6
+        modulation = 1 + beta_m * np.sin(2 * np.pi * f / (k_B * T))
+        
+        # === UQFF WAVEFORM ===
+        h_UQFF = h0_GR * combined_factor * modulation * np.cos(phi_GW)
+        
+        # === CUMULATIVE SNR ANALYSIS ===
+        # SNR² = 4 ∫ |h(f)|² / S_n(f) df ≈ Σ h²(t) × dt × (sensitivity factor)
+        # Simplified: proportional to ∫ h² dt
+        h_GR_squared = h_GR**2
+        h_UQFF_squared = h_UQFF**2
+        
+        # Cumulative SNR growth
+        SNR2_GR_cumulative = np.cumsum(h_GR_squared) * dt
+        SNR2_UQFF_cumulative = np.cumsum(h_UQFF_squared) * dt
+        
+        # Normalize to match observed SNR ~32.4
+        SNR_observed = 32.4
+        scale_factor = SNR_observed**2 / SNR2_GR_cumulative[-1]
+        SNR_GR_cumulative = np.sqrt(SNR2_GR_cumulative * scale_factor)
+        SNR_UQFF_cumulative = np.sqrt(SNR2_UQFF_cumulative * scale_factor)
+        
+        # Final SNR
+        SNR_GR_final = SNR_GR_cumulative[-1]
+        SNR_UQFF_final = SNR_UQFF_cumulative[-1]
+        
+        # Phase error accumulation
+        phi_lag = f_TRZ * phi_GW  # Simple model
+        max_phase_lag = phi_lag[-1]
+        
+        # Frequency bands analysis
+        f_10 = 10  # Below LIGO band
+        f_50 = 50
+        f_100 = 100
+        f_200 = 200
+        
+        # Find time indices for frequency milestones
+        idx_50 = np.searchsorted(f, f_50)
+        idx_100 = np.searchsorted(f, f_100)
+        idx_200 = np.searchsorted(f, f_200)
+        
+        # Time at milestones (counting back from merger)
+        t_at_50 = t[idx_50] if idx_50 < len(t) else t[-1]
+        t_at_100 = t[idx_100] if idx_100 < len(t) else t[-1]
+        t_at_200 = t[idx_200] if idx_200 < len(t) else t[-1]
+        
+        # Peak strains
+        h_peak_GR = np.max(np.abs(h_GR))
+        h_peak_UQFF = np.max(np.abs(h_UQFF))
+        percent_reduction = (1 - h_peak_UQFF / h_peak_GR) * 100
+        
+        results = {
+            'event': 'GW170817',
+            'simulation_type': 'Full 100s inspiral',
+            # Time parameters
+            't_duration': t_duration,
+            'n_samples': n_samples,
+            'dt': dt,
+            'f_start': f_start,
+            'f_end': f_end,
+            'tau_chirp': tau_chirp,
+            # Arrays
+            't_array': t,
+            'f_array': f,
+            'h_GR': h_GR,
+            'h_UQFF': h_UQFF,
+            'h0_GR': h0_GR,
+            'phi_GW': phi_GW,
+            'SNR_GR_cumulative': SNR_GR_cumulative,
+            'SNR_UQFF_cumulative': SNR_UQFF_cumulative,
+            # Statistics
+            'h_peak_GR': h_peak_GR,
+            'h_peak_UQFF': h_peak_UQFF,
+            'percent_reduction': percent_reduction,
+            'max_phase_lag_rad': max_phase_lag,
+            'max_phase_lag_cycles': max_phase_lag / (2 * np.pi),
+            # SNR
+            'SNR_GR_final': SNR_GR_final,
+            'SNR_UQFF_final': SNR_UQFF_final,
+            'SNR_reduction_percent': (1 - SNR_UQFF_final / SNR_GR_final) * 100,
+            # Frequency milestones
+            't_at_50Hz': t_at_50,
+            't_at_100Hz': t_at_100,
+            't_at_200Hz': t_at_200,
+            't_remaining_at_50Hz': t_duration - t_at_50,
+            't_remaining_at_100Hz': t_duration - t_at_100,
+            't_remaining_at_200Hz': t_duration - t_at_200,
+            # Damping factors
+            'aether_factor': float(aether_factor),
+            'SCm_factor': SCm_factor,
+            'TRZ_factor': TRZ_factor,
+            'string_factor': string_factor,
+            'combined_factor': combined_factor,
+            # Detection
+            'detectable_GR': SNR_GR_final > 8,
+            'detectable_UQFF': SNR_UQFF_final > 8
+        }
+        
+        # Time-frequency evolution summary
+        summary = ""
+        if show_summary:
+            summary = self._generate_inspiral_summary(t, f, h_GR, h_UQFF, 
+                                                       SNR_GR_cumulative, SNR_UQFF_cumulative)
+        
+        steps = f"""GW170817 FULL INSPIRAL SIMULATION: 100s In-Band Evolution
+═══════════════════════════════════════════════════════════════════════════════
+EVENT PARAMETERS:
+
+  Event: GW170817 (Binary Neutron Star, 2017-08-17)
+  
+  BNS SYSTEM:
+    ℳ_chirp = 1.188 M_sun
+    M₁ ≈ 1.46 M_sun, M₂ ≈ 1.27 M_sun
+    μ = {mu/self.M_solar:.3f} M_sun
+    η = {eta:.4f}
+    Distance = {distance_Mpc:.0f} Mpc
+
+  OBSERVING WINDOW:
+    LIGO in-band: f > ~{f_start:.0f} Hz (seismic cutoff)
+    Duration in-band: {t_duration:.0f}s
+    Entry frequency: {f_start:.0f} Hz
+    Merger frequency: {f_end:.0f} Hz
+    
+  POST-NEWTONIAN CHIRP:
+    τ_chirp = {tau_chirp:.1f}s (coalescence timescale)
+    df/dt ∝ f^(11/3) (quadrupole formula)
+    h(f) ∝ f^(2/3) (amplitude evolution)
+
+═══════════════════════════════════════════════════════════════════════════════
+FREQUENCY EVOLUTION MILESTONES:
+
+  ┌────────────────────────────────────────────────────────────────┐
+  │ Frequency │ Time (from start) │ Time to merger │ Cycles       │
+  ├───────────┼───────────────────┼────────────────┼──────────────┤
+  │  {f_start:5.0f} Hz  │  t = 0.0s          │  {t_duration:.1f}s remaining  │  Entry point  │
+  │   50 Hz   │  t = {t_at_50:.1f}s         │  {results['t_remaining_at_50Hz']:.1f}s remaining  │  Early insp.  │
+  │  100 Hz   │  t = {t_at_100:.1f}s         │  {results['t_remaining_at_100Hz']:.1f}s remaining  │  Mid inspiral │
+  │  200 Hz   │  t = {t_at_200:.1f}s         │  {results['t_remaining_at_200Hz']:.1f}s remaining  │  Late inspiral│
+  │  {f_end:5.0f} Hz  │  t = {t_duration:.1f}s         │  0.0s remaining   │  Merger       │
+  └────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+UQFF DAMPING (CONSTANT OVER INSPIRAL):
+
+  1. AETHER: {aether_factor:.6f} (negligible at 40 Mpc)
+  2. SCm: {SCm_factor:.6f} (NS B << B_crit)
+  3. TRZ: {TRZ_factor:.4f} ({f_TRZ*100:.0f}% reduction)
+  4. STRING: {string_factor:.4f} ({(1-string_factor)*100:.0f}% reduction)
+  
+  COMBINED: {combined_factor:.4f} → {percent_reduction:.1f}% amplitude reduction
+
+═══════════════════════════════════════════════════════════════════════════════
+WAVEFORM STATISTICS:
+
+  Peak strain (GR):   {h_peak_GR:.4e}
+  Peak strain (UQFF): {h_peak_UQFF:.4e}
+  Reduction:          {percent_reduction:.1f}%
+
+═══════════════════════════════════════════════════════════════════════════════
+SNR ANALYSIS:
+
+  Total waveform cycles: ~{int(phi_GW[-1] / (2*np.pi))} cycles
+  Observed SNR (GW170817): {SNR_observed:.1f}
+  
+  ┌────────────────────────────────────────────────────────────────┐
+  │                    STANDARD GR         UQFF                   │
+  │  Final SNR:        {SNR_GR_final:8.1f}           {SNR_UQFF_final:8.1f}              │
+  │  SNR loss:            ---             {results['SNR_reduction_percent']:5.1f}%             │
+  │  Detectable (>8):    {'YES':^4s}              {'YES' if results['detectable_UQFF'] else 'NO':^4s}              │
+  └────────────────────────────────────────────────────────────────┘
+
+  SNR is proportional to amplitude, so:
+    SNR_UQFF ≈ SNR_GR × combined_factor = {SNR_observed:.1f} × {combined_factor:.3f} = {SNR_observed * combined_factor:.1f}
+
+═══════════════════════════════════════════════════════════════════════════════
+PHASE EVOLUTION:
+
+  Total GW phase: {phi_GW[-1]/np.pi:.1f}π rad ({int(phi_GW[-1]/(2*np.pi))} cycles)
+  
+  UQFF phase lag model: φ_lag = f_TRZ × φ_GW
+  Maximum phase lag: {max_phase_lag:.1f} rad ({max_phase_lag/(2*np.pi):.1f} cycles)
+  
+  Template mismatch from phase error:
+    If φ_lag > 0.1 rad, template fitting degrades
+    GW170817: φ_lag ≈ {max_phase_lag:.1f} rad → SIGNIFICANT MISMATCH
+
+═══════════════════════════════════════════════════════════════════════════════
+MULTI-MESSENGER TIMING:
+
+  GW merger → GRB 170817A: Δt = 1.74s
+  
+  UQFF CONSIDERATION:
+  If UQFF affects GW propagation speed:
+    c_GW ≠ c → arrival time shift
+    Δt_GW = D × (1/c_GW - 1/c)
+    For |c_GW - c|/c < 3×10⁻¹⁵, Δt_GW < 0.4s
+    
+  GRB delay of 1.74s is attributed to:
+    - Jet breakout time (~0.5-2s)
+    - Not GW propagation effect
+    
+  UQFF must satisfy: |c_GW - c|/c < 3×10⁻¹⁵
+
+═══════════════════════════════════════════════════════════════════════════════
+{summary}
+CONCLUSIONS:
+
+  1. GW170817's 100s in-band evolution is well-matched by GR templates.
+  
+  2. UQFF with f_TRZ=0.1, string_factor=0.37 predicts:
+     - {percent_reduction:.1f}% amplitude reduction
+     - SNR: {SNR_observed:.1f} → {SNR_UQFF_final:.1f}
+     - Phase lag: {max_phase_lag:.1f} rad
+     
+  3. These effects would be detectable with current LIGO sensitivity.
+  
+  4. Since GW170817 matches GR, this CONSTRAINS UQFF:
+     - Either f_TRZ < 0.1 for BNS
+     - Or string_factor > 0.9 for light systems
+     - Or UQFF effects are mass-dependent
+
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def _generate_inspiral_summary(self, t: np.ndarray, f: np.ndarray,
+                                    h_GR: np.ndarray, h_UQFF: np.ndarray,
+                                    SNR_GR: np.ndarray, SNR_UQFF: np.ndarray) -> str:
+        """Generate time-frequency evolution summary for inspiral."""
+        # Sample at 10 time points
+        n_samples = 10
+        indices = np.linspace(0, len(t)-1, n_samples, dtype=int)
+        
+        lines = []
+        lines.append("TIME-FREQUENCY-SNR EVOLUTION:")
+        lines.append("  ┌────────────────────────────────────────────────────────────────┐")
+        lines.append("  │ Time (s) │ Freq (Hz) │ h_GR      │ h_UQFF    │ SNR_GR │ SNR_UQ │")
+        lines.append("  ├──────────┼───────────┼───────────┼───────────┼────────┼────────┤")
+        
+        for i in indices:
+            t_val = t[i]
+            f_val = f[i]
+            h_gr = np.abs(h_GR[i])
+            h_uq = np.abs(h_UQFF[i])
+            snr_gr = SNR_GR[i]
+            snr_uq = SNR_UQFF[i]
+            lines.append(f"  │ {t_val:8.1f} │ {f_val:9.1f} │ {h_gr:9.2e} │ {h_uq:9.2e} │ {snr_gr:6.1f} │ {snr_uq:6.1f} │")
+        
+        lines.append("  └────────────────────────────────────────────────────────────────┘")
+        lines.append("")
+        
+        return '\n'.join(lines)
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # DARK MATTER HALO UQFF CALCULATOR (Priority 2 - SuperGrok4 Export 20260224)
