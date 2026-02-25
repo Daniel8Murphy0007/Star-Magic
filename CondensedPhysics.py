@@ -104846,6 +104846,13 @@ class UQFFBlackHoleStabilityCalculator(SelfExpandingMixin):
         "Step 2: τ'' = τ' × (ρ_UA/ρ_SCm) - Aether density suppresses pair creation",
         "Step 3: τ_UQFF = τ'' × exp(U_m/(k_BT_H)) - Magnetic string barrier",
         "Result: Massive BHs → ∞ lifetime; small BHs → near-Hawking evaporation",
+        "",
+        "TEMPERATURE MODULATION (inverse of lifetime):",
+        "T_H = ℏc³/(8πGMk_B) - Standard Hawking temperature",
+        "T' = T_H × (1 + f_TRZ) - Time-reversal enhances temp ~10%",
+        "T'' = T' × (1 - ρ_SCm/ρ_UA) - Aether damps temp ~10%",
+        "T_UQFF = T'' × C × exp(-U_m/(k_BT'')) - Coherence + string damping",
+        "Net: Temperature modulation ~0.99 without damping; suppressed emission",
     ]
     
     def __init__(self, params: dict = None):
@@ -105038,6 +105045,362 @@ class UQFFBlackHoleStabilityCalculator(SelfExpandingMixin):
         return tau_uqff / tau_std
     
     # ═══════════════════════════════════════════════════════════════════════════
+    # UQFF HAWKING TEMPERATURE MODULATION (Feb 25, 2026)
+    # ═══════════════════════════════════════════════════════════════════════════
+    # Modulates standard Hawking temperature via UQFF factors:
+    #   Step 1: T_H = ℏc³/(8πGMk_B) - Standard
+    #   Step 2: T' = T_H × (1 + f_TRZ) - Time-reversal enhancement ~10%
+    #   Step 3: T'' = T' × (1 - ρ_SCm/ρ_UA) - Aether damping ~90%
+    #   Step 4: T_UQFF = T'' × C × exp(-U_m/(k_BT'')) - Coherence + strings
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_T_prime(self, T_H: float) -> float:
+        """
+        Step 2: Time-reversal temperature enhancement.
+        
+        T' = T_H × (1 + f_TRZ)
+        
+        Physics: Negentropic partial reversal symmetry enhances 
+        effective temperature by ~10% (f_TRZ ≈ 0.1).
+        
+        Note: This is OPPOSITE to lifetime - higher temp means more emission.
+        
+        Args:
+            T_H: Standard Hawking temperature [K]
+        
+        Returns:
+            T' [K]
+        """
+        f_TRZ = self.params['f_TRZ']
+        return T_H * (1.0 + f_TRZ)
+    
+    def compute_T_double_prime(self, T_prime: float) -> float:
+        """
+        Step 3: Aether-superconductive damping.
+        
+        T'' = T' × (1 - ρ_SCm/ρ_UA)
+        
+        Physics: Dense [UA] vacuum suppresses thermal fluctuations.
+        With ρ_SCm/ρ_UA ≈ 0.1, temperature reduced by ~10%.
+        
+        Args:
+            T_prime: T' from Step 2 [K]
+        
+        Returns:
+            T'' [K]
+        """
+        rho_SCm = self.params['rho_vac_SCm']
+        rho_UA = self.params['rho_vac_UA']
+        rho_ratio = rho_SCm / rho_UA
+        return T_prime * (1.0 - rho_ratio)
+    
+    def compute_coherence_factor(self, r: float, r_horizon: float, 
+                                  sigma: float = 1e6, f: float = 1e-3, 
+                                  t: float = 0.0) -> float:
+        """
+        Compute spatial/temporal coherence factor C.
+        
+        C = exp(-(r - r_horizon)² / σ²) × cos(2πft)
+        
+        Physics: Coherence is maximal at horizon, decays spatially,
+        and oscillates temporally with frequency f.
+        
+        Args:
+            r: Radial distance [m]
+            r_horizon: Schwarzschild radius [m] (2GM/c²)
+            sigma: Coherence length scale [m] (default: 10⁶ m)
+            f: Oscillation frequency [Hz] (default: 1 mHz)
+            t: Time [s] (default: 0)
+        
+        Returns:
+            Coherence factor C (0 to 1)
+        """
+        spatial = np.exp(-((r - r_horizon)**2) / (sigma**2))
+        temporal = np.cos(2 * np.pi * f * t)
+        return spatial * temporal
+    
+    def compute_schwarzschild_radius(self, M: float) -> float:
+        """
+        Compute Schwarzschild radius r_s = 2GM/c².
+        
+        Args:
+            M: Black hole mass [kg]
+        
+        Returns:
+            r_s [m]
+        """
+        G = self.params['G']
+        c = self.params['c']
+        return 2 * G * M / (c**2)
+    
+    def compute_T_UQFF_modulated(self, M: float, 
+                                  use_coherence: bool = True,
+                                  use_magnetic_damping: bool = True,
+                                  r: float = None,
+                                  sigma: float = 1e6,
+                                  f: float = 1e-3,
+                                  t: float = 0.0,
+                                  U_m_kT_ratio: float = None) -> dict:
+        """
+        Full UQFF modulated Hawking temperature.
+        
+        T_UQFF = T_H × (1 + f_TRZ) × (1 - ρ_SCm/ρ_UA) × C × exp(-U_m/(k_BT''))
+        
+        Where:
+        - (1 + f_TRZ): Time-reversal enhancement
+        - (1 - ρ_SCm/ρ_UA): Aether damping
+        - C: Coherence factor (optional)
+        - exp(-U_m/(k_BT'')): Magnetic string damping (optional)
+        
+        Args:
+            M: Black hole mass [kg]
+            use_coherence: Include coherence factor C (default: True)
+            use_magnetic_damping: Include exp(-U_m/(k_BT'')) (default: True)
+            r: Radial position [m] (default: at horizon)
+            sigma: Coherence length [m] (default: 10⁶ m)
+            f: Coherence frequency [Hz] (default: 1 mHz)
+            t: Time [s] (default: 0)
+            U_m_kT_ratio: Override U_m/(k_BT'') value (default: computed)
+        
+        Returns:
+            Dict with all temperature steps and modulation factors
+        """
+        # Standard Hawking temperature
+        T_H = self.compute_T_H(M)
+        
+        # Step 2: Time-reversal enhancement
+        T_prime = self.compute_T_prime(T_H)
+        
+        # Step 3: Aether damping
+        T_double_prime = self.compute_T_double_prime(T_prime)
+        
+        # Schwarzschild radius
+        r_s = self.compute_schwarzschild_radius(M)
+        
+        # Coherence factor
+        if use_coherence:
+            r_pos = r if r is not None else r_s  # Default: at horizon
+            C = self.compute_coherence_factor(r_pos, r_s, sigma, f, t)
+        else:
+            C = 1.0
+        
+        # Magnetic string damping
+        if use_magnetic_damping:
+            if U_m_kT_ratio is not None:
+                exp_factor = np.exp(-U_m_kT_ratio)
+            else:
+                U_m = self.params['U_m']
+                k_B = self.params['k_B']
+                ratio = U_m / (k_B * T_double_prime)
+                if ratio > 700:
+                    exp_factor = 0.0  # Complete suppression
+                else:
+                    exp_factor = np.exp(-ratio)
+        else:
+            exp_factor = 1.0
+        
+        # Full UQFF modulated temperature
+        T_UQFF = T_double_prime * C * exp_factor
+        
+        # Compute modulation factors
+        f_TRZ = self.params['f_TRZ']
+        rho_ratio = self.params['rho_vac_SCm'] / self.params['rho_vac_UA']
+        total_modulation = T_UQFF / T_H if T_H > 0 else 0.0
+        
+        return {
+            'M': M,
+            'M_solar': M / self.params['M_sun'],
+            'r_schwarzschild': r_s,
+            
+            # Temperature steps
+            'T_H': T_H,
+            'T_prime': T_prime,
+            'T_double_prime': T_double_prime,
+            'T_UQFF': T_UQFF,
+            
+            # Modulation factors
+            'factor_TRZ': 1.0 + f_TRZ,
+            'factor_aether': 1.0 - rho_ratio,
+            'factor_coherence': C,
+            'factor_magnetic': exp_factor,
+            'total_modulation': total_modulation,
+            
+            # Options used
+            'use_coherence': use_coherence,
+            'use_magnetic_damping': use_magnetic_damping,
+        }
+    
+    def modulate_over_mass(self, M_start: float = 1e30, M_end: float = 1e40,
+                           n_points: int = 50, **kwargs) -> dict:
+        """
+        Simulate temperature modulation over mass range.
+        
+        Args:
+            M_start: Starting mass [kg] (default: ~0.5 M☉)
+            M_end: Ending mass [kg] (default: ~5×10⁹ M☉)
+            n_points: Number of points (default: 50)
+            **kwargs: Additional args for compute_T_UQFF_modulated
+        
+        Returns:
+            Dict with mass array and modulation data
+        """
+        masses = np.logspace(np.log10(M_start), np.log10(M_end), n_points)
+        T_H = np.zeros(n_points)
+        T_UQFF = np.zeros(n_points)
+        modulation = np.zeros(n_points)
+        
+        for i, M in enumerate(masses):
+            result = self.compute_T_UQFF_modulated(M, **kwargs)
+            T_H[i] = result['T_H']
+            T_UQFF[i] = result['T_UQFF']
+            modulation[i] = result['total_modulation']
+        
+        return {
+            'masses': masses,
+            'M_solar': masses / self.params['M_sun'],
+            'T_H': T_H,
+            'T_UQFF': T_UQFF,
+            'modulation_factor': modulation,
+        }
+    
+    def temperature_modulation_report(self, M: float = None,
+                                       use_coherence: bool = False,
+                                       use_magnetic_damping: bool = False,
+                                       U_m_kT_ratio: float = 0.0) -> str:
+        """
+        Generate detailed temperature modulation derivation report.
+        
+        Args:
+            M: Black hole mass [kg] (default: Sgr A*)
+            use_coherence: Include coherence factor (default: False for clarity)
+            use_magnetic_damping: Include magnetic damping (default: False)
+            U_m_kT_ratio: Fixed U_m/(k_BT'') ratio if damping enabled
+        
+        Returns:
+            Formatted report string
+        """
+        if M is None:
+            M = 4.3e6 * self.params['M_sun']
+        
+        c = self.params['c']
+        G = self.params['G']
+        hbar = self.params['hbar']
+        k_B = self.params['k_B']
+        f_TRZ = self.params['f_TRZ']
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        M_sun = self.params['M_sun']
+        
+        # Compute values
+        result = self.compute_T_UQFF_modulated(
+            M, 
+            use_coherence=use_coherence,
+            use_magnetic_damping=use_magnetic_damping,
+            U_m_kT_ratio=U_m_kT_ratio
+        )
+        
+        T_H = result['T_H']
+        T_prime = result['T_prime']
+        T_double_prime = result['T_double_prime']
+        T_UQFF = result['T_UQFF']
+        r_s = result['r_schwarzschild']
+        
+        rho_ratio = rho_SCm / rho_UA
+        
+        report = f"""
+════════════════════════════════════════════════════════════════════════════════════════════
+                    UQFF HAWKING TEMPERATURE MODULATION
+════════════════════════════════════════════════════════════════════════════════════════════
+
+OBJECT: {"Sgr A*" if abs(M - 4.3e6*M_sun) < 1e35 else "Black Hole"}
+MASS: M = {M:.3e} kg ({M/M_sun:.2e} M☉)
+SCHWARZSCHILD RADIUS: r_s = {r_s:.3e} m
+
+═══════════════════════════════════════════════════════════════════════════════
+STEP 1: STANDARD HAWKING TEMPERATURE
+═══════════════════════════════════════════════════════════════════════════════
+
+T_H = ℏc³ / (8πGMk_B)
+
+  ℏ = {hbar:.7e} J·s
+  c = {c:.3e} m/s
+  G = {G:.5e} m³/kg/s²
+  k_B = {k_B:.7e} J/K
+  
+  T_H = ({hbar:.4e} × {c**3:.3e}) / (8π × {G:.4e} × {M:.3e} × {k_B:.4e})
+  T_H = {hbar * c**3:.3e} / {8 * np.pi * G * M * k_B:.3e}
+  T_H ≈ {T_H:.4e} K
+
+═══════════════════════════════════════════════════════════════════════════════
+STEP 2: TIME-REVERSAL ENHANCEMENT
+═══════════════════════════════════════════════════════════════════════════════
+
+T' = T_H × (1 + f_TRZ)
+
+Physics: Negentropic partial reversal symmetry enhances effective temperature.
+
+  f_TRZ = {f_TRZ:.2f}
+  (1 + f_TRZ) = {1 + f_TRZ:.2f}
+  
+  T' = {T_H:.4e} × {1 + f_TRZ:.2f}
+  T' ≈ {T_prime:.4e} K (+{f_TRZ*100:.0f}% enhancement)
+
+═══════════════════════════════════════════════════════════════════════════════
+STEP 3: AETHER-SUPERCONDUCTIVE DAMPING
+═══════════════════════════════════════════════════════════════════════════════
+
+T'' = T' × (1 - ρ_SCm/ρ_UA)
+
+Physics: Dense [UA] vacuum suppresses thermal fluctuations.
+
+  ρ_SCm = {rho_SCm:.2e} J/m³
+  ρ_UA = {rho_UA:.2e} J/m³
+  ρ_SCm/ρ_UA = {rho_ratio:.2f}
+  (1 - ρ_SCm/ρ_UA) = {1 - rho_ratio:.2f}
+  
+  T'' = {T_prime:.4e} × {1 - rho_ratio:.2f}
+  T'' ≈ {T_double_prime:.4e} K (-{rho_ratio*100:.0f}% damping)
+
+═══════════════════════════════════════════════════════════════════════════════
+STEP 4: FULL UQFF MODULATED TEMPERATURE
+═══════════════════════════════════════════════════════════════════════════════
+
+T_UQFF = T'' × C × exp(-U_m / k_B T'')
+{"(Coherence factor C = 1.0 - disabled)" if not use_coherence else f"(Coherence factor C = {result['factor_coherence']:.4f})"}
+{"(Magnetic damping disabled)" if not use_magnetic_damping else f"(exp factor = {result['factor_magnetic']:.4f})"}
+
+Combined formula:
+T_UQFF = T_H × (1 + f_TRZ) × (1 - ρ_SCm/ρ_UA) × C × exp(-U_m/k_BT'')
+       = {T_H:.4e} × {1+f_TRZ:.2f} × {1-rho_ratio:.2f} × {result['factor_coherence']:.4f} × {result['factor_magnetic']:.4f}
+  
+  T_UQFF ≈ {T_UQFF:.4e} K
+
+═══════════════════════════════════════════════════════════════════════════════
+SUMMARY
+═══════════════════════════════════════════════════════════════════════════════
+
+Total Modulation Factor: T_UQFF / T_H = {result['total_modulation']:.4f} ({result['total_modulation']*100:.1f}% of standard)
+
+Breakdown:
+  • Time-reversal (f_TRZ):    × {1+f_TRZ:.3f} (+{f_TRZ*100:.0f}%)
+  • Aether damping:          × {1-rho_ratio:.3f} (-{rho_ratio*100:.0f}%)
+  • Coherence:               × {result['factor_coherence']:.3f}
+  • Magnetic strings:        × {result['factor_magnetic']:.3f}
+
+Net effect: {"Temperature slightly reduced" if result['total_modulation'] < 1 else "Temperature slightly enhanced"}
+            {"→ Suppressed emission → Enhanced stability" if result['total_modulation'] < 1 else "→ Enhanced emission"}
+
+PHYSICAL INTERPRETATION:
+• For Sgr A*: T_UQFF ≈ {T_UQFF:.2e} K (essentially T_H × 0.99 without damping)
+• Aether damping partially cancels time-reversal enhancement
+• Magnetic string damping (if enabled) further suppresses temperature
+• Result: UQFF modulation stabilizes black holes against evaporation
+
+════════════════════════════════════════════════════════════════════════════════════════════
+"""
+        return report
+    
+    # ═══════════════════════════════════════════════════════════════════════════
     # SELF-EXPANDING / SIMULATION
     # ═══════════════════════════════════════════════════════════════════════════
     
@@ -105154,8 +105517,30 @@ class UQFFBlackHoleStabilityCalculator(SelfExpandingMixin):
             U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
             return self.validate_sgr_a_star(U_m_kT_ratio=U_m_kT_ratio)
         
+        elif mode == 'temperature_modulation':
+            # UQFF Hawking temperature modulation
+            M = kwargs.get('M', 4.3e6 * self.params['M_sun'])
+            use_coherence = kwargs.get('use_coherence', True)
+            use_magnetic_damping = kwargs.get('use_magnetic_damping', True)
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', None)
+            return self.compute_T_UQFF_modulated(
+                M, 
+                use_coherence=use_coherence,
+                use_magnetic_damping=use_magnetic_damping,
+                U_m_kT_ratio=U_m_kT_ratio,
+                **{k: v for k, v in kwargs.items() 
+                   if k not in ['M', 'use_coherence', 'use_magnetic_damping', 'U_m_kT_ratio']}
+            )
+        
+        elif mode == 'modulate_mass_range':
+            # Temperature modulation over mass range
+            M_start = kwargs.get('M_start', 1e30)
+            M_end = kwargs.get('M_end', 1e40)
+            n_points = kwargs.get('n_points', 50)
+            return self.modulate_over_mass(M_start, M_end, n_points, **kwargs)
+        
         else:
-            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, standard, simulate, validate_sgr_a")
+            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, standard, simulate, validate_sgr_a, temperature_modulation, modulate_mass_range")
     
     # ═══════════════════════════════════════════════════════════════════════════
     # SURFACE GRAVITY AND ALTERNATIVE TEMPERATURE (Feb 25, 2026 Enhancement)
