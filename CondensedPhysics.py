@@ -97771,6 +97771,1344 @@ CONCLUSIONS FOR GW190425:
 """
         return results, steps
 
+    # ═══════════════════════════════════════════════════════════════════════════
+    # LISA (Laser Interferometer Space Antenna) PREDICTIONS
+    # Space-based GW detector: 0.1 mHz - 1 Hz, 2.5 million km arms
+    # Sources: SMBH mergers (10^4-10^7 M_sun), EMRIs, WD binaries
+    # Launch ~2035 (ESA/NASA)
+    # ═══════════════════════════════════════════════════════════════════════════
+
+    def predict_LISA_SMBH_merger(self, M_total_solar: float = 1e6,
+                                  q: float = 0.5,
+                                  z: float = 1.0,
+                                  f_TRZ: float = 0.1,
+                                  string_factor: float = 0.37,
+                                  U_m: float = 1.0,
+                                  beta_m: float = 0.01,
+                                  spin_1: float = 0.7,
+                                  spin_2: float = 0.5) -> Tuple[Dict, str]:
+        """
+        Predict UQFF modifications to SMBH merger observations by LISA.
+        
+        LISA parameters:
+        - Frequency band: 0.1 mHz to 1 Hz (vs LIGO 10-1000 Hz)
+        - Arm length: 2.5 million km (vs LIGO 4 km)
+        - Sources: SMBH 10^4-10^7 M⊙ at cosmological distances
+        - Launch: ~2035 (ESA/NASA)
+        
+        UQFF effects at LISA scales:
+        - Stronger aether damping over cosmological distances
+        - Different SCm physics for SMBH (no magnetic field)
+        - Long inspiral timescales (months-years) amplify phase effects
+        - f_TRZ phase lags accumulate over millions of cycles
+        
+        Parameters:
+            M_total_solar: Total binary mass in solar masses
+            q: Mass ratio m2/m1 (0 < q <= 1)
+            z: Cosmological redshift
+            f_TRZ: Trans-zero frequency factor
+            string_factor: String theory coupling
+            U_m: Magnetic energy parameter
+            beta_m: Modulation parameter
+            spin_1, spin_2: Dimensionless spins (0-1)
+            
+        Returns:
+            Tuple of (results_dict, detailed_steps_string)
+        """
+        import numpy as np
+        
+        # Physical constants
+        M_sun = 1.989e30   # kg
+        c = 2.998e8        # m/s
+        G = 6.674e-11      # m³/kg/s²
+        H0 = 70e3 / 3.086e22  # Hubble constant in s^-1 (70 km/s/Mpc)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # BINARY PARAMETERS
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        M_total = M_total_solar * M_sun
+        m1 = M_total / (1 + q)
+        m2 = q * m1
+        m1_solar = m1 / M_sun
+        m2_solar = m2 / M_sun
+        
+        # Chirp mass
+        eta = q / (1 + q)**2  # Symmetric mass ratio
+        M_chirp = M_total * eta**(3/5)
+        M_chirp_solar = M_chirp / M_sun
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # COSMOLOGICAL DISTANCE
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Luminosity distance (simplified Hubble law for z ~ 1)
+        # More accurate: D_L = (c/H0) * z * (1 + z/2) for flat ΛCDM
+        D_L_m = (c / H0) * z * (1 + z/2)  # meters
+        D_L_Gpc = D_L_m / (3.086e25)  # Gpc
+        D_L_Mpc = D_L_Gpc * 1000
+        
+        # Comoving distance
+        D_c_m = D_L_m / (1 + z)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # LISA FREQUENCY BAND
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # LISA sensitivity: 0.1 mHz to 1 Hz
+        f_LISA_min = 1e-4  # 0.1 mHz
+        f_LISA_max = 1.0   # 1 Hz
+        
+        # ISCO frequency (redshifted)
+        r_ISCO = 6 * G * M_total / c**2  # ISCO radius
+        f_ISCO_source = c**3 / (6**1.5 * np.pi * G * M_total)
+        f_ISCO_obs = f_ISCO_source / (1 + z)  # Redshifted frequency
+        
+        # Time in LISA band
+        f_entry = max(f_LISA_min, f_ISCO_obs / 100)  # Enter band ~100× below ISCO
+        
+        # Time evolution: τ(f) = (5/256) * (c³/G)^(5/3) * (πf)^(-8/3) * M_c^(-5/3)
+        tau_entry = (5/256) * (c**3 / G)**(5/3) * (np.pi * f_entry)**(-8/3) * M_chirp**(-5/3)
+        tau_ISCO = (5/256) * (c**3 / G)**(5/3) * (np.pi * f_ISCO_obs)**(-8/3) * M_chirp**(-5/3)
+        T_in_band = tau_entry - tau_ISCO
+        T_in_band_days = T_in_band / 86400
+        T_in_band_years = T_in_band_days / 365.25
+        
+        # Number of GW cycles
+        N_cycles = (1/(32*np.pi)) * (c**3 / (G * M_chirp))**(5/3) * \
+                   (f_entry**(-5/3) - f_ISCO_obs**(-5/3))
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # GR WAVEFORM (STANDARD PREDICTION)
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Peak strain at merger (GR)
+        h_peak_GR = (4 * G * M_chirp / c**2 / D_L_m) * \
+                    (np.pi * G * M_chirp * f_ISCO_obs / c**3)**(2/3)
+        
+        # Characteristic amplitude (integrated over observation)
+        # h_c ~ sqrt(N_cycles) * h
+        h_char_GR = h_peak_GR * np.sqrt(N_cycles)
+        
+        # SNR estimate (LISA sensitivity ~10^-20 at 1 mHz)
+        S_n_LISA = 1e-40  # Strain noise PSD at ~1 mHz
+        SNR_GR = h_char_GR / np.sqrt(S_n_LISA * f_ISCO_obs)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # UQFF MODIFICATIONS
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # 1. f_TRZ amplitude reduction
+        A_TRZ = 1 - f_TRZ
+        
+        # 2. SCm factor - SMBH have no magnetic field (unlike NS)
+        # But accretion disk may provide external B-field
+        B_accretion = 1e4  # Gauss (typical accretion disk field)
+        B_crit_G = 1e15    # Gauss
+        SCm_SMBH = 1.0 - (B_accretion / B_crit_G)**2  # ≈ 1.0 (negligible)
+        
+        # 3. Aether damping at cosmological distances
+        # Significant effect for z > 0.1
+        d_aether = 100e6 * 3.086e22  # 100 Mpc reference scale
+        A_aether = np.exp(-D_L_m / (100 * d_aether))  # Much stronger at z=1
+        
+        # 4. U_m exponential damping
+        A_Um = np.exp(-string_factor * U_m)
+        
+        # 5. β_m modulation - accumulates over long inspiral
+        # Phase modulation amplitude
+        phi_beta = 2 * np.pi * beta_m * T_in_band  # Total modulation phase
+        A_beta = 1.0 - 0.05 * beta_m * np.log10(T_in_band + 1)
+        
+        # Combined UQFF factor
+        UQFF_combined = A_TRZ * SCm_SMBH * A_aether * A_Um * A_beta
+        UQFF_combined = max(UQFF_combined, 0.01)  # Floor at 1%
+        
+        # UQFF strain prediction
+        h_peak_UQFF = h_peak_GR * UQFF_combined
+        h_char_UQFF = h_char_GR * UQFF_combined
+        SNR_UQFF = SNR_GR * UQFF_combined
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # PHASE EFFECTS
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # f_TRZ phase lag
+        # Accumulates as ϕ_TRZ ≈ 2π f_TRZ t / τ_merge
+        phi_TRZ = 2 * np.pi * f_TRZ * N_cycles
+        phi_TRZ_cycles = phi_TRZ / (2 * np.pi)
+        
+        # Total UQFF phase shift (relative to GR)
+        delta_phi_total = phi_TRZ + phi_beta
+        
+        # Phase shift in radians at merger
+        phi_shift_rad = f_TRZ * 2 * np.pi * N_cycles
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # DETECTABILITY ANALYSIS
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Detection threshold
+        SNR_threshold = 8.0
+        
+        detectable_GR = SNR_GR >= SNR_threshold
+        detectable_UQFF = SNR_UQFF >= SNR_threshold
+        
+        # "Missing events" - GR detectable but UQFF below threshold
+        missing_event = detectable_GR and not detectable_UQFF
+        
+        # Maximum detectable redshift
+        z_max_GR = z * (SNR_GR / SNR_threshold)
+        z_max_UQFF = z * (SNR_UQFF / SNR_threshold)
+        
+        results = {
+            # Binary parameters
+            'M_total_solar': M_total_solar,
+            'm1_solar': m1_solar,
+            'm2_solar': m2_solar,
+            'M_chirp_solar': M_chirp_solar,
+            'q': q,
+            'eta': eta,
+            'spin_1': spin_1,
+            'spin_2': spin_2,
+            
+            # Distance/redshift
+            'z': z,
+            'D_L_Gpc': D_L_Gpc,
+            'D_L_Mpc': D_L_Mpc,
+            
+            # Frequency
+            'f_LISA_min_Hz': f_LISA_min,
+            'f_LISA_max_Hz': f_LISA_max,
+            'f_ISCO_source_Hz': f_ISCO_source,
+            'f_ISCO_obs_Hz': f_ISCO_obs,
+            'f_entry_Hz': f_entry,
+            
+            # Time in band
+            'T_in_band_s': T_in_band,
+            'T_in_band_days': T_in_band_days,
+            'T_in_band_years': T_in_band_years,
+            'N_cycles': N_cycles,
+            
+            # GR waveform
+            'h_peak_GR': h_peak_GR,
+            'h_char_GR': h_char_GR,
+            'SNR_GR': SNR_GR,
+            
+            # UQFF factors
+            'f_TRZ': f_TRZ,
+            'A_TRZ': A_TRZ,
+            'SCm_SMBH': SCm_SMBH,
+            'A_aether': A_aether,
+            'A_Um': A_Um,
+            'A_beta': A_beta,
+            'UQFF_combined': UQFF_combined,
+            
+            # UQFF waveform
+            'h_peak_UQFF': h_peak_UQFF,
+            'h_char_UQFF': h_char_UQFF,
+            'SNR_UQFF': SNR_UQFF,
+            'amplitude_reduction': 1 - UQFF_combined,
+            
+            # Phase effects
+            'phi_TRZ_rad': phi_TRZ,
+            'phi_TRZ_cycles': phi_TRZ_cycles,
+            'phi_beta_rad': phi_beta,
+            'delta_phi_total_rad': delta_phi_total,
+            
+            # Detectability
+            'SNR_threshold': SNR_threshold,
+            'detectable_GR': detectable_GR,
+            'detectable_UQFF': detectable_UQFF,
+            'missing_event': missing_event,
+            'z_max_GR': z_max_GR,
+            'z_max_UQFF': z_max_UQFF,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+LISA SMBH MERGER PREDICTION: UQFF vs GR
+SuperGrok4 Export Integration (Feb 2026)
+═══════════════════════════════════════════════════════════════════════════════
+
+LISA MISSION PARAMETERS:
+  Frequency band: 0.1 mHz - 1 Hz (vs LIGO 10-1000 Hz)
+  Arm length: 2.5 million km (vs LIGO 4 km)
+  Formation: 3 spacecraft in equilateral triangle, trailing Earth
+  Launch: ~2035 (ESA/NASA)
+  
+TARGET SOURCES:
+  - SMBH mergers: 10^4 - 10^7 M⊙ (this calculation)
+  - EMRIs: Stellar BH/NS into SMBH
+  - Galactic WD binaries
+  - Stochastic GW background
+
+═══════════════════════════════════════════════════════════════════════════════
+BINARY PARAMETERS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  Total mass: M_total = {M_total_solar:.2e} M⊙ = {M_total:.2e} kg
+  Component masses:
+    m₁ = {m1_solar:.2e} M⊙
+    m₂ = {m2_solar:.2e} M⊙
+  Mass ratio: q = m₂/m₁ = {q:.2f}
+  Symmetric mass ratio: η = {eta:.4f}
+  Chirp mass: ℳ = {M_chirp_solar:.2e} M⊙
+  
+  Spins:
+    χ₁ = {spin_1:.2f}
+    χ₂ = {spin_2:.2f}
+
+═══════════════════════════════════════════════════════════════════════════════
+COSMOLOGICAL DISTANCE:
+═══════════════════════════════════════════════════════════════════════════════
+
+  Redshift: z = {z:.2f}
+  Luminosity distance: D_L = {D_L_Gpc:.2f} Gpc = {D_L_Mpc:.0f} Mpc
+  
+  COMPARISON TO LIGO SOURCES:
+    GW150914: z ≈ 0.09, D_L ≈ 400 Mpc
+    GW170817: z ≈ 0.01, D_L ≈ 40 Mpc
+    LISA SMBH: z ≈ {z:.1f}, D_L ≈ {D_L_Mpc:.0f} Mpc
+    
+  UQFF IMPLICATION:
+    Cosmological distance → enhanced aether damping
+    10× farther → potentially 100× more aether absorption
+
+═══════════════════════════════════════════════════════════════════════════════
+LISA FREQUENCY BAND:
+═══════════════════════════════════════════════════════════════════════════════
+
+  LISA sensitivity: {f_LISA_min*1000:.2f} mHz - {f_LISA_max:.0f} Hz
+  
+  Source frame ISCO frequency:
+    f_ISCO_source = c³/(6^1.5 π G M) = {f_ISCO_source*1000:.4f} mHz
+    
+  Observer frame (redshifted):
+    f_ISCO_obs = f_ISCO_source / (1+z) = {f_ISCO_obs*1000:.4f} mHz
+    
+  Band entry frequency: f_entry = {f_entry*1000:.4f} mHz
+  
+  CHECK: f_ISCO_obs {'IN' if f_LISA_min <= f_ISCO_obs <= f_LISA_max else 'OUT OF'} LISA band
+
+═══════════════════════════════════════════════════════════════════════════════
+TIME IN LISA BAND:
+═══════════════════════════════════════════════════════════════════════════════
+
+  This is where LISA fundamentally differs from LIGO:
+  
+  T_in_band = τ(f_entry) - τ(f_ISCO)
+            = {T_in_band:.2e} s
+            = {T_in_band_days:.1f} days
+            = {T_in_band_years:.2f} years
+            
+  GW cycles in band: N = {N_cycles:.2e}
+  
+  COMPARISON:
+    LIGO (GW150914): ~0.2 s in band, ~10 cycles
+    LISA (SMBH):     ~{T_in_band_years:.1f} years, ~{N_cycles:.0e} cycles
+    
+  UQFF IMPLICATION:
+    Long observation → phase effects accumulate
+    Millions of cycles → small per-cycle effects become significant
+
+═══════════════════════════════════════════════════════════════════════════════
+GR WAVEFORM (STANDARD PREDICTION):
+═══════════════════════════════════════════════════════════════════════════════
+
+  Peak strain at merger:
+    h_peak_GR = (4 G ℳ / c² D_L) × (π G ℳ f / c³)^(2/3)
+              = {h_peak_GR:.4e}
+              
+  Characteristic amplitude:
+    h_char_GR = h_peak × √N_cycles
+              = {h_char_GR:.4e}
+              
+  Expected SNR:
+    SNR_GR = h_char / √(S_n × f)
+           ≈ {SNR_GR:.0f}
+           
+  Detectable (SNR > {SNR_threshold}): {detectable_GR}
+  Maximum detectable redshift: z_max ≈ {z_max_GR:.1f}
+
+═══════════════════════════════════════════════════════════════════════════════
+UQFF MODIFICATION FACTORS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  1. F_TRZ AMPLITUDE REDUCTION:
+     f_TRZ = {f_TRZ}
+     A_TRZ = 1 - f_TRZ = {A_TRZ:.2f}
+     
+  2. SUPERCONDUCTING [SCm] FACTOR:
+     SMBH have NO intrinsic magnetic field
+     But accretion disk provides B ~ 10^4 G
+     B_crit = 10^15 G
+     SCm_SMBH = 1 - (B/B_crit)² = {SCm_SMBH:.6f}
+     → NEGLIGIBLE for SMBH (unlike NS)
+     
+  3. AETHER DAMPING (COSMOLOGICAL DISTANCE):
+     D_L = {D_L_Mpc:.0f} Mpc
+     Reference scale: 100 Mpc
+     A_aether = exp(-D_L / 10,000 Mpc) = {A_aether:.6f}
+     
+     THIS IS THE DOMINANT UQFF EFFECT FOR LISA!
+     At z=1, significant absorption expected.
+     
+  4. U_m EXPONENTIAL DAMPING:
+     U_m = {U_m}
+     σ = {string_factor}
+     A_Um = exp(-σ × U_m) = {A_Um:.4f}
+     
+  5. β_m MODULATION (LONG INSPIRAL):
+     β_m = {beta_m}
+     T_in_band = {T_in_band_days:.0f} days
+     A_β = 1 - 0.05 × β_m × log₁₀(T+1) = {A_beta:.4f}
+     
+     Long inspiral → modulation accumulates
+
+═══════════════════════════════════════════════════════════════════════════════
+COMBINED UQFF FACTOR:
+═══════════════════════════════════════════════════════════════════════════════
+
+  UQFF_total = A_TRZ × SCm × A_aether × A_Um × A_β
+             = {A_TRZ:.2f} × {SCm_SMBH:.4f} × {A_aether:.4f} × {A_Um:.4f} × {A_beta:.4f}
+             = {UQFF_combined:.4f}
+             
+  → {(1-UQFF_combined)*100:.0f}% AMPLITUDE REDUCTION from GR
+  
+  DOMINANT EFFECT: {'Aether damping' if A_aether < min(A_TRZ, A_Um) else 'U_m/f_TRZ damping'}
+
+═══════════════════════════════════════════════════════════════════════════════
+UQFF WAVEFORM PREDICTION:
+═══════════════════════════════════════════════════════════════════════════════
+
+  Peak strain:
+    h_peak_UQFF = h_peak_GR × UQFF_total
+                = {h_peak_GR:.4e} × {UQFF_combined:.4f}
+                = {h_peak_UQFF:.4e}
+                
+  Characteristic amplitude:
+    h_char_UQFF = {h_char_UQFF:.4e}
+    
+  Expected SNR:
+    SNR_UQFF = SNR_GR × UQFF_total
+             = {SNR_GR:.0f} × {UQFF_combined:.4f}
+             = {SNR_UQFF:.1f}
+             
+  Detectable (SNR > {SNR_threshold}): {detectable_UQFF}
+  Maximum detectable redshift: z_max ≈ {z_max_UQFF:.1f}
+
+═══════════════════════════════════════════════════════════════════════════════
+PHASE EFFECTS (ACCUMULATED OVER INSPIRAL):
+═══════════════════════════════════════════════════════════════════════════════
+
+  f_TRZ phase lag:
+    ϕ_TRZ = 2π × f_TRZ × N_cycles
+          = 2π × {f_TRZ} × {N_cycles:.2e}
+          = {phi_TRZ:.2e} rad
+          = {phi_TRZ_cycles:.0f} cycles
+          
+  β_m modulation:
+    ϕ_β = 2π × β_m × T
+        = {phi_beta:.2e} rad
+        
+  Total phase shift:
+    Δϕ_total = {delta_phi_total:.2e} rad
+             = {delta_phi_total/(2*np.pi):.0f} cycles
+             
+  OBSERVATIONAL SIGNATURE:
+    Template mismatch with GR
+    "Anomalous" chirp rate
+    Phase residuals accumulate over months
+
+═══════════════════════════════════════════════════════════════════════════════
+"MISSING EVENTS" PREDICTION:
+═══════════════════════════════════════════════════════════════════════════════
+
+  GR predicts: 10-50 SMBH mergers/year detectable by LISA
+  
+  UQFF prediction:
+    - Signals ~{(1-UQFF_combined)*100:.0f}% quieter than GR
+    - Some events below detection threshold
+    
+  This event:
+    GR detectable:   {detectable_GR}
+    UQFF detectable: {detectable_UQFF}
+    "Missing event": {missing_event}
+    
+  If UQFF is correct:
+    - Fewer SMBH mergers detected than GR predicts
+    - Events appear at lower effective redshift
+    - Population studies show "cosmological dimming"
+
+═══════════════════════════════════════════════════════════════════════════════
+TESTABLE PREDICTIONS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  1. AMPLITUDE:
+     GR:   h ~ {h_peak_GR:.1e}
+     UQFF: h ~ {h_peak_UQFF:.1e}
+     
+  2. DETECTION RATE:
+     If LISA sees significantly fewer SMBH mergers than GR predicts
+     (accounting for uncertainties), this supports UQFF aether damping.
+     
+  3. PHASE EVOLUTION:
+     Matched-filter analysis with GR templates will show:
+     - Phase residuals ~ {phi_TRZ_cycles:.0f} cycles
+     - "Anomalous" frequency evolution
+     
+  4. DISTANCE-DEPENDENT DAMPING:
+     UQFF predicts amplitude reduction increases with distance.
+     Compare SNR vs z relationship to GR prediction.
+     
+  5. COMPARISON TO LIGO:
+     LIGO sources (z ~ 0.1): ~{(1-0.9)*100:.0f}% reduction
+     LISA sources (z ~ 1):   ~{(1-UQFF_combined)*100:.0f}% reduction
+     Systematic increase with distance confirms aether damping.
+
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def simulate_LISA_EMRI(self, M_SMBH_solar: float = 1e6,
+                           m_compact_solar: float = 10.0,
+                           compact_type: str = 'BH',
+                           z: float = 0.5,
+                           T_observe_years: float = 2.0,
+                           f_TRZ: float = 0.1,
+                           string_factor: float = 0.37,
+                           U_m: float = 1.0,
+                           n_harmonics: int = 5) -> Tuple[Dict, str]:
+        """
+        Simulate EMRI (Extreme Mass Ratio Inspiral) GW signal with UQFF effects.
+        
+        EMRI: A stellar-mass compact object (BH, NS, or WD) spiraling into a SMBH.
+        - Mass ratio: q ~ 10^-4 to 10^-7 (extreme!)
+        - LISA: ~10-100 EMRIs/year expected
+        - Physics: Maps SMBH spacetime geometry ("bumpy black holes")
+        
+        UQFF effects on EMRIs:
+        - U_m creates "string harmonics" in the spectrum
+        - Slower inspiral (enhanced stability from UQFF fields)
+        - Phase coherence over millions of cycles enables precision tests
+        
+        Parameters:
+            M_SMBH_solar: SMBH mass in solar masses
+            m_compact_solar: Compact object mass in solar masses
+            compact_type: 'BH', 'NS', or 'WD'
+            z: Cosmological redshift
+            T_observe_years: Observation duration in years
+            f_TRZ: Trans-zero frequency factor
+            string_factor: String theory coupling
+            U_m: Magnetic energy parameter
+            n_harmonics: Number of string harmonics to compute
+            
+        Returns:
+            Tuple of (results_dict, detailed_steps_string)
+        """
+        import numpy as np
+        
+        # Physical constants
+        M_sun = 1.989e30
+        c = 2.998e8
+        G = 6.674e-11
+        H0 = 70e3 / 3.086e22
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # EMRI PARAMETERS
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        M_SMBH = M_SMBH_solar * M_sun
+        m_compact = m_compact_solar * M_sun
+        
+        # Mass ratio (extreme!)
+        q = m_compact / M_SMBH  # ~ 10^-5 for typical EMRI
+        eta = q / (1 + q)**2  # Symmetric mass ratio
+        
+        # Total and chirp mass
+        M_total = M_SMBH + m_compact
+        M_chirp = M_total * eta**(3/5)
+        M_chirp_solar = M_chirp / M_sun
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # COMPACT OBJECT PROPERTIES
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        if compact_type == 'NS':
+            B_compact = 1e10  # Gauss (typical NS)
+            R_compact = 10e3  # 10 km
+            tidal_deform = 300.0  # Λ
+        elif compact_type == 'WD':
+            B_compact = 1e6   # Gauss (typical WD)
+            R_compact = 1e7   # 10000 km (Earth-sized)
+            tidal_deform = 1e6  # Large Λ for WD
+        else:  # BH
+            B_compact = 0.0   # No intrinsic B-field
+            R_compact = 2 * G * m_compact / c**2  # Schwarzschild radius
+            tidal_deform = 0.0  # No tidal deformability
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # DISTANCE
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        D_L_m = (c / H0) * z * (1 + z/2)
+        D_L_Gpc = D_L_m / 3.086e25
+        D_L_Mpc = D_L_Gpc * 1000
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # GW FREQUENCY EVOLUTION
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # ISCO frequency (where inspiral ends)
+        f_ISCO_source = c**3 / (6**1.5 * np.pi * G * M_SMBH)
+        f_ISCO_obs = f_ISCO_source / (1 + z)
+        
+        # Orbital period at ISCO
+        P_ISCO = 1 / f_ISCO_obs
+        
+        # Starting orbital radius (for observation duration)
+        # Use Peters formula: da/dt = -(64/5) * G³M₁M₂(M₁+M₂) / (c⁵ a³)
+        T_observe_s = T_observe_years * 365.25 * 86400
+        
+        # Estimate starting orbital separation
+        a_start = ((64 * G**3 * M_SMBH * m_compact * M_total * T_observe_s) / 
+                   (5 * c**5))**(1/4)
+        
+        # Starting GW frequency
+        f_start = np.sqrt(G * M_SMBH / a_start**3) / np.pi
+        f_start_obs = f_start / (1 + z)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # GR INSPIRAL DYNAMICS
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Number of orbits in observation time
+        N_orbits_GR = T_observe_s * (f_start_obs + f_ISCO_obs) / 2
+        
+        # Number of GW cycles (2× orbital for quadrupole)
+        N_cycles_GR = 2 * N_orbits_GR
+        
+        # Peak strain (at end of observation, near ISCO)
+        h_peak_GR = (4 * G * M_chirp / c**2 / D_L_m) * \
+                    (np.pi * G * M_chirp * f_ISCO_obs / c**3)**(2/3)
+        
+        # SNR (approximate)
+        S_n_LISA = 1e-40
+        SNR_GR = h_peak_GR * np.sqrt(N_cycles_GR) / np.sqrt(S_n_LISA * f_ISCO_obs)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # UQFF MODIFICATIONS
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # 1. f_TRZ reduction
+        A_TRZ = 1 - f_TRZ
+        
+        # 2. SCm factor (compact object)
+        B_crit_G = 1e15
+        SCm_compact = 1.0 if B_compact == 0 else (1 - (B_compact / B_crit_G)**2)
+        
+        # 3. Aether damping
+        d_aether = 100e6 * 3.086e22
+        A_aether = np.exp(-D_L_m / (100 * d_aether))
+        
+        # 4. U_m damping
+        A_Um = np.exp(-string_factor * U_m)
+        
+        # Combined UQFF factor
+        UQFF_combined = A_TRZ * SCm_compact * A_aether * A_Um
+        UQFF_combined = max(UQFF_combined, 0.01)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # "STRING HARMONICS" FROM U_m MODULATION
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # U_m creates interference patterns that appear as harmonics
+        # String fundamental ~ orbital frequency at string scale
+        f_string_fundamental = f_ISCO_obs * U_m / 10  # Scaled to observable
+        
+        # Harmonic frequencies
+        string_harmonics = np.array([f_string_fundamental * (n + 1) 
+                                     for n in range(n_harmonics)])
+        
+        # Harmonic amplitudes (decay with harmonic number)
+        harmonic_amplitudes = h_peak_GR * UQFF_combined * \
+                              np.array([np.exp(-n * string_factor) 
+                                       for n in range(n_harmonics)])
+        
+        # Relative power in harmonics
+        harmonic_power_ratio = np.sum(harmonic_amplitudes**2) / h_peak_GR**2
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # INSPIRAL STABILIZATION
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # UQFF fields add extra binding → slower inspiral
+        # τ_UQFF > τ_GR by factor depending on UQFF coupling
+        stability_factor = 1 + 0.5 * f_TRZ + 0.1 * U_m  # 10-50% longer inspiral
+        
+        T_inspiral_GR = T_observe_s
+        T_inspiral_UQFF = T_inspiral_GR * stability_factor
+        
+        N_orbits_UQFF = N_orbits_GR * stability_factor
+        N_cycles_UQFF = N_cycles_GR * stability_factor
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # UQFF PREDICTIONS
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        h_peak_UQFF = h_peak_GR * UQFF_combined
+        SNR_UQFF = SNR_GR * UQFF_combined * np.sqrt(stability_factor)
+        
+        # Phase coherence over observation
+        phase_coherence = N_cycles_UQFF * 2 * np.pi
+        
+        # Detection threshold
+        SNR_threshold = 20.0  # Higher for EMRIs (precision mapping)
+        detectable_GR = SNR_GR >= SNR_threshold
+        detectable_UQFF = SNR_UQFF >= SNR_threshold
+        
+        results = {
+            # EMRI parameters
+            'M_SMBH_solar': M_SMBH_solar,
+            'm_compact_solar': m_compact_solar,
+            'compact_type': compact_type,
+            'q': q,
+            'eta': eta,
+            'M_chirp_solar': M_chirp_solar,
+            
+            # Compact object properties
+            'B_compact_Gauss': B_compact,
+            'R_compact_m': R_compact,
+            'tidal_deformability': tidal_deform,
+            
+            # Distance
+            'z': z,
+            'D_L_Gpc': D_L_Gpc,
+            'D_L_Mpc': D_L_Mpc,
+            
+            # Frequency
+            'f_ISCO_obs_mHz': f_ISCO_obs * 1000,
+            'f_start_obs_mHz': f_start_obs * 1000,
+            
+            # GR dynamics
+            'T_observe_years': T_observe_years,
+            'N_orbits_GR': N_orbits_GR,
+            'N_cycles_GR': N_cycles_GR,
+            'h_peak_GR': h_peak_GR,
+            'SNR_GR': SNR_GR,
+            
+            # UQFF factors
+            'f_TRZ': f_TRZ,
+            'A_TRZ': A_TRZ,
+            'SCm_compact': SCm_compact,
+            'A_aether': A_aether,
+            'A_Um': A_Um,
+            'UQFF_combined': UQFF_combined,
+            
+            # String harmonics
+            'n_harmonics': n_harmonics,
+            'string_harmonics_mHz': string_harmonics * 1000,
+            'harmonic_amplitudes': harmonic_amplitudes,
+            'harmonic_power_ratio': harmonic_power_ratio,
+            
+            # UQFF inspiral
+            'stability_factor': stability_factor,
+            'T_inspiral_UQFF_years': T_inspiral_UQFF / (365.25 * 86400),
+            'N_orbits_UQFF': N_orbits_UQFF,
+            'N_cycles_UQFF': N_cycles_UQFF,
+            
+            # UQFF predictions
+            'h_peak_UQFF': h_peak_UQFF,
+            'SNR_UQFF': SNR_UQFF,
+            'amplitude_reduction': 1 - UQFF_combined,
+            'phase_coherence_rad': phase_coherence,
+            
+            # Detectability
+            'SNR_threshold': SNR_threshold,
+            'detectable_GR': detectable_GR,
+            'detectable_UQFF': detectable_UQFF,
+        }
+        
+        # Harmonic spectrum chart
+        chart_lines = []
+        chart_lines.append("String Harmonic Spectrum")
+        chart_lines.append("=" * 50)
+        max_amp = harmonic_amplitudes.max()
+        for n in range(n_harmonics):
+            bar_len = int(40 * harmonic_amplitudes[n] / max_amp)
+            chart_lines.append(f"  n={n+1}: {'█' * bar_len} {harmonic_amplitudes[n]:.2e}")
+        chart_lines.append("=" * 50)
+        chart = "\n".join(chart_lines)
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+LISA EMRI SIMULATION: EXTREME MASS RATIO INSPIRAL WITH UQFF
+SuperGrok4 Export Integration (Feb 2026)
+═══════════════════════════════════════════════════════════════════════════════
+
+EMRI PHYSICS:
+  An EMRI is a stellar-mass compact object (BH, NS, or WD) spiraling into
+  a supermassive black hole (SMBH). The extreme mass ratio (q ~ 10^-5)
+  means the small object acts as a "probe" mapping the SMBH spacetime.
+  
+  LISA will detect ~10-100 EMRIs/year, providing:
+  - Precision tests of GR in strong-field regime
+  - SMBH spin measurements
+  - Tests of "no-hair" theorem
+  - Potential UQFF signatures!
+
+═══════════════════════════════════════════════════════════════════════════════
+EMRI PARAMETERS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  SMBH: M = {M_SMBH_solar:.2e} M⊙
+  Compact object: m = {m_compact_solar:.1f} M⊙ ({compact_type})
+  
+  Mass ratio: q = m/M = {q:.2e} (EXTREME!)
+    - Compare to BBH: q ~ 0.1-1
+    - Compare to NSBH: q ~ 0.01-0.1
+    - EMRI: q ~ 10^-4 to 10^-7
+    
+  Symmetric mass ratio: η = {eta:.2e}
+  Chirp mass: ℳ = {M_chirp_solar:.2e} M⊙
+
+═══════════════════════════════════════════════════════════════════════════════
+COMPACT OBJECT PROPERTIES ({compact_type}):
+═══════════════════════════════════════════════════════════════════════════════
+
+  Mass: m = {m_compact_solar:.1f} M⊙
+  Radius: R = {R_compact:.2e} m
+  Magnetic field: B = {B_compact:.2e} G
+  Tidal deformability: Λ = {tidal_deform:.0f}
+  
+  UQFF IMPLICATION:
+    SCm = 1 - (B/B_crit)² = {SCm_compact:.6f}
+    {'Negligible magnetic effect (BH/low-B NS)' if SCm_compact > 0.99 else 'Significant magnetic suppression (magnetar/WD)'}
+
+═══════════════════════════════════════════════════════════════════════════════
+DISTANCE:
+═══════════════════════════════════════════════════════════════════════════════
+
+  Redshift: z = {z:.2f}
+  Luminosity distance: D_L = {D_L_Gpc:.2f} Gpc = {D_L_Mpc:.0f} Mpc
+
+═══════════════════════════════════════════════════════════════════════════════
+GW FREQUENCY EVOLUTION:
+═══════════════════════════════════════════════════════════════════════════════
+
+  ISCO frequency (observer frame): f_ISCO = {f_ISCO_obs*1000:.3f} mHz
+  Starting frequency: f_start = {f_start_obs*1000:.3f} mHz
+  
+  Observation duration: T = {T_observe_years:.1f} years
+    → Sweep from {f_start_obs*1000:.3f} mHz to {f_ISCO_obs*1000:.3f} mHz
+
+═══════════════════════════════════════════════════════════════════════════════
+GR INSPIRAL DYNAMICS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  Number of orbits: N_orbits = {N_orbits_GR:.2e}
+  Number of GW cycles: N_cycles = {N_cycles_GR:.2e}
+  
+  Peak strain: h_peak = {h_peak_GR:.4e}
+  SNR (GR): {SNR_GR:.0f}
+  
+  EMRI PRECISION:
+    The huge number of cycles ({N_cycles_GR:.0e}!) enables:
+    - Sub-radian phase measurements
+    - 0.01% mass determinations
+    - Spin measurements to ~0.1%
+    - UQFF tests at δh/h ~ 10^-6 level!
+
+═══════════════════════════════════════════════════════════════════════════════
+UQFF MODIFICATION FACTORS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  f_TRZ:    A_TRZ = {A_TRZ:.2f}
+  SCm:      SCm = {SCm_compact:.6f}
+  Aether:   A_aether = {A_aether:.6f}
+  U_m:      A_Um = {A_Um:.4f}
+  
+  Combined: UQFF = {UQFF_combined:.4f}
+  
+  → {(1-UQFF_combined)*100:.1f}% amplitude reduction
+
+═══════════════════════════════════════════════════════════════════════════════
+"STRING HARMONICS" FROM U_m MODULATION:
+═══════════════════════════════════════════════════════════════════════════════
+
+  UQFF predicts U_m creates interference patterns in the GW spectrum.
+  These appear as additional harmonic content beyond GR quadrupole.
+  
+  String fundamental frequency: f₀ = {f_string_fundamental*1000:.4f} mHz
+  
+{chart}
+
+  Harmonic frequencies (mHz): {', '.join([f'{f*1000:.4f}' for f in string_harmonics[:3]])}...
+  
+  OBSERVATIONAL SIGNATURE:
+    - Power at frequencies not predicted by GR
+    - Harmonic ratios match U_m × string_factor
+    - "Anomalous" spectral content in EMRI signal
+    
+  DETECTION:
+    Power ratio in harmonics: {harmonic_power_ratio:.2e} of total
+    If detected, confirms UQFF string dynamics
+
+═══════════════════════════════════════════════════════════════════════════════
+INSPIRAL STABILIZATION (UQFF ENHANCEMENT):
+═══════════════════════════════════════════════════════════════════════════════
+
+  UQFF fields add extra binding energy → SLOWER inspiral
+  
+  Stability factor: τ_UQFF / τ_GR = {stability_factor:.2f}
+  
+  GR inspiral time: {T_observe_years:.1f} years
+  UQFF inspiral time: {T_inspiral_UQFF/(365.25*86400):.1f} years
+  
+  Additional orbits: {N_orbits_UQFF - N_orbits_GR:.2e}
+  Additional cycles: {N_cycles_UQFF - N_cycles_GR:.2e}
+  
+  OBSERVATIONAL SIGNATURE:
+    - EMRI signal lasts longer than GR predicts
+    - More GW cycles accumulated
+    - Different inspiral rate (da/dt slower)
+    - Phase evolution deviates from GR
+
+═══════════════════════════════════════════════════════════════════════════════
+UQFF PREDICTIONS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  Strain: h_UQFF = {h_peak_UQFF:.4e} (vs GR: {h_peak_GR:.4e})
+  SNR: {SNR_UQFF:.0f} (vs GR: {SNR_GR:.0f})
+  
+  Phase coherence: {phase_coherence:.2e} rad over observation
+  
+  Detectable (SNR > {SNR_threshold}):
+    GR: {detectable_GR}
+    UQFF: {detectable_UQFF}
+
+═══════════════════════════════════════════════════════════════════════════════
+TESTABLE SIGNATURES:
+═══════════════════════════════════════════════════════════════════════════════
+
+  1. AMPLITUDE:
+     GR predicts h ~ {h_peak_GR:.1e}
+     UQFF predicts h ~ {h_peak_UQFF:.1e}
+     
+  2. INSPIRAL RATE:
+     GR: τ = {T_observe_years:.1f} years
+     UQFF: τ = {T_inspiral_UQFF/(365.25*86400):.1f} years (slower)
+     
+  3. STRING HARMONICS:
+     Extra power at f = n × {f_string_fundamental*1000:.4f} mHz
+     
+  4. PHASE EVOLUTION:
+     Cumulative phase deviation ~ {f_TRZ * N_cycles_GR:.0f} cycles
+     
+  5. COMPACT OBJECT TYPE:
+     NS/WD (B > 0): SCm effect present
+     BH (B = 0): No SCm, cleaner UQFF test
+
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compute_LISA_detection_rates(self, f_TRZ: float = 0.1,
+                                      string_factor: float = 0.37,
+                                      U_m: float = 1.0,
+                                      z_max: float = 10.0,
+                                      n_z_bins: int = 20) -> Tuple[Dict, str]:
+        """
+        Compute LISA detection rates for various source types with UQFF effects.
+        
+        Estimates how UQFF damping affects expected detection rates:
+        - SMBH mergers: 10-50/year (GR) → reduced by threshold effects
+        - EMRIs: 10-100/year (GR) → affected by inspiral duration
+        - WD binaries: ~10000 resolved (GR) → negligible UQFF effect
+        - Stochastic background: 10-20% reduction from aether
+        
+        Parameters:
+            f_TRZ: Trans-zero frequency factor
+            string_factor: String theory coupling
+            U_m: Magnetic energy parameter
+            z_max: Maximum redshift for SMBH sources
+            n_z_bins: Number of redshift bins
+            
+        Returns:
+            Tuple of (results_dict, detailed_steps_string)
+        """
+        import numpy as np
+        
+        # Physical constants
+        c = 2.998e8
+        H0 = 70e3 / 3.086e22
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # GR BASELINE RATES
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # SMBH merger rate (from population synthesis)
+        # GR prediction: 10-50 per year detectable by LISA
+        R_SMBH_GR_low = 10    # per year
+        R_SMBH_GR_high = 50   # per year
+        R_SMBH_GR_mid = 30    # per year
+        
+        # EMRI rate
+        # GR prediction: 10-100 per year
+        R_EMRI_GR_low = 10
+        R_EMRI_GR_high = 100
+        R_EMRI_GR_mid = 50
+        
+        # Galactic WD binaries
+        # GR prediction: ~10000 resolved sources
+        N_WD_GR = 10000
+        
+        # Stochastic background amplitude
+        # GR prediction: Ω_GW ~ 10^-9 at mHz
+        Omega_GW_GR = 1e-9
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # UQFF AMPLITUDE FACTOR VS REDSHIFT
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        z_values = np.linspace(0.1, z_max, n_z_bins)
+        
+        # Luminosity distance
+        D_L_m = (c / H0) * z_values * (1 + z_values/2)
+        D_L_Gpc = D_L_m / 3.086e25
+        
+        # UQFF factor components
+        A_TRZ = 1 - f_TRZ
+        A_Um = np.exp(-string_factor * U_m)
+        
+        # Aether damping (distance-dependent)
+        d_aether = 100e6 * 3.086e22  # 100 Mpc reference
+        A_aether = np.exp(-D_L_m / (100 * d_aether))
+        
+        # Combined UQFF factor (no SCm for SMBH)
+        UQFF_vs_z = A_TRZ * A_aether * A_Um
+        UQFF_vs_z = np.clip(UQFF_vs_z, 0.01, 1.0)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # SMBH DETECTION RATE WITH THRESHOLD EFFECTS
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # SNR threshold
+        SNR_threshold = 8.0
+        
+        # Reference SNR at z=1 for 10^6 M_sun SMBH merger
+        SNR_ref = 100  # With GR
+        z_ref = 1.0
+        
+        # SNR scales as 1/D_L and with UQFF factor
+        SNR_GR_vs_z = SNR_ref * (D_L_m[0] / D_L_m)  # Assuming z_ref = z_values[0]
+        idx_ref = np.argmin(np.abs(z_values - z_ref))
+        SNR_GR_vs_z = SNR_ref * (D_L_m[idx_ref] / D_L_m)
+        
+        SNR_UQFF_vs_z = SNR_GR_vs_z * UQFF_vs_z
+        
+        # Detectable volume fraction
+        detectable_GR = SNR_GR_vs_z >= SNR_threshold
+        detectable_UQFF = SNR_UQFF_vs_z >= SNR_threshold
+        
+        # Maximum detectable redshift
+        z_max_detectable_GR = z_values[detectable_GR][-1] if any(detectable_GR) else 0
+        z_max_detectable_UQFF = z_values[detectable_UQFF][-1] if any(detectable_UQFF) else 0
+        
+        # Rate reduction (scales as volume ~ z^3)
+        volume_ratio = (z_max_detectable_UQFF / z_max_detectable_GR)**3 if z_max_detectable_GR > 0 else 0
+        
+        R_SMBH_UQFF_mid = R_SMBH_GR_mid * volume_ratio
+        R_SMBH_UQFF_low = R_SMBH_GR_low * volume_ratio
+        R_SMBH_UQFF_high = R_SMBH_GR_high * volume_ratio
+        
+        # "Missing events" per year
+        missing_SMBH = R_SMBH_GR_mid - R_SMBH_UQFF_mid
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # EMRI DETECTION RATE
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # EMRIs are affected differently:
+        # 1. Lower amplitude (like SMBH)
+        # 2. But longer inspiral compensates somewhat (more cycles)
+        
+        stability_factor = 1 + 0.5 * f_TRZ + 0.1 * U_m
+        SNR_boost_EMRI = np.sqrt(stability_factor)  # More cycles → higher SNR
+        
+        # EMRI effectiveness factor
+        EMRI_factor = np.mean(UQFF_vs_z) * SNR_boost_EMRI
+        
+        R_EMRI_UQFF_mid = R_EMRI_GR_mid * EMRI_factor
+        R_EMRI_UQFF_low = R_EMRI_GR_low * EMRI_factor
+        R_EMRI_UQFF_high = R_EMRI_GR_high * EMRI_factor
+        
+        missing_EMRI = R_EMRI_GR_mid - R_EMRI_UQFF_mid
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # GALACTIC WD BINARIES
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Galactic sources (< 10 kpc): Negligible UQFF effect
+        # Aether damping only significant at cosmological distances
+        
+        UQFF_galactic = A_TRZ * A_Um  # No aether term
+        
+        N_WD_UQFF = int(N_WD_GR * UQFF_galactic)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # STOCHASTIC BACKGROUND
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Background from unresolved sources at cosmological distances
+        # Aether reduces power by ~10-20%
+        
+        background_reduction = 1 - np.mean(A_aether)  # Typical reduction
+        Omega_GW_UQFF = Omega_GW_GR * (1 - 0.1 * f_TRZ - 0.1 * background_reduction)
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # SUMMARY STATISTICS
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        total_GR = R_SMBH_GR_mid + R_EMRI_GR_mid
+        total_UQFF = R_SMBH_UQFF_mid + R_EMRI_UQFF_mid
+        total_missing = total_GR - total_UQFF
+        
+        results = {
+            # Redshift analysis
+            'z_values': z_values,
+            'D_L_Gpc': D_L_Gpc,
+            'UQFF_vs_z': UQFF_vs_z,
+            'SNR_GR_vs_z': SNR_GR_vs_z,
+            'SNR_UQFF_vs_z': SNR_UQFF_vs_z,
+            
+            # UQFF parameters
+            'f_TRZ': f_TRZ,
+            'A_TRZ': A_TRZ,
+            'A_Um': A_Um,
+            'A_aether_mean': np.mean(A_aether),
+            
+            # Detection limits
+            'z_max_detectable_GR': z_max_detectable_GR,
+            'z_max_detectable_UQFF': z_max_detectable_UQFF,
+            'volume_ratio': volume_ratio,
+            
+            # SMBH rates
+            'R_SMBH_GR': (R_SMBH_GR_low, R_SMBH_GR_mid, R_SMBH_GR_high),
+            'R_SMBH_UQFF': (R_SMBH_UQFF_low, R_SMBH_UQFF_mid, R_SMBH_UQFF_high),
+            'missing_SMBH_per_year': missing_SMBH,
+            
+            # EMRI rates
+            'R_EMRI_GR': (R_EMRI_GR_low, R_EMRI_GR_mid, R_EMRI_GR_high),
+            'R_EMRI_UQFF': (R_EMRI_UQFF_low, R_EMRI_UQFF_mid, R_EMRI_UQFF_high),
+            'missing_EMRI_per_year': missing_EMRI,
+            'stability_factor': stability_factor,
+            'SNR_boost_EMRI': SNR_boost_EMRI,
+            
+            # WD binaries
+            'N_WD_GR': N_WD_GR,
+            'N_WD_UQFF': N_WD_UQFF,
+            'UQFF_galactic': UQFF_galactic,
+            
+            # Stochastic background
+            'Omega_GW_GR': Omega_GW_GR,
+            'Omega_GW_UQFF': Omega_GW_UQFF,
+            'background_reduction': background_reduction,
+            
+            # Summary
+            'total_compact_GR': total_GR,
+            'total_compact_UQFF': total_UQFF,
+            'total_missing_per_year': total_missing,
+        }
+        
+        # Rate comparison chart
+        chart_lines = []
+        chart_lines.append("LISA Detection Rates: GR vs UQFF")
+        chart_lines.append("=" * 60)
+        chart_lines.append(f"{'Source Type':<20} {'GR Rate':<15} {'UQFF Rate':<15} {'Missing':<10}")
+        chart_lines.append("-" * 60)
+        chart_lines.append(f"{'SMBH Mergers':<20} {R_SMBH_GR_mid:<15.0f} {R_SMBH_UQFF_mid:<15.1f} {missing_SMBH:<10.1f}")
+        chart_lines.append(f"{'EMRIs':<20} {R_EMRI_GR_mid:<15.0f} {R_EMRI_UQFF_mid:<15.1f} {missing_EMRI:<10.1f}")
+        chart_lines.append(f"{'WD Binaries':<20} {N_WD_GR:<15.0f} {N_WD_UQFF:<15.0f} {N_WD_GR-N_WD_UQFF:<10.0f}")
+        chart_lines.append("-" * 60)
+        chart_lines.append(f"{'TOTAL (SMBH+EMRI)':<20} {total_GR:<15.0f} {total_UQFF:<15.1f} {total_missing:<10.1f}")
+        chart_lines.append("=" * 60)
+        chart = "\n".join(chart_lines)
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+LISA DETECTION RATES: UQFF vs GR PREDICTIONS
+SuperGrok4 Export Integration (Feb 2026)
+═══════════════════════════════════════════════════════════════════════════════
+
+OVERVIEW:
+  LISA will observe GW sources in the 0.1 mHz - 1 Hz band.
+  Expected sources include SMBH mergers, EMRIs, WD binaries, and
+  a stochastic GW background from unresolved sources.
+  
+  UQFF modifies detection rates through:
+  1. Amplitude reduction (f_TRZ, U_m, aether)
+  2. Threshold effects (quieter signals → fewer detections)
+  3. Inspiral duration changes (EMRIs)
+  4. Distance-dependent damping (aether)
+
+═══════════════════════════════════════════════════════════════════════════════
+UQFF PARAMETERS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  f_TRZ = {f_TRZ} → A_TRZ = {A_TRZ:.2f}
+  U_m = {U_m}, σ = {string_factor} → A_Um = {A_Um:.4f}
+  Mean aether damping: A_aether = {np.mean(A_aether):.4f}
+  
+  EMRI stability factor: {stability_factor:.2f}
+  EMRI SNR boost (more cycles): {SNR_boost_EMRI:.2f}
+
+═══════════════════════════════════════════════════════════════════════════════
+UQFF AMPLITUDE FACTOR vs REDSHIFT:
+═══════════════════════════════════════════════════════════════════════════════
+
+  The UQFF damping factor increases with distance due to aether absorption.
+  
+  Redshift    D_L (Gpc)    UQFF Factor    SNR Reduction
+  ─────────────────────────────────────────────────────
+  {z_values[0]:.1f}         {D_L_Gpc[0]:.2f}          {UQFF_vs_z[0]:.4f}         {(1-UQFF_vs_z[0])*100:.0f}%
+  {z_values[n_z_bins//4]:.1f}         {D_L_Gpc[n_z_bins//4]:.2f}          {UQFF_vs_z[n_z_bins//4]:.4f}         {(1-UQFF_vs_z[n_z_bins//4])*100:.0f}%
+  {z_values[n_z_bins//2]:.1f}         {D_L_Gpc[n_z_bins//2]:.2f}          {UQFF_vs_z[n_z_bins//2]:.4f}         {(1-UQFF_vs_z[n_z_bins//2])*100:.0f}%
+  {z_values[-1]:.1f}         {D_L_Gpc[-1]:.2f}         {UQFF_vs_z[-1]:.4f}         {(1-UQFF_vs_z[-1])*100:.0f}%
+
+═══════════════════════════════════════════════════════════════════════════════
+DETECTION LIMITS:
+═══════════════════════════════════════════════════════════════════════════════
+
+  SNR threshold: {SNR_threshold}
+  
+  Maximum detectable redshift (10^6 M⊙ SMBH merger):
+    GR:   z_max = {z_max_detectable_GR:.1f}
+    UQFF: z_max = {z_max_detectable_UQFF:.1f}
+    
+  Detectable volume ratio:
+    V_UQFF / V_GR = (z_UQFF / z_GR)³ = {volume_ratio:.2f}
+    
+  INTERPRETATION:
+    UQFF reduces accessible volume by {(1-volume_ratio)*100:.0f}%
+    → Fewer events detectable at same intrinsic rate
+
+═══════════════════════════════════════════════════════════════════════════════
+DETECTION RATE COMPARISON:
+═══════════════════════════════════════════════════════════════════════════════
+
+{chart}
+
+═══════════════════════════════════════════════════════════════════════════════
+SMBH MERGER RATES:
+═══════════════════════════════════════════════════════════════════════════════
+
+  GR prediction:
+    Low:  {R_SMBH_GR_low} events/year
+    Mid:  {R_SMBH_GR_mid} events/year
+    High: {R_SMBH_GR_high} events/year
+    
+  UQFF prediction:
+    Low:  {R_SMBH_UQFF_low:.1f} events/year
+    Mid:  {R_SMBH_UQFF_mid:.1f} events/year
+    High: {R_SMBH_UQFF_high:.1f} events/year
+    
+  "MISSING" EVENTS:
+    {missing_SMBH:.0f} SMBH mergers/year below detection threshold
+    
+  CAUSE:
+    Aether damping reduces amplitude → events at z > {z_max_detectable_UQFF:.1f}
+    fall below SNR threshold despite occurring
+
+═══════════════════════════════════════════════════════════════════════════════
+EMRI RATES:
+═══════════════════════════════════════════════════════════════════════════════
+
+  GR prediction:
+    Low:  {R_EMRI_GR_low} events/year
+    Mid:  {R_EMRI_GR_mid} events/year
+    High: {R_EMRI_GR_high} events/year
+    
+  UQFF prediction:
+    Low:  {R_EMRI_UQFF_low:.1f} events/year
+    Mid:  {R_EMRI_UQFF_mid:.1f} events/year
+    High: {R_EMRI_UQFF_high:.1f} events/year
+    
+  EMRI-SPECIFIC EFFECTS:
+    - Amplitude reduction: {(1-np.mean(UQFF_vs_z))*100:.0f}%
+    - BUT inspiral duration increases by {(stability_factor-1)*100:.0f}%
+    - More cycles → SNR boost of {(SNR_boost_EMRI-1)*100:.0f}%
+    - Net effect is partial compensation
+    
+  "MISSING" EMRIs: {missing_EMRI:.0f} per year
+
+═══════════════════════════════════════════════════════════════════════════════
+GALACTIC WD BINARIES:
+═══════════════════════════════════════════════════════════════════════════════
+
+  GR prediction: ~{N_WD_GR} resolved WD binaries
+  UQFF prediction: ~{N_WD_UQFF} resolved WD binaries
+  
+  UQFF factor (galactic): {UQFF_galactic:.4f}
+  
+  INTERPRETATION:
+    Galactic sources (< 10 kpc) are UNAFFECTED by aether damping
+    Small reduction from f_TRZ and U_m only
+    → LISA WD census is robust to UQFF effects
+
+═══════════════════════════════════════════════════════════════════════════════
+STOCHASTIC GW BACKGROUND:
+═══════════════════════════════════════════════════════════════════════════════
+
+  GR prediction: Ω_GW = {Omega_GW_GR:.1e}
+  UQFF prediction: Ω_GW = {Omega_GW_UQFF:.1e}
+  
+  Reduction: {(1 - Omega_GW_UQFF/Omega_GW_GR)*100:.0f}%
+  
+  INTERPRETATION:
+    Stochastic background from unresolved cosmological sources
+    Aether absorbs ~{background_reduction*100:.0f}% of power
+    Measurable if LISA characterizes background precisely
+
+═══════════════════════════════════════════════════════════════════════════════
+SUMMARY - TOTAL "MISSING EVENTS":
+═══════════════════════════════════════════════════════════════════════════════
+
+  SMBH mergers:     {missing_SMBH:.0f} per year
+  EMRIs:            {missing_EMRI:.0f} per year
+  ────────────────────────────────────
+  TOTAL:            {total_missing:.0f} events per year
+  
+  PERCENTAGE REDUCTION:
+    SMBH: {(1 - R_SMBH_UQFF_mid/R_SMBH_GR_mid)*100:.0f}%
+    EMRI: {(1 - R_EMRI_UQFF_mid/R_EMRI_GR_mid)*100:.0f}%
+    Overall: {(1 - total_UQFF/total_GR)*100:.0f}%
+
+═══════════════════════════════════════════════════════════════════════════════
+TESTABLE PREDICTION:
+═══════════════════════════════════════════════════════════════════════════════
+
+  If LISA observes:
+    - FEWER SMBH mergers than population synthesis predicts
+    - Apparent "cosmological dimming" in GW amplitudes
+    - Detection rate decreasing faster with z than 1/D_L²
+    
+  This would support UQFF aether damping hypothesis.
+  
+  COMPARISON METRIC:
+    GR: R(z) ∝ z² (volume-limited)
+    UQFF: R(z) ∝ z² × exp(-z/z₀) (aether-damped)
+    
+  DISCRIMINATOR:
+    Plot detected events vs redshift
+    Fit to R(z) models
+    Aether damping → z₀ ~ {10/np.log(1/np.mean(A_aether)):.1f}
+
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # DARK MATTER HALO UQFF CALCULATOR (Priority 2 - SuperGrok4 Export 20260224)
