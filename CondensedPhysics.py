@@ -3810,6 +3810,33 @@ class SelfExpandingMixin:
         """Get metadata field value."""
         return self.metadata.get(key)
     
+    def set_learning_rate(self, rate: float) -> None:
+        """
+        Set adaptive learning rate for auto-optimization.
+        
+        Used in gradient descent updates for parameter calibration.
+        
+        Args:
+            rate: Learning rate (typically 0.001 - 0.1)
+        """
+        if rate <= 0:
+            raise ValueError("Learning rate must be positive")
+        self.learning_rate = rate
+        if self.enable_logging:
+            UQFFLogger.debug('SelfExpanding', f'Learning rate set to {rate}')
+    
+    def get_learning_rate(self) -> float:
+        """Get current learning rate."""
+        return self.learning_rate
+    
+    def set_enable_logging(self, enabled: bool) -> None:
+        """Enable or disable debug logging."""
+        self.enable_logging = enabled
+    
+    def set_enable_dynamic_terms(self, enabled: bool) -> None:
+        """Enable or disable dynamic term contributions."""
+        self.enable_dynamic_terms = enabled
+    
     def compute_with_dynamic_terms(self, base_value: float, t: float = 0.0, params: dict = None) -> float:
         """
         Add contributions from registered dynamic terms to base value.
@@ -103000,6 +103027,1348 @@ TOTAL MUGE GRAVITY: g = {result['g_total']:.6e} m/s²
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# PULSAR TIMING ARRAY (PTA) UQFF CALCULATOR (Feb 25, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# Nanohertz gravitational waves from SMBH binaries
+# NANOGrav 15-year, EPTA, PPTA, IPTA compatibility
+# UQFF: Vacuum correlation via [UA] affects signal propagation
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class PulsarTimingArrayUQFFCalculator(SelfExpandingMixin):
+    """
+    Pulsar Timing Array (PTA) UQFF Calculator.
+    
+    Computes timing residuals from nanohertz gravitational waves using
+    UQFF vacuum correlation corrections.
+    
+    Key Physics:
+        - Hellings-Downs correlation for isotropic GW background
+        - Strain amplitude h_c ∝ f^(-2/3) power law
+        - UQFF: [UA] vacuum modulates signal propagation
+        - UQFF: SCm superconductive screening in pulsar magnetospheres
+    
+    Supported Datasets:
+        - NANOGrav 15-year (47 pulsars)
+        - EPTA DR2 (25 pulsars)
+        - PPTA DR3 (26 pulsars)
+        - IPTA DR3 (combined)
+    
+    Reference:
+        - Agazie et al. (2023) NANOGrav 15yr
+        - EPTA+InPTA (2023) DR2
+    """
+    
+    # Physical Constants
+    G = 6.6743e-11
+    c = 2.99792458e8
+    pc_to_m = 3.0857e16
+    year_to_s = 3.15576e7
+    
+    # UQFF Parameters
+    rho_vac_UA = 7.09e-36   # Universal Aether density [J/m³]
+    rho_vac_SCm = 7.09e-37  # Superconductive density
+    f_TRZ = 0.1             # Time Reversal Zone factor
+    
+    # Pre-defined pulsar systems
+    MILLISECOND_PULSARS = {
+        'J0437-4715': {'period_ms': 5.757, 'DM': 2.64, 'd_kpc': 0.156, 'binary': True},
+        'J1909-3744': {'period_ms': 2.947, 'DM': 10.39, 'd_kpc': 1.14, 'binary': True},
+        'J1713+0747': {'period_ms': 4.570, 'DM': 15.99, 'd_kpc': 1.18, 'binary': True},
+        'J1744-1134': {'period_ms': 4.075, 'DM': 3.14, 'd_kpc': 0.42, 'binary': False},
+        'J0030+0451': {'period_ms': 4.865, 'DM': 4.33, 'd_kpc': 0.30, 'binary': False},
+        'J2145-0750': {'period_ms': 16.05, 'DM': 9.00, 'd_kpc': 0.50, 'binary': True},
+        'B1937+21': {'period_ms': 1.558, 'DM': 71.04, 'd_kpc': 3.6, 'binary': False},  # First MSP
+        'B1855+09': {'period_ms': 5.362, 'DM': 13.30, 'd_kpc': 0.9, 'binary': True},
+    }
+    
+    def __init__(self, n_pulsars: int = 47, T_obs_years: float = 15.0):
+        """
+        Initialize PTA Calculator.
+        
+        Args:
+            n_pulsars: Number of pulsars in array
+            T_obs_years: Observation baseline in years
+        """
+        self.init_self_expanding()
+        self.n_pulsars = n_pulsars
+        self.T_obs = T_obs_years * self.year_to_s
+        self.f_min = 1.0 / self.T_obs  # Lowest detectable frequency
+        self.f_max = 1.0 / (60.0)       # ~1/minute cadence limit
+    
+    def hellings_downs(self, theta: float) -> float:
+        """
+        Hellings-Downs angular correlation function.
+        
+        Γ(θ) = (3/2)x × ln(x) - x/4 + 1/2 + δ(θ)/2
+        where x = (1 - cos(θ))/2
+        
+        Args:
+            theta: Angular separation between pulsars [radians]
+        
+        Returns:
+            Correlation coefficient Γ(θ)
+        """
+        if theta < 1e-10:  # Same pulsar
+            return 0.5
+        
+        x = (1.0 - np.cos(theta)) / 2.0
+        if x < 1e-10:
+            return 0.5
+        
+        return 1.5 * x * np.log(x) - x / 4.0 + 0.5
+    
+    def strain_amplitude(self, f: float, A_gw: float = 2.4e-15, 
+                         gamma: float = 13.0/3.0) -> float:
+        """
+        Characteristic strain amplitude for GW background.
+        
+        h_c(f) = A_gw × (f / f_yr)^α
+        where α = (3 - γ)/2 ≈ -2/3 for SMBH binaries
+        
+        Args:
+            f: Frequency [Hz]
+            A_gw: Amplitude at 1/yr (NANOGrav: 2.4e-15)
+            gamma: Spectral index (13/3 for GW background)
+        
+        Returns:
+            Characteristic strain h_c
+        """
+        f_yr = 1.0 / self.year_to_s
+        alpha = (3.0 - gamma) / 2.0
+        return A_gw * (f / f_yr) ** alpha
+    
+    def timing_residual_rms(self, f: float, h_c: float) -> float:
+        """
+        RMS timing residual from GW strain.
+        
+        σ_t ≈ h_c / (2π f)
+        
+        UQFF Correction: σ_UQFF = σ_t × (1 + f_TRZ) × (1 - ρ_SCm/ρ_UA)
+        
+        Args:
+            f: Frequency [Hz]
+            h_c: Characteristic strain
+        
+        Returns:
+            RMS timing residual [s]
+        """
+        sigma_t = h_c / (2.0 * np.pi * f)
+        
+        # UQFF vacuum correction
+        vacuum_factor = (1.0 + self.f_TRZ) * (1.0 - self.rho_vac_SCm / self.rho_vac_UA)
+        
+        return sigma_t * vacuum_factor
+    
+    def compute_spectrum(self, n_freq: int = 30) -> Dict[str, Any]:
+        """
+        Compute full PTA power spectrum.
+        
+        Args:
+            n_freq: Number of frequency bins
+        
+        Returns:
+            Dict with frequencies, strains, timing residuals
+        """
+        # Frequency array (log-spaced)
+        f_arr = np.logspace(np.log10(self.f_min), np.log10(self.f_max), n_freq)
+        
+        h_c_arr = np.array([self.strain_amplitude(f) for f in f_arr])
+        sigma_arr = np.array([self.timing_residual_rms(f, h) for f, h in zip(f_arr, h_c_arr)])
+        
+        return {
+            'frequencies': f_arr,
+            'h_c': h_c_arr,
+            'timing_residual_s': sigma_arr,
+            'timing_residual_ns': sigma_arr * 1e9,
+            'f_min': self.f_min,
+            'f_max': self.f_max,
+            'T_obs_years': self.T_obs / self.year_to_s,
+            'n_pulsars': self.n_pulsars,
+        }
+    
+    def compute_smbh_binary(self, M_total: float, q: float, D_L: float,
+                            f_orb: float) -> Dict[str, Any]:
+        """
+        Compute GW signal from individual SMBH binary.
+        
+        Args:
+            M_total: Total mass [M_sun]
+            q: Mass ratio (M2/M1 ≤ 1)
+            D_L: Luminosity distance [Mpc]
+            f_orb: Orbital frequency [Hz]
+        
+        Returns:
+            Dict with strain, timing residual, chirp mass
+        """
+        M_sun = 1.989e30
+        Mpc_to_m = 3.0857e22
+        
+        M_tot_kg = M_total * M_sun
+        D_L_m = D_L * Mpc_to_m
+        
+        # Chirp mass
+        M_chirp = M_tot_kg * (q / (1 + q)**2)**(3/5)
+        
+        # GW frequency (2x orbital)
+        f_gw = 2.0 * f_orb
+        
+        # Strain amplitude
+        h = (4.0 / D_L_m) * (self.G * M_chirp / self.c**2)**(5/3) * \
+            (np.pi * f_gw / self.c)**(2/3)
+        
+        # UQFF correction
+        h_uqff = h * (1.0 + self.f_TRZ) * (1.0 - self.rho_vac_SCm / self.rho_vac_UA)
+        
+        # Timing residual
+        sigma_t = h_uqff / (2.0 * np.pi * f_gw)
+        
+        return {
+            'M_total_Msun': M_total,
+            'q': q,
+            'M_chirp_kg': M_chirp,
+            'M_chirp_Msun': M_chirp / M_sun,
+            'D_L_Mpc': D_L,
+            'f_orb_Hz': f_orb,
+            'f_gw_Hz': f_gw,
+            'h': h,
+            'h_uqff': h_uqff,
+            'timing_residual_s': sigma_t,
+            'timing_residual_ns': sigma_t * 1e9,
+            'uqff_enhancement': h_uqff / h,
+        }
+    
+    def compute(self, mode: str = 'spectrum', **kwargs) -> Dict[str, Any]:
+        """
+        Main computation interface.
+        
+        Modes:
+            'spectrum': Full power spectrum
+            'smbh_binary': Individual SMBH binary
+            'hellings_downs': Angular correlation curve
+            'sensitivity': PTA sensitivity curve
+        """
+        if mode == 'spectrum':
+            return self.compute_spectrum(**kwargs)
+        
+        elif mode == 'smbh_binary':
+            return self.compute_smbh_binary(**kwargs)
+        
+        elif mode == 'hellings_downs':
+            theta_arr = np.linspace(0, np.pi, 100)
+            gamma_arr = np.array([self.hellings_downs(t) for t in theta_arr])
+            return {
+                'theta_rad': theta_arr,
+                'theta_deg': np.degrees(theta_arr),
+                'Gamma': gamma_arr,
+            }
+        
+        elif mode == 'sensitivity':
+            n_freq = kwargs.get('n_freq', 30)
+            f_arr = np.logspace(np.log10(self.f_min), np.log10(self.f_max), n_freq)
+            
+            # Simplified sensitivity: h_sens ≈ σ_t × 2πf / sqrt(N_pulsars × T_obs × f)
+            sigma_t = 100e-9  # 100 ns timing precision
+            h_sens = sigma_t * 2 * np.pi * f_arr / np.sqrt(self.n_pulsars * self.T_obs * f_arr)
+            
+            return {
+                'frequencies': f_arr,
+                'h_sensitivity': h_sens,
+                'n_pulsars': self.n_pulsars,
+                'sigma_t_s': sigma_t,
+            }
+        
+        else:
+            raise ValueError(f"Unknown mode: {mode}")
+    
+    @staticmethod
+    def run_tests() -> Dict[str, Any]:
+        """Run validation tests."""
+        tests = []
+        try:
+            calc = PulsarTimingArrayUQFFCalculator()
+            tests.append({'name': 'Instantiation', 'passed': True})
+            
+            # Hellings-Downs at 90 degrees
+            hd_90 = calc.hellings_downs(np.pi / 2)
+            tests.append({'name': 'Hellings-Downs(90°)', 'passed': abs(hd_90 + 0.125) < 0.05})
+            
+            # Strain at 1/yr
+            h_c = calc.strain_amplitude(1.0 / calc.year_to_s)
+            tests.append({'name': 'Strain at 1/yr', 'passed': abs(h_c - 2.4e-15) / 2.4e-15 < 0.01})
+            
+            # Spectrum computation
+            spec = calc.compute_spectrum(n_freq=10)
+            tests.append({'name': 'Spectrum computation', 'passed': 'frequencies' in spec})
+            
+            # SMBH binary
+            binary = calc.compute_smbh_binary(M_total=1e9, q=0.5, D_L=100.0, f_orb=1e-8)
+            tests.append({'name': 'SMBH binary', 'passed': 'h_uqff' in binary})
+            
+        except Exception as e:
+            tests.append({'name': 'Test execution', 'passed': False, 'error': str(e)})
+        
+        return {
+            'class': 'PulsarTimingArrayUQFFCalculator',
+            'tests': tests,
+            'passed': sum(1 for t in tests if t['passed']),
+            'total': len(tests),
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# COSMIC RAY PROPAGATION UQFF CALCULATOR (Feb 25, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# Ultra-high energy cosmic ray (UHECR) propagation
+# GZK cutoff, ankle, knee features
+# UQFF: Vacuum energy affects propagation losses
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class CosmicRayPropagationUQFFCalculator(SelfExpandingMixin):
+    """
+    Cosmic Ray Propagation UQFF Calculator.
+    
+    Models ultra-high energy cosmic ray propagation through the universe
+    with UQFF vacuum interaction corrections.
+    
+    Key Physics:
+        - GZK cutoff: E_GZK ≈ 5×10^19 eV (pion photoproduction)
+        - Ankle: E ≈ 3×10^18 eV (transition galactic → extragalactic)
+        - Knee: E ≈ 3×10^15 eV (galactic CR limit)
+        - UQFF: [UA] affects energy loss rates via vacuum interaction
+    
+    Processes:
+        - Pair production (e+e- on CMB)
+        - Pion photoproduction (GZK)
+        - Synchrotron in IGMF
+        - Inverse Compton
+    """
+    
+    # Physical Constants
+    c = 2.99792458e8           # m/s
+    m_p = 1.6726e-27           # kg
+    m_e = 9.109e-31            # kg
+    e = 1.602e-19              # C
+    eV_to_J = 1.602e-19
+    Mpc_to_m = 3.0857e22
+    
+    # CMB Parameters
+    T_CMB = 2.725              # K
+    n_CMB = 411e6              # photons/m³
+    E_CMB_mean = 6.34e-4       # eV (mean CMB photon energy)
+    
+    # UQFF Parameters
+    rho_vac_UA = 7.09e-36
+    rho_vac_SCm = 7.09e-37
+    f_TRZ = 0.1
+    
+    # Key Energy Scales
+    E_GZK = 5e19               # eV
+    E_ankle = 3e18             # eV
+    E_knee = 3e15              # eV
+    E_2nd_knee = 5e17          # eV
+    
+    def __init__(self):
+        """Initialize Cosmic Ray Calculator."""
+        self.init_self_expanding()
+    
+    def gzk_horizon(self, E_eV: float) -> float:
+        """
+        Calculate GZK horizon (mean free path) for protons.
+        
+        λ_GZK ≈ 50 Mpc for E > E_GZK
+        
+        UQFF: λ_UQFF = λ × (1 - [SCm]/[UA]) (vacuum screening)
+        
+        Args:
+            E_eV: Proton energy [eV]
+        
+        Returns:
+            Mean free path [Mpc]
+        """
+        if E_eV < self.E_GZK:
+            # Below GZK cutoff, horizon ~ cosmological
+            return 4000.0  # Mpc
+        
+        # Above GZK: λ ≈ 50 Mpc, decreasing with energy
+        E_ratio = E_eV / self.E_GZK
+        lambda_base = 50.0 / E_ratio**0.5  # Simplified scaling
+        
+        # UQFF vacuum screening
+        vacuum_factor = 1.0 - self.rho_vac_SCm / self.rho_vac_UA
+        
+        return lambda_base * vacuum_factor
+    
+    def energy_loss_length(self, E_eV: float, process: str = 'all') -> float:
+        """
+        Calculate energy loss length for various processes.
+        
+        Args:
+            E_eV: Particle energy [eV]
+            process: 'pair', 'pion', 'adiabatic', 'all'
+        
+        Returns:
+            Energy loss length [Mpc]
+        """
+        # Pair production on CMB
+        if E_eV < 1e18:
+            L_pair = 1000.0  # Mpc (inefficient below threshold)
+        else:
+            L_pair = 1000.0 * (1e18 / E_eV)**0.4
+        
+        # Pion photoproduction (GZK)
+        if E_eV < self.E_GZK:
+            L_pion = 10000.0  # Mpc (negligible)
+        else:
+            L_pion = 50.0 * (self.E_GZK / E_eV)**0.7
+        
+        # Adiabatic (Hubble expansion)
+        H_0 = 70.0  # km/s/Mpc
+        L_adiabatic = self.c / (H_0 * 1000.0 / self.Mpc_to_m)  # c/H_0 in Mpc
+        L_adiabatic = 4300.0  # Mpc
+        
+        if process == 'pair':
+            return L_pair
+        elif process == 'pion':
+            return L_pion
+        elif process == 'adiabatic':
+            return L_adiabatic
+        else:  # all
+            return 1.0 / (1.0/L_pair + 1.0/L_pion + 1.0/L_adiabatic)
+    
+    def propagate(self, E_init_eV: float, D_Mpc: float, 
+                  n_steps: int = 100) -> Dict[str, Any]:
+        """
+        Propagate cosmic ray through IGM.
+        
+        Args:
+            E_init_eV: Initial energy [eV]
+            D_Mpc: Propagation distance [Mpc]
+            n_steps: Number of integration steps
+        
+        Returns:
+            Dict with energy evolution
+        """
+        # Step size
+        dD = D_Mpc / n_steps
+        
+        distances = [0.0]
+        energies = [E_init_eV]
+        E = E_init_eV
+        
+        for i in range(n_steps):
+            L_loss = self.energy_loss_length(E)
+            
+            # Energy loss: dE/dD ≈ -E/L
+            dE = -E * dD / L_loss
+            E = max(1e10, E + dE)  # Floor at 10 GeV
+            
+            distances.append(distances[-1] + dD)
+            energies.append(E)
+        
+        return {
+            'E_init_eV': E_init_eV,
+            'E_final_eV': energies[-1],
+            'D_Mpc': D_Mpc,
+            'distances_Mpc': np.array(distances),
+            'energies_eV': np.array(energies),
+            'energy_retained': energies[-1] / E_init_eV,
+        }
+    
+    def spectrum_features(self) -> Dict[str, Any]:
+        """
+        Return key spectral features.
+        """
+        return {
+            'knee': {
+                'energy_eV': self.E_knee,
+                'energy_PeV': self.E_knee / 1e15,
+                'origin': 'Galactic CR confinement limit',
+            },
+            'second_knee': {
+                'energy_eV': self.E_2nd_knee,
+                'energy_PeV': self.E_2nd_knee / 1e15,
+                'origin': 'Heavy nuclei galactic limit',
+            },
+            'ankle': {
+                'energy_eV': self.E_ankle,
+                'energy_EeV': self.E_ankle / 1e18,
+                'origin': 'Galactic → Extragalactic transition',
+            },
+            'GZK_cutoff': {
+                'energy_eV': self.E_GZK,
+                'energy_EeV': self.E_GZK / 1e18,
+                'origin': 'Pion photoproduction on CMB',
+                'horizon_Mpc': self.gzk_horizon(self.E_GZK),
+            },
+        }
+    
+    def compute(self, mode: str = 'features', **kwargs) -> Dict[str, Any]:
+        """
+        Main computation interface.
+        
+        Modes:
+            'features': Key spectral features
+            'horizon': GZK horizon calculation
+            'propagate': Full propagation simulation
+            'spectrum': Energy spectrum with UQFF corrections
+        """
+        if mode == 'features':
+            return self.spectrum_features()
+        
+        elif mode == 'horizon':
+            E = kwargs.get('E_eV', self.E_GZK)
+            return {
+                'E_eV': E,
+                'lambda_Mpc': self.gzk_horizon(E),
+                'L_loss_Mpc': self.energy_loss_length(E),
+            }
+        
+        elif mode == 'propagate':
+            E_init = kwargs.get('E_init_eV', 1e20)
+            D = kwargs.get('D_Mpc', 100.0)
+            return self.propagate(E_init, D)
+        
+        elif mode == 'spectrum':
+            E_arr = np.logspace(15, 21, 100)  # 1 PeV to 100 EeV
+            horizons = np.array([self.gzk_horizon(E) for E in E_arr])
+            L_loss = np.array([self.energy_loss_length(E) for E in E_arr])
+            
+            return {
+                'energies_eV': E_arr,
+                'horizons_Mpc': horizons,
+                'loss_lengths_Mpc': L_loss,
+            }
+        
+        else:
+            raise ValueError(f"Unknown mode: {mode}")
+    
+    @staticmethod
+    def run_tests() -> Dict[str, Any]:
+        """Run validation tests."""
+        tests = []
+        try:
+            calc = CosmicRayPropagationUQFFCalculator()
+            tests.append({'name': 'Instantiation', 'passed': True})
+            
+            # GZK horizon
+            h = calc.gzk_horizon(1e20)
+            tests.append({'name': 'GZK horizon', 'passed': 10 < h < 100})
+            
+            # Energy loss length
+            L = calc.energy_loss_length(1e19)
+            tests.append({'name': 'Energy loss length', 'passed': L > 0})
+            
+            # Propagation
+            prop = calc.propagate(1e20, 50.0)
+            tests.append({'name': 'Propagation', 'passed': prop['E_final_eV'] < prop['E_init_eV']})
+            
+            # Features
+            feat = calc.spectrum_features()
+            tests.append({'name': 'Spectrum features', 'passed': 'GZK_cutoff' in feat})
+            
+        except Exception as e:
+            tests.append({'name': 'Test execution', 'passed': False, 'error': str(e)})
+        
+        return {
+            'class': 'CosmicRayPropagationUQFFCalculator',
+            'tests': tests,
+            'passed': sum(1 for t in tests if t['passed']),
+            'total': len(tests),
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# GRAVITATIONAL LENSING UQFF CALCULATOR (Feb 25, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# Strong/weak gravitational lensing with UQFF vacuum corrections
+# Einstein rings, arcs, microlensing, shear
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class GravitationalLensingUQFFCalculator(SelfExpandingMixin):
+    """
+    Gravitational Lensing UQFF Calculator.
+    
+    Computes gravitational lensing effects with UQFF vacuum
+    corrections to the deflection angle.
+    
+    Key Physics:
+        - Einstein deflection: α = 4GM/(c²b)
+        - Einstein radius: θ_E = √(4GM D_ls / (c² D_l D_s))
+        - UQFF: Vacuum density [UA] modifies effective metric
+        - UQFF: SCm superconductive screening near massive objects
+    
+    Types:
+        - Strong lensing: Multiple images, arcs, Einstein rings
+        - Weak lensing: Statistical shear/convergence
+        - Microlensing: Point mass, stellar transits
+    """
+    
+    # Physical Constants
+    G = 6.6743e-11
+    c = 2.99792458e8
+    M_sun = 1.989e30
+    pc_to_m = 3.0857e16
+    arcsec_to_rad = np.pi / (180 * 3600)
+    
+    # UQFF Parameters
+    rho_vac_UA = 7.09e-36
+    rho_vac_SCm = 7.09e-37
+    f_TRZ = 0.1
+    
+    # Pre-defined lens systems
+    LENS_SYSTEMS = {
+        'SgrA': {'M_Msun': 4.3e6, 'D_kpc': 8.2, 'type': 'SMBH'},
+        'M87': {'M_Msun': 6.5e9, 'D_Mpc': 16.4, 'type': 'SMBH'},
+        'Abell2218': {'M_Msun': 1e15, 'D_Mpc': 2100, 'z_l': 0.171, 'type': 'cluster'},
+        'Bullet_Cluster': {'M_Msun': 2e15, 'D_Mpc': 3700, 'z_l': 0.296, 'type': 'cluster'},
+        'SDSSJ1004+4112': {'M_Msun': 5e14, 'D_Mpc': 2200, 'z_l': 0.68, 'type': 'cluster'},
+    }
+    
+    def __init__(self):
+        """Initialize Gravitational Lensing Calculator."""
+        self.init_self_expanding()
+    
+    def deflection_angle(self, M_kg: float, b_m: float) -> float:
+        """
+        Calculate deflection angle for point mass.
+        
+        α = 4GM/(c²b) × UQFF_correction
+        
+        UQFF: α_UQFF = α × (1 + f_TRZ) × (1 - ρ_SCm/ρ_UA)
+        
+        Args:
+            M_kg: Lens mass [kg]
+            b_m: Impact parameter [m]
+        
+        Returns:
+            Deflection angle [radians]
+        """
+        alpha = 4.0 * self.G * M_kg / (self.c**2 * b_m)
+        
+        # UQFF correction
+        uqff_factor = (1.0 + self.f_TRZ) * (1.0 - self.rho_vac_SCm / self.rho_vac_UA)
+        
+        return alpha * uqff_factor
+    
+    def einstein_radius(self, M_kg: float, D_l: float, D_s: float, 
+                        D_ls: float) -> float:
+        """
+        Calculate Einstein radius.
+        
+        θ_E = √(4GM D_ls / (c² D_l D_s))
+        
+        Args:
+            M_kg: Lens mass [kg]
+            D_l: Angular diameter distance to lens [m]
+            D_s: Angular diameter distance to source [m]
+            D_ls: Angular diameter distance lens→source [m]
+        
+        Returns:
+            Einstein radius [radians]
+        """
+        theta_E_sq = 4.0 * self.G * M_kg * D_ls / (self.c**2 * D_l * D_s)
+        
+        # UQFF correction
+        uqff_factor = (1.0 + self.f_TRZ) * (1.0 - self.rho_vac_SCm / self.rho_vac_UA)
+        
+        return np.sqrt(theta_E_sq * uqff_factor)
+    
+    def magnification(self, u: float) -> Tuple[float, float, float]:
+        """
+        Calculate magnification for point source lensing.
+        
+        μ_± = (u² + 2) / (2u√(u² + 4)) ± 1/2
+        
+        Args:
+            u: Source position in units of Einstein radius
+        
+        Returns:
+            (μ_total, μ_+, μ_-)
+        """
+        u2 = u * u
+        sqrt_term = np.sqrt(u2 + 4)
+        
+        base = (u2 + 2) / (2 * u * sqrt_term)
+        mu_plus = base + 0.5
+        mu_minus = base - 0.5
+        mu_total = abs(mu_plus) + abs(mu_minus)
+        
+        return mu_total, mu_plus, mu_minus
+    
+    def critical_curves(self, M_kg: float, D_l: float, D_s: float, 
+                        D_ls: float, ellipticity: float = 0.0) -> Dict[str, Any]:
+        """
+        Compute critical curves and caustics.
+        
+        Args:
+            M_kg: Lens mass [kg]
+            D_l, D_s, D_ls: Angular diameter distances [m]
+            ellipticity: Lens ellipticity (0 = spherical)
+        
+        Returns:
+            Dict with critical curve parameters
+        """
+        theta_E = self.einstein_radius(M_kg, D_l, D_s, D_ls)
+        
+        if ellipticity == 0:
+            # Circular lens: critical curve = Einstein ring
+            return {
+                'theta_E_rad': theta_E,
+                'theta_E_arcsec': theta_E / self.arcsec_to_rad,
+                'critical_curve': 'Einstein ring',
+                'caustic': 'point',
+            }
+        else:
+            # Elliptical: tangential and radial critical curves
+            a = theta_E * (1 + ellipticity)
+            b = theta_E * (1 - ellipticity)
+            return {
+                'theta_E_rad': theta_E,
+                'theta_E_arcsec': theta_E / self.arcsec_to_rad,
+                'semi_major_arcsec': a / self.arcsec_to_rad,
+                'semi_minor_arcsec': b / self.arcsec_to_rad,
+                'ellipticity': ellipticity,
+                'critical_curve': 'ellipse',
+                'caustic': 'diamond',
+            }
+    
+    def time_delay(self, M_kg: float, theta_1: float, theta_2: float,
+                   D_l: float, D_s: float, D_ls: float) -> float:
+        """
+        Calculate time delay between two images.
+        
+        Δt = (1+z_l) × (D_l D_s)/(c D_ls) × [((θ₁² - θ₂²)/2 - ψ(θ₁) + ψ(θ₂)]
+        
+        Simplified for point mass.
+        
+        Args:
+            M_kg: Lens mass [kg]
+            theta_1, theta_2: Image positions [rad]
+            D_l, D_s, D_ls: Distances [m]
+        
+        Returns:
+            Time delay [seconds]
+        """
+        theta_E = self.einstein_radius(M_kg, D_l, D_s, D_ls)
+        
+        # Fermat potential difference (simplified)
+        geom = (theta_1**2 - theta_2**2) / 2
+        grav = theta_E**2 * (np.log(theta_1 / theta_E) - np.log(theta_2 / theta_E))
+        
+        prefactor = (D_l * D_s) / (self.c * D_ls)
+        
+        # UQFF vacuum correction
+        uqff_factor = (1.0 + self.f_TRZ) * (1.0 - self.rho_vac_SCm / self.rho_vac_UA)
+        
+        return prefactor * abs(geom - grav) * uqff_factor
+    
+    def shear_convergence(self, kappa: float, gamma: float) -> Dict[str, Any]:
+        """
+        Calculate weak lensing shear and convergence effects.
+        
+        Args:
+            kappa: Convergence (surface density / critical density)
+            gamma: Shear magnitude
+        
+        Returns:
+            Dict with magnification matrix components
+        """
+        # Magnification
+        mu = 1.0 / ((1 - kappa)**2 - gamma**2)
+        
+        # Magnification matrix eigenvalues
+        lambda_t = (1 - kappa) - gamma  # Tangential
+        lambda_r = (1 - kappa) + gamma  # Radial
+        
+        return {
+            'kappa': kappa,
+            'gamma': gamma,
+            'mu': mu,
+            'lambda_tangential': lambda_t,
+            'lambda_radial': lambda_r,
+            'reduced_shear': gamma / (1 - kappa) if kappa != 1 else np.inf,
+        }
+    
+    def compute(self, mode: str = 'einstein', **kwargs) -> Dict[str, Any]:
+        """
+        Main computation interface.
+        
+        Modes:
+            'einstein': Einstein radius calculation
+            'deflection': Deflection angle
+            'magnification': Point source magnification
+            'time_delay': Multi-image time delay
+            'critical': Critical curves and caustics
+            'shear': Weak lensing shear/convergence
+            'system': Pre-defined lens system
+        """
+        if mode == 'einstein':
+            M = kwargs.get('M_Msun', 1e12) * self.M_sun
+            D_l = kwargs.get('D_l_Mpc', 1000.0) * 1e6 * self.pc_to_m
+            D_s = kwargs.get('D_s_Mpc', 2000.0) * 1e6 * self.pc_to_m
+            D_ls = kwargs.get('D_ls_Mpc', 1000.0) * 1e6 * self.pc_to_m
+            
+            theta_E = self.einstein_radius(M, D_l, D_s, D_ls)
+            
+            return {
+                'M_Msun': kwargs.get('M_Msun', 1e12),
+                'D_l_Mpc': kwargs.get('D_l_Mpc', 1000.0),
+                'D_s_Mpc': kwargs.get('D_s_Mpc', 2000.0),
+                'theta_E_rad': theta_E,
+                'theta_E_arcsec': theta_E / self.arcsec_to_rad,
+            }
+        
+        elif mode == 'deflection':
+            M = kwargs.get('M_Msun', 1.0) * self.M_sun
+            b = kwargs.get('b_AU', 1.0) * 1.496e11
+            alpha = self.deflection_angle(M, b)
+            return {
+                'M_Msun': kwargs.get('M_Msun', 1.0),
+                'b_AU': kwargs.get('b_AU', 1.0),
+                'alpha_rad': alpha,
+                'alpha_arcsec': alpha / self.arcsec_to_rad,
+            }
+        
+        elif mode == 'magnification':
+            u = kwargs.get('u', 1.0)
+            mu_tot, mu_p, mu_m = self.magnification(u)
+            return {
+                'u': u,
+                'mu_total': mu_tot,
+                'mu_plus': mu_p,
+                'mu_minus': mu_m,
+            }
+        
+        elif mode == 'shear':
+            kappa = kwargs.get('kappa', 0.1)
+            gamma = kwargs.get('gamma', 0.05)
+            return self.shear_convergence(kappa, gamma)
+        
+        elif mode == 'system':
+            name = kwargs.get('name', 'SgrA')
+            if name not in self.LENS_SYSTEMS:
+                raise ValueError(f"Unknown system: {name}")
+            
+            sys = self.LENS_SYSTEMS[name]
+            M = sys['M_Msun'] * self.M_sun
+            
+            if 'D_kpc' in sys:
+                D_l = sys['D_kpc'] * 1e3 * self.pc_to_m
+            else:
+                D_l = sys['D_Mpc'] * 1e6 * self.pc_to_m
+            
+            # Assume source 2x distance
+            D_s = 2 * D_l
+            D_ls = D_l
+            
+            theta_E = self.einstein_radius(M, D_l, D_s, D_ls)
+            
+            return {
+                'name': name,
+                'type': sys['type'],
+                'M_Msun': sys['M_Msun'],
+                'theta_E_rad': theta_E,
+                'theta_E_arcsec': theta_E / self.arcsec_to_rad,
+            }
+        
+        else:
+            raise ValueError(f"Unknown mode: {mode}")
+    
+    @staticmethod
+    def run_tests() -> Dict[str, Any]:
+        """Run validation tests."""
+        tests = []
+        try:
+            calc = GravitationalLensingUQFFCalculator()
+            tests.append({'name': 'Instantiation', 'passed': True})
+            
+            # Solar deflection (1.75 arcsec at limb)
+            alpha = calc.deflection_angle(calc.M_sun, 6.96e8)
+            alpha_arcsec = alpha / calc.arcsec_to_rad
+            tests.append({'name': 'Solar deflection', 'passed': 1.5 < alpha_arcsec < 2.5})
+            
+            # Einstein radius
+            theta_E = calc.einstein_radius(1e12 * calc.M_sun, 
+                                           1e9 * calc.pc_to_m,
+                                           2e9 * calc.pc_to_m,
+                                           1e9 * calc.pc_to_m)
+            tests.append({'name': 'Einstein radius', 'passed': theta_E > 0})
+            
+            # Magnification
+            mu, _, _ = calc.magnification(1.0)
+            tests.append({'name': 'Magnification', 'passed': mu > 1})
+            
+            # System lookup
+            sys_result = calc.compute(mode='system', name='SgrA')
+            tests.append({'name': 'System lookup', 'passed': 'theta_E_rad' in sys_result})
+            
+        except Exception as e:
+            tests.append({'name': 'Test execution', 'passed': False, 'error': str(e)})
+        
+        return {
+            'class': 'GravitationalLensingUQFFCalculator',
+            'tests': tests,
+            'passed': sum(1 for t in tests if t['passed']),
+            'total': len(tests),
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# STRING THEORY COMPACTIFICATION UQFF CALCULATOR (Feb 25, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# 10D/11D compactification to 4D
+# Calabi-Yau manifolds, moduli stabilization
+# UQFF: 26D polynomial mapped to extra dimensions
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class StringTheoryCompactificationCalculator(SelfExpandingMixin):
+    """
+    String Theory Compactification UQFF Calculator.
+    
+    Models extra dimensional compactification with UQFF 26-dimensional
+    polynomial gravity mapping.
+    
+    Key Physics:
+        - Type IIA/IIB: 10D supergravity → 4D
+        - M-theory: 11D → 4D
+        - Calabi-Yau 3-folds: 6 compact dimensions
+        - UQFF: 26 independent polynomial dimensions
+        - Moduli stabilization via flux compactification
+    
+    Reference:
+        - UQFF 26-layer gravity from SOURCE115
+        - Kaluza-Klein tower spectra
+    """
+    
+    # Physical Constants
+    c = 2.99792458e8
+    hbar = 1.0545718e-34
+    G_N = 6.6743e-11
+    l_Planck = 1.616e-35       # m
+    M_Planck = 2.176e-8        # kg
+    E_Planck = 1.22e19         # GeV
+    
+    # String scale estimates
+    l_string = 1e-33           # m (GUT scale strings)
+    M_string = 1e16            # GeV (GUT scale)
+    
+    # UQFF 26D Parameters
+    N_UQFF_dimensions = 26
+    
+    def __init__(self, n_compact: int = 6, compactification: str = 'Calabi-Yau'):
+        """
+        Initialize String Theory Calculator.
+        
+        Args:
+            n_compact: Number of compact dimensions (6 for Type II, 7 for M-theory)
+            compactification: 'Calabi-Yau', 'orbifold', 'toroidal'
+        """
+        self.init_self_expanding()
+        self.n_compact = n_compact
+        self.n_extended = 4  # 4D spacetime
+        self.n_total = self.n_extended + n_compact
+        self.compactification = compactification
+    
+    def calabi_yau_euler(self, h11: int, h21: int) -> int:
+        """
+        Calculate Euler characteristic of Calabi-Yau 3-fold.
+        
+        χ = 2(h^{1,1} - h^{2,1})
+        
+        Args:
+            h11: Hodge number h^{1,1} (Kähler moduli)
+            h21: Hodge number h^{2,1} (complex structure moduli)
+        
+        Returns:
+            Euler characteristic
+        """
+        return 2 * (h11 - h21)
+    
+    def kaluza_klein_mass(self, n: int, R: float) -> float:
+        """
+        Calculate Kaluza-Klein mass level.
+        
+        m_n = n ℏ / (R c)
+        
+        Args:
+            n: KK mode number (1, 2, 3, ...)
+            R: Compactification radius [m]
+        
+        Returns:
+            KK mass [kg]
+        """
+        return n * self.hbar / (R * self.c)
+    
+    def kaluza_klein_spectrum(self, R: float, n_max: int = 10) -> Dict[str, Any]:
+        """
+        Compute KK tower spectrum.
+        
+        Args:
+            R: Compactification radius [m]
+            n_max: Maximum mode number
+        
+        Returns:
+            Dict with mass spectrum
+        """
+        modes = list(range(1, n_max + 1))
+        masses_kg = [self.kaluza_klein_mass(n, R) for n in modes]
+        masses_GeV = [m * self.c**2 / (1.602e-10) for m in masses_kg]
+        
+        return {
+            'R_m': R,
+            'R_l_Planck': R / self.l_Planck,
+            'modes': modes,
+            'masses_kg': masses_kg,
+            'masses_GeV': masses_GeV,
+            'E_KK1_GeV': masses_GeV[0] if masses_GeV else 0,
+        }
+    
+    def effective_G_4D(self, R: float, n_compact: int = None) -> float:
+        """
+        Calculate effective 4D Newton's constant from compactification.
+        
+        G_4 = G_D / V_compact
+        
+        For n compact dimensions of radius R:
+        V_compact ~ (2πR)^n
+        
+        Args:
+            R: Compactification radius [m]
+            n_compact: Number of compact dimensions
+        
+        Returns:
+            Effective 4D G [m³/kg/s²]
+        """
+        n = n_compact or self.n_compact
+        V_compact = (2 * np.pi * R) ** n
+        
+        # Higher-D Newton's constant scales as G_D ~ G_4 × l_P^n
+        G_D = self.G_N * self.l_Planck**n
+        
+        return G_D / V_compact
+    
+    def moduli_potential(self, phi: np.ndarray, W_0: float = 1e-10,
+                         A: float = 1.0, a: float = 0.1) -> float:
+        """
+        Compute moduli potential (KKLT-type).
+        
+        V(φ) = A e^{-a φ} - 3|W_0|^2 / (2 Im(τ))
+        
+        Simplified scalar potential for moduli stabilization.
+        
+        Args:
+            phi: Moduli field values (array)
+            W_0: Superpotential flux contribution
+            A: Non-perturbative prefactor
+            a: Coefficient (related to gauge group rank)
+        
+        Returns:
+            Potential value
+        """
+        # Sum over moduli (simplified)
+        phi_sum = np.sum(phi)
+        
+        # KKLT-type potential
+        V = A * np.exp(-a * phi_sum) - 3 * abs(W_0)**2  # Simplified
+        
+        return V
+    
+    def uqff_26d_projection(self, r: float, t: float) -> Dict[str, Any]:
+        """
+        Project UQFF 26D polynomial gravity to compact dimensions.
+        
+        Maps the UQFF 26-layer gravity equation to extra dimensions.
+        Each layer corresponds to an independent compact direction.
+        
+        Args:
+            r: Radial coordinate [m]
+            t: Time [s]
+        
+        Returns:
+            Dict with dimensional decomposition
+        """
+        # UQFF 26-layer gravity (simplified projection)
+        layers = []
+        total_g = 0.0
+        
+        for i in range(self.N_UQFF_dimensions):
+            # Each layer has characteristic coupling
+            Q_i = 1.0 + 0.1 * np.sin(2 * np.pi * i / self.N_UQFF_dimensions)
+            SCm_i = 0.99 - 0.01 * (i / self.N_UQFF_dimensions)
+            
+            # Layer gravity contribution
+            g_i = (self.c * self.hbar) / (r**2) * Q_i * SCm_i
+            
+            layers.append({
+                'layer': i + 1,
+                'Q_i': Q_i,
+                'SCm_i': SCm_i,
+                'g_i': g_i,
+            })
+            total_g += g_i
+        
+        # Map to compact dimensions
+        n_4d = 4
+        n_compact = self.N_UQFF_dimensions - n_4d
+        
+        extended = layers[:n_4d]
+        compact = layers[n_4d:]
+        
+        g_extended = sum(l['g_i'] for l in extended)
+        g_compact = sum(l['g_i'] for l in compact)
+        
+        return {
+            'r': r,
+            't': t,
+            'total_layers': self.N_UQFF_dimensions,
+            'g_total': total_g,
+            'g_extended_4D': g_extended,
+            'g_compact': g_compact,
+            'extended_fraction': g_extended / total_g if total_g != 0 else 0,
+            'compact_fraction': g_compact / total_g if total_g != 0 else 0,
+            'layers': layers,
+        }
+    
+    def compute(self, mode: str = 'kk_spectrum', **kwargs) -> Dict[str, Any]:
+        """
+        Main computation interface.
+        
+        Modes:
+            'kk_spectrum': Kaluza-Klein mass tower
+            'effective_G': 4D effective Newton's constant
+            'calabi_yau': Calabi-Yau Euler characteristic
+            'moduli': Moduli potential
+            'uqff_26d': 26D UQFF projection
+            'summary': Compactification summary
+        """
+        if mode == 'kk_spectrum':
+            R = kwargs.get('R_m', 1e-19)  # Default: weak scale
+            n_max = kwargs.get('n_max', 10)
+            return self.kaluza_klein_spectrum(R, n_max)
+        
+        elif mode == 'effective_G':
+            R = kwargs.get('R_m', 1e-35)
+            G_eff = self.effective_G_4D(R)
+            return {
+                'R_m': R,
+                'G_eff': G_eff,
+                'G_N': self.G_N,
+                'ratio': G_eff / self.G_N,
+            }
+        
+        elif mode == 'calabi_yau':
+            h11 = kwargs.get('h11', 2)
+            h21 = kwargs.get('h21', 101)  # e.g., quintic
+            chi = self.calabi_yau_euler(h11, h21)
+            n_moduli = h11 + h21
+            return {
+                'h11': h11,
+                'h21': h21,
+                'euler': chi,
+                'n_kahler_moduli': h11,
+                'n_complex_moduli': h21,
+                'total_moduli': n_moduli,
+            }
+        
+        elif mode == 'moduli':
+            phi = np.array(kwargs.get('phi', [1.0, 1.0]))
+            W_0 = kwargs.get('W_0', 1e-10)
+            V = self.moduli_potential(phi, W_0)
+            return {
+                'phi': phi.tolist(),
+                'W_0': W_0,
+                'V': V,
+            }
+        
+        elif mode == 'uqff_26d':
+            r = kwargs.get('r', 1e10)
+            t = kwargs.get('t', 0.0)
+            return self.uqff_26d_projection(r, t)
+        
+        elif mode == 'summary':
+            return {
+                'framework': 'String/M-theory with UQFF',
+                'n_total': self.n_total,
+                'n_extended': self.n_extended,
+                'n_compact': self.n_compact,
+                'compactification': self.compactification,
+                'uqff_dimensions': self.N_UQFF_dimensions,
+                'l_string_m': self.l_string,
+                'M_string_GeV': self.M_string,
+                'M_Planck_GeV': self.E_Planck,
+            }
+        
+        else:
+            raise ValueError(f"Unknown mode: {mode}")
+    
+    @staticmethod
+    def run_tests() -> Dict[str, Any]:
+        """Run validation tests."""
+        tests = []
+        try:
+            calc = StringTheoryCompactificationCalculator()
+            tests.append({'name': 'Instantiation', 'passed': True})
+            
+            # KK spectrum
+            kk = calc.kaluza_klein_spectrum(1e-19, n_max=5)
+            tests.append({'name': 'KK spectrum', 'passed': len(kk['masses_GeV']) == 5})
+            
+            # Calabi-Yau Euler (quintic: h11=1, h21=101 → χ=-200)
+            cy = calc.compute(mode='calabi_yau', h11=1, h21=101)
+            tests.append({'name': 'Calabi-Yau Euler', 'passed': cy['euler'] == -200})
+            
+            # UQFF 26D projection
+            proj = calc.compute(mode='uqff_26d', r=1e10)
+            tests.append({'name': 'UQFF 26D projection', 'passed': proj['total_layers'] == 26})
+            
+            # Summary
+            summary = calc.compute(mode='summary')
+            tests.append({'name': 'Summary', 'passed': 'n_compact' in summary})
+            
+        except Exception as e:
+            tests.append({'name': 'Test execution', 'passed': False, 'error': str(e)})
+        
+        return {
+            'class': 'StringTheoryCompactificationCalculator',
+            'tests': tests,
+            'passed': sum(1 for t in tests if t['passed']),
+            'total': len(tests),
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# VALIDATION COVERAGE FRAMEWORK (Feb 25, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# Ensures run_tests() coverage across all calculator classes
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class ValidationCoverageFramework:
+    """
+    Validation Coverage Framework.
+    
+    Provides automated testing infrastructure to ensure all calculator
+    classes have comprehensive run_tests() methods.
+    
+    Features:
+        - Auto-discover all calculator classes
+        - Run all tests and aggregate results
+        - Report coverage gaps
+        - Generate validation summary
+    """
+    
+    @staticmethod
+    def discover_calculators(module_globals: dict = None) -> List[type]:
+        """
+        Discover all calculator classes in the module.
+        
+        Args:
+            module_globals: Module globals dict (default: this module)
+        
+        Returns:
+            List of calculator class types
+        """
+        if module_globals is None:
+            module_globals = globals()
+        
+        calculators = []
+        for name, obj in module_globals.items():
+            if isinstance(obj, type) and name.endswith('Calculator'):
+                calculators.append(obj)
+        
+        return calculators
+    
+    @staticmethod
+    def run_all_tests(calculators: List[type] = None) -> Dict[str, Any]:
+        """
+        Run tests on all calculator classes.
+        
+        Args:
+            calculators: List of calculator classes (auto-discover if None)
+        
+        Returns:
+            Dict with aggregated test results
+        """
+        if calculators is None:
+            calculators = ValidationCoverageFramework.discover_calculators()
+        
+        results = []
+        total_passed = 0
+        total_tests = 0
+        with_run_tests = 0
+        without_run_tests = []
+        
+        for calc_class in calculators:
+            if hasattr(calc_class, 'run_tests'):
+                with_run_tests += 1
+                try:
+                    result = calc_class.run_tests()
+                    results.append(result)
+                    total_passed += result.get('passed', 0)
+                    total_tests += result.get('total', 0)
+                except Exception as e:
+                    results.append({
+                        'class': calc_class.__name__,
+                        'error': str(e),
+                        'passed': 0,
+                        'total': 0,
+                    })
+            else:
+                without_run_tests.append(calc_class.__name__)
+        
+        return {
+            'total_calculators': len(calculators),
+            'with_run_tests': with_run_tests,
+            'without_run_tests': without_run_tests,
+            'coverage_percent': 100 * with_run_tests / len(calculators) if calculators else 0,
+            'total_tests': total_tests,
+            'total_passed': total_passed,
+            'pass_rate': 100 * total_passed / total_tests if total_tests > 0 else 0,
+            'results': results,
+        }
+    
+    @staticmethod
+    def generate_report(results: Dict[str, Any] = None) -> str:
+        """
+        Generate human-readable validation report.
+        
+        Args:
+            results: Test results (run_all_tests if None)
+        
+        Returns:
+            Formatted report string
+        """
+        if results is None:
+            results = ValidationCoverageFramework.run_all_tests()
+        
+        report = []
+        report.append("=" * 70)
+        report.append("UQFF VALIDATION COVERAGE REPORT")
+        report.append("=" * 70)
+        report.append("")
+        report.append(f"Total Calculator Classes: {results['total_calculators']}")
+        report.append(f"With run_tests(): {results['with_run_tests']}")
+        report.append(f"Without run_tests(): {len(results['without_run_tests'])}")
+        report.append(f"Coverage: {results['coverage_percent']:.1f}%")
+        report.append("")
+        report.append(f"Total Tests Run: {results['total_tests']}")
+        report.append(f"Tests Passed: {results['total_passed']}")
+        report.append(f"Pass Rate: {results['pass_rate']:.1f}%")
+        report.append("")
+        
+        if results['without_run_tests']:
+            report.append("Classes Missing run_tests():")
+            for name in results['without_run_tests'][:20]:  # Limit output
+                report.append(f"  - {name}")
+            if len(results['without_run_tests']) > 20:
+                report.append(f"  ... and {len(results['without_run_tests']) - 20} more")
+        
+        report.append("")
+        report.append("=" * 70)
+        
+        return "\n".join(report)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # GLOBAL INSTANCES - HIGH VALUE PHYSICS (Feb 24, 2026)
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -103028,6 +104397,24 @@ UQFF_MUGE_SGRA = UQFFMUGECalculator.from_system('SgrA')
 UQFF_MUGE_M87 = UQFFMUGECalculator.from_system('M87')
 UQFF_MUGE_MAGNETAR = UQFFMUGECalculator.from_system('Magnetar')
 
+# Pulsar Timing Array UQFF (Feb 25, 2026)
+PTA_UQFF_CALC = PulsarTimingArrayUQFFCalculator()
+PTA_NANOGRAV = PulsarTimingArrayUQFFCalculator(n_pulsars=47, T_obs_years=15.0)
+PTA_EPTA = PulsarTimingArrayUQFFCalculator(n_pulsars=25, T_obs_years=24.0)
+
+# Cosmic Ray Propagation UQFF (Feb 25, 2026)
+CR_PROPAGATION_CALC = CosmicRayPropagationUQFFCalculator()
+
+# Gravitational Lensing UQFF (Feb 25, 2026)
+GRAV_LENSING_CALC = GravitationalLensingUQFFCalculator()
+
+# String Theory Compactification (Feb 25, 2026)
+STRING_COMPACT_CALC = StringTheoryCompactificationCalculator()
+STRING_COMPACT_11D = StringTheoryCompactificationCalculator(n_compact=7, compactification='M-theory')
+
+# Validation Coverage Framework
+VALIDATION_FRAMEWORK = ValidationCoverageFramework()
+
 # Collection dict
 HIGH_VALUE_PHYSICS_CALCULATORS = {
     'GravitationalWaveUQFFCalculator': GW_UQFF_CALC,
@@ -103043,6 +104430,14 @@ HIGH_VALUE_PHYSICS_CALCULATORS = {
     'UQFF_MUGE_SGRA': UQFF_MUGE_SGRA,
     'UQFF_MUGE_M87': UQFF_MUGE_M87,
     'UQFF_MUGE_MAGNETAR': UQFF_MUGE_MAGNETAR,
+    'PulsarTimingArrayUQFFCalculator': PTA_UQFF_CALC,
+    'PTA_NANOGRAV': PTA_NANOGRAV,
+    'PTA_EPTA': PTA_EPTA,
+    'CosmicRayPropagationUQFFCalculator': CR_PROPAGATION_CALC,
+    'GravitationalLensingUQFFCalculator': GRAV_LENSING_CALC,
+    'StringTheoryCompactificationCalculator': STRING_COMPACT_CALC,
+    'STRING_COMPACT_11D': STRING_COMPACT_11D,
+    'ValidationCoverageFramework': VALIDATION_FRAMEWORK,
 }
 
 
@@ -103174,6 +104569,79 @@ def get_muge_long_form(r: float, t: float) -> str:
 def get_muge_explanations() -> str:
     """Get UQFF/MUGE framework explanation text."""
     return UQFF_MUGE_CALC.display_explanations()
+
+
+# PTA Convenience Functions (Feb 25, 2026)
+def compute_pta_spectrum(n_freq: int = 30) -> Dict[str, Any]:
+    """Compute PTA gravitational wave power spectrum."""
+    return PTA_UQFF_CALC.compute_spectrum(n_freq=n_freq)
+
+def compute_pta_smbh_binary(M_total: float, q: float, D_L: float, 
+                            f_orb: float) -> Dict[str, Any]:
+    """Compute GW signal from SMBH binary for PTA detection."""
+    return PTA_UQFF_CALC.compute_smbh_binary(M_total=M_total, q=q, D_L=D_L, f_orb=f_orb)
+
+def compute_hellings_downs() -> Dict[str, Any]:
+    """Compute Hellings-Downs angular correlation curve."""
+    return PTA_UQFF_CALC.compute(mode='hellings_downs')
+
+
+# Cosmic Ray Convenience Functions (Feb 25, 2026)
+def compute_gzk_horizon(E_eV: float) -> Dict[str, Any]:
+    """Compute GZK horizon for cosmic ray at given energy."""
+    return CR_PROPAGATION_CALC.compute(mode='horizon', E_eV=E_eV)
+
+def compute_cosmic_ray_spectrum() -> Dict[str, Any]:
+    """Compute cosmic ray energy spectrum with propagation features."""
+    return CR_PROPAGATION_CALC.compute(mode='spectrum')
+
+def propagate_cosmic_ray(E_init_eV: float, D_Mpc: float) -> Dict[str, Any]:
+    """Propagate cosmic ray through intergalactic medium."""
+    return CR_PROPAGATION_CALC.compute(mode='propagate', E_init_eV=E_init_eV, D_Mpc=D_Mpc)
+
+
+# Gravitational Lensing Convenience Functions (Feb 25, 2026)
+def compute_einstein_radius(M_Msun: float, D_l_Mpc: float, D_s_Mpc: float) -> Dict[str, Any]:
+    """Compute Einstein radius for gravitational lens."""
+    D_ls_Mpc = D_s_Mpc - D_l_Mpc
+    return GRAV_LENSING_CALC.compute(mode='einstein', M_Msun=M_Msun, 
+                                     D_l_Mpc=D_l_Mpc, D_s_Mpc=D_s_Mpc, D_ls_Mpc=D_ls_Mpc)
+
+def compute_solar_deflection() -> Dict[str, Any]:
+    """Compute light deflection by the Sun at limb (1.75 arcsec)."""
+    return GRAV_LENSING_CALC.compute(mode='deflection', M_Msun=1.0, b_AU=0.00465)
+
+def compute_lensing_magnification(u: float) -> Dict[str, Any]:
+    """Compute magnification for microlensing event."""
+    return GRAV_LENSING_CALC.compute(mode='magnification', u=u)
+
+def compute_lensing_for_system(name: str) -> Dict[str, Any]:
+    """Compute lensing properties for pre-defined system (SgrA, M87, Abell2218, etc.)."""
+    return GRAV_LENSING_CALC.compute(mode='system', name=name)
+
+
+# String Theory Convenience Functions (Feb 25, 2026)
+def compute_kk_spectrum(R_m: float, n_max: int = 10) -> Dict[str, Any]:
+    """Compute Kaluza-Klein mass tower for compactification radius."""
+    return STRING_COMPACT_CALC.compute(mode='kk_spectrum', R_m=R_m, n_max=n_max)
+
+def compute_calabi_yau(h11: int, h21: int) -> Dict[str, Any]:
+    """Compute Calabi-Yau manifold properties (Euler char, moduli count)."""
+    return STRING_COMPACT_CALC.compute(mode='calabi_yau', h11=h11, h21=h21)
+
+def compute_uqff_26d_projection(r: float, t: float = 0.0) -> Dict[str, Any]:
+    """Project UQFF 26D polynomial gravity to compact dimensions."""
+    return STRING_COMPACT_CALC.compute(mode='uqff_26d', r=r, t=t)
+
+
+# Validation Framework Convenience Functions (Feb 25, 2026)
+def run_all_validation_tests() -> Dict[str, Any]:
+    """Run validation tests on all calculator classes."""
+    return VALIDATION_FRAMEWORK.run_all_tests()
+
+def get_validation_report() -> str:
+    """Generate human-readable validation coverage report."""
+    return VALIDATION_FRAMEWORK.generate_report()
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
