@@ -94926,6 +94926,341 @@ TESTABLE PREDICTIONS (LIGO/VIRGO/KAGRA/Einstein Telescope):
 ═══════════════════════════════════════════════════════════════════════════════
 """
         return results, steps
+    
+    def compare_to_LIGO_GW170817(self, f_TRZ: float = 0.1,
+                                  B_NS: float = 1e8,  # Gauss (typical NS)
+                                  B_crit: float = 4.4e13,  # Tesla
+                                  string_factor: float = 0.37,
+                                  beta_m: float = 0.01) -> Tuple[Dict[str, Any], str]:
+        """
+        Compare UQFF predictions to LIGO/Virgo GW170817 (BNS merger).
+        
+        GW170817 OBSERVED DATA (LIGO/Virgo, Aug 17 2017):
+            - First multi-messenger GW event (GW + EM)
+            - Binary neutron star merger
+            - Chirp mass: ℳ ≈ 1.188 M_sun
+            - Total mass: 2.73 M_sun (components 1.36-1.60 + 1.16-1.36 M_sun)
+            - Distance: 40 Mpc (NGC 4993)
+            - GW: ~100s inspiral from 23 Hz to merger ~300 Hz
+            - Peak strain: ~10^-22
+            - EM: GRB 170817A (1.7s delay), kilonova AT2017gfo
+        
+        MULTI-MESSENGER SIGNIFICANCE:
+            GRB 170817A arrived 1.7s after merger - constrains GW speed to c
+            within 10^-15 (c_GW/c - 1 < 3×10^-15).
+            Kilonova confirmed r-process nucleosynthesis (heavy elements).
+        
+        UQFF TENSION ANALYSIS:
+            Standard GR waveform matches GW170817 well. UQFF damping would
+            reduce amplitude ~50%, creating mismatch. This provides a
+            constraint on UQFF parameters or suggests BNS mergers differ
+            from BBH in UQFF effects.
+        
+        Args:
+            f_TRZ: Time reversal factor (default 0.1)
+            B_NS: Neutron star surface magnetic field (Gauss), default 10^8 G
+            B_crit: Critical field for SCm (Tesla), default 4.4×10^13 T
+            string_factor: U_m string binding factor (default 0.37)
+            beta_m: Interference modulation amplitude
+        
+        Returns:
+            results: Dict with BNS comparison metrics
+            steps: Long-form derivation string
+        
+        References:
+            - Abbott et al. (2017), PRL 119, 161101 - GW170817 detection
+            - Abbott et al. (2017), ApJL 848, L12 - Multi-messenger
+            - Coulter et al. (2017) - AT2017gfo discovery
+        """
+        # GW170817 canonical parameters
+        M_chirp = 1.188 * self.M_solar  # Chirp mass
+        M_tot = 2.73 * self.M_solar  # Total mass
+        M1 = 1.46 * self.M_solar  # Primary (mean estimate)
+        M2 = 1.27 * self.M_solar  # Secondary (mean estimate)
+        mu = M1 * M2 / M_tot  # Reduced mass
+        
+        # Observed parameters
+        distance_Mpc = 40.0
+        distance_m = distance_Mpc * self.Mpc
+        f_start = 23.0  # Hz (entered LIGO band)
+        f_end = 300.0   # Hz (merger)
+        t_duration_GW = 100.0  # seconds (inspiral in band)
+        t_duration_chirp = 0.2  # seconds (final chirp for simulation)
+        peak_strain_observed = 1.0e-22
+        SNR_observed = 32.4  # Combined network SNR
+        
+        # Multi-messenger data
+        GRB_delay = 1.74  # seconds (GW to gamma-ray)
+        GW_speed_constraint = 3e-15  # |c_GW/c - 1| < 3×10^-15
+        kilonova_name = "AT2017gfo"
+        host_galaxy = "NGC 4993"
+        
+        # === NS MAGNETIC FIELD CONVERSION ===
+        # B_NS given in Gauss, B_crit in Tesla: 1 Tesla = 10^4 Gauss
+        B_NS_Tesla = B_NS / 1e4  # Convert Gauss to Tesla
+        B_ratio = B_NS_Tesla / B_crit if B_crit > 0 else 0
+        
+        # === STANDARD GR PREDICTION ===
+        # Peak strain at ISCO
+        a_ISCO = 6 * self.G * M_tot / self.c**2
+        h_peak_GR = 4 * self.G**2 * mu * M_tot / (self.c**4 * a_ISCO * distance_m)
+        
+        # Frequency at ISCO (higher for NS than BH due to lower mass)
+        f_ISCO = self.c**3 / (6**(3.0/2.0) * np.pi * self.G * M_tot)
+        
+        # === UQFF DAMPING FACTORS ===
+        # 1. Aether (even more negligible at 40 Mpc)
+        alpha_UA = self.G / self.c**2
+        rho_UA = 7.09e-36
+        aether_arg = -alpha_UA * rho_UA * distance_m / self.c
+        aether_factor = np.exp(max(aether_arg, -700))
+        
+        # 2. SCm screening (NS fields are weaker than magnetars)
+        SCm_factor = max(1 - B_ratio, 0.0)
+        
+        # 3. Time-reversal
+        TRZ_factor = 1 - f_TRZ
+        
+        # 4. String binding
+        string_binding = string_factor
+        
+        # Combined UQFF reduction
+        combined_factor = aether_factor * SCm_factor * TRZ_factor * string_binding
+        
+        # === UQFF PREDICTIONS ===
+        h_peak_UQFF = h_peak_GR * combined_factor
+        h_UQFF_from_observed = peak_strain_observed * combined_factor
+        
+        # Phase lag
+        f_avg = (f_start + f_end) / 2
+        phi_TRZ_total = 2 * np.pi * f_TRZ * t_duration_chirp
+        
+        # SNR impact
+        SNR_UQFF = SNR_observed * combined_factor
+        detection_threshold = 8.0
+        detectable = SNR_UQFF > detection_threshold
+        
+        # === TENSION ANALYSIS ===
+        # GW170817 GR residuals are small - UQFF would create mismatch
+        percent_reduction = (1 - combined_factor) * 100
+        
+        # GR fits data well - compute expected mismatch if UQFF applied
+        mismatch_metric = 1 - combined_factor  # 0 = perfect match, 1 = complete mismatch
+        
+        # Constraint interpretation
+        if combined_factor > 0.9:
+            constraint_status = "CONSISTENT: UQFF effects within measurement error"
+        elif combined_factor > 0.7:
+            constraint_status = "TENSION: UQFF predicts ~20-30% lower amplitude"
+        else:
+            constraint_status = "STRONG TENSION: UQFF predicts significant mismatch with GR"
+        
+        # Multi-messenger constraint on GW speed
+        # If UQFF affects propagation speed, GRB delay constrains it
+        delta_t_allowed = 1.74  # s
+        delta_c_c = GW_speed_constraint
+        
+        # Observable signatures for BNS
+        observable_signatures = {
+            'amplitude_reduction': f'{percent_reduction:.1f}% quieter than GR template',
+            'phase_lag': f'{phi_TRZ_total:.3f} rad over {t_duration_chirp}s chirp',
+            'GRB_speed_test': f'GRB delay {GRB_delay}s constrains |Δc/c| < {delta_c_c:.0e}',
+            'kilonova_rate': f'{kilonova_name} in {host_galaxy} confirms r-process',
+            'SNR_reduction': f'SNR {SNR_observed:.1f} → {SNR_UQFF:.1f}',
+            'GR_fit_quality': constraint_status
+        }
+        
+        results = {
+            'event': 'GW170817',
+            'event_type': 'Binary Neutron Star',
+            'event_date': '2017-08-17',
+            # Source parameters
+            'M_chirp_solar': M_chirp / self.M_solar,
+            'M_tot_solar': M_tot / self.M_solar,
+            'M1_solar': M1 / self.M_solar,
+            'M2_solar': M2 / self.M_solar,
+            'mu_solar': mu / self.M_solar,
+            # Observed GW
+            'distance_Mpc': distance_Mpc,
+            'f_start': f_start,
+            'f_end': f_end,
+            'f_ISCO': f_ISCO,
+            't_duration_GW': t_duration_GW,
+            't_duration_chirp': t_duration_chirp,
+            'peak_strain_observed': peak_strain_observed,
+            'SNR_observed': SNR_observed,
+            # Multi-messenger
+            'GRB_name': 'GRB 170817A',
+            'GRB_delay_s': GRB_delay,
+            'GW_speed_constraint': GW_speed_constraint,
+            'kilonova_name': kilonova_name,
+            'host_galaxy': host_galaxy,
+            # NS magnetic field
+            'B_NS_Gauss': B_NS,
+            'B_NS_Tesla': B_NS_Tesla,
+            'B_ratio': B_ratio,
+            # Damping factors
+            'aether_factor': float(aether_factor),
+            'SCm_factor': SCm_factor,
+            'TRZ_factor': TRZ_factor,
+            'string_factor': string_factor,
+            'combined_factor': combined_factor,
+            # Predictions
+            'h_peak_GR': h_peak_GR,
+            'h_peak_UQFF': h_peak_UQFF,
+            'h_UQFF_from_observed': h_UQFF_from_observed,
+            'percent_reduction': percent_reduction,
+            'phi_TRZ_total': phi_TRZ_total,
+            'SNR_UQFF': SNR_UQFF,
+            'detectable': detectable,
+            # Tension analysis
+            'mismatch_metric': mismatch_metric,
+            'constraint_status': constraint_status,
+            'observable_signatures': observable_signatures,
+            # Input params
+            'f_TRZ': f_TRZ,
+            'beta_m': beta_m
+        }
+        
+        steps = f"""UQFF vs LIGO GW170817 Comparison Analysis (Binary Neutron Star):
+═══════════════════════════════════════════════════════════════════════════════
+GW170817 OBSERVED DATA (LIGO/Virgo, Aug 17 2017):
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ EVENT: GW170817 - First Multi-Messenger GW Detection           │
+  │                                                                 │
+  │ SOURCE: Binary Neutron Star Merger                              │
+  │   ℳ_chirp = {results['M_chirp_solar']:.3f} M_sun                                     │
+  │   M_tot = {results['M_tot_solar']:.2f} M_sun (M₁ ≈ {results['M1_solar']:.2f}, M₂ ≈ {results['M2_solar']:.2f} M_sun)       │
+  │   B_NS ≈ {B_NS:.0e} G (typical NS surface field)                │
+  │                                                                 │
+  │ OBSERVED GW SIGNAL:                                             │
+  │   Frequency: {f_start:.0f} Hz → {f_end:.0f} Hz (inspiral ~{t_duration_GW:.0f}s)          │
+  │   Peak strain: h ≈ {peak_strain_observed:.1e}                            │
+  │   Distance: {distance_Mpc:.0f} Mpc (host: {host_galaxy})                     │
+  │   SNR: {SNR_observed:.1f} (combined network)                              │
+  │                                                                 │
+  │ MULTI-MESSENGER COUNTERPARTS:                                   │
+  │   GRB 170817A: Short gamma-ray burst, Δt = {GRB_delay:.2f}s post-merger   │
+  │   AT2017gfo: Kilonova (r-process heavy element synthesis)       │
+  │   GW speed: |c_GW/c - 1| < {GW_speed_constraint:.0e}                     │
+  │                                                                 │
+  │ Reference: Abbott et al., PRL 119, 161101 (2017)               │
+  └─────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+UQFF DAMPING FACTORS FOR BNS:
+
+  1. AETHER ABSORPTION: exp(-α_UA × ρ_UA × D/c)
+     D = {distance_m:.4e} m ({distance_Mpc:.0f} Mpc)
+     Factor = {results['aether_factor']:.6f}
+     {'NEGLIGIBLE (distance too short for aether effects)' if results['aether_factor'] > 0.9999 else f'{(1-results["aether_factor"])*100:.2f}% reduction'}
+
+  2. SCm SCREENING: (1 - B_NS/B_crit)
+     B_NS = {B_NS:.0e} G = {B_NS_Tesla:.2e} T
+     B_crit = {B_crit:.2e} T
+     B_NS/B_crit = {B_ratio:.2e}
+     Factor = {SCm_factor:.6f}
+     {'NEGLIGIBLE: NS fields << magnetar B_crit' if B_ratio < 1e-5 else f'{B_ratio*100:.2f}% screening'}
+     
+     (Note: NSs have B ~ 10^8-10^12 G, vs magnetars ~10^15 G; 
+      SCm effects minimal for typical NSs)
+
+  3. TIME-REVERSAL: (1 - f_TRZ)
+     f_TRZ = {f_TRZ:.4f}
+     Factor = {TRZ_factor:.4f}
+     {f_TRZ*100:.0f}% AMPLITUDE REDUCTION
+
+  4. STRING BINDING: exp(-U_m/E_binding) ≈ {string_factor:.4f}
+     Factor = {string_factor:.4f}
+     {(1-string_factor)*100:.0f}% REDUCTION (if U_m ~ 1)
+
+═══════════════════════════════════════════════════════════════════════════════
+COMBINED UQFF EFFECT:
+
+  Combined factor = {results['aether_factor']:.4f} × {SCm_factor:.4f} × {TRZ_factor:.4f} × {string_factor:.4f}
+                  = {combined_factor:.4f}
+
+  UQFF predicts GW amplitude {percent_reduction:.1f}% QUIETER than GR.
+
+═══════════════════════════════════════════════════════════════════════════════
+TENSION ANALYSIS: GW170817 vs UQFF
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ STANDARD GR: Template matches observed waveform ✓               │
+  │   h_GR = {h_peak_GR:.4e}                                       │
+  │   GR residuals: < few % (excellent fit)                        │
+  │                                                                 │
+  │ UQFF PREDICTION:                                                │
+  │   h_UQFF = {h_peak_UQFF:.4e}                                   │
+  │   From observed: {peak_strain_observed:.1e} × {combined_factor:.4f} = {h_UQFF_from_observed:.4e}    │
+  │   Reduction: {percent_reduction:.1f}%                                      │
+  │                                                                 │
+  │ MISMATCH METRIC: {mismatch_metric:.3f}                                    │
+  │   (0 = perfect, 1 = complete mismatch)                         │
+  │                                                                 │
+  │ STATUS: {constraint_status:^54s} │
+  └─────────────────────────────────────────────────────────────────┘
+
+  GW170817 CONSTRAINS UQFF:
+  
+  If UQFF with f_TRZ = {f_TRZ}, string_factor = {string_factor} applies universally:
+  → GW170817 amplitude should be {100 - percent_reduction:.1f}% of GR prediction
+  → This contradicts observed excellent GR fit
+  
+  POSSIBLE RESOLUTIONS:
+  1. UQFF parameters are smaller for BNS (f_TRZ < 0.1)
+  2. U_m/E_binding much smaller for NS than phenomenological value
+  3. UQFF effects mass-dependent (weaker for M < 3 M_sun)
+  4. GW170817 is a constraint on UQFF parameter space
+
+═══════════════════════════════════════════════════════════════════════════════
+MULTI-MESSENGER CONSTRAINTS:
+
+  1. GW SPEED (GRB 170817A):
+     GRB arrived Δt = {GRB_delay:.2f}s after GW
+     Path length D = {distance_Mpc:.0f} Mpc = {distance_m:.2e} m
+     Light travel time: D/c = {distance_m/self.c:.2e} s
+     Speed difference: |c_GW - c| / c < {GW_speed_constraint:.0e}
+     
+     UQFF IMPLICATION: If aether affects GW propagation speed, 
+     this constrains aether density ρ_UA or coupling α_UA.
+
+  2. KILONOVA ENERGETICS:
+     AT2017gfo released ~10^51 erg (r-process elements)
+     UQFF: Merger dynamics altered → different mass ejection?
+     If UQFF stabilizes merger, less mass ejected, dimmer kilonova.
+
+  3. REMNANT TYPE:
+     GW170817 → likely short-lived hypermassive NS → collapse to BH
+     UQFF: Enhanced stability (f_TRZ, U_m) might delay or prevent collapse.
+
+═══════════════════════════════════════════════════════════════════════════════
+TESTABLE PREDICTIONS (LIGO/Virgo/KAGRA O4+):
+
+  1. BNS vs BBH COMPARISON:
+     If UQFF effects are mass-dependent, BBH (high mass) shows more
+     damping than BNS (low mass).
+     Test: Compare amplitude deficit: GW150914-type vs GW170817-type.
+
+  2. DISTANCE-DEPENDENT CONSTRAINT:
+     GW170817 at 40 Mpc has minimal aether damping.
+     More distant BNS (D > 200 Mpc) should show UQFF effects.
+     Test: Look for amplitude-distance correlation in BNS events.
+
+  3. GRB TIMING PRECISION:
+     Future BNS with GRB can further constrain c_GW/c.
+     UQFF prediction: Aether affects propagation → systematic delay?
+     Test: Sub-second GRB timing vs. GW merger peak.
+
+  4. NS MAGNETIC FIELD SIGNATURE:
+     Magnetar-NS binaries (B ~ 10^14 G) would have higher B/B_crit,
+     potentially showing SCm effects.
+     Test: Wait for magnetar-NS or magnetar-BH events.
+
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
