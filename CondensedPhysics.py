@@ -106339,6 +106339,12 @@ COSMOLOGICAL IMPLICATIONS
             U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
             return self.validate_m87_star(U_m_kT_ratio=U_m_kT_ratio)
         
+        elif mode == 'T_UQFF_m87':
+            # M87* temperature modulation chain
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            verbose = kwargs.get('verbose', False)
+            return self.compute_T_UQFF_m87(U_m_kT_ratio=U_m_kT_ratio, verbose=verbose)
+        
         elif mode == 'temperature_modulation':
             # UQFF Hawking temperature modulation
             M = kwargs.get('M', 4.3e6 * self.params['M_sun'])
@@ -106405,7 +106411,7 @@ COSMOLOGICAL IMPLICATIONS
             return self.pbh_dark_matter_summary(U_m_kT_ratio)
         
         else:
-            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, standard, simulate, validate_sgr_a, validate_m87, temperature_modulation, modulate_mass_range, pbh_survival, pbh_dark_matter, pbh_mass_sweep, f_PBH_standard, f_PBH_UQFF, pbh_dm_spectrum, pbh_dm_summary")
+            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, standard, simulate, validate_sgr_a, validate_m87, T_UQFF_m87, temperature_modulation, modulate_mass_range, pbh_survival, pbh_dark_matter, pbh_mass_sweep, f_PBH_standard, f_PBH_UQFF, pbh_dm_spectrum, pbh_dm_summary")
     
     # ═══════════════════════════════════════════════════════════════════════════
     # SURFACE GRAVITY AND ALTERNATIVE TEMPERATURE (Feb 25, 2026 Enhancement)
@@ -106777,6 +106783,317 @@ COSMOLOGICAL IMPLICATIONS
             }
         }
     
+    def compute_T_UQFF_m87(self, U_m_kT_ratio: float = 1.0, verbose: bool = False) -> dict:
+        """
+        Compute UQFF-modulated Hawking temperature for M87* with step-by-step derivation.
+        
+        UQFF modulation refers to how standard black hole properties are altered by:
+        - Aether damping ([UA] superfluid)
+        - Time-reversal (f_TRZ ≈ 0.1 negentropic)
+        - Magnetic strings (U_m exponential suppression)
+        - Superconductive horizons ([SCm])
+        
+        Step-by-Step Derivation:
+            Step 1: Standard T_H = ℏc³/(8πGMk_B) ≈ 9.54 × 10⁻¹⁸ K
+            Step 2: T' = T_H × (1 + f_TRZ) ≈ 1.05 × 10⁻¹⁷ K (negentropic enhancement)
+            Step 3: T'' = T' × (1 - ρ_SCm/ρ_UA) ≈ 9.45 × 10⁻¹⁸ K (aether damping)
+            Step 4: T_UQFF = T'' × exp(-U_m/(k_BT'')) ≈ 3.47 × 10⁻¹⁸ K (string suppression)
+            
+        Result: T_UQFF ≈ 0.36 × T_H, implying near-zero evaporation.
+        
+        Args:
+            U_m_kT_ratio: Assumed value of U_m/(k_B T_H), default 1.0
+            verbose: If True, print step-by-step calculations
+        
+        Returns:
+            Dict with complete temperature modulation chain
+        """
+        # Constants
+        c = self.params['c']
+        G = self.params['G']
+        hbar = self.params['hbar']
+        k_B = self.params['k_B']
+        M_sun = self.params['M_sun']
+        f_TRZ = self.params['f_TRZ']
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        
+        # M87* mass: 6.5 × 10⁹ M☉ = 1.29 × 10⁴⁰ kg
+        M_solar_units = 6.5e9
+        M = M_solar_units * M_sun
+        
+        # ===== STEP 1: Standard Hawking Temperature =====
+        # Surface gravity: κ = c⁴ / (4GM)
+        c4 = c**4
+        four_GM = 4 * G * M
+        kappa = c4 / four_GM
+        # Expected: κ ≈ 2.35 × 10³ m/s²
+        
+        # T_H = ℏκ / (2πk_Bc) = ℏc³/(8πGMk_B)
+        T_H = (hbar * c**3) / (8 * np.pi * G * M * k_B)
+        # Expected: T_H ≈ 9.54 × 10⁻¹⁸ K
+        
+        if verbose:
+            print(f"\nStep 1: Standard Hawking Temperature")
+            print(f"  M = {M:.3e} kg ({M_solar_units:.1e} M☉)")
+            print(f"  κ = c⁴/(4GM) = {c4:.3e} / {four_GM:.3e} = {kappa:.2e} m/s²")
+            print(f"  T_H = ℏc³/(8πGMk_B) = {T_H:.2e} K")
+        
+        # ===== STEP 2: Time-Reversal Modulation =====
+        # T' = T_H × (1 + f_TRZ)
+        # Negentropic enhancement: f_TRZ reverses some thermal loss
+        T_prime = T_H * (1 + f_TRZ)
+        # Expected: T' ≈ 1.05 × 10⁻¹⁷ K
+        
+        if verbose:
+            print(f"\nStep 2: Time-Reversal Modulation")
+            print(f"  f_TRZ = {f_TRZ}")
+            print(f"  T' = T_H × (1 + f_TRZ) = {T_H:.2e} × {1+f_TRZ} = {T_prime:.2e} K")
+        
+        # ===== STEP 3: Aether-Superconductive Damping =====
+        # T'' = T' × (1 - ρ_[SCm]/ρ_[UA])
+        # Aether density ratio damps energy transfer
+        rho_ratio = rho_SCm / rho_UA  # ≈ 0.1
+        T_double_prime = T_prime * (1 - rho_ratio)
+        # Expected: T'' ≈ 9.45 × 10⁻¹⁸ K
+        
+        if verbose:
+            print(f"\nStep 3: Aether-Superconductive Damping")
+            print(f"  ρ_SCm/ρ_UA = {rho_SCm:.2e} / {rho_UA:.2e} = {rho_ratio:.2f}")
+            print(f"  T'' = T' × (1 - {rho_ratio:.2f}) = {T_prime:.2e} × {1-rho_ratio:.2f} = {T_double_prime:.2e} K")
+        
+        # ===== STEP 4: Magnetic String Suppression =====
+        # T_UQFF = T'' × exp(-U_m/(k_BT''))
+        # Using assumed ratio U_m/(k_BT'') ≈ 1
+        exponent = -U_m_kT_ratio
+        exp_factor = np.exp(exponent)
+        T_UQFF = T_double_prime * exp_factor
+        # Expected: T_UQFF ≈ 3.47 × 10⁻¹⁸ K (for ratio=1)
+        
+        if verbose:
+            print(f"\nStep 4: Magnetic String Suppression")
+            print(f"  U_m/(k_BT'') assumed = {U_m_kT_ratio}")
+            print(f"  exp(-{U_m_kT_ratio}) = {exp_factor:.4f}")
+            print(f"  T_UQFF = T'' × {exp_factor:.4f} = {T_double_prime:.2e} × {exp_factor:.4f} = {T_UQFF:.2e} K")
+        
+        # ===== STEP 5: Summary =====
+        suppression_factor = T_UQFF / T_H
+        
+        if verbose:
+            print(f"\nStep 5: Full UQFF Modulated Temperature")
+            print(f"  T_UQFF = {T_UQFF:.2e} K")
+            print(f"  Suppression: T_UQFF/T_H = {suppression_factor:.3f}")
+            print(f"  Implication: Near-zero evaporation, maximum stability")
+        
+        return {
+            'mode': 'T_UQFF_m87',
+            'description': 'UQFF Temperature Modulation for M87* (Step-by-Step)',
+            
+            # Object
+            'object': 'M87*',
+            'M_solar_units': M_solar_units,
+            'M_kg': M,
+            
+            # Step 1: Standard Temperature
+            'step1': {
+                'name': 'Standard Hawking Temperature',
+                'formula': 'T_H = ℏc³/(8πGMk_B)',
+                'c4': c4,
+                'four_GM': four_GM,
+                'kappa': kappa,
+                'kappa_expected': 2.35e3,
+                'T_H': T_H,
+                'T_H_expected': 9.54e-18,
+            },
+            
+            # Step 2: Time-Reversal
+            'step2': {
+                'name': 'Time-Reversal Modulation (Negentropic)',
+                'formula': "T' = T_H × (1 + f_TRZ)",
+                'f_TRZ': f_TRZ,
+                'factor': 1 + f_TRZ,
+                'T_prime': T_prime,
+                'T_prime_expected': 1.05e-17,
+            },
+            
+            # Step 3: Aether Damping
+            'step3': {
+                'name': 'Aether-Superconductive Damping',
+                'formula': "T'' = T' × (1 - ρ_SCm/ρ_UA)",
+                'rho_SCm': rho_SCm,
+                'rho_UA': rho_UA,
+                'rho_ratio': rho_ratio,
+                'damping_factor': 1 - rho_ratio,
+                'T_double_prime': T_double_prime,
+                'T_double_prime_expected': 9.45e-18,
+            },
+            
+            # Step 4: Magnetic Strings
+            'step4': {
+                'name': 'Magnetic String Suppression',
+                'formula': 'T_UQFF = T\'\' × exp(-U_m/(k_BT\'\'))',
+                'U_m_kT_ratio_assumed': U_m_kT_ratio,
+                'exponent': exponent,
+                'exp_factor': exp_factor,
+                'T_UQFF': T_UQFF,
+                'T_UQFF_expected': 3.47e-18,
+            },
+            
+            # Step 5: Summary
+            'step5': {
+                'name': 'Full UQFF Modulated Result',
+                'formula': 'T_UQFF = T_H × (1+f_TRZ) × (1-ρ_SCm/ρ_UA) × exp(-U_m/(k_BT_H))',
+                'T_standard': T_H,
+                'T_UQFF': T_UQFF,
+                'suppression_factor': suppression_factor,
+                'suppression_percent': (1 - suppression_factor) * 100,
+            },
+            
+            # Full modulation chain
+            'modulation_chain': {
+                'T_H': T_H,
+                'T_prime': T_prime,
+                'T_double_prime': T_double_prime,
+                'T_UQFF': T_UQFF,
+            },
+            
+            # Physics interpretation
+            'interpretation': [
+                f"Standard: T_H ≈ {T_H:.2e} K (extremely cold, << CMB)",
+                f"Step 2: Time-reversal enhances → T' ≈ {T_prime:.2e} K (+{f_TRZ*100:.0f}%)",
+                f"Step 3: Aether damps → T'' ≈ {T_double_prime:.2e} K (-{rho_ratio*100:.0f}%)",
+                f"Step 4: Strings suppress → T_UQFF ≈ {T_UQFF:.2e} K (×{exp_factor:.3f})",
+                f"Net: T_UQFF/T_H = {suppression_factor:.2f} → {(1-suppression_factor)*100:.0f}% suppression",
+                "Implication: Near-zero evaporation, M87* is absolutely stable",
+            ],
+            
+            # Comparison for plotting
+            'plot_data': {
+                'labels': ['T_H', "T'", "T''", 'T_UQFF'],
+                'values': [T_H, T_prime, T_double_prime, T_UQFF],
+                'log_values': [np.log10(T_H), np.log10(T_prime), 
+                               np.log10(T_double_prime), np.log10(T_UQFF)],
+            }
+        }
+    
+    def m87_temperature_modulation_report(self, U_m_kT_ratio: float = 1.0) -> str:
+        """
+        Generate detailed temperature modulation report for M87*.
+        
+        Args:
+            U_m_kT_ratio: Assumed U_m/(k_BT_H) ratio
+        
+        Returns:
+            Formatted report string
+        """
+        result = self.compute_T_UQFF_m87(U_m_kT_ratio, verbose=False)
+        
+        s1 = result['step1']
+        s2 = result['step2']
+        s3 = result['step3']
+        s4 = result['step4']
+        s5 = result['step5']
+        
+        report = f"""
+══════════════════════════════════════════════════════════════════════════════════════════
+             UQFF TEMPERATURE MODULATION FOR M87*
+══════════════════════════════════════════════════════════════════════════════════════════
+
+OBJECT: M87* (Virgo A Central SMBH)
+MASS: M = {result['M_kg']:.3e} kg ({result['M_solar_units']:.1e} M☉)
+
+═════════════════════════════════════════════════════════════════════════
+ STEP 1: STANDARD HAWKING TEMPERATURE
+═════════════════════════════════════════════════════════════════════════
+
+Surface gravity: κ = c⁴ / (4GM)
+
+  c⁴ = {s1['c4']:.3e}
+  4GM = {s1['four_GM']:.3e}
+  κ = {s1['kappa']:.2e} m/s²  (expected: {s1['kappa_expected']:.2e})
+
+Hawking temperature: T_H = ℏc³ / (8πGMk_B)
+
+  T_H = {s1['T_H']:.2e} K  (expected: {s1['T_H_expected']:.2e})
+
+═════════════════════════════════════════════════════════════════════════
+ STEP 2: TIME-REVERSAL MODULATION (NEGENTROPIC)
+═════════════════════════════════════════════════════════════════════════
+
+T' = T_H × (1 + f_TRZ)
+
+  f_TRZ = {s2['f_TRZ']} (time-reversal zone fraction)
+  (1 + f_TRZ) = {s2['factor']}
+  
+  T' = {s1['T_H']:.2e} × {s2['factor']} = {s2['T_prime']:.2e} K
+  
+  Expected: {s2['T_prime_expected']:.2e} K
+
+═════════════════════════════════════════════════════════════════════════
+ STEP 3: AETHER-SUPERCONDUCTIVE DAMPING
+═════════════════════════════════════════════════════════════════════════
+
+T'' = T' × (1 - ρ_SCm/ρ_UA)
+
+  ρ_SCm = {s3['rho_SCm']:.2e} J/m³
+  ρ_UA = {s3['rho_UA']:.2e} J/m³
+  ρ_SCm/ρ_UA = {s3['rho_ratio']:.2f}
+  (1 - ρ_SCm/ρ_UA) = {s3['damping_factor']:.2f}
+  
+  T'' = {s2['T_prime']:.2e} × {s3['damping_factor']:.2f} = {s3['T_double_prime']:.2e} K
+  
+  Expected: {s3['T_double_prime_expected']:.2e} K
+
+═════════════════════════════════════════════════════════════════════════
+ STEP 4: MAGNETIC STRING SUPPRESSION
+═════════════════════════════════════════════════════════════════════════
+
+T_UQFF = T'' × exp(-U_m/(k_BT''))
+
+  U_m/(k_BT'') assumed = {s4['U_m_kT_ratio_assumed']}
+  exp({s4['exponent']}) = {s4['exp_factor']:.4f}
+  
+  T_UQFF = {s3['T_double_prime']:.2e} × {s4['exp_factor']:.4f} = {s4['T_UQFF']:.2e} K
+  
+  Expected: {s4['T_UQFF_expected']:.2e} K
+
+═════════════════════════════════════════════════════════════════════════
+ STEP 5: FULL UQFF MODULATED TEMPERATURE
+═════════════════════════════════════════════════════════════════════════
+
+Full Formula:
+  T_UQFF = (ℏc³/8πGMk_B) × (1+f_TRZ) × (1-ρ_SCm/ρ_UA) × exp(-U_m/(k_BT_H))
+
+Modulation Chain:
+  T_H     = {s1['T_H']:.2e} K  (standard)
+  T'      = {s2['T_prime']:.2e} K  (time-reversal: +{s2['f_TRZ']*100:.0f}%)
+  T''     = {s3['T_double_prime']:.2e} K  (aether: -{s3['rho_ratio']*100:.0f}%)
+  T_UQFF  = {s5['T_UQFF']:.2e} K  (strings: ×{s4['exp_factor']:.3f})
+
+Suppression:
+  T_UQFF / T_H = {s5['suppression_factor']:.3f}
+  Overall suppression = {s5['suppression_percent']:.1f}%
+
+═════════════════════════════════════════════════════════════════════════
+ PHYSICS INTERPRETATION
+═════════════════════════════════════════════════════════════════════════
+
+  1. Standard T_H is extremely cold ({s1['T_H']:.1e} K << CMB at 2.73 K)
+  
+  2. UQFF modulation SUPPRESSES temperature to {s5['T_UQFF']:.1e} K
+  
+  3. Lower T → Longer lifetime → Enhanced stability
+  
+  4. At {s5['suppression_percent']:.0f}% suppression, evaporation is effectively zero
+  
+  5. M87* is predicted to be an 'eternal aether-structure' in UQFF
+  
+  6. Consistent with EHT observation: stable horizon, no radiation detected
+
+══════════════════════════════════════════════════════════════════════════════════
+"""
+        return report
+
     def numerical_derivation_report(self, M: float = None, U_m_kT_ratio: float = None) -> str:
         """
         Generate detailed numerical derivation report like the canonical example.
