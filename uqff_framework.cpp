@@ -33,6 +33,13 @@ UQFFFramework::UQFFFramework(unsigned int seed) : rng(seed), noise_dist(0.0, 1.0
     params["coherence_sigma"] = 1e9;
     params["coherence_freq"] = 1e-15;
     
+    // Quantum coherence parameters (from derivation)
+    params["particle_mass"] = 9.109e-31;    // Electron mass [kg] (default test particle)
+    params["k_B"] = 1.380649e-23;           // Boltzmann constant [J/K]
+    params["T_coherence"] = 1e6;            // Temperature [K] (near horizon)
+    params["U_m"] = 1e-20;                  // Magnetic string energy [J]
+    params["use_full_uqff_coherence"] = 1.0; // 1.0 = use full formula, 0.0 = simple
+    
     // Initialize default MUGE parameters
     params["M_initial"] = 1.0;
     params["M_dot"] = 0.0;
@@ -100,6 +107,12 @@ void UQFFFramework::init_explanations() {
     explanations.push_back("  9. Fluid: ρ_fluid × V × g_local");
     explanations.push_back(" 10. Dark Matter: (M_vis+M_DM)(δρ/ρ + 3GM/r³)");
     explanations.push_back("");
+    explanations.push_back("QUANTUM COHERENCE (Full UQFF):");
+    explanations.push_back("  ψ(r,t) = A exp(-(r-r_h)²/2σ_eff²) exp(-i 2πft(1+f_TRZ))");
+    explanations.push_back("  C_UQFF = (ℏ²/2mσ_eff²) × |cos(2πft(1+f_TRZ))| × exp(-U_m/k_BT)");
+    explanations.push_back("  σ_eff = σ × (1 - ρ_SCm/ρ_UA)  [aether damping]");
+    explanations.push_back("  A = (√(2π) σ_eff)^(-1/2)      [normalization]");
+    explanations.push_back("");
     explanations.push_back("EXAMPLE (Sgr A*):");
     explanations.push_back("  t = 4.5×10⁹ yr, M = 8.604×10³⁶ kg, r = 1.27×10¹⁰ m");
     explanations.push_back("  Base g ≈ 3.561×10⁶ m/s², Full MUGE g ≈ 1.250×10⁷ m/s²");
@@ -115,16 +128,65 @@ double UQFFFramework::time_reversal_correction(double base_value) {
     return base_value * (1 + params["f_TRZ"]);  // Example for enhancement (as in temperature formula)
 }
 
+double UQFFFramework::compute_sigma_effective() {
+    // Effective sigma with aether damping: σ_eff = σ × (1 - ρ_SCm/ρ_UA)
+    // From UQFF derivation: Aether vacuum densities modify coherence length
+    double rho_ratio = params["rho_vac_SCm"] / params["rho_vac_UA"];  // ~0.1
+    return params["coherence_sigma"] * (1.0 - rho_ratio);
+}
+
+double UQFFFramework::compute_normalization_amplitude() {
+    // Normalization: A = (√(2π) σ_eff)^(-1/2)
+    // Ensures ∫|ψ|² dr = 1 for Gaussian wavepacket
+    double sigma_eff = compute_sigma_effective();
+    return 1.0 / std::sqrt(std::sqrt(2.0 * M_PI) * sigma_eff);
+}
+
 double UQFFFramework::quantum_coherence(double r, double t) {
-    // Quantum coherence: Models effects near horizons or extreme environments
-    // psi(r,t) approx = amp * exp(- (r - r_horizon)^2 / sigma^2) * cos(2 pi f t)
-    // Coherence measure: |<psi| H |psi>| / norm, simplified to decay factor
-    // Mathematics: Gaussian envelope for localization, oscillatory for quantum fluctuation
-    // From UQFF quantum terms: Incorporates wavefunction coherence in ∫ ψ* H ψ
+    // Full UQFF Quantum Coherence Derivation:
+    // ψ(r,t) = A exp(-(r-r_horizon)²/2σ_eff²) exp(-i 2πft(1+f_TRZ))
+    // 
+    // C_UQFF = (ℏ²/2m σ_eff²) × |cos(2πft(1+f_TRZ))| × exp(-U_m/(k_B T))
+    //
+    // Where:
+    //   σ_eff = σ × (1 - ρ_SCm/ρ_UA)  [aether damping]
+    //   f_TRZ = 0.1                    [negentropic time-reversal]
+    //   U_m = magnetic string energy   [THz string damping]
+    //   k_B T = thermal energy         [decoherence scale]
+    
     double distance_from_horizon = r - params["r_horizon"];
-    double gaussian = std::exp(- (distance_from_horizon * distance_from_horizon) / (params["coherence_sigma"] * params["coherence_sigma"]));
-    double osc = std::cos(2.0 * M_PI * params["coherence_freq"] * t);
-    return params["coherence_amp"] * gaussian * osc;
+    double sigma_eff = compute_sigma_effective();
+    
+    // Gaussian localization (exponential decay from horizon)
+    double gaussian = std::exp(- (distance_from_horizon * distance_from_horizon) 
+                               / (2.0 * sigma_eff * sigma_eff));
+    
+    // Oscillatory term with f_TRZ frequency adjustment
+    double f_adjusted = params["coherence_freq"] * (1.0 + params["f_TRZ"]);
+    double osc = std::abs(std::cos(2.0 * M_PI * f_adjusted * t));
+    
+    // Check if using full UQFF formula or simple model
+    if (params["use_full_uqff_coherence"] > 0.5) {
+        // Full UQFF coherence measure:
+        // C_UQFF = (ℏ²/2m σ_eff²) × |cos(2πft(1+f_TRZ))| × exp(-U_m/(k_B T)) × gaussian
+        
+        double hbar = params["hbar"];
+        double m = params["particle_mass"];
+        double k_B = params["k_B"];
+        double T = params["T_coherence"];
+        double U_m = params["U_m"];
+        
+        // Quantum kinetic prefactor: ℏ²/(2m σ_eff²)
+        double quantum_prefactor = (hbar * hbar) / (2.0 * m * sigma_eff * sigma_eff);
+        
+        // Magnetic string damping: exp(-U_m / k_B T)
+        double magnetic_damping = std::exp(-U_m / (k_B * T));
+        
+        return params["coherence_amp"] * quantum_prefactor * gaussian * osc * magnetic_damping;
+    } else {
+        // Simple model (original)
+        return params["coherence_amp"] * gaussian * osc;
+    }
 }
 
 double UQFFFramework::compute_MUGE(double r, double t, double noise_level) {
@@ -324,15 +386,29 @@ int main() {
 
     // Test quantum coherence
     std::cout << "\n═══════════════════════════════════════════════════════════════════════════════\n";
-    std::cout << "TEST 2: Quantum Coherence\n";
-    std::cout << "═══════════════════════════════════════════════════════════════════════════════\n";
+    std::cout << \"TEST 2: Full UQFF Quantum Coherence\\n\";
+    std::cout << \"═══════════════════════════════════════════════════════════════════════════════\\n\";
+    
+    // Show σ_eff computation
+    double sigma_eff = uqff.compute_sigma_effective();
+    double norm_amp = uqff.compute_normalization_amplitude();
+    std::cout << \"  σ = \" << uqff.get_param(\"coherence_sigma\") << \" m\\n\";
+    std::cout << \"  σ_eff = σ × (1 - ρ_SCm/ρ_UA) = \" << sigma_eff << \" m\\n\";
+    std::cout << \"  A = (√(2π) σ_eff)^(-1/2) = \" << norm_amp << \"\\n\";
     
     double coherence_at_horizon = uqff.quantum_coherence(r_test, t_test);
     double coherence_far = uqff.quantum_coherence(r_test + 1e12, t_test);
     
-    std::cout << "  Coherence at horizon: " << coherence_at_horizon << "\n";
-    std::cout << "  Coherence at r + 10¹² m: " << coherence_far << "\n";
-    std::cout << "  Gaussian decay verified: " << (std::abs(coherence_at_horizon) > std::abs(coherence_far) ? "YES" : "NO") << "\n";
+    std::cout << \"  C_UQFF at horizon: \" << coherence_at_horizon << \"\\n\";
+    std::cout << \"  C_UQFF at r + 10¹² m: \" << coherence_far << \"\\n\";
+    std::cout << \"  Gaussian decay verified: \" << (std::abs(coherence_at_horizon) > std::abs(coherence_far) ? \"YES\" : \"NO\") << \"\\n\";
+    
+    // Test with simple model
+    uqff.set_param(\"use_full_uqff_coherence\", 0.0);
+    double simple_coherence = uqff.quantum_coherence(r_test, t_test);
+    uqff.set_param(\"use_full_uqff_coherence\", 1.0);  // Restore
+    std::cout << \"  Simple model coherence: \" << simple_coherence << \"\\n\";
+    std::cout << \"  Full UQFF includes: ℏ²/2mσ_eff², f_TRZ freq, U_m damping\\n\";
     std::cout << "  ✓ PASSED\n";
 
     // Test self-expand: Add custom term

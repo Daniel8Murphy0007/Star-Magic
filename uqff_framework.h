@@ -97,13 +97,32 @@ public:
     double time_reversal_correction(double base_value);
     
     /**
-     * @brief Compute quantum coherence at position and time
+     * @brief Compute effective sigma with aether damping
+     * @return σ_eff = σ × (1 - ρ_SCm/ρ_UA) [m]
+     * 
+     * Aether vacuum densities modify the coherence length scale.
+     */
+    double compute_sigma_effective();
+    
+    /**
+     * @brief Compute wavefunction normalization amplitude
+     * @return A = (√(2π) σ_eff)^(-1/2)
+     * 
+     * Ensures ∫|ψ|² dr = 1 for Gaussian wavepacket.
+     */
+    double compute_normalization_amplitude();
+    
+    /**
+     * @brief Compute full UQFF quantum coherence
      * @param r Radial distance from center [m]
      * @param t Time [s]
-     * @return Coherence factor
+     * @return C_UQFF coherence measure
      * 
-     * Models wavefunction coherence near event horizons:
-     *   ψ(r,t) ≈ amp × exp(-(r-r_horizon)²/σ²) × cos(2πft)
+     * Full UQFF derivation:
+     *   ψ(r,t) = A exp(-(r-r_h)²/2σ_eff²) exp(-i 2πft(1+f_TRZ))
+     *   C_UQFF = (ℏ²/2m σ_eff²) × |cos(2πft(1+f_TRZ))| × exp(-U_m/k_BT) × gaussian
+     * 
+     * Set use_full_uqff_coherence=0 for simple model (original).
      */
     double quantum_coherence(double r, double t);
 
