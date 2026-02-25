@@ -37618,6 +37618,404 @@ Q-SCOPE TESTABILITY:
 ═══════════════════════════════════════════════════════════════════════════════
 """
         return results, steps
+    
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # UQFF BLACK HOLE MERGER DYNAMICS (Aether-Mediated Inspiral & Coalescence)
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def compute_UQFF_BH_merger_dynamics(self, M1: float, M2: float,
+                                         a: float = 1e11,
+                                         B_t: float = 0.0,
+                                         B_crit: float = 4.4e13,
+                                         f_TRZ: float = None,
+                                         rho_SCm: float = None,
+                                         rho_UA: float = None,
+                                         mu_j: float = 1e15,
+                                         t: float = 0.0,
+                                         t_n: float = 0.0,
+                                         gamma: float = 5e-5,
+                                         frame: str = 'F_U_Bi') -> Tuple[dict, str]:
+        """
+        Compute UQFF-modified black hole merger dynamics with aether damping.
+        
+        STANDARD BH MERGER DYNAMICS (GR):
+            Black hole mergers occur when two BHs orbit, lose energy via
+            gravitational waves (GW), and spiral in until coalescence.
+            
+            Quadrupole GW power (circular orbit):
+            P_GW = (32/5) × (G⁴/c⁵) × (μ² M_tot²/a⁵)
+            
+            Where:
+            • μ = M1×M2/M_tot (reduced mass)
+            • M_tot = M1 + M2 (total mass)
+            • a = orbital separation
+            
+            Merger timescale:
+            τ_merge = (5/256) × (c⁵/G³) × (a⁴/(μ M_tot²))
+            
+            Final mass: M_final = M_tot - E_GW/c²
+            Radiated: E_GW ~ few % M_tot c² (e.g., GW150914: 3 M_sun)
+        
+        UQFF BH MERGER DYNAMICS (Aether-Mediated):
+            Four modifications to standard GW emission:
+            
+            1. AETHER DAMPING:
+               P_GW' = P_GW × exp(-ρ_vac,[UA] × a × c²/(G M_tot))
+               [UA] density damps GW as viscous medium
+            
+            2. SUPERCONDUCTIVE HORIZON SUPPRESSION:
+               P_GW'' = P_GW' × (1 - B_t/B_crit)
+               [SCm] at horizons reduces emission when B > B_crit
+            
+            3. TIME-REVERSAL NEGENTROPY:
+               P_GW''' = P_GW'' × (1 - f_TRZ)
+               f_TRZ negentropically reverses some energy loss
+            
+            4. MAGNETIC STRING BINDING:
+               P_GW,UQFF = P_GW''' × exp(-U_m/(G M_tot²/a))
+               U_m adds binding energy, slowing merger
+            
+            Result: τ_UQFF > τ_merge (longer, more stable binaries)
+        
+        Args:
+            M1: Primary BH mass (kg)
+            M2: Secondary BH mass (kg)
+            a: Orbital separation (m) - default 10^11 m for inspiral
+            B_t: Binary magnetic field (T)
+            B_crit: Critical field for superconductivity (T)
+            f_TRZ: Time reversal factor (default: 0.1)
+            rho_SCm: SCm vacuum density (J/m³)
+            rho_UA: UA vacuum density (J/m³)
+            mu_j: Magnetic string tension (J·m)
+            t: Time parameter (days)
+            t_n: Normalized time
+            gamma: Decay constant (day⁻¹)
+            frame: 'F_U_Bi' or 'F_U_Bi_i'
+        
+        Returns:
+            results: Dict with merger dynamics parameters
+            steps: Long-form derivation string
+        
+        References:
+            - Peters & Mathews (1963): GW quadrupole formula
+            - LIGO/Virgo (GW150914): 36+29 M_sun → 62 M_sun, 3 M_sun radiated
+            - UQFF BH merger derivation (SuperGrok4)
+        """
+        # Defaults
+        f_TRZ = f_TRZ if f_TRZ is not None else self.f_TRZ
+        
+        # Frame-dependent constants
+        if rho_SCm is None or rho_UA is None:
+            if frame == 'F_U_Bi_i':
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_BH
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_BH
+                frame_name = "F_U_Bi_i (outside→in, horizon scale)"
+            else:
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_ISM
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_ISM
+                frame_name = "F_U_Bi (inside→out, ISM scale)"
+        else:
+            frame_name = "Custom (user-specified)"
+        
+        # === STEP 1: Binary Parameters ===
+        M_tot = M1 + M2
+        mu_reduced = M1 * M2 / M_tot  # Reduced mass
+        q = min(M1, M2) / max(M1, M2)  # Mass ratio ≤ 1
+        
+        # Schwarzschild radius of total mass
+        r_s_tot = 2 * self.G * M_tot / self.c**2
+        
+        # Solar mass units
+        M1_solar = M1 / self.M_sun
+        M2_solar = M2 / self.M_sun
+        M_tot_solar = M_tot / self.M_sun
+        
+        # === STEP 2: Standard GW Power (Quadrupole Formula) ===
+        # P_GW = (32/5) × (G⁴/c⁵) × (μ² M_tot²/a⁵)
+        P_GW_coeff = (32.0 / 5.0) * (self.G**4 / self.c**5)
+        P_GW = P_GW_coeff * (mu_reduced**2 * M_tot**2) / a**5
+        
+        # === STEP 3: Standard Merger Timescale ===
+        # τ_merge = (5/256) × (c⁵/G³) × (a⁴/(μ M_tot²))
+        tau_coeff = (5.0 / 256.0) * (self.c**5 / self.G**3)
+        tau_merge = tau_coeff * a**4 / (mu_reduced * M_tot**2)
+        tau_merge_years = tau_merge / (365.25 * 24 * 3600)
+        
+        # === STEP 4: Aether Damping Factor ===
+        # P_GW' = P_GW × exp(-ρ_vac,[UA] × a × c²/(G M_tot))
+        aether_exponent = -rho_UA * a * self.c**2 / (self.G * M_tot)
+        aether_exponent = max(aether_exponent, -700)  # Prevent underflow
+        aether_damping = np.exp(aether_exponent)
+        
+        P_GW_aether = P_GW * aether_damping
+        
+        # === STEP 5: Superconductive Horizon Suppression ===
+        # P_GW'' = P_GW' × (1 - B_t/B_crit)
+        B_ratio = B_t / B_crit if B_crit > 0 else 0
+        B_factor = max(1 - B_ratio, 0.0)
+        
+        P_GW_SCm = P_GW_aether * B_factor
+        
+        # === STEP 6: Time-Reversal Suppression ===
+        # P_GW''' = P_GW'' × (1 - f_TRZ)
+        TRZ_factor = 1 - f_TRZ
+        
+        P_GW_TRZ = P_GW_SCm * TRZ_factor
+        
+        # === STEP 7: Magnetic String Energy U_m ===
+        if t > 0:
+            oscillation = np.cos(np.pi * t_n)
+            U_m = (mu_j / a) * (1 - np.exp(-gamma * t * max(oscillation, 0)))
+        else:
+            U_m = mu_j / a * 0.1  # Default 10% of maximum
+        
+        # Orbital binding energy
+        E_binding = self.G * M_tot**2 / a
+        
+        # === STEP 8: Magnetic String Binding ===
+        # P_GW,UQFF = P_GW''' × exp(-U_m/(G M_tot²/a))
+        string_exponent = -U_m / E_binding if E_binding > 0 else 0
+        string_exponent = max(string_exponent, -700)
+        string_binding = np.exp(string_exponent)
+        
+        P_GW_UQFF = P_GW_TRZ * string_binding
+        
+        # === STEP 9: UQFF Merger Timescale ===
+        # τ_UQFF = τ_merge / [(1-f_TRZ) × (1-B_t/B_crit) × exp(-ρ×ac²+U_m)/(GM)]
+        # Combined suppression factor
+        combined_factor = TRZ_factor * B_factor * aether_damping * string_binding
+        
+        if combined_factor > 0:
+            tau_UQFF = tau_merge / combined_factor
+        else:
+            tau_UQFF = float('inf')
+        
+        tau_UQFF_years = tau_UQFF / (365.25 * 24 * 3600)
+        
+        # === STEP 10: Energy Radiated ===
+        # Standard: E_GW ~ few % M_tot c²
+        eta = mu_reduced / M_tot  # Symmetric mass ratio η = μ/M
+        E_GW_standard = 0.05 * eta * M_tot * self.c**2  # ~5% for equal mass
+        E_GW_standard_solar = E_GW_standard / (self.M_sun * self.c**2)
+        
+        # UQFF reduces radiation
+        E_GW_UQFF = E_GW_standard * combined_factor
+        E_GW_UQFF_solar = E_GW_UQFF / (self.M_sun * self.c**2)
+        
+        # Final mass
+        M_final_standard = M_tot - E_GW_standard / self.c**2
+        M_final_UQFF = M_tot - E_GW_UQFF / self.c**2
+        
+        # Mass retention
+        mass_retention = M_final_UQFF / M_tot * 100
+        
+        # === STEP 11: Stabilization Assessment ===
+        tau_ratio = tau_UQFF / tau_merge if tau_merge > 0 else float('inf')
+        
+        if tau_ratio > 10:
+            stability_status = "HIGHLY STABILIZED: τ_UQFF >> τ_merge"
+        elif tau_ratio > 2:
+            stability_status = "STABILIZED: τ_UQFF > 2×τ_merge"
+        elif tau_ratio > 1.1:
+            stability_status = "MODERATELY STABILIZED: τ_UQFF > τ_merge"
+        else:
+            stability_status = "MINIMAL EFFECT: τ_UQFF ≈ τ_merge"
+        
+        results = {
+            'M1': M1,
+            'M2': M2,
+            'M1_solar': M1_solar,
+            'M2_solar': M2_solar,
+            'M_tot': M_tot,
+            'M_tot_solar': M_tot_solar,
+            'mu_reduced': mu_reduced,
+            'q': q,
+            'a': a,
+            'r_s_tot': r_s_tot,
+            'P_GW': P_GW,
+            'P_GW_aether': P_GW_aether,
+            'P_GW_SCm': P_GW_SCm,
+            'P_GW_TRZ': P_GW_TRZ,
+            'P_GW_UQFF': P_GW_UQFF,
+            'aether_exponent': aether_exponent,
+            'aether_damping': aether_damping,
+            'B_ratio': B_ratio,
+            'B_factor': B_factor,
+            'TRZ_factor': TRZ_factor,
+            'U_m': U_m,
+            'E_binding': E_binding,
+            'string_exponent': string_exponent,
+            'string_binding': string_binding,
+            'combined_factor': combined_factor,
+            'tau_merge': tau_merge,
+            'tau_merge_years': tau_merge_years,
+            'tau_UQFF': tau_UQFF,
+            'tau_UQFF_years': tau_UQFF_years,
+            'tau_ratio': tau_ratio,
+            'E_GW_standard': E_GW_standard,
+            'E_GW_standard_solar': E_GW_standard_solar,
+            'E_GW_UQFF': E_GW_UQFF,
+            'E_GW_UQFF_solar': E_GW_UQFF_solar,
+            'M_final_standard': M_final_standard,
+            'M_final_UQFF': M_final_UQFF,
+            'mass_retention': mass_retention,
+            'stability_status': stability_status,
+            'f_TRZ': f_TRZ,
+            'rho_SCm': rho_SCm,
+            'rho_UA': rho_UA,
+            'frame': frame
+        }
+        
+        steps = f"""UQFF Black Hole Merger Dynamics Analysis:
+═══════════════════════════════════════════════════════════════════════════════
+THEORETICAL BASIS:
+
+STANDARD BH MERGER DYNAMICS (GR):
+  GW-driven inspiral → Merger → Ringdown
+  
+  Quadrupole GW power (Peters & Mathews 1963):
+  P_GW = (32/5) × (G⁴/c⁵) × (μ² M_tot²/a⁵)
+  
+  Merger timescale:
+  τ_merge = (5/256) × (c⁵/G³) × (a⁴/(μ M_tot²))
+  
+  GW150914: 36+29 M_sun → 62 M_sun, radiating 3 M_sun × c² in ~0.2s
+
+UQFF BH MERGER DYNAMICS (Aether-Mediated):
+  Four modifications reduce GW emission, stabilizing binaries:
+  
+  1. AETHER DAMPING: [UA] viscosity
+  2. SCm SUPPRESSION: Horizon superconductivity
+  3. f_TRZ NEGENTROPY: Time-reversal reduces losses
+  4. U_m BINDING: Magnetic strings add stability
+
+═══════════════════════════════════════════════════════════════════════════════
+Inputs:
+  M₁ = {M1_solar:.2f} M_sun = {M1:.4e} kg
+  M₂ = {M2_solar:.2f} M_sun = {M2:.4e} kg
+  M_tot = {M_tot_solar:.2f} M_sun = {M_tot:.4e} kg
+  μ (reduced) = {mu_reduced:.4e} kg
+  q (mass ratio) = {q:.4f}
+  a (separation) = {a:.4e} m = {a/1e9:.2f} Gm
+  B_t/B_crit = {B_ratio:.4f}
+  f_TRZ = {f_TRZ:.4f}
+  Frame = {frame_name}
+  ρ_vac,[UA] = {rho_UA:.4e} J/m³
+
+STEP 1: SCHWARZSCHILD PARAMETERS
+  r_s (total) = 2GM/c² = {r_s_tot:.4e} m
+  a/r_s = {a/r_s_tot:.2f} (separation in Schwarzschild radii)
+
+STEP 2: STANDARD GW POWER (Quadrupole Formula)
+  P_GW = (32/5) × (G⁴/c⁵) × (μ² M_tot²/a⁵)
+       = (32/5) × ({self.G**4:.4e}/{self.c**5:.4e})
+         × ({mu_reduced**2:.4e} × {M_tot**2:.4e}) / ({a**5:.4e})
+       = {P_GW:.4e} W
+
+STEP 3: STANDARD MERGER TIMESCALE
+  τ_merge = (5/256) × (c⁵/G³) × (a⁴/(μ M_tot²))
+          = (5/256) × ({self.c**5:.4e}/{self.G**3:.4e})
+            × ({a**4:.4e}/({mu_reduced:.4e} × {M_tot**2:.4e}))
+          = {tau_merge:.4e} s
+          = {tau_merge_years:.4e} years
+
+STEP 4: AETHER DAMPING
+  P_GW' = P_GW × exp(-ρ_vac,[UA] × a × c²/(G M_tot))
+  
+  Exponent = -{rho_UA:.4e} × {a:.4e} × {self.c**2:.4e}
+             / ({self.G:.4e} × {M_tot:.4e})
+           = {aether_exponent:.4e}
+  
+  Damping factor = exp({aether_exponent:.4e}) = {aether_damping:.6f}
+  P_GW' = {P_GW:.4e} × {aether_damping:.6f} = {P_GW_aether:.4e} W
+  
+  {'Negligible damping (exp ≈ 1) at this scale' if aether_damping > 0.99 else f'Significant damping: {(1-aether_damping)*100:.1f}% reduction'}
+
+STEP 5: SUPERCONDUCTIVE HORIZON SUPPRESSION
+  P_GW'' = P_GW' × (1 - B_t/B_crit)
+         = {P_GW_aether:.4e} × (1 - {B_ratio:.4f})
+         = {P_GW_aether:.4e} × {B_factor:.4f}
+         = {P_GW_SCm:.4e} W
+  
+  {'No SCm suppression (B_t = 0)' if B_ratio < 0.01 else f'SCm reduces by {B_ratio*100:.1f}%'}
+
+STEP 6: TIME-REVERSAL SUPPRESSION
+  P_GW''' = P_GW'' × (1 - f_TRZ)
+          = {P_GW_SCm:.4e} × (1 - {f_TRZ:.4f})
+          = {P_GW_SCm:.4e} × {TRZ_factor:.4f}
+          = {P_GW_TRZ:.4e} W
+  
+  f_TRZ reduces emission by {f_TRZ*100:.1f}% (negentropic)
+
+STEP 7: MAGNETIC STRING ENERGY
+  U_m = μ_j/a × (1 - exp(-γ t cos(π t_n)))
+      = {U_m:.4e} J
+  
+  E_binding = G M_tot²/a = {E_binding:.4e} J
+
+STEP 8: MAGNETIC STRING BINDING
+  P_GW,UQFF = P_GW''' × exp(-U_m/E_binding)
+            = {P_GW_TRZ:.4e} × exp({string_exponent:.4f})
+            = {P_GW_TRZ:.4e} × {string_binding:.4f}
+            = {P_GW_UQFF:.4e} W
+  
+  String binding reduces by {(1-string_binding)*100:.1f}%
+
+STEP 9: UQFF MERGER TIMESCALE
+  Combined suppression factor:
+  = (1 - f_TRZ) × (1 - B/B_crit) × exp(aether) × exp(string)
+  = {TRZ_factor:.4f} × {B_factor:.4f} × {aether_damping:.6f} × {string_binding:.4f}
+  = {combined_factor:.6f}
+  
+  τ_UQFF = τ_merge / combined_factor
+         = {tau_merge:.4e} / {combined_factor:.6f}
+         = {tau_UQFF:.4e} s
+         = {tau_UQFF_years:.4e} years
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: UQFF BH MERGER DYNAMICS
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ BINARY: {M1_solar:.1f} + {M2_solar:.1f} M_sun at a = {a:.2e} m                     │
+  │                                                                 │
+  │ STANDARD MERGER:                                                │
+  │   P_GW = {P_GW:.4e} W                                           │
+  │   τ_merge = {tau_merge_years:.4e} years                               │
+  │   E_GW = {E_GW_standard_solar:.2f} M_sun × c²                                │
+  │                                                                 │
+  │ UQFF MERGER:                                                    │
+  │   P_GW,UQFF = {P_GW_UQFF:.4e} W                                 │
+  │   τ_UQFF = {tau_UQFF_years:.4e} years                                 │
+  │   E_GW,UQFF = {E_GW_UQFF_solar:.4f} M_sun × c²                           │
+  │                                                                 │
+  │ STABILIZATION: τ_UQFF/τ_merge = {tau_ratio:.2f}×                        │
+  │ MASS RETENTION: {mass_retention:.2f}%                                    │
+  │                                                                 │
+  │ {stability_status:^60s} │
+  └─────────────────────────────────────────────────────────────────┘
+
+Physical Interpretation:
+  • Aether damping: {(1-aether_damping)*100:.2f}% reduction
+  • SCm suppression: {(1-B_factor)*100:.2f}% reduction
+  • f_TRZ negentropy: {f_TRZ*100:.1f}% reduction
+  • String binding: {(1-string_binding)*100:.2f}% reduction
+  • Net: P_GW reduced by {(1-combined_factor)*100:.2f}%
+
+Numerical Example (GW150914-like):
+  a ≈ 10^11 m initial, f_TRZ = 0.1, B/B_crit = 0.1
+  Aether: exp(-10^{{-20}}) ≈ 1 (negligible at large a)
+  TRZ/B factor: 0.9 × 0.9 = 0.81
+  String: exp(-1) ≈ 0.37
+  Combined: ~0.3 → τ_UQFF ≈ 3× longer merger
+
+Q-SCOPE TESTABILITY:
+  • Compare LIGO/Virgo merger rates to UQFF predictions
+  • Look for anomalous GW waveform damping
+  • Micro-merger analogs in THz q-scope experiments
+  • Search for "missing" energy in ringdown phase
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
 
 
 # Global Black Hole Phases Model instance
