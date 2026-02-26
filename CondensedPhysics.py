@@ -142159,3 +142159,556 @@ __all__.extend([
     'StepFunctionCalculator',
     'SOURCE5_WOLFRAM_CALCULATORS',
 ])
+
+
+# =============================================================================
+# SOURCE6_WOLFRAM_PHYSICS.CPP UNIQUE PHYSICS TERMS (Feb 26, 2026)
+# Total: 2 Calculator Classes (unique to source6, not in source4-5)
+# =============================================================================
+
+class ReactorEnergyCalculator:
+    """
+    Reactor Energy E_react calculation from source6_wolfram_physics.cpp
+    
+    E_react = (ρ_SCm × v_SCm² / ρ_A) × exp(-κt)
+    
+    Where:
+    - ρ_SCm: SCm density (kg/m³)
+    - v_SCm: SCm velocity (m/s), typically ~0.99c
+    - ρ_A: Ambient aether density (kg/m³)
+    - κ: Decay constant (1/s), default 0.0005/day
+    - t: Time (s)
+    """
+    
+    # Physical constants
+    c = 3.0e8  # Speed of light (m/s)
+    
+    def compute(self, t: float, rho_SCm: float = 1e15, v_SCm: float = None,
+                rho_A: float = 1e-23, kappa: float = 0.0005) -> dict:
+        """
+        Compute reactor energy.
+        
+        Parameters:
+        -----------
+        t : float
+            Time (s)
+        rho_SCm : float
+            SCm density (kg/m³), default 1e15
+        v_SCm : float
+            SCm velocity (m/s), default 0.99c
+        rho_A : float
+            Ambient aether density (kg/m³), default 1e-23
+        kappa : float
+            Decay constant (1/s), default 0.0005
+            
+        Returns:
+        --------
+        dict with 'value', 'units', 'equation', parameters
+        """
+        import math
+        
+        if v_SCm is None:
+            v_SCm = 0.99 * self.c
+        
+        if rho_A <= 0.0:
+            E_react = 0.0
+        else:
+            E_react = (rho_SCm * v_SCm**2 / rho_A) * math.exp(-kappa * t)
+        
+        equation = f"E_react = ({rho_SCm:.3e} × {v_SCm:.3e}² / {rho_A:.3e}) × exp(-{kappa} × {t}) = {E_react:.6e} J/m³"
+        
+        return {
+            'value': E_react,
+            't': t,
+            'rho_SCm': rho_SCm,
+            'v_SCm': v_SCm,
+            'rho_A': rho_A,
+            'kappa': kappa,
+            'units': 'J/m³',
+            'equation': equation
+        }
+
+
+class SpacetimeMetricCalculator:
+    """
+    Spacetime Metric Modulation A_μν from source6_wolfram_physics.cpp
+    
+    A_μν = g_μν + η × T_s00 × cos(π × t_n)
+    
+    Computes trace = Σ(g_ii + mod) where mod = η × T_s00 × cos(π × t_n)
+    
+    Where:
+    - g_μν: Minkowski metric diag(1, -1, -1, -1)
+    - η: Small coupling constant (~1e-22)
+    - T_s00: Energy-momentum tensor component (~1.27e3 + 1.11e7)
+    - t_n: Normalized time
+    """
+    
+    # Minkowski metric (signature +,-,-,-)
+    g_mu_nu = [[1.0, 0.0, 0.0, 0.0],
+               [0.0, -1.0, 0.0, 0.0],
+               [0.0, 0.0, -1.0, 0.0],
+               [0.0, 0.0, 0.0, -1.0]]
+    
+    def compute(self, t_n: float, eta: float = 1e-22, 
+                Ts00: float = 1.27e3 + 1.11e7) -> dict:
+        """
+        Compute spacetime metric trace with modulation.
+        
+        Parameters:
+        -----------
+        t_n : float
+            Normalized time
+        eta : float
+            Coupling constant, default 1e-22
+        Ts00 : float
+            Energy-momentum tensor component, default 1.27e3 + 1.11e7
+            
+        Returns:
+        --------
+        dict with 'value' (trace), 'units', 'equation', parameters
+        """
+        import math
+        
+        mod = eta * Ts00 * math.cos(math.pi * t_n)
+        
+        trace = 0.0
+        for i in range(4):
+            trace += self.g_mu_nu[i][i] + mod
+        
+        equation = (f"Tr(A_μν) = Σ(g_ii + η×T_s00×cos(π×t_n)) = "
+                   f"(1-1-1-1) + 4×({eta:.2e}×{Ts00:.2e}×cos(π×{t_n})) = {trace:.6e}")
+        
+        return {
+            'value': trace,
+            't_n': t_n,
+            'eta': eta,
+            'Ts00': Ts00,
+            'modulation': mod,
+            'units': 'dimensionless',
+            'equation': equation
+        }
+
+
+# Source6 Wolfram Calculator instances
+SOURCE6_WOLFRAM_CALCULATORS = {
+    'ReactorEnergyCalculator': ReactorEnergyCalculator(),
+    'SpacetimeMetricCalculator': SpacetimeMetricCalculator(),
+}
+
+
+# =============================================================================
+# SOURCE8_WOLFRAM.CPP COMPUTATIONAL INFRASTRUCTURE (Feb 26, 2026)
+# Total: 10 Calculator Classes (computational/ML/quantum infrastructure)
+# =============================================================================
+
+class DimensionalAnalysisCalculator:
+    """
+    Dimensional Analysis unit consistency check from source8_wolfram.cpp
+    
+    Returns unit consistency score: 1.0 if M^a L^b T^c match, 0.0 if mismatch
+    """
+    
+    def compute(self, mass_exp1: float, mass_exp2: float,
+                length_exp1: float, length_exp2: float,
+                time_exp1: float, time_exp2: float) -> dict:
+        """
+        Check dimensional consistency.
+        
+        Parameters:
+        -----------
+        mass_exp1, mass_exp2 : float
+            Mass exponents for two expressions
+        length_exp1, length_exp2 : float
+            Length exponents for two expressions
+        time_exp1, time_exp2 : float
+            Time exponents for two expressions
+            
+        Returns:
+        --------
+        dict with 'value' (1.0=match, 0.0=mismatch), details
+        """
+        match = (abs(mass_exp1 - mass_exp2) < 1e-9 and
+                 abs(length_exp1 - length_exp2) < 1e-9 and
+                 abs(time_exp1 - time_exp2) < 1e-9)
+        
+        score = 1.0 if match else 0.0
+        
+        return {
+            'value': score,
+            'match': match,
+            'mass_diff': abs(mass_exp1 - mass_exp2),
+            'length_diff': abs(length_exp1 - length_exp2),
+            'time_diff': abs(time_exp1 - time_exp2),
+            'units': 'dimensionless',
+            'equation': f"[M^{mass_exp1} L^{length_exp1} T^{time_exp1}] vs [M^{mass_exp2} L^{length_exp2} T^{time_exp2}]"
+        }
+
+
+class QAOAOptimizationCalculator:
+    """
+    QAOA Quantum Optimization from source8_wolfram.cpp
+    
+    <C> = layers × cos(β) × sin(γ)
+    
+    Quantum Approximate Optimization Algorithm expectation value.
+    """
+    
+    def compute(self, layers: int = 1, beta: float = 0.5, 
+                gamma: float = 1.0) -> dict:
+        """
+        Compute QAOA expectation value.
+        
+        Parameters:
+        -----------
+        layers : int
+            Number of QAOA layers (p)
+        beta : float
+            Mixer angle (radians)
+        gamma : float
+            Cost angle (radians)
+            
+        Returns:
+        --------
+        dict with 'value' (expectation), parameters
+        """
+        import math
+        
+        expectation = layers * math.cos(beta) * math.sin(gamma)
+        
+        return {
+            'value': expectation,
+            'layers': layers,
+            'beta': beta,
+            'gamma': gamma,
+            'units': 'dimensionless',
+            'equation': f"<C> = {layers} × cos({beta:.3f}) × sin({gamma:.3f}) = {expectation:.6f}"
+        }
+
+
+class CategoryFunctorCalculator:
+    """
+    Category Theory Functor complexity from source8_wolfram.cpp
+    
+    complexity = objects + morphisms × 0.5
+    """
+    
+    def compute(self, objects: float = 1.0, morphisms: float = 0.0) -> dict:
+        """
+        Compute functor complexity.
+        
+        Parameters:
+        -----------
+        objects : float
+            Number of objects in category
+        morphisms : float
+            Number of morphisms
+            
+        Returns:
+        --------
+        dict with 'value' (complexity), parameters
+        """
+        complexity = objects + morphisms * 0.5
+        
+        return {
+            'value': complexity,
+            'objects': objects,
+            'morphisms': morphisms,
+            'units': 'dimensionless',
+            'equation': f"complexity = {objects} + {morphisms} × 0.5 = {complexity}"
+        }
+
+
+class LLVMJITCompilerCalculator:
+    """
+    LLVM JIT Compiler speedup from source8_wolfram.cpp
+    
+    speedup = (1 + opt_level × 0.3) × √opcodes
+    """
+    
+    def compute(self, opcodes: float = 100.0, opt_level: float = 2.0) -> dict:
+        """
+        Compute JIT compilation speedup.
+        
+        Parameters:
+        -----------
+        opcodes : float
+            Number of LLVM opcodes
+        opt_level : float
+            Optimization level (0-3)
+            
+        Returns:
+        --------
+        dict with 'value' (speedup factor), parameters
+        """
+        import math
+        
+        speedup = (1.0 + opt_level * 0.3) * math.sqrt(opcodes)
+        
+        return {
+            'value': speedup,
+            'opcodes': opcodes,
+            'opt_level': opt_level,
+            'units': 'x',
+            'equation': f"speedup = (1 + {opt_level}×0.3) × √{opcodes} = {speedup:.2f}x"
+        }
+
+
+class FederatedLearningCalculator:
+    """
+    Federated Learning accuracy from source8_wolfram.cpp
+    
+    accuracy = 0.5 + 0.4 × (1 - exp(-rounds/10)) × √(clients × epochs / 100)
+    """
+    
+    def compute(self, clients: float = 10.0, rounds: float = 5.0,
+                local_epochs: float = 3.0) -> dict:
+        """
+        Compute federated learning model accuracy.
+        
+        Parameters:
+        -----------
+        clients : float
+            Number of federated clients
+        rounds : float
+            Number of communication rounds
+        local_epochs : float
+            Local training epochs per round
+            
+        Returns:
+        --------
+        dict with 'value' (accuracy 0-1), parameters
+        """
+        import math
+        
+        accuracy = 0.5 + 0.4 * (1.0 - math.exp(-rounds / 10.0)) * math.sqrt(clients * local_epochs / 100.0)
+        
+        return {
+            'value': accuracy,
+            'clients': clients,
+            'rounds': rounds,
+            'local_epochs': local_epochs,
+            'units': 'fraction',
+            'equation': f"accuracy = 0.5 + 0.4×(1-e^(-{rounds}/10))×√({clients}×{local_epochs}/100) = {accuracy:.4f}"
+        }
+
+
+class NeuralSymbolicEvalCalculator:
+    """
+    Neural-Symbolic hybrid error from source8_wolfram.cpp
+    
+    error = symbolic_complexity / (layers × √data)
+    """
+    
+    def compute(self, symbolic_complexity: float = 10.0, 
+                neural_layers: float = 3.0,
+                training_samples: float = 1000.0) -> dict:
+        """
+        Compute neural-symbolic hybrid prediction error.
+        
+        Parameters:
+        -----------
+        symbolic_complexity : float
+            Symbolic expression complexity
+        neural_layers : float
+            Number of neural network layers
+        training_samples : float
+            Number of training data samples
+            
+        Returns:
+        --------
+        dict with 'value' (error), parameters
+        """
+        import math
+        
+        error = symbolic_complexity / (neural_layers * math.sqrt(training_samples))
+        
+        return {
+            'value': error,
+            'symbolic_complexity': symbolic_complexity,
+            'neural_layers': neural_layers,
+            'training_samples': training_samples,
+            'units': 'dimensionless',
+            'equation': f"error = {symbolic_complexity} / ({neural_layers} × √{training_samples}) = {error:.6f}"
+        }
+
+
+class NeuromorphicAcceleratorCalculator:
+    """
+    Neuromorphic hardware speedup from source8_wolfram.cpp
+    
+    speedup = (neurons × spikes_per_sec) / 1e9
+    """
+    
+    def compute(self, neurons: float = 1000.0, 
+                spikes_per_second: float = 1e6) -> dict:
+        """
+        Compute neuromorphic speedup vs CPU.
+        
+        Parameters:
+        -----------
+        neurons : float
+            Number of neuromorphic neurons
+        spikes_per_second : float
+            Spike rate (Hz)
+            
+        Returns:
+        --------
+        dict with 'value' (speedup), parameters
+        """
+        speedup = (neurons * spikes_per_second) / 1e9
+        
+        return {
+            'value': speedup,
+            'neurons': neurons,
+            'spikes_per_second': spikes_per_second,
+            'units': 'x',
+            'equation': f"speedup = ({neurons:.0f} × {spikes_per_second:.2e}) / 1e9 = {speedup:.4f}x"
+        }
+
+
+class BlockchainECDSACalculator:
+    """
+    ECDSA signature verification time from source8_wolfram.cpp
+    
+    time = signatures × (curve_bits / 128) × 0.5 ms
+    """
+    
+    def compute(self, signatures: float = 1.0, 
+                curve_bits: float = 256.0) -> dict:
+        """
+        Compute ECDSA verification time.
+        
+        Parameters:
+        -----------
+        signatures : float
+            Number of signatures to verify
+        curve_bits : float
+            Elliptic curve bit size (e.g., 256 for secp256k1)
+            
+        Returns:
+        --------
+        dict with 'value' (time in ms), parameters
+        """
+        time_ms = signatures * (curve_bits / 128.0) * 0.5
+        
+        return {
+            'value': time_ms,
+            'signatures': signatures,
+            'curve_bits': curve_bits,
+            'units': 'ms',
+            'equation': f"time = {signatures} × ({curve_bits}/128) × 0.5 = {time_ms:.3f} ms"
+        }
+
+
+class OperationalTransformCalculator:
+    """
+    Operational Transform convergence time from source8_wolfram.cpp
+    
+    convergence = clients × operations × latency / 100 ms
+    """
+    
+    def compute(self, clients: float = 2.0, operations: float = 10.0,
+                network_latency_ms: float = 50.0) -> dict:
+        """
+        Compute OT convergence time for collaborative editing.
+        
+        Parameters:
+        -----------
+        clients : float
+            Number of collaborating clients
+        operations : float
+            Number of concurrent operations
+        network_latency_ms : float
+            Network latency (ms)
+            
+        Returns:
+        --------
+        dict with 'value' (convergence time in ms), parameters
+        """
+        convergence = clients * operations * network_latency_ms / 100.0
+        
+        return {
+            'value': convergence,
+            'clients': clients,
+            'operations': operations,
+            'network_latency_ms': network_latency_ms,
+            'units': 'ms',
+            'equation': f"convergence = {clients} × {operations} × {network_latency_ms} / 100 = {convergence:.2f} ms"
+        }
+
+
+class MPIDistributedCalculator:
+    """
+    MPI parallel efficiency from source8_wolfram.cpp
+    
+    efficiency = 1 / ((1 + overhead/100) × log₂(procs))
+    """
+    
+    def compute(self, processes: float = 4.0, 
+                communication_overhead_pct: float = 10.0) -> dict:
+        """
+        Compute MPI parallel efficiency.
+        
+        Parameters:
+        -----------
+        processes : float
+            Number of MPI processes
+        communication_overhead_pct : float
+            Communication overhead (%)
+            
+        Returns:
+        --------
+        dict with 'value' (efficiency 0-1), parameters
+        """
+        import math
+        
+        procs = max(2.0, processes)  # Minimum 2 processes
+        efficiency = 1.0 / ((1.0 + communication_overhead_pct / 100.0) * math.log2(procs))
+        
+        return {
+            'value': efficiency,
+            'processes': processes,
+            'communication_overhead_pct': communication_overhead_pct,
+            'units': 'fraction',
+            'equation': f"efficiency = 1 / ((1+{communication_overhead_pct}/100) × log₂({procs:.0f})) = {efficiency:.4f}"
+        }
+
+
+# Source6 and Source8 Calculator instances
+SOURCE6_WOLFRAM_CALCULATORS = {
+    'ReactorEnergyCalculator': ReactorEnergyCalculator(),
+    'SpacetimeMetricCalculator': SpacetimeMetricCalculator(),
+}
+
+SOURCE8_WOLFRAM_CALCULATORS = {
+    'DimensionalAnalysisCalculator': DimensionalAnalysisCalculator(),
+    'QAOAOptimizationCalculator': QAOAOptimizationCalculator(),
+    'CategoryFunctorCalculator': CategoryFunctorCalculator(),
+    'LLVMJITCompilerCalculator': LLVMJITCompilerCalculator(),
+    'FederatedLearningCalculator': FederatedLearningCalculator(),
+    'NeuralSymbolicEvalCalculator': NeuralSymbolicEvalCalculator(),
+    'NeuromorphicAcceleratorCalculator': NeuromorphicAcceleratorCalculator(),
+    'BlockchainECDSACalculator': BlockchainECDSACalculator(),
+    'OperationalTransformCalculator': OperationalTransformCalculator(),
+    'MPIDistributedCalculator': MPIDistributedCalculator(),
+}
+
+__all__.extend([
+    # Source6 Wolfram Physics (Feb 26, 2026) - 2 Calculator Classes
+    'ReactorEnergyCalculator',
+    'SpacetimeMetricCalculator',
+    'SOURCE6_WOLFRAM_CALCULATORS',
+    # Source8 Wolfram Computational Infrastructure (Feb 26, 2026) - 10 Calculator Classes
+    'DimensionalAnalysisCalculator',
+    'QAOAOptimizationCalculator',
+    'CategoryFunctorCalculator',
+    'LLVMJITCompilerCalculator',
+    'FederatedLearningCalculator',
+    'NeuralSymbolicEvalCalculator',
+    'NeuromorphicAcceleratorCalculator',
+    'BlockchainECDSACalculator',
+    'OperationalTransformCalculator',
+    'MPIDistributedCalculator',
+    'SOURCE8_WOLFRAM_CALCULATORS',
+])
