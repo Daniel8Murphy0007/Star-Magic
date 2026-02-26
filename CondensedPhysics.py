@@ -36753,6 +36753,238 @@ Numerical Example (from derivation):
         return results, steps
     
     # ═══════════════════════════════════════════════════════════════════════════════
+    # SIMULATE AdS/CFT DUALITY OVER HOLOGRAPHIC COORDINATE z
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def simulate_AdS_CFT_over_z(self, z_start: float = 1e-15, z_end: float = 1e-6,
+                                 n_points: int = 100, T: float = 300.0,
+                                 B_t: float = 0.0, B_crit: float = 4.4e13,
+                                 f_TRZ: float = None, rho_UA: float = None,
+                                 mu_j: float = 1e15,
+                                 frame: str = 'F_U_Bi') -> Tuple[dict, str]:
+        """
+        Simulate UQFF AdS/CFT duality sweeping the holographic coordinate z.
+        
+        The holographic coordinate z parameterizes depth into the AdS bulk:
+        - z → 0: CFT boundary (observable physics)
+        - z → ∞: Deep AdS bulk (gravitational interior)
+        
+        This sweep reveals:
+        1. How Z_UQFF varies from boundary to bulk
+        2. Phase transitions as U_m grows exponentially
+        3. Critical depth z_crit where partition function collapses
+        
+        STANDARD AdS/CFT (Maldacena 1997):
+            Partition functions match at boundary:
+            Z_AdS[φ₀] = Z_CFT[J = φ₀]
+            
+            Bulk-to-boundary propagator:
+            K(z, x; x') ~ z^Δ / (z² + |x-x'|²)^Δ
+            
+            As z → 0, fields approach boundary values.
+        
+        UQFF AdS/CFT:
+            Z_UQFF(z) = Z_AdS × (1 + f_TRZ) × exp(-U_m(z)/(k_B×T))
+            
+            Where:
+            U_m(z) = (μ_j/L) × exp(z/ξ)
+            
+            As z increases:
+            - U_m grows exponentially
+            - Z_UQFF decreases (duality damped)
+            - At z_crit, Z_UQFF ≈ 0 (phase transition)
+        
+        Args:
+            z_start: Starting holographic coordinate (m) - near boundary
+            z_end: Ending holographic coordinate (m) - into bulk
+            n_points: Number of points to sample
+            T: System temperature (K)
+            B_t: Applied magnetic field (T)
+            B_crit: Critical field (T)
+            f_TRZ: Time reversal factor
+            rho_UA: UA vacuum density (J/m³)
+            mu_j: Magnetic string tension (J·m)
+            frame: 'F_U_Bi' or 'F_U_Bi_i'
+        
+        Returns:
+            results: Dict with arrays of z, Z_UQFF, U_m, xi, g_YM, etc.
+            steps: Long-form derivation string
+        
+        References:
+            - Maldacena (1997): AdS/CFT correspondence
+            - UQFF holographic aether (uqff_ads_cft_duality.cpp)
+        """
+        # Defaults
+        f_TRZ = f_TRZ if f_TRZ is not None else self.f_TRZ
+        
+        # Frame-dependent constants
+        if rho_UA is None:
+            if frame == 'F_U_Bi_i':
+                rho_UA = self.rho_vac_UA_BH
+                frame_name = "F_U_Bi_i (outside→in, horizon scale)"
+            else:
+                rho_UA = self.rho_vac_UA_ISM
+                frame_name = "F_U_Bi (inside→out, ISM scale)"
+        else:
+            frame_name = "Custom (user-specified)"
+        
+        # Compute fixed parameters
+        L_UQFF = (self.hbar * self.c / rho_UA)**(1/4) if rho_UA > 0 else 1e10
+        g_YM_squared = (4 * np.pi * self.G / L_UQFF**2) * (1 + f_TRZ) if L_UQFF > 0 else 0
+        g_YM = np.sqrt(g_YM_squared) if g_YM_squared > 0 else 0
+        
+        B_ratio = B_t / B_crit if B_crit > 0 else 0
+        xi_factor = max(1 - B_ratio, 1e-10)
+        xi_UQFF = L_UQFF * xi_factor
+        
+        # Generate z values (logarithmic spacing for wide range)
+        z_values = np.logspace(np.log10(z_start), np.log10(z_end), n_points)
+        
+        # Arrays for results
+        Z_UQFF_values = np.zeros(n_points)
+        U_m_values = np.zeros(n_points)
+        exponent_values = np.zeros(n_points)
+        
+        # Sweep over z
+        for i, z in enumerate(z_values):
+            # Magnetic string energy: U_m = (μ_j/L) × exp(z/ξ)
+            z_over_xi = z / xi_UQFF if xi_UQFF > 0 else 0
+            z_over_xi = min(z_over_xi, 700)  # Prevent overflow
+            U_m = (mu_j / L_UQFF) * np.exp(z_over_xi)
+            
+            # Partition function modification
+            exponent = -U_m / (self.k_B * T) if T > 0 else 0
+            exponent = max(exponent, -700)  # Prevent underflow
+            Z_UQFF = (1 + f_TRZ) * np.exp(exponent)
+            
+            Z_UQFF_values[i] = Z_UQFF
+            U_m_values[i] = U_m
+            exponent_values[i] = exponent
+        
+        # Find critical z where Z_UQFF < 0.01 (1% of boundary value)
+        Z_boundary = Z_UQFF_values[0]
+        threshold = 0.01 * Z_boundary
+        z_crit_idx = np.argmax(Z_UQFF_values < threshold)
+        z_crit = z_values[z_crit_idx] if z_crit_idx > 0 else np.inf
+        
+        # Find phase transition point (maximum slope of log(Z_UQFF))
+        log_Z = np.log(np.maximum(Z_UQFF_values, 1e-320))
+        dlog_Z = np.diff(log_Z) / np.diff(np.log(z_values))
+        phase_transition_idx = np.argmin(dlog_Z)  # Most negative derivative
+        z_phase = z_values[phase_transition_idx] if phase_transition_idx > 0 else np.inf
+        
+        results = {
+            'z_values': z_values,
+            'Z_UQFF_values': Z_UQFF_values,
+            'U_m_values': U_m_values,
+            'exponent_values': exponent_values,
+            'L_UQFF': L_UQFF,
+            'g_YM': g_YM,
+            'xi_UQFF': xi_UQFF,
+            'z_crit': z_crit,
+            'z_phase': z_phase,
+            'Z_boundary': Z_boundary,
+            'Z_bulk': Z_UQFF_values[-1],
+            'T': T,
+            'B_t': B_t,
+            'B_crit': B_crit,
+            'f_TRZ': f_TRZ,
+            'rho_UA': rho_UA,
+            'mu_j': mu_j,
+            'frame': frame,
+            'n_points': n_points
+        }
+        
+        steps = f"""UQFF AdS/CFT Holographic Simulation Over z:
+═══════════════════════════════════════════════════════════════════════════════
+THEORETICAL BASIS:
+
+STANDARD AdS/CFT z-COORDINATE:
+  z parameterizes depth into anti-de Sitter bulk:
+  
+  ds² = (L²/z²) × (-dt² + dx² + dz²)
+  
+  • z → 0: CFT boundary (observable field theory)
+  • z → ∞: Deep AdS bulk (gravity dominates)
+  
+  Bulk fields φ(z,x) satisfy:
+  φ(z→0) → z^{{Δ-}} × J(x) + z^{{Δ+}} × ⟨O(x)⟩
+  
+  Where Δ± are conformal dimensions, J is source, ⟨O⟩ is response.
+
+UQFF z-SIMULATION:
+  Z_UQFF(z) = (1 + f_TRZ) × exp(-U_m(z)/(k_B×T))
+  
+  Where U_m(z) = (μ_j/L) × exp(z/ξ) grows exponentially with z.
+  
+  Physical interpretation:
+  • Near boundary (z→0): Z_UQFF ≈ 1 + f_TRZ (standard duality)
+  • Deep bulk (z→∞): Z_UQFF → 0 (ER bridges too energetic)
+  • z_crit: Phase transition where duality breaks
+
+═══════════════════════════════════════════════════════════════════════════════
+INPUTS:
+  z_start = {z_start:.4e} m (near CFT boundary)
+  z_end = {z_end:.4e} m (into AdS bulk)
+  n_points = {n_points}
+  T = {T:.2f} K
+  B_t = {B_t:.4e} T
+  B_crit = {B_crit:.4e} T
+  f_TRZ = {f_TRZ:.4f}
+  Frame = {frame_name}
+  ρ_UA = {rho_UA:.4e} J/m³
+  μ_j = {mu_j:.4e} J·m
+
+COMPUTED PARAMETERS:
+  L_UQFF = (ℏc/ρ_UA)^{{1/4}} = {L_UQFF:.4e} m
+  g_YM = √(4πG/L² × (1+f_TRZ)) = {g_YM:.4e}
+  ξ_UQFF = L × (1 - B_t/B_crit) = {xi_UQFF:.4e} m
+
+═══════════════════════════════════════════════════════════════════════════════
+SIMULATION RESULTS (Sample Points):
+
+  z (m)              Z_UQFF          U_m (J)
+  ─────────────────────────────────────────────
+  {z_values[0]:.4e}     {Z_UQFF_values[0]:.4e}     {U_m_values[0]:.4e}
+  {z_values[n_points//4]:.4e}     {Z_UQFF_values[n_points//4]:.4e}     {U_m_values[n_points//4]:.4e}
+  {z_values[n_points//2]:.4e}     {Z_UQFF_values[n_points//2]:.4e}     {U_m_values[n_points//2]:.4e}
+  {z_values[3*n_points//4]:.4e}     {Z_UQFF_values[3*n_points//4]:.4e}     {U_m_values[3*n_points//4]:.4e}
+  {z_values[-1]:.4e}     {Z_UQFF_values[-1]:.4e}     {U_m_values[-1]:.4e}
+
+═══════════════════════════════════════════════════════════════════════════════
+CRITICAL POINTS:
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ Z_boundary = {Z_boundary:.4e} (at z = {z_start:.4e} m)              │
+  │ Z_bulk = {Z_UQFF_values[-1]:.4e} (at z = {z_end:.4e} m)                │
+  │                                                                 │
+  │ z_crit = {z_crit:.4e} m (Z drops below 1% of boundary)          │
+  │ z_phase = {z_phase:.4e} m (maximum dZ/dz - phase transition)     │
+  └─────────────────────────────────────────────────────────────────┘
+
+PHYSICAL INTERPRETATION:
+  • From z = {z_start:.4e} to {z_end:.4e} m:
+    Z_UQFF drops from {Z_boundary:.4e} to {Z_UQFF_values[-1]:.4e}
+  
+  • {'✓ PHASE TRANSITION DETECTED at z = ' + f'{z_phase:.4e} m' if z_phase < np.inf else '✗ No phase transition in range'}
+    
+  • ER bridges (magnetic strings) exponentially suppress partition function
+    as we penetrate deeper into the AdS bulk.
+  
+  • UQFF interpretation: 
+    Aether density increases toward bulk interior, making entanglement
+    across the horizon energetically costly.
+
+Q-SCOPE TESTABILITY:
+  • Create holographic analog with L_UQFF ~ {L_UQFF:.4e} m
+  • Sweep entanglement distance (analog of z)
+  • Measure correlation decay vs. z
+  • Phase transition at z_crit confirms UQFF holography
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+    
+    # ═══════════════════════════════════════════════════════════════════════════════
     # HOLOGRAPHIC SUPERCONDUCTIVITY (AdS/CFT Applied to High-Tc Superconductors)
     # ═══════════════════════════════════════════════════════════════════════════════
     
