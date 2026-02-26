@@ -145484,6 +145484,726 @@ SOURCE15_WOLFRAM_CALCULATORS = {
 }
 
 
+# ========================================
+# SOURCE80: NGC 4945 Galaxy (Classes 750-759)
+# Edge-on Seyfert 2/starburst composite, d=3.8 Mpc
+# ========================================
+
+class NGC4945AGNCalculator:
+    """NGC 4945 Seyfert 2 AGN: Compton-thick with M_BH ~ 1.4×10^6 M_sun"""
+    G = 6.674e-8  # cm³/g/s²
+    c = 2.998e10  # cm/s
+    M_sun = 1.989e33  # g
+    sigma_T = 6.65e-25  # cm², Thomson cross section
+
+    def compute(self, r_pc=100.0, M_BH=1.4e6, L_Edd_ratio=0.1, N_H=1e24):
+        R_S = 2.0 * self.G * M_BH * self.M_sun / (self.c ** 2)  # cm
+        L_Edd = 1.26e38 * M_BH  # erg/s
+        L_bol = L_Edd_ratio * L_Edd
+        L_X_2_10 = 1e42  # erg/s (observed)
+        tau_Compton = self.sigma_T * N_H
+        L_intrinsic = L_X_2_10 * math.exp(min(tau_Compton, 10.0))
+        r_torus_in = 0.4 * math.sqrt(L_bol / 1e45)  # pc
+        L_bol_42 = L_bol / 1e42
+        return {
+            'value': L_bol_42,
+            'r_pc': r_pc, 'M_BH': M_BH, 'L_Edd_ratio': L_Edd_ratio,
+            'tau_Compton': tau_Compton, 'r_torus_pc': r_torus_in,
+            'units': '10^42 erg/s',
+            'equation': f"L_bol = η·L_Edd = {L_Edd_ratio}×{L_Edd:.3e} = {L_bol:.3e} erg/s"
+        }
+
+
+class NGC4945NuclearStarburstCalculator:
+    """NGC 4945 nuclear starburst: SFR ~ 4 M_sun/yr in central ~200 pc"""
+
+    def compute(self, r_pc=150.0, SFR_nuclear=4.0, r_sb_pc=200.0):
+        Sigma_SFR_0 = SFR_nuclear / (2.0 * math.pi * r_sb_pc ** 2)  # M_sun/yr/pc²
+        Sigma_SFR = Sigma_SFR_0 * math.exp(-r_pc / r_sb_pc)
+        M_gas_nuclear = 2e8  # M_sun
+        t_ff_yr = 5e6  # yr
+        epsilon = SFR_nuclear / (M_gas_nuclear / t_ff_yr)
+        L_IR = 1e11  # L_sun
+        result = Sigma_SFR * (1.0 + epsilon * 100.0)
+        return {
+            'value': result,
+            'Sigma_SFR': Sigma_SFR, 'SFR_nuclear': SFR_nuclear,
+            'epsilon': epsilon, 'L_IR_Lsun': L_IR,
+            'units': 'M_sun/yr/pc² (normalized)',
+            'equation': f"Σ_SFR(r) = Σ₀×exp(-r/r_sb) = {Sigma_SFR:.4e} M☉/yr/pc²"
+        }
+
+
+class NGC4945MolecularDiskCalculator:
+    """NGC 4945 molecular disk: M_H2 ~ 5×10^8 M_sun"""
+
+    def compute(self, r_kpc=1.0, M_H2=5e8, r_mol=1.5):
+        Sigma_0 = M_H2 / (2.0 * math.pi * r_mol ** 2 * 1e6)  # M_sun/pc²
+        Sigma_H2 = Sigma_0 * math.exp(-r_kpc / r_mol)
+        X_CO = 2e20  # cm^-2/(K·km/s)
+        L_CO = M_H2 / X_CO  # K·km/s·pc²
+        SFR = 4.0  # M_sun/yr
+        t_dep_Myr = M_H2 / SFR / 1e6
+        return {
+            'value': Sigma_H2,
+            'r_kpc': r_kpc, 'M_H2': M_H2, 'r_mol': r_mol,
+            't_dep_Myr': t_dep_Myr,
+            'units': 'M_sun/pc²',
+            'equation': f"Σ_H2(r) = Σ₀×exp(-r/r_mol) = {Sigma_H2:.4e} M☉/pc²"
+        }
+
+
+class NGC4945BarStructureCalculator:
+    """NGC 4945 bar-driven gas inflow: a_bar ~ 3 kpc"""
+
+    def compute(self, r_kpc=2.0, phi_rad=0.0, a_bar=3.0, Omega_bar=25.0):
+        A = 1000.0  # (km/s)², bar strength
+        Phi_bar = -A * r_kpc * math.cos(2.0 * phi_rad)
+        F_phi = -A * r_kpc * 2.0 * math.sin(2.0 * phi_rad)
+        torque = r_kpc * F_phi
+        v_circ = 200.0  # km/s
+        r_CR = v_circ / Omega_bar  # kpc, corotation
+        result = abs(Phi_bar) / 1000.0 * (1.0 + abs(torque) / 100.0)
+        return {
+            'value': result,
+            'r_kpc': r_kpc, 'phi_rad': phi_rad, 'a_bar': a_bar,
+            'Omega_bar': Omega_bar, 'r_CR_kpc': r_CR,
+            'units': 'bar potential (normalized)',
+            'equation': f"Φ_bar = -A×r×cos(2φ) = {Phi_bar:.2f} (km/s)²"
+        }
+
+
+class NGC4945DarkMatterHaloCalculator:
+    """NGC 4945 NFW halo: M_200 ~ 10^12 M_sun"""
+    G = 4.3e-6  # kpc·(km/s)²/M_sun
+
+    def compute(self, r_kpc=10.0, M_200=1e12, c=10.0):
+        H_0 = 70.0  # km/s/Mpc
+        rho_crit = 3.0 * H_0 ** 2 / (8.0 * math.pi * self.G * 1e6)
+        r_200 = (3.0 * M_200 / (4.0 * math.pi * 200.0 * rho_crit)) ** (1.0 / 3.0)
+        r_s = r_200 / c
+        f_c = math.log(1.0 + c) - c / (1.0 + c)
+        rho_s = M_200 / (4.0 * math.pi * r_s ** 3 * f_c)
+        x = r_kpc / r_s
+        rho_DM = rho_s / (x * (1.0 + x) ** 2) if x > 0 else rho_s
+        M_DM = 4.0 * math.pi * rho_s * r_s ** 3 * (math.log(1.0 + x) - x / (1.0 + x))
+        v_DM = math.sqrt(self.G * M_DM / r_kpc) if r_kpc > 0 else 0
+        return {
+            'value': rho_DM,
+            'r_kpc': r_kpc, 'M_200': M_200, 'c': c,
+            'v_circ_km_s': v_DM, 'M_enclosed': M_DM,
+            'units': 'M_sun/kpc³',
+            'equation': f"ρ_NFW(r) = ρ_s/[x(1+x)²] = {rho_DM:.4e} M☉/kpc³"
+        }
+
+
+class NGC4945MegamaserCalculator:
+    """NGC 4945 H2O megamaser at 22 GHz: L_maser ~ 10 L_sun"""
+    G = 4.3e-6  # kpc·(km/s)²/M_sun
+
+    def compute(self, r_pc=0.4, M_BH=1.4e6, L_maser=10.0):
+        r_kpc = r_pc / 1000.0
+        v_Kep = math.sqrt(self.G * M_BH / r_kpc) if r_kpc > 0 else 0  # km/s
+        N_H2O = 5e17  # cm^-2
+        T_b = 1e12  # K, brightness temperature
+        result = L_maser * (1.0 + v_Kep / 500.0 + T_b / 1e12)
+        return {
+            'value': result,
+            'r_pc': r_pc, 'M_BH': M_BH, 'L_maser': L_maser,
+            'v_Kep_km_s': v_Kep, 'T_b_K': T_b,
+            'units': 'L_sun (normalized)',
+            'equation': f"v_Kep = √(GM/r) = {v_Kep:.1f} km/s at r={r_pc} pc"
+        }
+
+
+class NGC4945SupernovaRateCalculator:
+    """NGC 4945 SN rate from starburst: Γ_SN ~ 0.04 yr^-1"""
+
+    def compute(self, SFR=4.0, E_SN=1e51):
+        Gamma_SN_cc = SFR / 100.0  # yr^-1
+        Gamma_SN_Ia = 0.003 * Gamma_SN_cc
+        Gamma_SN_total = Gamma_SN_cc + Gamma_SN_Ia
+        E_dot_SN = Gamma_SN_total * E_SN / 3.156e7  # erg/s
+        M_ej = 10.0  # M_sun
+        Z_dot = Gamma_SN_total * 0.1 * M_ej  # M_sun/yr
+        return {
+            'value': Gamma_SN_total,
+            'SFR': SFR, 'E_SN': E_SN,
+            'Gamma_cc': Gamma_SN_cc, 'Gamma_Ia': Gamma_SN_Ia,
+            'E_dot_SN_erg_s': E_dot_SN, 'Z_dot_Msun_yr': Z_dot,
+            'units': 'yr^-1',
+            'equation': f"Γ_SN = SFR/100 = {Gamma_SN_total:.4f} yr⁻¹"
+        }
+
+
+class NGC4945MagneticFieldCalculator:
+    """NGC 4945 magnetic field: B ~ 50 μG in nuclear region"""
+
+    def compute(self, r_kpc=2.0, z_kpc=0.5, B_0=50.0, r_B=2.0):
+        B_r = B_0 * math.exp(-r_kpc / r_B)
+        z_B = 1.0  # kpc
+        B_tot = B_r * math.exp(-abs(z_kpc) / z_B)  # μG
+        f_ord = 0.5
+        B_ord = f_ord * B_tot
+        B_rand = math.sqrt(1.0 - f_ord ** 2) * B_tot
+        B_G = B_tot * 1e-6
+        P_mag = B_G ** 2 / (8.0 * math.pi)  # erg/cm³
+        return {
+            'value': B_tot,
+            'r_kpc': r_kpc, 'z_kpc': z_kpc, 'B_0': B_0,
+            'B_ordered': B_ord, 'B_random': B_rand, 'P_mag': P_mag,
+            'units': 'μG',
+            'equation': f"B(r,z) = B₀×exp(-r/r_B)×exp(-|z|/z_B) = {B_tot:.2f} μG"
+        }
+
+
+class NGC4945XRayBinaryCalculator:
+    """NGC 4945 X-ray binary population: L_X ~ 10^39-10^40 erg/s"""
+    c = 2.998e10  # cm/s
+    M_sun = 1.989e33  # g
+    yr_s = 3.156e7
+
+    def compute(self, M_BH_XRB=10.0, M_dot_Edd_ratio=0.1):
+        M_dot_Edd = 2.2e-8 * M_BH_XRB  # M_sun/yr
+        M_dot = M_dot_Edd_ratio * M_dot_Edd
+        eta = 0.1
+        L_X = eta * M_dot * self.M_sun / self.yr_s * self.c ** 2  # erg/s
+        SFR = 4.0
+        N_XRB = SFR * 50.0  # empirical
+        L_X_39 = L_X / 1e39
+        return {
+            'value': L_X_39,
+            'M_BH_XRB': M_BH_XRB, 'M_dot_Edd_ratio': M_dot_Edd_ratio,
+            'M_dot': M_dot, 'N_XRB': N_XRB,
+            'units': '10^39 erg/s',
+            'equation': f"L_X = η×Ṁ×c² = {L_X:.3e} erg/s"
+        }
+
+
+class NGC4945QuantumVacuumCalculator:
+    """NGC 4945 quantum vacuum: Casimir effect + vacuum polarization"""
+    hbar = 1.055e-27  # erg·s
+    c = 2.998e10  # cm/s
+    alpha = 1.0 / 137.0
+
+    def compute(self, a_nm=1.0, B_microG=50.0):
+        a_cm = a_nm * 1e-7
+        rho_Casimir = -self.hbar * self.c * math.pi ** 2 / (720.0 * a_cm ** 4)
+        B_crit = 4.4e13  # G
+        B_G = B_microG * 1e-6
+        Delta_rho_vac = self.alpha * abs(rho_Casimir) * (B_G / B_crit) ** 2
+        rho_vac_total = rho_Casimir + Delta_rho_vac
+        P_vac = -rho_vac_total
+        result = abs(rho_vac_total) / 1e-15
+        return {
+            'value': result,
+            'a_nm': a_nm, 'B_microG': B_microG,
+            'rho_Casimir': rho_Casimir, 'P_vac': P_vac,
+            'units': '10^-15 erg/cm³',
+            'equation': f"ρ_Casimir = -ℏcπ²/(720a⁴) = {rho_Casimir:.4e} erg/cm³"
+        }
+
+
+SOURCE80_WOLFRAM_CALCULATORS = {
+    'NGC4945AGNCalculator': NGC4945AGNCalculator(),
+    'NGC4945NuclearStarburstCalculator': NGC4945NuclearStarburstCalculator(),
+    'NGC4945MolecularDiskCalculator': NGC4945MolecularDiskCalculator(),
+    'NGC4945BarStructureCalculator': NGC4945BarStructureCalculator(),
+    'NGC4945DarkMatterHaloCalculator': NGC4945DarkMatterHaloCalculator(),
+    'NGC4945MegamaserCalculator': NGC4945MegamaserCalculator(),
+    'NGC4945SupernovaRateCalculator': NGC4945SupernovaRateCalculator(),
+    'NGC4945MagneticFieldCalculator': NGC4945MagneticFieldCalculator(),
+    'NGC4945XRayBinaryCalculator': NGC4945XRayBinaryCalculator(),
+    'NGC4945QuantumVacuumCalculator': NGC4945QuantumVacuumCalculator(),
+}
+
+
+# ========================================
+# SOURCE72: Centaurus A / NGC 5128 (Classes 670-679)
+# Radio galaxy, AGN, relativistic jets, merger remnant, d=3.8 Mpc
+# ========================================
+
+class CenAAGNAccretionDiskCalculator:
+    """Centaurus A AGN accretion disk: M_BH ~ 5.5×10^7 M_sun, Shakura-Sunyaev"""
+    M_sun = 1.989e30  # kg
+    yr_s = 3.154e7
+
+    def compute(self, eta=0.1, M_dot=0.01, c=2.998e8, M_BH=5.5e7):
+        M_dot_kg_s = M_dot * self.M_sun / self.yr_s
+        L_disk = eta * M_dot_kg_s * c ** 2  # W
+        L_Edd = 1.26e38 * M_BH  # erg/s
+        edd_ratio = L_disk / (L_Edd * 1e-7)  # convert W to erg/s
+        return {
+            'value': L_disk,
+            'eta': eta, 'M_dot': M_dot, 'M_BH': M_BH,
+            'L_Edd': L_Edd, 'edd_ratio': edd_ratio,
+            'units': 'W',
+            'equation': f"L_disk = η×Ṁ×c² = {eta}×{M_dot_kg_s:.3e}×c² = {L_disk:.3e} W"
+        }
+
+
+class CenARelativisticJetCalculator:
+    """Centaurus A relativistic jet: v ~ 0.5c, P_jet kinetic power"""
+
+    def compute(self, rho_jet=1e-20, v_jet_frac=0.5, c=2.998e8, r_jet=1e15):
+        v_jet_ms = v_jet_frac * c
+        A_jet = math.pi * r_jet ** 2
+        P_jet = 0.5 * rho_jet * v_jet_ms ** 3 * A_jet  # W
+        gamma = 1.0 / math.sqrt(1.0 - v_jet_frac ** 2) if v_jet_frac < 1 else float('inf')
+        return {
+            'value': P_jet,
+            'rho_jet': rho_jet, 'v_jet_frac': v_jet_frac,
+            'r_jet': r_jet, 'gamma': gamma,
+            'units': 'W',
+            'equation': f"P_jet = ½ρv³A = {P_jet:.3e} W, Γ = {gamma:.2f}"
+        }
+
+
+class CenARadioLobeCalculator:
+    """Centaurus A radio lobes: B ~ nG, 300 kpc extent"""
+    mu_0 = 4.0 * math.pi * 1e-7
+
+    def compute(self, B_lobe=1e-9, r_lobe=1e22, V_factor=0.5):
+        V_lobe = (4.0 / 3.0) * math.pi * r_lobe ** 3 * V_factor
+        u_mag = (B_lobe ** 2) / (2.0 * self.mu_0)  # J/m³
+        E_lobe = u_mag * V_lobe  # J
+        return {
+            'value': E_lobe,
+            'B_lobe': B_lobe, 'r_lobe': r_lobe, 'V_factor': V_factor,
+            'u_mag': u_mag, 'V_lobe': V_lobe,
+            'units': 'J',
+            'equation': f"E_lobe = (B²/2μ₀)×V = {E_lobe:.3e} J"
+        }
+
+
+class CenAXRayEmissionCalculator:
+    """Centaurus A X-ray emission: thermal bremsstrahlung from hot gas"""
+
+    def compute(self, T_gas=1e7, n_e=1e4, n_H=1e4, V_gas=1e60):
+        Lambda_T = 1e-27 * math.sqrt(T_gas)  # W·m³
+        L_X = Lambda_T * n_e * n_H * V_gas  # W
+        EM = n_e * n_H * V_gas  # emission measure
+        return {
+            'value': L_X,
+            'T_gas': T_gas, 'n_e': n_e, 'n_H': n_H, 'V_gas': V_gas,
+            'Lambda_T': Lambda_T, 'EM': EM,
+            'units': 'W',
+            'equation': f"L_X = Λ(T)×n_e×n_H×V = {L_X:.3e} W"
+        }
+
+
+class CenAMergerDynamicsCalculator:
+    """Centaurus A merger dynamics: E_merger kinetic energy"""
+    M_sun = 1.989e30  # kg
+
+    def compute(self, M_1=1e12, M_2=1e11, v_rel=300.0, t_merger=0.2):
+        M_reduced = (M_1 * M_2) / (M_1 + M_2)
+        M_reduced_kg = M_reduced * self.M_sun
+        v_rel_ms = v_rel * 1e3
+        E_merger = 0.5 * M_reduced_kg * v_rel_ms ** 2  # J
+        return {
+            'value': E_merger,
+            'M_1': M_1, 'M_2': M_2, 'v_rel': v_rel, 't_merger': t_merger,
+            'M_reduced': M_reduced,
+            'units': 'J',
+            'equation': f"E_merger = ½μv² = {E_merger:.3e} J"
+        }
+
+
+class CenADustLaneCalculator:
+    """Centaurus A dust lane: optical extinction through merger remnant"""
+
+    def compute(self, N_H=1e22, wavelength=0.5, A_V=2.0):
+        tau_V = A_V / 1.086
+        lambda_V = 0.55  # μm
+        tau_lambda = tau_V * (lambda_V / wavelength) ** 1.3
+        E_BV = A_V / 3.1  # R_V = 3.1
+        return {
+            'value': tau_lambda,
+            'N_H': N_H, 'wavelength': wavelength, 'A_V': A_V,
+            'tau_V': tau_V, 'E_BV': E_BV,
+            'units': 'optical depth',
+            'equation': f"τ(λ) = τ_V×(λ_V/λ)^1.3 = {tau_lambda:.3f}"
+        }
+
+
+class CenAStarburstCalculator:
+    """Centaurus A starburst: triggered by recent merger"""
+
+    def compute(self, nu=0.01, M_gas=1e9, t_dep=1e8, r_burst=1.0):
+        SFR_burst = nu * M_gas / t_dep  # M_sun/yr
+        r_burst_pc = r_burst * 1e3
+        area_pc2 = math.pi * r_burst_pc ** 2
+        Sigma_SFR = SFR_burst / area_pc2  # M_sun/yr/pc²
+        return {
+            'value': SFR_burst,
+            'nu': nu, 'M_gas': M_gas, 't_dep': t_dep, 'r_burst': r_burst,
+            'Sigma_SFR': Sigma_SFR,
+            'units': 'M_sun/yr',
+            'equation': f"SFR = ν×M_gas/t_dep = {SFR_burst:.4f} M☉/yr"
+        }
+
+
+class CenACosmicRayCalculator:
+    """Centaurus A cosmic rays: P_CR pressure in halo"""
+
+    def compute(self, u_CR=1e-13, r_halo=100.0, gamma_CR=4.0/3.0):
+        kpc_to_m = 3.086e19
+        r_halo_m = r_halo * kpc_to_m
+        V_halo = (4.0 / 3.0) * math.pi * r_halo_m ** 3
+        P_CR = (gamma_CR - 1.0) * u_CR  # J/m³
+        F_CR = P_CR * V_halo  # total energy
+        D = 1e28  # m²/s diffusion
+        t_esc = 3e15  # s (~1 Myr)
+        L_diff = math.sqrt(D * t_esc) / kpc_to_m  # kpc
+        return {
+            'value': F_CR,
+            'u_CR': u_CR, 'r_halo': r_halo, 'gamma_CR': gamma_CR,
+            'P_CR': P_CR, 'L_diff_kpc': L_diff,
+            'units': 'J',
+            'equation': f"F_CR = P_CR×V = (γ-1)×u_CR×V = {F_CR:.3e} J"
+        }
+
+
+class CenAGravitationalWaveCalculator:
+    """Centaurus A GW emission from potential SMBH binary"""
+    M_sun = 1.989e30  # kg
+    Mpc_to_m = 3.086e22
+
+    def compute(self, M_chirp=1e8, f_GW=1e-7, r_obs=3.8, G=6.674e-11, c=2.998e8):
+        M_chirp_kg = M_chirp * self.M_sun
+        r_obs_m = r_obs * self.Mpc_to_m
+        prefactor = (4.0 * G) / (c ** 4)
+        mass_term = M_chirp_kg ** (5.0 / 3.0) / r_obs_m
+        freq_term = (math.pi * f_GW) ** (2.0 / 3.0)
+        h_GW = prefactor * mass_term * freq_term
+        return {
+            'value': h_GW,
+            'M_chirp': M_chirp, 'f_GW': f_GW, 'r_obs': r_obs,
+            'units': 'strain (dimensionless)',
+            'equation': f"h_GW = (4G/c⁴)×(M_c^5/3/r)×(πf)^2/3 = {h_GW:.4e}"
+        }
+
+
+class CenAQuantumVacuumCalculator:
+    """Centaurus A quantum vacuum: ρ_vac with cosmological correction"""
+
+    def compute(self, hbar=1.055e-34, c=2.998e8, wavelength=1e-10, z_cosm=0.00183):
+        lambda_4 = wavelength ** 4
+        z_factor = (1.0 + z_cosm) ** 4
+        rho_vac = (hbar * c / lambda_4) * z_factor  # J/m³
+        a = wavelength
+        F_Casimir = -(math.pi ** 2 * hbar * c) / (240.0 * a ** 4)  # N/m²
+        return {
+            'value': rho_vac,
+            'hbar': hbar, 'c': c, 'wavelength': wavelength, 'z_cosm': z_cosm,
+            'F_Casimir': F_Casimir,
+            'units': 'J/m³',
+            'equation': f"ρ_vac = (ℏc/λ⁴)×(1+z)⁴ = {rho_vac:.4e} J/m³"
+        }
+
+
+SOURCE72_WOLFRAM_CALCULATORS = {
+    'CenAAGNAccretionDiskCalculator': CenAAGNAccretionDiskCalculator(),
+    'CenARelativisticJetCalculator': CenARelativisticJetCalculator(),
+    'CenARadioLobeCalculator': CenARadioLobeCalculator(),
+    'CenAXRayEmissionCalculator': CenAXRayEmissionCalculator(),
+    'CenAMergerDynamicsCalculator': CenAMergerDynamicsCalculator(),
+    'CenADustLaneCalculator': CenADustLaneCalculator(),
+    'CenAStarburstCalculator': CenAStarburstCalculator(),
+    'CenACosmicRayCalculator': CenACosmicRayCalculator(),
+    'CenAGravitationalWaveCalculator': CenAGravitationalWaveCalculator(),
+    'CenAQuantumVacuumCalculator': CenAQuantumVacuumCalculator(),
+}
+
+
+# ========================================
+# SOURCE83: LENR Dynamics (18 Classes)
+# Low Energy Nuclear Reactions UQFF Integration
+# ========================================
+
+class LENRDynamicVacuumCalculator:
+    """LENR vacuum energy oscillation: E_vac = amp × ρ_vac × sin(freq×t)"""
+
+    def compute(self, t=0.0, amplitude=1e-10, rho_vac=7.09e-36, frequency=1e-15):
+        E_vac = amplitude * rho_vac * math.sin(frequency * t)
+        return {
+            'value': E_vac,
+            't': t, 'amplitude': amplitude, 'rho_vac': rho_vac, 'frequency': frequency,
+            'units': 'J/m³',
+            'equation': f"E_vac = amp×ρ_vac×sin(freq×t) = {E_vac:.4e} J/m³"
+        }
+
+
+class LENRQuantumCouplingCalculator:
+    """LENR quantum coupling: F_q = g×(ℏ²)/(M×r²)×cos(t/10^6)"""
+    hbar = 1.0546e-34  # J·s
+
+    def compute(self, t=0.0, coupling=1e-40, M=1.989e30, r=1e4):
+        F_q = coupling * (self.hbar ** 2) / (M * r ** 2) * math.cos(t / 1e6)
+        return {
+            'value': F_q,
+            't': t, 'coupling': coupling, 'M': M, 'r': r,
+            'units': 'N',
+            'equation': f"F_q = g×ℏ²/(Mr²)×cos(t/10⁶) = {F_q:.4e} N"
+        }
+
+
+class LENRPlasmaFrequencyCalculator:
+    """LENR plasma frequency: Ω = √(4π×ρ_e×e²/m_e)"""
+
+    def compute(self, rho_e=1e29, e=1.602e-19, m_e=9.109e-31):
+        Omega = math.sqrt(4.0 * math.pi * rho_e * e ** 2 / m_e)
+        return {
+            'value': Omega,
+            'rho_e': rho_e, 'e': e, 'm_e': m_e,
+            'units': 'rad/s',
+            'equation': f"Ω = √(4π×n_e×e²/m_e) = {Omega:.4e} rad/s"
+        }
+
+
+class LENRElectricFieldCalculator:
+    """LENR electric field from plasma frequency: E = (m_e×c²/e)×(Ω/c)"""
+
+    def compute(self, m_e=9.109e-31, c=3e8, e=1.602e-19, Omega=1e14):
+        E_field = (m_e * c ** 2 / e) * (Omega / c)
+        return {
+            'value': E_field,
+            'm_e': m_e, 'c': c, 'e': e, 'Omega': Omega,
+            'units': 'V/m',
+            'equation': f"E = (m_e×c²/e)×(Ω/c) = {E_field:.4e} V/m"
+        }
+
+
+class LENRNeutronRateCalculator:
+    """LENR neutron production rate via Fermi golden rule"""
+
+    def compute(self, G_F=1.166e-5, beta=2.53, m_e=9.109e-31, c=3e8, 
+                hbar=1.0546e-34, W=0.78e6 * 1.602e-19, Delta=1.3e6 * 1.602e-19):
+        G_F_scaled = G_F * (1.973e-7) ** (-2)
+        m_tilde = beta * m_e
+        theta = 1.0 if W > Delta else 0.0
+        numerator = G_F_scaled ** 2 * (m_tilde * c ** 2) ** 4
+        denominator = 2.0 * math.pi * hbar ** 3
+        eta = (numerator / denominator) * (W - Delta) ** 2 * theta
+        return {
+            'value': eta,
+            'G_F': G_F, 'beta': beta, 'W_J': W, 'Delta_J': Delta,
+            'm_tilde': m_tilde, 'theta': theta,
+            'units': 's^-1',
+            'equation': f"η = (G_F²×(m̃c²)⁴)/(2πℏ³)×(W-Δ)²×θ = {eta:.4e} s⁻¹"
+        }
+
+
+class LENRUmMagneticCalculator:
+    """LENR magnetic energy: Um = (μ_j/r)×(1-exp(-γt×cos(πt_n)))×factors"""
+
+    def compute(self, t=0.0, r=1e-10, gamma=0.00005, t_n=0.0, P_scm=1.0, 
+                E_react_0=1e46, alpha=0.001, f_h=0.01, f_q=0.01):
+        omega_c = 2.0 * math.pi / 3.96e8
+        mu_j = (1e3 + 0.4 * math.sin(omega_c * t)) * 3.38e20
+        t_days = t / 86400.0
+        E_react = E_react_0 * math.exp(-alpha * t_days)
+        term1 = mu_j / r
+        term2 = 1.0 - math.exp(-gamma * t_days * math.cos(math.pi * t_n))
+        factor = P_scm * E_react * (1.0 + 1e13 * f_h) * (1.0 + f_q)
+        Um = term1 * term2 * factor
+        return {
+            'value': Um,
+            't': t, 'r': r, 'gamma': gamma, 't_n': t_n,
+            'mu_j': mu_j, 'E_react': E_react,
+            'units': 'J',
+            'equation': f"Um = (μ_j/r)×(1-e^(-γt×cos(πt_n)))×factors = {Um:.4e} J"
+        }
+
+
+class LENRUg1GravityCalculator:
+    """LENR unified gravity: Ug1 = G×M_s/r²×δ_n×cos(ω_s×t)"""
+    G = 6.674e-11
+
+    def compute(self, t=0.0, M_s=1.989e30, r=1e-10, phi=1.0, n=1.0, omega_s=2.65e-6):
+        delta_n = phi * (2.0 * math.pi) ** (n / 6.0)
+        Ug1 = self.G * M_s / (r ** 2) * delta_n * math.cos(omega_s * t)
+        return {
+            'value': Ug1,
+            't': t, 'M_s': M_s, 'r': r, 'phi': phi, 'n': n, 'omega_s': omega_s,
+            'delta_n': delta_n,
+            'units': 'm/s²',
+            'equation': f"Ug1 = G×M/r²×δ_n×cos(ωt) = {Ug1:.4e} m/s²"
+        }
+
+
+class LENRUiInertialCalculator:
+    """LENR inertial energy: Ui = λ_I×(ρ_vac/ρ_plasm)×ω_i×cos(π×t_n)"""
+
+    def compute(self, lambda_I=1.0, rho_vac=7.09e-36, rho_plasm=1e-9, omega_i=1e-8, t_n=0.0):
+        Ui = lambda_I * (rho_vac / rho_plasm) * omega_i * math.cos(math.pi * t_n)
+        return {
+            'value': Ui,
+            'lambda_I': lambda_I, 'rho_vac': rho_vac, 'rho_plasm': rho_plasm,
+            'omega_i': omega_i, 't_n': t_n,
+            'units': 'J/m³',
+            'equation': f"Ui = λ×(ρ_vac/ρ_plasm)×ω×cos(πt_n) = {Ui:.4e}"
+        }
+
+
+class LENREReactEnergyCalculator:
+    """LENR reactor energy decay: E_react = E_0×exp(-α×t/day)"""
+
+    def compute(self, t=0.0, E_0=1e46, alpha=0.001):
+        t_days = t / 86400.0
+        E_react = E_0 * math.exp(-alpha * t_days)
+        return {
+            'value': E_react,
+            't': t, 'E_0': E_0, 'alpha': alpha, 't_days': t_days,
+            'units': 'J',
+            'equation': f"E_react = E₀×exp(-α×t) = {E_react:.4e} J"
+        }
+
+
+class LENRHydrideScenarioCalculator:
+    """LENR hydride scenario: E_field = 2×10^11 V/m, η = 10^13 cm^-2/s"""
+
+    def compute(self, E_field=2e11):
+        normalized = E_field / 1e11
+        return {
+            'value': normalized,
+            'E_field': E_field,
+            'units': 'normalized',
+            'equation': f"E/E_ref = {E_field:.2e}/(10¹¹) = {normalized:.2f}"
+        }
+
+
+class LENRWiresScenarioCalculator:
+    """LENR exploding wires scenario: I_Alfven = 17 kA, E = 28.8×10^11 V/m"""
+
+    def compute(self, I_Alfven=17e3, E_field=28.8e11):
+        result = (I_Alfven / 1e4) * (E_field / 1e11)
+        return {
+            'value': result,
+            'I_Alfven': I_Alfven, 'E_field': E_field,
+            'units': 'normalized product',
+            'equation': f"(I/10⁴)×(E/10¹¹) = {result:.2f}"
+        }
+
+
+class LENRCoronaScenarioCalculator:
+    """LENR solar corona scenario: B = 1 kG, R = 10^4 km"""
+
+    def compute(self, B=1e4, R=1e7, v_over_c=0.01):
+        result = (B / 1e4) * (R / 1e7) * v_over_c
+        return {
+            'value': result,
+            'B_Gauss': B, 'R_m': R, 'v_over_c': v_over_c,
+            'units': 'normalized',
+            'equation': f"(B/kG)×(R/10⁷m)×(v/c) = {result:.4f}"
+        }
+
+
+class LENRThresholdEnergyCalculator:
+    """LENR electron threshold: Q = 0.78 MeV"""
+    eV_to_J = 1.602e-19
+
+    def compute(self, Q_MeV=0.78):
+        Q_J = Q_MeV * 1e6 * self.eV_to_J
+        return {
+            'value': Q_MeV,
+            'Q_J': Q_J,
+            'units': 'MeV',
+            'equation': f"Q = {Q_MeV} MeV = {Q_J:.4e} J"
+        }
+
+
+class LENRFermiConstantCalculator:
+    """LENR Fermi constant: G_F = 1.166×10^-5 GeV^-2"""
+
+    def compute(self, G_F=1.166e-5):
+        scaled = G_F * 1e5
+        return {
+            'value': G_F,
+            'scaled': scaled,
+            'units': 'GeV^-2',
+            'equation': f"G_F = {G_F:.4e} GeV⁻²"
+        }
+
+
+class LENRMassRenormalizationCalculator:
+    """LENR mass renormalization: m̃ = β×m_e, β = 2.53"""
+
+    def compute(self, beta=2.53, m_e=9.109e-31):
+        m_tilde = beta * m_e
+        return {
+            'value': m_tilde,
+            'beta': beta, 'm_e': m_e,
+            'units': 'kg',
+            'equation': f"m̃ = β×m_e = {beta}×{m_e:.4e} = {m_tilde:.4e} kg"
+        }
+
+
+class LENRElectronDensityCalculator:
+    """LENR electron density for various scenarios"""
+
+    def compute(self, rho_e=1e29):
+        normalized = rho_e / 1e29
+        return {
+            'value': rho_e,
+            'normalized': normalized,
+            'units': 'm^-3',
+            'equation': f"n_e = {rho_e:.2e} m⁻³ (normalized: {normalized:.2f})"
+        }
+
+
+class LENRTransmutationRateCalculator:
+    """LENR transmutation rate: R = η×σ_transmute"""
+
+    def compute(self, eta=1e13, sigma_transmute=1e-24):
+        rate = eta * sigma_transmute
+        return {
+            'value': rate,
+            'eta': eta, 'sigma_transmute': sigma_transmute,
+            'units': 's^-1',
+            'equation': f"R = η×σ = {eta:.2e}×{sigma_transmute:.2e} = {rate:.4e} s⁻¹"
+        }
+
+
+class LENREnergyDensityCalculator:
+    """LENR energy density: ρ_E = ρ_vac×E_react(t)"""
+
+    def compute(self, t=0.0, rho_vac=7.09e-36, E_0=1e46, alpha=0.001):
+        t_days = t / 86400.0
+        E_react = E_0 * math.exp(-alpha * t_days)
+        rho_E = rho_vac * E_react
+        return {
+            'value': rho_E,
+            't': t, 'rho_vac': rho_vac, 'E_0': E_0, 'alpha': alpha,
+            'E_react': E_react,
+            'units': 'J²/m³',
+            'equation': f"ρ_E = ρ_vac×E_react = {rho_E:.4e}"
+        }
+
+
+SOURCE83_WOLFRAM_CALCULATORS = {
+    'LENRDynamicVacuumCalculator': LENRDynamicVacuumCalculator(),
+    'LENRQuantumCouplingCalculator': LENRQuantumCouplingCalculator(),
+    'LENRPlasmaFrequencyCalculator': LENRPlasmaFrequencyCalculator(),
+    'LENRElectricFieldCalculator': LENRElectricFieldCalculator(),
+    'LENRNeutronRateCalculator': LENRNeutronRateCalculator(),
+    'LENRUmMagneticCalculator': LENRUmMagneticCalculator(),
+    'LENRUg1GravityCalculator': LENRUg1GravityCalculator(),
+    'LENRUiInertialCalculator': LENRUiInertialCalculator(),
+    'LENREReactEnergyCalculator': LENREReactEnergyCalculator(),
+    'LENRHydrideScenarioCalculator': LENRHydrideScenarioCalculator(),
+    'LENRWiresScenarioCalculator': LENRWiresScenarioCalculator(),
+    'LENRCoronaScenarioCalculator': LENRCoronaScenarioCalculator(),
+    'LENRThresholdEnergyCalculator': LENRThresholdEnergyCalculator(),
+    'LENRFermiConstantCalculator': LENRFermiConstantCalculator(),
+    'LENRMassRenormalizationCalculator': LENRMassRenormalizationCalculator(),
+    'LENRElectronDensityCalculator': LENRElectronDensityCalculator(),
+    'LENRTransmutationRateCalculator': LENRTransmutationRateCalculator(),
+    'LENREnergyDensityCalculator': LENREnergyDensityCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -145565,4 +146285,47 @@ __all__.extend([
     'SgrAStarSchwarzschildRadiusCalculator',
     'SgrAStarMagneticDecayCalculator',
     'SOURCE15_WOLFRAM_CALCULATORS',
-])
+    # Source80 NGC 4945 Galaxy (Feb 26, 2026) - 10 Calculator Classes
+    'NGC4945AGNCalculator',
+    'NGC4945NuclearStarburstCalculator',
+    'NGC4945MolecularDiskCalculator',
+    'NGC4945BarStructureCalculator',
+    'NGC4945DarkMatterHaloCalculator',
+    'NGC4945MegamaserCalculator',
+    'NGC4945SupernovaRateCalculator',
+    'NGC4945MagneticFieldCalculator',
+    'NGC4945XRayBinaryCalculator',
+    'NGC4945QuantumVacuumCalculator',
+    'SOURCE80_WOLFRAM_CALCULATORS',
+    # Source72 Centaurus A / NGC 5128 (Feb 26, 2026) - 10 Calculator Classes
+    'CenAAGNAccretionDiskCalculator',
+    'CenARelativisticJetCalculator',
+    'CenARadioLobeCalculator',
+    'CenAXRayEmissionCalculator',
+    'CenAMergerDynamicsCalculator',
+    'CenADustLaneCalculator',
+    'CenAStarburstCalculator',
+    'CenACosmicRayCalculator',
+    'CenAGravitationalWaveCalculator',
+    'CenAQuantumVacuumCalculator',
+    'SOURCE72_WOLFRAM_CALCULATORS',
+    # Source83 LENR Dynamics (Feb 26, 2026) - 18 Calculator Classes
+    'LENRDynamicVacuumCalculator',
+    'LENRQuantumCouplingCalculator',
+    'LENRPlasmaFrequencyCalculator',
+    'LENRElectricFieldCalculator',
+    'LENRNeutronRateCalculator',
+    'LENRUmMagneticCalculator',
+    'LENRUg1GravityCalculator',
+    'LENRUiInertialCalculator',
+    'LENREReactEnergyCalculator',
+    'LENRHydrideScenarioCalculator',
+    'LENRWiresScenarioCalculator',
+    'LENRCoronaScenarioCalculator',
+    'LENRThresholdEnergyCalculator',
+    'LENRFermiConstantCalculator',
+    'LENRMassRenormalizationCalculator',
+    'LENRElectronDensityCalculator',
+    'LENRTransmutationRateCalculator',
+    'LENREnergyDensityCalculator',
+    'SOURCE83_WOLFRAM_CALCULATORS',
