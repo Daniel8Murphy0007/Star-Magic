@@ -118887,6 +118887,571 @@ class UQFFFrameworkCalculator(SelfExpandingMixin):
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# UQFF BLACK HOLE MERGER DYNAMICS CALCULATOR (Feb 26, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# GW power with UQFF aether damping corrections
+# From uqff_black_hole_merger_dynamics_impl.cpp
+# P_UQFF = P_GW × aether × (1-B/B_crit) × (1-f_TRZ) × exp(-U_m/E_bind)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UQFFBlackHoleMergerDynamicsCalculator(SelfExpandingMixin):
+    """
+    UQFF Black Hole Merger Dynamics Calculator.
+    
+    Computes GW emission power with UQFF corrections for binary mergers.
+    
+    Key Physics:
+        - Step 1: Standard P_GW = (32/5)(G⁴/c⁵)(μ²M²)/a⁵ (Peters-Mathews)
+        - Step 2: Aether damping P' = P × exp(-ρ_UA a c²/(G M_tot))
+        - Step 3: Horizon screening P'' = P' × (1 - B_t/B_crit)
+        - Step 4: TRZ negentropy P''' = P'' × (1 - f_TRZ)
+        - Step 5: String binding P_UQFF = P''' × exp(-U_m/E_bind)
+    
+    Reference:
+        - Peters-Mathews (1964) quadrupole formula
+        - UQFF BH Merger Dynamics Module (Star Magic)
+    """
+    
+    M_sun = 1.989e30  # Solar mass [kg]
+    
+    def __init__(self):
+        self.params = {
+            'G': 6.67430e-11,
+            'c': 2.99792458e8,
+            'rho_vac_UA': 7.09e-36,
+            'B_crit': 4.4e13,           # Magnetar critical field [T]
+            'f_TRZ': 0.1,
+            'U_m': 1e40,                # String binding energy [J]
+            'gamma': 5e-5,              # day⁻¹
+            't_n': 0.5,
+            'B_t': 1e12,                # Binary field [T]
+        }
+        self.additional_mods = []
+    
+    def compute_mu(self, M1: float, M2: float) -> float:
+        """Reduced mass μ = M₁M₂/(M₁+M₂)"""
+        return (M1 * M2) / (M1 + M2)
+    
+    def compute_P_GW_standard(self, mu: float, M_tot: float, a: float) -> float:
+        """
+        Step 1: Standard GW power (Peters-Mathews quadrupole formula)
+        P_GW = (32/5) × (G⁴/c⁵) × (μ² M_tot²) / a⁵
+        """
+        G, c = self.params['G'], self.params['c']
+        return (32.0/5.0) * (G**4 / c**5) * (mu**2 * M_tot**2) / a**5
+    
+    def compute_P_GW_prime(self, P_GW: float, a: float, M_tot: float) -> float:
+        """
+        Step 2: Aether damping
+        P' = P_GW × exp(-ρ_UA × a × c² / (G × M_tot))
+        """
+        G, c = self.params['G'], self.params['c']
+        rho_UA = self.params['rho_vac_UA']
+        exponent = -(rho_UA * a * c**2) / (G * M_tot)
+        if exponent < -700:
+            return 0.0
+        return P_GW * np.exp(exponent)
+    
+    def compute_P_GW_double_prime(self, P_GW_prime: float) -> float:
+        """Step 3: Horizon screening P'' = P' × (1 - B_t/B_crit)"""
+        factor = 1.0 - self.params['B_t'] / self.params['B_crit']
+        return P_GW_prime * max(factor, 0.0)
+    
+    def compute_P_GW_triple_prime(self, P_GW_double_prime: float) -> float:
+        """Step 4: TRZ negentropy P''' = P'' × (1 - f_TRZ)"""
+        return P_GW_double_prime * (1.0 - self.params['f_TRZ'])
+    
+    def compute_P_GW_UQFF(self, P_GW_triple_prime: float, M_tot: float, a: float) -> float:
+        """
+        Step 5: String binding suppression
+        P_UQFF = P''' × exp(-U_m / E_bind)
+        where E_bind = G M_tot² / a
+        """
+        G = self.params['G']
+        U_m = self.params['U_m']
+        E_bind = G * M_tot**2 / a
+        if E_bind == 0:
+            return 0.0
+        exponent = -U_m / E_bind
+        if exponent < -700:
+            return 0.0
+        return P_GW_triple_prime * np.exp(exponent)
+    
+    def compute_full_P_GW_UQFF(self, M1: float, M2: float, a: float,
+                               noise_level: float = 0.0) -> float:
+        """Complete UQFF GW power computation."""
+        mu = self.compute_mu(M1, M2)
+        M_tot = M1 + M2
+        
+        P_GW = self.compute_P_GW_standard(mu, M_tot, a)
+        P_prime = self.compute_P_GW_prime(P_GW, a, M_tot)
+        P_double_prime = self.compute_P_GW_double_prime(P_prime)
+        P_triple_prime = self.compute_P_GW_triple_prime(P_double_prime)
+        P_uqff = self.compute_P_GW_UQFF(P_triple_prime, M_tot, a)
+        
+        for mod in self.additional_mods:
+            P_uqff *= mod(M_tot, a)
+        
+        if noise_level > 0:
+            P_uqff += noise_level * np.random.randn()
+        
+        return P_uqff
+    
+    def compute_tau_merge_standard(self, a: float, mu: float, M_tot: float) -> float:
+        """Standard merger timescale τ = (5/256)(c⁵/G³)(a⁴/(μ M_tot²))"""
+        G, c = self.params['G'], self.params['c']
+        return (5.0/256.0) * (c**5 / G**3) * (a**4 / (mu * M_tot**2))
+    
+    def compute_tau_merge_UQFF(self, tau_std: float, P_GW_uqff: float,
+                               P_GW_std: float) -> float:
+        """UQFF merger timescale: τ_UQFF = τ_std × (P_std / P_UQFF)"""
+        if P_GW_uqff <= 0:
+            return float('inf')
+        return tau_std * (P_GW_std / P_GW_uqff)
+    
+    def compute_f_orbital(self, M_tot: float, a: float) -> float:
+        """Orbital frequency f = (1/2π)√(GM/a³)"""
+        G = self.params['G']
+        return (1.0 / (2 * np.pi)) * np.sqrt(G * M_tot / a**3)
+    
+    def compute_f_GW(self, M_tot: float, a: float) -> float:
+        """GW frequency = 2 × orbital frequency"""
+        return 2.0 * self.compute_f_orbital(M_tot, a)
+    
+    def compute_chirp_mass(self, M1: float, M2: float) -> float:
+        """Chirp mass M_c = (M₁M₂)^(3/5) / (M₁+M₂)^(1/5)"""
+        return (M1 * M2)**0.6 / (M1 + M2)**0.2
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function f(M_tot, a) -> multiplier"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# UQFF ENTANGLEMENT SPECTRUM CALCULATOR (Feb 26, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# {λ_i} spectrum with aether broadening and TRZ flattening
+# From uqff_entanglement_spectrum_impl.cpp
+# λ_UQFF = λ × (1 + δρ_ratio) × TRZ_mixing × string_damping
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UQFFEntanglementSpectrumCalculator(SelfExpandingMixin):
+    """
+    UQFF Entanglement Spectrum Calculator.
+    
+    Computes Schmidt coefficient spectrum {λ_i} with UQFF corrections.
+    
+    Key Physics:
+        - Step 1: Base uniform spectrum λ_i = 1/N
+        - Step 2: Aether broadening λ' = λ × (1 + δ × ρ_UA/ρ_SCm)
+        - Step 3: TRZ flattening λ'' = λ'(1-f_TRZ) + f_TRZ/N
+        - Step 4: String damping via pseudo-energies ε_i = -log(λ_i)
+        - Step 5: Full λ_UQFF renormalized to Σλ = 1
+    
+    Reference:
+        - UQFF Entanglement Spectrum Module (Star Magic)
+    """
+    
+    def __init__(self):
+        self.params = {
+            'delta': 0.01,              # Fluctuation amplitude
+            'rho_vac_UA': 7.09e-36,
+            'rho_vac_SCm': 7.09e-37,
+            'f_TRZ': 0.1,
+            'U_m': 1e-20,               # String cutoff [J]
+            'k_B': 1.380649e-23,
+            'T': 100.0,                 # Temperature [K]
+            'Delta': 1e-21,             # Gap energy [J]
+        }
+        self.additional_mods = []
+    
+    def compute_rho_ratio(self) -> float:
+        """ρ_UA/ρ_SCm ≈ 10"""
+        return self.params['rho_vac_UA'] / self.params['rho_vac_SCm']
+    
+    def compute_base_spectrum(self, N: int) -> np.ndarray:
+        """Step 1: Uniform spectrum λ_i = 1/N for maximally entangled state."""
+        if N <= 0:
+            return np.array([])
+        return np.ones(N) / N
+    
+    def compute_lambda_aether(self, lambdas: np.ndarray) -> np.ndarray:
+        """
+        Step 2: Aether broadening
+        λ' = λ × (1 + δ × ρ_UA/ρ_SCm), renormalized
+        """
+        delta = self.params['delta']
+        rho_ratio = self.compute_rho_ratio()
+        factor = 1.0 + delta * rho_ratio
+        result = lambdas * factor
+        return result / np.sum(result)
+    
+    def compute_lambda_TRZ(self, lambdas: np.ndarray, N: int) -> np.ndarray:
+        """
+        Step 3: TRZ flattening
+        λ'' = λ(1-f_TRZ) + f_TRZ/N, renormalized
+        """
+        f_TRZ = self.params['f_TRZ']
+        result = lambdas * (1 - f_TRZ) + f_TRZ / N
+        return result / np.sum(result)
+    
+    def compute_pseudo_energies(self, lambdas: np.ndarray) -> np.ndarray:
+        """Pseudo-energies ε_i = -log(λ_i) from entanglement Hamiltonian."""
+        return -np.log(np.maximum(lambdas, 1e-30))
+    
+    def compute_lambda_damped(self, lambdas: np.ndarray,
+                              epsilons: np.ndarray) -> np.ndarray:
+        """
+        Step 4: String damping
+        λ''' = λ × exp(-(ε - Δ) / (U_m/(k_B T))), renormalized
+        """
+        k_B = self.params['k_B']
+        T = self.params['T']
+        U_m = self.params['U_m']
+        Delta = self.params['Delta']
+        
+        thermal_scale = U_m / (k_B * T)
+        if thermal_scale < 1e-30:
+            thermal_scale = 1e-30
+        
+        exponents = -(epsilons - Delta) / thermal_scale
+        exponents = np.clip(exponents, -700, 700)
+        damping = np.exp(exponents)
+        
+        result = lambdas * damping
+        total = np.sum(result)
+        if total > 0:
+            result /= total
+        return result
+    
+    def compute_full_spectrum_UQFF(self, N: int, noise_level: float = 0.0) -> np.ndarray:
+        """Complete UQFF entanglement spectrum for N-level system."""
+        # Step 1
+        lambdas = self.compute_base_spectrum(N)
+        if len(lambdas) == 0:
+            return lambdas
+        
+        # Step 2
+        lambdas = self.compute_lambda_aether(lambdas)
+        
+        # Step 3
+        lambdas = self.compute_lambda_TRZ(lambdas, N)
+        
+        # Step 4
+        epsilons = self.compute_pseudo_energies(lambdas)
+        lambdas = self.compute_lambda_damped(lambdas, epsilons)
+        
+        # Apply mods
+        for mod in self.additional_mods:
+            lambdas = lambdas * mod(lambdas, self.params['T'])
+            lambdas /= np.sum(lambdas)
+        
+        # Noise
+        if noise_level > 0:
+            lambdas += noise_level * np.abs(lambdas) * np.random.randn(len(lambdas))
+            lambdas = np.maximum(lambdas, 0)
+            lambdas /= np.sum(lambdas)
+        
+        return lambdas
+    
+    def compute_entropy_from_spectrum(self, lambdas: np.ndarray) -> float:
+        """von Neumann entropy S = -Σ λ log λ from spectrum."""
+        return -np.sum(lambdas * np.log(np.maximum(lambdas, 1e-30)))
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function f(lambdas, T) -> multiplier"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# UQFF GW WAVEFORMS CALCULATOR (Feb 26, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# Full GW strain h(t) with all UQFF corrections
+# From uqff_gw_waveforms_impl.cpp
+# h_UQFF = h_std × aether × horizon × TRZ × string × modulation
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UQFFGWWaveformsCalculator(SelfExpandingMixin):
+    """
+    UQFF GW Waveforms Calculator.
+    
+    Computes gravitational wave strain h(t) with full UQFF corrections.
+    
+    Key Physics:
+        - Step 1: Standard strain h = (4G²μM)/(c⁴ar) cos(2ωt)
+        - Step 2: Aether absorption h' = h × exp(-α_UA ρ_UA r/c)
+        - Step 3: Horizon screening h'' = h' × (1 - B_t/B_crit)
+        - Step 4: TRZ phase shift h''' = h'' × (1-f_TRZ) × cos(2ωt + φ_TRZ)
+        - Step 5: String interference h_UQFF = h''' × exp(-U_m/E) × (1+β sin)
+    
+    Reference:
+        - Quadrupole radiation formula
+        - UQFF GW Waveforms Module (Star Magic)
+    """
+    
+    M_sun = 1.989e30
+    Mpc = 3.086e22
+    
+    def __init__(self):
+        self.params = {
+            'G': 6.67430e-11,
+            'c': 2.998e8,
+            'k_B': 1.380649e-23,
+            'alpha_UA': 6.67430e-11 / (2.998e8)**2,  # G/c²
+            'rho_vac_UA': 7.09e-36,
+            'B_crit': 4.4e13,
+            'f_TRZ': 0.1,
+            'U_m': 1e40,                # String energy [J]
+            'beta_m': 0.01,             # Interference amplitude
+            'T': 2.725,                 # CMB temperature [K]
+            'tau_merge': 1.0,           # Merge timescale [s]
+            'B_t': 0.0,                 # Binary field [T]
+        }
+        self.additional_mods = []
+    
+    def compute_omega(self, M_tot: float, a: float) -> float:
+        """Orbital angular frequency ω = √(GM/a³)"""
+        G = self.params['G']
+        if a <= 0:
+            return 0.0
+        return np.sqrt(G * M_tot / a**3)
+    
+    def compute_h_standard(self, mu: float, M_tot: float, a: float,
+                           r_observer: float, omega: float, t: float) -> float:
+        """Step 1: Standard quadrupole strain h = (4G²μM)/(c⁴ar) cos(2ωt)"""
+        G, c = self.params['G'], self.params['c']
+        if a <= 0 or r_observer <= 0:
+            return 0.0
+        amplitude = (4 * G**2 * mu * M_tot) / (c**4 * a * r_observer)
+        return amplitude * np.cos(2 * omega * t)
+    
+    def compute_h_prime(self, h: float, r_observer: float) -> float:
+        """Step 2: Aether absorption h' = h × exp(-α_UA ρ_UA r/c)"""
+        alpha = self.params['alpha_UA']
+        rho = self.params['rho_vac_UA']
+        c = self.params['c']
+        exponent = max(-alpha * rho * r_observer / c, -700)
+        return h * np.exp(exponent)
+    
+    def compute_h_double_prime(self, h_prime: float) -> float:
+        """Step 3: Horizon screening h'' = h' × (1 - B_t/B_crit)"""
+        factor = max(1.0 - self.params['B_t'] / self.params['B_crit'], 0.0)
+        return h_prime * factor
+    
+    def compute_h_triple_prime(self, h_double_prime: float) -> float:
+        """Step 4: TRZ amplitude reduction (phase handled separately)"""
+        return h_double_prime * (1.0 - self.params['f_TRZ'])
+    
+    def compute_h_UQFF_final(self, h_triple_prime: float, M_tot: float,
+                              a: float, omega: float) -> float:
+        """Step 5: String interference h × exp(-U_m/E) × (1 + β sin)"""
+        G = self.params['G']
+        U_m = self.params['U_m']
+        beta_m = self.params['beta_m']
+        k_B = self.params['k_B']
+        T = self.params['T']
+        
+        if a <= 0 or M_tot <= 0:
+            return h_triple_prime
+        
+        E_bind = G * M_tot**2 / a
+        string_exp = max(-U_m / E_bind, -700)
+        S_string = np.exp(string_exp)
+        
+        mod = 1.0 + beta_m * np.sin(U_m * omega / (k_B * T))
+        
+        return h_triple_prime * S_string * mod
+    
+    def compute_full_h_UQFF(self, mu: float, M_tot: float, a: float,
+                             r_observer: float, omega: float, t: float,
+                             noise_level: float = 0.0) -> float:
+        """Complete UQFF waveform strain with all corrections."""
+        G, c = self.params['G'], self.params['c']
+        alpha = self.params['alpha_UA']
+        rho = self.params['rho_vac_UA']
+        f_TRZ = self.params['f_TRZ']
+        tau_merge = self.params['tau_merge']
+        
+        if a <= 0 or r_observer <= 0:
+            return 0.0
+        
+        # Amplitude
+        amplitude = (4 * G**2 * mu * M_tot) / (c**4 * a * r_observer)
+        
+        # Step 2: Aether
+        S_aether = np.exp(max(-alpha * rho * r_observer / c, -700))
+        
+        # Step 3: Horizon
+        S_horizon = max(1.0 - self.params['B_t'] / self.params['B_crit'], 0.0)
+        
+        # Step 4: TRZ
+        S_TRZ = 1.0 - f_TRZ
+        
+        # Step 5: String
+        E_bind = G * M_tot**2 / a
+        S_string = np.exp(max(-self.params['U_m'] / E_bind, -700))
+        mod = 1.0 + self.params['beta_m'] * np.sin(
+            self.params['U_m'] * omega / (self.params['k_B'] * self.params['T']))
+        
+        h_amp = amplitude * S_aether * S_horizon * S_TRZ * S_string * mod
+        
+        # Phase with TRZ shift
+        phi_TRZ = 2 * np.pi * f_TRZ * t / tau_merge if tau_merge > 0 else 0
+        h_uqff = h_amp * np.cos(2 * omega * t + phi_TRZ)
+        
+        for mod_func in self.additional_mods:
+            h_uqff *= mod_func(omega, t)
+        
+        if noise_level > 0:
+            h_uqff += noise_level * np.random.randn() * abs(h_amp)
+        
+        return h_uqff
+    
+    def compute_f_GW(self, omega: float) -> float:
+        """GW frequency f = ω/π"""
+        return omega / np.pi
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function f(omega, t) -> multiplier"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# UQFF WORMHOLE TRANSVERSE TIME CALCULATOR (Feb 26, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# Traversal time τ_UQFF through stable wormholes
+# From uqff_wormhole_transverse_time.cpp
+# τ_UQFF = τ_base/(1-ρ_ratio) × (1+f_TRZ) × exp(U_m/(k_B T_eff))
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UQFFWormholeTransverseTimeCalculator(SelfExpandingMixin):
+    """
+    UQFF Wormhole Transverse Time Calculator.
+    
+    Computes traversal time through UQFF-stabilized wormholes.
+    
+    Key Physics:
+        - Step 1: Base time τ_base = 2GM/c³ (light-crossing of throat)
+        - Step 2: Effective velocity v_eff = c(1 - ρ_SCm/ρ_UA)
+        - Step 3: Adjusted τ' = τ_base / (1 - ρ_SCm/ρ_UA)
+        - Step 4: TRZ drag τ'' = τ' × (1 + f_TRZ)
+        - Step 5: Magnetic barrier τ_UQFF = τ'' × exp(U_m/(k_B T_eff))
+    
+    Dual Regime:
+        - U_m > 0 (RESISTIVE): τ_UQFF > τ'' (delayed traversal)
+        - U_m < 0 (BUOYANT): τ_UQFF < τ'' (assisted traversal)
+    
+    Reference:
+        - UQFF Wormhole Transverse Time Module (Star Magic)
+    """
+    
+    def __init__(self):
+        self.params = {
+            'G': 6.6743e-11,
+            'c': 2.998e8,
+            'hbar': 1.0545718e-34,
+            'k_B': 1.380649e-23,
+            'rho_vac_SCm': 7.09e-37,
+            'rho_vac_UA': 7.09e-36,
+            'f_TRZ': 0.1,
+            'U_m': 1e-30,           # Base magnetic barrier [J]
+            'mu_j': 1e20,           # Magnetic permeability factor
+            'gamma': 1e-3,          # Temporal decay rate
+            't_n': 1.0,             # Normalized time phase
+            'lambda_UQFF': 1e-9,
+            'T_eff_floor': 1e16,    # Temperature floor [K]
+        }
+        self.additional_mods = []
+    
+    def compute_tau_base(self, M: float) -> float:
+        """Step 1: τ_base = 2GM/c³ (light-crossing time)"""
+        G, c = self.params['G'], self.params['c']
+        return (2 * G * M) / c**3
+    
+    def compute_v_eff(self) -> float:
+        """Step 2: Effective velocity v_eff = c(1 - ρ_SCm/ρ_UA)"""
+        c = self.params['c']
+        rho_ratio = self.params['rho_vac_SCm'] / self.params['rho_vac_UA']
+        return c * (1.0 - rho_ratio)
+    
+    def compute_tau_prime(self, tau_base: float) -> float:
+        """Step 3: τ' = τ_base / (1 - ρ_SCm/ρ_UA)"""
+        rho_ratio = self.params['rho_vac_SCm'] / self.params['rho_vac_UA']
+        return tau_base / (1.0 - rho_ratio)
+    
+    def compute_tau_double_prime(self, tau_prime: float) -> float:
+        """Step 4: τ'' = τ' × (1 + f_TRZ)"""
+        return tau_prime * (1.0 + self.params['f_TRZ'])
+    
+    def compute_T_H(self, M: float) -> float:
+        """Hawking temperature T_H = ℏc³/(8πGMk_B)"""
+        hbar, c, G, k_B = [self.params[k] for k in ['hbar', 'c', 'G', 'k_B']]
+        return (hbar * c**3) / (8 * np.pi * G * M * k_B)
+    
+    def compute_T_eff(self, T_H: float) -> float:
+        """Effective temperature with floor"""
+        return max(T_H, self.params['T_eff_floor'])
+    
+    def compute_U_m(self, M: float) -> float:
+        """
+        Magnetic barrier energy U_m = λ(μ_j/r_throat)(1-exp(-γ cos(πt_n)))
+        
+        Dual regime: U_m < 0 = BUOYANT, U_m > 0 = RESISTIVE
+        """
+        G, c = self.params['G'], self.params['c']
+        lam = self.params['lambda_UQFF']
+        mu_j = self.params['mu_j']
+        gamma = self.params['gamma']
+        t_n = self.params['t_n']
+        
+        r_throat = (2 * G * M) / c**2
+        oscillation = 1.0 - np.exp(-gamma * np.cos(np.pi * t_n))
+        return lam * (mu_j / r_throat) * oscillation
+    
+    def compute_tau_UQFF(self, tau_double_prime: float, U_m: float,
+                         T_eff: float) -> float:
+        """
+        Step 5: τ_UQFF = τ'' × exp(U_m/(k_B T_eff))
+        
+        U_m < 0: exp < 1 → faster traversal (BUOYANT)
+        U_m > 0: exp > 1 → slower traversal (RESISTIVE)
+        """
+        k_B = self.params['k_B']
+        exponent = U_m / (k_B * T_eff)
+        exponent = np.clip(exponent, -700, 700)
+        return tau_double_prime * np.exp(exponent)
+    
+    def compute_full_tau(self, M: float, noise_level: float = 0.0) -> float:
+        """Complete UQFF wormhole traversal time."""
+        tau_base = self.compute_tau_base(M)
+        tau_prime = self.compute_tau_prime(tau_base)
+        tau_double_prime = self.compute_tau_double_prime(tau_prime)
+        
+        T_H = self.compute_T_H(M)
+        T_eff = self.compute_T_eff(T_H)
+        U_m = self.compute_U_m(M)
+        
+        tau_uqff = self.compute_tau_UQFF(tau_double_prime, U_m, T_eff)
+        
+        for mod in self.additional_mods:
+            tau_uqff *= mod(M)
+        
+        if noise_level > 0:
+            tau_uqff += noise_level * tau_uqff * np.random.randn()
+        
+        return tau_uqff
+    
+    def compute_r_throat(self, M: float) -> float:
+        """Throat radius r_throat = 2GM/c²"""
+        G, c = self.params['G'], self.params['c']
+        return (2 * G * M) / c**2
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function f(M) -> multiplier"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # PULSAR TIMING ARRAY (PTA) UQFF CALCULATOR (Feb 25, 2026)
 # ═══════════════════════════════════════════════════════════════════════════════
 # Nanohertz gravitational waves from SMBH binaries
