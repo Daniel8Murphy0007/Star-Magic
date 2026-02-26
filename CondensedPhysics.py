@@ -146204,6 +146204,666 @@ SOURCE83_WOLFRAM_CALCULATORS = {
 }
 
 
+# ========================================
+# SOURCE73: Sombrero Galaxy M104 (Classes 680-689)
+# Edge-on disk galaxy with prominent dust lane and large bulge
+# ========================================
+
+class M104BulgeDynamicsCalculator:
+    """M104 bulge: Hernquist profile M(r) = M_tot×r²/(r+r_c)²"""
+
+    def compute(self, r_kpc=5.0, M_bulge_total=8e10, r_c=1.5):
+        denominator = (r_kpc + r_c) ** 2
+        M_r = M_bulge_total * r_kpc ** 2 / denominator if denominator != 0 else 0
+        return {
+            'value': M_r,
+            'r_kpc': r_kpc, 'M_bulge_total': M_bulge_total, 'r_c': r_c,
+            'units': 'M_sun',
+            'equation': f"M(r) = M_tot×r²/(r+r_c)² = {M_r:.4e} M☉"
+        }
+
+
+class M104DustLaneExtinctionCalculator:
+    """M104 dust lane: A_λ = A_V×(λ_V/λ)^β×sec(i), i ~ 84°"""
+
+    def compute(self, lambda_um=0.55, A_V=3.0, beta=1.3, i_deg=84.0):
+        i_rad = i_deg * math.pi / 180.0
+        lambda_V = 0.55
+        sec_i = 1.0 / math.cos(i_rad)
+        A_lambda = A_V * (lambda_V / lambda_um) ** beta * sec_i
+        tau = A_lambda / 1.086
+        return {
+            'value': A_lambda,
+            'lambda_um': lambda_um, 'A_V': A_V, 'beta': beta, 'i_deg': i_deg,
+            'tau': tau,
+            'units': 'mag',
+            'equation': f"A_λ = A_V×(λ_V/λ)^β×sec(i) = {A_lambda:.2f} mag"
+        }
+
+
+class M104GlobularClusterSystemCalculator:
+    """M104 GC system: N_GC(<r) = N_tot×(1-exp(-r/r_h)), ~2000 GCs"""
+
+    def compute(self, r_kpc=15.0, N_GC_total=2000, r_h=15.0, M_GC_avg=2e5):
+        N_r = N_GC_total * (1.0 - math.exp(-r_kpc / r_h))
+        M_total_GC = N_GC_total * M_GC_avg
+        Sigma_GC = N_GC_total / (2.0 * math.pi * r_h ** 2) * math.exp(-r_kpc / r_h)
+        return {
+            'value': N_r,
+            'r_kpc': r_kpc, 'N_GC_total': N_GC_total, 'r_h': r_h,
+            'M_total_GC': M_total_GC, 'Sigma_GC': Sigma_GC,
+            'units': 'count',
+            'equation': f"N(<r) = N_tot×(1-e^(-r/r_h)) = {N_r:.0f}"
+        }
+
+
+class M104XRayBinaryCalculator:
+    """M104 XRB accretion: L_X = η×Ṁ×c²×(1-√(r_in/r))"""
+    M_sun = 1.989e30
+    yr_s = 3.154e7
+    c = 2.998e8
+
+    def compute(self, eta=0.1, M_dot=1e-8, r_in=30.0, r=100.0):
+        M_dot_kg_s = M_dot * self.M_sun / self.yr_s
+        sqrt_term = math.sqrt(r_in / r)
+        L_X = eta * M_dot_kg_s * self.c ** 2 * (1.0 - sqrt_term)
+        return {
+            'value': L_X,
+            'eta': eta, 'M_dot': M_dot, 'r_in': r_in, 'r': r,
+            'units': 'W',
+            'equation': f"L_X = η×Ṁ×c²×(1-√(r_in/r)) = {L_X:.3e} W"
+        }
+
+
+class M104DarkMatterHaloCalculator:
+    """M104 NFW halo: ρ(r) = ρ_0/(x^γ×(1+x)^(3-γ))"""
+
+    def compute(self, r_kpc=10.0, rho_0=1e7, r_s=20.0, gamma=1.0, M_200=1e12):
+        x = r_kpc / r_s if r_s > 0 else 0
+        denominator = (x ** gamma) * ((1.0 + x) ** (3.0 - gamma)) if x > 0 else 1
+        rho_DM = rho_0 / denominator if denominator > 0 else rho_0
+        f_x = math.log(1.0 + x) - x / (1.0 + x) if x > 0 else 0
+        c = 10.0
+        f_c = math.log(1.0 + c) - c / (1.0 + c)
+        M_enclosed = M_200 * f_x / f_c
+        return {
+            'value': rho_DM,
+            'r_kpc': r_kpc, 'rho_0': rho_0, 'r_s': r_s, 'gamma': gamma,
+            'M_enclosed': M_enclosed,
+            'units': 'M_sun/kpc³',
+            'equation': f"ρ(r) = ρ₀/[x^γ×(1+x)^(3-γ)] = {rho_DM:.4e} M☉/kpc³"
+        }
+
+
+class M104StellarKinematicsCalculator:
+    """M104 rotation curve: v_rot = v_max×√(1-exp(-r/r_d))×exp(-r/2r_t)"""
+
+    def compute(self, r_kpc=5.0, v_max=250.0, r_d=4.0, r_t=25.0):
+        rise_term = 1.0 - math.exp(-r_kpc / r_d)
+        fall_term = math.exp(-r_kpc / (2.0 * r_t))
+        v_rot = v_max * math.sqrt(rise_term) * fall_term
+        kpc_to_km = 3.086e16
+        T_s = 2.0 * math.pi * r_kpc * kpc_to_km / (v_rot * 1e3) if v_rot > 0 else 0
+        T_Myr = T_s / 3.154e13
+        return {
+            'value': v_rot,
+            'r_kpc': r_kpc, 'v_max': v_max, 'r_d': r_d, 'r_t': r_t,
+            'T_Myr': T_Myr,
+            'units': 'km/s',
+            'equation': f"v_rot = v_max×√(1-e^(-r/r_d))×e^(-r/2r_t) = {v_rot:.1f} km/s"
+        }
+
+
+class M104MagneticFieldCalculator:
+    """M104 magnetic field: B_total = √(B_r² + B_φ² + B_z²)"""
+
+    def compute(self, r_kpc=5.0, z_kpc=0.5, B_0=10.0, r_B=5.0, h_B=1.0, p=0.4):
+        exp_r = math.exp(-r_kpc / r_B)
+        exp_z = math.exp(-abs(z_kpc) / h_B)
+        B_r = B_0 * math.cos(p) * exp_r * exp_z
+        B_phi = B_0 * math.sin(p) * exp_r * exp_z
+        B_z = B_0 * 0.3 * exp_r * exp_z
+        B_total = math.sqrt(B_r ** 2 + B_phi ** 2 + B_z ** 2)
+        mu_0 = 4.0 * math.pi * 1e-7
+        B_SI = B_total * 1e-10
+        P_mag = B_SI ** 2 / (2.0 * mu_0)
+        return {
+            'value': B_total,
+            'r_kpc': r_kpc, 'z_kpc': z_kpc, 'B_0': B_0,
+            'P_mag': P_mag,
+            'units': 'μG',
+            'equation': f"B_tot = √(B_r² + B_φ² + B_z²) = {B_total:.2f} μG"
+        }
+
+
+class M104CentralBlackHoleCalculator:
+    """M104 SMBH: M-σ relation M_BH = M_0×(σ/200)^α"""
+    M_sun = 1.989e30
+    G = 6.674e-11
+    c = 2.998e8
+
+    def compute(self, sigma=300.0, alpha=4.02, M_0=1.35e8):
+        sigma_0 = 200.0
+        M_BH = M_0 * (sigma / sigma_0) ** alpha
+        M_BH_kg = M_BH * self.M_sun
+        r_s = 2.0 * self.G * M_BH_kg / (self.c ** 2) / 1e3  # km
+        sigma_ms = sigma * 1e3
+        pc_to_m = 3.086e16
+        r_inf = self.G * M_BH_kg / (sigma_ms ** 2) / pc_to_m  # pc
+        return {
+            'value': M_BH,
+            'sigma': sigma, 'alpha': alpha, 'M_0': M_0,
+            'r_s_km': r_s, 'r_inf_pc': r_inf,
+            'units': 'M_sun',
+            'equation': f"M_BH = M_0×(σ/200)^α = {M_BH:.3e} M☉"
+        }
+
+
+class M104CosmicRayPropagationCalculator:
+    """M104 cosmic rays: N_CR(E,r) = N_0×(E/E_0)^(-γ)×exp(-r/λ)"""
+
+    def compute(self, E_GeV=1.0, r_kpc=5.0, N_0=1e-9, E_0=1.0, gamma_CR=2.7, lambda_diff=10.0):
+        energy_term = (E_GeV / E_0) ** (-gamma_CR)
+        spatial_term = math.exp(-r_kpc / lambda_diff)
+        N_CR = N_0 * energy_term * spatial_term
+        return {
+            'value': N_CR,
+            'E_GeV': E_GeV, 'r_kpc': r_kpc, 'N_0': N_0,
+            'gamma_CR': gamma_CR, 'lambda_diff': lambda_diff,
+            'units': 'particles/GeV/m³',
+            'equation': f"N_CR = N_0×(E/E_0)^(-γ)×e^(-r/λ) = {N_CR:.4e}"
+        }
+
+
+class M104QuantumGravityCalculator:
+    """M104 quantum corrections: Δg ∝ (l_P/r)²×⟨T_μν⟩"""
+    G = 6.674e-11
+    c = 2.998e8
+    hbar = 1.055e-34
+    l_P = 1.616e-35
+
+    def compute(self, r_m=1e19):
+        alpha_QG = (self.l_P ** 2) / (r_m ** 2)
+        T_quantum = (self.hbar * self.c) / (r_m ** 4)
+        Delta_g = (8.0 * math.pi * self.G / (self.c ** 4)) * T_quantum * alpha_QG
+        k_B = 1.381e-23
+        M_BH = 1e9 * 1.989e30  # kg
+        T_H = (self.hbar * self.c ** 3) / (8.0 * math.pi * self.G * M_BH * k_B)
+        return {
+            'value': Delta_g,
+            'r_m': r_m, 'alpha_QG': alpha_QG, 'T_quantum': T_quantum,
+            'T_Hawking_K': T_H,
+            'units': 'dimensionless',
+            'equation': f"Δg = (8πG/c⁴)×⟨T_μν⟩×(l_P/r)² = {Delta_g:.4e}"
+        }
+
+
+SOURCE73_WOLFRAM_CALCULATORS = {
+    'M104BulgeDynamicsCalculator': M104BulgeDynamicsCalculator(),
+    'M104DustLaneExtinctionCalculator': M104DustLaneExtinctionCalculator(),
+    'M104GlobularClusterSystemCalculator': M104GlobularClusterSystemCalculator(),
+    'M104XRayBinaryCalculator': M104XRayBinaryCalculator(),
+    'M104DarkMatterHaloCalculator': M104DarkMatterHaloCalculator(),
+    'M104StellarKinematicsCalculator': M104StellarKinematicsCalculator(),
+    'M104MagneticFieldCalculator': M104MagneticFieldCalculator(),
+    'M104CentralBlackHoleCalculator': M104CentralBlackHoleCalculator(),
+    'M104CosmicRayPropagationCalculator': M104CosmicRayPropagationCalculator(),
+    'M104QuantumGravityCalculator': M104QuantumGravityCalculator(),
+}
+
+
+# ========================================
+# SOURCE74: Pinwheel Galaxy M101 (Classes 690-699)
+# Grand design spiral with asymmetric structure
+# ========================================
+
+class M101SpiralDensityWaveCalculator:
+    """M101 spiral: ψ(r,φ,t) = A×sin(m×φ - ω×t - k×r)"""
+
+    def compute(self, r_kpc=12.0, phi_rad=0.785, t_Gyr=0.0, A=0.2, m=2, omega=25.0, k=0.3):
+        phase = m * phi_rad - omega * t_Gyr - k * r_kpc
+        psi = A * math.sin(phase)
+        v_circ = 200.0
+        r_CR = v_circ / omega if omega > 0 else 0
+        tan_i = (r_kpc * k) / m if m > 0 else 0
+        pitch = math.atan(tan_i) * 180.0 / math.pi
+        return {
+            'value': psi,
+            'r_kpc': r_kpc, 'phi_rad': phi_rad, 'A': A, 'm': m,
+            'r_CR_kpc': r_CR, 'pitch_deg': pitch,
+            'units': 'fractional perturbation',
+            'equation': f"ψ = A×sin(mφ - ωt - kr) = {psi:.4f}"
+        }
+
+
+class M101StarFormationRateCalculator:
+    """M101 SFR: Σ_SFR = ε×Σ_gas^N / t_ff (Kennicutt-Schmidt)"""
+
+    def compute(self, r_kpc=10.0, epsilon=0.01, N=1.4, Sigma_0=20.0, r_gas=10.0):
+        Sigma_gas = Sigma_0 * math.exp(-r_kpc / r_gas)
+        t_0 = 1e7  # years
+        t_ff = t_0 / math.sqrt(Sigma_gas) if Sigma_gas > 0 else t_0
+        SFR = epsilon * (Sigma_gas ** N) / (t_ff / 1e6)
+        return {
+            'value': SFR,
+            'r_kpc': r_kpc, 'Sigma_gas': Sigma_gas, 'epsilon': epsilon, 'N': N,
+            't_ff_yr': t_ff,
+            'units': 'M_sun/yr/kpc²',
+            'equation': f"Σ_SFR = ε×Σ_gas^N/t_ff = {SFR:.4e} M☉/yr/kpc²"
+        }
+
+
+class M101AsymmetryCalculator:
+    """M101 asymmetry: Fourier mode expansion A_1 + A_3"""
+
+    def compute(self, phi_rad=0.785, A_1=0.15, phi_1=0.5, A_3=0.05, phi_3=1.0):
+        mode_1_re = A_1 * math.cos(phi_rad + phi_1)
+        mode_1_im = A_1 * math.sin(phi_rad + phi_1)
+        mode_3_re = A_3 * math.cos(3.0 * phi_rad + phi_3)
+        mode_3_im = A_3 * math.sin(3.0 * phi_rad + phi_3)
+        total_re = mode_1_re + mode_3_re
+        total_im = mode_1_im + mode_3_im
+        A_total = math.sqrt(total_re ** 2 + total_im ** 2)
+        r_disk = 15.0
+        R_CM = A_1 * r_disk
+        return {
+            'value': A_total,
+            'phi_rad': phi_rad, 'A_1': A_1, 'A_3': A_3,
+            'R_CM_kpc': R_CM,
+            'units': 'dimensionless',
+            'equation': f"A_asym = |mode_1 + mode_3| = {A_total:.4f}"
+        }
+
+
+class M101HIIRegionCalculator:
+    """M101 HII regions: L_Hα = Q(H⁰)×E_Hα×(1-f_esc)"""
+
+    def compute(self, Q_H0=1e49, f_esc=0.1, n_e=100.0, T_e=8000.0):
+        E_Halpha = 3.4 * 1.6e-19  # J
+        L_Halpha = Q_H0 * E_Halpha * (1.0 - f_esc)
+        alpha_B = 2.6e-13  # cm³/s
+        n_e_m3 = n_e * 1e6
+        numerator = 3.0 * Q_H0 / (4.0 * math.pi * alpha_B * 1e-6 * n_e_m3 ** 2)
+        R_S_m = numerator ** (1.0 / 3.0) if numerator > 0 else 0
+        R_S_pc = R_S_m / 3.086e16
+        return {
+            'value': L_Halpha,
+            'Q_H0': Q_H0, 'f_esc': f_esc, 'n_e': n_e,
+            'R_Stromgren_pc': R_S_pc,
+            'units': 'W',
+            'equation': f"L_Hα = Q×E_Hα×(1-f_esc) = {L_Halpha:.3e} W"
+        }
+
+
+class M101SupernovaRemnantCalculator:
+    """M101 SNR: E_SNR(t) = E_0×(t/t_0)^(-β) (Sedov-Taylor)"""
+
+    def compute(self, t_yr=1e4, E_0=1e51, t_0=1e3, beta=0.3, n_ISM=1.0):
+        E_SNR = E_0 * (t_yr / t_0) ** (-beta) if t_yr > 0 else E_0
+        xi = 1.15
+        m_H = 1.67e-24
+        rho_ISM = n_ISM * m_H
+        t_s = t_yr * 3.154e7
+        R_cm = xi * ((E_0 * t_s ** 2) / rho_ISM) ** 0.2 if rho_ISM > 0 else 0
+        R_pc = R_cm / 3.086e18
+        return {
+            'value': E_SNR,
+            't_yr': t_yr, 'E_0': E_0, 'beta': beta, 'n_ISM': n_ISM,
+            'R_blast_pc': R_pc,
+            'units': 'erg',
+            'equation': f"E_SNR = E_0×(t/t_0)^(-β) = {E_SNR:.3e} erg"
+        }
+
+
+class M101TidalPerturbationCalculator:
+    """M101 tidal: F_tidal = -GM_comp×r/d³ from NGC 5474"""
+    G = 6.674e-11
+    M_sun = 1.989e30
+    kpc_to_m = 3.086e19
+
+    def compute(self, r_kpc=10.0, M_comp=5e9, d_comp=40.0):
+        r_m = r_kpc * self.kpc_to_m
+        d_m = d_comp * self.kpc_to_m
+        M_comp_kg = M_comp * self.M_sun
+        F_tidal = -(self.G * M_comp_kg * r_m) / (d_m ** 3)
+        M_101 = 1e11
+        r_tid = d_comp * (M_101 / (3.0 * M_comp)) ** (1.0 / 3.0)
+        return {
+            'value': F_tidal,
+            'r_kpc': r_kpc, 'M_comp': M_comp, 'd_comp': d_comp,
+            'r_tidal_kpc': r_tid,
+            'units': 'N/kg',
+            'equation': f"F_tidal = -GM_comp×r/d³ = {F_tidal:.4e} N/kg"
+        }
+
+
+class M101MolecularCloudCalculator:
+    """M101 GMC: M_cloud = (4/3)πR³×ρ_cloud"""
+    M_sun_g = 1.989e33
+    pc_to_cm = 3.086e18
+
+    def compute(self, R_cloud=50.0, n_H2=200.0, T_cloud=20.0):
+        m_H2 = 2.0 * 1.67e-24
+        rho_cloud_cgs = n_H2 * m_H2 * 2.0
+        R_cm = R_cloud * self.pc_to_cm
+        V_cloud = (4.0 / 3.0) * math.pi * R_cm ** 3
+        M_cloud_g = V_cloud * rho_cloud_cgs
+        M_cloud_Msun = M_cloud_g / self.M_sun_g
+        k_B = 1.381e-16
+        sigma_sq = k_B * T_cloud / m_H2
+        G_cgs = 6.674e-8
+        alpha_vir = (5.0 * sigma_sq * R_cm) / (G_cgs * M_cloud_g) if M_cloud_g > 0 else 0
+        return {
+            'value': M_cloud_Msun,
+            'R_cloud': R_cloud, 'n_H2': n_H2, 'T_cloud': T_cloud,
+            'alpha_virial': alpha_vir,
+            'units': 'M_sun',
+            'equation': f"M_cloud = (4/3)πR³ρ = {M_cloud_Msun:.4e} M☉"
+        }
+
+
+class M101DifferentialRotationCalculator:
+    """M101 rotation: Ω(r) = v(r)/r, S = r×dΩ/dr"""
+
+    def compute(self, r_kpc=10.0, v_flat=240.0, r_flat=8.0):
+        v_r = v_flat * math.sqrt(1.0 - math.exp(-r_kpc / r_flat)) if r_kpc > 0 else 0
+        Omega = v_r / r_kpc if r_kpc > 0 else 0
+        dr = 0.01
+        v_plus = v_flat * math.sqrt(1.0 - math.exp(-(r_kpc + dr / 2.0) / r_flat))
+        v_minus = v_flat * math.sqrt(1.0 - math.exp(-(r_kpc - dr / 2.0) / r_flat))
+        Omega_plus = v_plus / (r_kpc + dr / 2.0)
+        Omega_minus = v_minus / (r_kpc - dr / 2.0)
+        dOmega_dr = (Omega_plus - Omega_minus) / dr
+        S = r_kpc * dOmega_dr
+        return {
+            'value': Omega,
+            'r_kpc': r_kpc, 'v_flat': v_flat, 'r_flat': r_flat,
+            'v_r': v_r, 'S_shear': S,
+            'units': 'km/s/kpc',
+            'equation': f"Ω = v(r)/r = {Omega:.2f} km/s/kpc"
+        }
+
+
+class M101MagnetohydrodynamicsCalculator:
+    """M101 MHD: v_A = B/√(μ₀ρ) Alfvén velocity"""
+    mu_0 = 4.0 * math.pi * 1e-7
+    m_H = 1.67e-27
+
+    def compute(self, B_field=8.0, n_gas=1.0):
+        B_SI = B_field * 1e-10
+        rho = n_gas * 1e6 * self.m_H
+        v_A = B_SI / math.sqrt(self.mu_0 * rho) if rho > 0 else 0
+        v_A_km_s = v_A / 1e3
+        P_mag = B_SI ** 2 / (2.0 * self.mu_0)
+        k_B = 1.381e-23
+        T_gas = 8000.0
+        P_gas = n_gas * 1e6 * k_B * T_gas
+        beta = P_gas / P_mag if P_mag > 0 else 0
+        return {
+            'value': v_A_km_s,
+            'B_field': B_field, 'n_gas': n_gas,
+            'P_mag': P_mag, 'beta': beta,
+            'units': 'km/s',
+            'equation': f"v_A = B/√(μ₀ρ) = {v_A_km_s:.2f} km/s"
+        }
+
+
+class M101QuantumTurbulenceCalculator:
+    """M101 turbulence: E(k) = C×k^(-5/3) Kolmogorov spectrum"""
+
+    def compute(self, k_pc_inv=0.1, C=1.0, k_min=0.01, k_max=10.0, v_turb=10.0):
+        E_k = C * (k_pc_inv ** (-5.0 / 3.0)) if k_min <= k_pc_inv <= k_max else 0
+        E_turb = 0.5 * (v_turb * 1e3) ** 2  # J/kg
+        L_inj = 1.0 / k_min if k_min > 0 else 0
+        L_diss = 1.0 / k_max if k_max > 0 else 0
+        return {
+            'value': E_k,
+            'k_pc_inv': k_pc_inv, 'C': C, 'v_turb': v_turb,
+            'E_turb_J_kg': E_turb, 'L_inj_pc': L_inj, 'L_diss_pc': L_diss,
+            'units': 'arbitrary',
+            'equation': f"E(k) = C×k^(-5/3) = {E_k:.4f}"
+        }
+
+
+SOURCE74_WOLFRAM_CALCULATORS = {
+    'M101SpiralDensityWaveCalculator': M101SpiralDensityWaveCalculator(),
+    'M101StarFormationRateCalculator': M101StarFormationRateCalculator(),
+    'M101AsymmetryCalculator': M101AsymmetryCalculator(),
+    'M101HIIRegionCalculator': M101HIIRegionCalculator(),
+    'M101SupernovaRemnantCalculator': M101SupernovaRemnantCalculator(),
+    'M101TidalPerturbationCalculator': M101TidalPerturbationCalculator(),
+    'M101MolecularCloudCalculator': M101MolecularCloudCalculator(),
+    'M101DifferentialRotationCalculator': M101DifferentialRotationCalculator(),
+    'M101MagnetohydrodynamicsCalculator': M101MagnetohydrodynamicsCalculator(),
+    'M101QuantumTurbulenceCalculator': M101QuantumTurbulenceCalculator(),
+}
+
+
+# ========================================
+# SOURCE76: Triangulum Galaxy M33 (Classes 710-719)
+# Local Group late-type spiral, face-on, active SF
+# ========================================
+
+class M33DiskMassSurfaceDensityCalculator:
+    """M33 disk: Σ(r) = Σ₀×exp(-r/r_d), r_d ~ 1.5 kpc"""
+
+    def compute(self, r_kpc=3.0, Sigma_0=400.0, r_d=1.5):
+        Sigma_r = Sigma_0 * math.exp(-r_kpc / r_d)
+        M_enclosed = 2.0 * math.pi * Sigma_0 * r_d ** 2 * 1e6 * (
+            1.0 - math.exp(-r_kpc / r_d) * (1.0 + r_kpc / r_d))
+        return {
+            'value': Sigma_r,
+            'r_kpc': r_kpc, 'Sigma_0': Sigma_0, 'r_d': r_d,
+            'M_enclosed': M_enclosed,
+            'units': 'M_sun/pc²',
+            'equation': f"Σ(r) = Σ₀×e^(-r/r_d) = {Sigma_r:.2f} M☉/pc²"
+        }
+
+
+class M33DarkMatterHaloCalculator:
+    """M33 pseudo-isothermal halo: ρ_DM = ρ₀/(1+(r/r_c)²)"""
+    G = 4.3e-6
+
+    def compute(self, r_kpc=3.0, rho_0=0.05, r_c=2.2):
+        rho_DM = rho_0 / (1.0 + (r_kpc / r_c) ** 2)
+        x = r_kpc / r_c
+        M_DM_Msun = 4.0 * math.pi * rho_0 * r_c ** 3 * 1e9 * (x - math.atan(x))
+        v_DM_sq = self.G * M_DM_Msun / r_kpc if r_kpc > 0 else 0
+        v_DM = math.sqrt(v_DM_sq)
+        return {
+            'value': rho_DM,
+            'r_kpc': r_kpc, 'rho_0': rho_0, 'r_c': r_c,
+            'M_DM': M_DM_Msun, 'v_DM': v_DM,
+            'units': 'M_sun/pc³',
+            'equation': f"ρ_DM = ρ₀/(1+(r/r_c)²) = {rho_DM:.4f} M☉/pc³"
+        }
+
+
+class M33RotationCurveCalculator:
+    """M33 rotation: v² = v_disk² + v_gas² + v_DM²"""
+    G = 4.3e-6
+
+    def compute(self, r_kpc=3.0, M_disk=3e9, r_d=1.5, M_gas=1.5e9, r_g=2.0, rho_DM=0.05, r_c=2.2):
+        r_sq = r_kpc ** 2 if r_kpc > 0 else 1e-10
+        r_d_sq = r_d ** 2
+        v_disk_sq = (self.G * M_disk * r_sq) / (2.0 * r_d ** 3 * (r_sq + r_d_sq) ** 1.5)
+        r_g_sq = r_g ** 2
+        v_gas_sq = (self.G * M_gas * r_sq) / (2.0 * r_g ** 3 * (r_sq + r_g_sq) ** 1.5)
+        x = r_kpc / r_c
+        v_DM_sq = 4.0 * math.pi * self.G * rho_DM * r_c ** 3 * 1e9 * (x - math.atan(x)) / r_kpc if r_kpc > 0 else 0
+        v_rot = math.sqrt(v_disk_sq + v_gas_sq + v_DM_sq)
+        return {
+            'value': v_rot,
+            'r_kpc': r_kpc, 'M_disk': M_disk, 'M_gas': M_gas,
+            'v_disk': math.sqrt(v_disk_sq), 'v_gas': math.sqrt(v_gas_sq), 'v_DM': math.sqrt(v_DM_sq),
+            'units': 'km/s',
+            'equation': f"v_rot = √(v_d² + v_g² + v_DM²) = {v_rot:.1f} km/s"
+        }
+
+
+class M33HIIRegionDistributionCalculator:
+    """M33 HII regions: N(>L) = N_0×(L/L_ref)^(-α), ~500 regions"""
+
+    def compute(self, L_Hα=1e38, N_0=500.0, alpha=1.5):
+        L_ref = 1e38
+        N_above_L = N_0 * (L_Hα / L_ref) ** (-alpha)
+        R_S_100pc = 100.0
+        R_S = R_S_100pc * (L_Hα / L_ref) ** (1.0 / 3.0)
+        n_H = 100.0
+        m_H = 1.67e-24
+        M_ion_g = (4.0 / 3.0) * math.pi * (R_S * 3.086e18) ** 3 * n_H * m_H
+        M_ion_Msun = M_ion_g / 1.989e33
+        return {
+            'value': N_above_L,
+            'L_Hα': L_Hα, 'N_0': N_0, 'alpha': alpha,
+            'R_Stromgren': R_S, 'M_ionized': M_ion_Msun,
+            'units': 'count',
+            'equation': f"N(>L) = N_0×(L/L_ref)^(-α) = {N_above_L:.1f}"
+        }
+
+
+class M33StarFormationRateCalculator:
+    """M33 SFR: Σ_SFR = ε×Σ_gas^N / t_ff (global ~ 0.3-0.5 M☉/yr)"""
+
+    def compute(self, Sigma_gas=10.0, N=1.4, epsilon=0.01):
+        h_gas = 100.0
+        rho = Sigma_gas / (2.0 * h_gas)
+        G = 4.302e-3
+        t_ff_s = math.sqrt(3.0 * math.pi / (32.0 * G * rho * 1e-6 * 3.086e13)) if rho > 0 else 1e20
+        t_ff_yr = t_ff_s / 3.156e7
+        Sigma_SFR = epsilon * (Sigma_gas ** N) / t_ff_yr
+        r_d = 2.0
+        SFR_total = Sigma_SFR * math.pi * r_d ** 2
+        return {
+            'value': Sigma_SFR,
+            'Sigma_gas': Sigma_gas, 'N': N, 'epsilon': epsilon,
+            't_ff_yr': t_ff_yr, 'SFR_total': SFR_total,
+            'units': 'M_sun/yr/kpc²',
+            'equation': f"Σ_SFR = ε×Σ_gas^N/t_ff = {Sigma_SFR:.4e} M☉/yr/kpc²"
+        }
+
+
+class M33MetallicityGradientCalculator:
+    """M33 metallicity: 12+log(O/H) = A - B×r, gradient ~ -0.04 dex/kpc"""
+
+    def compute(self, r_kpc=3.0, A=8.4, B=0.04):
+        log_OH = A - B * r_kpc
+        O_H_ratio = 10.0 ** (log_OH - 12.0)
+        log_OH_sun = 8.69
+        Z_rel_solar = 10.0 ** (log_OH - log_OH_sun)
+        t_dep_Myr = 100.0 / Z_rel_solar
+        return {
+            'value': log_OH,
+            'r_kpc': r_kpc, 'A': A, 'B': B,
+            'O_H_ratio': O_H_ratio, 'Z_rel_solar': Z_rel_solar, 't_dep_Myr': t_dep_Myr,
+            'units': 'dex',
+            'equation': f"12+log(O/H) = A - B×r = {log_OH:.2f}"
+        }
+
+
+class M33XRayBinaryCalculator:
+    """M33 XRBs: L_X = η×Ṁ×c², ~20 sources, 10^37-10^39 erg/s"""
+    c = 2.998e10
+    M_sun_g = 1.989e33
+
+    def compute(self, M_dot_Msun_yr=1e-8, eta=0.1):
+        M_dot_g_s = M_dot_Msun_yr * self.M_sun_g / 3.156e7
+        L_X = eta * M_dot_g_s * self.c ** 2
+        M_BH = 10.0
+        L_Edd = 1.26e38 * M_BH
+        L_X_Edd_ratio = L_X / L_Edd
+        G = 6.674e-8
+        m_p = 1.673e-24
+        k_B = 1.381e-16
+        R_S = 2.0 * G * M_BH * self.M_sun_g / (self.c ** 2)
+        R_in = 3.0 * R_S
+        kT_keV = (G * M_BH * self.M_sun_g * m_p) / (k_B * R_in * 1.602e-9) if R_in > 0 else 0
+        return {
+            'value': L_X,
+            'M_dot': M_dot_Msun_yr, 'eta': eta,
+            'L_Edd_ratio': L_X_Edd_ratio, 'kT_keV': kT_keV,
+            'units': 'erg/s',
+            'equation': f"L_X = η×Ṁ×c² = {L_X:.3e} erg/s"
+        }
+
+
+class M33MagneticFieldCalculator:
+    """M33 B-field: B(r) = B₀×exp(-r/r_B), B ~ 5-10 μG"""
+
+    def compute(self, r_kpc=3.0, B_0_microG=8.0, r_B=3.0):
+        B_microG = B_0_microG * math.exp(-r_kpc / r_B)
+        B_G = B_microG * 1e-6
+        P_mag = B_G ** 2 / (8.0 * math.pi)
+        n_H = 1.0
+        k_B = 1.381e-16
+        T = 8000.0
+        P_gas = n_H * k_B * T
+        beta = P_gas / P_mag if P_mag > 0 else 0
+        j_synch = B_microG ** 1.8
+        return {
+            'value': B_microG,
+            'r_kpc': r_kpc, 'B_0': B_0_microG, 'r_B': r_B,
+            'P_mag': P_mag, 'beta': beta, 'j_synch': j_synch,
+            'units': 'μG',
+            'equation': f"B(r) = B₀×e^(-r/r_B) = {B_microG:.2f} μG"
+        }
+
+
+class M33TidalInteractionCalculator:
+    """M33 tidal: a_tid = -2GM_M31×r/d³, d ~ 200 kpc from M31"""
+    G = 4.3e-6
+
+    def compute(self, r_kpc=3.0, M_M31=1.5e12, d_kpc=200.0):
+        a_tid_km_s2 = 2.0 * self.G * M_M31 * r_kpc / (d_kpc ** 3)
+        a_tid_kpc_Gyr2 = a_tid_km_s2 * (3.156e7 * 1e9) ** 2 / 3.086e16
+        M_M33 = 5e10
+        r_tid = d_kpc * (M_M33 / (3.0 * M_M31)) ** (1.0 / 3.0)
+        Delta_v = math.sqrt(self.G * M_M31 / d_kpc) * (r_kpc / d_kpc)
+        return {
+            'value': a_tid_kpc_Gyr2,
+            'r_kpc': r_kpc, 'M_M31': M_M31, 'd_kpc': d_kpc,
+            'r_tidal': r_tid, 'Delta_v': Delta_v,
+            'units': 'kpc/Gyr²',
+            'equation': f"a_tid = 2GM_M31×r/d³ = {a_tid_kpc_Gyr2:.4f} kpc/Gyr²"
+        }
+
+
+class M33QuantumDarkMatterCalculator:
+    """M33 Fuzzy DM: ρ_FDM solitonic core, m_DM ~ 10^-22 eV"""
+
+    def compute(self, r_kpc=1.0, m_DM_eV=1e-22, rho_core=0.05):
+        h_eV_s = 4.136e-15
+        c = 3e5
+        v_typical = 100.0
+        m_DM_eV_s_km = m_DM_eV / (c ** 2)
+        lambda_dB_km = h_eV_s / (m_DM_eV_s_km * v_typical) if m_DM_eV > 0 else 0
+        lambda_dB_kpc = lambda_dB_km / 3.086e16
+        M_halo = 5e10
+        r_core_kpc = 1.6 * (1e-23 / m_DM_eV) * (1e10 / M_halo) ** (1.0 / 3.0) if m_DM_eV > 0 else 1.0
+        rho_FDM = rho_core / (1.0 + (r_kpc / r_core_kpc) ** 8) ** (1.0 / 8.0)
+        return {
+            'value': rho_FDM,
+            'r_kpc': r_kpc, 'm_DM_eV': m_DM_eV, 'rho_core': rho_core,
+            'r_core_kpc': r_core_kpc, 'lambda_dB_kpc': lambda_dB_kpc,
+            'units': 'M_sun/pc³',
+            'equation': f"ρ_FDM = ρ_core/[1+(r/r_c)⁸]^(1/8) = {rho_FDM:.4f} M☉/pc³"
+        }
+
+
+SOURCE76_WOLFRAM_CALCULATORS = {
+    'M33DiskMassSurfaceDensityCalculator': M33DiskMassSurfaceDensityCalculator(),
+    'M33DarkMatterHaloCalculator': M33DarkMatterHaloCalculator(),
+    'M33RotationCurveCalculator': M33RotationCurveCalculator(),
+    'M33HIIRegionDistributionCalculator': M33HIIRegionDistributionCalculator(),
+    'M33StarFormationRateCalculator': M33StarFormationRateCalculator(),
+    'M33MetallicityGradientCalculator': M33MetallicityGradientCalculator(),
+    'M33XRayBinaryCalculator': M33XRayBinaryCalculator(),
+    'M33MagneticFieldCalculator': M33MagneticFieldCalculator(),
+    'M33TidalInteractionCalculator': M33TidalInteractionCalculator(),
+    'M33QuantumDarkMatterCalculator': M33QuantumDarkMatterCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -146329,3 +146989,41 @@ __all__.extend([
     'LENRTransmutationRateCalculator',
     'LENREnergyDensityCalculator',
     'SOURCE83_WOLFRAM_CALCULATORS',
+    # Source73: Sombrero Galaxy M104 (10 Calculator Classes)
+    'M104BulgeDynamicsCalculator',
+    'M104DustLaneExtinctionCalculator',
+    'M104GlobularClusterSystemCalculator',
+    'M104XRayBinaryCalculator',
+    'M104DarkMatterHaloCalculator',
+    'M104StellarKinematicsCalculator',
+    'M104MagneticFieldCalculator',
+    'M104CentralBlackHoleCalculator',
+    'M104CosmicRayPropagationCalculator',
+    'M104QuantumGravityCalculator',
+    'SOURCE73_WOLFRAM_CALCULATORS',
+
+    # Source74: Pinwheel Galaxy M101 (10 Calculator Classes)
+    'M101SpiralDensityWaveCalculator',
+    'M101StarFormationRateCalculator',
+    'M101AsymmetryCalculator',
+    'M101HIIRegionCalculator',
+    'M101SupernovaRemnantCalculator',
+    'M101TidalPerturbationCalculator',
+    'M101MolecularCloudCalculator',
+    'M101DifferentialRotationCalculator',
+    'M101MagnetohydrodynamicsCalculator',
+    'M101QuantumTurbulenceCalculator',
+    'SOURCE74_WOLFRAM_CALCULATORS',
+
+    # Source76: Triangulum Galaxy M33 (10 Calculator Classes)
+    'M33DiskMassSurfaceDensityCalculator',
+    'M33DarkMatterHaloCalculator',
+    'M33RotationCurveCalculator',
+    'M33HIIRegionDistributionCalculator',
+    'M33StarFormationRateCalculator',
+    'M33MetallicityGradientCalculator',
+    'M33XRayBinaryCalculator',
+    'M33MagneticFieldCalculator',
+    'M33TidalInteractionCalculator',
+    'M33QuantumDarkMatterCalculator',
+    'SOURCE76_WOLFRAM_CALCULATORS',
