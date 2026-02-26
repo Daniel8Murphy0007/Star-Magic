@@ -37960,6 +37960,285 @@ Q-SCOPE TESTABILITY:
 """
         return results, steps
     
+    def simulate_UQFF_conductivity_spectrum_over_frequency(self,
+                                                           omega_start: float = 1e10,
+                                                           omega_end: float = 1e13,
+                                                           n_points: int = 100,
+                                                           T: float = 100.0,
+                                                           T_c: float = 110.0,
+                                                           tau_coh: float = 1e-12,
+                                                           B_t: float = 0.0,
+                                                           B_crit: float = 4.4e13,
+                                                           Gamma: float = 1e10,
+                                                           sigma_0: float = 1e6,
+                                                           f_TRZ: float = None,
+                                                           rho_SCm: float = None,
+                                                           rho_UA: float = None,
+                                                           mu_j: float = 1e15,
+                                                           t: float = 0.0,
+                                                           t_n: float = 0.0,
+                                                           gamma: float = 5e-5,
+                                                           frame: str = 'F_U_Bi',
+                                                           log_scale: bool = True) -> Tuple[dict, str]:
+        """
+        Simulate UQFF conductivity spectrum σ(ω) over a frequency range.
+        
+        This method computes the full UQFF conductivity spectrum across a frequency
+        range, revealing:
+        - Superconducting gap structure at Δ_UQFF
+        - Time-reversal zone (f_TRZ) resonance peaks at ω_res = 2π f_TRZ/τ_coh
+        - High-frequency damping from magnetic string energy U_m
+        - Aether modulation √(ρ_UA/ρ_SCm) enhancement
+        
+        DERIVATION (from uqff_conductivity_spectrum.h/.cpp):
+        ═══════════════════════════════════════════════════════════════════════════════
+        STEP 1: Base σ(ω) = (i/ω)(A'/A + (ω²/c²) log z₀) + δ(ω)
+                AdS Maxwell near z→0. Below T_c: Re[σ] delta ω=0, gap Δ≈8k_BT_c
+                
+        STEP 2: ξ_UQFF = ξ × √(ρ_UA/ρ_SCm)
+                Gap widened: Δ_UQFF ≈ Δ/√(ρ_ratio)
+                
+        STEP 3: σ' = σ × (1 - B_t/B_crit)
+                Magnetic suppression damps above gap
+                
+        STEP 4: σ'' = σ' + f_TRZ × Γ/((ω - ω_res)² + Γ²)
+                TRZ Lorentzian resonance peak
+                
+        STEP 5: σ_UQFF = σ'' × exp(-U_m ω/(k_B T))
+                String damping for UV regularization
+                
+        STEP 6: Full spectrum formula σ_UQFF(ω) with all modifications
+        ═══════════════════════════════════════════════════════════════════════════════
+        
+        Args:
+            omega_start: Starting angular frequency (rad/s), default 10¹⁰
+            omega_end: Ending angular frequency (rad/s), default 10¹³
+            n_points: Number of frequency points to compute
+            T: System temperature (K)
+            T_c: Critical temperature (K)
+            tau_coh: Coherence time (s) for TRZ resonance
+            B_t: Applied magnetic field (T)
+            B_crit: Critical magnetic field (T)
+            Gamma: Resonance linewidth (rad/s)
+            sigma_0: Base conductivity scale (S/m)
+            f_TRZ: Time-reversal zone coupling (default: class value)
+            rho_SCm: SCm vacuum density (J/m³) (default: class value)
+            rho_UA: UA vacuum density (J/m³) (default: class value)
+            mu_j: String tension (J/m)
+            t: Time parameter for dynamic U_m
+            t_n: Phase parameter for dynamic U_m
+            gamma: Damping coefficient for U_m
+            frame: UQFF frame ('F_U_Bi', 'F_U', 'F_Bi', 'F_i')
+            log_scale: Use logarithmic frequency spacing (default True)
+            
+        Returns:
+            Tuple of (results_dict, explanation_string)
+            
+            results_dict contains:
+            - omega_array: Frequency values (rad/s)
+            - omega_THz_array: Frequency values (THz)
+            - sigma_real_array: Re[σ_UQFF] at each frequency
+            - sigma_imag_array: Im[σ_UQFF] at each frequency
+            - sigma_mag_array: |σ_UQFF| at each frequency
+            - omega_gap: Gap frequency (rad/s)
+            - omega_res: Resonance frequency (rad/s)
+            - peak_omega: Frequency of maximum conductivity
+            - peak_sigma: Maximum conductivity value
+            - resonance_enhancement: Enhancement at ω_res vs baseline
+            - simulation_data: List of per-point simulation results
+        """
+        # Use class defaults if not provided
+        if f_TRZ is None:
+            f_TRZ = self.f_TRZ
+        if rho_SCm is None:
+            rho_SCm = self.rho_vac_SCm
+        if rho_UA is None:
+            rho_UA = self.rho_vac_UA
+            
+        # Generate frequency array
+        if log_scale:
+            omega_array = np.logspace(np.log10(omega_start), np.log10(omega_end), n_points)
+        else:
+            omega_array = np.linspace(omega_start, omega_end, n_points)
+        
+        # Compute resonance frequency
+        omega_res = 2 * np.pi * f_TRZ / tau_coh if tau_coh > 0 else 0
+        
+        # Storage arrays
+        sigma_real_array = []
+        sigma_imag_array = []
+        sigma_mag_array = []
+        simulation_data = []
+        
+        # Compute spectrum at each frequency
+        for omega in omega_array:
+            result, _ = self.compute_UQFF_conductivity_spectrum(
+                omega=omega, T=T, T_c=T_c, tau_coh=tau_coh,
+                B_t=B_t, B_crit=B_crit, Gamma=Gamma, sigma_0=sigma_0,
+                f_TRZ=f_TRZ, rho_SCm=rho_SCm, rho_UA=rho_UA,
+                mu_j=mu_j, t=t, t_n=t_n, gamma=gamma, frame=frame
+            )
+            
+            sigma_real_array.append(result['sigma_UQFF_real'])
+            sigma_imag_array.append(result['sigma_UQFF_imag'])
+            sigma_mag_array.append(result['sigma_UQFF_mag'])
+            simulation_data.append(result)
+        
+        # Convert to numpy arrays
+        sigma_real_array = np.array(sigma_real_array)
+        sigma_imag_array = np.array(sigma_imag_array)
+        sigma_mag_array = np.array(sigma_mag_array)
+        omega_THz_array = omega_array / (2 * np.pi * 1e12)
+        
+        # Find peak conductivity
+        peak_idx = np.argmax(sigma_mag_array)
+        peak_omega = omega_array[peak_idx]
+        peak_sigma = sigma_mag_array[peak_idx]
+        
+        # Find gap frequency from first result
+        omega_gap = simulation_data[0]['omega_gap'] if simulation_data else 0
+        
+        # Compute resonance enhancement
+        # Find conductivity at omega_res and compare to baseline (10× away)
+        if omega_res > omega_start and omega_res < omega_end:
+            idx_res = np.argmin(np.abs(omega_array - omega_res))
+            idx_baseline = np.argmin(np.abs(omega_array - omega_res * 10))
+            resonance_enhancement = sigma_mag_array[idx_res] / (sigma_mag_array[idx_baseline] + 1e-30)
+        else:
+            resonance_enhancement = 1.0
+        
+        # Compute correlation length scaling
+        rho_ratio = rho_UA / rho_SCm if rho_SCm > 0 else 10.0
+        sqrt_rho_ratio = np.sqrt(rho_ratio)
+        
+        # B-field suppression factor
+        B_factor = max(1 - B_t/B_crit, 0.0) if B_crit > 0 else 1.0
+        
+        results = {
+            'omega_array': omega_array,
+            'omega_THz_array': omega_THz_array,
+            'sigma_real_array': sigma_real_array,
+            'sigma_imag_array': sigma_imag_array,
+            'sigma_mag_array': sigma_mag_array,
+            'omega_gap': omega_gap,
+            'omega_gap_THz': omega_gap / (2 * np.pi * 1e12),
+            'omega_res': omega_res,
+            'omega_res_THz': omega_res / (2 * np.pi * 1e12),
+            'peak_omega': peak_omega,
+            'peak_omega_THz': peak_omega / (2 * np.pi * 1e12),
+            'peak_sigma': peak_sigma,
+            'resonance_enhancement': resonance_enhancement,
+            'T': T,
+            'T_c': T_c,
+            'tau_coh': tau_coh,
+            'Gamma': Gamma,
+            'rho_ratio': rho_ratio,
+            'sqrt_rho_ratio': sqrt_rho_ratio,
+            'B_factor': B_factor,
+            'f_TRZ': f_TRZ,
+            'sigma_0': sigma_0,
+            'n_points': n_points,
+            'log_scale': log_scale,
+            'frame': frame,
+            'simulation_data': simulation_data
+        }
+        
+        steps = f"""UQFF Conductivity Spectrum Simulation over Frequency
+═══════════════════════════════════════════════════════════════════════════════
+MODULE SOURCE: uqff_conductivity_spectrum.h/.cpp (C++ validated implementation)
+
+THEORETICAL BASIS:
+  Frequency-dependent σ(ω) integrating holographic duality, aether, and
+  superconductive effects. Models BH horizons, q-scope, THz hole with UQFF
+  modifications via [UA], f_TRZ≈0.1, U_m damped resonances.
+
+DERIVATION STEPS:
+  STEP 1: Base σ(ω) = (i/ω)(A'/A + (ω²/c²) log z₀) + δ(ω)
+          AdS Maxwell near z→0
+  
+  STEP 2: ξ_UQFF = ξ × √(ρ_UA/ρ_SCm), ρ_ratio ≈ 10
+          Gap widened: Δ_UQFF ≈ Δ/√10
+  
+  STEP 3: σ' = σ × (1 - B_t/B_crit)
+          Magnetic suppression damps above gap
+  
+  STEP 4: σ'' = σ' + f_TRZ × Γ/((ω - ω_res)² + Γ²)
+          ω_res = 2π f_TRZ/τ_coh, TRZ Lorentzian resonance
+  
+  STEP 5: σ_UQFF = σ'' × exp(-U_m ω/(k_B T))
+          String damping for UV regularization
+  
+  STEP 6: Full σ_UQFF spectrum with all 5 modifications
+
+═══════════════════════════════════════════════════════════════════════════════
+SIMULATION PARAMETERS:
+
+  Frequency range: {omega_start:.4e} to {omega_end:.4e} rad/s
+                   ({omega_start/(2*np.pi*1e12):.4f} to {omega_end/(2*np.pi*1e12):.2f} THz)
+  Points: {n_points} ({'logarithmic' if log_scale else 'linear'} spacing)
+  
+  Temperature: T = {T:.2f} K (T_c = {T_c:.2f} K)
+  Coherence time: τ_coh = {tau_coh:.4e} s
+  Magnetic field: B_t/B_crit = {B_t/B_crit if B_crit > 0 else 0:.4f}
+  Resonance width: Γ = {Gamma:.4e} rad/s
+  Base conductivity: σ₀ = {sigma_0:.4e} S/m
+  
+  UQFF Parameters:
+    f_TRZ = {f_TRZ:.4f}
+    ρ_UA/ρ_SCm = {rho_ratio:.4f} → √(ratio) = {sqrt_rho_ratio:.4f}
+    Frame: {frame}
+
+═══════════════════════════════════════════════════════════════════════════════
+CHARACTERISTIC FREQUENCIES:
+
+  Gap frequency: ω_gap = {omega_gap:.4e} rad/s = {omega_gap/(2*np.pi*1e12):.4f} THz
+    → Below ω_gap: Superconducting response (Im[σ] ~ 1/ω)
+    → Above ω_gap: Normal conductivity restored
+  
+  Resonance frequency: ω_res = 2π f_TRZ / τ_coh
+                             = {omega_res:.4e} rad/s = {omega_res/(2*np.pi*1e12):.4f} THz
+    → f_TRZ Lorentzian peak creates observable resonance
+
+═══════════════════════════════════════════════════════════════════════════════
+SPECTRUM RESULTS:
+
+  Peak conductivity: |σ|_max = {peak_sigma:.4e} S/m
+                     at ω = {peak_omega:.4e} rad/s = {peak_omega/(2*np.pi*1e12):.4f} THz
+  
+  Resonance enhancement: {resonance_enhancement:.2f}× (σ at ω_res vs baseline)
+  
+  Spectrum range:
+    Min |σ_UQFF| = {np.min(sigma_mag_array):.4e} S/m
+    Max |σ_UQFF| = {np.max(sigma_mag_array):.4e} S/m
+    
+  Real part range: [{np.min(sigma_real_array):.4e}, {np.max(sigma_real_array):.4e}] S/m
+  Imag part range: [{np.min(sigma_imag_array):.4e}, {np.max(sigma_imag_array):.4e}] S/m
+
+═══════════════════════════════════════════════════════════════════════════════
+Q-SCOPE OBSERVABLE PREDICTIONS:
+
+  1. GAP FEATURE at ω ≈ {omega_gap/(2*np.pi*1e12):.3f} THz
+     Standard gap Δ = 8 k_B T_c widened by 1/√({rho_ratio:.0f}) ≈ {1/sqrt_rho_ratio:.2f}
+     
+  2. RESONANCE PEAK at ω ≈ {omega_res/(2*np.pi*1e12):.3f} THz
+     f_TRZ = {f_TRZ:.2f} Lorentzian, width Γ = {Gamma:.2e} rad/s
+     Enhancement: {resonance_enhancement:.2f}× relative to baseline
+     
+  3. HIGH-ω DAMPING from U_m string energy
+     Exponential suppression: exp(-U_m ω / k_B T)
+     
+  4. AETHER ENHANCEMENT factor √(ρ_UA/ρ_SCm) = {sqrt_rho_ratio:.2f}
+     Uniform scaling of conductivity magnitude
+
+ADVANCES UQFF:
+  • Observable TRZ resonances in q-scope THz spectra
+  • Testable holographic duality predictions
+  • Links superconductivity to aether vacuum structure
+  • String damping provides UV regularization
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+    
     # ═══════════════════════════════════════════════════════════════════════════════
     # UQFF ENTANGLEMENT SPECTRUM (Aether-Modulated Reduced Density Matrix)
     # ═══════════════════════════════════════════════════════════════════════════════
