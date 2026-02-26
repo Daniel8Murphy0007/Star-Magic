@@ -154990,6 +154990,430 @@ SOURCE45_WOLFRAM_CALCULATORS = {
 }
 
 
+# =============================================================================
+# SOURCE46 WOLFRAM CALCULATORS: NGC 6302 Butterfly Nebula (8 classes)
+# Planetary nebula: M=2 M_sun, r=0.3 ly, v_wind=100 km/s, T_central=250,000 K
+# =============================================================================
+
+class NGC6302StellarWindShockCalculator:
+    """Stellar wind shock: W_shock=ρ·v_wind²·(1+t/t_eject) with v~100 km/s, t_eject=2000 yr"""
+    def __init__(self):
+        self.rho = 1e-20  # kg/m³ (nebular density)
+        self.v_wind = 1e5  # m/s (~100 km/s)
+        self.t_eject = 2000.0  # years
+        self.seconds_per_year = 3.154e7
+    def compute(self, t: float = 0.0) -> dict:
+        t_years = t / self.seconds_per_year
+        time_factor = 1.0 + (t_years / self.t_eject)
+        W_shock = self.rho * self.v_wind**2 * time_factor
+        return {'value': W_shock, 'v_wind_km_s': 100, 't_eject_yr': self.t_eject, 'units': 'm/s²',
+                'equation': 'W_shock = ρ·v_wind²·(1+t/t_eject)'}
+
+class NGC6302BipolarOutflowCalculator:
+    """Bipolar outflow: a_outflow=(Ṁ·v_wind)/(M·r) with Ṁ~1e-6 M_sun/yr (hourglass shape)"""
+    def __init__(self):
+        self.M_dot = 1e-6 * 1.989e30 / 3.154e7  # kg/s
+        self.v_wind = 1e5  # m/s
+        self.r = 9.46e15  # m (~0.3 ly)
+        self.M = 3.98e30  # kg (~2 M_sun)
+    def compute(self, t: float = 0.0) -> dict:
+        a_outflow = (self.M_dot * self.v_wind) / (self.M * self.r)
+        return {'value': a_outflow, 'M_dot_Msun_yr': 1e-6, 'v_wind_km_s': 100, 'units': 'm/s²',
+                'note': 'Creates butterfly/hourglass morphology',
+                'equation': 'a_outflow = (Ṁ·v_wind)/(M·r)'}
+
+class NGC6302IonizedEjectaFluidCalculator:
+    """Ionized ejecta fluid: a_fluid=rho_ejecta·V·g_base with rho~1e-20 kg/m³"""
+    def __init__(self):
+        self.rho_ejecta = 1e-20
+        self.V_sys = 3.54e48  # m³ (~(4/3)πr³)
+        self.G = 6.674e-11
+        self.M = 3.98e30
+        self.r = 9.46e15
+    def compute(self, t: float = 0.0) -> dict:
+        g_base = (self.G * self.M) / (self.r**2)
+        a_fluid = self.rho_ejecta * self.V_sys * g_base
+        return {'value': a_fluid, 'rho_kg_m3': self.rho_ejecta, 'units': 'm/s²',
+                'equation': 'a_fluid = rho_ejecta·V·g_base'}
+
+class NGC6302CentralStarRadiationCalculator:
+    """Central star radiation: a_rad=P_rad/ρ with L~10,000 L_sun (hot WD T~250,000 K)"""
+    def __init__(self):
+        import math
+        self.L_star = 1e4 * 3.828e26  # W (~10,000 L_sun)
+        self.c = 3e8
+        self.r = 9.46e15
+        self.rho_ejecta = 1e-20
+        self.pi = math.pi
+    def compute(self, t: float = 0.0) -> dict:
+        P_rad = self.L_star / (4.0 * self.pi * self.r**2 * self.c)
+        a_rad = P_rad / self.rho_ejecta
+        return {'value': a_rad, 'L_Lsun': 10000, 'T_K': 250000, 'units': 'm/s²',
+                'equation': 'a_rad = P_rad/ρ with P = L/(4πr²c)'}
+
+class NGC6302DarkMatterPNCalculator:
+    """DM (~85%): a_DM=(f_DM·G·M)/r² with f_DM=0.85"""
+    def __init__(self):
+        self.f_DM = 0.85
+        self.G = 6.674e-11
+        self.M = 3.98e30
+        self.r = 9.46e15
+    def compute(self, t: float = 0.0) -> dict:
+        a_DM = (self.f_DM * self.G * self.M) / (self.r**2)
+        return {'value': a_DM, 'f_DM': self.f_DM, 'units': 'm/s²',
+                'equation': 'a_DM = (f_DM·G·M)/r²'}
+
+class NGC6302PlanetaryNebulaResonanceCalculator:
+    """PN shell resonance: 2A·cos(kx)·cos(ωt)+(2π/13.8)·A·Re[exp] at PN freq"""
+    def __init__(self):
+        import math
+        self.A = 1e-10
+        self.k = 1e-15
+        self.omega_PN = 1e-8 * 2.0 * math.pi
+        self.x = 0.0
+        self.pi = math.pi
+    def compute(self, t: float = 0.0) -> dict:
+        import cmath, math
+        cos_term = 2.0 * self.A * math.cos(self.k * self.x) * math.cos(self.omega_PN * t)
+        exp_arg = complex(0, self.k * self.x - self.omega_PN * t)
+        exp_term = self.A * cmath.exp(exp_arg)
+        real_exp = exp_term.real
+        exp_factor = (2.0 * self.pi) / 13.8
+        a_res = cos_term + exp_factor * real_exp
+        return {'value': a_res, 'omega_PN_rad_s': self.omega_PN, 'units': 'm/s²',
+                'equation': '2A·cos(kx)·cos(ωt) + (2π/13.8)·A·Re[exp(i(kx-ωt))]'}
+
+class NGC6302LorentzEjectaCalculator:
+    """Electromagnetic: a_L=q·|v×B| from PN B-field (~0.1 µG) and wind (~100 km/s)"""
+    def __init__(self):
+        self.q = 1.602e-19
+        self.v = 1e5  # m/s (wind velocity)
+        self.B = 1e-7  # T (~0.1 µG)
+    def compute(self, t: float = 0.0) -> dict:
+        a_L = self.q * self.v * self.B
+        return {'value': a_L, 'v_m_s': self.v, 'B_T': self.B, 'units': 'm/s²',
+                'equation': 'a_L = q·|v×B|'}
+
+class NGC6302QuantumIntegralPNCalculator:
+    """Quantum vacuum integral: a_q_int=(ℏ·c)/r³ (Casimir at PN scale)"""
+    def __init__(self):
+        self.hbar = 1.0546e-34
+        self.c = 3e8
+        self.r = 9.46e15
+    def compute(self, t: float = 0.0) -> dict:
+        a_q_int = (self.hbar * self.c) / (self.r**3)
+        return {'value': a_q_int, 'r_m': self.r, 'units': 'm/s²',
+                'equation': 'a_q_int = (ℏ·c)/r³'}
+
+SOURCE46_WOLFRAM_CALCULATORS = {
+    'NGC6302StellarWindShockCalculator': NGC6302StellarWindShockCalculator(),
+    'NGC6302BipolarOutflowCalculator': NGC6302BipolarOutflowCalculator(),
+    'NGC6302IonizedEjectaFluidCalculator': NGC6302IonizedEjectaFluidCalculator(),
+    'NGC6302CentralStarRadiationCalculator': NGC6302CentralStarRadiationCalculator(),
+    'NGC6302DarkMatterPNCalculator': NGC6302DarkMatterPNCalculator(),
+    'NGC6302PlanetaryNebulaResonanceCalculator': NGC6302PlanetaryNebulaResonanceCalculator(),
+    'NGC6302LorentzEjectaCalculator': NGC6302LorentzEjectaCalculator(),
+    'NGC6302QuantumIntegralPNCalculator': NGC6302QuantumIntegralPNCalculator(),
+}
+
+
+# =============================================================================
+# SOURCE47 WOLFRAM CALCULATORS: NGC 6302 Resonance UQFF (10 classes)
+# Advanced planetary nebula resonance: DPM 1 THz, v_wind 600 km/s polar, SC ~0.9
+# =============================================================================
+
+class NGC6302DPMResonanceCalculator:
+    """DPM resonance: a_DPM=(I·A·Δω·f_DPM·E_vac)/(c·V) at 1 THz (wind-aligned)"""
+    def __init__(self):
+        self.f_DPM = 1e12  # Hz (wind-aligned THz)
+        self.E_vac_neb = 7.09e-36
+        self.I = 1.0
+        self.A = 1.0
+        self.omega_diff = 1e10  # ~10 GHz
+        self.c = 3e8
+        self.V = 1e48  # m³
+    def compute(self, t: float = 0.0) -> dict:
+        a_DPM = (self.I * self.A * self.omega_diff * self.f_DPM * self.E_vac_neb) / (self.c * self.V)
+        return {'value': a_DPM, 'f_DPM_Hz': self.f_DPM, 'units': 'm/s²',
+                'equation': 'a_DPM = (I·A·Δω·f_DPM·E_vac)/(c·V)'}
+
+class NGC6302THzResonanceCalculator:
+    """THz pipeline: a_THz=(f_THz·v_wind·a_DPM)/c² with v~600 km/s polar"""
+    def __init__(self):
+        self.f_THz = 1e12
+        self.v_wind = 6e5  # m/s (600 km/s extreme polar wind)
+        self.a_DPM = 1e-20  # Base DPM
+        self.c = 3e8
+    def compute(self, t: float = 0.0) -> dict:
+        a_THz = (self.f_THz * self.v_wind * self.a_DPM) / (self.c**2)
+        return {'value': a_THz, 'f_THz_Hz': self.f_THz, 'v_wind_km_s': 600, 'units': 'm/s²',
+                'equation': 'a_THz = (f_THz·v_wind·a_DPM)/c²'}
+
+class NGC6302VacuumDifferentialCalculator:
+    """Vacuum differential: a_vac=f_diff·a_DPM at ~10 GHz (plasmotic interaction)"""
+    def __init__(self):
+        self.f_diff = 1e10  # Hz (~10 GHz)
+        self.a_DPM = 1e-20
+    def compute(self, t: float = 0.0) -> dict:
+        a_vac_diff = self.f_diff * self.a_DPM
+        return {'value': a_vac_diff, 'f_diff_Hz': self.f_diff, 'units': 'm/s²',
+                'equation': 'a_vac_diff = f_diff·a_DPM'}
+
+class NGC6302SuperconductorFrequencyCalculator:
+    """Superconductor: a_super=f_super·SCm·a_DPM with SCm~0.9 (B~0.1 µG subcritical)"""
+    def __init__(self):
+        self.f_super = 1.411e16
+        self.B = 1e-7  # T (~0.1 µG)
+        self.B_crit = 1e-6  # T (~1 µG)
+        self.a_DPM = 1e-20
+    def compute(self, t: float = 0.0) -> dict:
+        SCm = 1.0 - (self.B / self.B_crit)  # ~0.9
+        a_super = self.f_super * SCm * self.a_DPM
+        return {'value': a_super, 'f_super_Hz': self.f_super, 'SCm': SCm, 'units': 'm/s²',
+                'equation': 'a_super = f_super·SCm·a_DPM'}
+
+class NGC6302AetherResonanceCalculator:
+    """Aether resonance: a_aether=f_aether·1e-8·f_DPM·(1+f_TRZ)·a_DPM (replaces DM/DE)"""
+    def __init__(self):
+        self.f_aether = 1e-8
+        self.f_DPM = 1e12
+        self.f_TRZ = 0.1
+        self.a_DPM = 1e-20
+    def compute(self, t: float = 0.0) -> dict:
+        a_aether = self.f_aether * 1e-8 * self.f_DPM * (1.0 + self.f_TRZ) * self.a_DPM
+        return {'value': a_aether, 'f_aether_Hz': self.f_aether, 'f_TRZ': self.f_TRZ, 'units': 'm/s²',
+                'equation': 'a_aether = f_aether·1e-8·f_DPM·(1+f_TRZ)·a_DPM'}
+
+class NGC6302ReactiveResonanceCalculator:
+    """Reactive U_g4i: a_reactive=f_react·a_DPM at ~10 GHz (fourth-order gravity)"""
+    def __init__(self):
+        self.f_react = 1e10  # Hz
+        self.a_DPM = 1e-20
+    def compute(self, t: float = 0.0) -> dict:
+        a_reactive = self.f_react * self.a_DPM
+        return {'value': a_reactive, 'f_react_Hz': self.f_react, 'units': 'm/s²',
+                'equation': 'a_reactive = f_react·a_DPM'}
+
+class NGC6302QuantumWaveResonanceCalculator:
+    """Quantum wave: a_quantum=f_quantum·a_DPM at 1.445e-17 Hz (ultra-low)"""
+    def __init__(self):
+        self.f_quantum = 1.445e-17
+        self.a_DPM = 1e-20
+    def compute(self, t: float = 0.0) -> dict:
+        a_quantum = self.f_quantum * self.a_DPM
+        return {'value': a_quantum, 'f_quantum_Hz': self.f_quantum, 'units': 'm/s²',
+                'equation': 'a_quantum = f_quantum·a_DPM'}
+
+class NGC6302FluidResonanceCalculator:
+    """Fluid resonance: a_fluid=f_fluid·a_DPM at ~10 MHz (ejecta hydrodynamics)"""
+    def __init__(self):
+        self.f_fluid = 1e7  # Hz (~10 MHz)
+        self.a_DPM = 1e-20
+    def compute(self, t: float = 0.0) -> dict:
+        a_fluid = self.f_fluid * self.a_DPM
+        return {'value': a_fluid, 'f_fluid_Hz': self.f_fluid, 'units': 'm/s²',
+                'equation': 'a_fluid = f_fluid·a_DPM'}
+
+class NGC6302OscillatoryResonanceCalculator:
+    """Oscillatory: 2A·cos(kx)·cos(ωt)+(2π/13.8)·A·Re[exp] at ~1e-8 Hz (shell oscillation)"""
+    def __init__(self):
+        import math
+        self.A = 1e-15
+        self.k = 1e-16
+        self.omega = 2.0 * math.pi * 1e-8
+        self.x = 1.42e16
+        self.pi = math.pi
+    def compute(self, t: float = 0.0) -> dict:
+        import cmath, math
+        cos_term = 2.0 * self.A * math.cos(self.k * self.x) * math.cos(self.omega * t)
+        exp_arg = complex(0, self.k * self.x - self.omega * t)
+        exp_term = self.A * cmath.exp(exp_arg)
+        real_exp = exp_term.real
+        exp_factor = (2.0 * self.pi) / 13.8
+        a_osc = cos_term + exp_factor * real_exp
+        return {'value': a_osc, 'omega_Hz': 1e-8, 'units': 'm/s²',
+                'equation': '2A·cos(kx)·cos(ωt) + (2π/13.8)·A·Re[exp(i(kx-ωt))]'}
+
+class NGC6302CosmicExpansionResonanceCalculator:
+    """Cosmic expansion: a_exp=f_exp·H0·r at Hubble frequency (weak PN coupling)"""
+    def __init__(self):
+        self.H0 = 2.27e-18  # s^-1
+        self.r = 1.42e16  # m
+        self.f_exp = 1e-18  # Hz
+    def compute(self, t: float = 0.0) -> dict:
+        a_exp = self.f_exp * self.H0 * self.r
+        return {'value': a_exp, 'H0_s-1': self.H0, 'f_exp_Hz': self.f_exp, 'units': 'm/s²',
+                'equation': 'a_exp = f_exp·H0·r'}
+
+SOURCE47_WOLFRAM_CALCULATORS = {
+    'NGC6302DPMResonanceCalculator': NGC6302DPMResonanceCalculator(),
+    'NGC6302THzResonanceCalculator': NGC6302THzResonanceCalculator(),
+    'NGC6302VacuumDifferentialCalculator': NGC6302VacuumDifferentialCalculator(),
+    'NGC6302SuperconductorFrequencyCalculator': NGC6302SuperconductorFrequencyCalculator(),
+    'NGC6302AetherResonanceCalculator': NGC6302AetherResonanceCalculator(),
+    'NGC6302ReactiveResonanceCalculator': NGC6302ReactiveResonanceCalculator(),
+    'NGC6302QuantumWaveResonanceCalculator': NGC6302QuantumWaveResonanceCalculator(),
+    'NGC6302FluidResonanceCalculator': NGC6302FluidResonanceCalculator(),
+    'NGC6302OscillatoryResonanceCalculator': NGC6302OscillatoryResonanceCalculator(),
+    'NGC6302CosmicExpansionResonanceCalculator': NGC6302CosmicExpansionResonanceCalculator(),
+}
+
+
+# =============================================================================
+# SOURCE48 WOLFRAM CALCULATORS: Orion Nebula M42 (10 classes)
+# Nearest massive star-forming region: M=2000 M_sun, r=12 ly, SFR=0.1 M_sun/yr
+# =============================================================================
+
+class OrionStarFormationMassCalculator:
+    """Star formation: a_sf=G·M_sf(t)/r² with M_sf=SFR·t, SFR=0.1 M_sun/yr (~30,000 M_sun formed)"""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.SFR = 0.1  # M_sun/yr
+        self.t_yr = 3e5 * 365.25 * 24 * 3600  # 300,000 yr in seconds
+        self.r = 1.18e17  # m (~12 ly)
+        self.M0 = 1.989e30
+    def compute(self, t: float = 0.0) -> dict:
+        M_sf = (self.SFR * self.t_yr) / self.M0
+        a_sf = (self.G * M_sf) / (self.r**2)
+        return {'value': a_sf, 'SFR_Msun_yr': self.SFR, 'M_sf_Msun': 30000, 'units': 'm/s²',
+                'equation': 'a_sf = G·M_sf(t)/r²'}
+
+class OrionTrapeziumRadiationPressureCalculator:
+    """Radiation pressure: a_rad=P_rad/(rho·m_H) with L_Trap~40,000 L_sun (Trapezium ionizes nebula)"""
+    def __init__(self):
+        import math
+        self.L_Trap = 1.53e32  # W (~40,000 L_sun)
+        self.r = 1.18e17
+        self.c = 3e8
+        self.m_H = 1.67e-27
+        self.rho = 1e-20
+        self.pi = math.pi
+    def compute(self, t: float = 0.0) -> dict:
+        P_rad = self.L_Trap / (4.0 * self.pi * self.r**2 * self.c)
+        a_rad = P_rad / (self.rho * self.m_H)
+        return {'value': a_rad, 'L_Lsun': 40000, 'units': 'm/s²',
+                'note': '4 O-type stars (θ¹ Ori A-D) ionize entire nebula',
+                'equation': 'a_rad = P_rad/(rho·m_H)'}
+
+class OrionLorentzForceCalculator:
+    """Lorentz: a_L=(q·|v×B|)/m_H with v~20 km/s, B~10 mG (ionized gas deflection)"""
+    def __init__(self):
+        self.q = 1.602e-19
+        self.v_exp = 2e4  # m/s (20 km/s)
+        self.B = 1e-5  # T (10 mG)
+        self.m_H = 1.67e-27
+        self.vac_ratio = 11.0
+    def compute(self, t: float = 0.0) -> dict:
+        a_L = (self.q * self.v_exp * self.B) / self.m_H * self.vac_ratio
+        return {'value': a_L, 'v_km_s': 20, 'B_mG': 10, 'units': 'm/s²',
+                'equation': 'a_L = (q·|v×B|)/m_H'}
+
+class OrionFluidDynamicsCalculator:
+    """Fluid: a_fluid=rho·V·g_base (H II turbulence, V=1/rho unit fix → g_base)"""
+    def __init__(self):
+        self.rho_fluid = 1e-20
+        self.V = 1.0 / 1e-20  # Unit consistency
+        self.g_base = 1e-10
+    def compute(self, t: float = 0.0) -> dict:
+        a_fluid = self.rho_fluid * self.V * self.g_base
+        return {'value': a_fluid, 'rho_kg_m3': self.rho_fluid, 'units': 'm/s²',
+                'equation': 'a_fluid = rho·V·g_base'}
+
+class OrionStellarWindCalculator:
+    """Stellar wind: W=v_wind²·(1+t/t_age) with v~8 km/s (age-dependent, t~3e5 yr)"""
+    def __init__(self):
+        self.v_wind = 8e3  # m/s (8 km/s)
+        self.t_age = 3e5 * 365.25 * 24 * 3600  # 300,000 yr in seconds
+    def compute(self, t: float = 0.0) -> dict:
+        W_stellar = self.v_wind**2 * (1.0 + t / self.t_age)
+        return {'value': W_stellar, 'v_wind_km_s': 8, 't_age_yr': 3e5, 'units': 'm/s²',
+                'equation': 'W = v_wind²·(1+t/t_age)'}
+
+class OrionDarkMatterPerturbationCalculator:
+    """DM perturbation: a_DM=G·(M·δρ/ρ)/r² with δρ/ρ=1e-5 (unit-fixed)"""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M = 3.978e33  # kg (~2000 M_sun)
+        self.delta_rho_ratio = 1e-5
+        self.r = 1.18e17
+    def compute(self, t: float = 0.0) -> dict:
+        delta_M = self.M * self.delta_rho_ratio
+        a_DM = (self.G * delta_M) / (self.r**2)
+        return {'value': a_DM, 'delta_rho_ratio': self.delta_rho_ratio, 'units': 'm/s²',
+                'equation': 'a_DM = G·(M·δρ/ρ)/r²'}
+
+class OrionQuantumIntegralCalculator:
+    """Quantum integral: a_q=(ℏ·c)/(r³·t_H) at 12 ly scale (small but non-zero)"""
+    def __init__(self):
+        self.hbar = 1.0546e-34
+        self.c = 3e8
+        self.r = 1.18e17
+        self.t_Hubble = 4.4e17  # s (~14 Gyr)
+    def compute(self, t: float = 0.0) -> dict:
+        a_q = (self.hbar * self.c) / (self.r**3 * self.t_Hubble)
+        return {'value': a_q, 'r_m': self.r, 'units': 'm/s²',
+                'equation': 'a_q = (ℏ·c)/(r³·t_H)'}
+
+class OrionCosmologicalLambdaCalculator:
+    """Cosmological Lambda: a_Λ=(Λ·c²)/3 (dark energy/Aether at 12 ly scale)"""
+    def __init__(self):
+        self.Lambda = 1.11e-52  # m^-2
+        self.c = 3e8
+        self.H0 = 2.27e-18
+    def compute(self, t: float = 0.0) -> dict:
+        a_Lambda = (self.Lambda * self.c**2) / 3.0
+        return {'value': a_Lambda, 'Lambda_m2': self.Lambda, 'H0_km_s_Mpc': 70, 'units': 'm/s²',
+                'equation': 'a_Λ = (Λ·c²)/3'}
+
+class OrionResonantOscillatoryCalculator:
+    """Resonant: 2A·cos(kx)·cos(ωt)+(2π/13.8)·A·Re[exp] at H-alpha 656.3 nm (red glow)"""
+    def __init__(self):
+        import math
+        self.A = 1e-12
+        self.k = 5e-18
+        self.omega_Halpha = 4.57e14 * 2.0 * math.pi  # H-alpha (656.3 nm)
+        self.x = 1.18e17
+        self.pi = math.pi
+    def compute(self, t: float = 0.0) -> dict:
+        import cmath, math
+        cos_term = 2.0 * self.A * math.cos(self.k * self.x) * math.cos(self.omega_Halpha * t)
+        exp_arg = complex(0, self.k * self.x - self.omega_Halpha * t)
+        exp_term = self.A * cmath.exp(exp_arg)
+        real_exp = exp_term.real
+        exp_factor = (2.0 * self.pi) / 13.8
+        a_res = cos_term + exp_factor * real_exp
+        return {'value': a_res, 'lambda_nm': 656.3, 'units': 'm/s²',
+                'equation': '2A·cos(kx)·cos(ωt) + (2π/13.8)·A·Re[exp(i(kx-ωt))]'}
+
+class OrionUgSumCalculator:
+    """UQFF Ug-sum: Ug1+Ug2+Ug3+Ug4 with Ug2=v²/r dominant (Ug3=0, Ug2~v_exp²/r)"""
+    def __init__(self):
+        self.v_exp = 2e4  # m/s (20 km/s)
+        self.r = 1.18e17
+        self.c = 3e8
+    def compute(self, t: float = 0.0) -> dict:
+        Ug2 = (self.v_exp**2) / self.r  # Dominant term
+        Ug1 = 1e-15  # Placeholder
+        Ug3 = 0.0
+        Ug4 = 1e-16
+        Ug_sum = Ug1 + Ug2 + Ug3 + Ug4
+        return {'value': Ug_sum, 'Ug2': Ug2, 'Ug3': Ug3, 'units': 'm/s²',
+                'equation': 'Ug_sum = Ug1+Ug2+Ug3+Ug4'}
+
+SOURCE48_WOLFRAM_CALCULATORS = {
+    'OrionStarFormationMassCalculator': OrionStarFormationMassCalculator(),
+    'OrionTrapeziumRadiationPressureCalculator': OrionTrapeziumRadiationPressureCalculator(),
+    'OrionLorentzForceCalculator': OrionLorentzForceCalculator(),
+    'OrionFluidDynamicsCalculator': OrionFluidDynamicsCalculator(),
+    'OrionStellarWindCalculator': OrionStellarWindCalculator(),
+    'OrionDarkMatterPerturbationCalculator': OrionDarkMatterPerturbationCalculator(),
+    'OrionQuantumIntegralCalculator': OrionQuantumIntegralCalculator(),
+    'OrionCosmologicalLambdaCalculator': OrionCosmologicalLambdaCalculator(),
+    'OrionResonantOscillatoryCalculator': OrionResonantOscillatoryCalculator(),
+    'OrionUgSumCalculator': OrionUgSumCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -155605,4 +156029,38 @@ __all__.extend([
     'SpiralGalaxyISMFluidDynamicsCalculator',
     'SpiralGalaxyResonanceCalculator',
     'SOURCE45_WOLFRAM_CALCULATORS',
+    # Source46 NGC 6302 Butterfly Nebula UQFF (Feb 26, 2026) - 8 Calculator Classes
+    'NGC6302StellarWindShockCalculator',
+    'NGC6302BipolarOutflowCalculator',
+    'NGC6302IonizedEjectaFluidCalculator',
+    'NGC6302CentralStarRadiationCalculator',
+    'NGC6302DarkMatterPNCalculator',
+    'NGC6302PlanetaryNebulaResonanceCalculator',
+    'NGC6302LorentzEjectaCalculator',
+    'NGC6302QuantumIntegralPNCalculator',
+    'SOURCE46_WOLFRAM_CALCULATORS',
+    # Source47 NGC 6302 Resonance UQFF (Feb 26, 2026) - 10 Calculator Classes
+    'NGC6302DPMResonanceCalculator',
+    'NGC6302THzResonanceCalculator',
+    'NGC6302VacuumDifferentialCalculator',
+    'NGC6302SuperconductorFrequencyCalculator',
+    'NGC6302AetherResonanceCalculator',
+    'NGC6302ReactiveResonanceCalculator',
+    'NGC6302QuantumWaveResonanceCalculator',
+    'NGC6302FluidResonanceCalculator',
+    'NGC6302OscillatoryResonanceCalculator',
+    'NGC6302CosmicExpansionResonanceCalculator',
+    'SOURCE47_WOLFRAM_CALCULATORS',
+    # Source48 Orion Nebula M42 UQFF (Feb 26, 2026) - 10 Calculator Classes
+    'OrionStarFormationMassCalculator',
+    'OrionTrapeziumRadiationPressureCalculator',
+    'OrionLorentzForceCalculator',
+    'OrionFluidDynamicsCalculator',
+    'OrionStellarWindCalculator',
+    'OrionDarkMatterPerturbationCalculator',
+    'OrionQuantumIntegralCalculator',
+    'OrionCosmologicalLambdaCalculator',
+    'OrionResonantOscillatoryCalculator',
+    'OrionUgSumCalculator',
+    'SOURCE48_WOLFRAM_CALCULATORS',
 ])
