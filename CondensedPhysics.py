@@ -42937,6 +42937,1256 @@ Compare to GW150914:
 ═══════════════════════════════════════════════════════════════════════════════
 """
         return results, steps
+
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # GW WAVEFORM h(t) CALCULATIONS
+    # Quadrupole strain with UQFF aether/horizon/TRZ/string corrections
+    # ═══════════════════════════════════════════════════════════════════════════════
+
+    def compute_GW_strain_standard(self, M1: float, M2: float, a: float,
+                                    r_observer: float, t: float = 0.0) -> Tuple[dict, str]:
+        """
+        Compute standard GW strain h(t) using quadrupole approximation.
+        
+        QUADRUPOLE FORMULA (Plus Polarization):
+        ────────────────────────────────────────────────────────────────────────────
+        For circular binary orbit, distant observer:
+            h = (4 G² μ M_tot) / (c⁴ a r) × cos(2ωt)
+        
+        where:
+            μ = M₁M₂/(M₁+M₂) is reduced mass
+            ω = √(GM_tot/a³) is orbital angular frequency
+            r = observer distance
+        
+        This is the leading-order waveform. Full post-Newtonian corrections
+        add higher harmonics and amplitude corrections.
+        
+        Args:
+            M1: Primary mass (kg)
+            M2: Secondary mass (kg)
+            a: Orbital separation (m)
+            r_observer: Distance to observer (m)
+            t: Time (s)
+        
+        Returns:
+            results: Dict with strain and parameters
+            steps: Long-form derivation
+        """
+        import numpy as np
+        
+        M_sun = getattr(self, 'M_sun', 1.989e30)
+        G = getattr(self, 'G', 6.67430e-11)
+        c = getattr(self, 'c', 2.998e8)
+        Mpc = 3.086e22
+        
+        M_tot = M1 + M2
+        mu = M1 * M2 / M_tot
+        
+        M1_solar = M1 / M_sun
+        M2_solar = M2 / M_sun
+        M_tot_solar = M_tot / M_sun
+        r_Mpc = r_observer / Mpc
+        
+        # Orbital frequency
+        omega = np.sqrt(G * M_tot / (a**3)) if a > 0 else 0.0
+        f_orbital = omega / (2 * np.pi)
+        f_GW = 2 * f_orbital  # GW frequency is twice orbital
+        
+        # Strain amplitude
+        if a > 0 and r_observer > 0:
+            h_amplitude = (4 * G**2 * mu * M_tot) / (c**4 * a * r_observer)
+        else:
+            h_amplitude = 0.0
+        
+        # Phase
+        phase = 2 * omega * t
+        h = h_amplitude * np.cos(phase)
+        
+        results = {
+            'M1': M1,
+            'M2': M2,
+            'M_tot': M_tot,
+            'mu': mu,
+            'a': a,
+            'r_observer': r_observer,
+            't': t,
+            'omega': omega,
+            'f_orbital': f_orbital,
+            'f_GW': f_GW,
+            'h_amplitude': h_amplitude,
+            'phase': phase,
+            'h': h,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+STANDARD GW STRAIN h(t) - QUADRUPOLE APPROXIMATION
+═══════════════════════════════════════════════════════════════════════════════
+
+PHYSICAL BASIS:
+───────────────────────────────────────────────────────────────────────────────
+Einstein's quadrupole formula (linearized GR):
+  h = (4 G² μ M_tot) / (c⁴ a r) × cos(2ωt)
+
+This describes plus polarization for circular binary viewed face-on.
+
+═══════════════════════════════════════════════════════════════════════════════
+INPUT PARAMETERS:
+───────────────────────────────────────────────────────────────────────────────
+  M₁ = {M1:.4e} kg = {M1_solar:.2f} M_sun
+  M₂ = {M2:.4e} kg = {M2_solar:.2f} M_sun
+  a = {a:.4e} m = {a/1e3:.2f} km
+  r = {r_observer:.4e} m = {r_Mpc:.1f} Mpc
+  t = {t:.6f} s
+
+STEP 1: REDUCED MASS
+───────────────────────────────────────────────────────────────────────────────
+  μ = M₁M₂/(M₁+M₂)
+    = {M1:.4e} × {M2:.4e} / {M_tot:.4e}
+    = {mu:.4e} kg = {mu/M_sun:.2f} M_sun
+
+STEP 2: ORBITAL FREQUENCY
+───────────────────────────────────────────────────────────────────────────────
+  ω = √(G M_tot / a³)
+    = √({G:.4e} × {M_tot:.4e} / {a:.4e}³)
+    = {omega:.4f} rad/s
+  
+  f_orbital = ω/(2π) = {f_orbital:.2f} Hz
+  f_GW = 2 × f_orbital = {f_GW:.2f} Hz
+
+STEP 3: STRAIN AMPLITUDE
+───────────────────────────────────────────────────────────────────────────────
+  h_amp = (4 G² μ M_tot) / (c⁴ a r)
+        = (4 × {G**2:.4e} × {mu:.4e} × {M_tot:.4e}) / 
+          ({c**4:.4e} × {a:.4e} × {r_observer:.4e})
+        = {h_amplitude:.4e}
+
+STEP 4: INSTANTANEOUS STRAIN
+───────────────────────────────────────────────────────────────────────────────
+  phase = 2ωt = 2 × {omega:.4f} × {t:.6f} = {phase:.4f} rad
+  h(t) = h_amp × cos(phase)
+       = {h_amplitude:.4e} × cos({phase:.4f})
+       = {h:.4e}
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: STANDARD GW STRAIN
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ BINARY: {M1_solar:.1f} + {M2_solar:.1f} M_sun at {a/1e3:.0f} km             │
+  │ DISTANCE: {r_Mpc:.0f} Mpc                                          │
+  │                                                                 │
+  │ f_GW = {f_GW:.1f} Hz                                              │
+  │ h_amplitude = {h_amplitude:.4e}                                  │
+  │ h(t={t:.4f}s) = {h:.4e}                                       │
+  │                                                                 │
+  │ Compare LIGO sensitivity: h ~ 10⁻²¹ to 10⁻²³                   │
+  └─────────────────────────────────────────────────────────────────┘
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compute_GW_strain_UQFF(self, M1: float, M2: float, a: float,
+                                r_observer: float, t: float = 0.0,
+                                f_TRZ: float = None,
+                                B_t: float = 0.0,
+                                B_crit: float = 4.4e13,
+                                U_m: float = 1e40,
+                                tau_merge: float = 1.0) -> Tuple[dict, str]:
+        """
+        Compute UQFF-corrected GW strain h(t) with all suppression factors.
+        
+        UQFF WAVEFORM:
+        ────────────────────────────────────────────────────────────────────────────
+        h_UQFF = h_std × S_aether × S_horizon × S_TRZ × S_string × (1 + β_m sin(...))
+        
+        With phase shift:
+            φ_TRZ = 2π f_TRZ × t / τ_merge
+        
+        Suppression factors:
+            S_aether = exp(-α_UA × ρ_UA × r / c)  [cosmological damping]
+            S_horizon = 1 - B_t/B_crit           [magnetic screening]
+            S_TRZ = 1 - f_TRZ                    [time-reversal negentropy]
+            S_string = exp(-U_m / E_bind)        [string interference]
+        
+        PREDICTION: 10-40% amplitude reduction vs standard GR
+        
+        Args:
+            M1: Primary mass (kg)
+            M2: Secondary mass (kg)
+            a: Orbital separation (m)
+            r_observer: Distance (m)
+            t: Time (s)
+            f_TRZ: Time-reversal factor (default 0.1)
+            B_t: Binary magnetic field (T)
+            B_crit: Critical field (T)
+            U_m: String energy (J)
+            tau_merge: Merger timescale (s)
+        
+        Returns:
+            results: Dict with UQFF strain and breakdown
+            steps: Long-form derivation
+        """
+        import numpy as np
+        
+        M_sun = getattr(self, 'M_sun', 1.989e30)
+        G = getattr(self, 'G', 6.67430e-11)
+        c = getattr(self, 'c', 2.998e8)
+        Mpc = 3.086e22
+        k_B = 1.380649e-23
+        T_CMB = 2.725
+        beta_m = 0.01
+        
+        f_TRZ = f_TRZ if f_TRZ is not None else getattr(self, 'f_TRZ', 0.1)
+        alpha_UA = G / (c**2)  # ~7.4e-28 m/kg
+        rho_vac_UA = getattr(self, 'rho_vac_UA', 7.09e-36)
+        
+        M_tot = M1 + M2
+        mu = M1 * M2 / M_tot
+        
+        M1_solar = M1 / M_sun
+        M2_solar = M2 / M_sun
+        r_Mpc = r_observer / Mpc
+        
+        # Orbital frequency
+        omega = np.sqrt(G * M_tot / (a**3)) if a > 0 else 0.0
+        f_GW = omega / np.pi
+        
+        # === STEP 1: Standard strain amplitude ===
+        if a > 0 and r_observer > 0:
+            h_std_amp = (4 * G**2 * mu * M_tot) / (c**4 * a * r_observer)
+        else:
+            h_std_amp = 0.0
+        
+        # === STEP 2: Aether damping ===
+        aether_exp = -alpha_UA * rho_vac_UA * r_observer / c
+        aether_exp = max(aether_exp, -700)
+        S_aether = np.exp(aether_exp)
+        
+        # === STEP 3: Horizon screening ===
+        S_horizon = max(1 - B_t / B_crit, 0) if B_crit > 0 else 1.0
+        
+        # === STEP 4: Time-reversal ===
+        S_TRZ = 1 - f_TRZ
+        
+        # === STEP 5: String interference ===
+        E_bind = G * M_tot**2 / a if a > 0 else 1e50
+        string_exp = -U_m / E_bind
+        string_exp = max(string_exp, -700)
+        S_string = np.exp(string_exp)
+        
+        # Modulation
+        arg_mod = U_m * omega / (k_B * T_CMB) if T_CMB > 0 else 0
+        mod_factor = 1 + beta_m * np.sin(arg_mod)
+        
+        # === Combined ===
+        S_total = S_aether * S_horizon * S_TRZ * S_string * mod_factor
+        h_UQFF_amp = h_std_amp * S_total
+        
+        # === Phase with TRZ shift ===
+        phi_TRZ = 2 * np.pi * f_TRZ * t / tau_merge if tau_merge > 0 else 0
+        phase_std = 2 * omega * t
+        phase_UQFF = phase_std + phi_TRZ
+        
+        h_std = h_std_amp * np.cos(phase_std)
+        h_UQFF = h_UQFF_amp * np.cos(phase_UQFF)
+        
+        # Ratio
+        ratio = h_UQFF / h_std if abs(h_std) > 1e-40 else S_total
+        
+        results = {
+            'M1': M1,
+            'M2': M2,
+            'M_tot': M_tot,
+            'mu': mu,
+            'a': a,
+            'r_observer': r_observer,
+            't': t,
+            'omega': omega,
+            'f_GW': f_GW,
+            'h_std_amp': h_std_amp,
+            'h_std': h_std,
+            'S_aether': S_aether,
+            'S_horizon': S_horizon,
+            'S_TRZ': S_TRZ,
+            'S_string': S_string,
+            'mod_factor': mod_factor,
+            'S_total': S_total,
+            'h_UQFF_amp': h_UQFF_amp,
+            'phi_TRZ': phi_TRZ,
+            'phase_std': phase_std,
+            'phase_UQFF': phase_UQFF,
+            'h_UQFF': h_UQFF,
+            'ratio': ratio,
+            'f_TRZ': f_TRZ,
+            'B_t': B_t,
+            'U_m': U_m,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+UQFF GW STRAIN h(t) - FULL SUPPRESSION FRAMEWORK
+═══════════════════════════════════════════════════════════════════════════════
+
+DERIVATION (6-Step Process):
+───────────────────────────────────────────────────────────────────────────────
+Step 1: h_std = (4G²μM)/(c⁴ar) cos(2ωt)         [Quadrupole]
+Step 2: h' = h_std × exp(-α_UA ρ_UA r/c)        [Aether damping]
+Step 3: h'' = h' × (1 - B_t/B_crit)             [Horizon screening]
+Step 4: h''' = h'' × (1 - f_TRZ)                [Time-reversal]
+Step 5: h_UQFF = h''' × exp(-U_m/E_bind) × mod  [String interference]
+Step 6: Add phase shift φ_TRZ                   [Phase lag]
+
+═══════════════════════════════════════════════════════════════════════════════
+INPUT PARAMETERS:
+───────────────────────────────────────────────────────────────────────────────
+  M₁ = {M1_solar:.2f} M_sun, M₂ = {M2_solar:.2f} M_sun
+  a = {a/1e3:.2f} km, r = {r_Mpc:.0f} Mpc, t = {t:.6f} s
+  f_TRZ = {f_TRZ}, B_t = {B_t:.2e} T, U_m = {U_m:.2e} J
+
+STEP 1: STANDARD STRAIN
+───────────────────────────────────────────────────────────────────────────────
+  h_std_amp = {h_std_amp:.4e}
+  ω = {omega:.2f} rad/s, f_GW = {f_GW:.1f} Hz
+
+STEP 2: AETHER DAMPING
+───────────────────────────────────────────────────────────────────────────────
+  α_UA = G/c² = {alpha_UA:.4e} m/kg
+  ρ_UA = {rho_vac_UA:.4e} J/m³
+  S_aether = exp(-α_UA × ρ_UA × r / c)
+           = exp({aether_exp:.4e})
+           = {S_aether:.6f}
+
+STEP 3: HORIZON SCREENING
+───────────────────────────────────────────────────────────────────────────────
+  S_horizon = 1 - B_t/B_crit = 1 - {B_t/B_crit:.6f}
+            = {S_horizon:.6f}
+
+STEP 4: TIME-REVERSAL SUPPRESSION
+───────────────────────────────────────────────────────────────────────────────
+  S_TRZ = 1 - f_TRZ = 1 - {f_TRZ}
+        = {S_TRZ:.6f}
+
+STEP 5: STRING INTERFERENCE
+───────────────────────────────────────────────────────────────────────────────
+  E_bind = GM²/a = {E_bind:.4e} J
+  S_string = exp(-U_m/E_bind) = {S_string:.6f}
+  mod = 1 + β_m sin(U_m ω/(k_B T)) = {mod_factor:.6f}
+
+STEP 6: COMBINED SUPPRESSION + PHASE
+───────────────────────────────────────────────────────────────────────────────
+  S_total = S_aether × S_horizon × S_TRZ × S_string × mod
+          = {S_aether:.6f} × {S_horizon:.6f} × {S_TRZ:.6f} × {S_string:.6f} × {mod_factor:.6f}
+          = {S_total:.6f}
+  
+  h_UQFF_amp = h_std_amp × S_total = {h_UQFF_amp:.4e}
+  
+  Phase shift: φ_TRZ = 2π f_TRZ t/τ_merge = {phi_TRZ:.4f} rad
+
+FINAL STRAINS:
+───────────────────────────────────────────────────────────────────────────────
+  h_std(t) = {h_std_amp:.4e} × cos({phase_std:.4f}) = {h_std:.4e}
+  h_UQFF(t) = {h_UQFF_amp:.4e} × cos({phase_UQFF:.4f}) = {h_UQFF:.4e}
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: UQFF GW STRAIN
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ BINARY: {M1_solar:.1f} + {M2_solar:.1f} M_sun at {a/1e3:.0f} km             │
+  │ DISTANCE: {r_Mpc:.0f} Mpc, f_GW = {f_GW:.1f} Hz                    │
+  │                                                                 │
+  │ h_standard = {h_std:.4e}                                        │
+  │ h_UQFF     = {h_UQFF:.4e}                                       │
+  │                                                                 │
+  │ AMPLITUDE RATIO: {abs(ratio):.4f}                                │
+  │ REDUCTION: {(1-abs(S_total))*100:.1f}%                                       │
+  │ PHASE LAG: {phi_TRZ:.4f} rad = {np.degrees(phi_TRZ):.2f}°             │
+  │                                                                 │
+  │ PREDICTION: UQFF waveforms ~10-40% quieter than GR              │
+  └─────────────────────────────────────────────────────────────────┘
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compute_GW_aether_damping(self, r_observer: float,
+                                   alpha_UA: float = None,
+                                   rho_UA: float = None) -> Tuple[dict, str]:
+        """
+        Compute aether absorption factor for GW propagation.
+        
+        AETHER DAMPING:
+        ────────────────────────────────────────────────────────────────────────────
+        S_aether = exp(-α_UA × ρ_UA × r / c)
+        
+        where:
+            α_UA = G/c² ≈ 7.4e-28 m/kg (coupling strength)
+            ρ_UA = 7.09e-36 J/m³ (vacuum energy density)
+            r = propagation distance
+        
+        This provides distance-dependent damping that increases with
+        cosmological distances. Effect is tiny but cumulative.
+        
+        Args:
+            r_observer: Distance (m)
+            alpha_UA: Coupling constant (default G/c²)
+            rho_UA: Vacuum density (default 7.09e-36)
+        
+        Returns:
+            results: Dict with S_aether and parameters
+            steps: Derivation
+        """
+        import numpy as np
+        
+        G = getattr(self, 'G', 6.67430e-11)
+        c = getattr(self, 'c', 2.998e8)
+        Mpc = 3.086e22
+        
+        alpha_UA = alpha_UA if alpha_UA is not None else G / (c**2)
+        rho_UA = rho_UA if rho_UA is not None else getattr(self, 'rho_vac_UA', 7.09e-36)
+        
+        r_Mpc = r_observer / Mpc
+        
+        exponent = -alpha_UA * rho_UA * r_observer / c
+        exponent_safe = max(exponent, -700)
+        S_aether = np.exp(exponent_safe)
+        
+        # Characteristic damping length
+        L_damp = c / (alpha_UA * rho_UA) if alpha_UA * rho_UA > 0 else float('inf')
+        L_damp_Gpc = L_damp / (1e9 * Mpc)
+        
+        results = {
+            'r_observer': r_observer,
+            'r_Mpc': r_Mpc,
+            'alpha_UA': alpha_UA,
+            'rho_UA': rho_UA,
+            'exponent': exponent,
+            'S_aether': S_aether,
+            'L_damp': L_damp,
+            'L_damp_Gpc': L_damp_Gpc,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+AETHER DAMPING FACTOR S_aether
+GW Absorption During Propagation
+═══════════════════════════════════════════════════════════════════════════════
+
+FORMULA:
+  S_aether = exp(-α_UA × ρ_UA × r / c)
+
+PARAMETERS:
+  α_UA = G/c² = {alpha_UA:.4e} m/kg
+  ρ_UA = {rho_UA:.4e} J/m³
+  r = {r_observer:.4e} m = {r_Mpc:.1f} Mpc
+
+CALCULATION:
+  exponent = -α_UA × ρ_UA × r / c
+           = -{alpha_UA:.4e} × {rho_UA:.4e} × {r_observer:.4e} / {c:.4e}
+           = {exponent:.4e}
+  
+  S_aether = exp({exponent:.4e}) = {S_aether:.10f}
+
+CHARACTERISTIC LENGTH:
+  L_damp = c / (α_UA × ρ_UA) = {L_damp:.4e} m = {L_damp_Gpc:.2e} Gpc
+
+INTERPRETATION:
+  Damping is negligible at LIGO distances (~100 Mpc)
+  Becomes significant at multi-Gpc scales
+  S_aether ≈ {S_aether:.6f} → {(1-S_aether)*100:.6f}% reduction
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compute_GW_horizon_screening(self, B_t: float,
+                                      B_crit: float = 4.4e13) -> Tuple[dict, str]:
+        """
+        Compute horizon screening factor for GW emission.
+        
+        HORIZON SCREENING (SCm):
+        ────────────────────────────────────────────────────────────────────────────
+        S_horizon = 1 - B_t / B_crit
+        
+        Strong magnetic fields near black holes or magnetars can screen
+        GW emission via superconductive horizon effects.
+        
+        B_crit = 4.4e13 T is the Schwinger critical field where
+        QED vacuum breakdown occurs.
+        
+        Args:
+            B_t: Binary/source magnetic field (T)
+            B_crit: Critical field (T)
+        
+        Returns:
+            results: Dict
+            steps: Derivation
+        """
+        S_horizon = max(1 - B_t / B_crit, 0) if B_crit > 0 else 1.0
+        suppression_pct = (1 - S_horizon) * 100
+        
+        results = {
+            'B_t': B_t,
+            'B_crit': B_crit,
+            'B_ratio': B_t / B_crit if B_crit > 0 else 0,
+            'S_horizon': S_horizon,
+            'suppression_pct': suppression_pct,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+HORIZON SCREENING FACTOR S_horizon
+Superconductive Magnetism (SCm) Effect
+═══════════════════════════════════════════════════════════════════════════════
+
+FORMULA:
+  S_horizon = 1 - B_t / B_crit
+
+PARAMETERS:
+  B_t = {B_t:.4e} T (source magnetic field)
+  B_crit = {B_crit:.4e} T (Schwinger critical field)
+  B_t / B_crit = {B_t/B_crit:.6f}
+
+CALCULATION:
+  S_horizon = 1 - {B_t/B_crit:.6f} = {S_horizon:.6f}
+
+SUPPRESSION:
+  {suppression_pct:.4f}% amplitude reduction
+
+PHYSICAL REGIMES:
+  BH binary (B ~ 0): S_horizon ≈ 1 (no screening)
+  Magnetar (B ~ 10¹¹ T): S_horizon ≈ 0.998
+  Near-critical (B → B_crit): S_horizon → 0 (complete screening)
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compute_GW_TRZ_suppression(self, f_TRZ: float = None) -> Tuple[dict, str]:
+        """
+        Compute time-reversal (negentropy) suppression factor.
+        
+        TRZ SUPPRESSION:
+        ────────────────────────────────────────────────────────────────────────────
+        S_TRZ = 1 - f_TRZ
+        
+        f_TRZ represents the fraction of outgoing radiation that is
+        "recycled" by time-reversal symmetry breaking in the vacuum.
+        
+        Typical value: f_TRZ ≈ 0.1 (calibrated to observations)
+        
+        Args:
+            f_TRZ: Time-reversal fraction
+        
+        Returns:
+            results: Dict
+            steps: Derivation
+        """
+        f_TRZ = f_TRZ if f_TRZ is not None else getattr(self, 'f_TRZ', 0.1)
+        S_TRZ = 1 - f_TRZ
+        
+        results = {
+            'f_TRZ': f_TRZ,
+            'S_TRZ': S_TRZ,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+TIME-REVERSAL SUPPRESSION FACTOR S_TRZ
+Negentropy Recycling Effect
+═══════════════════════════════════════════════════════════════════════════════
+
+FORMULA:
+  S_TRZ = 1 - f_TRZ
+
+PARAMETERS:
+  f_TRZ = {f_TRZ} (time-reversal fraction)
+
+CALCULATION:
+  S_TRZ = 1 - {f_TRZ} = {S_TRZ}
+
+INTERPRETATION:
+  f_TRZ = 0.1 means 10% of radiation is "recycled"
+  This reduces observed amplitude by 10%
+  Also introduces phase lag φ_TRZ
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compute_GW_string_interference(self, M_tot: float, a: float,
+                                        U_m: float = 1e40,
+                                        omega: float = None,
+                                        beta_m: float = 0.01) -> Tuple[dict, str]:
+        """
+        Compute string interference factor for GW emission.
+        
+        STRING INTERFERENCE:
+        ────────────────────────────────────────────────────────────────────────────
+        S_string = exp(-U_m / E_bind) × (1 + β_m sin(U_m ω / (k_B T)))
+        
+        Magnetic string binding energy competes with orbital binding,
+        providing exponential suppression plus amplitude modulation.
+        
+        Args:
+            M_tot: Total mass (kg)
+            a: Orbital separation (m)
+            U_m: String energy (J)
+            omega: Orbital frequency (rad/s)
+            beta_m: Modulation amplitude
+        
+        Returns:
+            results: Dict
+            steps: Derivation
+        """
+        import numpy as np
+        
+        G = getattr(self, 'G', 6.67430e-11)
+        k_B = 1.380649e-23
+        T_CMB = 2.725
+        
+        E_bind = G * M_tot**2 / a if a > 0 else 1e50
+        
+        string_exp = -U_m / E_bind
+        string_exp = max(string_exp, -700)
+        S_base = np.exp(string_exp)
+        
+        if omega is not None and T_CMB > 0:
+            arg = U_m * omega / (k_B * T_CMB)
+            mod_factor = 1 + beta_m * np.sin(arg)
+        else:
+            mod_factor = 1.0
+        
+        S_string = S_base * mod_factor
+        
+        results = {
+            'M_tot': M_tot,
+            'a': a,
+            'U_m': U_m,
+            'E_bind': E_bind,
+            'string_exp': string_exp,
+            'S_base': S_base,
+            'mod_factor': mod_factor,
+            'S_string': S_string,
+            'beta_m': beta_m,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+STRING INTERFERENCE FACTOR S_string
+Magnetic String Binding Effect
+═══════════════════════════════════════════════════════════════════════════════
+
+FORMULA:
+  S_string = exp(-U_m / E_bind) × (1 + β_m sin(U_m ω / (k_B T)))
+
+PARAMETERS:
+  M_tot = {M_tot:.4e} kg
+  a = {a:.4e} m
+  U_m = {U_m:.4e} J (string energy)
+  β_m = {beta_m} (modulation amplitude)
+
+CALCULATION:
+  E_bind = G M²/a = {E_bind:.4e} J
+  
+  Suppression: exp(-U_m/E_bind) = exp({string_exp:.4f}) = {S_base:.6f}
+  Modulation: 1 + β_m sin(...) = {mod_factor:.6f}
+  
+  S_string = {S_base:.6f} × {mod_factor:.6f} = {S_string:.6f}
+
+INTERPRETATION:
+  U_m << E_bind: negligible suppression (stellar binaries)
+  U_m ~ E_bind: significant suppression
+  U_m >> E_bind: strong suppression
+  
+  Current: U_m/E_bind = {U_m/E_bind:.4e}
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compute_GW_phase_shift(self, t: float, f_TRZ: float = None,
+                                tau_merge: float = 1.0) -> Tuple[dict, str]:
+        """
+        Compute TRZ-induced phase shift for GW waveform.
+        
+        PHASE SHIFT:
+        ────────────────────────────────────────────────────────────────────────────
+        φ_TRZ = 2π f_TRZ × t / τ_merge
+        
+        This phase lag accumulates over inspiral time and is
+        observable in matched filtering analysis.
+        
+        Args:
+            t: Current time (s)
+            f_TRZ: Time-reversal fraction
+            tau_merge: Merger timescale (s)
+        
+        Returns:
+            results: Dict
+            steps: Derivation
+        """
+        import numpy as np
+        
+        f_TRZ = f_TRZ if f_TRZ is not None else getattr(self, 'f_TRZ', 0.1)
+        
+        phi_TRZ = 2 * np.pi * f_TRZ * t / tau_merge if tau_merge > 0 else 0
+        phi_degrees = np.degrees(phi_TRZ)
+        cycles = phi_TRZ / (2 * np.pi)
+        
+        results = {
+            't': t,
+            'f_TRZ': f_TRZ,
+            'tau_merge': tau_merge,
+            'phi_TRZ': phi_TRZ,
+            'phi_degrees': phi_degrees,
+            'cycles': cycles,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+GW PHASE SHIFT φ_TRZ
+Time-Reversal Induced Lag
+═══════════════════════════════════════════════════════════════════════════════
+
+FORMULA:
+  φ_TRZ = 2π f_TRZ × t / τ_merge
+
+PARAMETERS:
+  t = {t:.6f} s
+  f_TRZ = {f_TRZ}
+  τ_merge = {tau_merge:.6f} s
+
+CALCULATION:
+  φ_TRZ = 2π × {f_TRZ} × {t:.6f} / {tau_merge:.6f}
+        = {phi_TRZ:.6f} rad
+        = {phi_degrees:.2f}°
+        = {cycles:.4f} cycles
+
+OBSERVABILITY:
+  Phase accumulation over inspiral may be detectable in
+  matched filter template comparisons. A systematic phase
+  offset would indicate UQFF effects.
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compute_GW_suppression_breakdown(self, M1: float, M2: float, 
+                                          a: float, r_observer: float,
+                                          f_TRZ: float = None,
+                                          B_t: float = 0.0,
+                                          B_crit: float = 4.4e13,
+                                          U_m: float = 1e40) -> Tuple[dict, str]:
+        """
+        Compute all UQFF suppression factors with detailed breakdown.
+        
+        Returns individual factors and combined suppression for diagnostics.
+        
+        Args:
+            M1, M2: Masses (kg)
+            a: Separation (m)
+            r_observer: Distance (m)
+            f_TRZ: Time-reversal fraction
+            B_t: Magnetic field (T)
+            B_crit: Critical field (T)
+            U_m: String energy (J)
+        
+        Returns:
+            results: Dict with all factors
+            steps: Combined derivation
+        """
+        import numpy as np
+        
+        M_sun = getattr(self, 'M_sun', 1.989e30)
+        G = getattr(self, 'G', 6.67430e-11)
+        c = getattr(self, 'c', 2.998e8)
+        Mpc = 3.086e22
+        
+        f_TRZ = f_TRZ if f_TRZ is not None else getattr(self, 'f_TRZ', 0.1)
+        alpha_UA = G / (c**2)
+        rho_vac_UA = getattr(self, 'rho_vac_UA', 7.09e-36)
+        
+        M_tot = M1 + M2
+        M1_solar = M1 / M_sun
+        M2_solar = M2 / M_sun
+        r_Mpc = r_observer / Mpc
+        
+        # S_aether
+        aether_exp = -alpha_UA * rho_vac_UA * r_observer / c
+        aether_exp = max(aether_exp, -700)
+        S_aether = np.exp(aether_exp)
+        
+        # S_horizon
+        S_horizon = max(1 - B_t / B_crit, 0) if B_crit > 0 else 1.0
+        
+        # S_TRZ
+        S_TRZ = 1 - f_TRZ
+        
+        # S_string
+        E_bind = G * M_tot**2 / a if a > 0 else 1e50
+        string_exp = -U_m / E_bind
+        string_exp = max(string_exp, -700)
+        S_string = np.exp(string_exp)
+        
+        # Total
+        S_total = S_aether * S_horizon * S_TRZ * S_string
+        reduction_pct = (1 - S_total) * 100
+        
+        # Dominant factor
+        factors = {
+            'S_aether': 1 - S_aether,
+            'S_horizon': 1 - S_horizon,
+            'S_TRZ': 1 - S_TRZ,
+            'S_string': 1 - S_string,
+        }
+        dominant = max(factors, key=factors.get)
+        
+        results = {
+            'M1': M1,
+            'M2': M2,
+            'M_tot': M_tot,
+            'a': a,
+            'r_observer': r_observer,
+            'S_aether': S_aether,
+            'S_horizon': S_horizon,
+            'S_TRZ': S_TRZ,
+            'S_string': S_string,
+            'S_total': S_total,
+            'reduction_pct': reduction_pct,
+            'dominant_factor': dominant,
+            'f_TRZ': f_TRZ,
+            'B_t': B_t,
+            'U_m': U_m,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+UQFF SUPPRESSION BREAKDOWN
+Complete Factor Analysis
+═══════════════════════════════════════════════════════════════════════════════
+
+BINARY:
+  M₁ = {M1_solar:.2f} M_sun, M₂ = {M2_solar:.2f} M_sun
+  a = {a/1e3:.2f} km, r = {r_Mpc:.0f} Mpc
+
+FACTOR 1: AETHER DAMPING
+───────────────────────────────────────────────────────────────────────────────
+  S_aether = exp(-α_UA ρ_UA r/c)
+           = {S_aether:.10f}
+  Contribution: {(1-S_aether)*100:.6f}%
+
+FACTOR 2: HORIZON SCREENING
+───────────────────────────────────────────────────────────────────────────────
+  S_horizon = 1 - B_t/B_crit
+            = 1 - {B_t/B_crit:.6f}
+            = {S_horizon:.6f}
+  Contribution: {(1-S_horizon)*100:.2f}%
+
+FACTOR 3: TIME-REVERSAL
+───────────────────────────────────────────────────────────────────────────────
+  S_TRZ = 1 - f_TRZ
+        = 1 - {f_TRZ}
+        = {S_TRZ:.6f}
+  Contribution: {(1-S_TRZ)*100:.1f}%
+
+FACTOR 4: STRING INTERFERENCE
+───────────────────────────────────────────────────────────────────────────────
+  S_string = exp(-U_m/E_bind)
+           = exp(-{U_m:.2e}/{E_bind:.2e})
+           = {S_string:.6f}
+  Contribution: {(1-S_string)*100:.4f}%
+
+═══════════════════════════════════════════════════════════════════════════════
+COMBINED RESULT
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ S_total = S_aether × S_horizon × S_TRZ × S_string               │
+  │         = {S_aether:.6f} × {S_horizon:.6f} × {S_TRZ:.6f} × {S_string:.6f}│
+  │         = {S_total:.6f}                                          │
+  │                                                                 │
+  │ TOTAL AMPLITUDE REDUCTION: {reduction_pct:.2f}%                          │
+  │ DOMINANT FACTOR: {dominant:40}│
+  └─────────────────────────────────────────────────────────────────┘
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def simulate_GW_waveform(self, M1: float, M2: float, a: float,
+                             r_observer: float, t_start: float = 0.0,
+                             t_end: float = 0.1, n_points: int = 1000,
+                             f_TRZ: float = None,
+                             B_t: float = 0.0,
+                             U_m: float = 1e40) -> Tuple[dict, str]:
+        """
+        Simulate GW waveform h(t) over time interval.
+        
+        Generates both standard and UQFF waveforms for comparison.
+        
+        Args:
+            M1, M2: Masses (kg)
+            a: Separation (m) - assumed constant
+            r_observer: Distance (m)
+            t_start, t_end: Time range (s)
+            n_points: Number of time points
+            f_TRZ: Time-reversal fraction
+            B_t: Magnetic field (T)
+            U_m: String energy (J)
+        
+        Returns:
+            results: Dict with time series
+            steps: Summary
+        """
+        import numpy as np
+        
+        M_sun = getattr(self, 'M_sun', 1.989e30)
+        G = getattr(self, 'G', 6.67430e-11)
+        c = getattr(self, 'c', 2.998e8)
+        Mpc = 3.086e22
+        
+        f_TRZ = f_TRZ if f_TRZ is not None else getattr(self, 'f_TRZ', 0.1)
+        
+        M_tot = M1 + M2
+        mu = M1 * M2 / M_tot
+        M1_solar = M1 / M_sun
+        M2_solar = M2 / M_sun
+        r_Mpc = r_observer / Mpc
+        
+        omega = np.sqrt(G * M_tot / (a**3)) if a > 0 else 0.0
+        f_GW = omega / np.pi
+        T_GW = 1/f_GW if f_GW > 0 else 1.0
+        
+        t_values = np.linspace(t_start, t_end, n_points)
+        h_std_values = []
+        h_UQFF_values = []
+        
+        for t in t_values:
+            res_std, _ = self.compute_GW_strain_standard(M1, M2, a, r_observer, t)
+            res_UQFF, _ = self.compute_GW_strain_UQFF(M1, M2, a, r_observer, t,
+                                                       f_TRZ=f_TRZ, B_t=B_t, U_m=U_m)
+            h_std_values.append(res_std['h'])
+            h_UQFF_values.append(res_UQFF['h_UQFF'])
+        
+        h_std_values = np.array(h_std_values)
+        h_UQFF_values = np.array(h_UQFF_values)
+        
+        # Statistics
+        max_h_std = np.max(np.abs(h_std_values))
+        max_h_UQFF = np.max(np.abs(h_UQFF_values))
+        avg_ratio = np.mean(np.abs(h_UQFF_values) / np.maximum(np.abs(h_std_values), 1e-50))
+        
+        n_cycles = (t_end - t_start) * f_GW
+        
+        results = {
+            'M1': M1,
+            'M2': M2,
+            'a': a,
+            'r_observer': r_observer,
+            'f_GW': f_GW,
+            'T_GW': T_GW,
+            't_values': t_values.tolist(),
+            'h_std_values': h_std_values.tolist(),
+            'h_UQFF_values': h_UQFF_values.tolist(),
+            'max_h_std': max_h_std,
+            'max_h_UQFF': max_h_UQFF,
+            'avg_ratio': avg_ratio,
+            'n_points': n_points,
+            'n_cycles': n_cycles,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+GW WAVEFORM SIMULATION
+Standard vs UQFF Time Series
+═══════════════════════════════════════════════════════════════════════════════
+
+BINARY PARAMETERS:
+  M₁ = {M1_solar:.2f} M_sun, M₂ = {M2_solar:.2f} M_sun
+  a = {a/1e3:.2f} km, r = {r_Mpc:.0f} Mpc
+  f_GW = {f_GW:.2f} Hz, T_GW = {T_GW:.6f} s
+
+SIMULATION:
+  t_range = [{t_start:.6f}, {t_end:.6f}] s
+  n_points = {n_points}
+  n_cycles = {n_cycles:.2f}
+
+UQFF PARAMETERS:
+  f_TRZ = {f_TRZ}, B_t = {B_t:.2e} T, U_m = {U_m:.2e} J
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULTS
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ Max |h_standard| = {max_h_std:.4e}                               │
+  │ Max |h_UQFF|     = {max_h_UQFF:.4e}                               │
+  │                                                                 │
+  │ Average |h_UQFF/h_std| = {avg_ratio:.4f}                          │
+  │ Amplitude reduction: {(1-avg_ratio)*100:.1f}%                            │
+  │                                                                 │
+  │ Data arrays returned in results dict                            │
+  └─────────────────────────────────────────────────────────────────┘
+═══════════════════════════════════════════════════════════════════════════════
+OUTPUT DATA:
+  t_values: {len(t_values)} time points
+  h_std_values: standard waveform
+  h_UQFF_values: UQFF-corrected waveform
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compare_GW_standard_vs_UQFF(self, M1: float, M2: float, a: float,
+                                     r_observer: float,
+                                     n_cycles: int = 10,
+                                     f_TRZ: float = None,
+                                     B_t: float = 0.0,
+                                     U_m: float = 1e40) -> Tuple[dict, str]:
+        """
+        Compare standard and UQFF waveforms over multiple cycles.
+        
+        Provides statistical comparison and phase difference analysis.
+        
+        Args:
+            M1, M2: Masses (kg)
+            a: Separation (m)
+            r_observer: Distance (m)
+            n_cycles: Number of GW cycles to simulate
+            f_TRZ, B_t, U_m: UQFF parameters
+        
+        Returns:
+            results: Dict with comparison metrics
+            steps: Analysis
+        """
+        import numpy as np
+        
+        M_sun = getattr(self, 'M_sun', 1.989e30)
+        G = getattr(self, 'G', 6.67430e-11)
+        Mpc = 3.086e22
+        
+        f_TRZ = f_TRZ if f_TRZ is not None else getattr(self, 'f_TRZ', 0.1)
+        
+        M_tot = M1 + M2
+        M1_solar = M1 / M_sun
+        M2_solar = M2 / M_sun
+        r_Mpc = r_observer / Mpc
+        
+        omega = np.sqrt(G * M_tot / (a**3)) if a > 0 else 0.0
+        f_GW = omega / np.pi
+        T_GW = 1 / f_GW if f_GW > 0 else 1.0
+        
+        t_end = n_cycles * T_GW
+        n_points = n_cycles * 100
+        
+        res_sim, _ = self.simulate_GW_waveform(M1, M2, a, r_observer,
+                                                0.0, t_end, n_points,
+                                                f_TRZ=f_TRZ, B_t=B_t, U_m=U_m)
+        
+        h_std = np.array(res_sim['h_std_values'])
+        h_UQFF = np.array(res_sim['h_UQFF_values'])
+        
+        # Compute metrics
+        max_std = np.max(np.abs(h_std))
+        max_UQFF = np.max(np.abs(h_UQFF))
+        rms_std = np.sqrt(np.mean(h_std**2))
+        rms_UQFF = np.sqrt(np.mean(h_UQFF**2))
+        
+        amplitude_ratio = max_UQFF / max_std if max_std > 0 else 0
+        rms_ratio = rms_UQFF / rms_std if rms_std > 0 else 0
+        
+        # Cross-correlation for phase analysis
+        correlation = np.correlate(h_std, h_UQFF, mode='full')
+        max_corr_idx = np.argmax(correlation)
+        t_values = np.array(res_sim['t_values'])
+        dt = t_values[1] - t_values[0] if len(t_values) > 1 else 0
+        phase_lag_samples = max_corr_idx - (len(h_std) - 1)
+        phase_lag_time = phase_lag_samples * dt
+        phase_lag_rad = 2 * np.pi * phase_lag_time * f_GW
+        
+        # Suppression breakdown
+        res_supp, _ = self.compute_GW_suppression_breakdown(M1, M2, a, r_observer,
+                                                             f_TRZ=f_TRZ, B_t=B_t, U_m=U_m)
+        
+        results = {
+            'M1': M1,
+            'M2': M2,
+            'a': a,
+            'r_observer': r_observer,
+            'f_GW': f_GW,
+            'n_cycles': n_cycles,
+            'max_std': max_std,
+            'max_UQFF': max_UQFF,
+            'rms_std': rms_std,
+            'rms_UQFF': rms_UQFF,
+            'amplitude_ratio': amplitude_ratio,
+            'rms_ratio': rms_ratio,
+            'phase_lag_rad': phase_lag_rad,
+            'phase_lag_deg': np.degrees(phase_lag_rad),
+            'S_aether': res_supp['S_aether'],
+            'S_horizon': res_supp['S_horizon'],
+            'S_TRZ': res_supp['S_TRZ'],
+            'S_string': res_supp['S_string'],
+            'S_total': res_supp['S_total'],
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+STANDARD vs UQFF WAVEFORM COMPARISON
+═══════════════════════════════════════════════════════════════════════════════
+
+BINARY:
+  {M1_solar:.1f} + {M2_solar:.1f} M_sun at {a/1e3:.0f} km, {r_Mpc:.0f} Mpc
+  f_GW = {f_GW:.1f} Hz, simulated {n_cycles} cycles
+
+AMPLITUDE ANALYSIS:
+───────────────────────────────────────────────────────────────────────────────
+  Standard: max = {max_std:.4e}, RMS = {rms_std:.4e}
+  UQFF:     max = {max_UQFF:.4e}, RMS = {rms_UQFF:.4e}
+  
+  Amplitude ratio: {amplitude_ratio:.4f}
+  RMS ratio: {rms_ratio:.4f}
+  Reduction: {(1-amplitude_ratio)*100:.1f}%
+
+PHASE ANALYSIS:
+───────────────────────────────────────────────────────────────────────────────
+  Phase lag: {phase_lag_rad:.4f} rad = {np.degrees(phase_lag_rad):.2f}°
+
+SUPPRESSION FACTORS:
+───────────────────────────────────────────────────────────────────────────────
+  S_aether  = {res_supp['S_aether']:.6f}
+  S_horizon = {res_supp['S_horizon']:.6f}
+  S_TRZ     = {res_supp['S_TRZ']:.6f}
+  S_string  = {res_supp['S_string']:.6f}
+  S_total   = {res_supp['S_total']:.6f}
+
+═══════════════════════════════════════════════════════════════════════════════
+CONCLUSION
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ UQFF predicts {(1-amplitude_ratio)*100:.1f}% quieter GWs with {np.degrees(phase_lag_rad):.1f}° phase lag  │
+  │                                                                 │
+  │ Dominant effect: {res_supp['dominant_factor']:46}│
+  │                                                                 │
+  │ TESTABLE: Compare matched filter residuals with UQFF templates  │
+  └─────────────────────────────────────────────────────────────────┘
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compute_orbital_frequency(self, M_tot: float, a: float) -> Tuple[dict, str]:
+        """
+        Compute Keplerian orbital frequency.
+        
+        ω = √(G M_tot / a³)
+        
+        Args:
+            M_tot: Total mass (kg)
+            a: Orbital separation (m)
+        
+        Returns:
+            results: Dict with frequencies
+            steps: Derivation
+        """
+        import numpy as np
+        
+        M_sun = getattr(self, 'M_sun', 1.989e30)
+        G = getattr(self, 'G', 6.67430e-11)
+        
+        M_solar = M_tot / M_sun
+        
+        omega = np.sqrt(G * M_tot / (a**3)) if a > 0 else 0.0
+        f_orbital = omega / (2 * np.pi)
+        T_orbital = 1 / f_orbital if f_orbital > 0 else float('inf')
+        
+        results = {
+            'M_tot': M_tot,
+            'a': a,
+            'omega': omega,
+            'f_orbital': f_orbital,
+            'T_orbital': T_orbital,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+ORBITAL FREQUENCY
+Kepler's Third Law
+═══════════════════════════════════════════════════════════════════════════════
+
+FORMULA:
+  ω = √(G M_tot / a³)
+
+PARAMETERS:
+  M_tot = {M_tot:.4e} kg = {M_solar:.2f} M_sun
+  a = {a:.4e} m = {a/1e3:.2f} km
+
+RESULT:
+  ω = √({G:.4e} × {M_tot:.4e} / {a**3:.4e})
+    = {omega:.4f} rad/s
+  
+  f_orbital = ω/(2π) = {f_orbital:.2f} Hz
+  T_orbital = 1/f = {T_orbital:.6f} s
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compute_GW_frequency(self, M_tot: float, a: float) -> Tuple[dict, str]:
+        """
+        Compute gravitational wave frequency.
+        
+        f_GW = 2 × f_orbital = ω / π
+        
+        GW frequency is twice orbital for circular binaries.
+        
+        Args:
+            M_tot: Total mass (kg)
+            a: Orbital separation (m)
+        
+        Returns:
+            results: Dict with frequencies
+            steps: Derivation
+        """
+        import numpy as np
+        
+        M_sun = getattr(self, 'M_sun', 1.989e30)
+        G = getattr(self, 'G', 6.67430e-11)
+        
+        M_solar = M_tot / M_sun
+        
+        omega = np.sqrt(G * M_tot / (a**3)) if a > 0 else 0.0
+        f_orbital = omega / (2 * np.pi)
+        f_GW = 2 * f_orbital
+        T_GW = 1 / f_GW if f_GW > 0 else float('inf')
+        
+        # LIGO band check
+        in_LIGO_band = 10 <= f_GW <= 5000
+        
+        results = {
+            'M_tot': M_tot,
+            'a': a,
+            'omega': omega,
+            'f_orbital': f_orbital,
+            'f_GW': f_GW,
+            'T_GW': T_GW,
+            'in_LIGO_band': in_LIGO_band,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+GW FREQUENCY
+Twice Orbital for Circular Binary
+═══════════════════════════════════════════════════════════════════════════════
+
+FORMULA:
+  f_GW = 2 × f_orbital = ω / π
+
+PARAMETERS:
+  M_tot = {M_tot:.4e} kg = {M_solar:.2f} M_sun
+  a = {a:.4e} m = {a/1e3:.2f} km
+
+CALCULATION:
+  ω = √(G M/a³) = {omega:.4f} rad/s
+  f_orbital = {f_orbital:.2f} Hz
+  f_GW = 2 × f_orbital = {f_GW:.2f} Hz
+  T_GW = {T_GW:.6f} s
+
+DETECTABILITY:
+  LIGO band: 10 - 5000 Hz
+  f_GW = {f_GW:.1f} Hz
+  In LIGO band: {in_LIGO_band}
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
     
     # ═══════════════════════════════════════════════════════════════════════════════
     # GW SUPPRESSION S_* FACTORS (Canonical 6-Step Derivation)
