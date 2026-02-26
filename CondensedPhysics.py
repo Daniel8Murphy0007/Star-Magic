@@ -39157,6 +39157,313 @@ Q-SCOPE TESTABILITY:
 """
         return results, steps
     
+    def simulate_UQFF_entanglement_entropy_over_temperature(self,
+                                                             T_start: float = 10.0,
+                                                             T_end: float = 300.0,
+                                                             dT: float = 10.0,
+                                                             lambda_base: list = None,
+                                                             N_states: int = 2,
+                                                             f_TRZ: float = None,
+                                                             rho_SCm: float = None,
+                                                             rho_UA: float = None,
+                                                             mu_j: float = 1e15,
+                                                             frame: str = 'F_U_Bi') -> Tuple[dict, str]:
+        """
+        Simulate UQFF entanglement entropy S over temperature range.
+        
+        PHYSICAL BASIS:
+        ────────────────────────────────────────────────────────────────────────────
+        Entanglement entropy S = -Σ λ_i log λ_i measures bipartite correlations.
+        
+        In UQFF, entropy receives three modifications:
+        
+        1. AETHER ENHANCEMENT (d_eff → d_eff,UQFF):
+           d_eff,UQFF = (1/Σλ²) × (ρ_UA/ρ_SCm)
+           Effective dimension expanded by aether density ratio (~10×)
+        
+        2. TIME-REVERSAL NEGENTROPY:
+           Negentropy = f_TRZ × log(d_eff,UQFF)
+           Reduces entropy via ordering effect (negentropic flow)
+        
+        3. MAGNETIC STRING DAMPING:
+           Damping = (1 - exp(-k_B T/U_m))
+           Temperature-dependent activation of negentropy term
+        
+        FULL FORMULA:
+           S_UQFF = S_base - f_TRZ × log(d_eff,UQFF) × (1 - exp(-k_B T/U_m))
+        
+        TEMPERATURE BEHAVIOR:
+        ────────────────────────────────────────────────────────────────────────────
+        • T → 0: Damping → 0, S_UQFF → S_base (standard QM restored)
+        • T → ∞: Damping → 1, S_UQFF → S_base - f_TRZ × log(d_eff,UQFF) (max reduction)
+        • Transition at T ~ U_m/k_B
+        
+        Args:
+            T_start: Starting temperature (K)
+            T_end: Ending temperature (K)
+            dT: Temperature step (K)
+            lambda_base: Initial Schmidt spectrum (default: equal weights 1/N)
+            N_states: Number of states if lambda_base not provided
+            f_TRZ: Time reversal coupling (default: 0.1)
+            rho_SCm: SCm vacuum density (J/m³)
+            rho_UA: UA vacuum density (J/m³)
+            mu_j: Magnetic string tension (J·m)
+            frame: 'F_U_Bi' or 'F_U_Bi_i'
+        
+        Returns:
+            results: Dict containing temperature-dependent entropy data
+            steps: Long-form derivation string
+        
+        References:
+            - UQFF Entanglement Entropy Module (uqff_entanglement_entropy.cpp)
+            - Calabrese & Cardy (2009): Entanglement entropy review
+            - String damping: U_m thermal activation
+        """
+        import numpy as np
+        
+        # Defaults
+        f_TRZ = f_TRZ if f_TRZ is not None else getattr(self, 'f_TRZ', 0.1)
+        
+        if lambda_base is None:
+            # Equal superposition: maximally entangled for N_states
+            lambda_base = [1.0 / N_states] * N_states
+        
+        lambda_arr = np.array(lambda_base, dtype=float)
+        N = len(lambda_arr)
+        
+        # Normalize
+        lambda_sum = np.sum(lambda_arr)
+        if abs(lambda_sum - 1.0) > 1e-10:
+            lambda_arr = lambda_arr / lambda_sum
+        
+        # Frame-dependent densities
+        if rho_SCm is None:
+            rho_SCm = getattr(self, 'rho_vac_SCm', 7.09e-37)
+        if rho_UA is None:
+            rho_UA = getattr(self, 'rho_vac_UA', 7.09e-36)
+        
+        rho_ratio = rho_UA / rho_SCm if rho_SCm > 0 else 10.0
+        
+        # Physical constants
+        k_B = 1.380649e-23  # Boltzmann constant (J/K)
+        
+        # String cutoff energy
+        # U_m ~ mu_j × l_string, estimate l_string ~ 1e-35 m (Planck scale)
+        l_string = 1e-35  # Planck-scale string length
+        U_m = mu_j * l_string  # String energy threshold
+        
+        # Base entropy calculations
+        S_base = 0.0
+        for l in lambda_arr:
+            if l > 1e-30:
+                S_base -= l * np.log(l)
+        
+        # Purity and effective dimension
+        purity = np.sum(lambda_arr**2)
+        d_eff_base = 1.0 / purity if purity > 1e-30 else 1.0
+        d_eff_UQFF = d_eff_base * rho_ratio
+        log_d_eff_UQFF = np.log(d_eff_UQFF) if d_eff_UQFF > 0 else 0.0
+        
+        # Maximum entropy
+        S_max = np.log(N)
+        
+        # Temperature sweep
+        T_values = np.arange(T_start, T_end + dT, dT)
+        S_UQFF_values = []
+        damping_values = []
+        negentropy_values = []
+        
+        for T in T_values:
+            # Thermal activation factor
+            kBT_over_Um = (k_B * T) / U_m if U_m > 0 else 0.0
+            if kBT_over_Um > 700:
+                damping_factor = 1.0
+            else:
+                damping_factor = 1.0 - np.exp(-kBT_over_Um)
+            
+            # Negentropy correction
+            negentropy_correction = f_TRZ * log_d_eff_UQFF * damping_factor
+            
+            # Full UQFF entropy
+            S_UQFF = S_base - negentropy_correction
+            if S_UQFF < 0:
+                S_UQFF = 0.0  # Entropy must be non-negative
+            
+            S_UQFF_values.append(S_UQFF)
+            damping_values.append(damping_factor)
+            negentropy_values.append(negentropy_correction)
+        
+        # Convert to numpy arrays
+        S_UQFF_values = np.array(S_UQFF_values)
+        damping_values = np.array(damping_values)
+        negentropy_values = np.array(negentropy_values)
+        
+        # Characteristic temperature
+        T_char = U_m / k_B if k_B > 0 else 0.0
+        
+        # Statistics
+        S_min = float(np.min(S_UQFF_values))
+        S_max_val = float(np.max(S_UQFF_values))
+        Delta_S_max = S_base - S_min  # Maximum entropy reduction
+        Delta_S_percent = (Delta_S_max / S_base * 100) if S_base > 0 else 0.0
+        
+        # Results dictionary
+        results = {
+            'T_values': T_values.tolist(),
+            'S_base': S_base,
+            'S_UQFF_values': S_UQFF_values.tolist(),
+            'damping_values': damping_values.tolist(),
+            'negentropy_values': negentropy_values.tolist(),
+            'lambda_base': lambda_arr.tolist(),
+            'N_states': N,
+            'purity': purity,
+            'd_eff_base': d_eff_base,
+            'd_eff_UQFF': d_eff_UQFF,
+            'f_TRZ': f_TRZ,
+            'rho_ratio': rho_ratio,
+            'U_m': U_m,
+            'T_characteristic': T_char,
+            'S_min': S_min,
+            'S_max': S_max_val,
+            'Delta_S_max': Delta_S_max,
+            'Delta_S_percent': Delta_S_percent,
+            'frame': frame,
+        }
+        
+        # Format lambda string
+        lambda_str = ', '.join([f'{l:.4f}' for l in lambda_arr[:6]])
+        if N > 6:
+            lambda_str += f', ... ({N} total)'
+        
+        # Long-form derivation
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+UQFF ENTANGLEMENT ENTROPY S vs TEMPERATURE SIMULATION
+Aether-Enhanced von Neumann Entropy with String Damping
+═══════════════════════════════════════════════════════════════════════════════
+
+PHYSICAL BASIS:
+───────────────────────────────────────────────────────────────────────────────
+Standard entanglement entropy for bipartite state:
+  S = -Σ λ_i log λ_i  (von Neumann entropy)
+
+UQFF modifications:
+  1. Aether enhancement: d_eff,UQFF = d_eff × (ρ_UA/ρ_SCm)
+  2. Time-reversal negentropy: f_TRZ reduces entropy
+  3. Magnetic string damping: (1 - exp(-k_B T/U_m))
+
+Full formula:
+  S_UQFF = S_base - f_TRZ × log(d_eff,UQFF) × (1 - exp(-k_B T/U_m))
+
+═══════════════════════════════════════════════════════════════════════════════
+INPUT PARAMETERS:
+───────────────────────────────────────────────────────────────────────────────
+  N = {N} states
+  λ_base = {{{lambda_str}}}
+  T range: {T_start:.1f} K to {T_end:.1f} K (step {dT:.1f} K)
+  f_TRZ = {f_TRZ:.4f}
+  ρ_UA/ρ_SCm = {rho_ratio:.4f}
+  Frame = {frame}
+
+STEP 1: BASE ENTROPY
+───────────────────────────────────────────────────────────────────────────────
+  S_base = -Σ λ_i log λ_i
+         = {S_base:.6f} nats
+         = {S_base/np.log(2):.6f} bits
+  
+  S_max = log({N}) = {S_max:.6f} nats
+  
+  Purity: Tr(ρ²) = Σ λ_i² = {purity:.6f}
+  d_eff (standard) = 1/Tr(ρ²) = {d_eff_base:.4f}
+
+STEP 2: AETHER-ENHANCED EFFECTIVE DIMENSION
+───────────────────────────────────────────────────────────────────────────────
+  d_eff,UQFF = d_eff × (ρ_UA/ρ_SCm)
+             = {d_eff_base:.4f} × {rho_ratio:.4f}
+             = {d_eff_UQFF:.4f}
+  
+  log(d_eff,UQFF) = {log_d_eff_UQFF:.6f}
+  
+  → Aether expands effective Hilbert space by {rho_ratio:.1f}×
+  → More information channels via [UA] threads
+
+STEP 3: MAGNETIC STRING ENERGY
+───────────────────────────────────────────────────────────────────────────────
+  U_m = μ_j × l_string
+      = {mu_j:.4e} × {l_string:.4e}
+      = {U_m:.4e} J
+  
+  Characteristic temperature: T_char = U_m/k_B = {T_char:.4e} K
+
+STEP 4: TEMPERATURE-DEPENDENT DAMPING
+───────────────────────────────────────────────────────────────────────────────
+  Damping factor = (1 - exp(-k_B T/U_m))
+  
+  At T → 0: Damping → 0  (standard QM restored)
+  At T → ∞: Damping → 1  (maximum negentropy effect)
+  At T = T_char: Damping ≈ 0.632
+
+STEP 5: FULL UQFF ENTROPY FORMULA
+───────────────────────────────────────────────────────────────────────────────
+  S_UQFF(T) = S_base - f_TRZ × log(d_eff,UQFF) × (1 - exp(-k_B T/U_m))
+  
+  Maximum possible reduction (T → ∞):
+    ΔS_max = f_TRZ × log(d_eff,UQFF)
+           = {f_TRZ:.4f} × {log_d_eff_UQFF:.6f}
+           = {f_TRZ * log_d_eff_UQFF:.6f} nats
+
+═══════════════════════════════════════════════════════════════════════════════
+TEMPERATURE EVOLUTION RESULTS:
+───────────────────────────────────────────────────────────────────────────────
+  T(K)        S_UQFF(nats)  Damping    Negentropy
+"""
+        
+        # Add sample data points
+        sample_indices = [0, len(T_values)//4, len(T_values)//2, 3*len(T_values)//4, -1]
+        for i in sample_indices:
+            if i < len(T_values):
+                steps += f"  {T_values[i]:10.2f}    {S_UQFF_values[i]:10.6f}    {damping_values[i]:.6f}   {negentropy_values[i]:.6f}\n"
+        
+        steps += f"""
+═══════════════════════════════════════════════════════════════════════════════
+SUMMARY STATISTICS:
+───────────────────────────────────────────────────────────────────────────────
+  S_base (constant)     = {S_base:.6f} nats
+  S_UQFF (min, at T_max) = {S_min:.6f} nats
+  S_UQFF (max, at T_min) = {S_max_val:.6f} nats
+  
+  Maximum entropy reduction: ΔS = {Delta_S_max:.6f} nats ({Delta_S_percent:.2f}%)
+  
+  Transition region: T ~ T_char = {T_char:.4e} K
+
+PHYSICAL INTERPRETATION:
+───────────────────────────────────────────────────────────────────────────────
+  LOW T (T << T_char):
+    • Damping factor → 0
+    • S_UQFF ≈ S_base (standard quantum mechanics)
+    • String energy not thermally activated
+  
+  HIGH T (T >> T_char):
+    • Damping factor → 1
+    • S_UQFF = S_base - f_TRZ × log(d_eff,UQFF)
+    • Full negentropic reduction achieved
+    • Entropy reduced by {Delta_S_percent:.2f}% from standard QM
+  
+  TRANSITION (T ~ T_char):
+    • Crossover between regimes
+    • Information recovery begins
+
+Q-SCOPE TESTABILITY:
+───────────────────────────────────────────────────────────────────────────────
+  • Measure S in entangled THz circuits over temperature range
+  • Compare to standard QM predictions (constant S_base)
+  • Verify f_TRZ × log(d_eff_UQFF) correction magnitude
+  • Detect characteristic temperature T_char
+  • Confirm negentropic stabilization effect at high T
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
     # ═══════════════════════════════════════════════════════════════════════════════
     # UQFF BLACK HOLE ENTROPY (Aether-Holographic Bekenstein-Hawking)
     # ═══════════════════════════════════════════════════════════════════════════════
