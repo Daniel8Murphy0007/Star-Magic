@@ -38043,6 +38043,637 @@ Q-SCOPE TESTABILITY:
 ═══════════════════════════════════════════════════════════════════════════════
 """
         return results, steps
+    
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # GW SUPPRESSION S_* FACTORS (Canonical 6-Step Derivation)
+    # Mirrors HawkingRadiationCalculator suppression framework
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def compute_GW_S_aether(self, a: float, M_tot: float,
+                            alpha_UA: float = 7.4e-44,
+                            rho_UA: float = None) -> Tuple[float, str]:
+        """
+        Step 2: Aether Absorption Factor S_aether for GW suppression.
+        
+        GW waves propagating through [UA] vacuum experience viscous damping.
+        
+        Formula:
+            S_aether = exp(-α_UA × ρ_UA × r / c)
+            
+        Where:
+            α_UA ≈ G/c² ≈ 7.4×10⁻⁴⁴ m²/kg (absorption coefficient)
+            ρ_UA ≈ 7.09×10⁻³⁶ J/m³ (universal aether density)
+            r ≈ a (characteristic propagation distance)
+            
+        Physical interpretation:
+            GW energy is absorbed by [UA] vacuum fluctuations,
+            reducing power exponentially with distance.
+            
+        Returns:
+            (S_aether, derivation_steps)
+        """
+        if rho_UA is None:
+            rho_UA = self.rho_vac_UA
+            
+        # Effective propagation distance (orbital separation scale)
+        r = a
+        
+        # Absorption exponent
+        # Note: ρ_UA has units J/m³, need to convert to kg/m³ via c²
+        rho_mass = rho_UA / self.c**2  # kg/m³
+        
+        exponent = -alpha_UA * rho_mass * r
+        exponent = max(exponent, -700)  # Prevent underflow
+        
+        S_aether = np.exp(exponent)
+        
+        steps = f"""GW S_aether Factor Derivation:
+═══════════════════════════════════════════════════════════════════════════════
+STEP 2: AETHER ABSORPTION
+
+  S_aether = exp(-α_UA × ρ_UA × r / c²)
+  
+  Parameters:
+    α_UA = {alpha_UA:.4e} m²/kg (≈ G/c²)
+    ρ_UA = {rho_UA:.4e} J/m³
+    ρ_mass = ρ_UA/c² = {rho_mass:.4e} kg/m³
+    r = a = {a:.4e} m
+    
+  Exponent = -{alpha_UA:.4e} × {rho_mass:.4e} × {a:.4e}
+           = {exponent:.6e}
+           
+  S_aether = exp({exponent:.6e})
+           = {S_aether:.6f}
+           
+  {'Negligible absorption: S_aether ≈ 1' if S_aether > 0.99 else f'Significant absorption: {(1-S_aether)*100:.2f}% reduction'}
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return S_aether, steps
+    
+    def compute_GW_S_SCm(self, B_t: float = 0.0,
+                         B_crit: float = 4.4e13) -> Tuple[float, str]:
+        """
+        Step 3: Superconductive Horizon Screening S_SCm.
+        
+        [SCm] horizon superconductivity screens GW emission.
+        
+        Formula:
+            S_SCm = 1 - B_t/B_crit
+            
+        Where:
+            B_t = tangent magnetic field at horizon
+            B_crit ≈ 4.4×10¹³ T (critical field for superconductivity breakdown)
+            
+        Physical interpretation:
+            Superconducting horizon partially screens the quadrupole
+            oscillations that generate GWs.
+            
+        Returns:
+            (S_SCm, derivation_steps)
+        """
+        B_ratio = B_t / B_crit if B_crit > 0 else 0
+        S_SCm = max(1 - B_ratio, 0.0)
+        
+        steps = f"""GW S_SCm Factor Derivation:
+═══════════════════════════════════════════════════════════════════════════════
+STEP 3: SUPERCONDUCTIVE HORIZON SCREENING
+
+  S_SCm = 1 - B_t/B_crit
+  
+  Parameters:
+    B_t = {B_t:.4e} T (tangent horizon field)
+    B_crit = {B_crit:.4e} T (critical superconducting field)
+    B_t/B_crit = {B_ratio:.6f}
+    
+  S_SCm = 1 - {B_ratio:.6f}
+        = {S_SCm:.6f}
+        
+  {'No SCm screening: B_t = 0' if B_ratio < 0.001 else f'SCm screens {B_ratio*100:.2f}% of GW emission'}
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return S_SCm, steps
+    
+    def compute_GW_S_TRZ(self, f_TRZ: float = None) -> Tuple[float, str]:
+        """
+        Step 4: Time-Reversal Suppression S_TRZ.
+        
+        In UQFF, time-reversal zone allows partial energy recovery,
+        reducing net GW power.
+        
+        Formula:
+            S_TRZ = 1 - f_TRZ
+            
+        Where:
+            f_TRZ ≈ 0.1 (fraction of energy in time-reversal zone)
+            
+        Physical interpretation:
+            10% of GW energy is "recaptured" by time-reversal processes,
+            never escaping to infinity.
+            
+        Returns:
+            (S_TRZ, derivation_steps)
+        """
+        if f_TRZ is None:
+            f_TRZ = self.f_TRZ
+            
+        S_TRZ = 1 - f_TRZ
+        
+        steps = f"""GW S_TRZ Factor Derivation:
+═══════════════════════════════════════════════════════════════════════════════
+STEP 4: TIME-REVERSAL SUPPRESSION
+
+  S_TRZ = 1 - f_TRZ
+  
+  Parameters:
+    f_TRZ = {f_TRZ:.4f} (time-reversal zone fraction)
+    
+  S_TRZ = 1 - {f_TRZ:.4f}
+        = {S_TRZ:.6f}
+        
+  Physical interpretation:
+    {f_TRZ*100:.1f}% of GW energy undergoes time-reversal,
+    reducing net radiated power by this fraction.
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return S_TRZ, steps
+    
+    def compute_GW_S_Um(self, U_m: float, E_binding: float) -> Tuple[float, str]:
+        """
+        Step 5: Magnetic String Binding S_Um.
+        
+        Magnetic string energy U_m adds binding, suppressing GW loss.
+        
+        Formula:
+            S_Um = exp(-U_m / E_binding)
+            
+        Where:
+            U_m = (μ_j/a) × (1 - exp(-γt cos(πt_n))) (magnetic string energy)
+            E_binding = G×M_tot²/a (orbital binding energy)
+            
+        Physical interpretation:
+            Strings add additional binding energy, making it harder
+            for the system to radiate.
+            
+        Returns:
+            (S_Um, derivation_steps)
+        """
+        if E_binding > 0:
+            exponent = -U_m / E_binding
+            exponent = max(exponent, -700)
+            S_Um = np.exp(exponent)
+        else:
+            S_Um = 1.0
+            exponent = 0.0
+        
+        steps = f"""GW S_Um Factor Derivation:
+═══════════════════════════════════════════════════════════════════════════════
+STEP 5: MAGNETIC STRING BINDING
+
+  S_Um = exp(-U_m / E_binding)
+  
+  Parameters:
+    U_m = {U_m:.4e} J (magnetic string energy)
+    E_binding = {E_binding:.4e} J (orbital binding energy)
+    U_m/E_binding = {U_m/E_binding if E_binding > 0 else 0:.6f}
+    
+  S_Um = exp(-{U_m:.4e} / {E_binding:.4e})
+       = exp({exponent:.6f})
+       = {S_Um:.6f}
+       
+  String binding reduces GW emission by {(1-S_Um)*100:.2f}%
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return S_Um, steps
+    
+    def compute_GW_S_factors(self, M1: float, M2: float, a: float,
+                             B_t: float = 0.0, B_crit: float = 4.4e13,
+                             f_TRZ: float = None, rho_UA: float = None,
+                             alpha_UA: float = 7.4e-44,
+                             mu_j: float = 1e15, t: float = 0.0,
+                             t_n: float = 0.0, gamma: float = 5e-5) -> Tuple[dict, str]:
+        """
+        Compute all four GW suppression S_* factors.
+        
+        Returns canonical S_* factors for GW suppression:
+        - S_aether: Aether absorption
+        - S_SCm: Superconductive screening
+        - S_TRZ: Time-reversal suppression
+        - S_Um: Magnetic string binding
+        - S_total: Combined suppression factor
+        
+        Formula:
+            P_GW,UQFF = P_GW × S_aether × S_SCm × S_TRZ × S_Um
+            
+        Returns:
+            (factors_dict, derivation_steps)
+        """
+        if f_TRZ is None:
+            f_TRZ = self.f_TRZ
+        if rho_UA is None:
+            rho_UA = self.rho_vac_UA
+            
+        M_tot = M1 + M2
+        mu_reduced = M1 * M2 / M_tot
+        
+        # Compute individual factors
+        S_aether, _ = self.compute_GW_S_aether(a, M_tot, alpha_UA, rho_UA)
+        S_SCm, _ = self.compute_GW_S_SCm(B_t, B_crit)
+        S_TRZ, _ = self.compute_GW_S_TRZ(f_TRZ)
+        
+        # U_m calculation
+        if t > 0:
+            oscillation = np.cos(np.pi * t_n)
+            U_m = (mu_j / a) * (1 - np.exp(-gamma * t * max(oscillation, 0)))
+        else:
+            U_m = mu_j / a * 0.1
+            
+        E_binding = self.G * M_tot**2 / a
+        S_Um, _ = self.compute_GW_S_Um(U_m, E_binding)
+        
+        # Combined factor
+        S_total = S_aether * S_SCm * S_TRZ * S_Um
+        
+        factors = {
+            'S_aether': S_aether,
+            'S_SCm': S_SCm,
+            'S_TRZ': S_TRZ,
+            'S_Um': S_Um,
+            'S_total': S_total,
+            'U_m': U_m,
+            'E_binding': E_binding,
+            'M_tot': M_tot,
+            'mu_reduced': mu_reduced,
+            'f_TRZ': f_TRZ,
+            'B_t': B_t,
+            'B_crit': B_crit
+        }
+        
+        # Solar mass conversions
+        M1_solar = M1 / self.M_sun
+        M2_solar = M2 / self.M_sun
+        M_tot_solar = M_tot / self.M_sun
+        
+        steps = f"""GW Suppression S_* Factors Summary:
+═══════════════════════════════════════════════════════════════════════════════
+CANONICAL GW SUPPRESSION FACTORS
+
+Binary System:
+  M₁ = {M1_solar:.2f} M_sun, M₂ = {M2_solar:.2f} M_sun
+  M_tot = {M_tot_solar:.2f} M_sun = {M_tot:.4e} kg
+  a = {a:.4e} m
+
+FACTOR BREAKDOWN:
+─────────────────────────────────────────────────────────────────────────────
+  │ Factor     │ Formula                     │ Value      │ Suppression   │
+  ├────────────┼─────────────────────────────┼────────────┼───────────────┤
+  │ S_aether   │ exp(-α_UA ρ_UA r/c²)        │ {S_aether:10.6f} │ {(1-S_aether)*100:6.2f}%        │
+  │ S_SCm      │ 1 - B_t/B_crit              │ {S_SCm:10.6f} │ {(1-S_SCm)*100:6.2f}%        │
+  │ S_TRZ      │ 1 - f_TRZ                   │ {S_TRZ:10.6f} │ {(1-S_TRZ)*100:6.2f}%        │
+  │ S_Um       │ exp(-U_m/E_binding)         │ {S_Um:10.6f} │ {(1-S_Um)*100:6.2f}%        │
+  ├────────────┼─────────────────────────────┼────────────┼───────────────┤
+  │ S_total    │ Π(S_i)                      │ {S_total:10.6f} │ {(1-S_total)*100:6.2f}%        │
+─────────────────────────────────────────────────────────────────────────────
+
+FULL SUPPRESSION FORMULA:
+  P_GW,UQFF = P_GW × S_aether × S_SCm × S_TRZ × S_Um
+            = P_GW × {S_aether:.6f} × {S_SCm:.6f} × {S_TRZ:.6f} × {S_Um:.6f}
+            = P_GW × {S_total:.6f}
+
+  GW power reduced by {(1-S_total)*100:.2f}%
+  Merger timescale extended by {1/S_total:.2f}×
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return factors, steps
+    
+    def six_step_GW_suppression_derivation(self, M1: float, M2: float, a: float,
+                                            B_t: float = 0.0, B_crit: float = 4.4e13,
+                                            f_TRZ: float = None, rho_UA: float = None,
+                                            alpha_UA: float = 7.4e-44,
+                                            mu_j: float = 1e15, t: float = 0.0,
+                                            t_n: float = 0.0, gamma: float = 5e-5) -> Tuple[dict, str]:
+        """
+        Complete 6-step formal derivation of GW suppression in UQFF.
+        
+        Mirrors the 6-step Hawking suppression derivation for consistency.
+        
+        Steps:
+        1. Standard GW Power (Quadrupole Formula)
+        2. Aether Absorption S_aether
+        3. Superconductive Screening S_SCm
+        4. Time-Reversal Suppression S_TRZ
+        5. Magnetic String Binding S_Um
+        6. Full UQFF GW Power
+        
+        Returns:
+            (results_dict, complete_derivation)
+        """
+        if f_TRZ is None:
+            f_TRZ = self.f_TRZ
+        if rho_UA is None:
+            rho_UA = self.rho_vac_UA
+            
+        M_tot = M1 + M2
+        mu_reduced = M1 * M2 / M_tot
+        
+        # Solar mass units
+        M1_solar = M1 / self.M_sun
+        M2_solar = M2 / self.M_sun
+        M_tot_solar = M_tot / self.M_sun
+        
+        # ═══ STEP 1: Standard GW Power ═══
+        P_GW_coeff = (32.0 / 5.0) * (self.G**4 / self.c**5)
+        P_GW = P_GW_coeff * (mu_reduced**2 * M_tot**2) / a**5
+        
+        # ═══ STEP 2: Aether Absorption ═══
+        S_aether, aether_steps = self.compute_GW_S_aether(a, M_tot, alpha_UA, rho_UA)
+        P_GW_after_aether = P_GW * S_aether
+        
+        # ═══ STEP 3: Superconductive Screening ═══
+        S_SCm, scm_steps = self.compute_GW_S_SCm(B_t, B_crit)
+        P_GW_after_SCm = P_GW_after_aether * S_SCm
+        
+        # ═══ STEP 4: Time-Reversal ═══
+        S_TRZ, trz_steps = self.compute_GW_S_TRZ(f_TRZ)
+        P_GW_after_TRZ = P_GW_after_SCm * S_TRZ
+        
+        # ═══ STEP 5: Magnetic String ═══
+        if t > 0:
+            oscillation = np.cos(np.pi * t_n)
+            U_m = (mu_j / a) * (1 - np.exp(-gamma * t * max(oscillation, 0)))
+        else:
+            U_m = mu_j / a * 0.1
+        E_binding = self.G * M_tot**2 / a
+        S_Um, um_steps = self.compute_GW_S_Um(U_m, E_binding)
+        P_GW_after_Um = P_GW_after_TRZ * S_Um
+        
+        # ═══ STEP 6: Full UQFF GW Power ═══
+        P_GW_UQFF = P_GW_after_Um
+        S_total = S_aether * S_SCm * S_TRZ * S_Um
+        suppression_percent = (1 - S_total) * 100
+        tau_extension = 1 / S_total if S_total > 0 else float('inf')
+        
+        results = {
+            'M1': M1,
+            'M2': M2,
+            'M_tot': M_tot,
+            'mu_reduced': mu_reduced,
+            'a': a,
+            'P_GW': P_GW,
+            'P_GW_after_aether': P_GW_after_aether,
+            'P_GW_after_SCm': P_GW_after_SCm,
+            'P_GW_after_TRZ': P_GW_after_TRZ,
+            'P_GW_UQFF': P_GW_UQFF,
+            'S_aether': S_aether,
+            'S_SCm': S_SCm,
+            'S_TRZ': S_TRZ,
+            'S_Um': S_Um,
+            'S_total': S_total,
+            'U_m': U_m,
+            'E_binding': E_binding,
+            'suppression_percent': suppression_percent,
+            'tau_extension': tau_extension
+        }
+        
+        derivation = f"""
+██████████████████████████████████████████████████████████████████████████████
+█  6-STEP GW SUPPRESSION DERIVATION IN UQFF                                  █
+█  Canonical Framework for Gravitational Wave Power Reduction                █
+██████████████████████████████████████████████████████████████████████████████
+
+BINARY SYSTEM PARAMETERS:
+  M₁ = {M1_solar:.2f} M_sun = {M1:.4e} kg
+  M₂ = {M2_solar:.2f} M_sun = {M2:.4e} kg
+  M_tot = {M_tot_solar:.2f} M_sun = {M_tot:.4e} kg
+  μ_reduced = {mu_reduced:.4e} kg
+  a = {a:.4e} m
+  B_t/B_crit = {B_t/B_crit if B_crit > 0 else 0:.4f}
+  f_TRZ = {f_TRZ:.4f}
+
+═══════════════════════════════════════════════════════════════════════════════
+STEP 1: STANDARD GW POWER (Quadrupole Formula)
+═══════════════════════════════════════════════════════════════════════════════
+
+  Peters & Mathews (1963) quadrupole radiation:
+  
+  P_GW = (32/5) × (G⁴/c⁵) × (μ² M_tot² / a⁵)
+  
+  Numerically:
+    G⁴/c⁵ = {self.G**4 / self.c**5:.4e} m⁵ kg⁻² s⁻¹
+    μ² = {mu_reduced**2:.4e} kg²
+    M_tot² = {M_tot**2:.4e} kg²
+    a⁵ = {a**5:.4e} m⁵
+    
+  P_GW = (32/5) × {self.G**4 / self.c**5:.4e}
+         × {mu_reduced**2:.4e} × {M_tot**2:.4e}
+         / {a**5:.4e}
+         
+  ┌─────────────────────────────────────────┐
+  │  P_GW = {P_GW:.4e} W                    │
+  └─────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+STEP 2: AETHER ABSORPTION (S_aether)
+═══════════════════════════════════════════════════════════════════════════════
+
+  GWs traveling through [UA] vacuum experience viscous damping:
+  
+  P_GW' = P_GW × S_aether
+  S_aether = exp(-α_UA × (ρ_UA/c²) × r)
+  
+  Where:
+    α_UA ≈ G/c² = {alpha_UA:.4e} m²/kg
+    ρ_UA = {rho_UA:.4e} J/m³
+    ρ_UA/c² = {rho_UA/self.c**2:.4e} kg/m³
+    r ≈ a = {a:.4e} m
+    
+  S_aether = {S_aether:.6f}
+  
+  P_GW' = {P_GW:.4e} × {S_aether:.6f}
+  
+  ┌─────────────────────────────────────────┐
+  │  P_GW' = {P_GW_after_aether:.4e} W      │
+  │  Reduction: {(1-S_aether)*100:.4f}%                     │
+  └─────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+STEP 3: SUPERCONDUCTIVE HORIZON SCREENING (S_SCm)
+═══════════════════════════════════════════════════════════════════════════════
+
+  [SCm] horizon superconductivity screens quadrupole oscillations:
+  
+  P_GW'' = P_GW' × S_SCm
+  S_SCm = 1 - B_t/B_crit
+  
+  Where:
+    B_t = {B_t:.4e} T (horizon tangent field)
+    B_crit = {B_crit:.4e} T (Schwinger critical)
+    B_t/B_crit = {B_t/B_crit if B_crit > 0 else 0:.6f}
+    
+  S_SCm = 1 - {B_t/B_crit if B_crit > 0 else 0:.6f} = {S_SCm:.6f}
+  
+  P_GW'' = {P_GW_after_aether:.4e} × {S_SCm:.6f}
+  
+  ┌─────────────────────────────────────────┐
+  │  P_GW'' = {P_GW_after_SCm:.4e} W        │
+  │  Reduction: {(1-S_SCm)*100:.2f}%                       │
+  └─────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+STEP 4: TIME-REVERSAL SUPPRESSION (S_TRZ)
+═══════════════════════════════════════════════════════════════════════════════
+
+  f_TRZ fraction of energy recaptured by time-reversal processes:
+  
+  P_GW''' = P_GW'' × S_TRZ
+  S_TRZ = 1 - f_TRZ
+  
+  Where:
+    f_TRZ = {f_TRZ:.4f}
+    
+  S_TRZ = 1 - {f_TRZ:.4f} = {S_TRZ:.6f}
+  
+  P_GW''' = {P_GW_after_SCm:.4e} × {S_TRZ:.6f}
+  
+  ┌─────────────────────────────────────────┐
+  │  P_GW''' = {P_GW_after_TRZ:.4e} W       │
+  │  Reduction: {f_TRZ*100:.1f}%                           │
+  └─────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+STEP 5: MAGNETIC STRING BINDING (S_Um)
+═══════════════════════════════════════════════════════════════════════════════
+
+  Magnetic string energy adds orbital binding:
+  
+  P_GW,UQFF = P_GW''' × S_Um
+  S_Um = exp(-U_m / E_binding)
+  
+  Where:
+    U_m = (μ_j/a) × (1 - exp(-γt cos(πt_n)))
+        = {U_m:.4e} J
+    E_binding = G M_tot²/a
+              = {self.G:.4e} × {M_tot**2:.4e} / {a:.4e}
+              = {E_binding:.4e} J
+    U_m/E_binding = {U_m/E_binding if E_binding > 0 else 0:.6f}
+    
+  S_Um = exp(-{U_m/E_binding if E_binding > 0 else 0:.6f})
+       = {S_Um:.6f}
+  
+  P_GW,UQFF = {P_GW_after_TRZ:.4e} × {S_Um:.6f}
+  
+  ┌─────────────────────────────────────────┐
+  │  P_GW,UQFF = {P_GW_UQFF:.4e} W          │
+  │  Reduction: {(1-S_Um)*100:.2f}%                        │
+  └─────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+STEP 6: FULL UQFF GW SUPPRESSION
+═══════════════════════════════════════════════════════════════════════════════
+
+  Combined suppression factor:
+  
+  S_total = S_aether × S_SCm × S_TRZ × S_Um
+          = {S_aether:.6f} × {S_SCm:.6f} × {S_TRZ:.6f} × {S_Um:.6f}
+          = {S_total:.6f}
+
+  MASTER FORMULA:
+  ┌───────────────────────────────────────────────────────────────────────────┐
+  │                                                                           │
+  │  P_GW,UQFF = P_GW × exp(-α_UA ρ_UA r/c²) × (1 - B_t/B_crit)             │
+  │                    × (1 - f_TRZ) × exp(-U_m/(GM_tot²/a))                 │
+  │                                                                           │
+  │  P_GW,UQFF = {P_GW:.4e} × {S_total:.6f}                                  │
+  │            = {P_GW_UQFF:.4e} W                                           │
+  │                                                                           │
+  └───────────────────────────────────────────────────────────────────────────┘
+
+  ╔══════════════════════════════════════════════════════════════════════════╗
+  ║  RESULT: GW POWER SUPPRESSED BY {suppression_percent:.2f}%                              ║
+  ║          MERGER TIMESCALE EXTENDED BY {tau_extension:.2f}×                         ║
+  ╚══════════════════════════════════════════════════════════════════════════╝
+
+PHYSICAL IMPLICATIONS:
+  • P_GW reduced: {P_GW:.2e} W → {P_GW_UQFF:.2e} W
+  • τ_merge extended: ~{tau_extension:.2f}× original timescale
+  • Energy retained in system: {suppression_percent:.2f}% more
+  • Binary inspiral slowed by UQFF effects
+
+Q-SCOPE TESTABILITY:
+  • Compare LIGO/Virgo merger rates with UQFF predictions
+  • Search for anomalous GW waveform damping
+  • Look for extended inspiral phases in binary systems
+  • Detect "missing energy" in ringdown stage
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, derivation
+    
+    def gw150914_suppression_example(self) -> Tuple[dict, str]:
+        """
+        GW150914-like canonical example of GW suppression.
+        
+        GW150914 (first direct detection, 14 Sep 2015):
+        - M1 ≈ 36 M_sun
+        - M2 ≈ 29 M_sun  
+        - M_final ≈ 62 M_sun (3 M_sun radiated)
+        - Peak P_GW ≈ 3.6×10⁴⁹ W
+        
+        Returns:
+            (results_dict, formatted_report)
+        """
+        M1 = 36 * self.M_sun
+        M2 = 29 * self.M_sun
+        a = 1e8  # ~100 Mm at peak emission
+        
+        # Typical values for stellar-mass BH merger
+        B_t = 0.1 * 4.4e13  # 10% of B_crit
+        f_TRZ = 0.1
+        mu_j = 1e15
+        t = 100  # seconds (arbitrary)
+        
+        results, derivation = self.six_step_GW_suppression_derivation(
+            M1=M1, M2=M2, a=a, B_t=B_t, f_TRZ=f_TRZ, mu_j=mu_j, t=t
+        )
+        
+        # Add GW150914-specific context
+        report = f"""
+╔══════════════════════════════════════════════════════════════════════════════╗
+║          GW150914 CANONICAL SUPPRESSION EXAMPLE                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+EVENT PARAMETERS (14 September 2015):
+  Source: Binary black hole merger
+  M₁ = 36 M_sun, M₂ = 29 M_sun
+  M_final = 62 M_sun (3 M_sun radiated)
+  Distance: ~410 Mpc
+  Peak frequency: ~150 Hz
+  Peak power (standard): ~3.6×10⁴⁹ W
+
+{derivation}
+
+COMPARISON WITH OBSERVATION:
+─────────────────────────────────────────────────────────────────────────────────
+  │ Parameter        │ Standard GR       │ UQFF Prediction  │ Difference      │
+  ├──────────────────┼───────────────────┼──────────────────┼─────────────────┤
+  │ Peak P_GW        │ {results['P_GW']:.2e} W │ {results['P_GW_UQFF']:.2e} W │ {results['suppression_percent']:.1f}% lower      │
+  │ Energy radiated  │ ~3.0 M_sun×c²     │ ~{3.0*results['S_total']:.2f} M_sun×c²    │ {3.0*(1-results['S_total']):.2f} M_sun saved │
+  │ Merger timescale │ τ_GR              │ {results['tau_extension']:.2f}×τ_GR         │ Extended          │
+─────────────────────────────────────────────────────────────────────────────────
+
+IMPLICATION:
+  If UQFF is correct, GW150914 would have appeared ~{results['suppression_percent']:.0f}% weaker at detectors,
+  potentially affecting distance estimates and merger rate calculations.
+  
+  The "missing" energy remains gravitationally bound, potentially contributing
+  to higher final BH mass than standard GR predicts.
+
+TESTABILITY:
+  • Statistical analysis of LIGO/Virgo merger population
+  • Comparison of waveform templates with UQFF corrections
+  • Search for systematic deviations from GR predictions
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        results['formatted_report'] = report
+        return results, report
 
 
 # Global Black Hole Phases Model instance
