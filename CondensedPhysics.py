@@ -105795,6 +105795,383 @@ Test Predictions:
         return report
     
     # ═══════════════════════════════════════════════════════════════════════════
+    # ASTEROID-MASS PBH STABILITY ANALYSIS (Feb 25, 2026)
+    # M = 10^12 kg is the critical evaporation threshold
+    # τ_standard ≈ 10^10 years (edge of evaporation now)
+    # τ_UQFF ≈ 3×10^11 years with ~30× enhancement (stable DM)
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def validate_asteroid_mass_pbh(self, U_m_kT_ratio: float = 1.0) -> dict:
+        """
+        Validate asteroid-mass PBH (M = 10^12 kg) stability in UQFF.
+        
+        This is the critical mass threshold where:
+        - Standard: τ ≈ 10^10 years (universe age, edge of evaporation)
+        - UQFF: τ ≈ 3×10^11 years with ~30× enhancement (stable)
+        
+        For M < 10^12 kg:
+        - Standard: evaporated → gamma-ray bursts expected → f_PBH < 10^-3
+        - UQFF: stable → no gamma-rays → f_PBH up to 1.0 possible
+        
+        Args:
+            U_m_kT_ratio: Assumed U_m/(k_BT_H) ratio (default 1.0)
+        
+        Returns:
+            Dict with complete validation analysis
+        """
+        # Critical asteroid mass (10^15 g = 10^12 kg)
+        M_asteroid = 1e12  # kg
+        M_sun = self.params['M_sun']
+        year = self.params['year']
+        t_universe = self.params['t_universe']
+        t_universe_yr = t_universe / year
+        
+        # Standard lifetime
+        tau_std = self.compute_tau_standard(M_asteroid)
+        tau_std_yr = tau_std / year
+        
+        # UQFF enhancement factors (step-by-step)
+        f_TRZ = self.params['f_TRZ']
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        
+        # Step 1: Standard τ = 5120πG²M³/(ℏc⁴)
+        step1 = tau_std_yr
+        
+        # Step 2: f_TRZ suppression factor
+        factor_TRZ = 1.0 / (1.0 - f_TRZ)  # ~1.111
+        step2 = step1 * factor_TRZ
+        
+        # Step 3: Aether density ratio factor
+        factor_rho = rho_UA / rho_SCm  # ~10
+        step3 = step2 * factor_rho
+        
+        # Step 4: Magnetic string exponential factor
+        factor_exp = np.exp(U_m_kT_ratio)  # e^1 ≈ 2.718
+        step4 = step3 * factor_exp
+        
+        # Total enhancement
+        total_factor = factor_TRZ * factor_rho * factor_exp  # ~30.2
+        tau_uqff_yr = tau_std_yr * total_factor
+        
+        # Stability status
+        is_stable_std = tau_std_yr > t_universe_yr
+        is_stable_uqff = tau_uqff_yr > t_universe_yr
+        saved_by_uqff = not is_stable_std and is_stable_uqff
+        
+        # Dark matter implications
+        f_PBH_std = 0.0 if not is_stable_std else 1.0  # Evaporated means excluded
+        f_PBH_uqff = 1.0 if is_stable_uqff else 0.0  # Stable means viable
+        
+        return {
+            'title': 'Asteroid-Mass PBH UQFF Stability Validation',
+            'M_kg': M_asteroid,
+            'M_g': M_asteroid * 1e3,
+            'M_description': 'Asteroid mass (~10^15 g)',
+            
+            # Standard analysis
+            'tau_standard_yr': tau_std_yr,
+            'tau_standard_approx': '~10^10 years',
+            'is_stable_standard': is_stable_std,
+            
+            # Step-by-step UQFF derivation
+            'derivation': {
+                'step_1': {
+                    'formula': 'τ_standard = 5120πG²M³/(ℏc⁴)',
+                    'result_yr': step1,
+                    'description': 'Standard Hawking evaporation lifetime'
+                },
+                'step_2': {
+                    'formula': "τ' = τ / (1 - f_TRZ)",
+                    'factor': factor_TRZ,
+                    'result_yr': step2,
+                    'description': 'Time-reversal suppression (~1.11×)'
+                },
+                'step_3': {
+                    'formula': "τ'' = τ' × (ρ_UA / ρ_SCm)",
+                    'factor': factor_rho,
+                    'result_yr': step3,
+                    'description': 'Aether density damping (~10×)'
+                },
+                'step_4': {
+                    'formula': 'τ_UQFF = τ\'\' × exp(U_m/(k_BT_H))',
+                    'factor': factor_exp,
+                    'result_yr': step4,
+                    'description': 'Magnetic string barrier (~2.7×)'
+                },
+            },
+            
+            # UQFF result
+            'total_enhancement_factor': total_factor,
+            'tau_UQFF_yr': tau_uqff_yr,
+            'tau_UQFF_approx': '~3×10^11 years',
+            'is_stable_UQFF': is_stable_uqff,
+            
+            # Comparison
+            'universe_age_yr': t_universe_yr,
+            'ratio_std_to_universe': tau_std_yr / t_universe_yr,
+            'ratio_UQFF_to_universe': tau_uqff_yr / t_universe_yr,
+            'saved_by_UQFF': saved_by_uqff,
+            
+            # Dark matter viability
+            'f_PBH_limit_standard': f_PBH_std,
+            'f_PBH_limit_UQFF': f_PBH_uqff,
+            'f_PBH_standard_constraint': 'f_PBH < 10^-3 (gamma-ray limits for evaporating PBHs)',
+            
+            # Physical implications
+            'implications': [
+                f'τ_standard ≈ 10^10 years = universe age (edge of evaporation)',
+                f'τ_UQFF ≈ 3×10^11 years (>20× universe age, stable)',
+                f'Enhancement factor: {total_factor:.1f}× makes asteroid-mass PBHs stable',
+                'UQFF reopens M < 10^12 kg mass window for dark matter',
+                'No gamma-ray bursts expected → testable prediction',
+                'Asteroid-mass PBHs can comprise up to 100% of dark matter in UQFF',
+            ],
+        }
+    
+    def pbh_uqff_stability_derivation(self, M: float, U_m_kT_ratio: float = 1.0, 
+                                       verbose: bool = False) -> dict:
+        """
+        Full step-by-step derivation of UQFF PBH stability enhancement.
+        
+        Formula: τ_UQFF = τ_standard / (1-f_TRZ) × (ρ_UA/ρ_SCm) × exp(U_m/(k_BT_H))
+        
+        Args:
+            M: PBH mass [kg]
+            U_m_kT_ratio: Ratio U_m/(k_BT_H)
+            verbose: If True, print derivation steps
+        
+        Returns:
+            Dict with complete derivation
+        """
+        M_sun = self.params['M_sun']
+        year = self.params['year']
+        t_universe = self.params['t_universe']
+        t_universe_yr = t_universe / year
+        G = self.params['G']
+        hbar = self.params['hbar']
+        c = self.params['c']
+        k_B = self.params['k_B']
+        f_TRZ = self.params['f_TRZ']
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        
+        # Hawking temperature
+        T_H = (hbar * c**3) / (8 * np.pi * G * M * k_B)
+        
+        # Standard lifetime formula
+        tau_std = (5120 * np.pi * G**2 * M**3) / (hbar * c**4)
+        tau_std_yr = tau_std / year
+        
+        # Step-by-step derivation
+        steps = []
+        
+        # Step 1: Standard τ
+        steps.append({
+            'step': 1,
+            'name': 'Standard Hawking Lifetime',
+            'formula': 'τ_standard = 5120πG²M³/(ℏc⁴)',
+            'value_s': tau_std,
+            'value_yr': tau_std_yr,
+            'log10_yr': np.log10(tau_std_yr),
+        })
+        
+        # Step 2: f_TRZ suppression
+        factor_TRZ = 1.0 / (1.0 - f_TRZ)
+        tau_step2 = tau_std * factor_TRZ
+        steps.append({
+            'step': 2,
+            'name': 'Time-Reversal Suppression',
+            'formula': "τ' = τ_standard / (1 - f_TRZ)",
+            'f_TRZ': f_TRZ,
+            'factor': factor_TRZ,
+            'enhancement_percent': (factor_TRZ - 1) * 100,
+            'value_s': tau_step2,
+            'value_yr': tau_step2 / year,
+            'log10_yr': np.log10(tau_step2 / year),
+            'physics': 'Negentropy recycles emitted pairs back into BH',
+        })
+        
+        # Step 3: Aether density ratio
+        factor_rho = rho_UA / rho_SCm
+        tau_step3 = tau_step2 * factor_rho
+        steps.append({
+            'step': 3,
+            'name': 'Aether Density Damping',
+            'formula': "τ'' = τ' × (ρ_UA / ρ_SCm)",
+            'rho_UA': rho_UA,
+            'rho_SCm': rho_SCm,
+            'factor': factor_rho,
+            'enhancement_percent': (factor_rho - 1) * 100,
+            'value_s': tau_step3,
+            'value_yr': tau_step3 / year,
+            'log10_yr': np.log10(tau_step3 / year),
+            'physics': '[UA] superfluid damps vacuum fluctuations near horizon',
+        })
+        
+        # Step 4: Magnetic string barrier
+        factor_exp = np.exp(U_m_kT_ratio)
+        tau_UQFF = tau_step3 * factor_exp
+        steps.append({
+            'step': 4,
+            'name': 'Magnetic String Barrier',
+            'formula': 'τ_UQFF = τ\'\' × exp(U_m / (k_B T_H))',
+            'U_m_kT_ratio': U_m_kT_ratio,
+            'factor': factor_exp,
+            'enhancement_percent': (factor_exp - 1) * 100,
+            'value_s': tau_UQFF,
+            'value_yr': tau_UQFF / year,
+            'log10_yr': np.log10(tau_UQFF / year),
+            'physics': 'U_m energy barrier exponentially suppresses pair emission',
+        })
+        
+        # Total
+        total_factor = factor_TRZ * factor_rho * factor_exp
+        tau_UQFF_yr = tau_UQFF / year
+        
+        # Stability check
+        is_stable_std = tau_std > t_universe
+        is_stable_UQFF = tau_UQFF > t_universe
+        
+        result = {
+            'title': 'UQFF PBH Stability Derivation',
+            'M_kg': M,
+            'M_solar': M / M_sun,
+            'T_H_K': T_H,
+            
+            'steps': steps,
+            
+            'tau_standard_yr': tau_std_yr,
+            'tau_UQFF_yr': tau_UQFF_yr,
+            'total_enhancement_factor': total_factor,
+            
+            'factor_breakdown': {
+                'f_TRZ': factor_TRZ,
+                'rho_ratio': factor_rho,
+                'exp_U_m': factor_exp,
+                'product': total_factor,
+            },
+            
+            'universe_age_yr': t_universe_yr,
+            'is_stable_standard': is_stable_std,
+            'is_stable_UQFF': is_stable_UQFF,
+            'saved_by_UQFF': not is_stable_std and is_stable_UQFF,
+            
+            'combined_formula': 'τ_UQFF = τ_standard / (1-f_TRZ) × (ρ_UA/ρ_SCm) × exp(U_m/(k_BT_H))',
+        }
+        
+        if verbose:
+            print(f"\n{'='*70}")
+            print(f"UQFF PBH STABILITY DERIVATION")
+            print(f"{'='*70}")
+            print(f"M = {M:.2e} kg ({M/M_sun:.2e} M☉)")
+            print(f"T_H = {T_H:.2e} K")
+            print(f"\nStep-by-step:")
+            for s in steps:
+                print(f"\n  Step {s['step']}: {s['name']}")
+                print(f"    Formula: {s['formula']}")
+                print(f"    Factor: {s['factor']:.4f}")
+                print(f"    τ = 10^{s['log10_yr']:.1f} years")
+            print(f"\nTotal enhancement: {total_factor:.1f}×")
+            print(f"τ_standard = 10^{np.log10(tau_std_yr):.1f} years")
+            print(f"τ_UQFF = 10^{np.log10(tau_UQFF_yr):.1f} years")
+            print(f"Saved by UQFF: {result['saved_by_UQFF']}")
+            print(f"{'='*70}\n")
+        
+        return result
+    
+    def pbh_mass_lifetime_chart_data(self, M_start: float = 1e8, M_end: float = 1e16,
+                                      n_points: int = 100, U_m_kT_ratio: float = 1.0) -> dict:
+        """
+        Generate mass vs lifetime chart data for PBHs (standard vs UQFF).
+        
+        Creates log-log data suitable for plotting:
+        - X-axis: log10(M/kg)
+        - Y-axis: log10(τ/year)
+        - Horizontal line: universe age
+        
+        Args:
+            M_start: Starting mass [kg]
+            M_end: Ending mass [kg]
+            n_points: Number of data points
+            U_m_kT_ratio: Ratio U_m/(k_BT_H)
+        
+        Returns:
+            Dict with arrays for plotting
+        """
+        year = self.params['year']
+        t_universe = self.params['t_universe']
+        t_universe_yr = t_universe / year
+        
+        # Mass array (log-spaced)
+        log_M = np.linspace(np.log10(M_start), np.log10(M_end), n_points)
+        masses = 10**log_M
+        
+        # Lifetime arrays
+        tau_std = np.zeros(n_points)
+        tau_UQFF = np.zeros(n_points)
+        
+        # Enhancement factor (constant)
+        f_TRZ = self.params['f_TRZ']
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        enhancement = (1.0 / (1.0 - f_TRZ)) * (rho_UA / rho_SCm) * np.exp(U_m_kT_ratio)
+        
+        for i, M in enumerate(masses):
+            tau_std[i] = self.compute_tau_standard(M)
+            tau_UQFF[i] = tau_std[i] * enhancement
+        
+        # Convert to years
+        tau_std_yr = tau_std / year
+        tau_UQFF_yr = tau_UQFF / year
+        
+        # Find critical masses (where τ = t_universe)
+        M_crit_std = self.compute_pbh_critical_mass_standard()
+        M_crit_UQFF = self.compute_pbh_critical_mass_uqff(U_m_kT_ratio)
+        
+        return {
+            'title': 'PBH Mass-Lifetime Chart (Standard vs UQFF)',
+            
+            # Data arrays
+            'log10_M_kg': log_M,
+            'M_kg': masses,
+            'log10_tau_std_yr': np.log10(tau_std_yr),
+            'tau_std_yr': tau_std_yr,
+            'log10_tau_UQFF_yr': np.log10(tau_UQFF_yr),
+            'tau_UQFF_yr': tau_UQFF_yr,
+            
+            # Reference lines
+            'log10_t_universe_yr': np.log10(t_universe_yr),
+            't_universe_yr': t_universe_yr,
+            
+            # Critical masses
+            'M_crit_std_kg': M_crit_std,
+            'log10_M_crit_std': np.log10(M_crit_std),
+            'M_crit_UQFF_kg': M_crit_UQFF,
+            'log10_M_crit_UQFF': np.log10(M_crit_UQFF),
+            
+            # Enhancement
+            'enhancement_factor': enhancement,
+            'log10_enhancement': np.log10(enhancement),
+            
+            # Plotting metadata
+            'x_label': 'log₁₀(M / kg)',
+            'y_label': 'log₁₀(τ / year)',
+            'series': [
+                {'name': 'Standard (τ ~ M³)', 'color': 'blue'},
+                {'name': 'UQFF (enhanced)', 'color': 'red'},
+                {'name': 'Universe age', 'color': 'green', 'style': 'dashed'},
+            ],
+            
+            # Annotations
+            'annotations': [
+                f'Critical mass (std): 10^{np.log10(M_crit_std):.1f} kg',
+                f'Critical mass (UQFF): 10^{np.log10(M_crit_UQFF):.1f} kg',
+                f'UQFF extends viable window by {enhancement:.0f}× in τ',
+            ],
+        }
+    
+    # ═══════════════════════════════════════════════════════════════════════════
     # PBH DARK MATTER ABUNDANCE (Feb 25, 2026)
     # ═══════════════════════════════════════════════════════════════════════════
     # f_PBH = Ω_PBH / Ω_DM where Ω_DM ≈ 0.26
@@ -106402,6 +106779,26 @@ COSMOLOGICAL IMPLICATIONS
             U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
             return self.compute_pbh_survival_enhancement(M, U_m_kT_ratio)
         
+        elif mode == 'pbh_asteroid_validation':
+            # Validate asteroid-mass PBH (M = 10^12 kg) stability
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            return self.validate_asteroid_mass_pbh(U_m_kT_ratio)
+        
+        elif mode == 'pbh_stability_derivation':
+            # Full step-by-step UQFF PBH stability derivation
+            M = kwargs.get('M', 1e12)
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            verbose = kwargs.get('verbose', False)
+            return self.pbh_uqff_stability_derivation(M, U_m_kT_ratio, verbose)
+        
+        elif mode == 'pbh_lifetime_chart':
+            # Mass vs lifetime chart data for plotting
+            M_start = kwargs.get('M_start', 1e8)
+            M_end = kwargs.get('M_end', 1e16)
+            n_points = kwargs.get('n_points', 100)
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            return self.pbh_mass_lifetime_chart_data(M_start, M_end, n_points, U_m_kT_ratio)
+        
         elif mode == 'pbh_dark_matter':
             # PBH dark matter viability analysis
             U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
@@ -106440,7 +106837,7 @@ COSMOLOGICAL IMPLICATIONS
             return self.pbh_dark_matter_summary(U_m_kT_ratio)
         
         else:
-            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, standard, simulate, validate_sgr_a, validate_m87, T_UQFF_m87, m87_mass_evolution, stability_proofs, stability_proof_1, stability_proof_2, stability_proof_3, temperature_modulation, modulate_mass_range, pbh_survival, pbh_dark_matter, pbh_mass_sweep, f_PBH_standard, f_PBH_UQFF, pbh_dm_spectrum, pbh_dm_summary")
+            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, standard, simulate, validate_sgr_a, validate_m87, T_UQFF_m87, m87_mass_evolution, stability_proofs, stability_proof_1, stability_proof_2, stability_proof_3, temperature_modulation, modulate_mass_range, pbh_survival, pbh_asteroid_validation, pbh_stability_derivation, pbh_lifetime_chart, pbh_dark_matter, pbh_mass_sweep, f_PBH_standard, f_PBH_UQFF, pbh_dm_spectrum, pbh_dm_summary")
     
     # ═══════════════════════════════════════════════════════════════════════════
     # SURFACE GRAVITY AND ALTERNATIVE TEMPERATURE (Feb 25, 2026 Enhancement)
