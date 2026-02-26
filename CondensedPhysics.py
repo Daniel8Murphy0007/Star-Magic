@@ -34574,6 +34574,9 @@ Sgr A* Example (per derivation):
                                      t_n: float = 0.0,
                                      gamma: float = 5e-5,
                                      v_s: float = None,
+                                     kappa_UQFF: float = 1e-60,
+                                     lambda_UQFF: float = 1e-9,
+                                     T_eff_floor: float = 1e16,
                                      frame: str = 'F_U_Bi') -> Tuple[dict, str]:
         """
         Compute UQFF wormhole formation threshold and traversability.
@@ -34647,31 +34650,32 @@ Sgr A* Example (per derivation):
         rho_ratio = rho_UA / rho_SCm  # Note: INVERTED from white hole (expands)
         r_throat_UQFF = r_s * rho_ratio  # UQFF throat radius (LARGER than r_s)
         
-        # === STEP 2: Hawking temperature ===
+        # === STEP 2: Hawking temperature and UQFF effective temperature ===
         T_H = self.hbar * self.c**3 / (8 * np.pi * self.G * M_BH * self.k_B)
+        T_eff = max(T_H, T_eff_floor)  # UQFF uses effective temperature floor
         
-        # === STEP 3: Throat binding energy ===
-        E_throat = self.G * M_BH**2 / r_throat_UQFF
+        # === STEP 3: Throat binding energy (UQFF-reduced via kappa_UQFF) ===
+        E_throat = kappa_UQFF * self.G * M_BH**2 / r_throat_UQFF
         
-        # === STEP 4: Default U_m (magnetic string stabilization) ===
+        # === STEP 4: Default U_m (magnetic string stabilization, UQFF-scaled) ===
         if U_m is None:
-            # U_m = μ_j/r_throat × (1 - exp(-γt × cos(πt_n)))
-            mu_j = 1e15  # Magnetic string tension (approximate)
+            # U_m = lambda_UQFF × μ_j/r_throat × (1 - exp(-γt × cos(πt_n)))
+            mu_j = 1e20  # Magnetic string moment (A·m²)
             oscillation = np.cos(np.pi * t_n)
-            U_m = (mu_j / r_throat_UQFF) * (1 - np.exp(-gamma * t * oscillation))
+            U_m = lambda_UQFF * (mu_j / r_throat_UQFF) * (1 - np.exp(-gamma * t * oscillation))
             U_m = max(U_m, 1e-30)  # Ensure non-negative
         
-        # === STEP 5: Formation probability P_form ===
-        # P_form = f_TRZ × exp(-E_throat/(k_B × T_H))
-        exponent_form = -E_throat / (self.k_B * T_H)
+        # === STEP 5: Formation probability P_form (uses T_eff) ===
+        # P_form = f_TRZ × exp(-E_throat/(k_B × T_eff))
+        exponent_form = -E_throat / (self.k_B * T_eff)
         P_form = f_TRZ * np.exp(max(exponent_form, -700))
         
         # === STEP 6: Superfluid aether flux J_aether ===
         # J_aether = ρ_UA × v_s × (1 + f_TRZ)
         J_aether = rho_UA * v_s * (1 + f_TRZ)
         
-        # === STEP 7: Magnetic string stabilization factor ===
-        exponent_Um = U_m / (self.k_B * T_H) if T_H > 0 else 0
+        # === STEP 7: Magnetic string stabilization factor (uses T_eff) ===
+        exponent_Um = U_m / (self.k_B * T_eff) if T_eff > 0 else 0
         magnetic_factor = np.exp(min(exponent_Um, 700))
         
         # === STEP 8: Wormhole formation threshold Θ_WH ===
@@ -34689,10 +34693,10 @@ Sgr A* Example (per derivation):
         if can_form_WH and v_eff_factor > 0:
             # τ_base = 2GM/c³ ≈ r_throat_base / c
             tau_base = r_throat_UQFF / self.c
-            # τ_UQFF = τ_base / (1 - ρ/ρ) × (1 + f_TRZ) × exp(U_m/(k_B×T_H))
+            # τ_UQFF = τ_base / (1 - ρ/ρ) × (1 + f_TRZ) × exp(U_m/(k_B×T_eff))
             tau_traverse = (tau_base / v_eff_factor) * (1 + f_TRZ) * magnetic_factor
-            # Throat stability: proportional to U_m
-            stability = U_m / (self.k_B * T_H) if T_H > 0 else np.inf
+            # Throat stability: proportional to U_m / T_eff
+            stability = U_m / (self.k_B * T_eff) if T_eff > 0 else np.inf
         else:
             tau_traverse = 0.0
             stability = 0.0
@@ -34709,7 +34713,11 @@ Sgr A* Example (per derivation):
             'r_throat_UQFF': r_throat_UQFF,
             'throat_expansion': rho_ratio,
             'T_H': T_H,
+            'T_eff': T_eff,
+            'T_eff_floor': T_eff_floor,
             'E_throat': E_throat,
+            'kappa_UQFF': kappa_UQFF,
+            'lambda_UQFF': lambda_UQFF,
             'P_form': P_form,
             'J_aether': J_aether,
             'U_m': U_m,
@@ -34765,6 +34773,9 @@ Inputs:
   ρ_UA/ρ_SCm = {rho_ratio:.4f} (throat expansion factor)
   v_s = {v_s:.4e} m/s (superfluid velocity)
   t = {t:.2f} days, t_n = {t_n:.4f}
+  κ_UQFF = {kappa_UQFF:.4e} (energy reduction factor)
+  λ_UQFF = {lambda_UQFF:.4e} (magnetic scaling factor)
+  T_eff_floor = {T_eff_floor:.4e} K (effective temperature floor)
 
 STEP 1: Throat Radius (standard vs UQFF)
   r_s (standard Schwarzschild) = 2GM/c² = {r_s:.4e} m
@@ -34773,18 +34784,21 @@ STEP 1: Throat Radius (standard vs UQFF)
                 = {r_throat_UQFF:.4e} m
   UQFF EXPANDS throat by {(rho_ratio-1)*100:.1f}% (vs white hole shrinkage)
 
-STEP 2: Hawking Temperature
-  T_H = ℏc³/(8πGMk_B) = {T_H:.4e} K
+STEP 2: Hawking Temperature and Effective Temperature
+  T_H = ℏc³/(8πGMk_B) = {T_H:.4e} K (Hawking)
+  T_eff = max(T_H, T_eff_floor) = {T_eff:.4e} K (UQFF effective)
 
-STEP 3: Throat Binding Energy
-  E_throat = GM²/r_throat = {E_throat:.4e} J
+STEP 3: Throat Binding Energy (UQFF-reduced)
+  E_throat = κ_UQFF × GM²/r_throat
+           = {kappa_UQFF:.4e} × {self.G * M_BH**2 / r_throat_UQFF:.4e}
+           = {E_throat:.4e} J
 
-STEP 4: Magnetic String Energy (stabilization)
-  U_m = μ_j/r_throat × (1 - exp(-γt×cos(πt_n)))
+STEP 4: Magnetic String Energy (UQFF-scaled)
+  U_m = λ_UQFF × μ_j/r_throat × (1 - exp(-γt×cos(πt_n)))
       = {U_m:.4e} J
 
-STEP 5: Formation Probability P_form
-  P_form = f_TRZ × exp(-E_throat/(k_B × T_H))
+STEP 5: Formation Probability P_form (uses T_eff)
+  P_form = f_TRZ × exp(-E_throat/(k_B × T_eff))
          = {f_TRZ:.4f} × exp({exponent_form:.4e})
          = {P_form:.4e}
   {'→ Very small (throat deeply bound)' if P_form < 1e-10 else '→ Measurable formation probability'}
@@ -34794,11 +34808,11 @@ STEP 6: Superfluid Aether Flux J_aether
            = {rho_UA:.4e} × {v_s:.4e} × (1 + {f_TRZ:.4f})
            = {J_aether:.4e} kg/(m²·s) (mass flux through throat)
 
-STEP 7: Magnetic Stabilization Factor
-  exp(U_m/(k_B × T_H)) = exp({exponent_Um:.4e}) = {magnetic_factor:.4e}
+STEP 7: Magnetic Stabilization Factor (uses T_eff)
+  exp(U_m/(k_B × T_eff)) = exp({exponent_Um:.4e}) = {magnetic_factor:.4e}
 
 STEP 8: WORMHOLE FORMATION THRESHOLD Θ_WH
-  Θ_WH = P_form × J_aether × exp(U_m/(k_B × T_H))
+  Θ_WH = P_form × J_aether × exp(U_m/(k_B × T_eff))
        = {P_form:.4e} × {J_aether:.4e} × {magnetic_factor:.4e}
        = {Theta_WH:.4e}
   
@@ -34808,7 +34822,7 @@ STEP 8: WORMHOLE FORMATION THRESHOLD Θ_WH
 
 {'STEP 9: Traversal Properties (Wormhole forms)' if can_form_WH else 'STEP 9: No traversal (Θ_WH < 1)'}
   {'τ_traverse = r_throat/c = ' + f'{tau_traverse:.4e} s = {tau_traverse/3600:.2e} hours' if can_form_WH else 'Wormhole does not form'}
-  {'Stability factor = U_m/(k_B×T_H) = ' + f'{stability:.4e}' if can_form_WH else ''}
+  {'Stability factor = U_m/(k_B×T_eff) = ' + f'{stability:.4e}' if can_form_WH else ''}
   {'→ Higher stability = more robust throat' if can_form_WH else ''}
 
 Physical Interpretation:
@@ -35079,6 +35093,256 @@ Sgr A* Example (M ≈ 4×10⁶ M_☉):
 Q-SCOPE TESTABILITY:
   THz holes in superconducting circuits may show analogous delays,
   measurable as phase shifts or transmission time differences.
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+    
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # WORMHOLE FORMATION SIMULATION (Time-series Evolution)
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def simulate_wormhole_formation(self, M_BH: float,
+                                     t_start: float = 0.0,
+                                     t_end: float = 1e18,
+                                     dt: float = 1e16,
+                                     f_TRZ: float = None,
+                                     rho_SCm: float = None,
+                                     rho_UA: float = None,
+                                     gamma: float = 5.787e-10,
+                                     kappa_UQFF: float = 1e-60,
+                                     lambda_UQFF: float = 1e-9,
+                                     T_eff_floor: float = 1e16,
+                                     noise_level: float = 0.0,
+                                     frame: str = 'F_U_Bi') -> Tuple[dict, str]:
+        """
+        Simulate wormhole formation threshold Θ_WH over time.
+        
+        This method evolves the wormhole formation threshold over a time series,
+        tracking when formation conditions are met (Θ_WH > 1).
+        
+        The simulation computes Θ_WH at each timestep considering:
+        - Time-dependent magnetic string energy U_m(t)
+        - Oscillatory t_n parameter (normalized time)
+        - Optional noise perturbations for stochastic modeling
+        
+        PHYSICS:
+            Θ_WH = P_form × J_aether × exp(U_m/(k_B × T_eff))
+            
+            Where U_m evolves as:
+            U_m(t) = λ_UQFF × (μ_j/r_throat) × (1 - exp(-γt × cos(πt_n)))
+            
+            And t_n = t / t_end (normalized time parameter)
+        
+        Args:
+            M_BH: Black hole mass (kg) - throat source
+            t_start: Start time (seconds), default 0
+            t_end: End time (seconds), default 1e18 (~31.7 Gyr)
+            dt: Time step (seconds), default 1e16 (~317 Myr)
+            f_TRZ: Time reversal factor (default: 0.1)
+            rho_SCm: SCm vacuum density (J/m³)
+            rho_UA: UA vacuum density (J/m³)
+            gamma: Decay rate (s⁻¹), default 5.787e-10
+            kappa_UQFF: Energy reduction factor (default: 1e-60)
+            lambda_UQFF: Magnetic scaling factor (default: 1e-9)
+            T_eff_floor: Effective temperature floor (K), default 1e16
+            noise_level: Noise amplitude for stochastic simulation (default: 0)
+            frame: 'F_U_Bi' (inside→out) or 'F_U_Bi_i' (outside→in)
+        
+        Returns:
+            results: Dict with time series data and formation statistics
+            steps: Long-form summary string
+        
+        Example:
+            >>> results, steps = calc.simulate_wormhole_formation(
+            ...     M_BH=7.952e36,  # 4e6 solar masses
+            ...     t_start=0.0,
+            ...     t_end=1e18,
+            ...     dt=1e16
+            ... )
+            >>> print(f"Formation fraction: {results['formation_fraction']:.1%}")
+        """
+        # Use defaults if not specified
+        f_TRZ = f_TRZ if f_TRZ is not None else self.f_TRZ
+        v_s = self.c  # Superfluid velocity ≈ c
+        
+        # Frame-dependent constant selection
+        if rho_SCm is None or rho_UA is None:
+            if frame == 'F_U_Bi_i':
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_BH
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_BH
+                frame_name = "F_U_Bi_i (outside→in, horizon scale)"
+            else:
+                rho_SCm = rho_SCm if rho_SCm is not None else self.rho_vac_SCm_ISM
+                rho_UA = rho_UA if rho_UA is not None else self.rho_vac_UA_ISM
+                frame_name = "F_U_Bi (inside→out, ISM scale)"
+        else:
+            frame_name = "Custom (user-specified)"
+        
+        # Physical constants for the run
+        mu_j = 1e20  # Magnetic string moment (A·m²)
+        
+        # Precompute time-independent quantities
+        r_s = 2 * self.G * M_BH / self.c**2
+        rho_ratio = rho_UA / rho_SCm
+        r_throat = r_s * rho_ratio
+        
+        T_H = self.hbar * self.c**3 / (8 * np.pi * self.G * M_BH * self.k_B)
+        T_eff = max(T_H, T_eff_floor)
+        
+        E_throat = kappa_UQFF * self.G * M_BH**2 / r_throat
+        exponent_form = -E_throat / (self.k_B * T_eff)
+        P_form = f_TRZ * np.exp(max(exponent_form, -700))
+        
+        J_aether = rho_UA * v_s * (1 + f_TRZ)
+        
+        # Time series storage
+        times = []
+        Theta_WH_values = []
+        U_m_values = []
+        forms_list = []
+        
+        # Run simulation
+        t = t_start
+        num_steps = 0
+        num_forms = 0
+        
+        while t <= t_end:
+            # Normalized time for oscillation
+            t_n = t / t_end if t_end > 0 else 0.0
+            
+            # Compute U_m at this time
+            oscillation = np.cos(np.pi * t_n)
+            U_m = lambda_UQFF * (mu_j / r_throat) * (1 - np.exp(-gamma * t * oscillation))
+            U_m = max(U_m, 1e-300)
+            
+            # Magnetic factor
+            exponent_Um = U_m / (self.k_B * T_eff)
+            magnetic_factor = np.exp(min(exponent_Um, 700))
+            
+            # Formation threshold
+            Theta_WH = P_form * J_aether * magnetic_factor
+            
+            # Add noise if requested
+            if noise_level > 0:
+                noise = noise_level * np.random.normal(0, 1)
+                Theta_WH = max(0, Theta_WH + noise)
+            
+            # Record
+            times.append(t)
+            Theta_WH_values.append(Theta_WH)
+            U_m_values.append(U_m)
+            forms = Theta_WH > 1.0
+            forms_list.append(forms)
+            
+            if forms:
+                num_forms += 1
+            num_steps += 1
+            
+            t += dt
+        
+        # Statistics
+        formation_fraction = num_forms / num_steps if num_steps > 0 else 0.0
+        Theta_mean = np.mean(Theta_WH_values)
+        Theta_max = np.max(Theta_WH_values)
+        Theta_min = np.min(Theta_WH_values)
+        
+        # Find first and last formation times
+        first_form_idx = next((i for i, f in enumerate(forms_list) if f), None)
+        last_form_idx = next((i for i, f in enumerate(reversed(forms_list)) if f), None)
+        first_form_time = times[first_form_idx] if first_form_idx is not None else None
+        last_form_time = times[-(last_form_idx+1)] if last_form_idx is not None else None
+        
+        results = {
+            'M_BH': M_BH,
+            'r_s': r_s,
+            'r_throat': r_throat,
+            'T_H': T_H,
+            'T_eff': T_eff,
+            'P_form': P_form,
+            'J_aether': J_aether,
+            'kappa_UQFF': kappa_UQFF,
+            'lambda_UQFF': lambda_UQFF,
+            'T_eff_floor': T_eff_floor,
+            'times': times,
+            'Theta_WH_values': Theta_WH_values,
+            'U_m_values': U_m_values,
+            'forms_list': forms_list,
+            'num_steps': num_steps,
+            'num_forms': num_forms,
+            'formation_fraction': formation_fraction,
+            'Theta_mean': Theta_mean,
+            'Theta_max': Theta_max,
+            'Theta_min': Theta_min,
+            'first_form_time': first_form_time,
+            'last_form_time': last_form_time,
+            'f_TRZ': f_TRZ,
+            'rho_SCm': rho_SCm,
+            'rho_UA': rho_UA,
+            'gamma': gamma,
+            'frame': frame
+        }
+        
+        # Time unit conversions
+        yr_s = 3.156e7
+        Gyr_s = yr_s * 1e9
+        
+        steps = f"""UQFF Wormhole Formation Simulation:
+═══════════════════════════════════════════════════════════════════════════════
+SIMULATION PARAMETERS:
+
+System:
+  M_BH = {M_BH:.4e} kg = {M_BH/self.M_sun:.4e} M_☉
+  r_s (Schwarzschild) = {r_s:.4e} m
+  r_throat (UQFF) = {r_throat:.4e} m (expansion: {rho_ratio:.1f}×)
+  Frame = {frame_name}
+
+Time Parameters:
+  t_start = {t_start:.4e} s = {t_start/Gyr_s:.3f} Gyr
+  t_end = {t_end:.4e} s = {t_end/Gyr_s:.3f} Gyr
+  dt = {dt:.4e} s = {dt/Gyr_s:.3f} Gyr
+  Total steps = {num_steps}
+
+UQFF Scaling Factors:
+  κ_UQFF = {kappa_UQFF:.4e} (energy reduction)
+  λ_UQFF = {lambda_UQFF:.4e} (magnetic scaling)
+  T_eff_floor = {T_eff_floor:.4e} K
+
+Temperature:
+  T_H (Hawking) = {T_H:.4e} K
+  T_eff (UQFF) = {T_eff:.4e} K
+
+Time-Independent Factors:
+  P_form = {P_form:.4e}
+  J_aether = {J_aether:.4e} kg/(m²·s)
+
+═══════════════════════════════════════════════════════════════════════════════
+SIMULATION RESULTS:
+
+Formation Statistics:
+  Total timesteps: {num_steps}
+  Timesteps with Θ_WH > 1: {num_forms}
+  Formation fraction: {formation_fraction:.1%}
+
+Θ_WH Distribution:
+  Mean: {Theta_mean:.4e}
+  Max:  {Theta_max:.4e}
+  Min:  {Theta_min:.4e}
+
+Formation Times:
+  First formation: {f'{first_form_time:.4e} s = {first_form_time/Gyr_s:.3f} Gyr' if first_form_time is not None else 'Never'}
+  Last formation:  {f'{last_form_time:.4e} s = {last_form_time/Gyr_s:.3f} Gyr' if last_form_time is not None else 'Never'}
+
+═══════════════════════════════════════════════════════════════════════════════
+INTERPRETATION:
+
+{'✓ Wormhole formation IS possible over this timespan!' if num_forms > 0 else '✗ Wormhole formation NOT achieved in simulation window.'}
+
+{f'Formation occurs {formation_fraction:.1%} of the time.' if num_forms > 0 else 'Try adjusting parameters (increase λ_UQFF, T_eff_floor, or simulation duration).'}
+
+Physics Notes:
+- U_m evolves via λ_UQFF × (μ_j/r_throat) × (1 - exp(-γt×cos(πt_n)))
+- Θ_WH = P_form × J_aether × exp(U_m/(k_B × T_eff))
+- Formation when Θ_WH > 1: aether flux sustains throat stability
 ═══════════════════════════════════════════════════════════════════════════════
 """
         return results, steps
