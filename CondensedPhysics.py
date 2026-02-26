@@ -152826,6 +152826,680 @@ SOURCE32_WOLFRAM_CALCULATORS = {
 }
 
 
+# ===========================================================================================
+# SOURCE33 WOLFRAM CALCULATORS - SGR 1745-2900 Magnetar Gravity-Based (Feb 26, 2026)
+# 10 Calculator Classes - Galactic Center magnetar with B=2e10 T, 20% superconductivity correction
+# ===========================================================================================
+
+class SGR1745BaseGravityCalculator:
+    """SGR 1745-2900 base gravity with superconductivity reduction: g(r,t)=(G·M/r²)·(1+Hz·t)·(1-B/B_crit)·(1+f_TRZ), B/B_crit=0.2 gives 20% SC reduction."""
+    def __init__(self):
+        self.G = 6.6743e-11  # m³/kg/s²
+        self.M = 2.785e30  # 1.4 M_sun (kg)
+        self.r = 1e4  # 10 km radius (m)
+        self.Hz = 7.25e-18  # Hubble rate (1/s)
+        self.B = 2e10  # Magnetic field (T)
+        self.B_crit = 1e11  # Critical field (T)
+        self.f_TRZ = 0.0  # Time-reversal correction
+    def compute(self, t: float = 0.0) -> dict:
+        r = self.r
+        g_base = (self.G * self.M) / (r * r)
+        sc_factor = 1.0 - (self.B / self.B_crit)  # 0.8 (20% reduction)
+        g = g_base * (1.0 + self.Hz * t) * sc_factor * (1.0 + self.f_TRZ)
+        return {'value': g, 'M_kg': self.M, 'r_m': r, 'B_T': self.B, 'B_B_crit': self.B/self.B_crit,
+                'sc_factor': sc_factor, 'units': 'm/s²',
+                'equation': 'g(r,t) = (G·M/r²)·(1+Hz·t)·(1-B/B_crit)·(1+f_TRZ), B/B_crit=0.2'}
+
+class SGR1745MagnetarSpinEMCalculator:
+    """SGR 1745-2900 magnetar spin EM: a_EM=(q·v_spin·B/m_p)·(1+ρ_UA/ρ_SCm)·scale, DOMINANT term with B=2e10 T ultra amplification."""
+    def __init__(self):
+        self.q = 1.6e-19  # Proton charge (C)
+        self.v_spin = 1.67e4  # Equatorial spin velocity (m/s), from P=3.76s
+        self.B = 2e10  # Magnetic field (T)
+        self.m_p = 1.67e-27  # Proton mass (kg)
+        self.rho_UA = 0.0001  # Vacuum density ratio
+        self.rho_SCm = 0.99  # Superconductivity ratio
+        self.scale = 1e-12  # Macro scale
+    def compute(self, t: float = 0.0) -> dict:
+        a_EM_micro = (self.q * self.v_spin * self.B) / self.m_p
+        a_EM = a_EM_micro * (1.0 + self.rho_UA / self.rho_SCm) * self.scale
+        return {'value': a_EM, 'a_EM_micro': a_EM_micro, 'v_spin_m_s': self.v_spin, 'B_T': self.B,
+                'units': 'm/s²', 'equation': 'a_EM = (q·v_spin·B/m_p)·(1+ρ_UA/ρ_SCm)·scale, DOMINANT B=2e10 T'}
+
+class SGR1745UQFFUnificationCalculator:
+    """SGR 1745-2900 UQFF unification: Ug1+Ug4 = G·M/r²·(1+f_sc), f_sc=1.0."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M = 2.785e30  # 1.4 M_sun (kg)
+        self.r = 1e4  # 10 km (m)
+        self.f_sc = 1.0  # Superconductor factor
+    def compute(self, t: float = 0.0) -> dict:
+        Ug1 = (self.G * self.M) / (self.r * self.r)
+        Ug4 = Ug1 * self.f_sc
+        unification = Ug1 + Ug4
+        return {'value': unification, 'Ug1': Ug1, 'Ug4': Ug4, 'f_sc': self.f_sc, 'units': 'm/s²',
+                'equation': 'Ug1+Ug4 = G·M/r²·(1+f_sc)'}
+
+class SGR1745CosmologicalConstantCalculator:
+    """SGR 1745-2900 cosmological constant: a_Λ = Λc²/3, Λ=1.1e-52 m⁻²."""
+    def __init__(self):
+        self.Lambda = 1.1e-52  # m⁻²
+        self.c = 3e8  # m/s
+    def compute(self) -> dict:
+        a_Lambda = self.Lambda * (self.c ** 2) / 3.0
+        return {'value': a_Lambda, 'Lambda_m2': self.Lambda, 'units': 'm/s²',
+                'equation': 'a_Λ = Λc²/3'}
+
+class SGR1745QuantumUncertaintyCalculator:
+    """SGR 1745-2900 quantum uncertainty: (ℏ/√(Δx·Δp))·<ψ|H|ψ>·(2π/t_H), Δx=1e-10 m."""
+    def __init__(self):
+        self.hbar = 1.0546e-34  # J·s
+        self.Delta_x = 1e-10  # m
+        self.t_Hubble = 13.8e9 * 3.156e7  # s
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        Delta_p = self.hbar / self.Delta_x
+        unc = math.sqrt(self.Delta_x * Delta_p)
+        a_quantum = (self.hbar / unc) * 1.0 * (2 * math.pi / self.t_Hubble)
+        return {'value': a_quantum, 'Delta_x_m': self.Delta_x, 'Delta_p': Delta_p, 'units': 'm/s²',
+                'equation': '(ℏ/√(Δx·Δp))·<ψ|H|ψ>·(2π/t_H)'}
+
+class SGR1745CrustFluidCalculator:
+    """SGR 1745-2900 crust fluid density: ρ_crust·V·g, ρ=1e17 kg/m³ (nuclear matter), for starquake dynamics."""
+    def __init__(self):
+        self.rho_crust = 1e17  # kg/m³
+        self.V = 1e3  # Volume element (m³)
+        self.G = 6.6743e-11
+        self.M = 2.785e30  # kg
+        self.r = 1e4  # m
+    def compute(self) -> dict:
+        g_base = (self.G * self.M) / (self.r * self.r)
+        F_fluid = self.rho_crust * self.V * g_base
+        return {'value': F_fluid, 'rho_crust_kg_m3': self.rho_crust, 'g_base': g_base, 'units': 'N',
+                'equation': 'F = ρ_crust·V·g'}
+
+class SGR1745OscillatoryWaveCalculator:
+    """SGR 1745-2900 oscillatory wave: 2A·cos(kx)cos(ωt) + (2π/13.8)·A·Re[e^(i(kx-ωt))], ω=2π/P with P=3.76s."""
+    def __init__(self):
+        self.A = 1e-10  # Amplitude
+        self.k = 1e20  # Wavenumber (1/m)
+        self.x = 0.0  # m
+        self.P = 3.76  # Period (s)
+    def compute(self, t: float = 0.0) -> dict:
+        import math, cmath
+        omega = 2 * math.pi / self.P
+        cos_term = 2 * self.A * math.cos(self.k * self.x) * math.cos(omega * t)
+        exp_i = cmath.exp(complex(0, self.k * self.x - omega * t))
+        real_exp = self.A * exp_i.real
+        exp_factor = 2 * math.pi / 13.8
+        wave = cos_term + exp_factor * real_exp
+        return {'value': wave, 'omega_rad_s': omega, 'P_s': self.P, 'k': self.k, 'units': 'm/s²',
+                'equation': '2A·cos(kx)cos(ωt) + (2π/13.8)·A·Re[e^(i(kx-ωt))]'}
+
+class SGR1745DarkMatterPerturbationCalculator:
+    """SGR 1745-2900 dark matter perturbation: M_vis·(δρ/ρ + 3GM/r³), M_DM=0 (visible mass only)."""
+    def __init__(self):
+        self.M_visible = 2.785e30  # kg
+        self.M_DM = 0.0  # No dark matter
+        self.delta_rho = 1e16  # kg/m³
+        self.rho = 1e17  # kg/m³
+        self.G = 6.6743e-11
+        self.r = 1e4  # m
+    def compute(self) -> dict:
+        pert = self.delta_rho / self.rho  # ≈0.1
+        curv = 3 * self.G * self.M_visible / (self.r ** 3)
+        result = (self.M_visible + self.M_DM) * (pert + curv)
+        return {'value': result, 'delta_rho_rho': pert, 'M_DM': self.M_DM, 'units': 'kg·[mix]',
+                'equation': '(M_vis+M_DM)·(δρ/ρ + 3GM/r³)'}
+
+class SGR1745SuperconductivityCalculator:
+    """SGR 1745-2900 superconductivity correction: -g·(B/B_crit) = -g·0.2, CRITICAL 20% gravity reduction."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M = 2.785e30  # kg
+        self.r = 1e4  # m
+        self.B = 2e10  # T
+        self.B_crit = 1e11  # T
+    def compute(self) -> dict:
+        g_base = (self.G * self.M) / (self.r * self.r)
+        sc_correction = -g_base * (self.B / self.B_crit)
+        return {'value': sc_correction, 'B_B_crit': self.B/self.B_crit, 'g_base': g_base, 'units': 'm/s²',
+                'equation': '-g·(B/B_crit), B/B_crit=0.2 (CRITICAL 20% reduction)'}
+
+class SGR1745BurstEnergyCalculator:
+    """SGR 1745-2900 burst energy: a_burst ~ (E_burst·e^(-t/τ_burst)/r²)·scale, E=1e40 J, τ=0.1 s."""
+    def __init__(self):
+        self.E_burst = 1e40  # J
+        self.t_burst = 0.1  # s
+        self.r = 1e4  # m
+        self.scale_macro = 1e-12
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        energy_t = self.E_burst * math.exp(-t / self.t_burst)
+        a_burst = (energy_t / (self.r * self.r)) * self.scale_macro
+        return {'value': a_burst, 'E_burst_J': self.E_burst, 't_burst_s': self.t_burst, 'energy_t': energy_t,
+                'units': 'm/s²', 'equation': 'a_burst = (E_burst·e^(-t/τ)/r²)·scale'}
+
+SOURCE33_WOLFRAM_CALCULATORS = {
+    'SGR1745BaseGravityCalculator': SGR1745BaseGravityCalculator(),
+    'SGR1745MagnetarSpinEMCalculator': SGR1745MagnetarSpinEMCalculator(),
+    'SGR1745UQFFUnificationCalculator': SGR1745UQFFUnificationCalculator(),
+    'SGR1745CosmologicalConstantCalculator': SGR1745CosmologicalConstantCalculator(),
+    'SGR1745QuantumUncertaintyCalculator': SGR1745QuantumUncertaintyCalculator(),
+    'SGR1745CrustFluidCalculator': SGR1745CrustFluidCalculator(),
+    'SGR1745OscillatoryWaveCalculator': SGR1745OscillatoryWaveCalculator(),
+    'SGR1745DarkMatterPerturbationCalculator': SGR1745DarkMatterPerturbationCalculator(),
+    'SGR1745SuperconductivityCalculator': SGR1745SuperconductivityCalculator(),
+    'SGR1745BurstEnergyCalculator': SGR1745BurstEnergyCalculator(),
+}
+
+
+# ===========================================================================================
+# SOURCE34 WOLFRAM CALCULATORS - SGR 1745-2900 Frequency-Based UQFF (Feb 26, 2026)
+# 11 Calculator Classes - NO Standard Model gravity, ALL from frequency/resonance interactions
+# ===========================================================================================
+
+class SGR1745FreqDPMCalculator:
+    """SGR 1745-2900 DPM resonance: a_DPM=(I·A·(ω₁-ω₂)·f_DPM·E_vac_neb)/(c·V_sys), I=1e21 A foundation term."""
+    def __init__(self):
+        self.I = 1e21  # DPM current (A)
+        self.omega_1 = 1e-3  # rad/s
+        self.omega_2 = -1e-3  # rad/s
+        self.f_DPM = 1e12  # Hz (THz range)
+        self.E_vac_neb = 7.09e-36  # J/m³
+        self.c = 3e8  # m/s
+        self.r = 1e4  # m
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        return {'value': a_DPM, 'F_DPM': F_DPM, 'I_A': self.I, 'f_DPM_Hz': self.f_DPM, 'units': 'm/s²',
+                'equation': 'a_DPM = (I·A·(ω₁-ω₂)·f_DPM·E_vac_neb)/(c·V_sys)'}
+
+class SGR1745FreqTHzCalculator:
+    """SGR 1745-2900 THz hole pipeline: a_THz=(f_THz·E_vac_neb·v_exp·a_DPM)/(E_vac_ISM·c), DOMINANT term."""
+    def __init__(self):
+        self.f_THz = 1e12  # Hz
+        self.E_vac_neb = 7.09e-36  # J/m³
+        self.E_vac_ISM = 7.09e-37  # J/m³
+        self.v_exp = 1e3  # m/s
+        self.c = 3e8
+        self.I = 1e21
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.r = 1e4
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_THz = (self.f_THz * self.E_vac_neb * self.v_exp * a_DPM) / (self.E_vac_ISM * self.c)
+        return {'value': a_THz, 'a_DPM': a_DPM, 'f_THz_Hz': self.f_THz, 'units': 'm/s²',
+                'equation': 'a_THz = (f_THz·E_vac_neb·v_exp·a_DPM)/(E_vac_ISM·c), DOMINANT'}
+
+class SGR1745FreqVacDiffCalculator:
+    """SGR 1745-2900 plasmotic vacuum differential: a_vac_diff=(E_0·f_vac_diff·V_sys)/(ℏ·f_vac_diff)·a_DPM."""
+    def __init__(self):
+        self.E_0 = 6.381e-36  # J/m³
+        self.f_vac_diff = 0.143  # Hz
+        self.hbar = 1.0546e-34  # J·s
+        self.I = 1e21
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.E_vac_neb = 7.09e-36
+        self.c = 3e8
+        self.r = 1e4
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_vac_diff = (self.E_0 * self.f_vac_diff * self.V_sys) / (self.hbar * self.f_vac_diff) * a_DPM
+        return {'value': a_vac_diff, 'a_DPM': a_DPM, 'E_0': self.E_0, 'units': 'm/s²',
+                'equation': 'a_vac_diff = (E_0·f_vac_diff·V_sys)/(ℏ·f_vac_diff)·a_DPM'}
+
+class SGR1745FreqSuperCalculator:
+    """SGR 1745-2900 superconductor frequency: a_super=(ℏ·f_super·f_DPM·a_DPM)/(E_vac_ISM·c), f_super=1.411e16 Hz."""
+    def __init__(self):
+        self.hbar = 1.0546e-34  # J·s
+        self.f_super = 1.411e16  # Hz
+        self.E_vac_ISM = 7.09e-37  # J/m³
+        self.c = 3e8
+        self.I = 1e21
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.E_vac_neb = 7.09e-36
+        self.r = 1e4
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_super = (self.hbar * self.f_super * self.f_DPM * a_DPM) / (self.E_vac_ISM * self.c)
+        return {'value': a_super, 'a_DPM': a_DPM, 'f_super_Hz': self.f_super, 'units': 'm/s²',
+                'equation': 'a_super = (ℏ·f_super·f_DPM·a_DPM)/(E_vac_ISM·c)'}
+
+class SGR1745FreqAetherResCalculator:
+    """SGR 1745-2900 aether-mediated resonance: a_aether_res=f_aether·B·f_DPM·(1+f_TRZ)·a_DPM, f_aether=1e4 Hz."""
+    def __init__(self):
+        self.f_aether = 1e4  # Hz
+        self.B_proxy = 1e-8  # T (proxy)
+        self.f_TRZ = 0.1
+        self.I = 1e21
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.E_vac_neb = 7.09e-36
+        self.c = 3e8
+        self.r = 1e4
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_aether_res = self.f_aether * self.B_proxy * self.f_DPM * (1.0 + self.f_TRZ) * a_DPM
+        return {'value': a_aether_res, 'a_DPM': a_DPM, 'f_aether_Hz': self.f_aether, 'units': 'm/s²',
+                'equation': 'a_aether_res = f_aether·B·f_DPM·(1+f_TRZ)·a_DPM'}
+
+class SGR1745FreqUg4iCalculator:
+    """SGR 1745-2900 reactive U_g4i: U_g4i=f_sc·(GM/r²)·f_react·a_DPM/(E_vac_ISM·c), f_react=1e10 Hz."""
+    def __init__(self):
+        self.f_sc = 1.0
+        self.G = 6.6743e-11
+        self.M = 2.984e30  # kg
+        self.r = 1e4  # m
+        self.f_react = 1e10  # Hz
+        self.E_vac_ISM = 7.09e-37
+        self.c = 3e8
+        self.I = 1e21
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.E_vac_neb = 7.09e-36
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        Ug1 = (self.G * self.M) / (self.r * self.r)
+        U_g4i = self.f_sc * Ug1 * self.f_react * a_DPM / (self.E_vac_ISM * self.c)
+        return {'value': U_g4i, 'a_DPM': a_DPM, 'Ug1': Ug1, 'f_react_Hz': self.f_react, 'units': 'm/s²',
+                'equation': 'U_g4i = f_sc·(GM/r²)·f_react·a_DPM/(E_vac_ISM·c)'}
+
+class SGR1745FreqQuantumCalculator:
+    """SGR 1745-2900 quantum wave frequency: a_quantum=(f_quantum·E_vac_neb·a_DPM)/(E_vac_ISM·c), f_quantum=1.445e-17 Hz."""
+    def __init__(self):
+        self.f_quantum = 1.445e-17  # Hz
+        self.E_vac_neb = 7.09e-36
+        self.E_vac_ISM = 7.09e-37
+        self.c = 3e8
+        self.I = 1e21
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.r = 1e4
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_quantum = (self.f_quantum * self.E_vac_neb * a_DPM) / (self.E_vac_ISM * self.c)
+        return {'value': a_quantum, 'a_DPM': a_DPM, 'f_quantum_Hz': self.f_quantum, 'units': 'm/s²',
+                'equation': 'a_quantum = (f_quantum·E_vac_neb·a_DPM)/(E_vac_ISM·c)'}
+
+class SGR1745FreqAetherCalculator:
+    """SGR 1745-2900 aether effect frequency (replaces dark energy): a_Aether=(f_Aether·E_vac_neb·a_DPM)/(E_vac_ISM·c), f_Aether=1.576e-35 Hz."""
+    def __init__(self):
+        self.f_Aether = 1.576e-35  # Hz
+        self.E_vac_neb = 7.09e-36
+        self.E_vac_ISM = 7.09e-37
+        self.c = 3e8
+        self.I = 1e21
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.r = 1e4
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_Aether = (self.f_Aether * self.E_vac_neb * a_DPM) / (self.E_vac_ISM * self.c)
+        return {'value': a_Aether, 'a_DPM': a_DPM, 'f_Aether_Hz': self.f_Aether, 'units': 'm/s²',
+                'equation': 'a_Aether = (f_Aether·E_vac_neb·a_DPM)/(E_vac_ISM·c), replaces Λ'}
+
+class SGR1745FreqFluidCalculator:
+    """SGR 1745-2900 fluid dynamics frequency: a_fluid=(f_fluid·E_vac_neb·V_sys)/(E_vac_ISM·c), f_fluid=1.269e-14 Hz."""
+    def __init__(self):
+        self.f_fluid = 1.269e-14  # Hz
+        self.E_vac_neb = 7.09e-36
+        self.E_vac_ISM = 7.09e-37
+        self.c = 3e8
+        self.r = 1e4
+        import math
+        self.pi = math.pi
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        a_fluid = (self.f_fluid * self.E_vac_neb * self.V_sys) / (self.E_vac_ISM * self.c)
+        return {'value': a_fluid, 'f_fluid_Hz': self.f_fluid, 'V_sys': self.V_sys, 'units': 'm/s²',
+                'equation': 'a_fluid = (f_fluid·E_vac_neb·V_sys)/(E_vac_ISM·c)'}
+
+class SGR1745FreqOscCalculator:
+    """SGR 1745-2900 oscillatory component: approximated to zero per UQFF simplification."""
+    def compute(self, t: float = 0.0) -> dict:
+        return {'value': 0.0, 'units': 'm/s²', 'equation': 'a_osc ≈ 0 (UQFF simplification)'}
+
+class SGR1745FreqExpCalculator:
+    """SGR 1745-2900 cosmic expansion frequency: a_exp=(f_exp·E_vac_neb·a_DPM)/(E_vac_ISM·c), f_exp=1.373e-8 Hz."""
+    def __init__(self):
+        self.f_exp = 1.373e-8  # Hz
+        self.E_vac_neb = 7.09e-36
+        self.E_vac_ISM = 7.09e-37
+        self.c = 3e8
+        self.I = 1e21
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.r = 1e4
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_exp = (self.f_exp * self.E_vac_neb * a_DPM) / (self.E_vac_ISM * self.c)
+        return {'value': a_exp, 'a_DPM': a_DPM, 'f_exp_Hz': self.f_exp, 'units': 'm/s²',
+                'equation': 'a_exp = (f_exp·E_vac_neb·a_DPM)/(E_vac_ISM·c)'}
+
+SOURCE34_WOLFRAM_CALCULATORS = {
+    'SGR1745FreqDPMCalculator': SGR1745FreqDPMCalculator(),
+    'SGR1745FreqTHzCalculator': SGR1745FreqTHzCalculator(),
+    'SGR1745FreqVacDiffCalculator': SGR1745FreqVacDiffCalculator(),
+    'SGR1745FreqSuperCalculator': SGR1745FreqSuperCalculator(),
+    'SGR1745FreqAetherResCalculator': SGR1745FreqAetherResCalculator(),
+    'SGR1745FreqUg4iCalculator': SGR1745FreqUg4iCalculator(),
+    'SGR1745FreqQuantumCalculator': SGR1745FreqQuantumCalculator(),
+    'SGR1745FreqAetherCalculator': SGR1745FreqAetherCalculator(),
+    'SGR1745FreqFluidCalculator': SGR1745FreqFluidCalculator(),
+    'SGR1745FreqOscCalculator': SGR1745FreqOscCalculator(),
+    'SGR1745FreqExpCalculator': SGR1745FreqExpCalculator(),
+}
+
+
+# ===========================================================================================
+# SOURCE35 WOLFRAM CALCULATORS - Sagittarius A* SMBH Frequency-Based UQFF (Feb 26, 2026)
+# 11 Calculator Classes - SMBH-scaled frequency/resonance, M=4.3e6 M_sun, r_s=1.27e10 m
+# ===========================================================================================
+
+class SgrAFreqDPMCalculator:
+    """Sgr A* SMBH DPM resonance: a_DPM=(I·A·(ω₁-ω₂)·f_DPM·E_vac_neb)/(c·V_sys), I=1e24 A (1000× magnetar)."""
+    def __init__(self):
+        self.I = 1e24  # DPM current (A), 1000× magnetar
+        self.omega_1 = 1e-6  # rad/s, 1000× slower
+        self.omega_2 = -1e-6  # rad/s
+        self.f_DPM = 1e9  # Hz (1000× lower than magnetar)
+        self.E_vac_neb = 7.09e-36  # J/m³
+        self.c = 3e8  # m/s
+        self.r = 1.27e10  # Schwarzschild radius (m)
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        return {'value': a_DPM, 'F_DPM': F_DPM, 'I_A': self.I, 'f_DPM_Hz': self.f_DPM, 'r_m': self.r,
+                'units': 'm/s²', 'equation': 'a_DPM = (I·A·(ω₁-ω₂)·f_DPM·E_vac_neb)/(c·V_sys), SMBH-scaled'}
+
+class SgrAFreqTHzCalculator:
+    """Sgr A* THz hole pipeline for accretion disk: a_THz=(f_THz·E_vac_neb·v_exp·a_DPM)/(E_vac_ISM·c)."""
+    def __init__(self):
+        self.f_THz = 1e9  # Hz (SMBH-scaled)
+        self.E_vac_neb = 7.09e-36  # J/m³
+        self.E_vac_ISM = 7.09e-37  # J/m³
+        self.v_exp = 1e5  # m/s (accretion inflow/outflow)
+        self.c = 3e8
+        self.I = 1e24
+        self.omega_1 = 1e-6
+        self.omega_2 = -1e-6
+        self.f_DPM = 1e9
+        self.r = 1.27e10
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_THz = (self.f_THz * self.E_vac_neb * self.v_exp * a_DPM) / (self.E_vac_ISM * self.c)
+        return {'value': a_THz, 'a_DPM': a_DPM, 'f_THz_Hz': self.f_THz, 'v_exp_m_s': self.v_exp, 'units': 'm/s²',
+                'equation': 'a_THz = (f_THz·E_vac_neb·v_exp·a_DPM)/(E_vac_ISM·c), accretion disk'}
+
+class SgrAFreqVacDiffCalculator:
+    """Sgr A* plasmotic vacuum differential: a_vac_diff=(E_0·f_vac_diff·V_sys)/(ℏ·f_vac_diff)·a_DPM."""
+    def __init__(self):
+        self.E_0 = 6.381e-36  # J/m³
+        self.f_vac_diff = 0.143  # Hz
+        self.hbar = 1.0546e-34  # J·s
+        self.I = 1e24
+        self.omega_1 = 1e-6
+        self.omega_2 = -1e-6
+        self.f_DPM = 1e9
+        self.E_vac_neb = 7.09e-36
+        self.c = 3e8
+        self.r = 1.27e10
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_vac_diff = (self.E_0 * self.f_vac_diff * self.V_sys) / (self.hbar * self.f_vac_diff) * a_DPM
+        return {'value': a_vac_diff, 'a_DPM': a_DPM, 'V_sys': self.V_sys, 'units': 'm/s²',
+                'equation': 'a_vac_diff = (E_0·f_vac_diff·V_sys)/(ℏ·f_vac_diff)·a_DPM'}
+
+class SgrAFreqSuperCalculator:
+    """Sgr A* superconductor frequency: a_super=(ℏ·f_super·f_DPM·a_DPM)/(E_vac_ISM·c), f_super=1.411e13 Hz (scaled)."""
+    def __init__(self):
+        self.hbar = 1.0546e-34  # J·s
+        self.f_super = 1.411e13  # Hz (1000× lower than magnetar)
+        self.E_vac_ISM = 7.09e-37  # J/m³
+        self.c = 3e8
+        self.I = 1e24
+        self.omega_1 = 1e-6
+        self.omega_2 = -1e-6
+        self.f_DPM = 1e9
+        self.E_vac_neb = 7.09e-36
+        self.r = 1.27e10
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_super = (self.hbar * self.f_super * self.f_DPM * a_DPM) / (self.E_vac_ISM * self.c)
+        return {'value': a_super, 'a_DPM': a_DPM, 'f_super_Hz': self.f_super, 'units': 'm/s²',
+                'equation': 'a_super = (ℏ·f_super·f_DPM·a_DPM)/(E_vac_ISM·c), SMBH-scaled'}
+
+class SgrAFreqAetherResCalculator:
+    """Sgr A* aether-mediated resonance: a_aether_res=f_aether·B·f_DPM·(1+f_TRZ)·a_DPM, f_aether=1e3 Hz."""
+    def __init__(self):
+        self.f_aether = 1e3  # Hz (10× lower than magnetar)
+        self.B_proxy = 1e-8  # T
+        self.f_TRZ = 0.1
+        self.I = 1e24
+        self.omega_1 = 1e-6
+        self.omega_2 = -1e-6
+        self.f_DPM = 1e9
+        self.E_vac_neb = 7.09e-36
+        self.c = 3e8
+        self.r = 1.27e10
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_aether_res = self.f_aether * self.B_proxy * self.f_DPM * (1.0 + self.f_TRZ) * a_DPM
+        return {'value': a_aether_res, 'a_DPM': a_DPM, 'f_aether_Hz': self.f_aether, 'units': 'm/s²',
+                'equation': 'a_aether_res = f_aether·B·f_DPM·(1+f_TRZ)·a_DPM'}
+
+class SgrAFreqUg4iCalculator:
+    """Sgr A* reactive U_g4i: U_g4i=f_sc·(GM/r²)·f_react·a_DPM/(E_vac_ISM·c), M=4.3e6 M_sun."""
+    def __init__(self):
+        self.f_sc = 1.0
+        self.G = 6.6743e-11
+        self.M = 8.57e36  # 4.3e6 M_sun (kg)
+        self.r = 1.27e10  # m
+        self.f_react = 1e7  # Hz (1000× lower than magnetar)
+        self.E_vac_ISM = 7.09e-37
+        self.c = 3e8
+        self.I = 1e24
+        self.omega_1 = 1e-6
+        self.omega_2 = -1e-6
+        self.f_DPM = 1e9
+        self.E_vac_neb = 7.09e-36
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        Ug1 = (self.G * self.M) / (self.r * self.r)
+        U_g4i = self.f_sc * Ug1 * self.f_react * a_DPM / (self.E_vac_ISM * self.c)
+        return {'value': U_g4i, 'a_DPM': a_DPM, 'Ug1': Ug1, 'M_kg': self.M, 'units': 'm/s²',
+                'equation': 'U_g4i = f_sc·(GM/r²)·f_react·a_DPM/(E_vac_ISM·c), M=4.3e6 M_sun'}
+
+class SgrAFreqQuantumCalculator:
+    """Sgr A* quantum wave frequency: a_quantum=(f_quantum·E_vac_neb·a_DPM)/(E_vac_ISM·c), f_quantum=1.445e-17 Hz."""
+    def __init__(self):
+        self.f_quantum = 1.445e-17  # Hz (universal quantum scale)
+        self.E_vac_neb = 7.09e-36
+        self.E_vac_ISM = 7.09e-37
+        self.c = 3e8
+        self.I = 1e24
+        self.omega_1 = 1e-6
+        self.omega_2 = -1e-6
+        self.f_DPM = 1e9
+        self.r = 1.27e10
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_quantum = (self.f_quantum * self.E_vac_neb * a_DPM) / (self.E_vac_ISM * self.c)
+        return {'value': a_quantum, 'a_DPM': a_DPM, 'f_quantum_Hz': self.f_quantum, 'units': 'm/s²',
+                'equation': 'a_quantum = (f_quantum·E_vac_neb·a_DPM)/(E_vac_ISM·c)'}
+
+class SgrAFreqAetherCalculator:
+    """Sgr A* aether effect frequency (replaces dark energy): a_Aether=(f_Aether·E_vac_neb·a_DPM)/(E_vac_ISM·c)."""
+    def __init__(self):
+        self.f_Aether = 1.576e-35  # Hz (universal)
+        self.E_vac_neb = 7.09e-36
+        self.E_vac_ISM = 7.09e-37
+        self.c = 3e8
+        self.I = 1e24
+        self.omega_1 = 1e-6
+        self.omega_2 = -1e-6
+        self.f_DPM = 1e9
+        self.r = 1.27e10
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_Aether = (self.f_Aether * self.E_vac_neb * a_DPM) / (self.E_vac_ISM * self.c)
+        return {'value': a_Aether, 'a_DPM': a_DPM, 'f_Aether_Hz': self.f_Aether, 'units': 'm/s²',
+                'equation': 'a_Aether = (f_Aether·E_vac_neb·a_DPM)/(E_vac_ISM·c), replaces Λ'}
+
+class SgrAFreqFluidCalculator:
+    """Sgr A* fluid dynamics for accretion disk: a_fluid=(f_fluid·E_vac_neb·V_sys)/(E_vac_ISM·c)."""
+    def __init__(self):
+        self.f_fluid = 1.269e-14  # Hz (universal fluid scale)
+        self.E_vac_neb = 7.09e-36
+        self.E_vac_ISM = 7.09e-37
+        self.c = 3e8
+        self.r = 1.27e10
+        import math
+        self.pi = math.pi
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        a_fluid = (self.f_fluid * self.E_vac_neb * self.V_sys) / (self.E_vac_ISM * self.c)
+        return {'value': a_fluid, 'f_fluid_Hz': self.f_fluid, 'V_sys': self.V_sys, 'units': 'm/s²',
+                'equation': 'a_fluid = (f_fluid·E_vac_neb·V_sys)/(E_vac_ISM·c), accretion disk'}
+
+class SgrAFreqOscCalculator:
+    """Sgr A* oscillatory component: approximated to zero per UQFF simplification."""
+    def compute(self, t: float = 0.0) -> dict:
+        return {'value': 0.0, 'units': 'm/s²', 'equation': 'a_osc ≈ 0 (UQFF simplification)'}
+
+class SgrAFreqExpCalculator:
+    """Sgr A* cosmic expansion frequency: a_exp=(f_exp·E_vac_neb·a_DPM)/(E_vac_ISM·c)."""
+    def __init__(self):
+        self.f_exp = 1.373e-8  # Hz (universal expansion scale)
+        self.E_vac_neb = 7.09e-36
+        self.E_vac_ISM = 7.09e-37
+        self.c = 3e8
+        self.I = 1e24
+        self.omega_1 = 1e-6
+        self.omega_2 = -1e-6
+        self.f_DPM = 1e9
+        self.r = 1.27e10
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_exp = (self.f_exp * self.E_vac_neb * a_DPM) / (self.E_vac_ISM * self.c)
+        return {'value': a_exp, 'a_DPM': a_DPM, 'f_exp_Hz': self.f_exp, 'units': 'm/s²',
+                'equation': 'a_exp = (f_exp·E_vac_neb·a_DPM)/(E_vac_ISM·c)'}
+
+SOURCE35_WOLFRAM_CALCULATORS = {
+    'SgrAFreqDPMCalculator': SgrAFreqDPMCalculator(),
+    'SgrAFreqTHzCalculator': SgrAFreqTHzCalculator(),
+    'SgrAFreqVacDiffCalculator': SgrAFreqVacDiffCalculator(),
+    'SgrAFreqSuperCalculator': SgrAFreqSuperCalculator(),
+    'SgrAFreqAetherResCalculator': SgrAFreqAetherResCalculator(),
+    'SgrAFreqUg4iCalculator': SgrAFreqUg4iCalculator(),
+    'SgrAFreqQuantumCalculator': SgrAFreqQuantumCalculator(),
+    'SgrAFreqAetherCalculator': SgrAFreqAetherCalculator(),
+    'SgrAFreqFluidCalculator': SgrAFreqFluidCalculator(),
+    'SgrAFreqOscCalculator': SgrAFreqOscCalculator(),
+    'SgrAFreqExpCalculator': SgrAFreqExpCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -153308,4 +153982,42 @@ __all__.extend([
     'CrabDarkMatterPerturbationCalculator',
     'CrabSuperconductivityCalculator',
     'SOURCE32_WOLFRAM_CALCULATORS',
+    # Source33 SGR 1745-2900 Magnetar Gravity-Based (Feb 26, 2026) - 10 Calculator Classes
+    'SGR1745BaseGravityCalculator',
+    'SGR1745MagnetarSpinEMCalculator',
+    'SGR1745UQFFUnificationCalculator',
+    'SGR1745CosmologicalConstantCalculator',
+    'SGR1745QuantumUncertaintyCalculator',
+    'SGR1745CrustFluidCalculator',
+    'SGR1745OscillatoryWaveCalculator',
+    'SGR1745DarkMatterPerturbationCalculator',
+    'SGR1745SuperconductivityCalculator',
+    'SGR1745BurstEnergyCalculator',
+    'SOURCE33_WOLFRAM_CALCULATORS',
+    # Source34 SGR 1745-2900 Frequency-Based UQFF (Feb 26, 2026) - 11 Calculator Classes
+    'SGR1745FreqDPMCalculator',
+    'SGR1745FreqTHzCalculator',
+    'SGR1745FreqVacDiffCalculator',
+    'SGR1745FreqSuperCalculator',
+    'SGR1745FreqAetherResCalculator',
+    'SGR1745FreqUg4iCalculator',
+    'SGR1745FreqQuantumCalculator',
+    'SGR1745FreqAetherCalculator',
+    'SGR1745FreqFluidCalculator',
+    'SGR1745FreqOscCalculator',
+    'SGR1745FreqExpCalculator',
+    'SOURCE34_WOLFRAM_CALCULATORS',
+    # Source35 Sgr A* SMBH Frequency-Based UQFF (Feb 26, 2026) - 11 Calculator Classes
+    'SgrAFreqDPMCalculator',
+    'SgrAFreqTHzCalculator',
+    'SgrAFreqVacDiffCalculator',
+    'SgrAFreqSuperCalculator',
+    'SgrAFreqAetherResCalculator',
+    'SgrAFreqUg4iCalculator',
+    'SgrAFreqQuantumCalculator',
+    'SgrAFreqAetherCalculator',
+    'SgrAFreqFluidCalculator',
+    'SgrAFreqOscCalculator',
+    'SgrAFreqExpCalculator',
+    'SOURCE35_WOLFRAM_CALCULATORS',
 ])
