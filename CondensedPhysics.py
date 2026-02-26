@@ -154111,6 +154111,513 @@ SOURCE38_WOLFRAM_CALCULATORS = {
 }
 
 
+# =============================================================================
+# SOURCE39 WOLFRAM CALCULATORS: Crab Nebula Resonance UQFF (8 classes)
+# Pulsar wind nebula: M=4.6 M_sun, r=5.2e16 m, v_exp=1.5e6 m/s, 30.2 Hz pulsar
+# =============================================================================
+
+class CrabDPMResonanceCalculator:
+    """Crab Nebula DPM resonance (pulsar-driven): a_DPM_res=(I·A·(ω₁-ω₂)·f_DPM·E_vac)/(c·V_sys)"""
+    def __init__(self):
+        self.I = 1e21  # A (pulsar wind current proxy)
+        self.A_vort = 3.142e8  # m² (vortex area)
+        self.omega_1 = 1e-3  # rad/s
+        self.omega_2 = -1e-3  # rad/s
+        self.f_DPM = 1e12  # Hz (DPM frequency)
+        self.E_vac = 7.09e-36  # J/m³ (vacuum energy)
+        self.c = 3e8  # m/s
+        self.V_sys = 4.189e12  # m³
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM_res = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        return {'value': a_DPM_res, 'F_DPM_N': F_DPM, 'f_DPM_Hz': self.f_DPM, 'units': 'm/s²',
+                'system': 'Crab Nebula', 'equation': 'a_DPM_res = (I·A·(ω₁-ω₂)·f_DPM·E_vac)/(c·V_sys)'}
+
+class CrabTHzResonanceCalculator:
+    """Crab THz resonance (wind-driven): a_THz_res=(f_THz·E_vac·v_exp·a_DPM_res)/(E_vac_ISM·c)"""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_THz = 1e12  # Hz (THz frequency)
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+        self.v_exp = 1.5e6  # m/s (expansion velocity, 0.5% c!)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM_res = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        E_vac_ISM = self.E_vac / 10.0
+        a_THz_res = (self.f_THz * self.E_vac * self.v_exp * a_DPM_res) / (E_vac_ISM * self.c)
+        return {'value': a_THz_res, 'a_DPM_res': a_DPM_res, 'v_exp_m_s': self.v_exp, 'units': 'm/s²',
+                'equation': 'a_THz_res = (f_THz·E_vac·v_exp·a_DPM_res)/(E_vac_ISM·c)'}
+
+class CrabAetherResonanceCalculator:
+    """Crab Aether resonance: a_aether_res=f_aether·1e-8·f_DPM·(1+f_TRZ)·a_DPM_res"""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_aether = 1e4  # Hz (aether frequency)
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+        self.f_TRZ = 0.1  # time-reversal correction
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM_res = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        a_aether_res = self.f_aether * 1e-8 * self.f_DPM * (1.0 + self.f_TRZ) * a_DPM_res
+        return {'value': a_aether_res, 'a_DPM_res': a_DPM_res, 'f_aether_Hz': self.f_aether,
+                'f_TRZ': self.f_TRZ, 'units': 'm/s²',
+                'equation': 'a_aether_res = f_aether·1e-8·f_DPM·(1+f_TRZ)·a_DPM_res'}
+
+class CrabUg4iResonanceCalculator:
+    """Crab U_g4i reactive resonance: a_u_g4i_res=f_sc·Ug1·f_react·a_DPM_res/(E_vac·c)"""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_react = 1e10  # Hz (reactive frequency)
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+        self.f_sc = 1.0  # SC factor
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM_res = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        Ug1_proxy = 1.0
+        a_u_g4i_res = self.f_sc * Ug1_proxy * self.f_react * a_DPM_res / (self.E_vac * self.c)
+        return {'value': a_u_g4i_res, 'a_DPM_res': a_DPM_res, 'f_react_Hz': self.f_react, 'units': 'm/s²',
+                'equation': 'a_u_g4i_res = f_sc·Ug1·f_react·a_DPM_res/(E_vac·c)'}
+
+class CrabQuantumResonanceCalculator:
+    """Crab quantum resonance: a_quantum_res=(f_quantum·E_vac·a_DPM_res)/(E_vac_ISM·c)"""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_quantum = 1.445e-17  # Hz (extremely low quantum frequency)
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM_res = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        E_vac_ISM = self.E_vac / 10.0
+        a_quantum_res = (self.f_quantum * self.E_vac * a_DPM_res) / (E_vac_ISM * self.c)
+        return {'value': a_quantum_res, 'a_DPM_res': a_DPM_res, 'f_quantum_Hz': self.f_quantum, 'units': 'm/s²',
+                'equation': 'a_quantum_res = (f_quantum·E_vac·a_DPM_res)/(E_vac_ISM·c)'}
+
+class CrabFluidResonanceCalculator:
+    """Crab fluid resonance (filament dynamics): a_fluid_res=(f_fluid·E_vac·a_DPM_res)/(E_vac_ISM·c)"""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_fluid = 1.269e-14  # Hz (fluid frequency for filaments)
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM_res = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        E_vac_ISM = self.E_vac / 10.0
+        a_fluid_res = (self.f_fluid * self.E_vac * a_DPM_res) / (E_vac_ISM * self.c)
+        return {'value': a_fluid_res, 'a_DPM_res': a_DPM_res, 'f_fluid_Hz': self.f_fluid, 'units': 'm/s²',
+                'equation': 'a_fluid_res = (f_fluid·E_vac·a_DPM_res)/(E_vac_ISM·c)'}
+
+class CrabOscillatoryResonanceCalculator:
+    """Crab oscillatory resonance (pulsar-driven): 2A·cos(kx)·cos(ωt)+(2π/13.8)·A·Re[exp(i(kx-ωt))]"""
+    def __init__(self):
+        import math
+        self.A = 1e-10
+        self.k = 1e20
+        self.omega_osc = 30.2 * 60 * 2 * math.pi  # 30.2 Hz pulsar × 60 scaling
+        self.x = 0.0
+        self.pi = math.pi
+    def compute(self, t: float = 0.0) -> dict:
+        import cmath, math
+        cos_term = 2.0 * self.A * math.cos(self.k * self.x) * math.cos(self.omega_osc * t)
+        exp_arg = complex(0, self.k * self.x - self.omega_osc * t)
+        exp_term = self.A * cmath.exp(exp_arg)
+        real_exp = exp_term.real
+        exp_factor = (2.0 * self.pi) / 13.8
+        a_osc = cos_term + exp_factor * real_exp
+        return {'value': a_osc, 'omega_osc_rad_s': self.omega_osc, 'pulsar_Hz': 30.2, 'units': 'm/s²',
+                'equation': '2A·cos(kx)·cos(ωt) + (2π/13.8)·A·Re[exp(i(kx-ωt))]'}
+
+class CrabExpansionResonanceCalculator:
+    """Crab expansion resonance (1.5e6 m/s): a_exp_res=(f_exp·E_vac·a_DPM_res)/(E_vac_ISM·c)"""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_exp = 1.373e-8  # Hz (expansion frequency)
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM_res = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        E_vac_ISM = self.E_vac / 10.0
+        a_exp_res = (self.f_exp * self.E_vac * a_DPM_res) / (E_vac_ISM * self.c)
+        return {'value': a_exp_res, 'a_DPM_res': a_DPM_res, 'f_exp_Hz': self.f_exp, 'v_exp': 1.5e6, 'units': 'm/s²',
+                'equation': 'a_exp_res = (f_exp·E_vac·a_DPM_res)/(E_vac_ISM·c)'}
+
+SOURCE39_WOLFRAM_CALCULATORS = {
+    'CrabDPMResonanceCalculator': CrabDPMResonanceCalculator(),
+    'CrabTHzResonanceCalculator': CrabTHzResonanceCalculator(),
+    'CrabAetherResonanceCalculator': CrabAetherResonanceCalculator(),
+    'CrabUg4iResonanceCalculator': CrabUg4iResonanceCalculator(),
+    'CrabQuantumResonanceCalculator': CrabQuantumResonanceCalculator(),
+    'CrabFluidResonanceCalculator': CrabFluidResonanceCalculator(),
+    'CrabOscillatoryResonanceCalculator': CrabOscillatoryResonanceCalculator(),
+    'CrabExpansionResonanceCalculator': CrabExpansionResonanceCalculator(),
+}
+
+
+# =============================================================================
+# SOURCE40 WOLFRAM CALCULATORS: Compressed Resonance Systems 18-24 (10 classes)
+# General-purpose for Sombrero, Saturn, M16, Crab, intermediate-mass systems
+# =============================================================================
+
+class CompressedDPM24Calculator:
+    """Compressed DPM (systems 18-24): a_DPM=(I·A·(ω₁-ω₂)·f_DPM·E_vac)/(c·V_sys)"""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        return {'value': a_DPM, 'F_DPM_N': F_DPM, 'systems': '18-24', 'units': 'm/s²',
+                'equation': 'a_DPM = (I·A·(ω₁-ω₂)·f_DPM·E_vac)/(c·V_sys)'}
+
+class CompressedTHz24Calculator:
+    """Compressed THz (systems 18-24): a_THz=(f_THz·E_vac·v_exp·a_DPM)/(E_vac_ISM·c)"""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_THz = 1e12
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+        self.v_exp = 1e3  # m/s (default expansion)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        E_vac_ISM = self.E_vac / 10.0
+        a_THz = (self.f_THz * self.E_vac * self.v_exp * a_DPM) / (E_vac_ISM * self.c)
+        return {'value': a_THz, 'a_DPM': a_DPM, 'systems': '18-24', 'units': 'm/s²',
+                'equation': 'a_THz = (f_THz·E_vac·v_exp·a_DPM)/(E_vac_ISM·c)'}
+
+class CompressedVacDiff24Calculator:
+    """Compressed vacuum differential (systems 18-24): a_vac_diff=(E_0·f_vac_diff·V_sys·a_DPM)/ℏ"""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_vac_diff = 0.143
+        self.E_vac = 7.09e-36
+        self.E_0 = 6.381e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+        self.hbar = 1.0546e-34
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        a_vac_diff = (self.E_0 * self.f_vac_diff * self.V_sys * a_DPM) / self.hbar
+        return {'value': a_vac_diff, 'a_DPM': a_DPM, 'f_vac_diff': self.f_vac_diff, 'systems': '18-24', 'units': 'm/s²',
+                'equation': 'a_vac_diff = (E_0·f_vac_diff·V_sys·a_DPM)/ℏ'}
+
+class CompressedSuper24Calculator:
+    """Compressed superconductor (systems 18-24): a_super=(ℏ·f_super·f_DPM·a_DPM)/(E_vac·c)"""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_super = 1.411e16  # Hz (SC frequency)
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+        self.hbar = 1.0546e-34
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        a_super = (self.hbar * self.f_super * self.f_DPM * a_DPM) / (self.E_vac * self.c)
+        return {'value': a_super, 'a_DPM': a_DPM, 'f_super_Hz': self.f_super, 'systems': '18-24', 'units': 'm/s²',
+                'equation': 'a_super = (ℏ·f_super·f_DPM·a_DPM)/(E_vac·c)'}
+
+class ResonanceAether24Calculator:
+    """Resonance aether (systems 18-24): a_aether=f_aether·1e-8·f_DPM·(1+f_TRZ)·a_DPM"""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_aether = 1e4
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+        self.f_TRZ = 0.1
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        a_aether = self.f_aether * 1e-8 * self.f_DPM * (1.0 + self.f_TRZ) * a_DPM
+        return {'value': a_aether, 'a_DPM': a_DPM, 'f_aether_Hz': self.f_aether, 'systems': '18-24', 'units': 'm/s²',
+                'equation': 'a_aether = f_aether·1e-8·f_DPM·(1+f_TRZ)·a_DPM'}
+
+class ResonanceUg4i24Calculator:
+    """Resonance U_g4i (systems 18-24): a_u_g4i=f_sc·Ug1·f_react·a_DPM/(E_vac·c)"""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_react = 1e10
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+        self.f_sc = 1.0
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        Ug1_proxy = 1.0
+        a_u_g4i = self.f_sc * Ug1_proxy * self.f_react * a_DPM / (self.E_vac * self.c)
+        return {'value': a_u_g4i, 'a_DPM': a_DPM, 'f_react_Hz': self.f_react, 'systems': '18-24', 'units': 'm/s²',
+                'equation': 'a_u_g4i = f_sc·Ug1·f_react·a_DPM/(E_vac·c)'}
+
+class ResonanceOscillatory24Calculator:
+    """Resonance oscillatory (systems 18-24): 2A·cos(kx)·cos(ωt)+(2π/13.8)·A·Re[exp(i(kx-ωt))]"""
+    def __init__(self):
+        import math
+        self.A = 1e-10
+        self.k = 1e20
+        self.omega_osc = 1e15
+        self.x = 0.0
+        self.pi = math.pi
+    def compute(self, t: float = 0.0) -> dict:
+        import cmath, math
+        cos_term = 2.0 * self.A * math.cos(self.k * self.x) * math.cos(self.omega_osc * t)
+        exp_arg = complex(0, self.k * self.x - self.omega_osc * t)
+        exp_term = self.A * cmath.exp(exp_arg)
+        real_exp = exp_term.real
+        exp_factor = (2.0 * self.pi) / 13.8
+        a_osc = cos_term + exp_factor * real_exp
+        return {'value': a_osc, 'omega_osc_rad_s': self.omega_osc, 'systems': '18-24', 'units': 'm/s²',
+                'equation': '2A·cos(kx)·cos(ωt) + (2π/13.8)·A·Re[exp(i(kx-ωt))]'}
+
+class ResonanceQuantum24Calculator:
+    """Resonance quantum (systems 18-24): a_quantum=(f_quantum·E_vac·a_DPM)/(E_vac_ISM·c)"""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_quantum = 1.445e-17
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        E_vac_ISM = self.E_vac / 10.0
+        a_quantum = (self.f_quantum * self.E_vac * a_DPM) / (E_vac_ISM * self.c)
+        return {'value': a_quantum, 'a_DPM': a_DPM, 'f_quantum_Hz': self.f_quantum, 'systems': '18-24', 'units': 'm/s²',
+                'equation': 'a_quantum = (f_quantum·E_vac·a_DPM)/(E_vac_ISM·c)'}
+
+class ResonanceFluid24Calculator:
+    """Resonance fluid (systems 18-24): a_fluid=(f_fluid·E_vac·V)/(E_vac_ISM·c)"""
+    def __init__(self):
+        self.f_fluid = 1.269e-14
+        self.E_vac = 7.09e-36
+        self.V = 1e3
+        self.c = 3e8
+    def compute(self, t: float = 0.0) -> dict:
+        E_vac_ISM = self.E_vac / 10.0
+        a_fluid = (self.f_fluid * self.E_vac * self.V) / (E_vac_ISM * self.c)
+        return {'value': a_fluid, 'f_fluid_Hz': self.f_fluid, 'systems': '18-24', 'units': 'm/s²',
+                'equation': 'a_fluid = (f_fluid·E_vac·V)/(E_vac_ISM·c)'}
+
+class ResonanceExpansion24Calculator:
+    """Resonance expansion (systems 18-24): a_exp=(f_exp·E_vac·a_DPM)/(E_vac_ISM·c)"""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_exp = 1.373e-8
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        E_vac_ISM = self.E_vac / 10.0
+        a_exp = (self.f_exp * self.E_vac * a_DPM) / (E_vac_ISM * self.c)
+        return {'value': a_exp, 'a_DPM': a_DPM, 'f_exp_Hz': self.f_exp, 'systems': '18-24', 'units': 'm/s²',
+                'equation': 'a_exp = (f_exp·E_vac·a_DPM)/(E_vac_ISM·c)'}
+
+SOURCE40_WOLFRAM_CALCULATORS = {
+    'CompressedDPM24Calculator': CompressedDPM24Calculator(),
+    'CompressedTHz24Calculator': CompressedTHz24Calculator(),
+    'CompressedVacDiff24Calculator': CompressedVacDiff24Calculator(),
+    'CompressedSuper24Calculator': CompressedSuper24Calculator(),
+    'ResonanceAether24Calculator': ResonanceAether24Calculator(),
+    'ResonanceUg4i24Calculator': ResonanceUg4i24Calculator(),
+    'ResonanceOscillatory24Calculator': ResonanceOscillatory24Calculator(),
+    'ResonanceQuantum24Calculator': ResonanceQuantum24Calculator(),
+    'ResonanceFluid24Calculator': ResonanceFluid24Calculator(),
+    'ResonanceExpansion24Calculator': ResonanceExpansion24Calculator(),
+}
+
+
+# =============================================================================
+# SOURCE41 WOLFRAM CALCULATORS: Universe Diameter UQFF (8 classes)
+# Observable Universe: M~1e53 kg, r~4.4e26 m, H0=70 km/s/Mpc, v_exp~0.1c
+# =============================================================================
+
+class UniverseCosmologicalLambdaCalculator:
+    """Dark energy (UQFF aether): a_Λ=(Λ·c²)/3 with Λ=1.11e-52 m^-2"""
+    def __init__(self):
+        self.Lambda = 1.11e-52  # m^-2 (cosmological constant)
+        self.c = 3e8  # m/s
+    def compute(self, t: float = 0.0) -> dict:
+        a_Lambda = (self.Lambda * self.c * self.c) / 3.0
+        return {'value': a_Lambda, 'Lambda_m2': self.Lambda, 'units': 'm/s²',
+                'description': 'Dark energy drives accelerated expansion',
+                'equation': 'a_Λ = (Λ·c²)/3'}
+
+class UniverseHubbleExpansionCalculator:
+    """Cosmic expansion: a_H=H0²·r with H0=70 km/s/Mpc (2.27e-18 s^-1)"""
+    def __init__(self):
+        self.H0 = 2.27e-18  # s^-1 (70 km/s/Mpc in SI)
+        self.r = 4.4e26  # m (Universe radius ~46 billion ly)
+    def compute(self, t: float = 0.0) -> dict:
+        a_Hubble = self.H0 * self.H0 * self.r
+        return {'value': a_Hubble, 'H0_s-1': self.H0, 'H0_km_s_Mpc': 70.0, 'r_m': self.r, 'units': 'm/s²',
+                'equation': 'a_H = H0²·r'}
+
+class UniverseDarkMatterCalculator:
+    """Dark matter (27% total mass): a_DM=(f_DM·G·M)/r² with f_DM=0.27"""
+    def __init__(self):
+        self.f_DM = 0.27  # Dark matter fraction
+        self.G = 6.674e-11  # m³/kg·s²
+        self.M = 1e53  # kg (observable Universe mass)
+        self.r = 4.4e26  # m
+    def compute(self, t: float = 0.0) -> dict:
+        a_DM = (self.f_DM * self.G * self.M) / (self.r * self.r)
+        return {'value': a_DM, 'f_DM': self.f_DM, 'M_kg': self.M, 'r_m': self.r, 'units': 'm/s²',
+                'equation': 'a_DM = (f_DM·G·M)/r²'}
+
+class UniverseBaryonicMatterCalculator:
+    """Baryonic matter (~5%): a_baryon=(f_baryon·G·M)/r² with f_baryon=0.05"""
+    def __init__(self):
+        self.f_baryon = 0.05  # Baryonic matter fraction
+        self.G = 6.674e-11
+        self.M = 1e53
+        self.r = 4.4e26
+    def compute(self, t: float = 0.0) -> dict:
+        a_baryon = (self.f_baryon * self.G * self.M) / (self.r * self.r)
+        return {'value': a_baryon, 'f_baryon': self.f_baryon, 'M_kg': self.M, 'r_m': self.r, 'units': 'm/s²',
+                'equation': 'a_baryon = (f_baryon·G·M)/r²'}
+
+class UniverseQuantumIntegralCalculator:
+    """Quantum vacuum integral: a_q_int=(ℏ·c)/r³ (Casimir-like at cosmic scales)"""
+    def __init__(self):
+        self.hbar = 1.0546e-34  # J·s
+        self.c = 3e8
+        self.r = 4.4e26
+    def compute(self, t: float = 0.0) -> dict:
+        a_q_int = (self.hbar * self.c) / (self.r * self.r * self.r)
+        return {'value': a_q_int, 'hbar': self.hbar, 'r_m': self.r, 'units': 'm/s²',
+                'note': 'Extremely small at cosmic scales',
+                'equation': 'a_q_int = (ℏ·c)/r³'}
+
+class UniverseFluidDynamicsCalculator:
+    """Cosmic plasma fluid: a_fluid=rho_fluid·V_sys·g_base with rho_crit~1e-26 kg/m³"""
+    def __init__(self):
+        self.rho_fluid = 1e-26  # kg/m³ (critical density)
+        self.V_sys = 3.56e80  # m³ (observable Universe volume)
+        self.g_base = 1e-10  # m/s² (base acceleration)
+    def compute(self, t: float = 0.0) -> dict:
+        a_fluid = self.rho_fluid * self.V_sys * self.g_base
+        return {'value': a_fluid, 'rho_crit_kg_m3': self.rho_fluid, 'V_m3': self.V_sys, 'units': 'm/s²',
+                'equation': 'a_fluid = rho_fluid·V_sys·g_base'}
+
+class UniverseResonantOscillatoryCalculator:
+    """Cosmic resonance at Hubble frequency: 2A·cos(kx)·cos(ωt)+(2π/13.8)·A·Re[exp(i(kx-ωt))]"""
+    def __init__(self):
+        import math
+        self.A = 1e-10
+        self.k = 1e-26  # ~1/r_universe
+        self.H0 = 2.27e-18
+        self.omega_osc = self.H0 * 2.0 * math.pi  # Hubble angular frequency
+        self.x = 0.0
+        self.pi = math.pi
+    def compute(self, t: float = 0.0) -> dict:
+        import cmath, math
+        cos_term = 2.0 * self.A * math.cos(self.k * self.x) * math.cos(self.omega_osc * t)
+        exp_arg = complex(0, self.k * self.x - self.omega_osc * t)
+        exp_term = self.A * cmath.exp(exp_arg)
+        real_exp = exp_term.real
+        exp_factor = (2.0 * self.pi) / 13.8
+        a_res = cos_term + exp_factor * real_exp
+        return {'value': a_res, 'omega_Hubble_rad_s': self.omega_osc, 'units': 'm/s²',
+                'equation': '2A·cos(kx)·cos(ωt) + (2π/13.8)·A·Re[exp(i(kx-ωt))]'}
+
+class UniverseLorentzForceCalculator:
+    """Electromagnetic: a_L=q·|v×B| from IGM fields (~nG) and cosmic expansion (~0.1c)"""
+    def __init__(self):
+        self.q = 1.602e-19  # C (electron charge)
+        self.v = 3e7  # m/s (~0.1c cosmic expansion)
+        self.B = 1e-10  # T (~nanoGauss IGM field)
+    def compute(self, t: float = 0.0) -> dict:
+        a_Lorentz = self.q * self.v * self.B
+        return {'value': a_Lorentz, 'q_C': self.q, 'v_m_s': self.v, 'B_T': self.B, 'units': 'm/s²',
+                'note': 'Assuming perpendicular v and B',
+                'equation': 'a_L = q·|v×B|'}
+
+SOURCE41_WOLFRAM_CALCULATORS = {
+    'UniverseCosmologicalLambdaCalculator': UniverseCosmologicalLambdaCalculator(),
+    'UniverseHubbleExpansionCalculator': UniverseHubbleExpansionCalculator(),
+    'UniverseDarkMatterCalculator': UniverseDarkMatterCalculator(),
+    'UniverseBaryonicMatterCalculator': UniverseBaryonicMatterCalculator(),
+    'UniverseQuantumIntegralCalculator': UniverseQuantumIntegralCalculator(),
+    'UniverseFluidDynamicsCalculator': UniverseFluidDynamicsCalculator(),
+    'UniverseResonantOscillatoryCalculator': UniverseResonantOscillatoryCalculator(),
+    'UniverseLorentzForceCalculator': UniverseLorentzForceCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -154665,4 +155172,36 @@ __all__.extend([
     'ResonanceFluidCompCalculator',
     'ResonanceExpansionCompCalculator',
     'SOURCE38_WOLFRAM_CALCULATORS',
+    # Source39 Crab Nebula Resonance (Feb 26, 2026) - 8 Calculator Classes
+    'CrabDPMResonanceCalculator',
+    'CrabTHzResonanceCalculator',
+    'CrabAetherResonanceCalculator',
+    'CrabUg4iResonanceCalculator',
+    'CrabQuantumResonanceCalculator',
+    'CrabFluidResonanceCalculator',
+    'CrabOscillatoryResonanceCalculator',
+    'CrabExpansionResonanceCalculator',
+    'SOURCE39_WOLFRAM_CALCULATORS',
+    # Source40 Compressed Resonance Systems 18-24 (Feb 26, 2026) - 10 Calculator Classes
+    'CompressedDPM24Calculator',
+    'CompressedTHz24Calculator',
+    'CompressedVacDiff24Calculator',
+    'CompressedSuper24Calculator',
+    'ResonanceAether24Calculator',
+    'ResonanceUg4i24Calculator',
+    'ResonanceOscillatory24Calculator',
+    'ResonanceQuantum24Calculator',
+    'ResonanceFluid24Calculator',
+    'ResonanceExpansion24Calculator',
+    'SOURCE40_WOLFRAM_CALCULATORS',
+    # Source41 Universe Diameter UQFF (Feb 26, 2026) - 8 Calculator Classes
+    'UniverseCosmologicalLambdaCalculator',
+    'UniverseHubbleExpansionCalculator',
+    'UniverseDarkMatterCalculator',
+    'UniverseBaryonicMatterCalculator',
+    'UniverseQuantumIntegralCalculator',
+    'UniverseFluidDynamicsCalculator',
+    'UniverseResonantOscillatoryCalculator',
+    'UniverseLorentzForceCalculator',
+    'SOURCE41_WOLFRAM_CALCULATORS',
 ])
