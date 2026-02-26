@@ -148477,6 +148477,360 @@ SOURCE85_WOLFRAM_CALCULATORS = {
 }
 
 
+# ========================================
+# SOURCE82_VE VIRGO EXTRACTION CALCULATORS
+# ========================================
+# 10 classes from source82_wolfram_VIRGO_EXTRACTION.cpp
+# Virgo Cluster (16.5 Mpc): cluster dynamics, ICM, dark matter, M-σ relation
+
+class VirgoExtClusterMassCalculator:
+    """
+    Virgo Cluster total mass from source82_wolfram_VIRGO_EXTRACTION.cpp Class 820
+    
+    a = G × M_enclosed / r² with NFW-like profile
+    M_cluster ~ 1.2×10¹⁵ M_sun
+    """
+    
+    G = 6.6743e-11  # m³/kg·s²
+    M_sun = 1.989e30  # kg
+    
+    def compute(self, r: float, M_cluster: float = None, R_virial: float = None) -> dict:
+        if M_cluster is None:
+            M_cluster = 1.2e15 * self.M_sun
+        if R_virial is None:
+            R_virial = 2.2 * 3.086e22  # 2.2 Mpc
+        
+        x = r / R_virial
+        M_enclosed = M_cluster * (x**3) / ((1.0 + x)**2)
+        a = self.G * M_enclosed / (r**2)
+        
+        return {
+            'value': a,
+            'r_m': r,
+            'M_cluster_kg': M_cluster,
+            'R_virial_m': R_virial,
+            'x_ratio': x,
+            'M_enclosed_kg': M_enclosed,
+            'M_enclosed_Msun': M_enclosed / self.M_sun,
+            'units': 'm/s²',
+            'equation': f"a = G×M(<r)/r² = {a:.4e} m/s²"
+        }
+
+
+class VirgoExtICMCalculator:
+    """
+    Virgo ICM beta-model from source82_wolfram_VIRGO_EXTRACTION.cpp Class 821
+    
+    P_ICM = n_e(r) × k_B × T where n_e follows beta model
+    T ~ 2.3 keV, β ~ 0.5
+    """
+    
+    k_B = 1.381e-23  # J/K
+    kpc_m = 3.086e19  # m/kpc
+    
+    def compute(self, r: float, T_keV: float = 2.3, n_e0: float = 3e3,
+                r_c: float = None, beta: float = 0.5) -> dict:
+        if r_c is None:
+            r_c = 40 * self.kpc_m  # 40 kpc
+        
+        # Beta model for electron density
+        n_e = n_e0 * ((1.0 + (r/r_c)**2) ** (-1.5 * beta))
+        
+        # Temperature in Kelvin
+        T_K = T_keV * 1.16e7
+        
+        # Pressure
+        P_ICM = n_e * self.k_B * T_K
+        
+        return {
+            'value': P_ICM,
+            'r_m': r,
+            'T_keV': T_keV,
+            'T_K': T_K,
+            'n_e0_per_m3': n_e0,
+            'n_e_per_m3': n_e,
+            'r_c_m': r_c,
+            'beta': beta,
+            'units': 'Pa',
+            'equation': f"P_ICM = n_e × k_B × T = {P_ICM:.4e} Pa"
+        }
+
+
+class VirgoExtPotentialCalculator:
+    """
+    Virgo NFW gravitational potential from source82_wolfram_VIRGO_EXTRACTION.cpp Class 822
+    
+    Φ(r) = -G×M×ln(1+c×x)/(x×f(c)×R_vir)
+    """
+    
+    G = 6.6743e-11
+    M_sun = 1.989e30
+    
+    def compute(self, r: float, M_cluster: float = None, R_virial: float = None,
+                c_NFW: float = 4.0) -> dict:
+        import math
+        
+        if M_cluster is None:
+            M_cluster = 1.2e15 * self.M_sun
+        if R_virial is None:
+            R_virial = 2.2 * 3.086e22
+        
+        x = max(r / R_virial, 1e-10)
+        f_c = math.log(1 + c_NFW) - c_NFW / (1 + c_NFW)
+        
+        Phi = -self.G * M_cluster * math.log(1 + c_NFW * x) / (x * f_c * R_virial)
+        
+        return {
+            'value': Phi,
+            'r_m': r,
+            'M_cluster_kg': M_cluster,
+            'R_virial_m': R_virial,
+            'c_NFW': c_NFW,
+            'x_ratio': x,
+            'f_c': f_c,
+            'units': 'J/kg',
+            'equation': f"Φ = -G×M×ln(1+c×x)/(x×f(c)×R) = {Phi:.4e} J/kg"
+        }
+
+
+class VirgoExtDarkMatterCalculator:
+    """
+    Virgo NFW dark matter profile from source82_wolfram_VIRGO_EXTRACTION.cpp Class 823
+    
+    ρ_DM(r) = ρ_s / ((r/r_s) × (1+r/r_s)²)
+    """
+    
+    kpc_m = 3.086e19
+    M_sun = 1.989e30
+    
+    def compute(self, r: float, rho_s: float = 3e-23, r_s: float = None) -> dict:
+        if r_s is None:
+            r_s = 550 * self.kpc_m  # 550 kpc
+        
+        x = max(r / r_s, 1e-10)
+        rho_DM = rho_s / (x * (1 + x)**2)
+        
+        return {
+            'value': rho_DM,
+            'r_m': r,
+            'rho_s_kg_m3': rho_s,
+            'r_s_m': r_s,
+            'x_ratio': x,
+            'units': 'kg/m³',
+            'equation': f"ρ_DM = ρ_s/((r/r_s)×(1+r/r_s)²) = {rho_DM:.4e} kg/m³"
+        }
+
+
+class VirgoExtM87JetCalculator:
+    """
+    M87 AGN jet energy density from source82_wolfram_VIRGO_EXTRACTION.cpp Class 824
+    
+    u_jet = L_jet × γ / (4π × r² × v_jet × (Ω/4π))
+    L_jet ~ 10³⁷ W
+    """
+    
+    c = 2.998e8  # m/s
+    
+    def compute(self, r: float, L_jet: float = 1e37, theta_jet: float = 0.1,
+                v_jet: float = None) -> dict:
+        import math
+        
+        if v_jet is None:
+            v_jet = 0.99 * self.c
+        
+        Omega_jet = 2 * math.pi * (1 - math.cos(theta_jet))
+        u_jet = L_jet / (4 * math.pi * r**2 * v_jet * (Omega_jet / (4 * math.pi)))
+        
+        gamma = 1 / math.sqrt(1 - (v_jet / self.c)**2)
+        u_jet_rel = u_jet * gamma
+        
+        return {
+            'value': u_jet_rel,
+            'r_m': r,
+            'L_jet_W': L_jet,
+            'theta_jet_rad': theta_jet,
+            'v_jet_m_s': v_jet,
+            'Omega_jet_sr': Omega_jet,
+            'gamma_Lorentz': gamma,
+            'units': 'J/m³',
+            'equation': f"u_jet = L×γ/(4π×r²×v×Ω/4π) = {u_jet_rel:.4e} J/m³"
+        }
+
+
+class VirgoExtTidalStrippingCalculator:
+    """
+    Tidal stripping acceleration from source82_wolfram_VIRGO_EXTRACTION.cpp Class 825
+    
+    a_tidal = 2 × G × M(<r) × r_t / r³
+    where r_t = r × (M_gal / (3×M_enclosed))^(1/3)
+    """
+    
+    G = 6.6743e-11
+    M_sun = 1.989e30
+    
+    def compute(self, r: float, M_gal: float = None, M_cluster: float = None,
+                R_virial: float = None) -> dict:
+        if M_gal is None:
+            M_gal = 1e11 * self.M_sun
+        if M_cluster is None:
+            M_cluster = 1.2e15 * self.M_sun
+        if R_virial is None:
+            R_virial = 2.2 * 3.086e22
+        
+        x = r / R_virial
+        M_enclosed = M_cluster * (x**3) / ((1 + x)**2)
+        
+        r_tidal = r * (M_gal / (3 * M_enclosed))**(1/3)
+        a_tidal = 2 * self.G * M_enclosed * r_tidal / (r**3)
+        
+        return {
+            'value': a_tidal,
+            'r_m': r,
+            'M_gal_kg': M_gal,
+            'M_gal_Msun': M_gal / self.M_sun,
+            'M_enclosed_kg': M_enclosed,
+            'r_tidal_m': r_tidal,
+            'units': 'm/s²',
+            'equation': f"a_tidal = 2×G×M×r_t/r³ = {a_tidal:.4e} m/s²"
+        }
+
+
+class VirgoExtVirialCalculator:
+    """
+    Virial equilibrium ratio from source82_wolfram_VIRGO_EXTRACTION.cpp Class 826
+    
+    σ_obs / σ_vir where σ_vir² = G×M_vir/(3×R_vir)
+    σ_v ~ 700 km/s for Virgo
+    """
+    
+    G = 6.6743e-11
+    M_sun = 1.989e30
+    
+    def compute(self, sigma_v: float = 700e3, M_virial: float = None,
+                R_virial: float = None) -> dict:
+        import math
+        
+        if M_virial is None:
+            M_virial = 1.2e15 * self.M_sun
+        if R_virial is None:
+            R_virial = 2.2 * 3.086e22
+        
+        sigma_virial = math.sqrt(self.G * M_virial / (3 * R_virial))
+        virial_ratio = sigma_v / sigma_virial
+        
+        return {
+            'value': virial_ratio,
+            'sigma_v_m_s': sigma_v,
+            'sigma_v_km_s': sigma_v / 1e3,
+            'sigma_virial_m_s': sigma_virial,
+            'M_virial_kg': M_virial,
+            'R_virial_m': R_virial,
+            'units': 'dimensionless',
+            'equation': f"σ_obs/σ_vir = {sigma_v/1e3:.0f}/{sigma_virial/1e3:.0f} = {virial_ratio:.3f}"
+        }
+
+
+class VirgoExtXRayCalculator:
+    """
+    X-ray emissivity from source82_wolfram_VIRGO_EXTRACTION.cpp Class 827
+    
+    ε_X = n_e² × Λ(T) where Λ(T) ~ 3×10⁻²³ × √T_keV [W×m³]
+    """
+    
+    kpc_m = 3.086e19
+    
+    def compute(self, r: float, n_e0: float = 3e3, T_keV: float = 2.3,
+                r_c: float = None, beta: float = 0.5) -> dict:
+        import math
+        
+        if r_c is None:
+            r_c = 40 * self.kpc_m
+        
+        n_e = n_e0 * ((1 + (r/r_c)**2) ** (-1.5 * beta))
+        Lambda_T = 3e-23 * math.sqrt(T_keV)
+        epsilon_X = n_e**2 * Lambda_T
+        
+        return {
+            'value': epsilon_X,
+            'r_m': r,
+            'n_e_per_m3': n_e,
+            'T_keV': T_keV,
+            'Lambda_T_W_m3': Lambda_T,
+            'units': 'W/m³',
+            'equation': f"ε_X = n_e² × Λ(T) = {epsilon_X:.4e} W/m³"
+        }
+
+
+class VirgoExtVelocityDispersionCalculator:
+    """
+    Galaxy velocity dispersion profile from source82_wolfram_VIRGO_EXTRACTION.cpp Class 828
+    
+    σ(r) = σ_0 / √(1 + (r/r_σ)²)
+    σ_0 ~ 700 km/s, r_σ ~ 500 kpc
+    """
+    
+    kpc_m = 3.086e19
+    
+    def compute(self, r: float, sigma_0: float = 700e3, r_sigma: float = None) -> dict:
+        import math
+        
+        if r_sigma is None:
+            r_sigma = 500 * self.kpc_m
+        
+        sigma_r = sigma_0 / math.sqrt(1 + (r / r_sigma)**2)
+        
+        return {
+            'value': sigma_r,
+            'r_m': r,
+            'sigma_0_m_s': sigma_0,
+            'sigma_0_km_s': sigma_0 / 1e3,
+            'r_sigma_m': r_sigma,
+            'sigma_r_km_s': sigma_r / 1e3,
+            'units': 'm/s',
+            'equation': f"σ(r) = {sigma_0/1e3:.0f}/√(1+(r/r_σ)²) = {sigma_r/1e3:.1f} km/s"
+        }
+
+
+class VirgoExtMSigmaRelationCalculator:
+    """
+    SMBH M-σ relation from source82_wolfram_VIRGO_EXTRACTION.cpp Class 829
+    
+    M_BH = 1.9×10⁸ × (σ/200 km/s)^4.38 M_sun (McConnell & Ma 2013)
+    """
+    
+    M_sun = 1.989e30
+    
+    def compute(self, sigma: float, alpha: float = 4.38, M_norm: float = 1.9e8,
+                sigma_norm: float = 200e3) -> dict:
+        M_BH = M_norm * (sigma / sigma_norm)**alpha * self.M_sun
+        
+        return {
+            'value': M_BH,
+            'sigma_m_s': sigma,
+            'sigma_km_s': sigma / 1e3,
+            'alpha': alpha,
+            'M_norm_Msun': M_norm,
+            'sigma_norm_km_s': sigma_norm / 1e3,
+            'M_BH_Msun': M_BH / self.M_sun,
+            'units': 'kg',
+            'equation': f"M_BH = {M_norm:.2e}×(σ/{sigma_norm/1e3:.0f})^{alpha} = {M_BH/self.M_sun:.2e} M_sun"
+        }
+
+
+SOURCE82_VE_WOLFRAM_CALCULATORS = {
+    'VirgoExtClusterMassCalculator': VirgoExtClusterMassCalculator(),
+    'VirgoExtICMCalculator': VirgoExtICMCalculator(),
+    'VirgoExtPotentialCalculator': VirgoExtPotentialCalculator(),
+    'VirgoExtDarkMatterCalculator': VirgoExtDarkMatterCalculator(),
+    'VirgoExtM87JetCalculator': VirgoExtM87JetCalculator(),
+    'VirgoExtTidalStrippingCalculator': VirgoExtTidalStrippingCalculator(),
+    'VirgoExtVirialCalculator': VirgoExtVirialCalculator(),
+    'VirgoExtXRayCalculator': VirgoExtXRayCalculator(),
+    'VirgoExtVelocityDispersionCalculator': VirgoExtVelocityDispersionCalculator(),
+    'VirgoExtMSigmaRelationCalculator': VirgoExtMSigmaRelationCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -148717,4 +149071,17 @@ __all__.extend([
     'NGC346DarkMatterCalculator',
     'NGC346CoreEnergyCalculator',
     'SOURCE85_WOLFRAM_CALCULATORS',
+
+    # Source82_VE: Virgo Extraction (10 Calculator Classes)
+    'VirgoExtClusterMassCalculator',
+    'VirgoExtICMCalculator',
+    'VirgoExtPotentialCalculator',
+    'VirgoExtDarkMatterCalculator',
+    'VirgoExtM87JetCalculator',
+    'VirgoExtTidalStrippingCalculator',
+    'VirgoExtVirialCalculator',
+    'VirgoExtXRayCalculator',
+    'VirgoExtVelocityDispersionCalculator',
+    'VirgoExtMSigmaRelationCalculator',
+    'SOURCE82_VE_WOLFRAM_CALCULATORS',
 ])
