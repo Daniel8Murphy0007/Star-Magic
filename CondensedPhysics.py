@@ -40636,6 +40636,758 @@ Q-SCOPE TESTABILITY:
 """
         return results, steps
     
+    def simulate_UQFF_black_hole_entropy_over_mass(self,
+                                                    M_start: float = None,
+                                                    M_end: float = None,
+                                                    dM_solar: float = 1.0,
+                                                    f_TRZ: float = None,
+                                                    rho_SCm: float = None,
+                                                    rho_UA: float = None,
+                                                    mu_j: float = 1e15,
+                                                    frame: str = 'F_U_Bi_i') -> Tuple[dict, str]:
+        """
+        Simulate UQFF black hole entropy S over mass range.
+        
+        PHYSICAL BASIS:
+        ────────────────────────────────────────────────────────────────────────────
+        Bekenstein-Hawking entropy scales quadratically with mass:
+            S_BH = k_B × c³ × A / (4Gℏ) ∝ M²
+        
+        UQFF modifications:
+            S_UQFF = S_BH × (ρ_UA/ρ_SCm) × (1 - f_TRZ) × exp(-U_m/(k_B T_H))
+        
+        Mass dependence:
+            • S_BH ∝ M² (area law)
+            • T_H ∝ 1/M (Hawking temperature)
+            • Damping ∝ exp(-const/T_H) ∝ exp(-const × M)
+        
+        Result: S_UQFF grows with M but damping increases for larger BHs.
+        
+        Args:
+            M_start: Starting mass (kg) - default 1 M_sun
+            M_end: Ending mass (kg) - default 10 M_sun
+            dM_solar: Mass step in solar masses
+            f_TRZ: Time reversal coupling
+            rho_SCm: SCm vacuum density
+            rho_UA: UA vacuum density
+            mu_j: String tension
+            frame: 'F_U_Bi' or 'F_U_Bi_i'
+        
+        Returns:
+            results: Dict with mass-dependent entropy data
+            steps: Long-form derivation string
+        """
+        import numpy as np
+        
+        # Defaults
+        f_TRZ = f_TRZ if f_TRZ is not None else getattr(self, 'f_TRZ', 0.1)
+        M_sun = getattr(self, 'M_sun', 1.989e30)
+        G = getattr(self, 'G', 6.67430e-11)
+        c = getattr(self, 'c', 2.998e8)
+        k_B = getattr(self, 'k_B', 1.380649e-23)
+        hbar = getattr(self, 'hbar', 1.054571817e-34)
+        
+        if M_start is None:
+            M_start = M_sun
+        if M_end is None:
+            M_end = 10 * M_sun
+        
+        # Frame-dependent densities
+        if rho_SCm is None:
+            rho_SCm = getattr(self, 'rho_vac_SCm_BH', 7.09e-37)
+        if rho_UA is None:
+            rho_UA = getattr(self, 'rho_vac_UA_BH', 7.09e-36)
+        
+        rho_ratio = rho_UA / rho_SCm if rho_SCm > 0 else 10.0
+        
+        # Planck length
+        l_Pl_sq = G * hbar / (c**3)
+        
+        # String energy (calibrated for astrophysical BHs)
+        U_m = 1e-40  # J
+        
+        # Mass sweep
+        dM = dM_solar * M_sun
+        M_values = np.arange(M_start, M_end + dM, dM)
+        
+        S_BH_values = []
+        S_UQFF_values = []
+        T_H_values = []
+        damping_values = []
+        r_s_values = []
+        
+        for M in M_values:
+            # Schwarzschild radius and area
+            r_s = 2 * G * M / (c**2)
+            A = 4 * np.pi * r_s**2
+            
+            # Bekenstein-Hawking entropy
+            S_BH = k_B * A / (4 * l_Pl_sq)
+            
+            # Hawking temperature
+            T_H = hbar * c**3 / (8 * np.pi * G * M * k_B)
+            
+            # Aether enhancement
+            S_aether = S_BH * rho_ratio
+            
+            # TRZ reduction
+            S_TRZ = S_aether * (1 - f_TRZ)
+            
+            # String damping
+            Um_over_kBT = U_m / (k_B * T_H) if T_H > 0 else 0
+            if Um_over_kBT > 700:
+                damping = 0.0
+            else:
+                damping = np.exp(-Um_over_kBT)
+            
+            S_UQFF = S_TRZ * damping
+            
+            S_BH_values.append(S_BH / k_B)  # Dimensionless
+            S_UQFF_values.append(S_UQFF / k_B)
+            T_H_values.append(T_H)
+            damping_values.append(damping)
+            r_s_values.append(r_s)
+        
+        M_solar_values = M_values / M_sun
+        S_BH_values = np.array(S_BH_values)
+        S_UQFF_values = np.array(S_UQFF_values)
+        T_H_values = np.array(T_H_values)
+        damping_values = np.array(damping_values)
+        
+        # Statistics
+        S_ratio_avg = np.mean(S_UQFF_values / S_BH_values)
+        
+        results = {
+            'M_values': M_values.tolist(),
+            'M_solar_values': M_solar_values.tolist(),
+            'S_BH_values': S_BH_values.tolist(),
+            'S_UQFF_values': S_UQFF_values.tolist(),
+            'T_H_values': T_H_values.tolist(),
+            'damping_values': damping_values.tolist(),
+            'r_s_values': r_s_values,
+            'f_TRZ': f_TRZ,
+            'rho_ratio': rho_ratio,
+            'U_m': U_m,
+            'S_ratio_avg': S_ratio_avg,
+            'frame': frame,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+UQFF BLACK HOLE ENTROPY vs MASS SIMULATION
+Bekenstein-Hawking with Aether Modifications
+═══════════════════════════════════════════════════════════════════════════════
+
+PHYSICAL BASIS:
+───────────────────────────────────────────────────────────────────────────────
+Standard Bekenstein-Hawking: S_BH = k_B × A / (4 l_Pl²) ∝ M²
+
+UQFF formula:
+  S_UQFF = S_BH × (ρ_UA/ρ_SCm) × (1 - f_TRZ) × exp(-U_m/(k_B T_H))
+
+Mass scaling:
+  • S_BH ∝ M² (quadratic in mass)
+  • T_H ∝ 1/M (colder for larger BHs)
+  • Damping varies with mass
+
+═══════════════════════════════════════════════════════════════════════════════
+INPUT PARAMETERS:
+───────────────────────────────────────────────────────────────────────────────
+  Mass range: {M_start/M_sun:.1f} to {M_end/M_sun:.1f} M_sun (step {dM_solar:.1f} M_sun)
+  f_TRZ = {f_TRZ:.4f}
+  ρ_UA/ρ_SCm = {rho_ratio:.4f}
+  U_m = {U_m:.4e} J
+
+MASS SWEEP RESULTS:
+───────────────────────────────────────────────────────────────────────────────
+  M(M_sun)     log₁₀(S_BH/k_B)   log₁₀(S_UQFF/k_B)   T_H(K)        Damping
+"""
+        
+        # Add sample points
+        sample_indices = [0, len(M_values)//4, len(M_values)//2, 3*len(M_values)//4, -1]
+        for i in sample_indices:
+            if 0 <= i < len(M_values):
+                log_S_BH = np.log10(S_BH_values[i]) if S_BH_values[i] > 0 else 0
+                log_S_UQFF = np.log10(S_UQFF_values[i]) if S_UQFF_values[i] > 0 else 0
+                steps += f"  {M_solar_values[i]:10.2f}      {log_S_BH:12.2f}        {log_S_UQFF:12.2f}    {T_H_values[i]:.4e}    {damping_values[i]:.6f}\n"
+        
+        steps += f"""
+═══════════════════════════════════════════════════════════════════════════════
+SUMMARY:
+───────────────────────────────────────────────────────────────────────────────
+  Mass range: {M_start/M_sun:.1f} - {M_end/M_sun:.1f} M_sun
+  Average S_UQFF/S_BH ratio: {S_ratio_avg:.4f}
+  
+  Key observations:
+  • S_BH scales as M² (area law verified)
+  • T_H decreases with mass (colder large BHs)
+  • UQFF enhances entropy by ~{rho_ratio:.0f}× (aether)
+  • f_TRZ reduces by {f_TRZ*100:.0f}% (negentropy)
+  • String damping near unity for astrophysical BHs
+
+Q-SCOPE TESTABILITY:
+  • Compare stellar vs supermassive BH entropy scaling
+  • Verify S ∝ M² in analog Hawking systems
+  • Measure aether enhancement factor
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compute_black_hole_evaporation_time(self, M: float = None,
+                                             M_solar: float = 1.0,
+                                             f_TRZ: float = None,
+                                             rho_ratio: float = None) -> Tuple[dict, str]:
+        """
+        Compute black hole evaporation (Page) time with UQFF corrections.
+        
+        STANDARD EVAPORATION (Hawking 1974):
+        ────────────────────────────────────────────────────────────────────────────
+        Black holes radiate thermally at Hawking temperature T_H.
+        Power radiated: P = σ × A × T_H⁴ (Stefan-Boltzmann)
+        
+        Evaporation time:
+            t_evap = (5120 π G² M³) / (ℏ c⁴)
+                   ≈ 6.6×10⁶⁶ (M/M_sun)³ years
+        
+        Page time (half entropy radiated):
+            t_Page ≈ t_evap / 2
+        
+        Solar mass BH: t_evap ≈ 10⁶⁷ years (>> age of universe)
+        Planck mass BH: t_evap ≈ 10⁻⁴³ s
+        
+        UQFF EVAPORATION:
+        ────────────────────────────────────────────────────────────────────────────
+        Aether modifications slow evaporation:
+            t_UQFF = t_evap × (ρ_UA/ρ_SCm) × 1/(1 - f_TRZ)
+        
+        Physical: Aether increases horizon inertia, TRZ reduces emission.
+        
+        Args:
+            M: Black hole mass (kg), or use M_solar
+            M_solar: Mass in solar masses
+            f_TRZ: Time reversal coupling
+            rho_ratio: ρ_UA/ρ_SCm ratio
+        
+        Returns:
+            results: Dict with evaporation times
+            steps: Long-form derivation string
+        """
+        import numpy as np
+        
+        # Defaults
+        f_TRZ = f_TRZ if f_TRZ is not None else getattr(self, 'f_TRZ', 0.1)
+        rho_ratio = rho_ratio if rho_ratio is not None else 10.0
+        
+        M_sun_kg = getattr(self, 'M_sun', 1.989e30)
+        G = getattr(self, 'G', 6.67430e-11)
+        c = getattr(self, 'c', 2.998e8)
+        hbar = getattr(self, 'hbar', 1.054571817e-34)
+        k_B = getattr(self, 'k_B', 1.380649e-23)
+        
+        if M is None:
+            M = M_solar * M_sun_kg
+        
+        M_in_solar = M / M_sun_kg
+        
+        # Standard evaporation time
+        t_evap = (5120 * np.pi * G**2 * M**3) / (hbar * c**4)
+        t_evap_years = t_evap / (365.25 * 24 * 3600)
+        
+        # Page time
+        t_Page = t_evap / 2
+        t_Page_years = t_Page / (365.25 * 24 * 3600)
+        
+        # Schwarzschild radius and Hawking temperature
+        r_s = 2 * G * M / (c**2)
+        T_H = hbar * c**3 / (8 * np.pi * G * M * k_B)
+        
+        # UQFF modifications
+        # Aether increases effective inertia: ×ρ_ratio
+        # TRZ reduces emission rate: ×1/(1-f_TRZ)
+        uqff_factor = rho_ratio / (1 - f_TRZ) if f_TRZ < 1 else float('inf')
+        
+        t_evap_UQFF = t_evap * uqff_factor
+        t_evap_UQFF_years = t_evap_UQFF / (365.25 * 24 * 3600)
+        
+        t_Page_UQFF = t_evap_UQFF / 2
+        t_Page_UQFF_years = t_Page_UQFF / (365.25 * 24 * 3600)
+        
+        # Age of universe for comparison
+        t_universe_years = 13.8e9
+        
+        results = {
+            'M': M,
+            'M_solar': M_in_solar,
+            'r_s': r_s,
+            'T_H': T_H,
+            't_evap_standard': t_evap,
+            't_evap_years': t_evap_years,
+            't_Page_standard': t_Page,
+            't_Page_years': t_Page_years,
+            't_evap_UQFF': t_evap_UQFF,
+            't_evap_UQFF_years': t_evap_UQFF_years,
+            't_Page_UQFF': t_Page_UQFF,
+            't_Page_UQFF_years': t_Page_UQFF_years,
+            'uqff_factor': uqff_factor,
+            'f_TRZ': f_TRZ,
+            'rho_ratio': rho_ratio,
+        }
+        
+        # Format large numbers
+        def format_years(y):
+            if y > 1e60:
+                return f"10^{np.log10(y):.1f} years"
+            elif y > 1e9:
+                return f"{y/1e9:.2e} billion years"
+            elif y > 1e6:
+                return f"{y/1e6:.2e} million years"
+            else:
+                return f"{y:.2e} years"
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+UQFF BLACK HOLE EVAPORATION TIME
+Hawking Evaporation with Aether Modifications
+═══════════════════════════════════════════════════════════════════════════════
+
+PHYSICAL BASIS:
+───────────────────────────────────────────────────────────────────────────────
+Black holes radiate via Hawking effect at temperature T_H.
+Mass loss: dM/dt = -P/c² where P = σ A T_H⁴
+
+Standard evaporation time:
+  t_evap = (5120 π G² M³) / (ℏ c⁴) ∝ M³
+
+Page time: t_Page ≈ t_evap/2 (half entropy radiated, information recovery begins)
+
+UQFF modification:
+  t_UQFF = t_evap × (ρ_UA/ρ_SCm) / (1 - f_TRZ)
+
+═══════════════════════════════════════════════════════════════════════════════
+INPUT PARAMETERS:
+───────────────────────────────────────────────────────────────────────────────
+  M = {M:.4e} kg = {M_in_solar:.4e} M_sun
+  r_s = {r_s:.4e} m
+  T_H = {T_H:.4e} K
+  f_TRZ = {f_TRZ:.4f}
+  ρ_UA/ρ_SCm = {rho_ratio:.4f}
+
+STEP 1: STANDARD EVAPORATION TIME
+───────────────────────────────────────────────────────────────────────────────
+  t_evap = (5120 π G² M³) / (ℏ c⁴)
+         = {t_evap:.4e} s
+         = {format_years(t_evap_years)}
+
+  Page time: t_Page = t_evap/2 = {format_years(t_Page_years)}
+
+  Compare to age of universe: {t_universe_years:.1e} years
+  Ratio: t_evap / t_universe = {t_evap_years / t_universe_years:.2e}
+
+STEP 2: UQFF MODIFICATION FACTOR
+───────────────────────────────────────────────────────────────────────────────
+  Factor = (ρ_UA/ρ_SCm) / (1 - f_TRZ)
+         = {rho_ratio:.4f} / (1 - {f_TRZ:.4f})
+         = {rho_ratio:.4f} / {1 - f_TRZ:.4f}
+         = {uqff_factor:.4f}
+
+  Physical interpretation:
+  • Aether enhances horizon inertia (slower evaporation)
+  • f_TRZ reduces Hawking emission rate
+
+STEP 3: UQFF EVAPORATION TIME
+───────────────────────────────────────────────────────────────────────────────
+  t_UQFF = t_evap × {uqff_factor:.4f}
+         = {t_evap:.4e} × {uqff_factor:.4f}
+         = {t_evap_UQFF:.4e} s
+         = {format_years(t_evap_UQFF_years)}
+
+  Page time UQFF: {format_years(t_Page_UQFF_years)}
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: EVAPORATION TIMES
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ BLACK HOLE: M = {M_in_solar:.2e} M_sun                                │
+  │                                                                 │
+  │ STANDARD:                                                       │
+  │   t_evap = {format_years(t_evap_years):40}│
+  │   t_Page = {format_years(t_Page_years):40}│
+  │                                                                 │
+  │ UQFF:                                                           │
+  │   t_evap = {format_years(t_evap_UQFF_years):40}│
+  │   t_Page = {format_years(t_Page_UQFF_years):40}│
+  │                                                                 │
+  │ UQFF factor: {uqff_factor:.4f}×                                        │
+  └─────────────────────────────────────────────────────────────────┘
+
+Physical Significance:
+  • Solar mass BH: t_evap >> age of universe (stable)
+  • Primordial BH (M ~ 10¹² kg): t_evap ~ 10¹⁰ years (may be evaporating now)
+  • UQFF extends lifetime by {uqff_factor:.1f}× factor
+
+Q-SCOPE TESTABILITY:
+  • Search for primordial BH evaporation signatures
+  • Compare late-time Hawking spectrum to UQFF predictions
+  • Measure aether inertia in analog systems
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compute_black_hole_scrambling_time(self, M: float = None,
+                                            M_solar: float = 1.0) -> Tuple[dict, str]:
+        """
+        Compute black hole scrambling time (fast scrambler bound).
+        
+        SCRAMBLING TIME:
+        ────────────────────────────────────────────────────────────────────────────
+        The scrambling time is the minimum time for information falling into
+        a black hole to become scrambled (delocalized) across the horizon.
+        
+        Fast scrambler bound (Sekino-Susskind 2008):
+            t_scr = (r_s/c) × ln(S/k_B)
+                  = β × ln(S/k_B) / (2π)
+        
+        where β = 1/(k_B T_H) is inverse Hawking temperature.
+        
+        For Sgr A*: t_scr ~ 10⁵ s ~ 1 day
+        For stellar BH: t_scr ~ 10⁻³ s
+        
+        Physical: Fastest possible thermalization, saturates quantum bound.
+        
+        Args:
+            M: Black hole mass (kg)
+            M_solar: Mass in solar masses
+        
+        Returns:
+            results: Dict with scrambling parameters
+            steps: Long-form derivation
+        """
+        import numpy as np
+        
+        M_sun_kg = getattr(self, 'M_sun', 1.989e30)
+        G = getattr(self, 'G', 6.67430e-11)
+        c = getattr(self, 'c', 2.998e8)
+        hbar = getattr(self, 'hbar', 1.054571817e-34)
+        k_B = getattr(self, 'k_B', 1.380649e-23)
+        
+        if M is None:
+            M = M_solar * M_sun_kg
+        
+        M_in_solar = M / M_sun_kg
+        
+        # Schwarzschild radius
+        r_s = 2 * G * M / (c**2)
+        
+        # Planck length squared
+        l_Pl_sq = G * hbar / (c**3)
+        
+        # Area and entropy
+        A = 4 * np.pi * r_s**2
+        S = k_B * A / (4 * l_Pl_sq)
+        S_dimensionless = S / k_B
+        
+        # Hawking temperature
+        T_H = hbar * c**3 / (8 * np.pi * G * M * k_B)
+        
+        # Scrambling time
+        t_scr = (r_s / c) * np.log(S_dimensionless)
+        
+        # Alternative formula via inverse temperature
+        beta = 1 / (k_B * T_H)  # Inverse temp in 1/J
+        t_scr_alt = beta * hbar * np.log(S_dimensionless) / (2 * np.pi)
+        
+        # Light crossing time
+        t_cross = r_s / c
+        
+        # Compare to evaporation time
+        t_evap = (5120 * np.pi * G**2 * M**3) / (hbar * c**4)
+        
+        results = {
+            'M': M,
+            'M_solar': M_in_solar,
+            'r_s': r_s,
+            'A': A,
+            'S': S,
+            'S_dimensionless': S_dimensionless,
+            'T_H': T_H,
+            't_scr': t_scr,
+            't_cross': t_cross,
+            't_evap': t_evap,
+            'scrambling_ratio': t_scr / t_evap,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+BLACK HOLE SCRAMBLING TIME
+Fast Scrambler Bound (Sekino-Susskind)
+═══════════════════════════════════════════════════════════════════════════════
+
+PHYSICAL BASIS:
+───────────────────────────────────────────────────────────────────────────────
+Scrambling: Delocalization of information across horizon degrees of freedom.
+
+Black holes are "fast scramblers" - they scramble at the quantum speed limit:
+  t_scr = (r_s/c) × ln(S/k_B)
+
+This is the minimum time for any quantum system to thermalize.
+Saturates the Maldacena-Shenker-Stanford (MSS) chaos bound.
+
+═══════════════════════════════════════════════════════════════════════════════
+INPUT PARAMETERS:
+───────────────────────────────────────────────────────────────────────────────
+  M = {M:.4e} kg = {M_in_solar:.4e} M_sun
+  r_s = {r_s:.4e} m
+  T_H = {T_H:.4e} K
+
+STEP 1: BEKENSTEIN-HAWKING ENTROPY
+───────────────────────────────────────────────────────────────────────────────
+  A = 4π r_s² = {A:.4e} m²
+  S = k_B × A / (4 l_Pl²) = {S:.4e} J/K
+  S/k_B = {S_dimensionless:.4e}
+  ln(S/k_B) = {np.log(S_dimensionless):.2f}
+
+STEP 2: LIGHT CROSSING TIME
+───────────────────────────────────────────────────────────────────────────────
+  t_cross = r_s/c = {r_s:.4e} / {c:.4e}
+          = {t_cross:.4e} s
+
+STEP 3: SCRAMBLING TIME
+───────────────────────────────────────────────────────────────────────────────
+  t_scr = t_cross × ln(S/k_B)
+        = {t_cross:.4e} × {np.log(S_dimensionless):.2f}
+        = {t_scr:.4e} s
+        = {t_scr/60:.2e} minutes
+        = {t_scr/3600:.2e} hours
+
+STEP 4: COMPARISON TO OTHER TIMESCALES
+───────────────────────────────────────────────────────────────────────────────
+  t_cross (light crossing): {t_cross:.4e} s
+  t_scr (scrambling):       {t_scr:.4e} s
+  t_evap (evaporation):     {t_evap:.4e} s
+
+  Ratios:
+    t_scr / t_cross = ln(S/k_B) = {np.log(S_dimensionless):.2f}
+    t_scr / t_evap = {t_scr/t_evap:.4e}
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: SCRAMBLING TIME
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ BLACK HOLE: M = {M_in_solar:.2e} M_sun                                │
+  │                                                                 │
+  │ Scrambling time: t_scr = {t_scr:.4e} s                          │
+  │                        = {t_scr/3600:.2e} hours                        │
+  │                                                                 │
+  │ Light crossing: t_cross = {t_cross:.4e} s                       │
+  │                                                                 │
+  │ Enhancement: t_scr/t_cross = {np.log(S_dimensionless):.0f} (= ln S)              │
+  └─────────────────────────────────────────────────────────────────┘
+
+Physical Significance:
+  • Infalling information scrambled in t_scr
+  • Earlier recovery impossible (causality)
+  • Fast scrambler bound saturated
+  • Relevant for information paradox resolution
+
+Examples:
+  • Stellar BH (10 M_sun): t_scr ~ 10⁻² s
+  • Sgr A* (4×10⁶ M_sun): t_scr ~ 10⁵ s ~ 1 day
+  • M87* (6.5×10⁹ M_sun): t_scr ~ 10⁸ s ~ years
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compute_black_hole_information_bits(self, M: float = None,
+                                             M_solar: float = 1.0,
+                                             f_TRZ: float = None,
+                                             rho_ratio: float = None) -> Tuple[dict, str]:
+        """
+        Compute black hole information content in bits.
+        
+        INFORMATION CONTENT:
+        ────────────────────────────────────────────────────────────────────────────
+        Entropy converts to information via:
+            I = S / (k_B × ln 2) bits
+        
+        Bekenstein bound: Maximum information in region of radius R, mass M:
+            I_max ≤ 2π R E / (ℏ c ln 2)
+        
+        For BH (saturates bound):
+            I_BH = S_BH / (k_B ln 2) = A / (4 l_Pl² ln 2)
+        
+        UQFF Information:
+            I_UQFF = S_UQFF / (k_B ln 2)
+        
+        Physical: BH is maximally efficient information storage.
+        
+        Args:
+            M: Black hole mass (kg)
+            M_solar: Mass in solar masses
+            f_TRZ: Time reversal factor
+            rho_ratio: Aether density ratio
+        
+        Returns:
+            results: Dict with information metrics
+            steps: Long-form derivation
+        """
+        import numpy as np
+        
+        f_TRZ = f_TRZ if f_TRZ is not None else getattr(self, 'f_TRZ', 0.1)
+        rho_ratio = rho_ratio if rho_ratio is not None else 10.0
+        
+        M_sun_kg = getattr(self, 'M_sun', 1.989e30)
+        G = getattr(self, 'G', 6.67430e-11)
+        c = getattr(self, 'c', 2.998e8)
+        hbar = getattr(self, 'hbar', 1.054571817e-34)
+        k_B = getattr(self, 'k_B', 1.380649e-23)
+        
+        if M is None:
+            M = M_solar * M_sun_kg
+        
+        M_in_solar = M / M_sun_kg
+        
+        # Schwarzschild radius
+        r_s = 2 * G * M / (c**2)
+        
+        # Planck length
+        l_Pl_sq = G * hbar / (c**3)
+        
+        # Area
+        A = 4 * np.pi * r_s**2
+        
+        # Bekenstein-Hawking entropy
+        S_BH = k_B * A / (4 * l_Pl_sq)
+        
+        # Information in bits
+        I_BH = S_BH / (k_B * np.log(2))
+        
+        # UQFF entropy and information
+        U_m = 1e-40  # String energy
+        T_H = hbar * c**3 / (8 * np.pi * G * M * k_B)
+        Um_over_kBT = U_m / (k_B * T_H) if T_H > 0 else 0
+        damping = np.exp(-Um_over_kBT) if Um_over_kBT < 700 else 0
+        
+        S_UQFF = S_BH * rho_ratio * (1 - f_TRZ) * damping
+        I_UQFF = S_UQFF / (k_B * np.log(2))
+        
+        # Information density
+        volume = (4/3) * np.pi * r_s**3
+        I_density = I_BH / volume  # bits/m³
+        I_density_surface = I_BH / A  # bits/m² (holographic)
+        
+        # Comparison: Human brain ~10¹⁵ bits, Internet ~10²¹ bits
+        human_brain_bits = 1e15
+        internet_bits = 1e21
+        observable_universe_bits = 1e120  # Lloyd estimate
+        
+        results = {
+            'M': M,
+            'M_solar': M_in_solar,
+            'r_s': r_s,
+            'A': A,
+            'S_BH': S_BH,
+            'I_BH': I_BH,
+            'S_UQFF': S_UQFF,
+            'I_UQFF': I_UQFF,
+            'I_density_volume': I_density,
+            'I_density_surface': I_density_surface,
+            'f_TRZ': f_TRZ,
+            'rho_ratio': rho_ratio,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+BLACK HOLE INFORMATION CONTENT
+Holographic Information Storage
+═══════════════════════════════════════════════════════════════════════════════
+
+PHYSICAL BASIS:
+───────────────────────────────────────────────────────────────────────────────
+Entropy ↔ Information conversion:
+  I = S / (k_B ln 2) bits
+
+Bekenstein bound: Maximum information in spherical region:
+  I_max ≤ 2π R E / (ℏ c ln 2)
+
+Black holes saturate this bound - maximally efficient storage.
+
+UQFF Information:
+  I_UQFF = S_UQFF / (k_B ln 2)
+         = I_BH × (ρ_ratio) × (1-f_TRZ) × damping
+
+═══════════════════════════════════════════════════════════════════════════════
+INPUT PARAMETERS:
+───────────────────────────────────────────────────────────────────────────────
+  M = {M:.4e} kg = {M_in_solar:.4e} M_sun
+  r_s = {r_s:.4e} m
+  A = {A:.4e} m²
+  f_TRZ = {f_TRZ:.4f}
+  ρ_ratio = {rho_ratio:.4f}
+
+STEP 1: BEKENSTEIN-HAWKING INFORMATION
+───────────────────────────────────────────────────────────────────────────────
+  S_BH = k_B × A / (4 l_Pl²) = {S_BH:.4e} J/K
+  
+  I_BH = S_BH / (k_B ln 2)
+       = {S_BH:.4e} / ({k_B:.4e} × {np.log(2):.4f})
+       = {I_BH:.4e} bits
+       = 10^{np.log10(I_BH):.2f} bits
+
+STEP 2: UQFF INFORMATION
+───────────────────────────────────────────────────────────────────────────────
+  S_UQFF = {S_UQFF:.4e} J/K
+  
+  I_UQFF = {I_UQFF:.4e} bits
+         = 10^{np.log10(I_UQFF) if I_UQFF > 0 else 0:.2f} bits
+
+STEP 3: INFORMATION DENSITY
+───────────────────────────────────────────────────────────────────────────────
+  Volume: V = (4/3)π r_s³ = {volume:.4e} m³
+  
+  Volume density: I/V = {I_density:.4e} bits/m³
+  Surface density: I/A = {I_density_surface:.4e} bits/m² (holographic)
+
+  Holographic principle: I ∝ A, not V
+
+STEP 4: COMPARISONS
+───────────────────────────────────────────────────────────────────────────────
+  Human brain:        ~10¹⁵ bits
+  Global internet:    ~10²¹ bits
+  This black hole:    10^{np.log10(I_BH):.0f} bits
+  Observable universe: ~10¹²⁰ bits (Lloyd)
+
+  This BH stores {I_BH/human_brain_bits:.2e} × human brains worth of information
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: INFORMATION CONTENT
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ BLACK HOLE: M = {M_in_solar:.2e} M_sun                                │
+  │                                                                 │
+  │ STANDARD:                                                       │
+  │   I_BH = 10^{np.log10(I_BH):.2f} bits                                      │
+  │                                                                 │
+  │ UQFF:                                                           │
+  │   I_UQFF = 10^{np.log10(I_UQFF) if I_UQFF > 0 else 0:.2f} bits                                    │
+  │                                                                 │
+  │ Holographic density: {I_density_surface:.2e} bits/m²               │
+  │ (Information stored on surface, not volume)                     │
+  └─────────────────────────────────────────────────────────────────┘
+
+Physical Significance:
+  • BH = most dense information storage possible
+  • Holographic: I ∝ Area (not Volume)
+  • UQFF enhances information capacity via aether
+  • Information paradox: Where does it go?
+
+Q-SCOPE TESTABILITY:
+  • Measure horizon information in analog systems
+  • Verify area scaling (holographic)
+  • Detect UQFF enhancement factor
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
     # ═══════════════════════════════════════════════════════════════════════════════
     # UQFF BLACK HOLE MERGER DYNAMICS (Aether-Mediated Inspiral & Coalescence)
     # ═══════════════════════════════════════════════════════════════════════════════
