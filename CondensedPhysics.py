@@ -144003,6 +144003,1487 @@ SOURCE18_WOLFRAM_CALCULATORS = {
     'PillarGravityCalculator': PillarGravityCalculator(),
 }
 
+
+# ========================================
+# SOURCE78 M81/M82 GALAXY PAIR CALCULATORS
+# ========================================
+# Classes 730-739 from source78_wolfram.cpp
+# M81 grand design spiral + M82 starburst galaxy interaction
+
+class M81SpiralStructureCalculator:
+    """
+    M81 spiral density wave from source78_wolfram.cpp Class 730
+    
+    Logarithmic spiral with m=2 mode, pitch angle ~15°
+    Σ(r,φ,t) = Σ₀(r)·[1 + A·cos(ψ)] where ψ = m·φ - k·r - Ω_p·t
+    """
+    
+    def compute(self, r_kpc: float, phi_rad: float, t_Gyr: float = 0.0,
+                A: float = 0.2, m: float = 2.0, pitch_deg: float = 15.0,
+                Omega_p: float = 30.0) -> dict:
+        import math
+        
+        pitch_rad = pitch_deg * math.pi / 180.0
+        k = m / (r_kpc * math.tan(pitch_rad))  # kpc⁻¹
+        psi = m * phi_rad - k * r_kpc - Omega_p * t_Gyr
+        
+        Sigma_0 = 150.0 * math.exp(-r_kpc / 4.0)  # M_sun/pc²
+        Sigma = Sigma_0 * (1.0 + A * math.cos(psi))
+        
+        v_circ = 200.0  # km/s
+        r_CR = v_circ / Omega_p  # Corotation radius
+        
+        return {
+            'value': Sigma,
+            'r_kpc': r_kpc,
+            'phi_rad': phi_rad,
+            'Sigma_0': Sigma_0,
+            'psi': psi,
+            'r_corotation_kpc': r_CR,
+            'units': 'M_sun/pc²',
+            'equation': f"Σ = {Sigma_0:.1f}×(1+{A}×cos({psi:.2f})) = {Sigma:.2f} M☉/pc²"
+        }
+
+
+class M82StarburstCalculator:
+    """
+    M82 nuclear starburst from source78_wolfram.cpp Class 731
+    
+    SFR ~ 10 M_sun/yr concentrated in central ~500 pc
+    L_IR ~ 4×10¹⁰ L_sun
+    """
+    
+    def compute(self, r_pc: float, SFR_central: float = 10.0,
+                r_starburst_pc: float = 500.0) -> dict:
+        import math
+        
+        Sigma_SFR_0 = SFR_central / (math.pi * r_starburst_pc**2)  # M_sun/yr/pc²
+        Sigma_SFR = Sigma_SFR_0 * math.exp(-r_pc**2 / r_starburst_pc**2)
+        
+        L_IR = 4.0 * SFR_central * 1e10  # L_sun
+        T_dust = 50.0  # K
+        h_gas = 100.0  # pc
+        rho_SFR = Sigma_SFR / h_gas
+        
+        return {
+            'value': Sigma_SFR,
+            'r_pc': r_pc,
+            'L_IR_Lsun': L_IR,
+            'T_dust_K': T_dust,
+            'rho_SFR': rho_SFR,
+            'units': 'M_sun/yr/pc²',
+            'equation': f"Σ_SFR = {Sigma_SFR_0:.2e}×exp(-r²/{r_starburst_pc}²) = {Sigma_SFR:.4e} M☉/yr/pc²"
+        }
+
+
+class M82SuperwindCalculator:
+    """
+    M82 bipolar superwind from source78_wolfram.cpp Class 732
+    
+    v_wind ~ 500-1000 km/s, Ṁ_wind ~ 3×SFR
+    Hα filaments extend to ~10 kpc
+    """
+    
+    M_sun_g = 1.989e33
+    kpc_cm = 3.086e21
+    yr_s = 3.156e7
+    k_B = 1.381e-16
+    
+    def compute(self, z_kpc: float, v_wind: float = 750.0,
+                M_dot_wind: float = 30.0, T_wind: float = 1e7) -> dict:
+        import math
+        
+        r_0 = 0.5  # kpc
+        r = math.sqrt(r_0**2 + z_kpc**2)
+        
+        M_dot_wind_g_s = M_dot_wind * self.M_sun_g / self.yr_s
+        rho_0 = M_dot_wind_g_s / (4.0 * math.pi * r_0**2 * self.kpc_cm**2 * v_wind * 1e5)
+        rho_wind = rho_0 * (r_0 / r)**2
+        
+        E_dot_kin = 0.5 * M_dot_wind_g_s * (v_wind * 1e5)**2  # erg/s
+        
+        mu, m_H = 0.6, 1.67e-24
+        c_s = math.sqrt(5.0/3.0 * self.k_B * T_wind / (mu * m_H)) / 1e5  # km/s
+        
+        return {
+            'value': rho_wind,
+            'z_kpc': z_kpc,
+            'E_dot_kin_erg_s': E_dot_kin,
+            'c_s_km_s': c_s,
+            'units': 'g/cm³',
+            'equation': f"ρ_wind = ρ₀×(r₀/r)² = {rho_wind:.4e} g/cm³"
+        }
+
+
+class M81M82TidalInteractionCalculator:
+    """
+    M81-M82 tidal interaction from source78_wolfram.cpp Class 733
+    
+    Separation ~150 kpc, closest approach ~300 Myr ago
+    HI tidal features extend to ~200 kpc
+    """
+    
+    G = 4.3e-6  # kpc·(km/s)²/M_sun
+    
+    def compute(self, r_kpc: float, phi_rad: float,
+                M_M81: float = 7e10, M_M82: float = 3e10,
+                d_kpc: float = 150.0, phi_M82_rad: float = 0.0) -> dict:
+        import math
+        
+        x_M82 = d_kpc * math.cos(phi_M82_rad)
+        y_M82 = d_kpc * math.sin(phi_M82_rad)
+        x = r_kpc * math.cos(phi_rad)
+        y = r_kpc * math.sin(phi_rad)
+        
+        r_sep = math.sqrt((x - x_M82)**2 + (y - y_M82)**2)
+        F_tid = self.G * M_M82 / r_sep**2
+        r_tid = d_kpc * (M_M81 / (3.0 * M_M82))**(1.0/3.0)
+        Delta_v = math.sqrt(self.G * (M_M81 + M_M82) / d_kpc)
+        
+        return {
+            'value': F_tid,
+            'r_kpc': r_kpc,
+            'r_tidal_kpc': r_tid,
+            'Delta_v_km_s': Delta_v,
+            'separation_kpc': r_sep,
+            'units': '(km/s)²/kpc',
+            'equation': f"F_tid = G×M_M82/r² = {F_tid:.4e} (km/s)²/kpc"
+        }
+
+
+class M81DarkMatterHaloCalculator:
+    """
+    M81 NFW dark matter halo from source78_wolfram.cpp Class 734
+    
+    M_200 ~ 10¹² M_sun, concentration c ~ 12
+    """
+    
+    G = 4.3e-6
+    
+    def compute(self, r_kpc: float, M_200: float = 1e12, c: float = 12.0) -> dict:
+        import math
+        
+        H_0 = 70.0
+        rho_crit = 3.0 * H_0**2 / (8.0 * math.pi * self.G * 1e6)
+        r_200 = (3.0 * M_200 / (4.0 * math.pi * 200.0 * rho_crit))**(1.0/3.0)
+        r_s = r_200 / c
+        
+        f_c = math.log(1.0 + c) - c / (1.0 + c)
+        rho_s = M_200 / (4.0 * math.pi * r_s**3 * f_c)
+        
+        x = r_kpc / r_s
+        rho_DM = rho_s / (x * (1.0 + x)**2)
+        M_DM = 4.0 * math.pi * rho_s * r_s**3 * (math.log(1.0 + x) - x/(1.0 + x))
+        v_DM = math.sqrt(self.G * M_DM / r_kpc)
+        
+        return {
+            'value': rho_DM,
+            'r_kpc': r_kpc,
+            'M_DM_enclosed_Msun': M_DM,
+            'v_circular_km_s': v_DM,
+            'r_s_kpc': r_s,
+            'units': 'M_sun/kpc³',
+            'equation': f"ρ_NFW = ρ_s/(x×(1+x)²) = {rho_DM:.4e} M☉/kpc³"
+        }
+
+
+class M82MolecularOutflowCalculator:
+    """
+    M82 molecular outflow from source78_wolfram.cpp Class 735
+    
+    Ṁ_mol ~ 10 M_sun/yr, v_out ~ 200 km/s
+    ALMA CO observations show molecular gas to z ~ 1 kpc
+    """
+    
+    M_sun_g = 1.989e33
+    yr_s = 3.156e7
+    
+    def compute(self, z_kpc: float, M_dot_mol: float = 10.0,
+                v_out: float = 200.0) -> dict:
+        import math
+        
+        z_0 = 1.0  # kpc
+        Sigma_0 = 50.0  # M_sun/pc²
+        Sigma_mol = Sigma_0 * math.exp(-abs(z_kpc) / z_0)
+        
+        E_dot_kin = 0.5 * M_dot_mol * self.M_sun_g / self.yr_s * (v_out * 1e5)**2
+        
+        M_mol_total = 5e8  # M_sun
+        t_dep_Myr = M_mol_total / M_dot_mol / 1e6
+        
+        return {
+            'value': Sigma_mol,
+            'z_kpc': z_kpc,
+            'E_dot_kin_erg_s': E_dot_kin,
+            't_depletion_Myr': t_dep_Myr,
+            'units': 'M_sun/pc²',
+            'equation': f"Σ_mol = {Sigma_0}×exp(-|z|/{z_0}) = {Sigma_mol:.2f} M☉/pc²"
+        }
+
+
+class M81AGNActivityCalculator:
+    """
+    M81 LINER AGN from source78_wolfram.cpp Class 736
+    
+    M_BH ~ 10⁷ M_sun, L_bol/L_Edd ~ 10⁻⁵
+    """
+    
+    G = 6.674e-8
+    c = 2.998e10
+    M_sun_g = 1.989e33
+    
+    def compute(self, r_pc: float, M_BH: float = 7e7,
+                L_Edd_ratio: float = 1e-5) -> dict:
+        import math
+        
+        R_S = 2.0 * self.G * M_BH * self.M_sun_g / self.c**2  # cm
+        L_Edd = 1.26e38 * M_BH  # erg/s
+        L_bol = L_Edd_ratio * L_Edd
+        
+        c_s = 1e6  # cm/s
+        r_Bondi = self.G * M_BH * self.M_sun_g / c_s**2  # cm
+        r_Bondi_pc = r_Bondi / 3.086e18
+        
+        return {
+            'value': L_bol,
+            'r_pc': r_pc,
+            'R_Schwarzschild_cm': R_S,
+            'L_Eddington_erg_s': L_Edd,
+            'r_Bondi_pc': r_Bondi_pc,
+            'units': 'erg/s',
+            'equation': f"L_bol = {L_Edd_ratio}×L_Edd = {L_bol:.4e} erg/s"
+        }
+
+
+class M82PAHEmissionCalculator:
+    """
+    M82 PAH emission from source78_wolfram.cpp Class 737
+    
+    PAH bands at 3.3, 6.2, 7.7, 8.6, 11.3 μm
+    7.7 μm band is strongest (C-C stretch)
+    """
+    
+    def compute(self, lambda_micron: float, I_UV: float = 100.0) -> dict:
+        import math
+        
+        PAH_bands = {3.3: 0.1, 6.2: 0.3, 7.7: 1.0, 8.6: 0.15, 11.3: 0.3}
+        
+        closest = min(PAH_bands.keys(), key=lambda x: abs(x - lambda_micron))
+        I_PAH = PAH_bands[closest]
+        I_PAH_scaled = I_PAH * I_UV
+        
+        f_ion = I_UV / (I_UV + 1000.0)
+        f_PAH = 0.046  # PAH mass fraction
+        
+        return {
+            'value': I_PAH_scaled,
+            'lambda_micron': lambda_micron,
+            'closest_band': closest,
+            'f_ionization': f_ion,
+            'f_PAH_mass': f_PAH,
+            'units': 'Habing units × relative intensity',
+            'equation': f"I_PAH = {I_PAH}×{I_UV} = {I_PAH_scaled:.1f}"
+        }
+
+
+class M81M82HIDiskCalculator:
+    """
+    M81 group HI disk from source78_wolfram.cpp Class 738
+    
+    M_HI ~ 10⁹ M_sun, tidal streamers connect M81/M82
+    """
+    
+    M_sun_g = 1.989e33
+    pc_cm = 3.086e18
+    m_H = 1.67e-24
+    
+    def compute(self, r_kpc: float, M_HI: float = 1e9, r_HI: float = 30.0) -> dict:
+        import math
+        
+        Sigma_HI_0 = M_HI / (2.0 * math.pi * r_HI**2 * 1e6)  # M_sun/pc²
+        Sigma_HI = Sigma_HI_0 * math.exp(-r_kpc / r_HI)
+        
+        mu = 1.4
+        N_HI = Sigma_HI * self.M_sun_g / (self.pc_cm**2 * mu * self.m_H)  # cm⁻²
+        
+        T_s = 100.0  # K
+        tau_21 = 5.5e-19 * N_HI / T_s
+        
+        M_HI_enclosed = M_HI * (1.0 - math.exp(-r_kpc / r_HI) * (1.0 + r_kpc / r_HI))
+        
+        return {
+            'value': Sigma_HI,
+            'r_kpc': r_kpc,
+            'N_HI_cm2': N_HI,
+            'tau_21cm': tau_21,
+            'M_HI_enclosed_Msun': M_HI_enclosed,
+            'units': 'M_sun/pc²',
+            'equation': f"Σ_HI = {Sigma_HI_0:.4f}×exp(-r/{r_HI}) = {Sigma_HI:.4f} M☉/pc²"
+        }
+
+
+class M82CosmicRayCalculator:
+    """
+    M82 cosmic ray pressure from source78_wolfram.cpp Class 739
+    
+    Enhanced CR production from high SN rate
+    VERITAS TeV gamma-ray detection
+    """
+    
+    kpc_cm = 3.086e21
+    
+    def compute(self, SN_rate_yr: float = 0.1, E_CR_per_SN: float = 1e49) -> dict:
+        import math
+        
+        E_dot_CR = SN_rate_yr * E_CR_per_SN  # erg/yr
+        t_loss_yr = 1e7  # yr
+        V_kpc3 = 1.0
+        
+        u_CR = E_dot_CR * t_loss_yr / (V_kpc3 * self.kpc_cm**3)  # erg/cm³
+        gamma_CR = 4.0 / 3.0
+        P_CR = (gamma_CR - 1.0) * u_CR  # dyne/cm²
+        
+        B_eq = math.sqrt(8.0 * math.pi * P_CR)  # G
+        B_eq_microG = B_eq * 1e6
+        
+        return {
+            'value': u_CR,
+            'SN_rate_yr': SN_rate_yr,
+            'P_CR_dyne_cm2': P_CR,
+            'B_equipartition_microG': B_eq_microG,
+            'units': 'erg/cm³',
+            'equation': f"u_CR = Ė_CR×t_loss/V = {u_CR:.4e} erg/cm³"
+        }
+
+
+SOURCE78_WOLFRAM_CALCULATORS = {
+    'M81SpiralStructureCalculator': M81SpiralStructureCalculator(),
+    'M82StarburstCalculator': M82StarburstCalculator(),
+    'M82SuperwindCalculator': M82SuperwindCalculator(),
+    'M81M82TidalInteractionCalculator': M81M82TidalInteractionCalculator(),
+    'M81DarkMatterHaloCalculator': M81DarkMatterHaloCalculator(),
+    'M82MolecularOutflowCalculator': M82MolecularOutflowCalculator(),
+    'M81AGNActivityCalculator': M81AGNActivityCalculator(),
+    'M82PAHEmissionCalculator': M82PAHEmissionCalculator(),
+    'M81M82HIDiskCalculator': M81M82HIDiskCalculator(),
+    'M82CosmicRayCalculator': M82CosmicRayCalculator(),
+}
+
+
+# ========================================
+# SOURCE79 NGC 253 SCULPTOR GALAXY CALCULATORS
+# ========================================
+# Classes 740-749 from source79_wolfram.cpp
+# Prototypical starburst galaxy with superwind
+
+class NGC253NuclearStarburstCalculator:
+    """
+    NGC 253 nuclear starburst from source79_wolfram.cpp Class 740
+    
+    Central starburst with SFR ~ 7 M_sun/yr in r ~ 100 pc
+    L_IR ~ 2×10¹⁰ L_sun
+    """
+    
+    def compute(self, r_pc: float, SFR_nuclear: float = 7.0,
+                r_sb_pc: float = 100.0) -> dict:
+        import math
+        
+        Sigma_SFR_0 = SFR_nuclear / (2.0 * math.pi * r_sb_pc**2)  # M_sun/yr/pc²
+        Sigma_SFR = Sigma_SFR_0 * math.exp(-r_pc**2 / (2.0 * r_sb_pc**2))
+        
+        L_IR = 2e10  # L_sun
+        T_dust = 50.0  # K
+        Gamma_SN = SFR_nuclear / 100.0  # yr⁻¹
+        
+        return {
+            'value': Sigma_SFR,
+            'r_pc': r_pc,
+            'L_IR_Lsun': L_IR,
+            'T_dust_K': T_dust,
+            'Gamma_SN_yr': Gamma_SN,
+            'units': 'M_sun/yr/pc²',
+            'equation': f"Σ_SFR = {Sigma_SFR_0:.4e}×exp(-r²/2/{r_sb_pc}²) = {Sigma_SFR:.4e} M☉/yr/pc²"
+        }
+
+
+class NGC253SuperwindCalculator:
+    """
+    NGC 253 bipolar superwind from source79_wolfram.cpp Class 741
+    
+    v ~ 300-500 km/s, Ṁ_wind ~ 9 M_sun/yr
+    """
+    
+    M_sun_g = 1.989e33
+    kpc_cm = 3.086e21
+    yr_s = 3.156e7
+    k_B = 1.381e-16
+    
+    def compute(self, z_kpc: float, v_wind: float = 400.0,
+                M_dot_wind: float = 9.0, T_wind: float = 3e6) -> dict:
+        import math
+        
+        z_0 = 0.3  # kpc
+        z_abs = abs(z_kpc) + 0.1
+        
+        M_dot_wind_g_s = M_dot_wind * self.M_sun_g / self.yr_s
+        rho_0 = M_dot_wind_g_s / (4.0 * math.pi * z_0**2 * self.kpc_cm**2 * v_wind * 1e5)
+        rho_wind = rho_0 * (z_0 / z_abs)**2
+        
+        L_kin = 0.5 * M_dot_wind_g_s * (v_wind * 1e5)**2
+        
+        mu, m_H = 0.6, 1.67e-24
+        c_s = math.sqrt(5.0/3.0 * self.k_B * T_wind / (mu * m_H)) / 1e5
+        
+        return {
+            'value': rho_wind,
+            'z_kpc': z_kpc,
+            'L_kinetic_erg_s': L_kin,
+            'c_s_km_s': c_s,
+            'units': 'g/cm³',
+            'equation': f"ρ_wind = ρ₀×(z₀/z)² = {rho_wind:.4e} g/cm³"
+        }
+
+
+class NGC253MolecularOutflowCalculator:
+    """
+    NGC 253 molecular outflow from source79_wolfram.cpp Class 742
+    
+    ALMA CO observations, Ṁ_mol ~ 9 M_sun/yr, v_out ~ 50 km/s
+    """
+    
+    M_sun_g = 1.989e33
+    yr_s = 3.156e7
+    
+    def compute(self, z_kpc: float, M_dot_mol: float = 9.0,
+                v_out: float = 50.0) -> dict:
+        import math
+        
+        z_0 = 0.5  # kpc
+        Sigma_0 = 100.0  # M_sun/pc²
+        Sigma_mol = Sigma_0 * math.exp(-abs(z_kpc) / z_0)
+        
+        E_dot_kin = 0.5 * M_dot_mol * self.M_sun_g / self.yr_s * (v_out * 1e5)**2
+        
+        M_mol_total = 3e8  # M_sun
+        t_dep_Myr = M_mol_total / M_dot_mol / 1e6
+        
+        SFR = 7.0
+        eta = M_dot_mol / SFR  # mass loading factor
+        
+        return {
+            'value': Sigma_mol,
+            'z_kpc': z_kpc,
+            'E_dot_kin_erg_s': E_dot_kin,
+            't_depletion_Myr': t_dep_Myr,
+            'mass_loading_eta': eta,
+            'units': 'M_sun/pc²',
+            'equation': f"Σ_mol = {Sigma_0}×exp(-|z|/{z_0}) = {Sigma_mol:.2f} M☉/pc²"
+        }
+
+
+class NGC253DiskGravityCalculator:
+    """
+    NGC 253 exponential disk from source79_wolfram.cpp Class 743
+    
+    M_disk ~ 2×10¹⁰ M_sun, r_d ~ 2 kpc
+    Rotation curve peaks at ~220 km/s
+    """
+    
+    G = 4.3e-6  # kpc·(km/s)²/M_sun
+    
+    def compute(self, r_kpc: float, M_disk: float = 2e10,
+                r_d: float = 2.0) -> dict:
+        import math
+        
+        Sigma_0 = M_disk / (2.0 * math.pi * r_d**2 * 1e6)  # M_sun/pc²
+        Sigma_disk = Sigma_0 * math.exp(-r_kpc / r_d)
+        
+        M_enclosed = M_disk * (1.0 - math.exp(-r_kpc / r_d) * (1.0 + r_kpc / r_d))
+        v_disk = math.sqrt(self.G * M_enclosed / r_kpc)
+        
+        sigma_r = 40.0  # km/s
+        kappa = math.sqrt(2.0) * v_disk / r_kpc
+        Q_Toomre = sigma_r * kappa / (3.36 * self.G * Sigma_disk * 1e6)
+        
+        return {
+            'value': Sigma_disk,
+            'r_kpc': r_kpc,
+            'M_enclosed_Msun': M_enclosed,
+            'v_circular_km_s': v_disk,
+            'Q_Toomre': Q_Toomre,
+            'units': 'M_sun/pc²',
+            'equation': f"Σ_disk = {Sigma_0:.2f}×exp(-r/{r_d}) = {Sigma_disk:.4f} M☉/pc²"
+        }
+
+
+class NGC253DarkMatterHaloCalculator:
+    """
+    NGC 253 NFW halo from source79_wolfram.cpp Class 744
+    
+    M_200 ~ 10¹² M_sun, concentration c ~ 10
+    """
+    
+    G = 4.3e-6
+    
+    def compute(self, r_kpc: float, M_200: float = 1e12, c: float = 10.0) -> dict:
+        import math
+        
+        H_0 = 70.0
+        rho_crit = 3.0 * H_0**2 / (8.0 * math.pi * self.G * 1e6)
+        r_200 = (3.0 * M_200 / (4.0 * math.pi * 200.0 * rho_crit))**(1.0/3.0)
+        r_s = r_200 / c
+        
+        f_c = math.log(1.0 + c) - c / (1.0 + c)
+        rho_s = M_200 / (4.0 * math.pi * r_s**3 * f_c)
+        
+        x = r_kpc / r_s
+        rho_DM = rho_s / (x * (1.0 + x)**2)
+        M_DM = 4.0 * math.pi * rho_s * r_s**3 * (math.log(1.0 + x) - x/(1.0 + x))
+        v_DM = math.sqrt(self.G * M_DM / r_kpc)
+        
+        return {
+            'value': rho_DM,
+            'r_kpc': r_kpc,
+            'M_DM_enclosed_Msun': M_DM,
+            'v_circular_km_s': v_DM,
+            'r_s_kpc': r_s,
+            'units': 'M_sun/kpc³',
+            'equation': f"ρ_NFW = ρ_s/(x×(1+x)²) = {rho_DM:.4e} M☉/kpc³"
+        }
+
+
+class NGC253SupernovaRateCalculator:
+    """
+    NGC 253 SN rate from source79_wolfram.cpp Class 745
+    
+    Γ_SN ~ 0.07 yr⁻¹, dominated by core-collapse
+    """
+    
+    M_sun_g = 1.989e33
+    
+    def compute(self, SFR: float = 7.0, E_SN: float = 1e51) -> dict:
+        import math
+        
+        Gamma_SN_cc = SFR / 100.0  # yr⁻¹
+        Gamma_SN_Ia = 0.003 * Gamma_SN_cc
+        Gamma_SN_total = Gamma_SN_cc + Gamma_SN_Ia
+        
+        E_dot_SN = Gamma_SN_total * E_SN / 3.156e7  # erg/s
+        
+        M_ej = 10.0  # M_sun
+        p_SN = math.sqrt(2.0 * M_ej * self.M_sun_g * E_SN)
+        
+        M_metals_per_SN = 0.1 * M_ej
+        Z_dot = Gamma_SN_total * M_metals_per_SN  # M_sun/yr
+        
+        return {
+            'value': Gamma_SN_total,
+            'SFR_Msun_yr': SFR,
+            'Gamma_cc_yr': Gamma_SN_cc,
+            'Gamma_Ia_yr': Gamma_SN_Ia,
+            'E_dot_SN_erg_s': E_dot_SN,
+            'Z_dot_Msun_yr': Z_dot,
+            'units': 'yr⁻¹',
+            'equation': f"Γ_SN = SFR/100 + 0.003×Γ_cc = {Gamma_SN_total:.4f} yr⁻¹"
+        }
+
+
+class NGC253MagneticFieldCalculator:
+    """
+    NGC 253 magnetic field from source79_wolfram.cpp Class 746
+    
+    B ~ 10-30 μG in disk, synchrotron + Faraday rotation
+    """
+    
+    def compute(self, r_kpc: float, z_kpc: float, B_0: float = 20.0,
+                r_B: float = 3.0) -> dict:
+        import math
+        
+        B_r = B_0 * math.exp(-r_kpc / r_B)  # μG
+        z_B = 1.5  # kpc
+        B_tot = B_r * math.exp(-abs(z_kpc) / z_B)
+        
+        f_ord = 0.6
+        B_ord = f_ord * B_tot
+        B_rand = math.sqrt(1.0 - f_ord**2) * B_tot
+        
+        B_G = B_tot * 1e-6
+        P_mag = B_G**2 / (8.0 * math.pi)  # dyne/cm²
+        
+        alpha = 0.8
+        j_nu = B_tot**(1.0 + alpha)
+        
+        n_e = 0.03  # cm⁻³
+        L_kpc = 5.0
+        RM = 812.0 * n_e * B_ord * L_kpc * 1000.0  # rad/m²
+        
+        return {
+            'value': B_tot,
+            'r_kpc': r_kpc,
+            'z_kpc': z_kpc,
+            'B_ordered_microG': B_ord,
+            'B_random_microG': B_rand,
+            'P_magnetic_dyne_cm2': P_mag,
+            'RM_rad_m2': RM,
+            'units': 'μG',
+            'equation': f"B = {B_0}×exp(-r/{r_B})×exp(-|z|/{z_B}) = {B_tot:.2f} μG"
+        }
+
+
+class NGC253CosmicRayCalculator:
+    """
+    NGC 253 cosmic ray from source79_wolfram.cpp Class 747
+    
+    Fermi-LAT gamma-ray detection, enhanced CR pressure
+    """
+    
+    kpc_cm = 3.086e21
+    
+    def compute(self, SN_rate_yr: float = 0.07, E_CR_per_SN: float = 1e49,
+                t_esc_Myr: float = 5.0) -> dict:
+        import math
+        
+        E_dot_CR = SN_rate_yr * E_CR_per_SN  # erg/yr
+        V_kpc3 = 0.5
+        t_esc_yr = t_esc_Myr * 1e6
+        
+        u_CR = E_dot_CR * t_esc_yr / (V_kpc3 * self.kpc_cm**3)
+        
+        gamma_CR = 4.0 / 3.0
+        P_CR = (gamma_CR - 1.0) * u_CR
+        B_eq = math.sqrt(8.0 * math.pi * P_CR)
+        B_eq_microG = B_eq * 1e6
+        
+        L_gamma = 1e39  # erg/s
+        f_cal = L_gamma / (E_dot_CR / 3.156e7)
+        
+        return {
+            'value': u_CR,
+            'SN_rate_yr': SN_rate_yr,
+            'P_CR_dyne_cm2': P_CR,
+            'B_equipartition_microG': B_eq_microG,
+            'f_calorimetric': f_cal,
+            'units': 'erg/cm³',
+            'equation': f"u_CR = Ė_CR×t_esc/V = {u_CR:.4e} erg/cm³"
+        }
+
+
+class NGC253DustExtinctionCalculator:
+    """
+    NGC 253 dust extinction from source79_wolfram.cpp Class 748
+    
+    A_V ~ 2-5 mag in nuclear region (Cardelli law)
+    """
+    
+    def compute(self, lambda_micron: float, A_V: float = 3.0) -> dict:
+        import math
+        
+        R_V = 3.1
+        x = 1.0 / lambda_micron  # μm⁻¹
+        
+        if 0.3 <= x <= 1.1:  # IR
+            y = x - 0.3
+            a_x = 0.574 * y**1.61
+            b_x = -0.527 * y**1.61
+        elif 1.1 < x <= 3.3:  # Optical/NIR
+            y = x - 1.82
+            a_x = 1.0 + 0.17699*y - 0.50447*y**2 - 0.02427*y**3
+            b_x = 1.41338*y + 2.28305*y**2 + 1.07233*y**3
+        elif 3.3 < x <= 8.0:  # UV
+            a_x = 1.752 - 0.316*x - 0.104/((x-4.67)**2 + 0.341)
+            b_x = -3.090 + 1.825*x + 1.206/((x-4.62)**2 + 0.263)
+        else:
+            a_x, b_x = 0.0, 0.0
+        
+        A_lambda_over_A_V = a_x + b_x / R_V
+        A_lambda = A_lambda_over_A_V * A_V
+        tau_lambda = A_lambda / 1.086
+        extinction_factor = math.exp(-tau_lambda)
+        
+        sigma_d = 5e-22  # cm²
+        N_H = A_V / (R_V * sigma_d)  # cm⁻²
+        
+        return {
+            'value': A_lambda,
+            'lambda_micron': lambda_micron,
+            'tau_lambda': tau_lambda,
+            'extinction_factor': extinction_factor,
+            'N_H_cm2': N_H,
+            'units': 'mag',
+            'equation': f"A_λ = (a + b/R_V)×A_V = {A_lambda:.3f} mag"
+        }
+
+
+class NGC253QuantumVacuumCalculator:
+    """
+    NGC 253 quantum vacuum from source79_wolfram.cpp Class 749
+    
+    Casimir effect + vacuum polarization
+    """
+    
+    hbar = 1.055e-27  # erg·s
+    c = 2.998e10  # cm/s
+    alpha = 1.0 / 137.0
+    B_crit = 4.4e13  # G
+    
+    def compute(self, a_nm: float = 1.0, B_microG: float = 20.0) -> dict:
+        import math
+        
+        a_cm = a_nm * 1e-7
+        rho_Casimir = -self.hbar * self.c * math.pi**2 / (720.0 * a_cm**4)
+        
+        B_G = B_microG * 1e-6
+        Delta_rho_vac = self.alpha * rho_Casimir * (B_G / self.B_crit)**2
+        
+        rho_vac_total = rho_Casimir + Delta_rho_vac
+        P_vac = -rho_vac_total
+        
+        Delta_t = a_cm / self.c
+        Delta_E = self.hbar / (2.0 * Delta_t)
+        
+        return {
+            'value': abs(rho_vac_total),
+            'a_nm': a_nm,
+            'B_microG': B_microG,
+            'rho_Casimir_erg_cm3': rho_Casimir,
+            'P_vacuum_dyne_cm2': P_vac,
+            'Delta_E_erg': Delta_E,
+            'units': 'erg/cm³',
+            'equation': f"ρ_vac = ρ_Casimir + Δρ_vac = {abs(rho_vac_total):.4e} erg/cm³"
+        }
+
+
+SOURCE79_WOLFRAM_CALCULATORS = {
+    'NGC253NuclearStarburstCalculator': NGC253NuclearStarburstCalculator(),
+    'NGC253SuperwindCalculator': NGC253SuperwindCalculator(),
+    'NGC253MolecularOutflowCalculator': NGC253MolecularOutflowCalculator(),
+    'NGC253DiskGravityCalculator': NGC253DiskGravityCalculator(),
+    'NGC253DarkMatterHaloCalculator': NGC253DarkMatterHaloCalculator(),
+    'NGC253SupernovaRateCalculator': NGC253SupernovaRateCalculator(),
+    'NGC253MagneticFieldCalculator': NGC253MagneticFieldCalculator(),
+    'NGC253CosmicRayCalculator': NGC253CosmicRayCalculator(),
+    'NGC253DustExtinctionCalculator': NGC253DustExtinctionCalculator(),
+    'NGC253QuantumVacuumCalculator': NGC253QuantumVacuumCalculator(),
+}
+
+
+# ========================================
+# SOURCE81 M87/VIRGO CLUSTER CALCULATORS
+# ========================================
+# Classes 760-769 from source81_wolfram.cpp
+# M87 giant elliptical + ICM + relativistic jet physics
+
+class M87SupermassiveBlackHoleCalculator:
+    """
+    M87 SMBH (6.5×10⁹ M_sun) from source81_wolfram.cpp Class 760
+    
+    Event Horizon Telescope shadow, Kerr metric
+    """
+    
+    G = 6.674e-8  # cm³/g/s²
+    c = 2.998e10  # cm/s
+    M_sun_g = 1.989e33  # g
+    
+    def compute(self, r_R_S: float, M_BH: float = 6.5e9,
+                a_spin: float = 0.9) -> dict:
+        import math
+        
+        R_S = 2.0 * self.G * M_BH * self.M_sun_g / self.c**2  # cm
+        
+        Z_1 = 1.0 + (1.0 - a_spin**2)**(1.0/3.0) * \
+              ((1.0 + a_spin)**(1.0/3.0) + (1.0 - a_spin)**(1.0/3.0))
+        Z_2 = math.sqrt(3.0 * a_spin**2 + Z_1**2)
+        r_ISCO = R_S * (3.0 + Z_2 - math.sqrt((3.0 - Z_1) * (3.0 + Z_1 + 2.0*Z_2)))
+        
+        r_plus = R_S / 2.0 * (1.0 + math.sqrt(1.0 - a_spin**2))
+        L_Edd = 1.26e38 * M_BH  # erg/s
+        
+        c_s = 500.0 * 1e5  # cm/s
+        r_Bondi = self.G * M_BH * self.M_sun_g / c_s**2
+        r_Bondi_pc = r_Bondi / 3.086e18
+        
+        return {
+            'value': R_S,
+            'r_R_S': r_R_S,
+            'M_BH_Msun': M_BH,
+            'a_spin': a_spin,
+            'r_ISCO_cm': r_ISCO,
+            'r_horizon_cm': r_plus,
+            'L_Eddington_erg_s': L_Edd,
+            'r_Bondi_pc': r_Bondi_pc,
+            'units': 'cm',
+            'equation': f"R_S = 2GM/c² = {R_S:.4e} cm"
+        }
+
+
+class M87RelativisticJetCalculator:
+    """
+    M87 relativistic jet from source81_wolfram.cpp Class 761
+    
+    5 kpc jet, Γ ~ 6, P_jet ~ 10⁴⁴ erg/s
+    """
+    
+    c = 2.998e10  # cm/s
+    kpc_cm = 3.086e21
+    M_sun_g = 1.989e33
+    yr_s = 3.156e7
+    m_e = 9.109e-28  # g
+    sigma_T = 6.65e-25  # cm²
+    
+    def compute(self, z_kpc: float, Gamma: float = 6.0,
+                P_jet: float = 1e44, theta_jet_deg: float = 2.0) -> dict:
+        import math
+        
+        beta = math.sqrt(1.0 - 1.0/Gamma**2)
+        v_jet = beta * self.c
+        
+        theta_rad = theta_jet_deg * math.pi / 180.0
+        r_jet_kpc = z_kpc * math.tan(theta_rad)
+        
+        L_kin = P_jet / 3.0  # erg/s
+        M_dot_jet = L_kin / (Gamma * self.c**2) * self.yr_s / self.M_sun_g
+        
+        A_jet = math.pi * (r_jet_kpc * self.kpc_cm)**2
+        u_mag = P_jet / (v_jet * A_jet)
+        B_jet = math.sqrt(8.0 * math.pi * u_mag)
+        B_jet_microG = B_jet * 1e6
+        
+        gamma_e = 1e4
+        t_sync = 6.0 * math.pi * self.m_e * self.c / (self.sigma_T * B_jet**2 * gamma_e)
+        t_sync_yr = t_sync / self.yr_s
+        
+        return {
+            'value': P_jet,
+            'z_kpc': z_kpc,
+            'Gamma': Gamma,
+            'beta': beta,
+            'v_jet_cm_s': v_jet,
+            'r_jet_kpc': r_jet_kpc,
+            'M_dot_jet_Msun_yr': M_dot_jet,
+            'B_jet_microG': B_jet_microG,
+            't_synchrotron_yr': t_sync_yr,
+            'units': 'erg/s',
+            'equation': f"P_jet = {P_jet:.2e} erg/s, Γ = {Gamma}"
+        }
+
+
+class VirgoICMCalculator:
+    """
+    Virgo intracluster medium from source81_wolfram.cpp Class 762
+    
+    T ~ 2-3 keV, n_e ~ 0.05 cm⁻³
+    """
+    
+    k_B = 1.381e-16  # erg/K
+    m_p = 1.67e-24  # g
+    kpc_cm = 3.086e21
+    
+    def compute(self, r_kpc: float, T_keV: float = 2.5,
+                n_e_0: float = 0.05, r_c: float = 50.0) -> dict:
+        import math
+        
+        beta = 0.5
+        n_e = n_e_0 * (1.0 + (r_kpc/r_c)**2)**(-3.0*beta/2.0)
+        
+        T_K = T_keV * 1.16e7  # K
+        P_thermal = 2.0 * n_e * self.k_B * T_K
+        
+        gamma, mu = 5.0/3.0, 0.6
+        c_s = math.sqrt(gamma * self.k_B * T_K / (mu * self.m_p))
+        c_s_km_s = c_s / 1e5
+        
+        Lambda = 1e-23  # erg·cm³/s
+        t_cool = 1.5 * self.k_B * T_K / (n_e**2 * Lambda)
+        t_cool_Gyr = t_cool / (3.156e7 * 1e9)
+        
+        return {
+            'value': n_e,
+            'r_kpc': r_kpc,
+            'T_K': T_K,
+            'P_thermal_dyne_cm2': P_thermal,
+            'c_s_km_s': c_s_km_s,
+            't_cooling_Gyr': t_cool_Gyr,
+            'units': 'cm⁻³',
+            'equation': f"n_e = {n_e_0}×(1+(r/{r_c})²)^(-3β/2) = {n_e:.4e} cm⁻³"
+        }
+
+
+class M87StellarDynamicsCalculator:
+    """
+    M87 stellar dynamics from source81_wolfram.cpp Class 763
+    
+    de Vaucouleurs profile, σ ~ 375 km/s
+    """
+    
+    G = 4.3e-6  # kpc·(km/s)²/M_sun
+    
+    def compute(self, r_kpc: float, M_star: float = 1e12,
+                R_e: float = 10.0, sigma_0: float = 375.0) -> dict:
+        import math
+        
+        r_over_Re = r_kpc / R_e
+        Sigma_star = math.exp(-7.67 * (r_over_Re**0.25 - 1.0))
+        
+        if r_over_Re < 1.0:
+            M_enclosed = M_star * r_over_Re**2
+        else:
+            M_enclosed = M_star * 0.8
+        
+        r_sigma = 5.0  # kpc
+        sigma_r = sigma_0 * (1.0 + r_kpc/r_sigma)**(-0.3)
+        
+        M_dyn = 5.0 * sigma_r**2 * r_kpc / self.G
+        M_over_L = 15.0
+        
+        return {
+            'value': Sigma_star,
+            'r_kpc': r_kpc,
+            'M_enclosed_Msun': M_enclosed,
+            'sigma_r_km_s': sigma_r,
+            'M_dynamical_Msun': M_dyn,
+            'M_over_L': M_over_L,
+            'units': 'normalized',
+            'equation': f"Σ_* = exp(-7.67×((r/R_e)^0.25 - 1)) = {Sigma_star:.4f}"
+        }
+
+
+class M87DarkMatterHaloCalculator:
+    """
+    M87/Virgo NFW halo from source81_wolfram.cpp Class 764
+    
+    M_200 ~ 10¹⁴ M_sun (cluster-scale)
+    """
+    
+    G = 4.3e-6
+    
+    def compute(self, r_kpc: float, M_200: float = 1e14, c: float = 8.0) -> dict:
+        import math
+        
+        H_0 = 70.0
+        rho_crit = 3.0 * H_0**2 / (8.0 * math.pi * self.G * 1e6)
+        r_200 = (3.0 * M_200 / (4.0 * math.pi * 200.0 * rho_crit))**(1.0/3.0)
+        r_s = r_200 / c
+        
+        f_c = math.log(1.0 + c) - c / (1.0 + c)
+        rho_s = M_200 / (4.0 * math.pi * r_s**3 * f_c)
+        
+        x = r_kpc / r_s
+        rho_DM = rho_s / (x * (1.0 + x)**2)
+        M_DM = 4.0 * math.pi * rho_s * r_s**3 * (math.log(1.0 + x) - x/(1.0 + x))
+        v_DM = math.sqrt(self.G * M_DM / r_kpc)
+        
+        return {
+            'value': rho_DM,
+            'r_kpc': r_kpc,
+            'M_DM_enclosed_Msun': M_DM,
+            'v_circular_km_s': v_DM,
+            'r_s_kpc': r_s,
+            'r_200_kpc': r_200,
+            'units': 'M_sun/kpc³',
+            'equation': f"ρ_NFW = ρ_s/(x×(1+x)²) = {rho_DM:.4e} M☉/kpc³"
+        }
+
+
+class M87AGNFeedbackCalculator:
+    """
+    M87 AGN feedback from source81_wolfram.cpp Class 765
+    
+    X-ray cavities, P_cav ~ 10⁴³ erg/s
+    """
+    
+    kpc_cm = 3.086e21
+    Myr_s = 1e6 * 3.156e7
+    k_B = 1.381e-16
+    
+    def compute(self, r_cavity_kpc: float = 3.0, P_cavity: float = 1e43,
+                t_age_Myr: float = 10.0) -> dict:
+        import math
+        
+        V_cav_kpc3 = 4.0/3.0 * math.pi * r_cavity_kpc**3
+        V_cav_cm3 = V_cav_kpc3 * self.kpc_cm**3
+        
+        E_cav = P_cavity * t_age_Myr * self.Myr_s
+        
+        gamma = 4.0/3.0
+        P_cav_internal = E_cav / V_cav_cm3
+        H_cav = gamma / (gamma - 1.0) * P_cav_internal * V_cav_cm3
+        
+        n_ICM = 0.05
+        T_ICM = 2.5 * 1.16e7
+        P_ICM = 2.0 * n_ICM * self.k_B * T_ICM
+        W_ICM = P_ICM * V_cav_cm3
+        
+        return {
+            'value': E_cav,
+            'r_cavity_kpc': r_cavity_kpc,
+            'V_cavity_kpc3': V_cav_kpc3,
+            'H_enthalpy_erg': H_cav,
+            'W_ICM_work_erg': W_ICM,
+            'P_cavity_erg_s': P_cavity,
+            'units': 'erg',
+            'equation': f"E_cav = P_cav×t_age = {E_cav:.4e} erg"
+        }
+
+
+class M87GlobularClusterCalculator:
+    """
+    M87 globular clusters from source81_wolfram.cpp Class 766
+    
+    ~12,000 GCs, bimodal metallicity, S_N ~ 13
+    """
+    
+    def compute(self, r_kpc: float, N_GC_total: float = 12000,
+                r_GC: float = 20.0) -> dict:
+        import math
+        
+        n_GC_0 = N_GC_total / (4.0 * math.pi * r_GC**3)  # kpc⁻³
+        n_GC = n_GC_0 * math.exp(-r_kpc / r_GC)
+        
+        N_GC_enclosed = N_GC_total * (1.0 - math.exp(-r_kpc/r_GC) * 
+                        (1.0 + r_kpc/r_GC + 0.5*(r_kpc/r_GC)**2))
+        
+        M_GC_typical = 2e5  # M_sun
+        f_blue, f_red = 0.6, 0.4
+        FeH_blue, FeH_red = -1.5, -0.5
+        S_N = 13.0
+        
+        return {
+            'value': n_GC,
+            'r_kpc': r_kpc,
+            'N_GC_enclosed': N_GC_enclosed,
+            'M_GC_typical_Msun': M_GC_typical,
+            'f_blue': f_blue,
+            'f_red': f_red,
+            'S_N': S_N,
+            'units': 'kpc⁻³',
+            'equation': f"n_GC = n₀×exp(-r/{r_GC}) = {n_GC:.4e} kpc⁻³"
+        }
+
+
+class M87UltradiffuseGalaxyCalculator:
+    """
+    Virgo UDGs from source81_wolfram.cpp Class 767
+    
+    ~1000 UDGs, M_* ~ 10⁸ M_sun, DM-dominated
+    """
+    
+    def compute(self, r_cluster_kpc: float, N_UDG: float = 1000,
+                M_UDG: float = 1e8) -> dict:
+        import math
+        
+        r_c = 200.0  # kpc
+        beta = 0.7
+        n_UDG = N_UDG / (4.0/3.0 * math.pi * r_c**3) * \
+                (1.0 + (r_cluster_kpc/r_c)**2)**(-3.0*beta/2.0)
+        
+        R_e_UDG = 3.0  # kpc
+        f_DM = 0.98
+        M_DM_UDG = f_DM * M_UDG
+        sigma_UDG = 25.0  # km/s
+        M_over_L = 200.0
+        
+        return {
+            'value': n_UDG,
+            'r_cluster_kpc': r_cluster_kpc,
+            'M_UDG_Msun': M_UDG,
+            'M_DM_UDG_Msun': M_DM_UDG,
+            'f_DM': f_DM,
+            'sigma_UDG_km_s': sigma_UDG,
+            'R_e_kpc': R_e_UDG,
+            'units': 'kpc⁻³',
+            'equation': f"n_UDG = N/(V)×(1+(r/r_c)²)^(-3β/2) = {n_UDG:.4e} kpc⁻³"
+        }
+
+
+class M87MagneticFieldCalculator:
+    """
+    M87/Virgo cluster magnetic field from source81_wolfram.cpp Class 768
+    
+    B ~ 10 μG cluster-scale
+    """
+    
+    k_B = 1.381e-16
+    
+    def compute(self, r_kpc: float, B_0: float = 10.0, r_B: float = 100.0) -> dict:
+        import math
+        
+        eta = 0.6
+        r_c = 50.0
+        beta_gas = 0.5
+        n_e_ratio = (1.0 + (r_kpc/r_c)**2)**(-3.0*beta_gas/2.0)
+        B_r = B_0 * n_e_ratio**eta  # μG
+        
+        B_G = B_r * 1e-6
+        P_mag = B_G**2 / (8.0 * math.pi)
+        
+        T_keV = 2.5
+        n_e = 0.05 * n_e_ratio
+        P_thermal = 2.0 * n_e * self.k_B * T_keV * 1.16e7
+        beta_plasma = P_thermal / P_mag
+        
+        L_kpc = 50.0
+        RM = 812.0 * n_e * B_r * L_kpc * 1000.0
+        
+        return {
+            'value': B_r,
+            'r_kpc': r_kpc,
+            'P_magnetic_dyne_cm2': P_mag,
+            'beta_plasma': beta_plasma,
+            'RM_rad_m2': RM,
+            'units': 'μG',
+            'equation': f"B = B₀×(n_e/n_e,0)^η = {B_r:.4f} μG"
+        }
+
+
+class M87QuantumVacuumCalculator:
+    """
+    M87 quantum vacuum from source81_wolfram.cpp Class 769
+    
+    Casimir effect + vacuum polarization
+    """
+    
+    hbar = 1.055e-27
+    c = 2.998e10
+    alpha = 1.0/137.0
+    B_crit = 4.4e13
+    
+    def compute(self, a_nm: float = 1.0, B_microG: float = 10.0) -> dict:
+        import math
+        
+        a_cm = a_nm * 1e-7
+        rho_Casimir = -self.hbar * self.c * math.pi**2 / (720.0 * a_cm**4)
+        
+        B_G = B_microG * 1e-6
+        Delta_rho_vac = self.alpha * rho_Casimir * (B_G/self.B_crit)**2
+        
+        rho_vac_total = rho_Casimir + Delta_rho_vac
+        P_vac = -rho_vac_total
+        
+        Delta_t = a_cm / self.c
+        Delta_E = self.hbar / (2.0 * Delta_t)
+        
+        return {
+            'value': abs(rho_vac_total),
+            'a_nm': a_nm,
+            'B_microG': B_microG,
+            'rho_Casimir_erg_cm3': rho_Casimir,
+            'P_vacuum_dyne_cm2': P_vac,
+            'Delta_E_erg': Delta_E,
+            'units': 'erg/cm³',
+            'equation': f"ρ_vac = ρ_Casimir + Δρ_vac = {abs(rho_vac_total):.4e} erg/cm³"
+        }
+
+
+SOURCE81_WOLFRAM_CALCULATORS = {
+    'M87SupermassiveBlackHoleCalculator': M87SupermassiveBlackHoleCalculator(),
+    'M87RelativisticJetCalculator': M87RelativisticJetCalculator(),
+    'VirgoICMCalculator': VirgoICMCalculator(),
+    'M87StellarDynamicsCalculator': M87StellarDynamicsCalculator(),
+    'M87DarkMatterHaloCalculator': M87DarkMatterHaloCalculator(),
+    'M87AGNFeedbackCalculator': M87AGNFeedbackCalculator(),
+    'M87GlobularClusterCalculator': M87GlobularClusterCalculator(),
+    'M87UltradiffuseGalaxyCalculator': M87UltradiffuseGalaxyCalculator(),
+    'M87MagneticFieldCalculator': M87MagneticFieldCalculator(),
+    'M87QuantumVacuumCalculator': M87QuantumVacuumCalculator(),
+}
+
+
+# ========================================
+# SOURCE15 SGR A* SMBH CALCULATORS
+# ========================================
+# 15 core terms from source15_wolfram.cpp
+# Sagittarius A* (Galactic Center SMBH, 4.3×10⁶ M☉)
+
+class SgrAStarBaseGravityCalculator:
+    """
+    Sgr A* base gravity from source15_wolfram.cpp Term 1
+    
+    g = G×M(t)/r² × [1 + H₀×t] × [1 - B(t)/B_crit]
+    """
+    
+    G = 6.6743e-11  # m³/kg·s² 
+    M_initial = 4.3e6 * 1.989e30  # kg
+    r = 1.27e10  # m
+    H0 = 2.184e-18  # s⁻¹
+    B_crit = 1e11  # T
+    
+    def compute(self, t: float, M_dot_0: float = 0.01,
+                tau_acc: float = 9e9*3.156e7, B0_G: float = 1e4,
+                tau_B: float = 1e6*3.156e7) -> dict:
+        import math
+        
+        M_dot = M_dot_0 * math.exp(-t / tau_acc)
+        M_t = self.M_initial * (1 + M_dot)
+        
+        g_base = self.G * M_t / self.r**2
+        corr_H = 1 + self.H0 * t
+        
+        B_G = B0_G * math.exp(-t / tau_B)
+        B_T = B_G * 1e-4
+        corr_B = 1 - B_T / self.B_crit
+        
+        g_total = g_base * corr_H * corr_B
+        
+        return {
+            'value': g_total,
+            't_s': t,
+            'M_t_kg': M_t,
+            'g_base': g_base,
+            'corr_H': corr_H,
+            'corr_B': corr_B,
+            'B_T': B_T,
+            'units': 'm/s²',
+            'equation': f"g = {g_base:.4e}×{corr_H:.6f}×{corr_B:.10f} = {g_total:.6e} m/s²"
+        }
+
+
+class SgrAStarMassGrowthCalculator:
+    """
+    Sgr A* mass growth from source15_wolfram.cpp Term 2
+    
+    M(t) = M₀ × (1 + Ṁ₀×e^(-t/τ_acc))
+    """
+    
+    M_initial = 4.3e6 * 1.989e30  # kg
+    M_sun = 1.989e30
+    
+    def compute(self, t: float, M_dot_0: float = 0.01,
+                tau_acc: float = 9e9*3.156e7) -> dict:
+        import math
+        
+        M_dot = M_dot_0 * math.exp(-t / tau_acc)
+        M_t = self.M_initial * (1 + M_dot)
+        
+        return {
+            'value': M_t,
+            't_s': t,
+            't_Gyr': t / (1e9 * 3.156e7),
+            'M_dot': M_dot,
+            'M_t_Msun': M_t / self.M_sun,
+            'units': 'kg',
+            'equation': f"M(t) = M₀×(1+Ṁ₀×e^(-t/τ)) = {M_t/self.M_sun:.6e} M☉"
+        }
+
+
+class SgrAStarUQFFUnificationCalculator:
+    """
+    Sgr A* UQFF unification from source15_wolfram.cpp Term 3
+    
+    F = (Ug1 + Ug2 + Ug3 + Ug4) × (1 + f_TRZ)
+    """
+    
+    G = 6.6743e-11
+    M_initial = 4.3e6 * 1.989e30
+    r = 1.27e10
+    B_crit = 1e11
+    f_TRZ = 0.1
+    
+    def compute(self, t: float, M_dot_0: float = 0.01,
+                tau_acc: float = 9e9*3.156e7, B0_G: float = 1e4,
+                tau_B: float = 1e6*3.156e7) -> dict:
+        import math
+        
+        M_dot = M_dot_0 * math.exp(-t / tau_acc)
+        M_t = self.M_initial * (1 + M_dot)
+        
+        Ug1 = self.G * M_t / self.r**2
+        Ug2, Ug3 = 0.0, 0.0
+        
+        B_G = B0_G * math.exp(-t / tau_B)
+        B_T = B_G * 1e-4
+        corr_B = 1 - B_T / self.B_crit
+        Ug4 = Ug1 * corr_B
+        
+        Ug_sum = Ug1 + Ug2 + Ug3 + Ug4
+        F_UQFF = Ug_sum * (1 + self.f_TRZ)
+        
+        return {
+            'value': F_UQFF,
+            't_s': t,
+            'Ug1': Ug1,
+            'Ug2': Ug2,
+            'Ug3': Ug3,
+            'Ug4': Ug4,
+            'Ug_sum': Ug_sum,
+            'f_TRZ': self.f_TRZ,
+            'units': 'm/s²',
+            'equation': f"F_UQFF = (Ug1+Ug2+Ug3+Ug4)×(1+f_TRZ) = {F_UQFF:.6e} m/s²"
+        }
+
+
+class SgrAStarCosmologicalConstantCalculator:
+    """
+    Sgr A* cosmological constant from source15_wolfram.cpp Term 4
+    
+    a_Λ = (Λ × c²) / 3
+    """
+    
+    Lambda = 1.1e-52  # m⁻²
+    c = 3e8  # m/s
+    
+    def compute(self) -> dict:
+        a_Lambda = (self.Lambda * self.c**2) / 3.0
+        
+        return {
+            'value': a_Lambda,
+            'Lambda': self.Lambda,
+            'c': self.c,
+            'units': 'm/s²',
+            'equation': f"a_Λ = Λc²/3 = {a_Lambda:.4e} m/s²"
+        }
+
+
+class SgrAStarGravitationalWaveCalculator:
+    """
+    Sgr A* gravitational wave from source15_wolfram.cpp Term 6
+    
+    GW from spin evolution: h ∝ (G×M²)/(c⁴×r) × (dΩ/dt)²
+    """
+    
+    G = 6.6743e-11
+    M_initial = 4.3e6 * 1.989e30
+    c = 3e8
+    r = 1.27e10
+    spin_factor = 0.3
+    
+    def compute(self, t: float, tau_Omega: float = 9e9*3.156e7,
+                M_dot_0: float = 0.01, tau_acc: float = 9e9*3.156e7) -> dict:
+        import math
+        
+        M_dot = M_dot_0 * math.exp(-t / tau_acc)
+        M_t = self.M_initial * (1 + M_dot)
+        
+        omega0 = self.spin_factor * self.c / self.r
+        dOmega_dt = omega0 * (-1.0/tau_Omega) * math.exp(-t/tau_Omega)
+        
+        gw_prefactor = self.G * M_t**2 / (self.c**4 * self.r)
+        h_gw = gw_prefactor * dOmega_dt**2
+        
+        return {
+            'value': h_gw,
+            't_s': t,
+            'omega0': omega0,
+            'dOmega_dt': dOmega_dt,
+            'gw_prefactor': gw_prefactor,
+            'units': 'm/s²',
+            'equation': f"h_GW = (GM²/c⁴r)×(dΩ/dt)² = {h_gw:.4e}"
+        }
+
+
+class SgrAStarSpinEvolutionCalculator:
+    """
+    Sgr A* spin evolution from source15_wolfram.cpp Term 12
+    
+    Ω(t) = Ω₀ × e^(-t/τ_Ω), where Ω₀ = 0.3c/r
+    """
+    
+    spin_factor = 0.3
+    c = 3e8  # m/s
+    r = 1.27e10  # m
+    
+    def compute(self, t: float, tau_Omega: float = 9e9*3.156e7) -> dict:
+        import math
+        
+        omega0 = self.spin_factor * self.c / self.r
+        omega_t = omega0 * math.exp(-t / tau_Omega)
+        
+        return {
+            'value': omega_t,
+            't_s': t,
+            't_Gyr': t / (1e9 * 3.156e7),
+            'omega0': omega0,
+            'tau_Omega_Gyr': tau_Omega / (1e9 * 3.156e7),
+            'units': 'rad/s',
+            'equation': f"Ω(t) = Ω₀×e^(-t/τ) = {omega_t:.4e} rad/s"
+        }
+
+
+class SgrAStarAccretionRateCalculator:
+    """
+    Sgr A* accretion rate from source15_wolfram.cpp Term 14
+    
+    Ṁ(t) = Ṁ₀ × e^(-t/τ_acc)
+    """
+    
+    def compute(self, t: float, M_dot_0: float = 0.01,
+                tau_acc: float = 9e9*3.156e7) -> dict:
+        import math
+        
+        M_dot = M_dot_0 * math.exp(-t / tau_acc)
+        
+        return {
+            'value': M_dot,
+            't_s': t,
+            't_Gyr': t / (1e9 * 3.156e7),
+            'M_dot_0': M_dot_0,
+            'tau_acc_Gyr': tau_acc / (1e9 * 3.156e7),
+            'units': 'dimensionless rate factor',
+            'equation': f"Ṁ(t) = Ṁ₀×e^(-t/τ) = {M_dot:.6f}"
+        }
+
+
+class SgrAStarSchwarzschildRadiusCalculator:
+    """
+    Sgr A* Schwarzschild radius from source15_wolfram.cpp Term 15
+    
+    r_s = 2GM/c²
+    """
+    
+    G = 6.6743e-11  # m³/kg·s²
+    M = 4.3e6 * 1.989e30  # kg
+    c = 3e8  # m/s
+    
+    def compute(self) -> dict:
+        r_s = 2 * self.G * self.M / self.c**2
+        
+        return {
+            'value': r_s,
+            'M_Msun': self.M / 1.989e30,
+            'r_s_km': r_s / 1000,
+            'r_s_AU': r_s / 1.496e11,
+            'units': 'm',
+            'equation': f"r_s = 2GM/c² = {r_s:.4e} m = {r_s/1000:.2f} km"
+        }
+
+
+class SgrAStarMagneticDecayCalculator:
+    """
+    Sgr A* magnetic decay from source15_wolfram.cpp Term 11
+    
+    B(t) = B₀ × e^(-t/τ_B) [Gauss → Tesla]
+    """
+    
+    def compute(self, t: float, B0_G: float = 1e4,
+                tau_B: float = 1e6*3.156e7) -> dict:
+        import math
+        
+        B_G = B0_G * math.exp(-t / tau_B)
+        B_T = B_G * 1e-4  # Gauss to Tesla
+        
+        return {
+            'value': B_T,
+            't_s': t,
+            't_Myr': t / (1e6 * 3.156e7),
+            'B_Gauss': B_G,
+            'tau_B_Myr': tau_B / (1e6 * 3.156e7),
+            'units': 'Tesla',
+            'equation': f"B(t) = B₀×e^(-t/τ)×10⁻⁴ = {B_T:.4e} T"
+        }
+
+
+SOURCE15_WOLFRAM_CALCULATORS = {
+    'SgrAStarBaseGravityCalculator': SgrAStarBaseGravityCalculator(),
+    'SgrAStarMassGrowthCalculator': SgrAStarMassGrowthCalculator(),
+    'SgrAStarUQFFUnificationCalculator': SgrAStarUQFFUnificationCalculator(),
+    'SgrAStarCosmologicalConstantCalculator': SgrAStarCosmologicalConstantCalculator(),
+    'SgrAStarGravitationalWaveCalculator': SgrAStarGravitationalWaveCalculator(),
+    'SgrAStarSpinEvolutionCalculator': SgrAStarSpinEvolutionCalculator(),
+    'SgrAStarAccretionRateCalculator': SgrAStarAccretionRateCalculator(),
+    'SgrAStarSchwarzschildRadiusCalculator': SgrAStarSchwarzschildRadiusCalculator(),
+    'SgrAStarMagneticDecayCalculator': SgrAStarMagneticDecayCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -144037,4 +145518,51 @@ __all__.extend([
     'PillarMassGrowthCalculator',
     'PillarGravityCalculator',
     'SOURCE18_WOLFRAM_CALCULATORS',
+    # Source78 M81/M82 Galaxy Pair (Feb 26, 2026) - 10 Calculator Classes
+    'M81SpiralStructureCalculator',
+    'M82StarburstCalculator',
+    'M82SuperwindCalculator',
+    'M81M82TidalInteractionCalculator',
+    'M81DarkMatterHaloCalculator',
+    'M82MolecularOutflowCalculator',
+    'M81AGNActivityCalculator',
+    'M82PAHEmissionCalculator',
+    'M81M82HIDiskCalculator',
+    'M82CosmicRayCalculator',
+    'SOURCE78_WOLFRAM_CALCULATORS',
+    # Source79 NGC 253 Sculptor Galaxy (Feb 26, 2026) - 10 Calculator Classes
+    'NGC253NuclearStarburstCalculator',
+    'NGC253SuperwindCalculator',
+    'NGC253MolecularOutflowCalculator',
+    'NGC253DiskGravityCalculator',
+    'NGC253DarkMatterHaloCalculator',
+    'NGC253SupernovaRateCalculator',
+    'NGC253MagneticFieldCalculator',
+    'NGC253CosmicRayCalculator',
+    'NGC253DustExtinctionCalculator',
+    'NGC253QuantumVacuumCalculator',
+    'SOURCE79_WOLFRAM_CALCULATORS',
+    # Source81 M87/Virgo Cluster (Feb 26, 2026) - 10 Calculator Classes
+    'M87SupermassiveBlackHoleCalculator',
+    'M87RelativisticJetCalculator',
+    'VirgoICMCalculator',
+    'M87StellarDynamicsCalculator',
+    'M87DarkMatterHaloCalculator',
+    'M87AGNFeedbackCalculator',
+    'M87GlobularClusterCalculator',
+    'M87UltradiffuseGalaxyCalculator',
+    'M87MagneticFieldCalculator',
+    'M87QuantumVacuumCalculator',
+    'SOURCE81_WOLFRAM_CALCULATORS',
+    # Source15 Sgr A* SMBH (Feb 26, 2026) - 9 Calculator Classes
+    'SgrAStarBaseGravityCalculator',
+    'SgrAStarMassGrowthCalculator',
+    'SgrAStarUQFFUnificationCalculator',
+    'SgrAStarCosmologicalConstantCalculator',
+    'SgrAStarGravitationalWaveCalculator',
+    'SgrAStarSpinEvolutionCalculator',
+    'SgrAStarAccretionRateCalculator',
+    'SgrAStarSchwarzschildRadiusCalculator',
+    'SgrAStarMagneticDecayCalculator',
+    'SOURCE15_WOLFRAM_CALCULATORS',
 ])
