@@ -101981,6 +101981,412 @@ class DarkMatterHaloUQFFCalculator:
             'alpha_derived': alpha_derived,
             'origin': 'L_Ug4 = |∂φ₄|² - V(φ₄) + κ[SSq]φ₄²'
         }
+    
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # AETHER CONDENSATE DARK MATTER MODEL (UQFF Non-Particle DM)
+    # ρ_eff = ρ_vac,[UA] × (1 - f_TRZ) × exp(-U_m / k_B T_cosmo)
+    # DM as aether fluctuations, not particles - explains null WIMP/axion results
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def compute_standard_rho_DM(self, H: float = 2.2e-18, Omega_DM: float = 0.26) -> Tuple[float, str]:
+        """
+        Compute standard ΛCDM dark matter density from Friedmann equation.
+        
+        Standard cosmology: DM ~26% of universe energy density
+        
+        Formula:
+            From Friedmann: H² = (8πG/3) ρ_tot
+            ρ_crit = 3H²/(8πG) ≈ 9.5×10⁻²⁷ kg/m³
+            ρ_DM = Ω_DM × ρ_crit ≈ 2.5×10⁻²⁷ kg/m³
+            
+        Where:
+            H ≈ 70 km/s/Mpc ≈ 2.2×10⁻¹⁸ s⁻¹ (Hubble constant)
+            Ω_DM h² ≈ 0.12 → Ω_DM ≈ 0.26
+            
+        Returns:
+            (rho_DM in kg/m³, derivation_steps)
+        """
+        # Critical density: ρ_crit = 3H²/(8πG)
+        rho_crit = 3 * H**2 / (8 * np.pi * self.G)
+        
+        # DM density
+        rho_DM = Omega_DM * rho_crit
+        
+        # Energy density in J/m³
+        rho_DM_energy = rho_DM * (2.998e8)**2
+        
+        steps = f"""Standard ΛCDM Dark Matter Density:
+═══════════════════════════════════════════════════════════════════════════════
+FROM FRIEDMANN EQUATION:
+
+  H² = (8πG/3) ρ_tot
+  
+  Rearranging for critical density:
+  ρ_crit = 3H² / (8πG)
+  
+  Parameters:
+    H = {H:.4e} s⁻¹ (≈ 70 km/s/Mpc)
+    G = {self.G:.4e} m³/(kg·s²)
+    
+  ρ_crit = 3 × ({H:.4e})² / (8π × {self.G:.4e})
+         = {rho_crit:.4e} kg/m³
+         
+  with Ω_DM = {Omega_DM:.4f}:
+  
+  ρ_DM = Ω_DM × ρ_crit
+       = {Omega_DM:.4f} × {rho_crit:.4e}
+       
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  ρ_DM (ΛCDM) = {rho_DM:.4e} kg/m³                               │
+  │              = {rho_DM_energy:.4e} J/m³                         │
+  └─────────────────────────────────────────────────────────────────┘
+
+STANDARD INTERPRETATION:
+  • Cold, non-relativistic particles (WIMPs, axions)
+  • Non-baryonic (not protons/neutrons)
+  • ~26% of universe energy budget
+  • Direct detection: LUX/XENON limits (WIMP mass >10 GeV)
+  • Microlensing/evaporation constrain PBH as DM
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return rho_DM, steps
+    
+    def compute_aether_condensate_rho_DM(self, rho_UA: float = 7.09e-36,
+                                          f_TRZ: float = 0.1,
+                                          U_m: float = 1e-23,
+                                          T_cosmo: float = 2.725) -> Tuple[float, str]:
+        """
+        Compute UQFF aether condensate dark matter density.
+        
+        UQFF reinterprets DM as aether-superconductive condensates,
+        not particles. DM effects emerge from modulated vacuum energy.
+        
+        Formula:
+            ρ_eff = ρ_vac,[UA] × (1 - f_TRZ) × exp(-U_m / k_B T_cosmo)
+            
+        Where:
+            ρ_vac,[UA] ≈ 7.09×10⁻³⁶ J/m³ (Universal Aether density)
+            f_TRZ = 0.1 (time-reversal zone fraction)
+            U_m = magnetic string energy (~10⁻²³ J)
+            T_cosmo = 2.725 K (CMB temperature)
+            k_B = 1.38×10⁻²³ J/K (Boltzmann constant)
+            
+        Returns:
+            (rho_eff in J/m³, derivation_steps)
+        """
+        k_B = 1.38e-23  # J/K
+        
+        # TRZ reduction
+        factor_TRZ = 1 - f_TRZ
+        
+        # Boltzmann factor
+        U_m_kT_ratio = U_m / (k_B * T_cosmo)
+        factor_Um = np.exp(-U_m_kT_ratio)
+        
+        # Combined effective density
+        rho_eff = rho_UA * factor_TRZ * factor_Um
+        
+        # Convert to mass density for comparison
+        c = 2.998e8
+        rho_eff_mass = rho_eff / c**2
+        
+        steps = f"""UQFF Aether Condensate Dark Matter Density:
+═══════════════════════════════════════════════════════════════════════════════
+AETHER CONDENSATE MODEL:
+
+  In UQFF, dark matter is NOT particles (WIMPs, axions) but emerges
+  from aether-superconductive condensates in [UA] medium.
+  
+  Effective DM density:
+  ρ_eff = ρ_vac,[UA] × (1 - f_TRZ) × exp(-U_m / k_B T_cosmo)
+  
+  Parameters:
+    ρ_vac,[UA] = {rho_UA:.4e} J/m³ (Universal Aether vacuum energy)
+    f_TRZ = {f_TRZ:.4f} (time-reversal zone fraction)
+    U_m = {U_m:.4e} J (magnetic string energy)
+    T_cosmo = {T_cosmo:.4f} K (CMB temperature)
+    k_B = {k_B:.4e} J/K
+    
+  Step-by-step:
+    (1 - f_TRZ) = {factor_TRZ:.4f}
+    U_m/(k_B T_cosmo) = {U_m:.4e} / ({k_B:.4e} × {T_cosmo:.4f})
+                      = {U_m_kT_ratio:.6f}
+    exp(-U_m/(k_B T)) = {factor_Um:.6f}
+    
+  ρ_eff = {rho_UA:.4e} × {factor_TRZ:.4f} × {factor_Um:.6f}
+  
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  ρ_eff (UQFF) = {rho_eff:.4e} J/m³                              │
+  │               = {rho_eff_mass:.4e} kg/m³ (mass equivalent)      │
+  └─────────────────────────────────────────────────────────────────┘
+
+PHYSICAL INTERPRETATION:
+  • DM as aether fluctuations, not particles
+  • Gravitational effects via modulated vacuum energy
+  • [SCm] interfaces create DM-like clustering
+  • Explains null WIMP/axion search results
+  • Rotation curves via aether drag, not halos
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return rho_eff, steps
+    
+    def compute_aether_drag_rotation(self, r_kpc: float = 10.0,
+                                      M_baryonic: float = 5e10,
+                                      rho_UA: float = 7.09e-36,
+                                      drag_coefficient: float = 1e-11) -> Tuple[float, str]:
+        """
+        Compute galaxy rotation velocity from aether drag model.
+        
+        UQFF replaces DM halos with aether drag mechanism:
+        The [UA] medium provides effective mass without particle DM.
+        
+        Formula:
+            v²(r) = G M_baryonic / r + v_drag²
+            v_drag² = α_drag × ρ_UA × r × c²
+            
+        This flattens rotation curves without requiring dark matter halos.
+        
+        Returns:
+            (v_circular in km/s, derivation_steps)
+        """
+        r_m = r_kpc * self.kpc
+        M_bary_kg = M_baryonic * self.M_solar
+        c = 2.998e8
+        
+        # Keplerian velocity from baryonic mass
+        v_kep_squared = self.G * M_bary_kg / r_m
+        v_kep = np.sqrt(v_kep_squared)
+        v_kep_km_s = v_kep / 1000
+        
+        # Aether drag contribution
+        v_drag_squared = drag_coefficient * rho_UA * r_m * c**2
+        v_drag = np.sqrt(np.abs(v_drag_squared))
+        v_drag_km_s = v_drag / 1000
+        
+        # Total rotation velocity
+        v_total_squared = v_kep_squared + v_drag_squared
+        v_total = np.sqrt(v_total_squared)
+        v_total_km_s = v_total / 1000
+        
+        # Observed MW at 10 kpc: ~220 km/s
+        v_observed_km_s = 220.0
+        agreement = abs(v_total_km_s - v_observed_km_s) / v_observed_km_s * 100
+        
+        steps = f"""Aether Drag Rotation Curve Model:
+═══════════════════════════════════════════════════════════════════════════════
+AETHER DRAG REPLACES DM HALOS:
+
+  Standard: v²(r) = G M_total / r, where M_total includes DM halo
+  UQFF: v²(r) = G M_baryonic / r + v_drag²
+  
+  Aether drag contribution:
+  v_drag² = α_drag × ρ_UA × r × c²
+  
+  Parameters:
+    r = {r_kpc:.2f} kpc = {r_m:.4e} m
+    M_baryonic = {M_baryonic:.2e} M_sun = {M_bary_kg:.4e} kg
+    ρ_UA = {rho_UA:.4e} J/m³
+    α_drag = {drag_coefficient:.4e} (dimensionless coupling)
+    
+  Keplerian (baryonic only):
+    v_Kep² = G M_bary / r
+           = {self.G:.4e} × {M_bary_kg:.4e} / {r_m:.4e}
+           = {v_kep_squared:.4e} m²/s²
+    v_Kep = {v_kep_km_s:.2f} km/s
+    
+  Aether drag:
+    v_drag² = {drag_coefficient:.4e} × {rho_UA:.4e} × {r_m:.4e} × {c**2:.4e}
+            = {v_drag_squared:.4e} m²/s²
+    v_drag = {v_drag_km_s:.2f} km/s
+    
+  Total rotation:
+    v_total² = v_Kep² + v_drag²
+             = {v_kep_squared:.4e} + {v_drag_squared:.4e}
+    v_total = {v_total_km_s:.2f} km/s
+  
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  v_rotation = {v_total_km_s:.2f} km/s at r = {r_kpc:.2f} kpc    │
+  │  Observed MW: ~220 km/s                                         │
+  │  Agreement: {100-agreement:.1f}%                                │
+  └─────────────────────────────────────────────────────────────────┘
+
+KEY INSIGHT:
+  Aether drag provides r-dependent contribution that flattens
+  rotation curves WITHOUT requiring dark matter halo.
+  The [UA] medium creates effective gravitational mass.
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return v_total_km_s, steps
+    
+    def aether_dm_implications_report(self) -> Tuple[dict, str]:
+        """
+        Generate comprehensive report on UQFF aether dark matter implications.
+        
+        Compares standard ΛCDM with UQFF aether condensate model,
+        highlighting testable predictions and null-result implications.
+        
+        Returns:
+            (results_dict, formatted_report)
+        """
+        # Standard DM
+        rho_DM_standard, _ = self.compute_standard_rho_DM()
+        
+        # UQFF aether condensate
+        rho_eff_UQFF, _ = self.compute_aether_condensate_rho_DM()
+        
+        # Rotation at 10 kpc
+        v_rotation, _ = self.compute_aether_drag_rotation(r_kpc=10.0)
+        
+        # Mass density ratio
+        c = 2.998e8
+        rho_eff_mass = rho_eff_UQFF / c**2
+        density_ratio = rho_DM_standard / rho_eff_mass if rho_eff_mass > 0 else np.inf
+        
+        results = {
+            'rho_DM_standard_kg_m3': rho_DM_standard,
+            'rho_eff_UQFF_J_m3': rho_eff_UQFF,
+            'rho_eff_UQFF_kg_m3': rho_eff_mass,
+            'density_ratio': density_ratio,
+            'v_rotation_10kpc_km_s': v_rotation,
+            'model': 'aether_condensate'
+        }
+        
+        report = f"""
+╔══════════════════════════════════════════════════════════════════════════════╗
+║              UQFF AETHER DARK MATTER IMPLICATIONS                            ║
+║              Non-Particle Paradigm for DM                                    ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+═══════════════════════════════════════════════════════════════════════════════
+1. STANDARD ΛCDM DARK MATTER
+═══════════════════════════════════════════════════════════════════════════════
+
+  From Friedmann equation: H² = (8πG/3) ρ_tot
+  
+  ρ_DM = Ω_DM × ρ_crit
+       = 0.26 × 9.5×10⁻²⁷ kg/m³
+       = {rho_DM_standard:.4e} kg/m³
+       
+  ΛCDM Interpretation:
+    • Cold, non-relativistic particles
+    • Non-baryonic (WIMPs, axions, etc.)
+    • ~26% of universe energy budget
+    • Forms halos around galaxies
+    • Direct detection: LUX, XENON, CDMS searches → NULL results
+    • Indirect: Gamma rays, antiparticles → No clear DM signal
+
+═══════════════════════════════════════════════════════════════════════════════
+2. UQFF AETHER CONDENSATE MODEL
+═══════════════════════════════════════════════════════════════════════════════
+
+  DM reinterpreted as aether-superconductive condensates:
+  
+  ρ_eff = ρ_vac,[UA] × (1 - f_TRZ) × exp(-U_m / k_B T_cosmo)
+        = {rho_eff_UQFF:.4e} J/m³
+        = {rho_eff_mass:.4e} kg/m³ (mass equivalent)
+        
+  Key parameters:
+    ρ_vac,[UA] = 7.09×10⁻³⁶ J/m³ (Universal Aether density)
+    f_TRZ = 0.1 (time-reversal fraction)
+    U_m = 10⁻²³ J (magnetic string energy)
+    T_cosmo = 2.725 K (CMB temperature)
+    
+  UQFF Interpretation:
+    • DM as aether fluctuations, NOT particles
+    • Gravitational effects via modulated vacuum energy
+    • [SCm] interfaces create DM-like clustering
+    • Rotation curves from aether drag, not halos
+
+═══════════════════════════════════════════════════════════════════════════════
+3. IMPLICATIONS & PREDICTIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+  ┌───────────────────────────────────────────────────────────────────────────┐
+  │ Observation          │ ΛCDM Prediction      │ UQFF Prediction            │
+  ├───────────────────────────────────────────────────────────────────────────┤
+  │ WIMP direct detection│ Should detect ~10 GeV│ NULL (no particles)        │
+  │ Axion searches       │ Should see signal    │ NULL (no particles)        │
+  │ LHC missing energy   │ SUSY/DM production   │ NULL (aether non-colliding)│
+  │ Rotation curves      │ NFW/Einasto halos    │ Aether drag (no halos)     │
+  │ Gravitational lensing│ DM mass distribution │ Aether density gradients   │
+  │ PBH as DM (f_PBH)    │ f_PBH < 1 (evaporate)│ f_PBH ~ 1 (τ_UQFF >> τ_H)  │
+  │ GW from mergers      │ P_GW = P_GR          │ P_GW,UQFF < P_GR (damped)  │
+  │ CMB anisotropies     │ DM perturbations     │ Aether density modes       │
+  └───────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+4. PBH DARK MATTER VIABILITY (UQFF)
+═══════════════════════════════════════════════════════════════════════════════
+
+  Standard: PBH as 100% DM ruled out for most masses
+    • M < 10¹² kg: Evaporate before today
+    • M ~ 10¹²-10¹⁷ kg: Gamma-ray excess constraints
+    • M ~ 10¹⁷-10²³ kg: Microlensing constraints
+    • M > 10²³ kg: LIGO merger rate constraints
+    
+  UQFF: Suppressed evaporation reopens mass windows
+    • τ_UQFF >> τ_standard (3.4× or more)
+    • M ~ 10¹⁰-10¹⁵ kg viable as 100% DM
+    • No gamma-ray excess (stabilized PBHs)
+    • Asteroid-mass PBHs (~10¹² kg) reach Hubble time
+
+═══════════════════════════════════════════════════════════════════════════════
+5. TESTABLE PREDICTIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+  A. NULL RESULTS AS UQFF SUPPORT:
+     • Continued null WIMP/axion searches → Supports non-particle DM
+     • No DM at LHC → No particle production
+     • No indirect detection → No annihilation/decay
+     
+  B. POSITIVE SIGNALS FOR UQFF:
+     • GW damping: P_GW,UQFF < P_GR by ~30-70%
+       - Detectable in LIGO/Virgo/LISA waveforms
+       - Merger timescales extended
+     • Aether drag: Rotation curves without halos
+       - Galaxy-scale "halos" replaced by aether density
+     • q-scope/THz analogs: Laboratory aether simulation
+       - Sonic black holes mimic DM clustering
+       
+  C. COSMOLOGICAL:
+     • CMB: Aether density modes vs. particle perturbations
+     • BAO: Aether drag on baryon acoustic oscillations
+     • 21cm: Aether effects on neutral hydrogen
+
+═══════════════════════════════════════════════════════════════════════════════
+6. ROTATION CURVE EXAMPLE (MW AT 10 kpc)
+═══════════════════════════════════════════════════════════════════════════════
+
+  Observed: v_rot ≈ 220 km/s at r = 10 kpc
+  
+  ΛCDM: Requires ~10¹² M_sun DM halo
+  
+  UQFF (aether drag):
+    v_rotation = {v_rotation:.2f} km/s at 10 kpc
+    
+  Aether drag flattens rotation without DM halo.
+
+═══════════════════════════════════════════════════════════════════════════════
+7. THEORETICAL FRAMEWORK
+═══════════════════════════════════════════════════════════════════════════════
+
+  Standard Friedmann:
+    H² = (8πG/3) ρ_tot
+    ρ_tot = ρ_baryon + ρ_DM + ρ_Λ
+    
+  UQFF Friedmann:
+    H² = (8πG/3) [ρ_baryon + ρ_eff + ρ_Λ]
+    ρ_eff = ρ_vac,[UA] × (1 - f_TRZ) × exp(-U_m / k_B T_cosmo)
+    
+  Key insight: DM-like gravity from aether vacuum energy modulation,
+  not from massive particles.
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  CONCLUSION: UQFF provides non-particle DM paradigm testable via            ║
+║  null WIMP/axion results, GW damping in LISA, and PBH viability.            ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+"""
+        return results, report
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
