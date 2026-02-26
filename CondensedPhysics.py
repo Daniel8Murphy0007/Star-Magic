@@ -104547,6 +104547,327 @@ class UQFFLuminosityCalculator(SelfExpandingMixin):
     # Four independent suppression mechanisms with full breakdown
     # ═══════════════════════════════════════════════════════════════════════════
     
+    def compute_E_pair(self, M: float) -> float:
+        """
+        Pair creation energy at black hole horizon.
+        
+        E_pair ~ ℏc / r_s, where r_s = 2GM/c² (Schwarzschild radius)
+        
+        This is the characteristic energy for virtual pair creation
+        at the event horizon.
+        
+        Args:
+            M: Black hole mass [kg]
+        
+        Returns:
+            E_pair [J]
+        """
+        hbar = self.params['hbar']
+        c = self.params['c']
+        G = self.params['G']
+        
+        r_s = 2 * G * M / (c**2)  # Schwarzschild radius
+        return hbar * c / r_s
+    
+    def compute_E_pair_UQFF(self, M: float) -> dict:
+        """
+        UQFF-modified pair creation energy.
+        
+        Standard: E_pair ~ ℏc/r_s
+        UQFF: E_pair,UQFF = E_pair × (ρ_UA / ρ_SCm) ≈ 10 × E_pair
+        
+        Higher effective energy means fewer pairs created at same T_H.
+        
+        Args:
+            M: Black hole mass [kg]
+        
+        Returns:
+            Dict with E_pair, E_pair_UQFF, and enhancement factor
+        """
+        E_pair = self.compute_E_pair(M)
+        
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        rho_ratio = rho_UA / rho_SCm  # ~10
+        
+        E_pair_UQFF = E_pair * rho_ratio
+        
+        return {
+            'E_pair_J': E_pair,
+            'E_pair_UQFF_J': E_pair_UQFF,
+            'rho_ratio': rho_ratio,
+            'enhancement_factor': rho_ratio,
+            'formula': 'E_pair,UQFF = E_pair × (ρ_UA / ρ_SCm)',
+            'physical_meaning': 'Higher effective pair energy reduces creation rate',
+        }
+    
+    def compute_U_m_full(self, r: float, t_days: float, t_n: float = 0.0,
+                          mu_j: float = None, gamma: float = 5e-5) -> float:
+        """
+        Full magnetic string barrier energy U_m.
+        
+        U_m = (μ_j / r) × (1 - exp(-γ t cos(π t_n)))
+        
+        where:
+            μ_j: Magnetic string tension [J·m]
+            r: Distance from horizon [m]
+            t: Time [days]
+            t_n: Normalized time phase (0 to 1)
+            γ ≈ 5×10⁻⁵ day⁻¹ (string damping rate)
+        
+        Args:
+            r: Distance from horizon [m]
+            t_days: Time in days
+            t_n: Normalized time phase
+            mu_j: String tension (default: params['mu_j'] or 1e-20)
+            gamma: Damping rate [day⁻¹] (default: 5e-5)
+        
+        Returns:
+            U_m [J]
+        """
+        if mu_j is None:
+            mu_j = self.params.get('mu_j', 1e-20)  # Default string tension
+        
+        # Time-dependent modulation
+        time_factor = 1.0 - np.exp(-gamma * t_days * np.cos(np.pi * t_n))
+        
+        # Barrier energy
+        U_m = (mu_j / r) * time_factor
+        
+        return U_m
+    
+    def compute_U_m_to_kT_ratio(self, M: float, r_factor: float = 1.0,
+                                  t_days: float = 1000.0, t_n: float = 0.0) -> dict:
+        """
+        Compute U_m / (k_B T_H) ratio for magnetic string suppression.
+        
+        This ratio determines exponential suppression: exp(-U_m / k_B T_H)
+        
+        Args:
+            M: Black hole mass [kg]
+            r_factor: Distance as multiple of r_s (default: 1.0 = at horizon)
+            t_days: Time evolution [days]
+            t_n: Normalized time phase
+        
+        Returns:
+            Dict with ratio and suppression factor
+        """
+        G = self.params['G']
+        c = self.params['c']
+        k_B = self.params['k_B']
+        
+        # Schwarzschild radius and distance
+        r_s = 2 * G * M / (c**2)
+        r = r_factor * r_s
+        
+        # Compute U_m and T_H
+        U_m = self.compute_U_m_full(r, t_days, t_n)
+        T_H = self.compute_T_H(M)
+        
+        # Ratio
+        ratio = U_m / (k_B * T_H)
+        
+        return {
+            'M_kg': M,
+            'r_s': r_s,
+            'r': r,
+            'T_H_K': T_H,
+            'U_m_J': U_m,
+            'k_B_T_H': k_B * T_H,
+            'U_m_kT_ratio': ratio,
+            'suppression_factor': np.exp(-ratio),
+            'lifetime_factor': np.exp(ratio),
+        }
+    
+    def step_by_step_lifetime_derivation(self, M: float, U_m_kT_ratio: float = 1.0) -> dict:
+        """
+        Step-by-step cumulative lifetime factor derivation.
+        
+        Shows how each suppression mechanism accumulates:
+        1. τ_standard (baseline)
+        2. τ' = τ / (1 - f_TRZ) ≈ τ × 1.11
+        3. τ'' = τ' × (ρ_UA / ρ_SCm) / (1 - ρ_SCm/ρ_UA) ≈ τ' × 1.11
+        4. τ_UQFF = τ'' × exp(U_m / k_B T_H) ≈ τ'' × 2.718
+        
+        Combined factor: 1.11 × 1.11 × 2.718 ≈ 3.34
+        
+        Args:
+            M: Black hole mass [kg]
+            U_m_kT_ratio: U_m/(k_B T_H) ratio (default: 1.0)
+        
+        Returns:
+            Dict with step-by-step lifetime derivation
+        """
+        year = self.params['year']
+        G = self.params['G']
+        hbar = self.params['hbar']
+        c = self.params['c']
+        f_TRZ = self.params['f_TRZ']
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        
+        # Step 0: Standard Hawking lifetime
+        tau_standard = (5120 * np.pi * G**2 * M**3) / (hbar * c**4)
+        tau_std_yr = tau_standard / year
+        
+        # Step 1: Time-reversal suppression τ' = τ / (1 - f_TRZ)
+        factor_TRZ = 1.0 / (1.0 - f_TRZ)  # ~1.111
+        tau_prime = tau_standard * factor_TRZ
+        cumulative_1 = factor_TRZ
+        
+        # Step 2: Aether-superconductive imbalance τ'' = τ' / (1 - ρ_SCm/ρ_UA)
+        # This is equivalent to τ' × (ρ_UA / (ρ_UA - ρ_SCm))
+        rho_ratio = rho_SCm / rho_UA  # ~0.1
+        factor_aether = 1.0 / (1.0 - rho_ratio)  # ~1.111
+        tau_double_prime = tau_prime * factor_aether
+        cumulative_2 = cumulative_1 * factor_aether
+        
+        # Step 3: Magnetic string barrier τ_UQFF = τ'' × exp(U_m / k_B T_H)
+        factor_Um = np.exp(U_m_kT_ratio)  # ~2.718 for ratio=1
+        tau_UQFF = tau_double_prime * factor_Um
+        cumulative_3 = cumulative_2 * factor_Um
+        
+        return {
+            'title': 'Step-by-Step Lifetime Factor Derivation',
+            'M_kg': M,
+            'M_solar': M / self.params['M_sun'],
+            
+            'step_0': {
+                'name': 'Standard Hawking Lifetime',
+                'formula': 'τ_standard = 5120πG²M³/(ℏc⁴)',
+                'tau_s': tau_standard,
+                'tau_yr': tau_std_yr,
+                'log10_tau_yr': np.log10(tau_std_yr),
+                'cumulative_factor': 1.0,
+            },
+            
+            'step_1': {
+                'name': 'Time-Reversal Suppression (f_TRZ)',
+                'formula': "τ' = τ / (1 - f_TRZ)",
+                'f_TRZ': f_TRZ,
+                'factor': factor_TRZ,
+                'factor_approx': '~1.11',
+                'tau_s': tau_prime,
+                'tau_yr': tau_prime / year,
+                'cumulative_factor': cumulative_1,
+                'physics': 'Negentropy reverses ~10% of pair emissions',
+            },
+            
+            'step_2': {
+                'name': 'Aether-Superconductive Imbalance',
+                'formula': "τ'' = τ' / (1 - ρ_SCm/ρ_UA)",
+                'rho_ratio': rho_ratio,
+                'factor': factor_aether,
+                'factor_approx': '~1.11',
+                'tau_s': tau_double_prime,
+                'tau_yr': tau_double_prime / year,
+                'cumulative_factor': cumulative_2,
+                'combined_approx': f'~{cumulative_2:.2f}',
+                'physics': '[UA] vs [SCm] density gradient damps fluctuations',
+            },
+            
+            'step_3': {
+                'name': 'Magnetic String Barrier (U_m)',
+                'formula': 'τ_UQFF = τ\'\' × exp(U_m / k_B T_H)',
+                'U_m_kT_ratio': U_m_kT_ratio,
+                'factor': factor_Um,
+                'factor_approx': '~2.72' if U_m_kT_ratio == 1.0 else f'e^{U_m_kT_ratio}',
+                'tau_s': tau_UQFF,
+                'tau_yr': tau_UQFF / year,
+                'cumulative_factor': cumulative_3,
+                'physics': 'Energy barriers exponentially suppress pair escape',
+            },
+            
+            'summary': {
+                'total_factor': cumulative_3,
+                'factor_breakdown': f'{factor_TRZ:.3f} × {factor_aether:.3f} × {factor_Um:.3f} = {cumulative_3:.2f}',
+                'factor_approx': '~3.34' if abs(cumulative_3 - 3.34) < 0.5 else f'~{cumulative_3:.1f}',
+                'tau_standard_yr': tau_std_yr,
+                'tau_UQFF_yr': tau_UQFF / year,
+                'log10_tau_std': np.log10(tau_std_yr),
+                'log10_tau_UQFF': np.log10(tau_UQFF / year),
+            },
+            
+            'conclusion': [
+                f'Each mechanism contributes multiplicatively: {factor_TRZ:.2f} × {factor_aether:.2f} × {factor_Um:.2f}',
+                f'Combined lifetime enhancement: {cumulative_3:.1f}×',
+                'For large astrophysical BHs, τ_UQFF becomes effectively infinite',
+                'Testable prediction: No Hawking radiation signals from stable BHs',
+            ],
+        }
+    
+    def sgr_a_detailed_suppression(self) -> dict:
+        """
+        Detailed suppression analysis for Sgr A* (M ≈ 8.55×10³⁶ kg).
+        
+        Shows all suppression mechanisms with numerical values:
+        - L' ≈ 0.9 L_H (time-reversal)
+        - L'' ≈ 0.9 L' (aether imbalance)  
+        - L_UQFF ≈ 0.37 L'' (magnetic barrier)
+        - τ' ≈ 1.11 τ_standard
+        
+        Returns:
+            Dict with complete Sgr A* suppression analysis
+        """
+        # Sgr A* mass (4.3 million solar masses)
+        M_sgr_a = 4.3e6 * self.params['M_sun']  # ≈ 8.55e36 kg
+        
+        # Basic parameters
+        T_H = self.compute_T_H(M_sgr_a)
+        L_H = self.compute_L_H(M_sgr_a)
+        E_pair_data = self.compute_E_pair_UQFF(M_sgr_a)
+        
+        # Step-by-step luminosity suppression
+        f_TRZ = self.params['f_TRZ']
+        rho_SCm = self.params['rho_vac_SCm']
+        rho_UA = self.params['rho_vac_UA']
+        
+        L_prime = L_H * (1.0 - f_TRZ)  # ~0.9 L_H
+        L_double_prime = L_prime * (1.0 - rho_SCm / rho_UA)  # ~0.9 L'
+        L_UQFF = L_double_prime * np.exp(-1.0)  # ~0.37 L'' for U_m/kT = 1
+        
+        # Lifetime factors
+        lifetime_data = self.step_by_step_lifetime_derivation(M_sgr_a)
+        
+        return {
+            'object': 'Sgr A* (Milky Way SMBH)',
+            'M_kg': M_sgr_a,
+            'M_kg_formatted': '~8.55×10³⁶ kg',
+            'M_solar': 4.3e6,
+            'T_H_K': T_H,
+            
+            # Pair creation energy
+            'E_pair': E_pair_data,
+            
+            # Luminosity suppression chain
+            'luminosity_chain': {
+                'L_H': L_H,
+                'L_prime': L_prime,
+                'L_prime_ratio': L_prime / L_H,
+                'L_prime_note': "L' ≈ 0.9 L_H (time-reversal)",
+                
+                'L_double_prime': L_double_prime,
+                'L_double_prime_ratio': L_double_prime / L_H,
+                'L_double_prime_note': "L'' ≈ 0.9 L' (aether imbalance)",
+                
+                'L_UQFF': L_UQFF,
+                'L_UQFF_ratio': L_UQFF / L_H,
+                'L_UQFF_note': "L_UQFF ≈ 0.37 L'' (magnetic barrier)",
+                
+                'total_suppression': L_UQFF / L_H,
+            },
+            
+            # Lifetime enhancement
+            'lifetime': lifetime_data,
+            
+            # Key results
+            'key_results': {
+                'L_suppression_factor': L_UQFF / L_H,
+                'tau_enhancement_factor': lifetime_data['summary']['total_factor'],
+                'is_effectively_eternal': True,
+            },
+        }
+    
     def compute_L_aether_factor(self) -> float:
         """
         Aether Vacuum Filling ([UA] Damping) suppression factor.
@@ -105116,8 +105437,30 @@ OBJECT: M = {b['M_kg']:.2e} kg ({b['M_solar']:.2e} M☉)
             U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
             return self.suppression_chart_data(M, U_m_kT_ratio)
         
+        elif mode == 'E_pair':
+            # Pair creation energy with UQFF enhancement
+            M = kwargs.get('M', 4.3e6 * self.params['M_sun'])
+            return self.compute_E_pair_UQFF(M)
+        
+        elif mode == 'U_m_ratio':
+            # U_m / (k_B T_H) ratio calculation
+            M = kwargs.get('M', 4.3e6 * self.params['M_sun'])
+            r_factor = kwargs.get('r_factor', 1.0)
+            t_days = kwargs.get('t_days', 1000.0)
+            return self.compute_U_m_to_kT_ratio(M, r_factor, t_days)
+        
+        elif mode == 'lifetime_derivation':
+            # Step-by-step cumulative lifetime factor derivation
+            M = kwargs.get('M', 4.3e6 * self.params['M_sun'])
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            return self.step_by_step_lifetime_derivation(M, U_m_kT_ratio)
+        
+        elif mode == 'sgr_a_detailed':
+            # Detailed Sgr A* suppression analysis
+            return self.sgr_a_detailed_suppression()
+        
         else:
-            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, entropy, evaporation, simulate, suppression_breakdown, suppression_sgr_a, suppression_chart")
+            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, entropy, evaporation, simulate, suppression_breakdown, suppression_sgr_a, suppression_chart, E_pair, U_m_ratio, lifetime_derivation, sgr_a_detailed")
     
     def long_form_equation(self, M: float = None) -> str:
         """
