@@ -2,10 +2,14 @@
 // UQFF Conductivity Spectrum σ(ω) Implementation
 // Fixed from original derivation - proper initialization and complex handling
 
+#define _USE_MATH_DEFINES
 #include "uqff_conductivity_spectrum.h"
 #include <iomanip>
 #include <sstream>
 #include <algorithm>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 // ============================================================================
 // CONSTRUCTOR - Full Initialization
