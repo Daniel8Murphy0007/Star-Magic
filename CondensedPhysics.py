@@ -36188,6 +36188,263 @@ Numerical Example (from derivation):
         return results, steps
     
     # ═══════════════════════════════════════════════════════════════════════════════
+    # ER=EPR SIMULATION (Mass/Qubit Sweep)
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def simulate_ER_EPR_equivalence(self, M_start: float = 1e20,
+                                     M_end: float = 1e30,
+                                     n_steps: int = 100,
+                                     n_qubits: int = 2,
+                                     f_TRZ: float = None,
+                                     t_n: float = 1.0,
+                                     gamma: float = 1e-3,
+                                     kappa_UQFF: float = 1e-60,
+                                     lambda_UQFF: float = 1e-9,
+                                     T_eff_floor: float = 1e16,
+                                     mu_j: float = 1e20,
+                                     frame: str = 'F_U_Bi') -> Tuple[dict, str]:
+        """
+        Simulate ER=EPR equivalence over a mass range.
+        
+        This method sweeps black hole mass M to compute how S_UQFF varies
+        relative to S_EPR across scales, identifying where ER=EPR holds.
+        
+        PHYSICS:
+            For mass M:
+            - r_s = 2GM/c² (Schwarzschild radius)
+            - r_throat = r_s × (ρ_UA/ρ_SCm) (UQFF-expanded throat)
+            - T_H = ℏc³/(8πGMk_B) (Hawking temperature)
+            - S_ER = A_throat/(4Gℏ) (Bekenstein-Hawking entropy)
+            - S_UQFF = S_ER × (1 + f_TRZ) × exp(U_m/(k_B×T_eff))
+            - S_EPR = n_qubits × ln(2)
+            
+            ER=EPR when S_UQFF ≈ S_EPR
+        
+        DUAL REGIME:
+            - U_m > 0 (RESISTIVE): exp(U_m/kT) > 1, entropy enhanced
+            - U_m < 0 (BUOYANT): exp(U_m/kT) < 1, entropy suppressed
+        
+        Args:
+            M_start: Starting mass (kg) - default 1e20 kg
+            M_end: Ending mass (kg) - default 1e30 kg
+            n_steps: Number of mass points
+            n_qubits: Entangled qubits for S_EPR
+            f_TRZ: Time reversal factor (default: 0.1)
+            t_n: Normalized time for cos(πt_n) oscillation
+            gamma: Temporal decay rate
+            kappa_UQFF: Energy reduction factor
+            lambda_UQFF: Magnetic scaling factor
+            T_eff_floor: Effective temperature floor (K)
+            mu_j: Magnetic permeability factor
+            frame: 'F_U_Bi' or 'F_U_Bi_i'
+        
+        Returns:
+            results: Dict with simulation data arrays
+            steps: Long-form explanation string
+        
+        References:
+            - Maldacena & Susskind (2013): ER=EPR
+            - UQFF entropy formulation (SuperGrok4)
+        """
+        # Defaults
+        f_TRZ = f_TRZ if f_TRZ is not None else self.f_TRZ
+        
+        # Frame-dependent densities
+        if frame == 'F_U_Bi_i':
+            rho_SCm = self.rho_vac_SCm_BH
+            rho_UA = self.rho_vac_UA_BH
+            frame_name = "F_U_Bi_i (outside→in)"
+        else:
+            rho_SCm = self.rho_vac_SCm_ISM
+            rho_UA = self.rho_vac_UA_ISM
+            frame_name = "F_U_Bi (inside→out)"
+        
+        rho_ratio = rho_UA / rho_SCm
+        l_Pl = np.sqrt(self.hbar * self.G / self.c**3)
+        
+        # S_EPR for reference
+        S_EPR = n_qubits * np.log(2)
+        
+        # Mass array (log-spaced)
+        M_array = np.logspace(np.log10(M_start), np.log10(M_end), n_steps)
+        
+        # Output arrays
+        r_s_array = np.zeros(n_steps)
+        r_throat_array = np.zeros(n_steps)
+        T_H_array = np.zeros(n_steps)
+        T_eff_array = np.zeros(n_steps)
+        S_ER_array = np.zeros(n_steps)
+        S_UQFF_array = np.zeros(n_steps)
+        U_m_array = np.zeros(n_steps)
+        regime_array = []
+        ratio_array = np.zeros(n_steps)
+        ER_equals_EPR_array = []
+        
+        # Simulation loop
+        for i, M in enumerate(M_array):
+            # Schwarzschild radius
+            r_s = 2 * self.G * M / self.c**2
+            r_s_array[i] = r_s
+            
+            # UQFF throat (expanded)
+            r_throat = r_s * rho_ratio
+            r_throat_array[i] = r_throat
+            
+            # Hawking temperature
+            T_H = self.hbar * self.c**3 / (8 * np.pi * self.G * M * self.k_B)
+            T_H_array[i] = T_H
+            
+            # Effective temperature with floor
+            T_eff = max(T_H, T_eff_floor)
+            T_eff_array[i] = T_eff
+            
+            # Bekenstein-Hawking entropy
+            A_throat = 4 * np.pi * r_throat**2
+            S_ER = A_throat / (4 * self.G * self.hbar)
+            S_ER_array[i] = S_ER
+            
+            # Magnetic string energy U_m
+            oscillation = 1.0 - np.exp(-gamma * np.cos(np.pi * t_n))
+            U_m = lambda_UQFF * (mu_j / r_throat) * oscillation
+            U_m_array[i] = U_m
+            
+            # Regime
+            regime = "BUOYANT" if U_m < 0 else "RESISTIVE"
+            regime_array.append(regime)
+            
+            # Full UQFF entropy
+            exponent_Um = U_m / (self.k_B * T_eff) if T_eff > 0 else 0.0
+            exponent_Um = np.clip(exponent_Um, -700.0, 700.0)
+            S_UQFF = S_ER * (1 + f_TRZ) * np.exp(exponent_Um)
+            S_UQFF_array[i] = S_UQFF
+            
+            # Ratio to S_EPR
+            ratio = S_UQFF / S_EPR if S_EPR > 0 else np.inf
+            ratio_array[i] = ratio
+            
+            # ER=EPR check (within 10%)
+            ER_equals_EPR = abs(ratio - 1.0) < 0.1
+            ER_equals_EPR_array.append(ER_equals_EPR)
+        
+        # Statistics
+        S_UQFF_min = np.min(S_UQFF_array)
+        S_UQFF_max = np.max(S_UQFF_array)
+        S_UQFF_mean = np.mean(S_UQFF_array)
+        
+        # Find mass where S_UQFF ≈ S_EPR (if any)
+        closest_idx = np.argmin(np.abs(ratio_array - 1.0))
+        M_ER_EPR = M_array[closest_idx]
+        ratio_closest = ratio_array[closest_idx]
+        
+        # Count regimes
+        buoyant_count = regime_array.count("BUOYANT")
+        resistive_count = regime_array.count("RESISTIVE")
+        
+        results = {
+            'M_array': M_array,
+            'r_s_array': r_s_array,
+            'r_throat_array': r_throat_array,
+            'T_H_array': T_H_array,
+            'T_eff_array': T_eff_array,
+            'S_ER_array': S_ER_array,
+            'S_UQFF_array': S_UQFF_array,
+            'U_m_array': U_m_array,
+            'regime_array': regime_array,
+            'ratio_array': ratio_array,
+            'ER_equals_EPR_array': ER_equals_EPR_array,
+            'n_qubits': n_qubits,
+            'S_EPR': S_EPR,
+            'M_start': M_start,
+            'M_end': M_end,
+            'n_steps': n_steps,
+            'M_ER_EPR': M_ER_EPR,
+            'ratio_closest': ratio_closest,
+            'S_UQFF_min': S_UQFF_min,
+            'S_UQFF_max': S_UQFF_max,
+            'S_UQFF_mean': S_UQFF_mean,
+            'buoyant_count': buoyant_count,
+            'resistive_count': resistive_count,
+            'f_TRZ': f_TRZ,
+            't_n': t_n,
+            'frame': frame,
+            'rho_ratio': rho_ratio
+        }
+        
+        steps = f"""UQFF ER=EPR Mass Simulation:
+═══════════════════════════════════════════════════════════════════════════════
+SIMULATION OVERVIEW:
+
+Sweeping black hole mass M from {M_start:.2e} to {M_end:.2e} kg
+to find the mass scale where S_UQFF ≈ S_EPR (ER=EPR holds).
+
+PHYSICS AT EACH MASS:
+  • r_s = 2GM/c² (Schwarzschild radius)
+  • r_throat = r_s × (ρ_UA/ρ_SCm) = r_s × {rho_ratio:.1f}
+  • T_H = ℏc³/(8πGMk_B) (Hawking temperature)
+  • S_ER = A_throat/(4Gℏ) (Bekenstein-Hawking entropy)
+  • S_UQFF = S_ER × (1 + f_TRZ) × exp(U_m/(k_B×T_eff))
+
+DUAL REGIME via U_m sign:
+  • U_m < 0 (BUOYANT): Entropy suppressed, assisted equivalence
+  • U_m > 0 (RESISTIVE): Entropy enhanced, resisted equivalence
+
+═══════════════════════════════════════════════════════════════════════════════
+INPUTS:
+  M range: [{M_start:.2e}, {M_end:.2e}] kg
+  n_steps: {n_steps}
+  n_qubits: {n_qubits}
+  S_EPR = n × ln(2) = {S_EPR:.4f} nats
+  
+UQFF Parameters:
+  f_TRZ = {f_TRZ:.4f}
+  t_n = {t_n:.4f}
+  λ_UQFF = {lambda_UQFF:.4e}
+  μ_j = {mu_j:.4e}
+  T_eff_floor = {T_eff_floor:.4e} K
+  Frame = {frame_name}
+  ρ_UA/ρ_SCm = {rho_ratio:.4f}
+
+═══════════════════════════════════════════════════════════════════════════════
+SIMULATION RESULTS:
+
+S_UQFF Statistics:
+  Min:  {S_UQFF_min:.4e} nats
+  Max:  {S_UQFF_max:.4e} nats
+  Mean: {S_UQFF_mean:.4e} nats
+  
+S_EPR Reference: {S_EPR:.4f} nats
+
+Regime Distribution:
+  BUOYANT:   {buoyant_count}/{n_steps} ({100*buoyant_count/n_steps:.1f}%)
+  RESISTIVE: {resistive_count}/{n_steps} ({100*resistive_count/n_steps:.1f}%)
+
+═══════════════════════════════════════════════════════════════════════════════
+ER=EPR EQUIVALENCE ANALYSIS:
+
+Mass where S_UQFF/S_EPR closest to 1:
+  M_ER=EPR = {M_ER_EPR:.4e} kg = {M_ER_EPR/self.M_sun:.4e} M_☉
+  Ratio = {ratio_closest:.4e}
+
+{'✓ ER=EPR HOLDS at M = ' + f'{M_ER_EPR:.2e} kg' if abs(ratio_closest - 1.0) < 0.1 else '✗ ER≠EPR: No mass in range gives ratio ≈ 1'}
+
+Interpretation:
+  As mass increases, S_ER (geometric entropy) grows as A_throat ∝ M².
+  S_EPR (quantum entropy) is fixed at n × ln(2).
+  
+  ER=EPR holds when geometric and quantum entropies match:
+  • Small M: S_ER << S_EPR (geometric entropy too small)
+  • Large M: S_ER >> S_EPR (geometric entropy dominates)
+  • M_ER=EPR: S_ER ≈ S_EPR (entanglement = wormhole geometry)
+
+Q-SCOPE TESTABILITY:
+  Find mass scale where micro-wormhole correlations match
+  quantum entanglement entropy. Current simulation predicts
+  M_ER=EPR ≈ {M_ER_EPR:.2e} kg as the "entanglement mass."
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+    
+    # ═══════════════════════════════════════════════════════════════════════════════
     # AdS/CFT DUALITY (Holographic Gauge-Gravity Correspondence)
     # ═══════════════════════════════════════════════════════════════════════════════
     
