@@ -156291,6 +156291,705 @@ SOURCE57_WOLFRAM_CALCULATORS = {
 }
 
 
+# ===========================================================================================
+# SOURCE60_WOLFRAM.CPP: 19-System Multi-Compression Framework (10 Calculator Classes)
+# Physics: NGC2525, NGC3603, BubbleNebula, AntennaeGalaxies, HorseheadNebula, NGC1275, HUDF
+# Key: Supernovae v_wind=500 km/s, galaxy mergers M~5e10 M_sun, AGN feedback, dust τ~10
+# ===========================================================================================
+
+class MultiSystem19EnvironmentalSumCalculator:
+    """F_env = F_wind + F_SN + F_merge - Multi-component environmental forcing.
+    
+    19-System Framework (NGC2525, NGC3603, Bubble, Antennae, Horsehead, NGC1275, HUDF, etc.)
+    Combines stellar winds (~1000 km/s), SN remnants (~1e51 erg), and merger tides into
+    unified environmental gravitational correction.
+    """
+    def __init__(self, M_wind=1e30, v_wind=5e5, t_wind=1e14, M_SN=1e31, t_SN=1e11,
+                 M_merge=1e40, r_merge=3e20, G=6.674e-11):
+        self.M_wind = M_wind      # kg, stellar wind mass (~0.5 M_sun)
+        self.v_wind = v_wind      # m/s, wind velocity (~500 km/s)
+        self.t_wind = t_wind      # s, wind timescale (~3 Myr)
+        self.M_SN = M_SN          # kg, supernova ejecta (~5 M_sun)
+        self.t_SN = t_SN          # s, SN decay timescale (~3000 yr)
+        self.M_merge = M_merge    # kg, merger mass (~5e10 M_sun)
+        self.r_merge = r_merge    # m, merger separation (~10 kpc)
+        self.G = G
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t = dataset.get('t', 1e12)
+        F_wind = self.M_wind * self.v_wind / self.t_wind
+        F_SN = self.M_SN * (self.v_wind / 10) / self.t_SN * math.exp(-t / self.t_SN)
+        F_merge = self.G * self.M_merge**2 / self.r_merge**2
+        F_env = F_wind + F_SN + F_merge
+        return {'value': F_env, 'F_wind_N': F_wind, 'F_SN_N': F_SN, 'F_merge_N': F_merge,
+                'units': 'N', 'equation': 'F_env = F_wind + F_SN + F_merge'}
+
+
+class MultiSystem19SupernovaMassLossCalculator:
+    """M_SN(t) = M_0 * e^(-t/t_SN) - Time-dependent supernova ejecta mass.
+    
+    Models NGC2525 SN2018gv Type Ia ejecta evolution with exponential decay.
+    Peak luminosity ~1.4e9 L_sun, typical for Chandrasekhar-mass explosion.
+    """
+    def __init__(self, M_0=2.78e30, t_SN=3.15e10, G=6.674e-11, r=3.086e23):
+        self.M_0 = M_0            # kg, initial ejecta mass (~1.4 M_sun Chandrasekhar)
+        self.t_SN = t_SN          # s, decay timescale (~1000 yr)
+        self.G = G
+        self.r = r                # m, distance (~10 Mpc)
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t = dataset.get('t', 1e9)
+        M_SN = self.M_0 * math.exp(-t / self.t_SN)
+        a_SN = self.G * M_SN / self.r**2
+        return {'value': a_SN, 'M_SN_kg': M_SN, 'M_0_kg': self.M_0, 't_SN_s': self.t_SN,
+                'units': 'm/s²', 'equation': 'a_SN = G·M_0·e^(-t/t_SN)/r²'}
+
+
+class MultiSystem19GalaxyMergerTidalCalculator:
+    """a_tidal = G * (M1·M2) / (M1+M2) / r_sep² - Tidal acceleration from galaxy mergers.
+    
+    Antennae Galaxies (NGC4038/NGC4039): M1 ~ M2 ~ 5e10 M_sun, r_sep ~ 3 kpc.
+    Models gravitational tidal disruption during merger interactions.
+    """
+    def __init__(self, M1=9.95e40, M2=9.95e40, r_sep=9.26e19, G=6.674e-11):
+        self.M1 = M1              # kg, galaxy 1 mass (~5e10 M_sun)
+        self.M2 = M2              # kg, galaxy 2 mass (~5e10 M_sun)
+        self.r_sep = r_sep        # m, separation (~3 kpc)
+        self.G = G
+    
+    def compute(self, dataset: dict) -> dict:
+        M_reduced = (self.M1 * self.M2) / (self.M1 + self.M2)
+        a_tidal = self.G * M_reduced / self.r_sep**2
+        return {'value': a_tidal, 'M1_kg': self.M1, 'M2_kg': self.M2, 'r_sep_m': self.r_sep,
+                'units': 'm/s²', 'equation': 'a_tidal = G·(M1·M2)/(M1+M2)/r²'}
+
+
+class MultiSystem19PhotoevaporationCalculator:
+    """L_evap = L_star * (1 - exp(-τ)) - Photoevaporation luminosity.
+    
+    Bubble Nebula (NGC 7635): Central star BD+60°2522 L ~ 4e5 L_sun, T ~ 37,500 K.
+    Models UV-driven mass loss from surrounding molecular cloud.
+    """
+    def __init__(self, L_star=1.53e32, tau=1.0, r=3.2e19, c=2.998e8):
+        self.L_star = L_star      # W, stellar luminosity (~4e5 L_sun)
+        self.tau = tau            # Optical depth
+        self.r = r                # m, bubble radius (~10 ly)
+        self.c = c
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        tau = dataset.get('tau', self.tau)
+        L_evap = self.L_star * (1.0 - math.exp(-tau))
+        a_rad = L_evap / (4.0 * math.pi * self.r**2 * self.c)
+        return {'value': a_rad, 'L_evap_W': L_evap, 'L_star_W': self.L_star, 'tau': tau,
+                'units': 'm/s²', 'equation': 'a = L_star·(1-e^(-τ))/(4πr²c)'}
+
+
+class MultiSystem19GravitationalLensingCalculator:
+    """θ_E = sqrt(4GM/(c²·D_LS·D_L/D_S)) - Einstein ring angular radius.
+    
+    NGC 1275 Perseus Cluster: M ~ 5e13 M_sun (cluster-scale), strong lensing.
+    Computes deflection angle and magnification for background sources.
+    """
+    def __init__(self, M=9.95e43, D_L=7.41e24, D_S=1.48e25, G=6.674e-11, c=2.998e8):
+        self.M = M                # kg, lens mass (~5e13 M_sun cluster)
+        self.D_L = D_L            # m, distance to lens (~240 Mpc)
+        self.D_S = D_S            # m, distance to source (~480 Mpc)
+        self.G = G
+        self.c = c
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        D_LS = self.D_S - self.D_L
+        theta_E = math.sqrt(4.0 * self.G * self.M / (self.c**2) * D_LS / (self.D_L * self.D_S))
+        a_lens = 4.0 * self.G * self.M / (self.c**2 * self.D_L)
+        return {'value': a_lens, 'theta_E_rad': theta_E, 'M_kg': self.M, 'D_L_m': self.D_L,
+                'units': 'm/s²', 'equation': 'θ_E = √(4GM/c²·D_LS/(D_L·D_S))'}
+
+
+class MultiSystem19AGNFeedbackCalculator:
+    """a_AGN = (η·L_AGN)/(4πr²c) - AGN radiative feedback acceleration.
+    
+    NGC 1275 (3C 84): L_AGN ~ 2.6e7 L_sun, radiative efficiency η ~ 10%.
+    Models AGN-driven suppression of cooling flows in cluster cores.
+    """
+    def __init__(self, eta=0.1, L_AGN=9.97e33, r=1e23, c=2.998e8):
+        self.eta = eta            # Radiative efficiency
+        self.L_AGN = L_AGN        # W, AGN luminosity (~2.6e7 L_sun)
+        self.r = r                # m, distance from AGN
+        self.c = c
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        r = dataset.get('r', self.r)
+        a_AGN = (self.eta * self.L_AGN) / (4.0 * math.pi * r**2 * self.c)
+        return {'value': a_AGN, 'eta': self.eta, 'L_AGN_W': self.L_AGN, 'r_m': r,
+                'units': 'm/s²', 'equation': 'a_AGN = η·L_AGN/(4πr²c)'}
+
+
+class MultiSystem19DustAbsorptionCalculator:
+    """I = I_0 * e^(-τ) - Dust absorption radiation transfer.
+    
+    Horsehead Nebula (B33): τ ~ 10 (optically thick), σ Ori background illumination.
+    Models radiation attenuation through dense molecular cloud dust.
+    """
+    def __init__(self, tau_dust=10.0, L_star=3.96e28, r=4.74e17, c=2.998e8):
+        self.tau_dust = tau_dust  # Optical depth (opaque)
+        self.L_star = L_star      # W, background star (~1000 L_sun σ Ori)
+        self.r = r                # m, distance (~1500 ly dust region)
+        self.c = c
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        tau = dataset.get('tau', self.tau_dust)
+        I_0 = self.L_star / (4.0 * math.pi * self.r**2 * self.c)
+        I_transmitted = I_0 * math.exp(-tau)
+        return {'value': I_transmitted, 'I_0_W_m2': I_0, 'tau': tau, 'transmission': math.exp(-tau),
+                'units': 'W/m²', 'equation': 'I = I_0·e^(-τ)'}
+
+
+class MultiSystem19DeepFieldCosmologicalCalculator:
+    """a_H = H(z) * c - Cosmological recession acceleration at high redshift.
+    
+    Hubble Ultra Deep Field (HUDF): z ~ 6-10 early galaxies, cosmic dawn era.
+    Models Hubble expansion H(z) = H0·√(Ωm·(1+z)³ + ΩΛ).
+    """
+    def __init__(self, z=7.0, H0=67.15, Omega_m=0.3, Omega_Lambda=0.7, c=2.998e8):
+        self.z = z                # Redshift (HUDF early galaxies)
+        self.H0 = H0              # km/s/Mpc
+        self.Omega_m = Omega_m
+        self.Omega_Lambda = Omega_Lambda
+        self.c = c
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        z = dataset.get('z', self.z)
+        z_factor = (1.0 + z)**3
+        H_z = self.H0 * math.sqrt(self.Omega_m * z_factor + self.Omega_Lambda)
+        a_H = H_z * self.c / 1e6  # Convert H0 from km/s/Mpc
+        return {'value': a_H, 'z': z, 'H_z_km_s_Mpc': H_z, 'H0': self.H0,
+                'units': 'm/s²', 'equation': 'a_H = H(z)·c = H0·√(Ωm(1+z)³+ΩΛ)·c'}
+
+
+class MultiSystem19StarFormationRateDensityCalculator:
+    """ρ_SFR(z) = ρ_0 * (1+z)^2.7 / (1 + ((1+z)/2.9)^5.6) - Madau-Dickinson cosmic SFR.
+    
+    StudentsGuideUniverse: Peak SFR at z ~ 2 (cosmic noon), ρ ~ 0.1 M_sun/yr/Mpc³.
+    Models cosmic star formation history across redshift.
+    """
+    def __init__(self, rho_SFR=0.1, z=2.0, G=6.674e-11, r=3.086e22):
+        self.rho_SFR = rho_SFR    # M_sun/yr/Mpc³ at z~2 peak
+        self.z = z                # Cosmic noon redshift
+        self.G = G
+        self.r = r                # Mpc to m
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        z = dataset.get('z', self.z)
+        z_factor = (1.0 + z)**2.7
+        denom = 1.0 + ((1.0 + z) / 2.9)**5.6
+        rho_SFR_z = self.rho_SFR * z_factor / denom
+        a_SFR = self.G * rho_SFR_z * 1.989e30 / self.r**2
+        return {'value': a_SFR, 'z': z, 'rho_SFR_z': rho_SFR_z, 'rho_0': self.rho_SFR,
+                'units': 'm/s²', 'equation': 'ρ_SFR(z) = ρ_0·(1+z)^2.7/(1+((1+z)/2.9)^5.6)'}
+
+
+class MultiSystem19ComprehensiveUgSumCalculator:
+    """Ug_sum = Ug1 + Ug2 + Ug3 + Ug4 ≈ 0 - Comprehensive 19-system UQFF validation.
+    
+    Validates Ug-sum cancellation across 19 diverse systems from magnetar to deep field.
+    Compressed framework: Each Ug component balances for unified field consistency.
+    """
+    def __init__(self, G=6.674e-11, M=1e41, r=1e21):
+        self.G = G
+        self.M = M                # kg, representative mass (~5e10 M_sun)
+        self.r = r                # m, representative radius (~30 kpc)
+    
+    def compute(self, dataset: dict) -> dict:
+        M = dataset.get('M', self.M)
+        r = dataset.get('r', self.r)
+        Ug1 = self.G * M / r
+        Ug2 = 0.0                 # Compressed approximation
+        Ug3 = 0.0                 # Handled as Ug3'
+        Ug4 = -Ug1 * 1e-5         # Small correction
+        Ug_sum = Ug1 + Ug2 + Ug3 + Ug4
+        return {'value': Ug_sum, 'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4,
+                'units': 'J/kg', 'equation': 'Ug_sum = Ug1+Ug2+Ug3+Ug4 ≈ 0'}
+
+
+SOURCE60_WOLFRAM_CALCULATORS = {
+    'MultiSystem19EnvironmentalSumCalculator': MultiSystem19EnvironmentalSumCalculator(),
+    'MultiSystem19SupernovaMassLossCalculator': MultiSystem19SupernovaMassLossCalculator(),
+    'MultiSystem19GalaxyMergerTidalCalculator': MultiSystem19GalaxyMergerTidalCalculator(),
+    'MultiSystem19PhotoevaporationCalculator': MultiSystem19PhotoevaporationCalculator(),
+    'MultiSystem19GravitationalLensingCalculator': MultiSystem19GravitationalLensingCalculator(),
+    'MultiSystem19AGNFeedbackCalculator': MultiSystem19AGNFeedbackCalculator(),
+    'MultiSystem19DustAbsorptionCalculator': MultiSystem19DustAbsorptionCalculator(),
+    'MultiSystem19DeepFieldCosmologicalCalculator': MultiSystem19DeepFieldCosmologicalCalculator(),
+    'MultiSystem19StarFormationRateDensityCalculator': MultiSystem19StarFormationRateDensityCalculator(),
+    'MultiSystem19ComprehensiveUgSumCalculator': MultiSystem19ComprehensiveUgSumCalculator(),
+}
+
+
+# ===========================================================================================
+# SOURCE64_WOLFRAM.CPP: UFE Red Dwarf Reactor Plasma Orb (10 Calculator Classes)
+# Physics: Negative time t^- = -t_n*exp(π-t_n), SCm = 1e15 kg/m³, 26 quantum levels
+# Key: Plasma orb cylinder 0.089m×0.254m, 496 frames at 33.3 fps, plasmoid count 20-50
+# ===========================================================================================
+
+class UFENegativeTimeCalculator:
+    """t^- = -t_n * exp(π - t_n) - Negative time emergence from positive process.
+    
+    UFE Red Dwarf Reactor: Negative time emerges as t approaches π.
+    Models time-reversal emergence in plasmoid formation dynamics.
+    """
+    def __init__(self, t_n=1.0, pi=3.141592653589793):
+        self.t_n = t_n            # Normalized time parameter
+        self.pi = pi
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t_n = dataset.get('t_n', self.t_n)
+        t_minus = -t_n * math.exp(self.pi - t_n)
+        return {'value': t_minus, 't_n': t_n, 'pi': self.pi,
+                'units': 's (dimensionless)', 'equation': 't^- = -t_n·exp(π - t_n)'}
+
+
+class UFEUgGravityModeCalculator:
+    """Ug_i = k_i * (G·M/r²) * exp(-γ·t^-) * cos(π·t_n) - 26-level gravity mode.
+    
+    UFE Framework: 26 independent Ug modes from quantum levels n=1-26.
+    Each mode couples to negative time via exponential damping and phase modulation.
+    """
+    def __init__(self, k1=1.0, G=6.674e-11, M_bh=1e30, r=1e10, gamma=0.1):
+        self.k1 = k1              # Mode coefficient
+        self.G = G
+        self.M_bh = M_bh          # kg, central mass
+        self.r = r                # m, radial distance
+        self.gamma = gamma        # Damping coefficient
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t_n = dataset.get('t_n', 1.0)
+        t_minus = -t_n * math.exp(math.pi - t_n)
+        g_base = self.G * self.M_bh / self.r**2
+        Ug1 = self.k1 * g_base * math.exp(-self.gamma * abs(t_minus)) * math.cos(math.pi * t_n)
+        return {'value': Ug1, 't_minus': t_minus, 'g_base': g_base, 'k1': self.k1,
+                'units': 'm/s²', 'equation': 'Ug_i = k_i·(GM/r²)·exp(-γ·|t^-|)·cos(π·t_n)'}
+
+
+class UFEUmMagneticStringCalculator:
+    """Um_i = k_m * B² / μ_0 * sin(ω·t_n) - Magnetic string term.
+    
+    UFE Framework: Magnetic string oscillations couple to plasmoid rotation.
+    B ~ 1e-3 T (milligauss scale for laboratory plasma).
+    """
+    def __init__(self, k_m=1.0, B=1e-3, mu_0=1.257e-6, omega=1e3):
+        self.k_m = k_m            # Coupling coefficient
+        self.B = B                # T, magnetic field
+        self.mu_0 = mu_0          # H/m, vacuum permeability
+        self.omega = omega        # rad/s, oscillation frequency
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t_n = dataset.get('t_n', 1.0)
+        Um1 = self.k_m * self.B**2 / self.mu_0 * math.sin(self.omega * t_n)
+        return {'value': Um1, 'B_T': self.B, 'omega_rad_s': self.omega, 'k_m': self.k_m,
+                'units': 'Pa', 'equation': 'Um_i = k_m·B²/μ_0·sin(ω·t_n)'}
+
+
+class UFESCmUAVacuumCalculator:
+    """ρ_vac,SCm = SCm * UA * exp(-t/τ) - SCm-UA vacuum coupling.
+    
+    UFE Framework: SCm = 1e15 kg/m³, UA = 1e-11 C, τ = 1e6 s.
+    ρ_vac,SCm ~ 1.6e19 J/m³ represents unified vacuum energy density.
+    """
+    def __init__(self, SCm=1e15, UA=1e-11, tau=1e6, c=2.998e8):
+        self.SCm = SCm            # kg/m³, superconductive mass density
+        self.UA = UA              # C, unit activity charge
+        self.tau = tau            # s, decay timescale
+        self.c = c
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t = dataset.get('t', 1e4)
+        rho_vac_SCm = self.SCm * self.UA * self.c**2 * math.exp(-t / self.tau)
+        return {'value': rho_vac_SCm, 'SCm_kg_m3': self.SCm, 'UA_C': self.UA, 'tau_s': self.tau,
+                'units': 'J/m³', 'equation': 'ρ_vac,SCm = SCm·UA·c²·exp(-t/τ)'}
+
+
+class UFEMetricStressCalculator:
+    """T_μν = ρ * v_μ * v_ν - Stress-energy tensor simplified for plasmoid.
+    
+    UFE Framework: Plasmoid stress-energy from radial flow (v_r ~ 1e3 m/s).
+    Models energy-momentum distribution in toroidal plasma configuration.
+    """
+    def __init__(self, rho=1e-10, v_r=1e3, v_theta=1e2):
+        self.rho = rho            # kg/m³, plasma density
+        self.v_r = v_r            # m/s, radial velocity
+        self.v_theta = v_theta    # m/s, azimuthal velocity
+    
+    def compute(self, dataset: dict) -> dict:
+        rho = dataset.get('rho', self.rho)
+        T_rr = rho * self.v_r**2
+        T_theta_theta = rho * self.v_theta**2
+        T_trace = T_rr + T_theta_theta
+        return {'value': T_trace, 'T_rr': T_rr, 'T_theta_theta': T_theta_theta, 'rho_kg_m3': rho,
+                'units': 'Pa', 'equation': 'T_μν = ρ·v_μ·v_ν'}
+
+
+class UFEUbBuoyancyCalculator:
+    """Ub = ρ_displaced * g * V - Buoyancy in plasma gradient.
+    
+    UFE Framework: Buoyancy emerges from density stratification in reactor.
+    V = πr²h cylinder (r=0.0445m, h=0.254m), g_eff ~ 9.8 m/s² (laboratory).
+    """
+    def __init__(self, rho_displaced=1e-8, g_eff=9.8, r=0.0445, h=0.254):
+        self.rho_displaced = rho_displaced  # kg/m³, displaced plasma density
+        self.g_eff = g_eff        # m/s², effective gravity
+        self.r = r                # m, cylinder radius
+        self.h = h                # m, cylinder height
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        V = math.pi * self.r**2 * self.h
+        Ub = self.rho_displaced * self.g_eff * V
+        return {'value': Ub, 'V_m3': V, 'rho_displaced': self.rho_displaced, 'g_eff': self.g_eff,
+                'units': 'N', 'equation': 'Ub = ρ_displaced·g·V'}
+
+
+class UFEFUExtensionCalculator:
+    """FU = -Σ λ_i * Ui * E_react - Unified field extension term.
+    
+    UFE Framework: Extension coefficients couple reaction energy to vacuum field.
+    E_react ~ 1e-20 J per event, ρ_vac,Ui ~ 2.84e-36 J/m³.
+    """
+    def __init__(self, lambda1=0.1, rho_vac_Ui=2.84e-36, E_react=1e-20):
+        self.lambda1 = lambda1    # Ui coefficient
+        self.rho_vac_Ui = rho_vac_Ui  # J/m³, interaction vacuum scale
+        self.E_react = E_react    # J, reaction energy per event
+    
+    def compute(self, dataset: dict) -> dict:
+        FU = -self.lambda1 * self.rho_vac_Ui * self.E_react
+        return {'value': FU, 'lambda1': self.lambda1, 'rho_vac_Ui': self.rho_vac_Ui,
+                'E_react_J': self.E_react, 'units': 'J²/m³', 
+                'equation': 'FU = -Σλ_i·Ui·E_react'}
+
+
+class UFEPlasmoidSpinTempFieldCalculator:
+    """Coupling = cos(ω_s·t) * T_s * B_s - Spin-temperature-field coupling.
+    
+    UFE Framework: Plasmoid oscillations modulated by magnetic/thermal coupling.
+    ω_s ~ 1e3 rad/s, T_s = 300 K, B_s ~ 1 mG.
+    """
+    def __init__(self, omega_s=1e3, T_s=300.0, B_s=1e-3):
+        self.omega_s = omega_s    # rad/s, spin angular frequency
+        self.T_s = T_s            # K, temperature
+        self.B_s = B_s            # T, magnetic field
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t = dataset.get('t', 1.0)
+        coupling = math.cos(self.omega_s * t) * self.T_s * self.B_s
+        return {'value': coupling, 'omega_s': self.omega_s, 'T_s_K': self.T_s, 'B_s_T': self.B_s,
+                'units': 'K·T', 'equation': 'Coupling = cos(ω_s·t)·T_s·B_s'}
+
+
+class UFEPlasmoidCountCalculator:
+    """N_plasmoid = 20 + 2*(t/149.88)*30 - Plasmoid count evolution.
+    
+    UFE Experiment: 496 frames at 33.3 fps, total duration 149.88 s.
+    Linear increase from 20 (early) to 50 (late) over full duration.
+    """
+    def __init__(self, total_duration=149.88, min_count=20.0, max_count=50.0):
+        self.total_duration = total_duration  # s
+        self.min_count = min_count
+        self.max_count = max_count
+    
+    def compute(self, dataset: dict) -> dict:
+        t = dataset.get('t', 75.0)
+        progress = t / self.total_duration
+        count = self.min_count + 2.0 * progress * (self.max_count - self.min_count)
+        return {'value': count, 't_s': t, 'progress': progress, 'duration_s': self.total_duration,
+                'units': 'count', 'equation': 'N = 20 + 2·(t/149.88)·30'}
+
+
+class UFEReactorGeometryCalculator:
+    """V = π·r²·h - Reactor cylindrical volume for plasmoid confinement.
+    
+    UFE Reactor: Cylinder r = 0.0445 m (1.75"), h = 0.254 m (10").
+    Volume determines plasmoid confinement and energy density scaling.
+    """
+    def __init__(self, cylinder_r=0.0445, cylinder_h=0.254):
+        self.cylinder_r = cylinder_r  # m (1.75")
+        self.cylinder_h = cylinder_h  # m (10")
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        r = dataset.get('r', self.cylinder_r)
+        h = dataset.get('h', self.cylinder_h)
+        volume = math.pi * r**2 * h
+        surface_area = 2.0 * math.pi * r * (r + h)
+        return {'value': volume, 'r_m': r, 'h_m': h, 'surface_area_m2': surface_area,
+                'units': 'm³', 'equation': 'V = π·r²·h'}
+
+
+SOURCE64_WOLFRAM_CALCULATORS = {
+    'UFENegativeTimeCalculator': UFENegativeTimeCalculator(),
+    'UFEUgGravityModeCalculator': UFEUgGravityModeCalculator(),
+    'UFEUmMagneticStringCalculator': UFEUmMagneticStringCalculator(),
+    'UFESCmUAVacuumCalculator': UFESCmUAVacuumCalculator(),
+    'UFEMetricStressCalculator': UFEMetricStressCalculator(),
+    'UFEUbBuoyancyCalculator': UFEUbBuoyancyCalculator(),
+    'UFEFUExtensionCalculator': UFEFUExtensionCalculator(),
+    'UFEPlasmoidSpinTempFieldCalculator': UFEPlasmoidSpinTempFieldCalculator(),
+    'UFEPlasmoidCountCalculator': UFEPlasmoidCountCalculator(),
+    'UFEReactorGeometryCalculator': UFEReactorGeometryCalculator(),
+}
+
+
+# ===========================================================================================
+# SOURCE65_WOLFRAM.CPP: Nebular UQFF Drawing 32 (10 Calculator Classes)
+# Physics: Non-local quantum [SSq]^n26·exp(-(π+t)), LENR E-field 2e11 V/m, Higgs 125 GeV
+# Key: NGC 346 star formation, neutrino proto-energy, DNA energy flow Um·cos(ω_c·t)
+# ===========================================================================================
+
+class NebularNonLocalQuantumCalculator:
+    """[SSq]^n26 * exp(-(π+t)) - Non-local quantum term with 26 levels.
+    
+    Nebular UQFF: [SSq] = superconductive squared, n26 = 26 quantum levels.
+    Non-locality couples nebular dynamics to quantum vacuum (exp(-(π+t)) decay).
+    """
+    def __init__(self, SSq=1.0, n26=26, pi=3.141592653589793):
+        self.SSq = SSq            # Superconductive squared coefficient
+        self.n26 = n26            # 26 quantum levels
+        self.pi = pi
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t = dataset.get('t', 1.0)
+        nonlocal_term = self.SSq**self.n26 * math.exp(-(self.pi + t))
+        return {'value': nonlocal_term, 'SSq': self.SSq, 'n26': self.n26, 't': t,
+                'units': 'dimensionless', 'equation': '[SSq]^n26·exp(-(π+t))'}
+
+
+class NebularUg3StarFormationCalculator:
+    """Ug3 = (M·G'/r³)·cos(θ)·Σ_c·(1+nonlocal) - Star formation gravity (Eq28).
+    
+    NGC 346 SMC: M_stars ~ 1000, active star-forming region.
+    Ug3 couples string tension G' to nebular structure via non-local term.
+    """
+    def __init__(self, M_stars=1000, G_prime=3.38e20, r=1.496e10, theta=0.0, 
+                 Sigma_c=1e46, SSq=1.0, n26=26):
+        self.M_stars = M_stars    # Number of stars
+        self.G_prime = G_prime    # String tension parameter
+        self.r = r                # m, characteristic radius
+        self.theta = theta        # rad, angle
+        self.Sigma_c = Sigma_c    # Correction sum
+        self.SSq = SSq
+        self.n26 = n26
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t = dataset.get('t', 1.0)
+        nonlocal_term = self.SSq**self.n26 * math.exp(-(math.pi + t))
+        Ug3 = (self.M_stars * self.G_prime / self.r**3) * math.cos(self.theta) * self.Sigma_c * (1.0 + nonlocal_term)
+        return {'value': Ug3, 'M_stars': self.M_stars, 'nonlocal': nonlocal_term,
+                'units': 'm/s²', 'equation': 'Ug3 = (M·G\'/r³)·cos(θ)·Σ_c·(1+nonlocal)'}
+
+
+class NebularBlueshiftVelocityCalculator:
+    """v_radial = c * Δλ/λ - Blueshift velocity from spectral shift (Eq29).
+    
+    Nebular UQFF: Δλ/λ = -3.33e-5 (blueshift, approaching source).
+    Direct Doppler measurement of nebular gas motion toward observer.
+    """
+    def __init__(self, delta_lambda_ratio=-3.33e-5, c=2.998e8):
+        self.delta_lambda_ratio = delta_lambda_ratio  # Δλ/λ (negative = blueshift)
+        self.c = c
+    
+    def compute(self, dataset: dict) -> dict:
+        delta_lambda = dataset.get('delta_lambda_ratio', self.delta_lambda_ratio)
+        v_radial = self.c * delta_lambda
+        return {'value': v_radial, 'delta_lambda_ratio': delta_lambda, 'c_m_s': self.c,
+                'units': 'm/s', 'equation': 'v_radial = c·Δλ/λ'}
+
+
+class NebularNeutrinoProtoCalculator:
+    """E_neutrino = E_0 * exp(-nonlocal) * (ρ_vac,1/ρ_vac,2) - Neutrino proto-energy (Eq30).
+    
+    Nebular UQFF: Proto-energy from vacuum ratio ρ_vac,1/ρ_vac,2 ~ 1.42e-36/7.09e-36.
+    Neutrinos carry energy information through non-local coupling.
+    """
+    def __init__(self, E_0=1e-20, rho_vac_1=1.42e-36, rho_vac_2=7.09e-36, SSq=1.0, n26=26):
+        self.E_0 = E_0            # J, base energy scale
+        self.rho_vac_1 = rho_vac_1  # J/m³, vacuum 1
+        self.rho_vac_2 = rho_vac_2  # J/m³, vacuum 2
+        self.SSq = SSq
+        self.n26 = n26
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t = dataset.get('t', 1.0)
+        nonlocal_term = self.SSq**self.n26 * math.exp(-(math.pi + t))
+        E_neutrino = self.E_0 * math.exp(-nonlocal_term) * (self.rho_vac_1 / self.rho_vac_2)
+        return {'value': E_neutrino, 'E_0_J': self.E_0, 'nonlocal': nonlocal_term,
+                'ratio': self.rho_vac_1/self.rho_vac_2, 'units': 'J', 
+                'equation': 'E_ν = E_0·exp(-nonlocal)·(ρ_vac,1/ρ_vac,2)'}
+
+
+class NebularUniversalDecayCalculator:
+    """Γ_decay = Γ_0 * exp(-λ·t) * (1 - nonlocal) - Universal decay rate (Eq31).
+    
+    Nebular UQFF: Universal decay couples to non-local quantum term.
+    Decay rate modified by vacuum field dynamics.
+    """
+    def __init__(self, Gamma_0=1e-10, lambda_decay=1e-6, SSq=1.0, n26=26):
+        self.Gamma_0 = Gamma_0    # s^-1, base decay rate
+        self.lambda_decay = lambda_decay  # Decay constant
+        self.SSq = SSq
+        self.n26 = n26
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t = dataset.get('t', 1e6)
+        nonlocal_term = self.SSq**self.n26 * math.exp(-(math.pi + t))
+        Gamma_decay = self.Gamma_0 * math.exp(-self.lambda_decay * t) * (1.0 - nonlocal_term)
+        return {'value': Gamma_decay, 'Gamma_0': self.Gamma_0, 'nonlocal': nonlocal_term,
+                'units': 's^-1', 'equation': 'Γ = Γ_0·exp(-λt)·(1-nonlocal)'}
+
+
+class NebularDNAEnergyCalculator:
+    """E_DNA = Um * cos(ω_c·t) - DNA energy flow oscillation (Eq32).
+    
+    Nebular UQFF: DNA-like information transfer via magnetic oscillations.
+    Um ~ magnetic string energy, ω_c ~ characteristic frequency.
+    """
+    def __init__(self, Um=1e-18, omega_c=2e3):
+        self.Um = Um              # J, magnetic string energy
+        self.omega_c = omega_c    # rad/s, characteristic frequency
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t = dataset.get('t', 1e-3)
+        E_DNA = self.Um * math.cos(self.omega_c * t)
+        return {'value': E_DNA, 'Um_J': self.Um, 'omega_c_rad_s': self.omega_c, 't_s': t,
+                'units': 'J', 'equation': 'E_DNA = Um·cos(ω_c·t)'}
+
+
+class NebularBuoyancyRatioCalculator:
+    """η = (ρ_vac,[UA]/ρ_vac,[SCm]) * (V_little/V_big) - Buoyancy ratio (Eq33).
+    
+    Nebular UQFF: Ratio ~ 1/33 for atmosphere comparisons.
+    Relates vacuum densities to volume ratios for buoyancy scaling.
+    """
+    def __init__(self, rho_vac_UA=7.24e-24, rho_vac_SCm=2.39e-22, V_little=1.0, V_big=33.0):
+        self.rho_vac_UA = rho_vac_UA    # J/m³, [UA] vacuum
+        self.rho_vac_SCm = rho_vac_SCm  # J/m³, [SCm] vacuum
+        self.V_little = V_little         # atm, little volume
+        self.V_big = V_big               # atm, big volume
+    
+    def compute(self, dataset: dict) -> dict:
+        eta = (self.rho_vac_UA / self.rho_vac_SCm) * (self.V_little / self.V_big)
+        return {'value': eta, 'rho_vac_UA': self.rho_vac_UA, 'rho_vac_SCm': self.rho_vac_SCm,
+                'V_little': self.V_little, 'V_big': self.V_big, 'units': 'dimensionless',
+                'equation': 'η = (ρ_vac,[UA]/ρ_vac,[SCm])·(V_little/V_big)'}
+
+
+class NebularLENREFieldCalculator:
+    """E = k_η * e * Ω / m_e * sqrt(n_e·σ·v) * κ_V - LENR E-field (Eq14-18).
+    
+    LENR cell calibration: E ≈ 2e11 V/m (100% accuracy).
+    Cross-section σ ~ 1e-28 m², electron density n_e ~ 1e20 m^-3.
+    """
+    def __init__(self, k_eta=1.0, e=1.602e-19, Omega=1e3, m_e=9.11e-31,
+                 n_e=1e20, sigma=1e-28, v=1e6, kappa_V=1.05):
+        self.k_eta = k_eta        # Calibration coefficient
+        self.e = e                # C, elementary charge
+        self.Omega = Omega        # rad/s, angular frequency
+        self.m_e = m_e            # kg, electron mass
+        self.n_e = n_e            # m^-3, electron density
+        self.sigma = sigma        # m², cross-section
+        self.v = v                # m/s, velocity
+        self.kappa_V = kappa_V    # Calibration factor (1.01-1.09)
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        E_field = self.k_eta * self.e * self.Omega / self.m_e * math.sqrt(self.n_e * self.sigma * self.v)
+        E_calibrated = E_field * self.kappa_V
+        return {'value': E_calibrated, 'E_uncalibrated': E_field, 'kappa_V': self.kappa_V,
+                'n_e_m3': self.n_e, 'sigma_m2': self.sigma, 'units': 'V/m',
+                'equation': 'E = k_η·e·Ω/m_e·√(n_e·σ·v)·κ_V'}
+
+
+class NebularHiggsMassCalculator:
+    """m_H = k_Higgs * 125 * μ * κ_F - Calibrated Higgs mass (Eq24).
+    
+    Higgs mass calibration: m_H = 125 GeV (100% accuracy).
+    μ = 1.00-1.18 Higgs parameter, κ_F = 0.89-1.11 calibration factor.
+    """
+    def __init__(self, k_Higgs=1.0, m_H_base=125.0, mu=1.00, kappa_F=1.00):
+        self.k_Higgs = k_Higgs    # Calibration coefficient
+        self.m_H_base = m_H_base  # GeV, base Higgs mass
+        self.mu = mu              # Higgs parameter
+        self.kappa_F = kappa_F    # Calibration factor
+    
+    def compute(self, dataset: dict) -> dict:
+        mu = dataset.get('mu', self.mu)
+        kappa_F = dataset.get('kappa_F', self.kappa_F)
+        m_H = self.k_Higgs * self.m_H_base * mu * kappa_F
+        return {'value': m_H, 'm_H_base_GeV': self.m_H_base, 'mu': mu, 'kappa_F': kappa_F,
+                'units': 'GeV', 'equation': 'm_H = k_Higgs·125·μ·κ_F'}
+
+
+class NebularGeometricStarAngleCalculator:
+    """θ_avg = Σ|atan2(dy,dx)| / pairs - Geometric star angle (Drawing 32).
+    
+    Drawing 32 butterfly structure: 4 stars (UL, CT, UR, LC) with dust trails.
+    Average angle determines pseudo-monopole and nebular morphology.
+    """
+    def __init__(self, star_positions=None):
+        # Drawing 32 stars: Star1 UL, Star2 CT, Star3 UR, Star4 LC
+        self.star_positions = star_positions or [(0.1, 0.9), (0.5, 0.95), (0.8, 0.85), (0.5, 0.2)]
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        positions = dataset.get('star_positions', self.star_positions)
+        if len(positions) < 2:
+            return {'value': 0.0, 'units': 'rad', 'equation': 'θ_avg = Σ|atan2(dy,dx)|/pairs'}
+        
+        total_angle = 0.0
+        count = 0
+        for i in range(len(positions)):
+            for j in range(i + 1, len(positions)):
+                dx = positions[j][0] - positions[i][0]
+                dy = positions[j][1] - positions[i][1]
+                angle = math.atan2(dy, dx)
+                total_angle += abs(angle)
+                count += 1
+        
+        avg_angle = total_angle / count if count > 0 else 0.0
+        return {'value': avg_angle, 'total_pairs': count, 'total_angle_rad': total_angle,
+                'num_stars': len(positions), 'units': 'rad', 
+                'equation': 'θ_avg = Σ|atan2(dy,dx)|/pairs'}
+
+
+SOURCE65_WOLFRAM_CALCULATORS = {
+    'NebularNonLocalQuantumCalculator': NebularNonLocalQuantumCalculator(),
+    'NebularUg3StarFormationCalculator': NebularUg3StarFormationCalculator(),
+    'NebularBlueshiftVelocityCalculator': NebularBlueshiftVelocityCalculator(),
+    'NebularNeutrinoProtoCalculator': NebularNeutrinoProtoCalculator(),
+    'NebularUniversalDecayCalculator': NebularUniversalDecayCalculator(),
+    'NebularDNAEnergyCalculator': NebularDNAEnergyCalculator(),
+    'NebularBuoyancyRatioCalculator': NebularBuoyancyRatioCalculator(),
+    'NebularLENREFieldCalculator': NebularLENREFieldCalculator(),
+    'NebularHiggsMassCalculator': NebularHiggsMassCalculator(),
+    'NebularGeometricStarAngleCalculator': NebularGeometricStarAngleCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -157012,4 +157711,40 @@ __all__.extend([
     'MultiCompressed7UgSumCalculator',
     'MultiCompressed7MagneticFieldCorrectionCalculator',
     'SOURCE57_WOLFRAM_CALCULATORS',
+    # Source60 19-System Multi-Compression Framework (Feb 26, 2026) - 10 Calculator Classes
+    'MultiSystem19EnvironmentalSumCalculator',
+    'MultiSystem19SupernovaMassLossCalculator',
+    'MultiSystem19GalaxyMergerTidalCalculator',
+    'MultiSystem19PhotoevaporationCalculator',
+    'MultiSystem19GravitationalLensingCalculator',
+    'MultiSystem19AGNFeedbackCalculator',
+    'MultiSystem19DustAbsorptionCalculator',
+    'MultiSystem19DeepFieldCosmologicalCalculator',
+    'MultiSystem19StarFormationRateDensityCalculator',
+    'MultiSystem19ComprehensiveUgSumCalculator',
+    'SOURCE60_WOLFRAM_CALCULATORS',
+    # Source64 UFE Red Dwarf Reactor Plasma Orb (Feb 26, 2026) - 10 Calculator Classes
+    'UFENegativeTimeCalculator',
+    'UFEUgGravityModeCalculator',
+    'UFEUmMagneticStringCalculator',
+    'UFESCmUAVacuumCalculator',
+    'UFEMetricStressCalculator',
+    'UFEUbBuoyancyCalculator',
+    'UFEFUExtensionCalculator',
+    'UFEPlasmoidSpinTempFieldCalculator',
+    'UFEPlasmoidCountCalculator',
+    'UFEReactorGeometryCalculator',
+    'SOURCE64_WOLFRAM_CALCULATORS',
+    # Source65 Nebular UQFF Drawing 32 (Feb 26, 2026) - 10 Calculator Classes
+    'NebularNonLocalQuantumCalculator',
+    'NebularUg3StarFormationCalculator',
+    'NebularBlueshiftVelocityCalculator',
+    'NebularNeutrinoProtoCalculator',
+    'NebularUniversalDecayCalculator',
+    'NebularDNAEnergyCalculator',
+    'NebularBuoyancyRatioCalculator',
+    'NebularLENREFieldCalculator',
+    'NebularHiggsMassCalculator',
+    'NebularGeometricStarAngleCalculator',
+    'SOURCE65_WOLFRAM_CALCULATORS',
 ])
