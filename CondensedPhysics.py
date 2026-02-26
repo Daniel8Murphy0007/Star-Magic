@@ -150195,6 +150195,674 @@ SOURCE19_WOLFRAM_CALCULATORS = {
 }
 
 
+# ================================================================================================
+# SOURCE18 WOLFRAM CALCULATORS - Pillars of Creation Eagle Nebula (M16)
+# 15 unique Calculator classes from source18_wolfram.cpp
+# Astronomical: M = 10,100 M☉, r = 5 ly, τ_SF = τ_erosion = 1 Myr
+# ================================================================================================
+
+class PillarsBaseGravityCalculator:
+    """Base gravity with M(t), H₀, B, and E(t) erosion corrections for Pillars of Creation."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M_initial = 10100.0 * 1.989e30  # 10,100 M☉
+        self.r = 4.731e16  # 5 ly
+        self.H0 = 2.184e-18
+        self.B = 1e-6  # 1 μT
+        self.B_crit = 1e11
+        self.M_dot_factor = 1e4 / 10100.0  # 10,000 M☉ gas reserve
+        self.tau_SF = 1e6 * 3.156e7  # 1 Myr
+        self.E_0 = 0.1
+        self.tau_erosion = 1e6 * 3.156e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        M_dot = self.M_dot_factor * math.exp(-t / self.tau_SF)
+        Mt = self.M_initial * (1 + M_dot)
+        Et = self.E_0 * math.exp(-t / self.tau_erosion)
+        ug1_t = (self.G * Mt) / (self.r ** 2)
+        corr_H = 1 + self.H0 * t
+        corr_B = 1 - self.B / self.B_crit
+        corr_E = 1 - Et
+        g = ug1_t * corr_H * corr_B * corr_E
+        return {'value': g, 'M_t_kg': Mt, 'E_t': Et, 'units': 'm/s²',
+                'equation': 'g = G×M(t)/r² × (1+H₀t) × (1-B/B_crit) × (1-E(t))'}
+
+
+class PillarsMassGrowthCalculator:
+    """Mass growth M(t) via exponential star formation (10,000 M☉ gas reservoir)."""
+    def __init__(self):
+        self.M_initial = 10100.0 * 1.989e30
+        self.M_dot_factor = 1e4 / 10100.0
+        self.tau_SF = 1e6 * 3.156e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        M_dot = self.M_dot_factor * math.exp(-t / self.tau_SF)
+        M_t = self.M_initial * (1 + M_dot)
+        return {'value': M_t, 'M_initial_kg': self.M_initial, 'tau_SF_s': self.tau_SF, 'units': 'kg',
+                'equation': 'M(t) = M₀ × (1 + Ṁ_factor×e^(-t/τ_SF))'}
+
+
+class PillarsErosionCalculator:
+    """Erosion E(t) from UV photoevaporation (τ = 1 Myr)."""
+    def __init__(self):
+        self.E_0 = 0.1
+        self.tau_erosion = 1e6 * 3.156e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        E_t = self.E_0 * math.exp(-t / self.tau_erosion)
+        return {'value': E_t, 'E_0': self.E_0, 'tau_erosion_Myr': 1.0, 'units': 'dimensionless',
+                'equation': 'E(t) = E₀ × e^(-t/τ_erosion)'}
+
+
+class PillarsUQFFUnificationCalculator:
+    """UQFF unification (Ug1+Ug2+Ug3+Ug4) with time-reversal factor for Pillars."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M_initial = 10100.0 * 1.989e30
+        self.r = 4.731e16
+        self.B = 1e-6
+        self.B_crit = 1e11
+        self.f_TRZ = 0.1
+        self.M_dot_factor = 1e4 / 10100.0
+        self.tau_SF = 1e6 * 3.156e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        M_dot = self.M_dot_factor * math.exp(-t / self.tau_SF)
+        Mt = self.M_initial * (1 + M_dot)
+        Ug1 = (self.G * Mt) / (self.r ** 2)
+        Ug2 = 0.0
+        Ug3 = 0.0
+        corr_B = 1 - self.B / self.B_crit
+        Ug4 = Ug1 * corr_B
+        Ug = (Ug1 + Ug2 + Ug3 + Ug4) * (1 + self.f_TRZ)
+        return {'value': Ug, 'Ug1': Ug1, 'Ug4': Ug4, 'f_TRZ': self.f_TRZ, 'units': 'm/s²',
+                'equation': 'Ug = (Ug1+Ug2+Ug3+Ug4)×(1+f_TRZ)'}
+
+
+class PillarsCosmologicalConstantCalculator:
+    """Cosmological constant (dark energy) term for Pillars."""
+    def __init__(self):
+        self.Lambda = 1.1e-52
+        self.c = 3e8
+    
+    def compute(self) -> dict:
+        g_Lambda = (self.Lambda * self.c ** 2) / 3.0
+        return {'value': g_Lambda, 'Lambda_m-2': self.Lambda, 'units': 'm/s²',
+                'equation': 'g_Λ = (Λ × c²) / 3'}
+
+
+class PillarsElectromagneticCalculator:
+    """Scaled EM acceleration with UA vacuum correction for Pillars."""
+    def __init__(self):
+        self.q = 1.602e-19
+        self.gas_v = 1e5  # 100 km/s
+        self.B = 1e-6
+        self.m_p = 1.673e-27
+        self.rho_vac_UA = 7.09e-36
+        self.rho_vac_SCm = 7.09e-37
+        self.scale_EM = 1e-12
+    
+    def compute(self) -> dict:
+        cross_vB = self.gas_v * self.B
+        em_base = (self.q * cross_vB) / self.m_p
+        corr_UA = 1 + (self.rho_vac_UA / self.rho_vac_SCm)
+        g_EM = (em_base * corr_UA) * self.scale_EM
+        return {'value': g_EM, 'em_base': em_base, 'corr_UA': corr_UA, 'units': 'm/s²',
+                'equation': 'g_EM = (q×|v×B|/m_p) × (1+ρ_UA/ρ_SCm) × scale'}
+
+
+class PillarsQuantumUncertaintyCalculator:
+    """Quantum uncertainty (Heisenberg) contribution for Pillars."""
+    def __init__(self):
+        self.hbar = 1.0546e-34
+        self.delta_x = 1e-10
+        self.delta_p = self.hbar / self.delta_x
+        self.integral_psi = 1.0
+        self.t_Hubble = 13.8e9 * 3.156e7
+    
+    def compute(self) -> dict:
+        import math
+        sqrt_unc = math.sqrt(self.delta_x * self.delta_p)
+        g_Q = (self.hbar / sqrt_unc) * self.integral_psi * (2 * math.pi / self.t_Hubble)
+        return {'value': g_Q, 'delta_x_m': self.delta_x, 'delta_p_kg_m_s': self.delta_p, 'units': 'm/s²',
+                'equation': 'g_Q = (ℏ/√(Δx×Δp)) × ∫|ψ|² × (2π/t_H)'}
+
+
+class PillarsFluidDensityCalculator:
+    """Pillar gas fluid density coupling for Pillars."""
+    def __init__(self):
+        self.rho_fluid = 1e-21
+        self.r = 4.731e16
+        self.G = 6.6743e-11
+        self.M_initial = 10100.0 * 1.989e30
+        self.M_dot_factor = 1e4 / 10100.0
+        self.tau_SF = 1e6 * 3.156e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        M_dot = self.M_dot_factor * math.exp(-t / self.tau_SF)
+        Mt = self.M_initial * (1 + M_dot)
+        V = (4.0 / 3.0) * math.pi * self.r ** 3
+        ug1_t = (self.G * Mt) / (self.r ** 2)
+        g_fluid = (self.rho_fluid * V * ug1_t) / Mt
+        return {'value': g_fluid, 'rho_fluid_kg_m3': self.rho_fluid, 'V_m3': V, 'units': 'm/s²',
+                'equation': 'g_fluid = (ρ_fluid × V × g_base) / M(t)'}
+
+
+class PillarsOscillatoryWaveCalculator:
+    """Oscillatory wave terms in star-forming pillars."""
+    def __init__(self):
+        self.A_osc = 1e-10
+        self.r = 4.731e16
+        self.c = 3e8
+        self.k_osc = 1.0 / self.r
+        self.omega_osc = 2 * 3.14159 / (self.r / self.c)
+        self.x_pos = self.r
+        self.t_Hubble_gyr = 13.8
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        term_osc1 = 2 * self.A_osc * math.cos(self.k_osc * self.x_pos) * math.cos(self.omega_osc * t)
+        arg = self.k_osc * self.x_pos - self.omega_osc * t
+        term_osc2 = (2 * math.pi / self.t_Hubble_gyr) * self.A_osc * math.cos(arg)
+        g_osc = term_osc1 + term_osc2
+        return {'value': g_osc, 'A_osc': self.A_osc, 'k_osc': self.k_osc, 'omega_osc': self.omega_osc, 'units': 'm/s²',
+                'equation': 'g_osc = 2A×cos(kx)×cos(ωt) + (2π/t_H)×A×cos(kx-ωt)'}
+
+
+class PillarsDarkMatterPerturbationCalculator:
+    """Dark matter + density perturbation coupling for Pillars."""
+    def __init__(self):
+        self.M_initial = 10100.0 * 1.989e30
+        self.M_DM_factor = 0.1
+        self.delta_rho_over_rho = 1e-5
+        self.G = 6.6743e-11
+        self.r = 4.731e16
+        self.M_dot_factor = 1e4 / 10100.0
+        self.tau_SF = 1e6 * 3.156e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        M_dot = self.M_dot_factor * math.exp(-t / self.tau_SF)
+        Mt = self.M_initial * (1 + M_dot)
+        M_dm = Mt * self.M_DM_factor
+        pert1 = self.delta_rho_over_rho
+        pert2 = 3 * self.G * Mt / (self.r ** 3)
+        term_dm = (Mt + M_dm) * (pert1 + pert2)
+        g_DM = term_dm / Mt
+        return {'value': g_DM, 'M_DM_kg': M_dm, 'pert1': pert1, 'pert2': pert2, 'units': 'dimensionless',
+                'equation': 'g_DM = (M + M_DM) × (δρ/ρ + 3GM/r³) / M'}
+
+
+class PillarsStellarWindCalculator:
+    """Stellar wind feedback (ram pressure acceleration) for Pillars."""
+    def __init__(self):
+        self.rho_wind = 1e-21
+        self.v_wind = 2e6  # 2000 km/s
+        self.rho_fluid = 1e-21
+    
+    def compute(self) -> dict:
+        wind_pressure = self.rho_wind * self.v_wind ** 2
+        g_wind = wind_pressure / self.rho_fluid
+        return {'value': g_wind, 'wind_pressure_Pa': wind_pressure, 'v_wind_km_s': 2000, 'units': 'm/s²',
+                'equation': 'g_wind = (ρ_wind × v_wind²) / ρ_fluid'}
+
+
+class PillarsFormationTimescaleCalculator:
+    """Star formation timescale τ_SF = 1 Myr for Pillars."""
+    def __init__(self):
+        self.tau_SF = 1e6 * 3.156e7
+    
+    def compute(self) -> dict:
+        return {'value': self.tau_SF, 'tau_SF_Myr': 1.0, 'units': 's'}
+
+
+class PillarsErosionTimescaleCalculator:
+    """Erosion timescale τ_erosion = 1 Myr (photoevaporation) for Pillars."""
+    def __init__(self):
+        self.tau_erosion = 1e6 * 3.156e7
+    
+    def compute(self) -> dict:
+        return {'value': self.tau_erosion, 'tau_erosion_Myr': 1.0, 'units': 's'}
+
+
+class PillarsGasVelocityCalculator:
+    """Pillar gas velocity v_gas = 100 km/s for EM coupling."""
+    def __init__(self):
+        self.gas_v = 1e5
+    
+    def compute(self) -> dict:
+        return {'value': self.gas_v, 'v_gas_km_s': 100, 'units': 'm/s'}
+
+
+class PillarsMagneticFieldCalculator:
+    """Pillar magnetic field B = 1 μT for interstellar medium."""
+    def __init__(self):
+        self.B = 1e-6
+    
+    def compute(self) -> dict:
+        return {'value': self.B, 'B_microTesla': 1.0, 'units': 'T'}
+
+
+SOURCE18_WOLFRAM_CALCULATORS = {
+    'PillarsBaseGravityCalculator': PillarsBaseGravityCalculator(),
+    'PillarsMassGrowthCalculator': PillarsMassGrowthCalculator(),
+    'PillarsErosionCalculator': PillarsErosionCalculator(),
+    'PillarsUQFFUnificationCalculator': PillarsUQFFUnificationCalculator(),
+    'PillarsCosmologicalConstantCalculator': PillarsCosmologicalConstantCalculator(),
+    'PillarsElectromagneticCalculator': PillarsElectromagneticCalculator(),
+    'PillarsQuantumUncertaintyCalculator': PillarsQuantumUncertaintyCalculator(),
+    'PillarsFluidDensityCalculator': PillarsFluidDensityCalculator(),
+    'PillarsOscillatoryWaveCalculator': PillarsOscillatoryWaveCalculator(),
+    'PillarsDarkMatterPerturbationCalculator': PillarsDarkMatterPerturbationCalculator(),
+    'PillarsStellarWindCalculator': PillarsStellarWindCalculator(),
+    'PillarsFormationTimescaleCalculator': PillarsFormationTimescaleCalculator(),
+    'PillarsErosionTimescaleCalculator': PillarsErosionTimescaleCalculator(),
+    'PillarsGasVelocityCalculator': PillarsGasVelocityCalculator(),
+    'PillarsMagneticFieldCalculator': PillarsMagneticFieldCalculator(),
+}
+
+
+# ================================================================================================
+# SOURCE20 WOLFRAM CALCULATORS - NGC 2525 Barred Spiral Galaxy
+# 10 unique Calculator classes from source20_wolfram.cpp
+# Astronomical: z=0.016, M=1×10¹⁰ M☉, M_BH=2.25×10⁷ M☉, supernova mass loss
+# ================================================================================================
+
+class NGC2525BaseGravityCalculator:
+    """Galaxy base gravity with Hubble H(z=0.016) and B-field corrections for NGC 2525."""
+    def __init__(self):
+        self.ug1_base = 4.187e-11
+        self.Hz = 2.19e-18
+        self.B = 1e-5
+        self.B_crit = 4.4e13
+    
+    def compute(self, t: float = 0.0) -> dict:
+        corr_H = 1 + self.Hz * t
+        corr_B = 1 - self.B / self.B_crit
+        g = self.ug1_base * corr_H * corr_B
+        return {'value': g, 'ug1_base': self.ug1_base, 'z': 0.016, 'units': 'm/s²',
+                'equation': 'g = g_base × (1+H(z)×t) × (1-B/B_crit)'}
+
+
+class NGC2525BlackHoleCalculator:
+    """Central SMBH gravitational influence (M_BH=2.25e7 M_sun, r_BH=1 AU) for NGC 2525."""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M_BH = 4.48e37  # 2.25e7 M_sun
+        self.r_BH = 1.496e11  # 1 AU
+        self.g_BH = self.G * self.M_BH / (self.r_BH ** 2)
+    
+    def compute(self, t: float = 0.0) -> dict:
+        return {'value': self.g_BH, 'M_BH_kg': self.M_BH, 'r_BH_AU': 1.0, 'M_BH_Msun': 2.25e7, 'units': 'm/s²',
+                'equation': 'g_BH = G×M_BH/r_BH²'}
+
+
+class NGC2525UQFFUnificationCalculator:
+    """UQFF unification term Ug = (Ug1+Ug2+Ug3+Ug4)*(1+f_TRZ) for NGC 2525 galaxy."""
+    def __init__(self):
+        self.ug1_base = 4.187e-11
+        self.f_TRZ = 0.01
+        self.B = 1e-5
+        self.B_crit = 4.4e13
+    
+    def compute(self, t: float = 0.0) -> dict:
+        Ug1 = self.ug1_base
+        Ug2 = 0.0
+        Ug3 = 0.0
+        corr_B = 1 - self.B / self.B_crit
+        Ug4 = Ug1 * corr_B
+        Ug = (Ug1 + Ug2 + Ug3 + Ug4) * (1 + self.f_TRZ)
+        return {'value': Ug, 'Ug1': Ug1, 'Ug4': Ug4, 'f_TRZ': self.f_TRZ, 'units': 'm/s²',
+                'equation': 'Ug = (Ug1+Ug2+Ug3+Ug4)×(1+f_TRZ)'}
+
+
+class NGC2525CosmologicalConstantCalculator:
+    """Cosmological constant Λc²/3 acceleration for NGC 2525 galaxy."""
+    def __init__(self):
+        self.Lambda = 1.1056e-52
+        self.c_light = 2.998e8
+    
+    def compute(self) -> dict:
+        g_Lambda = (self.Lambda * self.c_light ** 2) / 3.0
+        return {'value': g_Lambda, 'Lambda_m-2': self.Lambda, 'units': 'm/s²',
+                'equation': 'g_Λ = Λc²/3'}
+
+
+class NGC2525ElectromagneticCalculator:
+    """Scaled EM with UA vacuum correction for NGC 2525."""
+    def __init__(self):
+        self.q_charge = 1.602e-19
+        self.gas_v = 5e5  # 500 km/s
+        self.B = 1e-5
+        self.proton_mass = 1.673e-27
+        self.rho_vac_UA = 6.3e-10
+        self.rho_vac_SCm = 1e-26
+        self.scale_EM = 1e-12
+    
+    def compute(self) -> dict:
+        cross_vB = self.gas_v * self.B
+        em_base = (self.q_charge * cross_vB) / self.proton_mass
+        corr_UA = 1 + (self.rho_vac_UA / self.rho_vac_SCm)
+        g_EM = (em_base * corr_UA) * self.scale_EM
+        return {'value': g_EM, 'em_base': em_base, 'corr_UA': corr_UA, 'units': 'm/s²',
+                'equation': 'g_EM = (q×v×B/m_p)×(1+ρ_UA/ρ_SCm)×scale'}
+
+
+class NGC2525QuantumUncertaintyCalculator:
+    """Quantum uncertainty (ℏ/√(Δx·Δp))·∫|ψ|²·(2π/t_H) for NGC 2525."""
+    def __init__(self):
+        self.hbar = 1.055e-34
+        self.delta_x = 1e15
+        self.delta_p = 1e-20
+        self.integral_psi = 1e-5
+        self.t_Hubble = 4.35e17
+    
+    def compute(self) -> dict:
+        import math
+        sqrt_unc = math.sqrt(self.delta_x * self.delta_p)
+        g_Q = (self.hbar / sqrt_unc) * self.integral_psi * (2 * math.pi / self.t_Hubble)
+        return {'value': g_Q, 'delta_x_m': self.delta_x, 'delta_p_kg_m_s': self.delta_p, 'units': 'm/s²',
+                'equation': 'g_Q = (ℏ/√(Δx·Δp))·∫|ψ|²·(2π/t_H)'}
+
+
+class NGC2525FluidDensityCalculator:
+    """Fluid density coupling (ρ_fluid·V·g_base)/M for NGC 2525."""
+    def __init__(self):
+        self.rho_fluid = 1e-21
+        self.r = 2.836e20
+        self.ug1_base = 4.187e-11
+        self.M = 1.989e40
+    
+    def compute(self) -> dict:
+        import math
+        V = (4.0 / 3.0) * math.pi * self.r ** 3
+        g_fluid = (self.rho_fluid * V * self.ug1_base) / self.M
+        return {'value': g_fluid, 'rho_fluid_kg_m3': self.rho_fluid, 'V_m3': V, 'units': 'm/s²',
+                'equation': 'g_fluid = (ρ_fluid·V·g_base)/M'}
+
+
+class NGC2525OscillatoryWaveCalculator:
+    """Oscillatory wave 2A·cos(kx)cos(ωt) + (2π/t_H)·A·cos(kx-ωt) for NGC 2525."""
+    def __init__(self):
+        self.A_osc = 1e-15
+        self.k_osc = 1e-18
+        self.omega_osc = 1e-15
+        self.x_pos = 1e20
+        self.t_Hubble_gyr = 4.35e17
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        term_osc1 = 2 * self.A_osc * math.cos(self.k_osc * self.x_pos) * math.cos(self.omega_osc * t)
+        arg = self.k_osc * self.x_pos - self.omega_osc * t
+        term_osc2 = (2 * math.pi / self.t_Hubble_gyr) * self.A_osc * math.cos(arg)
+        g_osc = term_osc1 + term_osc2
+        return {'value': g_osc, 'A_osc': self.A_osc, 'k_osc': self.k_osc, 'units': 'm/s²',
+                'equation': 'g_osc = 2A·cos(kx)cos(ωt) + (2π/t_H)·A·cos(kx-ωt)'}
+
+
+class NGC2525DarkMatterPerturbationCalculator:
+    """Dark matter + density perturbation (M+M_DM)·(δρ/ρ + 3GM/r³)/M for NGC 2525."""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M = 1.989e40
+        self.r = 2.836e20
+        self.M_DM_factor = 5.0
+        self.delta_rho_over_rho = 1e-5
+    
+    def compute(self, t: float = 0.0) -> dict:
+        M_dm = self.M * self.M_DM_factor
+        pert1 = self.delta_rho_over_rho
+        pert2 = 3 * self.G * self.M / (self.r ** 3)
+        term_dm = (self.M + M_dm) * (pert1 + pert2)
+        g_DM = term_dm / self.M
+        return {'value': g_DM, 'M_DM_kg': M_dm, 'M_DM_factor': 5.0, 'units': 'dimensionless',
+                'equation': 'g_DM = (M+M_DM)·(δρ/ρ + 3GM/r³)/M'}
+
+
+class NGC2525SupernovaMassLossCalculator:
+    """Supernova mass loss -G·M_SN(t)/r² with M_SN(t)=M_SN0·e^(-t/τ_SN) for NGC 2525."""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M_SN0 = 2.79e30  # 1.4 M_sun
+        self.tau_SN = 3.156e7  # 1 year
+        self.r = 2.836e20
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        M_SN_t = self.M_SN0 * math.exp(-t / self.tau_SN)
+        g_SN = -(self.G * M_SN_t) / (self.r ** 2)
+        return {'value': g_SN, 'M_SN0_kg': self.M_SN0, 'M_SN_t_kg': M_SN_t, 'tau_SN_yr': 1.0, 'units': 'm/s²',
+                'equation': 'g_SN = -G·M_SN(t)/r²'}
+
+
+SOURCE20_WOLFRAM_CALCULATORS = {
+    'NGC2525BaseGravityCalculator': NGC2525BaseGravityCalculator(),
+    'NGC2525BlackHoleCalculator': NGC2525BlackHoleCalculator(),
+    'NGC2525UQFFUnificationCalculator': NGC2525UQFFUnificationCalculator(),
+    'NGC2525CosmologicalConstantCalculator': NGC2525CosmologicalConstantCalculator(),
+    'NGC2525ElectromagneticCalculator': NGC2525ElectromagneticCalculator(),
+    'NGC2525QuantumUncertaintyCalculator': NGC2525QuantumUncertaintyCalculator(),
+    'NGC2525FluidDensityCalculator': NGC2525FluidDensityCalculator(),
+    'NGC2525OscillatoryWaveCalculator': NGC2525OscillatoryWaveCalculator(),
+    'NGC2525DarkMatterPerturbationCalculator': NGC2525DarkMatterPerturbationCalculator(),
+    'NGC2525SupernovaMassLossCalculator': NGC2525SupernovaMassLossCalculator(),
+}
+
+
+# ================================================================================================
+# SOURCE21 WOLFRAM CALCULATORS - NGC 3603 Extreme Star Cluster
+# 10 unique Calculator classes from source21_wolfram.cpp
+# Astronomical: M0=400,000 M☉, r=9.5 ly, z=0.0071, cavity pressure, stellar winds
+# ================================================================================================
+
+class NGC3603BaseGravityCalculator:
+    """Base gravity with mass growth M(t), Hubble H0, and B-field corrections for NGC 3603."""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M0 = 7.96e35  # 400,000 M_sun
+        self.r = 8.998e15  # 9.5 ly
+        self.H0 = 2.268e-18
+        self.B = 1e-5
+        self.B_crit = 4.4e13
+        self.M_dot_factor = 0.01
+        self.tau_SF = 3.156e13  # 1 Myr
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        M_t = self.M0 * (1 + self.M_dot_factor * (1 - math.exp(-t / self.tau_SF)))
+        ug1_t = (self.G * M_t) / (self.r ** 2)
+        corr_H = 1 + self.H0 * t
+        corr_B = 1 - self.B / self.B_crit
+        g = ug1_t * corr_H * corr_B
+        return {'value': g, 'M0_Msun': 400000, 'M_t_kg': M_t, 'r_ly': 9.5, 'units': 'm/s²',
+                'equation': 'g = G×M(t)/r² × (1+H₀t) × (1-B/B_crit)'}
+
+
+class NGC3603UQFFUnificationCalculator:
+    """UQFF unification Ug = (Ug1+Ug2+Ug3+Ug4)*(1+f_TRZ) for NGC 3603 star cluster."""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M0 = 7.96e35
+        self.r = 8.998e15
+        self.f_TRZ = 0.01
+        self.B = 1e-5
+        self.B_crit = 4.4e13
+        self.M_dot_factor = 0.01
+        self.tau_SF = 3.156e13
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        M_t = self.M0 * (1 + self.M_dot_factor * (1 - math.exp(-t / self.tau_SF)))
+        ug1_t = (self.G * M_t) / (self.r ** 2)
+        Ug1 = ug1_t
+        Ug2 = 0.0
+        Ug3 = 0.0
+        corr_B = 1 - self.B / self.B_crit
+        Ug4 = Ug1 * corr_B
+        Ug = (Ug1 + Ug2 + Ug3 + Ug4) * (1 + self.f_TRZ)
+        return {'value': Ug, 'Ug1': Ug1, 'Ug4': Ug4, 'f_TRZ': self.f_TRZ, 'units': 'm/s²',
+                'equation': 'Ug = (Ug1+Ug2+Ug3+Ug4)×(1+f_TRZ)'}
+
+
+class NGC3603CosmologicalConstantCalculator:
+    """Cosmological constant Λc²/3 acceleration for NGC 3603."""
+    def __init__(self):
+        self.Lambda = 1.1056e-52
+        self.c_light = 2.998e8
+    
+    def compute(self) -> dict:
+        g_Lambda = (self.Lambda * self.c_light ** 2) / 3.0
+        return {'value': g_Lambda, 'Lambda_m-2': self.Lambda, 'units': 'm/s²',
+                'equation': 'g_Λ = Λc²/3'}
+
+
+class NGC3603ElectromagneticCalculator:
+    """Scaled EM with UA vacuum (q*v×B/m_p)*(1+ρ_UA/ρ_SCm)*scale for NGC 3603."""
+    def __init__(self):
+        self.q_charge = 1.602e-19
+        self.gas_v = 5e5
+        self.B = 1e-5
+        self.proton_mass = 1.673e-27
+        self.rho_vac_UA = 6.3e-10
+        self.rho_vac_SCm = 1e-26
+        self.scale_EM = 1e-12
+    
+    def compute(self) -> dict:
+        cross_vB = self.gas_v * self.B
+        em_base = (self.q_charge * cross_vB) / self.proton_mass
+        corr_UA = 1 + (self.rho_vac_UA / self.rho_vac_SCm)
+        g_EM = (em_base * corr_UA) * self.scale_EM
+        return {'value': g_EM, 'em_base': em_base, 'corr_UA': corr_UA, 'units': 'm/s²',
+                'equation': 'g_EM = (q×v×B/m_p)×(1+ρ_UA/ρ_SCm)×scale'}
+
+
+class NGC3603QuantumUncertaintyCalculator:
+    """Quantum uncertainty (ℏ/√(Δx·Δp))·∫|ψ|²·(2π/t_H) for NGC 3603."""
+    def __init__(self):
+        self.hbar = 1.0546e-34
+        self.delta_x = 1e15
+        self.delta_p = 1e-20
+        self.integral_psi = 1e-5
+        self.t_Hubble = 4.35e17
+    
+    def compute(self) -> dict:
+        import math
+        sqrt_unc = math.sqrt(self.delta_x * self.delta_p)
+        g_Q = (self.hbar / sqrt_unc) * self.integral_psi * (2 * math.pi / self.t_Hubble)
+        return {'value': g_Q, 'delta_x_m': self.delta_x, 'delta_p_kg_m_s': self.delta_p, 'units': 'm/s²',
+                'equation': 'g_Q = (ℏ/√(Δx·Δp))·∫|ψ|²·(2π/t_H)'}
+
+
+class NGC3603FluidDensityCalculator:
+    """Fluid density coupling (ρ_fluid·V·g)/M(t) for NGC 3603."""
+    def __init__(self):
+        self.rho_fluid = 1e-21
+        self.r = 8.998e15
+        self.G = 6.674e-11
+        self.M0 = 7.96e35
+        self.M_dot_factor = 0.01
+        self.tau_SF = 3.156e13
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        M_t = self.M0 * (1 + self.M_dot_factor * (1 - math.exp(-t / self.tau_SF)))
+        ug1_t = (self.G * M_t) / (self.r ** 2)
+        V = (4.0 / 3.0) * math.pi * self.r ** 3
+        g_fluid = (self.rho_fluid * V * ug1_t) / M_t
+        return {'value': g_fluid, 'rho_fluid_kg_m3': self.rho_fluid, 'V_m3': V, 'units': 'm/s²',
+                'equation': 'g_fluid = (ρ_fluid·V·g)/M(t)'}
+
+
+class NGC3603OscillatoryWaveCalculator:
+    """Oscillatory wave 2A·cos(kx)cos(ωt) + (2π/t_H)·A·cos(kx-ωt) for NGC 3603."""
+    def __init__(self):
+        self.A_osc = 1e-15
+        self.k_osc = 1e-18
+        self.omega_osc = 1e-15
+        self.x_pos = 1e15
+        self.t_Hubble_gyr = 4.35e17
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        term_osc1 = 2 * self.A_osc * math.cos(self.k_osc * self.x_pos) * math.cos(self.omega_osc * t)
+        arg = self.k_osc * self.x_pos - self.omega_osc * t
+        term_osc2 = (2 * math.pi / self.t_Hubble_gyr) * self.A_osc * math.cos(arg)
+        g_osc = term_osc1 + term_osc2
+        return {'value': g_osc, 'A_osc': self.A_osc, 'k_osc': self.k_osc, 'units': 'm/s²',
+                'equation': 'g_osc = 2A·cos(kx)cos(ωt) + (2π/t_H)·A·cos(kx-ωt)'}
+
+
+class NGC3603DarkMatterPerturbationCalculator:
+    """Dark matter + density perturbation (M+M_DM)·(δρ/ρ + 3GM/r³)/M for NGC 3603."""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M0 = 7.96e35
+        self.r = 8.998e15
+        self.M_DM_factor = 5.0
+        self.delta_rho_over_rho = 1e-5
+        self.M_dot_factor = 0.01
+        self.tau_SF = 3.156e13
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        M_t = self.M0 * (1 + self.M_dot_factor * (1 - math.exp(-t / self.tau_SF)))
+        M_dm = M_t * self.M_DM_factor
+        pert1 = self.delta_rho_over_rho
+        pert2 = 3 * self.G * M_t / (self.r ** 3)
+        term_dm = (M_t + M_dm) * (pert1 + pert2)
+        g_DM = term_dm / M_t
+        return {'value': g_DM, 'M_DM_kg': M_dm, 'M_DM_factor': 5.0, 'units': 'dimensionless',
+                'equation': 'g_DM = (M+M_DM)·(δρ/ρ + 3GM/r³)/M'}
+
+
+class NGC3603StellarWindCalculator:
+    """Stellar wind feedback ρ_wind·v_wind²/ρ_fluid for acceleration for NGC 3603."""
+    def __init__(self):
+        self.rho_wind = 1e-20
+        self.v_wind = 2e6  # 2000 km/s
+        self.rho_fluid = 1e-21
+    
+    def compute(self) -> dict:
+        wind_pressure = self.rho_wind * self.v_wind ** 2
+        g_wind = wind_pressure / self.rho_fluid
+        return {'value': g_wind, 'wind_pressure_Pa': wind_pressure, 'v_wind_km_s': 2000, 'units': 'm/s²',
+                'equation': 'g_wind = ρ_wind·v_wind²/ρ_fluid'}
+
+
+class NGC3603CavityPressureCalculator:
+    """Cavity pressure acceleration P(t)/ρ_fluid with P(t)=P0·e^(-t/τ_exp) for NGC 3603."""
+    def __init__(self):
+        self.P0 = 4e-8  # Initial pressure (Pa)
+        self.tau_exp = 3.156e13  # 1 Myr
+        self.rho_fluid = 1e-21
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        P_t = self.P0 * math.exp(-t / self.tau_exp)
+        g_cavity = P_t / self.rho_fluid
+        return {'value': g_cavity, 'P0_Pa': self.P0, 'P_t_Pa': P_t, 'tau_exp_Myr': 1.0, 'units': 'm/s²',
+                'equation': 'g_cavity = P(t)/ρ_fluid'}
+
+
+SOURCE21_WOLFRAM_CALCULATORS = {
+    'NGC3603BaseGravityCalculator': NGC3603BaseGravityCalculator(),
+    'NGC3603UQFFUnificationCalculator': NGC3603UQFFUnificationCalculator(),
+    'NGC3603CosmologicalConstantCalculator': NGC3603CosmologicalConstantCalculator(),
+    'NGC3603ElectromagneticCalculator': NGC3603ElectromagneticCalculator(),
+    'NGC3603QuantumUncertaintyCalculator': NGC3603QuantumUncertaintyCalculator(),
+    'NGC3603FluidDensityCalculator': NGC3603FluidDensityCalculator(),
+    'NGC3603OscillatoryWaveCalculator': NGC3603OscillatoryWaveCalculator(),
+    'NGC3603DarkMatterPerturbationCalculator': NGC3603DarkMatterPerturbationCalculator(),
+    'NGC3603StellarWindCalculator': NGC3603StellarWindCalculator(),
+    'NGC3603CavityPressureCalculator': NGC3603CavityPressureCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -150523,4 +151191,45 @@ __all__.extend([
     'RingsEinsteinRadiusCalculator',
     'RingsGasVelocityCalculator',
     'SOURCE19_WOLFRAM_CALCULATORS',
+    # Source18 Pillars of Creation Eagle Nebula M16 (Feb 27, 2026) - 15 Calculator Classes
+    'PillarsBaseGravityCalculator',
+    'PillarsMassGrowthCalculator',
+    'PillarsErosionCalculator',
+    'PillarsUQFFUnificationCalculator',
+    'PillarsCosmologicalConstantCalculator',
+    'PillarsElectromagneticCalculator',
+    'PillarsQuantumUncertaintyCalculator',
+    'PillarsFluidDensityCalculator',
+    'PillarsOscillatoryWaveCalculator',
+    'PillarsDarkMatterPerturbationCalculator',
+    'PillarsStellarWindCalculator',
+    'PillarsFormationTimescaleCalculator',
+    'PillarsErosionTimescaleCalculator',
+    'PillarsGasVelocityCalculator',
+    'PillarsMagneticFieldCalculator',
+    'SOURCE18_WOLFRAM_CALCULATORS',
+    # Source20 NGC 2525 Barred Spiral Galaxy (Feb 27, 2026) - 10 Calculator Classes
+    'NGC2525BaseGravityCalculator',
+    'NGC2525BlackHoleCalculator',
+    'NGC2525UQFFUnificationCalculator',
+    'NGC2525CosmologicalConstantCalculator',
+    'NGC2525ElectromagneticCalculator',
+    'NGC2525QuantumUncertaintyCalculator',
+    'NGC2525FluidDensityCalculator',
+    'NGC2525OscillatoryWaveCalculator',
+    'NGC2525DarkMatterPerturbationCalculator',
+    'NGC2525SupernovaMassLossCalculator',
+    'SOURCE20_WOLFRAM_CALCULATORS',
+    # Source21 NGC 3603 Extreme Star Cluster (Feb 27, 2026) - 10 Calculator Classes
+    'NGC3603BaseGravityCalculator',
+    'NGC3603UQFFUnificationCalculator',
+    'NGC3603CosmologicalConstantCalculator',
+    'NGC3603ElectromagneticCalculator',
+    'NGC3603QuantumUncertaintyCalculator',
+    'NGC3603FluidDensityCalculator',
+    'NGC3603OscillatoryWaveCalculator',
+    'NGC3603DarkMatterPerturbationCalculator',
+    'NGC3603StellarWindCalculator',
+    'NGC3603CavityPressureCalculator',
+    'SOURCE21_WOLFRAM_CALCULATORS',
 ])
