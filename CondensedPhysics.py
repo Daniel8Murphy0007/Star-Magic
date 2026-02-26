@@ -104543,6 +104543,388 @@ class UQFFLuminosityCalculator(SelfExpandingMixin):
         return L_UQFF / L_H
     
     # ═══════════════════════════════════════════════════════════════════════════
+    # HAWKING RADIATION SUPPRESSION MECHANISMS (Feb 25, 2026)
+    # Four independent suppression mechanisms with full breakdown
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_L_aether_factor(self) -> float:
+        """
+        Aether Vacuum Filling ([UA] Damping) suppression factor.
+        
+        Standard vacuum allows free pair creation. [UA] density 'fills'
+        fluctuations, suppressing pairs by increasing effective E_pair:
+        
+        E_pair,UQFF = E_pair × (ρ_UA / ρ_SCm)
+        L_aether = L_H × (1 - ρ_SCm/ρ_UA)
+        
+        For ρ_SCm/ρ_UA ≈ 0.1: factor ≈ 0.9 (10% suppression)
+        
+        Returns:
+            Suppression factor (< 1)
+        """
+        rho_SCm = self.params['rho_vac_SCm']
+        rho_UA = self.params['rho_vac_UA']
+        return 1.0 - rho_SCm / rho_UA
+    
+    def compute_L_SCm_factor(self, B_t: float = None) -> float:
+        """
+        Superconductive Horizon Barrier ([SCm]) suppression factor.
+        
+        [SCm] at horizons creates Meissner-like magnetic screening:
+        L_SCm = L_H × (1 - B_t / B_crit)
+        
+        For B_t near B_crit, near-total suppression possible.
+        Default: B_t ≈ 0.01 × B_crit (1% of critical field)
+        
+        Args:
+            B_t: Horizon tangential field [T] (default: 0.01 × B_crit)
+        
+        Returns:
+            Suppression factor (< 1)
+        """
+        B_crit = self.params.get('B_crit', 1e11)  # Critical field ~10^11 T
+        if B_t is None:
+            B_t = 0.01 * B_crit  # Default: 1% of critical
+        return max(0.0, 1.0 - B_t / B_crit)
+    
+    def compute_L_TRZ_factor(self) -> float:
+        """
+        Time-Reversal Negentropy (f_TRZ) suppression factor.
+        
+        f_TRZ reverses fraction of emissions:
+        L_TRZ = L_H × (1 - f_TRZ)
+        
+        Emission probability P_emit ~ (1 - f_TRZ), as reversal 'recycles' pairs.
+        
+        For f_TRZ = 0.1: factor = 0.9 (10% suppression)
+        
+        Returns:
+            Suppression factor (< 1)
+        """
+        f_TRZ = self.params['f_TRZ']
+        return 1.0 - f_TRZ
+    
+    def compute_L_Um_factor(self, T_H: float, U_m_kT_ratio: float = None) -> float:
+        """
+        Magnetic String Barrier (U_m) suppression factor.
+        
+        U_m ≈ μ_j/r × (1 - exp(-γt cos(πt_n))) forms energy walls:
+        L_Um = L_H × exp(-U_m / (k_B T_H))
+        
+        For U_m/(k_B T_H) ≈ 1: factor = e^-1 ≈ 0.37 (63% suppression)
+        
+        Args:
+            T_H: Hawking temperature [K]
+            U_m_kT_ratio: Override U_m/(k_B T_H) ratio
+        
+        Returns:
+            Suppression factor (< 1)
+        """
+        if U_m_kT_ratio is not None:
+            return np.exp(-U_m_kT_ratio)
+        else:
+            U_m = self.params['U_m']
+            k_B = self.params['k_B']
+            return np.exp(-U_m / (k_B * T_H))
+    
+    def compute_full_suppression_breakdown(self, M: float, B_t: float = None,
+                                            U_m_kT_ratio: float = 1.0) -> dict:
+        """
+        Complete breakdown of all four UQFF suppression mechanisms.
+        
+        Full formula (multiplicative for independent mechanisms):
+        L_UQFF = L_H × (1-f_TRZ) × (1-ρ_SCm/ρ_UA) × (1-B_t/B_crit) × exp(-U_m/(k_BT_H))
+        
+        Typical factors:
+            TRZ:    0.9  (10% suppression)
+            Aether: 0.9  (10% suppression)
+            SCm:    0.99 (1% suppression)
+            U_m:    0.37 (63% suppression)
+            Total:  ~0.3 (70% suppression)
+        
+        Args:
+            M: Black hole mass [kg]
+            B_t: Horizon tangential field [T] (None = 0.01 × B_crit)
+            U_m_kT_ratio: U_m/(k_B T_H) ratio for magnetic strings
+        
+        Returns:
+            Dict with individual factors and combined suppression
+        """
+        # Compute Hawking temperature
+        T_H = self.compute_T_H(M)
+        
+        # Individual suppression factors
+        f_TRZ = self.compute_L_TRZ_factor()
+        f_aether = self.compute_L_aether_factor()
+        f_SCm = self.compute_L_SCm_factor(B_t)
+        f_Um = self.compute_L_Um_factor(T_H, U_m_kT_ratio)
+        
+        # Total multiplicative suppression
+        f_total = f_TRZ * f_aether * f_SCm * f_Um
+        
+        # Luminosities
+        L_H = self.compute_L_H(M)
+        L_UQFF = L_H * f_total
+        
+        # Suppression percentages
+        suppress_TRZ = (1 - f_TRZ) * 100
+        suppress_aether = (1 - f_aether) * 100
+        suppress_SCm = (1 - f_SCm) * 100
+        suppress_Um = (1 - f_Um) * 100
+        suppress_total = (1 - f_total) * 100
+        
+        return {
+            'title': 'Hawking Radiation Suppression Breakdown',
+            'M_kg': M,
+            'M_solar': M / self.params['M_sun'],
+            'T_H_K': T_H,
+            
+            # Individual mechanisms
+            'mechanisms': {
+                '1_TRZ': {
+                    'name': 'Time-Reversal Negentropy',
+                    'formula': 'L × (1 - f_TRZ)',
+                    'factor': f_TRZ,
+                    'suppression_percent': suppress_TRZ,
+                    'physics': 'Negentropic reversal recycles ~10% of emissions',
+                },
+                '2_aether': {
+                    'name': 'Aether Vacuum Filling',
+                    'formula': 'L × (1 - ρ_SCm/ρ_UA)',
+                    'factor': f_aether,
+                    'suppression_percent': suppress_aether,
+                    'physics': '[UA] density fills fluctuations, damping pairs',
+                },
+                '3_SCm': {
+                    'name': 'Superconductive Horizon',
+                    'formula': 'L × (1 - B_t/B_crit)',
+                    'factor': f_SCm,
+                    'suppression_percent': suppress_SCm,
+                    'physics': 'Meissner-like screening at horizon',
+                },
+                '4_Um': {
+                    'name': 'Magnetic String Barrier',
+                    'formula': 'L × exp(-U_m/(k_BT_H))',
+                    'factor': f_Um,
+                    'suppression_percent': suppress_Um,
+                    'physics': 'U_m energy walls block pair emission',
+                },
+            },
+            
+            # Combined
+            'total_factor': f_total,
+            'total_suppression_percent': suppress_total,
+            'factor_breakdown': f'{f_TRZ:.2f} × {f_aether:.2f} × {f_SCm:.2f} × {f_Um:.2f} = {f_total:.3f}',
+            
+            # Luminosities
+            'L_H_W': L_H,
+            'L_UQFF_W': L_UQFF,
+            'L_ratio': L_UQFF / L_H,
+            
+            # Full formula
+            'full_formula': 'L_UQFF = L_H × (1-f_TRZ) × (1-ρ_SCm/ρ_UA) × (1-B_t/B_crit) × exp(-U_m/(k_BT_H))',
+            
+            # Evaporation rate implication
+            'evaporation_rate_factor': f_total,
+            'lifetime_enhancement': 1.0 / f_total if f_total > 0 else np.inf,
+        }
+    
+    def sgr_a_suppression_example(self, U_m_kT_ratio: float = 1.0) -> dict:
+        """
+        Numerical example: Sgr A* Hawking radiation suppression.
+        
+        Sgr A*: M ≈ 4.3×10^6 M_☉
+        Standard: L_H ≈ 10^-5 W (negligible radiation)
+        UQFF: L_UQFF ≈ 3×10^-6 W (70% suppression)
+        
+        Args:
+            U_m_kT_ratio: U_m/(k_B T_H) ratio
+        
+        Returns:
+            Dict with Sgr A* suppression analysis
+        """
+        M_sgr_a = 4.3e6 * self.params['M_sun']
+        
+        # Get full breakdown
+        breakdown = self.compute_full_suppression_breakdown(M_sgr_a, U_m_kT_ratio=U_m_kT_ratio)
+        
+        # Add Sgr A* specific info
+        breakdown['object'] = 'Sgr A* (Milky Way SMBH)'
+        breakdown['M_solar_formatted'] = '4.3×10^6 M_☉'
+        breakdown['L_H_formatted'] = f'{breakdown["L_H_W"]:.2e} W (~10^-5 W)'
+        breakdown['L_UQFF_formatted'] = f'{breakdown["L_UQFF_W"]:.2e} W (~3×10^-6 W)'
+        breakdown['conclusion'] = (
+            f'UQFF suppresses Sgr A* Hawking radiation by {breakdown["total_suppression_percent"]:.0f}%. '
+            f'Standard L_H ≈ 10^-5 W becomes L_UQFF ≈ 3×10^-6 W.'
+        )
+        
+        return breakdown
+    
+    def suppression_chart_data(self, M: float = None, U_m_kT_ratio: float = 1.0) -> dict:
+        """
+        Generate bar chart data for suppression mechanisms.
+        
+        X-axis: Mechanism names
+        Y-axis: Relative contribution (standard = 1.0)
+        
+        Args:
+            M: Black hole mass [kg] (default: Sgr A*)
+            U_m_kT_ratio: U_m/(k_B T_H) ratio
+        
+        Returns:
+            Dict with chart data
+        """
+        if M is None:
+            M = 4.3e6 * self.params['M_sun']
+        
+        breakdown = self.compute_full_suppression_breakdown(M, U_m_kT_ratio=U_m_kT_ratio)
+        
+        mechanisms = breakdown['mechanisms']
+        
+        return {
+            'title': 'UQFF Hawking Radiation Suppression Mechanisms',
+            'M_kg': M,
+            
+            # Bar chart data
+            'labels': ['Standard', 'TRZ', 'Aether', 'SCm', 'U_m', 'Total'],
+            'values': [
+                1.0,  # Standard baseline
+                mechanisms['1_TRZ']['factor'],
+                mechanisms['2_aether']['factor'],
+                mechanisms['3_SCm']['factor'],
+                mechanisms['4_Um']['factor'],
+                breakdown['total_factor'],
+            ],
+            'colors': ['blue', 'red', 'red', 'red', 'red', 'darkred'],
+            
+            # Suppression percentages
+            'suppression_percents': [
+                0,
+                mechanisms['1_TRZ']['suppression_percent'],
+                mechanisms['2_aether']['suppression_percent'],
+                mechanisms['3_SCm']['suppression_percent'],
+                mechanisms['4_Um']['suppression_percent'],
+                breakdown['total_suppression_percent'],
+            ],
+            
+            # Cumulative factors
+            'cumulative': [
+                1.0,  # Standard
+                mechanisms['1_TRZ']['factor'],
+                mechanisms['1_TRZ']['factor'] * mechanisms['2_aether']['factor'],
+                mechanisms['1_TRZ']['factor'] * mechanisms['2_aether']['factor'] * mechanisms['3_SCm']['factor'],
+                breakdown['total_factor'],  # All four
+                breakdown['total_factor'],
+            ],
+            
+            'x_label': 'Mechanism',
+            'y_label': 'L / L_H (relative luminosity)',
+            'annotations': [
+                f'Total suppression: {breakdown["total_suppression_percent"]:.0f}%',
+                f'Lifetime enhancement: {breakdown["lifetime_enhancement"]:.1f}×',
+            ],
+        }
+    
+    def hawking_suppression_report(self, M: float = None, U_m_kT_ratio: float = 1.0) -> str:
+        """
+        Generate formatted report of Hawking radiation suppression.
+        
+        Args:
+            M: Black hole mass [kg] (default: Sgr A*)
+            U_m_kT_ratio: U_m/(k_B T_H) ratio
+        
+        Returns:
+            Formatted report string
+        """
+        if M is None:
+            M = 4.3e6 * self.params['M_sun']
+        
+        b = self.compute_full_suppression_breakdown(M, U_m_kT_ratio=U_m_kT_ratio)
+        m = b['mechanisms']
+        
+        report = f"""
+═══════════════════════════════════════════════════════════════════════════════
+        HAWKING RADIATION SUPPRESSION MECHANISMS IN UQFF
+═══════════════════════════════════════════════════════════════════════════════
+
+Hawking radiation suppression reduces thermal emission from black holes,
+potentially stabilizing them against evaporation. UQFF incorporates four
+suppression mechanisms that damp pair creation/emission.
+
+OBJECT: M = {b['M_kg']:.2e} kg ({b['M_solar']:.2e} M☉)
+        T_H = {b['T_H_K']:.2e} K
+
+═══════════════════════════════════════════════════════════════════════════════
+ 1. TIME-REVERSAL NEGENTROPY (f_TRZ)
+═══════════════════════════════════════════════════════════════════════════════
+
+  Formula: L_TRZ = L_H × (1 - f_TRZ)
+  Factor:  {m['1_TRZ']['factor']:.3f}
+  Suppression: {m['1_TRZ']['suppression_percent']:.1f}%
+  
+  Physics: {m['1_TRZ']['physics']}
+
+═══════════════════════════════════════════════════════════════════════════════
+ 2. AETHER VACUUM FILLING ([UA] Damping)
+═══════════════════════════════════════════════════════════════════════════════
+
+  Formula: L_aether = L_H × (1 - ρ_SCm/ρ_UA)
+  Factor:  {m['2_aether']['factor']:.3f}
+  Suppression: {m['2_aether']['suppression_percent']:.1f}%
+  
+  Physics: {m['2_aether']['physics']}
+
+═══════════════════════════════════════════════════════════════════════════════
+ 3. SUPERCONDUCTIVE HORIZON BARRIER ([SCm])
+═══════════════════════════════════════════════════════════════════════════════
+
+  Formula: L_SCm = L_H × (1 - B_t/B_crit)
+  Factor:  {m['3_SCm']['factor']:.3f}
+  Suppression: {m['3_SCm']['suppression_percent']:.1f}%
+  
+  Physics: {m['3_SCm']['physics']}
+
+═══════════════════════════════════════════════════════════════════════════════
+ 4. MAGNETIC STRING BARRIER (U_m)
+═══════════════════════════════════════════════════════════════════════════════
+
+  Formula: L_Um = L_H × exp(-U_m/(k_BT_H))
+  Factor:  {m['4_Um']['factor']:.3f}
+  Suppression: {m['4_Um']['suppression_percent']:.1f}%
+  
+  Physics: {m['4_Um']['physics']}
+
+═══════════════════════════════════════════════════════════════════════════════
+ COMBINED SUPPRESSION
+═══════════════════════════════════════════════════════════════════════════════
+
+  Full Formula:
+    L_UQFF = L_H × (1-f_TRZ) × (1-ρ_SCm/ρ_UA) × (1-B_t/B_crit) × exp(-U_m/(k_BT_H))
+
+  Factor Breakdown:
+    {b['factor_breakdown']}
+
+  Results:
+    L_H    = {b['L_H_W']:.2e} W
+    L_UQFF = {b['L_UQFF_W']:.2e} W
+    
+    Total Suppression: {b['total_suppression_percent']:.1f}%
+    Lifetime Enhancement: {b['lifetime_enhancement']:.1f}×
+
+═══════════════════════════════════════════════════════════════════════════════
+ IMPLICATIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+  • Evaporation rate dM/dt ~ -L/c² is suppressed by factor {b['total_factor']:.2f}
+  • Black hole lifetime increases by factor {b['lifetime_enhancement']:.1f}×
+  • UQFF advances stability, testable via no-radiation signals
+  • For astrophysical BHs: effectively eternal stability
+
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return report
+    
+    # ═══════════════════════════════════════════════════════════════════════════
     # BLACK HOLE THERMODYNAMICS
     # ═══════════════════════════════════════════════════════════════════════════
     
@@ -104716,8 +105098,26 @@ class UQFFLuminosityCalculator(SelfExpandingMixin):
             n_points = kwargs.get('n_points', 50)
             return self.simulate_over_mass(M_start, M_end, n_points)
         
+        elif mode == 'suppression_breakdown':
+            # Full breakdown of all 4 suppression mechanisms
+            M = kwargs.get('M', 4.3e6 * self.params['M_sun'])
+            B_t = kwargs.get('B_t', None)
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            return self.compute_full_suppression_breakdown(M, B_t, U_m_kT_ratio)
+        
+        elif mode == 'suppression_sgr_a':
+            # Sgr A* numerical example
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            return self.sgr_a_suppression_example(U_m_kT_ratio)
+        
+        elif mode == 'suppression_chart':
+            # Chart data for suppression mechanisms
+            M = kwargs.get('M', 4.3e6 * self.params['M_sun'])
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            return self.suppression_chart_data(M, U_m_kT_ratio)
+        
         else:
-            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, entropy, evaporation, simulate")
+            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, entropy, evaporation, simulate, suppression_breakdown, suppression_sgr_a, suppression_chart")
     
     def long_form_equation(self, M: float = None) -> str:
         """
