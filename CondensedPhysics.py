@@ -41785,6 +41785,552 @@ Q-SCOPE TESTABILITY:
 ═══════════════════════════════════════════════════════════════════════════════
 """
         return results, steps
+
+    def compute_chirp_mass(self, M1: float, M2: float) -> Tuple[dict, str]:
+        """
+        Compute chirp mass - the key observable in gravitational wave detection.
+        
+        CHIRP MASS:
+        ────────────────────────────────────────────────────────────────────────────
+        The chirp mass is the dominant parameter determining the GW signal
+        during the inspiral phase. It enters the waveform amplitude and frequency
+        evolution to leading order.
+        
+        Definition:
+            M_c = (M₁ M₂)^(3/5) / (M₁ + M₂)^(1/5)
+                = η^(3/5) × M_tot
+        
+        where η = M₁M₂/(M₁+M₂)² is the symmetric mass ratio.
+        
+        Physical significance:
+            • M_c determines GW frequency evolution: df/dt ∝ M_c^(5/3)
+            • M_c determines GW amplitude: h ∝ M_c^(5/3) / D_L
+            • LIGO measures M_c to ~0.1% precision
+        
+        Examples:
+            • GW150914: M_c ≈ 28 M_sun (36+29 M_sun)
+            • GW170817: M_c ≈ 1.186 M_sun (NS-NS merger)
+        
+        Args:
+            M1: Primary mass (kg)
+            M2: Secondary mass (kg)
+        
+        Returns:
+            results: Dict with chirp mass and related parameters
+            steps: Long-form derivation
+        """
+        import numpy as np
+        
+        M_sun = getattr(self, 'M_sun', 1.989e30)
+        
+        # Total mass
+        M_tot = M1 + M2
+        
+        # Reduced mass
+        mu = M1 * M2 / M_tot
+        
+        # Symmetric mass ratio
+        eta = mu / M_tot  # = M1*M2 / (M1+M2)^2
+        
+        # Chirp mass
+        M_chirp = (M1 * M2)**0.6 / M_tot**0.2
+        
+        # Alternative formula check
+        M_chirp_alt = eta**0.6 * M_tot
+        
+        # Mass ratio (convention: q ≤ 1)
+        q = min(M1, M2) / max(M1, M2)
+        
+        # Solar units
+        M1_solar = M1 / M_sun
+        M2_solar = M2 / M_sun
+        M_tot_solar = M_tot / M_sun
+        M_chirp_solar = M_chirp / M_sun
+        mu_solar = mu / M_sun
+        
+        results = {
+            'M1': M1,
+            'M2': M2,
+            'M_tot': M_tot,
+            'mu': mu,
+            'eta': eta,
+            'M_chirp': M_chirp,
+            'M1_solar': M1_solar,
+            'M2_solar': M2_solar,
+            'M_tot_solar': M_tot_solar,
+            'M_chirp_solar': M_chirp_solar,
+            'mu_solar': mu_solar,
+            'q': q,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+CHIRP MASS CALCULATION
+Key Gravitational Wave Observable
+═══════════════════════════════════════════════════════════════════════════════
+
+PHYSICAL BASIS:
+───────────────────────────────────────────────────────────────────────────────
+The chirp mass M_c is the combination of component masses that determines
+the gravitational wave signal to leading order in the inspiral phase.
+
+Definition:
+  M_c = (M₁ M₂)^(3/5) / (M₁ + M₂)^(1/5)
+
+Alternative in terms of symmetric mass ratio η:
+  M_c = η^(3/5) × M_tot, where η = μ/M_tot = M₁M₂/(M₁+M₂)²
+
+Significance:
+  • GW frequency evolution: df/dt = (96/5) π^(8/3) (G M_c/c³)^(5/3) f^(11/3)
+  • GW strain amplitude: h ∝ (G M_c)^(5/3) / (c⁴ D_L)
+
+═══════════════════════════════════════════════════════════════════════════════
+INPUT PARAMETERS:
+───────────────────────────────────────────────────────────────────────────────
+  M₁ = {M1:.4e} kg = {M1_solar:.4f} M_sun
+  M₂ = {M2:.4e} kg = {M2_solar:.4f} M_sun
+
+STEP 1: TOTAL AND REDUCED MASS
+───────────────────────────────────────────────────────────────────────────────
+  M_tot = M₁ + M₂ = {M_tot:.4e} kg = {M_tot_solar:.4f} M_sun
+  
+  μ = M₁ M₂ / M_tot = {M1:.4e} × {M2:.4e} / {M_tot:.4e}
+    = {mu:.4e} kg = {mu_solar:.4f} M_sun
+
+STEP 2: SYMMETRIC MASS RATIO
+───────────────────────────────────────────────────────────────────────────────
+  η = μ / M_tot = {mu:.4e} / {M_tot:.4e}
+    = {eta:.6f}
+  
+  (Note: η ∈ [0, 0.25], with η = 0.25 for equal masses)
+
+STEP 3: MASS RATIO
+───────────────────────────────────────────────────────────────────────────────
+  q = min(M₁,M₂) / max(M₁,M₂) = {q:.6f}
+  
+  (q ∈ [0, 1], with q = 1 for equal masses)
+
+STEP 4: CHIRP MASS
+───────────────────────────────────────────────────────────────────────────────
+  M_c = (M₁ M₂)^(3/5) / (M₁ + M₂)^(1/5)
+      = ({M1:.4e} × {M2:.4e})^(3/5) / ({M_tot:.4e})^(1/5)
+      = {M_chirp:.4e} kg
+      = {M_chirp_solar:.4f} M_sun
+
+  Verification: M_c = η^(3/5) × M_tot = {eta:.6f}^0.6 × {M_tot:.4e}
+              = {M_chirp_alt:.4e} kg ✓
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: CHIRP MASS
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ BINARY: {M1_solar:.2f} + {M2_solar:.2f} M_sun                                │
+  │                                                                 │
+  │ CHIRP MASS: M_c = {M_chirp_solar:.4f} M_sun                           │
+  │                 = {M_chirp:.4e} kg                              │
+  │                                                                 │
+  │ Symmetric mass ratio: η = {eta:.6f}                             │
+  │ Mass ratio: q = {q:.4f}                                         │
+  └─────────────────────────────────────────────────────────────────┘
+
+Compare to detected events:
+  • GW150914: M_c = 28.1 M_sun (36+29 M_sun BBH)
+  • GW170817: M_c = 1.186 M_sun (1.36+1.27 M_sun BNS)
+  • This system: M_c = {M_chirp_solar:.2f} M_sun
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compute_GW_frequency_binary(self, M1: float, M2: float, 
+                                     a: float) -> Tuple[dict, str]:
+        """
+        Compute gravitational wave frequency for a binary system.
+        
+        GW FREQUENCY:
+        ────────────────────────────────────────────────────────────────────────────
+        For a binary in circular orbit, the GW frequency is twice the orbital
+        frequency (due to quadrupole radiation pattern).
+        
+        Orbital frequency (Kepler):
+            f_orb = (1/2π) × sqrt(G M_tot / a³)
+        
+        GW frequency:
+            f_GW = 2 × f_orb = (1/π) × sqrt(G M_tot / a³)
+        
+        At ISCO (a = 6 G M_tot / c², Schwarzschild):
+            f_ISCO = c³ / (6^(3/2) π G M_tot) ≈ 220 Hz × (65 M_sun / M_tot)
+        
+        Args:
+            M1: Primary mass (kg)
+            M2: Secondary mass (kg)
+            a: Orbital separation (m)
+        
+        Returns:
+            results: Dict with frequencies and orbital parameters
+            steps: Long-form derivation
+        """
+        import numpy as np
+        
+        M_sun = getattr(self, 'M_sun', 1.989e30)
+        G = getattr(self, 'G', 6.67430e-11)
+        c = getattr(self, 'c', 2.998e8)
+        
+        M_tot = M1 + M2
+        M_tot_solar = M_tot / M_sun
+        
+        # Orbital frequency (Kepler)
+        f_orb = (1 / (2 * np.pi)) * np.sqrt(G * M_tot / a**3)
+        
+        # GW frequency = 2 × orbital frequency
+        f_GW = 2 * f_orb
+        
+        # Orbital period
+        T_orb = 1 / f_orb if f_orb > 0 else float('inf')
+        
+        # Orbital velocity
+        v_orb = 2 * np.pi * a * f_orb
+        v_over_c = v_orb / c
+        
+        # ISCO parameters (Schwarzschild)
+        r_ISCO = 6 * G * M_tot / c**2
+        f_ISCO = c**3 / (6**(1.5) * np.pi * G * M_tot)
+        
+        # Schwarzschild radius
+        r_s = 2 * G * M_tot / c**2
+        a_over_rs = a / r_s
+        
+        # Time to merger (Peters formula, simplified)
+        mu = M1 * M2 / M_tot
+        tau_merge = (5/256) * (c**5 / G**3) * (a**4 / (mu * M_tot**2))
+        tau_merge_years = tau_merge / (365.25 * 24 * 3600)
+        
+        results = {
+            'M1': M1,
+            'M2': M2,
+            'M_tot': M_tot,
+            'M_tot_solar': M_tot_solar,
+            'a': a,
+            'f_orb': f_orb,
+            'f_GW': f_GW,
+            'T_orb': T_orb,
+            'v_orb': v_orb,
+            'v_over_c': v_over_c,
+            'r_ISCO': r_ISCO,
+            'f_ISCO': f_ISCO,
+            'r_s': r_s,
+            'a_over_rs': a_over_rs,
+            'tau_merge': tau_merge,
+            'tau_merge_years': tau_merge_years,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+GRAVITATIONAL WAVE FREQUENCY CALCULATION
+Binary System Orbital Parameters
+═══════════════════════════════════════════════════════════════════════════════
+
+PHYSICAL BASIS:
+───────────────────────────────────────────────────────────────────────────────
+Kepler's law gives orbital frequency:
+  f_orb = (1/2π) × sqrt(G M_tot / a³)
+
+GW emission is quadrupolar → f_GW = 2 × f_orb:
+  f_GW = (1/π) × sqrt(G M_tot / a³)
+
+LIGO/Virgo sensitive band: 10 - 1000 Hz
+
+═══════════════════════════════════════════════════════════════════════════════
+INPUT PARAMETERS:
+───────────────────────────────────────────────────────────────────────────────
+  M₁ = {M1:.4e} kg, M₂ = {M2:.4e} kg
+  M_tot = {M_tot:.4e} kg = {M_tot_solar:.2f} M_sun
+  a = {a:.4e} m = {a/1e3:.2f} km
+
+STEP 1: ORBITAL FREQUENCY
+───────────────────────────────────────────────────────────────────────────────
+  f_orb = (1/2π) × sqrt(G M_tot / a³)
+        = (1/2π) × sqrt({G:.4e} × {M_tot:.4e} / {a**3:.4e})
+        = {f_orb:.6f} Hz
+  
+  T_orb = 1/f_orb = {T_orb:.6f} s = {T_orb/60:.4f} min
+
+STEP 2: GW FREQUENCY
+───────────────────────────────────────────────────────────────────────────────
+  f_GW = 2 × f_orb = 2 × {f_orb:.6f}
+       = {f_GW:.6f} Hz
+
+STEP 3: ORBITAL VELOCITY
+───────────────────────────────────────────────────────────────────────────────
+  v_orb = 2π a f_orb = 2π × {a:.4e} × {f_orb:.6f}
+        = {v_orb:.4e} m/s
+        = {v_over_c:.4f} c
+
+STEP 4: SCHWARZSCHILD PARAMETERS
+───────────────────────────────────────────────────────────────────────────────
+  r_s = 2GM/c² = {r_s:.4e} m = {r_s/1e3:.2f} km
+  a/r_s = {a_over_rs:.2f}
+
+STEP 5: ISCO FREQUENCY
+───────────────────────────────────────────────────────────────────────────────
+  r_ISCO = 6 G M_tot / c² = {r_ISCO:.4e} m = {r_ISCO/1e3:.2f} km
+  
+  f_ISCO = c³ / (6^(3/2) π G M_tot)
+         = {f_ISCO:.2f} Hz
+  
+  (Maximum GW frequency before plunge)
+
+STEP 6: TIME TO MERGER
+───────────────────────────────────────────────────────────────────────────────
+  τ_merge = (5/256) (c⁵/G³) (a⁴/(μ M_tot²))
+          = {tau_merge:.4e} s
+          = {tau_merge_years:.4e} years
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: BINARY GW PARAMETERS
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ BINARY: {M_tot_solar:.1f} M_sun at a = {a/1e3:.2f} km separation            │
+  │                                                                 │
+  │ FREQUENCIES:                                                    │
+  │   f_orbital = {f_orb:.4f} Hz                                    │
+  │   f_GW = {f_GW:.4f} Hz                                          │
+  │   f_ISCO = {f_ISCO:.2f} Hz (maximum)                            │
+  │                                                                 │
+  │ ORBITAL:                                                        │
+  │   Period = {T_orb:.4f} s                                        │
+  │   v/c = {v_over_c:.4f}                                          │
+  │                                                                 │
+  │ TIME TO MERGER: {tau_merge_years:.4e} years                           │
+  │ {'(IN LIGO BAND)' if 10 < f_GW < 1000 else '(OUTSIDE LIGO BAND)':^60}│
+  └─────────────────────────────────────────────────────────────────┘
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def simulate_UQFF_binary_inspiral(self, M1: float, M2: float,
+                                       a_start: float,
+                                       t_end: float = None,
+                                       dt: float = None,
+                                       f_TRZ: float = None,
+                                       B_t: float = 0.0,
+                                       B_crit: float = 4.4e13,
+                                       U_m: float = 1e40) -> Tuple[dict, str]:
+        """
+        Simulate binary black hole inspiral with UQFF corrections.
+        
+        INSPIRAL SIMULATION:
+        ────────────────────────────────────────────────────────────────────────────
+        Evolves orbital separation a(t) by integrating:
+            da/dt = -P_GW × 2a² / (G M₁ M₂)
+        
+        where P_GW is the gravitational wave power with UQFF corrections:
+            P_UQFF = P_GW × (1-f_TRZ) × (1-B_t/B_crit) × exp(-aether) × exp(-string)
+        
+        The simulation continues until:
+            1. Time limit reached
+            2. Separation reaches ISCO (a < 6GM/c²)
+            3. Numerical instability
+        
+        Args:
+            M1: Primary BH mass (kg)
+            M2: Secondary BH mass (kg)
+            a_start: Initial separation (m)
+            t_end: Simulation duration (s), default auto-computed
+            dt: Time step (s), default auto-computed
+            f_TRZ: Time reversal factor
+            B_t: Binary magnetic field (T)
+            B_crit: Critical field (T)
+            U_m: String binding energy (J)
+        
+        Returns:
+            results: Dict with time series data
+            steps: Simulation summary
+        """
+        import numpy as np
+        
+        M_sun = getattr(self, 'M_sun', 1.989e30)
+        G = getattr(self, 'G', 6.67430e-11)
+        c = getattr(self, 'c', 2.998e8)
+        rho_vac_UA = getattr(self, 'rho_vac_UA', 7.09e-36)
+        
+        f_TRZ = f_TRZ if f_TRZ is not None else getattr(self, 'f_TRZ', 0.1)
+        
+        M_tot = M1 + M2
+        mu = M1 * M2 / M_tot
+        
+        # ISCO and Schwarzschild radius
+        r_s = 2 * G * M_tot / c**2
+        r_ISCO = 3 * r_s  # = 6 GM/c²
+        
+        # Estimate merger time for default parameters
+        tau_estimate = (5/256) * (c**5 / G**3) * (a_start**4 / (mu * M_tot**2))
+        
+        if t_end is None:
+            t_end = min(tau_estimate * 0.1, 1e10)  # 10% of merger time or 10^10 s
+        
+        if dt is None:
+            dt = tau_estimate / 1000  # 1000 steps to merger
+            dt = min(dt, t_end / 100)  # At least 100 steps
+        
+        # GW power coefficient
+        P_coeff = (32.0 / 5.0) * (G**4 / c**5)
+        
+        # Pre-compute UQFF factors (those independent of a)
+        TRZ_factor = 1 - f_TRZ
+        B_factor = max(1 - B_t / B_crit, 0) if B_crit > 0 else 1.0
+        
+        # Time series storage
+        t_values = [0.0]
+        a_values = [a_start]
+        f_GW_values = []
+        P_std_values = []
+        P_UQFF_values = []
+        
+        a_current = a_start
+        t_current = 0.0
+        n_steps = 0
+        max_steps = 100000
+        
+        while t_current < t_end and a_current > r_ISCO and n_steps < max_steps:
+            # Standard GW power
+            P_std = P_coeff * (mu**2 * M_tot**2) / a_current**5
+            
+            # Aether damping
+            aether_exp = -rho_vac_UA * a_current * c**2 / (G * M_tot)
+            aether_exp = max(aether_exp, -700)
+            aether_factor = np.exp(aether_exp)
+            
+            # String binding
+            E_binding = G * M_tot**2 / a_current
+            string_exp = -U_m / E_binding if E_binding > 0 else 0
+            string_exp = max(string_exp, -700)
+            string_factor = np.exp(string_exp)
+            
+            # Combined UQFF power
+            P_UQFF = P_std * TRZ_factor * B_factor * aether_factor * string_factor
+            
+            # GW frequency
+            f_orb = (1 / (2 * np.pi)) * np.sqrt(G * M_tot / a_current**3)
+            f_GW = 2 * f_orb
+            
+            # Store values
+            f_GW_values.append(f_GW)
+            P_std_values.append(P_std)
+            P_UQFF_values.append(P_UQFF)
+            
+            # Evolution: da/dt = -P_GW × 2a² / (G M₁ M₂)
+            da_dt = -P_UQFF * 2 * a_current**2 / (G * M1 * M2)
+            
+            # Euler step
+            a_current += da_dt * dt
+            t_current += dt
+            
+            t_values.append(t_current)
+            a_values.append(a_current)
+            n_steps += 1
+        
+        # Final state
+        final_status = "MERGED" if a_current <= r_ISCO else "ONGOING"
+        if n_steps >= max_steps:
+            final_status = "MAX_STEPS_REACHED"
+        
+        # Convert to arrays
+        t_values = np.array(t_values)
+        a_values = np.array(a_values)
+        f_GW_values = np.array(f_GW_values + [f_GW_values[-1]] if f_GW_values else [0])
+        P_std_values = np.array(P_std_values + [P_std_values[-1]] if P_std_values else [0])
+        P_UQFF_values = np.array(P_UQFF_values + [P_UQFF_values[-1]] if P_UQFF_values else [0])
+        
+        # Statistics
+        avg_power_ratio = np.mean(P_UQFF_values / P_std_values) if len(P_std_values) > 0 else 1.0
+        
+        results = {
+            't_values': t_values.tolist(),
+            'a_values': a_values.tolist(),
+            'f_GW_values': f_GW_values.tolist(),
+            'P_std_values': P_std_values.tolist(),
+            'P_UQFF_values': P_UQFF_values.tolist(),
+            'M1': M1,
+            'M2': M2,
+            'M_tot': M_tot,
+            'a_start': a_start,
+            'a_final': a_values[-1],
+            'r_ISCO': r_ISCO,
+            't_final': t_values[-1],
+            'n_steps': n_steps,
+            'final_status': final_status,
+            'f_TRZ': f_TRZ,
+            'B_factor': B_factor,
+            'U_m': U_m,
+            'avg_power_ratio': avg_power_ratio,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+UQFF BINARY INSPIRAL SIMULATION
+Time Evolution with Aether-Mediated GW Emission
+═══════════════════════════════════════════════════════════════════════════════
+
+SIMULATION PARAMETERS:
+───────────────────────────────────────────────────────────────────────────────
+  M₁ = {M1/M_sun:.2f} M_sun, M₂ = {M2/M_sun:.2f} M_sun
+  a_start = {a_start:.4e} m = {a_start/1e3:.2f} km
+  t_end = {t_end:.4e} s
+  dt = {dt:.4e} s
+  
+UQFF PARAMETERS:
+  f_TRZ = {f_TRZ:.4f}
+  B_t/B_crit = {B_t/B_crit:.4f}
+  U_m = {U_m:.4e} J
+
+EVOLUTION EQUATION:
+  da/dt = -P_GW,UQFF × 2a² / (G M₁ M₂)
+  
+  P_UQFF = P_std × (1-f_TRZ) × (1-B/B_crit) × exp(-aether) × exp(-string)
+
+───────────────────────────────────────────────────────────────────────────────
+SIMULATION RESULTS:
+───────────────────────────────────────────────────────────────────────────────
+  Steps completed: {n_steps}
+  Status: {final_status}
+  
+  Initial:
+    a = {a_start:.4e} m
+    f_GW = {f_GW_values[0]:.4f} Hz
+    P_std = {P_std_values[0]:.4e} W
+    P_UQFF = {P_UQFF_values[0]:.4e} W
+  
+  Final:
+    a = {a_values[-1]:.4e} m
+    f_GW = {f_GW_values[-1]:.4f} Hz
+    P_std = {P_std_values[-1]:.4e} W
+    P_UQFF = {P_UQFF_values[-1]:.4e} W
+  
+  ISCO: a = {r_ISCO:.4e} m
+  
+  Time elapsed: {t_values[-1]:.4e} s = {t_values[-1]/(365.25*24*3600):.4e} years
+
+───────────────────────────────────────────────────────────────────────────────
+UQFF EFFECT:
+───────────────────────────────────────────────────────────────────────────────
+  Average P_UQFF / P_std = {avg_power_ratio:.4f}
+  
+  {'UQFF significantly extends inspiral time' if avg_power_ratio < 0.9 else 'UQFF has moderate effect on inspiral'}
+  
+  Factors:
+    (1 - f_TRZ) = {TRZ_factor:.4f}
+    (1 - B/B_crit) = {B_factor:.4f}
+
+═══════════════════════════════════════════════════════════════════════════════
+OUTPUT DATA:
+  t_values: {len(t_values)} time points
+  a_values: orbital separation evolution
+  f_GW_values: GW frequency evolution
+  P_std_values: standard GW power
+  P_UQFF_values: UQFF-corrected GW power
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
     
     # ═══════════════════════════════════════════════════════════════════════════════
     # GW SUPPRESSION S_* FACTORS (Canonical 6-Step Derivation)
