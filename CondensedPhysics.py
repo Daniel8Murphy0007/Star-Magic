@@ -139887,3 +139887,2275 @@ __all__.extend([
     'CMB_PLANCK_CALC',
     'LIGO_O4_CALC',
 ])
+
+
+# ============================================================================
+# SOURCE4_WOLFRAM.CPP PHYSICS TERMS (24 Calculator Classes)
+# Converted from C++ PhysicsTerm classes - Feb 26, 2026
+# Source: source4_wolfram.cpp - Core UQFF Unified Field Theory
+# ============================================================================
+
+class UniversalGravity1Calculator(SelfExpandingMixin):
+    """
+    Ug1: Magnetic dipole-gradient gravity with defect modulation.
+    
+    From source4_wolfram.cpp UniversalGravity1Term:
+    Ug1 = k1 × μ_s × ∇(M/r) × e^(-αt) × cos(πt_n) × defect
+    
+    Physical basis: Gravity from magnetic dipole gradient interaction
+    with time-varying defect modulation from solar cycles.
+    """
+    
+    def __init__(self, k1: float = 1.5, alpha: float = 0.001, delta_def: float = 0.01):
+        super().__init__()
+        self.k1 = k1
+        self.alpha = alpha
+        self.delta_def = delta_def
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        """
+        Compute Ug1 gravity component.
+        
+        Args:
+            t: Time (s)
+            params: Dict with mu_s, grad_Ms_r, tn
+            
+        Returns:
+            dict with Ug1 value and equation
+        """
+        params = params or {}
+        mu_s = params.get('mu_s', 1e20)          # Magnetic dipole (A·m²)
+        grad_Ms_r = params.get('grad_Ms_r', 1e-5)  # Surface gradient (m/s²)
+        tn = params.get('tn', t)                  # Normalized time
+        
+        defect = 1.0 + self.delta_def * np.sin(0.001 * t)
+        Ug1 = self.k1 * mu_s * grad_Ms_r * np.exp(-self.alpha * t) * np.cos(np.pi * tn) * defect
+        
+        equation = (
+            f"Ug1 = k1 × μ_s × ∇(M/r) × e^(-αt) × cos(πt_n) × defect\n"
+            f"    = {self.k1} × {mu_s:.3e} × {grad_Ms_r:.3e} × e^(-{self.alpha}×{t}) × cos(π×{tn}) × {defect:.6f}\n"
+            f"    = {Ug1:.6e} m/s²"
+        )
+        
+        return {
+            'Ug1': Ug1,
+            'units': 'm/s²',
+            'equation': equation,
+            'parameters': {
+                'k1': self.k1,
+                'mu_s': mu_s,
+                'grad_Ms_r': grad_Ms_r,
+                'alpha': self.alpha,
+                'tn': tn,
+                'defect': defect
+            }
+        }
+
+
+class UniversalGravity2Calculator(SelfExpandingMixin):
+    """
+    Ug2: Charge-reactivity gravity with solar wind modulation.
+    
+    From source4_wolfram.cpp UniversalGravity2Term:
+    Ug2 = k2 × (Q_A + Q_UA) × M/r² × S × wind_mod × H_SCm × E_react
+    
+    Physical basis: Gravity coupling to charge distribution with
+    solar wind enhancement and reactor efficiency.
+    """
+    
+    def __init__(self, k2: float = 1.2, QA: float = 1e-10, delta_sw: float = 0.01,
+                 v_sw: float = 5e5, HSCm: float = 1.0):
+        super().__init__()
+        self.k2 = k2
+        self.QA = QA
+        self.delta_sw = delta_sw
+        self.v_sw = v_sw
+        self.HSCm = HSCm
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        """
+        Compute Ug2 gravity component.
+        
+        Args:
+            t: Time (s)
+            params: Dict with QUA, mass, radius, Ereact, step_function
+            
+        Returns:
+            dict with Ug2 value and equation
+        """
+        params = params or {}
+        QUA = params.get('QUA', 1e-11)
+        M = params.get('mass', 1e30)
+        r = params.get('radius', 1e13)
+        Ereact = params.get('Ereact', 1.0)
+        S = params.get('step_function', 1.0)
+        
+        wind_mod = 1.0 + self.delta_sw * self.v_sw
+        Ug2 = self.k2 * (self.QA + QUA) * M / (r * r) * S * wind_mod * self.HSCm * Ereact
+        
+        equation = (
+            f"Ug2 = k2 × (Q_A + Q_UA) × M/r² × S × wind_mod × H_SCm × E_react\n"
+            f"    = {self.k2} × ({self.QA:.2e} + {QUA:.2e}) × {M:.3e}/{r:.3e}² × {S} × {wind_mod:.4f} × {self.HSCm} × {Ereact}\n"
+            f"    = {Ug2:.6e} m/s²"
+        )
+        
+        return {
+            'Ug2': Ug2,
+            'units': 'm/s²',
+            'equation': equation,
+            'parameters': {
+                'k2': self.k2,
+                'QA': self.QA,
+                'QUA': QUA,
+                'mass': M,
+                'radius': r,
+                'wind_mod': wind_mod,
+                'HSCm': self.HSCm,
+                'Ereact': Ereact
+            }
+        }
+
+
+class UniversalGravity3Calculator(SelfExpandingMixin):
+    """
+    Ug3: Magnetic string rotation gravity.
+    
+    From source4_wolfram.cpp UniversalGravity3Term:
+    Ug3 = k3 × B_j × cos(ω_s × t × π) × P_core × E_react
+    
+    Physical basis: Gravity from rotating magnetic string field
+    with core pressure and reactor efficiency coupling.
+    """
+    
+    def __init__(self, k3: float = 1.8):
+        super().__init__()
+        self.k3 = k3
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        """
+        Compute Ug3 gravity component.
+        
+        Args:
+            t: Time (s)
+            params: Dict with Bj, omega_s_t, Pcore, Ereact
+            
+        Returns:
+            dict with Ug3 value and equation
+        """
+        params = params or {}
+        Bj = params.get('Bj', 1e-3)                # Magnetic string field (T)
+        omega_s_t = params.get('omega_s_t', 1e-6)  # Rotation frequency (rad/s)
+        Pcore = params.get('Pcore', 1e-3)          # Core pressure (dimensionless)
+        Ereact = params.get('Ereact', 1.0)         # Reactor efficiency
+        
+        Ug3 = self.k3 * Bj * np.cos(omega_s_t * t * np.pi) * Pcore * Ereact
+        
+        equation = (
+            f"Ug3 = k3 × B_j × cos(ω_s × t × π) × P_core × E_react\n"
+            f"    = {self.k3} × {Bj:.3e} × cos({omega_s_t:.3e} × {t} × π) × {Pcore:.3e} × {Ereact}\n"
+            f"    = {Ug3:.6e} m/s²"
+        )
+        
+        return {
+            'Ug3': Ug3,
+            'units': 'm/s²',
+            'equation': equation,
+            'parameters': {
+                'k3': self.k3,
+                'Bj': Bj,
+                'omega_s_t': omega_s_t,
+                'Pcore': Pcore,
+                'Ereact': Ereact
+            }
+        }
+
+
+class UniversalGravity4Calculator(SelfExpandingMixin):
+    """
+    Ug4: Vacuum energy concentration gravity.
+    
+    From source4_wolfram.cpp UniversalGravity4Term:
+    Ug4 = k4 × ρ_v × C × M_bh/d_g × e^(-αt) × cos(πt_n) × (1 + f_feedback)
+    
+    Physical basis: Gravity from vacuum energy density concentration
+    near black holes with feedback effects.
+    """
+    
+    def __init__(self, k4: float = 1.0, alpha: float = 0.001):
+        super().__init__()
+        self.k4 = k4
+        self.alpha = alpha
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        """
+        Compute Ug4 gravity component.
+        
+        Args:
+            t: Time (s)
+            params: Dict with rho_v, C, Mbh, dg, tn, f_feedback
+            
+        Returns:
+            dict with Ug4 value and equation
+        """
+        params = params or {}
+        rho_v = params.get('rho_v', 7.09e-36)    # Vacuum energy density (J/m³)
+        C = params.get('C', 1.0)                  # Concentration factor
+        Mbh = params.get('Mbh', 8.155e36)        # Black hole mass (kg)
+        dg = params.get('dg', 1e13)              # Galactic distance (m)
+        tn = params.get('tn', t)                  # Normalized time
+        f_feedback = params.get('f_feedback', 0.1)  # Feedback factor
+        
+        Ug4 = self.k4 * rho_v * C * Mbh / dg * np.exp(-self.alpha * t) * np.cos(np.pi * tn) * (1 + f_feedback)
+        
+        equation = (
+            f"Ug4 = k4 × ρ_v × C × M_bh/d_g × e^(-αt) × cos(πt_n) × (1 + f_feedback)\n"
+            f"    = {self.k4} × {rho_v:.3e} × {C} × {Mbh:.3e}/{dg:.3e} × e^(-{self.alpha}×{t}) × cos(π×{tn}) × (1 + {f_feedback})\n"
+            f"    = {Ug4:.6e} m/s²"
+        )
+        
+        return {
+            'Ug4': Ug4,
+            'units': 'm/s²',
+            'equation': equation,
+            'parameters': {
+                'k4': self.k4,
+                'rho_v': rho_v,
+                'C': C,
+                'Mbh': Mbh,
+                'dg': dg,
+                'alpha': self.alpha,
+                'tn': tn,
+                'f_feedback': f_feedback
+            }
+        }
+
+
+class UniversalBuoyancyDetailedCalculator(SelfExpandingMixin):
+    """
+    U_Bi: Universal buoyancy from galactic rotation.
+    
+    From source4_wolfram.cpp UniversalBuoyancyTerm:
+    U_Bi = -β_i × U_gi × Ω_g × M_bh/d_g × wind_mod × U_UA × cos(πt_n)
+    
+    Physical basis: Buoyancy force opposing gravity,
+    modulated by galactic rotation and solar wind.
+    """
+    
+    def __init__(self, beta_i: float = 0.603):
+        super().__init__()
+        self.beta_i = beta_i
+        self.G = 6.67430e-11
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        """
+        Compute universal buoyancy component.
+        
+        Args:
+            t: Time (s)
+            params: Dict with Ugi, Omega_g, Mbh, dg, wind_mod, UUA, tn
+            
+        Returns:
+            dict with U_Bi value and equation
+        """
+        params = params or {}
+        Ugi = params.get('Ugi', 1e-10)           # Gravity sum (m/s²)
+        Omega_g = params.get('Omega_g', 7.27e-12)  # Galactic rotation (rad/s)
+        Mbh = params.get('Mbh', 8.155e36)        # Black hole mass (kg)
+        dg = params.get('dg', 2.6e20)            # Galactic center distance (m)
+        wind_mod = params.get('wind_mod', 1.0)   # Solar wind modulation
+        UUA = params.get('UUA', 0.0001)          # UQFF correction
+        tn = params.get('tn', t)                  # Normalized time
+        
+        U_Bi = -self.beta_i * Ugi * Omega_g * Mbh / dg * wind_mod * UUA * np.cos(np.pi * tn)
+        
+        equation = (
+            f"U_Bi = -β_i × U_gi × Ω_g × M_bh/d_g × wind_mod × U_UA × cos(πt_n)\n"
+            f"     = -{self.beta_i} × {Ugi:.3e} × {Omega_g:.3e} × {Mbh:.3e}/{dg:.3e} × {wind_mod} × {UUA} × cos(π×{tn})\n"
+            f"     = {U_Bi:.6e} m/s²"
+        )
+        
+        return {
+            'U_Bi': U_Bi,
+            'units': 'm/s²',
+            'equation': equation,
+            'parameters': {
+                'beta_i': self.beta_i,
+                'Ugi': Ugi,
+                'Omega_g': Omega_g,
+                'Mbh': Mbh,
+                'dg': dg,
+                'wind_mod': wind_mod,
+                'UUA': UUA,
+                'tn': tn
+            }
+        }
+
+
+class UniversalMagnetismDetailedCalculator(SelfExpandingMixin):
+    """
+    U_m: Universal magnetism from billion magnetic strings.
+    
+    From source4_wolfram.cpp UniversalMagnetismTerm:
+    U_m = N_strings × (μ_j/r_j) × (1 - e^(-γt × cos(πt_n))) × P_SCm × E_react
+    
+    Physical basis: Magnetic field contribution from cosmic string network
+    with reactor efficiency coupling.
+    """
+    
+    def __init__(self, num_strings: float = 1e9, gamma: float = 1.2):
+        super().__init__()
+        self.num_strings = num_strings
+        self.gamma = gamma
+        self.rho_A = 1e-21
+        self.kappa = 0.0005
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        """
+        Compute universal magnetism component.
+        
+        Args:
+            t: Time (s)
+            params: Dict with mu_j, rj, tn, phi_hat, SCm_density, v_SCm
+            
+        Returns:
+            dict with U_m value and equation
+        """
+        params = params or {}
+        mu_j = params.get('mu_j', 1e15)          # String dipole moment (A·m²)
+        rj = params.get('rj', 1e12)              # String radius (m)
+        tn = params.get('tn', t)                  # Normalized time
+        phi_hat = params.get('phi_hat', 1.0)     # Direction factor
+        SCm_density = params.get('SCm_density', 1e-15)  # SCm density (kg/m³)
+        v_SCm = params.get('v_SCm', 3e5)         # SCm velocity (m/s)
+        
+        if rj == 0 or self.rho_A == 0:
+            U_m = 0.0
+        else:
+            Ereact = (SCm_density * v_SCm**2 / self.rho_A) * np.exp(-self.kappa * t)
+            cycle = np.cos(np.pi * tn)
+            P_SCm = 1.0  # Simplified
+            U_m = self.gamma * mu_j / rj * self.num_strings * phi_hat * Ereact * cycle
+        
+        equation = (
+            f"U_m = N_strings × (μ_j/r_j) × γ × φ̂ × E_react × cos(πt_n)\n"
+            f"    = {self.num_strings:.2e} × ({mu_j:.3e}/{rj:.3e}) × {self.gamma} × {phi_hat} × E_react × cos(π×{tn})\n"
+            f"    = {U_m:.6e} m/s²"
+        )
+        
+        return {
+            'U_m': U_m,
+            'units': 'm/s²',
+            'equation': equation,
+            'parameters': {
+                'num_strings': self.num_strings,
+                'mu_j': mu_j,
+                'rj': rj,
+                'gamma': self.gamma,
+                'phi_hat': phi_hat,
+                'tn': tn
+            }
+        }
+
+
+class UniversalAetherCalculator(SelfExpandingMixin):
+    """
+    A_μν: Cosmic aether metric tensor trace.
+    
+    From source4_wolfram.cpp UniversalAetherTerm:
+    A_μν = Minkowski + η × T_s00 × cos(πt_n)
+    
+    Physical basis: Perturbation to flat spacetime from
+    cosmic aether stress-energy coupling.
+    """
+    
+    def __init__(self, eta: float = 1e-10):
+        super().__init__()
+        self.eta = eta
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        """
+        Compute aether metric perturbation.
+        
+        Args:
+            t: Time (s)
+            params: Dict with Ts00, tn
+            
+        Returns:
+            dict with A_mu_nu trace and equation
+        """
+        params = params or {}
+        Ts00 = params.get('Ts00', 1e-20)         # Stress-energy component (J/m³)
+        tn = params.get('tn', t)                  # Normalized time
+        
+        # Minkowski trace = -2 (signature -,+,+,+)
+        minkowski_trace = -2.0
+        perturbation = self.eta * Ts00 * np.cos(np.pi * tn)
+        A_mu_nu_trace = minkowski_trace + perturbation
+        
+        equation = (
+            f"Tr(A_μν) = Tr(η_μν) + η × T_s00 × cos(πt_n)\n"
+            f"        = {minkowski_trace} + {self.eta:.3e} × {Ts00:.3e} × cos(π×{tn})\n"
+            f"        = {A_mu_nu_trace:.6e}"
+        )
+        
+        return {
+            'A_mu_nu_trace': A_mu_nu_trace,
+            'minkowski_trace': minkowski_trace,
+            'perturbation': perturbation,
+            'units': 'dimensionless',
+            'equation': equation,
+            'parameters': {
+                'eta': self.eta,
+                'Ts00': Ts00,
+                'tn': tn
+            }
+        }
+
+
+class UnifiedFieldFullCalculator(SelfExpandingMixin):
+    """
+    F_U: Complete unified field from UQFF theory.
+    
+    From source4_wolfram.cpp UnifiedFieldTerm:
+    F_U = Σ(i=1..4)[U_gi + U_Bi] + U_m + Tr(A_μν)
+    
+    Physical basis: Full unified field combining all gravity,
+    buoyancy, magnetism, and aether contributions.
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.Ug1_calc = UniversalGravity1Calculator()
+        self.Ug2_calc = UniversalGravity2Calculator()
+        self.Ug3_calc = UniversalGravity3Calculator()
+        self.Ug4_calc = UniversalGravity4Calculator()
+        self.Ubi_calc = UniversalBuoyancyDetailedCalculator()
+        self.Um_calc = UniversalMagnetismDetailedCalculator()
+        self.Aether_calc = UniversalAetherCalculator()
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        """
+        Compute complete unified field.
+        
+        Args:
+            t: Time (s)
+            params: Parameters for all sub-components
+            
+        Returns:
+            dict with F_U value and all components
+        """
+        params = params or {}
+        
+        Ug1 = self.Ug1_calc.compute(t, params)['Ug1']
+        Ug2 = self.Ug2_calc.compute(t, params)['Ug2']
+        Ug3 = self.Ug3_calc.compute(t, params)['Ug3']
+        Ug4 = self.Ug4_calc.compute(t, params)['Ug4']
+        
+        # Compute Ugi sum for buoyancy
+        Ugi = Ug1 + Ug2 + Ug3 + Ug4
+        buoyancy_params = {**params, 'Ugi': Ugi}
+        U_Bi = self.Ubi_calc.compute(t, buoyancy_params)['U_Bi']
+        
+        Um = self.Um_calc.compute(t, params)['U_m']
+        A_trace = self.Aether_calc.compute(t, params)['A_mu_nu_trace']
+        
+        # Complete unified field
+        F_U = Ugi + U_Bi + Um + A_trace
+        
+        equation = (
+            f"F_U = Σ(U_gi) + U_Bi + U_m + Tr(A_μν)\n"
+            f"    = ({Ug1:.3e} + {Ug2:.3e} + {Ug3:.3e} + {Ug4:.3e}) + {U_Bi:.3e} + {Um:.3e} + {A_trace:.3e}\n"
+            f"    = {F_U:.6e} m/s²"
+        )
+        
+        return {
+            'F_U': F_U,
+            'Ug1': Ug1,
+            'Ug2': Ug2,
+            'Ug3': Ug3,
+            'Ug4': Ug4,
+            'Ugi_sum': Ugi,
+            'U_Bi': U_Bi,
+            'U_m': Um,
+            'A_mu_nu_trace': A_trace,
+            'units': 'm/s²',
+            'equation': equation
+        }
+
+
+class CompressedMUGEDetailedCalculator(SelfExpandingMixin):
+    """
+    9-term compressed MUGE equation.
+    
+    From source4_wolfram.cpp CompressedMUGETerm:
+    g = G×M/r² × (1+H₀t) × (1-B/B_crit) × env + Σ(Ug) + Λc²/3 + quantum + fluid + perturbation
+    
+    Physical basis: Complete Modified Uniformly Accelerated Gravitation Equation
+    with Hubble expansion, superconductive suppression, and correction terms.
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.G = 6.674e-11
+        self.H0 = 2.269e-18
+        self.Lambda = 1.1e-52
+        self.c = 2.998e8
+        self.hbar = 1.0546e-34
+        self.Delta_x_p = 1e-68
+        self.integral_psi = 2.176e-18
+        self.tHubble = 4.35e17
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        """
+        Compute 9-term compressed MUGE.
+        
+        Args:
+            t: Time (s)
+            params: System parameters
+            
+        Returns:
+            dict with g_compressed and all 9 terms
+        """
+        params = params or {}
+        M = params.get('mass', 2.984e30)
+        r = params.get('radius', 1e4)
+        t_sys = params.get('t_sys', 3.799e10)
+        B = params.get('B', 1e10)
+        Bcrit = params.get('Bcrit', 1e11)
+        rho_fluid = params.get('rho_fluid', 1e-15)
+        Vsys = params.get('Vsys', 4.189e12)
+        g_local = params.get('g_local', 10.0)
+        M_DM = params.get('M_DM', 0.0)
+        delta_rho = params.get('delta_rho_rho', 1e-5)
+        
+        # 1. Newtonian base
+        base = self.G * M / (r * r) if r != 0 else 0
+        
+        # 2. Hubble expansion factor
+        expansion = 1.0 + self.H0 * t_sys
+        
+        # 3. Superconductive adjustment
+        super_adj = 1.0 - B / Bcrit if Bcrit != 0 else 1.0
+        
+        # 4. Envelope (placeholder)
+        envelope = 1.0
+        
+        # 5. Ug sum (placeholder)
+        Ug_sum = 0.0
+        
+        # Combined adjusted base
+        adjusted_base = base * expansion * super_adj * envelope + Ug_sum
+        
+        # 6. Cosmological term
+        cosm = self.Lambda * self.c**2 / 3.0
+        
+        # 7. Quantum term
+        quantum = (self.hbar / self.Delta_x_p) * self.integral_psi * (2 * np.pi / self.tHubble)
+        
+        # 8. Fluid term
+        fluid = rho_fluid * Vsys * g_local
+        
+        # 9. Perturbation term
+        perturbation = (M + M_DM) * (delta_rho + 3 * self.G * M / r**3) if r != 0 else 0
+        
+        # Total
+        g_compressed = adjusted_base + cosm + quantum + fluid + perturbation
+        
+        equation = (
+            f"g_compressed = [G×M/r² × (1+H₀t) × (1-B/B_crit) × env + ΣUg] + Λc²/3 + quantum + fluid + perturbation\n"
+            f"             = [{base:.3e} × {expansion:.4f} × {super_adj:.4f} × {envelope} + {Ug_sum}] + {cosm:.3e} + {quantum:.3e} + {fluid:.3e} + {perturbation:.3e}\n"
+            f"             = {g_compressed:.6e} m/s²"
+        )
+        
+        return {
+            'g_compressed': g_compressed,
+            'base': base,
+            'expansion': expansion,
+            'super_adj': super_adj,
+            'envelope': envelope,
+            'Ug_sum': Ug_sum,
+            'adjusted_base': adjusted_base,
+            'cosmological': cosm,
+            'quantum': quantum,
+            'fluid': fluid,
+            'perturbation': perturbation,
+            'units': 'm/s²',
+            'equation': equation
+        }
+
+
+class ResonanceMUGEDetailedCalculator(SelfExpandingMixin):
+    """
+    13-term + wormhole resonance MUGE equation.
+    
+    From source4_wolfram.cpp ResonanceMUGETerm:
+    g_res = aDPM + aTHz + avac_diff + asuper_freq + aaether_res + Ug4i +
+            aquantum_freq + aAether_freq + afluid_freq + Osc + aexp_freq + fTRZ + a_wormhole
+    
+    Physical basis: Complete resonance gravity with frequency-dependent
+    acceleration terms and wormhole metric contribution.
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.c = 3e8
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        """
+        Compute 13-term + wormhole resonance MUGE.
+        
+        Args:
+            t: Time (s)
+            params: System parameters
+            
+        Returns:
+            dict with g_resonance and all 14 terms
+        """
+        params = params or {}
+        
+        # Default parameters from SGR1745 magnetar
+        I = params.get('I', 1e45)
+        A = params.get('A', 7e22)
+        omega1 = params.get('omega1', 1e-8)
+        omega2 = params.get('omega2', 5e-9)
+        fDPM = params.get('fDPM', 1e12)
+        Evac_neb = params.get('Evac_neb', 7.09e-36)
+        Evac_ISM = params.get('Evac_ISM', 7.09e-37)
+        Vsys = params.get('Vsys', 1e56)
+        fTHz = params.get('fTHz', 1e12)
+        vexp = params.get('vexp', 1e6)
+        Delta_Evac = params.get('Delta_Evac', 6.381e-36)
+        Fsuper = params.get('Fsuper', 6.287e-19)
+        UA_SCM = params.get('UA_SCM', 10.0)
+        omega_i = params.get('omega_i', 1e-8)
+        fTRZ = params.get('fTRZ', 0.1)
+        k4_res = params.get('k4_res', 1.0)
+        freact = params.get('freact', 1e10)
+        fquantum = params.get('fquantum', 1.445e-17)
+        fAether = params.get('fAether', 1.576e-35)
+        ffluid = params.get('ffluid', 1e6)
+        H_z = params.get('H_z', 2.270e-18)
+        f_worm = params.get('f_worm', 1.0)
+        b = params.get('b', 1.0)
+        r = params.get('r', 1.0)
+        
+        # 1. Base DPM acceleration
+        FDPM = I * A * (omega1 - omega2)
+        aDPM = FDPM * fDPM * Evac_neb * self.c * Vsys
+        
+        # 2. THz contribution
+        aTHz = (fTHz * Evac_neb * vexp * aDPM) / (Evac_ISM * self.c) if Evac_ISM * self.c != 0 else 0
+        
+        # 3. Vacuum diff
+        avac_diff = (Delta_Evac * vexp**2 * aDPM) / (Evac_neb * self.c**2) if Evac_neb * self.c**2 != 0 else 0
+        
+        # 4. Superfrequency
+        asuper_freq = (Fsuper * fTHz * aDPM) / (Evac_neb * self.c) if Evac_neb * self.c != 0 else 0
+        
+        # 5. Aether resonance
+        aaether_res = UA_SCM * omega_i * fTHz * aDPM * (1.0 + fTRZ)
+        
+        # 6. Reactor gravity (Ug4i)
+        Ereact = 1046.0 * np.exp(-0.0005 * t)
+        Ug4i = (k4_res * Ereact * freact * aDPM) / (Evac_neb * self.c) if Evac_neb * self.c != 0 else 0
+        
+        # 7. Quantum frequency
+        aquantum_freq = (fquantum * Evac_neb * aDPM) / (Evac_ISM * self.c) if Evac_ISM * self.c != 0 else 0
+        
+        # 8. Aether frequency
+        aAether_freq = (fAether * Evac_neb * aDPM) / (Evac_ISM * self.c) if Evac_ISM * self.c != 0 else 0
+        
+        # 9. Fluid frequency
+        afluid_freq = (ffluid * Evac_neb * Vsys) / (Evac_ISM * self.c) if Evac_ISM * self.c != 0 else 0
+        
+        # 10. Oscillation (simplified)
+        Osc = 0.0
+        
+        # 11. Expansion frequency
+        fexp = 2 * np.pi * H_z * t
+        aexp_freq = (fexp * Evac_neb * aDPM) / (Evac_ISM * self.c) if Evac_ISM * self.c != 0 else 0
+        
+        # 12. fTRZ pass-through
+        fTRZ_term = fTRZ
+        
+        # 13. Wormhole metric
+        denom = b**2 + r**2
+        a_wormhole = (f_worm * Evac_neb) / denom if denom != 0 else 0
+        
+        # Total resonance
+        g_resonance = (aDPM + aTHz + avac_diff + asuper_freq + aaether_res + Ug4i +
+                       aquantum_freq + aAether_freq + afluid_freq + Osc + aexp_freq + fTRZ_term + a_wormhole)
+        
+        equation = (
+            f"g_resonance = aDPM + aTHz + avac_diff + asuper_freq + aaether_res + Ug4i + \n"
+            f"              aquantum_freq + aAether_freq + afluid_freq + Osc + aexp_freq + fTRZ + a_wormhole\n"
+            f"            = {aDPM:.3e} + {aTHz:.3e} + {avac_diff:.3e} + {asuper_freq:.3e} + {aaether_res:.3e} + {Ug4i:.3e} +\n"
+            f"              {aquantum_freq:.3e} + {aAether_freq:.3e} + {afluid_freq:.3e} + {Osc:.3e} + {aexp_freq:.3e} + {fTRZ_term:.3e} + {a_wormhole:.3e}\n"
+            f"            = {g_resonance:.6e} m/s²"
+        )
+        
+        return {
+            'g_resonance': g_resonance,
+            'aDPM': aDPM,
+            'aTHz': aTHz,
+            'avac_diff': avac_diff,
+            'asuper_freq': asuper_freq,
+            'aaether_res': aaether_res,
+            'Ug4i': Ug4i,
+            'aquantum_freq': aquantum_freq,
+            'aAether_freq': aAether_freq,
+            'afluid_freq': afluid_freq,
+            'Osc': Osc,
+            'aexp_freq': aexp_freq,
+            'fTRZ': fTRZ_term,
+            'a_wormhole': a_wormhole,
+            'units': 'm/s²',
+            'equation': equation
+        }
+
+
+class TapestryStarbirthCalculator(SelfExpandingMixin):
+    """
+    Tapestry of Blazing Starbirth nebula physics.
+    
+    From source4_wolfram.cpp TapestryStarbirthTerm:
+    Located in Small Magellanic Cloud, active star formation region.
+    
+    Physical parameters:
+    - M = 1.989e35 kg (100,000 solar masses)
+    - V_sys = 1e53 m³
+    - r = 10 pc (3.086e17 m)
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.M = 1.989e35        # kg
+        self.Vsys = 1e53         # m³
+        self.r = 3.086e17        # m (10 pc)
+        self.G = 6.674e-11
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        """
+        Compute Tapestry Starbirth physics.
+        
+        Returns:
+            dict with gravitational field, density, dynamical time
+        """
+        params = params or {}
+        M = params.get('mass', self.M)
+        r = params.get('radius', self.r)
+        V = params.get('Vsys', self.Vsys)
+        
+        # Surface gravity
+        g = self.G * M / r**2 if r != 0 else 0
+        
+        # Average density
+        rho = M / V if V != 0 else 0
+        
+        # Free-fall time
+        t_ff = np.sqrt(3 * np.pi / (32 * self.G * rho)) if rho > 0 else float('inf')
+        
+        equation = (
+            f"Tapestry of Blazing Starbirth (SMC Star Formation Region)\n"
+            f"  g = G×M/r² = {self.G:.3e} × {M:.3e} / {r:.3e}² = {g:.6e} m/s²\n"
+            f"  ρ = M/V = {M:.3e} / {V:.3e} = {rho:.6e} kg/m³\n"
+            f"  t_ff = √(3π/32Gρ) = {t_ff:.3e} s = {t_ff/(3.156e13):.2f} Myr"
+        )
+        
+        return {
+            'name': 'Tapestry of Blazing Starbirth',
+            'g': g,
+            'density': rho,
+            't_freefall': t_ff,
+            'mass': M,
+            'radius': r,
+            'volume': V,
+            'units': {'g': 'm/s²', 'density': 'kg/m³', 't_freefall': 's'},
+            'equation': equation
+        }
+
+
+class Westerlund2ClusterCalculator(SelfExpandingMixin):
+    """
+    Westerlund 2 stellar cluster physics.
+    
+    From source4_wolfram.cpp Westerlund2ClusterTerm:
+    Young stellar cluster in Carina, distance ~4.16 kpc.
+    
+    Physical parameters from source4.cpp.
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.M = 3e34            # kg (~15,000 solar masses)
+        self.r = 1.5e17          # m (~5 pc half-light radius)
+        self.distance = 1.28e20  # m (~4.16 kpc)
+        self.G = 6.674e-11
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        """
+        Compute Westerlund 2 cluster physics.
+        
+        Returns:
+            dict with cluster dynamical properties
+        """
+        params = params or {}
+        M = params.get('mass', self.M)
+        r = params.get('radius', self.r)
+        
+        # Velocity dispersion estimate (virial)
+        sigma_v = np.sqrt(self.G * M / r) if r != 0 else 0
+        
+        # Crossing time
+        t_cross = r / sigma_v if sigma_v != 0 else float('inf')
+        
+        # Surface gravity at half-light radius
+        g = self.G * M / r**2 if r != 0 else 0
+        
+        equation = (
+            f"Westerlund 2 Cluster (Carina, d = 4.16 kpc)\n"
+            f"  σ_v = √(GM/r) = √({self.G:.3e} × {M:.3e} / {r:.3e}) = {sigma_v:.3e} m/s = {sigma_v/1e3:.1f} km/s\n"
+            f"  t_cross = r/σ_v = {t_cross:.3e} s = {t_cross/(3.156e13):.2f} Myr\n"
+            f"  g = {g:.6e} m/s²"
+        )
+        
+        return {
+            'name': 'Westerlund 2',
+            'sigma_v': sigma_v,
+            't_crossing': t_cross,
+            'g': g,
+            'mass': M,
+            'radius': r,
+            'distance': self.distance,
+            'units': {'sigma_v': 'm/s', 't_crossing': 's', 'g': 'm/s²'},
+            'equation': equation
+        }
+
+
+class PillarsCreationCalculator(SelfExpandingMixin):
+    """
+    Pillars of Creation (M16/Eagle Nebula) physics.
+    
+    From source4_wolfram.cpp PillarsCreationTerm:
+    Iconic molecular cloud pillars in Eagle Nebula.
+    
+    Physical parameters:
+    - M = 1.989e32 kg (~100 solar masses per pillar)
+    - r = 1 ly (9.46e15 m, pillar length)
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.M = 1.989e32        # kg
+        self.r = 9.46e15         # m (1 ly)
+        self.G = 6.674e-11
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        """
+        Compute Pillars of Creation physics.
+        
+        Returns:
+            dict with pillar structure properties
+        """
+        params = params or {}
+        M = params.get('mass', self.M)
+        r = params.get('radius', self.r)
+        
+        # Volume (approximate cylinder)
+        diameter = r / 4  # rough estimate
+        V = np.pi * (diameter/2)**2 * r
+        
+        # Average density
+        rho = M / V if V != 0 else 0
+        
+        # Jeans mass (assuming T ~ 50 K)
+        T = 50  # K
+        k_B = 1.381e-23
+        m_H = 1.674e-27
+        mu = 2.4  # mean molecular weight for H2
+        c_s = np.sqrt(k_B * T / (mu * m_H))  # sound speed
+        
+        # Jeans mass
+        M_J = (np.pi**(5/2) / 6) * (c_s**3) / (self.G**(3/2) * np.sqrt(rho)) if rho > 0 else float('inf')
+        
+        equation = (
+            f"Pillars of Creation (M16/Eagle Nebula)\n"
+            f"  ρ = M/V ≈ {rho:.3e} kg/m³\n"
+            f"  c_s = √(kT/μm_H) = {c_s:.3e} m/s (at T={T} K)\n"
+            f"  M_Jeans = (π^(5/2)/6) × c_s³/(G^(3/2)×√ρ) = {M_J:.3e} kg = {M_J/1.989e30:.1f} M☉"
+        )
+        
+        return {
+            'name': 'Pillars of Creation',
+            'density': rho,
+            'sound_speed': c_s,
+            'M_Jeans': M_J,
+            'M_Jeans_solar': M_J / 1.989e30,
+            'mass': M,
+            'radius': r,
+            'volume': V,
+            'temperature': T,
+            'units': {'density': 'kg/m³', 'sound_speed': 'm/s', 'M_Jeans': 'kg'},
+            'equation': equation
+        }
+
+
+class RingsRelativityCalculator(SelfExpandingMixin):
+    """
+    Rings of Relativity cosmological structure physics.
+    
+    From source4_wolfram.cpp RingsRelativityTerm:
+    Gravitational lens structure at cosmological redshift.
+    
+    Physical parameters:
+    - M = 1.989e36 kg (~1e6 solar masses)
+    - z = 0.01
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.M = 1.989e36        # kg
+        self.z = 0.01            # redshift
+        self.c = 2.998e8
+        self.G = 6.674e-11
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        """
+        Compute Rings of Relativity lensing physics.
+        
+        Returns:
+            dict with Einstein radius and lensing properties
+        """
+        params = params or {}
+        M = params.get('mass', self.M)
+        z = params.get('z', self.z)
+        
+        # Angular diameter distances (simplified, flat universe)
+        H0 = 70e3 / 3.086e22  # 70 km/s/Mpc in SI
+        D_L = self.c * z / H0  # Luminosity distance (low z approx)
+        D_S = D_L * 2  # Source at twice the distance (assumption)
+        D_LS = D_S - D_L
+        
+        # Einstein radius
+        theta_E = np.sqrt(4 * self.G * M / self.c**2 * D_LS / (D_L * D_S)) if D_L * D_S != 0 else 0
+        theta_E_arcsec = theta_E * 206265  # Convert to arcseconds
+        
+        # Schwarzschild radius
+        r_s = 2 * self.G * M / self.c**2
+        
+        equation = (
+            f"Rings of Relativity (Gravitational Lens, z = {z})\n"
+            f"  θ_E = √(4GM/c² × D_LS/(D_L×D_S)) = {theta_E:.6e} rad = {theta_E_arcsec:.3f} arcsec\n"
+            f"  r_s = 2GM/c² = {r_s:.3e} m\n"
+            f"  D_L = {D_L:.3e} m = {D_L/3.086e22:.1f} Mpc"
+        )
+        
+        return {
+            'name': 'Rings of Relativity',
+            'theta_E': theta_E,
+            'theta_E_arcsec': theta_E_arcsec,
+            'r_schwarzschild': r_s,
+            'D_L': D_L,
+            'D_S': D_S,
+            'D_LS': D_LS,
+            'mass': M,
+            'redshift': z,
+            'units': {'theta_E': 'rad', 'r_schwarzschild': 'm'},
+            'equation': equation
+        }
+
+
+class StudentGuideUniverseCalculator(SelfExpandingMixin):
+    """
+    Student Guide Universe observable parameters.
+    
+    From source4_wolfram.cpp StudentGuideUniverseTerm:
+    Complete observable universe parameters for educational reference.
+    
+    Physical parameters:
+    - M = 1e53 kg (baryonic + dark matter)
+    - r = 10 Gly (9.46e25 m, comoving radius)
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.M_baryonic = 1.5e53     # kg
+        self.M_DM = 5e53             # kg (dark matter)
+        self.M_total = 1e54          # kg (including dark energy equiv)
+        self.r = 9.46e25             # m (10 Gly)
+        self.c = 2.998e8
+        self.G = 6.674e-11
+        self.H0 = 2.269e-18          # Hubble constant (1/s)
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        """
+        Compute observable universe parameters.
+        
+        Returns:
+            dict with cosmological parameters
+        """
+        params = params or {}
+        
+        # Critical density
+        rho_crit = 3 * self.H0**2 / (8 * np.pi * self.G)
+        
+        # Observable universe volume
+        V = (4/3) * np.pi * self.r**3
+        
+        # Average density
+        rho_avg = self.M_total / V
+        
+        # Omega parameters
+        Omega_m = rho_avg / rho_crit
+        Omega_Lambda = 0.68  # Dark energy fraction
+        
+        # Hubble time
+        t_Hubble = 1 / self.H0
+        
+        # Hubble radius
+        r_Hubble = self.c / self.H0
+        
+        equation = (
+            f"Student Guide Universe (Observable Universe)\n"
+            f"  ρ_crit = 3H₀²/8πG = {rho_crit:.3e} kg/m³\n"
+            f"  V = (4/3)πr³ = {V:.3e} m³\n"
+            f"  Ω_m = ρ_avg/ρ_crit ≈ {Omega_m:.3f}\n"
+            f"  t_Hubble = 1/H₀ = {t_Hubble:.3e} s = {t_Hubble/(3.156e16):.1f} Gyr\n"
+            f"  r_Hubble = c/H₀ = {r_Hubble:.3e} m = {r_Hubble/9.46e15:.1f} ly"
+        )
+        
+        return {
+            'name': 'Observable Universe',
+            'rho_critical': rho_crit,
+            'rho_average': rho_avg,
+            'Omega_matter': Omega_m,
+            'Omega_Lambda': Omega_Lambda,
+            't_Hubble': t_Hubble,
+            'r_Hubble': r_Hubble,
+            'M_baryonic': self.M_baryonic,
+            'M_dark_matter': self.M_DM,
+            'M_total': self.M_total,
+            'radius': self.r,
+            'volume': V,
+            'H0': self.H0,
+            'units': {'rho': 'kg/m³', 't_Hubble': 's', 'r_Hubble': 'm'},
+            'equation': equation
+        }
+
+
+class MuSTimeCalculator(SelfExpandingMixin):
+    """
+    μ_s(t): Time-varying magnetic dipole moment.
+    
+    From source4_wolfram.cpp MuSTerm:
+    μ_s = B_s(t) × R_s³
+    """
+    
+    def __init__(self):
+        super().__init__()
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        params = params or {}
+        Bs = params.get('Bs_avg', 1e-4)
+        omega_c = params.get('omega_c', 1e-6)
+        Rs = params.get('Rs', 6.371e6)
+        SCm_contrib = params.get('SCm_contrib', 1e3)
+        
+        Bs_t = Bs + 0.4 * np.sin(omega_c * t) + SCm_contrib
+        mu_s = Bs_t * Rs**3
+        
+        return {
+            'mu_s': mu_s,
+            'Bs_t': Bs_t,
+            'units': 'A·m²',
+            'equation': f"μ_s = B_s(t) × R_s³ = {Bs_t:.3e} × {Rs:.3e}³ = {mu_s:.6e} A·m²"
+        }
+
+
+class GradMsRCalculator(SelfExpandingMixin):
+    """
+    ∇(M_s/r): Surface gravity gradient.
+    
+    From source4_wolfram.cpp GradMsRTerm:
+    grad(M/r) = G × M_s / R_s²
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.G = 6.67430e-11
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        params = params or {}
+        Ms = params.get('Ms', 1e30)
+        Rs = params.get('Rs', 1e9)
+        
+        grad = self.G * Ms / Rs**2 if Rs != 0 else 0
+        
+        return {
+            'grad_Ms_r': grad,
+            'units': 'm/s²',
+            'equation': f"∇(M/r) = GM/r² = {self.G:.3e} × {Ms:.3e} / {Rs:.3e}² = {grad:.6e} m/s²"
+        }
+
+
+class BjTimeCalculator(SelfExpandingMixin):
+    """
+    B_j(t): Time-varying magnetic string field.
+    
+    From source4_wolfram.cpp BjTerm:
+    B_j = 1e-3 + 0.4×sin(ω_c×t) + SCm_contrib
+    """
+    
+    def __init__(self):
+        super().__init__()
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        params = params or {}
+        omega_c = params.get('omega_c', 1e-6)
+        SCm_contrib = params.get('SCm_contrib', 1e3)
+        
+        Bj = 1e-3 + 0.4 * np.sin(omega_c * t) + SCm_contrib
+        
+        return {
+            'Bj': Bj,
+            'units': 'T',
+            'equation': f"B_j(t) = 1e-3 + 0.4×sin(ω_c×t) + SCm = {Bj:.6e} T"
+        }
+
+
+class OmegaSTTimeCalculator(SelfExpandingMixin):
+    """
+    ω_s(t): Time-varying rotation frequency.
+    
+    From source4_wolfram.cpp OmegaSTTerm:
+    ω_s(t) = ω_s0 - 0.4e-6×sin(ω_c×t)
+    """
+    
+    def __init__(self):
+        super().__init__()
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        params = params or {}
+        omega_s = params.get('omega_s', 2e-6)
+        omega_c = params.get('omega_c', 1e-6)
+        
+        omega_s_t = omega_s - 0.4e-6 * np.sin(omega_c * t)
+        
+        return {
+            'omega_s_t': omega_s_t,
+            'units': 'rad/s',
+            'equation': f"ω_s(t) = ω_s0 - 0.4e-6×sin(ω_c×t) = {omega_s_t:.6e} rad/s"
+        }
+
+
+class MuJTimeCalculator(SelfExpandingMixin):
+    """
+    μ_j(t): Magnetic string dipole moment.
+    
+    From source4_wolfram.cpp MuJTerm:
+    μ_j = B_j(t) × R_s³
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.Bj_calc = BjTimeCalculator()
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        params = params or {}
+        Rs = params.get('Rs', 6.371e6)
+        
+        Bj = self.Bj_calc.compute(t, params)['Bj']
+        mu_j = Bj * Rs**3
+        
+        return {
+            'mu_j': mu_j,
+            'Bj': Bj,
+            'units': 'A·m²',
+            'equation': f"μ_j = B_j(t) × R_s³ = {Bj:.3e} × {Rs:.3e}³ = {mu_j:.6e} A·m²"
+        }
+
+
+class ReactorEfficiencyCalculator(SelfExpandingMixin):
+    """
+    E_react: SCm reactor efficiency.
+    
+    From source4_wolfram.cpp ReactorEfficiencyTerm:
+    E_react = (ρ_SCm × v_SCm²) / ρ_A × e^(-κ×t)
+    """
+    
+    def __init__(self, kappa: float = 0.0005):
+        super().__init__()
+        self.kappa = kappa
+        self.rho_A = 1e-21
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        params = params or {}
+        rho_SCm = params.get('rho_SCm', 1e-15)
+        v_SCm = params.get('v_SCm', 3e5)
+        
+        Ereact = (rho_SCm * v_SCm**2 / self.rho_A) * np.exp(-self.kappa * t)
+        
+        return {
+            'Ereact': Ereact,
+            'units': 'dimensionless',
+            'equation': f"E_react = (ρ_SCm × v²_SCm / ρ_A) × e^(-κt) = {Ereact:.6e}"
+        }
+
+
+class NavierStokesQuasarJetCalculator(SelfExpandingMixin):
+    """
+    Navier-Stokes with UQFF body force for quasar jets.
+    
+    From source4_wolfram.cpp NavierStokesQuasarJetTerm:
+    dv/dt = -∇P/ρ + ν∇²v + g_UQFF
+    
+    where v_jet ≈ 0.99c for relativistic jets.
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.c = 2.998e8
+        self.v_jet = 0.99 * self.c
+        self.nu = 1e10  # kinematic viscosity (m²/s, plasma estimate)
+        
+    def compute(self, t: float, params: dict = None) -> dict:
+        params = params or {}
+        rho = params.get('rho', 1e-20)       # jet density (kg/m³)
+        dP_dx = params.get('dP_dx', 1e-10)   # pressure gradient (Pa/m)
+        g_UQFF = params.get('g_UQFF', 1e-8)  # UQFF gravity (m/s²)
+        
+        # Simplified 1D NS: dv/dt = -dP/dx/ρ + g_UQFF  (ignoring viscous term for first approx)
+        dv_dt = -dP_dx / rho + g_UQFF if rho != 0 else g_UQFF
+        
+        # Time to reach jet velocity
+        t_accel = self.v_jet / dv_dt if dv_dt != 0 else float('inf')
+        
+        equation = (
+            f"Navier-Stokes Quasar Jet (v_jet = 0.99c)\n"
+            f"  dv/dt = -∇P/ρ + ν∇²v + g_UQFF ≈ -{dP_dx:.3e}/{rho:.3e} + {g_UQFF:.3e}\n"
+            f"        = {dv_dt:.6e} m/s²\n"
+            f"  t_accel (to 0.99c) = {t_accel:.3e} s = {t_accel/3.156e7:.1f} yr"
+        )
+        
+        return {
+            'dv_dt': dv_dt,
+            'v_jet': self.v_jet,
+            't_acceleration': t_accel,
+            'rho': rho,
+            'dP_dx': dP_dx,
+            'g_UQFF': g_UQFF,
+            'units': {'dv_dt': 'm/s²', 'v_jet': 'm/s', 't_acceleration': 's'},
+            'equation': equation
+        }
+
+
+# Source4 Wolfram Calculator instances
+SOURCE4_WOLFRAM_CALCULATORS = {
+    'UniversalGravity1Calculator': UniversalGravity1Calculator(),
+    'UniversalGravity2Calculator': UniversalGravity2Calculator(),
+    'UniversalGravity3Calculator': UniversalGravity3Calculator(),
+    'UniversalGravity4Calculator': UniversalGravity4Calculator(),
+    'UniversalBuoyancyDetailedCalculator': UniversalBuoyancyDetailedCalculator(),
+    'UniversalMagnetismDetailedCalculator': UniversalMagnetismDetailedCalculator(),
+    'UniversalAetherCalculator': UniversalAetherCalculator(),
+    'UnifiedFieldFullCalculator': UnifiedFieldFullCalculator(),
+    'CompressedMUGEDetailedCalculator': CompressedMUGEDetailedCalculator(),
+    'ResonanceMUGEDetailedCalculator': ResonanceMUGEDetailedCalculator(),
+    'TapestryStarbirthCalculator': TapestryStarbirthCalculator(),
+    'Westerlund2ClusterCalculator': Westerlund2ClusterCalculator(),
+    'PillarsCreationCalculator': PillarsCreationCalculator(),
+    'RingsRelativityCalculator': RingsRelativityCalculator(),
+    'StudentGuideUniverseCalculator': StudentGuideUniverseCalculator(),
+    'MuSTimeCalculator': MuSTimeCalculator(),
+    'GradMsRCalculator': GradMsRCalculator(),
+    'BjTimeCalculator': BjTimeCalculator(),
+    'OmegaSTTimeCalculator': OmegaSTTimeCalculator(),
+    'MuJTimeCalculator': MuJTimeCalculator(),
+    'ReactorEfficiencyCalculator': ReactorEfficiencyCalculator(),
+    'NavierStokesQuasarJetCalculator': NavierStokesQuasarJetCalculator(),
+}
+
+__all__.extend([
+    # Source4 Wolfram Physics Terms (Feb 26, 2026) - 22 Calculator Classes
+    'UniversalGravity1Calculator',
+    'UniversalGravity2Calculator', 
+    'UniversalGravity3Calculator',
+    'UniversalGravity4Calculator',
+    'UniversalBuoyancyDetailedCalculator',
+    'UniversalMagnetismDetailedCalculator',
+    'UniversalAetherCalculator',
+    'UnifiedFieldFullCalculator',
+    'CompressedMUGEDetailedCalculator',
+    'ResonanceMUGEDetailedCalculator',
+    'TapestryStarbirthCalculator',
+    'Westerlund2ClusterCalculator',
+    'PillarsCreationCalculator',
+    'RingsRelativityCalculator',
+    'StudentGuideUniverseCalculator',
+    'MuSTimeCalculator',
+    'GradMsRCalculator',
+    'BjTimeCalculator',
+    'OmegaSTTimeCalculator',
+    'MuJTimeCalculator',
+    'ReactorEfficiencyCalculator',
+    'NavierStokesQuasarJetCalculator',
+    'SOURCE4_WOLFRAM_CALCULATORS',
+])
+
+
+# ============================================================================
+# SOURCE4_WOLFRAM_COMPRESSED.CPP - 9 MUGE Component Calculators
+# Converted from C++ PhysicsTerm classes - Feb 26, 2026
+# Source: source4_wolfram_compressed.cpp - Modular MUGE Breakdown
+# ============================================================================
+
+class MUGECompressedBaseCalculator(SelfExpandingMixin):
+    """
+    MUGE Compressed Base Term: Newtonian gravitational acceleration.
+    
+    From source4_wolfram_compressed.cpp MUGECompressedBaseTerm:
+    g_base = G × M / r²
+    
+    Units: m/s²
+    """
+    
+    def __init__(self, M: float = 2.984e30, r: float = 1e4):
+        super().__init__()
+        self.M = M
+        self.r = r
+        self.G = 6.674e-11
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        params = params or {}
+        M = params.get('mass', self.M)
+        r = params.get('radius', self.r)
+        
+        if r == 0:
+            raise ValueError("Division by zero in r")
+            
+        g_base = self.G * M / (r * r)
+        
+        return {
+            'g_base': g_base,
+            'units': 'm/s²',
+            'equation': f"g_base = G×M/r² = {self.G:.3e}×{M:.3e}/{r:.3e}² = {g_base:.6e} m/s²"
+        }
+
+
+class MUGEExpansionCalculator(SelfExpandingMixin):
+    """
+    MUGE Expansion Term: Hubble expansion modulation factor.
+    
+    From source4_wolfram_compressed.cpp MUGEExpansionTerm:
+    f_exp = 1 + H₀ × t_sys
+    
+    where H₀ = 2.269×10⁻¹⁸ s⁻¹ (Hubble constant)
+    Units: dimensionless
+    """
+    
+    def __init__(self, t_sys: float = 3.799e10):
+        super().__init__()
+        self.t_sys = t_sys
+        self.H0 = 2.269e-18
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        params = params or {}
+        t_sys = params.get('t_sys', self.t_sys)
+        
+        H_tz = self.H0 * t_sys
+        f_expansion = 1.0 + H_tz
+        
+        return {
+            'f_expansion': f_expansion,
+            'H_tz': H_tz,
+            'units': 'dimensionless',
+            'equation': f"f_exp = 1 + H₀×t = 1 + {self.H0:.3e}×{t_sys:.3e} = {f_expansion:.6f}"
+        }
+
+
+class MUGESuperAdjustmentCalculator(SelfExpandingMixin):
+    """
+    MUGE Superconductive Adjustment Term: Magnetic suppression factor.
+    
+    From source4_wolfram_compressed.cpp MUGESuperAdjustmentTerm:
+    f_super = 1 - B / B_crit
+    
+    Units: dimensionless
+    """
+    
+    def __init__(self, B: float = 1e10, Bcrit: float = 1e11):
+        super().__init__()
+        self.B = B
+        self.Bcrit = Bcrit
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        params = params or {}
+        B = params.get('B', self.B)
+        Bcrit = params.get('Bcrit', self.Bcrit)
+        
+        if Bcrit == 0:
+            raise ValueError("Division by zero in Bcrit")
+            
+        f_super = 1.0 - B / Bcrit
+        
+        return {
+            'f_super': f_super,
+            'B': B,
+            'Bcrit': Bcrit,
+            'units': 'dimensionless',
+            'equation': f"f_super = 1 - B/B_crit = 1 - {B:.3e}/{Bcrit:.3e} = {f_super:.6f}"
+        }
+
+
+class MUGEEnvelopeCalculator(SelfExpandingMixin):
+    """
+    MUGE Envelope Term: Stellar envelope modulation.
+    
+    From source4_wolfram_compressed.cpp MUGEEnvelopeTerm:
+    f_env = 1.0 (neutral, future extension point)
+    
+    Units: dimensionless
+    """
+    
+    def __init__(self):
+        super().__init__()
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        return {
+            'f_envelope': 1.0,
+            'units': 'dimensionless',
+            'equation': "f_env = 1.0 (neutral envelope, future extension for stellar envelopes)"
+        }
+
+
+class MUGEUgSumCalculator(SelfExpandingMixin):
+    """
+    MUGE Ug Sum Term: Sum of Ug1-4 gravity components.
+    
+    From source4_wolfram_compressed.cpp MUGEUgSumTerm:
+    Ug_sum = Ug1 + Ug2 + Ug3 + Ug4
+    
+    Units: m/s²
+    """
+    
+    def __init__(self):
+        super().__init__()
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        params = params or {}
+        Ug1 = params.get('Ug1', 0.0)
+        Ug2 = params.get('Ug2', 0.0)
+        Ug3 = params.get('Ug3', 0.0)
+        Ug4 = params.get('Ug4', 0.0)
+        
+        Ug_sum = Ug1 + Ug2 + Ug3 + Ug4
+        
+        return {
+            'Ug_sum': Ug_sum,
+            'Ug1': Ug1,
+            'Ug2': Ug2,
+            'Ug3': Ug3,
+            'Ug4': Ug4,
+            'units': 'm/s²',
+            'equation': f"Ug_sum = Ug1 + Ug2 + Ug3 + Ug4 = {Ug1:.3e} + {Ug2:.3e} + {Ug3:.3e} + {Ug4:.3e} = {Ug_sum:.6e} m/s²"
+        }
+
+
+class MUGECosmologicalCalculator(SelfExpandingMixin):
+    """
+    MUGE Cosmological Term: Dark energy acceleration.
+    
+    From source4_wolfram_compressed.cpp MUGECosmologicalTerm:
+    g_cosm = Λ × c² / 3
+    
+    where Λ = 1.1×10⁻⁵² m⁻² (cosmological constant)
+    Units: m/s²
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.Lambda = 1.1e-52
+        self.c = 2.998e8
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        g_cosm = self.Lambda * self.c**2 / 3.0
+        
+        return {
+            'g_cosmological': g_cosm,
+            'Lambda': self.Lambda,
+            'units': 'm/s²',
+            'equation': f"g_cosm = Λ×c²/3 = {self.Lambda:.3e}×{self.c:.3e}²/3 = {g_cosm:.6e} m/s²"
+        }
+
+
+class MUGEQuantumCalculator(SelfExpandingMixin):
+    """
+    MUGE Quantum Term: Quantum gravity correction.
+    
+    From source4_wolfram_compressed.cpp MUGEQuantumTerm:
+    g_quantum = (ℏ / Δx_p) × ∫|ψ|² × (2π / t_Hubble)
+    
+    Units: m/s²
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.hbar = 1.0546e-34
+        self.Delta_x_p = 1e-68
+        self.integral_psi = 2.176e-18
+        self.tHubble = 4.35e17
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        g_quantum = (self.hbar / self.Delta_x_p) * self.integral_psi * (2.0 * np.pi / self.tHubble)
+        
+        return {
+            'g_quantum': g_quantum,
+            'units': 'm/s²',
+            'equation': f"g_quantum = (ℏ/Δx_p)×∫|ψ|²×(2π/t_H) = {g_quantum:.6e} m/s²"
+        }
+
+
+class MUGEFluidCalculator(SelfExpandingMixin):
+    """
+    MUGE Fluid Term: Navier-Stokes coupling force.
+    
+    From source4_wolfram_compressed.cpp MUGEFluidTerm:
+    F_fluid = ρ_fluid × V_sys × g_local
+    
+    Units: N (force)
+    """
+    
+    def __init__(self, rho_fluid: float = 1e-15, Vsys: float = 4.189e12, g_local: float = 10.0):
+        super().__init__()
+        self.rho_fluid = rho_fluid
+        self.Vsys = Vsys
+        self.g_local = g_local
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        params = params or {}
+        rho = params.get('rho_fluid', self.rho_fluid)
+        V = params.get('Vsys', self.Vsys)
+        g = params.get('g_local', self.g_local)
+        
+        F_fluid = rho * V * g
+        
+        return {
+            'F_fluid': F_fluid,
+            'rho_fluid': rho,
+            'Vsys': V,
+            'g_local': g,
+            'units': 'N',
+            'equation': f"F_fluid = ρ×V×g = {rho:.3e}×{V:.3e}×{g:.3e} = {F_fluid:.6e} N"
+        }
+
+
+class MUGEPerturbationCalculator(SelfExpandingMixin):
+    """
+    MUGE Perturbation Term: Dark matter density fluctuation.
+    
+    From source4_wolfram_compressed.cpp MUGEPerturbationTerm:
+    a_pert = (M + M_DM) × (δρ/ρ + 3GM/r³)
+    
+    Units: kg/s² (momentum rate)
+    """
+    
+    def __init__(self, M: float = 2.984e30, M_DM: float = 0.0, 
+                 delta_rho_rho: float = 1e-5, r: float = 1e4):
+        super().__init__()
+        self.M = M
+        self.M_DM = M_DM
+        self.delta_rho_rho = delta_rho_rho
+        self.r = r
+        self.G = 6.674e-11
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        params = params or {}
+        M = params.get('mass', self.M)
+        M_DM = params.get('M_DM', self.M_DM)
+        delta = params.get('delta_rho_rho', self.delta_rho_rho)
+        r = params.get('radius', self.r)
+        
+        if r == 0:
+            raise ValueError("Division by zero in r³")
+            
+        a_perturbation = (M + M_DM) * (delta + 3.0 * self.G * M / (r**3))
+        
+        return {
+            'a_perturbation': a_perturbation,
+            'M': M,
+            'M_DM': M_DM,
+            'delta_rho_rho': delta,
+            'r': r,
+            'units': 'kg/s²',
+            'equation': f"a_pert = (M+M_DM)×(δρ/ρ + 3GM/r³) = ({M:.3e}+{M_DM:.3e})×({delta:.3e} + 3×{self.G:.3e}×{M:.3e}/{r:.3e}³) = {a_perturbation:.6e} kg/s²"
+        }
+
+
+# Source4 Compressed MUGE Calculator instances
+SOURCE4_COMPRESSED_CALCULATORS = {
+    'MUGECompressedBaseCalculator': MUGECompressedBaseCalculator(),
+    'MUGEExpansionCalculator': MUGEExpansionCalculator(),
+    'MUGESuperAdjustmentCalculator': MUGESuperAdjustmentCalculator(),
+    'MUGEEnvelopeCalculator': MUGEEnvelopeCalculator(),
+    'MUGEUgSumCalculator': MUGEUgSumCalculator(),
+    'MUGECosmologicalCalculator': MUGECosmologicalCalculator(),
+    'MUGEQuantumCalculator': MUGEQuantumCalculator(),
+    'MUGEFluidCalculator': MUGEFluidCalculator(),
+    'MUGEPerturbationCalculator': MUGEPerturbationCalculator(),
+}
+
+__all__.extend([
+    # Source4 Compressed MUGE Components (Feb 26, 2026) - 9 Calculator Classes
+    'MUGECompressedBaseCalculator',
+    'MUGEExpansionCalculator',
+    'MUGESuperAdjustmentCalculator',
+    'MUGEEnvelopeCalculator',
+    'MUGEUgSumCalculator',
+    'MUGECosmologicalCalculator',
+    'MUGEQuantumCalculator',
+    'MUGEFluidCalculator',
+    'MUGEPerturbationCalculator',
+    'SOURCE4_COMPRESSED_CALCULATORS',
+])
+
+
+# ============================================================================
+# SOURCE4_WOLFRAM_RESONANCE.CPP - 13 MUGE Resonance Component Calculators
+# Converted from C++ PhysicsTerm classes - Feb 26, 2026
+# Source: source4_wolfram_resonance.cpp - DPM + Frequency Resonance Physics
+# ============================================================================
+
+class MUGEResonanceADPMCalculator(SelfExpandingMixin):
+    """
+    MUGE Resonance aDPM: Base DPM (Differential Plasma Motion) acceleration.
+    
+    From source4_wolfram_resonance.cpp MUGEResonanceADPMTerm:
+    aDPM = F_DPM × f_DPM × E_vac × c × V_sys
+    
+    where F_DPM = I × A × (ω₁ - ω₂)
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.c = 3e8
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        params = params or {}
+        I = params.get('I', 1e45)
+        A = params.get('A', 7e22)
+        omega1 = params.get('omega1', 1e-8)
+        omega2 = params.get('omega2', 5e-9)
+        fDPM = params.get('fDPM', 1e12)
+        Evac_neb = params.get('Evac_neb', 7.09e-36)
+        Vsys = params.get('Vsys', 1e56)
+        
+        FDPM = I * A * (omega1 - omega2)
+        aDPM = FDPM * fDPM * Evac_neb * self.c * Vsys
+        
+        return {
+            'aDPM': aDPM,
+            'FDPM': FDPM,
+            'units': 'm/s²',
+            'equation': f"aDPM = F_DPM × f_DPM × E_vac × c × V_sys = {aDPM:.6e} m/s²"
+        }
+
+
+class MUGEResonanceATHzCalculator(SelfExpandingMixin):
+    """
+    MUGE Resonance aTHz: THz frequency contribution.
+    
+    From source4_wolfram_resonance.cpp MUGEResonanceATHzTerm:
+    aTHz = f_THz × E_vac_neb × v_exp × aDPM / (E_vac_ISM × c)
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.c = 3e8
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        params = params or {}
+        aDPM = params.get('aDPM', 0.0)
+        fTHz = params.get('fTHz', 1e12)
+        Evac_neb = params.get('Evac_neb', 7.09e-36)
+        vexp = params.get('vexp', 1e6)
+        Evac_ISM = params.get('Evac_ISM', 7.09e-37)
+        
+        denom = Evac_ISM * self.c
+        aTHz = (fTHz * Evac_neb * vexp * aDPM) / denom if denom != 0 else 0
+        
+        return {
+            'aTHz': aTHz,
+            'units': 'm/s²',
+            'equation': f"aTHz = f_THz × E_vac × v_exp × aDPM / (E_ISM × c) = {aTHz:.6e} m/s²"
+        }
+
+
+class MUGEResonanceAvacDiffCalculator(SelfExpandingMixin):
+    """
+    MUGE Resonance a_vac_diff: Vacuum energy differential acceleration.
+    
+    From source4_wolfram_resonance.cpp MUGEResonanceAvacDiffTerm:
+    a_vac_diff = ΔE_vac × v_exp² × aDPM / (E_vac_neb × c²)
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.c = 3e8
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        params = params or {}
+        aDPM = params.get('aDPM', 0.0)
+        Delta_Evac = params.get('Delta_Evac', 6.381e-36)
+        vexp = params.get('vexp', 1e6)
+        Evac_neb = params.get('Evac_neb', 7.09e-36)
+        
+        denom = Evac_neb * self.c**2
+        avac_diff = (Delta_Evac * vexp**2 * aDPM) / denom if denom != 0 else 0
+        
+        return {
+            'avac_diff': avac_diff,
+            'units': 'm/s²',
+            'equation': f"a_vac_diff = ΔE_vac × v²_exp × aDPM / (E_neb × c²) = {avac_diff:.6e} m/s²"
+        }
+
+
+class MUGEResonanceASuperFreqCalculator(SelfExpandingMixin):
+    """
+    MUGE Resonance a_super_freq: Superconductive frequency resonance.
+    
+    From source4_wolfram_resonance.cpp MUGEResonanceASuperFreqTerm:
+    a_super_freq = F_super × f_THz × aDPM / (E_vac_neb × c)
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.c = 3e8
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        params = params or {}
+        aDPM = params.get('aDPM', 0.0)
+        Fsuper = params.get('Fsuper', 6.287e-19)
+        fTHz = params.get('fTHz', 1e12)
+        Evac_neb = params.get('Evac_neb', 7.09e-36)
+        
+        denom = Evac_neb * self.c
+        asuper_freq = (Fsuper * fTHz * aDPM) / denom if denom != 0 else 0
+        
+        return {
+            'asuper_freq': asuper_freq,
+            'units': 'm/s²',
+            'equation': f"a_super = F_super × f_THz × aDPM / (E_neb × c) = {asuper_freq:.6e} m/s²"
+        }
+
+
+class MUGEResonanceAAetherResCalculator(SelfExpandingMixin):
+    """
+    MUGE Resonance a_aether_res: Aether resonance coupling.
+    
+    From source4_wolfram_resonance.cpp MUGEResonanceAAetherResTerm:
+    a_aether_res = U_A_SCM × ω_i × f_THz × aDPM × (1 + f_TRZ)
+    """
+    
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        params = params or {}
+        aDPM = params.get('aDPM', 0.0)
+        UA_SCM = params.get('UA_SCM', 10.0)
+        omega_i = params.get('omega_i', 1e-8)
+        fTHz = params.get('fTHz', 1e12)
+        fTRZ = params.get('fTRZ', 0.1)
+        
+        aaether_res = UA_SCM * omega_i * fTHz * aDPM * (1.0 + fTRZ)
+        
+        return {
+            'aaether_res': aaether_res,
+            'units': 'm/s²',
+            'equation': f"a_aether = U_A × ω × f_THz × aDPM × (1+f_TRZ) = {aaether_res:.6e} m/s²"
+        }
+
+
+class MUGEResonanceUg4iCalculator(SelfExpandingMixin):
+    """
+    MUGE Resonance Ug4i: Reactor gravity component.
+    
+    From source4_wolfram_resonance.cpp MUGEResonanceUg4iTerm:
+    Ug4i = k4 × E_react × f_react × aDPM / (E_vac × c)
+    
+    where E_react = 1046 × e^(-0.0005t)
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.c = 3e8
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        params = params or {}
+        aDPM = params.get('aDPM', 0.0)
+        k4_res = params.get('k4_res', 1.0)
+        freact = params.get('freact', 1e10)
+        Evac_neb = params.get('Evac_neb', 7.09e-36)
+        
+        Ereact = 1046.0 * np.exp(-0.0005 * t)
+        denom = Evac_neb * self.c
+        Ug4i = (k4_res * Ereact * freact * aDPM) / denom if denom != 0 else 0
+        
+        return {
+            'Ug4i': Ug4i,
+            'Ereact': Ereact,
+            'units': 'm/s²',
+            'equation': f"Ug4i = k4 × E_react × f_react × aDPM / (E_vac × c) = {Ug4i:.6e} m/s²"
+        }
+
+
+class MUGEResonanceAQuantumFreqCalculator(SelfExpandingMixin):
+    """
+    MUGE Resonance a_quantum_freq: Quantum frequency contribution.
+    
+    From source4_wolfram_resonance.cpp MUGEResonanceAQuantumFreqTerm:
+    a_quantum = f_quantum × E_vac_neb × aDPM / (E_vac_ISM × c)
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.c = 3e8
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        params = params or {}
+        aDPM = params.get('aDPM', 0.0)
+        fquantum = params.get('fquantum', 1.445e-17)
+        Evac_neb = params.get('Evac_neb', 7.09e-36)
+        Evac_ISM = params.get('Evac_ISM', 7.09e-37)
+        
+        denom = Evac_ISM * self.c
+        aquantum = (fquantum * Evac_neb * aDPM) / denom if denom != 0 else 0
+        
+        return {
+            'aquantum_freq': aquantum,
+            'units': 'm/s²',
+            'equation': f"a_quantum = f_q × E_neb × aDPM / (E_ISM × c) = {aquantum:.6e} m/s²"
+        }
+
+
+class MUGEResonanceAAetherFreqCalculator(SelfExpandingMixin):
+    """
+    MUGE Resonance a_aether_freq: Aether frequency component.
+    
+    From source4_wolfram_resonance.cpp MUGEResonanceAAetherFreqTerm:
+    a_aether_freq = f_aether × E_vac_neb × aDPM / (E_vac_ISM × c)
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.c = 3e8
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        params = params or {}
+        aDPM = params.get('aDPM', 0.0)
+        fAether = params.get('fAether', 1.576e-35)
+        Evac_neb = params.get('Evac_neb', 7.09e-36)
+        Evac_ISM = params.get('Evac_ISM', 7.09e-37)
+        
+        denom = Evac_ISM * self.c
+        aAether = (fAether * Evac_neb * aDPM) / denom if denom != 0 else 0
+        
+        return {
+            'aAether_freq': aAether,
+            'units': 'm/s²',
+            'equation': f"a_aether_f = f_A × E_neb × aDPM / (E_ISM × c) = {aAether:.6e} m/s²"
+        }
+
+
+class MUGEResonanceAFluidFreqCalculator(SelfExpandingMixin):
+    """
+    MUGE Resonance a_fluid_freq: Fluid dynamics frequency.
+    
+    From source4_wolfram_resonance.cpp MUGEResonanceAFluidFreqTerm:
+    a_fluid = f_fluid × E_vac_neb × V_sys / (E_vac_ISM × c)
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.c = 3e8
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        params = params or {}
+        ffluid = params.get('ffluid', 1e6)
+        Evac_neb = params.get('Evac_neb', 7.09e-36)
+        Vsys = params.get('Vsys', 1e56)
+        Evac_ISM = params.get('Evac_ISM', 7.09e-37)
+        
+        denom = Evac_ISM * self.c
+        afluid = (ffluid * Evac_neb * Vsys) / denom if denom != 0 else 0
+        
+        return {
+            'afluid_freq': afluid,
+            'units': 'm/s²',
+            'equation': f"a_fluid = f_fl × E_neb × V / (E_ISM × c) = {afluid:.6e} m/s²"
+        }
+
+
+class MUGEResonanceOscCalculator(SelfExpandingMixin):
+    """
+    MUGE Resonance Osc: Oscillation term (simplified to zero).
+    
+    From source4_wolfram_resonance.cpp MUGEResonanceOscTerm.
+    """
+    
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        return {
+            'Osc': 0.0,
+            'units': 'm/s²',
+            'equation': "Osc = 0.0 (simplified in current implementation)"
+        }
+
+
+class MUGEResonanceAExpFreqCalculator(SelfExpandingMixin):
+    """
+    MUGE Resonance a_exp_freq: Hubble expansion frequency.
+    
+    From source4_wolfram_resonance.cpp MUGEResonanceAExpFreqTerm:
+    a_exp = f_exp × E_vac_neb × aDPM / (E_vac_ISM × c)
+    
+    where f_exp = 2π × H_z × t
+    """
+    
+    def __init__(self):
+        super().__init__()
+        self.c = 3e8
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        params = params or {}
+        aDPM = params.get('aDPM', 0.0)
+        Evac_neb = params.get('Evac_neb', 7.09e-36)
+        Evac_ISM = params.get('Evac_ISM', 7.09e-37)
+        H_z = params.get('H_z', 2.270e-18)
+        
+        fexp = 2.0 * np.pi * H_z * t
+        denom = Evac_ISM * self.c
+        aexp = (fexp * Evac_neb * aDPM) / denom if denom != 0 else 0
+        
+        return {
+            'aexp_freq': aexp,
+            'fexp': fexp,
+            'units': 'm/s²',
+            'equation': f"a_exp = 2π×H×t × E_neb × aDPM / (E_ISM × c) = {aexp:.6e} m/s²"
+        }
+
+
+class MUGEResonanceFTRZCalculator(SelfExpandingMixin):
+    """
+    MUGE Resonance fTRZ: Transition zone factor (pass-through).
+    
+    From source4_wolfram_resonance.cpp MUGEResonanceFTRZTerm.
+    """
+    
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        params = params or {}
+        fTRZ = params.get('fTRZ', 0.1)
+        
+        return {
+            'fTRZ': fTRZ,
+            'units': 'dimensionless',
+            'equation': f"fTRZ = {fTRZ} (transition zone factor)"
+        }
+
+
+class MUGEResonanceWormholeCalculator(SelfExpandingMixin):
+    """
+    MUGE Resonance Wormhole: Wormhole metric contribution.
+    
+    From source4_wolfram_resonance.cpp MUGEResonanceWormholeTerm:
+    a_wormhole = f_worm × E_vac / (b² + r²)
+    """
+    
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        params = params or {}
+        r = params.get('r', 1.0)
+        b = params.get('b', 1.0)
+        f_worm = params.get('f_worm', 1.0)
+        Evac_neb = params.get('Evac_neb', 7.09e-36)
+        
+        denom = b**2 + r**2
+        a_wormhole = (f_worm * Evac_neb) / denom if denom != 0 else 0
+        
+        return {
+            'a_wormhole': a_wormhole,
+            'b': b,
+            'r': r,
+            'units': 'm/s²',
+            'equation': f"a_wh = f_worm × E_vac / (b² + r²) = {f_worm}×{Evac_neb:.3e}/({b}² + {r}²) = {a_wormhole:.6e} m/s²"
+        }
+
+
+# Source4 Resonance MUGE Calculator instances
+SOURCE4_RESONANCE_CALCULATORS = {
+    'MUGEResonanceADPMCalculator': MUGEResonanceADPMCalculator(),
+    'MUGEResonanceATHzCalculator': MUGEResonanceATHzCalculator(),
+    'MUGEResonanceAvacDiffCalculator': MUGEResonanceAvacDiffCalculator(),
+    'MUGEResonanceASuperFreqCalculator': MUGEResonanceASuperFreqCalculator(),
+    'MUGEResonanceAAetherResCalculator': MUGEResonanceAAetherResCalculator(),
+    'MUGEResonanceUg4iCalculator': MUGEResonanceUg4iCalculator(),
+    'MUGEResonanceAQuantumFreqCalculator': MUGEResonanceAQuantumFreqCalculator(),
+    'MUGEResonanceAAetherFreqCalculator': MUGEResonanceAAetherFreqCalculator(),
+    'MUGEResonanceAFluidFreqCalculator': MUGEResonanceAFluidFreqCalculator(),
+    'MUGEResonanceOscCalculator': MUGEResonanceOscCalculator(),
+    'MUGEResonanceAExpFreqCalculator': MUGEResonanceAExpFreqCalculator(),
+    'MUGEResonanceFTRZCalculator': MUGEResonanceFTRZCalculator(),
+    'MUGEResonanceWormholeCalculator': MUGEResonanceWormholeCalculator(),
+}
+
+__all__.extend([
+    # Source4 Resonance MUGE Components (Feb 26, 2026) - 13 Calculator Classes
+    'MUGEResonanceADPMCalculator',
+    'MUGEResonanceATHzCalculator',
+    'MUGEResonanceAvacDiffCalculator',
+    'MUGEResonanceASuperFreqCalculator',
+    'MUGEResonanceAAetherResCalculator',
+    'MUGEResonanceUg4iCalculator',
+    'MUGEResonanceAQuantumFreqCalculator',
+    'MUGEResonanceAAetherFreqCalculator',
+    'MUGEResonanceAFluidFreqCalculator',
+    'MUGEResonanceOscCalculator',
+    'MUGEResonanceAExpFreqCalculator',
+    'MUGEResonanceFTRZCalculator',
+    'MUGEResonanceWormholeCalculator',
+    'SOURCE4_RESONANCE_CALCULATORS',
+])
+
+
+# ============================================================================
+# SOURCE5_WOLFRAM.CPP - Unique Physics Terms (Not in source4)
+# Converted from C++ PhysicsTerm classes - Feb 26, 2026
+# Source: source5_wolfram.cpp - Self-Expanding Framework 2.0
+# ============================================================================
+
+class DarkMatterHaloNFWCalculator(SelfExpandingMixin):
+    """
+    Dark Matter Halo NFW Profile: Navarro-Frenk-White density distribution.
+    
+    From source5_wolfram.cpp DarkMatterHaloNFWTerm:
+    g_DM(r) = G × M_halo × ln(1 + r/r_s) / (r × (r/r_s))
+    
+    Physical basis: Standard NFW profile for dark matter halos,
+    widely used in galactic dynamics and cosmological simulations.
+    """
+    
+    def __init__(self, M_halo: float = 1e42, r_scale: float = 1e21):
+        super().__init__()
+        self.M_halo = M_halo      # Halo mass (kg)
+        self.r_scale = r_scale    # Scale radius (m)
+        self.G = 6.67430e-11
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        """
+        Compute NFW dark matter halo gravitational acceleration.
+        
+        Args:
+            t: Time (not used for static profile)
+            params: Dict with r (radius from halo center)
+            
+        Returns:
+            dict with g_DM and equation
+        """
+        params = params or {}
+        r = params.get('r', 1e20)
+        M_halo = params.get('M_halo', self.M_halo)
+        r_s = params.get('r_scale', self.r_scale)
+        
+        if r <= 0 or r_s <= 0:
+            return {'g_DM': 0.0, 'units': 'm/s²', 'equation': 'Invalid radius'}
+            
+        x = r / r_s
+        g_DM = self.G * M_halo * np.log(1 + x) / (r * x)
+        
+        # NFW density normalization
+        rho_0 = M_halo / (4.0 * np.pi * r_s**3 * (np.log(2.0) - 0.5))
+        
+        equation = (
+            f"NFW Dark Matter Halo Profile\n"
+            f"  g_DM(r) = G × M_halo × ln(1 + x) / (r × x)\n"
+            f"  where x = r/r_s = {r:.3e}/{r_s:.3e} = {x:.4f}\n"
+            f"  g_DM = {self.G:.3e} × {M_halo:.3e} × ln({1+x:.4f}) / ({r:.3e} × {x:.4f})\n"
+            f"       = {g_DM:.6e} m/s²\n"
+            f"  ρ_0 = {rho_0:.3e} kg/m³ (central density)"
+        )
+        
+        return {
+            'g_DM': g_DM,
+            'M_halo': M_halo,
+            'r_scale': r_s,
+            'x': x,
+            'rho_0': rho_0,
+            'units': 'm/s²',
+            'equation': equation
+        }
+
+
+class VacuumEnergyFluctuationCalculator(SelfExpandingMixin):
+    """
+    Time-Varying Vacuum Energy: Fluctuating dark energy contribution.
+    
+    From source5_wolfram.cpp VacuumEnergyFluctuationTerm:
+    E_vac(t) = λ × E_scale × (1 + 0.1 × sin(10⁻¹⁰ × t))
+    
+    Physical basis: Vacuum energy with small time-dependent fluctuations,
+    potentially relevant for cosmological evolution and dark energy dynamics.
+    """
+    
+    def __init__(self, E_vac_scale: float = 7.09e-36, lambda_coupling: float = 1e-10):
+        super().__init__()
+        self.E_vac_scale = E_vac_scale  # Vacuum energy scale (J/m³)
+        self.lambda_coupling = lambda_coupling  # Coupling strength
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        """
+        Compute time-varying vacuum energy.
+        
+        Args:
+            t: Time (s)
+            params: Optional overrides
+            
+        Returns:
+            dict with E_vac(t) and equation
+        """
+        params = params or {}
+        E_scale = params.get('E_vac_scale', self.E_vac_scale)
+        lam = params.get('lambda', self.lambda_coupling)
+        
+        fluctuation = 0.1 * np.sin(1e-10 * t)
+        E_vac = lam * E_scale * (1.0 + fluctuation)
+        
+        equation = (
+            f"Time-Varying Vacuum Energy\n"
+            f"  E_vac(t) = λ × E_scale × (1 + 0.1×sin(10⁻¹⁰×t))\n"
+            f"           = {lam:.3e} × {E_scale:.3e} × (1 + {fluctuation:.6f})\n"
+            f"           = {E_vac:.6e} J/m³"
+        )
+        
+        return {
+            'E_vac': E_vac,
+            'E_scale': E_scale,
+            'lambda': lam,
+            'fluctuation': fluctuation,
+            'units': 'J/m³',
+            'equation': equation
+        }
+
+
+class NavierStokesFluidSolverCalculator(SelfExpandingMixin):
+    """
+    Navier-Stokes Fluid Solver: Characteristic velocity from jet forcing.
+    
+    From source5_wolfram.cpp NavierStokesFluidSolverTerm:
+    v_char = √(F_jet × dt / (ρ_fluid × V_sys))
+    
+    Physical basis: Simplified fluid dynamics solver providing
+    characteristic velocity scale for astrophysical jet simulations.
+    """
+    
+    def __init__(self, N: int = 32, dt_ns: float = 0.1, visc: float = 0.0001, 
+                 force_jet: float = 10.0):
+        super().__init__()
+        self.N = N
+        self.dt_ns = dt_ns
+        self.visc = visc
+        self.force_jet = force_jet
+        
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        """
+        Compute characteristic fluid velocity from jet forcing.
+        
+        Args:
+            t: Time (not used)
+            params: Dict with rho_fluid, Vsys
+            
+        Returns:
+            dict with v_characteristic and equation
+        """
+        params = params or {}
+        rho_fluid = params.get('rho_fluid', 1e-15)
+        Vsys = params.get('Vsys', 1e36)
+        F_jet = params.get('force_jet', self.force_jet)
+        dt = params.get('dt_ns', self.dt_ns)
+        
+        if rho_fluid <= 0 or Vsys <= 0:
+            return {'v_char': 0.0, 'units': 'm/s', 'equation': 'Invalid parameters'}
+            
+        v_char = np.sqrt(F_jet * dt / (rho_fluid * Vsys))
+        
+        # Reynolds number estimate
+        L_char = Vsys**(1/3)  # Characteristic length
+        Re = rho_fluid * v_char * L_char / self.visc if self.visc > 0 else float('inf')
+        
+        equation = (
+            f"Navier-Stokes Fluid Solver (N={self.N} grid)\n"
+            f"  v_char = √(F_jet × dt / (ρ × V))\n"
+            f"         = √({F_jet:.3e} × {dt:.3e} / ({rho_fluid:.3e} × {Vsys:.3e}))\n"
+            f"         = {v_char:.6e} m/s\n"
+            f"  Re ≈ {Re:.3e} (Reynolds number)"
+        )
+        
+        return {
+            'v_char': v_char,
+            'rho_fluid': rho_fluid,
+            'Vsys': Vsys,
+            'force_jet': F_jet,
+            'Reynolds': Re,
+            'units': 'm/s',
+            'equation': equation
+        }
+
+
+class StepFunctionCalculator(SelfExpandingMixin):
+    """
+    Step Function: Heaviside step for boundary conditions.
+    
+    From source5_wolfram.cpp StepFunctionHelperTerm:
+    S(r, R_b) = 1 if r > R_b else 0
+    
+    Physical basis: Boundary condition for outer envelope activation,
+    used in star/planet boundary physics.
+    """
+    
+    def compute(self, t: float = 0, params: dict = None) -> dict:
+        """
+        Compute Heaviside step function.
+        
+        Args:
+            params: Dict with r (radius), Rb (boundary radius)
+            
+        Returns:
+            dict with step value (0 or 1)
+        """
+        params = params or {}
+        r = params.get('r', 1e13)
+        Rb = params.get('Rb', 1e12)
+        
+        step = 1.0 if r > Rb else 0.0
+        
+        equation = f"S(r, R_b) = 1 if r > R_b else 0 = {step:.0f} (r={r:.3e}, R_b={Rb:.3e})"
+        
+        return {
+            'step': step,
+            'r': r,
+            'Rb': Rb,
+            'units': 'dimensionless',
+            'equation': equation
+        }
+
+
+# Source5 Wolfram Calculator instances
+SOURCE5_WOLFRAM_CALCULATORS = {
+    'DarkMatterHaloNFWCalculator': DarkMatterHaloNFWCalculator(),
+    'VacuumEnergyFluctuationCalculator': VacuumEnergyFluctuationCalculator(),
+    'NavierStokesFluidSolverCalculator': NavierStokesFluidSolverCalculator(),
+    'StepFunctionCalculator': StepFunctionCalculator(),
+}
+
+__all__.extend([
+    # Source5 Wolfram Unique Physics (Feb 26, 2026) - 4 Calculator Classes
+    'DarkMatterHaloNFWCalculator',
+    'VacuumEnergyFluctuationCalculator',
+    'NavierStokesFluidSolverCalculator',
+    'StepFunctionCalculator',
+    'SOURCE5_WOLFRAM_CALCULATORS',
+])
