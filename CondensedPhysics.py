@@ -34857,8 +34857,12 @@ LAB ANALOG: THz Holes
                                          rho_UA: float = None,
                                          U_m: float = None,
                                          t: float = 0.0,
-                                         t_n: float = 0.0,
-                                         gamma: float = 5e-5,
+                                         t_n: float = 1.0,
+                                         gamma: float = 1e-3,
+                                         kappa_UQFF: float = 1e-60,
+                                         lambda_UQFF: float = 1e-9,
+                                         T_eff_floor: float = 1e16,
+                                         mu_j: float = 1e20,
                                          frame: str = 'F_U_Bi') -> Tuple[dict, str]:
         """
         Compute UQFF wormhole traversal time with aether drag effects.
@@ -34892,11 +34896,19 @@ LAB ANALOG: THz Holes
             f_TRZ: Time reversal factor (default: 0.1)
             rho_SCm: SCm vacuum density (J/m³)
             rho_UA: UA vacuum density (J/m³)
-            U_m: Magnetic string energy (J)
+            U_m: Magnetic string energy (J), or None for auto-compute
             t: Time parameter (days)
-            t_n: Normalized time for cos(πt_n) oscillation
-            gamma: Decay constant (default: 5e-5 day⁻¹)
+            t_n: Normalized time for cos(πt_n) oscillation (default: 1.0)
+            gamma: Temporal decay rate (default: 1e-3)
+            kappa_UQFF: Energy reduction factor (default: 1e-60)
+            lambda_UQFF: Magnetic scaling factor (default: 1e-9)
+            T_eff_floor: Effective temperature floor in K (default: 1e16)
+            mu_j: Magnetic permeability factor (default: 1e20)
             frame: 'F_U_Bi' (inside→out) or 'F_U_Bi_i' (outside→in)
+        
+        DUAL REGIME PHYSICS:
+            U_m > 0 (RESISTIVE): τ_UQFF > τ'' (delayed traversal via magnetic barrier)
+            U_m < 0 (BUOYANT): τ_UQFF < τ'' (assisted traversal via buoyancy)
         
         Returns:
             results: Dict with traversal time parameters
@@ -34927,8 +34939,9 @@ LAB ANALOG: THz Holes
         rho_ratio_expand = rho_UA / rho_SCm  # Throat expansion factor
         r_throat = r_s * rho_ratio_expand  # UQFF throat radius
         
-        # === STEP 2: Hawking temperature ===
+        # === STEP 2: Hawking temperature and effective temperature ===
         T_H = self.hbar * self.c**3 / (8 * np.pi * self.G * M_BH * self.k_B)
+        T_eff = max(T_H, T_eff_floor)  # Floor prevents numerical underflow
         
         # === STEP 3: Base traversal time (GR limit) ===
         tau_base = r_throat / self.c  # = 2GM/c³ × expansion
@@ -34947,19 +34960,20 @@ LAB ANALOG: THz Holes
         # === STEP 5: Time-reversal drag ===
         tau_TRZ = tau_aether * (1 + f_TRZ)
         
-        # === STEP 6: Magnetic string energy ===
-        # Per derivation: U_m/(k_B × T_H) ≈ 1 for typical wormholes
-        # U_m should scale with throat thermal energy to avoid numerical explosion
+        # === STEP 6: Magnetic string energy (UQFF oscillation formula) ===
+        # U_m = λ_UQFF × (μ_j / r_throat) × (1 - exp(-γ × cos(πt_n)))
+        # Physics: U_m < 0 = BUOYANT (assisted), U_m > 0 = RESISTIVE (barrier)
         if U_m is None:
-            # Use thermodynamically self-consistent U_m: μ_eff × k_B × T_H
-            # where μ_eff ≈ 1 + oscillation term
-            oscillation = np.cos(np.pi * t_n)
-            mu_eff = 1.0 + 0.1 * (1 - np.exp(-gamma * t * max(oscillation, 0)))
-            U_m = mu_eff * self.k_B * T_H
+            oscillation = 1.0 - np.exp(-gamma * np.cos(np.pi * t_n))
+            U_m = lambda_UQFF * (mu_j / r_throat) * oscillation
         
-        # === STEP 7: Magnetic string resistance factor ===
-        exponent_Um = U_m / (self.k_B * T_H) if T_H > 0 else 1.0
-        exponent_Um = min(exponent_Um, 10.0)  # Cap at e^10 ≈ 22000 for stability
+        # Determine traversal regime
+        regime = "BUOYANT" if U_m < 0 else "RESISTIVE"
+        
+        # === STEP 7: Magnetic string resistance/buoyancy factor ===
+        # Use T_eff (with floor) to prevent numerical underflow
+        exponent_Um = U_m / (self.k_B * T_eff) if T_eff > 0 else 0.0
+        exponent_Um = np.clip(exponent_Um, -700.0, 700.0)  # Clamp both directions
         magnetic_factor = np.exp(exponent_Um)
         
         # === STEP 8: Full UQFF traversal time ===
@@ -34972,6 +34986,8 @@ LAB ANALOG: THz Holes
             'r_throat': r_throat,
             'throat_expansion': rho_ratio_expand,
             'T_H': T_H,
+            'T_eff': T_eff,
+            'T_eff_floor': T_eff_floor,
             'tau_base': tau_base,
             'tau_aether': tau_aether,
             'tau_TRZ': tau_TRZ,
@@ -34980,11 +34996,19 @@ LAB ANALOG: THz Holes
             'v_eff': v_eff,
             'f_TRZ': f_TRZ,
             'U_m': U_m,
+            'exponent_Um': exponent_Um,
             'magnetic_factor': magnetic_factor,
+            'regime': regime,
             'rho_SCm': rho_SCm,
             'rho_UA': rho_UA,
+            'kappa_UQFF': kappa_UQFF,
+            'lambda_UQFF': lambda_UQFF,
+            'mu_j': mu_j,
+            't_n': t_n,
+            'gamma': gamma,
             'frame': frame,
-            'slowdown_factor': tau_UQFF / tau_base if tau_base > 0 else np.inf
+            'slowdown_factor': tau_UQFF / tau_base if tau_base > 0 else np.inf,
+            'tau_ratio_to_tau_pp': tau_UQFF / tau_TRZ if tau_TRZ > 0 else np.inf
         }
         
         steps = f"""UQFF Wormhole Traversal Time Derivation:
@@ -35030,8 +35054,10 @@ STEP 1: Throat Radius
   r_throat,UQFF = r_s × (ρ_UA/ρ_SCm) = {r_throat:.4e} m
   Expansion factor = {rho_ratio_expand:.1f}×
 
-STEP 2: Hawking Temperature
+STEP 2: Hawking Temperature and Effective Temperature
   T_H = ℏc³/(8πGMk_B) = {T_H:.4e} K
+  T_eff = max(T_H, T_eff_floor) = max({T_H:.4e}, {T_eff_floor:.4e}) = {T_eff:.4e} K
+  (Floor prevents numerical underflow for massive BHs)
 
 STEP 3: Base Traversal Time (GR Limit)
   τ_base = r_throat/c = {r_throat:.4e} / {self.c:.4e}
@@ -35054,41 +35080,50 @@ STEP 5: Time-Reversal Drag (f_TRZ)
         = {tau_TRZ:.4e} s
   Additional delay: +{f_TRZ*100:.1f}% from negentropic reversal
 
-STEP 6: Magnetic String Energy
+STEP 6: Magnetic String Energy (UQFF Oscillation Formula)
+  U_m = λ_UQFF × (μ_j / r_throat) × (1 - exp(-γ × cos(πt_n)))
+  With λ_UQFF = {lambda_UQFF:.4e}, μ_j = {mu_j:.4e}, t_n = {t_n:.4f}:
   U_m = {U_m:.4e} J
-  (From μ_j/r_throat × oscillation factor)
+  MODE: {regime} ({"assisted traversal, τ_UQFF < τ''" if U_m < 0 else "barrier traversal, τ_UQFF > τ''"})
 
-STEP 7: Magnetic String Resistance
-  exp(U_m/(k_B × T_H)) = exp({exponent_Um:.4e})
-                       = {magnetic_factor:.4e}
+STEP 7: Magnetic String Resistance/Buoyancy Factor
+  exp(U_m / (k_B × T_eff)) = exp({exponent_Um:.4e})
+                           = {magnetic_factor:.4e}
 
 STEP 8: FULL UQFF TRAVERSAL TIME
-  τ_UQFF = τ_TRZ × exp(U_m/(k_B×T_H))
+  τ_UQFF = τ_TRZ × exp(U_m/(k_B×T_eff))
          = {tau_TRZ:.4e} × {magnetic_factor:.4e}
          = {tau_UQFF:.4e} s
 
 ═══════════════════════════════════════════════════════════════════════════════
 RESULT SUMMARY:
+  Traversal Mode:   {regime}
   GR base time:     τ_base  = {tau_base:.4e} s
   UQFF total time:  τ_UQFF  = {tau_UQFF:.4e} s
   
-  Total slowdown factor: {results['slowdown_factor']:.2f}×
+  τ_UQFF/τ'' ratio: {results['tau_ratio_to_tau_pp']:.4e} ({"< 1 = faster" if results['tau_ratio_to_tau_pp'] < 1 else "> 1 = slower"})
+  Total GR factor:  {results['slowdown_factor']:.2e}×
   
   ┌─────────────────────────────────────────────────────────────────┐
-  │ UQFF predicts {results['slowdown_factor']:.1f}× longer traversal than GR base              │
-  │ Breakdown: {(1/v_eff_factor):.2f}× aether × {(1+f_TRZ):.2f}× TRZ × {magnetic_factor:.2e} magnetic │
+  │ Mode: {regime:12s}                                            │
+  │ {"ASSISTED: Magnetic field provides buoyancy for faster passage" if U_m < 0 else "DELAYED: Magnetic barrier slows passage through throat "} │
   └─────────────────────────────────────────────────────────────────┘
 
-Physical Interpretation:
-  • Aether flux: [UA] superfluid resists faster-than-medium motion
-  • Time-reversal: Negentropic transition adds reversal overhead
-  • Magnetic strings: U_m creates energy barrier, exponentially delaying
-  • Unlike GR: Wormhole remains stable (no exotic matter needed)!
+UQFF Scaling Factors:
+  κ_UQFF = {kappa_UQFF:.4e} (energy reduction)
+  λ_UQFF = {lambda_UQFF:.4e} (magnetic scaling)
+  T_eff_floor = {T_eff_floor:.4e} K (temperature floor)
+  μ_j = {mu_j:.4e} (magnetic permeability)
+  t_n = {t_n:.4f} (normalized time, controls regime)
 
-Sgr A* Example (M ≈ 4×10⁶ M_☉):
-  τ_base ≈ 10⁻⁴ s
-  With ρ ratio=0.1, f_TRZ=0.1, U_m/k_B×T_H≈1:
-  τ_UQFF ≈ 10⁻⁴ / 0.9 × 1.1 × e¹ ≈ 3×10⁻⁴ s (3× longer)
+Physical Interpretation (DUAL REGIME):
+  • Aether flux: [UA] superfluid adjusts effective velocity
+  • Time-reversal: Negentropic transition adds base drag
+  • Magnetic oscillation determines regime:
+    - U_m > 0 (RESISTIVE): τ_UQFF > τ'' (barrier delays passage)
+    - U_m < 0 (BUOYANT): τ_UQFF < τ'' (buoyancy assists passage)
+  • t_n parameter controls buoyant/resistive switching
+  • Unlike GR: Wormhole remains stable (no exotic matter needed)!
 
 Q-SCOPE TESTABILITY:
   THz holes in superconducting circuits may show analogous delays,
@@ -35343,6 +35378,233 @@ Physics Notes:
 - U_m evolves via λ_UQFF × (μ_j/r_throat) × (1 - exp(-γt×cos(πt_n)))
 - Θ_WH = P_form × J_aether × exp(U_m/(k_B × T_eff))
 - Formation when Θ_WH > 1: aether flux sustains throat stability
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+    
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # WORMHOLE TRAVERSAL TIME SIMULATION (Time-series τ_UQFF Evolution)
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def simulate_wormhole_traversal_time(self, M_BH: float,
+                                          t_start: float = 0.0,
+                                          t_end: float = 1.0,
+                                          dt: float = 0.01,
+                                          f_TRZ: float = None,
+                                          rho_SCm: float = None,
+                                          rho_UA: float = None,
+                                          gamma: float = 1e-3,
+                                          kappa_UQFF: float = 1e-60,
+                                          lambda_UQFF: float = 1e-9,
+                                          T_eff_floor: float = 1e16,
+                                          mu_j: float = 1e20,
+                                          noise_level: float = 0.0,
+                                          frame: str = 'F_U_Bi') -> Tuple[dict, str]:
+        """
+        Simulate wormhole traversal time τ_UQFF over normalized time t_n.
+        
+        This method evolves the traversal time over varying t_n parameter,
+        tracking transitions between BUOYANT and RESISTIVE regimes.
+        
+        Physics: τ_UQFF(t_n) = τ'' × exp(U_m(t_n)/(k_B × T_eff))
+        
+        Where U_m oscillates with t_n:
+        U_m(t_n) = λ_UQFF × (μ_j/r_throat) × (1 - exp(-γ × cos(πt_n)))
+        
+        This produces:
+        - BUOYANT regime (U_m < 0): τ_UQFF < τ'' (faster traversal)
+        - RESISTIVE regime (U_m > 0): τ_UQFF > τ'' (slower traversal)
+        
+        Args:
+            M_BH: Black hole mass (kg)
+            t_start: Start of t_n range (default: 0.0)
+            t_end: End of t_n range (default: 1.0)
+            dt: Step size for t_n (default: 0.01)
+            f_TRZ: Time reversal factor (default: 0.1)
+            rho_SCm: SCm vacuum density (J/m³)
+            rho_UA: UA vacuum density (J/m³)
+            gamma: Temporal decay rate (default: 1e-3)
+            kappa_UQFF: Energy reduction factor (default: 1e-60)
+            lambda_UQFF: Magnetic scaling factor (default: 1e-9)
+            T_eff_floor: Effective temperature floor (default: 1e16 K)
+            mu_j: Magnetic permeability factor (default: 1e20)
+            noise_level: Fractional noise amplitude (default: 0)
+            frame: Reference frame ('F_U_Bi' or 'F_U_Bi_i')
+        
+        Returns:
+            results: Dict with time arrays and statistics
+            steps: Long-form derivation string
+        """
+        # Use defaults if not specified
+        f_TRZ = f_TRZ if f_TRZ is not None else self.f_TRZ
+        
+        # Frame-dependent constant selection
+        if rho_SCm is None or rho_UA is None:
+            if frame == 'F_U_Bi_i':
+                rho_SCm = self.rho_vac_SCm_BH
+                rho_UA = self.rho_vac_UA_BH
+            else:
+                rho_SCm = self.rho_vac_SCm_ISM
+                rho_UA = self.rho_vac_UA_ISM
+        
+        # === Pre-compute fixed quantities ===
+        r_s = 2 * self.G * M_BH / self.c**2
+        rho_ratio_expand = rho_UA / rho_SCm
+        r_throat = r_s * rho_ratio_expand
+        
+        T_H = self.hbar * self.c**3 / (8 * np.pi * self.G * M_BH * self.k_B)
+        T_eff = max(T_H, T_eff_floor)
+        
+        tau_base = r_throat / self.c
+        rho_factor = rho_SCm / rho_UA
+        v_eff_factor = 1.0 - rho_factor
+        tau_aether = tau_base / v_eff_factor
+        tau_TRZ = tau_aether * (1 + f_TRZ)  # This is τ''
+        
+        # === Time-series arrays ===
+        t_n_values = np.arange(t_start, t_end + dt, dt)
+        n_steps = len(t_n_values)
+        
+        tau_UQFF_values = np.zeros(n_steps)
+        U_m_values = np.zeros(n_steps)
+        regime_list = []
+        
+        # === Simulate over t_n ===
+        for i, t_n in enumerate(t_n_values):
+            # U_m with oscillation
+            oscillation = 1.0 - np.exp(-gamma * np.cos(np.pi * t_n))
+            U_m = lambda_UQFF * (mu_j / r_throat) * oscillation
+            
+            # Add noise if requested
+            if noise_level > 0:
+                U_m *= (1 + noise_level * np.random.randn())
+            
+            U_m_values[i] = U_m
+            
+            # Compute exponential factor
+            exponent_Um = U_m / (self.k_B * T_eff) if T_eff > 0 else 0.0
+            exponent_Um = np.clip(exponent_Um, -700.0, 700.0)
+            magnetic_factor = np.exp(exponent_Um)
+            
+            # Full τ_UQFF
+            tau_UQFF_values[i] = tau_TRZ * magnetic_factor
+            
+            # Record regime
+            regime_list.append("BUOYANT" if U_m < 0 else "RESISTIVE")
+        
+        # === Statistics ===
+        tau_mean = np.mean(tau_UQFF_values)
+        tau_max = np.max(tau_UQFF_values)
+        tau_min = np.min(tau_UQFF_values)
+        tau_std = np.std(tau_UQFF_values)
+        
+        U_m_mean = np.mean(U_m_values)
+        
+        buoyant_count = regime_list.count("BUOYANT")
+        resistive_count = regime_list.count("RESISTIVE")
+        buoyant_fraction = buoyant_count / n_steps
+        
+        # Find regime transitions
+        transitions = []
+        for i in range(1, n_steps):
+            if regime_list[i] != regime_list[i-1]:
+                transitions.append((t_n_values[i], regime_list[i-1], regime_list[i]))
+        
+        results = {
+            'M_BH': M_BH,
+            't_n_values': t_n_values,
+            'tau_UQFF_values': tau_UQFF_values,
+            'U_m_values': U_m_values,
+            'regime_list': regime_list,
+            'tau_TRZ': tau_TRZ,
+            'tau_base': tau_base,
+            'T_H': T_H,
+            'T_eff': T_eff,
+            'r_throat': r_throat,
+            'tau_mean': tau_mean,
+            'tau_max': tau_max,
+            'tau_min': tau_min,
+            'tau_std': tau_std,
+            'U_m_mean': U_m_mean,
+            'buoyant_fraction': buoyant_fraction,
+            'resistive_fraction': 1 - buoyant_fraction,
+            'n_transitions': len(transitions),
+            'transitions': transitions,
+            'kappa_UQFF': kappa_UQFF,
+            'lambda_UQFF': lambda_UQFF,
+            'T_eff_floor': T_eff_floor,
+            'mu_j': mu_j,
+            'gamma': gamma
+        }
+        
+        steps = f"""UQFF Wormhole Traversal Time Simulation:
+═══════════════════════════════════════════════════════════════════════════════
+
+DUAL REGIME PHYSICS:
+  τ_UQFF(t_n) = τ'' × exp(U_m(t_n) / (k_B × T_eff))
+  
+  U_m(t_n) = λ_UQFF × (μ_j / r_throat) × (1 - exp(-γ × cos(πt_n)))
+  
+  Regimes:
+    • U_m > 0 (RESISTIVE): τ_UQFF > τ'' (delayed traversal)
+    • U_m < 0 (BUOYANT): τ_UQFF < τ'' (assisted traversal)
+
+═══════════════════════════════════════════════════════════════════════════════
+INPUTS:
+  M_BH = {M_BH:.4e} kg = {M_BH/self.M_sun:.4e} M_☉
+  t_n range: [{t_start:.4f}, {t_end:.4f}] with dt = {dt:.4f}
+  n_steps = {n_steps}
+  
+UQFF Scaling Factors:
+  λ_UQFF = {lambda_UQFF:.4e}
+  μ_j = {mu_j:.4e}
+  γ = {gamma:.4e}
+  T_eff_floor = {T_eff_floor:.4e} K
+
+FIXED QUANTITIES:
+  r_throat = {r_throat:.4e} m
+  τ_base = {tau_base:.4e} s
+  τ'' (τ_TRZ) = {tau_TRZ:.4e} s
+  T_H = {T_H:.4e} K
+  T_eff = {T_eff:.4e} K
+
+═══════════════════════════════════════════════════════════════════════════════
+SIMULATION RESULTS:
+
+τ_UQFF Statistics:
+  Mean: {tau_mean:.4e} s
+  Max:  {tau_max:.4e} s (slowest traversal)
+  Min:  {tau_min:.4e} s (fastest traversal)
+  Std:  {tau_std:.4e} s
+
+U_m Statistics:
+  Mean: {U_m_mean:.4e} J
+
+Regime Distribution:
+  BUOYANT (U_m < 0):   {buoyant_count}/{n_steps} = {buoyant_fraction:.1%}
+  RESISTIVE (U_m > 0): {resistive_count}/{n_steps} = {(1-buoyant_fraction):.1%}
+  
+  Number of regime transitions: {len(transitions)}
+
+═══════════════════════════════════════════════════════════════════════════════
+INTERPRETATION:
+
+  τ_UQFF/τ'' ranges from {tau_min/tau_TRZ:.4e} to {tau_max/tau_TRZ:.4e}
+  
+  {'Mostly BUOYANT: Wormhole assists traversal most of the time' if buoyant_fraction > 0.5 else 'Mostly RESISTIVE: Wormhole resists traversal most of the time'}
+  
+  Fastest traversal at t_n where cos(πt_n) is most negative
+  Slowest traversal at t_n where cos(πt_n) is most positive
+
+Physical Interpretation:
+  The t_n parameter controls the oscillation phase of the magnetic barrier/buoyancy.
+  As t_n varies from 0→1→2, the regime oscillates:
+    t_n ≈ 0, 2, 4...: cos(πt_n) ≈ +1 → exp term > 1 → exponential approaches 1
+    t_n ≈ 1, 3, 5...: cos(πt_n) ≈ -1 → exp term grows → buoyant regime
+
+Q-SCOPE TESTABILITY:
+  Time-varying THz transmission through superconducting micro-wormhole analogs
+  should show this buoyant/resistive oscillation pattern.
 ═══════════════════════════════════════════════════════════════════════════════
 """
         return results, steps
