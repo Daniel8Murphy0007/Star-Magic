@@ -38601,6 +38601,264 @@ Q-SCOPE TESTABILITY:
 """
         return results, steps
     
+    def simulate_UQFF_entanglement_spectrum_over_temperature(self,
+                                                             T_start: float = 10.0,
+                                                             T_end: float = 200.0,
+                                                             n_points: int = 50,
+                                                             N: int = 2,
+                                                             delta: float = None,
+                                                             f_TRZ: float = None,
+                                                             rho_SCm: float = None,
+                                                             rho_UA: float = None,
+                                                             mu_j: float = 1e15,
+                                                             U_m: float = None,
+                                                             frame: str = 'F_U_Bi') -> Tuple[dict, str]:
+        """
+        Simulate UQFF entanglement spectrum evolution over temperature.
+        
+        MODULE SOURCE: uqff_entanglement_spectrum.h/.cpp (C++ validated implementation)
+        
+        THEORETICAL BASIS:
+        Entanglement spectrum {λ_i} eigenvalues of reduced density matrix ρ_A,
+        modified by aether broadening, time-reversal flattening, and string damping.
+        Temperature dependence shows thermal effects on quantum correlations.
+        
+        DERIVATION (from uqff_entanglement_spectrum.h/.cpp):
+        ═══════════════════════════════════════════════════════════════════════════════
+        STEP 1: Base spectrum λ_i = 1/N (maximally entangled N-level system)
+                For state |ψ⟩ = (1/√N) Σ|i_A⟩|i_B⟩
+                ρ_A = (1/N) Σ|i_A⟩⟨i_A|, maximum entropy S = log N
+        
+        STEP 2: λ_i → λ_i × (1 + δ × ρ_UA/ρ_SCm)
+                Aether broadening: [UA] superfluid channels add entanglement threads
+                δ ≈ 0.01, spectrum spreads, renormalize
+        
+        STEP 3: λ_i → λ_i(1 - f_TRZ) + f_TRZ/N
+                Time-reversal flattening: f_TRZ ≈ 0.1 pushes toward uniform
+                Negentropic mixing, renormalize
+        
+        STEP 4: λ_i → λ_i × exp(-(ε_i - Δ)/(U_m/k_B T))
+                String damping on pseudo-energies ε_i = -log(λ_i)
+                High-entanglement modes damped, renormalize
+        
+        STEP 5: Full spectrum with all modifications
+        ═══════════════════════════════════════════════════════════════════════════════
+        
+        Args:
+            T_start: Starting temperature (K), default 10 K
+            T_end: Ending temperature (K), default 200 K
+            n_points: Number of temperature points
+            N: Hilbert space dimension (default 2 for 2-qubit)
+            delta: Fluctuation amplitude for aether broadening (default: class value)
+            f_TRZ: Time-reversal coupling (default: class value)
+            rho_SCm: SCm vacuum density (J/m³)
+            rho_UA: UA vacuum density (J/m³)
+            mu_j: String tension (J/m)
+            U_m: String cutoff energy (J)
+            frame: UQFF frame ('F_U_Bi', 'F_U', 'F_Bi', 'F_i')
+            
+        Returns:
+            Tuple of (results_dict, explanation_string)
+            
+            results_dict contains:
+            - T_array: Temperature values (K)
+            - S_array: von Neumann entropy S at each T
+            - d_eff_array: Effective dimension d_eff at each T
+            - purity_array: Purity P = Tr(ρ_A²) at each T
+            - lambda_array: Spectrum eigenvalues at each T
+            - N: Hilbert space dimension
+            - peak_entropy: Maximum entropy
+            - peak_entropy_T: Temperature where S is maximum
+            - broadening: Aether broadening factor
+            - TRZ_effect: TRZ flattening magnitude
+            - simulation_data: Per-point results
+        """
+        # Use class defaults if not provided
+        if delta is None:
+            delta = 0.01
+        if f_TRZ is None:
+            f_TRZ = self.f_TRZ
+        if rho_SCm is None:
+            rho_SCm = self.rho_vac_SCm
+        if rho_UA is None:
+            rho_UA = self.rho_vac_UA
+        if U_m is None:
+            U_m = 1e-20
+        
+        # Generate temperature array
+        T_array = np.linspace(T_start, T_end, n_points)
+        
+        # Storage arrays
+        S_array = []
+        d_eff_array = []
+        purity_array = []
+        lambda_arrays = []
+        simulation_data = []
+        
+        # Compute spectrum at each temperature
+        for T_val in T_array:
+            result, _ = self.compute_UQFF_entanglement_spectrum(
+                lambda_base=None,  # Will use base spectrum
+                epsilon_i=None,
+                T=T_val,
+                Delta=1e-21,  # Gap energy
+                delta=delta,
+                f_TRZ=f_TRZ,
+                rho_SCm=rho_SCm,
+                rho_UA=rho_UA,
+                mu_j=mu_j,
+                frame=frame
+            )
+            
+            # Extract entanglement measures
+            S = result.get('S_vN', 0.0)
+            d_eff = result.get('d_eff', 1.0)
+            purity = result.get('purity', 1.0)
+            
+            S_array.append(S)
+            d_eff_array.append(d_eff)
+            purity_array.append(purity)
+            lambda_arrays.append(result.get('lambda_UQFF', []))
+            simulation_data.append(result)
+        
+        # Convert to numpy arrays
+        S_array = np.array(S_array)
+        d_eff_array = np.array(d_eff_array)
+        purity_array = np.array(purity_array)
+        
+        # Find peak entropy
+        peak_idx = np.argmax(S_array)
+        peak_entropy = S_array[peak_idx]
+        peak_entropy_T = T_array[peak_idx]
+        
+        # Compute factors
+        rho_ratio = rho_UA / rho_SCm if rho_SCm > 0 else 10.0
+        broadening_factor = 1.0 + delta * rho_ratio
+        
+        results = {
+            'T_array': T_array,
+            'S_array': S_array,
+            'd_eff_array': d_eff_array,
+            'purity_array': purity_array,
+            'lambda_array': lambda_arrays,
+            'N': N,
+            'peak_entropy': peak_entropy,
+            'peak_entropy_T': peak_entropy_T,
+            'broadening': broadening_factor,
+            'TRZ_effect': f_TRZ,
+            'rho_ratio': rho_ratio,
+            'delta': delta,
+            'f_TRZ': f_TRZ,
+            'U_m': U_m,
+            'frame': frame,
+            'n_points': n_points,
+            'simulation_data': simulation_data
+        }
+        
+        steps = f"""UQFF Entanglement Spectrum Evolution over Temperature
+═══════════════════════════════════════════════════════════════════════════════
+MODULE SOURCE: uqff_entanglement_spectrum.h/.cpp (C++ validated implementation)
+
+THEORETICAL BASIS:
+  N-level bipartite entangled state: {N}-qubit system
+  Standard spectrum: λ_i = 1/{N} (maximally entangled)
+  UQFF modifications: aether broadening, TRZ flattening, string damping
+  Temperature: affects pseudo-energy damping exp(-(ε_i - Δ)/(U_m/k_B T))
+
+DERIVATION STEPS:
+  STEP 1: Base λ_i = 1/{N}, S = log {N} = {np.log(N):.4f}
+  
+  STEP 2: Aether broadening: λ_i → λ_i(1 + δ ρ_UA/ρ_SCm)
+          Broadening factor: {broadening_factor:.4f}
+  
+  STEP 3: TRZ flattening: λ_i → λ_i(1 - f_TRZ) + f_TRZ/{N}
+          f_TRZ = {f_TRZ:.4f}
+  
+  STEP 4: String damping: λ_i → λ_i exp(-(ε_i - Δ)/(U_m/k_B T))
+          U_m = {U_m:.4e} J, thermal scale k_B T varies with T
+  
+  STEP 5: Full spectrum with renormalization at each step
+
+═══════════════════════════════════════════════════════════════════════════════
+SIMULATION PARAMETERS:
+
+  Temperature range: {T_start:.2f} K to {T_end:.2f} K
+  Points: {n_points}
+  
+  System: {N}-qubit entanglement
+  
+  UQFF Parameters:
+    Aether broadening δ = {delta:.4f}
+    Time-reversal coupling f_TRZ = {f_TRZ:.4f}
+    String energy U_m = {U_m:.4e} J
+    ρ_UA/ρ_SCm = {rho_ratio:.4f}
+
+═══════════════════════════════════════════════════════════════════════════════
+ENTANGLEMENT EVOLUTION:
+
+  von Neumann Entropy:
+    Base (maximally entangled): S = log {N} = {np.log(N):.4f}
+    Peak at T = {peak_entropy_T:.2f} K: S = {peak_entropy:.4f}
+    Range: [{np.min(S_array):.4f}, {np.max(S_array):.4f}]
+  
+  Effective Dimension d_eff:
+    Range: [{np.min(d_eff_array):.4f}, {np.max(d_eff_array):.4f}]
+    Base (fully mixed): d_eff = {N}
+  
+  Purity (P = Tr(ρ_A²)):
+    Range: [{np.min(purity_array):.4f}, {np.max(purity_array):.4f}]
+    Pure state: P = 1, Maximally mixed: P = 1/{N}
+
+═══════════════════════════════════════════════════════════════════════════════
+UQFF MODIFICATIONS:
+
+  1. AETHER BROADENING:
+     All λ_i × (1 + δ × ρ_ratio) = λ_i × {broadening_factor:.4f}
+     → Spectrum spreads, entropy preserved (renormalized)
+  
+  2. TIME-REVERSAL FLATTENING:
+     λ_i → {1-f_TRZ:.4f} × λ_i + {f_TRZ/N:.4f}
+     → Pushes toward uniform, gentle entropy increase (TRZ-dependent)
+  
+  3. STRING DAMPING (Temperature-Dependent):
+     λ_i × exp(-(ε_i - Δ)/(U_m/k_B T))
+     At T={T_start:.1f}K: k_B T = {self.k_B * T_start:.4e} J
+     At T={T_end:.1f}K: k_B T = {self.k_B * T_end:.4e} J
+     → High-T: weaker damping (ε_i effects soften)
+     → Low-T: stronger damping (pseudo-energy selectivity sharp)
+
+═══════════════════════════════════════════════════════════════════════════════
+Q-SCOPE OBSERVABLE PREDICTIONS:
+
+  Temperature Dependence:
+    • Peak entropy at T ≈ {peak_entropy_T:.1f} K suggests thermal balance point
+    • S increases {np.max(S_array) - np.min(S_array):.4f} from {T_start:.0f}K to {T_end:.0f}K
+    • d_eff change: {np.min(d_eff_array):.2f} → {np.max(d_eff_array):.2f}
+    
+  Aether Signature:
+    • Broadening factor {broadening_factor:.2f}× constant across T
+    • Observable as baseline shift in spectrum measurements
+    • Compared to standard QM {N}-qubit reference
+  
+  TRZ Effect:
+    • Spectrum flattening magnitude: f_TRZ = {f_TRZ:.2f}
+    • Creates gentle mixing toward uniform distribution
+    • Detectable via entropy vs temperature curvature
+  
+  String Damping:
+    • Pseudo-energy dependent: ε_i = -log(λ_i)
+    • Low-entanglement states (high λ_i, low ε_i) enhanced
+    • High-entanglement states (low λ_i, high ε_i) suppressed at low T
+
+TESTABILITY:
+  • q-scope entanglement measurement across {int(T_end - T_start)}K range
+  • Compare S vs T to standard Bell state predictions
+  • Verify aether broadening signature (persistent offset)
+  • Measure TRZ flattening effect (spectrum redistribution)
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+    
     # ═══════════════════════════════════════════════════════════════════════════════
     # UQFF ENTANGLEMENT ENTROPY (Aether-Enhanced von Neumann Entropy)
     # ═══════════════════════════════════════════════════════════════════════════════
