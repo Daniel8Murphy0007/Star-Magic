@@ -143581,6 +143581,428 @@ SOURCE82_WOLFRAM_CALCULATORS = {
     'MSigmaRelationCalculator': MSigmaRelationCalculator(),
 }
 
+
+# =============================================================================
+# SOURCE77_WOLFRAM.CPP - M51 WHIRLPOOL GALAXY (Feb 26, 2026)
+# Total: 3 unique Calculator Classes (spiral arms, tidal interaction, SFR)
+# =============================================================================
+
+class SpiralDensityWaveCalculator:
+    """
+    Lin-Shu spiral density wave from source77_wolfram.cpp (M51 grand design)
+    
+    Σ(r,φ,t) = Σ₀(r) × [1 + A × cos(ψ)]
+    ψ = m×φ - k×r - Ω_p×t
+    
+    Where k = m / (r × tan(pitch)), m=2 for grand design spiral.
+    """
+    
+    def compute(self, r_kpc: float, phi_rad: float, t_Gyr: float = 0.0,
+                A: float = 0.3, m: int = 2, pitch_deg: float = 20.0,
+                Omega_p: float = 25.0) -> dict:
+        """
+        Compute spiral arm density perturbation.
+        
+        Parameters:
+        -----------
+        r_kpc : float
+            Galactocentric radius (kpc)
+        phi_rad : float
+            Azimuthal angle (radians)
+        t_Gyr : float
+            Time (Gyr), default 0
+        A : float
+            Density perturbation amplitude, default 0.3
+        m : int
+            Azimuthal mode (2 for grand design), default 2
+        pitch_deg : float
+            Pitch angle (degrees), default 20
+        Omega_p : float
+            Pattern speed (km/s/kpc), default 25
+            
+        Returns:
+        --------
+        dict with 'value' (surface density M_sun/pc²), parameters
+        """
+        import math
+        
+        # Pitch angle to wavenumber
+        pitch_rad = pitch_deg * math.pi / 180.0
+        k = m / (r_kpc * math.tan(pitch_rad))
+        
+        # Phase
+        psi = m * phi_rad - k * r_kpc - Omega_p * t_Gyr
+        
+        # Exponential disk base density
+        r_d = 3.5  # Scale length kpc
+        Sigma_0 = 100.0 * math.exp(-r_kpc / r_d)  # M_sun/pc²
+        
+        # Perturbed density
+        Sigma_perturb = Sigma_0 * (1.0 + A * math.cos(psi))
+        
+        # Corotation radius
+        v_flat = 200.0  # km/s
+        r_CR = v_flat / Omega_p
+        
+        return {
+            'value': Sigma_perturb,
+            'r_kpc': r_kpc,
+            'phi_rad': phi_rad,
+            't_Gyr': t_Gyr,
+            'Sigma_base': Sigma_0,
+            'pitch_deg': pitch_deg,
+            'mode_m': m,
+            'corotation_radius_kpc': r_CR,
+            'units': 'M_sun/pc²',
+            'equation': f"Σ = {Sigma_0:.1f}×[1+{A}×cos(ψ)] = {Sigma_perturb:.2f} M☉/pc²"
+        }
+
+
+class TidalInteractionCalculator:
+    """
+    Tidal interaction force from source77_wolfram.cpp (M51-NGC5195 pair)
+    
+    F_tid = G × M_comp × Δr / |Δr|³
+    τ = r × F_tid  (tidal torque)
+    
+    Models companion galaxy tidal disruption.
+    """
+    
+    # Physical constants
+    G_kpc = 4.3e-6  # kpc·(km/s)²/M_sun
+    
+    def compute(self, r_kpc: float, phi_rad: float,
+                M_companion: float = 2e10, d_kpc: float = 9.0,
+                phi_comp_rad: float = 0.0) -> dict:
+        """
+        Compute tidal force from companion.
+        
+        Parameters:
+        -----------
+        r_kpc : float
+            Test particle radius (kpc)
+        phi_rad : float
+            Test particle angle (radians)
+        M_companion : float
+            Companion mass (M_sun), default 2e10
+        d_kpc : float
+            Companion distance (kpc), default 9
+        phi_comp_rad : float
+            Companion angle (radians), default 0
+            
+        Returns:
+        --------
+        dict with 'value' (tidal force), parameters
+        """
+        import math
+        
+        # Positions
+        x_comp = d_kpc * math.cos(phi_comp_rad)
+        y_comp = d_kpc * math.sin(phi_comp_rad)
+        x = r_kpc * math.cos(phi_rad)
+        y = r_kpc * math.sin(phi_rad)
+        
+        # Separation
+        dx = x - x_comp
+        dy = y - y_comp
+        r_sep = math.sqrt(dx**2 + dy**2)
+        
+        # Tidal force components
+        F_tid_x = -self.G_kpc * M_companion * dx / (r_sep**3)
+        F_tid_y = -self.G_kpc * M_companion * dy / (r_sep**3)
+        F_tid_mag = math.sqrt(F_tid_x**2 + F_tid_y**2)
+        
+        # Tidal torque
+        torque = x * F_tid_y - y * F_tid_x
+        
+        # Roche lobe (Jacobi) radius
+        M_primary = 1.6e11  # M51 mass, M_sun
+        r_Roche = d_kpc * (M_primary / (3 * M_companion))**(1/3)
+        
+        return {
+            'value': F_tid_mag,
+            'r_kpc': r_kpc,
+            'M_companion': M_companion,
+            'd_kpc': d_kpc,
+            'r_separation': r_sep,
+            'torque': torque,
+            'r_Roche_kpc': r_Roche,
+            'beyond_Roche': r_kpc > r_Roche,
+            'units': '(km/s)²/kpc',
+            'equation': f"F_tid = GM_comp/r_sep² = {F_tid_mag:.6e} (km/s)²/kpc"
+        }
+
+
+class KennicuttSchmidtSFRCalculator:
+    """
+    Kennicutt-Schmidt star formation rate from source77_wolfram.cpp
+    
+    Σ_SFR = A × Σ_gas^N
+    
+    With spiral arm enhancement and free-fall time correction.
+    """
+    
+    def compute(self, Sigma_gas: float, spiral_phase: float = 0.0,
+                N: float = 1.4, epsilon: float = 0.02,
+                arm_enhancement: float = 1.5) -> dict:
+        """
+        Compute star formation rate surface density.
+        
+        Parameters:
+        -----------
+        Sigma_gas : float
+            Gas surface density (M_sun/pc²)
+        spiral_phase : float
+            Phase relative to spiral arm (0=on arm, π=interarm)
+        N : float
+            Kennicutt-Schmidt power law index, default 1.4
+        epsilon : float
+            Star formation efficiency, default 0.02
+        arm_enhancement : float
+            Spiral arm amplification factor, default 1.5
+            
+        Returns:
+        --------
+        dict with 'value' (SFR surface density M_sun/yr/kpc²), parameters
+        """
+        import math
+        
+        # Base Kennicutt-Schmidt
+        A = 2.5e-4  # (M_sun/yr/kpc²) / (M_sun/pc²)^N
+        Sigma_SFR_base = A * (Sigma_gas**N)
+        
+        # Spiral arm enhancement (Gaussian centered on arm)
+        arm_factor = 1.0 + arm_enhancement * math.exp(-spiral_phase**2 / 0.1)
+        
+        # Free-fall time (approximate)
+        h_gas = 100.0  # pc, gas scale height
+        rho_gas = Sigma_gas / (2 * h_gas)  # M_sun/pc³
+        
+        # Efficiency-corrected SFR
+        Sigma_SFR = Sigma_SFR_base * arm_factor
+        
+        # Depletion time
+        t_dep = Sigma_gas / Sigma_SFR if Sigma_SFR > 0 else float('inf')
+        
+        return {
+            'value': Sigma_SFR,
+            'Sigma_gas': Sigma_gas,
+            'spiral_phase': spiral_phase,
+            'N': N,
+            'epsilon': epsilon,
+            'arm_factor': arm_factor,
+            't_depletion_yr': t_dep,
+            't_depletion_Gyr': t_dep / 1e9,
+            'units': 'M_sun/yr/kpc²',
+            'equation': f"Σ_SFR = A×Σ_gas^N×arm = {Sigma_SFR:.4e} M☉/yr/kpc²"
+        }
+
+
+# =============================================================================
+# SOURCE18_WOLFRAM.CPP - PILLARS OF CREATION (Feb 26, 2026)
+# Total: 3 unique Calculator Classes (erosion, mass growth, pillar gravity)
+# =============================================================================
+
+class PillarErosionCalculator:
+    """
+    Pillar photoevaporation erosion from source18_wolfram.cpp
+    
+    E(t) = E₀ × exp(-t/τ_erosion)
+    
+    Models UV-driven mass loss in star-forming pillars (τ ~ 1 Myr).
+    """
+    
+    def compute(self, t: float, E_0: float = 0.1,
+                tau_erosion: float = 3.156e13) -> dict:
+        """
+        Compute erosion factor.
+        
+        Parameters:
+        -----------
+        t : float
+            Time (s)
+        E_0 : float
+            Initial erosion factor (fraction), default 0.1 (10%)
+        tau_erosion : float
+            Erosion timescale (s), default 3.156e13 (1 Myr)
+            
+        Returns:
+        --------
+        dict with 'value' (erosion factor 0-1), parameters
+        """
+        import math
+        
+        E_t = E_0 * math.exp(-t / tau_erosion)
+        
+        # Mass loss estimate
+        remaining_fraction = 1 - E_t
+        
+        return {
+            'value': E_t,
+            't': t,
+            't_Myr': t / 3.156e13,
+            'E_0': E_0,
+            'tau_erosion_s': tau_erosion,
+            'tau_erosion_Myr': tau_erosion / 3.156e13,
+            'remaining_fraction': remaining_fraction,
+            'units': 'dimensionless',
+            'equation': f"E(t) = {E_0}×exp(-t/{tau_erosion/3.156e13:.1f}Myr) = {E_t:.6f}"
+        }
+
+
+class PillarMassGrowthCalculator:
+    """
+    Pillar mass growth via star formation from source18_wolfram.cpp
+    
+    M(t) = M₀ × (1 + Ṁ_factor × exp(-t/τ_SF))
+    
+    Models gas reservoir depletion as stars form.
+    """
+    
+    # Physical constants
+    M_sun = 1.989e30  # kg
+    
+    def compute(self, t: float, M_initial: float = 10100.0,
+                M_gas_reservoir: float = 10000.0,
+                tau_SF: float = 3.156e13) -> dict:
+        """
+        Compute time-dependent pillar mass.
+        
+        Parameters:
+        -----------
+        t : float
+            Time (s)
+        M_initial : float
+            Initial stellar mass (M_sun), default 10100
+        M_gas_reservoir : float
+            Gas reservoir (M_sun), default 10000
+        tau_SF : float
+            Star formation timescale (s), default 3.156e13 (1 Myr)
+            
+        Returns:
+        --------
+        dict with 'value' (mass in kg), parameters
+        """
+        import math
+        
+        M_dot_factor = M_gas_reservoir / M_initial
+        M_dot = M_dot_factor * math.exp(-t / tau_SF)
+        M_t = M_initial * self.M_sun * (1 + M_dot)
+        
+        # Current gas fraction
+        gas_remaining = M_gas_reservoir * self.M_sun * math.exp(-t / tau_SF)
+        
+        return {
+            'value': M_t,
+            't': t,
+            't_Myr': t / 3.156e13,
+            'M_initial_Msun': M_initial,
+            'M_t_Msun': M_t / self.M_sun,
+            'M_gas_reservoir_Msun': M_gas_reservoir,
+            'gas_remaining_Msun': gas_remaining / self.M_sun,
+            'tau_SF_Myr': tau_SF / 3.156e13,
+            'units': 'kg',
+            'equation': f"M(t) = {M_initial}×(1+{M_dot_factor:.2f}×e^-t/τ) = {M_t/self.M_sun:.0f} M☉"
+        }
+
+
+class PillarGravityCalculator:
+    """
+    Full pillar gravity with erosion from source18_wolfram.cpp
+    
+    g = (G × M(t) / r²) × (1 + H₀t) × (1 - B/B_crit) × (1 - E(t))
+    
+    Four-correction gravity for star-forming pillars.
+    """
+    
+    # Physical constants
+    G = 6.674e-11  # m³/(kg·s²)
+    M_sun = 1.989e30  # kg
+    ly_to_m = 9.461e15  # m
+    
+    def compute(self, t: float, M_initial: float = 10100.0,
+                r_ly: float = 5.0, H0: float = 2.184e-18,
+                B: float = 1e-6, B_crit: float = 1e11,
+                E_0: float = 0.1, tau_SF: float = 3.156e13,
+                tau_erosion: float = 3.156e13,
+                M_gas: float = 10000.0) -> dict:
+        """
+        Compute pillar gravitational acceleration with all corrections.
+        
+        Parameters:
+        -----------
+        t : float
+            Time (s)
+        M_initial : float
+            Initial mass (M_sun), default 10100
+        r_ly : float
+            Pillar extent (light-years), default 5
+        H0 : float
+            Hubble parameter (s⁻¹), default 2.184e-18
+        B : float
+            Magnetic field (T), default 1e-6
+        B_crit : float
+            Critical field (T), default 1e11
+        E_0 : float
+            Initial erosion factor, default 0.1
+        tau_SF, tau_erosion : float
+            Timescales (s), default 1 Myr each
+        M_gas : float
+            Gas reservoir (M_sun), default 10000
+            
+        Returns:
+        --------
+        dict with 'value' (gravity m/s²), all correction factors
+        """
+        import math
+        
+        r = r_ly * self.ly_to_m
+        
+        # Mass growth
+        M_dot_factor = M_gas / M_initial
+        M_dot = M_dot_factor * math.exp(-t / tau_SF)
+        M_t = M_initial * self.M_sun * (1 + M_dot)
+        
+        # Erosion
+        E_t = E_0 * math.exp(-t / tau_erosion)
+        
+        # Base gravity
+        g_base = (self.G * M_t) / (r**2)
+        
+        # Corrections
+        corr_H = 1 + H0 * t
+        corr_B = 1 - B / B_crit
+        corr_E = 1 - E_t
+        
+        g_total = g_base * corr_H * corr_B * corr_E
+        
+        return {
+            'value': g_total,
+            't_Myr': t / 3.156e13,
+            'M_t_Msun': M_t / self.M_sun,
+            'g_base': g_base,
+            'corr_H': corr_H,
+            'corr_B': corr_B,
+            'corr_E': corr_E,
+            'E_t': E_t,
+            'units': 'm/s²',
+            'equation': f"g = {g_base:.4e}×{corr_H:.6f}×{corr_B:.10f}×{corr_E:.6f} = {g_total:.6e} m/s²"
+        }
+
+
+# Calculator registry dictionaries
+SOURCE77_WOLFRAM_CALCULATORS = {
+    'SpiralDensityWaveCalculator': SpiralDensityWaveCalculator(),
+    'TidalInteractionCalculator': TidalInteractionCalculator(),
+    'KennicuttSchmidtSFRCalculator': KennicuttSchmidtSFRCalculator(),
+}
+
+SOURCE18_WOLFRAM_CALCULATORS = {
+    'PillarErosionCalculator': PillarErosionCalculator(),
+    'PillarMassGrowthCalculator': PillarMassGrowthCalculator(),
+    'PillarGravityCalculator': PillarGravityCalculator(),
+}
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -143605,4 +144027,14 @@ __all__.extend([
     'ClusterXRayEmissivityCalculator',
     'MSigmaRelationCalculator',
     'SOURCE82_WOLFRAM_CALCULATORS',
+    # Source77 M51 Whirlpool Galaxy (Feb 26, 2026) - 3 Calculator Classes
+    'SpiralDensityWaveCalculator',
+    'TidalInteractionCalculator',
+    'KennicuttSchmidtSFRCalculator',
+    'SOURCE77_WOLFRAM_CALCULATORS',
+    # Source18 Pillars of Creation (Feb 26, 2026) - 3 Calculator Classes
+    'PillarErosionCalculator',
+    'PillarMassGrowthCalculator',
+    'PillarGravityCalculator',
+    'SOURCE18_WOLFRAM_CALCULATORS',
 ])
