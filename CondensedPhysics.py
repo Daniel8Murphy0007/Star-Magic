@@ -155414,6 +155414,425 @@ SOURCE48_WOLFRAM_CALCULATORS = {
 }
 
 
+# =============================================================================
+# SOURCE49 WOLFRAM CALCULATORS: Universal Compressed & Resonance Framework (10 classes)
+# Meta-module for 7 systems spanning 80+ orders of magnitude (Universe to Hydrogen atom)
+# =============================================================================
+
+class UniversalCompressedDPMCalculator:
+    """DPM foundation: a_DPM=(I·A·Δω·f_DPM·E_vac)/(c·V) at 1 THz (universal)"""
+    def __init__(self):
+        self.I = 1.0
+        self.A = 1.0
+        self.omega_diff = 1e10  # ~10 GHz
+        self.f_DPM = 1e12  # 1 THz
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V = 1e48
+    def compute(self, t: float = 0.0) -> dict:
+        a_DPM = (self.I * self.A * self.omega_diff * self.f_DPM * self.E_vac) / (self.c * self.V)
+        return {'value': a_DPM, 'f_DPM_Hz': self.f_DPM, 'units': 'm/s²',
+                'equation': 'a_DPM = (I·A·Δω·f_DPM·E_vac)/(c·V)'}
+
+class UniversalCompressedTHzCalculator:
+    """THz pipeline: a_THz=(f_THz·v_sys·a_DPM)/c² (universal resonance coupling)"""
+    def __init__(self):
+        self.f_THz = 1e12
+        self.v_sys = 1e5  # 100 km/s typical
+        self.a_DPM = 1e-20
+        self.c = 3e8
+    def compute(self, t: float = 0.0) -> dict:
+        a_THz = (self.f_THz * self.v_sys * self.a_DPM) / (self.c**2)
+        return {'value': a_THz, 'f_THz_Hz': self.f_THz, 'units': 'm/s²',
+                'equation': 'a_THz = (f_THz·v_sys·a_DPM)/c²'}
+
+class UniversalVacuumDifferentialCalculator:
+    """Vacuum differential: a_vac=f_diff·a_DPM at ~10 GHz (Aether gradient)"""
+    def __init__(self):
+        self.f_diff = 1e10
+        self.a_DPM = 1e-20
+    def compute(self, t: float = 0.0) -> dict:
+        a_vac = self.f_diff * self.a_DPM
+        return {'value': a_vac, 'f_diff_Hz': self.f_diff, 'units': 'm/s²',
+                'equation': 'a_vac = f_diff·a_DPM'}
+
+class UniversalSuperconductorFrequencyCalculator:
+    """Superconductor: a_super=f_super·SCm·a_DPM with SCm=1-B/B_crit (Aether coherence)"""
+    def __init__(self):
+        self.f_super = 1.411e16
+        self.B = 1e-6  # 1 µG
+        self.B_crit = 1e-5
+        self.a_DPM = 1e-20
+    def compute(self, t: float = 0.0) -> dict:
+        SCm = 1.0 - (self.B / self.B_crit)  # ~0.9
+        a_super = self.f_super * SCm * self.a_DPM
+        return {'value': a_super, 'f_super_Hz': self.f_super, 'SCm': SCm, 'units': 'm/s²',
+                'equation': 'a_super = f_super·SCm·a_DPM'}
+
+class UniversalAetherResonanceCalculator:
+    """Aether resonance: a_aether=f_aether·1e-8·f_DPM·(1+f_TRZ)·a_DPM (replaces DM/DE)"""
+    def __init__(self):
+        self.f_aether = 1e-8
+        self.f_DPM = 1e12
+        self.f_TRZ = 0.1
+        self.a_DPM = 1e-20
+    def compute(self, t: float = 0.0) -> dict:
+        a_aether = self.f_aether * 1e-8 * self.f_DPM * (1.0 + self.f_TRZ) * self.a_DPM
+        return {'value': a_aether, 'f_aether_Hz': self.f_aether, 'units': 'm/s²',
+                'equation': 'a_aether = f_aether·1e-8·f_DPM·(1+f_TRZ)·a_DPM'}
+
+class UniversalReactiveResonanceCalculator:
+    """Reactive U_g4i: a_reactive=f_react·a_DPM at ~10 GHz (fourth-order gravity)"""
+    def __init__(self):
+        self.f_react = 1e10
+        self.a_DPM = 1e-20
+    def compute(self, t: float = 0.0) -> dict:
+        a_reactive = self.f_react * self.a_DPM
+        return {'value': a_reactive, 'f_react_Hz': self.f_react, 'units': 'm/s²',
+                'equation': 'a_reactive = f_react·a_DPM'}
+
+class UniversalQuantumWaveResonanceCalculator:
+    """Quantum wave: a_quantum=f_quantum·a_DPM at 1.445e-17 Hz (cosmological)"""
+    def __init__(self):
+        self.f_quantum = 1.445e-17
+        self.a_DPM = 1e-20
+    def compute(self, t: float = 0.0) -> dict:
+        a_quantum = self.f_quantum * self.a_DPM
+        return {'value': a_quantum, 'f_quantum_Hz': self.f_quantum, 'units': 'm/s²',
+                'equation': 'a_quantum = f_quantum·a_DPM'}
+
+class UniversalFluidResonanceCalculator:
+    """Fluid resonance: a_fluid=f_fluid·a_DPM at ~10 MHz (hydrodynamics)"""
+    def __init__(self):
+        self.f_fluid = 1e7
+        self.a_DPM = 1e-20
+    def compute(self, t: float = 0.0) -> dict:
+        a_fluid = self.f_fluid * self.a_DPM
+        return {'value': a_fluid, 'f_fluid_Hz': self.f_fluid, 'units': 'm/s²',
+                'equation': 'a_fluid = f_fluid·a_DPM'}
+
+class UniversalOscillatoryResonanceCalculator:
+    """Oscillatory: 2A·cos(kx)·cos(ωt)+(2π/13.8)·A·Re[exp] (standing + traveling waves)"""
+    def __init__(self):
+        import math
+        self.A = 1e-15
+        self.k = 1e-16
+        self.omega = 2.0 * math.pi * 1e-8
+        self.x = 1e16
+        self.pi = math.pi
+    def compute(self, t: float = 0.0) -> dict:
+        import cmath, math
+        cos_term = 2.0 * self.A * math.cos(self.k * self.x) * math.cos(self.omega * t)
+        exp_arg = complex(0, self.k * self.x - self.omega * t)
+        exp_term = self.A * cmath.exp(exp_arg)
+        real_exp = exp_term.real
+        exp_factor = (2.0 * self.pi) / 13.8
+        a_osc = cos_term + exp_factor * real_exp
+        return {'value': a_osc, 'omega_Hz': 1e-8, 'units': 'm/s²',
+                'equation': '2A·cos(kx)·cos(ωt) + (2π/13.8)·A·Re[exp(i(kx-ωt))]'}
+
+class UniversalExpFrequencyCalculator:
+    """Exp frequency: a_exp=f_exp·a_DPM at ~100 MHz (exponential component)"""
+    def __init__(self):
+        self.f_exp = 1e8
+        self.a_DPM = 1e-20
+    def compute(self, t: float = 0.0) -> dict:
+        a_exp = self.f_exp * self.a_DPM
+        return {'value': a_exp, 'f_exp_Hz': self.f_exp, 'units': 'm/s²',
+                'equation': 'a_exp = f_exp·a_DPM'}
+
+SOURCE49_WOLFRAM_CALCULATORS = {
+    'UniversalCompressedDPMCalculator': UniversalCompressedDPMCalculator(),
+    'UniversalCompressedTHzCalculator': UniversalCompressedTHzCalculator(),
+    'UniversalVacuumDifferentialCalculator': UniversalVacuumDifferentialCalculator(),
+    'UniversalSuperconductorFrequencyCalculator': UniversalSuperconductorFrequencyCalculator(),
+    'UniversalAetherResonanceCalculator': UniversalAetherResonanceCalculator(),
+    'UniversalReactiveResonanceCalculator': UniversalReactiveResonanceCalculator(),
+    'UniversalQuantumWaveResonanceCalculator': UniversalQuantumWaveResonanceCalculator(),
+    'UniversalFluidResonanceCalculator': UniversalFluidResonanceCalculator(),
+    'UniversalOscillatoryResonanceCalculator': UniversalOscillatoryResonanceCalculator(),
+    'UniversalExpFrequencyCalculator': UniversalExpFrequencyCalculator(),
+}
+
+
+# =============================================================================
+# SOURCE50 WOLFRAM CALCULATORS: General Multi-System Framework (10 classes)
+# 5 diverse systems: Hubble Deep Field, 30 Doradus, Sombrero M104, Saturn, N90 SMC
+# =============================================================================
+
+class MultiSystemBaseGravityCalculator:
+    """Base gravity: a_base=G·M/r² (adjusts for each system scale)"""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M = 1e30  # Adjusts: Saturn 5.68e26 to Sombrero 1.6e42
+        self.r = 1e10
+    def compute(self, t: float = 0.0, M: float = None, r: float = None) -> dict:
+        M = M if M else self.M
+        r = r if r else self.r
+        a_base = (self.G * M) / (r**2)
+        return {'value': a_base, 'M_kg': M, 'r_m': r, 'units': 'm/s²',
+                'equation': 'a_base = G·M/r²'}
+
+class MultiSystemHubbleExpansionCalculator:
+    """Hubble expansion: a_H=H(z)·(1+H·t) with H(z)=H0·sqrt(0.3·(1+z)³+0.7)"""
+    def __init__(self):
+        self.H0 = 2.27e-18  # 70 km/s/Mpc
+        self.z = 0.5  # Adjusts: 0 (Saturn) to 1.0 (deep field)
+        self.t = 4.35e17  # ~14 Gyr
+    def compute(self, t: float = 0.0, z: float = None) -> dict:
+        z = z if z else self.z
+        H_z = self.H0 * (0.3 * (1.0 + z)**3 + 0.7)**0.5
+        a_H = H_z * (1.0 + H_z * self.t)
+        return {'value': a_H, 'z': z, 'H0_km_s_Mpc': 70, 'units': 'm/s²',
+                'equation': 'a_H = H(z)·(1+H·t)'}
+
+class MultiSystemCosmologicalLambdaCalculator:
+    """Cosmological Lambda: a_Λ=(Λ·c²)/3 (Aether replaces dark energy)"""
+    def __init__(self):
+        self.Lambda = 1.11e-52
+        self.c = 3e8
+    def compute(self, t: float = 0.0) -> dict:
+        a_L = (self.Lambda * self.c**2) / 3.0
+        return {'value': a_L, 'Lambda_m2': self.Lambda, 'units': 'm/s²',
+                'equation': 'a_Λ = (Λ·c²)/3'}
+
+class MultiSystemQuantumIntegralCalculator:
+    """Quantum integral: a_q=(ℏ/√(Δx·Δp))·∫ψ·(2π/t_H) (universal quantum contribution)"""
+    def __init__(self):
+        import math
+        self.hbar = 1.0546e-34
+        self.Delta_x_Delta_p = 1e-68
+        self.integral_psi = 2.176e-18
+        self.pi = math.pi
+        self.t_Hubble = 4.35e17
+    def compute(self, t: float = 0.0) -> dict:
+        a_q = (self.hbar / (self.Delta_x_Delta_p)**0.5) * self.integral_psi * (2.0 * self.pi / self.t_Hubble)
+        return {'value': a_q, 't_Hubble_s': self.t_Hubble, 'units': 'm/s²',
+                'equation': 'a_q = (ℏ/√(Δx·Δp))·∫ψ·(2π/t_H)'}
+
+class MultiSystemFluidDynamicsCalculator:
+    """Fluid dynamics: a_fluid=rho·V·g_earth (ISM turbulence, planetary atmospheres)"""
+    def __init__(self):
+        self.rho_fluid = 1e-20
+        self.V = 1e48  # Adjusts: Saturn 9e23 to cluster 1e63
+        self.g_earth = 10.0
+    def compute(self, t: float = 0.0) -> dict:
+        a_fluid = self.rho_fluid * self.V * self.g_earth
+        return {'value': a_fluid, 'rho_kg_m3': self.rho_fluid, 'units': 'm/s²',
+                'equation': 'a_fluid = rho·V·g_earth'}
+
+class MultiSystemDarkMatterPerturbationCalculator:
+    """DM perturbation: a_DM=G·M·(δρ/ρ)/r² with δρ/ρ=1e-5+3GM/r³"""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M = 1e30
+        self.r = 1e10
+        self.delta_rho_ratio = 1e-5
+    def compute(self, t: float = 0.0) -> dict:
+        pert = self.delta_rho_ratio + (3.0 * self.G * self.M) / (self.r**3)
+        a_DM = (self.G * self.M * pert) / (self.r**2)
+        return {'value': a_DM, 'delta_rho_ratio': self.delta_rho_ratio, 'units': 'm/s²',
+                'equation': 'a_DM = G·M·(δρ/ρ)/r²'}
+
+class MultiSystemDPMResonanceCalculator:
+    """DPM resonance: a_DPM=(I·A·Δω·f_DPM·E_vac)/(c·V) at 1 THz (foundation)"""
+    def __init__(self):
+        self.f_DPM = 1e12
+        self.E_vac = 7.09e-36
+        self.I = 1.0
+        self.A = 1.0
+        self.omega_diff = 1e10
+        self.c = 3e8
+        self.V = 1e48
+    def compute(self, t: float = 0.0) -> dict:
+        a_DPM = (self.I * self.A * self.omega_diff * self.f_DPM * self.E_vac) / (self.c * self.V)
+        return {'value': a_DPM, 'f_DPM_Hz': self.f_DPM, 'units': 'm/s²',
+                'equation': 'a_DPM = (I·A·Δω·f_DPM·E_vac)/(c·V)'}
+
+class MultiSystemAetherFrequencyCalculator:
+    """Aether frequency: a_Aether=f_Aether·a_DPM at 1.576e-35 Hz (cosmological)"""
+    def __init__(self):
+        self.f_Aether = 1.576e-35
+        self.a_DPM = 1e-20
+    def compute(self, t: float = 0.0) -> dict:
+        a_Aether = self.f_Aether * self.a_DPM
+        return {'value': a_Aether, 'f_Aether_Hz': self.f_Aether, 'units': 'm/s²',
+                'equation': 'a_Aether = f_Aether·a_DPM'}
+
+class MultiSystemQuantumFrequencyCalculator:
+    """Quantum frequency: a_q_freq=f_quantum·a_DPM at 1.445e-17 Hz"""
+    def __init__(self):
+        self.f_quantum = 1.445e-17
+        self.a_DPM = 1e-20
+    def compute(self, t: float = 0.0) -> dict:
+        a_q_freq = self.f_quantum * self.a_DPM
+        return {'value': a_q_freq, 'f_quantum_Hz': self.f_quantum, 'units': 'm/s²',
+                'equation': 'a_q_freq = f_quantum·a_DPM'}
+
+class MultiSystemFluidResonanceFrequencyCalculator:
+    """Fluid resonance frequency: a_fluid_freq=(GM/r²)·2π·a_DPM (hydrodynamic natural freq)"""
+    def __init__(self):
+        import math
+        self.G = 6.674e-11
+        self.M = 1e30
+        self.r = 1e10
+        self.pi = math.pi
+        self.a_DPM = 1e-20
+    def compute(self, t: float = 0.0) -> dict:
+        f_fluid = (self.G * self.M / (self.r**2)) * (2.0 * self.pi)
+        a_fluid_freq = f_fluid * self.a_DPM
+        return {'value': a_fluid_freq, 'f_fluid_Hz': f_fluid, 'units': 'm/s²',
+                'equation': 'a_fluid = (GM/r²)·2π·a_DPM'}
+
+SOURCE50_WOLFRAM_CALCULATORS = {
+    'MultiSystemBaseGravityCalculator': MultiSystemBaseGravityCalculator(),
+    'MultiSystemHubbleExpansionCalculator': MultiSystemHubbleExpansionCalculator(),
+    'MultiSystemCosmologicalLambdaCalculator': MultiSystemCosmologicalLambdaCalculator(),
+    'MultiSystemQuantumIntegralCalculator': MultiSystemQuantumIntegralCalculator(),
+    'MultiSystemFluidDynamicsCalculator': MultiSystemFluidDynamicsCalculator(),
+    'MultiSystemDarkMatterPerturbationCalculator': MultiSystemDarkMatterPerturbationCalculator(),
+    'MultiSystemDPMResonanceCalculator': MultiSystemDPMResonanceCalculator(),
+    'MultiSystemAetherFrequencyCalculator': MultiSystemAetherFrequencyCalculator(),
+    'MultiSystemQuantumFrequencyCalculator': MultiSystemQuantumFrequencyCalculator(),
+    'MultiSystemFluidResonanceFrequencyCalculator': MultiSystemFluidResonanceFrequencyCalculator(),
+}
+
+
+# =============================================================================
+# SOURCE52 WOLFRAM CALCULATORS: Dual-Mode Multi-System Framework (10 classes)
+# Compressed (time-domain) vs Resonance (frequency-domain) mode switching
+# =============================================================================
+
+class CompressedModeBaseGravityCalculator:
+    """Compressed mode base: a_c_base=G·M/r² (time-domain structural dynamics)"""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M = 1e30
+        self.r = 1e10
+    def compute(self, t: float = 0.0) -> dict:
+        a_base = (self.G * self.M) / (self.r**2)
+        return {'value': a_base, 'mode': 'compressed', 'units': 'm/s²',
+                'equation': 'a_c_base = G·M/r²'}
+
+class CompressedModeUgSumCalculator:
+    """Compressed Ug-sum: Ug1+Ug2+Ug3+Ug4≈0 (four-component cancellation in UQFF)"""
+    def __init__(self):
+        self.placeholder = 0.0
+    def compute(self, t: float = 0.0) -> dict:
+        return {'value': self.placeholder, 'units': 'm/s²',
+                'note': 'Ug1+Ug2+Ug3+Ug4 cancel in UQFF framework',
+                'equation': 'Ug_sum = Ug1+Ug2+Ug3+Ug4 ≈ 0'}
+
+class CompressedModeBFieldCorrectionCalculator:
+    """B-field correction: a_B=a_base·(1-B_t/B_crit) with B_t=10 GT, B_crit=100 GT"""
+    def __init__(self):
+        self.B_t = 1e10  # 10 GT
+        self.B_crit = 1e11  # 100 GT
+        self.a_base = 1e-10
+    def compute(self, t: float = 0.0) -> dict:
+        B_adjust = 1.0 - (self.B_t / self.B_crit)
+        a_B = self.a_base * B_adjust
+        return {'value': a_B, 'B_t_T': self.B_t, 'B_crit_T': self.B_crit, 'units': 'm/s²',
+                'equation': 'a_B = a_base·(1-B_t/B_crit)'}
+
+class CompressedModeEnvironmentalFactorCalculator:
+    """Environmental factor: a_env=a_base·(1+F_env) (local field perturbations)"""
+    def __init__(self):
+        self.F_env = 0.0
+        self.a_base = 1e-10
+    def compute(self, t: float = 0.0, F_env: float = None) -> dict:
+        F = F_env if F_env else self.F_env
+        a_env = self.a_base * (1.0 + F)
+        return {'value': a_env, 'F_env': F, 'units': 'm/s²',
+                'equation': 'a_env = a_base·(1+F_env)'}
+
+class ResonanceModeDPMFoundationCalculator:
+    """Resonance DPM: a_res=f_DPM·a_base·sin(2πft) at 1 THz (frequency-domain)"""
+    def __init__(self):
+        import math
+        self.f_DPM = 1e12
+        self.a_base = 1e-20
+        self.pi = math.pi
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        a_res = self.f_DPM * self.a_base * math.sin(2.0 * self.pi * self.f_DPM * t)
+        return {'value': a_res, 'f_DPM_Hz': self.f_DPM, 'mode': 'resonance', 'units': 'm/s²',
+                'equation': 'a_res = f_DPM·a_base·sin(2πft)'}
+
+class ResonanceModeHardcodedSolutionCalculator:
+    """Resonance hardcoded: a_res=hardcoded_value (system-specific artifact match)"""
+    def __init__(self):
+        self.hardcoded_value = 1e-15
+    def compute(self, t: float = 0.0) -> dict:
+        return {'value': self.hardcoded_value, 'mode': 'resonance', 'units': 'm/s²',
+                'note': 'Placeholder from incomplete source, system-specific',
+                'equation': 'a_res = hardcoded_value'}
+
+class DualModeQuantumIntegralCalculator:
+    """Dual-mode quantum: a_q=(ℏ/√Δ)·∫ψ·2π/t_H (works in compressed & resonance)"""
+    def __init__(self):
+        import math
+        self.hbar = 1.0546e-34
+        self.Delta_x_Delta_p = 1e-68
+        self.integral_psi = 2.176e-18
+        self.pi = math.pi
+        self.t_Hubble = 4.35e17
+    def compute(self, t: float = 0.0) -> dict:
+        a_q = (self.hbar / (self.Delta_x_Delta_p)**0.5) * self.integral_psi * (2.0 * self.pi / self.t_Hubble)
+        return {'value': a_q, 'mode': 'dual', 'units': 'm/s²',
+                'equation': 'a_q = (ℏ/√(Δx·Δp))·∫ψ·(2π/t_H)'}
+
+class DualModeFluidDynamicsPlaceholderCalculator:
+    """Dual-mode fluid placeholder: a_fluid=rho·V·g·10 (10× for visibility)"""
+    def __init__(self):
+        self.rho_fluid = 1e-15  # 10× baseline
+        self.V = 1e48
+        self.g_earth = 10.0
+        self.multiplier = 10.0
+    def compute(self, t: float = 0.0) -> dict:
+        a_fluid = self.rho_fluid * self.V * self.g_earth * self.multiplier
+        return {'value': a_fluid, 'multiplier': self.multiplier, 'units': 'm/s²',
+                'equation': 'a_fluid = rho·V·g·10'}
+
+class DualModeDMPerturbationUnitFixedCalculator:
+    """Dual-mode DM pert: a_DM=G·M·(1e-5+3GM/r³)/r² (unit-fixed as doc)"""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M = 1e30
+        self.r = 1e10
+        self.delta_rho_ratio = 1e-5
+    def compute(self, t: float = 0.0) -> dict:
+        pert = self.delta_rho_ratio + (3.0 * self.G * self.M) / (self.r**3)
+        a_DM = (self.G * self.M * pert) / (self.r**2)
+        return {'value': a_DM, 'mode': 'dual', 'units': 'm/s²',
+                'equation': 'a_DM = G·M·(1e-5+3GM/r³)/r²'}
+
+class ModeSelectorSwitchCalculator:
+    """Mode selector: switch between compressed (time-domain) and resonance (frequency-domain)"""
+    def __init__(self):
+        self.is_compressed_mode = True
+        self.a_compressed = 1e-10
+        self.a_resonance = 1e-15
+    def compute(self, t: float = 0.0, mode: str = 'compressed') -> dict:
+        value = self.a_compressed if mode == 'compressed' else self.a_resonance
+        return {'value': value, 'mode': mode, 'units': 'm/s²',
+                'note': 'Time-domain (compressed) vs frequency-domain (resonance)',
+                'equation': 'a = a_compressed OR a_resonance'}
+
+SOURCE52_WOLFRAM_CALCULATORS = {
+    'CompressedModeBaseGravityCalculator': CompressedModeBaseGravityCalculator(),
+    'CompressedModeUgSumCalculator': CompressedModeUgSumCalculator(),
+    'CompressedModeBFieldCorrectionCalculator': CompressedModeBFieldCorrectionCalculator(),
+    'CompressedModeEnvironmentalFactorCalculator': CompressedModeEnvironmentalFactorCalculator(),
+    'ResonanceModeDPMFoundationCalculator': ResonanceModeDPMFoundationCalculator(),
+    'ResonanceModeHardcodedSolutionCalculator': ResonanceModeHardcodedSolutionCalculator(),
+    'DualModeQuantumIntegralCalculator': DualModeQuantumIntegralCalculator(),
+    'DualModeFluidDynamicsPlaceholderCalculator': DualModeFluidDynamicsPlaceholderCalculator(),
+    'DualModeDMPerturbationUnitFixedCalculator': DualModeDMPerturbationUnitFixedCalculator(),
+    'ModeSelectorSwitchCalculator': ModeSelectorSwitchCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -156063,4 +156482,40 @@ __all__.extend([
     'OrionResonantOscillatoryCalculator',
     'OrionUgSumCalculator',
     'SOURCE48_WOLFRAM_CALCULATORS',
+    # Source49 Universal Compressed & Resonance Framework (Feb 26, 2026) - 10 Calculator Classes
+    'UniversalCompressedDPMCalculator',
+    'UniversalCompressedTHzCalculator',
+    'UniversalVacuumDifferentialCalculator',
+    'UniversalSuperconductorFrequencyCalculator',
+    'UniversalAetherResonanceCalculator',
+    'UniversalReactiveResonanceCalculator',
+    'UniversalQuantumWaveResonanceCalculator',
+    'UniversalFluidResonanceCalculator',
+    'UniversalOscillatoryResonanceCalculator',
+    'UniversalExpFrequencyCalculator',
+    'SOURCE49_WOLFRAM_CALCULATORS',
+    # Source50 General Multi-System Framework (Feb 26, 2026) - 10 Calculator Classes
+    'MultiSystemBaseGravityCalculator',
+    'MultiSystemHubbleExpansionCalculator',
+    'MultiSystemCosmologicalLambdaCalculator',
+    'MultiSystemQuantumIntegralCalculator',
+    'MultiSystemFluidDynamicsCalculator',
+    'MultiSystemDarkMatterPerturbationCalculator',
+    'MultiSystemDPMResonanceCalculator',
+    'MultiSystemAetherFrequencyCalculator',
+    'MultiSystemQuantumFrequencyCalculator',
+    'MultiSystemFluidResonanceFrequencyCalculator',
+    'SOURCE50_WOLFRAM_CALCULATORS',
+    # Source52 Dual-Mode Multi-System Framework (Feb 26, 2026) - 10 Calculator Classes
+    'CompressedModeBaseGravityCalculator',
+    'CompressedModeUgSumCalculator',
+    'CompressedModeBFieldCorrectionCalculator',
+    'CompressedModeEnvironmentalFactorCalculator',
+    'ResonanceModeDPMFoundationCalculator',
+    'ResonanceModeHardcodedSolutionCalculator',
+    'DualModeQuantumIntegralCalculator',
+    'DualModeFluidDynamicsPlaceholderCalculator',
+    'DualModeDMPerturbationUnitFixedCalculator',
+    'ModeSelectorSwitchCalculator',
+    'SOURCE52_WOLFRAM_CALCULATORS',
 ])
