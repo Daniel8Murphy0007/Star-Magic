@@ -38909,6 +38909,345 @@ Physical Interpretation:
 """
         return T_analogue, steps
     
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # Q-SCOPE AETHER DARK MATTER ANALOG SIMULATION
+    # Laboratory THz/sonic analogs for UQFF aether DM effects
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def compute_aether_DM_analog_parameters(self, f_THz: float = 1e12,
+                                             rho_fluid: float = 1000.0,
+                                             c_sound: float = 1500.0) -> Tuple[dict, str]:
+        """
+        Compute q-scope parameters for aether dark matter analog experiments.
+        
+        Maps UQFF aether DM physics to laboratory-accessible THz/sonic systems:
+        - THz holes simulate [SCm] clustering (DM-like)
+        - Sonic black holes mimic aether viscosity/drag
+        - BEC analogs probe aether condensate dynamics
+        
+        Scaling relations:
+            L_lab / L_cosmo = (c_sound / c) × (f_THz / f_cosmo)
+            ρ_lab / ρ_UA = ρ_fluid / ρ_UA
+            t_lab / t_cosmo = L_lab / L_cosmo
+            
+        Args:
+            f_THz: THz frequency for electromagnetic analog (Hz)
+            rho_fluid: Fluid density for acoustic analog (kg/m³)
+            c_sound: Sound speed in fluid (m/s)
+            
+        Returns:
+            (parameters_dict, derivation_steps)
+        """
+        # Cosmological reference scales
+        rho_UA = 7.09e-36  # J/m³
+        rho_DM_cosmo = 2.5e-27  # kg/m³ (standard DM density)
+        L_cosmo = 1e6 * 3.086e16  # 1 Mpc in meters
+        t_Hubble = 4.4e17  # seconds (~14 Gyr)
+        
+        # THz analog scales
+        lambda_THz = self.c / f_THz
+        r_THz, _ = self.compute_effective_horizon(f_THz)
+        
+        # Sonic analog scales
+        lambda_sonic = c_sound / f_THz  # Acoustic wavelength at equivalent freq
+        r_sonic = c_sound / (2 * np.pi * f_THz)  # Sonic "horizon"
+        
+        # Scaling factors
+        length_scale_THz = lambda_THz / L_cosmo
+        length_scale_sonic = r_sonic / L_cosmo
+        time_scale = length_scale_THz  # Conformal scaling
+        
+        # Effective aether density in lab
+        # ρ_eff_lab = ρ_fluid × (v_drift / c_sound)² simulates ρ_UA effects
+        v_drift_equiv = c_sound * np.sqrt(rho_UA * self.c**2 / (rho_fluid * c_sound**2))
+        
+        # Dark matter clustering analog
+        # THz hole trapping volume simulates DM halo core
+        V_THz_core = (4/3) * np.pi * r_THz**3
+        M_DM_equiv = rho_DM_cosmo * V_THz_core * (L_cosmo / r_THz)**3
+        
+        # Aether drag coefficient in lab frame
+        # α_drag_lab = α_drag_cosmo × (ρ_fluid/ρ_UA) × (c_sound/c)²
+        alpha_drag_cosmo = 1e-11  # from compute_aether_drag_rotation
+        alpha_drag_lab = alpha_drag_cosmo * (rho_fluid / (rho_UA / self.c**2)) * (c_sound / self.c)**2
+        
+        # Rotation curve analog: v² = α × ρ × r × c²
+        # In lab: v_lab² = α_lab × ρ_fluid × r_lab × c_sound²
+        r_lab_test = 0.1  # 10 cm test radius
+        v_rot_analog = np.sqrt(alpha_drag_lab * rho_fluid * r_lab_test * c_sound**2)
+        
+        # BEC analog parameters
+        # Healing length ξ_BEC analogs aether correlation length
+        a_s_typical = 5e-9  # scattering length ~5 nm
+        n_BEC_typical = 1e20  # m⁻³ (dilute BEC)
+        xi_BEC = 1 / np.sqrt(8 * np.pi * n_BEC_typical * a_s_typical)
+        
+        parameters = {
+            'f_THz': f_THz,
+            'lambda_THz_m': lambda_THz,
+            'r_THz_m': r_THz,
+            'rho_fluid_kg_m3': rho_fluid,
+            'c_sound_m_s': c_sound,
+            'r_sonic_m': r_sonic,
+            'length_scale_THz': length_scale_THz,
+            'length_scale_sonic': length_scale_sonic,
+            'time_scale': time_scale,
+            'v_drift_equiv_m_s': v_drift_equiv,
+            'alpha_drag_lab': alpha_drag_lab,
+            'v_rot_analog_m_s': v_rot_analog,
+            'xi_BEC_m': xi_BEC,
+            'M_DM_equiv_kg': M_DM_equiv
+        }
+        
+        steps = f"""Q-Scope Aether Dark Matter Analog Parameters:
+═══════════════════════════════════════════════════════════════════════════════
+LABORATORY SIMULATION OF UQFF AETHER DARK MATTER
+
+CONCEPT:
+  UQFF predicts DM as aether-superconductive condensates, not particles.
+  Laboratory analogs can test this via:
+  1. THz holes → [SCm] clustering (DM halo cores)
+  2. Sonic black holes → Aether viscosity/drag
+  3. BEC systems → Aether condensate dynamics
+
+═══════════════════════════════════════════════════════════════════════════════
+THz ELECTROMAGNETIC ANALOG
+═══════════════════════════════════════════════════════════════════════════════
+
+  f_THz = {f_THz:.4e} Hz = {f_THz/1e12:.2f} THz
+  λ_THz = c/f = {lambda_THz:.4e} m = {lambda_THz*1e6:.2f} μm
+  r_THz = {r_THz:.4e} m = {r_THz*1e9:.2f} nm
+  
+  Scaling: L_lab/L_cosmo = {length_scale_THz:.4e}
+  Time: t_lab/t_cosmo = {time_scale:.4e}
+  
+  THz hole trapping volume simulates DM halo core:
+  V_THz = {V_THz_core:.4e} m³
+
+═══════════════════════════════════════════════════════════════════════════════
+SONIC/ACOUSTIC ANALOG
+═══════════════════════════════════════════════════════════════════════════════
+
+  ρ_fluid = {rho_fluid:.2f} kg/m³
+  c_sound = {c_sound:.2f} m/s
+  r_sonic = c_sound/(2πf) = {r_sonic:.4e} m
+  
+  Sonic "black hole" horizon in flowing fluid mimics
+  aether viscosity effects on cosmological scales.
+  
+  Aether drag coefficient (lab frame):
+  α_drag_lab = {alpha_drag_lab:.4e}
+  
+  Rotation analog at r = 10 cm:
+  v_rot = √(α × ρ × r × c_s²) = {v_rot_analog:.4e} m/s
+
+═══════════════════════════════════════════════════════════════════════════════
+BEC CONDENSATE ANALOG
+═══════════════════════════════════════════════════════════════════════════════
+
+  BEC healing length ξ analogs aether correlation length:
+  ξ_BEC = 1/√(8πna_s) = {xi_BEC:.4e} m = {xi_BEC*1e6:.2f} μm
+  
+  BEC density fluctuations → Aether fluctuation analog
+  BEC phonon modes → Aether string vibrations
+
+═══════════════════════════════════════════════════════════════════════════════
+EXPERIMENTAL PROTOCOL
+═══════════════════════════════════════════════════════════════════════════════
+
+  1. THz HOLE DM CLUSTERING TEST:
+     - Create THz hole in superconducting circuit
+     - Measure trapped energy vs. position
+     - Compare clustering pattern to NFW/Einasto
+     - SUCCESS: Clustering matches DM halo profile
+     
+  2. SONIC BH AETHER DRAG TEST:
+     - Create acoustic black hole in flowing superfluid
+     - Measure effective "rotation curve" around vortex
+     - Compare to v = const (flat curve)
+     - SUCCESS: Flat v(r) emerges from fluid dynamics
+     
+  3. BEC CONDENSATE DM TEST:
+     - Probe BEC density fluctuations at ξ_BEC scale
+     - Look for aether-like correlation function
+     - SUCCESS: ⟨δρ(0)δρ(r)⟩ ~ exp(-r/ξ) matches UQFF
+
+═══════════════════════════════════════════════════════════════════════════════
+MAPPING TO COSMOLOGICAL OBSERVATIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+  │ Lab Measurement          │ Cosmological Analog        │
+  ├──────────────────────────┼────────────────────────────┤
+  │ THz hole trapping r_THz  │ DM halo core radius r_s    │
+  │ Sonic rotation v(r)      │ Galaxy rotation curve      │
+  │ BEC clustering ξ_BEC     │ Aether correlation length  │
+  │ Phonon damping           │ GW/Hawking suppression     │
+  │ Vortex merger timescale  │ BH merger τ_UQFF           │
+
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return parameters, steps
+    
+    def compute_sonic_BH_aether_analog(self, v_flow: float = 10.0,
+                                        c_sound: float = 1500.0,
+                                        rho_fluid: float = 1000.0,
+                                        r: float = 0.1) -> Tuple[dict, str]:
+        """
+        Compute sonic black hole analog for aether viscosity tests.
+        
+        A sonic black hole is created when v_flow > c_sound (supersonic flow).
+        The effective "horizon" is where v = c_sound.
+        
+        UQFF analog: Aether damping of GW/radiation mapped to
+        sound wave damping in supersonic flow.
+        
+        Args:
+            v_flow: Flow velocity (m/s)
+            c_sound: Sound speed (m/s)
+            rho_fluid: Fluid density (kg/m³)
+            r: Radial distance from axis (m)
+            
+        Returns:
+            (results_dict, derivation_steps)
+        """
+        # Mach number
+        M = v_flow / c_sound
+        is_supersonic = M > 1
+        
+        # Effective horizon (where v = c)
+        # For drain-vortex: r_horizon = Γ/(2π c_sound) where Γ is circulation
+        # Approximate: r_h ~ r × (M - 1) / M for M > 1
+        if M > 1:
+            r_horizon = r * (M - 1) / M
+        else:
+            r_horizon = 0.0  # No horizon if subsonic
+        
+        # Analogue surface gravity: κ = ∂v/∂r at horizon
+        # For v ~ 1/r flow: κ ~ v/r
+        kappa_analog = v_flow / r if r > 0 else 0
+        
+        # Analogue Hawking temperature: T_H = ℏκ/(2πk_B)
+        T_analog = self.hbar * kappa_analog / (2 * np.pi * self.k_B)
+        
+        # Aether viscosity analog
+        # UQFF: P_GW' = P_GW × exp(-α_UA × ρ_UA × r/c)
+        # Sonic: P_sound' = P_sound × exp(-α_visc × ρ_fluid × r/c_sound)
+        # α_visc maps to α_UA
+        
+        alpha_UA_cosmo = 7.4e-44  # m²/kg (from GW suppression)
+        # Scale to lab: α_visc = α_UA × (c/c_sound) × (ρ_UA c² / ρ_fluid)
+        rho_UA = 7.09e-36  # J/m³
+        alpha_visc = alpha_UA_cosmo * (self.c / c_sound) * (rho_UA / (rho_fluid * c_sound**2))
+        
+        # Sound wave damping (analog to GW suppression)
+        damping_exponent = -alpha_visc * rho_fluid * r
+        S_aether_analog = np.exp(max(damping_exponent, -700))
+        
+        # Rotation analog: v_Keplerian would be √(GM/r)
+        # In fluid: v_circulation = Γ/(2πr)
+        # Flat rotation emerges if v_flow ~ const at large r (aether drag)
+        v_flat = v_flow * (1 - r_horizon / r if r > r_horizon else 1)
+        
+        results = {
+            'v_flow_m_s': v_flow,
+            'c_sound_m_s': c_sound,
+            'Mach': M,
+            'is_supersonic': is_supersonic,
+            'r_horizon_m': r_horizon,
+            'kappa_analog_s-1': kappa_analog,
+            'T_analog_K': T_analog,
+            'alpha_visc': alpha_visc,
+            'damping_exponent': damping_exponent,
+            'S_aether_analog': S_aether_analog,
+            'v_flat_m_s': v_flat
+        }
+        
+        steps = f"""Sonic Black Hole Aether Analog:
+═══════════════════════════════════════════════════════════════════════════════
+SONIC BLACK HOLE AS AETHER VISCOSITY ANALOG
+
+CONCEPT:
+  Supersonic flow (v > c_sound) creates acoustic "event horizon".
+  Sound waves cannot escape upstream = analog black hole.
+  UQFF aether damping maps to acoustic dissipation.
+
+═══════════════════════════════════════════════════════════════════════════════
+FLOW PARAMETERS
+═══════════════════════════════════════════════════════════════════════════════
+
+  v_flow = {v_flow:.2f} m/s
+  c_sound = {c_sound:.2f} m/s
+  Mach number M = v/c = {M:.4f}
+  {'SUPERSONIC: Sonic horizon exists' if is_supersonic else 'SUBSONIC: No horizon'}
+  
+  ρ_fluid = {rho_fluid:.2f} kg/m³
+  r = {r:.4f} m
+
+═══════════════════════════════════════════════════════════════════════════════
+SONIC HORIZON
+═══════════════════════════════════════════════════════════════════════════════
+
+  r_horizon = {r_horizon:.4e} m
+  
+  At r < r_horizon: v > c (trapped region)
+  At r > r_horizon: v < c (escaping region - if M < 1 regionally)
+  
+  Analog surface gravity: κ = ∂v/∂r ≈ v/r = {kappa_analog:.4e} s⁻¹
+  
+  Analog Hawking temperature:
+  T_analog = ℏκ/(2πk_B)
+           = {self.hbar:.4e} × {kappa_analog:.4e} / (2π × {self.k_B:.4e})
+           = {T_analog:.4e} K
+
+═══════════════════════════════════════════════════════════════════════════════
+AETHER VISCOSITY ANALOG
+═══════════════════════════════════════════════════════════════════════════════
+
+  UQFF GW damping: S_aether = exp(-α_UA × ρ_UA × r/c)
+  
+  Sonic analog: S_visc = exp(-α_visc × ρ_fluid × r/c_sound)
+  
+  α_visc = α_UA × (c/c_sound) × (ρ_UA/ρ_fluid c_s²)
+         = {alpha_visc:.4e}
+  
+  Damping exponent = -{alpha_visc:.4e} × {rho_fluid:.2f} × {r:.4f}
+                   = {damping_exponent:.6e}
+  
+  S_aether_analog = exp({damping_exponent:.6e})
+                  = {S_aether_analog:.6f}
+  
+  Sound wave damping: {(1-S_aether_analog)*100:.4f}%
+
+═══════════════════════════════════════════════════════════════════════════════
+ROTATION CURVE ANALOG
+═══════════════════════════════════════════════════════════════════════════════
+
+  In sonic BH, tangential flow v(r) can be measured.
+  
+  UQFF predicts flat rotation from aether drag.
+  In lab: v_flat emerges from viscous effects.
+  
+  v_flat = {v_flat:.4f} m/s at r = {r:.4f} m
+  
+  TEST: Measure v(r) at different r, check for flattening
+        If v(r) ~ const at large r → Aether drag confirmed
+
+═══════════════════════════════════════════════════════════════════════════════
+TESTABLE PREDICTIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+  1. Sound wave suppression ~ exp(-α × ρ × r) matches UQFF S_aether
+  2. Analog Hawking temperature T ~ ℏκ/(2πk_B)
+  3. Flat rotation curve from viscous coupling
+  4. Merger timescale (vortex pair) extended by damping
+
+Q-SCOPE APPLICATION:
+  THz-frequency coupling to supersonic fluid flow can probe
+  [UA]-[SCm] interface dynamics at laboratory scales.
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
     def validate_THz_model(self) -> Tuple[bool, list, str]:
         """
         Validate Terahertz Holes model.
