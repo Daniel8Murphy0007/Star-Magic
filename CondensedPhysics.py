@@ -42331,6 +42331,612 @@ OUTPUT DATA:
 ═══════════════════════════════════════════════════════════════════════════════
 """
         return results, steps
+
+    def compute_UQFF_GW_power(self, M1: float, M2: float, a: float,
+                               f_TRZ: float = None,
+                               B_t: float = 0.0,
+                               B_crit: float = 4.4e13,
+                               U_m: float = 1e40,
+                               rho_UA: float = None) -> Tuple[dict, str]:
+        """
+        Compute UQFF-corrected gravitational wave power for a binary system.
+        
+        GW POWER CALCULATION:
+        ────────────────────────────────────────────────────────────────────────────
+        Standard GW power (Peters-Mathews quadrupole formula):
+            P_GW = (32/5) × (G⁴/c⁵) × (μ² M_tot²) / a⁵
+        
+        UQFF corrections (multiplicative factors):
+            1. Aether damping: exp(-ρ_UA × a × c² / (G M_tot))
+            2. Horizon suppression: (1 - B_t/B_crit)
+            3. Time-reversal negentropy: (1 - f_TRZ)
+            4. String binding: exp(-U_m / (G M_tot²/a))
+        
+        Final:
+            P_UQFF = P_std × (all factors)
+        
+        Args:
+            M1: Primary mass (kg)
+            M2: Secondary mass (kg)
+            a: Orbital separation (m)
+            f_TRZ: Time reversal factor (default 0.1)
+            B_t: Binary magnetic field (T)
+            B_crit: Critical field (T)
+            U_m: String binding energy (J)
+            rho_UA: UA vacuum density (J/m³)
+        
+        Returns:
+            results: Dict with power calculations
+            steps: Long-form derivation
+        """
+        import numpy as np
+        
+        M_sun = getattr(self, 'M_sun', 1.989e30)
+        G = getattr(self, 'G', 6.67430e-11)
+        c = getattr(self, 'c', 2.998e8)
+        
+        f_TRZ = f_TRZ if f_TRZ is not None else getattr(self, 'f_TRZ', 0.1)
+        rho_UA = rho_UA if rho_UA is not None else getattr(self, 'rho_vac_UA', 7.09e-36)
+        
+        # Binary parameters
+        M_tot = M1 + M2
+        mu = M1 * M2 / M_tot
+        
+        # Solar units
+        M1_solar = M1 / M_sun
+        M2_solar = M2 / M_sun
+        M_tot_solar = M_tot / M_sun
+        
+        # === STEP 1: Standard GW Power ===
+        P_coeff = (32.0 / 5.0) * (G**4 / c**5)
+        P_std = P_coeff * (mu**2 * M_tot**2) / a**5
+        
+        # === STEP 2: Aether Damping ===
+        aether_exp = -rho_UA * a * c**2 / (G * M_tot)
+        aether_exp = max(aether_exp, -700)
+        S_aether = np.exp(aether_exp)
+        
+        # === STEP 3: Horizon Suppression ===
+        S_horizon = max(1 - B_t / B_crit, 0) if B_crit > 0 else 1.0
+        
+        # === STEP 4: Time-Reversal ===
+        S_TRZ = 1 - f_TRZ
+        
+        # === STEP 5: String Binding ===
+        E_binding = G * M_tot**2 / a
+        string_exp = -U_m / E_binding if E_binding > 0 else 0
+        string_exp = max(string_exp, -700)
+        S_string = np.exp(string_exp)
+        
+        # === Combined ===
+        S_total = S_aether * S_horizon * S_TRZ * S_string
+        P_UQFF = P_std * S_total
+        
+        # Power in solar luminosities
+        L_sun = 3.828e26  # W
+        P_std_Lsun = P_std / L_sun
+        P_UQFF_Lsun = P_UQFF / L_sun
+        
+        results = {
+            'M1': M1,
+            'M2': M2,
+            'M_tot': M_tot,
+            'mu': mu,
+            'a': a,
+            'P_std': P_std,
+            'P_UQFF': P_UQFF,
+            'S_aether': S_aether,
+            'S_horizon': S_horizon,
+            'S_TRZ': S_TRZ,
+            'S_string': S_string,
+            'S_total': S_total,
+            'P_std_Lsun': P_std_Lsun,
+            'P_UQFF_Lsun': P_UQFF_Lsun,
+            'f_TRZ': f_TRZ,
+            'B_t': B_t,
+            'U_m': U_m,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+UQFF GRAVITATIONAL WAVE POWER CALCULATION
+Peters-Mathews Formula with Aether Corrections
+═══════════════════════════════════════════════════════════════════════════════
+
+PHYSICAL BASIS:
+───────────────────────────────────────────────────────────────────────────────
+Standard GW power (quadrupole formula):
+  P_GW = (32/5) × (G⁴/c⁵) × (μ² M_tot²) / a⁵
+
+UQFF corrections reduce emission via:
+  1. Aether damping (viscous medium)
+  2. Horizon suppression (SCm)
+  3. Time-reversal (negentropy)
+  4. String binding (stability)
+
+═══════════════════════════════════════════════════════════════════════════════
+INPUT PARAMETERS:
+───────────────────────────────────────────────────────────────────────────────
+  M₁ = {M1:.4e} kg = {M1_solar:.2f} M_sun
+  M₂ = {M2:.4e} kg = {M2_solar:.2f} M_sun
+  M_tot = {M_tot:.4e} kg = {M_tot_solar:.2f} M_sun
+  μ = {mu:.4e} kg
+  a = {a:.4e} m = {a/1e3:.2f} km
+
+STEP 1: STANDARD GW POWER
+───────────────────────────────────────────────────────────────────────────────
+  P_std = (32/5) × (G⁴/c⁵) × (μ² M_tot²) / a⁵
+        = {P_coeff:.4e} × ({mu:.4e}² × {M_tot:.4e}²) / ({a:.4e})⁵
+        = {P_std:.4e} W
+        = {P_std_Lsun:.4e} L_sun
+
+STEP 2: AETHER DAMPING
+───────────────────────────────────────────────────────────────────────────────
+  S_aether = exp(-ρ_UA × a × c² / (G M_tot))
+           = exp({aether_exp:.4e})
+           = {S_aether:.6f}
+
+STEP 3: HORIZON SUPPRESSION
+───────────────────────────────────────────────────────────────────────────────
+  S_horizon = 1 - B_t/B_crit = 1 - {B_t/B_crit:.4f}
+            = {S_horizon:.6f}
+
+STEP 4: TIME-REVERSAL NEGENTROPY
+───────────────────────────────────────────────────────────────────────────────
+  S_TRZ = 1 - f_TRZ = 1 - {f_TRZ:.4f}
+        = {S_TRZ:.6f}
+
+STEP 5: STRING BINDING
+───────────────────────────────────────────────────────────────────────────────
+  E_binding = G M_tot²/a = {E_binding:.4e} J
+  S_string = exp(-U_m/E_binding) = exp({string_exp:.4f})
+           = {S_string:.6f}
+
+STEP 6: COMBINED UQFF POWER
+───────────────────────────────────────────────────────────────────────────────
+  S_total = S_aether × S_horizon × S_TRZ × S_string
+          = {S_aether:.6f} × {S_horizon:.6f} × {S_TRZ:.6f} × {S_string:.6f}
+          = {S_total:.6f}
+  
+  P_UQFF = P_std × S_total
+         = {P_std:.4e} × {S_total:.6f}
+         = {P_UQFF:.4e} W
+         = {P_UQFF_Lsun:.4e} L_sun
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: GW POWER
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ BINARY: {M1_solar:.1f} + {M2_solar:.1f} M_sun at a = {a/1e3:.2f} km               │
+  │                                                                 │
+  │ STANDARD: P_std = {P_std:.4e} W                                 │
+  │ UQFF:     P_UQFF = {P_UQFF:.4e} W                               │
+  │                                                                 │
+  │ SUPPRESSION: P_UQFF/P_std = {S_total:.4f}                       │
+  │ REDUCTION: {(1-S_total)*100:.2f}%                                        │
+  └─────────────────────────────────────────────────────────────────┘
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compute_merger_timescale(self, M1: float, M2: float, a: float,
+                                  f_TRZ: float = None,
+                                  B_t: float = 0.0,
+                                  B_crit: float = 4.4e13,
+                                  U_m: float = 1e40) -> Tuple[dict, str]:
+        """
+        Compute standard and UQFF-modified merger timescales.
+        
+        MERGER TIMESCALE:
+        ────────────────────────────────────────────────────────────────────────────
+        The Peters formula gives time to merger from circular orbit:
+            τ_merge = (5/256) × (c⁵/G³) × (a⁴/(μ M_tot²))
+        
+        This assumes constant inspiral rate. For eccentric orbits, use
+        Peters & Mathews (1964) integral.
+        
+        Scaling:
+            τ ∝ a⁴ (strong separation dependence)
+            τ ∝ 1/μ (lighter binaries merge slower)
+            τ ∝ 1/M² (heavier systems merge faster)
+        
+        UQFF modification:
+            τ_UQFF = τ_std / S_total
+        
+        where S_total < 1 means lower GW power → longer merger time.
+        
+        Args:
+            M1: Primary mass (kg)
+            M2: Secondary mass (kg)
+            a: Current orbital separation (m)
+            f_TRZ: Time reversal factor
+            B_t: Binary magnetic field (T)
+            B_crit: Critical field (T)
+            U_m: String energy (J)
+        
+        Returns:
+            results: Dict with timescales
+            steps: Long-form derivation
+        """
+        import numpy as np
+        
+        M_sun = getattr(self, 'M_sun', 1.989e30)
+        G = getattr(self, 'G', 6.67430e-11)
+        c = getattr(self, 'c', 2.998e8)
+        
+        f_TRZ = f_TRZ if f_TRZ is not None else getattr(self, 'f_TRZ', 0.1)
+        rho_UA = getattr(self, 'rho_vac_UA', 7.09e-36)
+        
+        # Binary parameters
+        M_tot = M1 + M2
+        mu = M1 * M2 / M_tot
+        
+        M1_solar = M1 / M_sun
+        M2_solar = M2 / M_sun
+        M_tot_solar = M_tot / M_sun
+        
+        # === Standard merger time ===
+        tau_coeff = (5.0 / 256.0) * (c**5 / G**3)
+        tau_std = tau_coeff * a**4 / (mu * M_tot**2)
+        
+        # Convert to various units
+        sec_per_year = 365.25 * 24 * 3600
+        tau_std_years = tau_std / sec_per_year
+        tau_std_Myr = tau_std_years / 1e6
+        tau_std_Gyr = tau_std_years / 1e9
+        
+        # Age of universe
+        t_universe = 13.8e9  # years
+        tau_ratio_universe = tau_std_years / t_universe
+        
+        # === UQFF suppression factors ===
+        # Aether
+        aether_exp = -rho_UA * a * c**2 / (G * M_tot)
+        aether_exp = max(aether_exp, -700)
+        S_aether = np.exp(aether_exp)
+        
+        # Horizon
+        S_horizon = max(1 - B_t / B_crit, 0) if B_crit > 0 else 1.0
+        
+        # TRZ
+        S_TRZ = 1 - f_TRZ
+        
+        # String
+        E_binding = G * M_tot**2 / a
+        string_exp = -U_m / E_binding if E_binding > 0 else 0
+        string_exp = max(string_exp, -700)
+        S_string = np.exp(string_exp)
+        
+        S_total = S_aether * S_horizon * S_TRZ * S_string
+        
+        # === UQFF merger time ===
+        if S_total > 0:
+            tau_UQFF = tau_std / S_total
+        else:
+            tau_UQFF = float('inf')
+        
+        tau_UQFF_years = tau_UQFF / sec_per_year
+        tau_UQFF_Myr = tau_UQFF_years / 1e6
+        tau_UQFF_Gyr = tau_UQFF_years / 1e9
+        
+        extension_factor = tau_UQFF / tau_std if tau_std > 0 else float('inf')
+        
+        # ISCO
+        r_ISCO = 6 * G * M_tot / c**2
+        a_over_ISCO = a / r_ISCO
+        
+        results = {
+            'M1': M1,
+            'M2': M2,
+            'M_tot': M_tot,
+            'mu': mu,
+            'a': a,
+            'tau_std': tau_std,
+            'tau_std_years': tau_std_years,
+            'tau_std_Myr': tau_std_Myr,
+            'tau_std_Gyr': tau_std_Gyr,
+            'tau_UQFF': tau_UQFF,
+            'tau_UQFF_years': tau_UQFF_years,
+            'tau_UQFF_Myr': tau_UQFF_Myr,
+            'tau_UQFF_Gyr': tau_UQFF_Gyr,
+            'S_total': S_total,
+            'extension_factor': extension_factor,
+            'r_ISCO': r_ISCO,
+            'a_over_ISCO': a_over_ISCO,
+            'tau_ratio_universe': tau_ratio_universe,
+        }
+        
+        # Format time intelligently
+        def format_time(years):
+            if years < 1:
+                return f"{years * sec_per_year:.2e} s"
+            elif years < 1000:
+                return f"{years:.2f} years"
+            elif years < 1e6:
+                return f"{years/1e3:.2f} kyr"
+            elif years < 1e9:
+                return f"{years/1e6:.2f} Myr"
+            else:
+                return f"{years/1e9:.2f} Gyr"
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+MERGER TIMESCALE CALCULATION
+Peters Formula with UQFF Extension
+═══════════════════════════════════════════════════════════════════════════════
+
+PHYSICAL BASIS:
+───────────────────────────────────────────────────────────────────────────────
+Peters formula (1964) for circular orbit decay:
+  τ_merge = (5/256) × (c⁵/G³) × (a⁴/(μ M_tot²))
+
+Scaling:
+  τ ∝ a⁴ (quartic in separation)
+  τ ∝ 1/(μ M²) (inversely with mass)
+
+UQFF extends merger time via reduced GW emission:
+  τ_UQFF = τ_std / S_total
+
+═══════════════════════════════════════════════════════════════════════════════
+INPUT PARAMETERS:
+───────────────────────────────────────────────────────────────────────────────
+  M₁ = {M1_solar:.2f} M_sun
+  M₂ = {M2_solar:.2f} M_sun
+  a = {a:.4e} m = {a/1e9:.2f} Gm
+  a/r_ISCO = {a_over_ISCO:.2f}
+
+STEP 1: STANDARD MERGER TIME
+───────────────────────────────────────────────────────────────────────────────
+  τ_std = (5/256) × (c⁵/G³) × (a⁴/(μ M_tot²))
+        = {tau_coeff:.4e} × ({a:.4e})⁴ / ({mu:.4e} × {M_tot:.4e}²)
+        = {tau_std:.4e} s
+        = {format_time(tau_std_years)}
+
+  Compare to age of universe: τ/t_universe = {tau_ratio_universe:.2e}
+
+STEP 2: UQFF SUPPRESSION FACTOR
+───────────────────────────────────────────────────────────────────────────────
+  S_aether = {S_aether:.6f}
+  S_horizon = {S_horizon:.6f}
+  S_TRZ = {S_TRZ:.6f}
+  S_string = {S_string:.6f}
+  
+  S_total = {S_total:.6f}
+
+STEP 3: UQFF MERGER TIME
+───────────────────────────────────────────────────────────────────────────────
+  τ_UQFF = τ_std / S_total
+         = {tau_std:.4e} / {S_total:.6f}
+         = {tau_UQFF:.4e} s
+         = {format_time(tau_UQFF_years)}
+
+  Extension factor: τ_UQFF / τ_std = {extension_factor:.2f}×
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: MERGER TIMESCALES
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ BINARY: {M1_solar:.1f} + {M2_solar:.1f} M_sun at a = {a/1e9:.2f} Gm               │
+  │                                                                 │
+  │ STANDARD:  τ = {format_time(tau_std_years):40}│
+  │ UQFF:      τ = {format_time(tau_UQFF_years):40}│
+  │                                                                 │
+  │ EXTENSION FACTOR: {extension_factor:.2f}×                                │
+  │ {'LONG-LIVED BINARY (τ > t_universe)' if tau_UQFF_years > t_universe else 'WILL MERGE WITHIN HUBBLE TIME':^60}│
+  └─────────────────────────────────────────────────────────────────┘
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compute_energy_radiated(self, M1: float, M2: float,
+                                 a_initial: float, a_final: float = None,
+                                 f_TRZ: float = None) -> Tuple[dict, str]:
+        """
+        Compute total energy radiated as gravitational waves during inspiral.
+        
+        ENERGY RADIATED:
+        ────────────────────────────────────────────────────────────────────────────
+        Orbital energy:
+            E_orb = -G M₁ M₂ / (2a)
+        
+        Energy radiated from a_initial to a_final:
+            ΔE = E_orb(a_final) - E_orb(a_initial)
+               = (G M₁ M₂ / 2) × (1/a_final - 1/a_initial)
+        
+        At merger (a_final → ISCO):
+            E_total ≈ 0.05 × η × M_tot × c²
+        
+        where η = μ/M_tot is symmetric mass ratio (max 0.25 for equal mass).
+        
+        UQFF reduces total radiated energy:
+            E_UQFF = E_std × S_total
+        
+        The "missing" energy is retained in the final BH mass.
+        
+        Args:
+            M1: Primary mass (kg)
+            M2: Secondary mass (kg)
+            a_initial: Starting separation (m)
+            a_final: Ending separation (m), default ISCO
+            f_TRZ: Time reversal factor
+        
+        Returns:
+            results: Dict with energy calculations
+            steps: Long-form derivation
+        """
+        import numpy as np
+        
+        M_sun = getattr(self, 'M_sun', 1.989e30)
+        G = getattr(self, 'G', 6.67430e-11)
+        c = getattr(self, 'c', 2.998e8)
+        
+        f_TRZ = f_TRZ if f_TRZ is not None else getattr(self, 'f_TRZ', 0.1)
+        
+        M_tot = M1 + M2
+        mu = M1 * M2 / M_tot
+        eta = mu / M_tot  # Symmetric mass ratio
+        
+        M1_solar = M1 / M_sun
+        M2_solar = M2 / M_sun
+        M_tot_solar = M_tot / M_sun
+        
+        # ISCO
+        r_ISCO = 6 * G * M_tot / c**2
+        
+        if a_final is None:
+            a_final = r_ISCO
+        
+        # Orbital energies
+        E_initial = -G * M1 * M2 / (2 * a_initial)
+        E_final = -G * M1 * M2 / (2 * a_final)
+        
+        # Energy radiated (positive)
+        E_radiated = E_final - E_initial  # Both negative, E_final more negative
+        E_radiated = abs(E_radiated)
+        
+        # Alternative: from binding energy difference
+        E_rad_alt = (G * M1 * M2 / 2) * (1/a_final - 1/a_initial)
+        
+        # Standard estimate for full merger
+        E_merger_estimate = 0.05 * eta * M_tot * c**2
+        
+        # Convert to solar masses
+        E_rad_solar = E_radiated / (M_sun * c**2)
+        E_merger_solar = E_merger_estimate / (M_sun * c**2)
+        
+        # Efficiency
+        efficiency = E_radiated / (M_tot * c**2) * 100  # percent
+        
+        # UQFF reduces radiated energy
+        S_total = (1 - f_TRZ)  # Simplified; full factor would include all terms
+        E_radiated_UQFF = E_radiated * S_total
+        E_rad_UQFF_solar = E_radiated_UQFF / (M_sun * c**2)
+        
+        # Mass retention
+        M_final_std = M_tot - E_radiated / c**2
+        M_final_UQFF = M_tot - E_radiated_UQFF / c**2
+        mass_retained = (M_final_UQFF - M_final_std) / M_sun
+        
+        results = {
+            'M1': M1,
+            'M2': M2,
+            'M_tot': M_tot,
+            'mu': mu,
+            'eta': eta,
+            'a_initial': a_initial,
+            'a_final': a_final,
+            'r_ISCO': r_ISCO,
+            'E_initial': E_initial,
+            'E_final': E_final,
+            'E_radiated': E_radiated,
+            'E_rad_solar': E_rad_solar,
+            'E_merger_estimate': E_merger_estimate,
+            'E_merger_solar': E_merger_solar,
+            'efficiency': efficiency,
+            'E_radiated_UQFF': E_radiated_UQFF,
+            'E_rad_UQFF_solar': E_rad_UQFF_solar,
+            'M_final_std': M_final_std,
+            'M_final_UQFF': M_final_UQFF,
+            'mass_retained': mass_retained,
+            'f_TRZ': f_TRZ,
+            'S_total': S_total,
+        }
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+GRAVITATIONAL WAVE ENERGY RADIATED
+Inspiral Energy Budget
+═══════════════════════════════════════════════════════════════════════════════
+
+PHYSICAL BASIS:
+───────────────────────────────────────────────────────────────────────────────
+Orbital energy:
+  E_orb = -G M₁ M₂ / (2a)
+
+Energy radiated during inspiral:
+  ΔE = (G M₁ M₂ / 2) × (1/a_final - 1/a_initial)
+
+For full merger:
+  E_GW ≈ 5% × η × M_tot × c² (η = symmetric mass ratio)
+
+═══════════════════════════════════════════════════════════════════════════════
+INPUT PARAMETERS:
+───────────────────────────────────────────────────────────────────────────────
+  M₁ = {M1_solar:.2f} M_sun
+  M₂ = {M2_solar:.2f} M_sun
+  M_tot = {M_tot_solar:.2f} M_sun
+  η = μ/M_tot = {eta:.4f}
+  
+  a_initial = {a_initial:.4e} m
+  a_final = {a_final:.4e} m (r_ISCO = {r_ISCO:.4e} m)
+
+STEP 1: ORBITAL ENERGIES
+───────────────────────────────────────────────────────────────────────────────
+  E(a_initial) = -G M₁ M₂ / (2 a_initial)
+               = {E_initial:.4e} J
+  
+  E(a_final) = -G M₁ M₂ / (2 a_final)
+             = {E_final:.4e} J
+
+STEP 2: ENERGY RADIATED
+───────────────────────────────────────────────────────────────────────────────
+  ΔE = |E_final - E_initial|
+     = |{E_final:.4e} - ({E_initial:.4e})|
+     = {E_radiated:.4e} J
+     = {E_rad_solar:.4f} M_sun × c²
+
+  Efficiency: ΔE / (M_tot c²) = {efficiency:.2f}%
+
+STEP 3: FULL MERGER ESTIMATE
+───────────────────────────────────────────────────────────────────────────────
+  E_merger ≈ 0.05 × η × M_tot × c²
+           = 0.05 × {eta:.4f} × {M_tot:.4e} × {c**2:.4e}
+           = {E_merger_estimate:.4e} J
+           = {E_merger_solar:.4f} M_sun × c²
+
+STEP 4: UQFF MODIFICATION
+───────────────────────────────────────────────────────────────────────────────
+  S_total = 1 - f_TRZ = {S_total:.4f}
+  
+  E_UQFF = E_rad × S_total
+         = {E_radiated:.4e} × {S_total:.4f}
+         = {E_radiated_UQFF:.4e} J
+         = {E_rad_UQFF_solar:.4f} M_sun × c²
+
+STEP 5: FINAL MASSES
+───────────────────────────────────────────────────────────────────────────────
+  M_final (standard) = M_tot - E_rad/c²
+                     = {M_tot_solar:.4f} - {E_rad_solar:.4f}
+                     = {M_final_std/M_sun:.4f} M_sun
+  
+  M_final (UQFF) = M_tot - E_UQFF/c²
+                 = {M_tot_solar:.4f} - {E_rad_UQFF_solar:.4f}
+                 = {M_final_UQFF/M_sun:.4f} M_sun
+  
+  Mass retained by UQFF: {mass_retained:.4f} M_sun
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: ENERGY RADIATED
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ BINARY: {M1_solar:.1f} + {M2_solar:.1f} M_sun → MERGER                       │
+  │                                                                 │
+  │ STANDARD:                                                       │
+  │   E_radiated = {E_rad_solar:.4f} M_sun × c²                           │
+  │   M_final = {M_final_std/M_sun:.2f} M_sun                                │
+  │                                                                 │
+  │ UQFF:                                                           │
+  │   E_radiated = {E_rad_UQFF_solar:.4f} M_sun × c²                      │
+  │   M_final = {M_final_UQFF/M_sun:.2f} M_sun                               │
+  │                                                                 │
+  │ MASS RETAINED: +{mass_retained:.4f} M_sun                             │
+  └─────────────────────────────────────────────────────────────────┘
+
+Compare to GW150914:
+  36 + 29 = 65 M_sun → 62 M_sun final → 3 M_sun radiated
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
     
     # ═══════════════════════════════════════════════════════════════════════════════
     # GW SUPPRESSION S_* FACTORS (Canonical 6-Step Derivation)
