@@ -30,6 +30,9 @@ UQFFWhiteHoleFormation::UQFFWhiteHoleFormation(unsigned int seed)
     gamma = 5e-5 / 86400.0;  // Convert day⁻¹ to s⁻¹
     t_n = 0.0;               // Normalized time phase
     
+    // Fixed radius for simulation
+    r_fixed = 0.0;           // Auto-compute from r_s when 0
+    
     // Initialize explanations
     init_explanations();
 }
@@ -86,7 +89,11 @@ void UQFFWhiteHoleFormation::init_explanations() {
         "  STEP 5: Formation Condition\n"
         "    Θ_WH = P_inv × Φ_flux × exp(U_m/(k_B T_H))\n"
         "    WHITE HOLE FORMS WHEN: Θ_WH > 1\n"
-        "    Mass loss rate: dM/dt ≈ -L_UQFF/c²"
+        "\n"
+        "  STEP 6: Mass Expulsion Rate (dM/dt)\n"
+        "    L_UQFF = Φ_flux × Θ_WH × exp(-U_m/(k_B T_H))\n"
+        "    dM/dt ≈ -L_UQFF/c²\n"
+        "    Mass expelled via magnetic string channels when Θ_WH > 1"
     );
     
     explanations.push_back(
@@ -229,6 +236,63 @@ double UQFFWhiteHoleFormation::compute_full_Theta_WH(double M, double r, double 
     return Theta + noise;
 }
 
+// ═══════════════════════════════════════════════════════════════════════════════
+// MASS EXPULSION (dM/dt)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+double UQFFWhiteHoleFormation::compute_L_UQFF(double M, double r, double t) {
+    // L_UQFF = Φ_flux × Θ_WH × exp(-U_m/(k_B T_H))
+    // Step 6: UQFF luminosity driving mass expulsion
+    // Physically: energy radiated via aether flux channels
+    
+    // Compute intermediate values
+    double r_s_std = compute_r_s_standard(M);
+    double r_s_uqff = compute_r_s_UQFF(r_s_std);
+    double r_eval = (r > 0) ? r : r_s_uqff;
+    
+    double T_H = compute_T_H(M);
+    if (T_H <= 0) return 0.0;
+    
+    double E_horizon = compute_E_horizon(M, r_s_uqff);
+    double P_inv = compute_P_inv(E_horizon, T_H);
+    double Phi_flux = compute_Phi_flux(M);
+    double U_m_val = compute_U_m(r_eval, t);
+    double Theta_WH = compute_Theta_WH(P_inv, Phi_flux, U_m_val, T_H);
+    
+    // L_UQFF = Φ_flux × Θ_WH × exp(-U_m/(k_B T_H))
+    // Note: exp(-U_m/kT) is the inverse of the enhancement factor,
+    // representing energy being expended in expulsion
+    double exponent = -U_m_val / (k_B * T_H);
+    exponent = std::max(exponent, -700.0);  // Prevent underflow
+    
+    // Scale by characteristic energy to get physical luminosity
+    // L_UQFF ~ Φ_flux × Θ_WH × exp(-U_m/(k_B T_H)) × (GM/r) for dimensional consistency
+    double energy_scale = (r_eval > 0) ? (G * M / r_eval) : 1.0;
+    
+    return Phi_flux * Theta_WH * std::exp(exponent) * energy_scale;
+}
+
+double UQFFWhiteHoleFormation::compute_dM_dt(double M, double r, double t) {
+    // dM/dt ≈ -L_UQFF/c²
+    // Step 6: Mass expulsion rate when white hole forms
+    // Only non-zero if Θ_WH > 1 (formation condition met)
+    
+    // First check if formation condition is met
+    double Theta = compute_full_Theta_WH(M, r, t, 0.0);  // No noise for deterministic dM/dt
+    
+    if (Theta <= 1.0) {
+        // No formation, no expulsion
+        return 0.0;
+    }
+    
+    // Compute UQFF luminosity
+    double L_UQFF = compute_L_UQFF(M, r, t);
+    
+    // dM/dt = -L_UQFF/c²
+    // Negative sign indicates mass loss
+    return -L_UQFF / (c * c);
+}
+
 std::string UQFFWhiteHoleFormation::generate_derivation(double M, double r, double t) {
     // Generate detailed step-by-step derivation
     std::ostringstream oss;
@@ -304,9 +368,31 @@ std::string UQFFWhiteHoleFormation::generate_derivation(double M, double r, doub
     oss << "       = " << P_inv << " × " << Phi_flux << " × exp(" << U_m_val << "/(" << k_B << " × " << T_H << "))\n";
     oss << "       = " << Theta_WH << "\n\n";
     
+    // Compute dM/dt values
+    double L_UQFF = compute_L_UQFF(M, r_eval, t);
+    double dM_dt = forms ? compute_dM_dt(M, r_eval, t) : 0.0;
+    double t_evap = (forms && dM_dt < 0) ? -M / dM_dt : std::numeric_limits<double>::infinity();
+    
+    oss << "═══════════════════════════════════════════════════════════════════════════════\n";
+    oss << "STEP 6: MASS EXPULSION RATE (dM/dt)\n";
+    oss << "═══════════════════════════════════════════════════════════════════════════════\n";
+    oss << "  L_UQFF = Φ_flux × Θ_WH × exp(-U_m/(k_B T_H)) × (GM/r)\n";
+    oss << "         = " << L_UQFF << " W\n\n";
+    oss << "  dM/dt = -L_UQFF/c²\n";
+    if (forms) {
+        oss << "        = -" << L_UQFF << "/" << (c*c) << "\n";
+        oss << "        = " << dM_dt << " kg/s\n";
+        oss << "        = " << (dM_dt * 3.156e7 / M_sun) << " M_sun/year\n\n";
+        oss << "  Characteristic expulsion time (M/|dM/dt|):\n";
+        oss << "        = " << t_evap << " s = " << (t_evap / 3.156e16) << " Gyr\n\n";
+    } else {
+        oss << "        = 0 (no formation, Θ_WH ≤ 1)\n\n";
+    }
+    
     oss << "╔══════════════════════════════════════════════════════════════════════════════╗\n";
     if (forms) {
         oss << "║  RESULT: Θ_WH = " << std::setw(12) << Theta_WH << " > 1  →  WHITE HOLE FORMS         ║\n";
+        oss << "║  dM/dt = " << std::setw(12) << dM_dt << " kg/s (mass expelling)        ║\n";
     } else {
         oss << "║  RESULT: Θ_WH = " << std::setw(12) << Theta_WH << " ≤ 1  →  NO FORMATION              ║\n";
     }
@@ -369,6 +455,7 @@ bool UQFFWhiteHoleFormation::update_from_file(const std::string& config_file) {
                 else if (key == "mu_j") { mu_j = value; params_loaded++; }
                 else if (key == "gamma") { gamma = value; params_loaded++; }
                 else if (key == "t_n") { t_n = value; params_loaded++; }
+                else if (key == "r_fixed") { r_fixed = value; params_loaded++; }
             } catch (const std::exception& e) {
                 std::cerr << "Error parsing value for " << key << ": " << e.what() << std::endl;
             }
@@ -384,62 +471,89 @@ bool UQFFWhiteHoleFormation::update_from_file(const std::string& config_file) {
 // SELF-SIMULATE
 // ═══════════════════════════════════════════════════════════════════════════════
 
-void UQFFWhiteHoleFormation::simulate_formation(double M, double r, double t_start, 
+void UQFFWhiteHoleFormation::simulate_formation(double M_start, double r, double t_start, 
                                                  double t_end, double dt, 
                                                  const std::string& output_file) {
+    // Self-simulate: Compute Θ_WH over time, check formation, integrate dM/dt if formed
+    // Mass evolution: M(t+dt) = M(t) + dM/dt × dt (when Θ_WH > 1)
+    
     std::ofstream outfile;
     bool file_output = !output_file.empty();
     
     if (file_output) {
         outfile.open(output_file);
-        outfile << "time_s,time_Gyr,Theta_WH,Forms,r_s_UQFF_m,T_H_K,P_inv,Phi_flux,U_m_J\n";
+        outfile << "time_s,time_Gyr,Mass_kg,Mass_Msun,Theta_WH,Forms,dM_dt_kg_s,L_UQFF_W,r_s_UQFF_m,T_H_K\n";
     }
     
     std::cout << "═══════════════════════════════════════════════════════════════════════════════\n";
-    std::cout << "WHITE HOLE FORMATION SIMULATION\n";
+    std::cout << "WHITE HOLE FORMATION SIMULATION WITH MASS EVOLUTION\n";
     std::cout << "═══════════════════════════════════════════════════════════════════════════════\n";
-    std::cout << "M = " << std::scientific << M << " kg = " << (M / M_sun) << " M_sun\n";
-    std::cout << "r = " << r << " m\n";
+    std::cout << "M_start = " << std::scientific << M_start << " kg = " << (M_start / M_sun) << " M_sun\n";
+    std::cout << "r = " << r << " m (0 = auto-track horizon)\n";
     std::cout << "t: " << t_start << " to " << t_end << " s (dt = " << dt << " s)\n";
     std::cout << "───────────────────────────────────────────────────────────────────────────────\n";
     
     int formation_count = 0;
     int total_steps = 0;
+    double M_current = M_start;
+    double M_lost_total = 0.0;
     
-    for (double t = t_start; t <= t_end; t += dt) {
-        // Compute all values
-        double r_s_std = compute_r_s_standard(M);
+    for (double t = t_start; t <= t_end && M_current > 0; t += dt) {
+        // Compute all values with current mass
+        double r_s_std = compute_r_s_standard(M_current);
         double r_s_uqff = compute_r_s_UQFF(r_s_std);
-        double r_eval = (r > 0) ? r : r_s_uqff;
-        double E_horizon = compute_E_horizon(M, r_s_uqff);
-        double T_H = compute_T_H(M);
+        double r_eval = (r > 0) ? r : r_s_uqff;  // Auto-track horizon if r=0
+        double T_H = compute_T_H(M_current);
+        double E_horizon = compute_E_horizon(M_current, r_s_uqff);
         double P_inv = compute_P_inv(E_horizon, T_H);
-        double Phi_flux = compute_Phi_flux(M);
+        double Phi_flux = compute_Phi_flux(M_current);
         double U_m_val = compute_U_m(r_eval, t);
         double Theta = compute_Theta_WH(P_inv, Phi_flux, U_m_val, T_H);
         
         // Apply modifiers
         for (const auto& mod : additional_modifiers) {
-            Theta *= mod(M, t);
+            Theta *= mod(M_current, t);
         }
         
-        bool forms = check_formation(Theta);
-        if (forms) formation_count++;
-        total_steps++;
+        bool forms = check_formation(Theta, 0.0);  // No noise for deterministic evolution
         
+        // Compute dM/dt and L_UQFF
+        double dM_dt_val = 0.0;
+        double L_UQFF = 0.0;
+        if (forms) {
+            formation_count++;
+            L_UQFF = compute_L_UQFF(M_current, r_eval, t);
+            dM_dt_val = -L_UQFF / (c * c);
+            
+            // Update mass (Euler integration)
+            double dM = dM_dt_val * dt;
+            M_current += dM;
+            M_lost_total -= dM;  // dM is negative, so this is positive
+            
+            // Prevent negative mass
+            if (M_current < 0) M_current = 0;
+        }
+        
+        total_steps++;
         double t_Gyr = t / 3.156e16;  // Convert to Gyr
         
         if (file_output) {
             outfile << std::scientific << std::setprecision(6)
-                    << t << "," << t_Gyr << "," << Theta << "," << (forms ? 1 : 0) << ","
-                    << r_s_uqff << "," << T_H << "," << P_inv << "," << Phi_flux << "," << U_m_val << "\n";
+                    << t << "," << t_Gyr << "," 
+                    << M_current << "," << (M_current / M_sun) << ","
+                    << Theta << "," << (forms ? 1 : 0) << ","
+                    << dM_dt_val << "," << L_UQFF << ","
+                    << r_s_uqff << "," << T_H << "\n";
         }
         
         // Print every 10th step to console
         if (total_steps % 10 == 1 || t == t_start) {
             std::cout << std::scientific << std::setprecision(3)
-                      << "t=" << t_Gyr << " Gyr, Θ_WH=" << Theta 
-                      << ", Forms=" << (forms ? "YES" : "No") << std::endl;
+                      << "t=" << t_Gyr << " Gyr, M=" << (M_current / M_sun) << " M_sun, Θ_WH=" << Theta;
+            if (forms) {
+                std::cout << ", dM/dt=" << dM_dt_val << " kg/s";
+            }
+            std::cout << std::endl;
         }
     }
     
@@ -448,9 +562,17 @@ void UQFFWhiteHoleFormation::simulate_formation(double M, double r, double t_sta
         std::cout << "Output written to: " << output_file << std::endl;
     }
     
+    double mass_fraction_lost = M_lost_total / M_start;
+    
     std::cout << "───────────────────────────────────────────────────────────────────────────────\n";
-    std::cout << "SUMMARY: Formation possible in " << formation_count << "/" << total_steps 
-              << " (" << (100.0 * formation_count / total_steps) << "%) of time steps\n";
+    std::cout << "SUMMARY:\n";
+    std::cout << "  Formation occurred in: " << formation_count << "/" << total_steps 
+              << " (" << std::fixed << std::setprecision(1) << (100.0 * formation_count / total_steps) << "%) of time steps\n";
+    std::cout << std::scientific << std::setprecision(3);
+    std::cout << "  Initial mass:  " << M_start << " kg = " << (M_start / M_sun) << " M_sun\n";
+    std::cout << "  Final mass:    " << M_current << " kg = " << (M_current / M_sun) << " M_sun\n";
+    std::cout << "  Total expelled: " << M_lost_total << " kg = " << (M_lost_total / M_sun) << " M_sun\n";
+    std::cout << "  Mass fraction lost: " << std::fixed << std::setprecision(4) << (mass_fraction_lost * 100) << "%\n";
     std::cout << "═══════════════════════════════════════════════════════════════════════════════\n";
 }
 
@@ -565,6 +687,33 @@ bool UQFFWhiteHoleFormation::validate() {
               << (test7 ? "PASS" : "FAIL") << std::endl;
     all_passed &= test7;
     
+    // Test 8: dM/dt is negative when Θ_WH > 1
+    test_num++;
+    double dM_dt_sgr_a = compute_dM_dt(M_sgr_a, r_sgr_a, t_cosmo);
+    bool test8 = (dM_dt_sgr_a < 0);  // Mass loss if formed
+    std::cout << "Test " << test_num << ": dM/dt < 0 when Θ_WH > 1 (dM/dt=" << dM_dt_sgr_a << " kg/s): "
+              << (test8 ? "PASS" : "FAIL") << std::endl;
+    all_passed &= test8;
+    
+    // Test 9: dM/dt is zero when Θ_WH < 1
+    test_num++;
+    double M_small = 1.0 * M_sun;  // Small BH, unlikely to form WH
+    double r_small = compute_r_s_standard(M_small);
+    double dM_dt_small = compute_dM_dt(M_small, r_small, 1e10);  // Early time
+    double Theta_small = compute_full_Theta_WH(M_small, r_small, 1e10, 0.0);
+    bool test9 = (Theta_small <= 1.0) ? (dM_dt_small == 0.0) : true;  // Only test if no formation
+    std::cout << "Test " << test_num << ": dM/dt = 0 when Θ_WH ≤ 1 (Θ=" << Theta_small << "): "
+              << (test9 ? "PASS" : "SKIP (formed)") << std::endl;
+    all_passed &= test9;
+    
+    // Test 10: L_UQFF is positive
+    test_num++;
+    double L_UQFF_sgr_a = compute_L_UQFF(M_sgr_a, r_sgr_a, t_cosmo);
+    bool test10 = (L_UQFF_sgr_a > 0);
+    std::cout << "Test " << test_num << ": L_UQFF > 0 (L=" << L_UQFF_sgr_a << " W): "
+              << (test10 ? "PASS" : "FAIL") << std::endl;
+    all_passed &= test10;
+    
     std::cout << "───────────────────────────────────────────────────────────────────────────────\n";
     std::cout << "VALIDATION RESULT: " << (all_passed ? "ALL TESTS PASSED ✓" : "SOME TESTS FAILED ✗") << std::endl;
     std::cout << "═══════════════════════════════════════════════════════════════════════════════\n";
@@ -614,6 +763,30 @@ int main() {
     double t_now = 4.5e17;
     double Theta_modified = wh.compute_full_Theta_WH(M_sgr_a, r_sgr_a, t_now, 0.0);
     std::cout << "Θ_WH (with modifier) = " << Theta_modified << std::endl;
+    
+    // Demonstrate dM/dt computation
+    std::cout << "\n";
+    std::cout << "═══════════════════════════════════════════════════════════════════════════════\n";
+    std::cout << "MASS EXPULSION RATE (dM/dt) DEMONSTRATION\n";
+    std::cout << "═══════════════════════════════════════════════════════════════════════════════\n";
+    
+    // Clear modifiers for clean dM/dt test
+    wh.clear_modifiers();
+    
+    double L_UQFF = wh.compute_L_UQFF(M_sgr_a, r_sgr_a, t_now);
+    double dM_dt = wh.compute_dM_dt(M_sgr_a, r_sgr_a, t_now);
+    double M_sun_val = 1.989e30;
+    
+    std::cout << std::scientific << std::setprecision(4);
+    std::cout << "Sgr A* at t = 4.5 Gyr:\n";
+    std::cout << "  L_UQFF = " << L_UQFF << " W\n";
+    std::cout << "  dM/dt  = " << dM_dt << " kg/s\n";
+    std::cout << "         = " << (dM_dt * 3.156e7 / M_sun_val) << " M_sun/year\n";
+    
+    if (dM_dt < 0) {
+        double t_evap = -M_sgr_a / dM_dt;
+        std::cout << "  Characteristic expulsion time: " << (t_evap / 3.156e16) << " Gyr\n";
+    }
     
     std::cout << "\n";
     std::cout << "═══════════════════════════════════════════════════════════════════════════════\n";

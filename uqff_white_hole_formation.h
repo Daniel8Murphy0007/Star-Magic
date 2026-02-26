@@ -17,6 +17,7 @@
 #include <random>
 #include <sstream>
 #include <iomanip>
+#include <limits>
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
@@ -84,6 +85,9 @@ private:
     double mu_j;        // Magnetic moment: ~1e15 Am² (typical magnetar)
     double gamma;       // String damping rate: 5e-5 day⁻¹ → s⁻¹
     double t_n;         // Normalized time phase: 0 to 1
+    
+    // Fixed radius for simulation (cached)
+    double r_fixed;     // Fixed radius for dM/dt calculation in simulate_formation
     
     // Stochastic generator for simulation
     std::mt19937 rng;
@@ -199,6 +203,28 @@ public:
     std::string generate_derivation(double M, double r, double t);
     
     // ═══════════════════════════════════════════════════════════════════════════
+    // MASS EXPULSION (dM/dt)
+    // ═══════════════════════════════════════════════════════════════════════════
+    
+    /**
+     * @brief Compute UQFF luminosity during expulsion
+     * @param M Mass in kg
+     * @param r Radius in m
+     * @param t Time in seconds
+     * @return L_UQFF = Φ_flux × Θ_WH × exp(-U_m/(k_B T_H)) in Watts
+     */
+    double compute_L_UQFF(double M, double r, double t);
+    
+    /**
+     * @brief Compute mass expulsion rate
+     * @param M Mass in kg
+     * @param r Radius in m (use 0 for automatic r_s)
+     * @param t Time in seconds
+     * @return dM/dt ≈ -L_UQFF/c² in kg/s (negative = mass loss)
+     */
+    double compute_dM_dt(double M, double r, double t);
+    
+    // ═══════════════════════════════════════════════════════════════════════════
     // SELF-EXPANDING FRAMEWORK
     // ═══════════════════════════════════════════════════════════════════════════
     
@@ -234,15 +260,16 @@ public:
     // ═══════════════════════════════════════════════════════════════════════════
     
     /**
-     * @brief Run time evolution simulation
-     * @param M Mass in kg
-     * @param r Radius in m
+     * @brief Run time evolution simulation with mass expulsion
+     * @param M_start Initial mass in kg
+     * @param r Radius in m (use 0 for auto horizon tracking)
      * @param t_start Start time in seconds
      * @param t_end End time in seconds
      * @param dt Time step in seconds
      * @param output_file Optional CSV output file
+     * @note If Θ_WH > 1, integrates dM/dt to track mass evolution
      */
-    void simulate_formation(double M, double r, double t_start, double t_end, 
+    void simulate_formation(double M_start, double r, double t_start, double t_end, 
                            double dt, const std::string& output_file = "");
     
     /**
