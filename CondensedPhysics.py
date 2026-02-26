@@ -148831,6 +148831,692 @@ SOURCE82_VE_WOLFRAM_CALCULATORS = {
 }
 
 
+# ================================================================================================
+# SOURCE13_WOLFRAM: SGR 1745-2900 Magnetar near Sgr A* (14 Calculator Classes)
+# Physics: Complete MUGE with black hole proximity, superconductivity, X-ray decay
+# Parameters: M=1.4 M_sun, r=10km, B=2×10¹⁰ T, B_crit=10¹¹ T, P=3.76s, M_BH=4×10⁶ M_sun
+# ================================================================================================
+
+class MagnetarBaseGravityCalculator:
+    """SGR1745-2900: Base gravity with Hubble expansion and superconductivity modulation."""
+    def __init__(self):
+        self.G = 6.6743e-11           # Gravitational constant (m³/kg·s²)
+        self.M_sun = 1.989e30         # Solar mass (kg)
+        self.M = 1.4 * self.M_sun     # Magnetar mass (1.4 M_sun)
+        self.r = 1e4                  # Radius (m) - 10 km
+        self.Hz = 2.269e-18           # Hubble parameter at z (s⁻¹)
+        self.B = 2e10                 # Magnetic field (T)
+        self.B_crit = 1e11            # Critical field (T)
+    
+    def compute(self, t: float = 0.0) -> dict:
+        ug1_base = (self.G * self.M) / (self.r ** 2)
+        corr_H = 1 + self.Hz * t
+        f_sc = 1 - (self.B / self.B_crit)  # Superconductivity factor
+        value = ug1_base * corr_H * f_sc
+        return {
+            'value': value,
+            'M_Msun': self.M / self.M_sun,
+            'r_km': self.r / 1e3,
+            'f_sc': f_sc,
+            'B_T': self.B,
+            'units': 'm/s²',
+            'equation': f"g = GM/r² × [1+H(z)×t] × f_sc = {value:.4e} m/s²"
+        }
+
+
+class MagnetarBlackHoleProximityCalculator:
+    """SGR1745-2900: Black hole proximity term (Sgr A* gravitational influence)."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M_sun = 1.989e30
+        self.M_BH = 4e6 * self.M_sun  # Sgr A* mass (4 million solar masses)
+        self.r_BH = 2.83e16           # Distance to black hole (m) - 0.3 parsecs
+    
+    def compute(self) -> dict:
+        value = (self.G * self.M_BH) / (self.r_BH ** 2)
+        return {
+            'value': value,
+            'M_BH_Msun': self.M_BH / self.M_sun,
+            'r_BH_pc': self.r_BH / 3.086e16,
+            'units': 'm/s²',
+            'equation': f"g_BH = G×M_BH/r_BH² = {value:.4e} m/s²"
+        }
+
+
+class MagnetarUQFFUnificationCalculator:
+    """SGR1745-2900: UQFF unification (Ug1+Ug2+Ug3+Ug4 with superconductivity)."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M_sun = 1.989e30
+        self.M = 1.4 * self.M_sun
+        self.r = 1e4
+        self.B = 2e10
+        self.B_crit = 1e11
+    
+    def compute(self) -> dict:
+        Ug1 = (self.G * self.M) / (self.r ** 2)
+        Ug2 = 0.0
+        Ug3 = 0.0
+        f_sc = 1 - (self.B / self.B_crit)
+        Ug4 = Ug1 * f_sc
+        value = Ug1 + Ug2 + Ug3 + Ug4
+        return {
+            'value': value,
+            'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4,
+            'f_sc': f_sc,
+            'units': 'm/s²',
+            'equation': f"Ug_total = Ug1+Ug2+Ug3+Ug4 = {value:.4e} m/s²"
+        }
+
+
+class MagnetarCosmologicalConstantCalculator:
+    """SGR1745-2900: Cosmological constant (dark energy) term."""
+    def __init__(self):
+        self.Lambda = 1.1e-52  # Cosmological constant (m⁻²)
+        self.c = 3e8           # Speed of light (m/s)
+    
+    def compute(self) -> dict:
+        value = (self.Lambda * self.c ** 2) / 3.0
+        return {
+            'value': value,
+            'Lambda': self.Lambda,
+            'units': 'm/s²',
+            'equation': f"g_Λ = Λc²/3 = {value:.4e} m/s²"
+        }
+
+
+class MagnetarElectromagneticCalculator:
+    """SGR1745-2900: Scaled electromagnetic acceleration (v×B coupling)."""
+    def __init__(self):
+        self.q = 1.602e-19        # Elementary charge (C)
+        self.v_surf = 1e6         # Surface velocity (m/s)
+        self.B = 2e10             # Magnetic field (T)
+        self.m_p = 1.673e-27      # Proton mass (kg)
+        self.scale_EM = 1e-12     # EM scaling factor
+    
+    def compute(self) -> dict:
+        cross_vB = self.v_surf * self.B
+        em_base = (self.q * cross_vB) / self.m_p
+        value = em_base * self.scale_EM
+        return {
+            'value': value,
+            'v_surf_m_s': self.v_surf,
+            'B_T': self.B,
+            'em_unscaled': em_base,
+            'units': 'm/s²',
+            'equation': f"a_EM = (q×v×B/m_p)×scale = {value:.4e} m/s²"
+        }
+
+
+class MagnetarGravitationalWaveCalculator:
+    """SGR1745-2900: Gravitational wave emission from spin-down."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M_sun = 1.989e30
+        self.M = 1.4 * self.M_sun
+        self.c = 3e8
+        self.r = 1e4
+        self.P_init = 3.76              # Initial rotation period (s)
+        self.tau_Omega = 10000 * 3.15576e7  # Spin-down timescale (s)
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        omega0 = 2 * math.pi / self.P_init
+        dOmega_dt = omega0 * (-1.0 / self.tau_Omega) * math.exp(-t / self.tau_Omega)
+        gw_prefactor = (self.G * self.M ** 2) / (self.c ** 4 * self.r)
+        value = gw_prefactor * (dOmega_dt ** 2)
+        return {
+            'value': value,
+            'P_init_s': self.P_init,
+            'tau_Omega_yr': self.tau_Omega / 3.15576e7,
+            'dOmega_dt': dOmega_dt,
+            'units': 'm/s²',
+            'equation': f"g_GW = (GM²/c⁴r)×(dΩ/dt)² = {value:.4e} m/s²"
+        }
+
+
+class MagnetarQuantumUncertaintyCalculator:
+    """SGR1745-2900: Quantum uncertainty (Heisenberg) contribution."""
+    def __init__(self):
+        self.hbar = 1.0546e-34          # Reduced Planck constant (J·s)
+        self.delta_x = 1e-10            # Position uncertainty (m)
+        self.integral_psi = 1.0
+        self.t_Hubble = 13.8e9 * 3.15576e7  # Hubble time (s)
+    
+    def compute(self) -> dict:
+        import math
+        delta_p = self.hbar / self.delta_x
+        sqrt_unc = math.sqrt(self.delta_x * delta_p)
+        value = (self.hbar / sqrt_unc) * self.integral_psi * (2 * math.pi / self.t_Hubble)
+        return {
+            'value': value,
+            'delta_x_m': self.delta_x,
+            'delta_p_kg_m_s': delta_p,
+            'units': 'J/s',
+            'equation': f"g_quantum = (ℏ/√ΔxΔp)×∫|ψ|²×(2π/t_H) = {value:.4e}"
+        }
+
+
+class MagnetarFluidDensityCalculator:
+    """SGR1745-2900: Fluid density coupling (interior nuclear matter)."""
+    def __init__(self):
+        self.rho_fluid = 1e17     # Fluid density (kg/m³) - nuclear density
+        self.r = 1e4
+        self.G = 6.6743e-11
+        self.M_sun = 1.989e30
+        self.M = 1.4 * self.M_sun
+    
+    def compute(self) -> dict:
+        import math
+        V = (4.0 / 3.0) * math.pi * self.r ** 3
+        ug1_base = (self.G * self.M) / (self.r ** 2)
+        value = (self.rho_fluid * V * ug1_base) / self.M
+        return {
+            'value': value,
+            'rho_fluid_kg_m3': self.rho_fluid,
+            'V_m3': V,
+            'units': 'm/s²',
+            'equation': f"g_fluid = (ρ×V×g_base)/M = {value:.4e} m/s²"
+        }
+
+
+class MagnetarOscillatoryWaveCalculator:
+    """SGR1745-2900: Oscillatory wave terms (standing + traveling waves)."""
+    def __init__(self):
+        self.A_osc = 1e10
+        self.r = 1e4
+        self.P_init = 3.76
+        self.t_Hubble_gyr = 13.8
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        k_osc = 1.0 / self.r
+        omega_osc = 2 * math.pi / self.P_init
+        x_pos = self.r
+        term_osc1 = 2 * self.A_osc * math.cos(k_osc * x_pos) * math.cos(omega_osc * t)
+        arg = k_osc * x_pos - omega_osc * t
+        term_osc2 = (2 * math.pi / self.t_Hubble_gyr) * self.A_osc * math.cos(arg)
+        value = term_osc1 + term_osc2
+        return {
+            'value': value,
+            'term_standing': term_osc1,
+            'term_traveling': term_osc2,
+            'A_osc': self.A_osc,
+            'units': 'm/s²',
+            'equation': f"g_osc = 2A×cos(kx)×cos(ωt) + (2π/t_H)×A×cos(kx-ωt) = {value:.4e} m/s²"
+        }
+
+
+class MagnetarDarkMatterPerturbationCalculator:
+    """SGR1745-2900: Dark matter + density perturbation coupling."""
+    def __init__(self):
+        self.M_sun = 1.989e30
+        self.M = 1.4 * self.M_sun
+        self.M_DM_factor = 0.1
+        self.delta_rho_over_rho = 1e-5
+        self.G = 6.6743e-11
+        self.r = 1e4
+    
+    def compute(self) -> dict:
+        M_dm = self.M * self.M_DM_factor
+        pert1 = self.delta_rho_over_rho
+        pert2 = 3 * self.G * self.M / (self.r ** 3)
+        term_dm_force = (self.M + M_dm) * (pert1 + pert2)
+        value = term_dm_force / self.M
+        return {
+            'value': value,
+            'M_DM_Msun': M_dm / self.M_sun,
+            'delta_rho_rho': self.delta_rho_over_rho,
+            'units': 'm/s²',
+            'equation': f"g_DM = (M+M_DM)×(δρ/ρ+3GM/r³)/M = {value:.4e} m/s²"
+        }
+
+
+class MagnetarMagneticEnergyCalculator:
+    """SGR1745-2900: Magnetic field energy (effective acceleration)."""
+    def __init__(self):
+        import math
+        self.B = 2e10
+        self.mu0 = 4 * math.pi * 1e-7
+        self.r = 1e4
+        self.M_sun = 1.989e30
+        self.M = 1.4 * self.M_sun
+    
+    def compute(self) -> dict:
+        import math
+        V = (4.0 / 3.0) * math.pi * self.r ** 3
+        M_mag = (self.B ** 2 / (2 * self.mu0)) * V
+        value = M_mag / (self.M * self.r)
+        return {
+            'value': value,
+            'B_T': self.B,
+            'E_mag_J': M_mag,
+            'units': 'm/s²',
+            'equation': f"g_mag = (B²V/2μ₀)/(M×r) = {value:.4e} m/s²"
+        }
+
+
+class MagnetarDecayEnergyCalculator:
+    """SGR1745-2900: Cumulative outburst decay energy (X-ray luminosity)."""
+    def __init__(self):
+        self.L0_W = 5e28                          # Initial luminosity (W)
+        self.tau_decay = 3.5 * 365.25 * 24 * 3600 # Decay timescale (s) - 3.5 years
+        self.M_sun = 1.989e30
+        self.M = 1.4 * self.M_sun
+        self.r = 1e4
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        exp_term = math.exp(-t / self.tau_decay)
+        cum_D = self.L0_W * self.tau_decay * (1 - exp_term)
+        value = cum_D / (self.M * self.r)
+        return {
+            'value': value,
+            'L0_W': self.L0_W,
+            'tau_decay_yr': self.tau_decay / (365.25 * 24 * 3600),
+            'cum_energy_J': cum_D,
+            'units': 'm/s²',
+            'equation': f"g_decay = [L₀×τ×(1-e^(-t/τ))]/(M×r) = {value:.4e} m/s²"
+        }
+
+
+class MagnetarSpinEvolutionCalculator:
+    """SGR1745-2900: Magnetar spin evolution (angular velocity)."""
+    def __init__(self):
+        self.P_init = 3.76
+        self.tau_Omega = 10000 * 3.15576e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        omega0 = 2 * math.pi / self.P_init
+        value = omega0 * math.exp(-t / self.tau_Omega)
+        return {
+            'value': value,
+            'P_init_s': self.P_init,
+            'omega0_rad_s': omega0,
+            'tau_Omega_yr': self.tau_Omega / 3.15576e7,
+            'units': 'rad/s',
+            'equation': f"Ω(t) = (2π/P₀)×e^(-t/τ_Ω) = {value:.4e} rad/s"
+        }
+
+
+class MagnetarSuperConductivityCalculator:
+    """SGR1745-2900: Superconductivity modulation factor (f_sc)."""
+    def __init__(self):
+        self.B = 2e10
+        self.B_crit = 1e11
+    
+    def compute(self) -> dict:
+        value = 1 - (self.B / self.B_crit)
+        return {
+            'value': value,
+            'B_T': self.B,
+            'B_crit_T': self.B_crit,
+            'units': 'dimensionless',
+            'equation': f"f_sc = 1 - B/B_crit = {value:.4f}"
+        }
+
+
+SOURCE13_WOLFRAM_CALCULATORS = {
+    'MagnetarBaseGravityCalculator': MagnetarBaseGravityCalculator(),
+    'MagnetarBlackHoleProximityCalculator': MagnetarBlackHoleProximityCalculator(),
+    'MagnetarUQFFUnificationCalculator': MagnetarUQFFUnificationCalculator(),
+    'MagnetarCosmologicalConstantCalculator': MagnetarCosmologicalConstantCalculator(),
+    'MagnetarElectromagneticCalculator': MagnetarElectromagneticCalculator(),
+    'MagnetarGravitationalWaveCalculator': MagnetarGravitationalWaveCalculator(),
+    'MagnetarQuantumUncertaintyCalculator': MagnetarQuantumUncertaintyCalculator(),
+    'MagnetarFluidDensityCalculator': MagnetarFluidDensityCalculator(),
+    'MagnetarOscillatoryWaveCalculator': MagnetarOscillatoryWaveCalculator(),
+    'MagnetarDarkMatterPerturbationCalculator': MagnetarDarkMatterPerturbationCalculator(),
+    'MagnetarMagneticEnergyCalculator': MagnetarMagneticEnergyCalculator(),
+    'MagnetarDecayEnergyCalculator': MagnetarDecayEnergyCalculator(),
+    'MagnetarSpinEvolutionCalculator': MagnetarSpinEvolutionCalculator(),
+    'MagnetarSuperConductivityCalculator': MagnetarSuperConductivityCalculator(),
+}
+
+
+# ================================================================================================
+# SOURCE14_WOLFRAM: SGR 0501+4516 Magnetar Self-Expanding (14 Calculator Classes)
+# Physics: Complete MUGE with time-reversal, vacuum correction, self-expanding framework
+# Parameters: M=1.4 M_sun, r=20km, B₀=10¹⁰ T, τ_B=4000 years, f_TRZ=0.1
+# ================================================================================================
+
+class Magnetar0501BaseGravityCalculator:
+    """SGR0501+4516: Base gravity with H₀ expansion and B modulation."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M_sun = 1.989e30
+        self.M = 1.4 * self.M_sun
+        self.r = 20e3             # 20 km (larger)
+        self.H0 = 2.269e-18       # Hubble constant (s⁻¹)
+        self.B0 = 1e10            # Initial magnetic field (T)
+        self.tau_B = 4000 * 3.156e7  # Decay timescale (s) - 4000 years
+        self.B_crit = 1e11
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        ug1_base = (self.G * self.M) / (self.r ** 2)
+        corr_H = 1 + self.H0 * t
+        Bt = self.B0 * math.exp(-t / self.tau_B)
+        f_B = 1 - (Bt / self.B_crit)
+        value = ug1_base * corr_H * f_B
+        return {
+            'value': value,
+            'M_Msun': self.M / self.M_sun,
+            'r_km': self.r / 1e3,
+            'B_t_T': Bt,
+            'f_B': f_B,
+            'units': 'm/s²',
+            'equation': f"g = GM/r² × [1+H₀×t] × f_B = {value:.4e} m/s²"
+        }
+
+
+class Magnetar0501UQFFUnificationCalculator:
+    """SGR0501+4516: Complete UQFF (Ug1+Ug2+Ug3+Ug4) with f_TRZ."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M_sun = 1.989e30
+        self.M = 1.4 * self.M_sun
+        self.r = 20e3
+        self.B0 = 1e10
+        self.tau_B = 4000 * 3.156e7
+        self.B_crit = 1e11
+        self.f_TRZ = 0.1  # Time-reversal factor
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        Ug1 = (self.G * self.M) / (self.r ** 2)
+        Ug2 = 0.0
+        Ug3 = 0.0
+        Bt = self.B0 * math.exp(-t / self.tau_B)
+        f_sc = 1 - (Bt / self.B_crit)
+        Ug4 = Ug1 * f_sc
+        Ug_total = Ug1 + Ug2 + Ug3 + Ug4
+        value = Ug_total * (1 + self.f_TRZ)  # Time-reversal modulation
+        return {
+            'value': value,
+            'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4,
+            'f_TRZ': self.f_TRZ,
+            'units': 'm/s²',
+            'equation': f"Ug = (Ug1+Ug2+Ug3+Ug4)×(1+f_TRZ) = {value:.4e} m/s²"
+        }
+
+
+class Magnetar0501CosmologicalConstantCalculator:
+    """SGR0501+4516: Dark energy (Lambda) term."""
+    def __init__(self):
+        self.Lambda = 1.1e-52
+        self.c = 3e8
+    
+    def compute(self) -> dict:
+        value = (self.Lambda * self.c ** 2) / 3.0
+        return {
+            'value': value,
+            'Lambda': self.Lambda,
+            'units': 'm/s²',
+            'equation': f"g_Λ = Λc²/3 = {value:.4e} m/s²"
+        }
+
+
+class Magnetar0501ElectromagneticCalculator:
+    """SGR0501+4516: Scaled EM acceleration with UA/SCm vacuum correction."""
+    def __init__(self):
+        self.q = 1.602e-19
+        self.v_surf = 1e6
+        self.B0 = 1e10
+        self.tau_B = 4000 * 3.156e7
+        self.m_p = 1.673e-27
+        self.rho_vac_UA = 7.09e-36
+        self.rho_vac_SCm = 7.09e-37
+        self.scale_EM = 1e-12
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        Bt = self.B0 * math.exp(-t / self.tau_B)
+        cross_vB = self.v_surf * Bt
+        em_base = (self.q * cross_vB) / self.m_p
+        corr_UA = 1 + (self.rho_vac_UA / self.rho_vac_SCm)
+        value = (em_base * corr_UA) * self.scale_EM
+        return {
+            'value': value,
+            'B_t_T': Bt,
+            'corr_UA': corr_UA,
+            'units': 'm/s²',
+            'equation': f"a_EM = (q×v×B/m_p)×(1+ρ_UA/ρ_SCm)×scale = {value:.4e} m/s²"
+        }
+
+
+class Magnetar0501GravitationalWaveCalculator:
+    """SGR0501+4516: Gravitational wave emission from spin-down."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M_sun = 1.989e30
+        self.M = 1.4 * self.M_sun
+        self.c = 3e8
+        self.r = 20e3
+        self.P_init = 5.0
+        self.tau_Omega = 10000 * 3.156e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        omega0 = 2 * math.pi / self.P_init
+        dOmega_dt = omega0 * (-1.0 / self.tau_Omega) * math.exp(-t / self.tau_Omega)
+        gw_prefactor = (self.G * self.M ** 2) / (self.c ** 4 * self.r)
+        value = gw_prefactor * (dOmega_dt ** 2)
+        return {
+            'value': value,
+            'P_init_s': self.P_init,
+            'dOmega_dt': dOmega_dt,
+            'units': 'm/s²',
+            'equation': f"g_GW = (GM²/c⁴r)×(dΩ/dt)² = {value:.4e} m/s²"
+        }
+
+
+class Magnetar0501QuantumUncertaintyCalculator:
+    """SGR0501+4516: Quantum uncertainty (Heisenberg) contribution."""
+    def __init__(self):
+        self.hbar = 1.0546e-34
+        self.delta_x = 1e-10
+        self.integral_psi = 1.0
+        self.t_Hubble = 13.8e9 * 3.156e7
+    
+    def compute(self) -> dict:
+        import math
+        delta_p = self.hbar / self.delta_x
+        sqrt_unc = math.sqrt(self.delta_x * delta_p)
+        value = (self.hbar / sqrt_unc) * self.integral_psi * (2 * math.pi / self.t_Hubble)
+        return {
+            'value': value,
+            'delta_x_m': self.delta_x,
+            'delta_p_kg_m_s': delta_p,
+            'units': 'J/s',
+            'equation': f"g_quantum = (ℏ/√ΔxΔp)×∫|ψ|²×(2π/t_H) = {value:.4e}"
+        }
+
+
+class Magnetar0501FluidDensityCalculator:
+    """SGR0501+4516: Fluid density coupling (interior nuclear matter)."""
+    def __init__(self):
+        self.rho_fluid = 1e17
+        self.r = 20e3
+        self.G = 6.6743e-11
+        self.M_sun = 1.989e30
+        self.M = 1.4 * self.M_sun
+    
+    def compute(self) -> dict:
+        import math
+        V = (4.0 / 3.0) * math.pi * self.r ** 3
+        ug1_base = (self.G * self.M) / (self.r ** 2)
+        value = (self.rho_fluid * V * ug1_base) / self.M
+        return {
+            'value': value,
+            'rho_fluid_kg_m3': self.rho_fluid,
+            'V_m3': V,
+            'units': 'm/s²',
+            'equation': f"g_fluid = (ρ×V×g_base)/M = {value:.4e} m/s²"
+        }
+
+
+class Magnetar0501OscillatoryWaveCalculator:
+    """SGR0501+4516: Oscillatory wave terms (standing + traveling waves)."""
+    def __init__(self):
+        self.A_osc = 1e10
+        self.r = 20e3
+        self.P_init = 5.0
+        self.t_Hubble = 13.8e9 * 3.156e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        k_osc = 1.0 / self.r
+        omega_osc = 2 * math.pi / self.P_init
+        x_pos = self.r
+        term_osc1 = 2 * self.A_osc * math.cos(k_osc * x_pos) * math.cos(omega_osc * t)
+        arg = k_osc * x_pos - omega_osc * t
+        term_osc2 = (2 * math.pi / self.t_Hubble) * self.A_osc * math.cos(arg)
+        value = term_osc1 + term_osc2
+        return {
+            'value': value,
+            'term_standing': term_osc1,
+            'term_traveling': term_osc2,
+            'units': 'm/s²',
+            'equation': f"g_osc = 2A×cos(kx)×cos(ωt) + (2π/t_H)×A×cos(kx-ωt) = {value:.4e} m/s²"
+        }
+
+
+class Magnetar0501DarkMatterPerturbationCalculator:
+    """SGR0501+4516: Dark matter + density perturbation coupling."""
+    def __init__(self):
+        self.M_sun = 1.989e30
+        self.M = 1.4 * self.M_sun
+        self.M_DM_factor = 0.1
+        self.delta_rho_over_rho = 1e-5
+        self.G = 6.6743e-11
+        self.r = 20e3
+    
+    def compute(self) -> dict:
+        M_dm = self.M * self.M_DM_factor
+        pert1 = self.delta_rho_over_rho
+        pert2 = 3 * self.G * self.M / (self.r ** 3)
+        term_dm_force = (self.M + M_dm) * (pert1 + pert2)
+        value = term_dm_force / self.M
+        return {
+            'value': value,
+            'M_DM_Msun': M_dm / self.M_sun,
+            'delta_rho_rho': self.delta_rho_over_rho,
+            'units': 'm/s²',
+            'equation': f"g_DM = (M+M_DM)×(δρ/ρ+3GM/r³)/M = {value:.4e} m/s²"
+        }
+
+
+class Magnetar0501MagneticDecayCalculator:
+    """SGR0501+4516: Magnetic field exponential decay B(t)."""
+    def __init__(self):
+        self.B0 = 1e10
+        self.tau_B = 4000 * 3.156e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        value = self.B0 * math.exp(-t / self.tau_B)
+        return {
+            'value': value,
+            'B0_T': self.B0,
+            'tau_B_yr': self.tau_B / 3.156e7,
+            'units': 'T',
+            'equation': f"B(t) = B₀×e^(-t/τ_B) = {value:.4e} T"
+        }
+
+
+class Magnetar0501SpinEvolutionCalculator:
+    """SGR0501+4516: Magnetar spin evolution Ω(t)."""
+    def __init__(self):
+        self.P_init = 5.0
+        self.tau_Omega = 10000 * 3.156e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        omega0 = 2 * math.pi / self.P_init
+        value = omega0 * math.exp(-t / self.tau_Omega)
+        return {
+            'value': value,
+            'P_init_s': self.P_init,
+            'omega0_rad_s': omega0,
+            'tau_Omega_yr': self.tau_Omega / 3.156e7,
+            'units': 'rad/s',
+            'equation': f"Ω(t) = (2π/P₀)×e^(-t/τ_Ω) = {value:.4e} rad/s"
+        }
+
+
+class Magnetar0501TimeReversalCalculator:
+    """SGR0501+4516: Time-reversal symmetry factor (f_TRZ)."""
+    def __init__(self):
+        self.f_TRZ = 0.1
+    
+    def compute(self) -> dict:
+        return {
+            'value': self.f_TRZ,
+            'units': 'dimensionless',
+            'equation': f"f_TRZ = {self.f_TRZ}"
+        }
+
+
+class DynamicVacuumFluctuationCalculator:
+    """Self-Expanding Framework: Time-varying vacuum energy fluctuations."""
+    def __init__(self):
+        self.A = 1e-10           # Amplitude
+        self.rho_vac = 7.09e-36  # Vacuum density (kg/m³)
+        self.omega = 1e-18       # Angular frequency (rad/s)
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        value = self.A * self.rho_vac * math.sin(self.omega * t)
+        return {
+            'value': value,
+            'A': self.A,
+            'rho_vac': self.rho_vac,
+            'omega': self.omega,
+            'units': 'kg/m³',
+            'equation': f"ρ_vac(t) = A×ρ_vac×sin(ωt) = {value:.4e}"
+        }
+
+
+class QuantumNonLocalCouplingCalculator:
+    """Self-Expanding Framework: Non-local quantum entanglement effects."""
+    def __init__(self):
+        self.alpha = 1e-40       # Coupling strength
+        self.hbar = 1.0546e-34   # ℏ
+        self.M_sun = 1.989e30
+        self.M = 1.4 * self.M_sun
+        self.r = 20e3
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        value = self.alpha * (self.hbar ** 2) / (self.M * self.r ** 2) * math.cos(t / 1e6)
+        return {
+            'value': value,
+            'alpha': self.alpha,
+            'units': 'J',
+            'equation': f"E_coupling = α×ℏ²/(M×r²)×cos(t/10⁶) = {value:.4e}"
+        }
+
+
+SOURCE14_WOLFRAM_CALCULATORS = {
+    'Magnetar0501BaseGravityCalculator': Magnetar0501BaseGravityCalculator(),
+    'Magnetar0501UQFFUnificationCalculator': Magnetar0501UQFFUnificationCalculator(),
+    'Magnetar0501CosmologicalConstantCalculator': Magnetar0501CosmologicalConstantCalculator(),
+    'Magnetar0501ElectromagneticCalculator': Magnetar0501ElectromagneticCalculator(),
+    'Magnetar0501GravitationalWaveCalculator': Magnetar0501GravitationalWaveCalculator(),
+    'Magnetar0501QuantumUncertaintyCalculator': Magnetar0501QuantumUncertaintyCalculator(),
+    'Magnetar0501FluidDensityCalculator': Magnetar0501FluidDensityCalculator(),
+    'Magnetar0501OscillatoryWaveCalculator': Magnetar0501OscillatoryWaveCalculator(),
+    'Magnetar0501DarkMatterPerturbationCalculator': Magnetar0501DarkMatterPerturbationCalculator(),
+    'Magnetar0501MagneticDecayCalculator': Magnetar0501MagneticDecayCalculator(),
+    'Magnetar0501SpinEvolutionCalculator': Magnetar0501SpinEvolutionCalculator(),
+    'Magnetar0501TimeReversalCalculator': Magnetar0501TimeReversalCalculator(),
+    'DynamicVacuumFluctuationCalculator': DynamicVacuumFluctuationCalculator(),
+    'QuantumNonLocalCouplingCalculator': QuantumNonLocalCouplingCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -149084,4 +149770,36 @@ __all__.extend([
     'VirgoExtVelocityDispersionCalculator',
     'VirgoExtMSigmaRelationCalculator',
     'SOURCE82_VE_WOLFRAM_CALCULATORS',
+    # Source13 SGR 1745-2900 Magnetar near Sgr A* (Feb 27, 2026) - 14 Calculator Classes
+    'MagnetarBaseGravityCalculator',
+    'MagnetarBlackHoleProximityCalculator',
+    'MagnetarUQFFUnificationCalculator',
+    'MagnetarCosmologicalConstantCalculator',
+    'MagnetarElectromagneticCalculator',
+    'MagnetarGravitationalWaveCalculator',
+    'MagnetarQuantumUncertaintyCalculator',
+    'MagnetarFluidDensityCalculator',
+    'MagnetarOscillatoryWaveCalculator',
+    'MagnetarDarkMatterPerturbationCalculator',
+    'MagnetarMagneticEnergyCalculator',
+    'MagnetarDecayEnergyCalculator',
+    'MagnetarSpinEvolutionCalculator',
+    'MagnetarSuperConductivityCalculator',
+    'SOURCE13_WOLFRAM_CALCULATORS',
+    # Source14 SGR 0501+4516 Magnetar Self-Expanding (Feb 27, 2026) - 14 Calculator Classes
+    'Magnetar0501BaseGravityCalculator',
+    'Magnetar0501UQFFUnificationCalculator',
+    'Magnetar0501CosmologicalConstantCalculator',
+    'Magnetar0501ElectromagneticCalculator',
+    'Magnetar0501GravitationalWaveCalculator',
+    'Magnetar0501QuantumUncertaintyCalculator',
+    'Magnetar0501FluidDensityCalculator',
+    'Magnetar0501OscillatoryWaveCalculator',
+    'Magnetar0501DarkMatterPerturbationCalculator',
+    'Magnetar0501MagneticDecayCalculator',
+    'Magnetar0501SpinEvolutionCalculator',
+    'Magnetar0501TimeReversalCalculator',
+    'DynamicVacuumFluctuationCalculator',
+    'QuantumNonLocalCouplingCalculator',
+    'SOURCE14_WOLFRAM_CALCULATORS',
 ])
