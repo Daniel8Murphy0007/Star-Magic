@@ -152163,6 +152163,669 @@ SOURCE29_WOLFRAM_CALCULATORS = {
 }
 
 
+# ================================================================================================
+# SOURCE30 WOLFRAM CALCULATORS - Saturn (Planetary System)
+# 11 unique Calculator classes from source30_wolfram.cpp
+# Astronomical: M=5.683e26 kg, r=6.0268e7 m, M_ring=1.5e19 kg, orbital period 29.5 yr
+# ================================================================================================
+
+class SaturnSunGravityCalculator:
+    """Sun gravity on Saturn with Hz expansion and f_TRZ (orbital r=1.43e12 m)."""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M_Sun = 1.989e30
+        self.r_orbit = 1.43e12
+        self.H0 = 70.0
+        self.z = 0.0
+        self.Omega_m = 0.3
+        self.Omega_Lambda = 0.7
+        self.f_TRZ = 0.1
+        self.Mpc_to_m = 3.086e22
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        Hz_kms = self.H0 * math.sqrt(self.Omega_m * (1 + self.z)**3 + self.Omega_Lambda)
+        Hz = (Hz_kms * 1e3) / self.Mpc_to_m
+        expansion = 1.0 + Hz * t
+        tr_factor = 1.0 + self.f_TRZ
+        g = (self.G * self.M_Sun / (self.r_orbit ** 2)) * expansion * tr_factor
+        return {'value': g, 'M_Sun_kg': self.M_Sun, 'r_orbit_m': self.r_orbit, 'units': 'm/s²',
+                'equation': 'g = (G×M_Sun/r_orbit²)×(1+Hz×t)×(1+f_TRZ)'}
+
+
+class SaturnSelfGravityCalculator:
+    """Saturn self-gravity with superconductivity correction (surface g≈10.44 m/s²)."""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M = 5.683e26
+        self.r = 6.0268e7
+        self.B = 1e-10
+        self.B_crit = 1e11
+    
+    def compute(self) -> dict:
+        g_base = (self.G * self.M) / (self.r ** 2)
+        sc_correction = 1.0 - (self.B / self.B_crit)
+        g = g_base * sc_correction
+        return {'value': g, 'M_kg': self.M, 'r_m': self.r, 'g_surface': 10.44, 'units': 'm/s²',
+                'equation': 'g = (G×M/r²)×(1-B/B_crit)'}
+
+
+class SaturnRingTidalCalculator:
+    """Ring tidal forces G·M_ring/r_ring² (M_ring=1.5e19 kg)."""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M_ring = 1.5e19
+        self.r_ring = 7e7
+    
+    def compute(self) -> dict:
+        g_ring = (self.G * self.M_ring) / (self.r_ring ** 2)
+        return {'value': g_ring, 'M_ring_kg': self.M_ring, 'r_ring_m': self.r_ring, 'units': 'm/s²',
+                'equation': 'g_ring = G×M_ring/r_ring²'}
+
+
+class SaturnUQFFUnificationCalculator:
+    """UQFF unification Ug = Ug1 + Ug4 (Ug2/Ug3=0) for Saturn."""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M = 5.683e26
+        self.r = 6.0268e7
+        self.f_sc = 1.0
+    
+    def compute(self) -> dict:
+        Ug1 = (self.G * self.M) / (self.r ** 2)
+        Ug4 = Ug1 * self.f_sc
+        Ug = Ug1 + Ug4
+        return {'value': Ug, 'Ug1': Ug1, 'Ug4': Ug4, 'units': 'm/s²',
+                'equation': 'Ug = Ug1 + Ug4'}
+
+
+class SaturnCosmologicalConstantCalculator:
+    """Cosmological constant Λc²/3 acceleration for Saturn."""
+    def __init__(self):
+        self.Lambda = 1.1e-52
+        self.c_light = 3e8
+    
+    def compute(self) -> dict:
+        g_Lambda = (self.Lambda * self.c_light ** 2) / 3.0
+        return {'value': g_Lambda, 'Lambda_m-2': self.Lambda, 'units': 'm/s²',
+                'equation': 'g_Λ = Λc²/3'}
+
+
+class SaturnQuantumUncertaintyCalculator:
+    """Atmospheric quantum uncertainty (ℏ/√(Δx·Δp))·∫|ψ|²·(2π/t_H) for Saturn."""
+    def __init__(self):
+        self.hbar = 1.0546e-34
+        self.Delta_x = 1e7
+        self.Delta_p = 1.0546e-41
+        self.integral_psi = 1.0
+        self.t_Hubble = 4.35e17
+    
+    def compute(self) -> dict:
+        import math
+        unc = math.sqrt(self.Delta_x * self.Delta_p)
+        g_Q = (self.hbar / unc) * self.integral_psi * (2 * math.pi / self.t_Hubble)
+        return {'value': g_Q, 'Delta_x_m': self.Delta_x, 'Delta_p_kg_m_s': self.Delta_p, 'units': 'm/s²',
+                'equation': 'g_Q = (ℏ/√(Δx·Δp))·∫|ψ|²·(2π/t_H)'}
+
+
+class SaturnElectromagneticCalculator:
+    """EM Lorentz force (atmospheric wind v=500 m/s) for Saturn."""
+    def __init__(self):
+        self.q_charge = 1.602e-19
+        self.v_wind = 500
+        self.B = 1e-10
+        self.proton_mass = 1.673e-27
+        self.rho_vac_UA = 7.09e-36
+        self.rho_vac_SCm = 7.09e-37
+        self.scale_macro = 1e-12
+    
+    def compute(self) -> dict:
+        em_base = (self.q_charge * self.v_wind * self.B) / self.proton_mass
+        corr_UA = 1.0 + (self.rho_vac_UA / self.rho_vac_SCm)
+        g_EM = em_base * corr_UA * self.scale_macro
+        return {'value': g_EM, 'em_base': em_base, 'v_wind_m_s': 500, 'units': 'm/s²',
+                'equation': 'g_EM = (q·v_wind·B/m_p)·(1+ρ_UA/ρ_SCm)·scale'}
+
+
+class SaturnFluidDensityCalculator:
+    """Atmospheric fluid coupling ρ_fluid·V·g for Saturn."""
+    def __init__(self):
+        self.rho_fluid = 1e-21
+        self.r = 6.0268e7
+        self.G = 6.674e-11
+        self.M = 5.683e26
+    
+    def compute(self) -> dict:
+        import math
+        V = (4.0 / 3.0) * math.pi * self.r ** 3
+        g_base = (self.G * self.M) / (self.r ** 2)
+        g_fluid = self.rho_fluid * V * g_base
+        return {'value': g_fluid, 'rho_fluid_kg_m3': self.rho_fluid, 'V_m3': V, 'units': 'kg·m/s²',
+                'equation': 'g_fluid = ρ_fluid·V·g'}
+
+
+class SaturnOscillatoryWaveCalculator:
+    """Ring resonant oscillatory wave for Saturn."""
+    def __init__(self):
+        self.A_osc = 1e-15
+        self.k_osc = 1e-7
+        self.omega_osc = 1e-4
+        self.x_pos = 0.0
+        self.exp_factor = 2 * 3.14159 / 13.8
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        cos_term = 2 * self.A_osc * math.cos(self.k_osc * self.x_pos) * math.cos(self.omega_osc * t)
+        arg = self.k_osc * self.x_pos - self.omega_osc * t
+        real_exp = self.A_osc * math.cos(arg)
+        g_osc = cos_term + self.exp_factor * real_exp
+        return {'value': g_osc, 'A_osc': self.A_osc, 'omega_osc': self.omega_osc, 'units': 'm/s²',
+                'equation': 'g_osc = 2A·cos(kx)cos(ωt) + (2π/13.8)·A·cos(kx-ωt)'}
+
+
+class SaturnDarkMatterPerturbationCalculator:
+    """Density perturbation (M_DM=0 for planet): M_vis·(δρ/ρ + 3GM/r³) for Saturn."""
+    def __init__(self):
+        self.M_visible = 5.683e26
+        self.M_DM = 0.0
+        self.delta_rho = 1e-25
+        self.rho = 1e-20
+        self.G = 6.674e-11
+        self.M = 5.683e26
+        self.r = 6.0268e7
+    
+    def compute(self) -> dict:
+        pert = self.delta_rho / self.rho
+        curv = 3 * self.G * self.M / (self.r ** 3)
+        g_DM = (self.M_visible + self.M_DM) * (pert + curv)
+        return {'value': g_DM, 'M_visible_kg': self.M_visible, 'M_DM_kg': 0.0, 'units': 'kg/s²',
+                'equation': 'g_DM = M_vis·(δρ/ρ + 3GM/r³)'}
+
+
+class SaturnAtmosphericWindCalculator:
+    """Atmospheric wind feedback v_wind²·scale for Saturn."""
+    def __init__(self):
+        self.v_wind = 500
+        self.scale_macro = 1e-12
+    
+    def compute(self) -> dict:
+        g_wind = (self.v_wind ** 2) * self.scale_macro
+        return {'value': g_wind, 'v_wind_m_s': 500, 'wind_accel': g_wind, 'units': 'm/s²',
+                'equation': 'g_wind = v_wind²·scale'}
+
+
+SOURCE30_WOLFRAM_CALCULATORS = {
+    'SaturnSunGravityCalculator': SaturnSunGravityCalculator(),
+    'SaturnSelfGravityCalculator': SaturnSelfGravityCalculator(),
+    'SaturnRingTidalCalculator': SaturnRingTidalCalculator(),
+    'SaturnUQFFUnificationCalculator': SaturnUQFFUnificationCalculator(),
+    'SaturnCosmologicalConstantCalculator': SaturnCosmologicalConstantCalculator(),
+    'SaturnQuantumUncertaintyCalculator': SaturnQuantumUncertaintyCalculator(),
+    'SaturnElectromagneticCalculator': SaturnElectromagneticCalculator(),
+    'SaturnFluidDensityCalculator': SaturnFluidDensityCalculator(),
+    'SaturnOscillatoryWaveCalculator': SaturnOscillatoryWaveCalculator(),
+    'SaturnDarkMatterPerturbationCalculator': SaturnDarkMatterPerturbationCalculator(),
+    'SaturnAtmosphericWindCalculator': SaturnAtmosphericWindCalculator(),
+}
+
+
+# ================================================================================================
+# SOURCE31 WOLFRAM CALCULATORS - M16 Eagle Nebula (Pillars of Creation)
+# 11 unique Calculator classes from source31_wolfram.cpp
+# Astronomical: M=1200 M☉, r=35 ly, SFR=1 M☉/yr, τ_erode=3 Myr, E_0=0.3
+# ================================================================================================
+
+class M16BaseGravityCalculator:
+    """Base gravity with star formation M_sf(t) and radiation erosion E_rad(t) for M16."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M = 2.387e33
+        self.r = 3.31e17
+        self.H0 = 70.0
+        self.Omega_m = 0.3
+        self.Omega_Lambda = 0.7
+        self.z = 0.0015
+        self.Mpc_to_m = 3.086e22
+        self.f_TRZ = 0.1
+        self.B = 1e-5
+        self.B_crit = 1e11
+        self.SFR = 1.989e30
+        self.M0 = 2.387e33
+        self.year_to_s = 3.156e7
+        self.E_0 = 0.3
+        self.tau_erode_yr = 3e6
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        Hz_kms = self.H0 * math.sqrt(self.Omega_m * (1 + self.z)**3 + self.Omega_Lambda)
+        Hz = (Hz_kms * 1e3) / self.Mpc_to_m
+        t_yr = t / self.year_to_s
+        M_sf = (self.SFR * t_yr) / self.M0
+        tau_s = self.tau_erode_yr * self.year_to_s
+        E_rad = self.E_0 * (1.0 - math.exp(-t / tau_s))
+        M_t = self.M * (1.0 + M_sf) * (1.0 - E_rad)
+        expansion = 1.0 + Hz * t
+        sc_correction = 1.0 - (self.B / self.B_crit)
+        tr_factor = 1.0 + self.f_TRZ
+        g = (self.G * M_t / (self.r ** 2)) * expansion * sc_correction * tr_factor
+        return {'value': g, 'M_t_kg': M_t, 'M_sf': M_sf, 'E_rad': E_rad, 'units': 'm/s²',
+                'equation': 'g = G×M(t)/r² × (1+Hz·t) × (1-B/B_crit) × (1+f_TRZ)'}
+
+
+class M16StarFormationCalculator:
+    """Star formation mass growth ΔM(t) = SFR·t contribution for M16."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M = 2.387e33
+        self.r = 3.31e17
+        self.SFR = 1.989e30
+        self.year_to_s = 3.156e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        t_yr = t / self.year_to_s
+        Delta_M = self.SFR * t_yr
+        g_sf = (self.G * Delta_M) / (self.r ** 2)
+        return {'value': g_sf, 'SFR_Msun_yr': 1.0, 'Delta_M_kg': Delta_M, 'units': 'm/s²',
+                'equation': 'g_sf = G·(SFR·t_yr)/r²'}
+
+
+class M16RadiationErosionCalculator:
+    """Radiation erosion mass loss E_rad(t)=E_0·(1-e^(-t/τ)) for M16."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M = 2.387e33
+        self.r = 3.31e17
+        self.E_0 = 0.3
+        self.tau_erode_yr = 3e6
+        self.year_to_s = 3.156e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        tau_s = self.tau_erode_yr * self.year_to_s
+        E_rad = self.E_0 * (1.0 - math.exp(-t / tau_s))
+        Delta_M_erode = self.M * E_rad
+        g_erosion = -(self.G * Delta_M_erode) / (self.r ** 2)
+        return {'value': g_erosion, 'E_rad': E_rad, 'tau_erode_Myr': 3.0, 'E_0': 0.3, 'units': 'm/s²',
+                'equation': 'g_erosion = -G·M·E_0·(1-e^(-t/τ))/r²'}
+
+
+class M16UQFFUnificationCalculator:
+    """UQFF unification Ug = Ug1 + Ug4 (Ug2/Ug3=0) for M16."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M = 2.387e33
+        self.r = 3.31e17
+        self.f_sc = 1.0
+    
+    def compute(self) -> dict:
+        Ug1 = (self.G * self.M) / (self.r ** 2)
+        Ug4 = Ug1 * self.f_sc
+        Ug = Ug1 + Ug4
+        return {'value': Ug, 'Ug1': Ug1, 'Ug4': Ug4, 'units': 'm/s²',
+                'equation': 'Ug = Ug1 + Ug4'}
+
+
+class M16CosmologicalConstantCalculator:
+    """Cosmological constant Λc²/3 acceleration for M16."""
+    def __init__(self):
+        self.Lambda = 1.1e-52
+        self.c = 3e8
+    
+    def compute(self) -> dict:
+        g_Lambda = self.Lambda * (self.c ** 2) / 3.0
+        return {'value': g_Lambda, 'Lambda_m-2': self.Lambda, 'units': 'm/s²',
+                'equation': 'g_Λ = Λc²/3'}
+
+
+class M16QuantumUncertaintyCalculator:
+    """Gas quantum uncertainty (ℏ/√(Δx·Δp))·(2π/t_H) for M16."""
+    def __init__(self):
+        self.hbar = 1.0546e-34
+        self.Delta_x = 1e-10
+        self.t_Hubble = 13.8e9 * 3.156e7
+    
+    def compute(self) -> dict:
+        import math
+        Delta_p = self.hbar / self.Delta_x
+        unc = math.sqrt(self.Delta_x * Delta_p)
+        g_Q = (self.hbar / unc) * 1.0 * (2 * math.pi / self.t_Hubble)
+        return {'value': g_Q, 'Delta_x_m': self.Delta_x, 'units': 'm/s²',
+                'equation': 'g_Q = (ℏ/√(Δx·Δp))·(2π/t_H)'}
+
+
+class M16ElectromagneticCalculator:
+    """Lorentz force on ionized gas (v_gas=1e5 m/s, B=1e-5 T) for M16."""
+    def __init__(self):
+        self.q = 1.602e-19
+        self.v_gas = 1e5
+        self.B = 1e-5
+        self.m_proton = 1.673e-27
+        self.rho_UA = 7.09e-36
+        self.rho_SCm = 7.09e-37
+        self.scale_macro = 1e-12
+    
+    def compute(self) -> dict:
+        em_base = (self.q * self.v_gas * self.B) / self.m_proton
+        ua_scm_ratio = 1.0 + (self.rho_UA / self.rho_SCm)
+        g_EM = em_base * ua_scm_ratio * self.scale_macro
+        return {'value': g_EM, 'em_base': em_base, 'v_gas_m_s': 1e5, 'B_T': 1e-5, 'units': 'm/s²',
+                'equation': 'g_EM = (q·v_gas·B/m_p)·(1+ρ_UA/ρ_SCm)·scale'}
+
+
+class M16FluidDensityCalculator:
+    """Nebular gas density-volume-gravity coupling for M16."""
+    def __init__(self):
+        self.rho_fluid = 1e-20
+        self.V = 1e3
+        self.G = 6.6743e-11
+        self.M = 2.387e33
+        self.r = 3.31e17
+    
+    def compute(self) -> dict:
+        g_base = (self.G * self.M) / (self.r ** 2)
+        g_fluid = self.rho_fluid * self.V * g_base
+        return {'value': g_fluid, 'rho_fluid_kg_m3': self.rho_fluid, 'V_m3': self.V, 'units': 'kg·m/s²',
+                'equation': 'g_fluid = ρ_fluid·V·g'}
+
+
+class M16OscillatoryWaveCalculator:
+    """Aether-mediated pillar oscillatory wave for M16."""
+    def __init__(self):
+        self.A = 1e-10
+        self.k = 1e20
+        self.omega = 1e15
+        self.x = 0.0
+        self.pi = 3.141592653589793
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        cos_term = 2 * self.A * math.cos(self.k * self.x) * math.cos(self.omega * t)
+        arg = self.k * self.x - self.omega * t
+        real_exp = self.A * math.cos(arg)
+        exp_factor = (2 * self.pi / 13.8)
+        g_osc = cos_term + exp_factor * real_exp
+        return {'value': g_osc, 'A': self.A, 'k': self.k, 'omega': self.omega, 'units': 'm/s²',
+                'equation': 'g_osc = 2A·cos(kx)cos(ωt) + (2π/13.8)·A·cos(kx-ωt)'}
+
+
+class M16DarkMatterPerturbationCalculator:
+    """Visible mass perturbation (M_DM=0) for M16."""
+    def __init__(self):
+        self.M_visible = 2.387e33
+        self.M_DM = 0.0
+        self.delta_rho = 1e-21
+        self.rho = 1e-20
+        self.G = 6.6743e-11
+        self.M = 2.387e33
+        self.r = 3.31e17
+    
+    def compute(self) -> dict:
+        pert = self.delta_rho / self.rho
+        curv = 3 * self.G * self.M / (self.r ** 3)
+        g_DM = (self.M_visible + self.M_DM) * (pert + curv)
+        return {'value': g_DM, 'M_visible_kg': self.M_visible, 'M_DM': 0.0, 'units': 'kg/s²',
+                'equation': 'g_DM = M_vis·(δρ/ρ + 3GM/r³)'}
+
+
+class M16SuperconductivityCalculator:
+    """Quantum field superconductivity correction -g·(B/B_crit) for M16."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M = 2.387e33
+        self.r = 3.31e17
+        self.B = 1e-5
+        self.B_crit = 1e11
+    
+    def compute(self) -> dict:
+        g_base = (self.G * self.M) / (self.r ** 2)
+        g_SC = -g_base * (self.B / self.B_crit)
+        return {'value': g_SC, 'B_T': self.B, 'B_crit_T': self.B_crit, 'units': 'm/s²',
+                'equation': 'g_SC = -g·(B/B_crit)'}
+
+
+SOURCE31_WOLFRAM_CALCULATORS = {
+    'M16BaseGravityCalculator': M16BaseGravityCalculator(),
+    'M16StarFormationCalculator': M16StarFormationCalculator(),
+    'M16RadiationErosionCalculator': M16RadiationErosionCalculator(),
+    'M16UQFFUnificationCalculator': M16UQFFUnificationCalculator(),
+    'M16CosmologicalConstantCalculator': M16CosmologicalConstantCalculator(),
+    'M16QuantumUncertaintyCalculator': M16QuantumUncertaintyCalculator(),
+    'M16ElectromagneticCalculator': M16ElectromagneticCalculator(),
+    'M16FluidDensityCalculator': M16FluidDensityCalculator(),
+    'M16OscillatoryWaveCalculator': M16OscillatoryWaveCalculator(),
+    'M16DarkMatterPerturbationCalculator': M16DarkMatterPerturbationCalculator(),
+    'M16SuperconductivityCalculator': M16SuperconductivityCalculator(),
+}
+
+
+# ================================================================================================
+# SOURCE32 WOLFRAM CALCULATORS - Crab Nebula (M1 Pulsar-Driven SNR)
+# 11 unique Calculator classes from source32_wolfram.cpp
+# Astronomical: M=4.6 M☉, r(t)=r0+v_exp·t (expanding), age=971 yr, P_pulsar=5e31 W
+# ================================================================================================
+
+class CrabBaseGravityCalculator:
+    """Base gravity with time-dependent radius r(t)=r0+v_exp·t for Crab Nebula."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M = 9.149e30
+        self.r0 = 5.2e16
+        self.v_exp = 1.5e6
+        self.H0 = 70.0
+        self.Omega_m = 0.3
+        self.Omega_Lambda = 0.7
+        self.z = 0.0015
+        self.Mpc_to_m = 3.086e22
+        self.f_TRZ = 0.1
+        self.B = 1e-8
+        self.B_crit = 1e11
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        r = self.r0 + self.v_exp * t
+        Hz_kms = self.H0 * math.sqrt(self.Omega_m * (1 + self.z)**3 + self.Omega_Lambda)
+        Hz = (Hz_kms * 1e3) / self.Mpc_to_m
+        expansion = 1.0 + Hz * t
+        sc_correction = 1.0 - (self.B / self.B_crit)
+        tr_factor = 1.0 + self.f_TRZ
+        g = (self.G * self.M / (r ** 2)) * expansion * sc_correction * tr_factor
+        return {'value': g, 'r_t_m': r, 'r0_m': self.r0, 'v_exp_m_s': self.v_exp, 'units': 'm/s²',
+                'equation': 'g = G×M/r(t)² × (1+Hz·t) × (1-B/B_crit) × (1+f_TRZ)'}
+
+
+class CrabPulsarWindCalculator:
+    """Relativistic pulsar wind pressure (P=5e31 W, dominant outward force) for Crab."""
+    def __init__(self):
+        self.P_pulsar = 5e31
+        self.v_shock = 1.5e6
+        self.c = 3e8
+        self.rho_fluid = 1e-21
+        self.scale_macro = 1e-12
+        self.r0 = 5.2e16
+        self.v_exp = 1.5e6
+        self.pi = 3.141592653589793
+    
+    def compute(self, t: float = 0.0) -> dict:
+        r = self.r0 + self.v_exp * t
+        pressure = (self.P_pulsar / (4 * self.pi * r ** 2)) * (1.0 + self.v_shock / self.c)
+        g_wind = (pressure / self.rho_fluid) * self.scale_macro
+        return {'value': g_wind, 'P_pulsar_W': self.P_pulsar, 'pressure_Pa': pressure, 'units': 'm/s²',
+                'equation': 'g_wind = [P_pulsar/(4πr²)·(1+v_shock/c)]/ρ·scale'}
+
+
+class CrabMagneticLorentzCalculator:
+    """Magnetic Lorentz force on synchrotron electrons (B=1e-8 T) for Crab."""
+    def __init__(self):
+        self.q = 1.602e-19
+        self.v_shock = 1.5e6
+        self.B = 1e-8
+        self.m_e = 9.11e-31
+        self.scale_macro = 1e-12
+    
+    def compute(self) -> dict:
+        g_mag = (self.q * self.v_shock * self.B / self.m_e) * self.scale_macro
+        return {'value': g_mag, 'B_T': self.B, 'v_shock_m_s': self.v_shock, 'units': 'm/s²',
+                'equation': 'g_mag = (q·v_shock·B/m_e)·scale'}
+
+
+class CrabUQFFUnificationCalculator:
+    """UQFF unification with r(t): Ug = Ug1 + Ug4 for Crab."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M = 9.149e30
+        self.r0 = 5.2e16
+        self.v_exp = 1.5e6
+        self.f_sc = 1.0
+    
+    def compute(self, t: float = 0.0) -> dict:
+        r = self.r0 + self.v_exp * t
+        Ug1 = (self.G * self.M) / (r ** 2)
+        Ug4 = Ug1 * self.f_sc
+        Ug = Ug1 + Ug4
+        return {'value': Ug, 'Ug1': Ug1, 'Ug4': Ug4, 'r_t_m': r, 'units': 'm/s²',
+                'equation': 'Ug = Ug1 + Ug4 (with r(t))'}
+
+
+class CrabCosmologicalConstantCalculator:
+    """Cosmological constant Λc²/3 acceleration for Crab."""
+    def __init__(self):
+        self.Lambda = 1.1e-52
+        self.c = 3e8
+    
+    def compute(self) -> dict:
+        g_Lambda = self.Lambda * (self.c ** 2) / 3.0
+        return {'value': g_Lambda, 'Lambda_m-2': self.Lambda, 'units': 'm/s²',
+                'equation': 'g_Λ = Λc²/3'}
+
+
+class CrabQuantumUncertaintyCalculator:
+    """Particle quantum uncertainty (ℏ/√(Δx·Δp))·(2π/t_H) for Crab."""
+    def __init__(self):
+        self.hbar = 1.0546e-34
+        self.Delta_x = 1e-10
+        self.t_Hubble = 13.8e9 * 3.156e7
+        self.pi = 3.141592653589793
+    
+    def compute(self) -> dict:
+        import math
+        Delta_p = self.hbar / self.Delta_x
+        unc = math.sqrt(self.Delta_x * Delta_p)
+        g_Q = (self.hbar / unc) * 1.0 * (2 * self.pi / self.t_Hubble)
+        return {'value': g_Q, 'Delta_x_m': self.Delta_x, 'units': 'm/s²',
+                'equation': 'g_Q = (ℏ/√(Δx·Δp))·(2π/t_H)'}
+
+
+class CrabElectromagneticCalculator:
+    """Lorentz force on shock-accelerated ions for Crab."""
+    def __init__(self):
+        self.q = 1.602e-19
+        self.v_shock = 1.5e6
+        self.B = 1e-8
+        self.m_proton = 1.673e-27
+        self.rho_UA = 7.09e-36
+        self.rho_SCm = 7.09e-37
+        self.scale_macro = 1e-12
+    
+    def compute(self) -> dict:
+        em_base = (self.q * self.v_shock * self.B) / self.m_proton
+        ua_scm_ratio = 1.0 + (self.rho_UA / self.rho_SCm)
+        g_EM = em_base * ua_scm_ratio * self.scale_macro
+        return {'value': g_EM, 'em_base': em_base, 'v_shock_m_s': self.v_shock, 'units': 'm/s²',
+                'equation': 'g_EM = (q·v_shock·B/m_p)·(1+ρ_UA/ρ_SCm)·scale'}
+
+
+class CrabFluidDensityCalculator:
+    """Nebular filament density coupling with r(t) for Crab."""
+    def __init__(self):
+        self.rho_fluid = 1e-21
+        self.V = 1e3
+        self.G = 6.6743e-11
+        self.M = 9.149e30
+        self.r0 = 5.2e16
+        self.v_exp = 1.5e6
+    
+    def compute(self, t: float = 0.0) -> dict:
+        r = self.r0 + self.v_exp * t
+        g_base = (self.G * self.M) / (r ** 2)
+        g_fluid = self.rho_fluid * self.V * g_base
+        return {'value': g_fluid, 'rho_fluid_kg_m3': self.rho_fluid, 'r_t_m': r, 'units': 'kg·m/s²',
+                'equation': 'g_fluid = ρ_fluid·V·g(r(t))'}
+
+
+class CrabOscillatoryWaveCalculator:
+    """Aether-mediated wisp oscillatory wave for Crab synchrotron wisps."""
+    def __init__(self):
+        self.A = 1e-10
+        self.k = 1e20
+        self.omega = 1e15
+        self.x = 0.0
+        self.pi = 3.141592653589793
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        cos_term = 2 * self.A * math.cos(self.k * self.x) * math.cos(self.omega * t)
+        arg = self.k * self.x - self.omega * t
+        real_exp = self.A * math.cos(arg)
+        exp_factor = (2 * self.pi / 13.8)
+        g_osc = cos_term + exp_factor * real_exp
+        return {'value': g_osc, 'A': self.A, 'k': self.k, 'omega': self.omega, 'units': 'm/s²',
+                'equation': 'g_osc = 2A·cos(kx)cos(ωt) + (2π/13.8)·A·cos(kx-ωt)'}
+
+
+class CrabDarkMatterPerturbationCalculator:
+    """Visible mass perturbation with r(t) curvature (M_DM=0) for Crab."""
+    def __init__(self):
+        self.M_visible = 9.149e30
+        self.M_DM = 0.0
+        self.delta_rho = 1e-22
+        self.rho = 1e-21
+        self.G = 6.6743e-11
+        self.M = 9.149e30
+        self.r0 = 5.2e16
+        self.v_exp = 1.5e6
+    
+    def compute(self, t: float = 0.0) -> dict:
+        r = self.r0 + self.v_exp * t
+        pert = self.delta_rho / self.rho
+        curv = 3 * self.G * self.M / (r ** 3)
+        g_DM = (self.M_visible + self.M_DM) * (pert + curv)
+        return {'value': g_DM, 'M_visible_kg': self.M_visible, 'r_t_m': r, 'units': 'kg/s²',
+                'equation': 'g_DM = M_vis·(δρ/ρ + 3GM/r(t)³)'}
+
+
+class CrabSuperconductivityCalculator:
+    """Quantum field superconductivity with r(t): -g(r(t))·(B/B_crit) for Crab."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M = 9.149e30
+        self.r0 = 5.2e16
+        self.v_exp = 1.5e6
+        self.B = 1e-8
+        self.B_crit = 1e11
+    
+    def compute(self, t: float = 0.0) -> dict:
+        r = self.r0 + self.v_exp * t
+        g_base = (self.G * self.M) / (r ** 2)
+        g_SC = -g_base * (self.B / self.B_crit)
+        return {'value': g_SC, 'B_T': self.B, 'B_crit_T': self.B_crit, 'r_t_m': r, 'units': 'm/s²',
+                'equation': 'g_SC = -g(r(t))·(B/B_crit)'}
+
+
+SOURCE32_WOLFRAM_CALCULATORS = {
+    'CrabBaseGravityCalculator': CrabBaseGravityCalculator(),
+    'CrabPulsarWindCalculator': CrabPulsarWindCalculator(),
+    'CrabMagneticLorentzCalculator': CrabMagneticLorentzCalculator(),
+    'CrabUQFFUnificationCalculator': CrabUQFFUnificationCalculator(),
+    'CrabCosmologicalConstantCalculator': CrabCosmologicalConstantCalculator(),
+    'CrabQuantumUncertaintyCalculator': CrabQuantumUncertaintyCalculator(),
+    'CrabElectromagneticCalculator': CrabElectromagneticCalculator(),
+    'CrabFluidDensityCalculator': CrabFluidDensityCalculator(),
+    'CrabOscillatoryWaveCalculator': CrabOscillatoryWaveCalculator(),
+    'CrabDarkMatterPerturbationCalculator': CrabDarkMatterPerturbationCalculator(),
+    'CrabSuperconductivityCalculator': CrabSuperconductivityCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -152606,4 +153269,43 @@ __all__.extend([
     'SombreroDustFrictionCalculator',
     'SombreroSuperconductivityCalculator',
     'SOURCE29_WOLFRAM_CALCULATORS',
+    # Source30 Saturn (Feb 26, 2026) - 11 Calculator Classes
+    'SaturnSunGravityCalculator',
+    'SaturnSelfGravityCalculator',
+    'SaturnRingTidalCalculator',
+    'SaturnUQFFUnificationCalculator',
+    'SaturnCosmologicalConstantCalculator',
+    'SaturnQuantumUncertaintyCalculator',
+    'SaturnElectromagneticCalculator',
+    'SaturnFluidDensityCalculator',
+    'SaturnOscillatoryWaveCalculator',
+    'SaturnDarkMatterPerturbationCalculator',
+    'SaturnAtmosphericWindCalculator',
+    'SOURCE30_WOLFRAM_CALCULATORS',
+    # Source31 M16 Eagle Nebula (Feb 26, 2026) - 11 Calculator Classes
+    'M16BaseGravityCalculator',
+    'M16StarFormationCalculator',
+    'M16RadiationErosionCalculator',
+    'M16UQFFUnificationCalculator',
+    'M16CosmologicalConstantCalculator',
+    'M16QuantumUncertaintyCalculator',
+    'M16ElectromagneticCalculator',
+    'M16FluidDensityCalculator',
+    'M16OscillatoryWaveCalculator',
+    'M16DarkMatterPerturbationCalculator',
+    'M16SuperconductivityCalculator',
+    'SOURCE31_WOLFRAM_CALCULATORS',
+    # Source32 Crab Nebula (Feb 26, 2026) - 11 Calculator Classes
+    'CrabBaseGravityCalculator',
+    'CrabPulsarWindCalculator',
+    'CrabMagneticLorentzCalculator',
+    'CrabUQFFUnificationCalculator',
+    'CrabCosmologicalConstantCalculator',
+    'CrabQuantumUncertaintyCalculator',
+    'CrabElectromagneticCalculator',
+    'CrabFluidDensityCalculator',
+    'CrabOscillatoryWaveCalculator',
+    'CrabDarkMatterPerturbationCalculator',
+    'CrabSuperconductivityCalculator',
+    'SOURCE32_WOLFRAM_CALCULATORS',
 ])
