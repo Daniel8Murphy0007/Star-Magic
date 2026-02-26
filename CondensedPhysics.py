@@ -149517,6 +149517,684 @@ SOURCE14_WOLFRAM_CALCULATORS = {
 }
 
 
+# ================================================================================================
+# SOURCE16_WOLFRAM: Starbirth Tapestry NGC 2014/2020 LMC (13 Calculator Classes)
+# Physics: Star formation with mass growth, stellar wind feedback, nebular gas dynamics
+# Parameters: M=240 M_sun, gas=10000 M_sun, r=10 ly, τ_SF=5 Myr, v_wind=2000 km/s
+# ================================================================================================
+
+class StarbirthBaseGravityCalculator:
+    """Starbirth: Base gravity with M(t) star formation growth, H₀ expansion, and B modulation."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M_sun = 1.989e30
+        self.M_initial = 240.0 * self.M_sun
+        self.r = 10.0 * 9.461e15           # 10 light-years
+        self.H0 = 2.184e-18
+        self.B = 1e-6
+        self.B_crit = 1e11
+        self.M_dot_factor = 10000.0 / 240.0
+        self.tau_SF = 5e6 * 3.156e7        # 5 Myr
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        M_dot = self.M_dot_factor * math.exp(-t / self.tau_SF)
+        Mt = self.M_initial * (1 + M_dot)
+        ug1_t = (self.G * Mt) / (self.r ** 2)
+        corr_H = 1 + self.H0 * t
+        corr_B = 1 - self.B / self.B_crit
+        value = ug1_t * corr_H * corr_B
+        return {
+            'value': value, 'M_t_Msun': Mt / self.M_sun,
+            'units': 'm/s²', 'equation': f"g = GM(t)/r²×(1+H₀t)×(1-B/B_c) = {value:.4e} m/s²"
+        }
+
+
+class StarbirthMassGrowthCalculator:
+    """Starbirth: Mass growth M(t) via exponential star formation."""
+    def __init__(self):
+        self.M_sun = 1.989e30
+        self.M_initial = 240.0 * self.M_sun
+        self.M_dot_factor = 10000.0 / 240.0
+        self.tau_SF = 5e6 * 3.156e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        M_dot = self.M_dot_factor * math.exp(-t / self.tau_SF)
+        value = self.M_initial * (1 + M_dot)
+        return {
+            'value': value, 'M_t_Msun': value / self.M_sun,
+            'gas_reservoir_Msun': 10000, 'tau_SF_Myr': 5,
+            'units': 'kg', 'equation': f"M(t) = M₀×(1+Ṁ×e^(-t/τ_SF)) = {value/self.M_sun:.2f} M_sun"
+        }
+
+
+class StarbirthUQFFUnificationCalculator:
+    """Starbirth: UQFF unification (Ug1+Ug2+Ug3+Ug4) with time-reversal factor."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M_sun = 1.989e30
+        self.M_initial = 240.0 * self.M_sun
+        self.r = 10.0 * 9.461e15
+        self.B = 1e-6
+        self.B_crit = 1e11
+        self.f_TRZ = 0.1
+        self.M_dot_factor = 10000.0 / 240.0
+        self.tau_SF = 5e6 * 3.156e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        M_dot = self.M_dot_factor * math.exp(-t / self.tau_SF)
+        Mt = self.M_initial * (1 + M_dot)
+        Ug1 = (self.G * Mt) / (self.r ** 2)
+        corr_B = 1 - self.B / self.B_crit
+        Ug4 = Ug1 * corr_B
+        value = (Ug1 + Ug4) * (1 + self.f_TRZ)
+        return {'value': value, 'Ug1': Ug1, 'Ug4': Ug4, 'f_TRZ': self.f_TRZ, 'units': 'm/s²'}
+
+
+class StarbirthCosmologicalConstantCalculator:
+    """Starbirth: Cosmological constant (dark energy) term."""
+    def __init__(self):
+        self.Lambda = 1.1e-52
+        self.c = 3e8
+    
+    def compute(self) -> dict:
+        value = (self.Lambda * self.c ** 2) / 3.0
+        return {'value': value, 'Lambda': self.Lambda, 'units': 'm/s²'}
+
+
+class StarbirthElectromagneticCalculator:
+    """Starbirth: Scaled EM acceleration with UA vacuum correction."""
+    def __init__(self):
+        self.q = 1.602e-19
+        self.gas_v = 1e5
+        self.B = 1e-6
+        self.m_p = 1.673e-27
+        self.rho_vac_UA = 7.09e-36
+        self.rho_vac_SCm = 7.09e-37
+        self.scale_EM = 1e-12
+    
+    def compute(self) -> dict:
+        cross_vB = self.gas_v * self.B
+        em_base = (self.q * cross_vB) / self.m_p
+        corr_UA = 1 + (self.rho_vac_UA / self.rho_vac_SCm)
+        value = (em_base * corr_UA) * self.scale_EM
+        return {'value': value, 'v_gas_km_s': self.gas_v / 1e3, 'B_T': self.B, 'units': 'm/s²'}
+
+
+class StarbirthQuantumUncertaintyCalculator:
+    """Starbirth: Quantum uncertainty (Heisenberg) contribution."""
+    def __init__(self):
+        self.hbar = 1.0546e-34
+        self.delta_x = 1e-10
+        self.t_Hubble = 13.8e9 * 3.156e7
+    
+    def compute(self) -> dict:
+        import math
+        delta_p = self.hbar / self.delta_x
+        sqrt_unc = math.sqrt(self.delta_x * delta_p)
+        value = (self.hbar / sqrt_unc) * (2 * math.pi / self.t_Hubble)
+        return {'value': value, 'delta_x_m': self.delta_x, 'units': 'J/s'}
+
+
+class StarbirthFluidDensityCalculator:
+    """Starbirth: Nebular gas fluid density coupling."""
+    def __init__(self):
+        self.rho_fluid = 1e-21
+        self.r = 10.0 * 9.461e15
+        self.G = 6.6743e-11
+        self.M_sun = 1.989e30
+        self.M_initial = 240.0 * self.M_sun
+        self.M_dot_factor = 10000.0 / 240.0
+        self.tau_SF = 5e6 * 3.156e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        M_dot = self.M_dot_factor * math.exp(-t / self.tau_SF)
+        Mt = self.M_initial * (1 + M_dot)
+        V = (4.0 / 3.0) * math.pi * self.r ** 3
+        ug1_t = (self.G * Mt) / (self.r ** 2)
+        value = (self.rho_fluid * V * ug1_t) / Mt
+        return {'value': value, 'rho_fluid': self.rho_fluid, 'units': 'm/s²'}
+
+
+class StarbirthOscillatoryWaveCalculator:
+    """Starbirth: Oscillatory wave terms in star-forming region."""
+    def __init__(self):
+        self.A_osc = 1e-10
+        self.r = 10.0 * 9.461e15
+        self.c = 3e8
+        self.t_Hubble_gyr = 13.8
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        k_osc = 1.0 / self.r
+        omega_osc = 2 * math.pi / (self.r / self.c)
+        x_pos = self.r
+        term1 = 2 * self.A_osc * math.cos(k_osc * x_pos) * math.cos(omega_osc * t)
+        term2 = (2 * math.pi / self.t_Hubble_gyr) * self.A_osc * math.cos(k_osc * x_pos - omega_osc * t)
+        value = term1 + term2
+        return {'value': value, 'term_standing': term1, 'term_traveling': term2, 'units': 'm/s²'}
+
+
+class StarbirthDarkMatterPerturbationCalculator:
+    """Starbirth: Dark matter + density perturbation coupling."""
+    def __init__(self):
+        self.M_sun = 1.989e30
+        self.M_initial = 240.0 * self.M_sun
+        self.M_DM_factor = 0.1
+        self.delta_rho_over_rho = 1e-5
+        self.G = 6.6743e-11
+        self.r = 10.0 * 9.461e15
+        self.M_dot_factor = 10000.0 / 240.0
+        self.tau_SF = 5e6 * 3.156e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        M_dot = self.M_dot_factor * math.exp(-t / self.tau_SF)
+        Mt = self.M_initial * (1 + M_dot)
+        M_dm = Mt * self.M_DM_factor
+        pert1 = self.delta_rho_over_rho
+        pert2 = 3 * self.G * Mt / (self.r ** 3)
+        value = (Mt + M_dm) * (pert1 + pert2) / Mt
+        return {'value': value, 'M_DM_Msun': M_dm / self.M_sun, 'units': 'm/s²'}
+
+
+class StarbirthStellarWindCalculator:
+    """Starbirth: Stellar wind feedback (ram pressure acceleration)."""
+    def __init__(self):
+        self.rho_wind = 1e-21
+        self.v_wind = 2e6
+        self.rho_fluid = 1e-21
+    
+    def compute(self) -> dict:
+        wind_pressure = self.rho_wind * self.v_wind ** 2
+        value = wind_pressure / self.rho_fluid
+        return {'value': value, 'v_wind_km_s': self.v_wind / 1e3, 'units': 'm/s²'}
+
+
+class StarbirthFormationTimescaleCalculator:
+    """Starbirth: Star formation timescale τ_SF = 5 Myr."""
+    def __init__(self):
+        self.tau_SF = 5e6 * 3.156e7
+    
+    def compute(self) -> dict:
+        return {'value': self.tau_SF, 'tau_SF_Myr': 5, 'units': 's'}
+
+
+class StarbirthGasVelocityCalculator:
+    """Starbirth: Nebular gas velocity v_gas = 100 km/s."""
+    def __init__(self):
+        self.gas_v = 1e5
+    
+    def compute(self) -> dict:
+        return {'value': self.gas_v, 'v_gas_km_s': 100, 'units': 'm/s'}
+
+
+SOURCE16_WOLFRAM_CALCULATORS = {
+    'StarbirthBaseGravityCalculator': StarbirthBaseGravityCalculator(),
+    'StarbirthMassGrowthCalculator': StarbirthMassGrowthCalculator(),
+    'StarbirthUQFFUnificationCalculator': StarbirthUQFFUnificationCalculator(),
+    'StarbirthCosmologicalConstantCalculator': StarbirthCosmologicalConstantCalculator(),
+    'StarbirthElectromagneticCalculator': StarbirthElectromagneticCalculator(),
+    'StarbirthQuantumUncertaintyCalculator': StarbirthQuantumUncertaintyCalculator(),
+    'StarbirthFluidDensityCalculator': StarbirthFluidDensityCalculator(),
+    'StarbirthOscillatoryWaveCalculator': StarbirthOscillatoryWaveCalculator(),
+    'StarbirthDarkMatterPerturbationCalculator': StarbirthDarkMatterPerturbationCalculator(),
+    'StarbirthStellarWindCalculator': StarbirthStellarWindCalculator(),
+    'StarbirthFormationTimescaleCalculator': StarbirthFormationTimescaleCalculator(),
+    'StarbirthGasVelocityCalculator': StarbirthGasVelocityCalculator(),
+}
+
+
+# ================================================================================================
+# SOURCE17_WOLFRAM: Westerlund 2 Super Star Cluster (13 Calculator Classes)
+# Physics: Massive cluster formation, 100000 M_sun gas, 2 Myr timescale
+# Parameters: M=30000 M_sun, gas=100000 M_sun, r=10 ly, τ_SF=2 Myr, B=10⁻⁵ T
+# ================================================================================================
+
+class Westerlund2BaseGravityCalculator:
+    """Westerlund2: Base gravity with M(t) star formation growth."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M_sun = 1.989e30
+        self.M_initial = 30000.0 * self.M_sun
+        self.r = 9.461e16             # 10 light-years
+        self.H0 = 2.184e-18
+        self.B = 1e-5
+        self.B_crit = 1e11
+        self.M_dot_factor = 1e5 / 30000.0
+        self.tau_SF = 2e6 * 3.156e7   # 2 Myr
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        M_dot = self.M_dot_factor * math.exp(-t / self.tau_SF)
+        Mt = self.M_initial * (1 + M_dot)
+        ug1_t = (self.G * Mt) / (self.r ** 2)
+        corr_H = 1 + self.H0 * t
+        corr_B = 1 - self.B / self.B_crit
+        value = ug1_t * corr_H * corr_B
+        return {'value': value, 'M_t_Msun': Mt / self.M_sun, 'units': 'm/s²'}
+
+
+class Westerlund2MassGrowthCalculator:
+    """Westerlund2: Mass growth M(t) via exponential star formation."""
+    def __init__(self):
+        self.M_sun = 1.989e30
+        self.M_initial = 30000.0 * self.M_sun
+        self.M_dot_factor = 1e5 / 30000.0
+        self.tau_SF = 2e6 * 3.156e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        M_dot = self.M_dot_factor * math.exp(-t / self.tau_SF)
+        value = self.M_initial * (1 + M_dot)
+        return {'value': value, 'M_t_Msun': value / self.M_sun, 'gas_reservoir_Msun': 100000, 'units': 'kg'}
+
+
+class Westerlund2UQFFUnificationCalculator:
+    """Westerlund2: UQFF unification with time-reversal factor."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M_sun = 1.989e30
+        self.M_initial = 30000.0 * self.M_sun
+        self.r = 9.461e16
+        self.B = 1e-5
+        self.B_crit = 1e11
+        self.f_TRZ = 0.1
+        self.M_dot_factor = 1e5 / 30000.0
+        self.tau_SF = 2e6 * 3.156e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        M_dot = self.M_dot_factor * math.exp(-t / self.tau_SF)
+        Mt = self.M_initial * (1 + M_dot)
+        Ug1 = (self.G * Mt) / (self.r ** 2)
+        corr_B = 1 - self.B / self.B_crit
+        Ug4 = Ug1 * corr_B
+        value = (Ug1 + Ug4) * (1 + self.f_TRZ)
+        return {'value': value, 'f_TRZ': self.f_TRZ, 'units': 'm/s²'}
+
+
+class Westerlund2CosmologicalConstantCalculator:
+    """Westerlund2: Cosmological constant term."""
+    def __init__(self):
+        self.Lambda = 1.1e-52
+        self.c = 3e8
+    
+    def compute(self) -> dict:
+        value = (self.Lambda * self.c ** 2) / 3.0
+        return {'value': value, 'units': 'm/s²'}
+
+
+class Westerlund2ElectromagneticCalculator:
+    """Westerlund2: Scaled EM acceleration with UA vacuum correction."""
+    def __init__(self):
+        self.q = 1.602e-19
+        self.gas_v = 1e5
+        self.B = 1e-5
+        self.m_p = 1.673e-27
+        self.rho_vac_UA = 7.09e-36
+        self.rho_vac_SCm = 7.09e-37
+        self.scale_EM = 1e-12
+    
+    def compute(self) -> dict:
+        em_base = (self.q * self.gas_v * self.B) / self.m_p
+        corr_UA = 1 + (self.rho_vac_UA / self.rho_vac_SCm)
+        value = (em_base * corr_UA) * self.scale_EM
+        return {'value': value, 'B_T': self.B, 'units': 'm/s²'}
+
+
+class Westerlund2QuantumUncertaintyCalculator:
+    """Westerlund2: Quantum uncertainty contribution."""
+    def __init__(self):
+        self.hbar = 1.0546e-34
+        self.delta_x = 1e-10
+        self.t_Hubble = 13.8e9 * 3.156e7
+    
+    def compute(self) -> dict:
+        import math
+        delta_p = self.hbar / self.delta_x
+        sqrt_unc = math.sqrt(self.delta_x * delta_p)
+        value = (self.hbar / sqrt_unc) * (2 * math.pi / self.t_Hubble)
+        return {'value': value, 'units': 'J/s'}
+
+
+class Westerlund2FluidDensityCalculator:
+    """Westerlund2: Cluster gas fluid density coupling."""
+    def __init__(self):
+        self.rho_fluid = 1e-20
+        self.r = 9.461e16
+        self.G = 6.6743e-11
+        self.M_sun = 1.989e30
+        self.M_initial = 30000.0 * self.M_sun
+        self.M_dot_factor = 1e5 / 30000.0
+        self.tau_SF = 2e6 * 3.156e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        M_dot = self.M_dot_factor * math.exp(-t / self.tau_SF)
+        Mt = self.M_initial * (1 + M_dot)
+        V = (4.0 / 3.0) * math.pi * self.r ** 3
+        ug1_t = (self.G * Mt) / (self.r ** 2)
+        value = (self.rho_fluid * V * ug1_t) / Mt
+        return {'value': value, 'rho_fluid': self.rho_fluid, 'units': 'm/s²'}
+
+
+class Westerlund2OscillatoryWaveCalculator:
+    """Westerlund2: Oscillatory wave terms in cluster."""
+    def __init__(self):
+        self.A_osc = 1e-9
+        self.r = 9.461e16
+        self.c = 3e8
+        self.t_Hubble_gyr = 13.8
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        k_osc = 1.0 / self.r
+        omega_osc = 2 * math.pi / (self.r / self.c)
+        term1 = 2 * self.A_osc * math.cos(k_osc * self.r) * math.cos(omega_osc * t)
+        term2 = (2 * math.pi / self.t_Hubble_gyr) * self.A_osc * math.cos(k_osc * self.r - omega_osc * t)
+        value = term1 + term2
+        return {'value': value, 'units': 'm/s²'}
+
+
+class Westerlund2DarkMatterPerturbationCalculator:
+    """Westerlund2: Dark matter + density perturbation coupling."""
+    def __init__(self):
+        self.M_sun = 1.989e30
+        self.M_initial = 30000.0 * self.M_sun
+        self.M_DM_factor = 0.1
+        self.delta_rho_over_rho = 1e-5
+        self.G = 6.6743e-11
+        self.r = 9.461e16
+        self.M_dot_factor = 1e5 / 30000.0
+        self.tau_SF = 2e6 * 3.156e7
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        M_dot = self.M_dot_factor * math.exp(-t / self.tau_SF)
+        Mt = self.M_initial * (1 + M_dot)
+        M_dm = Mt * self.M_DM_factor
+        pert1 = self.delta_rho_over_rho
+        pert2 = 3 * self.G * Mt / (self.r ** 3)
+        value = (Mt + M_dm) * (pert1 + pert2) / Mt
+        return {'value': value, 'units': 'm/s²'}
+
+
+class Westerlund2StellarWindCalculator:
+    """Westerlund2: Stellar wind feedback (ram pressure)."""
+    def __init__(self):
+        self.rho_wind = 1e-20
+        self.v_wind = 2e6
+        self.rho_fluid = 1e-20
+    
+    def compute(self) -> dict:
+        value = self.rho_wind * self.v_wind ** 2 / self.rho_fluid
+        return {'value': value, 'v_wind_km_s': 2000, 'units': 'm/s²'}
+
+
+class Westerlund2FormationTimescaleCalculator:
+    """Westerlund2: Star formation timescale τ_SF = 2 Myr."""
+    def __init__(self):
+        self.tau_SF = 2e6 * 3.156e7
+    
+    def compute(self) -> dict:
+        return {'value': self.tau_SF, 'tau_SF_Myr': 2, 'units': 's'}
+
+
+class Westerlund2GasVelocityCalculator:
+    """Westerlund2: Cluster gas velocity v_gas = 100 km/s."""
+    def __init__(self):
+        self.gas_v = 1e5
+    
+    def compute(self) -> dict:
+        return {'value': self.gas_v, 'v_gas_km_s': 100, 'units': 'm/s'}
+
+
+SOURCE17_WOLFRAM_CALCULATORS = {
+    'Westerlund2BaseGravityCalculator': Westerlund2BaseGravityCalculator(),
+    'Westerlund2MassGrowthCalculator': Westerlund2MassGrowthCalculator(),
+    'Westerlund2UQFFUnificationCalculator': Westerlund2UQFFUnificationCalculator(),
+    'Westerlund2CosmologicalConstantCalculator': Westerlund2CosmologicalConstantCalculator(),
+    'Westerlund2ElectromagneticCalculator': Westerlund2ElectromagneticCalculator(),
+    'Westerlund2QuantumUncertaintyCalculator': Westerlund2QuantumUncertaintyCalculator(),
+    'Westerlund2FluidDensityCalculator': Westerlund2FluidDensityCalculator(),
+    'Westerlund2OscillatoryWaveCalculator': Westerlund2OscillatoryWaveCalculator(),
+    'Westerlund2DarkMatterPerturbationCalculator': Westerlund2DarkMatterPerturbationCalculator(),
+    'Westerlund2StellarWindCalculator': Westerlund2StellarWindCalculator(),
+    'Westerlund2FormationTimescaleCalculator': Westerlund2FormationTimescaleCalculator(),
+    'Westerlund2GasVelocityCalculator': Westerlund2GasVelocityCalculator(),
+}
+
+
+# ================================================================================================
+# SOURCE19_WOLFRAM: Rings of Relativity Einstein Ring (14 Calculator Classes)
+# Physics: Gravitational lensing, redshift H(z), Einstein radius, amplification
+# Parameters: M=10¹⁴ M_sun, r_E=10 kpc, z=0.5, L_factor=0.67, B=10⁻⁵ T
+# ================================================================================================
+
+class RingsBaseGravityCalculator:
+    """Rings: Base gravity with H(z), B, and L(t) lensing amplification."""
+    def __init__(self):
+        import math
+        self.G = 6.6743e-11
+        self.M_sun = 1.989e30
+        self.M = 1e14 * self.M_sun
+        self.r = 3.086e20             # 10 kpc
+        self.z_lens = 0.5
+        self.B = 1e-5
+        self.B_crit = 1e11
+        self.c = 3e8
+        self.L_factor = 0.67
+        # H(z) = H₀ × sqrt(Ω_m × (1+z)³ + Ω_Λ)
+        Hz_kms = 70 * math.sqrt(0.3 * (1 + self.z_lens) ** 3 + 0.7)
+        self.Hz = Hz_kms * 1000 / 3.086e19
+        self.L_t = ((self.G * self.M) / (self.c ** 2 * self.r)) * self.L_factor
+    
+    def compute(self, t: float = 0.0) -> dict:
+        ug1 = (self.G * self.M) / (self.r ** 2)
+        corr_H = 1 + self.Hz * t
+        corr_B = 1 - self.B / self.B_crit
+        corr_L = 1 + self.L_t
+        value = ug1 * corr_H * corr_B * corr_L
+        return {
+            'value': value, 'z_lens': self.z_lens, 'L_factor': self.L_factor,
+            'units': 'm/s²', 'equation': f"g = GM/r²×H(z)×B×L = {value:.4e} m/s²"
+        }
+
+
+class RingsLensingAmplificationCalculator:
+    """Rings: Gravitational lensing amplification factor."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M_sun = 1.989e30
+        self.M = 1e14 * self.M_sun
+        self.r = 3.086e20
+        self.c = 3e8
+        self.L_factor = 0.67
+    
+    def compute(self) -> dict:
+        value = ((self.G * self.M) / (self.c ** 2 * self.r)) * self.L_factor
+        return {'value': value, 'L_factor': self.L_factor, 'units': 'dimensionless'}
+
+
+class RingsRedshiftHubbleCalculator:
+    """Rings: Hubble parameter H(z=0.5) for cosmological expansion."""
+    def __init__(self):
+        import math
+        self.z_lens = 0.5
+        Hz_kms = 70 * math.sqrt(0.3 * (1 + self.z_lens) ** 3 + 0.7)
+        self.Hz = Hz_kms * 1000 / 3.086e19
+    
+    def compute(self) -> dict:
+        return {'value': self.Hz, 'z_lens': self.z_lens, 'units': 's⁻¹'}
+
+
+class RingsUQFFUnificationCalculator:
+    """Rings: UQFF unification with time-reversal factor."""
+    def __init__(self):
+        self.G = 6.6743e-11
+        self.M_sun = 1.989e30
+        self.M = 1e14 * self.M_sun
+        self.r = 3.086e20
+        self.B = 1e-5
+        self.B_crit = 1e11
+        self.f_TRZ = 0.1
+    
+    def compute(self) -> dict:
+        Ug1 = (self.G * self.M) / (self.r ** 2)
+        corr_B = 1 - self.B / self.B_crit
+        Ug4 = Ug1 * corr_B
+        value = (Ug1 + Ug4) * (1 + self.f_TRZ)
+        return {'value': value, 'f_TRZ': self.f_TRZ, 'units': 'm/s²'}
+
+
+class RingsCosmologicalConstantCalculator:
+    """Rings: Cosmological constant term."""
+    def __init__(self):
+        self.Lambda = 1.1e-52
+        self.c = 3e8
+    
+    def compute(self) -> dict:
+        value = (self.Lambda * self.c ** 2) / 3.0
+        return {'value': value, 'units': 'm/s²'}
+
+
+class RingsElectromagneticCalculator:
+    """Rings: Scaled EM acceleration with UA vacuum correction."""
+    def __init__(self):
+        self.q = 1.602e-19
+        self.gas_v = 1e5
+        self.B = 1e-5
+        self.m_p = 1.673e-27
+        self.rho_vac_UA = 7.09e-36
+        self.rho_vac_SCm = 7.09e-37
+        self.scale_EM = 1e-12
+    
+    def compute(self) -> dict:
+        em_base = (self.q * self.gas_v * self.B) / self.m_p
+        corr_UA = 1 + (self.rho_vac_UA / self.rho_vac_SCm)
+        value = (em_base * corr_UA) * self.scale_EM
+        return {'value': value, 'units': 'm/s²'}
+
+
+class RingsQuantumUncertaintyCalculator:
+    """Rings: Quantum uncertainty contribution."""
+    def __init__(self):
+        self.hbar = 1.0546e-34
+        self.delta_x = 1e-10
+        self.t_Hubble = 13.8e9 * 3.156e7
+    
+    def compute(self) -> dict:
+        import math
+        delta_p = self.hbar / self.delta_x
+        sqrt_unc = math.sqrt(self.delta_x * delta_p)
+        value = (self.hbar / sqrt_unc) * (2 * math.pi / self.t_Hubble)
+        return {'value': value, 'units': 'J/s'}
+
+
+class RingsFluidDensityCalculator:
+    """Rings: Lensing halo ICM fluid density coupling."""
+    def __init__(self):
+        self.rho_fluid = 1e-21
+        self.r = 3.086e20
+        self.G = 6.6743e-11
+        self.M_sun = 1.989e30
+        self.M = 1e14 * self.M_sun
+    
+    def compute(self) -> dict:
+        import math
+        V = (4.0 / 3.0) * math.pi * self.r ** 3
+        ug1 = (self.G * self.M) / (self.r ** 2)
+        value = (self.rho_fluid * V * ug1) / self.M
+        return {'value': value, 'units': 'm/s²'}
+
+
+class RingsOscillatoryWaveCalculator:
+    """Rings: Oscillatory wave terms in gravitational lens system."""
+    def __init__(self):
+        self.A_osc = 1e-12
+        self.r = 3.086e20
+        self.c = 3e8
+        self.t_Hubble_gyr = 13.8
+    
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        k_osc = 1.0 / self.r
+        omega_osc = 2 * math.pi / (self.r / self.c)
+        term1 = 2 * self.A_osc * math.cos(k_osc * self.r) * math.cos(omega_osc * t)
+        term2 = (2 * math.pi / self.t_Hubble_gyr) * self.A_osc * math.cos(k_osc * self.r - omega_osc * t)
+        value = term1 + term2
+        return {'value': value, 'units': 'm/s²'}
+
+
+class RingsDarkMatterPerturbationCalculator:
+    """Rings: Dark matter + density perturbation coupling."""
+    def __init__(self):
+        self.M_sun = 1.989e30
+        self.M = 1e14 * self.M_sun
+        self.M_DM_factor = 0.1
+        self.delta_rho_over_rho = 1e-5
+        self.G = 6.6743e-11
+        self.r = 3.086e20
+    
+    def compute(self) -> dict:
+        M_dm = self.M * self.M_DM_factor
+        pert1 = self.delta_rho_over_rho
+        pert2 = 3 * self.G * self.M / (self.r ** 3)
+        value = (self.M + M_dm) * (pert1 + pert2) / self.M
+        return {'value': value, 'units': 'm/s²'}
+
+
+class RingsStellarWindCalculator:
+    """Rings: Stellar wind feedback (ram pressure)."""
+    def __init__(self):
+        self.rho_wind = 1e-21
+        self.v_wind = 2e6
+        self.rho_fluid = 1e-21
+    
+    def compute(self) -> dict:
+        value = self.rho_wind * self.v_wind ** 2 / self.rho_fluid
+        return {'value': value, 'units': 'm/s²'}
+
+
+class RingsEinsteinRadiusCalculator:
+    """Rings: Einstein ring radius r_E = 10 kpc."""
+    def __init__(self):
+        self.r_E = 3.086e20
+    
+    def compute(self) -> dict:
+        return {'value': self.r_E, 'r_E_kpc': 10, 'units': 'm'}
+
+
+class RingsGasVelocityCalculator:
+    """Rings: Halo gas velocity v_gas = 100 km/s."""
+    def __init__(self):
+        self.gas_v = 1e5
+    
+    def compute(self) -> dict:
+        return {'value': self.gas_v, 'v_gas_km_s': 100, 'units': 'm/s'}
+
+
+SOURCE19_WOLFRAM_CALCULATORS = {
+    'RingsBaseGravityCalculator': RingsBaseGravityCalculator(),
+    'RingsLensingAmplificationCalculator': RingsLensingAmplificationCalculator(),
+    'RingsRedshiftHubbleCalculator': RingsRedshiftHubbleCalculator(),
+    'RingsUQFFUnificationCalculator': RingsUQFFUnificationCalculator(),
+    'RingsCosmologicalConstantCalculator': RingsCosmologicalConstantCalculator(),
+    'RingsElectromagneticCalculator': RingsElectromagneticCalculator(),
+    'RingsQuantumUncertaintyCalculator': RingsQuantumUncertaintyCalculator(),
+    'RingsFluidDensityCalculator': RingsFluidDensityCalculator(),
+    'RingsOscillatoryWaveCalculator': RingsOscillatoryWaveCalculator(),
+    'RingsDarkMatterPerturbationCalculator': RingsDarkMatterPerturbationCalculator(),
+    'RingsStellarWindCalculator': RingsStellarWindCalculator(),
+    'RingsEinsteinRadiusCalculator': RingsEinsteinRadiusCalculator(),
+    'RingsGasVelocityCalculator': RingsGasVelocityCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -149802,4 +150480,47 @@ __all__.extend([
     'DynamicVacuumFluctuationCalculator',
     'QuantumNonLocalCouplingCalculator',
     'SOURCE14_WOLFRAM_CALCULATORS',
+    # Source16 Starbirth Tapestry NGC 2014/2020 (Feb 27, 2026) - 12 Calculator Classes
+    'StarbirthBaseGravityCalculator',
+    'StarbirthMassGrowthCalculator',
+    'StarbirthUQFFUnificationCalculator',
+    'StarbirthCosmologicalConstantCalculator',
+    'StarbirthElectromagneticCalculator',
+    'StarbirthQuantumUncertaintyCalculator',
+    'StarbirthFluidDensityCalculator',
+    'StarbirthOscillatoryWaveCalculator',
+    'StarbirthDarkMatterPerturbationCalculator',
+    'StarbirthStellarWindCalculator',
+    'StarbirthFormationTimescaleCalculator',
+    'StarbirthGasVelocityCalculator',
+    'SOURCE16_WOLFRAM_CALCULATORS',
+    # Source17 Westerlund 2 Super Star Cluster (Feb 27, 2026) - 12 Calculator Classes
+    'Westerlund2BaseGravityCalculator',
+    'Westerlund2MassGrowthCalculator',
+    'Westerlund2UQFFUnificationCalculator',
+    'Westerlund2CosmologicalConstantCalculator',
+    'Westerlund2ElectromagneticCalculator',
+    'Westerlund2QuantumUncertaintyCalculator',
+    'Westerlund2FluidDensityCalculator',
+    'Westerlund2OscillatoryWaveCalculator',
+    'Westerlund2DarkMatterPerturbationCalculator',
+    'Westerlund2StellarWindCalculator',
+    'Westerlund2FormationTimescaleCalculator',
+    'Westerlund2GasVelocityCalculator',
+    'SOURCE17_WOLFRAM_CALCULATORS',
+    # Source19 Rings of Relativity Einstein Ring (Feb 27, 2026) - 13 Calculator Classes
+    'RingsBaseGravityCalculator',
+    'RingsLensingAmplificationCalculator',
+    'RingsRedshiftHubbleCalculator',
+    'RingsUQFFUnificationCalculator',
+    'RingsCosmologicalConstantCalculator',
+    'RingsElectromagneticCalculator',
+    'RingsQuantumUncertaintyCalculator',
+    'RingsFluidDensityCalculator',
+    'RingsOscillatoryWaveCalculator',
+    'RingsDarkMatterPerturbationCalculator',
+    'RingsStellarWindCalculator',
+    'RingsEinsteinRadiusCalculator',
+    'RingsGasVelocityCalculator',
+    'SOURCE19_WOLFRAM_CALCULATORS',
 ])
