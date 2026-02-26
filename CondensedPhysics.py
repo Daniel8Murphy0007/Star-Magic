@@ -37323,6 +37323,276 @@ Q-SCOPE TESTABILITY:
         return results, steps
     
     # ═══════════════════════════════════════════════════════════════════════════════
+    # SIMULATE HOLOGRAPHIC SUPERCONDUCTIVITY OVER TEMPERATURE
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def simulate_holographic_SC_over_temperature(self, T_start: float = 10.0, 
+                                                  T_end: float = 150.0,
+                                                  n_points: int = 100,
+                                                  T_c_base: float = 100.0,
+                                                  B_t: float = 0.0,
+                                                  B_crit: float = 1e11,
+                                                  psi_0: float = 1.0,
+                                                  f_TRZ: float = None,
+                                                  rho_UA: float = None,
+                                                  mu_j: float = 1e15,
+                                                  t: float = 1e10,
+                                                  t_n: float = 0.5,
+                                                  gamma: float = 5e-5,
+                                                  frame: str = 'F_U_Bi') -> Tuple[dict, str]:
+        """
+        Simulate UQFF holographic superconductivity sweeping temperature.
+        
+        This sweep reveals:
+        1. Phase transition at T_c,UQFF = T_c × (1 + f_TRZ)
+        2. Order parameter ⟨ψ⟩ condensation below T_c
+        3. Gap Δ_UQFF evolution with temperature
+        4. DC conductivity σ_dc shows superconducting transition
+        
+        STANDARD HOLOGRAPHIC SUPERCONDUCTIVITY (Gubser 2008, HHH 2008):
+            T > T_c: Normal phase, ⟨ψ⟩ = 0
+            T < T_c: Superconducting, ⟨ψ⟩ ≠ 0 (scalar hair condenses)
+            σ(ω=0) → ∞ (δ-function, infinite DC conductivity)
+        
+        UQFF MODIFICATIONS:
+            T_c,UQFF = T_c × (1 + f_TRZ) - Enhanced critical temperature
+            Δ_UQFF = Δ × exp(-U_m/(k_B×T)) - String-damped gap
+            U_m = (μ_j/L)(1 - exp(-γt cos(πt_n))) - Magnetic string energy
+            σ_dc ∝ √((T_c,UQFF - T)/T_c,UQFF) for T < T_c
+        
+        Args:
+            T_start: Starting temperature (K)
+            T_end: Ending temperature (K)
+            n_points: Number of temperature points
+            T_c_base: Base critical temperature (K)
+            B_t: Applied magnetic field (T)
+            B_crit: Critical magnetic field (T) - default holographic scale
+            psi_0: Reference order parameter amplitude
+            f_TRZ: Time reversal factor
+            rho_UA: UA vacuum density (J/m³)
+            mu_j: Magnetic string tension (J·m)
+            t: Time parameter (s) for U_m evolution
+            t_n: Normalized time
+            gamma: String evolution rate (s⁻¹)
+            frame: 'F_U_Bi' or 'F_U_Bi_i'
+        
+        Returns:
+            results: Dict with arrays of T, psi, Delta_UQFF, sigma_dc, phase
+            steps: Long-form derivation string
+        
+        References:
+            - Hartnoll, Herzog, Horowitz (2008): Holographic superconductors
+            - UQFF holographic superconductivity (uqff_holographic_superconductivity.cpp)
+        """
+        # Defaults
+        f_TRZ = f_TRZ if f_TRZ is not None else self.f_TRZ
+        
+        # Frame-dependent constants
+        if rho_UA is None:
+            if frame == 'F_U_Bi_i':
+                rho_UA = self.rho_vac_UA_BH
+                frame_name = "F_U_Bi_i (outside→in, horizon scale)"
+            else:
+                rho_UA = self.rho_vac_UA_ISM
+                frame_name = "F_U_Bi (inside→out, ISM scale)"
+        else:
+            frame_name = "Custom (user-specified)"
+        
+        # Compute fixed parameters
+        L_UQFF = (self.hbar * self.c / rho_UA)**(1/4) if rho_UA > 0 else 1e10
+        T_c_UQFF = T_c_base * (1.0 + f_TRZ)
+        Delta_base = 3.5 * self.k_B * T_c_base  # BCS gap
+        B_factor = max(1 - B_t / B_crit, 0.0) if B_crit > 0 else 1.0
+        
+        # Magnetic string energy (fixed for simulation)
+        cos_factor = np.cos(np.pi * t_n)
+        time_factor = 1.0 - np.exp(-gamma * t * max(cos_factor, 0)) if t > 0 else 0
+        U_m_base = (mu_j / L_UQFF) * time_factor
+        
+        # Generate temperature values (linear spacing)
+        T_values = np.linspace(T_start, T_end, n_points)
+        
+        # Arrays for results
+        psi_values = np.zeros(n_points)
+        Delta_UQFF_values = np.zeros(n_points)
+        sigma_dc_values = np.zeros(n_points)
+        phase_values = []
+        U_m_values = np.zeros(n_points)
+        
+        # Sweep over temperature
+        for i, T in enumerate(T_values):
+            # Condensation check
+            is_condensed = (T < T_c_UQFF) and (B_t < B_crit)
+            
+            # Order parameter ⟨ψ⟩
+            if is_condensed:
+                psi_squared = psi_0**2 * (1 - T/T_c_UQFF) * B_factor
+                psi = np.sqrt(max(psi_squared, 0))
+            else:
+                psi = 0.0
+            
+            # Gap with string damping
+            if T > 0:
+                exponent = -U_m_base / (self.k_B * T)
+                exponent = max(exponent, -700)
+                Delta_UQFF = Delta_base * np.exp(exponent)
+            else:
+                Delta_UQFF = Delta_base
+            
+            # DC conductivity
+            if is_condensed and T < T_c_UQFF:
+                sigma_dc = np.sqrt((T_c_UQFF - T) / T_c_UQFF)
+            else:
+                sigma_dc = 0.0
+            
+            # Store values
+            psi_values[i] = psi
+            Delta_UQFF_values[i] = Delta_UQFF
+            sigma_dc_values[i] = sigma_dc
+            U_m_values[i] = U_m_base
+            phase_values.append("SC" if is_condensed else "NORMAL")
+        
+        # Find transition point
+        transition_idx = np.argmax(T_values >= T_c_UQFF)
+        T_transition = T_values[transition_idx] if transition_idx > 0 else T_c_UQFF
+        
+        # Gap at T=0 (extrapolated)
+        Delta_T0 = Delta_UQFF_values[0] if T_values[0] < T_c_UQFF else Delta_base
+        
+        # Gap ratio 2Δ/(k_B T_c)
+        gap_ratio = 2 * Delta_T0 / (self.k_B * T_c_UQFF)
+        
+        results = {
+            'T_values': T_values,
+            'psi_values': psi_values,
+            'Delta_UQFF_values': Delta_UQFF_values,
+            'sigma_dc_values': sigma_dc_values,
+            'U_m_values': U_m_values,
+            'phase_values': phase_values,
+            'L_UQFF': L_UQFF,
+            'T_c_base': T_c_base,
+            'T_c_UQFF': T_c_UQFF,
+            'Delta_base': Delta_base,
+            'Delta_T0': Delta_T0,
+            'gap_ratio': gap_ratio,
+            'B_t': B_t,
+            'B_crit': B_crit,
+            'B_factor': B_factor,
+            'f_TRZ': f_TRZ,
+            'rho_UA': rho_UA,
+            'mu_j': mu_j,
+            'U_m_base': U_m_base,
+            'frame': frame,
+            'n_points': n_points
+        }
+        
+        # Sample indices for display
+        idx_low = 0
+        idx_quarter = n_points // 4
+        idx_half = n_points // 2
+        idx_3quarter = 3 * n_points // 4
+        idx_high = n_points - 1
+        
+        steps = f"""UQFF Holographic Superconductivity Temperature Simulation:
+═══════════════════════════════════════════════════════════════════════════════
+THEORETICAL BASIS:
+
+STANDARD HOLOGRAPHIC SUPERCONDUCTIVITY (Gubser 2008, HHH 2008):
+  AdS/CFT dual of high-T_c superconductors:
+  
+  ACTION:
+  S = ∫ √(-g) [R + d(d-1)/L² - ¼F² - |Dψ|² - m²|ψ|²] d^{{d+1}}x
+  
+  PHASE TRANSITION:
+  • T > T_c: Normal phase, ⟨ψ⟩ = 0 (no scalar hair)
+  • T < T_c: Superconducting, ⟨ψ⟩ ≠ 0 (scalar condenses)
+  
+  CONDUCTIVITY:
+  σ(ω=0) → ∞ (infinite DC conductivity, δ-function pole)
+  Gap 2Δ appears in optical response
+
+UQFF MODIFICATIONS:
+  • T_c,UQFF = T_c × (1 + f_TRZ) - Time-reversal enhanced T_c
+  • Δ_UQFF = Δ × exp(-U_m/(k_B×T)) - String-damped gap
+  • U_m = (μ_j/L)(1 - exp(-γt cos(πt_n))) - Magnetic string energy
+  • σ_dc ∝ √((T_c - T)/T_c) - Mean-field conductivity
+
+═══════════════════════════════════════════════════════════════════════════════
+INPUTS:
+  T_start = {T_start:.2f} K
+  T_end = {T_end:.2f} K
+  n_points = {n_points}
+  T_c (base) = {T_c_base:.2f} K
+  B_t = {B_t:.4e} T
+  B_crit = {B_crit:.4e} T
+  f_TRZ = {f_TRZ:.4f}
+  Frame = {frame_name}
+  ρ_UA = {rho_UA:.4e} J/m³
+  μ_j = {mu_j:.4e} J·m
+  t = {t:.4e} s, t_n = {t_n:.4f}
+  γ = {gamma:.4e} s⁻¹
+
+COMPUTED PARAMETERS:
+  L_UQFF = (ℏc/ρ_UA)^{{1/4}} = {L_UQFF:.4e} m
+  T_c,UQFF = T_c × (1 + f_TRZ) = {T_c_base:.2f} × {1+f_TRZ:.4f} = {T_c_UQFF:.2f} K
+  Δ_base = 3.5 k_B T_c = {Delta_base:.4e} J
+  U_m = {U_m_base:.4e} J
+  B_factor = 1 - B_t/B_crit = {B_factor:.4f}
+
+═══════════════════════════════════════════════════════════════════════════════
+SIMULATION RESULTS (Sample Points):
+
+  T (K)       ⟨ψ⟩        Δ_UQFF (J)      σ_dc      Phase
+  ───────────────────────────────────────────────────────────────────
+  {T_values[idx_low]:.2f}       {psi_values[idx_low]:.4f}     {Delta_UQFF_values[idx_low]:.4e}     {sigma_dc_values[idx_low]:.4f}     {phase_values[idx_low]}
+  {T_values[idx_quarter]:.2f}       {psi_values[idx_quarter]:.4f}     {Delta_UQFF_values[idx_quarter]:.4e}     {sigma_dc_values[idx_quarter]:.4f}     {phase_values[idx_quarter]}
+  {T_values[idx_half]:.2f}       {psi_values[idx_half]:.4f}     {Delta_UQFF_values[idx_half]:.4e}     {sigma_dc_values[idx_half]:.4f}     {phase_values[idx_half]}
+  {T_values[idx_3quarter]:.2f}       {psi_values[idx_3quarter]:.4f}     {Delta_UQFF_values[idx_3quarter]:.4e}     {sigma_dc_values[idx_3quarter]:.4f}     {phase_values[idx_3quarter]}
+  {T_values[idx_high]:.2f}       {psi_values[idx_high]:.4f}     {Delta_UQFF_values[idx_high]:.4e}     {sigma_dc_values[idx_high]:.4f}     {phase_values[idx_high]}
+
+═══════════════════════════════════════════════════════════════════════════════
+CRITICAL POINTS:
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ T_c,UQFF = {T_c_UQFF:.2f} K (PHASE TRANSITION)                      │
+  │ Enhancement: +{f_TRZ*100:.1f}% from f_TRZ                                │
+  │                                                                 │
+  │ Δ(T→0) = {Delta_T0:.4e} J                                       │
+  │ Gap ratio 2Δ/(k_B T_c) = {gap_ratio:.2f} (BCS: 3.53)                 │
+  │                                                                 │
+  │ ⟨ψ⟩_max = {np.max(psi_values):.4f} (at T = {T_values[np.argmax(psi_values)]:.2f} K)           │
+  │ σ_dc,max = {np.max(sigma_dc_values):.4f} (at T = {T_values[np.argmax(sigma_dc_values)]:.2f} K)     │
+  └─────────────────────────────────────────────────────────────────┘
+
+PHYSICAL INTERPRETATION:
+  • Below T_c,UQFF = {T_c_UQFF:.2f} K: Superconducting phase
+    - Order parameter ⟨ψ⟩ > 0 (scalar hair condenses)
+    - Infinite DC conductivity (δ-function at ω=0)
+    - Gap Δ_UQFF protects Cooper pairs
+  
+  • Above T_c,UQFF: Normal phase
+    - ⟨ψ⟩ = 0 (no condensate)
+    - σ_dc = 0 (no supercurrent)
+    - Gap closes
+  
+  • T_c enhancement from f_TRZ:
+    Time-reversal symmetry stabilizes Cooper pairing via negentropic
+    aether-mediated coupling.
+  
+  • Gap damping from U_m:
+    Magnetic strings (ER bridges) provide resistance to gap opening,
+    reducing Δ_UQFF by exp(-U_m/k_B T).
+
+Q-SCOPE TESTABILITY:
+  • Measure T_c in thin film superconductors at varying thicknesses
+  • THz spectroscopy: Gap opening at 2Δ_UQFF = {2*Delta_T0:.4e} J
+  • Look for ~{f_TRZ*100:.0f}% T_c enhancement vs. bulk predictions
+  • Phase transition sharpness confirms holographic duality
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+    
+    # ═══════════════════════════════════════════════════════════════════════════════
     # UQFF CONDUCTIVITY SPECTRUM (Frequency-Dependent Holographic Conductivity)
     # ═══════════════════════════════════════════════════════════════════════════════
     
