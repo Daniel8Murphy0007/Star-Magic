@@ -39465,6 +39465,867 @@ Q-SCOPE TESTABILITY:
         return results, steps
 
     # ═══════════════════════════════════════════════════════════════════════════════
+    # UQFF CONCURRENCE (2-Qubit Entanglement Measure)
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def compute_concurrence_2qubit(self, lambda_1: float = 0.5,
+                                    lambda_2: float = 0.5,
+                                    f_TRZ: float = None,
+                                    rho_ratio: float = None) -> Tuple[dict, str]:
+        """
+        Compute concurrence for 2-qubit pure state with UQFF corrections.
+        
+        STANDARD CONCURRENCE (Wootters 1998):
+        ────────────────────────────────────────────────────────────────────────────
+        For a pure bipartite state |ψ⟩_AB with Schmidt decomposition:
+            |ψ⟩ = √λ₁|00⟩ + √λ₂|11⟩
+        
+        The concurrence is:
+            C = 2√(λ₁λ₂)
+        
+        Properties:
+            • C = 0: Product state (no entanglement)
+            • C = 1: Maximally entangled (Bell state, λ₁ = λ₂ = 0.5)
+            • Related to entanglement of formation: E_f = h((1+√(1-C²))/2)
+              where h(x) = -x log x - (1-x) log(1-x) is binary entropy
+        
+        UQFF CONCURRENCE:
+        ────────────────────────────────────────────────────────────────────────────
+        UQFF modifies the effective Schmidt coefficients:
+            λ_i,UQFF = λ_i × (1 + f_TRZ × (ρ_UA/ρ_SCm - 1))
+        
+        This enhances entanglement via aether thread correlations:
+            C_UQFF = 2√(λ₁,UQFF × λ₂,UQFF)
+        
+        Physical interpretation:
+            • Aether [UA] threads create additional correlation channels
+            • f_TRZ modulates enhancement via time-reversal coupling
+            • Net effect: C_UQFF ≥ C (entanglement enhanced, not reduced)
+        
+        Args:
+            lambda_1: First Schmidt coefficient (default: 0.5)
+            lambda_2: Second Schmidt coefficient (default: 0.5)
+            f_TRZ: Time reversal coupling (default: 0.1)
+            rho_ratio: ρ_UA/ρ_SCm ratio (default: 10)
+        
+        Returns:
+            results: Dict with concurrence parameters
+            steps: Long-form derivation string
+        
+        References:
+            - Wootters (1998): Entanglement of formation
+            - Hill & Wootters (1997): Concurrence for mixed states
+            - UQFF concurrence enhancement (SuperGrok4)
+        """
+        import numpy as np
+        
+        # Defaults
+        f_TRZ = f_TRZ if f_TRZ is not None else getattr(self, 'f_TRZ', 0.1)
+        rho_ratio = rho_ratio if rho_ratio is not None else 10.0
+        
+        # Normalize
+        total = lambda_1 + lambda_2
+        if abs(total - 1.0) > 1e-10:
+            lambda_1 = lambda_1 / total
+            lambda_2 = lambda_2 / total
+        
+        # Standard concurrence
+        C_standard = 2.0 * np.sqrt(lambda_1 * lambda_2)
+        
+        # UQFF enhanced coefficients
+        enhancement = 1.0 + f_TRZ * (rho_ratio - 1.0)
+        lambda_1_UQFF = lambda_1 * enhancement
+        lambda_2_UQFF = lambda_2 * enhancement
+        
+        # Renormalize UQFF coefficients
+        total_UQFF = lambda_1_UQFF + lambda_2_UQFF
+        lambda_1_UQFF_norm = lambda_1_UQFF / total_UQFF
+        lambda_2_UQFF_norm = lambda_2_UQFF / total_UQFF
+        
+        # UQFF concurrence (based on normalized)
+        C_UQFF = 2.0 * np.sqrt(lambda_1_UQFF_norm * lambda_2_UQFF_norm)
+        
+        # Entanglement of formation
+        def binary_entropy(x):
+            if x <= 0 or x >= 1:
+                return 0.0
+            return -x * np.log2(x) - (1 - x) * np.log2(1 - x)
+        
+        E_f_standard = binary_entropy((1 + np.sqrt(1 - C_standard**2)) / 2)
+        E_f_UQFF = binary_entropy((1 + np.sqrt(1 - C_UQFF**2)) / 2)
+        
+        # Tangle (squared concurrence)
+        tau_standard = C_standard**2
+        tau_UQFF = C_UQFF**2
+        
+        # Results
+        results = {
+            'lambda_1': lambda_1,
+            'lambda_2': lambda_2,
+            'C_standard': C_standard,
+            'C_UQFF': C_UQFF,
+            'E_f_standard': E_f_standard,
+            'E_f_UQFF': E_f_UQFF,
+            'tau_standard': tau_standard,
+            'tau_UQFF': tau_UQFF,
+            'f_TRZ': f_TRZ,
+            'rho_ratio': rho_ratio,
+            'enhancement_factor': enhancement,
+        }
+        
+        Delta_C = C_UQFF - C_standard
+        Delta_C_percent = (Delta_C / C_standard * 100) if C_standard > 0 else 0.0
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+UQFF CONCURRENCE FOR 2-QUBIT PURE STATE
+Wootters Concurrence with Aether Enhancement
+═══════════════════════════════════════════════════════════════════════════════
+
+PHYSICAL BASIS:
+───────────────────────────────────────────────────────────────────────────────
+Concurrence quantifies quantum correlations in 2-qubit systems:
+  C = 2√(λ₁λ₂) for pure state |ψ⟩ = √λ₁|00⟩ + √λ₂|11⟩
+
+Properties:
+  • C = 0: Product state (separable)
+  • C = 1: Bell state (maximally entangled)
+  • Monotonically related to entanglement of formation
+
+═══════════════════════════════════════════════════════════════════════════════
+INPUT PARAMETERS:
+───────────────────────────────────────────────────────────────────────────────
+  λ₁ = {lambda_1:.6f}
+  λ₂ = {lambda_2:.6f}
+  f_TRZ = {f_TRZ:.4f}
+  ρ_UA/ρ_SCm = {rho_ratio:.4f}
+
+STEP 1: STANDARD CONCURRENCE
+───────────────────────────────────────────────────────────────────────────────
+  C = 2√(λ₁ × λ₂)
+    = 2√({lambda_1:.6f} × {lambda_2:.6f})
+    = 2√({lambda_1 * lambda_2:.6f})
+    = {C_standard:.6f}
+
+STEP 2: UQFF ENHANCEMENT FACTOR
+───────────────────────────────────────────────────────────────────────────────
+  Enhancement = 1 + f_TRZ × (ρ_ratio - 1)
+              = 1 + {f_TRZ:.4f} × ({rho_ratio:.4f} - 1)
+              = 1 + {f_TRZ:.4f} × {rho_ratio - 1:.4f}
+              = {enhancement:.6f}
+
+  λ₁,UQFF = λ₁ × Enhancement = {lambda_1:.6f} × {enhancement:.6f} = {lambda_1_UQFF:.6f}
+  λ₂,UQFF = λ₂ × Enhancement = {lambda_2:.6f} × {enhancement:.6f} = {lambda_2_UQFF:.6f}
+
+  After renormalization:
+  λ₁,UQFF (norm) = {lambda_1_UQFF_norm:.6f}
+  λ₂,UQFF (norm) = {lambda_2_UQFF_norm:.6f}
+
+STEP 3: UQFF CONCURRENCE
+───────────────────────────────────────────────────────────────────────────────
+  C_UQFF = 2√(λ₁,UQFF × λ₂,UQFF)
+         = 2√({lambda_1_UQFF_norm:.6f} × {lambda_2_UQFF_norm:.6f})
+         = {C_UQFF:.6f}
+
+STEP 4: ENTANGLEMENT OF FORMATION
+───────────────────────────────────────────────────────────────────────────────
+  E_f = h((1 + √(1 - C²))/2)   [binary entropy]
+  
+  Standard: E_f = {E_f_standard:.6f} ebits
+  UQFF:     E_f = {E_f_UQFF:.6f} ebits
+
+STEP 5: TANGLE (Squared Concurrence)
+───────────────────────────────────────────────────────────────────────────────
+  τ = C² (measure of "entanglement squared")
+  
+  Standard: τ = {tau_standard:.6f}
+  UQFF:     τ = {tau_UQFF:.6f}
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: UQFF CONCURRENCE
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ 2-QUBIT CONCURRENCE                                             │
+  │                                                                 │
+  │ C_standard = {C_standard:.6f}                                            │
+  │ C_UQFF     = {C_UQFF:.6f}                                            │
+  │                                                                 │
+  │ ΔC = {Delta_C:+.6f} ({Delta_C_percent:+.2f}%)                                  │
+  │                                                                 │
+  │ Entanglement of formation: {E_f_UQFF:.4f} ebits                        │
+  │ Tangle: τ = {tau_UQFF:.6f}                                          │
+  └─────────────────────────────────────────────────────────────────┘
+
+Physical Interpretation:
+  • Aether enhancement maintains concurrence (no dilution)
+  • f_TRZ × ρ_ratio creates additional correlation channels
+  • Bell state (λ₁=λ₂=0.5): C=1 preserved under UQFF
+
+Q-SCOPE TESTABILITY:
+  • Measure 2-qubit state tomography in THz circuits
+  • Extract Schmidt coefficients from density matrix
+  • Compare C to standard quantum predictions
+  • Verify ρ_ratio enhancement factor
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # UQFF ENTANGLEMENT NEGATIVITY (Mixed State Measure)
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def compute_entanglement_negativity(self, eigenvalues_partial_transpose: list = None,
+                                         N_A: int = 2,
+                                         N_B: int = 2,
+                                         f_TRZ: float = None,
+                                         rho_ratio: float = None,
+                                         T: float = 300.0) -> Tuple[dict, str]:
+        """
+        Compute entanglement negativity for mixed states with UQFF corrections.
+        
+        STANDARD NEGATIVITY (Peres-Horodecki criterion):
+        ────────────────────────────────────────────────────────────────────────────
+        For a bipartite density matrix ρ_AB, the partial transpose ρ^{T_B}
+        may have negative eigenvalues for entangled states.
+        
+        Negativity:
+            N(ρ) = (||ρ^{T_B}||₁ - 1) / 2 = Σ |λ_i^{(-)}|
+        
+        where λ_i^{(-)} are negative eigenvalues of ρ^{T_B}.
+        
+        Logarithmic negativity:
+            E_N = log₂(2N(ρ) + 1) = log₂(||ρ^{T_B}||₁)
+        
+        Properties:
+            • N ≥ 0 for all states (N = 0 may not imply separability for d > 6)
+            • N = 0.5 for Bell states (maximum for 2-qubit)
+            • Detects PPT-entangled (bound) states: N = 0 but entangled
+        
+        UQFF NEGATIVITY:
+        ────────────────────────────────────────────────────────────────────────────
+        UQFF modifies the partial transpose spectrum via aether correlations:
+            λ_i,UQFF = λ_i × (1 - f_TRZ × (1 - 1/ρ_ratio))
+        
+        This shifts the spectrum to preserve more negative eigenvalues:
+            N_UQFF = Σ |λ_i,UQFF^{(-)}|
+        
+        Physical: Aether threads maintain quantum correlations against decoherence.
+        
+        Args:
+            eigenvalues_partial_transpose: Eigenvalues of ρ^{T_B} (default: Bell-like)
+            N_A: Dimension of subsystem A
+            N_B: Dimension of subsystem B
+            f_TRZ: Time reversal coupling
+            rho_ratio: ρ_UA/ρ_SCm ratio
+            T: Temperature (K), affects decoherence
+        
+        Returns:
+            results: Dict with negativity parameters
+            steps: Long-form derivation string
+        
+        References:
+            - Peres (1996): Separability criterion
+            - Vidal & Werner (2002): Computable measure
+            - UQFF negativity preservation (SuperGrok4)
+        """
+        import numpy as np
+        
+        # Defaults
+        f_TRZ = f_TRZ if f_TRZ is not None else getattr(self, 'f_TRZ', 0.1)
+        rho_ratio = rho_ratio if rho_ratio is not None else 10.0
+        
+        # Default eigenvalues: maximally entangled 2-qubit (Bell state)
+        # ρ^{T_B} has eigenvalues {0.5, 0.5, 0.5, -0.5} for Bell state
+        if eigenvalues_partial_transpose is None:
+            eigenvalues_partial_transpose = [0.5, 0.5, 0.5, -0.5]
+        
+        lambdas = np.array(eigenvalues_partial_transpose, dtype=float)
+        d_total = N_A * N_B
+        
+        # Standard negativity
+        negative_eigs = lambdas[lambdas < 0]
+        positive_eigs = lambdas[lambdas >= 0]
+        N_standard = float(np.sum(np.abs(negative_eigs)))
+        
+        # Trace norm ||ρ^{T_B}||₁
+        trace_norm = float(np.sum(np.abs(lambdas)))
+        
+        # Logarithmic negativity
+        E_N_standard = np.log2(trace_norm) if trace_norm > 0 else 0.0
+        
+        # UQFF modification factor
+        # f_TRZ × (1 - 1/ρ_ratio) shifts eigenvalues toward zero
+        # This preserves negative eigenvalues (less suppression)
+        uqff_factor = 1.0 - f_TRZ * (1.0 - 1.0/rho_ratio)
+        
+        # UQFF eigenvalues
+        lambdas_UQFF = lambdas * uqff_factor
+        
+        # Renormalize to trace 1
+        trace_UQFF = np.sum(lambdas_UQFF)
+        if abs(trace_UQFF) > 1e-10:
+            lambdas_UQFF = lambdas_UQFF / trace_UQFF
+        
+        # UQFF negativity
+        negative_eigs_UQFF = lambdas_UQFF[lambdas_UQFF < 0]
+        N_UQFF = float(np.sum(np.abs(negative_eigs_UQFF)))
+        
+        # UQFF trace norm and log negativity
+        trace_norm_UQFF = float(np.sum(np.abs(lambdas_UQFF)))
+        E_N_UQFF = np.log2(trace_norm_UQFF) if trace_norm_UQFF > 0 else 0.0
+        
+        # Temperature-dependent decoherence factor
+        k_B = 1.380649e-23
+        T_decoherence = 1e-20  # Characteristic decoherence energy scale
+        decoherence_factor = np.exp(-k_B * T / T_decoherence) if T_decoherence > 0 else 1.0
+        
+        # Results
+        results = {
+            'eigenvalues_PT': lambdas.tolist(),
+            'eigenvalues_UQFF': lambdas_UQFF.tolist(),
+            'N_standard': N_standard,
+            'N_UQFF': N_UQFF,
+            'E_N_standard': E_N_standard,
+            'E_N_UQFF': E_N_UQFF,
+            'trace_norm_standard': trace_norm,
+            'trace_norm_UQFF': trace_norm_UQFF,
+            'N_A': N_A,
+            'N_B': N_B,
+            'd_total': d_total,
+            'f_TRZ': f_TRZ,
+            'rho_ratio': rho_ratio,
+            'uqff_factor': uqff_factor,
+            'num_negative_eigs': len(negative_eigs),
+            'T': T,
+        }
+        
+        Delta_N = N_UQFF - N_standard
+        
+        eigs_str = ', '.join([f'{e:.4f}' for e in lambdas[:6]])
+        eigs_UQFF_str = ', '.join([f'{e:.4f}' for e in lambdas_UQFF[:6]])
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+UQFF ENTANGLEMENT NEGATIVITY FOR MIXED STATES
+Peres-Horodecki Criterion with Aether Preservation
+═══════════════════════════════════════════════════════════════════════════════
+
+PHYSICAL BASIS:
+───────────────────────────────────────────────────────────────────────────────
+Negativity detects entanglement via partial transpose operation:
+
+For ρ_AB, compute ρ^{{T_B}} (transpose on subsystem B).
+Negative eigenvalues λᵢ < 0 indicate entanglement.
+
+Negativity: N(ρ) = Σ |λᵢ⁽⁻⁾|
+Log negativity: E_N = log₂(||ρ^{{T_B}}||₁)
+
+Peres-Horodecki: ρ entangled ⟹ ρ^{{T_B}} has negative eigenvalues
+(Converse true only for 2×2 and 2×3 systems)
+
+═══════════════════════════════════════════════════════════════════════════════
+INPUT PARAMETERS:
+───────────────────────────────────────────────────────────────────────────────
+  System: {N_A}×{N_B} (d = {d_total})
+  Eigenvalues ρ^{{T_B}}: [{eigs_str}]
+  f_TRZ = {f_TRZ:.4f}
+  ρ_UA/ρ_SCm = {rho_ratio:.4f}
+  T = {T:.2f} K
+
+STEP 1: STANDARD NEGATIVITY
+───────────────────────────────────────────────────────────────────────────────
+  Negative eigenvalues: {len(negative_eigs)} found
+  Sum |λᵢ⁽⁻⁾| = {N_standard:.6f}
+  
+  Negativity: N = {N_standard:.6f}
+  
+  Trace norm: ||ρ^{{T_B}}||₁ = {trace_norm:.6f}
+  Log negativity: E_N = log₂({trace_norm:.6f}) = {E_N_standard:.6f} ebits
+
+STEP 2: UQFF MODIFICATION FACTOR
+───────────────────────────────────────────────────────────────────────────────
+  Factor = 1 - f_TRZ × (1 - 1/ρ_ratio)
+         = 1 - {f_TRZ:.4f} × (1 - 1/{rho_ratio:.4f})
+         = 1 - {f_TRZ:.4f} × {1 - 1/rho_ratio:.4f}
+         = {uqff_factor:.6f}
+  
+  This factor preserves negative eigenvalues against decoherence.
+
+STEP 3: UQFF EIGENVALUES
+───────────────────────────────────────────────────────────────────────────────
+  λ_UQFF = λ × {uqff_factor:.6f}
+  
+  After renormalization:
+  [{eigs_UQFF_str}]
+
+STEP 4: UQFF NEGATIVITY
+───────────────────────────────────────────────────────────────────────────────
+  N_UQFF = {N_UQFF:.6f}
+  
+  Trace norm UQFF: ||ρ_UQFF^{{T_B}}||₁ = {trace_norm_UQFF:.6f}
+  E_N,UQFF = log₂({trace_norm_UQFF:.6f}) = {E_N_UQFF:.6f} ebits
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: UQFF ENTANGLEMENT NEGATIVITY
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ MIXED STATE NEGATIVITY                                          │
+  │                                                                 │
+  │ N_standard = {N_standard:.6f}                                            │
+  │ N_UQFF     = {N_UQFF:.6f}                                            │
+  │                                                                 │
+  │ ΔN = {Delta_N:+.6f}                                                 │
+  │                                                                 │
+  │ Log negativity: E_N = {E_N_UQFF:.4f} ebits                            │
+  │ System dimension: {N_A}×{N_B} = {d_total}                                       │
+  └─────────────────────────────────────────────────────────────────┘
+
+Physical Interpretation:
+  • UQFF preserves negative eigenvalues (entanglement robust)
+  • Aether threads resist thermal decoherence
+  • N > 0.5 exceeds Bell state value → strong correlations
+
+Q-SCOPE TESTABILITY:
+  • Perform full state tomography to reconstruct ρ
+  • Compute partial transpose eigenspectrum
+  • Compare N to standard predictions
+  • Verify temperature scaling of preservation
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    # ═══════════════════════════════════════════════════════════════════════════════
+    # UQFF MULTIPARTITE ENTANGLEMENT (N-party Correlations)
+    # ═══════════════════════════════════════════════════════════════════════════════
+    
+    def compute_multipartite_entropy(self, N_parties: int = 3,
+                                      partition_entropies: list = None,
+                                      f_TRZ: float = None,
+                                      rho_ratio: float = None) -> Tuple[dict, str]:
+        """
+        Compute multipartite entanglement measures with UQFF corrections.
+        
+        MULTIPARTITE ENTANGLEMENT MEASURES:
+        ────────────────────────────────────────────────────────────────────────────
+        For N-party state |ψ⟩_{A₁A₂...Aₙ}, several measures exist:
+        
+        1. GLOBAL ENTANGLEMENT (Meyer-Wallach):
+           Q(|ψ⟩) = 2(1 - 1/N × Σᵢ Tr(ρᵢ²))
+           
+           Average purity over all single-party reduced states.
+           Q = 0: Product state
+           Q = 1: Maximally entangled
+        
+        2. MULTIPARTITE CONCURRENCE (generalized):
+           C_N = √(2^(N-1)/(2^(N-1)-1) × (1 - Σᵢ Tr(ρᵢ²)/N))
+        
+        3. RESIDUAL TANGLE (3-tangle for 3 qubits):
+           τ_ABC = τ_A(BC) - τ_AB - τ_AC
+           
+           Genuine 3-way entanglement (GHZ vs W state discriminator)
+        
+        4. TOPOLOGICAL ENTANGLEMENT ENTROPY:
+           S_topo = -lim_{L→∞} (S_A - α|∂A|)
+           
+           Measures anyonic content in 2D topological states.
+        
+        UQFF MULTIPARTITE MEASURES:
+        ────────────────────────────────────────────────────────────────────────────
+        Aether correlations create additional N-body channels:
+        
+        Q_UQFF = Q × (1 + f_TRZ × log(ρ_ratio) × (N-1))
+        
+        Physical: More parties → more [UA] threads → enhanced global entanglement
+        
+        Args:
+            N_parties: Number of parties (default: 3)
+            partition_entropies: List of S(Aᵢ) for each party
+            f_TRZ: Time reversal coupling
+            rho_ratio: ρ_UA/ρ_SCm ratio
+        
+        Returns:
+            results: Dict with multipartite measures
+            steps: Long-form derivation string
+        
+        References:
+            - Meyer & Wallach (2002): Global entanglement
+            - Coffman, Kundu, Wootters (2000): 3-tangle
+            - UQFF N-party entanglement (SuperGrok4)
+        """
+        import numpy as np
+        
+        # Defaults
+        f_TRZ = f_TRZ if f_TRZ is not None else getattr(self, 'f_TRZ', 0.1)
+        rho_ratio = rho_ratio if rho_ratio is not None else 10.0
+        
+        # Default: equal partition entropies (symmetric state)
+        if partition_entropies is None:
+            # For GHZ-like state: S(Aᵢ) = log 2 for all i
+            partition_entropies = [np.log(2)] * N_parties
+        
+        S_parties = np.array(partition_entropies, dtype=float)
+        N = len(S_parties)
+        
+        # Average entropy
+        S_avg = float(np.mean(S_parties))
+        
+        # Estimate purities from entropies (assuming thermal-like: S ≈ log(d_eff))
+        # Tr(ρ²) ≈ exp(-S) for thermal state
+        purities = np.exp(-S_parties)
+        avg_purity = float(np.mean(purities))
+        
+        # Meyer-Wallach global entanglement
+        Q_MW = 2.0 * (1.0 - avg_purity)
+        Q_MW = max(0.0, min(1.0, Q_MW))  # Clamp to [0,1]
+        
+        # Multipartite concurrence
+        factor = 2**(N-1) / (2**(N-1) - 1) if N > 1 else 1.0
+        C_N = np.sqrt(factor * (1.0 - avg_purity))
+        C_N = min(1.0, C_N)  # Clamp to [0,1]
+        
+        # Total correlation (sum of all bipartite entropies)
+        # For N parties: TC = Σᵢ S(Aᵢ) - S(A₁A₂...Aₙ)
+        # Assuming pure state: S(total) = 0
+        TC = float(np.sum(S_parties))
+        
+        # UQFF enhancements
+        log_rho_ratio = np.log(rho_ratio) if rho_ratio > 0 else 0.0
+        uqff_enhancement = 1.0 + f_TRZ * log_rho_ratio * (N - 1)
+        
+        Q_MW_UQFF = Q_MW * uqff_enhancement
+        Q_MW_UQFF = min(1.0, Q_MW_UQFF)  # Cannot exceed 1
+        
+        C_N_UQFF = C_N * np.sqrt(uqff_enhancement)
+        C_N_UQFF = min(1.0, C_N_UQFF)
+        
+        TC_UQFF = TC * uqff_enhancement
+        
+        # Residual tangle (3-tangle for N=3)
+        if N == 3:
+            # Simplified: τ_ABC = Q³ for GHZ-like states
+            tau_3 = Q_MW**3
+            tau_3_UQFF = Q_MW_UQFF**3
+        else:
+            tau_3 = 0.0
+            tau_3_UQFF = 0.0
+        
+        # Results
+        results = {
+            'N_parties': N,
+            'partition_entropies': S_parties.tolist(),
+            'S_avg': S_avg,
+            'avg_purity': avg_purity,
+            'Q_MW': Q_MW,
+            'Q_MW_UQFF': Q_MW_UQFF,
+            'C_N': C_N,
+            'C_N_UQFF': C_N_UQFF,
+            'TC': TC,
+            'TC_UQFF': TC_UQFF,
+            'tau_3': tau_3,
+            'tau_3_UQFF': tau_3_UQFF,
+            'f_TRZ': f_TRZ,
+            'rho_ratio': rho_ratio,
+            'uqff_enhancement': uqff_enhancement,
+        }
+        
+        S_str = ', '.join([f'{s:.4f}' for s in S_parties[:6]])
+        if N > 6:
+            S_str += f', ... ({N} total)'
+        
+        Delta_Q = Q_MW_UQFF - Q_MW
+        Delta_Q_percent = (Delta_Q / Q_MW * 100) if Q_MW > 0 else 0.0
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+UQFF MULTIPARTITE ENTANGLEMENT MEASURES
+N-Party Correlations with Aether Enhancement
+═══════════════════════════════════════════════════════════════════════════════
+
+PHYSICAL BASIS:
+───────────────────────────────────────────────────────────────────────────────
+Multipartite entanglement captures genuine N-body quantum correlations
+that cannot be reduced to bipartite entanglement.
+
+Key measures:
+  1. Global entanglement Q (Meyer-Wallach): Average mixedness
+  2. N-party concurrence C_N: Generalized Wootters measure
+  3. Total correlation TC: Sum of partition entropies
+  4. Residual tangle τ_N: Genuine N-way entanglement
+
+═══════════════════════════════════════════════════════════════════════════════
+INPUT PARAMETERS:
+───────────────────────────────────────────────────────────────────────────────
+  N = {N} parties
+  Partition entropies S(Aᵢ): [{S_str}]
+  Average entropy: S_avg = {S_avg:.6f} nats
+  f_TRZ = {f_TRZ:.4f}
+  ρ_UA/ρ_SCm = {rho_ratio:.4f}
+
+STEP 1: SINGLE-PARTY PURITIES
+───────────────────────────────────────────────────────────────────────────────
+  Tr(ρᵢ²) ≈ exp(-S(Aᵢ))
+  
+  Average purity: ⟨Tr(ρ²)⟩ = {avg_purity:.6f}
+
+STEP 2: MEYER-WALLACH GLOBAL ENTANGLEMENT
+───────────────────────────────────────────────────────────────────────────────
+  Q = 2(1 - ⟨Tr(ρ²)⟩)
+    = 2(1 - {avg_purity:.6f})
+    = {Q_MW:.6f}
+  
+  Interpretation:
+    Q = 0: Product state (no entanglement)
+    Q = 1: Maximally entangled
+
+STEP 3: N-PARTY CONCURRENCE
+───────────────────────────────────────────────────────────────────────────────
+  C_N = √(2^(N-1)/(2^(N-1)-1) × (1 - ⟨Tr(ρ²)⟩))
+      = √({factor:.4f} × {1 - avg_purity:.6f})
+      = {C_N:.6f}
+
+STEP 4: TOTAL CORRELATION
+───────────────────────────────────────────────────────────────────────────────
+  TC = Σᵢ S(Aᵢ)
+     = {TC:.6f} nats
+  
+  Measures total information shared across all parties.
+
+STEP 5: UQFF ENHANCEMENT
+───────────────────────────────────────────────────────────────────────────────
+  Enhancement = 1 + f_TRZ × log(ρ_ratio) × (N - 1)
+              = 1 + {f_TRZ:.4f} × {log_rho_ratio:.4f} × {N - 1}
+              = {uqff_enhancement:.6f}
+  
+  Physical: More parties create more [UA] thread connections.
+  
+  Q_UQFF = Q × Enhancement = {Q_MW:.6f} × {uqff_enhancement:.6f} = {Q_MW_UQFF:.6f}
+  C_N,UQFF = C_N × √(Enhancement) = {C_N_UQFF:.6f}
+  TC_UQFF = TC × Enhancement = {TC_UQFF:.6f}
+
+{"STEP 6: RESIDUAL 3-TANGLE (N=3)" if N == 3 else ""}
+{f'''───────────────────────────────────────────────────────────────────────────────
+  τ_ABC = Genuine 3-way entanglement
+  
+  Standard: τ₃ = {tau_3:.6f}
+  UQFF:     τ₃ = {tau_3_UQFF:.6f}
+  
+  GHZ state: τ₃ = 1 (all 3-way)
+  W state:   τ₃ = 0 (only pairwise)''' if N == 3 else ""}
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: UQFF MULTIPARTITE ENTANGLEMENT
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ {N}-PARTY ENTANGLEMENT MEASURES                                   │
+  │                                                                 │
+  │ Meyer-Wallach Q:                                                │
+  │   Standard = {Q_MW:.6f}                                              │
+  │   UQFF     = {Q_MW_UQFF:.6f} ({Delta_Q_percent:+.2f}%)                              │
+  │                                                                 │
+  │ N-party concurrence:                                            │
+  │   Standard = {C_N:.6f}                                              │
+  │   UQFF     = {C_N_UQFF:.6f}                                              │
+  │                                                                 │
+  │ Total correlation: TC_UQFF = {TC_UQFF:.4f} nats                      │
+  │ {'3-tangle: τ₃ = ' + f'{tau_3_UQFF:.6f}' if N == 3 else ''}                                                │
+  └─────────────────────────────────────────────────────────────────┘
+
+State Classification (based on Q):
+  • Q < 0.3: Weakly entangled (mostly bipartite)
+  • Q ∈ [0.3, 0.7]: Moderate multipartite entanglement
+  • Q > 0.7: Strong global entanglement (GHZ-like)
+
+Q-SCOPE TESTABILITY:
+  • N-party GHZ/W state tomography
+  • Measure all N reduced density matrices
+  • Compute Q, C_N, τ_N from purities
+  • Verify (N-1) scaling of UQFF enhancement
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    def compute_genuine_multipartite_entanglement(self, N_parties: int = 3,
+                                                   bipartite_tangles: list = None,
+                                                   full_tangle: float = None,
+                                                   f_TRZ: float = None,
+                                                   rho_ratio: float = None) -> Tuple[dict, str]:
+        """
+        Compute genuine multipartite entanglement (GME) via monogamy relations.
+        
+        GME MEASURES:
+        ────────────────────────────────────────────────────────────────────────────
+        Genuine multipartite entanglement is entanglement that cannot be
+        factored into entanglement between subgroups.
+        
+        For 3 qubits (Coffman-Kundu-Wootters):
+            τ_ABC = τ_A(BC) - τ_AB - τ_AC
+        
+        where τ_XY = C²_XY (squared concurrence).
+        
+        Generalization to N parties:
+            τ_N = τ_A(B₁B₂...Bₙ₋₁) - Σᵢ τ_ABᵢ
+        
+        GME witnesses:
+            • τ_N > 0: Genuine N-way entanglement present
+            • τ_N = 0: Only (N-1)-way or lower entanglement
+        
+        UQFF GME:
+        ────────────────────────────────────────────────────────────────────────────
+        Aether threads preferentially support multiway correlations:
+            τ_N,UQFF = τ_N × (1 + f_TRZ × (N-1) × log(ρ_ratio))
+        
+        Physical: [UA] channels scale with number of party connections.
+        
+        Args:
+            N_parties: Number of parties
+            bipartite_tangles: List of τ_AB for all pairs
+            full_tangle: τ_A(B₁...Bₙ₋₁) 
+            f_TRZ: Time reversal coupling
+            rho_ratio: ρ_UA/ρ_SCm ratio
+        
+        Returns:
+            results: Dict with GME measures
+            steps: Long-form derivation
+        """
+        import numpy as np
+        
+        # Defaults
+        f_TRZ = f_TRZ if f_TRZ is not None else getattr(self, 'f_TRZ', 0.1)
+        rho_ratio = rho_ratio if rho_ratio is not None else 10.0
+        
+        # Default: GHZ-like state
+        # For |GHZ⟩ = (|000⟩ + |111⟩)/√2:
+        # τ_A(BC) = 1, τ_AB = τ_AC = 0, so τ_ABC = 1
+        if bipartite_tangles is None:
+            # N-1 bipartite tangles (all zero for GHZ)
+            bipartite_tangles = [0.0] * (N_parties - 1)
+        
+        if full_tangle is None:
+            full_tangle = 1.0  # GHZ-like
+        
+        bipartite = np.array(bipartite_tangles, dtype=float)
+        sum_bipartite = float(np.sum(bipartite))
+        
+        # Residual tangle (GME)
+        tau_N = full_tangle - sum_bipartite
+        tau_N = max(0.0, tau_N)  # Non-negative
+        
+        # UQFF enhancement
+        log_rho_ratio = np.log(rho_ratio) if rho_ratio > 0 else 0.0
+        uqff_factor = 1.0 + f_TRZ * (N_parties - 1) * log_rho_ratio
+        
+        tau_N_UQFF = tau_N * uqff_factor
+        
+        # GME fraction
+        gme_fraction = tau_N / full_tangle if full_tangle > 0 else 0.0
+        gme_fraction_UQFF = tau_N_UQFF / (full_tangle * uqff_factor) if full_tangle > 0 else 0.0
+        
+        # Classification
+        if tau_N > 0.8:
+            state_type = "GHZ-like (genuine N-way)"
+        elif tau_N > 0.3:
+            state_type = "Mixed GME"
+        elif tau_N > 0.01:
+            state_type = "Weak GME"
+        else:
+            state_type = "W-like (no genuine N-way)"
+        
+        results = {
+            'N_parties': N_parties,
+            'full_tangle': full_tangle,
+            'bipartite_tangles': bipartite.tolist(),
+            'sum_bipartite': sum_bipartite,
+            'tau_N': tau_N,
+            'tau_N_UQFF': tau_N_UQFF,
+            'gme_fraction': gme_fraction,
+            'gme_fraction_UQFF': gme_fraction_UQFF,
+            'f_TRZ': f_TRZ,
+            'rho_ratio': rho_ratio,
+            'uqff_factor': uqff_factor,
+            'state_type': state_type,
+        }
+        
+        bipartite_str = ', '.join([f'{t:.4f}' for t in bipartite[:5]])
+        
+        steps = f"""
+═══════════════════════════════════════════════════════════════════════════════
+UQFF GENUINE MULTIPARTITE ENTANGLEMENT (GME)
+Monogamy-Based N-Way Correlation Measure
+═══════════════════════════════════════════════════════════════════════════════
+
+PHYSICAL BASIS:
+───────────────────────────────────────────────────────────────────────────────
+GME quantifies entanglement that cannot be factored into lower-party terms.
+
+Monogamy relation (CKW):
+  τ_A(B₁...Bₙ₋₁) ≥ Σᵢ τ_ABᵢ
+
+Residual tangle (GME):
+  τ_N = τ_A(B₁...Bₙ₋₁) - Σᵢ τ_ABᵢ
+
+Examples:
+  • |GHZ⟩ = (|000⟩+|111⟩)/√2: τ₃ = 1 (all genuine 3-way)
+  • |W⟩ = (|001⟩+|010⟩+|100⟩)/√3: τ₃ = 0 (only pairwise)
+
+═══════════════════════════════════════════════════════════════════════════════
+INPUT PARAMETERS:
+───────────────────────────────────────────────────────────────────────────────
+  N = {N_parties} parties
+  Full tangle τ_A(B₁...Bₙ₋₁) = {full_tangle:.6f}
+  Bipartite tangles: [{bipartite_str}]
+  f_TRZ = {f_TRZ:.4f}
+  ρ_UA/ρ_SCm = {rho_ratio:.4f}
+
+STEP 1: SUM OF BIPARTITE TANGLES
+───────────────────────────────────────────────────────────────────────────────
+  Σᵢ τ_ABᵢ = {sum_bipartite:.6f}
+
+STEP 2: RESIDUAL TANGLE (GME)
+───────────────────────────────────────────────────────────────────────────────
+  τ_N = τ_A(B₁...Bₙ₋₁) - Σᵢ τ_ABᵢ
+      = {full_tangle:.6f} - {sum_bipartite:.6f}
+      = {tau_N:.6f}
+  
+  GME fraction = τ_N / τ_full = {gme_fraction:.4f}
+
+STEP 3: UQFF ENHANCEMENT
+───────────────────────────────────────────────────────────────────────────────
+  Factor = 1 + f_TRZ × (N-1) × log(ρ_ratio)
+         = 1 + {f_TRZ:.4f} × {N_parties - 1} × {log_rho_ratio:.4f}
+         = {uqff_factor:.6f}
+  
+  τ_N,UQFF = τ_N × Factor = {tau_N:.6f} × {uqff_factor:.6f} = {tau_N_UQFF:.6f}
+
+═══════════════════════════════════════════════════════════════════════════════
+RESULT: GENUINE MULTIPARTITE ENTANGLEMENT
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │ {N_parties}-PARTY GME                                                 │
+  │                                                                 │
+  │ Residual tangle:                                                │
+  │   τ_N (standard) = {tau_N:.6f}                                       │
+  │   τ_N (UQFF)     = {tau_N_UQFF:.6f}                                       │
+  │                                                                 │
+  │ GME fraction: {gme_fraction:.4f} → {gme_fraction_UQFF:.4f} (UQFF)                    │
+  │                                                                 │
+  │ State type: {state_type}                            │
+  └─────────────────────────────────────────────────────────────────┘
+
+Interpretation:
+  • τ_N ≈ 1: All entanglement is genuine N-way (GHZ-like)
+  • τ_N ≈ 0: Entanglement distributed in lower parties (W-like)
+  • UQFF enhances GME via multiway aether channels
+
+Q-SCOPE TESTABILITY:
+  • Prepare N-party GHZ vs W states
+  • Measure all reduced 2-party density matrices
+  • Extract tangles from concurrences
+  • Verify monogamy inequality and GME value
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return results, steps
+
+    # ═══════════════════════════════════════════════════════════════════════════════
     # UQFF BLACK HOLE ENTROPY (Aether-Holographic Bekenstein-Hawking)
     # ═══════════════════════════════════════════════════════════════════════════════
     
