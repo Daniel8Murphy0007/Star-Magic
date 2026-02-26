@@ -147596,6 +147596,887 @@ SOURCE79_WOLFRAM_CALCULATORS = {
 }
 
 
+# ========================================
+# SOURCE84 LENR CALIBRATION CALCULATORS
+# ========================================
+# 16 classes from source84_wolfram.cpp
+# LENR Neutron Production Calibration (k_eta, Um magnetic, non-local states)
+
+class LENRCalibDynamicVacuumCalculator:
+    """
+    LENR calibration vacuum energy from source84_wolfram.cpp
+    
+    E_vac = amp × ρ_vac × sin(freq × t)
+    """
+    
+    def compute(self, t: float, amplitude: float = 1e-10, 
+                rho_vac: float = 7.09e-36, frequency: float = 1e-15) -> dict:
+        import math
+        
+        E_vac = amplitude * rho_vac * math.sin(frequency * t)
+        
+        return {
+            'value': E_vac,
+            't_s': t,
+            'amplitude': amplitude,
+            'rho_vac_J_m3': rho_vac,
+            'frequency_Hz': frequency,
+            'units': 'J/m³',
+            'equation': f"E_vac = {amplitude:.2e} × {rho_vac:.2e} × sin({frequency:.2e} × t) = {E_vac:.4e} J/m³"
+        }
+
+
+class LENRCalibQuantumCouplingCalculator:
+    """
+    LENR calibration quantum coupling from source84_wolfram.cpp
+    
+    F_q = g × ℏ²/(M × r²) × cos(t/10⁶)
+    """
+    
+    hbar = 1.0546e-34  # J·s
+    
+    def compute(self, t: float, coupling_strength: float = 1e-40,
+                M: float = 1.989e30, r: float = 1e4) -> dict:
+        import math
+        
+        F_q = coupling_strength * (self.hbar**2) / (M * r**2) * math.cos(t / 1e6)
+        
+        return {
+            'value': F_q,
+            't_s': t,
+            'coupling_strength': coupling_strength,
+            'M_kg': M,
+            'r_m': r,
+            'units': 'N',
+            'equation': f"F_q = {coupling_strength:.2e} × ℏ²/(M×r²) × cos(t/10⁶) = {F_q:.4e} N"
+        }
+
+
+class LENRCalibMuJCalculator:
+    """
+    LENR calibration magnetic moment μ_j(t) from source84_wolfram.cpp
+    
+    μ_j = (10³ + 0.4×sin(ω_c×t)) × 3.38×10²⁰
+    """
+    
+    def compute(self, t: float, omega_c: float = None) -> dict:
+        import math
+        
+        if omega_c is None:
+            omega_c = 2.0 * math.pi / 3.96e8  # rad/s
+        
+        mu_j = (1e3 + 0.4 * math.sin(omega_c * t)) * 3.38e20
+        
+        return {
+            'value': mu_j,
+            't_s': t,
+            'omega_c_rad_s': omega_c,
+            'base_moment': 1e3 * 3.38e20,
+            'modulation_amplitude': 0.4 * 3.38e20,
+            'units': 'A·m²',
+            'equation': f"μ_j = (10³ + 0.4×sin(ω_c×t)) × 3.38×10²⁰ = {mu_j:.4e} A·m²"
+        }
+
+
+class LENRCalibEReactCalculator:
+    """
+    LENR calibration reactor energy decay from source84_wolfram.cpp
+    
+    E_react(t) = E₀ × exp(-κ × t/year)
+    """
+    
+    year_to_s = 3.156e7  # s/yr
+    
+    def compute(self, t: float, E_react_0: float = 1e46, 
+                kappa: float = 0.0005) -> dict:
+        import math
+        
+        E_react = E_react_0 * math.exp(-kappa * t / self.year_to_s)
+        
+        return {
+            'value': E_react,
+            't_s': t,
+            'E_react_0_erg': E_react_0,
+            'kappa_per_day': kappa,
+            't_years': t / self.year_to_s,
+            'decay_fraction': E_react / E_react_0,
+            'units': 'erg',
+            'equation': f"E_react = {E_react_0:.2e} × exp(-{kappa} × t/yr) = {E_react:.4e} erg"
+        }
+
+
+class LENRCalibUmCalculator:
+    """
+    LENR calibration magnetic energy Um from source84_wolfram.cpp
+    
+    Um = (μ_j/r) × (1-exp(-γ×t×cos(π×t_n))) × P_scm × E_react × (1+10¹³×f_h) × (1+f_q)
+    """
+    
+    year_to_s = 3.156e7
+    
+    def compute(self, t: float, r: float = 1e-10, gamma: float = 0.00005,
+                t_n: float = 0.0, P_scm: float = 1.0, E_react_0: float = 1e46,
+                f_h: float = 0.01, f_q: float = 0.01, omega_c: float = None) -> dict:
+        import math
+        
+        if omega_c is None:
+            omega_c = 2.0 * math.pi / 3.96e8
+        
+        # Compute mu_j(t)
+        mu_j = (1e3 + 0.4 * math.sin(omega_c * t)) * 3.38e20
+        
+        # Compute E_react(t)
+        E_react = E_react_0 * math.exp(-0.0005 * t / self.year_to_s)
+        
+        # Compute Um
+        t_days = t / 86400.0
+        term1 = mu_j / r
+        term2 = 1.0 - math.exp(-gamma * t_days * math.cos(math.pi * t_n))
+        factor = P_scm * E_react * (1.0 + 1e13 * f_h) * (1.0 + f_q)
+        
+        Um = term1 * term2 * factor
+        
+        return {
+            'value': Um,
+            't_s': t,
+            'mu_j_A_m2': mu_j,
+            'r_m': r,
+            'gamma_per_day': gamma,
+            't_n': t_n,
+            'P_scm': P_scm,
+            'E_react_erg': E_react,
+            'f_heaviside': f_h,
+            'f_quasi': f_q,
+            'units': 'erg',
+            'equation': f"Um = (μ_j/r) × [1-exp(-γ×t)] × factors = {Um:.4e} erg"
+        }
+
+
+class LENRCalibElectricFieldCalculator:
+    """
+    LENR calibration electric field from source84_wolfram.cpp
+    
+    E = Um / (ρ_vac × r)
+    """
+    
+    def compute(self, Um: float, rho_vac: float = 7.09e-36, r: float = 1e-10) -> dict:
+        E_field = Um / (rho_vac * r)
+        
+        return {
+            'value': E_field,
+            'Um_erg': Um,
+            'rho_vac_J_m3': rho_vac,
+            'r_m': r,
+            'units': 'V/m',
+            'equation': f"E = Um/(ρ_vac × r) = {Um:.2e}/({rho_vac:.2e} × {r:.2e}) = {E_field:.4e} V/m"
+        }
+
+
+class LENRCalibDeltaNCalculator:
+    """
+    LENR calibration pseudo-monopole factor from source84_wolfram.cpp
+    
+    δ_n = (2π)^(n/6)
+    """
+    
+    def compute(self, n: int = 1) -> dict:
+        import math
+        
+        delta_n = (2.0 * math.pi) ** (n / 6.0)
+        
+        return {
+            'value': delta_n,
+            'n_quantum_state': n,
+            'units': 'dimensionless',
+            'equation': f"δ_n = (2π)^({n}/6) = {delta_n:.6f}"
+        }
+
+
+class LENRCalibNonLocalExpCalculator:
+    """
+    LENR calibration non-local exponential from source84_wolfram.cpp
+    
+    exp(-[S×S_q]^n × 2⁶ × exp(-π - t/yr))
+    """
+    
+    year_to_s = 3.156e7
+    
+    def compute(self, t: float, n: int = 1, S_S_q: float = 1.0) -> dict:
+        import math
+        
+        exp_inner = math.exp(-math.pi - t / self.year_to_s)
+        base = (S_S_q ** n) * (2 ** 6)
+        non_local = math.exp(-base * exp_inner)
+        
+        return {
+            'value': non_local,
+            't_s': t,
+            'n_state': n,
+            'S_S_q': S_S_q,
+            'exp_inner': exp_inner,
+            'base': base,
+            'units': 'dimensionless',
+            'equation': f"exp(-[S×S_q]^{n} × 64 × exp(-π - t/yr)) = {non_local:.6f}"
+        }
+
+
+class LENRCalibRhoVacUAScmCalculator:
+    """
+    LENR calibration vacuum density transformation UA':SCm from source84_wolfram.cpp
+    
+    ρ_vac[UA':SCm] = ρ_UA' × (0.1)^n × exp(non-local)
+    """
+    
+    year_to_s = 3.156e7
+    
+    def compute(self, t: float, n: int = 1, rho_UA_prime: float = 1e-23, 
+                S_S_q: float = 1.0) -> dict:
+        import math
+        
+        exp_inner = math.exp(-math.pi - t / self.year_to_s)
+        base = (S_S_q ** n) * (2 ** 6)
+        non_local = math.exp(-base * exp_inner)
+        
+        rho_vac = rho_UA_prime * (0.1 ** n) * non_local
+        
+        return {
+            'value': rho_vac,
+            't_s': t,
+            'n_state': n,
+            'rho_UA_prime': rho_UA_prime,
+            'S_S_q': S_S_q,
+            'non_local_factor': non_local,
+            'units': 'J/m³',
+            'equation': f"ρ_vac[UA':SCm] = {rho_UA_prime:.2e} × (0.1)^{n} × {non_local:.4f} = {rho_vac:.4e} J/m³"
+        }
+
+
+class LENRCalibEtaNeutronRateCalculator:
+    """
+    LENR calibration neutron production rate from source84_wolfram.cpp
+    
+    η(t,n) = k_η × exp(non-local) × (Um / ρ_vac)
+    """
+    
+    year_to_s = 3.156e7
+    
+    def compute(self, t: float, n: int = 1, k_eta: float = 1e13,
+                Um: float = 1e40, rho_vac: float = 7.09e-36, S_S_q: float = 1.0) -> dict:
+        import math
+        
+        exp_inner = math.exp(-math.pi - t / self.year_to_s)
+        base = (S_S_q ** n) * (2 ** 6)
+        non_local = math.exp(-base * exp_inner)
+        
+        eta = k_eta * non_local * (Um / rho_vac)
+        
+        return {
+            'value': eta,
+            't_s': t,
+            'n_state': n,
+            'k_eta_cm2_s': k_eta,
+            'Um_erg': Um,
+            'rho_vac_J_m3': rho_vac,
+            'non_local_factor': non_local,
+            'units': 'cm⁻²/s',
+            'equation': f"η = {k_eta:.2e} × {non_local:.4f} × (Um/ρ_vac) = {eta:.4e} cm⁻²/s"
+        }
+
+
+class LENRCalibHydrideScenarioCalculator:
+    """
+    LENR hydride scenario calibration from source84_wolfram.cpp
+    k_η = 10¹³ cm⁻²/s, E = 2×10¹¹ V/m
+    """
+    
+    k_eta = 1e13  # cm⁻²/s
+    E_field = 2e11  # V/m
+    
+    def compute(self) -> dict:
+        return {
+            'value': self.k_eta,
+            'k_eta_cm2_s': self.k_eta,
+            'E_V_m': self.E_field,
+            'scenario': 'hydride',
+            'units': 'cm⁻²/s',
+            'equation': f"Hydride: k_η = {self.k_eta:.2e} cm⁻²/s, E = {self.E_field:.2e} V/m"
+        }
+
+
+class LENRCalibWiresScenarioCalculator:
+    """
+    LENR wires scenario calibration from source84_wolfram.cpp
+    k_η = 10⁸ cm⁻²/s, E = 28.8×10¹¹ V/m
+    """
+    
+    k_eta = 1e8  # cm⁻²/s
+    E_field = 28.8e11  # V/m
+    
+    def compute(self) -> dict:
+        return {
+            'value': self.k_eta,
+            'k_eta_cm2_s': self.k_eta,
+            'E_V_m': self.E_field,
+            'scenario': 'wires',
+            'units': 'cm⁻²/s',
+            'equation': f"Wires: k_η = {self.k_eta:.2e} cm⁻²/s, E = {self.E_field:.2e} V/m"
+        }
+
+
+class LENRCalibCoronaScenarioCalculator:
+    """
+    LENR corona scenario calibration from source84_wolfram.cpp
+    k_η = 7×10⁻³ cm⁻²/s, E = 1.2×10⁻³ V/m
+    """
+    
+    k_eta = 7e-3  # cm⁻²/s
+    E_field = 1.2e-3  # V/m
+    
+    def compute(self) -> dict:
+        return {
+            'value': self.k_eta,
+            'k_eta_cm2_s': self.k_eta,
+            'E_V_m': self.E_field,
+            'scenario': 'corona',
+            'units': 'cm⁻²/s',
+            'equation': f"Corona: k_η = {self.k_eta:.2e} cm⁻²/s, E = {self.E_field:.2e} V/m"
+        }
+
+
+class LENRCalibPolarizationCalculator:
+    """
+    LENR calibration polarization factor P_scm from source84_wolfram.cpp
+    """
+    
+    def compute(self, P_scm: float = 1.0) -> dict:
+        return {
+            'value': P_scm,
+            'P_scm': P_scm,
+            'units': 'dimensionless',
+            'equation': f"P_scm = {P_scm}"
+        }
+
+
+class LENRCalibHeavisideCalculator:
+    """
+    LENR calibration Heaviside correction from source84_wolfram.cpp
+    
+    Factor = 1 + 10¹³ × f_h
+    """
+    
+    def compute(self, f_h: float = 0.01) -> dict:
+        factor = 1.0 + 1e13 * f_h
+        
+        return {
+            'value': factor,
+            'f_heaviside': f_h,
+            'units': 'dimensionless',
+            'equation': f"Factor = 1 + 10¹³ × {f_h} = {factor:.4e}"
+        }
+
+
+class LENRCalibQuasiCalculator:
+    """
+    LENR calibration quasi-particle correction from source84_wolfram.cpp
+    
+    Factor = 1 + f_q
+    """
+    
+    def compute(self, f_q: float = 0.01) -> dict:
+        factor = 1.0 + f_q
+        
+        return {
+            'value': factor,
+            'f_quasi': f_q,
+            'units': 'dimensionless',
+            'equation': f"Factor = 1 + {f_q} = {factor:.4f}"
+        }
+
+
+SOURCE84_WOLFRAM_CALCULATORS = {
+    'LENRCalibDynamicVacuumCalculator': LENRCalibDynamicVacuumCalculator(),
+    'LENRCalibQuantumCouplingCalculator': LENRCalibQuantumCouplingCalculator(),
+    'LENRCalibMuJCalculator': LENRCalibMuJCalculator(),
+    'LENRCalibEReactCalculator': LENRCalibEReactCalculator(),
+    'LENRCalibUmCalculator': LENRCalibUmCalculator(),
+    'LENRCalibElectricFieldCalculator': LENRCalibElectricFieldCalculator(),
+    'LENRCalibDeltaNCalculator': LENRCalibDeltaNCalculator(),
+    'LENRCalibNonLocalExpCalculator': LENRCalibNonLocalExpCalculator(),
+    'LENRCalibRhoVacUAScmCalculator': LENRCalibRhoVacUAScmCalculator(),
+    'LENRCalibEtaNeutronRateCalculator': LENRCalibEtaNeutronRateCalculator(),
+    'LENRCalibHydrideScenarioCalculator': LENRCalibHydrideScenarioCalculator(),
+    'LENRCalibWiresScenarioCalculator': LENRCalibWiresScenarioCalculator(),
+    'LENRCalibCoronaScenarioCalculator': LENRCalibCoronaScenarioCalculator(),
+    'LENRCalibPolarizationCalculator': LENRCalibPolarizationCalculator(),
+    'LENRCalibHeavisideCalculator': LENRCalibHeavisideCalculator(),
+    'LENRCalibQuasiCalculator': LENRCalibQuasiCalculator(),
+}
+
+
+# ========================================
+# SOURCE85 NGC 346 NEBULA CALCULATORS
+# ========================================
+# 16 classes from source85_wolfram.cpp
+# NGC 346 SMC dwarf galaxy nebula evolution (protostar formation, cluster entanglement)
+
+class NGC346DynamicVacuumCalculator:
+    """
+    NGC 346 time-varying vacuum energy from source85_wolfram.cpp
+    
+    E_vac = amp × ρ_vac × sin(freq × t)
+    """
+    
+    def compute(self, t: float, amplitude: float = 1e-10,
+                rho_vac: float = 7.09e-36, frequency: float = 1e-15) -> dict:
+        import math
+        
+        E_vac = amplitude * rho_vac * math.sin(frequency * t)
+        
+        return {
+            'value': E_vac,
+            't_s': t,
+            'amplitude': amplitude,
+            'rho_vac_J_m3': rho_vac,
+            'frequency_Hz': frequency,
+            'units': 'J/m³',
+            'equation': f"E_vac = {amplitude:.2e} × ρ_vac × sin(ω×t) = {E_vac:.4e} J/m³"
+        }
+
+
+class NGC346QuantumCouplingCalculator:
+    """
+    NGC 346 non-local quantum effects from source85_wolfram.cpp
+    
+    F_q = g × ℏ²/(M × r²) × cos(t/10⁶)
+    """
+    
+    hbar = 1.0546e-34  # J·s
+    
+    def compute(self, t: float, coupling_strength: float = 1e-40,
+                M: float = 1.989e30, r: float = 1e4) -> dict:
+        import math
+        
+        F_q = coupling_strength * (self.hbar**2) / (M * r**2) * math.cos(t / 1e6)
+        
+        return {
+            'value': F_q,
+            't_s': t,
+            'coupling_strength': coupling_strength,
+            'M_kg': M,
+            'r_m': r,
+            'units': 'N',
+            'equation': f"F_q = g × ℏ²/(M×r²) × cos(t/10⁶) = {F_q:.4e} N"
+        }
+
+
+class NGC346HubbleExpansionCalculator:
+    """
+    NGC 346 Hubble expansion factor from source85_wolfram.cpp
+    
+    Factor = 1 + H(z)×t where H(z) = H₀×√(Ω_m×(1+z)³ + Ω_Λ)
+    """
+    
+    H0 = 70.0  # km/s/Mpc
+    Mpc_to_m = 3.086e22  # m/Mpc
+    
+    def compute(self, t: float, z: float = 0.0006, Omega_m: float = 0.3,
+                Omega_Lambda: float = 0.7) -> dict:
+        import math
+        
+        # H(z) in km/s/Mpc
+        H_z_kms = self.H0 * math.sqrt(Omega_m * (1 + z)**3 + Omega_Lambda)
+        # Convert to s⁻¹
+        H_z = (H_z_kms * 1e3) / self.Mpc_to_m
+        
+        factor = 1.0 + H_z * t
+        
+        return {
+            'value': factor,
+            't_s': t,
+            'z_redshift': z,
+            'H_z_km_s_Mpc': H_z_kms,
+            'H_z_per_s': H_z,
+            'Omega_m': Omega_m,
+            'Omega_Lambda': Omega_Lambda,
+            'units': 'dimensionless',
+            'equation': f"Factor = 1 + H(z)×t = {factor:.6f}"
+        }
+
+
+class NGC346MassSFRCalculator:
+    """
+    NGC 346 star formation mass growth from source85_wolfram.cpp
+    
+    M(t) = M₀ × (1 + SFR×t/M₀)
+    """
+    
+    M_sun = 1.989e30  # kg
+    
+    def compute(self, t: float, M0: float = None, SFR: float = 1e23) -> dict:
+        if M0 is None:
+            M0 = 1000 * self.M_sun  # 1000 M_sun
+        
+        factor = 1.0 + (SFR * t) / M0
+        M_t = M0 * factor
+        
+        return {
+            'value': M_t,
+            't_s': t,
+            'M0_kg': M0,
+            'SFR_kg_s': SFR,
+            'growth_factor': factor,
+            'M0_Msun': M0 / self.M_sun,
+            'M_t_Msun': M_t / self.M_sun,
+            'units': 'kg',
+            'equation': f"M(t) = M₀ × (1 + SFR×t/M₀) = {M_t:.4e} kg"
+        }
+
+
+class NGC346SuperconductorCorrectionCalculator:
+    """
+    NGC 346 superconductor magnetic correction from source85_wolfram.cpp
+    
+    Factor = 1 - B/B_crit
+    """
+    
+    B_crit = 1e11  # T
+    
+    def compute(self, B: float = 1e-5) -> dict:
+        factor = 1.0 - B / self.B_crit
+        
+        return {
+            'value': factor,
+            'B_T': B,
+            'B_crit_T': self.B_crit,
+            'B_ratio': B / self.B_crit,
+            'units': 'dimensionless',
+            'equation': f"Factor = 1 - B/B_crit = 1 - {B:.2e}/{self.B_crit:.2e} = {factor:.10f}"
+        }
+
+
+class NGC346EnvelopeForceCalculator:
+    """
+    NGC 346 envelope collapse + SF force from source85_wolfram.cpp
+    
+    F_env = ρ_gas × v_rad² + k_SF × SFR/M_sun
+    """
+    
+    M_sun = 1.989e30  # kg
+    
+    def compute(self, rho_gas: float = 1e-20, v_rad: float = -10e3,
+                SFR: float = 1e23, k_SF: float = 1e-10) -> dict:
+        F_collapse = rho_gas * v_rad**2
+        F_SF = k_SF * SFR / self.M_sun
+        F_env = F_collapse + F_SF
+        
+        return {
+            'value': F_env,
+            'F_collapse_N_m3': F_collapse,
+            'F_SF_N_m3': F_SF,
+            'rho_gas_kg_m3': rho_gas,
+            'v_rad_m_s': v_rad,
+            'SFR_kg_s': SFR,
+            'k_SF': k_SF,
+            'units': 'N/m³',
+            'equation': f"F_env = ρ×v² + k×SFR/M☉ = {F_env:.4e} N/m³"
+        }
+
+
+class NGC346Ug1DipoleCalculator:
+    """
+    NGC 346 Ug1 dipole oscillation from source85_wolfram.cpp
+    
+    Ug1 = 10⁻¹⁰ × cos(ω×t)
+    """
+    
+    def compute(self, t: float, omega: float = 1e-14) -> dict:
+        import math
+        
+        Ug1 = 1e-10 * math.cos(omega * t)
+        
+        return {
+            'value': Ug1,
+            't_s': t,
+            'omega_rad_s': omega,
+            'amplitude': 1e-10,
+            'units': 'm/s²',
+            'equation': f"Ug1 = 10⁻¹⁰ × cos({omega:.2e} × t) = {Ug1:.4e} m/s²"
+        }
+
+
+class NGC346Ug2SuperconductorCalculator:
+    """
+    NGC 346 Ug2 superconductor energy from source85_wolfram.cpp
+    
+    Ug2 = B_super²/(2×μ₀) where B_super = μ₀ × H_aether
+    """
+    
+    mu_0 = 4e-7 * 3.14159  # T·m/A
+    
+    def compute(self, H_aether: float = 1e-6) -> dict:
+        import math
+        
+        B_super = self.mu_0 * H_aether
+        Ug2 = (B_super**2) / (2 * self.mu_0)
+        
+        return {
+            'value': Ug2,
+            'H_aether_A_m': H_aether,
+            'B_super_T': B_super,
+            'mu_0_T_m_A': self.mu_0,
+            'units': 'J/m³',
+            'equation': f"Ug2 = B²/(2μ₀) = {Ug2:.4e} J/m³"
+        }
+
+
+class NGC346Ug3MagneticStringsCalculator:
+    """
+    NGC 346 Ug3 magnetic strings disk collapse from source85_wolfram.cpp
+    
+    Ug3 = G×M/r² × (ρ_gas/ρ_vac)
+    """
+    
+    G = 6.6743e-11  # m³/kg·s²
+    
+    def compute(self, M: float = 1.989e33, r: float = 1e16, 
+                rho_gas: float = 1e-20, rho_vac: float = 7.09e-36) -> dict:
+        g_base = self.G * M / (r**2)
+        density_ratio = rho_gas / rho_vac
+        Ug3 = g_base * density_ratio
+        
+        return {
+            'value': Ug3,
+            'M_kg': M,
+            'r_m': r,
+            'rho_gas_kg_m3': rho_gas,
+            'rho_vac_J_m3': rho_vac,
+            'g_base_m_s2': g_base,
+            'density_ratio': density_ratio,
+            'units': 'm/s²',
+            'equation': f"Ug3 = G×M/r² × (ρ_gas/ρ_vac) = {Ug3:.4e} m/s²"
+        }
+
+
+class NGC346Ug4ReactionCalculator:
+    """
+    NGC 346 Ug4 nuclear reaction energy decay from source85_wolfram.cpp
+    
+    Ug4 = k_4 × E_react(t) where E_react = 10⁴⁰ × exp(-κ×t)
+    """
+    
+    def compute(self, t: float, k_4: float = 1.0, E_react_0: float = 1e40,
+                kappa: float = 0.0005) -> dict:
+        import math
+        
+        E_react = E_react_0 * math.exp(-kappa * t)
+        Ug4 = k_4 * E_react
+        
+        return {
+            'value': Ug4,
+            't_s': t,
+            'k_4': k_4,
+            'E_react_0_erg': E_react_0,
+            'E_react_t_erg': E_react,
+            'kappa_per_s': kappa,
+            'units': 'erg',
+            'equation': f"Ug4 = k₄ × E_react(t) = {Ug4:.4e} erg"
+        }
+
+
+class NGC346UiInertialCalculator:
+    """
+    NGC 346 universal inertia from source85_wolfram.cpp
+    
+    Ui = λ_I × (ρ_vac/ρ_plasm) × ω_i × cos(π×t_n)
+    """
+    
+    rho_plasm = 1e-9  # normalized
+    
+    def compute(self, t_n: float = 0.0, lambda_I: float = 1.0,
+                rho_vac: float = 7.09e-36, omega_i: float = 1e-8) -> dict:
+        import math
+        
+        Ui = lambda_I * (rho_vac / self.rho_plasm) * omega_i * math.cos(math.pi * t_n)
+        
+        return {
+            'value': Ui,
+            't_n': t_n,
+            'lambda_I': lambda_I,
+            'rho_vac_J_m3': rho_vac,
+            'omega_i_rad_s': omega_i,
+            'units': 'm/s²',
+            'equation': f"Ui = λ×(ρ_vac/ρ_plasm)×ω×cos(π×t_n) = {Ui:.4e} m/s²"
+        }
+
+
+class NGC346UmMagneticCalculator:
+    """
+    NGC 346 universal magnetism (Lorentz force) from source85_wolfram.cpp
+    
+    Um = q × v_rad × B
+    """
+    
+    q = 1.602e-19  # C
+    
+    def compute(self, v_rad: float = -10e3, B: float = 1e-5) -> dict:
+        Um = self.q * v_rad * B
+        
+        return {
+            'value': Um,
+            'q_C': self.q,
+            'v_rad_m_s': v_rad,
+            'B_T': B,
+            'units': 'N',
+            'equation': f"Um = q×v×B = {self.q:.3e} × {v_rad:.2e} × {B:.2e} = {Um:.4e} N"
+        }
+
+
+class NGC346QuantumWaveCalculator:
+    """
+    NGC 346 quantum wave term with Heisenberg uncertainty from source85_wolfram.cpp
+    
+    Term = (ℏ/√(Δx×Δp)) × ψ_integral × (2π/t_H)
+    """
+    
+    hbar = 1.0546e-34  # J·s
+    t_Hubble = 4.35e17  # s
+    
+    def compute(self, Delta_x: float = 1e-10, Delta_p: float = None,
+                integral_psi: float = 1.0) -> dict:
+        import math
+        
+        if Delta_p is None:
+            Delta_p = self.hbar / Delta_x
+        
+        uncertainty = math.sqrt(Delta_x * Delta_p)
+        term = (self.hbar / uncertainty) * integral_psi * (2 * math.pi / self.t_Hubble)
+        
+        return {
+            'value': term,
+            'Delta_x_m': Delta_x,
+            'Delta_p_kg_m_s': Delta_p,
+            'uncertainty_product': uncertainty,
+            'integral_psi': integral_psi,
+            't_Hubble_s': self.t_Hubble,
+            'units': 's⁻¹',
+            'equation': f"Term = ℏ/√(Δx×Δp) × ψ × 2π/t_H = {term:.4e} s⁻¹"
+        }
+
+
+class NGC346FluidTermCalculator:
+    """
+    NGC 346 fluid dynamics contribution from source85_wolfram.cpp
+    
+    F_fluid = ρ_gas × V × g_base
+    """
+    
+    def compute(self, rho_gas: float = 1e-20, V: float = 1e49, 
+                g_base: float = 1e-10) -> dict:
+        F_fluid = rho_gas * V * g_base
+        
+        return {
+            'value': F_fluid,
+            'rho_gas_kg_m3': rho_gas,
+            'V_m3': V,
+            'g_base_m_s2': g_base,
+            'units': 'N',
+            'equation': f"F_fluid = ρ×V×g = {rho_gas:.2e} × {V:.2e} × {g_base:.2e} = {F_fluid:.4e} N"
+        }
+
+
+class NGC346DarkMatterCalculator:
+    """
+    NGC 346 dark matter perturbation from source85_wolfram.cpp
+    
+    F_DM = (M_vis + M_DM) × (δρ/ρ + 3GM/r³)
+    """
+    
+    G = 6.6743e-11  # m³/kg·s²
+    M_sun = 1.989e30  # kg
+    
+    def compute(self, M_visible: float = None, M_DM: float = None,
+                r: float = 1e16, delta_rho_over_rho: float = 1e-5) -> dict:
+        if M_visible is None:
+            M_visible = 1000 * self.M_sun
+        if M_DM is None:
+            M_DM = 0.2 * M_visible
+        
+        M_total = M_visible + M_DM
+        curvature = 3 * self.G * M_total / (r**3)
+        perturbation = delta_rho_over_rho + curvature
+        F_DM = M_total * perturbation
+        
+        return {
+            'value': F_DM,
+            'M_visible_kg': M_visible,
+            'M_DM_kg': M_DM,
+            'M_total_kg': M_total,
+            'r_m': r,
+            'delta_rho_over_rho': delta_rho_over_rho,
+            'curvature_term': curvature,
+            'units': 'kg·m⁻¹',
+            'equation': f"F_DM = (M_vis + M_DM) × (δρ/ρ + 3GM/r³) = {F_DM:.4e} kg·m⁻¹"
+        }
+
+
+class NGC346CoreEnergyCalculator:
+    """
+    NGC 346 protostar core energy from source85_wolfram.cpp
+    
+    E_core = Ug3 + Ui × ρ_gas
+    """
+    
+    G = 6.6743e-11  # m³/kg·s²
+    rho_plasm = 1e-9  # normalized
+    
+    def compute(self, M: float = 1.989e33, r: float = 1e16,
+                rho_gas: float = 1e-20, rho_vac: float = 7.09e-36,
+                lambda_I: float = 1.0, omega_i: float = 1e-8, t_n: float = 0.0) -> dict:
+        import math
+        
+        # Ug3
+        g_base = self.G * M / (r**2)
+        Ug3 = g_base * (rho_gas / rho_vac)
+        
+        # Ui
+        Ui = lambda_I * (rho_vac / self.rho_plasm) * omega_i * math.cos(math.pi * t_n)
+        
+        # E_core
+        E_core = Ug3 + Ui * rho_gas
+        
+        return {
+            'value': E_core,
+            'Ug3_m_s2': Ug3,
+            'Ui_m_s2': Ui,
+            'M_kg': M,
+            'r_m': r,
+            'rho_gas_kg_m3': rho_gas,
+            't_n': t_n,
+            'units': 'm/s²',
+            'equation': f"E_core = Ug3 + Ui×ρ_gas = {E_core:.4e} m/s²"
+        }
+
+
+SOURCE85_WOLFRAM_CALCULATORS = {
+    'NGC346DynamicVacuumCalculator': NGC346DynamicVacuumCalculator(),
+    'NGC346QuantumCouplingCalculator': NGC346QuantumCouplingCalculator(),
+    'NGC346HubbleExpansionCalculator': NGC346HubbleExpansionCalculator(),
+    'NGC346MassSFRCalculator': NGC346MassSFRCalculator(),
+    'NGC346SuperconductorCorrectionCalculator': NGC346SuperconductorCorrectionCalculator(),
+    'NGC346EnvelopeForceCalculator': NGC346EnvelopeForceCalculator(),
+    'NGC346Ug1DipoleCalculator': NGC346Ug1DipoleCalculator(),
+    'NGC346Ug2SuperconductorCalculator': NGC346Ug2SuperconductorCalculator(),
+    'NGC346Ug3MagneticStringsCalculator': NGC346Ug3MagneticStringsCalculator(),
+    'NGC346Ug4ReactionCalculator': NGC346Ug4ReactionCalculator(),
+    'NGC346UiInertialCalculator': NGC346UiInertialCalculator(),
+    'NGC346UmMagneticCalculator': NGC346UmMagneticCalculator(),
+    'NGC346QuantumWaveCalculator': NGC346QuantumWaveCalculator(),
+    'NGC346FluidTermCalculator': NGC346FluidTermCalculator(),
+    'NGC346DarkMatterCalculator': NGC346DarkMatterCalculator(),
+    'NGC346CoreEnergyCalculator': NGC346CoreEnergyCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -147798,4 +148679,42 @@ __all__.extend([
     'NGC253DustExtinctionCalculator',
     'NGC253QuantumVacuumCalculator',
     'SOURCE79_WOLFRAM_CALCULATORS',
+
+    # Source84: LENR Calibration (16 Calculator Classes)
+    'LENRCalibDynamicVacuumCalculator',
+    'LENRCalibQuantumCouplingCalculator',
+    'LENRCalibMuJCalculator',
+    'LENRCalibEReactCalculator',
+    'LENRCalibUmCalculator',
+    'LENRCalibElectricFieldCalculator',
+    'LENRCalibDeltaNCalculator',
+    'LENRCalibNonLocalExpCalculator',
+    'LENRCalibRhoVacUAScmCalculator',
+    'LENRCalibEtaNeutronRateCalculator',
+    'LENRCalibHydrideScenarioCalculator',
+    'LENRCalibWiresScenarioCalculator',
+    'LENRCalibCoronaScenarioCalculator',
+    'LENRCalibPolarizationCalculator',
+    'LENRCalibHeavisideCalculator',
+    'LENRCalibQuasiCalculator',
+    'SOURCE84_WOLFRAM_CALCULATORS',
+
+    # Source85: NGC 346 Nebula Evolution (16 Calculator Classes)
+    'NGC346DynamicVacuumCalculator',
+    'NGC346QuantumCouplingCalculator',
+    'NGC346HubbleExpansionCalculator',
+    'NGC346MassSFRCalculator',
+    'NGC346SuperconductorCorrectionCalculator',
+    'NGC346EnvelopeForceCalculator',
+    'NGC346Ug1DipoleCalculator',
+    'NGC346Ug2SuperconductorCalculator',
+    'NGC346Ug3MagneticStringsCalculator',
+    'NGC346Ug4ReactionCalculator',
+    'NGC346UiInertialCalculator',
+    'NGC346UmMagneticCalculator',
+    'NGC346QuantumWaveCalculator',
+    'NGC346FluidTermCalculator',
+    'NGC346DarkMatterCalculator',
+    'NGC346CoreEnergyCalculator',
+    'SOURCE85_WOLFRAM_CALCULATORS',
 ])
