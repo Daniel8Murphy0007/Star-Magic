@@ -117124,6 +117124,1769 @@ PHYSICS INTERPRETATION:
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# UQFF BLACK HOLE ENTROPY CALCULATOR (Feb 26, 2026)
+# Integrated from uqff_black_hole_entropy_impl.cpp
+# Bekenstein-Hawking entropy with UQFF aether/TRZ/string corrections
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UQFFBlackHoleEntropyCalculator(SelfExpandingMixin):
+    """
+    UQFF Black Hole Entropy Calculator.
+    
+    Extends Bekenstein-Hawking entropy with UQFF corrections:
+    - Aether holographic rescaling (ρ_UA/ρ_SCm)
+    - Time-reversal negentropy (1 - f_TRZ)
+    - Magnetic string damping exp(-U_m/(k_B T_H))
+    
+    Key Physics:
+        S_UQFF = S_BH × (ρ_UA/ρ_SCm) × (1 - f_TRZ) × exp(-U_m/(k_B T_H))
+        
+    Where S_BH = k_B c³ A / (4 G ℏ) is Bekenstein-Hawking entropy.
+    
+    Attributes:
+        params (dict): Physical constants and UQFF parameters
+        additional_mods (list): Custom modification functions
+    """
+    
+    EXPLANATIONS = [
+        "UQFF Black Hole Entropy extends Bekenstein-Hawking with aether corrections.",
+        "Step 1: r_s = 2GM/c² - Schwarzschild radius",
+        "Step 2: A = 4πr_s² - Horizon area",
+        "Step 3: S_BH = k_B c³ A / (4 G ℏ) - Bekenstein-Hawking entropy",
+        "Step 4: S_aether = S_BH × (ρ_UA/ρ_SCm) - Aether holographic rescaling",
+        "Step 5: S_TRZ = S_aether × (1 - f_TRZ) - Time-reversal negentropy",
+        "Step 6: S_UQFF = S_TRZ × exp(-U_m/(k_B T_H)) - String damping",
+        "Result: Modified entropy with aether information channels",
+    ]
+    
+    def __init__(self, params: dict = None):
+        """Initialize UQFF Black Hole Entropy Calculator."""
+        self.params = {
+            'G': 6.67430e-11,           # Gravitational constant [m³/kg/s²]
+            'c': 2.99792458e8,          # Speed of light [m/s]
+            'k_B': 1.380649e-23,        # Boltzmann constant [J/K]
+            'hbar': 1.054571817e-34,    # Reduced Planck constant [J·s]
+            
+            # UQFF parameters
+            'rho_vac_UA': 7.09e-36,     # Universal Aether density [J/m³]
+            'rho_vac_SCm': 7.09e-37,    # Superconductive density [J/m³]
+            'f_TRZ': 0.1,               # Time-reversal fraction
+            'U_m': 1e-40,               # Magnetic string energy [J]
+            
+            # Reference
+            'M_sun': 1.989e30,          # Solar mass [kg]
+        }
+        if params:
+            self.params.update(params)
+        
+        # Derived Planck units
+        G, c, hbar = self.params['G'], self.params['c'], self.params['hbar']
+        self.l_Pl = np.sqrt(hbar * G / c**3)   # ~1.616e-35 m
+        self.M_Pl = np.sqrt(hbar * c / G)      # ~2.176e-8 kg
+        
+        self.additional_mods = []
+    
+    def compute_r_s(self, M: float) -> float:
+        """Schwarzschild radius: r_s = 2GM/c²"""
+        G, c = self.params['G'], self.params['c']
+        return (2.0 * G * M) / (c * c)
+    
+    def compute_A(self, r_s: float) -> float:
+        """Horizon area: A = 4π r_s²"""
+        return 4.0 * np.pi * r_s * r_s
+    
+    def compute_A_from_mass(self, M: float) -> float:
+        """Horizon area from mass."""
+        return self.compute_A(self.compute_r_s(M))
+    
+    def compute_S_BH(self, A: float) -> float:
+        """
+        Bekenstein-Hawking entropy: S_BH = k_B c³ A / (4 G ℏ)
+        Equivalently: S_BH = k_B A / (4 l_Pl²)
+        """
+        k_B = self.params['k_B']
+        c = self.params['c']
+        G = self.params['G']
+        hbar = self.params['hbar']
+        return (k_B * c**3 * A) / (4.0 * G * hbar)
+    
+    def compute_S_BH_from_mass(self, M: float) -> float:
+        """Bekenstein-Hawking entropy from mass."""
+        return self.compute_S_BH(self.compute_A_from_mass(M))
+    
+    def compute_rho_ratio(self) -> float:
+        """Aether density ratio ρ_UA/ρ_SCm ≈ 10"""
+        return self.params['rho_vac_UA'] / self.params['rho_vac_SCm']
+    
+    def compute_A_UQFF(self, A: float) -> float:
+        """UQFF effective area: A_UQFF = A × (ρ_UA/ρ_SCm)"""
+        return A * self.compute_rho_ratio()
+    
+    def compute_S_aether(self, S_BH: float) -> float:
+        """Aether-enhanced entropy: S_aether = S_BH × (ρ_UA/ρ_SCm)"""
+        return S_BH * self.compute_rho_ratio()
+    
+    def compute_S_TRZ(self, S: float) -> float:
+        """Time-reversal reduced entropy: S' = S × (1 - f_TRZ)"""
+        return S * (1.0 - self.params['f_TRZ'])
+    
+    def compute_T_H(self, M: float) -> float:
+        """Hawking temperature: T_H = ℏc³/(8πGMk_B)"""
+        hbar = self.params['hbar']
+        c = self.params['c']
+        G = self.params['G']
+        k_B = self.params['k_B']
+        return (hbar * c**3) / (8.0 * np.pi * G * M * k_B)
+    
+    def compute_string_damping(self, M: float) -> float:
+        """String damping factor: exp(-U_m/(k_B T_H))"""
+        T_H = self.compute_T_H(M)
+        U_m = self.params['U_m']
+        k_B = self.params['k_B']
+        exponent = -U_m / (k_B * T_H)
+        if exponent < -700:
+            return 0.0
+        if exponent > 0:
+            return 1.0
+        return np.exp(exponent)
+    
+    def compute_S_string_damped(self, S: float, M: float) -> float:
+        """String-damped entropy: S'' = S × exp(-U_m/(k_B T_H))"""
+        return S * self.compute_string_damping(M)
+    
+    def compute_full_S_UQFF(self, M: float, noise_level: float = 0.0) -> float:
+        """
+        Full UQFF black hole entropy.
+        
+        S_UQFF = S_BH × (ρ_UA/ρ_SCm) × (1 - f_TRZ) × exp(-U_m/(k_B T_H))
+        
+        Args:
+            M: Black hole mass [kg]
+            noise_level: Optional noise amplitude
+            
+        Returns:
+            S_UQFF [J/K]
+        """
+        S_BH = self.compute_S_BH_from_mass(M)
+        S_aether = self.compute_S_aether(S_BH)
+        S_TRZ = self.compute_S_TRZ(S_aether)
+        S_UQFF = self.compute_S_string_damped(S_TRZ, M)
+        
+        for mod in self.additional_mods:
+            S_UQFF *= mod(M)
+        
+        if noise_level > 0:
+            S_UQFF *= (1.0 + noise_level * np.random.randn())
+        
+        return S_UQFF
+    
+    def compute_information_bits(self, S: float) -> float:
+        """Convert entropy to information bits: I = S/(k_B ln 2)"""
+        return S / (self.params['k_B'] * np.log(2.0))
+    
+    def add_mod(self, mod) -> None:
+        """Add custom entropy modification function f(M) -> multiplier"""
+        self.additional_mods.append(mod)
+    
+    def get_derivation(self, M: float) -> str:
+        """Get step-by-step derivation for given mass."""
+        r_s = self.compute_r_s(M)
+        A = self.compute_A(r_s)
+        S_BH = self.compute_S_BH(A)
+        S_aether = self.compute_S_aether(S_BH)
+        S_TRZ = self.compute_S_TRZ(S_aether)
+        T_H = self.compute_T_H(M)
+        damping = self.compute_string_damping(M)
+        S_UQFF = self.compute_full_S_UQFF(M)
+        bits = self.compute_information_bits(S_UQFF)
+        
+        return f"""UQFF Black Hole Entropy Derivation
+════════════════════════════════════════════════════════════════════════════════
+INPUT: M = {M:.4e} kg ({M/self.params['M_sun']:.2f} M☉)
+
+STEP 1: Schwarzschild Radius
+  r_s = 2GM/c² = {r_s:.4e} m
+
+STEP 2: Horizon Area
+  A = 4πr_s² = {A:.4e} m²
+
+STEP 3: Bekenstein-Hawking Entropy
+  S_BH = k_B c³ A / (4 G ℏ) = {S_BH:.4e} J/K
+
+STEP 4: Aether Holographic Rescaling
+  ρ_UA/ρ_SCm = {self.compute_rho_ratio():.1f}
+  S_aether = S_BH × {self.compute_rho_ratio():.1f} = {S_aether:.4e} J/K
+
+STEP 5: Time-Reversal Negentropy
+  f_TRZ = {self.params['f_TRZ']}
+  S_TRZ = S_aether × (1 - f_TRZ) = {S_TRZ:.4e} J/K
+
+STEP 6: String Damping
+  T_H = {T_H:.4e} K
+  damping = exp(-U_m/(k_B T_H)) = {damping:.6f}
+  S_UQFF = S_TRZ × damping = {S_UQFF:.4e} J/K
+
+FINAL RESULT:
+  S_UQFF = {S_UQFF:.4e} J/K
+  Information = {bits:.4e} bits
+════════════════════════════════════════════════════════════════════════════════
+"""
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# UQFF TEMPERATURE FORMULA CALCULATOR (Feb 26, 2026)
+# Integrated from uqff_temperature_formula.cpp
+# Hawking temperature with UQFF TRZ/aether corrections
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UQFFTemperatureCalculator(SelfExpandingMixin):
+    """
+    UQFF Temperature Formula for Black Holes.
+    
+    Extends Hawking temperature with UQFF corrections:
+    - Time-reversal enhancement (1 + f_TRZ)
+    - Aether-superconductive damping (1 - ρ_SCm/ρ_UA)
+    
+    Key Physics:
+        T_UQFF = T_H × (1 + f_TRZ) × (1 - ρ_SCm/ρ_UA)
+        
+    Where T_H = ℏc³/(8πGMk_B) is Hawking temperature.
+    
+    Attributes:
+        params (dict): Physical constants and UQFF parameters
+        additional_corrections (list): Custom correction functions
+    """
+    
+    EXPLANATIONS = [
+        "UQFF Temperature Formula extends Hawking with aether corrections.",
+        "Step 1: κ = c⁴/(4GM) - Surface gravity at Schwarzschild horizon",
+        "Step 2: T_H = ℏκ/(2πk_B c) = ℏc³/(8πGMk_B) - Hawking temperature",
+        "Step 3: T' = T_H × (1 + f_TRZ) - Time-reversal enhancement ~10%",
+        "Step 4: T_UQFF = T' × (1 - ρ_SCm/ρ_UA) - Aether damping ~10%",
+        "Net effect: T_UQFF ≈ 0.99 × T_H (small modification to Hawking)",
+    ]
+    
+    def __init__(self, params: dict = None):
+        """Initialize UQFF Temperature Calculator."""
+        self.params = {
+            'hbar': 1.0545718e-34,      # Reduced Planck constant [J·s]
+            'c': 2.99792458e8,          # Speed of light [m/s]
+            'G': 6.6743e-11,            # Gravitational constant [m³/kg/s²]
+            'k_B': 1.380649e-23,        # Boltzmann constant [J/K]
+            
+            # UQFF parameters
+            'f_TRZ': 0.1,               # Time-reversal zone fraction
+            'rho_vac_SCm': 7.09e-37,    # Superconductive density [J/m³]
+            'rho_vac_UA': 7.09e-36,     # Universal Aether density [J/m³]
+            
+            # Reference
+            'M_sun': 1.989e30,          # Solar mass [kg]
+        }
+        if params:
+            self.params.update(params)
+        
+        self.additional_corrections = []
+    
+    def compute_kappa(self, M: float) -> float:
+        """Surface gravity at Schwarzschild horizon: κ = c⁴/(4GM)"""
+        c = self.params['c']
+        G = self.params['G']
+        return (c**4) / (4.0 * G * M)
+    
+    def compute_T_H(self, M: float) -> float:
+        """
+        Hawking temperature: T_H = ℏc³/(8πGMk_B)
+        
+        Args:
+            M: Black hole mass [kg]
+            
+        Returns:
+            T_H [K]
+        """
+        hbar = self.params['hbar']
+        c = self.params['c']
+        G = self.params['G']
+        k_B = self.params['k_B']
+        return (hbar * c**3) / (8.0 * np.pi * G * M * k_B)
+    
+    def compute_T_prime(self, T_H: float) -> float:
+        """Time-reversal enhanced temperature: T' = T_H × (1 + f_TRZ)"""
+        return T_H * (1.0 + self.params['f_TRZ'])
+    
+    def compute_T_UQFF(self, T_prime: float) -> float:
+        """Aether-damped temperature: T_UQFF = T' × (1 - ρ_SCm/ρ_UA)"""
+        rho_ratio = self.params['rho_vac_SCm'] / self.params['rho_vac_UA']
+        return T_prime * (1.0 - rho_ratio)
+    
+    def compute_full_T(self, M: float, noise_level: float = 0.0) -> float:
+        """
+        Full UQFF temperature with all corrections.
+        
+        T_UQFF = T_H × (1 + f_TRZ) × (1 - ρ_SCm/ρ_UA) × corrections
+        
+        Args:
+            M: Black hole mass [kg]
+            noise_level: Optional noise amplitude
+            
+        Returns:
+            T_UQFF [K]
+        """
+        T_H = self.compute_T_H(M)
+        T_prime = self.compute_T_prime(T_H)
+        T_UQFF = self.compute_T_UQFF(T_prime)
+        
+        for corr in self.additional_corrections:
+            T_UQFF *= corr(M)
+        
+        if noise_level > 0:
+            T_UQFF += noise_level * np.random.randn()
+        
+        return T_UQFF
+    
+    def add_correction(self, correction) -> None:
+        """Add custom temperature correction function f(M) -> multiplier"""
+        self.additional_corrections.append(correction)
+    
+    def get_derivation(self, M: float) -> str:
+        """Get step-by-step derivation for given mass."""
+        kappa = self.compute_kappa(M)
+        T_H = self.compute_T_H(M)
+        T_prime = self.compute_T_prime(T_H)
+        T_UQFF = self.compute_T_UQFF(T_prime)
+        T_full = self.compute_full_T(M)
+        
+        f_TRZ = self.params['f_TRZ']
+        rho_ratio = self.params['rho_vac_SCm'] / self.params['rho_vac_UA']
+        
+        return f"""UQFF Temperature Formula Derivation
+════════════════════════════════════════════════════════════════════════════════
+INPUT: M = {M:.4e} kg ({M/self.params['M_sun']:.2f} M☉)
+
+STEP 1: Surface Gravity
+  κ = c⁴/(4GM) = {kappa:.4e} m/s²
+
+STEP 2: Hawking Temperature
+  T_H = ℏc³/(8πGMk_B) = {T_H:.4e} K
+
+STEP 3: Time-Reversal Enhancement
+  f_TRZ = {f_TRZ}
+  T' = T_H × (1 + f_TRZ) = {T_prime:.4e} K
+
+STEP 4: Aether Damping
+  ρ_SCm/ρ_UA = {rho_ratio:.2f}
+  T_UQFF = T' × (1 - {rho_ratio:.2f}) = {T_UQFF:.4e} K
+
+FINAL RESULT:
+  T_UQFF = {T_full:.4e} K
+  Ratio T_UQFF/T_H = {T_full/T_H:.4f}
+════════════════════════════════════════════════════════════════════════════════
+"""
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# UQFF WAVEFORM SIMULATION CALCULATOR (Feb 26, 2026)
+# Integrated from uqff_waveform_simulate_impl.cpp
+# GW waveform with chirp evolution and UQFF corrections
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UQFFWaveformSimulateCalculator(SelfExpandingMixin):
+    """
+    UQFF Waveform Simulation with Chirp Evolution.
+    
+    Simulates GW waveforms with frequency chirp and UQFF modifications.
+    
+    Numerical Simulation Parameters (GW150914-like):
+        μ ≈ 15 M_sun, M_tot ≈ 65 M_sun
+        Initial a ≈ 100 km
+        Linear chirp approximation for frequency evolution
+    
+    UQFF Modifications:
+        S_TRZ = (1 - f_TRZ) = 0.9 for f_TRZ = 0.1
+        S_SCm = (1 - B_t/B_crit) ≈ 1.0 for stellar BHs
+        S_aether = exp(-α_UA ρ_UA r/c) ≈ 1.0 for short r
+        S_string = exp(-U_m/E_bind) ~ 0.37-1.0
+        
+    Key Physics:
+        h_UQFF = h_std × S_TRZ × S_SCm × S_aether × S_string × (1 + β_m sin(...))
+        ω(t) = ω₀ × (1 - t/τ_merge)^(-3/8) [Peters formula]
+        τ_merge = (5/256) × c⁵a₀⁴/(G³M²μ)
+    """
+    
+    EXPLANATIONS = [
+        "UQFF Waveform Simulation with Chirp Evolution",
+        "Standard GR: h = (4G²μM)/(c⁴ar) × cos(2ωt)",
+        "UQFF: h_UQFF = h × S_TRZ × S_SCm × S_aether × S_string × (1 + β_m sin(...))",
+        "Chirp: ω(t) = ω₀ × (1 - t/τ_merge)^(-3/8)",
+        "τ_merge = (5/256) × c⁵a₀⁴/(G³M²μ)",
+        "GW150914-like: ~10-20% amplitude reduction from UQFF",
+    ]
+    
+    def __init__(self, params: dict = None):
+        """Initialize UQFF Waveform Simulation Calculator."""
+        self.params = {
+            'G': 6.6743e-11,
+            'c': 2.99792458e8,
+            'M_sun': 1.989e30,
+            'k_B': 1.380649e-23,
+            
+            # UQFF parameters
+            'f_TRZ': 0.1,
+            'B_t': 1e-16,               # Binary magnetic field [T]
+            'B_crit': 1e11,             # Critical field [T]
+            'rho_vac_UA': 7.09e-36,
+            'alpha_UA': 7.4e-44,        # G/c² absorption
+            'U_m': 1.0e-20,             # String energy [J]
+            'beta_m': 0.01,             # Modulation amplitude
+            'T': 2.725,                 # CMB temperature [K]
+        }
+        if params:
+            self.params.update(params)
+        
+        self.additional_mods = []
+    
+    def compute_h_standard(self, mu: float, M_tot: float, a: float,
+                           r_observer: float, omega: float, t: float) -> float:
+        """
+        Standard quadrupole GW strain: h = (4G²μM)/(c⁴ar) × cos(2ωt)
+        
+        Args:
+            mu: Reduced mass [kg]
+            M_tot: Total mass [kg]
+            a: Orbital separation [m]
+            r_observer: Distance to observer [m]
+            omega: Orbital angular frequency [rad/s]
+            t: Time [s]
+            
+        Returns:
+            Dimensionless strain amplitude
+        """
+        if a <= 0 or r_observer <= 0:
+            return 0.0
+        G = self.params['G']
+        c = self.params['c']
+        amplitude = (4.0 * G**2 * mu * M_tot) / (c**4 * a * r_observer)
+        return amplitude * np.cos(2.0 * omega * t)
+    
+    def compute_h_time_reversal(self, h_std: float) -> float:
+        """Time-reversal suppression: h × (1 - f_TRZ)"""
+        return h_std * (1.0 - self.params['f_TRZ'])
+    
+    def compute_h_superconducting(self, h: float) -> float:
+        """SCm horizon screening: h × (1 - B_t/B_crit)"""
+        ratio = self.params['B_t'] / self.params['B_crit']
+        if ratio >= 1.0:
+            return 0.0
+        return h * (1.0 - ratio)
+    
+    def compute_h_aether(self, h: float, r_observer: float) -> float:
+        """Aether damping: h × exp(-α_UA × ρ_UA × r / c)"""
+        alpha = self.params['alpha_UA']
+        rho = self.params['rho_vac_UA']
+        c = self.params['c']
+        damping = alpha * rho * r_observer / c
+        return h * np.exp(-damping)
+    
+    def compute_h_magnetic_string(self, h: float, M_tot: float, a: float) -> float:
+        """String binding: h × exp(-U_m/E_bind) where E_bind = GM²/a"""
+        if a <= 0:
+            return 0.0
+        G = self.params['G']
+        E_bind = G * M_tot**2 / a
+        if E_bind <= 0:
+            return h
+        ratio = self.params['U_m'] / E_bind
+        return h * np.exp(-ratio)
+    
+    def compute_h_interference(self, h: float, omega: float) -> float:
+        """String modulation: h × (1 + β_m × sin(U_m × ω / (k_B × T)))"""
+        U_m = self.params['U_m']
+        k_B = self.params['k_B']
+        T = self.params['T']
+        phase = U_m * omega / (k_B * T)
+        return h * (1.0 + self.params['beta_m'] * np.sin(phase))
+    
+    def compute_full_h_UQFF(self, mu: float, M_tot: float, a: float,
+                            r_observer: float, omega: float, t: float,
+                            noise_level: float = 0.0) -> float:
+        """
+        Full UQFF waveform with all corrections.
+        
+        h_UQFF = h_std × S_TRZ × S_SCm × S_aether × S_string × (1 + β_m sin(...))
+        """
+        h = self.compute_h_standard(mu, M_tot, a, r_observer, omega, t)
+        h = self.compute_h_time_reversal(h)
+        h = self.compute_h_superconducting(h)
+        h = self.compute_h_aether(h, r_observer)
+        h = self.compute_h_magnetic_string(h, M_tot, a)
+        h = self.compute_h_interference(h, omega)
+        
+        for mod in self.additional_mods:
+            h *= mod(omega, t)
+        
+        if noise_level > 0:
+            h += noise_level * abs(h) * np.random.randn()
+        
+        return h
+    
+    def compute_chirp_omega(self, omega_0: float, t: float, tau_merge: float) -> float:
+        """
+        Chirp frequency evolution (Peters formula):
+        ω(t) = ω₀ × (1 - t/τ_merge)^(-3/8)
+        """
+        ratio = 1.0 - t / tau_merge
+        if ratio <= 0:
+            return omega_0 * 10.0  # Cap at merger
+        return omega_0 * ratio**(-3.0/8.0)
+    
+    def compute_tau_merge(self, mu: float, M_tot: float, a_0: float) -> float:
+        """
+        Merger timescale: τ = (5/256) × c⁵a₀⁴/(G³M²μ)
+        """
+        c = self.params['c']
+        G = self.params['G']
+        return (5.0/256.0) * c**5 * a_0**4 / (G**3 * M_tot**2 * mu)
+    
+    def simulate_waveform(self, mu: float, M_tot: float, a_initial: float,
+                          r_observer: float, omega_start: float,
+                          t_start: float, t_end: float, dt: float) -> dict:
+        """
+        Simulate waveform with chirp evolution.
+        
+        Returns dict with time array, omega array, h_std, h_uqff, ratio.
+        """
+        tau_merge = self.compute_tau_merge(mu, M_tot, a_initial)
+        
+        times = np.arange(t_start, t_end, dt)
+        h_std_arr = []
+        h_uqff_arr = []
+        omega_arr = []
+        
+        for t in times:
+            omega = self.compute_chirp_omega(omega_start, t, tau_merge)
+            omega_arr.append(omega)
+            
+            # Evolve separation (Kepler approx)
+            G = self.params['G']
+            c = self.params['c']
+            a = a_initial * (1.0 - t/tau_merge)**(1.0/4.0) if t < tau_merge else 3*G*M_tot/c**2
+            
+            h_std = self.compute_h_standard(mu, M_tot, a, r_observer, omega, t)
+            h_uqff = self.compute_full_h_UQFF(mu, M_tot, a, r_observer, omega, t)
+            
+            h_std_arr.append(h_std)
+            h_uqff_arr.append(h_uqff)
+        
+        return {
+            'times': np.array(times),
+            'omega': np.array(omega_arr),
+            'h_std': np.array(h_std_arr),
+            'h_uqff': np.array(h_uqff_arr),
+            'ratio': np.array(h_uqff_arr) / (np.array(h_std_arr) + 1e-100),
+            'tau_merge': tau_merge,
+        }
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function f(omega, t) -> multiplier"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# UQFF ENTANGLEMENT ENTROPY CALCULATOR (Feb 26, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# Von Neumann entropy with UQFF corrections
+# From uqff_entanglement_entropy_impl.cpp
+# S_UQFF = -Σ λ_i log λ_i - f_TRZ × log(d_eff,UQFF) × (1 - exp(-k_B T/U_m))
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UQFFEntanglementEntropyCalculator(SelfExpandingMixin):
+    """
+    UQFF Entanglement Entropy Calculator.
+    
+    Computes entanglement entropy with aether and time-reversal corrections.
+    
+    Key Physics:
+        - Step 1: Base von Neumann entropy S = -Σ λ_i log λ_i
+        - Step 2: Effective dimension d_eff,UQFF = (1/Σλ²) × (ρ_UA/ρ_SCm)
+        - Step 3: TRZ reduction S' = S × (1 - f_TRZ)
+        - Step 4: String damping (1 - exp(-k_B T/U_m))
+        - Step 5: Full S_UQFF = S_base - f_TRZ × log(d_eff) × damping
+    
+    Reference:
+        - UQFF Entanglement Entropy Module (Star Magic)
+    """
+    
+    def __init__(self):
+        self.params = {
+            'rho_vac_UA': 7.09e-36,     # Universal Aether density [J/m³]
+            'rho_vac_SCm': 7.09e-37,    # Superconductive density [J/m³]
+            'f_TRZ': 0.1,               # Time-reversal zone factor
+            'U_m': 1e-20,               # String cutoff energy [J]
+            'k_B': 1.380649e-23,        # Boltzmann constant [J/K]
+            'T': 100.0,                 # Temperature [K]
+        }
+        self.additional_mods = []
+    
+    def compute_S_base(self, lambdas: np.ndarray) -> float:
+        """
+        Step 1: Base von Neumann entropy S = -Σ λ_i log λ_i
+        
+        For Schmidt decomposition |ψ⟩ = Σ √λ_i |i_A⟩|i_B⟩
+        S = 0: pure product state
+        S = log N: maximally entangled
+        """
+        S = 0.0
+        for lam in lambdas:
+            if lam > 1e-30:
+                S -= lam * np.log(lam)
+        return S
+    
+    def compute_purity(self, lambdas: np.ndarray) -> float:
+        """Purity P = Σ λ_i² = Tr(ρ_A²). P=1 pure, P=1/N maximally mixed."""
+        return np.sum(lambdas**2)
+    
+    def compute_effective_dimension(self, lambdas: np.ndarray) -> float:
+        """Standard effective dimension d_eff = 1/Σ λ_i² (participation ratio)."""
+        P = self.compute_purity(lambdas)
+        return 1.0 / max(P, 1e-30)
+    
+    def compute_rho_ratio(self) -> float:
+        """ρ_UA/ρ_SCm ≈ 10 in UQFF calibration."""
+        return self.params['rho_vac_UA'] / self.params['rho_vac_SCm']
+    
+    def compute_d_eff_UQFF(self, lambdas: np.ndarray) -> float:
+        """
+        Step 2: UQFF effective dimension
+        d_eff,UQFF = (1/Σλ²) × (ρ_UA/ρ_SCm)
+        
+        Aether enhancement boosts effective dimension.
+        """
+        d_eff = self.compute_effective_dimension(lambdas)
+        return d_eff * self.compute_rho_ratio()
+    
+    def compute_S_enhancement(self, d_eff_uqff: float) -> float:
+        """Enhancement from UQFF dimension: f_TRZ × log(d_eff,UQFF)"""
+        if d_eff_uqff <= 0:
+            return 0.0
+        return self.params['f_TRZ'] * np.log(d_eff_uqff)
+    
+    def compute_S_TRZ(self, S_base: float) -> float:
+        """Step 3: Time-reversal reduction S' = S × (1 - f_TRZ)"""
+        return S_base * (1.0 - self.params['f_TRZ'])
+    
+    def compute_string_damping_factor(self) -> float:
+        """
+        Step 4: String damping (1 - exp(-k_B T/U_m))
+        Low T: strong damping (factor → 0)
+        High T: no damping (factor → 1)
+        """
+        k_B = self.params['k_B']
+        T = self.params['T']
+        U_m = self.params['U_m']
+        exponent = -(k_B * T) / U_m
+        if exponent < -700:
+            return 1.0
+        return 1.0 - np.exp(exponent)
+    
+    def compute_full_S_UQFF(self, lambdas: np.ndarray, noise_level: float = 0.0) -> float:
+        """
+        Step 5: Full UQFF entanglement entropy
+        
+        S_UQFF = S_base - f_TRZ × log(d_eff,UQFF) × damping_factor
+        
+        Args:
+            lambdas: Schmidt coefficients (must sum to 1)
+            noise_level: Optional noise amplitude
+        
+        Returns:
+            S_UQFF (non-negative)
+        """
+        # Step 1: Base entropy
+        S_base = self.compute_S_base(lambdas)
+        
+        # Step 2: Enhanced effective dimension
+        d_eff_uqff = self.compute_d_eff_UQFF(lambdas)
+        S_enhancement = self.compute_S_enhancement(d_eff_uqff)
+        
+        # Step 4: String damping
+        damping = self.compute_string_damping_factor()
+        
+        # Step 5: Full formula
+        S_UQFF = S_base - S_enhancement * damping
+        
+        for mod in self.additional_mods:
+            S_UQFF *= mod(lambdas)
+        
+        if noise_level > 0:
+            S_UQFF += noise_level * abs(S_UQFF) * np.random.randn()
+        
+        return max(S_UQFF, 0.0)
+    
+    def compute_concurrence_2qubit(self, lambda1: float, lambda2: float) -> float:
+        """Concurrence for 2-qubit system: C = 2|√λ₁ - √λ₂|"""
+        return 2.0 * abs(np.sqrt(lambda1) - np.sqrt(lambda2))
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function f(lambdas) -> multiplier"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# UQFF ER=EPR CONJECTURE CALCULATOR (Feb 26, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# Entanglement ≡ Wormhole geometry (Maldacena-Susskind 2013)
+# From uqff_er_equals_epr_conjecture.cpp
+# S_UQFF = A_throat,UQFF/(4Gℏ) × (1+f_TRZ) × exp(U_m/(k_B T_eff))
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UQFFERequalsEPRCalculator(SelfExpandingMixin):
+    """
+    UQFF ER=EPR Conjecture Calculator.
+    
+    Computes equivalence between entanglement (EPR) and wormhole (ER) geometry.
+    
+    Key Physics:
+        - Step 1: Bekenstein-Hawking entropy S_ER=EPR = A_throat/(4Gℏ)
+        - Step 2: UQFF throat radius r_throat,UQFF = l_Pl × (ρ_UA/ρ_SCm)
+        - Step 3: TRZ boost S_UQFF = S_ER=EPR × (1 + f_TRZ)
+        - Step 4: Magnetic stabilization exp(U_m/(k_B×T_eff))
+        - Step 5: Full S_UQFF formula
+    
+    Reference:
+        - Maldacena-Susskind (2013) ER=EPR
+        - UQFF ER=EPR Module (Star Magic)
+    """
+    
+    def __init__(self):
+        self.params = {
+            'G': 6.6743e-11,            # Gravitational constant [m³/kg/s²]
+            'c': 2.998e8,               # Speed of light [m/s]
+            'hbar': 1.0545718e-34,      # Reduced Planck constant [J·s]
+            'k_B': 1.380649e-23,        # Boltzmann constant [J/K]
+            'rho_vac_UA': 7.09e-36,     # Aether density [J/m³]
+            'rho_vac_SCm': 7.09e-37,    # SC density [J/m³]
+            'f_TRZ': 0.1,               # Time-reversal factor
+            'U_m': 1e-30,               # Base string energy [J]
+            'kappa_UQFF': 1e-60,        # Energy reduction factor
+            'lambda_UQFF': 1e-9,        # Magnetic scaling
+            'mu_j': 1e20,               # Magnetic permeability factor
+            'gamma': 1e-3,              # Temporal decay rate
+            't_n': 1.0,                 # Normalized time
+            'T_eff_floor': 1e16,        # Temperature floor [K]
+        }
+        # Planck length
+        G, hbar, c = self.params['G'], self.params['hbar'], self.params['c']
+        self.params['l_Pl'] = np.sqrt(G * hbar / c**3)  # ~1.616e-35 m
+        self.additional_mods = []
+    
+    def compute_S_ER_EPR(self, A_throat: float) -> float:
+        """Step 1: Bekenstein-Hawking entropy S = A/(4Gℏ)"""
+        G = self.params['G']
+        hbar = self.params['hbar']
+        return A_throat / (4.0 * G * hbar)
+    
+    def compute_r_throat_UQFF(self, l_Pl: float = None) -> float:
+        """Step 2: r_throat,UQFF = l_Pl × (ρ_UA/ρ_SCm)"""
+        if l_Pl is None:
+            l_Pl = self.params['l_Pl']
+        rho_ratio = self.params['rho_vac_UA'] / self.params['rho_vac_SCm']
+        return l_Pl * rho_ratio
+    
+    def compute_A_throat_UQFF(self, r_throat: float) -> float:
+        """Spherical throat area A = 4π r²"""
+        return 4.0 * np.pi * r_throat**2
+    
+    def compute_S_UQFF_base(self, S_ER_EPR: float) -> float:
+        """Step 3: S_UQFF = S_ER=EPR × (1 + f_TRZ)"""
+        return S_ER_EPR * (1.0 + self.params['f_TRZ'])
+    
+    def compute_T_H(self, M: float) -> float:
+        """Hawking temperature T_H = ℏc³/(8πGMk_B)"""
+        hbar, c, G, k_B = [self.params[k] for k in ['hbar', 'c', 'G', 'k_B']]
+        return (hbar * c**3) / (8.0 * np.pi * G * M * k_B)
+    
+    def compute_T_eff(self, T_H: float) -> float:
+        """Effective temperature with floor"""
+        return max(T_H, self.params['T_eff_floor'])
+    
+    def compute_U_m(self, r_throat: float) -> float:
+        """U_m = λ_UQFF × (μ_j/r) × (1 - exp(-γ cos(πt_n)))"""
+        lam = self.params['lambda_UQFF']
+        mu_j = self.params['mu_j']
+        gamma = self.params['gamma']
+        t_n = self.params['t_n']
+        oscillation = 1.0 - np.exp(-gamma * np.cos(np.pi * t_n))
+        return lam * (mu_j / r_throat) * oscillation
+    
+    def compute_S_UQFF_prime(self, S_UQFF: float, U_m: float, T_eff: float) -> float:
+        """Step 4: S_UQFF' = S_UQFF × exp(U_m/(k_B×T_eff))"""
+        k_B = self.params['k_B']
+        exponent = U_m / (k_B * T_eff)
+        exponent = max(-700, min(exponent, 700))
+        return S_UQFF * np.exp(exponent)
+    
+    def compute_full_S_UQFF(self, M: float, noise_level: float = 0.0) -> float:
+        """
+        Full S_UQFF for black hole of mass M.
+        
+        S_UQFF = A_throat,UQFF/(4Gℏ) × (1+f_TRZ) × exp(U_m/(k_B×T_eff))
+        """
+        G, c = self.params['G'], self.params['c']
+        rho_ratio = self.params['rho_vac_UA'] / self.params['rho_vac_SCm']
+        
+        # Schwarzschild radius → throat radius
+        r_s = (2.0 * G * M) / c**2
+        r_throat = r_s * rho_ratio
+        
+        A_throat = self.compute_A_throat_UQFF(r_throat)
+        S_ER_EPR = self.compute_S_ER_EPR(A_throat)
+        S_UQFF = self.compute_S_UQFF_base(S_ER_EPR)
+        
+        T_H = self.compute_T_H(M)
+        T_eff = self.compute_T_eff(T_H)
+        U_m = self.compute_U_m(r_throat)
+        
+        S_final = self.compute_S_UQFF_prime(S_UQFF, U_m, T_eff)
+        
+        for mod in self.additional_mods:
+            S_final *= mod(M, r_throat)
+        
+        if noise_level > 0:
+            S_final += noise_level * S_final * np.random.randn()
+        
+        return S_final
+    
+    def check_ER_equals_EPR(self, S_UQFF: float, S_EPR: float, tolerance: float = 0.1) -> bool:
+        """Check if ER=EPR holds within tolerance: |S_UQFF/S_EPR - 1| < tol"""
+        if S_EPR <= 0:
+            return False
+        return abs(S_UQFF / S_EPR - 1.0) < tolerance
+    
+    def compute_S_EPR(self, n_qubits: int) -> float:
+        """Entanglement entropy for maximally entangled n-qubit GHZ state."""
+        return (n_qubits / 2.0) * np.log(2.0)
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function f(M, r_throat) -> multiplier"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# UQFF WORMHOLE FORMATION CALCULATOR (Feb 26, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# Stable wormholes via aether-superconductive inversion
+# From uqff_wormhole_formation.cpp
+# Θ_WH = P_form × J_aether × exp(U_m/(k_B T_H)) - forms when Θ > 1
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UQFFWormholeFormationCalculator(SelfExpandingMixin):
+    """
+    UQFF Wormhole Formation Calculator.
+    
+    Computes formation threshold for stable traversable wormholes.
+    
+    Key Physics:
+        - Step 1: UQFF throat r_throat,UQFF = (2GM/c²) × (ρ_UA/ρ_SCm)
+        - Step 2: Formation probability P_form = f_TRZ × exp(-E_throat/(k_B T_H))
+        - Step 3: Aether flux J_aether = ρ_UA × v_s × (1 + f_TRZ)
+        - Step 4: Magnetic string U_m = (μ_j/r) × (1 - exp(-γt cos(πt_n)))
+        - Step 5: Threshold Θ_WH = P × J × exp(U_m/(k_B T_H)); forms if Θ > 1
+    
+    Reference:
+        - UQFF Wormhole Formation Module (Star Magic)
+    """
+    
+    def __init__(self):
+        self.params = {
+            'G': 6.6743e-11,
+            'c': 2.998e8,
+            'hbar': 1.0545718e-34,
+            'k_B': 1.380649e-23,
+            'rho_vac_UA': 7.09e-36,
+            'rho_vac_SCm': 7.09e-37,
+            'f_TRZ': 0.1,
+            'mu_j': 1e20,               # A·m² (magnetic moment)
+            'gamma': 5.787e-10,         # s⁻¹ (converted from 5e-5 day⁻¹)
+            't_n': 0.5,                 # Normalized time phase
+            'kappa_UQFF': 1e-60,        # Energy reduction factor
+            'lambda_UQFF': 1e-9,        # Magnetic scaling
+            'T_eff_floor': 1e16,        # K
+        }
+        self.additional_mods = []
+    
+    def compute_r_s_standard(self, M: float) -> float:
+        """Schwarzschild radius r_s = 2GM/c²"""
+        G, c = self.params['G'], self.params['c']
+        return (2 * G * M) / c**2
+    
+    def compute_r_throat_UQFF(self, r_s_std: float) -> float:
+        """Step 1: r_throat,UQFF = r_s × (ρ_UA/ρ_SCm)"""
+        rho_ratio = self.params['rho_vac_UA'] / self.params['rho_vac_SCm']
+        return r_s_std * rho_ratio
+    
+    def compute_P_form(self, E_throat: float, T_H: float) -> float:
+        """Step 2: P_form = f_TRZ × exp(-E_throat/(k_B T_H))"""
+        k_B = self.params['k_B']
+        f_TRZ = self.params['f_TRZ']
+        exponent = -E_throat / (k_B * T_H)
+        exponent = max(exponent, -700)
+        return f_TRZ * np.exp(exponent)
+    
+    def compute_J_aether(self, v_s: float = None) -> float:
+        """Step 3: J_aether = ρ_UA × v_s × (1 + f_TRZ), v_s ≈ c"""
+        if v_s is None:
+            v_s = self.params['c']
+        rho_UA = self.params['rho_vac_UA']
+        f_TRZ = self.params['f_TRZ']
+        return rho_UA * v_s * (1 + f_TRZ)
+    
+    def compute_U_m(self, r_throat: float, t: float) -> float:
+        """Step 4: U_m = λ_UQFF × (μ_j/r) × (1 - exp(-γt cos(πt_n)))"""
+        lam = self.params['lambda_UQFF']
+        mu_j = self.params['mu_j']
+        gamma = self.params['gamma']
+        t_n = self.params['t_n']
+        return lam * (mu_j / r_throat) * (1 - np.exp(-gamma * t * np.cos(np.pi * t_n)))
+    
+    def compute_Theta_WH(self, P_form: float, J_aether: float, U_m: float, T_H: float) -> float:
+        """Step 5: Θ_WH = P_form × J_aether × exp(U_m/(k_B T_H))"""
+        k_B = self.params['k_B']
+        exponent = U_m / (k_B * T_H)
+        exponent = max(-700, min(exponent, 700))
+        return P_form * J_aether * np.exp(exponent)
+    
+    def compute_T_H(self, M: float) -> float:
+        """Hawking temperature T_H = ℏc³/(8πGMk_B)"""
+        hbar, c, G, k_B = [self.params[k] for k in ['hbar', 'c', 'G', 'k_B']]
+        return (hbar * c**3) / (8.0 * np.pi * G * M * k_B)
+    
+    def compute_full_Theta_WH(self, M: float, t: float, noise_level: float = 0.0) -> float:
+        """
+        Full wormhole formation threshold.
+        
+        Returns Θ_WH - wormhole forms when Θ > 1.
+        """
+        r_s_std = self.compute_r_s_standard(M)
+        r_throat = self.compute_r_throat_UQFF(r_s_std)
+        
+        G = self.params['G']
+        kappa = self.params['kappa_UQFF']
+        E_throat = kappa * G * M**2 / r_throat
+        
+        T_H_raw = self.compute_T_H(M)
+        T_eff = max(T_H_raw, self.params['T_eff_floor'])
+        
+        P_form = self.compute_P_form(E_throat, T_eff)
+        J_aether = self.compute_J_aether()
+        U_m = self.compute_U_m(r_throat, t)
+        
+        Theta = self.compute_Theta_WH(P_form, J_aether, U_m, T_eff)
+        
+        for mod in self.additional_mods:
+            Theta *= mod(M, t)
+        
+        if noise_level > 0:
+            Theta += noise_level * np.random.randn()
+        
+        return Theta
+    
+    def check_formation(self, Theta_WH: float) -> bool:
+        """Wormhole forms if Θ_WH > 1"""
+        return Theta_WH > 1.0
+    
+    def compute_traversal_time(self, r_throat: float) -> float:
+        """Traversal time τ ≈ r_throat/c"""
+        return r_throat / self.params['c']
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function f(M, t) -> multiplier"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# UQFF WHITE HOLE FORMATION CALCULATOR (Feb 26, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# Time-reverse of black holes - stable via aether mechanism
+# From uqff_white_hole_formation.cpp
+# Θ_WH = P_inv × Φ_flux × exp(U_m/(k_B T_H)) - forms when Θ > 1
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UQFFWhiteHoleFormationCalculator(SelfExpandingMixin):
+    """
+    UQFF White Hole Formation Calculator.
+    
+    Computes formation threshold for white holes (time-reverse of black holes).
+    
+    Key Physics:
+        - Step 1: UQFF horizon r_s,UQFF = (2GM/c²) × (1 - ρ_SCm/ρ_UA)
+        - Step 2: Time-reversal trigger P_inv = f_TRZ × exp(-E_horizon/(k_B T_H))
+        - Step 3: Aether expulsion flux Φ_flux = (ρ_UA/ρ_SCm) × (GM/c) × (1+f_TRZ)
+        - Step 4: Magnetic string U_m = (μ_j/r) × (1 - exp(-γt cos(πt_n)))
+        - Step 5: Formation Θ_WH = P_inv × Φ_flux × exp(U_m/(k_B T_H))
+    
+    Reference:
+        - UQFF White Hole Formation Module (Star Magic)
+    """
+    
+    M_sun = 1.989e30  # Solar mass [kg]
+    
+    def __init__(self):
+        self.params = {
+            'G': 6.6743e-11,
+            'c': 2.998e8,
+            'hbar': 1.0545718e-34,
+            'k_B': 1.380649e-23,
+            'rho_vac_UA': 7.09e-36,
+            'rho_vac_SCm': 7.09e-37,
+            'f_TRZ': 0.1,
+            'mu_j': 1e15,           # Am² (magnetar moment)
+            'gamma': 5e-5 / 86400,  # s⁻¹ (from day⁻¹)
+            't_n': 0.0,             # Phase
+            'r_fixed': 0.0,         # Auto-compute if 0
+        }
+        self.additional_mods = []
+    
+    def compute_r_s_standard(self, M: float) -> float:
+        """r_s = 2GM/c²"""
+        G, c = self.params['G'], self.params['c']
+        return (2.0 * G * M) / c**2
+    
+    def compute_r_s_UQFF(self, r_s_std: float) -> float:
+        """Step 1: r_s,UQFF = r_s × (1 - ρ_SCm/ρ_UA)"""
+        density_ratio = self.params['rho_vac_SCm'] / self.params['rho_vac_UA']
+        return r_s_std * (1.0 - density_ratio)
+    
+    def compute_E_horizon(self, M: float, r_s: float) -> float:
+        """E_horizon = GM²/r_s (binding energy)"""
+        G = self.params['G']
+        if r_s <= 0:
+            return 0.0
+        return (G * M**2) / r_s
+    
+    def compute_T_H(self, M: float) -> float:
+        """Hawking temperature T_H = ℏc³/(8πGMk_B)"""
+        hbar, c, G, k_B = [self.params[k] for k in ['hbar', 'c', 'G', 'k_B']]
+        if M <= 0:
+            return 0.0
+        return (hbar * c**3) / (8.0 * np.pi * G * M * k_B)
+    
+    def compute_P_inv(self, E_horizon: float, T_H: float) -> float:
+        """Step 2: P_inv = f_TRZ × exp(-E_horizon/(k_B T_H))"""
+        k_B = self.params['k_B']
+        f_TRZ = self.params['f_TRZ']
+        if T_H <= 0:
+            return 0.0
+        exponent = -E_horizon / (k_B * T_H)
+        exponent = max(exponent, -700)
+        return f_TRZ * np.exp(exponent)
+    
+    def compute_Phi_flux(self, M: float) -> float:
+        """Step 3: Φ_flux = (ρ_UA/ρ_SCm) × (GM/c) × (1 + f_TRZ)"""
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        G, c = self.params['G'], self.params['c']
+        f_TRZ = self.params['f_TRZ']
+        if rho_SCm <= 0:
+            return 0.0
+        return (rho_UA / rho_SCm) * (G * M / c) * (1.0 + f_TRZ)
+    
+    def compute_U_m(self, r: float, t: float) -> float:
+        """Step 4: U_m = (μ_j/r) × (1 - exp(-γt cos(πt_n)))"""
+        mu_j = self.params['mu_j']
+        gamma = self.params['gamma']
+        t_n = self.params['t_n']
+        if r <= 0:
+            return 0.0
+        cos_term = np.cos(np.pi * t_n)
+        decay = 1.0 - np.exp(-gamma * t * max(cos_term, 0.0))
+        return (mu_j / r) * decay
+    
+    def compute_Theta_WH(self, P_inv: float, Phi_flux: float, U_m: float, T_H: float) -> float:
+        """Step 5: Θ_WH = P_inv × Φ_flux × exp(U_m/(k_B T_H))"""
+        k_B = self.params['k_B']
+        if T_H <= 0 or k_B * T_H <= 0:
+            return 0.0
+        exponent = U_m / (k_B * T_H)
+        exponent = max(-700, min(exponent, 700))
+        return P_inv * Phi_flux * np.exp(exponent)
+    
+    def compute_full_Theta_WH(self, M: float, t: float, noise_level: float = 0.0) -> float:
+        """
+        Full white hole formation threshold.
+        
+        White hole forms when Θ_WH > 1.
+        """
+        r_s_std = self.compute_r_s_standard(M)
+        r_s_uqff = self.compute_r_s_UQFF(r_s_std)
+        r = self.params['r_fixed'] if self.params['r_fixed'] > 0 else r_s_uqff
+        
+        E_horizon = self.compute_E_horizon(M, r_s_uqff)
+        T_H = self.compute_T_H(M)
+        
+        P_inv = self.compute_P_inv(E_horizon, T_H)
+        Phi_flux = self.compute_Phi_flux(M)
+        U_m = self.compute_U_m(r, t)
+        
+        Theta = self.compute_Theta_WH(P_inv, Phi_flux, U_m, T_H)
+        
+        for mod in self.additional_mods:
+            Theta *= mod(M, t)
+        
+        if noise_level > 0:
+            Theta += noise_level * np.random.randn()
+        
+        return Theta
+    
+    def check_formation(self, Theta_WH: float) -> bool:
+        """White hole forms if Θ_WH > 1"""
+        return Theta_WH > 1.0
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function f(M, t) -> multiplier"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# UQFF AdS/CFT DUALITY CALCULATOR (Feb 26, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# Gravity in AdS ≡ CFT on boundary (Maldacena 1997)
+# From uqff_ads_cft_duality.cpp
+# Z_UQFF = Z_AdS × (1 + f_TRZ) × exp(-U_m/(k_B×T))
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UQFFAdSCFTDualityCalculator(SelfExpandingMixin):
+    """
+    UQFF AdS/CFT Duality Calculator.
+    
+    Computes holographic duality with UQFF aether corrections.
+    
+    Key Physics:
+        - Step 1: AdS metric ds² = (L²/z²)(-dt² + dx² + dz²)
+        - Step 2: UQFF holographic scale L_UQFF = (ℏc/ρ_UA)^(1/4)
+        - Step 3: Yang-Mills coupling g_YM² = (4πG/L²) × (1 + f_TRZ)
+        - Step 4: Correlation length ξ_UQFF = L × (1 - B_t/B_crit)
+        - Step 5: String energy U_m = (μ_j/L) × exp(z/ξ)
+        - Step 6: Z_UQFF = Z_AdS × (1 + f_TRZ) × exp(-U_m/(k_B×T))
+    
+    Reference:
+        - Maldacena (1997) AdS/CFT
+        - UQFF AdS/CFT Module (Star Magic)
+    """
+    
+    def __init__(self):
+        self.params = {
+            'hbar': 1.0545718e-34,
+            'c': 2.998e8,
+            'G': 6.6743e-11,
+            'k_B': 1.380649e-23,
+            'rho_vac_UA': 7.09e-36,
+            'rho_vac_SCm': 7.09e-37,
+            'f_TRZ': 0.1,
+            'B_crit': 4.4e13,       # Critical field [T]
+            'mu_j': 1e15,           # String tension [J·m]
+            'kappa_UQFF': 1e-60,
+            'lambda_UQFF': 1e-9,
+            'T_eff_floor': 1e16,
+        }
+        self.additional_mods = []
+    
+    def compute_ds2_standard(self, L: float, z: float, dt: float, dx: float, dz: float) -> float:
+        """AdS metric ds² = (L²/z²)(-dt² + dx² + dz²)"""
+        if z <= 0:
+            return 0.0
+        factor = (L**2) / (z**2)
+        return factor * (-dt**2 + dx**2 + dz**2)
+    
+    def compute_L_UQFF(self) -> float:
+        """Step 2: L_UQFF = (ℏc/ρ_UA)^(1/4)"""
+        hbar = self.params['hbar']
+        c = self.params['c']
+        rho_UA = self.params['rho_vac_UA']
+        return (hbar * c / rho_UA)**0.25
+    
+    def compute_g_YM_squared(self, L: float) -> float:
+        """Step 3: g_YM² = (4πG/L²) × (1 + f_TRZ)"""
+        G = self.params['G']
+        f_TRZ = self.params['f_TRZ']
+        if L <= 0:
+            return 0.0
+        return (4.0 * np.pi * G / L**2) * (1.0 + f_TRZ)
+    
+    def compute_g_YM_UQFF(self, L: float) -> float:
+        """g_YM = sqrt(g_YM²)"""
+        return np.sqrt(self.compute_g_YM_squared(L))
+    
+    def compute_xi_UQFF(self, L: float, B_t: float) -> float:
+        """Step 4: ξ_UQFF = L × (1 - B_t/B_crit)"""
+        B_crit = self.params['B_crit']
+        factor = 1.0 - B_t / B_crit
+        if factor <= 0:
+            factor = 1e-15
+        return L * factor
+    
+    def compute_U_m(self, L: float, z: float, xi: float) -> float:
+        """Step 5: U_m = (μ_j/L) × exp(z/ξ)"""
+        mu_j = self.params['mu_j']
+        if L <= 0 or xi <= 0:
+            return 0.0
+        exponent = min(z / xi, 700)
+        return (mu_j / L) * np.exp(exponent)
+    
+    def compute_Z_AdS(self, phi_0: float) -> float:
+        """Z_AdS[φ₀] - symbolic partition function (placeholder = 1)"""
+        return 1.0
+    
+    def compute_Z_UQFF(self, phi_0: float, U_m: float, T: float) -> float:
+        """Step 6: Z_UQFF = Z_AdS × (1 + f_TRZ) × exp(-U_m/(k_B×T))"""
+        k_B = self.params['k_B']
+        f_TRZ = self.params['f_TRZ']
+        Z_AdS = self.compute_Z_AdS(phi_0)
+        exponent = max(-U_m / (k_B * T), -700)
+        return Z_AdS * (1.0 + f_TRZ) * np.exp(exponent)
+    
+    def compute_full_Z_UQFF(self, phi_0: float, z: float, B_t: float, T: float,
+                            noise_level: float = 0.0) -> float:
+        """Full Z_UQFF with noise and mods."""
+        L_uqff = self.compute_L_UQFF()
+        xi = self.compute_xi_UQFF(L_uqff, B_t)
+        U_m = self.compute_U_m(L_uqff, z, xi)
+        Z = self.compute_Z_UQFF(phi_0, U_m, T)
+        
+        for mod in self.additional_mods:
+            Z *= mod(phi_0, z)
+        
+        if noise_level > 0:
+            Z += noise_level * np.random.randn()
+        
+        return Z
+    
+    def compute_S_BH(self, A: float) -> float:
+        """Bekenstein-Hawking entropy S = A/(4Gℏ)"""
+        G = self.params['G']
+        hbar = self.params['hbar']
+        return A / (4.0 * G * hbar)
+    
+    def compute_S_CFT(self, T: float, V: float, N_dof: float) -> float:
+        """CFT thermal entropy S ~ N_dof × T³ × V (Stefan-Boltzmann)"""
+        hbar = self.params['hbar']
+        c = self.params['c']
+        k_B = self.params['k_B']
+        prefactor = (np.pi**2 / 90.0) * N_dof
+        return prefactor * (T / (hbar * c))**3 * V * k_B
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function f(phi_0, z) -> multiplier"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# UQFF HOLOGRAPHIC SUPERCONDUCTIVITY CALCULATOR (Feb 26, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# High-Tc superconductors via gravity dual (Gubser 2008, HHH 2008)
+# From uqff_holographic_superconductivity.cpp
+# T_c,UQFF = T_c × (1 + f_TRZ), Δ_UQFF = Δ × exp(-U_m/(k_B×T))
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UQFFHolographicSCCalculator(SelfExpandingMixin):
+    """
+    UQFF Holographic Superconductivity Calculator.
+    
+    Models high-Tc superconductors via AdS/CFT with UQFF corrections.
+    
+    Key Physics:
+        - Step 1: Standard action S = ∫√(-g)[R + d(d-1)/L² - ¼F² - |Dψ|² - m²|ψ|²]
+        - Step 2: L_UQFF = (ℏc/ρ_UA)^(1/4)
+        - Step 3: V_UQFF(ψ) = m²|ψ|² + (λ/2)|ψ|⁴ × (1 - B_t/B_crit)
+        - Step 4: T_c,UQFF = T_c × (1 + f_TRZ)
+        - Step 5: Δ_UQFF = Δ × exp(-U_m/(k_B×T))
+        - Step 6: S_UQFF = S + ∫√(-g) U_m(1+f_TRZ) d⁴x
+    
+    Reference:
+        - Gubser (2008), Hartnoll-Herzog-Horowitz (2008)
+        - UQFF Holographic SC Module (Star Magic)
+    """
+    
+    def __init__(self):
+        self.params = {
+            'hbar': 1.0545718e-34,
+            'c': 2.998e8,
+            'G': 6.6743e-11,
+            'k_B': 1.380649e-23,
+            'rho_vac_UA': 7.09e-36,
+            'rho_vac_SCm': 7.09e-37,
+            'f_TRZ': 0.1,
+            'B_crit': 1e11,         # Critical field [T]
+            'mu_j': 1e15,           # String tension
+            'gamma': 5e-5,          # 1/day → converted in compute
+            'd': 3.0,               # CFT₃ boundary dimension
+            'm_scalar': 1e-30,      # Scalar mass [kg]
+            'lambda_sc': 1e-10,     # Quartic coupling
+            'T_c_base': 100.0,      # Base T_c [K]
+        }
+        # BCS-like gap: Δ ≈ 3.5 k_B T_c
+        self.params['Delta_base'] = 3.5 * self.params['k_B'] * self.params['T_c_base']
+        self.additional_mods = []
+    
+    def compute_L_UQFF(self) -> float:
+        """L_UQFF = (ℏc/ρ_UA)^(1/4)"""
+        hbar, c = self.params['hbar'], self.params['c']
+        rho_UA = self.params['rho_vac_UA']
+        return (hbar * c / rho_UA)**0.25
+    
+    def compute_standard_action(self, R: float, L: float, F_sq: float,
+                                 D_psi_sq: float, psi: float) -> float:
+        """Standard action integrand (symbolic)."""
+        d = self.params['d']
+        m = self.params['m_scalar']
+        if L <= 0:
+            return 0.0
+        cosmological = d * (d - 1.0) / L**2
+        maxwell = -0.25 * F_sq
+        kinetic = -D_psi_sq
+        mass_term = -m**2 * psi**2
+        return R + cosmological + maxwell + kinetic + mass_term
+    
+    def compute_V_UQFF(self, psi: float, B_t: float) -> float:
+        """Step 3: V_UQFF = m²|ψ|² + (λ/2)|ψ|⁴ × (1 - B_t/B_crit)"""
+        m = self.params['m_scalar']
+        lam = self.params['lambda_sc']
+        B_crit = self.params['B_crit']
+        B_ratio = min(B_t / B_crit, 1.0)
+        quartic_factor = 1.0 - B_ratio
+        return m**2 * psi**2 + (lam / 2.0) * psi**4 * quartic_factor
+    
+    def compute_T_c_UQFF(self) -> float:
+        """Step 4: T_c,UQFF = T_c × (1 + f_TRZ)"""
+        return self.params['T_c_base'] * (1.0 + self.params['f_TRZ'])
+    
+    def compute_U_m(self, t: float, t_n: float = 0.5) -> float:
+        """U_m = (μ_j/L)(1 - exp(-γt cos(πt_n)))"""
+        L_uqff = self.compute_L_UQFF()
+        mu_j = self.params['mu_j']
+        gamma = self.params['gamma']
+        if L_uqff <= 0:
+            return 0.0
+        cos_factor = np.cos(np.pi * t_n)
+        time_factor = 1.0 - np.exp(-gamma * t * cos_factor)
+        return (mu_j / L_uqff) * time_factor
+    
+    def compute_Delta_UQFF(self, T: float, t: float, t_n: float = 0.5) -> float:
+        """Step 5: Δ_UQFF = Δ × exp(-U_m/(k_B×T))"""
+        k_B = self.params['k_B']
+        Delta = self.params['Delta_base']
+        U_m = self.compute_U_m(t, t_n)
+        if T <= 0:
+            return 0.0
+        exponent = max(-U_m / (k_B * T), -700)
+        return Delta * np.exp(exponent)
+    
+    def compute_S_UQFF(self, S_standard: float, U_m: float) -> float:
+        """Step 6: S_UQFF = S + ∫U_m(1+f_TRZ)"""
+        f_TRZ = self.params['f_TRZ']
+        return S_standard + U_m * (1.0 + f_TRZ)
+    
+    def compute_full_system(self, R: float, F_sq: float, D_psi_sq: float, psi: float,
+                            B_t: float, T: float, t: float, t_n: float = 0.5,
+                            noise_level: float = 0.0) -> dict:
+        """Full holographic SC system with UQFF."""
+        L_uqff = self.compute_L_UQFF()
+        S_standard = self.compute_standard_action(R, L_uqff, F_sq, D_psi_sq, psi)
+        V_uqff = self.compute_V_UQFF(psi, B_t)
+        U_m = self.compute_U_m(t, t_n)
+        T_c_uqff = self.compute_T_c_UQFF()
+        Delta_uqff = self.compute_Delta_UQFF(T, t, t_n)
+        
+        S_total = self.compute_S_UQFF(S_standard + V_uqff, U_m)
+        
+        for mod in self.additional_mods:
+            S_total *= mod(psi, B_t)
+        
+        if noise_level > 0:
+            S_total += noise_level * abs(S_total) * np.random.randn()
+        
+        return {
+            'L_UQFF': L_uqff,
+            'T_c_UQFF': T_c_uqff,
+            'Delta_UQFF': Delta_uqff,
+            'U_m': U_m,
+            'V_UQFF': V_uqff,
+            'S_UQFF': S_total,
+        }
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function f(psi, B_t) -> multiplier"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# UQFF CONDUCTIVITY SPECTRUM CALCULATOR (Feb 26, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# Optical conductivity σ(ω) from holography with UQFF corrections
+# From uqff_conductivity_spectrum_impl.cpp
+# σ_UQFF = σ × (1-B/B_crit) × (1+f_TRZ×Lorentzian) × exp(-U_m ω/(k_B T))
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UQFFConductivitySpectrumCalculator(SelfExpandingMixin):
+    """
+    UQFF Conductivity Spectrum Calculator.
+    
+    Computes optical conductivity σ(ω) with UQFF corrections.
+    
+    Key Physics:
+        - Step 1: Base σ(ω) = (i/ω)(A'/A + (ω²/c²)log z₀) from AdS/CFT
+        - Step 2: Aether correlation ξ_UQFF = ξ × √(ρ_UA/ρ_SCm)
+        - Step 3: Magnetic suppression σ' = σ × (1 - B_t/B_crit)
+        - Step 4: TRZ resonance σ'' = σ' + f_TRZ × Lorentzian
+        - Step 5: String damping σ_UQFF = σ'' × exp(-U_m ω/(k_B T))
+    
+    Reference:
+        - Holographic conductivity (Hartnoll et al.)
+        - UQFF Conductivity Spectrum Module (Star Magic)
+    """
+    
+    def __init__(self):
+        self.params = {
+            'c': 2.998e8,
+            'k_B': 1.380649e-23,
+            'hbar': 1.054571817e-34,
+            'z_0': 1e-10,           # Near boundary
+            'A_prime': 1.0,         # Normalized
+            'A_z0': 1.0,            # Normalized
+            'rho_vac_UA': 7.09e-36,
+            'rho_vac_SCm': 7.09e-37,
+            'B_t': 5e10,            # Applied field [T]
+            'B_crit': 1e11,         # Critical field [T]
+            'f_TRZ': 0.1,
+            'tau_coh': 1e-11,       # Coherence time [s]
+            'mu_j': 1e-10,          # String tension [J/m]
+            'L_string': 1e-9,       # String length [m]
+            'T': 100.0,             # Temperature [K]
+            'T_c': 120.0,           # Critical temp [K]
+            'xi': 1e-9,             # Correlation length [m]
+        }
+        # Derived
+        self.params['Gamma'] = 1.0 / self.params['tau_coh']
+        self.params['omega_res'] = 2 * np.pi * self.params['f_TRZ'] / self.params['tau_coh']
+        self.params['U_m'] = self.params['mu_j'] / self.params['L_string']
+        self.additional_mods = []
+    
+    def compute_sigma_base_complex(self, omega: float) -> complex:
+        """Step 1: σ(ω) = (i/ω)(A'/A + (ω²/c²)log z₀)"""
+        if abs(omega) < 1e-20:
+            return complex(1e20, 0.0)
+        c = self.params['c']
+        z_0 = self.params['z_0']
+        A_prime = self.params['A_prime']
+        A_z0 = self.params['A_z0']
+        
+        log_z0 = np.log(abs(z_0))
+        ratio = A_prime / A_z0
+        omega_term = (omega**2 / c**2) * log_z0
+        
+        prefactor = complex(0.0, 1.0 / omega)
+        bracket = complex(ratio + omega_term, 0.0)
+        return prefactor * bracket
+    
+    def compute_sigma_base_imag(self, omega: float) -> float:
+        """Imaginary part of base conductivity."""
+        return self.compute_sigma_base_complex(omega).imag
+    
+    def compute_xi_UQFF(self) -> float:
+        """Step 2: ξ_UQFF = ξ × √(ρ_UA/ρ_SCm)"""
+        xi = self.params['xi']
+        rho_ratio = self.params['rho_vac_UA'] / self.params['rho_vac_SCm']
+        return xi * np.sqrt(rho_ratio)
+    
+    def compute_suppression_factor(self) -> float:
+        """Step 3: (1 - B_t/B_crit)"""
+        ratio = self.params['B_t'] / self.params['B_crit']
+        if ratio >= 1.0:
+            return 0.0
+        return 1.0 - ratio
+    
+    def compute_sigma_prime(self, sigma_base: float) -> float:
+        """σ' = σ × (1 - B_t/B_crit)"""
+        return sigma_base * self.compute_suppression_factor()
+    
+    def compute_lorentzian(self, omega: float) -> float:
+        """Lorentzian: Γ/((ω - ω_res)² + Γ²)"""
+        Gamma = self.params['Gamma']
+        omega_res = self.params['omega_res']
+        delta_omega = omega - omega_res
+        return Gamma / (delta_omega**2 + Gamma**2)
+    
+    def compute_sigma_double_prime(self, sigma_prime: float, omega: float) -> float:
+        """Step 4: σ'' = σ' + f_TRZ × Lorentzian"""
+        f_TRZ = self.params['f_TRZ']
+        return sigma_prime + f_TRZ * self.compute_lorentzian(omega)
+    
+    def compute_damping_factor(self, omega: float) -> float:
+        """Step 5: exp(-U_m ω/(k_B T))"""
+        U_m = self.params['U_m']
+        k_B = self.params['k_B']
+        T = self.params['T']
+        exponent = -U_m * omega / (k_B * T)
+        if exponent < -700:
+            return 0.0
+        return np.exp(exponent)
+    
+    def compute_full_sigma(self, omega: float, noise_level: float = 0.0) -> float:
+        """
+        Full UQFF conductivity σ_UQFF(ω).
+        
+        Combines: base × suppression × TRZ resonance × string damping
+        """
+        sigma_base = self.compute_sigma_base_imag(omega)
+        rho_factor = np.sqrt(self.params['rho_vac_UA'] / self.params['rho_vac_SCm'])
+        sigma_base *= rho_factor
+        
+        sigma_prime = self.compute_sigma_prime(sigma_base)
+        sigma_double_prime = self.compute_sigma_double_prime(sigma_prime, omega)
+        sigma_UQFF = sigma_double_prime * self.compute_damping_factor(omega)
+        
+        for mod in self.additional_mods:
+            sigma_UQFF *= mod(omega)
+        
+        if noise_level > 0:
+            sigma_UQFF += noise_level * abs(sigma_UQFF) * np.random.randn()
+        
+        return sigma_UQFF
+    
+    def compute_spectrum(self, omega_min: float, omega_max: float, n_points: int = 100) -> dict:
+        """Compute full spectrum over frequency range."""
+        omegas = np.linspace(omega_min, omega_max, n_points)
+        sigmas = np.array([self.compute_full_sigma(w) for w in omegas])
+        return {'omega': omegas, 'sigma_UQFF': sigmas}
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function f(omega) -> multiplier"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# UQFF FRAMEWORK BEC/GPE CALCULATOR (Feb 26, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+# Core UQFF BEC superfluid dynamics from Gross-Pitaevskii equation
+# From uqff_framework.cpp
+# Full MUGE gravity with vortex quantization and aether coherence
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UQFFFrameworkCalculator(SelfExpandingMixin):
+    """
+    UQFF Framework Calculator (BEC/GPE Core).
+    
+    Computes superfluid dynamics via Gross-Pitaevskii equation with UQFF.
+    
+    Key Physics:
+        - MUGE equation: g(r,t) = [GM/r²] × (1+H) × (1-B/B_crit) × (1+F_env) + ...
+        - Quantum coherence: ψ(r,t) = A exp(-(r-r_h)²/2σ_eff²) exp(-i 2πft(1+f_TRZ))
+        - BEC order parameter: ψ = √ρ × e^(iθ)
+        - Superfluid velocity: v_s = (ℏ/m)∇θ
+        - Vortex circulation: Γ = 2πℏn/m (quantized)
+        - Healing length: ξ = √(ℏ²/(2mgρ))
+    
+    Reference:
+        - UQFF Framework Module (Star Magic)
+        - Gross-Pitaevskii equation for BEC
+    """
+    
+    def __init__(self):
+        self.params = {
+            # Physical constants
+            'G': 6.6743e-11,
+            'c': 3e8,
+            'hbar': 1.0545718e-34,
+            'h_planck': 6.62607015e-34,
+            'Lambda': 1.1e-52,          # Cosmological constant
+            't_Hubble': 4.35e17,        # Hubble time [s]
+            'k_B': 1.380649e-23,
+            'mu_0': 1.256637062e-6,     # Vacuum permeability
+            'e_charge': 1.602176634e-19,
+            
+            # UQFF vacuum
+            'rho_vac_UA': 7.09e-36,
+            'rho_vac_SCm': 7.09e-37,
+            'B_crit': 1e11,
+            'f_TRZ': 0.1,
+            'r_horizon': 1.27e10,       # Sgr A* example
+            
+            # Coherence parameters
+            'coherence_amp': 1.0,
+            'coherence_sigma': 1e9,
+            'coherence_freq': 1e-15,
+            'coherence_scale_factor': 1e-5,
+            'particle_mass': 9.109e-31,  # Electron mass
+            'T_coherence': 1e6,
+            'U_m': 1e-20,
+            
+            # BEC parameters
+            'm_eff': 2.176e-8,          # Effective mass (Planck scale)
+            'g_interaction': 1e-38,      # BEC interaction strength
+            'mu_chemical': 1e-30,        # Chemical potential
+            'n_vortex': 1.0,            # Vortex quantum number
+            'L_vortex': 1e10,           # Vortex scale
+            'superfluid_density': 145.0, # kg/m³ (He-4 reference)
+            
+            # Vortex dynamics
+            'system_size': 1e-3,        # System size b [m]
+            'curvature_radius': 1e-4,   # Vortex curvature R [m]
+            'B_field': 0.0,             # Local magnetic field [T]
+            
+            # MUGE parameters
+            'M_initial': 1.0,
+            'M_dot': 0.01,
+            'H_t_z': 0.0,
+            'B_t': 0.0,
+            'F_env': 0.0,
+        }
+        self.additional_mods = []
+    
+    def compute_sigma_effective(self) -> float:
+        """σ_eff = σ × (1 - ρ_SCm/ρ_UA) - aether damping"""
+        rho_ratio = self.params['rho_vac_SCm'] / self.params['rho_vac_UA']
+        return self.params['coherence_sigma'] * (1.0 - rho_ratio)
+    
+    def compute_normalization_amplitude(self) -> float:
+        """Normalization A = (√(2π) σ_eff)^(-1/2)"""
+        sigma_eff = self.compute_sigma_effective()
+        return 1.0 / np.sqrt(np.sqrt(2.0 * np.pi) * sigma_eff)
+    
+    def compute_psi_coherence(self, r: float, t: float) -> complex:
+        """
+        Quantum coherence wavefunction:
+        ψ(r,t) = A exp(-(r-r_h)²/2σ_eff²) exp(-i 2πft(1+f_TRZ))
+        """
+        A = self.compute_normalization_amplitude()
+        sigma_eff = self.compute_sigma_effective()
+        r_h = self.params['r_horizon']
+        f = self.params['coherence_freq']
+        f_TRZ = self.params['f_TRZ']
+        
+        spatial = np.exp(-(r - r_h)**2 / (2 * sigma_eff**2))
+        phase = -2 * np.pi * f * t * (1 + f_TRZ)
+        return A * spatial * np.exp(1j * phase)
+    
+    def compute_C_UQFF(self, r: float, t: float) -> float:
+        """
+        Quantum coherence contribution:
+        C_UQFF = (ℏ²/2mσ_eff²) × |cos(...)| × exp(-U_m/k_BT) × scale
+        """
+        hbar = self.params['hbar']
+        m = self.params['particle_mass']
+        sigma_eff = self.compute_sigma_effective()
+        f = self.params['coherence_freq']
+        f_TRZ = self.params['f_TRZ']
+        U_m = self.params['U_m']
+        k_B = self.params['k_B']
+        T = self.params['T_coherence']
+        scale = self.params['coherence_scale_factor']
+        
+        kinetic = (hbar**2) / (2 * m * sigma_eff**2)
+        cos_factor = abs(np.cos(2 * np.pi * f * t * (1 + f_TRZ)))
+        thermal = np.exp(-U_m / (k_B * T))
+        
+        return kinetic * cos_factor * thermal * scale
+    
+    def compute_healing_length(self, rho: float = None) -> float:
+        """Healing length ξ = √(ℏ²/(2mgρ))"""
+        hbar = self.params['hbar']
+        m = self.params['m_eff']
+        g = self.params['g_interaction']
+        if rho is None:
+            rho = self.params['superfluid_density']
+        return np.sqrt(hbar**2 / (2 * m * g * rho))
+    
+    def compute_vortex_circulation(self, n: int = None) -> float:
+        """Quantized circulation Γ = 2πℏn/m"""
+        hbar = self.params['hbar']
+        m = self.params['m_eff']
+        if n is None:
+            n = int(self.params['n_vortex'])
+        return 2 * np.pi * hbar * n / m
+    
+    def compute_circulation_UQFF(self, n: int = None) -> float:
+        """UQFF circulation: κ = (h/m_eff)×n×(1-f_TRZ)×(1-B/B_crit)"""
+        h = self.params['h_planck']
+        m = self.params['m_eff']
+        f_TRZ = self.params['f_TRZ']
+        B_t = self.params['B_t']
+        B_crit = self.params['B_crit']
+        if n is None:
+            n = int(self.params['n_vortex'])
+        return (h / m) * n * (1 - f_TRZ) * (1 - B_t / B_crit)
+    
+    def compute_vortex_energy(self, L: float = None, xi: float = None) -> float:
+        """Vortex energy U_m = (πρℏ²/m)ln(L/ξ)"""
+        rho = self.params['superfluid_density']
+        hbar = self.params['hbar']
+        m = self.params['m_eff']
+        if L is None:
+            L = self.params['L_vortex']
+        if xi is None:
+            xi = self.compute_healing_length()
+        if xi <= 0 or L <= xi:
+            return 0.0
+        return (np.pi * rho * hbar**2 / m) * np.log(L / xi)
+    
+    def compute_xi_UQFF(self) -> float:
+        """UQFF core size: ξ_UQFF = ξ × √(ρ_UA/ρ_SCm)"""
+        xi_base = self.compute_healing_length()
+        rho_ratio = self.params['rho_vac_UA'] / self.params['rho_vac_SCm']
+        return xi_base * np.sqrt(rho_ratio)
+    
+    def compute_superfluid_velocity(self, r: float, n: int = None) -> float:
+        """Superfluid azimuthal velocity v(r) = (ℏn/mr)"""
+        hbar = self.params['hbar']
+        m = self.params['m_eff']
+        if n is None:
+            n = int(self.params['n_vortex'])
+        if r <= 0:
+            return 0.0
+        return hbar * n / (m * r)
+    
+    def compute_self_induced_velocity(self, R: float = None, xi: float = None) -> float:
+        """Self-induced velocity v_s,self = (κ/4πR)ln(R/ξ)"""
+        kappa = self.compute_vortex_circulation()
+        if R is None:
+            R = self.params['curvature_radius']
+        if xi is None:
+            xi = self.compute_healing_length()
+        if R <= xi:
+            return 0.0
+        return (kappa / (4 * np.pi * R)) * np.log(R / xi)
+    
+    def compute_v_vortex_UQFF(self, R: float = None) -> float:
+        """
+        Full UQFF vortex velocity:
+        v_v,UQFF = v_s,self × (1-f_TRZ) × (1-B/B_crit) + ...
+        """
+        v_self = self.compute_self_induced_velocity(R)
+        f_TRZ = self.params['f_TRZ']
+        B_t = self.params['B_t']
+        B_crit = self.params['B_crit']
+        return v_self * (1 - f_TRZ) * (1 - B_t / B_crit)
+    
+    def compute_g_TRZ(self, g_base: float) -> float:
+        """Time-reversal gravity: g_TRZ = g × (1 - f_TRZ)"""
+        return g_base * (1 - self.params['f_TRZ'])
+    
+    def compute_quantum_pressure(self, rho: float, grad_rho: float) -> float:
+        """Quantum pressure P_Q = -(ℏ²/2m)(∇²√ρ/√ρ) ≈ -(ℏ²/4m)(∇ρ/ρ)²"""
+        hbar = self.params['hbar']
+        m = self.params['m_eff']
+        if rho <= 0:
+            return 0.0
+        return -(hbar**2 / (4 * m)) * (grad_rho / rho)**2
+    
+    def compute_Meissner_factor(self) -> float:
+        """Meissner factor: (1 - ρ_SCm/ρ_UA)"""
+        return 1.0 - self.params['rho_vac_SCm'] / self.params['rho_vac_UA']
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # PULSAR TIMING ARRAY (PTA) UQFF CALCULATOR (Feb 25, 2026)
 # ═══════════════════════════════════════════════════════════════════════════════
 # Nanohertz gravitational waves from SMBH binaries
