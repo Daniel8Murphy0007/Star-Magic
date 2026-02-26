@@ -154618,6 +154618,378 @@ SOURCE41_WOLFRAM_CALCULATORS = {
 }
 
 
+# =============================================================================
+# SOURCE42 WOLFRAM CALCULATORS: Hydrogen Atom UQFF (8 classes)
+# Atomic scale: M_p=1.67e-27 kg, r_Bohr=5.29e-11 m, v_e~2.2e6 m/s
+# =============================================================================
+
+class HydrogenBohrOrbitalCalculator:
+    """Bohr orbital acceleration: a=v²/r_n with r_Bohr=ℏ²ε0/(πm_e·e²), v=e²/(2ε0·h·n)"""
+    def __init__(self):
+        self.hbar = 1.0546e-34  # J·s
+        self.m_e = 9.109e-31  # kg (electron mass)
+        self.e = 1.602e-19  # C (electron charge)
+        self.epsilon_0 = 8.854e-12  # F/m
+        self.n = 1.0  # Ground state (n=1)
+        import math
+        self.pi = math.pi
+    def compute(self, t: float = 0.0) -> dict:
+        r_n = (self.n**2 * self.hbar**2 * self.epsilon_0) / (self.pi * self.m_e * self.e**2)
+        v = (self.e**2) / (2.0 * self.epsilon_0 * 2.0 * self.pi * self.hbar * self.n)
+        a_orbital = (v * v) / r_n
+        return {'value': a_orbital, 'r_Bohr_m': r_n, 'v_e_m_s': v, 'n': self.n, 'units': 'm/s²',
+                'equation': 'a_orbital = v²/r_n (centripetal)'}
+
+class HydrogenWavefunctionCalculator:
+    """Wavefunction dynamics: a_ψ=(ℏ·ω)/(m_e·r)·sin(ωt) with ω=E_1/ℏ~4.14e16 rad/s"""
+    def __init__(self):
+        self.hbar = 1.0546e-34
+        self.m_e = 9.109e-31
+        self.r = 5.29e-11  # Bohr radius
+        self.omega = 4.14e16  # rad/s (E_1/ℏ ~ 13.6 eV / ℏ)
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        a_psi = (self.hbar * self.omega) / (self.m_e * self.r) * math.sin(self.omega * t)
+        return {'value': a_psi, 'omega_rad_s': self.omega, 'E_1_eV': 13.6, 'units': 'm/s²',
+                'equation': 'a_ψ = (ℏ·ω)/(m_e·r)·sin(ωt)'}
+
+class HydrogenElectronCloudFluidCalculator:
+    """Electron cloud fluid: a_fluid=rho_cloud·V_atomic·g_base with V~(4/3)πr_Bohr³"""
+    def __init__(self):
+        self.rho_cloud = 1e15  # electrons/m³ (density proxy)
+        self.V_atomic = 6.2e-31  # m³ (~(4/3)πr_Bohr³)
+        self.g_base = 1e22  # m/s² (base acceleration)
+    def compute(self, t: float = 0.0) -> dict:
+        a_fluid = self.rho_cloud * self.V_atomic * self.g_base
+        return {'value': a_fluid, 'rho_cloud': self.rho_cloud, 'V_atomic_m3': self.V_atomic, 'units': 'm/s²',
+                'equation': 'a_fluid = rho_cloud·V_atomic·g_base'}
+
+class HydrogenLorentzElectronCalculator:
+    """Electron Lorentz force: a_L=(e·|v×B|)/m_e with v~2.2e6 m/s, B~1e-4 T"""
+    def __init__(self):
+        self.e = 1.602e-19
+        self.v = 2.2e6  # m/s (~α·c, 0.7% speed of light)
+        self.B = 1e-4  # T (atomic magnetic field)
+        self.m_e = 9.109e-31
+    def compute(self, t: float = 0.0) -> dict:
+        a_L = (self.e * self.v * self.B) / self.m_e
+        return {'value': a_L, 'v_e_m_s': self.v, 'B_T': self.B, 'units': 'm/s²',
+                'equation': 'a_L = (e·|v×B|)/m_e'}
+
+class HydrogenQuantumFluctuationCalculator:
+    """Quantum vacuum fluctuation: a_q_fluct=(ℏ·c)/r_Bohr³ (Casimir at atomic scale)"""
+    def __init__(self):
+        self.hbar = 1.0546e-34
+        self.c = 3e8
+        self.r = 5.29e-11  # Bohr radius
+    def compute(self, t: float = 0.0) -> dict:
+        a_q_fluct = (self.hbar * self.c) / (self.r**3)
+        return {'value': a_q_fluct, 'r_Bohr_m': self.r, 'units': 'm/s²',
+                'equation': 'a_q_fluct = (ℏ·c)/r³'}
+
+class HydrogenOrbitalResonanceCalculator:
+    """Orbital resonance: 2A·cos(kx)·cos(ωt)+(2π/13.8)·A·Re[exp(i(kx-ωt))] at UV freq"""
+    def __init__(self):
+        import math
+        self.A = 1e-10
+        self.k = 1e11  # ~1/r_Bohr
+        self.omega_osc = 1e15 * 2.0 * math.pi  # UV frequency
+        self.x = 0.0
+        self.pi = math.pi
+    def compute(self, t: float = 0.0) -> dict:
+        import cmath, math
+        cos_term = 2.0 * self.A * math.cos(self.k * self.x) * math.cos(self.omega_osc * t)
+        exp_arg = complex(0, self.k * self.x - self.omega_osc * t)
+        exp_term = self.A * cmath.exp(exp_arg)
+        real_exp = exp_term.real
+        exp_factor = (2.0 * self.pi) / 13.8
+        a_osc = cos_term + exp_factor * real_exp
+        return {'value': a_osc, 'omega_UV_rad_s': self.omega_osc, 'units': 'm/s²',
+                'equation': '2A·cos(kx)·cos(ωt) + (2π/13.8)·A·Re[exp(i(kx-ωt))]'}
+
+class HydrogenFineStructureCalculator:
+    """Fine structure: a_fs=α²·c²/r with α≈1/137 (relativistic correction)"""
+    def __init__(self):
+        self.alpha = 1.0 / 137.036  # Fine structure constant
+        self.c = 3e8
+        self.r = 5.29e-11  # Bohr radius
+    def compute(self, t: float = 0.0) -> dict:
+        a_fs = (self.alpha**2 * self.c**2) / self.r
+        return {'value': a_fs, 'alpha': self.alpha, 'r_Bohr_m': self.r, 'units': 'm/s²',
+                'equation': 'a_fs = α²·c²/r'}
+
+class HydrogenLambShiftCalculator:
+    """Lamb shift (QED): a_Lamb~(α^5·m_e·c²)/ℏ (radiative correction ~1 GHz)"""
+    def __init__(self):
+        self.alpha = 1.0 / 137.036
+        self.hbar = 1.0546e-34
+        self.m_e = 9.109e-31
+        self.c = 3e8
+    def compute(self, t: float = 0.0) -> dict:
+        alpha5 = self.alpha**5
+        a_Lamb = (alpha5 * self.m_e * self.c**2) / self.hbar
+        return {'value': a_Lamb, 'alpha': self.alpha, 'units': 'm/s²',
+                'note': 'Lamb shift ~1057 MHz for 2s-2p transition',
+                'equation': 'a_Lamb ~ (α^5·m_e·c²)/ℏ'}
+
+SOURCE42_WOLFRAM_CALCULATORS = {
+    'HydrogenBohrOrbitalCalculator': HydrogenBohrOrbitalCalculator(),
+    'HydrogenWavefunctionCalculator': HydrogenWavefunctionCalculator(),
+    'HydrogenElectronCloudFluidCalculator': HydrogenElectronCloudFluidCalculator(),
+    'HydrogenLorentzElectronCalculator': HydrogenLorentzElectronCalculator(),
+    'HydrogenQuantumFluctuationCalculator': HydrogenQuantumFluctuationCalculator(),
+    'HydrogenOrbitalResonanceCalculator': HydrogenOrbitalResonanceCalculator(),
+    'HydrogenFineStructureCalculator': HydrogenFineStructureCalculator(),
+    'HydrogenLambShiftCalculator': HydrogenLambShiftCalculator(),
+}
+
+
+# =============================================================================
+# SOURCE44 WOLFRAM CALCULATORS: Lagoon Nebula M8 UQFF (7 classes)
+# Star-forming region: M=10,000 M_sun, r=55 ly, SFR=0.1 M_sun/yr
+# =============================================================================
+
+class LagoonStarFormationMassCalculator:
+    """Star formation mass: a_sf=(G·M_sf)/r² with M_sf=SFR·t, SFR=0.1 M_sun/yr"""
+    def __init__(self):
+        self.SFR = 0.1  # M_sun/yr
+        self.G = 6.674e-11
+        self.M_total = 1.989e34  # kg (~10,000 M_sun)
+        self.r = 5.2e17  # m (~55 ly)
+        self.M_sun = 1.989e30
+        self.seconds_per_year = 3.154e7
+    def compute(self, t: float = 0.0) -> dict:
+        t_years = t / self.seconds_per_year
+        M_sf = self.SFR * t_years * self.M_sun
+        a_sf = (self.G * M_sf) / (self.r**2)
+        return {'value': a_sf, 'M_sf_kg': M_sf, 'SFR_Msun_yr': self.SFR, 't_years': t_years, 'units': 'm/s²',
+                'equation': 'a_sf = (G·M_sf)/r² with M_sf = SFR·t'}
+
+class LagoonRadiationPressureCalculator:
+    """H II region radiation pressure: a_rad=P_rad/ρ with P=L/(4πr²c), L=7.65e31 W"""
+    def __init__(self):
+        self.L_H36 = 7.65e31  # W (H II region luminosity)
+        self.c = 3e8
+        self.r = 5.2e17
+        self.rho_nebula = 1e-20  # kg/m³
+        import math
+        self.pi = math.pi
+    def compute(self, t: float = 0.0) -> dict:
+        P_rad = self.L_H36 / (4.0 * self.pi * self.r**2 * self.c)
+        a_rad = P_rad / self.rho_nebula
+        return {'value': a_rad, 'P_rad_Pa': P_rad, 'L_W': self.L_H36, 'units': 'm/s²',
+                'equation': 'a_rad = P_rad/ρ with P = L/(4πr²c)'}
+
+class LagoonIonizedGasFluidCalculator:
+    """Ionized gas fluid: a_fluid=rho_gas·V·g_base with v_gas~1e5 m/s (H II turbulence)"""
+    def __init__(self):
+        self.rho_gas = 1e-20  # kg/m³
+        self.V_sys = 5.89e53  # m³ (~(4/3)πr³)
+        self.v_gas = 1e5  # m/s (~100 km/s)
+        self.G = 6.674e-11
+        self.M = 1.989e34
+        self.r = 5.2e17
+    def compute(self, t: float = 0.0) -> dict:
+        g_base = (self.G * self.M) / (self.r**2)
+        a_fluid = self.rho_gas * self.V_sys * g_base
+        return {'value': a_fluid, 'v_gas_m_s': self.v_gas, 'rho_kg_m3': self.rho_gas, 'units': 'm/s²',
+                'equation': 'a_fluid = rho_gas·V·g_base'}
+
+class LagoonDarkMatterNebulaCalculator:
+    """Dark matter (~85%): a_DM=(f_DM·G·M)/r² with f_DM=0.85"""
+    def __init__(self):
+        self.f_DM = 0.85
+        self.G = 6.674e-11
+        self.M = 1.989e34
+        self.r = 5.2e17
+    def compute(self, t: float = 0.0) -> dict:
+        a_DM = (self.f_DM * self.G * self.M) / (self.r**2)
+        return {'value': a_DM, 'f_DM': self.f_DM, 'M_kg': self.M, 'units': 'm/s²',
+                'equation': 'a_DM = (f_DM·G·M)/r²'}
+
+class LagoonHIIRegionResonanceCalculator:
+    """H II region resonance: 2A·cos(kx)·cos(ωt)+(2π/13.8)·A·Re[exp] at nebular freq"""
+    def __init__(self):
+        import math
+        self.A = 1e-10
+        self.k = 1e-17  # ~1/r_Lagoon
+        self.omega_HII = 1e-7 * 2.0 * math.pi  # Low frequency
+        self.x = 0.0
+        self.pi = math.pi
+    def compute(self, t: float = 0.0) -> dict:
+        import cmath, math
+        cos_term = 2.0 * self.A * math.cos(self.k * self.x) * math.cos(self.omega_HII * t)
+        exp_arg = complex(0, self.k * self.x - self.omega_HII * t)
+        exp_term = self.A * cmath.exp(exp_arg)
+        real_exp = exp_term.real
+        exp_factor = (2.0 * self.pi) / 13.8
+        a_res = cos_term + exp_factor * real_exp
+        return {'value': a_res, 'omega_HII_rad_s': self.omega_HII, 'units': 'm/s²',
+                'equation': '2A·cos(kx)·cos(ωt) + (2π/13.8)·A·Re[exp(i(kx-ωt))]'}
+
+class LagoonLorentzIonizedGasCalculator:
+    """Electromagnetic: a_L=q·|v×B| from nebular B-field (~µG) and gas motion (~1e5 m/s)"""
+    def __init__(self):
+        self.q = 1.602e-19
+        self.v = 1e5  # m/s (gas velocity)
+        self.B = 1e-6  # T (~microGauss)
+    def compute(self, t: float = 0.0) -> dict:
+        a_L = self.q * self.v * self.B
+        return {'value': a_L, 'v_m_s': self.v, 'B_T': self.B, 'units': 'm/s²',
+                'equation': 'a_L = q·|v×B|'}
+
+class LagoonQuantumIntegralNebulaCalculator:
+    """Quantum vacuum integral: a_q_int=(ℏ·c)/r³ (Casimir at nebular scale)"""
+    def __init__(self):
+        self.hbar = 1.0546e-34
+        self.c = 3e8
+        self.r = 5.2e17  # m (~55 ly)
+    def compute(self, t: float = 0.0) -> dict:
+        a_q_int = (self.hbar * self.c) / (self.r**3)
+        return {'value': a_q_int, 'r_m': self.r, 'units': 'm/s²',
+                'note': 'Extremely small at nebular scales',
+                'equation': 'a_q_int = (ℏ·c)/r³'}
+
+SOURCE44_WOLFRAM_CALCULATORS = {
+    'LagoonStarFormationMassCalculator': LagoonStarFormationMassCalculator(),
+    'LagoonRadiationPressureCalculator': LagoonRadiationPressureCalculator(),
+    'LagoonIonizedGasFluidCalculator': LagoonIonizedGasFluidCalculator(),
+    'LagoonDarkMatterNebulaCalculator': LagoonDarkMatterNebulaCalculator(),
+    'LagoonHIIRegionResonanceCalculator': LagoonHIIRegionResonanceCalculator(),
+    'LagoonLorentzIonizedGasCalculator': LagoonLorentzIonizedGasCalculator(),
+    'LagoonQuantumIntegralNebulaCalculator': LagoonQuantumIntegralNebulaCalculator(),
+}
+
+
+# =============================================================================
+# SOURCE45 WOLFRAM CALCULATORS: Spiral Galaxies & Supernovae UQFF (8 classes)
+# Spiral: M=1e11 M_sun, r=30 kpc, v_rot=200 km/s, SN cosmology to z=1.5
+# =============================================================================
+
+class SpiralGalaxyDensityWaveCalculator:
+    """Spiral density wave: T_spiral=(G·M·Ω_p²·cos(m·θ))/r² with Ω_p~20 km/s/kpc, m=2 arms"""
+    def __init__(self):
+        self.Omega_p = 6.48e-16  # rad/s (~20 km/s/kpc)
+        self.r = 9.258e20  # m (~30 kpc)
+        self.k_wave = 1e-20
+        self.m_arms = 2.0  # 2-arm spiral
+        self.G = 6.674e-11
+        self.M = 1.989e41  # kg (~1e11 M_sun)
+    def compute(self, t: float = 0.0) -> dict:
+        import math
+        theta = self.k_wave * self.r - self.Omega_p * t
+        T_spiral = (self.G * self.M * self.Omega_p**2 * math.cos(self.m_arms * theta)) / (self.r**2)
+        return {'value': T_spiral, 'Omega_p_rad_s': self.Omega_p, 'm_arms': self.m_arms, 'units': 'm/s²',
+                'equation': 'T_spiral = (G·M·Ω_p²·cos(m·θ))/r²'}
+
+class SpiralGalaxyRotationCurveFlatCalculator:
+    """Flat rotation curve: a_rot=v²/r with v~200 km/s (dark matter evidence)"""
+    def __init__(self):
+        self.v_rot = 2e5  # m/s (~200 km/s)
+        self.r = 9.258e20  # m (~30 kpc)
+    def compute(self, t: float = 0.0) -> dict:
+        a_rot = (self.v_rot**2) / self.r
+        return {'value': a_rot, 'v_rot_m_s': self.v_rot, 'v_rot_km_s': 200, 'units': 'm/s²',
+                'note': 'Flat rotation curve = dark matter signature',
+                'equation': 'a_rot = v²/r'}
+
+class SupernovaLuminosityRadiationCalculator:
+    """Supernova radiation: a_SN=P_SN/ρ with P=L_SN/(4πr²c), L~1e36 W (Type Ia/II)"""
+    def __init__(self):
+        self.L_SN = 1e36  # W (Type Ia/II peak)
+        self.c = 3e8
+        self.r = 9.258e20  # m
+        self.rho_ISM = 1e-21  # kg/m³
+        import math
+        self.pi = math.pi
+    def compute(self, t: float = 0.0) -> dict:
+        P_SN = self.L_SN / (4.0 * self.pi * self.r**2 * self.c)
+        a_SN = P_SN / self.rho_ISM
+        return {'value': a_SN, 'P_SN_Pa': P_SN, 'L_SN_W': self.L_SN, 'units': 'm/s²',
+                'equation': 'a_SN = P_SN/ρ with P = L_SN/(4πr²c)'}
+
+class SupernovaShockwaveCalculator:
+    """SN shockwave: a_shock=E_SN/(M_ejecta·r) with E~1e44 J (10^51 erg), v~1e4 km/s"""
+    def __init__(self):
+        self.E_SN = 1e44  # J (10^51 erg)
+        self.M_ejecta = 1.4 * 1.989e30  # kg (~1.4 M_sun Chandrasekhar)
+        self.v_shock = 1e7  # m/s (~1e4 km/s)
+        self.r = 9.258e20
+    def compute(self, t: float = 0.0) -> dict:
+        a_shock = self.E_SN / (self.M_ejecta * self.r)
+        return {'value': a_shock, 'E_SN_J': self.E_SN, 'M_ejecta_kg': self.M_ejecta, 'v_shock_m_s': self.v_shock,
+                'units': 'm/s²', 'equation': 'a_shock = E_SN/(M_ejecta·r)'}
+
+class SpiralGalaxyDarkMatterHaloCalculator:
+    """DM halo (85%): a_DM=(f_DM·G·M)/r² enabling flat rotation curve"""
+    def __init__(self):
+        self.f_DM = 0.85
+        self.G = 6.674e-11
+        self.M = 1.989e41
+        self.r = 9.258e20
+    def compute(self, t: float = 0.0) -> dict:
+        a_DM = (self.f_DM * self.G * self.M) / (self.r**2)
+        return {'value': a_DM, 'f_DM': self.f_DM, 'M_Msun': 1e11, 'units': 'm/s²',
+                'equation': 'a_DM = (f_DM·G·M)/r²'}
+
+class SpiralCosmologicalLambdaRedshiftCalculator:
+    """Lambda(z): a_Λ=(Λ·c²)/3 for SN cosmology (z up to 1.5)"""
+    def __init__(self):
+        self.Lambda = 1.11e-52  # m^-2
+        self.c = 3e8
+        self.H0 = 2.37e-18  # s^-1 (73 km/s/Mpc)
+    def compute(self, t: float = 0.0) -> dict:
+        a_Lambda = (self.Lambda * self.c**2) / 3.0
+        return {'value': a_Lambda, 'Lambda_m2': self.Lambda, 'H0_km_s_Mpc': 73, 'units': 'm/s²',
+                'note': 'Used for Type Ia SN cosmology (z=0 to 1.5)',
+                'equation': 'a_Λ = (Λ·c²)/3'}
+
+class SpiralGalaxyISMFluidDynamicsCalculator:
+    """ISM fluid: a_fluid=rho_ISM·V·g_base with rho~1e-21 kg/m³ (interstellar medium)"""
+    def __init__(self):
+        self.rho_ISM = 1e-21
+        self.V_sys = 3.32e63  # m³
+        self.G = 6.674e-11
+        self.M = 1.989e41
+        self.r = 9.258e20
+    def compute(self, t: float = 0.0) -> dict:
+        g_base = (self.G * self.M) / (self.r**2)
+        a_fluid = self.rho_ISM * self.V_sys * g_base
+        return {'value': a_fluid, 'rho_ISM_kg_m3': self.rho_ISM, 'units': 'm/s²',
+                'equation': 'a_fluid = rho_ISM·V·g_base'}
+
+class SpiralGalaxyResonanceCalculator:
+    """Spiral resonance: 2A·cos(kx)·cos(ωt)+(2π/13.8)·A·Re[exp] at pattern speed Ω_p"""
+    def __init__(self):
+        import math
+        self.A = 1e-10
+        self.k = 1e-20
+        self.omega_spiral = 6.48e-16 * 2.0 * math.pi  # ω ~ Omega_p
+        self.x = 0.0
+        self.pi = math.pi
+    def compute(self, t: float = 0.0) -> dict:
+        import cmath, math
+        cos_term = 2.0 * self.A * math.cos(self.k * self.x) * math.cos(self.omega_spiral * t)
+        exp_arg = complex(0, self.k * self.x - self.omega_spiral * t)
+        exp_term = self.A * cmath.exp(exp_arg)
+        real_exp = exp_term.real
+        exp_factor = (2.0 * self.pi) / 13.8
+        a_res = cos_term + exp_factor * real_exp
+        return {'value': a_res, 'omega_spiral_rad_s': self.omega_spiral, 'units': 'm/s²',
+                'equation': '2A·cos(kx)·cos(ωt) + (2π/13.8)·A·Re[exp(i(kx-ωt))]'}
+
+SOURCE45_WOLFRAM_CALCULATORS = {
+    'SpiralGalaxyDensityWaveCalculator': SpiralGalaxyDensityWaveCalculator(),
+    'SpiralGalaxyRotationCurveFlatCalculator': SpiralGalaxyRotationCurveFlatCalculator(),
+    'SupernovaLuminosityRadiationCalculator': SupernovaLuminosityRadiationCalculator(),
+    'SupernovaShockwaveCalculator': SupernovaShockwaveCalculator(),
+    'SpiralGalaxyDarkMatterHaloCalculator': SpiralGalaxyDarkMatterHaloCalculator(),
+    'SpiralCosmologicalLambdaRedshiftCalculator': SpiralCosmologicalLambdaRedshiftCalculator(),
+    'SpiralGalaxyISMFluidDynamicsCalculator': SpiralGalaxyISMFluidDynamicsCalculator(),
+    'SpiralGalaxyResonanceCalculator': SpiralGalaxyResonanceCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -155204,4 +155576,33 @@ __all__.extend([
     'UniverseResonantOscillatoryCalculator',
     'UniverseLorentzForceCalculator',
     'SOURCE41_WOLFRAM_CALCULATORS',
+    # Source42 Hydrogen Atom UQFF (Feb 26, 2026) - 8 Calculator Classes
+    'HydrogenBohrOrbitalCalculator',
+    'HydrogenWavefunctionCalculator',
+    'HydrogenElectronCloudFluidCalculator',
+    'HydrogenLorentzElectronCalculator',
+    'HydrogenQuantumFluctuationCalculator',
+    'HydrogenOrbitalResonanceCalculator',
+    'HydrogenFineStructureCalculator',
+    'HydrogenLambShiftCalculator',
+    'SOURCE42_WOLFRAM_CALCULATORS',
+    # Source44 Lagoon Nebula M8 UQFF (Feb 26, 2026) - 7 Calculator Classes
+    'LagoonStarFormationMassCalculator',
+    'LagoonRadiationPressureCalculator',
+    'LagoonIonizedGasFluidCalculator',
+    'LagoonDarkMatterNebulaCalculator',
+    'LagoonHIIRegionResonanceCalculator',
+    'LagoonLorentzIonizedGasCalculator',
+    'LagoonQuantumIntegralNebulaCalculator',
+    'SOURCE44_WOLFRAM_CALCULATORS',
+    # Source45 Spiral Galaxies & Supernovae UQFF (Feb 26, 2026) - 8 Calculator Classes
+    'SpiralGalaxyDensityWaveCalculator',
+    'SpiralGalaxyRotationCurveFlatCalculator',
+    'SupernovaLuminosityRadiationCalculator',
+    'SupernovaShockwaveCalculator',
+    'SpiralGalaxyDarkMatterHaloCalculator',
+    'SpiralCosmologicalLambdaRedshiftCalculator',
+    'SpiralGalaxyISMFluidDynamicsCalculator',
+    'SpiralGalaxyResonanceCalculator',
+    'SOURCE45_WOLFRAM_CALCULATORS',
 ])
