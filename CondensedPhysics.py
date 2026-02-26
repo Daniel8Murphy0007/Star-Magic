@@ -153500,6 +153500,617 @@ SOURCE35_WOLFRAM_CALCULATORS = {
 }
 
 
+# ===========================================================================================
+# SOURCE36 WOLFRAM CALCULATORS - Tapestry NGC 2014/2020 Frequency-Based (Feb 26, 2026)
+# 11 Calculator Classes - LMC star-forming cluster with stellar winds, M=1000 M_sun
+# ===========================================================================================
+
+class TapestryFreqDPMCalculator:
+    """Tapestry NGC 2014/2020 DPM resonance: a_DPM=(I·A·(ω₁-ω₂)·f_DPM·E_vac_neb)/(c·V_sys), I=1e20 A stellar winds."""
+    def __init__(self):
+        self.I = 1e20
+        self.omega_1 = 1e-2
+        self.omega_2 = -1e-2
+        self.f_DPM = 1e11
+        self.E_vac_neb = 7.09e-36
+        self.c = 3e8
+        self.r = 3.5e18
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        return {'value': a_DPM, 'F_DPM': F_DPM, 'I_A': self.I, 'r_m': self.r, 'units': 'm/s²',
+                'equation': 'a_DPM = (I·A·(ω₁-ω₂)·f_DPM·E_vac_neb)/(c·V_sys), cluster-scaled'}
+
+class TapestryFreqTHzCalculator:
+    """Tapestry THz hole pipeline for stellar winds: a_THz=(f_THz·E_vac_neb·v_exp·a_DPM)/(E_vac_ISM·c), v_exp=1e6 m/s."""
+    def __init__(self):
+        self.f_THz = 1e11
+        self.E_vac_neb = 7.09e-36
+        self.E_vac_ISM = 7.09e-37
+        self.v_exp = 1e6
+        self.c = 3e8
+        self.I = 1e20
+        self.omega_1 = 1e-2
+        self.omega_2 = -1e-2
+        self.f_DPM = 1e11
+        self.r = 3.5e18
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_THz = (self.f_THz * self.E_vac_neb * self.v_exp * a_DPM) / (self.E_vac_ISM * self.c)
+        return {'value': a_THz, 'a_DPM': a_DPM, 'v_exp_m_s': self.v_exp, 'units': 'm/s²',
+                'equation': 'a_THz = (f_THz·E_vac_neb·v_exp·a_DPM)/(E_vac_ISM·c), stellar winds'}
+
+class TapestryFreqVacDiffCalculator:
+    """Tapestry vacuum differential: a_vac_diff=(E_0·f_vac_diff·V_sys)/(ℏ)·a_DPM."""
+    def __init__(self):
+        self.E_0 = 6.381e-36
+        self.f_vac_diff = 0.143
+        self.hbar = 1.0546e-34
+        self.I = 1e20
+        self.omega_1 = 1e-2
+        self.omega_2 = -1e-2
+        self.f_DPM = 1e11
+        self.E_vac_neb = 7.09e-36
+        self.c = 3e8
+        self.r = 3.5e18
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_vac_diff = (self.E_0 * self.f_vac_diff * self.V_sys) / self.hbar * a_DPM
+        return {'value': a_vac_diff, 'a_DPM': a_DPM, 'V_sys': self.V_sys, 'units': 'm/s²',
+                'equation': 'a_vac_diff = (E_0·f_vac_diff·V_sys)/(ℏ)·a_DPM'}
+
+class TapestryFreqSuperCalculator:
+    """Tapestry superconductor frequency: a_super=(ℏ·f_super·f_DPM·a_DPM)/(E_vac_ISM·c), f_super=1.411e15 Hz."""
+    def __init__(self):
+        self.hbar = 1.0546e-34
+        self.f_super = 1.411e15
+        self.E_vac_ISM = 7.09e-37
+        self.c = 3e8
+        self.I = 1e20
+        self.omega_1 = 1e-2
+        self.omega_2 = -1e-2
+        self.f_DPM = 1e11
+        self.E_vac_neb = 7.09e-36
+        self.r = 3.5e18
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_super = (self.hbar * self.f_super * self.f_DPM * a_DPM) / (self.E_vac_ISM * self.c)
+        return {'value': a_super, 'a_DPM': a_DPM, 'f_super_Hz': self.f_super, 'units': 'm/s²',
+                'equation': 'a_super = (ℏ·f_super·f_DPM·a_DPM)/(E_vac_ISM·c)'}
+
+class TapestryFreqAetherResCalculator:
+    """Tapestry aether-mediated resonance: a_aether_res=f_aether·B·f_DPM·(1+f_TRZ)·a_DPM, f_aether=1e2 Hz."""
+    def __init__(self):
+        self.f_aether = 1e2
+        self.B_proxy = 1e-8
+        self.f_TRZ = 0.1
+        self.I = 1e20
+        self.omega_1 = 1e-2
+        self.omega_2 = -1e-2
+        self.f_DPM = 1e11
+        self.E_vac_neb = 7.09e-36
+        self.c = 3e8
+        self.r = 3.5e18
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_aether_res = self.f_aether * self.B_proxy * self.f_DPM * (1.0 + self.f_TRZ) * a_DPM
+        return {'value': a_aether_res, 'a_DPM': a_DPM, 'f_aether_Hz': self.f_aether, 'units': 'm/s²',
+                'equation': 'a_aether_res = f_aether·B·f_DPM·(1+f_TRZ)·a_DPM'}
+
+class TapestryFreqUg4iCalculator:
+    """Tapestry reactive U_g4i: U_g4i=f_sc·(GM/r²)·f_react·a_DPM/(E_vac_ISM·c), M=1000 M_sun."""
+    def __init__(self):
+        self.f_sc = 1.0
+        self.G = 6.6743e-11
+        self.M = 1.989e33
+        self.r = 3.5e18
+        self.f_react = 1e9
+        self.E_vac_ISM = 7.09e-37
+        self.c = 3e8
+        self.I = 1e20
+        self.omega_1 = 1e-2
+        self.omega_2 = -1e-2
+        self.f_DPM = 1e11
+        self.E_vac_neb = 7.09e-36
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        Ug1 = (self.G * self.M) / (self.r * self.r)
+        U_g4i = self.f_sc * Ug1 * self.f_react * a_DPM / (self.E_vac_ISM * self.c)
+        return {'value': U_g4i, 'a_DPM': a_DPM, 'Ug1': Ug1, 'M_kg': self.M, 'units': 'm/s²',
+                'equation': 'U_g4i = f_sc·(GM/r²)·f_react·a_DPM/(E_vac_ISM·c), M=1000 M_sun'}
+
+class TapestryFreqQuantumCalculator:
+    """Tapestry quantum wave: a_quantum=(f_quantum·E_vac_neb·a_DPM)/(E_vac_ISM·c)."""
+    def __init__(self):
+        self.f_quantum = 1.445e-17
+        self.E_vac_neb = 7.09e-36
+        self.E_vac_ISM = 7.09e-37
+        self.c = 3e8
+        self.I = 1e20
+        self.omega_1 = 1e-2
+        self.omega_2 = -1e-2
+        self.f_DPM = 1e11
+        self.r = 3.5e18
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_quantum = (self.f_quantum * self.E_vac_neb * a_DPM) / (self.E_vac_ISM * self.c)
+        return {'value': a_quantum, 'a_DPM': a_DPM, 'f_quantum_Hz': self.f_quantum, 'units': 'm/s²',
+                'equation': 'a_quantum = (f_quantum·E_vac_neb·a_DPM)/(E_vac_ISM·c)'}
+
+class TapestryFreqAetherCalculator:
+    """Tapestry aether effect (replaces Λ): a_Aether=(f_Aether·E_vac_neb·a_DPM)/(E_vac_ISM·c)."""
+    def __init__(self):
+        self.f_Aether = 1.576e-35
+        self.E_vac_neb = 7.09e-36
+        self.E_vac_ISM = 7.09e-37
+        self.c = 3e8
+        self.I = 1e20
+        self.omega_1 = 1e-2
+        self.omega_2 = -1e-2
+        self.f_DPM = 1e11
+        self.r = 3.5e18
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_Aether = (self.f_Aether * self.E_vac_neb * a_DPM) / (self.E_vac_ISM * self.c)
+        return {'value': a_Aether, 'a_DPM': a_DPM, 'f_Aether_Hz': self.f_Aether, 'units': 'm/s²',
+                'equation': 'a_Aether = (f_Aether·E_vac_neb·a_DPM)/(E_vac_ISM·c)'}
+
+class TapestryFreqFluidCalculator:
+    """Tapestry fluid dynamics for gas: a_fluid=(f_fluid·E_vac_neb·V_sys)/(E_vac_ISM·c)."""
+    def __init__(self):
+        self.f_fluid = 1.269e-14
+        self.E_vac_neb = 7.09e-36
+        self.E_vac_ISM = 7.09e-37
+        self.c = 3e8
+        self.r = 3.5e18
+        import math
+        self.pi = math.pi
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        a_fluid = (self.f_fluid * self.E_vac_neb * self.V_sys) / (self.E_vac_ISM * self.c)
+        return {'value': a_fluid, 'f_fluid_Hz': self.f_fluid, 'V_sys': self.V_sys, 'units': 'm/s²',
+                'equation': 'a_fluid = (f_fluid·E_vac_neb·V_sys)/(E_vac_ISM·c)'}
+
+class TapestryFreqOscCalculator:
+    """Tapestry oscillatory component: approximated to zero per UQFF simplification."""
+    def compute(self, t: float = 0.0) -> dict:
+        return {'value': 0.0, 'units': 'm/s²', 'equation': 'a_osc ≈ 0 (UQFF simplification)'}
+
+class TapestryFreqExpCalculator:
+    """Tapestry cosmic expansion: a_exp=(f_exp·E_vac_neb·a_DPM)/(E_vac_ISM·c)."""
+    def __init__(self):
+        self.f_exp = 1.373e-8
+        self.E_vac_neb = 7.09e-36
+        self.E_vac_ISM = 7.09e-37
+        self.c = 3e8
+        self.I = 1e20
+        self.omega_1 = 1e-2
+        self.omega_2 = -1e-2
+        self.f_DPM = 1e11
+        self.r = 3.5e18
+        import math
+        self.pi = math.pi
+        self.A = self.pi * self.r * self.r
+        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
+        a_exp = (self.f_exp * self.E_vac_neb * a_DPM) / (self.E_vac_ISM * self.c)
+        return {'value': a_exp, 'a_DPM': a_DPM, 'f_exp_Hz': self.f_exp, 'units': 'm/s²',
+                'equation': 'a_exp = (f_exp·E_vac_neb·a_DPM)/(E_vac_ISM·c)'}
+
+SOURCE36_WOLFRAM_CALCULATORS = {
+    'TapestryFreqDPMCalculator': TapestryFreqDPMCalculator(),
+    'TapestryFreqTHzCalculator': TapestryFreqTHzCalculator(),
+    'TapestryFreqVacDiffCalculator': TapestryFreqVacDiffCalculator(),
+    'TapestryFreqSuperCalculator': TapestryFreqSuperCalculator(),
+    'TapestryFreqAetherResCalculator': TapestryFreqAetherResCalculator(),
+    'TapestryFreqUg4iCalculator': TapestryFreqUg4iCalculator(),
+    'TapestryFreqQuantumCalculator': TapestryFreqQuantumCalculator(),
+    'TapestryFreqAetherCalculator': TapestryFreqAetherCalculator(),
+    'TapestryFreqFluidCalculator': TapestryFreqFluidCalculator(),
+    'TapestryFreqOscCalculator': TapestryFreqOscCalculator(),
+    'TapestryFreqExpCalculator': TapestryFreqExpCalculator(),
+}
+
+
+# ===========================================================================================
+# SOURCE37 WOLFRAM CALCULATORS - General Resonance/SC (Feb 26, 2026)
+# 7 Calculator Classes - Universal resonance + superconductivity correction
+# ===========================================================================================
+
+class ResonanceDPMCalculator:
+    """General DPM resonance (foundation): a_DPM_res=(I·A·(ω₁-ω₂)·f_DPM·E_vac)/(c·V_sys), f_DPM=1e12 Hz."""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM_res = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        return {'value': a_DPM_res, 'F_DPM': F_DPM, 'f_DPM_Hz': self.f_DPM, 'units': 'm/s²',
+                'equation': 'a_DPM_res = (I·A·(ω₁-ω₂)·f_DPM·E_vac)/(c·V_sys)'}
+
+class ResonanceTHzCalculator:
+    """General THz resonance: a_THz_res=(f_THz·E_vac·v_exp·a_DPM_res)/(E_vac_ISM·c)."""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_THz = 1e12
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+        self.v_exp = 1e3
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM_res = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        E_vac_ISM = self.E_vac / 10.0
+        a_THz_res = (self.f_THz * self.E_vac * self.v_exp * a_DPM_res) / (E_vac_ISM * self.c)
+        return {'value': a_THz_res, 'a_DPM_res': a_DPM_res, 'f_THz_Hz': self.f_THz, 'units': 'm/s²',
+                'equation': 'a_THz_res = (f_THz·E_vac·v_exp·a_DPM_res)/(E_vac_ISM·c)'}
+
+class ResonanceAetherCalculator:
+    """General aether resonance: a_aether_res=f_aether·1e-8·f_DPM·(1+f_TRZ)·a_DPM_res."""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_aether = 1e4
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+        self.f_TRZ = 0.1
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM_res = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        a_aether_res = self.f_aether * 1e-8 * self.f_DPM * (1.0 + self.f_TRZ) * a_DPM_res
+        return {'value': a_aether_res, 'a_DPM_res': a_DPM_res, 'f_aether_Hz': self.f_aether, 'units': 'm/s²',
+                'equation': 'a_aether_res = f_aether·1e-8·f_DPM·(1+f_TRZ)·a_DPM_res'}
+
+class ResonanceUg4iCalculator:
+    """General U_g4i reactive: U_g4i_res=f_sc·Ug1·f_react·a_DPM_res/(E_vac·c)."""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_react = 1e10
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+        self.f_sc = 1.0
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM_res = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        Ug1_proxy = 1.0
+        U_g4i_res = self.f_sc * Ug1_proxy * self.f_react * a_DPM_res / (self.E_vac * self.c)
+        return {'value': U_g4i_res, 'a_DPM_res': a_DPM_res, 'f_react_Hz': self.f_react, 'units': 'm/s²',
+                'equation': 'U_g4i_res = f_sc·Ug1·f_react·a_DPM_res/(E_vac·c)'}
+
+class ResonanceOscillatoryCalculator:
+    """General oscillatory resonance: 2A·cos(kx)·cos(ωt)+(2π/13.8)·A·Re[exp(i(kx-ωt))], f_osc=4.57e14 Hz."""
+    def __init__(self):
+        self.A = 1e-10
+        self.k = 1e20
+        self.omega_osc = 1e15
+        self.x = 0.0
+        import math
+        self.pi = math.pi
+    def compute(self, t: float = 0.0) -> dict:
+        import math, cmath
+        cos_term = 2.0 * self.A * math.cos(self.k * self.x) * math.cos(self.omega_osc * t)
+        exp_arg = complex(0, self.k * self.x - self.omega_osc * t)
+        exp_term = self.A * cmath.exp(exp_arg)
+        real_exp = exp_term.real
+        exp_factor = (2.0 * self.pi) / 13.8
+        a_osc = cos_term + exp_factor * real_exp
+        return {'value': a_osc, 'A': self.A, 'k': self.k, 'omega_osc': self.omega_osc, 'units': 'm/s²',
+                'equation': '2A·cos(kx)·cos(ωt)+(2π/13.8)·A·Re[exp(i(kx-ωt))]'}
+
+class ResonanceSCFreqCalculator:
+    """General SC frequency: a_sc_freq=(ℏ·f_super·f_DPM·a_DPM_res)/(E_vac·c), f_super=1.411e16 Hz."""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_super = 1.411e16
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+        self.hbar = 1.0546e-34
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM_res = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        a_sc_freq = (self.hbar * self.f_super * self.f_DPM * a_DPM_res) / (self.E_vac * self.c)
+        return {'value': a_sc_freq, 'a_DPM_res': a_DPM_res, 'f_super_Hz': self.f_super, 'units': 'm/s²',
+                'equation': 'a_sc_freq = (ℏ·f_super·f_DPM·a_DPM_res)/(E_vac·c)'}
+
+class SuperconductiveCorrectionCalculator:
+    """General SC correction: SCm=1-B/B_crit, B_crit=1e11 T."""
+    def __init__(self):
+        self.B = 1e-5
+        self.B_crit = 1e11
+    def compute(self, B: float = None) -> dict:
+        B_val = B if B is not None else self.B
+        SCm = 1.0 - (B_val / self.B_crit)
+        return {'value': SCm, 'B_T': B_val, 'B_crit_T': self.B_crit, 'units': 'dimensionless',
+                'equation': 'SCm = 1 - B/B_crit'}
+
+SOURCE37_WOLFRAM_CALCULATORS = {
+    'ResonanceDPMCalculator': ResonanceDPMCalculator(),
+    'ResonanceTHzCalculator': ResonanceTHzCalculator(),
+    'ResonanceAetherCalculator': ResonanceAetherCalculator(),
+    'ResonanceUg4iCalculator': ResonanceUg4iCalculator(),
+    'ResonanceOscillatoryCalculator': ResonanceOscillatoryCalculator(),
+    'ResonanceSCFreqCalculator': ResonanceSCFreqCalculator(),
+    'SuperconductiveCorrectionCalculator': SuperconductiveCorrectionCalculator(),
+}
+
+
+# ===========================================================================================
+# SOURCE38 WOLFRAM CALCULATORS - Compressed Resonance (Feb 26, 2026)
+# 10 Calculator Classes - 4 compressed + 6 resonance (streamlined)
+# ===========================================================================================
+
+class CompressedDPMCalculator:
+    """Compressed DPM (foundation): a_DPM=(I·A·(ω₁-ω₂)·f_DPM·E_vac)/(c·V_sys)."""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        return {'value': a_DPM, 'F_DPM': F_DPM, 'f_DPM_Hz': self.f_DPM, 'units': 'm/s²',
+                'equation': 'a_DPM = (I·A·(ω₁-ω₂)·f_DPM·E_vac)/(c·V_sys)'}
+
+class CompressedTHzCalculator:
+    """Compressed THz: a_THz=(f_THz·E_vac·v_exp·a_DPM)/(E_vac_ISM·c)."""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_THz = 1e12
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+        self.v_exp = 1e3
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        E_vac_ISM = self.E_vac / 10.0
+        a_THz = (self.f_THz * self.E_vac * self.v_exp * a_DPM) / (E_vac_ISM * self.c)
+        return {'value': a_THz, 'a_DPM': a_DPM, 'f_THz_Hz': self.f_THz, 'units': 'm/s²',
+                'equation': 'a_THz = (f_THz·E_vac·v_exp·a_DPM)/(E_vac_ISM·c)'}
+
+class CompressedVacDiffCalculator:
+    """Compressed vac_diff: a_vac_diff=(E_0·f_vac_diff·V_sys·a_DPM)/ℏ, f_vac_diff=0.143 Hz."""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_vac_diff = 0.143
+        self.E_vac = 7.09e-36
+        self.E_0 = 6.381e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+        self.hbar = 1.0546e-34
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        a_vac_diff = (self.E_0 * self.f_vac_diff * self.V_sys * a_DPM) / self.hbar
+        return {'value': a_vac_diff, 'a_DPM': a_DPM, 'f_vac_diff_Hz': self.f_vac_diff, 'units': 'm/s²',
+                'equation': 'a_vac_diff = (E_0·f_vac_diff·V_sys·a_DPM)/ℏ'}
+
+class CompressedSuperCalculator:
+    """Compressed super: a_super=(ℏ·f_super·f_DPM·a_DPM)/(E_vac·c), f_super=1.411e16 Hz."""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_super = 1.411e16
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+        self.hbar = 1.0546e-34
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        a_super = (self.hbar * self.f_super * self.f_DPM * a_DPM) / (self.E_vac * self.c)
+        return {'value': a_super, 'a_DPM': a_DPM, 'f_super_Hz': self.f_super, 'units': 'm/s²',
+                'equation': 'a_super = (ℏ·f_super·f_DPM·a_DPM)/(E_vac·c)'}
+
+class ResonanceAetherCompCalculator:
+    """Resonance aether (compressed): a_aether=f_aether·1e-8·f_DPM·(1+f_TRZ)·a_DPM."""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_aether = 1e4
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+        self.f_TRZ = 0.1
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        a_aether = self.f_aether * 1e-8 * self.f_DPM * (1.0 + self.f_TRZ) * a_DPM
+        return {'value': a_aether, 'a_DPM': a_DPM, 'f_aether_Hz': self.f_aether, 'units': 'm/s²',
+                'equation': 'a_aether = f_aether·1e-8·f_DPM·(1+f_TRZ)·a_DPM'}
+
+class ResonanceUg4iCompCalculator:
+    """Resonance U_g4i (compressed): a_u_g4i=f_sc·Ug1·f_react·a_DPM/(E_vac·c)."""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_react = 1e10
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+        self.f_sc = 1.0
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        Ug1_proxy = 1.0
+        a_u_g4i = self.f_sc * Ug1_proxy * self.f_react * a_DPM / (self.E_vac * self.c)
+        return {'value': a_u_g4i, 'a_DPM': a_DPM, 'f_react_Hz': self.f_react, 'units': 'm/s²',
+                'equation': 'a_u_g4i = f_sc·Ug1·f_react·a_DPM/(E_vac·c)'}
+
+class ResonanceOscillatoryCompCalculator:
+    """Resonance oscillatory (compressed): 2A·cos(kx)·cos(ωt)+(2π/13.8)·A·Re[exp(i(kx-ωt))]."""
+    def __init__(self):
+        self.A = 1e-10
+        self.k = 1e20
+        self.omega_osc = 1e15
+        self.x = 0.0
+        import math
+        self.pi = math.pi
+    def compute(self, t: float = 0.0) -> dict:
+        import math, cmath
+        cos_term = 2.0 * self.A * math.cos(self.k * self.x) * math.cos(self.omega_osc * t)
+        exp_arg = complex(0, self.k * self.x - self.omega_osc * t)
+        exp_term = self.A * cmath.exp(exp_arg)
+        real_exp = exp_term.real
+        exp_factor = (2.0 * self.pi) / 13.8
+        a_osc = cos_term + exp_factor * real_exp
+        return {'value': a_osc, 'A': self.A, 'omega_osc': self.omega_osc, 'units': 'm/s²',
+                'equation': '2A·cos(kx)·cos(ωt)+(2π/13.8)·A·Re[exp(i(kx-ωt))]'}
+
+class ResonanceQuantumCompCalculator:
+    """Resonance quantum (compressed): a_quantum=(f_quantum·E_vac·a_DPM)/(E_vac_ISM·c)."""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_quantum = 1.445e-17
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        E_vac_ISM = self.E_vac / 10.0
+        a_quantum = (self.f_quantum * self.E_vac * a_DPM) / (E_vac_ISM * self.c)
+        return {'value': a_quantum, 'a_DPM': a_DPM, 'f_quantum_Hz': self.f_quantum, 'units': 'm/s²',
+                'equation': 'a_quantum = (f_quantum·E_vac·a_DPM)/(E_vac_ISM·c)'}
+
+class ResonanceFluidCompCalculator:
+    """Resonance fluid (compressed): a_fluid=(f_fluid·E_vac·V)/(E_vac_ISM·c)."""
+    def __init__(self):
+        self.f_fluid = 1.269e-14
+        self.E_vac = 7.09e-36
+        self.V = 1e3
+        self.c = 3e8
+    def compute(self, t: float = 0.0) -> dict:
+        E_vac_ISM = self.E_vac / 10.0
+        a_fluid = (self.f_fluid * self.E_vac * self.V) / (E_vac_ISM * self.c)
+        return {'value': a_fluid, 'f_fluid_Hz': self.f_fluid, 'V': self.V, 'units': 'm/s²',
+                'equation': 'a_fluid = (f_fluid·E_vac·V)/(E_vac_ISM·c)'}
+
+class ResonanceExpansionCompCalculator:
+    """Resonance expansion (compressed): a_exp=(f_exp·E_vac·a_DPM)/(E_vac_ISM·c)."""
+    def __init__(self):
+        self.I = 1e21
+        self.A_vort = 3.142e8
+        self.omega_1 = 1e-3
+        self.omega_2 = -1e-3
+        self.f_DPM = 1e12
+        self.f_exp = 1.373e-8
+        self.E_vac = 7.09e-36
+        self.c = 3e8
+        self.V_sys = 4.189e12
+    def compute(self, t: float = 0.0) -> dict:
+        F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
+        a_DPM = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
+        E_vac_ISM = self.E_vac / 10.0
+        a_exp = (self.f_exp * self.E_vac * a_DPM) / (E_vac_ISM * self.c)
+        return {'value': a_exp, 'a_DPM': a_DPM, 'f_exp_Hz': self.f_exp, 'units': 'm/s²',
+                'equation': 'a_exp = (f_exp·E_vac·a_DPM)/(E_vac_ISM·c)'}
+
+SOURCE38_WOLFRAM_CALCULATORS = {
+    'CompressedDPMCalculator': CompressedDPMCalculator(),
+    'CompressedTHzCalculator': CompressedTHzCalculator(),
+    'CompressedVacDiffCalculator': CompressedVacDiffCalculator(),
+    'CompressedSuperCalculator': CompressedSuperCalculator(),
+    'ResonanceAetherCompCalculator': ResonanceAetherCompCalculator(),
+    'ResonanceUg4iCompCalculator': ResonanceUg4iCompCalculator(),
+    'ResonanceOscillatoryCompCalculator': ResonanceOscillatoryCompCalculator(),
+    'ResonanceQuantumCompCalculator': ResonanceQuantumCompCalculator(),
+    'ResonanceFluidCompCalculator': ResonanceFluidCompCalculator(),
+    'ResonanceExpansionCompCalculator': ResonanceExpansionCompCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -154020,4 +154631,38 @@ __all__.extend([
     'SgrAFreqOscCalculator',
     'SgrAFreqExpCalculator',
     'SOURCE35_WOLFRAM_CALCULATORS',
+    # Source36 Tapestry NGC 2014/2020 Frequency-Based (Feb 26, 2026) - 11 Calculator Classes
+    'TapestryFreqDPMCalculator',
+    'TapestryFreqTHzCalculator',
+    'TapestryFreqVacDiffCalculator',
+    'TapestryFreqSuperCalculator',
+    'TapestryFreqAetherResCalculator',
+    'TapestryFreqUg4iCalculator',
+    'TapestryFreqQuantumCalculator',
+    'TapestryFreqAetherCalculator',
+    'TapestryFreqFluidCalculator',
+    'TapestryFreqOscCalculator',
+    'TapestryFreqExpCalculator',
+    'SOURCE36_WOLFRAM_CALCULATORS',
+    # Source37 General Resonance/SC (Feb 26, 2026) - 7 Calculator Classes
+    'ResonanceDPMCalculator',
+    'ResonanceTHzCalculator',
+    'ResonanceAetherCalculator',
+    'ResonanceUg4iCalculator',
+    'ResonanceOscillatoryCalculator',
+    'ResonanceSCFreqCalculator',
+    'SuperconductiveCorrectionCalculator',
+    'SOURCE37_WOLFRAM_CALCULATORS',
+    # Source38 Compressed Resonance (Feb 26, 2026) - 10 Calculator Classes
+    'CompressedDPMCalculator',
+    'CompressedTHzCalculator',
+    'CompressedVacDiffCalculator',
+    'CompressedSuperCalculator',
+    'ResonanceAetherCompCalculator',
+    'ResonanceUg4iCompCalculator',
+    'ResonanceOscillatoryCompCalculator',
+    'ResonanceQuantumCompCalculator',
+    'ResonanceFluidCompCalculator',
+    'ResonanceExpansionCompCalculator',
+    'SOURCE38_WOLFRAM_CALCULATORS',
 ])
