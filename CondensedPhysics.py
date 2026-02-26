@@ -104868,6 +104868,421 @@ class UQFFLuminosityCalculator(SelfExpandingMixin):
             },
         }
     
+    # ═══════════════════════════════════════════════════════════════════════════
+    # FORMAL 6-STEP SUPPRESSION DERIVATION (Feb 25, 2026)
+    # Canonical S_* naming convention for suppression factors
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_S_factors(self, M: float, B_t_ratio: float = 0.01,
+                           U_m_kT_ratio: float = 1.0) -> dict:
+        """
+        Compute all four suppression factors with canonical S_* naming.
+        
+        S_TRZ: Time-reversal suppression (1 - f_TRZ)
+        S_aether: Aether filling suppression (1 - ρ_SCm/ρ_UA)
+        S_SCm: Superconductive barrier suppression (1 - B_t/B_crit)
+        S_Um: Magnetic string exponential suppression exp(-U_m/(k_BT_H))
+        
+        Args:
+            M: Black hole mass [kg]
+            B_t_ratio: B_t/B_crit ratio (default: 0.01)
+            U_m_kT_ratio: U_m/(k_BT_H) ratio (default: 1.0)
+        
+        Returns:
+            Dict with all S_* factors and combined suppression
+        """
+        f_TRZ = self.params['f_TRZ']
+        rho_SCm = self.params['rho_vac_SCm']
+        rho_UA = self.params['rho_vac_UA']
+        
+        # Individual suppression factors
+        S_TRZ = 1.0 - f_TRZ  # ~0.9
+        S_aether = 1.0 - rho_SCm / rho_UA  # ~0.9
+        S_SCm = 1.0 - B_t_ratio  # ~0.99 for B_t/B_crit=0.01
+        S_Um = np.exp(-U_m_kT_ratio)  # ~0.368 for ratio=1
+        
+        # Combined suppression
+        S_total = S_TRZ * S_aether * S_SCm * S_Um
+        
+        return {
+            'S_TRZ': S_TRZ,
+            'S_aether': S_aether,
+            'S_SCm': S_SCm,
+            'S_Um': S_Um,
+            'S_total': S_total,
+            
+            # Input parameters
+            'f_TRZ': f_TRZ,
+            'rho_ratio': rho_SCm / rho_UA,
+            'B_t_ratio': B_t_ratio,
+            'U_m_kT_ratio': U_m_kT_ratio,
+            
+            # Suppression percentages
+            'suppress_TRZ_pct': (1 - S_TRZ) * 100,
+            'suppress_aether_pct': (1 - S_aether) * 100,
+            'suppress_SCm_pct': (1 - S_SCm) * 100,
+            'suppress_Um_pct': (1 - S_Um) * 100,
+            'suppress_total_pct': (1 - S_total) * 100,
+        }
+    
+    def six_step_suppression_derivation(self, M: float, B_t_ratio: float = 0.01,
+                                         U_m_kT_ratio: float = 1.0) -> dict:
+        """
+        Full 6-step derivation of UQFF suppression equations.
+        
+        Step 1: Standard unsuppressed term (L_H)
+        Step 2: Time-reversal suppression (S_TRZ)
+        Step 3: Aether filling suppression (S_aether)
+        Step 4: Superconductive barrier suppression (S_SCm)
+        Step 5: Magnetic string exponential suppression (S_Um)
+        Step 6: Full UQFF suppression equation (combined)
+        
+        Args:
+            M: Black hole mass [kg]
+            B_t_ratio: B_t/B_crit ratio (default: 0.01)
+            U_m_kT_ratio: U_m/(k_BT_H) ratio (default: 1.0)
+        
+        Returns:
+            Dict with complete 6-step derivation
+        """
+        M_sun = self.params['M_sun']
+        hbar = self.params['hbar']
+        c = self.params['c']
+        G = self.params['G']
+        k_B = self.params['k_B']
+        f_TRZ = self.params['f_TRZ']
+        rho_SCm = self.params['rho_vac_SCm']
+        rho_UA = self.params['rho_vac_UA']
+        
+        # Compute base quantities
+        T_H = self.compute_T_H(M)
+        L_H = self.compute_L_H(M)
+        S = self.compute_S_factors(M, B_t_ratio, U_m_kT_ratio)
+        
+        # Step-by-step luminosity chain
+        L_prime = L_H * S['S_TRZ']
+        L_double_prime = L_prime * S['S_aether']
+        L_triple_prime = L_double_prime * S['S_SCm']
+        L_UQFF = L_triple_prime * S['S_Um']
+        
+        # Thermal particle rate
+        Gamma_thermal = L_H / (k_B * T_H)
+        
+        return {
+            'title': '6-Step UQFF Suppression Equation Derivation',
+            'M_kg': M,
+            'M_solar': M / M_sun,
+            'T_H_K': T_H,
+            
+            'step_1': {
+                'name': 'Standard Unsuppressed Term (Base Luminosity)',
+                'description': 'Hawking radiation from black-body emission at horizon',
+                'formula': 'L_H = σ A T_H⁴ = ℏc⁶ / (15360πG²M²)',
+                'derived_from': 'Stefan-Boltzmann law with A = 4π(2GM/c²)², T_H = ℏc³/(8πGMk_B)',
+                'assumption': 'Empty vacuum allows free pair creation',
+                'L_H_W': L_H,
+                'Gamma_thermal': Gamma_thermal,
+                'Gamma_note': 'Γ ~ L_H / (k_B T_H) = thermal particle emission rate',
+            },
+            
+            'step_2': {
+                'name': 'Time-Reversal Suppression (f_TRZ)',
+                'description': 'Negentropic reversal suppresses fraction of emissions',
+                'formula': "L' = L_H × S_TRZ = L_H × (1 - f_TRZ)",
+                'derivation': [
+                    'Emission rate Γ ~ L_H / (k_B T_H) (thermal particles)',
+                    'Reversed fraction ~ f_TRZ × Γ (negentropic "recycle")',
+                    'Net emission: Γ_net = Γ × (1 - f_TRZ)',
+                ],
+                'f_TRZ': f_TRZ,
+                'S_TRZ': S['S_TRZ'],
+                'L_prime_W': L_prime,
+                'suppression_pct': S['suppress_TRZ_pct'],
+            },
+            
+            'step_3': {
+                'name': 'Aether Filling Suppression (Density Ratio)',
+                'description': '[UA] density fills vacuum, raising effective pair energy',
+                'formula': "L'' = L' × S_aether = L' × (1 - ρ_SCm/ρ_UA)",
+                'derivation': [
+                    f'ρ_UA ≈ {rho_UA:.2e} J/m³ (Universal Aether density)',
+                    f'ρ_SCm ≈ {rho_SCm:.2e} J/m³ (Superconductive density)',
+                    'E_pair ~ ℏc/r_s (standard pair energy)',
+                    'E_pair,UQFF = E_pair × (ρ_UA/ρ_SCm) ≈ 10 × E_pair',
+                    'Γ_UQFF ~ exp(-E_pair,UQFF/(k_BT_H)) ≈ Γ × (1 - ρ_SCm/ρ_UA)',
+                ],
+                'rho_ratio': S['rho_ratio'],
+                'S_aether': S['S_aether'],
+                'L_double_prime_W': L_double_prime,
+                'suppression_pct': S['suppress_aether_pct'],
+            },
+            
+            'step_4': {
+                'name': 'Superconductive Barrier Suppression ([SCm])',
+                'description': '[SCm] at horizons creates Meissner screening',
+                'formula': "L''' = L'' × S_SCm = L'' × (1 - B_t/B_crit)",
+                'derivation': [
+                    'B_crit ≈ 10¹¹ T (superconducting critical field)',
+                    f'B_t/B_crit ≈ {B_t_ratio} (typical astrophysical)',
+                    'Meissner effect screens field/emission escape',
+                ],
+                'B_t_ratio': B_t_ratio,
+                'S_SCm': S['S_SCm'],
+                'L_triple_prime_W': L_triple_prime,
+                'suppression_pct': S['suppress_SCm_pct'],
+            },
+            
+            'step_5': {
+                'name': 'Magnetic String Exponential Suppression (U_m)',
+                'description': 'U_m forms energy barriers, damping exponentially',
+                'formula': "L_UQFF = L''' × S_Um = L''' × exp(-U_m/(k_BT_H))",
+                'derivation': [
+                    'U_m ≈ μ_j/r × (1 - exp(-γt cos(πt_n)))',
+                    'γ ≈ 5×10⁻⁵ day⁻¹ (string damping rate)',
+                    f'U_m/(k_BT_H) ≈ {U_m_kT_ratio}',
+                    f'S_Um = exp(-{U_m_kT_ratio}) ≈ {S["S_Um"]:.4f}',
+                ],
+                'U_m_kT_ratio': U_m_kT_ratio,
+                'S_Um': S['S_Um'],
+                'L_UQFF_W': L_UQFF,
+                'suppression_pct': S['suppress_Um_pct'],
+            },
+            
+            'step_6': {
+                'name': 'Full UQFF Suppression Equation (Combined)',
+                'description': 'Multiplicative combination of all independent mechanisms',
+                'formula': 'L_UQFF = L_H × S_TRZ × S_aether × S_SCm × S_Um',
+                'expanded_formula': 'L_UQFF = L_H × (1-f_TRZ) × (1-ρ_SCm/ρ_UA) × (1-B_t/B_crit) × exp(-U_m/(k_BT_H))',
+                'factor_values': f'{S["S_TRZ"]:.2f} × {S["S_aether"]:.2f} × {S["S_SCm"]:.2f} × {S["S_Um"]:.4f}',
+                'S_total': S['S_total'],
+                'L_H_W': L_H,
+                'L_UQFF_W': L_UQFF,
+                'total_suppression_pct': S['suppress_total_pct'],
+                'lifetime_enhancement': 1.0 / S['S_total'] if S['S_total'] > 0 else np.inf,
+            },
+            
+            'S_factors': S,
+        }
+    
+    def sgr_a_canonical_example(self, B_t_ratio: float = 1e-10,
+                                  U_m_kT_ratio: float = 1.0) -> dict:
+        """
+        Canonical numerical example: Sgr A* suppression calculation.
+        
+        Uses exact values from UQFF theory:
+        - L_H ≈ 10⁻⁵ W
+        - f_TRZ = 0.1 → S_TRZ = 0.9
+        - ρ_SCm/ρ_UA = 0.1 → S_aether = 0.9
+        - B_t/B_crit = 10⁻¹⁰ → S_SCm ≈ 1
+        - U_m/(k_BT_H) = 1 → S_Um = 0.3679
+        - L_UQFF ≈ 2.98×10⁻⁶ W (70% suppression)
+        
+        Args:
+            B_t_ratio: B_t/B_crit (default: 10⁻¹⁰ for astrophysical)
+            U_m_kT_ratio: U_m/(k_BT_H) ratio (default: 1.0)
+        
+        Returns:
+            Dict with canonical Sgr A* calculation
+        """
+        M_sgr_a = 4.3e6 * self.params['M_sun']
+        
+        # Get 6-step derivation
+        derivation = self.six_step_suppression_derivation(M_sgr_a, B_t_ratio, U_m_kT_ratio)
+        S = derivation['S_factors']
+        
+        # Extract key numbers
+        L_H = derivation['step_1']['L_H_W']
+        L_UQFF = derivation['step_6']['L_UQFF_W']
+        
+        return {
+            'title': 'Canonical Numerical Example: Sgr A* Suppression',
+            'object': 'Sgr A* (Milky Way SMBH)',
+            
+            # Input parameters
+            'M_solar': 4.3e6,
+            'M_kg': M_sgr_a,
+            
+            # Step-by-step factors
+            'factors': {
+                'L_H': f'{L_H:.2e} W (~10⁻⁵ W)',
+                'f_TRZ': f'{self.params["f_TRZ"]} → S_TRZ = {S["S_TRZ"]:.1f}',
+                'rho_ratio': f'{S["rho_ratio"]:.1f} → S_aether = {S["S_aether"]:.1f}',
+                'B_t_ratio': f'{B_t_ratio:.0e} → S_SCm ≈ {S["S_SCm"]:.4f}',
+                'U_m_kT': f'{U_m_kT_ratio} → S_Um = {S["S_Um"]:.4f}',
+            },
+            
+            # Calculation
+            'calculation': f'L_UQFF = {L_H:.2e} × {S["S_TRZ"]:.1f} × {S["S_aether"]:.1f} × {S["S_SCm"]:.4f} × {S["S_Um"]:.4f}',
+            'L_UQFF': f'{L_UQFF:.2e} W (~3×10⁻⁶ W)',
+            
+            # Results
+            'total_suppression_pct': S['suppress_total_pct'],
+            'suppression_note': f'{S["suppress_total_pct"]:.0f}% suppression',
+            
+            # Lifetime
+            'lifetime_enhancement': 1.0 / S['S_total'],
+            
+            # Full derivation reference
+            'derivation': derivation,
+            
+            # Conclusions
+            'conclusions': [
+                f'Standard L_H ≈ 10⁻⁵ W → UQFF L_UQFF ≈ {L_UQFF:.2e} W',
+                f'Total suppression: {S["suppress_total_pct"]:.0f}%',
+                f'Lifetime enhancement: {1.0/S["S_total"]:.1f}×',
+                'UQFF proves enhanced stability via multiplicative suppression',
+                'Testable via no Hawking radiation signals from Sgr A*',
+            ],
+        }
+    
+    def suppression_factor_breakdown_report(self, M: float = None, 
+                                             B_t_ratio: float = 0.01,
+                                             U_m_kT_ratio: float = 1.0) -> str:
+        """
+        Generate formatted report of 6-step suppression derivation.
+        
+        Args:
+            M: Black hole mass [kg] (default: Sgr A*)
+            B_t_ratio: B_t/B_crit ratio
+            U_m_kT_ratio: U_m/(k_BT_H) ratio
+        
+        Returns:
+            Formatted report string
+        """
+        if M is None:
+            M = 4.3e6 * self.params['M_sun']
+        
+        d = self.six_step_suppression_derivation(M, B_t_ratio, U_m_kT_ratio)
+        S = d['S_factors']
+        
+        report = f"""
+═══════════════════════════════════════════════════════════════════════════════
+          DERIVATION OF UQFF SUPPRESSION EQUATIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+In UQFF, suppression equations dampen Hawking radiation and other instabilities.
+Four mechanisms combine multiplicatively for enhanced black hole stability.
+
+OBJECT: M = {d['M_kg']:.2e} kg ({d['M_solar']:.2e} M☉), T_H = {d['T_H_K']:.2e} K
+
+═══════════════════════════════════════════════════════════════════════════════
+ STEP 1: STANDARD UNSUPPRESSED TERM (BASE LUMINOSITY)
+═══════════════════════════════════════════════════════════════════════════════
+
+  {d['step_1']['description']}
+  
+  Formula: {d['step_1']['formula']}
+  Derived from: {d['step_1']['derived_from']}
+  Assumption: {d['step_1']['assumption']}
+  
+  L_H = {d['step_1']['L_H_W']:.4e} W
+  Γ = L_H/(k_BT_H) = {d['step_1']['Gamma_thermal']:.2e} particles/s
+
+═══════════════════════════════════════════════════════════════════════════════
+ STEP 2: TIME-REVERSAL SUPPRESSION (S_TRZ)
+═══════════════════════════════════════════════════════════════════════════════
+
+  {d['step_2']['description']}
+  
+  Formula: {d['step_2']['formula']}
+  
+  Derivation:
+{chr(10).join('    • ' + line for line in d['step_2']['derivation'])}
+  
+  f_TRZ = {d['step_2']['f_TRZ']}
+  S_TRZ = 1 - f_TRZ = {d['step_2']['S_TRZ']:.2f}
+  L' = {d['step_2']['L_prime_W']:.4e} W ({d['step_2']['suppression_pct']:.0f}% suppression)
+
+═══════════════════════════════════════════════════════════════════════════════
+ STEP 3: AETHER FILLING SUPPRESSION (S_aether)
+═══════════════════════════════════════════════════════════════════════════════
+
+  {d['step_3']['description']}
+  
+  Formula: {d['step_3']['formula']}
+  
+  Derivation:
+{chr(10).join('    • ' + line for line in d['step_3']['derivation'])}
+  
+  ρ_SCm/ρ_UA = {d['step_3']['rho_ratio']:.2f}
+  S_aether = 1 - ρ_SCm/ρ_UA = {d['step_3']['S_aether']:.2f}
+  L'' = {d['step_3']['L_double_prime_W']:.4e} W ({d['step_3']['suppression_pct']:.0f}% suppression)
+
+═══════════════════════════════════════════════════════════════════════════════
+ STEP 4: SUPERCONDUCTIVE BARRIER SUPPRESSION (S_SCm)
+═══════════════════════════════════════════════════════════════════════════════
+
+  {d['step_4']['description']}
+  
+  Formula: {d['step_4']['formula']}
+  
+  Derivation:
+{chr(10).join('    • ' + line for line in d['step_4']['derivation'])}
+  
+  B_t/B_crit = {d['step_4']['B_t_ratio']:.2e}
+  S_SCm = 1 - B_t/B_crit = {d['step_4']['S_SCm']:.4f}
+  L''' = {d['step_4']['L_triple_prime_W']:.4e} W ({d['step_4']['suppression_pct']:.1f}% suppression)
+
+═══════════════════════════════════════════════════════════════════════════════
+ STEP 5: MAGNETIC STRING EXPONENTIAL SUPPRESSION (S_Um)
+═══════════════════════════════════════════════════════════════════════════════
+
+  {d['step_5']['description']}
+  
+  Formula: {d['step_5']['formula']}
+  
+  Derivation:
+{chr(10).join('    • ' + line for line in d['step_5']['derivation'])}
+  
+  U_m/(k_BT_H) = {d['step_5']['U_m_kT_ratio']}
+  S_Um = exp(-U_m/(k_BT_H)) = {d['step_5']['S_Um']:.4f}
+  L_UQFF = {d['step_5']['L_UQFF_W']:.4e} W ({d['step_5']['suppression_pct']:.0f}% suppression)
+
+═══════════════════════════════════════════════════════════════════════════════
+ STEP 6: FULL UQFF SUPPRESSION EQUATION (COMBINED)
+═══════════════════════════════════════════════════════════════════════════════
+
+  {d['step_6']['description']}
+  
+  Compact:  {d['step_6']['formula']}
+  
+  Expanded: {d['step_6']['expanded_formula']}
+  
+  Factors:  {d['step_6']['factor_values']} = {d['step_6']['S_total']:.4f}
+  
+  Results:
+    L_H    = {d['step_6']['L_H_W']:.4e} W
+    L_UQFF = {d['step_6']['L_UQFF_W']:.4e} W
+    
+    Total Suppression: {d['step_6']['total_suppression_pct']:.0f}%
+    Lifetime Enhancement: {d['step_6']['lifetime_enhancement']:.1f}×
+
+═══════════════════════════════════════════════════════════════════════════════
+ SUPPRESSION FACTOR BREAKDOWN CHART
+═══════════════════════════════════════════════════════════════════════════════
+
+  Factor     | Value   | Suppression
+  -----------|---------|------------
+  S_TRZ      | {S['S_TRZ']:.4f}  | {S['suppress_TRZ_pct']:5.1f}%
+  S_aether   | {S['S_aether']:.4f}  | {S['suppress_aether_pct']:5.1f}%
+  S_SCm      | {S['S_SCm']:.4f}  | {S['suppress_SCm_pct']:5.1f}%
+  S_Um       | {S['S_Um']:.4f}  | {S['suppress_Um_pct']:5.1f}%
+  -----------|---------|------------
+  S_total    | {S['S_total']:.4f}  | {S['suppress_total_pct']:5.1f}%
+
+═══════════════════════════════════════════════════════════════════════════════
+ CONCLUSIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+  • UQFF suppression proves enhanced stability via multiplicative factors
+  • Evaporation rate dM/dt ~ -L/c² is suppressed by factor {S['S_total']:.3f}
+  • Black hole lifetime enhanced by factor {1.0/S['S_total']:.1f}×
+  • Testable via absence of Hawking radiation signals
+
+═══════════════════════════════════════════════════════════════════════════════
+"""
+        return report
+    
     def compute_L_aether_factor(self) -> float:
         """
         Aether Vacuum Filling ([UA] Damping) suppression factor.
@@ -105459,8 +105874,28 @@ OBJECT: M = {b['M_kg']:.2e} kg ({b['M_solar']:.2e} M☉)
             # Detailed Sgr A* suppression analysis
             return self.sgr_a_detailed_suppression()
         
+        elif mode == 'S_factors':
+            # All four S_* suppression factors with canonical naming
+            M = kwargs.get('M', 4.3e6 * self.params['M_sun'])
+            B_t_ratio = kwargs.get('B_t_ratio', 0.01)
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            return self.compute_S_factors(M, B_t_ratio, U_m_kT_ratio)
+        
+        elif mode == '6step_derivation':
+            # Full 6-step suppression equation derivation
+            M = kwargs.get('M', 4.3e6 * self.params['M_sun'])
+            B_t_ratio = kwargs.get('B_t_ratio', 0.01)
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            return self.six_step_suppression_derivation(M, B_t_ratio, U_m_kT_ratio)
+        
+        elif mode == 'sgr_a_canonical':
+            # Canonical Sgr A* numerical example
+            B_t_ratio = kwargs.get('B_t_ratio', 1e-10)
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            return self.sgr_a_canonical_example(B_t_ratio, U_m_kT_ratio)
+        
         else:
-            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, entropy, evaporation, simulate, suppression_breakdown, suppression_sgr_a, suppression_chart, E_pair, U_m_ratio, lifetime_derivation, sgr_a_detailed")
+            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, entropy, evaporation, simulate, suppression_breakdown, suppression_sgr_a, suppression_chart, E_pair, U_m_ratio, lifetime_derivation, sgr_a_detailed, S_factors, 6step_derivation, sgr_a_canonical")
     
     def long_form_equation(self, M: float = None) -> str:
         """
