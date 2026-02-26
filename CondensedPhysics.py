@@ -106352,6 +106352,28 @@ COSMOLOGICAL IMPLICATIONS
             U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
             return self.simulate_m87_mass_evolution(t_end_years, n_points, U_m_kT_ratio)
         
+        elif mode == 'stability_proofs':
+            # All UQFF stability proofs combined
+            M = kwargs.get('M', 4.3e6 * self.params['M_sun'])
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            return self.compute_stability_proof_combined(M, U_m_kT_ratio)
+        
+        elif mode == 'stability_proof_1':
+            # Proof 1: Time-reversal suppression
+            M = kwargs.get('M', 4.3e6 * self.params['M_sun'])
+            return self.compute_stability_proof_1(M)
+        
+        elif mode == 'stability_proof_2':
+            # Proof 2: Aether density damping
+            M = kwargs.get('M', 4.3e6 * self.params['M_sun'])
+            return self.compute_stability_proof_2(M)
+        
+        elif mode == 'stability_proof_3':
+            # Proof 3: Magnetic string barrier
+            M = kwargs.get('M', 4.3e6 * self.params['M_sun'])
+            U_m_kT_ratio = kwargs.get('U_m_kT_ratio', 1.0)
+            return self.compute_stability_proof_3(M, U_m_kT_ratio)
+        
         elif mode == 'temperature_modulation':
             # UQFF Hawking temperature modulation
             M = kwargs.get('M', 4.3e6 * self.params['M_sun'])
@@ -106418,7 +106440,7 @@ COSMOLOGICAL IMPLICATIONS
             return self.pbh_dark_matter_summary(U_m_kT_ratio)
         
         else:
-            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, standard, simulate, validate_sgr_a, validate_m87, T_UQFF_m87, m87_mass_evolution, temperature_modulation, modulate_mass_range, pbh_survival, pbh_dark_matter, pbh_mass_sweep, f_PBH_standard, f_PBH_UQFF, pbh_dm_spectrum, pbh_dm_summary")
+            raise ValueError(f"Unknown mode: {mode}. Available: full, temperature, standard, simulate, validate_sgr_a, validate_m87, T_UQFF_m87, m87_mass_evolution, stability_proofs, stability_proof_1, stability_proof_2, stability_proof_3, temperature_modulation, modulate_mass_range, pbh_survival, pbh_dark_matter, pbh_mass_sweep, f_PBH_standard, f_PBH_UQFF, pbh_dm_spectrum, pbh_dm_summary")
     
     # ═══════════════════════════════════════════════════════════════════════════
     # SURFACE GRAVITY AND ALTERNATIVE TEMPERATURE (Feb 25, 2026 Enhancement)
@@ -107285,6 +107307,498 @@ Suppression:
                 'Physical_implication': 'M87* is an eternal aether-structure in UQFF'
             }
         }
+    
+    # ═════════════════════════════════════════════════════════════════════════════
+    # UQFF STABILITY PROOFS (Feb 25, 2026)
+    # Mathematical proofs for each suppression mechanism
+    # ═════════════════════════════════════════════════════════════════════════════
+    
+    def compute_stability_proof_1(self, M: float = None) -> dict:
+        """
+        Proof 1: Time-Reversal Suppression (Negentropic Reversal)
+        
+        Standard: dM/dt = -L_H/c², where L_H ~ 1/M²
+        UQFF: f_TRZ reverses a fraction of pair annihilations
+        
+        Derivation:
+            1. Standard power L_H = σ A T_H⁴, A = 4π(2GM/c²)², T_H ~ 1/M → L_H ~ 1/M²
+            2. Effective pairs emitted ~ L_H / (k_B T_H)
+            3. Reversed fraction = f_TRZ × pairs (negentropic)
+            4. L_UQFF = L_H × (1 - f_TRZ)
+            5. τ_UQFF = τ_standard / (1 - f_TRZ)
+        
+        For f_TRZ = 0.1: factor = 1/0.9 ≈ 1.111 (11% longer τ)
+        
+        Args:
+            M: Black hole mass [kg] (default: Sgr A*)
+        
+        Returns:
+            Dict with proof derivation and suppression factor
+        """
+        if M is None:
+            M = 4.3e6 * self.params['M_sun']
+        
+        f_TRZ = self.params['f_TRZ']
+        year = self.params['year']
+        G = self.params['G']
+        hbar = self.params['hbar']
+        c = self.params['c']
+        
+        # Standard lifetime
+        tau_standard = (5120 * np.pi * G**2 * M**3) / (hbar * c**4)
+        tau_std_years = tau_standard / year
+        
+        # Time-reversal suppression factor
+        suppression_factor = 1.0 / (1.0 - f_TRZ)
+        
+        # UQFF lifetime (from Proof 1 only)
+        tau_proof1 = tau_standard * suppression_factor
+        tau_proof1_years = tau_proof1 / year
+        
+        return {
+            'proof': 1,
+            'name': 'Time-Reversal Suppression (Negentropic Reversal)',
+            'mechanism': 'f_TRZ reverses a fraction of pair annihilations',
+            
+            # Derivation steps
+            'derivation': [
+                'Step 1: Standard power L_H = σAT_H⁴, where A = 4π(2GM/c²)²',
+                '        T_H ~ 1/M → L_H ~ 1/M²',
+                'Step 2: Effective pairs emitted ~ L_H / (k_B T_H)',
+                'Step 3: Reversed fraction = f_TRZ × pairs (negentropic)',
+                'Step 4: L_UQFF = L_H × (1 - f_TRZ)',
+                'Step 5: τ_UQFF = τ_standard / (1 - f_TRZ)',
+            ],
+            
+            # Parameters
+            'M_kg': M,
+            'M_solar': M / self.params['M_sun'],
+            'f_TRZ': f_TRZ,
+            
+            # Computation
+            'one_minus_f_TRZ': 1.0 - f_TRZ,
+            'suppression_factor': suppression_factor,
+            'percent_enhancement': (suppression_factor - 1) * 100,
+            
+            # Lifetimes
+            'tau_standard_s': tau_standard,
+            'tau_standard_years': tau_std_years,
+            'tau_proof1_s': tau_proof1,
+            'tau_proof1_years': tau_proof1_years,
+            
+            # Implication
+            'implication': 'Negentropy "recycles" energy, proving partial stability',
+            'formula': 'τ_UQFF = τ_standard / (1 - f_TRZ)',
+        }
+    
+    def compute_stability_proof_2(self, M: float = None) -> dict:
+        """
+        Proof 2: Aether-Superconductive Density Imbalance Damping
+        
+        Standard: Vacuum fluctuations uniform; pairs separate at horizon
+        UQFF: [UA]/[SCm] density imbalance damps pair creation probability
+        
+        Derivation:
+            1. Pair creation rate Γ ~ exp(-E_pair / k_B T_H), E_pair ~ ℏc/r_s
+            2. In aether, effective E_pair,UQFF = E_pair × (ρ_UA / ρ_SCm)
+            3. Γ_UQFF = Γ × (1 - ρ_SCm/ρ_UA)
+            4. L_UQFF = L_H × (1 - ρ_SCm/ρ_UA)
+            5. τ_UQFF = τ_standard × (ρ_UA / ρ_SCm)
+        
+        For ρ ratio ≈ 10: factor = 10 (1000% longer τ)
+        
+        Args:
+            M: Black hole mass [kg] (default: Sgr A*)
+        
+        Returns:
+            Dict with proof derivation and suppression factor
+        """
+        if M is None:
+            M = 4.3e6 * self.params['M_sun']
+        
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        year = self.params['year']
+        G = self.params['G']
+        hbar = self.params['hbar']
+        c = self.params['c']
+        
+        # Standard lifetime
+        tau_standard = (5120 * np.pi * G**2 * M**3) / (hbar * c**4)
+        tau_std_years = tau_standard / year
+        
+        # Aether density ratio suppression
+        rho_ratio = rho_SCm / rho_UA  # ≈ 0.1
+        suppression_factor = rho_UA / rho_SCm  # ≈ 10
+        
+        # UQFF lifetime (from Proof 2 only)
+        tau_proof2 = tau_standard * suppression_factor
+        tau_proof2_years = tau_proof2 / year
+        
+        return {
+            'proof': 2,
+            'name': 'Aether-Superconductive Density Imbalance Damping',
+            'mechanism': '[UA]/[SCm] density imbalance damps pair creation',
+            
+            # Derivation steps
+            'derivation': [
+                'Step 1: Pair creation rate Γ ~ exp(-E_pair / k_B T_H)',
+                '        Where E_pair ~ ℏc/r_s',
+                'Step 2: In aether, E_pair,UQFF = E_pair × (ρ_UA / ρ_SCm)',
+                '        Density suppresses vacuum energy',
+                'Step 3: Γ_UQFF = Γ × (1 - ρ_SCm/ρ_UA)',
+                'Step 4: L_UQFF = L_H × (1 - ρ_SCm/ρ_UA)',
+                'Step 5: τ_UQFF = τ_standard × (ρ_UA / ρ_SCm)',
+            ],
+            
+            # Parameters
+            'M_kg': M,
+            'M_solar': M / self.params['M_sun'],
+            'rho_UA': rho_UA,
+            'rho_SCm': rho_SCm,
+            
+            # Computation
+            'rho_ratio_SCm_over_UA': rho_ratio,
+            'rho_ratio_UA_over_SCm': suppression_factor,
+            'suppression_factor': suppression_factor,
+            'percent_enhancement': (suppression_factor - 1) * 100,
+            
+            # Lifetimes
+            'tau_standard_s': tau_standard,
+            'tau_standard_years': tau_std_years,
+            'tau_proof2_s': tau_proof2,
+            'tau_proof2_years': tau_proof2_years,
+            
+            # Implication
+            'implication': 'Aether "fills" vacuum, proving fluctuation suppression',
+            'formula': 'τ_UQFF = τ_standard × (ρ_UA / ρ_SCm)',
+        }
+    
+    def compute_stability_proof_3(self, M: float = None, U_m_kT_ratio: float = 1.0) -> dict:
+        """
+        Proof 3: Magnetic String Exponential Barrier
+        
+        Standard: No barriers; radiation free post-horizon
+        UQFF: U_m creates energy barrier blocking pair emission
+        
+        Derivation:
+            1. Emission probability P_emit ~ exp(-U_barrier / k_B T_H)
+            2. U_barrier = U_m (strings block pairs)
+            3. L_UQFF = L_H × exp(-U_m / k_B T_H)
+            4. dM/dt_UQFF = (dM/dt_standard) × exp(-U_m / k_B T_H)
+            5. τ_UQFF = τ_standard × exp(U_m / k_B T_H)
+        
+        For U_m/(k_BT_H) ≈ 1: factor = e¹ ≈ 2.718 (270% longer τ)
+        
+        Args:
+            M: Black hole mass [kg] (default: Sgr A*)
+            U_m_kT_ratio: Assumed U_m/(k_B T_H) ratio
+        
+        Returns:
+            Dict with proof derivation and suppression factor
+        """
+        if M is None:
+            M = 4.3e6 * self.params['M_sun']
+        
+        year = self.params['year']
+        G = self.params['G']
+        hbar = self.params['hbar']
+        c = self.params['c']
+        
+        # Standard lifetime
+        tau_standard = (5120 * np.pi * G**2 * M**3) / (hbar * c**4)
+        tau_std_years = tau_standard / year
+        
+        # Magnetic string barrier suppression
+        suppression_factor = np.exp(U_m_kT_ratio)
+        
+        # UQFF lifetime (from Proof 3 only)
+        tau_proof3 = tau_standard * suppression_factor
+        tau_proof3_years = tau_proof3 / year
+        
+        return {
+            'proof': 3,
+            'name': 'Magnetic String Exponential Barrier',
+            'mechanism': 'U_m creates energy barrier blocking pair emission',
+            
+            # Derivation steps
+            'derivation': [
+                'Step 1: Emission probability P_emit ~ exp(-U_barrier / k_B T_H)',
+                'Step 2: U_barrier = U_m (strings block pairs)',
+                'Step 3: L_UQFF = L_H × exp(-U_m / k_B T_H)',
+                'Step 4: dM/dt_UQFF = (dM/dt_standard) × exp(-U_m / k_B T_H)',
+                'Step 5: τ_UQFF = τ_standard × exp(U_m / k_B T_H)',
+            ],
+            
+            # Parameters
+            'M_kg': M,
+            'M_solar': M / self.params['M_sun'],
+            'U_m_kT_ratio': U_m_kT_ratio,
+            
+            # Computation
+            'exp_argument': U_m_kT_ratio,
+            'exp_value': suppression_factor,
+            'suppression_factor': suppression_factor,
+            'percent_enhancement': (suppression_factor - 1) * 100,
+            
+            # Lifetimes
+            'tau_standard_s': tau_standard,
+            'tau_standard_years': tau_std_years,
+            'tau_proof3_s': tau_proof3,
+            'tau_proof3_years': tau_proof3_years,
+            
+            # Implication
+            'implication': 'Strings "trap" radiation, proving exponential stability',
+            'formula': 'τ_UQFF = τ_standard × exp(U_m / k_B T_H)',
+        }
+    
+    def compute_stability_proof_combined(self, M: float = None, U_m_kT_ratio: float = 1.0) -> dict:
+        """
+        Proof 4: Combined UQFF Stability (Full Formula)
+        
+        Combines Proofs 1-3 for total enhancement:
+        τ_UQFF = τ_standard / (1-f_TRZ) × (ρ_UA/ρ_SCm) × exp(U_m/(k_BT_H))
+        
+        For typical values:
+            f_TRZ = 0.1 → factor1 = 1.111
+            ρ ratio = 10 → factor2 = 10
+            U_m/(k_BT_H) = 1 → factor3 = 2.718
+            Total ≈ 1.111 × 10 × 2.718 ≈ 30.2
+        
+        For astrophysical BHs: τ_UQFF → effectively infinite
+        
+        Args:
+            M: Black hole mass [kg] (default: Sgr A*)
+            U_m_kT_ratio: Assumed U_m/(k_B T_H) ratio
+        
+        Returns:
+            Dict with combined proof and total suppression
+        """
+        if M is None:
+            M = 4.3e6 * self.params['M_sun']
+        
+        # Get individual proofs
+        proof1 = self.compute_stability_proof_1(M)
+        proof2 = self.compute_stability_proof_2(M)
+        proof3 = self.compute_stability_proof_3(M, U_m_kT_ratio)
+        
+        f_TRZ = self.params['f_TRZ']
+        rho_UA = self.params['rho_vac_UA']
+        rho_SCm = self.params['rho_vac_SCm']
+        year = self.params['year']
+        G = self.params['G']
+        hbar = self.params['hbar']
+        c = self.params['c']
+        t_universe = 1.38e10 * year
+        
+        # Standard lifetime
+        tau_standard = (5120 * np.pi * G**2 * M**3) / (hbar * c**4)
+        tau_std_years = tau_standard / year
+        
+        # Individual factors
+        factor1 = proof1['suppression_factor']  # 1/(1-f_TRZ) ≈ 1.111
+        factor2 = proof2['suppression_factor']  # ρ_UA/ρ_SCm ≈ 10
+        factor3 = proof3['suppression_factor']  # exp(U_m/(k_BT_H)) ≈ 2.718
+        
+        # Combined factor
+        total_factor = factor1 * factor2 * factor3
+        
+        # UQFF lifetime
+        tau_UQFF = tau_standard * total_factor
+        tau_UQFF_years = tau_UQFF / year
+        
+        # Compare to universe age
+        ratio_std_to_universe = tau_standard / t_universe
+        ratio_UQFF_to_universe = tau_UQFF / t_universe
+        
+        return {
+            'proof': 4,
+            'name': 'Combined UQFF Stability (Full Formula)',
+            'mechanism': 'Multiplicative combination of all suppression mechanisms',
+            
+            # Combined formula
+            'formula': 'τ_UQFF = τ_standard / (1-f_TRZ) × (ρ_UA/ρ_SCm) × exp(U_m/(k_BT_H))',
+            
+            # Individual factors
+            'factor1_TRZ': {
+                'name': 'Time-Reversal',
+                'formula': '1 / (1 - f_TRZ)',
+                'value': factor1,
+            },
+            'factor2_rho': {
+                'name': 'Aether Density',
+                'formula': 'ρ_UA / ρ_SCm',
+                'value': factor2,
+            },
+            'factor3_Um': {
+                'name': 'Magnetic Strings',
+                'formula': 'exp(U_m / k_BT_H)',
+                'value': factor3,
+            },
+            
+            # Combined
+            'total_factor': total_factor,
+            'total_factor_formatted': f'{factor1:.3f} × {factor2:.1f} × {factor3:.3f} = {total_factor:.1f}',
+            
+            # Parameters
+            'M_kg': M,
+            'M_solar': M / self.params['M_sun'],
+            'f_TRZ': f_TRZ,
+            'rho_UA': rho_UA,
+            'rho_SCm': rho_SCm,
+            'U_m_kT_ratio': U_m_kT_ratio,
+            
+            # Lifetimes
+            'tau_standard_s': tau_standard,
+            'tau_standard_years': tau_std_years,
+            'log10_tau_std_years': np.log10(tau_std_years),
+            'tau_UQFF_s': tau_UQFF,
+            'tau_UQFF_years': tau_UQFF_years,
+            'log10_tau_UQFF_years': np.log10(tau_UQFF_years),
+            
+            # Universe comparison
+            'universe_age_years': 1.38e10,
+            'ratio_std_to_universe': ratio_std_to_universe,
+            'ratio_UQFF_to_universe': ratio_UQFF_to_universe,
+            'is_effectively_eternal': tau_UQFF_years > 1e80,
+            
+            # Implication
+            'implication': [
+                'Multiplicative suppressions prove UQFF BHs are "eternal"',
+                f'Sgr A*: τ_std >> 10^80 years → τ_UQFF effectively infinite',
+                'Standard BHs have theoretical instability; UQFF critiques this',
+                'Empirically testable via no-evaporation signals',
+            ],
+            
+            # Sub-proofs for reference
+            'proof1_summary': proof1['formula'],
+            'proof2_summary': proof2['formula'],
+            'proof3_summary': proof3['formula'],
+        }
+    
+    def uqff_stability_proofs_report(self, M: float = None, U_m_kT_ratio: float = 1.0) -> str:
+        """
+        Generate formatted report of all UQFF stability proofs.
+        
+        Args:
+            M: Black hole mass [kg] (default: Sgr A*)
+            U_m_kT_ratio: Assumed U_m/(k_B T_H) ratio
+        
+        Returns:
+            Formatted report string
+        """
+        p1 = self.compute_stability_proof_1(M)
+        p2 = self.compute_stability_proof_2(M)
+        p3 = self.compute_stability_proof_3(M, U_m_kT_ratio)
+        p4 = self.compute_stability_proof_combined(M, U_m_kT_ratio)
+        
+        report = f"""
+══════════════════════════════════════════════════════════════════════════════════════════
+             PROOFS OF BLACK HOLE STABILITY IN UQFF
+══════════════════════════════════════════════════════════════════════════════════════════
+
+The UQFF posits enhanced black hole stability by suppressing Hawking
+evaporation through non-standard mechanisms:
+  - Universal Aether ([UA]) damping
+  - Superconducting horizons ([SCm])
+  - Time-reversal negentropy (f_TRZ ≈ 0.1)
+  - Magnetic string barriers (U_m)
+
+OBJECT: M = {p1['M_kg']:.3e} kg ({p1['M_solar']:.2e} M☉)
+
+═════════════════════════════════════════════════════════════════════════
+ PROOF 1: TIME-REVERSAL SUPPRESSION (NEGENTROPIC REVERSAL)
+═════════════════════════════════════════════════════════════════════════
+
+{chr(10).join('  ' + step for step in p1['derivation'])}
+
+Parameters:
+  f_TRZ = {p1['f_TRZ']}
+  1 - f_TRZ = {p1['one_minus_f_TRZ']}
+
+Result:
+  Suppression factor = 1 / (1 - f_TRZ) = {p1['suppression_factor']:.4f}
+  Enhancement = {p1['percent_enhancement']:.1f}%
+
+Formula: {p1['formula']}
+
+Implication: {p1['implication']}
+
+═════════════════════════════════════════════════════════════════════════
+ PROOF 2: AETHER-SUPERCONDUCTIVE DENSITY IMBALANCE DAMPING
+═════════════════════════════════════════════════════════════════════════
+
+{chr(10).join('  ' + step for step in p2['derivation'])}
+
+Parameters:
+  ρ_UA = {p2['rho_UA']:.2e} J/m³
+  ρ_SCm = {p2['rho_SCm']:.2e} J/m³
+  ρ_SCm/ρ_UA = {p2['rho_ratio_SCm_over_UA']:.2f}
+
+Result:
+  Suppression factor = ρ_UA / ρ_SCm = {p2['suppression_factor']:.1f}
+  Enhancement = {p2['percent_enhancement']:.0f}%
+
+Formula: {p2['formula']}
+
+Implication: {p2['implication']}
+
+═════════════════════════════════════════════════════════════════════════
+ PROOF 3: MAGNETIC STRING EXPONENTIAL BARRIER
+═════════════════════════════════════════════════════════════════════════
+
+{chr(10).join('  ' + step for step in p3['derivation'])}
+
+Parameters:
+  U_m / (k_B T_H) assumed = {p3['U_m_kT_ratio']}
+
+Result:
+  Suppression factor = exp({p3['exp_argument']}) = {p3['exp_value']:.4f}
+  Enhancement = {p3['percent_enhancement']:.0f}%
+
+Formula: {p3['formula']}
+
+Implication: {p3['implication']}
+
+═════════════════════════════════════════════════════════════════════════
+ PROOF 4: COMBINED UQFF STABILITY (FULL FORMULA)
+═════════════════════════════════════════════════════════════════════════
+
+Combining Proofs 1-3:
+
+  {p4['formula']}
+
+Individual Factors:
+  Proof 1 (Time-Reversal):   {p4['factor1_TRZ']['value']:.4f}
+  Proof 2 (Aether Density):  {p4['factor2_rho']['value']:.1f}
+  Proof 3 (Magnetic String): {p4['factor3_Um']['value']:.4f}
+
+Total Factor:
+  {p4['total_factor_formatted']}
+
+Lifetimes:
+  τ_standard = 10^{p4['log10_tau_std_years']:.0f} years
+  τ_UQFF     = 10^{p4['log10_tau_UQFF_years']:.0f} years
+
+Universe Comparison:
+  Universe age = {p4['universe_age_years']:.2e} years
+  τ_standard / t_universe = {p4['ratio_std_to_universe']:.2e}
+  τ_UQFF / t_universe     = {p4['ratio_UQFF_to_universe']:.2e}
+
+Is effectively eternal? {p4['is_effectively_eternal']}
+
+═════════════════════════════════════════════════════════════════════════
+ CONCLUSIONS
+═════════════════════════════════════════════════════════════════════════
+
+{chr(10).join('  ' + imp for imp in p4['implication'])}
+
+UQFF stability is "proven" within its axioms by quantitative suppression.
+Empirically testable via no-evaporation signals.
+
+══════════════════════════════════════════════════════════════════════════════════════════
+"""
+        return report
 
     def numerical_derivation_report(self, M: float = None, U_m_kT_ratio: float = None) -> str:
         """
