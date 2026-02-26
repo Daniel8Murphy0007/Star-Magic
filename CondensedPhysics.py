@@ -142712,3 +142712,897 @@ __all__.extend([
     'MPIDistributedCalculator',
     'SOURCE8_WOLFRAM_CALCULATORS',
 ])
+
+
+# =============================================================================
+# SOURCE27_WOLFRAM.CPP - NGC 1792 STARBURST GALAXY (Feb 26, 2026)
+# Total: 3 unique Calculator Classes
+# =============================================================================
+
+class SupernovaFeedbackCalculator:
+    """
+    Supernova feedback wind pressure/acceleration from source27_wolfram.cpp
+    
+    a_fb = ρ_wind × v_wind² / ρ_fluid
+    
+    Models stellar wind and supernova-driven outflows in starburst galaxies.
+    """
+    
+    def compute(self, rho_wind: float = 1e-21, v_wind: float = 2e6,
+                rho_fluid: float = 1e-21) -> dict:
+        """
+        Compute supernova feedback acceleration.
+        
+        Parameters:
+        -----------
+        rho_wind : float
+            Wind density (kg/m³), default 1e-21
+        v_wind : float
+            Wind velocity (m/s), default 2e6 (2000 km/s)
+        rho_fluid : float
+            ISM fluid density (kg/m³), default 1e-21
+            
+        Returns:
+        --------
+        dict with 'value' (acceleration m/s²), parameters
+        """
+        wind_pressure = rho_wind * v_wind**2
+        acceleration = wind_pressure / rho_fluid
+        
+        return {
+            'value': acceleration,
+            'rho_wind': rho_wind,
+            'v_wind': v_wind,
+            'rho_fluid': rho_fluid,
+            'wind_pressure_Pa': wind_pressure,
+            'units': 'm/s²',
+            'equation': f"a_fb = ({rho_wind:.2e} × {v_wind:.2e}²) / {rho_fluid:.2e} = {acceleration:.6e} m/s²"
+        }
+
+
+class StarFormationGravityCalculator:
+    """
+    Star formation mass growth gravity correction from source27_wolfram.cpp
+    
+    M(t) = M₀ × (1 + SFR_factor × exp(-t/τ_SF))
+    ΔG = G × ΔM / r²
+    
+    Models increasing gravitational field as mass grows from star formation.
+    """
+    
+    # Physical constants
+    G = 6.674e-11  # m³/(kg·s²)
+    M_sun = 1.989e30  # kg
+    
+    def compute(self, t: float, M0: float = 1e10, r: float = 7.569e20,
+                SFR_factor: float = 1e-9, tau_SF: float = 3.156e15) -> dict:
+        """
+        Compute gravity increase from star formation.
+        
+        Parameters:
+        -----------
+        t : float
+            Time (s)
+        M0 : float
+            Initial mass (solar masses), default 1e10
+        r : float
+            Distance (m), default 7.569e20 (80 kly)
+        SFR_factor : float
+            Star formation rate factor, default 1e-9
+        tau_SF : float
+            Star formation timescale (s), default 3.156e15 (100 Myr)
+            
+        Returns:
+        --------
+        dict with 'value' (gravity change m/s²), parameters
+        """
+        import math
+        
+        M0_kg = M0 * self.M_sun
+        M_dot = SFR_factor * math.exp(-t / tau_SF)
+        delta_M = M0_kg * M_dot
+        
+        delta_g = (self.G * delta_M) / (r**2)
+        
+        return {
+            'value': delta_g,
+            't': t,
+            'M0_Msun': M0,
+            'SFR_factor': SFR_factor,
+            'tau_SF_s': tau_SF,
+            'tau_SF_Myr': tau_SF / 3.156e13,
+            'delta_M_kg': delta_M,
+            'units': 'm/s²',
+            'equation': f"ΔG = G × M₀×SFR×exp(-t/τ) / r² = {delta_g:.6e} m/s²"
+        }
+
+
+class StarburstBaseGravityCalculator:
+    """
+    Base gravity with M(t), Hz, B corrections from source27_wolfram.cpp
+    
+    g = (G × M(t) / r²) × (1 + Hz×t) × (1 - B/B_crit)
+    
+    Three-correction gravity for starburst galaxies.
+    """
+    
+    # Physical constants
+    G = 6.674e-11  # m³/(kg·s²)
+    M_sun = 1.989e30  # kg
+    
+    def compute(self, t: float, M0: float = 1e10, r: float = 7.569e20,
+                Hz: float = 2.19e-18, B: float = 1e-5, B_crit: float = 4.4e13,
+                SFR_factor: float = 1e-9, tau_SF: float = 3.156e15) -> dict:
+        """
+        Compute corrected starburst gravity.
+        
+        Parameters:
+        -----------
+        t : float
+            Time (s)
+        M0 : float
+            Initial mass (solar masses), default 1e10
+        r : float
+            Distance (m), default 7.569e20
+        Hz : float
+            Hubble parameter at z (s⁻¹), default 2.19e-18
+        B : float
+            Magnetic field (T), default 1e-5
+        B_crit : float
+            Critical magnetic field (T), default 4.4e13
+        SFR_factor : float
+            Star formation rate factor
+        tau_SF : float
+            Star formation timescale (s)
+            
+        Returns:
+        --------
+        dict with 'value' (gravity m/s²), components, parameters
+        """
+        import math
+        
+        M0_kg = M0 * self.M_sun
+        M_dot = SFR_factor * math.exp(-t / tau_SF)
+        M_t = M0_kg * (1 + M_dot)
+        
+        g_base = (self.G * M_t) / (r**2)
+        corr_H = 1 + Hz * t
+        corr_B = 1 - B / B_crit
+        
+        g_total = g_base * corr_H * corr_B
+        
+        return {
+            'value': g_total,
+            't': t,
+            'M_t_kg': M_t,
+            'g_base': g_base,
+            'corr_H': corr_H,
+            'corr_B': corr_B,
+            'units': 'm/s²',
+            'equation': f"g = {g_base:.4e} × {corr_H:.6f} × {corr_B:.10f} = {g_total:.6e} m/s²"
+        }
+
+
+# =============================================================================
+# SOURCE28_WOLFRAM.CPP - ANDROMEDA GALAXY M31 (Feb 26, 2026)
+# Total: 2 unique Calculator Classes
+# =============================================================================
+
+class SMBHGravityCalculator:
+    """
+    Supermassive black hole gravitational contribution from source28_wolfram.cpp
+    
+    a_BH = G × M_BH / r_BH²
+    
+    Models SMBH at galaxy center (e.g., M31* = 1.4e8 M_sun).
+    """
+    
+    # Physical constants
+    G = 6.674e-11  # m³/(kg·s²)
+    M_sun = 1.989e30  # kg
+    
+    def compute(self, M_BH: float = 1.4e8, r_BH: float = 1e15) -> dict:
+        """
+        Compute SMBH gravitational acceleration.
+        
+        Parameters:
+        -----------
+        M_BH : float
+            Black hole mass (solar masses), default 1.4e8 (M31*)
+        r_BH : float
+            Core scale distance (m), default 1e15
+            
+        Returns:
+        --------
+        dict with 'value' (acceleration m/s²), parameters
+        """
+        M_BH_kg = M_BH * self.M_sun
+        a_BH = (self.G * M_BH_kg) / (r_BH**2)
+        
+        # Schwarzschild radius for reference
+        c = 2.998e8
+        r_s = 2 * self.G * M_BH_kg / (c**2)
+        
+        return {
+            'value': a_BH,
+            'M_BH_Msun': M_BH,
+            'M_BH_kg': M_BH_kg,
+            'r_BH': r_BH,
+            'r_schwarzschild': r_s,
+            'units': 'm/s²',
+            'equation': f"a_BH = G×{M_BH:.2e}M☉ / {r_BH:.2e}² = {a_BH:.6e} m/s²"
+        }
+
+
+class DustFrictionCalculator:
+    """
+    Dust friction/drag force from source28_wolfram.cpp
+    
+    a_dust = (ρ_dust × v² / ρ_mass) × scale
+    
+    Models dust grain friction in galactic environments.
+    """
+    
+    def compute(self, rho_dust: float = 1e-22, v_orbit: float = 2.5e5,
+                rho_mass: float = 1e-15, scale: float = 1e-12) -> dict:
+        """
+        Compute dust friction acceleration.
+        
+        Parameters:
+        -----------
+        rho_dust : float
+            Dust density (kg/m³), default 1e-22
+        v_orbit : float
+            Orbital velocity (m/s), default 2.5e5
+        rho_mass : float
+            Background mass density (kg/m³), default 1e-15
+        scale : float
+            Macro-scale factor, default 1e-12
+            
+        Returns:
+        --------
+        dict with 'value' (acceleration m/s²), parameters
+        """
+        force_dust = rho_dust * (v_orbit**2)
+        a_dust = (force_dust / rho_mass) * scale
+        
+        return {
+            'value': a_dust,
+            'rho_dust': rho_dust,
+            'v_orbit': v_orbit,
+            'rho_mass': rho_mass,
+            'scale': scale,
+            'dust_pressure': force_dust,
+            'units': 'm/s²',
+            'equation': f"a_dust = ({rho_dust:.2e}×{v_orbit:.2e}²/{rho_mass:.2e})×{scale:.2e} = {a_dust:.6e} m/s²"
+        }
+
+
+# =============================================================================
+# SOURCE43_WOLFRAM.CPP - HYDROGEN SPECTRAL RESONANCE (Feb 26, 2026)
+# Total: 4 unique Calculator Classes (Lyman, Balmer series, DPM resonance)
+# =============================================================================
+
+class HydrogenDPMResonanceCalculator:
+    """
+    Hydrogen DPM resonance foundation from source43_wolfram.cpp
+    
+    a_DPM = (I × A × (ω₁ - ω₂) × f_DPM × E_vac) / (c × V_sys)
+    
+    DPM (Dipole Moment) resonance at atomic scale.
+    """
+    
+    # Physical constants
+    c = 3.0e8  # Speed of light (m/s)
+    
+    def compute(self, I: float = 1e-10, A_vort: float = 3.142e-11,
+                omega_1: float = 1e15, omega_2: float = -1e15,
+                f_DPM: float = 1e12, E_vac: float = 7.09e-36,
+                V_sys: float = 6.2e-31) -> dict:
+        """
+        Compute DPM resonance acceleration.
+        
+        Parameters:
+        -----------
+        I : float
+            Atomic current (A), default 1e-10
+        A_vort : float
+            Vortex area (m²), default 3.142e-11
+        omega_1, omega_2 : float
+            Angular velocities (rad/s)
+        f_DPM : float
+            DPM frequency (Hz), default 1e12
+        E_vac : float
+            Vacuum energy density (J/m³), default 7.09e-36
+        V_sys : float
+            System volume (m³), default 6.2e-31 ((4/3)π×r_Bohr³)
+            
+        Returns:
+        --------
+        dict with 'value' (acceleration), parameters
+        """
+        F_DPM = I * A_vort * (omega_1 - omega_2)
+        a_DPM = (F_DPM * f_DPM * E_vac) / (self.c * V_sys)
+        
+        return {
+            'value': a_DPM,
+            'I': I,
+            'A_vort': A_vort,
+            'omega_diff': omega_1 - omega_2,
+            'f_DPM': f_DPM,
+            'E_vac': E_vac,
+            'V_sys': V_sys,
+            'F_DPM': F_DPM,
+            'units': 'm/s²',
+            'equation': f"a_DPM = ({I:.2e}×{A_vort:.2e}×{omega_1-omega_2:.2e}×{f_DPM:.2e}×{E_vac:.2e})/({self.c:.2e}×{V_sys:.2e}) = {a_DPM:.6e}"
+        }
+
+
+class LymanSeriesCalculator:
+    """
+    Lyman series spectral resonance from source43_wolfram.cpp
+    
+    Standing wave: 2A×cos(kx)×cos(ω_Lyman×t)
+    Traveling wave: (2π/13.8)×A×Re[exp(i(kx - ωt))]
+    
+    UV transitions n→1 (Lyman α: 121.6 nm, ~2.47e15 Hz).
+    """
+    
+    def compute(self, t: float, A: float = 1e-10, k: float = 1e11,
+                f_Lyman: float = 2.47e15, x: float = 0.0) -> dict:
+        """
+        Compute Lyman series oscillatory term.
+        
+        Parameters:
+        -----------
+        t : float
+            Time (s)
+        A : float
+            Amplitude (m/s²), default 1e-10
+        k : float
+            Wavenumber (m⁻¹), default 1e11
+        f_Lyman : float
+            Lyman frequency (Hz), default 2.47e15 (Lyman α)
+        x : float
+            Position (m), default 0
+            
+        Returns:
+        --------
+        dict with 'value' (total oscillatory term), components
+        """
+        import math
+        import cmath
+        
+        omega = 2 * math.pi * f_Lyman
+        
+        # Standing wave component
+        cos_term = 2 * A * math.cos(k * x) * math.cos(omega * t)
+        
+        # Traveling wave component
+        exp_arg = complex(0, k * x - omega * t)
+        exp_term = A * cmath.exp(exp_arg)
+        exp_factor = (2 * math.pi) / 13.8  # UQFF cosmological factor
+        travel_term = exp_factor * exp_term.real
+        
+        total = cos_term + travel_term
+        
+        # Wavelength for reference
+        wavelength = 3e8 / f_Lyman * 1e9  # nm
+        
+        return {
+            'value': total,
+            't': t,
+            'f_Lyman': f_Lyman,
+            'omega': omega,
+            'wavelength_nm': wavelength,
+            'standing_wave': cos_term,
+            'traveling_wave': travel_term,
+            'units': 'm/s²',
+            'equation': f"Lyman (λ={wavelength:.1f}nm): 2A·cos(kx)·cos(ωt) + (2π/13.8)·A·Re[exp] = {total:.6e}"
+        }
+
+
+class BalmerSeriesCalculator:
+    """
+    Balmer series spectral resonance from source43_wolfram.cpp
+    
+    Standing wave: 2A×cos(kx)×cos(ω_Balmer×t)
+    Traveling wave: (2π/13.8)×A×Re[exp(i(kx - ωt))]
+    
+    Visible transitions n→2 (Hα: 656.3 nm, ~4.57e14 Hz).
+    """
+    
+    def compute(self, t: float, A: float = 1e-10, k: float = 1e11,
+                f_Balmer: float = 4.57e14, x: float = 0.0) -> dict:
+        """
+        Compute Balmer series oscillatory term.
+        
+        Parameters:
+        -----------
+        t : float
+            Time (s)
+        A : float
+            Amplitude (m/s²), default 1e-10
+        k : float
+            Wavenumber (m⁻¹), default 1e11
+        f_Balmer : float
+            Balmer frequency (Hz), default 4.57e14 (Hα)
+        x : float
+            Position (m), default 0
+            
+        Returns:
+        --------
+        dict with 'value' (total oscillatory term), components
+        """
+        import math
+        import cmath
+        
+        omega = 2 * math.pi * f_Balmer
+        
+        # Standing wave component
+        cos_term = 2 * A * math.cos(k * x) * math.cos(omega * t)
+        
+        # Traveling wave component
+        exp_arg = complex(0, k * x - omega * t)
+        exp_term = A * cmath.exp(exp_arg)
+        exp_factor = (2 * math.pi) / 13.8
+        travel_term = exp_factor * exp_term.real
+        
+        total = cos_term + travel_term
+        
+        # Wavelength for reference
+        wavelength = 3e8 / f_Balmer * 1e9  # nm
+        
+        return {
+            'value': total,
+            't': t,
+            'f_Balmer': f_Balmer,
+            'omega': omega,
+            'wavelength_nm': wavelength,
+            'standing_wave': cos_term,
+            'traveling_wave': travel_term,
+            'units': 'm/s²',
+            'equation': f"Balmer (λ={wavelength:.1f}nm): 2A·cos(kx)·cos(ωt) + (2π/13.8)·A·Re[exp] = {total:.6e}"
+        }
+
+
+class SuperconductiveAtomicCorrectionCalculator:
+    """
+    Atomic superconductivity correction from source43_wolfram.cpp
+    
+    SCm = 1 - B/B_crit
+    
+    Quantum critical field correction at atomic scale.
+    """
+    
+    def compute(self, B: float = 1e-4, B_crit: float = 1e-3) -> dict:
+        """
+        Compute superconductivity correction factor.
+        
+        Parameters:
+        -----------
+        B : float
+            Local magnetic field (T), default 1e-4
+        B_crit : float
+            Critical field (T), default 1e-3
+            
+        Returns:
+        --------
+        dict with 'value' (SCm factor 0-1), parameters
+        """
+        SCm = 1.0 - (B / B_crit)
+        if SCm < 0.0:
+            SCm = 0.0  # Physical constraint
+        
+        return {
+            'value': SCm,
+            'B': B,
+            'B_crit': B_crit,
+            'superconducting': SCm > 0.5,
+            'units': 'dimensionless',
+            'equation': f"SCm = 1 - {B:.2e}/{B_crit:.2e} = {SCm:.6f}"
+        }
+
+
+# =============================================================================
+# SOURCE82_WOLFRAM.CPP - VIRGO CLUSTER (Feb 26, 2026)
+# Total: 6 unique Calculator Classes (cluster dynamics, ICM, M87 jet, X-ray)
+# =============================================================================
+
+class VirgoClusterMassCalculator:
+    """
+    Virgo Cluster mass gravitational acceleration from source82_wolfram.cpp
+    
+    a = G × M(<r) / r²
+    
+    M(<r) = M_cluster × (r/R_vir)³ / (1 + r/R_vir)²  (NFW-like profile)
+    
+    Virgo: M_cluster ~ 1.2e15 M_sun, R_virial ~ 2.2 Mpc
+    """
+    
+    # Physical constants
+    G = 6.674e-11  # m³/(kg·s²)
+    M_sun = 1.989e30  # kg
+    Mpc_to_m = 3.086e22  # m
+    
+    def compute(self, r: float, M_cluster: float = 1.2e15,
+                R_virial: float = 2.2) -> dict:
+        """
+        Compute cluster gravitational acceleration.
+        
+        Parameters:
+        -----------
+        r : float
+            Distance from center (m)
+        M_cluster : float
+            Total cluster mass (solar masses), default 1.2e15
+        R_virial : float
+            Virial radius (Mpc), default 2.2
+            
+        Returns:
+        --------
+        dict with 'value' (acceleration m/s²), enclosed mass, parameters
+        """
+        M_cluster_kg = M_cluster * self.M_sun
+        R_vir_m = R_virial * self.Mpc_to_m
+        
+        x = r / R_vir_m
+        M_enclosed = M_cluster_kg * (x**3) / ((1 + x)**2)
+        
+        a = (self.G * M_enclosed) / (r**2) if r > 0 else 0.0
+        
+        return {
+            'value': a,
+            'r': r,
+            'M_cluster_Msun': M_cluster,
+            'R_virial_Mpc': R_virial,
+            'x_ratio': x,
+            'M_enclosed_kg': M_enclosed,
+            'M_enclosed_Msun': M_enclosed / self.M_sun,
+            'units': 'm/s²',
+            'equation': f"a = G×M(<{x:.2f}R_vir)/r² = {a:.6e} m/s²"
+        }
+
+
+class IntraclusterMediumCalculator:
+    """
+    Intracluster Medium (ICM) beta-model pressure from source82_wolfram.cpp
+    
+    n_e(r) = n_e0 × (1 + (r/r_c)²)^(-3β/2)
+    P_ICM = n_e × k_B × T
+    
+    Virgo ICM: T ~ 2.3 keV, β ~ 0.5
+    """
+    
+    # Physical constants
+    k_B = 1.381e-23  # Boltzmann constant (J/K)
+    kpc_to_m = 3.086e19  # m
+    
+    def compute(self, r: float, T_keV: float = 2.3, n_e0: float = 3e3,
+                r_c: float = 40.0, beta: float = 0.5) -> dict:
+        """
+        Compute ICM pressure at radius r.
+        
+        Parameters:
+        -----------
+        r : float
+            Distance from center (m)
+        T_keV : float
+            ICM temperature (keV), default 2.3
+        n_e0 : float
+            Central electron density (m⁻³), default 3e3
+        r_c : float
+            Core radius (kpc), default 40
+        beta : float
+            Beta model parameter, default 0.5
+            
+        Returns:
+        --------
+        dict with 'value' (pressure Pa), electron density, parameters
+        """
+        import math
+        
+        r_c_m = r_c * self.kpc_to_m
+        T_K = T_keV * 1.16e7  # keV to K
+        
+        n_e = n_e0 * math.pow(1.0 + (r**2) / (r_c_m**2), -1.5 * beta)
+        P_ICM = n_e * self.k_B * T_K
+        
+        return {
+            'value': P_ICM,
+            'r': r,
+            'T_keV': T_keV,
+            'T_K': T_K,
+            'n_e': n_e,
+            'n_e0': n_e0,
+            'r_c_kpc': r_c,
+            'beta': beta,
+            'units': 'Pa',
+            'equation': f"P_ICM = n_e×k_B×T = {n_e:.2e}×{self.k_B:.2e}×{T_K:.2e} = {P_ICM:.6e} Pa"
+        }
+
+
+class M87JetEnergyCalculator:
+    """
+    M87 AGN relativistic jet energy density from source82_wolfram.cpp
+    
+    u_jet = L_jet × γ / (4π × r² × v_jet × Ω_jet/4π)
+    
+    M87 jet: L ~ 10³⁷ W, v ~ 0.99c
+    """
+    
+    # Physical constants
+    c = 2.998e8  # Speed of light (m/s)
+    
+    def compute(self, r: float, L_jet: float = 1e37, theta_jet: float = 0.1,
+                v_jet: float = None) -> dict:
+        """
+        Compute jet energy density at radius r.
+        
+        Parameters:
+        -----------
+        r : float
+            Distance from AGN (m)
+        L_jet : float
+            Jet luminosity (W), default 1e37
+        theta_jet : float
+            Jet opening angle (rad), default 0.1
+        v_jet : float
+            Jet velocity (m/s), default 0.99c
+            
+        Returns:
+        --------
+        dict with 'value' (energy density J/m³), parameters
+        """
+        import math
+        
+        if v_jet is None:
+            v_jet = 0.99 * self.c
+        
+        # Solid angle of jet cone
+        Omega_jet = 2 * math.pi * (1 - math.cos(theta_jet))
+        
+        # Energy density
+        u_jet = L_jet / (4 * math.pi * r**2 * v_jet * (Omega_jet / (4 * math.pi)))
+        
+        # Lorentz factor
+        gamma = 1.0 / math.sqrt(1 - (v_jet / self.c)**2)
+        
+        u_relativistic = u_jet * gamma
+        
+        return {
+            'value': u_relativistic,
+            'r': r,
+            'L_jet': L_jet,
+            'theta_jet': theta_jet,
+            'v_jet': v_jet,
+            'v_jet_c': v_jet / self.c,
+            'Omega_jet_sr': Omega_jet,
+            'gamma_lorentz': gamma,
+            'u_jet_base': u_jet,
+            'units': 'J/m³',
+            'equation': f"u_jet = L×γ/(4πr²v×Ω/4π) = {u_relativistic:.6e} J/m³"
+        }
+
+
+class TidalStrippingCalculator:
+    """
+    Tidal stripping acceleration from source82_wolfram.cpp
+    
+    r_tidal = r × (M_gal / 3M(<r))^(1/3)
+    a_tidal = 2 × G × M(<r) × r_tidal / r³
+    
+    Models galaxy disruption by cluster tidal field.
+    """
+    
+    # Physical constants
+    G = 6.674e-11  # m³/(kg·s²)
+    M_sun = 1.989e30  # kg
+    Mpc_to_m = 3.086e22  # m
+    
+    def compute(self, r: float, M_gal: float = 1e11, M_cluster: float = 1.2e15,
+                R_virial: float = 2.2) -> dict:
+        """
+        Compute tidal stripping acceleration.
+        
+        Parameters:
+        -----------
+        r : float
+            Distance from cluster center (m)
+        M_gal : float
+            Galaxy mass (solar masses), default 1e11
+        M_cluster : float
+            Cluster mass (solar masses), default 1.2e15
+        R_virial : float
+            Virial radius (Mpc), default 2.2
+            
+        Returns:
+        --------
+        dict with 'value' (tidal acceleration m/s²), tidal radius, parameters
+        """
+        import math
+        
+        M_gal_kg = M_gal * self.M_sun
+        M_cluster_kg = M_cluster * self.M_sun
+        R_vir_m = R_virial * self.Mpc_to_m
+        
+        # Enclosed cluster mass
+        x = r / R_vir_m
+        M_enclosed = M_cluster_kg * (x**3) / ((1 + x)**2)
+        
+        # Tidal radius (Jacobi radius)
+        r_tidal = r * math.pow(M_gal_kg / (3 * M_enclosed), 1/3)
+        
+        # Tidal acceleration
+        a_tidal = 2 * self.G * M_enclosed * r_tidal / (r**3)
+        
+        return {
+            'value': a_tidal,
+            'r': r,
+            'M_gal_Msun': M_gal,
+            'M_enclosed_Msun': M_enclosed / self.M_sun,
+            'r_tidal': r_tidal,
+            'r_tidal_kpc': r_tidal / 3.086e19,
+            'units': 'm/s²',
+            'equation': f"a_tidal = 2GM(<r)r_t/r³ = {a_tidal:.6e} m/s²"
+        }
+
+
+class ClusterXRayEmissivityCalculator:
+    """
+    X-ray emissivity from hot ICM from source82_wolfram.cpp
+    
+    ε_X = n_e² × Λ(T)
+    
+    Where Λ(T) ~ 3e-23 × √T_keV [W·m³] (simplified cooling function).
+    """
+    
+    # Physical constants
+    kpc_to_m = 3.086e19  # m
+    
+    def compute(self, r: float, T_keV: float = 2.3, n_e0: float = 3e3,
+                r_c: float = 40.0, beta: float = 0.5) -> dict:
+        """
+        Compute X-ray emissivity at radius r.
+        
+        Parameters:
+        -----------
+        r : float
+            Distance from center (m)
+        T_keV : float
+            ICM temperature (keV), default 2.3
+        n_e0 : float
+            Central electron density (m⁻³), default 3e3
+        r_c : float
+            Core radius (kpc), default 40
+        beta : float
+            Beta model parameter, default 0.5
+            
+        Returns:
+        --------
+        dict with 'value' (emissivity W/m³), parameters
+        """
+        import math
+        
+        r_c_m = r_c * self.kpc_to_m
+        
+        # Electron density (beta model)
+        n_e = n_e0 * math.pow(1.0 + (r**2) / (r_c_m**2), -1.5 * beta)
+        
+        # Cooling function (simplified)
+        Lambda_T = 3e-23 * math.sqrt(T_keV)
+        
+        # X-ray emissivity
+        epsilon_X = n_e**2 * Lambda_T
+        
+        return {
+            'value': epsilon_X,
+            'r': r,
+            'T_keV': T_keV,
+            'n_e': n_e,
+            'Lambda_T': Lambda_T,
+            'units': 'W/m³',
+            'equation': f"ε_X = n_e²×Λ(T) = {n_e:.2e}²×{Lambda_T:.2e} = {epsilon_X:.6e} W/m³"
+        }
+
+
+class MSigmaRelationCalculator:
+    """
+    M-σ black hole scaling relation from source82_wolfram.cpp
+    
+    M_BH = M_norm × (σ/σ_norm)^α
+    
+    McConnell & Ma (2013): M_norm = 1.9e8 M_sun, σ_norm = 200 km/s, α = 4.38
+    """
+    
+    # Physical constants
+    M_sun = 1.989e30  # kg
+    
+    def compute(self, sigma: float, alpha: float = 4.38,
+                M_norm: float = 1.9e8, sigma_norm: float = 200e3) -> dict:
+        """
+        Compute predicted SMBH mass from velocity dispersion.
+        
+        Parameters:
+        -----------
+        sigma : float
+            Velocity dispersion (m/s)
+        alpha : float
+            M-σ slope, default 4.38
+        M_norm : float
+            Normalization mass (M_sun), default 1.9e8
+        sigma_norm : float
+            Normalization dispersion (m/s), default 200e3
+            
+        Returns:
+        --------
+        dict with 'value' (black hole mass M_sun), parameters
+        """
+        M_BH = M_norm * (sigma / sigma_norm)**alpha
+        
+        return {
+            'value': M_BH,
+            'sigma_ms': sigma,
+            'sigma_kms': sigma / 1e3,
+            'alpha': alpha,
+            'M_norm_Msun': M_norm,
+            'sigma_norm_kms': sigma_norm / 1e3,
+            'M_BH_kg': M_BH * self.M_sun,
+            'units': 'M_sun',
+            'equation': f"M_BH = {M_norm:.2e}×(σ/{sigma_norm/1e3:.0f}km/s)^{alpha} = {M_BH:.3e} M☉"
+        }
+
+
+# Calculator registry dictionaries
+SOURCE27_WOLFRAM_CALCULATORS = {
+    'SupernovaFeedbackCalculator': SupernovaFeedbackCalculator(),
+    'StarFormationGravityCalculator': StarFormationGravityCalculator(),
+    'StarburstBaseGravityCalculator': StarburstBaseGravityCalculator(),
+}
+
+SOURCE28_WOLFRAM_CALCULATORS = {
+    'SMBHGravityCalculator': SMBHGravityCalculator(),
+    'DustFrictionCalculator': DustFrictionCalculator(),
+}
+
+SOURCE43_WOLFRAM_CALCULATORS = {
+    'HydrogenDPMResonanceCalculator': HydrogenDPMResonanceCalculator(),
+    'LymanSeriesCalculator': LymanSeriesCalculator(),
+    'BalmerSeriesCalculator': BalmerSeriesCalculator(),
+    'SuperconductiveAtomicCorrectionCalculator': SuperconductiveAtomicCorrectionCalculator(),
+}
+
+SOURCE82_WOLFRAM_CALCULATORS = {
+    'VirgoClusterMassCalculator': VirgoClusterMassCalculator(),
+    'IntraclusterMediumCalculator': IntraclusterMediumCalculator(),
+    'M87JetEnergyCalculator': M87JetEnergyCalculator(),
+    'TidalStrippingCalculator': TidalStrippingCalculator(),
+    'ClusterXRayEmissivityCalculator': ClusterXRayEmissivityCalculator(),
+    'MSigmaRelationCalculator': MSigmaRelationCalculator(),
+}
+
+__all__.extend([
+    # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
+    'SupernovaFeedbackCalculator',
+    'StarFormationGravityCalculator',
+    'StarburstBaseGravityCalculator',
+    'SOURCE27_WOLFRAM_CALCULATORS',
+    # Source28 Andromeda M31 (Feb 26, 2026) - 2 Calculator Classes
+    'SMBHGravityCalculator',
+    'DustFrictionCalculator',
+    'SOURCE28_WOLFRAM_CALCULATORS',
+    # Source43 Hydrogen Spectral Resonance (Feb 26, 2026) - 4 Calculator Classes
+    'HydrogenDPMResonanceCalculator',
+    'LymanSeriesCalculator',
+    'BalmerSeriesCalculator',
+    'SuperconductiveAtomicCorrectionCalculator',
+    'SOURCE43_WOLFRAM_CALCULATORS',
+    # Source82 Virgo Cluster (Feb 26, 2026) - 6 Calculator Classes
+    'VirgoClusterMassCalculator',
+    'IntraclusterMediumCalculator',
+    'M87JetEnergyCalculator',
+    'TidalStrippingCalculator',
+    'ClusterXRayEmissivityCalculator',
+    'MSigmaRelationCalculator',
+    'SOURCE82_WOLFRAM_CALCULATORS',
+])
