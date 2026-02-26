@@ -119452,6 +119452,1712 @@ class UQFFWormholeTransverseTimeCalculator(SelfExpandingMixin):
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# NUCLEAR RESONANCE Z=1-118 CALCULATOR (Feb 26, 2026) [HIGH PRIORITY]
+# ═══════════════════════════════════════════════════════════════════════════════
+# Complete periodic table nuclear resonance with pairing, magic numbers, shell
+# From source43.cpp (HydrogenPToEResonanceUQFFModule)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class NuclearResonanceZ118Calculator(SelfExpandingMixin):
+    """
+    Nuclear Resonance Calculator for Z=1-118.
+    
+    Computes hydrogen resonance equations for all elements in the periodic table
+    using UQFF framework with pairing energy, magic numbers, and shell corrections.
+    
+    Key Physics:
+        - A_res: Amplitude resonance from Z/A ratio
+        - f_res: Frequency resonance from binding energy
+        - δ_pair: Even-odd pairing correction
+        - S_shell: Shell correction for magic numbers
+        - K_nuc: Nuclear coupling factor
+    
+    Magic Numbers: 2, 8, 20, 28, 50, 82, 126
+    
+    Reference:
+        - UQFF Hydrogen PToE Resonance Module (Star Magic)
+    """
+    
+    MAGIC_NUMBERS = [2, 8, 20, 28, 50, 82, 126]
+    
+    def __init__(self):
+        self.params = {
+            'c': 3e8,
+            'hbar': 1.0546e-34,
+            'E_vac': 7.09e-36,
+            'f_TRZ': 0.1,
+            'r_bohr': 5.29e-11,
+            'f_DPM': 1e15,
+            'f_THz': 1e12,
+            'f_aether': 1e4,
+            'f_quantum_orbital': 1e15,
+            'k_A': 1.0,
+            'k_pair': 12.0,       # MeV pairing constant
+            'SC_m': 1.0,
+        }
+        self.additional_mods = []
+    
+    def compute_A_res(self, Z: int, A: int) -> float:
+        """Amplitude resonance A_res = k_A × Z/A × (1 - Z/A)"""
+        if A == 0:
+            return 0.0
+        ratio = Z / A
+        return self.params['k_A'] * ratio * (1 - ratio)
+    
+    def compute_delta_pair(self, A: int) -> float:
+        """Pairing energy δ_pair = ±k_pair/A^(1/2) for even-odd nuclei"""
+        if A <= 0:
+            return 0.0
+        sign = 1.0 if A % 2 == 0 else -1.0
+        return sign * self.params['k_pair'] / np.sqrt(A)
+    
+    def is_magic(self, N: int) -> bool:
+        """Check if N is a magic number"""
+        return N in self.MAGIC_NUMBERS
+    
+    def compute_S_shell(self, Z: int, N: int) -> float:
+        """Shell correction factor for magic numbers"""
+        correction = 1.0
+        if self.is_magic(Z):
+            correction += 0.1
+        if self.is_magic(N):
+            correction += 0.1
+        if self.is_magic(Z) and self.is_magic(N):
+            correction += 0.05  # Extra stability for doubly magic
+        return correction
+    
+    def compute_K_nuc(self, Z: int, N: int) -> float:
+        """Nuclear coupling factor K_nuc"""
+        A = Z + N
+        if A == 0:
+            return 0.0
+        return (Z * N) / (A * A) * self.compute_S_shell(Z, N)
+    
+    def compute_f_res(self, E_bind: float, A: int) -> float:
+        """Frequency resonance from binding energy f_res = E_bind/(A × ℏ)"""
+        hbar = self.params['hbar']
+        if A <= 0:
+            return 0.0
+        return E_bind / (A * hbar)
+    
+    def compute_H_res(self, Z: int, A: int, t: float = 0.0,
+                      E_bind: float = None) -> float:
+        """
+        Full hydrogen resonance H_res(Z, A, t).
+        
+        H_res = A_res × f_res × δ_pair × S_shell × K_nuc × cos(ω_res t)
+        """
+        N = A - Z
+        if E_bind is None:
+            E_bind = 8.0 * A * 1.602e-13  # ~8 MeV/nucleon default
+        
+        A_res = self.compute_A_res(Z, A)
+        delta_pair = self.compute_delta_pair(A)
+        S_shell = self.compute_S_shell(Z, N)
+        K_nuc = self.compute_K_nuc(Z, N)
+        f_res = self.compute_f_res(E_bind, A)
+        
+        omega_res = 2 * np.pi * f_res
+        oscillation = np.cos(omega_res * t) if t > 0 else 1.0
+        
+        H_res = A_res * f_res * (1 + delta_pair/10) * S_shell * K_nuc * oscillation
+        
+        for mod in self.additional_mods:
+            H_res *= mod(Z, A)
+        
+        return H_res
+    
+    def compute_all_elements(self) -> dict:
+        """Compute H_res for all 118 elements at t=0"""
+        results = {}
+        for Z in range(1, 119):
+            A = int(2 * Z + 0.006 * Z * Z)  # Approximate A from Z
+            results[Z] = self.compute_H_res(Z, A)
+        return results
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function f(Z, A) -> multiplier"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# TWENTY-SIX D POLYNOMIAL CALCULATOR (Feb 26, 2026) [HIGH PRIORITY]
+# ═══════════════════════════════════════════════════════════════════════════════
+# 26-dimensional quantum state polynomial for 19+ astrophysical systems
+# From source172.cpp (UQFFNineteenAstroSystems / SOURCE115)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class TwentySixDPolynomialCalculator(SelfExpandingMixin):
+    """
+    26-Dimensional Polynomial Framework Calculator.
+    
+    Implements the 26D quantum state polynomial for astrophysical systems
+    with DPM creation, [UA]/[SCm] terms, and buoyant gravity interplay.
+    
+    Key Physics:
+        - 26 quantum states (i=1..26) with Q_i factors
+        - Master Gravity: g = Σ E_DPM,i / r_i² × (1+z) × (1-E_rad) × f_TRZ × f_Um
+        - Master Resonance: R = Σ R_Ug,i × cos(ω_i t)
+        - DPM creation from vacuum buildup
+    
+    Systems: NGC2264, Tadpole (UGC10214), Mice (NGC4676), Carina, M42, etc.
+    
+    Reference:
+        - UQFF 19-System 26D Framework (Star Magic SOURCE115)
+    """
+    
+    NUM_STATES = 26
+    
+    # Pre-defined astronomical systems
+    ASTRO_SYSTEMS = {
+        'NGC_2264': {'r': 2.36e19, 'sfr': 0.1, 'z': 0.0, 'B': 1e-6},
+        'UGC_10214': {'r': 1.23e24, 'sfr': 3.0, 'z': 0.03, 'B': 1e-5},
+        'NGC_4676': {'r': 8.7e23, 'sfr': 2.0, 'z': 0.022, 'B': 1e-5},
+        'NGC_3372': {'r': 2.6e19, 'sfr': 5.0, 'z': 0.0, 'B': 1e-4},  # Carina
+        'M42': {'r': 4e18, 'sfr': 0.01, 'z': 0.0, 'B': 1e-5},        # Orion
+        'NGC_2841': {'r': 1.4e23, 'sfr': 1.5, 'z': 0.002, 'B': 1e-5},
+        'M82': {'r': 3.6e23, 'sfr': 10.0, 'z': 0.0007, 'B': 1e-4},   # Starburst
+        'M74': {'r': 3.2e23, 'sfr': 2.0, 'z': 0.002, 'B': 1e-5},
+    }
+    
+    def __init__(self):
+        self.params = {
+            'k1': 1.0,
+            'rho_vac_UA': 7.09e-36,
+            'H_z_base': 2.268e-18,
+            'E_rad': 0.1554,
+            'T_SF': 3.156e13,
+            'M_SF': 1.5,
+            'Z_max': 1000.0,
+            'nu_THz': 1e12,
+        }
+        self.additional_mods = []
+    
+    def compute_Q_i(self, i: int) -> float:
+        """Quantum state factor Q_i for state i (1..26)"""
+        return 1.0 / (1.0 + 0.1 * (i - 1))
+    
+    def compute_f_UA_prime(self, Z: float) -> float:
+        """Aether fraction f_UA' = (Z_max - Z) / Z_max"""
+        return (self.params['Z_max'] - Z) / self.params['Z_max']
+    
+    def compute_f_SCm(self, Z: float) -> float:
+        """Superconductive fraction f_SCm = Z / Z_max"""
+        return Z / self.params['Z_max']
+    
+    def compute_R_EB(self, Z: float) -> float:
+        """Electrostatic barrier R_EB = k_R × Z"""
+        return 1.0 * Z
+    
+    def compute_E_DPM_i(self, i: int, Z: float, theta: float = np.pi/4) -> float:
+        """
+        Per-state DPM energy E_DPM,i = k1 × Q_i × [UA]_i × [SCm]_i × sin(θ)
+        """
+        Q_i = self.compute_Q_i(i)
+        f_UA = self.compute_f_UA_prime(Z)
+        f_SCm = self.compute_f_SCm(Z)
+        return self.params['k1'] * Q_i * f_UA * f_SCm * np.sin(theta)
+    
+    def compute_gravity_compressed(self, system_name: str, Z: float = 1.0) -> float:
+        """
+        Master Gravity Compressed UQFF:
+        g = Σ_{i=1}^{26} E_DPM,i / r² × (1+z) × (1-E_rad) × f_TRZ × f_Um
+        """
+        if system_name not in self.ASTRO_SYSTEMS:
+            return 0.0
+        
+        sys = self.ASTRO_SYSTEMS[system_name]
+        r = sys['r']
+        z = sys['z']
+        
+        E_rad = self.params['E_rad']
+        f_TRZ = 0.1  # Default
+        f_Um = 1.0 - sys['B'] / 4.4e13  # Relative to B_crit
+        
+        g_sum = 0.0
+        for i in range(1, self.NUM_STATES + 1):
+            E_DPM_i = self.compute_E_DPM_i(i, Z)
+            g_sum += E_DPM_i / (r * r) * (1 + z) * (1 - E_rad) * f_TRZ * f_Um
+        
+        return g_sum
+    
+    def compute_resonance(self, system_name: str, t: float, Z: float = 1.0) -> float:
+        """
+        Master Resonance UQFF:
+        R = Σ_{i=1}^{26} R_Ug,i × cos(ω_i t)
+        """
+        if system_name not in self.ASTRO_SYSTEMS:
+            return 0.0
+        
+        sys = self.ASTRO_SYSTEMS[system_name]
+        
+        R_sum = 0.0
+        for i in range(1, self.NUM_STATES + 1):
+            g_i = self.compute_E_DPM_i(i, Z) / (sys['r'] ** 2)
+            omega_i = 2 * np.pi * i * 1e-13  # State-specific frequency
+            R_Ug_i = g_i * self.params['M_SF']
+            R_sum += R_Ug_i * np.cos(omega_i * t)
+        
+        return R_sum
+    
+    def evaluate_26D_polynomial(self, coeffs: np.ndarray, x: float) -> float:
+        """Evaluate 26-degree polynomial Σ c_i × x^i"""
+        if len(coeffs) != self.NUM_STATES:
+            coeffs = np.ones(self.NUM_STATES)
+        result = 0.0
+        x_pow = 1.0
+        for c in coeffs:
+            result += c * x_pow
+            x_pow *= x
+        return result
+    
+    def compute_DPM_creation(self, vacuum_density: float) -> float:
+        """Simulate DPM creation from vacuum buildup"""
+        return sum(self.compute_E_DPM_i(i, 1.0) for i in range(1, self.NUM_STATES + 1)) * vacuum_density
+    
+    def compute_all_systems(self, t: float = 0.0) -> dict:
+        """Batch compute (g, R) for all pre-defined systems"""
+        results = {}
+        for name in self.ASTRO_SYSTEMS:
+            g = self.compute_gravity_compressed(name)
+            R = self.compute_resonance(name, t)
+            results[name] = {'g': g, 'R': R}
+        return results
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# WOLFRAM HYPERGRAPH CALCULATOR (Feb 26, 2026) [HIGH PRIORITY]
+# ═══════════════════════════════════════════════════════════════════════════════
+# Emergent spacetime from Wolfram Physics Project hypergraphs
+# From source173.cpp (WolframFieldUnity / SOURCE116)
+# PI infinity decoder, consciousness resonance, sacred time constants
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class WolframHypergraphCalculator(SelfExpandingMixin):
+    """
+    Wolfram Hypergraph Physics Calculator.
+    
+    Implements emergent spacetime from causal invariant hypergraph evolution,
+    PI infinity decoder for orbital patterns, and consciousness resonance.
+    
+    Key Physics:
+        - Hypergraph evolution via rewrite rules
+        - Emergent dimension from neighborhood growth
+        - Buoyant gravity from hypergraph flux (no G constant)
+        - PI decoder for magnetic field patterns
+        - Consciousness field from causal density
+    
+    Sacred Time Constants:
+        - Mayan Baktun: 144000 days
+        - Biblical Generation: 33.333 years
+        - Golden Cycle: 25920 years (precession)
+        - Schumann Resonance: 7.83 Hz
+    
+    Reference:
+        - Wolfram Physics Project (2020)
+        - UQFF SOURCE116 (Star Magic)
+    """
+    
+    QUANTUM_STATES = 26
+    
+    # Sacred Time Constants
+    MAYAN_BAKTUN = 144000.0
+    MAYAN_KATUN = 7200.0
+    MAYAN_TUN = 360.0
+    BIBLE_GENERATION = 33.333333
+    GOLDEN_CYCLE = 25920.0
+    CONSCIOUSNESS_FREQ = 7.83  # Schumann base Hz
+    
+    def __init__(self):
+        self.params = {
+            'max_nodes': 1000,
+            'max_depth': 8,
+            'pi': np.pi,
+            'golden_ratio': 1.618033988749895,
+        }
+        self.quantum_amplitudes = np.zeros(self.QUANTUM_STATES)
+        self.additional_mods = []
+    
+    def pi_infinity_decoder(self, seed_orbit: float = 1.618) -> np.ndarray:
+        """
+        PI Infinity Decoder for magnetic field patterns.
+        
+        Returns 26 reproducible orbit patterns without gravity constant.
+        """
+        patterns = np.zeros(self.QUANTUM_STATES)
+        accum = seed_orbit
+        for i in range(self.QUANTUM_STATES):
+            accum = (accum * np.pi) - np.floor(accum * np.pi)
+            patterns[i] = np.sin(accum * 2 * np.pi) * (i + 1) / self.QUANTUM_STATES
+        return patterns
+    
+    def measure_dimension(self, graph_size: int, radius: int = 5) -> float:
+        """
+        Measure emergent spacetime dimension from hypergraph.
+        
+        D ≈ log(N_r) / log(r) for neighborhood growth
+        """
+        if radius <= 1 or graph_size <= 1:
+            return 3.0  # Default
+        N_r = min(graph_size, radius ** 3)  # Simplified sphere growth
+        return np.log(N_r) / np.log(radius)
+    
+    def measure_buoyant_gravity(self, node_density: float) -> float:
+        """
+        Buoyant gravity from hypergraph flux (no G constant).
+        
+        g_buoyant ∝ ∇(node_density) × consciousness_field
+        """
+        consciousness = self.measure_consciousness_field(node_density)
+        gradient = node_density * 1e-10  # Simplified gradient
+        return gradient * consciousness
+    
+    def measure_consciousness_field(self, graph_density: float = 1e6) -> float:
+        """
+        Consciousness field from causal graph density.
+        
+        C = graph_density × sin(2π × f_Schumann × t_phase)
+        """
+        t_phase = 0.5  # Default phase
+        return graph_density * np.sin(2 * np.pi * self.CONSCIOUSNESS_FREQ * t_phase)
+    
+    def evaluate_unity_polynomial(self, coeffs: np.ndarray, x: float) -> float:
+        """Evaluate 26th-level unity polynomial across rulial manifold"""
+        if len(coeffs) != self.QUANTUM_STATES:
+            coeffs = self.pi_infinity_decoder()
+        result = 0.0
+        x_pow = 1.0
+        for c in coeffs:
+            result += c * x_pow
+            x_pow *= x
+        return result
+    
+    def get_magnetic_field(self, quantum_state: int, time_phase: float) -> float:
+        """Get magnetic field from PI infinity curve for given state"""
+        patterns = self.pi_infinity_decoder()
+        if quantum_state < 0 or quantum_state >= self.QUANTUM_STATES:
+            return 0.0
+        return patterns[quantum_state] * np.cos(2 * np.pi * time_phase)
+    
+    def get_consciousness_resonance(self, lineage_level: int) -> float:
+        """Get consciousness resonance for biblical/mayan lineage level"""
+        return self.CONSCIOUSNESS_FREQ * (1 + 0.01 * lineage_level)
+    
+    def sacred_magnetic_orbit_rule(self, t: float) -> float:
+        """Sacred rule producing planetary orbits from PI alone"""
+        orbit_sum = 0.0
+        for i in range(self.QUANTUM_STATES):
+            orbit_sum += self.get_magnetic_field(i, t)
+        return orbit_sum
+    
+    def mayan_time_rule(self, days: float) -> dict:
+        """Mayan Long Count rule: Baktun, Katun, Tun decomposition"""
+        baktun = int(days / self.MAYAN_BAKTUN)
+        remainder = days % self.MAYAN_BAKTUN
+        katun = int(remainder / self.MAYAN_KATUN)
+        remainder = remainder % self.MAYAN_KATUN
+        tun = int(remainder / self.MAYAN_TUN)
+        return {'baktun': baktun, 'katun': katun, 'tun': tun, 'days': days}
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MASTER BUOYANCY INTEGRAND CALCULATOR (Feb 26, 2026) [HIGH PRIORITY]
+# ═══════════════════════════════════════════════════════════════════════════════
+# 9-term F_U_Bi_i integrand with LENR, neutron, relativistic coherence
+# From source168.cpp (UQFFBuoyancy / SOURCE111)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class MasterBuoyancyIntegrandCalculator(SelfExpandingMixin):
+    """
+    Master F_U_Bi_i Buoyancy Integrand Calculator.
+    
+    Computes the 9-term master buoyancy integrand including LENR resonance,
+    neutron drop, and relativistic coherence forces.
+    
+    Key Physics:
+        - F_LENR: LENR resonance force
+        - F_act: Activation force
+        - F_DE: Directed energy force
+        - F_res: Magnetic resonance force
+        - F_neutron: Neutron drop force
+        - F_rel: Relativistic coherence force
+    
+    Systems: SN 1006, Eta Carinae, Chandra Archive, Galactic Center, Kepler SNR
+    
+    Reference:
+        - UQFF Buoyancy Module (Star Magic SOURCE111)
+    """
+    
+    def __init__(self):
+        self.params = {
+            'F0': 1.83e71,            # Base force [N]
+            'rho_vac_UA': 7.09e-36,   # [J/m³]
+            'c': 3e8,
+            'G': 6.6743e-11,
+            'q': 1.6e-19,
+            'V': 1e-3,                # Velocity [m/s]
+            'K_LENR': 1e-10,
+            'K_act': 1e-6,
+            'K_DE': 1e-30,
+            'K_neutron': 1e10,
+            'K_rel': 1e-10,
+            'sigma_n': 1e-4,
+            'omega_LENR': 2 * np.pi * 1.25e12,
+            'omega_act': 2 * np.pi * 300,
+            'hbar': 1.0546e-34,
+            'g_factor': 2.0,
+            'mu_B': 9.274e-24,
+            'ECM_astro': 1.24e24,
+            'F_rel_base': 4.30e33,
+        }
+        self.additional_mods = []
+    
+    def compute_F_LENR(self, omega0: float) -> float:
+        """LENR Resonance Force F_LENR = K_LENR × (ω₀/ω_LENR)²"""
+        ratio = omega0 / self.params['omega_LENR']
+        return self.params['K_LENR'] * ratio ** 2
+    
+    def compute_F_act(self, t: float) -> float:
+        """Activation Force F_act = K_act × cos(ω_act × t)"""
+        return self.params['K_act'] * np.cos(self.params['omega_act'] * t)
+    
+    def compute_F_DE(self, L_X: float) -> float:
+        """Directed Energy Force F_DE = K_DE × L_X"""
+        return self.params['K_DE'] * L_X
+    
+    def compute_F_res(self, B0: float, omega0: float) -> float:
+        """
+        Magnetic Resonance Force F_res = 2qBV cos(θ) × DPM_res
+        """
+        q, V = self.params['q'], self.params['V']
+        cos_theta = np.cos(np.pi / 4)
+        DPM_res = 1 + 0.01 * (omega0 / self.params['omega_LENR'])
+        return 2 * q * B0 * V * cos_theta * DPM_res
+    
+    def compute_F_neutron(self) -> float:
+        """Neutron Drop Force F_neutron = K_neutron × σ_n"""
+        return self.params['K_neutron'] * self.params['sigma_n']
+    
+    def compute_F_rel(self) -> float:
+        """Relativistic Coherence Force F_rel = F_rel_base × K_rel"""
+        return self.params['F_rel_base'] * self.params['K_rel']
+    
+    def compute_integrand(self, omega0: float, t: float, L_X: float,
+                          B0: float) -> float:
+        """
+        Full 9-term integrand for F_U_Bi_i.
+        """
+        F_LENR = self.compute_F_LENR(omega0)
+        F_act = self.compute_F_act(t)
+        F_DE = self.compute_F_DE(L_X)
+        F_res = self.compute_F_res(B0, omega0)
+        F_neutron = self.compute_F_neutron()
+        F_rel = self.compute_F_rel()
+        
+        integrand = F_LENR + F_act + F_DE + F_res + F_neutron + F_rel
+        
+        for mod in self.additional_mods:
+            integrand *= mod(t)
+        
+        return integrand
+    
+    def compute_F_U_Bi_i(self, omega0: float, t: float, L_X: float,
+                          B0: float, x2: float = 1.0) -> float:
+        """F_U_Bi_i = integrand × x2"""
+        integrand = self.compute_integrand(omega0, t, L_X, B0)
+        return integrand * x2
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function f(t) -> multiplier"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CASSINI SATURN UQFF CALCULATOR (Feb 26, 2026) [HIGH PRIORITY]
+# ═══════════════════════════════════════════════════════════════════════════════
+# Saturn U_Mi/U_Ii/U_Bi with Einstein Boson Bridge THz hole
+# From source169.cpp (UQFFCassiniBuoyancy / SOURCE112)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class CassiniSaturnUQFFCalculator(SelfExpandingMixin):
+    """
+    Cassini Saturn UQFF Calculator.
+    
+    Computes UQFF forces for Saturn system including Universal Buoyancy U_Bi,
+    Universal Inertia U_Ii, Universal Magnetism U_Mi, and THz hole resonance.
+    
+    Key Physics:
+        - U_g1: DPM force (spherical/toroidal geometry)
+        - U_g3: Inertia + Magnetism combined
+        - U_Mi: Universal Magnetism with Heaviside reverse-polarity
+        - U_Ii: Gyroscopic mimic of U_Mi
+        - U_Bi: Calibration difference buoyancy
+        - THz hole: Einstein Boson Bridge spooky action
+    
+    Reference:
+        - UQFF Cassini Buoyancy Module (Star Magic SOURCE112)
+        - Cassini-Huygens mission data
+    """
+    
+    # Saturn system parameters
+    SATURN = {
+        'orbital_r': 1.427e12,     # Orbital radius [m]
+        'ring_r': 1.4e8,           # Ring outer radius [m]
+        'mass': 5.683e26,          # Saturn mass [kg]
+        'ring_mass': 1.54e19,      # Ring mass [kg]
+        'B_field': 2.1e-5,         # Magnetic field [T]
+        'wind_vel': 500,           # Atmospheric wind [m/s]
+        'rotation_period': 10.7 * 3600,  # Rotation period [s]
+    }
+    
+    def __init__(self):
+        self.params = {
+            'k1': 1.0,
+            'ki': 1.0,
+            'km': 1.0,
+            'ke': 1.0,
+            'rho_vac_UA': 7.09e-36,
+            'rho_vac_SCm': 7.09e-37,
+            'nu_THz': 1e12,
+            'gamma_decay': 1.0,
+            'curvature': 1e-22,
+            'Z_max': 1000.0,
+            'c': 3e8,
+        }
+        self.additional_mods = []
+    
+    def compute_f_UA_prime(self, Z: float) -> complex:
+        """Aether fraction (complex for phase)"""
+        return complex((self.params['Z_max'] - Z) / self.params['Z_max'], 0)
+    
+    def compute_f_SCm(self, Z: float) -> complex:
+        """Superconductive fraction (complex for resonance)"""
+        return complex(Z / self.params['Z_max'], 0)
+    
+    def compute_R_EB(self, Z: float) -> complex:
+        """Electrostatic barrier (complex)"""
+        return complex(1.0 * Z, 0)
+    
+    def compute_U_Mi(self, t: float, r: float, n: int = 1) -> complex:
+        """
+        Universal Magnetism U_Mi with Heaviside reverse-polarity.
+        
+        U_Mi = μ_j × exp_decay × r × φ_hat × P_SCm × E_react × Heaviside × quasi
+        """
+        gamma = self.params['gamma_decay']
+        mu_j = complex(4 * np.pi * 1e-7, 0)
+        
+        exp_decay = complex(1 - np.exp(-gamma * t) * np.cos(np.pi * t / n),
+                           np.sin(np.pi * t / n))
+        
+        heaviside_term = complex(1 + 1e13, 0) if t >= 1.0 else complex(-1 - 1e13, 0)
+        quasi_term = complex(1 + 1e-13 * t, 0)
+        p_SCm = complex(self.params['rho_vac_SCm'], 0)
+        
+        return (mu_j * exp_decay * r * p_SCm * heaviside_term * quasi_term) / r
+    
+    def compute_U_Ii(self, U_Mi: complex, gyro_factor: float = 1.0) -> complex:
+        """Universal Inertia: gyroscopic mimic of U_Mi"""
+        omega = 2 * np.pi / self.SATURN['rotation_period']
+        phase = np.exp(1j * omega * np.pi)
+        return U_Mi * phase * gyro_factor
+    
+    def compute_U_Bi(self, delta_k: float) -> complex:
+        """Universal Buoyancy: calibration difference"""
+        phase = self.params.get('phase', 2.36e-3)
+        return complex(delta_k, delta_k * phase)
+    
+    def compute_THz_hole(self, nu: float, distance: float) -> complex:
+        """
+        THz Hole: Einstein Boson Bridge spooky action factor.
+        
+        Resonance = exp(i × 2π × ν × d/c)
+        """
+        c = self.params['c']
+        resonance = np.exp(1j * 2 * np.pi * nu * distance / c)
+        curvature = self.params['curvature']
+        return 1.0 / (1.0 + resonance * curvature)
+    
+    def compute_master_force(self, t: float = 0.0, Z: float = 1.0) -> complex:
+        """Compute master UQFF force for Saturn system"""
+        r = self.SATURN['orbital_r']
+        
+        f_UA = self.compute_f_UA_prime(Z)
+        f_SCm = self.compute_f_SCm(Z)
+        R_EB = self.compute_R_EB(Z)
+        
+        # U_g1 (DPM)
+        dpm_term = f_UA * f_SCm * R_EB
+        U_g1 = self.params['k1'] * (dpm_term ** 2) / (r * r)
+        
+        # U_Mi and U_Ii
+        U_Mi = self.compute_U_Mi(t, r)
+        U_Ii = self.compute_U_Ii(U_Mi)
+        
+        # U_Bi
+        U_Bi = self.compute_U_Bi(1e-10)
+        
+        # THz hole
+        THz = self.compute_THz_hole(self.params['nu_THz'], r)
+        
+        master = U_g1 + U_Mi + U_Ii + U_Bi * THz
+        
+        return master
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ELEVEN SYSTEM DPM CALCULATOR (Feb 26, 2026) [HIGH PRIORITY]
+# ═══════════════════════════════════════════════════════════════════════════════
+# 11 systems × 3 UQFF = 33 results with DPM creation
+# From source170.cpp (UQFFMultiAstroSystems / SOURCE113)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class ElevenSystemDPMCalculator(SelfExpandingMixin):
+    """
+    Eleven Astronomical System DPM Calculator.
+    
+    Computes Compressed, Resonance, and Buoyancy UQFF for 11 systems
+    with DPM creation scenario tracking.
+    
+    Systems: NGC4826, NGC1805, NGC6307, NGC7027, Cassini Encke/Division/Maxwell,
+             ESO391-12, Messier57, LMC, ESO510-G13
+    
+    Key Physics:
+        - Compressed UQFF: Gravity with DPM terms
+        - Resonance UQFF: Oscillatory modes
+        - Buoyancy UQFF: U_Bi calibration
+    
+    Reference:
+        - UQFF Multi-Astro Systems (Star Magic SOURCE113)
+    """
+    
+    SYSTEMS = {
+        'NGC_4826': {'r': 4.7e22, 'sfr': 0.5, 'z': 0.0014, 'B': 1e-5},
+        'NGC_1805': {'r': 4.8e22, 'sfr': 0.1, 'z': 0.0, 'B': 1e-6},
+        'NGC_6307': {'r': 3.4e22, 'sfr': 0.0, 'z': 0.02, 'B': 1e-5},
+        'NGC_7027': {'r': 2.0e19, 'sfr': 0.0, 'z': 0.0, 'B': 1e-4},
+        'CASSINI_ENCKE': {'r': 1.33e8, 'sfr': 0.0, 'z': 0.0, 'B': 2e-5},
+        'CASSINI_DIV': {'r': 1.18e8, 'sfr': 0.0, 'z': 0.0, 'B': 2e-5},
+        'CASSINI_MAX': {'r': 1.45e8, 'sfr': 0.0, 'z': 0.0, 'B': 2e-5},
+        'ESO_391_12': {'r': 1.2e24, 'sfr': 1.0, 'z': 0.02, 'B': 1e-5},
+        'MESSIER_57': {'r': 7.0e18, 'sfr': 0.0, 'z': 0.0, 'B': 1e-4},  # Ring Nebula
+        'LMC': {'r': 4.9e22, 'sfr': 0.2, 'z': 0.0009, 'B': 1e-6},
+        'ESO_510_G13': {'r': 4.3e24, 'sfr': 2.0, 'z': 0.034, 'B': 1e-5},
+    }
+    
+    def __init__(self):
+        self.params = {
+            'k1': 1.0,
+            'k_ub': 0.1,
+            'rho_vac_UA': 7.09e-36,
+            'H_z_base': 2.268e-18,
+            'E_rad': 0.1554,
+            'M_SF': 1.5,
+            'Z_max': 1000.0,
+            'Z': 1.0,
+        }
+        self.additional_mods = []
+    
+    def compute_DPM_term(self, Z: float = 1.0) -> complex:
+        """DPM term = f_UA' × f_SCm × R_EB"""
+        f_UA = (self.params['Z_max'] - Z) / self.params['Z_max']
+        f_SCm = Z / self.params['Z_max']
+        R_EB = 1.0 * Z
+        return complex(f_UA * f_SCm * R_EB, 0)
+    
+    def compute_f_Ub(self, delta_k: float) -> complex:
+        """Buoyancy factor from calibration"""
+        return complex(delta_k, 0.01 * delta_k)
+    
+    def compute_compressed_UQFF(self, system_name: str) -> complex:
+        """Compressed UQFF (Gravity)"""
+        if system_name not in self.SYSTEMS:
+            return complex(0, 0)
+        
+        sys = self.SYSTEMS[system_name]
+        r = sys['r']
+        z = sys['z']
+        
+        dpm = self.compute_DPM_term()
+        f_Ub = self.compute_f_Ub(1e-10)
+        
+        base = self.params['k1'] * (dpm ** 2) / (r * r)
+        ub_term = self.params['k_ub'] * dpm / (r * r) * f_Ub
+        h_corr = 1 + z
+        e_rad = 1 - self.params['E_rad']
+        
+        return (base + ub_term) * h_corr * e_rad
+    
+    def compute_resonance_UQFF(self, system_name: str, t: float) -> complex:
+        """Resonance UQFF (Oscillatory)"""
+        if system_name not in self.SYSTEMS:
+            return complex(0, 0)
+        
+        g_compressed = self.compute_compressed_UQFF(system_name)
+        omega = 1.989e-13
+        
+        R_Ug = self.params['M_SF'] * g_compressed * np.cos(omega * t)
+        f_Ub = self.compute_f_Ub(1e-10)
+        
+        return R_Ug * f_Ub
+    
+    def compute_buoyancy_UQFF(self, system_name: str) -> complex:
+        """Buoyancy UQFF (U_Bi)"""
+        if system_name not in self.SYSTEMS:
+            return complex(0, 0)
+        
+        sys = self.SYSTEMS[system_name]
+        r = sys['r']
+        sfr = sys['sfr']
+        
+        dpm = self.compute_DPM_term()
+        f_Ub = self.compute_f_Ub(1e-10)
+        
+        base = self.params['k_ub'] * dpm / (r * r) * f_Ub
+        return base * (1 + sfr)
+    
+    def compute_simultaneous(self, system_name: str, t: float = 0.0) -> dict:
+        """Compute all three UQFF systems simultaneously"""
+        return {
+            'compressed': self.compute_compressed_UQFF(system_name),
+            'resonance': self.compute_resonance_UQFF(system_name, t),
+            'buoyancy': self.compute_buoyancy_UQFF(system_name),
+        }
+    
+    def compute_all_systems(self, t: float = 0.0) -> dict:
+        """Batch compute all 11 systems (33 total results)"""
+        results = {}
+        for name in self.SYSTEMS:
+            results[name] = self.compute_simultaneous(name, t)
+        return results
+    
+    def simulate_DPM_creation(self, vacuum_density: float) -> complex:
+        """Simulate DPM creation from vacuum buildup"""
+        return self.compute_DPM_term() * vacuum_density
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# EIGHT SYSTEM UQFF CALCULATOR (Feb 26, 2026) [HIGH PRIORITY]
+# ═══════════════════════════════════════════════════════════════════════════════
+# 8 astrophysical systems (AFGL5180, NGC346, 6 LMC objects, NGC2174)
+# From source171.cpp (UQFFEightAstroSystems / SOURCE114)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class EightSystemUQFFCalculator(SelfExpandingMixin):
+    """
+    Eight Astrophysical System UQFF Calculator.
+    
+    Computes Master Compressed, Resonance, and Buoyancy UQFF for 8 star-forming
+    systems with DPM creation and ACP tracking.
+    
+    Systems: AFGL5180, NGC346 (SMC), LMC opo9944a, LMC heic1301, LMC potw1408a,
+             LMC heic1206, LMC heic1402, NGC2174
+    
+    Reference:
+        - UQFF Eight Astro Systems (Star Magic SOURCE114)
+    """
+    
+    SYSTEMS = {
+        'AFGL_5180': {'r': 5.4e19, 'sfr': 0.1, 'z': 0.0, 'B': 1e-5},
+        'NGC_346': {'r': 6.1e22, 'sfr': 0.05, 'z': 0.0005, 'B': 1e-6},
+        'LMC_opo9944a': {'r': 4.9e22, 'sfr': 0.02, 'z': 0.0009, 'B': 1e-6},
+        'LMC_heic1301': {'r': 4.9e22, 'sfr': 0.03, 'z': 0.0009, 'B': 1e-6},
+        'LMC_potw1408a': {'r': 4.9e22, 'sfr': 0.02, 'z': 0.0009, 'B': 1e-6},
+        'LMC_heic1206': {'r': 4.9e22, 'sfr': 0.04, 'z': 0.0009, 'B': 1e-6},
+        'LMC_heic1402': {'r': 4.9e22, 'sfr': 0.02, 'z': 0.0009, 'B': 1e-6},
+        'NGC_2174': {'r': 2.0e19, 'sfr': 0.1, 'z': 0.0, 'B': 1e-5},
+    }
+    
+    def __init__(self):
+        self.params = {
+            'k1': 1.0,
+            'k_ub': 0.1,
+            'rho_vac_UA': 7.09e-36,
+            'H_z_base': 2.268e-18,
+            'E_rad': 0.1554,
+            'M_SF': 1.5,
+            'Z_max': 1000.0,
+        }
+        self.additional_mods = []
+    
+    def compute_DPM_term(self, Z: float = 1.0) -> complex:
+        """DPM term"""
+        f_UA = (self.params['Z_max'] - Z) / self.params['Z_max']
+        f_SCm = Z / self.params['Z_max']
+        R_EB = 1.0 * Z
+        return complex(f_UA * f_SCm * R_EB, 0)
+    
+    def compute_f_Ub(self, delta_k: float = 1e-10) -> complex:
+        """Buoyancy factor"""
+        return complex(delta_k, 0.01 * delta_k)
+    
+    def compute_compressed_UQFF(self, system_name: str) -> complex:
+        """Master Compressed UQFF"""
+        if system_name not in self.SYSTEMS:
+            return complex(0, 0)
+        
+        sys = self.SYSTEMS[system_name]
+        r, z = sys['r'], sys['z']
+        
+        dpm = self.compute_DPM_term()
+        f_Ub = self.compute_f_Ub()
+        
+        base = self.params['k1'] * (dpm ** 2) / (r * r)
+        ub_term = self.params['k_ub'] * dpm / (r * r) * f_Ub
+        
+        return (base + ub_term) * (1 + z) * (1 - self.params['E_rad'])
+    
+    def compute_resonance_UQFF(self, system_name: str, t: float) -> complex:
+        """Master Resonance UQFF"""
+        g = self.compute_compressed_UQFF(system_name)
+        omega = 1.989e-13
+        return self.params['M_SF'] * g * np.cos(omega * t) * self.compute_f_Ub()
+    
+    def compute_buoyancy_UQFF(self, system_name: str) -> complex:
+        """Master Buoyancy UQFF"""
+        if system_name not in self.SYSTEMS:
+            return complex(0, 0)
+        
+        sys = self.SYSTEMS[system_name]
+        r, sfr = sys['r'], sys['sfr']
+        
+        dpm = self.compute_DPM_term()
+        f_Ub = self.compute_f_Ub()
+        
+        return self.params['k_ub'] * dpm / (r * r) * f_Ub * (1 + sfr)
+    
+    def compute_simultaneous(self, system_name: str, t: float = 0.0) -> dict:
+        """Simultaneous solution for all three systems"""
+        return {
+            'compressed': self.compute_compressed_UQFF(system_name),
+            'resonance': self.compute_resonance_UQFF(system_name, t),
+            'buoyancy': self.compute_buoyancy_UQFF(system_name),
+        }
+    
+    def compute_all_systems(self, t: float = 0.0) -> dict:
+        """Batch compute all 8 systems (24 results)"""
+        return {name: self.compute_simultaneous(name, t) for name in self.SYSTEMS}
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SMBH BINARY COALESCENCE CALCULATOR (Feb 26, 2026) [HIGH PRIORITY]
+# ═══════════════════════════════════════════════════════════════════════════════
+# Binary SMBH dynamics with 9 resonance modes
+# From source80.cpp (SMBHBinaryUQFFModule)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class SMBHBinaryCoalescenceCalculator(SelfExpandingMixin):
+    """
+    SMBH Binary Coalescence Calculator.
+    
+    Models SMBH binary dynamics via frequency/resonance: DPM core, THz hole,
+    U_g4i reactive, plasmotic vacuum energy (no SM gravity).
+    
+    Key Physics:
+        - 5 frequency modes: SuperFreq, FluidFreq, QuantumFreq, AetherFreq, ReactFreq
+        - DPM resonance term
+        - THz hole pipeline
+        - U_g4i reactive acceleration
+    
+    Default system: M1=4×10⁶ M☉, M2=2×10⁶ M☉, t_coal=180 days
+    
+    Reference:
+        - UQFF SMBH Binary Module (Star Magic)
+    """
+    
+    M_sun = 1.989e30
+    
+    def __init__(self):
+        self.params = {
+            'c': 3e8,
+            'hbar': 1.0546e-34,
+            'lambda_planck': 1.616e-35,
+            't_Hubble': 13.8e9 * 3.156e7,
+            'M1': 4e6 * 1.989e30,
+            'M2': 2e6 * 1.989e30,
+            'r_init': 0.1 * 9.461e15,
+            't_coal': 1.555e7,        # ~180 days
+            'z': 0.1,
+            'rho': 1e-20,
+            'E_vac': 7.09e-36,
+            'f_super': 1e-3,
+            'f_fluid': 1e-6,
+            'f_quantum': 1e6,
+            'f_aether': 1e4,
+            'f_react': 1e10,
+        }
+        self.params['M_total'] = self.params['M1'] + self.params['M2']
+        self.additional_mods = []
+    
+    def compute_freq_super(self, t: float) -> float:
+        """Superfrequency mode"""
+        return self.params['f_super'] * (1 + t / self.params['t_coal'])
+    
+    def compute_freq_fluid(self, rho: float = None) -> float:
+        """Fluid frequency mode"""
+        if rho is None:
+            rho = self.params['rho']
+        return self.params['f_fluid'] * (rho / 1e-20) ** 0.5
+    
+    def compute_freq_quantum(self) -> float:
+        """Quantum frequency mode"""
+        hbar = self.params['hbar']
+        M = self.params['M_total']
+        return hbar / (M * self.params['lambda_planck'] ** 2)
+    
+    def compute_freq_aether(self) -> float:
+        """Aether frequency mode"""
+        return self.params['f_aether']
+    
+    def compute_freq_react(self, t: float) -> float:
+        """Reactive frequency mode"""
+        return self.params['f_react'] * np.cos(2 * np.pi * t / self.params['t_coal'])
+    
+    def compute_DPM_term(self, t: float) -> float:
+        """DPM resonance term"""
+        f_super = self.compute_freq_super(t)
+        f_aether = self.compute_freq_aether()
+        return f_super * f_aether / (self.params['f_super'] * self.params['f_aether'])
+    
+    def compute_THz_hole_term(self, r: float) -> float:
+        """THz hole pipeline term"""
+        nu_THz = 1e12
+        return np.exp(-nu_THz * r / self.params['c'])
+    
+    def compute_U_g4i(self, t: float) -> float:
+        """U_g4i reactive acceleration"""
+        f_react = self.compute_freq_react(t)
+        E_vac = self.params['E_vac']
+        return f_react * E_vac / self.params['M_total']
+    
+    def compute_total_frequency(self, t: float) -> float:
+        """Sum of all 5 frequency modes"""
+        return (self.compute_freq_super(t) + 
+                self.compute_freq_fluid() + 
+                self.compute_freq_quantum() + 
+                self.compute_freq_aether() + 
+                self.compute_freq_react(t))
+    
+    def compute_g_from_freq(self, f_total: float, r: float) -> float:
+        """Convert total frequency to acceleration via a = f × λ_P × c / r"""
+        return f_total * self.params['lambda_planck'] * self.params['c'] / r
+    
+    def compute_G(self, t: float, r: float = None) -> float:
+        """Full g_UQFF(r, t) as frequency-derived acceleration"""
+        if r is None:
+            r = self.params['r_init']
+        
+        # Frequency contribution
+        f_total = self.compute_total_frequency(t)
+        g_freq = self.compute_g_from_freq(f_total, r)
+        
+        # DPM resonance
+        DPM = self.compute_DPM_term(t)
+        
+        # THz hole
+        THz = self.compute_THz_hole_term(r)
+        
+        # U_g4i reactive
+        U_g4i = self.compute_U_g4i(t)
+        
+        g_total = g_freq * DPM * THz + U_g4i
+        
+        for mod in self.additional_mods:
+            g_total *= mod(t, r)
+        
+        return g_total
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function f(t, r) -> multiplier"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# BIG BANG COSMIC EVOLUTION CALCULATOR (Feb 26, 2026) [HIGH PRIORITY]
+# ═══════════════════════════════════════════════════════════════════════════════
+# Gravity evolution since Big Bang with QG, DM, GW terms
+# From source56.cpp (BigBangGravityUQFFModule / SOURCE37)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class BigBangCosmicEvolutionCalculator(SelfExpandingMixin):
+    """
+    Big Bang Cosmic Evolution Calculator.
+    
+    Computes gravity evolution since the Big Bang including quantum gravity,
+    dark matter, and gravitational wave terms.
+    
+    Key Physics:
+        - M(t) = M_total × (t / t_Hubble) evolving mass
+        - r(t) = c × t naive radius
+        - z(t) = t_Hubble/t - 1 inverse redshift
+        - QG_term: Planck scale quantum gravity
+        - DM_term: 26.8% dark matter fraction
+        - GW_term: Sinusoidal gravitational waves
+    
+    Reference:
+        - UQFF Big Bang Gravity Module (Star Magic SOURCE37)
+    """
+    
+    def __init__(self):
+        self.params = {
+            'G': 6.6743e-11,
+            'c': 3e8,
+            'hbar': 1.0546e-34,
+            'Lambda': 1.1e-52,
+            't_Hubble': 13.8e9 * 3.156e7,  # 13.8 Gyr in seconds
+            'M_total': 1e53,               # Observable universe mass
+            'r_present': 4.4e26,           # Observable radius
+            'l_p': 1.616e-35,              # Planck length
+            't_p': 5.391e-44,              # Planck time
+            'DM_fraction': 0.268,
+            'h_strain': 1e-21,
+            'lambda_gw': 1e16,
+            'SFR': 0.0,
+        }
+        self.additional_mods = []
+    
+    def compute_M_t(self, t: float) -> float:
+        """Evolving mass M(t) = M_total × (t / t_Hubble)"""
+        if t <= 0:
+            return 0.0
+        return self.params['M_total'] * min(t / self.params['t_Hubble'], 1.0)
+    
+    def compute_r_t(self, t: float) -> float:
+        """Evolving radius r(t) = c × t"""
+        return self.params['c'] * t
+    
+    def compute_z_t(self, t: float) -> float:
+        """Inverse redshift z(t) = t_Hubble/t - 1"""
+        if t <= 0:
+            return 1000.0  # Cap at high z
+        z = self.params['t_Hubble'] / t - 1
+        return max(z, 0.0)
+    
+    def compute_g_base(self, t: float) -> float:
+        """Base gravity g = G M(t) / r(t)²"""
+        G = self.params['G']
+        M_t = self.compute_M_t(t)
+        r_t = self.compute_r_t(t)
+        if r_t <= 0:
+            return 0.0
+        return G * M_t / (r_t ** 2)
+    
+    def compute_QG_term(self, t: float) -> float:
+        """Quantum gravity term: (ℏc/l_p²) × (t/t_p)"""
+        hbar = self.params['hbar']
+        c = self.params['c']
+        l_p = self.params['l_p']
+        t_p = self.params['t_p']
+        return (hbar * c / l_p ** 2) * (t / t_p)
+    
+    def compute_DM_term(self, g_base: float) -> float:
+        """Dark matter term: DM_fraction × g_base"""
+        return self.params['DM_fraction'] * g_base
+    
+    def compute_GW_term(self, r_t: float, t: float) -> float:
+        """Gravitational wave term: h × c²/λ × sin(2πct/λ)"""
+        h = self.params['h_strain']
+        c = self.params['c']
+        lam = self.params['lambda_gw']
+        return h * c ** 2 / lam * np.sin(2 * np.pi * c * t / lam)
+    
+    def compute_Lambda_term(self, r_t: float) -> float:
+        """Cosmological constant term: Λ × c² × r / 3"""
+        return self.params['Lambda'] * self.params['c'] ** 2 * r_t / 3
+    
+    def compute_G(self, t: float) -> float:
+        """Full g_Gravity(t) for evolution since Big Bang"""
+        if t <= 0:
+            t = self.params['t_p']  # Start at Planck time
+        
+        g_base = self.compute_g_base(t)
+        r_t = self.compute_r_t(t)
+        
+        # All terms
+        QG = self.compute_QG_term(t) * 1e-80  # Scale down
+        DM = self.compute_DM_term(g_base)
+        GW = self.compute_GW_term(r_t, t)
+        Lambda_contrib = self.compute_Lambda_term(r_t)
+        
+        g_total = g_base + DM + QG + GW + Lambda_contrib
+        
+        for mod in self.additional_mods:
+            g_total *= mod(t)
+        
+        return g_total
+    
+    def compute_history(self, t_start: float, t_end: float, 
+                        n_points: int = 100) -> dict:
+        """Compute gravity history from t_start to t_end"""
+        times = np.logspace(np.log10(max(t_start, 1e-40)), 
+                           np.log10(t_end), n_points)
+        g_values = [self.compute_G(t) for t in times]
+        z_values = [self.compute_z_t(t) for t in times]
+        return {'t': times, 'g': g_values, 'z': z_values}
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function f(t) -> multiplier"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MINKOWSKI METRIC PERTURBATION CALCULATOR (Feb 26, 2026) [HIGH PRIORITY]
+# ═══════════════════════════════════════════════════════════════════════════════
+# Background Aether metric g_μν with perturbation A_μν
+# From source90.cpp (BackgroundAetherModule)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class MinkowskiMetricPerturbationCalculator(SelfExpandingMixin):
+    """
+    Minkowski Metric Perturbation Calculator.
+    
+    Computes baseline Minkowski metric and Aether-perturbed metric A_μν.
+    
+    Key Physics:
+        - g_μν = diag(1, -1, -1, -1) baseline Minkowski
+        - A_μν = g_μν + η × T_s^{μν} perturbed metric
+        - T_s: Stress-energy tensor from vacuum
+        - η: Aether coupling constant (~10⁻²²)
+    
+    Reference:
+        - UQFF Background Aether Module (Star Magic)
+    """
+    
+    def __init__(self):
+        self.params = {
+            'eta': 1e-22,               # Aether coupling
+            'rho_vac_UA': 7.09e-36,
+            'rho_vac_SCm': 7.09e-37,
+            'rho_vac_A': 1.11e7,        # Aether component
+            'T_s_base': 1.27e3,
+        }
+        self.g_mu_nu = np.array([1.0, -1.0, -1.0, -1.0])  # Diagonal Minkowski
+        self.additional_mods = []
+    
+    def compute_T_s(self) -> float:
+        """
+        Stress-energy tensor scalar approximation.
+        T_s = ρ_A + ρ_UA + ρ_SCm + T_s_base
+        """
+        return (self.params['rho_vac_A'] + 
+                self.params['rho_vac_UA'] + 
+                self.params['rho_vac_SCm'] + 
+                self.params['T_s_base'])
+    
+    def compute_perturbation(self) -> float:
+        """Perturbation = η × T_s"""
+        return self.params['eta'] * self.compute_T_s()
+    
+    def compute_G_mu_nu(self) -> np.ndarray:
+        """Baseline Minkowski metric (fixed)"""
+        return self.g_mu_nu.copy()
+    
+    def compute_A_mu_nu(self) -> np.ndarray:
+        """
+        Perturbed metric A_μν = g_μν + perturbation.
+        Adds perturbation to diagonal only.
+        """
+        perturbation = self.compute_perturbation()
+        A = self.g_mu_nu.copy()
+        A = A + perturbation  # Add to all diagonal elements
+        return A
+    
+    def compute_curvature_scalar(self) -> float:
+        """Approximate Ricci scalar R from perturbation"""
+        perturbation = self.compute_perturbation()
+        return 6 * perturbation  # Simplified linear approximation
+    
+    def is_nearly_flat(self, threshold: float = 1e-10) -> bool:
+        """Check if spacetime is nearly flat (perturbation < threshold)"""
+        return abs(self.compute_perturbation()) < threshold
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# HEAVISIDE FRACTION CALCULATOR (Feb 26, 2026) [HIGH PRIORITY]
+# ═══════════════════════════════════════════════════════════════════════════════
+# f_Heaviside=0.01 and U_m amplification ~10¹¹
+# From source100.cpp (HeavisideFractionModule)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class HeavisideFractionCalculator(SelfExpandingMixin):
+    """
+    Heaviside Component Fraction Calculator.
+    
+    Computes f_Heaviside=0.01 (unitless) and its scaling in Universal Magnetism U_m.
+    
+    Key Physics:
+        - f_Heaviside = 0.01 (constant fraction)
+        - Scaling: 1 + 10¹³ × f_Heaviside → ~10¹¹ amplification
+        - U_m contribution with/without Heaviside factor
+    
+    Reference:
+        - UQFF Heaviside Fraction Module (Star Magic)
+    """
+    
+    def __init__(self):
+        self.params = {
+            'f_Heaviside': 0.01,
+            'scale_Heaviside': 1e13,
+            'f_quasi': 0.01,
+            'mu_j': 3.38e23,        # T m³ (j=1)
+            'r_j': 1.496e13,        # m
+            'gamma': 5e-5 / 86400,  # day⁻¹ to s⁻¹
+            't_n': 0.0,
+            'phi_hat_j': 1.0,
+            'P_SCm': 1.0,
+            'E_react': 1e46,
+        }
+        self.additional_mods = []
+    
+    def compute_heaviside_factor(self) -> float:
+        """Heaviside scaling factor: 1 + 10¹³ × f_Heaviside"""
+        return 1 + self.params['scale_Heaviside'] * self.params['f_Heaviside']
+    
+    def compute_f_Heaviside(self) -> float:
+        """Return f_Heaviside = 0.01"""
+        return self.params['f_Heaviside']
+    
+    def compute_U_m_base(self, j: int = 1, t: float = 0.0) -> float:
+        """U_m base without Heaviside"""
+        mu_j = self.params['mu_j']
+        r_j = self.params['r_j']
+        gamma = self.params['gamma']
+        t_n = self.params['t_n']
+        
+        exp_term = 1 - np.exp(-gamma * t) * np.cos(np.pi * t_n)
+        return mu_j / r_j * exp_term * self.params['P_SCm'] * self.params['E_react']
+    
+    def compute_U_m_with_Heaviside(self, j: int = 1, t: float = 0.0) -> float:
+        """U_m with Heaviside amplification"""
+        U_m_base = self.compute_U_m_base(j, t)
+        factor = self.compute_heaviside_factor()
+        return U_m_base * factor
+    
+    def compute_U_m_without_Heaviside(self, j: int = 1, t: float = 0.0) -> float:
+        """U_m without Heaviside (factor = 1)"""
+        return self.compute_U_m_base(j, t)
+    
+    def compute_amplification_ratio(self) -> float:
+        """Ratio of U_m with/without Heaviside"""
+        return self.compute_heaviside_factor()
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PERIODIC TABLE RESONANCE CALCULATOR (Feb 26, 2026) [HIGH PRIORITY]
+# ═══════════════════════════════════════════════════════════════════════════════
+# Complete H_res integrand with A_res, f_res, tunneling, SC correction
+# From Source154.cpp (HydrogenResonanceUQFFModule)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class PeriodicTableResonanceCalculator(SelfExpandingMixin):
+    """
+    Periodic Table Resonance Calculator.
+    
+    Computes full H_res integrand for all elements Z=1-118 with amplitude
+    resonance, deep pairing, shell corrections, and tunneling effects.
+    
+    Key Physics:
+        - A_res: Amplitude resonance from Z/A
+        - f_res: Frequency from binding energy
+        - U_dp: Deep pairing potential
+        - K_nuc: Nuclear coupling
+        - S_shell: Shell correction for magic numbers
+        - Tunneling: Quantum tunneling coefficient
+        - SC_m: Superconductive correction
+    
+    Reference:
+        - UQFF Hydrogen Resonance PToE Module (Star Magic)
+    """
+    
+    MAGIC_NUMBERS = [2, 8, 20, 28, 50, 82, 126]
+    
+    def __init__(self):
+        self.params = {
+            'k_A': 1.0,
+            'k_pair': 12.0,        # MeV
+            'f_dp': 1.0,
+            'phi_dp': 0.0,
+            'SC_m': 1.0,
+            'tunneling_coeff': 0.1,
+            'hbar': 1.0546e-34,
+        }
+        self.additional_mods = []
+    
+    def compute_A_res(self, Z: int, A: int) -> complex:
+        """Amplitude resonance (complex)"""
+        if A == 0:
+            return complex(0, 0)
+        ratio = Z / A
+        return complex(self.params['k_A'] * ratio * (1 - ratio), 0)
+    
+    def compute_f_res(self, E_bind: float, A: int) -> complex:
+        """Frequency resonance from binding energy"""
+        if A == 0:
+            return complex(0, 0)
+        return complex(E_bind / (A * self.params['hbar']), 0)
+    
+    def compute_U_dp(self, A1: int, A2: int) -> complex:
+        """Deep pairing potential U_dp"""
+        f_dp = self.params['f_dp']
+        phi_dp = self.params['phi_dp']
+        return complex(f_dp * (A1 - A2) * np.cos(phi_dp), 
+                      f_dp * (A1 - A2) * np.sin(phi_dp))
+    
+    def compute_K_nuc(self, N: int, Z: int) -> complex:
+        """Nuclear coupling factor"""
+        A = N + Z
+        if A == 0:
+            return complex(0, 0)
+        return complex((Z * N) / (A * A), 0)
+    
+    def compute_S_shell(self, Z: int, N: int) -> complex:
+        """Shell correction for magic numbers"""
+        correction = 1.0
+        if Z in self.MAGIC_NUMBERS:
+            correction += 0.1
+        if N in self.MAGIC_NUMBERS:
+            correction += 0.1
+        if Z in self.MAGIC_NUMBERS and N in self.MAGIC_NUMBERS:
+            correction += 0.05
+        return complex(correction, 0)
+    
+    def compute_tunneling(self, Z: int, E_barrier: float = 1e6) -> float:
+        """Quantum tunneling coefficient"""
+        if E_barrier <= 0:
+            return 1.0
+        return self.params['tunneling_coeff'] * np.exp(-Z / 10)
+    
+    def compute_H_res_integrand(self, Z: int, A: int, t: float = 0.0,
+                                 E_bind: float = None) -> complex:
+        """Full H_res integrand"""
+        N = A - Z
+        if E_bind is None:
+            E_bind = 8.0 * A * 1.602e-13  # ~8 MeV/nucleon
+        
+        A_res = self.compute_A_res(Z, A)
+        f_res = self.compute_f_res(E_bind, A)
+        U_dp = self.compute_U_dp(A, A)  # Self-pairing
+        K_nuc = self.compute_K_nuc(N, Z)
+        S_shell = self.compute_S_shell(Z, N)
+        tunneling = self.compute_tunneling(Z)
+        SC_m = complex(self.params['SC_m'], 0)
+        
+        omega = 2 * np.pi * abs(f_res)
+        oscillation = complex(np.cos(omega * t), np.sin(omega * t))
+        
+        integrand = A_res * f_res * U_dp * K_nuc * S_shell * tunneling * SC_m * oscillation
+        
+        return integrand
+    
+    def compute_H_res(self, Z: int, A: int, t: float = 0.0) -> complex:
+        """Approximate integral via integrand × x2"""
+        integrand = self.compute_H_res_integrand(Z, A, t)
+        x2 = 1.0  # Integration approximation
+        return integrand * x2
+    
+    def compute_all_elements(self, t: float = 0.0) -> dict:
+        """Compute H_res for all 118 elements"""
+        results = {}
+        for Z in range(1, 119):
+            A = int(2 * Z + 0.006 * Z * Z)
+            results[Z] = self.compute_H_res(Z, A, t)
+        return results
+    
+    def add_mod(self, mod) -> None:
+        """Add custom modification function"""
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MAGNETAR FIVE FREQUENCY CALCULATOR (Feb 26, 2026) [MEDIUM PRIORITY]
+# ═══════════════════════════════════════════════════════════════════════════════
+# SGR1745 5-frequency resonance modes
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class MagnetarFiveFrequencyCalculator(SelfExpandingMixin):
+    """
+    Magnetar 5-Frequency Resonance Calculator.
+    
+    Computes SGR1745-2900 magnetar resonance via 5 frequency modes.
+    
+    Modes: SuperFreq, QuantumFreq, AetherFreq, FluidFreq, ExpFreq
+    
+    Reference:
+        - SGR1745-2900 near Sgr A* (Star Magic)
+    """
+    
+    def __init__(self):
+        self.params = {
+            'f_super': 1.25e12,       # SuperFreq [Hz]
+            'f_quantum': 1e6,         # QuantumFreq [Hz]
+            'f_aether': 1e4,          # AetherFreq [Hz]
+            'f_fluid': 1e3,           # FluidFreq [Hz]
+            'f_exp': 1e-3,            # ExpFreq [Hz]
+            'B_surface': 1e14,        # Surface field [T]
+            'B_crit': 4.4e13,         # Critical field [T]
+            'M': 1.4 * 1.989e30,      # Mass [kg]
+            'R': 1e4,                 # Radius [m]
+        }
+        self.additional_mods = []
+    
+    def compute_f_total(self, t: float = 0.0) -> float:
+        """Sum of all 5 frequency modes"""
+        f_super = self.params['f_super'] * (1 + 0.01 * np.sin(t))
+        f_quantum = self.params['f_quantum']
+        f_aether = self.params['f_aether']
+        f_fluid = self.params['f_fluid']
+        f_exp = self.params['f_exp'] * np.exp(-t / 1e6)
+        return f_super + f_quantum + f_aether + f_fluid + f_exp
+    
+    def compute_resonance_amplitude(self, t: float = 0.0) -> float:
+        """Resonance amplitude from frequency sum"""
+        f_total = self.compute_f_total(t)
+        B_ratio = self.params['B_surface'] / self.params['B_crit']
+        return f_total * (1 - B_ratio)
+    
+    def add_mod(self, mod) -> None:
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SMBH FIVE FREQUENCY CALCULATOR (Feb 26, 2026) [MEDIUM PRIORITY]
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class SMBHFiveFrequencyCalculator(SelfExpandingMixin):
+    """Sgr A* SMBH 5-frequency resonance modes."""
+    
+    def __init__(self):
+        self.params = {
+            'f_super': 1e-3,
+            'f_quantum': 1e-6,
+            'f_aether': 1e-4,
+            'f_fluid': 1e-7,
+            'f_exp': 1e-9,
+            'M': 4e6 * 1.989e30,
+            'R_s': 1.2e10,
+        }
+        self.additional_mods = []
+    
+    def compute_f_total(self, t: float = 0.0) -> float:
+        return sum([self.params[f'f_{m}'] for m in ['super', 'quantum', 'aether', 'fluid', 'exp']])
+    
+    def add_mod(self, mod) -> None:
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Additional MEDIUM PRIORITY Calculators (Feb 26, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class SMBHPseudoMonopoleCalculator(SelfExpandingMixin):
+    """SMBH M-σ relation with pseudo-monopole field."""
+    
+    def __init__(self):
+        self.params = {'sigma': 200e3, 'M_bh': 4e6 * 1.989e30}
+        self.additional_mods = []
+    
+    def compute_M_sigma(self, sigma: float = None) -> float:
+        if sigma is None:
+            sigma = self.params['sigma']
+        return 1.9e8 * (sigma / 200e3) ** 4.24 * 1.989e30
+    
+    def add_mod(self, mod) -> None:
+        self.additional_mods.append(mod)
+
+
+class LENRScenarioCalculator(SelfExpandingMixin):
+    """LENR scenarios: hydride cells, exploding wires, solar corona."""
+    
+    def __init__(self):
+        self.params = {'E_threshold': 0.78e6 * 1.602e-19, 'sigma_n': 1e-4}
+        self.additional_mods = []
+    
+    def compute_rate(self, E_cm: float) -> float:
+        threshold = self.params['E_threshold']
+        if E_cm < threshold:
+            return 0.0
+        return self.params['sigma_n'] * (E_cm / threshold - 1)
+    
+    def add_mod(self, mod) -> None:
+        self.additional_mods.append(mod)
+
+
+class LENRCalibratedCalculator(SelfExpandingMixin):
+    """Calibrated LENR neutron rates with non-local effects."""
+    
+    def __init__(self):
+        self.params = {'k_calibration': 1.0, 'polarization': 0.5}
+        self.additional_mods = []
+    
+    def compute_neutron_rate(self, E_cm: float) -> float:
+        return self.params['k_calibration'] * E_cm * self.params['polarization']
+    
+    def add_mod(self, mod) -> None:
+        self.additional_mods.append(mod)
+
+
+class NGC346StarFormationCalculator(SelfExpandingMixin):
+    """NGC346 SMC dwarf galaxy star formation."""
+    
+    def __init__(self):
+        self.params = {'sfr': 0.05, 'r': 6.1e22, 'F_env': 1e30}
+        self.additional_mods = []
+    
+    def compute_envelope_force(self) -> float:
+        return self.params['F_env'] * self.params['sfr']
+    
+    def add_mod(self, mod) -> None:
+        self.additional_mods.append(mod)
+
+
+class M51TidalInteractionCalculator(SelfExpandingMixin):
+    """M51 Whirlpool galaxy tidal interaction physics."""
+    
+    def __init__(self):
+        self.params = {'M': 1e11 * 1.989e30, 'r_companion': 9e22}
+        self.additional_mods = []
+    
+    def compute_tidal_force(self) -> float:
+        G = 6.6743e-11
+        return G * self.params['M'] / self.params['r_companion'] ** 2
+    
+    def add_mod(self, mod) -> None:
+        self.additional_mods.append(mod)
+
+
+class GalaxyCollisionMUGECalculator(SelfExpandingMixin):
+    """Galaxy collision MUGE for NGC1316 Fornax A."""
+    
+    def __init__(self):
+        self.params = {'M1': 1e11 * 1.989e30, 'M2': 5e10 * 1.989e30, 'v_rel': 500e3}
+        self.additional_mods = []
+    
+    def compute_collision_energy(self) -> float:
+        mu = (self.params['M1'] * self.params['M2']) / (self.params['M1'] + self.params['M2'])
+        return 0.5 * mu * self.params['v_rel'] ** 2
+    
+    def add_mod(self, mod) -> None:
+        self.additional_mods.append(mod)
+
+
+class SaturnRingTidalCalculator(SelfExpandingMixin):
+    """Saturn ring tidal physics."""
+    
+    def __init__(self):
+        self.params = {'M_saturn': 5.683e26, 'r_ring': 1.4e8, 'G': 6.6743e-11}
+        self.additional_mods = []
+    
+    def compute_Roche_limit(self, rho_particle: float = 1000) -> float:
+        M = self.params['M_saturn']
+        R = 5.82e7  # Saturn radius
+        return R * (2 * M / (4/3 * np.pi * R**3 * rho_particle)) ** (1/3)
+    
+    def add_mod(self, mod) -> None:
+        self.additional_mods.append(mod)
+
+
+class GalaxyMergerSpecificCalculator(SelfExpandingMixin):
+    """Antennae Galaxies NGC4038/4039 specific merger."""
+    
+    def __init__(self):
+        self.params = {'M_total': 3e11 * 1.989e30, 'separation': 2e22}
+        self.additional_mods = []
+    
+    def compute_merger_timescale(self) -> float:
+        G = 6.6743e-11
+        return np.sqrt(self.params['separation'] ** 3 / (G * self.params['M_total']))
+    
+    def add_mod(self, mod) -> None:
+        self.additional_mods.append(mod)
+
+
+class AGNCoolingFlowCalculator(SelfExpandingMixin):
+    """NGC1275 AGN cooling flow physics."""
+    
+    def __init__(self):
+        self.params = {'L_X': 1e37, 'T_cool': 1e7, 'M_dot': 10}  # M_sun/yr
+        self.additional_mods = []
+    
+    def compute_cooling_rate(self) -> float:
+        k_B = 1.380649e-23
+        return self.params['L_X'] / (k_B * self.params['T_cool'])
+    
+    def add_mod(self, mod) -> None:
+        self.additional_mods.append(mod)
+
+
+class SupernovaFeedbackSpecificCalculator(SelfExpandingMixin):
+    """NGC1792 supernova feedback."""
+    
+    def __init__(self):
+        self.params = {'E_sn': 1e44, 'rate': 0.02}  # per year
+        self.additional_mods = []
+    
+    def compute_feedback_power(self) -> float:
+        return self.params['E_sn'] * self.params['rate'] / 3.156e7
+    
+    def add_mod(self, mod) -> None:
+        self.additional_mods.append(mod)
+
+
+class SombreroGalaxyDustCalculator(SelfExpandingMixin):
+    """M104 Sombrero galaxy dust term."""
+    
+    def __init__(self):
+        self.params = {'M_dust': 1e8 * 1.989e30, 'kappa': 100}  # cm²/g
+        self.additional_mods = []
+    
+    def compute_optical_depth(self, r: float) -> float:
+        Sigma = self.params['M_dust'] / (np.pi * r ** 2)
+        return self.params['kappa'] * Sigma * 1e-4  # Convert to SI
+    
+    def add_mod(self, mod) -> None:
+        self.additional_mods.append(mod)
+
+
+class PhotoevaporationErosionCalculator(SelfExpandingMixin):
+    """Eagle Nebula photoevaporation erosion E(t) = E₀ × e^(-t/τ)."""
+    
+    def __init__(self):
+        self.params = {'E0': 1e30, 'tau': 1e6 * 3.156e7}  # 1 Myr
+        self.additional_mods = []
+    
+    def compute_erosion(self, t: float) -> float:
+        return self.params['E0'] * np.exp(-t / self.params['tau'])
+    
+    def add_mod(self, mod) -> None:
+        self.additional_mods.append(mod)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # PULSAR TIMING ARRAY (PTA) UQFF CALCULATOR (Feb 25, 2026)
 # ═══════════════════════════════════════════════════════════════════════════════
 # Nanohertz gravitational waves from SMBH binaries
