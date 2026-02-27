@@ -157627,6 +157627,1146 @@ SOURCE68_WOLFRAM_CALCULATORS = {
 }
 
 
+# ============================================================================
+# SOURCE69 WOLFRAM CALCULATORS - UQFF Compression Module
+# From source69_wolfram.cpp - Classes 640-649
+# Physics: Magnetar SGR 1745-2900, Sagittarius A*, Pillars of Creation
+# ============================================================================
+
+class CompressionExpansionFactorCalculator:
+    """
+    Compute Friedmann expansion factor H(t,z).
+    
+    Physics: H(t,z) = H₀·√(Ωm(1+z)³ + ΩΛ)
+    Parameters: H0=67.15 km/s/Mpc, Ωm=0.3, ΩΛ=0.7
+    """
+    
+    def __init__(self, H0: float = 67.15, Omega_m: float = 0.3, Omega_Lambda: float = 0.7):
+        self.H0 = H0  # km/s/Mpc
+        self.Omega_m = Omega_m
+        self.Omega_Lambda = Omega_Lambda
+    
+    def compute(self, t: float, z: float, **params) -> float:
+        """
+        Calculate expansion factor at time t and redshift z.
+        
+        H(t,z) = H₀·√(Ωm(1+z)³ + ΩΛ)
+        
+        Args:
+            t: cosmic time (s)
+            z: redshift
+        Returns:
+            Expansion factor H (km/s/Mpc normalized)
+        """
+        import math
+        factor = self.Omega_m * (1 + z)**3 + self.Omega_Lambda
+        return self.H0 * math.sqrt(factor)
+    
+    def to_wolfram(self) -> str:
+        return "CompressionExpansionFactor[t_, z_, H0_: 67.15, Om_: 0.3, OL_: 0.7] := H0 * Sqrt[Om * (1 + z)^3 + OL]"
+
+
+class CompressionSuperconductiveCorrectionCalculator:
+    """
+    Calculate superconductive correction factor for magnetars.
+    
+    Physics: f_sc = 1 - B/B_crit (superconductivity near critical field)
+    Parameters: B_crit = 1e11 T (magnetar critical threshold)
+    """
+    
+    def __init__(self, B_crit: float = 1e11):
+        self.B_crit = B_crit  # Tesla
+    
+    def compute(self, B: float, **params) -> float:
+        """
+        Calculate superconductive correction.
+        
+        f_sc = 1 - B/B_crit
+        
+        Args:
+            B: magnetic field strength (T)
+        Returns:
+            Correction factor (0 to 1)
+        """
+        if B >= self.B_crit:
+            return 0.0
+        return 1.0 - B / self.B_crit
+    
+    def to_wolfram(self) -> str:
+        return "CompressionSuperconductiveCorrection[B_, Bcrit_: 10^11] := 1 - B / Bcrit"
+
+
+class CompressionEnvironmentalForceCalculator:
+    """
+    Calculate environmental force contribution.
+    
+    Physics: F_env = Σᵢ [F_wind + F_SN + F_BH + ... + F_photo]
+    12 environmental subterms: wind, supernova, black hole, jets, merger,
+    cosmic rays, ISM, turbulence, cosmic expansion, dark matter, tidal, photoevaporation
+    """
+    
+    def __init__(self):
+        self.default_forces = {
+            'F_wind': 1e-5,     # Stellar winds
+            'F_SN': 1e-6,       # Supernova feedback
+            'F_BH': 1e-7,       # Black hole accretion
+            'F_jets': 1e-8,     # Relativistic jets
+            'F_merger': 0.0,    # Galaxy merger
+            'F_cosmic': 1e-10,  # Cosmic rays
+            'F_ISM': 1e-9,      # Interstellar medium
+            'F_turb': 1e-6,     # Turbulence
+            'F_exp': 1e-10,     # Cosmic expansion
+            'F_DM': 1e-7,       # Dark matter
+            'F_tidal': 0.0,     # Tidal forces
+            'F_photo': 1e-8     # Photoevaporation
+        }
+    
+    def compute(self, t: float, **params) -> float:
+        """
+        Calculate total environmental force.
+        
+        F_env = Σᵢ Fᵢ(t)
+        
+        Args:
+            t: time (s)
+            **params: individual force overrides
+        Returns:
+            Total environmental force (m/s²)
+        """
+        total = 0.0
+        for key, default in self.default_forces.items():
+            total += params.get(key, default)
+        return total
+    
+    def to_wolfram(self) -> str:
+        return "CompressionEnvironmentalForce[t_, forces_] := Total[Values[forces]]"
+
+
+class CompressionMassEvolutionCalculator:
+    """
+    Calculate mass evolution from star formation.
+    
+    Physics: M(t) = M₀·(1 + M_sf(t))
+    Star formation rate drives mass accumulation
+    """
+    
+    def __init__(self, M0: float = 1.989e30,     # Solar mass kg
+                 SFR: float = 1.0):              # M_sun/yr
+        self.M0 = M0
+        self.SFR = SFR
+    
+    def compute(self, t: float, **params) -> float:
+        """
+        Calculate evolved mass at time t.
+        
+        M(t) = M₀·(1 + SFR·t/M₀)
+        
+        Args:
+            t: time (s)
+        Returns:
+            Current mass (kg)
+        """
+        yr_to_s = 3.156e7
+        M_sf = self.SFR * self.M0 * (t / yr_to_s) / self.M0
+        return self.M0 * (1 + M_sf)
+    
+    def to_wolfram(self) -> str:
+        return "CompressionMassEvolution[t_, M0_: 1.989*^30, SFR_: 1] := M0 * (1 + SFR * (t / 3.156*^7))"
+
+
+class CompressionUg1GravityCalculator:
+    """
+    Calculate Newtonian gravity Ug1.
+    
+    Physics: Ug1 = G·M/r²
+    Standard gravitational acceleration
+    """
+    
+    def __init__(self, G: float = 6.6743e-11):
+        self.G = G
+    
+    def compute(self, M: float, r: float, **params) -> float:
+        """
+        Calculate Newtonian gravity.
+        
+        Ug1 = G·M/r²
+        
+        Args:
+            M: mass (kg)
+            r: distance (m)
+        Returns:
+            Gravitational acceleration (m/s²)
+        """
+        if r <= 0:
+            return 0.0
+        return self.G * M / (r * r)
+    
+    def to_wolfram(self) -> str:
+        return "CompressionUg1Gravity[M_, r_, G_: 6.6743*^-11] := (G * M) / r^2"
+
+
+class CompressionUg3ExternalGravityCalculator:
+    """
+    Calculate external gravitational influence.
+    
+    Physics: Ug3' = G·M_ext/r_ext²
+    Example: Sagittarius A* with M_ext = 4e6 M_sun
+    """
+    
+    def __init__(self, G: float = 6.6743e-11):
+        self.G = G
+    
+    def compute(self, M_ext: float, r_ext: float, **params) -> float:
+        """
+        Calculate external gravity.
+        
+        Ug3' = G·M_ext/r_ext²
+        
+        Args:
+            M_ext: external mass (kg)
+            r_ext: distance to external mass (m)
+        Returns:
+            External gravitational acceleration (m/s²)
+        """
+        if M_ext == 0 or r_ext <= 0:
+            return 0.0
+        return self.G * M_ext / (r_ext * r_ext)
+    
+    def to_wolfram(self) -> str:
+        return "CompressionUg3ExternalGravity[Mext_, rext_, G_: 6.6743*^-11] := (G * Mext) / rext^2"
+
+
+class CompressionUg4SuperconductiveCalculator:
+    """
+    Calculate superconductive gravity correction.
+    
+    Physics: Ug4 = Ug1 · f_sc
+    Superconducting state modifies gravitational coupling
+    """
+    
+    def __init__(self, f_sc: float = 1.0):
+        self.f_sc = f_sc
+    
+    def compute(self, Ug1: float, **params) -> float:
+        """
+        Calculate superconductive gravity.
+        
+        Ug4 = Ug1 · f_sc
+        
+        Args:
+            Ug1: base gravity (m/s²)
+        Returns:
+            Corrected gravity (m/s²)
+        """
+        f_sc = params.get('f_sc', self.f_sc)
+        return Ug1 * f_sc
+    
+    def to_wolfram(self) -> str:
+        return "CompressionUg4Superconductive[Ug1_, fsc_: 1.0] := Ug1 * fsc"
+
+
+class CompressionQuantumWaveCalculator:
+    """
+    Calculate total quantum wavefunction.
+    
+    Physics: ψ_total = q(v × B) + 2A cos(kx) cos(ωt) + (2π/13.8) A Re[exp(i(kx - ωt))]
+    Three components: magnetic, standing wave, quantum wave
+    """
+    
+    def __init__(self, q: float = 1.602e-19,  # Charge (C)
+                 v: float = 1e3,              # Velocity (m/s)
+                 B: float = 1e-5,             # Magnetic field (T)
+                 A: float = 1e-10,            # Wave amplitude
+                 k: float = 1e20,             # Wave number (rad/m)
+                 omega: float = 1e15):        # Angular frequency (rad/s)
+        self.q = q
+        self.v = v
+        self.B = B
+        self.A = A
+        self.k = k
+        self.omega = omega
+    
+    def compute(self, t: float, x: float, **params) -> float:
+        """
+        Calculate total quantum wavefunction.
+        
+        ψ_total = q(v × B) + 2A cos(kx) cos(ωt) + (2π/13.8) A cos(kx - ωt)
+        
+        Args:
+            t: time (s)
+            x: position (m)
+        Returns:
+            Wave function amplitude
+        """
+        import math
+        # Magnetic term
+        mag_term = self.q * self.v * self.B
+        # Standing wave
+        standing = 2.0 * self.A * math.cos(self.k * x) * math.cos(self.omega * t)
+        # Quantum wave
+        phase = self.k * x - self.omega * t
+        quantum_wave = (2.0 * math.pi / 13.8) * self.A * math.cos(phase)
+        
+        return mag_term + standing + quantum_wave
+    
+    def to_wolfram(self) -> str:
+        return "CompressionQuantumWave[t_, x_, q_: 1.602*^-19, v_: 10^3, B_: 10^-5, A_: 10^-10, k_: 10^20, omega_: 10^15] := q * v * B + 2 * A * Cos[k * x] * Cos[omega * t] + (2 * Pi / 13.8) * A * Cos[k * x - omega * t]"
+
+
+class CompressionDarkMatterPerturbationCalculator:
+    """
+    Calculate dark matter perturbation contribution.
+    
+    Physics: (M_vis + M_DM) · (Δρ/ρ + 3GM/r³)
+    15% visible, 85% dark matter mass ratio
+    """
+    
+    def __init__(self, G: float = 6.6743e-11):
+        self.G = G
+    
+    def compute(self, M_total: float, delta_rho: float, rho: float, M: float, r: float, **params) -> float:
+        """
+        Calculate dark matter perturbation.
+        
+        DM_pert = (M_vis + M_DM) · (Δρ/ρ + 3GM/r³)
+        
+        Args:
+            M_total: total mass (kg)
+            delta_rho: density perturbation (kg/m³)
+            rho: mean density (kg/m³)
+            M: enclosed mass for curvature (kg)
+            r: radius (m)
+        Returns:
+            Perturbation contribution (kg·m/s²)
+        """
+        M_visible = 0.15 * M_total
+        M_DM = 0.85 * M_total
+        pert = delta_rho / rho if rho > 0 else 0
+        curv = 3.0 * self.G * M / (r**3) if r > 0 else 0
+        return (M_visible + M_DM) * (pert + curv)
+    
+    def to_wolfram(self) -> str:
+        return "CompressionDarkMatterPerturbation[Mtot_, deltaRho_, rho_, M_, r_, G_: 6.6743*^-11] := (0.15 * Mtot + 0.85 * Mtot) * (deltaRho / rho + 3 * G * M / r^3)"
+
+
+class CompressionFluidDynamicsCalculator:
+    """
+    Calculate fluid dynamics gravity contribution.
+    
+    Physics: F_fluid = ρ_fluid · V · g_base
+    Fluid mass contribution to gravitational field
+    """
+    
+    def __init__(self, rho_fluid: float = 1e-20,  # kg/m³
+                 V: float = 1e3):                  # m³
+        self.rho_fluid = rho_fluid
+        self.V = V
+    
+    def compute(self, g_base: float, **params) -> float:
+        """
+        Calculate fluid gravity contribution.
+        
+        F_fluid = ρ_fluid · V · g_base
+        
+        Args:
+            g_base: base gravitational acceleration (m/s²)
+        Returns:
+            Fluid contribution (N)
+        """
+        rho = params.get('rho_fluid', self.rho_fluid)
+        V = params.get('V', self.V)
+        return rho * V * g_base
+    
+    def to_wolfram(self) -> str:
+        return "CompressionFluidDynamics[gBase_, rhoFluid_: 10^-20, V_: 10^3] := rhoFluid * V * gBase"
+
+
+SOURCE69_WOLFRAM_CALCULATORS = {
+    'CompressionExpansionFactorCalculator': CompressionExpansionFactorCalculator(),
+    'CompressionSuperconductiveCorrectionCalculator': CompressionSuperconductiveCorrectionCalculator(),
+    'CompressionEnvironmentalForceCalculator': CompressionEnvironmentalForceCalculator(),
+    'CompressionMassEvolutionCalculator': CompressionMassEvolutionCalculator(),
+    'CompressionUg1GravityCalculator': CompressionUg1GravityCalculator(),
+    'CompressionUg3ExternalGravityCalculator': CompressionUg3ExternalGravityCalculator(),
+    'CompressionUg4SuperconductiveCalculator': CompressionUg4SuperconductiveCalculator(),
+    'CompressionQuantumWaveCalculator': CompressionQuantumWaveCalculator(),
+    'CompressionDarkMatterPerturbationCalculator': CompressionDarkMatterPerturbationCalculator(),
+    'CompressionFluidDynamicsCalculator': CompressionFluidDynamicsCalculator(),
+}
+
+
+# ============================================================================
+# SOURCE70 WOLFRAM CALCULATORS - M51 Whirlpool Galaxy UQFF Module
+# From source70_wolfram.cpp - Classes 650-659
+# Physics: M51 + NGC 5195 interaction, spiral arms, tidal dynamics
+# ============================================================================
+
+class M51DipoleMagneticCalculator:
+    """
+    Calculate black hole magnetic dipole energy.
+    
+    Physics: Ug1 = μ_dipole · B
+    μ_dipole = I · A · ω_spin (I=1e20 A, A=1e15 m², ω=1e-4 rad/s)
+    """
+    
+    def __init__(self, I: float = 1e20,     # Current (A)
+                 A: float = 1e15,           # Area (m²)
+                 omega_spin: float = 1e-4): # Spin rate (rad/s)
+        self.I = I
+        self.A = A
+        self.omega_spin = omega_spin
+        self.mu_dipole = I * A * omega_spin
+    
+    def compute(self, B: float, **params) -> float:
+        """
+        Calculate dipole magnetic energy.
+        
+        Ug1 = μ_dipole · B
+        
+        Args:
+            B: magnetic field strength (T)
+        Returns:
+            Magnetic energy (J)
+        """
+        return self.mu_dipole * B
+    
+    def to_wolfram(self) -> str:
+        return "M51DipoleMagnetic[B_, I_: 10^20, A_: 10^15, omega_: 10^-4] := I * A * omega * B"
+
+
+class M51SuperconductorEnergyCalculator:
+    """
+    Calculate superconductor magnetic energy.
+    
+    Physics: U_super = B²/(2μ₀)
+    Magnetic field energy in superconducting medium
+    """
+    
+    def __init__(self, mu_0: float = 1.2566e-6,   # Permeability (H/m)
+                 H_aether: float = 1e-6):         # Aether field (A/m)
+        self.mu_0 = mu_0
+        self.H_aether = H_aether
+    
+    def compute(self, B_super: float, **params) -> float:
+        """
+        Calculate superconductor energy density.
+        
+        U_super = B²/(2μ₀)
+        
+        Args:
+            B_super: superconducting field (T)
+        Returns:
+            Energy density (J/m³)
+        """
+        return (B_super**2) / (2.0 * self.mu_0)
+    
+    def to_wolfram(self) -> str:
+        return "M51SuperconductorEnergy[Bsuper_, mu0_: 1.2566*^-6] := Bsuper^2 / (2 * mu0)"
+
+
+class M51ExternalTidalCalculator:
+    """
+    Calculate NGC 5195 tidal influence on M51.
+    
+    Physics: Ug3' = G · M_NGC5195 / d²
+    NGC 5195: M = 1e10 M_sun, d = 50 kpc
+    """
+    
+    def __init__(self, G: float = 6.6743e-11,
+                 M_NGC5195: float = 1.989e40,    # 1e10 M_sun in kg
+                 d: float = 1.543e21):           # 50 kpc in m
+        self.G = G
+        self.M_NGC5195 = M_NGC5195
+        self.d = d
+    
+    def compute(self, **params) -> float:
+        """
+        Calculate NGC 5195 tidal acceleration.
+        
+        Ug3' = G · M_NGC5195 / d²
+        
+        Returns:
+            Tidal acceleration (m/s²)
+        """
+        M = params.get('M_companion', self.M_NGC5195)
+        d = params.get('d', self.d)
+        if d <= 0:
+            return 0.0
+        return self.G * M / (d * d)
+    
+    def to_wolfram(self) -> str:
+        return "M51ExternalTidal[Mcompanion_: 1.989*^40, d_: 1.543*^21, G_: 6.6743*^-11] := (G * Mcompanion) / d^2"
+
+
+class M51ReactionEnergyCalculator:
+    """
+    Calculate nuclear reaction energy decay.
+    
+    Physics: E_react(t) = E₀ · e^(-λt)
+    E₀ = 1e46 J, λ = 0.0005/day
+    """
+    
+    def __init__(self, E0: float = 1e46,       # Initial energy (J)
+                 lambda_decay: float = 0.0005): # Decay constant (1/day)
+        self.E0 = E0
+        self.lambda_decay = lambda_decay
+    
+    def compute(self, t_days: float, **params) -> float:
+        """
+        Calculate reaction energy at time t.
+        
+        E_react(t) = E₀ · e^(-λt)
+        
+        Args:
+            t_days: time in days
+        Returns:
+            Remaining energy (J)
+        """
+        import math
+        return self.E0 * math.exp(-self.lambda_decay * t_days)
+    
+    def to_wolfram(self) -> str:
+        return "M51ReactionEnergy[t_, E0_: 10^46, lambda_: 0.0005] := E0 * Exp[-lambda * t]"
+
+
+class M51InertialVacuumCalculator:
+    """
+    Calculate inertial vacuum term.
+    
+    Physics: λ_I · (ρ_SCm/ρ_UA) · ω_i · cos(πt_n) · (1 + F_RZ)
+    ρ_SCm = 7.09e-37, ρ_UA = 7.09e-36, F_RZ = 0.01
+    """
+    
+    def __init__(self, lambda_I: float = 1.0,
+                 rho_SCm: float = 7.09e-37,     # Superconductive density
+                 rho_UA: float = 7.09e-36,      # Universal aether density
+                 omega_i: float = 1.0,          # Inertial frequency
+                 F_RZ: float = 0.01):           # Resonance factor
+        self.lambda_I = lambda_I
+        self.rho_SCm = rho_SCm
+        self.rho_UA = rho_UA
+        self.omega_i = omega_i
+        self.F_RZ = F_RZ
+    
+    def compute(self, t_n: float, **params) -> float:
+        """
+        Calculate inertial vacuum contribution.
+        
+        Ubi = λ_I · (ρ_SCm/ρ_UA) · ω_i · cos(πt_n) · (1 + F_RZ)
+        
+        Args:
+            t_n: normalized time
+        Returns:
+            Inertial term value
+        """
+        import math
+        ratio = self.rho_SCm / self.rho_UA
+        return self.lambda_I * ratio * self.omega_i * math.cos(math.pi * t_n) * (1 + self.F_RZ)
+    
+    def to_wolfram(self) -> str:
+        return "M51InertialVacuum[tn_, lambdaI_: 1, rhoSCm_: 7.09*^-37, rhoUA_: 7.09*^-36, omegai_: 1, FRZ_: 0.01] := lambdaI * (rhoSCm / rhoUA) * omegai * Cos[Pi * tn] * (1 + FRZ)"
+
+
+class M51SpiralArmWaveCalculator:
+    """
+    Calculate spiral arm density wave |ψ|².
+    
+    Physics: ψ = A · exp(-r²/2σ²) · exp(i(m·φ - ω·t))
+    m = 2 arms, σ = 10 kpc = 3.086e22 m, ω = 1e-15 rad/s
+    """
+    
+    def __init__(self, A: float = 1e-10,        # Amplitude
+                 sigma: float = 3.086e22,       # Scale (m) = 10 kpc
+                 m: int = 2,                    # Number of arms
+                 omega: float = 1e-15):         # Pattern speed (rad/s)
+        self.A = A
+        self.sigma = sigma
+        self.m = m
+        self.omega = omega
+    
+    def compute(self, r: float, phi: float, t: float, **params) -> float:
+        """
+        Calculate spiral density wave |ψ|².
+        
+        |ψ|² = A² · exp(-r²/σ²) · [cos²(m·φ - ω·t) + sin²(m·φ - ω·t)]
+        
+        Args:
+            r: radius (m)
+            phi: azimuthal angle (rad)
+            t: time (s)
+        Returns:
+            Probability density |ψ|²
+        """
+        import math
+        radial = math.exp(-r * r / (2.0 * self.sigma * self.sigma))
+        phase = self.m * phi - self.omega * t
+        # |ψ|² = A² · radial² (phase cancels in norm)
+        return self.A * self.A * radial * radial
+    
+    def to_wolfram(self) -> str:
+        return "M51SpiralArmWave[r_, phi_, t_, A_: 10^-10, sigma_: 3.086*^22, m_: 2, omega_: 10^-15] := A^2 * Exp[-r^2 / sigma^2]"
+
+
+class M51StarFormationForceCalculator:
+    """
+    Calculate star formation feedback force.
+    
+    Physics: F_SF = k_SF · SFR
+    k_SF = 1e-10 coupling constant
+    """
+    
+    def __init__(self, k_SF: float = 1e-10,
+                 M_sun: float = 1.989e30):
+        self.k_SF = k_SF
+        self.M_sun = M_sun
+    
+    def compute(self, SFR: float, **params) -> float:
+        """
+        Calculate star formation force.
+        
+        F_SF = k_SF · (SFR / M_sun)
+        
+        Args:
+            SFR: star formation rate (kg/s)
+        Returns:
+            Feedback force (m/s²)
+        """
+        SFR_normalized = SFR / self.M_sun
+        return self.k_SF * SFR_normalized
+    
+    def to_wolfram(self) -> str:
+        return "M51StarFormationForce[SFR_, kSF_: 10^-10, Msun_: 1.989*^30] := kSF * (SFR / Msun)"
+
+
+class M51TidalForceCalculator:
+    """
+    Calculate tidal force from companion galaxy.
+    
+    Physics: F_tidal = G · M_companion / d²
+    General tidal force calculation
+    """
+    
+    def __init__(self, G: float = 6.6743e-11):
+        self.G = G
+    
+    def compute(self, M_companion: float, d: float, **params) -> float:
+        """
+        Calculate tidal force.
+        
+        F_tidal = G · M_companion / d²
+        
+        Args:
+            M_companion: companion mass (kg)
+            d: separation (m)
+        Returns:
+            Tidal acceleration (m/s²)
+        """
+        if d <= 0:
+            return 0.0
+        return self.G * M_companion / (d * d)
+    
+    def to_wolfram(self) -> str:
+        return "M51TidalForce[Mcompanion_, d_, G_: 6.6743*^-11] := (G * Mcompanion) / d^2"
+
+
+class M51DarkMatterCurvatureCalculator:
+    """
+    Calculate dark matter curvature contribution.
+    
+    Physics: (M_vis + M_DM) · (Δρ/ρ + 3GM/r³)
+    M51: M_vis = 1.2e11 M_sun, M_DM = 4e10 M_sun
+    """
+    
+    def __init__(self, G: float = 6.6743e-11,
+                 M_visible: float = 2.3868e41,  # 1.2e11 M_sun
+                 M_DM: float = 7.956e40):       # 4e10 M_sun
+        self.G = G
+        self.M_visible = M_visible
+        self.M_DM = M_DM
+    
+    def compute(self, delta_rho_over_rho: float, M: float, r: float, **params) -> float:
+        """
+        Calculate dark matter curvature term.
+        
+        DM_curv = (M_vis + M_DM) · (Δρ/ρ + 3GM/r³)
+        
+        Args:
+            delta_rho_over_rho: density perturbation ratio
+            M: enclosed mass (kg)
+            r: radius (m)
+        Returns:
+            Curvature contribution (kg·m/s²)
+        """
+        pert = delta_rho_over_rho
+        curv = 3.0 * self.G * M / (r**3) if r > 0 else 0
+        return (self.M_visible + self.M_DM) * (pert + curv)
+    
+    def to_wolfram(self) -> str:
+        return "M51DarkMatterCurvature[deltaRhoOverRho_, M_, r_, Mvis_, Mdm_, G_: 6.6743*^-11] := (Mvis + Mdm) * (deltaRhoOverRho + 3 * G * M / r^3)"
+
+
+class M51QuantumSpiralIntegralCalculator:
+    """
+    Calculate quantum spiral integral.
+    
+    Physics: (ℏ/√(Δx·Δp)) · ∫|ψ|² dV · (2π/t_Hubble)
+    Heisenberg uncertainty: Δx·Δp ≥ ℏ/2
+    """
+    
+    def __init__(self, hbar: float = 1.0546e-34,  # J·s
+                 Delta_x: float = 1e-10,          # Position uncertainty (m)
+                 t_Hubble: float = 4.355e17):     # Hubble time (s)
+        self.hbar = hbar
+        self.Delta_x = Delta_x
+        self.Delta_p = hbar / Delta_x  # From uncertainty relation
+        self.t_Hubble = t_Hubble
+    
+    def compute(self, psi_squared_integral: float, **params) -> float:
+        """
+        Calculate quantum spiral integral.
+        
+        Q = (ℏ/√(Δx·Δp)) · ∫|ψ|² dV · (2π/t_Hubble)
+        
+        Args:
+            psi_squared_integral: integrated probability density
+        Returns:
+            Quantum term
+        """
+        import math
+        unc = math.sqrt(self.Delta_x * self.Delta_p)
+        return (self.hbar / unc) * psi_squared_integral * (2.0 * math.pi / self.t_Hubble)
+    
+    def to_wolfram(self) -> str:
+        return "M51QuantumSpiralIntegral[psiSqIntegral_, hbar_: 1.0546*^-34, dx_: 10^-10, tHubble_: 4.355*^17] := Module[{dp, unc}, dp = hbar / dx; unc = Sqrt[dx * dp]; (hbar / unc) * psiSqIntegral * (2 * Pi / tHubble)]"
+
+
+SOURCE70_WOLFRAM_CALCULATORS = {
+    'M51DipoleMagneticCalculator': M51DipoleMagneticCalculator(),
+    'M51SuperconductorEnergyCalculator': M51SuperconductorEnergyCalculator(),
+    'M51ExternalTidalCalculator': M51ExternalTidalCalculator(),
+    'M51ReactionEnergyCalculator': M51ReactionEnergyCalculator(),
+    'M51InertialVacuumCalculator': M51InertialVacuumCalculator(),
+    'M51SpiralArmWaveCalculator': M51SpiralArmWaveCalculator(),
+    'M51StarFormationForceCalculator': M51StarFormationForceCalculator(),
+    'M51TidalForceCalculator': M51TidalForceCalculator(),
+    'M51DarkMatterCurvatureCalculator': M51DarkMatterCurvatureCalculator(),
+    'M51QuantumSpiralIntegralCalculator': M51QuantumSpiralIntegralCalculator(),
+}
+
+
+# ============================================================================
+# SOURCE71 WOLFRAM CALCULATORS - M31 Andromeda Galaxy UQFF Module
+# From source71_wolfram.cpp - Classes 660-669
+# Physics: Stellar halo, NFW dark matter, rotation curve, M31* SMBH
+# ============================================================================
+
+class M31StellarHaloDensityCalculator:
+    """
+    Calculate M31 stellar halo density.
+    
+    Physics: ρ_halo(r) = ρ₀ · (r/r₀)^α · exp(-r/r_break)
+    Broken power law with α = -2.5, r_break = 100 kpc
+    """
+    
+    def __init__(self, rho_0: float = 1e6,       # Central density (M_sun/kpc³)
+                 r_0: float = 1.0,               # Reference radius (kpc)
+                 alpha: float = -2.5,            # Power law index
+                 r_break: float = 100.0):        # Break radius (kpc)
+        self.rho_0 = rho_0
+        self.r_0 = r_0
+        self.alpha = alpha
+        self.r_break = r_break
+    
+    def compute(self, r_kpc: float, **params) -> float:
+        """
+        Calculate stellar halo density.
+        
+        ρ_halo(r) = ρ₀ · (r/r₀)^α · exp(-r/r_break)
+        
+        Args:
+            r_kpc: radius (kpc)
+        Returns:
+            Stellar density (M_sun/kpc³)
+        """
+        import math
+        if r_kpc <= 0:
+            return self.rho_0
+        power = (r_kpc / self.r_0) ** self.alpha
+        exp_factor = math.exp(-r_kpc / self.r_break)
+        return self.rho_0 * power * exp_factor
+    
+    def to_wolfram(self) -> str:
+        return "M31StellarHaloDensity[r_, rho0_: 10^6, r0_: 1, alpha_: -2.5, rbreak_: 100] := rho0 * (r / r0)^alpha * Exp[-r / rbreak]"
+
+
+class M31DarkMatterNFWProfileCalculator:
+    """
+    Calculate M31 dark matter NFW profile.
+    
+    Physics: ρ_DM = ρ_s / [x(1+x)²], x = r/r_s
+    ρ_s = 1e7 M_sun/kpc³, r_s = 25 kpc, M_vir = 1.5e12 M_sun
+    """
+    
+    def __init__(self, rho_s: float = 1e7,    # Scale density (M_sun/kpc³)
+                 r_s: float = 25.0,           # Scale radius (kpc)
+                 M_vir: float = 1.5e12):      # Virial mass (M_sun)
+        self.rho_s = rho_s
+        self.r_s = r_s
+        self.M_vir = M_vir
+    
+    def compute(self, r_kpc: float, **params) -> float:
+        """
+        Calculate NFW dark matter density.
+        
+        ρ_DM = ρ_s / [x(1+x)²], x = r/r_s
+        
+        Args:
+            r_kpc: radius (kpc)
+        Returns:
+            Dark matter density (M_sun/kpc³)
+        """
+        if r_kpc <= 0:
+            return self.rho_s  # Avoid division by zero
+        x = r_kpc / self.r_s
+        return self.rho_s / (x * (1 + x)**2)
+    
+    def to_wolfram(self) -> str:
+        return "M31DarkMatterNFWProfile[r_, rhoS_: 10^7, rS_: 25] := Module[{x}, x = r / rS; rhoS / (x * (1 + x)^2)]"
+
+
+class M31RotationCurveCalculator:
+    """
+    Calculate M31 rotation curve.
+    
+    Physics: v_rot² = GM(<r)/r
+    Components: M_stars = 1e11, M_gas = 1e10, M_DM = 1.5e12 M_sun
+    """
+    
+    def __init__(self, G: float = 6.674e-11,
+                 M_stars: float = 1e11,       # Stellar mass (M_sun)
+                 M_gas: float = 1e10,         # Gas mass (M_sun)
+                 M_DM: float = 1.5e12):       # Dark matter mass (M_sun)
+        self.G = G
+        self.M_stars = M_stars
+        self.M_gas = M_gas
+        self.M_DM = M_DM
+        self.M_sun = 1.989e30  # kg
+        self.kpc_to_m = 3.086e19
+    
+    def compute(self, r_kpc: float, **params) -> float:
+        """
+        Calculate rotation velocity.
+        
+        v_rot = √(GM(<r)/r)
+        
+        Args:
+            r_kpc: radius (kpc)
+        Returns:
+            Rotation velocity (km/s)
+        """
+        import math
+        if r_kpc <= 0:
+            return 0.0
+        # Total enclosed mass (simplified - assume uniform for demo)
+        M_total = (self.M_stars + self.M_gas + self.M_DM) * self.M_sun
+        r_m = r_kpc * self.kpc_to_m
+        v_rot = math.sqrt(self.G * M_total / r_m)
+        return v_rot / 1000  # Convert to km/s
+    
+    def to_wolfram(self) -> str:
+        return "M31RotationCurve[r_, Mstars_: 10^11, Mgas_: 10^10, Mdm_: 1.5*^12, G_: 6.674*^-11, Msun_: 1.989*^30, kpcToM_: 3.086*^19] := Module[{Mtot, rM}, Mtot = (Mstars + Mgas + Mdm) * Msun; rM = r * kpcToM; Sqrt[G * Mtot / rM] / 1000]"
+
+
+class M31CentralBlackHoleCalculator:
+    """
+    Calculate M31* SMBH gravitational potential.
+    
+    Physics: Φ_BH = -GM_BH/r (Schwarzschild potential)
+    M31* SMBH: M_BH = 1.4e8 M_sun
+    """
+    
+    def __init__(self, G: float = 6.674e-11,
+                 M_BH: float = 1.4e8):        # Black hole mass (M_sun)
+        self.G = G
+        self.M_BH = M_BH
+        self.M_sun = 1.989e30
+        self.pc_to_m = 3.086e16
+    
+    def compute(self, r_pc: float, **params) -> float:
+        """
+        Calculate SMBH gravitational potential.
+        
+        Φ_BH = -GM_BH/r
+        
+        Args:
+            r_pc: radius (pc)
+        Returns:
+            Gravitational potential (J/kg = m²/s²)
+        """
+        if r_pc <= 0:
+            return 0.0
+        M_BH_kg = self.M_BH * self.M_sun
+        r_m = r_pc * self.pc_to_m
+        return -self.G * M_BH_kg / r_m
+    
+    def to_wolfram(self) -> str:
+        return "M31CentralBlackHole[r_, MBH_: 1.4*^8, G_: 6.674*^-11, Msun_: 1.989*^30, pcToM_: 3.086*^16] := Module[{MBHkg, rM}, MBHkg = MBH * Msun; rM = r * pcToM; -G * MBHkg / rM]"
+
+
+class M31TidalStreamCalculator:
+    """
+    Calculate Milky Way tidal force on M31 streams.
+    
+    Physics: F_tidal = -2·G·M_MW·r·sin(2θ)/d³
+    MW: M_MW = 1e12 M_sun, d_MW_M31 = 785 kpc
+    """
+    
+    def __init__(self, G: float = 6.674e-11,
+                 M_MW: float = 1e12,          # Milky Way mass (M_sun)
+                 d_MW_M31: float = 785.0):    # MW-M31 separation (kpc)
+        self.G = G
+        self.M_MW = M_MW
+        self.d_MW_M31 = d_MW_M31
+        self.M_sun = 1.989e30
+        self.kpc_to_m = 3.086e19
+    
+    def compute(self, r_kpc: float, theta_rad: float, **params) -> float:
+        """
+        Calculate MW tidal force on M31.
+        
+        F_tidal = -2·G·M_MW·r·sin(2θ)/d³
+        
+        Args:
+            r_kpc: radius in M31 (kpc)
+            theta_rad: angle (radians)
+        Returns:
+            Tidal force (N/kg = m/s²)
+        """
+        import math
+        r_m = r_kpc * self.kpc_to_m
+        d_m = self.d_MW_M31 * self.kpc_to_m
+        M_MW_kg = self.M_MW * self.M_sun
+        d_cubed = d_m ** 3
+        return -2.0 * self.G * M_MW_kg * r_m * math.sin(2.0 * theta_rad) / d_cubed
+    
+    def to_wolfram(self) -> str:
+        return "M31TidalStream[r_, theta_, MMW_: 10^12, dMWM31_: 785, G_: 6.674*^-11, Msun_: 1.989*^30, kpcToM_: 3.086*^19] := Module[{rM, dM, MMWkg, dCubed}, rM = r * kpcToM; dM = dMWM31 * kpcToM; MMWkg = MMW * Msun; dCubed = dM^3; -2 * G * MMWkg * rM * Sin[2 * theta] / dCubed]"
+
+
+class M31SatelliteInteractionCalculator:
+    """
+    Calculate gravitational potential from M32 + M110 satellites.
+    
+    Physics: Φ_sat(r) = -Σᵢ G·M_i/|r - r_i|
+    M32: 3e9 M_sun at 25 kpc, M110: 4e9 M_sun at 50 kpc
+    """
+    
+    def __init__(self, G: float = 6.674e-11):
+        self.G = G
+        self.M_sun = 1.989e30
+        self.kpc_to_m = 3.086e19
+        # M32 and M110 parameters
+        self.satellites = [
+            {'M': 3e9, 'd': 25.0},   # M32
+            {'M': 4e9, 'd': 50.0}    # M110
+        ]
+    
+    def compute(self, r_kpc: float, **params) -> float:
+        """
+        Calculate satellite gravitational potential.
+        
+        Φ_sat = -Σᵢ G·M_i/|r - r_i|
+        
+        Args:
+            r_kpc: radius (kpc)
+        Returns:
+            Gravitational potential (J/kg = m²/s²)
+        """
+        if r_kpc <= 0:
+            return 0.0
+        r_m = r_kpc * self.kpc_to_m
+        potential = 0.0
+        for sat in self.satellites:
+            d_i_m = sat['d'] * self.kpc_to_m
+            separation = abs(r_m - d_i_m)
+            if separation > 0:
+                M_i_kg = sat['M'] * self.M_sun
+                potential -= self.G * M_i_kg / separation
+        return potential
+    
+    def to_wolfram(self) -> str:
+        return "M31SatelliteInteraction[r_, G_: 6.674*^-11, Msat_: {3*10^9, 4*10^9}, dsat_: {25, 50}, Msun_: 1.989*^30, kpcToM_: 3.086*^19] := Module[{rM, potential}, rM = r * kpcToM; potential = Sum[-G * Msat[[i]] * Msun / Abs[rM - dsat[[i]] * kpcToM], {i, 1, Length[Msat]}]; potential]"
+
+
+class M31StarFormationRateCalculator:
+    """
+    Calculate star formation rate via Kennicutt-Schmidt law.
+    
+    Physics: SFR(r) = ν·Σ_gas^N
+    ν = 2.5e-4, N = 1.4, Σ₀ = 10 M_sun/pc², r_gas = 15 kpc
+    """
+    
+    def __init__(self, nu: float = 2.5e-4,      # Efficiency
+                 N: float = 1.4,                # Power law index
+                 Sigma_0: float = 10.0,         # Central gas density (M_sun/pc²)
+                 r_gas: float = 15.0):          # Gas scale length (kpc)
+        self.nu = nu
+        self.N = N
+        self.Sigma_0 = Sigma_0
+        self.r_gas = r_gas
+    
+    def compute(self, r_kpc: float, **params) -> float:
+        """
+        Calculate star formation rate.
+        
+        SFR(r) = ν·Σ_gas^N, Σ_gas = Σ₀·exp(-r/r_gas)
+        
+        Args:
+            r_kpc: radius (kpc)
+        Returns:
+            Star formation rate (M_sun/yr/pc²)
+        """
+        import math
+        Sigma_gas = self.Sigma_0 * math.exp(-r_kpc / self.r_gas)
+        return self.nu * (Sigma_gas ** self.N)
+    
+    def to_wolfram(self) -> str:
+        return "M31StarFormationRate[r_, nu_: 2.5*^-4, N_: 1.4, Sigma0_: 10, rgas_: 15] := Module[{SigmaGas}, SigmaGas = Sigma0 * Exp[-r / rgas]; nu * SigmaGas^N]"
+
+
+class M31DiskWarpCalculator:
+    """
+    Calculate M31 disk vertical warp.
+    
+    Physics: z_warp(r,φ) = A_warp·sin(m·φ)·(r/r_warp)·exp(-r/r_damp)
+    A_warp = 0.5 kpc, m = 1, r_warp = 20 kpc, r_damp = 50 kpc
+    """
+    
+    def __init__(self, A_warp: float = 0.5,     # Warp amplitude (kpc)
+                 m: int = 1,                    # Azimuthal mode
+                 r_warp: float = 20.0,          # Onset radius (kpc)
+                 r_damp: float = 50.0):         # Damping scale (kpc)
+        self.A_warp = A_warp
+        self.m = m
+        self.r_warp = r_warp
+        self.r_damp = r_damp
+    
+    def compute(self, r_kpc: float, phi_rad: float, **params) -> float:
+        """
+        Calculate disk warp height.
+        
+        z_warp = A_warp·sin(m·φ)·(r/r_warp)·exp(-r/r_damp)
+        
+        Args:
+            r_kpc: radius (kpc)
+            phi_rad: azimuthal angle (radians)
+        Returns:
+            Warp height (kpc)
+        """
+        import math
+        return self.A_warp * math.sin(self.m * phi_rad) * (r_kpc / self.r_warp) * math.exp(-r_kpc / self.r_damp)
+    
+    def to_wolfram(self) -> str:
+        return "M31DiskWarp[r_, phi_, Awarp_: 0.5, m_: 1, rwarp_: 20, rdamp_: 50] := Awarp * Sin[m * phi] * (r / rwarp) * Exp[-r / rdamp]"
+
+
+class M31MagneticFieldCalculator:
+    """
+    Calculate M31 spiral magnetic field.
+    
+    Physics: B_spiral(r,φ) = B₀·exp(-r/r_B)·f(p·ln(r/r₀) - φ)
+    B₀ = 5 μG, r_B = 10 kpc, p = 0.3 rad⁻¹, r₀ = 8 kpc
+    """
+    
+    def __init__(self, B_0: float = 5.0,        # Central field (μG)
+                 r_B: float = 10.0,             # Scale length (kpc)
+                 p: float = 0.3,                # Pitch angle param
+                 r_0: float = 8.0):             # Reference radius (kpc)
+        self.B_0 = B_0
+        self.r_B = r_B
+        self.p = p
+        self.r_0 = r_0
+    
+    def compute(self, r_kpc: float, phi_rad: float, **params) -> float:
+        """
+        Calculate spiral magnetic field strength.
+        
+        B = B₀·exp(-r/r_B)·(simplified)
+        
+        Args:
+            r_kpc: radius (kpc)
+            phi_rad: azimuthal angle (radians)
+        Returns:
+            Magnetic field magnitude (μG)
+        """
+        import math
+        if r_kpc <= 0:
+            return 0.0
+        exp_factor = math.exp(-r_kpc / self.r_B)
+        # Spiral phase
+        spiral_phase = self.p * math.log(r_kpc / self.r_0) - phi_rad
+        # Magnitude
+        B_mag = self.B_0 * exp_factor
+        return B_mag
+    
+    def to_wolfram(self) -> str:
+        return "M31MagneticField[r_, phi_, B0_: 5, rB_: 10, p_: 0.3, r0_: 8] := Module[{expFactor}, expFactor = Exp[-r / rB]; B0 * expFactor]"
+
+
+class M31QuantumDarkMatterCalculator:
+    """
+    Calculate quantum/fuzzy dark matter wavefunction.
+    
+    Physics: |ψ_DM|² = A²·exp(-r²/σ²)
+    σ = 1 kpc core radius for m_DM ~ 10⁻²² eV
+    """
+    
+    def __init__(self, A: float = 1.0,          # Amplitude
+                 sigma: float = 1.0,            # Core radius (kpc)
+                 E: float = 1e-50,              # Energy (J)
+                 hbar: float = 1.055e-34):      # ℏ (J·s)
+        self.A = A
+        self.sigma = sigma
+        self.E = E
+        self.hbar = hbar
+        self.kpc_to_m = 3.086e19
+    
+    def compute(self, r_kpc: float, t_s: float = 0, **params) -> float:
+        """
+        Calculate quantum DM probability density.
+        
+        |ψ_DM|² = A²·exp(-r²/σ²)
+        
+        Args:
+            r_kpc: radius (kpc)
+            t_s: time (s)
+        Returns:
+            Probability density |ψ|²
+        """
+        import math
+        r_m = r_kpc * self.kpc_to_m
+        sigma_m = self.sigma * self.kpc_to_m
+        spatial = math.exp(-r_m**2 / (2.0 * sigma_m**2))
+        return self.A**2 * spatial**2
+    
+    def to_wolfram(self) -> str:
+        return "M31QuantumDarkMatter[r_, A_: 1, sigma_: 1, kpcToM_: 3.086*^19] := Module[{rM, sigmaM, spatial}, rM = r * kpcToM; sigmaM = sigma * kpcToM; spatial = Exp[-rM^2 / (2 * sigmaM^2)]; A^2 * spatial^2]"
+
+
+SOURCE71_WOLFRAM_CALCULATORS = {
+    'M31StellarHaloDensityCalculator': M31StellarHaloDensityCalculator(),
+    'M31DarkMatterNFWProfileCalculator': M31DarkMatterNFWProfileCalculator(),
+    'M31RotationCurveCalculator': M31RotationCurveCalculator(),
+    'M31CentralBlackHoleCalculator': M31CentralBlackHoleCalculator(),
+    'M31TidalStreamCalculator': M31TidalStreamCalculator(),
+    'M31SatelliteInteractionCalculator': M31SatelliteInteractionCalculator(),
+    'M31StarFormationRateCalculator': M31StarFormationRateCalculator(),
+    'M31DiskWarpCalculator': M31DiskWarpCalculator(),
+    'M31MagneticFieldCalculator': M31MagneticFieldCalculator(),
+    'M31QuantumDarkMatterCalculator': M31QuantumDarkMatterCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -158420,4 +159560,40 @@ __all__.extend([
     'HydrogenVacuumDensityRatioCalculator',
     'HydrogenQuantumEnergyCalculator',
     'SOURCE68_WOLFRAM_CALCULATORS',
+    # Source69 Compression Factor Module (Feb 26, 2026) - 10 Calculator Classes
+    'CompressionExpansionFactorCalculator',
+    'CompressionSuperconductiveCorrectionCalculator',
+    'CompressionEnvironmentalForceCalculator',
+    'CompressionMassEvolutionCalculator',
+    'CompressionUg1GravityCalculator',
+    'CompressionUg3ExternalGravityCalculator',
+    'CompressionUg4SuperconductiveCalculator',
+    'CompressionQuantumWaveCalculator',
+    'CompressionDarkMatterPerturbationCalculator',
+    'CompressionFluidDynamicsCalculator',
+    'SOURCE69_WOLFRAM_CALCULATORS',
+    # Source70 M51 Whirlpool Galaxy UQFF (Feb 26, 2026) - 10 Calculator Classes
+    'M51DipoleMagneticCalculator',
+    'M51SuperconductorEnergyCalculator',
+    'M51ExternalTidalCalculator',
+    'M51ReactionEnergyCalculator',
+    'M51InertialVacuumCalculator',
+    'M51SpiralArmWaveCalculator',
+    'M51StarFormationForceCalculator',
+    'M51TidalForceCalculator',
+    'M51DarkMatterCurvatureCalculator',
+    'M51QuantumSpiralIntegralCalculator',
+    'SOURCE70_WOLFRAM_CALCULATORS',
+    # Source71 M31 Andromeda Galaxy UQFF (Feb 26, 2026) - 10 Calculator Classes
+    'M31StellarHaloDensityCalculator',
+    'M31DarkMatterNFWProfileCalculator',
+    'M31RotationCurveCalculator',
+    'M31CentralBlackHoleCalculator',
+    'M31TidalStreamCalculator',
+    'M31SatelliteInteractionCalculator',
+    'M31StarFormationRateCalculator',
+    'M31DiskWarpCalculator',
+    'M31MagneticFieldCalculator',
+    'M31QuantumDarkMatterCalculator',
+    'SOURCE71_WOLFRAM_CALCULATORS',
 ])
