@@ -12249,6 +12249,486 @@ ORB_ANALYSIS_29_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS 30: UFE ORB EXP 2_20 - Extended Sequence & Batch 36 Progress
+# UFE ORB EXP 2_20_07Mar2025: 4965-image extended sequence, reactor parameters
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Physics parameters for Orb Analysis 30
+ORB_ANALYSIS_30_PARAMS = {
+    'session_id': 'UFE_ORB_EXP_2_20_07Mar2025',
+    'extended_sequence': {
+        'total_images': 4965,
+        'total_duration_s': 149.88,
+        'fps': 33.3,
+        'wavelength_um': (0.7, 10.0),
+    },
+    'batch_36': {
+        'frames': (376, 400),
+        'timestamps_s': (11.28, 12.00),
+        'images_uploaded': 23,
+        'images_required': 25,
+        'plasmoid_count': (40, 50),
+    },
+    'reactor_parameters': {
+        'radius_m': 0.0889,
+        'radius_error_pct': 0.5,
+        'plasmoid_mass_g': 0.5,
+        'mass_error_pct': 2.0,
+        'bulb_resonance_rad_s': 2 * 3.14159 * 6000,
+        'resonance_error_pct': 1.0,
+    },
+    'thermal_gradient': {
+        'T_hot_K': 366,
+        'T_cold_K': 288,
+        'gradient_error_pct': 1.0,
+    },
+    'reactivity_energy': {
+        'E_react_W_m3': 1e15,
+        'decay_constant': 0.001,
+        'efficiency_pct': 0.29,
+    },
+    'component_focus': ['Ug_1', 'Ug_3', 'Ub_i', 'Um', 'A_μν'],
+}
+
+
+class Batch36ProgressCalculator:
+    """
+    Track partial batch #36 uploads (23/25 images so far).
+    Monitors completion status and frame coverage.
+    
+    UFE ORB EXP 2_20: Batch #36 spans frames 376-400 (11.28-12.00s).
+    """
+    
+    def __init__(self):
+        self.name = "Batch36ProgressCalculator"
+        self.batch_number = 36
+        self.required_images = 25
+        self.frame_interval = 0.03  # seconds per frame at 33.3 fps
+        
+    def compute(self, images_uploaded: int = 23, start_frame: int = 376) -> dict:
+        """
+        Track batch #36 completion progress.
+        
+        Args:
+            images_uploaded: Number of images uploaded (default 23)
+            start_frame: Starting frame number (default 376)
+            
+        Returns:
+            Batch completion metrics and frame coverage
+        """
+        completion_pct = (images_uploaded / self.required_images) * 100
+        remaining = self.required_images - images_uploaded
+        
+        # Calculate frame coverage
+        last_frame = start_frame + images_uploaded - 1
+        start_time = start_frame * self.frame_interval
+        current_time = last_frame * self.frame_interval
+        end_time = (start_frame + self.required_images - 1) * self.frame_interval
+        
+        return {
+            'batch_number': self.batch_number,
+            'images_uploaded': images_uploaded,
+            'images_required': self.required_images,
+            'remaining': remaining,
+            'completion_pct': round(completion_pct, 1),
+            'is_complete': images_uploaded >= self.required_images,
+            'frame_range': f"{start_frame}-{last_frame}",
+            'frame_coverage': f"{start_frame}-{start_frame + self.required_images - 1}",
+            'time_range_s': f"{start_time:.2f}-{current_time:.2f}",
+            'batch_duration_s': end_time - start_time,
+            'status': 'complete' if remaining == 0 else f'{remaining} images remaining',
+        }
+    
+    def get_missing_frames(self, images_uploaded: int = 23, start_frame: int = 376) -> list:
+        """Get list of missing frame numbers."""
+        uploaded_frames = list(range(start_frame, start_frame + images_uploaded))
+        all_frames = list(range(start_frame, start_frame + self.required_images))
+        return [f for f in all_frames if f not in uploaded_frames]
+
+
+class ExtendedSequenceCalculator:
+    """
+    Calculate metrics for 4965-image extended sequence (149.88s total).
+    10x larger than original 496-image scope.
+    
+    UFE ORB EXP 2_20: Full plasma convection sequence at 33.3 fps.
+    """
+    
+    def __init__(self):
+        self.name = "ExtendedSequenceCalculator"
+        self.total_images = 4965
+        self.total_duration = 149.88  # seconds
+        self.fps = 33.3
+        self.original_images = 496
+        self.batch_size = 25
+        
+    def compute(self, current_batch: int = 36) -> dict:
+        """
+        Calculate extended sequence coverage metrics.
+        
+        Args:
+            current_batch: Current batch number being processed
+            
+        Returns:
+            Sequence coverage and completion metrics
+        """
+        total_batches = self.total_images // self.batch_size
+        remainder = self.total_images % self.batch_size
+        
+        # Calculate progress based on current batch
+        completed_images = current_batch * self.batch_size
+        progress_pct = (completed_images / self.total_images) * 100
+        time_covered = completed_images / self.fps
+        
+        return {
+            'total_images': self.total_images,
+            'total_duration_s': self.total_duration,
+            'fps': self.fps,
+            'scale_factor': self.total_images / self.original_images,
+            'total_batches': total_batches,
+            'remainder_images': remainder,
+            'current_batch': current_batch,
+            'completed_images': min(completed_images, self.total_images),
+            'progress_pct': round(min(progress_pct, 100), 2),
+            'time_covered_s': round(time_covered, 2),
+            'remaining_batches': max(0, total_batches - current_batch),
+            'analysis_scope': 'extended_4965',
+        }
+    
+    def frame_to_time(self, frame: int) -> float:
+        """Convert frame number to timestamp in seconds."""
+        return frame * (1 / self.fps)
+    
+    def time_to_frame(self, time_s: float) -> int:
+        """Convert timestamp to approximate frame number."""
+        return int(time_s * self.fps)
+
+
+class ReactorRadiusCalculator:
+    """
+    Precise reactor radius measurement: r = 0.0889 m (±0.5%).
+    3.5-inch × 10-inch glass cylinder dimensions.
+    
+    UFE ORB EXP 2_20: Refined geometric parameters for field calculations.
+    """
+    
+    def __init__(self):
+        self.name = "ReactorRadiusCalculator"
+        self.radius_m = 0.0889  # meters
+        self.error_pct = 0.5
+        self.cylinder_height_m = 0.254  # 10 inches
+        self.cylinder_diameter_m = 0.089  # 3.5 inches
+        
+    def compute(self, radial_position: float = 0.0) -> dict:
+        """
+        Calculate radial metrics for reactor geometry.
+        
+        Args:
+            radial_position: Position from center (0 = center, 1 = wall)
+            
+        Returns:
+            Geometric measurements and field scaling factors
+        """
+        import math
+        
+        actual_r = radial_position * self.radius_m
+        r_error = self.radius_m * (self.error_pct / 100)
+        
+        # Volume calculations
+        volume = math.pi * self.radius_m**2 * self.cylinder_height_m
+        cross_section = math.pi * self.radius_m**2
+        
+        # Field scaling (1/r² dependence)
+        if actual_r > 0:
+            field_scaling = 1 / actual_r**2
+        else:
+            field_scaling = float('inf')  # At center
+            
+        return {
+            'radius_m': self.radius_m,
+            'radius_error_m': r_error,
+            'error_pct': self.error_pct,
+            'radial_position': radial_position,
+            'actual_r_m': actual_r,
+            'cylinder_height_m': self.cylinder_height_m,
+            'cylinder_diameter_m': self.cylinder_diameter_m,
+            'volume_m3': round(volume, 8),
+            'cross_section_m2': round(cross_section, 6),
+            'field_scaling': field_scaling if field_scaling != float('inf') else 'infinite_at_center',
+            'dimensions_inches': '3.5 × 10',
+        }
+
+
+class PlasmoidMassEstimateCalculator:
+    """
+    Plasmoid mass estimate: M_s = 0.5 g (±2%).
+    Individual plasma spot mass contribution.
+    
+    UFE ORB EXP 2_20: Mass parameterization for gravitational calculations.
+    """
+    
+    def __init__(self):
+        self.name = "PlasmoidMassEstimateCalculator"
+        self.mass_g = 0.5
+        self.error_pct = 2.0
+        self.G = 6.674e-11  # Gravitational constant m³/(kg·s²)
+        
+    def compute(self, plasmoid_count: int = 45, separation_m: float = 0.01) -> dict:
+        """
+        Calculate aggregate plasmoid mass and gravitational effects.
+        
+        Args:
+            plasmoid_count: Number of plasmoid spots (typical 40-50)
+            separation_m: Average separation between plasmoids
+            
+        Returns:
+            Mass and gravitational metrics
+        """
+        mass_kg = self.mass_g / 1000  # Convert to kg
+        mass_error_kg = mass_kg * (self.error_pct / 100)
+        
+        total_mass_kg = mass_kg * plasmoid_count
+        
+        # Gravitational interaction between plasmoids
+        if separation_m > 0:
+            F_grav = self.G * mass_kg**2 / separation_m**2
+        else:
+            F_grav = 0
+            
+        return {
+            'single_mass_g': self.mass_g,
+            'single_mass_kg': mass_kg,
+            'mass_error_pct': self.error_pct,
+            'mass_error_kg': mass_error_kg,
+            'plasmoid_count': plasmoid_count,
+            'total_mass_kg': total_mass_kg,
+            'total_mass_g': self.mass_g * plasmoid_count,
+            'separation_m': separation_m,
+            'gravitational_force_N': F_grav,
+            'mass_unit': 'grams',
+        }
+
+
+class BulbResonanceCalculator:
+    """
+    Bulb resonance frequency: ω_s = 2π × 6000 rad/s (±1%).
+    Drives non-local signal potential via Um component.
+    
+    UFE ORB EXP 2_20: 6000 Hz resonance for waveless communication.
+    """
+    
+    def __init__(self):
+        self.name = "BulbResonanceCalculator"
+        self.frequency_Hz = 6000  # Hz
+        self.error_pct = 1.0
+        self.angular_freq = 2 * 3.14159 * self.frequency_Hz
+        
+    def compute(self, time_s: float = 10.0) -> dict:
+        """
+        Calculate resonance properties and phase evolution.
+        
+        Args:
+            time_s: Current experiment time in seconds
+            
+        Returns:
+            Resonance metrics and phase information
+        """
+        import math
+        
+        period = 1 / self.frequency_Hz
+        cycles_elapsed = time_s * self.frequency_Hz
+        current_phase = (time_s * self.angular_freq) % (2 * math.pi)
+        
+        # Wavelength (assuming speed ~340 m/s for acoustic)
+        wavelength_m = 340 / self.frequency_Hz
+        
+        return {
+            'frequency_Hz': self.frequency_Hz,
+            'angular_frequency_rad_s': round(self.angular_freq, 2),
+            'error_pct': self.error_pct,
+            'period_s': period,
+            'cycles_elapsed': round(cycles_elapsed, 1),
+            'current_phase_rad': round(current_phase, 4),
+            'wavelength_m': round(wavelength_m, 4),
+            'experiment_time_s': time_s,
+            'resonance_type': 'bulb_electromagnetic',
+            'signal_potential': 'non-local',
+        }
+
+
+class ThermalGradientEvolutionCalculator:
+    """
+    Thermal gradient: 366K → 288K (±1%).
+    Drives cycle dynamics via T_s parameter.
+    
+    UFE ORB EXP 2_20: Hot bulb (366K) to cool wax cap (288K) gradient.
+    """
+    
+    def __init__(self):
+        self.name = "ThermalGradientEvolutionCalculator"
+        self.T_hot = 366  # Kelvin (near bulb)
+        self.T_cold = 288  # Kelvin (wax cap / top)
+        self.error_pct = 1.0
+        
+    def compute(self, position: float = 0.5, time_s: float = 10.0) -> dict:
+        """
+        Calculate thermal gradient at given position and time.
+        
+        Args:
+            position: Vertical position (0 = top/cold, 1 = bottom/hot)
+            time_s: Current experiment time
+            
+        Returns:
+            Temperature and gradient metrics
+        """
+        # Linear interpolation for temperature
+        delta_T = self.T_hot - self.T_cold
+        T_at_position = self.T_cold + delta_T * position
+        
+        # Temperature error
+        T_error = T_at_position * (self.error_pct / 100)
+        
+        # Thermal gradient magnitude
+        gradient_K_per_m = delta_T / 0.254  # Over cylinder height (10 inches)
+        
+        # Buoyancy factor (hotter = more buoyant)
+        buoyancy_factor = (T_at_position - self.T_cold) / delta_T
+        
+        return {
+            'T_hot_K': self.T_hot,
+            'T_cold_K': self.T_cold,
+            'delta_T_K': delta_T,
+            'position': position,
+            'temperature_K': round(T_at_position, 1),
+            'temperature_error_K': round(T_error, 2),
+            'gradient_K_per_m': round(gradient_K_per_m, 1),
+            'buoyancy_factor': round(buoyancy_factor, 3),
+            'experiment_time_s': time_s,
+            'thermal_driver': 'convection',
+        }
+
+
+class ReactivityEnergyDensityCalculator:
+    """
+    Reactivity energy density: E_react = 10¹⁵ W/m³ · e^(-0.001·t_n).
+    ~0.29% efficiency of 65W input, ~50% above classical plasma.
+    
+    UFE ORB EXP 2_20: Time-decaying reactivity model.
+    """
+    
+    def __init__(self):
+        self.name = "ReactivityEnergyDensityCalculator"
+        self.E_react_base = 1e15  # W/m³
+        self.decay_constant = 0.001  # per second
+        self.efficiency_pct = 0.29
+        self.input_power_W = 65
+        self.classical_enhancement = 1.5  # 50% above classical
+        
+    def compute(self, time_s: float = 10.0) -> dict:
+        """
+        Calculate time-dependent reactivity energy density.
+        
+        Args:
+            time_s: Current experiment time (t_n)
+            
+        Returns:
+            Energy density and efficiency metrics
+        """
+        import math
+        
+        # Time-decaying reactivity
+        decay_factor = math.exp(-self.decay_constant * time_s)
+        E_react_current = self.E_react_base * decay_factor
+        
+        # Output power estimate
+        output_power = self.input_power_W * (self.efficiency_pct / 100)
+        
+        # Classical comparison
+        classical_output = output_power / self.classical_enhancement
+        
+        return {
+            'E_react_base_W_m3': self.E_react_base,
+            'decay_constant': self.decay_constant,
+            'time_s': time_s,
+            'decay_factor': round(decay_factor, 6),
+            'E_react_current_W_m3': E_react_current,
+            'input_power_W': self.input_power_W,
+            'efficiency_pct': self.efficiency_pct,
+            'output_power_W': output_power,
+            'classical_output_W': classical_output,
+            'enhancement_over_classical': self.classical_enhancement,
+            'formula': f'E_react = {self.E_react_base:.0e} × e^(-{self.decay_constant}×t)',
+        }
+
+
+class ComponentFocusCalculator:
+    """
+    Inter-component analysis: Ug_1, Ug_3, Ub_i, Um, A_μν.
+    Field components driving plasmoid dynamics.
+    
+    UFE ORB EXP 2_20: Component coupling and stabilization analysis.
+    """
+    
+    def __init__(self):
+        self.name = "ComponentFocusCalculator"
+        self.components = {
+            'Ug_1': {'name': 'Internal Dipole', 'function': 'brightness_tracking', 'trend': 'stabilizing'},
+            'Ug_3': {'name': 'Magnetic Strings', 'function': 'spins_jumps', 'trend': 'moderating'},
+            'Ub_i': {'name': 'Universal Buoyancy', 'function': 'cycle_stabilization', 'trend': 'deepening'},
+            'Um': {'name': 'Universal Magnetism', 'function': '6000Hz_resonance', 'trend': 'active'},
+            'A_μν': {'name': 'Universal Cosmic Aether', 'function': 'non_locality', 'trend': 'enhancing'},
+        }
+        
+    def compute(self, active_components: list = None) -> dict:
+        """
+        Analyze component focus and coupling.
+        
+        Args:
+            active_components: List of active component keys
+            
+        Returns:
+            Component status and coupling metrics
+        """
+        if active_components is None:
+            active_components = list(self.components.keys())
+            
+        active_analysis = {}
+        for comp_key in active_components:
+            if comp_key in self.components:
+                active_analysis[comp_key] = self.components[comp_key]
+                
+        # Component coupling strength
+        coupling_pairs = []
+        for i, c1 in enumerate(active_components):
+            for c2 in active_components[i+1:]:
+                coupling_pairs.append(f"{c1}↔{c2}")
+                
+        return {
+            'total_components': len(self.components),
+            'active_components': len(active_analysis),
+            'component_analysis': active_analysis,
+            'coupling_pairs': coupling_pairs,
+            'primary_drivers': ['Ub_i', 'Ug_3', 'Um', 'A_μν'],
+            'stabilization_mode': 'cycle_aligned',
+            'cycle_period_s': 3.3,
+            'sub_cycle_period_s': 0.7,
+        }
+
+
+# Registry for Orb Analysis 30 calculators
+ORB_ANALYSIS_30_CALCULATORS = {
+    'Batch36ProgressCalculator': Batch36ProgressCalculator(),
+    'ExtendedSequenceCalculator': ExtendedSequenceCalculator(),
+    'ReactorRadiusCalculator': ReactorRadiusCalculator(),
+    'PlasmoidMassEstimateCalculator': PlasmoidMassEstimateCalculator(),
+    'BulbResonanceCalculator': BulbResonanceCalculator(),
+    'ThermalGradientEvolutionCalculator': ThermalGradientEvolutionCalculator(),
+    'ReactivityEnergyDensityCalculator': ReactivityEnergyDensityCalculator(),
+    'ComponentFocusCalculator': ComponentFocusCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -12274,6 +12754,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_27_CALCULATORS,
     **ORB_ANALYSIS_28_CALCULATORS,
     **ORB_ANALYSIS_29_CALCULATORS,
+    **ORB_ANALYSIS_30_CALCULATORS,
 }
 
 # Update class count
@@ -12525,6 +13006,18 @@ __all__ = [
     'StressEnergyTensorCalculator',
     'SpindleOrbEmergenceTrackerCalculator',
     'ORB_ANALYSIS_29_CALCULATORS',
+    
+    # Orb Analysis_30 / UFE ORB EXP 2_20 - Extended Sequence & Batch 36 Progress (8 classes)
+    'ORB_ANALYSIS_30_PARAMS',
+    'Batch36ProgressCalculator',
+    'ExtendedSequenceCalculator',
+    'ReactorRadiusCalculator',
+    'PlasmoidMassEstimateCalculator',
+    'BulbResonanceCalculator',
+    'ThermalGradientEvolutionCalculator',
+    'ReactivityEnergyDensityCalculator',
+    'ComponentFocusCalculator',
+    'ORB_ANALYSIS_30_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
