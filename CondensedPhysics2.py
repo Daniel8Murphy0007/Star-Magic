@@ -1295,6 +1295,532 @@ ORB_ANALYSIS_11_CALCULATORS = {
 }
 
 
+# ============================================================================
+# UFT ORB ANALYSIS_12 CALCULATORS (7 Calculator Classes)
+# Source: Grok UFT Orb Analysis_12 (March 4, 2025)
+# Photos: #41-#43 of 496 Red Dwarf Reactor Plasma Orb infrared images
+# Physics: 42 frames (~1.26 s), cyclical convection pattern:
+#          lower right (#41) → upper left (#42) → upper right (#43)
+#          ~1.89 J total energy, hydrogen bubble path anchoring
+# ============================================================================
+
+# UFT Orb Analysis_12 Parameters
+ORB_ANALYSIS_12_PARAMS = {
+    'r_reactor': 0.0889,           # m (3.5 in diameter / 2)
+    'M_s': 0.5e-3,                 # kg (plasma orb mass 0.5 g)
+    'omega_s': 2 * math.pi * 6000, # rad/s (6000 Hz field resonance)
+    'T_base': 366,                 # K (bulb base temperature)
+    'T_top': 288,                  # K (ambient top temperature)
+    'B_s': 1e-3,                   # T (magnetic field from H2 bubbles)
+    'SCm': 1e15,                   # kg/m³ (hypothetical density at base)
+    'UA': 1e-11,                   # C (trapped Aether charge)
+    'dt_frame': 0.03,              # s (frame interval)
+    'n_frames_orb12': 42,          # total frames (#1-#43 minus #14)
+    'total_time_orb12': 1.26,      # s (42 frames × 0.03 s)
+    'E_total_orb12': 1.89,         # J (total energy ~45 mJ/frame × 42)
+    'E_react': 1e15,               # W/m³ (reactivity with thermal decay)
+    'gamma_decay': 0.001,          # decay constant
+    'v_plasmoid': 0.5,             # m/s (plasmoid motion speed)
+    'n_H2_bubbles': 15,            # average hydrogen bubbles (12-18)
+}
+
+
+class FortyTwoFrameSequenceCalculator:
+    """
+    UFT Orb Analysis_12: 42-frame sequence energy calculator.
+    
+    Extends the video analysis to 42 frames (Photos #1-#43 minus #14),
+    covering ~1.26 s at 33.3 fps. Calculates cumulative energy and temporal
+    evolution of plasmoid dynamics through the extended sequence.
+    
+    Physics:
+        E_total = Σᵢ[E_frame_i] = 42 × 45 mJ ≈ 1.89 J
+        t_total = n_frames × dt = 42 × 0.03 s = 1.26 s
+        
+    Source: Grok UFT Orb Analysis_12 (March 4, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        n_frames = dataset.get('n_frames', ORB_ANALYSIS_12_PARAMS['n_frames_orb12'])
+        dt = dataset.get('dt_frame', ORB_ANALYSIS_12_PARAMS['dt_frame'])
+        E_per_frame = dataset.get('E_per_frame', 0.045)  # J (~45 mJ/frame)
+        gamma = dataset.get('gamma_decay', ORB_ANALYSIS_12_PARAMS['gamma_decay'])
+        
+        t_total = n_frames * dt
+        
+        E_cumulative = 0.0
+        frame_energies = []
+        for i in range(n_frames):
+            t_n = i * dt
+            E_frame = E_per_frame * math.exp(-gamma * t_n)
+            E_cumulative += E_frame
+            frame_energies.append({
+                'frame': i + 1,
+                't': round(t_n, 4),
+                'E': round(E_frame, 6)
+            })
+        
+        P_avg = E_cumulative / t_total if t_total > 0 else 0.0
+        
+        return {
+            'n_frames': n_frames,
+            't_total': round(t_total, 4),
+            'E_cumulative': round(E_cumulative, 6),
+            'P_avg': round(P_avg, 6),
+            'E_per_frame_avg': round(E_cumulative / n_frames, 6) if n_frames > 0 else 0.0,
+            'frame_energies': frame_energies[:5],
+            'equation': 'E_total = Σᵢ[E_frame_i × e^(-γtᵢ)]',
+            'source': 'Grok UFT Orb Analysis_12 42-Frame Sequence (March 4, 2025)'
+        }
+
+
+class CyclicalConvectionOrb12Calculator:
+    """
+    UFT Orb Analysis_12: Cyclical convection pattern calculator for Photos #41-#43.
+    
+    Tracks the cyclical concentration shifts: lower right (#41) → upper left (#42)
+    → upper right (#43). This pattern reflects ongoing convection driven by
+    thermal gradients and [Ug3]/[Um] fields.
+    
+    Physics:
+        Cycle_path: LR → UL → UR (3-point convection loop)
+        θ_rotation = Σᵢ[arctan2(Δyᵢ, Δxᵢ)]
+        Cycle_period ≈ 3 frames × 0.03 s = 0.09 s
+        
+    Source: Grok UFT Orb Analysis_12 (March 4, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        cycle_sequence = dataset.get('cycle_sequence', [
+            {'frame': 41, 'quadrant': 'lower_right', 'x_c': 0.75, 'y_c': 0.25},
+            {'frame': 42, 'quadrant': 'upper_left', 'x_c': 0.25, 'y_c': 0.75},
+            {'frame': 43, 'quadrant': 'upper_right', 'x_c': 0.75, 'y_c': 0.75},
+        ])
+        
+        dt = dataset.get('dt_frame', ORB_ANALYSIS_12_PARAMS['dt_frame'])
+        
+        transitions = []
+        total_angle = 0.0
+        total_distance = 0.0
+        
+        for i in range(1, len(cycle_sequence)):
+            prev = cycle_sequence[i - 1]
+            curr = cycle_sequence[i]
+            
+            dx = curr['x_c'] - prev['x_c']
+            dy = curr['y_c'] - prev['y_c']
+            distance = math.sqrt(dx**2 + dy**2)
+            theta = math.atan2(dy, dx) * 180 / math.pi
+            
+            total_angle += theta
+            total_distance += distance
+            
+            transitions.append({
+                'from_frame': prev['frame'],
+                'to_frame': curr['frame'],
+                'transition': f"{prev['quadrant']} → {curr['quadrant']}",
+                'dx': round(dx, 4),
+                'dy': round(dy, 4),
+                'distance': round(distance, 4),
+                'theta_deg': round(theta, 2)
+            })
+        
+        n_transitions = len(transitions)
+        cycle_period = n_transitions * dt
+        avg_angular_velocity = total_angle / cycle_period if cycle_period > 0 else 0.0
+        
+        return {
+            'cycle_sequence': cycle_sequence,
+            'transitions': transitions,
+            'total_distance': round(total_distance, 4),
+            'total_angle_deg': round(total_angle, 2),
+            'cycle_period': round(cycle_period, 4),
+            'avg_angular_velocity': round(avg_angular_velocity, 2),
+            'pattern': 'LR → UL → UR (cyclical convection)',
+            'equation': 'θ_cycle = Σᵢ[arctan2(Δyᵢ, Δxᵢ)]',
+            'source': 'Grok UFT Orb Analysis_12 Cyclical Convection (March 4, 2025)'
+        }
+
+
+class Orb12RefinedFUCalculator:
+    """
+    UFT Orb Analysis_12: Refined Unified Field F_U calculator.
+    
+    Computes the complete unified field equation refined with Photos #41-#43 data,
+    extending the temporal coverage to 1.26 s with 42 frames.
+    
+    Physics:
+        F_U = Σᵢ[kᵢ·Ugᵢ(r,t,Mₛ,ωₛ,Tₛ,Bₛ,SCm,UA,tₙ) - βᵢ·Ugᵢ·Ωg·(Mbh/dg)·E_react]
+              + Σⱼ[μⱼ/rⱼ·(1-e^(-γt·cos(πtₙ)))·φ̂ⱼ]
+              + (gμν + η·Tₛμν(UA,SCm,ρA))
+              
+    Parameters updated for 42-frame sequence:
+        t_total = 1.26 s, E_total = 1.89 J
+        
+    Source: Grok UFT Orb Analysis_12 (March 4, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        r = dataset.get('r_reactor', ORB_ANALYSIS_12_PARAMS['r_reactor'])
+        M_s = dataset.get('M_s', ORB_ANALYSIS_12_PARAMS['M_s'])
+        omega_s = dataset.get('omega_s', ORB_ANALYSIS_12_PARAMS['omega_s'])
+        T_base = dataset.get('T_base', ORB_ANALYSIS_12_PARAMS['T_base'])
+        T_top = dataset.get('T_top', ORB_ANALYSIS_12_PARAMS['T_top'])
+        B_s = dataset.get('B_s', ORB_ANALYSIS_12_PARAMS['B_s'])
+        SCm = dataset.get('SCm', ORB_ANALYSIS_12_PARAMS['SCm'])
+        UA = dataset.get('UA', ORB_ANALYSIS_12_PARAMS['UA'])
+        t = dataset.get('t', 0.63)  # midpoint of 1.26 s sequence
+        gamma = dataset.get('gamma_decay', ORB_ANALYSIS_12_PARAMS['gamma_decay'])
+        E_react = dataset.get('E_react', ORB_ANALYSIS_12_PARAMS['E_react'])
+        
+        t_n = t
+        
+        # Ug_1: Internal dipole
+        k_1 = 1.5e-4
+        Ug1 = k_1 * (M_s / r) * math.exp(-gamma * t) * math.cos(math.pi * t_n) * (1 + 0.01 * math.sin(gamma * t))
+        
+        # Ug_2: Outer field bubble
+        k_2 = 1.2
+        Ug2 = k_2 * (UA + UA) * M_s / (r**2) * SCm * math.exp(-gamma * t)
+        
+        # Ug_3: Magnetic strings
+        k_3 = 1.8
+        Ug3 = k_3 * B_s * math.cos(omega_s * t * math.pi) * SCm * math.exp(-gamma * t)
+        
+        # Ub_i: Universal buoyancy
+        beta_i = 0.8
+        Omega_g = 7.3e-16
+        M_bh = 8.15e36
+        d_g = 2.55e20
+        Ubi = -beta_i * (Ug1 + Ug2 + Ug3) * Omega_g * (M_bh / d_g) * E_react * math.cos(math.pi * t_n)
+        
+        # Um: Universal magnetism
+        mu_j = 1e-4
+        Um = (mu_j / r) * (1 - math.exp(-gamma * t * math.cos(math.pi * t_n))) * SCm * math.exp(-gamma * t)
+        
+        # A_μν: Cosmic Aether tensor
+        eta = 1e-22
+        rho_A = 1e-23
+        A_munu = 1.0 + eta * (UA * SCm * rho_A) * t_n
+        
+        F_U = Ug1 + Ug2 + Ug3 + Ubi + Um + A_munu
+        
+        return {
+            'Ug1': Ug1,
+            'Ug2': Ug2,
+            'Ug3': Ug3,
+            'Ubi': Ubi,
+            'Um': Um,
+            'A_munu': A_munu,
+            'F_U_total': F_U,
+            'parameters': {
+                'r': r, 'M_s': M_s, 'omega_s': omega_s,
+                'T_gradient': f'{T_base}→{T_top} K',
+                'B_s': B_s, 'SCm': SCm, 'UA': UA, 't': t
+            },
+            'equation': 'F_U = Σᵢ[kᵢ·Ugᵢ - βᵢ·Ugᵢ·Ωg·(Mbh/dg)·E_react] + Σⱼ[μⱼ/rⱼ·(1-e^(-γt·cos(πtₙ)))·φ̂ⱼ] + (gμν + η·Tₛμν)',
+            'source': 'Grok UFT Orb Analysis_12 Refined F_U (March 4, 2025)'
+        }
+
+
+class FullSequenceQuadrantTrackerCalculator:
+    """
+    UFT Orb Analysis_12: Full sequence quadrant tracker calculator.
+    
+    Tracks quadrant concentration shifts across the entire sequence
+    (Photos #1-#43, minus #14), identifying dominant patterns and
+    transition frequencies.
+    
+    Physics:
+        Transition_matrix[i,j] = count(Q_i → Q_j)
+        Dominant_mode = argmax(quadrant_visits)
+        
+    Source: Grok UFT Orb Analysis_12 (March 4, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        # Extended quadrant history from Orb_8 through Orb_12
+        full_sequence = dataset.get('full_sequence', [
+            # Orb_8: Photos #30-#31
+            {'frame': 30, 'quadrant': 'upper_right', 'orb': 8},
+            {'frame': 31, 'quadrant': 'lower_left', 'orb': 8},
+            # Orb_9: Photos #32-#34
+            {'frame': 32, 'quadrant': 'upper_left', 'orb': 9},
+            {'frame': 33, 'quadrant': 'upper_right', 'orb': 9},
+            {'frame': 34, 'quadrant': 'upper_right', 'orb': 9},
+            # Orb_10: Photos #35-#37
+            {'frame': 35, 'quadrant': 'lower_right', 'orb': 10},
+            {'frame': 36, 'quadrant': 'upper_left', 'orb': 10},
+            {'frame': 37, 'quadrant': 'upper_right', 'orb': 10},
+            # Orb_11: Photos #38-#40
+            {'frame': 38, 'quadrant': 'upper_left', 'orb': 11},
+            {'frame': 39, 'quadrant': 'upper_right', 'orb': 11},
+            {'frame': 40, 'quadrant': 'lower_left', 'orb': 11},
+            # Orb_12: Photos #41-#43
+            {'frame': 41, 'quadrant': 'lower_right', 'orb': 12},
+            {'frame': 42, 'quadrant': 'upper_left', 'orb': 12},
+            {'frame': 43, 'quadrant': 'upper_right', 'orb': 12},
+        ])
+        
+        dt = dataset.get('dt_frame', ORB_ANALYSIS_12_PARAMS['dt_frame'])
+        
+        # Count transitions and visits
+        transition_types = {}
+        quadrant_visits = {}
+        
+        for i in range(1, len(full_sequence)):
+            prev = full_sequence[i-1]['quadrant']
+            curr = full_sequence[i]['quadrant']
+            
+            trans = f"{prev} → {curr}"
+            transition_types[trans] = transition_types.get(trans, 0) + 1
+            quadrant_visits[curr] = quadrant_visits.get(curr, 0) + 1
+        
+        quadrant_visits[full_sequence[0]['quadrant']] = quadrant_visits.get(
+            full_sequence[0]['quadrant'], 0) + 1
+        
+        dominant_transition = max(transition_types.items(), key=lambda x: x[1]) if transition_types else ('none', 0)
+        most_visited = max(quadrant_visits.items(), key=lambda x: x[1]) if quadrant_visits else ('none', 0)
+        
+        n_frames = len(full_sequence)
+        t_total = n_frames * dt
+        n_transitions = n_frames - 1
+        trans_frequency = n_transitions / t_total if t_total > 0 else 0.0
+        
+        return {
+            'n_frames_analyzed': n_frames,
+            't_total': round(t_total, 4),
+            'n_transitions': n_transitions,
+            'transition_frequency': round(trans_frequency, 2),
+            'transition_types': transition_types,
+            'dominant_transition': dominant_transition[0],
+            'quadrant_visits': quadrant_visits,
+            'most_visited_quadrant': most_visited[0],
+            'orb_sessions_covered': [8, 9, 10, 11, 12],
+            'equation': 'f_trans = n_transitions / t_total',
+            'source': 'Grok UFT Orb Analysis_12 Full Sequence Tracker (March 4, 2025)'
+        }
+
+
+class HydrogenBubblePathAnchorCalculator:
+    """
+    UFT Orb Analysis_12: Hydrogen bubble path anchoring calculator.
+    
+    Models how the 12-18 evenly-spaced hydrogen bubbles anchor plasmoid paths,
+    enhancing [SCm] and [UA] reactivity via magnetic fields (~10⁻³ T).
+    
+    Physics:
+        B_anchor = Σⱼ[B_bubble_j × exp(-r/λ_anchor)]
+        Path_stability = τ_anchor / τ_diffusion
+        Field_uniformity = 1 - σ(B)/⟨B⟩
+        
+    Source: Grok UFT Orb Analysis_12 (March 4, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        n_bubbles = dataset.get('n_H2_bubbles', ORB_ANALYSIS_12_PARAMS['n_H2_bubbles'])
+        B_per_bubble = dataset.get('B_s', ORB_ANALYSIS_12_PARAMS['B_s'])
+        r_reactor = dataset.get('r_reactor', ORB_ANALYSIS_12_PARAMS['r_reactor'])
+        L_reactor = dataset.get('L_reactor', 0.254)  # m (10 in)
+        
+        # Bubble spacing (evenly distributed)
+        bubble_spacing = L_reactor / n_bubbles
+        
+        # Characteristic anchoring length
+        lambda_anchor = bubble_spacing / 2
+        
+        # Total anchor field at center
+        B_anchor_total = 0.0
+        bubble_positions = []
+        for j in range(n_bubbles):
+            z_bubble = bubble_spacing * (j + 0.5)
+            z_center = L_reactor / 2
+            r_from_center = abs(z_bubble - z_center)
+            B_contribution = B_per_bubble * math.exp(-r_from_center / lambda_anchor)
+            B_anchor_total += B_contribution
+            bubble_positions.append({
+                'bubble': j + 1,
+                'z_position': round(z_bubble, 4),
+                'B_contribution': round(B_contribution, 8)
+            })
+        
+        # Diffusion timescale
+        D_plasmoid = 1e-9  # m²/s
+        tau_diffusion = r_reactor**2 / (4 * D_plasmoid)
+        
+        # Anchor timescale (magnetic confinement)
+        mu_0 = 4 * math.pi * 1e-7
+        m_plasmoid = ORB_ANALYSIS_12_PARAMS['M_s']
+        tau_anchor = m_plasmoid * r_reactor / (B_anchor_total**2 / mu_0) if B_anchor_total > 0 else 0.0
+        
+        # Path stability ratio
+        path_stability = tau_anchor / tau_diffusion if tau_diffusion > 0 else 0.0
+        
+        # Field uniformity estimate (1.0 = perfectly uniform)
+        B_values = [bp['B_contribution'] for bp in bubble_positions]
+        B_mean = np.mean(B_values)
+        B_std = np.std(B_values)
+        field_uniformity = 1 - (B_std / B_mean) if B_mean > 0 else 0.0
+        
+        return {
+            'n_bubbles': n_bubbles,
+            'bubble_spacing': round(bubble_spacing, 4),
+            'lambda_anchor': round(lambda_anchor, 4),
+            'B_anchor_total': round(B_anchor_total, 8),
+            'tau_diffusion': round(tau_diffusion, 2),
+            'tau_anchor': tau_anchor,
+            'path_stability': path_stability,
+            'field_uniformity': round(field_uniformity, 4),
+            'bubble_positions': bubble_positions[:5],
+            'equation': 'B_anchor = Σⱼ[Bⱼ × e^(-r/λ)]',
+            'source': 'Grok UFT Orb Analysis_12 H2 Bubble Path Anchor (March 4, 2025)'
+        }
+
+
+class ThermalConvectionCycleCalculator:
+    """
+    UFT Orb Analysis_12: Thermal convection cycle calculator.
+    
+    Models the thermal-driven cyclical convection patterns observed across
+    the sequence, driven by the 366K→288K gradient and [Ub] effects.
+    
+    Physics:
+        Ra = (g × β × ΔT × L³) / (ν × α) (Rayleigh number)
+        n_cycles = t_total / τ_cycle
+        ω_convection = 2π / τ_cycle
+        
+    Source: Grok UFT Orb Analysis_12 (March 4, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        T_base = dataset.get('T_base', ORB_ANALYSIS_12_PARAMS['T_base'])
+        T_top = dataset.get('T_top', ORB_ANALYSIS_12_PARAMS['T_top'])
+        L = dataset.get('L_reactor', 0.254)  # m
+        t_total = dataset.get('t_total', ORB_ANALYSIS_12_PARAMS['total_time_orb12'])
+        
+        # Oil properties
+        rho_oil = dataset.get('rho_oil', 850)  # kg/m³
+        beta_thermal = dataset.get('beta_thermal', 7e-4)  # K⁻¹
+        nu_oil = dataset.get('nu_oil', 1e-5)  # m²/s (kinematic viscosity)
+        alpha_oil = dataset.get('alpha_oil', 1e-7)  # m²/s (thermal diffusivity)
+        g = 9.81  # m/s²
+        
+        Delta_T = T_base - T_top
+        
+        # Rayleigh number
+        Ra = (g * beta_thermal * Delta_T * L**3) / (nu_oil * alpha_oil)
+        
+        # Convection regime
+        Ra_critical = 1708  # onset of convection
+        if Ra > 1e6:
+            regime = 'turbulent'
+        elif Ra > Ra_critical:
+            regime = 'laminar_convective'
+        else:
+            regime = 'conductive'
+        
+        # Convection velocity estimate
+        v_convection = math.sqrt(g * beta_thermal * Delta_T * L) if Ra > Ra_critical else 0.0
+        
+        # Cycle period estimate (single convection roll)
+        tau_cycle = 2 * L / v_convection if v_convection > 0 else float('inf')
+        
+        # Number of complete cycles
+        n_cycles = t_total / tau_cycle if tau_cycle > 0 else 0.0
+        
+        # Angular velocity of convection
+        omega_convection = 2 * math.pi / tau_cycle if tau_cycle > 0 else 0.0
+        
+        return {
+            'Delta_T': Delta_T,
+            'Rayleigh_number': Ra,
+            'Ra_critical': Ra_critical,
+            'regime': regime,
+            'v_convection': round(v_convection, 4),
+            'tau_cycle': round(tau_cycle, 4) if tau_cycle != float('inf') else 'inf',
+            'n_cycles_in_sequence': round(n_cycles, 2) if n_cycles != 0.0 else 0.0,
+            'omega_convection': round(omega_convection, 4) if omega_convection != 0.0 else 0.0,
+            'equation': 'Ra = (gβΔTL³)/(να)',
+            'source': 'Grok UFT Orb Analysis_12 Thermal Convection (March 4, 2025)'
+        }
+
+
+class CumulativeEnergyAnalyzerCalculator:
+    """
+    UFT Orb Analysis_12: Cumulative energy analyzer calculator.
+    
+    Tracks total energy accumulation across the full 42-frame sequence,
+    comparing observed vs theoretical predictions from F_U.
+    
+    Physics:
+        E_observed = n_frames × E_per_frame = 42 × 45 mJ ≈ 1.89 J
+        E_theoretical = ∫F_U dt over 1.26 s
+        η_model = E_observed / E_theoretical
+        
+    Source: Grok UFT Orb Analysis_12 (March 4, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        n_frames = dataset.get('n_frames', ORB_ANALYSIS_12_PARAMS['n_frames_orb12'])
+        dt = dataset.get('dt_frame', ORB_ANALYSIS_12_PARAMS['dt_frame'])
+        E_per_frame = dataset.get('E_per_frame', 0.045)  # J
+        P_bulb = dataset.get('P_bulb', 65)  # W
+        
+        t_total = n_frames * dt
+        
+        # Observed energy
+        E_observed = n_frames * E_per_frame
+        
+        # Input energy from bulb
+        E_input = P_bulb * t_total
+        
+        # Theoretical energy (simplified F_U integral)
+        # Using average F_U contribution scaled to reactor
+        k_FU = dataset.get('k_FU', 1e-5)  # coupling constant
+        E_theoretical = k_FU * E_input
+        
+        # Model efficiency
+        eta_model = E_observed / E_theoretical if E_theoretical > 0 else 0.0
+        
+        # Energy breakdown by Orb session
+        energy_by_orb = {
+            'Orb_10': {'frames': 36, 'E': 1.62},
+            'Orb_11': {'frames': 39, 'E': 1.755},
+            'Orb_12': {'frames': 42, 'E': 1.89},
+        }
+        
+        # Delta from previous session
+        delta_E = energy_by_orb['Orb_12']['E'] - energy_by_orb['Orb_11']['E']
+        delta_frames = energy_by_orb['Orb_12']['frames'] - energy_by_orb['Orb_11']['frames']
+        
+        return {
+            'n_frames': n_frames,
+            't_total': round(t_total, 4),
+            'E_observed': round(E_observed, 4),
+            'E_input_bulb': round(E_input, 4),
+            'E_theoretical': round(E_theoretical, 6),
+            'eta_model': round(eta_model, 4),
+            'energy_by_orb': energy_by_orb,
+            'delta_E_from_Orb11': round(delta_E, 4),
+            'delta_frames_from_Orb11': delta_frames,
+            'E_per_frame_avg': round(E_observed / n_frames, 6) if n_frames > 0 else 0.0,
+            'equation': 'E_obs = n × E_frame, η = E_obs / E_theory',
+            'source': 'Grok UFT Orb Analysis_12 Energy Analyzer (March 4, 2025)'
+        }
+
+
+# UFT Orb Analysis_12 registry dict
+ORB_ANALYSIS_12_CALCULATORS = {
+    'FortyTwoFrameSequenceCalculator': FortyTwoFrameSequenceCalculator(),
+    'CyclicalConvectionOrb12Calculator': CyclicalConvectionOrb12Calculator(),
+    'Orb12RefinedFUCalculator': Orb12RefinedFUCalculator(),
+    'FullSequenceQuadrantTrackerCalculator': FullSequenceQuadrantTrackerCalculator(),
+    'HydrogenBubblePathAnchorCalculator': HydrogenBubblePathAnchorCalculator(),
+    'ThermalConvectionCycleCalculator': ThermalConvectionCycleCalculator(),
+    'CumulativeEnergyAnalyzerCalculator': CumulativeEnergyAnalyzerCalculator(),
+}
+
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1303,6 +1829,7 @@ ORB_ANALYSIS_11_CALCULATORS = {
 CP2_CALCULATORS = {
     **ORB_ANALYSIS_10_CALCULATORS,
     **ORB_ANALYSIS_11_CALCULATORS,
+    **ORB_ANALYSIS_12_CALCULATORS,
 }
 
 # Update class count
@@ -1342,6 +1869,17 @@ __all__ = [
     'FieldGeneratorResonanceCouplingCalculator',
     'TotalEnergyBudgetCalculator',
     'ORB_ANALYSIS_11_CALCULATORS',
+    
+    # Orb Analysis_12 (7 classes)
+    'ORB_ANALYSIS_12_PARAMS',
+    'FortyTwoFrameSequenceCalculator',
+    'CyclicalConvectionOrb12Calculator',
+    'Orb12RefinedFUCalculator',
+    'FullSequenceQuadrantTrackerCalculator',
+    'HydrogenBubblePathAnchorCalculator',
+    'ThermalConvectionCycleCalculator',
+    'CumulativeEnergyAnalyzerCalculator',
+    'ORB_ANALYSIS_12_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
