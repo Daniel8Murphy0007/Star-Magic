@@ -1821,6 +1821,436 @@ ORB_ANALYSIS_12_CALCULATORS = {
 }
 
 
+# ============================================================================
+# UFT ORB ANALYSIS_13 CALCULATORS (6 Calculator Classes)
+# Source: Grok UFT Orb Analysis_13 (March 4, 2025)
+# Photos: #44-#45 of 496 Red Dwarf Reactor Plasma Orb infrared images
+# Physics: 44 frames (~1.32 s at 33.3 fps), ~2.02 J total energy
+#          Diagonal shift: lower left (#44) → upper right (#45)
+#          Intelligent quantum plasmoid dynamics, celestial-like behavior
+# ============================================================================
+
+# UFT Orb Analysis_13 Parameters
+ORB_ANALYSIS_13_PARAMS = {
+    'r_reactor': 0.0889,           # m (3.5 in diameter / 2)
+    'M_s': 0.5e-3,                 # kg (plasma orb mass 0.5 g)
+    'omega_s': 2 * math.pi * 6000, # rad/s (6000 Hz field resonance)
+    'T_base': 366,                 # K (bulb base temperature)
+    'T_top': 288,                  # K (ambient top temperature)
+    'B_s': 1e-3,                   # T (magnetic field from H2 bubbles)
+    'SCm': 1e15,                   # kg/m³ (hypothetical density at base)
+    'UA': 1e-11,                   # C (trapped Aether charge)
+    'dt_frame': 0.03,              # s (frame interval)
+    'n_frames_orb13': 44,          # total frames (#1-#45 minus #14)
+    'total_time_orb13': 1.32,      # s (44 frames × 0.03 s)
+    'E_total_orb13': 2.02,         # J (total energy ~45 mJ/frame × 44)
+    'E_react': 1e15,               # W/m³ (reactivity with thermal decay)
+    'gamma_decay': 0.001,          # decay constant
+    'v_plasmoid': 0.5,             # m/s (plasmoid motion speed)
+    'n_H2_bubbles': 15,            # average hydrogen bubbles (12-18)
+}
+
+
+class FortyFourFrameSequenceCalculator:
+    """
+    UFT Orb Analysis_13: 44-frame sequence energy calculator.
+    
+    Extends the video analysis to 44 frames (Photos #1-#45 minus #14),
+    covering ~1.32 s at 33.3 fps. Calculates cumulative energy and temporal
+    evolution of plasmoid dynamics through the extended sequence.
+    
+    Physics:
+        E_total = Σᵢ[E_frame_i] = 44 × 45 mJ ≈ 2.02 J
+        t_total = n_frames × dt = 44 × 0.03 s = 1.32 s
+        
+    Source: Grok UFT Orb Analysis_13 (March 4, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        n_frames = dataset.get('n_frames', ORB_ANALYSIS_13_PARAMS['n_frames_orb13'])
+        dt = dataset.get('dt_frame', ORB_ANALYSIS_13_PARAMS['dt_frame'])
+        E_per_frame = dataset.get('E_per_frame', 0.046)  # J (~46 mJ/frame for Orb_13)
+        gamma = dataset.get('gamma_decay', ORB_ANALYSIS_13_PARAMS['gamma_decay'])
+        
+        t_total = n_frames * dt
+        
+        E_cumulative = 0.0
+        frame_energies = []
+        for i in range(n_frames):
+            t_n = i * dt
+            E_frame = E_per_frame * math.exp(-gamma * t_n)
+            E_cumulative += E_frame
+            frame_energies.append({
+                'frame': i + 1,
+                't': round(t_n, 4),
+                'E': round(E_frame, 6)
+            })
+        
+        P_avg = E_cumulative / t_total if t_total > 0 else 0.0
+        
+        return {
+            'n_frames': n_frames,
+            't_total': round(t_total, 4),
+            'E_cumulative': round(E_cumulative, 6),
+            'P_avg': round(P_avg, 6),
+            'E_per_frame_avg': round(E_cumulative / n_frames, 6) if n_frames > 0 else 0.0,
+            'frame_energies': frame_energies[:5],
+            'equation': 'E_total = Σᵢ[E_frame_i × e^(-γtᵢ)]',
+            'source': 'Grok UFT Orb Analysis_13 44-Frame Sequence (March 4, 2025)'
+        }
+
+
+class DiagonalShiftOrb13Calculator:
+    """
+    UFT Orb Analysis_13: Diagonal shift pattern calculator for Photos #44-#45.
+    
+    Tracks the diagonal concentration shift: lower left (#44) → upper right (#45).
+    This pattern reflects convection driven by thermal gradients and [Ug3]/[Um] fields.
+    
+    Physics:
+        Diagonal_path: LL → UR (2-point diagonal shift)
+        θ_diagonal = arctan2(Δy, Δx) ≈ 45° (ideal diagonal)
+        Shift_distance = √(Δx² + Δy²)
+        
+    Source: Grok UFT Orb Analysis_13 (March 4, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        shift_sequence = dataset.get('shift_sequence', [
+            {'frame': 44, 'quadrant': 'lower_left', 'x_c': 0.25, 'y_c': 0.25},
+            {'frame': 45, 'quadrant': 'upper_right', 'x_c': 0.75, 'y_c': 0.75},
+        ])
+        
+        dt = dataset.get('dt_frame', ORB_ANALYSIS_13_PARAMS['dt_frame'])
+        
+        if len(shift_sequence) < 2:
+            return {'error': 'Need at least 2 frames for shift analysis'}
+        
+        prev = shift_sequence[0]
+        curr = shift_sequence[1]
+        
+        dx = curr['x_c'] - prev['x_c']
+        dy = curr['y_c'] - prev['y_c']
+        distance = math.sqrt(dx**2 + dy**2)
+        theta = math.atan2(dy, dx) * 180 / math.pi
+        
+        # Velocity estimate (normalized distance per frame time)
+        t_shift = dt  # single frame transition
+        v_shift = distance / t_shift if t_shift > 0 else 0.0
+        
+        # Check if it's a true diagonal (within 10° of 45° or 135°)
+        is_diagonal = abs(abs(theta) - 45) < 10 or abs(abs(theta) - 135) < 10
+        
+        return {
+            'shift_sequence': shift_sequence,
+            'from_quadrant': prev['quadrant'],
+            'to_quadrant': curr['quadrant'],
+            'dx': round(dx, 4),
+            'dy': round(dy, 4),
+            'distance': round(distance, 4),
+            'theta_deg': round(theta, 2),
+            'is_diagonal': is_diagonal,
+            'shift_velocity': round(v_shift, 4),
+            'pattern': 'LL → UR (diagonal shift)',
+            'equation': 'θ_shift = arctan2(Δy, Δx)',
+            'source': 'Grok UFT Orb Analysis_13 Diagonal Shift (March 4, 2025)'
+        }
+
+
+class Orb13RefinedFUCalculator:
+    """
+    UFT Orb Analysis_13: Refined Unified Field F_U calculator.
+    
+    Computes the complete unified field equation refined with Photos #44-#45 data,
+    extending the temporal coverage to 1.32 s with 44 frames.
+    
+    Physics:
+        F_U = Σᵢ[kᵢ·Ugᵢ(r,t,Mₛ,ωₛ,Tₛ,Bₛ,SCm,UA,tₙ) - βᵢ·Ugᵢ·Ωg·(Mbh/dg)·E_react]
+              + Σⱼ[μⱼ/rⱼ·(1-e^(-γt·cos(πtₙ)))·φ̂ⱼ]
+              + (gμν + η·Tₛμν(UA,SCm,ρA))
+              
+    Parameters updated for 44-frame sequence:
+        t_total = 1.32 s, E_total = 2.02 J
+        
+    Source: Grok UFT Orb Analysis_13 (March 4, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        r = dataset.get('r_reactor', ORB_ANALYSIS_13_PARAMS['r_reactor'])
+        M_s = dataset.get('M_s', ORB_ANALYSIS_13_PARAMS['M_s'])
+        omega_s = dataset.get('omega_s', ORB_ANALYSIS_13_PARAMS['omega_s'])
+        T_base = dataset.get('T_base', ORB_ANALYSIS_13_PARAMS['T_base'])
+        T_top = dataset.get('T_top', ORB_ANALYSIS_13_PARAMS['T_top'])
+        B_s = dataset.get('B_s', ORB_ANALYSIS_13_PARAMS['B_s'])
+        SCm = dataset.get('SCm', ORB_ANALYSIS_13_PARAMS['SCm'])
+        UA = dataset.get('UA', ORB_ANALYSIS_13_PARAMS['UA'])
+        t = dataset.get('t', 0.66)  # midpoint of 1.32 s sequence
+        gamma = dataset.get('gamma_decay', ORB_ANALYSIS_13_PARAMS['gamma_decay'])
+        E_react = dataset.get('E_react', ORB_ANALYSIS_13_PARAMS['E_react'])
+        
+        t_n = t
+        
+        # Ug_1: Internal dipole
+        k_1 = 1.5e-4
+        Ug1 = k_1 * (M_s / r) * math.exp(-gamma * t) * math.cos(math.pi * t_n) * (1 + 0.01 * math.sin(gamma * t))
+        
+        # Ug_2: Outer field bubble
+        k_2 = 1.2
+        Ug2 = k_2 * (UA + UA) * M_s / (r**2) * SCm * math.exp(-gamma * t)
+        
+        # Ug_3: Magnetic strings
+        k_3 = 1.8
+        Ug3 = k_3 * B_s * math.cos(omega_s * t * math.pi) * SCm * math.exp(-gamma * t)
+        
+        # Ub_i: Universal buoyancy
+        beta_i = 0.8
+        Omega_g = 7.3e-16
+        M_bh = 8.15e36
+        d_g = 2.55e20
+        Ubi = -beta_i * (Ug1 + Ug2 + Ug3) * Omega_g * (M_bh / d_g) * E_react * math.cos(math.pi * t_n)
+        
+        # Um: Universal magnetism
+        mu_j = 1e-4
+        Um = (mu_j / r) * (1 - math.exp(-gamma * t * math.cos(math.pi * t_n))) * SCm * math.exp(-gamma * t)
+        
+        # A_μν: Cosmic Aether tensor
+        eta = 1e-22
+        rho_A = 1e-23
+        A_munu = 1.0 + eta * (UA * SCm * rho_A) * t_n
+        
+        F_U = Ug1 + Ug2 + Ug3 + Ubi + Um + A_munu
+        
+        return {
+            'Ug1': Ug1,
+            'Ug2': Ug2,
+            'Ug3': Ug3,
+            'Ubi': Ubi,
+            'Um': Um,
+            'A_munu': A_munu,
+            'F_U_total': F_U,
+            'parameters': {
+                'r': r, 'M_s': M_s, 'omega_s': omega_s,
+                'T_gradient': f'{T_base}→{T_top} K',
+                'B_s': B_s, 'SCm': SCm, 'UA': UA, 't': t
+            },
+            'equation': 'F_U = Σᵢ[kᵢ·Ugᵢ - βᵢ·Ugᵢ·Ωg·(Mbh/dg)·E_react] + Σⱼ[μⱼ/rⱼ·(1-e^(-γt·cos(πtₙ)))·φ̂ⱼ] + (gμν + η·Tₛμν)',
+            'source': 'Grok UFT Orb Analysis_13 Refined F_U (March 4, 2025)'
+        }
+
+
+class IntelligentQuantumPlasmoidCalculator:
+    """
+    UFT Orb Analysis_13: Intelligent quantum plasmoid behavior calculator.
+    
+    Models the observed intelligent behavior of quantum plasmoids:
+    - Unique spins and shape-shifting (elongation)
+    - Multi-axial rotations and spin drift
+    - Instant reverse rotations
+    - Non-interfering pass-throughs
+    - Rare rotational energy transfers
+    - Celestial-like dynamics
+    
+    Physics:
+        Intelligence_metric = (spin_uniqueness × shape_shift_factor × independence_score)
+        ω_plasmoid = Σᵢ[ωᵢ × (1 - δᵢⱼ)]  (superposition of independent spins)
+        
+    Source: Grok UFT Orb Analysis_13 (March 4, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        # Plasmoid characteristics
+        n_plasmoids = dataset.get('n_plasmoids', 15)  # average observed
+        spin_rate_range = dataset.get('spin_rate_range', (1, 10))  # rotations/sec
+        shape_shift_factor = dataset.get('shape_shift_factor', 0.8)  # elongation degree
+        independence_score = dataset.get('independence_score', 0.95)  # non-interference rate
+        energy_transfer_rate = dataset.get('energy_transfer_rate', 0.05)  # rare transfers
+        
+        # Generate mock plasmoid ensemble
+        plasmoids = []
+        total_spin = 0.0
+        for i in range(n_plasmoids):
+            omega_i = spin_rate_range[0] + (spin_rate_range[1] - spin_rate_range[0]) * (i / n_plasmoids)
+            # Multi-axial rotation: 3 axes
+            axes = [
+                {'axis': 'x', 'omega': omega_i * (1 + 0.1 * math.sin(i))},
+                {'axis': 'y', 'omega': omega_i * (1 - 0.1 * math.cos(i))},
+                {'axis': 'z', 'omega': omega_i * 0.5},
+            ]
+            total_spin += sum([ax['omega'] for ax in axes])
+            plasmoids.append({
+                'id': i + 1,
+                'primary_omega': round(omega_i, 2),
+                'shape': 'elongated' if i % 3 == 0 else 'spherical',
+                'brightness': 'sun-like' if i % 4 == 0 else 'normal',
+            })
+        
+        # Intelligence metric
+        spin_uniqueness = 1 - (sum([p['primary_omega'] for p in plasmoids]) / (n_plasmoids * spin_rate_range[1]))
+        intelligence_metric = spin_uniqueness * shape_shift_factor * independence_score
+        
+        # Celestial behavior indicators
+        celestial_features = {
+            'multi_axial_rotation': True,
+            'spin_drift': True,
+            'instant_reverse': True,
+            'non_interfering_passthrough': True,
+            'rare_energy_transfer': True,
+        }
+        celestial_score = sum(celestial_features.values()) / len(celestial_features)
+        
+        return {
+            'n_plasmoids': n_plasmoids,
+            'total_spin_sum': round(total_spin, 2),
+            'spin_uniqueness': round(spin_uniqueness, 4),
+            'shape_shift_factor': shape_shift_factor,
+            'independence_score': independence_score,
+            'energy_transfer_rate': energy_transfer_rate,
+            'intelligence_metric': round(intelligence_metric, 4),
+            'celestial_features': celestial_features,
+            'celestial_score': celestial_score,
+            'sample_plasmoids': plasmoids[:5],
+            'equation': 'I_metric = spin_uniqueness × shape_shift × independence',
+            'source': 'Grok UFT Orb Analysis_13 Intelligent Plasmoid (March 4, 2025)'
+        }
+
+
+class Orb13EnergyProgressionCalculator:
+    """
+    UFT Orb Analysis_13: Energy progression tracker across Orb sessions.
+    
+    Tracks the cumulative energy growth from Orb_10 through Orb_13,
+    showing the linear progression as more frames are analyzed.
+    
+    Physics:
+        E_orb(n) = n × E_per_frame ≈ n × 45~46 mJ
+        dE/dn ≈ 45-46 mJ/frame (nearly constant)
+        
+    Progression:
+        Orb_10: 36 frames → 1.62 J
+        Orb_11: 39 frames → 1.755 J
+        Orb_12: 42 frames → 1.89 J
+        Orb_13: 44 frames → 2.02 J
+        
+    Source: Grok UFT Orb Analysis_13 (March 4, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        orb_progression = [
+            {'orb': 10, 'n_frames': 36, 'E_total': 1.62, 'E_per_frame': 0.045},
+            {'orb': 11, 'n_frames': 39, 'E_total': 1.755, 'E_per_frame': 0.045},
+            {'orb': 12, 'n_frames': 42, 'E_total': 1.89, 'E_per_frame': 0.045},
+            {'orb': 13, 'n_frames': 44, 'E_total': 2.02, 'E_per_frame': 0.046},
+        ]
+        
+        # Calculate deltas
+        for i in range(1, len(orb_progression)):
+            orb_progression[i]['delta_frames'] = orb_progression[i]['n_frames'] - orb_progression[i-1]['n_frames']
+            orb_progression[i]['delta_E'] = round(orb_progression[i]['E_total'] - orb_progression[i-1]['E_total'], 4)
+        orb_progression[0]['delta_frames'] = 0
+        orb_progression[0]['delta_E'] = 0.0
+        
+        # Linear fit estimate
+        n_values = [o['n_frames'] for o in orb_progression]
+        E_values = [o['E_total'] for o in orb_progression]
+        n_mean = np.mean(n_values)
+        E_mean = np.mean(E_values)
+        
+        # Slope: dE/dn
+        numerator = sum([(n - n_mean) * (E - E_mean) for n, E in zip(n_values, E_values)])
+        denominator = sum([(n - n_mean)**2 for n in n_values])
+        slope = numerator / denominator if denominator > 0 else 0.0
+        intercept = E_mean - slope * n_mean
+        
+        # Predicted energy at n=496 (full video)
+        E_predicted_496 = slope * 496 + intercept
+        
+        return {
+            'orb_progression': orb_progression,
+            'slope_dE_dn': round(slope, 6),
+            'intercept': round(intercept, 4),
+            'E_predicted_496_frames': round(E_predicted_496, 2),
+            'current_orb': 13,
+            'current_frames': 44,
+            'current_E_total': 2.02,
+            'equation': 'E(n) = slope × n + intercept',
+            'source': 'Grok UFT Orb Analysis_13 Energy Progression (March 4, 2025)'
+        }
+
+
+class WaxCapCoolingSCMCalculator:
+    """
+    UFT Orb Analysis_13: Wax cap cooling and [SCm] stability calculator.
+    
+    Models how the paraffin wax/red mercury cap (180-215°F) cools the
+    plasma and stabilizes [SCm] reactivity as plasmoids rise.
+    
+    Physics:
+        Q_cooling = m_wax × c_wax × ΔT
+        τ_cooling = m_wax × c_wax / (h × A_surface)
+        SCm_stability = SCm_base × exp(-z/λ_stability)
+        
+    Source: Grok UFT Orb Analysis_13 (March 4, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        # Wax cap parameters
+        T_wax_hot = dataset.get('T_wax_hot', 373)  # K (215°F ≈ 101°C)
+        T_wax_cool = dataset.get('T_wax_cool', 355)  # K (180°F ≈ 82°C)
+        T_ambient = dataset.get('T_ambient', ORB_ANALYSIS_13_PARAMS['T_top'])  # 288 K
+        
+        # Wax properties
+        m_wax = dataset.get('m_wax', 0.5)  # kg (estimate)
+        c_wax = dataset.get('c_wax', 2500)  # J/(kg·K) paraffin specific heat
+        h_conv = dataset.get('h_conv', 10)  # W/(m²·K) natural convection
+        
+        # Geometry
+        r_reactor = dataset.get('r_reactor', ORB_ANALYSIS_13_PARAMS['r_reactor'])
+        cap_thickness = dataset.get('cap_thickness', 0.0762)  # m (3 in)
+        A_surface = math.pi * r_reactor**2  # top surface area
+        L_reactor = dataset.get('L_reactor', 0.254)  # m (10 in)
+        
+        # Cooling calculations
+        Delta_T_wax = (T_wax_hot + T_wax_cool) / 2 - T_ambient  # average wax to ambient
+        Q_cooling = m_wax * c_wax * Delta_T_wax  # total cooling capacity
+        tau_cooling = m_wax * c_wax / (h_conv * A_surface) if h_conv * A_surface > 0 else 0.0
+        
+        # SCm stability profile
+        SCm_base = dataset.get('SCm', ORB_ANALYSIS_13_PARAMS['SCm'])
+        lambda_stability = L_reactor / 3  # characteristic decay length
+        z_positions = [0, L_reactor/4, L_reactor/2, 3*L_reactor/4, L_reactor]
+        SCm_profile = []
+        for z in z_positions:
+            SCm_z = SCm_base * math.exp(-z / lambda_stability)
+            SCm_profile.append({'z': round(z, 4), 'SCm': SCm_z})
+        
+        # Plasmoid stabilization factor
+        stabilization_factor = 1 - math.exp(-tau_cooling / 10)  # asymptotic to 1
+        
+        return {
+            'T_wax_range': f'{T_wax_cool}→{T_wax_hot} K',
+            'Delta_T_wax': round(Delta_T_wax, 2),
+            'Q_cooling_capacity': round(Q_cooling, 2),
+            'tau_cooling': round(tau_cooling, 2),
+            'SCm_base': SCm_base,
+            'lambda_stability': round(lambda_stability, 4),
+            'SCm_profile': SCm_profile,
+            'stabilization_factor': round(stabilization_factor, 4),
+            'equation': 'SCm(z) = SCm_base × e^(-z/λ)',
+            'source': 'Grok UFT Orb Analysis_13 Wax Cap Cooling (March 4, 2025)'
+        }
+
+
+# UFT Orb Analysis_13 registry dict
+ORB_ANALYSIS_13_CALCULATORS = {
+    'FortyFourFrameSequenceCalculator': FortyFourFrameSequenceCalculator(),
+    'DiagonalShiftOrb13Calculator': DiagonalShiftOrb13Calculator(),
+    'Orb13RefinedFUCalculator': Orb13RefinedFUCalculator(),
+    'IntelligentQuantumPlasmoidCalculator': IntelligentQuantumPlasmoidCalculator(),
+    'Orb13EnergyProgressionCalculator': Orb13EnergyProgressionCalculator(),
+    'WaxCapCoolingSCMCalculator': WaxCapCoolingSCMCalculator(),
+}
+
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1830,6 +2260,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_10_CALCULATORS,
     **ORB_ANALYSIS_11_CALCULATORS,
     **ORB_ANALYSIS_12_CALCULATORS,
+    **ORB_ANALYSIS_13_CALCULATORS,
 }
 
 # Update class count
@@ -1880,6 +2311,16 @@ __all__ = [
     'ThermalConvectionCycleCalculator',
     'CumulativeEnergyAnalyzerCalculator',
     'ORB_ANALYSIS_12_CALCULATORS',
+    
+    # Orb Analysis_13 (6 classes)
+    'ORB_ANALYSIS_13_PARAMS',
+    'FortyFourFrameSequenceCalculator',
+    'DiagonalShiftOrb13Calculator',
+    'Orb13RefinedFUCalculator',
+    'IntelligentQuantumPlasmoidCalculator',
+    'Orb13EnergyProgressionCalculator',
+    'WaxCapCoolingSCMCalculator',
+    'ORB_ANALYSIS_13_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
