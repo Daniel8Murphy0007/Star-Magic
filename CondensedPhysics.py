@@ -159134,6 +159134,45 @@ class ThermodynamicQCalcCalculator:
         return {'value': F, 'S_J_K': S, 'T_K': T, 'E_J': E, 'units': 'J',
                 'equation': 'F = E - T·S'}
 
+class ReactorEfficiencyQCalcCalculator:
+    """Reactor efficiency E_react with SCm/UA nuclear reactivity and time-varying vacuum."""
+    def __init__(self):
+        self.E_0 = 1e46  # W/m³ base efficiency
+        self.kappa = 0.0005  # day^-1 decay
+        self.M_sun = 1.989e30
+        self.R_sun = 6.96e8
+    def compute(self, M: float = 1e30, r: float = 1e6, t_days: float = 0.0, **params) -> dict:
+        import math
+        decay = math.exp(-self.kappa * t_days)
+        mass_factor = (M / self.M_sun) ** (1.0/3.0)
+        radius_factor = (self.R_sun / r) ** 0.5
+        E_react = self.E_0 * decay * mass_factor * radius_factor
+        return {'value': E_react, 'decay': decay, 'mass_factor': mass_factor, 'radius_factor': radius_factor,
+                'units': 'W/m³', 'equation': 'E_react = E_0 × e^(-κt) × (M/M_sun)^(1/3) × (R_sun/r)^(1/2)'}
+
+class GravitationalQCalcCalculator:
+    """Generic gravitational calculations: Schwarzschild radius, escape velocity."""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.c = 3e8
+    def compute(self, M: float = 1e30, r: float = 1e6, t: float = 0.0, **params) -> dict:
+        import math
+        r_s = 2 * self.G * M / (self.c ** 2)
+        v_esc = math.sqrt(2 * self.G * M / r)
+        return {'value': r_s, 'r_s_m': r_s, 'v_esc_m_s': v_esc, 'M_kg': M, 'r_m': r,
+                'units': 'm', 'equation': 'r_s = 2GM/c², v_esc = √(2GM/r)'}
+
+class CosmologicalQCalcCalculator:
+    """Generic cosmological calculations: luminosity distance, Hubble time."""
+    def __init__(self):
+        self.c = 3e8
+        self.H0 = 2.27e-18  # s^-1 (70 km/s/Mpc)
+    def compute(self, z: float = 1.0, t: float = 0.0, **params) -> dict:
+        d_L = (self.c / self.H0) * z * (1 + z / 2.0)
+        t_H = 1.0 / self.H0
+        return {'value': d_L, 'd_L_m': d_L, 't_H_s': t_H, 'z': z,
+                'units': 'm', 'equation': 'd_L ≈ (c/H0)×z×(1+z/2), t_H = 1/H0'}
+
 QCALC_CALCULATORS = {
     'Energy26LevelCalculator': Energy26LevelCalculator(),
     'VacuumEnergyQCalcCalculator': VacuumEnergyQCalcCalculator(),
@@ -159149,6 +159188,9 @@ QCALC_CALCULATORS = {
     'UQFF_ResonantQCalcCalculator': UQFF_ResonantQCalcCalculator(),
     'UQFF_QuadraticQCalcCalculator': UQFF_QuadraticQCalcCalculator(),
     'ThermodynamicQCalcCalculator': ThermodynamicQCalcCalculator(),
+    'ReactorEfficiencyQCalcCalculator': ReactorEfficiencyQCalcCalculator(),
+    'GravitationalQCalcCalculator': GravitationalQCalcCalculator(),
+    'CosmologicalQCalcCalculator': CosmologicalQCalcCalculator(),
 }
 
 
@@ -160064,7 +160106,7 @@ __all__.extend([
     'CosmicEggQuantumFrequencyCalculator',
     'CosmicEggSphericalOutlineCalculator',
     'SOURCE200_WOLFRAM_CALCULATORS',
-    # QCalc.py UQFF Master Equations (Feb 26, 2026) - 14 Calculator Classes
+    # QCalc.py UQFF Master Equations (Feb 26, 2026) - 17 Calculator Classes
     'Energy26LevelCalculator',
     'VacuumEnergyQCalcCalculator',
     'MagneticStringsQCalcCalculator',
@@ -160079,6 +160121,9 @@ __all__.extend([
     'UQFF_ResonantQCalcCalculator',
     'UQFF_QuadraticQCalcCalculator',
     'ThermodynamicQCalcCalculator',
+    'ReactorEfficiencyQCalcCalculator',
+    'GravitationalQCalcCalculator',
+    'CosmologicalQCalcCalculator',
     'QCALC_CALCULATORS',
     # Phase6_Enhanced.py + QCalc_Advanced.py (Feb 26, 2026) - 4 Calculator Classes
     'M51GravityCondensedCalculator',
