@@ -9912,6 +9912,417 @@ ORB_ANALYSIS_24_CALCULATORS = {
 }
 
 
+# ============================================================================
+# UFT ORB ANALYSIS_25 CALCULATORS (8 Calculator Classes)
+# Source: Grok UFE ORB EXP 2_11_06Mar2025
+# Content: Batch #31 (25 images, frames 301-325, 9.03-9.75s)
+# Physics: Optical non-distortion through curved glass, [UA] non-local emission,
+#          [SCm] coherent scattering, irregular orbs energy state distinction,
+#          plasma refractive index (n_plasma ≈ 1 + 10⁻⁴ vs n_glass ≈ 1.5)
+# ============================================================================
+
+# UFT Orb Analysis_25 Parameters
+ORB_ANALYSIS_25_PARAMS = {
+    'batch_number': 31,            # batch #31
+    'batch_size': 25,              # 25 images per batch
+    'frame_start': 301,            # starting frame
+    'frame_end': 325,              # ending frame
+    't_start': 9.03,               # s (starting timestamp)
+    't_end': 9.75,                 # s (ending timestamp)
+    'dt_frame': 0.03,              # s (33.3 fps)
+    'fps': 33.3,                   # frames per second
+    'n_glass': 1.5,                # refractive index of thermal glass
+    'n_plasma': 1.0001,            # plasma refractive index (≈ 1 + 10⁻⁴)
+    'optical_stress_matter': 0.07, # 5-10% distortion for matter images
+    'optical_stress_plasma': 0.01, # <1% distortion for plasma images
+    'irregular_orb_energy': 2e-3,  # J (1-2 mJ per irregular orb)
+    'standard_spot_energy': 1e-3,  # J (1 mJ per standard plasmoid)
+    'spot_count': 45,              # ~45 spots per frame
+    'SCm': 1e15,                   # kg/m³ (Superconductive Material density)
+    'UA': 1e-11,                   # C (Universal Aether charge)
+    'coherent_scatter_factor': 0.02, # <2% variation in coherent field
+    'energy_per_frame': 0.019,     # J (~19 mJ per frame)
+    'batch_total_energy': 0.475,   # J (~0.475 J for 25 frames)
+    'efficiency': 0.0029,          # ~0.29% efficiency
+    'error_bound': 0.05,           # ≤±5% errors
+}
+
+
+class Batch25FrameTrackerCalculator:
+    """
+    UFT Orb Analysis_25: 25-image batch frame tracking system.
+    
+    Tracks batch #31 (frames 301-325) with timestamp assignments.
+    Uses 33.3 fps to map frame numbers to timestamps.
+    
+    Physics:
+        t(frame) = frame × dt = frame × 0.03 s
+        Frame 301 → 9.03 s
+        Frame 325 → 9.75 s
+        
+    Source: Grok UFE ORB EXP 2_11_06Mar2025
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        batch_num = dataset.get('batch_number', ORB_ANALYSIS_25_PARAMS['batch_number'])
+        batch_size = dataset.get('batch_size', ORB_ANALYSIS_25_PARAMS['batch_size'])
+        frame_start = dataset.get('frame_start', ORB_ANALYSIS_25_PARAMS['frame_start'])
+        dt = dataset.get('dt_frame', ORB_ANALYSIS_25_PARAMS['dt_frame'])
+        
+        # Generate frame-to-timestamp mapping
+        frames = []
+        for i in range(batch_size):
+            frame_num = frame_start + i
+            timestamp = frame_num * dt
+            frames.append({
+                'batch_image': f'#{batch_num}/{i+1}',
+                'frame': frame_num,
+                'timestamp_s': round(timestamp, 2),
+            })
+        
+        return {
+            'batch_number': batch_num,
+            'batch_size': batch_size,
+            'frame_range': (frame_start, frame_start + batch_size - 1),
+            'timestamp_range_s': (round(frame_start * dt, 2), round((frame_start + batch_size - 1) * dt, 2)),
+            'frames': frames,
+            'dt_per_frame_s': dt,
+            'fps': round(1 / dt, 1),
+            'source': 'Grok UFE ORB EXP 2_11_06Mar2025'
+        }
+
+
+class TimestampAssignmentCalculator:
+    """
+    UFT Orb Analysis_25: Precise timestamp assignment at 33.3 fps.
+    
+    Assigns timestamps to batch images using chronological ordering method.
+    Validates timestamp progression for continuity from prior batches.
+    
+    Physics:
+        t_n = frame × dt
+        dt = 1/fps = 1/33.3 ≈ 0.03 s
+        Error: ±0.5%
+        
+    Source: Grok UFE ORB EXP 2_11_06Mar2025
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        batch_num = dataset.get('batch_number', ORB_ANALYSIS_25_PARAMS['batch_number'])
+        batch_size = dataset.get('batch_size', ORB_ANALYSIS_25_PARAMS['batch_size'])
+        frame_start = dataset.get('frame_start', ORB_ANALYSIS_25_PARAMS['frame_start'])
+        fps = dataset.get('fps', ORB_ANALYSIS_25_PARAMS['fps'])
+        prior_batch_end = dataset.get('prior_batch_end_frame', 300)
+        
+        dt = 1 / fps
+        
+        # Verify continuity with prior batch
+        continuity_valid = (frame_start == prior_batch_end + 1)
+        
+        # Assign timestamps
+        timestamps = []
+        for i in range(batch_size):
+            frame = frame_start + i
+            t_s = frame * dt
+            timestamps.append((frame, round(t_s, 2)))
+        
+        return {
+            'batch': batch_num,
+            'fps': fps,
+            'dt_s': round(dt, 4),
+            'prior_batch_end_frame': prior_batch_end,
+            'continuity_valid': continuity_valid,
+            'timestamps': timestamps,
+            'timestamp_error_percent': 0.5,
+            'ordering_method': 'chronological_one_at_a_time',
+            'source': 'Grok UFE ORB EXP 2_11_06Mar2025'
+        }
+
+
+class IrregularOrbEnergyStateCalculator:
+    """
+    UFT Orb Analysis_25: Irregular orbs distinct energy state model.
+    
+    Models the energy state of irregular orbs (NOT wax particles).
+    Irregular orbs represent a phase transition in plasmoid energy.
+    
+    Physics:
+        E_irregular = 1-2 mJ per orb
+        E_standard = 1 mJ per spot
+        Energy state driven by [SCm] reactivity + [UA] non-locality
+        
+    Source: Grok UFE ORB EXP 2_11_06Mar2025
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        spot_count = dataset.get('spot_count', ORB_ANALYSIS_25_PARAMS['spot_count'])
+        irregular_fraction = dataset.get('irregular_fraction', 0.2)  # ~20% irregular
+        E_standard = dataset.get('standard_spot_energy', ORB_ANALYSIS_25_PARAMS['standard_spot_energy'])
+        E_irregular = dataset.get('irregular_orb_energy', ORB_ANALYSIS_25_PARAMS['irregular_orb_energy'])
+        SCm = dataset.get('SCm', ORB_ANALYSIS_25_PARAMS['SCm'])
+        UA = dataset.get('UA', ORB_ANALYSIS_25_PARAMS['UA'])
+        
+        n_irregular = int(spot_count * irregular_fraction)
+        n_standard = spot_count - n_irregular
+        
+        # Energy breakdown
+        E_from_standard = n_standard * E_standard
+        E_from_irregular = n_irregular * E_irregular
+        E_frame_total = E_from_standard + E_from_irregular
+        
+        # Energy state ratio
+        energy_state_ratio = E_irregular / E_standard
+        
+        return {
+            'spot_count_total': spot_count,
+            'n_standard_plasmoids': n_standard,
+            'n_irregular_orbs': n_irregular,
+            'E_standard_per_spot_J': E_standard,
+            'E_irregular_per_orb_J': E_irregular,
+            'E_from_standard_J': E_from_standard,
+            'E_from_irregular_J': E_from_irregular,
+            'E_frame_total_J': round(E_frame_total, 4),
+            'energy_state_ratio': energy_state_ratio,
+            'energy_state_drivers': ['[SCm] reactivity', '[UA] non-locality'],
+            'note': 'Irregular orbs are distinct energy states, NOT wax particles',
+            'source': 'Grok UFE ORB EXP 2_11_06Mar2025'
+        }
+
+
+class OpticalNonDistortionCalculator:
+    """
+    UFT Orb Analysis_25: Optical non-distortion through curved glass.
+    
+    Calculates the anomalous lack of optical distortion in plasma images
+    despite curved glass that distorts matter images by 5-10%.
+    
+    Physics:
+        Snell's Law: n₁ sin(θ₁) = n₂ sin(θ₂)
+        Glass curvature → matter distortion: 5-10%
+        Plasma distortion: <1% (bypasses refraction)
+        
+    Source: Grok UFE ORB EXP 2_11_06Mar2025
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        n_glass = dataset.get('n_glass', ORB_ANALYSIS_25_PARAMS['n_glass'])
+        n_plasma = dataset.get('n_plasma', ORB_ANALYSIS_25_PARAMS['n_plasma'])
+        stress_matter = dataset.get('optical_stress_matter', ORB_ANALYSIS_25_PARAMS['optical_stress_matter'])
+        stress_plasma = dataset.get('optical_stress_plasma', ORB_ANALYSIS_25_PARAMS['optical_stress_plasma'])
+        
+        # Refractive difference
+        refractive_diff = n_glass - n_plasma
+        
+        # Distortion reduction factor
+        distortion_reduction = stress_matter / stress_plasma if stress_plasma > 0 else float('inf')
+        
+        # Snell's law angle deviation (for normal incidence through curved surface)
+        theta_incident = math.radians(30)  # assumed typical angle
+        theta_matter = math.asin(math.sin(theta_incident) / n_glass)
+        theta_plasma = math.asin(math.sin(theta_incident) / n_plasma)
+        
+        angle_deviation_matter_deg = math.degrees(abs(theta_incident - theta_matter))
+        angle_deviation_plasma_deg = math.degrees(abs(theta_incident - theta_plasma))
+        
+        return {
+            'n_glass': n_glass,
+            'n_plasma': n_plasma,
+            'refractive_difference': round(refractive_diff, 4),
+            'optical_stress_matter_percent': stress_matter * 100,
+            'optical_stress_plasma_percent': stress_plasma * 100,
+            'distortion_reduction_factor': round(distortion_reduction, 1),
+            'angle_deviation_matter_deg': round(angle_deviation_matter_deg, 2),
+            'angle_deviation_plasma_deg': round(angle_deviation_plasma_deg, 4),
+            'anomaly': 'Plasma images bypass standard refractive distortion',
+            'mechanism_hypothesis': ['[UA] non-local emission', '[SCm] coherence'],
+            'source': 'Grok UFE ORB EXP 2_11_06Mar2025'
+        }
+
+
+class NonLocalEmissionCalculator:
+    """
+    UFT Orb Analysis_25: [UA] non-local light emission model.
+    
+    Models the hypothesis that [UA] (Universal Aether) enables plasmoids
+    to emit light in a non-local manner that bypasses glass curvature.
+    
+    Physics:
+        [UA] non-locality → light projection directly to sensor
+        Reduces optical stress from ~7% to <1%
+        Related to quantum coherence
+        
+    Source: Grok UFE ORB EXP 2_11_06Mar2025
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        UA = dataset.get('UA', ORB_ANALYSIS_25_PARAMS['UA'])
+        stress_before = dataset.get('optical_stress_matter', ORB_ANALYSIS_25_PARAMS['optical_stress_matter'])
+        stress_after = dataset.get('optical_stress_plasma', ORB_ANALYSIS_25_PARAMS['optical_stress_plasma'])
+        
+        # Non-local reduction factor
+        reduction_factor = 1 - (stress_after / stress_before)
+        
+        # [UA] contribution estimate
+        UA_contribution = UA * reduction_factor * 1e11  # normalized
+        
+        return {
+            'UA_charge_C': UA,
+            'optical_stress_standard_percent': stress_before * 100,
+            'optical_stress_nonlocal_percent': stress_after * 100,
+            'stress_reduction_factor': round(reduction_factor, 3),
+            'UA_contribution_normalized': round(UA_contribution, 3),
+            'mechanism': '[UA] non-local emission bypasses glass curvature',
+            'quantum_coherence_link': True,
+            'error_bound_percent': 5,
+            'source': 'Grok UFE ORB EXP 2_11_06Mar2025'
+        }
+
+
+class CoherentScatteringCalculator:
+    """
+    UFT Orb Analysis_25: [SCm] coherent scattering model.
+    
+    Models coherent light field created by high-density [SCm] material,
+    minimizing refractive deviations in infrared scattering.
+    
+    Physics:
+        [SCm] density: ~10¹⁵ kg/m³
+        Creates coherent light field
+        Infrared scatter variation: <2%
+        
+    Source: Grok UFE ORB EXP 2_11_06Mar2025
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        SCm = dataset.get('SCm', ORB_ANALYSIS_25_PARAMS['SCm'])
+        scatter_variation = dataset.get('coherent_scatter_factor', ORB_ANALYSIS_25_PARAMS['coherent_scatter_factor'])
+        lambda_min = dataset.get('lambda_min_um', 0.7)  # infrared range
+        lambda_max = dataset.get('lambda_max_um', 10.0)
+        
+        # Coherence factor (higher SCm → better coherence)
+        coherence_factor = 1 - scatter_variation
+        
+        # Scatter intensity uniformity
+        uniformity = coherence_factor * 100
+        
+        return {
+            'SCm_density_kg_m3': SCm,
+            'infrared_range_um': (lambda_min, lambda_max),
+            'scatter_variation_percent': scatter_variation * 100,
+            'coherence_factor': round(coherence_factor, 3),
+            'uniformity_percent': round(uniformity, 1),
+            'mechanism': '[SCm] high density creates coherent scattering field',
+            'error_bound_percent': 5,
+            'source': 'Grok UFE ORB EXP 2_11_06Mar2025'
+        }
+
+
+class PlasmaRefractiveIndexCalculator:
+    """
+    UFT Orb Analysis_25: Plasma vs glass refractive index comparison.
+    
+    Compares the effective refractive index of plasma (n ≈ 1 + 10⁻⁴)
+    versus thermal glass (n ≈ 1.5) to explain reduced optical stress.
+    
+    Physics:
+        n_plasma ≈ 1 + 10⁻⁴ (plasma frequency dependent)
+        n_glass ≈ 1.5
+        Δn = 0.4999 → stress reduction
+        
+    Source: Grok UFE ORB EXP 2_11_06Mar2025
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        n_glass = dataset.get('n_glass', ORB_ANALYSIS_25_PARAMS['n_glass'])
+        n_plasma = dataset.get('n_plasma', ORB_ANALYSIS_25_PARAMS['n_plasma'])
+        n_air = 1.0
+        
+        # Refractive index differences
+        delta_n_glass_air = n_glass - n_air
+        delta_n_plasma_air = n_plasma - n_air
+        delta_n_glass_plasma = n_glass - n_plasma
+        
+        # Optical path difference for 10mm curved surface
+        path_length = dataset.get('optical_path_mm', 10)
+        OPD_glass = path_length * delta_n_glass_air
+        OPD_plasma = path_length * delta_n_plasma_air
+        
+        # Stress ratio
+        stress_ratio = delta_n_plasma_air / delta_n_glass_air if delta_n_glass_air > 0 else 0
+        
+        return {
+            'n_glass': n_glass,
+            'n_plasma': n_plasma,
+            'n_air': n_air,
+            'delta_n_glass_air': round(delta_n_glass_air, 4),
+            'delta_n_plasma_air': round(delta_n_plasma_air, 4),
+            'delta_n_glass_plasma': round(delta_n_glass_plasma, 4),
+            'optical_path_length_mm': path_length,
+            'OPD_glass_mm': round(OPD_glass, 4),
+            'OPD_plasma_mm': round(OPD_plasma, 6),
+            'stress_ratio': round(stress_ratio, 6),
+            'conclusion': 'Plasma n≈1 → near-zero refraction, minimal stress',
+            'source': 'Grok UFE ORB EXP 2_11_06Mar2025'
+        }
+
+
+class OpticalStressReductionCalculator:
+    """
+    UFT Orb Analysis_25: Optical stress reduction comparison.
+    
+    Compares optical stress for matter images (5-10%) vs plasma images (<1%)
+    when viewed through curved glass mediums.
+    
+    Physics:
+        Matter optical stress: 5-10% (±2% error)
+        Plasma optical stress: <1% (±5% error)
+        Reduction factor: 7-10x (via [UA] non-locality + [SCm] coherence)
+        
+    Source: Grok UFE ORB EXP 2_11_06Mar2025
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        stress_matter = dataset.get('optical_stress_matter', ORB_ANALYSIS_25_PARAMS['optical_stress_matter'])
+        stress_plasma = dataset.get('optical_stress_plasma', ORB_ANALYSIS_25_PARAMS['optical_stress_plasma'])
+        
+        # Statistical comparison
+        reduction_factor = stress_matter / stress_plasma if stress_plasma > 0 else float('inf')
+        reduction_percent = (1 - stress_plasma / stress_matter) * 100
+        
+        # Anomaly significance
+        significance_sigma = (stress_matter - stress_plasma) / (0.02)  # normalized by 2% error
+        
+        return {
+            'matter_optical_stress_percent': stress_matter * 100,
+            'matter_stress_error_percent': 2,
+            'plasma_optical_stress_percent': stress_plasma * 100,
+            'plasma_stress_error_percent': 5,
+            'reduction_factor': round(reduction_factor, 1),
+            'reduction_percent': round(reduction_percent, 1),
+            'significance_sigma': round(significance_sigma, 1),
+            'anomaly_mechanism': {
+                'UA_non_local_emission': True,
+                'SCm_coherent_scattering': True,
+                'plasma_refractive_index': 'n ≈ 1 + 10⁻⁴',
+            },
+            'conclusion': 'Plasma transcends standard refractive optical stress',
+            'source': 'Grok UFE ORB EXP 2_11_06Mar2025'
+        }
+
+
+# UFT Orb Analysis_25 registry dict
+ORB_ANALYSIS_25_CALCULATORS = {
+    'Batch25FrameTrackerCalculator': Batch25FrameTrackerCalculator(),
+    'TimestampAssignmentCalculator': TimestampAssignmentCalculator(),
+    'IrregularOrbEnergyStateCalculator': IrregularOrbEnergyStateCalculator(),
+    'OpticalNonDistortionCalculator': OpticalNonDistortionCalculator(),
+    'NonLocalEmissionCalculator': NonLocalEmissionCalculator(),
+    'CoherentScatteringCalculator': CoherentScatteringCalculator(),
+    'PlasmaRefractiveIndexCalculator': PlasmaRefractiveIndexCalculator(),
+    'OpticalStressReductionCalculator': OpticalStressReductionCalculator(),
+}
+
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -9933,6 +10344,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_22_CALCULATORS,
     **ORB_ANALYSIS_23_CALCULATORS,
     **ORB_ANALYSIS_24_CALCULATORS,
+    **ORB_ANALYSIS_25_CALCULATORS,
 }
 
 # Update class count
@@ -10122,6 +10534,18 @@ __all__ = [
     'ExtendedUPRefinementCalculator',
     'FrameRangeValidatorCalculator',
     'ORB_ANALYSIS_24_CALCULATORS',
+    
+    # Orb Analysis_25 / UFE ORB EXP 2_11 - Batch #31 Optical Non-Distortion (8 classes)
+    'ORB_ANALYSIS_25_PARAMS',
+    'Batch25FrameTrackerCalculator',
+    'TimestampAssignmentCalculator',
+    'IrregularOrbEnergyStateCalculator',
+    'OpticalNonDistortionCalculator',
+    'NonLocalEmissionCalculator',
+    'CoherentScatteringCalculator',
+    'PlasmaRefractiveIndexCalculator',
+    'OpticalStressReductionCalculator',
+    'ORB_ANALYSIS_25_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
