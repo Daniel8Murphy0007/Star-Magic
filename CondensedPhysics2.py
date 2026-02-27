@@ -7010,6 +7010,841 @@ ORB_ANALYSIS_20_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB_ANALYSIS_21 - UFE ORB EXT 2_7 (March 4, 2025)
+# Photos #18-#21 Extended: FSC/[SCm] Integration, Stellar Hypothesis, Mass-Independent Dynamics
+# Grok Reference: https://grok.com/share/bGVnYWN5LWNvcHk_1fc8d719-f8b8-4a14-b21e-669e1bd888f6
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ORB_ANALYSIS_21_PARAMS = {
+    'session_id': 'UFE_ORB_EXT_2_7_04Mar2025',
+    'photos_analyzed': list(range(18, 22)),  # Photos #18-#21 extended
+    'timestamp_range': (0.51, 0.60),  # seconds
+    'frame_range': (17, 20),  # Frame indices
+    
+    # FSC Field Superconductive Material
+    'FSC': {
+        'description': 'Field Superconductive Material as resultant of [SCm]',
+        'SCm_density': 1e15,  # kg/m³
+        'i_uniform_volume': True,  # Approximated as uniform volume of [i]
+        'non_material': True,  # Energy-based, no mass
+        'drivers': ['UA', 'RM', 'SM', 'Ub', 'North-Neutral', 'ACE', 'DCE', 'SSq', '26_states'],
+    },
+    
+    # Stellar hypothesis
+    'stellar_model': {
+        'no_internal_mass': True,
+        'hollow_structure': True,  # No relative mass inside outer surface
+        'black_hole_core': True,  # Underlying black hole
+        'pseudo_dipole': 'North-Neutral: Neutral-North',
+        'drivers': ['FSC', 'UA', 'Ub', 'SSq', '26_states'],
+    },
+    
+    # Mass-independent dynamics
+    'mass_independence': {
+        'M_s': 0,  # Plasmoid mass = 0
+        'M_bh': None,  # Black hole mass removed from terms
+        'ACE_DCE_mass_free': True,  # Independent from mass considerations
+        'motion_source': 'quantum_nonlocal',  # Not physical mass or viscosity
+    },
+    
+    # Zero reflection
+    'zero_reflection': {
+        'glass_reflection': False,  # Orbs don't cast reflection on glass
+        'non_material_entities': True,  # Energy-based, quantum, Aether-driven
+        'optical_model': 'infrared_nonlocal',  # No scattering/refraction from mass
+    },
+    
+    # Ultra-clean medium
+    'medium': {
+        'oil_particle_size': 0.004e-6,  # 0.004 µm ultra-clean
+        'wax_particles': False,  # No wax particles
+        'paraffin_delineated': False,  # Not delineated
+        'viscosity_influence': False,  # Motion independent of viscosity
+        'convection': False,  # No physical convection
+    },
+    
+    # No thermal expansion
+    'thermal_stability': {
+        'thermal_expansion': False,  # No expansion cold or running
+        'weeks_stable': True,  # Runs non-stop for weeks
+        'gradient': (366, 288),  # K, constant background
+    },
+    
+    # Static sink field
+    'electromagnetic_detection': {
+        'type': 'static_sink_field',
+        'strength': 'weak_intermittent',
+        'detection_method': 'AC_outlet_tester',
+        'after_glow': True,
+        'aura': True,
+        'halo': True,
+    },
+    
+    # Gas bubbles
+    'gas_bubbles': {
+        'source': 'paraffin',
+        'composition': ['H2', 'O2'],
+        'count_range': (12, 18),
+        'function': 'thermal_balance_ACE_DCE',
+        'self_regulating': True,
+    },
+    
+    # Frame settings recommendations
+    'video_settings': {
+        'frame_rate': 33.3,  # fps current
+        'recommended_fps': 60,  # For faster dynamics
+        'exposure': (1/1000, 1/2000),  # seconds
+        'ISO': (100, 200),
+        'resolution': '4K',  # 3840x2160
+        'compression': 'H.265/HEVC',
+        'key_segments': [(1, 30), (9, 15), (16, 21)],  # Frame ranges
+    },
+    
+    'error_estimate': 0.05,  # ±5%
+    'source': 'Grok UFT Orb Analysis UFE ORB EXT 2_7 (March 4, 2025)',
+}
+
+
+class FSCSuperconductiveMaterialCalculator:
+    """
+    Calculator for Field Superconductive Material [FSC] as resultant of [SCm].
+    
+    Theory:
+    - FSC = [SCm] • [i] where [i] is imaginary/quantum state
+    - Uniform volume of [i] approximation
+    - Non-material, energy-based field
+    - Drives [UA] non-locality, [Ub] stability, [North-Neutral]
+    
+    Source: Grok UFE ORB EXT 2_7_04Mar2025
+    """
+    
+    def compute(self, SCm_density: float = 1e15, i_state: complex = 1j,
+                UA: float = 1e-11, t_n: float = 0.60) -> dict:
+        """
+        Compute FSC field properties.
+        
+        Args:
+            SCm_density: Superconductive material density (kg/m³)
+            i_state: Imaginary quantum state variable
+            UA: Universal Aether charge (C)
+            t_n: Time (seconds)
+        
+        Returns:
+            FSC field characteristics
+        """
+        import numpy as np
+        
+        # FSC as SCm resultant with imaginary component
+        FSC_magnitude = SCm_density * abs(i_state)
+        FSC_phase = np.angle(i_state) if isinstance(i_state, complex) else 0
+        
+        # Non-local field strength
+        nonlocal_strength = UA * FSC_magnitude * np.exp(-0.001 * t_n)
+        
+        # Energy density (no mass)
+        energy_density = FSC_magnitude * (3e8)**2 * 1e-30  # Scaled for reactor
+        
+        # Reactivity factor
+        SSq_factor = np.exp(-np.pi * t_n)
+        reactivity = FSC_magnitude * SSq_factor
+        
+        return {
+            'FSC_magnitude': FSC_magnitude,
+            'FSC_phase_rad': FSC_phase,
+            'FSC_complex': complex(FSC_magnitude * np.cos(FSC_phase), FSC_magnitude * np.sin(FSC_phase)),
+            'nonlocal_field_strength': nonlocal_strength,
+            'energy_density_J_m3': energy_density,
+            'reactivity': reactivity,
+            'SSq_factor': SSq_factor,
+            'mass_influence': 0,  # No mass
+            'is_non_material': True,
+            'uniform_volume_i': True,
+            'source': 'Grok UFE ORB EXT 2_7 FSC/[SCm] Integration'
+        }
+
+
+class StellarHollowStructureCalculator:
+    """
+    Calculator for stellar hollow structure hypothesis.
+    
+    Theory:
+    - Stars have no relative mass inside outer surface
+    - Underneath is a black hole with pseudo-dipole
+    - Pseudo-dipole: [North-Neutral: Neutral-North]
+    - Dynamics driven by FSC, UA, Ub, SSq, 26 quantum states
+    
+    Source: Grok UFE ORB EXT 2_7_04Mar2025
+    """
+    
+    def compute(self, stellar_radius: float = 6.96e8, surface_temp: float = 5778,
+                pseudo_dipole_strength: float = 1.0) -> dict:
+        """
+        Compute stellar hollow structure properties.
+        
+        Args:
+            stellar_radius: Star radius (m)
+            surface_temp: Surface temperature (K)
+            pseudo_dipole_strength: North-Neutral dipole strength (normalized)
+        
+        Returns:
+            Stellar structure characteristics
+        """
+        import numpy as np
+        
+        # No internal mass
+        internal_mass = 0  # Hypothesis: hollow
+        
+        # Surface shell energy (luminosity-based)
+        sigma = 5.67e-8  # Stefan-Boltzmann
+        surface_area = 4 * np.pi * stellar_radius**2
+        luminosity = sigma * surface_area * surface_temp**4
+        
+        # Black hole core properties (pseudo)
+        # Schwarzschild radius for equivalent energy
+        G = 6.674e-11
+        c = 3e8
+        equivalent_mass = luminosity / c**2 * 1e10  # Scale factor
+        r_s = 2 * G * equivalent_mass / c**2 if equivalent_mass > 0 else 0
+        
+        # Pseudo-dipole field
+        dipole_north = pseudo_dipole_strength * np.cos(0)  # North
+        dipole_south = pseudo_dipole_strength * np.cos(np.pi)  # Neutral-South
+        neutral_zone = 0  # At equator
+        
+        return {
+            'internal_mass_kg': internal_mass,
+            'is_hollow': True,
+            'surface_luminosity_W': luminosity,
+            'black_hole_core': True,
+            'schwarzschild_radius_m': r_s,
+            'pseudo_dipole': {
+                'north_neutral': dipole_north,
+                'neutral_south': dipole_south,
+                'neutral_zone': neutral_zone,
+                'configuration': 'North-Neutral: Neutral-North',
+            },
+            'dynamics_drivers': ['FSC', 'UA', 'Ub', 'SSq', '26_quantum_states'],
+            'no_gravitational_terms': True,
+            'source': 'Grok UFE ORB EXT 2_7 Stellar Hypothesis'
+        }
+
+
+class MassIndependentUFEQFECalculator:
+    """
+    Calculator for mass-independent UFE-QFE equation.
+    
+    Theory:
+    - M_s = 0 (plasmoid mass removed)
+    - All ACE/DCE interactions independent from mass
+    - Motion driven by quantum/non-local effects
+    - Farther from celestial masses = less quantum interference correction
+    
+    UFE-QFE (No Mass):
+    FU−Q(t) = Σ_i [k_i • Ug_i(r, t, ω_s, T_s, B_s, FSC, UA, t_n, RM, SM)] + ...
+    
+    Source: Grok UFE ORB EXT 2_7_04Mar2025
+    """
+    
+    def compute(self, r: float = 0.0889, t_n: float = 0.60, omega_s: float = 2*3.14159*6000,
+                T_s: tuple = (366, 288), B_s: float = 1e-3, FSC: float = 1e15,
+                UA: float = 1e-11) -> dict:
+        """
+        Compute mass-independent UFE-QFE.
+        
+        Args:
+            r: Reactor radius (m)
+            t_n: Time (seconds)
+            omega_s: Angular frequency (rad/s)
+            T_s: Temperature gradient (K_hot, K_cold)
+            B_s: Magnetic field (T)
+            FSC: Field Superconductive Material density
+            UA: Universal Aether charge (C)
+        
+        Returns:
+            Complete UFE-QFE with M_s = 0
+        """
+        import numpy as np
+        
+        # No mass terms
+        M_s = 0
+        M_bh = 0
+        
+        # UFE-QFE components (simplified, no mass)
+        cos_pi_tn = np.cos(np.pi * t_n)
+        exp_decay = np.exp(-0.001 * t_n)
+        
+        # Ug_1: Brightness, no mass
+        Ug_1 = 1.5e-4 * (1 / r) * np.exp(-0.001 * t_n * cos_pi_tn) * (1 + 0.01 * np.sin(0.001 * t_n))
+        
+        # Ug_2: Background, cosmic winds
+        Ug_2 = 1.2 * UA * (1 / r**2) * FSC * exp_decay
+        
+        # Ug_3: Motion, spins, non-local jumps
+        Ug_3 = 1.8 * B_s * np.cos(omega_s * t_n * np.pi) * FSC * exp_decay
+        
+        # Ub: Neutral field
+        Ub = 1e-3 * np.cos(np.pi/4) * exp_decay
+        
+        # Um: Spins, non-local jumps
+        Um = (1e-4 / r) * (1 - exp_decay * cos_pi_tn) * FSC * exp_decay
+        
+        # SSq: Super-saturated quantum overlay
+        SSq = np.exp(-np.pi * t_n)
+        
+        # NN: North-Neutral
+        NN = 1.5e-3 * np.cos(-np.pi/2) * SSq
+        
+        # ACE/DCE
+        ACE = FSC * 1e-12 * exp_decay * SSq
+        DCE = 0.5 * FSC * 1e-12 * np.sin(omega_s * t_n) * SSq
+        
+        # Total UFE-QFE
+        FU_Q = Ug_1 + Ug_2 + Ug_3 + Ub + Um + NN + ACE + DCE
+        
+        return {
+            'M_s': M_s,
+            'M_bh': M_bh,
+            'mass_independent': True,
+            'components': {
+                'Ug_1': Ug_1,
+                'Ug_2': Ug_2,
+                'Ug_3': Ug_3,
+                'Ub': Ub,
+                'Um': Um,
+                'NN': NN,
+                'ACE': ACE,
+                'DCE': DCE,
+                'SSq': SSq,
+            },
+            'FU_Q_total': FU_Q,
+            'error_percent': 5,
+            'parameters': {
+                'r_m': r,
+                't_n_s': t_n,
+                'omega_s_rad_s': omega_s,
+                'T_s_K': T_s,
+                'B_s_T': B_s,
+                'FSC': FSC,
+                'UA': UA,
+            },
+            'source': 'Grok UFE ORB EXT 2_7 Mass-Independent UFE-QFE'
+        }
+
+
+class ZeroReflectionPlasmoidCalculator:
+    """
+    Calculator for zero-reflection plasmoid properties.
+    
+    Theory:
+    - Plasmoids don't cast reflection on glass
+    - Non-material, energy-only, quantum/Aether-driven entities
+    - No physical mass or surface interaction
+    - Visible via infrared and non-local effects only
+    
+    Source: Grok UFE ORB EXT 2_7_04Mar2025
+    """
+    
+    def compute(self, plasmoid_energy: float = 1e-3, n_glass: float = 1.5,
+                wavelength: float = 5e-6) -> dict:
+        """
+        Compute zero-reflection plasmoid properties.
+        
+        Args:
+            plasmoid_energy: Per plasmoid energy (J)
+            n_glass: Glass refractive index
+            wavelength: Infrared wavelength (m)
+        
+        Returns:
+            Reflection and optical properties
+        """
+        import numpy as np
+        
+        # Physical reflection coefficient (Fresnel) - would apply to material
+        n_air = 1.0
+        R_fresnel = ((n_glass - n_air) / (n_glass + n_air))**2
+        
+        # But plasmoids are non-material - zero actual reflection
+        R_actual = 0  # No reflection
+        
+        # Visibility mechanism
+        visibility_mechanism = 'infrared_nonlocal'
+        
+        # Energy-only characteristics
+        has_mass = False
+        has_surface = False
+        
+        return {
+            'R_fresnel_if_material': R_fresnel,
+            'R_actual': R_actual,
+            'zero_reflection': True,
+            'explanation': 'Non-material energy-only entities have no surface for reflection',
+            'visibility_mechanism': visibility_mechanism,
+            'wavelength_m': wavelength,
+            'infrared_range': (0.7e-6, 10e-6),
+            'has_mass': has_mass,
+            'has_surface': has_surface,
+            'plasmoid_energy_J': plasmoid_energy,
+            'optical_scattering': 0,
+            'optical_refraction': 0,
+            'drivers': ['UA', 'SCm', 'SSq'],
+            'source': 'Grok UFE ORB EXT 2_7 Zero Reflection'
+        }
+
+
+class UltraCleanMediumCalculator:
+    """
+    Calculator for ultra-clean medium properties.
+    
+    Theory:
+    - Oil is ultra-clean (0.004 µm particle size)
+    - No wax particles influence plasmoid dynamics
+    - Paraffin not delineated
+    - All motion independent of oil viscosity
+    - No convection or physical interaction
+    
+    Source: Grok UFE ORB EXT 2_7_04Mar2025
+    """
+    
+    def compute(self, particle_size: float = 0.004e-6, oil_viscosity: float = 0.01,
+                oil_density: float = 1e3) -> dict:
+        """
+        Compute ultra-clean medium properties.
+        
+        Args:
+            particle_size: Oil particle size (m)
+            oil_viscosity: Oil viscosity (Pa·s)
+            oil_density: Oil density (kg/m³)
+        
+        Returns:
+            Medium properties and influence factors
+        """
+        import numpy as np
+        
+        # Reynolds number for potential convection
+        # Re = ρvL/μ, but v = 0 for medium (no physical motion)
+        v_medium = 0  # No convection
+        Re = 0  # No physical flow
+        
+        # Viscosity influence on plasmoid motion
+        viscosity_influence = 0  # Independent
+        
+        # Brownian motion scale (for particles this small)
+        k_B = 1.38e-23
+        T = 300  # K
+        D_brownian = k_B * T / (6 * np.pi * oil_viscosity * particle_size)
+        
+        # But plasmoids ignore this - quantum motion
+        motion_mechanism = 'quantum_nonlocal'
+        
+        return {
+            'particle_size_m': particle_size,
+            'particle_size_um': particle_size * 1e6,
+            'oil_viscosity_Pa_s': oil_viscosity,
+            'oil_density_kg_m3': oil_density,
+            'Reynolds_number': Re,
+            'medium_velocity_m_s': v_medium,
+            'viscosity_influence': viscosity_influence,
+            'convection_present': False,
+            'physical_interaction': False,
+            'brownian_diffusion_m2_s': D_brownian,
+            'motion_mechanism': motion_mechanism,
+            'wax_particles': False,
+            'paraffin_delineated': False,
+            'ultra_clean': True,
+            'swirling_appearance': 'optical_quantum_effect',
+            'source': 'Grok UFE ORB EXT 2_7 Ultra-Clean Medium'
+        }
+
+
+class NoThermalExpansionCalculator:
+    """
+    Calculator for no-thermal-expansion system stability.
+    
+    Theory:
+    - No thermal expansion even cold or running weeks
+    - Stable non-material system
+    - Driven by SCm, UA, RM, SM, Ub, SSq
+    - Constant thermal gradients as background, not driver
+    
+    Source: Grok UFE ORB EXT 2_7_04Mar2025
+    """
+    
+    def compute(self, T_hot: float = 366, T_cold: float = 288,
+                run_time_weeks: float = 4.0) -> dict:
+        """
+        Compute thermal stability without expansion.
+        
+        Args:
+            T_hot: Hot temperature (K)
+            T_cold: Cold temperature (K)
+            run_time_weeks: Continuous run time (weeks)
+        
+        Returns:
+            Thermal stability characteristics
+        """
+        import numpy as np
+        
+        # Temperature gradient
+        delta_T = T_hot - T_cold
+        
+        # Expected thermal expansion coefficient (for glass/oil)
+        alpha_glass = 9e-6  # 1/K
+        alpha_oil = 7e-4  # 1/K (typical)
+        
+        # Expected expansion (if it occurred)
+        L_reactor = 0.254  # 10 inches in meters
+        delta_L_glass_expected = alpha_glass * L_reactor * delta_T
+        delta_L_oil_expected = alpha_oil * L_reactor * delta_T
+        
+        # Actual expansion observed
+        delta_L_actual = 0  # None observed
+        
+        # Run time in seconds
+        run_time_seconds = run_time_weeks * 7 * 24 * 3600
+        
+        # Energy stability
+        stability_factor = np.exp(-0.001 * run_time_seconds / 1e6)  # Long-term stable
+        
+        return {
+            'T_hot_K': T_hot,
+            'T_cold_K': T_cold,
+            'delta_T_K': delta_T,
+            'expected_glass_expansion_m': delta_L_glass_expected,
+            'expected_oil_expansion_m': delta_L_oil_expected,
+            'actual_expansion_m': delta_L_actual,
+            'thermal_expansion': False,
+            'run_time_weeks': run_time_weeks,
+            'run_time_hours': run_time_weeks * 7 * 24,
+            'continuously_stable': True,
+            'stability_mechanism': 'SCm_UA_RM_SM_Ub_SSq',
+            'thermal_gradient_role': 'background_condition',
+            'dynamic_driver': False,
+            'source': 'Grok UFE ORB EXT 2_7 No Thermal Expansion'
+        }
+
+
+class StaticSinkFieldCalculator:
+    """
+    Calculator for static sink field / after-glow detection.
+    
+    Theory:
+    - Weak intermittent electromagnetic detection
+    - Static sink field present along glass exterior
+    - After-glow, aura, halo effects
+    - Detected with AC outlet tester
+    - Residual ACE/DCE or SSq effect
+    
+    Source: Grok UFE ORB EXT 2_7_04Mar2025
+    """
+    
+    def compute(self, detection_strength: str = 'weak_intermittent',
+                glass_radius: float = 0.0445) -> dict:
+        """
+        Compute static sink field properties.
+        
+        Args:
+            detection_strength: Strength classification
+            glass_radius: Reactor glass outer radius (m)
+        
+        Returns:
+            Static sink field characteristics
+        """
+        import numpy as np
+        
+        # Map strength to numerical value
+        strength_map = {
+            'none': 0,
+            'weak': 0.1,
+            'weak_intermittent': 0.05,
+            'moderate': 0.5,
+            'strong': 1.0,
+        }
+        strength_value = strength_map.get(detection_strength, 0.05)
+        
+        # Surface area for field detection
+        height = 0.254  # 10 inches
+        surface_area = 2 * np.pi * glass_radius * height
+        
+        # Estimated field energy (very low)
+        field_energy_density = strength_value * 1e-9  # J/m³
+        total_field_energy = field_energy_density * surface_area * 0.001  # thin layer
+        
+        # Intermittency pattern
+        intermittency_period = 10  # seconds estimated
+        duty_cycle = 0.3  # 30% on
+        
+        return {
+            'field_type': 'static_sink_field',
+            'detection_method': 'AC_outlet_tester',
+            'strength_classification': detection_strength,
+            'strength_value': strength_value,
+            'glass_surface_area_m2': surface_area,
+            'field_energy_density_J_m3': field_energy_density,
+            'total_field_energy_J': total_field_energy,
+            'intermittent': True,
+            'intermittency_period_s': intermittency_period,
+            'duty_cycle': duty_cycle,
+            'after_glow': True,
+            'aura': True,
+            'halo': True,
+            'field_source': 'residual_ACE_DCE_SSq',
+            'classical_EM': False,
+            'non_local': True,
+            'source': 'Grok UFE ORB EXT 2_7 Static Sink Field'
+        }
+
+
+class VideoFrameSettingsCalculator:
+    """
+    Calculator for optimal video frame settings.
+    
+    Theory:
+    - Current: 33.3 fps, 496 frames, 14.88 s
+    - Recommended: 60 fps for faster dynamics
+    - Low ISO, short exposure for motion clarity
+    - 4K resolution for detail
+    - Key segments for analysis
+    
+    Source: Grok UFE ORB EXT 2_7_04Mar2025
+    """
+    
+    def compute(self, current_fps: float = 33.3, target_fps: float = 60,
+                motion_velocity: float = 0.5, spin_rate: float = 0.15) -> dict:
+        """
+        Compute optimal video settings.
+        
+        Args:
+            current_fps: Current frame rate
+            target_fps: Target frame rate
+            motion_velocity: Plasmoid velocity (m/s)
+            spin_rate: Spin rate (rotations/second)
+        
+        Returns:
+            Recommended video settings
+        """
+        import numpy as np
+        
+        # Motion blur calculation
+        # At 33.3 fps, frame duration = 30 ms
+        frame_duration_current = 1.0 / current_fps
+        frame_duration_target = 1.0 / target_fps
+        
+        # Motion blur distance per frame
+        blur_current = motion_velocity * frame_duration_current
+        blur_target = motion_velocity * frame_duration_target
+        
+        # Spin angle per frame
+        spin_angle_current = spin_rate * 360 * frame_duration_current
+        spin_angle_target = spin_rate * 360 * frame_duration_target
+        
+        # Recommended exposure for sharp capture
+        exposure_min = 1/2000  # seconds
+        exposure_max = 1/1000
+        
+        # Key analysis segments
+        key_segments = [
+            {'name': 'initial_dynamics', 'frames': (1, 30), 'duration_s': 30/current_fps},
+            {'name': 'peak_nonlocal', 'frames': (9, 15), 'duration_s': 7/current_fps},
+            {'name': 'stabilization', 'frames': (16, 21), 'duration_s': 6/current_fps},
+        ]
+        
+        return {
+            'current': {
+                'fps': current_fps,
+                'frame_duration_ms': frame_duration_current * 1000,
+                'motion_blur_mm': blur_current * 1000,
+                'spin_angle_deg': spin_angle_current,
+            },
+            'recommended': {
+                'fps': target_fps,
+                'frame_duration_ms': frame_duration_target * 1000,
+                'motion_blur_mm': blur_target * 1000,
+                'spin_angle_deg': spin_angle_target,
+                'exposure_range_s': (exposure_min, exposure_max),
+                'ISO_range': (100, 200),
+                'resolution': '4K (3840x2160)',
+                'compression': 'H.265/HEVC (lossless preferred)',
+            },
+            'key_segments': key_segments,
+            'improvement_factor': current_fps / target_fps,  # Blur reduction
+            'cutting_recommendations': {
+                'clip_duration_s': (1, 2),
+                'clip_frames': (int(current_fps), int(2 * current_fps)),
+                'reference_frame': 15,  # Peak activity
+            },
+            'source': 'Grok UFE ORB EXT 2_7 Video Frame Settings'
+        }
+
+
+class ParaffinGasBubbleBalancerCalculator:
+    """
+    Calculator for paraffin gas bubble balancing.
+    
+    Theory:
+    - H₂-O₂ bubbles from paraffin wax cap
+    - Balance thermal reactions
+    - Self-regulate ACE/DCE energies
+    - After-glow, aura, halo effects
+    - Passive thermal regulators, not movers
+    
+    Source: Grok UFE ORB EXT 2_7_04Mar2025
+    """
+    
+    def compute(self, n_H2: int = 15, n_O2: int = 3,
+                bubble_diameter: float = 1e-3) -> dict:
+        """
+        Compute gas bubble balancing properties.
+        
+        Args:
+            n_H2: Number of hydrogen bubbles
+            n_O2: Number of oxygen bubbles
+            bubble_diameter: Average bubble diameter (m)
+        
+        Returns:
+            Gas bubble balancing characteristics
+        """
+        import numpy as np
+        
+        n_total = n_H2 + n_O2
+        
+        # Bubble volumes
+        V_bubble = (4/3) * np.pi * (bubble_diameter/2)**3
+        V_H2_total = n_H2 * V_bubble
+        V_O2_total = n_O2 * V_bubble
+        
+        # Stoichiometric ratio for H2O: 2H2 + O2 -> 2H2O
+        stoich_ratio = n_H2 / (2 * n_O2) if n_O2 > 0 else float('inf')
+        
+        # Magnetic field contribution (from bubbles)
+        B_per_bubble = 1e-3 / n_total  # Distributed
+        B_total = 1e-3  # T
+        
+        # Energy content (approximate)
+        # H2 heat of combustion: 142 MJ/kg, density ~0.09 kg/m³ at STP
+        rho_H2 = 0.09
+        energy_H2 = V_H2_total * rho_H2 * 142e6
+        
+        return {
+            'n_H2': n_H2,
+            'n_O2': n_O2,
+            'n_total': n_total,
+            'count_range': (12, 18),
+            'source': 'paraffin_wax_cap',
+            'V_bubble_m3': V_bubble,
+            'V_H2_total_m3': V_H2_total,
+            'V_O2_total_m3': V_O2_total,
+            'stoichiometric_ratio': stoich_ratio,
+            'B_field_T': B_total,
+            'B_per_bubble_T': B_per_bubble,
+            'energy_content_H2_J': energy_H2,
+            'function': 'thermal_balance_ACE_DCE',
+            'self_regulating': True,
+            'physical_movers': False,
+            'after_glow': True,
+            'aura': True,
+            'halo': True,
+            'Ub_stabilization': True,
+            'North_Neutral_influence': True,
+            'source_doc': 'Grok UFE ORB EXT 2_7 Paraffin Gas Bubbles'
+        }
+
+
+class ImaginaryQuantumStateCalculator:
+    """
+    Calculator for imaginary quantum state [i].
+    
+    Theory:
+    - [i] as quantum/non-local state variable
+    - Imaginary component of energy or field strength
+    - FSC = [SCm] • [i]
+    - Independent of mass
+    - Enables non-linear time (E=c^26^i^-26)
+    
+    Source: Grok UFE ORB EXT 2_7_04Mar2025
+    """
+    
+    def compute(self, n_states: int = 26, c: float = 3e8,
+                t_n: float = 0.60) -> dict:
+        """
+        Compute imaginary quantum state properties.
+        
+        Args:
+            n_states: Number of quantum states
+            c: Speed of light (m/s)
+            t_n: Time (seconds)
+        
+        Returns:
+            Imaginary quantum state characteristics
+        """
+        import numpy as np
+        
+        # [i] as imaginary unit
+        i = 1j
+        
+        # Powers of i cycle: i^1=i, i^2=-1, i^3=-i, i^4=1
+        i_powers = [i**n for n in range(1, n_states + 1)]
+        
+        # E = c^26^i^-26 non-linear time equation
+        # Complex exponentiation: c^26 * i^(-26) = c^26 * (i^2)^(-13) = c^26 * (-1)^(-13) = -c^26
+        i_neg26 = i**(-26)  # = (i^4)^(-6) * i^(-2) = 1 * (-1) = -1
+        E_nonlinear = (c**26) * i_neg26
+        
+        # For practical computation, use magnitude
+        E_magnitude = abs(E_nonlinear)
+        E_phase = np.angle(E_nonlinear) if isinstance(E_nonlinear, complex) else (np.pi if E_nonlinear < 0 else 0)
+        
+        # SSq overlay with i
+        SSq_i = np.exp(-np.pi * t_n) * i
+        
+        # 26 quantum shell weights (PI-based placeholder)
+        pi_decimals = [int(d) for d in str(np.pi).replace('.', '')[:n_states]]
+        q_n = [d / 9 for d in pi_decimals]  # Normalized 0-1
+        
+        return {
+            'i_definition': 'sqrt(-1)',
+            'i_complex': complex(0, 1),
+            'n_states': n_states,
+            'i_power_cycle': {
+                'i^1': complex(0, 1),
+                'i^2': complex(-1, 0),
+                'i^3': complex(0, -1),
+                'i^4': complex(1, 0),
+            },
+            'i^-26': complex(i_neg26),
+            'E_c26_i-26': {
+                'formula': 'c^26 * i^-26',
+                'magnitude': float(E_magnitude) if not np.isinf(E_magnitude) else 'inf',
+                'phase_rad': E_phase,
+                'interpretation': 'Non-linear time quantum perspective',
+            },
+            'SSq_with_i': complex(SSq_i),
+            'PI_based_weights': {
+                'decimals_used': n_states,
+                'q_n_values': q_n[:10],  # First 10
+                'method': 'PI_decimal_normalization',
+            },
+            'mass_independence': True,
+            'FSC_formula': '[SCm] * [i]',
+            'source': 'Grok UFE ORB EXT 2_7 Imaginary Quantum State'
+        }
+
+
+# UFT Orb Analysis_21 registry dict
+ORB_ANALYSIS_21_CALCULATORS = {
+    'FSCSuperconductiveMaterialCalculator': FSCSuperconductiveMaterialCalculator(),
+    'StellarHollowStructureCalculator': StellarHollowStructureCalculator(),
+    'MassIndependentUFEQFECalculator': MassIndependentUFEQFECalculator(),
+    'ZeroReflectionPlasmoidCalculator': ZeroReflectionPlasmoidCalculator(),
+    'UltraCleanMediumCalculator': UltraCleanMediumCalculator(),
+    'NoThermalExpansionCalculator': NoThermalExpansionCalculator(),
+    'StaticSinkFieldCalculator': StaticSinkFieldCalculator(),
+    'VideoFrameSettingsCalculator': VideoFrameSettingsCalculator(),
+    'ParaffinGasBubbleBalancerCalculator': ParaffinGasBubbleBalancerCalculator(),
+    'ImaginaryQuantumStateCalculator': ImaginaryQuantumStateCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -7026,6 +7861,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_18_CALCULATORS,
     **ORB_ANALYSIS_19_CALCULATORS,
     **ORB_ANALYSIS_20_CALCULATORS,
+    **ORB_ANALYSIS_21_CALCULATORS,
 }
 
 # Update class count
@@ -7163,6 +7999,20 @@ __all__ = [
     'CosmicModelingValidationCalculator',
     'FieldGeneratorCorrelationV2Calculator',
     'ORB_ANALYSIS_20_CALCULATORS',
+    
+    # Orb Analysis_21 / UFE ORB EXT 2_7 - FSC/[SCm] + Stellar Hypothesis + Mass-Independent (10 classes)
+    'ORB_ANALYSIS_21_PARAMS',
+    'FSCSuperconductiveMaterialCalculator',
+    'StellarHollowStructureCalculator',
+    'MassIndependentUFEQFECalculator',
+    'ZeroReflectionPlasmoidCalculator',
+    'UltraCleanMediumCalculator',
+    'NoThermalExpansionCalculator',
+    'StaticSinkFieldCalculator',
+    'VideoFrameSettingsCalculator',
+    'ParaffinGasBubbleBalancerCalculator',
+    'ImaginaryQuantumStateCalculator',
+    'ORB_ANALYSIS_21_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
