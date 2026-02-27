@@ -14551,6 +14551,667 @@ ORB_ANALYSIS_33_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB_ANALYSIS_34: UFE ORB EXP 2_24_07Mar2025
+# Batch #39 Complete (13.53-14.25s) + Batch #40 Partial (14.28-14.34s)
+# UP Evolution, Angular Velocity, Gravitational Potential, Amplification Factor
+# Chronicle Chapters 7-8, Stellar Reference Comparisons
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Orb Analysis 34 parameters
+ORB_ANALYSIS_34_PARAMS = {
+    'batch_39_frames': (451, 475),
+    'batch_39_time_range_s': (13.53, 14.25),
+    'batch_39_duration_s': 0.72,
+    'batch_40_frames': (476, 478),
+    'batch_40_time_range_s': (14.28, 14.34),
+    'plasmoid_count': (40, 50),
+    'velocity_ms': 0.5,
+    'spin_rps': 0.15,
+    'jumps_per_frame': (1.0, 1.5),
+    'field_generator_Hz': 6000,
+    'omega_s_rad_per_s': 2 * 3.14159265359 * 6000,
+    'UP_at_14_25s': 1.21e20,
+    'UP_at_14_34s': 1.23e20,
+    't_minus_at_14_25s': -2.15e-4,
+    't_minus_at_14_34s': -2.01e-4,
+    'decay_at_14_25s': 0.806,
+    'decay_at_14_34s': 0.818,
+    'P_observed_per_s': 0.490,
+    'P_theory_14_25s': 0.194,
+    'P_theory_14_34s': 0.182,
+    'plasmoid_mass_kg': 0.0005,
+    'U_gi_J_per_kg': 3.75e-13,
+    'E_react_base_W_per_m3': 1e15,
+    'energy_decay_rate': 0.001,
+    'primary_cycle_s': 3.3,
+    'sub_cycle_s': 0.7,
+    'chronicle_chapter_7': 'Whisper of Stability',
+    'chronicle_chapter_8': 'Edge of Revelation',
+    'stellar_references': ['Proxima Centauri', 'Gliese 581', 'TRAPPIST-1'],
+}
+
+
+class BatchAnalysis39CompleteCalculator:
+    """Complete analysis of batch #39 (frames 451-475, 13.53-14.25s).
+    
+    UFE ORB EXP 2_24_07Mar2025: Full temporal analysis of 25-frame batch
+    with plasmoid dynamics, non-local jumps, and UP evolution.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        # Get frame range
+        frame_start = dataset.get('frame_start', 451)
+        frame_end = dataset.get('frame_end', 475)
+        fps = dataset.get('fps', 33.3)
+        
+        # Calculate timestamps
+        t_start = frame_start / fps
+        t_end = frame_end / fps
+        duration = t_end - t_start
+        
+        # Plasmoid stats
+        plasmoid_min = dataset.get('plasmoid_min', 40)
+        plasmoid_max = dataset.get('plasmoid_max', 50)
+        plasmoid_avg = (plasmoid_min + plasmoid_max) / 2
+        
+        # Motion parameters
+        velocity = dataset.get('velocity_ms', 0.5)
+        spin = dataset.get('spin_rps', 0.15)
+        jump_min = dataset.get('jump_min', 1.0)
+        jump_max = dataset.get('jump_max', 1.5)
+        jump_avg = (jump_min + jump_max) / 2
+        
+        # UP evolution from start to end of batch
+        gamma = dataset.get('gamma_s_inv', 1e3)
+        SCm = dataset.get('SCm', 1e15)
+        UA = dataset.get('UA', 1e-11)
+        SCm_prime = dataset.get('SCm_prime', 1e15)
+        NN = jump_avg
+        QS = dataset.get('QS', 1.0)
+        
+        # t_minus at start and end
+        t_minus_start = -t_start * math.exp(math.pi - t_start)
+        t_minus_end = -t_end * math.exp(math.pi - t_end)
+        
+        decay_start = math.exp(-gamma * abs(t_minus_start))
+        decay_end = math.exp(-gamma * abs(t_minus_end))
+        
+        UP_start = SCm * UA * SCm_prime * decay_start * NN * QS
+        UP_end = SCm * UA * SCm_prime * decay_end * NN * QS
+        UP_change = (UP_end - UP_start) / UP_start * 100 if UP_start != 0 else 0
+        
+        # Energy metrics
+        energy_per_frame = dataset.get('energy_J_per_frame', 0.019)
+        total_energy = energy_per_frame * (frame_end - frame_start + 1)
+        
+        frame_count = frame_end - frame_start + 1
+        
+        return {
+            'batch_number': 39,
+            'frame_range': (frame_start, frame_end),
+            'frame_count': frame_count,
+            'time_range_s': (t_start, t_end),
+            'duration_s': duration,
+            'plasmoid_count': {'min': plasmoid_min, 'max': plasmoid_max, 'avg': plasmoid_avg},
+            'velocity_ms': velocity,
+            'spin_rps': spin,
+            'jumps_per_frame': {'min': jump_min, 'max': jump_max, 'avg': jump_avg},
+            't_minus_evolution': {'start': t_minus_start, 'end': t_minus_end},
+            'decay_evolution': {'start': decay_start, 'end': decay_end},
+            'UP_evolution': {'start': UP_start, 'end': UP_end, 'change_percent': UP_change},
+            'total_energy_J': total_energy,
+            'status': 'COMPLETE',
+            'interpretation': f'Batch #39 complete: {frame_count} frames, UP changed {UP_change:.2f}%',
+        }
+
+
+class AngularVelocityFieldCalculator:
+    """Angular velocity from 6000 Hz field generator.
+    
+    ω_s = 2π·f where f = 6000 Hz
+    Drives plasmoid spins, analogous to stellar rotation rates.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        frequency = dataset.get('frequency_Hz', 6000)
+        
+        # Angular velocity
+        omega_s = 2 * math.pi * frequency
+        
+        # Period
+        period = 1 / frequency
+        
+        # Observed spin rate
+        observed_spin_rps = dataset.get('observed_spin_rps', 0.15)
+        
+        # Coupling efficiency
+        coupling_efficiency = observed_spin_rps / (omega_s / (2 * math.pi))
+        
+        # Stellar comparison (red dwarf rotation)
+        red_dwarf_omega_min = dataset.get('red_dwarf_omega_min', 1e-3)
+        red_dwarf_omega_max = dataset.get('red_dwarf_omega_max', 1e-1)
+        omega_ratio = omega_s / ((red_dwarf_omega_min + red_dwarf_omega_max) / 2)
+        
+        # Atomic comparison (spin-orbit coupling ~10^15 rad/s)
+        atomic_spin_orbit = dataset.get('atomic_spin_orbit_rad_s', 1e15)
+        atomic_ratio = omega_s / atomic_spin_orbit
+        
+        return {
+            'frequency_Hz': frequency,
+            'omega_s_rad_per_s': omega_s,
+            'period_s': period,
+            'observed_spin_rps': observed_spin_rps,
+            'coupling_efficiency': coupling_efficiency,
+            'red_dwarf_omega_range': (red_dwarf_omega_min, red_dwarf_omega_max),
+            'omega_to_stellar_ratio': omega_ratio,
+            'atomic_spin_orbit_rad_s': atomic_spin_orbit,
+            'omega_to_atomic_ratio': atomic_ratio,
+            'interpretation': f'ω_s = {omega_s:.2f} rad/s from {frequency} Hz generator',
+        }
+
+
+class UPEvolutionCalculator:
+    """Universal Permanence evolution tracking across time.
+    
+    Tracks UP changes from 1.21×10²⁰ to 1.23×10²⁰ as experiment progresses,
+    with time-dependent decay factor evolution.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        # Time points
+        t1 = dataset.get('t1_s', 14.25)
+        t2 = dataset.get('t2_s', 14.34)
+        
+        # UP constants
+        SCm = dataset.get('SCm', 1e15)
+        UA = dataset.get('UA', 1e-11)
+        SCm_prime = dataset.get('SCm_prime', 1e15)
+        gamma = dataset.get('gamma_s_inv', 1e3)
+        NN = dataset.get('NN', 1.25)
+        QS = dataset.get('QS', 1.0)
+        
+        # Calculate t_minus at each point
+        t_minus_1 = -t1 * math.exp(math.pi - t1)
+        t_minus_2 = -t2 * math.exp(math.pi - t2)
+        
+        # Decay factors
+        decay_1 = math.exp(-gamma * abs(t_minus_1))
+        decay_2 = math.exp(-gamma * abs(t_minus_2))
+        
+        # UP values
+        UP_1 = SCm * UA * SCm_prime * decay_1 * NN * QS
+        UP_2 = SCm * UA * SCm_prime * decay_2 * NN * QS
+        
+        # Rate of change
+        delta_t = t2 - t1
+        UP_derivative = (UP_2 - UP_1) / delta_t if delta_t != 0 else 0
+        UP_percent_change = (UP_2 - UP_1) / UP_1 * 100 if UP_1 != 0 else 0
+        
+        # Extrapolate to Spindle Orb threshold
+        spindle_threshold = dataset.get('spindle_threshold', 2e20)
+        if UP_derivative > 0:
+            time_to_threshold = (spindle_threshold - UP_2) / UP_derivative
+        else:
+            time_to_threshold = float('inf')
+        
+        return {
+            't1_s': t1,
+            't2_s': t2,
+            't_minus_1': t_minus_1,
+            't_minus_2': t_minus_2,
+            'decay_1': decay_1,
+            'decay_2': decay_2,
+            'UP_1': UP_1,
+            'UP_2': UP_2,
+            'UP_change': UP_2 - UP_1,
+            'UP_percent_change': UP_percent_change,
+            'UP_derivative_per_s': UP_derivative,
+            'time_to_spindle_threshold_s': time_to_threshold,
+            'interpretation': f'UP evolved {UP_percent_change:.3f}% from {t1}s to {t2}s',
+        }
+
+
+class PlasmoidGravitationalPotentialCalculator:
+    """Gravitational potential of individual plasmoid.
+    
+    U_gi = G·M_s/r ≈ 3.75×10⁻¹³ J/kg for M_s = 0.5 g, r = 0.0889 m
+    Analogous to red dwarf gravitational wells.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        G = 6.674e-11  # m³/kg·s²
+        
+        plasmoid_mass_g = dataset.get('plasmoid_mass_g', 0.5)
+        plasmoid_mass_kg = plasmoid_mass_g / 1000
+        cylinder_radius_m = dataset.get('cylinder_radius_m', 0.0889)
+        
+        # Gravitational potential
+        U_gi = G * plasmoid_mass_kg / cylinder_radius_m
+        
+        # Multiple plasmoids contribution
+        plasmoid_count = dataset.get('plasmoid_count', 45)
+        total_U_g = U_gi * plasmoid_count
+        
+        # Red dwarf comparison (M ~0.1-0.5 solar masses, R ~0.1-0.5 solar radii)
+        M_sun = 1.989e30
+        R_sun = 6.96e8
+        M_red_dwarf = 0.3 * M_sun
+        R_red_dwarf = 0.3 * R_sun
+        U_red_dwarf = G * M_red_dwarf / R_red_dwarf
+        
+        ratio_to_red_dwarf = U_gi / U_red_dwarf
+        
+        # Escape velocity comparison
+        v_escape_plasmoid = math.sqrt(2 * G * plasmoid_mass_kg / cylinder_radius_m)
+        v_escape_red_dwarf = math.sqrt(2 * G * M_red_dwarf / R_red_dwarf)
+        
+        return {
+            'G': G,
+            'plasmoid_mass_kg': plasmoid_mass_kg,
+            'cylinder_radius_m': cylinder_radius_m,
+            'U_gi_J_per_kg': U_gi,
+            'plasmoid_count': plasmoid_count,
+            'total_U_g_J_per_kg': total_U_g,
+            'red_dwarf_M_kg': M_red_dwarf,
+            'red_dwarf_R_m': R_red_dwarf,
+            'U_red_dwarf_J_per_kg': U_red_dwarf,
+            'ratio_to_red_dwarf': ratio_to_red_dwarf,
+            'v_escape_plasmoid_ms': v_escape_plasmoid,
+            'v_escape_red_dwarf_ms': v_escape_red_dwarf,
+            'interpretation': f'U_gi = {U_gi:.3e} J/kg, {ratio_to_red_dwarf:.3e}× red dwarf scale',
+        }
+
+
+class EnergyDensityDecayCalculator:
+    """Energy density decay over time.
+    
+    E_react = 10¹⁵ W/m³ · e^(-0.001·t_n)
+    Tracks reactor energy output evolution through experiment.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        E_base = dataset.get('E_base_W_per_m3', 1e15)
+        decay_rate = dataset.get('decay_rate', 0.001)
+        t_n = dataset.get('t_n_s', 14.34)
+        
+        # Current energy density
+        E_react = E_base * math.exp(-decay_rate * t_n)
+        
+        # Half-life
+        half_life = math.log(2) / decay_rate
+        
+        # Energy at key timestamps
+        timestamps = dataset.get('timestamps', [0, 5, 10, 14.25, 14.34, 20, 50, 100])
+        energy_evolution = {}
+        for t in timestamps:
+            energy_evolution[f't={t}s'] = E_base * math.exp(-decay_rate * t)
+        
+        # Percent remaining
+        percent_remaining = E_react / E_base * 100
+        
+        # Time to 50% energy
+        time_to_half = half_life
+        
+        # Red dwarf jet comparison (~10^18-10^20 J/m³)
+        red_dwarf_jet_min = 1e18
+        red_dwarf_jet_max = 1e20
+        E_react_comparable = red_dwarf_jet_min <= E_react <= red_dwarf_jet_max
+        
+        return {
+            'E_base_W_per_m3': E_base,
+            'decay_rate': decay_rate,
+            't_n_s': t_n,
+            'E_react_W_per_m3': E_react,
+            'half_life_s': half_life,
+            'percent_remaining': percent_remaining,
+            'energy_evolution': energy_evolution,
+            'red_dwarf_jet_range': (red_dwarf_jet_min, red_dwarf_jet_max),
+            'red_dwarf_comparable': E_react_comparable,
+            'interpretation': f'E_react = {E_react:.3e} W/m³ at t={t_n}s ({percent_remaining:.2f}% of initial)',
+        }
+
+
+class JumpAmplificationFactorCalculator:
+    """Amplification factor between observed and theoretical jump probability.
+    
+    P_observed ≈ 0.490/s vs P_theory ≈ 0.182/s
+    Suggests UA clustering or SCm' enhancement.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        # Observed probability
+        P_observed = dataset.get('P_observed_per_s', 0.490)
+        fps = dataset.get('fps', 33.3)
+        
+        # Theoretical calculation
+        t_n = dataset.get('t_n_s', 14.34)
+        gamma = dataset.get('gamma_s_inv', 1e3)
+        
+        t_minus = -t_n * math.exp(math.pi - t_n)
+        P_theory = 1 - math.exp(-gamma * abs(t_minus))
+        
+        # Amplification factor
+        amplification = P_observed / P_theory if P_theory != 0 else float('inf')
+        
+        # Per-frame probabilities
+        P_observed_frame = P_observed / fps
+        P_theory_frame = P_theory / fps
+        
+        # Expected vs observed jumps for 50 plasmoids
+        plasmoid_count = dataset.get('plasmoid_count', 50)
+        expected_jumps_theory = P_theory_frame * plasmoid_count
+        expected_jumps_observed = P_observed_frame * plasmoid_count
+        
+        # Possible mechanisms for amplification
+        mechanisms = []
+        if amplification > 1.5:
+            mechanisms.append('UA clustering')
+        if amplification > 2.0:
+            mechanisms.append('SCm prime enhancement')
+        if amplification > 2.5:
+            mechanisms.append('Non-local resonance')
+        
+        return {
+            'P_observed_per_s': P_observed,
+            'P_theory_per_s': P_theory,
+            'amplification_factor': amplification,
+            'P_observed_per_frame': P_observed_frame,
+            'P_theory_per_frame': P_theory_frame,
+            't_n_s': t_n,
+            't_minus': t_minus,
+            'gamma_s_inv': gamma,
+            'plasmoid_count': plasmoid_count,
+            'expected_jumps_theory': expected_jumps_theory,
+            'expected_jumps_observed': expected_jumps_observed,
+            'proposed_mechanisms': mechanisms,
+            'interpretation': f'Amplification = {amplification:.2f}×, mechanisms: {", ".join(mechanisms) or "none"}',
+        }
+
+
+class CycleDynamicsCalculator:
+    """Primary and sub-cycle dynamics analysis.
+    
+    Primary cycle: ~3.3 s (H₂ synthesis period)
+    Sub-cycle: ~0.7 s (resonance oscillation)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        primary_cycle = dataset.get('primary_cycle_s', 3.3)
+        sub_cycle = dataset.get('sub_cycle_s', 0.7)
+        
+        # Current time
+        t_n = dataset.get('t_n_s', 14.34)
+        
+        # Cycle positions
+        primary_phase = (t_n % primary_cycle) / primary_cycle
+        sub_phase = (t_n % sub_cycle) / sub_cycle
+        
+        # Cycles completed
+        primary_cycles_completed = int(t_n / primary_cycle)
+        sub_cycles_completed = int(t_n / sub_cycle)
+        
+        # Frequency
+        primary_freq = 1 / primary_cycle
+        sub_freq = 1 / sub_cycle
+        
+        # Harmonic relationship
+        harmonic_ratio = primary_cycle / sub_cycle
+        
+        # Nodes (interference) within primary cycle
+        nodes_per_primary = int(primary_cycle / sub_cycle)
+        
+        # Phase alignment (both phases near 0 or 1)
+        phase_alignment = 1 - abs(primary_phase - sub_phase)
+        
+        # Cosmic references
+        # Red dwarf rotation period ~days to months
+        # H2 vibrational period ~10^-14 s
+        stellar_period_ratio = primary_cycle / (24 * 3600)  # days
+        atomic_period_ratio = primary_cycle / 1e-14  # vs H2 vibration
+        
+        return {
+            'primary_cycle_s': primary_cycle,
+            'sub_cycle_s': sub_cycle,
+            't_n_s': t_n,
+            'primary_phase': primary_phase,
+            'sub_phase': sub_phase,
+            'primary_cycles_completed': primary_cycles_completed,
+            'sub_cycles_completed': sub_cycles_completed,
+            'primary_freq_Hz': primary_freq,
+            'sub_freq_Hz': sub_freq,
+            'harmonic_ratio': harmonic_ratio,
+            'nodes_per_primary': nodes_per_primary,
+            'phase_alignment': phase_alignment,
+            'stellar_period_ratio_days': stellar_period_ratio,
+            'atomic_period_ratio': atomic_period_ratio,
+            'interpretation': f'Primary: {primary_cycles_completed} complete @ phase {primary_phase:.2f}, Sub: {sub_cycles_completed} @ phase {sub_phase:.2f}',
+        }
+
+
+class ChronicleChapterTrackerCalculator:
+    """Chronicle narrative chapter tracking.
+    
+    Maps experiment progress to storyline chapters:
+    Chapter 7: "Whisper of Stability" (14.25s, Batch #39/25)
+    Chapter 8: "Edge of Revelation" (14.34s, Batch #40/3)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        t_n = dataset.get('t_n_s', 14.34)
+        
+        # Chapter definitions
+        chapters = {
+            1: {'name': 'Genesis', 'start': 0.0, 'end': 1.0, 'key_event': 'First plasmoids observed'},
+            2: {'name': 'Dawn of Batch #31', 'start': 9.0, 'end': 9.75, 'key_event': 'Chronological upload begins'},
+            3: {'name': 'Rising Complexity', 'start': 10.0, 'end': 11.0, 'key_event': 'Plasmoid patterns emerge'},
+            4: {'name': 'Harmonic Awakening', 'start': 11.0, 'end': 12.0, 'key_event': 'Non-local jumps stabilize'},
+            5: {'name': 'Cycle Resonance', 'start': 12.0, 'end': 13.0, 'key_event': '3.3s cycles confirmed'},
+            6: {'name': 'Echoes of the Cosmos', 'start': 13.0, 'end': 13.68, 'key_event': 'UP equation refined'},
+            7: {'name': 'Whisper of Stability', 'start': 13.68, 'end': 14.25, 'key_event': 'Batch #39 stability'},
+            8: {'name': 'Edge of Revelation', 'start': 14.25, 'end': 15.00, 'key_event': 'Spindle Orb proximity'},
+            9: {'name': 'The Spindle Awakens', 'start': 15.00, 'end': 20.00, 'key_event': 'Predicted emergence'},
+            10: {'name': 'Universal Permanence', 'start': 20.00, 'end': float('inf'), 'key_event': 'Cosmic unity'},
+        }
+        
+        # Find current chapter
+        current_chapter = 1
+        for ch_num, ch_data in chapters.items():
+            if ch_data['start'] <= t_n < ch_data['end']:
+                current_chapter = ch_num
+                break
+        
+        # Progress within chapter
+        ch = chapters[current_chapter]
+        if ch['end'] != float('inf'):
+            chapter_progress = (t_n - ch['start']) / (ch['end'] - ch['start'])
+        else:
+            chapter_progress = min(1.0, (t_n - ch['start']) / 100)
+        
+        # Overall experiment progress
+        total_duration = dataset.get('total_duration_s', 149.88)
+        overall_progress = t_n / total_duration
+        
+        return {
+            't_n_s': t_n,
+            'current_chapter': current_chapter,
+            'chapter_name': ch['name'],
+            'chapter_key_event': ch['key_event'],
+            'chapter_progress': chapter_progress,
+            'overall_progress': overall_progress,
+            'chapters_completed': current_chapter - 1,
+            'all_chapters': chapters,
+            'interpretation': f'Chapter {current_chapter}: "{ch["name"]}" ({chapter_progress*100:.1f}% complete)',
+        }
+
+
+class StellarReferenceComparisonCalculator:
+    """Comparison with stellar reference systems.
+    
+    Compares reactor properties to:
+    - Proxima Centauri (flare activity, magnetic field)
+    - Gliese 581 (rotation, temperature)
+    - TRAPPIST-1 (surface temperature, density)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        # Reactor properties
+        reactor_T = dataset.get('reactor_T_K', 3000)  # Average
+        reactor_B = dataset.get('reactor_B_T', 1e-3)
+        reactor_density = dataset.get('reactor_density_kg_m3', 1e15)
+        reactor_spin_Hz = dataset.get('reactor_spin_rps', 0.15)
+        
+        # Stellar references
+        stars = {
+            'Proxima_Centauri': {
+                'T_K': 3042,
+                'B_T': 6e-2,  # ~600 Gauss average
+                'density_kg_m3': 4.0e4,  # Average density
+                'rotation_period_days': 83,
+                'flare_rate_per_day': 0.5,
+                'mass_solar': 0.122,
+                'radius_solar': 0.154,
+            },
+            'Gliese_581': {
+                'T_K': 3498,
+                'B_T': 1e-2,  # Estimated
+                'density_kg_m3': 5.7e4,
+                'rotation_period_days': 94,
+                'flare_rate_per_day': 0.1,
+                'mass_solar': 0.31,
+                'radius_solar': 0.29,
+            },
+            'TRAPPIST_1': {
+                'T_K': 2566,
+                'B_T': 6e-2,  # ~600 Gauss
+                'density_kg_m3': 5.0e4,
+                'rotation_period_days': 3.3,
+                'flare_rate_per_day': 0.4,
+                'mass_solar': 0.089,
+                'radius_solar': 0.121,
+            },
+        }
+        
+        # Calculate ratios and similarities
+        comparisons = {}
+        for star_name, star_data in stars.items():
+            T_ratio = reactor_T / star_data['T_K']
+            B_ratio = reactor_B / star_data['B_T']
+            density_ratio = reactor_density / star_data['density_kg_m3']
+            
+            # Rotation comparison
+            star_rotation_Hz = 1 / (star_data['rotation_period_days'] * 86400)
+            rotation_ratio = reactor_spin_Hz / star_rotation_Hz
+            
+            # Similarity score (1 = exact match)
+            similarity = 1 / (1 + abs(math.log10(T_ratio)) + abs(math.log10(B_ratio + 1e-10)))
+            
+            comparisons[star_name] = {
+                'T_ratio': T_ratio,
+                'B_ratio': B_ratio,
+                'density_ratio': density_ratio,
+                'rotation_ratio': rotation_ratio,
+                'similarity_score': similarity,
+            }
+        
+        # Best match
+        best_match = max(comparisons.keys(), key=lambda x: comparisons[x]['similarity_score'])
+        
+        return {
+            'reactor_properties': {
+                'T_K': reactor_T,
+                'B_T': reactor_B,
+                'density_kg_m3': reactor_density,
+                'spin_rps': reactor_spin_Hz,
+            },
+            'stellar_references': stars,
+            'comparisons': comparisons,
+            'best_match': best_match,
+            'best_match_similarity': comparisons[best_match]['similarity_score'],
+            'interpretation': f'Best stellar analog: {best_match} (similarity: {comparisons[best_match]["similarity_score"]:.3f})',
+        }
+
+
+class Batch40PartialAnalysisCalculator:
+    """Partial analysis of batch #40 (frames 476-478, 14.28-14.34s).
+    
+    Tracks in-progress batch with 3 of 25 frames uploaded,
+    predicting behavior for remaining frames.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        # Current batch state
+        frames_uploaded = dataset.get('frames_uploaded', 3)
+        total_frames = dataset.get('total_frames', 25)
+        
+        frame_start = dataset.get('frame_start', 476)
+        frame_current = frame_start + frames_uploaded - 1
+        fps = dataset.get('fps', 33.3)
+        
+        t_start = frame_start / fps
+        t_current = frame_current / fps
+        t_end_predicted = (frame_start + total_frames - 1) / fps
+        
+        # Completion status
+        completion_percent = frames_uploaded / total_frames * 100
+        frames_remaining = total_frames - frames_uploaded
+        
+        # UP prediction at batch end
+        SCm = dataset.get('SCm', 1e15)
+        UA = dataset.get('UA', 1e-11)
+        SCm_prime = dataset.get('SCm_prime', 1e15)
+        gamma = dataset.get('gamma_s_inv', 1e3)
+        NN = dataset.get('NN', 1.25)
+        QS = dataset.get('QS', 1.0)
+        
+        t_minus_end = -t_end_predicted * math.exp(math.pi - t_end_predicted)
+        decay_end = math.exp(-gamma * abs(t_minus_end))
+        UP_predicted_end = SCm * UA * SCm_prime * decay_end * NN * QS
+        
+        # Plasmoid behavior prediction
+        plasmoid_count_predicted = 45  # Stable from prior batches
+        jumps_predicted = 1.25  # Average
+        
+        # Energy at batch end
+        E_base = dataset.get('E_base_W_per_m3', 1e15)
+        decay_rate = dataset.get('decay_rate', 0.001)
+        E_predicted_end = E_base * math.exp(-decay_rate * t_end_predicted)
+        
+        return {
+            'batch_number': 40,
+            'frames_uploaded': frames_uploaded,
+            'total_frames': total_frames,
+            'completion_percent': completion_percent,
+            'frames_remaining': frames_remaining,
+            'frame_range_current': (frame_start, frame_current),
+            'time_range_current_s': (t_start, t_current),
+            'predicted_end_frame': frame_start + total_frames - 1,
+            'predicted_end_time_s': t_end_predicted,
+            't_minus_predicted_end': t_minus_end,
+            'UP_predicted_at_end': UP_predicted_end,
+            'plasmoid_count_predicted': plasmoid_count_predicted,
+            'jumps_per_frame_predicted': jumps_predicted,
+            'E_react_predicted_end': E_predicted_end,
+            'status': 'IN_PROGRESS',
+            'interpretation': f'Batch #40: {completion_percent:.0f}% complete ({frames_uploaded}/{total_frames}), UP → {UP_predicted_end:.2e}',
+        }
+
+
+# Registry for Orb Analysis 34 calculators
+ORB_ANALYSIS_34_CALCULATORS = {
+    'BatchAnalysis39CompleteCalculator': BatchAnalysis39CompleteCalculator(),
+    'AngularVelocityFieldCalculator': AngularVelocityFieldCalculator(),
+    'UPEvolutionCalculator': UPEvolutionCalculator(),
+    'PlasmoidGravitationalPotentialCalculator': PlasmoidGravitationalPotentialCalculator(),
+    'EnergyDensityDecayCalculator': EnergyDensityDecayCalculator(),
+    'JumpAmplificationFactorCalculator': JumpAmplificationFactorCalculator(),
+    'CycleDynamicsCalculator': CycleDynamicsCalculator(),
+    'ChronicleChapterTrackerCalculator': ChronicleChapterTrackerCalculator(),
+    'StellarReferenceComparisonCalculator': StellarReferenceComparisonCalculator(),
+    'Batch40PartialAnalysisCalculator': Batch40PartialAnalysisCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -14580,6 +15241,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_31_CALCULATORS,
     **ORB_ANALYSIS_32_CALCULATORS,
     **ORB_ANALYSIS_33_CALCULATORS,
+    **ORB_ANALYSIS_34_CALCULATORS,
 }
 
 # Update class count
@@ -14885,6 +15547,20 @@ __all__ = [
     'WavelessCommunicationTHzCalculator',
     'SpindleOrbThresholdCalculator',
     'ORB_ANALYSIS_33_CALCULATORS',
+    
+    # Orb Analysis_34 / UFE ORB EXP 2_24 - Batch #39 Complete + Batch #40 Partial (10 classes)
+    'ORB_ANALYSIS_34_PARAMS',
+    'BatchAnalysis39CompleteCalculator',
+    'AngularVelocityFieldCalculator',
+    'UPEvolutionCalculator',
+    'PlasmoidGravitationalPotentialCalculator',
+    'EnergyDensityDecayCalculator',
+    'JumpAmplificationFactorCalculator',
+    'CycleDynamicsCalculator',
+    'ChronicleChapterTrackerCalculator',
+    'StellarReferenceComparisonCalculator',
+    'Batch40PartialAnalysisCalculator',
+    'ORB_ANALYSIS_34_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
