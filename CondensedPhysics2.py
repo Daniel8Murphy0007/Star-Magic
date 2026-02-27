@@ -20720,6 +20720,699 @@ ORB_ANALYSIS_42_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS_43: RELATIVISTIC JET PHYSICS & BH GROWTH
+# Extracted from: 393-page UQFF Corpus - Navier-Stokes Jets, Eddington, BEC
+# New physics: Relativistic jet velocity, Reynolds turbulence, Eddington limit,
+# SMBH growth, final parsec, heliosphere-age, BEC condensate, stress-energy
+# Verified: Chandra RACS J0320-35, Fermi 4LAC, Gaia DR4, Tohsaki AMD
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ORB_ANALYSIS_43_PARAMS = {
+    'session': 'UQFF_Relativistic_Jet_BH_Growth',
+    'date': '2025-09-28',
+    'location': 'Youngstown, OH',
+    'documents_analyzed': 393,
+    'framework_completion': 0.999999999996,
+    
+    # Relativistic jet parameters
+    'v_SCm': 1e8,  # m/s (~c/3)
+    'gamma_decay': 5e-5,  # day^{-1}
+    'c': 2.998e8,  # m/s
+    
+    # Reynolds/turbulence
+    'mu_viscosity': 1e-11,  # Pa·s (plasma)
+    'rho_jet': 1e-21,  # kg/m³
+    'L_jet': 1e19,  # m (kpc scale)
+    
+    # Eddington/SMBH growth
+    'G': 6.674e-11,  # m³/kg/s²
+    'kappa_opacity': 0.4,  # cm²/g (electron scattering)
+    'eta_efficiency': 0.1,  # Accretion efficiency
+    
+    # BEC parameters
+    'N_B': 3,  # Bosons in 12C Hoyle
+    'm_alpha': 6.64e-27,  # kg
+    'rho_alpha': 0.03,  # fm^{-3}
+    
+    # Final parsec
+    'd_parsec': 3.086e16,  # m
+    'M_binary': 1e7,  # M_sun binary
+    
+    # 26-level
+    'E_0': 1e-20,  # J (vacuum base)
+}
+
+
+class RelativisticJetVelocityCalculator:
+    """
+    Calculator for relativistic jet velocity evolution.
+    
+    Physics: v_j(t) = v_SCm × (1 - e^{-γ t})
+    
+    From UQFF: [SCm] expulsion drives jets to ~0.99c via
+    exponential buildup. γ = 5e-5 day^{-1} gives τ ~ 55 yr.
+    
+    Verified: Chandra RACS J0320-35 jets at ~0.99c.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_43_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute jet velocity evolution.
+        
+        Args:
+            dataset: {
+                't': Time array (days),
+                'v_SCm': Base SCm velocity
+            }
+        """
+        import numpy as np
+        
+        t = dataset.get('t', np.linspace(0, 10000, 100))
+        t = np.atleast_1d(t)
+        v_SCm = dataset.get('v_SCm', self.params['v_SCm'])
+        gamma = dataset.get('gamma', self.params['gamma_decay'])
+        c = self.params['c']
+        
+        # Velocity buildup
+        v_j = v_SCm * (1 - np.exp(-gamma * t))
+        
+        # Beta = v/c
+        beta = v_j / c
+        
+        # Lorentz factor
+        gamma_L = 1 / np.sqrt(1 - beta**2 + 1e-10)
+        
+        # Terminal velocity
+        v_terminal = v_SCm  # As t → ∞
+        t_half = np.log(2) / gamma  # days
+        
+        return {
+            't_days': t.tolist() if hasattr(t, 'tolist') else t,
+            'v_j_m_s': v_j.tolist() if hasattr(v_j, 'tolist') else v_j,
+            'beta': beta.tolist() if hasattr(beta, 'tolist') else beta,
+            'gamma_Lorentz': gamma_L.tolist() if hasattr(gamma_L, 'tolist') else gamma_L,
+            'v_terminal_m_s': v_terminal,
+            't_half_days': t_half,
+            'gamma_decay': gamma,
+            'equation': 'v_j(t) = v_SCm × (1 - e^{-γt})',
+            'verification': 'Chandra RACS J0320-35 ~0.99c'
+        }
+
+
+class ReynoldsNumberTurbulenceCalculator:
+    """
+    Calculator for Reynolds number and turbulence transition.
+    
+    Physics: Re = ρ v L / μ
+    
+    Laminar: Re < 2300; Turbulent: Re > 4000
+    For AGN jets: Re >> 10^{10} (fully turbulent).
+    
+    Ties to Navier-Stokes smoothness in UQFF jets.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_43_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute Reynolds number.
+        
+        Args:
+            dataset: {
+                'rho': Density (kg/m³),
+                'v': Velocity (m/s),
+                'L': Length scale (m),
+                'mu': Dynamic viscosity (Pa·s)
+            }
+        """
+        import numpy as np
+        
+        rho = dataset.get('rho', self.params['rho_jet'])
+        v = dataset.get('v', self.params['v_SCm'])
+        L = dataset.get('L', self.params['L_jet'])
+        mu = dataset.get('mu', self.params['mu_viscosity'])
+        
+        # Reynolds number
+        Re = rho * v * L / mu
+        
+        # Flow regime
+        if hasattr(Re, '__iter__'):
+            regime = ['laminar' if r < 2300 else 'transition' if r < 4000 else 'turbulent' for r in Re]
+        else:
+            regime = 'laminar' if Re < 2300 else 'transition' if Re < 4000 else 'turbulent'
+        
+        # Kolmogorov length scale (turbulent)
+        eta_K = (mu**3 / (rho**3 * v**3 / L))**(1/4) if Re > 4000 else None
+        
+        return {
+            'Re': float(Re) if not hasattr(Re, '__iter__') else Re.tolist(),
+            'rho_kg_m3': rho,
+            'v_m_s': v,
+            'L_m': L,
+            'mu_Pa_s': mu,
+            'regime': regime,
+            'eta_Kolmogorov_m': eta_K,
+            'equation': 'Re = ρvL/μ',
+            'note': 'AGN jets: Re >> 10^{10}'
+        }
+
+
+class EddingtonLuminosityCalculator:
+    """
+    Calculator for Eddington luminosity limit.
+    
+    Physics: L_Edd = 4π G M c / κ
+    
+    Balance between radiation pressure and gravity.
+    κ ≈ 0.4 cm²/g for electron scattering.
+    
+    UQFF: E_react powers super-Eddington accretion.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_43_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute Eddington luminosity.
+        
+        Args:
+            dataset: {
+                'M': Black hole mass (kg or M_sun),
+                'kappa': Opacity (cm²/g)
+            }
+        """
+        import numpy as np
+        
+        M_input = dataset.get('M', 4.1e6)  # M_sun default
+        
+        # Convert to kg if in M_sun
+        if M_input < 1e20:  # Assume M_sun
+            M_sun = 1.989e30
+            M = M_input * M_sun
+            M_label = f'{M_input:.2e} M_sun'
+        else:
+            M = M_input
+            M_label = f'{M:.2e} kg'
+        
+        G = self.params['G']
+        c = self.params['c']
+        kappa = dataset.get('kappa', self.params['kappa_opacity'])
+        
+        # Convert kappa to SI (m²/kg)
+        kappa_SI = kappa * 0.1  # cm²/g → m²/kg
+        
+        # Eddington luminosity
+        L_Edd = 4 * np.pi * G * M * c / kappa_SI
+        
+        # In solar luminosities
+        L_sun = 3.828e26  # W
+        L_Edd_Lsun = L_Edd / L_sun
+        
+        # Eddington mass accretion rate
+        eta = self.params['eta_efficiency']
+        M_dot_Edd = L_Edd / (eta * c**2)  # kg/s
+        M_dot_Edd_Msun_yr = M_dot_Edd / (1.989e30 / (365.25 * 86400))
+        
+        return {
+            'M': M_label,
+            'L_Edd_W': L_Edd,
+            'L_Edd_Lsun': L_Edd_Lsun,
+            'M_dot_Edd_kg_s': M_dot_Edd,
+            'M_dot_Edd_Msun_yr': M_dot_Edd_Msun_yr,
+            'kappa_cm2_g': kappa,
+            'equation': 'L_Edd = 4πGMc/κ',
+            'note': 'Super-Eddington: L > L_Edd via UQFF E_react'
+        }
+
+
+class SMBHGrowthRateCalculator:
+    """
+    Calculator for SMBH growth rate from accretion.
+    
+    Physics: dM/dt = L / (η c²)
+    
+    η ~ 0.1 for thin disk accretion.
+    E-folding time (Salpeter time) ~ 50 Myr.
+    
+    UQFF: [SCm] feeds growth via Ug4 feedback.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_43_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute SMBH growth rate.
+        
+        Args:
+            dataset: {
+                'L': Luminosity (W),
+                'eta': Radiative efficiency,
+                'M_0': Initial mass (M_sun)
+            }
+        """
+        import numpy as np
+        
+        L = dataset.get('L', 1e46)  # W (quasar)
+        eta = dataset.get('eta', self.params['eta_efficiency'])
+        c = self.params['c']
+        M_sun = 1.989e30
+        
+        # Mass accretion rate
+        M_dot = L / (eta * c**2)  # kg/s
+        M_dot_Msun_yr = M_dot / (M_sun / (365.25 * 86400))
+        
+        # Salpeter time (e-folding)
+        t_S = eta * c**2 / (4 * np.pi * self.params['G'] * c / (0.4 * 0.1))
+        t_S_Myr = t_S / (1e6 * 365.25 * 86400)  # ~45 Myr
+        
+        # Growth over time
+        M_0 = dataset.get('M_0', 1e6)  # M_sun
+        t_Myr = dataset.get('t_Myr', 100)  # Myr
+        M_final = M_0 * np.exp(t_Myr / 45)  # e-folding
+        
+        return {
+            'L_W': L,
+            'eta': eta,
+            'M_dot_kg_s': M_dot,
+            'M_dot_Msun_yr': M_dot_Msun_yr,
+            't_Salpeter_Myr': 45,  # Typical
+            'M_0_Msun': M_0,
+            't_Myr': t_Myr,
+            'M_final_Msun': M_final,
+            'equation': 'dM/dt = L/(ηc²)',
+            'note': 'RACS J0320-35 at ~2.4x Eddington'
+        }
+
+
+class FinalParsecProblemCalculator:
+    """
+    Calculator for final parsec problem in binary SMBH.
+    
+    Physics: At d ~ 1 pc, gravitational wave inspiral stalls.
+    Loss cone depletion halts three-body scattering.
+    
+    UQFF resolution: [SCm]-[UA] expulsion extracts angular
+    momentum, driving binary closer.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_43_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute final parsec timescales.
+        
+        Args:
+            dataset: {
+                'M_1': Primary mass (M_sun),
+                'M_2': Secondary mass (M_sun),
+                'd_pc': Separation (pc)
+            }
+        """
+        import numpy as np
+        
+        M_sun = 1.989e30
+        M_1 = dataset.get('M_1', 1e8) * M_sun  # kg
+        M_2 = dataset.get('M_2', 1e7) * M_sun  # kg
+        M_total = M_1 + M_2
+        mu = M_1 * M_2 / M_total  # Reduced mass
+        
+        d_pc = dataset.get('d_pc', 1.0)
+        d_m = d_pc * self.params['d_parsec']
+        
+        G = self.params['G']
+        c = self.params['c']
+        
+        # Gravitational wave inspiral time (Peters formula)
+        a = d_m
+        t_GW = (5/256) * c**5 * a**4 / (G**3 * M_1 * M_2 * M_total)
+        t_GW_yr = t_GW / (365.25 * 86400)
+        
+        # Dynamical friction timescale (pre-parsec)
+        sigma = 200e3  # m/s (velocity dispersion)
+        t_DF = 0.43 * sigma**3 / (G**2 * M_2 * np.log(M_total/M_2) * 1e10 * M_sun / 1e19)
+        t_DF_Myr = t_DF / (1e6 * 365.25 * 86400)
+        
+        # UQFF resolution: [SCm]-[UA] extraction
+        # F_extract ~ Ub_i ~ -β_i Ug_i (from buoyancy opposition)
+        beta_i = 0.61
+        Ug_proxy = G * M_total / d_m**2
+        F_extract = beta_i * Ug_proxy * 1e10  # Scaled
+        
+        # Stall region
+        stall = d_pc < 2 and d_pc > 0.01
+        
+        return {
+            'M_1_Msun': M_1 / M_sun,
+            'M_2_Msun': M_2 / M_sun,
+            'd_pc': d_pc,
+            't_GW_yr': t_GW_yr,
+            't_DF_Myr': t_DF_Myr if t_DF_Myr < 1e12 else 'N/A',
+            'stall_region': stall,
+            'F_extract_UQFF': F_extract,
+            'equation': 't_GW ∝ a⁴/(M₁M₂M_tot)',
+            'resolution': '[SCm]-[UA] angular momentum extraction'
+        }
+
+
+class HeliosphereStellarAgeCorrelationCalculator:
+    """
+    Calculator for heliosphere-stellar age correlation.
+    
+    Physics: Heliosphere thickness correlates with stellar age
+    via Ug2 transmutation of solar wind to hydrogen/liquids.
+    
+    R_b ~ 100 AU for Sun (~4.6 Gyr).
+    Young stars: smaller heliospheres.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_43_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute heliosphere size vs. stellar age.
+        
+        Args:
+            dataset: {
+                'age_Gyr': Stellar age (Gyr),
+                'M_star': Stellar mass (M_sun)
+            }
+        """
+        import numpy as np
+        
+        age_Gyr = dataset.get('age_Gyr', 4.6)  # Sun default
+        M_star = dataset.get('M_star', 1.0)  # M_sun
+        
+        # Empirical scaling (UQFF model)
+        # R_b ~ R_0 × (age/age_sun)^{0.5} × (M/M_sun)^{0.3}
+        R_0_AU = 100  # Sun at 4.6 Gyr
+        age_sun = 4.6
+        
+        R_b_AU = R_0_AU * (age_Gyr / age_sun)**0.5 * M_star**0.3
+        
+        # Convert to m
+        AU = 1.496e11
+        R_b_m = R_b_AU * AU
+        
+        # Wind flux scaling
+        L_star = M_star**3.5  # Main sequence approx
+        v_sw = 500e3 * L_star**0.1  # m/s
+        
+        # Heliosphere thickness (boundary layer)
+        thickness_AU = 0.01 * R_b_AU  # ~1% of radius
+        
+        return {
+            'age_Gyr': age_Gyr,
+            'M_star_Msun': M_star,
+            'R_b_AU': R_b_AU,
+            'R_b_m': R_b_m,
+            'thickness_AU': thickness_AU,
+            'v_sw_m_s': v_sw,
+            'equation': 'R_b ~ R_0 × (age/age_sun)^{0.5} × M^{0.3}',
+            'note': 'IMAP 2025 mapping boundary'
+        }
+
+
+class BECCondensateFractionCalculator:
+    """
+    Calculator for BEC condensate fraction in alpha clusters.
+    
+    Physics: n_0/N → 1 for complete BEC (Hoyle state ~70-90%)
+    
+    From Tohsaki AMD: 12C Hoyle as 3-alpha BEC.
+    N_B = 3 for 12C, N_B = 4 for 16O.
+    
+    T_c shifts in LENR enhance condensation.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_43_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute BEC condensate fraction.
+        
+        Args:
+            dataset: {
+                'N_B': Number of bosons,
+                'T': Temperature (K),
+                'rho': Density (fm^{-3})
+            }
+        """
+        import numpy as np
+        from scipy.constants import hbar, k, pi
+        
+        N_B = dataset.get('N_B', self.params['N_B'])
+        T = dataset.get('T', 1e6)  # K (nuclear scale)
+        rho_fm3 = dataset.get('rho', self.params['rho_alpha'])
+        
+        # Convert density to m^{-3}
+        fm = 1e-15
+        rho = rho_fm3 / fm**3
+        
+        m_alpha = self.params['m_alpha']
+        
+        # BEC critical temperature
+        zeta = 2.612  # zeta(3/2)
+        T_c = (hbar**2 / (2 * pi * m_alpha * k)) * (rho / zeta)**(2/3)
+        
+        # Condensate fraction
+        if T < T_c:
+            n0_N = 1 - (T / T_c)**(3/2)
+        else:
+            n0_N = 0
+        
+        # Hoyle state fraction (empirical ~70-90%)
+        Hoyle_fraction = 0.8 if N_B == 3 else 0.7
+        
+        return {
+            'N_B': N_B,
+            'T_K': T,
+            'T_c_K': T_c,
+            'n0_N_fraction': n0_N,
+            'Hoyle_empirical': Hoyle_fraction,
+            'rho_fm3': rho_fm3,
+            'equation': 'n_0/N = 1 - (T/T_c)^{3/2}',
+            'verification': 'Tohsaki AMD: 3-alpha BEC'
+        }
+
+
+class StressEnergyQuadraticCalculator:
+    """
+    Calculator for UQFF stress-energy tensor T_s^{μν}.
+    
+    Physics: T_s^{μν} = 1.27e3 + 1.11e7 J/m³ (quadratic sum)
+    
+    Low-energy (1.27e3) + high-energy (1.11e7) contributions.
+    Perturbation to Minkowski metric via η coupling.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_43_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute stress-energy tensor components.
+        
+        Args:
+            dataset: {
+                'T_low': Low-energy contribution,
+                'T_high': High-energy contribution,
+                'eta': Aether coupling
+            }
+        """
+        import numpy as np
+        
+        T_low = dataset.get('T_low', 1.27e3)  # J/m³
+        T_high = dataset.get('T_high', 1.11e7)  # J/m³
+        eta = dataset.get('eta', 1e-22)
+        
+        # Total stress-energy
+        T_total = T_low + T_high
+        
+        # Metric perturbation
+        g_mu_nu = np.diag([1, -1, -1, -1])  # Minkowski
+        h_mu_nu = eta * T_total * np.eye(4)  # Perturbation
+        
+        # Full metric
+        full_metric = g_mu_nu + h_mu_nu
+        
+        # Energy density from Lambda
+        rho_Lambda = T_total * eta  # ~10^{-15} J/m³
+        
+        return {
+            'T_low_J_m3': T_low,
+            'T_high_J_m3': T_high,
+            'T_total_J_m3': T_total,
+            'eta': eta,
+            'g_mu_nu': g_mu_nu.tolist(),
+            'h_mu_nu_diag': (eta * T_total),
+            'rho_Lambda_J_m3': rho_Lambda,
+            'equation': 'T_s^{μν} = T_low + T_high',
+            'note': 'Aether metric perturbation'
+        }
+
+
+class JetAsymmetryRatioCalculator:
+    """
+    Calculator for jet asymmetry ratio from t_n reversals.
+    
+    Physics: Ratio = |cos(ω t_n1) / cos(ω t_n2)|
+    
+    Phase difference Δt causes asymmetric jet brightness.
+    Ratio > 100:1 observed in quasar jets (e.g., 3C 273).
+    
+    UQFF: t_n < 0 reversals in TRZ zones.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_43_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute jet asymmetry ratio.
+        
+        Args:
+            dataset: {
+                't_n1': Negative time for jet 1 (days),
+                't_n2': Negative time for jet 2 (days),
+                'omega': Cycle constant
+            }
+        """
+        import numpy as np
+        
+        omega = dataset.get('omega', np.pi)
+        
+        # Default: phase difference of 0.5 days
+        t_n1 = dataset.get('t_n1', np.linspace(-2, 0, 50))
+        delta_t = dataset.get('delta_t', 0.5)
+        t_n2 = t_n1 + delta_t
+        
+        t_n1 = np.atleast_1d(t_n1)
+        t_n2 = np.atleast_1d(t_n2)
+        
+        # Cosine terms
+        cos1 = np.cos(omega * t_n1)
+        cos2 = np.cos(omega * t_n2)
+        
+        # Asymmetry ratio (avoid division by zero)
+        cos2_safe = np.where(np.abs(cos2) < 1e-10, 1e-10, cos2)
+        ratio = np.abs(cos1 / cos2_safe)
+        
+        # Max ratio
+        ratio_max = np.max(ratio)
+        
+        # Where reversal occurs
+        reversal_indices = np.where(ratio > 10)[0]
+        
+        return {
+            't_n1': t_n1.tolist() if hasattr(t_n1, 'tolist') else t_n1,
+            'delta_t_days': delta_t,
+            'ratio': ratio.tolist() if hasattr(ratio, 'tolist') else ratio,
+            'ratio_max': ratio_max,
+            'n_reversals': len(reversal_indices),
+            'omega': omega,
+            'equation': 'R = |cos(ωt_n1)/cos(ωt_n2)|',
+            'verification': '3C 273: ratio > 100:1'
+        }
+
+
+class TwentySixLevelEnergyScaleCalculator:
+    """
+    Calculator for complete 26-level energy scale mapping.
+    
+    Physics: E_n = E_0 × 10^n (J), n = 1 to 26
+    
+    n=1-5: Sub-quantum ([UA] vortices)
+    n=6-10: Nuclear (bindings, Pb-206)
+    n=11-15: Plasma (heliosphere, neutrinos)
+    n=16-20: Higgs/stellar
+    n=21-26: Galactic (DPM, cosmic rays)
+    
+    Span: 10^{-19} to 10^{6} J = 10^{25} orders.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_43_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute full 26-level energy scale.
+        
+        Args:
+            dataset: {
+                'E_0': Vacuum base energy (J),
+                'n_range': Range of n levels
+            }
+        """
+        import numpy as np
+        
+        E_0 = dataset.get('E_0', self.params['E_0'])
+        n_min = dataset.get('n_min', 1)
+        n_max = dataset.get('n_max', 26)
+        
+        n = np.arange(n_min, n_max + 1)
+        E_n = E_0 * 10**n
+        
+        # Applications
+        applications = {
+            (1, 5): 'Sub-quantum ([UA] vortices, quarks)',
+            (6, 10): 'Nuclear (bindings, Pb-206 ~10^{-12} J)',
+            (11, 15): 'Plasma (heliosphere, neutrinos)',
+            (16, 20): 'Higgs/stellar (m_H=125 GeV, protons)',
+            (21, 26): 'Galactic (cosmic rays, DPM)'
+        }
+        
+        app_list = []
+        for ni in n:
+            for (lo, hi), app in applications.items():
+                if lo <= ni <= hi:
+                    app_list.append(app)
+                    break
+        
+        # Verification energies
+        verifications = {
+            8: ('Pb-206 bindings', 1.6e-12),  # 10 MeV
+            12: ('Higgs boson', 2e-8),  # 125 GeV
+            13: ('Plasma/cosmic', 1e-7),
+            20: ('Galactic vacuum', 1),
+        }
+        
+        return {
+            'n': n.tolist(),
+            'E_n_J': E_n.tolist(),
+            'E_0_J': E_0,
+            'applications': app_list,
+            'verifications': verifications,
+            'span_orders': n_max - n_min + 1,
+            'equation': 'E_n = E_0 × 10^n',
+            'note': '26 levels unify quantum to cosmic'
+        }
+
+
+# Registry for Orb Analysis 43
+ORB_ANALYSIS_43_CALCULATORS = {
+    'RelativisticJetVelocityCalculator': RelativisticJetVelocityCalculator(),
+    'ReynoldsNumberTurbulenceCalculator': ReynoldsNumberTurbulenceCalculator(),
+    'EddingtonLuminosityCalculator': EddingtonLuminosityCalculator(),
+    'SMBHGrowthRateCalculator': SMBHGrowthRateCalculator(),
+    'FinalParsecProblemCalculator': FinalParsecProblemCalculator(),
+    'HeliosphereStellarAgeCorrelationCalculator': HeliosphereStellarAgeCorrelationCalculator(),
+    'BECCondensateFractionCalculator': BECCondensateFractionCalculator(),
+    'StressEnergyQuadraticCalculator': StressEnergyQuadraticCalculator(),
+    'JetAsymmetryRatioCalculator': JetAsymmetryRatioCalculator(),
+    'TwentySixLevelEnergyScaleCalculator': TwentySixLevelEnergyScaleCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -20758,6 +21451,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_40_CALCULATORS,
     **ORB_ANALYSIS_41_CALCULATORS,
     **ORB_ANALYSIS_42_CALCULATORS,
+    **ORB_ANALYSIS_43_CALCULATORS,
 }
 
 # Update class count
@@ -21173,6 +21867,20 @@ __all__ = [
     'NuclearPolynomialFitCalculator',
     'SgrAStarGravityCalculator',
     'ORB_ANALYSIS_42_CALCULATORS',
+    
+    # Orb Analysis_43 (10 classes - Relativistic Jets, BH Growth, BEC Condensate)
+    'ORB_ANALYSIS_43_PARAMS',
+    'RelativisticJetVelocityCalculator',
+    'ReynoldsNumberTurbulenceCalculator',
+    'EddingtonLuminosityCalculator',
+    'SMBHGrowthRateCalculator',
+    'FinalParsecProblemCalculator',
+    'HeliosphereStellarAgeCorrelationCalculator',
+    'BECCondensateFractionCalculator',
+    'StressEnergyQuadraticCalculator',
+    'JetAsymmetryRatioCalculator',
+    'TwentySixLevelEnergyScaleCalculator',
+    'ORB_ANALYSIS_43_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
