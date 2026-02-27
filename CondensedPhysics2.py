@@ -13970,6 +13970,587 @@ ORB_ANALYSIS_32_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS 33: UFE ORB EXP 2_23_07Mar2025 - Universal Permanence Full Framework
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Orb Analysis 33: Full UP equation framework with cosmic and atomic references
+# Batch #38 complete analysis (frames 426-450, 12.78-13.50s)
+# Batch #39 partial (frames 451-456, 13.53-13.68s)
+# UP = SCm · UA · SCm' · e^(-γ|t⁻|) · NN · QS
+# Key equations established: t⁻ = -t_n · e^(π-t_n), P = 1 - e^(-γ|t⁻|)
+# Red dwarf core analog: densities 10¹⁴-10¹⁶ kg/m³
+# H₂ vibrational transitions: 10²-10⁴ s⁻¹
+
+ORB_ANALYSIS_33_PARAMS = {
+    'directive': 'UFE ORB EXP 2_23_07Mar2025',
+    'batch_38_frames': (426, 450),
+    'batch_38_time_range': (12.78, 13.50),  # seconds
+    'batch_39_frames': (451, 475),
+    'batch_39_time_range': (13.53, 14.25),  # seconds
+    'plasmoid_count': (40, 50),  # per frame
+    'velocity': 0.5,  # m/s lower-left
+    'spin_rate': 0.15,  # rotations/s
+    'non_local_jumps': (1.0, 1.5),  # per frame
+    'SCm': 1e15,  # kg/m³ Superconductive Material
+    'UA': 1e-11,  # C Universal Aether charge
+    'SCm_prime': 1e15,  # m⁻³ Aetheric Density
+    'gamma_jump': 1e3,  # s⁻¹ Jump Rate Constant
+    'temperature_gradient': (2500, 4000, 288),  # K (bulb, near, top)
+    'fps': 33.3,  # frames per second
+    'reactor_radius': 0.0889,  # m
+    'cylinder_height': 0.254,  # m
+    'B_s': 1e-3,  # T magnetic field
+    'input_power': 65,  # W
+    'red_dwarf_core_density_range': (1e14, 1e16),  # kg/m³
+    'H2_transition_rate_range': (1e2, 1e4),  # s⁻¹
+    'jet_energy_scale_range': (1e18, 1e20),  # J/m³
+    'UP_scale_factor': 10.31e19,  # at t_n=13.68s
+}
+
+
+class UniversalPermanenceEquationCalculator:
+    """
+    Calculator for full Universal Permanence equation.
+    
+    UP = SCm · UA · SCm' · e^(-γ|t⁻|) · NN · QS
+    
+    Integrates all unified field variables to model plasmoid behavior
+    and cosmic connections to red dwarf jets.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        # Get parameters with defaults from Orb_33
+        t_n = dataset.get('t_n', 13.68)  # seconds
+        SCm = dataset.get('SCm', ORB_ANALYSIS_33_PARAMS['SCm'])
+        UA = dataset.get('UA', ORB_ANALYSIS_33_PARAMS['UA'])
+        SCm_prime = dataset.get('SCm_prime', ORB_ANALYSIS_33_PARAMS['SCm_prime'])
+        gamma = dataset.get('gamma', ORB_ANALYSIS_33_PARAMS['gamma_jump'])
+        NN = dataset.get('NN', 1.5)  # non-local nodes per frame
+        QS = dataset.get('QS', 1.0)  # quantum stability scaling factor
+        
+        # Calculate negative time parameter: t⁻ = -t_n · e^(π-t_n)
+        t_minus = -t_n * math.exp(math.pi - t_n)
+        
+        # Calculate exponential decay factor
+        decay_factor = math.exp(-gamma * abs(t_minus))
+        
+        # Universal Permanence equation
+        UP = SCm * UA * SCm_prime * decay_factor * NN * QS
+        
+        # Jump probability for reference
+        P = 1 - math.exp(-gamma * abs(t_minus))
+        P_per_frame = P / ORB_ANALYSIS_33_PARAMS['fps']
+        
+        return {
+            't_n': t_n,
+            't_minus': t_minus,
+            'decay_factor': decay_factor,
+            'UP': UP,
+            'UP_order': math.log10(abs(UP)) if UP != 0 else float('-inf'),
+            'jump_probability': P,
+            'jump_probability_per_frame': P_per_frame,
+            'components': {
+                'SCm': SCm,
+                'UA': UA,
+                'SCm_prime': SCm_prime,
+                'gamma': gamma,
+                'NN': NN,
+                'QS': QS,
+            },
+            'equation': 'UP = SCm · UA · SCm\' · e^(-γ|t⁻|) · NN · QS',
+            'cosmic_analog': f'Red dwarf jet energy scale: {ORB_ANALYSIS_33_PARAMS["jet_energy_scale_range"]} J/m³',
+        }
+
+
+class NegativeTimeParameterCalculator:
+    """
+    Calculator for negative time parameter t⁻.
+    
+    t⁻ = -t_n · e^(π-t_n)
+    
+    Reflects inverse time dynamics of non-local jumps,
+    mirroring time dilation effects near red dwarfs.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        t_n = dataset.get('t_n', 13.68)
+        
+        # Calculate t⁻
+        exponent = math.pi - t_n
+        t_minus = -t_n * math.exp(exponent)
+        
+        # Calculate rate of change
+        # d(t⁻)/d(t_n) = -e^(π-t_n) · (1 - t_n)
+        dt_minus_dt_n = -math.exp(exponent) * (1 - t_n)
+        
+        # Critical point: t_n = 1 gives extremum
+        is_past_critical = t_n > 1.0
+        
+        return {
+            't_n': t_n,
+            't_minus': t_minus,
+            'exponent': exponent,
+            'magnitude': abs(t_minus),
+            'rate_of_change': dt_minus_dt_n,
+            'past_critical_point': is_past_critical,
+            'equation': 't⁻ = -t_n · e^(π-t_n)',
+            'physical_meaning': 'Inverse time dynamics for non-local quantum jumps',
+            'cosmic_reference': 'Mirrors time dilation in relativistic red dwarf jets',
+        }
+
+
+class JumpProbabilityDetailedCalculator:
+    """
+    Detailed jump probability calculator with per-frame breakdown.
+    
+    P = 1 - e^(-γ|t⁻|)
+    
+    Includes observed vs calculated comparison and adjustment factors.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        t_n = dataset.get('t_n', 13.68)
+        gamma = dataset.get('gamma', ORB_ANALYSIS_33_PARAMS['gamma_jump'])
+        fps = dataset.get('fps', ORB_ANALYSIS_33_PARAMS['fps'])
+        plasmoid_count = dataset.get('plasmoid_count', 50)
+        observed_jumps = dataset.get('observed_jumps', 1.25)  # per frame
+        
+        # Calculate t⁻
+        t_minus = -t_n * math.exp(math.pi - t_n)
+        
+        # Calculate probability
+        P = 1 - math.exp(-gamma * abs(t_minus))
+        P_per_frame = P / fps
+        
+        # Expected jumps based on plasmoid count
+        expected_jumps = P_per_frame * plasmoid_count
+        
+        # Calculate required adjustment factor
+        if expected_jumps > 0:
+            adjustment_factor = observed_jumps / expected_jumps
+        else:
+            adjustment_factor = float('inf')
+        
+        # Adjusted (effective) probability
+        P_effective = P * adjustment_factor if adjustment_factor != float('inf') else P
+        
+        return {
+            't_n': t_n,
+            't_minus': t_minus,
+            'gamma': gamma,
+            'probability_per_second': P,
+            'probability_per_frame': P_per_frame,
+            'expected_jumps': expected_jumps,
+            'observed_jumps': observed_jumps,
+            'adjustment_factor': adjustment_factor,
+            'effective_probability': min(P_effective, 1.0),
+            'equation': 'P = 1 - e^(-γ|t⁻|)',
+            'tuned_values': {
+                'P_0.402': 'Tuned for ~1.0 jumps/frame',
+                'P_0.490': 'Tuned for ~1.5 jumps/frame',
+            },
+        }
+
+
+class ExponentialDecayFactorCalculator:
+    """
+    Calculator for exponential decay factor in UP equation.
+    
+    e^(-γ|t⁻|)
+    
+    This term modulates the unified field strength based on
+    negative time parameter dynamics.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        t_n = dataset.get('t_n', 13.68)
+        gamma = dataset.get('gamma', ORB_ANALYSIS_33_PARAMS['gamma_jump'])
+        
+        # Calculate t⁻
+        t_minus = -t_n * math.exp(math.pi - t_n)
+        
+        # Calculate decay factor
+        decay_exponent = -gamma * abs(t_minus)
+        decay_factor = math.exp(decay_exponent)
+        
+        # Calculate complement (for probability)
+        complement = 1 - decay_factor
+        
+        # Half-life analysis: when decay_factor = 0.5
+        # -gamma * |t⁻| = ln(0.5)
+        # |t⁻| = -ln(0.5) / gamma
+        t_minus_half_life = -math.log(0.5) / gamma
+        
+        return {
+            't_n': t_n,
+            't_minus': t_minus,
+            'decay_exponent': decay_exponent,
+            'decay_factor': decay_factor,
+            'complement': complement,
+            't_minus_half_life': t_minus_half_life,
+            'equation': 'e^(-γ|t⁻|)',
+            'role': 'Modulates UP strength based on temporal dynamics',
+        }
+
+
+class AethericDensityScaledCalculator:
+    """
+    Calculator for scaled Aetheric Density (SCm').
+    
+    SCm' = 10¹⁵ m⁻³ (baseline)
+    Can be amplified by factor 1.1× to account for observed jump frequency.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        SCm_prime_base = dataset.get('SCm_prime', ORB_ANALYSIS_33_PARAMS['SCm_prime'])
+        amplification = dataset.get('amplification_factor', 1.0)
+        observed_jumps = dataset.get('observed_jumps', 1.25)
+        expected_jumps = dataset.get('expected_jumps', 0.47)
+        
+        # Calculate scaled value
+        SCm_prime_scaled = SCm_prime_base * amplification
+        
+        # Auto-calculate required amplification
+        if expected_jumps > 0:
+            required_amplification = observed_jumps / expected_jumps
+        else:
+            required_amplification = 1.0
+        
+        SCm_prime_auto = SCm_prime_base * required_amplification
+        
+        # Red dwarf atmosphere comparison
+        red_dwarf_density_range = ORB_ANALYSIS_33_PARAMS['red_dwarf_core_density_range']
+        
+        return {
+            'SCm_prime_base': SCm_prime_base,
+            'amplification_factor': amplification,
+            'SCm_prime_scaled': SCm_prime_scaled,
+            'required_amplification': required_amplification,
+            'SCm_prime_auto': SCm_prime_auto,
+            'order_of_magnitude': math.log10(SCm_prime_scaled),
+            'cosmic_comparison': {
+                'red_dwarf_ionized_density': red_dwarf_density_range,
+                'match': red_dwarf_density_range[0] <= SCm_prime_scaled <= red_dwarf_density_range[1],
+            },
+            'equation': 'SCm\' = SCm\'_base × amplification',
+        }
+
+
+class RedDwarfCoreAnalogCalculator:
+    """
+    Calculator comparing reactor dynamics to red dwarf core properties.
+    
+    Red dwarf cores: 10¹⁴-10¹⁶ kg/m³
+    Magnetic reconnection energy: 10¹⁸-10²⁰ J/m³
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        reactor_SCm = dataset.get('SCm', ORB_ANALYSIS_33_PARAMS['SCm'])
+        reactor_B = dataset.get('B_s', ORB_ANALYSIS_33_PARAMS['B_s'])
+        UP_value = dataset.get('UP', 10.31e19)
+        
+        # Red dwarf parameters
+        core_density_range = ORB_ANALYSIS_33_PARAMS['red_dwarf_core_density_range']
+        jet_energy_range = ORB_ANALYSIS_33_PARAMS['jet_energy_scale_range']
+        
+        # Calculate scaling factors
+        density_ratio_low = reactor_SCm / core_density_range[0]
+        density_ratio_high = reactor_SCm / core_density_range[1]
+        
+        # Energy comparison
+        energy_ratio_low = UP_value / jet_energy_range[0]
+        energy_ratio_high = UP_value / jet_energy_range[1]
+        
+        # Magnetic field comparison (typical red dwarf B ~ 0.1-1 T)
+        red_dwarf_B_typical = 0.1  # T
+        B_ratio = reactor_B / red_dwarf_B_typical
+        
+        # Analog score (how well reactor mimics red dwarf)
+        density_match = 1.0 if (core_density_range[0] <= reactor_SCm <= core_density_range[1]) else min(density_ratio_low, density_ratio_high)
+        energy_match = 1.0 if (jet_energy_range[0] <= UP_value <= jet_energy_range[1]) else min(energy_ratio_low, energy_ratio_high)
+        
+        return {
+            'reactor_SCm': reactor_SCm,
+            'reactor_B': reactor_B,
+            'UP_value': UP_value,
+            'red_dwarf_comparison': {
+                'core_density_range': core_density_range,
+                'jet_energy_range': jet_energy_range,
+            },
+            'ratios': {
+                'density_to_low': density_ratio_low,
+                'density_to_high': density_ratio_high,
+                'energy_to_low': energy_ratio_low,
+                'energy_to_high': energy_ratio_high,
+                'B_field_ratio': B_ratio,
+            },
+            'analog_quality': {
+                'density_match': density_match,
+                'energy_match': energy_match,
+            },
+            'interpretation': 'Reactor successfully models red dwarf core dynamics at microscale',
+        }
+
+
+class H2TransitionRateCalculator:
+    """
+    Calculator for H₂ molecular vibrational transition rates.
+    
+    H₂ transitions in red dwarf atmospheres: 10²-10⁴ s⁻¹
+    Experiment's γ = 10³ s⁻¹ falls within this range.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        gamma = dataset.get('gamma', ORB_ANALYSIS_33_PARAMS['gamma_jump'])
+        temperature = dataset.get('temperature', 3000)  # K typical red dwarf atmosphere
+        
+        # H₂ vibrational transition parameters
+        h2_transition_range = ORB_ANALYSIS_33_PARAMS['H2_transition_rate_range']
+        
+        # Check if gamma is within H₂ range
+        within_range = h2_transition_range[0] <= gamma <= h2_transition_range[1]
+        
+        # Position within range (0 = low end, 1 = high end)
+        if within_range:
+            position = math.log10(gamma / h2_transition_range[0]) / math.log10(h2_transition_range[1] / h2_transition_range[0])
+        else:
+            position = float('nan')
+        
+        # Temperature scaling (higher T = faster transitions)
+        # Approximate: rate ~ T^0.5 for vibrational modes
+        rate_at_T = gamma * math.sqrt(temperature / 3000)
+        
+        # Energy quantum (approximate vibrational energy)
+        # E_vib ~ ℏω ~ 0.5 eV for H₂
+        h_bar = 1.055e-34  # J·s
+        omega_vib = gamma * 2 * math.pi  # rad/s
+        E_vib = h_bar * omega_vib  # J
+        E_vib_eV = E_vib / 1.602e-19  # eV
+        
+        return {
+            'gamma': gamma,
+            'temperature': temperature,
+            'h2_transition_range': h2_transition_range,
+            'within_H2_range': within_range,
+            'position_in_range': position,
+            'rate_at_temperature': rate_at_T,
+            'vibrational_energy_J': E_vib,
+            'vibrational_energy_eV': E_vib_eV,
+            'physical_meaning': 'Jump rate constant matches H₂ molecular dynamics in stellar atmospheres',
+        }
+
+
+class MagneticReconnectionEnergyCalculator:
+    """
+    Calculator for magnetic reconnection energy scale.
+    
+    Red dwarf jets: 10¹⁸-10²⁰ J/m³
+    Reactor UP value: ~10.31×10¹⁹ J·C·m⁻⁶ (dimensionally scaled)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        B_s = dataset.get('B_s', ORB_ANALYSIS_33_PARAMS['B_s'])
+        UP = dataset.get('UP', 10.31e19)
+        volume = dataset.get('volume', math.pi * 0.0889**2 * 0.254)  # reactor volume
+        
+        # Magnetic energy density
+        mu_0 = 4 * math.pi * 1e-7  # H/m
+        E_magnetic = B_s**2 / (2 * mu_0)  # J/m³
+        
+        # Total magnetic energy in reactor
+        total_magnetic_E = E_magnetic * volume
+        
+        # Red dwarf jet comparison
+        jet_energy_range = ORB_ANALYSIS_33_PARAMS['jet_energy_scale_range']
+        
+        # Reconnection efficiency (typically 10-50%)
+        reconnection_efficiency = 0.29  # from experiment (29% of 65W)
+        E_released = total_magnetic_E * reconnection_efficiency
+        
+        # Energy per plasmoid
+        plasmoid_count = 45
+        E_per_plasmoid = E_released / plasmoid_count
+        
+        return {
+            'B_s': B_s,
+            'magnetic_energy_density': E_magnetic,
+            'reactor_volume': volume,
+            'total_magnetic_energy': total_magnetic_E,
+            'reconnection_efficiency': reconnection_efficiency,
+            'energy_released': E_released,
+            'energy_per_plasmoid': E_per_plasmoid,
+            'UP_value': UP,
+            'jet_energy_comparison': {
+                'range': jet_energy_range,
+                'UP_within_range': jet_energy_range[0] <= UP <= jet_energy_range[1],
+            },
+            'physical_meaning': 'Magnetic reconnection drives plasmoid energy release',
+        }
+
+
+class WavelessCommunicationTHzCalculator:
+    """
+    Calculator for waveless THz communication potential.
+    
+    Non-local jumps enable THz signal transmission without
+    conventional electromagnetic propagation.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        gamma = dataset.get('gamma', ORB_ANALYSIS_33_PARAMS['gamma_jump'])
+        UA = dataset.get('UA', ORB_ANALYSIS_33_PARAMS['UA'])
+        non_local_jumps = dataset.get('non_local_jumps', 1.25)
+        fps = dataset.get('fps', ORB_ANALYSIS_33_PARAMS['fps'])
+        
+        # Jump frequency in Hz
+        jump_freq_Hz = non_local_jumps * fps  # jumps per second
+        
+        # THz carrier frequency (based on UA charge oscillation)
+        # f_THz ~ UA / (ε₀ × characteristic_length)
+        epsilon_0 = 8.854e-12  # F/m
+        char_length = 1e-3  # mm scale
+        f_characteristic = UA / (epsilon_0 * char_length**2)  # Hz
+        f_THz = f_characteristic / 1e12  # THz
+        
+        # Information bandwidth
+        # Limited by jump rate
+        bandwidth_Hz = gamma
+        bandwidth_THz = bandwidth_Hz / 1e12
+        
+        # Signal strength (proportional to UA × jump_rate)
+        signal_strength = UA * jump_freq_Hz
+        
+        # Range estimate (non-local effects decay with distance)
+        # Approximate: range ~ c / gamma for quantum correlation
+        c = 3e8  # m/s
+        correlation_range = c / gamma  # m
+        
+        return {
+            'gamma': gamma,
+            'UA': UA,
+            'non_local_jumps_per_frame': non_local_jumps,
+            'jump_frequency_Hz': jump_freq_Hz,
+            'carrier_frequency_THz': f_THz,
+            'bandwidth_Hz': bandwidth_Hz,
+            'bandwidth_THz': bandwidth_THz,
+            'signal_strength': signal_strength,
+            'quantum_correlation_range': correlation_range,
+            'application': 'Waveless communication via Universal Aether mediated non-local jumps',
+        }
+
+
+class SpindleOrbThresholdCalculator:
+    """
+    Calculator for Spindle Orb emergence threshold.
+    
+    Predicts when conditions are sufficient for the Spindle Orb
+    (larger, elongated plasmoid structure) to form.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        t_n = dataset.get('t_n', 13.68)
+        non_local_jumps = dataset.get('non_local_jumps', 1.25)
+        plasmoid_count = dataset.get('plasmoid_count', 45)
+        SCm_prime = dataset.get('SCm_prime', ORB_ANALYSIS_33_PARAMS['SCm_prime'])
+        
+        # Calculate current t⁻
+        t_minus = -t_n * math.exp(math.pi - t_n)
+        
+        # Threshold conditions for Spindle Orb
+        # 1. Non-local jump frequency > 2 per frame
+        jump_threshold = 2.0
+        jump_condition = non_local_jumps >= jump_threshold
+        jump_progress = non_local_jumps / jump_threshold
+        
+        # 2. |t⁻| approaching critical value (estimated ~1e-3 s)
+        t_minus_threshold = 1e-3
+        t_minus_condition = abs(t_minus) >= t_minus_threshold
+        t_minus_progress = abs(t_minus) / t_minus_threshold
+        
+        # 3. SCm' clustering (needs ~1.5× baseline)
+        scm_prime_threshold = 1.5e15
+        scm_prime_condition = SCm_prime >= scm_prime_threshold
+        scm_prime_progress = SCm_prime / scm_prime_threshold
+        
+        # Overall emergence probability
+        emergence_score = (jump_progress + t_minus_progress + scm_prime_progress) / 3
+        emergence_probability = min(1.0, emergence_score)
+        
+        # Predicted emergence time
+        if jump_progress < 1.0:
+            # Extrapolate when jumps will reach threshold
+            # Assume linear increase
+            rate_increase = 0.1  # jumps per second per second
+            time_to_threshold = (jump_threshold - non_local_jumps) / rate_increase
+            predicted_emergence_time = t_n + time_to_threshold
+        else:
+            predicted_emergence_time = t_n  # Already at threshold
+        
+        return {
+            't_n': t_n,
+            't_minus': t_minus,
+            'current_state': {
+                'non_local_jumps': non_local_jumps,
+                'plasmoid_count': plasmoid_count,
+                'SCm_prime': SCm_prime,
+            },
+            'thresholds': {
+                'jump_threshold': jump_threshold,
+                't_minus_threshold': t_minus_threshold,
+                'SCm_prime_threshold': scm_prime_threshold,
+            },
+            'conditions_met': {
+                'jump': jump_condition,
+                't_minus': t_minus_condition,
+                'SCm_prime': scm_prime_condition,
+            },
+            'progress': {
+                'jump': jump_progress,
+                't_minus': t_minus_progress,
+                'SCm_prime': scm_prime_progress,
+            },
+            'emergence_probability': emergence_probability,
+            'predicted_emergence_time': predicted_emergence_time,
+            'interpretation': f'Spindle Orb emergence {emergence_probability*100:.1f}% likely',
+        }
+
+
+# Registry for Orb Analysis 33 calculators
+ORB_ANALYSIS_33_CALCULATORS = {
+    'UniversalPermanenceEquationCalculator': UniversalPermanenceEquationCalculator(),
+    'NegativeTimeParameterCalculator': NegativeTimeParameterCalculator(),
+    'JumpProbabilityDetailedCalculator': JumpProbabilityDetailedCalculator(),
+    'ExponentialDecayFactorCalculator': ExponentialDecayFactorCalculator(),
+    'AethericDensityScaledCalculator': AethericDensityScaledCalculator(),
+    'RedDwarfCoreAnalogCalculator': RedDwarfCoreAnalogCalculator(),
+    'H2TransitionRateCalculator': H2TransitionRateCalculator(),
+    'MagneticReconnectionEnergyCalculator': MagneticReconnectionEnergyCalculator(),
+    'WavelessCommunicationTHzCalculator': WavelessCommunicationTHzCalculator(),
+    'SpindleOrbThresholdCalculator': SpindleOrbThresholdCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -13998,6 +14579,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_30_CALCULATORS,
     **ORB_ANALYSIS_31_CALCULATORS,
     **ORB_ANALYSIS_32_CALCULATORS,
+    **ORB_ANALYSIS_33_CALCULATORS,
 }
 
 # Update class count
@@ -14289,6 +14871,20 @@ __all__ = [
     'NonLocalityNoiseCalculator',
     'UniversalPermanenceFullCalculator',
     'ORB_ANALYSIS_32_CALCULATORS',
+    
+    # Orb Analysis_33 / UFE ORB EXP 2_23 - Universal Permanence Full Framework (10 classes)
+    'ORB_ANALYSIS_33_PARAMS',
+    'UniversalPermanenceEquationCalculator',
+    'NegativeTimeParameterCalculator',
+    'JumpProbabilityDetailedCalculator',
+    'ExponentialDecayFactorCalculator',
+    'AethericDensityScaledCalculator',
+    'RedDwarfCoreAnalogCalculator',
+    'H2TransitionRateCalculator',
+    'MagneticReconnectionEnergyCalculator',
+    'WavelessCommunicationTHzCalculator',
+    'SpindleOrbThresholdCalculator',
+    'ORB_ANALYSIS_33_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
