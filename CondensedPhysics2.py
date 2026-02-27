@@ -15963,6 +15963,954 @@ ORB_ANALYSIS_35_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS_36: UQFF COMPRESSION CYCLE 2 - 38-SYSTEM MASTER FRAMEWORK
+# Compressed UQFF equation unifying 38 astrophysical systems
+# F_env(t) modular environmental effects: F_wind, F_erode, F_merge, F_SN, etc.
+# H(t,z) = H_0 × sqrt(0.3×(1+z)³ + 0.7) redshift-dependent Hubble
+# Ug3' = (G×M_ext)/r_ext² external gravitational influence
+# psi_total = psi_mag + psi_standing + psi_quantum combined wave function
+# Systems: NGC 2525, NGC 3603, Bubble Nebula, Antennae Galaxies, Horsehead,
+#          NGC 1275, HUDF, NGC 1792, Sombrero, Saturn, M16, Crab Nebula,
+#          Lagoon Nebula, NGC 6302, Orion Nebula, Eagle Nebula, and more
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ORB_ANALYSIS_36_PARAMS = {
+    'session': 'UQFF_Compression_Cycle2_38Systems',
+    'date': '2025-05-05',
+    'location': 'Youngstown, OH',
+    'total_systems': 38,
+    
+    # Physical constants
+    'G': 6.674e-11,  # m³/kg/s²
+    'c': 2.998e8,  # m/s
+    'hbar': 1.055e-34,  # J·s
+    'Lambda': 1.1e-52,  # m⁻² (cosmological constant)
+    'H_0': 70.0,  # km/s/Mpc (Hubble constant)
+    't_Hubble': 13.8e9,  # years
+    
+    # Critical fields
+    'B_crit': 1e15,  # T (critical magnetic field, Gauss)
+    
+    # Matter densities
+    'Omega_M': 0.3,  # Matter density parameter
+    'Omega_Lambda': 0.7,  # Dark energy density parameter
+    
+    # System scale ranges
+    'scale_min': 1e-10,  # m (atomic scale)
+    'scale_max': 1e27,  # m (observable universe)
+    
+    # F_env component weights (default)
+    'F_env_components': [
+        'F_wind', 'F_erode', 'F_merge', 'F_SN', 'F_rad',
+        'F_fil', 'F_BH', 'F_dust', 'F_ring', 'F_mag',
+        'F_tech', 'F_shell', 'F_cosmo', 'F_torque', 'F_shock'
+    ],
+}
+
+
+class CompressedUQFFCalculator:
+    """
+    Master compressed UQFF equation for all 38 astrophysical systems.
+    
+    Physics: Unified gravity equation with modular environmental term F_env(t).
+    
+    g_UQFF(r,t) = (G×M(t))/r(t)² × (1 + H(t,z)) × (1 - B(t)/B_crit) × (1 + F_env(t))
+                 + (Ug1 + Ug2 + Ug3' + Ug4) + (Λc²/3)
+                 + (ℏ/√(Δx·Δp)) × ∫(ψ*Hψ dV) × (2π/t_Hubble)
+                 + ρ_fluid·V·g + (M_vis + M_DM) × (δρ/ρ + 3GM/r³)
+    
+    Based on UQFF Compression Cycle 2 (May 5, 2025) - 38 document synthesis.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_36_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute compressed UQFF gravity field.
+        
+        Args:
+            dataset: {
+                'M': mass in kg,
+                'r': radius in m,
+                'z': redshift,
+                'B': magnetic field in T,
+                'F_env': environmental term (dimensionless),
+                'Ug_modes': [Ug1, Ug2, Ug3_prime, Ug4]
+            }
+        
+        Returns:
+            dict with g_UQFF and component breakdown
+        """
+        G = self.params['G']
+        c = self.params['c']
+        hbar = self.params['hbar']
+        Lambda = self.params['Lambda']
+        H_0 = self.params['H_0']
+        t_Hubble = self.params['t_Hubble'] * 3.15576e7  # Convert to seconds
+        B_crit = self.params['B_crit']
+        
+        M = dataset.get('M', 1.989e30)  # Default: Solar mass
+        r = dataset.get('r', 6.96e8)  # Default: Solar radius
+        z = dataset.get('z', 0.0)  # Redshift
+        B = dataset.get('B', 1e-5)  # Magnetic field
+        F_env = dataset.get('F_env', 0.0)  # Environmental term
+        Ug_modes = dataset.get('Ug_modes', [0, 0, 0, 0])  # Gravity modes
+        
+        # H(t,z) = H_0 × sqrt(Ω_M × (1+z)³ + Ω_Λ)
+        Omega_M = self.params['Omega_M']
+        Omega_Lambda = self.params['Omega_Lambda']
+        H_z = H_0 * ((Omega_M * (1 + z)**3 + Omega_Lambda) ** 0.5)
+        
+        # Time factor (normalized)
+        t_normalized = 1.0  # Dimensionless
+        
+        # Gravitational base
+        g_base = (G * M) / (r ** 2)
+        
+        # Expansion factor
+        expansion_factor = 1 + H_z * t_normalized / (H_0 * 1000)  # Normalized
+        
+        # Superconductivity factor
+        sc_factor = 1 - B / B_crit
+        
+        # Environmental factor
+        env_factor = 1 + F_env
+        
+        # Core gravitational term
+        g_core = g_base * expansion_factor * sc_factor * env_factor
+        
+        # Gravity modes sum
+        Ug_sum = sum(Ug_modes)
+        
+        # Cosmological term
+        g_Lambda = Lambda * (c ** 2) / 3
+        
+        # Quantum term (simplified)
+        Delta_xp = hbar  # Minimum uncertainty product
+        quantum_factor = (hbar / (Delta_xp ** 0.5)) * (2 * 3.14159 / t_Hubble)
+        
+        # Total g_UQFF
+        g_UQFF = g_core + Ug_sum + g_Lambda + quantum_factor
+        
+        return {
+            'g_UQFF': g_UQFF,
+            'g_base': g_base,
+            'g_core': g_core,
+            'expansion_factor': expansion_factor,
+            'sc_factor': sc_factor,
+            'env_factor': env_factor,
+            'H_z': H_z,
+            'Ug_sum': Ug_sum,
+            'g_Lambda': g_Lambda,
+            'quantum_factor': quantum_factor,
+            'equation': 'g_UQFF = (GM/r²)×(1+H(z))×(1-B/B_crit)×(1+F_env) + Σ(Ug_i) + Λc²/3 + quantum',
+            'systems_covered': 38,
+            'units': {'g_UQFF': 'm/s²'}
+        }
+
+
+class FEnvModularCalculator:
+    """
+    Calculator for modular F_env(t) environmental effects term.
+    
+    Physics: F_env(t) = Σ(F_i(t)) where F_i includes:
+    - F_wind: stellar/pulsar/planetary winds (ρ × v_wind²)
+    - F_erode: erosion effects (E(t), E_rad)
+    - F_merge: merger dynamics (M_coll(t), M_merge(t))
+    - F_SN: supernova feedback (M_SN(t), F_sn)
+    - F_rad: radiation pressure (P_rad)
+    - F_fil: magnetic filaments (M_fil)
+    - F_BH: black hole feedback ((G×M_BH)/r_BH²)
+    - F_dust: dust lane drag (D_dust)
+    - F_ring: ring dynamics (T_ring)
+    - F_mag: magnetic effects (M_mag, D(t))
+    - F_tech: technological fields (P_term)
+    - F_shell: shell corrections (S_shell)
+    - F_cosmo: cosmological terms (QG_term, DM_term, GW_term)
+    - F_torque: spiral arm torque (T_spiral)
+    - F_shock: wind shocks (W_shock)
+    
+    Based on UQFF Compression Cycle 2 - 38 systems analysis.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_36_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute F_env(t) from component contributions.
+        
+        Args:
+            dataset: {'components': {name: value, ...}}
+        
+        Returns:
+            dict with F_env total and breakdown
+        """
+        components = dataset.get('components', {})
+        
+        # Default component values (normalized)
+        default_components = {
+            'F_wind': 0.0,
+            'F_erode': 0.0,
+            'F_merge': 0.0,
+            'F_SN': 0.0,
+            'F_rad': 0.0,
+            'F_fil': 0.0,
+            'F_BH': 0.0,
+            'F_dust': 0.0,
+            'F_ring': 0.0,
+            'F_mag': 0.0,
+            'F_tech': 0.0,
+            'F_shell': 0.0,
+            'F_cosmo': 0.0,
+            'F_torque': 0.0,
+            'F_shock': 0.0,
+        }
+        
+        # Merge with provided values
+        for key in default_components:
+            if key in components:
+                default_components[key] = components[key]
+        
+        # Total F_env
+        F_env = sum(default_components.values())
+        
+        # Active terms (non-zero)
+        active_terms = {k: v for k, v in default_components.items() if v != 0}
+        
+        # Dominant term
+        if active_terms:
+            dominant = max(active_terms, key=active_terms.get)
+        else:
+            dominant = None
+        
+        return {
+            'F_env': F_env,
+            'components': default_components,
+            'active_terms': active_terms,
+            'dominant_term': dominant,
+            'num_active': len(active_terms),
+            'equation': 'F_env(t) = Σ(F_i(t))',
+            'available_components': self.params['F_env_components']
+        }
+
+
+class RedshiftDependentHubbleCalculator:
+    """
+    Calculator for redshift-dependent Hubble parameter H(t,z).
+    
+    Physics: H(t,z) = H_0 × √(Ω_M × (1+z)³ + Ω_Λ)
+    
+    This accounts for matter dilution and dark energy acceleration
+    across cosmic epochs.
+    
+    Based on UQFF Compression Cycle 2 - cosmological unification.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_36_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute H(z) for given redshift.
+        
+        Args:
+            dataset: {'z': redshift}
+        
+        Returns:
+            dict with H(z), lookback time, and cosmic epoch
+        """
+        H_0 = self.params['H_0']  # km/s/Mpc
+        Omega_M = self.params['Omega_M']
+        Omega_Lambda = self.params['Omega_Lambda']
+        t_Hubble = self.params['t_Hubble']  # Gyr
+        
+        z = dataset.get('z', 0.0)
+        
+        # E(z) factor
+        E_z = (Omega_M * (1 + z)**3 + Omega_Lambda) ** 0.5
+        
+        # H(z)
+        H_z = H_0 * E_z
+        
+        # Approximate lookback time (simplified)
+        # t_lookback ≈ t_Hubble × (1 - 1/(1+z)^1.5) for matter-dominated
+        t_lookback = t_Hubble * (1 - 1 / ((1 + z) ** 1.5)) if z > 0 else 0.0
+        
+        # Age of universe at redshift z (approximate)
+        t_universe_at_z = t_Hubble - t_lookback
+        
+        # Distance (comoving, approximate)
+        c = 2.998e5  # km/s
+        D_c = (c / H_0) * z * (1 + z/2)  # Mpc (crude approximation)
+        
+        # Epoch classification
+        if z > 10:
+            epoch = 'Cosmic Dawn'
+        elif z > 6:
+            epoch = 'Reionization'
+        elif z > 2:
+            epoch = 'Cosmic Noon'
+        elif z > 0.5:
+            epoch = 'Late Universe'
+        else:
+            epoch = 'Local Universe'
+        
+        return {
+            'z': z,
+            'H_0': H_0,
+            'H_z': H_z,
+            'E_z': E_z,
+            't_lookback_Gyr': t_lookback,
+            't_universe_at_z_Gyr': t_universe_at_z,
+            'D_comoving_Mpc': D_c,
+            'epoch': epoch,
+            'equation': 'H(z) = H_0 × √(Ω_M(1+z)³ + Ω_Λ)',
+            'units': {'H_z': 'km/s/Mpc', 't': 'Gyr', 'D': 'Mpc'}
+        }
+
+
+class ExternalGravityUg3PrimeCalculator:
+    """
+    Calculator for external gravitational influence Ug3'.
+    
+    Physics: Ug3' = (G × M_ext) / r_ext²
+    
+    Generalizes external gravitational sources:
+    - Black holes (M_BH in NGC 2525, Sombrero)
+    - Stellar companions
+    - Planetary moons
+    - Cluster masses
+    
+    Replaces Ug3 = (G×M_moon)/r_moon² with generalized form.
+    
+    Based on UQFF Compression Cycle 2 - gravity mode unification.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_36_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute Ug3' external gravitational contribution.
+        
+        Args:
+            dataset: {'M_ext': external mass (kg), 'r_ext': distance (m)}
+        
+        Returns:
+            dict with Ug3_prime and influence radius
+        """
+        G = self.params['G']
+        
+        M_ext = dataset.get('M_ext', 1.989e30)  # Default: Solar mass
+        r_ext = dataset.get('r_ext', 1.496e11)  # Default: 1 AU
+        
+        # Ug3' calculation
+        Ug3_prime = (G * M_ext) / (r_ext ** 2)
+        
+        # Hill sphere approximation (influence radius)
+        # r_Hill ≈ r_ext × (M_ext / 3M_primary)^(1/3)
+        # Using primary as 10× M_ext as placeholder
+        M_primary = 10 * M_ext
+        r_Hill = r_ext * ((M_ext / (3 * M_primary)) ** (1.0/3.0))
+        
+        # Escape velocity at r_ext
+        v_escape = (2 * G * M_ext / r_ext) ** 0.5
+        
+        # Classification
+        M_sun = 1.989e30
+        if M_ext > 1e9 * M_sun:
+            source_type = 'SMBH'
+        elif M_ext > 3 * M_sun:
+            source_type = 'Stellar Black Hole'
+        elif M_ext > 0.08 * M_sun:
+            source_type = 'Star'
+        else:
+            source_type = 'Stellar/Planetary'
+        
+        return {
+            'M_ext': M_ext,
+            'r_ext': r_ext,
+            'Ug3_prime': Ug3_prime,
+            'r_Hill': r_Hill,
+            'v_escape': v_escape,
+            'source_type': source_type,
+            'equation': "Ug3' = (G × M_ext) / r_ext²",
+            'units': {'Ug3_prime': 'm/s²', 'v_escape': 'm/s', 'r_Hill': 'm'}
+        }
+
+
+class PsiTotalWaveFunctionCalculator:
+    """
+    Calculator for combined wave function ψ_total.
+    
+    Physics: ψ_total = ψ_mag + ψ_standing + ψ_quantum
+    
+    Components:
+    - ψ_mag: q × (v × B) - magnetic wave contribution
+    - ψ_standing: 2A × cos(kx) × cos(ωt) - standing wave
+    - ψ_quantum: (2π/13.8) × A × exp(i(kx - ωt)) - quantum propagating wave
+    
+    Unified wave dynamics across 38 systems.
+    
+    Based on UQFF Compression Cycle 2 - wave term unification.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_36_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute ψ_total wave function components.
+        
+        Args:
+            dataset: {
+                'A': amplitude,
+                'k': wave number (rad/m),
+                'omega': angular frequency (rad/s),
+                'x': position (m),
+                't': time (s),
+                'q': charge (C),
+                'v': velocity (m/s),
+                'B': magnetic field (T)
+            }
+        
+        Returns:
+            dict with ψ_total and component breakdown
+        """
+        import math
+        
+        A = dataset.get('A', 1.0)
+        k = dataset.get('k', 1e-7)  # rad/m
+        omega = dataset.get('omega', 1e-3)  # rad/s
+        x = dataset.get('x', 0.0)  # m
+        t = dataset.get('t', 0.0)  # s
+        q = dataset.get('q', 1.6e-19)  # C
+        v = dataset.get('v', 1e4)  # m/s
+        B = dataset.get('B', 1e-5)  # T
+        
+        # Magnetic wave: q × (v × B) simplified as scalar
+        psi_mag = q * v * B
+        
+        # Standing wave: 2A × cos(kx) × cos(ωt)
+        psi_standing = 2 * A * math.cos(k * x) * math.cos(omega * t)
+        
+        # Quantum wave: (2π/13.8) × A × exp(i(kx - ωt))
+        # Real part for computation
+        phase = k * x - omega * t
+        quantum_prefactor = 2 * math.pi / 13.8  # Hubble time factor
+        psi_quantum_real = quantum_prefactor * A * math.cos(phase)
+        psi_quantum_imag = quantum_prefactor * A * math.sin(phase)
+        psi_quantum_magnitude = (psi_quantum_real**2 + psi_quantum_imag**2) ** 0.5
+        
+        # Total (real parts combined, complex magnitude added)
+        psi_total_real = psi_mag + psi_standing + psi_quantum_real
+        
+        # Energy-related quantity |ψ|²
+        psi_squared = psi_total_real ** 2
+        
+        return {
+            'psi_mag': psi_mag,
+            'psi_standing': psi_standing,
+            'psi_quantum_real': psi_quantum_real,
+            'psi_quantum_imag': psi_quantum_imag,
+            'psi_quantum_magnitude': psi_quantum_magnitude,
+            'psi_total_real': psi_total_real,
+            'psi_squared': psi_squared,
+            'phase': phase,
+            'equation': 'ψ_total = ψ_mag + ψ_standing + ψ_quantum',
+            'note': 'Wave unification across 38 astrophysical systems'
+        }
+
+
+class SystemSpecificTermsCalculator:
+    """
+    Calculator for system-specific F_env terms across 38 systems.
+    
+    Physics: Different systems require different F_env components:
+    
+    Nebulae (Orion, Eagle, Lagoon, Bubble, Horsehead, NGC 6302):
+    - F_rad (P_rad), F_wind (W_stellar), F_erode (E(t)), F_shock
+    
+    Galaxies (Sombrero, NGC 2525, Antennae, HUDF, NGC 1792, NGC 1275):
+    - F_BH, F_merge, F_SN, F_dust, F_fil, F_torque
+    
+    Planetary (Saturn):
+    - F_ring, F_wind (atmospheric)
+    
+    Stellar (Magnetar, Crab Nebula):
+    - F_mag, F_wind (pulsar)
+    
+    Cosmological (Big Bang):
+    - F_cosmo (QG_term, DM_term, GW_term)
+    
+    Based on UQFF Compression Cycle 2 - 38 systems.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_36_PARAMS
+        
+        # System-term mappings
+        self.system_terms = {
+            'nebula': ['F_rad', 'F_wind', 'F_erode', 'F_shock'],
+            'galaxy': ['F_BH', 'F_merge', 'F_SN', 'F_dust', 'F_fil', 'F_torque'],
+            'planetary': ['F_ring', 'F_wind'],
+            'stellar': ['F_mag', 'F_wind'],
+            'cosmological': ['F_cosmo'],
+            'atomic': ['F_tech', 'F_shell'],
+        }
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Get appropriate F_env terms for a system type.
+        
+        Args:
+            dataset: {'system_type': 'nebula'|'galaxy'|'planetary'|..., 'system_name': str}
+        
+        Returns:
+            dict with applicable F_env terms and example values
+        """
+        system_type = dataset.get('system_type', 'nebula')
+        system_name = dataset.get('system_name', 'Orion Nebula')
+        
+        # Get applicable terms
+        applicable_terms = self.system_terms.get(system_type, ['F_rad'])
+        
+        # Example system configurations
+        example_configs = {
+            'Orion Nebula': {'F_rad': 0.1, 'F_wind': 0.05},
+            'Eagle Nebula': {'F_rad': 0.08, 'F_wind': 0.04, 'F_erode': 0.02},
+            'Lagoon Nebula': {'F_rad': 0.12, 'F_wind': 0.06},
+            'NGC 6302': {'F_shock': 0.15, 'F_wind': 0.1},
+            'Sombrero Galaxy': {'F_BH': 0.2, 'F_dust': 0.08},
+            'Antennae Galaxies': {'F_merge': 0.3, 'F_SN': 0.1},
+            'NGC 1275': {'F_fil': 0.2, 'F_BH': 0.15},
+            'Saturn': {'F_ring': 0.05, 'F_wind': 0.02},
+            'Crab Nebula': {'F_mag': 0.25, 'F_wind': 0.15},
+            'Hydrogen Atom': {'F_tech': 0.01, 'F_shell': 0.005},
+            'Big Bang': {'F_cosmo': 1.0},
+        }
+        
+        config = example_configs.get(system_name, {term: 0.1 for term in applicable_terms})
+        
+        # Total F_env for this system
+        F_env_total = sum(config.values())
+        
+        return {
+            'system_type': system_type,
+            'system_name': system_name,
+            'applicable_terms': applicable_terms,
+            'configuration': config,
+            'F_env_total': F_env_total,
+            'num_terms': len(config),
+            'all_system_types': list(self.system_terms.keys()),
+        }
+
+
+class HydrogenResonanceCalculator:
+    """
+    Calculator for Hydrogen Resonance equation (non-gravitational UQFF).
+    
+    Physics: H_res = A_res × sin(2πf_res·t) + U_dp × SC_m × k_nuc + S_shell
+    
+    Components:
+    - A_res = k_A × Z × (A/A_H) × (1 + δ_pair) - resonance amplitude
+    - f_res = (E_bind/h) × (A_H/A) × (1 + S_shell) - resonance frequency
+    - U_dp = k × (A₁A₂/f_dp²) × cos(φ_dp) - dipole potential
+    - SC_m ≈ 1 - superconductive factor
+    - k_nuc = k₀ × (N/Z) × (1 + δ_pair) - nuclear coupling
+    - S_shell = 0.1 × (Z_magic + N_magic) - shell correction
+    
+    Generalizes nuclear resonance for all elements Z=1-118.
+    
+    Based on UQFF Compression Cycle 2 - Document 28.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_36_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute hydrogen resonance equation.
+        
+        Args:
+            dataset: {
+                'Z': atomic number,
+                'A': mass number,
+                'N': neutron number,
+                't': time (s),
+                'E_bind': binding energy (eV)
+            }
+        
+        Returns:
+            dict with H_res and component breakdown
+        """
+        import math
+        
+        Z = dataset.get('Z', 1)  # Hydrogen default
+        A = dataset.get('A', 1)  # Mass number
+        N = dataset.get('N', 0)  # Neutrons (A - Z)
+        t = dataset.get('t', 0.0)  # Time
+        E_bind = dataset.get('E_bind', 13.6)  # eV for hydrogen
+        
+        A_H = 1  # Hydrogen mass number
+        h = 6.626e-34  # Planck constant
+        
+        # Magic numbers
+        magic_numbers = [2, 8, 20, 28, 50, 82, 126]
+        Z_magic = 1 if Z in magic_numbers else 0
+        N_magic = 1 if N in magic_numbers else 0
+        
+        # Pairing factor (even-even nuclei more stable)
+        delta_pair = 1 if (Z % 2 == 0 and N % 2 == 0) else 0
+        
+        # Shell correction
+        S_shell = 0.1 * (Z_magic + N_magic)
+        
+        # Resonance amplitude
+        k_A = 1.0  # Amplitude constant
+        A_res = k_A * Z * (A / A_H) * (1 + delta_pair)
+        
+        # Resonance frequency
+        E_bind_J = E_bind * 1.602e-19  # Convert to Joules
+        f_res = (E_bind_J / h) * (A_H / A) * (1 + S_shell)
+        
+        # Dipole potential (simplified)
+        k_dp = 1e-10
+        f_dp = f_res if f_res > 0 else 1.0
+        phi_dp = 0.0  # Phase
+        U_dp = k_dp * (A * A / (f_dp ** 2)) * math.cos(phi_dp)
+        
+        # Superconductive factor
+        SC_m = 1.0
+        
+        # Nuclear coupling
+        k_0 = 1.0
+        k_nuc = k_0 * (N / Z if Z > 0 else 0) * (1 + delta_pair)
+        
+        # Resonance function
+        H_res = A_res * math.sin(2 * math.pi * f_res * t) + U_dp * SC_m * k_nuc + S_shell
+        
+        return {
+            'Z': Z,
+            'A': A,
+            'N': N,
+            'A_res': A_res,
+            'f_res': f_res,
+            'U_dp': U_dp,
+            'SC_m': SC_m,
+            'k_nuc': k_nuc,
+            'S_shell': S_shell,
+            'delta_pair': delta_pair,
+            'H_res': H_res,
+            'magic_shell': Z_magic + N_magic > 0,
+            'equation': 'H_res = A_res × sin(2πf·t) + U_dp × SC_m × k_nuc + S_shell'
+        }
+
+
+class GravitySinceBigBangCalculator:
+    """
+    Calculator for cosmic gravity evolution since the Big Bang.
+    
+    Physics: g_Gravity(t) includes:
+    - Standard UQFF gravitational terms
+    - QG_term: Quantum gravity contribution
+    - DM_term: Dark matter evolution
+    - GW_term: Gravitational wave effects
+    
+    F_env(t) → F_cosmo = QG_term + DM_term + GW_term
+    
+    Spans 13.8 Gyr of cosmic evolution.
+    
+    Based on UQFF Compression Cycle 2 - Document 38.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_36_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute gravity evolution through cosmic history.
+        
+        Args:
+            dataset: {
+                'epoch': 'inflation'|'radiation'|'matter'|'dark_energy',
+                'z': redshift,
+                'M_horizon': mass within horizon (kg)
+            }
+        
+        Returns:
+            dict with cosmic gravity evolution
+        """
+        epoch = dataset.get('epoch', 'matter')
+        z = dataset.get('z', 0.0)
+        M_horizon = dataset.get('M_horizon', 1e53)  # kg (observable universe)
+        
+        G = self.params['G']
+        c = self.params['c']
+        t_Hubble = self.params['t_Hubble']  # Gyr
+        
+        # Horizon radius approximation (Hubble radius)
+        H_0 = self.params['H_0'] * 1000 / 3.086e22  # Convert to 1/s
+        r_horizon = c / H_0  # Hubble radius
+        
+        # Base cosmic gravity
+        g_base = (G * M_horizon) / (r_horizon ** 2)
+        
+        # Epoch-dependent factors
+        epoch_factors = {
+            'inflation': 1e60,  # Exponential expansion
+            'radiation': 1e10,  # Radiation dominance
+            'matter': 1.0,  # Matter dominance
+            'dark_energy': 0.7,  # Accelerated expansion
+        }
+        epoch_factor = epoch_factors.get(epoch, 1.0)
+        
+        # QG_term: Quantum gravity (Planck scale effects)
+        l_Planck = 1.616e-35  # m
+        QG_term = (G * c ** 3) / (l_Planck ** 2)  # Planck gravity scale
+        QG_normalized = QG_term / 1e52  # Normalized for comparison
+        
+        # DM_term: Dark matter contribution
+        Omega_DM = 0.27
+        DM_term = Omega_DM * g_base
+        
+        # GW_term: Gravitational wave energy density (approximate)
+        h_GW = 1e-22  # Typical strain amplitude
+        f_GW = 1e-2  # Hz (typical frequency)
+        GW_term = (c ** 2) * (h_GW ** 2) * (f_GW ** 2) / G
+        GW_normalized = GW_term / 1e-10  # Normalized
+        
+        # F_cosmo total
+        F_cosmo = QG_normalized + DM_term / g_base + GW_normalized
+        
+        # Age at redshift z (approximate)
+        t_z = t_Hubble / (1 + z) ** 1.5 if z > 0 else t_Hubble
+        
+        return {
+            'epoch': epoch,
+            'z': z,
+            'g_base': g_base,
+            'epoch_factor': epoch_factor,
+            'QG_term': QG_normalized,
+            'DM_term': DM_term,
+            'GW_term': GW_normalized,
+            'F_cosmo': F_cosmo,
+            't_z_Gyr': t_z,
+            'r_horizon_m': r_horizon,
+            'equation': 'g_cosmic = g_base + QG_term + DM_term + GW_term',
+            'note': 'Spans 10^-43 s (Planck) to 13.8 Gyr (present)'
+        }
+
+
+class MUGEUnificationCalculator:
+    """
+    Calculator for Master Universal Gravity Equation (MUGE) unification.
+    
+    Physics: Unifies 38 system-specific MUGEs into single compressed form.
+    
+    Common core structure:
+    - Gravitational base: (G×M(t))/r²
+    - Expansion: (1 + H(t,z))
+    - Superconductivity: (1 - B/B_crit)
+    - Environmental: (1 + F_env(t))
+    - Gravity modes: Ug1 + Ug2 + Ug3' + Ug4
+    - Cosmological: Λc²/3
+    - Quantum: (ℏ/√(Δx·Δp)) × ∫(ψ*Hψ dV) × (2π/t_Hubble)
+    - Dark matter: (M_vis + M_DM) × (δρ/ρ + 3GM/r³)
+    
+    Based on UQFF Compression Cycle 2 - 38-document synthesis.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_36_PARAMS
+        
+        # 38 systems covered
+        self.systems = [
+            'Magnetar SGR 1745-2900', 'Sagittarius A*', 'Tapestry Starbirth',
+            'Westerlund 2', 'Pillars of Creation', 'Rings of Relativity',
+            'NGC 3603', 'Bubble Nebula', 'Antennae Galaxies', 'Horsehead Nebula',
+            'NGC 1275', 'NGC 2525', 'HUDF', 'NGC 1792', 'Sombrero Galaxy',
+            'Saturn', 'M16 (Eagle Nebula)', 'Crab Nebula', 'Hydrogen Atom',
+            'Hydrogen Resonance', 'Lagoon Nebula', 'Spirals and Supernovae',
+            'NGC 6302', 'Orion Nebula', 'Young Stars Outflows', 'Eagle Nebula',
+            'Gravity Since Big Bang', 'Student Guide Universe', 'Learning Assessments (5)',
+        ]
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Analyze MUGE unification statistics.
+        
+        Args:
+            dataset: {'include_resonance': bool}
+        
+        Returns:
+            dict with unification analysis and compression metrics
+        """
+        include_resonance = dataset.get('include_resonance', True)
+        
+        # Core equation components
+        core_components = [
+            'Gravitational base: (G×M(t))/r²',
+            'Expansion factor: (1 + H(t,z))',
+            'Superconductivity: (1 - B/B_crit)',
+            'Environmental: (1 + F_env(t))',
+            'Gravity modes: Ug1 + Ug2 + Ug3\' + Ug4',
+            'Cosmological constant: Λc²/3',
+            'Quantum term: (ℏ/√(Δx·Δp)) × ∫ψ*Hψ dV × (2π/t_Hubble)',
+            'Fluid dynamics: ρ_fluid × V × g',
+            'Dark matter: (M_vis + M_DM) × (δρ/ρ + 3GM/r³)',
+        ]
+        
+        # F_env components
+        F_env_terms = self.params['F_env_components']
+        
+        # Scale coverage
+        scale_min = self.params['scale_min']  # 10^-10 m
+        scale_max = self.params['scale_max']  # 10^27 m
+        scale_range = scale_max / scale_min  # 10^37
+        
+        # Compression ratio
+        # Original: 38 separate equations with ~15 terms each = ~570 terms
+        # Compressed: 1 equation with 9 core + 15 F_env modular = 24 terms
+        original_terms = 38 * 15
+        compressed_terms = len(core_components) + len(F_env_terms)
+        compression_ratio = original_terms / compressed_terms
+        
+        return {
+            'total_systems': len(self.systems),
+            'core_components': len(core_components),
+            'F_env_terms': len(F_env_terms),
+            'original_term_count': original_terms,
+            'compressed_term_count': compressed_terms,
+            'compression_ratio': compression_ratio,
+            'scale_range_orders': 37,  # log10(10^37)
+            'scale_min_m': scale_min,
+            'scale_max_m': scale_max,
+            'systems_list': self.systems,
+            'core_equations': core_components,
+            'F_env_list': F_env_terms,
+            'includes_resonance': include_resonance,
+            'validation_needed': ['JWST', 'ALMA', 'EHT', 'LIGO', 'Chandra'],
+        }
+
+
+class ScaleRangeValidatorCalculator:
+    """
+    Calculator for UQFF scale range validation (10^-10 m to 10^27 m).
+    
+    Physics: UQFF spans:
+    - Atomic: ~10^-10 m (Hydrogen Atom, Bohr radius = 5.29×10^-11 m)
+    - Planetary: ~10^7 m (Saturn radius = 5.8×10^7 m)
+    - Stellar: ~10^9 m (Solar radius = 6.96×10^8 m)
+    - Nebular: ~10^17 m (Orion = 25 ly = 2.4×10^17 m)
+    - Galactic: ~10^20 m (Sombrero = 50,000 ly = 4.7×10^20 m)
+    - Cosmological: ~10^26 m (Observable universe = 8.8×10^26 m)
+    
+    37 orders of magnitude coverage.
+    
+    Based on UQFF Compression Cycle 2 - scale unification.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_36_PARAMS
+        
+        # Reference systems with scales
+        self.reference_scales = {
+            'Hydrogen Atom': 5.29e-11,  # Bohr radius
+            'Saturn': 5.8e7,  # Equatorial radius
+            'Sun': 6.96e8,  # Solar radius
+            'Crab Nebula': 5.5e16,  # ~6 ly diameter
+            'Orion Nebula': 2.4e17,  # ~25 ly
+            'NGC 3603': 1.9e17,  # ~20 ly
+            'Eagle Nebula': 6.5e17,  # ~70 ly
+            'Sombrero Galaxy': 4.7e20,  # ~50,000 ly
+            'HUDF': 2.8e25,  # ~3 Gpc
+            'Observable Universe': 8.8e26,  # ~93 Gly diameter
+        }
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Validate UQFF applicability across scales.
+        
+        Args:
+            dataset: {'r': radius/scale in meters}
+        
+        Returns:
+            dict with scale classification and regime
+        """
+        r = dataset.get('r', 1.0)
+        
+        # Classify scale
+        if r < 1e-9:
+            regime = 'Quantum'
+            dominant_physics = 'Quantum mechanics, tunneling'
+            applicable_terms = ['F_tech', 'F_shell', 'quantum_term']
+        elif r < 1e6:
+            regime = 'Microscopic'
+            dominant_physics = 'Chemical bonding, molecular'
+            applicable_terms = ['F_tech', 'quantum_term']
+        elif r < 1e10:
+            regime = 'Planetary'
+            dominant_physics = 'Classical mechanics, atmosphere'
+            applicable_terms = ['F_ring', 'F_wind', 'Ug_base']
+        elif r < 1e13:
+            regime = 'Stellar System'
+            dominant_physics = 'Orbital mechanics, tides'
+            applicable_terms = ['Ug3_prime', 'F_wind']
+        elif r < 1e18:
+            regime = 'Nebular'
+            dominant_physics = 'Star formation, radiation'
+            applicable_terms = ['F_rad', 'F_wind', 'F_erode', 'F_shock']
+        elif r < 1e22:
+            regime = 'Galactic'
+            dominant_physics = 'Dark matter, rotation curves'
+            applicable_terms = ['F_BH', 'F_merge', 'F_dust', 'M_DM']
+        else:
+            regime = 'Cosmological'
+            dominant_physics = 'Expansion, dark energy'
+            applicable_terms = ['H(t,z)', 'Lambda', 'F_cosmo']
+        
+        # Order of magnitude
+        import math
+        order = math.log10(r) if r > 0 else 0
+        
+        # Find closest reference system
+        closest_system = min(self.reference_scales.keys(),
+                            key=lambda k: abs(math.log10(self.reference_scales[k]) - order))
+        closest_scale = self.reference_scales[closest_system]
+        
+        return {
+            'r': r,
+            'order_of_magnitude': order,
+            'regime': regime,
+            'dominant_physics': dominant_physics,
+            'applicable_terms': applicable_terms,
+            'closest_system': closest_system,
+            'closest_scale': closest_scale,
+            'scale_ratio': r / closest_scale,
+            'total_range_orders': 37,
+            'reference_scales': self.reference_scales,
+        }
+
+
+# Registry for Orb Analysis 36
+ORB_ANALYSIS_36_CALCULATORS = {
+    'CompressedUQFFCalculator': CompressedUQFFCalculator(),
+    'FEnvModularCalculator': FEnvModularCalculator(),
+    'RedshiftDependentHubbleCalculator': RedshiftDependentHubbleCalculator(),
+    'ExternalGravityUg3PrimeCalculator': ExternalGravityUg3PrimeCalculator(),
+    'PsiTotalWaveFunctionCalculator': PsiTotalWaveFunctionCalculator(),
+    'SystemSpecificTermsCalculator': SystemSpecificTermsCalculator(),
+    'HydrogenResonanceCalculator': HydrogenResonanceCalculator(),
+    'GravitySinceBigBangCalculator': GravitySinceBigBangCalculator(),
+    'MUGEUnificationCalculator': MUGEUnificationCalculator(),
+    'ScaleRangeValidatorCalculator': ScaleRangeValidatorCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -15994,6 +16942,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_33_CALCULATORS,
     **ORB_ANALYSIS_34_CALCULATORS,
     **ORB_ANALYSIS_35_CALCULATORS,
+    **ORB_ANALYSIS_36_CALCULATORS,
 }
 
 # Update class count
@@ -16327,6 +17276,20 @@ __all__ = [
     'AetherFieldDensityCalculator',
     'PiCycleModulationCalculator',
     'ORB_ANALYSIS_35_CALCULATORS',
+    
+    # Orb Analysis_36 / UQFF Compression Cycle 2 - 38 System Master Framework (10 classes)
+    'ORB_ANALYSIS_36_PARAMS',
+    'CompressedUQFFCalculator',
+    'FEnvModularCalculator',
+    'RedshiftDependentHubbleCalculator',
+    'ExternalGravityUg3PrimeCalculator',
+    'PsiTotalWaveFunctionCalculator',
+    'SystemSpecificTermsCalculator',
+    'HydrogenResonanceCalculator',
+    'GravitySinceBigBangCalculator',
+    'MUGEUnificationCalculator',
+    'ScaleRangeValidatorCalculator',
+    'ORB_ANALYSIS_36_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
