@@ -15935,6 +15935,877 @@ ORB_ANALYSIS_36_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS_37: SYSTEM-SPECIFIC MUGEs - LAGOON, SPIRALS, ORION
+# 38-Document Compression Cycle 2 - Individual System Equations
+# New systems: Lagoon Nebula, Spirals and Supernovae, Orion Nebula
+# New F_env terms: T_spiral, SN_term, W_shock, P_outflow, W_stellar
+# Universe diameter estimation: D_universe equation
+# Framework development strategy for live image UQFF application
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ORB_ANALYSIS_37_PARAMS = {
+    'session': 'UQFF_Compression_Cycle2_SystemMUGEs',
+    'date': '2025-05-05',
+    'location': 'Youngstown, OH',
+    'documents_analyzed': 38,
+    
+    # Physical constants
+    'G': 6.674e-11,  # m³/kg/s²
+    'c': 2.998e8,  # m/s
+    'hbar': 1.055e-34,  # J·s
+    'Lambda': 1.1e-52,  # m⁻² (cosmological constant)
+    'H_0': 70.0,  # km/s/Mpc (Hubble constant)
+    't_Hubble': 13.8e9,  # years
+    'B_crit': 1e15,  # T
+    
+    # Lagoon Nebula parameters
+    'lagoon_distance_ly': 4100,  # ~4,100 ly
+    'lagoon_diameter_ly': 110,  # ~110 ly
+    'lagoon_mass_Msun': 1e4,  # ~10,000 M_sun
+    'lagoon_M_sf_rate': 1e-5,  # M_sun/yr star formation rate
+    
+    # Orion Nebula parameters
+    'orion_distance_ly': 1344,  # ~1,344 ly
+    'orion_diameter_ly': 24,  # ~24 ly
+    'orion_mass_Msun': 2000,  # ~2,000 M_sun
+    'orion_W_stellar': 1e-10,  # stellar wind term
+    
+    # Spirals and Supernovae
+    'spiral_T_factor': 0.1,  # Spiral arm torque factor
+    'SN_rate_per_century': 2.0,  # Per galaxy per century
+    
+    # Universe diameter
+    'D_particle_horizon_m': 8.8e26,  # Particle horizon ~93 Gly diameter
+    'k_curvature': 0.0,  # Flat universe
+}
+
+
+class LagoonNebulaMUGECalculator:
+    """
+    Calculator for Lagoon Nebula (M8/NGC 6523) specific MUGE.
+    
+    Physics: g_Lagoon(r,t) = (G×M(t))/r² × (1+H(z)×t) × (1-B/B_crit) × (1+M_sf(t))
+             + (Ug1+Ug2+Ug3+Ug4) + (Λc²/3) + (ℏ/√(Δx·Δp)) × ∫ψ*Hψ dV × (2π/t_H)
+             + q×(v×B) + ρ_fluid×V×g + standing_wave + quantum_wave
+             + (M_vis+M_DM)×(δρ/ρ + 3GM/r³) - P_rad
+    
+    Key features:
+    - M_sf(t): Star formation term (giant stellar nursery)
+    - P_rad: Radiation pressure from Herschel 36 and other O/B stars
+    
+    Based on UQFF Compression Cycle 2 - Document 30.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_37_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute Lagoon Nebula MUGE.
+        
+        Args:
+            dataset: {
+                'M': nebula mass (kg),
+                'r': radius (m),
+                'z': redshift,
+                'M_sf': star formation factor,
+                'P_rad': radiation pressure term,
+                'B': magnetic field (T)
+            }
+        """
+        import math
+        
+        G = self.params['G']
+        c = self.params['c']
+        H_0 = self.params['H_0']
+        B_crit = self.params['B_crit']
+        Lambda = self.params['Lambda']
+        
+        # Default Lagoon parameters
+        ly_to_m = 9.461e15
+        M_sun = 1.989e30
+        M = dataset.get('M', self.params['lagoon_mass_Msun'] * M_sun)
+        r = dataset.get('r', self.params['lagoon_diameter_ly'] / 2 * ly_to_m)
+        z = dataset.get('z', self.params['lagoon_distance_ly'] * ly_to_m * H_0 / (c / 1000) / 1e6)  # Approximate
+        M_sf = dataset.get('M_sf', 0.1)  # Star formation enhancement
+        P_rad = dataset.get('P_rad', 1e-10)  # Radiation pressure term
+        B = dataset.get('B', 1e-6)  # T
+        
+        # H(z) factor
+        H_z = H_0 * ((0.3 * (1 + z)**3 + 0.7) ** 0.5)
+        
+        # Gravitational base
+        g_base = (G * M) / (r ** 2)
+        
+        # Expansion factor
+        t_normalized = 1.0
+        expansion = 1 + H_z * t_normalized / 1e6  # Normalized
+        
+        # Superconductivity
+        sc_factor = 1 - B / B_crit
+        
+        # Star formation enhancement
+        sf_factor = 1 + M_sf
+        
+        # Core gravity
+        g_core = g_base * expansion * sc_factor * sf_factor
+        
+        # Cosmological term
+        g_Lambda = Lambda * (c ** 2) / 3
+        
+        # Radiation pressure reduction
+        g_rad = -P_rad  # Negative - opposes gravity
+        
+        # Total g_Lagoon
+        g_Lagoon = g_core + g_Lambda + g_rad
+        
+        # Additional properties
+        free_fall_time = math.sqrt(3 * math.pi / (32 * G * (M / (4/3 * math.pi * r**3))))
+        
+        return {
+            'g_Lagoon': g_Lagoon,
+            'g_base': g_base,
+            'g_core': g_core,
+            'expansion_factor': expansion,
+            'sc_factor': sc_factor,
+            'sf_factor': sf_factor,
+            'g_Lambda': g_Lambda,
+            'g_rad': g_rad,
+            'P_rad': P_rad,
+            'free_fall_time_s': free_fall_time,
+            'free_fall_time_Myr': free_fall_time / (3.15576e13),
+            'equation': 'g_Lagoon = (GM/r²)×(1+H(z)×t)×(1-B/B_crit)×(1+M_sf) + Λc²/3 - P_rad',
+            'system': 'Lagoon Nebula (M8/NGC 6523)',
+            'distance_ly': self.params['lagoon_distance_ly'],
+            'units': {'g_Lagoon': 'm/s²'}
+        }
+
+
+class SpiralsAndSupernovaeMUGECalculator:
+    """
+    Calculator for Spirals and Supernovae galactic MUGE.
+    
+    Physics: g_Spiral_SN(r,t) = (G×M(t))/r² × (1+H_0×t) × (1+T_spiral)
+             + (Ug1+Ug2+Ug3+Ug4) + (Λc²×Ω_Λ/3)
+             + (ℏ/√(Δx·Δp)) × ∫ψ*Hψ dV × (2π/t_H) + q×(v×B)
+             + ρ_fluid×V×g + standing_wave + quantum_wave
+             + (M_vis+M_DM)×(δρ/ρ + 3GM/r³) + SN_term
+    
+    Key features:
+    - T_spiral: Spiral arm torque enhancing gravity in arms
+    - SN_term: Supernova feedback affecting local gravity
+    
+    Based on UQFF Compression Cycle 2 - Document 31.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_37_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute Spirals and Supernovae MUGE.
+        
+        Args:
+            dataset: {
+                'M': galactic mass (kg),
+                'r': radius (m),
+                'T_spiral': spiral arm torque factor,
+                'SN_rate': supernova rate (per century),
+                'M_ejecta': SN ejecta mass (kg)
+            }
+        """
+        import math
+        
+        G = self.params['G']
+        c = self.params['c']
+        H_0 = self.params['H_0']
+        Lambda = self.params['Lambda']
+        Omega_Lambda = 0.7
+        
+        M_sun = 1.989e30
+        M = dataset.get('M', 1e11 * M_sun)  # Typical spiral galaxy
+        r = dataset.get('r', 5e20)  # ~50 kpc
+        T_spiral = dataset.get('T_spiral', self.params['spiral_T_factor'])
+        SN_rate = dataset.get('SN_rate', self.params['SN_rate_per_century'])
+        M_ejecta = dataset.get('M_ejecta', 10 * M_sun)  # Per SN
+        
+        # Gravitational base
+        g_base = (G * M) / (r ** 2)
+        
+        # Expansion factor
+        t_normalized = 1.0
+        expansion = 1 + H_0 * t_normalized / 1e6
+        
+        # Spiral torque enhancement
+        spiral_factor = 1 + T_spiral
+        
+        # Core gravity
+        g_core = g_base * expansion * spiral_factor
+        
+        # Cosmological term with Omega_Lambda
+        g_Lambda = Lambda * (c ** 2) * Omega_Lambda / 3
+        
+        # SN term: energy injection feedback
+        # SN_term ~ (SN_rate × E_SN) / (M × c²)
+        E_SN = 1e44  # J per supernova
+        SN_energy_rate = (SN_rate / 100) * E_SN  # J/yr
+        SN_term = SN_energy_rate / (M * c**2) * g_base * 1e10  # Normalized
+        
+        # Total g_Spiral_SN
+        g_Spiral_SN = g_core + g_Lambda + SN_term
+        
+        # Rotation curve contribution
+        v_circular = math.sqrt(G * M / r)
+        
+        return {
+            'g_Spiral_SN': g_Spiral_SN,
+            'g_base': g_base,
+            'g_core': g_core,
+            'expansion_factor': expansion,
+            'spiral_factor': spiral_factor,
+            'g_Lambda': g_Lambda,
+            'SN_term': SN_term,
+            'T_spiral': T_spiral,
+            'SN_rate': SN_rate,
+            'v_circular_km_s': v_circular / 1000,
+            'equation': 'g_Spiral_SN = (GM/r²)×(1+H_0×t)×(1+T_spiral) + Λc²Ω_Λ/3 + SN_term',
+            'system': 'Spiral Galaxy with Supernova Feedback',
+            'units': {'g_Spiral_SN': 'm/s²', 'v_circular': 'km/s'}
+        }
+
+
+class OrionNebulaMUGECalculator:
+    """
+    Calculator for Orion Nebula (M42) specific MUGE.
+    
+    Physics: g_Orion(r,t) = (G×M(t))/r² × (1+H(z)×t) × (1-B/B_crit)
+             + (Ug1+Ug2+Ug3+Ug4) + (Λc²/3)
+             + (ℏ/√(Δx·Δp)) × ∫ψ*Hψ dV × (2π/t_H) + q×(v×B)
+             + ρ_fluid×V×g + standing_wave + quantum_wave
+             + (M_vis+M_DM)×(δρ/ρ + 3GM/r³) + W_stellar - P_rad
+    
+    Key features:
+    - W_stellar: Stellar winds from Trapezium cluster
+    - P_rad: Radiation pressure from O/B stars
+    
+    Based on UQFF Compression Cycle 2 - Document 34.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_37_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute Orion Nebula MUGE.
+        
+        Args:
+            dataset: {
+                'M': nebula mass (kg),
+                'r': radius (m),
+                'W_stellar': stellar wind term,
+                'P_rad': radiation pressure term,
+                'B': magnetic field (T)
+            }
+        """
+        import math
+        
+        G = self.params['G']
+        c = self.params['c']
+        H_0 = self.params['H_0']
+        B_crit = self.params['B_crit']
+        Lambda = self.params['Lambda']
+        
+        ly_to_m = 9.461e15
+        M_sun = 1.989e30
+        M = dataset.get('M', self.params['orion_mass_Msun'] * M_sun)
+        r = dataset.get('r', self.params['orion_diameter_ly'] / 2 * ly_to_m)
+        z = dataset.get('z', 0.00015)  # Very low for 1344 ly
+        W_stellar = dataset.get('W_stellar', self.params['orion_W_stellar'])
+        P_rad = dataset.get('P_rad', 1e-10)
+        B = dataset.get('B', 1e-5)  # T
+        
+        # H(z) factor
+        H_z = H_0 * ((0.3 * (1 + z)**3 + 0.7) ** 0.5)
+        
+        # Gravitational base
+        g_base = (G * M) / (r ** 2)
+        
+        # Expansion factor (minimal due to proximity)
+        t_normalized = 1.0
+        expansion = 1 + H_z * t_normalized / 1e8
+        
+        # Superconductivity
+        sc_factor = 1 - B / B_crit
+        
+        # Core gravity
+        g_core = g_base * expansion * sc_factor
+        
+        # Cosmological term
+        g_Lambda = Lambda * (c ** 2) / 3
+        
+        # Stellar wind enhancement
+        g_wind = W_stellar
+        
+        # Radiation pressure reduction
+        g_rad = -P_rad
+        
+        # Total g_Orion
+        g_Orion = g_core + g_Lambda + g_wind + g_rad
+        
+        # Trapezium cluster contribution
+        M_trapezium = 50 * M_sun  # Approximate
+        r_trapezium = 0.5 * ly_to_m
+        g_trapezium = (G * M_trapezium) / (r_trapezium ** 2)
+        
+        return {
+            'g_Orion': g_Orion,
+            'g_base': g_base,
+            'g_core': g_core,
+            'expansion_factor': expansion,
+            'sc_factor': sc_factor,
+            'g_Lambda': g_Lambda,
+            'g_wind': g_wind,
+            'g_rad': g_rad,
+            'W_stellar': W_stellar,
+            'P_rad': P_rad,
+            'g_trapezium': g_trapezium,
+            'equation': 'g_Orion = (GM/r²)×(1+H(z)×t)×(1-B/B_crit) + Λc²/3 + W_stellar - P_rad',
+            'system': 'Orion Nebula (M42)',
+            'distance_ly': self.params['orion_distance_ly'],
+            'units': {'g_Orion': 'm/s²'}
+        }
+
+
+class SpiralArmTorqueCalculator:
+    """
+    Calculator for spiral arm gravitational torque T_spiral.
+    
+    Physics: T_spiral = (Σ_arm / Σ_disk) × (r / r_arm) × sin(m × (θ - θ_arm))
+    
+    where:
+    - Σ_arm: Surface density in spiral arm
+    - Σ_disk: Average disk surface density
+    - r_arm: Characteristic arm radius
+    - m: Number of spiral arms (typically 2 or 4)
+    - θ_arm: Arm pattern angle
+    
+    Enhances gravity in spiral density wave regions.
+    
+    Based on UQFF Compression Cycle 2 - Document 31.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_37_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute spiral arm torque.
+        
+        Args:
+            dataset: {
+                'Sigma_arm': arm surface density (kg/m²),
+                'Sigma_disk': disk surface density (kg/m²),
+                'r': galactocentric radius (m),
+                'r_arm': characteristic arm radius (m),
+                'theta': azimuthal angle (rad),
+                'theta_arm': arm pattern angle (rad),
+                'm': number of arms
+            }
+        """
+        import math
+        
+        Sigma_arm = dataset.get('Sigma_arm', 1e8)  # kg/m²
+        Sigma_disk = dataset.get('Sigma_disk', 5e7)  # kg/m²
+        r = dataset.get('r', 2.5e20)  # ~25 kpc
+        r_arm = dataset.get('r_arm', 1e20)  # ~10 kpc
+        theta = dataset.get('theta', 0.0)  # rad
+        theta_arm = dataset.get('theta_arm', 0.0)  # rad
+        m = dataset.get('m', 2)  # Two-arm spiral
+        
+        # Density enhancement factor
+        density_factor = Sigma_arm / Sigma_disk if Sigma_disk > 0 else 1.0
+        
+        # Radial factor
+        radial_factor = r / r_arm if r_arm > 0 else 1.0
+        
+        # Angular modulation
+        angular_mod = math.sin(m * (theta - theta_arm))
+        
+        # T_spiral (dimensionless enhancement)
+        T_spiral = (density_factor - 1) * radial_factor * abs(angular_mod)
+        
+        # Pattern speed (approximate)
+        # Ω_pattern ≈ 20-30 km/s/kpc for MW-like galaxies
+        Omega_pattern = 25e3 / 3.086e19  # rad/s
+        
+        # Corotation radius estimate
+        G = self.params['G']
+        M_disk = 5e10 * 1.989e30  # 5×10¹⁰ M_sun
+        r_corotation = (G * M_disk / Omega_pattern**2) ** (1/3)
+        
+        return {
+            'T_spiral': T_spiral,
+            'density_factor': density_factor,
+            'radial_factor': radial_factor,
+            'angular_mod': angular_mod,
+            'm': m,
+            'Omega_pattern_rad_s': Omega_pattern,
+            'r_corotation_m': r_corotation,
+            'r_corotation_kpc': r_corotation / 3.086e19,
+            'equation': 'T_spiral = (Σ_arm/Σ_disk - 1) × (r/r_arm) × |sin(m(θ-θ_arm))|',
+            'note': 'Dimensionless enhancement factor for spiral arm gravity'
+        }
+
+
+class SupernovaTermCalculator:
+    """
+    Calculator for supernova feedback term SN_term.
+    
+    Physics: SN_term = (R_SN × E_SN) / (M × c²) × (g_base / ε)
+    
+    where:
+    - R_SN: Supernova rate (per year)
+    - E_SN: Energy per supernova (~10⁴⁴ J)
+    - M: Local gas/stellar mass
+    - ε: Energy coupling efficiency
+    
+    Models how supernovae inject energy and momentum, affecting local gravity.
+    
+    Based on UQFF Compression Cycle 2 - Document 31.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_37_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute supernova feedback term.
+        
+        Args:
+            dataset: {
+                'R_SN': SN rate (per year),
+                'E_SN': Energy per SN (J),
+                'M_local': Local affected mass (kg),
+                'epsilon': Energy coupling efficiency,
+                'g_base': Base gravitational acceleration (m/s²)
+            }
+        """
+        c = self.params['c']
+        
+        # Parameters
+        R_SN = dataset.get('R_SN', self.params['SN_rate_per_century'] / 100)  # Per year
+        E_SN = dataset.get('E_SN', 1e44)  # J (10⁵¹ ergs)
+        M_sun = 1.989e30
+        M_local = dataset.get('M_local', 1e9 * M_sun)  # 10⁹ M_sun
+        epsilon = dataset.get('epsilon', 0.01)  # 1% coupling
+        g_base = dataset.get('g_base', 1e-10)  # m/s²
+        
+        # Energy injection rate
+        E_dot = R_SN * E_SN  # J/yr
+        E_dot_per_s = E_dot / 3.15576e7  # J/s = W
+        
+        # Energy density relative to rest mass
+        energy_ratio = E_dot / (M_local * c**2)
+        
+        # SN_term (acceleration perturbation)
+        SN_term = (energy_ratio * g_base) / epsilon
+        
+        # Characteristic feedback timescale
+        t_feedback = M_local / (R_SN * 10 * M_sun)  # Time to process all mass
+        
+        # Momentum injection
+        v_ejecta = 1e7  # m/s (10,000 km/s typical)
+        M_ejecta = 10 * M_sun
+        p_SN = M_ejecta * v_ejecta  # kg·m/s per SN
+        p_dot = R_SN * p_SN  # kg·m/s per year
+        
+        return {
+            'SN_term': SN_term,
+            'R_SN_per_yr': R_SN,
+            'E_SN_J': E_SN,
+            'E_dot_W': E_dot_per_s,
+            'energy_ratio': energy_ratio,
+            'epsilon': epsilon,
+            't_feedback_yr': t_feedback / 3.15576e7,
+            'p_dot_per_yr': p_dot,
+            'equation': 'SN_term = (R_SN × E_SN) / (M × c²) × (g_base / ε)',
+            'note': 'Supernova energy feedback modifying local gravity'
+        }
+
+
+class WindShockCalculator:
+    """
+    Calculator for wind shock term W_shock.
+    
+    Physics: W_shock = ρ × v_shock² × (r_shock / r)²
+    
+    Models shock fronts from fast stellar winds colliding with ambient medium.
+    Used in bipolar nebulae like NGC 6302.
+    
+    Based on UQFF Compression Cycle 2 - Document 32.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_37_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute wind shock term.
+        
+        Args:
+            dataset: {
+                'rho': ambient density (kg/m³),
+                'v_shock': shock velocity (m/s),
+                'r_shock': shock radius (m),
+                'r': observation radius (m)
+            }
+        """
+        rho = dataset.get('rho', 1e-18)  # kg/m³
+        v_shock = dataset.get('v_shock', 5e5)  # 500 km/s
+        ly_to_m = 9.461e15
+        r_shock = dataset.get('r_shock', 1 * ly_to_m)  # 1 ly
+        r = dataset.get('r', 2 * ly_to_m)  # 2 ly
+        
+        # Shock ram pressure
+        P_ram = rho * v_shock**2
+        
+        # Geometric dilution
+        geometric_factor = (r_shock / r)**2 if r > 0 else 0
+        
+        # W_shock term (as acceleration-like)
+        # W_shock = P_ram × geometric × (1 / (rho × r))
+        W_shock = P_ram * geometric_factor / (rho * r) if rho > 0 and r > 0 else 0
+        
+        # Alternatively as pressure gradient force per unit mass
+        W_shock_pressure = P_ram * geometric_factor
+        
+        # Mach number estimate
+        c_sound = 1e4  # m/s (10 km/s for warm ISM)
+        Mach = v_shock / c_sound
+        
+        # Post-shock temperature (Rankine-Hugoniot)
+        mu = 0.6  # Mean molecular weight
+        m_H = 1.67e-27  # kg
+        k_B = 1.38e-23  # J/K
+        T_post_shock = 3 * mu * m_H * v_shock**2 / (16 * k_B)
+        
+        return {
+            'W_shock': W_shock,
+            'W_shock_pressure': W_shock_pressure,
+            'P_ram': P_ram,
+            'geometric_factor': geometric_factor,
+            'Mach': Mach,
+            'T_post_shock_K': T_post_shock,
+            'T_post_shock_MK': T_post_shock / 1e6,
+            'v_shock_km_s': v_shock / 1000,
+            'equation': 'W_shock = ρ × v_shock² × (r_shock/r)²',
+            'note': 'Wind shock contribution in bipolar/planetary nebulae'
+        }
+
+
+class OutflowPressureCalculator:
+    """
+    Calculator for young stellar outflow pressure P_outflow.
+    
+    Physics: P_outflow = (M_dot × v_outflow) / (4π × r² × A)
+    
+    Models jets and outflows from protostars sculpting surrounding gas.
+    
+    Based on UQFF Compression Cycle 2 - Document 35.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_37_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute outflow pressure term.
+        
+        Args:
+            dataset: {
+                'M_dot': mass outflow rate (kg/s),
+                'v_outflow': outflow velocity (m/s),
+                'r': distance from source (m),
+                'opening_angle': outflow opening angle (rad)
+            }
+        """
+        import math
+        
+        M_sun = 1.989e30
+        yr_to_s = 3.15576e7
+        
+        # Parameters
+        M_dot = dataset.get('M_dot', 1e-7 * M_sun / yr_to_s)  # 10⁻⁷ M_sun/yr
+        v_outflow = dataset.get('v_outflow', 2e5)  # 200 km/s
+        ly_to_m = 9.461e15
+        r = dataset.get('r', 0.1 * ly_to_m)  # 0.1 ly
+        opening_angle = dataset.get('opening_angle', math.pi / 6)  # 30 degrees
+        
+        # Solid angle fraction
+        Omega = 2 * math.pi * (1 - math.cos(opening_angle))  # Steradian
+        A = Omega / (4 * math.pi)  # Fraction of sphere
+        
+        # Momentum flux
+        p_dot = M_dot * v_outflow  # kg·m/s²
+        
+        # Pressure at distance r
+        area = 4 * math.pi * r**2 * A
+        P_outflow = p_dot / area if area > 0 else 0
+        
+        # Kinetic luminosity
+        L_kinetic = 0.5 * M_dot * v_outflow**2  # W
+        
+        # Ram pressure comparison
+        P_ram = M_dot * v_outflow / (4 * math.pi * r**2)
+        
+        return {
+            'P_outflow': P_outflow,
+            'p_dot': p_dot,
+            'L_kinetic_W': L_kinetic,
+            'L_kinetic_Lsun': L_kinetic / 3.828e26,
+            'opening_angle_deg': math.degrees(opening_angle),
+            'solid_angle_fraction': A,
+            'P_ram': P_ram,
+            'M_dot_Msun_yr': M_dot * yr_to_s / M_sun,
+            'v_outflow_km_s': v_outflow / 1000,
+            'equation': 'P_outflow = (M_dot × v_outflow) / (4π × r² × A)',
+            'note': 'Protostellar outflow pressure sculpting ambient gas'
+        }
+
+
+class UniverseDiameterEstimatorCalculator:
+    """
+    Calculator for estimating universe diameter D_universe.
+    
+    Physics: D_universe = 2 × D_p × (1 + H(z)×t_0) × (1 + Λc²/(3H_0²))
+                         × (1 + (ℏ/√(Δx·Δp)) × ∫ψ*Hψ dV / (G × M_total))
+                         × (1 + k × r_c²)
+    
+    where:
+    - D_p: Particle horizon (~46.5 Gly radius = 93 Gly diameter)
+    - t_0: Present cosmic time (13.8 Gyr)
+    - k: Curvature parameter (0 for flat universe)
+    - r_c: Characteristic curvature radius
+    
+    Estimates ~182 billion ly with quantum + dark energy corrections.
+    
+    Based on UQFF Compression Cycle 2 - Document 26.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_37_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute universe diameter estimate.
+        
+        Args:
+            dataset: {
+                'D_p': particle horizon diameter (m),
+                't_0': present age (s),
+                'k': curvature parameter,
+                'quantum_correction': dimensionless quantum term
+            }
+        """
+        c = self.params['c']
+        H_0 = self.params['H_0'] * 1000 / 3.086e22  # Convert to 1/s
+        Lambda = self.params['Lambda']
+        
+        ly_to_m = 9.461e15
+        Gly_to_m = ly_to_m * 1e9
+        yr_to_s = 3.15576e7
+        Gyr_to_s = yr_to_s * 1e9
+        
+        # Parameters
+        D_p = dataset.get('D_p', 93 * Gly_to_m)  # 93 Gly particle horizon diameter
+        t_0 = dataset.get('t_0', 13.8 * Gyr_to_s)  # 13.8 Gyr
+        k = dataset.get('k', 0.0)  # Flat universe
+        r_c = dataset.get('r_c', 1e27)  # Curvature radius if k != 0
+        quantum_correction = dataset.get('quantum_correction', 1e-60)  # Tiny
+        
+        # Expansion factor
+        z_avg = 0.0  # Present day
+        H_z = H_0 * ((0.3 * (1 + z_avg)**3 + 0.7) ** 0.5)
+        expansion_factor = 1 + H_z * t_0 / 1e10  # Normalized
+        
+        # Dark energy factor
+        de_factor = 1 + Lambda * c**2 / (3 * H_0**2)
+        
+        # Quantum factor (negligible at cosmic scales)
+        quantum_factor = 1 + quantum_correction
+        
+        # Curvature factor
+        curvature_factor = 1 + k * r_c**2 / D_p**2 if D_p > 0 else 1.0
+        
+        # Total diameter
+        D_universe = D_p * expansion_factor * de_factor * quantum_factor * curvature_factor
+        
+        return {
+            'D_universe_m': D_universe,
+            'D_universe_Gly': D_universe / (ly_to_m * 1e9),
+            'D_universe_Bly': D_universe / (ly_to_m * 1e9),
+            'D_p_m': D_p,
+            'D_p_Gly': D_p / Gly_to_m,
+            'expansion_factor': expansion_factor,
+            'de_factor': de_factor,
+            'quantum_factor': quantum_factor,
+            'curvature_factor': curvature_factor,
+            'k': k,
+            't_0_Gyr': t_0 / Gyr_to_s,
+            'equation': 'D_universe = D_p × (1+Hz×t) × (1+Λc²/3H²) × (1+quantum) × (1+kr²)',
+            'note': 'Estimated observable universe diameter with UQFF corrections'
+        }
+
+
+class LiveImageUQFFApplicatorCalculator:
+    """
+    Calculator for applying UQFF framework to live images with minimal data.
+    
+    Physics: Enables UQFF calculations when only image-derived parameters 
+    are available. Estimates missing values using system classification.
+    
+    Strategy:
+    1. Classify system type from image (nebula, galaxy, star cluster, etc.)
+    2. Estimate parameters based on classification
+    3. Select appropriate F_env(t) terms
+    4. Compute g_UQFF with uncertainty bounds
+    
+    Based on UQFF Compression Cycle 2 - Framework Development Strategy.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_37_PARAMS
+        
+        # Default parameter templates by system type
+        self.templates = {
+            'nebula': {
+                'M_Msun': 1e4,
+                'r_ly': 20,
+                'z': 0.0005,
+                'B': 1e-6,
+                'F_env_terms': ['F_rad', 'F_wind', 'F_erode'],
+            },
+            'galaxy': {
+                'M_Msun': 1e11,
+                'r_ly': 50000,
+                'z': 0.01,
+                'B': 1e-5,
+                'F_env_terms': ['F_BH', 'F_merge', 'F_SN', 'F_dust'],
+            },
+            'star_cluster': {
+                'M_Msun': 1e5,
+                'r_ly': 10,
+                'z': 0.0002,
+                'B': 1e-5,
+                'F_env_terms': ['F_wind', 'F_rad'],
+            },
+            'planetary_nebula': {
+                'M_Msun': 5,
+                'r_ly': 1,
+                'z': 0.0001,
+                'B': 1e-4,
+                'F_env_terms': ['F_shock', 'F_wind'],
+            },
+            'supernova_remnant': {
+                'M_Msun': 10,
+                'r_ly': 5,
+                'z': 0.0003,
+                'B': 1e-3,
+                'F_env_terms': ['F_SN', 'F_shock', 'F_mag'],
+            },
+        }
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Apply UQFF to image-derived parameters.
+        
+        Args:
+            dataset: {
+                'system_type': 'nebula'|'galaxy'|...,
+                'distance_ly': approximate distance (ly),
+                'diameter_ly': approximate diameter (ly),
+                'known_mass_Msun': if known (optional),
+                'known_B': if known (optional)
+            }
+        """
+        G = self.params['G']
+        c = self.params['c']
+        H_0 = self.params['H_0']
+        B_crit = self.params['B_crit']
+        Lambda = self.params['Lambda']
+        
+        ly_to_m = 9.461e15
+        M_sun = 1.989e30
+        
+        # Get system type and template
+        system_type = dataset.get('system_type', 'nebula')
+        template = self.templates.get(system_type, self.templates['nebula'])
+        
+        # Use provided values or template defaults
+        distance_ly = dataset.get('distance_ly', template['r_ly'] * 100)
+        diameter_ly = dataset.get('diameter_ly', template['r_ly'] * 2)
+        M_Msun = dataset.get('known_mass_Msun', template['M_Msun'])
+        B = dataset.get('known_B', template['B'])
+        
+        # Convert to SI
+        M = M_Msun * M_sun
+        r = (diameter_ly / 2) * ly_to_m
+        z = distance_ly * ly_to_m * H_0 / (c / 1000) / 1e6  # Approximate z
+        
+        # H(z)
+        H_z = H_0 * ((0.3 * (1 + z)**3 + 0.7) ** 0.5)
+        
+        # Compute g_UQFF (simplified)
+        g_base = (G * M) / (r ** 2)
+        expansion = 1 + H_z / (H_0 * 10)
+        sc_factor = 1 - B / B_crit
+        
+        # F_env estimate based on system type
+        F_env = 0.1 if system_type in ['nebula', 'star_cluster'] else 0.2
+        env_factor = 1 + F_env
+        
+        g_core = g_base * expansion * sc_factor * env_factor
+        g_Lambda = Lambda * (c ** 2) / 3
+        
+        g_UQFF = g_core + g_Lambda
+        
+        # Uncertainty estimate (large due to assumptions)
+        uncertainty_factor = 3.0  # Factor of 3 uncertainty
+        
+        return {
+            'g_UQFF': g_UQFF,
+            'g_UQFF_min': g_UQFF / uncertainty_factor,
+            'g_UQFF_max': g_UQFF * uncertainty_factor,
+            'g_base': g_base,
+            'system_type': system_type,
+            'M_Msun_used': M_Msun,
+            'r_ly_used': diameter_ly / 2,
+            'z_estimated': z,
+            'H_z': H_z,
+            'F_env_terms': template['F_env_terms'],
+            'F_env_estimate': F_env,
+            'uncertainty_factor': uncertainty_factor,
+            'confidence': 'LOW - based on template assumptions',
+            'equation': 'g_UQFF = (GM/r²)×(1+H(z))×(1-B/B_crit)×(1+F_env) + Λc²/3',
+            'note': 'Use known values when available to improve accuracy'
+        }
+
+
+# Registry for Orb Analysis 37
+ORB_ANALYSIS_37_CALCULATORS = {
+    'LagoonNebulaMUGECalculator': LagoonNebulaMUGECalculator(),
+    'SpiralsAndSupernovaeMUGECalculator': SpiralsAndSupernovaeMUGECalculator(),
+    'OrionNebulaMUGECalculator': OrionNebulaMUGECalculator(),
+    'SpiralArmTorqueCalculator': SpiralArmTorqueCalculator(),
+    'SupernovaTermCalculator': SupernovaTermCalculator(),
+    'WindShockCalculator': WindShockCalculator(),
+    'OutflowPressureCalculator': OutflowPressureCalculator(),
+    'UniverseDiameterEstimatorCalculator': UniverseDiameterEstimatorCalculator(),
+    'LiveImageUQFFApplicatorCalculator': LiveImageUQFFApplicatorCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -15967,6 +16838,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_34_CALCULATORS,
     **ORB_ANALYSIS_35_CALCULATORS,
     **ORB_ANALYSIS_36_CALCULATORS,
+    **ORB_ANALYSIS_37_CALCULATORS,
 }
 
 # Update class count
@@ -16300,6 +17172,19 @@ __all__ = [
     'MUGEUnificationCalculator',
     'ScaleRangeValidatorCalculator',
     'ORB_ANALYSIS_36_CALCULATORS',
+    
+    # Orb Analysis_37 (9 classes - System MUGEs: Lagoon, Spirals/SN, Orion)
+    'ORB_ANALYSIS_37_PARAMS',
+    'LagoonNebulaMUGECalculator',
+    'SpiralsAndSupernovaeMUGECalculator',
+    'OrionNebulaMUGECalculator',
+    'SpiralArmTorqueCalculator',
+    'SupernovaTermCalculator',
+    'WindShockCalculator',
+    'OutflowPressureCalculator',
+    'UniverseDiameterEstimatorCalculator',
+    'LiveImageUQFFApplicatorCalculator',
+    'ORB_ANALYSIS_37_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
