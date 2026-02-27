@@ -3687,6 +3687,612 @@ ORB_ANALYSIS_16_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# UFT ORB ANALYSIS_17: EXP_2 BATCH 4 (Photos #9-#12 + Qualitative Data)
+# North-Neutral state, Red/Silver Mercury, 26 Quantum States, Quality Shift
+# Celtic Cross field configuration, Rocket fuel tuning, Cosmic wind disk stability
+# Source: https://grok.com/share/bGVnYWN5LWNvcHk_47250db5-68a7-40f8-96b6-cde8dcc55576
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# UFT Orb Analysis_17 / Exp_2 Batch 4 parameters
+ORB_ANALYSIS_17_PARAMS = {
+    # Exp_2 Batch 4 dataset (Photos #9-#12)
+    'exp_id': 'UFT_Exp_2_4_03Mar2025',
+    'photos_analyzed': (9, 10, 11, 12),
+    'n_photos_batch4': 4,
+    't_photo_9': 0.24,             # seconds
+    't_photo_10': 0.27,            # seconds
+    't_photo_11': 0.30,            # seconds
+    't_photo_12': 0.33,            # seconds
+    'fps': 33.3,                   # frames per second
+    'dt_frame': 0.03,              # seconds per frame
+    
+    # Quantum states
+    'n_quantum_states': 26,        # Total quantum states exist
+    
+    # Red Mercury properties (room-temp superconductor)
+    'rm_superconductive': True,
+    'rm_energy_type': 'DCE',       # Direct Current Energy (low-energy)
+    'rm_application': 'compact high-energy cooling system',
+    'rm_SCm_density': 1e15,        # kg/m³
+    
+    # Silver Mercury properties
+    'sm_energy_type': 'ACE',       # Alternating Current Energy (high-energy)
+    'sm_application': 'gravitational propulsion, electrical surplus',
+    'sm_power_boost': 0.25,        # 25% electrical surplus
+    'sm_SCm_density': 1e15,        # kg/m³ (similar to Red Mercury)
+    'sm_violent_if_mishandled': True,
+    
+    # North-Neutral state configuration
+    'dipole_suppression': 0.9999,  # 99/99% suppression
+    'configuration': 'Celtic cross',
+    'long_pole_extends_to': 'Ug2',
+    'wraps_around': 'Ug3:Ub3',
+    'neutral_field_equals': 'Ub',
+    
+    # Rocket fuel tuning
+    'thrust_multiplier': 2.7,      # 2.7x thrust per liquid volume
+    'storage_temp_above_ambient': 100.0,  # °F above ambient
+    'thermal_regulation': 'atomic-level',
+    
+    # Hydrogen-Oxygen reactor
+    'h2_o2_storage': 'separate layers under pressure',
+    'water_reversion': 'rapid, predictable',
+    'Ub_differential': 'huge (gas vs liquid)',
+    
+    # Cosmic wind parameters
+    'cosmic_wind_density': 8e-21,  # kg/m³
+    'cosmic_wind_velocity': 5e5,   # m/s
+    
+    # Plasmoid parameters (inherited)
+    'v_plasmoid': 0.5,             # m/s
+    'spin_rate': 0.15,             # rotations/second
+    'T_cycle': 3.3,                # seconds
+    'n_spots_per_frame': 45,
+    'E_per_frame': 0.019,          # Joules
+    'efficiency': 0.0029,          # 0.29%
+    
+    # Reactor constants (inherited)
+    'r_reactor': 0.0889,           # m
+    'M_s': 0.5e-3,                 # kg
+    'omega_s': 2 * 3.14159 * 6000, # rad/s
+    'T_base': 366.0,               # K
+    'T_top': 288.0,                # K
+    'B_s': 1e-3,                   # T
+    'SCm': 1e15,                   # kg/m³
+    'UA': 1e-11,                   # C
+}
+
+
+class RedMercurySuperconductorCalculator:
+    """
+    Red Mercury room-temperature superconductor calculator.
+    
+    Red Mercury: Superconductive liquid at room temperature
+    - Same as silver cousin only different (similar SCm content)
+    - Ideal for low-energy DCE quantum actions
+    - Compact high-energy cooling systems
+    
+    Physics: Room-temp superconductivity via [SCm] within atoms
+    """
+    
+    def compute(self, T: float = None) -> dict:
+        """
+        Compute Red Mercury superconductive properties.
+        
+        Args:
+            T: Temperature (K), default room temperature 293 K
+        
+        Returns:
+            Red Mercury superconductor analysis
+        """
+        p = ORB_ANALYSIS_17_PARAMS
+        
+        if T is None:
+            T = 293.0  # Room temperature
+        
+        # Standard mercury superconducting at ~4 K
+        T_c_mercury = 4.15  # K
+        
+        # Red Mercury at room temperature (speculative)
+        T_c_red_mercury = 350.0  # K (above room temp)
+        
+        # SCm contribution to superconductivity
+        SCm = p['rm_SCm_density']
+        
+        # Cooling capacity (arbitrary units)
+        cooling_capacity = SCm * (T_c_red_mercury - T) / T_c_mercury
+        
+        return {
+            'T': T,
+            'T_c_mercury': T_c_mercury,
+            'T_c_red_mercury': T_c_red_mercury,
+            'is_superconductive': T < T_c_red_mercury,
+            'SCm_density': SCm,
+            'energy_type': p['rm_energy_type'],
+            'application': p['rm_application'],
+            'cooling_capacity_au': round(cooling_capacity, 2),
+            'comparison_to_mercury': 'Similar metallic liquid, but superconducts at room temp via [SCm]',
+            'quantum_classification': 'Same as silver mercury (inertial charting)',
+            'equation': 'T_c(RM) >> T_c(Hg) due to [SCm] within atoms',
+            'source': 'Grok UFT Orb Analysis_17 Red Mercury (March 4, 2025)'
+        }
+
+
+class SilverMercuryPropulsionCalculator:
+    """
+    Silver Mercury high-energy propulsion calculator.
+    
+    Silver Mercury: High-energy ACE quantum actions
+    - Potentially violent if mishandled
+    - Gravitational propulsion system
+    - Minor rocket lift assistance
+    - Stable electrical surplus (~25%) under thrust
+    
+    Physics: High-energy ACE via [SCm], similar to Red Mercury
+    """
+    
+    def compute(self, thrust_base: float = None, mission_power: float = None) -> dict:
+        """
+        Compute Silver Mercury propulsion properties.
+        
+        Args:
+            thrust_base: Base rocket thrust (N), default 1e6 N
+            mission_power: Baseline mission power (W), default 1e6 W
+        
+        Returns:
+            Silver Mercury propulsion analysis
+        """
+        p = ORB_ANALYSIS_17_PARAMS
+        
+        if thrust_base is None:
+            thrust_base = 1e6  # 1 MN baseline
+        if mission_power is None:
+            mission_power = 1e6  # 1 MW baseline
+        
+        # Power boost
+        power_boost = p['sm_power_boost']
+        power_surplus = mission_power * power_boost
+        total_power = mission_power + power_surplus
+        
+        # Propulsion assistance (minor, percentage of base thrust)
+        lift_assist_fraction = 0.05  # 5% lift assistance
+        lift_assist = thrust_base * lift_assist_fraction
+        
+        return {
+            'thrust_base': thrust_base,
+            'lift_assist_fraction': lift_assist_fraction,
+            'lift_assist_N': lift_assist,
+            'mission_power_W': mission_power,
+            'power_boost_pct': round(power_boost * 100, 1),
+            'power_surplus_W': power_surplus,
+            'total_power_W': total_power,
+            'SCm_density': p['sm_SCm_density'],
+            'energy_type': p['sm_energy_type'],
+            'application': p['sm_application'],
+            'violent_if_mishandled': p['sm_violent_if_mishandled'],
+            'comparison_to_red_mercury': 'Similar [SCm] content, different energy type (ACE vs DCE)',
+            'equation': 'P_total = P_base × (1 + 0.25)',
+            'source': 'Grok UFT Orb Analysis_17 Silver Mercury Propulsion (March 4, 2025)'
+        }
+
+
+class NorthNeutralStateCalculator:
+    """
+    North-Neutral state condition calculator.
+    
+    [North-Neutral: Neutral South] configuration
+    - No true dipole exists (North-Neutral, South-Neutral pairings only)
+    - Celtic cross formation with long pole extending to [Ug2]
+    - Wraps around gravity string [Ug3:Ub3]
+    - Neutral field = [Ub] (Universal Buoyancy)
+    - 99/99% dipole suppression
+    
+    Physics: Pseudo-monopole enabling plasmoid dormancy neutrality
+    """
+    
+    def compute(self, theta: float = None) -> dict:
+        """
+        Compute North-Neutral state configuration.
+        
+        Args:
+            theta: Field angle (degrees), default 90 (perpendicular to reactor bottom)
+        
+        Returns:
+            North-Neutral state analysis
+        """
+        import math
+        
+        p = ORB_ANALYSIS_17_PARAMS
+        
+        if theta is None:
+            theta = 90.0  # 90° = pseudo-monopole condition
+        
+        # Dipole suppression
+        suppression = p['dipole_suppression']
+        
+        # North-Neutral field strength (arbitrary scaling)
+        k_nn = 1.5
+        B_s = p['B_s']
+        NN_field = k_nn * B_s * math.cos(math.radians(theta - 90))
+        
+        # Celtic cross configuration
+        configuration = {
+            'type': p['configuration'],
+            'long_pole_extends_to': p['long_pole_extends_to'],
+            'wraps_around': p['wraps_around'],
+            'neutral_field_equals': p['neutral_field_equals'],
+        }
+        
+        return {
+            'theta_deg': theta,
+            'dipole_suppression': suppression,
+            'dipole_suppression_pct': round(suppression * 100, 2),
+            'NN_field_T': round(NN_field, 6),
+            'configuration': configuration,
+            'plasmoid_capability': 'Arrest South pole moment, achieve dormancy neutrality',
+            'atomic_effect': 'Turn on/off semi-superconductive potential in any atom',
+            'equation': 'NN(t) = k_nn × B_s × cos(θ - 90°)',
+            'note': 'No true dipole; only North-Neutral and South-Neutral pairings exist',
+            'source': 'Grok UFT Orb Analysis_17 North-Neutral State (March 4, 2025)'
+        }
+
+
+class TwentySixQuantumStateCalculator:
+    """
+    26 Quantum States calculator.
+    
+    Answer: 26 quantum states exist
+    - Represent discrete levels of atomic/plasmoid behavior
+    - From dormancy (neutrality) to full semi-superconductivity
+    - Navigated by plasmoids to enhance reactor and rocket performance
+    
+    Physics: Quality shifts across 26 states via [SCm], [UA], [RM], [SM], [NN]
+    """
+    
+    def compute(self, current_state: int = None) -> dict:
+        """
+        Compute quantum state properties.
+        
+        Args:
+            current_state: Current quantum state (1-26), default 1
+        
+        Returns:
+            Quantum state analysis
+        """
+        p = ORB_ANALYSIS_17_PARAMS
+        
+        n_states = p['n_quantum_states']
+        
+        if current_state is None:
+            current_state = 1
+        current_state = max(1, min(n_states, current_state))
+        
+        # State energy level (normalized)
+        E_normalized = current_state / n_states
+        
+        # Semi-superconductivity enhancement
+        superconductivity_level = (current_state / n_states) ** 0.5
+        
+        # State transitions
+        transitions_available = n_states - current_state
+        
+        # Plasmoid control
+        plasmoid_can_set = 'Any state (1-26) via South pole moment arrest'
+        
+        return {
+            'n_total_states': n_states,
+            'current_state': current_state,
+            'E_normalized': round(E_normalized, 3),
+            'superconductivity_level': round(superconductivity_level, 3),
+            'transitions_available': transitions_available,
+            'state_1': 'Dormancy (complete neutrality)',
+            'state_26': 'Full semi-superconductivity',
+            'plasmoid_control': plasmoid_can_set,
+            'drivers': ['[SCm]', '[UA]', 'Red Mercury', 'Silver Mercury', '[North-Neutral]'],
+            'applications': ['Rocket fuel tuning', 'Gas storage', 'Waveless communication'],
+            'equation': 'QS(t) = Σ(n=1 to 26) q_n × f(SCm, UA, RM, SM, NN)',
+            'source': 'Grok UFT Orb Analysis_17 26 Quantum States (March 4, 2025)'
+        }
+
+
+class QualityShiftFunctionCalculator:
+    """
+    Quality Shift QS(t) function calculator.
+    
+    Models plasmoids' ability to:
+    - Arrest South pole moments
+    - Achieve dormancy neutrality
+    - Enhance atomic semi-superconductivity
+    - Navigate 26 quantum states
+    
+    Equation: QS(t) = Σ(n=1 to 26) q_n × (1 - e^(-α_n·t)) × cos(πt_n + φ_n) × (SCm + UA + RM + SM) × NN(t)
+    """
+    
+    def compute(self, t: float = None, target_state: int = None) -> dict:
+        """
+        Compute Quality Shift function.
+        
+        Args:
+            t: Time (s), default 0.33 (Photo #12)
+            target_state: Target quantum state (1-26), default 13 (mid)
+        
+        Returns:
+            Quality Shift function analysis
+        """
+        import math
+        
+        p = ORB_ANALYSIS_17_PARAMS
+        
+        if t is None:
+            t = 0.33  # Photo #12
+        if target_state is None:
+            target_state = 13  # Mid-state
+        
+        n_states = p['n_quantum_states']
+        target_state = max(1, min(n_states, target_state))
+        
+        # Parameters
+        SCm = p['SCm']
+        UA = p['UA']
+        alpha = 0.001  # Decay rate (/s)
+        
+        # Quality shift calculation (simplified)
+        q_n = target_state / n_states  # Weight
+        decay_factor = 1 - math.exp(-alpha * t)
+        oscillation = math.cos(math.pi * t)
+        
+        # Combined field contribution
+        field_sum = SCm * 1e-15 + UA * 1e11  # Normalized
+        
+        # North-Neutral coupling
+        NN = 1.5 * p['B_s']  # At 90°
+        
+        # Quality Shift value
+        QS = q_n * decay_factor * oscillation * field_sum * NN * 1e3
+        
+        return {
+            't': t,
+            'target_state': target_state,
+            'q_n': round(q_n, 3),
+            'decay_factor': round(decay_factor, 6),
+            'oscillation': round(oscillation, 4),
+            'field_sum_normalized': round(field_sum, 2),
+            'NN_coupling': round(NN, 5),
+            'QS_value': round(QS, 6),
+            'drivers': ['[SCm]', '[UA]', 'Red Mercury', 'Silver Mercury', '[NN]'],
+            'enables': 'Atomic state modulation (dormancy ↔ semi-superconductivity)',
+            'equation': 'QS(t) = Σ q_n × (1 - e^(-αt)) × cos(πt_n) × (SCm + UA + RM + SM) × NN(t)',
+            'source': 'Grok UFT Orb Analysis_17 Quality Shift (March 4, 2025)'
+        }
+
+
+class RocketFuelTuningCalculator:
+    """
+    Rocket fuel tuning calculator using North-Neutral physics.
+    
+    By tuning fuel with [North-Neutral] and [SCm]:
+    - Thrust temperature losses converted to 2.7x thrust potential per liquid volume
+    - Storage at ~100°F above ambient (thermally regulated at atomic level)
+    - Delivery, storage, and ignition systems updated
+    
+    Physics: Atomic thermal regulation via 26 quantum states
+    """
+    
+    def compute(self, thrust_base: float = None, T_ambient: float = None) -> dict:
+        """
+        Compute rocket fuel tuning parameters.
+        
+        Args:
+            thrust_base: Base thrust (N), default 1e6 N
+            T_ambient: Ambient temperature (°F), default 70°F
+        
+        Returns:
+            Rocket fuel tuning analysis
+        """
+        p = ORB_ANALYSIS_17_PARAMS
+        
+        if thrust_base is None:
+            thrust_base = 1e6  # 1 MN
+        if T_ambient is None:
+            T_ambient = 70.0  # °F
+        
+        # Thrust multiplier
+        thrust_multiplier = p['thrust_multiplier']
+        thrust_tuned = thrust_base * thrust_multiplier
+        thrust_gain = thrust_tuned - thrust_base
+        
+        # Storage temperature
+        T_storage = T_ambient + p['storage_temp_above_ambient']
+        
+        # Thermal regulation
+        thermal_reg = p['thermal_regulation']
+        
+        # Temperature loss conversion
+        loss_conversion = 'Converted to additional thrust via atomic regulation'
+        
+        return {
+            'thrust_base_N': thrust_base,
+            'thrust_multiplier': thrust_multiplier,
+            'thrust_tuned_N': thrust_tuned,
+            'thrust_gain_N': thrust_gain,
+            'thrust_gain_pct': round((thrust_multiplier - 1) * 100, 1),
+            'T_ambient_F': T_ambient,
+            'T_storage_above_ambient_F': p['storage_temp_above_ambient'],
+            'T_storage_F': T_storage,
+            'thermal_regulation': thermal_reg,
+            'loss_conversion': loss_conversion,
+            'enabled_by': '[North-Neutral] state + [SCm] + 26 quantum states',
+            'systems_updated': ['Delivery', 'Storage', 'Ignition'],
+            'equation': 'F_tuned = F_base × 2.7; T_storage = T_ambient + 100°F',
+            'source': 'Grok UFT Orb Analysis_17 Rocket Fuel Tuning (March 4, 2025)'
+        }
+
+
+class HydrogenOxygenGasStorageCalculator:
+    """
+    Hydrogen-Oxygen gas storage calculator with [Ub] differential.
+    
+    Both gases stored together in separate layers under greater pressure
+    than standard auto-reaction pressure. Key features:
+    - If waited too long, gases revert to water rapidly (predictable)
+    - Huge [Ub] differential between gas and liquid
+    - Potable water storage in gaseous form reduces lifting weight
+    - Buoyancy agent during specific mission conditions
+    
+    Physics: [North-Neutral] arrests South pole moment preventing reaction
+    """
+    
+    def compute(self, n_moles_h2: float = None, n_moles_o2: float = None) -> dict:
+        """
+        Compute H2-O2 gas storage parameters.
+        
+        Args:
+            n_moles_h2: Moles of H2, default 2
+            n_moles_o2: Moles of O2, default 1
+        
+        Returns:
+            Gas storage analysis
+        """
+        p = ORB_ANALYSIS_17_PARAMS
+        
+        if n_moles_h2 is None:
+            n_moles_h2 = 2.0
+        if n_moles_o2 is None:
+            n_moles_o2 = 1.0
+        
+        # Molecular masses (g/mol)
+        M_h2 = 2.016
+        M_o2 = 32.0
+        M_h2o = 18.015
+        
+        # Mass in grams
+        mass_h2 = n_moles_h2 * M_h2
+        mass_o2 = n_moles_o2 * M_o2
+        mass_total_gas = mass_h2 + mass_o2
+        
+        # Water produced (stoichiometric: 2H2 + O2 → 2H2O)
+        moles_h2o = min(n_moles_h2, 2 * n_moles_o2)
+        mass_h2o = moles_h2o * M_h2o
+        
+        # Density comparison (kg/m³)
+        rho_h2_gas = 0.089  # at STP
+        rho_o2_gas = 1.429  # at STP
+        rho_h2o_liquid = 1000.0
+        
+        # [Ub] differential (gas vs liquid)
+        Ub_differential_ratio = rho_h2o_liquid / ((rho_h2_gas + rho_o2_gas) / 2)
+        
+        # Weight reduction (gas vs liquid for same water content)
+        weight_reduction_factor = mass_total_gas / mass_h2o if mass_h2o > 0 else 0
+        
+        return {
+            'n_moles_h2': n_moles_h2,
+            'n_moles_o2': n_moles_o2,
+            'mass_h2_g': round(mass_h2, 2),
+            'mass_o2_g': round(mass_o2, 2),
+            'mass_total_gas_g': round(mass_total_gas, 2),
+            'moles_h2o_produced': round(moles_h2o, 2),
+            'mass_h2o_g': round(mass_h2o, 2),
+            'Ub_differential': p['Ub_differential'],
+            'Ub_differential_ratio': round(Ub_differential_ratio, 1),
+            'storage_method': p['h2_o2_storage'],
+            'reversion_behavior': p['water_reversion'],
+            'buoyancy_application': 'Reduce lifting weight during specific mission conditions',
+            'enabled_by': '[North-Neutral] arrests South pole moment, preventing auto-reaction',
+            'equation': '2H₂ + O₂ → 2H₂O (delayed by [NN] dormancy neutrality)',
+            'source': 'Grok UFT Orb Analysis_17 H2-O2 Storage (March 4, 2025)'
+        }
+
+
+class CosmicWindDiskStabilityCalculator:
+    """
+    Cosmic wind disk stability calculator via [Ub3].
+    
+    Universal Buoyancy [Ub3] keeps planets from being sucked away by distant stars
+    - Cosmic winds surviving heliosphere touch outer gravity field [Ug2]
+    - Reciprocated along disk as "light sprites" through planetary cores
+    - Stimulates [ACE] energy over core [SCm] amounts
+    - Functional disk driven by [DCE] energy through each core
+    - Irregular disks produce variable but predictable outcomes
+    
+    Physics: [Ub3] + [Ug3:Ub3] gravity string stabilization
+    """
+    
+    def compute(self, disk_angle: float = None, n_moons: int = None) -> dict:
+        """
+        Compute cosmic wind disk stability.
+        
+        Args:
+            disk_angle: Disk flatness angle (degrees), 0 = perfectly flat
+            n_moons: Number of moons (irregular if > 1 or off-equator)
+        
+        Returns:
+            Disk stability analysis
+        """
+        import math
+        
+        p = ORB_ANALYSIS_17_PARAMS
+        
+        if disk_angle is None:
+            disk_angle = 0.0  # Perfectly flat
+        if n_moons is None:
+            n_moons = 1
+        
+        # Cosmic wind parameters
+        rho_sw = p['cosmic_wind_density']
+        v_sw = p['cosmic_wind_velocity']
+        
+        # Stability factor (flatter = more stable)
+        stability_factor = math.cos(math.radians(disk_angle))
+        
+        # Irregularity from moons
+        is_irregular = n_moons > 1
+        irregularity_factor = 1.0 / n_moons if n_moons > 0 else 1.0
+        
+        # [Ub3] field strength
+        k_ub3 = 1.0
+        SCm = p['SCm']
+        Ub3_field = k_ub3 * SCm * stability_factor * irregularity_factor
+        
+        # ACE/DCE energy flows
+        ACE_inbound = 'Stimulated by cosmic winds via [Ug2] through core [SCm]'
+        DCE_outbound = 'Emanates along disk through each planetary core'
+        
+        # Celtic cross extension
+        celtic_cross_path = '[North-Neutral] → long pole → [Ug2] → wraps [Ug3:Ub3]'
+        
+        return {
+            'disk_angle_deg': disk_angle,
+            'stability_factor': round(stability_factor, 4),
+            'n_moons': n_moons,
+            'is_irregular': is_irregular,
+            'irregularity_factor': round(irregularity_factor, 3),
+            'cosmic_wind_density_kg_m3': rho_sw,
+            'cosmic_wind_velocity_m_s': v_sw,
+            'Ub3_field_arbitrary': round(Ub3_field, 2),
+            'ACE_energy': ACE_inbound,
+            'DCE_energy': DCE_outbound,
+            'celtic_cross_path': celtic_cross_path,
+            'outcome': 'Stable if flat disk, variable but predictable if irregular',
+            'equation': 'Ub3 = k × SCm × cos(θ_disk) × (1/n_moons)',
+            'source': 'Grok UFT Orb Analysis_17 Cosmic Wind Stability (March 4, 2025)'
+        }
+
+
+# UFT Orb Analysis_17 registry dict
+ORB_ANALYSIS_17_CALCULATORS = {
+    'RedMercurySuperconductorCalculator': RedMercurySuperconductorCalculator(),
+    'SilverMercuryPropulsionCalculator': SilverMercuryPropulsionCalculator(),
+    'NorthNeutralStateCalculator': NorthNeutralStateCalculator(),
+    'TwentySixQuantumStateCalculator': TwentySixQuantumStateCalculator(),
+    'QualityShiftFunctionCalculator': QualityShiftFunctionCalculator(),
+    'RocketFuelTuningCalculator': RocketFuelTuningCalculator(),
+    'HydrogenOxygenGasStorageCalculator': HydrogenOxygenGasStorageCalculator(),
+    'CosmicWindDiskStabilityCalculator': CosmicWindDiskStabilityCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -3699,6 +4305,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_14_CALCULATORS,
     **ORB_ANALYSIS_15_CALCULATORS,
     **ORB_ANALYSIS_16_CALCULATORS,
+    **ORB_ANALYSIS_17_CALCULATORS,
 }
 
 # Update class count
@@ -3789,6 +4396,18 @@ __all__ = [
     'NavierStokesPlasmaFlowCalculator',
     'PlanckBlackbodyValidatorCalculator',
     'ORB_ANALYSIS_16_CALCULATORS',
+    
+    # Orb Analysis_17 / Exp_2 Batch 4 (8 classes)
+    'ORB_ANALYSIS_17_PARAMS',
+    'RedMercurySuperconductorCalculator',
+    'SilverMercuryPropulsionCalculator',
+    'NorthNeutralStateCalculator',
+    'TwentySixQuantumStateCalculator',
+    'QualityShiftFunctionCalculator',
+    'RocketFuelTuningCalculator',
+    'HydrogenOxygenGasStorageCalculator',
+    'CosmicWindDiskStabilityCalculator',
+    'ORB_ANALYSIS_17_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
