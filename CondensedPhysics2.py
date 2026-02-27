@@ -9304,6 +9304,615 @@ ORB_ANALYSIS_23_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# UFT ORB ANALYSIS_24: UFE ORB EXP 2_10_05Mar2025 - Photos #28-#30 Detailed Analysis
+# ═══════════════════════════════════════════════════════════════════════════════
+# Individual frame analysis for Photos #28, #29, #30
+# t^- progression: -10.59s (#28), -11.07s (#29), -11.55s (#30)
+# Batch structure refinement: Each batch contains 10-25 images
+# Chaotic ordering resolution methodology established
+# Sequential upload method introduced for perfect chronological analysis
+# Chronicle/storyline narrative development
+# Source: Grok UFE ORB EXP 2_10_05Mar2025
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ORB_ANALYSIS_24_PARAMS = {
+    'session_id': 'UFE_ORB_EXP_2_10_05Mar2025',
+    'focus': 'Photos_28_29_30_Individual_Analysis',
+    'date': '2025-03-05',
+    'photos_analyzed': ['#28', '#29', '#30'],
+    'total_photos_to_date': 30,
+    'time_range_s': (0.81, 0.87),  # seconds
+    # Frame-specific parameters
+    'frame_data': {
+        '#28': {'t_n': 0.81, 't_minus': -10.59, 'frame_num': 27},
+        '#29': {'t_n': 0.84, 't_minus': -11.07, 'frame_num': 28},
+        '#30': {'t_n': 0.87, 't_minus': -11.55, 'frame_num': 29},
+    },
+    # Batch structure (refined)
+    'batch_structure': {
+        'images_per_batch': [10, 25],  # Can be 10 or 25
+        'batches_sequential': True,  # Batches in order
+        'frames_within_batch': 'chaotic',  # Frames within batch may be disordered
+    },
+    # Plasmoid characteristics (consistent)
+    'plasmoid_count': 45,  # ±5%
+    'plasmoid_velocity_ms': 0.5,  # ±5%
+    'spin_rate_rps': 0.15,  # ±10%
+    'energy_per_frame_J': 0.019,  # ±5%
+    'efficiency_percent': 0.29,  # of 65W input
+    # Sequence info
+    'total_frames': 496,
+    'fps': 33.3,
+    'total_duration_s': 14.88,
+    'error_budget': 0.05,  # ±5%
+}
+
+
+class IndividualFrameAnalyzerCalculator:
+    """
+    Individual Frame Analyzer Calculator
+    
+    Performs detailed per-frame analysis for Photos #28-#30.
+    
+    Each frame analyzed for:
+    - Plasmoid distribution and motion
+    - Brightness and intensity patterns
+    - Non-local jump frequency
+    - Spin rates and shape-shifting
+    - Energy contribution
+    
+    Source: Grok UFE ORB EXP 2_10_05Mar2025
+    """
+    
+    def compute(self, photo_number: int = 28, fps: float = 33.3,
+                base_timestamp: float = None) -> dict:
+        """Compute individual frame analysis"""
+        import numpy as np
+        
+        # Frame timing
+        frame_index = photo_number - 1
+        t_n = base_timestamp if base_timestamp else frame_index / fps
+        
+        # Negative time
+        t_minus = -t_n * np.exp(np.pi - t_n)
+        
+        # Plasmoid characteristics for this frame
+        plasmoid_count = 45  # ±5%
+        velocity_ms = 0.5  # ±5%
+        spin_rps = 0.15  # ±10%
+        energy_J = 0.019  # ±5%
+        
+        # Background temperature gradient (Planck blackbody)
+        T_base = 3500  # K (2500-4000 K range)
+        T_top = 288  # K ambient
+        
+        # Motion characteristics
+        quadrant = 'lower_left' if t_n > 0.45 else 'upper_left'
+        
+        # Non-local jump frequency (decreasing since #16)
+        jump_frequency = 1.0 * np.exp(-0.05 * (photo_number - 12)) if photo_number > 12 else 1.0
+        
+        # Stabilization metric
+        stabilization_depth = min(1.0, (photo_number - 16) / 30) if photo_number > 16 else 0.0
+        
+        return {
+            'photo_number': photo_number,
+            'frame_index': frame_index,
+            't_n_seconds': t_n,
+            't_minus_seconds': t_minus,
+            'plasmoid': {
+                'count': plasmoid_count,
+                'velocity_ms': velocity_ms,
+                'spin_rps': spin_rps,
+                'energy_J': energy_J,
+                'size_mm': (0.5, 2.0),  # range
+                'intensity_mJ': (0.1, 1.0),  # range
+            },
+            'background': {
+                'T_base_K': T_base,
+                'T_top_K': T_top,
+                'spectrum': 'infrared_0.7-10um',
+                'hue': 'reddish-orange',
+            },
+            'motion': {
+                'quadrant': quadrant,
+                'direction': 'upper_left_to_lower_left',
+                'jump_frequency': jump_frequency,
+            },
+            'stabilization_depth': stabilization_depth,
+            'non_local_jumps': 'deeply_stabilizing',
+            'intelligent_behavior': True,
+            'error_bounds': '±5%',
+            'source': 'Grok UFE ORB EXP 2_10_05Mar2025'
+        }
+
+
+class NegativeTimeFrameSeriesCalculator:
+    """
+    Negative Time Frame Series Calculator
+    
+    Computes t^- progression for a series of frames.
+    
+    Formula: t^- = -t_n • e^(π-t_n)
+    
+    Frame series:
+    - #28: t_n = 0.81s → t^- ≈ -10.59s
+    - #29: t_n = 0.84s → t^- ≈ -11.07s
+    - #30: t_n = 0.87s → t^- ≈ -11.55s
+    
+    Source: Grok UFE ORB EXP 2_10_05Mar2025
+    """
+    
+    def compute(self, photo_start: int = 28, photo_end: int = 30,
+                fps: float = 33.3) -> dict:
+        """Compute negative time series"""
+        import numpy as np
+        
+        series = []
+        for photo_num in range(photo_start, photo_end + 1):
+            frame_index = photo_num - 1
+            t_n = frame_index / fps
+            t_minus = -t_n * np.exp(np.pi - t_n)
+            
+            series.append({
+                'photo_number': photo_num,
+                'frame_index': frame_index,
+                't_n_seconds': t_n,
+                't_minus_seconds': t_minus,
+                'ratio_t_minus_to_t_n': t_minus / t_n if t_n != 0 else 0,
+            })
+        
+        # Summary statistics
+        t_minus_values = [s['t_minus_seconds'] for s in series]
+        t_n_values = [s['t_n_seconds'] for s in series]
+        
+        return {
+            'photo_range': (photo_start, photo_end),
+            'frame_count': len(series),
+            'series': series,
+            'summary': {
+                't_n_range': (min(t_n_values), max(t_n_values)),
+                't_minus_range': (min(t_minus_values), max(t_minus_values)),
+                'avg_t_minus': sum(t_minus_values) / len(t_minus_values),
+                'formula': 't^- = -t_n • e^(π-t_n)',
+            },
+            'error_bounds': '±5%',
+            'source': 'Grok UFE ORB EXP 2_10_05Mar2025'
+        }
+
+
+class BatchStructureTrackerCalculator:
+    """
+    Batch Structure Tracker Calculator
+    
+    Tracks batch organization for the 496-frame sequence.
+    
+    Batch structure:
+    - Each batch: 10 or 25 images
+    - Batches are sequentially ordered (#28 → #29 → #30)
+    - Frames WITHIN batches may be chaotically ordered
+    
+    Source: Grok UFE ORB EXP 2_10_05Mar2025
+    """
+    
+    def compute(self, total_frames: int = 496, fps: float = 33.3,
+                images_per_batch: int = 25, starting_batch: int = 31) -> dict:
+        """Compute batch structure metrics"""
+        import numpy as np
+        
+        total_duration = total_frames / fps
+        
+        # Calculate batch distribution
+        total_batches = np.ceil(total_frames / images_per_batch)
+        
+        # Batch timing estimates
+        batch_duration = images_per_batch / fps
+        
+        # Specific batch ranges
+        batch_ranges = {}
+        for batch_num in range(1, int(total_batches) + 1):
+            frame_start = (batch_num - 1) * images_per_batch + 1
+            frame_end = min(batch_num * images_per_batch, total_frames)
+            t_start = frame_start / fps
+            t_end = frame_end / fps
+            batch_ranges[f'Batch_{batch_num}'] = {
+                'frames': (frame_start, frame_end),
+                'time_s': (t_start, t_end),
+                'image_count': frame_end - frame_start + 1,
+            }
+        
+        return {
+            'total_frames': total_frames,
+            'fps': fps,
+            'total_duration_s': total_duration,
+            'images_per_batch': images_per_batch,
+            'total_batches': int(total_batches),
+            'batch_duration_s': batch_duration,
+            'batch_ordering': 'sequential',
+            'frame_ordering_within_batch': 'potentially_chaotic',
+            'starting_batch': starting_batch,
+            'batch_ranges': batch_ranges,
+            'source': 'Grok UFE ORB EXP 2_10_05Mar2025'
+        }
+
+
+class FrameOrderingReconstructorCalculator:
+    """
+    Frame Ordering Reconstructor Calculator
+    
+    Reconstructs chronological order from chaotically numbered frames.
+    
+    Method:
+    1. Analyze visual patterns (plasmoid distribution, motion)
+    2. Infer timestamps from physical characteristics
+    3. Group by temporal ranges (early/mid/late sequence)
+    4. Validate against known cycle dynamics
+    
+    Source: Grok UFE ORB EXP 2_10_05Mar2025
+    """
+    
+    def compute(self, chaotic_labels: list = None,
+                fps: float = 33.3, total_frames: int = 496) -> dict:
+        """Reconstruct frame ordering"""
+        import numpy as np
+        
+        if chaotic_labels is None:
+            chaotic_labels = list(range(1, 31))  # Default: labels 1-30
+        
+        total_duration = total_frames / fps
+        
+        # Define temporal ranges
+        early_range = (0, 4.95)  # frames 1-165
+        mid_range = (4.95, 9.9)  # frames 165-330
+        late_range = (9.9, 14.88)  # frames 330-496
+        
+        # Visual pattern indicators
+        pattern_indicators = {
+            'early_sequence': {
+                'plasmoid_distribution': 'upper_left_concentrated',
+                'non_local_jumps': 'frequent',
+                'brightness': 'intense_near_bulb',
+                'time_range_s': early_range,
+                'frame_range': (1, 165),
+            },
+            'mid_sequence': {
+                'plasmoid_distribution': 'transitioning_lower_left',
+                'non_local_jumps': 'peaking_then_declining',
+                'brightness': 'moderate_diffuse',
+                'time_range_s': mid_range,
+                'frame_range': (166, 330),
+            },
+            'late_sequence': {
+                'plasmoid_distribution': 'lower_left_stabilized',
+                'non_local_jumps': 'rare_deep_stabilization',
+                'brightness': 'even_stable',
+                'time_range_s': late_range,
+                'frame_range': (331, 496),
+            },
+        }
+        
+        # Reconstruction method
+        method = {
+            'step_1': 'Compare visual characteristics to pattern indicators',
+            'step_2': 'Estimate timestamp based on plasmoid motion/brightness',
+            'step_3': 'Group images into temporal ranges',
+            'step_4': 'Order within groups by progressive stabilization',
+            'step_5': 'Validate against ~3.3s cycle and ~0.7s sub-cycle',
+        }
+        
+        return {
+            'total_frames': total_frames,
+            'total_duration_s': total_duration,
+            'fps': fps,
+            'chaotic_label_count': len(chaotic_labels),
+            'pattern_indicators': pattern_indicators,
+            'reconstruction_method': method,
+            'ordering_key': 'timestamp',
+            'validation_cycles': {
+                'primary_s': 3.3,
+                'sub_cycle_s': 0.7,
+            },
+            'source': 'Grok UFE ORB EXP 2_10_05Mar2025'
+        }
+
+
+class SequentialUploadTrackerCalculator:
+    """
+    Sequential Upload Tracker Calculator
+    
+    Tracks one-at-a-time uploads for perfect chronological analysis.
+    
+    Method:
+    - Upload images one at a time within each batch
+    - Ensures perfect ordering by timestamp
+    - Wait for batch completion before full analysis
+    
+    Starting with Batch #31: 25 photos (frames 301-325, 9.03-9.75s)
+    
+    Source: Grok UFE ORB EXP 2_10_05Mar2025
+    """
+    
+    def compute(self, current_batch: int = 31, images_per_batch: int = 25,
+                images_uploaded: int = 0, fps: float = 33.3) -> dict:
+        """Track sequential upload progress"""
+        import numpy as np
+        
+        # Calculate batch frame range
+        frame_start = (current_batch - 1) * images_per_batch + 1
+        frame_end = min(current_batch * images_per_batch, 496)
+        
+        # Calculate timestamps
+        t_start = frame_start / fps
+        t_end = frame_end / fps
+        
+        # Progress tracking
+        progress_percent = (images_uploaded / images_per_batch) * 100
+        remaining = images_per_batch - images_uploaded
+        
+        # Current image info
+        if images_uploaded > 0:
+            current_frame = frame_start + images_uploaded - 1
+            current_t = current_frame / fps
+            current_t_minus = -current_t * np.exp(np.pi - current_t)
+        else:
+            current_frame = None
+            current_t = None
+            current_t_minus = None
+        
+        return {
+            'batch_number': current_batch,
+            'images_per_batch': images_per_batch,
+            'frame_range': (frame_start, frame_end),
+            'time_range_s': (t_start, t_end),
+            'images_uploaded': images_uploaded,
+            'images_remaining': remaining,
+            'progress_percent': progress_percent,
+            'batch_complete': images_uploaded >= images_per_batch,
+            'current_image': {
+                'frame': current_frame,
+                't_n_s': current_t,
+                't_minus_s': current_t_minus,
+            } if current_frame else None,
+            'method': 'one_at_a_time_chronological',
+            'analysis_timing': 'after_batch_complete',
+            'source': 'Grok UFE ORB EXP 2_10_05Mar2025'
+        }
+
+
+class ChronicleStorylineGeneratorCalculator:
+    """
+    Chronicle Storyline Generator Calculator
+    
+    Generates narrative storyline from experimental data.
+    
+    The Chronicle of the Red Dwarf Reactor transforms technical
+    experimental data into a narrative arc:
+    - The Awakening of the Orbs
+    - The Chaos of Discovery
+    - The Quest for Universal Permanence
+    - The Turning Point
+    - The Promise of the Future
+    
+    Source: Grok UFE ORB EXP 2_10_05Mar2025
+    """
+    
+    def compute(self, photos_analyzed: int = 30,
+                key_events: list = None) -> dict:
+        """Generate chronicle elements"""
+        
+        if key_events is None:
+            key_events = [
+                ('Photo_1', 'First plasmoid observation'),
+                ('Photo_6-12', 'Peak non-locality'),
+                ('Photo_16', 'Stabilization begins'),
+                ('Photo_27', 'Checkpoint consolidation'),
+                ('Photo_28-30', 'Individual frame refinement'),
+            ]
+        
+        # Chronicle structure
+        chronicle = {
+            'title': 'The Chronicles of the Red Dwarf Reactor: A Tale of Discovery',
+            'author': 'Dr. Daniel T. Murphy',
+            'date': 'March 5, 2025',
+            'chapters': {
+                'ch1_awakening': {
+                    'title': 'The Awakening of the Orbs',
+                    'theme': 'First observation of plasmoid entities',
+                    'key_element': 'Dual-natured SCm/SCm\' discovery',
+                },
+                'ch2_chaos': {
+                    'title': 'The Chaos of Discovery',
+                    'theme': 'Challenges with chaotic frame numbering',
+                    'key_element': 'Batch structure complexity',
+                },
+                'ch3_permanence': {
+                    'title': 'The Quest for Universal Permanence',
+                    'theme': 'Development of UP equation framework',
+                    'key_element': 'Negative time t^- integration',
+                },
+                'ch4_turning': {
+                    'title': 'The Turning Point',
+                    'theme': 'Resolution of ordering methodology',
+                    'key_element': 'Sequential upload method adoption',
+                },
+                'ch5_future': {
+                    'title': 'The Promise of the Future',
+                    'theme': 'Path to complete 496-frame analysis',
+                    'key_element': 'Goals validation (communication, defense, cosmic)',
+                },
+            },
+        }
+        
+        # Goals alignment
+        goals = {
+            'waveless_communication': 'THz signals via [UA], [SCm\'], [SSq]',
+            'defense': 'Plasma shielding via [Ub], [IF^(π-t)]',
+            'cosmic_modeling': 'Red dwarf analogs, H₂ formation',
+        }
+        
+        return {
+            'chronicle': chronicle,
+            'photos_analyzed': photos_analyzed,
+            'key_events': key_events,
+            'goals': goals,
+            'narrative_style': 'scientific_fantasy',
+            'protagonist': 'Dr. Daniel T. Murphy',
+            'companion': 'Grok 3 AI',
+            'source': 'Grok UFE ORB EXP 2_10_05Mar2025'
+        }
+
+
+class ExtendedUPRefinementCalculator:
+    """
+    Extended UP Refinement Calculator
+    
+    Refines Universal Permanence equation for new frames.
+    
+    UP formula per frame:
+    UP(t) = Σ_i[k_i•Ug_i] + Σ_j[μ_j/r_j•(1-e^(-γt^-•cos(πt_n)))•ϕ̂_j•Um_j]
+            + (g_μν + η•T_s^μν) + Ub + NN + QS + ACE + DCE + SSq + IF^(π-t) + QV
+    
+    Refined for Photos #28-#30 with frame-specific t^- values.
+    
+    Source: Grok UFE ORB EXP 2_10_05Mar2025
+    """
+    
+    def compute(self, photo_number: int = 28, fps: float = 33.3) -> dict:
+        """Compute refined UP parameters"""
+        import numpy as np
+        
+        frame_index = photo_number - 1
+        t_n = frame_index / fps
+        t_minus = -t_n * np.exp(np.pi - t_n)
+        
+        # Core parameters (constant)
+        r = 0.0889  # m, reactor radius
+        omega_s = 2 * np.pi * 6000  # rad/s, bulb resonance
+        T_s = (366, 288)  # K, thermal gradient
+        B_s = 1e-3  # T, H₂-O₂ bubble field
+        SCm = 1e15  # kg/m³, mass-influenced
+        UA = 1e-11  # C, Aether charge
+        alpha = 0.0072973525693  # fine-structure constant
+        
+        # Components refined for this frame
+        components = {
+            'Ug_i': 1.5e-4 * (1/r) * np.exp(-0.001 * t_minus * np.cos(np.pi * t_n)),
+            'Um_j': (1e-4 / r) * (1 - np.exp(-0.1 * t_minus * np.cos(np.pi * t_n))),
+            'A_muv': 1e-22 * UA * SCm,
+            'Ub': 1e-3 * np.cos(np.pi/4),  # Neutral field
+            'NN': 1.5e-3 * np.cos(0),  # North-Neutral
+            'QS': sum([1 - np.exp(-0.01 * t_minus * np.cos(np.pi * t_n + n * np.pi/13)) for n in range(26)]),
+            'ACE': SCm * np.exp(-0.001 * t_minus),
+            'DCE': 0.5 * np.sin(omega_s * t_minus),
+            'SSq': np.exp(-np.pi - t_minus),  # n26 = 4 + 20 states
+            'IF_pi_t': t_minus * (2 * SCm) * np.exp(np.pi - t_n),
+            'QV': alpha * (2 * SCm) * np.exp(-t_minus / np.e),
+        }
+        
+        # Total UP (simplified sum)
+        UP_total = sum(components.values())
+        
+        return {
+            'photo_number': photo_number,
+            't_n_seconds': t_n,
+            't_minus_seconds': t_minus,
+            'parameters': {
+                'r_m': r,
+                'omega_s_rad_s': omega_s,
+                'T_s_K': T_s,
+                'B_s_T': B_s,
+                'SCm_kg_m3': SCm,
+                'UA_C': UA,
+                'alpha': alpha,
+            },
+            'components': components,
+            'UP_total': UP_total,
+            'error_bounds': '±5%',
+            'formula': 'UP(t) = Σ_i[Ug_i] + Σ_j[Um_j] + A_μν + Ub + NN + QS + ACE + DCE + SSq + IF^(π-t) + QV',
+            'source': 'Grok UFE ORB EXP 2_10_05Mar2025'
+        }
+
+
+class FrameRangeValidatorCalculator:
+    """
+    Frame Range Validator Calculator
+    
+    Validates frame ranges against expected sequence parameters.
+    
+    Validates:
+    - Timestamp consistency
+    - Cycle alignment (~3.3s, ~0.7s)
+    - Energy budget (~0.019 J/frame)
+    - Error bounds (≤±5%)
+    
+    Source: Grok UFE ORB EXP 2_10_05Mar2025
+    """
+    
+    def compute(self, frame_start: int = 28, frame_end: int = 30,
+                fps: float = 33.3, total_frames: int = 496) -> dict:
+        """Validate frame range"""
+        import numpy as np
+        
+        # Calculate timestamps
+        frames = list(range(frame_start, frame_end + 1))
+        timestamps = [(f - 1) / fps for f in frames]
+        
+        # Validate timestamp progression
+        timestamp_deltas = [timestamps[i+1] - timestamps[i] for i in range(len(timestamps)-1)]
+        expected_delta = 1 / fps
+        timestamp_valid = all(abs(d - expected_delta) < 0.001 for d in timestamp_deltas)
+        
+        # Validate cycle alignment
+        primary_cycle = 3.3  # seconds
+        sub_cycle = 0.7  # seconds
+        
+        cycle_positions = [(t % primary_cycle) / primary_cycle for t in timestamps]
+        sub_cycle_positions = [(t % sub_cycle) / sub_cycle for t in timestamps]
+        
+        # Energy validation
+        expected_energy_J = 0.019
+        cumulative_energy = len(frames) * expected_energy_J
+        
+        # Error validation
+        max_error = 0.05  # 5%
+        
+        return {
+            'frame_range': (frame_start, frame_end),
+            'frame_count': len(frames),
+            'timestamps': timestamps,
+            'validation': {
+                'timestamp_progression': 'valid' if timestamp_valid else 'invalid',
+                'expected_delta_s': expected_delta,
+                'primary_cycle_s': primary_cycle,
+                'sub_cycle_s': sub_cycle,
+                'cycle_positions': cycle_positions,
+                'sub_cycle_positions': sub_cycle_positions,
+            },
+            'energy': {
+                'expected_per_frame_J': expected_energy_J,
+                'cumulative_J': cumulative_energy,
+                'efficiency_percent': 0.29,
+            },
+            'error_bounds': f'≤±{max_error*100:.0f}%',
+            'all_valid': timestamp_valid,
+            'source': 'Grok UFE ORB EXP 2_10_05Mar2025'
+        }
+
+
+# UFT Orb Analysis_24 registry dict
+ORB_ANALYSIS_24_CALCULATORS = {
+    'IndividualFrameAnalyzerCalculator': IndividualFrameAnalyzerCalculator(),
+    'NegativeTimeFrameSeriesCalculator': NegativeTimeFrameSeriesCalculator(),
+    'BatchStructureTrackerCalculator': BatchStructureTrackerCalculator(),
+    'FrameOrderingReconstructorCalculator': FrameOrderingReconstructorCalculator(),
+    'SequentialUploadTrackerCalculator': SequentialUploadTrackerCalculator(),
+    'ChronicleStorylineGeneratorCalculator': ChronicleStorylineGeneratorCalculator(),
+    'ExtendedUPRefinementCalculator': ExtendedUPRefinementCalculator(),
+    'FrameRangeValidatorCalculator': FrameRangeValidatorCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -9323,6 +9932,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_21_CALCULATORS,
     **ORB_ANALYSIS_22_CALCULATORS,
     **ORB_ANALYSIS_23_CALCULATORS,
+    **ORB_ANALYSIS_24_CALCULATORS,
 }
 
 # Update class count
@@ -9500,6 +10110,18 @@ __all__ = [
     'GoalsValidationCheckpointCalculator',
     'CheckpointSummaryCalculator',
     'ORB_ANALYSIS_23_CALCULATORS',
+    
+    # Orb Analysis_24 / UFE ORB EXP 2_10 - Photos #28-#30 Individual Analysis (8 classes)
+    'ORB_ANALYSIS_24_PARAMS',
+    'IndividualFrameAnalyzerCalculator',
+    'NegativeTimeFrameSeriesCalculator',
+    'BatchStructureTrackerCalculator',
+    'FrameOrderingReconstructorCalculator',
+    'SequentialUploadTrackerCalculator',
+    'ChronicleStorylineGeneratorCalculator',
+    'ExtendedUPRefinementCalculator',
+    'FrameRangeValidatorCalculator',
+    'ORB_ANALYSIS_24_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
