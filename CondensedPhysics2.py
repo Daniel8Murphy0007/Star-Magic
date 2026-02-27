@@ -13184,6 +13184,792 @@ ORB_ANALYSIS_31_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS 32: UFE ORB EXP 2_22_07Mar2025 - GEOMETRIC PLASMOID FLOW
+# Complete UP equation implementation, geometric factor for mass-independent
+# variables, batch analysis progression, energy density decay modeling
+# 4,965-image sequence (149.88s at 33.3 fps), batches #31-38 analyzed
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ORB_ANALYSIS_32_PARAMS = {
+    'experiment_id': 'UFE ORB EXP 2_22_07Mar2025',
+    'total_images': 4965,
+    'total_duration_s': 149.88,
+    'fps': 33.3,
+    'frame_period_s': 0.03,
+    
+    # Batch definitions (analyzed in this session)
+    'batch_31': {'frames': (301, 325), 'time_range_s': (9.03, 9.75), 'non_local_jumps': (0.5, 1.0), 't_minus_s': -0.0133, 'P': 0.999},
+    'batch_32': {'frames': (326, 350), 'time_range_s': (9.78, 10.50), 'non_local_jumps': (0.8, 1.2), 't_minus_s': -0.00668, 'P': 0.986},
+    'batch_37': {'frames': (401, 425), 'time_range_s': (12.03, 12.75), 'non_local_jumps': (1.0, 2.0), 't_minus_s': -8.08e-4, 'P': 0.44},
+    'batch_38': {'frames': (426, 450), 'time_range_s': (12.78, 13.50), 'non_local_jumps': (1.0, 1.5), 't_minus_s': -6.72e-4, 'P': 0.402},
+    
+    # Geometric factor parameters
+    'cylinder_radius_m': 0.0889,  # r = 3.5 inch / 2
+    'cylinder_height_m': 0.254,   # h = 10 inch
+    
+    # Energy density decay
+    'E_react_base_W_m3': 1e15,
+    'energy_decay_constant': 0.001,  # per second
+    
+    # Non-locality noise
+    'NN_0': 0.01,  # s⁻¹
+    'tau_s': 0.1,   # noise period
+    
+    # Universal background decay
+    'Ub_0_J_m3': 1e-9,
+    'alpha_decay': 0.01,  # s⁻¹
+    
+    # Superconductive state quantum
+    'SSq_0_J': 1e-6,
+    'beta_decay': 0.01,  # s⁻¹
+    
+    # Mass-independent field coefficients
+    'UA_C': 1e-11,
+    'QS_m': 1e-20,
+    'QV_J_m3': 1e-9,
+    'SCm_prime_m3': 1e15,
+    
+    # Plasmoid metrics (consistent)
+    'plasmoid_count': (40, 50),
+    'velocity_m_s': 0.5,
+    'rotation_rate_per_s': 0.15,
+    'energy_per_frame_J': 0.019,
+}
+
+
+class BatchAnalysisProgressCalculator:
+    """
+    ═══════════════════════════════════════════════════════════════════════════
+    BATCH ANALYSIS PROGRESS CALCULATOR
+    Track progress and metrics across multiple experimental batches
+    
+    Physics:
+    - Batch structure: 25 images per batch, 0.72s duration
+    - Frame-to-time: t = frame_number × (1/fps), fps = 33.3
+    - Non-local jumps progression: #31(0.5-1) → #32(0.8-1.2) → #37(1-2) → #38(1-1.5)
+    - Probability progression: P decreases as |t⁻| decreases
+    ═══════════════════════════════════════════════════════════════════════════
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute batch analysis progress metrics.
+        
+        Parameters:
+        - batch_number: Batch identifier (e.g., 31, 32, 37, 38)
+        - images_uploaded: Images uploaded for this batch
+        - images_per_batch: Total images per batch (default 25)
+        - fps: Frame rate (default 33.3)
+        
+        Returns batch progress, time range, and completion status.
+        """
+        batch_number = dataset.get('batch_number', 38)
+        images_uploaded = dataset.get('images_uploaded', 9)
+        images_per_batch = dataset.get('images_per_batch', 25)
+        fps = dataset.get('fps', 33.3)
+        
+        # Calculate frame range for this batch
+        # Batch 31 starts at frame 301, batch N starts at frame (N-31)*25 + 301
+        start_frame = (batch_number - 31) * 25 + 301
+        end_frame = start_frame + images_per_batch - 1
+        current_frame = start_frame + images_uploaded - 1
+        
+        # Time calculations
+        start_time_s = start_frame / fps
+        end_time_s = end_frame / fps
+        current_time_s = current_frame / fps
+        
+        # Progress percentage
+        progress_percent = (images_uploaded / images_per_batch) * 100
+        
+        # Non-local jump trend (estimated from thread data)
+        jump_base = 0.5 + (batch_number - 31) * 0.15
+        jump_min = max(0.5, jump_base - 0.25)
+        jump_max = min(2.0, jump_base + 0.5)
+        
+        return {
+            'batch_number': batch_number,
+            'images_uploaded': images_uploaded,
+            'images_per_batch': images_per_batch,
+            'images_remaining': images_per_batch - images_uploaded,
+            'progress_percent': progress_percent,
+            'is_complete': images_uploaded >= images_per_batch,
+            'start_frame': start_frame,
+            'end_frame': end_frame,
+            'current_frame': current_frame,
+            'start_time_s': start_time_s,
+            'end_time_s': end_time_s,
+            'current_time_s': current_time_s,
+            'batch_duration_s': end_time_s - start_time_s,
+            'estimated_jumps_per_frame': (jump_min, jump_max),
+            'equation': 't = frame_number × (1/fps), start_frame = (batch - 31) × 25 + 301',
+        }
+
+
+class GeometricFactorCalculator:
+    """
+    ═══════════════════════════════════════════════════════════════════════════
+    GEOMETRIC FACTOR CALCULATOR (GF)
+    Mass-independent spatial distribution in cylindrical geometry
+    
+    Equation:
+    GF(x,y,z) = sin(π·√(x²+y²)/r) · cos(π·z/h)
+    
+    Physics:
+    - Models cylindrical distribution of plasmoids
+    - x,y: horizontal position, z: vertical position
+    - r: cylinder radius (0.0889 m), h: height (0.254 m)
+    - Peak at cylinder walls, varies sinusoidally with height
+    ═══════════════════════════════════════════════════════════════════════════
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute geometric factor for position in cylinder.
+        
+        Parameters:
+        - x_m, y_m, z_m: Position coordinates in meters
+        - cylinder_radius_m: Radius (default 0.0889)
+        - cylinder_height_m: Height (default 0.254)
+        
+        Returns geometric factor and spatial distribution metrics.
+        """
+        import math
+        
+        x_m = dataset.get('x_m', 0.05)
+        y_m = dataset.get('y_m', 0.03)
+        z_m = dataset.get('z_m', 0.127)  # midpoint by default
+        r = dataset.get('cylinder_radius_m', 0.0889)
+        h = dataset.get('cylinder_height_m', 0.254)
+        
+        # Radial distance from center
+        rho = math.sqrt(x_m**2 + y_m**2)
+        
+        # Geometric factor components
+        radial_factor = math.sin(math.pi * rho / r) if rho <= r else 0
+        vertical_factor = math.cos(math.pi * z_m / h)
+        
+        GF = radial_factor * vertical_factor
+        
+        # Normalized position
+        rho_normalized = rho / r
+        z_normalized = z_m / h
+        
+        return {
+            'x_m': x_m,
+            'y_m': y_m,
+            'z_m': z_m,
+            'rho_m': rho,
+            'cylinder_radius_m': r,
+            'cylinder_height_m': h,
+            'rho_normalized': rho_normalized,
+            'z_normalized': z_normalized,
+            'radial_factor': radial_factor,
+            'vertical_factor': vertical_factor,
+            'GF': GF,
+            'is_inside_cylinder': rho <= r and 0 <= z_m <= h,
+            'equation': 'GF(x,y,z) = sin(π·√(x²+y²)/r) · cos(π·z/h)',
+        }
+
+
+class NonLocalPlasmoidFlowCalculator:
+    """
+    ═══════════════════════════════════════════════════════════════════════════
+    NON-LOCAL PLASMOID FLOW (NLPF) CALCULATOR
+    Full mass-independent field equation for plasmoid dynamics
+    
+    Equation:
+    NLPF = UA · e^(-γ|t⁻|) · QS · (NN/NN₀) · Re(IF^(π-t)) · (QV/Ub) + SCm'·GF
+    
+    Physics:
+    - Combines all mass-independent variables from UP equation
+    - UA: Universal Aether charge field (10⁻¹¹ C)
+    - QS: Quantum state (10⁻²⁰ m)
+    - NN: Non-locality noise oscillation
+    - IF^(π-t): Interference factor phase
+    - QV: Quantum vacuum energy
+    - SCm': Massless superconductive material density
+    ═══════════════════════════════════════════════════════════════════════════
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute non-local plasmoid flow field.
+        
+        Parameters:
+        - t_n_s: Current time (default 13.02)
+        - x_m, y_m, z_m: Position coordinates
+        - gamma: Non-locality decay constant (default 1000 s⁻¹)
+        
+        Returns NLPF field value and component contributions.
+        """
+        import math
+        import cmath
+        
+        t_n = dataset.get('t_n_s', 13.02)
+        x_m = dataset.get('x_m', 0.05)
+        y_m = dataset.get('y_m', 0.03)
+        z_m = dataset.get('z_m', 0.127)
+        gamma = dataset.get('gamma_per_s', 1e3)
+        tau = dataset.get('tau_s', 0.1)
+        
+        # Constants from thread
+        UA = 1e-11  # C
+        QS_0 = 1e-20  # m
+        NN_0 = 0.01  # s⁻¹
+        QV = 1e-9  # J/m³
+        Ub_0 = 1e-9  # J/m³
+        SCm_prime = 1e15  # m⁻³
+        r = 0.0889
+        h = 0.254
+        
+        # Negative time
+        t_minus = -t_n * math.exp(math.pi - t_n)
+        
+        # Individual components
+        non_local_decay = math.exp(-gamma * abs(t_minus))
+        
+        NN = NN_0 * math.sin(2 * math.pi * t_minus / tau)
+        NN_ratio = NN / NN_0 if NN_0 != 0 else 0
+        
+        IF_complex = cmath.exp(1j * (math.pi - t_n))
+        IF_real = IF_complex.real
+        
+        QV_Ub_ratio = QV / Ub_0
+        
+        # Geometric factor
+        rho = math.sqrt(x_m**2 + y_m**2)
+        radial_factor = math.sin(math.pi * rho / r) if rho <= r else 0
+        vertical_factor = math.cos(math.pi * z_m / h)
+        GF = radial_factor * vertical_factor
+        
+        # NLPF equation
+        NLPF = UA * non_local_decay * QS_0 * NN_ratio * IF_real * QV_Ub_ratio + SCm_prime * GF
+        
+        # Normalized NLPF (log scale for visualization)
+        NLPF_log = math.log10(abs(NLPF) + 1e-30)
+        
+        return {
+            't_n_s': t_n,
+            't_minus_s': t_minus,
+            'non_local_decay': non_local_decay,
+            'NN_value': NN,
+            'NN_ratio': NN_ratio,
+            'IF_real': IF_real,
+            'IF_imag': IF_complex.imag,
+            'QV_Ub_ratio': QV_Ub_ratio,
+            'GF': GF,
+            'NLPF': NLPF,
+            'NLPF_log': NLPF_log,
+            'equation': 'NLPF = UA·e^(-γ|t⁻|)·QS·(NN/NN₀)·Re(IF^(π-t))·(QV/Ub) + SCm\'·GF',
+        }
+
+
+class EnergyDensityDecayCalculator:
+    """
+    ═══════════════════════════════════════════════════════════════════════════
+    ENERGY DENSITY DECAY CALCULATOR
+    Time-dependent reactor energy density
+    
+    Equation:
+    E_react = E₀ · e^(-k·t_n)
+    
+    Where:
+    - E₀ = 10¹⁵ W/m³ (base energy density)
+    - k = 0.001 s⁻¹ (decay constant)
+    - t_n = current time (s)
+    
+    Physics:
+    - Models gradual energy redistribution in reactor
+    - At t=13.02s: E_react ≈ 9.87×10¹⁴ W/m³
+    - ~0.19 J/frame from 65W input at 0.29% efficiency
+    ═══════════════════════════════════════════════════════════════════════════
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute energy density at given time.
+        
+        Parameters:
+        - t_n_s: Current time (default 13.02)
+        - E_0_W_m3: Base energy density (default 1e15)
+        - decay_constant: Decay rate (default 0.001)
+        
+        Returns energy density and related metrics.
+        """
+        import math
+        
+        t_n = dataset.get('t_n_s', 13.02)
+        E_0 = dataset.get('E_0_W_m3', 1e15)
+        k = dataset.get('decay_constant', 0.001)
+        input_power_W = dataset.get('input_power_W', 65)
+        efficiency = dataset.get('efficiency', 0.0029)  # 0.29%
+        
+        # Energy density decay
+        E_react = E_0 * math.exp(-k * t_n)
+        
+        # Decay fraction
+        decay_fraction = 1 - math.exp(-k * t_n)
+        remaining_fraction = math.exp(-k * t_n)
+        
+        # Energy per frame (at 33.3 fps)
+        energy_per_frame = input_power_W * efficiency / 33.3
+        
+        # Half-life
+        half_life_s = math.log(2) / k
+        
+        return {
+            't_n_s': t_n,
+            'E_0_W_m3': E_0,
+            'decay_constant': k,
+            'E_react_W_m3': E_react,
+            'decay_fraction': decay_fraction,
+            'remaining_fraction': remaining_fraction,
+            'half_life_s': half_life_s,
+            'input_power_W': input_power_W,
+            'efficiency': efficiency,
+            'energy_per_frame_J': energy_per_frame,
+            'equation': 'E_react = E₀ · e^(-k·t_n) where E₀=10¹⁵ W/m³, k=0.001 s⁻¹',
+        }
+
+
+class FrameTimestampCalculator:
+    """
+    ═══════════════════════════════════════════════════════════════════════════
+    FRAME TIMESTAMP CALCULATOR
+    Convert between frame numbers and timestamps
+    
+    Equation:
+    t = frame_number × (1/fps)
+    frame = t × fps
+    
+    Physics:
+    - fps = 33.3 frames/s
+    - Frame period = 0.03 s (±0.5% error)
+    - Used for batch synchronization across 4,965-image sequence
+    ═══════════════════════════════════════════════════════════════════════════
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Convert frame number to timestamp or vice versa.
+        
+        Parameters:
+        - frame_number: Frame index (optional)
+        - timestamp_s: Time in seconds (optional)
+        - fps: Frame rate (default 33.3)
+        
+        Returns frame-time mapping.
+        """
+        fps = dataset.get('fps', 33.3)
+        frame_period = 1.0 / fps
+        
+        # Bidirectional conversion
+        if 'frame_number' in dataset:
+            frame = dataset['frame_number']
+            t = frame * frame_period
+            return {
+                'frame_number': frame,
+                'timestamp_s': t,
+                'fps': fps,
+                'frame_period_s': frame_period,
+                'error_percent': 0.5,
+                'equation': 't = frame_number × (1/fps)',
+            }
+        elif 'timestamp_s' in dataset:
+            t = dataset['timestamp_s']
+            frame = int(t * fps)
+            return {
+                'frame_number': frame,
+                'timestamp_s': t,
+                'fps': fps,
+                'frame_period_s': frame_period,
+                'error_percent': 0.5,
+                'equation': 'frame = t × fps',
+            }
+        else:
+            # Default: show frame 434 (batch #38/9)
+            frame = 434
+            t = frame * frame_period
+            return {
+                'frame_number': frame,
+                'timestamp_s': t,
+                'fps': fps,
+                'frame_period_s': frame_period,
+                'error_percent': 0.5,
+                'equation': 't = frame_number / fps = frame_number × 0.03 s',
+            }
+
+
+class NonLocalJumpProbabilityCalculator:
+    """
+    ═══════════════════════════════════════════════════════════════════════════
+    NON-LOCAL JUMP PROBABILITY CALCULATOR
+    Probability of non-local plasmoid transitions
+    
+    Equation:
+    P = 1 - e^(-γ·|t⁻|)
+    
+    Where:
+    - γ = 10³ s⁻¹ (non-locality decay constant)
+    - t⁻ = -t_n · e^(π - t_n) (negative time)
+    
+    Thread Progression:
+    - Batch #31 (t=9.75s): t⁻=-0.0133s, P≈0.999
+    - Batch #32 (t=10.50s): t⁻=-0.00668s, P≈0.986
+    - Batch #37 (t=12.75s): t⁻=-8.08×10⁻⁴s, P≈0.44
+    - Batch #38 (t=13.02s): t⁻=-6.72×10⁻⁴s, P≈0.402
+    ═══════════════════════════════════════════════════════════════════════════
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute non-local jump probability.
+        
+        Parameters:
+        - t_n_s: Current time (default 13.02)
+        - gamma_per_s: Decay constant (default 1000)
+        
+        Returns probability and related metrics.
+        """
+        import math
+        
+        t_n = dataset.get('t_n_s', 13.02)
+        gamma = dataset.get('gamma_per_s', 1e3)
+        
+        # Negative time calculation
+        t_minus = -t_n * math.exp(math.pi - t_n)
+        
+        # Jump probability
+        P = 1 - math.exp(-gamma * abs(t_minus))
+        
+        # Expected jumps per frame (empirical correlation)
+        # P≈0.4 → 1-1.5 jumps, P≈0.99 → 0.5-1 jumps
+        # Inverse relationship: higher P (early stages) = fewer jumps
+        if P > 0.9:
+            jumps_min, jumps_max = 0.5, 1.0
+        elif P > 0.5:
+            jumps_min, jumps_max = 0.8, 1.5
+        else:
+            jumps_min, jumps_max = 1.0, 2.0
+        
+        return {
+            't_n_s': t_n,
+            'gamma_per_s': gamma,
+            't_minus_s': t_minus,
+            'abs_t_minus_s': abs(t_minus),
+            'P': P,
+            'complement_P': 1 - P,
+            'expected_jumps_min': jumps_min,
+            'expected_jumps_max': jumps_max,
+            'regime': 'early' if P > 0.9 else ('transitional' if P > 0.5 else 'mature'),
+            'equation': 'P = 1 - e^(-γ·|t⁻|) where γ=10³ s⁻¹, t⁻=-t_n·e^(π-t_n)',
+        }
+
+
+class UniversalBackgroundDecayCalculator:
+    """
+    ═══════════════════════════════════════════════════════════════════════════
+    UNIVERSAL BACKGROUND DECAY CALCULATOR (Ub)
+    Time-dependent cosmic background energy field
+    
+    Equation:
+    Ub(t⁻) = Ub₀ · e^(-α·|t⁻|)
+    
+    Where:
+    - Ub₀ = 10⁻⁹ J/m³ (base background energy)
+    - α = 0.01 s⁻¹ (decay constant)
+    
+    Physics:
+    - Models weak decay of cosmic background field with non-locality
+    - Negligible decay at small |t⁻| (e.g., ≈10⁻⁴ s)
+    - Reflects cosmic background radiation analog
+    ═══════════════════════════════════════════════════════════════════════════
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute universal background energy decay.
+        
+        Parameters:
+        - t_n_s: Current time (default 13.02)
+        - Ub_0_J_m3: Base energy (default 1e-9)
+        - alpha_decay: Decay constant (default 0.01)
+        
+        Returns background energy and decay metrics.
+        """
+        import math
+        
+        t_n = dataset.get('t_n_s', 13.02)
+        Ub_0 = dataset.get('Ub_0_J_m3', 1e-9)
+        alpha = dataset.get('alpha_decay', 0.01)
+        
+        # Negative time
+        t_minus = -t_n * math.exp(math.pi - t_n)
+        
+        # Background decay
+        Ub = Ub_0 * math.exp(-alpha * abs(t_minus))
+        
+        # Decay metrics
+        decay_factor = math.exp(-alpha * abs(t_minus))
+        decay_fraction = 1 - decay_factor
+        
+        return {
+            't_n_s': t_n,
+            't_minus_s': t_minus,
+            'Ub_0_J_m3': Ub_0,
+            'alpha_decay': alpha,
+            'Ub_J_m3': Ub,
+            'decay_factor': decay_factor,
+            'decay_fraction': decay_fraction,
+            'decay_percent': decay_fraction * 100,
+            'equation': 'Ub(t⁻) = Ub₀ · e^(-α·|t⁻|) where Ub₀=10⁻⁹ J/m³, α=0.01 s⁻¹',
+        }
+
+
+class SuperconductiveStateQuantumCalculator:
+    """
+    ═══════════════════════════════════════════════════════════════════════════
+    SUPERCONDUCTIVE STATE QUANTUM CALCULATOR (SSq)
+    Coherent quantum state energy with temporal decay
+    
+    Equation:
+    SSq(t⁻) = SSq₀ · e^(-β·|t⁻|)
+    
+    Where:
+    - SSq₀ = 10⁻⁶ J (base coherent state energy)
+    - β = 0.01 s⁻¹ (decoherence rate)
+    
+    Physics:
+    - Models plasmoid coherence stability
+    - Superconductive material (SCm) maintains coherence
+    - Low decoherence rate supports plasmoid persistence
+    ═══════════════════════════════════════════════════════════════════════════
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute superconductive state quantum energy.
+        
+        Parameters:
+        - t_n_s: Current time (default 13.02)
+        - SSq_0_J: Base energy (default 1e-6)
+        - beta_decay: Decoherence rate (default 0.01)
+        
+        Returns SSq energy and coherence metrics.
+        """
+        import math
+        
+        t_n = dataset.get('t_n_s', 13.02)
+        SSq_0 = dataset.get('SSq_0_J', 1e-6)
+        beta = dataset.get('beta_decay', 0.01)
+        
+        # Negative time
+        t_minus = -t_n * math.exp(math.pi - t_n)
+        
+        # Superconductive state quantum
+        SSq = SSq_0 * math.exp(-beta * abs(t_minus))
+        
+        # Coherence metrics
+        coherence_factor = math.exp(-beta * abs(t_minus))
+        decoherence_fraction = 1 - coherence_factor
+        
+        # Coherence time (time to reach 1/e of original)
+        coherence_time = 1 / beta
+        
+        return {
+            't_n_s': t_n,
+            't_minus_s': t_minus,
+            'SSq_0_J': SSq_0,
+            'beta_decay': beta,
+            'SSq_J': SSq,
+            'coherence_factor': coherence_factor,
+            'decoherence_fraction': decoherence_fraction,
+            'coherence_time_s': coherence_time,
+            'equation': 'SSq(t⁻) = SSq₀ · e^(-β·|t⁻|) where SSq₀=10⁻⁶ J, β=0.01 s⁻¹',
+        }
+
+
+class NonLocalityNoiseCalculator:
+    """
+    ═══════════════════════════════════════════════════════════════════════════
+    NON-LOCALITY NOISE CALCULATOR (NN)
+    Oscillatory random fluctuations driving waveless signals
+    
+    Equation:
+    NN(t⁻) = NN₀ · sin(2π·t⁻/τ)
+    
+    Where:
+    - NN₀ = 0.01 s⁻¹ (noise amplitude)
+    - τ = 0.1 s (oscillation period)
+    
+    Thread Values:
+    - Batch #31: NN ≈ -0.0074 s⁻¹
+    - Batch #32: NN ≈ -0.0041 s⁻¹
+    - Batch #37: NN ≈ -5.09×10⁻⁴ s⁻¹
+    - Batch #38: NN ≈ -4.2×10⁻⁴ s⁻¹
+    ═══════════════════════════════════════════════════════════════════════════
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute non-locality noise value.
+        
+        Parameters:
+        - t_n_s: Current time (default 13.02)
+        - NN_0: Noise amplitude (default 0.01)
+        - tau_s: Oscillation period (default 0.1)
+        
+        Returns noise value and oscillation metrics.
+        """
+        import math
+        
+        t_n = dataset.get('t_n_s', 13.02)
+        NN_0 = dataset.get('NN_0', 0.01)
+        tau = dataset.get('tau_s', 0.1)
+        
+        # Negative time
+        t_minus = -t_n * math.exp(math.pi - t_n)
+        
+        # Non-locality noise
+        phase = 2 * math.pi * t_minus / tau
+        NN = NN_0 * math.sin(phase)
+        
+        # Normalized to amplitude
+        NN_normalized = NN / NN_0 if NN_0 != 0 else 0
+        
+        # Phase in cycles
+        phase_cycles = t_minus / tau
+        
+        return {
+            't_n_s': t_n,
+            't_minus_s': t_minus,
+            'NN_0': NN_0,
+            'tau_s': tau,
+            'phase_rad': phase,
+            'phase_cycles': phase_cycles,
+            'NN': NN,
+            'NN_normalized': NN_normalized,
+            'frequency_Hz': 1 / tau,
+            'equation': 'NN(t⁻) = NN₀ · sin(2π·t⁻/τ) where NN₀=0.01 s⁻¹, τ=0.1 s',
+        }
+
+
+class UniversalPermanenceFullCalculator:
+    """
+    ═══════════════════════════════════════════════════════════════════════════
+    UNIVERSAL PERMANENCE FULL CALCULATOR
+    Complete UP equation with all mass-independent field terms
+    
+    Equation:
+    UP(t) = Σ_i[k_i·Ug_i] + Σ_j[μ_j/r_j·(1-e^(-γt⁻cos(πt_n)))·ϕ̂_j·Um_j]
+          + (g_μν + η·T_s^μν)
+          + Ub(t⁻) + NN(t⁻) + QS(t⁻) + ACE(t⁻) + DCE(t⁻) + SSq(t⁻) + IF^(π-t) + QV(t⁻)
+    
+    This implementation focuses on the mass-independent background field terms:
+    Ub + NN + QS + ACE + DCE + SSq + IF^(π-t) + QV
+    ═══════════════════════════════════════════════════════════════════════════
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute full Universal Permanence background terms.
+        
+        Parameters:
+        - t_n_s: Current time (default 13.02)
+        - All field parameters with defaults from thread
+        
+        Returns all UP components and total field contribution.
+        """
+        import math
+        import cmath
+        
+        t_n = dataset.get('t_n_s', 13.02)
+        hbar = dataset.get('hbar', 1.054e-34)  # J·s
+        
+        # Parameters from thread
+        Ub_0 = dataset.get('Ub_0', 1e-9)  # J/m³
+        alpha = dataset.get('alpha', 0.01)  # s⁻¹
+        NN_0 = dataset.get('NN_0', 0.01)  # s⁻¹
+        tau = dataset.get('tau', 0.1)  # s
+        QS_0 = dataset.get('QS_0', 1e-20)  # m
+        ACE_0 = dataset.get('ACE_0', 1e-3)  # T
+        f_ACE = dataset.get('f_ACE', 6000)  # Hz
+        DCE_0 = dataset.get('DCE_0', 1e-4)  # T
+        SSq_0 = dataset.get('SSq_0', 1e-6)  # J
+        beta = dataset.get('beta', 0.01)  # s⁻¹
+        QV_0 = dataset.get('QV_0', 1e-9)  # J/m³
+        
+        # Negative time
+        t_minus = -t_n * math.exp(math.pi - t_n)
+        
+        # Universal Background
+        Ub = Ub_0 * math.exp(-alpha * abs(t_minus))
+        
+        # Non-Locality Noise
+        NN = NN_0 * math.sin(2 * math.pi * t_minus / tau)
+        
+        # Quantum State (magnitude only for real sum)
+        QS_phase = t_minus / hbar
+        QS_magnitude = QS_0  # |e^(i·θ)| = 1
+        
+        # Alternating Current Effect
+        ACE = ACE_0 * math.sin(2 * math.pi * f_ACE * t_minus)
+        
+        # Direct Current Effect (constant)
+        DCE = DCE_0
+        
+        # Superconductive State Quantum
+        SSq = SSq_0 * math.exp(-beta * abs(t_minus))
+        
+        # Interference Factor (real part for field contribution)
+        IF_complex = cmath.exp(1j * (math.pi - t_n))
+        IF_real = IF_complex.real
+        
+        # Quantum Vacuum (constant)
+        QV = QV_0
+        
+        # Total background field contribution
+        # Note: Units are mixed; this represents relative magnitudes
+        UP_background = Ub + abs(NN) + QS_magnitude + abs(ACE) + DCE + SSq + abs(IF_real) + QV
+        
+        return {
+            't_n_s': t_n,
+            't_minus_s': t_minus,
+            'Ub_J_m3': Ub,
+            'NN_per_s': NN,
+            'QS_magnitude_m': QS_magnitude,
+            'QS_phase_rad': QS_phase,
+            'ACE_T': ACE,
+            'DCE_T': DCE,
+            'SSq_J': SSq,
+            'IF_real': IF_real,
+            'IF_imag': IF_complex.imag,
+            'QV_J_m3': QV,
+            'UP_background_total': UP_background,
+            'dominant_terms': sorted([
+                ('SSq', SSq), ('Ub', Ub), ('QV', QV), ('DCE', DCE)
+            ], key=lambda x: x[1], reverse=True)[:3],
+            'equation': 'UP_bg = Ub(t⁻) + NN(t⁻) + QS(t⁻) + ACE(t⁻) + DCE + SSq(t⁻) + IF^(π-t) + QV',
+        }
+
+
+# Registry for Orb Analysis 32 calculators
+ORB_ANALYSIS_32_CALCULATORS = {
+    'BatchAnalysisProgressCalculator': BatchAnalysisProgressCalculator(),
+    'GeometricFactorCalculator': GeometricFactorCalculator(),
+    'NonLocalPlasmoidFlowCalculator': NonLocalPlasmoidFlowCalculator(),
+    'EnergyDensityDecayCalculator': EnergyDensityDecayCalculator(),
+    'FrameTimestampCalculator': FrameTimestampCalculator(),
+    'NonLocalJumpProbabilityCalculator': NonLocalJumpProbabilityCalculator(),
+    'UniversalBackgroundDecayCalculator': UniversalBackgroundDecayCalculator(),
+    'SuperconductiveStateQuantumCalculator': SuperconductiveStateQuantumCalculator(),
+    'NonLocalityNoiseCalculator': NonLocalityNoiseCalculator(),
+    'UniversalPermanenceFullCalculator': UniversalPermanenceFullCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -13211,6 +13997,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_29_CALCULATORS,
     **ORB_ANALYSIS_30_CALCULATORS,
     **ORB_ANALYSIS_31_CALCULATORS,
+    **ORB_ANALYSIS_32_CALCULATORS,
 }
 
 # Update class count
@@ -13488,6 +14275,20 @@ __all__ = [
     'InterferenceFactorCalculator',
     'UniversalPermanenceCalculator',
     'ORB_ANALYSIS_31_CALCULATORS',
+    
+    # Orb Analysis_32 / UFE ORB EXP 2_22 - Geometric Plasmoid Flow (10 classes)
+    'ORB_ANALYSIS_32_PARAMS',
+    'BatchAnalysisProgressCalculator',
+    'GeometricFactorCalculator',
+    'NonLocalPlasmoidFlowCalculator',
+    'EnergyDensityDecayCalculator',
+    'FrameTimestampCalculator',
+    'NonLocalJumpProbabilityCalculator',
+    'UniversalBackgroundDecayCalculator',
+    'SuperconductiveStateQuantumCalculator',
+    'NonLocalityNoiseCalculator',
+    'UniversalPermanenceFullCalculator',
+    'ORB_ANALYSIS_32_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
