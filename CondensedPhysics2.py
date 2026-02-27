@@ -10898,6 +10898,481 @@ ORB_ANALYSIS_26_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS_27 / UFE ORB EXP 2_15 - BATCHES #34-#35: UP EQUATION & SCm' DYNAMICS
+# ═══════════════════════════════════════════════════════════════════════════════
+# Source: UFE ORB EXP 2_15_06Mar2025
+# Physics: Full Universal Permanence (UP) equation, SCm' massless factor,
+#          Batches #34-#35 frame tracking, Benchmark #2 (400/4965 = 8.05%),
+#          ACE/DCE field generator energy, Non-local network dynamics
+# Key findings:
+#   - SCm' = 10^15 m^-3 (massless influence factor), amplification ~6.3×10^12
+#   - Benchmark #2: 400 uploaded / 4965 total = 8.05%
+#   - Full UP equation with 10+ component terms
+#   - Cumulative energy: 7.44-7.755 J over 12.00s
+#   - t^- calculation: t^- = -t • e^(π-t)
+#   - Batch #34: frames 376-400, 11.28-12.00s (complete)
+#   - Batch #35: frames 401-425, 12.03-12.75s (partial)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ORB_ANALYSIS_27_PARAMS = {
+    'batch_34_frames': (376, 400),        # Frame range for batch #34
+    'batch_34_timestamps': (11.28, 12.00),  # Time range (s)
+    'batch_35_frames': (401, 425),        # Frame range for batch #35
+    'batch_35_timestamps': (12.03, 12.75),  # Time range (s)
+    'SCm_prime': 1e15,                    # m^-3, massless influence factor
+    'SCm_prime_amplification': 6.3e12,    # Amplification factor
+    'benchmark_2_uploaded': 400,          # Images uploaded at benchmark #2
+    'benchmark_2_total': 4965,            # Total images in experiment
+    'benchmark_2_progress': 8.05,         # Percent progress
+    'cumulative_energy_J': (7.44, 7.755), # Energy range over 12s
+    'efficiency_eta': (0.0135, 0.0169),   # η = 1.35-1.69%
+    'frame_rate_fps': 33.3,               # Infrared camera frame rate
+    'frame_interval_s': 0.03,             # 1/33.3 fps
+    # UP equation component energies
+    'Ub_J': 1e-5,                          # Background universal field
+    'NN_J': 1e-4,                          # Non-local network energy
+    'QS_J': 1e-6,                          # Quantum state energy (H₂)
+    'ACE_J': 1e-3,                         # Alternating current energy
+    'DCE_J': 1e-3,                         # Direct current energy
+    'SSq_J': 1e-5,                         # Superconductive quantum
+    'QV_J': 1e-7,                          # Quantum vacuum energy
+    'gamma_damping': 0.1,                  # Damping factor γ
+    'omega_s_rad_s': 0.942,                # Spin angular velocity
+}
+
+
+class Batch34FrameTrackerCalculator:
+    """
+    Batch #34 frame-to-timestamp mapping for UFE ORB EXP 2_15.
+    Frames 376-400 at 33.3 fps = timestamps 11.28-12.00s.
+    Each frame = frame_number × 0.03s.
+    """
+    
+    PARAMS = ORB_ANALYSIS_27_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Map batch #34 image number (1-25) to frame and timestamp.
+        
+        Args:
+            image_number: 1-25 within batch #34
+            
+        Returns:
+            frame: Absolute frame number (376-400)
+            timestamp_s: Timestamp in seconds
+            batch_position: Relative position 0-1
+        """
+        image_number = params.get('image_number', 1)
+        frame_interval = self.PARAMS['frame_interval_s']
+        
+        # Frame 376 is image #1 of batch #34
+        frame = 375 + image_number
+        timestamp_s = frame * frame_interval
+        batch_position = (image_number - 1) / 24  # 0 to 1
+        
+        return {
+            'frame': frame,
+            'timestamp_s': timestamp_s,
+            'batch_position': batch_position,
+            'batch_id': 34,
+            'total_batch_images': 25,
+        }
+
+
+class Batch35FrameTrackerCalculator:
+    """
+    Batch #35 frame-to-timestamp mapping for UFE ORB EXP 2_15.
+    Frames 401-425 at 33.3 fps = timestamps 12.03-12.75s.
+    """
+    
+    PARAMS = ORB_ANALYSIS_27_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Map batch #35 image number (1-25) to frame and timestamp.
+        
+        Args:
+            image_number: 1-25 within batch #35
+        """
+        image_number = params.get('image_number', 1)
+        frame_interval = self.PARAMS['frame_interval_s']
+        
+        # Frame 401 is image #1 of batch #35
+        frame = 400 + image_number
+        timestamp_s = frame * frame_interval
+        batch_position = (image_number - 1) / 24
+        
+        return {
+            'frame': frame,
+            'timestamp_s': timestamp_s,
+            'batch_position': batch_position,
+            'batch_id': 35,
+            'total_batch_images': 25,
+        }
+
+
+class SCmPrimeMasslessFactorCalculator:
+    """
+    SCm' (SCm-prime) massless influence factor calculator.
+    SCm' = 10^15 m^-3 mediates non-local effects with amplification ~6.3×10^12.
+    Unlike SCm (10^15 kg/m³), SCm' is dimensionally m^-3 (massless).
+    """
+    
+    PARAMS = ORB_ANALYSIS_27_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Calculate SCm' influence on energy scaling.
+        
+        Args:
+            base_energy_mJ: Base plasmoid energy in mJ
+            
+        Returns:
+            SCm_prime: Value (10^15 m^-3)
+            amplification_factor: ~6.3×10^12
+            scaled_energy_J: Base × amplification (capped)
+        """
+        import math
+        base_energy_mJ = params.get('base_energy_mJ', 1.0)  # Default 1 mJ
+        
+        SCm_prime = self.PARAMS['SCm_prime']
+        amplification = self.PARAMS['SCm_prime_amplification']
+        
+        base_J = base_energy_mJ * 1e-3
+        # Scaled energy (theoretical, clamped for practical use)
+        scaled_theoretical = base_J * amplification
+        # Practical scaled energy (capped at observed range)
+        scaled_practical_J = base_J * math.log10(amplification)  # ~12.8× factor
+        
+        return {
+            'SCm_prime_m3_inv': SCm_prime,
+            'amplification_factor': amplification,
+            'base_energy_J': base_J,
+            'scaled_energy_theoretical_J': scaled_theoretical,
+            'scaled_energy_practical_J': scaled_practical_J,
+            'is_massless': True,
+            'mediates_non_local': True,
+        }
+
+
+class Benchmark2ProgressCalculator:
+    """
+    Benchmark #2 progress tracking: 400 images / 4965 total = 8.05%.
+    At 33.3 fps over 149.88s total experiment duration.
+    """
+    
+    PARAMS = ORB_ANALYSIS_27_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Calculate experiment progress at benchmark #2.
+        
+        Args:
+            current_uploaded: Current uploaded count (default 400)
+        """
+        current_uploaded = params.get('current_uploaded', 400)
+        total_images = self.PARAMS['benchmark_2_total']
+        fps = self.PARAMS['frame_rate_fps']
+        
+        progress_pct = (current_uploaded / total_images) * 100
+        current_time_s = current_uploaded / fps
+        total_time_s = total_images / fps
+        remaining_images = total_images - current_uploaded
+        
+        return {
+            'benchmark_id': 2,
+            'uploaded': current_uploaded,
+            'total': total_images,
+            'progress_percent': round(progress_pct, 2),
+            'current_time_s': round(current_time_s, 2),
+            'total_time_s': round(total_time_s, 2),
+            'remaining_images': remaining_images,
+            'remaining_batches': remaining_images // 25,
+        }
+
+
+class NegativeTimeCalculator:
+    """
+    Negative time (t^-) calculator for Universal Permanence equation.
+    t^- = -t_n × e^(π - t_n)
+    At t=12.00s: t^- ≈ -0.0036s
+    """
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Calculate negative time t^- for UP equation.
+        
+        Args:
+            t_n: Normalized time in seconds
+        """
+        import math
+        t_n = params.get('t_n', 12.0)
+        
+        exponent = math.pi - t_n
+        e_term = math.exp(exponent)
+        t_minus = -t_n * e_term
+        
+        return {
+            't_n_s': t_n,
+            'exponent': round(exponent, 4),
+            'e_term': e_term,
+            't_minus_s': t_minus,
+            'abs_t_minus_s': abs(t_minus),
+            'formula': 't^- = -t_n × e^(π - t_n)',
+        }
+
+
+class UniversalPermanenceEquationCalculator:
+    """
+    Full Universal Permanence (UP) equation calculator.
+    UP(t) = Σ[Ug_i] + Σ[Um_j] + g_μν + Ub + NN + QS + ACE + DCE + SSq + IF^(π-t) + QV
+    
+    Integrates gravitational, electromagnetic, and quantum effects.
+    """
+    
+    PARAMS = ORB_ANALYSIS_27_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Calculate UP equation component sum.
+        
+        Args:
+            t_n: Timestamp (s)
+            
+        Returns:
+            UP_total_J: Total UP energy
+            component_breakdown: Dict of individual terms
+        """
+        import math
+        t_n = params.get('t_n', 12.0)
+        
+        # Component energies from params
+        Ub = self.PARAMS['Ub_J']
+        NN = self.PARAMS['NN_J']
+        QS = self.PARAMS['QS_J']
+        ACE = self.PARAMS['ACE_J']
+        DCE = self.PARAMS['DCE_J']
+        SSq = self.PARAMS['SSq_J']
+        QV = self.PARAMS['QV_J']
+        
+        # IF^(π-t) term
+        IF_exponent = math.pi - t_n
+        IF_term = math.exp(IF_exponent)  # e^(π-t)
+        
+        # t^- for time-dependent terms
+        t_minus = -t_n * math.exp(IF_exponent)
+        
+        # Sum auxiliary components
+        auxiliary_sum = Ub + NN + QS + ACE + DCE + SSq + QV + IF_term * 1e-6
+        
+        return {
+            'UP_auxiliary_J': auxiliary_sum,
+            'Ub_J': Ub,
+            'NN_J': NN,
+            'QS_J': QS,
+            'ACE_J': ACE,
+            'DCE_J': DCE,
+            'SSq_J': SSq,
+            'IF_term': IF_term,
+            'QV_J': QV,
+            't_minus_s': t_minus,
+            't_n_s': t_n,
+            'equation': 'UP(t) = Σ[Ug_i] + Σ[Um_j] + g_μν + Ub + NN + QS + ACE + DCE + SSq + IF^(π-t) + QV',
+        }
+
+
+class ACEDCEFieldGeneratorCalculator:
+    """
+    ACE/DCE (Alternating/Direct Current Energy) field generator calculator.
+    6000 Hz resonance, 17W input correlated with plasmoid stability.
+    ACE = DCE ≈ 10^-3 J contribution to UP equation.
+    """
+    
+    PARAMS = ORB_ANALYSIS_27_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Calculate ACE/DCE field generator contribution.
+        
+        Args:
+            frequency_Hz: Resonance frequency (default 6000)
+            power_W: Input power (default 17)
+            duration_s: Operating duration
+        """
+        frequency_Hz = params.get('frequency_Hz', 6000)
+        power_W = params.get('power_W', 17)
+        duration_s = params.get('duration_s', 0.72)  # One batch cycle
+        
+        ACE = self.PARAMS['ACE_J']
+        DCE = self.PARAMS['DCE_J']
+        
+        # Total input energy
+        input_energy_J = power_W * duration_s
+        
+        # Combined ACE+DCE contribution
+        combined_contribution = ACE + DCE
+        
+        # Coupling efficiency to plasmoids
+        coupling_eta = combined_contribution / input_energy_J if input_energy_J > 0 else 0
+        
+        return {
+            'ACE_J': ACE,
+            'DCE_J': DCE,
+            'combined_J': combined_contribution,
+            'frequency_Hz': frequency_Hz,
+            'power_W': power_W,
+            'duration_s': duration_s,
+            'input_energy_J': input_energy_J,
+            'coupling_efficiency': coupling_eta,
+        }
+
+
+class NonLocalNetworkEnergyCalculator:
+    """
+    NN(t^-) Non-local network energy calculator.
+    NN ≈ 10^-4 J, mediates waveless communication via SCm' jumps.
+    Supports THz signal potential at 6000 Hz resonance.
+    """
+    
+    PARAMS = ORB_ANALYSIS_27_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Calculate non-local network energy contribution.
+        
+        Args:
+            t_n: Timestamp for t^- calculation
+            jump_velocity_m_s: Non-local jump velocity (default 0.1)
+        """
+        import math
+        t_n = params.get('t_n', 12.0)
+        jump_velocity = params.get('jump_velocity_m_s', 0.1)
+        
+        NN = self.PARAMS['NN_J']
+        SCm_prime = self.PARAMS['SCm_prime']
+        
+        # t^- modulation
+        t_minus = -t_n * math.exp(math.pi - t_n)
+        NN_modulated = NN * (1 + abs(t_minus))
+        
+        # Communication potential (THz)
+        THz_potential = 6000 * 1e9  # 6000 Hz base × 10^9 scaling
+        
+        return {
+            'NN_base_J': NN,
+            'NN_modulated_J': NN_modulated,
+            't_minus_s': t_minus,
+            'jump_velocity_m_s': jump_velocity,
+            'SCm_prime_coupling': SCm_prime,
+            'THz_potential': THz_potential,
+            'supports_waveless_comm': True,
+        }
+
+
+class QuantumVacuumEnergyCalculator:
+    """
+    QV(t^-) Quantum vacuum energy calculator.
+    QV ≈ 10^-7 J from UA (Universal Aether) interactions.
+    Contributes to background stability in UP equation.
+    """
+    
+    PARAMS = ORB_ANALYSIS_27_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Calculate quantum vacuum energy.
+        
+        Args:
+            t_n: Timestamp
+            UA_C: Universal Aether charge (default 10^-11)
+        """
+        import math
+        t_n = params.get('t_n', 12.0)
+        UA_C = params.get('UA_C', 1e-11)
+        
+        QV = self.PARAMS['QV_J']
+        
+        # t^- modulation
+        t_minus = -t_n * math.exp(math.pi - t_n)
+        
+        # Vacuum fluctuation amplitude
+        fluctuation = QV * math.cos(2 * math.pi * t_n / 0.72)  # 0.72s cycle
+        
+        return {
+            'QV_base_J': QV,
+            'QV_fluctuation_J': fluctuation,
+            't_minus_s': t_minus,
+            'UA_charge_C': UA_C,
+            'cycle_period_s': 0.72,
+            'contributes_to': 'background_stability',
+        }
+
+
+class SpindleOrbPersistenceCalculator:
+    """
+    Spindle Orb persistence tracking across batches #34-#35.
+    Monitors stability from 11.28s (batch #34 start) through 12.75s (batch #35 end).
+    Spindle Orb: 1.5-2mm, 6.3-12.6 mJ, stable in upper center region.
+    """
+    
+    PARAMS = ORB_ANALYSIS_27_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Calculate Spindle Orb persistence metrics.
+        
+        Args:
+            start_timestamp_s: First observation (default 10.53 from batch #33)
+            current_timestamp_s: Current observation
+        """
+        start_timestamp = params.get('start_timestamp_s', 10.53)
+        current_timestamp = params.get('current_timestamp_s', 12.00)
+        
+        # Persistence duration
+        persistence_s = current_timestamp - start_timestamp
+        
+        # Batch span
+        if current_timestamp <= 11.25:
+            batches_spanned = 1  # Only batch #33
+        elif current_timestamp <= 12.00:
+            batches_spanned = 2  # Batches #33-#34
+        else:
+            batches_spanned = 3  # Batches #33-#35
+            
+        # Frame span (33.3 fps)
+        frame_span = int(persistence_s * 33.3)
+        
+        # Energy consistency
+        energy_range_mJ = (6.3, 12.6)
+        energy_stability = 1 - abs(energy_range_mJ[1] - energy_range_mJ[0]) / energy_range_mJ[1]
+        
+        return {
+            'persistence_duration_s': round(persistence_s, 2),
+            'batches_spanned': batches_spanned,
+            'frame_span': frame_span,
+            'energy_range_mJ': energy_range_mJ,
+            'energy_stability': round(energy_stability, 2),
+            'position': 'upper_center',
+            'species': 'Spindle Orb',
+        }
+
+
+# Registry for Orb Analysis 27 calculators
+ORB_ANALYSIS_27_CALCULATORS = {
+    'Batch34FrameTrackerCalculator': Batch34FrameTrackerCalculator(),
+    'Batch35FrameTrackerCalculator': Batch35FrameTrackerCalculator(),
+    'SCmPrimeMasslessFactorCalculator': SCmPrimeMasslessFactorCalculator(),
+    'Benchmark2ProgressCalculator': Benchmark2ProgressCalculator(),
+    'NegativeTimeCalculator': NegativeTimeCalculator(),
+    'UniversalPermanenceEquationCalculator': UniversalPermanenceEquationCalculator(),
+    'ACEDCEFieldGeneratorCalculator': ACEDCEFieldGeneratorCalculator(),
+    'NonLocalNetworkEnergyCalculator': NonLocalNetworkEnergyCalculator(),
+    'QuantumVacuumEnergyCalculator': QuantumVacuumEnergyCalculator(),
+    'SpindleOrbPersistenceCalculator': SpindleOrbPersistenceCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -10920,6 +11395,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_24_CALCULATORS,
     **ORB_ANALYSIS_25_CALCULATORS,
     **ORB_ANALYSIS_26_CALCULATORS,
+    **ORB_ANALYSIS_27_CALCULATORS,
 }
 
 # Update class count
@@ -11133,6 +11609,20 @@ __all__ = [
     'SpindleOrbEnergyCalculator',
     'SpindleSubCycleCalculator',
     'ORB_ANALYSIS_26_CALCULATORS',
+    
+    # Orb Analysis_27 / UFE ORB EXP 2_15 - Batches #34-#35: UP Equation & SCm' Dynamics (10 classes)
+    'ORB_ANALYSIS_27_PARAMS',
+    'Batch34FrameTrackerCalculator',
+    'Batch35FrameTrackerCalculator',
+    'SCmPrimeMasslessFactorCalculator',
+    'Benchmark2ProgressCalculator',
+    'NegativeTimeCalculator',
+    'UniversalPermanenceEquationCalculator',
+    'ACEDCEFieldGeneratorCalculator',
+    'NonLocalNetworkEnergyCalculator',
+    'QuantumVacuumEnergyCalculator',
+    'SpindleOrbPersistenceCalculator',
+    'ORB_ANALYSIS_27_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
