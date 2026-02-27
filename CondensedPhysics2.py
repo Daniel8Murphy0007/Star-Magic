@@ -12729,6 +12729,461 @@ ORB_ANALYSIS_30_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS 31 - UFE ORB EXP 2_21_07Mar2025 (Universal Permanence Variables)
+# Full UP equation variable system: 29 variables with equations
+# Batch #37 progress: 21/25 images (frames 401-421, 12.03-12.63s)
+# Background fields: Ub, NN, QS, ACE, DCE, SSq, IF^(π-t), QV
+# Non-locality: P = 1 - e^(-γt⁻), γ = 10³ s⁻¹
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Orb Analysis 31 parameters
+ORB_ANALYSIS_31_PARAMS = {
+    'batch_number': 37,
+    'images_uploaded': 21,
+    'images_total': 25,
+    'frame_start': 401,
+    'frame_end': 421,
+    'timestamp_start_s': 12.03,
+    'timestamp_end_s': 12.63,
+    'fps': 33.3,
+    'frame_interval_s': 0.03,
+    'gamma_nonlocality_s_inv': 1e3,  # Non-locality decay constant
+    'hbar_Js': 1.054e-34,  # Reduced Planck constant
+    'ACE_frequency_Hz': 6000,  # Alternating current effect frequency
+    'ACE_amplitude_T': 1e-3,  # ACE amplitude
+    'DCE_field_T': 1e-4,  # Direct current effect
+    'Ub_background_J_m3': 1e-9,  # Universal background
+    'NN_noise_s_inv': 0.01,  # Non-locality noise
+    'QS_scale_m': 1e-20,  # Quantum state scale
+    'SSq_energy_J': 1e-6,  # Superconductive state quantum
+    'QV_vacuum_J_m3': 1e-9,  # Quantum vacuum
+    'eta_curvature': 1e-3,  # Curvature factor
+    'alpha_decay_s_inv': 0.01,  # Background decay constant
+    'beta_decay_s_inv': 0.01,  # SSq decay constant
+    'tau_noise_period_s': 0.1,  # Noise period
+}
+
+
+class Batch37ProgressCalculator:
+    """
+    Calculate batch #37 progress from UFE ORB EXP 2_21.
+    Tracks upload status: 21/25 images, frames 401-421.
+    """
+    
+    def __init__(self, params=None):
+        self.params = params or ORB_ANALYSIS_31_PARAMS
+    
+    def compute(self, dataset: dict = None) -> dict:
+        """Compute batch #37 progress metrics."""
+        p = self.params
+        
+        images_uploaded = p['images_uploaded']
+        images_total = p['images_total']
+        remaining = images_total - images_uploaded
+        progress_pct = (images_uploaded / images_total) * 100
+        
+        frame_start = p['frame_start']
+        frame_end = p['frame_end']
+        frames_processed = frame_end - frame_start + 1
+        
+        time_covered_s = p['timestamp_end_s'] - p['timestamp_start_s']
+        
+        return {
+            'batch_number': p['batch_number'],
+            'images_uploaded': images_uploaded,
+            'images_total': images_total,
+            'images_remaining': remaining,
+            'progress_percent': progress_pct,
+            'frames_processed': frames_processed,
+            'time_covered_s': time_covered_s,
+            'frame_range': f"{frame_start}-{frame_end}",
+            'timestamp_range': f"{p['timestamp_start_s']:.2f}-{p['timestamp_end_s']:.2f}s",
+            'equation': 'progress = (uploaded / total) × 100',
+        }
+
+
+class NegativeTimeCalculator:
+    """
+    Calculate negative time t⁻ (retrocausal component).
+    Equation: t⁻ = -t_n · e^(π - t_n)
+    Models non-local effects akin to quantum entanglement in red dwarf jets.
+    """
+    
+    def __init__(self, params=None):
+        self.params = params or ORB_ANALYSIS_31_PARAMS
+    
+    def compute(self, dataset: dict = None) -> dict:
+        """Compute negative time from normalized time."""
+        import math
+        
+        t_n = dataset.get('t_n', self.params['timestamp_end_s']) if dataset else self.params['timestamp_end_s']
+        
+        # t⁻ = -t_n · e^(π - t_n)
+        exponent = math.pi - t_n
+        t_minus = -t_n * math.exp(exponent)
+        
+        return {
+            't_n_s': t_n,
+            'pi': math.pi,
+            'exponent': exponent,
+            't_minus_s': t_minus,
+            'equation': 't⁻ = -t_n · e^(π - t_n)',
+            'description': 'Retrocausal component reflecting non-local effects',
+            'stellar_analog': 'Quantum entanglement in red dwarf jets',
+        }
+
+
+class GravitationalConstantKCalculator:
+    """
+    Calculate gravitational scaling constant k_i.
+    Equation: k_i = G · M_s / M_ref
+    Where G = 6.674×10⁻¹¹ m³/kg/s², M_s = 0.5g (plasmoid), M_ref = 1kg
+    """
+    
+    def __init__(self, params=None):
+        self.params = params or ORB_ANALYSIS_31_PARAMS
+    
+    def compute(self, dataset: dict = None) -> dict:
+        """Compute gravitational constant k_i."""
+        G = 6.674e-11  # m³/(kg·s²)
+        M_s_kg = dataset.get('M_s_kg', 0.0005) if dataset else 0.0005  # 0.5g
+        M_ref = 1.0  # Reference mass in kg
+        
+        k_i = G * M_s_kg / M_ref
+        
+        return {
+            'G_m3_kg_s2': G,
+            'M_s_kg': M_s_kg,
+            'M_ref_kg': M_ref,
+            'k_i': k_i,
+            'equation': 'k_i = G · M_s / M_ref',
+            'description': 'Gravitational scaling factor for plasmoid dynamics',
+            'calibration_error': '±5%',
+        }
+
+
+class MagneticConstantMuCalculator:
+    """
+    Calculate magnetic scaling constant μ_j.
+    Equation: μ_j = μ_0 · B_s / B_ref
+    Where μ_0 = 4π×10⁻⁷ H/m, B_s = 10⁻³ T, B_ref = 1 T
+    """
+    
+    def __init__(self, params=None):
+        self.params = params or ORB_ANALYSIS_31_PARAMS
+    
+    def compute(self, dataset: dict = None) -> dict:
+        """Compute magnetic constant μ_j."""
+        import math
+        
+        mu_0 = 4 * math.pi * 1e-7  # H/m (permeability of free space)
+        B_s = dataset.get('B_s_T', 1e-3) if dataset else 1e-3  # 10⁻³ T
+        B_ref = 1.0  # Reference field in T
+        
+        mu_j = mu_0 * B_s / B_ref
+        
+        return {
+            'mu_0_H_m': mu_0,
+            'B_s_T': B_s,
+            'B_ref_T': B_ref,
+            'mu_j_H_m': mu_j,
+            'equation': 'μ_j = μ_0 · B_s / B_ref',
+            'description': 'Magnetic scaling factor for electromagnetic interactions',
+            'calibration_error': '±5%',
+        }
+
+
+class TemperatureStressEnergyCalculator:
+    """
+    Calculate temperature stress-energy tensor component T_s^μν.
+    Simplified: T_s^μν ≈ 10⁻³ · T_s
+    Links temperature to spacetime curvature via general relativity.
+    """
+    
+    def __init__(self, params=None):
+        self.params = params or ORB_ANALYSIS_31_PARAMS
+    
+    def compute(self, dataset: dict = None) -> dict:
+        """Compute temperature stress-energy tensor."""
+        eta = self.params['eta_curvature']  # 10⁻³
+        
+        # Temperature at midpoint (default)
+        T_bulb_K = dataset.get('T_bulb_K', 4000) if dataset else 4000
+        T_top_K = dataset.get('T_top_K', 288) if dataset else 288
+        z_rel = dataset.get('z_rel', 0.5) if dataset else 0.5  # Relative height 0-1
+        
+        # T_s(z) = T_bulb - (T_bulb - T_top) · z
+        T_s = T_bulb_K - (T_bulb_K - T_top_K) * z_rel
+        
+        # Simplified tensor component
+        T_s_mu_nu = eta * T_s
+        
+        return {
+            'T_bulb_K': T_bulb_K,
+            'T_top_K': T_top_K,
+            'z_relative': z_rel,
+            'T_s_K': T_s,
+            'eta': eta,
+            'T_s_mu_nu_kg_m_s2': T_s_mu_nu,
+            'equation': 'T_s^μν = η · T_s, where T_s(z) = T_bulb - (T_bulb - T_top) · z',
+            'description': 'Links temperature to spacetime curvature',
+            'stellar_analog': 'Red dwarf energy distribution',
+        }
+
+
+class NonLocalityDecayCalculator:
+    """
+    Calculate non-locality probability P from negative time.
+    Equation: P = 1 - e^(-γ|t⁻|)
+    Where γ = 10³ s⁻¹ (non-locality decay constant)
+    """
+    
+    def __init__(self, params=None):
+        self.params = params or ORB_ANALYSIS_31_PARAMS
+    
+    def compute(self, dataset: dict = None) -> dict:
+        """Compute non-locality probability."""
+        import math
+        
+        gamma = self.params['gamma_nonlocality_s_inv']  # 10³ s⁻¹
+        
+        # Get t⁻ or compute from t_n
+        if dataset and 't_minus_s' in dataset:
+            t_minus = dataset['t_minus_s']
+        else:
+            t_n = dataset.get('t_n', self.params['timestamp_end_s']) if dataset else self.params['timestamp_end_s']
+            t_minus = -t_n * math.exp(math.pi - t_n)
+        
+        # P = 1 - e^(-γ|t⁻|)
+        P = 1 - math.exp(-gamma * abs(t_minus))
+        
+        # Expected jumps per frame (observed 1-2)
+        jumps_per_frame = P * 10  # Scale factor from observation
+        
+        return {
+            'gamma_s_inv': gamma,
+            't_minus_s': t_minus,
+            'abs_t_minus': abs(t_minus),
+            'probability_P': P,
+            'jumps_per_frame_expected': jumps_per_frame,
+            'jumps_per_frame_observed': '1-2',
+            'equation': 'P = 1 - e^(-γ|t⁻|)',
+            'description': 'Non-local jump probability from Universal Aether',
+        }
+
+
+class QuantumStatePhaseCalculator:
+    """
+    Calculate quantum state QS with complex phase.
+    Equation: QS(t⁻) = QS_0 · e^(i · t⁻ / ℏ)
+    Models H₂ quantum interactions in plasmoid coherence.
+    """
+    
+    def __init__(self, params=None):
+        self.params = params or ORB_ANALYSIS_31_PARAMS
+    
+    def compute(self, dataset: dict = None) -> dict:
+        """Compute quantum state phase."""
+        import math
+        import cmath
+        
+        QS_0 = self.params['QS_scale_m']  # 10⁻²⁰ m
+        hbar = self.params['hbar_Js']  # 1.054×10⁻³⁴ J·s
+        
+        # Get t⁻
+        if dataset and 't_minus_s' in dataset:
+            t_minus = dataset['t_minus_s']
+        else:
+            t_n = dataset.get('t_n', self.params['timestamp_end_s']) if dataset else self.params['timestamp_end_s']
+            t_minus = -t_n * math.exp(math.pi - t_n)
+        
+        # Phase = t⁻ / ℏ
+        phase = t_minus / hbar
+        
+        # QS = QS_0 · e^(i·phase)
+        QS_complex = QS_0 * cmath.exp(1j * phase)
+        
+        return {
+            'QS_0_m': QS_0,
+            'hbar_Js': hbar,
+            't_minus_s': t_minus,
+            'phase_rad': phase,
+            'QS_real': QS_complex.real,
+            'QS_imag': QS_complex.imag,
+            'QS_magnitude': abs(QS_complex),
+            'equation': 'QS(t⁻) = QS_0 · e^(i · t⁻ / ℏ)',
+            'description': 'Quantum superposition effects for H₂ interactions',
+            'atomic_reference': 'H₂ bonding energy ~4.5 eV',
+        }
+
+
+class AlternatingCurrentEffectCalculator:
+    """
+    Calculate ACE (Alternating Current Effect) at 6000 Hz.
+    Equation: ACE(t⁻) = ACE_0 · sin(2π · 6000 · t⁻)
+    Drives plasmoid oscillations mimicking stellar magnetic variations.
+    """
+    
+    def __init__(self, params=None):
+        self.params = params or ORB_ANALYSIS_31_PARAMS
+    
+    def compute(self, dataset: dict = None) -> dict:
+        """Compute alternating current effect."""
+        import math
+        
+        ACE_0 = self.params['ACE_amplitude_T']  # 10⁻³ T
+        freq = self.params['ACE_frequency_Hz']  # 6000 Hz
+        
+        # Get t⁻
+        if dataset and 't_minus_s' in dataset:
+            t_minus = dataset['t_minus_s']
+        else:
+            t_n = dataset.get('t_n', self.params['timestamp_end_s']) if dataset else self.params['timestamp_end_s']
+            t_minus = -t_n * math.exp(math.pi - t_n)
+        
+        # ACE = ACE_0 · sin(2π · f · t⁻)
+        omega = 2 * math.pi * freq
+        phase = omega * t_minus
+        ACE = ACE_0 * math.sin(phase)
+        
+        return {
+            'ACE_0_T': ACE_0,
+            'frequency_Hz': freq,
+            'omega_rad_s': omega,
+            't_minus_s': t_minus,
+            'phase_rad': phase,
+            'ACE_T': ACE,
+            'equation': 'ACE(t⁻) = ACE_0 · sin(2π · 6000 · t⁻)',
+            'description': 'Oscillatory field driving plasmoid dynamics',
+            'stellar_analog': 'Stellar magnetic oscillations',
+        }
+
+
+class InterferenceFactorCalculator:
+    """
+    Calculate interference factor IF^(π-t) from wave-particle duality.
+    Equation: IF^(π-t) = e^(i(π-t))
+    Models phase interference effects in plasmoid dynamics.
+    """
+    
+    def __init__(self, params=None):
+        self.params = params or ORB_ANALYSIS_31_PARAMS
+    
+    def compute(self, dataset: dict = None) -> dict:
+        """Compute interference factor."""
+        import math
+        import cmath
+        
+        t = dataset.get('t', self.params['timestamp_end_s']) if dataset else self.params['timestamp_end_s']
+        
+        # IF = e^(i(π-t))
+        exponent = math.pi - t
+        IF_complex = cmath.exp(1j * exponent)
+        
+        # Magnitude is always 1 for pure phase
+        magnitude = abs(IF_complex)
+        phase_angle = cmath.phase(IF_complex)
+        
+        return {
+            't_s': t,
+            'pi': math.pi,
+            'exponent': exponent,
+            'IF_real': IF_complex.real,
+            'IF_imag': IF_complex.imag,
+            'IF_magnitude': magnitude,
+            'IF_phase_rad': phase_angle,
+            'equation': 'IF^(π-t) = e^(i(π-t))',
+            'description': 'Phase interference from wave-particle duality',
+        }
+
+
+class UniversalPermanenceCalculator:
+    """
+    Compute full Universal Permanence (UP) equation integrating all terms.
+    UP(t) = Σ[k_i·Ug_i] + Σ[μ_j·Um_j] + (g_μν + η·T_s^μν) 
+          + Ub + NN + QS + ACE + DCE + SSq + IF^(π-t) + QV
+    """
+    
+    def __init__(self, params=None):
+        self.params = params or ORB_ANALYSIS_31_PARAMS
+    
+    def compute(self, dataset: dict = None) -> dict:
+        """Compute full UP equation."""
+        import math
+        
+        p = self.params
+        t_n = dataset.get('t_n', p['timestamp_end_s']) if dataset else p['timestamp_end_s']
+        r = dataset.get('r_m', 0.0889) if dataset else 0.0889
+        M_s = dataset.get('M_s_kg', 0.0005) if dataset else 0.0005
+        
+        # Constants
+        G = 6.674e-11
+        
+        # Gravitational term: Ug = G·M_s/r
+        Ug = G * M_s / r
+        
+        # Negative time
+        t_minus = -t_n * math.exp(math.pi - t_n)
+        
+        # Background fields (constant terms)
+        Ub = p['Ub_background_J_m3']  # 10⁻⁹
+        DCE = p['DCE_field_T']  # 10⁻⁴
+        SSq = p['SSq_energy_J']  # 10⁻⁶
+        QV = p['QV_vacuum_J_m3']  # 10⁻⁹
+        
+        # Non-locality noise: NN = NN_0·sin(2πt⁻/τ)
+        NN_0 = p['NN_noise_s_inv']
+        tau = p['tau_noise_period_s']
+        NN = NN_0 * math.sin(2 * math.pi * t_minus / tau)
+        
+        # ACE: oscillatory field
+        ACE_0 = p['ACE_amplitude_T']
+        ACE = ACE_0 * math.sin(2 * math.pi * 6000 * t_minus)
+        
+        # Temperature stress-energy (simplified scalar)
+        eta = p['eta_curvature']
+        T_s = 2144  # Midpoint temperature K
+        T_stress = eta * T_s
+        
+        # Sum all terms (simplified scalar combination for demonstration)
+        UP_value = Ug + Ub + abs(NN) + abs(ACE) + DCE + SSq + QV + T_stress
+        
+        return {
+            't_n_s': t_n,
+            't_minus_s': t_minus,
+            'r_m': r,
+            'M_s_kg': M_s,
+            'Ug_J_kg': Ug,
+            'Ub_J_m3': Ub,
+            'NN_s_inv': NN,
+            'ACE_T': ACE,
+            'DCE_T': DCE,
+            'SSq_J': SSq,
+            'QV_J_m3': QV,
+            'T_stress_kg_m_s2': T_stress,
+            'UP_simplified': UP_value,
+            'equation': 'UP(t) = Σ[k_i·Ug_i] + Σ[μ_j·Um_j] + (g_μν + η·T_s^μν) + Ub + NN + QS + ACE + DCE + SSq + IF^(π-t) + QV',
+            'variable_count': 29,
+            'description': 'Full Universal Permanence equation integrating plasmoids, fields, and non-locality',
+        }
+
+
+# Registry for Orb Analysis 31 calculators
+ORB_ANALYSIS_31_CALCULATORS = {
+    'Batch37ProgressCalculator': Batch37ProgressCalculator(),
+    'NegativeTimeCalculator': NegativeTimeCalculator(),
+    'GravitationalConstantKCalculator': GravitationalConstantKCalculator(),
+    'MagneticConstantMuCalculator': MagneticConstantMuCalculator(),
+    'TemperatureStressEnergyCalculator': TemperatureStressEnergyCalculator(),
+    'NonLocalityDecayCalculator': NonLocalityDecayCalculator(),
+    'QuantumStatePhaseCalculator': QuantumStatePhaseCalculator(),
+    'AlternatingCurrentEffectCalculator': AlternatingCurrentEffectCalculator(),
+    'InterferenceFactorCalculator': InterferenceFactorCalculator(),
+    'UniversalPermanenceCalculator': UniversalPermanenceCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -12755,6 +13210,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_28_CALCULATORS,
     **ORB_ANALYSIS_29_CALCULATORS,
     **ORB_ANALYSIS_30_CALCULATORS,
+    **ORB_ANALYSIS_31_CALCULATORS,
 }
 
 # Update class count
@@ -13018,6 +13474,20 @@ __all__ = [
     'ReactivityEnergyDensityCalculator',
     'ComponentFocusCalculator',
     'ORB_ANALYSIS_30_CALCULATORS',
+    
+    # Orb Analysis_31 / UFE ORB EXP 2_21 - Universal Permanence Variables (10 classes)
+    'ORB_ANALYSIS_31_PARAMS',
+    'Batch37ProgressCalculator',
+    'NegativeTimeCalculator',
+    'GravitationalConstantKCalculator',
+    'MagneticConstantMuCalculator',
+    'TemperatureStressEnergyCalculator',
+    'NonLocalityDecayCalculator',
+    'QuantumStatePhaseCalculator',
+    'AlternatingCurrentEffectCalculator',
+    'InterferenceFactorCalculator',
+    'UniversalPermanenceCalculator',
+    'ORB_ANALYSIS_31_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
