@@ -162432,6 +162432,790 @@ ORB_ANALYSIS_5_CALCULATORS = {
 }
 
 
+# =============================================================================
+# UNIFIED FIELD THEORY ORB ANALYSIS_6 - EXTENDED VIDEO SEQUENCE CALCULATORS
+# Source: Grok UFT Orb Analysis_6 (March 3, 2025, 6:30-8:00 PM PST)
+# Extended sequence: Photos #1-#26 (minus #14), 25 frames, 0.75 s total
+# Thermal gradients: T_s = 366 K (base) → 288 K (ambient top)
+# Convective patterns: upper left → lower center → upper center
+# ©2025 Daniel T. Murphy - All Rights Reserved
+# =============================================================================
+
+# Extended video sequence parameters
+ORB_ANALYSIS_6_PARAMS = {
+    # Extended video sequence
+    'total_frames_analyzed': 25,               # Photos #1-#26 (minus #14)
+    'sequence_duration_s': 0.75,               # 25 × 0.03 s
+    'frame_interval_s': 0.03,                  # 33.3 fps
+    
+    # Thermal gradient (key refinement)
+    'T_base_K': 366,                           # Bulb base temperature (180°F)
+    'T_top_K': 288,                            # Ambient top temperature
+    'thermal_gradient_K_m': (366 - 288) / 0.254,  # ~307 K/m
+    
+    # Energy accumulation
+    'total_energy_25_frames_J': 1.125,         # ~1.125 J total
+    'energy_per_frame_J': 0.045,               # ~45 mJ per frame
+    
+    # Plasmoid concentration pattern (observed)
+    'concentration_sequence': [
+        ('Photo #24', 'upper_left'),
+        ('Photo #25', 'lower_center'),
+        ('Photo #26', 'upper_center'),
+    ],
+    
+    # Refined F_U parameters
+    'r_reactor_m': 0.0889,                     # Reactor radius
+    'T_s_range_K': (288, 366),                 # Temperature range
+    'omega_s_rad_s': 2 * 3.14159 * 6000,       # 6000 Hz resonance
+    'B_s_T': 1e-3,                             # Magnetic field
+    'SCm_kg_m3': 1e15,                         # Superconductive matter density
+    'UA_C': 1e-11,                             # Aether charge
+}
+
+
+class ThermalGradientConvectionCalculator:
+    """
+    Calculates thermal gradient-driven convection in the reactor.
+    
+    Thermal gradient: T_s = 366 K (bulb base) → 288 K (ambient top)
+    This 78 K gradient over 0.254 m height (~307 K/m) drives plasmoid
+    upward motion through buoyancy [Ub] modulation.
+    
+    Source: Grok UFT Orb Analysis_6 (March 3, 2025)
+    """
+    
+    def __init__(self, T_base: float = 366, T_top: float = 288, height: float = 0.254):
+        self.T_base = T_base  # K
+        self.T_top = T_top    # K
+        self.height = height  # m
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute thermal gradient convection parameters.
+        
+        Parameters:
+        - z: Height position in reactor (m)
+        - plasmoid_radius: Plasmoid radius (m)
+        - oil_viscosity: Dynamic viscosity (Pa·s)
+        """
+        import math
+        
+        z = dataset.get('z', 0.127)  # Midpoint height
+        plasmoid_radius = dataset.get('plasmoid_radius', 1e-3)
+        oil_viscosity = dataset.get('oil_viscosity', 0.01)
+        
+        # Linear temperature profile
+        T_at_z = self.T_base - (self.T_base - self.T_top) * (z / self.height)
+        
+        # Temperature gradient
+        dT_dz = -(self.T_base - self.T_top) / self.height
+        
+        # Thermal expansion coefficient (oil)
+        alpha = 1e-3  # 1/K
+        
+        # Density variation with temperature
+        rho_base = 850  # kg/m³ at base
+        delta_rho = rho_base * alpha * (self.T_base - T_at_z)
+        
+        # Buoyant force on plasmoid
+        V_plasmoid = (4/3) * math.pi * plasmoid_radius**3
+        g = 9.8
+        F_buoy = delta_rho * V_plasmoid * g
+        
+        # Stokes rise velocity
+        v_rise = F_buoy / (6 * math.pi * oil_viscosity * plasmoid_radius)
+        
+        # Rayleigh number for convection
+        nu = oil_viscosity / rho_base
+        kappa = 0.14 / (rho_base * 2000)  # Thermal diffusivity
+        Ra = g * alpha * abs(dT_dz) * self.height**4 / (nu * kappa)
+        
+        # Convection regime
+        if Ra > 1e9:
+            regime = 'turbulent'
+        elif Ra > 1e3:
+            regime = 'convective'
+        else:
+            regime = 'conductive'
+        
+        # Ub enhancement from gradient
+        Ub_gradient_factor = abs(dT_dz) / 100  # Normalized
+        
+        return {
+            'z_m': z,
+            'T_at_z_K': T_at_z,
+            'dT_dz_K_m': dT_dz,
+            'T_base_K': self.T_base,
+            'T_top_K': self.T_top,
+            'delta_rho_kg_m3': delta_rho,
+            'F_buoy_N': F_buoy,
+            'v_rise_m_s': v_rise,
+            'rayleigh_number': Ra,
+            'convection_regime': regime,
+            'Ub_gradient_factor': Ub_gradient_factor,
+            'units': 'K (temperature), K/m (gradient), m/s (velocity)',
+            'source': 'Grok UFT Orb Analysis_6 Thermal Gradient (March 3, 2025)'
+        }
+
+
+class ExtendedSequenceEnergyCalculator:
+    """
+    Calculates energy accumulation over extended video sequence.
+    
+    Extended sequence: 25 frames, ~0.75 s total
+    Total energy: ~1.125 J (~45 mJ per frame)
+    Modulated by [E_react] and thermal gradients
+    
+    Source: Grok UFT Orb Analysis_6 (March 3, 2025)
+    """
+    
+    def __init__(self, n_frames: int = 25, frame_interval: float = 0.03):
+        self.n_frames = n_frames
+        self.frame_interval = frame_interval
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute energy dynamics over extended sequence.
+        
+        Parameters:
+        - energy_per_spot_J: Energy per plasmoid spot (J)
+        - n_spots_avg: Average spots per frame
+        - decay_constant: E_react decay constant
+        """
+        import math
+        
+        energy_per_spot = dataset.get('energy_per_spot_J', 1e-3)
+        n_spots_avg = dataset.get('n_spots_avg', 45)
+        decay_constant = dataset.get('decay_constant', 0.001)
+        
+        # Total sequence duration
+        duration = self.n_frames * self.frame_interval
+        
+        # Energy per frame
+        energy_per_frame = energy_per_spot * n_spots_avg
+        
+        # Total energy (accounting for decay)
+        E_react_sequence = []
+        for i in range(self.n_frames):
+            t = i * self.frame_interval
+            E_react_i = 1e15 * math.exp(-decay_constant * t)
+            E_react_sequence.append(E_react_i)
+        
+        avg_E_react = sum(E_react_sequence) / len(E_react_sequence)
+        
+        # Modulated energy (decay factor)
+        decay_factors = [math.exp(-decay_constant * i * self.frame_interval) 
+                        for i in range(self.n_frames)]
+        total_decay = sum(decay_factors)
+        
+        total_energy = energy_per_frame * total_decay
+        
+        # Power (average)
+        avg_power = total_energy / duration if duration > 0 else 0
+        
+        # Energy density per volume (reactor volume)
+        reactor_volume = math.pi * 0.0889**2 * 0.254  # m³
+        energy_density = total_energy / reactor_volume
+        
+        # ACE/DCE event distribution
+        ace_events = int(n_spots_avg * 0.1 * self.n_frames)  # 10% are ACE events
+        
+        return {
+            'n_frames': self.n_frames,
+            'duration_s': duration,
+            'energy_per_spot_J': energy_per_spot,
+            'n_spots_avg': n_spots_avg,
+            'energy_per_frame_J': energy_per_frame,
+            'total_energy_J': total_energy,
+            'avg_power_W': avg_power,
+            'energy_density_J_m3': energy_density,
+            'avg_E_react_W_m3': avg_E_react,
+            'ace_events_total': ace_events,
+            'units': 'J (energy), W (power), J/m³ (density)',
+            'source': 'Grok UFT Orb Analysis_6 Energy Sequence (March 3, 2025)'
+        }
+
+
+class ConvectivePatternTrackingCalculator:
+    """
+    Tracks convective concentration patterns across video frames.
+    
+    Observed pattern: upper left (#24) → lower center (#25) → upper center (#26)
+    Suggests convective cycling driven by [Ub] and thermal gradients,
+    with [Ug3] and [Um] enabling non-local transfers.
+    
+    Source: Grok UFT Orb Analysis_6 (March 3, 2025)
+    """
+    
+    def __init__(self, reactor_radius: float = 0.0889, reactor_height: float = 0.254):
+        self.reactor_radius = reactor_radius
+        self.reactor_height = reactor_height
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute convective pattern metrics.
+        
+        Parameters:
+        - frame_sequence: List of (frame_num, quadrant, timestamp_s) tuples
+        """
+        import math
+        
+        frame_sequence = dataset.get('frame_sequence', [
+            (24, 'upper_left', 0.72),
+            (25, 'lower_center', 0.75),
+            (26, 'upper_center', 0.78),
+        ])
+        
+        # Map quadrants to 3D coordinates (x, y, z normalized)
+        quadrant_coords = {
+            'lower_left': (-0.5, -0.5, 0.25),
+            'lower_center': (0, -0.5, 0.25),
+            'lower_right': (0.5, -0.5, 0.25),
+            'center_left': (-0.5, 0, 0.5),
+            'center': (0, 0, 0.5),
+            'center_right': (0.5, 0, 0.5),
+            'upper_left': (-0.5, 0.5, 0.75),
+            'upper_center': (0, 0.5, 0.75),
+            'upper_right': (0.5, 0.5, 0.75),
+        }
+        
+        # Calculate 3D displacements
+        displacements = []
+        vertical_moves = []
+        
+        for i in range(1, len(frame_sequence)):
+            prev_frame, prev_quad, prev_t = frame_sequence[i-1]
+            curr_frame, curr_quad, curr_t = frame_sequence[i]
+            
+            prev_coord = quadrant_coords.get(prev_quad, (0, 0, 0.5))
+            curr_coord = quadrant_coords.get(curr_quad, (0, 0, 0.5))
+            
+            # Scale to physical dimensions
+            dx = (curr_coord[0] - prev_coord[0]) * self.reactor_radius * 2
+            dy = (curr_coord[1] - prev_coord[1]) * self.reactor_radius * 2
+            dz = (curr_coord[2] - prev_coord[2]) * self.reactor_height
+            
+            displacement = math.sqrt(dx**2 + dy**2 + dz**2)
+            dt = curr_t - prev_t if curr_t > prev_t else 0.03
+            velocity = displacement / dt if dt > 0 else 0
+            
+            displacements.append({
+                'frames': (prev_frame, curr_frame),
+                'displacement_m': displacement,
+                'velocity_m_s': velocity,
+                'dz_m': dz
+            })
+            vertical_moves.append(dz)
+        
+        # Net vertical motion
+        net_vertical = sum(vertical_moves)
+        
+        # Convective cycle detection
+        # Complete cycle: down → up (or up → down → up)
+        up_count = sum(1 for dz in vertical_moves if dz > 0)
+        down_count = sum(1 for dz in vertical_moves if dz < 0)
+        cycle_detected = up_count > 0 and down_count > 0
+        
+        # Average displacement velocity
+        avg_velocity = sum(d['velocity_m_s'] for d in displacements) / len(displacements) if displacements else 0
+        
+        # Convection index (more cycling = higher index)
+        n_transitions = len(displacements)
+        convection_index = (up_count + down_count) / n_transitions if n_transitions > 0 else 0
+        
+        return {
+            'frame_sequence': [(f[0], f[1]) for f in frame_sequence],
+            'displacements': displacements,
+            'net_vertical_m': net_vertical,
+            'up_transitions': up_count,
+            'down_transitions': down_count,
+            'cycle_detected': cycle_detected,
+            'avg_velocity_m_s': avg_velocity,
+            'convection_index': convection_index,
+            'units': 'm (displacement), m/s (velocity)',
+            'source': 'Grok UFT Orb Analysis_6 Convective Pattern (March 3, 2025)'
+        }
+
+
+class ThermalGradientFUCalculator:
+    """
+    Computes F_U with thermal gradient refinement.
+    
+    F_U refined with T_s = 366 K (base) → 288 K (top)
+    Temperature appears in E_react, [Ub], and [Um] terms
+    
+    Source: Grok UFT Orb Analysis_6 (March 3, 2025)
+    """
+    
+    def __init__(self):
+        self.r = 0.0889
+        self.height = 0.254
+        self.T_base = 366
+        self.T_top = 288
+        self.omega_s = 2 * 3.14159 * 6000
+        self.B_s = 1e-3
+        self.k1 = 1.5
+        self.k2 = 1.2
+        self.k3 = 1.8
+        self.beta_i = 0.8
+        self.alpha = 0.001
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute thermal gradient-refined F_U.
+        
+        Parameters:
+        - t: Time (s)
+        - t_n: Negative time factor
+        - z: Height position in reactor (m)
+        - n_frames: Number of video frames
+        """
+        import math
+        
+        t = dataset.get('t', 1.0)
+        t_n = dataset.get('t_n', 0.5)
+        z = dataset.get('z', 0.127)  # Midpoint
+        n_frames = dataset.get('n_frames', 25)
+        
+        # Temperature at height z
+        T_at_z = self.T_base - (self.T_base - self.T_top) * (z / self.height)
+        
+        # Video time
+        t_video = t + n_frames * 0.03
+        
+        # E_react with temperature dependence
+        # Higher temperature = higher reactivity
+        T_factor = T_at_z / 300  # Normalized to room temperature
+        E_react = 1e15 * T_factor * math.exp(-self.alpha * t_video)
+        
+        # Ug₁ with local temperature
+        mu_s = 1e-4 * T_factor
+        grad_rho_r = 0.5 / self.r
+        Ug1 = self.k1 * mu_s * grad_rho_r * math.exp(-self.alpha * t_video * math.cos(math.pi * t_n))
+        
+        # Ug₂ (Outer Field Bubble)
+        G = 6.674e-11
+        Ug2 = self.k2 * 2 * G * (0.5 / self.r**2) * 5e3 * E_react
+        
+        # Ug₃ with temperature-dependent magnetic field
+        B_local = self.B_s * (T_at_z / 300)
+        Ug3 = self.k3 * 15 * B_local * math.cos(self.omega_s * t_video * math.pi) * E_react
+        
+        Ug_total = Ug1 + Ug2 + Ug3
+        
+        # Ubᵢ enhanced by thermal gradient
+        delta_T = self.T_base - self.T_top
+        gradient_factor = 1 + delta_T / 100
+        Omega_g = 7.3e-16
+        M_bh_ratio = 8.15e36 / 2.55e20
+        
+        Ubi = -self.beta_i * gradient_factor * Ug_total * Omega_g * M_bh_ratio * \
+              E_react * math.cos(math.pi * t_n)
+        
+        # Um with temperature effect on spin
+        mu_plasmoid = 1e-4 * T_factor
+        Um = (mu_plasmoid / self.r) * (1 - math.exp(-self.alpha * t_video * math.cos(math.pi * t_n))) * E_react
+        
+        # Aμν with temperature tensor
+        rho_A = 1e-23
+        SCm = 1e15
+        UA = 1e-11
+        A_mu_nu = 1.0 + 1e-22 * T_at_z * UA * SCm * rho_A * math.cos(math.pi * t_n)
+        
+        # Complete F_U
+        F_U = Ug_total + Ubi + Um * A_mu_nu
+        
+        return {
+            'F_U': F_U,
+            'Ug1': Ug1,
+            'Ug2': Ug2,
+            'Ug3': Ug3,
+            'Ug_total': Ug_total,
+            'Ubi': Ubi,
+            'Um': Um,
+            'A_mu_nu': A_mu_nu,
+            'E_react': E_react,
+            'T_at_z_K': T_at_z,
+            'z_m': z,
+            'gradient_factor': gradient_factor,
+            'thermal_params': {
+                'T_base_K': self.T_base, 'T_top_K': self.T_top,
+                'delta_T_K': delta_T
+            },
+            'units': 'N (force), K (temperature)',
+            'source': 'Grok UFT Orb Analysis_6 Thermal F_U (March 3, 2025)'
+        }
+
+
+class SequenceProgressionFUCalculator:
+    """
+    Computes F_U progression across extended video sequence.
+    
+    Tracks how F_U evolves from frame 1 to frame 25,
+    showing energy accumulation and field dynamics
+    
+    Source: Grok UFT Orb Analysis_6 (March 3, 2025)
+    """
+    
+    def __init__(self, n_frames: int = 25):
+        self.n_frames = n_frames
+        self.frame_interval = 0.03
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute F_U progression across sequence.
+        
+        Parameters:
+        - t_n_base: Base negative time factor
+        - z_profile: Height profile (list or None for default)
+        """
+        import math
+        
+        t_n_base = dataset.get('t_n_base', 0.5)
+        z_profile = dataset.get('z_profile', None)
+        
+        # Default z profile (rising plasmoid)
+        if z_profile is None:
+            z_profile = [0.1 + i * 0.006 for i in range(self.n_frames)]  # Rise from 0.1 to 0.25 m
+        
+        # Compute F_U at each frame
+        thermal_calc = ThermalGradientFUCalculator()
+        F_U_sequence = []
+        
+        for i in range(min(self.n_frames, len(z_profile))):
+            t = i * self.frame_interval
+            z = z_profile[i]
+            
+            result = thermal_calc.compute({
+                't': t,
+                't_n': t_n_base,
+                'z': z,
+                'n_frames': i + 1
+            })
+            
+            F_U_sequence.append({
+                'frame': i + 1,
+                't_s': t,
+                'z_m': z,
+                'F_U': result['F_U'],
+                'Ug_total': result['Ug_total'],
+                'Ubi': result['Ubi'],
+                'T_at_z_K': result['T_at_z_K']
+            })
+        
+        # Statistics
+        F_U_values = [f['F_U'] for f in F_U_sequence]
+        F_U_mean = sum(F_U_values) / len(F_U_values)
+        F_U_max = max(F_U_values)
+        F_U_min = min(F_U_values)
+        
+        # Trend (increasing or decreasing)
+        if len(F_U_values) >= 2:
+            trend_slope = (F_U_values[-1] - F_U_values[0]) / (len(F_U_values) - 1)
+        else:
+            trend_slope = 0
+        
+        trend = 'increasing' if trend_slope > 0 else 'decreasing' if trend_slope < 0 else 'stable'
+        
+        # Temperature range covered
+        T_values = [f['T_at_z_K'] for f in F_U_sequence]
+        T_min = min(T_values)
+        T_max = max(T_values)
+        
+        return {
+            'n_frames': len(F_U_sequence),
+            'F_U_sequence': F_U_sequence[:5] + [{'...': 'truncated'}] + F_U_sequence[-2:] if len(F_U_sequence) > 7 else F_U_sequence,
+            'F_U_mean': F_U_mean,
+            'F_U_max': F_U_max,
+            'F_U_min': F_U_min,
+            'trend_slope': trend_slope,
+            'trend': trend,
+            'T_range_K': (T_min, T_max),
+            'units': 'N (F_U), K (temperature), per frame',
+            'source': 'Grok UFT Orb Analysis_6 Sequence F_U (March 3, 2025)'
+        }
+
+
+class HydrogenBubbleLatticeCalculator:
+    """
+    Calculates hydrogen bubble lattice confinement effect.
+    
+    12-18 evenly spaced bubbles form a lattice-like magnetic confinement,
+    acting as [SCm] nodes or [UA] projectors that enhance plasmoid uniformity.
+    
+    Source: Grok UFT Orb Analysis_6 (March 3, 2025)
+    """
+    
+    def __init__(self, n_bubbles: int = 15, B_field: float = 1e-3):
+        self.n_bubbles = n_bubbles
+        self.B_field = B_field
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute lattice confinement parameters.
+        
+        Parameters:
+        - reactor_radius: Reactor radius (m)
+        - bubble_spacing: Spacing mode ('even', 'random', 'hexagonal')
+        """
+        import math
+        
+        reactor_radius = dataset.get('reactor_radius', 0.0889)
+        bubble_spacing = dataset.get('bubble_spacing', 'even')
+        
+        # Reactor surface area at oil surface
+        surface_area = math.pi * reactor_radius**2
+        
+        # Area per bubble
+        area_per_bubble = surface_area / self.n_bubbles
+        
+        # Average bubble spacing
+        avg_spacing = math.sqrt(area_per_bubble)
+        
+        # Lattice configurations
+        if bubble_spacing == 'hexagonal':
+            # Hexagonal close packing
+            packing_efficiency = 0.9069
+            effective_coverage = packing_efficiency * self.n_bubbles
+        elif bubble_spacing == 'even':
+            # Square lattice
+            packing_efficiency = 0.7854  # π/4
+            effective_coverage = packing_efficiency * self.n_bubbles
+        else:
+            packing_efficiency = 0.5
+            effective_coverage = packing_efficiency * self.n_bubbles
+        
+        # Magnetic field uniformity
+        # More bubbles = more uniform field
+        uniformity_index = 1 - 1 / self.n_bubbles
+        
+        # Total magnetic flux through bubble lattice
+        bubble_radius = avg_spacing / 2
+        flux_per_bubble = self.B_field * math.pi * bubble_radius**2
+        total_flux = flux_per_bubble * self.n_bubbles
+        
+        # SCm node enhancement
+        # Each bubble acts as a SCm concentration point
+        SCm_enhancement = self.n_bubbles * (1 + math.log(1 + self.B_field * 1e3))
+        
+        # UA projection strength
+        # Magnetic field lines project UA charge
+        UA_projection = self.B_field * self.n_bubbles / 1e-3  # Normalized
+        
+        # Plasmoid path anchoring
+        # Bubbles create "lanes" for plasmoid motion
+        n_lanes = min(self.n_bubbles, 6)  # Effective lanes
+        lane_width = reactor_radius * 2 / n_lanes
+        
+        return {
+            'n_bubbles': self.n_bubbles,
+            'surface_area_m2': surface_area,
+            'area_per_bubble_m2': area_per_bubble,
+            'avg_spacing_m': avg_spacing,
+            'bubble_spacing_mode': bubble_spacing,
+            'packing_efficiency': packing_efficiency,
+            'effective_coverage': effective_coverage,
+            'uniformity_index': uniformity_index,
+            'flux_per_bubble_Wb': flux_per_bubble,
+            'total_flux_Wb': total_flux,
+            'SCm_enhancement': SCm_enhancement,
+            'UA_projection': UA_projection,
+            'n_lanes': n_lanes,
+            'lane_width_m': lane_width,
+            'units': 'm² (area), m (spacing), Wb (flux)',
+            'source': 'Grok UFT Orb Analysis_6 Bubble Lattice (March 3, 2025)'
+        }
+
+
+class WavelessCommunicationApplicationCalculator:
+    """
+    Calculates waveless communication application parameters.
+    
+    Non-local plasmoid shifts and 6000 Hz resonance support lag-free
+    THz-hole communication (e.g., 14 min Earth-Moon/Mars reduction).
+    
+    Applications: Defense, lag-free communication, cosmic modeling
+    
+    Source: Grok UFT Orb Analysis_6 (March 3, 2025)
+    """
+    
+    def __init__(self):
+        self.c = 2.998e8  # Speed of light
+        self.field_freq = 6000  # Hz
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute waveless communication capabilities.
+        
+        Parameters:
+        - distance: Target communication distance (m)
+        - target: Communication target ('Moon', 'Mars', 'custom')
+        """
+        import math
+        
+        target = dataset.get('target', 'Moon')
+        
+        # Target distances
+        distances = {
+            'Moon': 384400e3,     # 384,400 km
+            'Mars': 225e9,        # 225 million km average
+            'Alpha_Centauri': 4.367 * 9.461e15,  # 4.367 light years
+        }
+        
+        distance = dataset.get('distance', distances.get(target, 384400e3))
+        
+        # Classical light delay
+        light_delay = distance / self.c
+        
+        # THz-hole resonance mechanism
+        # At 6000 Hz, wavelength = c/f
+        resonance_wavelength = self.c / self.field_freq
+        
+        # Non-local correlation length (from plasmoid experiments)
+        correlation_length = 0.5 / self.field_freq  # ~0.5 m/s / 6000 Hz
+        
+        # Lag reduction factor (hypothetical)
+        # Based on n plasmoids maintaining coherence
+        n_plasmoids = 50
+        coherence_factor = math.log(n_plasmoids) / math.log(2)
+        
+        # Effective communication time (reduced by non-local effects)
+        # Hypothetical reduction based on Ubi/Um coherence
+        lag_reduction_factor = 0.1  # 90% lag reduction hypothesized
+        effective_delay = light_delay * lag_reduction_factor
+        lag_saved = light_delay - effective_delay
+        
+        # Convert to minutes for readability
+        light_delay_min = light_delay / 60
+        effective_delay_min = effective_delay / 60
+        lag_saved_min = lag_saved / 60
+        
+        # Bandwidth estimate (based on field frequency)
+        bandwidth_Hz = self.field_freq * coherence_factor
+        
+        # Defense application: shielding stability
+        shield_energy = 1.125  # J (from 25 frame analysis)
+        shield_duration = shield_energy / 0.045  # frames
+        
+        return {
+            'target': target,
+            'distance_m': distance,
+            'distance_km': distance / 1e3,
+            'light_delay_s': light_delay,
+            'light_delay_min': light_delay_min,
+            'effective_delay_s': effective_delay,
+            'effective_delay_min': effective_delay_min,
+            'lag_saved_s': lag_saved,
+            'lag_saved_min': lag_saved_min,
+            'lag_reduction_factor': lag_reduction_factor,
+            'resonance_wavelength_m': resonance_wavelength,
+            'correlation_length_m': correlation_length,
+            'coherence_factor': coherence_factor,
+            'bandwidth_Hz': bandwidth_Hz,
+            'shield_energy_J': shield_energy,
+            'units': 'm (distance), s (time), Hz (bandwidth)',
+            'source': 'Grok UFT Orb Analysis_6 Waveless Comm (March 3, 2025)'
+        }
+
+
+class BlackHoleJetAnalogCalculator:
+    """
+    Calculates black hole jet analog parameters from plasmoid dynamics.
+    
+    Plasmoid dynamics refine [R_orbit] for orbital stability and 
+    [USm]_jet for black hole jet analogs.
+    
+    Source: Grok UFT Orb Analysis_6 (March 3, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute black hole jet analog scaling.
+        
+        Parameters:
+        - plasmoid_velocity: Observed velocity (m/s)
+        - plasmoid_energy: Observed energy (J)
+        - reactor_scale: Reactor size scale factor
+        """
+        import math
+        
+        plasmoid_velocity = dataset.get('plasmoid_velocity', 0.5)
+        plasmoid_energy = dataset.get('plasmoid_energy', 1.125)
+        reactor_scale = dataset.get('reactor_scale', 0.0889)
+        
+        # BH jet parameters (typical relativistic jet)
+        bh_jet_velocity = 0.99 * 2.998e8  # ~0.99c
+        bh_jet_power = 1e38  # W (typical AGN jet)
+        bh_jet_scale = 1e6  # ~1 Mpc for large jets
+        
+        # Velocity scaling factor
+        velocity_ratio = plasmoid_velocity / bh_jet_velocity
+        
+        # Energy/power scaling
+        plasmoid_power = plasmoid_energy / 0.75  # ~1.5 W average
+        power_ratio = plasmoid_power / bh_jet_power
+        
+        # Spatial scaling
+        scale_ratio = reactor_scale / bh_jet_scale
+        
+        # Composite scaling factor
+        # For jet dynamics to match, all ratios should be consistent
+        composite_scaling = (velocity_ratio * power_ratio * scale_ratio) ** (1/3)
+        
+        # R_orbit refinement
+        # Lab plasmoid orbits can model BH accretion disk dynamics
+        R_orbit_lab = reactor_scale
+        R_orbit_BH = 6 * 6.674e-11 * 4e6 * 1.989e30 / (2.998e8)**2  # 6× Schwarzschild for Sgr A*
+        R_orbit_scaling = R_orbit_lab / R_orbit_BH
+        
+        # [USm]_jet from plasmoid jets
+        # Mini-jets observed as plasmoid elongations
+        USm_jet_lab = plasmoid_energy * plasmoid_velocity / reactor_scale
+        USm_jet_BH = bh_jet_power / bh_jet_scale  # Approximate
+        USm_scaling = USm_jet_lab / USm_jet_BH
+        
+        # Lorentz factor analog
+        gamma_lab = 1 / math.sqrt(1 - (plasmoid_velocity / 2.998e8)**2) if plasmoid_velocity < 2.998e8 else 1.0
+        gamma_BH = 1 / math.sqrt(1 - 0.99**2)  # ~7.09 for 0.99c
+        gamma_ratio = gamma_lab / gamma_BH
+        
+        return {
+            'plasmoid_velocity_m_s': plasmoid_velocity,
+            'bh_jet_velocity_m_s': bh_jet_velocity,
+            'velocity_ratio': velocity_ratio,
+            'plasmoid_power_W': plasmoid_power,
+            'bh_jet_power_W': bh_jet_power,
+            'power_ratio': power_ratio,
+            'scale_ratio': scale_ratio,
+            'composite_scaling': composite_scaling,
+            'R_orbit_lab_m': R_orbit_lab,
+            'R_orbit_BH_m': R_orbit_BH,
+            'R_orbit_scaling': R_orbit_scaling,
+            'USm_jet_lab': USm_jet_lab,
+            'USm_jet_BH': USm_jet_BH,
+            'USm_scaling': USm_scaling,
+            'gamma_lab': gamma_lab,
+            'gamma_BH': gamma_BH,
+            'gamma_ratio': gamma_ratio,
+            'units': 'm/s (velocity), W (power), dimensionless (ratios)',
+            'source': 'Grok UFT Orb Analysis_6 BH Jet Analog (March 3, 2025)'
+        }
+
+
+# UFT Orb Analysis_6 registry dict
+ORB_ANALYSIS_6_CALCULATORS = {
+    'ThermalGradientConvectionCalculator': ThermalGradientConvectionCalculator(),
+    'ExtendedSequenceEnergyCalculator': ExtendedSequenceEnergyCalculator(),
+    'ConvectivePatternTrackingCalculator': ConvectivePatternTrackingCalculator(),
+    'ThermalGradientFUCalculator': ThermalGradientFUCalculator(),
+    'SequenceProgressionFUCalculator': SequenceProgressionFUCalculator(),
+    'HydrogenBubbleLatticeCalculator': HydrogenBubbleLatticeCalculator(),
+    'WavelessCommunicationApplicationCalculator': WavelessCommunicationApplicationCalculator(),
+    'BlackHoleJetAnalogCalculator': BlackHoleJetAnalogCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -163349,4 +164133,15 @@ __all__.extend([
     'MultiAxialRotationCalculator',
     'OilMediumViscosityCalculator',
     'ORB_ANALYSIS_5_CALCULATORS',
+    # UFT Orb Analysis_6 - Extended Video Sequence (March 3, 2025) - 8 Calculator Classes
+    'ORB_ANALYSIS_6_PARAMS',
+    'ThermalGradientConvectionCalculator',
+    'ExtendedSequenceEnergyCalculator',
+    'ConvectivePatternTrackingCalculator',
+    'ThermalGradientFUCalculator',
+    'SequenceProgressionFUCalculator',
+    'HydrogenBubbleLatticeCalculator',
+    'WavelessCommunicationApplicationCalculator',
+    'BlackHoleJetAnalogCalculator',
+    'ORB_ANALYSIS_6_CALCULATORS',
 ])
