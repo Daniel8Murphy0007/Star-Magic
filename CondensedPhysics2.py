@@ -11813,6 +11813,442 @@ ORB_ANALYSIS_28_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS_29 / UFE ORB EXP 2_19 - BATCH #32 COMPLETE: TRANSITION ZONE ANALYSIS
+# ═══════════════════════════════════════════════════════════════════════════════
+# Source: UFE ORB EXP 2_19_07Mar2025
+# Physics: Batch #32 complete (frames 326-350, 9.78-10.50s) - previously skipped
+#          Bridges batch #31 to #33, transition zone for Spindle Orb emergence
+#          Full UP equation variable inventory (30 variables with values)
+# Key findings:
+#   - Batch #32: 25 images, 0.475-0.59375 J, ~40-50 plasmoids
+#   - Transition zone: 10.50s → 10.53s (frame 350→351) = Spindle Orb emergence
+#   - IF^(π-t) = e^(π-t) ≈ 0.000045 at 10.44s (waveless communication factor)
+#   - Ugᵢ ≈ 3.75×10⁻⁸ J (gravitational), Umⱼ ≈ 1.4×10⁻⁹ J (magnetic)
+#   - Tₛ^μν contribution ≈ 1.53×10³ Pa (stress-energy tensor)
+#   - No Spindle Orb in batch #32, emerged at frame 351 (10.53s)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ORB_ANALYSIS_29_PARAMS = {
+    'batch_32_frames': (326, 350),          # Frame range for batch #32
+    'batch_32_timestamps': (9.78, 10.50),   # Time range (s)
+    'batch_32_energy_J': (0.475, 0.59375),  # Total batch energy
+    'batch_32_duration_s': 0.72,            # Batch duration
+    'plasmoid_count': (40, 50),             # ~40-50 spots
+    'spindle_emergence_frame': 351,         # Frame where Spindle Orb emerges
+    'spindle_emergence_time_s': 10.53,      # Timestamp of emergence
+    'transition_zone_start_s': 10.50,       # End of batch #32
+    'transition_zone_end_s': 10.53,         # Start of batch #33
+    'interference_factor_at_10_44': 0.000045,  # e^(π-10.44)
+    'gravitational_potential_J': 3.75e-8,   # Ugᵢ total
+    'magnetic_potential_J': 1.4e-9,         # Umⱼ per plasmoid
+    'stress_energy_Pa': 1.53e3,             # Tₛ^μν contribution
+    'cylinder_radius_m': 0.0889,            # r = 0.0889 m
+    'angular_velocity_rad_s': 2 * 3.14159 * 6000,  # ωₛ = 2π × 6000 rad/s
+    'temperature_range_K': (288, 4000),     # Tₛ range
+    'magnetic_field_T': 1e-3,               # Bₛ ≈ 10⁻³ T
+    'SCm_density_kg_m3': 1e15,              # SCm = 10¹⁵ kg/m³
+    'SCm_prime_density_m3': 1e15,           # SCm' = 10¹⁵ m⁻³
+    'UA_charge_C': 1e-11,                   # UA = 10⁻¹¹ C
+    'efficiency_range': (0.0135, 0.0171),   # η = 1.35-1.71%
+    'damping_factor_per_s': 0.1,            # γ ≈ 0.1 s⁻¹
+    'gravitational_constant': 6.674e-11,    # kᵢ = G
+    'magnetic_permeability': 4 * 3.14159e-7,  # μⱼ = 4π×10⁻⁷ H/m
+    'plasmoid_mass_kg': 1e-12,              # mᵢ ~10⁻¹² kg
+}
+
+
+class Batch32CompleteAnalysisCalculator:
+    """
+    Complete analysis of Batch #32 (frames 326-350, 9.78-10.50s).
+    Previously skipped batch, now fully analyzed as transition zone
+    between batch #31 and batch #33 (Spindle Orb emergence).
+    """
+    
+    PARAMS = ORB_ANALYSIS_29_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Calculate batch #32 complete metrics.
+        
+        Args:
+            plasmoid_count: Number of plasmoids (default 45)
+            energy_per_plasmoid_J: Energy per plasmoid (default 0.01)
+        """
+        plasmoid_count = params.get('plasmoid_count', 45)  # Mid-range
+        energy_per_plasmoid = params.get('energy_per_plasmoid_J', 0.01)
+        
+        total_energy = plasmoid_count * energy_per_plasmoid
+        input_energy = 65 * self.PARAMS['batch_32_duration_s']  # 65W × 0.72s
+        efficiency = total_energy / input_energy
+        
+        frames = self.PARAMS['batch_32_frames']
+        frame_count = frames[1] - frames[0] + 1
+        energy_per_frame = total_energy / frame_count
+        
+        return {
+            'batch_id': 32,
+            'frame_range': frames,
+            'timestamp_range_s': self.PARAMS['batch_32_timestamps'],
+            'duration_s': self.PARAMS['batch_32_duration_s'],
+            'total_images': frame_count,
+            'plasmoid_count': plasmoid_count,
+            'total_energy_J': round(total_energy, 4),
+            'energy_per_frame_J': round(energy_per_frame, 5),
+            'input_energy_J': input_energy,
+            'efficiency_pct': round(efficiency * 100, 2),
+            'is_transition_zone': True,
+            'spindle_orb_present': False,
+            'next_batch_spindle_emergence': True,
+        }
+
+
+class TransitionZoneCalculator:
+    """
+    Transition zone calculator between batch #32 (10.50s) and #33 (10.53s).
+    Critical 0.03s interval where Spindle Orb emerges (frame 350→351).
+    """
+    
+    PARAMS = ORB_ANALYSIS_29_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Analyze the transition zone characteristics.
+        
+        Args:
+            current_time_s: Time within or near transition zone
+        """
+        current_time = params.get('current_time_s', 10.50)
+        
+        zone_start = self.PARAMS['transition_zone_start_s']
+        zone_end = self.PARAMS['transition_zone_end_s']
+        zone_duration = zone_end - zone_start
+        
+        # Position within transition (0 = start, 1 = end)
+        if current_time < zone_start:
+            zone_position = 0.0
+            zone_status = 'pre_transition'
+        elif current_time > zone_end:
+            zone_position = 1.0
+            zone_status = 'post_transition'
+        else:
+            zone_position = (current_time - zone_start) / zone_duration
+            zone_status = 'in_transition'
+        
+        # Spindle emergence probability (increases across transition)
+        emergence_probability = zone_position
+        
+        return {
+            'zone_start_s': zone_start,
+            'zone_end_s': zone_end,
+            'zone_duration_s': zone_duration,
+            'current_time_s': current_time,
+            'zone_position': round(zone_position, 3),
+            'zone_status': zone_status,
+            'frame_boundary': (350, 351),
+            'spindle_emergence_probability': round(emergence_probability, 2),
+            'batch_transition': '32→33',
+            'significance': 'Spindle Orb emergence zone',
+        }
+
+
+class UPEquationVariableCalculator:
+    """
+    Universal Permanence equation variable calculator.
+    30 named variables from the UP equation framework with physical values.
+    """
+    
+    PARAMS = ORB_ANALYSIS_29_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Return all UP equation variables with current values.
+        
+        Args:
+            t_n: Normalized time (default 10.44s)
+        """
+        import math
+        t_n = params.get('t_n', 10.44)
+        
+        # Calculate t⁻ (negative time offset)
+        t_minus = -t_n * math.exp(math.pi - t_n)
+        
+        # Interference factor
+        IF_pi_t = math.exp(math.pi - t_n)
+        
+        # All 30 variables
+        variables = {
+            't': t_n,                                    # Time (s)
+            't_minus': round(t_minus, 6),               # Negative time offset
+            'r': self.PARAMS['cylinder_radius_m'],       # Radial distance
+            'omega_s': self.PARAMS['angular_velocity_rad_s'],  # Angular velocity
+            'T_s': self.PARAMS['temperature_range_K'],   # Temperature range
+            'B_s': self.PARAMS['magnetic_field_T'],      # Magnetic field
+            'SCm': self.PARAMS['SCm_density_kg_m3'],     # Superconductive Material
+            'SCm_prime': self.PARAMS['SCm_prime_density_m3'],  # SCm' density
+            'UA': self.PARAMS['UA_charge_C'],            # Universal Aether
+            't_n': t_n,                                  # Normalized time
+            'RM': 0.01,                                  # Red Mercury (kg)
+            'SM': 0.00098,                               # Superconductive Matrix (m³)
+            'k_i': self.PARAMS['gravitational_constant'],  # Gravitational constant
+            'Ug_i': self.PARAMS['gravitational_potential_J'],  # Grav potential
+            'mu_j': self.PARAMS['magnetic_permeability'],  # Magnetic permeability
+            'r_j': self.PARAMS['cylinder_radius_m'],     # Distance from source
+            'gamma': self.PARAMS['damping_factor_per_s'],  # Damping factor
+            'phi_hat_j': 7.87e-6,                        # Magnetic flux (Wb)
+            'Um_j': self.PARAMS['magnetic_potential_J'],  # Magnetic potential
+            'g_mu_nu': 'metric_tensor',                  # Einstein tensor
+            'eta': sum(self.PARAMS['efficiency_range']) / 2,  # Efficiency
+            'T_s_mu_nu': self.PARAMS['stress_energy_Pa'],  # Stress-energy
+            'Ub': 0.1,                                   # Background energy (J)
+            'NN': 0.01,                                  # Non-local noise (J)
+            'QS': 0.005,                                 # Quantum state energy (J)
+            'ACE': 0.02,                                 # Aetheric charge (J)
+            'DCE': 0.03,                                 # Dynamic charge (J)
+            'SSq': 0.015,                                # Steady-state quantum (J)
+            'IF_pi_t': round(IF_pi_t, 6),               # Interference factor
+            'QV': 0.01,                                  # Quantum vacuum (J)
+        }
+        
+        return {
+            'total_variables': len(variables),
+            'variables': variables,
+            'equation_form': 'UP(t) = Σᵢ[kᵢ•Ugᵢ] + Σⱼ[μⱼ/rⱼ•Umⱼ] + g_μν + auxiliary_terms',
+        }
+
+
+class InterferenceFactorCalculator:
+    """
+    Interference factor IF^(π-t) calculator for waveless communication.
+    IF = e^(π-t) drives non-local signal propagation (THz potential).
+    """
+    
+    PARAMS = ORB_ANALYSIS_29_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Calculate interference factor at given time.
+        
+        Args:
+            t: Time in seconds (default 10.44)
+        """
+        import math
+        t = params.get('t', 10.44)
+        
+        # IF^(π-t) = e^(π-t)
+        IF = math.exp(math.pi - t)
+        
+        # Classification
+        if IF > 0.01:
+            signal_strength = 'strong'
+        elif IF > 0.0001:
+            signal_strength = 'moderate'
+        else:
+            signal_strength = 'weak'
+            
+        # THz potential (scales with IF)
+        thz_potential = IF * 1e12  # Hz scaling
+        
+        return {
+            'time_s': t,
+            'pi_minus_t': round(math.pi - t, 4),
+            'interference_factor': IF,
+            'IF_scientific': f'{IF:.2e}',
+            'signal_strength': signal_strength,
+            'thz_potential_Hz': round(thz_potential, 2),
+            'supports_waveless_comm': signal_strength in ['strong', 'moderate'],
+            'formula': 'IF = e^(π-t)',
+        }
+
+
+class GravitationalPotentialCalculator:
+    """
+    Gravitational potential energy calculator for plasmoid interactions.
+    Ugᵢ = Σᵢ[kᵢ • mᵢ / r] for total gravitational contribution.
+    """
+    
+    PARAMS = ORB_ANALYSIS_29_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Calculate gravitational potential energy.
+        
+        Args:
+            plasmoid_count: Number of plasmoids
+            plasmoid_mass_kg: Mass per plasmoid
+        """
+        n = params.get('plasmoid_count', 50)
+        m = params.get('plasmoid_mass_kg', self.PARAMS['plasmoid_mass_kg'])
+        G = self.PARAMS['gravitational_constant']
+        r = self.PARAMS['cylinder_radius_m']
+        
+        # Ug_i per plasmoid
+        Ug_per_plasmoid = G * m / r
+        
+        # Total gravitational potential
+        Ug_total = Ug_per_plasmoid * n
+        
+        return {
+            'gravitational_constant': G,
+            'plasmoid_mass_kg': m,
+            'radius_m': r,
+            'plasmoid_count': n,
+            'Ug_per_plasmoid_J': Ug_per_plasmoid,
+            'Ug_total_J': Ug_total,
+            'Ug_total_scientific': f'{Ug_total:.2e}',
+            'formula': 'Ugᵢ = Σᵢ[G • mᵢ / r]',
+            'analog': 'neutron_star_core_micro_gravity',
+        }
+
+
+class MagneticPotentialCalculator:
+    """
+    Magnetic potential energy calculator for plasmoid field interactions.
+    Umⱼ = μⱼ/rⱼ × ϕ̂ⱼ for magnetic dipole contributions.
+    """
+    
+    PARAMS = ORB_ANALYSIS_29_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Calculate magnetic potential energy.
+        
+        Args:
+            magnetic_flux_Wb: Magnetic flux (default 7.87e-6)
+            plasmoid_count: Number of plasmoids
+        """
+        mu = self.PARAMS['magnetic_permeability']
+        r = self.PARAMS['cylinder_radius_m']
+        phi = params.get('magnetic_flux_Wb', 7.87e-6)
+        n = params.get('plasmoid_count', 50)
+        
+        # Um_j per plasmoid
+        Um_per_plasmoid = (mu / r) * phi
+        
+        # Total magnetic potential
+        Um_total = Um_per_plasmoid * n
+        
+        return {
+            'magnetic_permeability': mu,
+            'radius_m': r,
+            'magnetic_flux_Wb': phi,
+            'plasmoid_count': n,
+            'Um_per_plasmoid_J': Um_per_plasmoid,
+            'Um_total_J': Um_total,
+            'Um_total_scientific': f'{Um_total:.2e}',
+            'formula': 'Umⱼ = μⱼ/rⱼ × ϕ̂ⱼ',
+            'B_field_T': self.PARAMS['magnetic_field_T'],
+        }
+
+
+class StressEnergyTensorCalculator:
+    """
+    Stress-energy tensor contribution calculator.
+    Tₛ^μν(UA, SCm, SCm', RM, SM) models stellar plasma pressure.
+    """
+    
+    PARAMS = ORB_ANALYSIS_29_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Calculate stress-energy tensor contribution.
+        
+        Args:
+            efficiency: Efficiency factor (default η mid-range)
+        """
+        eta = params.get('efficiency', sum(self.PARAMS['efficiency_range']) / 2)
+        T_base = 1e5  # Base pressure (Pa)
+        
+        # T_s^μν contribution = η × T_base
+        T_contribution = eta * T_base
+        
+        # Components from UFF
+        components = {
+            'UA_component': self.PARAMS['UA_charge_C'],
+            'SCm_component': self.PARAMS['SCm_density_kg_m3'],
+            'SCm_prime_component': self.PARAMS['SCm_prime_density_m3'],
+            'RM_component': 0.01,  # kg
+            'SM_component': 0.00098,  # m³
+        }
+        
+        return {
+            'efficiency_eta': eta,
+            'base_pressure_Pa': T_base,
+            'T_mu_nu_contribution_Pa': round(T_contribution, 2),
+            'tensor_type': 'stress_energy',
+            'components': components,
+            'formula': 'Tₛ^μν = η × T_base(UA, SCm, SCm\', RM, SM)',
+            'stellar_analog': 'red_dwarf_plasma_pressure',
+        }
+
+
+class SpindleOrbEmergenceTrackerCalculator:
+    """
+    Tracker for Spindle Orb emergence at frame 351 (10.53s).
+    Monitors conditions leading to emergence from batch #32.
+    """
+    
+    PARAMS = ORB_ANALYSIS_29_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Track conditions for Spindle Orb emergence.
+        
+        Args:
+            current_frame: Current frame number
+            current_time_s: Current timestamp
+        """
+        current_frame = params.get('current_frame', 350)
+        current_time = params.get('current_time_s', 10.50)
+        
+        emergence_frame = self.PARAMS['spindle_emergence_frame']
+        emergence_time = self.PARAMS['spindle_emergence_time_s']
+        
+        frames_to_emergence = emergence_frame - current_frame
+        time_to_emergence = emergence_time - current_time
+        
+        # Emergence status
+        if current_frame >= emergence_frame:
+            status = 'emerged'
+            emergence_complete = True
+        elif frames_to_emergence <= 5:
+            status = 'imminent'
+            emergence_complete = False
+        else:
+            status = 'pending'
+            emergence_complete = False
+            
+        # Precursor indicators (energy buildup in batch #32)
+        energy_buildup = 0.475 + (current_frame - 326) * 0.005  # Increasing trend
+        
+        return {
+            'current_frame': current_frame,
+            'current_time_s': current_time,
+            'emergence_frame': emergence_frame,
+            'emergence_time_s': emergence_time,
+            'frames_to_emergence': max(0, frames_to_emergence),
+            'time_to_emergence_s': round(max(0, time_to_emergence), 2),
+            'status': status,
+            'emergence_complete': emergence_complete,
+            'energy_buildup_J': round(energy_buildup, 3),
+            'expected_species': 'Spindle Orb (1.5-2mm elongated)',
+            'batch_context': 'Emergence at batch #32→#33 boundary',
+        }
+
+
+# Registry for Orb Analysis 29 calculators
+ORB_ANALYSIS_29_CALCULATORS = {
+    'Batch32CompleteAnalysisCalculator': Batch32CompleteAnalysisCalculator(),
+    'TransitionZoneCalculator': TransitionZoneCalculator(),
+    'UPEquationVariableCalculator': UPEquationVariableCalculator(),
+    'InterferenceFactorCalculator': InterferenceFactorCalculator(),
+    'GravitationalPotentialCalculator': GravitationalPotentialCalculator(),
+    'MagneticPotentialCalculator': MagneticPotentialCalculator(),
+    'StressEnergyTensorCalculator': StressEnergyTensorCalculator(),
+    'SpindleOrbEmergenceTrackerCalculator': SpindleOrbEmergenceTrackerCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -11837,6 +12273,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_26_CALCULATORS,
     **ORB_ANALYSIS_27_CALCULATORS,
     **ORB_ANALYSIS_28_CALCULATORS,
+    **ORB_ANALYSIS_29_CALCULATORS,
 }
 
 # Update class count
@@ -12076,6 +12513,18 @@ __all__ = [
     'NonLocalJumpInferenceCalculator',
     'GoalValidationCalculator',
     'ORB_ANALYSIS_28_CALCULATORS',
+    
+    # Orb Analysis_29 / UFE ORB EXP 2_19 - Batch #32 Complete: Transition Zone Analysis (8 classes)
+    'ORB_ANALYSIS_29_PARAMS',
+    'Batch32CompleteAnalysisCalculator',
+    'TransitionZoneCalculator',
+    'UPEquationVariableCalculator',
+    'InterferenceFactorCalculator',
+    'GravitationalPotentialCalculator',
+    'MagneticPotentialCalculator',
+    'StressEnergyTensorCalculator',
+    'SpindleOrbEmergenceTrackerCalculator',
+    'ORB_ANALYSIS_29_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
