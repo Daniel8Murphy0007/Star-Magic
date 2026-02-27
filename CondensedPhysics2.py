@@ -11373,6 +11373,446 @@ ORB_ANALYSIS_27_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS_28 / UFE ORB EXP 2_18 - BATCH #35 COMPLETE: DENSITY & CYCLE DYNAMICS
+# ═══════════════════════════════════════════════════════════════════════════════
+# Source: UFE ORB EXP 2_18_06Mar2025
+# Physics: Batch #35 complete analysis (frames 401-425, 12.03-12.75s),
+#          Plasmoid density evolution (50-60 spots), Cycle dynamics (3.3s/0.72s),
+#          t^- = -0.0033s at 12.75s, Goal validation framework
+# Key findings:
+#   - Batch #35 complete: 25 images, 0.6325-0.790 J, efficiency 1.35-1.71%
+#   - Plasmoid density increase: ~50-60 spots near Spindle Orb by #35/25
+#   - Major cycles: ~3.3s, Sub-cycles: ~0.72s (batch duration)
+#   - Spindle Orb resembles proto-stellar filament
+#   - Next batch: #36 (frames 426-450, 12.78-13.50s)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ORB_ANALYSIS_28_PARAMS = {
+    'batch_35_frames': (401, 425),          # Frame range for batch #35
+    'batch_35_timestamps': (12.03, 12.75),  # Time range (s)
+    'batch_35_energy_J': (0.6325, 0.790),   # Total batch energy
+    'batch_35_duration_s': 0.72,            # Batch duration
+    'batch_36_frames': (426, 450),          # Next batch frame range
+    'batch_36_timestamps': (12.78, 13.50),  # Next batch time range
+    't_minus_at_12_75_s': -0.0033,          # t^- at end of batch #35
+    'plasmoid_density_start': 40,           # ~40-50 spots at batch start
+    'plasmoid_density_end': 55,             # ~50-60 spots by #35/25
+    'major_cycle_s': 3.3,                   # Major cycle period
+    'sub_cycle_s': 0.72,                    # Sub-cycle (batch) period
+    'efficiency_range': (0.0135, 0.0171),   # 1.35-1.71%
+    'spindle_orb_size_mm': (1.5, 2.0),      # Elongated shape
+    'spindle_orb_energy_mJ': (6.3, 12.6),   # Brightness range
+    'non_local_jump_velocity_m_s': 0.1,     # Inferred jump velocity
+    'spin_rate_rot_s': 0.15,                # ~0.15 rotations/s
+    'motion_velocity_m_s': 0.5,             # ~0.5 m/s average
+}
+
+
+class Batch35CompleteAnalysisCalculator:
+    """
+    Complete analysis of Batch #35 (frames 401-425, 12.03-12.75s).
+    25 images fully processed with Spindle Orb persistence confirmed.
+    Energy: 0.6325-0.790 J, efficiency 1.35-1.71%.
+    """
+    
+    PARAMS = ORB_ANALYSIS_28_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Calculate batch #35 complete metrics.
+        
+        Args:
+            spindle_energy_J: Spindle Orb contribution (default 0.24)
+            background_energy_J: Background plasmoid contribution (default 0.475)
+        """
+        spindle_energy = params.get('spindle_energy_J', 0.24)  # Mid-range
+        background_energy = params.get('background_energy_J', 0.475)
+        
+        total_energy = spindle_energy + background_energy
+        input_energy = 65 * self.PARAMS['batch_35_duration_s']  # 65W × 0.72s
+        efficiency = total_energy / input_energy
+        
+        frames = self.PARAMS['batch_35_frames']
+        frame_count = frames[1] - frames[0] + 1
+        energy_per_frame = total_energy / frame_count
+        
+        return {
+            'batch_id': 35,
+            'frame_range': frames,
+            'timestamp_range_s': self.PARAMS['batch_35_timestamps'],
+            'duration_s': self.PARAMS['batch_35_duration_s'],
+            'total_images': frame_count,
+            'total_energy_J': round(total_energy, 4),
+            'spindle_energy_J': spindle_energy,
+            'background_energy_J': background_energy,
+            'energy_per_frame_J': round(energy_per_frame, 5),
+            'input_energy_J': input_energy,
+            'efficiency_pct': round(efficiency * 100, 2),
+            'status': 'complete',
+        }
+
+
+class PlasmoidDensityEvolutionCalculator:
+    """
+    Plasmoid density evolution calculator across batch #35.
+    Density increases from ~40-50 spots to ~50-60 spots near Spindle Orb.
+    Suggests SCm' (10^15 m^-3) interaction concentrating plasmoids.
+    """
+    
+    PARAMS = ORB_ANALYSIS_28_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Calculate plasmoid density evolution.
+        
+        Args:
+            start_density: Initial spot count (default from params)
+            end_density: Final spot count (default from params)
+            frame_count: Number of frames (default 25)
+        """
+        start_density = params.get('start_density', self.PARAMS['plasmoid_density_start'])
+        end_density = params.get('end_density', self.PARAMS['plasmoid_density_end'])
+        frame_count = params.get('frame_count', 25)
+        
+        density_increase = end_density - start_density
+        increase_rate = density_increase / frame_count
+        percent_increase = (density_increase / start_density) * 100
+        
+        # Concentration factor near Spindle Orb
+        concentration_factor = end_density / start_density
+        
+        return {
+            'start_density_spots': start_density,
+            'end_density_spots': end_density,
+            'density_increase': density_increase,
+            'increase_rate_per_frame': round(increase_rate, 3),
+            'percent_increase': round(percent_increase, 1),
+            'concentration_factor': round(concentration_factor, 2),
+            'concentration_region': 'near_spindle_orb',
+            'suggests_SCm_prime_interaction': True,
+        }
+
+
+class CycleDynamicsCalculator:
+    """
+    Cycle dynamics calculator for major (~3.3s) and sub-cycles (~0.72s).
+    Major cycles align with red dwarf convection patterns.
+    Sub-cycles correspond to batch durations (25 frames × 0.03s).
+    """
+    
+    PARAMS = ORB_ANALYSIS_28_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Calculate cycle dynamics and phase positions.
+        
+        Args:
+            current_time_s: Current timestamp
+        """
+        import math
+        current_time = params.get('current_time_s', 12.75)
+        
+        major_cycle = self.PARAMS['major_cycle_s']
+        sub_cycle = self.PARAMS['sub_cycle_s']
+        
+        # Major cycle phase (0-1)
+        major_phase = (current_time % major_cycle) / major_cycle
+        major_cycle_count = int(current_time // major_cycle)
+        
+        # Sub-cycle phase (0-1)
+        sub_phase = (current_time % sub_cycle) / sub_cycle
+        sub_cycle_count = int(current_time // sub_cycle)
+        
+        # Frequency
+        major_freq = 1 / major_cycle
+        sub_freq = 1 / sub_cycle
+        
+        # Next major cycle peak
+        next_major_peak = (major_cycle_count + 1) * major_cycle
+        
+        return {
+            'current_time_s': current_time,
+            'major_cycle_s': major_cycle,
+            'sub_cycle_s': sub_cycle,
+            'major_phase': round(major_phase, 3),
+            'sub_phase': round(sub_phase, 3),
+            'major_cycle_count': major_cycle_count,
+            'sub_cycle_count': sub_cycle_count,
+            'major_frequency_Hz': round(major_freq, 4),
+            'sub_frequency_Hz': round(sub_freq, 4),
+            'next_major_peak_s': round(next_major_peak, 2),
+            'mirrors_red_dwarf_convection': True,
+        }
+
+
+class Batch36FrameTrackerCalculator:
+    """
+    Batch #36 frame-to-timestamp mapping (preview for next batch).
+    Frames 426-450 at 33.3 fps = timestamps 12.78-13.50s.
+    """
+    
+    PARAMS = ORB_ANALYSIS_28_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Map batch #36 image number to frame and timestamp.
+        
+        Args:
+            image_number: 1-25 within batch #36
+        """
+        image_number = params.get('image_number', 1)
+        frame_interval = 0.03  # 33.3 fps
+        
+        # Frame 426 is image #1 of batch #36
+        frame = 425 + image_number
+        timestamp_s = frame * frame_interval
+        batch_position = (image_number - 1) / 24
+        
+        return {
+            'frame': frame,
+            'timestamp_s': round(timestamp_s, 2),
+            'batch_position': round(batch_position, 3),
+            'batch_id': 36,
+            'total_batch_images': 25,
+            'expected_frame_range': self.PARAMS['batch_36_frames'],
+            'expected_timestamp_range': self.PARAMS['batch_36_timestamps'],
+        }
+
+
+class SpindleOrbFilamentCalculator:
+    """
+    Spindle Orb proto-stellar filament resemblance calculator.
+    The Spindle Orb's elongated shape (1.5-2mm) resembles proto-stellar
+    filaments observed in star-forming regions.
+    """
+    
+    PARAMS = ORB_ANALYSIS_28_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Calculate Spindle Orb filament characteristics.
+        
+        Args:
+            orb_length_mm: Measured length
+            orb_width_mm: Measured width (assumed ~1mm)
+        """
+        orb_length = params.get('orb_length_mm', 1.75)  # Mid-range
+        orb_width = params.get('orb_width_mm', 1.0)     # Assumed spherical base
+        
+        # Aspect ratio (elongation)
+        aspect_ratio = orb_length / orb_width
+        
+        # Filament classification
+        if aspect_ratio >= 2.0:
+            filament_type = 'highly_elongated'
+        elif aspect_ratio >= 1.5:
+            filament_type = 'moderately_elongated'
+        else:
+            filament_type = 'quasi_spherical'
+            
+        # Energy density (mJ/mm)
+        avg_energy_mJ = (self.PARAMS['spindle_orb_energy_mJ'][0] + 
+                         self.PARAMS['spindle_orb_energy_mJ'][1]) / 2
+        energy_density = avg_energy_mJ / orb_length
+        
+        return {
+            'orb_length_mm': orb_length,
+            'orb_width_mm': orb_width,
+            'aspect_ratio': round(aspect_ratio, 2),
+            'filament_type': filament_type,
+            'energy_mJ': avg_energy_mJ,
+            'energy_density_mJ_per_mm': round(energy_density, 2),
+            'resembles_proto_stellar_filament': True,
+            'cosmic_analog': 'red_dwarf_jet_filament',
+        }
+
+
+class EnergyStabilizationCalculator:
+    """
+    Energy stabilization trend calculator across batches.
+    Tracks energy output stabilization from batches #31 through #35.
+    """
+    
+    PARAMS = ORB_ANALYSIS_28_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Calculate energy stabilization metrics.
+        
+        Args:
+            batch_energies: Dict of batch_id: (min_J, max_J)
+        """
+        # Default batch energies from analysis
+        batch_energies = params.get('batch_energies', {
+            31: (0.475, 0.594),     # Baseline
+            33: (0.570, 0.713),     # Spindle Orb emergence
+            34: (0.633, 0.790),     # Spindle Orb stability
+            35: (0.633, 0.790),     # Stabilization
+        })
+        
+        # Calculate mean energies
+        means = {bid: (e[0] + e[1]) / 2 for bid, e in batch_energies.items()}
+        
+        # Stabilization: variance of last 2 batches
+        recent_means = [means[34], means[35]]
+        variance = sum((m - sum(recent_means)/2)**2 for m in recent_means) / 2
+        
+        # Trend: increasing, stable, decreasing
+        if len(means) >= 2:
+            batch_ids = sorted(means.keys())
+            first_mean = means[batch_ids[0]]
+            last_mean = means[batch_ids[-1]]
+            if last_mean > first_mean * 1.1:
+                trend = 'increasing'
+            elif last_mean < first_mean * 0.9:
+                trend = 'decreasing'
+            else:
+                trend = 'stable'
+        else:
+            trend = 'unknown'
+            
+        return {
+            'batch_energies_J': batch_energies,
+            'mean_energies_J': {bid: round(m, 4) for bid, m in means.items()},
+            'variance': round(variance, 6),
+            'trend': trend,
+            'is_stabilized': variance < 0.001,
+            'stabilization_batch': 35 if variance < 0.001 else None,
+        }
+
+
+class NonLocalJumpInferenceCalculator:
+    """
+    Non-local jump inference from plasmoid position shifts.
+    Jumps inferred at ~0.1 m/s from subtle position changes.
+    Supports waveless communication via UA/SCm' mediation.
+    """
+    
+    PARAMS = ORB_ANALYSIS_28_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Calculate non-local jump characteristics.
+        
+        Args:
+            position_shift_mm: Observed position shift between frames
+            frame_interval_s: Time between frames (default 0.03)
+        """
+        position_shift_mm = params.get('position_shift_mm', 3.0)  # Typical shift
+        frame_interval = params.get('frame_interval_s', 0.03)
+        
+        # Convert to meters
+        position_shift_m = position_shift_mm / 1000
+        
+        # Inferred velocity
+        velocity_m_s = position_shift_m / frame_interval
+        
+        # Compare to expected non-local velocity
+        expected_velocity = self.PARAMS['non_local_jump_velocity_m_s']
+        is_non_local = velocity_m_s >= expected_velocity
+        
+        # Classification
+        if velocity_m_s < 0.05:
+            jump_type = 'drift'
+        elif velocity_m_s < 0.15:
+            jump_type = 'non_local_jump'
+        else:
+            jump_type = 'high_speed_jump'
+            
+        return {
+            'position_shift_mm': position_shift_mm,
+            'position_shift_m': position_shift_m,
+            'frame_interval_s': frame_interval,
+            'inferred_velocity_m_s': round(velocity_m_s, 3),
+            'expected_velocity_m_s': expected_velocity,
+            'is_non_local': is_non_local,
+            'jump_type': jump_type,
+            'supports_waveless_comm': is_non_local,
+        }
+
+
+class GoalValidationCalculator:
+    """
+    Goal validation against experiment objectives.
+    Validates: waveless communication, defense (plasma shielding),
+    cosmic modeling (red dwarf/jet analogs).
+    """
+    
+    PARAMS = ORB_ANALYSIS_28_PARAMS
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Validate experiment progress against goals.
+        
+        Args:
+            has_non_local_jumps: Whether non-local jumps observed
+            has_stable_spindle: Whether Spindle Orb is stable
+            has_cycle_alignment: Whether cycles match stellar patterns
+        """
+        has_non_local = params.get('has_non_local_jumps', True)
+        has_stable_spindle = params.get('has_stable_spindle', True)
+        has_cycle_alignment = params.get('has_cycle_alignment', True)
+        field_resonance_Hz = params.get('field_resonance_Hz', 6000)
+        
+        # Goal 1: Waveless Communication
+        waveless_comm = {
+            'goal': 'waveless_communication',
+            'validation': has_non_local and field_resonance_Hz >= 6000,
+            'evidence': '6000 Hz resonance + non-local jumps (~0.1 m/s)',
+            'potential': 'THz signal propagation',
+            'status': 'promising' if has_non_local else 'pending',
+        }
+        
+        # Goal 2: Defense (Plasma Shielding)
+        defense = {
+            'goal': 'defense_plasma_shielding',
+            'validation': has_stable_spindle,
+            'evidence': f'Spindle Orb energy {self.PARAMS["spindle_orb_energy_mJ"]} mJ, 10^-3 T field',
+            'potential': 'Durability via stability',
+            'status': 'promising' if has_stable_spindle else 'pending',
+        }
+        
+        # Goal 3: Cosmic Modeling
+        cosmic = {
+            'goal': 'cosmic_modeling',
+            'validation': has_cycle_alignment,
+            'evidence': f'3.3s/0.72s cycles mirror red dwarf convection, H2 bubble interactions',
+            'potential': 'Red dwarf/jet analog',
+            'status': 'validated' if has_cycle_alignment else 'pending',
+        }
+        
+        # Overall score
+        validated_count = sum([
+            waveless_comm['validation'],
+            defense['validation'],
+            cosmic['validation']
+        ])
+        
+        return {
+            'waveless_communication': waveless_comm,
+            'defense': defense,
+            'cosmic_modeling': cosmic,
+            'goals_validated': validated_count,
+            'total_goals': 3,
+            'validation_score': round(validated_count / 3, 2),
+            'overall_status': 'promising' if validated_count >= 2 else 'in_progress',
+        }
+
+
+# Registry for Orb Analysis 28 calculators
+ORB_ANALYSIS_28_CALCULATORS = {
+    'Batch35CompleteAnalysisCalculator': Batch35CompleteAnalysisCalculator(),
+    'PlasmoidDensityEvolutionCalculator': PlasmoidDensityEvolutionCalculator(),
+    'CycleDynamicsCalculator': CycleDynamicsCalculator(),
+    'Batch36FrameTrackerCalculator': Batch36FrameTrackerCalculator(),
+    'SpindleOrbFilamentCalculator': SpindleOrbFilamentCalculator(),
+    'EnergyStabilizationCalculator': EnergyStabilizationCalculator(),
+    'NonLocalJumpInferenceCalculator': NonLocalJumpInferenceCalculator(),
+    'GoalValidationCalculator': GoalValidationCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -11396,6 +11836,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_25_CALCULATORS,
     **ORB_ANALYSIS_26_CALCULATORS,
     **ORB_ANALYSIS_27_CALCULATORS,
+    **ORB_ANALYSIS_28_CALCULATORS,
 }
 
 # Update class count
@@ -11623,6 +12064,18 @@ __all__ = [
     'QuantumVacuumEnergyCalculator',
     'SpindleOrbPersistenceCalculator',
     'ORB_ANALYSIS_27_CALCULATORS',
+    
+    # Orb Analysis_28 / UFE ORB EXP 2_18 - Batch #35 Complete: Density & Cycle Dynamics (8 classes)
+    'ORB_ANALYSIS_28_PARAMS',
+    'Batch35CompleteAnalysisCalculator',
+    'PlasmoidDensityEvolutionCalculator',
+    'CycleDynamicsCalculator',
+    'Batch36FrameTrackerCalculator',
+    'SpindleOrbFilamentCalculator',
+    'EnergyStabilizationCalculator',
+    'NonLocalJumpInferenceCalculator',
+    'GoalValidationCalculator',
+    'ORB_ANALYSIS_28_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
