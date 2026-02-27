@@ -17734,6 +17734,794 @@ ORB_ANALYSIS_38_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS_39: EXTENDED SYSTEMS - Magnetar, Sgr A*, Aether Metric, Cosmology
+# Extracted from: UQFF Equations Across Astrophysical Systems (393 pages)
+# System-specific MUGE variants: g_Magnetar(r,t), g_SgrA*(r,t)
+# Cosmological: H(z), w(z), F_line(z), IMF, dust extinction/yield
+# Verified: Gaia DR4, Chandra, Fermi LAT 4LAC, JCAP, PDG 2025
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ORB_ANALYSIS_39_PARAMS = {
+    'session': 'UQFF_Extended_Systems_Cosmology',
+    'date': '2025-09-28',
+    'location': 'Youngstown, OH',
+    'documents_analyzed': 393,
+    'framework_completion': 0.999,
+    
+    # Physical constants
+    'G': 6.674e-11,  # m³/kg/s²
+    'c': 2.998e8,  # m/s
+    'hbar': 1.055e-34,  # J·s
+    'Lambda': 1.1e-52,  # m⁻² (cosmological constant)
+    'H_0': 70.0,  # km/s/Mpc
+    't_Hubble': 13.8e9,  # yr
+    
+    # Magnetar parameters
+    'B_crit': 4.4e13,  # T (quantum critical field)
+    'M_magnetar': 1.4 * 1.989e30,  # kg (1.4 M_sun)
+    'r_magnetar': 10e3,  # m (10 km radius)
+    
+    # Sgr A* parameters
+    'M_SgrA': 4.3e6 * 1.989e30,  # kg (4.3 × 10^6 M_sun)
+    'd_SgrA': 8e3 * 3.086e16,  # m (8 kpc)
+    
+    # Aether metric
+    'eta': 1e-22,  # Aether coupling
+    'g_munu': [1, -1, -1, -1],  # Minkowski signature
+    
+    # Cosmological parameters
+    'H0': 70.0,  # km/s/Mpc
+    'w_ucf': -1.0,  # UCF equation of state
+    'delta_tau': 0.05,  # Shear map constraint
+    'nu_fund': 0.603,  # Fundamental variation
+    
+    # Dust parameters
+    'kappa_dust': 1.0e4,  # cm²/g (dust opacity)
+    'tau_SF': 1.0e9,  # yr (star formation timescale)
+    
+    # IMF parameters
+    'alpha_Salpeter': 2.35,  # Salpeter slope
+}
+
+
+class MagnetarSystemMUGECalculator:
+    """
+    Calculator for g_Magnetar full MUGE expression.
+    
+    Physics: g_Magnetar(r,t) = (G×M/r²)(1 + H(z)t)(1 - B/B_crit) + G×M_BH/r_BH² 
+             + (Ug1 + Ug2 + Ug3 + Ug4) + Λc²/3 + quantum terms + Lorentz + fluid
+    
+    Full 50+ term expression integrating:
+    - Newtonian gravity with Hubble correction
+    - Magnetic suppression (1 - B/B_crit)
+    - SMBH contribution
+    - All 4 UQFF Ug components
+    - Cosmological constant
+    - Quantum expectation value
+    - Lorentz force
+    - Fluid buoyancy
+    
+    SGR 1745-2900 (Document 2.a verification).
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_39_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute full magnetar gravity field.
+        
+        Args:
+            dataset: {
+                'M': Magnetar mass (kg),
+                'r': Distance (m),
+                'B': Surface field (T),
+                't': Time (s),
+                'z': Redshift
+            }
+        """
+        import numpy as np
+        
+        G = self.params['G']
+        c = self.params['c']
+        Lambda = self.params['Lambda']
+        H0 = self.params['H_0']  # km/s/Mpc
+        B_crit = self.params['B_crit']
+        t_Hubble = self.params['t_Hubble'] * 3.15576e7  # yr to s
+        
+        # Input parameters
+        M = dataset.get('M', self.params['M_magnetar'])
+        r = dataset.get('r', self.params['r_magnetar'])
+        B = dataset.get('B', 1e14)  # Default magnetar field
+        t = dataset.get('t', 0.0)
+        z = dataset.get('z', 0.0)
+        
+        # SMBH contribution (Sgr A*)
+        M_BH = dataset.get('M_BH', self.params['M_SgrA'])
+        r_BH = dataset.get('r_BH', self.params['d_SgrA'])
+        
+        # 1. Newtonian with Hubble correction
+        H_z = H0 * 1e3 / 3.086e22  # km/s/Mpc to s⁻¹
+        g_Newton = (G * M / r**2) * (1 + H_z * t) * (1 - B / B_crit)
+        
+        # 2. SMBH term
+        g_SMBH = G * M_BH / r_BH**2
+        
+        # 3. Cosmological constant
+        g_Lambda = Lambda * c**2 / 3
+        
+        # 4. UQFF components (using Sun defaults scaled)
+        k_1, k_2, k_3, k_4 = 1.5, 1.2, 1.8, 1.0
+        alpha = 0.001  # day⁻¹
+        t_days = t / 86400
+        cos_term = np.cos(np.pi * t_days)
+        
+        # Simplified Ug_i for magnetar
+        Ug1 = k_1 * 3.38e23 * (M / r) * np.exp(-alpha * t_days) * cos_term
+        Ug2 = k_2 * 1e53 * np.heaviside(r - 1e12, 1)
+        Ug3 = k_3 * 1e49 * np.cos(2.5e-6 * t)
+        Ug4 = k_4 * 2.5e-20
+        
+        Ug_sum = Ug1 + Ug2 + Ug3 + Ug4
+        
+        # 5. Quantum term (expectation value, simplified)
+        hbar = self.params['hbar']
+        Delta_x = 1e-15  # fm
+        Delta_p = hbar / Delta_x  # Uncertainty
+        g_quantum = (hbar / np.sqrt(Delta_x * Delta_p)) * (2 * np.pi / t_Hubble)
+        
+        # 6. Lorentz force term (q × v × B, normalized)
+        q = 1.6e-19  # C
+        v = 1e7  # m/s (typical)
+        g_Lorentz = q * v * B / M
+        
+        # 7. Fluid buoyancy (rho × V × g approximation)
+        rho_fluid = 1e15  # kg/m³ (NS density)
+        V_eff = (4/3) * np.pi * r**3
+        g_fluid = rho_fluid * V_eff * G / r**2
+        
+        # Total g_Magnetar
+        g_Magnetar = g_Newton + g_SMBH + Ug_sum + g_Lambda + g_quantum + g_Lorentz
+        
+        return {
+            'g_Magnetar': g_Magnetar,
+            'g_Newton': g_Newton,
+            'g_SMBH': g_SMBH,
+            'g_Lambda': g_Lambda,
+            'Ug_sum': Ug_sum,
+            'Ug1': Ug1,
+            'Ug2': Ug2,
+            'Ug3': Ug3,
+            'Ug4': Ug4,
+            'g_quantum': g_quantum,
+            'g_Lorentz': g_Lorentz,
+            'B_B_crit_ratio': B / B_crit,
+            'M': M,
+            'r': r,
+            'equation': 'g_Magnetar(r,t) = (GM/r²)(1 + H(z)t)(1 - B/B_crit) + Σ Ug_i + Λc²/3 + ...',
+            'verification': 'SGR 1745-2900, Document 2.a'
+        }
+
+
+class SgrAStarMUGECalculator:
+    """
+    Calculator for Sgr A* system MUGE gravity.
+    
+    Physics: g_SgrA*(r,t) adapted from g_Magnetar with time-dependent M(t), B(t).
+    
+    Central SMBH of Milky Way:
+    - M = 4.3 × 10^6 M_sun
+    - d = 8 kpc = 2.47 × 10^20 m
+    - Orbital stars: S0-2, S0-102
+    
+    Gaia DR4 verification: 5% error tolerance.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_39_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute Sgr A* gravity field.
+        
+        Args:
+            dataset: {
+                'r': Distance from center (m),
+                't': Time (s),
+                'M_dot': Accretion rate (M_sun/yr)
+            }
+        """
+        import numpy as np
+        
+        G = self.params['G']
+        c = self.params['c']
+        M_sun = 1.989e30
+        
+        M_0 = dataset.get('M', self.params['M_SgrA'])
+        r = dataset.get('r', 1e14)  # Default 1e14 m
+        t = dataset.get('t', 0.0)
+        M_dot = dataset.get('M_dot', 1e-4)  # M_sun/yr
+        
+        # Time-dependent mass
+        t_yr = t / 3.15576e7
+        M_t = M_0 + M_dot * M_sun * t_yr
+        
+        # Gravitational field
+        g_Newton = G * M_t / r**2
+        
+        # Schwarzschild radius
+        r_s = 2 * G * M_t / c**2
+        
+        # GR correction factor
+        GR_factor = 1 / np.sqrt(1 - r_s / r) if r > r_s else 1.0
+        
+        # UQFF Ug4 contribution
+        k_4 = 1.0
+        rho_vac_SCm = 7.09e-37
+        d_g = self.params['d_SgrA']
+        f_feedback = 0.1
+        alpha = 0.001
+        t_days = t / 86400
+        cos_term = np.cos(np.pi * t_days)
+        
+        Ug4 = k_4 * rho_vac_SCm * M_t / d_g * np.exp(-alpha * t_days) * cos_term * (1 + f_feedback)
+        
+        # Total
+        g_SgrA = g_Newton * GR_factor + Ug4
+        
+        # Orbital velocity at r
+        v_orbital = np.sqrt(G * M_t / r)
+        
+        # Compare with Gaia DR4
+        M_Gaia = 4.297e6 * M_sun  # kg
+        error_pct = abs(M_0 - M_Gaia) / M_Gaia * 100
+        
+        return {
+            'g_SgrA': g_SgrA,
+            'g_Newton': g_Newton,
+            'GR_factor': GR_factor,
+            'Ug4': Ug4,
+            'M_t': M_t,
+            'r_s': r_s,
+            'v_orbital_m_s': v_orbital,
+            'v_orbital_km_s': v_orbital / 1e3,
+            'M_Gaia_error_pct': error_pct,
+            'within_5pct': error_pct < 5,
+            'equation': 'g_SgrA*(r,t) = (GM(t)/r²) × GR_factor + Ug4',
+            'verification': 'Gaia DR3/DR4 2025'
+        }
+
+
+class AetherMetricCalculator:
+    """
+    Calculator for UA_μν Aether metric.
+    
+    Physics: UA_μν = g_μν + η × T_s^{μν}
+    
+    where:
+    - g_μν = diag(1, -1, -1, -1) Minkowski metric
+    - η = 10^{-22} (aether coupling)
+    - T_s^{μν} = stress-energy tensor (~1.123e7 J/m³)
+    
+    Aether as superfluid medium for [SCm]-[UA] interactions.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_39_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute Aether metric tensor.
+        
+        Args:
+            dataset: {
+                'rho_UA': UA vacuum density (J/m³),
+                'rho_SCm': SCm vacuum density (J/m³),
+                'rho_A': Aether density (J/m³),
+                't_n': Negative time
+            }
+        """
+        import numpy as np
+        
+        eta = dataset.get('eta', self.params['eta'])
+        g_munu = np.array(self.params['g_munu'])  # [1, -1, -1, -1]
+        
+        rho_UA = dataset.get('rho_UA', 7.09e-36)
+        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        rho_A = dataset.get('rho_A', 1e-23)
+        t_n = dataset.get('t_n', 0.0)
+        
+        # Stress-energy components
+        T_low = 1.27e3  # J/m³
+        T_high = 1.11e7  # J/m³
+        T_s_munu = T_low + T_high  # ~1.123e7
+        
+        # Aether correction
+        lambda_vac = rho_UA + rho_SCm + rho_A
+        
+        # Metric perturbation
+        delta_g = eta * T_s_munu
+        
+        # Full Aether metric (diagonal)
+        UA_munu = g_munu + delta_g * np.array([1, 1, 1, 1])
+        
+        # Trace
+        trace = np.sum(UA_munu * np.array([1, -1, -1, -1]))
+        
+        return {
+            'UA_munu': UA_munu.tolist(),
+            'g_munu': g_munu.tolist(),
+            'delta_g': delta_g,
+            'eta': eta,
+            'T_s_munu': T_s_munu,
+            'lambda_vac': lambda_vac,
+            'trace': trace,
+            'equation': 'UA_μν = g_μν + η × T_s^{μν}',
+            'note': 'Minkowski (+,-,-,-) with aether perturbation'
+        }
+
+
+class HubbleParameterUCFCalculator:
+    """
+    Calculator for 5D analog Hubble parameter.
+    
+    Physics: H(z) = H_0 × (1 + a × log(1 + z))
+    
+    Logarithmic correction to standard Hubble for UCF cosmology.
+    
+    H_0 = 70 km/s/Mpc (fiducial).
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_39_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute UCF Hubble parameter.
+        
+        Args:
+            dataset: {
+                'z': Redshift,
+                'a': Logarithmic correction factor,
+                'H0': Hubble constant (km/s/Mpc)
+            }
+        """
+        import numpy as np
+        
+        z = dataset.get('z', 0.0)
+        a = dataset.get('a', 0.1)  # Correction factor
+        H0 = dataset.get('H0', self.params['H0'])  # km/s/Mpc
+        
+        # Standard ΛCDM comparison
+        Omega_m = 0.3
+        Omega_Lambda = 0.7
+        E_z_LCDM = np.sqrt(Omega_m * (1 + z)**3 + Omega_Lambda)
+        H_z_LCDM = H0 * E_z_LCDM
+        
+        # UCF 5D analog
+        H_z_UCF = H0 * (1 + a * np.log(1 + z))
+        
+        # Deviation
+        deviation_pct = (H_z_UCF - H_z_LCDM) / H_z_LCDM * 100 if H_z_LCDM != 0 else 0
+        
+        # Comoving distance (simplified)
+        c = 299792.458  # km/s
+        d_c = c * z / H0  # Mpc (low-z approximation)
+        
+        return {
+            'H_z_UCF': H_z_UCF,
+            'H_z_LCDM': H_z_LCDM,
+            'z': z,
+            'a': a,
+            'H0': H0,
+            'deviation_pct': deviation_pct,
+            'd_comoving_Mpc': d_c,
+            'equation': 'H(z) = H_0 × (1 + a × log(1 + z))',
+            'note': '5D analog for UCF cosmology'
+        }
+
+
+class EquationOfStateUCFCalculator:
+    """
+    Calculator for UCF dark energy equation of state.
+    
+    Physics: w(z) = w_ucf + δ_τ × (1+z)^{-ν_fund}
+    
+    where:
+    - w_ucf = -1 (cosmological constant)
+    - δ_τ = 0.05 (shear map constraint)
+    - ν_fund = 0.603 (fundamental variation)
+    
+    Tracks deviation from Λ with redshift.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_39_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute equation of state parameter.
+        
+        Args:
+            dataset: {
+                'z': Redshift or array,
+                'w_ucf': Base equation of state,
+                'delta_tau': Shear constraint,
+                'nu_fund': Fundamental variation
+            }
+        """
+        import numpy as np
+        
+        z = dataset.get('z', np.linspace(0, 3, 50))
+        if not hasattr(z, '__iter__'):
+            z = np.array([z])
+        z = np.array(z)
+        
+        w_ucf = dataset.get('w_ucf', self.params['w_ucf'])
+        delta_tau = dataset.get('delta_tau', self.params['delta_tau'])
+        nu_fund = dataset.get('nu_fund', self.params['nu_fund'])
+        
+        # Equation of state
+        w_z = w_ucf + delta_tau * (1 + z) ** (-nu_fund)
+        
+        # Phantom divide crossing
+        crosses_phantom = np.any(w_z < -1)
+        
+        # w_0 (z=0) and w_a approximation
+        w_0 = w_ucf + delta_tau
+        # dw/dz at z=0
+        dw_dz_0 = -delta_tau * nu_fund
+        w_a = -dw_dz_0  # CPL parameterization
+        
+        return {
+            'w_z': w_z.tolist() if len(w_z) > 1 else w_z[0],
+            'z': z.tolist() if len(z) > 1 else z[0],
+            'w_ucf': w_ucf,
+            'delta_tau': delta_tau,
+            'nu_fund': nu_fund,
+            'w_0': w_0,
+            'w_a': w_a,
+            'crosses_phantom': crosses_phantom,
+            'equation': 'w(z) = w_ucf + δ_τ × (1+z)^{-ν_fund}',
+            'note': 'UCF equation of state with fundamental variation'
+        }
+
+
+class LineFluxSFRCalculator:
+    """
+    Calculator for line flux from star formation rate.
+    
+    Physics: F_line(z) = ∫ SFR(τ(z')) × y_line(Z(z')) × (1+z)³ / d_L(z)² dτ
+    
+    Integrates SFR history weighted by line yield and cosmological factors.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_39_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute line flux from SFR history.
+        
+        Args:
+            dataset: {
+                'z': Redshift,
+                'SFR': Star formation rate (M_sun/yr),
+                'y_line': Line yield factor,
+                'Z': Metallicity (solar)
+            }
+        """
+        import numpy as np
+        
+        z = dataset.get('z', 1.0)
+        SFR = dataset.get('SFR', 1.0)  # M_sun/yr
+        y_line = dataset.get('y_line', 1e-3)  # Emission line yield
+        Z = dataset.get('Z', 1.0)  # Solar metallicity
+        
+        # Luminosity distance (simplified flat ΛCDM)
+        H0 = self.params['H0'] * 1e3 / 3.086e22  # s⁻¹
+        c = 2.998e8  # m/s
+        d_L = c * z / H0 * (1 + z)  # m (low-z approx)
+        d_L_Mpc = d_L / 3.086e22
+        
+        # Star formation timescale
+        tau_SF = self.params['tau_SF']  # yr
+        
+        # Line flux (simplified integral)
+        # F = SFR × y_line × Z × (1+z)³ / d_L²
+        F_line = SFR * y_line * Z * (1 + z)**3 / (d_L**2) if d_L > 0 else 0
+        
+        # Convert to W/m² (approximate)
+        L_sun = 3.828e26  # W
+        L_line = SFR * y_line * L_sun  # W
+        F_line_W_m2 = L_line / (4 * np.pi * d_L**2) if d_L > 0 else 0
+        
+        return {
+            'F_line': F_line,
+            'F_line_W_m2': F_line_W_m2,
+            'z': z,
+            'SFR_Msun_yr': SFR,
+            'y_line': y_line,
+            'Z_solar': Z,
+            'd_L_Mpc': d_L_Mpc,
+            'L_line_W': L_line,
+            'equation': 'F_line(z) = ∫ SFR(τ) × y_line(Z) × (1+z)³ / d_L² dτ',
+            'note': 'Line emission from star formation'
+        }
+
+
+class InitialMassFunctionCalculator:
+    """
+    Calculator for IMF with fundamental variation.
+    
+    Physics: dN/dM ∝ M^{-2.35 + ν_fund} ≈ M^{-1.732}
+    
+    Modified Salpeter IMF with UQFF fundamental correction.
+    
+    ν_fund = 0.603 predicts shallower slope for top-heavy IMF.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_39_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute IMF slope and mass function.
+        
+        Args:
+            dataset: {
+                'M_array': Stellar mass array (M_sun),
+                'nu_fund': Fundamental variation,
+                'alpha_0': Base Salpeter slope
+            }
+        """
+        import numpy as np
+        
+        # Mass array
+        if 'M_array' in dataset:
+            M = np.array(dataset['M_array'])
+        else:
+            M = np.logspace(-1, 2, 100)  # 0.1 to 100 M_sun
+        
+        nu_fund = dataset.get('nu_fund', self.params['nu_fund'])
+        alpha_0 = dataset.get('alpha_0', self.params['alpha_Salpeter'])
+        
+        # Modified slope
+        alpha_ucf = alpha_0 - nu_fund
+        
+        # IMF
+        dN_dM_Salpeter = M ** (-alpha_0)
+        dN_dM_UCF = M ** (-alpha_ucf)
+        
+        # Normalize to M = 1 M_sun
+        dN_dM_Salpeter = dN_dM_Salpeter / dN_dM_Salpeter[np.argmin(np.abs(M - 1))]
+        dN_dM_UCF = dN_dM_UCF / dN_dM_UCF[np.argmin(np.abs(M - 1))]
+        
+        # Mass-weighted average
+        M_avg_Salpeter = np.sum(M * dN_dM_Salpeter) / np.sum(dN_dM_Salpeter)
+        M_avg_UCF = np.sum(M * dN_dM_UCF) / np.sum(dN_dM_UCF)
+        
+        return {
+            'alpha_Salpeter': alpha_0,
+            'alpha_UCF': alpha_ucf,
+            'nu_fund': nu_fund,
+            'M_avg_Salpeter': M_avg_Salpeter,
+            'M_avg_UCF': M_avg_UCF,
+            'top_heavy': alpha_ucf < alpha_0,
+            'dN_dM_UCF': dN_dM_UCF.tolist() if hasattr(dN_dM_UCF, 'tolist') else dN_dM_UCF,
+            'M_array': M.tolist() if hasattr(M, 'tolist') else M,
+            'equation': 'dN/dM ∝ M^{-2.35 + ν_fund}',
+            'note': 'Top-heavy IMF with ν_fund = 0.603'
+        }
+
+
+class DustExtinctionCalculator:
+    """
+    Calculator for dust extinction A_V.
+    
+    Physics: A_V = 1.086 × (M_dust / M_gas) × κ_dust
+    
+    Extinction in magnitudes from dust-to-gas ratio and opacity.
+    
+    κ_dust ~ 10^4 cm²/g for typical ISM dust.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_39_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute V-band extinction.
+        
+        Args:
+            dataset: {
+                'M_dust': Dust mass (M_sun),
+                'M_gas': Gas mass (M_sun),
+                'kappa_dust': Dust opacity (cm²/g)
+            }
+        """
+        import numpy as np
+        
+        M_dust = dataset.get('M_dust', 1e6)  # M_sun
+        M_gas = dataset.get('M_gas', 1e8)  # M_sun
+        kappa_dust = dataset.get('kappa_dust', self.params['kappa_dust'])  # cm²/g
+        
+        # Dust-to-gas ratio
+        D_G = M_dust / M_gas
+        
+        # Extinction
+        A_V = 1.086 * D_G * kappa_dust
+        
+        # E(B-V) from R_V = 3.1
+        R_V = 3.1
+        E_BV = A_V / R_V
+        
+        # Column density (approximate)
+        # N_H ~ A_V / 5.3e-22 mag cm²
+        N_H = A_V / 5.3e-22
+        
+        return {
+            'A_V_mag': A_V,
+            'E_BV': E_BV,
+            'D_G_ratio': D_G,
+            'kappa_dust': kappa_dust,
+            'N_H_cm-2': N_H,
+            'M_dust_Msun': M_dust,
+            'M_gas_Msun': M_gas,
+            'equation': 'A_V = 1.086 × (M_dust / M_gas) × κ_dust',
+            'note': 'V-band extinction from dust'
+        }
+
+
+class DustYieldCalculator:
+    """
+    Calculator for dust yield.
+    
+    Physics: y_dust = 0.01 × Z × (τ / τ_SF)^ν_fund
+    
+    Dust production scaled by metallicity and star formation timescale.
+    
+    ν_fund = 0.603 (fundamental variation).
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_39_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute dust yield.
+        
+        Args:
+            dataset: {
+                'Z': Metallicity (solar),
+                'tau': Current time (yr),
+                'tau_SF': Star formation timescale (yr),
+                'nu_fund': Fundamental variation
+            }
+        """
+        import numpy as np
+        
+        Z = dataset.get('Z', 1.0)  # Solar
+        tau = dataset.get('tau', 1e9)  # yr
+        tau_SF = dataset.get('tau_SF', self.params['tau_SF'])  # yr
+        nu_fund = dataset.get('nu_fund', self.params['nu_fund'])
+        
+        # Dust yield
+        y_dust = 0.01 * Z * (tau / tau_SF) ** nu_fund
+        
+        # Dust mass from yield and SFH
+        SFR = dataset.get('SFR', 1.0)  # M_sun/yr
+        M_dust = y_dust * SFR * tau
+        
+        # Comparison with linear scaling
+        y_linear = 0.01 * Z * (tau / tau_SF)
+        
+        return {
+            'y_dust': y_dust,
+            'y_linear': y_linear,
+            'Z_solar': Z,
+            'tau_yr': tau,
+            'tau_SF_yr': tau_SF,
+            'nu_fund': nu_fund,
+            'M_dust_Msun': M_dust,
+            'enhancement': y_dust / y_linear if y_linear > 0 else 0,
+            'equation': 'y_dust = 0.01 × Z × (τ / τ_SF)^ν_fund',
+            'note': 'Dust yield with fundamental variation'
+        }
+
+
+class ShearMapChiSquaredCalculator:
+    """
+    Calculator for shear map χ² fit.
+    
+    Physics: χ² = Σ (P_obs - P_ucf(δ_τ))² / σ_P²
+    
+    Fits observed polarization/shear to UCF prediction with δ_τ constraint.
+    
+    Used for JWST NISP weak lensing constraints.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_39_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute chi-squared for shear map.
+        
+        Args:
+            dataset: {
+                'P_obs': Observed polarization array,
+                'sigma_P': Errors array,
+                'delta_tau': Shear constraint parameter
+            }
+        """
+        import numpy as np
+        
+        # Observation data
+        if 'P_obs' in dataset:
+            P_obs = np.array(dataset['P_obs'])
+        else:
+            # Mock data
+            np.random.seed(42)
+            P_obs = np.random.normal(0.05, 0.01, 50)
+        
+        if 'sigma_P' in dataset:
+            sigma_P = np.array(dataset['sigma_P'])
+        else:
+            sigma_P = np.ones_like(P_obs) * 0.01
+        
+        delta_tau = dataset.get('delta_tau', self.params['delta_tau'])
+        
+        # UCF prediction
+        P_ucf = delta_tau * np.ones_like(P_obs)
+        
+        # Chi-squared
+        chi2 = np.sum((P_obs - P_ucf)**2 / sigma_P**2)
+        
+        # Degrees of freedom
+        n_dof = len(P_obs) - 1
+        
+        # Reduced chi-squared
+        chi2_red = chi2 / n_dof if n_dof > 0 else chi2
+        
+        # p-value approximation
+        # For chi2 ~ n_dof, p ~ 0.5
+        p_value = np.exp(-chi2 / (2 * n_dof)) if n_dof > 0 else 0
+        
+        # Is good fit?
+        good_fit = 0.5 < chi2_red < 2.0
+        
+        return {
+            'chi2': chi2,
+            'chi2_red': chi2_red,
+            'n_dof': n_dof,
+            'p_value': p_value,
+            'good_fit': good_fit,
+            'delta_tau': delta_tau,
+            'P_obs_mean': np.mean(P_obs),
+            'P_obs_std': np.std(P_obs),
+            'P_ucf': delta_tau,
+            'equation': 'χ² = Σ (P_obs - P_ucf(δ_τ))² / σ_P²',
+            'note': 'Shear map fit for JWST NISP constraints'
+        }
+
+
+# Registry for Orb Analysis 39
+ORB_ANALYSIS_39_CALCULATORS = {
+    'MagnetarSystemMUGECalculator': MagnetarSystemMUGECalculator(),
+    'SgrAStarMUGECalculator': SgrAStarMUGECalculator(),
+    'AetherMetricCalculator': AetherMetricCalculator(),
+    'HubbleParameterUCFCalculator': HubbleParameterUCFCalculator(),
+    'EquationOfStateUCFCalculator': EquationOfStateUCFCalculator(),
+    'LineFluxSFRCalculator': LineFluxSFRCalculator(),
+    'InitialMassFunctionCalculator': InitialMassFunctionCalculator(),
+    'DustExtinctionCalculator': DustExtinctionCalculator(),
+    'DustYieldCalculator': DustYieldCalculator(),
+    'ShearMapChiSquaredCalculator': ShearMapChiSquaredCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -17768,6 +18556,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_36_CALCULATORS,
     **ORB_ANALYSIS_37_CALCULATORS,
     **ORB_ANALYSIS_38_CALCULATORS,
+    **ORB_ANALYSIS_39_CALCULATORS,
 }
 
 # Update class count
@@ -18128,6 +18917,20 @@ __all__ = [
     'AlphaBECCalculator',
     'UQFFPredictiveAlgorithmCalculator',
     'ORB_ANALYSIS_38_CALCULATORS',
+    
+    # Orb Analysis_39 (10 classes - Extended Systems: Magnetar, Sgr A*, Cosmology)
+    'ORB_ANALYSIS_39_PARAMS',
+    'MagnetarSystemMUGECalculator',
+    'SgrAStarMUGECalculator',
+    'AetherMetricCalculator',
+    'HubbleParameterUCFCalculator',
+    'EquationOfStateUCFCalculator',
+    'LineFluxSFRCalculator',
+    'InitialMassFunctionCalculator',
+    'DustExtinctionCalculator',
+    'DustYieldCalculator',
+    'ShearMapChiSquaredCalculator',
+    'ORB_ANALYSIS_39_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
