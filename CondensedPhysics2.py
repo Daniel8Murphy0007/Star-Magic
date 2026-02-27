@@ -15212,6 +15212,757 @@ ORB_ANALYSIS_34_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS_35: UFT2 - CELESTIAL UQFF VISUALIZATION
+# Solar System Bodies: SCm, UA, reactor_efficiency, magnetism_strings, buoyancy
+# Aether Field: ρ=1e-23 kg/m³, buoyancy_strength=0.5, π-cycle modulation
+# Heliosphere: liquid_volume correlation, Ug2 gravity range
+# Sept 22 - Dec 12, 2011 (82-day orbital interpolation)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ORB_ANALYSIS_35_PARAMS = {
+    'session': 'UFT2_Celestial_UQFF_Visualization',
+    'date': '2011-09-22 to 2011-12-12',
+    'duration_days': 82,
+    'gravity_range': 'Ug2',
+    
+    # Solar (id: 1) - Star
+    'sun_temperature': 5778,  # K
+    'sun_SCm': 1e15,  # kg/m³, dense superconductive material
+    'sun_UA': 1e-11,  # C, trapped Universal Aether
+    'sun_Qs': 0,  # Undetectable quantum signature
+    'sun_reactor_efficiency': 1e46,  # W/m³, SCm reactivity with Aether
+    'sun_buoyancy': -0.5,
+    'sun_magnetism_loop_length': 100,
+    'sun_polarity_change_rate': 0.1,
+    'sun_energy_loss': 0.00005,
+    
+    # Earth (id: 2) - Planet
+    'earth_temperature': 288,  # K
+    'earth_SCm': 1e12,  # kg/m³
+    'earth_UA': 1e-12,  # C
+    'earth_reactor_efficiency': 1e40,  # W/m³, liquid water correlation
+    'earth_liquid_volume': 1.4e21,  # m³, Earth's oceans (heliosphere correlation)
+    'earth_buoyancy': -0.3,
+    'earth_magnetism_loop_length': 50,
+    'earth_polarity_change_rate': 0.05,
+    
+    # Jupiter (id: 3) - Planet
+    'jupiter_temperature': 165,  # K
+    'jupiter_SCm': 1e13,  # kg/m³
+    'jupiter_UA': 1e-11,  # C
+    'jupiter_reactor_efficiency': 1e42,  # W/m³, liquid hydrogen/helium
+    'jupiter_liquid_volume': 1e24,  # m³
+    'jupiter_buoyancy': -0.4,
+    'jupiter_magnetism_loop_length': 70,
+    'jupiter_polarity_change_rate': 0.08,
+    
+    # Neptune (id: 4) - Planet
+    'neptune_temperature': 72,  # K
+    'neptune_SCm': 1e12,  # kg/m³
+    'neptune_UA': 1e-12,  # C
+    'neptune_reactor_efficiency': 1e41,  # W/m³, liquid methane/ice
+    'neptune_liquid_volume': 5e22,  # m³
+    'neptune_buoyancy': -0.35,
+    'neptune_magnetism_loop_length': 60,
+    'neptune_polarity_change_rate': 0.06,
+    
+    # Pluto (id: 5) - Frozen Planet
+    'pluto_temperature': 44,  # K
+    'pluto_SCm': 1e11,  # kg/m³, least dense
+    'pluto_UA': 1e-13,  # C, minimal Aether
+    'pluto_reactor_efficiency': 1e39,  # W/m³, powered by solar winds
+    'pluto_liquid_volume': 1e20,  # m³, frozen
+    'pluto_buoyancy': -0.2,
+    'pluto_magnetism_loop_length': 40,
+    'pluto_polarity_change_rate': 0.03,
+    
+    # Galactic Center
+    'galactic_center_x': 400,
+    'galactic_center_y': 300,
+    'galactic_rotation_rate': 0.01,  # degrees/day, adjusted for π cycles
+    
+    # Aether Field
+    'aether_density': 1e-23,  # kg/m³
+    'aether_buoyancy_strength': 0.5,
+    'pi_cycle': 3.14159,  # π as fundamental cycle parameter
+    
+    # Common magnetism string parameter
+    'energy_loss_universal': 0.00005,
+}
+
+
+class SCmReactorEfficiencyCalculator:
+    """
+    Calculator for Superconductive Material (SCm) reactor efficiency.
+    
+    Physics: SCm density correlates with reactor efficiency for Aether reactivity.
+    Sun: SCm=1e15 kg/m³ → η_reactor=1e46 W/m³
+    Earth: SCm=1e12 kg/m³ → η_reactor=1e40 W/m³
+    
+    Relationship: η_reactor ≈ SCm³·(k_efficiency)
+    where k_efficiency encodes Aether coupling constant
+    
+    Based on UFT2 JSON celestial dataset.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_35_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute reactor efficiency from SCm density.
+        
+        Args:
+            dataset: {'SCm': density in kg/m³, 'body_type': 'Star'|'Planet'|'Frozen Planet'}
+        
+        Returns:
+            dict with reactor efficiency and Aether reactivity parameters
+        """
+        SCm = dataset.get('SCm', 1e12)  # Default to Earth-like
+        body_type = dataset.get('body_type', 'Planet')
+        
+        # Derive efficiency constant from Sun reference
+        # Sun: SCm=1e15 → η=1e46, so k = η/SCm³ = 1e46/1e45 = 10
+        k_efficiency = 10.0  # W·m⁶/kg³
+        
+        # Base reactor efficiency
+        eta_reactor = k_efficiency * (SCm ** 3.0)
+        
+        # Body type modifier
+        type_modifiers = {
+            'Star': 1.0,
+            'Planet': 0.8,
+            'Frozen Planet': 0.6
+        }
+        modifier = type_modifiers.get(body_type, 0.8)
+        eta_reactor *= modifier
+        
+        # Aether reactivity factor (η / SCm ratio)
+        aether_reactivity = eta_reactor / SCm if SCm > 0 else 0.0
+        
+        return {
+            'SCm_density': SCm,
+            'reactor_efficiency': eta_reactor,
+            'aether_reactivity': aether_reactivity,
+            'k_efficiency': k_efficiency,
+            'body_type': body_type,
+            'modifier': modifier,
+            'equation': 'η_reactor = k × SCm³ × body_modifier',
+            'units': {'SCm': 'kg/m³', 'reactor_efficiency': 'W/m³'}
+        }
+    
+    def validate(self, dataset: dict) -> bool:
+        """Validate input parameters."""
+        SCm = dataset.get('SCm', 0)
+        return SCm > 0
+
+
+class UniversalAetherChargeCalculator:
+    """
+    Calculator for Universal Aether (UA) trapped charge distribution.
+    
+    Physics: UA represents trapped Universal Aether charge in celestial bodies.
+    Sun: UA=1e-11 C (strong Aether trapping)
+    Pluto: UA=1e-13 C (minimal Aether, solar-wind powered)
+    
+    Scaling: UA ~ SCm^(1/3) × k_aether
+    
+    Based on UFT2 JSON celestial dataset.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_35_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute Universal Aether charge from SCm density.
+        
+        Args:
+            dataset: {'SCm': density in kg/m³}
+        
+        Returns:
+            dict with UA charge and Aether field parameters
+        """
+        SCm = dataset.get('SCm', 1e12)
+        
+        # Reference: Sun SCm=1e15 → UA=1e-11
+        # Derive: k_aether = UA / SCm^(1/3) = 1e-11 / 1e5 = 1e-16
+        k_aether = 1e-16  # C·m/kg^(1/3)
+        
+        # Compute UA charge
+        UA = k_aether * (SCm ** (1.0/3.0))
+        
+        # Quantum signature (always 0 due to SCm suppression)
+        Qs = 0  # Undetectable
+        
+        # Aether field interaction strength
+        rho_aether = self.params['aether_density']  # 1e-23 kg/m³
+        field_strength = UA * rho_aether  # C·kg/m³
+        
+        return {
+            'SCm_density': SCm,
+            'UA_charge': UA,
+            'Qs_quantum_signature': Qs,
+            'k_aether': k_aether,
+            'aether_density': rho_aether,
+            'field_strength': field_strength,
+            'equation': 'UA = k_aether × SCm^(1/3)',
+            'note': 'Qs=0 (quantum signature suppressed by SCm)',
+            'units': {'UA': 'C', 'field_strength': 'C·kg/m³'}
+        }
+
+
+class MagnetismStringDynamicsCalculator:
+    """
+    Calculator for magnetism string dynamics in celestial bodies.
+    
+    Physics: Magnetism strings characterized by:
+    - loop_length: Magnetic loop scale (Sun: 100, Earth: 50, Pluto: 40)
+    - polarity_change_rate: Rate of polarity reversal (Sun: 0.1, Pluto: 0.03)
+    - energy_loss: Universal 0.00005 decay factor
+    
+    Total magnetic string energy: E_string = loop_length × polarity_rate / energy_loss
+    
+    Based on UFT2 JSON celestial dataset.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_35_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute magnetism string dynamics.
+        
+        Args:
+            dataset: {'loop_length': int, 'polarity_change_rate': float}
+        
+        Returns:
+            dict with magnetic string energy and dynamics
+        """
+        loop_length = dataset.get('loop_length', 50)  # Default Earth-like
+        polarity_rate = dataset.get('polarity_change_rate', 0.05)
+        energy_loss = self.params['energy_loss_universal']  # 0.00005
+        
+        # String energy equation
+        E_string = loop_length * polarity_rate / energy_loss
+        
+        # Magnetic cycle period (inverse of polarity rate)
+        T_cycle = 1.0 / polarity_rate if polarity_rate > 0 else float('inf')
+        
+        # Loop stability factor
+        stability = 1.0 - energy_loss * loop_length
+        
+        # Total magnetic flux (normalized)
+        Phi_mag = loop_length * (1.0 - energy_loss)
+        
+        return {
+            'loop_length': loop_length,
+            'polarity_change_rate': polarity_rate,
+            'energy_loss': energy_loss,
+            'E_string': E_string,
+            'T_cycle': T_cycle,
+            'stability_factor': stability,
+            'Phi_magnetic': Phi_mag,
+            'equation': 'E_string = loop_length × polarity_rate / energy_loss',
+            'units': {'E_string': 'arbitrary', 'T_cycle': 'cycles⁻¹'}
+        }
+
+
+class HeliosphereLiquidVolumeCalculator:
+    """
+    Calculator for heliosphere-liquid volume correlation.
+    
+    Physics: Celestial liquid volume correlates with heliosphere interaction.
+    Earth: V_liquid=1.4e21 m³ (oceans)
+    Jupiter: V_liquid=1e24 m³ (liquid H/He)
+    Neptune: V_liquid=5e22 m³ (liquid methane/ice)
+    Pluto: V_liquid=1e20 m³ (frozen)
+    
+    Relationship: reactor_efficiency ∝ V_liquid^(2/3) × SCm
+    
+    Based on UFT2 JSON celestial dataset.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_35_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute heliosphere-liquid correlation metrics.
+        
+        Args:
+            dataset: {'liquid_volume': m³, 'SCm': kg/m³}
+        
+        Returns:
+            dict with heliosphere correlation and reactor efficiency
+        """
+        V_liquid = dataset.get('liquid_volume', 1.4e21)  # Default Earth
+        SCm = dataset.get('SCm', 1e12)
+        
+        # Reference from Earth: η=1e40, V=1.4e21, SCm=1e12
+        # k_helio = η / (V^(2/3) × SCm) ≈ 1e40 / (1.26e14 × 1e12) = 7.9e13
+        k_helio = 8e13  # Heliosphere coupling constant
+        
+        # Compute reactor efficiency from liquid volume
+        eta_liquid = k_helio * (V_liquid ** (2.0/3.0)) * SCm
+        
+        # Heliosphere interaction radius (proportional to V^(1/3))
+        R_helio = V_liquid ** (1.0/3.0)
+        
+        # Liquid state factor (solid=0.5, partial=0.75, liquid=1.0)
+        if V_liquid < 1e20:
+            liquid_state = 0.5  # Frozen
+        elif V_liquid < 1e22:
+            liquid_state = 0.75  # Partial
+        else:
+            liquid_state = 1.0  # Full liquid
+        
+        return {
+            'liquid_volume': V_liquid,
+            'SCm_density': SCm,
+            'reactor_efficiency_from_liquid': eta_liquid,
+            'heliosphere_radius': R_helio,
+            'liquid_state_factor': liquid_state,
+            'k_helio': k_helio,
+            'equation': 'η_liquid = k_helio × V_liquid^(2/3) × SCm',
+            'units': {'V_liquid': 'm³', 'R_helio': 'm'}
+        }
+
+
+class CelestialBuoyancyCalculator:
+    """
+    Calculator for celestial body buoyancy in Aether field.
+    
+    Physics: Negative buoyancy indicates gravitational dominance over Aether lift.
+    Sun: β=-0.5 (strongest gravitational binding)
+    Earth: β=-0.3
+    Neptune: β=-0.35
+    Pluto: β=-0.2 (weakest binding)
+    
+    Net force: F_net = (ρ_body - ρ_aether) × V × g × β
+    All bodies in Ug2 gravity range.
+    
+    Based on UFT2 JSON celestial dataset.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_35_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute celestial buoyancy force.
+        
+        Args:
+            dataset: {'buoyancy': float, 'SCm': kg/m³, 'body_radius': m}
+        
+        Returns:
+            dict with buoyancy force and Ug2 parameters
+        """
+        beta = dataset.get('buoyancy', -0.3)  # Buoyancy coefficient
+        SCm = dataset.get('SCm', 1e12)  # Body density proxy
+        R = dataset.get('body_radius', 6.371e6)  # Default Earth radius
+        
+        # Volume approximation
+        V = (4.0/3.0) * 3.14159 * (R ** 3)
+        
+        # Aether field parameters
+        rho_aether = self.params['aether_density']  # 1e-23 kg/m³
+        buoyancy_strength = self.params['aether_buoyancy_strength']  # 0.5
+        
+        # Net buoyancy force (normalized)
+        # F = (SCm - ρ_aether) × V × β × buoyancy_strength
+        delta_rho = SCm - rho_aether
+        F_buoyancy = delta_rho * V * beta * buoyancy_strength
+        
+        # Effective gravitational binding
+        g_binding = abs(F_buoyancy) / (SCm * V) if SCm * V > 0 else 0.0
+        
+        # Ug2 classification (all bodies in this dataset are Ug2)
+        gravity_range = 'Ug2'
+        
+        return {
+            'buoyancy_coefficient': beta,
+            'SCm_density': SCm,
+            'body_radius': R,
+            'volume': V,
+            'aether_density': rho_aether,
+            'F_buoyancy': F_buoyancy,
+            'g_binding': g_binding,
+            'gravity_range': gravity_range,
+            'equation': 'F = (SCm - ρ_aether) × V × β × k_buoyancy',
+            'note': 'Negative β indicates gravitational dominance'
+        }
+
+
+class GalacticCenterRotationCalculator:
+    """
+    Calculator for galactic center rotation with π-cycle modulation.
+    
+    Physics: Galactic center rotation rate with fundamental π cycle.
+    rotation_rate: 0.01 degrees/day (adjusted for π cycles)
+    pi_cycle: 3.14159 (fundamental cycle parameter)
+    
+    Angular position: θ(t) = rotation_rate × t × π_cycle
+    Period: T = 360° / (rotation_rate × π_cycle)
+    
+    Based on UFT2 JSON celestial dataset.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_35_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute galactic center rotation dynamics.
+        
+        Args:
+            dataset: {'day_index': int (0-81), 'include_pi_modulation': bool}
+        
+        Returns:
+            dict with rotation angle and period
+        """
+        day = dataset.get('day_index', 0)  # Days since Sept 22, 2011
+        include_pi = dataset.get('include_pi_modulation', True)
+        
+        # Parameters
+        rotation_rate = self.params['galactic_rotation_rate']  # 0.01 deg/day
+        pi_cycle = self.params['pi_cycle']  # 3.14159
+        center_x = self.params['galactic_center_x']
+        center_y = self.params['galactic_center_y']
+        
+        # Angular position
+        base_angle = rotation_rate * day
+        if include_pi:
+            theta = base_angle * pi_cycle
+        else:
+            theta = base_angle
+        
+        # Full rotation period (in days)
+        if include_pi:
+            T_rotation = 360.0 / (rotation_rate * pi_cycle)  # ~11459 days ≈ 31.4 years
+        else:
+            T_rotation = 360.0 / rotation_rate  # 36000 days ≈ 98.6 years
+        
+        # Current phase (0 to 1)
+        phase = (theta % 360.0) / 360.0
+        
+        # 82-day observation fraction
+        observation_fraction = day / 82.0 if day <= 82 else 1.0
+        
+        return {
+            'day_index': day,
+            'rotation_rate': rotation_rate,
+            'pi_cycle': pi_cycle,
+            'theta_degrees': theta % 360.0,
+            'theta_radians': (theta % 360.0) * 3.14159 / 180.0,
+            'T_rotation_days': T_rotation,
+            'T_rotation_years': T_rotation / 365.25,
+            'phase': phase,
+            'observation_fraction': observation_fraction,
+            'center_position': {'x': center_x, 'y': center_y},
+            'equation': 'θ(t) = ω × t × π',
+            'date_range': 'Sept 22 - Dec 12, 2011'
+        }
+
+
+class OrbitalPositionInterpolationCalculator:
+    """
+    Calculator for 82-day orbital position interpolation.
+    
+    Physics: Linear interpolation of celestial body positions over 82 days.
+    Timespan: Sept 22, 2011 to Dec 12, 2011
+    
+    Position: P(t) = P_start + (P_end - P_start) × (t / 82)
+    
+    Each body has defined start/end positions in the visualization frame.
+    
+    Based on UFT2 JSON celestial dataset.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_35_PARAMS
+        # Position data from JSON (x, y in visualization coordinates)
+        self.body_positions = {
+            'Sun': {'start': (400, 300), 'end': (481, 340)},
+            'Earth': {'start': (405, 305), 'end': (486, 345)},
+            'Jupiter': {'start': (410, 310), 'end': (491, 350)},
+            'Neptune': {'start': (415, 315), 'end': (496, 355)},
+            'Pluto': {'start': (420, 320), 'end': (501, 360)},
+        }
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute interpolated position for a celestial body.
+        
+        Args:
+            dataset: {'body_name': str, 'day_index': int (0-81)}
+        
+        Returns:
+            dict with interpolated position and velocity
+        """
+        body = dataset.get('body_name', 'Earth')
+        day = dataset.get('day_index', 0)
+        
+        # Clamp day to valid range
+        day = max(0, min(82, day))
+        total_days = 82
+        
+        # Get body positions
+        if body in self.body_positions:
+            pos = self.body_positions[body]
+            x_start, y_start = pos['start']
+            x_end, y_end = pos['end']
+        else:
+            # Default to galactic center
+            x_start = y_start = self.params['galactic_center_x']
+            x_end = y_end = self.params['galactic_center_y']
+        
+        # Interpolation factor
+        t = day / total_days
+        
+        # Interpolated position
+        x = x_start + (x_end - x_start) * t
+        y = y_start + (y_end - y_start) * t
+        
+        # Velocity (displacement per day)
+        vx = (x_end - x_start) / total_days
+        vy = (y_end - y_start) / total_days
+        v_mag = (vx**2 + vy**2) ** 0.5
+        
+        # Total displacement
+        dx = x_end - x_start
+        dy = y_end - y_start
+        total_displacement = (dx**2 + dy**2) ** 0.5
+        
+        return {
+            'body_name': body,
+            'day_index': day,
+            'x': x,
+            'y': y,
+            'vx': vx,
+            'vy': vy,
+            'v_magnitude': v_mag,
+            'total_displacement': total_displacement,
+            'interpolation_factor': t,
+            'start_position': (x_start, y_start),
+            'end_position': (x_end, y_end),
+            'equation': 'P(t) = P_start + (P_end - P_start) × t/T',
+            'date_range': 'Sept 22 - Dec 12, 2011'
+        }
+
+
+class QuantumSignatureSuppressionCalculator:
+    """
+    Calculator for quantum signature (Qs) suppression by SCm.
+    
+    Physics: Quantum signatures are universally suppressed (Qs=0) in celestial bodies
+    due to superconductive material (SCm) properties.
+    
+    All bodies: Qs=0 (undetectable due to SCm)
+    
+    Suppression mechanism: SCm creates coherent screening that masks quantum fluctuations.
+    
+    Based on UFT2 JSON celestial dataset.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_35_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute quantum signature suppression.
+        
+        Args:
+            dataset: {'SCm': kg/m³, 'UA': C}
+        
+        Returns:
+            dict with Qs suppression analysis
+        """
+        SCm = dataset.get('SCm', 1e12)
+        UA = dataset.get('UA', 1e-12)
+        
+        # Suppression threshold (SCm above which Qs → 0)
+        SCm_threshold = 1e10  # kg/m³
+        
+        # Check suppression
+        if SCm >= SCm_threshold:
+            Qs = 0  # Perfectly suppressed
+            suppressed = True
+            suppression_ratio = 1.0
+        else:
+            # Partial suppression below threshold
+            Qs = SCm_threshold / SCm - 1.0  # Residual quantum signature
+            suppressed = False
+            suppression_ratio = SCm / SCm_threshold
+        
+        # Coherent screening strength
+        screening_strength = SCm / SCm_threshold
+        
+        # Aether-quantum coupling (UA modulates Qs visibility)
+        aether_coupling = UA * Qs if Qs > 0 else 0.0
+        
+        return {
+            'SCm_density': SCm,
+            'UA_charge': UA,
+            'Qs_quantum_signature': Qs,
+            'suppressed': suppressed,
+            'suppression_ratio': suppression_ratio,
+            'SCm_threshold': SCm_threshold,
+            'screening_strength': screening_strength,
+            'aether_coupling': aether_coupling,
+            'equation': 'Qs = 0 if SCm ≥ threshold else (threshold/SCm - 1)',
+            'note': 'All celestial bodies in UFT2 have Qs=0'
+        }
+
+
+class AetherFieldDensityCalculator:
+    """
+    Calculator for Aether field density and buoyancy strength.
+    
+    Physics: Universal Aether field with:
+    - ρ_aether = 1e-23 kg/m³ (updated for reactor efficiency)
+    - buoyancy_strength = 0.5
+    - pi_cycle = 3.14159 (fundamental cycle parameter)
+    
+    Aether pressure: P_aether = ρ × c² × buoyancy_strength
+    
+    Based on UFT2 JSON celestial dataset.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_35_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute Aether field properties.
+        
+        Args:
+            dataset: {'c': speed of light (optional)}
+        
+        Returns:
+            dict with Aether field density and pressure
+        """
+        c = dataset.get('c', 2.998e8)  # m/s
+        
+        # Aether parameters
+        rho_aether = self.params['aether_density']  # 1e-23 kg/m³
+        buoyancy_strength = self.params['aether_buoyancy_strength']  # 0.5
+        pi_cycle = self.params['pi_cycle']  # 3.14159
+        
+        # Aether pressure (using E=mc² analogy)
+        P_aether = rho_aether * (c ** 2) * buoyancy_strength
+        
+        # Energy density
+        E_aether = rho_aether * (c ** 2)  # J/m³
+        
+        # Pi-modulated density (for cyclic phenomena)
+        rho_pi_modulated = rho_aether * pi_cycle
+        
+        # Aether wavelength (de Broglie analogy)
+        h = 6.626e-34  # Planck constant
+        if rho_aether > 0:
+            lambda_aether = h / (rho_aether * c)
+        else:
+            lambda_aether = float('inf')
+        
+        return {
+            'aether_density': rho_aether,
+            'buoyancy_strength': buoyancy_strength,
+            'pi_cycle': pi_cycle,
+            'P_aether': P_aether,
+            'E_aether': E_aether,
+            'rho_pi_modulated': rho_pi_modulated,
+            'lambda_aether': lambda_aether,
+            'c': c,
+            'equation': 'P_aether = ρ × c² × k_buoyancy',
+            'units': {'P_aether': 'Pa', 'E_aether': 'J/m³', 'lambda_aether': 'm'}
+        }
+
+
+class PiCycleModulationCalculator:
+    """
+    Calculator for π (pi) as a fundamental cycle modulation parameter.
+    
+    Physics: π = 3.14159 serves as a universal cycle parameter in:
+    - Galactic rotation rate adjustment
+    - Aether field density modulation
+    - Orbital period calculations
+    
+    Modulated quantity: Q_mod = Q_base × π^n
+    
+    Based on UFT2 JSON celestial dataset.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_35_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute π-cycle modulation effects.
+        
+        Args:
+            dataset: {'base_value': float, 'pi_exponent': float}
+        
+        Returns:
+            dict with pi-modulated values and harmonics
+        """
+        base_value = dataset.get('base_value', 1.0)
+        n = dataset.get('pi_exponent', 1.0)
+        
+        pi = self.params['pi_cycle']  # 3.14159
+        
+        # Primary modulation
+        Q_modulated = base_value * (pi ** n)
+        
+        # Harmonics (π, π², π³)
+        harmonics = {
+            'pi_1': base_value * pi,
+            'pi_2': base_value * (pi ** 2),
+            'pi_3': base_value * (pi ** 3),
+        }
+        
+        # Inverse harmonics (1/π, 1/π²)
+        inverse_harmonics = {
+            'pi_inv_1': base_value / pi,
+            'pi_inv_2': base_value / (pi ** 2),
+        }
+        
+        # Angular conversion (for rotation)
+        angular_factor = 2 * pi  # Full circle
+        
+        # Phase relationship
+        phase_deg = (base_value * 180.0 / pi) % 360.0
+        
+        return {
+            'base_value': base_value,
+            'pi_exponent': n,
+            'pi': pi,
+            'Q_modulated': Q_modulated,
+            'harmonics': harmonics,
+            'inverse_harmonics': inverse_harmonics,
+            'angular_factor': angular_factor,
+            'phase_degrees': phase_deg,
+            'equation': 'Q_mod = Q_base × π^n',
+            'note': 'π serves as fundamental cycle in Aether physics'
+        }
+
+
+# Registry for Orb Analysis 35
+ORB_ANALYSIS_35_CALCULATORS = {
+    'SCmReactorEfficiencyCalculator': SCmReactorEfficiencyCalculator(),
+    'UniversalAetherChargeCalculator': UniversalAetherChargeCalculator(),
+    'MagnetismStringDynamicsCalculator': MagnetismStringDynamicsCalculator(),
+    'HeliosphereLiquidVolumeCalculator': HeliosphereLiquidVolumeCalculator(),
+    'CelestialBuoyancyCalculator': CelestialBuoyancyCalculator(),
+    'GalacticCenterRotationCalculator': GalacticCenterRotationCalculator(),
+    'OrbitalPositionInterpolationCalculator': OrbitalPositionInterpolationCalculator(),
+    'QuantumSignatureSuppressionCalculator': QuantumSignatureSuppressionCalculator(),
+    'AetherFieldDensityCalculator': AetherFieldDensityCalculator(),
+    'PiCycleModulationCalculator': PiCycleModulationCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -15242,6 +15993,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_32_CALCULATORS,
     **ORB_ANALYSIS_33_CALCULATORS,
     **ORB_ANALYSIS_34_CALCULATORS,
+    **ORB_ANALYSIS_35_CALCULATORS,
 }
 
 # Update class count
@@ -15561,6 +16313,20 @@ __all__ = [
     'StellarReferenceComparisonCalculator',
     'Batch40PartialAnalysisCalculator',
     'ORB_ANALYSIS_34_CALCULATORS',
+    
+    # Orb Analysis_35 / UFT2 - Celestial UQFF Visualization (10 classes)
+    'ORB_ANALYSIS_35_PARAMS',
+    'SCmReactorEfficiencyCalculator',
+    'UniversalAetherChargeCalculator',
+    'MagnetismStringDynamicsCalculator',
+    'HeliosphereLiquidVolumeCalculator',
+    'CelestialBuoyancyCalculator',
+    'GalacticCenterRotationCalculator',
+    'OrbitalPositionInterpolationCalculator',
+    'QuantumSignatureSuppressionCalculator',
+    'AetherFieldDensityCalculator',
+    'PiCycleModulationCalculator',
+    'ORB_ANALYSIS_35_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
