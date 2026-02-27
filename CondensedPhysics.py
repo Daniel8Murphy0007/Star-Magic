@@ -158949,6 +158949,280 @@ SOURCE200_WOLFRAM_CALCULATORS = {
 }
 
 
+# ============================================================================
+# QCALC CALCULATORS - 14 classes from QCalc.py (Feb 26, 2026)
+# These are UQFF master equation calculators and core physics
+# ============================================================================
+
+class Energy26LevelCalculator:
+    """26-level polynomial energy structure: E_n = E_0 × 10^n spanning quantum to cosmic scales."""
+    def __init__(self):
+        self.E_0 = 1e-20  # J (base quantum energy)
+    def compute(self, n: int = 1, t: float = 0.0, **params) -> dict:
+        if not 1 <= n <= 26:
+            raise ValueError(f"Level n must be 1-26, got {n}")
+        E_n = self.E_0 * (10 ** n)
+        return {'value': E_n, 'level': n, 'E_0': self.E_0, 'units': 'J',
+                'equation': 'E_n = E_0 × 10^n'}
+
+class VacuumEnergyQCalcCalculator:
+    """Vacuum energy density from 26-level spectrum: λ_vac = Σ(f_i × E_i)/V."""
+    def __init__(self):
+        self.rho_vac_UA = 7.09e-36  # J/m³
+        self.rho_vac_SCm = 7.09e-37  # J/m³
+    def compute(self, V: float = 1.0, t: float = 0.0, **params) -> dict:
+        lambda_vac = self.rho_vac_UA + self.rho_vac_SCm
+        return {'value': lambda_vac, 'V_m3': V, 'rho_UA': self.rho_vac_UA, 'rho_SCm': self.rho_vac_SCm,
+                'units': 'J/m³', 'equation': 'λ_vac = Σ(f_i × E_i)/V'}
+
+class MagneticStringsQCalcCalculator:
+    """Ug3 magnetic strings: rotating closed strings with mass, spin, charge."""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.c = 3e8
+    def compute(self, M: float = 1e30, r: float = 1e6, omega: float = 1.0, t: float = 0.0, **params) -> dict:
+        Ug3 = (self.G * M * omega) / (self.c * r)
+        return {'value': Ug3, 'M_kg': M, 'r_m': r, 'omega_rad_s': omega, 'units': 'm/s²',
+                'equation': 'Ug3 = (G·M·ω)/(c·r)'}
+
+class EnhancedBuoyancyQCalcCalculator:
+    """Enhanced buoyancy Ubi with superconductivity: Ubi = β_i·ρ_vac·V·c²·SCm."""
+    def __init__(self):
+        self.beta_i = 0.603
+        self.rho_vac = 7.09e-36
+        self.c = 3e8
+    def compute(self, V: float = 1e15, SCm: float = 0.99, t: float = 0.0, **params) -> dict:
+        Ubi = self.beta_i * self.rho_vac * V * (self.c ** 2) * SCm
+        return {'value': Ubi, 'V_m3': V, 'SCm': SCm, 'beta_i': self.beta_i, 'units': 'N',
+                'equation': 'Ubi = β_i·ρ_vac·V·c²·SCm'}
+
+class AetherMetricQCalcCalculator:
+    """Aether metric tensor A_μν from vacuum density and spacetime curvature."""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.c = 3e8
+        self.rho_vac = 7.09e-36
+    def compute(self, M: float = 1e30, r: float = 1e6, t: float = 0.0, **params) -> dict:
+        R_s = 2 * self.G * M / (self.c ** 2)  # Schwarzschild radius
+        A_00 = -(1 - R_s / r) * self.rho_vac
+        return {'value': A_00, 'R_s_m': R_s, 'M_kg': M, 'r_m': r, 'units': 'J/m³',
+                'equation': 'A_00 = -(1 - Rs/r)·ρ_vac'}
+
+class UQFF_BaseQCalcCalculator:
+    """UQFF Master #1: F_U = Ug - Ub + Um (base unified field)."""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.c = 3e8
+        self.mu_0 = 1.2566e-6
+        self.beta_i = 0.603
+        self.rho_vac = 7.09e-36
+    def compute(self, M: float = 1e30, r: float = 1e6, B: float = 0.0, t: float = 0.0, **params) -> dict:
+        import math
+        Ug = self.G * M / (r ** 2)
+        V = (4/3) * math.pi * (r ** 3)
+        Ub = self.beta_i * self.rho_vac * V * (self.c ** 2)
+        Um = (B ** 2 / (2 * self.mu_0)) * V if B > 0 else 0.0
+        F_U = Ug - Ub + Um
+        return {'value': F_U, 'Ug': Ug, 'Ub': Ub, 'Um': Um, 'units': 'm/s²',
+                'equation': 'F_U = Ug - Ub + Um'}
+
+class UQFF_CompressedQCalcCalculator:
+    """UQFF Master #2: Compressed gravity (Newtonian + 9 corrections)."""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.c = 3e8
+        self.H0 = 2.27e-18  # s^-1
+        self.Lambda = 1.11e-52  # m^-2
+    def compute(self, M: float = 1e30, r: float = 1e6, t: float = 0.0, B: float = 0.0,
+                B_crit: float = 4.4e13, **params) -> dict:
+        g_base = self.G * M / (r ** 2)
+        expansion = self.H0 * t * 1e-10  # Small Hubble correction
+        super_factor = 1.0 - (B / B_crit) if B_crit > 0 else 1.0
+        g_cosm = (self.Lambda * self.c ** 2 * r) / 3.0
+        g_comp = g_base * (1.0 + expansion) * super_factor + g_cosm
+        return {'value': g_comp, 'g_base': g_base, 'expansion': expansion, 'super_factor': super_factor,
+                'g_cosm': g_cosm, 'units': 'm/s²', 'equation': 'g_comp = g_base×(1+H0t)×(1-B/Bc) + Λc²r/3'}
+
+class UQFF_SuperconductiveQCalcCalculator:
+    """UQFF Master #3: Superconductivity corrections (B < B_crit, Meissner)."""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.B_crit = 4.4e13  # T (magnetar critical)
+    def compute(self, M: float = 1e30, r: float = 1e6, B: float = 1e8, t: float = 0.0, **params) -> dict:
+        g_base = self.G * M / (r ** 2)
+        SCm = 1.0 - (B / self.B_crit) if B < self.B_crit else 0.0
+        g_SC = g_base * SCm
+        return {'value': g_SC, 'g_base': g_base, 'SCm': SCm, 'B_T': B, 'B_crit_T': self.B_crit,
+                'units': 'm/s²', 'equation': 'g_SC = g_base × (1 - B/B_crit)'}
+
+class UQFF_TriadicQCalcCalculator:
+    """UQFF Master #4: Triadic gravity (3-body, resonance, interference)."""
+    def __init__(self):
+        self.G = 6.674e-11
+    def compute(self, M1: float = 1e30, M2: float = 1e28, M3: float = 1e26,
+                r12: float = 1e9, r13: float = 2e9, r23: float = 1.5e9, t: float = 0.0, **params) -> dict:
+        g_12 = self.G * M1 * M2 / (r12 ** 2)
+        g_13 = self.G * M1 * M3 / (r13 ** 2)
+        g_23 = self.G * M2 * M3 / (r23 ** 2)
+        g_triadic = g_12 + g_13 + g_23
+        return {'value': g_triadic, 'g_12': g_12, 'g_13': g_13, 'g_23': g_23, 'units': 'N·m²/kg²',
+                'equation': 'g_triadic = Σ G·Mi·Mj/rij²'}
+
+class UQFF_BuoyantQCalcCalculator:
+    """UQFF Master #5: Buoyancy-dominated (Ubi > Ug, explains galaxy rotation)."""
+    def __init__(self):
+        self.beta_i = 0.603
+        self.rho_vac = 7.09e-36
+        self.c = 3e8
+        self.G = 6.674e-11
+    def compute(self, M: float = 1e42, r: float = 1e21, V: float = None, t: float = 0.0, **params) -> dict:
+        import math
+        if V is None:
+            V = (4/3) * math.pi * (r ** 3)
+        Ug = self.G * M / (r ** 2)
+        Ubi = self.beta_i * self.rho_vac * V * (self.c ** 2)
+        F_buoyant = Ubi - Ug
+        return {'value': F_buoyant, 'Ubi': Ubi, 'Ug': Ug, 'buoyancy_ratio': Ubi/Ug if Ug > 0 else float('inf'),
+                'units': 'm/s²', 'equation': 'F_buoyant = Ubi - Ug'}
+
+class UQFF_MasterBuoyantQCalcCalculator:
+    """UQFF Master #6: Master buoyancy (full Archimedes analog in vacuum)."""
+    def __init__(self):
+        self.beta_i = 0.603
+        self.rho_vac = 7.09e-36
+        self.c = 3e8
+    def compute(self, V_obj: float = 1e15, V_displaced: float = 1e15, t: float = 0.0, **params) -> dict:
+        F_buoyancy = self.beta_i * self.rho_vac * V_displaced * (self.c ** 2)
+        return {'value': F_buoyancy, 'V_displaced_m3': V_displaced, 'beta_i': self.beta_i,
+                'units': 'N', 'equation': 'F_buoyancy = β_i·ρ_vac·V_displaced·c²'}
+
+class UQFF_ResonantQCalcCalculator:
+    """UQFF Master #7: Resonance physics (oscillatory gravity at characteristic frequencies)."""
+    def __init__(self):
+        import math
+        self.G = 6.674e-11
+        self.pi = math.pi
+    def compute(self, M: float = 1e30, r: float = 1e6, omega: float = 1.0, t: float = 0.0, **params) -> dict:
+        import math
+        g_base = self.G * M / (r ** 2)
+        resonance_factor = math.cos(omega * t)
+        g_resonant = g_base * (1.0 + 0.1 * resonance_factor)
+        return {'value': g_resonant, 'g_base': g_base, 'omega_rad_s': omega, 'resonance_factor': resonance_factor,
+                'units': 'm/s²', 'equation': 'g_res = g_base × (1 + 0.1·cos(ωt))'}
+
+class UQFF_QuadraticQCalcCalculator:
+    """UQFF Master #8: Quadratic/dual-root solutions (±√ disambiguation)."""
+    def __init__(self):
+        self.G = 6.674e-11
+    def compute(self, M: float = 1e30, r: float = 1e6, t: float = 0.0, **params) -> dict:
+        import math
+        g = self.G * M / (r ** 2)
+        g_plus = math.sqrt(abs(g))
+        g_minus = -math.sqrt(abs(g))
+        return {'value': g, 'g_plus': g_plus, 'g_minus': g_minus, 'discriminant': g,
+                'units': 'm/s²', 'equation': 'g_± = ±√(GM/r²)'}
+
+class ThermodynamicQCalcCalculator:
+    """Thermodynamic calculations: entropy, temperature, free energy."""
+    def __init__(self):
+        self.k_B = 1.381e-23  # J/K
+        self.hbar = 1.055e-34
+    def compute(self, T: float = 300.0, E: float = 1.0, t: float = 0.0, **params) -> dict:
+        import math
+        S = self.k_B * math.log(E / (self.k_B * T)) if E > 0 and T > 0 else 0.0
+        F = E - T * S  # Helmholtz free energy
+        return {'value': F, 'S_J_K': S, 'T_K': T, 'E_J': E, 'units': 'J',
+                'equation': 'F = E - T·S'}
+
+QCALC_CALCULATORS = {
+    'Energy26LevelCalculator': Energy26LevelCalculator(),
+    'VacuumEnergyQCalcCalculator': VacuumEnergyQCalcCalculator(),
+    'MagneticStringsQCalcCalculator': MagneticStringsQCalcCalculator(),
+    'EnhancedBuoyancyQCalcCalculator': EnhancedBuoyancyQCalcCalculator(),
+    'AetherMetricQCalcCalculator': AetherMetricQCalcCalculator(),
+    'UQFF_BaseQCalcCalculator': UQFF_BaseQCalcCalculator(),
+    'UQFF_CompressedQCalcCalculator': UQFF_CompressedQCalcCalculator(),
+    'UQFF_SuperconductiveQCalcCalculator': UQFF_SuperconductiveQCalcCalculator(),
+    'UQFF_TriadicQCalcCalculator': UQFF_TriadicQCalcCalculator(),
+    'UQFF_BuoyantQCalcCalculator': UQFF_BuoyantQCalcCalculator(),
+    'UQFF_MasterBuoyantQCalcCalculator': UQFF_MasterBuoyantQCalcCalculator(),
+    'UQFF_ResonantQCalcCalculator': UQFF_ResonantQCalcCalculator(),
+    'UQFF_QuadraticQCalcCalculator': UQFF_QuadraticQCalcCalculator(),
+    'ThermodynamicQCalcCalculator': ThermodynamicQCalcCalculator(),
+}
+
+
+# ============================================================================
+# PHASE6 ENHANCED CALCULATORS - 3 classes from Phase6_Enhanced.py (Feb 26, 2026)
+# Self-expanding framework wrappers for M51, NGC1316, SMBH Binary
+# ============================================================================
+
+class M51GravityCondensedCalculator:
+    """M51 Whirlpool Galaxy gravity (d=23.58 Mly, M~1.2e11 M_sun visible, + 4e10 M_sun DM)."""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M_sun = 1.989e30
+        self.M_visible = 1.2e11 * 1.989e30
+        self.M_DM = 4e10 * 1.989e30
+        self.pc = 3.086e16
+    def compute(self, r_kpc: float = 10.0, t: float = 0.0, **params) -> dict:
+        r_m = r_kpc * 1000 * self.pc
+        M_tot = self.M_visible + self.M_DM
+        g = self.G * M_tot / (r_m ** 2)
+        return {'value': g, 'M_visible_Msun': 1.2e11, 'M_DM_Msun': 4e10, 'r_kpc': r_kpc,
+                'units': 'm/s²', 'equation': 'g = G·M_tot/r²'}
+
+class NGC1316GravityCondensedCalculator:
+    """NGC1316 Fornax A radio galaxy gravity (d=62 Mly, M~5e11 M_sun, AGN + dust lanes)."""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.M_sun = 1.989e30
+        self.M_total = 5e11 * 1.989e30
+        self.pc = 3.086e16
+    def compute(self, r_kpc: float = 46.0, t: float = 0.0, **params) -> dict:
+        r_m = r_kpc * 1000 * self.pc
+        g = self.G * self.M_total / (r_m ** 2)
+        return {'value': g, 'M_total_Msun': 5e11, 'r_kpc': r_kpc, 'system': 'Fornax A',
+                'units': 'm/s²', 'equation': 'g_NGC1316 = G·M/r²'}
+
+class SMBHBinaryCondensedCalculator:
+    """SMBH Binary coalescence: frequency-based gravity a = Σ f_i × λ_Planck/(2π)."""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.c = 3e8
+        self.M_sun = 1.989e30
+        self.lambda_Planck = 1.616e-35  # m
+    def compute(self, M1_Msun: float = 1e8, M2_Msun: float = 1e7, a_pc: float = 0.01, t: float = 0.0, **params) -> dict:
+        import math
+        M1 = M1_Msun * self.M_sun
+        M2 = M2_Msun * self.M_sun
+        a_m = a_pc * 3.086e16
+        f_GW = (1 / math.pi) * math.sqrt(self.G * (M1 + M2) / (a_m ** 3))
+        a_freq = f_GW * self.lambda_Planck / (2.0 * math.pi)
+        return {'value': a_freq, 'f_GW_Hz': f_GW, 'M1_Msun': M1_Msun, 'M2_Msun': M2_Msun, 'a_pc': a_pc,
+                'units': 'm/s²', 'equation': 'a = f_GW × λ_Planck/(2π)'}
+
+class ChristoffelCondensedCalculator:
+    """Christoffel symbols Γ^α_βγ for curved spacetime (GR connection coefficients)."""
+    def __init__(self):
+        self.G = 6.674e-11
+        self.c = 3e8
+    def compute(self, M: float = 1e30, r: float = 1e6, t: float = 0.0, **params) -> dict:
+        R_s = 2.0 * self.G * M / (self.c ** 2)
+        g_rr = 1.0 / (1.0 - R_s / r) if r > R_s else float('inf')
+        Gamma_r_tt = (self.G * M / (r ** 2)) * (1.0 - R_s / r)
+        Gamma_t_tr = self.G * M / (r ** 2 * (self.c ** 2) * (1.0 - R_s / r))
+        return {'value': Gamma_r_tt, 'Gamma_t_tr': Gamma_t_tr, 'g_rr': g_rr, 'R_s_m': R_s,
+                'units': 'm^-1', 'equation': 'Γ^r_tt = (GM/r²)(1-Rs/r)'}
+
+PHASE6_CALCULATORS = {
+    'M51GravityCondensedCalculator': M51GravityCondensedCalculator(),
+    'NGC1316GravityCondensedCalculator': NGC1316GravityCondensedCalculator(),
+    'SMBHBinaryCondensedCalculator': SMBHBinaryCondensedCalculator(),
+    'ChristoffelCondensedCalculator': ChristoffelCondensedCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -159790,4 +160064,26 @@ __all__.extend([
     'CosmicEggQuantumFrequencyCalculator',
     'CosmicEggSphericalOutlineCalculator',
     'SOURCE200_WOLFRAM_CALCULATORS',
+    # QCalc.py UQFF Master Equations (Feb 26, 2026) - 14 Calculator Classes
+    'Energy26LevelCalculator',
+    'VacuumEnergyQCalcCalculator',
+    'MagneticStringsQCalcCalculator',
+    'EnhancedBuoyancyQCalcCalculator',
+    'AetherMetricQCalcCalculator',
+    'UQFF_BaseQCalcCalculator',
+    'UQFF_CompressedQCalcCalculator',
+    'UQFF_SuperconductiveQCalcCalculator',
+    'UQFF_TriadicQCalcCalculator',
+    'UQFF_BuoyantQCalcCalculator',
+    'UQFF_MasterBuoyantQCalcCalculator',
+    'UQFF_ResonantQCalcCalculator',
+    'UQFF_QuadraticQCalcCalculator',
+    'ThermodynamicQCalcCalculator',
+    'QCALC_CALCULATORS',
+    # Phase6_Enhanced.py + QCalc_Advanced.py (Feb 26, 2026) - 4 Calculator Classes
+    'M51GravityCondensedCalculator',
+    'NGC1316GravityCondensedCalculator',
+    'SMBHBinaryCondensedCalculator',
+    'ChristoffelCondensedCalculator',
+    'PHASE6_CALCULATORS',
 ])
