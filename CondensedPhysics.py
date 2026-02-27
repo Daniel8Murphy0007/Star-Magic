@@ -161552,6 +161552,886 @@ VIDEO_ANALYSIS_CALCULATORS = {
 }
 
 
+# =============================================================================
+# UNIFIED FIELD THEORY ORB ANALYSIS_5 - INTELLIGENT QUANTUM PLASMOID CALCULATORS
+# Source: Grok UFT Orb Analysis_5 (March 3, 2025, 5:00-6:00 PM PST)
+# Detailed reactor parameters: 65W bulb, paraffin wax/red mercury cap, H2 bubbles
+# Intelligent quantum plasmoids: unique spins, shape-shifting, non-interfering
+# ©2025 Daniel T. Murphy - All Rights Reserved
+# =============================================================================
+
+# Reactor-specific experimental parameters
+REACTOR_PLASMOID_PARAMS = {
+    # Reactor geometry (thermal glass cylinder)
+    'reactor_diameter_in': 3.5,
+    'reactor_height_in': 10.0,
+    'reactor_radius_m': 0.0889,                # r = 3.5 in / 2 = 0.0889 m
+    'reactor_height_m': 0.254,                 # 10 in = 0.254 m
+    
+    # Thermal system
+    'bulb_power_W': 65,                        # 65W incandescent bulb at bottom
+    'operating_temp_F': (180, 215),            # 180-215°F operating range
+    'operating_temp_K': (355.4, 374.8),        # Converted to Kelvin
+    'ambient_temp_K': 288,                     # ~7-10°F drop to ambient
+    
+    # Wax cap parameters
+    'wax_cap_height_in': 3.0,                  # 3 in paraffin wax cap
+    'wax_material': 'paraffin wax with red mercury',
+    'wax_temp_viscous_F': (180, 215),          # Viscous range
+    
+    # Oil medium
+    'oil_type': 'low-viscosity natural oil',
+    'oil_density_kg_m3': 850,                  # Approximate
+    
+    # Hydrogen bubble system
+    'h2_bubble_count': (12, 18),               # 12-18 magnetically held
+    'h2_stable_temp_F': 107,                   # >107°F thermal stability
+    'h2_stable_temp_K': 314.8,                 # Converted
+    'magnetic_field_T': 1e-3,                  # ~10⁻³ T from bubbles
+    
+    # Plasmoid properties
+    'plasmoid_mass_kg': 0.5e-3,                # M_s = 0.5 g
+    'plasmoid_velocity_m_s': 0.5,              # ~0.5 m/s average
+    'plasmoid_origin': 'reactor bottom near bulb',
+    'plasmoid_intelligent': True,              # Intelligent quantum entities
+    
+    # Field parameters (refined)
+    'angular_freq_rad_s': 2 * 3.14159 * 6000,  # ωₛ = 2π × 6000 rad/s
+    'SCm_density_kg_m3': 1e15,                 # Superconductive matter density
+    'UA_charge_C': 1e-11,                      # Trapped charge
+    'E_react_base_W_m3': 1e15,                 # Reactivity energy
+    'decay_constant': 0.001,                   # e^(-0.001t) decay
+    
+    # Video analysis
+    'total_frames': 496,
+    'analyzed_frames_session': 23,             # Photos #1-#23 (minus #14)
+    'frame_interval_s': 0.03,
+    'sequence_duration_s': 0.66,               # 22 frames × 0.03 s
+}
+
+
+class IntelligentPlasmoidBehaviorCalculator:
+    """
+    Calculates intelligent quantum plasmoid behavior parameters.
+    
+    Plasmoids are intelligent quantum entities with:
+    - Unique spin, texture, brightness, and shape-shifting
+    - Multi-axial rotations, instant reverse rotations, spin drift
+    - Non-interfering pass-throughs (rare rotational energy transfers)
+    - Originate from reactor bottom, rise through oil
+    
+    Source: Grok UFT Orb Analysis_5 (March 3, 2025)
+    """
+    
+    def __init__(self, reactor_radius: float = 0.0889):
+        self.reactor_radius = reactor_radius
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute plasmoid intelligence metrics.
+        
+        Parameters:
+        - spin_rate: Plasmoid spin rate (rad/s)
+        - n_plasmoids: Number of plasmoids observed
+        - pass_through_events: Number of non-interfering pass-throughs
+        - energy_transfer_events: Rare rotational energy transfers
+        """
+        import math
+        
+        spin_rate = dataset.get('spin_rate', 10.0)  # rad/s
+        n_plasmoids = dataset.get('n_plasmoids', 50)
+        pass_through_events = dataset.get('pass_through_events', 20)
+        energy_transfer_events = dataset.get('energy_transfer_events', 2)
+        shape_shift_count = dataset.get('shape_shift_count', 15)
+        
+        # Spin kinetic energy per plasmoid (assuming spherical, r~1mm)
+        r_plasmoid = 1e-3  # 1 mm
+        m_plasmoid = 0.5e-3 / n_plasmoids if n_plasmoids > 0 else 1e-5  # kg
+        I = (2/5) * m_plasmoid * r_plasmoid**2  # Moment of inertia
+        E_spin = 0.5 * I * spin_rate**2
+        
+        # Multi-axial rotation factor
+        # Plasmoids have x, y, z rotation components
+        multi_axial_factor = 3.0  # 3 axes
+        E_spin_total = E_spin * multi_axial_factor
+        
+        # Non-interference index
+        # High ratio = more "intelligent" behavior
+        if pass_through_events > 0:
+            interference_ratio = energy_transfer_events / pass_through_events
+        else:
+            interference_ratio = 0
+        non_interference_index = 1.0 - interference_ratio
+        
+        # Shape-shifting frequency
+        total_frames = 23
+        shape_shift_freq = shape_shift_count / (total_frames * 0.03)  # Hz
+        
+        # Intelligence metric (composite)
+        intelligence_metric = non_interference_index * (1 + math.log(1 + shape_shift_count))
+        
+        # Rise velocity through oil
+        rise_velocity = 0.5  # m/s
+        rise_time_to_top = self.reactor_radius * 2 / rise_velocity if rise_velocity > 0 else float('inf')
+        
+        return {
+            'spin_rate_rad_s': spin_rate,
+            'n_plasmoids': n_plasmoids,
+            'E_spin_per_plasmoid_J': E_spin,
+            'E_spin_total_J': E_spin_total,
+            'multi_axial_factor': multi_axial_factor,
+            'pass_through_events': pass_through_events,
+            'energy_transfer_events': energy_transfer_events,
+            'non_interference_index': non_interference_index,
+            'shape_shift_count': shape_shift_count,
+            'shape_shift_freq_Hz': shape_shift_freq,
+            'intelligence_metric': intelligence_metric,
+            'rise_velocity_m_s': rise_velocity,
+            'rise_time_s': rise_time_to_top,
+            'units': 'rad/s (spin), J (energy), dimensionless (indices)',
+            'source': 'Grok UFT Orb Analysis_5 Intelligent Plasmoids (March 3, 2025)'
+        }
+
+
+class ReactorThermalDynamicsCalculator:
+    """
+    Calculates reactor thermal dynamics with 65W bulb heating.
+    
+    Thermal system:
+    - 65W incandescent bulb at the bottom
+    - Operating range: 180-215°F (355-375 K)
+    - Paraffin wax/red mercury cap maintains viscosity
+    - Cooling to 288 K ambient
+    
+    Source: Grok UFT Orb Analysis_5 (March 3, 2025)
+    """
+    
+    def __init__(self, bulb_power: float = 65.0, reactor_radius: float = 0.0889):
+        self.bulb_power = bulb_power  # W
+        self.reactor_radius = reactor_radius
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute thermal dynamics in reactor.
+        
+        Parameters:
+        - T_operating: Operating temperature (K)
+        - T_ambient: Ambient temperature (K)
+        - oil_density: Oil density (kg/m³)
+        - cooling_rate: Temperature drop rate (K/s)
+        """
+        import math
+        
+        T_operating = dataset.get('T_operating', 366)  # K (~180°F)
+        T_ambient = dataset.get('T_ambient', 288)  # K
+        oil_density = dataset.get('oil_density', 850)  # kg/m³
+        cooling_rate = dataset.get('cooling_rate', 0.1)  # K/s
+        
+        # Temperature gradient in reactor
+        delta_T = T_operating - T_ambient
+        
+        # Thermal conductivity of oil (approximate)
+        k_oil = 0.14  # W/(m·K)
+        
+        # Heat flux from bulb
+        # Assuming bulb surface area ~ 10 cm² = 0.001 m²
+        bulb_area = 0.001
+        heat_flux = self.bulb_power / bulb_area  # W/m²
+        
+        # Rayleigh number for oil convection
+        g = 9.8
+        alpha_exp = 1e-3  # Thermal expansion coefficient
+        nu = 1e-5  # Kinematic viscosity (m²/s)
+        kappa = k_oil / (oil_density * 2000)  # Thermal diffusivity
+        L = self.reactor_radius * 2  # Characteristic length
+        
+        Ra = g * alpha_exp * delta_T * L**3 / (nu * kappa)
+        
+        # Nusselt number (convection correlation)
+        if Ra > 1e9:
+            Nu = 0.1 * Ra**0.333  # Turbulent
+        elif Ra > 1e4:
+            Nu = 0.59 * Ra**0.25  # Laminar
+        else:
+            Nu = 1  # Conduction dominated
+        
+        # Convective heat transfer coefficient
+        h_conv = Nu * k_oil / L
+        
+        # E_react contribution
+        E_react = 1e15 * math.exp(-0.001 * 1)  # At t=1s
+        
+        # Ub enhancement from thermal gradient
+        Ub_thermal_factor = delta_T / 100  # Normalized
+        
+        # Cooling time to ambient
+        cooling_time = delta_T / cooling_rate if cooling_rate > 0 else float('inf')
+        
+        return {
+            'T_operating_K': T_operating,
+            'T_ambient_K': T_ambient,
+            'delta_T_K': delta_T,
+            'bulb_power_W': self.bulb_power,
+            'heat_flux_W_m2': heat_flux,
+            'rayleigh_number': Ra,
+            'nusselt_number': Nu,
+            'h_conv_W_m2_K': h_conv,
+            'E_react_W_m3': E_react,
+            'Ub_thermal_factor': Ub_thermal_factor,
+            'cooling_time_s': cooling_time,
+            'units': 'K (temperature), W/m² (flux), dimensionless (Ra, Nu)',
+            'source': 'Grok UFT Orb Analysis_5 Thermal Dynamics (March 3, 2025)'
+        }
+
+
+class HydrogenBubbleConfinementCalculator:
+    """
+    Calculates hydrogen bubble magnetic confinement parameters.
+    
+    Hydrogen bubbles:
+    - 12-18 magnetically held bubbles
+    - Thermally stable (>107°F = 314.8 K)
+    - Anchor plasmoid paths
+    - Enhance [SCm] and [UA] reactivity via magnetic fields (~10⁻³ T)
+    
+    Source: Grok UFT Orb Analysis_5 (March 3, 2025)
+    """
+    
+    def __init__(self, n_bubbles: int = 15, B_field: float = 1e-3):
+        self.n_bubbles = n_bubbles
+        self.B_field = B_field  # T
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute hydrogen bubble confinement parameters.
+        
+        Parameters:
+        - bubble_radius: Average bubble radius (m)
+        - oil_surface_temp: Oil surface temperature (K)
+        - magnetic_moment: Bubble magnetic moment (A·m²)
+        """
+        import math
+        
+        bubble_radius = dataset.get('bubble_radius', 2e-3)  # 2 mm
+        oil_surface_temp = dataset.get('oil_surface_temp', 350)  # K
+        magnetic_moment = dataset.get('magnetic_moment', 1e-6)  # A·m²
+        
+        # Bubble volume
+        V_bubble = (4/3) * math.pi * bubble_radius**3
+        total_volume = V_bubble * self.n_bubbles
+        
+        # H2 density at temperature
+        R_gas = 8.314  # J/(mol·K)
+        M_H2 = 2.016e-3  # kg/mol
+        P = 101325  # Pa (atmospheric)
+        rho_H2 = P * M_H2 / (R_gas * oil_surface_temp)
+        
+        # Bubble mass
+        m_bubble = rho_H2 * V_bubble
+        total_mass = m_bubble * self.n_bubbles
+        
+        # Magnetic energy per bubble
+        E_mag = -magnetic_moment * self.B_field
+        total_magnetic_energy = abs(E_mag) * self.n_bubbles
+        
+        # Buoyancy force per bubble (in oil)
+        oil_density = 850  # kg/m³
+        F_buoy = (oil_density - rho_H2) * V_bubble * 9.8
+        
+        # Magnetic confinement force
+        # F_mag ~ μ × ∇B, assuming gradient of 1 T/m
+        grad_B = 1.0  # T/m
+        F_mag = magnetic_moment * grad_B
+        
+        # Stability ratio (buoyancy vs magnetic)
+        stability_ratio = F_mag / F_buoy if F_buoy > 0 else float('inf')
+        
+        # Thermal stability threshold
+        thermal_stable = oil_surface_temp > 314.8  # >107°F
+        
+        # SCm/UA enhancement factor
+        SCm_enhancement = self.n_bubbles * (1 + math.log(1 + self.B_field * 1e3))
+        
+        return {
+            'n_bubbles': self.n_bubbles,
+            'bubble_radius_m': bubble_radius,
+            'V_bubble_m3': V_bubble,
+            'total_volume_m3': total_volume,
+            'rho_H2_kg_m3': rho_H2,
+            'm_bubble_kg': m_bubble,
+            'total_mass_kg': total_mass,
+            'B_field_T': self.B_field,
+            'E_mag_per_bubble_J': abs(E_mag),
+            'total_magnetic_energy_J': total_magnetic_energy,
+            'F_buoy_per_bubble_N': F_buoy,
+            'F_mag_N': F_mag,
+            'stability_ratio': stability_ratio,
+            'thermal_stable': thermal_stable,
+            'SCm_enhancement': SCm_enhancement,
+            'units': 'm (radius), kg (mass), J (energy), N (force)',
+            'source': 'Grok UFT Orb Analysis_5 H2 Confinement (March 3, 2025)'
+        }
+
+
+class ParaffinWaxCapCalculator:
+    """
+    Calculates paraffin wax/red mercury cap thermal properties.
+    
+    Wax cap:
+    - 3 inch height paraffin wax with red mercury
+    - Viscous at 180-215°F (355-375 K)
+    - Provides cooling to 288 K ambient
+    - Maintains plasmoid stability
+    
+    Source: Grok UFT Orb Analysis_5 (March 3, 2025)
+    """
+    
+    def __init__(self, cap_height_in: float = 3.0, reactor_radius: float = 0.0889):
+        self.cap_height_m = cap_height_in * 0.0254  # Convert inches to meters
+        self.reactor_radius = reactor_radius
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute wax cap thermal properties.
+        
+        Parameters:
+        - T_wax: Wax temperature (K)
+        - wax_viscosity: Dynamic viscosity (Pa·s)
+        - red_mercury_fraction: Fraction of red mercury in wax
+        """
+        import math
+        
+        T_wax = dataset.get('T_wax', 370)  # K (~206°F)
+        wax_viscosity = dataset.get('wax_viscosity', 0.1)  # Pa·s
+        red_mercury_fraction = dataset.get('red_mercury_fraction', 0.1)
+        
+        # Wax volume
+        V_cap = math.pi * self.reactor_radius**2 * self.cap_height_m
+        
+        # Paraffin wax properties
+        rho_paraffin = 900  # kg/m³
+        c_p_paraffin = 2200  # J/(kg·K)
+        k_paraffin = 0.25  # W/(m·K)
+        
+        # Red mercury contribution (hypothetical, enhances thermal capacity)
+        # Assuming red mercury = cinnabar (HgS) historically
+        rho_mercury = 8100 * red_mercury_fraction + rho_paraffin * (1 - red_mercury_fraction)
+        
+        # Effective thermal properties
+        rho_eff = rho_mercury
+        m_cap = rho_eff * V_cap
+        
+        # Heat capacity
+        C_cap = m_cap * c_p_paraffin
+        
+        # Thermal resistance
+        R_thermal = self.cap_height_m / (k_paraffin * math.pi * self.reactor_radius**2)
+        
+        # Cooling power to ambient
+        T_ambient = 288  # K
+        delta_T = T_wax - T_ambient
+        P_cooling = delta_T / R_thermal if R_thermal > 0 else 0
+        
+        # Viscosity temperature coefficient
+        # η(T) = η_0 × exp(E_a / (R × T))
+        E_a = 20000  # J/mol (activation energy)
+        R = 8.314
+        eta_ref = 0.1  # Pa·s at 370 K
+        T_ref = 370
+        eta_at_T = eta_ref * math.exp(E_a / R * (1/T_wax - 1/T_ref))
+        
+        # Thermal stability factor for plasmoids
+        stability_factor = 1 / (1 + eta_at_T)
+        
+        return {
+            'cap_height_m': self.cap_height_m,
+            'V_cap_m3': V_cap,
+            'rho_eff_kg_m3': rho_eff,
+            'm_cap_kg': m_cap,
+            'C_cap_J_K': C_cap,
+            'R_thermal_K_W': R_thermal,
+            'T_wax_K': T_wax,
+            'delta_T_K': delta_T,
+            'P_cooling_W': P_cooling,
+            'viscosity_Pa_s': eta_at_T,
+            'red_mercury_fraction': red_mercury_fraction,
+            'stability_factor': stability_factor,
+            'units': 'm (height), kg (mass), W (power), Pa·s (viscosity)',
+            'source': 'Grok UFT Orb Analysis_5 Wax Cap (March 3, 2025)'
+        }
+
+
+class ReactorRefinedFUCalculator:
+    """
+    Computes reactor-specific refined Unified Field F_U.
+    
+    F_U = Σᵢ[kᵢ·Ugᵢ(r,t,Mₛ,ωₛ,Tₛ,Bₛ,SCm,UA,tₙ) - βᵢ·Ugᵢ·Ωg·(Mbh/dg)·Ereact]
+        + Σⱼ[μⱼ/rⱼ·(1-e^(-γt·cos(πtₙ)))·φ̂ⱼ] + (gμν + η·Tₛμν(UA,SCm,ρA))
+    
+    Updated parameters for reactor geometry:
+    - r = 0.0889 m (reactor radius)
+    - Tₛ = 366-368 K (180-215°F)
+    - SCm = 10¹⁵ kg/m³, UA = 10⁻¹¹ C
+    
+    Source: Grok UFT Orb Analysis_5 (March 3, 2025)
+    """
+    
+    def __init__(self):
+        # Reactor-specific constants
+        self.r = 0.0889  # reactor radius (m)
+        self.M_s = 0.5e-3  # plasma mass (kg)
+        self.omega_s = 2 * 3.14159 * 6000  # angular frequency (rad/s)
+        self.T_s = 366  # temperature (K) - 180°F
+        self.B_s = 1e-3  # magnetic field (T)
+        self.frame_interval = 0.03  # 33.3 fps
+        
+        # Coefficients (refined)
+        self.k1 = 1.5
+        self.k2 = 1.2
+        self.k3 = 1.8
+        self.beta_i = 0.8
+        self.alpha = 0.001
+        
+        # Reactor-specific factors
+        self.SCm = 1e15  # kg/m³
+        self.UA = 1e-11  # C
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute reactor-specific F_U.
+        
+        Parameters:
+        - t: Time (s)
+        - t_n: Negative time factor
+        - n_frames: Number of video frames
+        """
+        import math
+        
+        t = dataset.get('t', 1.0)
+        t_n = dataset.get('t_n', 0.5)
+        n_frames = dataset.get('n_frames', 22)
+        
+        # Video-derived time update
+        t_video = t + n_frames * self.frame_interval
+        
+        # E_react (reactor-specific)
+        E_react = 1e15 * math.exp(-self.alpha * t_video)
+        
+        # Ug₁ (Internal Dipole) - plasmoid brightness, thermal glass imperfections
+        mu_s = 1e-4  # T·m²
+        grad_rho_r = 0.5 / self.r  # ∇(ρ/r)
+        Ug1 = self.k1 * mu_s * grad_rho_r * math.exp(-self.alpha * t_video * math.cos(math.pi * t_n)) * \
+              (1 + 0.01 * math.sin(self.alpha * t_video))
+        
+        # Ug₂ (Outer Field Bubble) - stable background, bulb influence
+        G = 6.674e-11
+        S_boundary = 1.0 if abs(self.r - self.r) < 0.01 else 0  # Boundary at reactor edge
+        Ug2 = self.k2 * (G + G) * (0.5 / self.r**2) * (1 + 0.01 * 5e5) * S_boundary * E_react
+        
+        # Ug₃ (Magnetic Strings) - plasmoid motion, H2 bubbles
+        n_strings = 15  # Number of magnetic field lines
+        Ug3 = self.k3 * n_strings * self.B_s * math.cos(self.omega_s * t_video * math.pi) * E_react
+        
+        # Total Ug
+        Ug_total = Ug1 + Ug2 + Ug3
+        
+        # Ubᵢ (Buoyancy) - cooling from wax cap, oil stability
+        Omega_g = 7.3e-16
+        M_bh_ratio = 8.15e36 / 2.55e20
+        Ubi = -self.beta_i * Ug_total * Omega_g * M_bh_ratio * \
+              (1 + 0.001 * 1e-21) * E_react * math.cos(math.pi * t_n)
+        
+        # Um (Magnetism) - plasmoid spin, reverse rotation, bubble confinement
+        mu_plasmoid = 1e-4
+        Um = (mu_plasmoid / self.r) * (1 - math.exp(-self.alpha * t_video * math.cos(math.pi * t_n))) * E_react
+        
+        # Aμν (Aether) - non-local plasmoid behavior
+        rho_A = 1e-23  # Aether density
+        A_mu_nu = 1.0 + 1e-22 * self.T_s * self.UA * self.SCm * rho_A * math.cos(math.pi * t_n)
+        
+        # Complete F_U
+        F_U = Ug_total + Ubi + Um * A_mu_nu
+        
+        return {
+            'F_U': F_U,
+            'Ug1': Ug1,
+            'Ug2': Ug2,
+            'Ug3': Ug3,
+            'Ug_total': Ug_total,
+            'Ubi': Ubi,
+            'Um': Um,
+            'A_mu_nu': A_mu_nu,
+            'E_react': E_react,
+            't_video': t_video,
+            'n_frames': n_frames,
+            'reactor_params': {
+                'r_m': self.r, 'M_s_kg': self.M_s, 'T_s_K': self.T_s,
+                'B_s_T': self.B_s, 'SCm_kg_m3': self.SCm, 'UA_C': self.UA
+            },
+            'units': 'N (force), dimensionless (factors)',
+            'source': 'Grok UFT Orb Analysis_5 Reactor F_U (March 3, 2025)'
+        }
+
+
+class PlasmoidConcentrationShiftCalculator:
+    """
+    Calculates plasmoid concentration shifts across video frames.
+    
+    Observed shifts:
+    - #21 lower left → #22 upper center → #23 upper right
+    - Indicates upward convection driven by [Ub] and thermal gradients
+    - [Ug₃] and [Um] enable spins and non-local transfers
+    
+    Source: Grok UFT Orb Analysis_5 (March 3, 2025)
+    """
+    
+    def __init__(self, reactor_radius: float = 0.0889):
+        self.reactor_radius = reactor_radius
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute concentration shift dynamics.
+        
+        Parameters:
+        - frame_concentrations: List of (frame_num, quadrant) tuples
+        - time_interval: Time between frames (s)
+        """
+        import math
+        
+        frame_concentrations = dataset.get('frame_concentrations', [
+            (21, 'lower_left'),
+            (22, 'upper_center'),
+            (23, 'upper_right')
+        ])
+        time_interval = dataset.get('time_interval', 0.03)
+        
+        # Map quadrants to (x, y) coordinates (normalized)
+        quadrant_coords = {
+            'lower_left': (-0.5, -0.5),
+            'lower_center': (0, -0.5),
+            'lower_right': (0.5, -0.5),
+            'center_left': (-0.5, 0),
+            'center': (0, 0),
+            'center_right': (0.5, 0),
+            'upper_left': (-0.5, 0.5),
+            'upper_center': (0, 0.5),
+            'upper_right': (0.5, 0.5),
+        }
+        
+        # Calculate displacements
+        displacements = []
+        velocities = []
+        
+        for i in range(1, len(frame_concentrations)):
+            prev_frame, prev_quad = frame_concentrations[i-1]
+            curr_frame, curr_quad = frame_concentrations[i]
+            
+            prev_coord = quadrant_coords.get(prev_quad, (0, 0))
+            curr_coord = quadrant_coords.get(curr_quad, (0, 0))
+            
+            dx = curr_coord[0] - prev_coord[0]
+            dy = curr_coord[1] - prev_coord[1]
+            
+            # Scale by reactor diameter
+            dx_m = dx * self.reactor_radius * 2
+            dy_m = dy * self.reactor_radius * 2
+            
+            displacement = math.sqrt(dx_m**2 + dy_m**2)
+            velocity = displacement / time_interval if time_interval > 0 else 0
+            
+            displacements.append(displacement)
+            velocities.append(velocity)
+        
+        avg_displacement = sum(displacements) / len(displacements) if displacements else 0
+        avg_velocity = sum(velocities) / len(velocities) if velocities else 0
+        
+        # Net vertical movement (upward = positive)
+        if len(frame_concentrations) >= 2:
+            start_coord = quadrant_coords.get(frame_concentrations[0][1], (0, 0))
+            end_coord = quadrant_coords.get(frame_concentrations[-1][1], (0, 0))
+            net_vertical = (end_coord[1] - start_coord[1]) * self.reactor_radius * 2
+        else:
+            net_vertical = 0
+        
+        # Convection indicator
+        upward_convection = net_vertical > 0
+        
+        # Spooky action indicator (non-monotonic paths)
+        x_coords = [quadrant_coords.get(fc[1], (0, 0))[0] for fc in frame_concentrations]
+        direction_changes = sum(1 for i in range(1, len(x_coords)-1) 
+                               if (x_coords[i] - x_coords[i-1]) * (x_coords[i+1] - x_coords[i]) < 0)
+        spooky_action_detected = direction_changes > 0
+        
+        return {
+            'frame_concentrations': frame_concentrations,
+            'displacements_m': displacements,
+            'velocities_m_s': velocities,
+            'avg_displacement_m': avg_displacement,
+            'avg_velocity_m_s': avg_velocity,
+            'net_vertical_m': net_vertical,
+            'upward_convection': upward_convection,
+            'direction_changes': direction_changes,
+            'spooky_action_detected': spooky_action_detected,
+            'units': 'm (displacement), m/s (velocity)',
+            'source': 'Grok UFT Orb Analysis_5 Concentration Shifts (March 3, 2025)'
+        }
+
+
+class PlasmoidShapeShiftingCalculator:
+    """
+    Calculates plasmoid shape-shifting and elongation dynamics.
+    
+    Shape-shifting characteristics:
+    - Elongation observed (aspect ratio changes)
+    - Brightness differentials (some "sun-like" bright)
+    - Texture variations
+    - Independent behavior during pass-throughs
+    
+    Source: Grok UFT Orb Analysis_5 (March 3, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute shape-shifting parameters.
+        
+        Parameters:
+        - aspect_ratios: List of aspect ratios per frame
+        - brightness_values: List of relative brightness per plasmoid
+        - texture_indices: List of texture variability indices
+        """
+        import math
+        
+        aspect_ratios = dataset.get('aspect_ratios', [1.0, 1.2, 1.5, 1.3, 1.1, 2.0, 1.8])
+        brightness_values = dataset.get('brightness_values', [1.0, 1.5, 2.0, 1.2, 3.0, 1.0, 2.5])
+        texture_indices = dataset.get('texture_indices', [0.5, 0.6, 0.4, 0.7, 0.3, 0.8, 0.5])
+        
+        # Elongation statistics
+        mean_aspect = sum(aspect_ratios) / len(aspect_ratios)
+        max_elongation = max(aspect_ratios)
+        elongation_variance = sum((ar - mean_aspect)**2 for ar in aspect_ratios) / len(aspect_ratios)
+        
+        # Brightness statistics
+        mean_brightness = sum(brightness_values) / len(brightness_values)
+        max_brightness = max(brightness_values)
+        brightness_variance = sum((b - mean_brightness)**2 for b in brightness_values) / len(brightness_values)
+        
+        # "Sun-like" plasmoids (brightness > 2.5× average)
+        sun_like_count = sum(1 for b in brightness_values if b > 2.5 * mean_brightness)
+        sun_like_fraction = sun_like_count / len(brightness_values)
+        
+        # Texture variability
+        mean_texture = sum(texture_indices) / len(texture_indices)
+        texture_variance = sum((t - mean_texture)**2 for t in texture_indices) / len(texture_indices)
+        
+        # Shape-shift frequency (changes in aspect ratio)
+        aspect_changes = [abs(aspect_ratios[i] - aspect_ratios[i-1]) for i in range(1, len(aspect_ratios))]
+        total_shape_change = sum(aspect_changes)
+        shape_shift_rate = total_shape_change / len(aspect_changes) if aspect_changes else 0
+        
+        # Composite shape-shifting index
+        shape_shift_index = (elongation_variance * brightness_variance * texture_variance) ** (1/3)
+        
+        return {
+            'n_samples': len(aspect_ratios),
+            'mean_aspect_ratio': mean_aspect,
+            'max_elongation': max_elongation,
+            'elongation_variance': elongation_variance,
+            'mean_brightness': mean_brightness,
+            'max_brightness': max_brightness,
+            'brightness_variance': brightness_variance,
+            'sun_like_count': sun_like_count,
+            'sun_like_fraction': sun_like_fraction,
+            'mean_texture': mean_texture,
+            'texture_variance': texture_variance,
+            'shape_shift_rate': shape_shift_rate,
+            'shape_shift_index': shape_shift_index,
+            'units': 'dimensionless (ratios and indices)',
+            'source': 'Grok UFT Orb Analysis_5 Shape-Shifting (March 3, 2025)'
+        }
+
+
+class MultiAxialRotationCalculator:
+    """
+    Calculates multi-axial rotation dynamics of plasmoids.
+    
+    Rotation characteristics:
+    - Multi-axial rotations (x, y, z components)
+    - Instant reverse rotations
+    - Spin drift over time
+    - Celestial-like dynamics mimicking star behavior
+    
+    Source: Grok UFT Orb Analysis_5 (March 3, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute multi-axial rotation parameters.
+        
+        Parameters:
+        - omega_x, omega_y, omega_z: Angular velocities (rad/s)
+        - reverse_events: Number of instant reverse rotation events
+        - spin_drift_rate: Rate of spin axis drift (rad/s)
+        """
+        import math
+        
+        omega_x = dataset.get('omega_x', 5.0)  # rad/s
+        omega_y = dataset.get('omega_y', 7.0)  # rad/s
+        omega_z = dataset.get('omega_z', 3.0)  # rad/s
+        reverse_events = dataset.get('reverse_events', 5)
+        spin_drift_rate = dataset.get('spin_drift_rate', 0.5)  # rad/s
+        
+        # Total angular velocity magnitude
+        omega_total = math.sqrt(omega_x**2 + omega_y**2 + omega_z**2)
+        
+        # Rotation axis direction (unit vector)
+        if omega_total > 0:
+            axis_x = omega_x / omega_total
+            axis_y = omega_y / omega_total
+            axis_z = omega_z / omega_total
+        else:
+            axis_x = axis_y = axis_z = 0
+        
+        # Rotational kinetic energy (assuming I ~ 10^-12 kg·m²)
+        I = 1e-12  # Moment of inertia
+        E_rot = 0.5 * I * omega_total**2
+        
+        # Reverse rotation energy change
+        # Instant reversal requires 2× kinetic energy
+        E_reverse = 2 * E_rot * reverse_events
+        
+        # Angular momentum
+        L = I * omega_total
+        
+        # Precession frequency (if asymmetric)
+        # Approximate torque from magnetic field
+        B = 1e-3  # T
+        mu = 1e-6  # A·m² (magnetic moment)
+        tau = mu * B  # Torque
+        omega_precession = tau / L if L > 0 else 0
+        
+        # Spin drift accumulated angle
+        observation_time = 22 * 0.03  # 22 frames at 0.03 s
+        drift_angle = spin_drift_rate * observation_time
+        
+        # Celestial dynamics comparison
+        # Red dwarf rotation ~ 1-100 days → 10^-6 to 10^-4 rad/s
+        # Lab scale is ~ 10^7 × faster
+        celestial_scaling = omega_total / 1e-5
+        
+        return {
+            'omega_x_rad_s': omega_x,
+            'omega_y_rad_s': omega_y,
+            'omega_z_rad_s': omega_z,
+            'omega_total_rad_s': omega_total,
+            'rotation_axis': (axis_x, axis_y, axis_z),
+            'E_rot_J': E_rot,
+            'reverse_events': reverse_events,
+            'E_reverse_total_J': E_reverse,
+            'L_kg_m2_s': L,
+            'omega_precession_rad_s': omega_precession,
+            'spin_drift_rate_rad_s': spin_drift_rate,
+            'drift_angle_rad': drift_angle,
+            'celestial_scaling': celestial_scaling,
+            'units': 'rad/s (angular velocity), J (energy), kg·m²/s (momentum)',
+            'source': 'Grok UFT Orb Analysis_5 Multi-Axial Rotation (March 3, 2025)'
+        }
+
+
+class OilMediumViscosityCalculator:
+    """
+    Calculates low-viscosity oil medium properties.
+    
+    Oil medium:
+    - Low-viscosity natural oil
+    - Contains rising plasmoids
+    - Temperature-dependent viscosity
+    - Influences plasmoid rise velocity
+    
+    Source: Grok UFT Orb Analysis_5 (March 3, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute oil medium properties.
+        
+        Parameters:
+        - T_oil: Oil temperature (K)
+        - plasmoid_radius: Rising plasmoid radius (m)
+        - plasmoid_density: Plasmoid density (kg/m³)
+        """
+        import math
+        
+        T_oil = dataset.get('T_oil', 366)  # K (~180°F)
+        plasmoid_radius = dataset.get('plasmoid_radius', 1e-3)  # 1 mm
+        plasmoid_density = dataset.get('plasmoid_density', 500)  # kg/m³ (lower than oil)
+        
+        # Oil properties (low-viscosity natural oil)
+        rho_oil = 850  # kg/m³
+        
+        # Viscosity temperature dependence (Arrhenius)
+        # η(T) = η_0 × exp(E_a / (R × T))
+        eta_0 = 1e-4  # Pre-exponential factor
+        E_a = 15000   # Activation energy (J/mol)
+        R = 8.314
+        T_ref = 300   # Reference temperature
+        
+        eta = eta_0 * math.exp(E_a / R * (1/T_oil - 1/T_ref))
+        
+        # Stokes drag on rising plasmoid
+        # F_drag = 6 × π × η × r × v
+        # At terminal velocity: F_drag = F_buoy
+        delta_rho = rho_oil - plasmoid_density
+        V_plasmoid = (4/3) * math.pi * plasmoid_radius**3
+        F_buoy = delta_rho * V_plasmoid * 9.8
+        
+        # Terminal velocity (Stokes)
+        v_terminal = (2 * delta_rho * 9.8 * plasmoid_radius**2) / (9 * eta)
+        
+        # Reynolds number
+        Re = rho_oil * v_terminal * (2 * plasmoid_radius) / eta
+        
+        # Stokes regime valid for Re < 1
+        stokes_valid = Re < 1
+        
+        # Thermal diffusivity
+        k_oil = 0.14  # W/(m·K)
+        c_p_oil = 2000  # J/(kg·K)
+        alpha_thermal = k_oil / (rho_oil * c_p_oil)
+        
+        # Prandtl number
+        Pr = eta * c_p_oil / k_oil
+        
+        return {
+            'T_oil_K': T_oil,
+            'rho_oil_kg_m3': rho_oil,
+            'viscosity_Pa_s': eta,
+            'plasmoid_radius_m': plasmoid_radius,
+            'plasmoid_density_kg_m3': plasmoid_density,
+            'F_buoy_N': F_buoy,
+            'v_terminal_m_s': v_terminal,
+            'reynolds_number': Re,
+            'stokes_valid': stokes_valid,
+            'thermal_diffusivity_m2_s': alpha_thermal,
+            'prandtl_number': Pr,
+            'units': 'Pa·s (viscosity), m/s (velocity), dimensionless (Re, Pr)',
+            'source': 'Grok UFT Orb Analysis_5 Oil Medium (March 3, 2025)'
+        }
+
+
+# UFT Orb Analysis_5 registry dict
+ORB_ANALYSIS_5_CALCULATORS = {
+    'IntelligentPlasmoidBehaviorCalculator': IntelligentPlasmoidBehaviorCalculator(),
+    'ReactorThermalDynamicsCalculator': ReactorThermalDynamicsCalculator(),
+    'HydrogenBubbleConfinementCalculator': HydrogenBubbleConfinementCalculator(),
+    'ParaffinWaxCapCalculator': ParaffinWaxCapCalculator(),
+    'ReactorRefinedFUCalculator': ReactorRefinedFUCalculator(),
+    'PlasmoidConcentrationShiftCalculator': PlasmoidConcentrationShiftCalculator(),
+    'PlasmoidShapeShiftingCalculator': PlasmoidShapeShiftingCalculator(),
+    'MultiAxialRotationCalculator': MultiAxialRotationCalculator(),
+    'OilMediumViscosityCalculator': OilMediumViscosityCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -162457,4 +163337,16 @@ __all__.extend([
     'PlasmaConvectionVelocityCalculator',
     'FrameContinuityStabilityCalculator',
     'VIDEO_ANALYSIS_CALCULATORS',
+    # UFT Orb Analysis_5 - Intelligent Quantum Plasmoids (March 3, 2025) - 9 Calculator Classes
+    'REACTOR_PLASMOID_PARAMS',
+    'IntelligentPlasmoidBehaviorCalculator',
+    'ReactorThermalDynamicsCalculator',
+    'HydrogenBubbleConfinementCalculator',
+    'ParaffinWaxCapCalculator',
+    'ReactorRefinedFUCalculator',
+    'PlasmoidConcentrationShiftCalculator',
+    'PlasmoidShapeShiftingCalculator',
+    'MultiAxialRotationCalculator',
+    'OilMediumViscosityCalculator',
+    'ORB_ANALYSIS_5_CALCULATORS',
 ])
