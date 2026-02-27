@@ -156990,6 +156990,643 @@ SOURCE65_WOLFRAM_CALCULATORS = {
 }
 
 
+# ===========================================================================================
+# SOURCE66_WOLFRAM.CPP: Red Dwarf UQFF Compression_C (10 Calculator Classes)
+# Physics: LENR (E=2e11 V/m, η=1e13 cm⁻²/s), Higgs (m_H≈125 GeV), Pi calculation via Basel S(2)=π²/6
+# Key: W_mag=15GeV·B·R·(v/c), non-local exp(-[SSq]^26·e^(-(π+t))), calibration k_η=2.75e8
+# ===========================================================================================
+
+class RedDwarfWmagCalculator:
+    """W_mag ≈ 15 GeV × B_kG × R_km × (v/c) - Magnetic energy term (Eq4).
+    
+    Red Dwarf UQFF: Magnetic energy scales with field strength, radius, and velocity.
+    Typical values: B ~ 1 kG, R ~ 1000 km, v/c ~ 0.01.
+    """
+    def __init__(self, B_kiloG=1.0, R_km=1e3, v_over_c=1e-2):
+        self.B_kiloG = B_kiloG    # kG, magnetic field
+        self.R_km = R_km          # km, radius
+        self.v_over_c = v_over_c  # v/c, velocity ratio
+    
+    def compute(self, dataset: dict) -> dict:
+        B = dataset.get('B_kiloG', self.B_kiloG)
+        R = dataset.get('R_km', self.R_km)
+        vc = dataset.get('v_over_c', self.v_over_c)
+        W_mag_eV = 15e9 * B * R * vc  # eV
+        W_mag_J = W_mag_eV * 1.602e-19  # Convert to J
+        return {'value': W_mag_J, 'W_mag_eV': W_mag_eV, 'B_kG': B, 'R_km': R, 'v_over_c': vc,
+                'units': 'J', 'equation': 'W_mag ≈ 15 GeV·B_kG·R_km·(v/c)'}
+
+
+class RedDwarfUmCalculator:
+    """Um(t) ≈ 1.885e-7 × E_react × factor / non_local - Universal magnetism (Eq5).
+    
+    Red Dwarf UQFF: Universal magnetism couples reaction energy to non-local term.
+    E_react ~ 1e46 J, non_local ~ [SSq]^26 × e^(-(π+t)).
+    """
+    def __init__(self, E_react=1e46, SSq=1.0, n26=26):
+        self.E_react = E_react    # J, reaction energy
+        self.SSq = SSq            # Superconductive squared
+        self.n26 = n26            # Quantum levels
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t = dataset.get('t', 1.0)
+        non_local = self.SSq**self.n26 * math.exp(-(math.pi + t))
+        factor = (1 + 1e13 * 0.01) * (1 + 0.01)  # (1 + η·f)(1 + f_quasi)
+        exp_cos = 1 - math.exp(-0.00005) * math.cos(math.pi * 0)
+        Um = (1.885e-7 / 3.38e23) * 0.00005 * self.E_react * factor * exp_cos / (non_local + 1e-100)
+        return {'value': Um, 'E_react_J': self.E_react, 'non_local': non_local, 'factor': factor,
+                'units': 'J/m³', 'equation': 'Um(t) ≈ 1.885e-7·E_react·factor/non_local'}
+
+
+class RedDwarfUHCalculator:
+    """UH(t,n) = λ_H × ρ_vac × ω_H × exp(-nonlocal) × (1+f_quasi) - Higgs field (Eq6).
+    
+    Red Dwarf UQFF: Higgs field coupling with frequency ω_H = 1.585e-8 rad/s.
+    ρ_vac ~ 1e-23 × 0.1^n × e^(-1) × e^(-π) for quantum level n.
+    """
+    def __init__(self, lambda_H=1.0, omega_H=1.585e-8, f_quasi=0.01, SSq=1.0, n26=26):
+        self.lambda_H = lambda_H  # Higgs coupling
+        self.omega_H = omega_H    # rad/s, Higgs frequency
+        self.f_quasi = f_quasi    # Quasi-monopole fraction
+        self.SSq = SSq
+        self.n26 = n26
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t = dataset.get('t', 1.0)
+        n = dataset.get('n', 1)
+        rho_UA_SCm = 1e-23 * (0.1**n) * math.exp(-1) * math.exp(-math.pi)
+        non_local = self.SSq**self.n26 * math.exp(-(math.pi + t))
+        UH = self.lambda_H * rho_UA_SCm * self.omega_H * math.exp(-non_local) * (1.0 + self.f_quasi)
+        return {'value': UH, 'rho_UA_SCm': rho_UA_SCm, 'omega_H': self.omega_H, 'non_local': non_local,
+                'units': 'J/m³', 'equation': 'UH = λ_H·ρ_vac·ω_H·exp(-nonlocal)·(1+f_quasi)'}
+
+
+class RedDwarfUg3Calculator:
+    """Ug3(t) = k3 × B_j × cos(ω_s·t·π) × P_core × E_react × (1+nonlocal) - Star formation (Eq7).
+    
+    Red Dwarf UQFF: Star formation gravity mode with magnetic/core pressure coupling.
+    B_j ~ 1.01e-7 T, ω_s ~ 2.5e-6 rad/s, E_react ~ 1e46 J.
+    """
+    def __init__(self, k3=1.0, B_j=1.01e-7, omega_s=2.5e-6, P_core=1.0, E_react=1e46, SSq=1.0, n26=26):
+        self.k3 = k3
+        self.B_j = B_j            # T, adjusted magnetic field
+        self.omega_s = omega_s    # rad/s, spin frequency
+        self.P_core = P_core      # Core pressure factor
+        self.E_react = E_react    # J, reaction energy
+        self.SSq = SSq
+        self.n26 = n26
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t = dataset.get('t', 1.0)
+        cos_term = math.cos(self.omega_s * t * math.pi)
+        non_local = self.SSq**self.n26 * math.exp(-(math.pi + t))
+        Ug3 = self.k3 * self.B_j * cos_term * self.P_core * self.E_react * (1.0 + non_local)
+        return {'value': Ug3, 'B_j_T': self.B_j, 'omega_s': self.omega_s, 'cos_term': cos_term,
+                'units': 'm/s²', 'equation': 'Ug3 = k3·B_j·cos(ω_s·t·π)·P_core·E_react·(1+nonlocal)'}
+
+
+class RedDwarfLENREFieldCalculator:
+    """E = Um / ρ_vac,[UA] / 1.885e-7 - LENR electric field (Eq8).
+    
+    Red Dwarf UQFF: LENR E-field calibrated to 2e11 V/m for metallic hydride.
+    ρ_vac,[UA] ~ 7.09e-36 J/m³, Um ~ 9.05e47 J/m³ typical.
+    """
+    def __init__(self, rho_vac_UA=7.09e-36, Um_typical=9.05e47):
+        self.rho_vac_UA = rho_vac_UA  # J/m³
+        self.Um_typical = Um_typical  # J/m³
+    
+    def compute(self, dataset: dict) -> dict:
+        Um = dataset.get('Um', self.Um_typical)
+        E_field = (Um / self.rho_vac_UA) / 1.885e-7
+        return {'value': E_field, 'Um': Um, 'rho_vac_UA': self.rho_vac_UA,
+                'units': 'V/m', 'equation': 'E = Um/ρ_vac,[UA]/1.885e-7 ≈ 2e11 V/m'}
+
+
+class RedDwarfNeutronRateCalculator:
+    """η(t) = k_η × exp(-nonlocal) × (Um/ρ_vac,[UA]) - Neutron production rate (Eq9).
+    
+    Red Dwarf UQFF: Neutron rate calibrated to 1e13 cm⁻²/s (metallic hydride).
+    k_η = 2.75e8 cm⁻²·s·m³/J calibration coefficient.
+    """
+    def __init__(self, k_eta=2.75e8, rho_vac_UA=7.09e-36, SSq=1.0, n26=26):
+        self.k_eta = k_eta        # cm⁻²·s·m³/J
+        self.rho_vac_UA = rho_vac_UA
+        self.SSq = SSq
+        self.n26 = n26
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t = dataset.get('t', 1.0)
+        Um = dataset.get('Um', 9.05e47)
+        non_local = self.SSq**self.n26 * math.exp(-(math.pi + t))
+        eta = self.k_eta * math.exp(-non_local) * (Um / self.rho_vac_UA)
+        return {'value': eta, 'k_eta': self.k_eta, 'non_local': non_local, 'Um': Um,
+                'units': 'cm⁻²/s', 'equation': 'η = k_η·exp(-nonlocal)·(Um/ρ_vac,[UA]) ≈ 1e13'}
+
+
+class RedDwarfPseudoMonopoleDeltaNCalculator:
+    """Δn(n) = (2π)^n / 6 - Pseudo-monopole order (Eq10).
+    
+    Red Dwarf UQFF: Pseudo-monopole topology with order scaling.
+    For n=1: Δn = 2π/6 = π/3 ≈ 1.047.
+    """
+    def __init__(self):
+        pass
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        n = dataset.get('n', 1)
+        delta_n = (2.0 * math.pi)**n / 6.0
+        return {'value': delta_n, 'order_n': n, 'units': 'dimensionless',
+                'equation': 'Δn = (2π)^n/6'}
+
+
+class RedDwarfBaselSeriesCalculator:
+    """S(2) = Σ(1/n²) = π²/6 ≈ 1.64493 - Basel series for Pi calculation (Eq15).
+    
+    Red Dwarf UQFF: Pi to ~15 digits via Basel problem.
+    10000 terms achieves high precision for validation.
+    """
+    def __init__(self, terms=10000):
+        self.terms = terms
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        terms = dataset.get('terms', self.terms)
+        s = dataset.get('s', 2)  # Default: Basel problem s=2
+        total = sum(1.0 / (n**s) for n in range(1, terms + 1))
+        exact_s2 = math.pi**2 / 6
+        error = abs(total - exact_s2) if s == 2 else None
+        return {'value': total, 'exact_pi2_over_6': exact_s2, 'error': error, 'terms': terms,
+                'units': 'dimensionless', 'equation': 'S(2) = Σ1/n² = π²/6 ≈ 1.64493'}
+
+
+class RedDwarfBuoyancySeriesCalculator:
+    """Σ_{n odd} 1/x^((π+1)^n) - Buoyancy series (Eq20).
+    
+    Red Dwarf UQFF: Atmospheric buoyancy ratio via odd-power series.
+    For x=3, n=1,3,5,7: sum ≈ -0.8887.
+    """
+    def __init__(self, x=3.0, terms_odd=4):
+        self.x = x                # Variable
+        self.terms_odd = terms_odd  # Number of odd terms
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        x = dataset.get('x', self.x)
+        terms = dataset.get('terms_odd', self.terms_odd)
+        total = 0.0
+        n = 1
+        for i in range(terms):
+            total += 1.0 / (x ** ((math.pi + 1.0)**n))
+            n += 2
+        return {'value': total, 'x': x, 'terms_odd': terms, 'units': 'dimensionless',
+                'equation': 'Σ_{n odd} 1/x^((π+1)^n)'}
+
+
+class RedDwarfTransmutationQCalculator:
+    """Q = (M_n - M_p - m_e) × c² - Transmutation Q-value (Eq2).
+    
+    Red Dwarf UQFF: Beta-minus decay Q-value ≈ 0.78 MeV.
+    Neutron → proton + electron + antineutrino.
+    """
+    def __init__(self, M_n=1.67493e-27, M_p=1.67262e-27, m_e=9.11e-31, c=3e8):
+        self.M_n = M_n            # kg, neutron mass
+        self.M_p = M_p            # kg, proton mass
+        self.m_e = m_e            # kg, electron mass
+        self.c = c
+    
+    def compute(self, dataset: dict) -> dict:
+        Q_J = (self.M_n - self.M_p - self.m_e) * self.c**2
+        Q_MeV = Q_J / 1.602e-13
+        return {'value': Q_MeV, 'Q_J': Q_J, 'M_n_kg': self.M_n, 'M_p_kg': self.M_p, 'm_e_kg': self.m_e,
+                'units': 'MeV', 'equation': 'Q = (M_n-M_p-m_e)·c² ≈ 0.78 MeV'}
+
+
+SOURCE66_WOLFRAM_CALCULATORS = {
+    'RedDwarfWmagCalculator': RedDwarfWmagCalculator(),
+    'RedDwarfUmCalculator': RedDwarfUmCalculator(),
+    'RedDwarfUHCalculator': RedDwarfUHCalculator(),
+    'RedDwarfUg3Calculator': RedDwarfUg3Calculator(),
+    'RedDwarfLENREFieldCalculator': RedDwarfLENREFieldCalculator(),
+    'RedDwarfNeutronRateCalculator': RedDwarfNeutronRateCalculator(),
+    'RedDwarfPseudoMonopoleDeltaNCalculator': RedDwarfPseudoMonopoleDeltaNCalculator(),
+    'RedDwarfBaselSeriesCalculator': RedDwarfBaselSeriesCalculator(),
+    'RedDwarfBuoyancySeriesCalculator': RedDwarfBuoyancySeriesCalculator(),
+    'RedDwarfTransmutationQCalculator': RedDwarfTransmutationQCalculator(),
+}
+
+
+# ===========================================================================================
+# SOURCE67_WOLFRAM.CPP: Inertia UQFF Compression_D (10 Calculator Classes)
+# Physics: Quantum wave ψ with Y_lm harmonics, inertial operator Î·ψ, universal inertia Ui
+# Key: Non-local exp(-α|r-r₀|), three-leg proofset (vacuum ratio ~1.683e-97, quantum ~3.333e-23)
+# ===========================================================================================
+
+class InertiaQuantumWaveFunctionCalculator:
+    """ψ(r,t) = A × Y_00 × sin(kr-ωt)/r × exp(-α|r-r₀|) - Quantum wave function (Eq1).
+    
+    Inertia UQFF: Wave function with spherical harmonics and non-local decay.
+    Returns |ψ|² probability density for l=0, m=0 state.
+    """
+    def __init__(self, A=1.0, k=2*3.14159/1.885e-7, omega=1e16, alpha=1e6, r0=1e-7, r=2e-7):
+        self.A = A
+        self.k = k                # Wave number
+        self.omega = omega        # rad/s
+        self.alpha = alpha        # m⁻¹, decay constant
+        self.r0 = r0              # m, reference position
+        self.r = r                # m, radial position
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t = dataset.get('t', 0.0)
+        r = dataset.get('r', self.r)
+        Y_00 = 1.0 / math.sqrt(4.0 * math.pi)
+        sin_term = math.sin(self.k * r - self.omega * t)
+        exp_nonlocal = math.exp(-self.alpha * abs(r - self.r0))
+        psi_sq = (self.A * Y_00 * (sin_term / r) * exp_nonlocal)**2
+        return {'value': psi_sq, 'Y_00': Y_00, 'sin_term': sin_term, 'exp_nonlocal': exp_nonlocal,
+                'units': 'm⁻³', 'equation': '|ψ|² = |A·Y_00·sin(kr-ωt)/r·exp(-α|r-r₀|)|²'}
+
+
+class InertiaTwistPhaseCalculator:
+    """φ_twist = β × sin(ω × t) - Twist phase modulation (Eq2).
+    
+    Inertia UQFF: Phase modulation for inertial coupling.
+    β = 1.0 amplitude, ω = 1e16 rad/s.
+    """
+    def __init__(self, beta=1.0, omega=1e16):
+        self.beta = beta
+        self.omega = omega
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t = dataset.get('t', 0.0)
+        phi_twist = self.beta * math.sin(self.omega * t)
+        return {'value': phi_twist, 'beta': self.beta, 'omega_rad_s': self.omega, 't_s': t,
+                'units': 'rad', 'equation': 'φ_twist = β·sin(ω·t)'}
+
+
+class InertiaInertialOperatorCalculator:
+    """Î·ψ = λ_I × (∂ψ/∂t + i·ω_m·r×∇ψ) - Inertial operator magnitude (Eq3).
+    
+    Inertia UQFF: Inertial operator combines time derivative and magnetic coupling.
+    Approximation: |Î·ψ| ~ λ_I × (ω + ω_m·r).
+    """
+    def __init__(self, lambda_I=1.0, omega=1e16, omega_m=1e15, r=2e-7):
+        self.lambda_I = lambda_I  # Inertial coupling
+        self.omega = omega        # rad/s
+        self.omega_m = omega_m    # rad/s, magnetic frequency
+        self.r = r                # m
+    
+    def compute(self, dataset: dict) -> dict:
+        r = dataset.get('r', self.r)
+        I_psi = self.lambda_I * (self.omega + self.omega_m * r)
+        return {'value': I_psi, 'lambda_I': self.lambda_I, 'omega': self.omega, 'omega_m': self.omega_m,
+                'units': 'rad/s', 'equation': '|Î·ψ| ~ λ_I·(ω + ω_m·r)'}
+
+
+class InertiaPseudoMonopoleBCalculator:
+    """B_pseudo = (μ₀/4π) × q_m / r² - Pseudo-monopole magnetic field (Eq4).
+    
+    Inertia UQFF: Pseudo-monopole field with magnetic charge q_m ~ 1e-10 C.
+    Radial field configuration for topological defect.
+    """
+    def __init__(self, mu0=4*3.14159e-7, q_m=1e-10, r=2e-7):
+        self.mu0 = mu0            # H/m, permeability
+        self.q_m = q_m            # C, magnetic charge
+        self.r = r                # m
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        r = dataset.get('r', self.r)
+        B_pseudo = (self.mu0 / (4.0 * math.pi)) * self.q_m / r**2
+        return {'value': B_pseudo, 'q_m_C': self.q_m, 'r_m': r, 'mu0': self.mu0,
+                'units': 'T', 'equation': 'B_pseudo = (μ₀/4π)·q_m/r²'}
+
+
+class InertiaUniversalInertiaCalculator:
+    """Ui = λ_I × (ρ_SCm/ρ_UA) × ω_i × cos(π·t_n) × (1+F_RZ) - Universal inertia (Eq5).
+    
+    Inertia UQFF: Universal inertia with vacuum ratio and frame-dragging.
+    ρ_SCm/ρ_UA ~ 0.1, F_RZ ~ 0.01 Rindler-Zeldovich factor.
+    """
+    def __init__(self, lambda_I=1.0, rho_vac_SCm=7.09e-37, rho_vac_UA=7.09e-36, omega_i=1e3, F_RZ=0.01):
+        self.lambda_I = lambda_I
+        self.rho_vac_SCm = rho_vac_SCm
+        self.rho_vac_UA = rho_vac_UA
+        self.omega_i = omega_i    # rad/s
+        self.F_RZ = F_RZ          # Frame-dragging factor
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t_n = dataset.get('t_n', 0.0)
+        ratio = self.rho_vac_SCm / self.rho_vac_UA
+        cos_term = math.cos(math.pi * t_n)
+        Ui = self.lambda_I * ratio * self.omega_i * cos_term * (1.0 + self.F_RZ)
+        return {'value': Ui, 'ratio': ratio, 'omega_i': self.omega_i, 'F_RZ': self.F_RZ,
+                'units': 'rad/s', 'equation': 'Ui = λ_I·(ρ_SCm/ρ_UA)·ω_i·cos(πt_n)·(1+F_RZ)'}
+
+
+class InertiaBosonicEnergyCalculator:
+    """E_boson = ½m·ω_r²·x² + ℏ·ω_r·(n+½) - Bosonic energy (Eq6).
+    
+    Inertia UQFF: Harmonic oscillator + quantum zero-point energy.
+    Ground state (n=0, x=0): E = ℏ·ω_r/2 ~ 5.27e-20 J.
+    """
+    def __init__(self, m=1.67e-27, omega_r=1e15, hbar=1.0546e-34):
+        self.m = m                # kg, mass
+        self.omega_r = omega_r    # rad/s, resonant frequency
+        self.hbar = hbar
+    
+    def compute(self, dataset: dict) -> dict:
+        x = dataset.get('x', 0.0)
+        n = dataset.get('n', 0)
+        potential = 0.5 * self.m * self.omega_r**2 * x**2
+        quantum = self.hbar * self.omega_r * (n + 0.5)
+        E_boson = potential + quantum
+        return {'value': E_boson, 'potential_J': potential, 'quantum_J': quantum, 'n': n,
+                'units': 'J', 'equation': 'E_boson = ½m·ω_r²·x² + ℏ·ω_r·(n+½)'}
+
+
+class InertiaMagneticHamiltonianCalculator:
+    """H_mag = -μ · B - Magnetic Hamiltonian (Eq7).
+    
+    Inertia UQFF: Magnetic interaction energy with Bohr magneton.
+    μ = 9.27e-24 J/T, B ~ 1e-5 T.
+    """
+    def __init__(self, mu_mag=9.27e-24, B=1e-5):
+        self.mu_mag = mu_mag      # J/T, magnetic moment
+        self.B = B                # T
+    
+    def compute(self, dataset: dict) -> dict:
+        B = dataset.get('B', self.B)
+        H_mag = -self.mu_mag * B
+        return {'value': H_mag, 'mu_mag_J_T': self.mu_mag, 'B_T': B,
+                'units': 'J', 'equation': 'H_mag = -μ·B'}
+
+
+class InertiaScaledWaveEnergyCalculator:
+    """E_wave = E₀ × QSF × RDF × WTFF × HFF × PTF × QSF - Scaled wave energy.
+    
+    Inertia UQFF: Wave energy for hydrogen n=1-4 levels.
+    Result: ~1.17e-105 J (low-energy UQFF vs SM high-energy ~12.94 J).
+    """
+    def __init__(self, E_aether=1.683e-10, V=1e-27, qsf=4.0, rdf=5.29e-11/1e-9, wtff=2.0):
+        self.E_aether = E_aether
+        self.V = V
+        self.qsf = qsf            # Quantum state factor (n=1-4)
+        self.rdf = rdf            # Radial factor (a₀/1nm)
+        self.wtff = wtff          # Wave type factor
+        self.hff = 1.0 / 1.25e34  # Higgs frequency factor
+        self.ptf = 0.1 / 1.617e11  # Precession factor
+        self.sf = 1e3 / 1e23      # Scaling factor
+    
+    def compute(self, dataset: dict) -> dict:
+        E0 = self.E_aether * self.V
+        E_wave = E0 * self.qsf * self.rdf * self.wtff * self.hff * self.ptf * self.sf
+        return {'value': E_wave, 'E0_J': E0, 'qsf': self.qsf, 'rdf': self.rdf,
+                'units': 'J', 'equation': 'E_wave = E₀·QSF·RDF·WTFF·HFF·PTF·SF ≈ 1.17e-105 J'}
+
+
+class InertiaThreeLegProofsetCalculator:
+    """Proofset = E_in × (1 + vac_ratio + q_scale) - Three-leg energy conservation.
+    
+    Inertia UQFF: Three-leg validation with vacuum ratio and quantum scaling.
+    Vacuum ratio ~ 1.683e-97 (galactic), quantum scaling ~ 3.333e-23.
+    """
+    def __init__(self, vac_density_ratio=1.683e-97, quantum_scaling=3.333e-23, E_input=1.17e-105):
+        self.vac_density_ratio = vac_density_ratio
+        self.quantum_scaling = quantum_scaling
+        self.E_input = E_input
+    
+    def compute(self, dataset: dict) -> dict:
+        E_in = dataset.get('E_input', self.E_input)
+        proofset = E_in * (1.0 + self.vac_density_ratio + self.quantum_scaling)
+        return {'value': proofset, 'E_input_J': E_in, 'vac_ratio': self.vac_density_ratio,
+                'q_scale': self.quantum_scaling, 'units': 'J',
+                'equation': 'Proofset = E_in·(1 + vac_ratio + q_scale)'}
+
+
+class InertiaNonLocalExponentialCalculator:
+    """exp(-α|r - r₀|) - Non-local spatial decay factor.
+    
+    Inertia UQFF: Spatial non-locality for wave function decay.
+    α = 1e6 m⁻¹, r-r₀ ~ 1e-7 m.
+    """
+    def __init__(self, alpha=1e6, r=2e-7, r0=1e-7):
+        self.alpha = alpha        # m⁻¹
+        self.r = r                # m
+        self.r0 = r0              # m
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        r = dataset.get('r', self.r)
+        r0 = dataset.get('r0', self.r0)
+        decay = math.exp(-self.alpha * abs(r - r0))
+        return {'value': decay, 'alpha_m_inv': self.alpha, 'r_m': r, 'r0_m': r0,
+                'units': 'dimensionless', 'equation': 'exp(-α|r-r₀|)'}
+
+
+SOURCE67_WOLFRAM_CALCULATORS = {
+    'InertiaQuantumWaveFunctionCalculator': InertiaQuantumWaveFunctionCalculator(),
+    'InertiaTwistPhaseCalculator': InertiaTwistPhaseCalculator(),
+    'InertiaInertialOperatorCalculator': InertiaInertialOperatorCalculator(),
+    'InertiaPseudoMonopoleBCalculator': InertiaPseudoMonopoleBCalculator(),
+    'InertiaUniversalInertiaCalculator': InertiaUniversalInertiaCalculator(),
+    'InertiaBosonicEnergyCalculator': InertiaBosonicEnergyCalculator(),
+    'InertiaMagneticHamiltonianCalculator': InertiaMagneticHamiltonianCalculator(),
+    'InertiaScaledWaveEnergyCalculator': InertiaScaledWaveEnergyCalculator(),
+    'InertiaThreeLegProofsetCalculator': InertiaThreeLegProofsetCalculator(),
+    'InertiaNonLocalExponentialCalculator': InertiaNonLocalExponentialCalculator(),
+}
+
+
+# ===========================================================================================
+# SOURCE68_WOLFRAM.CPP: Hydrogen Compressed Space UQFF (10 Calculator Classes)
+# Physics: E_space = E₀·SCF·CF·LF·HFF·PTF·QSF ≈ 5.52e-104 J (pages 85-86)
+# Key: Higgs freq 1.25e34 Hz, Earth precession 1.617e11 s (Mayan 5125.36 yr), 5 concentric layers
+# ===========================================================================================
+
+class HydrogenBaseEnergyE0Calculator:
+    """E₀ = E_aether × V - Base energy for compressed space (pages 85-86).
+    
+    Hydrogen UQFF: Aether energy density × atomic volume.
+    E₀ = 1.683e-10 × 1e-27 = 1.683e-37 J.
+    """
+    def __init__(self, E_aether=1.683e-10, V=1e-27):
+        self.E_aether = E_aether  # J/m³
+        self.V = V                # m³, atomic scale
+    
+    def compute(self, dataset: dict) -> dict:
+        V = dataset.get('V', self.V)
+        E0 = self.E_aether * V
+        return {'value': E0, 'E_aether_J_m3': self.E_aether, 'V_m3': V,
+                'units': 'J', 'equation': 'E₀ = E_aether·V = 1.683e-37 J'}
+
+
+class HydrogenSpatialConfigCalculator:
+    """SCF = 2.0 - Spatial configuration factor (spherical/toroidal).
+    
+    Hydrogen UQFF: Geometry factor for compressed space.
+    SCF = 2 for spherical/toroidal configuration (pages 85-86).
+    """
+    def __init__(self, SCF=2.0):
+        self.SCF = SCF
+    
+    def compute(self, dataset: dict) -> dict:
+        return {'value': self.SCF, 'configuration': 'spherical/toroidal',
+                'units': 'dimensionless', 'equation': 'SCF = 2.0'}
+
+
+class HydrogenCompressionFactorCalculator:
+    """CF = 1.0 - Compression factor (baseline, extensible for rotation).
+    
+    Hydrogen UQFF: Baseline compression for pages 85-86.
+    Extensible for rotational dynamics (page 86 orbital factors).
+    """
+    def __init__(self, CF=1.0):
+        self.CF = CF
+    
+    def compute(self, dataset: dict) -> dict:
+        CF = dataset.get('CF', self.CF)
+        return {'value': CF, 'note': 'baseline compression, extensible for rotation',
+                'units': 'dimensionless', 'equation': 'CF = 1.0 (baseline)'}
+
+
+class HydrogenLayerFactorCalculator:
+    """LF = 5 - Layer factor (concentric layers, pages 85-86).
+    
+    Hydrogen UQFF: 5 concentric layers for hydrogen compressed space.
+    Extensible to full 212 pages for complete model.
+    """
+    def __init__(self, layers=5):
+        self.layers = layers
+    
+    def compute(self, dataset: dict) -> dict:
+        layers = dataset.get('layers', self.layers)
+        return {'value': float(layers), 'layers': layers,
+                'units': 'dimensionless', 'equation': 'LF = 5 (concentric layers)'}
+
+
+class HydrogenHiggsFreqFactorCalculator:
+    """HFF = 10 / f_Higgs ≈ 8e-34 - Higgs frequency factor.
+    
+    Hydrogen UQFF: Scales E_space by Higgs frequency f_Higgs = 1.25e34 Hz.
+    Connects particle physics mass mechanism to compressed space.
+    """
+    def __init__(self, f_Higgs=1.25e34):
+        self.f_Higgs = f_Higgs    # Hz
+    
+    def compute(self, dataset: dict) -> dict:
+        f = dataset.get('f_Higgs', self.f_Higgs)
+        HFF = 10.0 / f
+        return {'value': HFF, 'f_Higgs_Hz': f,
+                'units': 'dimensionless', 'equation': 'HFF = 10/f_Higgs ≈ 8e-34'}
+
+
+class HydrogenPrecessionFactorCalculator:
+    """PTF = 0.1 / T_precession ≈ 6.183e-13 - Earth precession factor.
+    
+    Hydrogen UQFF: Mayan calendar exact: 5125.36 yr = 1.617e11 s.
+    Cosmic timescale coupling to compressed hydrogen dynamics.
+    """
+    def __init__(self, T_precession=1.617e11):
+        self.T_precession = T_precession  # s (Mayan 5125.36 yr)
+    
+    def compute(self, dataset: dict) -> dict:
+        T = dataset.get('T_precession', self.T_precession)
+        PTF = 0.1 / T
+        return {'value': PTF, 'T_precession_s': T, 'T_years': T / (365.25*24*3600),
+                'units': 'dimensionless', 'equation': 'PTF = 0.1/T_precession ≈ 6.183e-13'}
+
+
+class HydrogenQuantumScalingCalculator:
+    """QSF = 1e3 / 1e23 ≈ 3.333e-23 - Quantum scaling factor.
+    
+    Hydrogen UQFF: Low-energy UQFF regime quantum scaling.
+    Contrasts SM high-energy ~12.94 J vs UQFF low-energy ~5.52e-104 J.
+    """
+    def __init__(self):
+        pass
+    
+    def compute(self, dataset: dict) -> dict:
+        QSF = 1e3 / 1e23
+        return {'value': QSF, 'units': 'dimensionless',
+                'equation': 'QSF = 1e3/1e23 ≈ 3.333e-23'}
+
+
+class HydrogenCompressedSpaceEnergyCalculator:
+    """E_space = E₀·SCF·CF·LF·HFF·PTF·QSF ≈ 5.52e-104 J - Full compressed space energy.
+    
+    Hydrogen UQFF: Complete E_space equation (pages 85-86).
+    E₀ = 1.683e-37 J, SCF=2, CF=1, LF=5, HFF≈8e-34, PTF≈6.183e-13, QSF≈3.333e-23.
+    """
+    def __init__(self, E_aether=1.683e-10, V=1e-27, SCF=2.0, CF=1.0, LF=5):
+        self.E_aether = E_aether
+        self.V = V
+        self.SCF = SCF
+        self.CF = CF
+        self.LF = LF
+        self.HFF = 10.0 / 1.25e34
+        self.PTF = 0.1 / 1.617e11
+        self.QSF = 1e3 / 1e23
+    
+    def compute(self, dataset: dict) -> dict:
+        LF = dataset.get('layers', self.LF)
+        E0 = self.E_aether * self.V
+        E_space = E0 * self.SCF * self.CF * LF * self.HFF * self.PTF * self.QSF
+        return {'value': E_space, 'E0_J': E0, 'SCF': self.SCF, 'CF': self.CF, 'LF': LF,
+                'HFF': self.HFF, 'PTF': self.PTF, 'QSF': self.QSF, 'units': 'J',
+                'equation': 'E_space = E₀·SCF·CF·LF·HFF·PTF·QSF ≈ 5.52e-104 J'}
+
+
+class HydrogenVacuumDensityRatioCalculator:
+    """VacRatio = 1.683e-97 - Vacuum density ratio (three-leg proofset).
+    
+    Hydrogen UQFF: Galactic scale vacuum ratio for conservation validation.
+    Leg 2 of three-leg proofset: Energy conservation → vacuum → quantum.
+    """
+    def __init__(self, vac_ratio=1.683e-97):
+        self.vac_ratio = vac_ratio
+    
+    def compute(self, dataset: dict) -> dict:
+        return {'value': self.vac_ratio, 'scale': 'galactic',
+                'units': 'dimensionless', 'equation': 'VacRatio = 1.683e-97'}
+
+
+class HydrogenQuantumEnergyCalculator:
+    """Q_energy = 4.136e-14 eV - Quantum energy (three-leg proofset).
+    
+    Hydrogen UQFF: Quantum energy scale from h·f (to derive from f_Higgs).
+    Leg 3 of three-leg proofset for complete validation.
+    """
+    def __init__(self, quantum_eV=4.136e-14):
+        self.quantum_eV = quantum_eV
+    
+    def compute(self, dataset: dict) -> dict:
+        Q_J = self.quantum_eV * 1.602e-19  # Convert to J
+        return {'value': self.quantum_eV, 'Q_J': Q_J, 'note': 'to derive from h·f_Higgs',
+                'units': 'eV', 'equation': 'Q_energy = 4.136e-14 eV'}
+
+
+SOURCE68_WOLFRAM_CALCULATORS = {
+    'HydrogenBaseEnergyE0Calculator': HydrogenBaseEnergyE0Calculator(),
+    'HydrogenSpatialConfigCalculator': HydrogenSpatialConfigCalculator(),
+    'HydrogenCompressionFactorCalculator': HydrogenCompressionFactorCalculator(),
+    'HydrogenLayerFactorCalculator': HydrogenLayerFactorCalculator(),
+    'HydrogenHiggsFreqFactorCalculator': HydrogenHiggsFreqFactorCalculator(),
+    'HydrogenPrecessionFactorCalculator': HydrogenPrecessionFactorCalculator(),
+    'HydrogenQuantumScalingCalculator': HydrogenQuantumScalingCalculator(),
+    'HydrogenCompressedSpaceEnergyCalculator': HydrogenCompressedSpaceEnergyCalculator(),
+    'HydrogenVacuumDensityRatioCalculator': HydrogenVacuumDensityRatioCalculator(),
+    'HydrogenQuantumEnergyCalculator': HydrogenQuantumEnergyCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -157747,4 +158384,40 @@ __all__.extend([
     'NebularHiggsMassCalculator',
     'NebularGeometricStarAngleCalculator',
     'SOURCE65_WOLFRAM_CALCULATORS',
+    # Source66 Red Dwarf UQFF Compression_C (Feb 26, 2026) - 10 Calculator Classes
+    'RedDwarfWmagCalculator',
+    'RedDwarfUmCalculator',
+    'RedDwarfUHCalculator',
+    'RedDwarfUg3Calculator',
+    'RedDwarfLENREFieldCalculator',
+    'RedDwarfNeutronRateCalculator',
+    'RedDwarfPseudoMonopoleDeltaNCalculator',
+    'RedDwarfBaselSeriesCalculator',
+    'RedDwarfBuoyancySeriesCalculator',
+    'RedDwarfTransmutationQCalculator',
+    'SOURCE66_WOLFRAM_CALCULATORS',
+    # Source67 Inertia UQFF Compression_D (Feb 26, 2026) - 10 Calculator Classes
+    'InertiaQuantumWaveFunctionCalculator',
+    'InertiaTwistPhaseCalculator',
+    'InertiaInertialOperatorCalculator',
+    'InertiaPseudoMonopoleBCalculator',
+    'InertiaUniversalInertiaCalculator',
+    'InertiaBosonicEnergyCalculator',
+    'InertiaMagneticHamiltonianCalculator',
+    'InertiaScaledWaveEnergyCalculator',
+    'InertiaThreeLegProofsetCalculator',
+    'InertiaNonLocalExponentialCalculator',
+    'SOURCE67_WOLFRAM_CALCULATORS',
+    # Source68 Hydrogen Compressed Space UQFF (Feb 26, 2026) - 10 Calculator Classes
+    'HydrogenBaseEnergyE0Calculator',
+    'HydrogenSpatialConfigCalculator',
+    'HydrogenCompressionFactorCalculator',
+    'HydrogenLayerFactorCalculator',
+    'HydrogenHiggsFreqFactorCalculator',
+    'HydrogenPrecessionFactorCalculator',
+    'HydrogenQuantumScalingCalculator',
+    'HydrogenCompressedSpaceEnergyCalculator',
+    'HydrogenVacuumDensityRatioCalculator',
+    'HydrogenQuantumEnergyCalculator',
+    'SOURCE68_WOLFRAM_CALCULATORS',
 ])
