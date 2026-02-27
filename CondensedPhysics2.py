@@ -10323,6 +10323,580 @@ ORB_ANALYSIS_25_CALCULATORS = {
 }
 
 
+# ============================================================================
+# UFT ORB ANALYSIS_26 CALCULATORS (8 Calculator Classes)
+# Source: Grok UFE ORB EXP 2_12_06Mar2025
+# Batch #32: 25 images, frames 326-350, timestamps 9.78-10.50s
+# Physics: Spindle Orb species identification (new coherent shape = new species),
+#          Benchmark #1 (350/4965 = 7.05%), iPad Gen 4 + Zeiss IR camera,
+#          Spindle Orb energy 60% (~0.285 J), 0.3s sub-cycle dynamics
+# ============================================================================
+
+ORB_ANALYSIS_26_PARAMS = {
+    # Batch #32 metadata
+    'batch_number': 32,
+    'total_images': 25,
+    'frame_start': 326,
+    'frame_end': 350,
+    'timestamp_start_s': 9.78,
+    'timestamp_end_s': 10.50,
+    'batch_duration_s': 0.72,
+    'fps': 33.3,
+    'spectra_range_um': (0.7, 10.0),  # Infrared range
+    
+    # Benchmark #1 tracking
+    'benchmark_1_uploaded': 350,
+    'benchmark_1_total': 4965,
+    'benchmark_1_percent': 7.05,
+    
+    # Camera specifications
+    'camera_device': 'iPad Gen 4',
+    'camera_package': 'Zeiss',
+    'ir_capable': True,
+    
+    # Spindle Orb species parameters
+    'spindle_orb_size_mm': (1.5, 2.0),
+    'spindle_orb_energy_mJ': (1.0, 2.0),
+    'standard_plasmoid_size_mm': 1.0,
+    'standard_plasmoid_energy_mJ': (0.1, 1.0),
+    'spindle_persistence_percent': 80.0,  # ~80% of frames show spindle
+    
+    # Spindle Orb dynamics
+    'spindle_velocity_m_s': 0.1,
+    'spindle_rotation_per_s': 0.05,
+    'standard_velocity_m_s': 0.5,
+    'standard_rotation_per_s': 0.15,
+    
+    # Energy parameters
+    'energy_per_frame_J': 0.019,
+    'batch_total_energy_J': 0.475,
+    'spindle_energy_fraction': 0.60,
+    'spindle_energy_J': 0.285,
+    'cumulative_energy_J': 1.045,  # Includes batch #31
+    'efficiency_percent': 0.29,
+    
+    # Cycle dynamics
+    'overall_cycle_s': 0.72,
+    'spindle_sub_cycle_s': 0.3,
+    
+    # UP framework parameters (continued from batch #31)
+    'r_m': 0.0889,
+    'T_s_K': (366, 288),
+    'B_s_T': 1e-3,
+    'SCm_kg_m3': 1e15,
+    'UA_C': 1e-11,
+    'error_percent': 5.0,
+}
+
+
+class SpindleOrbSpeciesCalculator:
+    """
+    Spindle Orb Species Calculator.
+    
+    Identifies and characterizes the new Spindle Orb species based on
+    elongated coherent shape. New coherent shape = new species of orb energy form.
+    
+    Source: UFE ORB EXP 2_12_06Mar2025, Batch #32
+    Physics: Elongated structure (1.5-2 mm), higher energy (1-2 mJ),
+             non-local jumps, minimal rotation (<0.05 rot/s)
+    """
+    
+    def compute(self, dataset: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Classify and characterize Spindle Orb species.
+        
+        Parameters:
+            dataset: Dict with orb_size_mm, orb_energy_mJ, rotation_rate,
+                    velocity_m_s, persistence_fraction
+        
+        Returns:
+            Dict with species classification and characteristics
+        """
+        size = dataset.get('orb_size_mm', 1.5)
+        energy = dataset.get('orb_energy_mJ', 1.5)
+        rotation = dataset.get('rotation_rate', 0.05)
+        velocity = dataset.get('velocity_m_s', 0.1)
+        
+        # Classification thresholds
+        is_spindle = (
+            size >= 1.5 and  # Elongated
+            energy >= 1.0 and  # Higher energy
+            rotation < 0.1  # Minimal rotation
+        )
+        
+        species = 'Spindle Orb' if is_spindle else 'Standard Plasmoid'
+        
+        # Energy state characterization
+        if is_spindle:
+            energy_state = 'elevated'
+            coherence_type = 'elongated_directional'
+            scm_enhancement = 1.5  # Enhanced SCm
+            ua_non_locality = 'prominent'
+        else:
+            energy_state = 'baseline'
+            coherence_type = 'spherical'
+            scm_enhancement = 1.0
+            ua_non_locality = 'baseline'
+        
+        return {
+            'species': species,
+            'is_spindle_orb': is_spindle,
+            'size_mm': size,
+            'energy_mJ': energy,
+            'rotation_per_s': rotation,
+            'velocity_m_s': velocity,
+            'energy_state': energy_state,
+            'coherence_type': coherence_type,
+            'SCm_enhancement_factor': scm_enhancement,
+            'UA_non_locality': ua_non_locality,
+            'equation': 'species = "Spindle Orb" if (size ≥ 1.5mm AND E ≥ 1mJ AND ω < 0.1/s)',
+        }
+
+
+class SpeciesClassificationCalculator:
+    """
+    Species Classification Framework Calculator.
+    
+    Implements the directive: New coherent shape = new species of orb energy form.
+    Maps coherent shapes to species classifications with energy state distinctions.
+    
+    Source: UFE ORB EXP 2_12_06Mar2025
+    Physics: Shape coherence determines species, not material composition
+    """
+    
+    def compute(self, dataset: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Classify orb species based on coherent shape.
+        
+        Parameters:
+            dataset: Dict with shape_type, coherence_factor, persistence_frames
+        
+        Returns:
+            Dict with species classification hierarchy
+        """
+        shape = dataset.get('shape_type', 'elongated')
+        coherence = dataset.get('coherence_factor', 0.9)
+        persistence = dataset.get('persistence_frames', 20)
+        total_frames = dataset.get('total_frames', 25)
+        
+        # Persistence ratio
+        persistence_ratio = persistence / total_frames if total_frames > 0 else 0
+        
+        # Species classification based on shape coherence
+        species_registry = {
+            'spherical': 'Standard Plasmoid',
+            'elongated': 'Spindle Orb',
+            'irregular': 'Irregular Orb',
+            'diffuse': 'Diffuse Plasmoid',
+            'structured': 'Structured Energy Form',
+        }
+        
+        species = species_registry.get(shape, 'Unclassified')
+        
+        # Coherence quality
+        if coherence >= 0.9:
+            coherence_grade = 'high'
+            stability = 'stable'
+        elif coherence >= 0.7:
+            coherence_grade = 'medium'
+            stability = 'moderate'
+        else:
+            coherence_grade = 'low'
+            stability = 'transient'
+        
+        # Is this a newly identified species?
+        is_new_species = shape == 'elongated' and coherence >= 0.8
+        
+        return {
+            'shape_type': shape,
+            'species_name': species,
+            'coherence_factor': coherence,
+            'coherence_grade': coherence_grade,
+            'stability': stability,
+            'persistence_ratio': persistence_ratio,
+            'is_new_species': is_new_species,
+            'classification_rule': 'new_coherent_shape = new_species',
+            'available_species': list(species_registry.values()),
+        }
+
+
+class ExperimentBenchmarkCalculator:
+    """
+    Experiment Benchmark Calculator.
+    
+    Tracks progress benchmarks for the Red Dwarf Reactor Plasma Orb Experiment.
+    Benchmark #1: 350 images uploaded out of 4,965 total (7.05% progress).
+    
+    Source: UFE ORB EXP 2_12_06Mar2025
+    Physics: Systematic tracking for 496-image subsequence + extended dataset
+    """
+    
+    def compute(self, dataset: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Calculate experiment progress benchmarks.
+        
+        Parameters:
+            dataset: Dict with images_uploaded, total_images, batches_complete
+        
+        Returns:
+            Dict with benchmark metrics
+        """
+        uploaded = dataset.get('images_uploaded', 350)
+        total = dataset.get('total_images', 4965)
+        batches_complete = dataset.get('batches_complete', 5)  # #28-#32
+        
+        # Progress percentage
+        percent_complete = (uploaded / total * 100) if total > 0 else 0
+        
+        # Remaining images
+        remaining = total - uploaded
+        
+        # Estimated batches remaining (25 images/batch)
+        batches_remaining = math.ceil(remaining / 25)
+        
+        # Current benchmark level
+        if percent_complete < 10:
+            benchmark = 1
+            milestone = 'Initial Phase'
+        elif percent_complete < 25:
+            benchmark = 2
+            milestone = 'Early Analysis'
+        elif percent_complete < 50:
+            benchmark = 3
+            milestone = 'Mid-Experiment'
+        elif percent_complete < 75:
+            benchmark = 4
+            milestone = 'Advanced Phase'
+        else:
+            benchmark = 5
+            milestone = 'Final Phase'
+        
+        return {
+            'images_uploaded': uploaded,
+            'total_images': total,
+            'percent_complete': round(percent_complete, 2),
+            'images_remaining': remaining,
+            'batches_complete': batches_complete,
+            'batches_remaining': batches_remaining,
+            'benchmark_level': benchmark,
+            'milestone': milestone,
+            'equation': 'progress% = (uploaded / total) × 100',
+        }
+
+
+class ZeissIRCaptureCalculator:
+    """
+    Zeiss IR Capture System Calculator.
+    
+    Models the iPad Gen 4 with Zeiss camera package for infrared capture.
+    Supports IR imaging (0.7-10 µm) for plasmoid detection and tracking.
+    
+    Source: UFE ORB EXP 2_12_06Mar2025
+    Physics: High-resolution IR for thermal/plasma imaging, Zeiss optical precision
+    """
+    
+    def compute(self, dataset: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Calculate IR capture system characteristics.
+        
+        Parameters:
+            dataset: Dict with wavelength_um, temperature_K, exposure_settings
+        
+        Returns:
+            Dict with IR capture parameters
+        """
+        wavelength_min = dataset.get('wavelength_min_um', 0.7)
+        wavelength_max = dataset.get('wavelength_max_um', 10.0)
+        temperature = dataset.get('source_temperature_K', 3000)
+        
+        # Wien's displacement law: peak wavelength
+        b = 2.898e-3  # Wien's constant (m·K)
+        lambda_peak_m = b / temperature
+        lambda_peak_um = lambda_peak_m * 1e6
+        
+        # Is peak in capture range?
+        in_range = wavelength_min <= lambda_peak_um <= wavelength_max
+        
+        # Planck radiance at peak (relative)
+        h = 6.626e-34
+        c = 3e8
+        k_B = 1.38e-23
+        
+        # Calculate spectral radiance (W/sr/m²/m)
+        lambda_m = lambda_peak_m
+        radiance = (2 * h * c**2 / lambda_m**5) / (math.exp(h * c / (lambda_m * k_B * temperature)) - 1)
+        
+        # Zeiss optical enhancement factor (estimated)
+        zeiss_enhancement = 1.15  # 15% better optical quality
+        
+        return {
+            'device': 'iPad Gen 4 + Zeiss',
+            'wavelength_range_um': (wavelength_min, wavelength_max),
+            'source_temperature_K': temperature,
+            'peak_wavelength_um': round(lambda_peak_um, 3),
+            'peak_in_range': in_range,
+            'spectral_radiance_W_sr_m2_m': radiance,
+            'zeiss_enhancement': zeiss_enhancement,
+            'ir_capable': True,
+            'fps': 33.3,
+            'equation': 'λ_peak = b / T (Wien\'s displacement law)',
+        }
+
+
+class Batch32FrameTrackerCalculator:
+    """
+    Batch #32 Frame Tracker Calculator.
+    
+    Tracks 25 images (frames 326-350, 9.78-10.50s) for Batch #32.
+    Implements chronological ordering at 33.3 fps (0.03 s/frame).
+    
+    Source: UFE ORB EXP 2_12_06Mar2025
+    Physics: Timestamp-based ordering, 0.72s batch duration
+    """
+    
+    def compute(self, dataset: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Track frames and timestamps for Batch #32.
+        
+        Parameters:
+            dataset: Dict with image_number (1-25), fps
+        
+        Returns:
+            Dict with frame number, timestamp, and batch position
+        """
+        image_num = dataset.get('image_number', 1)
+        fps = dataset.get('fps', 33.3)
+        
+        # Frame number (0-indexed from start of experiment)
+        frame_start = 326
+        frame_offset = image_num - 1
+        frame_number = frame_start + frame_offset
+        
+        # Timestamp calculation
+        frame_duration = 1.0 / fps
+        timestamp = frame_number * frame_duration
+        
+        # Batch boundaries
+        batch_start_s = 9.78
+        batch_end_s = 10.50
+        batch_duration = batch_end_s - batch_start_s
+        
+        # Position within batch (0.0 to 1.0)
+        position_in_batch = frame_offset / 24.0 if image_num <= 25 else 1.0
+        
+        # Sub-cycle position (0.3s cycles)
+        sub_cycle_phase = (timestamp % 0.3) / 0.3
+        
+        return {
+            'batch_number': 32,
+            'image_number': image_num,
+            'frame_number': frame_number,
+            'timestamp_s': round(timestamp, 2),
+            'batch_start_s': batch_start_s,
+            'batch_end_s': batch_end_s,
+            'batch_duration_s': batch_duration,
+            'position_in_batch': round(position_in_batch, 3),
+            'sub_cycle_phase': round(sub_cycle_phase, 3),
+            'fps': fps,
+            'frame_duration_s': round(frame_duration, 4),
+            'equation': 't = frame × (1/fps); frame = 326 + (image - 1)',
+        }
+
+
+class SpindleOrbDynamicsCalculator:
+    """
+    Spindle Orb Dynamics Calculator.
+    
+    Models Spindle Orb motion characteristics distinct from standard plasmoids.
+    Lower velocity (~0.1 m/s vs 0.5 m/s), minimal rotation (<0.05/s vs 0.15/s).
+    
+    Source: UFE ORB EXP 2_12_06Mar2025
+    Physics: [UA] non-local jumps, reduced rotation, directional alignment
+    """
+    
+    def compute(self, dataset: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Calculate Spindle Orb dynamics.
+        
+        Parameters:
+            dataset: Dict with orb_type, time_s, initial_position
+        
+        Returns:
+            Dict with motion parameters
+        """
+        orb_type = dataset.get('orb_type', 'spindle')
+        time = dataset.get('time_s', 1.0)
+        x0 = dataset.get('initial_x_m', 0.0)
+        y0 = dataset.get('initial_y_m', 0.0)
+        
+        # Dynamics based on orb type
+        if orb_type == 'spindle':
+            velocity = 0.1  # m/s
+            rotation = 0.05  # per second
+            non_local_factor = 1.5  # Enhanced [UA] non-locality
+        else:
+            velocity = 0.5  # m/s
+            rotation = 0.15  # per second
+            non_local_factor = 1.0
+        
+        # Position calculation (with non-local jump potential)
+        dx = velocity * time
+        dy = -velocity * time * 0.5  # Lower-left drift
+        
+        # Non-local jump probability increases with time
+        jump_probability = min(0.3 * non_local_factor * time, 1.0)
+        
+        # Angular position from rotation
+        theta = 2 * math.pi * rotation * time
+        
+        return {
+            'orb_type': orb_type,
+            'velocity_m_s': velocity,
+            'rotation_per_s': rotation,
+            'time_s': time,
+            'x_m': round(x0 + dx, 4),
+            'y_m': round(y0 + dy, 4),
+            'angular_position_rad': round(theta, 4),
+            'non_local_factor': non_local_factor,
+            'jump_probability': round(jump_probability, 3),
+            'motion_type': 'non_local_drift' if orb_type == 'spindle' else 'convective',
+            'equation': 'v_spindle = 0.1 m/s, ω_spindle < 0.05/s, P_jump = min(0.3·f_nl·t, 1)',
+        }
+
+
+class SpindleOrbEnergyCalculator:
+    """
+    Spindle Orb Energy Calculator.
+    
+    Models Spindle Orb energy contribution (60% of batch, ~0.285 J).
+    Higher energy density than standard plasmoids.
+    
+    Source: UFE ORB EXP 2_12_06Mar2025
+    Physics: Enhanced [SCm] coherence, [UA] stabilization
+    """
+    
+    def compute(self, dataset: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Calculate Spindle Orb energy contribution.
+        
+        Parameters:
+            dataset: Dict with batch_energy_J, spindle_count, standard_count
+        
+        Returns:
+            Dict with energy breakdown
+        """
+        batch_energy = dataset.get('batch_energy_J', 0.475)
+        spindle_fraction = dataset.get('spindle_fraction', 0.6)
+        num_frames = dataset.get('num_frames', 25)
+        
+        # Spindle contribution
+        spindle_energy = batch_energy * spindle_fraction
+        standard_energy = batch_energy * (1 - spindle_fraction)
+        
+        # Per-frame energies
+        energy_per_frame = batch_energy / num_frames
+        spindle_per_frame = spindle_energy / num_frames
+        standard_per_frame = standard_energy / num_frames
+        
+        # Energy density ratio (spindle vs standard)
+        # Spindle: 1-2 mJ per orb, Standard: 0.1-1 mJ per orb
+        spindle_energy_density = 1.5  # mJ mean
+        standard_energy_density = 0.5  # mJ mean
+        density_ratio = spindle_energy_density / standard_energy_density
+        
+        # Efficiency (above classical plasma)
+        classical_efficiency = 0.15  # 0.1-0.2% range
+        actual_efficiency = 0.29
+        efficiency_enhancement = actual_efficiency / classical_efficiency
+        
+        return {
+            'batch_energy_J': batch_energy,
+            'spindle_energy_J': round(spindle_energy, 4),
+            'standard_energy_J': round(standard_energy, 4),
+            'spindle_fraction': spindle_fraction,
+            'energy_per_frame_J': round(energy_per_frame, 4),
+            'spindle_per_frame_J': round(spindle_per_frame, 5),
+            'standard_per_frame_J': round(standard_per_frame, 5),
+            'density_ratio': density_ratio,
+            'efficiency_percent': actual_efficiency,
+            'efficiency_enhancement': round(efficiency_enhancement, 2),
+            'equation': 'E_spindle = E_batch × f_spindle; f_spindle ≈ 0.60',
+        }
+
+
+class SpindleSubCycleCalculator:
+    """
+    Spindle Sub-Cycle Calculator.
+    
+    Models the 0.3s sub-cycle within 0.72s batch duration for Spindle Orbs.
+    Distinct from the 3.3s overall cycle and 0.7s standard sub-cycle.
+    
+    Source: UFE ORB EXP 2_12_06Mar2025
+    Physics: Spindle Orb-specific periodicity, [UA] cycle coupling
+    """
+    
+    def compute(self, dataset: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Calculate Spindle sub-cycle parameters.
+        
+        Parameters:
+            dataset: Dict with time_s, batch_start_s
+        
+        Returns:
+            Dict with sub-cycle phase and period information
+        """
+        time = dataset.get('time_s', 9.95)
+        batch_start = dataset.get('batch_start_s', 9.78)
+        
+        # Cycle periods
+        spindle_period = 0.3  # Spindle Orb sub-cycle
+        standard_period = 0.7  # Standard sub-cycle
+        overall_period = 3.3  # Overall convection cycle
+        
+        # Time within batch
+        t_batch = time - batch_start
+        
+        # Phase calculations (0.0 to 1.0)
+        spindle_phase = (t_batch % spindle_period) / spindle_period
+        standard_phase = (t_batch % standard_period) / standard_period
+        overall_phase = (time % overall_period) / overall_period
+        
+        # Cycle count within batch
+        spindle_cycles = t_batch / spindle_period
+        
+        # Frequency
+        spindle_freq = 1.0 / spindle_period
+        
+        # Amplitude modulation (peaks at mid-cycle)
+        amplitude = math.sin(math.pi * spindle_phase)
+        
+        return {
+            'time_s': time,
+            'time_in_batch_s': round(t_batch, 3),
+            'spindle_period_s': spindle_period,
+            'spindle_frequency_Hz': round(spindle_freq, 2),
+            'spindle_phase': round(spindle_phase, 3),
+            'spindle_cycles_complete': round(spindle_cycles, 2),
+            'standard_phase': round(standard_phase, 3),
+            'overall_phase': round(overall_phase, 3),
+            'amplitude_modulation': round(amplitude, 3),
+            'equation': 'φ_spindle = (t_batch mod 0.3) / 0.3; f = 1/T = 3.33 Hz',
+        }
+
+
+# UFT Orb Analysis_26 registry dict
+ORB_ANALYSIS_26_CALCULATORS = {
+    'SpindleOrbSpeciesCalculator': SpindleOrbSpeciesCalculator(),
+    'SpeciesClassificationCalculator': SpeciesClassificationCalculator(),
+    'ExperimentBenchmarkCalculator': ExperimentBenchmarkCalculator(),
+    'ZeissIRCaptureCalculator': ZeissIRCaptureCalculator(),
+    'Batch32FrameTrackerCalculator': Batch32FrameTrackerCalculator(),
+    'SpindleOrbDynamicsCalculator': SpindleOrbDynamicsCalculator(),
+    'SpindleOrbEnergyCalculator': SpindleOrbEnergyCalculator(),
+    'SpindleSubCycleCalculator': SpindleSubCycleCalculator(),
+}
+
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -10345,6 +10919,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_23_CALCULATORS,
     **ORB_ANALYSIS_24_CALCULATORS,
     **ORB_ANALYSIS_25_CALCULATORS,
+    **ORB_ANALYSIS_26_CALCULATORS,
 }
 
 # Update class count
@@ -10546,6 +11121,18 @@ __all__ = [
     'PlasmaRefractiveIndexCalculator',
     'OpticalStressReductionCalculator',
     'ORB_ANALYSIS_25_CALCULATORS',
+    
+    # Orb Analysis_26 / UFE ORB EXP 2_12 - Batch #32 Spindle Orb Species (8 classes)
+    'ORB_ANALYSIS_26_PARAMS',
+    'SpindleOrbSpeciesCalculator',
+    'SpeciesClassificationCalculator',
+    'ExperimentBenchmarkCalculator',
+    'ZeissIRCaptureCalculator',
+    'Batch32FrameTrackerCalculator',
+    'SpindleOrbDynamicsCalculator',
+    'SpindleOrbEnergyCalculator',
+    'SpindleSubCycleCalculator',
+    'ORB_ANALYSIS_26_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
