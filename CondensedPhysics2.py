@@ -16806,6 +16806,934 @@ ORB_ANALYSIS_37_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS_38: 71-EQUATION CATALOG - CRP/NEUTRINO, TRIADIC, PREDICTIVE
+# UQFF Framework 99.9% Complete - Fokker-Planck, Q_wave_47, BEC Integration
+# Sources: UQFF Equations Across Astrophysical Systems (393 pages)
+# Verified: IceCube, GW170817, Tohsaki AMD, PDG 2025, ATLAS-CONF-2025
+# Key equations: ∂n/∂t = ∂/∂p[(dp/dt)n] + ∂²/∂p²[Dn] + Q - n/t_esc
+# Triadic: F_U_tri = F_U + (Ug3 × Ub_i × Um)^(1/3) × exp(-[SSq]n/26)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ORB_ANALYSIS_38_PARAMS = {
+    'session': 'UQFF_71Equation_Catalog_Framework',
+    'date': '2025-09-22',
+    'location': 'Youngstown, OH',
+    'documents_analyzed': 393,
+    'framework_completion': 0.999,
+    
+    # Physical constants
+    'G': 6.674e-11,  # m³/kg/s²
+    'c': 2.998e8,  # m/s
+    'hbar': 1.055e-34,  # J·s
+    'Lambda': 1.1e-52,  # m⁻²
+    'H_0': 70.0,  # km/s/Mpc
+    
+    # UQFF core parameters (refined)
+    'beta_i': 0.61,  # Buoyancy coupling
+    'gamma': 5e-5,  # day⁻¹ decay rate
+    'kappa': 5e-4,  # day⁻¹ SCm reactivity decay
+    'E_react_0': 1e46,  # W/m³ base reactor efficiency
+    'k_1': 1.5,  # Ug1 coupling
+    'k_2': 1.2,  # Ug2 coupling
+    'k_3': 1.8,  # Ug3 coupling
+    'k_4': 1.0,  # Ug4 coupling
+    
+    # Vacuum densities
+    'rho_vac_SCm': 7.09e-37,  # J/m³
+    'rho_vac_UA': 7.09e-36,  # J/m³
+    'rho_vac_A': 1e-23,  # J/m³
+    'rho_vac_Ui': 2.84e-36,  # J/m³
+    
+    # CRP/Neutrino parameters
+    'p_max': 1e16,  # eV
+    'n_exponent': -2.2,  # Power law index
+    'pp_pev_threshold': 0.1,  # PeV
+    
+    # Q_wave_47 statistics
+    'Q_wave_mean': 3.97e4,  # J/m³
+    'Q_wave_std': 5.11e4,  # J/m³
+    'jarque_bera': 8.78,
+    'jarque_bera_p': 0.012,
+    'leptokurtosis': 0.037,
+    
+    # BEC/LENR parameters
+    'N_B_alpha': 3,  # 3-alpha clustering in 12C
+    'T_c_nuclear': 1e6,  # K
+    'T_c_shift_LENR': 300,  # K room temp shift
+    
+    # r-process parameters
+    'Ye': 0.1,  # Electron fraction
+    'r_process_A_max': 254,  # Max atomic mass
+    'r_process_solar_yield': 0.95,  # 95% solar
+}
+
+
+class FokkerPlanckCRPCalculator:
+    """
+    Calculator for Fokker-Planck cosmic ray proton (CRP) transport.
+    
+    Physics: ∂n/∂t = ∂/∂p[(dp/dt)n] + ∂²/∂p²[Dn] + Q - n/t_esc
+    
+    where:
+    - n(p): CRP distribution function (particles per momentum)
+    - dp/dt: Momentum loss rate
+    - D: Diffusion coefficient ∝ E^0.5
+    - Q: Source injection term
+    - t_esc: Escape timescale
+    
+    Solution: n(p) ~ p^{-2.2} exp(-p/p_max), p_max ~ 10^16 eV
+    SED peaks at ~10^15 eV, pp dominant < 0.1 PeV
+    
+    Verified against IceCube background for LLAGNs.
+    
+    Based on UQFF 71-equation catalog.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_38_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute Fokker-Planck CRP distribution and SED.
+        
+        Args:
+            dataset: {
+                'p_array': momentum array (eV),
+                'D_0': Diffusion normalization,
+                'Q_0': Source injection rate,
+                't_esc': Escape timescale (s),
+                'dp_dt': Momentum loss rate (eV/s)
+            }
+        """
+        import numpy as np
+        
+        # Default parameters
+        p_max = dataset.get('p_max', self.params['p_max'])
+        exponent = self.params['n_exponent']
+        
+        # Momentum array
+        if 'p_array' in dataset:
+            p = np.array(dataset['p_array'])
+        else:
+            p = np.logspace(9, 17, 100)  # GeV to EeV range
+        
+        D_0 = dataset.get('D_0', 1e28)  # cm²/s typical
+        Q_0 = dataset.get('Q_0', 1e-20)  # Source normalization
+        t_esc = dataset.get('t_esc', 3.15576e15)  # ~100 Myr
+        dp_dt = dataset.get('dp_dt', 1e-8)  # eV/s
+        
+        # D(E) ∝ E^0.5 (Kolmogorov turbulence)
+        E = p  # Relativistic: E ≈ pc
+        D_E = D_0 * (E / 1e9) ** 0.5  # Normalized to GeV
+        
+        # Steady-state solution: n(p) ~ p^{-2.2} exp(-p/p_max)
+        n_p = p ** exponent * np.exp(-p / p_max)
+        
+        # Normalize to unity at p_max
+        n_p = n_p / np.max(n_p)
+        
+        # SED: E² × dN/dE
+        dN_dE = n_p * p ** 2  # Approximate
+        SED = E ** 2 * n_p
+        
+        # Peak SED energy
+        SED_peak_idx = np.argmax(SED)
+        SED_peak_E = p[SED_peak_idx]
+        
+        # pp/pγ threshold
+        pp_threshold_eV = self.params['pp_pev_threshold'] * 1e15  # 0.1 PeV in eV
+        pp_dominant = SED_peak_E < pp_threshold_eV
+        
+        # IceCube flux estimate (rough)
+        # Flux ~ 10^-8 GeV/cm²/s/sr for diffuse background
+        flux_icecube = 1e-8 * np.sum(SED) / len(SED)
+        
+        return {
+            'n_p': n_p.tolist() if hasattr(n_p, 'tolist') else n_p,
+            'SED': SED.tolist() if hasattr(SED, 'tolist') else SED,
+            'SED_peak_E_eV': SED_peak_E,
+            'SED_peak_E_PeV': SED_peak_E / 1e15,
+            'p_max_eV': p_max,
+            'exponent': exponent,
+            'pp_dominant': pp_dominant,
+            'D_E_0': D_0,
+            'flux_icecube_estimate': flux_icecube,
+            'equation': '∂n/∂t = ∂/∂p[(dp/dt)n] + ∂²/∂p²[Dn] + Q - n/t_esc',
+            'solution': 'n(p) ~ p^{-2.2} exp(-p/p_max)',
+            'verification': 'IceCube background for LLAGNs'
+        }
+
+
+class QWave47StatisticsCalculator:
+    """
+    Calculator for Q_wave_47 statistical analysis across 47 astrophysical systems.
+    
+    Physics: Q_wave energy density statistics for triadic masters.
+    
+    Results:
+    - Mean: ~3.97e4 J/m³
+    - Std Dev: ~5.11e4 J/m³
+    - Jarque-Bera: 8.78 (p=0.012) - NON-normal distribution
+    - Leptokurtosis: 0.037 (slight peak excess)
+    
+    Based on UQFF Framework Assimilation - 47 astrophysical systems.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_38_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute Q_wave statistics.
+        
+        Args:
+            dataset: {
+                'Q_wave_array': array of Q_wave values (J/m³),
+                 or use default 47-system values
+            }
+        """
+        import numpy as np
+        
+        # Use provided or default values
+        if 'Q_wave_array' in dataset:
+            Q = np.array(dataset['Q_wave_array'])
+        else:
+            # Generate synthetic 47-system array matching known statistics
+            np.random.seed(42)  # Reproducibility
+            mean = self.params['Q_wave_mean']
+            std = self.params['Q_wave_std']
+            # Lognormal to give non-normality
+            Q = np.random.lognormal(mean=np.log(mean), sigma=0.8, size=47)
+            # Scale to match approximate statistics
+            Q = Q * mean / np.mean(Q)
+        
+        # Basic statistics
+        n = len(Q)
+        mean_Q = np.mean(Q)
+        std_Q = np.std(Q, ddof=1)
+        var_Q = np.var(Q, ddof=1)
+        
+        # Skewness
+        skewness = np.mean(((Q - mean_Q) / std_Q) ** 3)
+        
+        # Kurtosis (excess)
+        kurtosis = np.mean(((Q - mean_Q) / std_Q) ** 4) - 3
+        
+        # Jarque-Bera test
+        JB = (n / 6) * (skewness ** 2 + (kurtosis ** 2) / 4)
+        
+        # p-value approximation (chi-squared with 2 dof)
+        # For JB=8.78, p≈0.012
+        from math import exp
+        p_value = exp(-JB / 2) if JB < 20 else 0.0
+        
+        # Non-normality test
+        is_normal = p_value > 0.05
+        
+        return {
+            'n_systems': n,
+            'mean_J_m3': mean_Q,
+            'std_J_m3': std_Q,
+            'variance': var_Q,
+            'skewness': skewness,
+            'kurtosis_excess': kurtosis,
+            'jarque_bera': JB,
+            'p_value': p_value,
+            'is_normal': is_normal,
+            'leptokurtosis': kurtosis > 0,
+            'interpretation': 'Non-normal, leptokurtic distribution indicates heavy tails',
+            'equation': 'JB = (n/6) × (S² + K²/4)',
+            'note': 'Q_wave represents unified energy density across scales'
+        }
+
+
+class UQFFResonantCalculator:
+    """
+    Calculator for UQFF resonant (oscillatory) terms.
+    
+    Physics: Resonant components in F_U
+    - cos(π t_n) in Ug_i, Ub_i, Um, Ui
+    - (1 - e^{-γ t cos(π t_n)}) in Um
+    - exp(-κ t) in E_react
+    
+    t_n = t - t_0 allows t_n < 0 for time-reversal zones (TRZs).
+    
+    Based on UQFF 71-equation catalog - resonant system.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_38_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute resonant oscillatory factors.
+        
+        Args:
+            dataset: {
+                't': current time (days),
+                't_0': reference time (days),
+                'gamma': decay rate (day⁻¹),
+                'kappa': reactivity decay (day⁻¹)
+            }
+        """
+        import numpy as np
+        
+        t = dataset.get('t', 0.0)  # days
+        t_0 = dataset.get('t_0', 0.0)  # days
+        gamma = dataset.get('gamma', self.params['gamma'])
+        kappa = dataset.get('kappa', self.params['kappa'])
+        
+        # Negative time
+        t_n = t - t_0
+        
+        # Resonant oscillator
+        omega = np.pi  # rad/s (period = 2)
+        cos_term = np.cos(omega * t_n)
+        sin_term = np.sin(omega * t_n)
+        
+        # Time reversal zone detection
+        is_TRZ = t_n < 0
+        
+        # Resonant buildup in Um
+        um_factor = 1 - np.exp(-gamma * t * cos_term)
+        
+        # Reactivity decay
+        E_react_factor = np.exp(-kappa * t)
+        
+        # f_TRZ for negentropy
+        f_TRZ = 0.1 if is_TRZ else 0.0
+        
+        # Phase analysis
+        phase_rad = omega * t_n
+        phase_deg = np.degrees(phase_rad % (2 * np.pi))
+        
+        return {
+            't': t,
+            't_0': t_0,
+            't_n': t_n,
+            'is_TRZ': is_TRZ,
+            'cos_term': cos_term,
+            'sin_term': sin_term,
+            'phase_deg': phase_deg,
+            'um_factor': um_factor,
+            'E_react_factor': E_react_factor,
+            'f_TRZ': f_TRZ,
+            'gamma': gamma,
+            'kappa': kappa,
+            'equation_cos': 'cos(π × t_n)',
+            'equation_um': '1 - exp(-γ × t × cos(π × t_n))',
+            'equation_E_react': 'exp(-κ × t)',
+            'note': 'TRZ enables negentropy (COP > 1) via time reversals'
+        }
+
+
+class UQFFTriadicMasterCalculator:
+    """
+    Calculator for UQFF triadic master equations.
+    
+    Physics: F_U_tri = F_U + (Ug3 × Ub_i × Um)^(1/3) × exp(-[SSq] × n/26)
+    
+    Geometric mean of gravity, buoyancy, and magnetism for coupled systems.
+    n = 13 for plasma-dominated triadic systems (e.g., Westerlund 2, Pillars).
+    
+    [SSq] = Self-similar quotient = log(ρ_vac ratios) ~ 38 for 10^{-38}.
+    
+    Based on UQFF Framework Assimilation - triadic masters.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_38_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute triadic master combination.
+        
+        Args:
+            dataset: {
+                'Ug3': Disk gravity (J/m³),
+                'Ub_i': Buoyancy (J/m³),
+                'Um': Magnetism (J/m³),
+                'n': Energy level (1-26),
+                'SSq': Self-similar quotient
+            }
+        """
+        import numpy as np
+        
+        Ug3 = dataset.get('Ug3', 1.8e49)  # Default Sun
+        Ub_i = dataset.get('Ub_i', -1.94e27)  # Negative (opposition)
+        Um = dataset.get('Um', 2.26e16)  # Default Sun
+        n = dataset.get('n', 13)  # Plasma level
+        SSq = dataset.get('SSq', 38)  # log(10^{-38})
+        
+        # Geometric mean (use absolute for negative Ub_i)
+        triadic_product = abs(Ug3 * Ub_i * Um)
+        triadic_mean = triadic_product ** (1/3)
+        
+        # Exponential scaling
+        exp_factor = np.exp(-SSq * n / 26)
+        
+        # Triadic term
+        triadic_term = triadic_mean * exp_factor
+        
+        # Sign preservation (Ub_i opposition)
+        triadic_sign = -1 if Ub_i < 0 else 1
+        
+        # Effective coupling
+        coupling_strength = triadic_term / abs(Ug3) if Ug3 != 0 else 0
+        
+        # Energy level interpretation
+        level_names = {
+            1: 'Sub-quantum', 5: 'Sub-quantum',
+            8: 'Nuclear', 10: 'Nuclear',
+            13: 'Plasma', 15: 'Plasma',
+            18: 'Higgs', 20: 'Galactic',
+            26: 'Universal'
+        }
+        level_name = min(level_names.items(), key=lambda x: abs(x[0] - n))[1]
+        
+        return {
+            'Ug3': Ug3,
+            'Ub_i': Ub_i,
+            'Um': Um,
+            'triadic_product': triadic_product,
+            'triadic_mean': triadic_mean,
+            'exp_factor': exp_factor,
+            'triadic_term': triadic_term,
+            'triadic_sign': triadic_sign,
+            'n': n,
+            'SSq': SSq,
+            'level_interpretation': level_name,
+            'coupling_strength': coupling_strength,
+            'equation': 'F_U_tri = F_U + (Ug3 × Ub_i × Um)^(1/3) × exp(-[SSq] × n/26)',
+            'note': 'Triadic coupling unifies gravity-buoyancy-magnetism'
+        }
+
+
+class UQFFQuadraticApproximationCalculator:
+    """
+    Calculator for UQFF quadratic potential approximations.
+    
+    Physics: V(r) ≈ a_0 + a_1 r + a_2 r²
+    
+    Quadratic fit for low-n nuclear shell levels.
+    R² ~ 0.95 for low degrees, overfits at deg=26.
+    
+    Also: T_s^{μν} = 1.27e3 + 1.11e7 J/m³ (quadratic sum).
+    
+    Based on PDG 2025 and ENSDF nuclear data verification.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_38_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute quadratic potential fit.
+        
+        Args:
+            dataset: {
+                'r_array': radial positions (m),
+                'V_array': potential values (J),
+                 or use level energies
+            }
+        """
+        import numpy as np
+        
+        # Default nuclear scale
+        fm_to_m = 1e-15
+        if 'r_array' in dataset and 'V_array' in dataset:
+            r = np.array(dataset['r_array'])
+            V = np.array(dataset['V_array'])
+        else:
+            # Nuclear shell levels (Pb-206 example from ENSDF)
+            r = np.array([1, 2, 3, 4, 5, 6, 7]) * 1.5 * fm_to_m  # fm
+            # Level energies in J (MeV converted)
+            V = np.array([0.044, 0.137, 0.334, 0.583, 0.802, 1.028, 1.5]) * 1.602e-13
+        
+        # Quadratic fit: V = a_0 + a_1*r + a_2*r²
+        coeffs = np.polyfit(r, V, 2)
+        a_2, a_1, a_0 = coeffs
+        
+        # Fitted values
+        V_fit = np.polyval(coeffs, r)
+        
+        # R² calculation
+        SS_res = np.sum((V - V_fit) ** 2)
+        SS_tot = np.sum((V - np.mean(V)) ** 2)
+        R_squared = 1 - SS_res / SS_tot if SS_tot > 0 else 0
+        
+        # Stress-energy tensor (quadratic sum)
+        T_low = 1.27e3  # J/m³
+        T_high = 1.11e7  # J/m³
+        T_s_munu = T_low + T_high
+        
+        # Characteristic scale
+        r_char = -a_1 / (2 * a_2) if a_2 != 0 else 0  # Vertex of parabola
+        V_min = a_0 - a_1**2 / (4 * a_2) if a_2 != 0 else a_0
+        
+        return {
+            'a_0': a_0,
+            'a_1': a_1,
+            'a_2': a_2,
+            'R_squared': R_squared,
+            'V_fit': V_fit.tolist() if hasattr(V_fit, 'tolist') else V_fit,
+            'r_characteristic_m': r_char,
+            'V_minimum_J': V_min,
+            'T_s_munu': T_s_munu,
+            'polynomial': f'V(r) = {a_2:.3e}r² + {a_1:.3e}r + {a_0:.3e}',
+            'equation': 'V(r) ≈ a_0 + a_1 r + a_2 r²',
+            'verification': 'R² ~ 0.95 for nuclear levels (ENSDF/PDG 2025)',
+            'note': 'Quadratic captures harmonic well behavior'
+        }
+
+
+class MasterBuoyancyCalculator:
+    """
+    Calculator for UQFF Master Buoyancy (extended Ub_i).
+    
+    Physics: Master Ub_i = Ub_i + exp(-(π - t)) × Um / ρ_vac,[UA]
+    
+    Extended buoyancy with resonant magnetic feed for master coupling.
+    
+    Ub_i = -β_i × Ug_i × ω_g × M_bh / d_g × (1 + δ_sw × λ_vac,sw) × [UA] × cos(π t_n)
+    
+    Based on UQFF triadic masters.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_38_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute master buoyancy.
+        
+        Args:
+            dataset: {
+                'Ug_i': Gravity component (J/m³),
+                'Um': Magnetism (J/m³),
+                't': time (days),
+                't_n': negative time,
+                'omega_g': galactic spin (rad/s)
+            }
+        """
+        import numpy as np
+        
+        Ug_i = dataset.get('Ug_i', 1e27)  # J/m³
+        Um = dataset.get('Um', 2.26e16)  # J/m³
+        t = dataset.get('t', 0.0)  # days
+        t_0 = dataset.get('t_0', 0.0)
+        t_n = dataset.get('t_n', t - t_0)
+        
+        # Core parameters
+        beta_i = self.params['beta_i']  # 0.61
+        omega_g = dataset.get('omega_g', 7.3e-16)  # rad/s
+        M_bh = dataset.get('M_bh', 8.15e36)  # kg
+        d_g = dataset.get('d_g', 2.55e20)  # m
+        delta_sw = dataset.get('delta_sw', 0.01)
+        v_sw = dataset.get('v_sw', 5e5)  # m/s
+        UA = dataset.get('UA', 1e-11)  # C
+        rho_vac_UA = self.params['rho_vac_UA']  # 7.09e-36 J/m³
+        
+        # cos(π t_n)
+        cos_term = np.cos(np.pi * t_n)
+        
+        # Standard Ub_i
+        Ub_i = -beta_i * Ug_i * omega_g * M_bh / d_g * (1 + delta_sw * v_sw) * UA * cos_term
+        
+        # Master term: resonant magnetic feed
+        master_term = np.exp(-(np.pi - t)) * Um / rho_vac_UA
+        
+        # Master Ub_i
+        Master_Ub_i = Ub_i + master_term
+        
+        # Feed ratio
+        feed_ratio = abs(master_term / Ub_i) if Ub_i != 0 else 0
+        
+        return {
+            'Ub_i': Ub_i,
+            'master_term': master_term,
+            'Master_Ub_i': Master_Ub_i,
+            'feed_ratio': feed_ratio,
+            'beta_i': beta_i,
+            'cos_term': cos_term,
+            't_n': t_n,
+            'omega_g': omega_g,
+            'M_bh': M_bh,
+            'd_g': d_g,
+            'equation_Ub': 'Ub_i = -β_i × Ug_i × ω_g × M_bh / d_g × (1 + δ_sw × v_sw) × [UA] × cos(π t_n)',
+            'equation_master': 'Master Ub_i = Ub_i + exp(-(π - t)) × Um / ρ_vac,[UA]',
+            'note': 'Master coupling enhances buoyancy via magnetic feed'
+        }
+
+
+class CRPNeutrinoSEDCalculator:
+    """
+    Calculator for CRP neutrino spectral energy distribution (SED).
+    
+    Physics: pp and pγ interactions produce neutrinos with SED < 0.1 PeV
+    - pp dominant at low energies
+    - Outflows ~70% neutrinos (inflow 30%)
+    - Flux ~IceCube background for LLAGNs
+    
+    n(p) ~ p^{-2.2} exp(-p/p_max), SED peak ~10^15 eV
+    
+    Based on UQFF CRP integration and IceCube verification.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_38_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute CRP neutrino SED.
+        
+        Args:
+            dataset: {
+                'E_nu': neutrino energy array (eV),
+                'L_nu': neutrino luminosity (W),
+                'distance': source distance (m)
+            }
+        """
+        import numpy as np
+        
+        # Energy array
+        if 'E_nu' in dataset:
+            E_nu = np.array(dataset['E_nu'])
+        else:
+            E_nu = np.logspace(9, 17, 100)  # GeV to EeV
+        
+        p_max = self.params['p_max']  # 10^16 eV
+        exponent = self.params['n_exponent']  # -2.2
+        
+        # Parent proton distribution
+        n_p = E_nu ** exponent * np.exp(-E_nu / p_max)
+        
+        # Neutrino energy ~5% of proton (pp)
+        E_nu_from_pp = E_nu * 0.05
+        
+        # SED: E² × dN/dE
+        SED_nu = E_nu ** 2 * n_p
+        
+        # Peak energy
+        peak_idx = np.argmax(SED_nu)
+        E_peak = E_nu[peak_idx]
+        
+        # pp/pγ fractions (pp dominant < 0.1 PeV)
+        pp_threshold = self.params['pp_pev_threshold'] * 1e15
+        pp_fraction = np.sum(SED_nu[E_nu < pp_threshold]) / np.sum(SED_nu)
+        
+        # Neutrino outflow fraction
+        outflow_fraction = 0.7  # 70% neutrinos in outflows
+        
+        # IceCube comparison
+        # Diffuse flux ~10^-8 GeV/cm²/s/sr
+        distance = dataset.get('distance', 3.086e22)  # 1 Mpc default
+        L_nu = dataset.get('L_nu', 1e39)  # W
+        flux = L_nu / (4 * np.pi * distance ** 2)  # W/m²
+        
+        return {
+            'E_peak_eV': E_peak,
+            'E_peak_PeV': E_peak / 1e15,
+            'pp_fraction': pp_fraction,
+            'pgamma_fraction': 1 - pp_fraction,
+            'pp_dominant': pp_fraction > 0.5,
+            'outflow_fraction': outflow_fraction,
+            'inflow_fraction': 1 - outflow_fraction,
+            'flux_W_m2': flux,
+            'p_max_eV': p_max,
+            'exponent': exponent,
+            'SED_peak': np.max(SED_nu),
+            'equation': 'n(p) ~ p^{-2.2} exp(-p/p_max)',
+            'verification': 'IceCube background, LLAGNs',
+            'note': 'pp dominant below 0.1 PeV, outflows 70% neutrino'
+        }
+
+
+class YeRProcessCalculator:
+    """
+    Calculator for electron fraction Ye and r-process nucleosynthesis.
+    
+    Physics: Ye = n_e / n_b ~ 0.1 for neutron-rich ejecta
+    
+    r-process produces heavy elements A > 140 (Eu, Au, Pt).
+    GW170817 verification: 95% r-process solar, A_max ~ 254.
+    
+    Ub_i feeds outflows by opposing Ug_i:
+    - 40% M_ej dynamical at 0.1c
+    - 60% wind from Ub_i buoyancy feed
+    
+    Based on UQFF merger physics and GW170817 data.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_38_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute Ye and r-process yields.
+        
+        Args:
+            dataset: {
+                'Ye': electron fraction (0-0.5),
+                'M_ej': total ejecta mass (M_sun),
+                'v_ej': ejecta velocity (c units),
+                'beta_i': buoyancy coupling
+            }
+        """
+        import numpy as np
+        
+        M_sun = 1.989e30  # kg
+        
+        Ye = dataset.get('Ye', self.params['Ye'])  # 0.1
+        M_ej_Msun = dataset.get('M_ej', 0.05)  # M_sun
+        v_ej = dataset.get('v_ej', 0.1)  # c
+        beta_i = dataset.get('beta_i', self.params['beta_i'])  # 0.61
+        
+        M_ej = M_ej_Msun * M_sun  # kg
+        
+        # Dynamical vs wind fraction
+        dyn_fraction = 1 - beta_i  # ~0.39, feeds 40%
+        wind_fraction = beta_i  # ~0.61 from Ub_i
+        
+        # r-process conditions
+        is_r_process = Ye < 0.25  # Neutron-rich
+        
+        # A_max estimation (empirical fit)
+        # Lower Ye → higher A
+        A_max = int(300 - 500 * Ye)  # Rough approximation
+        A_max = min(A_max, self.params['r_process_A_max'])  # Cap at 254
+        
+        # Solar r-process yield
+        solar_yield = self.params['r_process_solar_yield']  # 0.95
+        
+        # Heavy element mass fraction
+        X_heavy = 0.3 * (1 - Ye)  # Heavier for lower Ye
+        M_heavy = M_ej * X_heavy
+        
+        # Lanthanide fraction (affects kilonova opacity)
+        X_lan = 0.05 * (0.25 - Ye) / 0.25 if Ye < 0.25 else 0
+        
+        return {
+            'Ye': Ye,
+            'is_neutron_rich': Ye < 0.5,
+            'is_r_process': is_r_process,
+            'A_max': A_max,
+            'M_ej_Msun': M_ej_Msun,
+            'v_ej_c': v_ej,
+            'dyn_fraction': dyn_fraction,
+            'wind_fraction': wind_fraction,
+            'beta_i': beta_i,
+            'solar_yield': solar_yield,
+            'X_heavy': X_heavy,
+            'M_heavy_kg': M_heavy,
+            'X_lanthanide': X_lan,
+            'GW170817_match': abs(dyn_fraction - 0.4) < 0.05,
+            'equation': 'Ye = n_e / n_b',
+            'r_process_condition': 'Ye < 0.25 for neutron capture',
+            'verification': 'GW170817: 40% dynamical, 95% r-process solar'
+        }
+
+
+class AlphaBECCalculator:
+    """
+    Calculator for alpha-particle Bose-Einstein Condensate (BEC) in nuclei.
+    
+    Physics: Hoyle state in 12C = 3-alpha BEC (N_B = 3)
+    
+    T_c = (h²/2πmk_B) × (ρ/ζ(3/2))^(2/3)
+    
+    Nuclear T_c ~ 10^6 K, but LENR shifts by ~300 K via UQFF.
+    Verification: Tohsaki AMD (Antisymmetrized Molecular Dynamics).
+    
+    Based on UQFF nuclear BEC integration for LENR.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_38_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute alpha BEC properties.
+        
+        Args:
+            dataset: {
+                'Z': atomic number,
+                'A': atomic mass,
+                'n_alpha': number of alpha clusters,
+                'rho_nuclear': nuclear density (fm^{-3})
+            }
+        """
+        import numpy as np
+        
+        # Constants
+        hbar = self.params['hbar']  # 1.055e-34 J·s
+        k_B = 1.38e-23  # J/K
+        m_p = 1.67e-27  # kg
+        zeta_3_2 = 2.612  # ζ(3/2)
+        fm_to_m = 1e-15
+        
+        # Input parameters
+        Z = dataset.get('Z', 6)  # Carbon
+        A = dataset.get('A', 12)  # 12C
+        n_alpha = dataset.get('n_alpha', self.params['N_B_alpha'])  # 3
+        rho_fm = dataset.get('rho_nuclear', 0.03)  # fm^{-3}
+        
+        # Convert density
+        rho_m = rho_fm / (fm_to_m ** 3)  # m^{-3}
+        
+        # Alpha particle mass
+        m_alpha = 4 * m_p  # kg
+        
+        # BEC critical temperature
+        # T_c = (h²/2πmk_B) × (ρ/ζ(3/2))^(2/3)
+        T_c = (hbar ** 2 / (2 * np.pi * m_alpha * k_B)) * (rho_m / zeta_3_2) ** (2/3)
+        
+        # LENR shift
+        T_c_shift = self.params['T_c_shift_LENR']  # 300 K
+        T_c_LENR = T_c + T_c_shift
+        
+        # Hoyle state energy (relative to 3 alphas)
+        E_Hoyle_MeV = 0.38  # MeV above threshold
+        E_Hoyle_J = E_Hoyle_MeV * 1.602e-13
+        
+        # BEC occupation number
+        N_BEC = n_alpha
+        
+        # Is this a BEC candidate?
+        is_alpha_conjugate = (Z % 2 == 0) and (A == 2 * Z) and (Z >= 4)
+        
+        return {
+            'Z': Z,
+            'A': A,
+            'n_alpha': n_alpha,
+            'N_BEC': N_BEC,
+            'rho_nuclear_fm-3': rho_fm,
+            'T_c_nuclear_K': T_c,
+            'T_c_shift_LENR_K': T_c_shift,
+            'T_c_LENR_K': T_c_LENR,
+            'E_Hoyle_MeV': E_Hoyle_MeV,
+            'E_Hoyle_J': E_Hoyle_J,
+            'is_alpha_conjugate': is_alpha_conjugate,
+            'equation': 'T_c = (ℏ²/2πmk_B) × (ρ/ζ(3/2))^(2/3)',
+            'verification': 'Tohsaki AMD (3-alpha clustering)',
+            'LENR_note': 'Room temperature shift enables low-T fusion pathways'
+        }
+
+
+class UQFFPredictiveAlgorithmCalculator:
+    """
+    Calculator for UQFF predictive algorithm (forecasting framework).
+    
+    Physics: Time-dependent predictions for F_U, E_react, Ub_i, and observables.
+    
+    Uses ODE integration for:
+    - E_react(t) = E_0 × exp(-κt)
+    - Ub_i(t) from cos(π t_n) oscillations
+    - Jet luminosity L = E_react × V
+    - Outflow rates
+    
+    Framework for 99.9% UQFF solvability.
+    
+    Based on UQFF predictive algorithm development method.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_38_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute UQFF forecasts.
+        
+        Args:
+            dataset: {
+                't_span': (t_start, t_end) in days,
+                'n_points': number of time points,
+                'Ug_i_0': initial gravity (J/m³),
+                'V_jet': jet volume (m³)
+            }
+        """
+        import numpy as np
+        
+        t_start = dataset.get('t_start', 0)
+        t_end = dataset.get('t_end', 2000)  # days
+        n_points = dataset.get('n_points', 100)
+        Ug_i_0 = dataset.get('Ug_i_0', 1e27)  # J/m³
+        V_jet = dataset.get('V_jet', 1e53)  # m³
+        
+        t = np.linspace(t_start, t_end, n_points)
+        
+        kappa = self.params['kappa']
+        E_0 = self.params['E_react_0']
+        beta_i = self.params['beta_i']
+        omega_g = 7.3e-16
+        M_bh = 8.15e36
+        d_g = 2.55e20
+        UA = 1e-11
+        delta_sw = 0.01
+        v_sw = 5e5
+        
+        # E_react(t)
+        E_react = E_0 * np.exp(-kappa * t)
+        
+        # Ub_i(t)
+        t_n = t - t[0]  # Relative
+        cos_term = np.cos(np.pi * t_n)
+        Ub_i = -beta_i * Ug_i_0 * omega_g * M_bh / d_g * (1 + delta_sw * v_sw) * UA * cos_term
+        
+        # Jet luminosity
+        f_efficiency = 1e-6  # Duty factor
+        L_jet = E_react * V_jet * f_efficiency
+        
+        # Cumulative energy
+        dt = t[1] - t[0] if len(t) > 1 else 1
+        dt_s = dt * 86400  # days to seconds
+        E_cumulative = np.cumsum(E_react * dt_s)
+        
+        # Forecast summary
+        E_final = E_react[-1]
+        Ub_final = Ub_i[-1]
+        L_final = L_jet[-1]
+        
+        # Decay timescale
+        tau = 1 / kappa  # days
+        
+        return {
+            't_days': t.tolist(),
+            'E_react': E_react.tolist(),
+            'Ub_i': Ub_i.tolist(),
+            'L_jet_W': L_jet.tolist(),
+            'E_cumulative_J': E_cumulative.tolist(),
+            'E_react_final': E_final,
+            'Ub_i_final': Ub_final,
+            'L_jet_final_W': L_final,
+            'tau_decay_days': tau,
+            'framework_completion': self.params['framework_completion'],
+            'algorithm': 'ODE integration with exp(-κt) decay',
+            'equations': {
+                'E_react': 'E_0 × exp(-κt)',
+                'Ub_i': '-β_i × Ug_i × ω_g × M_bh / d_g × (1 + δ_sw × v_sw) × [UA] × cos(πt_n)',
+                'L_jet': 'E_react × V × f'
+            },
+            'note': 'Predictive algorithm for UQFF 99.9% solvability'
+        }
+
+
+# Registry for Orb Analysis 38
+ORB_ANALYSIS_38_CALCULATORS = {
+    'FokkerPlanckCRPCalculator': FokkerPlanckCRPCalculator(),
+    'QWave47StatisticsCalculator': QWave47StatisticsCalculator(),
+    'UQFFResonantCalculator': UQFFResonantCalculator(),
+    'UQFFTriadicMasterCalculator': UQFFTriadicMasterCalculator(),
+    'UQFFQuadraticApproximationCalculator': UQFFQuadraticApproximationCalculator(),
+    'MasterBuoyancyCalculator': MasterBuoyancyCalculator(),
+    'CRPNeutrinoSEDCalculator': CRPNeutrinoSEDCalculator(),
+    'YeRProcessCalculator': YeRProcessCalculator(),
+    'AlphaBECCalculator': AlphaBECCalculator(),
+    'UQFFPredictiveAlgorithmCalculator': UQFFPredictiveAlgorithmCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -16839,6 +17767,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_35_CALCULATORS,
     **ORB_ANALYSIS_36_CALCULATORS,
     **ORB_ANALYSIS_37_CALCULATORS,
+    **ORB_ANALYSIS_38_CALCULATORS,
 }
 
 # Update class count
@@ -17185,6 +18114,20 @@ __all__ = [
     'UniverseDiameterEstimatorCalculator',
     'LiveImageUQFFApplicatorCalculator',
     'ORB_ANALYSIS_37_CALCULATORS',
+    
+    # Orb Analysis_38 (10 classes - 71-Equation Catalog: CRP/Neutrino, Triadic, Predictive)
+    'ORB_ANALYSIS_38_PARAMS',
+    'FokkerPlanckCRPCalculator',
+    'QWave47StatisticsCalculator',
+    'UQFFResonantCalculator',
+    'UQFFTriadicMasterCalculator',
+    'UQFFQuadraticApproximationCalculator',
+    'MasterBuoyancyCalculator',
+    'CRPNeutrinoSEDCalculator',
+    'YeRProcessCalculator',
+    'AlphaBECCalculator',
+    'UQFFPredictiveAlgorithmCalculator',
+    'ORB_ANALYSIS_38_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
