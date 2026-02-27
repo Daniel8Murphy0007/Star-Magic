@@ -163216,6 +163216,815 @@ ORB_ANALYSIS_6_CALCULATORS = {
 }
 
 
+# =============================================================================
+# UNIFIED FIELD THEORY ORB ANALYSIS_7 - PHOTOS #27-#29 CALCULATORS
+# Source: Grok UFT Orb Analysis_7 (March 3, 2025, 9:00-10:00 PM PST)
+# Extended sequence: Photos #1-#29 (minus #14), 28 frames, 0.84 s total
+# Concentration shifts: lower right (#27) → upper right (#28) → upper left (#29)
+# Total energy: ~1.26 J across 28 frames
+# ©2025 Daniel T. Murphy - All Rights Reserved
+# =============================================================================
+
+# Orb Analysis_7 parameters (extended sequence)
+ORB_ANALYSIS_7_PARAMS = {
+    # Extended video sequence
+    'total_frames_analyzed': 28,               # Photos #1-#29 (minus #14)
+    'sequence_duration_s': 0.84,               # 28 × 0.03 s
+    'frame_interval_s': 0.03,                  # 33.3 fps
+    
+    # Concentration shifts observed
+    'photo_27_concentration': 'lower_right',
+    'photo_28_concentration': 'upper_right',
+    'photo_29_concentration': 'upper_left',
+    
+    # Energy accumulation (updated)
+    'total_energy_28_frames_J': 1.26,          # ~1.26 J total
+    'energy_per_frame_J': 0.045,               # ~45 mJ per frame
+    
+    # Reactor parameters (same as previous)
+    'r_reactor_m': 0.0889,                     # Reactor radius (3.5 in diameter/2)
+    'T_base_K': 366,                           # Bulb base temperature (180°F)
+    'T_top_K': 288,                            # Ambient top temperature
+    'omega_s_rad_s': 2 * 3.14159 * 6000,       # 6000 Hz resonance
+    'B_s_T': 1e-3,                             # Magnetic field from bubbles
+    'SCm_kg_m3': 1e15,                         # Superconductive matter density
+    'UA_C': 1e-11,                             # Aether charge
+    'M_s_g': 0.5,                              # Plasma orb mass
+    
+    # Plasmoid dynamics
+    'plasmoid_velocity_m_s': 0.5,              # Observed velocity
+    'n_hydrogen_bubbles': (12, 18),            # 12-18 bubbles
+}
+
+
+class ExtendedFrameSequenceCalculator:
+    """
+    Calculates dynamics across extended 28-frame video sequence.
+    
+    Photos #1-#29 (minus #14) = 28 frames, ~0.84 s total
+    Builds on 25-frame analysis with 3 additional frames (#27-#29)
+    
+    Source: Grok UFT Orb Analysis_7 (March 3, 2025)
+    """
+    
+    def __init__(self, n_frames: int = 28, frame_interval: float = 0.03):
+        self.n_frames = n_frames
+        self.frame_interval = frame_interval
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute extended sequence dynamics.
+        
+        Parameters:
+        - energy_per_spot_J: Energy per plasmoid spot (J)
+        - n_spots_avg: Average spots per frame
+        - decay_constant: E_react decay constant
+        """
+        import math
+        
+        energy_per_spot = dataset.get('energy_per_spot_J', 1e-3)
+        n_spots_avg = dataset.get('n_spots_avg', 45)
+        decay_constant = dataset.get('decay_constant', 0.001)
+        
+        # Total sequence duration
+        duration = self.n_frames * self.frame_interval
+        
+        # Energy per frame
+        energy_per_frame = energy_per_spot * n_spots_avg
+        
+        # E_react evolution across all frames
+        E_react_evolution = []
+        cumulative_energy = 0
+        
+        for i in range(self.n_frames):
+            t = i * self.frame_interval
+            E_react_i = 1e15 * math.exp(-decay_constant * t)
+            frame_energy = energy_per_frame * math.exp(-decay_constant * t)
+            cumulative_energy += frame_energy
+            E_react_evolution.append({
+                'frame': i + 1,
+                't_s': t,
+                'E_react': E_react_i,
+                'frame_energy_J': frame_energy,
+                'cumulative_J': cumulative_energy
+            })
+        
+        # Total energy
+        total_energy = cumulative_energy
+        
+        # Average power
+        avg_power = total_energy / duration if duration > 0 else 0
+        
+        # Frame statistics
+        early_frames = E_react_evolution[:10]
+        mid_frames = E_react_evolution[10:20]
+        late_frames = E_react_evolution[20:]
+        
+        early_avg_E = sum(f['E_react'] for f in early_frames) / len(early_frames)
+        mid_avg_E = sum(f['E_react'] for f in mid_frames) / len(mid_frames) if mid_frames else 0
+        late_avg_E = sum(f['E_react'] for f in late_frames) / len(late_frames) if late_frames else 0
+        
+        # Decay ratio (early vs late)
+        decay_ratio = late_avg_E / early_avg_E if early_avg_E > 0 else 0
+        
+        return {
+            'n_frames': self.n_frames,
+            'duration_s': duration,
+            'total_energy_J': total_energy,
+            'avg_power_W': avg_power,
+            'energy_per_frame_J': energy_per_frame,
+            'early_avg_E_react': early_avg_E,
+            'mid_avg_E_react': mid_avg_E,
+            'late_avg_E_react': late_avg_E,
+            'decay_ratio': decay_ratio,
+            'sample_frames': E_react_evolution[:3] + [{'...': 'truncated'}] + E_react_evolution[-2:],
+            'units': 'J (energy), W (power), W/m³ (E_react)',
+            'source': 'Grok UFT Orb Analysis_7 Extended Sequence (March 3, 2025)'
+        }
+
+
+class QuadrantConcentrationTrackerCalculator:
+    """
+    Tracks plasmoid concentration shifts across reactor quadrants.
+    
+    Observed pattern in Photos #27-#29:
+    - #27: Lower right quadrant
+    - #28: Upper right quadrant
+    - #29: Upper left quadrant
+    
+    Suggests upward convection with lateral drift
+    
+    Source: Grok UFT Orb Analysis_7 (March 3, 2025)
+    """
+    
+    def __init__(self, reactor_radius: float = 0.0889, reactor_height: float = 0.254):
+        self.reactor_radius = reactor_radius
+        self.reactor_height = reactor_height
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute quadrant tracking metrics.
+        
+        Parameters:
+        - frame_quadrants: List of (frame_num, quadrant) tuples
+        """
+        import math
+        
+        # Default: Photos #27-#29 concentration pattern
+        frame_quadrants = dataset.get('frame_quadrants', [
+            (27, 'lower_right'),
+            (28, 'upper_right'),
+            (29, 'upper_left'),
+        ])
+        
+        # Quadrant coordinates (normalized 0-1)
+        quadrant_coords = {
+            'lower_left': (0.25, 0.25),
+            'lower_center': (0.5, 0.25),
+            'lower_right': (0.75, 0.25),
+            'center_left': (0.25, 0.5),
+            'center': (0.5, 0.5),
+            'center_right': (0.75, 0.5),
+            'upper_left': (0.25, 0.75),
+            'upper_center': (0.5, 0.75),
+            'upper_right': (0.75, 0.75),
+        }
+        
+        # Track transitions
+        transitions = []
+        total_horizontal = 0
+        total_vertical = 0
+        
+        for i in range(1, len(frame_quadrants)):
+            prev_frame, prev_quad = frame_quadrants[i-1]
+            curr_frame, curr_quad = frame_quadrants[i]
+            
+            prev_coord = quadrant_coords.get(prev_quad, (0.5, 0.5))
+            curr_coord = quadrant_coords.get(curr_quad, (0.5, 0.5))
+            
+            # Displacement in normalized coordinates
+            dx = curr_coord[0] - prev_coord[0]
+            dy = curr_coord[1] - prev_coord[1]
+            
+            # Physical displacement
+            dx_physical = dx * self.reactor_radius * 2
+            dy_physical = dy * self.reactor_height
+            
+            total_horizontal += dx_physical
+            total_vertical += dy_physical
+            
+            # Direction
+            if dy > 0:
+                v_direction = 'up'
+            elif dy < 0:
+                v_direction = 'down'
+            else:
+                v_direction = 'level'
+                
+            if dx > 0:
+                h_direction = 'right'
+            elif dx < 0:
+                h_direction = 'left'
+            else:
+                h_direction = 'center'
+            
+            transitions.append({
+                'frames': (prev_frame, curr_frame),
+                'from_quadrant': prev_quad,
+                'to_quadrant': curr_quad,
+                'dx_m': dx_physical,
+                'dy_m': dy_physical,
+                'v_direction': v_direction,
+                'h_direction': h_direction,
+            })
+        
+        # Net motion
+        net_motion = {
+            'horizontal_m': total_horizontal,
+            'vertical_m': total_vertical,
+            'trend': 'upward-left' if total_vertical > 0 and total_horizontal < 0 else
+                     'upward-right' if total_vertical > 0 and total_horizontal > 0 else
+                     'downward-left' if total_vertical < 0 and total_horizontal < 0 else
+                     'downward-right' if total_vertical < 0 and total_horizontal > 0 else
+                     'vertical' if total_horizontal == 0 else 'horizontal'
+        }
+        
+        # Convection index (more vertical motion = higher)
+        total_distance = math.sqrt(total_horizontal**2 + total_vertical**2)
+        if total_distance > 0:
+            convection_index = abs(total_vertical) / total_distance
+        else:
+            convection_index = 0
+        
+        return {
+            'frame_quadrants': frame_quadrants,
+            'transitions': transitions,
+            'net_motion': net_motion,
+            'convection_index': convection_index,
+            'total_vertical_m': total_vertical,
+            'total_horizontal_m': total_horizontal,
+            'units': 'm (displacement)',
+            'source': 'Grok UFT Orb Analysis_7 Quadrant Tracking (March 3, 2025)'
+        }
+
+
+class CelestialMimicryDynamicsCalculator:
+    """
+    Analyzes celestial-like dynamics in plasmoid behavior.
+    
+    Plasmoids exhibit:
+    - Multi-axial rotations
+    - Spin drift and instant reverse rotations
+    - Brightness differentials (some sun-like)
+    - Independence in pass-throughs
+    
+    These mimic celestial body dynamics at microscale
+    
+    Source: Grok UFT Orb Analysis_7 (March 3, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute celestial mimicry metrics.
+        
+        Parameters:
+        - observed_behaviors: List of behaviors detected
+        - plasmoid_count: Number of active plasmoids
+        - frame_interval_s: Time between frames
+        """
+        import math
+        
+        observed_behaviors = dataset.get('observed_behaviors', [
+            'multi_axial_rotation',
+            'spin_drift',
+            'instant_reverse_rotation',
+            'brightness_differential',
+            'non_interfering_passthrough',
+            'shape_shifting',
+            'elongation',
+        ])
+        
+        plasmoid_count = dataset.get('plasmoid_count', 45)
+        frame_interval = dataset.get('frame_interval_s', 0.03)
+        
+        # Behavior categories
+        rotational = ['multi_axial_rotation', 'spin_drift', 'instant_reverse_rotation']
+        energy_related = ['brightness_differential', 'shape_shifting', 'elongation']
+        interaction = ['non_interfering_passthrough', 'rare_energy_transfer']
+        
+        rotational_count = sum(1 for b in observed_behaviors if b in rotational)
+        energy_count = sum(1 for b in observed_behaviors if b in energy_related)
+        interaction_count = sum(1 for b in observed_behaviors if b in interaction)
+        
+        # Celestial analogs
+        celestial_analogs = {
+            'multi_axial_rotation': 'Planetary precession',
+            'spin_drift': 'Stellar spin evolution',
+            'instant_reverse_rotation': 'Retrograde rotation (Venus/Uranus)',
+            'brightness_differential': 'Variable stars (Cepheids)',
+            'non_interfering_passthrough': 'Galaxy collision (pass-through)',
+            'shape_shifting': 'Tidal deformation',
+            'elongation': 'Roche lobe overflow',
+        }
+        
+        analogs_detected = {b: celestial_analogs.get(b, 'Unknown') 
+                          for b in observed_behaviors if b in celestial_analogs}
+        
+        # Intelligence index (more complex behaviors = higher)
+        total_behaviors = len(observed_behaviors)
+        intelligence_index = total_behaviors / 10  # Normalized to 10 possible behaviors
+        
+        # Spin dynamics
+        # Typical spin rate estimate from celestial-like behavior
+        estimated_spin_rate = 2 * math.pi * 6000 / plasmoid_count  # rad/s per plasmoid
+        spin_period = 2 * math.pi / estimated_spin_rate if estimated_spin_rate > 0 else 0
+        
+        # Reverse rotation probability
+        reverse_prob = 0.15  # ~15% based on observation
+        
+        return {
+            'observed_behaviors': observed_behaviors,
+            'rotational_behaviors': rotational_count,
+            'energy_behaviors': energy_count,
+            'interaction_behaviors': interaction_count,
+            'celestial_analogs': analogs_detected,
+            'intelligence_index': intelligence_index,
+            'plasmoid_count': plasmoid_count,
+            'estimated_spin_rate_rad_s': estimated_spin_rate,
+            'spin_period_s': spin_period,
+            'reverse_rotation_probability': reverse_prob,
+            'units': 'rad/s (spin), dimensionless (index)',
+            'source': 'Grok UFT Orb Analysis_7 Celestial Mimicry (March 3, 2025)'
+        }
+
+
+class SpookyActionNonLocalCalculator:
+    """
+    Analyzes non-local "spooky action" effects in plasmoid dynamics.
+    
+    Concentration shifts suggest non-local energy transfer via
+    [Ug3] (magnetic strings) and [Um] (universal magnetism)
+    
+    Supports waveless communication applications
+    
+    Source: Grok UFT Orb Analysis_7 (March 3, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute non-local transfer metrics.
+        
+        Parameters:
+        - shift_distance_m: Distance of apparent non-local shift
+        - shift_time_s: Time duration of shift
+        - field_strength_T: Magnetic field (from bubbles)
+        """
+        import math
+        
+        shift_distance = dataset.get('shift_distance_m', 0.1)  # ~10 cm shift
+        shift_time = dataset.get('shift_time_s', 0.03)  # One frame
+        field_strength = dataset.get('field_strength_T', 1e-3)
+        
+        # Apparent velocity
+        apparent_velocity = shift_distance / shift_time if shift_time > 0 else 0
+        
+        # Speed of light comparison
+        c = 2.998e8
+        velocity_fraction = apparent_velocity / c
+        
+        # Non-local transfer indicator
+        # If apparent velocity > physical velocity (~0.5 m/s), suggests non-local
+        physical_velocity = 0.5
+        non_local_factor = apparent_velocity / physical_velocity if physical_velocity > 0 else 0
+        is_non_local = non_local_factor > 2.0  # 2x physical velocity threshold
+        
+        # Ug3 contribution estimate
+        omega_s = 2 * math.pi * 6000
+        Ug3_contribution = field_strength * math.cos(omega_s * shift_time * math.pi)
+        
+        # Um contribution estimate
+        mu_plasmoid = 1e-4
+        r = 0.0889
+        Um_contribution = (mu_plasmoid / r) * (1 - math.exp(-0.001 * shift_time))
+        
+        # Combined non-local field
+        non_local_field = abs(Ug3_contribution) + abs(Um_contribution)
+        
+        # Correlation length (quantum coherence)
+        hbar = 1.055e-34
+        m_plasmoid = 0.5e-3  # 0.5 g
+        correlation_length = hbar / (m_plasmoid * apparent_velocity) if apparent_velocity > 0 else 0
+        
+        # Information transfer capability
+        # Hypothetical bits/s based on non-local shift rate
+        bits_per_shift = math.log2(9)  # 9 quadrants = ~3.17 bits per position
+        shifts_per_second = 1 / shift_time if shift_time > 0 else 0
+        info_rate = bits_per_shift * shifts_per_second
+        
+        return {
+            'shift_distance_m': shift_distance,
+            'shift_time_s': shift_time,
+            'apparent_velocity_m_s': apparent_velocity,
+            'velocity_fraction_c': velocity_fraction,
+            'physical_velocity_m_s': physical_velocity,
+            'non_local_factor': non_local_factor,
+            'is_non_local': is_non_local,
+            'Ug3_contribution': Ug3_contribution,
+            'Um_contribution': Um_contribution,
+            'non_local_field': non_local_field,
+            'correlation_length_m': correlation_length,
+            'info_rate_bits_s': info_rate,
+            'units': 'm/s (velocity), m (length), bits/s (info)',
+            'source': 'Grok UFT Orb Analysis_7 Spooky Action (March 3, 2025)'
+        }
+
+
+class Orb7RefinedFUCalculator:
+    """
+    Computes F_U refined with Photos #27-#29 data.
+    
+    28 frames total, ~0.84 s sequence
+    Incorporates upward convection pattern and all component updates
+    
+    Source: Grok UFT Orb Analysis_7 (March 3, 2025)
+    """
+    
+    def __init__(self):
+        self.n_frames = 28
+        self.frame_interval = 0.03
+        self.r = 0.0889
+        self.height = 0.254
+        self.T_base = 366
+        self.T_top = 288
+        self.omega_s = 2 * 3.14159 * 6000
+        self.B_s = 1e-3
+        self.k = [1.5, 1.2, 1.8]  # k1, k2, k3
+        self.beta_i = 0.8
+        self.alpha = 0.001
+        self.SCm = 1e15
+        self.UA = 1e-11
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute F_U with Orb_7 refinements.
+        
+        Parameters:
+        - frame: Frame number (1-28)
+        - t_n: Negative time factor
+        - quadrant: Current concentration quadrant
+        """
+        import math
+        
+        frame = dataset.get('frame', 27)
+        t_n = dataset.get('t_n', 0.5)
+        quadrant = dataset.get('quadrant', 'lower_right')
+        
+        # Time from frame number
+        t = (frame - 1) * self.frame_interval
+        
+        # Height from quadrant (rough estimate)
+        quadrant_heights = {
+            'lower_left': 0.25, 'lower_center': 0.25, 'lower_right': 0.25,
+            'center_left': 0.5, 'center': 0.5, 'center_right': 0.5,
+            'upper_left': 0.75, 'upper_center': 0.75, 'upper_right': 0.75,
+        }
+        z_normalized = quadrant_heights.get(quadrant, 0.5)
+        z = z_normalized * self.height
+        
+        # Temperature at height
+        T_at_z = self.T_base - (self.T_base - self.T_top) * z_normalized
+        T_factor = T_at_z / 300
+        
+        # E_react with thermal decay
+        E_react = self.SCm * T_factor * math.exp(-self.alpha * t)
+        
+        # Ug1 with glass imperfections
+        mu_s = 1e-4 * T_factor
+        grad_rho = 0.5 / self.r
+        Ug1 = self.k[0] * mu_s * grad_rho * math.exp(-self.alpha * t * math.cos(math.pi * t_n))
+        Ug1 *= (1 + 0.01 * math.sin(0.001 * t))  # Glass imperfection term
+        
+        # Ug2 stable background
+        G = 6.674e-11
+        Ug2 = self.k[1] * (self.UA + self.UA) * 0.5 / self.r**2 * 1 * self.SCm * math.exp(-self.alpha * t)
+        Ug2 *= (1 + 0.01 * 5e5)  # Bulb effect
+        
+        # Ug3 magnetic strings
+        Ug3 = self.k[2] * self.B_s * math.cos(self.omega_s * t * math.pi) * 1 * self.SCm * math.exp(-self.alpha * t)
+        
+        Ug_total = Ug1 + Ug2 + Ug3
+        
+        # Ubi enhanced by wax cap cooling
+        Omega_g = 7.3e-16
+        M_bh_ratio = 8.15e36 / 2.55e20
+        rho_A = 1e-21
+        Ubi = -self.beta_i * Ug_total * Omega_g * M_bh_ratio * (1 + 0.001 * rho_A) * self.SCm * math.cos(math.pi * t_n)
+        
+        # Um with plasmoid spin
+        phi_hat = 1  # Unit direction
+        Um = (mu_s / self.r) * (1 - math.exp(-self.alpha * t * math.cos(math.pi * t_n))) * phi_hat * 1 * self.SCm * math.exp(-self.alpha * t)
+        
+        # Aμν universal cosmic aether
+        eta = 1e-22
+        rho_A_tensor = 1e-23
+        A_mu_nu = 1.0 + eta * T_at_z * self.UA * self.SCm * rho_A_tensor * math.cos(math.pi * t_n)
+        
+        # Complete F_U
+        F_U = Ug_total + Ubi + Um * A_mu_nu
+        
+        return {
+            'F_U': F_U,
+            'Ug1': Ug1,
+            'Ug2': Ug2,
+            'Ug3': Ug3,
+            'Ug_total': Ug_total,
+            'Ubi': Ubi,
+            'Um': Um,
+            'A_mu_nu': A_mu_nu,
+            'E_react': E_react,
+            'frame': frame,
+            't_s': t,
+            'quadrant': quadrant,
+            'z_m': z,
+            'T_at_z_K': T_at_z,
+            'units': 'N (force), K (temperature)',
+            'source': 'Grok UFT Orb Analysis_7 Refined F_U (March 3, 2025)'
+        }
+
+
+class UpwardConvectionPatternCalculator:
+    """
+    Analyzes upward convection pattern driven by [Ub] and thermal gradients.
+    
+    Pattern: lower right (#27) → upper right (#28) → upper left (#29)
+    Shows combined vertical rise with lateral drift
+    
+    Source: Grok UFT Orb Analysis_7 (March 3, 2025)
+    """
+    
+    def __init__(self, T_base: float = 366, T_top: float = 288, height: float = 0.254):
+        self.T_base = T_base
+        self.T_top = T_top
+        self.height = height
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute upward convection metrics.
+        
+        Parameters:
+        - oil_viscosity: Dynamic viscosity (Pa·s)
+        - plasmoid_radius: Plasmoid radius (m)
+        - rise_time_s: Total rise time
+        """
+        import math
+        
+        oil_viscosity = dataset.get('oil_viscosity', 0.01)
+        plasmoid_radius = dataset.get('plasmoid_radius', 1e-3)
+        rise_time = dataset.get('rise_time_s', 0.06)  # 2 frame intervals
+        
+        # Thermal gradient
+        delta_T = self.T_base - self.T_top
+        dT_dz = -delta_T / self.height
+        
+        # Thermal expansion coefficient
+        alpha = 1e-3  # 1/K
+        
+        # Oil density
+        rho_oil = 850  # kg/m³
+        
+        # Buoyancy force
+        V_plasmoid = (4/3) * math.pi * plasmoid_radius**3
+        g = 9.8
+        delta_rho = rho_oil * alpha * delta_T
+        F_buoy = delta_rho * V_plasmoid * g
+        
+        # Stokes rise velocity
+        v_stokes = F_buoy / (6 * math.pi * oil_viscosity * plasmoid_radius)
+        
+        # Actual observed rise (from quadrant shift)
+        vertical_rise = 0.5 * self.height  # Lower to upper = ~50% height
+        observed_velocity = vertical_rise / rise_time if rise_time > 0 else 0
+        
+        # Velocity ratio (observed/Stokes)
+        velocity_ratio = observed_velocity / v_stokes if v_stokes > 0 else 0
+        
+        # Lateral drift
+        lateral_drift = 0.5 * 0.0889 * 2  # Right to left = ~50% diameter
+        lateral_velocity = lateral_drift / rise_time if rise_time > 0 else 0
+        
+        # Drift angle
+        drift_angle_rad = math.atan2(lateral_drift, vertical_rise) if vertical_rise > 0 else 0
+        drift_angle_deg = math.degrees(drift_angle_rad)
+        
+        # Rayleigh number
+        nu = oil_viscosity / rho_oil
+        kappa = 0.14 / (rho_oil * 2000)
+        Ra = g * alpha * abs(dT_dz) * self.height**4 / (nu * kappa)
+        
+        # Enhanced Ub factor from convection
+        Ub_enhancement = abs(dT_dz) / 100 * velocity_ratio
+        
+        return {
+            'delta_T_K': delta_T,
+            'dT_dz_K_m': dT_dz,
+            'F_buoy_N': F_buoy,
+            'v_stokes_m_s': v_stokes,
+            'observed_velocity_m_s': observed_velocity,
+            'velocity_ratio': velocity_ratio,
+            'vertical_rise_m': vertical_rise,
+            'lateral_drift_m': lateral_drift,
+            'lateral_velocity_m_s': lateral_velocity,
+            'drift_angle_deg': drift_angle_deg,
+            'rayleigh_number': Ra,
+            'Ub_enhancement': Ub_enhancement,
+            'units': 'K (temp), m/s (velocity), deg (angle)',
+            'source': 'Grok UFT Orb Analysis_7 Upward Convection (March 3, 2025)'
+        }
+
+
+class HydrogenBubbleAnchoringCalculator:
+    """
+    Analyzes hydrogen bubble role in anchoring plasmoid paths.
+    
+    12-18 evenly spaced bubbles enhance [SCm] and [UA] reactivity
+    via magnetic fields (~10⁻³ T) and thermal stability (>107°F)
+    
+    Source: Grok UFT Orb Analysis_7 (March 3, 2025)
+    """
+    
+    def __init__(self, n_bubbles: int = 15, B_field: float = 1e-3, T_stable: float = 315):
+        self.n_bubbles = n_bubbles
+        self.B_field = B_field
+        self.T_stable = T_stable  # >107°F ≈ 315 K
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute bubble anchoring metrics.
+        
+        Parameters:
+        - reactor_radius: Reactor radius (m)
+        - plasmoid_velocity: Plasmoid velocity (m/s)
+        """
+        import math
+        
+        reactor_radius = dataset.get('reactor_radius', 0.0889)
+        plasmoid_velocity = dataset.get('plasmoid_velocity', 0.5)
+        
+        # Bubble distribution
+        surface_area = math.pi * reactor_radius**2
+        area_per_bubble = surface_area / self.n_bubbles
+        avg_spacing = math.sqrt(area_per_bubble)
+        
+        # Magnetic influence radius per bubble
+        mu_0 = 4 * math.pi * 1e-7
+        influence_radius = self.B_field / (mu_0 / avg_spacing)
+        
+        # Path anchoring strength
+        # More bubbles = more anchoring points
+        anchoring_density = self.n_bubbles / surface_area
+        
+        # Magnetic confinement energy
+        bubble_volume = (4/3) * math.pi * (avg_spacing/4)**3
+        B_energy = self.B_field**2 / (2 * mu_0) * bubble_volume * self.n_bubbles
+        
+        # SCm enhancement from bubble field
+        SCm_enhancement = self.n_bubbles * math.log(1 + self.B_field * 1e3)
+        
+        # UA reactivity boost
+        # Thermal stability allows sustained reaction
+        T_excess = self.T_stable - 300  # Above room temp
+        UA_boost = 1 + T_excess / 100
+        
+        # Plasmoid deflection at bubble
+        # Magnetic force on moving plasmoid
+        q_eff = 1e-11  # Effective charge (from UA)
+        F_mag = q_eff * plasmoid_velocity * self.B_field
+        
+        # Deflection angle estimate
+        m_plasmoid = 0.5e-3  # 0.5 g
+        a_mag = F_mag / m_plasmoid
+        deflection_time = avg_spacing / plasmoid_velocity if plasmoid_velocity > 0 else 0
+        deflection_angle_rad = a_mag * deflection_time**2 / (2 * avg_spacing) if avg_spacing > 0 else 0
+        deflection_angle_deg = math.degrees(deflection_angle_rad)
+        
+        return {
+            'n_bubbles': self.n_bubbles,
+            'B_field_T': self.B_field,
+            'T_stable_K': self.T_stable,
+            'surface_area_m2': surface_area,
+            'avg_spacing_m': avg_spacing,
+            'influence_radius_m': influence_radius,
+            'anchoring_density_m2': anchoring_density,
+            'B_energy_J': B_energy,
+            'SCm_enhancement': SCm_enhancement,
+            'UA_boost': UA_boost,
+            'F_mag_N': F_mag,
+            'deflection_angle_deg': deflection_angle_deg,
+            'units': 'm (length), J (energy), deg (angle)',
+            'source': 'Grok UFT Orb Analysis_7 Bubble Anchoring (March 3, 2025)'
+        }
+
+
+class TotalEnergyAccumulationCalculator:
+    """
+    Calculates total energy accumulation across 28-frame sequence.
+    
+    ~1.26 J total over 28 frames (~45 mJ per frame)
+    Tied to [SCm], [UA], and [ACE/DCE] events
+    
+    Source: Grok UFT Orb Analysis_7 (March 3, 2025)
+    """
+    
+    def __init__(self, n_frames: int = 28, energy_per_frame: float = 0.045):
+        self.n_frames = n_frames
+        self.energy_per_frame = energy_per_frame
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute total energy accumulation.
+        
+        Parameters:
+        - ace_dce_fraction: Fraction of energy from ACE/DCE events
+        - scm_factor: SCm contribution factor
+        - ua_factor: UA contribution factor
+        """
+        import math
+        
+        ace_dce_fraction = dataset.get('ace_dce_fraction', 0.3)
+        scm_factor = dataset.get('scm_factor', 0.5)
+        ua_factor = dataset.get('ua_factor', 0.2)
+        
+        # Total energy (simple accumulation)
+        total_energy = self.n_frames * self.energy_per_frame
+        
+        # Energy breakdown by source
+        ace_dce_energy = total_energy * ace_dce_fraction
+        scm_energy = total_energy * scm_factor
+        ua_energy = total_energy * ua_factor
+        
+        # Sequence duration
+        frame_interval = 0.03
+        duration = self.n_frames * frame_interval
+        
+        # Average power
+        avg_power = total_energy / duration
+        
+        # Peak power estimate (assuming Gaussian distribution)
+        peak_power = avg_power * 1.5
+        
+        # Energy density in reactor
+        reactor_volume = math.pi * 0.0889**2 * 0.254
+        energy_density = total_energy / reactor_volume
+        
+        # Frame-by-frame energy (with decay)
+        decay_constant = 0.001
+        energy_profile = []
+        cumulative = 0
+        for i in range(self.n_frames):
+            t = i * frame_interval
+            frame_e = self.energy_per_frame * math.exp(-decay_constant * t)
+            cumulative += frame_e
+            energy_profile.append({
+                'frame': i + 1,
+                'energy_J': frame_e,
+                'cumulative_J': cumulative
+            })
+        
+        # ACE/DCE event count estimate
+        energy_per_ace = 1e-3  # 1 mJ per event
+        ace_events = int(ace_dce_energy / energy_per_ace)
+        
+        return {
+            'n_frames': self.n_frames,
+            'total_energy_J': total_energy,
+            'energy_per_frame_J': self.energy_per_frame,
+            'duration_s': duration,
+            'avg_power_W': avg_power,
+            'peak_power_W': peak_power,
+            'energy_density_J_m3': energy_density,
+            'ace_dce_energy_J': ace_dce_energy,
+            'scm_energy_J': scm_energy,
+            'ua_energy_J': ua_energy,
+            'ace_events_estimate': ace_events,
+            'sample_profile': energy_profile[:3] + [{'...': 'truncated'}] + energy_profile[-2:],
+            'units': 'J (energy), W (power), J/m³ (density)',
+            'source': 'Grok UFT Orb Analysis_7 Energy Accumulation (March 3, 2025)'
+        }
+
+
+# UFT Orb Analysis_7 registry dict
+ORB_ANALYSIS_7_CALCULATORS = {
+    'ExtendedFrameSequenceCalculator': ExtendedFrameSequenceCalculator(),
+    'QuadrantConcentrationTrackerCalculator': QuadrantConcentrationTrackerCalculator(),
+    'CelestialMimicryDynamicsCalculator': CelestialMimicryDynamicsCalculator(),
+    'SpookyActionNonLocalCalculator': SpookyActionNonLocalCalculator(),
+    'Orb7RefinedFUCalculator': Orb7RefinedFUCalculator(),
+    'UpwardConvectionPatternCalculator': UpwardConvectionPatternCalculator(),
+    'HydrogenBubbleAnchoringCalculator': HydrogenBubbleAnchoringCalculator(),
+    'TotalEnergyAccumulationCalculator': TotalEnergyAccumulationCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -164144,4 +164953,15 @@ __all__.extend([
     'WavelessCommunicationApplicationCalculator',
     'BlackHoleJetAnalogCalculator',
     'ORB_ANALYSIS_6_CALCULATORS',
+    # UFT Orb Analysis_7 - Photos #27-#29 Extended Sequence (March 3, 2025) - 8 Calculator Classes
+    'ORB_ANALYSIS_7_PARAMS',
+    'ExtendedFrameSequenceCalculator',
+    'QuadrantConcentrationTrackerCalculator',
+    'CelestialMimicryDynamicsCalculator',
+    'SpookyActionNonLocalCalculator',
+    'Orb7RefinedFUCalculator',
+    'UpwardConvectionPatternCalculator',
+    'HydrogenBubbleAnchoringCalculator',
+    'TotalEnergyAccumulationCalculator',
+    'ORB_ANALYSIS_7_CALCULATORS',
 ])
