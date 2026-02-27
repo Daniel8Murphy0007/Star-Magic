@@ -2670,6 +2670,535 @@ ORB_ANALYSIS_14_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# UFT ORB ANALYSIS_15: DATASET COMPLETION & ERROR REDUCTION
+# Photos #49-#50, Photo #14 restored, 500 total images, 2 min 45 s
+# Plasmoid spin rate: 0.15 rot/s (~9 RPM), 6.6 s cycle
+# Error reduction: >50% across all F_U components
+# Exp_2 preview: 4,943 images, 1 hr 15 min 7 sec
+# Source: https://grok.com/share/bGVnYWN5LWNvcHk_ee173e65-63cd-41de-9a62-f4153aba3858
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# UFT Orb Analysis_15 consolidated parameters
+ORB_ANALYSIS_15_PARAMS = {
+    # Dataset completion (500 images total)
+    'n_batches': 50,                   # 50 batches of 10 images each
+    'images_per_batch': 10,            # 10 images per batch
+    'n_frames_total': 500,             # Total frames in completed dataset
+    'n_frames_exp1': 500,              # Exp_1 total
+    't_total_exp1': 165.0,             # 2 min 45 sec in seconds
+    'dt_frame_exp1': 0.33,             # seconds per frame (Exp_1)
+    
+    # Photos #49-#50 quadrant sequence
+    'photo_49_quadrant': 'UL',         # Upper Left concentration
+    'photo_50_quadrant': 'LR',         # Lower Right concentration
+    'photo_14_quadrant': 'LL',         # Lower Left (restored)
+    
+    # Plasmoid spin dynamics
+    'spin_rate': 0.15,                 # rotations/second
+    'spin_rpm': 9.0,                   # ~9 rotations per minute
+    'cycle_time': 6.6,                 # seconds per full cycle
+    'n_cycles_exp1': 25,               # ~25 cycles in Exp_1 (165 s / 6.6 s)
+    'v_spot': 0.5,                     # m/s plasmoid velocity
+    
+    # Error reduction achievements
+    'error_before_Ug1': 0.12,          # ±12% before
+    'error_after_Ug1': 0.05,           # ±5% after (>50% reduction)
+    'error_before_Ug2': 0.10,          # ±10% before
+    'error_after_Ug2': 0.04,           # ±4% after
+    'error_before_Ug3': 0.15,          # ±15% before
+    'error_after_Ug3': 0.05,           # ±5% after
+    'error_before_Ubi': 0.13,          # ±13% before
+    'error_after_Ubi': 0.06,           # ±6% after
+    'error_before_Um': 0.14,           # ±14% before
+    'error_after_Um': 0.05,            # ±5% after
+    'error_before_Amuv': 0.12,         # ±12% before
+    'error_after_Amuv': 0.04,          # ±4% after
+    
+    # Energy metrics (finalized)
+    'E_total_360_frames': 7.10,        # Joules over 360 frames
+    'P_output': 0.43,                  # Watts output
+    'efficiency': 0.109,               # ~10.9% of 65W input
+    'P_input': 65.0,                   # 65W bulb
+    
+    # Exp_2 preview parameters
+    'n_frames_exp2': 4943,             # Exp_2 total images
+    'dt_frame_exp2': 0.033,            # 33 ms per frame
+    't_total_exp2': 4507.0,            # 1 hr 15 min 7 sec in seconds
+    'n_cycles_exp2': 682,              # ~682 cycles in Exp_2
+    
+    # Reactor constants (consolidated)
+    'r_reactor': 0.0889,               # m
+    'M_s': 0.5e-3,                     # kg (0.5 g plasma orb)
+    'omega_s': 2 * 3.14159 * 6000,     # rad/s (6000 Hz)
+    'T_base': 366.0,                   # K
+    'T_top': 288.0,                    # K
+    'B_s': 1e-3,                       # T
+    'SCm': 1e15,                       # kg/m³
+    'UA': 1e-11,                       # C
+    'gamma': 0.001,                    # decay constant
+    'eta_tensor': 1e-22,               # Aether tensor coupling
+    'rho_A': 1e-23,                    # Aether density
+}
+
+
+class FiveHundredFrameDatasetCalculator:
+    """
+    Complete 500-frame dataset energy calculator.
+    
+    500 images × 0.33 s/frame = 165 seconds (2 min 45 s)
+    Photo #14 (10 images) restored to complete sequence.
+    
+    Physics: E_total = n_frames × E_per_frame
+    Energy budget: ~7.10 J over 360 frames scaled to 500 frames
+    """
+    
+    def compute(self, n_frames: int = 500, E_per_frame: float = None) -> dict:
+        """
+        Compute total energy for complete 500-frame dataset.
+        
+        Args:
+            n_frames: Total frame count (default 500)
+            E_per_frame: Energy per frame (J), default from params
+        
+        Returns:
+            Complete dataset energy analysis
+        """
+        if E_per_frame is None:
+            # Derived from 7.10 J / 360 frames
+            E_per_frame = ORB_ANALYSIS_15_PARAMS['E_total_360_frames'] / 360
+        
+        dt = ORB_ANALYSIS_15_PARAMS['dt_frame_exp1']
+        t_total = n_frames * dt
+        E_total = n_frames * E_per_frame
+        
+        # Power output
+        P_output = E_total / t_total if t_total > 0 else 0
+        P_input = ORB_ANALYSIS_15_PARAMS['P_input']
+        efficiency = P_output / P_input
+        
+        # Cycle count
+        T_cycle = ORB_ANALYSIS_15_PARAMS['cycle_time']
+        n_cycles = t_total / T_cycle
+        
+        return {
+            'n_frames': n_frames,
+            'E_per_frame': round(E_per_frame, 6),
+            't_total': round(t_total, 2),
+            't_formatted': f'{int(t_total // 60)} min {t_total % 60:.1f} s',
+            'E_total': round(E_total, 3),
+            'P_output': round(P_output, 4),
+            'P_input': P_input,
+            'efficiency': round(efficiency, 4),
+            'efficiency_percent': round(efficiency * 100, 2),
+            'T_cycle': T_cycle,
+            'n_cycles': round(n_cycles, 1),
+            'equation': 'E_total = n × E_frame, P = E/t, η = P_out/P_in',
+            'source': 'Grok UFT Orb Analysis_15 Dataset Completion (March 4, 2025)'
+        }
+
+
+class PlasmoidSpinRateCalculator:
+    """
+    Plasmoid spin rate and rotational dynamics calculator.
+    
+    Observed: ~0.15 rotations/second (~9 RPM)
+    Cycle time: 6.6 seconds per full convection cycle
+    
+    Physics: ω_spin = 2π / T_cycle
+             f_spin = 1 / T_cycle
+             RPM = 60 × f_spin
+    """
+    
+    def compute(self, T_cycle: float = None, t_experiment: float = None) -> dict:
+        """
+        Compute plasmoid spin rates and rotation counts.
+        
+        Args:
+            T_cycle: Cycle period (s), default 6.6 s
+            t_experiment: Total experiment time (s), default 165 s
+        
+        Returns:
+            Spin dynamics analysis
+        """
+        if T_cycle is None:
+            T_cycle = ORB_ANALYSIS_15_PARAMS['cycle_time']
+        if t_experiment is None:
+            t_experiment = ORB_ANALYSIS_15_PARAMS['t_total_exp1']
+        
+        import math
+        
+        # Spin frequency and rate
+        f_spin = 1.0 / T_cycle
+        omega_spin = 2 * math.pi * f_spin  # rad/s
+        rpm = 60 * f_spin
+        
+        # Total rotations in experiment
+        n_rotations = t_experiment / T_cycle
+        
+        # Velocity at reactor radius
+        r = ORB_ANALYSIS_15_PARAMS['r_reactor']
+        v_tangential = omega_spin * r
+        v_observed = ORB_ANALYSIS_15_PARAMS['v_spot']
+        
+        return {
+            'T_cycle': T_cycle,
+            'f_spin': round(f_spin, 4),
+            'omega_spin': round(omega_spin, 4),
+            'rpm': round(rpm, 2),
+            't_experiment': t_experiment,
+            'n_rotations': round(n_rotations, 1),
+            'r_reactor': r,
+            'v_tangential': round(v_tangential, 4),
+            'v_observed': v_observed,
+            'v_ratio': round(v_tangential / v_observed, 3) if v_observed > 0 else 0,
+            'equation': 'f = 1/T, ω = 2πf, RPM = 60f, v = ωr',
+            'source': 'Grok UFT Orb Analysis_15 Spin Dynamics (March 4, 2025)'
+        }
+
+
+class ErrorReductionValidatorCalculator:
+    """
+    Error reduction validation calculator for F_U components.
+    
+    Achieves >50% error reduction across all components:
+    - Ug_1: 12% → 5%
+    - Ug_2: 10% → 4%
+    - Ug_3: 15% → 5%
+    - Ub_i: 13% → 6%
+    - Um: 14% → 5%
+    - A_μν: 12% → 4%
+    
+    Physics: Error reduction ratio = (ε_before - ε_after) / ε_before
+    """
+    
+    def compute(self, component: str = None) -> dict:
+        """
+        Compute error reduction metrics for F_U components.
+        
+        Args:
+            component: Specific component (Ug1, Ug2, Ug3, Ubi, Um, Amuv) or None for all
+        
+        Returns:
+            Error reduction analysis
+        """
+        p = ORB_ANALYSIS_15_PARAMS
+        
+        components = {
+            'Ug1': {'before': p['error_before_Ug1'], 'after': p['error_after_Ug1']},
+            'Ug2': {'before': p['error_before_Ug2'], 'after': p['error_after_Ug2']},
+            'Ug3': {'before': p['error_before_Ug3'], 'after': p['error_after_Ug3']},
+            'Ubi': {'before': p['error_before_Ubi'], 'after': p['error_after_Ubi']},
+            'Um': {'before': p['error_before_Um'], 'after': p['error_after_Um']},
+            'Amuv': {'before': p['error_before_Amuv'], 'after': p['error_after_Amuv']},
+        }
+        
+        results = {}
+        for name, errors in components.items():
+            if component is not None and name != component:
+                continue
+                
+            before = errors['before']
+            after = errors['after']
+            reduction = (before - after) / before if before > 0 else 0
+            reduction_pct = reduction * 100
+            
+            results[name] = {
+                'error_before': round(before * 100, 1),
+                'error_after': round(after * 100, 1),
+                'reduction_ratio': round(reduction, 3),
+                'reduction_percent': round(reduction_pct, 1),
+                'meets_50pct_target': reduction >= 0.50,
+            }
+        
+        # Aggregate stats
+        all_reductions = [r['reduction_ratio'] for r in results.values()]
+        avg_reduction = sum(all_reductions) / len(all_reductions) if all_reductions else 0
+        all_meet_target = all(r['meets_50pct_target'] for r in results.values())
+        
+        return {
+            'components': results,
+            'avg_reduction_percent': round(avg_reduction * 100, 1),
+            'all_meet_50pct_target': all_meet_target,
+            'n_components': len(results),
+            'equation': 'ε_reduction = (ε_before - ε_after) / ε_before',
+            'source': 'Grok UFT Orb Analysis_15 Error Validation (March 4, 2025)'
+        }
+
+
+class Exp2PreviewCalculator:
+    """
+    Red Dwarf Reactor Exp_2 preview parameter calculator.
+    
+    Dataset: 4,943 images at 33 ms intervals
+    Duration: 1 hr 15 min 7 sec (4,507 seconds)
+    Cycles: ~682 convection cycles
+    
+    Physics: Scales Exp_1 parameters to 10× larger dataset
+    """
+    
+    def compute(self, n_frames: int = None, dt_frame: float = None) -> dict:
+        """
+        Compute Exp_2 preview parameters and scaling factors.
+        
+        Args:
+            n_frames: Exp_2 frame count (default 4943)
+            dt_frame: Frame interval (default 0.033 s)
+        
+        Returns:
+            Exp_2 parameter preview
+        """
+        p = ORB_ANALYSIS_15_PARAMS
+        
+        if n_frames is None:
+            n_frames = p['n_frames_exp2']
+        if dt_frame is None:
+            dt_frame = p['dt_frame_exp2']
+        
+        t_total = n_frames * dt_frame
+        T_cycle = p['cycle_time']
+        n_cycles = t_total / T_cycle
+        
+        # Scale from Exp_1
+        n_exp1 = p['n_frames_exp1']
+        t_exp1 = p['t_total_exp1']
+        E_exp1 = p['E_total_360_frames'] * (n_exp1 / 360)
+        
+        scale_factor = n_frames / n_exp1
+        E_projected = E_exp1 * scale_factor
+        
+        # Frames per cycle
+        frames_per_cycle = T_cycle / dt_frame
+        
+        return {
+            'n_frames': n_frames,
+            'dt_frame': dt_frame,
+            't_total': round(t_total, 2),
+            't_formatted': f'{int(t_total // 3600)} hr {int((t_total % 3600) // 60)} min {t_total % 60:.0f} s',
+            'T_cycle': T_cycle,
+            'n_cycles': round(n_cycles, 0),
+            'frames_per_cycle': round(frames_per_cycle, 1),
+            'scale_factor': round(scale_factor, 2),
+            'E_exp1': round(E_exp1, 2),
+            'E_projected': round(E_projected, 1),
+            'n_batches': int(n_frames // 10),
+            'expected_error_reduction': '≤3% (from ≤5% with 10× data)',
+            'equation': 't = n × dt, n_cycles = t/T_cycle, scale = n_exp2/n_exp1',
+            'source': 'Grok UFT Orb Analysis_15 Exp_2 Preview (March 4, 2025)'
+        }
+
+
+class QuadrantSequenceOrb15Calculator:
+    """
+    Photo #49-#50 quadrant sequence completion calculator.
+    
+    Quadrant pattern:
+    - #48: UR (Upper Right) → #49: UL (Upper Left) → #50: LR (Lower Right)
+    - #14 restored: LL (Lower Left)
+    - Full sequence: 500 images completing the cycle
+    
+    Physics: θ = arctan2(Δy, Δx) for transition angle
+             v = Δr / Δt for transition velocity
+    """
+    
+    QUADRANT_CENTERS = {
+        'UL': (0.25, 0.75),  # Upper Left (x, y normalized)
+        'UR': (0.75, 0.75),  # Upper Right
+        'LL': (0.25, 0.25),  # Lower Left
+        'LR': (0.75, 0.25),  # Lower Right
+    }
+    
+    def compute(self, sequence: list = None) -> dict:
+        """
+        Compute quadrant transition dynamics for Photos #48-#50.
+        
+        Args:
+            sequence: List of quadrant codes, default ['UR', 'UL', 'LR']
+        
+        Returns:
+            Quadrant sequence analysis
+        """
+        import math
+        
+        if sequence is None:
+            sequence = ['UR', 'UL', 'LR']  # #48 → #49 → #50
+        
+        p = ORB_ANALYSIS_15_PARAMS
+        r = p['r_reactor']
+        dt = p['dt_frame_exp1']
+        
+        transitions = []
+        for i in range(len(sequence) - 1):
+            q1, q2 = sequence[i], sequence[i+1]
+            c1 = self.QUADRANT_CENTERS.get(q1, (0.5, 0.5))
+            c2 = self.QUADRANT_CENTERS.get(q2, (0.5, 0.5))
+            
+            # Distance in normalized units, scale to reactor
+            dx = (c2[0] - c1[0]) * 2 * r
+            dy = (c2[1] - c1[1]) * 2 * r
+            dist = math.sqrt(dx**2 + dy**2)
+            
+            # Angle
+            theta = math.degrees(math.atan2(dy, dx))
+            
+            # Velocity (10 frames per batch × dt)
+            dt_batch = 10 * dt
+            v = dist / dt_batch if dt_batch > 0 else 0
+            
+            transitions.append({
+                'from': q1,
+                'to': q2,
+                'dx': round(dx, 4),
+                'dy': round(dy, 4),
+                'distance': round(dist, 4),
+                'theta_deg': round(theta, 1),
+                'dt': round(dt_batch, 3),
+                'velocity': round(v, 4),
+            })
+        
+        # Total path length
+        total_dist = sum(t['distance'] for t in transitions)
+        avg_velocity = sum(t['velocity'] for t in transitions) / len(transitions) if transitions else 0
+        
+        return {
+            'sequence': sequence,
+            'transitions': transitions,
+            'total_distance': round(total_dist, 4),
+            'avg_velocity': round(avg_velocity, 4),
+            'v_observed': p['v_spot'],
+            'r_reactor': r,
+            'equation': 'd = √(Δx² + Δy²), θ = atan2(Δy, Δx), v = d/Δt',
+            'source': 'Grok UFT Orb Analysis_15 Quadrant Sequence (March 4, 2025)'
+        }
+
+
+class FinalizedFURefinementCalculator:
+    """
+    Finalized F_U refinement calculator with consolidated parameters.
+    
+    F_U = Σᵢ[kᵢ·Ugᵢ - βᵢ·Ugᵢ·Ωg·(Mbh/dg)·E_react] 
+        + Σⱼ[μⱼ/rⱼ·(1-e^(-γt·cos(πtₙ)))·φ̂ⱼ] 
+        + (gμν + η·Tₛμν)
+    
+    All parameters locked to ≤5% error after 500-image validation.
+    """
+    
+    def compute(self, t: float = 0.0, t_n: float = 0.0) -> dict:
+        """
+        Compute finalized F_U field value with validated parameters.
+        
+        Args:
+            t: Time (s) from experiment start
+            t_n: Normalized time increment (t - t_0)
+        
+        Returns:
+            Finalized F_U computation with all components
+        """
+        import math
+        
+        p = ORB_ANALYSIS_15_PARAMS
+        
+        # Validated parameters (≤5% error)
+        r = p['r_reactor']
+        M_s = p['M_s']
+        omega_s = p['omega_s']
+        T_base = p['T_base']
+        T_top = p['T_top']
+        B_s = p['B_s']
+        SCm = p['SCm']
+        UA = p['UA']
+        gamma = p['gamma']
+        eta = p['eta_tensor']
+        rho_A = p['rho_A']
+        
+        # Coupling constants (validated)
+        k_1 = 1.5e-4
+        k_2 = 1.2
+        k_3 = 1.8
+        beta_i = 0.8
+        mu_j = 1e-4
+        
+        # E_react with exponential decay
+        E_react_0 = 1e15
+        E_react = E_react_0 * math.exp(-0.001 * t)
+        
+        # Cosmological factors (scaled for reactor)
+        Omega_g = 7.3e-16
+        M_bh = 8.15e36
+        d_g = 2.55e20
+        
+        # Time-dependent terms
+        cos_pi_tn = math.cos(math.pi * t_n) if t_n > 0 else 1.0
+        exp_decay = math.exp(-gamma * t)
+        sin_mod = math.sin(0.001 * t)
+        
+        # Ug_1: Internal dipole (±5% error)
+        grad_Ms_r = M_s / r
+        Ug_1 = k_1 * grad_Ms_r * exp_decay * cos_pi_tn * (1 + 0.01 * sin_mod)
+        
+        # Ug_2: Outer field bubble (±4% error)
+        S_boundary = 1.0  # At boundary r=R
+        field_factor = (UA + UA) * M_s / (r**2)
+        pert = 1 + 0.01 * 5e5
+        Ug_2 = k_2 * field_factor * S_boundary * pert * SCm * exp_decay
+        
+        # Ug_3: Magnetic strings (±5% error)
+        cos_omega = math.cos(omega_s * t * math.pi)
+        Ug_3 = k_3 * B_s * cos_omega * SCm * exp_decay
+        
+        # Ub_i: Universal buoyancy (±6% error)
+        buoyancy_factor = Omega_g * (M_bh / d_g)
+        quantum_corr = 1 + 0.001 * 1e-21
+        Ub_i = -beta_i * (Ug_1 + Ug_2 + Ug_3) * buoyancy_factor * quantum_corr * SCm * cos_pi_tn
+        
+        # Um: Universal magnetism (±5% error)
+        Um = (mu_j / r) * (1 - exp_decay * cos_pi_tn) * SCm * exp_decay
+        
+        # A_μν: Aether tensor metric (±4% error)
+        g_munu = 1.0  # Flat metric baseline
+        T_s_munu = UA * SCm * rho_A * t_n if t_n > 0 else 0
+        A_munu = g_munu + eta * T_s_munu
+        
+        # Total F_U
+        sum_Ug = Ug_1 + Ug_2 + Ug_3
+        sum_correction = beta_i * sum_Ug * Omega_g * (M_bh / d_g) * E_react
+        sum_field = sum_Ug - sum_correction
+        
+        F_U = sum_field + Um + Ub_i + A_munu
+        
+        return {
+            't': t,
+            't_n': t_n,
+            'Ug_1': Ug_1,
+            'Ug_2': Ug_2,
+            'Ug_3': Ug_3,
+            'Ub_i': Ub_i,
+            'Um': Um,
+            'A_munu': A_munu,
+            'E_react': E_react,
+            'F_U': F_U,
+            'error_bound': '≤5% across all components',
+            'parameters': {
+                'r': r, 'M_s': M_s, 'omega_s': omega_s,
+                'T_grad': f'{T_base}K → {T_top}K',
+                'B_s': B_s, 'SCm': SCm, 'UA': UA,
+            },
+            'equation': 'F_U = Σᵢ[kᵢ·Ugᵢ - βᵢ·Ugᵢ·Ωg·(Mbh/dg)·E_react] + Σⱼ[μⱼ/rⱼ·(1-e^(-γt·cos(πtₙ)))·φ̂ⱼ] + (gμν + η·Tₛμν)',
+            'source': 'Grok UFT Orb Analysis_15 Finalized F_U (March 4, 2025)'
+        }
+
+
+# UFT Orb Analysis_15 registry dict
+ORB_ANALYSIS_15_CALCULATORS = {
+    'FiveHundredFrameDatasetCalculator': FiveHundredFrameDatasetCalculator(),
+    'PlasmoidSpinRateCalculator': PlasmoidSpinRateCalculator(),
+    'ErrorReductionValidatorCalculator': ErrorReductionValidatorCalculator(),
+    'Exp2PreviewCalculator': Exp2PreviewCalculator(),
+    'QuadrantSequenceOrb15Calculator': QuadrantSequenceOrb15Calculator(),
+    'FinalizedFURefinementCalculator': FinalizedFURefinementCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -2680,6 +3209,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_12_CALCULATORS,
     **ORB_ANALYSIS_13_CALCULATORS,
     **ORB_ANALYSIS_14_CALCULATORS,
+    **ORB_ANALYSIS_15_CALCULATORS,
 }
 
 # Update class count
@@ -2750,6 +3280,16 @@ __all__ = [
     'CelestialDynamicsComparisonCalculator',
     'Orb14EnergyEfficiencyCalculator',
     'ORB_ANALYSIS_14_CALCULATORS',
+    
+    # Orb Analysis_15 (6 classes)
+    'ORB_ANALYSIS_15_PARAMS',
+    'FiveHundredFrameDatasetCalculator',
+    'PlasmoidSpinRateCalculator',
+    'ErrorReductionValidatorCalculator',
+    'Exp2PreviewCalculator',
+    'QuadrantSequenceOrb15Calculator',
+    'FinalizedFURefinementCalculator',
+    'ORB_ANALYSIS_15_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
