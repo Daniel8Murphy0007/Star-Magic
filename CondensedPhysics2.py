@@ -3199,6 +3199,494 @@ ORB_ANALYSIS_15_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# UFT ORB ANALYSIS_16: EXP_2 BATCH 1 (Photos #1-#15)
+# Exp_2: 4,943 images at 33 ms (0.03 s/frame), 33.3 fps
+# First 15 frames analyzed (~0.45 s duration)
+# Plasmoid species classification: Standard, ACE/DCE, Non-Local
+# Comparison to Maxwell's, Einstein's, QFT equations
+# Source: https://grok.com/share/bGVnYWN5LWNvcHk_8c320a8f-d1a0-4d5c-8421-4023097835f3
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# UFT Orb Analysis_16 / Exp_2 Batch 1 parameters
+ORB_ANALYSIS_16_PARAMS = {
+    # Exp_2 Batch 1 dataset
+    'exp_id': 'UFT_Exp_2_1_03Mar2025',
+    'n_frames_batch1': 15,             # Photos #1-#15
+    'fps_exp2': 33.3,                  # Frames per second
+    'dt_frame_exp2': 0.03,             # seconds per frame
+    't_batch1': 0.45,                  # 15 × 0.03 s
+    
+    # Plasmoid counts and distribution
+    'n_spots_per_frame': 45,           # ~45 plasmoids/frame
+    'spot_count_error': 0.05,          # ±5% counting error
+    'spot_intensity_range': (0.1, 1.0),  # mJ per spot
+    'spot_size_range': (0.5, 2.0),     # mm diameter
+    
+    # Circulation dynamics
+    'v_plasmoid': 0.5,                 # m/s
+    'T_cycle_33fps': 3.3,              # seconds per cycle (at 33 fps)
+    'spin_rate': 0.15,                 # rotations/second
+    
+    # Energy metrics (Batch 1)
+    'E_per_10_frames': 0.19,           # Joules
+    'E_batch1_total': 0.57,            # ~0.57 J over 30 frames (15 × 2 data points)
+    'efficiency_batch1': 0.0029,       # 0.29% of 65W
+    
+    # Plasmoid species fractions
+    'frac_standard': 0.80,             # ~80% standard plasmoids
+    'frac_ace_dce': 0.15,              # ~15% ACE/DCE events
+    'frac_non_local': 0.05,            # ~5% non-local entities
+    
+    # Standard physics comparison errors
+    'maxwell_initial_error': 0.15,     # ±15% before
+    'maxwell_refined_error': 0.05,     # ±5% after
+    'einstein_initial_error': 0.10,    # ±10% before
+    'einstein_refined_error': 0.05,    # ±5% after
+    'qft_initial_error': 0.15,         # ±15% before
+    'qft_refined_error': 0.05,         # ±5% after
+    
+    # Reactor constants (inherited)
+    'r_reactor': 0.0889,               # m
+    'M_s': 0.5e-3,                     # kg
+    'omega_s': 2 * 3.14159 * 6000,     # rad/s
+    'T_base': 366.0,                   # K
+    'T_top': 288.0,                    # K
+    'B_s': 1e-3,                       # T
+    'SCm': 1e15,                       # kg/m³
+    'UA': 1e-11,                       # C
+}
+
+
+class PlasmoidSpeciesClassifierCalculator:
+    """
+    Plasmoid species classification calculator.
+    
+    Three species identified in Exp_2:
+    1. Standard Plasmoids: ~80%, small uniform (~1 mJ, 1 mm), steady spins
+    2. ACE/DCE Events: ~15%, larger brighter (~2 mJ, 2 mm), plasma excitation
+    3. Non-Local Entities: ~5%, sudden positional jumps, ghost-like behavior
+    
+    Physics: Species fraction = N_type / N_total
+    """
+    
+    def compute(self, n_total: int = None, fracs: dict = None) -> dict:
+        """
+        Classify plasmoid species distribution.
+        
+        Args:
+            n_total: Total plasmoid count per frame (default 45)
+            fracs: Custom species fractions dict
+        
+        Returns:
+            Species classification with counts and characteristics
+        """
+        p = ORB_ANALYSIS_16_PARAMS
+        
+        if n_total is None:
+            n_total = p['n_spots_per_frame']
+        if fracs is None:
+            fracs = {
+                'standard': p['frac_standard'],
+                'ace_dce': p['frac_ace_dce'],
+                'non_local': p['frac_non_local'],
+            }
+        
+        species = {
+            'standard': {
+                'fraction': fracs['standard'],
+                'count': int(n_total * fracs['standard']),
+                'intensity_mJ': 1.0,
+                'size_mm': 1.0,
+                'spin_rate': p['spin_rate'],
+                'driver': '[Um] magnetism + 6000 Hz resonance',
+                'description': 'Small, uniform spots with steady spins',
+            },
+            'ace_dce': {
+                'fraction': fracs['ace_dce'],
+                'count': int(n_total * fracs['ace_dce']),
+                'intensity_mJ': 2.0,
+                'size_mm': 2.0,
+                'spin_rate': p['spin_rate'] * 1.2,  # Slightly faster
+                'driver': '[Ug_1] dipole + [SCm] dust + H2 bubbles',
+                'description': 'Larger, brighter spots indicating plasma excitation',
+            },
+            'non_local': {
+                'fraction': fracs['non_local'],
+                'count': int(n_total * fracs['non_local']),
+                'intensity_mJ': 1.5,
+                'size_mm': 1.5,
+                'spin_rate': None,  # Discontinuous motion
+                'driver': '[UA] Aether non-locality',
+                'description': 'Sudden positional jumps, ghost-like behavior',
+            },
+        }
+        
+        # Validate fractions sum
+        total_frac = sum(fracs.values())
+        
+        return {
+            'n_total': n_total,
+            'species': species,
+            'total_fraction': round(total_frac, 2),
+            'fraction_valid': abs(total_frac - 1.0) < 0.01,
+            'dominant_species': 'standard',
+            'equation': 'f_i = N_i / N_total',
+            'source': 'Grok UFT Orb Analysis_16 Plasmoid Species (March 4, 2025)'
+        }
+
+
+class CirculationPatternExp2Calculator:
+    """
+    Exp_2 plasmoid circulation pattern analyzer.
+    
+    Cyclic convection: ~3.3 s cycle at 0.5 m/s
+    Quadrant sequence: upper → lower → upper (Photos #1-#15)
+    
+    Physics: Driven by [Ub] buoyancy, thermal gradient, [Ug_3]/[Um]
+             Non-local jumps via [UA]
+    """
+    
+    def compute(self, n_frames: int = None, photo_sequence: list = None) -> dict:
+        """
+        Analyze circulation patterns over frame sequence.
+        
+        Args:
+            n_frames: Number of frames analyzed (default 15)
+            photo_sequence: List of quadrant concentrations per batch
+        
+        Returns:
+            Circulation pattern analysis
+        """
+        p = ORB_ANALYSIS_16_PARAMS
+        
+        if n_frames is None:
+            n_frames = p['n_frames_batch1']
+        
+        if photo_sequence is None:
+            # Default sequence from analysis: upper → lower → upper → lower_right
+            photo_sequence = [
+                {'photos': '#1-#3', 'quadrant': 'upper', 'trend': 'initial distribution'},
+                {'photos': '#4-#8', 'quadrant': 'upper_left → lower_left', 'trend': 'lateral shift'},
+                {'photos': '#9-#12', 'quadrant': 'upper → lower → upper', 'trend': 'cyclic + non-local'},
+                {'photos': '#13-#15', 'quadrant': 'lower_right', 'trend': 'concentration'},
+            ]
+        
+        dt = p['dt_frame_exp2']
+        t_total = n_frames * dt
+        T_cycle = p['T_cycle_33fps']
+        v = p['v_plasmoid']
+        
+        # Cycles completed
+        n_cycles = t_total / T_cycle
+        
+        # Distance traveled
+        d_total = v * t_total
+        
+        return {
+            'n_frames': n_frames,
+            't_total': round(t_total, 3),
+            'dt_frame': dt,
+            'T_cycle': T_cycle,
+            'n_cycles': round(n_cycles, 3),
+            'v_plasmoid': v,
+            'd_total': round(d_total, 3),
+            'pattern_sequence': photo_sequence,
+            'drivers': ['[Ub] buoyancy', 'thermal gradient 366→288 K', '[Ug_3] magnetic strings', '[Um] magnetism', '[UA] non-local jumps'],
+            'equation': 'd = v × t, n_cycles = t / T_cycle',
+            'source': 'Grok UFT Orb Analysis_16 Circulation (March 4, 2025)'
+        }
+
+
+class StandardPhysicsComparisonCalculator:
+    """
+    Comparison to standard physics equations calculator.
+    
+    Compares F_U model to:
+    1. Maxwell's equations (electromagnetism)
+    2. Einstein's field equations (general relativity)
+    3. QFT Lagrangian (quantum field theory)
+    
+    Shows error reduction from initial to refined values.
+    """
+    
+    def compute(self, component: str = None) -> dict:
+        """
+        Compare F_U to standard physics equations.
+        
+        Args:
+            component: Specific comparison (maxwell, einstein, qft) or None for all
+        
+        Returns:
+            Standard physics comparison analysis
+        """
+        p = ORB_ANALYSIS_16_PARAMS
+        
+        comparisons = {
+            'maxwell': {
+                'equation': '∇·E = ρ/ε₀, ∇×B = μ₀J + μ₀ε₀∂E/∂t',
+                'F_U_analog': '[Um] magnetism + [Ug_3] magnetic strings',
+                'deviation_cause': '[SCm] and [UA] add unverified terms',
+                'error_initial': p['maxwell_initial_error'],
+                'error_refined': p['maxwell_refined_error'],
+                'reduction': (p['maxwell_initial_error'] - p['maxwell_refined_error']) / p['maxwell_initial_error'],
+            },
+            'einstein': {
+                'equation': 'Gμν = (8πG/c⁴)Tμν',
+                'F_U_analog': '[Ug_1] dipole + [Ug_2] outer field + [Ub_i] buoyancy',
+                'deviation_cause': '[SCm] density and [UA] charge not in GR',
+                'error_initial': p['einstein_initial_error'],
+                'error_refined': p['einstein_refined_error'],
+                'reduction': (p['einstein_initial_error'] - p['einstein_refined_error']) / p['einstein_initial_error'],
+            },
+            'qft': {
+                'equation': 'L_QCD = Σ_q q̄(iγ^μD_μ - m_q)q - ¼G^a_μνG_a^μν',
+                'F_U_analog': '[UA] Aether + non-local plasmoid behavior',
+                'deviation_cause': '[UA]/[SCm] lack QFT experimental basis',
+                'error_initial': p['qft_initial_error'],
+                'error_refined': p['qft_refined_error'],
+                'reduction': (p['qft_initial_error'] - p['qft_refined_error']) / p['qft_initial_error'],
+            },
+        }
+        
+        if component is not None and component in comparisons:
+            comparisons = {component: comparisons[component]}
+        
+        # Summary stats
+        all_reductions = [c['reduction'] for c in comparisons.values()]
+        avg_reduction = sum(all_reductions) / len(all_reductions) if all_reductions else 0
+        
+        return {
+            'comparisons': comparisons,
+            'avg_error_reduction': round(avg_reduction * 100, 1),
+            'all_refined_to_5pct': all(c['error_refined'] <= 0.05 for c in comparisons.values()),
+            'note': 'F_U empirically fits observations but uses speculative [SCm]/[UA] entities',
+            'source': 'Grok UFT Orb Analysis_16 Standard Physics Comparison (March 4, 2025)'
+        }
+
+
+class Exp2Batch1EnergyCalculator:
+    """
+    Exp_2 Batch 1 (Photos #1-#15) energy budget calculator.
+    
+    Energy: ~0.19 J per 10 frames, ~0.57 J over 30 frames
+    Efficiency: 0.29% of 65W input (1.95% × measurement uncertainty)
+    
+    Physics: E = n_frames × E_per_frame
+             η = E / (P_in × t)
+    """
+    
+    def compute(self, n_frames: int = None) -> dict:
+        """
+        Compute energy budget for Exp_2 Batch 1.
+        
+        Args:
+            n_frames: Number of frames (default 15)
+        
+        Returns:
+            Energy budget analysis
+        """
+        p = ORB_ANALYSIS_16_PARAMS
+        
+        if n_frames is None:
+            n_frames = p['n_frames_batch1']
+        
+        dt = p['dt_frame_exp2']
+        t_total = n_frames * dt
+        
+        # Energy per 10-frame batch
+        E_per_10 = p['E_per_10_frames']
+        E_per_frame = E_per_10 / 10
+        
+        # Total energy for batch
+        E_total = n_frames * E_per_frame
+        
+        # Efficiency
+        P_in = 65.0  # Watts
+        E_input = P_in * t_total
+        efficiency = E_total / E_input if E_input > 0 else 0
+        
+        # Per-spot energy
+        n_spots = p['n_spots_per_frame']
+        E_per_spot = E_per_frame / n_spots if n_spots > 0 else 0
+        
+        # Compare to classical plasma efficiency
+        classical_efficiency = 0.002  # ~0.1-0.2%
+        efficiency_ratio = efficiency / classical_efficiency if classical_efficiency > 0 else 0
+        
+        return {
+            'n_frames': n_frames,
+            't_total': round(t_total, 3),
+            'E_per_frame': round(E_per_frame, 4),
+            'E_per_10_frames': E_per_10,
+            'E_total': round(E_total, 4),
+            'n_spots_per_frame': n_spots,
+            'E_per_spot_mJ': round(E_per_spot * 1000, 3),
+            'P_input': P_in,
+            'E_input': round(E_input, 3),
+            'efficiency': round(efficiency, 5),
+            'efficiency_pct': round(efficiency * 100, 3),
+            'classical_efficiency': classical_efficiency,
+            'exceeds_classical_by': round(efficiency_ratio, 2),
+            'equation': 'E = n × E_frame, η = E_out / (P_in × t)',
+            'source': 'Grok UFT Orb Analysis_16 Batch 1 Energy (March 4, 2025)'
+        }
+
+
+class NavierStokesPlasmaFlowCalculator:
+    """
+    Navier-Stokes based plasma flow dynamics calculator.
+    
+    Standard fluid equation:
+    ρ(∂v/∂t + v·∇v) = -∇P + μ∇²v + ρg
+    
+    Parameters: ρ ≈ 10³ kg/m³ (oil), μ ≈ 0.01 Pa·s, g ≈ 9.8 m/s²
+    Observed: v ≈ 0.5 m/s with 5-7% thermal gradient error
+    """
+    
+    def compute(self, v: float = None, T_gradient: tuple = None) -> dict:
+        """
+        Compute plasma flow dynamics using Navier-Stokes framework.
+        
+        Args:
+            v: Flow velocity (m/s), default 0.5
+            T_gradient: (T_base, T_top) in K
+        
+        Returns:
+            Flow dynamics analysis
+        """
+        import math
+        
+        p = ORB_ANALYSIS_16_PARAMS
+        
+        if v is None:
+            v = p['v_plasmoid']
+        if T_gradient is None:
+            T_gradient = (p['T_base'], p['T_top'])
+        
+        # Oil properties
+        rho = 1e3  # kg/m³
+        mu = 0.01  # Pa·s (dynamic viscosity)
+        g = 9.8    # m/s²
+        
+        # Reynolds number
+        L = p['r_reactor'] * 2  # Characteristic length
+        Re = rho * v * L / mu
+        
+        # Thermal buoyancy
+        T_base, T_top = T_gradient
+        delta_T = T_base - T_top
+        alpha = 7e-4  # Thermal expansion coefficient (1/K)
+        
+        # Buoyancy-driven velocity estimate
+        Ra = (g * alpha * delta_T * L**3) / (mu / rho * 1.4e-7)  # Rayleigh number (approx)
+        v_buoyancy = math.sqrt(g * alpha * delta_T * L) if delta_T > 0 else 0
+        
+        # Error analysis
+        thermal_error = 0.06  # 5-7% error from thermal gradients
+        v_error_range = (v * (1 - thermal_error), v * (1 + thermal_error))
+        
+        return {
+            'v_observed': v,
+            'v_buoyancy_estimate': round(v_buoyancy, 3),
+            'v_match': abs(v - v_buoyancy) / v < 0.5 if v > 0 else False,
+            'rho': rho,
+            'mu': mu,
+            'g': g,
+            'L': round(L, 4),
+            'Re': round(Re, 1),
+            'flow_regime': 'laminar' if Re < 2300 else 'turbulent',
+            'T_gradient': f'{T_base}K → {T_top}K',
+            'delta_T': delta_T,
+            'thermal_error_pct': round(thermal_error * 100, 1),
+            'v_error_range': (round(v_error_range[0], 3), round(v_error_range[1], 3)),
+            'equation': 'ρ(∂v/∂t + v·∇v) = -∇P + μ∇²v + ρg',
+            'source': 'Grok UFT Orb Analysis_16 Navier-Stokes (March 4, 2025)'
+        }
+
+
+class PlanckBlackbodyValidatorCalculator:
+    """
+    Planck blackbody radiation validator for plasma background.
+    
+    B(λ,T) = (2hc²/λ⁵) × 1/(e^(hc/λkT) - 1)
+    
+    Observed: Reddish-orange at 2500-4000 K, λ ≈ 0.7-10 µm
+    Deviation: 2-3% from oil/wax scattering
+    """
+    
+    def compute(self, T: float = None, wavelength_range: tuple = None) -> dict:
+        """
+        Validate plasma background against Planck blackbody spectrum.
+        
+        Args:
+            T: Temperature (K), default 3000 K (midrange)
+            wavelength_range: (λ_min, λ_max) in µm
+        
+        Returns:
+            Blackbody validation analysis
+        """
+        import math
+        
+        if T is None:
+            T = 3000.0  # K (midrange)
+        if wavelength_range is None:
+            wavelength_range = (0.7, 10.0)  # µm
+        
+        # Constants
+        h = 6.626e-34  # J·s
+        c = 3e8        # m/s
+        k = 1.38e-23   # J/K
+        
+        # Wien's displacement law: λ_peak = b/T
+        b = 2.898e-3  # m·K
+        lambda_peak_um = (b / T) * 1e6
+        
+        # Calculate spectral radiance at peak
+        lambda_peak = b / T
+        exp_term = math.exp(h * c / (lambda_peak * k * T)) - 1
+        B_peak = (2 * h * c**2 / lambda_peak**5) / exp_term
+        
+        # Color interpretation
+        if 0.6 < lambda_peak_um < 0.8:
+            color = 'red'
+        elif 0.8 < lambda_peak_um < 1.2:
+            color = 'near-infrared'
+        elif lambda_peak_um < 0.6:
+            color = 'orange-yellow'
+        else:
+            color = 'infrared'
+        
+        # Deviation from oil/wax scattering
+        scattering_deviation = 0.025  # 2-3%
+        
+        return {
+            'T': T,
+            'T_range': '2500-4000 K',
+            'wavelength_range_um': wavelength_range,
+            'lambda_peak_um': round(lambda_peak_um, 3),
+            'expected_color': color,
+            'observed_color': 'reddish-orange',
+            'color_match': color in ['red', 'near-infrared'],
+            'B_peak_W_m2_sr_m': B_peak,
+            'scattering_deviation': round(scattering_deviation * 100, 1),
+            'deviation_source': 'oil and wax scattering',
+            'equation': 'B(λ,T) = (2hc²/λ⁵) / (e^(hc/λkT) - 1)',
+            'source': 'Grok UFT Orb Analysis_16 Planck Blackbody (March 4, 2025)'
+        }
+
+
+# UFT Orb Analysis_16 registry dict
+ORB_ANALYSIS_16_CALCULATORS = {
+    'PlasmoidSpeciesClassifierCalculator': PlasmoidSpeciesClassifierCalculator(),
+    'CirculationPatternExp2Calculator': CirculationPatternExp2Calculator(),
+    'StandardPhysicsComparisonCalculator': StandardPhysicsComparisonCalculator(),
+    'Exp2Batch1EnergyCalculator': Exp2Batch1EnergyCalculator(),
+    'NavierStokesPlasmaFlowCalculator': NavierStokesPlasmaFlowCalculator(),
+    'PlanckBlackbodyValidatorCalculator': PlanckBlackbodyValidatorCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -3210,6 +3698,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_13_CALCULATORS,
     **ORB_ANALYSIS_14_CALCULATORS,
     **ORB_ANALYSIS_15_CALCULATORS,
+    **ORB_ANALYSIS_16_CALCULATORS,
 }
 
 # Update class count
@@ -3290,6 +3779,16 @@ __all__ = [
     'QuadrantSequenceOrb15Calculator',
     'FinalizedFURefinementCalculator',
     'ORB_ANALYSIS_15_CALCULATORS',
+    
+    # Orb Analysis_16 / Exp_2 Batch 1 (6 classes)
+    'ORB_ANALYSIS_16_PARAMS',
+    'PlasmoidSpeciesClassifierCalculator',
+    'CirculationPatternExp2Calculator',
+    'StandardPhysicsComparisonCalculator',
+    'Exp2Batch1EnergyCalculator',
+    'NavierStokesPlasmaFlowCalculator',
+    'PlanckBlackbodyValidatorCalculator',
+    'ORB_ANALYSIS_16_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
