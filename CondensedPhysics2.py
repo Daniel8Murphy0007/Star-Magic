@@ -80,470 +80,7 @@ ORB_ANALYSIS_10_PARAMS = {
 }
 
 
-class ThirtySixFrameSequenceCalculator:
-    """
-    UFT Orb Analysis_10: 36-frame sequence energy calculator.
-    
-    Extends the video analysis to 36 frames (Photos #1-#34 minus #14, plus #35-#37),
-    covering ~1.08 s at 33.3 fps. Calculates cumulative energy and temporal evolution
-    of plasmoid dynamics through the extended sequence.
-    
-    Physics:
-        E_total = Σᵢ[E_frame_i] = 36 × 45 mJ ≈ 1.62 J
-        t_total = n_frames × dt = 36 × 0.03 s = 1.08 s
-        
-    Source: Grok UFT Orb Analysis_10 (March 4, 2025)
-    """
-    
-    def compute(self, dataset: dict) -> dict:
-        n_frames = dataset.get('n_frames', ORB_ANALYSIS_10_PARAMS['n_frames_orb10'])
-        dt = dataset.get('dt_frame', ORB_ANALYSIS_10_PARAMS['dt_frame'])
-        E_per_frame = dataset.get('E_per_frame', 0.045)  # J (~45 mJ/frame)
-        gamma = dataset.get('gamma_decay', ORB_ANALYSIS_10_PARAMS['gamma_decay'])
-        
-        # Total sequence time
-        t_total = n_frames * dt
-        
-        # Cumulative energy with decay correction
-        E_cumulative = 0.0
-        frame_energies = []
-        for i in range(n_frames):
-            t_n = i * dt
-            E_frame = E_per_frame * math.exp(-gamma * t_n)
-            E_cumulative += E_frame
-            frame_energies.append({
-                'frame': i + 1,
-                't': round(t_n, 4),
-                'E': round(E_frame, 6)
-            })
-        
-        # Average power
-        P_avg = E_cumulative / t_total if t_total > 0 else 0.0
-        
-        return {
-            'n_frames': n_frames,
-            't_total': round(t_total, 4),
-            'E_cumulative': round(E_cumulative, 6),
-            'P_avg': round(P_avg, 6),
-            'E_per_frame_avg': round(E_cumulative / n_frames, 6) if n_frames > 0 else 0.0,
-            'frame_energies': frame_energies[:5],  # First 5 for preview
-            'equation': 'E_total = Σᵢ[E_frame_i × e^(-γtᵢ)]',
-            'source': 'Grok UFT Orb Analysis_10 36-Frame Sequence (March 4, 2025)'
-        }
-
-
-class CyclicalConvectionPatternCalculator:
-    """
-    UFT Orb Analysis_10: Cyclical convection pattern tracking calculator.
-    
-    Tracks the cyclical concentration shifts: lower right (#35) → upper left (#36)
-    → upper right (#37). Models the spatial redistribution as a convection cycle
-    driven by thermal gradients and non-local effects.
-    
-    Physics:
-        Cycle_path: LR → UL → UR (3-point convection loop)
-        θ_rotation = Σᵢ[arctan2(Δyᵢ, Δxᵢ)]
-        Cycle_period ≈ 3 frames × 0.03 s = 0.09 s
-        
-    Source: Grok UFT Orb Analysis_10 (March 4, 2025)
-    """
-    
-    def compute(self, dataset: dict) -> dict:
-        # Cyclical quadrant positions (normalized 0-1 coordinates)
-        cycle_sequence = dataset.get('cycle_sequence', [
-            {'frame': 35, 'quadrant': 'lower_right', 'x_c': 0.75, 'y_c': 0.25},
-            {'frame': 36, 'quadrant': 'upper_left', 'x_c': 0.25, 'y_c': 0.75},
-            {'frame': 37, 'quadrant': 'upper_right', 'x_c': 0.75, 'y_c': 0.75},
-        ])
-        
-        dt = dataset.get('dt_frame', ORB_ANALYSIS_10_PARAMS['dt_frame'])
-        
-        # Track cycle transitions
-        transitions = []
-        total_angle = 0.0
-        total_distance = 0.0
-        
-        for i in range(1, len(cycle_sequence)):
-            prev = cycle_sequence[i - 1]
-            curr = cycle_sequence[i]
-            
-            dx = curr['x_c'] - prev['x_c']
-            dy = curr['y_c'] - prev['y_c']
-            distance = math.sqrt(dx**2 + dy**2)
-            theta = math.atan2(dy, dx) * 180 / math.pi
-            
-            total_angle += theta
-            total_distance += distance
-            
-            transitions.append({
-                'from_frame': prev['frame'],
-                'to_frame': curr['frame'],
-                'transition': f"{prev['quadrant']} → {curr['quadrant']}",
-                'dx': round(dx, 4),
-                'dy': round(dy, 4),
-                'distance': round(distance, 4),
-                'theta_deg': round(theta, 2)
-            })
-        
-        # Cycle characteristics
-        n_transitions = len(transitions)
-        cycle_period = n_transitions * dt
-        avg_angular_velocity = total_angle / cycle_period if cycle_period > 0 else 0.0
-        
-        return {
-            'cycle_sequence': cycle_sequence,
-            'transitions': transitions,
-            'total_distance': round(total_distance, 4),
-            'total_angle_deg': round(total_angle, 2),
-            'cycle_period': round(cycle_period, 4),
-            'avg_angular_velocity': round(avg_angular_velocity, 2),
-            'pattern': 'LR → UL → UR (cyclical convection)',
-            'equation': 'θ_cycle = Σᵢ[arctan2(Δyᵢ, Δxᵢ)]',
-            'source': 'Grok UFT Orb Analysis_10 Cyclical Convection (March 4, 2025)'
-        }
-
-
-class Orb10RefinedFUCalculator:
-    """
-    UFT Orb Analysis_10: Refined Unified Field F_U calculator.
-    
-    Computes the complete unified field equation refined with Photos #35-#37 data,
-    extending the temporal coverage to 1.08 s with 36 frames.
-    
-    Physics:
-        F_U = Σᵢ[kᵢ·Ugᵢ(r,t,Mₛ,ωₛ,Tₛ,Bₛ,SCm,UA,tₙ) - βᵢ·Ugᵢ·Ωg·(Mbh/dg)·E_react]
-              + Σⱼ[μⱼ/rⱼ·(1-e^(-γt·cos(πtₙ)))·φ̂ⱼ]
-              + (gμν + η·Tₛμν(UA,SCm,ρA))
-              
-    Parameters updated for 36-frame sequence:
-        r = 0.0889 m, Mₛ = 0.5 g, ωₛ = 2π×6000 rad/s
-        Tₛ = 366→288 K, Bₛ = 10⁻³ T
-        
-    Source: Grok UFT Orb Analysis_10 (March 4, 2025)
-    """
-    
-    def compute(self, dataset: dict) -> dict:
-        r = dataset.get('r_reactor', ORB_ANALYSIS_10_PARAMS['r_reactor'])
-        M_s = dataset.get('M_s', ORB_ANALYSIS_10_PARAMS['M_s'])
-        omega_s = dataset.get('omega_s', ORB_ANALYSIS_10_PARAMS['omega_s'])
-        T_base = dataset.get('T_base', ORB_ANALYSIS_10_PARAMS['T_base'])
-        T_top = dataset.get('T_top', ORB_ANALYSIS_10_PARAMS['T_top'])
-        B_s = dataset.get('B_s', ORB_ANALYSIS_10_PARAMS['B_s'])
-        SCm = dataset.get('SCm', ORB_ANALYSIS_10_PARAMS['SCm'])
-        UA = dataset.get('UA', ORB_ANALYSIS_10_PARAMS['UA'])
-        t = dataset.get('t', 0.54)  # midpoint of 1.08 s sequence
-        gamma = dataset.get('gamma_decay', ORB_ANALYSIS_10_PARAMS['gamma_decay'])
-        E_react = dataset.get('E_react', ORB_ANALYSIS_10_PARAMS['E_react'])
-        
-        t_n = t  # normalized time
-        
-        # Ug_1: Internal dipole
-        k_1 = 1.5e-4
-        Ug1 = k_1 * (M_s / r) * math.exp(-gamma * t) * math.cos(math.pi * t_n) * (1 + 0.01 * math.sin(gamma * t))
-        
-        # Ug_2: Outer field bubble
-        k_2 = 1.2
-        Ug2 = k_2 * (UA + UA) * M_s / (r**2) * SCm * math.exp(-gamma * t)
-        
-        # Ug_3: Magnetic strings
-        k_3 = 1.8
-        Ug3 = k_3 * B_s * math.cos(omega_s * t * math.pi) * SCm * math.exp(-gamma * t)
-        
-        # Ub_i: Universal buoyancy
-        beta_i = 0.8
-        Omega_g = 7.3e-16  # rad/s
-        M_bh = 8.15e36     # kg (reference black hole mass)
-        d_g = 2.55e20      # m (galactic distance)
-        Ubi = -beta_i * (Ug1 + Ug2 + Ug3) * Omega_g * (M_bh / d_g) * E_react * math.cos(math.pi * t_n)
-        
-        # Um: Universal magnetism
-        mu_j = 1e-4
-        Um = (mu_j / r) * (1 - math.exp(-gamma * t * math.cos(math.pi * t_n))) * SCm * math.exp(-gamma * t)
-        
-        # A_μν: Cosmic Aether tensor contribution
-        eta = 1e-22
-        rho_A = 1e-23
-        A_munu = 1.0 + eta * (UA * SCm * rho_A) * t_n
-        
-        # Total F_U
-        F_U = Ug1 + Ug2 + Ug3 + Ubi + Um + A_munu
-        
-        return {
-            'Ug1': Ug1,
-            'Ug2': Ug2,
-            'Ug3': Ug3,
-            'Ubi': Ubi,
-            'Um': Um,
-            'A_munu': A_munu,
-            'F_U_total': F_U,
-            'parameters': {
-                'r': r, 'M_s': M_s, 'omega_s': omega_s,
-                'T_gradient': f'{T_base}→{T_top} K',
-                'B_s': B_s, 'SCm': SCm, 'UA': UA, 't': t
-            },
-            'equation': 'F_U = Σᵢ[kᵢ·Ugᵢ - βᵢ·Ugᵢ·Ωg·(Mbh/dg)·E_react] + Σⱼ[μⱼ/rⱼ·(1-e^(-γt·cos(πtₙ)))·φ̂ⱼ] + (gμν + η·Tₛμν)',
-            'source': 'Grok UFT Orb Analysis_10 Refined F_U (March 4, 2025)'
-        }
-
-
-class SpookyActionNonLocalTransferCalculator:
-    """
-    UFT Orb Analysis_10: Spooky action non-local energy transfer calculator.
-    
-    Models the non-local "spooky action" observed in cyclical shifts, where plasmoid
-    concentrations jump across quadrants faster than classical diffusion would predict.
-    Driven by [Ug3] (magnetic strings) and [Um] (universal magnetism).
-    
-    Physics:
-        v_apparent = Δr / Δt (exceeds local diffusion limit)
-        E_nonlocal = ε·[Ug3 + Um]·cos(ωt)
-        Correlation_length = λ·(SCm/UA)^(1/2)
-        
-    Source: Grok UFT Orb Analysis_10 (March 4, 2025)
-    """
-    
-    def compute(self, dataset: dict) -> dict:
-        dt = dataset.get('dt_frame', ORB_ANALYSIS_10_PARAMS['dt_frame'])
-        v_plasmoid = dataset.get('v_plasmoid', ORB_ANALYSIS_10_PARAMS['v_plasmoid'])
-        B_s = dataset.get('B_s', ORB_ANALYSIS_10_PARAMS['B_s'])
-        SCm = dataset.get('SCm', ORB_ANALYSIS_10_PARAMS['SCm'])
-        UA = dataset.get('UA', ORB_ANALYSIS_10_PARAMS['UA'])
-        omega_s = dataset.get('omega_s', ORB_ANALYSIS_10_PARAMS['omega_s'])
-        t = dataset.get('t', 0.54)
-        
-        # Classical diffusion limit (for comparison)
-        D_classical = 1e-9  # m²/s (typical for viscous oil)
-        l_diffusion = math.sqrt(2 * D_classical * dt)  # diffusion length in one frame
-        
-        # Actual displacement observed
-        delta_r_observed = v_plasmoid * dt
-        
-        # Ratio (how much faster than diffusion)
-        speedup_ratio = delta_r_observed / l_diffusion if l_diffusion > 0 else float('inf')
-        
-        # Ug3 contribution (magnetic strings)
-        k_3 = 1.8
-        gamma = ORB_ANALYSIS_10_PARAMS['gamma_decay']
-        Ug3 = k_3 * B_s * math.cos(omega_s * t * math.pi) * SCm * math.exp(-gamma * t)
-        
-        # Um contribution (universal magnetism)
-        mu_j = 1e-4
-        r = ORB_ANALYSIS_10_PARAMS['r_reactor']
-        Um = (mu_j / r) * (1 - math.exp(-gamma * t * math.cos(math.pi * t))) * SCm * math.exp(-gamma * t)
-        
-        # Non-local energy
-        epsilon = 1e-10
-        E_nonlocal = epsilon * (Ug3 + Um) * math.cos(omega_s * t)
-        
-        # Correlation length
-        lambda_corr = 1e-6  # m (characteristic length scale)
-        correlation_length = lambda_corr * math.sqrt(SCm / UA) if UA > 0 else 0.0
-        
-        return {
-            'v_plasmoid': v_plasmoid,
-            'delta_r_per_frame': round(delta_r_observed, 6),
-            'l_diffusion_classical': round(l_diffusion, 9),
-            'speedup_vs_diffusion': round(speedup_ratio, 2),
-            'Ug3': Ug3,
-            'Um': Um,
-            'E_nonlocal': E_nonlocal,
-            'correlation_length': correlation_length,
-            'mechanism': 'Ug3 (magnetic strings) + Um (universal magnetism)',
-            'equation': 'E_nonlocal = ε·[Ug3 + Um]·cos(ωt)',
-            'source': 'Grok UFT Orb Analysis_10 Spooky Action (March 4, 2025)'
-        }
-
-
-class ThermalGradientDrivenDynamicsCalculator:
-    """
-    UFT Orb Analysis_10: Thermal gradient-driven dynamics calculator.
-    
-    Models plasmoid dynamics driven by the thermal gradient (366K base → 288K top).
-    The 78 K temperature difference creates convective forces that drive the cyclical
-    concentration patterns observed in Photos #35-#37.
-    
-    Physics:
-        ΔT = T_base - T_top = 366 - 288 = 78 K
-        F_thermal = ρ·β·ΔT·V·g
-        v_thermal ∝ √(β·ΔT·g·L)
-        
-    Source: Grok UFT Orb Analysis_10 (March 4, 2025)
-    """
-    
-    def compute(self, dataset: dict) -> dict:
-        T_base = dataset.get('T_base', ORB_ANALYSIS_10_PARAMS['T_base'])
-        T_top = dataset.get('T_top', ORB_ANALYSIS_10_PARAMS['T_top'])
-        L = dataset.get('L_reactor', 0.254)  # m (10 in height)
-        
-        # Oil properties
-        rho_oil = dataset.get('rho_oil', 850)  # kg/m³
-        beta_thermal = dataset.get('beta_thermal', 7e-4)  # K⁻¹
-        g = 9.81  # m/s²
-        
-        Delta_T = T_base - T_top
-        
-        # Thermal-driven velocity estimate
-        v_thermal = math.sqrt(beta_thermal * Delta_T * g * L)
-        
-        # Grashof number (ratio of buoyancy to viscous forces)
-        nu_oil = dataset.get('nu_oil', 1e-5)  # m²/s
-        Gr = (g * beta_thermal * Delta_T * L**3) / (nu_oil**2)
-        
-        # Thermal force on plasmoid
-        V_plasmoid = (4/3) * math.pi * (0.001)**3  # 1 mm radius sphere
-        F_thermal = rho_oil * beta_thermal * Delta_T * V_plasmoid * g
-        
-        # Temperature profile (linear approximation)
-        z_positions = [0.0, 0.127, 0.254]  # bottom, middle, top
-        T_profile = [T_base - (T_base - T_top) * z / L for z in z_positions]
-        
-        return {
-            'Delta_T': Delta_T,
-            'v_thermal': round(v_thermal, 4),
-            'Grashof_number': Gr,
-            'F_thermal': F_thermal,
-            'T_profile': [{'z': z, 'T': round(T, 1)} for z, T in zip(z_positions, T_profile)],
-            'gradient': round(Delta_T / L, 2),
-            'equation': 'v_thermal ∝ √(β·ΔT·g·L)',
-            'source': 'Grok UFT Orb Analysis_10 Thermal Dynamics (March 4, 2025)'
-        }
-
-
-class QuadrantTransitionTrackerCalculator:
-    """
-    UFT Orb Analysis_10: Quadrant transition tracker calculator.
-    
-    Tracks all quadrant transitions across the 36-frame sequence, identifying
-    patterns in plasmoid concentration redistribution. Maps transitions to
-    identify dominant flow paths and cycle frequencies.
-    
-    Physics:
-        Transition_matrix[i,j] = P(quadrant_j | quadrant_i)
-        Dominant_path = argmax(transition_counts)
-        Cycle_frequency = n_complete_cycles / t_total
-        
-    Source: Grok UFT Orb Analysis_10 (March 4, 2025)
-    """
-    
-    def compute(self, dataset: dict) -> dict:
-        # Recent quadrant sequence from photos
-        quadrant_sequence = dataset.get('quadrant_sequence', [
-            # Orb_8: Photos #30-#31
-            {'frame': 30, 'quadrant': 'upper_right'},
-            {'frame': 31, 'quadrant': 'lower_left'},
-            # Orb_9: Photos #32-#34
-            {'frame': 32, 'quadrant': 'upper_left'},
-            {'frame': 33, 'quadrant': 'upper_right'},
-            {'frame': 34, 'quadrant': 'upper_right'},
-            # Orb_10: Photos #35-#37
-            {'frame': 35, 'quadrant': 'lower_right'},
-            {'frame': 36, 'quadrant': 'upper_left'},
-            {'frame': 37, 'quadrant': 'upper_right'},
-        ])
-        
-        # Count transitions
-        transition_counts = {}
-        for i in range(1, len(quadrant_sequence)):
-            prev_q = quadrant_sequence[i-1]['quadrant']
-            curr_q = quadrant_sequence[i]['quadrant']
-            key = f"{prev_q} → {curr_q}"
-            transition_counts[key] = transition_counts.get(key, 0) + 1
-        
-        # Find dominant transition
-        dominant = max(transition_counts.items(), key=lambda x: x[1]) if transition_counts else ('none', 0)
-        
-        # Total transitions
-        total_transitions = sum(transition_counts.values())
-        
-        # Quadrant visit counts
-        quadrant_visits = {}
-        for entry in quadrant_sequence:
-            q = entry['quadrant']
-            quadrant_visits[q] = quadrant_visits.get(q, 0) + 1
-        
-        return {
-            'quadrant_sequence': quadrant_sequence,
-            'transition_counts': transition_counts,
-            'dominant_transition': dominant[0],
-            'dominant_count': dominant[1],
-            'total_transitions': total_transitions,
-            'quadrant_visits': quadrant_visits,
-            'most_visited': max(quadrant_visits.items(), key=lambda x: x[1])[0] if quadrant_visits else 'none',
-            'equation': 'P(Q_j|Q_i) = count(Q_i→Q_j) / count(Q_i)',
-            'source': 'Grok UFT Orb Analysis_10 Quadrant Tracker (March 4, 2025)'
-        }
-
-
-class ACEDCEModulatedEnergyCalculator:
-    """
-    UFT Orb Analysis_10: ACE/DCE modulated energy calculator.
-    
-    Calculates energy contributions from [ACE/DCE] (Aether Creation/Destruction 
-    Concentration Events) modulated by [SCm] reactivity and 65W bulb input.
-    Brightness fluctuations (~1 mJ/spot) are tied to these events.
-    
-    Physics:
-        E_ACE = k_ACE × [SCm] × [UA] × (1 - e^(-γt))
-        E_DCE = k_DCE × [SCm] × [UA] × e^(-γt)
-        E_total_events = Σᵢ[E_ACE_i + E_DCE_i]
-        
-    Source: Grok UFT Orb Analysis_10 (March 4, 2025)
-    """
-    
-    def compute(self, dataset: dict) -> dict:
-        n_frames = dataset.get('n_frames', ORB_ANALYSIS_10_PARAMS['n_frames_orb10'])
-        E_per_spot = dataset.get('E_per_spot', 1e-3)  # J (1 mJ per spot)
-        n_spots_avg = dataset.get('n_spots_avg', 45)  # average spots per frame
-        SCm = dataset.get('SCm', ORB_ANALYSIS_10_PARAMS['SCm'])
-        UA = dataset.get('UA', ORB_ANALYSIS_10_PARAMS['UA'])
-        gamma = dataset.get('gamma_decay', ORB_ANALYSIS_10_PARAMS['gamma_decay'])
-        dt = dataset.get('dt_frame', ORB_ANALYSIS_10_PARAMS['dt_frame'])
-        P_bulb = dataset.get('P_bulb', 65)  # W
-        
-        k_ACE = 1e-30  # coupling constant
-        k_DCE = 0.8e-30
-        
-        E_ACE_total = 0.0
-        E_DCE_total = 0.0
-        event_log = []
-        
-        for i in range(n_frames):
-            t = i * dt
-            
-            # ACE (creation events - increase with time)
-            E_ACE = k_ACE * SCm * UA * (1 - math.exp(-gamma * t))
-            E_ACE_total += E_ACE
-            
-            # DCE (destruction events - decrease with time)
-            E_DCE = k_DCE * SCm * UA * math.exp(-gamma * t)
-            E_DCE_total += E_DCE
-            
-            if i < 5:  # Log first 5 frames
-                event_log.append({
-                    'frame': i + 1,
-                    'E_ACE': E_ACE,
-                    'E_DCE': E_DCE,
-                    'ratio': round(E_ACE / E_DCE, 4) if E_DCE > 0 else float('inf')
-                })
-        
-        # Observable energy from spots
-        E_spots_observable = n_frames * n_spots_avg * E_per_spot
-        
-        return {
-            'n_frames': n_frames,
-            'E_ACE_total': E_ACE_total,
-            'E_DCE_total': E_DCE_total,
-            'E_events_total': E_ACE_total + E_DCE_total,
-            'E_spots_observable': E_spots_observable,
-            'n_spots_avg': n_spots_avg,
-            'event_log': event_log,
-            'P_bulb_input': P_bulb,
-            'equation': 'E_total = Σᵢ[E_ACE + E_DCE] with E_ACE ∝ (1-e^(-γt)), E_DCE ∝ e^(-γt)',
-            'source': 'Grok UFT Orb Analysis_10 ACE/DCE Energy (March 4, 2025)'
-        }
-
-
-class MagneticBubbleConfinementCalculator:
+class MagneticBubbleConfinementOrb10Calculator:
     """
     UFT Orb Analysis_10: Magnetic bubble confinement calculator.
     
@@ -604,14 +141,7 @@ class MagneticBubbleConfinementCalculator:
 
 # UFT Orb Analysis_10 registry dict
 ORB_ANALYSIS_10_CALCULATORS = {
-    'ThirtySixFrameSequenceCalculator': ThirtySixFrameSequenceCalculator(),
-    'CyclicalConvectionPatternCalculator': CyclicalConvectionPatternCalculator(),
-    'Orb10RefinedFUCalculator': Orb10RefinedFUCalculator(),
-    'SpookyActionNonLocalTransferCalculator': SpookyActionNonLocalTransferCalculator(),
-    'ThermalGradientDrivenDynamicsCalculator': ThermalGradientDrivenDynamicsCalculator(),
-    'QuadrantTransitionTrackerCalculator': QuadrantTransitionTrackerCalculator(),
-    'ACEDCEModulatedEnergyCalculator': ACEDCEModulatedEnergyCalculator(),
-    'MagneticBubbleConfinementCalculator': MagneticBubbleConfinementCalculator(),
+    'MagneticBubbleConfinementOrb10Calculator': MagneticBubbleConfinementOrb10Calculator(),
 }
 
 
@@ -645,308 +175,7 @@ ORB_ANALYSIS_11_PARAMS = {
 }
 
 
-class ThirtyNineFrameSequenceCalculator:
-    """
-    UFT Orb Analysis_11: 39-frame sequence energy calculator.
-    
-    Extends the video analysis to 39 frames (Photos #1-#37 minus #14, plus #38-#40),
-    covering ~1.17 s at 33.3 fps. Calculates cumulative energy and temporal evolution
-    of plasmoid dynamics through the extended sequence.
-    
-    Physics:
-        E_total = Σᵢ[E_frame_i] = 39 × 45 mJ ≈ 1.755 J
-        t_total = n_frames × dt = 39 × 0.03 s = 1.17 s
-        
-    Source: Grok UFT Orb Analysis_11 (March 4, 2025)
-    """
-    
-    def compute(self, dataset: dict) -> dict:
-        n_frames = dataset.get('n_frames', ORB_ANALYSIS_11_PARAMS['n_frames_orb11'])
-        dt = dataset.get('dt_frame', ORB_ANALYSIS_11_PARAMS['dt_frame'])
-        E_per_frame = dataset.get('E_per_frame', 0.045)  # J (~45 mJ/frame)
-        gamma = dataset.get('gamma_decay', ORB_ANALYSIS_11_PARAMS['gamma_decay'])
-        
-        # Total sequence time
-        t_total = n_frames * dt
-        
-        # Cumulative energy with decay correction
-        E_cumulative = 0.0
-        frame_energies = []
-        for i in range(n_frames):
-            t_n = i * dt
-            E_frame = E_per_frame * math.exp(-gamma * t_n)
-            E_cumulative += E_frame
-            frame_energies.append({
-                'frame': i + 1,
-                't': round(t_n, 4),
-                'E': round(E_frame, 6)
-            })
-        
-        # Average power
-        P_avg = E_cumulative / t_total if t_total > 0 else 0.0
-        
-        return {
-            'n_frames': n_frames,
-            't_total': round(t_total, 4),
-            'E_cumulative': round(E_cumulative, 6),
-            'P_avg': round(P_avg, 6),
-            'E_per_frame_avg': round(E_cumulative / n_frames, 6) if n_frames > 0 else 0.0,
-            'frame_energies': frame_energies[:5],  # First 5 for preview
-            'equation': 'E_total = Σᵢ[E_frame_i × e^(-γtᵢ)]',
-            'source': 'Grok UFT Orb Analysis_11 39-Frame Sequence (March 4, 2025)'
-        }
-
-
-class CounterClockwiseDiagonalCycleCalculator:
-    """
-    UFT Orb Analysis_11: Counter-clockwise diagonal cycle calculator.
-    
-    Tracks the counter-clockwise diagonal cycle: upper left (#38) → upper right (#39)
-    → lower left (#40). This pattern suggests a rotational convection mode with
-    diagonal transitions across quadrants.
-    
-    Physics:
-        Cycle_path: UL → UR → LL (counter-clockwise diagonal)
-        θ_total = Σᵢ[θᵢ] (accumulated rotation angle)
-        ω_cycle = θ_total / (n_transitions × dt)
-        
-    Source: Grok UFT Orb Analysis_11 (March 4, 2025)
-    """
-    
-    def compute(self, dataset: dict) -> dict:
-        # Diagonal cycle positions (normalized 0-1 coordinates)
-        cycle_sequence = dataset.get('cycle_sequence', [
-            {'frame': 38, 'quadrant': 'upper_left', 'x_c': 0.25, 'y_c': 0.75},
-            {'frame': 39, 'quadrant': 'upper_right', 'x_c': 0.75, 'y_c': 0.75},
-            {'frame': 40, 'quadrant': 'lower_left', 'x_c': 0.25, 'y_c': 0.25},
-        ])
-        
-        dt = dataset.get('dt_frame', ORB_ANALYSIS_11_PARAMS['dt_frame'])
-        
-        # Track diagonal transitions
-        transitions = []
-        total_angle = 0.0
-        total_distance = 0.0
-        
-        for i in range(1, len(cycle_sequence)):
-            prev = cycle_sequence[i - 1]
-            curr = cycle_sequence[i]
-            
-            dx = curr['x_c'] - prev['x_c']
-            dy = curr['y_c'] - prev['y_c']
-            distance = math.sqrt(dx**2 + dy**2)
-            theta = math.atan2(dy, dx) * 180 / math.pi
-            
-            total_angle += theta
-            total_distance += distance
-            
-            # Classify transition type
-            if abs(dx) > 0.3 and abs(dy) > 0.3:
-                trans_type = 'diagonal'
-            elif abs(dx) > 0.3:
-                trans_type = 'horizontal'
-            else:
-                trans_type = 'vertical'
-            
-            transitions.append({
-                'from_frame': prev['frame'],
-                'to_frame': curr['frame'],
-                'transition': f"{prev['quadrant']} → {curr['quadrant']}",
-                'type': trans_type,
-                'dx': round(dx, 4),
-                'dy': round(dy, 4),
-                'distance': round(distance, 4),
-                'theta_deg': round(theta, 2)
-            })
-        
-        # Cycle angular velocity
-        n_transitions = len(transitions)
-        cycle_period = n_transitions * dt
-        omega_cycle = total_angle / cycle_period if cycle_period > 0 else 0.0
-        
-        return {
-            'cycle_sequence': cycle_sequence,
-            'transitions': transitions,
-            'total_distance': round(total_distance, 4),
-            'total_angle_deg': round(total_angle, 2),
-            'cycle_period': round(cycle_period, 4),
-            'omega_cycle': round(omega_cycle, 2),
-            'rotation_sense': 'counter-clockwise',
-            'pattern': 'UL → UR → LL (diagonal counter-clockwise)',
-            'equation': 'ω_cycle = θ_total / (n × dt)',
-            'source': 'Grok UFT Orb Analysis_11 Diagonal Cycle (March 4, 2025)'
-        }
-
-
-class Orb11RefinedFUCalculator:
-    """
-    UFT Orb Analysis_11: Refined Unified Field F_U calculator.
-    
-    Computes the complete unified field equation refined with Photos #38-#40 data,
-    extending the temporal coverage to 1.17 s with 39 frames.
-    
-    Physics:
-        F_U = Σᵢ[kᵢ·Ugᵢ(r,t,Mₛ,ωₛ,Tₛ,Bₛ,SCm,UA,tₙ) - βᵢ·Ugᵢ·Ωg·(Mbh/dg)·E_react]
-              + Σⱼ[μⱼ/rⱼ·(1-e^(-γt·cos(πtₙ)))·φ̂ⱼ]
-              + (gμν + η·Tₛμν(UA,SCm,ρA))
-              
-    Parameters updated for 39-frame sequence:
-        r = 0.0889 m, Mₛ = 0.5 g, ωₛ = 2π×6000 rad/s
-        Tₛ = 366→288 K, Bₛ = 10⁻³ T, t_total = 1.17 s
-        
-    Source: Grok UFT Orb Analysis_11 (March 4, 2025)
-    """
-    
-    def compute(self, dataset: dict) -> dict:
-        r = dataset.get('r_reactor', ORB_ANALYSIS_11_PARAMS['r_reactor'])
-        M_s = dataset.get('M_s', ORB_ANALYSIS_11_PARAMS['M_s'])
-        omega_s = dataset.get('omega_s', ORB_ANALYSIS_11_PARAMS['omega_s'])
-        T_base = dataset.get('T_base', ORB_ANALYSIS_11_PARAMS['T_base'])
-        T_top = dataset.get('T_top', ORB_ANALYSIS_11_PARAMS['T_top'])
-        B_s = dataset.get('B_s', ORB_ANALYSIS_11_PARAMS['B_s'])
-        SCm = dataset.get('SCm', ORB_ANALYSIS_11_PARAMS['SCm'])
-        UA = dataset.get('UA', ORB_ANALYSIS_11_PARAMS['UA'])
-        t = dataset.get('t', 0.585)  # midpoint of 1.17 s sequence
-        gamma = dataset.get('gamma_decay', ORB_ANALYSIS_11_PARAMS['gamma_decay'])
-        E_react = dataset.get('E_react', ORB_ANALYSIS_11_PARAMS['E_react'])
-        
-        t_n = t  # normalized time
-        
-        # Ug_1: Internal dipole
-        k_1 = 1.5e-4
-        Ug1 = k_1 * (M_s / r) * math.exp(-gamma * t) * math.cos(math.pi * t_n) * (1 + 0.01 * math.sin(gamma * t))
-        
-        # Ug_2: Outer field bubble
-        k_2 = 1.2
-        Ug2 = k_2 * (UA + UA) * M_s / (r**2) * SCm * math.exp(-gamma * t)
-        
-        # Ug_3: Magnetic strings
-        k_3 = 1.8
-        Ug3 = k_3 * B_s * math.cos(omega_s * t * math.pi) * SCm * math.exp(-gamma * t)
-        
-        # Ub_i: Universal buoyancy
-        beta_i = 0.8
-        Omega_g = 7.3e-16  # rad/s
-        M_bh = 8.15e36     # kg (reference black hole mass)
-        d_g = 2.55e20      # m (galactic distance)
-        Ubi = -beta_i * (Ug1 + Ug2 + Ug3) * Omega_g * (M_bh / d_g) * E_react * math.cos(math.pi * t_n)
-        
-        # Um: Universal magnetism
-        mu_j = 1e-4
-        Um = (mu_j / r) * (1 - math.exp(-gamma * t * math.cos(math.pi * t_n))) * SCm * math.exp(-gamma * t)
-        
-        # A_μν: Cosmic Aether tensor contribution
-        eta = 1e-22
-        rho_A = 1e-23
-        A_munu = 1.0 + eta * (UA * SCm * rho_A) * t_n
-        
-        # Total F_U
-        F_U = Ug1 + Ug2 + Ug3 + Ubi + Um + A_munu
-        
-        return {
-            'Ug1': Ug1,
-            'Ug2': Ug2,
-            'Ug3': Ug3,
-            'Ubi': Ubi,
-            'Um': Um,
-            'A_munu': A_munu,
-            'F_U_total': F_U,
-            'parameters': {
-                'r': r, 'M_s': M_s, 'omega_s': omega_s,
-                'T_gradient': f'{T_base}→{T_top} K',
-                'B_s': B_s, 'SCm': SCm, 'UA': UA, 't': t
-            },
-            'equation': 'F_U = Σᵢ[kᵢ·Ugᵢ - βᵢ·Ugᵢ·Ωg·(Mbh/dg)·E_react] + Σⱼ[μⱼ/rⱼ·(1-e^(-γt·cos(πtₙ)))·φ̂ⱼ] + (gμν + η·Tₛμν)',
-            'source': 'Grok UFT Orb Analysis_11 Refined F_U (March 4, 2025)'
-        }
-
-
-class ExtendedCyclePatternAnalyzerCalculator:
-    """
-    UFT Orb Analysis_11: Extended cycle pattern analyzer calculator.
-    
-    Analyzes the extended cycle patterns across multiple Orb analysis sessions,
-    identifying recurring convection modes and transition frequencies.
-    Combines data from Orb_8 through Orb_11.
-    
-    Physics:
-        Cycle_frequency = n_complete_cycles / t_total
-        Dominant_mode = mode(transition_types)
-        Pattern_correlation = Σᵢ[θᵢ·θᵢ₊₁] / n
-        
-    Source: Grok UFT Orb Analysis_11 (March 4, 2025)
-    """
-    
-    def compute(self, dataset: dict) -> dict:
-        # Extended quadrant history from Orb_8 through Orb_11
-        full_sequence = dataset.get('full_sequence', [
-            # Orb_8: Photos #30-#31
-            {'frame': 30, 'quadrant': 'upper_right', 'orb': 8},
-            {'frame': 31, 'quadrant': 'lower_left', 'orb': 8},
-            # Orb_9: Photos #32-#34
-            {'frame': 32, 'quadrant': 'upper_left', 'orb': 9},
-            {'frame': 33, 'quadrant': 'upper_right', 'orb': 9},
-            {'frame': 34, 'quadrant': 'upper_right', 'orb': 9},
-            # Orb_10: Photos #35-#37
-            {'frame': 35, 'quadrant': 'lower_right', 'orb': 10},
-            {'frame': 36, 'quadrant': 'upper_left', 'orb': 10},
-            {'frame': 37, 'quadrant': 'upper_right', 'orb': 10},
-            # Orb_11: Photos #38-#40
-            {'frame': 38, 'quadrant': 'upper_left', 'orb': 11},
-            {'frame': 39, 'quadrant': 'upper_right', 'orb': 11},
-            {'frame': 40, 'quadrant': 'lower_left', 'orb': 11},
-        ])
-        
-        dt = dataset.get('dt_frame', ORB_ANALYSIS_11_PARAMS['dt_frame'])
-        
-        # Count transition types
-        transition_types = {}
-        quadrant_visits = {}
-        
-        for i in range(1, len(full_sequence)):
-            prev = full_sequence[i-1]['quadrant']
-            curr = full_sequence[i]['quadrant']
-            
-            # Count transitions
-            trans = f"{prev} → {curr}"
-            transition_types[trans] = transition_types.get(trans, 0) + 1
-            
-            # Count visits
-            quadrant_visits[curr] = quadrant_visits.get(curr, 0) + 1
-        
-        # First quadrant
-        quadrant_visits[full_sequence[0]['quadrant']] = quadrant_visits.get(
-            full_sequence[0]['quadrant'], 0) + 1
-        
-        # Find dominant patterns
-        dominant_transition = max(transition_types.items(), key=lambda x: x[1]) if transition_types else ('none', 0)
-        most_visited = max(quadrant_visits.items(), key=lambda x: x[1]) if quadrant_visits else ('none', 0)
-        
-        # Total frames and time
-        n_frames = len(full_sequence)
-        t_total = n_frames * dt
-        
-        # Transition frequency
-        n_transitions = len(full_sequence) - 1
-        trans_frequency = n_transitions / t_total if t_total > 0 else 0.0
-        
-        return {
-            'n_frames_analyzed': n_frames,
-            't_total': round(t_total, 4),
-            'n_transitions': n_transitions,
-            'transition_frequency': round(trans_frequency, 2),
-            'transition_types': transition_types,
-            'dominant_transition': dominant_transition[0],
-            'dominant_count': dominant_transition[1],
-            'quadrant_visits': quadrant_visits,
-            'most_visited_quadrant': most_visited[0],
-            'orb_sessions_covered': [8, 9, 10, 11],
-            'equation': 'f_trans = n_transitions / t_total',
-            'source': 'Grok UFT Orb Analysis_11 Extended Pattern (March 4, 2025)'
-        }
-
-
-class IntelligentPlasmoidBehaviorCalculator:
+class IntelligentPlasmoidBehaviorOrb11Calculator:
     """
     UFT Orb Analysis_11: Intelligent plasmoid behavior quantifier calculator.
     
@@ -1022,205 +251,7 @@ class IntelligentPlasmoidBehaviorCalculator:
         }
 
 
-class BulbDrivenPlasmaEnergeticsCalculator:
-    """
-    UFT Orb Analysis_11: 65W bulb-driven plasma energetics calculator.
-    
-    Models the energy input from the 65W incandescent bulb at the reactor bottom
-    and its influence on plasmoid dynamics. Calculates thermal/electromagnetic
-    coupling and energy transfer efficiency.
-    
-    Physics:
-        P_input = 65 W (bulb power)
-        E_thermal = P × t × η_thermal
-        E_EM = P × t × η_EM × (λ_IR / λ_total)
-        η_plasma = E_plasma / E_input
-        
-    Source: Grok UFT Orb Analysis_11 (March 4, 2025)
-    """
-    
-    def compute(self, dataset: dict) -> dict:
-        P_bulb = dataset.get('P_bulb', 65)  # W
-        t_total = dataset.get('t_total', ORB_ANALYSIS_11_PARAMS['total_time_orb11'])
-        eta_thermal = dataset.get('eta_thermal', 0.90)  # 90% to heat
-        eta_EM = dataset.get('eta_EM', 0.10)  # 10% to light
-        eta_IR = dataset.get('eta_IR', 0.60)  # 60% of light is IR
-        
-        # Total energy input
-        E_input = P_bulb * t_total
-        
-        # Thermal energy (heats oil)
-        E_thermal = E_input * eta_thermal
-        
-        # Electromagnetic energy (light output)
-        E_light = E_input * eta_EM
-        
-        # IR component (most relevant for plasma)
-        E_IR = E_light * eta_IR
-        
-        # Observed plasma energy
-        E_plasma_observed = ORB_ANALYSIS_11_PARAMS['E_total_orb11']
-        
-        # Overall plasma coupling efficiency
-        eta_plasma = E_plasma_observed / E_input if E_input > 0 else 0.0
-        
-        # Power density at plasma region
-        V_plasma = math.pi * (ORB_ANALYSIS_11_PARAMS['r_reactor'])**2 * 0.05  # 5 cm plasma height
-        P_density = P_bulb / V_plasma if V_plasma > 0 else 0.0
-        
-        return {
-            'P_bulb': P_bulb,
-            't_total': round(t_total, 4),
-            'E_input_total': round(E_input, 4),
-            'E_thermal': round(E_thermal, 4),
-            'E_light': round(E_light, 4),
-            'E_IR': round(E_IR, 4),
-            'E_plasma_observed': E_plasma_observed,
-            'eta_plasma_coupling': round(eta_plasma, 6),
-            'P_density_plasma': round(P_density, 2),
-            'efficiency_breakdown': {
-                'thermal': eta_thermal,
-                'EM': eta_EM,
-                'IR_fraction': eta_IR
-            },
-            'equation': 'η_plasma = E_plasma / (P × t)',
-            'source': 'Grok UFT Orb Analysis_11 Bulb Energetics (March 4, 2025)'
-        }
-
-
-class WaxCapCoolingDynamicsCalculator:
-    """
-    UFT Orb Analysis_11: Paraffin wax cap cooling dynamics calculator.
-    
-    Models the cooling effect of the 3-inch paraffin wax cap emulsified with
-    red mercury. The cap maintains viscosity at 180-215°F and provides the
-    thermal gradient that drives convection.
-    
-    Physics:
-        Q_cooling = m_wax × c_wax × ΔT
-        R_thermal = L / (k × A)
-        T(z) = T_base - (T_base - T_cap) × (z/L)
-        
-    Source: Grok UFT Orb Analysis_11 (March 4, 2025)
-    """
-    
-    def compute(self, dataset: dict) -> dict:
-        # Wax cap properties
-        h_cap = dataset.get('h_cap', 0.0762)  # m (3 in)
-        r_reactor = dataset.get('r_reactor', ORB_ANALYSIS_11_PARAMS['r_reactor'])
-        T_wax = dataset.get('T_wax', 370)  # K (~180-215°F average)
-        
-        # Thermal properties of paraffin wax
-        rho_wax = dataset.get('rho_wax', 900)  # kg/m³
-        c_wax = dataset.get('c_wax', 2900)  # J/(kg·K)
-        k_wax = dataset.get('k_wax', 0.25)  # W/(m·K)
-        
-        # Reactor temperatures
-        T_base = ORB_ANALYSIS_11_PARAMS['T_base']
-        T_top = ORB_ANALYSIS_11_PARAMS['T_top']
-        
-        # Cap volume and mass
-        V_cap = math.pi * r_reactor**2 * h_cap
-        m_cap = rho_wax * V_cap
-        
-        # Cross-sectional area
-        A_cross = math.pi * r_reactor**2
-        
-        # Thermal resistance of cap
-        R_thermal = h_cap / (k_wax * A_cross) if (k_wax * A_cross) > 0 else float('inf')
-        
-        # Heat flow through cap
-        Delta_T = T_wax - T_top
-        Q_dot = Delta_T / R_thermal if R_thermal > 0 else 0.0
-        
-        # Cooling capacity (energy stored in cap)
-        Q_capacity = m_cap * c_wax * (T_wax - T_top)
-        
-        # Temperature profile (linear approximation)
-        L_reactor = 0.254  # m (10 in)
-        z_positions = [0.0, 0.127, 0.254]
-        T_profile = [T_base - (T_base - T_top) * z / L_reactor for z in z_positions]
-        
-        return {
-            'h_cap': h_cap,
-            'm_cap': round(m_cap, 6),
-            'V_cap': round(V_cap, 8),
-            'T_wax': T_wax,
-            'R_thermal': round(R_thermal, 4),
-            'Q_dot_heat_flow': round(Q_dot, 4),
-            'Q_capacity': round(Q_capacity, 2),
-            'Delta_T_across_cap': Delta_T,
-            'T_profile': [{'z': z, 'T': round(T, 1)} for z, T in zip(z_positions, T_profile)],
-            'equation': 'Q̇ = ΔT / R_thermal, R = L/(k×A)',
-            'source': 'Grok UFT Orb Analysis_11 Wax Cap Cooling (March 4, 2025)'
-        }
-
-
-class FieldGeneratorResonanceCouplingCalculator:
-    """
-    UFT Orb Analysis_11: Field generator resonance coupling calculator.
-    
-    Models the 6000 Hz field resonance and its coupling to plasmoid dynamics.
-    The resonance drives the "flapping" behavior observed in the Field Generator
-    Experiment and influences [Ug3] and [Um] components.
-    
-    Physics:
-        f_resonance = 6000 Hz
-        ω = 2π × f
-        E_resonance = ½ × L_eff × I² × sin²(ωt)
-        Coupling = k_coupling × [Ug3 + Um] × cos(ωt)
-        
-    Source: Grok UFT Orb Analysis_11 (March 4, 2025)
-    """
-    
-    def compute(self, dataset: dict) -> dict:
-        f_resonance = dataset.get('f_resonance', 6000)  # Hz
-        omega = 2 * math.pi * f_resonance
-        t = dataset.get('t', 0.5)  # sample time
-        
-        # Effective inductance (from hydrogen bubble array)
-        L_eff = dataset.get('L_eff', 1e-6)  # H (approximate)
-        I_peak = dataset.get('I_peak', 0.1)  # A (approximate current)
-        
-        # Resonance energy
-        E_resonance = 0.5 * L_eff * I_peak**2 * (math.sin(omega * t))**2
-        
-        # Field coupling coefficients
-        k_coupling = 1e-10
-        B_s = ORB_ANALYSIS_11_PARAMS['B_s']
-        SCm = ORB_ANALYSIS_11_PARAMS['SCm']
-        gamma = ORB_ANALYSIS_11_PARAMS['gamma_decay']
-        
-        # Ug3 + Um contribution
-        k_3 = 1.8
-        Ug3 = k_3 * B_s * math.cos(omega * t * math.pi) * SCm * math.exp(-gamma * t)
-        
-        mu_j = 1e-4
-        r = ORB_ANALYSIS_11_PARAMS['r_reactor']
-        Um = (mu_j / r) * (1 - math.exp(-gamma * t)) * SCm * math.exp(-gamma * t)
-        
-        # Coupling strength
-        Coupling = k_coupling * (Ug3 + Um) * math.cos(omega * t)
-        
-        # Flapping amplitude estimate
-        A_flap = abs(Coupling) * 1e3  # normalized
-        
-        return {
-            'f_resonance': f_resonance,
-            'omega': round(omega, 2),
-            'E_resonance': E_resonance,
-            'L_eff': L_eff,
-            'I_peak': I_peak,
-            'Ug3': Ug3,
-            'Um': Um,
-            'Coupling_strength': Coupling,
-            'A_flap_normalized': round(A_flap, 6),
-            'equation': 'Coupling = k×[Ug3+Um]×cos(ωt)',
-            'source': 'Grok UFT Orb Analysis_11 Resonance Coupling (March 4, 2025)'
-        }
-
-
-class TotalEnergyBudgetCalculator:
+class TotalEnergyBudgetOrb11Calculator:
     """
     UFT Orb Analysis_11: Total energy budget calculator.
     
@@ -1283,15 +314,8 @@ class TotalEnergyBudgetCalculator:
 
 # UFT Orb Analysis_11 registry dict
 ORB_ANALYSIS_11_CALCULATORS = {
-    'ThirtyNineFrameSequenceCalculator': ThirtyNineFrameSequenceCalculator(),
-    'CounterClockwiseDiagonalCycleCalculator': CounterClockwiseDiagonalCycleCalculator(),
-    'Orb11RefinedFUCalculator': Orb11RefinedFUCalculator(),
-    'ExtendedCyclePatternAnalyzerCalculator': ExtendedCyclePatternAnalyzerCalculator(),
-    'IntelligentPlasmoidBehaviorCalculator': IntelligentPlasmoidBehaviorCalculator(),
-    'BulbDrivenPlasmaEnergeticsCalculator': BulbDrivenPlasmaEnergeticsCalculator(),
-    'WaxCapCoolingDynamicsCalculator': WaxCapCoolingDynamicsCalculator(),
-    'FieldGeneratorResonanceCouplingCalculator': FieldGeneratorResonanceCouplingCalculator(),
-    'TotalEnergyBudgetCalculator': TotalEnergyBudgetCalculator(),
+    'IntelligentPlasmoidBehaviorOrb11Calculator': IntelligentPlasmoidBehaviorOrb11Calculator(),
+    'TotalEnergyBudgetOrb11Calculator': TotalEnergyBudgetOrb11Calculator(),
 }
 
 
@@ -7960,7 +6984,7 @@ class DualNatureSCmCalculator:
         }
 
 
-class NegativeTimeOperatorCalculator:
+class NegativeTimeOperatorExpCalculator:
     """
     Negative Time t^- Operator Calculator
     
@@ -8617,7 +7641,7 @@ class AtomicTransmutationCalculator:
 # UFT Orb Analysis_22 registry dict
 ORB_ANALYSIS_22_CALCULATORS = {
     'DualNatureSCmCalculator': DualNatureSCmCalculator(),
-    'NegativeTimeOperatorCalculator': NegativeTimeOperatorCalculator(),
+    'NegativeTimeOperatorExpCalculator': NegativeTimeOperatorExpCalculator(),
     'UniversalPermanenceCalculator': UniversalPermanenceCalculator(),
     'InertialForceOperatorCalculator': InertialForceOperatorCalculator(),
     'VacuumStressCalculator': VacuumStressCalculator(),
@@ -11091,7 +10115,7 @@ class Benchmark2ProgressCalculator:
         }
 
 
-class NegativeTimeCalculator:
+class NegativeTimeUPCalculator:
     """
     Negative time (t^-) calculator for Universal Permanence equation.
     t^- = -t_n × e^(π - t_n)
@@ -11363,7 +10387,7 @@ ORB_ANALYSIS_27_CALCULATORS = {
     'Batch35FrameTrackerCalculator': Batch35FrameTrackerCalculator(),
     'SCmPrimeMasslessFactorCalculator': SCmPrimeMasslessFactorCalculator(),
     'Benchmark2ProgressCalculator': Benchmark2ProgressCalculator(),
-    'NegativeTimeCalculator': NegativeTimeCalculator(),
+    'NegativeTimeUPCalculator': NegativeTimeUPCalculator(),
     'UniversalPermanenceEquationCalculator': UniversalPermanenceEquationCalculator(),
     'ACEDCEFieldGeneratorCalculator': ACEDCEFieldGeneratorCalculator(),
     'NonLocalNetworkEnergyCalculator': NonLocalNetworkEnergyCalculator(),
@@ -12802,7 +11826,7 @@ class Batch37ProgressCalculator:
         }
 
 
-class NegativeTimeCalculator:
+class NegativeTimeUPCalculator:
     """
     Calculate negative time t⁻ (retrocausal component).
     Equation: t⁻ = -t_n · e^(π - t_n)
@@ -13171,7 +12195,7 @@ class UniversalPermanenceCalculator:
 # Registry for Orb Analysis 31 calculators
 ORB_ANALYSIS_31_CALCULATORS = {
     'Batch37ProgressCalculator': Batch37ProgressCalculator(),
-    'NegativeTimeCalculator': NegativeTimeCalculator(),
+    'NegativeTimeUPCalculator': NegativeTimeUPCalculator(),
     'GravitationalConstantKCalculator': GravitationalConstantKCalculator(),
     'MagneticConstantMuCalculator': MagneticConstantMuCalculator(),
     'TemperatureStressEnergyCalculator': TemperatureStressEnergyCalculator(),
@@ -16508,7 +15532,7 @@ class SystemSpecificTermsCalculator:
         }
 
 
-class HydrogenResonanceCalculator:
+class HydrogenResonanceOrb36Calculator:
     """
     Calculator for Hydrogen Resonance equation (non-gravitational UQFF).
     
@@ -16903,7 +15927,7 @@ ORB_ANALYSIS_36_CALCULATORS = {
     'ExternalGravityUg3PrimeCalculator': ExternalGravityUg3PrimeCalculator(),
     'PsiTotalWaveFunctionCalculator': PsiTotalWaveFunctionCalculator(),
     'SystemSpecificTermsCalculator': SystemSpecificTermsCalculator(),
-    'HydrogenResonanceCalculator': HydrogenResonanceCalculator(),
+    'HydrogenResonanceOrb36Calculator': HydrogenResonanceOrb36Calculator(),
     'GravitySinceBigBangCalculator': GravitySinceBigBangCalculator(),
     'MUGEUnificationCalculator': MUGEUnificationCalculator(),
     'ScaleRangeValidatorCalculator': ScaleRangeValidatorCalculator(),
@@ -16960,27 +15984,13 @@ __all__ = [
     
     # Orb Analysis_10 (8 classes)
     'ORB_ANALYSIS_10_PARAMS',
-    'ThirtySixFrameSequenceCalculator',
-    'CyclicalConvectionPatternCalculator',
-    'Orb10RefinedFUCalculator',
-    'SpookyActionNonLocalTransferCalculator',
-    'ThermalGradientDrivenDynamicsCalculator',
-    'QuadrantTransitionTrackerCalculator',
-    'ACEDCEModulatedEnergyCalculator',
-    'MagneticBubbleConfinementCalculator',
+    'MagneticBubbleConfinementOrb10Calculator',
     'ORB_ANALYSIS_10_CALCULATORS',
     
     # Orb Analysis_11 (9 classes)
     'ORB_ANALYSIS_11_PARAMS',
-    'ThirtyNineFrameSequenceCalculator',
-    'CounterClockwiseDiagonalCycleCalculator',
-    'Orb11RefinedFUCalculator',
-    'ExtendedCyclePatternAnalyzerCalculator',
-    'IntelligentPlasmoidBehaviorCalculator',
-    'BulbDrivenPlasmaEnergeticsCalculator',
-    'WaxCapCoolingDynamicsCalculator',
-    'FieldGeneratorResonanceCouplingCalculator',
-    'TotalEnergyBudgetCalculator',
+    'IntelligentPlasmoidBehaviorOrb11Calculator',
+    'TotalEnergyBudgetOrb11Calculator',
     'ORB_ANALYSIS_11_CALCULATORS',
     
     # Orb Analysis_12 (7 classes)
@@ -17098,7 +16108,7 @@ __all__ = [
     # Orb Analysis_22 / UFE ORB EXP 2_8 - Universal Permanence Framework (10 classes)
     'ORB_ANALYSIS_22_PARAMS',
     'DualNatureSCmCalculator',
-    'NegativeTimeOperatorCalculator',
+    'NegativeTimeOperatorExpCalculator',
     'UniversalPermanenceCalculator',
     'InertialForceOperatorCalculator',
     'VacuumStressCalculator',
@@ -17163,7 +16173,7 @@ __all__ = [
     'Batch35FrameTrackerCalculator',
     'SCmPrimeMasslessFactorCalculator',
     'Benchmark2ProgressCalculator',
-    'NegativeTimeCalculator',
+    'NegativeTimeUPCalculator',
     'UniversalPermanenceEquationCalculator',
     'ACEDCEFieldGeneratorCalculator',
     'NonLocalNetworkEnergyCalculator',
@@ -17210,7 +16220,7 @@ __all__ = [
     # Orb Analysis_31 / UFE ORB EXP 2_21 - Universal Permanence Variables (10 classes)
     'ORB_ANALYSIS_31_PARAMS',
     'Batch37ProgressCalculator',
-    'NegativeTimeCalculator',
+    'NegativeTimeUPCalculator',
     'GravitationalConstantKCalculator',
     'MagneticConstantMuCalculator',
     'TemperatureStressEnergyCalculator',
@@ -17285,7 +16295,7 @@ __all__ = [
     'ExternalGravityUg3PrimeCalculator',
     'PsiTotalWaveFunctionCalculator',
     'SystemSpecificTermsCalculator',
-    'HydrogenResonanceCalculator',
+    'HydrogenResonanceOrb36Calculator',
     'GravitySinceBigBangCalculator',
     'MUGEUnificationCalculator',
     'ScaleRangeValidatorCalculator',
