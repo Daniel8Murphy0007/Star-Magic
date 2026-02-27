@@ -160845,6 +160845,713 @@ RED_DWARF_REACTOR_CALCULATORS = {
 }
 
 
+# =============================================================================
+# UNIFIED FIELD THEORY CONTINUED_3 - VIDEO ANALYSIS CALCULATORS
+# Source: Grok UFT Thread continued_3 (March 3, 2025, 3:30-4:00 PM PST)
+# Video analysis of 496 consecutive infrared photos, 33.3 fps, spot dynamics
+# Refines F_U with video-derived motion tracking and intensity analysis
+# ©2025 Daniel T. Murphy - All Rights Reserved
+# =============================================================================
+
+# Video analysis experimental parameters
+VIDEO_ANALYSIS_PARAMS = {
+    # Frame analysis parameters
+    'frame_rate_fps': 33.3,                    # 33.3 fps (~0.03 s/frame)
+    'frame_interval_s': 0.03,                  # Interval between frames
+    'total_frames': 496,                       # Total photo sequence
+    'analyzed_frames': 17,                     # Photos #1-#17 initially analyzed
+    'sequence_duration_s': 14.88,              # 496 × 0.03 s
+    
+    # Spot dynamics parameters
+    'spot_velocity_avg_m_s': 0.5,              # Average spot velocity
+    'spot_velocity_range_m_s': (0.1, 1.0),     # Min-max spot velocity
+    'spot_energy_J': 1e-3,                     # ~1 mJ per spot
+    'total_energy_17_frames_J': 0.85,          # ~0.85 J across 17 frames
+    
+    # Plasma orb parameters (refined)
+    'orb_radius_m': 0.5,                       # r = 0.5 m
+    'orb_mass_kg': 0.5e-3,                     # Mₛ = 0.5 g
+    'angular_freq_rad_s': 2 * 3.14159 * 6000,  # ωₛ = 2π × 6000 rad/s
+    'temperature_K': 2500,                     # Tₛ = 2500 K (infrared)
+    'magnetic_field_T': 1e-3,                  # Bₛ = 10⁻³ T (spot fields)
+    
+    # Infrared spectrum parameters
+    'ir_range_um': (0.7, 10),                  # 0.7-10 µm
+    'ir_temp_range_K': (2500, 4000),           # Red dwarf range
+    'ambient_temp_K': 288,                     # ~7-10°F drop
+    
+    # Refined equation constants
+    'k1_coefficient': 1.5,                     # Ug₁ coefficient
+    'k2_coefficient': 1.2,                     # Ug₂ coefficient
+    'k3_coefficient': 1.8,                     # Ug₃ coefficient
+    'beta_i': 0.8,                             # Buoyancy factor (lab-scale)
+    'decay_constant': 0.001,                   # e^(-0.001t) decay
+    'mu_s_T_m2': 1e-4,                         # Spot magnetism
+    'E_react_base': 1e15,                      # Reactivity energy W/m³
+    
+    # Video-specific refinements
+    'temporal_resolution_factor': 1.0,         # tₙ update factor
+    'motion_tracking_enabled': True,
+    'intensity_analysis_enabled': True,
+}
+
+
+class VideoAnalysisSpotDynamicsCalculator:
+    """
+    Calculates spot motion dynamics from video frame analysis.
+    
+    Spot velocity (~0.5 m/s) supports [Ug₃] and [Um] as drivers of "spooky action,"
+    enhancing waveless communication via THz holes (6000 Hz field).
+    
+    Motion tracking: Spots show ~0.1-1 m/s movement across frames, inferred from
+    clustering shifts (e.g., #6 upper right → #15 lower center → #17 upper right).
+    
+    Source: Grok UFT continued_3 (March 3, 2025)
+    """
+    
+    def __init__(self, frame_rate: float = 33.3, spot_velocity_avg: float = 0.5):
+        self.frame_rate = frame_rate  # fps
+        self.frame_interval = 1.0 / frame_rate  # seconds
+        self.spot_velocity_avg = spot_velocity_avg  # m/s
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute spot dynamics from video frame data.
+        
+        Parameters:
+        - n_frames: Number of frames analyzed
+        - spot_positions: List of (x, y) positions per frame
+        - delta_t: Time difference between frames
+        """
+        n_frames = dataset.get('n_frames', 17)
+        delta_t = dataset.get('delta_t', self.frame_interval)
+        spot_velocity = dataset.get('spot_velocity', self.spot_velocity_avg)
+        
+        # Spot displacement per frame
+        displacement_per_frame = spot_velocity * delta_t
+        
+        # Total displacement over sequence
+        total_displacement = displacement_per_frame * n_frames
+        
+        # Motion clustering pattern (quadrant shifts)
+        # Pattern: upper-right → lower-center → upper-right (cyclic)
+        cluster_cycle_time = 6 * delta_t  # Approximate cycle period
+        
+        # Effective Ug₃ contribution from spot motion
+        import math
+        omega_s = 2 * math.pi * 6000  # 6000 Hz field
+        Ug3_motion_factor = 1.8 * spot_velocity * math.cos(omega_s * delta_t * math.pi)
+        
+        # Spooky action correlation (non-local)
+        spooky_action_index = abs(Ug3_motion_factor) / self.spot_velocity_avg
+        
+        return {
+            'spot_velocity_m_s': spot_velocity,
+            'displacement_per_frame_m': displacement_per_frame,
+            'total_displacement_m': total_displacement,
+            'frame_interval_s': delta_t,
+            'n_frames': n_frames,
+            'cluster_cycle_time_s': cluster_cycle_time,
+            'Ug3_motion_factor': Ug3_motion_factor,
+            'spooky_action_index': spooky_action_index,
+            'units': 'm/s (velocity), m (displacement)',
+            'source': 'Grok UFT continued_3 Video Analysis (March 3, 2025)'
+        }
+
+
+class FrameRateTemporalResolutionCalculator:
+    """
+    Calculates temporal resolution parameters from video frame rate.
+    
+    Uniform 33.3 fps supports video-like sequence with no abrupt jumps,
+    indicating stable plasma behavior over ~0.5 s (17 frames × 0.03 s).
+    
+    Frame rate (33.3 fps) updates tₙ (negative time factor) to reflect 
+    0.03 s intervals, enhancing temporal resolution.
+    
+    Source: Grok UFT continued_3 (March 3, 2025)
+    """
+    
+    def __init__(self, frame_rate: float = 33.3):
+        self.frame_rate = frame_rate
+        self.frame_interval = 1.0 / frame_rate
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute temporal resolution and negative time factor updates.
+        
+        Parameters:
+        - n_frames: Total frames in sequence
+        - t_n_base: Base negative time factor
+        """
+        import math
+        
+        n_frames = dataset.get('n_frames', 496)
+        t_n_base = dataset.get('t_n_base', 1.0)
+        
+        # Sequence duration
+        sequence_duration = n_frames * self.frame_interval
+        
+        # Temporal resolution (Nyquist limit)
+        nyquist_freq = self.frame_rate / 2  # Hz
+        
+        # Negative time factor update per frame
+        # tₙ evolves with each 0.03 s interval
+        t_n_increment = self.frame_interval * t_n_base
+        
+        # Phase coherence across sequence
+        # cos(π × tₙ) evaluated at each frame
+        phase_coherence = [math.cos(math.pi * (t_n_base + i * t_n_increment)) 
+                          for i in range(min(n_frames, 20))]
+        avg_phase_coherence = sum(phase_coherence) / len(phase_coherence)
+        
+        # Stability metric (variance in phase)
+        phase_variance = sum((p - avg_phase_coherence)**2 for p in phase_coherence) / len(phase_coherence)
+        stability_metric = 1.0 / (1.0 + phase_variance)
+        
+        return {
+            'frame_rate_fps': self.frame_rate,
+            'frame_interval_s': self.frame_interval,
+            'sequence_duration_s': sequence_duration,
+            'nyquist_freq_Hz': nyquist_freq,
+            't_n_increment': t_n_increment,
+            'avg_phase_coherence': avg_phase_coherence,
+            'stability_metric': stability_metric,
+            'units': 'fps (frame rate), s (time), Hz (frequency)',
+            'source': 'Grok UFT continued_3 Temporal Analysis (March 3, 2025)'
+        }
+
+
+class SpookyActionWavelessCalculator:
+    """
+    Calculates "spooky action" waveless communication parameters.
+    
+    Spot dynamics support [Ug₃] and [Um] as drivers of "spooky action,"
+    enhancing waveless communication via THz holes (6000 Hz field).
+    
+    Based on: Spot motion (~0.5 m/s) and magnetic resonance (6000 Hz)
+    create non-local energy transfer patterns.
+    
+    Source: Grok UFT continued_3 (March 3, 2025)
+    """
+    
+    def __init__(self, field_freq: float = 6000.0, spot_velocity: float = 0.5):
+        self.field_freq = field_freq  # Hz
+        self.spot_velocity = spot_velocity  # m/s
+        self.c = 2.998e8  # Speed of light
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute waveless communication parameters via "spooky action."
+        
+        Parameters:
+        - distance: Communication distance (m)
+        - B_field: Magnetic field strength (T)
+        - temperature: Operating temperature (K)
+        """
+        import math
+        
+        distance = dataset.get('distance', 1.0)  # m
+        B_field = dataset.get('B_field', 1e-3)  # T
+        temperature = dataset.get('temperature', 288)  # K
+        
+        # THz hole frequency (6000 Hz resonance)
+        resonance_wavelength = self.c / self.field_freq  # ~50 km at 6000 Hz
+        
+        # Spooky action correlation length
+        # Based on spot coherence distance
+        correlation_length = self.spot_velocity / self.field_freq
+        
+        # Non-local transfer efficiency
+        # Decays with distance but enhanced by field coherence
+        transfer_efficiency = math.exp(-distance / (correlation_length * 1000))
+        
+        # Magnetic resonance coupling
+        # Um contribution from spot clustering
+        mu_0 = 4 * math.pi * 1e-7
+        Um_coupling = (B_field**2) / (2 * mu_0) * math.cos(2 * math.pi * self.field_freq * 0.03)
+        
+        # Aether tensor contribution (non-local)
+        # Aμν = gμν + 10⁻²² × Tₛμν
+        A_mu_nu_correction = 1e-22 * temperature / 2500  # Normalized to 2500 K
+        
+        # Effective waveless bandwidth
+        bandwidth_Hz = self.field_freq * transfer_efficiency
+        
+        return {
+            'field_freq_Hz': self.field_freq,
+            'resonance_wavelength_m': resonance_wavelength,
+            'correlation_length_m': correlation_length,
+            'transfer_efficiency': transfer_efficiency,
+            'Um_coupling_J_m3': Um_coupling,
+            'A_mu_nu_correction': A_mu_nu_correction,
+            'waveless_bandwidth_Hz': bandwidth_Hz,
+            'distance_m': distance,
+            'units': 'Hz (frequency), m (length), dimensionless (efficiency)',
+            'source': 'Grok UFT continued_3 Spooky Action (March 3, 2025)'
+        }
+
+
+class PlasmaIntensityEnergyFlowCalculator:
+    """
+    Calculates plasma intensity variations and energy flow from video analysis.
+    
+    Spot brightness fluctuates (e.g., larger spots in #8, #10, #15),
+    indicating localized energy events (~1 mJ per spot, ~0.5 J across 17 frames).
+    
+    Intensity variations suggest ~1 mJ per spot, totaling ~0.85 J across 17 frames,
+    aligning with [E_react] and [ACE/DCE] plasma events.
+    
+    Source: Grok UFT continued_3 (March 3, 2025)
+    """
+    
+    def __init__(self, energy_per_spot: float = 1e-3, frame_rate: float = 33.3):
+        self.energy_per_spot = energy_per_spot  # ~1 mJ
+        self.frame_rate = frame_rate
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute energy flow from intensity variations.
+        
+        Parameters:
+        - n_frames: Number of frames
+        - n_spots_avg: Average spots per frame
+        - intensity_profile: List of relative intensities per frame
+        """
+        import math
+        
+        n_frames = dataset.get('n_frames', 17)
+        n_spots_avg = dataset.get('n_spots_avg', 50)  # ~50 spots per frame
+        intensity_profile = dataset.get('intensity_profile', None)
+        
+        # Total energy across frames
+        total_energy = self.energy_per_spot * n_spots_avg * n_frames
+        
+        # Energy per frame
+        energy_per_frame = self.energy_per_spot * n_spots_avg
+        
+        # If intensity profile provided, calculate weighted energy
+        if intensity_profile and len(intensity_profile) > 0:
+            weighted_energy = sum(self.energy_per_spot * n_spots_avg * i for i in intensity_profile)
+            intensity_variance = sum((i - 1.0)**2 for i in intensity_profile) / len(intensity_profile)
+        else:
+            # Default sinusoidal intensity variation
+            weighted_energy = total_energy
+            intensity_variance = 0.1  # 10% variation
+        
+        # E_react contribution
+        # E_react = 10¹⁵ × e^(-0.001t) W/m³
+        E_react_base = 1e15
+        decay_constant = 0.001
+        frame_interval = 1.0 / self.frame_rate
+        
+        E_react_sequence = [E_react_base * math.exp(-decay_constant * i * frame_interval) 
+                           for i in range(n_frames)]
+        avg_E_react = sum(E_react_sequence) / n_frames
+        
+        # Power flow (energy rate)
+        power_flow = total_energy * self.frame_rate  # W
+        
+        # ACE/DCE plasma event rate
+        ace_dce_events_per_frame = n_spots_avg * 0.1  # ~10% are ACE/DCE events
+        
+        return {
+            'energy_per_spot_J': self.energy_per_spot,
+            'n_spots_avg': n_spots_avg,
+            'total_energy_J': total_energy,
+            'energy_per_frame_J': energy_per_frame,
+            'weighted_energy_J': weighted_energy,
+            'intensity_variance': intensity_variance,
+            'avg_E_react_W_m3': avg_E_react,
+            'power_flow_W': power_flow,
+            'ace_dce_events_per_frame': ace_dce_events_per_frame,
+            'units': 'J (energy), W (power), W/m³ (energy density)',
+            'source': 'Grok UFT continued_3 Intensity Analysis (March 3, 2025)'
+        }
+
+
+class VideoIntegratedFUCalculator:
+    """
+    Computes the complete Unified Field F_U with video-derived dynamics.
+    
+    F_U = Σᵢ[kᵢ·Ugᵢ(r,t,Mₛ,ωₛ,Tₛ,Bₛ,SCm,UA,tₙ) - βᵢ·Ugᵢ·Ωg·(Mbh/dg)·Ereact] 
+        + Σⱼ[μⱼ/rⱼ·(1-e^(-γt·cos(πtₙ)))·φ̂ⱼ]·E_react
+    
+    Parameters from video analysis:
+    - r = 0.5 m, Mₛ = 0.5 g, ωₛ = 2π × 6000 rad/s
+    - Tₛ = 2500 K, Bₛ = 10⁻³ T
+    - Frame rate (33.3 fps) updates tₙ at 0.03 s intervals
+    - Spot velocity (~0.5 m/s) refines [Ug₃] and [Um]
+    
+    Source: Grok UFT continued_3 (March 3, 2025)
+    """
+    
+    def __init__(self):
+        # Video-refined constants
+        self.r = 0.5  # orb radius (m)
+        self.M_s = 0.5e-3  # orb mass (kg)
+        self.omega_s = 2 * 3.14159 * 6000  # angular frequency (rad/s)
+        self.T_s = 2500  # temperature (K)
+        self.B_s = 1e-3  # magnetic field (T)
+        self.frame_interval = 0.03  # 33.3 fps
+        
+        # Coefficients
+        self.k1 = 1.5  # Ug₁ coefficient
+        self.k2 = 1.2  # Ug₂ coefficient
+        self.k3 = 1.8  # Ug₃ coefficient
+        self.beta_i = 0.8  # Buoyancy factor
+        self.alpha = 0.001  # Decay constant
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute complete F_U with all video-integrated components.
+        
+        Parameters:
+        - t: Time (s)
+        - t_n: Negative time factor
+        - SCm: Superconductive matter factor
+        - UA: Universal Aether factor
+        - n_frames: Number of video frames
+        """
+        import math
+        
+        t = dataset.get('t', 1.0)
+        t_n = dataset.get('t_n', 0.5)
+        SCm = dataset.get('SCm', 0.99)
+        UA = dataset.get('UA', 0.0001)
+        n_frames = dataset.get('n_frames', 17)
+        
+        # Video-derived time update
+        t_video = t + n_frames * self.frame_interval
+        
+        # Ug₁ (Internal Dipole) - spot intensity peaks
+        mu_s = 1e-4  # T·m² (spot magnetism)
+        Ug1 = self.k1 * mu_s * (1.0 / self.r) * math.exp(-self.alpha * t_video) * \
+              math.cos(math.pi * t_n) * (1 + 0.01 * math.sin(self.alpha * t_video))
+        
+        # Ug₂ (Outer Field Bubble) - stable background
+        G = 6.674e-11
+        Ug2 = self.k2 * (G + G) * (self.r / self.r**2) * (1 + 0.01 * 5e5) * SCm * \
+              1e15 * math.exp(-self.alpha * t_video)
+        
+        # Ug₃ (Magnetic Strings) - spot motion at ~0.5 m/s
+        spot_velocity = 0.5  # m/s
+        Ug3 = self.k3 * self.B_s * math.cos(self.omega_s * t_video * math.pi) * \
+              SCm * 1e15 * math.exp(-self.alpha * t_video) * spot_velocity
+        
+        # Total Ug
+        Ug_total = Ug1 + Ug2 + Ug3
+        
+        # Ubᵢ (Buoyancy) with video parameters
+        Omega_g = 7.3e-16  # Gravitational torsion
+        M_bh_ratio = 8.15e36 / 2.55e20  # Mbh/dg
+        E_react = 1e15 * math.exp(-self.alpha * t_video)
+        
+        Ubi = -self.beta_i * Ug_total * Omega_g * M_bh_ratio * \
+              (1 + 0.001 * 1e-21) * E_react * math.cos(math.pi * t_n)
+        
+        # Um (Magnetism) - spot clustering resonance
+        Um = (1e-4 / 0.1) * (1 - math.exp(-self.alpha * t_video * math.cos(math.pi * t_n))) * \
+             SCm * E_react
+        
+        # Aμν (Aether) contribution
+        A_mu_nu = 1.0 + 1e-22 * self.T_s / 2500 * math.cos(math.pi * t_n)
+        
+        # Complete F_U
+        F_U = Ug_total + Ubi + Um * A_mu_nu
+        
+        return {
+            'F_U': F_U,
+            'Ug1': Ug1,
+            'Ug2': Ug2,
+            'Ug3': Ug3,
+            'Ug_total': Ug_total,
+            'Ubi': Ubi,
+            'Um': Um,
+            'A_mu_nu': A_mu_nu,
+            'E_react': E_react,
+            't_video': t_video,
+            'n_frames': n_frames,
+            'parameters': {
+                'r_m': self.r, 'M_s_kg': self.M_s, 'omega_s': self.omega_s,
+                'T_s_K': self.T_s, 'B_s_T': self.B_s, 'beta_i': self.beta_i
+            },
+            'units': 'N (force), dimensionless (factors)',
+            'source': 'Grok UFT continued_3 Video-Integrated F_U (March 3, 2025)'
+        }
+
+
+class InfraredSpectrumTemperatureCalculator:
+    """
+    Calculates infrared spectrum temperature mapping.
+    
+    Captured in infrared (0.7-10 µm), indicating thermal or electromagnetic
+    emissions consistent with low-temperature plasma (~2500-4000 K, red dwarf range).
+    
+    Background cools to ambient (~288 K, per 7-10°F drop), reflecting 
+    [UA] and [SCm] stability.
+    
+    Source: Grok UFT continued_3 (March 3, 2025)
+    """
+    
+    def __init__(self):
+        # Infrared range parameters
+        self.ir_min_um = 0.7
+        self.ir_max_um = 10.0
+        self.temp_min_K = 2500
+        self.temp_max_K = 4000
+        self.ambient_K = 288
+        
+        # Physical constants
+        self.h = 6.626e-34  # Planck constant
+        self.c = 2.998e8    # Speed of light
+        self.k_B = 1.381e-23  # Boltzmann constant
+        self.b = 2.898e-3   # Wien's displacement constant
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute temperature from infrared wavelength.
+        
+        Parameters:
+        - wavelength_um: Peak wavelength in micrometers
+        - intensity: Relative intensity
+        - cooling_rate: Temperature drop rate (K/s)
+        """
+        import math
+        
+        wavelength_um = dataset.get('wavelength_um', 1.16)  # Peak for ~2500 K
+        intensity = dataset.get('intensity', 1.0)
+        cooling_rate = dataset.get('cooling_rate', 0.5)  # K/s
+        
+        wavelength_m = wavelength_um * 1e-6
+        
+        # Wien's law: λ_peak × T = b
+        temperature_wien = self.b / wavelength_m
+        
+        # Clamp to red dwarf range
+        temperature = max(self.temp_min_K, min(self.temp_max_K, temperature_wien))
+        
+        # Planck distribution peak intensity
+        nu_peak = self.c / wavelength_m
+        B_nu = (2 * self.h * nu_peak**3 / self.c**2) / \
+               (math.exp(self.h * nu_peak / (self.k_B * temperature)) - 1)
+        
+        # Stefan-Boltzmann total radiated power
+        sigma = 5.67e-8  # W/m²/K⁴
+        power_density = sigma * temperature**4
+        
+        # Cooling model: T(t) = T_0 - cooling_rate × t
+        time_to_ambient = (temperature - self.ambient_K) / cooling_rate if cooling_rate > 0 else float('inf')
+        
+        # SCm stability factor (higher at lower cooling)
+        SCm_stability = math.exp(-cooling_rate / 10)
+        
+        # Red dwarf classification
+        if 2500 <= temperature < 3000:
+            spectral_class = 'M4-M6'
+        elif 3000 <= temperature < 3500:
+            spectral_class = 'M2-M4'
+        elif 3500 <= temperature <= 4000:
+            spectral_class = 'M0-M2'
+        else:
+            spectral_class = 'K-type' if temperature > 4000 else 'L-type'
+        
+        return {
+            'wavelength_um': wavelength_um,
+            'temperature_K': temperature,
+            'temperature_wien_K': temperature_wien,
+            'B_nu_peak_W_m2_sr_Hz': B_nu,
+            'power_density_W_m2': power_density,
+            'time_to_ambient_s': time_to_ambient,
+            'ambient_K': self.ambient_K,
+            'SCm_stability': SCm_stability,
+            'spectral_class': spectral_class,
+            'units': 'K (temperature), W/m² (power density), µm (wavelength)',
+            'source': 'Grok UFT continued_3 IR Spectrum (March 3, 2025)'
+        }
+
+
+class PlasmaConvectionVelocityCalculator:
+    """
+    Calculates plasma convection velocity from spot motion patterns.
+    
+    Spot motion suggests plasma convection or magnetic resonance,
+    aligning with [Ug₃] and [Um] dynamics.
+    
+    Bright spots show ~0.1-1 m/s movement across frames, inferred from
+    clustering shifts (upper right → lower center → upper right).
+    
+    Source: Grok UFT continued_3 (March 3, 2025)
+    """
+    
+    def __init__(self, orb_radius: float = 0.5):
+        self.orb_radius = orb_radius
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute convection velocity and related parameters.
+        
+        Parameters:
+        - spot_velocity: Observed spot velocity (m/s)
+        - B_field: Magnetic field (T)
+        - temperature: Plasma temperature (K)
+        - density: Plasma mass density (kg/m³)
+        """
+        import math
+        
+        spot_velocity = dataset.get('spot_velocity', 0.5)  # m/s
+        B_field = dataset.get('B_field', 1e-3)  # T
+        temperature = dataset.get('temperature', 2500)  # K
+        density = dataset.get('density', 1e-6)  # kg/m³ (low-density plasma)
+        
+        # Alfvén velocity
+        mu_0 = 4 * math.pi * 1e-7
+        if density > 0:
+            v_alfven = B_field / math.sqrt(mu_0 * density)
+        else:
+            v_alfven = float('inf')
+        
+        # Thermal velocity (ions, assume hydrogen)
+        k_B = 1.381e-23
+        m_ion = 1.67e-27  # kg (proton mass)
+        v_thermal = math.sqrt(2 * k_B * temperature / m_ion)
+        
+        # Convection regime
+        # If spot_velocity ~ v_thermal, thermal convection dominates
+        # If spot_velocity ~ v_alfven, magnetic convection dominates
+        if v_alfven < float('inf'):
+            alfven_ratio = spot_velocity / v_alfven
+        else:
+            alfven_ratio = 0
+        thermal_ratio = spot_velocity / v_thermal if v_thermal > 0 else 0
+        
+        # Rayleigh number proxy (convection strength)
+        g_eff = 9.8  # m/s² (effective gravity in lab)
+        alpha_exp = 1 / temperature  # Thermal expansion coefficient approximation
+        L = self.orb_radius
+        nu = 1e-5  # Kinematic viscosity (m²/s)
+        kappa = 1e-5  # Thermal diffusivity (m²/s)
+        delta_T = 100  # Temperature difference (K)
+        
+        Ra = g_eff * alpha_exp * delta_T * L**3 / (nu * kappa)
+        
+        # Magnetic Reynolds number
+        Rm = spot_velocity * L / (1 / (mu_0 * 1e6))  # Assuming σ ~ 10⁶ S/m
+        
+        return {
+            'spot_velocity_m_s': spot_velocity,
+            'v_alfven_m_s': v_alfven,
+            'v_thermal_m_s': v_thermal,
+            'alfven_ratio': alfven_ratio,
+            'thermal_ratio': thermal_ratio,
+            'rayleigh_number': Ra,
+            'magnetic_reynolds_number': Rm,
+            'convection_regime': 'magnetic' if alfven_ratio > thermal_ratio else 'thermal',
+            'units': 'm/s (velocity), dimensionless (ratios)',
+            'source': 'Grok UFT continued_3 Convection Analysis (March 3, 2025)'
+        }
+
+
+class FrameContinuityStabilityCalculator:
+    """
+    Calculates frame-to-frame stability and continuity metrics.
+    
+    Uniform 33.3 fps supports video-like sequence with no abrupt jumps,
+    indicating stable plasma behavior over ~0.5 s (17 frames × 0.03 s).
+    
+    Frame continuity: No abrupt jumps, indicating stable plasma behavior.
+    
+    Source: Grok UFT continued_3 (March 3, 2025)
+    """
+    
+    def __init__(self, frame_rate: float = 33.3):
+        self.frame_rate = frame_rate
+        self.frame_interval = 1.0 / frame_rate
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute frame stability metrics.
+        
+        Parameters:
+        - frame_intensities: List of intensity values per frame
+        - frame_positions: List of centroid positions per frame
+        - n_frames: Number of frames
+        """
+        import math
+        
+        n_frames = dataset.get('n_frames', 17)
+        frame_intensities = dataset.get('frame_intensities', None)
+        frame_positions = dataset.get('frame_positions', None)
+        
+        # Sequence duration
+        duration = n_frames * self.frame_interval
+        
+        # Generate synthetic data if not provided
+        if frame_intensities is None:
+            # Sinusoidal intensity variation
+            frame_intensities = [1.0 + 0.1 * math.sin(0.5 * i) for i in range(n_frames)]
+        
+        if frame_positions is None:
+            # Cyclic position (quadrant shifts)
+            positions = ['upper_right', 'center_right', 'lower_center', 'lower_left',
+                        'center_left', 'upper_center', 'upper_right']
+            frame_positions = [positions[i % len(positions)] for i in range(n_frames)]
+        
+        # Intensity stability (variance)
+        mean_intensity = sum(frame_intensities) / len(frame_intensities)
+        intensity_variance = sum((i - mean_intensity)**2 for i in frame_intensities) / len(frame_intensities)
+        intensity_stability = 1.0 / (1.0 + intensity_variance)
+        
+        # Frame-to-frame intensity jumps
+        intensity_jumps = [abs(frame_intensities[i] - frame_intensities[i-1]) 
+                          for i in range(1, len(frame_intensities))]
+        max_jump = max(intensity_jumps) if intensity_jumps else 0
+        avg_jump = sum(intensity_jumps) / len(intensity_jumps) if intensity_jumps else 0
+        
+        # Position continuity (count unique transitions)
+        unique_transitions = len(set(zip(frame_positions[:-1], frame_positions[1:])))
+        position_continuity = 1.0 - (unique_transitions / (n_frames - 1)) if n_frames > 1 else 1.0
+        
+        # SCm stability correlation
+        SCm_factor = intensity_stability * 0.99  # Max 0.99
+        
+        # UA medium stability
+        UA_factor = position_continuity * 0.0001  # Max 0.0001
+        
+        # Overall stability score
+        overall_stability = (intensity_stability + position_continuity) / 2
+        
+        return {
+            'n_frames': n_frames,
+            'duration_s': duration,
+            'mean_intensity': mean_intensity,
+            'intensity_variance': intensity_variance,
+            'intensity_stability': intensity_stability,
+            'max_intensity_jump': max_jump,
+            'avg_intensity_jump': avg_jump,
+            'position_continuity': position_continuity,
+            'SCm_factor': SCm_factor,
+            'UA_factor': UA_factor,
+            'overall_stability': overall_stability,
+            'abrupt_jumps_detected': max_jump > 0.5,
+            'units': 'dimensionless (stability metrics)',
+            'source': 'Grok UFT continued_3 Frame Stability (March 3, 2025)'
+        }
+
+
+# Video Analysis registry dict
+VIDEO_ANALYSIS_CALCULATORS = {
+    'VideoAnalysisSpotDynamicsCalculator': VideoAnalysisSpotDynamicsCalculator(),
+    'FrameRateTemporalResolutionCalculator': FrameRateTemporalResolutionCalculator(),
+    'SpookyActionWavelessCalculator': SpookyActionWavelessCalculator(),
+    'PlasmaIntensityEnergyFlowCalculator': PlasmaIntensityEnergyFlowCalculator(),
+    'VideoIntegratedFUCalculator': VideoIntegratedFUCalculator(),
+    'InfraredSpectrumTemperatureCalculator': InfraredSpectrumTemperatureCalculator(),
+    'PlasmaConvectionVelocityCalculator': PlasmaConvectionVelocityCalculator(),
+    'FrameContinuityStabilityCalculator': FrameContinuityStabilityCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -161739,4 +162446,15 @@ __all__.extend([
     'RedDwarfReactorMasterCalculator',
     'HydrogenBubbleMagneticCalculator',
     'RED_DWARF_REACTOR_CALCULATORS',
+    # UFT continued_3 Video Analysis (March 3, 2025) - 8 Calculator Classes
+    'VIDEO_ANALYSIS_PARAMS',
+    'VideoAnalysisSpotDynamicsCalculator',
+    'FrameRateTemporalResolutionCalculator',
+    'SpookyActionWavelessCalculator',
+    'PlasmaIntensityEnergyFlowCalculator',
+    'VideoIntegratedFUCalculator',
+    'InfraredSpectrumTemperatureCalculator',
+    'PlasmaConvectionVelocityCalculator',
+    'FrameContinuityStabilityCalculator',
+    'VIDEO_ANALYSIS_CALCULATORS',
 ])
