@@ -4293,6 +4293,1038 @@ ORB_ANALYSIS_17_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# UFT ORB ANALYSIS_18 / EXP_2 BATCH 5 - PHOTOS #13-#15 PEAK NON-LOCALITY
+# ═══════════════════════════════════════════════════════════════════════════════
+# Source: https://grok.com/share/bGVnYWN5LWNvcHk_cd7c4df2-7601-474b-b329-424d490fd532
+# UFT_Exp 2_5_03Mar2025 - Photos #13-#15, peak non-local jumps, 10-component UFE-QFE
+# Timestamp range: 0.36-0.42s (frames 12-14 at 33.3 fps)
+# Key: Peak non-locality at Photo #15, intelligent plasmoid behavior, field generator correlations
+# ───────────────────────────────────────────────────────────────────────────────
+
+ORB_ANALYSIS_18_PARAMS = {
+    'experiment': 'Red Dwarf Reactor Plasma Orb - Photos #13-#15',
+    'batch': 'Exp_2 Batch 5 (Peak Non-Locality)',
+    'date': '2025-03-04',
+    'photos': '#13, #14, #15',
+    'timestamp_range_s': (0.36, 0.42),
+    'frame_numbers': (12, 13, 14),
+    'fps': 33.3,
+    
+    # Plasmoid characteristics (peak activity)
+    'plasmoid_count_per_frame': 45,
+    'plasmoid_size_range_mm': (0.5, 2.0),
+    'plasmoid_energy_mJ_per_spot': 1.0,
+    'plasmoid_spin_rate_rot_per_s': 0.15,
+    'plasmoid_velocity_m_s': 0.5,
+    
+    # Thermal parameters
+    'base_temp_K': 366,
+    'ambient_temp_K': 288,
+    'thermal_gradient_K': 78,
+    
+    # Energy metrics
+    'energy_per_frame_J': 0.019,
+    'efficiency_percent': 0.29,
+    'efficiency_above_classical_percent': 50,
+    
+    # Reactor geometry
+    'reactor_radius_m': 0.0889,
+    'reactor_diameter_in': 3.5,
+    'reactor_height_in': 10,
+    
+    # Field parameters
+    'magnetic_field_T': 1e-3,
+    'bulb_power_W': 65,
+    'bulb_frequency_Hz': 6000,
+    'SCm_density_kg_m3': 1e15,
+    'UA_charge_C': 1e-11,
+    
+    # Cosmic wind parameters
+    'rho_sw_kg_m3': 8e-21,
+    'v_sw_m_s': 5e5,
+    
+    # E_react formula
+    'E_react_base_W_m3': 1e15,
+    'E_react_decay_rate': 0.001,
+    
+    # Convection cycle
+    'cycle_period_s': 3.3,
+    'sub_cycle_s': 0.7,
+    
+    # Non-locality metrics
+    'nonlocality_first_prominent_photo': 9,
+    'nonlocality_peak_photo': 15,
+    'nonlocality_complexity': 'Peak frequency and complexity',
+    
+    # UFE-QFE 10 components
+    'UFEQFE_components': [
+        'Ug_1 (brightness/internal dipole)',
+        'Ug_2 (outer field + cosmic winds)',
+        'Ug_3 (gravity string + Ub_3)',
+        'Ub(t) (Neutral field stability)',
+        'Um (Universal Magnetism 4 forms)',
+        'A_μν (Aether tensor)',
+        'NN(t) (North-Neutral Celtic cross)',
+        'QS(t) (Quality shift 26 states)',
+        'ACE(t) (cosmic wind stimulation)',
+        'DCE(t) (disk-driven energy)'
+    ],
+    
+    # Error reduction
+    'error_percent_reduced_from': (10, 15),
+    'error_percent_reduced_to': 5,
+    'error_reduction_achieved': '>50%',
+    
+    # Field generator correlation
+    'field_generator_tube_diameter_in': 24,
+    'field_generator_power_W': 17,
+    'field_generator_frequency_Hz': 6000,
+    'field_generator_cooling_F_below_ambient': (7, 10),
+    'field_generator_features': [
+        'ACE/DCE energy production',
+        'Pseudo-monopoles',
+        'Ghost-like appearances',
+        'Non-carbonizing sparks'
+    ],
+    
+    # Watermark
+    'copyright': '©2025 Daniel T. Murphy, daniel.murphy00@gmail.com – All Rights Reserved'
+}
+
+
+class PlasmoidFrameAnalysisCalculator:
+    """
+    Calculator for frame-by-frame plasmoid analysis from Photos #13-#15.
+    
+    Analyzes ~45 plasmoids per frame with characteristics:
+    - Size: 0.5-2 mm (±5% error)
+    - Energy: ~1 mJ/spot (±10% error)
+    - Spins: ~0.15 rotations/second (±10% error)
+    - Velocity: ~0.5 m/s (±5% error)
+    
+    UFT Physics:
+    - Motion aligns with thermal buoyancy + [Ub] + [UA] non-locality
+    - Exceeds Navier-Stokes predictions due to quantum resonance
+    - Peak non-local jumps at Photo #15 suggest BEC coherence
+    
+    Source: Grok UFT Orb Analysis_18 (EXP2_5 March 4, 2025)
+    """
+    
+    def compute(self, photo_number: int = 15, t_n: float = 0.42, **kwargs) -> dict:
+        """
+        Compute plasmoid characteristics for a specific frame.
+        
+        Args:
+            photo_number: Photo number (13-15 for this batch)
+            t_n: Timestamp in seconds (0.36-0.42 for Photos #13-#15)
+            **kwargs: Optional overrides (n_plasmoids, avg_size_mm, etc.)
+        """
+        import math
+        
+        # Frame parameters
+        fps = 33.3
+        frame_number = photo_number - 1  # Photo #13 = frame 12
+        t_calculated = frame_number / fps
+        t_actual = t_n if t_n else t_calculated
+        
+        # Plasmoid characteristics (with small temporal variation)
+        base_count = 45
+        n_plasmoids = kwargs.get('n_plasmoids', base_count + int(2 * math.sin(2 * math.pi * t_actual)))
+        
+        avg_size_mm = kwargs.get('avg_size_mm', 1.25)  # Center of 0.5-2 mm range
+        avg_energy_mJ = kwargs.get('avg_energy_mJ', 1.0)
+        spin_rate = kwargs.get('spin_rate', 0.15)  # rotations/second
+        velocity_m_s = kwargs.get('velocity_m_s', 0.5)
+        
+        # Total energy for frame
+        total_energy_mJ = n_plasmoids * avg_energy_mJ
+        total_energy_J = total_energy_mJ / 1000
+        
+        # Motion dynamics (from Navier-Stokes with UFT corrections)
+        # ρ(∂v/∂t + v·∇v) = -∇P + μ∇²v + ρg + [UFT corrections]
+        rho_oil = 1e3  # kg/m³
+        mu_oil = 0.01  # Pa·s
+        g_earth = 9.8  # m/s²
+        thermal_gradient = 366 - 288  # K
+        
+        # Classical buoyancy velocity estimate
+        v_buoyancy = math.sqrt(g_earth * thermal_gradient / 366 * 0.0889)
+        
+        # UFT enhancement factor (from non-locality)
+        nonlocality_factor = 1.0 if photo_number < 9 else (1 + 0.1 * (photo_number - 8))
+        if photo_number == 15:
+            nonlocality_factor = 1.7  # Peak at Photo #15
+        
+        v_uft = v_buoyancy * nonlocality_factor
+        
+        # Efficiency calculation
+        bulb_power_W = 65
+        frame_time_s = 1 / fps
+        input_energy_J = bulb_power_W * frame_time_s
+        efficiency_percent = (total_energy_J / input_energy_J) * 100
+        classical_efficiency = 0.15  # Classical plasma ~0.1-0.2%
+        efficiency_above_classical = (efficiency_percent / classical_efficiency - 1) * 100
+        
+        # Spin angular momentum
+        avg_radius_m = avg_size_mm / 1000 / 2
+        avg_mass_kg = 0.5e-3 / n_plasmoids  # Total mass ~0.5g divided
+        omega = 2 * math.pi * spin_rate
+        angular_momentum = 0.5 * avg_mass_kg * avg_radius_m**2 * omega
+        
+        # Non-locality metric
+        if photo_number <= 8:
+            nonlocality_status = 'Minimal'
+            jump_frequency = 'Rare'
+        elif photo_number <= 12:
+            nonlocality_status = 'Prominent'
+            jump_frequency = 'Frequent'
+        elif photo_number <= 14:
+            nonlocality_status = 'Very prominent'
+            jump_frequency = 'Very frequent'
+        else:
+            nonlocality_status = 'Peak'
+            jump_frequency = 'Peak frequency and complexity'
+        
+        return {
+            'photo_number': photo_number,
+            'frame_number': frame_number,
+            'timestamp_s': round(t_actual, 3),
+            'n_plasmoids': n_plasmoids,
+            'avg_size_mm': avg_size_mm,
+            'avg_energy_mJ': avg_energy_mJ,
+            'total_energy_J': round(total_energy_J, 4),
+            'spin_rate_rot_s': spin_rate,
+            'angular_momentum_kg_m2_s': f'{angular_momentum:.2e}',
+            'velocity_m_s': velocity_m_s,
+            'v_buoyancy_classical_m_s': round(v_buoyancy, 3),
+            'v_uft_enhanced_m_s': round(v_uft, 3),
+            'nonlocality_factor': round(nonlocality_factor, 2),
+            'efficiency_percent': round(efficiency_percent, 3),
+            'efficiency_above_classical_percent': round(efficiency_above_classical, 1),
+            'nonlocality_status': nonlocality_status,
+            'jump_frequency': jump_frequency,
+            'error_percent': '±5%',
+            'equation': 'v_UFT = v_buoyancy × (1 + 0.1 × (photo# - 8)) × [UA]',
+            'source': 'Grok UFT Orb Analysis_18 Photo Frame Analysis (March 4, 2025)'
+        }
+
+
+class CyclicConvectionPatternCalculator:
+    """
+    Calculator for cyclic convection patterns in plasma orb experiment.
+    
+    Convection characteristics:
+    - Overall cycle: ~3.3 seconds
+    - Sub-cycle: ~0.7 seconds
+    - Pattern: Upper left → Lower left quadrant shift
+    - Driven by: [Ub] Neutral field + thermal gradients + [UA] non-locality
+    
+    The convection exceeds classical Navier-Stokes predictions due to:
+    - [SCm] reactivity (10¹⁵ kg/m³)
+    - [UA] stabilization (10⁻¹¹ C)
+    - [North-Neutral] Celtic cross configuration
+    
+    Source: Grok UFT Orb Analysis_18 (EXP2_5 March 4, 2025)
+    """
+    
+    def compute(self, t_n: float = 0.42, cycle_period: float = 3.3, **kwargs) -> dict:
+        """
+        Compute convection pattern characteristics.
+        
+        Args:
+            t_n: Current timestamp in seconds
+            cycle_period: Full convection cycle period (default 3.3 s)
+            **kwargs: Optional overrides
+        """
+        import math
+        
+        # Cycle parameters
+        sub_cycle = kwargs.get('sub_cycle', 0.7)  # seconds
+        
+        # Thermal gradient
+        T_base = kwargs.get('T_base', 366)  # K
+        T_ambient = kwargs.get('T_ambient', 288)  # K
+        thermal_gradient = T_base - T_ambient
+        
+        # Temperature at time t_n (linear cooling approximation for short times)
+        cooling_rate_K_s = thermal_gradient / cycle_period
+        T_current = T_base - cooling_rate_K_s * t_n
+        
+        # Phase within cycle
+        cycle_phase = (t_n % cycle_period) / cycle_period
+        sub_cycle_phase = (t_n % sub_cycle) / sub_cycle
+        
+        # Quadrant determination based on phase
+        # Photos #1-3: Upper left, #4-15: Lower left progression
+        if cycle_phase < 0.1:
+            quadrant = 'Upper Left'
+            shift_progress = cycle_phase / 0.1
+        elif cycle_phase < 0.5:
+            quadrant = 'Upper Left → Lower Left transition'
+            shift_progress = (cycle_phase - 0.1) / 0.4
+        else:
+            quadrant = 'Lower Left (stabilizing)'
+            shift_progress = 1.0
+        
+        # Velocity field (from Navier-Stokes with UFT corrections)
+        rho = 1e3  # kg/m³
+        mu = 0.01  # Pa·s
+        g = 9.8  # m/s²
+        r = 0.0889  # m
+        
+        # Classical convection velocity
+        Ra = (rho * g * thermal_gradient * r**3) / (mu * 0.14e-6)  # Rayleigh number
+        v_classical = 0.5 * math.sqrt(g * thermal_gradient / T_base * r)
+        
+        # UFT enhancement from [Ub], [UA], [SCm]
+        Ub_factor = kwargs.get('Ub_factor', 1.2)
+        UA_factor = kwargs.get('UA_factor', 1.15)
+        SCm_factor = kwargs.get('SCm_factor', 1.1)
+        
+        v_uft = v_classical * Ub_factor * UA_factor * SCm_factor
+        
+        # Convection cell structure
+        n_cells = int(2 + 2 * math.sin(2 * math.pi * cycle_phase))
+        cell_size_m = r / (n_cells + 1)
+        
+        # Energy transport
+        bulb_power = 65  # W
+        convective_efficiency = 0.29 / 100  # 0.29% from observations
+        power_transported = bulb_power * convective_efficiency
+        
+        # UFT driving terms
+        Ug3_contribution = math.cos(2 * math.pi * 6000 * t_n * math.pi)
+        Um_contribution = (1 - math.exp(-0.001 * t_n * math.cos(math.pi * t_n)))
+        Ub_contribution = math.cos(0)  # θ_disk = 0 for flat disk
+        
+        return {
+            'timestamp_s': t_n,
+            'cycle_period_s': cycle_period,
+            'sub_cycle_s': sub_cycle,
+            'cycle_phase': round(cycle_phase, 3),
+            'sub_cycle_phase': round(sub_cycle_phase, 3),
+            'current_quadrant': quadrant,
+            'shift_progress': round(shift_progress, 2),
+            'T_base_K': T_base,
+            'T_ambient_K': T_ambient,
+            'T_current_K': round(T_current, 1),
+            'thermal_gradient_K': thermal_gradient,
+            'v_classical_m_s': round(v_classical, 4),
+            'v_uft_enhanced_m_s': round(v_uft, 4),
+            'enhancement_factor': round(Ub_factor * UA_factor * SCm_factor, 2),
+            'n_convection_cells': n_cells,
+            'cell_size_m': round(cell_size_m, 4),
+            'power_transported_W': round(power_transported, 4),
+            'Ug3_contribution': round(Ug3_contribution, 4),
+            'Um_contribution': round(Um_contribution, 6),
+            'Ub_contribution': round(Ub_contribution, 4),
+            'drivers': '[Ub] Neutral field + thermal gradient + [Ug3] + [Um] + [UA] non-locality',
+            'equation': 'v_UFT = v_NS × [Ub] × [UA] × [SCm] with NS: ρ(∂v/∂t + v·∇v) = -∇P + μ∇²v + ρg',
+            'source': 'Grok UFT Orb Analysis_18 Cyclic Convection (March 4, 2025)'
+        }
+
+
+class NonLocalityPeakCalculator:
+    """
+    Calculator for non-local jump behavior in plasmoids.
+    
+    Non-locality characteristics:
+    - First prominent: Photo #9
+    - Peak frequency/complexity: Photo #15
+    - Mechanism: [UA] + [North-Neutral] + [RM]/[SM]
+    - Suggests: BEC coherence or quantum entanglement
+    
+    Non-local jumps correlate with field generator experiment:
+    - Ghost-like appearances
+    - Pseudo-monopole behavior
+    - Light angular velocities
+    
+    Source: Grok UFT Orb Analysis_18 (EXP2_5 March 4, 2025)
+    """
+    
+    def compute(self, photo_number: int = 15, **kwargs) -> dict:
+        """
+        Compute non-locality metrics for a given photo.
+        
+        Args:
+            photo_number: Photo number (1-496)
+            **kwargs: Optional parameters
+        """
+        import math
+        
+        # Non-locality progression
+        first_prominent = 9
+        peak_photo = 15
+        
+        # Non-locality intensity function
+        if photo_number < first_prominent:
+            intensity = 0.1 * photo_number / first_prominent
+            status = 'Minimal'
+            complexity = 'Simple/rare'
+        elif photo_number < 13:
+            intensity = 0.5 + 0.3 * (photo_number - first_prominent) / (13 - first_prominent)
+            status = 'Prominent'
+            complexity = 'Frequent'
+        elif photo_number < peak_photo:
+            intensity = 0.8 + 0.15 * (photo_number - 13) / (peak_photo - 13)
+            status = 'Very prominent'
+            complexity = 'Very frequent and complex'
+        elif photo_number == peak_photo:
+            intensity = 1.0
+            status = 'Peak'
+            complexity = 'Peak frequency and complexity'
+        else:
+            # Beyond peak, slight decrease but still high
+            decay_factor = math.exp(-0.02 * (photo_number - peak_photo))
+            intensity = 0.9 * decay_factor
+            status = 'Post-peak sustained'
+            complexity = 'Sustained high complexity'
+        
+        # Jump frequency (jumps per frame)
+        base_jump_freq = 0.1  # At photo #1
+        jump_frequency = base_jump_freq + intensity * 0.9
+        
+        # Quantum coherence estimate ([UA] + [SCm] driven)
+        UA_charge = kwargs.get('UA_charge', 1e-11)  # C
+        SCm_density = kwargs.get('SCm_density', 1e15)  # kg/m³
+        
+        coherence_length = 1e-6 * intensity  # meters (rough estimate)
+        entanglement_factor = intensity * (UA_charge / 1e-11) * (SCm_density / 1e15)
+        
+        # Field generator correlation strength
+        fg_resonance = 6000  # Hz
+        plasma_resonance = 6000  # Hz (matched)
+        correlation_strength = 1.0 - abs(fg_resonance - plasma_resonance) / fg_resonance
+        
+        # Ghost-like appearance probability
+        ghost_probability = 0.1 + 0.8 * intensity
+        
+        # Pseudo-monopole behavior likelihood
+        monopole_likelihood = 0.05 + 0.9 * intensity**2
+        
+        # BEC coherence indicators
+        spin_coherence = intensity > 0.7
+        spatial_coherence = intensity > 0.8
+        temporal_coherence = intensity > 0.9
+        
+        return {
+            'photo_number': photo_number,
+            'nonlocality_intensity': round(intensity, 3),
+            'status': status,
+            'complexity': complexity,
+            'jump_frequency_per_frame': round(jump_frequency, 2),
+            'first_prominent_photo': first_prominent,
+            'peak_photo': peak_photo,
+            'is_at_peak': photo_number == peak_photo,
+            'coherence_length_m': f'{coherence_length:.2e}',
+            'entanglement_factor': round(entanglement_factor, 3),
+            'field_generator_correlation': round(correlation_strength, 3),
+            'ghost_appearance_probability': round(ghost_probability, 2),
+            'monopole_behavior_likelihood': round(monopole_likelihood, 2),
+            'BEC_spin_coherence': spin_coherence,
+            'BEC_spatial_coherence': spatial_coherence,
+            'BEC_temporal_coherence': temporal_coherence,
+            'mechanism': '[UA] + [North-Neutral] + [RM]/[SM] driven quantum non-locality',
+            'classical_comparison': 'Exceeds classical fluid dynamics predictions',
+            'equation': 'N(photo) = N_base × (1 + intensity × [UA]/[UA_ref] × [SCm]/[SCm_ref])',
+            'source': 'Grok UFT Orb Analysis_18 Non-Locality Peak (March 4, 2025)'
+        }
+
+
+class UFEQFETenComponentCalculator:
+    """
+    Calculator for the full 10-component Unified Field Equation-Quantum Field Equation.
+    
+    FU-Q(t) = Σᵢ[kᵢ·Ugᵢ - βᵢ·Ugᵢ·Ωg·Mbh/dg·E_react] 
+            + Σⱼ[μⱼ/rⱼ·(1-e^(-γt·cos(πtₙ)))·φ̂ⱼ·(Umⱼ+Um1ⱼ+Um2ⱼ+Um3ⱼ)]
+            + (gμν + η·Ts^μν(UA,SCm,ρA,RM,SM))
+            + Ub(t) + NN(t) + QS(t) + ACE(t) + DCE(t)
+    
+    10 Components:
+    1. Ug_1: Internal dipole / brightness peaks
+    2. Ug_2: Outer field + cosmic winds
+    3. Ug_3: Gravity string + Ub_3
+    4. Ub(t): Neutral field stability
+    5. Um: Universal Magnetism (4 forms)
+    6. A_μν: Aether tensor
+    7. NN(t): North-Neutral Celtic cross
+    8. QS(t): Quality shift (26 states)
+    9. ACE(t): Cosmic wind stimulation
+    10. DCE(t): Disk-driven energy
+    
+    Source: Grok UFT Orb Analysis_18 (EXP2_5 March 4, 2025)
+    """
+    
+    def compute(self, t_n: float = 0.42, r: float = 0.0889, **kwargs) -> dict:
+        """
+        Compute all 10 UFE-QFE components.
+        
+        Args:
+            t_n: Timestamp in seconds
+            r: Reactor radius in meters
+            **kwargs: Override parameters
+        """
+        import math
+        
+        # Base parameters
+        M_s = kwargs.get('M_s', 0.5e-3)  # kg (0.5g)
+        omega_s = kwargs.get('omega_s', 2 * math.pi * 6000)  # rad/s
+        T_s = kwargs.get('T_s', 366)  # K at base
+        B_s = kwargs.get('B_s', 1e-3)  # T
+        SCm = kwargs.get('SCm', 1e15)  # kg/m³
+        UA = kwargs.get('UA', 1e-11)  # C
+        E_react_base = kwargs.get('E_react_base', 1e15)  # W/m³
+        decay_rate = kwargs.get('decay_rate', 0.001)
+        
+        # Cosmic wind parameters
+        rho_sw = kwargs.get('rho_sw', 8e-21)  # kg/m³
+        v_sw = kwargs.get('v_sw', 5e5)  # m/s
+        theta_disk = kwargs.get('theta_disk', 0)  # rad (flat disk)
+        
+        # Coupling constants (±5% error)
+        k_ug1 = 1.5e-4
+        k_ug2 = 1.2
+        k_ug3 = 1.8
+        k_ub = kwargs.get('k_ub', 1e-6)
+        k_ub3 = kwargs.get('k_ub3', 1e-10)
+        eta = 1e-22
+        
+        # E_react with decay
+        E_react = E_react_base * math.exp(-decay_rate * t_n)
+        
+        # Component 1: Ug_1 (brightness peaks / internal dipole)
+        grad_M_r = M_s / r
+        decay_term = math.exp(-decay_rate * t_n * math.cos(math.pi * t_n))
+        modulation = 1 + 0.01 * math.sin(decay_rate * t_n)
+        Ug_1 = k_ug1 * grad_M_r * decay_term * modulation
+        
+        # Component 2: Ug_2 (outer field + cosmic winds)
+        charge_term = (UA + UA) * M_s / r**2
+        cosmic_wind_term = k_ug2 * rho_sw * v_sw
+        Ug_2 = k_ug2 * charge_term * SCm * math.exp(-decay_rate * t_n) + cosmic_wind_term
+        
+        # Component 3: Ug_3 (gravity string + Ub_3)
+        string_term = B_s * math.cos(omega_s * t_n * math.pi)
+        Ub_3 = k_ub3 * SCm * math.cos(theta_disk)
+        Ug_3 = k_ug3 * string_term * SCm * math.exp(-decay_rate * t_n) + Ub_3
+        
+        # Component 4: Ub(t) (Neutral field stability)
+        Ub_t = k_ub * rho_sw * v_sw * math.cos(theta_disk)
+        
+        # Component 5: Um (Universal Magnetism - 4 forms)
+        mu_j = 1e-4
+        gamma = decay_rate
+        magnetism_term = (1 - math.exp(-gamma * t_n * math.cos(math.pi * t_n)))
+        Um_0 = mu_j / r * magnetism_term
+        Um_1 = Um_0 * 0.8  # Um1 form
+        Um_2 = Um_0 * 0.6  # Um2 form
+        Um_3 = Um_0 * 0.4  # Um3 form
+        Um_total = (Um_0 + Um_1 + Um_2 + Um_3) * SCm * math.exp(-decay_rate * t_n)
+        
+        # Component 6: A_μν (Aether tensor)
+        g_munu = 1  # Minkowski baseline
+        rho_A = 1e-23  # Aether density
+        T_s_munu = UA * SCm * rho_A * t_n  # Simplified stress-energy
+        A_munu = g_munu + eta * T_s_munu
+        
+        # Component 7: NN(t) (North-Neutral Celtic cross)
+        theta_angle = kwargs.get('theta_angle', 90)  # degrees
+        NN_t = 1.5e-3 * math.cos(math.radians(theta_angle - 90))
+        
+        # Component 8: QS(t) (Quality shift - 26 quantum states)
+        n_states = 26
+        QS_sum = 0
+        for n in range(1, n_states + 1):
+            q_n = 1.0 / n  # Weight per state
+            alpha_n = 0.1 * n
+            phi_n = math.pi * n / n_states
+            state_term = q_n * (1 - math.exp(-alpha_n * t_n * math.cos(math.pi * t_n + phi_n)))
+            QS_sum += state_term
+        QS_t = QS_sum * (SCm + UA) * NN_t
+        
+        # Component 9: ACE(t) (Cosmic wind stimulation)
+        rho_SCm = SCm  # Using SCm as proxy
+        ACE_t = 1e15 * rho_SCm * math.exp(-decay_rate * t_n)
+        
+        # Component 10: DCE(t) (Disk-driven energy)
+        DCE_t = 0.5 * rho_SCm * math.sin(omega_s * t_n)
+        
+        # Total FU-Q
+        FU_Q_total = Ug_1 + Ug_2 + Ug_3 + Ub_t + Um_total + A_munu + NN_t + QS_t + ACE_t + DCE_t
+        
+        return {
+            'timestamp_s': t_n,
+            'reactor_radius_m': r,
+            'components': {
+                'Ug_1_internal_dipole': f'{Ug_1:.4e}',
+                'Ug_2_outer_field': f'{Ug_2:.4e}',
+                'Ug_3_gravity_string': f'{Ug_3:.4e}',
+                'Ub_neutral_field': f'{Ub_t:.4e}',
+                'Um_magnetism_total': f'{Um_total:.4e}',
+                'A_munu_aether_tensor': f'{A_munu:.4e}',
+                'NN_north_neutral': f'{NN_t:.4e}',
+                'QS_quality_shift': f'{QS_t:.4e}',
+                'ACE_cosmic_stimulation': f'{ACE_t:.4e}',
+                'DCE_disk_energy': f'{DCE_t:.4e}'
+            },
+            'FU_Q_total': f'{FU_Q_total:.4e}',
+            'dominant_component': 'ACE(t)' if ACE_t > max(Ug_1, Ug_2, Ug_3) else 'Ug components',
+            'n_quantum_states': n_states,
+            'error_percent': '±5%',
+            'equation': 'FU-Q(t) = Σ[Ug_i] + Σ[Um_j] + A_μν + Ub(t) + NN(t) + QS(t) + ACE(t) + DCE(t)',
+            'source': 'Grok UFT Orb Analysis_18 UFE-QFE 10-Component (March 4, 2025)'
+        }
+
+
+class CosmicWindInteractionCalculator:
+    """
+    Calculator for cosmic wind interactions with planetary disks and plasma systems.
+    
+    Cosmic wind parameters:
+    - Density: ρ_sw = 8 × 10⁻²¹ kg/m³
+    - Velocity: v_sw = 5 × 10⁵ m/s
+    
+    Key interactions:
+    - [Ub3] counters cosmic winds, stabilizing disks
+    - [ACE]/[DCE] energy flow through [SCm]
+    - θ_disk angle determines stability (flat = optimal)
+    
+    Source: Grok UFT Orb Analysis_18 (EXP2_5 March 4, 2025)
+    """
+    
+    def compute(self, rho_sw: float = 8e-21, v_sw: float = 5e5, **kwargs) -> dict:
+        """
+        Compute cosmic wind interaction effects.
+        
+        Args:
+            rho_sw: Cosmic wind density (kg/m³)
+            v_sw: Cosmic wind velocity (m/s)
+            **kwargs: Additional parameters
+        """
+        import math
+        
+        # Disk parameters
+        theta_disk = kwargs.get('theta_disk_deg', 0)  # degrees
+        disk_radius = kwargs.get('disk_radius_m', 1e9)  # 10⁹ m
+        SCm_density = kwargs.get('SCm_density', 1e15)  # kg/m³
+        
+        theta_rad = math.radians(theta_disk)
+        
+        # Dynamic pressure of cosmic wind
+        dynamic_pressure = 0.5 * rho_sw * v_sw**2
+        
+        # Ram pressure on disk
+        cross_section = math.pi * disk_radius**2 * abs(math.sin(theta_rad + 1e-10))
+        ram_force = dynamic_pressure * cross_section
+        
+        # [Ub3] stabilization term
+        k_ub3 = 1e-10
+        Ub3_field = k_ub3 * SCm_density * math.cos(theta_rad)
+        
+        # Stability factor (higher = more stable)
+        stability_factor = Ub3_field / (dynamic_pressure + 1e-30)
+        
+        # ACE energy inbound (cosmic wind stimulation)
+        ACE_energy = 1e15 * SCm_density * math.exp(-0.001 * 0.42)  # At peak non-locality
+        
+        # DCE energy outbound (disk-driven)
+        omega_s = 2 * math.pi * 6000
+        DCE_energy = 0.5 * SCm_density * abs(math.sin(omega_s * 0.42))
+        
+        # Net energy balance
+        net_energy = ACE_energy - 0.1 * DCE_energy  # Asymmetric factor
+        
+        # Disk deflection angle due to wind
+        if stability_factor > 1e10:
+            deflection_deg = 0
+        else:
+            deflection_deg = math.degrees(math.atan(dynamic_pressure / (Ub3_field + 1e-30)))
+        
+        # Stripping rate (mass loss due to wind)
+        stripping_factor = dynamic_pressure / (Ub3_field + 1e-30)
+        if stripping_factor < 0.01:
+            stripping_status = 'Negligible'
+        elif stripping_factor < 0.1:
+            stripping_status = 'Minimal'
+        elif stripping_factor < 1:
+            stripping_status = 'Moderate'
+        else:
+            stripping_status = 'Significant'
+        
+        return {
+            'rho_sw_kg_m3': rho_sw,
+            'v_sw_m_s': v_sw,
+            'theta_disk_deg': theta_disk,
+            'dynamic_pressure_Pa': f'{dynamic_pressure:.2e}',
+            'ram_force_N': f'{ram_force:.2e}',
+            'Ub3_stabilization': f'{Ub3_field:.4e}',
+            'stability_factor': f'{stability_factor:.2e}',
+            'ACE_energy_inbound': f'{ACE_energy:.2e}',
+            'DCE_energy_outbound': f'{DCE_energy:.2e}',
+            'net_energy_balance': f'{net_energy:.2e}',
+            'deflection_angle_deg': round(deflection_deg, 3),
+            'stripping_status': stripping_status,
+            'optimal_angle': 0,  # Flat disk
+            'is_stable': stability_factor > 1e10,
+            'equation': '[Ub3] = k_ub3 × ρ_SCm × cos(θ_disk); P_ram = 0.5 × ρ_sw × v_sw²',
+            'source': 'Grok UFT Orb Analysis_18 Cosmic Wind Interaction (March 4, 2025)'
+        }
+
+
+class UniversalMagnetismFormsCalculator:
+    """
+    Calculator for Universal Magnetism [Um] with 4 distinct forms.
+    
+    Um = Σⱼ[μⱼ/rⱼ · (1 - e^(-γt·cos(πtₙ))) · φ̂ⱼ · (Umⱼ + Um1ⱼ + Um2ⱼ + Um3ⱼ)] × SCm × e^(-κt)
+    
+    4 Magnetism Forms:
+    - Um_0: Primary magnetism (base form)
+    - Um_1: Secondary form (0.8× primary)
+    - Um_2: Tertiary form (0.6× primary)
+    - Um_3: Quaternary form (0.4× primary)
+    
+    Driven by 6000 Hz resonance and [SCm] reactivity.
+    
+    Source: Grok UFT Orb Analysis_18 (EXP2_5 March 4, 2025)
+    """
+    
+    def compute(self, t_n: float = 0.42, r: float = 0.0889, **kwargs) -> dict:
+        """
+        Compute Universal Magnetism components.
+        
+        Args:
+            t_n: Timestamp in seconds
+            r: Distance from source (m)
+            **kwargs: Override parameters
+        """
+        import math
+        
+        # Parameters
+        mu_j = kwargs.get('mu_j', 1e-4)  # Coupling constant
+        gamma = kwargs.get('gamma', 0.001)  # Decay rate
+        SCm = kwargs.get('SCm', 1e15)  # kg/m³
+        kappa = kwargs.get('kappa', 0.001)  # Time decay
+        n_sources = kwargs.get('n_sources', 45)  # Number of plasmoids
+        
+        # SCm exponential factor
+        SCm_exp = SCm * math.exp(-kappa * t_n)
+        
+        # Phase factor
+        phase_factor = 1 - math.exp(-gamma * t_n * math.cos(math.pi * t_n))
+        
+        # Primary magnetism coefficient
+        base_coeff = mu_j / r * phase_factor
+        
+        # 4 forms with relative strengths
+        Um_0 = base_coeff * 1.0  # Primary (100%)
+        Um_1 = base_coeff * 0.8  # Secondary (80%)
+        Um_2 = base_coeff * 0.6  # Tertiary (60%)
+        Um_3 = base_coeff * 0.4  # Quaternary (40%)
+        
+        # Sum over all sources
+        Um_0_total = n_sources * Um_0 * SCm_exp
+        Um_1_total = n_sources * Um_1 * SCm_exp
+        Um_2_total = n_sources * Um_2 * SCm_exp
+        Um_3_total = n_sources * Um_3 * SCm_exp
+        
+        # Total Universal Magnetism
+        Um_total = Um_0_total + Um_1_total + Um_2_total + Um_3_total
+        
+        # Relative contributions
+        total_forms = Um_0 + Um_1 + Um_2 + Um_3
+        contrib_0 = Um_0 / total_forms * 100
+        contrib_1 = Um_1 / total_forms * 100
+        contrib_2 = Um_2 / total_forms * 100
+        contrib_3 = Um_3 / total_forms * 100
+        
+        # Compare to classical magnetic field
+        B_s = kwargs.get('B_s', 1e-3)  # T
+        B_ratio = Um_total / (B_s + 1e-30)
+        
+        # Angular dependence (azimuthal)
+        phi_angles = [0, 90, 180, 270]  # degrees
+        phi_components = {}
+        for phi in phi_angles:
+            phi_rad = math.radians(phi)
+            phi_factor = math.cos(phi_rad) + 0.5 * math.sin(phi_rad)
+            phi_components[f'phi_{phi}'] = round(Um_total * phi_factor, 6)
+        
+        return {
+            'timestamp_s': t_n,
+            'distance_m': r,
+            'n_sources': n_sources,
+            'forms': {
+                'Um_0_primary': f'{Um_0_total:.4e}',
+                'Um_1_secondary': f'{Um_1_total:.4e}',
+                'Um_2_tertiary': f'{Um_2_total:.4e}',
+                'Um_3_quaternary': f'{Um_3_total:.4e}'
+            },
+            'contributions_percent': {
+                'Um_0': round(contrib_0, 1),
+                'Um_1': round(contrib_1, 1),
+                'Um_2': round(contrib_2, 1),
+                'Um_3': round(contrib_3, 1)
+            },
+            'Um_total': f'{Um_total:.4e}',
+            'phase_factor': round(phase_factor, 6),
+            'SCm_exponential': f'{SCm_exp:.2e}',
+            'ratio_to_classical_B': f'{B_ratio:.2e}',
+            'angular_dependence': phi_components,
+            'equation': 'Um = Σⱼ[μⱼ/rⱼ × (1-e^(-γt·cos(πtₙ))) × φ̂ⱼ × Σ(Um_k)] × SCm × e^(-κt)',
+            'source': 'Grok UFT Orb Analysis_18 Universal Magnetism (March 4, 2025)'
+        }
+
+
+class PlasmoidIntelligenceMetricsCalculator:
+    """
+    Calculator for intelligent plasmoid behavior metrics.
+    
+    Intelligence indicators:
+    - Unique spins (~0.15 rot/s)
+    - Shape-shifting
+    - Multi-axial rotations
+    - Non-local jumps
+    - Independence from bulk flow
+    - Spin drift and rare rotational transfers
+    
+    Suggests:
+    - Programmed or emergent properties
+    - Quantum behavior beyond standard plasma physics
+    - Celestial guidance via [SCm]/[UA]/[RM]/[SM]
+    
+    Source: Grok UFT Orb Analysis_18 (EXP2_5 March 4, 2025)
+    """
+    
+    def compute(self, photo_number: int = 15, **kwargs) -> dict:
+        """
+        Compute intelligence metrics for plasmoid behavior.
+        
+        Args:
+            photo_number: Photo number in sequence
+            **kwargs: Additional parameters
+        """
+        import math
+        
+        # Base metrics
+        spin_rate = kwargs.get('spin_rate', 0.15)  # rot/s
+        spin_error = 0.10  # ±10%
+        
+        # Shape-shifting frequency (estimated)
+        base_shift_freq = 0.05  # per frame at Photo #1
+        shape_shift_freq = base_shift_freq * (1 + 0.05 * photo_number)
+        
+        # Multi-axial rotation probability
+        n_axes = kwargs.get('n_axes', 3)  # Up to 3 rotation axes
+        multi_axial_prob = 0.1 + 0.05 * photo_number
+        multi_axial_prob = min(multi_axial_prob, 0.95)
+        
+        # Non-local jump metrics (from NonLocalityPeakCalculator)
+        if photo_number >= 15:
+            jump_freq = 1.0
+            jump_complexity = 'Peak'
+        elif photo_number >= 13:
+            jump_freq = 0.85 + 0.075 * (photo_number - 13)
+            jump_complexity = 'Very high'
+        elif photo_number >= 9:
+            jump_freq = 0.5 + 0.1 * (photo_number - 9)
+            jump_complexity = 'High'
+        else:
+            jump_freq = 0.1 * photo_number / 9
+            jump_complexity = 'Low to moderate'
+        
+        # Independence from bulk flow
+        bulk_velocity = 0.5  # m/s
+        independent_velocity_std = 0.1 + 0.02 * photo_number  # m/s
+        independence_ratio = independent_velocity_std / bulk_velocity
+        
+        # Spin drift rate
+        drift_rate = 0.01 * photo_number  # rot/s change per 10 frames
+        
+        # Rotational transfer events (rare)
+        transfer_probability = 0.01 + 0.005 * photo_number
+        transfer_probability = min(transfer_probability, 0.15)
+        
+        # Intelligence composite score (0-1)
+        scores = {
+            'spin_coherence': 0.8 + 0.01 * photo_number,
+            'shape_adaptation': min(shape_shift_freq * 5, 1.0),
+            'spatial_awareness': multi_axial_prob,
+            'non_locality': jump_freq,
+            'independence': min(independence_ratio * 2, 1.0),
+            'coordination': transfer_probability * 5
+        }
+        
+        intelligence_score = sum(scores.values()) / len(scores)
+        
+        # BEC coherence indicators
+        bec_coherence = {
+            'spin': photo_number >= 12,
+            'spatial': photo_number >= 14,
+            'temporal': photo_number >= 15
+        }
+        
+        # Celestial guidance factors
+        SCm_factor = 1e15 / 1e15  # Normalized
+        UA_factor = 1e-11 / 1e-11  # Normalized
+        RM_factor = kwargs.get('RM_factor', 0.8)
+        SM_factor = kwargs.get('SM_factor', 0.9)
+        
+        guidance_strength = (SCm_factor + UA_factor + RM_factor + SM_factor) / 4
+        
+        return {
+            'photo_number': photo_number,
+            'spin_rate_rot_s': spin_rate,
+            'spin_error_percent': round(spin_error * 100, 0),
+            'shape_shift_frequency': round(shape_shift_freq, 3),
+            'multi_axial_probability': round(multi_axial_prob, 2),
+            'n_rotation_axes': n_axes,
+            'nonlocal_jump_frequency': round(jump_freq, 2),
+            'jump_complexity': jump_complexity,
+            'independence_ratio': round(independence_ratio, 3),
+            'spin_drift_rate': round(drift_rate, 4),
+            'rotational_transfer_prob': round(transfer_probability, 3),
+            'component_scores': {k: round(v, 3) for k, v in scores.items()},
+            'intelligence_score': round(intelligence_score, 3),
+            'BEC_coherence': bec_coherence,
+            'celestial_guidance_strength': round(guidance_strength, 3),
+            'interpretation': 'Programmed/emergent quantum behavior' if intelligence_score > 0.7 else 'Developing intelligence',
+            'equation': 'I_score = Σ(coherence + adaptation + awareness + nonlocality + independence + coordination) / 6',
+            'source': 'Grok UFT Orb Analysis_18 Plasmoid Intelligence (March 4, 2025)'
+        }
+
+
+class FieldGeneratorCorrelationCalculator:
+    """
+    Calculator for correlations between plasma orb and field generator experiments.
+    
+    Field Generator Experiment (03Mar2025):
+    - 24-inch diameter tube
+    - 17W power
+    - 6000 Hz frequency
+    - ACE/DCE energy (7-10°F below ambient)
+    - Pseudo-monopoles
+    - Ghost-like appearances
+    - Non-carbonizing sparks
+    
+    Correlations with plasma orb:
+    - Matched 6000 Hz resonance
+    - Similar spins (~0.15 rot/s)
+    - Shared [SCm]/[UA] dynamics
+    - Common non-locality patterns
+    
+    Source: Grok UFT Orb Analysis_18 (EXP2_5 March 4, 2025)
+    """
+    
+    def compute(self, orb_freq: float = 6000, fg_freq: float = 6000, **kwargs) -> dict:
+        """
+        Compute correlation metrics between experiments.
+        
+        Args:
+            orb_freq: Plasma orb bulb frequency (Hz)
+            fg_freq: Field generator frequency (Hz)
+            **kwargs: Additional parameters
+        """
+        import math
+        
+        # Field generator parameters
+        fg_diameter_in = kwargs.get('fg_diameter_in', 24)
+        fg_power_W = kwargs.get('fg_power_W', 17)
+        fg_cooling_F = kwargs.get('fg_cooling_F', (7, 10))  # Below ambient
+        
+        # Plasma orb parameters
+        orb_diameter_in = kwargs.get('orb_diameter_in', 3.5)
+        orb_power_W = kwargs.get('orb_power_W', 65)
+        orb_spin_rate = kwargs.get('orb_spin_rate', 0.15)
+        
+        # Frequency correlation
+        freq_ratio = min(orb_freq, fg_freq) / max(orb_freq, fg_freq)
+        freq_match = freq_ratio > 0.99
+        
+        # Size scaling factor
+        size_ratio = fg_diameter_in / orb_diameter_in
+        
+        # Power density comparison
+        orb_power_density = orb_power_W / (math.pi * (orb_diameter_in/2)**2)
+        fg_power_density = fg_power_W / (math.pi * (fg_diameter_in/2)**2)
+        power_density_ratio = orb_power_density / fg_power_density
+        
+        # Feature correlations (0-1 scale)
+        correlations = {
+            'frequency_resonance': freq_ratio,
+            'ACE_DCE_production': 0.95,  # Both produce ACE/DCE
+            'non_locality': 0.90,  # Both show non-local behavior
+            'spin_dynamics': 0.85,  # Similar spin patterns
+            'SCm_UA_mechanism': 0.95,  # Shared mechanism hypothesis
+            'ghost_appearances': 0.80,  # Both show ghost-like entities
+            'pseudo_monopoles': 0.75,  # FG has monopoles, orb has similar
+            'non_carbonizing': 0.70   # FG specific, orb related
+        }
+        
+        overall_correlation = sum(correlations.values()) / len(correlations)
+        
+        # Shared dynamics
+        shared_features = [
+            'Light angular velocities',
+            'Ghost-like appearances',
+            'ACE/DCE energy production',
+            '[SCm]/[UA] driven dynamics',
+            '6000 Hz resonance',
+            'Non-local quantum behavior'
+        ]
+        
+        # Divergent features
+        divergent_features = [
+            f'Size: FG {fg_diameter_in}" vs Orb {orb_diameter_in}"',
+            f'Power: FG {fg_power_W}W vs Orb {orb_power_W}W',
+            f'Cooling: FG produces {fg_cooling_F[0]}-{fg_cooling_F[1]}°F below ambient',
+            'FG has non-carbonizing sparks'
+        ]
+        
+        # Cross-validation potential
+        if overall_correlation > 0.85:
+            validation_status = 'Strong cross-validation support'
+        elif overall_correlation > 0.70:
+            validation_status = 'Moderate cross-validation support'
+        else:
+            validation_status = 'Weak cross-validation'
+        
+        return {
+            'orb_frequency_Hz': orb_freq,
+            'fg_frequency_Hz': fg_freq,
+            'frequency_match': freq_match,
+            'size_ratio': round(size_ratio, 1),
+            'power_density_ratio': round(power_density_ratio, 2),
+            'feature_correlations': {k: round(v, 2) for k, v in correlations.items()},
+            'overall_correlation': round(overall_correlation, 3),
+            'shared_features': shared_features,
+            'divergent_features': divergent_features,
+            'validation_status': validation_status,
+            'mechanism_hypothesis': '[SCm]/[UA]/[RM]/[SM] shared quantum dynamics',
+            'field_generator_specs': {
+                'diameter_in': fg_diameter_in,
+                'power_W': fg_power_W,
+                'frequency_Hz': fg_freq,
+                'cooling_range_F': fg_cooling_F,
+                'features': ['ACE/DCE', 'pseudo-monopoles', 'ghost-like', 'non-carbonizing sparks']
+            },
+            'source': 'Grok UFT Orb Analysis_18 Field Generator Correlation (March 4, 2025)'
+        }
+
+
+# UFT Orb Analysis_18 registry dict
+ORB_ANALYSIS_18_CALCULATORS = {
+    'PlasmoidFrameAnalysisCalculator': PlasmoidFrameAnalysisCalculator(),
+    'CyclicConvectionPatternCalculator': CyclicConvectionPatternCalculator(),
+    'NonLocalityPeakCalculator': NonLocalityPeakCalculator(),
+    'UFEQFETenComponentCalculator': UFEQFETenComponentCalculator(),
+    'CosmicWindInteractionCalculator': CosmicWindInteractionCalculator(),
+    'UniversalMagnetismFormsCalculator': UniversalMagnetismFormsCalculator(),
+    'PlasmoidIntelligenceMetricsCalculator': PlasmoidIntelligenceMetricsCalculator(),
+    'FieldGeneratorCorrelationCalculator': FieldGeneratorCorrelationCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -4306,6 +5338,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_15_CALCULATORS,
     **ORB_ANALYSIS_16_CALCULATORS,
     **ORB_ANALYSIS_17_CALCULATORS,
+    **ORB_ANALYSIS_18_CALCULATORS,
 }
 
 # Update class count
@@ -4408,6 +5441,18 @@ __all__ = [
     'HydrogenOxygenGasStorageCalculator',
     'CosmicWindDiskStabilityCalculator',
     'ORB_ANALYSIS_17_CALCULATORS',
+    
+    # Orb Analysis_18 / Exp_2 Batch 5 - Peak Non-Locality (8 classes)
+    'ORB_ANALYSIS_18_PARAMS',
+    'PlasmoidFrameAnalysisCalculator',
+    'CyclicConvectionPatternCalculator',
+    'NonLocalityPeakCalculator',
+    'UFEQFETenComponentCalculator',
+    'CosmicWindInteractionCalculator',
+    'UniversalMagnetismFormsCalculator',
+    'PlasmoidIntelligenceMetricsCalculator',
+    'FieldGeneratorCorrelationCalculator',
+    'ORB_ANALYSIS_18_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
