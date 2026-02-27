@@ -164025,6 +164025,795 @@ ORB_ANALYSIS_7_CALCULATORS = {
 }
 
 
+# =============================================================================
+# UNIFIED FIELD THEORY ORB ANALYSIS_8 - PHOTOS #30-#31 CALCULATORS
+# Source: Grok UFT Orb Analysis_8 (March 3-4, 2025, 11:00 PM - 12:00 AM PST)
+# Extended sequence: Photos #1-#31 (minus #14), 30 frames, 0.9 s total
+# Concentration shifts: upper right (#30) → lower left (#31)
+# Total energy: ~1.35 J across 30 frames
+# ©2025 Daniel T. Murphy - All Rights Reserved
+# =============================================================================
+
+# Orb Analysis_8 parameters (30-frame sequence)
+ORB_ANALYSIS_8_PARAMS = {
+    # Extended video sequence
+    'total_frames_analyzed': 30,               # Photos #1-#31 (minus #14)
+    'sequence_duration_s': 0.90,               # 30 × 0.03 s
+    'frame_interval_s': 0.03,                  # 33.3 fps
+    
+    # Concentration shifts observed
+    'photo_30_concentration': 'upper_right',
+    'photo_31_concentration': 'lower_left',
+    
+    # Energy accumulation (updated)
+    'total_energy_30_frames_J': 1.35,          # ~1.35 J total
+    'energy_per_frame_J': 0.045,               # ~45 mJ per frame
+    
+    # Reactor parameters
+    'r_reactor_m': 0.0889,
+    'T_base_K': 366,
+    'T_top_K': 288,
+    'omega_s_rad_s': 2 * 3.14159 * 6000,
+    'B_s_T': 1e-3,
+    'SCm_kg_m3': 1e15,
+    'UA_C': 1e-11,
+    'M_s_g': 0.5,
+    'plasmoid_velocity_m_s': 0.5,
+    'n_hydrogen_bubbles': (12, 18),
+}
+
+
+class ThirtyFrameSequenceCalculator:
+    """
+    Calculates dynamics across 30-frame video sequence.
+    
+    Photos #1-#31 (minus #14) = 30 frames, ~0.9 s total
+    Extends 28-frame analysis with 2 additional frames (#30-#31)
+    
+    Source: Grok UFT Orb Analysis_8 (March 3-4, 2025)
+    """
+    
+    def __init__(self, n_frames: int = 30, frame_interval: float = 0.03):
+        self.n_frames = n_frames
+        self.frame_interval = frame_interval
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute 30-frame sequence dynamics.
+        
+        Parameters:
+        - energy_per_spot_J: Energy per plasmoid spot (J)
+        - n_spots_avg: Average spots per frame
+        - decay_constant: E_react decay constant
+        """
+        import math
+        
+        energy_per_spot = dataset.get('energy_per_spot_J', 1e-3)
+        n_spots_avg = dataset.get('n_spots_avg', 45)
+        decay_constant = dataset.get('decay_constant', 0.001)
+        
+        # Total sequence duration
+        duration = self.n_frames * self.frame_interval
+        
+        # Energy per frame
+        energy_per_frame = energy_per_spot * n_spots_avg
+        
+        # Frame-by-frame evolution
+        frame_data = []
+        cumulative_energy = 0
+        
+        for i in range(self.n_frames):
+            t = i * self.frame_interval
+            E_react = 1e15 * math.exp(-decay_constant * t)
+            frame_energy = energy_per_frame * math.exp(-decay_constant * t)
+            cumulative_energy += frame_energy
+            frame_data.append({
+                'frame': i + 1,
+                't_s': t,
+                'E_react': E_react,
+                'energy_J': frame_energy,
+                'cumulative_J': cumulative_energy
+            })
+        
+        # Total energy
+        total_energy = cumulative_energy
+        
+        # Average power
+        avg_power = total_energy / duration
+        
+        # Peak power (at frame 1)
+        peak_power = energy_per_frame / self.frame_interval
+        
+        # Energy statistics by phase
+        phase1 = frame_data[:10]   # Frames 1-10
+        phase2 = frame_data[10:20] # Frames 11-20
+        phase3 = frame_data[20:]   # Frames 21-30
+        
+        phase1_energy = sum(f['energy_J'] for f in phase1)
+        phase2_energy = sum(f['energy_J'] for f in phase2)
+        phase3_energy = sum(f['energy_J'] for f in phase3)
+        
+        # Decay rate between phases
+        decay_rate_1_2 = phase2_energy / phase1_energy if phase1_energy > 0 else 0
+        decay_rate_2_3 = phase3_energy / phase2_energy if phase2_energy > 0 else 0
+        
+        return {
+            'n_frames': self.n_frames,
+            'duration_s': duration,
+            'total_energy_J': total_energy,
+            'avg_power_W': avg_power,
+            'peak_power_W': peak_power,
+            'phase1_energy_J': phase1_energy,
+            'phase2_energy_J': phase2_energy,
+            'phase3_energy_J': phase3_energy,
+            'decay_rate_1_2': decay_rate_1_2,
+            'decay_rate_2_3': decay_rate_2_3,
+            'sample_frames': frame_data[:3] + [{'...': 'truncated'}] + frame_data[-2:],
+            'units': 'J (energy), W (power), s (time)',
+            'source': 'Grok UFT Orb Analysis_8 30-Frame Sequence (March 3-4, 2025)'
+        }
+
+
+class DiagonalConcentrationShiftCalculator:
+    """
+    Tracks diagonal concentration shifts across reactor.
+    
+    Observed pattern: upper right (#30) → lower left (#31)
+    Shows diagonal descent across reactor cross-section
+    
+    Source: Grok UFT Orb Analysis_8 (March 3-4, 2025)
+    """
+    
+    def __init__(self, reactor_radius: float = 0.0889, reactor_height: float = 0.254):
+        self.reactor_radius = reactor_radius
+        self.reactor_height = reactor_height
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute diagonal shift metrics.
+        
+        Parameters:
+        - from_quadrant: Starting quadrant
+        - to_quadrant: Ending quadrant
+        - shift_time_s: Time for shift
+        """
+        import math
+        
+        from_quadrant = dataset.get('from_quadrant', 'upper_right')
+        to_quadrant = dataset.get('to_quadrant', 'lower_left')
+        shift_time = dataset.get('shift_time_s', 0.03)
+        
+        # Quadrant coordinates (x, y normalized 0-1)
+        quadrant_coords = {
+            'lower_left': (0.25, 0.25),
+            'lower_center': (0.5, 0.25),
+            'lower_right': (0.75, 0.25),
+            'center_left': (0.25, 0.5),
+            'center': (0.5, 0.5),
+            'center_right': (0.75, 0.5),
+            'upper_left': (0.25, 0.75),
+            'upper_center': (0.5, 0.75),
+            'upper_right': (0.75, 0.75),
+        }
+        
+        from_coord = quadrant_coords.get(from_quadrant, (0.5, 0.5))
+        to_coord = quadrant_coords.get(to_quadrant, (0.5, 0.5))
+        
+        # Displacement in normalized coordinates
+        dx_norm = to_coord[0] - from_coord[0]
+        dy_norm = to_coord[1] - from_coord[1]
+        
+        # Physical displacement
+        dx = dx_norm * self.reactor_radius * 2
+        dy = dy_norm * self.reactor_height
+        
+        # Total diagonal distance
+        diagonal_distance = math.sqrt(dx**2 + dy**2)
+        
+        # Diagonal velocity
+        diagonal_velocity = diagonal_distance / shift_time if shift_time > 0 else 0
+        
+        # Direction angle (from horizontal)
+        angle_rad = math.atan2(dy, dx)
+        angle_deg = math.degrees(angle_rad)
+        
+        # Classify shift type
+        if dx > 0 and dy > 0:
+            shift_type = 'diagonal_up_right'
+        elif dx < 0 and dy > 0:
+            shift_type = 'diagonal_up_left'
+        elif dx > 0 and dy < 0:
+            shift_type = 'diagonal_down_right'
+        elif dx < 0 and dy < 0:
+            shift_type = 'diagonal_down_left'
+        elif dx == 0:
+            shift_type = 'vertical'
+        else:
+            shift_type = 'horizontal'
+        
+        # Convection vs gravity analysis
+        # Downward motion suggests gravity/settling, upward suggests convection
+        gravity_factor = -dy / self.reactor_height if dy < 0 else 0
+        convection_factor = dy / self.reactor_height if dy > 0 else 0
+        
+        # Coriolis-like effect (lateral drift)
+        lateral_factor = abs(dx) / (self.reactor_radius * 2)
+        
+        return {
+            'from_quadrant': from_quadrant,
+            'to_quadrant': to_quadrant,
+            'dx_m': dx,
+            'dy_m': dy,
+            'diagonal_distance_m': diagonal_distance,
+            'diagonal_velocity_m_s': diagonal_velocity,
+            'angle_deg': angle_deg,
+            'shift_type': shift_type,
+            'gravity_factor': gravity_factor,
+            'convection_factor': convection_factor,
+            'lateral_factor': lateral_factor,
+            'units': 'm (distance), m/s (velocity), deg (angle)',
+            'source': 'Grok UFT Orb Analysis_8 Diagonal Shift (March 3-4, 2025)'
+        }
+
+
+class Orb8RefinedFUCalculator:
+    """
+    Computes F_U refined with Photos #30-#31 data.
+    
+    30 frames total, ~0.9 s sequence
+    Incorporates diagonal shift and updated parameters
+    
+    Source: Grok UFT Orb Analysis_8 (March 3-4, 2025)
+    """
+    
+    def __init__(self):
+        self.n_frames = 30
+        self.frame_interval = 0.03
+        self.r = 0.0889
+        self.height = 0.254
+        self.T_base = 366
+        self.T_top = 288
+        self.omega_s = 2 * 3.14159 * 6000
+        self.B_s = 1e-3
+        self.k = [1.5, 1.2, 1.8]
+        self.beta_i = 0.8
+        self.alpha = 0.001
+        self.SCm = 1e15
+        self.UA = 1e-11
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute F_U with Orb_8 refinements.
+        
+        Parameters:
+        - frame: Frame number (1-30)
+        - t_n: Negative time factor
+        - quadrant: Current concentration quadrant
+        """
+        import math
+        
+        frame = dataset.get('frame', 30)
+        t_n = dataset.get('t_n', 0.5)
+        quadrant = dataset.get('quadrant', 'upper_right')
+        
+        # Time from frame number
+        t = (frame - 1) * self.frame_interval
+        
+        # Height from quadrant
+        quadrant_heights = {
+            'lower_left': 0.25, 'lower_center': 0.25, 'lower_right': 0.25,
+            'center_left': 0.5, 'center': 0.5, 'center_right': 0.5,
+            'upper_left': 0.75, 'upper_center': 0.75, 'upper_right': 0.75,
+        }
+        z_normalized = quadrant_heights.get(quadrant, 0.5)
+        z = z_normalized * self.height
+        
+        # Temperature at height
+        T_at_z = self.T_base - (self.T_base - self.T_top) * z_normalized
+        T_factor = T_at_z / 300
+        
+        # E_react
+        E_react = self.SCm * T_factor * math.exp(-self.alpha * t)
+        
+        # Ug1 with glass imperfection
+        mu_s = 1e-4 * T_factor
+        grad_rho = 0.5 / self.r
+        Ug1 = self.k[0] * mu_s * grad_rho * math.exp(-self.alpha * t * math.cos(math.pi * t_n))
+        Ug1 *= (1 + 0.01 * math.sin(0.001 * t))
+        
+        # Ug2 outer field
+        Ug2 = self.k[1] * (self.UA + self.UA) * 0.5 / self.r**2 * 1 * self.SCm * math.exp(-self.alpha * t)
+        Ug2 *= (1 + 0.01 * 5e5)
+        
+        # Ug3 magnetic strings
+        Ug3 = self.k[2] * self.B_s * math.cos(self.omega_s * t * math.pi) * 1 * self.SCm * math.exp(-self.alpha * t)
+        
+        Ug_total = Ug1 + Ug2 + Ug3
+        
+        # Ubi
+        Omega_g = 7.3e-16
+        M_bh_ratio = 8.15e36 / 2.55e20
+        rho_A = 1e-21
+        Ubi = -self.beta_i * Ug_total * Omega_g * M_bh_ratio * (1 + 0.001 * rho_A) * self.SCm * math.cos(math.pi * t_n)
+        
+        # Um
+        phi_hat = 1
+        Um = (mu_s / self.r) * (1 - math.exp(-self.alpha * t * math.cos(math.pi * t_n))) * phi_hat * 1 * self.SCm * math.exp(-self.alpha * t)
+        
+        # Aμν
+        eta = 1e-22
+        rho_A_tensor = 1e-23
+        A_mu_nu = 1.0 + eta * T_at_z * self.UA * self.SCm * rho_A_tensor * math.cos(math.pi * t_n)
+        
+        # F_U
+        F_U = Ug_total + Ubi + Um * A_mu_nu
+        
+        return {
+            'F_U': F_U,
+            'Ug1': Ug1,
+            'Ug2': Ug2,
+            'Ug3': Ug3,
+            'Ug_total': Ug_total,
+            'Ubi': Ubi,
+            'Um': Um,
+            'A_mu_nu': A_mu_nu,
+            'E_react': E_react,
+            'frame': frame,
+            't_s': t,
+            'quadrant': quadrant,
+            'T_at_z_K': T_at_z,
+            'units': 'N (force), K (temperature)',
+            'source': 'Grok UFT Orb Analysis_8 Refined F_U (March 3-4, 2025)'
+        }
+
+
+class FieldGeneratorResonanceCalculator:
+    """
+    Analyzes Field Generator Experiment resonance in reactor.
+    
+    Flapping and resonance patterns from original experiment
+    echo in plasmoid dynamics at 6000 Hz
+    
+    Source: Grok UFT Orb Analysis_8 (March 3-4, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute field generator resonance metrics.
+        
+        Parameters:
+        - field_frequency_Hz: Field resonance frequency
+        - flap_amplitude: Flapping amplitude estimate
+        - n_bubbles: Number of hydrogen bubbles
+        """
+        import math
+        
+        field_frequency = dataset.get('field_frequency_Hz', 6000)
+        flap_amplitude = dataset.get('flap_amplitude', 0.01)  # 1 cm
+        n_bubbles = dataset.get('n_bubbles', 15)
+        
+        # Angular frequency
+        omega = 2 * math.pi * field_frequency
+        
+        # Wavelength in oil medium
+        c_oil = 1500  # m/s (approximate speed of sound in oil)
+        wavelength = c_oil / field_frequency
+        
+        # Standing wave nodes
+        reactor_height = 0.254
+        n_nodes = int(reactor_height / (wavelength / 2))
+        
+        # Resonance quality factor (Q)
+        # Higher Q = sharper resonance
+        damping = 0.01  # Low damping in oil
+        Q_factor = omega / (2 * damping * omega) if damping > 0 else 1000
+        
+        # Flapping energy per cycle
+        m_displaced = 0.5e-3  # 0.5 g
+        E_flap = 0.5 * m_displaced * (omega * flap_amplitude)**2
+        
+        # Power input from flapping
+        P_flap = E_flap * field_frequency
+        
+        # Bubble resonance modes
+        # Each bubble can resonate at field frequency
+        bubble_resonance_energy = E_flap / n_bubbles
+        
+        # Coupling between bubbles and field
+        coupling_strength = n_bubbles * math.log(1 + field_frequency / 1000)
+        
+        # Phase coherence
+        # Perfect coherence = 1, random = 0
+        phase_coherence = 0.8  # Estimated from stable patterns
+        
+        return {
+            'field_frequency_Hz': field_frequency,
+            'omega_rad_s': omega,
+            'wavelength_m': wavelength,
+            'n_standing_nodes': n_nodes,
+            'Q_factor': Q_factor,
+            'flap_amplitude_m': flap_amplitude,
+            'E_flap_J': E_flap,
+            'P_flap_W': P_flap,
+            'n_bubbles': n_bubbles,
+            'bubble_resonance_energy_J': bubble_resonance_energy,
+            'coupling_strength': coupling_strength,
+            'phase_coherence': phase_coherence,
+            'units': 'Hz (frequency), m (wavelength), J (energy), W (power)',
+            'source': 'Grok UFT Orb Analysis_8 Field Resonance (March 3-4, 2025)'
+        }
+
+
+class PlasmoidSettlingDynamicsCalculator:
+    """
+    Analyzes plasmoid settling dynamics (downward motion).
+    
+    Photo #31 shows concentration in lower left,
+    suggesting settling/descent after upper right (#30)
+    
+    Source: Grok UFT Orb Analysis_8 (March 3-4, 2025)
+    """
+    
+    def __init__(self, reactor_height: float = 0.254):
+        self.reactor_height = reactor_height
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute settling dynamics.
+        
+        Parameters:
+        - plasmoid_density: Plasmoid density (kg/m³)
+        - oil_density: Oil density (kg/m³)
+        - oil_viscosity: Dynamic viscosity (Pa·s)
+        - plasmoid_radius: Plasmoid radius (m)
+        """
+        import math
+        
+        plasmoid_density = dataset.get('plasmoid_density', 900)  # Slightly denser than oil
+        oil_density = dataset.get('oil_density', 850)
+        oil_viscosity = dataset.get('oil_viscosity', 0.01)
+        plasmoid_radius = dataset.get('plasmoid_radius', 1e-3)
+        
+        # Density difference
+        delta_rho = plasmoid_density - oil_density
+        
+        # Gravitational force
+        g = 9.8
+        V_plasmoid = (4/3) * math.pi * plasmoid_radius**3
+        F_gravity = delta_rho * V_plasmoid * g
+        
+        # Stokes terminal velocity (settling)
+        v_terminal = (2 * delta_rho * g * plasmoid_radius**2) / (9 * oil_viscosity)
+        
+        # Reynolds number
+        Re = oil_density * abs(v_terminal) * (2 * plasmoid_radius) / oil_viscosity
+        
+        # Settling time to descend full height
+        settling_time = self.reactor_height / abs(v_terminal) if v_terminal != 0 else float('inf')
+        
+        # Is it settling or buoyant?
+        is_settling = delta_rho > 0
+        behavior = 'settling' if is_settling else 'buoyant'
+        
+        # Competing forces
+        # Buoyancy from thermal expansion
+        thermal_expansion = 1e-3  # 1/K
+        delta_T = 78  # 366 - 288 K
+        thermal_buoyancy = oil_density * thermal_expansion * delta_T * V_plasmoid * g
+        
+        # Net force
+        F_net = F_gravity - thermal_buoyancy
+        net_behavior = 'settling' if F_net > 0 else 'buoyant' if F_net < 0 else 'neutral'
+        
+        # Magnetic levitation contribution
+        B_field = 1e-3
+        chi_plasmoid = 1e-5  # Magnetic susceptibility
+        grad_B = B_field / self.reactor_height
+        F_mag = (chi_plasmoid / (2 * 4 * math.pi * 1e-7)) * B_field * grad_B * V_plasmoid
+        
+        return {
+            'plasmoid_density_kg_m3': plasmoid_density,
+            'oil_density_kg_m3': oil_density,
+            'delta_rho_kg_m3': delta_rho,
+            'F_gravity_N': F_gravity,
+            'v_terminal_m_s': v_terminal,
+            'reynolds_number': Re,
+            'settling_time_s': settling_time,
+            'behavior': behavior,
+            'thermal_buoyancy_N': thermal_buoyancy,
+            'F_net_N': F_net,
+            'net_behavior': net_behavior,
+            'F_magnetic_N': F_mag,
+            'units': 'N (force), m/s (velocity), s (time)',
+            'source': 'Grok UFT Orb Analysis_8 Settling Dynamics (March 3-4, 2025)'
+        }
+
+
+class ACEDCEEventCounterCalculator:
+    """
+    Counts ACE/DCE events across video sequence.
+    
+    Bright spots indicate [ACE/DCE] plasma events
+    ~1 mJ per spot, tied to [SCm] reactivity
+    
+    Source: Grok UFT Orb Analysis_8 (March 3-4, 2025)
+    """
+    
+    def __init__(self, n_frames: int = 30):
+        self.n_frames = n_frames
+        
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute ACE/DCE event statistics.
+        
+        Parameters:
+        - n_spots_per_frame: Average spots per frame
+        - ace_fraction: Fraction of spots that are ACE events
+        - dce_fraction: Fraction of spots that are DCE events
+        - energy_per_event_J: Energy per ACE/DCE event
+        """
+        import math
+        
+        n_spots_per_frame = dataset.get('n_spots_per_frame', 45)
+        ace_fraction = dataset.get('ace_fraction', 0.6)  # 60% ACE
+        dce_fraction = dataset.get('dce_fraction', 0.4)  # 40% DCE
+        energy_per_event = dataset.get('energy_per_event_J', 1e-3)
+        
+        # Total spots across sequence
+        total_spots = n_spots_per_frame * self.n_frames
+        
+        # ACE and DCE counts
+        ace_events = int(total_spots * ace_fraction)
+        dce_events = int(total_spots * dce_fraction)
+        
+        # Energy from each type
+        ace_energy = ace_events * energy_per_event
+        dce_energy = dce_events * energy_per_event
+        total_energy = ace_energy + dce_energy
+        
+        # Event rate
+        frame_interval = 0.03
+        duration = self.n_frames * frame_interval
+        ace_rate = ace_events / duration
+        dce_rate = dce_events / duration
+        
+        # Peak events (brightest frames)
+        peak_spots = int(n_spots_per_frame * 1.5)
+        peak_ace = int(peak_spots * ace_fraction)
+        peak_dce = int(peak_spots * dce_fraction)
+        
+        # SCm correlation
+        # Higher SCm density = more events
+        scm_correlation = math.log(1e15) / 34.5  # Normalized
+        
+        # Spatial distribution
+        # Assuming events follow quadrant concentration
+        quadrant_distribution = {
+            'upper_right': 0.3,  # Frame 30 concentration
+            'lower_left': 0.3,  # Frame 31 concentration
+            'other': 0.4
+        }
+        
+        return {
+            'n_frames': self.n_frames,
+            'n_spots_per_frame': n_spots_per_frame,
+            'total_spots': total_spots,
+            'ace_events': ace_events,
+            'dce_events': dce_events,
+            'ace_fraction': ace_fraction,
+            'dce_fraction': dce_fraction,
+            'ace_energy_J': ace_energy,
+            'dce_energy_J': dce_energy,
+            'total_energy_J': total_energy,
+            'ace_rate_per_s': ace_rate,
+            'dce_rate_per_s': dce_rate,
+            'peak_ace_per_frame': peak_ace,
+            'peak_dce_per_frame': peak_dce,
+            'scm_correlation': scm_correlation,
+            'quadrant_distribution': quadrant_distribution,
+            'units': 'events (count), J (energy), events/s (rate)',
+            'source': 'Grok UFT Orb Analysis_8 ACE/DCE Counter (March 3-4, 2025)'
+        }
+
+
+class ConvectionCycleTrackerCalculator:
+    """
+    Tracks convection cycle patterns across frames.
+    
+    Plasmoids cycle: rise → drift → settle → rise
+    Driven by thermal gradients and [Ub]
+    
+    Source: Grok UFT Orb Analysis_8 (March 3-4, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute convection cycle metrics.
+        
+        Parameters:
+        - quadrant_sequence: List of (frame, quadrant) tuples
+        """
+        import math
+        
+        # Default: Recent quadrant history
+        quadrant_sequence = dataset.get('quadrant_sequence', [
+            (24, 'upper_left'),
+            (25, 'lower_center'),
+            (26, 'upper_center'),
+            (27, 'lower_right'),
+            (28, 'upper_right'),
+            (29, 'upper_left'),
+            (30, 'upper_right'),
+            (31, 'lower_left'),
+        ])
+        
+        # Count vertical transitions
+        up_transitions = 0
+        down_transitions = 0
+        level_transitions = 0
+        
+        upper_quadrants = ['upper_left', 'upper_center', 'upper_right']
+        lower_quadrants = ['lower_left', 'lower_center', 'lower_right']
+        
+        for i in range(1, len(quadrant_sequence)):
+            prev_q = quadrant_sequence[i-1][1]
+            curr_q = quadrant_sequence[i][1]
+            
+            prev_is_upper = prev_q in upper_quadrants
+            curr_is_upper = curr_q in upper_quadrants
+            prev_is_lower = prev_q in lower_quadrants
+            curr_is_lower = curr_q in lower_quadrants
+            
+            if prev_is_lower and curr_is_upper:
+                up_transitions += 1
+            elif prev_is_upper and curr_is_lower:
+                down_transitions += 1
+            else:
+                level_transitions += 1
+        
+        # Complete cycles (up + down = 1 cycle)
+        complete_cycles = min(up_transitions, down_transitions)
+        
+        # Cycle period estimate
+        n_frames_sequence = len(quadrant_sequence)
+        frame_interval = 0.03
+        sequence_duration = n_frames_sequence * frame_interval
+        
+        if complete_cycles > 0:
+            avg_cycle_period = sequence_duration / complete_cycles
+            cycle_frequency = 1 / avg_cycle_period
+        else:
+            avg_cycle_period = float('inf')
+            cycle_frequency = 0
+        
+        # Convection efficiency (complete cycles / total transitions)
+        total_transitions = up_transitions + down_transitions + level_transitions
+        efficiency = (2 * complete_cycles) / total_transitions if total_transitions > 0 else 0
+        
+        # Pattern regularity
+        # Regular = alternating up/down, irregular = random
+        expected_pattern = ['up', 'down'] * (len(quadrant_sequence) // 2)
+        actual_pattern = []
+        for i in range(1, len(quadrant_sequence)):
+            prev_q = quadrant_sequence[i-1][1]
+            curr_q = quadrant_sequence[i][1]
+            if prev_q in lower_quadrants and curr_q in upper_quadrants:
+                actual_pattern.append('up')
+            elif prev_q in upper_quadrants and curr_q in lower_quadrants:
+                actual_pattern.append('down')
+            else:
+                actual_pattern.append('level')
+        
+        # Pattern match score
+        matches = sum(1 for a, e in zip(actual_pattern, expected_pattern[:len(actual_pattern)]) if a == e)
+        regularity = matches / len(actual_pattern) if actual_pattern else 0
+        
+        return {
+            'quadrant_sequence_count': n_frames_sequence,
+            'up_transitions': up_transitions,
+            'down_transitions': down_transitions,
+            'level_transitions': level_transitions,
+            'complete_cycles': complete_cycles,
+            'avg_cycle_period_s': avg_cycle_period,
+            'cycle_frequency_Hz': cycle_frequency,
+            'efficiency': efficiency,
+            'regularity': regularity,
+            'actual_pattern': actual_pattern,
+            'units': 's (period), Hz (frequency), dimensionless (efficiency)',
+            'source': 'Grok UFT Orb Analysis_8 Convection Cycle (March 3-4, 2025)'
+        }
+
+
+class MagneticDampeningCalculator:
+    """
+    Calculates magnetic dampening for shielding applications.
+    
+    Stable energy (~1.35 J over 30 frames) and magnetic fields
+    suggest potential for electromagnetic shielding
+    
+    Source: Grok UFT Orb Analysis_8 (March 3-4, 2025)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute magnetic dampening metrics.
+        
+        Parameters:
+        - B_field: Magnetic field strength (T)
+        - n_bubbles: Number of hydrogen bubbles
+        - shielding_volume: Volume to shield (m³)
+        """
+        import math
+        
+        B_field = dataset.get('B_field', 1e-3)
+        n_bubbles = dataset.get('n_bubbles', 15)
+        shielding_volume = dataset.get('shielding_volume', 1e-3)  # 1 liter
+        
+        # Magnetic permeability
+        mu_0 = 4 * math.pi * 1e-7
+        
+        # Magnetic energy density
+        B_energy_density = B_field**2 / (2 * mu_0)
+        
+        # Total magnetic energy in reactor
+        reactor_volume = math.pi * 0.0889**2 * 0.254
+        B_energy_total = B_energy_density * reactor_volume
+        
+        # Dampening factor per bubble
+        dampening_per_bubble = 1 / n_bubbles
+        total_dampening = 1 - (1 - dampening_per_bubble)**n_bubbles
+        
+        # Skin depth for electromagnetic waves
+        sigma = 1e6  # Conductivity (S/m) estimate for plasma
+        frequency = 6000
+        skin_depth = math.sqrt(2 / (mu_0 * sigma * 2 * math.pi * frequency))
+        
+        # Shielding effectiveness (dB)
+        thickness = 0.0889 * 2  # Reactor diameter
+        SE_dB = 20 * math.log10(math.exp(thickness / skin_depth)) if skin_depth > 0 else 0
+        
+        # Power attenuation
+        power_ratio = 10**(-SE_dB / 10)
+        
+        # Energy absorption capability
+        # Based on stable 1.35 J over 0.9 s
+        stable_energy = 1.35
+        absorption_rate = stable_energy / 0.9
+        
+        # Scale to target volume
+        scale_factor = shielding_volume / reactor_volume
+        scaled_absorption = absorption_rate * scale_factor
+        
+        return {
+            'B_field_T': B_field,
+            'B_energy_density_J_m3': B_energy_density,
+            'B_energy_total_J': B_energy_total,
+            'n_bubbles': n_bubbles,
+            'total_dampening': total_dampening,
+            'skin_depth_m': skin_depth,
+            'shielding_effectiveness_dB': SE_dB,
+            'power_attenuation_ratio': power_ratio,
+            'stable_energy_J': stable_energy,
+            'absorption_rate_W': absorption_rate,
+            'scaled_absorption_W': scaled_absorption,
+            'units': 'T (field), J (energy), dB (shielding), W (power)',
+            'source': 'Grok UFT Orb Analysis_8 Magnetic Dampening (March 3-4, 2025)'
+        }
+
+
+# UFT Orb Analysis_8 registry dict
+ORB_ANALYSIS_8_CALCULATORS = {
+    'ThirtyFrameSequenceCalculator': ThirtyFrameSequenceCalculator(),
+    'DiagonalConcentrationShiftCalculator': DiagonalConcentrationShiftCalculator(),
+    'Orb8RefinedFUCalculator': Orb8RefinedFUCalculator(),
+    'FieldGeneratorResonanceCalculator': FieldGeneratorResonanceCalculator(),
+    'PlasmoidSettlingDynamicsCalculator': PlasmoidSettlingDynamicsCalculator(),
+    'ACEDCEEventCounterCalculator': ACEDCEEventCounterCalculator(),
+    'ConvectionCycleTrackerCalculator': ConvectionCycleTrackerCalculator(),
+    'MagneticDampeningCalculator': MagneticDampeningCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -164964,4 +165753,15 @@ __all__.extend([
     'HydrogenBubbleAnchoringCalculator',
     'TotalEnergyAccumulationCalculator',
     'ORB_ANALYSIS_7_CALCULATORS',
+    # UFT Orb Analysis_8 - Photos #30-#31 Extended Sequence (March 3-4, 2025) - 8 Calculator Classes
+    'ORB_ANALYSIS_8_PARAMS',
+    'ThirtyFrameSequenceCalculator',
+    'DiagonalConcentrationShiftCalculator',
+    'Orb8RefinedFUCalculator',
+    'FieldGeneratorResonanceCalculator',
+    'PlasmoidSettlingDynamicsCalculator',
+    'ACEDCEEventCounterCalculator',
+    'ConvectionCycleTrackerCalculator',
+    'MagneticDampeningCalculator',
+    'ORB_ANALYSIS_8_CALCULATORS',
 ])
