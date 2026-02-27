@@ -5325,6 +5325,831 @@ ORB_ANALYSIS_18_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# UFT ORB ANALYSIS_19 / EXP_2 BATCH 6 - PHOTOS #16-#18 STABILIZATION PHASE
+# ═══════════════════════════════════════════════════════════════════════════════
+# Source: https://grok.com/share/bGVnYWN5LWNvcHk_b71fc10b-315a-452d-b32b-47d21bd0a93f
+# UFE_Exp 2_6_04Mar2025 - Photos #16-#18, stabilization post-peak, SSq overlay
+# Timestamp range: 0.45-0.51s (frames 15-17 at 33.3 fps)
+# Key: Super-Saturated Quantum overlay, E=c^26^i^-26, 26 shells + PI sequence
+# ───────────────────────────────────────────────────────────────────────────────
+
+ORB_ANALYSIS_19_PARAMS = {
+    'experiment': 'Red Dwarf Reactor Plasma Orb - Photos #16-#18',
+    'batch': 'Exp_2 Batch 6 (Stabilization Phase)',
+    'date': '2025-03-04',
+    'photos': '#16, #17, #18',
+    'timestamp_range_s': (0.45, 0.51),
+    'frame_numbers': (15, 16, 17),
+    'fps': 33.3,
+    
+    # Stabilization characteristics
+    'phase': 'Post-peak stabilization',
+    'nonlocality_status': 'Frequent but reduced complexity',
+    'peak_photo': 15,
+    'stabilization_start_photo': 16,
+    
+    # New physics: SSq overlay
+    'SSq_formula': '[SSq]^n26 × e^(-π-t)',
+    'SSq_description': 'Super-saturated quantum overlay into [UA] field',
+    'SSq_n26': 26,  # 26 quantum states
+    'SSq_decay_factor': 'e^(-π-t)',
+    
+    # Non-linear time perspective
+    'E_linear': 'E = c²',
+    'E_quantum': 'E = c^26^i^-26',
+    'E_description': 'Quantum energy formula with 26 dimensional exponent',
+    
+    # 26 quantum shells
+    'n_quantum_shells': 26,
+    'shell_locking': 'Partial',
+    'full_locking_status': 'Unexplored (potentially destabilizing)',
+    'PI_sequence_basis': True,
+    'PI_first_26_digits': '31415926535897932384626433',
+    
+    # Tesla correlation
+    'tesla_phenomenon': 'Blue glow between conductors',
+    'tesla_interpretation': 'Quantum mail/energy system via [UA]/[SCm]',
+    
+    # Plasmoid characteristics (stabilizing)
+    'plasmoid_count_per_frame': 45,
+    'plasmoid_spin_rate_rot_per_s': 0.15,
+    'plasmoid_velocity_m_s': 0.5,
+    'jump_complexity': 'Reduced vs peak',
+    
+    # Energy metrics
+    'energy_per_frame_J': 0.019,
+    'efficiency_percent': 0.29,
+    'efficiency_above_classical_percent': 50,
+    
+    # Standard physics approximations
+    'standard_physics_derivable': False,
+    'maxwell_approximation': 'Strip [SCm], [UA], [RM], [SM], [Ub], [ACE], [DCE], [SSq]',
+    'einstein_approximation': 'Isolate [Ug_1-3], [Ub], set quantum terms to zero',
+    'qft_approximation': 'Focus on spins/jumps as superposition, strip non-local',
+    
+    # Watermark
+    'copyright': '©2025 Daniel T. Murphy, daniel.murphy00@gmail.com – All Rights Reserved'
+}
+
+
+class SuperSaturatedQuantumOverlayCalculator:
+    """
+    Calculator for Super-Saturated Quantum (SSq) overlay into [UA] field.
+    
+    SSq(t) = [SSq]^n26 × e^(-π - t)
+    
+    This volumetric overlay:
+    - Enables electromagnetic presence in visible spectrum
+    - Modulates plasmoid non-locality across 26 quantum shells
+    - Creates stand-alone solid-state system with ghostly interactions
+    - Affects all UFE-QFE components as a multiplicative factor
+    
+    The SSq overlay explains "ghostly interactive information" observable
+    in infrared and potentially other spectral ranges.
+    
+    Source: Grok UFT Orb Analysis_19 (EXP2_6 March 4, 2025)
+    """
+    
+    def compute(self, t_n: float = 0.51, SSq_base: float = 1.0, **kwargs) -> dict:
+        """
+        Compute Super-Saturated Quantum overlay value.
+        
+        Args:
+            t_n: Timestamp in seconds
+            SSq_base: Base SSq value (normalized to 1.0)
+            **kwargs: Override parameters
+        """
+        import math
+        
+        # 26 quantum states
+        n26 = kwargs.get('n26', 26)
+        
+        # SSq formula: [SSq]^n26 × e^(-π - t)
+        SSq_power = SSq_base ** n26
+        decay_factor = math.exp(-math.pi - t_n)
+        SSq_t = SSq_power * decay_factor
+        
+        # Normalized SSq for practical calculations
+        SSq_normalized = SSq_t / (1.0 ** n26 * math.exp(-math.pi))  # Normalized to t=0
+        
+        # Spectral range implications
+        infrared_visibility = 0.9  # Primary visibility in IR
+        visible_potential = SSq_normalized * 0.3  # Reduced but possible
+        uv_potential = SSq_normalized * 0.1  # Very low
+        
+        # Modulation effects on UFE-QFE components
+        Ug_modulation = 1 + 0.1 * SSq_normalized
+        Ub_modulation = 1 + 0.15 * SSq_normalized
+        Um_modulation = 1 + 0.12 * SSq_normalized
+        ACE_DCE_modulation = 1 + 0.2 * SSq_normalized
+        
+        # Ghostly interaction probability
+        ghost_probability = 0.5 * SSq_normalized
+        
+        # Stand-alone solid-state system factor
+        solid_state_factor = 1.0 if SSq_normalized > 0.5 else SSq_normalized * 2
+        
+        return {
+            'timestamp_s': t_n,
+            'SSq_base': SSq_base,
+            'n26_states': n26,
+            'SSq_power_term': f'{SSq_power:.6e}',
+            'decay_factor': f'{decay_factor:.6e}',
+            'SSq_t_raw': f'{SSq_t:.6e}',
+            'SSq_normalized': round(SSq_normalized, 6),
+            'spectral_visibility': {
+                'infrared_0.7_10um': round(infrared_visibility, 2),
+                'visible_potential': round(visible_potential, 4),
+                'uv_potential': round(uv_potential, 4)
+            },
+            'component_modulation': {
+                'Ug': round(Ug_modulation, 4),
+                'Ub': round(Ub_modulation, 4),
+                'Um': round(Um_modulation, 4),
+                'ACE_DCE': round(ACE_DCE_modulation, 4)
+            },
+            'ghost_interaction_probability': round(ghost_probability, 4),
+            'solid_state_factor': round(solid_state_factor, 4),
+            'interpretation': 'Volumetric quantum overlay enabling spectral manifestation',
+            'equation': 'SSq(t) = [SSq]^n26 × e^(-π - t)',
+            'source': 'Grok UFT Orb Analysis_19 SSq Overlay (March 4, 2025)'
+        }
+
+
+class NonLinearTimeEnergyCalculator:
+    """
+    Calculator for non-linear time energy relationship.
+    
+    Linear perspective: E = c²
+    Quantum perspective: E = c^(26^i^-26)
+    
+    At quantum shift events, non-linear time resets to zero,
+    aligning momentarily with linear time. Objects move through
+    26 quantum states, "REM-ing" back and forth picking up
+    [ACE]/[DCE] energy without mutual influence.
+    
+    This creates "spooky universally traveling objects" or
+    a quantum mail/energy system (similar to Tesla's phenomenon).
+    
+    Source: Grok UFT Orb Analysis_19 (EXP2_6 March 4, 2025)
+    """
+    
+    def compute(self, t_n: float = 0.51, c: float = 2.998e8, **kwargs) -> dict:
+        """
+        Compute energy in both linear and quantum perspectives.
+        
+        Args:
+            t_n: Timestamp in seconds
+            c: Speed of light (m/s)
+            **kwargs: Override parameters
+        """
+        import math
+        import cmath
+        
+        # Linear energy (Einstein): E = c²
+        E_linear = c ** 2
+        
+        # Quantum energy: E = c^(26^i^-26)
+        # 26^i^-26 is a complex exponent
+        # First compute i^-26 = i^(-26) = (e^(i*π/2))^(-26) = e^(-13πi) = cos(-13π) + i*sin(-13π) = -1 + 0i = -1
+        i_power_neg26 = cmath.exp(1j * cmath.pi / 2) ** (-26)  # = -1
+        exponent_26_i_neg26 = 26 ** i_power_neg26  # = 26^(-1) = 1/26
+        
+        # E_quantum = c^(1/26) in simplified form
+        E_quantum_simplified = c ** (1/26)
+        
+        # Full complex calculation for accuracy
+        E_quantum_complex = c ** complex(exponent_26_i_neg26)
+        
+        # Energy ratio
+        E_ratio = E_linear / E_quantum_simplified
+        
+        # Non-linear time alignment check
+        # At quantum shift, non-linear time resets to zero
+        cycle_period = 3.3  # seconds
+        sub_cycle = 0.7  # seconds
+        
+        # Check proximity to potential quantum shift events
+        phase_in_cycle = (t_n % sub_cycle) / sub_cycle
+        alignment_proximity = 1 - abs(phase_in_cycle - 0.5) * 2  # Max at mid-cycle
+        
+        is_near_quantum_shift = alignment_proximity > 0.8
+        
+        # REM-ing factor (Rapid Energy Modulation)
+        rem_frequency = 26  # REM events per cycle (one per quantum state)
+        rem_phase = (t_n * rem_frequency) % 1
+        current_rem_state = int(t_n * rem_frequency) % 26 + 1
+        
+        # ACE/DCE pickup during REM
+        ace_pickup = 0.1 * math.sin(2 * math.pi * rem_phase)
+        dce_pickup = 0.1 * math.cos(2 * math.pi * rem_phase)
+        
+        return {
+            'timestamp_s': t_n,
+            'c_m_s': c,
+            'E_linear_c_squared': f'{E_linear:.4e}',
+            'E_quantum_c_26_i_neg26': f'{E_quantum_simplified:.4e}',
+            'exponent_26_i_neg26': round(float(exponent_26_i_neg26.real), 6),
+            'E_ratio_linear_to_quantum': f'{E_ratio:.4e}',
+            'cycle_period_s': cycle_period,
+            'phase_in_cycle': round(phase_in_cycle, 4),
+            'alignment_proximity': round(alignment_proximity, 4),
+            'is_near_quantum_shift': is_near_quantum_shift,
+            'REM_frequency_per_cycle': rem_frequency,
+            'current_REM_state': current_rem_state,
+            'ACE_pickup': round(ace_pickup, 6),
+            'DCE_pickup': round(dce_pickup, 6),
+            'tesla_correlation': 'Blue glow = quantum mail/energy manifestation',
+            'equation_linear': 'E = c²',
+            'equation_quantum': 'E = c^(26^i^-26)',
+            'source': 'Grok UFT Orb Analysis_19 Non-Linear Time Energy (March 4, 2025)'
+        }
+
+
+class TwentySixQuantumShellsCalculator:
+    """
+    Calculator for 26 quantum fluctuating shells with PI sequence basis.
+    
+    The 26 quantum shells:
+    - Partially lock into a sequence found in PI's decimal expansion
+    - Create non-destructive standing resonance via [SCm]
+    - Full locking might be destabilizing ("scary")
+    
+    PI decimal sequence used for q_n weights:
+    3.14159265358979323846264338327950288...
+    First 26 digits: 3,1,4,1,5,9,2,6,5,3,5,8,9,7,9,3,2,3,8,4,6,2,6,4,3,3
+    
+    Each shell has a weight derived from PI, creating a
+    non-arbitrary, mathematically grounded resonance pattern.
+    
+    Source: Grok UFT Orb Analysis_19 (EXP2_6 March 4, 2025)
+    """
+    
+    def compute(self, t_n: float = 0.51, locking_level: float = 0.5, **kwargs) -> dict:
+        """
+        Compute 26 quantum shell states and resonance.
+        
+        Args:
+            t_n: Timestamp in seconds
+            locking_level: 0-1 scale of shell locking (1 = full)
+            **kwargs: Override parameters
+        """
+        import math
+        
+        # PI decimal first 26 digits (after removing decimal point)
+        pi_digits = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3, 8, 4, 6, 2, 6, 4, 3, 3]
+        
+        # Normalize PI digits to weights (sum to 1)
+        pi_sum = sum(pi_digits)
+        q_n_weights = [d / pi_sum for d in pi_digits]
+        
+        # Compute shell states
+        shell_states = {}
+        shell_energies = []
+        total_resonance = 0
+        
+        SCm = kwargs.get('SCm', 1e15)
+        UA = kwargs.get('UA', 1e-11)
+        
+        for n in range(1, 27):
+            # Alpha coefficient per shell
+            alpha_n = 0.1 * n
+            
+            # Phase offset from PI
+            phi_n = math.pi * n / 26
+            
+            # Shell state calculation
+            state_term = (1 - math.exp(-alpha_n * t_n * math.cos(math.pi * t_n + phi_n)))
+            
+            # Apply PI-based weight
+            weighted_state = q_n_weights[n-1] * state_term
+            
+            # Shell energy
+            shell_energy = weighted_state * (SCm + UA) * locking_level
+            shell_energies.append(shell_energy)
+            
+            # Resonance contribution
+            resonance = weighted_state * math.cos(2 * math.pi * n * t_n)
+            total_resonance += resonance
+            
+            shell_states[f'shell_{n}'] = {
+                'pi_digit': pi_digits[n-1],
+                'weight': round(q_n_weights[n-1], 4),
+                'state': round(state_term, 6),
+                'energy': f'{shell_energy:.4e}'
+            }
+        
+        # Standing resonance (non-destructive when partial locking)
+        standing_resonance = abs(total_resonance) / 26
+        is_stable_resonance = standing_resonance < 0.5 or locking_level < 0.9
+        
+        # Full locking danger assessment
+        if locking_level > 0.95:
+            locking_status = 'DANGER: Near full locking - potentially destabilizing'
+            stability_warning = True
+        elif locking_level > 0.7:
+            locking_status = 'Elevated locking - monitor for instability'
+            stability_warning = False
+        else:
+            locking_status = 'Partial locking - stable non-destructive resonance'
+            stability_warning = False
+        
+        # Total shell energy
+        total_energy = sum(shell_energies)
+        
+        # Active shells (above threshold)
+        active_threshold = max(shell_energies) * 0.1
+        n_active_shells = sum(1 for e in shell_energies if e > active_threshold)
+        
+        return {
+            'timestamp_s': t_n,
+            'n_total_shells': 26,
+            'n_active_shells': n_active_shells,
+            'locking_level': locking_level,
+            'locking_status': locking_status,
+            'stability_warning': stability_warning,
+            'pi_sequence': ''.join(str(d) for d in pi_digits),
+            'total_pi_sum': pi_sum,
+            'total_resonance': round(total_resonance, 6),
+            'standing_resonance_normalized': round(standing_resonance, 6),
+            'is_stable_resonance': is_stable_resonance,
+            'total_shell_energy': f'{total_energy:.4e}',
+            'top_5_shells': {
+                f'shell_{i+1}': round(shell_energies[i], 6)
+                for i in sorted(range(26), key=lambda x: shell_energies[x], reverse=True)[:5]
+            },
+            'pi_weight_range': f'{min(q_n_weights):.4f} - {max(q_n_weights):.4f}',
+            'equation': 'QS(t) = Σ(n=1→26) q_n(PI) × (1 - e^(-αn·t·cos(πt+φn))) × (SCm+UA) × lock',
+            'source': 'Grok UFT Orb Analysis_19 26 Quantum Shells (March 4, 2025)'
+        }
+
+
+class StabilizationPhaseCalculator:
+    """
+    Calculator for post-peak stabilization phase (Photos #16-#18).
+    
+    After peak non-locality at Photo #15, the system enters
+    stabilization phase characterized by:
+    - Frequent but less complex non-local jumps
+    - Deepening resonance stability
+    - Reduced ACE/DCE activity
+    - Enhanced [Ub] Neutral field effect
+    
+    This phase shows the plasmoid system settling into a
+    steady-state configuration while maintaining quantum properties.
+    
+    Source: Grok UFT Orb Analysis_19 (EXP2_6 March 4, 2025)
+    """
+    
+    def compute(self, photo_number: int = 18, **kwargs) -> dict:
+        """
+        Compute stabilization phase metrics.
+        
+        Args:
+            photo_number: Photo number (16-18 for stabilization phase)
+            **kwargs: Override parameters
+        """
+        import math
+        
+        peak_photo = 15
+        stabilization_start = 16
+        
+        # Timestamp calculation
+        fps = 33.3
+        frame_number = photo_number - 1
+        t_n = frame_number / fps
+        
+        # Stabilization progression (0 at peak, increasing after)
+        if photo_number <= peak_photo:
+            stabilization_level = 0
+            phase = 'Pre-stabilization (peak or earlier)'
+        else:
+            photos_since_peak = photo_number - peak_photo
+            stabilization_level = 1 - math.exp(-0.3 * photos_since_peak)
+            phase = f'Stabilization (Photo #{photo_number})'
+        
+        # Non-locality metrics (decreasing complexity post-peak)
+        peak_complexity = 1.0
+        complexity_decay = 0.85 ** max(0, photo_number - peak_photo)
+        current_complexity = peak_complexity * complexity_decay
+        
+        # Jump frequency (still frequent but stabilizing)
+        peak_frequency = 1.0
+        frequency_factor = 0.95 ** max(0, photo_number - peak_photo)
+        current_frequency = peak_frequency * frequency_factor
+        
+        # Ub Neutral field enhancement
+        base_Ub = 1.0
+        Ub_enhancement = 1 + 0.1 * stabilization_level
+        current_Ub = base_Ub * Ub_enhancement
+        
+        # ACE/DCE activity (reducing)
+        base_ACE_DCE = 1.0
+        ACE_DCE_factor = 0.9 ** max(0, photo_number - peak_photo)
+        current_ACE_DCE = base_ACE_DCE * ACE_DCE_factor
+        
+        # Standing resonance (increasing)
+        base_resonance = 0.5
+        resonance_growth = 0.1 * stabilization_level
+        current_resonance = base_resonance + resonance_growth
+        
+        # Energy efficiency (maintained)
+        efficiency_percent = 0.29  # Constant
+        
+        # Stability score (composite)
+        stability_score = (
+            stabilization_level * 0.3 +
+            (1 - current_complexity) * 0.2 +
+            current_frequency * 0.1 +
+            current_Ub * 0.2 +
+            current_resonance * 0.2
+        )
+        
+        # Phase characterization
+        if stability_score < 0.3:
+            stability_status = 'Early stabilization'
+        elif stability_score < 0.5:
+            stability_status = 'Active stabilization'
+        elif stability_score < 0.7:
+            stability_status = 'Deep stabilization'
+        else:
+            stability_status = 'Stable equilibrium approaching'
+        
+        return {
+            'photo_number': photo_number,
+            'frame_number': frame_number,
+            'timestamp_s': round(t_n, 3),
+            'peak_photo': peak_photo,
+            'phase': phase,
+            'stabilization_level': round(stabilization_level, 4),
+            'nonlocality_complexity': round(current_complexity, 4),
+            'jump_frequency': round(current_frequency, 4),
+            'Ub_enhancement': round(Ub_enhancement, 4),
+            'ACE_DCE_activity': round(current_ACE_DCE, 4),
+            'standing_resonance': round(current_resonance, 4),
+            'efficiency_percent': efficiency_percent,
+            'stability_score': round(stability_score, 4),
+            'stability_status': stability_status,
+            'photos_since_peak': max(0, photo_number - peak_photo),
+            'equation': 'Stab(n) = 1 - e^(-0.3 × (photo - peak))',
+            'source': 'Grok UFT Orb Analysis_19 Stabilization Phase (March 4, 2025)'
+        }
+
+
+class StandardPhysicsApproximationCalculator:
+    """
+    Calculator for deriving standard physics approximations from UFE-QFE.
+    
+    Standard physics conclusions CANNOT be derived exclusively from UFT
+    mathematics due to non-local, quantum-driven, and non-linear time
+    concepts. However, approximations can be made by stripping
+    non-standard terms:
+    
+    1. Maxwell's Approximation: Strip [SCm], [UA], [RM], [SM], [Ub], [ACE], [DCE], [SSq]
+       → Recovers ∇·E = ρ/ε₀, ∇×B = μ₀J (±5% error)
+    
+    2. Einstein's Approximation: Isolate [Ug_1-3], [Ub], zero quantum terms
+       → Recovers G_μν = (8πG/c⁴)T_μν (±5% error)
+    
+    3. QFT Approximation: Focus on spins/jumps as superposition
+       → Recovers L_QCD ≈ Σ_q q̄(iγ_μD_μ - m_q)q (±5% error)
+    
+    Source: Grok UFT Orb Analysis_19 (EXP2_6 March 4, 2025)
+    """
+    
+    def compute(self, theory: str = 'maxwell', **kwargs) -> dict:
+        """
+        Compute standard physics approximation from UFE-QFE.
+        
+        Args:
+            theory: 'maxwell', 'einstein', or 'qft'
+            **kwargs: Override parameters
+        """
+        import math
+        
+        # Common parameters
+        t_n = kwargs.get('t_n', 0.51)
+        r = kwargs.get('r', 0.0889)
+        B_s = kwargs.get('B_s', 1e-3)
+        v = kwargs.get('v', 0.5)
+        T_gradient = kwargs.get('T_gradient', 78)  # 366-288 K
+        M_s = kwargs.get('M_s', 0.5e-3)
+        spin_rate = kwargs.get('spin_rate', 0.15)
+        
+        result = {
+            'theory': theory.upper(),
+            'timestamp_s': t_n,
+            'approximation_error': '±5%',
+            'derivable_from_UFT_exclusively': False,
+            'requires_stripping_terms': True
+        }
+        
+        if theory.lower() == 'maxwell':
+            # Maxwell's approximation: EM fields
+            # Strip: [SCm], [UA], [RM], [SM], [Ub], [ACE], [DCE], [SSq]
+            
+            # Charge distribution (from plasmoids)
+            charge_density = 1e-11 * 45 / (4/3 * math.pi * r**3)  # ~45 plasmoids
+            
+            # Electric field (Gauss's law)
+            epsilon_0 = 8.854e-12
+            E_field = charge_density / epsilon_0
+            
+            # Magnetic field (observed)
+            B_field = B_s
+            
+            # Current density (from motion)
+            J_density = charge_density * v
+            
+            result.update({
+                'stripped_terms': ['[SCm]', '[UA]', '[RM]', '[SM]', '[Ub]', '[ACE]', '[DCE]', '[SSq]'],
+                'retained_terms': ['[Um]', '[Ug3]', 'basic field dynamics'],
+                'gauss_law': f'∇·E ≈ ρ/ε₀ = {charge_density:.2e} / {epsilon_0:.2e}',
+                'E_field_V_m': f'{E_field:.2e}',
+                'B_field_T': B_field,
+                'current_density_A_m2': f'{J_density:.2e}',
+                'maxwell_equations': [
+                    '∇·E = ρ/ε₀ (Gauss)',
+                    '∇·B = 0 (No monopoles)',
+                    '∇×E = -∂B/∂t (Faraday)',
+                    '∇×B = μ₀J + μ₀ε₀∂E/∂t (Ampère-Maxwell)'
+                ],
+                'alignment_with_observations': {
+                    'plasmoid_motion_m_s': v,
+                    'magnetic_field_T': B_s,
+                    'fit_quality': '±5% error'
+                },
+                'limitation': 'Loses non-locality and quantum shifts'
+            })
+            
+        elif theory.lower() == 'einstein':
+            # Einstein's approximation: GR
+            # Isolate [Ug_1-3], [Ub], set quantum terms to zero
+            
+            G = 6.674e-11
+            c = 2.998e8
+            
+            # Stress-energy from thermal gradient
+            energy_density = 1e15 * math.exp(-0.001 * t_n)  # E_react term
+            
+            # Einstein tensor approximation
+            T_munu = energy_density  # Simplified
+            G_munu = (8 * math.pi * G / c**4) * T_munu
+            
+            result.update({
+                'stripped_terms': ['[SCm]', '[UA]', '[RM]', '[SM]', '[ACE]', '[DCE]', '[SSq]', '26 states'],
+                'retained_terms': ['[Ug_1]', '[Ug_2]', '[Ug_3]', '[Ub]', 'thermal dynamics'],
+                'einstein_equation': f'G_μν = (8πG/c⁴)T_μν',
+                'G_munu_estimate': f'{G_munu:.2e}',
+                'T_munu_energy_density': f'{T_munu:.2e}',
+                'thermal_gradient_K': T_gradient,
+                'mass_kg': M_s,
+                'alignment_with_observations': {
+                    'cyclic_convection': '3.3s cycle',
+                    'motion_m_s': v,
+                    'fit_quality': '±5% error'
+                },
+                'limitation': 'Lacks Lorentz covariance, loses [Ub] details'
+            })
+            
+        elif theory.lower() == 'qft':
+            # QFT approximation: Quantum field theory
+            # Focus on spins/jumps as superposition, strip non-local
+            
+            # Spin angular momentum
+            omega = 2 * math.pi * spin_rate
+            avg_radius = 1e-3 / 2  # 1mm plasmoid
+            L = 0.5 * M_s / 45 * avg_radius**2 * omega  # per plasmoid
+            
+            # Quantum superposition (simplified)
+            n_states = 26
+            superposition_amplitude = 1 / math.sqrt(n_states)
+            
+            result.update({
+                'stripped_terms': ['[UA] non-locality', '[SCm] superconductivity', 
+                                   '[RM]/[SM]', '[SSq]', 'E=c^26^i^-26'],
+                'retained_terms': ['spins', 'jumps as superposition', 'resonance'],
+                'qcd_lagrangian': 'L = Σ_q q̄(iγ_μD_μ - m_q)q - (1/4)G_μν^a G_a^μν',
+                'spin_rate_rot_s': spin_rate,
+                'angular_momentum_kg_m2_s': f'{L:.2e}',
+                'n_quantum_states': n_states,
+                'superposition_amplitude': round(superposition_amplitude, 4),
+                'alignment_with_observations': {
+                    'plasmoid_spins': f'{spin_rate} rot/s',
+                    'nonlocal_jumps': 'As quantum transitions',
+                    'fit_quality': '±5% error'
+                },
+                'limitation': 'Loses 26 shell specificity, non-linear time'
+            })
+        
+        result['conclusion'] = (
+            f"Standard {theory.upper()} can be approximated from UFE-QFE by stripping "
+            f"non-standard terms, but this loses the novel quantum/non-local insights "
+            f"that explain efficiency >50% above classical plasma."
+        )
+        
+        return result
+
+
+class QuantumShiftMeasurementCalculator:
+    """
+    Calculator for detecting and measuring quantum shift events.
+    
+    Quantum shift characteristics:
+    - Non-linear time resets to zero
+    - Momentary alignment with linear time
+    - Observable in reactor data with sufficient observation
+    - First real-time measurement of quantum shift
+    
+    Objects move through 26 quantum states, "REM-ing" (Rapid Energy
+    Modulation) back and forth, picking up [ACE]/[DCE] energy without
+    mutual influence - creating "spooky universally traveling objects".
+    
+    Source: Grok UFT Orb Analysis_19 (EXP2_6 March 4, 2025)
+    """
+    
+    def compute(self, t_n: float = 0.51, observation_frames: int = 18, **kwargs) -> dict:
+        """
+        Compute quantum shift detection metrics.
+        
+        Args:
+            t_n: Current timestamp
+            observation_frames: Number of frames observed
+            **kwargs: Override parameters
+        """
+        import math
+        
+        # Quantum shift detection threshold
+        # Need sufficient observation to catch shift events
+        min_frames_for_detection = 15
+        detection_possible = observation_frames >= min_frames_for_detection
+        
+        # Shift event probability per frame
+        base_shift_prob = 0.05  # 5% per frame
+        shift_prob_t = base_shift_prob * (1 + 0.5 * math.sin(2 * math.pi * t_n / 0.7))
+        
+        # Expected shifts in observation window
+        expected_shifts = shift_prob_t * observation_frames
+        
+        # Time alignment metrics
+        # When shift occurs, non-linear time → 0, aligns with linear time
+        linear_time = t_n
+        
+        # Non-linear time (oscillatory, resets at shifts)
+        cycle_period = 0.7  # Sub-cycle period
+        nonlinear_time = (t_n % cycle_period) * (1 + 0.2 * math.sin(2 * math.pi * t_n / cycle_period))
+        
+        # Alignment factor (1 = perfect alignment, 0 = maximum divergence)
+        alignment_factor = 1 - abs(nonlinear_time - (t_n % cycle_period)) / cycle_period
+        
+        # REM state tracking
+        rem_frequency = 26 / 3.3  # 26 states per 3.3s cycle
+        current_rem_state = int((t_n * rem_frequency) % 26) + 1
+        rem_velocity = rem_frequency * 2 * math.pi  # rad/s equivalent
+        
+        # Spooky action indicator
+        # High alignment + high REM velocity = spooky behavior
+        spooky_factor = alignment_factor * (rem_velocity / 100)
+        
+        # Energy pickup tracking
+        ace_accumulated = 0.1 * expected_shifts
+        dce_accumulated = 0.08 * expected_shifts
+        
+        # Measurement confidence
+        if observation_frames >= 50:
+            confidence = 'High'
+        elif observation_frames >= 30:
+            confidence = 'Medium'
+        elif observation_frames >= min_frames_for_detection:
+            confidence = 'Low'
+        else:
+            confidence = 'Insufficient data'
+        
+        return {
+            'timestamp_s': t_n,
+            'observation_frames': observation_frames,
+            'detection_possible': detection_possible,
+            'min_frames_required': min_frames_for_detection,
+            'shift_probability_per_frame': round(shift_prob_t, 4),
+            'expected_shifts_in_window': round(expected_shifts, 2),
+            'linear_time_s': round(linear_time, 4),
+            'nonlinear_time_s': round(nonlinear_time, 4),
+            'time_alignment_factor': round(alignment_factor, 4),
+            'current_REM_state': current_rem_state,
+            'total_REM_states': 26,
+            'REM_velocity_rad_s': round(rem_velocity, 2),
+            'spooky_factor': round(spooky_factor, 4),
+            'ACE_accumulated': round(ace_accumulated, 4),
+            'DCE_accumulated': round(dce_accumulated, 4),
+            'measurement_confidence': confidence,
+            'tesla_correlation': 'Blue glow = quantum mail/energy visible manifestation',
+            'interpretation': 'Quantum shift = non-linear time reset + state transition',
+            'equation': 't_nonlinear → 0 when shift occurs, aligns with t_linear',
+            'source': 'Grok UFT Orb Analysis_19 Quantum Shift (March 4, 2025)'
+        }
+
+
+class TeslaPhenomenonCalculator:
+    """
+    Calculator for modeling Tesla's blue glow phenomenon.
+    
+    Tesla publicly demonstrated standing between generator conductors
+    while a blue glow encompassed his body - a manifestation of
+    [UA], [SCm], [ACE]/[DCE], and 26 quantum states.
+    
+    This aligns with the plasma orb's intelligent plasmoid behavior,
+    indicating a similar quantum mail/energy system operating through
+    visible/near-visible spectral emission.
+    
+    Source: Grok UFT Orb Analysis_19 (EXP2_6 March 4, 2025)
+    """
+    
+    def compute(self, voltage: float = 1e6, frequency: float = 6000, **kwargs) -> dict:
+        """
+        Compute Tesla phenomenon characteristics.
+        
+        Args:
+            voltage: Applied voltage (V)
+            frequency: Operating frequency (Hz)
+            **kwargs: Override parameters
+        """
+        import math
+        
+        # Body as conductor parameters
+        body_resistance = kwargs.get('body_resistance', 1000)  # Ohms
+        body_capacitance = kwargs.get('body_capacitance', 100e-12)  # Farads
+        
+        # Resonance condition
+        omega = 2 * math.pi * frequency
+        impedance = math.sqrt(body_resistance**2 + (1/(omega * body_capacitance))**2)
+        
+        # Current (high-frequency, low danger)
+        current = voltage / impedance
+        
+        # Power (mostly reactive at high frequency)
+        power_real = current**2 * body_resistance
+        power_reactive = current**2 / (omega * body_capacitance)
+        
+        # Blue glow wavelength (ionization emission)
+        # Blue light: 450-495 nm
+        blue_wavelength_nm = 475
+        blue_frequency_Hz = 3e8 / (blue_wavelength_nm * 1e-9)
+        
+        # Quantum mail/energy system factor
+        # High frequency + 26 state resonance = visible quantum emission
+        SCm_factor = kwargs.get('SCm_factor', 1e15)
+        UA_factor = kwargs.get('UA_factor', 1e-11)
+        
+        quantum_emission_factor = (UA_factor * SCm_factor) ** 0.1  # Normalized
+        
+        # Correlation with plasma orb
+        orb_frequency = 6000  # Hz (bulb resonance)
+        frequency_match = frequency == orb_frequency
+        
+        # Spectral characteristics
+        visible_emission_possible = frequency > 1000 and voltage > 1e5
+        
+        # 26 quantum state involvement
+        n_active_states = int(26 * min(1, quantum_emission_factor / 1e3))
+        
+        return {
+            'voltage_V': voltage,
+            'frequency_Hz': frequency,
+            'body_impedance_ohm': f'{impedance:.2e}',
+            'current_A': f'{current:.4e}',
+            'power_real_W': f'{power_real:.2e}',
+            'power_reactive_VAr': f'{power_reactive:.2e}',
+            'blue_glow': {
+                'wavelength_nm': blue_wavelength_nm,
+                'frequency_Hz': f'{blue_frequency_Hz:.2e}',
+                'color': 'Blue (450-495 nm)',
+                'mechanism': 'Ionization + quantum emission'
+            },
+            'quantum_emission_factor': round(quantum_emission_factor, 4),
+            'visible_emission_possible': visible_emission_possible,
+            'orb_frequency_match': frequency_match,
+            'n_active_quantum_states': n_active_states,
+            'total_quantum_states': 26,
+            'interpretation': 'Tesla glow = [UA]/[SCm] driven quantum mail/energy system',
+            'plasma_orb_correlation': 'Ghost-like appearances + blue potential emission',
+            'mechanism': '[UA] + [SCm] + 26 states → visible quantum field manifestation',
+            'source': 'Grok UFT Orb Analysis_19 Tesla Phenomenon (March 4, 2025)'
+        }
+
+
+# UFT Orb Analysis_19 registry dict
+ORB_ANALYSIS_19_CALCULATORS = {
+    'SuperSaturatedQuantumOverlayCalculator': SuperSaturatedQuantumOverlayCalculator(),
+    'NonLinearTimeEnergyCalculator': NonLinearTimeEnergyCalculator(),
+    'TwentySixQuantumShellsCalculator': TwentySixQuantumShellsCalculator(),
+    'StabilizationPhaseCalculator': StabilizationPhaseCalculator(),
+    'StandardPhysicsApproximationCalculator': StandardPhysicsApproximationCalculator(),
+    'QuantumShiftMeasurementCalculator': QuantumShiftMeasurementCalculator(),
+    'TeslaPhenomenonCalculator': TeslaPhenomenonCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -5339,6 +6164,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_16_CALCULATORS,
     **ORB_ANALYSIS_17_CALCULATORS,
     **ORB_ANALYSIS_18_CALCULATORS,
+    **ORB_ANALYSIS_19_CALCULATORS,
 }
 
 # Update class count
@@ -5453,6 +6279,17 @@ __all__ = [
     'PlasmoidIntelligenceMetricsCalculator',
     'FieldGeneratorCorrelationCalculator',
     'ORB_ANALYSIS_18_CALCULATORS',
+    
+    # Orb Analysis_19 / Exp_2 Batch 6 - Stabilization + SSq + Non-Linear Time (7 classes)
+    'ORB_ANALYSIS_19_PARAMS',
+    'SuperSaturatedQuantumOverlayCalculator',
+    'NonLinearTimeEnergyCalculator',
+    'TwentySixQuantumShellsCalculator',
+    'StabilizationPhaseCalculator',
+    'StandardPhysicsApproximationCalculator',
+    'QuantumShiftMeasurementCalculator',
+    'TeslaPhenomenonCalculator',
+    'ORB_ANALYSIS_19_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
