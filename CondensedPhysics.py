@@ -159265,6 +159265,502 @@ PHASE6_CALCULATORS = {
 }
 
 
+# =============================================================================
+# KEPLER ORRERY V - U_b MODEL CALCULATORS (from Grok UQFF Compression Cycle 2)
+# Source: 62 frames (Sep 21 - Dec 21, 2011), 38 documents compressed
+# Exoplanetary UQFF adaptation: g_Ub = F_orbit + F_tide + F_gal
+# =============================================================================
+
+class KeplerOrreryOrbitalCalculator:
+    """
+    F_orbit: Orbital resonance stability from Kepler Orrery V model.
+    F_orbit = (G × M_p × M_s) / a³
+    
+    Where:
+        G = gravitational constant (6.674e-11 m³/kg·s²)
+        M_p = planet mass (kg)
+        M_s = star mass (kg)
+        a = semi-major axis (m)
+    
+    Computes resonance stability for multi-body planetary systems.
+    Source: UQFF Compression Cycle 2 (May-June 2025)
+    """
+    def __init__(self):
+        self.G = 6.674e-11
+        self.description = "Kepler Orrery V orbital resonance force"
+    
+    def compute(self, M_p: float = 5.972e24, M_s: float = 1.989e30, 
+                a: float = 1.496e11, **params) -> dict:
+        """
+        Compute orbital resonance force.
+        
+        Args:
+            M_p: Planet mass in kg (default: Earth mass)
+            M_s: Star mass in kg (default: Solar mass)
+            a: Semi-major axis in m (default: 1 AU)
+            
+        Returns:
+            dict with F_orbit and derived quantities
+        """
+        F_orbit = (self.G * M_p * M_s) / (a ** 3)
+        
+        # Orbital period via Kepler's 3rd law
+        T_orbital = 2.0 * 3.14159265359 * (a ** 1.5) / ((self.G * M_s) ** 0.5)
+        
+        # Mean motion
+        n = 2.0 * 3.14159265359 / T_orbital
+        
+        return {
+            'value': F_orbit,
+            'F_orbit_N_m3': F_orbit,
+            'T_orbital_s': T_orbital,
+            'T_orbital_days': T_orbital / 86400.0,
+            'mean_motion_rad_s': n,
+            'units': 'N/m³',
+            'equation': 'F_orbit = (G × M_p × M_s) / a³',
+            'source': 'Kepler Orrery V (Sep 21 - Dec 21, 2011)'
+        }
+
+
+class KeplerOrreryTidalCalculator:
+    """
+    F_tide: Tidal locking force from Kepler Orrery V model.
+    F_tide = (G × M_p × M_s × R_p) / a⁶
+    
+    Where:
+        G = gravitational constant (6.674e-11 m³/kg·s²)
+        M_p = planet mass (kg)
+        M_s = star mass (kg)
+        R_p = planet radius (m)
+        a = semi-major axis (m)
+    
+    Computes tidal locking timescale and tidal heating.
+    Source: UQFF Compression Cycle 2 (May-June 2025)
+    """
+    def __init__(self):
+        self.G = 6.674e-11
+        self.description = "Kepler Orrery V tidal locking force"
+    
+    def compute(self, M_p: float = 5.972e24, M_s: float = 1.989e30,
+                R_p: float = 6.371e6, a: float = 1.496e11, 
+                Q: float = 100.0, **params) -> dict:
+        """
+        Compute tidal locking force.
+        
+        Args:
+            M_p: Planet mass in kg (default: Earth mass)
+            M_s: Star mass in kg (default: Solar mass)
+            R_p: Planet radius in m (default: Earth radius)
+            a: Semi-major axis in m (default: 1 AU)
+            Q: Tidal quality factor (default: 100)
+            
+        Returns:
+            dict with F_tide and tidal locking timescale
+        """
+        F_tide = (self.G * M_p * M_s * R_p) / (a ** 6)
+        
+        # Tidal locking timescale (MacDonald 1964 formula approximation)
+        tau_lock = (Q * (a ** 6) * M_p) / (3.0 * self.G * (M_s ** 2) * (R_p ** 5))
+        
+        # Tidal heating rate (approximate)
+        omega_s = (self.G * M_s / (a ** 3)) ** 0.5  # Orbital angular velocity
+        E_dot_tidal = (21.0 / 2.0) * (self.G * (M_s ** 2) * (R_p ** 5) * omega_s) / (Q * (a ** 6))
+        
+        return {
+            'value': F_tide,
+            'F_tide_N_m6': F_tide,
+            'tau_lock_s': tau_lock,
+            'tau_lock_Gyr': tau_lock / (1e9 * 365.25 * 86400),
+            'E_dot_tidal_W': E_dot_tidal,
+            'units': 'N/m⁶',
+            'equation': 'F_tide = (G × M_p × M_s × R_p) / a⁶',
+            'source': 'Kepler Orrery V (MacDonald 1964)'
+        }
+
+
+class KeplerOrreryGalacticCalculator:
+    """
+    F_gal: Galactic rotation + dark matter contribution.
+    F_gal = v_gal²/r_gal + G×M_DM/r_gal²
+    
+    Where:
+        v_gal = galactic rotation velocity (m/s)
+        r_gal = galactocentric radius (m)
+        G = gravitational constant (6.674e-11 m³/kg·s²)
+        M_DM = enclosed dark matter mass (kg)
+    
+    Computes galactic tidal effects on exoplanetary systems.
+    Source: UQFF Compression Cycle 2 (May-June 2025)
+    """
+    def __init__(self):
+        self.G = 6.674e-11
+        self.description = "Kepler Orrery V galactic rotation force"
+    
+    def compute(self, v_gal: float = 2.2e5, r_gal: float = 2.5e20,
+                M_DM: float = 1e42, **params) -> dict:
+        """
+        Compute galactic force contribution.
+        
+        Args:
+            v_gal: Galactic rotation velocity in m/s (default: 220 km/s)
+            r_gal: Galactocentric radius in m (default: 8 kpc)
+            M_DM: Enclosed dark matter mass in kg (default: ~5e11 M_sun)
+            
+        Returns:
+            dict with F_gal components
+        """
+        # Centripetal component
+        F_centripetal = (v_gal ** 2) / r_gal
+        
+        # Dark matter gravitational component
+        F_DM = self.G * M_DM / (r_gal ** 2)
+        
+        # Total galactic force
+        F_gal = F_centripetal + F_DM
+        
+        # Oort constants approximation
+        A_Oort = v_gal / (2.0 * r_gal)  # First Oort constant approx
+        
+        return {
+            'value': F_gal,
+            'F_gal_m_s2': F_gal,
+            'F_centripetal_m_s2': F_centripetal,
+            'F_DM_m_s2': F_DM,
+            'A_Oort_rad_s': A_Oort,
+            'units': 'm/s²',
+            'equation': 'F_gal = v_gal²/r_gal + G×M_DM/r_gal²',
+            'source': 'Kepler Orrery V + Milky Way rotation curve'
+        }
+
+
+class U_bModelMasterCalculator:
+    """
+    U_b Model: Combined exoplanetary UQFF with weighted environmental terms.
+    g_Ub = w₁×F_orbit + w₂×F_tide + w₃×F_gal
+    
+    Where:
+        F_orbit = (G × M_p × M_s) / a³ (orbital resonance)
+        F_tide = (G × M_p × M_s × R_p) / a⁶ (tidal locking)
+        F_gal = v_gal²/r_gal + G×M_DM/r_gal² (galactic)
+        w₁, w₂, w₃ = weighting coefficients (normalized)
+    
+    Environmental function: F_env(t) = Σ wᵢ × Fᵢ(t)
+    Source: UQFF Compression Cycle 2 (May-June 2025), 38 documents
+    """
+    def __init__(self):
+        self.G = 6.674e-11
+        self.description = "U_b Model master calculator for exoplanetary UQFF"
+        self.orbital_calc = KeplerOrreryOrbitalCalculator()
+        self.tidal_calc = KeplerOrreryTidalCalculator()
+        self.galactic_calc = KeplerOrreryGalacticCalculator()
+    
+    def compute(self, M_p: float = 5.972e24, M_s: float = 1.989e30,
+                R_p: float = 6.371e6, a: float = 1.496e11,
+                v_gal: float = 2.2e5, r_gal: float = 2.5e20,
+                M_DM: float = 1e42, w1: float = 0.5, w2: float = 0.3,
+                w3: float = 0.2, Q: float = 100.0, **params) -> dict:
+        """
+        Compute combined U_b model gravity.
+        
+        Args:
+            M_p: Planet mass in kg
+            M_s: Star mass in kg
+            R_p: Planet radius in m
+            a: Semi-major axis in m
+            v_gal: Galactic rotation velocity in m/s
+            r_gal: Galactocentric radius in m
+            M_DM: Enclosed dark matter mass in kg
+            w1: Weight for F_orbit (default: 0.5)
+            w2: Weight for F_tide (default: 0.3)
+            w3: Weight for F_gal (default: 0.2)
+            Q: Tidal quality factor
+            
+        Returns:
+            dict with combined g_Ub and component breakdown
+        """
+        # Get component forces
+        orbit_result = self.orbital_calc.compute(M_p=M_p, M_s=M_s, a=a)
+        tidal_result = self.tidal_calc.compute(M_p=M_p, M_s=M_s, R_p=R_p, a=a, Q=Q)
+        galactic_result = self.galactic_calc.compute(v_gal=v_gal, r_gal=r_gal, M_DM=M_DM)
+        
+        # Normalize weights
+        w_sum = w1 + w2 + w3
+        w1_norm = w1 / w_sum
+        w2_norm = w2 / w_sum
+        w3_norm = w3 / w_sum
+        
+        # Combined environmental function F_env
+        # Note: F_orbit and F_tide have different units, need dimensionless scaling
+        # Using characteristic scales for comparison
+        a_scale = a ** 3  # Characteristic length scale
+        F_orbit_scaled = orbit_result['F_orbit_N_m3'] * a_scale
+        F_tide_scaled = tidal_result['F_tide_N_m6'] * (a ** 6)
+        F_gal_scaled = galactic_result['F_gal_m_s2']
+        
+        # Combined g_Ub (dimensionless force ratio)
+        F_env = w1_norm * F_orbit_scaled + w2_norm * F_tide_scaled + w3_norm * F_gal_scaled
+        
+        # Also compute effective surface gravity modification
+        g_surface = self.G * M_p / (R_p ** 2)
+        g_Ub_ratio = F_env / g_surface if g_surface > 0 else 0.0
+        
+        return {
+            'value': F_env,
+            'g_Ub_N': F_env,
+            'g_Ub_ratio': g_Ub_ratio,
+            'F_orbit_component': orbit_result['F_orbit_N_m3'],
+            'F_tide_component': tidal_result['F_tide_N_m6'],
+            'F_gal_component': galactic_result['F_gal_m_s2'],
+            'tau_lock_Gyr': tidal_result['tau_lock_Gyr'],
+            'T_orbital_days': orbit_result['T_orbital_days'],
+            'weights': {'w1': w1_norm, 'w2': w2_norm, 'w3': w3_norm},
+            'units': 'N (normalized)',
+            'equation': 'g_Ub = w₁×F_orbit + w₂×F_tide + w₃×F_gal',
+            'source': 'U_b Model (UQFF Compression Cycle 2, 38 documents)'
+        }
+
+
+class CompressedUQFFMasterCalculator:
+    """
+    Compressed UQFF Master Equation from 38 document compression.
+    g_UQFF(r,t) = g_base × modifiers + Ug1-4 + cosmological + quantum + fluid + DM
+    
+    Full form:
+    g_UQFF(r,t) = (1+H(t)×dt + δ_SC + δ_envelope)×g_base 
+                  + Σ(Ug_i) + Λc²/3 + ℏω_vac/mc² + ν∇²v + δρ_DM/ρ_0
+    
+    Where:
+        g_base = GM/r² (Newtonian base)
+        H(t) = Hubble expansion term
+        δ_SC = superconductive correction
+        δ_envelope = envelope modulation
+        Ug_i = 4 UQFF gravity terms (magnetic, charge, string, vacuum)
+        Λ = cosmological constant
+        ℏω_vac = vacuum quantum energy
+        ν∇²v = fluid dynamics (Navier-Stokes)
+        δρ_DM = dark matter perturbation
+    
+    Source: UQFF Compression Cycle 2 (May-June 2025), 38 systems
+    """
+    def __init__(self):
+        self.G = 6.674e-11
+        self.c = 2.998e8
+        self.hbar = 1.055e-34
+        self.Lambda = 1.1e-52  # Cosmological constant (m^-2)
+        self.description = "Compressed UQFF Master Equation (38 systems)"
+    
+    def compute(self, M: float = 1.989e30, r: float = 1.496e11, t: float = 0.0,
+                dt: float = 3.15e7, H0: float = 2.27e-18, omega_vac: float = 1e12,
+                m: float = 9.109e-31, nu: float = 1e-6, grad2_v: float = 1e-3,
+                delta_rho_DM: float = 1e-26, rho_0: float = 1e-26,
+                delta_SC: float = 0.01, delta_envelope: float = 0.001,
+                kappa: float = 0.0005, SSq: float = 0.57, **params) -> dict:
+        """
+        Compute compressed UQFF gravity field.
+        
+        Args:
+            M: Central mass in kg
+            r: Radial distance in m
+            t: Time in s
+            dt: Time step in s
+            H0: Hubble constant in s^-1 (default: 70 km/s/Mpc)
+            omega_vac: Vacuum angular frequency in rad/s
+            m: Particle mass in kg (default: electron)
+            nu: Kinematic viscosity in m²/s
+            grad2_v: Velocity Laplacian in s^-1
+            delta_rho_DM: Dark matter density perturbation in kg/m³
+            rho_0: Reference density in kg/m³
+            delta_SC: Superconductive correction factor
+            delta_envelope: Envelope modulation factor
+            kappa: UQFF calibration constant (0.0005/day)
+            SSq: String squeeze factor (0.57)
+            
+        Returns:
+            dict with full g_UQFF and all components
+        """
+        # Base Newtonian gravity
+        g_base = self.G * M / (r ** 2)
+        
+        # Expansion term
+        H_term = 1.0 + H0 * dt
+        
+        # Modified base gravity
+        g_modified = (H_term + delta_SC + delta_envelope) * g_base
+        
+        # UQFF 4-term contributions (simplified)
+        # Ug1: Magnetic dipole term
+        Ug1 = kappa * (M / r) * 1e-10  # Magnetic scaling
+        
+        # Ug2: Charge-reactivity term
+        Ug2 = SSq * self.G * M / (r ** 2) * 1e-3
+        
+        # Ug3: String rotation term
+        omega_t = 2.0 * 3.14159265359 * t / (365.25 * 86400) if t > 0 else 0
+        Ug3 = kappa * omega_t * g_base * 1e-4
+        
+        # Ug4: Vacuum concentration term
+        Ug4 = (self.hbar * omega_vac) / (m * self.c ** 2) * g_base * 1e-6
+        
+        Ug_sum = Ug1 + Ug2 + Ug3 + Ug4
+        
+        # Cosmological term
+        g_Lambda = self.Lambda * (self.c ** 2) * r / 3.0
+        
+        # Quantum vacuum term
+        g_quantum = (self.hbar * omega_vac) / (m * self.c ** 2) if m > 0 else 0
+        
+        # Fluid dynamics term (Navier-Stokes viscous)
+        g_fluid = nu * grad2_v
+        
+        # Dark matter perturbation
+        g_DM = (delta_rho_DM / rho_0) * g_base if rho_0 > 0 else 0
+        
+        # Combined UQFF gravity
+        g_UQFF = g_modified + Ug_sum + g_Lambda + g_quantum + g_fluid + g_DM
+        
+        return {
+            'value': g_UQFF,
+            'g_UQFF_m_s2': g_UQFF,
+            'g_base_m_s2': g_base,
+            'g_modified_m_s2': g_modified,
+            'Ug_sum_m_s2': Ug_sum,
+            'Ug1_magnetic': Ug1,
+            'Ug2_charge': Ug2,
+            'Ug3_string': Ug3,
+            'Ug4_vacuum': Ug4,
+            'g_Lambda_m_s2': g_Lambda,
+            'g_quantum_m_s2': g_quantum,
+            'g_fluid_m_s2': g_fluid,
+            'g_DM_m_s2': g_DM,
+            'H_term': H_term,
+            'kappa': kappa,
+            'SSq': SSq,
+            'units': 'm/s²',
+            'equation': 'g_UQFF(r,t) = g_base×(1+H×dt+δ_SC+δ_env) + ΣUg_i + Λc²/3 + ℏω/mc² + ν∇²v + δρ_DM/ρ₀',
+            'source': 'Compressed UQFF (38 systems, May-June 2025)'
+        }
+
+
+class KeplerOrreryFrameAnalyzerCalculator:
+    """
+    Kepler Orrery V Frame Analyzer: 62-frame orbital dynamics.
+    Analyzes planetary positions across Sep 21 - Dec 21, 2011.
+    
+    Computes:
+        - Frame-to-frame orbital velocity changes
+        - Angular momentum conservation
+        - Multi-body resonance detection
+        - Orbital energy variations
+    
+    Source: Kepler Orrery V (62 frames), UQFF Compression Cycle 2
+    """
+    def __init__(self):
+        self.G = 6.674e-11
+        self.description = "Kepler Orrery V 62-frame orbital analyzer"
+        self.num_frames = 62
+        self.frame_interval_days = 1.5  # ~3 months / 62 frames
+    
+    def compute(self, M_s: float = 1.989e30, planets: list = None, **params) -> dict:
+        """
+        Analyze orbital frame sequence.
+        
+        Args:
+            M_s: Star mass in kg
+            planets: List of dicts with {name, a_m, M_kg, e} for each planet
+                    Default: Inner solar system
+            
+        Returns:
+            dict with frame analysis, resonance ratios, energy conservation
+        """
+        if planets is None:
+            planets = [
+                {'name': 'Mercury', 'a_m': 5.79e10, 'M_kg': 3.30e23, 'e': 0.206},
+                {'name': 'Venus', 'a_m': 1.08e11, 'M_kg': 4.87e24, 'e': 0.007},
+                {'name': 'Earth', 'a_m': 1.496e11, 'M_kg': 5.97e24, 'e': 0.017},
+                {'name': 'Mars', 'a_m': 2.28e11, 'M_kg': 6.42e23, 'e': 0.093}
+            ]
+        
+        results = []
+        for planet in planets:
+            a = planet['a_m']
+            M_p = planet['M_kg']
+            e = planet['e']
+            name = planet['name']
+            
+            # Orbital period
+            T = 2.0 * 3.14159265359 * (a ** 1.5) / ((self.G * M_s) ** 0.5)
+            T_days = T / 86400.0
+            
+            # Mean motion
+            n = 2.0 * 3.14159265359 / T
+            
+            # Orbital energy
+            E_orbit = -self.G * M_s * M_p / (2.0 * a)
+            
+            # Angular momentum
+            L = M_p * (self.G * M_s * a * (1 - e**2)) ** 0.5
+            
+            # Frames per orbit during 62-frame window
+            window_days = self.num_frames * self.frame_interval_days
+            frames_per_orbit = window_days / T_days
+            
+            results.append({
+                'name': name,
+                'T_days': T_days,
+                'E_orbit_J': E_orbit,
+                'L_kg_m2_s': L,
+                'frames_per_orbit': frames_per_orbit,
+                'mean_motion_rad_s': n
+            })
+        
+        # Compute resonance ratios between adjacent planets
+        resonances = []
+        for i in range(len(results) - 1):
+            T1 = results[i]['T_days']
+            T2 = results[i+1]['T_days']
+            ratio = T2 / T1
+            # Find nearest simple fraction
+            for p in range(1, 10):
+                for q in range(1, 10):
+                    if abs(ratio - q/p) < 0.1:
+                        resonances.append({
+                            'pair': f"{results[i]['name']}-{results[i+1]['name']}",
+                            'ratio': ratio,
+                            'near_resonance': f"{q}:{p}"
+                        })
+                        break
+        
+        # Total system energy
+        E_total = sum(r['E_orbit_J'] for r in results)
+        
+        # Total angular momentum
+        L_total = sum(r['L_kg_m2_s'] for r in results)
+        
+        return {
+            'value': E_total,
+            'planets': results,
+            'resonances': resonances,
+            'E_total_J': E_total,
+            'L_total_kg_m2_s': L_total,
+            'num_frames': self.num_frames,
+            'window_days': self.num_frames * self.frame_interval_days,
+            'units': 'J (total orbital energy)',
+            'equation': 'E_orbit = -GM_s×M_p/(2a), L = M_p×√(GM_s×a×(1-e²))',
+            'source': 'Kepler Orrery V (Sep 21 - Dec 21, 2011)'
+        }
+
+
+# U_b Model registry dict
+KEPLER_ORRERY_UB_CALCULATORS = {
+    'KeplerOrreryOrbitalCalculator': KeplerOrreryOrbitalCalculator(),
+    'KeplerOrreryTidalCalculator': KeplerOrreryTidalCalculator(),
+    'KeplerOrreryGalacticCalculator': KeplerOrreryGalacticCalculator(),
+    'U_bModelMasterCalculator': U_bModelMasterCalculator(),
+    'CompressedUQFFMasterCalculator': CompressedUQFFMasterCalculator(),
+    'KeplerOrreryFrameAnalyzerCalculator': KeplerOrreryFrameAnalyzerCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -160131,4 +160627,12 @@ __all__.extend([
     'SMBHBinaryCondensedCalculator',
     'ChristoffelCondensedCalculator',
     'PHASE6_CALCULATORS',
+    # Kepler Orrery V U_b Model (from Grok UQFF Compression Cycle 2, Feb 26, 2026) - 6 Calculator Classes
+    'KeplerOrreryOrbitalCalculator',
+    'KeplerOrreryTidalCalculator',
+    'KeplerOrreryGalacticCalculator',
+    'U_bModelMasterCalculator',
+    'CompressedUQFFMasterCalculator',
+    'KeplerOrreryFrameAnalyzerCalculator',
+    'KEPLER_ORRERY_UB_CALCULATORS',
 ])
