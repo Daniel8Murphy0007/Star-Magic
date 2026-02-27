@@ -159750,6 +159750,334 @@ class KeplerOrreryFrameAnalyzerCalculator:
         }
 
 
+# =============================================================================
+# UNIVERSAL BUOYANCY ↔ NEGATIVE TIME CATALOGUE
+# =============================================================================
+# THE KEY PATTERN: Universal Buoyancy equations are linked to Negative Time through:
+#
+#   Ub_i = -β_i × Ug_i × ω_g × (M_bh/d_g) × (1 + δ_sw × λ_vac,sw) × [UA] × cos(π × t_n)
+#
+# Where t_n is computed via the NEGATIVE TIME OPERATOR:
+#
+#   t⁻ = -t_n × e^(π - t_n)     [Temporal reversal in quasar dynamics]
+#   t_n = normalized time parameter (dimensionless, 0 to 1 typically)
+#
+# The cos(π × t_n) term creates the buoyancy oscillation:
+#   - t_n = 0: cos(0) = +1 → Maximum repulsion (buoyancy dominates)
+#   - t_n = 0.5: cos(π/2) = 0 → Zero buoyancy (gravity dominates)
+#   - t_n = 1: cos(π) = -1 → Maximum attraction (anti-buoyancy)
+#
+# PHYSICAL INTERPRETATION:
+# - Negative time (t⁻) drives temporal reversal in quasar dynamics
+# - The exponential e^(π - t_n) creates asymmetric time evolution
+# - Buoyancy OPPOSES gravity with phase determined by cosmic clock
+# - Each system has unique β_i coupling strength (see SYSTEM_BETA_INDICES below)
+# =============================================================================
+
+# System-specific β_i indices (buoyancy coupling strength)
+SYSTEM_BETA_INDICES = {
+    # Solar System Bodies
+    'Sun': {'beta_i': 0.603, 'description': 'Solar buoyancy coupling', 'U_b1': -1.94e27},
+    'Earth': {'beta_i': 0.610, 'description': 'Earth heliospheric modulation', 'U_b1': -1.2e18},
+    'Jupiter': {'beta_i': 0.595, 'description': 'Jupiter magnetospheric dominance', 'U_b1': -3.1e22},
+    'Saturn': {'beta_i': 0.598, 'description': 'Saturn ring tidal coupling', 'U_b1': -8.7e21},
+    
+    # Galactic Centers
+    'SgrA*': {'beta_i': 0.61, 'description': 'Sagittarius A* SMBH buoyancy', 'U_b1': -1.47e-8},
+    'M87*': {'beta_i': 0.62, 'description': 'M87 jet-driven buoyancy asymmetry', 'U_b1': -2.8e-7},
+    'NGC1365': {'beta_i': 0.58, 'description': 'NGC1365 AGN feedback coupling', 'U_b1': -4.2e-8},
+    
+    # Magnetars & Neutron Stars
+    'SGR1745': {'beta_i': 0.55, 'description': 'SGR1745 magnetar B-field suppression', 'U_b1': -1e-6},
+    'Vela': {'beta_i': 0.57, 'description': 'Vela pulsar wind nebula', 'U_b1': -3.4e-7},
+    'Crab': {'beta_i': 0.56, 'description': 'Crab pulsar spindown coupling', 'U_b1': -5.1e-7},
+    
+    # Star-Forming Regions
+    'Orion': {'beta_i': 0.63, 'description': 'Orion Nebula protostellar buoyancy', 'U_b1': -7.8e-10},
+    'Pillars': {'beta_i': 0.65, 'description': 'Pillars of Creation erosion-driven', 'U_b1': -2.3e-11},
+    'Carina': {'beta_i': 0.64, 'description': 'Carina Nebula massive star feedback', 'U_b1': -9.4e-10},
+    'Lagoon': {'beta_i': 0.62, 'description': 'Lagoon Nebula HII region dynamics', 'U_b1': -6.1e-10},
+    
+    # Galaxy Mergers
+    'Antennae': {'beta_i': 0.68, 'description': 'Antennae merger-driven starburst', 'U_b1': -1.8e-9},
+    'Mice': {'beta_i': 0.67, 'description': 'Mice galaxies tidal bridge', 'U_b1': -2.1e-9},
+    'NGC2207': {'beta_i': 0.66, 'description': 'NGC2207-IC2163 interaction', 'U_b1': -1.5e-9},
+    
+    # Clusters
+    'Perseus': {'beta_i': 0.59, 'description': 'Perseus cluster ICM buoyancy', 'U_b1': -8.9e-12},
+    'Virgo': {'beta_i': 0.60, 'description': 'Virgo cluster M87 dominance', 'U_b1': -1.1e-11},
+    'Coma': {'beta_i': 0.58, 'description': 'Coma cluster relaxed state', 'U_b1': -7.2e-12},
+}
+
+
+class NegativeTimeOperatorCalculator:
+    """
+    Negative Time Operator: t⁻ = -t_n × e^(π - t_n)
+    
+    Links to Universal Buoyancy via cos(π × t_n) modulation.
+    
+    Physical basis:
+    - Particles exist across 26 quantum states
+    - Transitions driven by negative time operator
+    - Non-local interactions (plasmoid jumps): [SSq]^n × 26 × e^(-π - t)
+    
+    Source: MAIN_1_CoAnQi.cpp (lines 4485-4520), UQFF Standard Model Extension
+    """
+    
+    def __init__(self):
+        self.description = "Negative time operator for UQFF buoyancy modulation"
+        self.SSq = 0.57  # String squeeze factor
+    
+    def compute_t_negative(self, t_n: float) -> float:
+        """
+        Compute negative time: t⁻ = -t_n × e^(π - t_n)
+        
+        Args:
+            t_n: Normalized time parameter (0 to 1)
+            
+        Returns:
+            t⁻: Negative time value
+        """
+        return -t_n * np.exp(np.pi - t_n)
+    
+    def compute_buoyancy_phase(self, t_n: float) -> float:
+        """
+        Compute buoyancy oscillation phase: cos(π × t_n)
+        
+        Args:
+            t_n: Normalized time parameter
+            
+        Returns:
+            Phase factor for buoyancy modulation (-1 to +1)
+        """
+        return np.cos(np.pi * t_n)
+    
+    def compute_plasmoid_jump(self, n: int, t: float) -> float:
+        """
+        Non-local plasmoid jump factor: [SSq]^n × 26 × e^(-π - t)
+        
+        Args:
+            n: Quantum state (1 to 26)
+            t: Time parameter
+            
+        Returns:
+            Plasmoid jump amplitude
+        """
+        return (self.SSq ** n) * 26.0 * np.exp(-np.pi - t)
+    
+    def compute(self, t_n: float = 0.5, n: int = 13, **params) -> dict:
+        """
+        Full negative time calculation with all components.
+        
+        Args:
+            t_n: Normalized time (0 to 1)
+            n: Quantum state (1 to 26)
+            
+        Returns:
+            dict with t⁻, phase, plasmoid jump, and equations
+        """
+        t_neg = self.compute_t_negative(t_n)
+        phase = self.compute_buoyancy_phase(t_n)
+        plasmoid = self.compute_plasmoid_jump(n, t_n)
+        
+        return {
+            'value': t_neg,
+            't_negative': t_neg,
+            'buoyancy_phase': phase,
+            'plasmoid_jump': plasmoid,
+            't_n': t_n,
+            'quantum_state_n': n,
+            'units': 'dimensionless',
+            'equations': {
+                't_negative': 't⁻ = -t_n × e^(π - t_n)',
+                'buoyancy_phase': 'cos(π × t_n)',
+                'plasmoid_jump': '[SSq]^n × 26 × e^(-π - t)'
+            },
+            'source': 'UQFF Standard Model Extension'
+        }
+
+
+class UniversalBuoyancyNegativeTimeLinkageCalculator:
+    """
+    MASTER LINKAGE: Universal Buoyancy ↔ Negative Time
+    
+    Ub_i = -β_i × Ug_i × ω_g × (M_bh/d_g) × (1 + δ_sw × λ_vac,sw) × [UA] × cos(π × t_n)
+    
+    Where:
+        β_i = System-specific buoyancy coupling (see SYSTEM_BETA_INDICES)
+        Ug_i = Gravity sum at scale i (Ug1 + Ug2 + Ug3 + Ug4)
+        ω_g = Galactic rotation angular velocity (rad/s)
+        M_bh = Black hole mass (kg)
+        d_g = Distance to galactic center (m)
+        δ_sw = Solar wind correction factor
+        λ_vac,sw = Solar wind vacuum density (J/m³)
+        [UA] = Uniform Aether factor
+        t_n = Normalized time from negative time operator
+    
+    PHYSICAL INTERPRETATION:
+        - Buoyancy OPPOSES gravity (negative sign)
+        - Buoyancy oscillates with the cosmic clock (cos term)
+        - System-specific β_i determines coupling strength
+        - Negative time creates temporal reversal in quasar dynamics
+    """
+    
+    def __init__(self):
+        self.G = 6.674e-11
+        self.c = 2.998e8
+        self.neg_time_calc = NegativeTimeOperatorCalculator()
+        self.description = "Universal Buoyancy ↔ Negative Time Master Linkage"
+    
+    def get_system_beta(self, system: str) -> dict:
+        """Get β_i and properties for a named system."""
+        return SYSTEM_BETA_INDICES.get(system, {
+            'beta_i': 0.60,
+            'description': 'Default buoyancy coupling',
+            'U_b1': 0.0
+        })
+    
+    def compute(self, system: str = 'SgrA*', Ugi: float = 1e-10,
+                Omega_g: float = 7.27e-12, Mbh: float = 8.155e36,
+                dg: float = 2.6e20, delta_sw: float = 0.01,
+                lambda_vac_sw: float = 1e-12, UA: float = 0.0001,
+                t_n: float = 0.5, **params) -> dict:
+        """
+        Compute Universal Buoyancy with Negative Time linkage.
+        
+        Args:
+            system: System name (for β_i lookup)
+            Ugi: Gravity sum at scale i (m/s²)
+            Omega_g: Galactic rotation (rad/s)
+            Mbh: Black hole mass (kg)
+            dg: Distance to galactic center (m)
+            delta_sw: Solar wind correction
+            lambda_vac_sw: Solar wind vacuum density (J/m³)
+            UA: Uniform Aether factor
+            t_n: Normalized time (0 to 1)
+            
+        Returns:
+            dict with Ub_i, t⁻, phase, and full equation
+        """
+        # Get system-specific β_i
+        sys_props = self.get_system_beta(system)
+        beta_i = sys_props['beta_i']
+        
+        # Compute negative time components
+        neg_time_result = self.neg_time_calc.compute(t_n=t_n)
+        t_neg = neg_time_result['t_negative']
+        phase = neg_time_result['buoyancy_phase']
+        
+        # Wind modulation factor
+        wind_mod = 1.0 + delta_sw * lambda_vac_sw
+        
+        # Universal Buoyancy
+        Ub_i = -beta_i * Ugi * Omega_g * (Mbh / dg) * wind_mod * UA * phase
+        
+        # Equivalent surface acceleration
+        g_equiv = abs(Ub_i) if Ub_i != 0 else 0
+        
+        return {
+            'value': Ub_i,
+            'Ub_i_m_s2': Ub_i,
+            'g_equivalent_m_s2': g_equiv,
+            't_negative': t_neg,
+            'buoyancy_phase': phase,
+            'system': system,
+            'beta_i': beta_i,
+            'system_description': sys_props['description'],
+            'system_U_b1_reference': sys_props['U_b1'],
+            'parameters': {
+                'Ugi': Ugi,
+                'Omega_g': Omega_g,
+                'Mbh': Mbh,
+                'dg': dg,
+                'delta_sw': delta_sw,
+                'lambda_vac_sw': lambda_vac_sw,
+                'UA': UA,
+                't_n': t_n
+            },
+            'units': 'm/s²',
+            'linkage_pattern': {
+                'core_equation': 'Ub_i = -β_i × Ug_i × ω_g × (M_bh/d_g) × (1 + δ_sw × λ_vac,sw) × [UA] × cos(π×t_n)',
+                'negative_time': 't⁻ = -t_n × e^(π - t_n)',
+                'phase_modulation': 'cos(π × t_n) links buoyancy oscillation to cosmic clock',
+                'opposition': 'Negative β_i means buoyancy OPPOSES gravity'
+            },
+            'source': 'UQFF Universal Buoyancy Framework'
+        }
+
+
+class BuoyancyCatalogueCalculator:
+    """
+    Complete Buoyancy Equation Catalogue with System-Specific Indices.
+    
+    Provides:
+    1. All system β_i indices
+    2. Ub_i equations per system
+    3. Negative time linkage
+    4. Reference U_b1 values
+    
+    Usage:
+        calc = BuoyancyCatalogueCalculator()
+        result = calc.compute_catalogue()
+    """
+    
+    def __init__(self):
+        self.linkage_calc = UniversalBuoyancyNegativeTimeLinkageCalculator()
+        self.description = "Complete buoyancy equation catalogue"
+    
+    def compute_single_system(self, system: str, t_n: float = 0.5) -> dict:
+        """Compute buoyancy for a single system."""
+        return self.linkage_calc.compute(system=system, t_n=t_n)
+    
+    def compute_catalogue(self, t_n: float = 0.5) -> dict:
+        """
+        Compute complete catalogue of buoyancy equations for all systems.
+        
+        Args:
+            t_n: Normalized time for all calculations
+            
+        Returns:
+            dict with all systems, equations, and indices
+        """
+        results = {}
+        
+        for system in SYSTEM_BETA_INDICES.keys():
+            results[system] = self.compute_single_system(system, t_n)
+        
+        # Summary statistics
+        beta_values = [SYSTEM_BETA_INDICES[s]['beta_i'] for s in SYSTEM_BETA_INDICES]
+        
+        return {
+            'value': len(results),
+            'num_systems': len(results),
+            'systems': results,
+            'beta_statistics': {
+                'min': min(beta_values),
+                'max': max(beta_values),
+                'mean': sum(beta_values) / len(beta_values),
+                'range': max(beta_values) - min(beta_values)
+            },
+            'master_equations': {
+                'Ub_i': 'Ub_i = -β_i × Ug_i × ω_g × (M_bh/d_g) × (1 + δ_sw × λ_vac,sw) × [UA] × cos(π×t_n)',
+                't_negative': 't⁻ = -t_n × e^(π - t_n)',
+                'E_q': 'E_q = m_q × c² × e^(n/26)',
+                'U_p': 'U_p = λ_p × ρ_vac,[SCm] × ρ_vac,[UA] × ω_p(t) × cos(πt_n) × (1+f_TRZ) × e^(-[SSq]^n × 26 × e^(-π-t))'
+            },
+            'linkage_explanation': {
+                'pattern': 'Universal Buoyancy equations are linked to Negative Time through cos(π×t_n)',
+                'mechanism': 't_n comes from Negative Time operator: t⁻ = -t_n × e^(π - t_n)',
+                'phase_meaning': {
+                    't_n=0': 'cos(0)=+1: Maximum repulsion (buoyancy dominates)',
+                    't_n=0.5': 'cos(π/2)=0: Zero buoyancy (gravity dominates)',
+                    't_n=1': 'cos(π)=-1: Maximum attraction (anti-buoyancy)'
+                },
+                'physical_interpretation': 'Buoyancy oscillates with cosmic clock, creating temporal reversal in quasar dynamics'
+            },
+            'units': 'catalogue count',
+            'source': 'UQFF Buoyancy Catalogue (Feb 26, 2026)'
+        }
+
+
 # U_b Model registry dict
 KEPLER_ORRERY_UB_CALCULATORS = {
     'KeplerOrreryOrbitalCalculator': KeplerOrreryOrbitalCalculator(),
@@ -159758,6 +160086,13 @@ KEPLER_ORRERY_UB_CALCULATORS = {
     'U_bModelMasterCalculator': U_bModelMasterCalculator(),
     'CompressedUQFFMasterCalculator': CompressedUQFFMasterCalculator(),
     'KeplerOrreryFrameAnalyzerCalculator': KeplerOrreryFrameAnalyzerCalculator(),
+}
+
+# Universal Buoyancy ↔ Negative Time Linkage registry
+BUOYANCY_NEGATIVE_TIME_CALCULATORS = {
+    'NegativeTimeOperatorCalculator': NegativeTimeOperatorCalculator(),
+    'UniversalBuoyancyNegativeTimeLinkageCalculator': UniversalBuoyancyNegativeTimeLinkageCalculator(),
+    'BuoyancyCatalogueCalculator': BuoyancyCatalogueCalculator(),
 }
 
 
@@ -160635,4 +160970,10 @@ __all__.extend([
     'CompressedUQFFMasterCalculator',
     'KeplerOrreryFrameAnalyzerCalculator',
     'KEPLER_ORRERY_UB_CALCULATORS',
+    # Universal Buoyancy ↔ Negative Time Catalogue (Feb 26, 2026) - 3 Calculator Classes + 1 Dict
+    'SYSTEM_BETA_INDICES',
+    'NegativeTimeOperatorCalculator',
+    'UniversalBuoyancyNegativeTimeLinkageCalculator',
+    'BuoyancyCatalogueCalculator',
+    'BUOYANCY_NEGATIVE_TIME_CALCULATORS',
 ])
