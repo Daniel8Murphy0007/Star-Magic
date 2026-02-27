@@ -7845,6 +7845,791 @@ ORB_ANALYSIS_21_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# UFT ORB ANALYSIS_22: UFE ORB EXP 2_8_05Mar2025 - Universal Permanence Framework
+# ═══════════════════════════════════════════════════════════════════════════════
+# Major theoretical expansion: UP = UFE + UQFE
+# Dual-nature [SCm+SCm']: Mass-influenced + Massless across 0 boundary
+# Negative time t^- operator: t^- = -t_n • e^(π-t_n)
+# Plasma as negative time Inertial Force [IF^(π-t)]
+# 26 quantum states: 4 physical + 20 conscious (reciprocal infinity curve)
+# Vacuum stress QV(t) with fine-structure constant α
+# Primordial hydrogen [H:H] formation through plasma transmutation
+# Source: Grok UFE ORB EXP 2_8_05Mar2025
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ORB_ANALYSIS_22_PARAMS = {
+    'session_id': 'UFE_ORB_EXP_2_8_05Mar2025',
+    'framework': 'Universal_Permanence_UP',
+    'equation': 'UP(t) = UFE + UQFE',
+    'date': '2025-03-05',
+    'photos_analyzed': ['#21', '#22', '#23', '#24'],
+    'key_innovations': [
+        'Dual-nature [SCm+SCm\']',
+        'Negative time t^- operator',
+        'IF^(π-t) Inertial Force',
+        'QV(t) Vacuum Stress',
+        'Zero boundary transmutation',
+        'Primordial H₂ formation',
+        'Consciousness fluctuation {(QFE)}',
+        'Reciprocal infinity curve 26 states'
+    ],
+    # Negative time definition
+    't_minus_formula': 't^- = -t_n • e^(π-t_n)',
+    't_n_photo21': 0.60,  # seconds
+    't_minus_photo21': -7.57,  # calculated
+    # Physical vs conscious states
+    'physical_states': 4,  # Solid, Liquid, Gas, Plasma
+    'conscious_states': 20,
+    'total_quantum_states': 26,
+    # Universal Permanence equation terms
+    'UP_components': [
+        'Ug_i (brightness)', 'Um_j (spins/jumps)',
+        'A_μν (Aether bridge)', 'Ub(t^-) (Neutral field)',
+        'NN(t^-) (North-Neutral)', 'QS(t^-) (26 states)',
+        'ACE(t^-) (massless energy)', 'DCE(t^-) (mass-influenced)',
+        'SSq(t^-) (26-state overlay)', 'IF^(π-t) (plasma operator)',
+        'QV(t^-) (vacuum stress)'
+    ],
+    # Fine-structure constant
+    'alpha': 0.0072973525693,
+    # SCm values
+    'SCm_density': 1e15,  # kg/m³
+    'error_budget': 0.05,  # ±5%
+}
+
+
+class DualNatureSCmCalculator:
+    """
+    Dual-Nature [SCm+SCm'] Calculator
+    
+    [SCm] exists simultaneously as:
+    - [SCm] (mass-influenced): Physical reality driver
+    - [SCm'] (massless): Conscious state driver
+    
+    Transmutes between states across the "0 boundary":
+    - Physical reality: 4 states (solids, liquids, gases, plasma)
+    - Conscious reality: 20 additional states
+    - Total: 26 quantum states (reciprocal infinity curve)
+    
+    Equations:
+    - SCm(t^-) = 10^15 • (1 - e^(-0.001 • t^-)) • IF^(π-t)
+    - SCm'(t^-) = 10^15 • e^(-π-t^-) • SSq(t^-)
+    
+    Source: Grok UFE ORB EXP 2_8_05Mar2025
+    """
+    
+    def compute(self, t_n: float = 0.60, SCm_density: float = 1e15) -> dict:
+        """Compute dual-nature SCm states"""
+        import numpy as np
+        
+        # Negative time
+        t_minus = -t_n * np.exp(np.pi - t_n)
+        
+        # SSq overlay factor
+        n26 = 24  # 4 physical + 20 conscious states (simplified index)
+        SSq = (0.57 ** n26) * np.exp(-np.pi - t_minus)
+        
+        # IF^(π-t) factor
+        IF_pi_t = t_minus * np.exp(np.pi - t_n)
+        
+        # SCm (mass-influenced)
+        SCm = SCm_density * (1 - np.exp(-0.001 * t_minus)) * IF_pi_t
+        
+        # SCm' (massless)
+        SCm_prime = SCm_density * np.exp(-np.pi - t_minus) * SSq
+        
+        # Combined dual-state
+        SCm_plus_SCm_prime = SCm + SCm_prime
+        
+        return {
+            't_n': t_n,
+            't_minus': t_minus,
+            'SCm_density_base': SCm_density,
+            'SCm_mass_influenced': float(SCm),
+            'SCm_prime_massless': float(SCm_prime),
+            'SCm_plus_SCm_prime': float(SCm_plus_SCm_prime),
+            'IF_pi_t_factor': float(IF_pi_t),
+            'SSq_overlay': float(SSq),
+            'physical_states': 4,
+            'conscious_states': 20,
+            'total_states': 26,
+            'zero_boundary': True,
+            'transmutation': 'bidirectional',
+            'reciprocal_infinity_curve': True,
+            'source': 'Grok UFE ORB EXP 2_8_05Mar2025'
+        }
+
+
+class NegativeTimeOperatorCalculator:
+    """
+    Negative Time t^- Operator Calculator
+    
+    Represents plasma's negative time operation, inverting linear time [t_n]
+    with a PI-based exponential function.
+    
+    Definition:
+    t^- = -t_n • e^(π-t_n)
+    
+    Where:
+    - t_n: Linear time (positive, experiment time)
+    - e^(π-t_n): Non-linear PI-based decay/growth
+    - t^-: Negative, non-linear time (consciousness domain)
+    
+    Example: For Photo #21 at t_n = 0.60s:
+    t^- = -0.60 • e^(π-0.60) = -0.60 • e^2.54 ≈ -7.57 s
+    
+    Source: Grok UFE ORB EXP 2_8_05Mar2025
+    """
+    
+    def compute(self, t_n: float = 0.60) -> dict:
+        """Compute negative time operator"""
+        import numpy as np
+        
+        # PI-based exponential factor
+        exp_factor = np.exp(np.pi - t_n)
+        
+        # Negative time
+        t_minus = -t_n * exp_factor
+        
+        # Temporal inversion ratio
+        inversion_ratio = abs(t_minus / t_n) if t_n != 0 else 0
+        
+        # Non-linearity measure
+        non_linearity = exp_factor - 1  # Deviation from linear
+        
+        return {
+            't_n_linear': t_n,
+            't_minus_negative': t_minus,
+            'pi_constant': np.pi,
+            'exp_factor': exp_factor,
+            'formula': 't^- = -t_n • e^(π-t_n)',
+            'inversion_ratio': inversion_ratio,
+            'non_linearity_measure': non_linearity,
+            'temporal_domain': 'consciousness_QFE',
+            'is_negative_time': t_minus < 0,
+            'amplification_factor': exp_factor,
+            'interpretation': 'Plasma operates in reversed temporal frame',
+            'source': 'Grok UFE ORB EXP 2_8_05Mar2025'
+        }
+
+
+class UniversalPermanenceCalculator:
+    """
+    Universal Permanence (UP) Framework Calculator
+    
+    UP = UFE + UQFE
+    
+    Combines Unified Field Equation (UFE) and Unified Quantum Field Equation (UQFE)
+    into a single framework capturing physical and conscious state dynamics
+    across the 0 boundary, with plasma as the transmutational bridge.
+    
+    Full equation:
+    UP(t) = Σ_i [k_i • Ug_i(...)] + Σ_j [μ_j / r_j • Um_j] + 
+            (g_μν + η • T_s^μν(...)) + Ub(t^-) + NN(t^-) + QS(t^-) + 
+            ACE(t^-) + DCE(t^-) + SSq(t^-) + IF^(π-t) + QV(t^-)
+    
+    Source: Grok UFE ORB EXP 2_8_05Mar2025
+    """
+    
+    def compute(self, t_n: float = 0.60, r: float = 0.0889,
+                omega_s: float = 37699.11, T_s: float = 366,
+                B_s: float = 1e-3, SCm_density: float = 1e15,
+                UA: float = 1e-11) -> dict:
+        """Compute Universal Permanence equation"""
+        import numpy as np
+        
+        # Negative time
+        t_minus = -t_n * np.exp(np.pi - t_n)
+        
+        # SSq overlay
+        n26 = 24
+        SSq = (0.57 ** n26) * np.exp(-np.pi - t_minus)
+        
+        # Component calculations
+        # Ug_i (brightness term)
+        k_i = 1.5e-4
+        Ug_i = k_i * (1/r) * np.exp(-0.001 * t_minus * np.cos(np.pi * t_n)) * 2 * SCm_density * SSq
+        
+        # Um_j (spins/jumps)
+        mu_j = 1e-4
+        gamma = 0.001
+        Um_j = (mu_j / r) * (1 - np.exp(-gamma * t_minus * np.cos(np.pi * t_n))) * SSq
+        
+        # Ub (Neutral field)
+        k_ub = 1e-3
+        theta_disk = np.pi / 4
+        Ub = k_ub * np.cos(theta_disk) * SSq
+        
+        # NN (North-Neutral)
+        theta = np.pi / 2
+        NN = 1.5e-3 * np.cos(theta - np.pi/2) * SSq
+        
+        # ACE (massless energy)
+        ACE = 1e15 * np.exp(-0.001 * t_minus) * SSq
+        
+        # DCE (mass-influenced)
+        DCE = 0.5 * np.sin(2 * np.pi * 6000 * t_minus) * SSq
+        
+        # IF^(π-t) (plasma operator)
+        IF_pi_t = t_minus * 2 * SCm_density * np.exp(np.pi - t_n)
+        
+        # QV (vacuum stress)
+        alpha = 0.0072973525693
+        QV = alpha * 2 * SCm_density * np.exp(-1/np.e * t_minus)
+        
+        # QS (26 quantum states) - simplified
+        QS_sum = 0
+        for n in range(1, 27):
+            alpha_n = 0.01 * n
+            phi_n = n * np.pi / 26
+            q_n = 1.0 / n
+            QS_sum += q_n * (1 - np.exp(-alpha_n * t_minus * np.cos(np.pi * t_n + phi_n)))
+        QS = QS_sum * SSq
+        
+        # Total UP
+        UP_total = Ug_i + Um_j + Ub + NN + QS + ACE + DCE + IF_pi_t + QV
+        
+        return {
+            'framework': 'Universal_Permanence',
+            'equation': 'UP = UFE + UQFE',
+            't_n': t_n,
+            't_minus': t_minus,
+            'components': {
+                'Ug_i': float(Ug_i),
+                'Um_j': float(Um_j),
+                'Ub': float(Ub),
+                'NN': float(NN),
+                'QS': float(QS),
+                'ACE': float(ACE),
+                'DCE': float(DCE),
+                'SSq': float(SSq),
+                'IF_pi_t': float(IF_pi_t),
+                'QV': float(QV),
+            },
+            'UP_total': float(UP_total),
+            'reactor_params': {
+                'r': r, 'omega_s': omega_s, 'T_s': T_s,
+                'B_s': B_s, 'SCm': SCm_density, 'UA': UA
+            },
+            'physical_conscious_bridge': True,
+            'plasma_transmutation': True,
+            'source': 'Grok UFE ORB EXP 2_8_05Mar2025'
+        }
+
+
+class InertialForceOperatorCalculator:
+    """
+    Inertial Force IF^(π-t) Operator Calculator
+    
+    Plasma operates with negative time [-t] as an Inertial Force,
+    acting violently on both sides of the 0 boundary.
+    
+    Equation:
+    IF^(π-t) = t^- • (SCm + SCm') • e^(π-t_n) • [Pl_s^n]
+    
+    Where:
+    - t^-: Negative time
+    - SCm + SCm': Dual-state superconductive material
+    - e^(π-t_n): PI-based exponential
+    - Pl_s^n: Plasma PI operator
+    
+    Actions:
+    - Reprograms [SCm+SCm'] within dissimilar atomic zones
+    - Aligns atoms perfectly
+    - Strips imperfect atoms of electrons
+    - Fragments nuclei back into Aether
+    - Leaves ideal solids and after-glow
+    
+    Source: Grok UFE ORB EXP 2_8_05Mar2025
+    """
+    
+    def compute(self, t_n: float = 0.60, SCm_density: float = 1e15) -> dict:
+        """Compute Inertial Force operator"""
+        import numpy as np
+        
+        # Negative time
+        t_minus = -t_n * np.exp(np.pi - t_n)
+        
+        # PI exponential
+        exp_pi_t = np.exp(np.pi - t_n)
+        
+        # Dual-state SCm
+        SSq = (0.57 ** 24) * np.exp(-np.pi - t_minus)
+        SCm = SCm_density * (1 - np.exp(-0.001 * t_minus))
+        SCm_prime = SCm_density * np.exp(-np.pi - t_minus) * SSq
+        SCm_dual = SCm + SCm_prime
+        
+        # Simplified Pl_s^n (plasma PI operator)
+        alpha = 0.0072973525693
+        Pl_s_n = alpha * np.pi * SSq
+        
+        # IF^(π-t)
+        IF_pi_t = t_minus * SCm_dual * exp_pi_t * Pl_s_n
+        
+        return {
+            'operator': 'IF^(π-t)',
+            'formula': 'IF^(π-t) = t^- • (SCm + SCm\') • e^(π-t_n) • [Pl_s^n]',
+            't_n': t_n,
+            't_minus': t_minus,
+            'exp_pi_t': exp_pi_t,
+            'SCm_dual': float(SCm_dual),
+            'Pl_s_n': float(Pl_s_n),
+            'IF_pi_t': float(IF_pi_t),
+            'actions': [
+                'Reprograms [SCm+SCm\']',
+                'Aligns dissimilar atoms',
+                'Strips imperfect electrons',
+                'Fragments nuclei to Aether',
+                'Produces ideal solids',
+                'Creates after-glow'
+            ],
+            'zero_boundary_action': 'violent_both_sides',
+            'transmutation': True,
+            'source': 'Grok UFE ORB EXP 2_8_05Mar2025'
+        }
+
+
+class VacuumStressCalculator:
+    """
+    Vacuum Stress QV(t) Calculator
+    
+    From primordial vessel dynamics and incomplete paper integration.
+    Uses fine-structure constant α for vacuum stress calculation.
+    
+    Equation:
+    QV(t^-) = α • (SCm + SCm') • e^(-1/e • t^-)
+    
+    Where:
+    - α ≈ 0.0072973525693 (fine-structure constant)
+    - SCm + SCm': Dual-state superconductive material
+    - e^(-1/e • t^-): Exponential decay in negative time
+    
+    Origin: Closed-circuit vessel under vacuum stress in primordial
+    universe formation, yielding di-pair nuclei binding [UA]:[SCm_s^n]
+    
+    Source: Grok UFE ORB EXP 2_8_05Mar2025
+    """
+    
+    def compute(self, t_n: float = 0.60, SCm_density: float = 1e15) -> dict:
+        """Compute vacuum stress term"""
+        import numpy as np
+        
+        # Constants
+        alpha = 0.0072973525693  # Fine-structure constant
+        e_val = np.e
+        
+        # Negative time
+        t_minus = -t_n * np.exp(np.pi - t_n)
+        
+        # Dual-state SCm
+        SSq = (0.57 ** 24) * np.exp(-np.pi - t_minus)
+        SCm = SCm_density * (1 - np.exp(-0.001 * t_minus))
+        SCm_prime = SCm_density * np.exp(-np.pi - t_minus) * SSq
+        SCm_dual = SCm + SCm_prime
+        
+        # Vacuum stress
+        exp_factor = np.exp(-1/e_val * t_minus)
+        QV = alpha * SCm_dual * exp_factor
+        
+        return {
+            'term': 'QV(t^-)',
+            'formula': 'QV(t^-) = α • (SCm + SCm\') • e^(-1/e • t^-)',
+            'alpha': alpha,
+            'alpha_description': 'Fine-structure constant',
+            't_n': t_n,
+            't_minus': t_minus,
+            'SCm_dual': float(SCm_dual),
+            'exp_factor': float(exp_factor),
+            'QV_value': float(QV),
+            'origin': 'Primordial vessel vacuum stress',
+            'yields': 'Di-pair nuclei [UA]:[SCm_s^n]',
+            'source': 'Grok UFE ORB EXP 2_8_05Mar2025'
+        }
+
+
+class PlasmaPIOperatorCalculator:
+    """
+    Plasma PI Operator [Pl_s^n] Calculator
+    
+    Plasma Unified Range function: The intelligent fluctuating inertial
+    operator that tasks PI math logic to transform Aether [UA] between
+    non-linear time.
+    
+    Equation (symbolic):
+    Pl_s^n = ∫_(-1)^(1) α • dr' • e^(e² / (4πε₀ℏc) • (2πr')(4πr²)) • SSq(t^-)
+    
+    Where:
+    - α ≈ 0.0072973525693 (fine-structure constant)
+    - e² / (4πε₀ℏc): Coupling constant (~α)
+    - SSq(t^-): 26-state overlay
+    
+    Action: Weaves [FSC_s^(n*) : -FSC_s^(n*)] back and forth within
+    the compression zone at the zero range barrier until prototype
+    atom is born.
+    
+    Source: Grok UFE ORB EXP 2_8_05Mar2025
+    """
+    
+    def compute(self, t_n: float = 0.60, r: float = 0.0889) -> dict:
+        """Compute Plasma PI operator"""
+        import numpy as np
+        from scipy import integrate
+        
+        # Constants
+        alpha = 0.0072973525693
+        
+        # Negative time
+        t_minus = -t_n * np.exp(np.pi - t_n)
+        
+        # SSq overlay
+        SSq = (0.57 ** 24) * np.exp(-np.pi - t_minus)
+        
+        # Simplified integral (symbolic approximation)
+        # The full integral involves QED coupling, simplified here
+        def integrand(r_prime):
+            coupling = alpha  # e²/(4πε₀ℏc) ≈ α
+            geom_factor = (2 * np.pi * r_prime) * (4 * np.pi * r**2)
+            # Limit exponential to avoid overflow
+            arg = coupling * geom_factor * 1e-4  # Scale factor
+            return alpha * np.exp(np.clip(arg, -700, 700)) * SSq
+        
+        # Integrate from -1 to 1
+        result, error = integrate.quad(integrand, -1, 1)
+        
+        return {
+            'operator': 'Pl_s^n',
+            'description': 'Plasma Unified Range function',
+            'formula': 'Pl_s^n = ∫_(-1)^(1) α • dr\' • e^(α • (2πr\')(4πr²)) • SSq(t^-)',
+            'alpha': alpha,
+            'r_reactor': r,
+            't_n': t_n,
+            't_minus': t_minus,
+            'SSq': float(SSq),
+            'Pl_s_n_value': float(result),
+            'integration_error': float(error),
+            'action': 'Transforms Aether via PI math logic',
+            'weaving': '[FSC : -FSC] at zero range barrier',
+            'outcome': 'Prototype atom formation',
+            'intelligence': True,
+            'source': 'Grok UFE ORB EXP 2_8_05Mar2025'
+        }
+
+
+class ZeroBoundaryCalculator:
+    """
+    Zero Boundary (0 Boundary) Calculator
+    
+    The divide between physical reality and conscious reality.
+    
+    Structure:
+    - Physical reality: 4 states (solids, liquids, gases, plasma)
+    - Conscious reality: 20 additional states
+    - Total: 26 quantum states (reciprocal infinity curve)
+    
+    Plasma bridges the 0 boundary:
+    - Transmutes between physical and conscious domains
+    - Uses negative time [-t] to operate on both sides
+    - [SCm+SCm'] exists across the boundary simultaneously
+    
+    Source: Grok UFE ORB EXP 2_8_05Mar2025
+    """
+    
+    def compute(self, state_index: int = 1) -> dict:
+        """Compute zero boundary state properties"""
+        import numpy as np
+        
+        # State classification
+        physical_states = ['Solid', 'Liquid', 'Gas', 'Plasma']
+        conscious_states = [f'Conscious_State_{i}' for i in range(1, 21)]
+        all_states = physical_states + conscious_states
+        
+        # Validate index
+        if state_index < 1 or state_index > 26:
+            state_index = 1
+        
+        current_state = all_states[state_index - 1]
+        is_physical = state_index <= 4
+        is_conscious = state_index > 4
+        is_plasma = state_index == 4
+        
+        # Reciprocal infinity curve position
+        # Maps states to positions on infinity curve
+        theta = (state_index - 1) / 25 * 2 * np.pi
+        infinity_x = np.cos(theta) / (1 + np.sin(theta)**2)
+        infinity_y = np.cos(theta) * np.sin(theta) / (1 + np.sin(theta)**2)
+        
+        # Boundary crossing potential (plasma has highest)
+        boundary_crossing = 1.0 if is_plasma else (0.5 if is_physical else 0.3)
+        
+        return {
+            'state_index': state_index,
+            'state_name': current_state,
+            'is_physical': is_physical,
+            'is_conscious': is_conscious,
+            'is_plasma_bridge': is_plasma,
+            'physical_state_count': 4,
+            'conscious_state_count': 20,
+            'total_states': 26,
+            'physical_states': physical_states,
+            'infinity_curve_position': {
+                'theta': theta,
+                'x': infinity_x,
+                'y': infinity_y,
+            },
+            'boundary_crossing_potential': boundary_crossing,
+            'zero_boundary_exists': True,
+            'plasma_role': 'Transmutation bridge',
+            'source': 'Grok UFE ORB EXP 2_8_05Mar2025'
+        }
+
+
+class PrimordialHydrogenCalculator:
+    """
+    Primordial Hydrogen [H:H] Formation Calculator
+    
+    Diatomic hydrogen as the first and lightest stable universal atom set,
+    formed through plasma transmutation across the 0 boundary.
+    
+    Formation pathway:
+    [UF_s^(n*ei(π))] ≥ (π^ni + [QV_s^n] + [Pl_s^n]) →
+    H_g^2 → H_l(hex)^2 → [(2H_s(tet)^6 + H_s(tet))^n + ...] → [H:H]
+    
+    Properties:
+    - Nuclear bound proportional [1:1]
+    - 1[UA^n] + 1[SCm_s^n] + 1e^(-1) per H atom
+    - Shared electron between di-pair nuclei
+    
+    Source: Grok UFE ORB EXP 2_8_05Mar2025
+    """
+    
+    def compute(self, n_pairs: int = 1) -> dict:
+        """Compute primordial hydrogen formation"""
+        import numpy as np
+        
+        # Constants
+        m_H = 1.673e-27  # kg (hydrogen mass)
+        e_charge = 1.602e-19  # C (electron charge)
+        
+        # Binding energy per H₂ (4.52 eV)
+        binding_eV = 4.52
+        binding_J = binding_eV * 1.602e-19
+        
+        # Formation components per [H:H]
+        UA_units = 1 * n_pairs  # Aether units
+        SCm_units = 1 * n_pairs  # Superconductive material units
+        electrons = 2 * n_pairs  # Shared electrons (1 per pair, 2 total H atoms)
+        
+        # Quantum state contribution
+        # From plasma's negative time action
+        n26 = 24
+        SSq = 0.57 ** n26
+        
+        # PI-based formation factor
+        pi_factor = np.pi ** (1j * n26)  # π^ni from equation
+        
+        # Total H₂ molecules formed
+        total_H2 = n_pairs
+        total_mass = 2 * m_H * total_H2
+        total_binding = binding_J * total_H2
+        
+        return {
+            'product': '[H:H] Diatomic Hydrogen',
+            'n_pairs': n_pairs,
+            'total_H2_molecules': total_H2,
+            'total_mass_kg': total_mass,
+            'binding_energy_J': total_binding,
+            'binding_energy_eV_per_mol': binding_eV,
+            'composition_per_H2': {
+                'UA_units': 2,  # 1 per H atom
+                'SCm_units': 2,
+                'electrons_shared': 2,
+                'nuclear_ratio': '1:1',
+            },
+            'formation_pathway': 'H_g² → H_l(hex)² → [H:H]',
+            'plasma_role': 'Violent transmutation via IF^(π-t)',
+            'pi_factor_magnitude': float(np.abs(pi_factor)),
+            'SSq_contribution': float(SSq),
+            'is_lightest_stable': True,
+            'is_first_universal_atom': True,
+            'after_glow': True,
+            'source': 'Grok UFE ORB EXP 2_8_05Mar2025'
+        }
+
+
+class ConsciousnessFluctuationQFECalculator:
+    """
+    Consciousness Fluctuation {(QFE)} Calculator
+    
+    The negative time [consciousness] fluctuation component of [UA].
+    
+    Structure:
+    [UA] = [{(QFE)} : {[UF]} : {(UFE)}]
+    
+    Where:
+    - {(QFE)}: Field's negative time [consciousness] fluctuation
+    - {[UF]}: Zero space of convergence (0 boundary)
+    - {(UFE)}: Field's positive time [reality] fluctuation
+    
+    The gateway [UF_s^(n*e(π)^i)] allows non-reversible mass and/or
+    fundamental particles to be built from [UA].
+    
+    Source: Grok UFE ORB EXP 2_8_05Mar2025
+    """
+    
+    def compute(self, t_n: float = 0.60) -> dict:
+        """Compute consciousness fluctuation term"""
+        import numpy as np
+        
+        # Negative time
+        t_minus = -t_n * np.exp(np.pi - t_n)
+        
+        # SSq overlay
+        n26 = 24
+        SSq = (0.57 ** n26) * np.exp(-np.pi - t_minus)
+        
+        # QFE (consciousness fluctuation)
+        # Oscillates in negative time domain
+        QFE = np.cos(np.pi * t_minus) * SSq
+        
+        # UFE (reality fluctuation)
+        # Oscillates in positive time domain
+        UFE = np.cos(np.pi * t_n) * SSq
+        
+        # UF (zero space convergence)
+        # Minimum magnitude at boundary
+        UF = np.abs(QFE - UFE)
+        
+        # Gateway function
+        # [UF_s^(n*e(π)^i)]
+        gateway_arg = n26 * np.e * np.pi
+        UF_gateway = complex(np.cos(gateway_arg), np.sin(gateway_arg))
+        
+        # UA composite
+        UA_composite = complex(QFE, UFE)
+        
+        return {
+            'structure': '[UA] = [{(QFE)} : {[UF]} : {(UFE)}]',
+            't_n_positive': t_n,
+            't_minus_negative': t_minus,
+            'QFE_consciousness': float(QFE),
+            'UFE_reality': float(UFE),
+            'UF_zero_space': float(UF),
+            'UA_composite_real': float(UA_composite.real),
+            'UA_composite_imag': float(UA_composite.imag),
+            'gateway_function': {
+                'formula': '[UF_s^(n*e(π)^i)]',
+                'real': float(UF_gateway.real),
+                'imag': float(UF_gateway.imag),
+            },
+            'allows_mass_building': True,
+            'non_reversible': True,
+            'SSq': float(SSq),
+            'interpretation': {
+                'QFE': 'Negative time consciousness fluctuation',
+                'UF': 'Zero boundary convergence',
+                'UFE': 'Positive time reality fluctuation',
+            },
+            'source': 'Grok UFE ORB EXP 2_8_05Mar2025'
+        }
+
+
+class AtomicTransmutationCalculator:
+    """
+    Atomic Transmutation Calculator
+    
+    Plasma's intelligent action on dissimilar atoms across the 0 boundary.
+    
+    Process:
+    1. Plasma identifies dissimilar atomic zones
+    2. Reprograms [SCm+SCm'] within the collection
+    3. Seeks perfect alignment between constituent atoms
+    4. Strips imperfect atoms of electrons
+    5. Rips apart atomic nuclei
+    6. Reverts fundamental quantum pieces back to Aether
+    7. Leaves ideal solid and brief after-glow
+    
+    Operator: IF^(π-t) = [-t] • (SCm + SCm') • e^(π-t_n)
+    
+    Source: Grok UFE ORB EXP 2_8_05Mar2025
+    """
+    
+    def compute(self, n_atoms_initial: int = 100,
+                imperfection_fraction: float = 0.15) -> dict:
+        """Compute atomic transmutation results"""
+        import numpy as np
+        
+        # Process input atoms
+        n_imperfect = int(n_atoms_initial * imperfection_fraction)
+        n_perfect = n_atoms_initial - n_imperfect
+        
+        # Transmutation efficiency
+        # Plasma aligns perfect atoms, strips imperfect
+        alignment_efficiency = 0.95  # 95% of perfect atoms align
+        stripping_efficiency = 0.99  # 99% of imperfect stripped
+        
+        n_aligned = int(n_perfect * alignment_efficiency)
+        n_stripped = int(n_imperfect * stripping_efficiency)
+        
+        # Reverted to Aether
+        n_to_aether = n_stripped
+        
+        # Ideal solid output
+        n_ideal_solid = n_aligned
+        
+        # Energy released (simplified)
+        # After-glow energy per stripped atom
+        E_afterglow_per_atom = 1e-18  # J (approximate)
+        E_afterglow_total = n_stripped * E_afterglow_per_atom
+        
+        # Aether contribution
+        UA_generated = n_to_aether  # Units of Aether
+        
+        return {
+            'process': 'Atomic Transmutation via IF^(π-t)',
+            'input_atoms': n_atoms_initial,
+            'imperfection_fraction': imperfection_fraction,
+            'n_perfect_initial': n_perfect,
+            'n_imperfect_initial': n_imperfect,
+            'alignment_efficiency': alignment_efficiency,
+            'stripping_efficiency': stripping_efficiency,
+            'n_atoms_aligned': n_aligned,
+            'n_atoms_stripped': n_stripped,
+            'n_to_aether': n_to_aether,
+            'n_ideal_solid_output': n_ideal_solid,
+            'E_afterglow_total_J': E_afterglow_total,
+            'UA_generated': UA_generated,
+            'after_glow_present': True,
+            'steps': [
+                '1. Identify dissimilar zones',
+                '2. Reprogram [SCm+SCm\']',
+                '3. Align perfect atoms',
+                '4. Strip imperfect electrons',
+                '5. Fragment nuclei',
+                '6. Revert to Aether',
+                '7. Produce ideal solid + after-glow'
+            ],
+            'plasma_intelligence': True,
+            'zero_boundary_action': True,
+            'source': 'Grok UFE ORB EXP 2_8_05Mar2025'
+        }
+
+
+# UFT Orb Analysis_22 registry dict
+ORB_ANALYSIS_22_CALCULATORS = {
+    'DualNatureSCmCalculator': DualNatureSCmCalculator(),
+    'NegativeTimeOperatorCalculator': NegativeTimeOperatorCalculator(),
+    'UniversalPermanenceCalculator': UniversalPermanenceCalculator(),
+    'InertialForceOperatorCalculator': InertialForceOperatorCalculator(),
+    'VacuumStressCalculator': VacuumStressCalculator(),
+    'PlasmaPIOperatorCalculator': PlasmaPIOperatorCalculator(),
+    'ZeroBoundaryCalculator': ZeroBoundaryCalculator(),
+    'PrimordialHydrogenCalculator': PrimordialHydrogenCalculator(),
+    'ConsciousnessFluctuationQFECalculator': ConsciousnessFluctuationQFECalculator(),
+    'AtomicTransmutationCalculator': AtomicTransmutationCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -7862,6 +8647,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_19_CALCULATORS,
     **ORB_ANALYSIS_20_CALCULATORS,
     **ORB_ANALYSIS_21_CALCULATORS,
+    **ORB_ANALYSIS_22_CALCULATORS,
 }
 
 # Update class count
@@ -8013,6 +8799,20 @@ __all__ = [
     'ParaffinGasBubbleBalancerCalculator',
     'ImaginaryQuantumStateCalculator',
     'ORB_ANALYSIS_21_CALCULATORS',
+    
+    # Orb Analysis_22 / UFE ORB EXP 2_8 - Universal Permanence Framework (10 classes)
+    'ORB_ANALYSIS_22_PARAMS',
+    'DualNatureSCmCalculator',
+    'NegativeTimeOperatorCalculator',
+    'UniversalPermanenceCalculator',
+    'InertialForceOperatorCalculator',
+    'VacuumStressCalculator',
+    'PlasmaPIOperatorCalculator',
+    'ZeroBoundaryCalculator',
+    'PrimordialHydrogenCalculator',
+    'ConsciousnessFluctuationQFECalculator',
+    'AtomicTransmutationCalculator',
+    'ORB_ANALYSIS_22_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
