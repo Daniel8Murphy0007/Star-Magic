@@ -160096,6 +160096,755 @@ BUOYANCY_NEGATIVE_TIME_CALCULATORS = {
 }
 
 
+# =============================================================================
+# RED DWARF REACTOR PLASMA ORB - EXPERIMENTAL CALCULATORS
+# =============================================================================
+# Source: Grok Unified Field Theory Thread Continuation_4 (March 3, 2025)
+# 496 consecutive infrared photos, 33.3 fps, ~0.03 s/frame
+# Reactor: 24-inch plasma orb, 17W→7W, 6000 Hz field
+# Medium: Purified low-viscosity oil, paraffin wax/red mercury cap (180-215°F)
+# Plasmoids: "Intelligent quantum plasmoids" with unique spin, shape-shifting
+# =============================================================================
+
+# Red Dwarf Reactor experimental parameters
+RED_DWARF_REACTOR_PARAMS = {
+    'orb_diameter_in': 24.0,
+    'orb_diameter_m': 0.6096,
+    'cylinder_diameter_in': 3.5,
+    'cylinder_diameter_m': 0.0889,
+    'cylinder_height_in': 10.0,
+    'cylinder_height_m': 0.254,
+    'bulb_power_W': 65.0,
+    'field_power_initial_W': 17.0,
+    'field_power_reduced_W': 7.0,
+    'field_frequency_Hz': 6000.0,
+    'ambient_temp_K': 288.0,
+    'cooling_delta_F': 8.5,  # 7-10°F average
+    'operating_temp_low_F': 180.0,
+    'operating_temp_high_F': 215.0,
+    'operating_temp_low_K': 355.4,  # 180°F in K
+    'operating_temp_high_K': 374.8,  # 215°F in K
+    'magnetic_field_T': 1e-3,  # ~10^-3 T
+    'south_pole_strength_T': 0.05,  # halved
+    'flapping_freq_Hz': 60.0,  # >60 Hz
+    'battery_renewal_Wh': 1464.0,
+    'cold_spark_V_low': 500.0,
+    'cold_spark_V_high': 1000.0,
+    'hydrogen_bubbles_count': 15,  # 12-18 average
+    'hydrogen_ignition_F': 107.0,  # self-ignition point
+    'frame_rate_fps': 33.3,
+    'frame_interval_s': 0.03,
+    'total_photos': 496,
+    'video_duration_s': 14.9,  # 496 × 0.03
+    'spot_velocity_m_s': 0.5,
+    'spot_energy_J_per_frame': 0.05,  # ~50 mJ/frame
+    'infrared_range_um': (0.7, 10.0),
+    'plasma_temp_K': (2500.0, 4000.0),  # red dwarf range
+    'decay_rate_s': 0.001,  # α = 0.001/s
+}
+
+
+class RedDwarfReactorUg1Calculator:
+    """
+    Ug1 (Internal Dipole): Cold spark and spot peaks for plasma orb.
+    
+    Ug1 = 1.5 × 10⁻⁴ × ∇(ρ/r) × e^(-αt) × cos(πt_n) × (1 + 0.01×sin(0.001t))
+    
+    Physical basis: Internal dipole field from cold spark events and
+    localized energy concentration in plasma spots.
+    
+    Source: Grok UFT Thread 4 (March 3, 2025)
+    """
+    
+    def __init__(self):
+        self.k1 = 1.5
+        self.alpha = 0.001  # s^-1
+        self.description = "Red Dwarf Reactor Ug1 internal dipole"
+    
+    def compute(self, t: float = 0.0, t_n: float = 0.5, rho: float = 0.5,
+                r: float = 0.0889, **params) -> dict:
+        """
+        Compute Ug1 internal dipole field.
+        
+        Args:
+            t: Time in seconds
+            t_n: Normalized time (0 to 1)
+            rho: Density gradient scalar
+            r: Distance from center (m)
+            
+        Returns:
+            dict with Ug1 and equation
+        """
+        # Density gradient term
+        grad_rho_r = rho / r if r > 0 else 0
+        
+        # Time decay
+        time_decay = np.exp(-self.alpha * t)
+        
+        # Cosine phase
+        phase = np.cos(np.pi * t_n)
+        
+        # Oscillatory perturbation
+        perturbation = 1.0 + 0.01 * np.sin(0.001 * t)
+        
+        # Ug1 internal dipole
+        Ug1 = self.k1 * 1e-4 * grad_rho_r * time_decay * phase * perturbation
+        
+        return {
+            'value': Ug1,
+            'Ug1_m_s2': Ug1,
+            'grad_rho_r': grad_rho_r,
+            'time_decay': time_decay,
+            'phase': phase,
+            'perturbation': perturbation,
+            'units': 'm/s²',
+            'equation': 'Ug1 = 1.5×10⁻⁴ × ∇(ρ/r) × e^(-αt) × cos(πt_n) × (1+0.01×sin(0.001t))',
+            'source': 'Red Dwarf Reactor (March 3, 2025)'
+        }
+
+
+class RedDwarfReactorUg2Calculator:
+    """
+    Ug2 (Outer Field Bubble): Stable background from 65W bulb and field boundary.
+    
+    Ug2 = 1.2 × (ρ_SCm + ρ_UA) × r/r² × S(r-r₀) × (1 + 0.01×ω) × E_react
+    
+    Physical basis: Outer field bubble at r = 0.0889 m (cylinder radius),
+    driven by thermal and electromagnetic input from bulb.
+    
+    Source: Grok UFT Thread 4 (March 3, 2025)
+    """
+    
+    def __init__(self):
+        self.k2 = 1.2
+        self.rho_SCm = 1e-11  # J/m³
+        self.rho_UA = 1e-11   # J/m³
+        self.alpha = 0.001
+        self.description = "Red Dwarf Reactor Ug2 outer field bubble"
+    
+    def compute(self, t: float = 0.0, r: float = 0.0889, r0: float = 0.0889,
+                omega: float = 5e5, E_react_0: float = 1e15, **params) -> dict:
+        """
+        Compute Ug2 outer field bubble.
+        
+        Args:
+            t: Time in seconds
+            r: Radial distance (m)
+            r0: Boundary radius (m)
+            omega: Angular frequency (rad/s)
+            E_react_0: Initial reactor efficiency (W/m³)
+            
+        Returns:
+            dict with Ug2 and equation
+        """
+        # Vacuum density sum
+        rho_sum = self.rho_SCm + self.rho_UA
+        
+        # Radial scaling
+        r_factor = r / (r ** 2) if r > 0 else 0
+        
+        # Step function (boundary effect)
+        S_boundary = 1.0 if r >= r0 else 0.0
+        
+        # Frequency modulation
+        freq_mod = 1.0 + 0.01 * omega
+        
+        # Reactor efficiency with decay
+        E_react = E_react_0 * np.exp(-self.alpha * t)
+        
+        # Ug2 outer field bubble
+        Ug2 = self.k2 * rho_sum * r_factor * S_boundary * freq_mod * E_react
+        
+        return {
+            'value': Ug2,
+            'Ug2_m_s2': Ug2,
+            'rho_sum': rho_sum,
+            'r_factor': r_factor,
+            'S_boundary': S_boundary,
+            'E_react': E_react,
+            'units': 'm/s²',
+            'equation': 'Ug2 = 1.2 × (ρ_SCm + ρ_UA) × r/r² × S(r-r₀) × (1+0.01ω) × E_react',
+            'source': 'Red Dwarf Reactor (March 3, 2025)'
+        }
+
+
+class RedDwarfReactorUg3Calculator:
+    """
+    Ug3 (Magnetic Strings): Spot motion and 6000 Hz resonance.
+    
+    Ug3 = 1.8 × Σⱼ Bⱼ × cos(2π×f×t×π) × E_react
+    
+    Physical basis: Magnetic strings driving plasmoid motion at ~0.5 m/s,
+    with flapping (>60 Hz) and 6000 Hz field resonance.
+    
+    Source: Grok UFT Thread 4 (March 3, 2025)
+    """
+    
+    def __init__(self):
+        self.k3 = 1.8
+        self.f_field = 6000.0  # Hz
+        self.alpha = 0.001
+        self.description = "Red Dwarf Reactor Ug3 magnetic strings"
+    
+    def compute(self, t: float = 0.0, B_j: float = 1e-3, num_strings: int = 10,
+                E_react_0: float = 1e15, **params) -> dict:
+        """
+        Compute Ug3 magnetic strings field.
+        
+        Args:
+            t: Time in seconds
+            B_j: Magnetic field strength per string (T)
+            num_strings: Number of magnetic strings
+            E_react_0: Initial reactor efficiency (W/m³)
+            
+        Returns:
+            dict with Ug3 and equation
+        """
+        # Resonance term
+        resonance = np.cos(2.0 * np.pi * self.f_field * t * np.pi)
+        
+        # String sum
+        B_sum = num_strings * B_j
+        
+        # Reactor efficiency with decay
+        E_react = E_react_0 * np.exp(-self.alpha * t)
+        
+        # Ug3 magnetic strings
+        Ug3 = self.k3 * B_sum * resonance * E_react
+        
+        return {
+            'value': Ug3,
+            'Ug3_m_s2': Ug3,
+            'B_sum_T': B_sum,
+            'resonance_term': resonance,
+            'E_react': E_react,
+            'frequency_Hz': self.f_field,
+            'units': 'm/s²',
+            'equation': 'Ug3 = 1.8 × Σⱼ Bⱼ × cos(2π×6000×t×π) × E_react',
+            'source': 'Red Dwarf Reactor (March 3, 2025)'
+        }
+
+
+class RedDwarfReactorUbiCalculator:
+    """
+    Ub_i (Universal Buoyancy): Cooling and energy renewal for plasma orb.
+    
+    Ub_i = -0.8 × Ug_i × Ω_g × (M_bh/d_g) × (1 + δ×ρ_sw) × ρ_UA × cos(πt_n)
+    
+    Physical basis: Buoyancy stabilizes plasma at 288 K, influenced by
+    paraffin wax/red mercury cap viscosity changes.
+    
+    NOTE: β_i = 0.8 for Red Dwarf Reactor (higher than cosmic 0.6)
+    
+    Source: Grok UFT Thread 4 (March 3, 2025)
+    """
+    
+    def __init__(self):
+        self.beta_i = 0.8  # Higher for lab-scale plasma
+        self.Omega_g = 7.3e-16  # Galactic rotation component
+        self.Mbh = 8.15e36  # kg
+        self.dg = 2.55e20  # m
+        self.alpha = 0.001
+        self.description = "Red Dwarf Reactor Ub_i buoyancy"
+    
+    def compute(self, t: float = 0.0, t_n: float = 0.5, Ugi: float = 1e-10,
+                delta_sw: float = 0.001, rho_sw: float = 1e-21,
+                rho_UA: float = 1e15, **params) -> dict:
+        """
+        Compute Ub_i universal buoyancy for plasma orb.
+        
+        Args:
+            t: Time in seconds
+            t_n: Normalized time (0 to 1)
+            Ugi: Gravity sum (m/s²)
+            delta_sw: Solar wind correction
+            rho_sw: Solar wind density (kg/m³)
+            rho_UA: Aether density factor
+            
+        Returns:
+            dict with Ub_i and equation
+        """
+        # Phase modulation
+        phase = np.cos(np.pi * t_n)
+        
+        # Wind modulation
+        wind_mod = 1.0 + delta_sw * rho_sw
+        
+        # Mass/distance ratio
+        mass_ratio = self.Mbh / self.dg
+        
+        # Universal Buoyancy
+        Ubi = -self.beta_i * Ugi * self.Omega_g * mass_ratio * wind_mod * rho_UA * phase
+        
+        return {
+            'value': Ubi,
+            'Ubi_m_s2': Ubi,
+            'beta_i': self.beta_i,
+            'phase': phase,
+            'wind_mod': wind_mod,
+            'mass_ratio': mass_ratio,
+            'units': 'm/s²',
+            'equation': 'Ub_i = -0.8 × Ug_i × Ω_g × (M_bh/d_g) × (1+δ×ρ_sw) × ρ_UA × cos(πt_n)',
+            'note': 'β_i = 0.8 (lab-scale, higher than cosmic 0.6)',
+            'source': 'Red Dwarf Reactor (March 3, 2025)'
+        }
+
+
+class RedDwarfReactorUmCalculator:
+    """
+    Um (Universal Magnetism): Plasmoid spin and hydrogen bubble fields.
+    
+    Um = Σⱼ (μⱼ/rⱼ) × (1 - e^(-γt×cos(πt_n))) × φ̂ⱼ × E_react
+    
+    Physical basis: Magnetic peaks (~10⁻³ T) drive plasmoid interactions,
+    spin, and reverse rotation dynamics.
+    
+    Source: Grok UFT Thread 4 (March 3, 2025)
+    """
+    
+    def __init__(self):
+        self.gamma = 0.001
+        self.alpha = 0.001
+        self.description = "Red Dwarf Reactor Um universal magnetism"
+    
+    def compute(self, t: float = 0.0, t_n: float = 0.5, mu_j: float = 1e-4,
+                r_j: float = 0.0889, num_sources: int = 5,
+                E_react_0: float = 1e15, phi_hat: float = 1.0, **params) -> dict:
+        """
+        Compute Um universal magnetism for plasma orb.
+        
+        Args:
+            t: Time in seconds
+            t_n: Normalized time (0 to 1)
+            mu_j: Magnetic moment per source (A·m²)
+            r_j: Distance from source (m)
+            num_sources: Number of magnetic sources
+            E_react_0: Initial reactor efficiency (W/m³)
+            phi_hat: Phase accumulation factor
+            
+        Returns:
+            dict with Um and equation
+        """
+        # Phase modulation
+        phase = np.cos(np.pi * t_n)
+        
+        # Magnetic moment/distance ratio
+        mu_r_ratio = mu_j / r_j if r_j > 0 else 0
+        
+        # Time-dependent saturation term
+        saturation = 1.0 - np.exp(-self.gamma * t * phase)
+        
+        # Reactor efficiency with decay
+        E_react = E_react_0 * np.exp(-self.alpha * t)
+        
+        # Universal Magnetism (sum over sources)
+        Um = num_sources * mu_r_ratio * saturation * phi_hat * E_react
+        
+        return {
+            'value': Um,
+            'Um_T': Um,
+            'mu_r_ratio': mu_r_ratio,
+            'saturation': saturation,
+            'E_react': E_react,
+            'num_sources': num_sources,
+            'units': 'T (Tesla)',
+            'equation': 'Um = Σⱼ (μⱼ/rⱼ) × (1 - e^(-γt×cos(πt_n))) × φ̂ⱼ × E_react',
+            'source': 'Red Dwarf Reactor (March 3, 2025)'
+        }
+
+
+class RedDwarfReactorAetherCalculator:
+    """
+    A_μν (Cosmic Aether): Background and non-local plasmoid behavior.
+    
+    A_μν = g_μν + η × T_s,μν(ρ_SCm, E_react, ρ_neg, t_n)
+    
+    Physical basis: Supports "spooky action" (non-local energy transfer)
+    between plasmoids, linked to [ACE/DCE] plasma events.
+    
+    Source: Grok UFT Thread 4 (March 3, 2025)
+    """
+    
+    def __init__(self):
+        self.eta = 1e-22
+        self.description = "Red Dwarf Reactor A_μν cosmic aether"
+    
+    def compute(self, t_n: float = 0.5, rho_SCm: float = 1e-11,
+                E_react: float = 1e15, rho_neg: float = 1e-23, **params) -> dict:
+        """
+        Compute A_μν cosmic aether tensor component.
+        
+        Args:
+            t_n: Normalized time (0 to 1)
+            rho_SCm: Superconductive material density (J/m³)
+            E_react: Reactor efficiency (W/m³)
+            rho_neg: Negative aether density (kg/m³)
+            
+        Returns:
+            dict with A_μν diagonal component and equation
+        """
+        # Metric tensor (Minkowski flat space approximation)
+        g_munu = 1.0  # Diagonal component
+        
+        # Stress-energy tensor component (simplified)
+        T_s_munu = rho_SCm * E_react * rho_neg * t_n
+        
+        # Cosmic Aether tensor
+        A_munu = g_munu + self.eta * T_s_munu
+        
+        return {
+            'value': A_munu,
+            'A_munu': A_munu,
+            'g_munu': g_munu,
+            'eta_T_s': self.eta * T_s_munu,
+            'T_s_munu': T_s_munu,
+            'units': 'dimensionless (metric component)',
+            'equation': 'A_μν = g_μν + η × T_s,μν(ρ_SCm, E_react, ρ_neg, t_n)',
+            'source': 'Red Dwarf Reactor (March 3, 2025)'
+        }
+
+
+class RedDwarfReactorJetDynamicsCalculator:
+    """
+    [USm]_jet: Jet dynamics for plasmoid micro-jets.
+    
+    [USm]_jet = [Aether]_neg × e^([Ug3]×[SCm]_pos) × [ACE/DCE]
+    
+    Physical basis: Bright spots as micro-jets, driven by negative aether
+    and [ACE/DCE] plasma events.
+    
+    Source: Grok UFT Thread 4 (March 3, 2025)
+    """
+    
+    def __init__(self):
+        self.description = "Red Dwarf Reactor jet dynamics"
+    
+    def compute(self, Aether_neg: float = 1e-23, Ug3: float = 1e-10,
+                SCm_pos: float = 1e15, ACE_DCE: float = 1e15, **params) -> dict:
+        """
+        Compute [USm]_jet micro-jet dynamics.
+        
+        Args:
+            Aether_neg: Negative aether density (kg/m³)
+            Ug3: Magnetic strings field strength
+            SCm_pos: Positive superconductive density
+            ACE_DCE: AC/DC energy density (W/m³)
+            
+        Returns:
+            dict with jet amplitude and equation
+        """
+        # Exponential amplification factor
+        exp_factor = np.exp(Ug3 * SCm_pos) if Ug3 * SCm_pos < 100 else np.exp(100)
+        
+        # Jet dynamics amplitude
+        USm_jet = Aether_neg * exp_factor * ACE_DCE
+        
+        return {
+            'value': USm_jet,
+            'USm_jet': USm_jet,
+            'Aether_neg': Aether_neg,
+            'exp_factor': exp_factor,
+            'ACE_DCE': ACE_DCE,
+            'units': 'W/m³',
+            'equation': '[USm]_jet = [Aether]_neg × e^([Ug3]×[SCm]_pos) × [ACE/DCE]',
+            'source': 'Red Dwarf Reactor (March 3, 2025)'
+        }
+
+
+class RedDwarfReactorOrbitalStabilityCalculator:
+    """
+    R_orbit: Orbital stability for Earth-like conditions.
+    
+    R_orbit = ([Ug3]×[SCm]_sup×B_s)/(M_p×r_p²) + ([Ug1]×r_p×M_s)/(M_p×B_Earth) - k×D_orbit×e^(-t/τ)
+    
+    Physical basis: Lab-scale orbital stability tied to magnetic field,
+    spot motion, and plasmoid clustering.
+    
+    Source: Grok UFT Thread 4 (March 3, 2025)
+    """
+    
+    def __init__(self):
+        self.M_p = 5.972e24  # Earth mass (kg)
+        self.M_s = 1.989e30  # Solar mass (kg)
+        self.B_Earth = 5e-5  # Earth B-field (T)
+        self.k_decay = 0.01  # Decay constant
+        self.tau = 1000.0    # Time constant (s)
+        self.description = "Red Dwarf Reactor orbital stability"
+    
+    def compute(self, t: float = 0.0, Ug3: float = 1e-3, SCm_sup: float = 1e15,
+                B_s: float = 1e-3, r_p: float = 0.5, Ug1: float = 1e-4,
+                D_orbit: float = 1.0, **params) -> dict:
+        """
+        Compute R_orbit orbital stability parameter.
+        
+        Args:
+            t: Time in seconds
+            Ug3: Magnetic strings (T·m³)
+            SCm_sup: Superconductive density (kg/m³)
+            B_s: System magnetic field (T)
+            r_p: Planet/lab radius (m)
+            Ug1: Internal dipole
+            D_orbit: Orbital decay factor
+            
+        Returns:
+            dict with R_orbit and equation
+        """
+        # First term: magnetic/mass coupling
+        term1 = (Ug3 * SCm_sup * B_s) / (self.M_p * r_p ** 2)
+        
+        # Second term: dipole/mass coupling
+        term2 = (Ug1 * r_p * self.M_s) / (self.M_p * self.B_Earth)
+        
+        # Third term: orbital decay
+        term3 = self.k_decay * D_orbit * np.exp(-t / self.tau)
+        
+        # R_orbit
+        R_orbit = term1 + term2 - term3
+        
+        return {
+            'value': R_orbit,
+            'R_orbit': R_orbit,
+            'term1_magnetic': term1,
+            'term2_dipole': term2,
+            'term3_decay': term3,
+            'units': 'dimensionless (stability parameter)',
+            'equation': 'R_orbit = ([Ug3]×[SCm]×B_s)/(M_p×r_p²) + ([Ug1]×r_p×M_s)/(M_p×B_Earth) - k×D×e^(-t/τ)',
+            'source': 'Red Dwarf Reactor (March 3, 2025)'
+        }
+
+
+class RedDwarfReactorPlasmoidCalculator:
+    """
+    Plasmoid dynamics: "Intelligent quantum plasmoids" with unique behaviors.
+    
+    Features:
+    - Unique spin qualities and surface texture
+    - Surface brightness differentials (some sun-like bright)
+    - Shape-shifting like celestial bodies
+    - Multi-axial rotations plus spin drift
+    - Instant reverse rotation capability
+    - Pass through each other flawlessly
+    - Rare energy transfer affecting rotation only
+    
+    Source: Grok UFT Thread 4 (March 3, 2025)
+    """
+    
+    def __init__(self):
+        self.description = "Intelligent quantum plasmoid dynamics"
+        self.frame_rate = 33.3  # fps
+        self.spot_velocity = 0.5  # m/s
+        self.energy_per_frame = 0.05  # J (50 mJ)
+    
+    def compute(self, num_frames: int = 20, t_per_frame: float = 0.03,
+                spin_rate_Hz: float = 60.0, num_species: int = 5,
+                brightness_range: tuple = (0.1, 1.0), **params) -> dict:
+        """
+        Compute plasmoid dynamics over frame sequence.
+        
+        Args:
+            num_frames: Number of frames in sequence
+            t_per_frame: Time per frame (s)
+            spin_rate_Hz: Average spin rate (Hz)
+            num_species: Number of plasmoid species
+            brightness_range: (min, max) brightness range
+            
+        Returns:
+            dict with plasmoid dynamics analysis
+        """
+        total_time = num_frames * t_per_frame
+        total_displacement = self.spot_velocity * total_time
+        total_energy = self.energy_per_frame * num_frames
+        
+        # Spin dynamics
+        total_rotations = spin_rate_Hz * total_time
+        angular_velocity = 2.0 * np.pi * spin_rate_Hz
+        
+        # Multi-axial analysis
+        axes = ['x', 'y', 'z']
+        axial_components = {axis: spin_rate_Hz / len(axes) for axis in axes}
+        
+        return {
+            'value': total_energy,
+            'total_energy_J': total_energy,
+            'total_time_s': total_time,
+            'total_displacement_m': total_displacement,
+            'average_velocity_m_s': self.spot_velocity,
+            'total_rotations': total_rotations,
+            'angular_velocity_rad_s': angular_velocity,
+            'spin_rate_Hz': spin_rate_Hz,
+            'num_species': num_species,
+            'brightness_range': brightness_range,
+            'axial_components': axial_components,
+            'characteristics': {
+                'shape_shifting': True,
+                'multi_axial_rotation': True,
+                'spin_drift': True,
+                'instant_reverse_rotation': True,
+                'flawless_pass_through': True,
+                'rare_energy_transfer': True
+            },
+            'units': 'J (total energy)',
+            'source': 'Red Dwarf Reactor Plasmoids (March 3, 2025)'
+        }
+
+
+class RedDwarfReactorMasterCalculator:
+    """
+    Master calculator: Complete F_U (Unified Field) for Red Dwarf Reactor.
+    
+    F_U = Σᵢ [kᵢ × Ugᵢ(r,t,...) - βᵢ × Ugᵢ × Ωg × M_bh/dg × E_react]
+          + Σⱼ [μⱼ/rⱼ × (1-e^(-γt cos(πt_n))) × φⱼ] × E_react
+          + A_μν contributions
+    
+    Integrates all Red Dwarf Reactor field components.
+    
+    Source: Grok UFT Thread 4 (March 3, 2025)
+    """
+    
+    def __init__(self):
+        self.Ug1_calc = RedDwarfReactorUg1Calculator()
+        self.Ug2_calc = RedDwarfReactorUg2Calculator()
+        self.Ug3_calc = RedDwarfReactorUg3Calculator()
+        self.Ubi_calc = RedDwarfReactorUbiCalculator()
+        self.Um_calc = RedDwarfReactorUmCalculator()
+        self.Aether_calc = RedDwarfReactorAetherCalculator()
+        self.jet_calc = RedDwarfReactorJetDynamicsCalculator()
+        self.orbital_calc = RedDwarfReactorOrbitalStabilityCalculator()
+        self.plasmoid_calc = RedDwarfReactorPlasmoidCalculator()
+        self.description = "Red Dwarf Reactor Master F_U Calculator"
+    
+    def compute(self, t: float = 0.0, t_n: float = 0.5, r: float = 0.0889,
+                num_frames: int = 20, **params) -> dict:
+        """
+        Compute complete F_U unified field.
+        
+        Args:
+            t: Time in seconds
+            t_n: Normalized time (0 to 1)
+            r: Radial distance (m)
+            num_frames: Number of frames for plasmoid analysis
+            
+        Returns:
+            dict with complete F_U and all components
+        """
+        # Compute all components
+        Ug1 = self.Ug1_calc.compute(t=t, t_n=t_n, r=r)
+        Ug2 = self.Ug2_calc.compute(t=t, r=r)
+        Ug3 = self.Ug3_calc.compute(t=t)
+        Ubi = self.Ubi_calc.compute(t=t, t_n=t_n, Ugi=Ug1['Ug1_m_s2'] + Ug2['Ug2_m_s2'] + Ug3['Ug3_m_s2'])
+        Um = self.Um_calc.compute(t=t, t_n=t_n, r_j=r)
+        Aether = self.Aether_calc.compute(t_n=t_n)
+        jet = self.jet_calc.compute(Ug3=Ug3['Ug3_m_s2'])
+        orbital = self.orbital_calc.compute(t=t, Ug1=Ug1['Ug1_m_s2'], Ug3=Ug3['Ug3_m_s2'])
+        plasmoid = self.plasmoid_calc.compute(num_frames=num_frames)
+        
+        # Gravity sum
+        Ug_sum = Ug1['Ug1_m_s2'] + Ug2['Ug2_m_s2'] + Ug3['Ug3_m_s2']
+        
+        # Combined F_U (simplified)
+        F_U = Ug_sum + Ubi['Ubi_m_s2'] + Um['Um_T'] * 1e-6  # Convert Um to compatible units
+        
+        return {
+            'value': F_U,
+            'F_U': F_U,
+            'Ug_sum': Ug_sum,
+            'Ug1': Ug1,
+            'Ug2': Ug2,
+            'Ug3': Ug3,
+            'Ubi': Ubi,
+            'Um': Um,
+            'Aether': Aether,
+            'jet': jet,
+            'orbital': orbital,
+            'plasmoid': plasmoid,
+            'reactor_params': RED_DWARF_REACTOR_PARAMS,
+            'units': 'm/s² (unified field)',
+            'equation': 'F_U = Σᵢ[kᵢ×Ugᵢ - βᵢ×Ugᵢ×Ωg×M_bh/dg×E_react] + Σⱼ[μⱼ/rⱼ×(1-e^(-γt))×φⱼ]×E_react',
+            'source': 'Red Dwarf Reactor Master (March 3, 2025)'
+        }
+
+
+class HydrogenBubbleMagneticCalculator:
+    """
+    Hydrogen bubble magnetic dynamics: 12-18 thermally stable H2 bubbles.
+    
+    Properties:
+    - Magnetically held against oil surface
+    - Near-equal separation pattern
+    - Thermally stable (>107°F self-ignition point)
+    - Enhance [Um] and [Ug3] fields
+    
+    Source: Grok UFT Thread 4 (March 3, 2025)
+    """
+    
+    def __init__(self):
+        self.ignition_temp_F = 107.0
+        self.ignition_temp_K = 314.8  # 107°F in Kelvin
+        self.magnetic_field_T = 1e-3
+        self.description = "Hydrogen bubble magnetic confinement"
+    
+    def compute(self, num_bubbles: int = 15, bubble_radius_m: float = 0.005,
+                B_hold: float = 1e-3, T_ambient_K: float = 355.0, **params) -> dict:
+        """
+        Compute hydrogen bubble dynamics.
+        
+        Args:
+            num_bubbles: Number of bubbles (12-18)
+            bubble_radius_m: Average bubble radius (m)
+            B_hold: Magnetic holding field (T)
+            T_ambient_K: Ambient temperature (K)
+            
+        Returns:
+            dict with bubble analysis
+        """
+        # Separation pattern (near-equal)
+        avg_separation = 2.0 * np.pi * 0.0889 / num_bubbles  # Circumference / count
+        
+        # Thermal stability margin
+        delta_T = self.ignition_temp_K - T_ambient_K
+        stability_margin = delta_T / self.ignition_temp_K if self.ignition_temp_K > 0 else 0
+        
+        # Magnetic energy per bubble
+        mu_0 = 4.0 * np.pi * 1e-7
+        V_bubble = (4.0 / 3.0) * np.pi * (bubble_radius_m ** 3)
+        E_magnetic = (B_hold ** 2) / (2.0 * mu_0) * V_bubble
+        E_total = num_bubbles * E_magnetic
+        
+        # Field enhancement from bubbles
+        field_enhancement = num_bubbles * B_hold
+        
+        return {
+            'value': E_total,
+            'total_magnetic_energy_J': E_total,
+            'E_magnetic_per_bubble_J': E_magnetic,
+            'num_bubbles': num_bubbles,
+            'avg_separation_m': avg_separation,
+            'thermal_stability_margin': stability_margin,
+            'delta_T_K': delta_T,
+            'field_enhancement_T': field_enhancement,
+            'thermally_stable': delta_T > 0,
+            'ignition_temp_K': self.ignition_temp_K,
+            'units': 'J (total magnetic energy)',
+            'source': 'Red Dwarf Reactor H2 Bubbles (March 3, 2025)'
+        }
+
+
+# Red Dwarf Reactor registry dict
+RED_DWARF_REACTOR_CALCULATORS = {
+    'RedDwarfReactorUg1Calculator': RedDwarfReactorUg1Calculator(),
+    'RedDwarfReactorUg2Calculator': RedDwarfReactorUg2Calculator(),
+    'RedDwarfReactorUg3Calculator': RedDwarfReactorUg3Calculator(),
+    'RedDwarfReactorUbiCalculator': RedDwarfReactorUbiCalculator(),
+    'RedDwarfReactorUmCalculator': RedDwarfReactorUmCalculator(),
+    'RedDwarfReactorAetherCalculator': RedDwarfReactorAetherCalculator(),
+    'RedDwarfReactorJetDynamicsCalculator': RedDwarfReactorJetDynamicsCalculator(),
+    'RedDwarfReactorOrbitalStabilityCalculator': RedDwarfReactorOrbitalStabilityCalculator(),
+    'RedDwarfReactorPlasmoidCalculator': RedDwarfReactorPlasmoidCalculator(),
+    'RedDwarfReactorMasterCalculator': RedDwarfReactorMasterCalculator(),
+    'HydrogenBubbleMagneticCalculator': HydrogenBubbleMagneticCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -160976,4 +161725,18 @@ __all__.extend([
     'UniversalBuoyancyNegativeTimeLinkageCalculator',
     'BuoyancyCatalogueCalculator',
     'BUOYANCY_NEGATIVE_TIME_CALCULATORS',
+    # Red Dwarf Reactor Plasma Orb (Grok UFT Thread 4, March 3, 2025) - 11 Calculator Classes + 1 Dict
+    'RED_DWARF_REACTOR_PARAMS',
+    'RedDwarfReactorUg1Calculator',
+    'RedDwarfReactorUg2Calculator',
+    'RedDwarfReactorUg3Calculator',
+    'RedDwarfReactorUbiCalculator',
+    'RedDwarfReactorUmCalculator',
+    'RedDwarfReactorAetherCalculator',
+    'RedDwarfReactorJetDynamicsCalculator',
+    'RedDwarfReactorOrbitalStabilityCalculator',
+    'RedDwarfReactorPlasmoidCalculator',
+    'RedDwarfReactorMasterCalculator',
+    'HydrogenBubbleMagneticCalculator',
+    'RED_DWARF_REACTOR_CALCULATORS',
 ])
