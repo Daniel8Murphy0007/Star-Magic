@@ -25641,6 +25641,728 @@ ORB_ANALYSIS_49_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS 50: UQFF EXTENDED FRAMEWORK - UNIVERSAL SPEED RANGE, COSMIC PHOTON
+# Proto-Iron/Silicon nuclei, Extended Periodic Table, THz-driven galactic shifts
+# Re-analyzed from: https://x.com/i/grok/share/ee757ceb910f4a6f846dd7be63838166
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ORB_ANALYSIS_50_PARAMS = {
+    'c_light': 2.998e8,               # Speed of light (m/s)
+    'c_squared': 8.988e16,            # c² (m²/s²) - visible light speed in UA
+    'universal_speed_max': 1e210,     # c^26 (extreme high)
+    'i_factor_26': 26,                # Complex factor exponent
+    'Z_max_extended': 10000,          # Extended periodic table
+    'k_radioactive': 1e-10,           # Radioactive decay base (s⁻¹)
+    'omega_cyclotron': 1.585e-8,      # Cyclotron frequency (rad/s)
+    'SM_magnetic_threshold': 0.5,     # f_SCm threshold for SM_magnetic
+}
+
+
+class UniversalSpeedRangeCalculator:
+    """
+    UNIVERSAL SPEED RANGE
+    
+    Models the full velocity spectrum of the UQFF universe from subluminal
+    to superluminal speeds.
+    
+    Core equation:
+    v_range = (c^26 × i^(-26)) to c²
+    
+    Where:
+    - c = 2.998×10⁸ m/s (speed of light)
+    - c² = 8.988×10¹⁶ m²/s² (visible light speed in cosmic Aether UA)
+    - c^26 = extreme superluminal (≈10²¹⁰)
+    - i^(-26) = complex rotation factor
+    
+    Heavy metal ions (proto-photons) decelerate from c^26*i^(-26) → c²
+    as they emit from nuclear shells.
+    """
+    
+    def __init__(self):
+        self.name = "Universal Speed Range"
+        self.symbol = "v_range"
+        self.units = "m/s"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        import cmath
+        
+        c = dataset.get('c_light', 2.998e8)  # m/s
+        n_exponent = dataset.get('speed_exponent', 26)  # power
+        
+        # c^2 visible light in UA
+        c_squared = c ** 2  # m²/s²
+        
+        # c^26 superluminal maximum (represented as log for stability)
+        log_c_26 = n_exponent * math.log10(c)  # ≈210 for c^26
+        c_26_magnitude = 10 ** min(log_c_26, 300)  # Cap to avoid overflow
+        
+        # i^(-26) complex factor: i = e^(iπ/2), i^n = e^(inπ/2)
+        i_power = cmath.exp(complex(0, -n_exponent * math.pi / 2))
+        i_magnitude = abs(i_power)  # Should be 1
+        i_phase = cmath.phase(i_power)  # Phase angle
+        
+        # Speed range ratio
+        speed_ratio = c_26_magnitude / c_squared if c_squared > 0 else 0
+        
+        # Deceleration factor (photon slowdown)
+        def decel_factor(t, tau=1e6):
+            """Exponential deceleration from c^26 to c²"""
+            return math.exp(-t / tau)
+        
+        t_sample = dataset.get('time_since_emission', 1e3)  # s
+        tau = dataset.get('decel_time_constant', 1e6)  # s
+        current_speed_factor = decel_factor(t_sample, tau)
+        v_current = c_squared + (c_26_magnitude - c_squared) * current_speed_factor
+        
+        return {
+            'c_light': c,
+            'c_squared': c_squared,
+            'c_26_log': log_c_26,
+            'c_26_magnitude': c_26_magnitude,
+            'i_26_magnitude': i_magnitude,
+            'i_26_phase_rad': i_phase,
+            'speed_ratio': speed_ratio,
+            'v_current': v_current,
+            'decel_factor': current_speed_factor,
+            'equation': 'v_range = c^26×i^(-26) → c²',
+            'long_form': f'Universal speed range: c² = {c_squared:.3e} to c^{n_exponent} = 10^{log_c_26:.1f}; i^(-{n_exponent}) phase = {i_phase:.4f} rad; current v(t={t_sample:.1e}s) = {v_current:.3e}'
+        }
+
+
+class CosmicPhotonDecelerationCalculator:
+    """
+    COSMIC PHOTON DECELERATION
+    
+    Models photon origin as heavy metal ions emitted from proto-nuclear
+    shells, decelerating from c^26*i^(-26) to c² (visible light).
+    
+    Process:
+    1. Heavy metal ion emitted from nuclear shell at v ≈ c^26
+    2. Interaction with cosmic Aether (UA) causes deceleration
+    3. Final state: photon at v = c² (visible light speed in UA)
+    
+    Core equation:
+    v(t) = c² + (v_initial - c²) × e^(-t/τ)
+    
+    Where τ is the Aether-induced deceleration time constant.
+    """
+    
+    def __init__(self):
+        self.name = "Cosmic Photon Deceleration"
+        self.symbol = "v_photon"
+        self.units = "m/s"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        c = dataset.get('c_light', 2.998e8)
+        c_squared = c ** 2
+        v_initial_log = dataset.get('v_initial_log', 210)  # log10(c^26)
+        v_initial = 10 ** min(v_initial_log, 300)  # m/s
+        t = dataset.get('time_since_emission', 1e6)  # s
+        tau = dataset.get('decel_time_constant', 1e7)  # s
+        
+        # Deceleration curve
+        v_current = c_squared + (v_initial - c_squared) * math.exp(-t / tau)
+        
+        # Percent completion to c²
+        if v_initial > c_squared:
+            completion = 1 - (v_current - c_squared) / (v_initial - c_squared)
+        else:
+            completion = 1.0
+        
+        # Energy loss (kinetic analog, pseudo-mass free)
+        # E ∝ v² for relativistic-like treatment
+        E_ratio = (c_squared / v_current) ** 2 if v_current > 0 else 0
+        
+        # Photon wavelength shift (red/blue)
+        # λ ∝ 1/v in this framework
+        lambda_shift = c_squared / v_current if v_current > 0 else 1.0
+        
+        return {
+            'v_initial_log': v_initial_log,
+            'v_current': v_current,
+            'v_final': c_squared,
+            'completion_fraction': completion,
+            'E_ratio': E_ratio,
+            'lambda_shift': lambda_shift,
+            'tau_s': tau,
+            'equation': 'v(t) = c² + (v_initial - c²) × e^(-t/τ)',
+            'long_form': f'Photon at t={t:.2e}s: v = {c_squared:.3e} + ({v_initial:.3e} - {c_squared:.3e}) × e^(-{t}/{tau}) = {v_current:.3e} m/s; completion = {completion*100:.2f}%'
+        }
+
+
+class ExtendedPeriodicTableCalculator:
+    """
+    EXTENDED PERIODIC TABLE
+    
+    Models thousands of atoms beyond Z=118, with unique DPM proportions
+    (f_UA', f_SCm) for each atomic index.
+    
+    Proportions:
+    f_UA' = (Z_max - Z) / Z_max
+    f_SCm = Z / Z_max
+    R_EB = k_R × Z (reactivity gradient)
+    
+    Where Z_max ≈ 10,000 for extended table.
+    Our local system comprises the lightest elements (Z=1-100).
+    All atoms start radioactive and stabilize over time.
+    """
+    
+    def __init__(self):
+        self.name = "Extended Periodic Table"
+        self.symbol = "Z_extended"
+        self.units = "dimensionless"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        Z = dataset.get('atomic_index', 1)
+        Z_max = dataset.get('Z_max_extended', 10000)
+        k_R = dataset.get('k_R_reactivity', 1.0)
+        
+        # DPM proportions
+        f_UA_prime = (Z_max - Z) / Z_max
+        f_SCm = Z / Z_max
+        
+        # Reactivity gradient
+        R_EB = k_R * Z
+        
+        # SM property (magnetic vs non-magnetic)
+        # Odd Z → SM_magnetic (proto-iron like)
+        # Even Z → SM_non-magnetic (proto-silicon like)
+        SM_property = 'SM_magnetic' if Z % 2 == 1 else 'SM_non-magnetic'
+        
+        # Alternative: threshold based on f_SCm
+        SM_threshold = dataset.get('SM_magnetic_threshold', 0.5)
+        SM_property_alt = 'SM_magnetic' if f_SCm < SM_threshold else 'SM_non-magnetic_heavy'
+        
+        # Decay rate (all start radioactive)
+        k_lambda = dataset.get('k_radioactive', 1e-10)  # s⁻¹
+        lambda_decay = k_lambda * f_SCm
+        
+        # Half-life
+        t_half = math.log(2) / lambda_decay if lambda_decay > 0 else float('inf')
+        
+        # Local system flag
+        is_local = Z <= 100
+        
+        return {
+            'Z': Z,
+            'Z_max': Z_max,
+            'f_UA_prime': f_UA_prime,
+            'f_SCm': f_SCm,
+            'R_EB': R_EB,
+            'SM_property': SM_property,
+            'SM_property_alt': SM_property_alt,
+            'lambda_decay_s': lambda_decay,
+            't_half_s': t_half,
+            'is_local_system': is_local,
+            'equation': 'f_UA\' = (Z_max-Z)/Z_max; f_SCm = Z/Z_max',
+            'long_form': f'Z={Z}: f_UA\' = ({Z_max}-{Z})/{Z_max} = {f_UA_prime:.6f}; f_SCm = {Z}/{Z_max} = {f_SCm:.6f}; R_EB = {R_EB:.2f}; {SM_property}; λ = {lambda_decay:.3e} s⁻¹, t½ = {t_half:.3e} s'
+        }
+
+
+class RadioactiveDecayUQFFCalculator:
+    """
+    RADIOACTIVE DECAY UQFF
+    
+    Models radioactive decay in UQFF framework where all atoms start
+    unstable and stabilize over time via DPM resonance.
+    
+    Core equations:
+    λ = k_λ × f_SCm (decay rate scales with SCm proportion)
+    N(t) = N_0 × e^(-λt)
+    
+    Stabilization occurs via U_g3's paired resonance, reducing λ over time.
+    Heavy elements (high f_SCm) decay faster initially but can stabilize
+    through DPM coherence.
+    """
+    
+    def __init__(self):
+        self.name = "Radioactive Decay UQFF"
+        self.symbol = "λ_UQFF"
+        self.units = "s⁻¹"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        N_0 = dataset.get('initial_count', 1e24)  # atoms
+        t = dataset.get('time_s', 1e6)  # s
+        f_SCm = dataset.get('f_SCm', 0.1)
+        k_lambda = dataset.get('k_radioactive', 1e-10)  # s⁻¹
+        
+        # Stabilization factor (from U_g3 resonance)
+        stabilization = dataset.get('U_g3_stabilization', 0.0)  # 0 to 1
+        
+        # Initial decay rate
+        lambda_initial = k_lambda * f_SCm
+        
+        # Effective decay rate with stabilization
+        lambda_effective = lambda_initial * (1 - stabilization)
+        
+        # Remaining atoms
+        N_t = N_0 * math.exp(-lambda_effective * t)
+        
+        # Half-life
+        t_half = math.log(2) / lambda_effective if lambda_effective > 0 else float('inf')
+        
+        # Activity (decays per second)
+        activity = lambda_effective * N_t
+        
+        # Decay fraction
+        decay_fraction = 1 - N_t / N_0
+        
+        return {
+            'N_0': N_0,
+            'N_t': N_t,
+            't_s': t,
+            'lambda_initial': lambda_initial,
+            'lambda_effective': lambda_effective,
+            'stabilization': stabilization,
+            't_half_s': t_half,
+            'activity_Bq': activity,
+            'decay_fraction': decay_fraction,
+            'equation': 'λ = k_λ × f_SCm × (1 - stabilization); N(t) = N_0 × e^(-λt)',
+            'long_form': f'N(t={t:.2e}s) = {N_0:.2e} × e^(-{lambda_effective:.3e}×{t:.2e}) = {N_t:.3e}; λ_eff = {lambda_effective:.3e} s⁻¹ (stab={stabilization:.2f}); t½ = {t_half:.3e} s'
+        }
+
+
+class ProtoIronSiliconShellCalculator:
+    """
+    PROTO-IRON/PROTO-SILICON SHELL PROPERTIES
+    
+    Models the two primary shell types in UQFF:
+    - Proto-Iron (proto-hydrogen): SM_magnetic, durable, strong-force + weak-force
+    - Proto-Silicon (proto-helium): SM_non-magnetic, stable
+    
+    Determination based on f_SCm proportion and atomic index parity.
+    
+    Core properties:
+    - SM_magnetic nuclei: Conduct from surface moments, interact strongly
+    - SM_non-magnetic nuclei: More stable, less reactive
+    """
+    
+    def __init__(self):
+        self.name = "Proto-Iron/Silicon Shell"
+        self.symbol = "shell_type"
+        self.units = "classification"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        Z = dataset.get('atomic_index', 1)
+        f_SCm = dataset.get('f_SCm', 0.001)
+        R_EB = dataset.get('R_EB', 1.0)
+        
+        # Shell type determination
+        # Odd Z → proto-iron (SM_magnetic)
+        # Even Z → proto-silicon (SM_non-magnetic)
+        if Z % 2 == 1:
+            shell_type = 'proto_iron'
+            SM_property = 'SM_magnetic'
+            force_type = 'strong_force + weak_force'
+            durability = 'durable'
+            surface_conduction = True
+        else:
+            shell_type = 'proto_silicon'
+            SM_property = 'SM_non-magnetic'
+            force_type = 'weak_force_dominant'
+            durability = 'stable'
+            surface_conduction = False
+        
+        # Shell thickness (arbitrary units, scales with R_EB)
+        shell_thickness = R_EB * 0.1  # pm equivalent
+        
+        # DPM trap strength
+        DPM_trap_strength = f_SCm * R_EB
+        
+        # Quantum state index (1-26)
+        quantum_state = (Z - 1) % 26 + 1
+        
+        # Proto-gas classification
+        proto_gas_name = f'proto_{"iron" if shell_type == "proto_iron" else "silicon"}_Z{Z}'
+        
+        return {
+            'Z': Z,
+            'shell_type': shell_type,
+            'SM_property': SM_property,
+            'force_type': force_type,
+            'durability': durability,
+            'surface_conduction': surface_conduction,
+            'shell_thickness_pm': shell_thickness,
+            'DPM_trap_strength': DPM_trap_strength,
+            'quantum_state': quantum_state,
+            'proto_gas_name': proto_gas_name,
+            'equation': 'Shell type = proto_iron (odd Z, SM_magnetic) | proto_silicon (even Z, SM_non-magnetic)',
+            'long_form': f'Z={Z}: {shell_type} ({SM_property}), {force_type}, {durability}, conduction={surface_conduction}, thickness={shell_thickness:.4f} pm, quantum_state={quantum_state}'
+        }
+
+
+class ShellFragmentOrganizationCalculator:
+    """
+    SHELL FRAGMENT ORGANIZATION
+    
+    Models how SM_mag surface moments arrange chaotic shell fragments
+    (brittle layered strings) into organized structures during ACP.
+    
+    Process:
+    1. Proto-shell cracks from quantum ripples (ULF_quantum^{-1,...,-26})
+    2. Fragments forced to surface by SM_atomic quantum gravity
+    3. SM_mag points arrange fragments in spatially coherent pattern
+    4. Results in near-solid shell ready for electron placement
+    
+    Organization efficiency scales with f_SCm and R_EB.
+    """
+    
+    def __init__(self):
+        self.name = "Shell Fragment Organization"
+        self.symbol = "η_org"
+        self.units = "dimensionless"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        n_fragments = dataset.get('n_fragments', 100)  # Initial chaotic fragments
+        f_SCm = dataset.get('f_SCm', 0.1)
+        R_EB = dataset.get('R_EB', 1.0)
+        t_organization = dataset.get('t_organization', 1e-12)  # s (picoseconds)
+        
+        # Organization rate (depends on SM_mag strength = f_SCm)
+        k_org = dataset.get('k_organization', 1e12)  # s⁻¹
+        org_rate = k_org * f_SCm * R_EB
+        
+        # Organization fraction over time
+        eta_org = 1 - math.exp(-org_rate * t_organization)
+        
+        # Organized fragments
+        n_organized = int(n_fragments * eta_org)
+        n_remaining_chaos = n_fragments - n_organized
+        
+        # Shell coherence (measure of spatial arrangement)
+        coherence = eta_org * f_SCm
+        
+        # Time to 99% organization
+        t_99 = -math.log(0.01) / org_rate if org_rate > 0 else float('inf')
+        
+        # Fragment layer thickness (average)
+        layer_thickness = dataset.get('fragment_thickness_pm', 0.01) * n_fragments / 100
+        
+        return {
+            'n_fragments_initial': n_fragments,
+            'n_organized': n_organized,
+            'n_remaining_chaos': n_remaining_chaos,
+            'eta_organization': eta_org,
+            'org_rate_s': org_rate,
+            'coherence': coherence,
+            't_99_org_s': t_99,
+            'layer_thickness_pm': layer_thickness,
+            'equation': 'η_org = 1 - e^(-k_org × f_SCm × R_EB × t)',
+            'long_form': f'Organization: {n_organized}/{n_fragments} fragments at t={t_organization:.2e}s; η = {eta_org:.4f}; rate = {org_rate:.3e} s⁻¹; coherence = {coherence:.4f}; t_99 = {t_99:.3e} s'
+        }
+
+
+class Ug4iCentralControlCalculator:
+    """
+    U_g4i CENTRAL CONTROL FROM BELLY BUTTON
+    
+    Models U_g4i as the control force originating from the electrostatic
+    barrier ("universal belly button") at the universe's center.
+    
+    Core equation:
+    E_control = j(ν_control, D_EB, f_SCm) × cos(φ)
+    
+    Where:
+    - ν_control = control frequency from belly button (THz)
+    - D_EB = distance from electrostatic barrier (m)
+    - f_SCm = SCm proportion (U_m driven)
+    - φ = azimuthal angle toward belly button
+    
+    Controls universal expansion/contraction cycles and proto-atom coordination.
+    """
+    
+    def __init__(self):
+        self.name = "U_g4i Central Control"
+        self.symbol = "E_control"
+        self.units = "eV"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        nu_control = dataset.get('nu_control', 1e12)  # Hz (THz range)
+        D_EB = dataset.get('D_EB', 1e26)  # m (cosmic scale, ~10 Gpc)
+        f_SCm = dataset.get('f_SCm', 0.1)
+        phi = dataset.get('phi_rad', 0)  # radians
+        
+        # Coupling constant
+        k_control = dataset.get('k_control', 1e-40)  # eV·s·m
+        
+        # U_m component (SCm-driven)
+        U_m = dataset.get('U_m_strength', 1.0) * f_SCm
+        
+        # Control energy
+        # E = k × ν × U_m / D² × cos(φ)
+        E_control = k_control * nu_control * U_m / (D_EB ** 2) * math.cos(phi)
+        
+        # Signal propagation time (at c)
+        c = 2.998e8
+        t_propagation = D_EB / c
+        
+        # Cycle control frequency (expansion/contraction)
+        cycle_freq = nu_control / 1e12  # THz to Hz ratio for cycle
+        
+        # Angular influence (maximum at φ=0, toward belly button)
+        angular_factor = math.cos(phi)
+        
+        return {
+            'E_control_eV': E_control,
+            'nu_control_Hz': nu_control,
+            'D_EB_m': D_EB,
+            'f_SCm': f_SCm,
+            'U_m': U_m,
+            'phi_rad': phi,
+            'angular_factor': angular_factor,
+            't_propagation_s': t_propagation,
+            't_propagation_Gyr': t_propagation / (1e9 * 365.25 * 86400),
+            'cycle_freq': cycle_freq,
+            'equation': 'E_control = k × ν_control × U_m / D_EB² × cos(φ)',
+            'long_form': f'E_control = {k_control:.2e} × {nu_control:.2e} × {U_m:.4f} / ({D_EB:.2e})² × cos({phi:.2f}) = {E_control:.6e} eV; t_prop = {t_propagation/(1e9*365.25*86400):.2f} Gyr'
+        }
+
+
+class ThermalLensLightBendingCalculator:
+    """
+    THERMAL LENS LIGHT BENDING
+    
+    Models light bending as an atmospheric/vacuum effect via thermal lens
+    in the Sun's corona, NOT spacetime curvature.
+    
+    Core equation:
+    θ_deflect = k_TL × (ρ_plasma / ρ_vac) × (T / T_ref) × (1 / r_impact)
+    
+    Where:
+    - ρ_plasma = corona plasma density
+    - ρ_vac = cosmic vacuum density (UA)
+    - T = corona temperature
+    - r_impact = impact parameter (distance from Sun center)
+    
+    Target: ~1.75 arcseconds deflection near Sun's limb.
+    """
+    
+    def __init__(self):
+        self.name = "Thermal Lens Light Bending"
+        self.symbol = "θ_deflect"
+        self.units = "arcsec"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        rho_plasma = dataset.get('rho_plasma', 1e-12)  # kg/m³ (corona)
+        rho_vac_UA = dataset.get('rho_vac_UA', 7.09e-36)  # J/m³
+        T_corona = dataset.get('T_corona', 1e6)  # K
+        T_ref = dataset.get('T_ref', 5778)  # K (Sun surface)
+        r_impact = dataset.get('r_impact', 6.96e8)  # m (Sun radius)
+        
+        # Thermal lens coupling constant (calibrated to 1.75 arcsec)
+        k_TL = dataset.get('k_TL', 1e-12)  # arcsec·kg⁻¹·m³·K⁻¹
+        
+        # Density ratio (plasma to vacuum)
+        rho_ratio = rho_plasma / rho_vac_UA if rho_vac_UA > 0 else 0
+        
+        # Temperature factor
+        T_factor = T_corona / T_ref if T_ref > 0 else 1.0
+        
+        # Impact parameter factor (1/r)
+        r_factor = 1 / r_impact if r_impact > 0 else 0
+        
+        # Deflection angle
+        theta_deflect = k_TL * rho_ratio * T_factor * r_factor
+        
+        # GR prediction for comparison
+        theta_GR = 1.75  # arcsec (standard result)
+        
+        # Calibration check
+        calibration_ratio = theta_deflect / theta_GR if theta_GR > 0 else 0
+        
+        return {
+            'theta_deflect_arcsec': theta_deflect,
+            'theta_GR_arcsec': theta_GR,
+            'rho_plasma': rho_plasma,
+            'rho_ratio': rho_ratio,
+            'T_corona': T_corona,
+            'T_factor': T_factor,
+            'r_impact': r_impact,
+            'calibration_ratio': calibration_ratio,
+            'equation': 'θ = k_TL × (ρ_plasma/ρ_vac) × (T/T_ref) × (1/r)',
+            'long_form': f'θ_deflect = {k_TL:.2e} × {rho_ratio:.3e} × {T_factor:.2f} × (1/{r_impact:.2e}) = {theta_deflect:.4f} arcsec (GR: {theta_GR} arcsec, calibration = {calibration_ratio:.4f})'
+        }
+
+
+class GalacticRedBlueShiftCalculator:
+    """
+    GALACTIC RED/BLUE SHIFT VIA THz HOLE
+    
+    Models red/blue shifting as THz hole synchronization effect, NOT
+    Doppler or cosmological expansion.
+    
+    Core equation:
+    Δν = k_shift × ν_THz × f_SCm × resonance_factor
+    
+    Where:
+    - ν_THz = THz quantum frequency from U_g3
+    - f_SCm = SCm proportion
+    - resonance_factor = paired resonance strength (0 to 1)
+    
+    Responsible for galactic dynamics at "spooky distance" via DPM coherence.
+    """
+    
+    def __init__(self):
+        self.name = "Galactic Red/Blue Shift"
+        self.symbol = "Δν"
+        self.units = "Hz"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        nu_THz = dataset.get('nu_THz', 1e12)  # Hz
+        f_SCm = dataset.get('f_SCm', 0.1)
+        resonance_factor = dataset.get('resonance_factor', 0.5)  # 0 to 1
+        
+        # Shift direction (positive = blue, negative = red)
+        shift_direction = dataset.get('shift_direction', 1)  # +1 blue, -1 red
+        
+        # Shift coupling constant
+        k_shift = dataset.get('k_shift', 1e-3)  # dimensionless
+        
+        # Frequency shift
+        delta_nu = k_shift * nu_THz * f_SCm * resonance_factor * shift_direction
+        
+        # Wavelength shift (for visible light, λ₀ = 550 nm)
+        c = 2.998e8
+        lambda_0 = dataset.get('lambda_0', 550e-9)  # m
+        nu_0 = c / lambda_0
+        
+        # New frequency
+        nu_new = nu_0 + delta_nu
+        
+        # New wavelength
+        lambda_new = c / nu_new if nu_new > 0 else lambda_0
+        
+        # Relative shift (z-like)
+        z_shift = delta_nu / nu_0 if nu_0 > 0 else 0
+        
+        # Spooky distance effect (instantaneous via DPM coherence)
+        spooky_distance = dataset.get('distance_Mpc', 100)
+        coherence_maintained = resonance_factor > 0.3
+        
+        return {
+            'delta_nu_Hz': delta_nu,
+            'nu_THz': nu_THz,
+            'nu_0_Hz': nu_0,
+            'nu_new_Hz': nu_new,
+            'lambda_0_m': lambda_0,
+            'lambda_new_m': lambda_new,
+            'z_shift': z_shift,
+            'shift_type': 'blue' if shift_direction > 0 else 'red',
+            'resonance_factor': resonance_factor,
+            'spooky_distance_Mpc': spooky_distance,
+            'coherence_maintained': coherence_maintained,
+            'equation': 'Δν = k_shift × ν_THz × f_SCm × resonance',
+            'long_form': f'Δν = {k_shift:.3e} × {nu_THz:.2e} × {f_SCm:.4f} × {resonance_factor:.2f} × {shift_direction} = {delta_nu:.3e} Hz ({"blue" if shift_direction > 0 else "red"}shift); λ: {lambda_0*1e9:.1f} → {lambda_new*1e9:.1f} nm; z = {z_shift:.6f}'
+        }
+
+
+class QuantumPIMathCalculator:
+    """
+    QUANTUM PI MATH SYSTEM
+    
+    Models the UQFF quantum PI mathematics where π appears in:
+    - Pseudo-monopole phases: δ_n = (2π)^(n/6)
+    - Neutron production: e^(-(π-t))
+    - Universal constants: ω_c = 2π/T
+    
+    Core principle: π governs quantum state transitions and vacuum dynamics.
+    
+    Implements organic math principles distinct from standard computation.
+    """
+    
+    def __init__(self):
+        self.name = "Quantum PI Math"
+        self.symbol = "π_quantum"
+        self.units = "radians"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        n = dataset.get('quantum_state', 1)  # 1-26
+        t = dataset.get('time_days', 1.0)
+        T_period = dataset.get('T_period', 3.96e8)  # s
+        
+        # Pi constant
+        pi = math.pi
+        
+        # Pseudo-monopole phase angle
+        delta_n = (2 * pi) ** (n / 6)
+        
+        # Neutron production exponential
+        exp_pi_t = math.exp(-(pi - t))
+        
+        # Cyclotron frequency
+        omega_c = 2 * pi / T_period
+        
+        # Pi digits (first 26 for quantum states)
+        pi_str = str(pi).replace('.', '')[:26]
+        pi_digits = [int(d) for d in pi_str]
+        
+        # Quantum state from pi digit
+        pi_digit_n = pi_digits[n - 1] if n <= len(pi_digits) else 0
+        
+        # Pi-based resonance frequency
+        nu_pi = pi * 1e12 / n  # THz, inversely scaled by state
+        
+        # Golden ratio connection (φ)
+        phi = (1 + math.sqrt(5)) / 2  # 1.618...
+        phi_pi_ratio = phi / pi
+        
+        # Organic math: consecutive pi digit sum
+        digit_sum = sum(pi_digits[:n])
+        
+        return {
+            'n': n,
+            'delta_n_rad': delta_n,
+            'exp_pi_t': exp_pi_t,
+            'omega_c_rad_s': omega_c,
+            'pi_digit_n': pi_digit_n,
+            'nu_pi_THz': nu_pi / 1e12,
+            'phi_golden': phi,
+            'phi_pi_ratio': phi_pi_ratio,
+            'digit_sum_n': digit_sum,
+            'pi_digits_26': pi_digits,
+            'equation': 'δ_n = (2π)^(n/6); exp(-(π-t)); ω_c = 2π/T',
+            'long_form': f'Quantum PI state {n}: δ_{n} = (2π)^({n}/6) = {delta_n:.6f} rad; e^(-(π-{t})) = {exp_pi_t:.6f}; ω_c = 2π/{T_period:.2e} = {omega_c:.6e} rad/s; π digit[{n}] = {pi_digit_n}'
+        }
+
+
+# Registry for Orb Analysis 50
+ORB_ANALYSIS_50_CALCULATORS = {
+    'UniversalSpeedRangeCalculator': UniversalSpeedRangeCalculator(),
+    'CosmicPhotonDecelerationCalculator': CosmicPhotonDecelerationCalculator(),
+    'ExtendedPeriodicTableCalculator': ExtendedPeriodicTableCalculator(),
+    'RadioactiveDecayUQFFCalculator': RadioactiveDecayUQFFCalculator(),
+    'ProtoIronSiliconShellCalculator': ProtoIronSiliconShellCalculator(),
+    'ShellFragmentOrganizationCalculator': ShellFragmentOrganizationCalculator(),
+    'Ug4iCentralControlCalculator': Ug4iCentralControlCalculator(),
+    'ThermalLensLightBendingCalculator': ThermalLensLightBendingCalculator(),
+    'GalacticRedBlueShiftCalculator': GalacticRedBlueShiftCalculator(),
+    'QuantumPIMathCalculator': QuantumPIMathCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -25686,6 +26408,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_47_CALCULATORS,
     **ORB_ANALYSIS_48_CALCULATORS,
     **ORB_ANALYSIS_49_CALCULATORS,
+    **ORB_ANALYSIS_50_CALCULATORS,
 }
 
 # Update class count
@@ -26196,6 +26919,20 @@ __all__ = [
     'QuantumToMassGradientCalculator',
     'DPMSummationForceCalculator',
     'ORB_ANALYSIS_49_CALCULATORS',
+    
+    # Orb Analysis_50 (10 classes - Universal Speed Range, Cosmic Photon, Extended Periodic Table)
+    'ORB_ANALYSIS_50_PARAMS',
+    'UniversalSpeedRangeCalculator',
+    'CosmicPhotonDecelerationCalculator',
+    'ExtendedPeriodicTableCalculator',
+    'RadioactiveDecayUQFFCalculator',
+    'ProtoIronSiliconShellCalculator',
+    'ShellFragmentOrganizationCalculator',
+    'Ug4iCentralControlCalculator',
+    'ThermalLensLightBendingCalculator',
+    'GalacticRedBlueShiftCalculator',
+    'QuantumPIMathCalculator',
+    'ORB_ANALYSIS_50_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
