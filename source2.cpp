@@ -9532,11 +9532,17 @@ public:
         recallBtn->setToolTip("Load previous calculation from ScalcCash");
         connect(recallBtn, &QPushButton::clicked, this, &ScientificCalculatorDialog::recallFromCache);
 
+        // Export button - export current result to LaTeX (S-C Iteration 22)
+        QPushButton *exportBtn = new QPushButton("Export LaTeX", this);
+        exportBtn->setToolTip("Export current result to LaTeX format");
+        connect(exportBtn, &QPushButton::clicked, this, &ScientificCalculatorDialog::exportToLatex);
+
         // Add all widgets to the vertical layout
         layout->addWidget(input);       // Input box at top
         layout->addWidget(symbolScroll); // Symbol palette (Grok)
         layout->addWidget(solveBtn);    // Solve button
         layout->addWidget(recallBtn);   // Recall button (S-C)
+        layout->addWidget(exportBtn);   // Export button (S-C)
         layout->addWidget(workflow);    // Workflow history
         layout->addWidget(output);      // Output box at bottom
 
@@ -9686,6 +9692,83 @@ private:
                     }
                 }
                 workflow->append("Recalled: " + selected);
+            }
+        }
+    }
+
+    // exportToLatex - Export current equation and result to LaTeX format (S-C Iteration 22)
+    // Converts output to LaTeX and saves to file or clipboard
+    void exportToLatex() {
+        QString equation = input->toPlainText();
+        QString result = output->toPlainText();
+        
+        if (equation.isEmpty() && result.isEmpty()) {
+            QMessageBox::information(this, "Export", "Nothing to export. Please solve an equation first.");
+            return;
+        }
+        
+        // Build LaTeX document
+        QString latex;
+        latex += "\\documentclass{article}\n";
+        latex += "\\usepackage{amsmath}\n";
+        latex += "\\usepackage{amssymb}\n";
+        latex += "\\begin{document}\n\n";
+        latex += "\\section*{Calculation}\n\n";
+        
+        // Convert equation with basic Unicode to LaTeX substitutions
+        QString latexEq = equation;
+        latexEq.replace("pi", "\\pi");
+        latexEq.replace("sqrt", "\\sqrt");
+        latexEq.replace("alpha", "\\alpha");
+        latexEq.replace("beta", "\\beta");
+        latexEq.replace("gamma", "\\gamma");
+        latexEq.replace("delta", "\\delta");
+        latexEq.replace("theta", "\\theta");
+        latexEq.replace("omega", "\\omega");
+        latexEq.replace("sigma", "\\sigma");
+        latexEq.replace("phi", "\\phi");
+        latexEq.replace("**", "^");
+        latexEq.replace("*", " \\cdot ");
+        latexEq.replace(">=", "\\geq");
+        latexEq.replace("<=", "\\leq");
+        latexEq.replace("!=", "\\neq");
+        latexEq.replace("oo", "\\infty");
+        
+        latex += "\\textbf{Input:}\n";
+        latex += "\\begin{equation}\n";
+        latex += latexEq + "\n";
+        latex += "\\end{equation}\n\n";
+        
+        latex += "\\textbf{Result:}\n";
+        latex += "\\begin{verbatim}\n";
+        latex += result + "\n";
+        latex += "\\end{verbatim}\n\n";
+        
+        latex += "\\end{document}\n";
+        
+        // Ask user where to save
+        QStringList options;
+        options << "Copy to Clipboard" << "Save to File";
+        bool ok;
+        QString choice = QInputDialog::getItem(this, "Export LaTeX", 
+            "Choose export method:", options, 0, false, &ok);
+        
+        if (ok) {
+            if (choice == "Copy to Clipboard") {
+                QApplication::clipboard()->setText(latex);
+                QMessageBox::information(this, "Export", "LaTeX copied to clipboard!");
+            } else {
+                QString filename = QFileDialog::getSaveFileName(this, "Save LaTeX", 
+                    REPO_PATH + "calculation.tex", "LaTeX Files (*.tex)");
+                if (!filename.isEmpty()) {
+                    QFile file(filename);
+                    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+                        QTextStream out(&file);
+                        out << latex;
+                        file.close();
+                        QMessageBox::information(this, "Export", "LaTeX saved to:\n" + filename);
+                    }
+                }
             }
         }
     }
@@ -10245,13 +10328,24 @@ private:
                               .arg(QString::fromStdString(py::str(solutions).cast<std::string>()));
                 
                 // For high-degree polynomials, also show numerical approximation if available
+                // S-C Iteration 22: Try multiple initial guesses for better convergence
                 if (eq_list.size() == 1) {
-                    try {
-                        py::object nsolve_result = sympy.attr("nsolve")(eq_list[0], 0);
-                        result += QString("Numerical root near 0: %1\n")
-                                      .arg(QString::fromStdString(py::str(nsolve_result).cast<std::string>()));
-                    } catch (...) {
-                        // nsolve may fail for complex roots, ignore
+                    bool found_numerical = false;
+                    std::vector<int> guesses = {0, 1, -1, 2, -2, 5, -5, 10, -10};
+                    for (int guess : guesses) {
+                        try {
+                            py::object nsolve_result = sympy.attr("nsolve")(eq_list[0], guess);
+                            result += QString("Numerical root (guess=%1): %2\n")
+                                          .arg(guess)
+                                          .arg(QString::fromStdString(py::str(nsolve_result).cast<std::string>()));
+                            found_numerical = true;
+                            break;  // Stop after first successful guess
+                        } catch (...) {
+                            // nsolve may fail for this guess, try next
+                        }
+                    }
+                    if (!found_numerical) {
+                        result += "Note: No numerical root found in range [-10,10]\n";
                     }
                 }
             } catch (const py::error_already_set& e) {
