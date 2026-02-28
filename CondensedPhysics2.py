@@ -27542,6 +27542,673 @@ ORB_ANALYSIS_52_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS 53: MULTI-REACTOR ISOTOPIC SYSTEMS (ADVANCED)
+# Source: Reanalysis of https://x.com/i/grok/share/409a57062aef4a67a3860026816b2496
+# Topics: Polyol molecular structure, isotopic thermodynamics, Am-241 decay physics,
+#         water radiolysis, ultrasonic nebulization, sonochemistry, electrolysis Gibbs
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Physical constants for Orb Analysis 53
+ORB_ANALYSIS_53_PARAMS = {
+    # Thermodynamic constants
+    'water_formation_enthalpy': -285.8e3,         # J/mol (ΔH_f for H2O)
+    'D2O_formation_enthalpy': -294.0e3,           # J/mol (ΔH_f for D2O, ~3% more negative)
+    'ethanol_combustion_enthalpy': -1367e3,       # J/mol (ΔH_c for C2H5OH)
+    'ethane_combustion_enthalpy': -1560e3,        # J/mol (ΔH_c for C2H6)
+    'propane_combustion_enthalpy': -2220e3,       # J/mol (ΔH_c for C3H8)
+    # Boiling points (K)
+    'ethanol_boiling_point': 351.15,              # K (78°C)
+    'glycerol_boiling_point': 563.15,             # K (290°C)
+    'acetic_acid_boiling_point': 391.15,          # K (118°C)
+    'H2O_boiling_point': 373.15,                  # K (100°C)
+    'D2O_boiling_point': 374.55,                  # K (101.4°C)
+    # Isotopic abundances
+    'D2O_natural_abundance': 0.000156,            # 0.0156%
+    'O18_natural_abundance': 0.00204,             # 0.204% (18O in natural oxygen)
+    # Densities (kg/m³)
+    'H2O_density': 997.0,                         # kg/m³ at 25°C
+    'D2O_density': 1107.0,                        # kg/m³ at 25°C
+    'ethanol_density': 789.0,                     # kg/m³
+    'glycerol_density': 1261.0,                   # kg/m³
+    # Am-241 parameters
+    'Am241_half_life': 432.6,                     # years
+    'Am241_alpha_energy_primary': 5.486,          # MeV (85.2% branch)
+    'Am241_alpha_energy_secondary': 5.443,        # MeV (12.8% branch)
+    'Am241_gamma_energy': 59.5409e-3,             # MeV (59.5409 keV)
+    'Am241_alpha_range_air': 0.045,               # m (4.5 cm in air)
+    'Am241_alpha_range_water': 40e-6,             # m (40 µm in water)
+    'Am241_smoke_detector_mass': 0.29e-6,         # kg (0.29 µg typical)
+    'Am241_smoke_detector_activity': 37e3,        # Bq (37 kBq)
+    # Electrolysis energy
+    'electrolysis_gibbs_H2O': 237.0e3,            # J/mol (Gibbs free energy)
+    'electrolysis_total_H2O': 286.0e3,            # J/mol (with thermal losses)
+    'electrolysis_total_D2O': 290.0e3,            # J/mol (D2O, ~1-2% higher)
+    'standard_electrolysis_energy_H2': 50.0,      # kWh/kg H2 (conventional)
+    'advanced_electrolysis_energy_H2': 41.5,      # kWh/kg H2 (Hysata)
+    # Ultrasonic parameters
+    'ultrasonic_nebulizer_freq_low': 1.7e6,       # Hz (1.7 MHz)
+    'ultrasonic_nebulizer_freq_high': 2.4e6,      # Hz (2.4 MHz)
+    'ultrasonic_low_freq': 20e3,                  # Hz (20 kHz for sono-chemistry)
+    'ultrasonic_droplet_size_min': 1e-6,          # m (1 µm)
+    'ultrasonic_droplet_size_max': 10e-6,         # m (10 µm)
+    # Gas constant
+    'R_L_bar_mol_K': 0.08314,                     # L·bar/(mol·K)
+    # Molar masses (g/mol)
+    'molar_mass_H2O': 18.015,
+    'molar_mass_D2O': 20.03,
+    'molar_mass_H2': 2.016,
+    'molar_mass_D2': 4.028,
+    'molar_mass_O2': 31.998,
+    'molar_mass_O2_18': 35.998,                   # 18O2
+    'molar_mass_ethanol': 46.07,
+    # Polyol series
+    'glycol_carbon_count': 2,                     # Ethylene glycol
+    'glycerol_carbon_count': 3,
+    'erythritol_carbon_count': 4,
+    'xylitol_carbon_count': 5,
+    'sorbitol_carbon_count': 6,
+}
+
+
+class PolyolMolecularFormulaCalculator:
+    """
+    Calculates molecular formula and properties for linear polyols.
+    
+    Linear polyol formula: CₙH₂ₙ(OH)ₙ = CₙH₃ₙOₙ (simplified)
+    Example: n=2 → C₂H₆O₂ (ethylene glycol)
+             n=3 → C₃H₈O₃ (glycerol)
+    """
+    def __init__(self):
+        self.params = ORB_ANALYSIS_53_PARAMS
+    
+    def compute(self, n_carbons: int) -> dict:
+        """
+        Compute molecular formula for polyol with n carbons.
+        True polyol: CₙH₂ₙ₊₂Oₙ (all OH groups)
+        """
+        n = n_carbons
+        # Linear polyol: HOCH₂-(CHOH)ₙ₋₂-CH₂OH
+        # Simplified formula: CₙH₂ₙ₊₂Oₙ
+        total_C = n
+        total_H = 2 * n + 2
+        total_O = n
+        
+        # Molecular weight
+        MW = total_C * 12.01 + total_H * 1.008 + total_O * 16.00
+        
+        # OH groups
+        n_OH = n
+        
+        # Examples
+        names = {
+            1: 'Methanol (not true polyol)',
+            2: 'Ethylene glycol',
+            3: 'Glycerol',
+            4: 'Erythritol',
+            5: 'Xylitol',
+            6: 'Sorbitol/Mannitol',
+        }
+        
+        return {
+            'n_carbons': n,
+            'formula': f'C{total_C}H{total_H}O{total_O}',
+            'total_C': total_C,
+            'total_H': total_H,
+            'total_O': total_O,
+            'molecular_weight_g_mol': MW,
+            'n_hydroxyl_groups': n_OH,
+            'name': names.get(n, f'Polyol-{n}'),
+            'equation': 'CₙH₂ₙ₊₂Oₙ (linear polyol)',
+        }
+
+
+class WaterFormationEnthalpyCalculator:
+    """
+    Calculates water/heavy water formation enthalpy and stability.
+    
+    H₂(g) + ½O₂(g) → H₂O(l), ΔH_f = -285.8 kJ/mol
+    D₂(g) + ½O₂(g) → D₂O(l), ΔH_f ≈ -294 kJ/mol
+    """
+    def __init__(self):
+        self.params = ORB_ANALYSIS_53_PARAMS
+    
+    def compute(self, n_moles: float, is_heavy_water: bool = False) -> dict:
+        """Compute formation enthalpy for water or heavy water."""
+        if is_heavy_water:
+            delta_H_f = self.params['D2O_formation_enthalpy']  # J/mol
+            species = 'D₂O'
+        else:
+            delta_H_f = self.params['water_formation_enthalpy']  # J/mol
+            species = 'H₂O'
+        
+        total_enthalpy_J = n_moles * delta_H_f
+        total_enthalpy_kJ = total_enthalpy_J / 1000
+        
+        return {
+            'species': species,
+            'n_moles': n_moles,
+            'delta_H_f_J_mol': delta_H_f,
+            'delta_H_f_kJ_mol': delta_H_f / 1000,
+            'total_enthalpy_J': total_enthalpy_J,
+            'total_enthalpy_kJ': total_enthalpy_kJ,
+            'is_exothermic': delta_H_f < 0,
+            'equation': f'{species[:-1]}₂(g) + ½O₂(g) → {species}(l)',
+        }
+
+
+class AlcoholCombustionEnthalpyCalculator:
+    """
+    Calculates combustion enthalpy for alcohols and hydrocarbons.
+    
+    C₂H₅OH + 3O₂ → 2CO₂ + 3H₂O, ΔH_c = -1367 kJ/mol
+    C₂H₆ + 3.5O₂ → 2CO₂ + 3H₂O, ΔH_c = -1560 kJ/mol
+    C₃H₈ + 5O₂ → 3CO₂ + 4H₂O, ΔH_c = -2220 kJ/mol
+    """
+    def __init__(self):
+        self.params = ORB_ANALYSIS_53_PARAMS
+    
+    def compute(self, fuel_type: str, n_moles: float = 1.0) -> dict:
+        """Compute combustion enthalpy for common fuels."""
+        fuel_data = {
+            'ethanol': {
+                'formula': 'C₂H₅OH',
+                'delta_H_c': self.params['ethanol_combustion_enthalpy'],
+                'MW': self.params['molar_mass_ethanol'],
+            },
+            'ethane': {
+                'formula': 'C₂H₆',
+                'delta_H_c': self.params['ethane_combustion_enthalpy'],
+                'MW': 30.07,
+            },
+            'propane': {
+                'formula': 'C₃H₈',
+                'delta_H_c': self.params['propane_combustion_enthalpy'],
+                'MW': 44.10,
+            },
+        }
+        
+        if fuel_type.lower() not in fuel_data:
+            return {'error': f'Unknown fuel: {fuel_type}'}
+        
+        data = fuel_data[fuel_type.lower()]
+        delta_H_c = data['delta_H_c']  # J/mol
+        MW = data['MW']
+        
+        total_enthalpy_J = n_moles * delta_H_c
+        energy_density_J_g = abs(delta_H_c) / MW
+        energy_density_MJ_kg = energy_density_J_g / 1000
+        
+        return {
+            'fuel': fuel_type,
+            'formula': data['formula'],
+            'n_moles': n_moles,
+            'delta_H_c_J_mol': delta_H_c,
+            'delta_H_c_kJ_mol': delta_H_c / 1000,
+            'total_enthalpy_J': total_enthalpy_J,
+            'total_enthalpy_kJ': total_enthalpy_J / 1000,
+            'molecular_weight_g_mol': MW,
+            'energy_density_MJ_kg': energy_density_MJ_kg,
+            'equation': f'{data["formula"]} + O₂ → CO₂ + H₂O, ΔH_c = {delta_H_c/1000:.0f} kJ/mol',
+        }
+
+
+class IsotopicBoilingPointCalculator:
+    """
+    Calculates boiling point shifts due to isotopic substitution.
+    
+    Heavy isotopes increase boiling point due to:
+    - Stronger intermolecular forces (O-D vs O-H)
+    - Lower vapor pressure (higher zero-point energy)
+    """
+    def __init__(self):
+        self.params = ORB_ANALYSIS_53_PARAMS
+    
+    def compute(self, compound: str) -> dict:
+        """Get boiling point for normal and isotopic compounds."""
+        compounds = {
+            'water': {
+                'normal_bp_K': self.params['H2O_boiling_point'],
+                'heavy_bp_K': self.params['D2O_boiling_point'],
+                'normal': 'H₂O',
+                'heavy': 'D₂O',
+            },
+            'ethanol': {
+                'normal_bp_K': self.params['ethanol_boiling_point'],
+                # Deuterated ethanol ~0.5-1°C higher
+                'heavy_bp_K': self.params['ethanol_boiling_point'] + 0.7,
+                'normal': 'C₂H₅OH',
+                'heavy': 'C₂H₅OD',
+            },
+        }
+        
+        if compound.lower() not in compounds:
+            return {'error': f'Unknown compound: {compound}'}
+        
+        data = compounds[compound.lower()]
+        delta_bp = data['heavy_bp_K'] - data['normal_bp_K']
+        
+        return {
+            'compound': compound,
+            'normal_formula': data['normal'],
+            'heavy_formula': data['heavy'],
+            'normal_bp_K': data['normal_bp_K'],
+            'normal_bp_C': data['normal_bp_K'] - 273.15,
+            'heavy_bp_K': data['heavy_bp_K'],
+            'heavy_bp_C': data['heavy_bp_K'] - 273.15,
+            'delta_bp_K': delta_bp,
+            'isotope_effect': 'Higher BP for heavy isotope (lower vapor pressure)',
+        }
+
+
+class Am241DecayEnergyCalculator:
+    """
+    Calculates Am-241 alpha decay energy deposition.
+    
+    Am-241 → Np-237 + α (5.486 MeV, 85.2%)
+                     + α (5.443 MeV, 12.8%)
+    γ emission: 59.5409 keV
+    """
+    def __init__(self):
+        self.params = ORB_ANALYSIS_53_PARAMS
+    
+    def compute(self, activity_Bq: float, time_s: float) -> dict:
+        """Calculate total energy deposited from Am-241 source."""
+        # Average alpha energy (weighted)
+        E_alpha_avg = (0.852 * self.params['Am241_alpha_energy_primary'] +
+                       0.128 * self.params['Am241_alpha_energy_secondary'])  # MeV
+        
+        # Activity = decays per second
+        n_decays = activity_Bq * time_s
+        
+        # Total alpha energy (MeV)
+        total_alpha_MeV = n_decays * E_alpha_avg
+        
+        # Convert to Joules (1 MeV = 1.602e-13 J)
+        eV_to_J = 1.602e-13
+        total_alpha_J = total_alpha_MeV * eV_to_J
+        
+        # Gamma energy (smaller contribution)
+        total_gamma_MeV = n_decays * self.params['Am241_gamma_energy']
+        total_gamma_J = total_gamma_MeV * eV_to_J
+        
+        # Alpha particle range
+        range_air_cm = self.params['Am241_alpha_range_air'] * 100
+        range_water_um = self.params['Am241_alpha_range_water'] * 1e6
+        
+        return {
+            'activity_Bq': activity_Bq,
+            'exposure_time_s': time_s,
+            'n_decays': n_decays,
+            'E_alpha_primary_MeV': self.params['Am241_alpha_energy_primary'],
+            'E_alpha_secondary_MeV': self.params['Am241_alpha_energy_secondary'],
+            'E_alpha_avg_MeV': E_alpha_avg,
+            'total_alpha_energy_MeV': total_alpha_MeV,
+            'total_alpha_energy_J': total_alpha_J,
+            'total_gamma_energy_J': total_gamma_J,
+            'alpha_range_air_cm': range_air_cm,
+            'alpha_range_water_um': range_water_um,
+            'equation': '²⁴¹Am → ²³⁷Np + α(5.486 MeV) + γ(59.5 keV)',
+        }
+
+
+class WaterRadiolysisCalculator:
+    """
+    Calculates water radiolysis products from alpha radiation.
+    
+    H₂O + α → H₂O⁺ + e⁻
+    H₂O⁺ + H₂O → H₃O⁺ + OH·
+    e⁻ + H₂O → H· + OH⁻
+    2 OH· → H₂O₂
+    
+    G-value: molecules produced per 100 eV absorbed
+    """
+    def __init__(self):
+        self.params = ORB_ANALYSIS_53_PARAMS
+        # G-values for alpha radiolysis (molecules per 100 eV)
+        self.G_values = {
+            'OH_radical': 0.5,    # OH· radicals
+            'H_radical': 0.6,     # H· radicals
+            'H2O2': 1.0,          # Hydrogen peroxide
+            'H2': 1.2,            # Molecular hydrogen
+            'e_aq': 0.06,         # Hydrated electrons
+        }
+    
+    def compute(self, energy_deposited_MeV: float) -> dict:
+        """Calculate radiolysis products from alpha energy deposition."""
+        # Convert MeV to 100 eV units
+        energy_100eV = energy_deposited_MeV * 1e6 / 100
+        
+        products = {}
+        for species, G in self.G_values.items():
+            n_molecules = G * energy_100eV
+            products[species] = {
+                'n_molecules': n_molecules,
+                'G_value': G,
+            }
+        
+        # Convert to moles (Avogadro's number)
+        N_A = 6.022e23
+        total_OH_moles = products['OH_radical']['n_molecules'] / N_A
+        total_H2O2_moles = products['H2O2']['n_molecules'] / N_A
+        
+        return {
+            'energy_deposited_MeV': energy_deposited_MeV,
+            'energy_100eV_units': energy_100eV,
+            'products': products,
+            'total_OH_radical_moles': total_OH_moles,
+            'total_H2O2_moles': total_H2O2_moles,
+            'equation_1': 'H₂O + α → H₂O⁺ + e⁻',
+            'equation_2': 'H₂O⁺ + H₂O → H₃O⁺ + OH·',
+            'equation_3': 'e⁻ + H₂O → H· + OH⁻',
+            'equation_4': '2OH· → H₂O₂',
+        }
+
+
+class IdealGasCompressedStorageCalculator:
+    """
+    Calculates gas storage parameters using ideal gas law.
+    
+    PV = nRT
+    
+    For compressed storage at high pressure (e.g., 147 psig).
+    """
+    def __init__(self):
+        self.params = ORB_ANALYSIS_53_PARAMS
+    
+    def compute(self, n_moles: float, T_K: float, P_bar: float) -> dict:
+        """Calculate volume of compressed gas."""
+        R = self.params['R_L_bar_mol_K']  # L·bar/(mol·K)
+        
+        # V = nRT/P
+        V_L = n_moles * R * T_K / P_bar
+        V_m3 = V_L / 1000
+        
+        # Convert pressure to other units
+        P_psi = P_bar * 14.504
+        P_psig = P_psi - 14.696  # gauge pressure
+        P_atm = P_bar / 1.01325
+        
+        # Convert temperature
+        T_C = T_K - 273.15
+        T_F = T_C * 9/5 + 32
+        
+        return {
+            'n_moles': n_moles,
+            'temperature_K': T_K,
+            'temperature_C': T_C,
+            'temperature_F': T_F,
+            'pressure_bar': P_bar,
+            'pressure_psig': P_psig,
+            'pressure_atm': P_atm,
+            'volume_L': V_L,
+            'volume_m3': V_m3,
+            'R_L_bar_mol_K': R,
+            'equation': 'PV = nRT, V = nRT/P',
+        }
+
+
+class UltrasonicNebulizationCalculator:
+    """
+    Calculates ultrasonic nebulizer parameters for fog generation.
+    
+    Droplet diameter: d ∝ (σ/ρf²)^(1/3)
+    where σ = surface tension, ρ = density, f = frequency
+    """
+    def __init__(self):
+        self.params = ORB_ANALYSIS_53_PARAMS
+    
+    def compute(self, frequency_Hz: float, surface_tension_N_m: float = 0.0728,
+                density_kg_m3: float = 997.0) -> dict:
+        """Calculate droplet size for ultrasonic nebulization."""
+        import math
+        
+        # Lang equation for droplet diameter
+        # d = 0.34 * (8πσ / (ρf²))^(1/3)
+        # Simplified: d ≈ 0.34 * (σ/(ρf²))^(1/3) * constant
+        
+        # Empirical relation for droplet diameter (µm)
+        # d ≈ k * (σ/ρ)^(1/3) * f^(-2/3)
+        # For water at typical frequencies:
+        k = 0.34 * (8 * math.pi) ** (1/3)
+        
+        d_m = k * (surface_tension_N_m / (density_kg_m3 * frequency_Hz**2)) ** (1/3)
+        d_um = d_m * 1e6
+        
+        # Typical ranges
+        freq_MHz = frequency_Hz / 1e6
+        
+        return {
+            'frequency_Hz': frequency_Hz,
+            'frequency_MHz': freq_MHz,
+            'surface_tension_N_m': surface_tension_N_m,
+            'density_kg_m3': density_kg_m3,
+            'droplet_diameter_m': d_m,
+            'droplet_diameter_um': d_um,
+            'typical_range_um': (self.params['ultrasonic_droplet_size_min'] * 1e6,
+                                 self.params['ultrasonic_droplet_size_max'] * 1e6),
+            'equation': 'd = 0.34·(8πσ/ρf²)^(1/3) (Lang equation)',
+        }
+
+
+class SonochemistryRadicalYieldCalculator:
+    """
+    Calculates radical yields from ultrasonic cavitation.
+    
+    Cavitation bubble collapse: T ~ 5000 K, P ~ 1000 atm
+    H₂O → OH· + H· (thermal dissociation)
+    
+    Radical yield depends on frequency, power, and dissolved gases.
+    """
+    def __init__(self):
+        self.params = ORB_ANALYSIS_53_PARAMS
+        # Typical sonochemical yields (µmol/min per W)
+        self.yield_rates = {
+            'OH_radical': 0.05,      # µmol/min/W at 20 kHz
+            'H2O2': 0.02,            # µmol/min/W
+            'H_radical': 0.04,       # µmol/min/W
+        }
+    
+    def compute(self, power_W: float, time_min: float, frequency_kHz: float = 20.0) -> dict:
+        """Calculate radical yields from sonication."""
+        # Adjust yields for frequency (higher freq = lower yields but finer bubbles)
+        freq_factor = 20.0 / frequency_kHz  # Normalized to 20 kHz
+        
+        yields = {}
+        for species, rate in self.yield_rates.items():
+            adjusted_rate = rate * freq_factor
+            yield_umol = adjusted_rate * power_W * time_min
+            yield_mol = yield_umol * 1e-6
+            yields[species] = {
+                'yield_umol': yield_umol,
+                'yield_mol': yield_mol,
+                'rate_umol_min_W': adjusted_rate,
+            }
+        
+        # Cavitation conditions
+        T_collapse = 5000  # K
+        P_collapse = 1000 * 101325  # Pa (1000 atm)
+        
+        return {
+            'power_W': power_W,
+            'time_min': time_min,
+            'frequency_kHz': frequency_kHz,
+            'yields': yields,
+            'cavitation_temperature_K': T_collapse,
+            'cavitation_pressure_atm': 1000,
+            'cavitation_pressure_Pa': P_collapse,
+            'equation': 'H₂O →(cavitation)→ OH· + H·',
+        }
+
+
+class D2OEnrichmentFactorCalculator:
+    """
+    Calculates D₂O enrichment via kinetic isotope effects in electrolysis.
+    
+    Separation factor α = k_H / k_D ≈ 3-8 (electrolysis)
+    where k_H, k_D are rate constants for H₂O, D₂O electrolysis
+    
+    Heavy water concentrates in liquid phase as H₂O preferentially electrolyzes.
+    """
+    def __init__(self):
+        self.params = ORB_ANALYSIS_53_PARAMS
+    
+    def compute(self, initial_D_fraction: float, electrolysis_fraction: float,
+                separation_factor: float = 6.0) -> dict:
+        """
+        Calculate D₂O enrichment after electrolysis.
+        
+        Rayleigh distillation: C/C₀ = f^(1/α - 1)
+        where f = remaining fraction
+        """
+        import math
+        
+        # Remaining fraction after electrolysis
+        f = 1.0 - electrolysis_fraction
+        if f <= 0:
+            return {'error': 'Cannot electrolyze 100% of water'}
+        
+        # Enrichment exponent
+        exponent = 1.0 / separation_factor - 1.0
+        
+        # Final D concentration / Initial D concentration
+        enrichment_ratio = f ** exponent
+        
+        # Final D fraction
+        final_D_fraction = initial_D_fraction * enrichment_ratio
+        
+        # Enrichment factor
+        enrichment_factor = final_D_fraction / initial_D_fraction
+        
+        return {
+            'initial_D_fraction': initial_D_fraction,
+            'initial_D_ppm': initial_D_fraction * 1e6,
+            'electrolysis_fraction': electrolysis_fraction,
+            'remaining_fraction': f,
+            'separation_factor_alpha': separation_factor,
+            'enrichment_ratio': enrichment_ratio,
+            'final_D_fraction': final_D_fraction,
+            'final_D_ppm': final_D_fraction * 1e6,
+            'enrichment_factor': enrichment_factor,
+            'equation': 'C/C₀ = f^(1/α - 1) (Rayleigh distillation)',
+        }
+
+
+class ElectrolysisGibbsEnergyCalculator:
+    """
+    Calculates Gibbs free energy and theoretical voltage for electrolysis.
+    
+    H₂O → H₂ + ½O₂
+    ΔG° = 237.1 kJ/mol (at 25°C, 1 atm)
+    E° = ΔG°/(nF) = 1.23 V
+    
+    For D₂O: slightly higher due to stronger bonds
+    """
+    def __init__(self):
+        self.params = ORB_ANALYSIS_53_PARAMS
+        self.F = 96485  # C/mol (Faraday constant)
+    
+    def compute(self, n_moles: float, is_heavy_water: bool = False,
+                temperature_K: float = 298.15) -> dict:
+        """Calculate electrolysis energy requirements."""
+        if is_heavy_water:
+            delta_G = self.params['electrolysis_total_D2O']  # J/mol
+            species = 'D₂O'
+        else:
+            delta_G = self.params['electrolysis_gibbs_H2O']  # J/mol
+            species = 'H₂O'
+        
+        # Theoretical cell voltage
+        n_electrons = 2  # 2 electrons per water molecule
+        E_cell = delta_G / (n_electrons * self.F)  # V
+        
+        # Total energy required
+        total_energy_J = n_moles * delta_G
+        total_energy_kJ = total_energy_J / 1000
+        total_energy_kWh = total_energy_J / 3.6e6
+        
+        # Energy per kg H2 produced
+        mass_H2_kg = n_moles * self.params['molar_mass_H2'] / 1000
+        if mass_H2_kg > 0:
+            energy_per_kg_H2_kWh = total_energy_kWh / mass_H2_kg
+        else:
+            energy_per_kg_H2_kWh = 0
+        
+        return {
+            'species': species,
+            'n_moles': n_moles,
+            'delta_G_J_mol': delta_G,
+            'delta_G_kJ_mol': delta_G / 1000,
+            'theoretical_voltage_V': E_cell,
+            'n_electrons': n_electrons,
+            'total_energy_J': total_energy_J,
+            'total_energy_kJ': total_energy_kJ,
+            'total_energy_kWh': total_energy_kWh,
+            'theoretical_energy_kWh_kg_H2': energy_per_kg_H2_kWh,
+            'faraday_constant_C_mol': self.F,
+            'equation': f'{species} → H₂ + ½O₂, E° = ΔG°/(nF)',
+        }
+
+
+class HeavyWaterDensityCalculator:
+    """
+    Calculates density differences for isotopic water variants.
+    
+    H₂O: ρ = 997 kg/m³ at 25°C
+    D₂O: ρ = 1107 kg/m³ at 25°C (11% higher)
+    
+    Density increases with heavy isotope content.
+    """
+    def __init__(self):
+        self.params = ORB_ANALYSIS_53_PARAMS
+    
+    def compute(self, D_fraction: float = 1.0, O18_fraction: float = 0.0) -> dict:
+        """Calculate water density based on isotopic composition."""
+        rho_H2O = self.params['H2O_density']  # kg/m³
+        rho_D2O = self.params['D2O_density']  # kg/m³
+        
+        # Linear interpolation (approximation)
+        # D substitution effect (~11% increase for pure D2O)
+        rho_D_effect = rho_H2O + D_fraction * (rho_D2O - rho_H2O)
+        
+        # 18O substitution effect (~0.1% per 10% 18O)
+        # 18O is ~12.5% heavier than 16O
+        O18_density_increase = O18_fraction * 0.125 * rho_H2O
+        
+        total_density = rho_D_effect + O18_density_increase
+        
+        # Relative density
+        relative_density = total_density / rho_H2O
+        
+        return {
+            'D_fraction': D_fraction,
+            'O18_fraction': O18_fraction,
+            'H2O_density_kg_m3': rho_H2O,
+            'D2O_density_kg_m3': rho_D2O,
+            'calculated_density_kg_m3': total_density,
+            'relative_density': relative_density,
+            'density_increase_percent': (relative_density - 1) * 100,
+            'equation': 'ρ = ρ_H2O + f_D·(ρ_D2O - ρ_H2O) + ρ_O18_correction',
+        }
+
+
+# Registry for Orb Analysis 53
+ORB_ANALYSIS_53_CALCULATORS = {
+    'PolyolMolecularFormulaCalculator': PolyolMolecularFormulaCalculator(),
+    'WaterFormationEnthalpyCalculator': WaterFormationEnthalpyCalculator(),
+    'AlcoholCombustionEnthalpyCalculator': AlcoholCombustionEnthalpyCalculator(),
+    'IsotopicBoilingPointCalculator': IsotopicBoilingPointCalculator(),
+    'Am241DecayEnergyCalculator': Am241DecayEnergyCalculator(),
+    'WaterRadiolysisCalculator': WaterRadiolysisCalculator(),
+    'IdealGasCompressedStorageCalculator': IdealGasCompressedStorageCalculator(),
+    'UltrasonicNebulizationCalculator': UltrasonicNebulizationCalculator(),
+    'SonochemistryRadicalYieldCalculator': SonochemistryRadicalYieldCalculator(),
+    'D2OEnrichmentFactorCalculator': D2OEnrichmentFactorCalculator(),
+    'ElectrolysisGibbsEnergyCalculator': ElectrolysisGibbsEnergyCalculator(),
+    'HeavyWaterDensityCalculator': HeavyWaterDensityCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -27593,6 +28260,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_50_CALCULATORS,
     **ORB_ANALYSIS_51_CALCULATORS,
     **ORB_ANALYSIS_52_CALCULATORS,
+    **ORB_ANALYSIS_53_CALCULATORS,
 }
 
 # Update class count
@@ -28139,6 +28807,22 @@ __all__ = [
     'HydrogenStoragePressureCalculator',
     'PolyolCombustionCalculator',
     'ORB_ANALYSIS_52_CALCULATORS',
+    
+    # Orb Analysis_53 (12 classes - Multi-Reactor Isotopic Systems, Radiolysis, Sonochemistry)
+    'ORB_ANALYSIS_53_PARAMS',
+    'PolyolMolecularFormulaCalculator',
+    'WaterFormationEnthalpyCalculator',
+    'AlcoholCombustionEnthalpyCalculator',
+    'IsotopicBoilingPointCalculator',
+    'Am241DecayEnergyCalculator',
+    'WaterRadiolysisCalculator',
+    'IdealGasCompressedStorageCalculator',
+    'UltrasonicNebulizationCalculator',
+    'SonochemistryRadicalYieldCalculator',
+    'D2OEnrichmentFactorCalculator',
+    'ElectrolysisGibbsEnergyCalculator',
+    'HeavyWaterDensityCalculator',
+    'ORB_ANALYSIS_53_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
