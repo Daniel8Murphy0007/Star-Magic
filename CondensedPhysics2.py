@@ -29083,6 +29083,876 @@ ORB_ANALYSIS_54_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS 55: UQFF BUOYANCY AND ASTROPHYSICAL DYNAMICS
+# URL: https://x.com/i/grok/share/efdeff64f4ff42c2b8f34cad18ceea9e (Reanalysis)
+# F_U_Bi_i Integral, Neutron Capture, MUGE Compressed, Stellar Feedback Terms
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Physical constants for Orb 55
+ORB_ANALYSIS_55_PARAMS = {
+    # Fundamental constants
+    'G': 6.6743e-11,                        # m³ kg⁻¹ s⁻²
+    'c': 2.998e8,                           # m/s
+    'hbar': 1.0546e-34,                     # J·s
+    'm_e': 9.11e-31,                        # kg (electron mass)
+    'q_e': 1.6e-19,                         # C (electron charge)
+    'mu_B': 9.274e-24,                      # J/T (Bohr magneton)
+    
+    # UQFF Buoyancy parameters
+    'F_0': 1.83e71,                         # N (buoyancy reference force)
+    'beta_i': 0.6,                          # Buoyancy coupling (dimensionless)
+    'Omega_g': 7.3e-16,                     # rad/s (galactic spin rate)
+    'M_bh_SgrA': 8.155e36,                  # kg (Sgr A* mass)
+    'd_g': 2.55e20,                         # m (galactic center distance)
+    'kappa': 0.0005,                        # day⁻¹ (reactivity decay)
+    
+    # Vacuum energy densities
+    'rho_vac_UA': 7.09e-36,                 # J/m³ (Aether vacuum)
+    'rho_vac_SCm': 7.09e-37,                # J/m³ (Superconductive vacuum)
+    'Delta_E_vac': 6.381e-36,               # J/m³ (vacuum differential)
+    
+    # LENR parameters
+    'k_LENR': 1.0e-10,                      # N (LENR coupling)
+    'omega_LENR': 7.854e12,                 # rad/s (2π × 1.25 THz)
+    'Delta_omega': 3.14e11,                 # rad/s (2π × 0.05 THz)
+    'sigma_0': 1.0e-4,                      # Cross-section baseline
+    'k_act': 1.0e-6,                        # N (activation coupling)
+    'omega_act': 1884.96,                   # rad/s (2π × 300 Hz)
+    'n_LENR': 4.17e9,                       # Harmonic multiplier
+    
+    # Neutron physics
+    'k_neutron': 1.0e10,                    # N (neutron coupling)
+    'rho_0_neutron': 1.0e-22,               # kg/m³ (baseline density)
+    'k_neutrino': 1.0e10,                   # N (neutrino coupling)
+    'alpha_nu': 1.0e-10,                    # Neutrino polarizability
+    
+    # Dark energy and X-ray
+    'k_DE': 1.0e-30,                        # N/W (dark energy coupling)
+    'L_X_typical': 1.0e31,                  # W (X-ray luminosity)
+    
+    # DPM parameters
+    'DPM_momentum': 0.93,                   # Dimensionless
+    'DPM_gravity': 1.0,                     # Dimensionless
+    'DPM_stability': 0.01,                  # Dimensionless
+    'DPM_resonance_factor': 1.76e9,         # Typical resonance factor
+    
+    # Cosmological
+    'H_0': 2.269e-18,                       # s⁻¹ (Hubble constant)
+    't_Hubble': 4.35e17,                    # s (Hubble time)
+    'Lambda_cosmo': 1.1e-52,                # m⁻² (cosmological constant)
+    'D_universe': 8.8e26,                   # m (observable universe diameter)
+    
+    # Stellar feedback
+    'B_crit': 1.0e11,                       # T (critical magnetic field)
+    'B_typical': 1.0e-5,                    # T (typical ISM field)
+    'SFR_typical': 0.1,                     # M_sun/yr (star formation rate)
+    'v_wind': 5.0e5,                        # m/s (stellar wind velocity)
+    'rho_fluid': 1.0e-20,                   # kg/m³ (ISM fluid density)
+    
+    # Time reversal correction
+    'f_TRZ': 0.1,                           # Time-reversal factor
+    'UA_SCm_ratio': 10.0,                   # [(UA')]:[SCm] ratio
+}
+
+
+class FUBiiIntegralCalculator:
+    """
+    F_U_Bi_i Universal Buoyancy Integral Calculator
+    
+    Computes the UQFF buoyancy integral:
+    F_U_Bi_i = ∫[−F₀ + (m_e·c²/r²)·DPM_momentum·cos(θ) + (G·M/r²)·DPM_gravity 
+               + ρ_vac,UA·DPM_stability + k_LENR·(ω_LENR/ω₀)² + k_act·cos(ω_act·t)
+               + k_DE·L_X + 2q·B₀·V·sin(θ)·DPM_resonance + k_neutron·σ_n] dx
+    
+    Key equation: F_U_Bi_i ≈ -β_i · Ug_i · Ω_g · M_bh / d_g · (1 + ε_sw·ρ_sw) · U_UA · cos(π·t_n)
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_55_PARAMS
+    
+    def compute_buoyancy_integrand(self, dataset: dict) -> dict:
+        """
+        Compute the F_U_Bi_i buoyancy integrand components.
+        
+        Parameters:
+            dataset: Dictionary with M (mass kg), r (distance m), theta (angle deg),
+                    t (time s), B_0 (magnetic field T), omega_0 (frequency rad/s)
+        
+        Returns:
+            Dictionary with integrand components and total
+        """
+        M = dataset.get('M', 1.989e30)          # kg
+        r = dataset.get('r', 1.0e4)              # m
+        theta = dataset.get('theta', 45.0)       # degrees
+        t = dataset.get('t', 1.0)                # s
+        B_0 = dataset.get('B_0', 1.0e-5)         # T
+        omega_0 = dataset.get('omega_0', 1.0e-15) # rad/s
+        V = dataset.get('V', 1.0e-3)             # m/s (velocity)
+        
+        import math
+        theta_rad = math.radians(theta)
+        
+        # Reference force (negative for buoyancy opposition)
+        F_0 = -self.params['F_0']
+        
+        # Momentum term: (m_e·c²/r²)·DPM_momentum·cos(θ)
+        momentum_term = (self.params['m_e'] * self.params['c']**2 / r**2) * \
+                       self.params['DPM_momentum'] * math.cos(theta_rad)
+        
+        # Gravity term: (G·M/r²)·DPM_gravity
+        gravity_term = (self.params['G'] * M / r**2) * self.params['DPM_gravity']
+        
+        # Stability term: ρ_vac,UA·DPM_stability
+        stability_term = self.params['rho_vac_UA'] * self.params['DPM_stability']
+        
+        # LENR term: k_LENR·(ω_LENR/ω₀)²
+        lenr_term = self.params['k_LENR'] * (self.params['omega_LENR'] / max(omega_0, 1e-30))**2
+        
+        # Activation term: k_act·cos(ω_act·t)
+        activation_term = self.params['k_act'] * math.cos(self.params['omega_act'] * t)
+        
+        # Dark energy term: k_DE·L_X
+        de_term = self.params['k_DE'] * self.params['L_X_typical']
+        
+        # DPM resonance: g·μ_B·B₀/(ℏ·ω₀)
+        dpm_resonance = 2 * self.params['mu_B'] * B_0 / (self.params['hbar'] * max(omega_0, 1e-30))
+        
+        # Lorentz term: 2q·B₀·V·sin(θ)·DPM_resonance
+        lorentz_term = 2 * self.params['q_e'] * B_0 * V * math.sin(theta_rad) * dpm_resonance
+        
+        # Neutron term: k_neutron·σ_n (simplified)
+        neutron_term = self.params['k_neutron'] * self.params['sigma_0']
+        
+        # Total integrand
+        total_integrand = F_0 + momentum_term + gravity_term + stability_term + \
+                         lenr_term + activation_term + de_term + lorentz_term + neutron_term
+        
+        return {
+            'F_0': F_0,
+            'momentum_term': momentum_term,
+            'gravity_term': gravity_term,
+            'stability_term': stability_term,
+            'LENR_term': lenr_term,
+            'activation_term': activation_term,
+            'dark_energy_term': de_term,
+            'lorentz_term': lorentz_term,
+            'neutron_term': neutron_term,
+            'DPM_resonance': dpm_resonance,
+            'total_integrand': total_integrand,
+            'unit': 'N (force)',
+            'equation': 'F_U_Bi_i = ∫[-F₀ + momentum + gravity + stability + LENR + activation + DE + Lorentz + neutron] dx'
+        }
+    
+    def compute_buoyancy_force(self, dataset: dict) -> dict:
+        """
+        Compute the full F_U_Bi buoyancy force with integral bounds.
+        
+        F_U_Bi = -β_i · Ug_i · Ω_g · M_bh / d_g · (1 + ε_sw·ρ_sw) · U_UA · cos(π·t_n)
+        """
+        Ug_i = dataset.get('Ug_i', 6.746e-5)     # m/s² (gravity component)
+        epsilon_sw = dataset.get('epsilon_sw', 0.001)
+        rho_sw = dataset.get('rho_sw', 8.0e-21)   # kg/m³
+        U_UA = dataset.get('U_UA', 1.0)
+        t_n = dataset.get('t_n', -2512)           # negative time (s)
+        
+        import math
+        
+        # Universal buoyancy equation
+        F_U_Bi = -self.params['beta_i'] * Ug_i * self.params['Omega_g'] * \
+                 self.params['M_bh_SgrA'] / self.params['d_g'] * \
+                 (1 + epsilon_sw * rho_sw) * U_UA * math.cos(math.pi * t_n)
+        
+        return {
+            'F_U_Bi': F_U_Bi,
+            'beta_i': self.params['beta_i'],
+            'Omega_g': self.params['Omega_g'],
+            'M_bh': self.params['M_bh_SgrA'],
+            'd_g': self.params['d_g'],
+            't_n': t_n,
+            'unit': 'N',
+            'equation': 'F_U_Bi = -β_i · Ug_i · Ω_g · M_bh / d_g · (1 + ε_sw·ρ_sw) · U_UA · cos(π·t_n)'
+        }
+
+
+class NeutronCaptureRateCalculator:
+    """
+    Neutron Capture Cross-Section Calculator
+    
+    Phonon-mediated LENR neutron capture:
+    σ_n(ω) = σ₀ · (ω/ω_LENR)² · exp[-(ω - ω_LENR)² / (2·Δω²)]
+    
+    Effective frequency coupling:
+    ω_eff = ω_act + n · ω_LENR
+    
+    Density-scaled cross-section:
+    σ_n(ρ) = σ₀ · (ρ/ρ₀)
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_55_PARAMS
+    
+    def compute_frequency_dependent_cross_section(self, dataset: dict) -> dict:
+        """
+        Compute σ_n(ω) = σ₀ · (ω/ω_LENR)² · exp[-(ω - ω_LENR)² / (2·Δω²)]
+        """
+        omega = dataset.get('omega', 7.854e12)  # rad/s
+        
+        import math
+        
+        omega_LENR = self.params['omega_LENR']
+        Delta_omega = self.params['Delta_omega']
+        sigma_0 = self.params['sigma_0']
+        
+        # Frequency ratio term
+        freq_ratio = (omega / omega_LENR)**2
+        
+        # Gaussian resonance term
+        exponent = -((omega - omega_LENR)**2) / (2 * Delta_omega**2)
+        gaussian_term = math.exp(exponent)
+        
+        # Total cross-section
+        sigma_n = sigma_0 * freq_ratio * gaussian_term
+        
+        return {
+            'sigma_n': sigma_n,
+            'sigma_0': sigma_0,
+            'omega': omega,
+            'omega_LENR': omega_LENR,
+            'Delta_omega': Delta_omega,
+            'freq_ratio': freq_ratio,
+            'gaussian_term': gaussian_term,
+            'unit': 'dimensionless cross-section factor',
+            'equation': 'σ_n(ω) = σ₀ · (ω/ω_LENR)² · exp[-(ω - ω_LENR)² / (2·Δω²)]'
+        }
+    
+    def compute_effective_frequency(self, dataset: dict) -> dict:
+        """
+        Compute ω_eff = ω_act + n · ω_LENR (nonlinear frequency coupling)
+        """
+        n = dataset.get('n', self.params['n_LENR'])
+        
+        omega_act = self.params['omega_act']
+        omega_LENR = self.params['omega_LENR']
+        
+        omega_eff = omega_act + n * omega_LENR
+        
+        return {
+            'omega_eff': omega_eff,
+            'omega_act': omega_act,
+            'omega_LENR': omega_LENR,
+            'n': n,
+            'f_eff': omega_eff / (2 * 3.14159),  # Hz
+            'unit': 'rad/s',
+            'equation': 'ω_eff = ω_act + n · ω_LENR'
+        }
+    
+    def compute_density_scaled_cross_section(self, dataset: dict) -> dict:
+        """
+        Compute σ_n(ρ) = σ₀ · (ρ/ρ₀)
+        """
+        rho = dataset.get('rho', 1.0e-20)  # kg/m³
+        
+        sigma_n_rho = self.params['sigma_0'] * (rho / self.params['rho_0_neutron'])
+        
+        return {
+            'sigma_n_rho': sigma_n_rho,
+            'sigma_0': self.params['sigma_0'],
+            'rho': rho,
+            'rho_0': self.params['rho_0_neutron'],
+            'unit': 'dimensionless',
+            'equation': 'σ_n(ρ) = σ₀ · (ρ/ρ₀)'
+        }
+
+
+class NeutrinoPolarizabilityCalculator:
+    """
+    Neutrino Polarizability Force Calculator
+    
+    F_neutrino = k_neutrino · α_ν
+    
+    Where α_ν ≈ 10⁻¹⁰ is the neutrino polarizability factor
+    enabling vacuum coherence in UQFF framework.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_55_PARAMS
+    
+    def compute_neutrino_force(self, dataset: dict) -> dict:
+        """
+        Compute F_neutrino = k_neutrino · α_ν
+        """
+        alpha_nu = dataset.get('alpha_nu', self.params['alpha_nu'])
+        k_neutrino = dataset.get('k_neutrino', self.params['k_neutrino'])
+        
+        F_neutrino = k_neutrino * alpha_nu
+        
+        return {
+            'F_neutrino': F_neutrino,
+            'k_neutrino': k_neutrino,
+            'alpha_nu': alpha_nu,
+            'unit': 'N',
+            'equation': 'F_neutrino = k_neutrino · α_ν',
+            'description': 'Neutrino polarizability force enhancing vacuum coherence'
+        }
+    
+    def compute_neutrino_coherence_term(self, dataset: dict) -> dict:
+        """
+        Compute neutrino contribution to F_U_Bi_i integrand.
+        """
+        L_X = dataset.get('L_X', 1.0e31)  # W (X-ray luminosity)
+        
+        # Neutrino term scales with X-ray luminosity at high energies
+        neutrino_term = self.params['k_neutrino'] * self.params['alpha_nu'] * \
+                       (L_X / self.params['L_X_typical'])
+        
+        return {
+            'neutrino_coherence_term': neutrino_term,
+            'L_X': L_X,
+            'alpha_nu': self.params['alpha_nu'],
+            'unit': 'N',
+            'equation': 'F_ν = k_ν · α_ν · (L_X / L_X,typical)'
+        }
+
+
+class UQFFUniverseDiameterCalculator:
+    """
+    Observable Universe Diameter Calculator
+    
+    D_universe = 2 · D_p · (1 + H(z)·t₀) · (1 + Λc²/(3H₀²)) · 
+                 (1 + (ℏ/√(Δx·Δp)) · ∫ψ*Hψ dV / (G·M_total)) · (1 + k·r_c²)
+    
+    Integrates UQFF quantum coherence terms with cosmological expansion.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_55_PARAMS
+    
+    def compute_universe_diameter(self, dataset: dict) -> dict:
+        """
+        Compute the observable universe diameter with UQFF corrections.
+        """
+        D_p = dataset.get('D_p', 4.4e26)         # m (proper distance)
+        z = dataset.get('z', 0.0)                 # redshift
+        t_0 = dataset.get('t_0', 4.35e17)         # s (age of universe)
+        M_total = dataset.get('M_total', 1.5e53)  # kg (total mass)
+        psi_integral = dataset.get('psi_integral', 2.176e-18)  # J (quantum coherence)
+        Delta_x_Delta_p = dataset.get('Delta_x_Delta_p', 1.0e-68)  # J²·s²
+        k_curvature = dataset.get('k_curvature', 0.0)  # curvature parameter
+        r_c = dataset.get('r_c', 1.0e26)          # m (curvature scale)
+        
+        import math
+        
+        H_z = self.params['H_0'] * math.sqrt(0.3 * (1 + z)**3 + 0.7)
+        
+        # Expansion factor
+        expansion_factor = 1 + H_z * t_0
+        
+        # Dark energy factor
+        Lambda_factor = 1 + (self.params['Lambda_cosmo'] * self.params['c']**2) / \
+                       (3 * self.params['H_0']**2)
+        
+        # Quantum coherence factor
+        quantum_factor = 1 + (self.params['hbar'] / math.sqrt(Delta_x_Delta_p)) * \
+                        psi_integral / (self.params['G'] * M_total)
+        
+        # Curvature factor
+        curvature_factor = 1 + k_curvature * r_c**2
+        
+        # Total diameter
+        D_universe = 2 * D_p * expansion_factor * Lambda_factor * quantum_factor * curvature_factor
+        
+        return {
+            'D_universe': D_universe,
+            'D_universe_ly': D_universe / 9.461e15,  # light-years
+            'D_p': D_p,
+            'expansion_factor': expansion_factor,
+            'Lambda_factor': Lambda_factor,
+            'quantum_factor': quantum_factor,
+            'curvature_factor': curvature_factor,
+            'H_z': H_z,
+            'unit': 'm',
+            'equation': 'D = 2·D_p·(1+H(z)·t₀)·(1+Λc²/(3H₀²))·(1+quantum)·(1+k·r_c²)'
+        }
+
+
+class SpiralTorqueCalculator:
+    """
+    Spiral Galaxy Torque Calculator
+    
+    T_spiral = Torque component in MUGE for spiral galaxies.
+    
+    g_Spiral_SN(r,t) includes: (G·M(t)/r²)·(1 + H₀·t)·(1 + T_spiral) + ...
+    
+    Models spiral arm dynamics and angular momentum transfer.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_55_PARAMS
+    
+    def compute_spiral_torque(self, dataset: dict) -> dict:
+        """
+        Compute T_spiral torque enhancement factor.
+        """
+        M = dataset.get('M', 1.989e41)           # kg (galaxy mass)
+        r = dataset.get('r', 1.543e21)           # m (galactic radius)
+        omega_spiral = dataset.get('omega_spiral', 1.0e-15)  # rad/s (pattern speed)
+        n_arms = dataset.get('n_arms', 2)         # number of spiral arms
+        pitch_angle = dataset.get('pitch_angle', 20.0)  # degrees
+        
+        import math
+        
+        # Spiral angular momentum
+        L_spiral = M * r**2 * omega_spiral
+        
+        # Torque factor (dimensionless enhancement)
+        pitch_rad = math.radians(pitch_angle)
+        T_spiral = n_arms * math.tan(pitch_rad) * (omega_spiral / self.params['H_0'])
+        
+        # Torque magnitude
+        tau_spiral = L_spiral * omega_spiral * math.tan(pitch_rad)
+        
+        return {
+            'T_spiral': T_spiral,
+            'L_spiral': L_spiral,
+            'tau_spiral': tau_spiral,
+            'omega_spiral': omega_spiral,
+            'n_arms': n_arms,
+            'pitch_angle': pitch_angle,
+            'unit': 'dimensionless (factor), N·m (torque)',
+            'equation': 'T_spiral = n_arms · tan(pitch) · (ω_spiral / H₀)'
+        }
+
+
+class UQFFSupernovaFeedbackCalculator:
+    """
+    Supernova Feedback Term Calculator
+    
+    SN_term = Component in MUGE for supernova-driven dynamics.
+    
+    g_Spiral_SN includes: ... + SN_term representing explosive feedback.
+    
+    Models energy injection, mass ejection, and velocity enhancement.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_55_PARAMS
+    
+    def compute_supernova_term(self, dataset: dict) -> dict:
+        """
+        Compute SN_term supernova feedback contribution.
+        """
+        E_SN = dataset.get('E_SN', 1.0e44)       # J (supernova energy)
+        M_ejecta = dataset.get('M_ejecta', 1.989e31)  # kg (ejected mass)
+        v_ejecta = dataset.get('v_ejecta', 1.0e7)     # m/s (ejecta velocity)
+        r = dataset.get('r', 3.09e16)             # m (distance from SN)
+        t = dataset.get('t', 3.156e10)            # s (time since explosion)
+        
+        import math
+        
+        # Kinetic energy of ejecta
+        E_kinetic = 0.5 * M_ejecta * v_ejecta**2
+        
+        # SN term as acceleration contribution
+        # a_SN = (E_SN / M_ejecta) / r² · (1 - exp(-t/τ_SN))
+        tau_SN = r / v_ejecta  # characteristic timescale
+        time_factor = 1 - math.exp(-t / max(tau_SN, 1))
+        
+        SN_term = (E_SN / M_ejecta) / r**2 * time_factor
+        
+        return {
+            'SN_term': SN_term,
+            'E_SN': E_SN,
+            'E_kinetic': E_kinetic,
+            'M_ejecta': M_ejecta,
+            'v_ejecta': v_ejecta,
+            'tau_SN': tau_SN,
+            'time_factor': time_factor,
+            'unit': 'm/s²',
+            'equation': 'SN_term = (E_SN / M_ejecta) / r² · (1 - exp(-t/τ_SN))'
+        }
+
+
+class StellarWindShockCalculator:
+    """
+    Stellar Wind and Shock Wave Calculator
+    
+    W_stellar = ρ · v_wind² (wind ram pressure acceleration)
+    W_shock = Shock wave contribution in nebular dynamics
+    
+    Used in MUGE for nebulae: g includes W_stellar - P_rad
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_55_PARAMS
+    
+    def compute_stellar_wind(self, dataset: dict) -> dict:
+        """
+        Compute W_stellar = ρ · v_wind²
+        """
+        rho = dataset.get('rho', self.params['rho_fluid'])  # kg/m³
+        v_wind = dataset.get('v_wind', self.params['v_wind'])  # m/s
+        
+        W_stellar = rho * v_wind**2
+        
+        # Mass loss rate estimate: Ṁ = 4π r² ρ v_wind
+        r = dataset.get('r', 6.96e8)  # m (stellar radius)
+        import math
+        M_dot = 4 * math.pi * r**2 * rho * v_wind
+        
+        return {
+            'W_stellar': W_stellar,
+            'rho': rho,
+            'v_wind': v_wind,
+            'M_dot': M_dot,
+            'M_dot_solar_per_yr': M_dot * 3.156e7 / 1.989e30,
+            'unit': 'Pa (pressure), kg/s (mass loss)',
+            'equation': 'W_stellar = ρ · v_wind²'
+        }
+    
+    def compute_shock_wave(self, dataset: dict) -> dict:
+        """
+        Compute W_shock for shock-driven acceleration in nebulae.
+        """
+        v_shock = dataset.get('v_shock', 1.0e6)   # m/s
+        rho_upstream = dataset.get('rho_upstream', 1.0e-21)  # kg/m³
+        gamma = dataset.get('gamma', 5/3)         # adiabatic index
+        
+        import math
+        
+        # Mach number (assuming sound speed)
+        c_s = dataset.get('c_s', 1.0e4)  # m/s
+        Mach = v_shock / c_s
+        
+        # Post-shock density (strong shock limit)
+        rho_downstream = rho_upstream * (gamma + 1) / (gamma - 1) if Mach > 1 else rho_upstream
+        
+        # Shock pressure
+        P_shock = rho_upstream * v_shock**2 * (2 * gamma * Mach**2 - (gamma - 1)) / (gamma + 1)**2
+        
+        return {
+            'W_shock': rho_upstream * v_shock**2,
+            'P_shock': P_shock,
+            'Mach': Mach,
+            'rho_downstream': rho_downstream,
+            'compression_ratio': rho_downstream / rho_upstream,
+            'unit': 'Pa',
+            'equation': 'W_shock = ρ · v_shock² (ram pressure)'
+        }
+
+
+class OutflowPressureCalculator:
+    """
+    Protostellar Outflow Pressure Calculator
+    
+    P_outflow = Pressure term in young star gas sculpting dynamics.
+    
+    Used in MUGE: g_Outflow = ... + P_outflow
+    
+    Models bipolar jets and molecular outflows from protostars.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_55_PARAMS
+    
+    def compute_outflow_pressure(self, dataset: dict) -> dict:
+        """
+        Compute P_outflow for protostellar jet dynamics.
+        """
+        v_out = dataset.get('v_out', 3.0e5)      # m/s (outflow velocity)
+        rho_jet = dataset.get('rho_jet', 1.0e-19)  # kg/m³
+        M_dot_out = dataset.get('M_dot_out', 1.0e-7 * 1.989e30 / 3.156e7)  # kg/s
+        r_jet = dataset.get('r_jet', 1.0e14)     # m (jet radius)
+        theta_jet = dataset.get('theta_jet', 10.0)  # degrees (opening angle)
+        
+        import math
+        
+        # Ram pressure
+        P_ram = rho_jet * v_out**2
+        
+        # Momentum flux
+        p_dot = M_dot_out * v_out
+        
+        # Cross-sectional area
+        theta_rad = math.radians(theta_jet)
+        A_jet = math.pi * (r_jet * math.tan(theta_rad))**2
+        
+        # Outflow pressure acceleration term
+        P_outflow = p_dot / A_jet if A_jet > 0 else P_ram
+        
+        return {
+            'P_outflow': P_outflow,
+            'P_ram': P_ram,
+            'momentum_flux': p_dot,
+            'v_out': v_out,
+            'M_dot_out': M_dot_out,
+            'A_jet': A_jet,
+            'unit': 'Pa (pressure), N/s (momentum flux)',
+            'equation': 'P_outflow = Ṁ · v_out / A_jet'
+        }
+
+
+class RadiationErosionCalculator:
+    """
+    Radiation Erosion Calculator
+    
+    E_rad = Radiation pressure erosion term in nebular dynamics.
+    
+    Used in MUGE: g_M16 = ... - E_rad (erosion opposes gravity)
+    
+    Models photoevaporation and radiation-driven mass loss.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_55_PARAMS
+    
+    def compute_radiation_erosion(self, dataset: dict) -> dict:
+        """
+        Compute E_rad for radiation-driven erosion.
+        """
+        L_star = dataset.get('L_star', 1.0e32)   # W (stellar luminosity)
+        r = dataset.get('r', 1.0e17)              # m (distance from star)
+        sigma = dataset.get('sigma', 1.0e-21)     # m² (dust cross-section)
+        rho_dust = dataset.get('rho_dust', 1.0e-20)  # kg/m³
+        
+        import math
+        
+        # Radiation pressure: P_rad = L / (4π r² c)
+        P_rad = L_star / (4 * math.pi * r**2 * self.params['c'])
+        
+        # Eddington luminosity ratio (approximate)
+        M_star = dataset.get('M_star', 20 * 1.989e30)  # kg
+        L_Edd = 4 * math.pi * self.params['G'] * M_star * self.params['c'] / (sigma * rho_dust)
+        Gamma = L_star / L_Edd if L_Edd > 0 else 0
+        
+        # Erosion acceleration: a_erosion = P_rad · sigma / m_grain
+        m_grain = dataset.get('m_grain', 1.0e-15)  # kg
+        E_rad = P_rad * sigma / m_grain
+        
+        return {
+            'E_rad': E_rad,
+            'P_rad': P_rad,
+            'L_star': L_star,
+            'Gamma': Gamma,
+            'L_Edd': L_Edd,
+            'unit': 'm/s² (acceleration)',
+            'equation': 'E_rad = P_rad · σ / m_grain = L/(4πr²c) · σ/m'
+        }
+
+
+class HydrogenResonanceShellCalculator:
+    """
+    Hydrogen Resonance Shell Calculator
+    
+    H_res = A_res·sin(2π·f_res·t) + U_dp·SC_m·k_nuc + S_shell
+    
+    Where S_shell = 0.1 · (Z_magic + N_magic) for magic number shell corrections.
+    
+    Models nuclear resonance in UQFF framework for atomic physics.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_55_PARAMS
+    
+    def compute_hydrogen_resonance(self, dataset: dict) -> dict:
+        """
+        Compute H_res hydrogen resonance equation.
+        """
+        A_res = dataset.get('A_res', 1.0)         # Resonance amplitude
+        f_res = dataset.get('f_res', 1.42e9)      # Hz (21 cm line)
+        t = dataset.get('t', 0.0)                 # s
+        U_dp = dataset.get('U_dp', 1.0e-20)       # Dipole potential (J)
+        SC_m = dataset.get('SC_m', 1.0)           # Superconductive factor
+        k_nuc = dataset.get('k_nuc', 1.0e-10)     # Nuclear coupling
+        Z = dataset.get('Z', 1)                   # Atomic number
+        N = dataset.get('N', 0)                   # Neutron number
+        
+        import math
+        
+        # Resonance oscillation
+        oscillation = A_res * math.sin(2 * math.pi * f_res * t)
+        
+        # Dipole-superconductor coupling
+        dipole_term = U_dp * SC_m * k_nuc
+        
+        # Magic numbers
+        magic_numbers = [2, 8, 20, 28, 50, 82, 126]
+        Z_magic = 1 if Z in magic_numbers else 0
+        N_magic = 1 if N in magic_numbers else 0
+        
+        # Shell correction
+        S_shell = 0.1 * (Z_magic + N_magic)
+        
+        # Total resonance
+        H_res = oscillation + dipole_term + S_shell
+        
+        return {
+            'H_res': H_res,
+            'oscillation': oscillation,
+            'dipole_term': dipole_term,
+            'S_shell': S_shell,
+            'Z_magic': Z_magic,
+            'N_magic': N_magic,
+            'f_res': f_res,
+            'unit': 'dimensionless (resonance factor)',
+            'equation': 'H_res = A_res·sin(2πf_res·t) + U_dp·SC_m·k_nuc + S_shell'
+        }
+    
+    def compute_nuclear_coupling(self, dataset: dict) -> dict:
+        """
+        Compute k_nuc = k₀ · (N/Z) · (1 + δ_pair) for nuclear resonance.
+        """
+        Z = dataset.get('Z', 1)
+        N = dataset.get('N', 0)
+        k_0 = dataset.get('k_0', 1.0e-10)
+        
+        # Pairing correction
+        A = Z + N
+        if A % 2 == 0:
+            if Z % 2 == 0 and N % 2 == 0:
+                delta_pair = 12 / (A**0.5)  # even-even
+            else:
+                delta_pair = 0  # odd-odd
+        else:
+            delta_pair = 0  # odd A
+        
+        k_nuc = k_0 * (N / max(Z, 1)) * (1 + delta_pair)
+        
+        return {
+            'k_nuc': k_nuc,
+            'k_0': k_0,
+            'Z': Z,
+            'N': N,
+            'delta_pair': delta_pair,
+            'unit': 'N or J (coupling constant)',
+            'equation': 'k_nuc = k₀ · (N/Z) · (1 + δ_pair)'
+        }
+
+
+class TidalRingEffectCalculator:
+    """
+    Tidal Ring Effect Calculator
+    
+    T_ring = Tidal contribution for planetary ring systems.
+    
+    Used in MUGE: g_Saturn = ... + T_ring + ...
+    
+    Models gravitational tidal effects on ring particle dynamics.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_55_PARAMS
+    
+    def compute_tidal_ring(self, dataset: dict) -> dict:
+        """
+        Compute T_ring for planetary ring dynamics.
+        """
+        M_planet = dataset.get('M_planet', 5.683e26)  # kg (Saturn mass)
+        M_ring = dataset.get('M_ring', 4.0e19)        # kg (ring mass)
+        r_inner = dataset.get('r_inner', 7.4e7)       # m (inner ring edge)
+        r_outer = dataset.get('r_outer', 1.4e8)       # m (outer ring edge)
+        r_particle = dataset.get('r_particle', 9.0e7)  # m (particle location)
+        
+        import math
+        
+        # Tidal acceleration: a_tidal = 2 G M / r³ · Δr
+        Delta_r = r_outer - r_inner
+        a_tidal = 2 * self.params['G'] * M_planet / r_particle**3 * Delta_r
+        
+        # Ring surface density
+        ring_area = math.pi * (r_outer**2 - r_inner**2)
+        sigma_ring = M_ring / ring_area
+        
+        # Roche limit
+        rho_planet = dataset.get('rho_planet', 687)  # kg/m³
+        rho_particle = dataset.get('rho_particle', 900)  # kg/m³ (ice)
+        R_planet = dataset.get('R_planet', 5.82e7)    # m
+        r_Roche = 2.44 * R_planet * (rho_planet / rho_particle)**(1/3)
+        
+        # T_ring factor (dimensionless enhancement)
+        T_ring = (a_tidal / (self.params['G'] * M_planet / r_particle**2)) * \
+                (sigma_ring / 1000)  # normalized
+        
+        return {
+            'T_ring': T_ring,
+            'a_tidal': a_tidal,
+            'sigma_ring': sigma_ring,
+            'r_Roche': r_Roche,
+            'Delta_r': Delta_r,
+            'unit': 'dimensionless (factor), m/s² (acceleration)',
+            'equation': 'T_ring = 2 G M / r³ · Δr (normalized)'
+        }
+
+
+class DustLaneAttenuationCalculator:
+    """
+    Dust Lane Attenuation Calculator
+    
+    D_dust = Dust lane contribution in galaxy dynamics.
+    
+    Used in MUGE: g_Sombrero = ... + D_dust
+    
+    Models extinction, scattering, and dynamical effects of dust lanes.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_55_PARAMS
+    
+    def compute_dust_attenuation(self, dataset: dict) -> dict:
+        """
+        Compute D_dust for galaxy dust lane effects.
+        """
+        tau_V = dataset.get('tau_V', 1.0)          # V-band optical depth
+        rho_dust = dataset.get('rho_dust', 1.0e-21)  # kg/m³
+        kappa_dust = dataset.get('kappa_dust', 1.0e4)  # m²/kg (opacity)
+        L_dust = dataset.get('L_dust', 1.0e20)      # m (dust lane path length)
+        v_dust = dataset.get('v_dust', 1.0e4)       # m/s (dust velocity)
+        
+        import math
+        
+        # Optical depth: τ = κ · ρ · L
+        tau_computed = kappa_dust * rho_dust * L_dust
+        
+        # Attenuation factor
+        A_V = 1.086 * tau_V  # magnitudes
+        
+        # Dust mass surface density
+        Sigma_dust = rho_dust * L_dust  # kg/m²
+        
+        # Dynamical dust term (acceleration from dust drag)
+        # D_dust ∝ ρ_dust · v_dust² / r
+        r = dataset.get('r', 1.0e21)  # m
+        D_dust = rho_dust * v_dust**2 / r
+        
+        return {
+            'D_dust': D_dust,
+            'tau_V': tau_V,
+            'tau_computed': tau_computed,
+            'A_V': A_V,
+            'Sigma_dust': Sigma_dust,
+            'rho_dust': rho_dust,
+            'unit': 'm/s² (acceleration), magnitudes (extinction)',
+            'equation': 'D_dust = ρ_dust · v_dust² / r'
+        }
+
+
+# Registry for Orb Analysis 55
+ORB_ANALYSIS_55_CALCULATORS = {
+    'FUBiiIntegralCalculator': FUBiiIntegralCalculator(),
+    'NeutronCaptureRateCalculator': NeutronCaptureRateCalculator(),
+    'NeutrinoPolarizabilityCalculator': NeutrinoPolarizabilityCalculator(),
+    'UQFFUniverseDiameterCalculator': UQFFUniverseDiameterCalculator(),
+    'SpiralTorqueCalculator': SpiralTorqueCalculator(),
+    'UQFFSupernovaFeedbackCalculator': UQFFSupernovaFeedbackCalculator(),
+    'StellarWindShockCalculator': StellarWindShockCalculator(),
+    'OutflowPressureCalculator': OutflowPressureCalculator(),
+    'RadiationErosionCalculator': RadiationErosionCalculator(),
+    'HydrogenResonanceShellCalculator': HydrogenResonanceShellCalculator(),
+    'TidalRingEffectCalculator': TidalRingEffectCalculator(),
+    'DustLaneAttenuationCalculator': DustLaneAttenuationCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -29136,6 +30006,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_52_CALCULATORS,
     **ORB_ANALYSIS_53_CALCULATORS,
     **ORB_ANALYSIS_54_CALCULATORS,
+    **ORB_ANALYSIS_55_CALCULATORS,
 }
 
 # Update class count
@@ -29714,6 +30585,22 @@ __all__ = [
     'QuantumCoherenceIntegralCalculator',
     'CharacteristicPolynomialCalculator',
     'ORB_ANALYSIS_54_CALCULATORS',
+    
+    # Orb 55: UQFF Buoyancy and Astrophysical Dynamics
+    'ORB_ANALYSIS_55_PARAMS',
+    'FUBiiIntegralCalculator',
+    'NeutronCaptureRateCalculator',
+    'NeutrinoPolarizabilityCalculator',
+    'UQFFUniverseDiameterCalculator',
+    'SpiralTorqueCalculator',
+    'UQFFSupernovaFeedbackCalculator',
+    'StellarWindShockCalculator',
+    'OutflowPressureCalculator',
+    'RadiationErosionCalculator',
+    'HydrogenResonanceShellCalculator',
+    'TidalRingEffectCalculator',
+    'DustLaneAttenuationCalculator',
+    'ORB_ANALYSIS_55_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
