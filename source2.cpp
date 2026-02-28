@@ -9571,6 +9571,11 @@ public:
         exportFormatBtn->setToolTip("Export to ODT, PDF, or DOCX format (requires pandoc)");
         connect(exportFormatBtn, &QPushButton::clicked, this, &ScientificCalculatorDialog::exportToFormat);
 
+        // Settings button - configure directories (S-C Iteration 22-25)
+        QPushButton *settingsBtn = new QPushButton("Settings", this);
+        settingsBtn->setToolTip("Configure calculator directories and preferences");
+        connect(settingsBtn, &QPushButton::clicked, this, &ScientificCalculatorDialog::openSettings);
+
         // Add all widgets to the vertical layout
         layout->addWidget(input);           // Input box at top
         layout->addWidget(symbolSearchBox); // IEF Search bar (S-C Iteration 22/23)
@@ -9579,6 +9584,7 @@ public:
         layout->addWidget(recallBtn);       // Recall button (S-C)
         layout->addWidget(exportBtn);       // Export LaTeX button (S-C)
         layout->addWidget(exportFormatBtn); // Export Format button (S-C Iteration 22/23)
+        layout->addWidget(settingsBtn);     // Settings button (S-C Iteration 22-25)
         layout->addWidget(workflow);        // Workflow history
         layout->addWidget(output);          // Output box at bottom
 
@@ -9699,6 +9705,21 @@ private:
     QString allSymbols;                   // Complete symbol string for reference
     QGridLayout *symbolGridRef;           // Reference to symbol grid for filtering
     QWidget *symbolPanelRef;              // Reference to symbol panel
+    
+    // Configurable directory paths (S-C Iteration 22-25)
+    QString configErrorDir;               // Error log directory
+    QString configCalcCacheDir;           // Calculation cache directory
+
+    // ========================================================================
+    // hasPandoc - Check if pandoc is installed (S-C Iteration 22-25)
+    // ========================================================================
+    bool hasPandoc() {
+        QProcess p;
+        p.start("pandoc", QStringList() << "--version");
+        if (!p.waitForStarted(2000)) return false;
+        if (!p.waitForFinished(5000)) return false;
+        return p.exitCode() == 0;
+    }
 
     // ========================================================================
     // insertSymbol - Inserts a symbol from the palette into the input field
@@ -9935,9 +9956,23 @@ private:
             return;
         }
         
+        // ================================================================
+        // PANDOC CHECK (S-C Iteration 22-25)
+        // ================================================================
+        // Pre-check if pandoc is available before showing format options
+        bool pandocAvailable = hasPandoc();
+        
         // Format selection dialog
         QStringList formats;
-        formats << "ODT (LibreOffice)" << "PDF (Portable Document)" << "DOCX (Microsoft Word)" << "HTML (Web Page)";
+        if (pandocAvailable) {
+            formats << "ODT (LibreOffice)" << "PDF (Portable Document)" << "DOCX (Microsoft Word)" << "HTML (Web Page)";
+        } else {
+            formats << "HTML (Web Page)";
+            QMessageBox::warning(this, "Pandoc Not Found", 
+                "Pandoc is not installed. Only HTML export is available.\n\n"
+                "To enable ODT/PDF/DOCX export, install pandoc from:\n"
+                "https://pandoc.org/installing.html");
+        }
         bool ok;
         QString choice = QInputDialog::getItem(this, "Export Format", 
             "Select output format:", formats, 0, false, &ok);
@@ -9998,6 +10033,64 @@ private:
         
         // Clean up temp file
         QFile::remove(tempMd);
+    }
+
+    // ========================================================================
+    // openSettings - Settings dialog for configurable paths (S-C Iteration 22-25)
+    // ========================================================================
+    void openSettings() {
+        QDialog settingsDlg(this);
+        settingsDlg.setWindowTitle("Calculator Settings");
+        settingsDlg.setMinimumSize(500, 250);
+        settingsDlg.setStyleSheet(
+            "QDialog { background-color: #f5f5f5; }"
+            "QLabel { font-weight: bold; }"
+            "QLineEdit { border: 1px solid #ccc; border-radius: 4px; padding: 4px; }"
+            "QPushButton { background-color: #add8e6; border: 1px solid #333; border-radius: 4px; padding: 6px 12px; }"
+            "QPushButton:hover { background-color: #87ceeb; }"
+        );
+        
+        QVBoxLayout *sLay = new QVBoxLayout(&settingsDlg);
+        
+        // Error directory
+        QLabel *errLabel = new QLabel("Error Log Directory:", &settingsDlg);
+        QLineEdit *errEdit = new QLineEdit(configErrorDir.isEmpty() ? (REPO_PATH + "Errors/") : configErrorDir, &settingsDlg);
+        sLay->addWidget(errLabel);
+        sLay->addWidget(errEdit);
+        
+        // Calc cache directory
+        QLabel *calcLabel = new QLabel("Calculation Cache Directory:", &settingsDlg);
+        QLineEdit *calcEdit = new QLineEdit(configCalcCacheDir.isEmpty() ? (REPO_PATH + SCALC_CASH_DIR) : configCalcCacheDir, &settingsDlg);
+        sLay->addWidget(calcLabel);
+        sLay->addWidget(calcEdit);
+        
+        // Pandoc status
+        QLabel *pandocLabel = new QLabel("Pandoc Status:", &settingsDlg);
+        QLabel *pandocStatus = new QLabel(hasPandoc() ? "✓ Installed" : "✗ Not Found", &settingsDlg);
+        pandocStatus->setStyleSheet(hasPandoc() ? "color: green;" : "color: red;");
+        QHBoxLayout *pandocLayout = new QHBoxLayout;
+        pandocLayout->addWidget(pandocLabel);
+        pandocLayout->addWidget(pandocStatus);
+        pandocLayout->addStretch();
+        sLay->addLayout(pandocLayout);
+        
+        sLay->addSpacing(10);
+        
+        // Buttons
+        QDialogButtonBox *sBtns = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &settingsDlg);
+        connect(sBtns, &QDialogButtonBox::accepted, [&]() {
+            configErrorDir = errEdit->text();
+            configCalcCacheDir = calcEdit->text();
+            // Create directories if they don't exist
+            QDir(configErrorDir).mkpath(".");
+            QDir(configCalcCacheDir).mkpath(".");
+            settingsDlg.accept();
+            QMessageBox::information(this, "Settings", "Settings saved successfully.");
+        });
+        connect(sBtns, &QDialogButtonBox::rejected, &settingsDlg, &QDialog::reject);
+        sLay->addWidget(sBtns);
+        
+        settingsDlg.exec();
     }
 
     // ========================================================================
@@ -10139,6 +10232,39 @@ private:
                 QString::fromStdString(match.str()));
             output->append("Please check your expression for consecutive operators.");
             return;
+        }
+
+        // ================================================================
+        // MISSING D-VARIABLE VALIDATION (S-C Iteration 22-25)
+        // ================================================================
+        // Catch integrals without proper "dx", "dy", etc. termination
+        std::regex int_regex(R"(\?\([^)]+\)[^,]+$)");  // ?(a,b) expr without d-var
+        std::regex int_indef(R"(\?\s+[^d][^x][^y][^z][^t]\s*$)");  // ? expr without d-var
+        if (expr.find('?') != std::string::npos) {
+            // Check if integral has d-variable
+            bool has_dvar = (expr.find(" dx") != std::string::npos ||
+                            expr.find(" dy") != std::string::npos ||
+                            expr.find(" dz") != std::string::npos ||
+                            expr.find(" dt") != std::string::npos ||
+                            expr.find(" dr") != std::string::npos ||
+                            expr.find(" du") != std::string::npos);
+            if (!has_dvar && expr.length() > 5) {
+                output->append("Warning: Integral may be missing d-variable (e.g., 'dx', 'dy').");
+                output->append("Expected format: ?(0,1) x^2 dx  or  ? x^2 dx");
+            }
+        }
+
+        // ================================================================
+        // MISSING PARTIAL VAR VALIDATION (S-C Iteration 22-25)
+        // ================================================================
+        // Detect incomplete partial derivatives like "\xe2\x88\x82/\xe2\x88\x82 " without variable
+        if (expr.find("\xe2\x88\x82") != std::string::npos) {  // ∂ character
+            std::regex partial_incomplete(R"(\xe2\x88\x82/\xe2\x88\x82\s+[^a-zA-Z])");
+            if (std::regex_search(expr, partial_incomplete)) {
+                output->append("Error: Incomplete partial derivative - missing variable after ∂/∂.");
+                output->append("Expected format: ∂/∂x (expression)  or  ∂/∂x ∂/∂y (expression)");
+                return;
+            }
         }
 
         // Vector to store individual equations (one per line)
@@ -10615,6 +10741,22 @@ private:
             }
 #endif
         }
+
+        // ================================================================
+        // ELAPSED TIME DISPLAY (S-C Iteration 22/23)
+        // ================================================================
+        qint64 elapsedMs = elapsedTimer.elapsed();
+        QString elapsedStr;
+        if (elapsedMs < 1000) {
+            elapsedStr = QString("%1 ms").arg(elapsedMs);
+        } else if (elapsedMs < 60000) {
+            elapsedStr = QString("%1.%2 s").arg(elapsedMs / 1000).arg((elapsedMs % 1000) / 100);
+        } else {
+            int mins = elapsedMs / 60000;
+            int secs = (elapsedMs % 60000) / 1000;
+            elapsedStr = QString("%1 min %2 s").arg(mins).arg(secs);
+        }
+        result += QString("\n--- Computation time: %1 ---\n").arg(elapsedStr);
 
         // Display all results in the output text area
         output->setText(result);
