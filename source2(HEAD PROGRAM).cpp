@@ -11,6 +11,8 @@
 #include <QTabWidget>       // Tab container widget - provides tab bar and page area for switching between pages
 #include <QVBoxLayout>      // Vertical box layout manager - arranges widgets vertically
 #include <QHBoxLayout>      // Horizontal box layout manager - arranges widgets horizontally
+#include <QGridLayout>      // Grid layout manager - for symbol palette grid (S-C Iteration 22)
+#include <QScrollArea>      // Scroll area widget - for scrollable symbol palette (S-C Iteration 22)
 #include <QPushButton>      // Push button widget - command button user can click
 #include <QLabel>           // Text/image display widget - displays static text or images
 #include <QDockWidget>      // Dockable window - can be docked in QMainWindow or float as separate window
@@ -20,6 +22,7 @@
 #include <QScreen>          // Screen information - provides info about physical screen properties
 #include <QDragEnterEvent>  // Drag-and-drop enter event - sent when drag operation enters a widget
 #include <QDropEvent>       // Drag-and-drop drop event - sent when user drops data on widget
+#include <QDrag>            // Drag operation - for initiating drag-and-drop (DraggableButton)
 #include <QMimeData>        // MIME data container - holds data in different formats for clipboard/drag-drop
 #include <QFile>            // File I/O operations - interface for reading/writing files
 #include <QDir>             // Directory operations - access to directory structures and contents
@@ -608,6 +611,170 @@ std::string FetchDONKI(const std::string &startDate = "", const std::string &end
 }
 
 // ============================================================================
+// DRAGGABLE BUTTON CLASS (S-C Iteration 22 - VR/VM Enhanced)
+// ============================================================================
+
+// DraggableButton - A QPushButton subclass that supports drag-and-drop
+// Used for symbol palette buttons that can be dragged into equations
+// Note: No Q_OBJECT needed - only overrides protected methods, no custom signals/slots
+//
+class DraggableButton : public QPushButton
+{
+public:
+    DraggableButton(const QString& text, QWidget* parent = nullptr)
+        : QPushButton(text, parent), m_symbol(text)
+    {
+        setAcceptDrops(false);
+    }
+    
+    void setSymbol(const QString& sym) { m_symbol = sym; }
+    QString symbol() const { return m_symbol; }
+
+protected:
+    void mousePressEvent(QMouseEvent* event) override {
+        if (event->button() == Qt::LeftButton) {
+            m_dragStartPos = event->pos();
+        }
+        QPushButton::mousePressEvent(event);
+    }
+    
+    void mouseMoveEvent(QMouseEvent* event) override {
+        if (!(event->buttons() & Qt::LeftButton)) return;
+        if ((event->pos() - m_dragStartPos).manhattanLength() < QApplication::startDragDistance()) return;
+        
+        // Start drag operation
+        QDrag* drag = new QDrag(this);
+        QMimeData* mimeData = new QMimeData;
+        mimeData->setText(m_symbol);
+        drag->setMimeData(mimeData);
+        drag->exec(Qt::CopyAction);
+    }
+
+private:
+    QString m_symbol;
+    QPoint m_dragStartPos;
+};
+
+// ============================================================================
+// THREADED SYMPY EXECUTOR (S-C Iteration 22 - 160s timeout)
+// ============================================================================
+
+// ThreadedSymPyExecutor - Runs SymPy operations with timeout protection
+// Prevents GUI freeze on complex calculations
+//
+class ThreadedSymPyExecutor {
+public:
+    struct Result {
+        bool success = false;
+        bool timeout = false;
+        std::string output;
+        std::string error;
+    };
+    
+    // Execute SymPy code with timeout (default 160 seconds for complex integrals)
+    static Result execute(const std::string& code, int timeout_seconds = 160) {
+        Result result;
+        std::atomic<bool> done{false};
+        std::atomic<bool> timed_out{false};
+        
+        std::thread worker([&]() {
+#ifndef NO_PYTHON
+            try {
+                pybind11::gil_scoped_acquire acquire;
+                pybind11::exec(code.c_str());
+                result.success = true;
+            } catch (const pybind11::error_already_set& e) {
+                result.error = e.what();
+            } catch (const std::exception& e) {
+                result.error = e.what();
+            }
+#else
+            result.error = "Python not available";
+#endif
+            done = true;
+        });
+        
+        // Wait with timeout
+        auto start = std::chrono::steady_clock::now();
+        while (!done) {
+            auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(
+                std::chrono::steady_clock::now() - start).count();
+            if (elapsed >= timeout_seconds) {
+                timed_out = true;
+                result.timeout = true;
+                result.error = "Computation timed out after " + std::to_string(timeout_seconds) + " seconds";
+                break;
+            }
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        }
+        
+        if (worker.joinable()) {
+            if (timed_out) {
+                worker.detach();  // Detach timed-out thread (best effort cleanup)
+            } else {
+                worker.join();
+            }
+        }
+        
+        return result;
+    }
+};
+
+// ============================================================================
+// JQMATH RENDERER CLASS (S-C Iteration 22 - GPU-accelerated math display)
+// ============================================================================
+
+// jqMathRenderer - Renders LaTeX/AsciiMath using QWebEngineView
+// GPU-accelerated for complex equation rendering in VR/VM environment
+//
+class jqMathRenderer : public QWidget {
+public:
+    jqMathRenderer(QWidget* parent = nullptr) : QWidget(parent) {
+        QVBoxLayout* layout = new QVBoxLayout(this);
+        m_webView = new QWebEngineView(this);
+        m_webView->setMinimumHeight(100);
+        layout->addWidget(m_webView);
+        
+        // Initialize with jqMath HTML template
+        QString html = R"(
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqmath/0.4.3/jqmath-etc.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqmath/0.4.3/jqmath-0.4.3.css">
+    <style>
+        body { font-size: 18px; padding: 10px; background: #1e1e1e; color: #fff; }
+        .math { font-size: 1.2em; }
+    </style>
+</head>
+<body>
+    <div id="output"></div>
+    <script>
+        function renderMath(mathStr) {
+            document.getElementById('output').innerHTML = '$$' + mathStr + '$$';
+            M.parseMath(document.getElementById('output'));
+        }
+    </script>
+</body>
+</html>
+)";
+        m_webView->setHtml(html);
+    }
+    
+    void render(const QString& latex) {
+        // Escape special characters and call JS render function
+        QString escaped = latex;
+        escaped.replace("\\", "\\\\");
+        escaped.replace("'", "\\'");
+        m_webView->page()->runJavaScript(QString("renderMath('%1');").arg(escaped));
+    }
+
+private:
+    QWebEngineView* m_webView;
+};
+
+// ============================================================================
 // SCIENTIFIC CALCULATOR DIALOG CLASS
 // ============================================================================
 
@@ -641,22 +808,64 @@ public:
 
         // Create input text area for user to enter equations
         input = new QTextEdit(this);
-        input->setPlaceholderText("Enter equations (e.g., d/dx(x^2), ?(0,1) x^2 dx, x^2 + y = 5, jd to date 2451544)");
+        input->setPlaceholderText("Enter equations (e.g., d/dx(x^2), ∫(0,π) sin(x) dx, x² + y = 5)");
         input->setMinimumHeight(100);  // Minimum 100 pixels tall
         input->setMaximumHeight(1000); // Can expand to 1000 pixels if needed
         input->setAcceptDrops(true);   // Allow dropping equations into input area
+
+        // ================================================================
+        // SYMBOL PALETTE with DraggableButton (S-C Iteration 22 - VR/VM)
+        // ================================================================
+        // Creates scrollable grid of draggable math symbols
+        const QString symbols_joined = QString::fromUtf8(
+            u8"±∞=≠~×÷!∝<≪>≫≤≥∓≅≈≡∀∁∂√∛∜∪∩∅%°∆∇∃∄∈∋←↑→↓↔∴"
+            u8"+-αβγδεεθϑμπρστφω*∙⋮⋯⋰⋱ℵℶ∎∫∬∭∮∯∰/⁄¹²³⁴⁵⁶⁷⁸⁹⁰"
+            u8"ΓΔΘΛΞΠΣΥΦΨΩζηικλνξουχψ∑∏"
+            u8"⊂⊆∉¬∧∨⇒⇔"
+        );
+        QScrollArea *symbolScroll = new QScrollArea(this);
+        symbolScroll->setWidgetResizable(true);
+        symbolScroll->setMinimumHeight(60);
+        symbolScroll->setMaximumHeight(120);
+        QWidget *symbolPanel = new QWidget;
+        QGridLayout *symbolGrid = new QGridLayout(symbolPanel);
+        symbolGrid->setSpacing(2);
+        int col = 0, row = 0;
+        for (QChar ch : symbols_joined) {
+            QString sym(ch);
+            DraggableButton *btn = new DraggableButton(sym, symbolPanel);
+            btn->setFixedSize(30, 30);
+            btn->setToolTip(QString("Insert or drag %1").arg(sym));
+            connect(btn, &QPushButton::clicked, [this, sym]() {
+                input->insertPlainText(sym);
+                input->setFocus();
+            });
+            symbolGrid->addWidget(btn, row, col);
+            col++;
+            if (col >= 20) { col = 0; row++; }
+        }
+        symbolPanel->setLayout(symbolGrid);
+        symbolScroll->setWidget(symbolPanel);
 
         // Create output text area to display results (read-only)
         output = new QTextEdit(this);
         output->setReadOnly(true); // User cannot edit results, only view them
 
+        // ================================================================
+        // jqMath GPU Renderer (S-C Iteration 22 - WebEngine rendering)
+        // ================================================================
+        mathRenderer = new jqMathRenderer(this);
+        mathRenderer->setMinimumHeight(80);
+
         // Create "Solve" button to trigger calculation
         QPushButton *solveBtn = new QPushButton("Solve", this);
 
         // Add all widgets to the vertical layout
-        layout->addWidget(input);    // Input box at top
-        layout->addWidget(solveBtn); // Solve button in middle
-        layout->addWidget(output);   // Output box at bottom
+        layout->addWidget(input);        // Input box at top
+        layout->addWidget(symbolScroll); // Draggable symbol palette
+        layout->addWidget(solveBtn);     // Solve button
+        layout->addWidget(mathRenderer); // jqMath GPU renderer
+        layout->addWidget(output);       // Output box at bottom
 
         // Connect signals to slots (Qt's event handling mechanism)
         // When "Solve" button is clicked, call solveEquations() method
@@ -726,6 +935,7 @@ private:
     QTextEdit *input;    // Pointer to input text editor widget
     QTextEdit *output;   // Pointer to output text editor widget (displays results)
     QPoint dragPosition; // Stores mouse offset for dragging (prevents window jumping)
+    jqMathRenderer *mathRenderer;  // GPU-accelerated math renderer (S-C Iteration 22)
 
     // ========================================================================
     // PRIVATE HELPER METHODS - Internal functions used by this class
@@ -915,6 +1125,17 @@ private:
 
         // Display all results in the output text area
         output->setText(result);
+        
+        // Render to jqMath GPU renderer (S-C Iteration 22)
+        // Convert result to LaTeX-like format for visual display
+        QString latexResult = input->toPlainText();
+        latexResult.replace("**", "^");
+        latexResult.replace("sqrt(", "\\sqrt{").replace(")", "}");
+        latexResult.replace("pi", "\\pi");
+        latexResult.replace("alpha", "\\alpha");
+        latexResult.replace("beta", "\\beta");
+        latexResult.replace("theta", "\\theta");
+        mathRenderer->render(latexResult);
     }
 
     // ========================================================================

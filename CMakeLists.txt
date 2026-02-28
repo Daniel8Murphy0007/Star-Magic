@@ -674,6 +674,108 @@ if(Qt6_FOUND)
     
     message(STATUS "Source2 (HEAD PROGRAM) build target ENABLED")
     
+    # ========== Source2_HEAD_PROGRAM (VR/VM GPU Backend) ==========
+    # HEAD PROGRAM: GPU-heavy VR/VM backend with QWebEngineView, threaded executor
+    # Features: DraggableButton, jqMathRenderer, ThreadedSymPyExecutor
+    # Separated from Source2.cpp to avoid runtime conflicts with invasive dependencies
+    option(BUILD_SOURCE2_HEAD_PROGRAM "Build Source2 HEAD PROGRAM (VR/VM backend)" OFF)
+    if(BUILD_SOURCE2_HEAD_PROGRAM)
+        # Note: filename has spaces/parentheses, CMake handles this with quotes
+        add_executable(Source2_HEAD_PROGRAM "source2(HEAD PROGRAM).cpp" ${IPC_SOURCES} ${IPC_HEADERS})
+        
+        set_target_properties(Source2_HEAD_PROGRAM PROPERTIES 
+            AUTOMOC ON 
+            AUTOUIC ON 
+            AUTORCC ON
+            OUTPUT_NAME "Source2_HEAD_PROGRAM"
+            MSVC_RUNTIME_LIBRARY "MultiThreadedDLL$<$<CONFIG:Debug>:Debug>"
+        )
+        
+        target_include_directories(Source2_HEAD_PROGRAM PRIVATE 
+            ${CMAKE_CURRENT_SOURCE_DIR}/ipc
+            ${CMAKE_CURRENT_SOURCE_DIR}/vr
+        )
+        
+        # Link Qt6 (including WebEngineWidgets for jqMath)
+        target_link_libraries(Source2_HEAD_PROGRAM PRIVATE 
+            Qt6::Core 
+            Qt6::Widgets 
+            Qt6::Network
+        )
+        
+        # QtWebEngine for jqMath GPU rendering
+        if(TARGET Qt6::WebEngineWidgets)
+            target_link_libraries(Source2_HEAD_PROGRAM PRIVATE Qt6::WebEngineWidgets)
+            target_compile_definitions(Source2_HEAD_PROGRAM PRIVATE HAVE_WEBENGINE)
+            message(STATUS "  Source2_HEAD_PROGRAM: Qt6::WebEngineWidgets linked (jqMath GPU rendering)")
+        else()
+            message(STATUS "  Source2_HEAD_PROGRAM: Qt6::WebEngineWidgets NOT found - jqMath disabled")
+        endif()
+        
+        # pybind11 for ThreadedSymPyExecutor
+        if(pybind11_FOUND)
+            target_link_libraries(Source2_HEAD_PROGRAM PRIVATE pybind11::embed)
+        else()
+            target_compile_definitions(Source2_HEAD_PROGRAM PRIVATE NO_PYTHON)
+        endif()
+        
+        # VTK for 3D visualization (optional)
+        if(VTK_FOUND)
+            target_link_libraries(Source2_HEAD_PROGRAM PRIVATE ${VTK_LIBRARIES})
+        else()
+            target_compile_definitions(Source2_HEAD_PROGRAM PRIVATE NO_VTK)
+        endif()
+        
+        # CURL for API calls
+        if(CURL_FOUND)
+            target_link_libraries(Source2_HEAD_PROGRAM PRIVATE CURL::libcurl)
+        else()
+            target_compile_definitions(Source2_HEAD_PROGRAM PRIVATE NO_CURL)
+        endif()
+        
+        # AWS SDK (optional - for cloud sync)
+        if(aws-cpp-sdk-core_FOUND)
+            target_link_libraries(Source2_HEAD_PROGRAM PRIVATE 
+                aws-cpp-sdk-core
+                aws-cpp-sdk-s3
+                aws-cpp-sdk-cognito-idp
+            )
+        else()
+            target_compile_definitions(Source2_HEAD_PROGRAM PRIVATE NO_AWS)
+        endif()
+        
+        # OpenCV (optional - for vision processing)
+        if(OpenCV_FOUND)
+            target_link_libraries(Source2_HEAD_PROGRAM PRIVATE ${OpenCV_LIBS})
+        else()
+            target_compile_definitions(Source2_HEAD_PROGRAM PRIVATE NO_OPENCV)
+        endif()
+        
+        # SQLite (optional - for local caching)
+        if(SQLite3_FOUND)
+            target_link_libraries(Source2_HEAD_PROGRAM PRIVATE SQLite::SQLite3)
+        else()
+            target_compile_definitions(Source2_HEAD_PROGRAM PRIVATE NO_SQLITE)
+        endif()
+        
+        # Qalculate (optional - for symbolic math)
+        if(Qalculate_FOUND)
+            target_link_libraries(Source2_HEAD_PROGRAM PRIVATE ${Qalculate_LIBRARIES})
+        else()
+            target_compile_definitions(Source2_HEAD_PROGRAM PRIVATE NO_QALCULATE)
+        endif()
+        
+        # PocketSphinx (optional - for voice commands)
+        if(PocketSphinx_FOUND)
+            target_link_libraries(Source2_HEAD_PROGRAM PRIVATE ${PocketSphinx_LIBRARIES})
+        else()
+            target_compile_definitions(Source2_HEAD_PROGRAM PRIVATE NO_POCKETSPHINX)
+        endif()
+        
+        message(STATUS "Source2_HEAD_PROGRAM (VR/VM GPU backend) build target ENABLED")
+        message(STATUS "  Build with: cmake --build . --target Source2_HEAD_PROGRAM")
+    endif()
+
     # ========== VR RUNTIME (Phase 3 - SCAFFOLDED) ==========
     # Phase 3: VR Runtime scaffold with OpenXR + Vulkan
     # Uses dedicated vr/ directory with modular components:
