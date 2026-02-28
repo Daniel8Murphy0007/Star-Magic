@@ -64,6 +64,7 @@
 #include <QCheckBox>             // Checkbox widget - for multi-summarizer toggle (Phase 3)
 #include <QCryptographicHash>    // Cryptographic hash - for password encryption (Phase 3)
 #include <QFileDialog>           // File dialog - for Visual Calculator video loading (Phase 3)
+#include <QTextDocumentWriter>   // Text document writer - for native ODT export (S-C Iteration 27)
 #include <QWidgetAction>         // Widget action - for Retry Logic button menu (Phase 3)
 #include <QDateTimeEdit>         // DateTime edit - for Retry Logic time capture (Phase 3)
 #include <QMenuBar>              // Menu bar - for Window menu (Phase 3)
@@ -151,6 +152,7 @@
 #include <cmath>             // Math functions for unit conversions
 #include <limits>            // Numeric limits for precision handling
 #include <regex>             // Regular expressions for parsing and validation
+#include <set>               // Set container for multivariate validation (S-C Iteration 27)
 
 // UQFF Unified Constants - Shared with source4.cpp compute engine
 #include "uqff_constants.h"
@@ -9576,6 +9578,11 @@ public:
         settingsBtn->setToolTip("Configure calculator directories and preferences");
         connect(settingsBtn, &QPushButton::clicked, this, &ScientificCalculatorDialog::openSettings);
 
+        // Speak button - accessibility text-to-speech (S-C Iteration 27)
+        QPushButton *speakBtn = new QPushButton("Speak", this);
+        speakBtn->setToolTip("Read results aloud using text-to-speech (requires espeak)");
+        connect(speakBtn, &QPushButton::clicked, this, &ScientificCalculatorDialog::speakResults);
+
         // Add all widgets to the vertical layout
         layout->addWidget(input);           // Input box at top
         layout->addWidget(symbolSearchBox); // IEF Search bar (S-C Iteration 22/23)
@@ -9585,6 +9592,7 @@ public:
         layout->addWidget(exportBtn);       // Export LaTeX button (S-C)
         layout->addWidget(exportFormatBtn); // Export Format button (S-C Iteration 22/23)
         layout->addWidget(settingsBtn);     // Settings button (S-C Iteration 22-25)
+        layout->addWidget(speakBtn);        // Speak button (S-C Iteration 27)
         layout->addWidget(workflow);        // Workflow history
         layout->addWidget(output);          // Output box at bottom
 
@@ -9658,8 +9666,11 @@ protected:
     // Adds the dropped text to the input area
     void dropEvent(QDropEvent *event) override
     {
+        QString dropped = event->mimeData()->text();
         // Append dropped text to current input (allows building complex equations)
-        input->setText(input->toPlainText() + event->mimeData()->text());
+        input->setText(input->toPlainText() + dropped);
+        // Store dropped symbol for future recall (S-C Iteration 25-27)
+        storeSymbol(dropped);
         event->acceptProposedAction(); // Confirm drop was successful
     }
 
@@ -9709,6 +9720,33 @@ private:
     // Configurable directory paths (S-C Iteration 22-25)
     QString configErrorDir;               // Error log directory
     QString configCalcCacheDir;           // Calculation cache directory
+    QString configSymCacheDir;            // Symbol cache directory (S-C Iteration 25-27)
+    QString lastSpoken;                   // Last spoken text for accessibility (S-C Iteration 27)
+
+    // ========================================================================
+    // storeSymbol - Cache dropped/used symbols (S-C Iteration 25-27)
+    // ========================================================================
+    void storeSymbol(const QString& sym) {
+        QString symDir = configSymCacheDir.isEmpty() ? (REPO_PATH + "SymCache/") : configSymCacheDir;
+        QDir(symDir).mkpath(".");
+        QFile file(symDir + "symbols.txt");
+        if (file.open(QIODevice::Append | QIODevice::Text)) {
+            QTextStream out(&file);
+            out << sym << "\n";
+            file.close();
+        }
+    }
+
+    // ========================================================================
+    // hasEspeak - Check if espeak is installed (S-C Iteration 27)
+    // ========================================================================
+    bool hasEspeak() {
+        QProcess p;
+        p.start("espeak", QStringList() << "--version");
+        if (!p.waitForStarted(2000)) return false;
+        if (!p.waitForFinished(5000)) return false;
+        return p.exitCode() == 0;
+    }
 
     // ========================================================================
     // hasPandoc - Check if pandoc is installed (S-C Iteration 22-25)
@@ -9963,14 +10001,18 @@ private:
         bool pandocAvailable = hasPandoc();
         
         // Format selection dialog
+        // S-C Iteration 27: ODT now available natively via QTextDocumentWriter
         QStringList formats;
+        formats << "ODT (Native - LibreOffice)";  // Always available via QTextDocumentWriter
         if (pandocAvailable) {
-            formats << "ODT (LibreOffice)" << "PDF (Portable Document)" << "DOCX (Microsoft Word)" << "HTML (Web Page)";
-        } else {
-            formats << "HTML (Web Page)";
+            formats << "PDF (Portable Document)" << "DOCX (Microsoft Word)";
+        }
+        formats << "HTML (Web Page)";
+        if (!pandocAvailable) {
             QMessageBox::warning(this, "Pandoc Not Found", 
-                "Pandoc is not installed. Only HTML export is available.\n\n"
-                "To enable ODT/PDF/DOCX export, install pandoc from:\n"
+                "Pandoc is not installed. PDF/DOCX export is unavailable.\n"
+                "ODT and HTML export are still available natively.\n\n"
+                "To enable PDF/DOCX export, install pandoc from:\n"
                 "https://pandoc.org/installing.html");
         }
         bool ok;
@@ -9993,7 +10035,60 @@ private:
         
         if (filename.isEmpty()) return;
         
-        // Create temporary markdown file for pandoc input
+        // ================================================================
+        // NATIVE ODT EXPORT (S-C Iteration 27)
+        // ================================================================
+        // Use QTextDocumentWriter for ODT - no external dependencies
+        if (pandocFormat == "odt") {
+            QTextDocument doc;
+            QString htmlContent = QString(
+                "<html><head><style>body { font-family: Arial; } "
+                "h1 { color: #333; } pre { background: #f0f0f0; padding: 10px; }</style></head>"
+                "<body><h1>Calculation</h1>"
+                "<h2>Input</h2><pre>%1</pre>"
+                "<h2>Result</h2><pre>%2</pre>"
+                "</body></html>"
+            ).arg(equation.toHtmlEscaped()).arg(result.toHtmlEscaped());
+            doc.setHtml(htmlContent);
+            
+            QTextDocumentWriter writer(filename);
+            writer.setFormat("odf");
+            if (writer.write(&doc)) {
+                QMessageBox::information(this, "Export", 
+                    QString("Successfully exported to:\\n%1").arg(filename));
+            } else {
+                QMessageBox::warning(this, "Export Error", 
+                    "Failed to write ODT file. Check file permissions.");
+            }
+            return;  // Skip pandoc for native ODT
+        }
+        
+        // ================================================================
+        // NATIVE HTML EXPORT
+        // ================================================================
+        if (pandocFormat == "html") {
+            QFile htmlFile(filename);
+            if (htmlFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+                QTextStream out(&htmlFile);
+                out << "<!DOCTYPE html><html><head><meta charset=\"utf-8\">"
+                    << "<title>Calculation</title>"
+                    << "<style>body{font-family:Arial;margin:20px} "
+                    << "h1{color:#333} pre{background:#f0f0f0;padding:10px;border-radius:4px}</style>"
+                    << "</head><body>"
+                    << "<h1>Calculation</h1>"
+                    << "<h2>Input</h2><pre>" << equation.toHtmlEscaped() << "</pre>"
+                    << "<h2>Result</h2><pre>" << result.toHtmlEscaped() << "</pre>"
+                    << "</body></html>";
+                htmlFile.close();
+                QMessageBox::information(this, "Export", 
+                    QString("Successfully exported to:\\n%1").arg(filename));
+            } else {
+                QMessageBox::warning(this, "Export Error", "Failed to write HTML file.");
+            }
+            return;
+        }
+        
+        // Create temporary markdown file for pandoc input (PDF/DOCX)
         QString tempMd = REPO_PATH + "temp_export.md";
         QFile mdFile(tempMd);
         if (mdFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
@@ -10091,6 +10186,38 @@ private:
         sLay->addWidget(sBtns);
         
         settingsDlg.exec();
+    }
+
+    // ========================================================================
+    // speakResults - Text-to-speech accessibility (S-C Iteration 27)
+    // ========================================================================
+    void speakResults() {
+        QString textToSpeak = output->toPlainText();
+        if (textToSpeak.isEmpty()) {
+            QMessageBox::information(this, "Speak", "No results to speak. Please solve an equation first.");
+            return;
+        }
+        
+        // Check if espeak is available
+        if (!hasEspeak()) {
+            QMessageBox::warning(this, "eSpeak Not Found",
+                "eSpeak is not installed. Text-to-speech is unavailable.\n\n"
+                "To enable this feature, install eSpeak from:\n"
+                "http://espeak.sourceforge.net/download.html");
+            return;
+        }
+        
+        // Truncate and clean text for speech
+        QString spokenText = textToSpeak.left(500);  // Limit length
+        spokenText.replace("\n", " ").replace("=", " equals ").replace("+", " plus ");
+        spokenText.replace("-", " minus ").replace("*", " times ").replace("/", " over ");
+        spokenText.replace("^", " to the power ");
+        
+        // Store for future reference
+        lastSpoken = spokenText;
+        
+        // Launch espeak in detached mode
+        QProcess::startDetached("espeak", QStringList() << spokenText);
     }
 
     // ========================================================================
@@ -10264,6 +10391,47 @@ private:
                 output->append("Error: Incomplete partial derivative - missing variable after ∂/∂.");
                 output->append("Expected format: ∂/∂x (expression)  or  ∂/∂x ∂/∂y (expression)");
                 return;
+            }
+        }
+
+        // ================================================================
+        // UNBALANCED INTEGRAL BOUNDS VALIDATION (S-C Iteration 25-27)
+        // ================================================================
+        // Detect integrals with opening paren but no proper bound closure
+        std::regex unbalanced_int(R"(int\s+.*\s*\(.*\s*(?!\^))");
+        if (std::regex_search(expr, unbalanced_int)) {
+            output->append("Warning: Potentially unbalanced integral bounds detected.");
+            output->append("Expected format: int(a,b) expr dx  or  int a^b expr dx");
+        }
+
+        // ================================================================
+        // MULTIVARIATE SYSTEM VALIDATION (S-C Iteration 25-27)
+        // ================================================================
+        // Warn when equation count != variable count (under/over-determined)
+        {
+            int num_eqs = 0;
+            std::set<std::string> all_vars;
+            std::regex var_regex(R"(\b[a-zA-Z]\w*\b)");
+            std::set<std::string> known_funcs = {"int", "del", "sqrt", "root", "sum", "prod", 
+                "sin", "cos", "tan", "log", "exp", "ln", "abs", "floor", "ceil"};
+            
+            for (char c : expr) {
+                if (c == '=') num_eqs++;
+            }
+            if (num_eqs > 0) {
+                std::sregex_iterator iter(expr.begin(), expr.end(), var_regex);
+                std::sregex_iterator end;
+                for (; iter != end; ++iter) {
+                    std::string v = iter->str();
+                    if (known_funcs.find(v) == known_funcs.end() && v.length() < 3) {
+                        all_vars.insert(v);
+                    }
+                }
+                if (all_vars.size() != static_cast<size_t>(num_eqs)) {
+                    output->append(QString("Warning: System may be %1 (%2 equations, %3 variables).")
+                        .arg(all_vars.size() > static_cast<size_t>(num_eqs) ? "under-determined" : "over-determined")
+                        .arg(num_eqs).arg(all_vars.size()));
+                }
             }
         }
 
