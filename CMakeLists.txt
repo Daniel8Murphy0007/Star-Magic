@@ -680,11 +680,14 @@ if(Qt6_FOUND)
     # Separated from Source2.cpp to avoid runtime conflicts with invasive dependencies
     option(BUILD_SOURCE2_HEAD_PROGRAM "Build Source2 HEAD PROGRAM (VR/VM backend)" OFF)
     if(BUILD_SOURCE2_HEAD_PROGRAM)
-        # Note: filename has spaces/parentheses, CMake handles this with quotes
+        # Note: filename has spaces/parentheses - must skip AUTOMOC for this file
+        # Q_OBJECT macros handled manually without MOC (no Qt signals/slots used)
+        set_source_files_properties("source2(HEAD PROGRAM).cpp" PROPERTIES SKIP_AUTOMOC ON)
+        
         add_executable(Source2_HEAD_PROGRAM "source2(HEAD PROGRAM).cpp" ${IPC_SOURCES} ${IPC_HEADERS})
         
         set_target_properties(Source2_HEAD_PROGRAM PROPERTIES 
-            AUTOMOC ON 
+            AUTOMOC OFF
             AUTOUIC ON 
             AUTORCC ON
             OUTPUT_NAME "Source2_HEAD_PROGRAM"
@@ -757,6 +760,10 @@ if(Qt6_FOUND)
         else()
             target_compile_definitions(Source2_HEAD_PROGRAM PRIVATE NO_SQLITE)
         endif()
+        
+        # libwebsockets (optional - for real-time data feeds)
+        # Not configured yet - disable WebSocket features
+        target_compile_definitions(Source2_HEAD_PROGRAM PRIVATE NO_WEBSOCKETS)
         
         # Qalculate (optional - for symbolic math)
         if(Qalculate_FOUND)

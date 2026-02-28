@@ -56,6 +56,7 @@
 #ifndef NO_AWS
 #include <aws/core/Aws.h>                                  // AWS SDK core - initialization and configuration
 #include <aws/s3/S3Client.h>                               // AWS S3 client - cloud object storage for syncing cached data
+#include <aws/s3/model/PutObjectRequest.h>                 // AWS S3 PutObject request model
 #include <aws/cognito-idp/CognitoIdentityProviderClient.h> // AWS Cognito - user authentication and authorization
 #endif
 
@@ -101,11 +102,189 @@
 #include <functional>        // std::function - for callbacks
 #include <atomic>            // std::atomic - for thread-safe flags
 #include <mutex>             // std::mutex - for thread synchronization
+#include <QProcess>          // Qt subprocess - for calling Python scripts (S-C Iteration 37+)
+#include <QJsonDocument>     // JSON parsing for Python bridge responses
+#include <QJsonObject>       // JSON object handling
 
 // VR Runtime Integration (merged from vr_runtime.cpp)
 #include "ipc/uqff_ipc.h"    // IPC layer - Named Pipes, SharedMem for pipeline communication
 #include "ipc/physics_service.h"  // Physics Backend Service (Phase 2 - headless mode)
 #include "vr/astro_graphics.h"    // Phase 4: Astronomical Graphics Engine IPC Integration
+
+// ============================================================================
+// PYTHON BRIDGE - Advanced Features (S-C Iteration 37+)
+// Calls advanced_features.py for Voice, Quantum, GPU, ML, etc.
+// ============================================================================
+
+namespace PythonBridge {
+
+/**
+ * @brief Call a method in advanced_features.py via subprocess
+ * @param method Method name (e.g., "voice_to_equation", "run_quantum_circuit")
+ * @param params JSON parameters object
+ * @return QJsonObject with result or error
+ */
+inline QJsonObject callAdvancedFeatures(const QString& method, const QJsonObject& params = QJsonObject()) {
+    QProcess process;
+    process.setProgram("python");
+    process.setArguments({"advanced_features.py"});
+    process.start();
+    
+    if (!process.waitForStarted(5000)) {
+        return QJsonObject{{"success", false}, {"error", "Failed to start Python process"}};
+    }
+    
+    // Send JSON-RPC style request
+    QJsonObject request;
+    request["method"] = method;
+    request["params"] = params;
+    request["id"] = 1;
+    
+    QByteArray requestData = QJsonDocument(request).toJson(QJsonDocument::Compact) + "\n";
+    process.write(requestData);
+    process.closeWriteChannel();
+    
+    if (!process.waitForFinished(30000)) {
+        process.kill();
+        return QJsonObject{{"success", false}, {"error", "Python process timeout"}};
+    }
+    
+    // Parse response
+    QByteArray output = process.readAllStandardOutput();
+    QJsonDocument doc = QJsonDocument::fromJson(output.split('\n').last());
+    
+    if (doc.isNull()) {
+        // Try parsing first non-status line
+        for (const QByteArray& line : output.split('\n')) {
+            if (line.contains("result")) {
+                doc = QJsonDocument::fromJson(line);
+                if (!doc.isNull()) break;
+            }
+        }
+    }
+    
+    if (doc.isObject()) {
+        QJsonObject response = doc.object();
+        if (response.contains("result")) {
+            return response["result"].toObject();
+        }
+    }
+    
+    return QJsonObject{{"success", false}, {"error", "Invalid Python response"}};
+}
+
+/**
+ * @brief Voice recognition using Python SpeechRecognition
+ * @param timeout Seconds to listen (default 10)
+ * @return Recognized equation string
+ */
+inline std::string voiceToEquation(int timeout = 10) {
+    QJsonObject params;
+    params["timeout"] = timeout;
+    
+    QJsonObject result = callAdvancedFeatures("voice_to_equation", params);
+    
+    if (result["success"].toBool()) {
+        return result["equation"].toString().toStdString();
+    }
+    return "";
+}
+
+/**
+ * @brief Run quantum circuit simulation
+ * @param circuitType "bell", "ghz", "qft", "grover", or "custom"
+ * @param shots Number of measurement shots
+ * @return JSON result with counts and circuit ASCII
+ */
+inline QJsonObject runQuantumCircuit(const QString& circuitType, int shots = 1024) {
+    QJsonObject params;
+    params["circuit_type"] = circuitType;
+    params["shots"] = shots;
+    return callAdvancedFeatures("run_quantum_circuit", params);
+}
+
+/**
+ * @brief GPU compute using PyTorch
+ * @param operation "matmul", "fft", "svd", "gradient"
+ * @param data Input data
+ * @return JSON result with computed values
+ */
+inline QJsonObject gpuCompute(const QString& operation, const QVector<double>& data) {
+    QJsonObject params;
+    params["operation"] = operation;
+    QJsonArray dataArray;
+    for (double d : data) dataArray.append(d);
+    params["data"] = dataArray;
+    return callAdvancedFeatures("gpu_compute", params);
+}
+
+/**
+ * @brief Render LaTeX to PNG image
+ * @param expression LaTeX expression
+ * @param outputPath Output file path
+ * @return JSON result with path
+ */
+inline QJsonObject renderLatex(const QString& expression, const QString& outputPath = "latex_preview.png") {
+    QJsonObject params;
+    params["expression"] = expression;
+    params["output_path"] = outputPath;
+    return callAdvancedFeatures("render_latex", params);
+}
+
+/**
+ * @brief Get Dask cluster status
+ * @return JSON result with cluster info
+ */
+inline QJsonObject getDaskStatus() {
+    return callAdvancedFeatures("dask_status");
+}
+
+/**
+ * @brief Run LangChain AI agent
+ * @param query Physics question
+ * @return JSON result with response
+ */
+inline QJsonObject runAIAgent(const QString& query) {
+    QJsonObject params;
+    params["query"] = query;
+    return callAdvancedFeatures("run_ai_agent", params);
+}
+
+/**
+ * @brief Export expression to ONNX
+ * @param expression SymPy expression
+ * @param outputPath Output ONNX file path
+ * @return JSON result with path
+ */
+inline QJsonObject exportToONNX(const QString& expression, const QString& outputPath = "model.onnx") {
+    QJsonObject params;
+    params["expression"] = expression;
+    params["output_path"] = outputPath;
+    return callAdvancedFeatures("export_to_onnx", params);
+}
+
+/**
+ * @brief List available plugins
+ * @return JSON result with plugin list
+ */
+inline QJsonObject listPlugins() {
+    return callAdvancedFeatures("list_plugins");
+}
+
+/**
+ * @brief Run a plugin
+ * @param pluginName Plugin name (without .py)
+ * @param equation Input equation
+ * @return JSON result from plugin
+ */
+inline QJsonObject runPlugin(const QString& pluginName, const QString& equation) {
+    QJsonObject params;
+    params["plugin_name"] = pluginName;
+    params["equation"] = equation;
+    return callAdvancedFeatures("run_plugin", params);
+}
+
+} // namespace PythonBridge
 
 // ============================================================================
 // VR/VM RUNTIME LAYER (Merged from vr/vr_runtime.cpp)
@@ -859,11 +1038,127 @@ public:
 
         // Create "Solve" button to trigger calculation
         QPushButton *solveBtn = new QPushButton("Solve", this);
+        
+        // ================================================================
+        // ADVANCED FEATURES TOOLBAR (S-C Iteration 37+)
+        // Python-powered: Quantum, GPU, LaTeX, Dask, AI Agent
+        // ================================================================
+        QHBoxLayout *advancedBar = new QHBoxLayout();
+        
+        QPushButton *quantumBtn = new QPushButton("⚛️ Quantum", this);
+        quantumBtn->setToolTip("Run quantum circuit simulation (Qiskit)");
+        connect(quantumBtn, &QPushButton::clicked, [this]() {
+            QString circuitType = input->toPlainText().trimmed();
+            if (circuitType.isEmpty()) circuitType = "bell";
+            
+            output->append("\n🔬 Running quantum circuit: " + circuitType + "...");
+            QJsonObject result = PythonBridge::runQuantumCircuit(circuitType, 1024);
+            
+            if (result["success"].toBool()) {
+                output->append("Counts: " + QJsonDocument(result["counts"].toObject()).toJson(QJsonDocument::Compact));
+                output->append("Circuit:\n" + result["circuit_ascii"].toString());
+                output->append(QString("Qubits: %1, Depth: %2").arg(result["num_qubits"].toInt()).arg(result["depth"].toInt()));
+            } else {
+                output->append("❌ Error: " + result["error"].toString());
+            }
+        });
+        
+        QPushButton *gpuBtn = new QPushButton("🎮 GPU", this);
+        gpuBtn->setToolTip("Run GPU compute (PyTorch FFT/SVD)");
+        connect(gpuBtn, &QPushButton::clicked, [this]() {
+            output->append("\n🎮 Running GPU FFT...");
+            QVector<double> testData = {1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0};
+            QJsonObject result = PythonBridge::gpuCompute("fft", testData);
+            
+            if (result["success"].toBool()) {
+                output->append(QString("Device: %1").arg(result["device_used"].toString()));
+                output->append(QString("Time: %1 ms").arg(result["time_ms"].toDouble(), 0, 'f', 3));
+                output->append(QString("CUDA: %1").arg(result["cuda_available"].toBool() ? "Available" : "CPU only"));
+            } else {
+                output->append("❌ Error: " + result["error"].toString());
+            }
+        });
+        
+        QPushButton *latexBtn = new QPushButton("📐 LaTeX", this);
+        latexBtn->setToolTip("Render equation as LaTeX image");
+        connect(latexBtn, &QPushButton::clicked, [this]() {
+            QString expr = input->toPlainText().trimmed();
+            if (expr.isEmpty()) expr = "E = mc^2";
+            
+            output->append("\n📐 Rendering LaTeX: " + expr);
+            QJsonObject result = PythonBridge::renderLatex(expr);
+            
+            if (result["success"].toBool()) {
+                output->append("✅ Saved to: " + result["path"].toString());
+                // TODO: Display the image in mathRenderer
+            } else {
+                output->append("❌ Error: " + result["error"].toString());
+            }
+        });
+        
+        QPushButton *daskBtn = new QPushButton("🌐 Dask", this);
+        daskBtn->setToolTip("Get Dask cluster status");
+        connect(daskBtn, &QPushButton::clicked, [this]() {
+            output->append("\n🌐 Getting Dask cluster status...");
+            QJsonObject result = PythonBridge::getDaskStatus();
+            
+            if (result["success"].toBool()) {
+                output->append(QString("Workers: %1").arg(result["n_workers"].toInt()));
+                output->append(QString("Threads: %1").arg(result["total_threads"].toInt()));
+                output->append(QString("Memory: %1 GB").arg(result["total_memory_gb"].toDouble(), 0, 'f', 1));
+                output->append("Dashboard: " + result["dashboard_url"].toString());
+            } else {
+                output->append("❌ Error: " + result["error"].toString());
+            }
+        });
+        
+        QPushButton *aiBtn = new QPushButton("🤖 AI", this);
+        aiBtn->setToolTip("Ask AI agent (LangChain)");
+        connect(aiBtn, &QPushButton::clicked, [this]() {
+            QString query = input->toPlainText().trimmed();
+            if (query.isEmpty()) {
+                output->append("❌ Enter a question first");
+                return;
+            }
+            
+            output->append("\n🤖 Asking AI: " + query + "...");
+            QJsonObject result = PythonBridge::runAIAgent(query);
+            
+            if (result["success"].toBool()) {
+                output->append("Response: " + result["response"].toString());
+            } else {
+                output->append("❌ Error: " + result["error"].toString());
+            }
+        });
+        
+        QPushButton *onnxBtn = new QPushButton("📦 ONNX", this);
+        onnxBtn->setToolTip("Export expression to ONNX");
+        connect(onnxBtn, &QPushButton::clicked, [this]() {
+            QString expr = input->toPlainText().trimmed();
+            if (expr.isEmpty()) expr = "x**2 + 2*x + 1";
+            
+            output->append("\n📦 Exporting to ONNX: " + expr);
+            QJsonObject result = PythonBridge::exportToONNX(expr);
+            
+            if (result["success"].toBool()) {
+                output->append("✅ Saved to: " + result["path"].toString());
+            } else {
+                output->append("❌ Error: " + result["error"].toString());
+            }
+        });
+        
+        advancedBar->addWidget(quantumBtn);
+        advancedBar->addWidget(gpuBtn);
+        advancedBar->addWidget(latexBtn);
+        advancedBar->addWidget(daskBtn);
+        advancedBar->addWidget(aiBtn);
+        advancedBar->addWidget(onnxBtn);
 
         // Add all widgets to the vertical layout
         layout->addWidget(input);        // Input box at top
         layout->addWidget(symbolScroll); // Draggable symbol palette
         layout->addWidget(solveBtn);     // Solve button
+        layout->addLayout(advancedBar);  // S-C Iteration 37+ advanced features
         layout->addWidget(mathRenderer); // jqMath GPU renderer
         layout->addWidget(output);       // Output box at bottom
 
@@ -1411,6 +1706,11 @@ public:
         summaries[0]->setText(html); // Display HTML in summary (or could be plain text)
     }
 
+    // getView - Get a web view by index for external URL loading
+    QWebEngineView* getView(int index = 0) const {
+        return index < views.size() ? views[index] : nullptr;
+    }
+
 private:
     std::vector<QWebEngineView *> views; // Collection of web view widgets
     std::vector<QTextEdit *> summaries;  // Collection of summary text widgets
@@ -1639,11 +1939,12 @@ void SyncCacheToCloud(const std::string &token)
     request.SetKey("cache.db");                                         // Object key (filename in S3)
     request.SetCustomRequestHeader("Authorization", "Bearer " + token); // Add auth token
 
-    // Open local cache file for reading
-    std::ifstream file("coanqi_cache.db", std::ios::binary);
+    // Open local cache file using AWS SDK stream
+    auto inputData = Aws::MakeShared<Aws::FStream>("PutObjectStream", 
+        "coanqi_cache.db", std::ios_base::in | std::ios_base::binary);
 
     // Set file as request body (uploads file contents)
-    request.SetBody(std::make_shared<Aws::Fstream>(file));
+    request.SetBody(inputData);
 
     // Execute S3 upload (synchronizes local cache to cloud)
     s3_client->PutObject(request);
@@ -1653,6 +1954,7 @@ void SyncCacheToCloud(const std::string &token)
 // OFFLINE SEARCH FUNCTION
 // ============================================================================
 
+#ifndef NO_SQLITE
 // OfflineSearch - Searches local SQLite cache when internet is unavailable
 //
 // Provides offline access to previously cached search results.
@@ -1700,13 +2002,14 @@ void OfflineSearch(const std::string &query, std::vector<SearchResult> &offlineR
 }
 
 // ============================================================================
-// VOICE INPUT FUNCTION
+// VOICE INPUT FUNCTION (S-C Iteration 37+ Enhanced)
 // ============================================================================
 
-// ProcessVoiceInput - Converts voice commands to text using PocketSphinx
+// ProcessVoiceInput - Converts voice commands to text
 //
-// Uses PocketSphinx speech recognition engine to process microphone input
-// and convert spoken queries into text for searching.
+// Priority:
+//   1. PocketSphinx (native, if available)
+//   2. Python SpeechRecognition via advanced_features.py (fallback)
 //
 // Returns:
 //   Text representation of spoken query
@@ -1714,31 +2017,41 @@ void OfflineSearch(const std::string &query, std::vector<SearchResult> &offlineR
 std::string ProcessVoiceInput()
 {
 #ifndef NO_POCKETSPHINX
-    // Initialize PocketSphinx decoder with default configuration
+    // Try PocketSphinx first (native speech recognition)
     ps_decoder_t *ps = ps_init(cmd_ln_init(nullptr, ps_args(), true, nullptr));
 
-    // Start utterance processing (begin listening for speech)
-    ps_start_utt(ps);
+    if (ps != nullptr) {
+        // Start utterance processing (begin listening for speech)
+        ps_start_utt(ps);
 
-    // TODO: Replace with actual audio capture and processing
-    // This would normally:
-    //   1. Capture audio from microphone
-    //   2. Process audio frames with ps_process_raw()
-    //   3. Extract recognized text with ps_get_hyp()
-    std::string text = "sample query"; // Placeholder - replace with actual speech recognition
+        // TODO: Replace with actual audio capture and processing
+        // This would normally:
+        //   1. Capture audio from microphone
+        //   2. Process audio frames with ps_process_raw()
+        //   3. Extract recognized text with ps_get_hyp()
+        std::string text = "sample query"; // Placeholder - replace with actual speech recognition
 
-    // End utterance processing (stop listening)
-    ps_end_utt(ps);
+        // End utterance processing (stop listening)
+        ps_end_utt(ps);
 
-    // Free PocketSphinx resources (release memory and close audio devices)
-    ps_free(ps);
+        // Free PocketSphinx resources
+        ps_free(ps);
 
-    // Return the recognized text query (will be used for search)
-    return text;
-#else
-    // Voice input disabled - return empty string
-    return "";
+        // Return the recognized text query
+        return text;
+    }
 #endif
+
+    // FALLBACK: Use Python SpeechRecognition via advanced_features.py
+    // This provides Google Speech API recognition when PocketSphinx is unavailable
+    std::string result = PythonBridge::voiceToEquation(10);
+    
+    if (!result.empty()) {
+        return result;
+    }
+    
+    // Voice input unavailable
+    return "";
 }
 
 // ProcessVideoInput - Captures video from webcam and recognizes hand gestures
@@ -2445,12 +2758,15 @@ void PerformSearch(const std::string &query, std::vector<std::string> &focus, bo
         RenderScatterPlot(nullptr, {}, {});
     }
 
+#ifndef NO_WEBSOCKETS
     struct lws_context *ws_context = lws_create_context(nullptr);
     lws_connect(ws_context, "eventhorizontelescope.org", 443, "/data", on_message, nullptr);
     lws_connect(ws_context, "skaobservatory.org", 443, "/realtime", on_message, nullptr);
     lws_connect(ws_context, "ligo.org", 443, "/alerts", on_message, nullptr);
     lws_connect(ws_context, "fast.bao.ac.cn", 443, "/realtime", on_message, nullptr);
+#endif
 
+#ifndef NO_CURL
     CURL *curl = curl_easy_init();
     for (int i = 15; i < MAX_WINDOWS && i < focus.size(); ++i)
     {
@@ -2465,17 +2781,24 @@ void PerformSearch(const std::string &query, std::vector<std::string> &focus, bo
             std::string summary = SummarizeWithOpenAI(response);
             SearchResult result = {"https://example.com", "Sample Result", summary, 0.95, false};
             results[i].push_back(result);
+#ifndef NO_SQLITE
             sqlite3_exec(db, ("INSERT INTO cache (url, title, summary, isLive) VALUES ('" + result.url + "', '" + result.title + "', '" + result.summary + "', 0)").c_str(), nullptr, nullptr, nullptr);
+#endif
         }
     }
     curl_easy_cleanup(curl);
+#endif
+#ifndef NO_WEBSOCKETS
     lws_context_destroy(ws_context);
+#endif
+#ifndef NO_AWS
     SyncCacheToCloud(oauth_token);
+#endif
 }
 
 // MainWindow - Main Qt application window (CoAnQi scientific search interface)
 // Inherits from: QMainWindow (Qt's base class for main application windows)
-// Q_OBJECT macro enables Qt's meta-object features (signals/slots, properties, introspection)
+// Note: No Q_OBJECT needed - uses Qt5-style lambda connections, no custom signals/slots
 // Purpose: Create the complete GUI with:
 //   - Firefox-like top navigation bar
 //   - 21 tabbed browser windows for multi-source results
@@ -2486,8 +2809,6 @@ void PerformSearch(const std::string &query, std::vector<std::string> &focus, bo
 // This class ties together all UI components and coordinates their interactions
 class MainWindow : public QMainWindow
 {
-Q_OBJECT // Required macro for Qt's meta-object system (enables signals/slots)
-
     public :
     // Constructor - Called when MainWindow object is created
     // Sets up entire UI: widgets, layouts, connections, databases, AWS clients
@@ -2496,13 +2817,13 @@ Q_OBJECT // Required macro for Qt's meta-object system (enables signals/slots)
 // WINDOWS-SPECIFIC: System tray icon (optional, only on Windows)
 #ifdef _WIN32
         // Create notification icon data structure
-        NOTIFYICONDATA nid = {sizeof(nid)};                      // Initialize with struct size
+        NOTIFYICONDATAW nid = {sizeof(nid)};                      // Initialize with struct size
         nid.hWnd = (HWND)winId();                                // Window handle (Qt's winId() gets native HWND)
         nid.uID = 1;                                             // Unique icon ID
         nid.uFlags = NIF_ICON | NIF_TIP;                         // Icon and tooltip enabled
-        nid.hIcon = LoadIcon(GetModuleHandle(nullptr), "Z.ico"); // Load icon from resources
-        strcpy(nid.szTip, "CoAnQi");                             // Tooltip text when hovering over tray icon
-        Shell_NotifyIcon(NIM_ADD, &nid);                         // Add icon to system tray
+        nid.hIcon = LoadIconW(GetModuleHandle(nullptr), L"Z.ico"); // Load icon from resources
+        wcscpy(nid.szTip, L"CoAnQi");                            // Tooltip text when hovering over tray icon
+        Shell_NotifyIconW(NIM_ADD, &nid);                        // Add icon to system tray
 #endif
 
         // CENTRAL WIDGET: Main container for all UI elements
@@ -2583,7 +2904,9 @@ Q_OBJECT // Required macro for Qt's meta-object system (enables signals/slots)
 
         // Special case: Tab 21 preloaded with ALMA Cycle 12 observing tool
         // ALMA = Atacama Large Millimeter Array (radio telescope in Chile)
-        browserWindows[20]->views[0]->load(QUrl("https://almascience.nrao.edu/proposing/observing-tool/tarball-download-page"));
+        if (auto* view = browserWindows[20]->getView(0)) {
+            view->load(QUrl("https://almascience.nrao.edu/proposing/observing-tool/tarball-download-page"));
+        }
 
         // Add tabs to main layout
         layout->addWidget(tabs);
@@ -2852,6 +3175,3 @@ int main(int argc, char *argv[])
     return result;
 }
 
-// MOC include required for Q_OBJECT in .cpp file
-// This must be at the END of the file after the class definition
-#include "source2_head_program.moc"
