@@ -26698,6 +26698,850 @@ ORB_ANALYSIS_51_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS 52: ISOTOPIC ELECTROCHEMISTRY & SONO-ELECTROCHEMISTRY
+# Source: https://x.com/i/grok/share/409a57062aef4a67a3860026816b2496
+# 10 classes: Heavy water electrolysis, ultrasonic cavitation, Am-241 ionization,
+# isotopic enrichment, oxyhydrogen implosion, deuterated ethanol, sono-electrochemistry,
+# PWM electrolysis, hydrogen storage, polyol combustion
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Physical constants for isotopic electrochemistry
+ORB_ANALYSIS_52_PARAMS = {
+    # Heavy water properties
+    'D2O_density': 1.107,              # g/cm³ (vs H₂O: 1.000)
+    'D2O_boiling_point': 101.4,        # °C (vs H₂O: 100.0)
+    'D2O_electrolysis_energy': 290e3,  # J/mol (slightly higher than H₂O: 286 kJ/mol)
+    'H2O_electrolysis_energy': 286e3,  # J/mol (standard water)
+    'D_mass': 2.014,                   # amu (deuterium)
+    'H_mass': 1.008,                   # amu (hydrogen)
+    'O18_mass': 17.999,                # amu (oxygen-18)
+    'O16_mass': 15.999,                # amu (oxygen-16)
+    
+    # Ultrasonic cavitation
+    'cavitation_temperature': 5000.0,   # K (bubble collapse hotspot)
+    'cavitation_pressure': 1000.0,      # atm (bubble collapse pressure)
+    'ultrasonic_frequency': 1.7e6,      # Hz (typical nebulizer: 1.7-2.4 MHz)
+    'droplet_size': 5e-6,               # m (fog droplet ~1-10 µm)
+    
+    # Am-241 properties
+    'Am241_alpha_energy': 5.486,        # MeV (primary alpha)
+    'Am241_alpha_range_air': 4e-2,      # m (4-5 cm in air)
+    'Am241_alpha_range_water': 40e-6,   # m (40 µm in water)
+    'Am241_half_life': 432.6,           # years
+    'Am241_activity_smoke_detector': 37e3,  # Bq (37 kBq for 0.29 µg)
+    
+    # Kinetic isotope effects
+    'KIE_D_vs_H': 6.0,                  # Typical kinetic isotope effect D/H
+    'D2O_natural_abundance': 0.000156,  # 0.0156% in natural water
+    'O18_natural_abundance': 0.00205,   # 0.205% in natural water
+    
+    # Oxyhydrogen properties
+    'H2_auto_ignition_temp': 858.0,     # K (585°C)
+    'D2_auto_ignition_temp': 873.0,     # K (slightly higher than H₂)
+    'H2_combustion_enthalpy': 286e3,    # J/mol per H₂O
+    'D2_combustion_enthalpy': 294e3,    # J/mol per D₂O
+    
+    # Ethanol properties
+    'ethanol_density': 0.789,           # g/cm³
+    'ethanol_boiling_point': 78.37,     # °C
+    'ethanol_combustion': 1367e3,       # J/mol (−1367 kJ/mol)
+    'ethanol_molar_mass': 46.07,        # g/mol
+    'd_ethanol_boiling_point': 79.5,    # °C (estimated for C₂H₅OD)
+    
+    # PWM electrolysis
+    'pwm_duty_cycle': 0.4,              # 40%
+    'pwm_power': 177.0,                 # W
+    'cycle_duration': 36 * 24 * 3600,   # s (36 days)
+    
+    # Gas constants
+    'R_gas': 8.314,                     # J/(mol·K)
+    'standard_pressure': 101325.0,      # Pa
+}
+
+
+class HeavyWaterElectrolysisCalculator:
+    """
+    Calculator for heavy water (D₂O) electrolysis energy and yields.
+    
+    Reaction: 2D₂O → 2D₂ + ¹⁸O₂
+    Energy: ~290 kJ/mol (slightly higher than H₂O due to stronger O-D bonds)
+    
+    From Grok conversation on isotopic reactor systems:
+    - D₂O has stronger O-D bonds than O-H
+    - Electrolysis produces deuterium gas and heavy oxygen
+    - Forms basis of isotopic enrichment via preferential H₂ evolution
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_52_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute D₂O electrolysis energy and theoretical yields.
+        
+        Parameters:
+            water_mass_kg: Mass of D₂O to electrolyze (kg)
+            efficiency: Electrolysis efficiency (0-1, default 0.8)
+            energy_available_kWh: Available electrical energy (kWh)
+        """
+        import math
+        
+        water_mass_kg = dataset.get('water_mass_kg', 75.7)  # 20 gallons
+        efficiency = dataset.get('efficiency', 0.8)
+        energy_available_kWh = dataset.get('energy_available_kWh', 61.17)
+        
+        # Convert to Joules
+        energy_J = energy_available_kWh * 3.6e6
+        
+        # Moles of D₂O
+        D2O_molar_mass = 2 * self.params['D_mass'] + self.params['O16_mass']  # ~20 g/mol
+        moles_D2O = (water_mass_kg * 1000) / D2O_molar_mass
+        
+        # Energy required for full electrolysis
+        energy_required_J = moles_D2O * self.params['D2O_electrolysis_energy']
+        
+        # Fraction that can be electrolyzed
+        fraction_electrolyzed = min(1.0, energy_J / energy_required_J) * efficiency
+        
+        # Stoichiometry: 2D₂O → 2D₂ + O₂
+        moles_D2 = fraction_electrolyzed * moles_D2O
+        moles_O2 = moles_D2 / 2
+        
+        # Mass yields
+        mass_D2_kg = moles_D2 * (2 * self.params['D_mass']) / 1000
+        mass_O2_kg = moles_O2 * (2 * self.params['O18_mass']) / 1000
+        
+        return {
+            'moles_D2O_input': moles_D2O,
+            'energy_required_kWh': energy_required_J / 3.6e6,
+            'fraction_electrolyzed': fraction_electrolyzed,
+            'moles_D2_produced': moles_D2,
+            'moles_O2_produced': moles_O2,
+            'mass_D2_kg': mass_D2_kg,
+            'mass_O2_kg': mass_O2_kg,
+            'energy_efficiency': energy_J / energy_required_J if energy_required_J > 0 else 0,
+            'equation': '2D₂O → 2D₂ + O₂, ΔH ≈ 290 kJ/mol',
+        }
+
+
+class UltrasonicCavitationCalculator:
+    """
+    Calculator for ultrasonic cavitation conditions and radical formation.
+    
+    Cavitation bubble collapse produces extreme local conditions:
+    - Temperature: ~5000 K
+    - Pressure: ~1000 atm
+    - Generates OH·, H·, and H₂O₂ radicals
+    
+    From sonochemistry principles in sono-electrochemistry systems.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_52_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute cavitation conditions and radical formation rates.
+        
+        Parameters:
+            frequency_MHz: Ultrasonic frequency (MHz)
+            power_W: Ultrasonic power (W)
+            volume_L: Reaction volume (L)
+        """
+        import math
+        
+        frequency_MHz = dataset.get('frequency_MHz', 1.7)
+        power_W = dataset.get('power_W', 100.0)
+        volume_L = dataset.get('volume_L', 1.0)
+        
+        frequency_Hz = frequency_MHz * 1e6
+        
+        # Bubble dynamics (simplified Rayleigh-Plesset)
+        # Collapse temperature: T_collapse ≈ T_0 * (γ-1) * (R_max/R_min)^(3*(γ-1))
+        # Approximated to ~5000 K for typical conditions
+        T_collapse = self.params['cavitation_temperature']
+        P_collapse = self.params['cavitation_pressure'] * 101325  # Convert to Pa
+        
+        # Acoustic intensity
+        I_acoustic = power_W / (math.pi * (volume_L ** (2/3)))  # W/m² (simplified)
+        
+        # Bubble resonance radius (Minnaert frequency)
+        # f = (1/(2*pi*R)) * sqrt(3*γ*P_0/ρ)
+        P_0 = 101325  # Pa
+        rho = 1000  # kg/m³
+        gamma = 1.4  # adiabatic index for air
+        R_resonance = (1 / (2 * math.pi * frequency_Hz)) * math.sqrt(3 * gamma * P_0 / rho)
+        
+        # Radical formation rate (empirical, proportional to power density)
+        power_density = power_W / volume_L  # W/L
+        OH_radical_rate = 1e-6 * power_density  # mol/L/s (order of magnitude)
+        
+        # Droplet size from ultrasonic nebulization
+        # Lang equation: D = 0.34 * (8*π*σ / (ρ*f²))^(1/3)
+        sigma = 0.0728  # N/m (surface tension of water)
+        droplet_diameter = 0.34 * ((8 * math.pi * sigma) / (rho * frequency_Hz**2)) ** (1/3)
+        
+        return {
+            'collapse_temperature_K': T_collapse,
+            'collapse_pressure_Pa': P_collapse,
+            'collapse_pressure_atm': P_collapse / 101325,
+            'acoustic_intensity_W_m2': I_acoustic,
+            'resonance_bubble_radius_m': R_resonance,
+            'OH_radical_rate_mol_L_s': OH_radical_rate,
+            'droplet_diameter_um': droplet_diameter * 1e6,
+            'power_density_W_L': power_density,
+            'equation': 'H₂O → OH· + H·, T_collapse ≈ 5000 K',
+        }
+
+
+class AmericiumAlphaIonizationCalculator:
+    """
+    Calculator for Am-241 alpha particle ionization effects.
+    
+    Am-241 alpha particles (5.486 MeV) ionize water vapor:
+    H₂O + α → H₂O⁺ + e⁻
+    H₂O⁺ + H₂O → H₃O⁺ + OH·
+    
+    From novel reactor system using Am-241 button at choke point.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_52_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute Am-241 ionization effects on water vapor.
+        
+        Parameters:
+            activity_Bq: Am-241 activity (Bq, default 37000 for smoke detector)
+            exposure_time_s: Exposure time (s)
+            medium: 'air' or 'water'
+        """
+        import math
+        
+        activity_Bq = dataset.get('activity_Bq', 37000)  # 37 kBq (typical smoke detector)
+        exposure_time_s = dataset.get('exposure_time_s', 1.0)
+        medium = dataset.get('medium', 'water')
+        
+        # Alpha energy
+        E_alpha_MeV = self.params['Am241_alpha_energy']
+        E_alpha_J = E_alpha_MeV * 1.602e-13  # Convert to Joules
+        
+        # Alpha range
+        if medium == 'water':
+            range_m = self.params['Am241_alpha_range_water']
+        else:
+            range_m = self.params['Am241_alpha_range_air']
+        
+        # Disintegrations (alpha emissions) in time
+        disintegrations = activity_Bq * exposure_time_s
+        
+        # Total energy deposited
+        total_energy_J = disintegrations * E_alpha_J
+        
+        # Ionization (W-value for water: ~30 eV per ion pair)
+        W_value_eV = 30.0
+        W_value_J = W_value_eV * 1.602e-19
+        ion_pairs = total_energy_J / W_value_J
+        
+        # OH⁻ production (simplified: ~1 OH⁻ per ion pair)
+        OH_production_mol = ion_pairs / 6.022e23
+        
+        # Half-life decay
+        half_life_s = self.params['Am241_half_life'] * 365.25 * 24 * 3600
+        decay_constant = math.log(2) / half_life_s
+        activity_remaining_Bq = activity_Bq * math.exp(-decay_constant * exposure_time_s)
+        
+        return {
+            'alpha_energy_MeV': E_alpha_MeV,
+            'alpha_energy_J': E_alpha_J,
+            'range_in_medium_m': range_m,
+            'range_in_medium_um': range_m * 1e6,
+            'disintegrations': disintegrations,
+            'total_energy_deposited_J': total_energy_J,
+            'ion_pairs_created': ion_pairs,
+            'OH_production_mol': OH_production_mol,
+            'activity_after_exposure_Bq': activity_remaining_Bq,
+            'equation': 'H₂O + α → H₂O⁺ + e⁻ → H₃O⁺ + OH·',
+        }
+
+
+class IsotopicKineticEnrichmentCalculator:
+    """
+    Calculator for kinetic isotope effects in D₂O enrichment.
+    
+    Heavier isotopes (D, ¹⁸O) have stronger bonds and slower reaction rates,
+    allowing preferential evolution of H₂ and ¹⁶O₂, enriching D₂O in liquid.
+    
+    Kinetic Isotope Effect (KIE) = k_H/k_D ≈ 6 for O-H vs O-D bonds
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_52_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute isotopic enrichment via kinetic effects.
+        
+        Parameters:
+            initial_D_fraction: Initial D₂O fraction (default natural: 0.000156)
+            enrichment_cycles: Number of enrichment cycles
+            separation_factor: Per-cycle separation factor (default 1.1)
+        """
+        import math
+        
+        initial_D_fraction = dataset.get('initial_D_fraction', self.params['D2O_natural_abundance'])
+        enrichment_cycles = dataset.get('enrichment_cycles', 100)
+        separation_factor = dataset.get('separation_factor', 1.1)
+        
+        # Kinetic isotope effect
+        KIE = self.params['KIE_D_vs_H']
+        
+        # Rayleigh fractionation: R/R_0 = f^(α-1)
+        # where f = remaining fraction, α = separation factor
+        # For electrolysis: lighter H₂O preferentially electrolyzes
+        
+        # Final D fraction after enrichment cycles
+        final_D_fraction = initial_D_fraction * (separation_factor ** enrichment_cycles)
+        final_D_fraction = min(final_D_fraction, 0.999)  # Cap at 99.9%
+        
+        # Enrichment factor
+        enrichment_factor = final_D_fraction / initial_D_fraction
+        
+        # Mass of D₂O per kg of natural water after enrichment
+        mass_D2O_per_kg = final_D_fraction * 1000  # grams
+        
+        # Required cycles to reach target (e.g., 10% D₂O)
+        target_fraction = 0.10
+        if separation_factor > 1 and initial_D_fraction > 0:
+            cycles_to_target = math.log(target_fraction / initial_D_fraction) / math.log(separation_factor)
+        else:
+            cycles_to_target = float('inf')
+        
+        return {
+            'initial_D_fraction': initial_D_fraction,
+            'final_D_fraction': final_D_fraction,
+            'enrichment_factor': enrichment_factor,
+            'KIE_D_vs_H': KIE,
+            'separation_factor': separation_factor,
+            'enrichment_cycles': enrichment_cycles,
+            'cycles_to_10_percent': cycles_to_target,
+            'mass_D2O_per_kg_g': mass_D2O_per_kg,
+            'equation': 'R/R₀ = f^(α-1), KIE ≈ k_H/k_D ≈ 6',
+        }
+
+
+class OxyhydrogenImplosionCalculator:
+    """
+    Calculator for stoichiometric oxyhydrogen implosion.
+    
+    Stoichiometric mixture: 2H₂ + O₂ → 2H₂O (liquid)
+    - 3 volumes of gas → ~0 volume liquid at room temperature
+    - Creates partial vacuum (implosion) vs explosive expansion
+    
+    For D₂ + ¹⁸O₂ → D₂¹⁸O, similar behavior with heavy water product.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_52_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute oxyhydrogen implosion volume changes.
+        
+        Parameters:
+            H2_moles: Moles of H₂ or D₂
+            temperature_K: Reaction temperature (K)
+            initial_pressure_Pa: Initial pressure (Pa)
+            is_deuterium: Whether using D₂ instead of H₂
+        """
+        import math
+        
+        H2_moles = dataset.get('H2_moles', 100.0)
+        temperature_K = dataset.get('temperature_K', 289.85)  # ~62°F
+        initial_pressure_Pa = dataset.get('initial_pressure_Pa', 10 * 101325)  # 10 bar
+        is_deuterium = dataset.get('is_deuterium', True)
+        
+        R = self.params['R_gas']
+        
+        # Stoichiometry: 2H₂ + O₂ → 2H₂O
+        O2_moles = H2_moles / 2
+        H2O_moles = H2_moles
+        
+        # Initial gas volume (ideal gas law: PV = nRT)
+        total_gas_moles = H2_moles + O2_moles
+        initial_volume_m3 = (total_gas_moles * R * temperature_K) / initial_pressure_Pa
+        
+        # Product volume (liquid water)
+        if is_deuterium:
+            molar_mass = 2 * self.params['D_mass'] + self.params['O18_mass']
+            density = self.params['D2O_density'] * 1000  # kg/m³
+            combustion_enthalpy = self.params['D2_combustion_enthalpy']
+        else:
+            molar_mass = 18.015  # g/mol
+            density = 1000.0  # kg/m³
+            combustion_enthalpy = self.params['H2_combustion_enthalpy']
+        
+        product_mass_kg = (H2O_moles * molar_mass) / 1000
+        final_volume_m3 = product_mass_kg / density
+        
+        # Volume ratio (implosion factor)
+        volume_ratio = final_volume_m3 / initial_volume_m3 if initial_volume_m3 > 0 else 0
+        
+        # Energy released
+        energy_released_J = H2_moles * combustion_enthalpy
+        
+        # Pressure drop (assuming isothermal, sealed container)
+        # Final pressure ≈ 0 if all gas condenses to liquid
+        pressure_drop_factor = 1 - volume_ratio
+        
+        return {
+            'H2_or_D2_moles': H2_moles,
+            'O2_moles': O2_moles,
+            'H2O_or_D2O_moles': H2O_moles,
+            'initial_gas_volume_m3': initial_volume_m3,
+            'initial_gas_volume_L': initial_volume_m3 * 1000,
+            'final_liquid_volume_m3': final_volume_m3,
+            'final_liquid_volume_mL': final_volume_m3 * 1e6,
+            'volume_ratio': volume_ratio,
+            'implosion_factor': 1 / volume_ratio if volume_ratio > 0 else float('inf'),
+            'energy_released_kJ': energy_released_J / 1000,
+            'pressure_drop_factor': pressure_drop_factor,
+            'equation': '2D₂ + ¹⁸O₂ → 2D₂¹⁸O (liquid), V_gas >> V_liquid',
+        }
+
+
+class DeuteratedEthanolCalculator:
+    """
+    Calculator for deuterated ethanol (C₂H₅₋ₓDₓOH) properties.
+    
+    Isotopic substitution effects:
+    - Higher boiling point (~79-80°C vs 78.37°C)
+    - Slightly higher density
+    - Similar combustion (faint blue flame)
+    - NMR-distinguishable (²H vs ¹H)
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_52_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute deuterated ethanol properties.
+        
+        Parameters:
+            D_substitution: Number of D atoms substituted (0-6)
+            mass_g: Mass of deuterated ethanol (g)
+        """
+        D_substitution = dataset.get('D_substitution', 1)  # e.g., C₂H₅OD
+        mass_g = dataset.get('mass_g', 100.0)
+        
+        # Constrain D substitution
+        D_substitution = min(max(D_substitution, 0), 6)
+        H_remaining = 6 - D_substitution
+        
+        # Molar mass
+        molar_mass_regular = self.params['ethanol_molar_mass']  # 46.07 g/mol
+        molar_mass_deuterated = (2 * 12.011 + H_remaining * self.params['H_mass'] + 
+                                 D_substitution * self.params['D_mass'] + 
+                                 self.params['O16_mass'])
+        
+        # Boiling point increase (roughly +0.5°C per D substitution)
+        bp_increase = 0.5 * D_substitution
+        boiling_point = self.params['ethanol_boiling_point'] + bp_increase
+        
+        # Density increase (roughly +0.5% per D substitution)
+        density_factor = 1 + 0.005 * D_substitution
+        density = self.params['ethanol_density'] * density_factor
+        
+        # Combustion energy (slightly different due to C-D vs C-H bond energies)
+        # C-D bond is ~1.2 kJ/mol stronger than C-H
+        bond_energy_diff = 1.2e3 * D_substitution  # J/mol
+        combustion_energy = self.params['ethanol_combustion'] - bond_energy_diff
+        
+        # Moles and energy content
+        moles = mass_g / molar_mass_deuterated
+        total_combustion_energy_kJ = (moles * combustion_energy) / 1000
+        
+        # NMR chemical shifts (²H NMR for OD: ~3.6 ppm)
+        nmr_peaks = {
+            'OH_or_OD': 3.6,  # ppm
+            'CH2': 3.5,
+            'CH3': 1.2,
+        }
+        
+        return {
+            'D_substitution': D_substitution,
+            'H_remaining': H_remaining,
+            'formula': f'C₂H{H_remaining}D{D_substitution}OH' if D_substitution > 0 else 'C₂H₅OH',
+            'molar_mass_g_mol': molar_mass_deuterated,
+            'molar_mass_increase': molar_mass_deuterated - molar_mass_regular,
+            'boiling_point_C': boiling_point,
+            'density_g_cm3': density,
+            'combustion_energy_kJ_mol': combustion_energy / 1000,
+            'moles': moles,
+            'total_combustion_energy_kJ': total_combustion_energy_kJ,
+            'NMR_peaks_ppm': nmr_peaks,
+            'flame_color': 'faint blue',
+            'equation': 'C₂H₅OH + D₂ → C₂H₅₋ₓDₓOH + HD',
+        }
+
+
+class SonoElectrochemistryCalculator:
+    """
+    Calculator for combined sono-electrochemistry efficiency.
+    
+    Ultrasound + electrolysis synergy:
+    - Cavitation enhances bubble detachment
+    - Radical formation (OH·, H·) augments electrochemical reactions
+    - Mass transfer improvement
+    - Energy efficiency gains of 20-50%
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_52_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute sono-electrochemistry efficiency enhancement.
+        
+        Parameters:
+            electrolysis_power_W: Electrolysis power (W)
+            ultrasonic_power_W: Ultrasonic power (W)
+            synergy_factor: Efficiency enhancement factor (default 1.3)
+            baseline_efficiency: Baseline electrolysis efficiency (default 0.7)
+        """
+        electrolysis_power_W = dataset.get('electrolysis_power_W', 177.0)
+        ultrasonic_power_W = dataset.get('ultrasonic_power_W', 50.0)
+        synergy_factor = dataset.get('synergy_factor', 1.3)  # 30% improvement
+        baseline_efficiency = dataset.get('baseline_efficiency', 0.7)
+        
+        # Total power input
+        total_power_W = electrolysis_power_W + ultrasonic_power_W
+        
+        # Enhanced efficiency from ultrasonic assistance
+        enhanced_efficiency = min(baseline_efficiency * synergy_factor, 0.95)
+        
+        # Effective electrolysis power (accounting for ultrasonic enhancement)
+        effective_power_W = electrolysis_power_W * synergy_factor
+        
+        # Energy savings
+        energy_savings_factor = synergy_factor - 1
+        
+        # Radical enhancement (ultrasound contribution to OH· production)
+        OH_enhancement = ultrasonic_power_W / electrolysis_power_W if electrolysis_power_W > 0 else 0
+        
+        # Bubble detachment improvement (faster gas evolution)
+        bubble_detachment_factor = 1 + 0.5 * (ultrasonic_power_W / total_power_W)
+        
+        return {
+            'electrolysis_power_W': electrolysis_power_W,
+            'ultrasonic_power_W': ultrasonic_power_W,
+            'total_power_W': total_power_W,
+            'baseline_efficiency': baseline_efficiency,
+            'enhanced_efficiency': enhanced_efficiency,
+            'synergy_factor': synergy_factor,
+            'effective_power_W': effective_power_W,
+            'energy_savings_percent': energy_savings_factor * 100,
+            'OH_enhancement_ratio': OH_enhancement,
+            'bubble_detachment_factor': bubble_detachment_factor,
+            'equation': 'η_sono = η_base × S, S ≈ 1.2-1.5',
+        }
+
+
+class PWMElectrolysisEnergyCalculator:
+    """
+    Calculator for PWM-driven electrolysis energy consumption.
+    
+    Pulse-Width Modulation (PWM) electrolysis:
+    - Reduces average power consumption
+    - May enhance isotopic separation via pulsed resonance
+    - Energy = Power × Duty_Cycle × Time
+    
+    From novel reactor: 177 W × 40% × 36 days = 61.17 kWh
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_52_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute PWM electrolysis energy consumption.
+        
+        Parameters:
+            power_W: Peak power (W)
+            duty_cycle: PWM duty cycle (0-1, default 0.4)
+            time_days: Operation time (days)
+            water_mass_kg: Water mass to process (kg)
+        """
+        import math
+        
+        power_W = dataset.get('power_W', self.params['pwm_power'])
+        duty_cycle = dataset.get('duty_cycle', self.params['pwm_duty_cycle'])
+        time_days = dataset.get('time_days', 36.0)
+        water_mass_kg = dataset.get('water_mass_kg', 75.7)
+        
+        # Time in hours and seconds
+        time_hours = time_days * 24
+        time_seconds = time_days * 24 * 3600
+        
+        # Average power
+        average_power_W = power_W * duty_cycle
+        
+        # Total energy
+        energy_kWh = (average_power_W * time_hours) / 1000
+        energy_J = energy_kWh * 3.6e6
+        
+        # Energy per kg of water
+        energy_per_kg_kWh = energy_kWh / water_mass_kg if water_mass_kg > 0 else 0
+        
+        # Comparison to standard electrolysis (~50 kWh/kg for H₂)
+        standard_energy_per_kg = 50.0  # kWh/kg H₂
+        efficiency_vs_standard = standard_energy_per_kg / energy_per_kg_kWh if energy_per_kg_kWh > 0 else 0
+        
+        # PWM frequency (if resonance-driven)
+        pwm_frequency_Hz = dataset.get('pwm_frequency_Hz', 1000.0)
+        pulses_total = pwm_frequency_Hz * time_seconds
+        
+        return {
+            'peak_power_W': power_W,
+            'duty_cycle': duty_cycle,
+            'average_power_W': average_power_W,
+            'time_days': time_days,
+            'energy_kWh': energy_kWh,
+            'energy_J': energy_J,
+            'water_mass_kg': water_mass_kg,
+            'energy_per_kg_kWh': energy_per_kg_kWh,
+            'efficiency_vs_standard': efficiency_vs_standard,
+            'pwm_frequency_Hz': pwm_frequency_Hz,
+            'total_pulses': pulses_total,
+            'equation': 'E = P × D × t, P = 177 W, D = 0.4',
+        }
+
+
+class HydrogenStoragePressureCalculator:
+    """
+    Calculator for hydrogen/deuterium storage at pressure.
+    
+    Ideal gas law: PV = nRT
+    Storage conditions: 147 psig (~10 bar), 62°F (289.85 K)
+    
+    Safe storage of H₂/D₂ + O₂ mixtures requires spark-free systems.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_52_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute hydrogen storage volume and conditions.
+        
+        Parameters:
+            moles_H2: Moles of H₂ or D₂
+            moles_O2: Moles of O₂
+            pressure_bar: Storage pressure (bar)
+            temperature_K: Storage temperature (K)
+            is_deuterium: Whether using D₂
+        """
+        import math
+        
+        moles_H2 = dataset.get('moles_H2', 760.0)
+        moles_O2 = dataset.get('moles_O2', 380.0)
+        pressure_bar = dataset.get('pressure_bar', 10.0)
+        temperature_K = dataset.get('temperature_K', 289.85)
+        is_deuterium = dataset.get('is_deuterium', True)
+        
+        R = self.params['R_gas']  # J/(mol·K)
+        pressure_Pa = pressure_bar * 1e5
+        
+        # Total moles
+        total_moles = moles_H2 + moles_O2
+        
+        # Volume from ideal gas law
+        volume_m3 = (total_moles * R * temperature_K) / pressure_Pa
+        volume_L = volume_m3 * 1000
+        
+        # Individual gas volumes
+        V_H2_m3 = (moles_H2 * R * temperature_K) / pressure_Pa
+        V_O2_m3 = (moles_O2 * R * temperature_K) / pressure_Pa
+        
+        # Mass
+        if is_deuterium:
+            mass_H2_kg = moles_H2 * (2 * self.params['D_mass']) / 1000
+            mass_O2_kg = moles_O2 * (2 * self.params['O18_mass']) / 1000
+        else:
+            mass_H2_kg = moles_H2 * 2.016 / 1000
+            mass_O2_kg = moles_O2 * 32.0 / 1000
+        
+        # Energy density (stored chemical energy)
+        combustion_energy = self.params['D2_combustion_enthalpy'] if is_deuterium else self.params['H2_combustion_enthalpy']
+        stored_energy_kJ = moles_H2 * combustion_energy / 1000
+        energy_density_kJ_L = stored_energy_kJ / volume_L if volume_L > 0 else 0
+        
+        # Stoichiometric ratio check
+        stoichiometric_ratio = moles_H2 / moles_O2 if moles_O2 > 0 else float('inf')
+        is_stoichiometric = abs(stoichiometric_ratio - 2.0) < 0.1
+        
+        # Auto-ignition temperature
+        auto_ignition_K = self.params['D2_auto_ignition_temp'] if is_deuterium else self.params['H2_auto_ignition_temp']
+        
+        return {
+            'moles_H2_or_D2': moles_H2,
+            'moles_O2': moles_O2,
+            'total_moles': total_moles,
+            'pressure_bar': pressure_bar,
+            'pressure_psig': pressure_bar * 14.504 - 14.7,  # Convert to psig
+            'temperature_K': temperature_K,
+            'temperature_F': (temperature_K - 273.15) * 9/5 + 32,
+            'total_volume_L': volume_L,
+            'total_volume_m3': volume_m3,
+            'V_H2_m3': V_H2_m3,
+            'V_O2_m3': V_O2_m3,
+            'mass_H2_kg': mass_H2_kg,
+            'mass_O2_kg': mass_O2_kg,
+            'stored_energy_kJ': stored_energy_kJ,
+            'energy_density_kJ_L': energy_density_kJ_L,
+            'stoichiometric_ratio': stoichiometric_ratio,
+            'is_stoichiometric': is_stoichiometric,
+            'auto_ignition_temp_K': auto_ignition_K,
+            'equation': 'PV = nRT, safe storage requires spark-free system',
+        }
+
+
+class PolyolCombustionCalculator:
+    """
+    Calculator for polyol/alcohol combustion energy density.
+    
+    Compares energy content of alcohols vs hydrocarbons:
+    - Ethanol: ΔH_c = -1367 kJ/mol
+    - Propane: ΔH_c = -2220 kJ/mol
+    - OH groups reduce energy density (O already present)
+    
+    Relevant for evaluating "carbon fuel" concepts.
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_52_PARAMS
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute polyol/alcohol combustion properties.
+        
+        Parameters:
+            compound: 'ethanol', 'methanol', 'propane', 'octane', or custom
+            mass_g: Mass of fuel (g)
+            custom_formula: Custom molecular formula (optional)
+            custom_combustion_kJ_mol: Custom combustion enthalpy (kJ/mol)
+        """
+        mass_g = dataset.get('mass_g', 100.0)
+        compound = dataset.get('compound', 'ethanol')
+        
+        # Compound database
+        compounds = {
+            'methanol': {
+                'formula': 'CH₃OH',
+                'molar_mass': 32.04,
+                'combustion_kJ_mol': 726.0,
+                'density_g_cm3': 0.792,
+                'is_polyol': False,
+            },
+            'ethanol': {
+                'formula': 'C₂H₅OH',
+                'molar_mass': 46.07,
+                'combustion_kJ_mol': 1367.0,
+                'density_g_cm3': 0.789,
+                'is_polyol': False,
+            },
+            'glycerol': {
+                'formula': 'C₃H₈O₃',
+                'molar_mass': 92.09,
+                'combustion_kJ_mol': 1654.0,
+                'density_g_cm3': 1.261,
+                'is_polyol': True,
+            },
+            'ethylene_glycol': {
+                'formula': 'C₂H₆O₂',
+                'molar_mass': 62.07,
+                'combustion_kJ_mol': 1180.0,
+                'density_g_cm3': 1.113,
+                'is_polyol': True,
+            },
+            'propane': {
+                'formula': 'C₃H₈',
+                'molar_mass': 44.10,
+                'combustion_kJ_mol': 2220.0,
+                'density_g_cm3': 0.493,  # liquid
+                'is_polyol': False,
+            },
+            'octane': {
+                'formula': 'C₈H₁₈',
+                'molar_mass': 114.23,
+                'combustion_kJ_mol': 5470.0,
+                'density_g_cm3': 0.703,
+                'is_polyol': False,
+            },
+        }
+        
+        # Get compound properties
+        if compound in compounds:
+            props = compounds[compound]
+        else:
+            # Custom compound
+            props = {
+                'formula': dataset.get('custom_formula', 'Custom'),
+                'molar_mass': dataset.get('custom_molar_mass', 46.07),
+                'combustion_kJ_mol': dataset.get('custom_combustion_kJ_mol', 1367.0),
+                'density_g_cm3': dataset.get('custom_density', 0.8),
+                'is_polyol': dataset.get('is_polyol', False),
+            }
+        
+        # Calculate energy content
+        moles = mass_g / props['molar_mass']
+        total_energy_kJ = moles * props['combustion_kJ_mol']
+        
+        # Energy density
+        energy_density_kJ_g = props['combustion_kJ_mol'] / props['molar_mass']
+        volume_mL = mass_g / props['density_g_cm3']
+        energy_density_kJ_mL = total_energy_kJ / volume_mL if volume_mL > 0 else 0
+        
+        # Compare to gasoline (octane) baseline
+        octane_energy_density = 5470.0 / 114.23  # kJ/g
+        relative_to_gasoline = energy_density_kJ_g / octane_energy_density
+        
+        return {
+            'compound': compound,
+            'formula': props['formula'],
+            'molar_mass_g_mol': props['molar_mass'],
+            'combustion_enthalpy_kJ_mol': props['combustion_kJ_mol'],
+            'density_g_cm3': props['density_g_cm3'],
+            'is_polyol': props['is_polyol'],
+            'mass_g': mass_g,
+            'moles': moles,
+            'total_energy_kJ': total_energy_kJ,
+            'energy_density_kJ_g': energy_density_kJ_g,
+            'energy_density_MJ_kg': energy_density_kJ_g,
+            'energy_density_kJ_mL': energy_density_kJ_mL,
+            'relative_to_gasoline': relative_to_gasoline,
+            'equation': 'CₓHᵧOᵤ + O₂ → CO₂ + H₂O, ΔH_c < 0',
+        }
+
+
+# Registry for Orb Analysis 52
+ORB_ANALYSIS_52_CALCULATORS = {
+    'HeavyWaterElectrolysisCalculator': HeavyWaterElectrolysisCalculator(),
+    'UltrasonicCavitationCalculator': UltrasonicCavitationCalculator(),
+    'AmericiumAlphaIonizationCalculator': AmericiumAlphaIonizationCalculator(),
+    'IsotopicKineticEnrichmentCalculator': IsotopicKineticEnrichmentCalculator(),
+    'OxyhydrogenImplosionCalculator': OxyhydrogenImplosionCalculator(),
+    'DeuteratedEthanolCalculator': DeuteratedEthanolCalculator(),
+    'SonoElectrochemistryCalculator': SonoElectrochemistryCalculator(),
+    'PWMElectrolysisEnergyCalculator': PWMElectrolysisEnergyCalculator(),
+    'HydrogenStoragePressureCalculator': HydrogenStoragePressureCalculator(),
+    'PolyolCombustionCalculator': PolyolCombustionCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -26748,6 +27592,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_49_CALCULATORS,
     **ORB_ANALYSIS_50_CALCULATORS,
     **ORB_ANALYSIS_51_CALCULATORS,
+    **ORB_ANALYSIS_52_CALCULATORS,
 }
 
 # Update class count
@@ -27280,6 +28125,20 @@ __all__ = [
     'SSqQuantumStateCalculator',
     'HiggsUIAOOperatorCalculator',
     'ORB_ANALYSIS_51_CALCULATORS',
+    
+    # Orb Analysis_52 (10 classes - Isotopic Electrochemistry, Sono-Electrochemistry)
+    'ORB_ANALYSIS_52_PARAMS',
+    'HeavyWaterElectrolysisCalculator',
+    'UltrasonicCavitationCalculator',
+    'AmericiumAlphaIonizationCalculator',
+    'IsotopicKineticEnrichmentCalculator',
+    'OxyhydrogenImplosionCalculator',
+    'DeuteratedEthanolCalculator',
+    'SonoElectrochemistryCalculator',
+    'PWMElectrolysisEnergyCalculator',
+    'HydrogenStoragePressureCalculator',
+    'PolyolCombustionCalculator',
+    'ORB_ANALYSIS_52_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
