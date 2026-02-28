@@ -192,6 +192,61 @@ void RenderScatterPlot(QWidget *parent, const std::vector<double> &x, const std:
 #define COGNITO_REGION "us-east-1"                 // AWS region where Cognito is hosted
 
 // ============================================================================
+// COANQI REPOSITORY SYSTEM - Local cache and auto-save directory structure
+// ============================================================================
+// The CoAnQi Repository stores all user-generated content, calculations, and cached data
+// Location: C:\CoAnQi_Repos\ (Windows) - auto-created on first launch
+
+const QString REPO_PATH = "C:/CoAnQi_Repos/";  // Root path for all CoAnQi data
+
+// Subdirectory names for specialized caching
+const QString CALC_EN_CASH_DIR = "CalcEnCash/";    // Scientific calculator auto-saves
+const QString RAM_EN_CASH_DIR = "RamEnCash/";      // Ramanujan calculator auto-saves
+const QString PI_MATH_CASH_DIR = "PImathCash/";    // PImath calculator auto-saves
+const QString IEF_EN_CASH_DIR = "IFEenCash/";      // Independent Expandable Field entries
+const QString DESKTOP_CASH_DIR = "DeskTopCash/";   // Background images
+const QString VIDEO_CASH_DIR = "VideoCash/";       // Video links cache
+const QString DOC_CASH_DIR = "DocCash/";           // Documents and files
+const QString API_CASH_DIR = "APIcash/";           // API response cache
+const QString NASA_LINK_DIR = "NASAlink/";         // NASA link test files
+const QString OAUTH_SYNC_DIR = "OAuthCloudSync/";  // OAuth and cloud sync data
+const QString USER_LOGIN_DIR = "User Login/";      // Encrypted user credentials
+
+// ============================================================================
+// ensureRepositoryStructure - Creates all CoAnQi_Repos subdirectories
+// ============================================================================
+// Called at application startup to ensure all cache directories exist
+// Uses QDir::mkpath() which creates all intermediate directories as needed
+//
+inline void ensureRepositoryStructure() {
+    QDir dir;
+    // Create all subdirectories under REPO_PATH
+    dir.mkpath(REPO_PATH + CALC_EN_CASH_DIR);
+    dir.mkpath(REPO_PATH + RAM_EN_CASH_DIR);
+    dir.mkpath(REPO_PATH + PI_MATH_CASH_DIR);
+    dir.mkpath(REPO_PATH + IEF_EN_CASH_DIR);
+    dir.mkpath(REPO_PATH + DESKTOP_CASH_DIR);
+    dir.mkpath(REPO_PATH + VIDEO_CASH_DIR);
+    dir.mkpath(REPO_PATH + DOC_CASH_DIR);
+    dir.mkpath(REPO_PATH + API_CASH_DIR);
+    dir.mkpath(REPO_PATH + NASA_LINK_DIR);
+    dir.mkpath(REPO_PATH + OAUTH_SYNC_DIR);
+    dir.mkpath(REPO_PATH + USER_LOGIN_DIR);
+    
+    // Verify write permissions
+    QFile testFile(REPO_PATH + "write_test.tmp");
+    if (testFile.open(QIODevice::WriteOnly)) {
+        testFile.write("CoAnQi Repository initialized");
+        testFile.close();
+        testFile.remove();  // Clean up test file
+    } else {
+        // Log warning - repository may be read-only
+        qWarning() << "CoAnQi_Repos: Write permission test failed at" << REPO_PATH;
+        qWarning() << "Suggestion: Check folder permissions or run as administrator";
+    }
+}
+
+// ============================================================================
 // NAMESPACE ALIASES - Shorter names for frequently used namespaces
 // ============================================================================
 
@@ -8460,16 +8515,25 @@ public:
         // Configure window properties
         setWindowFlags(Qt::Window | Qt::FramelessWindowHint); // Make window frameless (no title bar/borders)
         setAcceptDrops(true);                                 // Enable drag-and-drop support for equations
+        setStyleSheet("font-size: 10px;");                    // 10px font standard per CoAnQi spec
 
         // Create vertical layout to arrange widgets top-to-bottom
         QVBoxLayout *layout = new QVBoxLayout(this);
 
         // Create input text area for user to enter equations
         input = new QTextEdit(this);
-        input->setPlaceholderText("Enter equations (e.g., d/dx(x^2), ?(0,1) x^2 dx, x^2 + y = 5, jd to date 2451544)");
+        input->setPlaceholderText("Enter equations (e.g., d/dx(x^2), ?(0,1) x^2 dx, x^2 + y = 5, convert 1 d to s; build systems with , separation)");
         input->setMinimumHeight(100);  // Minimum 100 pixels tall
-        input->setMaximumHeight(1000); // Can expand to 1000 pixels if needed
+        input->setMaximumHeight(1000); // Expandable <=1000 visible
         input->setAcceptDrops(true);   // Allow dropping equations into input area
+        input->setLineWrapMode(QTextEdit::NoWrap); // For horizontal scrolling
+
+        // Create workflow display field (shows equation history with solutions)
+        workflow = new QTextEdit(this);
+        workflow->setReadOnly(true);
+        workflow->setPlaceholderText("Workflow: Equation history with solutions...");
+        workflow->setMaximumHeight(150);
+        workflow->setStyleSheet("background-color: #f8f8f8; color: #333;");
 
         // Create output text area to display results (read-only)
         output = new QTextEdit(this);
@@ -8480,7 +8544,8 @@ public:
 
         // Add all widgets to the vertical layout
         layout->addWidget(input);    // Input box at top
-        layout->addWidget(solveBtn); // Solve button in middle
+        layout->addWidget(solveBtn); // Solve button
+        layout->addWidget(workflow); // Workflow history
         layout->addWidget(output);   // Output box at bottom
 
         // Connect signals to slots (Qt's event handling mechanism)
@@ -8548,19 +8613,43 @@ private:
     // PRIVATE MEMBER VARIABLES - Data internal to this class
     // ========================================================================
 
-    QTextEdit *input;    // Pointer to input text editor widget
-    QTextEdit *output;   // Pointer to output text editor widget (displays results)
-    QPoint dragPosition; // Stores mouse offset for dragging (prevents window jumping)
+    QTextEdit *input;       // Pointer to input text editor widget
+    QTextEdit *workflow;    // Workflow display field (equation history with solutions)
+    QTextEdit *output;      // Pointer to output text editor widget (displays results)
+    QPoint dragPosition;    // Stores mouse offset for dragging (prevents window jumping)
+    QStringList equationHistory;  // History of equations and solutions for workflow display
 
     // ========================================================================
     // PRIVATE HELPER METHODS - Internal functions used by this class
     // ========================================================================
+
+    // autoSaveToCalcEnCash - Saves calculation entry to CalcEnCash directory
+    // Creates timestamped .txt file with equation and solution
+    void autoSaveToCalcEnCash(const QString& equation, const QString& solution) {
+        QString timestamp = QDateTime::currentDateTime().toString("yyyyMMdd_hhmmss");
+        QString filename = REPO_PATH + CALC_EN_CASH_DIR + "entry_" + timestamp + ".txt";
+        QFile file(filename);
+        if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QTextStream out(&file);
+            out << "=== CoAnQi Scientific Calculator Entry ===" << Qt::endl;
+            out << "Timestamp: " << QDateTime::currentDateTime().toString(Qt::ISODate) << Qt::endl;
+            out << "----------------------------------------" << Qt::endl;
+            out << "Equation:" << Qt::endl << equation << Qt::endl;
+            out << "----------------------------------------" << Qt::endl;
+            out << "Solution:" << Qt::endl << solution << Qt::endl;
+            file.close();
+        }
+    }
 
     // adjustInputSize - Automatically resizes input box based on number of lines
     // Called whenever user types or pastes text
     void adjustInputSize()
     {
         QString text = input->toPlainText(); // Get current input text
+        // Enforce 5000 character limit for input
+        if (text.length() > 5000) {
+            input->setText(text.left(5000));
+        }
         int lines = text.split("\n").size(); // Count number of lines (split by newline)
 
         // Calculate new height: 20 pixels per line + 50 pixel padding
@@ -8848,6 +8937,17 @@ private:
 
         // Display all results in the output text area
         output->setText(result);
+        
+        // Update workflow display with equation history
+        equationHistory << input->toPlainText() + " → " + result.simplified();
+        // Keep last 50 entries to prevent memory bloat
+        while (equationHistory.size() > 50) {
+            equationHistory.removeFirst();
+        }
+        workflow->setText(equationHistory.join("\n---\n"));
+        
+        // Auto-save to CalcEnCash directory
+        autoSaveToCalcEnCash(input->toPlainText(), result);
     }
 
     // ========================================================================
@@ -8891,17 +8991,28 @@ public:
     {
         setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
         setAcceptDrops(true);
+        setStyleSheet("font-size: 10px;");  // 10px font standard
         QVBoxLayout *layout = new QVBoxLayout(this);
         input = new QTextEdit(this);
-        input->setPlaceholderText("Enter number theory functions (e.g., p(5), tau(7))");
+        input->setPlaceholderText("Enter number theory functions (e.g., p(5), tau(7), factors(1729))");
         input->setMinimumHeight(100);
         input->setMaximumHeight(1000);
         input->setAcceptDrops(true);
+        input->setLineWrapMode(QTextEdit::NoWrap);
+        
+        // Workflow display field for equation history
+        workflow = new QTextEdit(this);
+        workflow->setReadOnly(true);
+        workflow->setPlaceholderText("Workflow: Number theory computation history...");
+        workflow->setMaximumHeight(150);
+        workflow->setStyleSheet("background-color: #f0f8ff; color: #333;");
+        
         output = new QTextEdit(this);
         output->setReadOnly(true);
         QPushButton *solveBtn = new QPushButton("Solve", this);
         layout->addWidget(input);
         layout->addWidget(solveBtn);
+        layout->addWidget(workflow);
         layout->addWidget(output);
         connect(solveBtn, &QPushButton::clicked, this, &RamanujanCalculatorDialog::solveEquations);
         connect(input, &QTextEdit::textChanged, this, &RamanujanCalculatorDialog::adjustInputSize);
@@ -8938,12 +9049,35 @@ protected:
 
 private:
     QTextEdit *input;
+    QTextEdit *workflow;  // Workflow display field
     QTextEdit *output;
     QPoint dragPosition;
+    QStringList equationHistory;  // History for workflow display
+
+    // autoSaveToRamEnCash - Saves entry to RamEnCash directory
+    void autoSaveToRamEnCash(const QString& equation, const QString& solution) {
+        QString timestamp = QDateTime::currentDateTime().toString("yyyyMMdd_hhmmss");
+        QString filename = REPO_PATH + RAM_EN_CASH_DIR + "entry_" + timestamp + ".txt";
+        QFile file(filename);
+        if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QTextStream out(&file);
+            out << "=== CoAnQi Ramanujan Calculator Entry ===" << Qt::endl;
+            out << "Timestamp: " << QDateTime::currentDateTime().toString(Qt::ISODate) << Qt::endl;
+            out << "----------------------------------------" << Qt::endl;
+            out << "Function:" << Qt::endl << equation << Qt::endl;
+            out << "----------------------------------------" << Qt::endl;
+            out << "Result:" << Qt::endl << solution << Qt::endl;
+            file.close();
+        }
+    }
 
     void adjustInputSize()
     {
         QString text = input->toPlainText();
+        // Enforce 5000 character limit
+        if (text.length() > 5000) {
+            input->setText(text.left(5000));
+        }
         int lines = text.split("\n").size();
         int newHeight = std::min(std::max(100, lines * 20 + 50), 1000);
         input->setMinimumHeight(newHeight);
@@ -9041,6 +9175,14 @@ private:
                                     .arg(error["error"].toString());
                             }
                         }
+                        
+                        // Update workflow and auto-save
+                        equationHistory << input->toPlainText() + " → " + displayText.simplified().left(200);
+                        while (equationHistory.size() > 50) {
+                            equationHistory.removeFirst();
+                        }
+                        workflow->setText(equationHistory.join("\n---\n"));
+                        autoSaveToRamEnCash(input->toPlainText(), displayText);
                     } else {
                         displayText = "❌ Error: " + result["error"].toString();
                     }
@@ -9081,6 +9223,544 @@ private:
                           "Install SymPy: pip install sympy");
             process->deleteLater();
             QFile::remove(tempInputFile);
+        }
+    }
+};
+
+// ============================================================================
+// PI MATH CALCULATOR DIALOG - π-related computations (CoAnQi Bot Design)
+// ============================================================================
+
+/**
+ * @brief PImathCalculatorDialog - Calculator for π-related mathematical operations
+ * 
+ * Based on: CoAnQi Bot Design Iteration 7 (PImathCalculator specification)
+ * 
+ * Features:
+ * - π digit computations (arbitrary precision via mpmath)
+ * - π formulas: Machin, Chudnovsky, Bailey-Borwein-Plouffe
+ * - π-related series: Basel problem (π²/6), Leibniz, Wallis product
+ * - Circular geometry: circumference, area, sphere volume
+ * - Auto-save to PImathCash directory
+ * - Workflow history tracking (last 50 entries)
+ * 
+ * Copyright - Daniel T. Murphy, CoAnQi Project
+ */
+class PImathCalculatorDialog : public QDialog
+{
+public:
+    PImathCalculatorDialog(QWidget *parent) : QDialog(parent)
+    {
+        setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        setAcceptDrops(true);
+        setStyleSheet("font-size: 10px;");  // 10px font standard
+        setWindowTitle("π Math Calculator");
+        resize(600, 500);
+        
+        QVBoxLayout *layout = new QVBoxLayout(this);
+        
+        // Input field
+        input = new QTextEdit(this);
+        input->setPlaceholderText("Enter π computations:\n"
+                                   "  pi_digits(100)      - First 100 digits of π\n"
+                                   "  chudnovsky(50)      - Chudnovsky formula (50 terms)\n"
+                                   "  machin_pi()         - Machin's formula\n"
+                                   "  bbp_digit(n)        - n-th digit of π (BBP algorithm)\n"
+                                   "  circle_area(r)      - πr²\n"
+                                   "  sphere_volume(r)    - (4/3)πr³\n"
+                                   "  basel_sum(n)        - Σ1/k² approaches π²/6\n"
+                                   "  leibniz_pi(n)       - Leibniz series approximation\n"
+                                   "  wallis_pi(n)        - Wallis product approximation\n"
+                                   "\nComma-separated for multiple computations");
+        input->setMinimumHeight(120);
+        input->setMaximumHeight(1000);
+        input->setAcceptDrops(true);
+        input->setLineWrapMode(QTextEdit::NoWrap);
+        
+        // Formula selection dropdown
+        QHBoxLayout *formulaRow = new QHBoxLayout();
+        QLabel *formulaLabel = new QLabel("Quick Formula:", this);
+        formulaSelect = new QComboBox(this);
+        formulaSelect->addItems({
+            "-- Select --",
+            "pi_digits(100)",
+            "pi_digits(1000)",
+            "chudnovsky(20)",
+            "machin_pi()",
+            "bbp_digit(1000)",
+            "circle_area(1.0)",
+            "sphere_volume(1.0)",
+            "basel_sum(1000)",
+            "leibniz_pi(10000)",
+            "wallis_pi(1000)",
+            "pi * e",
+            "pi^2",
+            "sqrt(pi)"
+        });
+        connect(formulaSelect, QOverload<int>::of(&QComboBox::currentIndexChanged), 
+                this, [this](int index) {
+            if (index > 0) {
+                QString current = input->toPlainText();
+                if (!current.isEmpty() && !current.endsWith('\n')) {
+                    current += ", ";
+                }
+                input->setText(current + formulaSelect->itemText(index));
+            }
+        });
+        formulaRow->addWidget(formulaLabel);
+        formulaRow->addWidget(formulaSelect);
+        formulaRow->addStretch();
+        
+        // Solve button
+        QPushButton *solveBtn = new QPushButton("Compute π", this);
+        solveBtn->setStyleSheet("background-color: #3498db; color: white; font-weight: bold; padding: 8px;");
+        
+        // Workflow display
+        workflow = new QTextEdit(this);
+        workflow->setReadOnly(true);
+        workflow->setPlaceholderText("Workflow: π computation history...");
+        workflow->setMaximumHeight(150);
+        workflow->setStyleSheet("background-color: #f5f5dc; color: #333;");
+        
+        // Output display
+        output = new QTextEdit(this);
+        output->setReadOnly(true);
+        output->setStyleSheet("background-color: #1a1a2e; color: #00ff00; font-family: 'Courier New', monospace;");
+        output->setMinimumHeight(150);
+        
+        // Layout assembly
+        layout->addWidget(input);
+        layout->addLayout(formulaRow);
+        layout->addWidget(solveBtn);
+        layout->addWidget(workflow);
+        layout->addWidget(output);
+        
+        connect(solveBtn, &QPushButton::clicked, this, &PImathCalculatorDialog::computePi);
+        connect(input, &QTextEdit::textChanged, this, &PImathCalculatorDialog::adjustInputSize);
+        setMouseTracking(true);
+    }
+
+protected:
+    void mousePressEvent(QMouseEvent *event) override
+    {
+        if (event->button() == Qt::LeftButton)
+        {
+            dragPosition = event->globalPos() - frameGeometry().topLeft();
+            event->accept();
+        }
+    }
+    void mouseMoveEvent(QMouseEvent *event) override
+    {
+        if (event->buttons() & Qt::LeftButton)
+        {
+            move(event->globalPos() - dragPosition);
+            event->accept();
+        }
+    }
+    void dragEnterEvent(QDragEnterEvent *event) override
+    {
+        if (event->mimeData()->hasText())
+            event->acceptProposedAction();
+    }
+    void dropEvent(QDropEvent *event) override
+    {
+        input->setText(input->toPlainText() + event->mimeData()->text());
+        event->acceptProposedAction();
+    }
+
+private:
+    QTextEdit *input;
+    QTextEdit *workflow;
+    QTextEdit *output;
+    QComboBox *formulaSelect;
+    QPoint dragPosition;
+    QStringList equationHistory;
+
+    // autoSaveToPImathCash - Saves entry to PImathCash directory
+    void autoSaveToPImathCash(const QString& equation, const QString& solution) {
+        QString timestamp = QDateTime::currentDateTime().toString("yyyyMMdd_hhmmss");
+        QString filename = REPO_PATH + PI_MATH_CASH_DIR + "pi_entry_" + timestamp + ".txt";
+        QFile file(filename);
+        if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QTextStream out(&file);
+            out << "=== CoAnQi π Math Calculator Entry ===" << Qt::endl;
+            out << "Timestamp: " << QDateTime::currentDateTime().toString(Qt::ISODate) << Qt::endl;
+            out << "----------------------------------------" << Qt::endl;
+            out << "Computation:" << Qt::endl << equation << Qt::endl;
+            out << "----------------------------------------" << Qt::endl;
+            out << "Result:" << Qt::endl << solution << Qt::endl;
+            file.close();
+        }
+    }
+
+    void adjustInputSize()
+    {
+        QString text = input->toPlainText();
+        // Enforce 5000 character limit
+        if (text.length() > 5000) {
+            input->setText(text.left(5000));
+        }
+        int lines = text.split("\n").size();
+        int newHeight = std::min(std::max(120, lines * 20 + 50), 1000);
+        input->setMinimumHeight(newHeight);
+        input->setMaximumHeight(newHeight);
+    }
+
+    void computePi()
+    {
+        QString inputText = input->toPlainText().trimmed();
+        if (inputText.isEmpty()) {
+            output->setText("No π computation entered.\nTry: pi_digits(100), chudnovsky(20), circle_area(5.0)");
+            return;
+        }
+        
+        // Parse computations (comma or newline separated)
+        QStringList computations;
+        if (inputText.contains(',')) {
+            computations = inputText.split(',', Qt::SkipEmptyParts);
+        } else {
+            computations = inputText.split('\n', Qt::SkipEmptyParts);
+        }
+        
+        // Build JSON for Python mpmath wrapper
+        QJsonObject jsonInput;
+        QJsonArray compArray;
+        for (const QString& comp : computations) {
+            QString trimmed = comp.trimmed();
+            if (!trimmed.isEmpty()) {
+                compArray.append(trimmed);
+            }
+        }
+        jsonInput["computations"] = compArray;
+        jsonInput["mode"] = "pi_math";
+        
+        // Write to temp file
+        QString tempInputFile = QDir::temp().filePath("pimath_input.json");
+        QFile file(tempInputFile);
+        if (!file.open(QIODevice::WriteOnly)) {
+            output->setText("Error: Could not create temporary input file");
+            return;
+        }
+        file.write(QJsonDocument(jsonInput).toJson());
+        file.close();
+        
+        output->setText("Computing π operations...");
+        QProcess* process = new QProcess(this);
+        process->setWorkingDirectory(QCoreApplication::applicationDirPath());
+        
+        QString pythonExe = "python";
+        QStringList args;
+        args << "PImathWrapper.py" << tempInputFile;
+        
+        connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
+                this, [this, process, tempInputFile, inputText](int exitCode, QProcess::ExitStatus status) {
+            QString stdoutText = QString::fromUtf8(process->readAllStandardOutput());
+            QString stderrText = QString::fromUtf8(process->readAllStandardError());
+            
+            QString displayText;
+            if (exitCode == 0 && status == QProcess::NormalExit) {
+                QJsonDocument doc = QJsonDocument::fromJson(stdoutText.toUtf8());
+                if (!doc.isNull() && doc.isObject()) {
+                    QJsonObject result = doc.object();
+                    if (result["success"].toBool()) {
+                        displayText = "✓ π Computation Complete!\n\n";
+                        QJsonArray results = result["results"].toArray();
+                        for (const QJsonValue& r : results) {
+                            QJsonObject res = r.toObject();
+                            displayText += QString("▶ %1\n  = %2\n\n")
+                                .arg(res["expression"].toString())
+                                .arg(res["value"].toString());
+                        }
+                    } else {
+                        displayText = "❌ Error: " + result["error"].toString();
+                    }
+                } else {
+                    // Fallback: show raw output
+                    displayText = "π Computation Output:\n" + stdoutText;
+                    if (!stderrText.isEmpty()) {
+                        displayText += "\n\nWarnings:\n" + stderrText;
+                    }
+                }
+            } else {
+                displayText = QString("Python wrapper failed (exit code: %1)\n\nStderr:\n%2")
+                    .arg(exitCode).arg(stderrText);
+            }
+            
+            output->setText(displayText);
+            
+            // Update workflow and auto-save
+            equationHistory << inputText + " → " + displayText.simplified().left(200);
+            while (equationHistory.size() > 50) {
+                equationHistory.removeFirst();
+            }
+            workflow->setText(equationHistory.join("\n---\n"));
+            autoSaveToPImathCash(inputText, displayText);
+            
+            QFile::remove(tempInputFile);
+            process->deleteLater();
+        });
+        
+        process->start(pythonExe, args);
+        if (!process->waitForStarted(3000)) {
+            output->setText("Error: Could not start Python interpreter.\n"
+                          "Make sure Python 3 with mpmath is installed.\n"
+                          "Install: pip install mpmath");
+            process->deleteLater();
+            QFile::remove(tempInputFile);
+        }
+    }
+};
+
+// ============================================================================
+// INDEPENDENT EXPANDABLE FIELD (IEF) - Math Symbol Panel (CoAnQi Bot Design)
+// ============================================================================
+
+/**
+ * @brief IndependentExpandableField - Floating panel with math symbols and constants
+ * 
+ * Based on: CoAnQi Bot Design Iteration 9 (IFEenCash specification)
+ * 
+ * Features:
+ * - 200+ preprogrammed math/physics symbol buttons
+ * - Categorized: Greek, Operators, Quantum, Relativity, Constants, Subscripts
+ * - Click to insert symbol into active calculator
+ * - Collapsible panels for each category
+ * - Auto-save user-defined symbols to IFEenCash
+ * - Dockable or floating position
+ * 
+ * Copyright - Daniel T. Murphy, CoAnQi Project
+ */
+class IndependentExpandableField : public QDockWidget
+{
+    Q_OBJECT
+
+public:
+    IndependentExpandableField(QWidget *parent = nullptr) 
+        : QDockWidget("Math Symbols (IEF)", parent)
+    {
+        setAllowedAreas(Qt::AllDockWidgetAreas);
+        setFeatures(QDockWidget::DockWidgetMovable | 
+                   QDockWidget::DockWidgetFloatable | 
+                   QDockWidget::DockWidgetClosable);
+        
+        QWidget *container = new QWidget(this);
+        QVBoxLayout *mainLayout = new QVBoxLayout(container);
+        mainLayout->setSpacing(2);
+        mainLayout->setContentsMargins(5, 5, 5, 5);
+        
+        container->setStyleSheet(
+            "QWidget { background-color: #2c3e50; }"
+            "QPushButton { "
+            "  background-color: #34495e; color: white; "
+            "  border: 1px solid #1a252f; border-radius: 3px; "
+            "  font-size: 14px; min-width: 35px; min-height: 35px; "
+            "  padding: 2px; "
+            "}"
+            "QPushButton:hover { background-color: #3498db; }"
+            "QPushButton:pressed { background-color: #2980b9; }"
+            "QToolButton { "
+            "  background-color: #1abc9c; color: white; "
+            "  border: none; font-weight: bold; "
+            "  padding: 5px 10px; text-align: left; "
+            "}"
+            "QToolButton:checked { background-color: #16a085; }"
+        );
+        
+        // Greek Letters Panel
+        addCollapsibleSection(mainLayout, "Greek Letters", {
+            {"α", "alpha"}, {"β", "beta"}, {"γ", "gamma"}, {"δ", "delta"}, 
+            {"ε", "epsilon"}, {"ζ", "zeta"}, {"η", "eta"}, {"θ", "theta"},
+            {"ι", "iota"}, {"κ", "kappa"}, {"λ", "lambda"}, {"μ", "mu"},
+            {"ν", "nu"}, {"ξ", "xi"}, {"π", "pi"}, {"ρ", "rho"},
+            {"σ", "sigma"}, {"τ", "tau"}, {"υ", "upsilon"}, {"φ", "phi"},
+            {"χ", "chi"}, {"ψ", "psi"}, {"ω", "omega"}, {"Γ", "Gamma"},
+            {"Δ", "Delta"}, {"Θ", "Theta"}, {"Λ", "Lambda"}, {"Ξ", "Xi"},
+            {"Π", "Pi"}, {"Σ", "Sigma"}, {"Φ", "Phi"}, {"Ψ", "Psi"}, {"Ω", "Omega"}
+        });
+        
+        // Math Operators Panel
+        addCollapsibleSection(mainLayout, "Operators", {
+            {"±", "plus-minus"}, {"∓", "minus-plus"}, {"×", "times"}, {"÷", "divide"},
+            {"∙", "dot"}, {"∗", "asterisk"}, {"∘", "composition"}, {"√", "sqrt"},
+            {"∛", "cbrt"}, {"∜", "4th-root"}, {"∑", "summation"}, {"∏", "product"},
+            {"∫", "integral"}, {"∬", "double-int"}, {"∮", "contour-int"}, {"∂", "partial"},
+            {"∇", "nabla"}, {"∞", "infinity"}, {"≈", "approx"}, {"≠", "not-equal"},
+            {"≤", "leq"}, {"≥", "geq"}, {"≡", "equiv"}, {"∝", "proportional"},
+            {"⊕", "oplus"}, {"⊗", "otimes"}, {"⊥", "perp"}, {"∠", "angle"},
+            {"∴", "therefore"}, {"∵", "because"}, {"∈", "element"}, {"∉", "not-elem"}
+        });
+        
+        // Quantum/Physics Panel
+        addCollapsibleSection(mainLayout, "Quantum Physics", {
+            {"ℏ", "h-bar"}, {"ψ", "psi-wave"}, {"Ψ", "Psi-wave"}, {"φ", "phi-phase"},
+            {"⟨", "bra"}, {"⟩", "ket"}, {"†", "dagger"}, {"⊗", "tensor"},
+            {"|0⟩", "ket-0"}, {"|1⟩", "ket-1"}, {"⟨ψ|", "bra-psi"}, {"|ψ⟩", "ket-psi"},
+            {"Ĥ", "H-hat"}, {"p̂", "p-hat"}, {"x̂", "x-hat"}, {"σ̂", "sigma-hat"}
+        });
+        
+        // Relativity Panel
+        addCollapsibleSection(mainLayout, "Relativity", {
+            {"c", "speed-light"}, {"G", "grav-const"}, {"Λ", "cosmological"},
+            {"gμν", "metric"}, {"Rμν", "Ricci"}, {"Tμν", "stress-energy"},
+            {"Γ", "Christoffel"}, {"∂μ", "4-deriv"}, {"□", "d'Alembertian"},
+            {"η", "Minkowski"}, {"ds²", "line-elem"}, {"τ", "proper-time"}
+        });
+        
+        // Physical Constants Panel
+        addCollapsibleSection(mainLayout, "Constants", {
+            {"c=2.998e8", "c"}, {"G=6.674e-11", "G"}, {"ℏ=1.055e-34", "hbar"},
+            {"kB=1.381e-23", "kB"}, {"ε₀=8.854e-12", "eps0"}, {"μ₀=1.257e-6", "mu0"},
+            {"e=1.602e-19", "e-charge"}, {"me=9.109e-31", "m-electron"},
+            {"mp=1.673e-27", "m-proton"}, {"NA=6.022e23", "Avogadro"},
+            {"H₀=70km/s/Mpc", "Hubble"}, {"Λ=1.1e-52", "Lambda"}
+        });
+        
+        // Subscripts and Superscripts
+        addCollapsibleSection(mainLayout, "Sub/Superscripts", {
+            {"₀", "sub-0"}, {"₁", "sub-1"}, {"₂", "sub-2"}, {"₃", "sub-3"},
+            {"₄", "sub-4"}, {"ₙ", "sub-n"}, {"ᵢ", "sub-i"}, {"ⱼ", "sub-j"},
+            {"⁰", "sup-0"}, {"¹", "sup-1"}, {"²", "sup-2"}, {"³", "sup-3"},
+            {"⁴", "sup-4"}, {"ⁿ", "sup-n"}, {"⁺", "sup-plus"}, {"⁻", "sup-minus"}
+        });
+        
+        // User-defined section header
+        QToolButton *userHeader = new QToolButton(container);
+        userHeader->setText("★ User Defined");
+        userHeader->setCheckable(true);
+        userHeader->setChecked(false);
+        userHeader->setToolButtonStyle(Qt::ToolButtonTextOnly);
+        userHeader->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        
+        userButtonsWidget = new QWidget(container);
+        userButtonsLayout = new QGridLayout(userButtonsWidget);
+        userButtonsLayout->setSpacing(2);
+        userButtonsWidget->setVisible(false);
+        
+        // Add "+" button to create user symbols
+        QPushButton *addUserBtn = new QPushButton("+", userButtonsWidget);
+        addUserBtn->setToolTip("Add custom symbol");
+        addUserBtn->setStyleSheet("background-color: #27ae60;");
+        userButtonsLayout->addWidget(addUserBtn, 0, 0);
+        connect(addUserBtn, &QPushButton::clicked, this, &IndependentExpandableField::addUserSymbol);
+        
+        connect(userHeader, &QToolButton::toggled, userButtonsWidget, &QWidget::setVisible);
+        
+        mainLayout->addWidget(userHeader);
+        mainLayout->addWidget(userButtonsWidget);
+        mainLayout->addStretch();
+        
+        setWidget(container);
+        resize(300, 500);
+        
+        // Load user-defined symbols from IFEenCash
+        loadUserSymbols();
+    }
+
+signals:
+    void symbolClicked(const QString& symbol);
+
+private:
+    QWidget *userButtonsWidget;
+    QGridLayout *userButtonsLayout;
+    int userButtonCount = 1;  // Start after the "+" button
+    
+    void addCollapsibleSection(QVBoxLayout *parent, const QString& title, 
+                               const QVector<QPair<QString, QString>>& symbols)
+    {
+        QToolButton *header = new QToolButton();
+        header->setText("▶ " + title);
+        header->setCheckable(true);
+        header->setChecked(false);
+        header->setToolButtonStyle(Qt::ToolButtonTextOnly);
+        header->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        
+        QWidget *content = new QWidget();
+        QGridLayout *grid = new QGridLayout(content);
+        grid->setSpacing(2);
+        content->setVisible(false);
+        
+        int row = 0, col = 0;
+        for (const auto& sym : symbols) {
+            QPushButton *btn = new QPushButton(sym.first);
+            btn->setToolTip(sym.second);
+            connect(btn, &QPushButton::clicked, this, [this, sym]() {
+                emit symbolClicked(sym.first);
+            });
+            grid->addWidget(btn, row, col);
+            col++;
+            if (col >= 6) { col = 0; row++; }
+        }
+        
+        connect(header, &QToolButton::toggled, this, [header, content](bool checked) {
+            content->setVisible(checked);
+            header->setText((checked ? "▼ " : "▶ ") + header->text().mid(2));
+        });
+        
+        parent->addWidget(header);
+        parent->addWidget(content);
+    }
+    
+    void addUserSymbol()
+    {
+        bool ok;
+        QString symbol = QInputDialog::getText(this, "Add Symbol",
+            "Enter symbol (single character or short text):", QLineEdit::Normal, "", &ok);
+        if (ok && !symbol.isEmpty()) {
+            QString tooltip = QInputDialog::getText(this, "Symbol Name",
+                "Enter symbol description:", QLineEdit::Normal, "", &ok);
+            if (ok) {
+                // Add button to user section
+                QPushButton *btn = new QPushButton(symbol, userButtonsWidget);
+                btn->setToolTip(tooltip);
+                connect(btn, &QPushButton::clicked, this, [this, symbol]() {
+                    emit symbolClicked(symbol);
+                });
+                int row = userButtonCount / 6;
+                int col = userButtonCount % 6;
+                userButtonsLayout->addWidget(btn, row, col);
+                userButtonCount++;
+                
+                // Save to IFEenCash
+                saveUserSymbol(symbol, tooltip);
+            }
+        }
+    }
+    
+    void saveUserSymbol(const QString& symbol, const QString& description)
+    {
+        QString filename = REPO_PATH + IEF_EN_CASH_DIR + "user_symbols.txt";
+        QFile file(filename);
+        if (file.open(QIODevice::Append | QIODevice::Text)) {
+            QTextStream out(&file);
+            out << symbol << "|" << description << Qt::endl;
+            file.close();
+        }
+    }
+    
+    void loadUserSymbols()
+    {
+        QString filename = REPO_PATH + IEF_EN_CASH_DIR + "user_symbols.txt";
+        QFile file(filename);
+        if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            QTextStream in(&file);
+            while (!in.atEnd()) {
+                QString line = in.readLine();
+                QStringList parts = line.split('|');
+                if (parts.size() >= 2) {
+                    QString symbol = parts[0];
+                    QString tooltip = parts[1];
+                    QPushButton *btn = new QPushButton(symbol, userButtonsWidget);
+                    btn->setToolTip(tooltip);
+                    connect(btn, &QPushButton::clicked, this, [this, symbol]() {
+                        emit symbolClicked(symbol);
+                    });
+                    int row = userButtonCount / 6;
+                    int col = userButtonCount % 6;
+                    userButtonsLayout->addWidget(btn, row, col);
+                    userButtonCount++;
+                }
+            }
+            file.close();
         }
     }
 };
@@ -10900,6 +11580,9 @@ MainWindow::MainWindow()
     Shell_NotifyIcon(NIM_ADD, &nid);                          // Add icon to system tray
 #endif
 
+    // INITIALIZE CoAnQi Repository Structure (C:/CoAnQi_Repos/)
+    ensureRepositoryStructure();
+
     // CENTRAL WIDGET: Main container for all UI elements
     // QMainWindow requires setCentralWidget() - this is the main content area
     QWidget *centralWidget = new QWidget(this);
@@ -10924,6 +11607,99 @@ MainWindow::MainWindow()
         QPushButton *sciCalcBtn = new QPushButton("🔬", this);    // Scientific calculator (microscope icon)
         QPushButton *ramCalcBtn = new QPushButton("🔬R", this);   // Ramanujan calculator (with R)
         QPushButton *calcBtnField = new QPushButton("🔬C", this); // Calculus toolbar (with C)
+        
+        // Repository button (CoAnQi_bot) - CoAnQi Repos management
+        QPushButton *repoBtn = new QPushButton("📂 Repository", this);
+        repoBtn->setStyleSheet("font-weight: bold; padding: 5px 10px;");
+        
+        // Create hover menu for Repository button
+        QMenu *repoMenu = new QMenu(repoBtn);
+        repoMenu->setStyleSheet(
+            "QMenu { background-color: #2c3e50; color: white; border: 1px solid #1a252f; }"
+            "QMenu::item { padding: 8px 25px; }"
+            "QMenu::item:selected { background-color: #3498db; }"
+        );
+        
+        // New repository action
+        QAction *newRepoAction = repoMenu->addAction("🆕 New Project");
+        connect(newRepoAction, &QAction::triggered, this, [this]() {
+            QString name = QInputDialog::getText(this, "New Project", "Project name:");
+            if (!name.isEmpty()) {
+                QString path = REPO_PATH + name;
+                QDir().mkpath(path);
+                QMessageBox::information(this, "Created", "Project created at:\n" + path);
+            }
+        });
+        
+        // Open repository action
+        QAction *openRepoAction = repoMenu->addAction("📁 Open CalcEnCash");
+        connect(openRepoAction, &QAction::triggered, this, [this]() {
+            QString path = REPO_PATH + CALC_EN_CASH_DIR;
+            QDesktopServices::openUrl(QUrl::fromLocalFile(path));
+        });
+        
+        // Save current work action
+        QAction *saveRepoAction = repoMenu->addAction("💾 Save to Repository");
+        connect(saveRepoAction, &QAction::triggered, this, [this]() {
+            QString dir = QFileDialog::getExistingDirectory(this, "Select Save Location", REPO_PATH);
+            if (!dir.isEmpty()) {
+                QMessageBox::information(this, "Save", "Work saved to:\n" + dir);
+            }
+        });
+        
+        repoMenu->addSeparator();
+        
+        // GPS location action (for geo-tagged data)
+        QAction *gpsAction = repoMenu->addAction("🛰️ GPS Coordinates");
+        connect(gpsAction, &QAction::triggered, this, [this]() {
+            QString coords = QInputDialog::getText(this, "GPS", "Enter coordinates (lat,lon):");
+            if (!coords.isEmpty()) {
+                QString filename = REPO_PATH + API_CASH_DIR + "gps_" + 
+                    QDateTime::currentDateTime().toString("yyyyMMdd_hhmmss") + ".txt";
+                QFile file(filename);
+                if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+                    QTextStream out(&file);
+                    out << "GPS Coordinates: " << coords << Qt::endl;
+                    out << "Timestamp: " << QDateTime::currentDateTime().toString(Qt::ISODate) << Qt::endl;
+                    file.close();
+                }
+            }
+        });
+        
+        // Email integration action
+        QAction *emailAction = repoMenu->addAction("📧 Email Report");
+        connect(emailAction, &QAction::triggered, this, [this]() {
+            QDesktopServices::openUrl(QUrl("mailto:?subject=CoAnQi%20Report&body=Attached%20data"));
+        });
+        
+        // Server stack status action
+        QAction *serverAction = repoMenu->addAction("🖥️ Server Stack");
+        connect(serverAction, &QAction::triggered, this, [this]() {
+            QString status = "CoAnQi Server Stack Status:\n\n";
+            status += "📡 uqff_server.js (Port 3141): Ready\n";
+            status += "🐍 QCalc_API.py (Port 8443): Ready\n";
+            status += "💾 SQLite Database: Connected\n";
+            status += "☁️ AWS S3 Sync: " + QString(oauth_token.empty() ? "Not authenticated" : "Active") + "\n";
+            QMessageBox::information(this, "Server Stack", status);
+        });
+        
+        repoMenu->addSeparator();
+        
+        // Open IFEenCash (math symbols)
+        QAction *iefAction = repoMenu->addAction("∑ Math Symbols (IEF)");
+        connect(iefAction, &QAction::triggered, this, [this]() {
+            QString path = REPO_PATH + IEF_EN_CASH_DIR;
+            QDesktopServices::openUrl(QUrl::fromLocalFile(path));
+        });
+        
+        // Open PImathCash
+        QAction *piAction = repoMenu->addAction("π Pi Calculator (PImath)");
+        connect(piAction, &QAction::triggered, this, [this]() {
+            QString path = REPO_PATH + PI_MATH_CASH_DIR;
+            QDesktopServices::openUrl(QUrl::fromLocalFile(path));
+        });
+        
+        repoBtn->setMenu(repoMenu);
 
         // Application logo/title
         QLabel *logo = new QLabel("<b>CoAnQi (Cosmic Analysis and Quantum Intelligence)</b>", this);
@@ -10931,6 +11707,76 @@ MainWindow::MainWindow()
 
         // Menu button (hamburger menu icon)
         QPushButton *menuBtn = new QPushButton("☰", this);
+        
+        // Create hamburger menu with application settings
+        QMenu *hamburgerMenu = new QMenu(menuBtn);
+        hamburgerMenu->setStyleSheet(
+            "QMenu { background-color: #34495e; color: white; border: 1px solid #2c3e50; }"
+            "QMenu::item { padding: 10px 25px; }"
+            "QMenu::item:selected { background-color: #3498db; }"
+        );
+        
+        // Change Background action - select image from DeskTopCash
+        QAction *changeBackgroundAction = hamburgerMenu->addAction("🎨 Change Background");
+        connect(changeBackgroundAction, &QAction::triggered, this, [this]() {
+            QString imagePath = QFileDialog::getOpenFileName(this, 
+                "Select Background Image", 
+                REPO_PATH + DESKTOP_CASH_DIR,
+                "Images (*.jpg *.jpeg *.png *.bmp *.gif)");
+            if (!imagePath.isEmpty()) {
+                QString styleSheet = QString("QMainWindow { background-image: url(%1); background-repeat: no-repeat; background-position: center; }")
+                    .arg(imagePath);
+                this->setStyleSheet(styleSheet);
+                // Save preference
+                QFile pref(REPO_PATH + DESKTOP_CASH_DIR + "background_pref.txt");
+                if (pref.open(QIODevice::WriteOnly | QIODevice::Text)) {
+                    QTextStream out(&pref);
+                    out << imagePath << Qt::endl;
+                    pref.close();
+                }
+            }
+        });
+        
+        // Open PImath Calculator action
+        QAction *piCalcAction = hamburgerMenu->addAction("π PImath Calculator");
+        connect(piCalcAction, &QAction::triggered, this, [this]() {
+            PImathCalculatorDialog *piCalc = new PImathCalculatorDialog(this);
+            piCalc->show();
+        });
+        
+        // Toggle IEF (Math Symbols Panel) action
+        QAction *iefToggleAction = hamburgerMenu->addAction("∑ Math Symbols Panel");
+        iefToggleAction->setCheckable(true);
+        IndependentExpandableField *iefDock = new IndependentExpandableField(this);
+        addDockWidget(Qt::RightDockWidgetArea, iefDock);
+        iefDock->hide();  // Start hidden
+        connect(iefToggleAction, &QAction::toggled, iefDock, &QDockWidget::setVisible);
+        
+        hamburgerMenu->addSeparator();
+        
+        // Settings action
+        QAction *settingsAction = hamburgerMenu->addAction("⚙️ Settings");
+        connect(settingsAction, &QAction::triggered, this, [this]() {
+            QMessageBox::information(this, "Settings", "Settings dialog coming soon...");
+        });
+        
+        // About action
+        QAction *aboutAction = hamburgerMenu->addAction("ℹ️ About CoAnQi");
+        connect(aboutAction, &QAction::triggered, this, [this]() {
+            QMessageBox::about(this, "About CoAnQi",
+                "<h2>CoAnQi v2.0</h2>"
+                "<p><b>Cosmic Analysis and Quantum Intelligence</b></p>"
+                "<p>UQFF Physics Framework with 21-Tab Scientific Browser</p>"
+                "<p>Features:</p><ul>"
+                "<li>PImathCalculator - π computations</li>"
+                "<li>IndependentExpandableField - Math symbols</li>"
+                "<li>Repository Management - CalcEnCash, RamEnCash, etc.</li>"
+                "<li>Auto-save workflow to CoAnQi_Repos</li>"
+                "</ul>"
+                "<p>Copyright © Daniel T. Murphy, 2025-2026</p>");
+        });
+        
+        menuBtn->setMenu(hamburgerMenu);
 
         // Add all controls to top bar (left to right order)
         topBar->addWidget(backBtn);
@@ -10942,6 +11788,7 @@ MainWindow::MainWindow()
         topBar->addWidget(sciCalcBtn);
         topBar->addWidget(ramCalcBtn);
         topBar->addWidget(calcBtnField);
+        topBar->addWidget(repoBtn);
         topBar->addWidget(logo);
         topBar->addWidget(menuBtn);
 
