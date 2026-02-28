@@ -9494,11 +9494,51 @@ public:
         // Create "Solve" button to trigger calculation
         QPushButton *solveBtn = new QPushButton("Solve", this);
 
+        // ================================================================
+        // SYMBOL PALETTE (Grok analysis - Unicode character input support)
+        // ================================================================
+        // Creates a scrollable grid of clickable math symbols for easy insertion
+        // into equations. Addresses keyboard input limitations for Unicode chars.
+        // Expanded with Greek uppercase, logic symbols, summation, product (S-C Iteration 22)
+        const QString symbols_joined = QString::fromUtf8(
+            u8"±∞=≠~×÷!∝<≪>≫≤≥∓≅≈≡∀∁∂√∛∜∪∩∅%°∆∇∃∄∈∋←↑→↓↔∴"
+            u8"+-αβγδεεθϑμπρστφω*∙⋮⋯⋰⋱ℵℶ∎∫∬∭∮∯∰/⁄¹²³⁴⁵⁶⁷⁸⁹⁰"
+            u8"ΓΔΘΛΞΠΣΥΦΨΩζηικλνξουχψ∑∏"
+            u8"⊂⊆∉¬∧∨⇒⇔"
+        );
+        QScrollArea *symbolScroll = new QScrollArea(this);
+        symbolScroll->setWidgetResizable(true);
+        symbolScroll->setMinimumHeight(60);
+        symbolScroll->setMaximumHeight(120);  // Expanded for more symbols
+        QWidget *symbolPanel = new QWidget;
+        QGridLayout *symbolGrid = new QGridLayout(symbolPanel);
+        symbolGrid->setSpacing(2);
+        int col = 0, row = 0;
+        for (QChar ch : symbols_joined) {
+            QString sym(ch);
+            QPushButton *btn = new QPushButton(sym, symbolPanel);
+            btn->setFixedSize(30, 30);
+            btn->setToolTip(QString("Insert %1").arg(sym));
+            connect(btn, &QPushButton::clicked, [this, sym]() { insertSymbol(sym); });
+            symbolGrid->addWidget(btn, row, col);
+            col++;
+            if (col >= 20) { col = 0; row++; }  // 20 columns per row
+        }
+        symbolPanel->setLayout(symbolGrid);
+        symbolScroll->setWidget(symbolPanel);
+
+        // Recall button - load previous calculations from SCalcCash (S-C Iteration 22)
+        QPushButton *recallBtn = new QPushButton("Recall", this);
+        recallBtn->setToolTip("Load previous calculation from ScalcCash");
+        connect(recallBtn, &QPushButton::clicked, this, &ScientificCalculatorDialog::recallFromCache);
+
         // Add all widgets to the vertical layout
-        layout->addWidget(input);    // Input box at top
-        layout->addWidget(solveBtn); // Solve button
-        layout->addWidget(workflow); // Workflow history
-        layout->addWidget(output);   // Output box at bottom
+        layout->addWidget(input);       // Input box at top
+        layout->addWidget(symbolScroll); // Symbol palette (Grok)
+        layout->addWidget(solveBtn);    // Solve button
+        layout->addWidget(recallBtn);   // Recall button (S-C)
+        layout->addWidget(workflow);    // Workflow history
+        layout->addWidget(output);      // Output box at bottom
 
         // Connect signals to slots (Qt's event handling mechanism)
         // When "Solve" button is clicked, call solveEquations() method
@@ -9597,6 +9637,60 @@ private:
     QStringList equationHistory;  // History of equations and solutions for workflow display
 
     // ========================================================================
+    // insertSymbol - Inserts a symbol from the palette into the input field
+    // ========================================================================
+    void insertSymbol(const QString& sym) {
+        input->insertPlainText(sym);
+        input->setFocus();  // Keep focus on input for continued typing
+    }
+
+    // recallFromCache - Load previous calculation from ScalcCash (S-C Iteration 22)
+    // Displays file dialog to select and load a cached calculation
+    void recallFromCache() {
+        QString dir = REPO_PATH + SCALC_CASH_DIR;
+        QDir cacheDir(dir);
+        if (!cacheDir.exists()) {
+            QMessageBox::information(this, "Recall", "No cached calculations found.\nScalcCash directory doesn't exist.");
+            return;
+        }
+        
+        QStringList files = cacheDir.entryList(QStringList() << "*.txt", QDir::Files, QDir::Time);
+        if (files.isEmpty()) {
+            QMessageBox::information(this, "Recall", "No cached calculations found.");
+            return;
+        }
+        
+        // Show selection dialog with most recent files
+        QStringList items;
+        for (int i = 0; i < qMin(20, files.size()); ++i) {
+            items << files[i];
+        }
+        
+        bool ok;
+        QString selected = QInputDialog::getItem(this, "Recall Calculation", 
+            "Select a previous calculation:", items, 0, false, &ok);
+        
+        if (ok && !selected.isEmpty()) {
+            QFile file(dir + selected);
+            if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                QString content = QTextStream(&file).readAll();
+                file.close();
+                
+                // Parse the file - first line is equation, rest is results
+                QStringList lines = content.split('\n');
+                if (!lines.isEmpty()) {
+                    input->setPlainText(lines[0]);
+                    if (lines.size() > 2) {
+                        // Skip "Results:" line and show the rest
+                        output->setPlainText(lines.mid(2).join('\n'));
+                    }
+                }
+                workflow->append("Recalled: " + selected);
+            }
+        }
+    }
+
+    // ========================================================================
     // PRIVATE HELPER METHODS - Internal functions used by this class
     // ========================================================================
 
@@ -9657,14 +9751,78 @@ private:
         // Get all text from input box and convert to C++ string
         std::string expr = input->toPlainText().toStdString();
 
+        // ================================================================
+        // UNICODE PREPROCESSING (Grok analysis - sympify compatibility)
+        // ================================================================
+        // Convert Unicode math symbols to SymPy-compatible ASCII equivalents
+        std::map<std::string, std::string> unicode_replacements;
+        unicode_replacements["\xc2\xb2"] = "**2";  // ²
+        unicode_replacements["\xc2\xb3"] = "**3";  // ³
+        unicode_replacements["\xe2\x81\xb4"] = "**4";  // ⁴
+        unicode_replacements["\xe2\x81\xb5"] = "**5";  // ⁵
+        unicode_replacements["\xe2\x81\xb6"] = "**6";  // ⁶
+        unicode_replacements["\xe2\x81\xb7"] = "**7";  // ⁷
+        unicode_replacements["\xe2\x81\xb8"] = "**8";  // ⁸
+        unicode_replacements["\xe2\x81\xb9"] = "**9";  // ⁹
+        unicode_replacements["\xc3\x97"] = "*";   // ×
+        unicode_replacements["\xc3\xb7"] = "/";   // ÷
+        unicode_replacements["\xe2\x88\x9e"] = "oo";  // ∞
+        unicode_replacements["\xe2\x88\x9a"] = "sqrt";  // √
+        unicode_replacements["\xe2\x88\x9b"] = "cbrt";  // ∛
+        unicode_replacements["\xe2\x89\xa0"] = "!=";  // ≠
+        unicode_replacements["\xe2\x89\x88"] = "~=";  // ≈
+        unicode_replacements["\xe2\x89\xa1"] = "=";   // ≡
+        // ∓ and ± removed per Grok analysis - they break sympify expressions
+        unicode_replacements["\xe2\x88\x9d"] = "*";   // ∝
+        unicode_replacements["\xe2\x81\x84"] = "/";   // ⁄
+        unicode_replacements["\xcf\x80"] = "pi";  // π
+        unicode_replacements["\xce\xb1"] = "alpha";  // α
+        unicode_replacements["\xce\xb2"] = "beta";   // β
+        unicode_replacements["\xce\xb3"] = "gamma";  // γ
+        unicode_replacements["\xce\xb4"] = "delta";  // δ
+        unicode_replacements["\xce\xb5"] = "epsilon";  // ε
+        unicode_replacements["\xce\xb8"] = "theta";  // θ
+        unicode_replacements["\xce\xbc"] = "mu";     // μ
+        unicode_replacements["\xcf\x83"] = "sigma";  // σ
+        unicode_replacements["\xcf\x84"] = "tau";    // τ
+        unicode_replacements["\xcf\x86"] = "phi";    // φ
+        unicode_replacements["\xcf\x89"] = "omega";  // ω
+        for (const auto& pair : unicode_replacements) {
+            size_t pos = 0;
+            while ((pos = expr.find(pair.first, pos)) != std::string::npos) {
+                expr.replace(pos, pair.first.length(), pair.second);
+                pos += pair.second.length();
+            }
+        }
+
+        // ================================================================
+        // INVALID OPERATOR VALIDATION (S-C Iteration 22 - error prevention)
+        // ================================================================
+        // Detect invalid operator sequences that would cause parsing errors
+        std::regex invalid_ops(R"(\*\*\/|\/\*\*|[\+\-\*\/]{2,})");
+        std::smatch match;
+        if (std::regex_search(expr, match, invalid_ops)) {
+            output->append("Error: Invalid operator sequence detected: " + 
+                QString::fromStdString(match.str()));
+            output->append("Please check your expression for consecutive operators.");
+            return;
+        }
+
         // Vector to store individual equations (one per line)
         std::vector<std::string> equations;
+
+        // Trim lambda for cleaner string handling (Grok analysis)
+        auto trim = [](std::string& s) {
+            s.erase(0, s.find_first_not_of(" \t"));
+            s.erase(s.find_last_not_of(" \t") + 1);
+        };
 
         // Parse input by splitting on newlines
         std::stringstream ss(expr);
         std::string line;
         while (std::getline(ss, line)) // Read line by line
         {
+            trim(line);  // Trim whitespace using lambda
             if (!line.empty())             // Ignore blank lines
                 equations.push_back(line); // Add equation to vector
         }
@@ -9881,54 +10039,102 @@ private:
 #endif
             }
             // ================================================================
-            // DEFINITE/INDEFINITE INTEGRAL: ? or ∫ notation (IMPROVED)
+            // DEFINITE/INDEFINITE INTEGRAL: ? or ∫ notation (IMPROVED - Grok analysis)
             // ================================================================
-            // Supports: ?(0,1) x^2 dx, ∫(0,1) x^2 dx, ∫ x^2 dx (indefinite)
+            // Supports: ?(0,1) x^2 dx, ∫(0,π) y^2 dy, ∫ z^2 dz (symbolic limits!)
             else if (eq.find("?") != std::string::npos || eq.find("∫") != std::string::npos)
             {
 #ifndef NO_PYTHON
                 try {
-                    // Check for definite vs indefinite integral
-                    bool hasParens = (eq.find("(") != std::string::npos && eq.find(")") != std::string::npos);
-                    bool hasDx = (eq.find("dx") != std::string::npos);
+                    // Improved regex to capture any integration variable and symbolic limits
+                    // Definite: ∫(a,b) f(x) dx  |  Indefinite: ∫ f(x) dx
+                    // Updated to support symbolic limits like π, ∞, etc.
+                    std::regex int_regex(R"([\?∫]\s*\(\s*([^,]+)\s*,\s*([^)]+)\s*\)\s*(.+?)\s*d(\w+)|[\?∫]\s*(.+?)\s*d(\w+))");
+                    std::smatch matches;
                     
-                    py::object x = sympy.attr("symbols")("x");
-                    
-                    if (hasParens && hasDx) {
-                        // Definite integral: ?(0,1) x^2 dx or ∫(0,1) x^2 dx
-                        std::string bounds = eq.substr(eq.find("(") + 1, eq.find(")") - eq.find("(") - 1);
-                        std::string func = eq.substr(eq.find(")") + 1, eq.find("dx") - eq.find(")") - 1);
+                    if (std::regex_search(eq, matches, int_regex)) {
+                        bool definite = matches[1].matched && matches[1].str().length() > 0;
+                        std::string func = definite ? matches[3].str() : matches[5].str();
+                        std::string var_str = definite ? matches[4].str() : matches[6].str();
                         
-                        // Trim whitespace from func
-                        func.erase(0, func.find_first_not_of(" \t"));
-                        func.erase(func.find_last_not_of(" \t") + 1);
+                        // Trim whitespace using lambda
+                        trim(func);
+                        trim(var_str);
                         
-                        auto [a, b] = parseBounds(bounds);
+                        py::object sym_var = sympy.attr("symbols")(var_str);
+                        py::object expr_int = sympy.attr("sympify")(func);
                         
-                        py::object expr = sympy.attr("sympify")(func);
-                        py::object integral = sympy.attr("integrate")(expr, py::make_tuple(x, a, b));
-                        
-                        result += QString("∫(%1,%2) %3 dx = %4\n")
-                                      .arg(QString::number(a), QString::number(b), 
-                                           QString::fromStdString(func),
-                                           QString::fromStdString(py::str(integral).cast<std::string>()));
-                    } else if (hasDx) {
-                        // Indefinite integral: ∫ x^2 dx
-                        size_t start = eq.find_first_of("?∫") + 1;
-                        std::string func = eq.substr(start, eq.find("dx") - start);
-                        
-                        // Trim whitespace
-                        func.erase(0, func.find_first_not_of(" \t"));
-                        func.erase(func.find_last_not_of(" \t") + 1);
-                        
-                        py::object expr = sympy.attr("sympify")(func);
-                        py::object integral = sympy.attr("integrate")(expr, x);
-                        
-                        result += QString("∫ %1 dx = %2 + C\n")
-                                      .arg(QString::fromStdString(func),
-                                           QString::fromStdString(py::str(integral).cast<std::string>()));
+                        if (definite) {
+                            std::string lower_str = matches[1].str();
+                            std::string upper_str = matches[2].str();
+                            trim(lower_str);
+                            trim(upper_str);
+                            
+                            // Support symbolic limits (π, ∞, etc.) via try-catch pattern
+                            py::object lower, upper;
+                            try {
+                                lower = py::float_(std::stod(lower_str));
+                            } catch (...) {
+                                lower = sympy.attr("sympify")(lower_str);
+                            }
+                            try {
+                                upper = py::float_(std::stod(upper_str));
+                            } catch (...) {
+                                upper = sympy.attr("sympify")(upper_str);
+                            }
+                            
+                            py::object integral = sympy.attr("integrate")(expr_int, py::make_tuple(sym_var, lower, upper));
+                            
+                            result += QString("∫(%1,%2) %3 d%4 = %5\n")
+                                          .arg(QString::fromStdString(lower_str), 
+                                               QString::fromStdString(upper_str), 
+                                               QString::fromStdString(func),
+                                               QString::fromStdString(var_str),
+                                               QString::fromStdString(py::str(integral).cast<std::string>()));
+                        } else {
+                            py::object integral = sympy.attr("integrate")(expr_int, sym_var);
+                            
+                            result += QString("∫ %1 d%2 = %3 + C\n")
+                                          .arg(QString::fromStdString(func),
+                                               QString::fromStdString(var_str),
+                                               QString::fromStdString(py::str(integral).cast<std::string>()));
+                        }
                     } else {
-                        result += QString("Invalid integral format. Use: '∫(0,1) x^2 dx' or '∫ x^2 dx'\n");
+                        // Fallback to old parsing for backwards compatibility
+                        bool hasParens = (eq.find("(") != std::string::npos && eq.find(")") != std::string::npos);
+                        bool hasDx = (eq.find("dx") != std::string::npos);
+                        
+                        py::object x = sympy.attr("symbols")("x");
+                        
+                        if (hasParens && hasDx) {
+                            std::string bounds = eq.substr(eq.find("(") + 1, eq.find(")") - eq.find("(") - 1);
+                            std::string func = eq.substr(eq.find(")") + 1, eq.find("dx") - eq.find(")") - 1);
+                            func.erase(0, func.find_first_not_of(" \t"));
+                            func.erase(func.find_last_not_of(" \t") + 1);
+                            
+                            auto [a, b] = parseBounds(bounds);
+                            py::object expr = sympy.attr("sympify")(func);
+                            py::object integral = sympy.attr("integrate")(expr, py::make_tuple(x, a, b));
+                            
+                            result += QString("∫(%1,%2) %3 dx = %4\n")
+                                          .arg(QString::number(a), QString::number(b), 
+                                               QString::fromStdString(func),
+                                               QString::fromStdString(py::str(integral).cast<std::string>()));
+                        } else if (hasDx) {
+                            size_t start = eq.find_first_of("?∫") + 1;
+                            std::string func = eq.substr(start, eq.find("dx") - start);
+                            func.erase(0, func.find_first_not_of(" \t"));
+                            func.erase(func.find_last_not_of(" \t") + 1);
+                            
+                            py::object expr = sympy.attr("sympify")(func);
+                            py::object integral = sympy.attr("integrate")(expr, x);
+                            
+                            result += QString("∫ %1 dx = %2 + C\n")
+                                          .arg(QString::fromStdString(func),
+                                               QString::fromStdString(py::str(integral).cast<std::string>()));
+                        } else {
+                            result += QString("Invalid integral format. Use: '∫(0,1) x^2 dx' or '∫ x^2 dx'\n");
+                        }
                     }
                 } catch (const py::error_already_set& e) {
                     result += QString("Integral Python Error: %1\n").arg(e.what());
@@ -9996,11 +10202,24 @@ private:
             result += QString("[System solving: Use Number Theory tool for symbolic math]\n");
 #else
             try {
-                // Build list of equations for SymPy solver
+                // Build list of equations using proper SymPy Eq() construction (Grok analysis)
+                // This is more robust than string manipulation with sympify
                 py::list eq_list;
-                for (const auto& e : system_eqs) {
-                    py::object eq_py = sympy.attr("sympify")(e);
-                    eq_list.append(eq_py);
+                
+                if (!system_lhs.empty() && system_lhs.size() == system_rhs.size()) {
+                    // Use LHS/RHS parsing with Eq() - preferred method
+                    for (size_t i = 0; i < system_lhs.size(); ++i) {
+                        py::object lhs_py = sympy.attr("sympify")(system_lhs[i]);
+                        py::object rhs_py = sympy.attr("sympify")(system_rhs[i]);
+                        py::object eq_obj = sympy.attr("Eq")(lhs_py, rhs_py);
+                        eq_list.append(eq_obj);
+                    }
+                } else {
+                    // Fallback to old method for backwards compatibility
+                    for (const auto& e : system_eqs) {
+                        py::object eq_py = sympy.attr("sympify")(e);
+                        eq_list.append(eq_py);
+                    }
                 }
                 
                 // SymPy's solve() auto-detects variables and handles:
@@ -10010,16 +10229,15 @@ private:
                 py::object solutions = sympy.attr("solve")(eq_list);
                 
                 // Display all equations in the system
-                result += QString("System (%1 equation(s)):\n").arg(system_eqs.size());
-                for (size_t i = 0; i < system_eqs.size(); ++i) {
-                    // Reconstruct original equation format
-                    std::string orig = system_eqs[i];
-                    // Replace the '-' we added back to '=' for display
-                    size_t minus_pos = orig.rfind("-");
-                    if (minus_pos != std::string::npos && minus_pos > 0) {
-                        orig.replace(minus_pos, 1, "=");
+                result += QString("System (%1 equation(s)):\n").arg(system_original.empty() ? system_eqs.size() : system_original.size());
+                if (!system_original.empty()) {
+                    for (size_t i = 0; i < system_original.size(); ++i) {
+                        result += QString("  %1) %2\n").arg(i + 1).arg(QString::fromStdString(system_original[i]));
                     }
-                    result += QString("  %1) %2\n").arg(i + 1).arg(QString::fromStdString(orig));
+                } else {
+                    for (size_t i = 0; i < system_eqs.size(); ++i) {
+                        result += QString("  %1) %2\n").arg(i + 1).arg(QString::fromStdString(system_eqs[i]));
+                    }
                 }
                 
                 // Display solutions using proper py::str() conversion
@@ -10027,7 +10245,7 @@ private:
                               .arg(QString::fromStdString(py::str(solutions).cast<std::string>()));
                 
                 // For high-degree polynomials, also show numerical approximation if available
-                if (system_eqs.size() == 1) {
+                if (eq_list.size() == 1) {
                     try {
                         py::object nsolve_result = sympy.attr("nsolve")(eq_list[0], 0);
                         result += QString("Numerical root near 0: %1\n")
