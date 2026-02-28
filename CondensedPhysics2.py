@@ -29953,6 +29953,788 @@ ORB_ANALYSIS_55_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS 56: DPM DUALISM & BLACK HOLE BUBBLE DYNAMICS
+# Source: Deep re-extraction of https://x.com/i/grok/share/efdeff64f4ff42c2b8f34cad18ceea9e
+# Physics: DPM dualistic mechanism, polarity generations, bubble shattering,
+#          Hawking spin-off, vacuum depletion, chaos/coherence chains,
+#          Sweet's vacuum energy, precessional resonance, plasma convection
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ORB_ANALYSIS_56_PARAMS = {
+    # DPM Dualism Parameters (core mechanism)
+    'rho_vac_UA_triple_prime': 7.09e-36,  # J/m³ (Aether density UA''')
+    'rho_vac_SCm_5prime': 7.09e-37,       # J/m³ (Superconductive SCm''''')
+    'kappa_decay': 0.0005,                 # day⁻¹ (reactivity decay)
+    'depletion_threshold': 0.5,            # Shift to mostly UA when > 0.5
+    
+    # Black Hole Bubble Parameters
+    'Omega_g': 7.3e-16,                    # rad/s (galactic spin rate)
+    'M_bh_SgrA': 8.15e36,                  # kg (Sgr A* mass)
+    'd_g': 2.55e20,                        # m (galactic center distance)
+    'beta_buoyancy': 0.6,                  # Buoyancy coupling
+    'theta_shattering': 45.0,              # deg (bubble shatter angle)
+    
+    # Gravity Projection Shape Parameters
+    'k_1': 1.5,                            # UG1 coupling
+    'k_2': 1.2,                            # UG2 coupling
+    'k_3': 1.8,                            # UG3 coupling
+    'k_4': 1.0,                            # UG4 coupling
+    
+    # DPM Resonance Parameters
+    'g_factor': 2.0023,                    # Electron g-factor
+    'mu_B': 9.274e-24,                     # J/T (Bohr magneton)
+    'B_0': 1e-5,                           # T (typical field)
+    'omega_0': 1e-15,                      # s⁻¹ (characteristic frequency)
+    'h_planck': 6.626e-34,                 # J·s
+    
+    # Hawking Radiation Parameters
+    'hawking_polarity': 1.0,               # (+) polarity after spin-off
+    'recycle_event': 1.0,                  # Recycling factor for rocky bodies
+    
+    # Sweet's Vacuum Energy Parameters
+    'epsilon_0': 8.85e-12,                 # F/m (vacuum permittivity)
+    'k_fb': 0.01,                          # Feedback constant
+    'f_feedback': 300.0,                   # Hz (Aurora anomaly frequency)
+    
+    # Plasma Convection Parameters (Red Dwarf Reactor)
+    'Omega_Earth': 7.29e-5,                # rad/s (Earth rotation)
+    'E_bulb': 65.0,                        # W (incandescent bulb power)
+    'V_medium': 5e-3,                      # m³ (nano oil volume)
+    'n_plasmoids': 1000,                   # Typical plasmoid count
+    'f_photon': 5e14,                      # Hz (visible light frequency)
+    
+    # Chaos/Coherence Parameters
+    'chaos_coherence_factor': 1.0,         # Chain reaction scaling
+    'creation_rate': 1e10,                 # events/s
+    'destruction_rate': 1e10,              # events/s
+    
+    # Physical Constants
+    'c': 2.998e8,                          # m/s
+    'G': 6.674e-11,                        # m³/(kg·s²)
+}
+
+
+class DPMDualismCalculator:
+    """
+    Calculator for Di-Pseudo-Monopole dualistic mechanism.
+    DPM = [(UA'''):(SCm''''')] - the heart of every atom and star.
+    
+    The DPM is comprised of trapped cosmic Aether [(UA')] with negative polarity
+    and extrauniversal Superconductive material (SCm generations) with double
+    negative polarity, together creating mass and Universal Gravities.
+    
+    Equations:
+    DPM = ρ_vac,[(UA''')]/ρ_vac,[SCm'''''] · (1 - depletion_factor) · geometry
+    
+    Source: UQFF framework, Document corrections on DPM dualism
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_56_PARAMS
+    
+    def compute(self, rho_vac_UA: float = None, rho_vac_SCm: float = None,
+                depletion_factor: float = 0.1, geometry_factor: float = 1.0) -> dict:
+        """
+        Compute DPM dualistic ratio.
+        
+        Args:
+            rho_vac_UA: Aether vacuum density (J/m³)
+            rho_vac_SCm: Superconductive vacuum density (J/m³)
+            depletion_factor: Shift factor (0-1, >0.5 = mostly UA)
+            geometry_factor: Shape arrangement factor
+            
+        Returns:
+            DPM ratio and component analysis
+        """
+        rho_UA = rho_vac_UA or self.params['rho_vac_UA_triple_prime']
+        rho_SCm = rho_vac_SCm or self.params['rho_vac_SCm_5prime']
+        
+        # Core DPM equation
+        dpm_ratio = (rho_UA / rho_SCm) * (1 - depletion_factor) * geometry_factor
+        
+        # Analyze dominance
+        if depletion_factor > 0.5:
+            state = 'UA-dominant (approaching bubble shatter)'
+        else:
+            state = 'SCm-dominant (stable DPM)'
+        
+        return {
+            'dpm_ratio': dpm_ratio,
+            'rho_vac_UA': rho_UA,
+            'rho_vac_SCm': rho_SCm,
+            'depletion_factor': depletion_factor,
+            'geometry_factor': geometry_factor,
+            'state': state,
+            'equation': 'DPM = ρ_vac,[(UA\'\'\')]/ρ_vac,[SCm\'\'\'\'\'] · (1 - df) · geometry'
+        }
+
+
+class DepletionFactorCalculator:
+    """
+    Calculator for vacuum depletion factor in DPM dynamics.
+    
+    The depletion factor represents the magnitudinal shift in vacuum density
+    relationships (vacuum_density^-1 units / trapped_volume), determining when
+    UG4i loses its UBi_i resistance ability.
+    
+    Equation:
+    depletion = ρ_vac,[(UA''')]/[ρ_vac,[(UA''')] + ρ_vac,[SCm''''')]
+    
+    Source: UQFF black hole mechanisms
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_56_PARAMS
+    
+    def compute(self, rho_vac_UA: float = None, rho_vac_SCm: float = None,
+                trapped_volume: float = 1.0) -> dict:
+        """
+        Compute depletion factor for DPM shift analysis.
+        
+        Args:
+            rho_vac_UA: Aether vacuum density (J/m³)
+            rho_vac_SCm: Superconductive vacuum density (J/m³)
+            trapped_volume: Trapped volume factor
+            
+        Returns:
+            Depletion factor and state analysis
+        """
+        rho_UA = rho_vac_UA or self.params['rho_vac_UA_triple_prime']
+        rho_SCm = rho_vac_SCm or self.params['rho_vac_SCm_5prime']
+        
+        # Depletion factor equation
+        depletion = rho_UA / (rho_UA + rho_SCm)
+        
+        # Critical threshold analysis
+        threshold = self.params['depletion_threshold']
+        if depletion > threshold:
+            state = 'Critical: UG4i losing UBi_i resistance'
+            can_shatter = True
+        else:
+            state = 'Stable: DPM maintaining coherence'
+            can_shatter = False
+        
+        return {
+            'depletion_factor': depletion,
+            'threshold': threshold,
+            'state': state,
+            'can_shatter': can_shatter,
+            'trapped_volume_factor': trapped_volume,
+            'equation': 'depletion = ρ_UA / (ρ_UA + ρ_SCm)'
+        }
+
+
+class PolarityGenerationsCalculator:
+    """
+    Calculator for SCm polarity generations with double negative polarity.
+    
+    SCm generations (SCm, SCm', SCm'', SCm''', SCm'''', SCm''''') are all
+    associated with double negative (-,-) polarity, creating the extrauniversal
+    superconductive component of the DPM.
+    
+    Equation:
+    (SCm, SCm', ...) = (-,-) · e^(-κt) · cos(πt_n) · shape_projection
+    
+    Source: UQFF superconductive universe equation system
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_56_PARAMS
+    
+    def compute(self, generation: int = 5, t: float = 0.0,
+                t_n: float = 0.0, shape_factor: float = 1.0) -> dict:
+        """
+        Compute polarity generation state.
+        
+        Args:
+            generation: SCm generation (0-5, where 5 = SCm''''')
+            t: Time (s)
+            t_n: Negative time offset (s)
+            shape_factor: Shape projection factor
+            
+        Returns:
+            Polarity state and temporal evolution
+        """
+        import math
+        
+        kappa = self.params['kappa_decay']
+        
+        # Convert time to days for kappa
+        t_days = t / 86400.0
+        
+        # Polarity generation equation
+        decay_term = math.exp(-kappa * t_days)
+        cycle_term = math.cos(math.pi * t_n) if t_n != 0 else 1.0
+        
+        polarity_magnitude = decay_term * cycle_term * shape_factor
+        
+        # Double negative polarity
+        polarity = (-1, -1)  # Double negative
+        
+        generation_name = "SCm" + "'" * generation
+        
+        return {
+            'generation': generation,
+            'generation_name': generation_name,
+            'polarity': polarity,
+            'magnitude': polarity_magnitude,
+            'decay_term': decay_term,
+            'cycle_term': cycle_term,
+            't_days': t_days,
+            'equation': '(SCm^n) = (-,-) · e^(-κt) · cos(πt_n) · shape'
+        }
+
+
+class BubbleShatteringCalculator:
+    """
+    Calculator for black hole bubble shattering resonance.
+    
+    Black holes shatter DPM bubbles when UG4i (internal projection resonance)
+    equals the combined resonance of UG3 and UG2 projections. This occurs when
+    internal depletion shifts the DPM to mostly [(UA''')].
+    
+    Equation:
+    shatter = UG4i · (UG3 + UG2) · sin(θ) · DPM_resonance
+    
+    Source: UQFF black hole tasks, final parsec problem
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_56_PARAMS
+    
+    def compute(self, UG4i: float = 1e-10, UG3: float = 1e-10,
+                UG2: float = 1e-10, theta_deg: float = None,
+                DPM_resonance: float = 1.76e9) -> dict:
+        """
+        Compute bubble shattering conditions.
+        
+        Args:
+            UG4i: Internal projection gravity (m/s²)
+            UG3: Magnetic strings disk projection (m/s²)
+            UG2: Outer field bubble projection (m/s²)
+            theta_deg: Shattering angle (degrees)
+            DPM_resonance: Resonance factor
+            
+        Returns:
+            Shattering potential and analysis
+        """
+        import math
+        
+        theta = theta_deg or self.params['theta_shattering']
+        theta_rad = math.radians(theta)
+        
+        # Shattering equation
+        shatter_potential = UG4i * (UG3 + UG2) * math.sin(theta_rad) * DPM_resonance
+        
+        # Check if magnitudes are equal (shattering condition)
+        resonance_match = abs(UG4i - (UG3 + UG2)) / max(UG4i, UG3 + UG2, 1e-30) < 0.1
+        
+        return {
+            'shatter_potential': shatter_potential,
+            'UG4i': UG4i,
+            'UG3': UG3,
+            'UG2': UG2,
+            'theta_deg': theta,
+            'DPM_resonance': DPM_resonance,
+            'resonance_match': resonance_match,
+            'can_shatter': resonance_match,
+            'equation': 'shatter = UG4i · (UG3 + UG2) · sin(θ) · DPM_res'
+        }
+
+
+class HawkingSpinOffCalculator:
+    """
+    Calculator for Hawking radiation as SCm spin-off process.
+    
+    When the DPM bubble shatters, the formerly trapped SCm''''' spins off as
+    (+) Hawking radiation, renewing against cosmic Aether to become another
+    positively polarized particle that collides and clings to form rocky bodies.
+    
+    Equation:
+    Hawking = [SCm'''''] · e^(-κt) · (+) · cos(πt_n) · recycle_event
+    
+    Source: UQFF black hole recycling mechanism
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_56_PARAMS
+    
+    def compute(self, t: float = 0.0, t_n: float = 0.0,
+                initial_magnitude: float = 0.1) -> dict:
+        """
+        Compute Hawking radiation spin-off.
+        
+        Args:
+            t: Time since emission (s)
+            t_n: Negative time offset for polarity shift (s)
+            initial_magnitude: Initial SCm''''' magnitude
+            
+        Returns:
+            Radiation state and polarity analysis
+        """
+        import math
+        
+        kappa = self.params['kappa_decay']
+        t_days = t / 86400.0
+        
+        # Hawking equation components
+        decay_term = math.exp(-kappa * t_days)
+        polarity_shift = self.params['hawking_polarity']  # (+) polarity
+        cycle_term = math.cos(math.pi * t_n) if t_n != 0 else 1.0
+        recycle = self.params['recycle_event']
+        
+        # Full Hawking radiation magnitude
+        hawking_magnitude = initial_magnitude * decay_term * polarity_shift * cycle_term * recycle
+        
+        return {
+            'hawking_magnitude': hawking_magnitude,
+            'initial_magnitude': initial_magnitude,
+            'polarity': '+',  # Positive after spin-off
+            'decay_term': decay_term,
+            'recycle_factor': recycle,
+            'forms_rocky_bodies': True,
+            'equation': 'Hawking = [SCm\'\'\'\'\'] · e^(-κt) · (+) · cos(πt_n) · recycle'
+        }
+
+
+class GravityProjectionShapeCalculator:
+    """
+    Calculator for UG1-UG4 gravity projections as geometric shapes.
+    
+    Gravity is not pure force/resultant but geometry-central. Each UG projection
+    (UG1: internal dipole, UG2: outer bubble, UG3: magnetic disk, UG4: star-BH)
+    has a geometric shape bound by galactic geometry.
+    
+    Equation:
+    UG_k = k_k · [(UA''')] · ρ_vac / [(SCm''''')] · (1-df) · cos(πt_n) · shape_geo
+    
+    Source: UQFF geometry corrections
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_56_PARAMS
+    
+    def compute(self, projection: int = 4, rho_vac_UA: float = None,
+                rho_vac_SCm: float = None, depletion_factor: float = 0.1,
+                t_n: float = 0.0, shape_geometry: str = 'sphere') -> dict:
+        """
+        Compute gravity projection with shape geometry.
+        
+        Args:
+            projection: UG index (1-4)
+            rho_vac_UA: Aether density
+            rho_vac_SCm: Superconductive density
+            depletion_factor: Depletion shift
+            t_n: Negative time offset
+            shape_geometry: 'sphere', 'disk', 'bubble', or 'torus'
+            
+        Returns:
+            Gravity projection with geometric analysis
+        """
+        import math
+        
+        rho_UA = rho_vac_UA or self.params['rho_vac_UA_triple_prime']
+        rho_SCm = rho_vac_SCm or self.params['rho_vac_SCm_5prime']
+        
+        # Get coupling constant for projection
+        k_map = {1: 'k_1', 2: 'k_2', 3: 'k_3', 4: 'k_4'}
+        k_k = self.params.get(k_map.get(projection, 'k_4'), 1.0)
+        
+        # Shape geometry factors
+        shape_factors = {
+            'sphere': 1.0,        # UG1: internal dipole
+            'bubble': 0.95,       # UG2: outer field
+            'disk': 1.1,          # UG3: magnetic strings
+            'torus': 0.9          # UG4: star-BH interaction
+        }
+        shape_factor = shape_factors.get(shape_geometry, 1.0)
+        
+        # Gravity projection equation
+        cycle_term = math.cos(math.pi * t_n) if t_n != 0 else 1.0
+        
+        UG_k = k_k * (rho_UA / rho_SCm) * (1 - depletion_factor) * cycle_term * shape_factor
+        
+        # Direction analysis
+        if projection in [1, 3]:
+            direction = 'attractive (pull)'
+        else:
+            direction = 'repulsive (push)'
+        
+        projection_names = {1: 'UG1 (Internal Dipole)', 2: 'UG2 (Outer Bubble)',
+                           3: 'UG3 (Magnetic Disk)', 4: 'UG4 (Star-BH)'}
+        
+        return {
+            'UG_k': UG_k,
+            'projection': projection,
+            'projection_name': projection_names.get(projection, f'UG{projection}'),
+            'k_k': k_k,
+            'shape_geometry': shape_geometry,
+            'shape_factor': shape_factor,
+            'direction': direction,
+            'depletion_factor': depletion_factor,
+            'equation': 'UG_k = k_k · [(UA\'\'\')] / [(SCm\'\'\'\'\')] · (1-df) · cos(πt_n) · shape'
+        }
+
+
+class ChaosCoherenceCalculator:
+    """
+    Calculator for DPM chaos/coherence chain reactions.
+    
+    The DPM acts as the conductor in an orchestra of force diagrams, driving
+    chaos of coherence in chain reactions for creation/destruction. All mass
+    is recycled post-Big Bang - no new mass creation.
+    
+    Equation:
+    chaos_coherence = DPM · Σ(creation + destruction) = ∫ depletion · e^(-κt) dt
+    
+    Source: UQFF recycling mechanisms
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_56_PARAMS
+    
+    def compute(self, dpm_ratio: float = 1.0, creation_rate: float = None,
+                destruction_rate: float = None, t_duration: float = 1.0,
+                depletion_factor: float = 0.1) -> dict:
+        """
+        Compute chaos/coherence chain reaction balance.
+        
+        Args:
+            dpm_ratio: DPM dualistic ratio
+            creation_rate: Creation event rate (events/s)
+            destruction_rate: Destruction event rate (events/s)
+            t_duration: Duration of chain reaction (s)
+            depletion_factor: Current depletion state
+            
+        Returns:
+            Chain reaction balance and analysis
+        """
+        import math
+        
+        c_rate = creation_rate or self.params['creation_rate']
+        d_rate = destruction_rate or self.params['destruction_rate']
+        kappa = self.params['kappa_decay']
+        
+        # Sum of events
+        total_events = (c_rate + d_rate) * t_duration
+        
+        # Integrated depletion evolution
+        t_days = t_duration / 86400.0
+        integrated_depletion = depletion_factor * (1 - math.exp(-kappa * t_days)) / kappa if kappa > 0 else depletion_factor * t_days
+        
+        # Chaos/coherence balance
+        chaos_coherence = dpm_ratio * total_events
+        
+        # Balance analysis
+        if c_rate > d_rate:
+            state = 'Creation dominant (structure formation)'
+        elif d_rate > c_rate:
+            state = 'Destruction dominant (entropy increase)'
+        else:
+            state = 'Perfect balance (dynamic equilibrium)'
+        
+        return {
+            'chaos_coherence': chaos_coherence,
+            'dpm_ratio': dpm_ratio,
+            'creation_rate': c_rate,
+            'destruction_rate': d_rate,
+            'total_events': total_events,
+            'integrated_depletion': integrated_depletion,
+            'state': state,
+            'no_new_mass': True,  # All mass recycled
+            'equation': 'chaos = DPM · Σ(creation + destruction)'
+        }
+
+
+class SweetVacuumEnergyCalculator:
+    """
+    Calculator for Sweet's vacuum energy extraction (PCVT system).
+    
+    Floyd Sweet's Parallel Coil Vacuum Triode extracts negative energy from
+    the vacuum field through motional E-field induction and 300 Hz resonance
+    (Aurora anomaly frequency).
+    
+    Equation:
+    e = ½ε · E² where E = 2(B × V)
+    
+    Source: Sweet VTA papers, UQFF vacuum extraction
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_56_PARAMS
+    
+    def compute(self, B: float = 1e-3, V_velocity: float = 1e5,
+                volume: float = 1e-3, feedback_current: float = 1.0) -> dict:
+        """
+        Compute vacuum energy extraction.
+        
+        Args:
+            B: Magnetic field strength (T)
+            V_velocity: Velocity field (m/s)
+            volume: Extraction volume (m³)
+            feedback_current: Feedback current for self-sustaining (A)
+            
+        Returns:
+            Extracted energy and feedback analysis
+        """
+        epsilon_0 = self.params['epsilon_0']
+        k_fb = self.params['k_fb']
+        
+        # Motional E-field: E = 2(B × V)
+        E_field = 2 * B * V_velocity
+        
+        # Vacuum energy density: e = ½εE²
+        energy_density = 0.5 * epsilon_0 * E_field**2
+        
+        # Total extracted energy
+        total_energy = energy_density * volume
+        
+        # Feedback term for over-unity
+        feedback_term = k_fb * feedback_current**2
+        
+        # Net extraction with feedback
+        net_extraction = total_energy * (1 + feedback_term)
+        
+        return {
+            'E_field': E_field,
+            'energy_density': energy_density,
+            'total_energy': total_energy,
+            'feedback_term': feedback_term,
+            'net_extraction': net_extraction,
+            'over_unity': net_extraction > total_energy,
+            'aurora_frequency': self.params['f_feedback'],
+            'equation': 'e = ½ε·E², E = 2(B × V)'
+        }
+
+
+class PrecessionalResonanceCalculator:
+    """
+    Calculator for magnetic precessional resonance.
+    
+    The precessional frequency W_L = g·μ_B·H relates to DPM resonance through
+    electron spin dynamics in vacuum fields, connecting Sweet's resonance
+    experiments to UQFF DPM mechanics.
+    
+    Equation:
+    W_L = g · μ_B · B_0 / ℏ
+    DPM_resonance = g · μ_B · B_0 / (h · ω_0)
+    
+    Source: Sweet magnetic resonance, UQFF DPM
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_56_PARAMS
+    
+    def compute(self, B_0: float = None, omega_0: float = None) -> dict:
+        """
+        Compute precessional resonance frequency.
+        
+        Args:
+            B_0: Magnetic field strength (T)
+            omega_0: Characteristic frequency (s⁻¹)
+            
+        Returns:
+            Precessional frequencies and DPM connection
+        """
+        g = self.params['g_factor']
+        mu_B = self.params['mu_B']
+        h = self.params['h_planck']
+        hbar = h / (2 * 3.14159)
+        
+        B = B_0 or self.params['B_0']
+        omega = omega_0 or self.params['omega_0']
+        
+        # Larmor precessional frequency
+        W_L = g * mu_B * B / hbar
+        
+        # DPM resonance factor
+        DPM_resonance = g * mu_B * B / (h * omega)
+        
+        return {
+            'W_L': W_L,
+            'DPM_resonance': DPM_resonance,
+            'g_factor': g,
+            'mu_B': mu_B,
+            'B_0': B,
+            'omega_0': omega,
+            'equation_larmor': 'W_L = g·μ_B·B/ℏ',
+            'equation_dpm': 'DPM_res = g·μ_B·B/(h·ω₀)'
+        }
+
+
+class PlasmaConvectionCalculator:
+    """
+    Calculator for plasma convection dynamics in Red Dwarf Reactor.
+    
+    Plasmoids generated by 65W incandescent bulb through nano oil medium's
+    atomic lattice exhibit convection from initial stirring and Earth's
+    rotation. No physical mass/gas, magnet-free, no EM influences.
+    
+    Equation:
+    a_fluid = f_fluid · E_vac · V_sys / (E_vac_ISM · c) · v_conv · Ω_Earth
+    
+    Source: Red Dwarf Reactor experiments, UQFF plasma videos
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_56_PARAMS
+    
+    def compute(self, v_conv: float = 0.5, f_fluid: float = 1.69e-13,
+                V_sys: float = None, E_vac_neb: float = 7.09e-36,
+                E_vac_ISM: float = 7.09e-37) -> dict:
+        """
+        Compute plasma convection acceleration.
+        
+        Args:
+            v_conv: Convection velocity (m/s)
+            f_fluid: Fluid frequency (Hz)
+            V_sys: System volume (m³)
+            E_vac_neb: Nebular vacuum energy (J/m³)
+            E_vac_ISM: ISM vacuum energy (J/m³)
+            
+        Returns:
+            Convection dynamics and analysis
+        """
+        V = V_sys or self.params['V_medium']
+        c = self.params['c']
+        Omega_Earth = self.params['Omega_Earth']
+        
+        # Fluid frequency acceleration
+        a_fluid = f_fluid * E_vac_neb * V / (E_vac_ISM * c) * v_conv * Omega_Earth
+        
+        return {
+            'a_fluid_freq': a_fluid,
+            'v_conv': v_conv,
+            'f_fluid': f_fluid,
+            'V_sys': V,
+            'Omega_Earth': Omega_Earth,
+            'E_vac_neb': E_vac_neb,
+            'no_mass': True,
+            'no_em_influence': True,
+            'equation': 'a = f_fluid · E_vac · V / (E_ISM · c) · v · Ω'
+        }
+
+
+class PhotonLatticeProjectionCalculator:
+    """
+    Calculator for plasmoid photon-lattice projections.
+    
+    Plasmoids are photon projections through the nano oil medium's atomic
+    lattice, created by the 65W incandescent bulb. Thousands of glowing
+    points of varying shapes and intensities.
+    
+    Equation:
+    a_photon = n_plasmoids · f_photon · E_bulb / (c · V_medium)
+    
+    Source: Red Dwarf Reactor, UQFF plasma analysis
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_56_PARAMS
+    
+    def compute(self, n_plasmoids: int = None, f_photon: float = None,
+                E_bulb_watts: float = None, t_duration: float = 150.0,
+                V_medium: float = None) -> dict:
+        """
+        Compute photon-lattice projection acceleration.
+        
+        Args:
+            n_plasmoids: Number of plasmoids (count)
+            f_photon: Photon frequency (Hz)
+            E_bulb_watts: Bulb power (W)
+            t_duration: Duration (s)
+            V_medium: Medium volume (m³)
+            
+        Returns:
+            Photon projection dynamics
+        """
+        n = n_plasmoids or self.params['n_plasmoids']
+        f = f_photon or self.params['f_photon']
+        E_bulb = (E_bulb_watts or self.params['E_bulb']) * t_duration  # Convert W to J
+        V = V_medium or self.params['V_medium']
+        c = self.params['c']
+        
+        # Photon projection acceleration
+        a_photon = n * f * E_bulb / (c * V)
+        
+        return {
+            'a_photon_proj': a_photon,
+            'n_plasmoids': n,
+            'f_photon': f,
+            'E_bulb_joules': E_bulb,
+            'V_medium': V,
+            'is_projection': True,
+            'equation': 'a = n · f · E_bulb / (c · V)'
+        }
+
+
+class ShadowTearingCalculator:
+    """
+    Calculator for black shadow tearing dynamics.
+    
+    Black shadows appear/disappear irregularly by "tearing" the light volume,
+    showing darkness. This represents vacuum volume depletion in the plasma
+    convection field.
+    
+    Equation:
+    shadow_tear = ΔV_light · (1 - depletion_factor) · e^(-κt)
+    
+    Source: Red Dwarf Reactor observations, UQFF plasma analysis
+    """
+    
+    def __init__(self):
+        self.params = ORB_ANALYSIS_56_PARAMS
+    
+    def compute(self, delta_V_light: float = 0.05, depletion_factor: float = 0.1,
+                t: float = 0.0) -> dict:
+        """
+        Compute shadow tearing dynamics.
+        
+        Args:
+            delta_V_light: Fractional light volume tear (0-1)
+            depletion_factor: Current depletion state
+            t: Time (s)
+            
+        Returns:
+            Shadow tearing analysis
+        """
+        import math
+        
+        kappa = self.params['kappa_decay']
+        t_days = t / 86400.0
+        
+        # Shadow tearing equation
+        decay_term = math.exp(-kappa * t_days)
+        shadow_tear = delta_V_light * (1 - depletion_factor) * decay_term
+        
+        return {
+            'shadow_tear': shadow_tear,
+            'delta_V_light': delta_V_light,
+            'depletion_factor': depletion_factor,
+            'decay_term': decay_term,
+            'represents_darkness': True,
+            'equation': 'shadow = ΔV · (1 - df) · e^(-κt)'
+        }
+
+
+# Registry for Orb Analysis 56
+ORB_ANALYSIS_56_CALCULATORS = {
+    'DPMDualismCalculator': DPMDualismCalculator(),
+    'DepletionFactorCalculator': DepletionFactorCalculator(),
+    'PolarityGenerationsCalculator': PolarityGenerationsCalculator(),
+    'BubbleShatteringCalculator': BubbleShatteringCalculator(),
+    'HawkingSpinOffCalculator': HawkingSpinOffCalculator(),
+    'GravityProjectionShapeCalculator': GravityProjectionShapeCalculator(),
+    'ChaosCoherenceCalculator': ChaosCoherenceCalculator(),
+    'SweetVacuumEnergyCalculator': SweetVacuumEnergyCalculator(),
+    'PrecessionalResonanceCalculator': PrecessionalResonanceCalculator(),
+    'PlasmaConvectionCalculator': PlasmaConvectionCalculator(),
+    'PhotonLatticeProjectionCalculator': PhotonLatticeProjectionCalculator(),
+    'ShadowTearingCalculator': ShadowTearingCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -30007,6 +30789,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_53_CALCULATORS,
     **ORB_ANALYSIS_54_CALCULATORS,
     **ORB_ANALYSIS_55_CALCULATORS,
+    **ORB_ANALYSIS_56_CALCULATORS,
 }
 
 # Update class count
@@ -30601,6 +31384,22 @@ __all__ = [
     'TidalRingEffectCalculator',
     'DustLaneAttenuationCalculator',
     'ORB_ANALYSIS_55_CALCULATORS',
+    
+    # Orb 56: DPM Dualism and Black Hole Bubble Dynamics
+    'ORB_ANALYSIS_56_PARAMS',
+    'DPMDualismCalculator',
+    'DepletionFactorCalculator',
+    'PolarityGenerationsCalculator',
+    'BubbleShatteringCalculator',
+    'HawkingSpinOffCalculator',
+    'GravityProjectionShapeCalculator',
+    'ChaosCoherenceCalculator',
+    'SweetVacuumEnergyCalculator',
+    'PrecessionalResonanceCalculator',
+    'PlasmaConvectionCalculator',
+    'PhotonLatticeProjectionCalculator',
+    'ShadowTearingCalculator',
+    'ORB_ANALYSIS_56_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
