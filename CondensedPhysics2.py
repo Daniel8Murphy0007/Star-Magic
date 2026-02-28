@@ -26360,6 +26360,344 @@ ORB_ANALYSIS_50_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS 51: UQFF LENR CALIBRATION CONSTANTS & HIGGS-UIAO OPERATOR
+# Neutron production calibration k_η, Cyclotron frequency, [SSq] parameter,
+# Higgs Boson as "bastard brother" to U_I_A-O (Universal Inertial Atomic-Orbital)
+# Source: https://x.com/i/grok/share/ee757ceb910f4a6f846dd7be63838166 (final extraction)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ORB_ANALYSIS_51_PARAMS = {
+    'k_eta': 9.8e-101,                # Neutron production calibration constant
+    'omega_c': 1.585e-8,              # Cyclotron frequency (rad/s)
+    'SSq_base': 0.57,                 # [SSq] quantum state parameter (dimensionless)
+    'gamma_decay': 5e-5,              # Decay rate γ (day⁻¹)
+    'T_cyclotron': 3.96e8,            # Cyclotron period (s)
+    'E_react_0': 1e46,                # Reaction energy at t=0 (eV)
+    'kappa_decay': 5e-4,              # Reaction decay constant (day⁻¹)
+}
+
+
+class NeutronCalibrationConstantCalculator:
+    """
+    NEUTRON PRODUCTION CALIBRATION CONSTANT (k_η)
+    
+    The calibration constant k_η ≈ 9.8×10^(-101) normalizes neutron production
+    rate equations in UQFF LENR framework.
+    
+    Core equation:
+    η = k_η × e^(-[SSq]×n/26) × e^(-(π-t)) × (Um / ρ_vac,[UA])
+    
+    Where:
+    - k_η = 9.8×10^(-101) (calibration constant)
+    - [SSq] = quantum state parameter (~0.57)
+    - n = quantum state index (1-26)
+    - Um = Universal Magnetism field strength
+    - ρ_vac,[UA] = Aether vacuum density (7.09×10^(-36) J/m³)
+    
+    Units: neutron flux (cm⁻² s⁻¹)
+    """
+    
+    def __init__(self):
+        self.name = "Neutron Calibration Constant"
+        self.symbol = "k_η"
+        self.units = "dimensionless"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        # Calibration constant
+        k_eta = dataset.get('k_eta', 9.8e-101)
+        
+        # Quantum state parameters
+        SSq = dataset.get('SSq', 0.57)
+        n = dataset.get('quantum_state', 1)  # 1-26
+        t = dataset.get('time_days', 1.0)
+        
+        # Universal Magnetism (from LENR paper)
+        Um = dataset.get('Um', 1e33)  # T (normalized)
+        rho_vac_UA = dataset.get('rho_vac_UA', 7.09e-36)  # J/m³
+        
+        # Exponential factors
+        exp_SSq = math.exp(-SSq * n / 26)
+        exp_pi_t = math.exp(-(math.pi - t))
+        
+        # Electric field ratio
+        E_ratio = Um / rho_vac_UA if rho_vac_UA > 0 else 0
+        
+        # Neutron production rate
+        eta = k_eta * exp_SSq * exp_pi_t * E_ratio
+        
+        # Log-scale for handling extreme values
+        log_eta = math.log10(abs(eta)) if eta != 0 else -300
+        
+        # Target calibration check (should yield ~10^13 for LENR)
+        target_flux = 1e13  # cm⁻²/s
+        calibration_ratio = eta / target_flux if target_flux > 0 else 0
+        
+        return {
+            'k_eta': k_eta,
+            'k_eta_log': math.log10(k_eta) if k_eta > 0 else -101,
+            'SSq': SSq,
+            'n': n,
+            't_days': t,
+            'exp_SSq': exp_SSq,
+            'exp_pi_t': exp_pi_t,
+            'Um': Um,
+            'rho_vac_UA': rho_vac_UA,
+            'E_ratio': E_ratio,
+            'eta_cm2_s': eta,
+            'log_eta': log_eta,
+            'calibration_ratio': calibration_ratio,
+            'equation': 'η = k_η × e^(-[SSq]×n/26) × e^(-(π-t)) × (Um/ρ_vac)',
+            'long_form': f'k_η = {k_eta:.2e} (log₁₀ = {math.log10(k_eta) if k_eta > 0 else -101:.1f}); n={n}, [SSq]={SSq:.2f}; η = {eta:.3e} cm⁻²/s (log₁₀ = {log_eta:.1f})'
+        }
+
+
+class CyclotronFrequencyOrb51Calculator:
+    """
+    CYCLOTRON FREQUENCY (ω_c) IN UQFF LENR FRAMEWORK
+    
+    The cyclotron frequency ω_c = 1.585×10^(-8) rad/s governs the oscillation
+    of magnetic moments in Universal Magnetism (Um) equations.
+    
+    Core equations:
+    ω_c = 2π / T_cyclotron = 2π / 3.96×10^8 s ≈ 1.585×10^(-8) rad/s
+    μ_j(t) = (10³ + 0.4×sin(ω_c×t)) × 3.38×10²⁰ T·pm³
+    
+    Where:
+    - T_cyclotron = 3.96×10^8 s (~12.55 years)
+    - ω_c modulates magnetic moment oscillation
+    - Links to proto-nuclear shell dynamics and U_g3 resonance
+    """
+    
+    def __init__(self):
+        self.name = "Cyclotron Frequency"
+        self.symbol = "ω_c"
+        self.units = "rad/s"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        # Cyclotron parameters
+        T_cyclotron = dataset.get('T_cyclotron', 3.96e8)  # s
+        t = dataset.get('time_s', 86400)  # s (default 1 day)
+        
+        # Cyclotron frequency
+        omega_c = 2 * math.pi / T_cyclotron
+        
+        # Period in years
+        T_years = T_cyclotron / (365.25 * 86400)
+        
+        # Phase at time t
+        phase = omega_c * t  # radians
+        phase_cycles = phase / (2 * math.pi)
+        
+        # Magnetic moment components
+        mu_base = 1e3
+        mu_amplitude = 0.4
+        mu_scale = 3.38e20  # T·pm³
+        
+        # Oscillating magnetic moment
+        mu_t = (mu_base + mu_amplitude * math.sin(phase)) * mu_scale
+        
+        # Frequency in Hz
+        freq_Hz = omega_c / (2 * math.pi)
+        
+        # Period in days
+        T_days = T_cyclotron / 86400
+        
+        return {
+            'omega_c_rad_s': omega_c,
+            'T_cyclotron_s': T_cyclotron,
+            'T_cyclotron_years': T_years,
+            'T_cyclotron_days': T_days,
+            'freq_Hz': freq_Hz,
+            't_s': t,
+            'phase_rad': phase,
+            'phase_cycles': phase_cycles,
+            'mu_t_T_pm3': mu_t,
+            'mu_base': mu_base,
+            'mu_amplitude': mu_amplitude,
+            'sin_phase': math.sin(phase),
+            'equation': 'ω_c = 2π/T; μ_j(t) = (10³ + 0.4×sin(ω_c×t)) × 3.38×10²⁰',
+            'long_form': f'ω_c = 2π/{T_cyclotron:.2e} = {omega_c:.4e} rad/s; T = {T_years:.2f} years; phase(t={t:.0f}s) = {phase:.4f} rad; μ(t) = {mu_t:.4e} T·pm³'
+        }
+
+
+class SSqQuantumStateCalculator:
+    """
+    [SSq] QUANTUM STATE PARAMETER
+    
+    The [SSq] parameter (dimensionless, ~0.57) governs quantum state transitions
+    in LENR neutron production and pseudo-monopole state equations.
+    
+    Core equations:
+    exp_factor = e^(-[SSq]×n/26)
+    ρ_vac,[UA']:[SCm] = 10^(-23) × 0.1^n × e^(-[SSq]×n/26) × e^(-(π-t))
+    
+    Where:
+    - [SSq] ≈ 0.57 (quantum state scaling)
+    - n = quantum state index (1-26)
+    - Maps to 26 quantum atomic states in UQFF
+    
+    Interpretation: [SSq] represents the "spherical-state-quantum" coherence
+    factor that modulates DPM vacuum density transitions.
+    """
+    
+    def __init__(self):
+        self.name = "[SSq] Quantum State Parameter"
+        self.symbol = "[SSq]"
+        self.units = "dimensionless"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        SSq = dataset.get('SSq', 0.57)
+        n = dataset.get('quantum_state', 1)  # 1-26
+        t = dataset.get('time_days', 1.0)
+        
+        # Core exponential factor
+        exp_SSq_n = math.exp(-SSq * n / 26)
+        
+        # Pseudo-monopole contribution
+        exp_pi_t = math.exp(-(math.pi - t))
+        
+        # Combined factor for neutron production
+        combined_factor = exp_SSq_n * exp_pi_t
+        
+        # DPM vacuum density (from pseudo-monopole equation)
+        rho_vac_DPM = 1e-23 * (0.1 ** n) * exp_SSq_n * exp_pi_t
+        
+        # Phase angle δ_n = (2π)^(n/6)
+        delta_n = (2 * math.pi) ** (n / 6)
+        
+        # Effective quantum state (0-1 normalized)
+        quantum_coherence = exp_SSq_n
+        
+        # Half-life equivalent (when factor drops to 0.5)
+        n_half = -26 * math.log(0.5) / SSq if SSq > 0 else 0
+        
+        # State energy contribution (arbitrary units)
+        E_state = SSq * n * 1e-3  # eV proxy
+        
+        return {
+            'SSq': SSq,
+            'n': n,
+            't_days': t,
+            'exp_SSq_n': exp_SSq_n,
+            'exp_pi_t': exp_pi_t,
+            'combined_factor': combined_factor,
+            'rho_vac_DPM_J_m3': rho_vac_DPM,
+            'delta_n_rad': delta_n,
+            'quantum_coherence': quantum_coherence,
+            'n_half': n_half,
+            'E_state_eV': E_state,
+            'equation': 'exp_factor = e^(-[SSq]×n/26); δ_n = (2π)^(n/6)',
+            'long_form': f'[SSq] = {SSq:.2f}, n = {n}: exp(-{SSq}×{n}/26) = {exp_SSq_n:.6f}; δ_{n} = {delta_n:.4f} rad; ρ_vac,DPM = {rho_vac_DPM:.3e} J/m³; n_half = {n_half:.1f}'
+        }
+
+
+class HiggsUIAOOperatorCalculator:
+    """
+    HIGGS BOSON AS "BASTARD BROTHER" TO U_I_A-O
+    
+    In UQFF framework, the Higgs Boson is reinterpreted as a derivative or
+    "bastard brother" of the Universal Inertial Atomic-Orbital operator (U_I_A-O).
+    
+    UQFF perspective:
+    - U_I_A-O = Universal Inertial operator in atomic-orbital form
+    - U_i tags electrons via THz hole, counteracts strong force
+    - Mass emerges from quantum-to-mass gradient (7-10 U_mag degrees)
+    - Higgs field is a secondary effect, not fundamental
+    
+    Comparison:
+    - Standard Model: Mass = Higgs coupling × vev × Yukawa
+    - UQFF: Mass = vacuum energy density × capacitance (ACP completion)
+    
+    This calculator models the relationship between Higgs-like mass imparting
+    and the UQFF U_I_A-O mechanism.
+    """
+    
+    def __init__(self):
+        self.name = "Higgs-UIAO Operator"
+        self.symbol = "U_I_A-O"
+        self.units = "eV"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        # UQFF parameters
+        f_SCm = dataset.get('f_SCm', 0.1)
+        f_UA_prime = dataset.get('f_UA_prime', 0.9)
+        R_EB = dataset.get('R_EB', 1.0)
+        
+        # Vacuum energy density
+        rho_vac = dataset.get('rho_vac_UA', 7.09e-36)  # J/m³
+        
+        # Capacitance (from ACP)
+        C_vac = dataset.get('C_vac', 1e-15)  # F (proxy)
+        
+        # Quantum-to-mass gradient (7-10 U_mag degrees)
+        U_mag_degrees = dataset.get('U_mag_degrees', 8.5)
+        gradient_factor = U_mag_degrees / 10.0
+        
+        # UQFF mass-like quantity (vacuum energy × capacitance)
+        M_UQFF = rho_vac * C_vac * gradient_factor * 1e26  # eV (scaled)
+        
+        # Standard Model Higgs comparison
+        v_higgs = 246e9  # eV (Higgs vev = 246 GeV)
+        m_higgs = 125e9  # eV (Higgs mass = 125 GeV)
+        
+        # Yukawa coupling proxy
+        g_yukawa = dataset.get('yukawa_coupling', 1.0)  # dimensionless
+        
+        # SM mass imparting (simplified)
+        M_SM = g_yukawa * v_higgs / math.sqrt(2)
+        
+        # Ratio: UQFF vs SM mechanism
+        mechanism_ratio = M_UQFF / M_SM if M_SM > 0 else 0
+        
+        # U_I_A-O strength (U_i in atomic-orbital configuration)
+        U_IAO = f_UA_prime * R_EB * 1e-10  # N (proxy force)
+        
+        # THz hole influence
+        nu_THz = dataset.get('nu_THz', 1e12)  # Hz
+        THz_coupling = nu_THz * f_SCm * 1e-30  # eV (scaled)
+        
+        # "Bastard brother" deviation
+        # How much Higgs deviates from true U_I_A-O mechanism
+        deviation_factor = abs(mechanism_ratio - 1.0) if mechanism_ratio > 0 else 1.0
+        
+        return {
+            'f_SCm': f_SCm,
+            'f_UA_prime': f_UA_prime,
+            'R_EB': R_EB,
+            'U_mag_degrees': U_mag_degrees,
+            'gradient_factor': gradient_factor,
+            'M_UQFF_eV': M_UQFF,
+            'M_SM_eV': M_SM,
+            'v_higgs_eV': v_higgs,
+            'm_higgs_eV': m_higgs,
+            'mechanism_ratio': mechanism_ratio,
+            'U_IAO_N': U_IAO,
+            'nu_THz': nu_THz,
+            'THz_coupling_eV': THz_coupling,
+            'deviation_factor': deviation_factor,
+            'equation': 'M_UQFF = ρ_vac × C_vac × gradient; M_SM = g_Y × v/√2',
+            'long_form': f'U_I_A-O: M_UQFF = {rho_vac:.2e} × {C_vac:.2e} × {gradient_factor:.2f} = {M_UQFF:.3e} eV; Higgs: M_SM = {g_yukawa:.2f} × {v_higgs:.2e}/√2 = {M_SM:.3e} eV; ratio = {mechanism_ratio:.6f}; deviation = {deviation_factor:.4f}'
+        }
+
+
+# Registry for Orb Analysis 51
+ORB_ANALYSIS_51_CALCULATORS = {
+    'NeutronCalibrationConstantCalculator': NeutronCalibrationConstantCalculator(),
+    'CyclotronFrequencyOrb51Calculator': CyclotronFrequencyOrb51Calculator(),
+    'SSqQuantumStateCalculator': SSqQuantumStateCalculator(),
+    'HiggsUIAOOperatorCalculator': HiggsUIAOOperatorCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -26409,6 +26747,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_48_CALCULATORS,
     **ORB_ANALYSIS_49_CALCULATORS,
     **ORB_ANALYSIS_50_CALCULATORS,
+    **ORB_ANALYSIS_51_CALCULATORS,
 }
 
 # Update class count
@@ -26933,6 +27272,14 @@ __all__ = [
     'GalacticRedBlueShiftCalculator',
     'QuantumPIMathCalculator',
     'ORB_ANALYSIS_50_CALCULATORS',
+    
+    # Orb Analysis_51 (4 classes - LENR Calibration k_η, Cyclotron ω_c, [SSq], Higgs-UIAO)
+    'ORB_ANALYSIS_51_PARAMS',
+    'NeutronCalibrationConstantCalculator',
+    'CyclotronFrequencyOrb51Calculator',
+    'SSqQuantumStateCalculator',
+    'HiggsUIAOOperatorCalculator',
+    'ORB_ANALYSIS_51_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
