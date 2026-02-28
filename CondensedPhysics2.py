@@ -24918,6 +24918,729 @@ ORB_ANALYSIS_48_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS 49: UQFF LENR & ATOMIC CREATION PROCESS
+# Universal Magnetism, neutron production, pseudo-monopole states, ACP stages
+# Extended from: https://x.com/i/grok/share/ee757ceb910f4a6f846dd7be63838166
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ORB_ANALYSIS_49_PARAMS = {
+    'rho_vac_SCm': 7.09e-37,          # Vacuum energy density SCm (J/m³)
+    'rho_vac_UA': 7.09e-36,           # Vacuum energy density UA (J/m³)
+    'gamma_decay': 0.00005,           # Decay rate (day⁻¹)
+    'omega_cyclotron': 1.585e-8,      # Cyclotron frequency (rad/s)
+    'P_SCm': 1.0,                     # SCm polarization factor
+    'f_Heaviside': 0.01,              # Heaviside function factor
+    'f_quasi': 0.01,                  # Quasi-particle factor
+    'SSq_param': 1.0,                 # Quantum state parameter [SSq]
+    'k_eta': 9.8e-101,                # Neutron production calibration
+    'E_react_0': 1e46,                # Base reaction energy
+    'mu_base': 3.38e20,               # Base magnetic moment (T·pm³)
+    'quantum_states_26': 26,          # Pre-mass quantum atomic states
+}
+
+
+class UniversalMagnetismLENRCalculator:
+    """
+    UNIVERSAL MAGNETISM FOR LENR
+    
+    Models the UQFF Universal Magnetism (Um) field driving Low-Energy Nuclear
+    Reactions, incorporating SCm vacuum density, cyclotron oscillation, and
+    reaction energy dynamics.
+    
+    Core equation:
+    Um(t,r,n) = Σ_j [μ_j(t,ρ_vac,[SCm]) × (r_j/r) × (1 - e^(-γt)·cos(πt/n)) × φ̂_j]
+                × P_SCm × E_react(t) × (1 + 10¹³·f_Heaviside) × (1 + f_quasi)
+    
+    Where:
+    - μ_j(t) = (10³ + 0.4·sin(ω_c·t)) × 3.38×10²⁰ T·pm³
+    - γ = 0.00005 day⁻¹ (decay rate)
+    - E_react(t) = 10⁴⁶ × e^(-0.0005t) (reaction energy)
+    - ω_c = 2π/(3.96×10⁸) rad/s (cyclotron frequency)
+    
+    This drives neutron production and transmutation in LENR systems.
+    """
+    
+    def __init__(self):
+        self.name = "Universal Magnetism LENR"
+        self.symbol = "Um"
+        self.units = "T"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        t = dataset.get('time_days', 1.0)  # days
+        r = dataset.get('radius_pm', 1.0)  # pm
+        r_j = dataset.get('r_j_pm', 1.0)   # pm
+        n = dataset.get('quantum_state', 1)  # state index
+        
+        # Parameters
+        omega_c = dataset.get('omega_cyclotron', 1.585e-8)  # rad/s
+        gamma = dataset.get('gamma_decay', 0.00005)  # day⁻¹
+        P_SCm = dataset.get('P_SCm', 1.0)
+        f_Heaviside = dataset.get('f_Heaviside', 0.01)
+        f_quasi = dataset.get('f_quasi', 0.01)
+        E_react_0 = dataset.get('E_react_0', 1e46)
+        mu_base = dataset.get('mu_base', 3.38e20)  # T·pm³
+        
+        # Time in seconds for oscillation
+        t_sec = t * 86400
+        
+        # Magnetic moment with cyclotron oscillation
+        mu_j = (1e3 + 0.4 * math.sin(omega_c * t_sec)) * mu_base
+        
+        # Reaction energy decay
+        E_react = E_react_0 * math.exp(-0.0005 * t)
+        
+        # Temporal decay factor
+        if n > 0:
+            decay_factor = 1 - math.exp(-gamma * t) * math.cos(math.pi * t / n)
+        else:
+            decay_factor = 1 - math.exp(-gamma * t)
+        
+        # Spatial ratio
+        spatial = r_j / r if r > 0 else 1.0
+        
+        # Heaviside and quasi factors
+        H_factor = 1 + 1e13 * f_Heaviside
+        Q_factor = 1 + f_quasi
+        
+        # Universal Magnetism
+        Um = mu_j * spatial * decay_factor * P_SCm * E_react * H_factor * Q_factor
+        
+        # Normalized for practical values
+        Um_normalized = Um / 1e46  # Scale down
+        
+        return {
+            'Um_raw': Um,
+            'Um_normalized_T': Um_normalized,
+            'mu_j_T_pm3': mu_j,
+            'E_react': E_react,
+            'decay_factor': decay_factor,
+            'quantum_state_n': n,
+            'equation': 'Um = Σ[μ_j × (r_j/r) × (1 - e^(-γt)cos(πt/n))] × P_SCm × E_react × factors',
+            'long_form': f'Um = {mu_j:.3e} × ({r_j}/{r}) × {decay_factor:.4f} × {P_SCm} × {E_react:.3e} × {H_factor:.3e} × {Q_factor:.3f} = {Um:.6e} [raw], {Um_normalized:.6e} T [normalized]'
+        }
+
+
+class NeutronProductionRateOrb49Calculator:
+    """
+    NEUTRON PRODUCTION RATE FOR LENR
+    
+    Models neutron flux in UQFF Low-Energy Nuclear Reactions using
+    vacuum density ratios and quantum state exponentials.
+    
+    Core equation:
+    η = k_η × e^(-[SSq]·n/26) × e^(-(π-t)) × Um / ρ_vac,[UA]
+    
+    Where:
+    - k_η = calibration constant (~9.8×10⁻¹⁰¹)
+    - [SSq] = quantum state parameter
+    - n = quantum state index (1-26)
+    - Um = Universal Magnetism field
+    - ρ_vac,[UA] = 7.09×10⁻³⁶ J/m³
+    
+    Output: neutron flux (cm⁻²/s)
+    """
+    
+    def __init__(self):
+        self.name = "Neutron Production Rate"
+        self.symbol = "η"
+        self.units = "cm⁻²/s"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        k_eta = dataset.get('k_eta', 9.8e-101)
+        SSq = dataset.get('SSq_param', 1.0)
+        n = dataset.get('quantum_state', 1)
+        t = dataset.get('time_days', 1.0)
+        Um = dataset.get('Um_field', 1e33)  # T (normalized)
+        rho_vac_UA = dataset.get('rho_vac_UA', 7.09e-36)  # J/m³
+        
+        # Quantum state exponential
+        exp_SSq = math.exp(-SSq * n / 26)
+        
+        # Time exponential (π - t)
+        exp_time = math.exp(-(math.pi - t))
+        
+        # Neutron production rate
+        eta = k_eta * exp_SSq * exp_time * Um / rho_vac_UA
+        
+        # Also compute E field
+        E_field = Um / (rho_vac_UA * 1e-12) if rho_vac_UA > 0 else 0  # V/m
+        
+        return {
+            'eta_cm2_s': eta,
+            'exp_SSq_factor': exp_SSq,
+            'exp_time_factor': exp_time,
+            'E_field_V_m': E_field,
+            'equation': 'η = k_η × e^(-[SSq]n/26) × e^(-(π-t)) × Um/ρ_vac',
+            'long_form': f'η = {k_eta:.2e} × e^(-{SSq}×{n}/26) × e^(-({math.pi:.4f}-{t})) × {Um:.3e}/{rho_vac_UA:.2e} = {eta:.6e} cm⁻²/s'
+        }
+
+
+class PseudoMonopoleStateOrb49Calculator:
+    """
+    PSEUDO-MONOPOLE QUANTUM STATES
+    
+    Models the DPM (Di-pseudo-monopole) vacuum energy density ratio
+    between UA' and SCm components across quantum states.
+    
+    Core equations:
+    δ_n = (2π)^(n/6) (phase angle)
+    ρ_vac,[UA']:SCm(n,t) = 10⁻²³ × (0.1)^n × e^(-[SSq]n/26) × e^(-(π-t))
+    
+    Where:
+    - n = quantum state index (1-26)
+    - [SSq] = quantum state parameter
+    - δ_n = phase angle for state n
+    
+    Maps to DPM proportions f_UA', f_SCm for atomic index Z.
+    """
+    
+    def __init__(self):
+        self.name = "Pseudo-Monopole State"
+        self.symbol = "ρ_vac,[UA']:SCm"
+        self.units = "J/m³"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        n = dataset.get('quantum_state', 1)
+        t = dataset.get('time_days', 1.0)
+        SSq = dataset.get('SSq_param', 1.0)
+        Z_max = dataset.get('Z_max', 10000)
+        Z = dataset.get('atomic_index', 1)
+        
+        # Phase angle
+        delta_n = (2 * math.pi) ** (n / 6)
+        
+        # DPM vacuum energy density
+        base = 1e-23
+        decay_n = (0.1) ** n
+        exp_SSq = math.exp(-SSq * n / 26)
+        exp_time = math.exp(-(math.pi - t))
+        
+        rho_DPM = base * decay_n * exp_SSq * exp_time
+        
+        # DPM proportions for atomic index
+        f_UA_prime = (Z_max - Z) / Z_max
+        f_SCm = Z / Z_max
+        R_EB = n  # Reactivity gradient scales with n
+        
+        return {
+            'delta_n_rad': delta_n,
+            'rho_DPM_J_m3': rho_DPM,
+            'f_UA_prime': f_UA_prime,
+            'f_SCm': f_SCm,
+            'R_EB': R_EB,
+            'quantum_state': n,
+            'atomic_index': Z,
+            'equation': 'δ_n = (2π)^(n/6); ρ_DPM = 10⁻²³ × 0.1^n × e^(-[SSq]n/26) × e^(-(π-t))',
+            'long_form': f'δ_{n} = (2π)^({n}/6) = {delta_n:.6f} rad; ρ_DPM = 10⁻²³ × 0.1^{n} × {exp_SSq:.4f} × {exp_time:.4f} = {rho_DPM:.6e} J/m³; f_UA\' = {f_UA_prime:.4f}, f_SCm = {f_SCm:.4f}'
+        }
+
+
+class AtomicCreationProcessCalculator:
+    """
+    ATOMIC CREATION PROCESS (ACP)
+    
+    Models the UQFF formation of proto-atoms from DPM reactions through
+    6 stages: DPM initiation → U_i/U_m strings → vacuum density increase →
+    proto-shell collapse → fragment organization → SM_mag surface conduction.
+    
+    Key variables:
+    - DPM creates U_i (Universal Inertial operator)
+    - U_i forms U_m strings (U_mag_i) around vacuum density
+    - Quantum ripples ULF_quantum^{-1,...,-26} crack proto-shell
+    - SM_atomic quantum gravity (inverse to vacuum density)
+    - Vacuum energy density = capacitance
+    
+    Output: Stage completion metrics and proto-atom parameters
+    """
+    
+    def __init__(self):
+        self.name = "Atomic Creation Process"
+        self.symbol = "ACP"
+        self.units = "dimensionless"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        # ACP parameters
+        stage = dataset.get('acp_stage', 1)  # 1-6
+        f_UA_prime = dataset.get('f_UA_prime', 0.999)
+        f_SCm = dataset.get('f_SCm', 0.001)
+        R_EB = dataset.get('R_EB', 1.0)
+        rho_vac_0 = dataset.get('rho_vac_initial', 1e-40)  # J/m³
+        
+        # Stage-dependent vacuum density growth
+        rho_vac = rho_vac_0 * (1 + 0.5 * stage) ** stage
+        
+        # SM_atomic quantum gravity (inverse vacuum density)
+        g_SM_atomic = 1.0 / rho_vac if rho_vac > 0 else 0
+        
+        # Quantum ripple frequency (ULF range)
+        n_ripple = min(stage * 5, 26)
+        ULF_quantum = 1.0 / (10 ** n_ripple)  # Hz (ultra-low)
+        
+        # U_i strength (repulsive)
+        U_i = f_UA_prime * R_EB * 1e10  # arbitrary units
+        
+        # U_m string strength (SCm-driven)
+        U_m = f_SCm * R_EB * 1e8  # arbitrary units
+        
+        # Capacitance (vacuum energy density equivalent)
+        C_vac = rho_vac * 1e-12  # F (scaled)
+        
+        # Stage descriptions
+        stage_names = {
+            1: 'DPM_initiation',
+            2: 'Ui_Um_string_formation',
+            3: 'vacuum_density_increase',
+            4: 'proto_shell_collapse',
+            5: 'fragment_organization',
+            6: 'SM_mag_surface_conduction'
+        }
+        
+        # Proto-atom completion (100% at stage 6)
+        completion = stage / 6.0
+        
+        return {
+            'acp_stage': stage,
+            'stage_name': stage_names.get(stage, 'unknown'),
+            'rho_vac_J_m3': rho_vac,
+            'g_SM_atomic': g_SM_atomic,
+            'ULF_quantum_Hz': ULF_quantum,
+            'U_i_strength': U_i,
+            'U_m_strength': U_m,
+            'C_vac_F': C_vac,
+            'completion_fraction': completion,
+            'equation': 'ACP: DPM → U_i → U_m strings → ρ_vac↑ → collapse → organize → SM_mag',
+            'long_form': f'Stage {stage} ({stage_names.get(stage)}): ρ_vac = {rho_vac:.3e} J/m³, g_SM = {g_SM_atomic:.3e}, ULF = {ULF_quantum:.3e} Hz, U_i = {U_i:.3e}, U_m = {U_m:.3e}, completion = {completion*100:.1f}%'
+        }
+
+
+class SMAtomicQuantumGravityCalculator:
+    """
+    SM_ATOMIC QUANTUM GRAVITY
+    
+    Models the effective attractive gravity from the proto-nucleus surface
+    extending to the midpoint of the first U_g2 shell (1s orbital).
+    
+    Key relationship:
+    g_SM = k_SM / ρ_vac (inversely proportional to vacuum density)
+    
+    As vacuum density increases during ACP, SM_atomic quantum gravity
+    also increases, holding shell fragments to the durable proto-nucleus.
+    
+    Range: Surface to r_1s/2 (half the 1s orbital radius)
+    """
+    
+    def __init__(self):
+        self.name = "SM Atomic Quantum Gravity"
+        self.symbol = "g_SM"
+        self.units = "m/s²"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        rho_vac = dataset.get('vacuum_density', 7.09e-37)  # J/m³
+        k_SM = dataset.get('k_SM', 1e-30)  # coupling constant
+        r_1s = dataset.get('r_1s_orbital', 5.29e-11)  # m (Bohr radius)
+        r_nucleus = dataset.get('r_nucleus', 1e-15)  # m
+        
+        # SM_atomic quantum gravity
+        g_SM = k_SM / rho_vac if rho_vac > 0 else 0
+        
+        # Effective range
+        r_midpoint = (r_nucleus + r_1s) / 2
+        range_SM = r_midpoint - r_nucleus
+        
+        # Gradient (falls off with distance)
+        def g_at_r(r):
+            if r < r_nucleus:
+                return g_SM
+            elif r < r_midpoint:
+                return g_SM * (1 - (r - r_nucleus) / range_SM)
+            else:
+                return 0
+        
+        # Sample at midpoint
+        g_mid = g_at_r(r_midpoint / 2 + r_nucleus / 2)
+        
+        # Force on shell fragment (assuming unit pseudo-mass)
+        F_SM = g_SM * 1.0  # N (pseudo-mass = 1)
+        
+        return {
+            'g_SM_m_s2': g_SM,
+            'g_midpoint': g_mid,
+            'r_midpoint_m': r_midpoint,
+            'range_SM_m': range_SM,
+            'F_SM_N': F_SM,
+            'equation': 'g_SM = k_SM / ρ_vac; range: r_nucleus to r_1s/2',
+            'long_form': f'g_SM = {k_SM:.2e} / {rho_vac:.2e} = {g_SM:.6e} m/s²; range = {range_SM:.3e} m (nucleus to midpoint at {r_midpoint:.3e} m)'
+        }
+
+
+class QuantumRippleULFCalculator:
+    """
+    QUANTUM RIPPLE ULF SPECTRUM
+    
+    Models ultra-low frequency quantum ripples (ULF_quantum^{-1,...,-26})
+    produced during ACP as vacuum density increases, cracking the
+    proto-shell into irregular fragment segments.
+    
+    Frequency spectrum:
+    f_n = f_0 × 10^(-n) for n = 1 to 26
+    
+    These ripples correspond to the 26 quantum atomic states
+    before mass occurrence.
+    """
+    
+    def __init__(self):
+        self.name = "Quantum Ripple ULF"
+        self.symbol = "ULF_quantum"
+        self.units = "Hz"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        n = dataset.get('quantum_state', 1)  # 1-26
+        f_0 = dataset.get('f_0_base', 1.0)  # Hz (base frequency)
+        amplitude = dataset.get('ripple_amplitude', 1e-20)  # m
+        
+        # ULF frequency for state n
+        f_n = f_0 / (10 ** n)
+        
+        # Wavelength
+        c = 2.998e8  # m/s
+        lambda_n = c / f_n if f_n > 0 else float('inf')
+        
+        # Energy per ripple
+        hbar = 1.055e-34
+        E_ripple = hbar * 2 * math.pi * f_n
+        
+        # Generate spectrum (first few states)
+        spectrum = {i: f_0 / (10 ** i) for i in range(1, min(n + 1, 7))}
+        
+        # Cracking probability (increases with state)
+        P_crack = 1 - math.exp(-n / 10)
+        
+        return {
+            'f_n_Hz': f_n,
+            'lambda_n_m': lambda_n,
+            'E_ripple_J': E_ripple,
+            'quantum_state': n,
+            'spectrum_sample': spectrum,
+            'P_crack': P_crack,
+            'equation': 'f_n = f_0 × 10^(-n); ULF_quantum^{-1,...,-26}',
+            'long_form': f'ULF_quantum^(-{n}) = {f_0} × 10^(-{n}) = {f_n:.6e} Hz; λ = {lambda_n:.3e} m; E = {E_ripple:.3e} J; P_crack = {P_crack:.4f}'
+        }
+
+
+class Ug3ElectronTaggingCalculator:
+    """
+    U_g3 ELECTRON TAGGING (U_i + U_m IN MOTION)
+    
+    Models U_g3 = U_i + U_m in motion, which tags electrons via the
+    THz hole pipeline from nucleus (Point A) to shell position (Point B).
+    
+    Process:
+    1. U_i (repulsive) pushes electron off nucleus, counteracting strong force
+    2. Electron's DPM uses limited U_i to circulate coherently
+    3. U_g2 monitors and adjusts shell position balance
+    
+    Core equation:
+    F_U_g3 = (k_i·f_UA'·ν_THz·R_EB + k_m·f_SCm·ν_res + k_e·f_DPM_e·ν_THz) × G_geo/r²
+    
+    Where G_geo = sin(θ)·cos(φ)·f(ν_THz) for geometric projection
+    """
+    
+    def __init__(self):
+        self.name = "U_g3 Electron Tagging"
+        self.symbol = "F_U_g3"
+        self.units = "N"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        # DPM proportions
+        f_UA_prime = dataset.get('f_UA_prime', 0.999)
+        f_SCm = dataset.get('f_SCm', 0.001)
+        R_EB = dataset.get('R_EB', 1.0)
+        
+        # Electron DPM
+        f_UA_e = dataset.get('f_UA_electron', 0.9)
+        f_SCm_e = dataset.get('f_SCm_electron', 0.05)
+        f_DPM_e = f_UA_e * f_SCm_e
+        
+        # Frequencies
+        nu_THz = dataset.get('nu_THz', 1e12)  # Hz
+        nu_res = dataset.get('nu_resonance', 1e14)  # Hz
+        
+        # Coupling constants
+        k_i = dataset.get('k_i', 1e-30)
+        k_m = dataset.get('k_m', 1e-28)
+        k_e = dataset.get('k_e', 1e-32)
+        
+        # Geometry
+        theta = dataset.get('theta_rad', math.pi / 4)  # radians
+        phi = dataset.get('phi_rad', 0)  # radians
+        r_shell = dataset.get('r_shell', 5.29e-11)  # m (Bohr radius)
+        
+        # U_i contribution (repulsive)
+        F_Ui = k_i * f_UA_prime * nu_THz * R_EB
+        
+        # U_m contribution (SCm-driven)
+        F_Um = k_m * f_SCm * nu_res
+        
+        # Electron DPM contribution
+        F_DPM_e = k_e * f_DPM_e * nu_THz
+        
+        # Geometric modulation
+        G_geo = math.sin(theta) * math.cos(phi) * (nu_THz / 1e12)
+        
+        # Total U_g3 force
+        F_U_g3 = (F_Ui + F_Um + F_DPM_e) * G_geo / (r_shell ** 2)
+        
+        return {
+            'F_U_g3_N': F_U_g3,
+            'F_Ui_component': F_Ui,
+            'F_Um_component': F_Um,
+            'F_DPM_e_component': F_DPM_e,
+            'G_geo': G_geo,
+            'r_shell_m': r_shell,
+            'equation': 'F_U_g3 = (k_i·f_UA\'·ν_THz·R_EB + k_m·f_SCm·ν_res + k_e·f_DPM_e·ν_THz) × G_geo/r²',
+            'long_form': f'F_U_g3 = ({F_Ui:.3e} + {F_Um:.3e} + {F_DPM_e:.3e}) × {G_geo:.4f} / ({r_shell:.3e})² = {F_U_g3:.6e} N'
+        }
+
+
+class VacuumEnergyCapacitanceCalculator:
+    """
+    VACUUM ENERGY DENSITY AS CAPACITANCE
+    
+    Models the UQFF concept where fluctuating vacuum energy density
+    becomes a fixed constant in durable proto-nuclei, equivalent to
+    capacitance for storing surplus energy.
+    
+    Core relationship:
+    C_vac = ε_0 × (ρ_vac / ρ_ref) × V_shell
+    
+    Where:
+    - ρ_vac = vacuum energy density (J/m³)
+    - ρ_ref = reference density (7.09×10⁻³⁶ J/m³)
+    - V_shell = shell volume
+    
+    Surplus energy accumulates as vacuum energy density increases.
+    """
+    
+    def __init__(self):
+        self.name = "Vacuum Energy Capacitance"
+        self.symbol = "C_vac"
+        self.units = "F"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        rho_vac = dataset.get('vacuum_density', 7.09e-37)  # J/m³
+        rho_ref = dataset.get('rho_ref', 7.09e-36)  # J/m³
+        r_shell = dataset.get('r_shell', 1e-15)  # m
+        
+        epsilon_0 = 8.854e-12  # F/m
+        
+        # Shell volume (spherical)
+        V_shell = (4/3) * math.pi * r_shell ** 3
+        
+        # Vacuum capacitance
+        ratio = rho_vac / rho_ref if rho_ref > 0 else 1.0
+        C_vac = epsilon_0 * ratio * V_shell
+        
+        # Energy stored (E = ½CV², assume V=1V for unit storage)
+        E_stored = 0.5 * C_vac * 1.0 ** 2  # J
+        
+        # Surplus energy capacity (scales with rho_vac)
+        E_surplus_capacity = C_vac * rho_vac
+        
+        # Fluctuation damping (fixed constant indicator)
+        fluctuation_damped = rho_vac > rho_ref / 10
+        
+        return {
+            'C_vac_F': C_vac,
+            'V_shell_m3': V_shell,
+            'ratio_rho': ratio,
+            'E_stored_J': E_stored,
+            'E_surplus_capacity_J': E_surplus_capacity,
+            'fluctuation_damped': fluctuation_damped,
+            'equation': 'C_vac = ε_0 × (ρ_vac/ρ_ref) × V_shell',
+            'long_form': f'C_vac = {epsilon_0:.3e} × ({rho_vac:.2e}/{rho_ref:.2e}) × {V_shell:.3e} = {C_vac:.6e} F; E_surplus = {E_surplus_capacity:.6e} J'
+        }
+
+
+class QuantumToMassGradientCalculator:
+    """
+    QUANTUM-TO-MASS GRADIENT
+    
+    Models the transition point where proto-atoms (in 26 quantum states)
+    acquire atomic mass and atomic gravity, completing hydrogen formation.
+    
+    Gradient: 7-10 U_mag degrees of quantum separation
+    
+    At this threshold:
+    - U_i has placed electron in 1s orbital
+    - Shell fragments organized on durable nucleus
+    - Hydrogen atom forms with mass and gravity
+    
+    Mass emergence equation:
+    M_atomic = M_0 × (1 - e^(-n_grad/10))
+    
+    Where n_grad is the gradient degree (7-10).
+    """
+    
+    def __init__(self):
+        self.name = "Quantum-to-Mass Gradient"
+        self.symbol = "M_gradient"
+        self.units = "amu"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        n_grad = dataset.get('gradient_degree', 7)  # 7-10
+        M_0 = dataset.get('base_mass_amu', 1.008)  # Hydrogen
+        Z = dataset.get('atomic_index', 1)
+        
+        # Mass emergence factor
+        emergence = 1 - math.exp(-n_grad / 10)
+        
+        # Atomic mass
+        M_atomic = M_0 * emergence * Z
+        
+        # Atomic gravity emergence (follows mass)
+        g_atomic = emergence * 9.8e-10  # Very small scale
+        
+        # Completion status
+        if n_grad < 7:
+            status = 'pre-mass_quantum_state'
+        elif n_grad <= 10:
+            status = 'quantum_to_mass_transition'
+        else:
+            status = 'mass_state_complete'
+        
+        # Energy barrier (quantum separation)
+        E_barrier = 13.6 * (1 - emergence)  # eV (ionization-related)
+        
+        return {
+            'n_gradient': n_grad,
+            'emergence_factor': emergence,
+            'M_atomic_amu': M_atomic,
+            'g_atomic_m_s2': g_atomic,
+            'status': status,
+            'E_barrier_eV': E_barrier,
+            'equation': 'M_atomic = M_0 × (1 - e^(-n_grad/10)) × Z',
+            'long_form': f'Gradient degree {n_grad}: emergence = 1 - e^(-{n_grad}/10) = {emergence:.4f}; M = {M_0} × {emergence:.4f} × {Z} = {M_atomic:.6f} amu; status: {status}'
+        }
+
+
+class DPMSummationForceCalculator:
+    """
+    DPM SUMMATION FORCE (U_g1 = DPM)
+    
+    Models U_g1 as the complete DPM, summing all force components
+    (SM_gravity, U_b, resonance) with geophysical geometric projections.
+    
+    Core equation:
+    F_U_g1 = Σ_k [k_k × (f_UA'₁·f_SCm₁·R_EB₁)×(f_UA'₂·f_SCm₂·R_EB₂)/r² × G_k]
+    
+    Where G_k includes geometric factors:
+    - Spherical: sin(θ) for orbits
+    - Toroidal: cos(φ) for galactic disks
+    - Linear: h(ν_THz) for filaments
+    
+    Components: SM_gravity (attractive), U_b (buoyancy), resonance (U_g3)
+    """
+    
+    def __init__(self):
+        self.name = "DPM Summation Force U_g1"
+        self.symbol = "F_U_g1"
+        self.units = "N"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        # DPM proportions for two interacting bodies
+        f_UA1 = dataset.get('f_UA_prime_1', 0.999)
+        f_SCm1 = dataset.get('f_SCm_1', 0.001)
+        R_EB1 = dataset.get('R_EB_1', 1.0)
+        
+        f_UA2 = dataset.get('f_UA_prime_2', 0.998)
+        f_SCm2 = dataset.get('f_SCm_2', 0.002)
+        R_EB2 = dataset.get('R_EB_2', 2.0)
+        
+        r = dataset.get('distance', 1e10)  # m
+        
+        # Geometry
+        geometry = dataset.get('geometry', 'spherical')
+        theta = dataset.get('theta_rad', math.pi / 4)
+        phi = dataset.get('phi_rad', 0)
+        nu_THz = dataset.get('nu_THz', 1e12)
+        
+        # Component coupling constants
+        k_SM = dataset.get('k_SM_gravity', 6.674e-11)  # G-like
+        k_Ub = dataset.get('k_buoyancy', 1e-20)
+        k_res = dataset.get('k_resonance', 1e-30)
+        
+        # DPM product
+        DPM_1 = f_UA1 * f_SCm1 * R_EB1
+        DPM_2 = f_UA2 * f_SCm2 * R_EB2
+        DPM_product = DPM_1 * DPM_2 / (r ** 2) if r > 0 else 0
+        
+        # Geometric factors
+        if geometry == 'spherical':
+            G_k = math.sin(theta)
+        elif geometry == 'toroidal':
+            G_k = math.cos(phi)
+        elif geometry == 'linear':
+            G_k = nu_THz / 1e12
+        else:
+            G_k = 1.0
+        
+        # Force components
+        F_SM_gravity = k_SM * DPM_product * G_k  # Attractive
+        F_Ub = -k_Ub * DPM_product * G_k  # Counter (buoyancy)
+        F_resonance = k_res * DPM_product * G_k * nu_THz
+        
+        # Total U_g1 = DPM
+        F_U_g1 = F_SM_gravity + F_Ub + F_resonance
+        
+        return {
+            'F_U_g1_N': F_U_g1,
+            'F_SM_gravity_N': F_SM_gravity,
+            'F_Ub_N': F_Ub,
+            'F_resonance_N': F_resonance,
+            'DPM_product': DPM_product,
+            'G_k': G_k,
+            'geometry': geometry,
+            'equation': 'F_U_g1 = Σ_k [k_k × (DPM₁×DPM₂)/r² × G_k]',
+            'long_form': f'F_U_g1 = {F_SM_gravity:.3e} + {F_Ub:.3e} + {F_resonance:.3e} = {F_U_g1:.6e} N [geometry: {geometry}, G_k = {G_k:.4f}]'
+        }
+
+
+# Registry for Orb Analysis 49
+ORB_ANALYSIS_49_CALCULATORS = {
+    'UniversalMagnetismLENRCalculator': UniversalMagnetismLENRCalculator(),
+    'NeutronProductionRateOrb49Calculator': NeutronProductionRateOrb49Calculator(),
+    'PseudoMonopoleStateOrb49Calculator': PseudoMonopoleStateOrb49Calculator(),
+    'AtomicCreationProcessCalculator': AtomicCreationProcessCalculator(),
+    'SMAtomicQuantumGravityCalculator': SMAtomicQuantumGravityCalculator(),
+    'QuantumRippleULFCalculator': QuantumRippleULFCalculator(),
+    'Ug3ElectronTaggingCalculator': Ug3ElectronTaggingCalculator(),
+    'VacuumEnergyCapacitanceCalculator': VacuumEnergyCapacitanceCalculator(),
+    'QuantumToMassGradientCalculator': QuantumToMassGradientCalculator(),
+    'DPMSummationForceCalculator': DPMSummationForceCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -24962,6 +25685,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_46_CALCULATORS,
     **ORB_ANALYSIS_47_CALCULATORS,
     **ORB_ANALYSIS_48_CALCULATORS,
+    **ORB_ANALYSIS_49_CALCULATORS,
 }
 
 # Update class count
@@ -25458,6 +26182,20 @@ __all__ = [
     'ZeroPointEnergyHarvestCalculator',
     'HelicalQuantumTensionCalculator',
     'ORB_ANALYSIS_48_CALCULATORS',
+    
+    # Orb Analysis_49 (10 classes - UQFF LENR, Atomic Creation Process, Pseudo-Monopole States)
+    'ORB_ANALYSIS_49_PARAMS',
+    'UniversalMagnetismLENRCalculator',
+    'NeutronProductionRateOrb49Calculator',
+    'PseudoMonopoleStateOrb49Calculator',
+    'AtomicCreationProcessCalculator',
+    'SMAtomicQuantumGravityCalculator',
+    'QuantumRippleULFCalculator',
+    'Ug3ElectronTaggingCalculator',
+    'VacuumEnergyCapacitanceCalculator',
+    'QuantumToMassGradientCalculator',
+    'DPMSummationForceCalculator',
+    'ORB_ANALYSIS_49_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
