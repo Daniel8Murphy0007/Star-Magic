@@ -24145,6 +24145,779 @@ ORB_ANALYSIS_47_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS 48: UNIVERSAL INERTIAL OPERATOR FRAMEWORK
+# Caduceus quantum waves, DE Power vacuum extraction, globular cluster layers
+# Extended from: https://x.com/i/grok/share/355ab76467c440e0bcef99719466ca69
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ORB_ANALYSIS_48_PARAMS = {
+    'lambda_i': 1.0,              # Inertia coupling constant
+    'f_TRZ': 0.1,                 # Time-reversal zone enhancement factor
+    'rho_vac_SCm': 1e-26,         # Vacuum density Superconductive state (kg/m³)
+    'rho_vac_UA': 1e-27,          # Vacuum density Universal Aether (kg/m³)
+    'omega_s': 7.27e-5,           # String rotation angular velocity (rad/s)
+    'DE_coupling': 0.01,          # Dark energy coupling strength
+    'caduceus_turns': 7,          # Number of helical turns in Caduceus coil
+    'globular_core_radius': 1e15, # Core radius for globular cluster (m)
+    'UH4_zone_factor': 3.0,       # UH4 zone radius multiplier
+    'plasma_zone_factor': 10.0,   # Plasma zone radius multiplier
+    'ZPE_coupling': 1e-3,         # Zero-point energy extraction efficiency
+}
+
+
+class CaduceusQuantumWaveCalculator:
+    """
+    CADUCEUS QUANTUM WAVE DYNAMICS
+    
+    Models self-inverting spherical quantum waves that "turn inside out"
+    creating helical coil structures with simultaneous pinch points.
+    
+    The Caduceus coil pattern emerges from quantum waves inverting through
+    normal axis, producing double-helix geometry observed in EM phenomena.
+    
+    Core equation:
+    Ψ_caduceus = A · sin(k·r - ω·t) · exp(-r²/2σ²) · H_n(r/σ) · exp(i·n·φ)
+    
+    Where:
+    - A = amplitude
+    - k = wave vector
+    - ω = angular frequency  
+    - σ = wave packet width
+    - H_n = Hermite polynomial (helical order n)
+    - φ = azimuthal angle
+    - n = number of helical turns (Caduceus count)
+    
+    The pinch points occur at nodes where wave inverts:
+    r_pinch = n·π/k (for n = 1,2,3...)
+    """
+    
+    def __init__(self):
+        self.name = "Caduceus Quantum Wave"
+        self.symbol = "Ψ_caduceus"
+        self.units = "dimensionless"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        amplitude = dataset.get('amplitude', 1.0)
+        k = dataset.get('wave_vector', 1e10)  # m⁻¹
+        omega = dataset.get('angular_frequency', 1e15)  # rad/s
+        r = dataset.get('radius', 1e-10)  # m
+        t = dataset.get('time', 0)  # s
+        sigma = dataset.get('wave_packet_width', 1e-9)  # m
+        n_helix = dataset.get('helix_order', 7)  # Caduceus turns
+        phi = dataset.get('azimuthal_angle', 0)  # rad
+        
+        # Spatial oscillation
+        spatial = math.sin(k * r - omega * t)
+        
+        # Gaussian envelope
+        gaussian = math.exp(-r**2 / (2 * sigma**2))
+        
+        # Hermite polynomial approximation (n=0,1,2 cases)
+        x = r / sigma
+        if n_helix == 0:
+            H_n = 1.0
+        elif n_helix == 1:
+            H_n = 2 * x
+        elif n_helix == 2:
+            H_n = 4 * x**2 - 2
+        else:
+            # General approximation for higher orders
+            H_n = (2 * x)**n_helix * math.exp(-x**2/4)
+        
+        # Azimuthal phase (helical structure)
+        helical = math.cos(n_helix * phi)  # Real part of exp(i·n·φ)
+        
+        # Complete Caduceus wave function magnitude
+        psi_caduceus = abs(amplitude * spatial * gaussian * H_n * helical)
+        
+        # Pinch point locations
+        pinch_points = [n * math.pi / k for n in range(1, n_helix + 1)]
+        
+        # Energy density at pinch
+        E_pinch = (math.hbar * omega if hasattr(math, 'hbar') else 1.055e-34 * omega) * (n_helix + 0.5)
+        
+        return {
+            'psi_caduceus': psi_caduceus,
+            'pinch_radius_1': pinch_points[0] if pinch_points else 0,
+            'pinch_energy_density': E_pinch,
+            'helical_turns': n_helix,
+            'equation': 'Ψ_caduceus = A·sin(kr-ωt)·exp(-r²/2σ²)·H_n(r/σ)·exp(inφ)',
+            'long_form': f'Ψ = {amplitude:.3e} × sin({k:.2e}·r - {omega:.2e}·t) × exp(-r²/2·{sigma:.2e}²) × H_{n_helix}(r/{sigma:.2e}) × cos({n_helix}φ) = {psi_caduceus:.6e}'
+        }
+
+
+class GlobularClusterLayerCalculator:
+    """
+    GLOBULAR STAR CLUSTER LAYERED STRUCTURE MODEL
+    
+    Models the radial structure of globular star clusters with UQFF layers:
+    1. Core: Fe (iron) - densest region
+    2. UH4 zone: Universal Hydrogen quadruple state
+    3. Plasma zone: Ionized hydrogen/helium
+    4. Atmosphere: Off-gassed impurities (crust formation)
+    
+    Sphere trapping at 8 cm λ_Compton characteristic scale.
+    
+    Density profile:
+    ρ(r) = ρ_core × (r_core/r)^α × f_layer(r)
+    
+    Where f_layer encodes transitions between zones.
+    """
+    
+    def __init__(self):
+        self.name = "Globular Cluster Layer Structure"
+        self.symbol = "ρ_layer(r)"
+        self.units = "kg/m³"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        r = dataset.get('radius', 1e16)  # m from center
+        r_core = dataset.get('core_radius', 1e15)  # m
+        rho_core = dataset.get('core_density', 1e6)  # kg/m³ (Fe core)
+        alpha = dataset.get('density_slope', 2.0)  # Power law index
+        UH4_factor = dataset.get('UH4_zone_factor', 3.0)
+        plasma_factor = dataset.get('plasma_zone_factor', 10.0)
+        
+        # Layer boundaries
+        r_UH4 = r_core * UH4_factor
+        r_plasma = r_core * plasma_factor
+        r_atmosphere = r_core * plasma_factor * 3
+        
+        # Determine layer and compute density
+        if r <= r_core:
+            layer = 'Fe_core'
+            rho = rho_core
+        elif r <= r_UH4:
+            layer = 'UH4_zone'
+            rho = rho_core * (r_core / r)**alpha * 0.1  # UH4 lighter
+        elif r <= r_plasma:
+            layer = 'plasma_zone'
+            rho = rho_core * (r_core / r)**alpha * 0.01  # Plasma very light
+        else:
+            layer = 'atmosphere'
+            rho = rho_core * (r_core / r)**(alpha + 1) * 0.001  # Off-gas
+        
+        # Gravitational potential at radius
+        G = 6.674e-11
+        M_enclosed = (4/3) * math.pi * rho_core * r_core**3  # Core mass approx
+        if r > r_core:
+            # Add shell contributions
+            M_enclosed += (4/3) * math.pi * (rho_core * 0.1) * (min(r, r_UH4)**3 - r_core**3)
+        phi_grav = -G * M_enclosed / r if r > 0 else 0
+        
+        # 8 cm Compton trapping scale
+        lambda_trap = 0.08  # m
+        f_trap = math.exp(-abs(r - 100 * lambda_trap) / (10 * lambda_trap))
+        
+        return {
+            'density_kg_m3': rho,
+            'layer': layer,
+            'r_core_m': r_core,
+            'r_UH4_m': r_UH4,
+            'r_plasma_m': r_plasma,
+            'gravitational_potential': phi_grav,
+            'trap_factor': f_trap,
+            'equation': 'ρ(r) = ρ_core × (r_core/r)^α × f_layer(r)',
+            'long_form': f'ρ({r:.2e} m) = {rho_core:.2e} × ({r_core:.2e}/{r:.2e})^{alpha} × f_{layer} = {rho:.6e} kg/m³'
+        }
+
+
+class DEPowerVacuumCalculator:
+    """
+    DARK ENERGY POWER EXTRACTION FROM VACUUM
+    
+    Models extraction of Dark Energy (Aether) power from vacuum fluctuations.
+    
+    Two modes:
+    - EMP/Static → AC power (electromagnetic pulse conversion)
+    - Nuclear → DC power (continuous extraction)
+    
+    Power equation:
+    P_DE = η × ρ_vac × c² × V × f_conversion
+    
+    Where:
+    - η = extraction efficiency
+    - ρ_vac = vacuum energy density
+    - c = speed of light
+    - V = extraction volume
+    - f_conversion = mode-dependent conversion factor
+    
+    The catalytic phase transforms DE: oxidizer + fuel + spark → usable power
+    """
+    
+    def __init__(self):
+        self.name = "Dark Energy Power Vacuum Extraction"
+        self.symbol = "P_DE"
+        self.units = "W"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        rho_vac = dataset.get('vacuum_density', 1e-26)  # kg/m³
+        c = dataset.get('speed_of_light', 2.998e8)  # m/s
+        V = dataset.get('extraction_volume', 1.0)  # m³
+        eta = dataset.get('extraction_efficiency', 0.001)  # dimensionless
+        mode = dataset.get('extraction_mode', 'AC')  # 'AC' or 'DC'
+        
+        # Conversion factor depends on mode
+        if mode.upper() == 'DC':
+            f_conversion = 1.0  # Nuclear - direct
+            mode_name = 'Nuclear→DC'
+        else:
+            f_conversion = 0.1  # EMP/Static - less efficient
+            mode_name = 'EMP→AC'
+        
+        # Dark energy power extraction
+        P_DE = eta * rho_vac * c**2 * V * f_conversion
+        
+        # Energy available per second
+        E_available = rho_vac * c**2 * V  # Total vacuum energy
+        
+        # Catalytic efficiency (oxidizer + fuel + spark)
+        catalytic_boost = dataset.get('catalytic_factor', 1.0)
+        P_catalytic = P_DE * catalytic_boost
+        
+        # ZPE contribution
+        hbar = 1.055e-34
+        omega_cutoff = dataset.get('frequency_cutoff', 1e12)  # rad/s
+        P_ZPE = (hbar * omega_cutoff / 2) * (V / (1e-30))  # Per mode
+        
+        return {
+            'P_DE_watts': P_DE,
+            'P_catalytic_watts': P_catalytic,
+            'P_ZPE_watts': P_ZPE,
+            'energy_density_J_m3': rho_vac * c**2,
+            'mode': mode_name,
+            'extraction_efficiency': eta,
+            'equation': 'P_DE = η × ρ_vac × c² × V × f_conversion',
+            'long_form': f'P_DE = {eta:.4e} × {rho_vac:.2e} × ({c:.3e})² × {V:.2e} × {f_conversion} = {P_DE:.6e} W [{mode_name}]'
+        }
+
+
+class CatalyticPhaseTransformCalculator:
+    """
+    CATALYTIC PHASE POTENTIAL TRANSFORMATION
+    
+    Models the transformation of Dark Energy power through catalytic phases:
+    - Oxidizer: Electron acceptor phase
+    - Fuel: Energy carrier substrate
+    - Spark: Activation trigger
+    
+    Phase potential equation:
+    Φ_cat = Φ_0 × exp(-E_a/kT) × [Ox]^a × [Fuel]^b × f_spark
+    
+    Where:
+    - Φ_0 = base potential
+    - E_a = activation energy
+    - [Ox], [Fuel] = concentrations
+    - a, b = reaction orders
+    - f_spark = activation function
+    """
+    
+    def __init__(self):
+        self.name = "Catalytic Phase Transformation"
+        self.symbol = "Φ_cat"
+        self.units = "V"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        Phi_0 = dataset.get('base_potential', 1.0)  # V
+        E_a = dataset.get('activation_energy', 0.5)  # eV
+        T = dataset.get('temperature', 300)  # K
+        Ox_conc = dataset.get('oxidizer_concentration', 1.0)  # mol/L
+        Fuel_conc = dataset.get('fuel_concentration', 1.0)  # mol/L
+        a = dataset.get('oxidizer_order', 1.0)
+        b = dataset.get('fuel_order', 1.0)
+        spark_active = dataset.get('spark_active', True)
+        
+        k_B = 8.617e-5  # eV/K
+        
+        # Arrhenius factor
+        arrhenius = math.exp(-E_a / (k_B * T))
+        
+        # Concentration dependence
+        conc_factor = (Ox_conc**a) * (Fuel_conc**b)
+        
+        # Spark activation
+        f_spark = 1.0 if spark_active else 0.01
+        
+        # Catalytic phase potential
+        Phi_cat = Phi_0 * arrhenius * conc_factor * f_spark
+        
+        # Reaction rate
+        k_rate = 1e13 * arrhenius  # s⁻¹ (pre-exponential)
+        
+        # Power output per mole
+        F = 96485  # C/mol
+        P_molar = Phi_cat * k_rate * F * (Ox_conc + Fuel_conc)
+        
+        return {
+            'catalytic_potential_V': Phi_cat,
+            'arrhenius_factor': arrhenius,
+            'reaction_rate_s': k_rate,
+            'power_per_mole_W': P_molar,
+            'spark_status': 'ACTIVE' if spark_active else 'DORMANT',
+            'equation': 'Φ_cat = Φ_0 × exp(-E_a/kT) × [Ox]^a × [Fuel]^b × f_spark',
+            'long_form': f'Φ_cat = {Phi_0:.2f} × exp(-{E_a:.2f}/{k_B:.2e}×{T}) × {Ox_conc:.2f}^{a:.1f} × {Fuel_conc:.2f}^{b:.1f} × {f_spark:.2f} = {Phi_cat:.6e} V'
+        }
+
+
+class InertialOperatorEnhancedCalculator:
+    """
+    ENHANCED UNIVERSAL INERTIAL OPERATOR
+    
+    Extended formulation of inertia as the operator of Universal Aether,
+    including Caduceus flux and time-reversal zone corrections.
+    
+    Full equation:
+    Ui = λ_i × (ρ_vac,[SCm]/ρ_vac,[UA]) × ω_s(t) × cos(π·t_n) × (1 + f_TRZ) × Ψ_caduceus
+    
+    Where:
+    - λ_i = inertia coupling constant (≈1.0)
+    - ρ_vac,[SCm] = vacuum density in Superconductive state
+    - ρ_vac,[UA] = vacuum density in Universal Aether state
+    - ω_s(t) = string rotation angular velocity
+    - t_n = normalized time
+    - f_TRZ = time-reversal zone enhancement factor
+    - Ψ_caduceus = Caduceus quantum wave contribution
+    
+    The "Holy Trinity": [Aether, Inertia/EM field, extra-universal Superconductive Material]
+    """
+    
+    def __init__(self):
+        self.name = "Enhanced Universal Inertial Operator"
+        self.symbol = "Ui_enhanced"
+        self.units = "dimensionless"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        lambda_i = dataset.get('inertia_coupling', 1.0)
+        rho_SCm = dataset.get('rho_vac_SCm', 1e-26)  # kg/m³
+        rho_UA = dataset.get('rho_vac_UA', 1e-27)  # kg/m³
+        omega_s = dataset.get('omega_s', 7.27e-5)  # rad/s
+        t = dataset.get('time', 0)  # s
+        T_period = dataset.get('period', 86400)  # s (1 day default)
+        f_TRZ = dataset.get('f_TRZ', 0.1)  # Time-reversal zone factor
+        psi_caduceus = dataset.get('psi_caduceus', 1.0)  # Caduceus wave
+        
+        # Normalized time
+        t_n = t / T_period
+        
+        # Vacuum density ratio
+        rho_ratio = rho_SCm / rho_UA if rho_UA > 0 else 10.0
+        
+        # Time-dependent string rotation
+        omega_t = omega_s * (1 + 0.1 * math.sin(2 * math.pi * t_n))
+        
+        # Cosine modulation
+        cos_mod = math.cos(math.pi * t_n)
+        
+        # Time-reversal zone enhancement
+        TRZ_factor = 1 + f_TRZ
+        
+        # Enhanced Universal Inertial Operator
+        Ui = lambda_i * rho_ratio * omega_t * cos_mod * TRZ_factor * psi_caduceus
+        
+        # Mass equivalence (inertia × c²)
+        c = 2.998e8
+        m_inertial = Ui * rho_SCm / c**2
+        
+        # Force equivalent
+        a_test = 9.8  # test acceleration m/s²
+        F_inertial = m_inertial * a_test
+        
+        return {
+            'Ui_enhanced': Ui,
+            'rho_ratio': rho_ratio,
+            'omega_t_rad_s': omega_t,
+            'TRZ_factor': TRZ_factor,
+            'inertial_mass_kg': m_inertial,
+            'inertial_force_N': F_inertial,
+            'equation': 'Ui = λ_i × (ρ_SCm/ρ_UA) × ω_s(t) × cos(πt_n) × (1+f_TRZ) × Ψ_caduceus',
+            'long_form': f'Ui = {lambda_i:.2f} × ({rho_SCm:.2e}/{rho_UA:.2e}) × {omega_t:.4e} × cos(π×{t_n:.4f}) × {TRZ_factor:.2f} × {psi_caduceus:.4f} = {Ui:.6e}'
+        }
+
+
+class PseudoMonopoleGyroCalculator:
+    """
+    PSEUDO-MONOPOLE GYRO INERTIA
+    
+    Models how inertia manifests differently at quantum vs cosmic scales:
+    - Quantum scale: Gyroscopic behavior (pseudo-monopole spin)
+    - Cosmic scale: Large inter-reactive collection (distributed inertia)
+    
+    At small scales, inertia acts like a magnetic monopole analogue,
+    exhibiting gyroscopic precession and quantized angular momentum.
+    
+    Pseudo-monopole charge:
+    q_m = (ℏ/e) × n_quantm = n × (h/2e) = n × Φ_0
+    
+    Gyroscopic frequency:
+    ω_gyro = q_m × B / m_eff
+    
+    At cosmic scales, inertia becomes collective:
+    I_cosmic = Σ_i (m_i × r_i²) × f_coupling
+    """
+    
+    def __init__(self):
+        self.name = "Pseudo-Monopole Gyro Inertia"
+        self.symbol = "ω_gyro"
+        self.units = "rad/s"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        n_quant = dataset.get('quantum_number', 1)
+        B = dataset.get('magnetic_field', 1e-3)  # T
+        m_eff = dataset.get('effective_mass', 9.109e-31)  # kg
+        scale = dataset.get('scale', 'quantum')  # 'quantum' or 'cosmic'
+        
+        hbar = 1.055e-34
+        e = 1.602e-19
+        h = 6.626e-34
+        
+        # Flux quantum
+        Phi_0 = h / (2 * e)  # 2.07e-15 Wb
+        
+        # Pseudo-monopole charge
+        q_m = n_quant * Phi_0
+        
+        if scale == 'quantum':
+            # Gyroscopic frequency
+            omega_gyro = q_m * B / m_eff
+            
+            # Quantized angular momentum
+            L = n_quant * hbar
+            
+            # Precession angle
+            theta_prec = omega_gyro / (2 * math.pi * 1e9)  # normalized
+            
+            result = {
+                'pseudo_monopole_charge_Wb': q_m,
+                'omega_gyro_rad_s': omega_gyro,
+                'angular_momentum_J_s': L,
+                'precession_angle': theta_prec,
+                'scale': 'quantum',
+                'behavior': 'gyroscopic'
+            }
+        else:
+            # Cosmic scale - collective inertia
+            N_bodies = dataset.get('N_bodies', 1e6)
+            m_avg = dataset.get('average_mass', 1e30)  # kg
+            r_avg = dataset.get('average_radius', 1e15)  # m
+            f_coupling = dataset.get('coupling_factor', 0.1)
+            
+            I_cosmic = N_bodies * m_avg * r_avg**2 * f_coupling
+            omega_cluster = math.sqrt(6.674e-11 * N_bodies * m_avg / r_avg**3)
+            
+            result = {
+                'I_cosmic_kg_m2': I_cosmic,
+                'omega_cluster_rad_s': omega_cluster,
+                'N_bodies': N_bodies,
+                'total_mass_kg': N_bodies * m_avg,
+                'scale': 'cosmic',
+                'behavior': 'collective'
+            }
+        
+        result['equation'] = 'ω_gyro = q_m × B / m_eff (quantum); I_cosmic = Σ(m×r²)×f (cosmic)'
+        result['long_form'] = f'Scale: {scale} | Primary output: {result.get("omega_gyro_rad_s", result.get("I_cosmic_kg_m2", 0)):.6e}'
+        
+        return result
+
+
+class AetherFluxRootingCalculator:
+    """
+    AETHER FLUX ROOTING FOR MATTER
+    
+    Models how matter "roots" to the Universal Aether field,
+    creating universal buoyancy and enabling acceleration through force systems.
+    
+    Rooting potential:
+    Φ_root = ∫ (ρ_matter - ρ_vac) × g_local dV
+    
+    Buoyancy in Aether:
+    F_buoyancy = -∇Φ_root = (ρ_vac/ρ_matter) × m × g_local
+    
+    The rooting strength determines how firmly matter is "anchored"
+    in the Aether field, affecting inertial properties.
+    """
+    
+    def __init__(self):
+        self.name = "Aether Flux Rooting"
+        self.symbol = "Φ_root"
+        self.units = "J"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        rho_matter = dataset.get('matter_density', 1000)  # kg/m³
+        rho_vac = dataset.get('vacuum_density', 1e-26)  # kg/m³
+        g_local = dataset.get('local_gravity', 9.8)  # m/s²
+        V = dataset.get('volume', 1.0)  # m³
+        m = dataset.get('mass', rho_matter * V)  # kg
+        
+        # Density contrast
+        delta_rho = rho_matter - rho_vac
+        
+        # Rooting potential (integral approximation)
+        Phi_root = delta_rho * g_local * V**2 / 3  # Simplified
+        
+        # Buoyancy force in Aether
+        F_buoyancy = (rho_vac / rho_matter) * m * g_local if rho_matter > 0 else 0
+        
+        # Rooting strength (dimensionless)
+        rooting_strength = delta_rho / rho_matter if rho_matter > 0 else 1.0
+        
+        # Acceleration modification
+        a_modified = g_local * (1 - rho_vac / rho_matter) if rho_matter > 0 else g_local
+        
+        # Aether flux through volume
+        c = 2.998e8
+        flux_aether = rho_vac * c * V  # kg/s
+        
+        return {
+            'Phi_root_J': Phi_root,
+            'F_buoyancy_N': F_buoyancy,
+            'rooting_strength': rooting_strength,
+            'a_modified_m_s2': a_modified,
+            'flux_aether_kg_s': flux_aether,
+            'density_contrast_kg_m3': delta_rho,
+            'equation': 'Φ_root = ∫(ρ_matter - ρ_vac) × g dV; F_buoy = (ρ_vac/ρ_matter) × m × g',
+            'long_form': f'Φ_root = ({rho_matter:.2e} - {rho_vac:.2e}) × {g_local:.1f} × {V:.2e}²/3 = {Phi_root:.6e} J; F_buoy = {F_buoyancy:.6e} N'
+        }
+
+
+class VacuumEnergyFluctuationOrb48Calculator:
+    """
+    VACUUM ENERGY FLUCTUATION DYNAMICS (Orb_48 Extended)
+    
+    Models centripetal/centrifugal forces arising from spatial variations
+    in vacuum energy density.
+    
+    Vacuum energy gradient:
+    ∇ρ_vac → generates pseudo-force on matter
+    
+    Fluctuation amplitude:
+    δρ_vac = ρ_vac,0 × sin(k·r - ω·t) × exp(-r/λ_corr)
+    
+    Resulting force:
+    F_vac = -V × c² × ∇(δρ_vac)
+    
+    This explains anomalous accelerations in regions of
+    varying vacuum energy density (cosmic voids, galaxy edges).
+    """
+    
+    def __init__(self):
+        self.name = "Vacuum Energy Fluctuation"
+        self.symbol = "δρ_vac"
+        self.units = "kg/m³"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        rho_vac_0 = dataset.get('base_vacuum_density', 1e-26)  # kg/m³
+        k = dataset.get('wave_vector', 1e-20)  # m⁻¹
+        r = dataset.get('radius', 1e20)  # m
+        omega = dataset.get('angular_frequency', 1e-18)  # rad/s
+        t = dataset.get('time', 0)  # s
+        lambda_corr = dataset.get('correlation_length', 1e22)  # m
+        V = dataset.get('volume', 1e30)  # m³
+        
+        c = 2.998e8
+        
+        # Vacuum density fluctuation
+        oscillation = math.sin(k * r - omega * t)
+        damping = math.exp(-r / lambda_corr)
+        delta_rho = rho_vac_0 * oscillation * damping
+        
+        # Gradient (approximate)
+        grad_delta_rho = rho_vac_0 * k * math.cos(k * r - omega * t) * damping
+        grad_delta_rho -= rho_vac_0 * oscillation * damping / lambda_corr
+        
+        # Vacuum force
+        F_vac = -V * c**2 * grad_delta_rho
+        
+        # Anomalous acceleration
+        m_test = dataset.get('test_mass', 1e30)  # kg
+        a_anomalous = F_vac / m_test if m_test > 0 else 0
+        
+        # Power spectrum density
+        P_spectrum = (delta_rho * c**2)**2 * V / (2 * math.pi)
+        
+        return {
+            'delta_rho_kg_m3': delta_rho,
+            'gradient_kg_m4': grad_delta_rho,
+            'F_vac_N': F_vac,
+            'a_anomalous_m_s2': a_anomalous,
+            'power_spectrum_W': P_spectrum,
+            'correlation_length_m': lambda_corr,
+            'equation': 'δρ_vac = ρ_0 × sin(kr-ωt) × exp(-r/λ); F = -Vc²∇(δρ)',
+            'long_form': f'δρ_vac = {rho_vac_0:.2e} × sin({k:.2e}×{r:.2e} - {omega:.2e}×{t}) × exp(-{r:.2e}/{lambda_corr:.2e}) = {delta_rho:.6e} kg/m³; F = {F_vac:.6e} N'
+        }
+
+
+class ZeroPointEnergyHarvestCalculator:
+    """
+    ZERO-POINT ENERGY HARVESTING
+    
+    Models extraction of zero-point energy from vacuum fluctuations
+    via Casimir-related mechanisms.
+    
+    ZPE density:
+    ρ_ZPE = (ℏω)/(2V) per mode
+    
+    Total ZPE up to cutoff:
+    E_ZPE = ∫_0^ω_c (ℏω/2) × g(ω) dω
+    
+    Extraction via dynamic Casimir effect:
+    P_Casimir = (π² ℏ c / 720) × (A / d⁴) × v_plate
+    
+    Where v_plate is the plate velocity modulation.
+    """
+    
+    def __init__(self):
+        self.name = "Zero-Point Energy Harvesting"
+        self.symbol = "P_ZPE"
+        self.units = "W"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        omega_cutoff = dataset.get('frequency_cutoff', 1e15)  # rad/s
+        V = dataset.get('mode_volume', 1e-18)  # m³
+        A = dataset.get('plate_area', 1e-4)  # m²
+        d = dataset.get('plate_separation', 1e-7)  # m
+        v_plate = dataset.get('plate_velocity', 1e3)  # m/s
+        eta_extract = dataset.get('extraction_efficiency', 0.001)
+        
+        hbar = 1.055e-34
+        c = 2.998e8
+        
+        # ZPE per mode
+        E_mode = hbar * omega_cutoff / 2
+        
+        # Number of modes in volume (density of states approximation)
+        n_modes = (omega_cutoff**3 * V) / (2 * math.pi**2 * c**3)
+        
+        # Total ZPE
+        E_total = E_mode * n_modes
+        
+        # Dynamic Casimir power
+        P_Casimir = (math.pi**2 * hbar * c / 720) * (A / d**4) * v_plate
+        
+        # Extracted power
+        P_extracted = P_Casimir * eta_extract
+        
+        # Casimir force for reference
+        F_Casimir = (math.pi**2 * hbar * c / 240) * A / d**4
+        
+        return {
+            'E_mode_J': E_mode,
+            'n_modes': n_modes,
+            'E_total_ZPE_J': E_total,
+            'P_Casimir_W': P_Casimir,
+            'P_extracted_W': P_extracted,
+            'F_Casimir_N': F_Casimir,
+            'equation': 'P_Casimir = (π²ℏc/720) × (A/d⁴) × v; E_ZPE = (ℏω/2) × n_modes',
+            'long_form': f'P = (π²×{hbar:.2e}×{c:.2e}/720) × ({A:.2e}/{d:.2e}⁴) × {v_plate:.2e} = {P_Casimir:.6e} W; Extracted: {P_extracted:.6e} W'
+        }
+
+
+class HelicalQuantumTensionCalculator:
+    """
+    HELICAL QUANTUM TENSION FROM INVERTED WAVES
+    
+    Models the internal tension arising from twisted/inverted quantum waves
+    in the Caduceus structure.
+    
+    When spherical waves "turn inside out," they create helical tension:
+    τ_helix = (ℏ²/2m) × (n_turns/λ)² × L
+    
+    Where:
+    - n_turns = number of helical turns
+    - λ = wavelength
+    - L = helix length
+    
+    The pinch points experience maximum tension:
+    τ_pinch = τ_helix × (1 + cos(2π × z/λ))
+    
+    This tension stores energy and can release as wave collapse.
+    """
+    
+    def __init__(self):
+        self.name = "Helical Quantum Tension"
+        self.symbol = "τ_helix"
+        self.units = "J/m"
+    
+    def compute(self, dataset: dict) -> dict:
+        import math
+        
+        n_turns = dataset.get('helix_turns', 7)  # Caduceus default
+        wavelength = dataset.get('wavelength', 1e-9)  # m
+        L = dataset.get('helix_length', 1e-8)  # m
+        m = dataset.get('effective_mass', 9.109e-31)  # kg
+        z = dataset.get('position_z', 0)  # m along helix
+        
+        hbar = 1.055e-34
+        
+        # Wave vector
+        k = 2 * math.pi / wavelength
+        
+        # Base helical tension
+        tau_helix = (hbar**2 / (2 * m)) * (n_turns / wavelength)**2 * L
+        
+        # Pinch point modulation
+        pinch_mod = 1 + math.cos(2 * math.pi * z / wavelength)
+        tau_pinch = tau_helix * pinch_mod
+        
+        # Energy stored in helix
+        E_stored = tau_helix * L
+        
+        # Collapse power if released in one period
+        omega = hbar * k**2 / (2 * m)  # De Broglie frequency
+        T_period = 2 * math.pi / omega if omega > 0 else 1
+        P_collapse = E_stored / T_period
+        
+        # Maximum tension location
+        z_max_tension = 0  # At z = 0, nλ, 2nλ, ...
+        
+        # Torsion constant
+        kappa_torsion = tau_helix / (n_turns * 2 * math.pi)
+        
+        return {
+            'tau_helix_J_m': tau_helix,
+            'tau_pinch_J_m': tau_pinch,
+            'E_stored_J': E_stored,
+            'P_collapse_W': P_collapse,
+            'pinch_modulation': pinch_mod,
+            'torsion_constant_J_rad': kappa_torsion,
+            'n_turns': n_turns,
+            'equation': 'τ_helix = (ℏ²/2m) × (n/λ)² × L; τ_pinch = τ × (1 + cos(2πz/λ))',
+            'long_form': f'τ_helix = ({hbar:.2e}²/2×{m:.2e}) × ({n_turns}/{wavelength:.2e})² × {L:.2e} = {tau_helix:.6e} J/m; τ_pinch = {tau_pinch:.6e} J/m'
+        }
+
+
+# Registry for Orb Analysis 48
+ORB_ANALYSIS_48_CALCULATORS = {
+    'CaduceusQuantumWaveCalculator': CaduceusQuantumWaveCalculator(),
+    'GlobularClusterLayerCalculator': GlobularClusterLayerCalculator(),
+    'DEPowerVacuumCalculator': DEPowerVacuumCalculator(),
+    'CatalyticPhaseTransformCalculator': CatalyticPhaseTransformCalculator(),
+    'InertialOperatorEnhancedCalculator': InertialOperatorEnhancedCalculator(),
+    'PseudoMonopoleGyroCalculator': PseudoMonopoleGyroCalculator(),
+    'AetherFluxRootingCalculator': AetherFluxRootingCalculator(),
+    'VacuumEnergyFluctuationOrb48Calculator': VacuumEnergyFluctuationOrb48Calculator(),
+    'ZeroPointEnergyHarvestCalculator': ZeroPointEnergyHarvestCalculator(),
+    'HelicalQuantumTensionCalculator': HelicalQuantumTensionCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # CONDENSEDPHYSICS2 AGGREGATED REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -24188,6 +24961,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_45_CALCULATORS,
     **ORB_ANALYSIS_46_CALCULATORS,
     **ORB_ANALYSIS_47_CALCULATORS,
+    **ORB_ANALYSIS_48_CALCULATORS,
 }
 
 # Update class count
@@ -24670,6 +25444,20 @@ __all__ = [
     'EigenstateThermalizationCalculator',
     'OTOCScamblingCalculator',
     'ORB_ANALYSIS_47_CALCULATORS',
+    
+    # Orb Analysis_48 (10 classes - Universal Inertial Operator, Caduceus Waves, DE Power, Aether Flux)
+    'ORB_ANALYSIS_48_PARAMS',
+    'CaduceusQuantumWaveCalculator',
+    'GlobularClusterLayerCalculator',
+    'DEPowerVacuumCalculator',
+    'CatalyticPhaseTransformCalculator',
+    'InertialOperatorEnhancedCalculator',
+    'PseudoMonopoleGyroCalculator',
+    'AetherFluxRootingCalculator',
+    'VacuumEnergyFluctuationOrb48Calculator',
+    'ZeroPointEnergyHarvestCalculator',
+    'HelicalQuantumTensionCalculator',
+    'ORB_ANALYSIS_48_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
