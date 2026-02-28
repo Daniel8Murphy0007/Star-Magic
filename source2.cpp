@@ -9555,6 +9555,21 @@ public:
 
         // Enable mouse tracking for drag functionality (even when button not pressed)
         setMouseTracking(true);
+        
+        // ================================================================
+        // UI STYLING (S-C Iteration 22/23 - visual polish)
+        // ================================================================
+        setStyleSheet(
+            "QPushButton { background-color: #add8e6; border: 1px solid #333; border-radius: 4px; padding: 4px; } "
+            "QPushButton:hover { background-color: #87ceeb; } "
+            "QTextEdit { border: 1px solid #ccc; border-radius: 4px; } "
+            "QComboBox { border: 1px solid #ccc; border-radius: 4px; padding: 2px; }"
+        );
+        
+        // Main body layout sizing (S-C Iteration 22/23)
+        layout->setContentsMargins(10, 10, 10, 10);
+        layout->setSpacing(6);
+        setMinimumSize(600, 500);
     }
 
 protected:
@@ -9879,10 +9894,27 @@ private:
         }
 
         // ================================================================
-        // INVALID OPERATOR VALIDATION (S-C Iteration 22 - error prevention)
+        // BALANCED PARENTHESES CHECK (S-C Iteration 22/23 - validation)
         // ================================================================
-        // Detect invalid operator sequences that would cause parsing errors
-        std::regex invalid_ops(R"(\*\*\/|\/\*\*|[\+\-\*\/]{2,})");
+        int paren_count = 0;
+        for (char c : expr) {
+            if (c == '(') paren_count++;
+            else if (c == ')') paren_count--;
+            if (paren_count < 0) {
+                output->append("Error: Unbalanced parentheses - too many closing ')'");
+                return;
+            }
+        }
+        if (paren_count != 0) {
+            output->append(QString("Error: Unbalanced parentheses - %1 unclosed '('").arg(paren_count));
+            return;
+        }
+
+        // ================================================================
+        // INVALID OPERATOR VALIDATION (S-C Iteration 22/23 - expanded)
+        // ================================================================
+        // Detect invalid operator sequences: **/*, /**, ++, --, = =, trailing ops
+        std::regex invalid_ops(R"(\*\*\/|\/\*\*|[\+\-\*\/]{2,}|\s*=\s*=|[+\-*/^]\s*$)");
         std::smatch match;
         if (std::regex_search(expr, match, invalid_ops)) {
             output->append("Error: Invalid operator sequence detected: " + 
@@ -10324,28 +10356,38 @@ private:
                 }
                 
                 // Display solutions using proper py::str() conversion
-                result += QString("Solutions: %1\n")
-                              .arg(QString::fromStdString(py::str(solutions).cast<std::string>()));
+                std::string solution_str = py::str(solutions).cast<std::string>();
+                
+                // S-C Iteration 22/23: Check for complex numbers in solution
+                if (solution_str.find("I") != std::string::npos) {
+                    result += QString("Warning: Solutions include complex numbers (denoted by I)\n");
+                }
+                
+                result += QString("Solutions: %1\n").arg(QString::fromStdString(solution_str));
                 
                 // For high-degree polynomials, also show numerical approximation if available
-                // S-C Iteration 22: Try multiple initial guesses for better convergence
+                // S-C Iteration 22/23: Use 7-point centered guesses {-3,-2,-1,0,1,2,3}
                 if (eq_list.size() == 1) {
                     bool found_numerical = false;
-                    std::vector<int> guesses = {0, 1, -1, 2, -2, 5, -5, 10, -10};
+                    std::vector<int> guesses = {0, 1, -1, 2, -2, 3, -3};  // Centered pattern
                     for (int guess : guesses) {
                         try {
                             py::object nsolve_result = sympy.attr("nsolve")(eq_list[0], guess);
-                            result += QString("Numerical root (guess=%1): %2\n")
-                                          .arg(guess)
-                                          .arg(QString::fromStdString(py::str(nsolve_result).cast<std::string>()));
-                            found_numerical = true;
-                            break;  // Stop after first successful guess
+                            std::string root_str = py::str(nsolve_result).cast<std::string>();
+                            // Skip if complex
+                            if (root_str.find("I") == std::string::npos) {
+                                result += QString("Numerical root (guess=%1): %2\n")
+                                              .arg(guess)
+                                              .arg(QString::fromStdString(root_str));
+                                found_numerical = true;
+                                break;  // Stop after first successful real guess
+                            }
                         } catch (...) {
                             // nsolve may fail for this guess, try next
                         }
                     }
                     if (!found_numerical) {
-                        result += "Note: No numerical root found in range [-10,10]\n";
+                        result += "Note: No real numerical root found in range [-3,3]\n";
                     }
                 }
             } catch (const py::error_already_set& e) {
