@@ -227,6 +227,7 @@ const QString SERVER_STACK_DIR = "ServerStack/";   // Server stack logs and stat
 const QString ALMA_CASH_DIR = "ALMAcash/";         // ALMA Observing Tool cache (21st window)
 const QString ARXIV_CASH_DIR = "arXivCash/";       // arXiv preprint cache
 const QString VIS_CALC_DIR = "CoAnQiVisCalc/";     // Visual Calculator output cache
+const QString SCALC_CASH_DIR = "ScalcCash/";       // Scientific Calculator cache (Grok analysis)
 
 // ============================================================================
 // ensureRepositoryStructure - Creates all CoAnQi_Repos subdirectories
@@ -252,6 +253,7 @@ inline void ensureRepositoryStructure() {
     dir.mkpath(REPO_PATH + ALMA_CASH_DIR);
     dir.mkpath(REPO_PATH + ARXIV_CASH_DIR);
     dir.mkpath(REPO_PATH + VIS_CALC_DIR);
+    dir.mkpath(REPO_PATH + SCALC_CASH_DIR);
     
     // Verify write permissions
     QFile testFile(REPO_PATH + "write_test.tmp");
@@ -9566,6 +9568,31 @@ private:
     QTextEdit *input;       // Pointer to input text editor widget
     QTextEdit *workflow;    // Workflow display field (equation history with solutions)
     QTextEdit *output;      // Pointer to output text editor widget (displays results)
+
+#ifndef NO_PYTHON
+    // ========================================================================
+    // STATIC SINGLETON INTERPRETER (Grok analysis fix)
+    // ========================================================================
+    // Fixes fatal "multiple interpreter initialization" errors by ensuring
+    // py::scoped_interpreter is created only once per process lifetime.
+    // Also pre-imports numpy and increases recursion limit for complex expressions.
+    static py::module_& get_sympy() {
+        static py::scoped_interpreter interp{};
+        static py::module_ sys = py::module_::import("sys");
+        static auto _ = []() {
+            sys.attr("setrecursionlimit")(2000);  // Allow complex polynomial solving
+            // Pre-import numpy to avoid second-time import issues
+            try {
+                py::module_::import("numpy");
+            } catch (...) {
+                // Ignore if numpy not available
+            }
+            return true;
+        }();
+        static py::module_ sympy_mod = py::module_::import("sympy");
+        return sympy_mod;
+    }
+#endif
     QPoint dragPosition;    // Stores mouse offset for dragging (prevents window jumping)
     QStringList equationHistory;  // History of equations and solutions for workflow display
 
@@ -9573,10 +9600,12 @@ private:
     // PRIVATE HELPER METHODS - Internal functions used by this class
     // ========================================================================
 
-    // autoSaveToCalcEnCash - Saves calculation entry to CalcEnCash directory
+    // autoSaveToCalcEnCash - Saves calculation entry to CalcEnCash and ScalcCash directories
     // Creates timestamped .txt file with equation and solution
     void autoSaveToCalcEnCash(const QString& equation, const QString& solution) {
         QString timestamp = QDateTime::currentDateTime().toString("yyyyMMdd_hhmmss");
+        
+        // Save to CalcEnCash (original location)
         QString filename = REPO_PATH + CALC_EN_CASH_DIR + "entry_" + timestamp + ".txt";
         QFile file(filename);
         if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
@@ -9588,6 +9617,17 @@ private:
             out << "----------------------------------------" << Qt::endl;
             out << "Solution:" << Qt::endl << solution << Qt::endl;
             file.close();
+        }
+        
+        // Also save to ScalcCash (Grok analysis recommended location)
+        QString scalcFilename = REPO_PATH + SCALC_CASH_DIR + timestamp + ".txt";
+        QFile scalcFile(scalcFilename);
+        if (scalcFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QTextStream out(&scalcFile);
+            out << equation << "\nResults:\n" << solution;
+            scalcFile.close();
+        } else {
+            qDebug() << "Failed to save to ScalcCash:" << scalcFilename;
         }
     }
 
@@ -9637,13 +9677,16 @@ private:
 #endif
 
 #ifndef NO_PYTHON
-        // Initialize Python interpreter for symbolic math (SymPy library)
-        py::scoped_interpreter guard{};                   // RAII guard - automatically starts/stops interpreter
-        py::module_ sympy = py::module_::import("sympy"); // Import SymPy for derivatives/integrals
+        // Use singleton interpreter (Grok analysis fix - avoids multiple initialization crashes)
+        auto& sympy = get_sympy();
+        py::gil_scoped_acquire gil;  // Acquire GIL for thread safety with Qt
 #endif
 
-        // Vector to collect system of equations (multiple equations with multiple unknowns)
-        std::vector<std::string> system_eqs;
+        // Vectors to collect system of equations (multiple equations with multiple unknowns)
+        std::vector<std::string> system_eqs;       // Cleaned equations (LHS - RHS format)
+        std::vector<std::string> system_lhs;       // Left-hand sides (Grok Eq() construction)
+        std::vector<std::string> system_rhs;       // Right-hand sides
+        std::vector<std::string> system_original;  // Original equations for display
 
         // Process each equation one at a time
         for (const auto &eq : equations)
@@ -9897,18 +9940,32 @@ private:
 #endif
             }
             // ================================================================
-            // ALGEBRAIC EQUATIONS: Contains "=" sign
+            // ALGEBRAIC EQUATIONS: Contains "=" sign (IMPROVED - Grok analysis)
             // ================================================================
             else if (eq.find("=") != std::string::npos)
             {
-                // Collect equations for system solving (e.g., "x + y = 5", "x - y = 1")
-                // Multiple equations with unknowns can be solved simultaneously
-
-                // Convert equation to standard form (all terms on one side)
-                // e.g., "x + y = 5" becomes "x + y - 5" (set equal to zero)
-                std::string eq_clean = eq;
-                std::replace(eq_clean.begin(), eq_clean.end(), '=', '-'); // Replace = with -
-                system_eqs.push_back(eq_clean);                           // Add to system equations vector
+                // Parse LHS and RHS separately for proper SymPy Eq() construction
+                std::size_t pos = eq.find('=');
+                if (pos != std::string::npos) {
+                    std::string lhs = eq.substr(0, pos);
+                    std::string rhs = eq.substr(pos + 1);
+                    
+                    // Trim whitespace
+                    lhs.erase(0, lhs.find_first_not_of(" \t\n\r"));
+                    lhs.erase(lhs.find_last_not_of(" \t\n\r") + 1);
+                    rhs.erase(0, rhs.find_first_not_of(" \t\n\r"));
+                    rhs.erase(rhs.find_last_not_of(" \t\n\r") + 1);
+                    
+                    if (rhs.empty()) rhs = "0";
+                    
+                    system_lhs.push_back(lhs);
+                    system_rhs.push_back(rhs);
+                    system_original.push_back(eq);
+                    
+                    // Also keep old format for backwards compatibility
+                    std::string eq_clean = lhs + " - (" + rhs + ")";
+                    system_eqs.push_back(eq_clean);
+                }
             }
             // ================================================================
             // GENERAL EXPRESSIONS: Anything else (arithmetic, etc.)
