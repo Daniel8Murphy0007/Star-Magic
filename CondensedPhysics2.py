@@ -28209,6 +28209,880 @@ ORB_ANALYSIS_53_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS 54 - UQFF UNIFIED QUANTUM FIELD PHYSICS
+# URL: https://x.com/i/grok/share/efdeff64f4ff42c2b8f34cad18ceea9e
+# Physics Domain: Unified Quantum Field Framework - String dimensions, DPM resonance,
+#                 quantum coherence, magnetic moments, plasma dynamics
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Orb 54 Physical Constants
+ORB_ANALYSIS_54_PARAMS = {
+    # Division algebra dimensions (Hurwitz theorem)
+    'reals_dimension': 1,                      # R (reals) - base division algebra
+    'complex_dimension': 2,                    # C (complex numbers)
+    'quaternion_dimension': 4,                 # H (quaternions) - non-commutative
+    'octonion_dimension': 8,                   # O (octonions) - non-associative
+    'superstring_dimension': 10,               # Superstring critical dimension
+    'bosonic_string_dimension': 26,            # Bosonic string critical dimension
+    
+    # Fundamental constants
+    'bohr_magneton': 9.274e-24,                # J/T - μ_B
+    'planck_reduced': 1.0546e-34,              # J·s - ℏ
+    'permeability_vacuum': 1.2566370614e-6,    # H/m - μ_0 = 4π×10⁻⁷
+    'permittivity_vacuum': 8.854187817e-12,    # F/m - ε_0
+    'speed_of_light': 2.998e8,                 # m/s - c
+    
+    # Vacuum energy densities (UQFF framework)
+    'E_vac_nebula': 7.09e-36,                  # J/m³ - nebula vacuum energy
+    'E_vac_ISM': 7.09e-37,                     # J/m³ - interstellar medium
+    'E_vac_differential': 6.381e-36,           # J/m³ - ΔE_vac
+    
+    # DPM resonance parameters
+    'f_DPM': 1.0e12,                           # Hz - DPM frequency
+    'f_THz': 1.0e12,                           # Hz - THz frequency
+    'f_quantum': 1.445e-17,                    # Hz - quantum frequency
+    'f_Aether': 1.576e-35,                     # Hz - Aether frequency
+    'omega_resonance': 1.0e-15,                # s⁻¹ - resonance angular frequency
+    
+    # Superconductive/Aether parameters
+    'UA_SCm_ratio': 10.0,                      # [(UA')]:[SCm] ratio
+    'F_super': 6.287e-19,                      # Superconductor factor (dimensionless)
+    'f_TRZ': 0.1,                              # Time-reversal zone factor
+    'kappa_decay': 0.0005,                     # day⁻¹ - decay rate κ
+    
+    # Hubble/cosmic parameters
+    't_Hubble': 4.35e17,                       # s - Hubble time (13.8 Gyr)
+    'H_0': 2.269e-18,                          # s⁻¹ - Hubble constant
+    'Lambda_cosmo': 1.1e-52,                   # m⁻² - cosmological constant
+    
+    # Pi series parameters (Saha-Sinha)
+    'lambda_regularization_low': 10,           # λ for rapid convergence
+    'lambda_regularization_high': 100,         # λ for very rapid convergence
+    'madhava_terms_for_10_digits': 5e9,        # Terms needed at λ→∞
+    'accelerated_terms_for_10_digits': 30,     # Terms needed with λ=50
+    
+    # Plasma convection parameters
+    'g_earth': 9.8,                            # m/s² - Earth gravity
+    'omega_earth': 7.29e-5,                    # rad/s - Earth rotation
+    'depletion_factor_typical': 0.9,           # Plasma shift factor
+}
+
+
+class StringDimensionAlgebraCalculator:
+    """
+    Calculator for Hurwitz division algebra dimensions in string theory.
+    
+    The Hurwitz theorem establishes that division algebras exist only in
+    dimensions 1, 2, 4, 8 (reals, complex, quaternions, octonions).
+    String theory extends to critical dimensions 10 (superstring) and 26 (bosonic).
+    
+    Dimensional progression: {1>2>4>8}>{8>10>26}
+    """
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Compute algebraic properties for a given dimension.
+        
+        Args:
+            params: dict with 'dimension' (1,2,4,8,10,26) and optional 'calculation_type'
+        Returns:
+            dict with algebraic properties (commutative, associative, division_algebra, critical_dim)
+        """
+        dim = params.get('dimension', 4)
+        
+        # Division algebra properties
+        is_division_algebra = dim in [1, 2, 4, 8]
+        is_commutative = dim <= 2
+        is_associative = dim <= 4
+        is_string_critical = dim in [10, 26]
+        
+        # Quadratic form solutions (x² + y² = z²) solvability
+        quadratic_solvable = True  # Always solvable for these dimensions
+        
+        # String theory interpretation
+        if dim == 1:
+            algebra_name = "Real numbers (R)"
+            string_role = "Time-like dimension"
+            polynomial_order = "linear"
+        elif dim == 2:
+            algebra_name = "Complex numbers (C)"
+            string_role = "String worldsheet"
+            polynomial_order = "quadratic"
+        elif dim == 4:
+            algebra_name = "Quaternions (H)"
+            string_role = "Spacetime (Minkowski)"
+            polynomial_order = "quartic"
+        elif dim == 8:
+            algebra_name = "Octonions (O)"
+            string_role = "Transverse modes (non-associative onset)"
+            polynomial_order = "octic"
+        elif dim == 10:
+            algebra_name = "Superstring space"
+            string_role = "Superstring critical dimension"
+            polynomial_order = "10th degree"
+        elif dim == 26:
+            algebra_name = "Bosonic string space"
+            string_role = "Bosonic string critical dimension"
+            polynomial_order = "26th degree"
+        else:
+            algebra_name = f"{dim}D space"
+            string_role = "Non-standard dimension"
+            polynomial_order = f"{dim}th degree"
+        
+        return {
+            'dimension': dim,
+            'algebra_name': algebra_name,
+            'is_division_algebra': is_division_algebra,
+            'is_commutative': is_commutative,
+            'is_associative': is_associative,
+            'is_string_critical': is_string_critical,
+            'string_role': string_role,
+            'polynomial_solvability': polynomial_order,
+            'equation': f"Hurwitz division algebra: dim ∈ {{1, 2, 4, 8}} for R, C, H, O"
+        }
+
+
+class PiSeriesAccelerationCalculator:
+    """
+    Calculator for Saha-Sinha accelerated pi series convergence.
+    
+    The Saha-Sinha formula derived from superstring amplitudes:
+    π = 4 + Σ_{n=1}^∞ (1/n!) × [1/(n+λ) - 4/(2n+1)] × [(2n+1)²/4(n+λ) - n]^{n-1}
+    
+    For λ→∞: reduces to Madhava-Leibniz (slow: 5×10⁹ terms for 10 digits)
+    For finite λ (10-100): fast (~30 terms for 10 digits)
+    """
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Compute accelerated pi series convergence.
+        
+        Args:
+            params: dict with 'lambda_param' (regularization), 'n_terms'
+        Returns:
+            dict with pi approximation, convergence rate, error estimate
+        """
+        import math
+        
+        lam = params.get('lambda_param', 50)       # λ regularization
+        n_terms = params.get('n_terms', 30)        # Number of terms
+        
+        # Saha-Sinha accelerated series computation
+        pi_approx = 4.0
+        
+        for n in range(1, n_terms + 1):
+            try:
+                # Term components
+                factorial_inv = 1.0 / math.factorial(n)
+                bracket1 = 1.0 / (n + lam) - 4.0 / (2 * n + 1)
+                inner = (2 * n + 1) ** 2 / (4 * (n + lam)) - n
+                
+                if inner > 0:
+                    power_term = inner ** (n - 1)
+                else:
+                    power_term = ((-1) ** (n - 1)) * (abs(inner) ** (n - 1)) if abs(inner) > 1e-15 else 0
+                
+                term = factorial_inv * bracket1 * power_term
+                
+                # Convergence check
+                if abs(term) < 1e-20:
+                    break
+                    
+                pi_approx += term
+            except (OverflowError, ValueError):
+                break
+        
+        # Error from true pi
+        error = abs(pi_approx - math.pi)
+        correct_digits = -math.log10(error) if error > 0 else 15
+        
+        # Comparison with Madhava-Leibniz
+        madhava_terms_needed = int(10 ** (correct_digits / 1.0))  # Rough estimate
+        speedup_factor = madhava_terms_needed / n_terms if n_terms > 0 else 1
+        
+        return {
+            'pi_approximation': pi_approx,
+            'true_pi': math.pi,
+            'absolute_error': error,
+            'correct_digits': correct_digits,
+            'terms_used': n_terms,
+            'lambda_parameter': lam,
+            'speedup_vs_madhava': speedup_factor,
+            'equation': 'π = 4 + Σ_{n=1}^∞ (1/n!)·[1/(n+λ) - 4/(2n+1)]·[(2n+1)²/4(n+λ) - n]^{n-1}'
+        }
+
+
+class DPMResonanceFactorCalculator:
+    """
+    Calculator for DPM (Dipole Polarization Momentum) resonance factor in UQFF.
+    
+    DPM_resonance = g·μ_B·B_0 / (ℏ·ω_0)
+    
+    Where:
+        g = Landé g-factor (~2 for electron spin)
+        μ_B = Bohr magneton = 9.274×10⁻²⁴ J/T
+        B_0 = magnetic field strength (T)
+        ℏ = reduced Planck constant = 1.0546×10⁻³⁴ J·s
+        ω_0 = resonance angular frequency (rad/s)
+    """
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Compute DPM resonance factor.
+        
+        Args:
+            params: dict with 'g_factor', 'B_0', 'omega_0'
+        Returns:
+            dict with DPM_resonance, energy levels, transition frequency
+        """
+        g = params.get('g_factor', 2.0)                    # Landé g-factor
+        B_0 = params.get('B_0', 1e-5)                      # Tesla
+        omega_0 = params.get('omega_0', 1e-15)             # rad/s
+        
+        mu_B = ORB_ANALYSIS_54_PARAMS['bohr_magneton']     # 9.274e-24 J/T
+        hbar = ORB_ANALYSIS_54_PARAMS['planck_reduced']    # 1.0546e-34 J·s
+        
+        # DPM resonance factor (dimensionless)
+        DPM_resonance = (g * mu_B * B_0) / (hbar * omega_0)
+        
+        # Zeeman energy splitting
+        E_zeeman = g * mu_B * B_0  # J
+        
+        # Larmor frequency
+        omega_L = g * mu_B * B_0 / hbar  # rad/s
+        f_L = omega_L / (2 * 3.14159265)  # Hz
+        
+        # Transition energy
+        E_transition = hbar * omega_0  # J
+        
+        return {
+            'DPM_resonance': DPM_resonance,
+            'Zeeman_energy_J': E_zeeman,
+            'Zeeman_energy_eV': E_zeeman / 1.602e-19,
+            'Larmor_frequency_Hz': f_L,
+            'Larmor_angular_rad_s': omega_L,
+            'transition_energy_J': E_transition,
+            'g_factor': g,
+            'B_0_T': B_0,
+            'omega_0_rad_s': omega_0,
+            'equation': 'DPM_resonance = g·μ_B·B_0 / (ℏ·ω_0)'
+        }
+
+
+class VacuumEnergyDifferentialCalculator:
+    """
+    Calculator for vacuum energy differentials in UQFF framework.
+    
+    ΔE_vac = E_vac,neb - E_vac,ISM
+    
+    Vacuum energy varies between nebular regions (7.09×10⁻³⁶ J/m³)
+    and interstellar medium (7.09×10⁻³⁷ J/m³).
+    """
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Compute vacuum energy differential and related quantities.
+        
+        Args:
+            params: dict with 'E_vac_system', 'E_vac_background', 'volume'
+        Returns:
+            dict with differential, pressure, gradient quantities
+        """
+        E_neb = params.get('E_vac_system', ORB_ANALYSIS_54_PARAMS['E_vac_nebula'])
+        E_ISM = params.get('E_vac_background', ORB_ANALYSIS_54_PARAMS['E_vac_ISM'])
+        volume = params.get('volume', 1.0)  # m³
+        
+        c = ORB_ANALYSIS_54_PARAMS['speed_of_light']
+        
+        # Vacuum energy differential
+        delta_E_vac = E_neb - E_ISM  # J/m³
+        
+        # Ratio (dimensionless)
+        ratio = E_neb / E_ISM if E_ISM != 0 else float('inf')
+        
+        # Total vacuum energy in volume
+        total_E_neb = E_neb * volume  # J
+        total_E_ISM = E_ISM * volume  # J
+        
+        # Equivalent vacuum pressure (P = E/V = energy density)
+        P_vacuum = delta_E_vac  # Pa (since J/m³ = N/m² = Pa)
+        
+        # UQFF vacuum differential acceleration term
+        # a_vac_diff ∝ ΔE_vac / (E_vac,ISM · c)
+        a_vac_diff = delta_E_vac / (E_ISM * c) if E_ISM != 0 else 0  # m/s²
+        
+        return {
+            'E_vac_system_J_m3': E_neb,
+            'E_vac_background_J_m3': E_ISM,
+            'delta_E_vac_J_m3': delta_E_vac,
+            'vacuum_ratio': ratio,
+            'total_system_energy_J': total_E_neb,
+            'total_background_energy_J': total_E_ISM,
+            'vacuum_pressure_Pa': P_vacuum,
+            'a_vac_diff_m_s2': a_vac_diff,
+            'equation': 'ΔE_vac = E_vac,neb - E_vac,ISM'
+        }
+
+
+class LandeGFactorCalculator:
+    """
+    Calculator for Landé g-factor in atomic physics.
+    
+    g = 1 + [S(S+1) + J(J+1) - L(L+1)] / [2·J(J+1)]
+    
+    Where:
+        S = spin quantum number (1/2 for single electron)
+        L = orbital angular momentum quantum number
+        J = total angular momentum quantum number (|L-S| to L+S)
+    """
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Compute Landé g-factor for given quantum numbers.
+        
+        Args:
+            params: dict with 'S', 'L', 'J' quantum numbers
+        Returns:
+            dict with g-factor, magnetic moment factor, Zeeman splitting
+        """
+        S = params.get('S', 0.5)      # Spin quantum number
+        L = params.get('L', 1)        # Orbital quantum number
+        J = params.get('J', 1.5)      # Total angular momentum
+        B = params.get('B', 1e-5)     # Magnetic field (T) for Zeeman
+        
+        mu_B = ORB_ANALYSIS_54_PARAMS['bohr_magneton']
+        
+        # Landé g-factor
+        if J != 0:
+            numerator = S * (S + 1) + J * (J + 1) - L * (L + 1)
+            denominator = 2 * J * (J + 1)
+            g = 1 + numerator / denominator
+        else:
+            g = 0  # J=0 has no magnetic moment
+        
+        # Special cases
+        if L == 0:
+            g_type = "Pure spin (g ≈ 2)"
+        elif S == 0:
+            g_type = "Pure orbital (g = 1)"
+        else:
+            g_type = "Mixed spin-orbit"
+        
+        # Magnetic moment
+        mu = g * mu_B * (J * (J + 1)) ** 0.5  # J/T
+        
+        # Zeeman energy splitting (ΔE = g·μ_B·B·m_J)
+        delta_E_max = g * mu_B * B * J  # Maximum m_J splitting
+        
+        return {
+            'g_factor': g,
+            'S_quantum': S,
+            'L_quantum': L,
+            'J_quantum': J,
+            'g_type': g_type,
+            'magnetic_moment_J_T': mu,
+            'Zeeman_splitting_max_J': delta_E_max,
+            'Zeeman_splitting_max_eV': delta_E_max / 1.602e-19,
+            'equation': 'g = 1 + [S(S+1) + J(J+1) - L(L+1)] / [2·J(J+1)]'
+        }
+
+
+class OrbitalAngularMomentumCalculator:
+    """
+    Calculator for orbital angular momentum in quantum mechanics.
+    
+    P_φ = L·ℏ = m·r²·ω
+    
+    Orbital angular momentum is quantized: L = 0, 1, 2, ...
+    Magnetic quantum number: m_L = -L, ..., 0, ..., +L
+    """
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Compute orbital angular momentum properties.
+        
+        Args:
+            params: dict with 'L' (quantum number), 'mass', 'radius', 'omega'
+        Returns:
+            dict with angular momentum magnitude, z-component, classical equivalent
+        """
+        L = params.get('L', 1)                             # Orbital quantum number
+        mass = params.get('mass', 9.109e-31)               # kg (electron by default)
+        radius = params.get('radius', 5.292e-11)           # m (Bohr radius by default)
+        omega = params.get('omega', 4.134e16)              # rad/s (Bohr orbital frequency)
+        
+        hbar = ORB_ANALYSIS_54_PARAMS['planck_reduced']
+        
+        # Quantum mechanical angular momentum
+        # Magnitude: |L| = ℏ·√[L(L+1)]
+        L_magnitude = hbar * (L * (L + 1)) ** 0.5  # J·s
+        
+        # z-component for m_L = L (maximum projection)
+        L_z_max = hbar * L  # J·s
+        
+        # Allowed m_L values
+        m_L_values = list(range(-L, L + 1))
+        degeneracy = 2 * L + 1
+        
+        # Classical orbital angular momentum
+        L_classical = mass * radius ** 2 * omega  # J·s
+        
+        # Moment of inertia
+        I = mass * radius ** 2  # kg·m²
+        
+        # Rotational energy
+        E_rot = L_magnitude ** 2 / (2 * I)  # J
+        
+        return {
+            'L_quantum_number': L,
+            'L_magnitude_J_s': L_magnitude,
+            'L_z_max_J_s': L_z_max,
+            'L_classical_J_s': L_classical,
+            'm_L_values': m_L_values,
+            'degeneracy': degeneracy,
+            'moment_of_inertia_kg_m2': I,
+            'rotational_energy_J': E_rot,
+            'rotational_energy_eV': E_rot / 1.602e-19,
+            'equation': 'P_φ = L·ℏ = m·r²·ω; |L| = ℏ·√[L(L+1)]'
+        }
+
+
+class MagneticDipoleMomentCalculator:
+    """
+    Calculator for total magnetic dipole moment in atoms.
+    
+    μ = μ_B·(L + 2S) = μ_B·√[L(L+1) + 4S(S+1)] (magnitude)
+    
+    Or with g-factor: μ = g·μ_B·√[J(J+1)]
+    
+    The factor of 2 for spin arises from the electron's anomalous
+    magnetic moment (g_s ≈ 2).
+    """
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Compute total magnetic dipole moment.
+        
+        Args:
+            params: dict with 'L', 'S', 'J' quantum numbers, optional 'g_factor'
+        Returns:
+            dict with magnetic moment components and total
+        """
+        L = params.get('L', 1)
+        S = params.get('S', 0.5)
+        J = params.get('J', 1.5)
+        g = params.get('g_factor', None)  # If provided, use it
+        
+        mu_B = ORB_ANALYSIS_54_PARAMS['bohr_magneton']
+        
+        # Calculate g-factor if not provided
+        if g is None and J != 0:
+            numerator = S * (S + 1) + J * (J + 1) - L * (L + 1)
+            denominator = 2 * J * (J + 1)
+            g = 1 + numerator / denominator
+        elif g is None:
+            g = 2.0  # Default for pure spin
+        
+        # Orbital magnetic moment
+        mu_orbital = mu_B * (L * (L + 1)) ** 0.5  # J/T
+        
+        # Spin magnetic moment (with g_s ≈ 2)
+        mu_spin = 2 * mu_B * (S * (S + 1)) ** 0.5  # J/T
+        
+        # Total magnetic moment using g·μ_B·√[J(J+1)]
+        mu_total = g * mu_B * (J * (J + 1)) ** 0.5  # J/T
+        
+        # Alternative: simple sum formula |L + 2S|
+        mu_simple = mu_B * ((L * (L + 1) + 4 * S * (S + 1)) ** 0.5)
+        
+        return {
+            'mu_orbital_J_T': mu_orbital,
+            'mu_spin_J_T': mu_spin,
+            'mu_total_J_T': mu_total,
+            'mu_simple_J_T': mu_simple,
+            'g_factor': g,
+            'L_quantum': L,
+            'S_quantum': S,
+            'J_quantum': J,
+            'mu_B_reference': mu_B,
+            'equation': 'μ = g·μ_B·√[J(J+1)]; μ = μ_B·(L + 2S)'
+        }
+
+
+class SpaceImpedanceCalculator:
+    """
+    Calculator for electromagnetic space impedance.
+    
+    Z_0 = √(μ_0/ε_0) = μ_0·c = 1/(ε_0·c) ≈ 376.73 Ω
+    
+    Also: c = 1/√(μ_0·ε_0)
+    
+    This is the intrinsic impedance of the vacuum for electromagnetic waves.
+    """
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Compute space/vacuum impedance and related EM properties.
+        
+        Args:
+            params: dict with optional 'medium_mu_r', 'medium_eps_r' for materials
+        Returns:
+            dict with impedance, wave velocity, EM energy density
+        """
+        import math
+        
+        mu_0 = ORB_ANALYSIS_54_PARAMS['permeability_vacuum']
+        eps_0 = ORB_ANALYSIS_54_PARAMS['permittivity_vacuum']
+        c = ORB_ANALYSIS_54_PARAMS['speed_of_light']
+        
+        # Relative permeability and permittivity (for materials)
+        mu_r = params.get('medium_mu_r', 1.0)    # Relative permeability
+        eps_r = params.get('medium_eps_r', 1.0)  # Relative permittivity (dielectric)
+        
+        # Medium properties
+        mu = mu_0 * mu_r
+        eps = eps_0 * eps_r
+        
+        # Vacuum/free space impedance
+        Z_0_vacuum = (mu_0 / eps_0) ** 0.5  # Ω
+        
+        # Medium impedance
+        Z_medium = (mu / eps) ** 0.5  # Ω
+        
+        # Wave propagation velocity in medium
+        v_medium = 1 / (mu * eps) ** 0.5  # m/s
+        n_refractive = c / v_medium  # Refractive index
+        
+        # Verify c = 1/√(μ_0·ε_0)
+        c_calculated = 1 / (mu_0 * eps_0) ** 0.5
+        
+        # Energy density for E-field
+        E_field = params.get('E_field', 1.0)  # V/m
+        u_E = 0.5 * eps * E_field ** 2  # J/m³
+        
+        # Energy density for B-field (assuming plane wave: B = E/c)
+        B_field = E_field / v_medium
+        u_B = 0.5 * B_field ** 2 / mu  # J/m³
+        
+        # Poynting vector magnitude
+        S = E_field * B_field / mu  # W/m²
+        
+        return {
+            'Z_0_vacuum_Ohm': Z_0_vacuum,
+            'Z_medium_Ohm': Z_medium,
+            'c_vacuum_m_s': c,
+            'c_calculated_m_s': c_calculated,
+            'v_medium_m_s': v_medium,
+            'refractive_index': n_refractive,
+            'mu_0_H_m': mu_0,
+            'eps_0_F_m': eps_0,
+            'mu_r': mu_r,
+            'eps_r': eps_r,
+            'energy_density_E_J_m3': u_E,
+            'energy_density_B_J_m3': u_B,
+            'Poynting_magnitude_W_m2': S,
+            'equation': 'Z_0 = √(μ_0/ε_0) = μ_0·c ≈ 376.73 Ω'
+        }
+
+
+class LarmorPrecessionCalculator:
+    """
+    Calculator for Larmor precession frequency.
+    
+    ω_L = g·μ_B·B / ℏ = g·(e/2m)·B
+    
+    The Larmor precession is the precession of magnetic moments
+    around an external magnetic field.
+    """
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Compute Larmor precession frequency and period.
+        
+        Args:
+            params: dict with 'g_factor', 'B', 'particle_mass', 'particle_charge'
+        Returns:
+            dict with angular frequency, frequency, period
+        """
+        import math
+        
+        g = params.get('g_factor', 2.0)                    # g-factor
+        B = params.get('B', 1.0)                           # Tesla
+        mass = params.get('particle_mass', 9.109e-31)      # kg (electron)
+        charge = params.get('particle_charge', 1.602e-19)  # C
+        
+        mu_B = ORB_ANALYSIS_54_PARAMS['bohr_magneton']
+        hbar = ORB_ANALYSIS_54_PARAMS['planck_reduced']
+        
+        # Larmor angular frequency (rad/s)
+        omega_L = g * mu_B * B / hbar
+        
+        # Alternative: ω_L = g·(e/2m)·B (classical)
+        omega_L_classical = g * (charge / (2 * mass)) * B
+        
+        # Frequency (Hz)
+        f_L = omega_L / (2 * math.pi)
+        
+        # Period (s)
+        T_L = 1 / f_L if f_L != 0 else float('inf')
+        
+        # Zeeman energy
+        E_zeeman = hbar * omega_L  # J
+        
+        # Gyromagnetic ratio
+        gamma = g * charge / (2 * mass)  # rad/(s·T)
+        
+        return {
+            'omega_L_rad_s': omega_L,
+            'omega_L_classical_rad_s': omega_L_classical,
+            'f_L_Hz': f_L,
+            'T_L_s': T_L,
+            'E_zeeman_J': E_zeeman,
+            'E_zeeman_eV': E_zeeman / 1.602e-19,
+            'gyromagnetic_ratio': gamma,
+            'g_factor': g,
+            'B_field_T': B,
+            'equation': 'ω_L = g·μ_B·B / ℏ'
+        }
+
+
+class UQFFPlasmaConvectionCalculator:
+    """
+    Calculator for plasma convection velocity in UQFF experiments.
+    
+    v_conv = √(2·g·h)·cos(θ)·(1 - f_depletion)
+    
+    This models the convection flow in plasma physics experiments
+    with depletion factor for plasma shift dynamics.
+    """
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Compute plasma convection velocity.
+        
+        Args:
+            params: dict with 'g', 'height', 'theta_deg', 'depletion_factor'
+        Returns:
+            dict with convection velocity, flow rate, Reynolds number estimate
+        """
+        import math
+        
+        g = params.get('g', ORB_ANALYSIS_54_PARAMS['g_earth'])         # m/s²
+        h = params.get('height', 0.2)                                   # m
+        theta = params.get('theta_deg', 0)                              # degrees
+        f_depl = params.get('depletion_factor', 0.0)                   # dimensionless
+        density = params.get('plasma_density', 1e-6)                    # kg/m³ (approx)
+        viscosity = params.get('plasma_viscosity', 1e-5)               # Pa·s (approx)
+        characteristic_length = params.get('tube_diameter', 0.05)      # m
+        
+        # Convert angle
+        theta_rad = theta * math.pi / 180
+        
+        # Ideal free-fall velocity
+        v_freefall = (2 * g * h) ** 0.5  # m/s
+        
+        # Convection velocity with angle and depletion
+        v_conv = v_freefall * math.cos(theta_rad) * (1 - f_depl)  # m/s
+        
+        # Kinetic energy per unit volume
+        KE_density = 0.5 * density * v_conv ** 2  # J/m³
+        
+        # Reynolds number (dimensionless)
+        Re = density * v_conv * characteristic_length / viscosity if viscosity > 0 else 0
+        
+        # Flow regime
+        if Re < 2300:
+            flow_regime = "Laminar"
+        elif Re < 4000:
+            flow_regime = "Transitional"
+        else:
+            flow_regime = "Turbulent"
+        
+        # Volume flow rate (assuming circular cross-section)
+        A_cross = math.pi * (characteristic_length / 2) ** 2  # m²
+        Q = v_conv * A_cross  # m³/s
+        
+        return {
+            'v_convection_m_s': v_conv,
+            'v_freefall_m_s': v_freefall,
+            'height_m': h,
+            'theta_deg': theta,
+            'depletion_factor': f_depl,
+            'KE_density_J_m3': KE_density,
+            'Reynolds_number': Re,
+            'flow_regime': flow_regime,
+            'volume_flow_rate_m3_s': Q,
+            'equation': 'v_conv = √(2·g·h)·cos(θ)·(1 - f_depletion)'
+        }
+
+
+class QuantumCoherenceIntegralCalculator:
+    """
+    Calculator for quantum coherence integral in UQFF.
+    
+    Coherence = ∫(ψ_total · H · ψ_total dV)
+    
+    Where ψ_total = ψ_mag + ψ_standing + ψ_quantum
+    
+    This integral represents the quantum coherence energy in the system.
+    """
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Compute quantum coherence integral.
+        
+        Args:
+            params: dict with wave function amplitudes, Hamiltonian energy, volume
+        Returns:
+            dict with coherence energy, normalized values
+        """
+        import math
+        
+        # Wave function amplitudes (normalized)
+        psi_mag = params.get('psi_mag', 0.4)         # Magnetic component
+        psi_standing = params.get('psi_standing', 0.3)  # Standing wave
+        psi_quantum = params.get('psi_quantum', 0.5)    # Quantum fluctuation
+        
+        # Hamiltonian expectation value
+        H_expectation = params.get('H_expectation', 1e-20)  # J
+        
+        # Integration volume
+        volume = params.get('volume', 1e-27)  # m³ (atomic scale)
+        
+        hbar = ORB_ANALYSIS_54_PARAMS['planck_reduced']
+        t_Hubble = ORB_ANALYSIS_54_PARAMS['t_Hubble']
+        
+        # Total wave function amplitude (simplified addition for amplitudes)
+        psi_total = (psi_mag ** 2 + psi_standing ** 2 + psi_quantum ** 2) ** 0.5
+        
+        # Normalization check
+        norm_squared = psi_mag ** 2 + psi_standing ** 2 + psi_quantum ** 2
+        
+        # Coherence integral approximation
+        # ∫(ψ* H ψ dV) ≈ |ψ_total|² · H · V
+        coherence_integral = norm_squared * H_expectation * volume  # J
+        
+        # UQFF quantum term contribution
+        # From UQFF: (ℏ/√(Δx·Δp)) · ∫(...) · (2π/t_Hubble)
+        delta_x_delta_p = params.get('uncertainty_product', 1e-68)  # J²·s²
+        uqff_term = (hbar / (delta_x_delta_p ** 0.5)) * coherence_integral * (2 * math.pi / t_Hubble)
+        
+        # Reference coherence value from UQFF documents
+        reference_coherence = 2.176e-18  # J (from document)
+        
+        return {
+            'psi_total_amplitude': psi_total,
+            'normalization_squared': norm_squared,
+            'coherence_integral_J': coherence_integral,
+            'uqff_quantum_term': uqff_term,
+            'H_expectation_J': H_expectation,
+            'volume_m3': volume,
+            'reference_coherence_J': reference_coherence,
+            'psi_mag': psi_mag,
+            'psi_standing': psi_standing,
+            'psi_quantum': psi_quantum,
+            'equation': '∫(ψ_total* · H · ψ_total dV); ψ_total = ψ_mag + ψ_standing + ψ_quantum'
+        }
+
+
+class CharacteristicPolynomialCalculator:
+    """
+    Calculator for characteristic polynomials in string/stellar systems.
+    
+    P_n(x) = Π_{k=1}^{n} (x - λ_k)
+    
+    Expanded form: P_n(x) = x^n - σ_1·x^{n-1} + σ_2·x^{n-2} - ... + (-1)^n·σ_n
+    
+    Where σ_k are elementary symmetric polynomials (sums of products of roots).
+    Used for eigenvalue problems in 24D/26D string systems.
+    """
+    
+    def compute(self, params: dict) -> dict:
+        """
+        Compute characteristic polynomial properties.
+        
+        Args:
+            params: dict with 'roots' (list of eigenvalues) or 'degree'
+        Returns:
+            dict with polynomial coefficients, symmetric functions
+        """
+        from functools import reduce
+        import operator
+        
+        roots = params.get('roots', None)
+        degree = params.get('degree', 10)
+        
+        # Generate roots if not provided (example: stellar distances in ly)
+        if roots is None:
+            # Example 10-star system (distances in ly)
+            roots = [8.6, 310, 4.2, 11.4, 8.4, 25, 65, 139, 640, 100]
+            roots = roots[:degree] if len(roots) >= degree else roots
+        
+        n = len(roots)
+        
+        # Elementary symmetric polynomials σ_k
+        # σ_1 = sum of roots
+        # σ_2 = sum of products of pairs
+        # σ_n = product of all roots
+        
+        sigma = [0] * (n + 1)
+        sigma[0] = 1  # σ_0 = 1 by convention
+        
+        # σ_1 = Σ λ_k
+        sigma[1] = sum(roots)
+        
+        # σ_n = Π λ_k
+        sigma[n] = reduce(operator.mul, roots, 1)
+        
+        # σ_2 = Σ_{i<j} λ_i · λ_j
+        if n >= 2:
+            sigma_2 = 0
+            for i in range(n):
+                for j in range(i + 1, n):
+                    sigma_2 += roots[i] * roots[j]
+            sigma[2] = sigma_2
+        
+        # Polynomial coefficients: a_k = (-1)^k · σ_k
+        coefficients = [(-1) ** k * sigma[k] for k in range(n + 1)]
+        
+        # Leading coefficient is 1 (monic polynomial)
+        # P(x) = x^n + a_{n-1}·x^{n-1} + ... + a_0
+        
+        # Trace and determinant (for matrix interpretation)
+        trace = sigma[1]  # Sum of eigenvalues
+        determinant = sigma[n]  # Product of eigenvalues
+        
+        return {
+            'degree': n,
+            'roots': roots,
+            'sigma_1_trace': sigma[1],
+            'sigma_2': sigma[2] if n >= 2 else 0,
+            'sigma_n_determinant': sigma[n],
+            'coefficients_alternating': coefficients,
+            'matrix_trace': trace,
+            'matrix_determinant': determinant,
+            'equation': 'P_n(x) = Π_{k=1}^n (x - λ_k) = x^n - σ_1·x^{n-1} + σ_2·x^{n-2} - ...'
+        }
+
+
+# Registry for Orb Analysis 54
+ORB_ANALYSIS_54_CALCULATORS = {
+    'StringDimensionAlgebraCalculator': StringDimensionAlgebraCalculator(),
+    'PiSeriesAccelerationCalculator': PiSeriesAccelerationCalculator(),
+    'DPMResonanceFactorCalculator': DPMResonanceFactorCalculator(),
+    'VacuumEnergyDifferentialCalculator': VacuumEnergyDifferentialCalculator(),
+    'LandeGFactorCalculator': LandeGFactorCalculator(),
+    'OrbitalAngularMomentumCalculator': OrbitalAngularMomentumCalculator(),
+    'MagneticDipoleMomentCalculator': MagneticDipoleMomentCalculator(),
+    'SpaceImpedanceCalculator': SpaceImpedanceCalculator(),
+    'LarmorPrecessionCalculator': LarmorPrecessionCalculator(),
+    'UQFFPlasmaConvectionCalculator': UQFFPlasmaConvectionCalculator(),
+    'QuantumCoherenceIntegralCalculator': QuantumCoherenceIntegralCalculator(),
+    'CharacteristicPolynomialCalculator': CharacteristicPolynomialCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -28261,6 +29135,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_51_CALCULATORS,
     **ORB_ANALYSIS_52_CALCULATORS,
     **ORB_ANALYSIS_53_CALCULATORS,
+    **ORB_ANALYSIS_54_CALCULATORS,
 }
 
 # Update class count
@@ -28823,6 +29698,22 @@ __all__ = [
     'ElectrolysisGibbsEnergyCalculator',
     'HeavyWaterDensityCalculator',
     'ORB_ANALYSIS_53_CALCULATORS',
+    
+    # Orb Analysis_54 (12 classes - UQFF Unified Quantum Field Physics)
+    'ORB_ANALYSIS_54_PARAMS',
+    'StringDimensionAlgebraCalculator',
+    'PiSeriesAccelerationCalculator',
+    'DPMResonanceFactorCalculator',
+    'VacuumEnergyDifferentialCalculator',
+    'LandeGFactorCalculator',
+    'OrbitalAngularMomentumCalculator',
+    'MagneticDipoleMomentCalculator',
+    'SpaceImpedanceCalculator',
+    'LarmorPrecessionCalculator',
+    'UQFFPlasmaConvectionCalculator',
+    'QuantumCoherenceIntegralCalculator',
+    'CharacteristicPolynomialCalculator',
+    'ORB_ANALYSIS_54_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
