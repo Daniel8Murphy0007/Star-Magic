@@ -9717,30 +9717,73 @@ private:
                 result += QString("Date to JD: %1\n").arg(QString::fromStdString(jdcal));
             }
             // ================================================================
-            // DERIVATIVE CALCULATION: d/dx notation
+            // DERIVATIVE CALCULATION: d/dx notation (IMPROVED - Grok analysis)
             // ================================================================
             else if (eq.find("d/d") != std::string::npos)
             {
 #ifndef NO_PYTHON
-                // Parse derivative notation like "d/dx(x^2)"
-                // Extract variable (usually "x") and function expression
-                std::string var = "x"; // Variable to differentiate with respect to (default x)
-
-                // Extract function from inside parentheses
-                // e.g., "d/dx(x^2)" -> extract "x^2"
-                std::string func = eq.substr(eq.find("(") + 1, eq.find(")") - eq.find("(") - 1);
-
-                // Use SymPy (Python symbolic math library) to calculate derivative
-                py::object x = sympy.attr("symbols")("x");      // Create symbolic variable x
-                py::object expr = sympy.attr("sympify")(func);  // Convert string to SymPy expression
-                py::object deriv = sympy.attr("diff")(expr, x); // Compute derivative: d/dx
-
-                // Format and display result
-                result += QString("d/dx(%1) = %2\n")
-                              .arg(QString::fromStdString(func),
-                                   QString::fromStdString(deriv.attr("__str__")().cast<std::string>()));
+                // Parse derivative notation like "d/dx(x^2)" with improved regex
+                // Supports: d/dx(x^2), d/dy(y^3 + 2y), d/dz(sin(z)), etc.
+                std::regex deriv_regex(R"(d/d(\w+)\((.+)\))");
+                std::smatch matches;
+                if (std::regex_search(eq, matches, deriv_regex)) {
+                    std::string var = matches[1].str();   // Variable name: x, y, z, etc.
+                    std::string func = matches[2].str();  // Function expression
+                    
+                    // Use SymPy with proper symbol creation
+                    py::object sym_var = sympy.attr("symbols")(var);     // Create symbol object
+                    py::object expr = sympy.attr("sympify")(func);       // Convert string to expression
+                    py::object deriv = sympy.attr("diff")(expr, sym_var); // Compute derivative
+                    
+                    // Use py::str() for proper string conversion
+                    result += QString("d/d%1(%2) = %3\n")
+                                  .arg(QString::fromStdString(var),
+                                       QString::fromStdString(func),
+                                       QString::fromStdString(py::str(deriv).cast<std::string>()));
+                } else {
+                    // Fallback to original parsing for backwards compatibility
+                    std::string var = "x";
+                    std::string func = eq.substr(eq.find("(") + 1, eq.find(")") - eq.find("(") - 1);
+                    py::object x = sympy.attr("symbols")("x");
+                    py::object expr = sympy.attr("sympify")(func);
+                    py::object deriv = sympy.attr("diff")(expr, x);
+                    result += QString("d/dx(%1) = %2\n")
+                                  .arg(QString::fromStdString(func),
+                                       QString::fromStdString(py::str(deriv).cast<std::string>()));
+                }
 #else
                 result += QString("Derivative: Use Number Theory tool (bottom panel)\n");
+#endif
+            }
+            // ================================================================
+            // PARTIAL DERIVATIVE: ∂/∂x ∂/∂y notation (NEW - Grok analysis)
+            // ================================================================
+            else if (eq.find("∂") != std::string::npos)
+            {
+#ifndef NO_PYTHON
+                // Parse multi-variable partial derivative: "∂/∂x ∂/∂y (x^2 y)"
+                std::regex partial_regex(R"(∂/∂(\w+) ∂/∂(\w+) \((.+)\))");
+                std::smatch matches;
+                if (std::regex_search(eq, matches, partial_regex)) {
+                    std::string var1 = matches[1].str();
+                    std::string var2 = matches[2].str();
+                    std::string func = matches[3].str();
+                    
+                    py::object sym_var1 = sympy.attr("symbols")(var1);
+                    py::object sym_var2 = sympy.attr("symbols")(var2);
+                    py::object expr_py = sympy.attr("sympify")(func);
+                    py::object deriv = sympy.attr("diff")(expr_py, sym_var1, sym_var2);
+                    
+                    result += QString("∂/∂%1 ∂/∂%2 (%3) = %4\n")
+                        .arg(QString::fromStdString(var1),
+                             QString::fromStdString(var2),
+                             QString::fromStdString(func),
+                             QString::fromStdString(py::str(deriv).cast<std::string>()));
+                } else {
+                    result += QString("Invalid partial derivative format. Use: '∂/∂x ∂/∂y (x^2 y)'\n");
+                }
+#else
+                result += QString("Partial derivatives: Use Number Theory tool\n");
 #endif
             }
             // ================================================================
@@ -9795,32 +9838,60 @@ private:
 #endif
             }
             // ================================================================
-            // DEFINITE INTEGRAL CALCULATION: ? notation
+            // DEFINITE/INDEFINITE INTEGRAL: ? or ∫ notation (IMPROVED)
             // ================================================================
-            else if (eq.find("?") != std::string::npos)
+            // Supports: ?(0,1) x^2 dx, ∫(0,1) x^2 dx, ∫ x^2 dx (indefinite)
+            else if (eq.find("?") != std::string::npos || eq.find("∫") != std::string::npos)
             {
 #ifndef NO_PYTHON
-                // Parse integral notation like "?(0,1) x^2 dx"
-                // Extract bounds (a, b) and function expression
-
-                // Extract bounds from inside parentheses: "?(0,1) ..." -> "0,1"
-                std::string bounds = eq.substr(eq.find("(") + 1, eq.find(")") - eq.find("(") - 1);
-
-                // Extract function between closing paren and "dx": "?(0,1) x^2 dx" -> " x^2 "
-                std::string func = eq.substr(eq.find(")") + 1, eq.find("dx") - eq.find(")") - 1);
-
-                // Parse bounds string "a,b" into two double values
-                auto [a, b] = parseBounds(bounds);
-
-                // Use SymPy to compute definite integral
-                py::object x = sympy.attr("symbols")("x");                                    // Create symbolic variable
-                py::object expr = sympy.attr("sympify")(func);                                // Convert string to expression
-                py::object integral = sympy.attr("integrate")(expr, py::make_tuple(x, a, b)); // Integrate from a to b
-
-                // Format and display result: "?(0,1) x^2 dx = 0.333..."
-                result += QString("?(%1,%2) %3 dx = %4\n")
-                              .arg(QString::number(a), QString::number(b), QString::fromStdString(func),
-                                   QString::fromStdString(integral.attr("__str__")().cast<std::string>()));
+                try {
+                    // Check for definite vs indefinite integral
+                    bool hasParens = (eq.find("(") != std::string::npos && eq.find(")") != std::string::npos);
+                    bool hasDx = (eq.find("dx") != std::string::npos);
+                    
+                    py::object x = sympy.attr("symbols")("x");
+                    
+                    if (hasParens && hasDx) {
+                        // Definite integral: ?(0,1) x^2 dx or ∫(0,1) x^2 dx
+                        std::string bounds = eq.substr(eq.find("(") + 1, eq.find(")") - eq.find("(") - 1);
+                        std::string func = eq.substr(eq.find(")") + 1, eq.find("dx") - eq.find(")") - 1);
+                        
+                        // Trim whitespace from func
+                        func.erase(0, func.find_first_not_of(" \t"));
+                        func.erase(func.find_last_not_of(" \t") + 1);
+                        
+                        auto [a, b] = parseBounds(bounds);
+                        
+                        py::object expr = sympy.attr("sympify")(func);
+                        py::object integral = sympy.attr("integrate")(expr, py::make_tuple(x, a, b));
+                        
+                        result += QString("∫(%1,%2) %3 dx = %4\n")
+                                      .arg(QString::number(a), QString::number(b), 
+                                           QString::fromStdString(func),
+                                           QString::fromStdString(py::str(integral).cast<std::string>()));
+                    } else if (hasDx) {
+                        // Indefinite integral: ∫ x^2 dx
+                        size_t start = eq.find_first_of("?∫") + 1;
+                        std::string func = eq.substr(start, eq.find("dx") - start);
+                        
+                        // Trim whitespace
+                        func.erase(0, func.find_first_not_of(" \t"));
+                        func.erase(func.find_last_not_of(" \t") + 1);
+                        
+                        py::object expr = sympy.attr("sympify")(func);
+                        py::object integral = sympy.attr("integrate")(expr, x);
+                        
+                        result += QString("∫ %1 dx = %2 + C\n")
+                                      .arg(QString::fromStdString(func),
+                                           QString::fromStdString(py::str(integral).cast<std::string>()));
+                    } else {
+                        result += QString("Invalid integral format. Use: '∫(0,1) x^2 dx' or '∫ x^2 dx'\n");
+                    }
+                } catch (const py::error_already_set& e) {
+                    result += QString("Integral Python Error: %1\n").arg(e.what());
+                } catch (const std::exception& e) {
+                    result += QString("Integral Error: %1\n").arg(e.what());
+                }
 #else
                 result += QString("Integral: Use Number Theory tool (bottom panel)\n");
 #endif
@@ -9854,34 +9925,65 @@ private:
                                    QString::fromStdString(calc.evaluate(eq)));
 #endif
             }
-        }
+        } // End of for loop
 
         // ====================================================================
-        // SOLVE SYSTEM OF EQUATIONS (if 2 or more equations collected)
+        // SOLVE SYSTEM OF EQUATIONS (IMPROVED - 26th level polynomial support)
         // ====================================================================
-        if (system_eqs.size() >= 2)
+        // Supports: single equations, systems of equations, high-degree polynomials
+        // Example: "x^26 - 1 = 0" solves 26th degree polynomial
+        //          "x + y = 5", "x - y = 1" solves system
+        if (!system_eqs.empty())
         {
 #ifdef NO_PYTHON
-            result += QString("[System solving: Use Number Theory tool for symbolic math]\\n");
+            result += QString("[System solving: Use Number Theory tool for symbolic math]\n");
 #else
-            // Use SymPy to solve simultaneous equations with multiple unknowns
-            // Example: "x + y = 5" and "x - y = 1" -> solve for x and y
-
-            py::object x = sympy.attr("symbols")("x"); // Create symbolic variable x
-            py::object y = sympy.attr("symbols")("y"); // Create symbolic variable y
-
-            // Convert first two equations to SymPy expressions
-            py::object eq1 = sympy.attr("sympify")(system_eqs[0]);
-            py::object eq2 = sympy.attr("sympify")(system_eqs[1]);
-
-            // Solve the system of equations for variables x and y
-            py::object solutions = sympy.attr("solve")(py::make_tuple(eq1, eq2), py::make_tuple(x, y));
-
-            // Display system and solutions
-            result += QString("System: %1, %2\\nSolutions: %3\\n")
-                          .arg(QString::fromStdString(system_eqs[0]),
-                               QString::fromStdString(system_eqs[1]),
-                               QString::fromStdString(solutions.attr("__str__")().cast<std::string>()));
+            try {
+                // Build list of equations for SymPy solver
+                py::list eq_list;
+                for (const auto& e : system_eqs) {
+                    py::object eq_py = sympy.attr("sympify")(e);
+                    eq_list.append(eq_py);
+                }
+                
+                // SymPy's solve() auto-detects variables and handles:
+                // - Single variable polynomials up to any degree (26th+)
+                // - Systems of linear/nonlinear equations
+                // - Multivariate polynomials
+                py::object solutions = sympy.attr("solve")(eq_list);
+                
+                // Display all equations in the system
+                result += QString("System (%1 equation(s)):\n").arg(system_eqs.size());
+                for (size_t i = 0; i < system_eqs.size(); ++i) {
+                    // Reconstruct original equation format
+                    std::string orig = system_eqs[i];
+                    // Replace the '-' we added back to '=' for display
+                    size_t minus_pos = orig.rfind("-");
+                    if (minus_pos != std::string::npos && minus_pos > 0) {
+                        orig.replace(minus_pos, 1, "=");
+                    }
+                    result += QString("  %1) %2\n").arg(i + 1).arg(QString::fromStdString(orig));
+                }
+                
+                // Display solutions using proper py::str() conversion
+                result += QString("Solutions: %1\n")
+                              .arg(QString::fromStdString(py::str(solutions).cast<std::string>()));
+                
+                // For high-degree polynomials, also show numerical approximation if available
+                if (system_eqs.size() == 1) {
+                    try {
+                        py::object nsolve_result = sympy.attr("nsolve")(eq_list[0], 0);
+                        result += QString("Numerical root near 0: %1\n")
+                                      .arg(QString::fromStdString(py::str(nsolve_result).cast<std::string>()));
+                    } catch (...) {
+                        // nsolve may fail for complex roots, ignore
+                    }
+                }
+            } catch (const py::error_already_set& e) {
+                result += QString("Python Error in System: %1\n").arg(e.what());
+            } catch (const std::exception& e) {
+                result += QString("Error in System: %1\n").arg(e.what());
+            }
 #endif
         }
 
