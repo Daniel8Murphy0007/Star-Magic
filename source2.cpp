@@ -271,6 +271,320 @@ struct SearchResult
 };
 
 // ============================================================================
+// CROSS-PLATFORM INTEGRATION UTILITIES (Phase 2 - CoAnQi Bot Iteration 7-15)
+// ============================================================================
+
+/**
+ * @brief Link status codes for automatic retry logic
+ * Per CoAnQi Bot Design: HTTP:fail after 20s retry, HTTP:null for zero signal
+ */
+enum class LinkStatus {
+    OK,         // Connection successful
+    HTTP_FAIL,  // Error after 20s of retrying - display "HTTP:fail"
+    HTTP_NULL   // Zero signal detected - display "HTTP:null"
+};
+
+/**
+ * @brief AutoLinkUpdater - Automatic link connectivity retry module
+ * 
+ * From CoAnQi Bot Design Iteration 14:
+ * - Automatically re-tries and/or refreshes link connectivity
+ * - After 20 seconds of retry failures, shows "HTTP:fail" error code
+ * - If zero signal detected, shows "HTTP:null" error code
+ * - Maintains workflow session continuity
+ */
+class AutoLinkUpdater : public QObject {
+    Q_OBJECT
+    
+private:
+    QTimer* retryTimer;
+    QString currentUrl;
+    int retryCount;
+    int maxRetries;
+    int retryIntervalMs;
+    LinkStatus status;
+    QNetworkAccessManager* networkManager;
+    
+public:
+    explicit AutoLinkUpdater(QObject* parent = nullptr)
+        : QObject(parent)
+        , retryCount(0)
+        , maxRetries(4)           // 4 retries × 5s = 20s total
+        , retryIntervalMs(5000)   // 5 second intervals
+        , status(LinkStatus::OK) {
+        
+        retryTimer = new QTimer(this);
+        retryTimer->setInterval(retryIntervalMs);
+        connect(retryTimer, &QTimer::timeout, this, &AutoLinkUpdater::attemptRetry);
+        
+        networkManager = new QNetworkAccessManager(this);
+    }
+    
+    void startMonitoring(const QString& url) {
+        currentUrl = url;
+        retryCount = 0;
+        status = LinkStatus::OK;
+        checkLink();
+    }
+    
+    void stopMonitoring() {
+        retryTimer->stop();
+        retryCount = 0;
+    }
+    
+    LinkStatus getStatus() const { return status; }
+    
+    QString getStatusString() const {
+        switch (status) {
+            case LinkStatus::OK: return "Connected";
+            case LinkStatus::HTTP_FAIL: return "HTTP:fail";
+            case LinkStatus::HTTP_NULL: return "HTTP:null";
+        }
+        return "Unknown";
+    }
+
+signals:
+    void statusChanged(LinkStatus newStatus);
+    void linkRestored(const QString& url);
+    void linkFailed(const QString& url, LinkStatus status);
+
+private slots:
+    void checkLink() {
+        if (currentUrl.isEmpty()) return;
+        
+        QNetworkRequest request(QUrl(currentUrl));
+        request.setTransferTimeout(5000); // 5 second timeout
+        
+        QNetworkReply* reply = networkManager->head(request);
+        connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+            handleResponse(reply);
+            reply->deleteLater();
+        });
+    }
+    
+    void handleResponse(QNetworkReply* reply) {
+        if (reply->error() == QNetworkReply::NoError) {
+            // Success - link is working
+            if (status != LinkStatus::OK) {
+                status = LinkStatus::OK;
+                retryTimer->stop();
+                retryCount = 0;
+                emit statusChanged(status);
+                emit linkRestored(currentUrl);
+            }
+        } else if (reply->error() == QNetworkReply::OperationCanceledError ||
+                   reply->error() == QNetworkReply::TimeoutError) {
+            // Timeout - potential HTTP:null
+            handleRetry(true);
+        } else {
+            // Other error - potential HTTP:fail
+            handleRetry(false);
+        }
+    }
+    
+    void handleRetry(bool isTimeout) {
+        retryCount++;
+        
+        if (retryCount >= maxRetries) {
+            // 20 seconds of retries exhausted
+            retryTimer->stop();
+            status = isTimeout ? LinkStatus::HTTP_NULL : LinkStatus::HTTP_FAIL;
+            emit statusChanged(status);
+            emit linkFailed(currentUrl, status);
+        } else if (!retryTimer->isActive()) {
+            // Start retry timer
+            retryTimer->start();
+        }
+    }
+    
+    void attemptRetry() {
+        checkLink();
+    }
+};
+
+// ============================================================================
+// PYTHON RESULT PROCESSOR - Bridge for QProcess Python output parsing
+// ============================================================================
+
+/**
+ * @brief ProcessPythonResult - Parse and structure Python script outputs
+ * 
+ * Bridge class for processing output from QProcess Python calls:
+ * - PImathWrapper.py → PImath Calculator results
+ * - Sympy calculations → Scientific Calculator
+ * - AI summarization → Search results
+ */
+struct PythonResult {
+    bool success;                           // True if script executed without errors
+    QString output;                         // stdout from Python script
+    QString error;                          // stderr from Python script
+    QMap<QString, QVariant> parsedData;     // Structured data (JSON parsed)
+    int exitCode;                           // Process exit code
+    
+    PythonResult() : success(false), exitCode(-1) {}
+};
+
+/**
+ * @brief ProcessPythonResult - Helper to parse Python output into structured data
+ * 
+ * Handles:
+ * - JSON output parsing into QVariant map
+ * - Error extraction and categorization
+ * - Multi-line result aggregation
+ */
+inline PythonResult ProcessPythonResult(const QByteArray& stdout_data, 
+                                         const QByteArray& stderr_data, 
+                                         int exitCode) {
+    PythonResult result;
+    result.output = QString::fromUtf8(stdout_data);
+    result.error = QString::fromUtf8(stderr_data);
+    result.exitCode = exitCode;
+    result.success = (exitCode == 0 && stderr_data.isEmpty());
+    
+    // Try to parse JSON output if present
+    if (result.output.startsWith("{") || result.output.startsWith("[")) {
+        QJsonParseError parseError;
+        QJsonDocument doc = QJsonDocument::fromJson(stdout_data, &parseError);
+        if (parseError.error == QJsonParseError::NoError) {
+            if (doc.isObject()) {
+                QJsonObject obj = doc.object();
+                for (auto it = obj.begin(); it != obj.end(); ++it) {
+                    result.parsedData[it.key()] = it.value().toVariant();
+                }
+            }
+        }
+    }
+    
+    return result;
+}
+
+// ============================================================================
+// VIDEO QUERY HANDLER - OpenCV integration for video input processing
+// ============================================================================
+
+/**
+ * @brief VideoQueryHandler - Process video input for queries
+ * 
+ * From CoAnQi Bot Design:
+ * - Captures video frame from webcam/file
+ * - Extracts visual features for query context
+ * - Integrates with force diagram overlay tools
+ * 
+ * Note: Full implementation requires OpenCV library.
+ * Placeholder for future integration with CoAnQi Visualization Calculator.
+ */
+class VideoQueryHandler {
+private:
+    QString lastFramePath;
+    bool captureEnabled;
+    
+public:
+    VideoQueryHandler() : captureEnabled(false) {}
+    
+    /**
+     * @brief Initialize video capture device
+     * @param deviceId Camera device ID (0 = default webcam)
+     * @return true if initialization successful
+     */
+    bool initializeCapture(int deviceId = 0) {
+        // OpenCV VideoCapture initialization would go here
+        // cv::VideoCapture cap(deviceId);
+        // captureEnabled = cap.isOpened();
+        captureEnabled = false; // Placeholder - OpenCV not linked
+        return captureEnabled;
+    }
+    
+    /**
+     * @brief Capture single frame for query processing
+     * @param outputPath Path to save captured frame
+     * @return true if frame captured successfully
+     */
+    bool captureFrame(const QString& outputPath) {
+        if (!captureEnabled) {
+            qWarning() << "VideoQueryHandler: Capture not initialized";
+            return false;
+        }
+        
+        // cv::VideoCapture cap(0);
+        // cv::Mat frame;
+        // cap >> frame;
+        // cv::imwrite(outputPath.toStdString(), frame);
+        
+        lastFramePath = outputPath;
+        return true;
+    }
+    
+    /**
+     * @brief Extract query context from video frame
+     * @return Descriptive text extracted from frame (OCR, scene description)
+     */
+    QString extractQueryContext() {
+        if (lastFramePath.isEmpty()) {
+            return "No video frame captured";
+        }
+        
+        // Future: Use OpenCV + Tesseract OCR or AI vision model
+        // to extract text and scene description from frame
+        
+        return QString("Video query context from: %1").arg(lastFramePath);
+    }
+    
+    /**
+     * @brief Process gesture input for calculator commands
+     * @return Command string based on detected gesture
+     * 
+     * Per CoAnQi Bot Design: OpenCV gesture recognition for
+     * calculator control (e.g., swipe to clear, pinch to zoom)
+     */
+    QString processGestureInput() {
+        // Placeholder for OpenCV gesture recognition
+        // cv::Mat frame; cap >> frame;
+        // Analyze frame for gesture patterns
+        return "submit query"; // Default command
+    }
+};
+
+// ============================================================================
+// WEBSOCKET FEED CONNECTION INFO - For real-time data streams
+// ============================================================================
+
+/**
+ * @brief WebSocket feed configuration for real-time data streams
+ * 
+ * Per CoAnQi Bot Design - Real-time feeds:
+ * - EHT: eventhorizontelescope.org:443/data
+ * - SKA: skaobservatory.org:443/realtime
+ * - LIGO: ligo.org:443/alerts
+ * - FAST: fast.bao.ac.cn:443/realtime
+ */
+struct WebSocketFeedConfig {
+    QString name;           // Feed name (e.g., "EHT", "LIGO")
+    QString host;           // WebSocket host
+    int port;               // Port (typically 443 for WSS)
+    QString path;           // WebSocket path
+    bool isSecure;          // Use WSS (true) or WS (false)
+    bool isEnabled;         // Feed currently active
+    
+    QString getUrl() const {
+        return QString("%1://%2:%3%4")
+            .arg(isSecure ? "wss" : "ws")
+            .arg(host)
+            .arg(port)
+            .arg(path);
+    }
+};
+
+// Pre-configured feeds from CoAnQi Bot Design
+inline QVector<WebSocketFeedConfig> getDefaultWebSocketFeeds() {
+    return {
+        {"EHT",  "eventhorizontelescope.org", 443, "/data",     true, true},
+        {"SKA",  "skaobservatory.org",        443, "/realtime", true, true},
+        {"LIGO", "ligo.org",                  443, "/alerts",   true, true},
+        {"FAST", "fast.bao.ac.cn",            443, "/realtime", true, true}
+    };
+}
+
+// ============================================================================
 // POWERSHELL TERMINAL WIDGET - Embedded terminal for MAIN_1_CoAnQi.exe
 // ============================================================================
 
@@ -12124,6 +12438,63 @@ MainWindow::MainWindow()
                 if (!line.isEmpty())
                     focusList.push_back(line.toStdString());  // Convert QString to std::string
             } });
+    
+    // ========================================================================
+    // PHASE 2: CROSS-PLATFORM INTEGRATION UTILITIES (CoAnQi Bot Iteration 7-15)
+    // ========================================================================
+    
+    // Initialize AutoLinkUpdater for automatic connection retry
+    // From CoAnQi Bot Design: Maintains workflow session continuity
+    static AutoLinkUpdater* linkUpdater = new AutoLinkUpdater(this);
+    
+    // Connect link status changes to status bar notification
+    connect(linkUpdater, &AutoLinkUpdater::statusChanged, this, [this](LinkStatus status) {
+        QString statusStr;
+        switch (status) {
+            case LinkStatus::OK: 
+                statusStr = "✅ Connected"; 
+                break;
+            case LinkStatus::HTTP_FAIL: 
+                statusStr = "❌ HTTP:fail - Retrying..."; 
+                break;
+            case LinkStatus::HTTP_NULL: 
+                statusStr = "⚠️ HTTP:null - No signal detected"; 
+                break;
+        }
+        statusBar()->showMessage(statusStr, 5000);
+    });
+    
+    // Log link restoration events
+    connect(linkUpdater, &AutoLinkUpdater::linkRestored, this, [this](const QString& url) {
+        qDebug() << "AutoLinkUpdater: Connection restored to" << url;
+    });
+    
+    // Log link failure events  
+    connect(linkUpdater, &AutoLinkUpdater::linkFailed, this, [this](const QString& url, LinkStatus status) {
+        QString errorCode = (status == LinkStatus::HTTP_NULL) ? "HTTP:null" : "HTTP:fail";
+        qWarning() << "AutoLinkUpdater:" << errorCode << "for" << url;
+        
+        // Log to ServerStack directory per CoAnQi Bot Design
+        QString logFile = REPO_PATH + SERVER_STACK_DIR + "link_errors.log";
+        QFile file(logFile);
+        if (file.open(QIODevice::Append | QIODevice::Text)) {
+            QTextStream out(&file);
+            out << QDateTime::currentDateTime().toString(Qt::ISODate) 
+                << " | " << errorCode << " | " << url << Qt::endl;
+            file.close();
+        }
+    });
+    
+    // Initialize VideoQueryHandler (OpenCV integration placeholder)
+    // Full implementation requires OpenCV library
+    static VideoQueryHandler* videoHandler = new VideoQueryHandler();
+    
+    // Store WebSocket feed configurations for real-time data
+    // Per CoAnQi Bot Design: EHT, SKA, LIGO, FAST feeds
+    QVector<WebSocketFeedConfig> wsFeeds = getDefaultWebSocketFeeds();
+    for (const auto& feed : wsFeeds) {
+        qDebug() << "WebSocket Feed configured:" << feed.name << "->" << feed.getUrl();
+    }
     
     // Setup system tray icon (Qt-based, cross-platform)
     setupSystemTrayIcon();
