@@ -48,6 +48,7 @@
 #include <QSplitter>        // Splitter widget - resizable split views (UQFF Simulator)
 #include <QPainter>         // Painter - for drawing on QPixmap (tray icon)
 #include <QPixmap>          // Pixmap - image for tray icon
+#include <QElapsedTimer>    // Elapsed timer - for tracking computation time (S-C Iteration 22/23)
 #include <QFont>            // Font - for text rendering on icon
 #include <QTimer>           // Timer - for animation loops (UQFF Simulator 60 FPS)
 #include <QGridLayout>      // Grid layout manager - for parameter sliders grid
@@ -9500,32 +9501,60 @@ public:
         // Creates a scrollable grid of clickable math symbols for easy insertion
         // into equations. Addresses keyboard input limitations for Unicode chars.
         // Expanded with Greek uppercase, logic symbols, summation, product (S-C Iteration 22)
-        const QString symbols_joined = QString::fromUtf8(
+        // Added derivative notation symbols (S-C Iteration 22/23)
+        allSymbols = QString::fromUtf8(
             u8"±∞=≠~×÷!∝<≪>≫≤≥∓≅≈≡∀∁∂√∛∜∪∩∅%°∆∇∃∄∈∋←↑→↓↔∴"
             u8"+-αβγδεεθϑμπρστφω*∙⋮⋯⋰⋱ℵℶ∎∫∬∭∮∯∰/⁄¹²³⁴⁵⁶⁷⁸⁹⁰"
             u8"ΓΔΘΛΞΠΣΥΦΨΩζηικλνξουχψ∑∏"
             u8"⊂⊆∉¬∧∨⇒⇔"
         );
+        
+        // IEF Search Bar - filter symbols in real-time (S-C Iteration 22/23)
+        symbolSearchBox = new QLineEdit(this);
+        symbolSearchBox->setPlaceholderText("Search symbols...");
+        symbolSearchBox->setMaximumHeight(25);
+        symbolSearchBox->setClearButtonEnabled(true);
+        connect(symbolSearchBox, &QLineEdit::textChanged, this, &ScientificCalculatorDialog::filterSymbols);
+        
         QScrollArea *symbolScroll = new QScrollArea(this);
         symbolScroll->setWidgetResizable(true);
         symbolScroll->setMinimumHeight(60);
         symbolScroll->setMaximumHeight(120);  // Expanded for more symbols
-        QWidget *symbolPanel = new QWidget;
-        QGridLayout *symbolGrid = new QGridLayout(symbolPanel);
-        symbolGrid->setSpacing(2);
+        symbolPanelRef = new QWidget;
+        symbolGridRef = new QGridLayout(symbolPanelRef);
+        symbolGridRef->setSpacing(2);
         int col = 0, row = 0;
-        for (QChar ch : symbols_joined) {
+        
+        // Build symbol buttons with category support
+        // Derivative notation shortcuts (multi-char) - add first
+        QStringList derivativeShortcuts;
+        derivativeShortcuts << "d/dx" << "d/dy" << "d/dz" << "d/dt" << QString::fromUtf8(u8"∂/∂x") << QString::fromUtf8(u8"∂/∂y");
+        for (const QString& deriv : derivativeShortcuts) {
+            QPushButton *btn = new QPushButton(deriv, symbolPanelRef);
+            btn->setMinimumWidth(40);
+            btn->setFixedHeight(30);
+            btn->setToolTip(QString("Insert %1").arg(deriv));
+            connect(btn, &QPushButton::clicked, [this, deriv]() { insertSymbol(deriv); });
+            symbolGridRef->addWidget(btn, row, col);
+            symbolButtons.append(btn);
+            col++;
+            if (col >= 20) { col = 0; row++; }
+        }
+        
+        // Single-character symbols
+        for (QChar ch : allSymbols) {
             QString sym(ch);
-            QPushButton *btn = new QPushButton(sym, symbolPanel);
+            QPushButton *btn = new QPushButton(sym, symbolPanelRef);
             btn->setFixedSize(30, 30);
             btn->setToolTip(QString("Insert %1").arg(sym));
             connect(btn, &QPushButton::clicked, [this, sym]() { insertSymbol(sym); });
-            symbolGrid->addWidget(btn, row, col);
+            symbolGridRef->addWidget(btn, row, col);
+            symbolButtons.append(btn);
             col++;
             if (col >= 20) { col = 0; row++; }  // 20 columns per row
         }
-        symbolPanel->setLayout(symbolGrid);
-        symbolScroll->setWidget(symbolPanel);
+        symbolPanelRef->setLayout(symbolGridRef);
+        symbolScroll->setWidget(symbolPanelRef);
 
         // Recall button - load previous calculations from SCalcCash (S-C Iteration 22)
         QPushButton *recallBtn = new QPushButton("Recall", this);
@@ -9537,14 +9566,21 @@ public:
         exportBtn->setToolTip("Export current result to LaTeX format");
         connect(exportBtn, &QPushButton::clicked, this, &ScientificCalculatorDialog::exportToLatex);
 
+        // Export Format button - export to ODT/PDF/DOCX via pandoc (S-C Iteration 22/23)
+        QPushButton *exportFormatBtn = new QPushButton("Export Format", this);
+        exportFormatBtn->setToolTip("Export to ODT, PDF, or DOCX format (requires pandoc)");
+        connect(exportFormatBtn, &QPushButton::clicked, this, &ScientificCalculatorDialog::exportToFormat);
+
         // Add all widgets to the vertical layout
-        layout->addWidget(input);       // Input box at top
-        layout->addWidget(symbolScroll); // Symbol palette (Grok)
-        layout->addWidget(solveBtn);    // Solve button
-        layout->addWidget(recallBtn);   // Recall button (S-C)
-        layout->addWidget(exportBtn);   // Export button (S-C)
-        layout->addWidget(workflow);    // Workflow history
-        layout->addWidget(output);      // Output box at bottom
+        layout->addWidget(input);           // Input box at top
+        layout->addWidget(symbolSearchBox); // IEF Search bar (S-C Iteration 22/23)
+        layout->addWidget(symbolScroll);    // Symbol palette (Grok)
+        layout->addWidget(solveBtn);        // Solve button
+        layout->addWidget(recallBtn);       // Recall button (S-C)
+        layout->addWidget(exportBtn);       // Export LaTeX button (S-C)
+        layout->addWidget(exportFormatBtn); // Export Format button (S-C Iteration 22/23)
+        layout->addWidget(workflow);        // Workflow history
+        layout->addWidget(output);          // Output box at bottom
 
         // Connect signals to slots (Qt's event handling mechanism)
         // When "Solve" button is clicked, call solveEquations() method
@@ -9656,6 +9692,13 @@ private:
 #endif
     QPoint dragPosition;    // Stores mouse offset for dragging (prevents window jumping)
     QStringList equationHistory;  // History of equations and solutions for workflow display
+    
+    // IEF Search Bar members (S-C Iteration 22/23)
+    QLineEdit *symbolSearchBox;           // Search box to filter symbols
+    QList<QPushButton*> symbolButtons;    // All symbol buttons for filtering
+    QString allSymbols;                   // Complete symbol string for reference
+    QGridLayout *symbolGridRef;           // Reference to symbol grid for filtering
+    QWidget *symbolPanelRef;              // Reference to symbol panel
 
     // ========================================================================
     // insertSymbol - Inserts a symbol from the palette into the input field
@@ -9665,8 +9708,25 @@ private:
         input->setFocus();  // Keep focus on input for continued typing
     }
 
-    // recallFromCache - Load previous calculation from ScalcCash (S-C Iteration 22)
-    // Displays file dialog to select and load a cached calculation
+    // ========================================================================
+    // filterSymbols - IEF Search Bar filter (S-C Iteration 22/23)
+    // ========================================================================
+    // Filters symbol buttons in real-time based on search text
+    void filterSymbols(const QString& filter) {
+        QString searchText = filter.toLower().trimmed();
+        for (QPushButton* btn : symbolButtons) {
+            QString btnText = btn->text().toLower();
+            QString tooltip = btn->toolTip().toLower();
+            // Show button if filter is empty, or if text/tooltip matches
+            bool visible = searchText.isEmpty() || 
+                           btnText.contains(searchText) || 
+                           tooltip.contains(searchText);
+            btn->setVisible(visible);
+        }
+    }
+
+    // recallFromCache - Load previous calculation from ScalcCash (S-C Iteration 22/23)
+    // Enhanced with QListWidget dialog and preview pane
     void recallFromCache() {
         QString dir = REPO_PATH + SCALC_CASH_DIR;
         QDir cacheDir(dir);
@@ -9681,18 +9741,90 @@ private:
             return;
         }
         
-        // Show selection dialog with most recent files
-        QStringList items;
-        for (int i = 0; i < qMin(20, files.size()); ++i) {
-            items << files[i];
+        // ================================================================
+        // QListWidget Dialog with Preview (S-C Iteration 22/23)
+        // ================================================================
+        QDialog *recallDialog = new QDialog(this);
+        recallDialog->setWindowTitle("Recall Calculation");
+        recallDialog->setMinimumSize(600, 400);
+        recallDialog->setStyleSheet(
+            "QDialog { background-color: #f5f5f5; }"
+            "QListWidget { border: 1px solid #ccc; border-radius: 4px; }"
+            "QTextEdit { border: 1px solid #ccc; border-radius: 4px; background-color: #fff; }"
+            "QPushButton { background-color: #add8e6; border: 1px solid #333; border-radius: 4px; padding: 6px 12px; }"
+            "QPushButton:hover { background-color: #87ceeb; }"
+        );
+        
+        QHBoxLayout *mainLayout = new QHBoxLayout(recallDialog);
+        
+        // Left side: File list
+        QVBoxLayout *leftLayout = new QVBoxLayout;
+        QLabel *listLabel = new QLabel("Recent Calculations:");
+        QListWidget *fileList = new QListWidget;
+        fileList->setMinimumWidth(200);
+        for (int i = 0; i < qMin(30, files.size()); ++i) {
+            fileList->addItem(files[i]);
+        }
+        leftLayout->addWidget(listLabel);
+        leftLayout->addWidget(fileList);
+        
+        // Right side: Preview
+        QVBoxLayout *rightLayout = new QVBoxLayout;
+        QLabel *previewLabel = new QLabel("Preview:");
+        QTextEdit *previewPane = new QTextEdit;
+        previewPane->setReadOnly(true);
+        previewPane->setMinimumWidth(350);
+        previewPane->setPlaceholderText("Select a file to preview...");
+        rightLayout->addWidget(previewLabel);
+        rightLayout->addWidget(previewPane);
+        
+        mainLayout->addLayout(leftLayout);
+        mainLayout->addLayout(rightLayout);
+        
+        // Bottom buttons
+        QHBoxLayout *buttonLayout = new QHBoxLayout;
+        QPushButton *loadBtn = new QPushButton("Load");
+        QPushButton *cancelBtn = new QPushButton("Cancel");
+        buttonLayout->addStretch();
+        buttonLayout->addWidget(loadBtn);
+        buttonLayout->addWidget(cancelBtn);
+        
+        QVBoxLayout *dialogLayout = new QVBoxLayout;
+        dialogLayout->addLayout(mainLayout);
+        dialogLayout->addLayout(buttonLayout);
+        recallDialog->setLayout(dialogLayout);
+        
+        QString selectedFile;
+        
+        // Connect preview on selection change
+        connect(fileList, &QListWidget::currentItemChanged, [&](QListWidgetItem* item) {
+            if (item) {
+                QString filename = dir + item->text();
+                QFile file(filename);
+                if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                    QString content = QTextStream(&file).readAll();
+                    file.close();
+                    previewPane->setPlainText(content);
+                    selectedFile = item->text();
+                }
+            }
+        });
+        
+        // Double-click to load immediately
+        connect(fileList, &QListWidget::itemDoubleClicked, [&](QListWidgetItem*) {
+            recallDialog->accept();
+        });
+        
+        connect(loadBtn, &QPushButton::clicked, recallDialog, &QDialog::accept);
+        connect(cancelBtn, &QPushButton::clicked, recallDialog, &QDialog::reject);
+        
+        // Select first item to show preview
+        if (fileList->count() > 0) {
+            fileList->setCurrentRow(0);
         }
         
-        bool ok;
-        QString selected = QInputDialog::getItem(this, "Recall Calculation", 
-            "Select a previous calculation:", items, 0, false, &ok);
-        
-        if (ok && !selected.isEmpty()) {
-            QFile file(dir + selected);
+        if (recallDialog->exec() == QDialog::Accepted && !selectedFile.isEmpty()) {
+            QFile file(dir + selectedFile);
             if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
                 QString content = QTextStream(&file).readAll();
                 file.close();
@@ -9706,9 +9838,11 @@ private:
                         output->setPlainText(lines.mid(2).join('\n'));
                     }
                 }
-                workflow->append("Recalled: " + selected);
+                workflow->append("Recalled: " + selectedFile);
             }
         }
+        
+        delete recallDialog;
     }
 
     // exportToLatex - Export current equation and result to LaTeX format (S-C Iteration 22)
@@ -9789,6 +9923,84 @@ private:
     }
 
     // ========================================================================
+    // exportToFormat - Export to ODT/PDF/DOCX via pandoc (S-C Iteration 22/23)
+    // ========================================================================
+    // Uses pandoc subprocess to convert LaTeX to various document formats
+    void exportToFormat() {
+        QString equation = input->toPlainText();
+        QString result = output->toPlainText();
+        
+        if (equation.isEmpty() && result.isEmpty()) {
+            QMessageBox::information(this, "Export", "Nothing to export. Please solve an equation first.");
+            return;
+        }
+        
+        // Format selection dialog
+        QStringList formats;
+        formats << "ODT (LibreOffice)" << "PDF (Portable Document)" << "DOCX (Microsoft Word)" << "HTML (Web Page)";
+        bool ok;
+        QString choice = QInputDialog::getItem(this, "Export Format", 
+            "Select output format:", formats, 0, false, &ok);
+        
+        if (!ok) return;
+        
+        // Determine file extension and pandoc format
+        QString ext, pandocFormat;
+        if (choice.startsWith("ODT")) { ext = "odt"; pandocFormat = "odt"; }
+        else if (choice.startsWith("PDF")) { ext = "pdf"; pandocFormat = "pdf"; }
+        else if (choice.startsWith("DOCX")) { ext = "docx"; pandocFormat = "docx"; }
+        else if (choice.startsWith("HTML")) { ext = "html"; pandocFormat = "html"; }
+        
+        // Get save filename
+        QString filename = QFileDialog::getSaveFileName(this, "Save As",
+            REPO_PATH + "calculation." + ext,
+            QString("%1 Files (*.%2)").arg(choice.split(" ")[0]).arg(ext));
+        
+        if (filename.isEmpty()) return;
+        
+        // Create temporary markdown file for pandoc input
+        QString tempMd = REPO_PATH + "temp_export.md";
+        QFile mdFile(tempMd);
+        if (mdFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QTextStream out(&mdFile);
+            out << "# Calculation\n\n";
+            out << "## Input\n\n";
+            out << "```\n" << equation << "\n```\n\n";
+            out << "## Result\n\n";
+            out << "```\n" << result << "\n```\n";
+            mdFile.close();
+        }
+        
+        // Run pandoc conversion
+        QProcess pandoc;
+        QStringList args;
+        args << tempMd << "-o" << filename;
+        
+        // For PDF, may need additional flags
+        if (pandocFormat == "pdf") {
+            args << "--pdf-engine=xelatex";
+        }
+        
+        pandoc.start("pandoc", args);
+        if (pandoc.waitForFinished(30000)) {  // 30 second timeout
+            if (pandoc.exitCode() == 0) {
+                QMessageBox::information(this, "Export", 
+                    QString("Successfully exported to:\n%1").arg(filename));
+            } else {
+                QString error = pandoc.readAllStandardError();
+                QMessageBox::warning(this, "Export Error", 
+                    QString("Pandoc conversion failed:\n%1\n\nMake sure pandoc is installed and in PATH.").arg(error));
+            }
+        } else {
+            QMessageBox::warning(this, "Export Error", 
+                "Pandoc timed out or is not installed.\n\nInstall pandoc from: https://pandoc.org/installing.html");
+        }
+        
+        // Clean up temp file
+        QFile::remove(tempMd);
+    }
+
+    // ========================================================================
     // PRIVATE HELPER METHODS - Internal functions used by this class
     // ========================================================================
 
@@ -9846,6 +10058,12 @@ private:
     // Called when user clicks the "Solve" button
     void solveEquations()
     {
+        // ================================================================
+        // ELAPSED TIME TRACKING (S-C Iteration 22/23)
+        // ================================================================
+        QElapsedTimer elapsedTimer;
+        elapsedTimer.start();
+        
         // Get all text from input box and convert to C++ string
         std::string expr = input->toPlainText().toStdString();
 
