@@ -597,8 +597,8 @@ if(Qt6_FOUND)
         message(STATUS "Source2: Python disabled (pybind11 not found)")
     endif()
     
-    # Qalculate and PocketSphinx - Not installed, always disabled
-    target_compile_definitions(Source2 PRIVATE NO_QALCULATE NO_POCKETSPHINX)
+    # Qalculate, PocketSphinx, MPI, LLVM - Not installed, always disabled
+    target_compile_definitions(Source2 PRIVATE NO_QALCULATE NO_POCKETSPHINX NO_MPI NO_LLVM)
     
     # Post-build: Deploy Python wrappers and OpenSSL DLLs
     if(WIN32)

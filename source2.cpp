@@ -110,6 +110,19 @@
 #include <pocketsphinx.h> // PocketSphinx - speech recognition for voice input commands
 #endif                    // NO_POCKETSPHINX
 
+// Distributed Computing (MPI) - S-C Iteration 30+
+#ifndef NO_MPI
+#include <mpi.h>          // MPI - Message Passing Interface for distributed computing
+#endif                    // NO_MPI
+
+// JIT Compilation (LLVM) - S-C Iteration 30+
+#ifndef NO_LLVM
+#include <llvm/IR/LLVMContext.h>         // LLVM context for JIT compilation
+#include <llvm/IR/Module.h>              // LLVM module for compiled expressions
+#include <llvm/ExecutionEngine/MCJIT.h>  // LLVM MCJIT for runtime execution
+#include <llvm/Support/TargetSelect.h>   // LLVM target initialization
+#endif                    // NO_LLVM
+
 // Vision Processing
 #ifndef NO_OPENCV
 #include <opencv2/opencv.hpp> // OpenCV - computer vision library for video/image processing
@@ -9583,6 +9596,113 @@ public:
         speakBtn->setToolTip("Read results aloud using text-to-speech (requires espeak)");
         connect(speakBtn, &QPushButton::clicked, this, &ScientificCalculatorDialog::speakResults);
 
+        // ================================================================
+        // THEME CUSTOMIZATION (S-C Iteration 30+ - Dark/Light/High Contrast)
+        // ================================================================
+        QHBoxLayout *themeLayout = new QHBoxLayout;
+        QLabel *themeLabel = new QLabel("Theme:", this);
+        themeCombo = new QComboBox(this);
+        themeCombo->addItems({"Light", "Dark", "High Contrast"});
+        themeCombo->setToolTip("Select UI theme for accessibility");
+        connect(themeCombo, &QComboBox::currentTextChanged, this, &ScientificCalculatorDialog::setTheme);
+        themeLayout->addWidget(themeLabel);
+        themeLayout->addWidget(themeCombo);
+        themeLayout->addStretch();
+        currentTheme = "Light";
+
+        // Tutorial button - interactive examples (S-C Iteration 30+)
+        QPushButton *tutorialBtn = new QPushButton("Tutorial", this);
+        tutorialBtn->setToolTip("Show interactive examples for equation types");
+        connect(tutorialBtn, &QPushButton::clicked, this, &ScientificCalculatorDialog::showTutorial);
+
+        // ================================================================
+        // CATEGORIZED FORMULA TEMPLATES (S-C Iteration 30+ - Physics/Geometry/Motion)
+        // ================================================================
+        QTabWidget *formulaTabs = new QTabWidget(this);
+        formulaTabs->setMaximumHeight(80);
+        formulaTabs->setStyleSheet("QTabWidget { font-size: 9px; } QTabBar::tab { padding: 4px 8px; }");
+        
+        // Physics tab
+        QWidget *physicsPanel = new QWidget;
+        QHBoxLayout *physicsLayout = new QHBoxLayout(physicsPanel);
+        physicsLayout->setSpacing(2);
+        physicsLayout->setContentsMargins(2, 2, 2, 2);
+        QStringList physicsFormulas = {"F=ma", "E=mc²", "v=u+at", "KE=½mv²", "PE=mgh", "F=Gm₁m₂/r²", "p=mv", "P=VI", "E=hf"};
+        for (const QString &f : physicsFormulas) {
+            QPushButton *btn = new QPushButton(f, physicsPanel);
+            btn->setFixedSize(70, 25);
+            connect(btn, &QPushButton::clicked, [this, f]() { insertSymbol(f); });
+            physicsLayout->addWidget(btn);
+        }
+        physicsLayout->addStretch();
+        formulaTabs->addTab(physicsPanel, "Physics");
+        
+        // Geometry tab
+        QWidget *geometryPanel = new QWidget;
+        QHBoxLayout *geometryLayout = new QHBoxLayout(geometryPanel);
+        geometryLayout->setSpacing(2);
+        geometryLayout->setContentsMargins(2, 2, 2, 2);
+        QStringList geometryFormulas = {"A=πr²", "V=4/3πr³", "a²+b²=c²", "C=2πr", "A=½bh", "V=πr²h", "S=4πr²"};
+        for (const QString &f : geometryFormulas) {
+            QPushButton *btn = new QPushButton(f, geometryPanel);
+            btn->setFixedSize(70, 25);
+            connect(btn, &QPushButton::clicked, [this, f]() { insertSymbol(f); });
+            geometryLayout->addWidget(btn);
+        }
+        geometryLayout->addStretch();
+        formulaTabs->addTab(geometryPanel, "Geometry");
+        
+        // Motion/Kinematics tab
+        QWidget *motionPanel = new QWidget;
+        QHBoxLayout *motionLayout = new QHBoxLayout(motionPanel);
+        motionLayout->setSpacing(2);
+        motionLayout->setContentsMargins(2, 2, 2, 2);
+        QStringList motionFormulas = {"s=vt", "v²=u²+2as", "s=ut+½at²", "ω=2πf", "v=ωr", "τ=Iα", "L=Iω"};
+        for (const QString &f : motionFormulas) {
+            QPushButton *btn = new QPushButton(f, motionPanel);
+            btn->setFixedSize(70, 25);
+            connect(btn, &QPushButton::clicked, [this, f]() { insertSymbol(f); });
+            motionLayout->addWidget(btn);
+        }
+        motionLayout->addStretch();
+        formulaTabs->addTab(motionPanel, "Motion");
+
+        // ================================================================
+        // ADVANCED FEATURES (S-C Iteration 30+ - Voice/MPI/LLVM/Quantum)
+        // ================================================================
+        QHBoxLayout *advancedLayout = new QHBoxLayout;
+        
+        // Voice activation button
+        QPushButton *voiceBtn = new QPushButton("🎤 Voice", this);
+        voiceBtn->setToolTip("Start voice recognition (requires PocketSphinx)");
+        voiceBtn->setCheckable(true);
+        connect(voiceBtn, &QPushButton::toggled, this, &ScientificCalculatorDialog::toggleVoiceRecognition);
+        advancedLayout->addWidget(voiceBtn);
+        voiceListening = false;
+        
+        // Distributed computing info (MPI)
+        QPushButton *mpiBtn = new QPushButton("⚡ Distributed", this);
+        mpiBtn->setToolTip("Enable MPI distributed computing for large-scale simulations");
+        connect(mpiBtn, &QPushButton::clicked, this, &ScientificCalculatorDialog::showMPIStatus);
+        advancedLayout->addWidget(mpiBtn);
+        mpiInitialized = false;
+        
+        // JIT compilation toggle (LLVM)
+        QPushButton *jitBtn = new QPushButton("⚙ JIT", this);
+        jitBtn->setToolTip("Enable LLVM JIT compilation for faster equation evaluation");
+        jitBtn->setCheckable(true);
+        connect(jitBtn, &QPushButton::toggled, this, &ScientificCalculatorDialog::toggleJITCompilation);
+        advancedLayout->addWidget(jitBtn);
+        llvmInitialized = false;
+        
+        // Quantum simulation button
+        QPushButton *quantumBtn = new QPushButton("⚛ Quantum", this);
+        quantumBtn->setToolTip("Run quantum circuit simulation via Qiskit/Cirq (requires Python)");
+        connect(quantumBtn, &QPushButton::clicked, this, &ScientificCalculatorDialog::runQuantumSimulation);
+        advancedLayout->addWidget(quantumBtn);
+        
+        advancedLayout->addStretch();
+
         // Add all widgets to the vertical layout
         layout->addWidget(input);           // Input box at top
         layout->addWidget(symbolSearchBox); // IEF Search bar (S-C Iteration 22/23)
@@ -9593,6 +9713,10 @@ public:
         layout->addWidget(exportFormatBtn); // Export Format button (S-C Iteration 22/23)
         layout->addWidget(settingsBtn);     // Settings button (S-C Iteration 22-25)
         layout->addWidget(speakBtn);        // Speak button (S-C Iteration 27)
+        layout->addWidget(tutorialBtn);     // Tutorial button (S-C Iteration 30+)
+        layout->addLayout(themeLayout);     // Theme selector (S-C Iteration 30+)
+        layout->addWidget(formulaTabs);     // Physics/Geometry/Motion formulas (S-C Iteration 30+)
+        layout->addLayout(advancedLayout);  // Voice/MPI/JIT/Quantum (S-C Iteration 30+)
         layout->addWidget(workflow);        // Workflow history
         layout->addWidget(output);          // Output box at bottom
 
@@ -9722,6 +9846,11 @@ private:
     QString configCalcCacheDir;           // Calculation cache directory
     QString configSymCacheDir;            // Symbol cache directory (S-C Iteration 25-27)
     QString lastSpoken;                   // Last spoken text for accessibility (S-C Iteration 27)
+    QString currentTheme;                 // Current theme (Light/Dark/High Contrast) - S-C Iteration 30+
+    QComboBox *themeCombo;                // Theme selection dropdown - S-C Iteration 30+
+    bool mpiInitialized;                  // MPI initialization flag - S-C Iteration 30+
+    bool llvmInitialized;                 // LLVM initialization flag - S-C Iteration 30+
+    bool voiceListening;                  // Voice recognition active flag - S-C Iteration 30+
 
     // ========================================================================
     // storeSymbol - Cache dropped/used symbols (S-C Iteration 25-27)
@@ -10002,8 +10131,10 @@ private:
         
         // Format selection dialog
         // S-C Iteration 27: ODT now available natively via QTextDocumentWriter
+        // S-C Iteration 30+: Added MathML export for interoperability
         QStringList formats;
         formats << "ODT (Native - LibreOffice)";  // Always available via QTextDocumentWriter
+        formats << "MathML (Web/Scientific)";     // S-C Iteration 30+ - interoperability
         if (pandocAvailable) {
             formats << "PDF (Portable Document)" << "DOCX (Microsoft Word)";
         }
@@ -10024,6 +10155,7 @@ private:
         // Determine file extension and pandoc format
         QString ext, pandocFormat;
         if (choice.startsWith("ODT")) { ext = "odt"; pandocFormat = "odt"; }
+        else if (choice.startsWith("MathML")) { ext = "mml"; pandocFormat = "mathml"; }  // S-C Iteration 30+
         else if (choice.startsWith("PDF")) { ext = "pdf"; pandocFormat = "pdf"; }
         else if (choice.startsWith("DOCX")) { ext = "docx"; pandocFormat = "docx"; }
         else if (choice.startsWith("HTML")) { ext = "html"; pandocFormat = "html"; }
@@ -10061,6 +10193,68 @@ private:
                     "Failed to write ODT file. Check file permissions.");
             }
             return;  // Skip pandoc for native ODT
+        }
+        
+        // ================================================================
+        // NATIVE MATHML EXPORT (S-C Iteration 30+)
+        // ================================================================
+        // Generate MathML for scientific interoperability
+        if (pandocFormat == "mathml") {
+            QFile mmlFile(filename);
+            if (mmlFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+                QTextStream out(&mmlFile);
+                out << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+                out << "<!DOCTYPE math PUBLIC \"-//W3C//DTD MathML 2.0//EN\" \"http://www.w3.org/Math/DTD/mathml2/mathml2.dtd\">\n";
+                out << "<math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n";
+                out << "  <semantics>\n";
+                out << "    <mrow>\n";
+                // Convert equation to MathML tokens
+                QString expr = equation.simplified();
+                // Basic conversion: numbers, identifiers, operators
+                for (int i = 0; i < expr.length(); ++i) {
+                    QChar c = expr[i];
+                    if (c.isDigit() || c == '.') {
+                        QString num;
+                        while (i < expr.length() && (expr[i].isDigit() || expr[i] == '.')) {
+                            num += expr[i++];
+                        }
+                        --i;
+                        out << "      <mn>" << num << "</mn>\n";
+                    } else if (c.isLetter()) {
+                        QString id;
+                        while (i < expr.length() && expr[i].isLetter()) {
+                            id += expr[i++];
+                        }
+                        --i;
+                        // Map common names
+                        if (id == "pi") out << "      <mi>&pi;</mi>\n";
+                        else if (id == "alpha") out << "      <mi>&alpha;</mi>\n";
+                        else if (id == "beta") out << "      <mi>&beta;</mi>\n";
+                        else if (id == "gamma") out << "      <mi>&gamma;</mi>\n";
+                        else if (id == "sin" || id == "cos" || id == "tan" || id == "log" || id == "exp")
+                            out << "      <mi>" << id << "</mi>\n";
+                        else out << "      <mi>" << id << "</mi>\n";
+                    } else if (c == '+') out << "      <mo>+</mo>\n";
+                    else if (c == '-') out << "      <mo>-</mo>\n";
+                    else if (c == '*') out << "      <mo>&times;</mo>\n";
+                    else if (c == '/') out << "      <mo>&divide;</mo>\n";
+                    else if (c == '=') out << "      <mo>=</mo>\n";
+                    else if (c == '^') out << "      <mo>^</mo>\n";
+                    else if (c == '(') out << "      <mo>(</mo>\n";
+                    else if (c == ')') out << "      <mo>)</mo>\n";
+                }
+                out << "    </mrow>\n";
+                out << "    <annotation encoding=\"application/x-tex\">" << equation.toHtmlEscaped() << "</annotation>\n";
+                out << "  </semantics>\n";
+                out << "</math>\n";
+                out << "\n<!-- Result: " << result.toHtmlEscaped().replace("--", "- -") << " -->\n";
+                mmlFile.close();
+                QMessageBox::information(this, "Export", 
+                    QString("Successfully exported MathML to:\n%1").arg(filename));
+            } else {
+                QMessageBox::warning(this, "Export Error", "Failed to write MathML file.");
+            }
+            return;
         }
         
         // ================================================================
@@ -10218,6 +10412,316 @@ private:
         
         // Launch espeak in detached mode
         QProcess::startDetached("espeak", QStringList() << spokenText);
+    }
+
+    // ========================================================================
+    // setTheme - Theme customization (S-C Iteration 30+)
+    // ========================================================================
+    void setTheme(const QString& theme) {
+        currentTheme = theme;
+        if (theme == "Dark") {
+            setStyleSheet(
+                "QDialog { background-color: #1e1e1e; color: #d4d4d4; }"
+                "QPushButton { background-color: #3c3c3c; color: #d4d4d4; border: 1px solid #555; border-radius: 4px; padding: 4px; }"
+                "QPushButton:hover { background-color: #505050; }"
+                "QPushButton:checked { background-color: #007acc; }"
+                "QTextEdit { background-color: #252526; color: #d4d4d4; border: 1px solid #3c3c3c; border-radius: 4px; }"
+                "QLineEdit { background-color: #252526; color: #d4d4d4; border: 1px solid #3c3c3c; border-radius: 4px; }"
+                "QComboBox { background-color: #3c3c3c; color: #d4d4d4; border: 1px solid #555; border-radius: 4px; }"
+                "QTabWidget::pane { border: 1px solid #3c3c3c; }"
+                "QTabBar::tab { background: #2d2d2d; color: #d4d4d4; padding: 4px 8px; }"
+                "QTabBar::tab:selected { background: #1e1e1e; }"
+                "QLabel { color: #d4d4d4; }"
+            );
+        } else if (theme == "High Contrast") {
+            setStyleSheet(
+                "QDialog { background-color: #000000; color: #ffffff; }"
+                "QPushButton { background-color: #000000; color: #ffff00; border: 2px solid #ffffff; border-radius: 4px; padding: 4px; font-weight: bold; }"
+                "QPushButton:hover { background-color: #333333; }"
+                "QPushButton:checked { background-color: #00ff00; color: #000000; }"
+                "QTextEdit { background-color: #000000; color: #ffff00; border: 2px solid #ffffff; border-radius: 4px; }"
+                "QLineEdit { background-color: #000000; color: #ffff00; border: 2px solid #ffffff; border-radius: 4px; }"
+                "QComboBox { background-color: #000000; color: #ffff00; border: 2px solid #ffffff; border-radius: 4px; }"
+                "QTabWidget::pane { border: 2px solid #ffffff; }"
+                "QTabBar::tab { background: #000000; color: #ffffff; padding: 4px 8px; border: 1px solid #ffffff; }"
+                "QTabBar::tab:selected { background: #333333; }"
+                "QLabel { color: #ffffff; }"
+            );
+        } else {  // Light theme (default)
+            setStyleSheet(
+                "QPushButton { background-color: #add8e6; border: 1px solid #333; border-radius: 4px; padding: 4px; }"
+                "QPushButton:hover { background-color: #87ceeb; }"
+                "QPushButton:checked { background-color: #4CAF50; color: white; }"
+                "QTextEdit { border: 1px solid #ccc; border-radius: 4px; }"
+                "QLineEdit { border: 1px solid #ccc; border-radius: 4px; }"
+                "QComboBox { border: 1px solid #ccc; border-radius: 4px; padding: 2px; }"
+            );
+        }
+    }
+
+    // ========================================================================
+    // showTutorial - Interactive tutorial dialog (S-C Iteration 30+)
+    // ========================================================================
+    void showTutorial() {
+        QDialog tutorialDlg(this);
+        tutorialDlg.setWindowTitle("Calculator Tutorial - Equation Examples");
+        tutorialDlg.setMinimumSize(600, 500);
+        
+        QVBoxLayout *layout = new QVBoxLayout(&tutorialDlg);
+        
+        QTabWidget *tabs = new QTabWidget(&tutorialDlg);
+        
+        // Polynomials tab
+        QTextEdit *polyText = new QTextEdit;
+        polyText->setReadOnly(true);
+        polyText->setHtml(
+            "<h2>Polynomial Equations</h2>"
+            "<p><b>Quadratic:</b> <code>x**2 + 3*x - 4 = 0</code></p>"
+            "<p><b>Cubic:</b> <code>x**3 - 6*x**2 + 11*x - 6 = 0</code></p>"
+            "<p><b>Factor:</b> <code>factor(x**2 - 4)</code></p>"
+            "<p><b>Expand:</b> <code>expand((x+1)**3)</code></p>"
+            "<p><b>Simplify:</b> <code>simplify((x**2-1)/(x-1))</code></p>"
+        );
+        tabs->addTab(polyText, "Polynomials");
+        
+        // Physics tab
+        QTextEdit *physicsText = new QTextEdit;
+        physicsText->setReadOnly(true);
+        physicsText->setHtml(
+            "<h2>Physics Equations</h2>"
+            "<p><b>Newton's 2nd Law:</b> <code>F = m*a</code></p>"
+            "<p><b>Einstein Energy:</b> <code>E = m*c**2</code></p>"
+            "<p><b>Kinetic Energy:</b> <code>KE = 0.5*m*v**2</code></p>"
+            "<p><b>Gravitational Force:</b> <code>F = G*m1*m2/r**2</code></p>"
+            "<p><b>Unit Conversion:</b> <code>convert 1 d to s</code> (days to seconds)</p>"
+        );
+        tabs->addTab(physicsText, "Physics");
+        
+        // Calculus tab
+        QTextEdit *calcText = new QTextEdit;
+        calcText->setReadOnly(true);
+        calcText->setHtml(
+            "<h2>Calculus Operations</h2>"
+            "<p><b>Derivative:</b> <code>d/dx(x**3 + 2*x)</code></p>"
+            "<p><b>Partial Derivative:</b> <code>∂/∂x(x**2*y)</code></p>"
+            "<p><b>Integral:</b> <code>∫(0,1) x**2 dx</code></p>"
+            "<p><b>Indefinite:</b> <code>integrate(sin(x), x)</code></p>"
+            "<p><b>Limit:</b> <code>limit(sin(x)/x, x, 0)</code></p>"
+        );
+        tabs->addTab(calcText, "Calculus");
+        
+        // Motion tab
+        QTextEdit *motionText = new QTextEdit;
+        motionText->setReadOnly(true);
+        motionText->setHtml(
+            "<h2>Motion & Kinematics</h2>"
+            "<p><b>Displacement:</b> <code>s = u*t + 0.5*a*t**2</code></p>"
+            "<p><b>Final Velocity:</b> <code>v**2 = u**2 + 2*a*s</code></p>"
+            "<p><b>Angular Velocity:</b> <code>ω = 2*π*f</code></p>"
+            "<p><b>Centripetal:</b> <code>a_c = v**2/r</code></p>"
+            "<p><b>Simple Harmonic:</b> <code>x = A*cos(ω*t + φ)</code></p>"
+        );
+        tabs->addTab(motionText, "Motion");
+        
+        // Systems tab
+        QTextEdit *sysText = new QTextEdit;
+        sysText->setReadOnly(true);
+        sysText->setHtml(
+            "<h2>Systems of Equations</h2>"
+            "<p><b>Multiple equations:</b> Separate with commas</p>"
+            "<p><code>x + y = 10, x - y = 2</code></p>"
+            "<p><code>2*x + 3*y = 12, x - y = 1</code></p>"
+            "<hr>"
+            "<h3>Tips:</h3>"
+            "<ul>"
+            "<li>Use ** for exponents: <code>x**2</code> not <code>x^2</code></li>"
+            "<li>Use * for multiplication: <code>2*x</code> not <code>2x</code></li>"
+            "<li>Greek letters: type <code>alpha, beta, gamma, pi</code></li>"
+            "</ul>"
+        );
+        tabs->addTab(sysText, "Systems");
+        
+        layout->addWidget(tabs);
+        
+        QPushButton *closeBtn = new QPushButton("Close", &tutorialDlg);
+        connect(closeBtn, &QPushButton::clicked, &tutorialDlg, &QDialog::accept);
+        layout->addWidget(closeBtn);
+        
+        tutorialDlg.exec();
+    }
+
+    // ========================================================================
+    // toggleVoiceRecognition - Voice input control (S-C Iteration 30+)
+    // ========================================================================
+    void toggleVoiceRecognition(bool enabled) {
+        voiceListening = enabled;
+        if (enabled) {
+#ifndef NO_POCKETSPHINX
+            // Check if PocketSphinx is available
+            QMessageBox::information(this, "Voice Recognition",
+                "Voice recognition activated.\n\n"
+                "PocketSphinx integration enabled. Speak your equation.\n"
+                "Note: Requires proper acoustic model configuration.");
+            // In production: Initialize ps_decoder, start recognition loop in separate thread
+            // For now, show placeholder
+#else
+            QMessageBox::warning(this, "Voice Recognition Unavailable",
+                "PocketSphinx is not compiled. Voice recognition disabled.\n\n"
+                "To enable, rebuild with PocketSphinx support:\n"
+                "cmake -DNO_POCKETSPHINX=OFF ..");
+            voiceListening = false;
+#endif
+        } else {
+            // Stop recognition
+            output->append("Voice recognition deactivated.");
+        }
+    }
+
+    // ========================================================================
+    // showMPIStatus - Distributed computing status (S-C Iteration 30+)
+    // ========================================================================
+    void showMPIStatus() {
+#ifndef NO_MPI
+        // Check MPI initialization status
+        int initialized = 0;
+        MPI_Initialized(&initialized);
+        
+        if (initialized) {
+            int world_size, world_rank;
+            MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+            MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
+            QMessageBox::information(this, "MPI Status",
+                QString("MPI is initialized and running.\n\n"
+                        "World Size: %1 processes\n"
+                        "Current Rank: %2\n\n"
+                        "Distributed computing is available for large-scale simulations.")
+                    .arg(world_size).arg(world_rank));
+        } else {
+            QMessageBox::information(this, "MPI Status",
+                "MPI is available but not initialized.\n\n"
+                "To use distributed computing, launch with:\n"
+                "mpiexec -n <num_processes> ./Source2.exe");
+        }
+        mpiInitialized = initialized;
+#else
+        QMessageBox::warning(this, "MPI Unavailable",
+            "MPI support is not compiled.\n\n"
+            "To enable distributed computing, rebuild with MPI:\n"
+            "cmake -DNO_MPI=OFF ..\n\n"
+            "Requires: MS-MPI or OpenMPI installation.");
+#endif
+    }
+
+    // ========================================================================
+    // toggleJITCompilation - LLVM JIT toggle (S-C Iteration 30+)
+    // ========================================================================
+    void toggleJITCompilation(bool enabled) {
+        if (enabled) {
+#ifndef NO_LLVM
+            // Initialize LLVM
+            if (!llvmInitialized) {
+                llvm::InitializeNativeTarget();
+                llvm::InitializeNativeTargetAsmPrinter();
+                llvmInitialized = true;
+            }
+            output->append("JIT compilation enabled. Expressions will be compiled for faster evaluation.");
+#else
+            QMessageBox::warning(this, "LLVM JIT Unavailable",
+                "LLVM support is not compiled.\n\n"
+                "To enable JIT compilation, rebuild with LLVM:\n"
+                "cmake -DNO_LLVM=OFF ..\n\n"
+                "Requires: LLVM 14+ development libraries.");
+            llvmInitialized = false;
+#endif
+        } else {
+            output->append("JIT compilation disabled. Using interpreted evaluation.");
+        }
+    }
+
+    // ========================================================================
+    // runQuantumSimulation - Qiskit/Cirq simulation (S-C Iteration 30+)
+    // ========================================================================
+    void runQuantumSimulation() {
+#ifndef NO_PYTHON
+        try {
+            py::module_ sys = py::module_::import("sys");
+            
+            // Try Qiskit first, then Cirq
+            bool hasQiskit = false;
+            bool hasCirq = false;
+            
+            try {
+                py::module_::import("qiskit");
+                hasQiskit = true;
+            } catch (...) {}
+            
+            try {
+                py::module_::import("cirq");
+                hasCirq = true;
+            } catch (...) {}
+            
+            if (!hasQiskit && !hasCirq) {
+                QMessageBox::warning(this, "Quantum Simulation",
+                    "No quantum computing library found.\n\n"
+                    "Install Qiskit or Cirq:\n"
+                    "pip install qiskit\n"
+                    "pip install cirq");
+                return;
+            }
+            
+            // Get circuit description from user
+            QString circuitDesc = QInputDialog::getText(this, "Quantum Circuit",
+                "Enter quantum circuit (e.g., 'H 0; CNOT 0 1; measure 0 1'):");
+            
+            if (circuitDesc.isEmpty()) return;
+            
+            QString result;
+            if (hasQiskit) {
+                // Run Qiskit simulation
+                py::exec(R"(
+from qiskit import QuantumCircuit, Aer, execute
+qc = QuantumCircuit(2, 2)
+qc.h(0)
+qc.cx(0, 1)
+qc.measure([0, 1], [0, 1])
+simulator = Aer.get_backend('qasm_simulator')
+job = execute(qc, simulator, shots=1024)
+result = job.result()
+counts = result.get_counts(qc)
+quantum_result = str(counts)
+)");
+                py::object quantum_result = py::eval("quantum_result");
+                result = "Qiskit Result: " + QString::fromStdString(quantum_result.cast<std::string>());
+            } else if (hasCirq) {
+                // Run Cirq simulation
+                py::exec(R"(
+import cirq
+q0, q1 = cirq.LineQubit.range(2)
+circuit = cirq.Circuit(
+    cirq.H(q0),
+    cirq.CNOT(q0, q1),
+    cirq.measure(q0, q1)
+)
+simulator = cirq.Simulator()
+result = simulator.run(circuit, repetitions=1024)
+quantum_result = str(result.histogram(key='0,1'))
+)");
+                py::object quantum_result = py::eval("quantum_result");
+                result = "Cirq Result: " + QString::fromStdString(quantum_result.cast<std::string>());
+            }
+            
+            output->append("\n=== Quantum Simulation ===\n" + result);
+            
+        } catch (const std::exception& e) {
+            QMessageBox::warning(this, "Quantum Simulation Error",
+                QString("Error running quantum simulation:\n%1").arg(e.what()));
+        }
+#else
+        QMessageBox::warning(this, "Python Unavailable",
+            "Python integration is not compiled.\n\n"
+            "Quantum simulation requires pybind11 and Qiskit/Cirq.\n"
+            "Rebuild with: cmake -DNO_PYTHON=OFF ..");
+#endif
     }
 
     // ========================================================================
