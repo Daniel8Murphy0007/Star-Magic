@@ -112,6 +112,49 @@ except ImportError:
     PHASE7_AVAILABLE = False
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# GROK-EXTRACTED PHYSICS MODULES (Feb 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# MUGE_equations_module - Master Universal Gravity Equations for 6 systems
+try:
+    from MUGE_equations_module import (
+        MUGE_CALCULATOR, MUGESystem, MUGEResult,
+        HYDROGEN_MUGE, RINGS_MUGE, MAGNETAR_MUGE,
+        GLOBULAR_MUGE, SGRA_MUGE, SOLAR_MUGE,
+        MUGE_CALCULATORS
+    )
+    MUGE_AVAILABLE = True
+except ImportError:
+    MUGE_AVAILABLE = False
+    MUGE_CALCULATORS = {}
+
+# updated_uqff_2025_module - Ising anyons, Polaritons, UTe2 superconductivity
+try:
+    from updated_uqff_2025_module import (
+        ISING_ANYON, POLARITON_QFT, UTE2_SC, UQFF_2025,
+        UQFF_2025_CALCULATORS,
+        IsingAnyonCalculator, PolaritonQFTCalculator,
+        UTe2SuperconductivityCalculator, UQFF2025Calculator
+    )
+    UQFF_2025_AVAILABLE = True
+except ImportError:
+    UQFF_2025_AVAILABLE = False
+    UQFF_2025_CALCULATORS = {}
+
+# cosmic_domains_calculators - ISM, BBN, Stellar Evolution, LQC, etc.
+try:
+    from cosmic_domains_calculators import (
+        ISM_PHASE, STELLAR_EVOLUTION, BBN, COSMIC_VOID,
+        REIONIZATION, AGN_OUTFLOW, BINARY_PULSAR, COSMIC_RAY,
+        IGM, DARK_ENERGY, BH_THERMODYNAMICS, LQC,
+        COSMIC_DOMAIN_CALCULATORS
+    )
+    COSMIC_DOMAINS_AVAILABLE = True
+except ImportError:
+    COSMIC_DOMAINS_AVAILABLE = False
+    COSMIC_DOMAIN_CALCULATORS = {}
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # UQFF C++ BINDINGS (Phase 2 Integration - Feb 2026)
 # ═══════════════════════════════════════════════════════════════════════════════
 
