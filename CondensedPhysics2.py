@@ -32955,6 +32955,1044 @@ ORB_ANALYSIS_59_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB ANALYSIS 60: Star Magic UQFF Core Framework
+# Source: Grok ScientificCalculatorDialog - Complete UQFF Integration
+# https://x.com/i/grok/share/b3fef8452b534820a70d5fd9eb983b6d
+# 19 Calculator classes: Universal Inertia, Universal Time, Unified Field,
+# Aether Coupling, Background Metric, Buoyancy Coupling/Modulation,
+# Final Parsec, Merger Timescale, Metal Retention, CGM Baryon/Gradient,
+# Zeta Pi Wave, Schwarzschild Proton, Higgs Stability, Ug Coupling,
+# Feedback Factor, Galactic/String Distance
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# UQFF Core Parameters from Star Magic framework
+ORB_ANALYSIS_60_PARAMS = {
+    # Vacuum densities (J/m³)
+    'RHO_VAC_SCM': 1e-12,           # [SCm] vacuum energy density
+    'RHO_VAC_UA': 1e-18,            # [UA] vacuum energy density
+    'RHO_VAC_A': 1e-15,             # Aether vacuum energy density
+    
+    # Coupling constants (dimensionless)
+    'ETA_AETHER': 1e-22,            # Aether coupling constant η
+    'BETA_BUOYANCY': 0.6,           # Buoyancy coupling β_i (uniform)
+    'EPSILON_SW': 0.001,            # Solar wind modulation ε_sw
+    'KAPPA_HIGGS': 0.01,            # Higgs-[SCm] coupling κ_H
+    
+    # Gravity coupling constants k_i
+    'K_UG1': 1.5,                   # k₁ for Ug1
+    'K_UG2': 1.2,                   # k₂ for Ug2
+    'K_UG3': 1.8,                   # k₃ for Ug3
+    'K_UG4': 1.0,                   # k₄ for Ug4
+    
+    # Distance scales
+    'R_STRING_100AU': 1.496e13,     # String distance ~100 AU (m)
+    'D_GALACTIC_27KLY': 2.55e20,    # Galactic center distance ~27kly (m)
+    'V_PARSEC_CUBED': (3.26 * 9.461e15)**3,  # 1 pc³ in m³
+    
+    # Astrophysical constants
+    'F_IGNITION': 0.01,             # Final parsec ignition fraction
+    'GW_POWER_SMBH': 1e40,          # Approx GW power for SMBH binary (W)
+    'HUBBLE_TIME_SEC': 4.35e17,     # Hubble time in seconds
+    
+    # Metal retention (Sanchez et al. approximations)
+    'FZ_BASE': 0.89,                # Base metal retention fraction
+    'FZ_COEFF': 0.04,               # δM_BH coefficient
+    'FCGM_BASE': 0.73,              # Base CGM baryon fraction (star-forming)
+    'FCGM_DELTA_COEFF': 0.11,       # CGM flattening coefficient
+    
+    # Quantum/wave parameters
+    'PI_FREQ_MAX': 3.14e9,          # Max π-frequency (Hz)
+    'NEGATIVE_TIME_EXAMPLE': -2512, # Example negative time tn (s)
+    'BIO_QUANTUM_FREQ': 400,        # Bio-quantum resonance (Hz)
+    
+    # Energy scales
+    'E_HIGGS_STABILITY': 2e-8,      # Higgs stability energy ~2×10⁻⁸ J
+    'T_STRESS_ENERGY': 1.123e7,     # Stress-energy tensor T_s (J/m³)
+    
+    # Feedback factors
+    'F_FEEDBACK_1DEX': 0.1,         # 10% boost per 1 dex ΔM_BH
+    
+    # Schwarzschild proton
+    'PROTON_SCHWARZSCHILD_VOL': 1e-39,  # ~10⁻³⁹ cm³
+}
+
+
+class UniversalInertiaOrb60Calculator:
+    """
+    Universal Inertia operator U_i from UQFF framework.
+    
+    Calculates the inertial operator that roots matter in [UA] via vacuum 
+    densities and Caduceus coil twist dynamics.
+    
+    Equation:
+        U_i = λ_i × (ρ_vac,[SCm] / ρ_vac,[UA]) × ω_s(t) × cos(π × t_n) × (1 + f_TRZ)
+    
+    Where:
+        λ_i = inertia coupling constant (dimensionless)
+        ρ_vac,[SCm] = vacuum density in [SCm] field (J/m³)
+        ρ_vac,[UA] = vacuum density in [UA] field (J/m³)
+        ω_s(t) = angular string rotation frequency (rad/s)
+        t_n = negative time parameter (s)
+        f_TRZ = time-reversal zone factor (dimensionless)
+    """
+    
+    def compute(self, lambda_i: float = 1.0, rho_scm: float = None,
+                rho_ua: float = None, omega_s: float = 1.0,
+                t_n: float = 0.0, f_trz: float = 0.0) -> dict:
+        """
+        Compute universal inertia operator U_i.
+        
+        Args:
+            lambda_i: Inertia coupling constant (dimensionless), default 1.0
+            rho_scm: [SCm] vacuum density (J/m³), default from params
+            rho_ua: [UA] vacuum density (J/m³), default from params
+            omega_s: Angular string rotation frequency (rad/s)
+            t_n: Negative time parameter (s)
+            f_trz: Time-reversal zone factor (dimensionless)
+            
+        Returns:
+            dict with U_i value, component breakdown, and equation
+        """
+        import math
+        
+        # Apply defaults from parameters
+        if rho_scm is None:
+            rho_scm = ORB_ANALYSIS_60_PARAMS['RHO_VAC_SCM']
+        if rho_ua is None:
+            rho_ua = ORB_ANALYSIS_60_PARAMS['RHO_VAC_UA']
+        
+        # Vacuum density ratio
+        rho_ratio = rho_scm / rho_ua
+        
+        # Cosine of π × t_n (π-cycle modulation)
+        cos_term = math.cos(math.pi * t_n)
+        
+        # TRZ enhancement factor
+        trz_factor = 1.0 + f_trz
+        
+        # Universal inertia operator
+        U_i = lambda_i * rho_ratio * omega_s * cos_term * trz_factor
+        
+        return {
+            'U_i': U_i,
+            'lambda_i': lambda_i,
+            'rho_ratio': rho_ratio,
+            'rho_scm': rho_scm,
+            'rho_ua': rho_ua,
+            'omega_s': omega_s,
+            't_n': t_n,
+            'cos_pi_tn': cos_term,
+            'f_trz': f_trz,
+            'trz_factor': trz_factor,
+            'equation': f'U_i = {lambda_i} × ({rho_scm:.2e}/{rho_ua:.2e}) × {omega_s} × cos(π×{t_n}) × (1+{f_trz})',
+            'result_equation': f'U_i = {U_i:.6e} (dimensionless)'
+        }
+
+
+class UniversalTimeCalculator:
+    """
+    Universal Time U_t from UQFF framework.
+    
+    Calculates the universal time factor incorporating vacuum density ratios,
+    negative time derivations, and time-reversal zone dynamics.
+    
+    Equation:
+        U_t = λ_t × (ρ_vac,[SCm] / ρ_vac,[UA]) × ω_s(t) × cos(π × t_n) × (1 + f_TRZ)
+    
+    Same structure as U_i but with time-specific coupling λ_t.
+    """
+    
+    def compute(self, lambda_t: float = 1.0, rho_scm: float = None,
+                rho_ua: float = None, omega_s: float = 1.0,
+                t_n: float = None, f_trz: float = 0.0) -> dict:
+        """
+        Compute universal time factor U_t.
+        
+        Args:
+            lambda_t: Time coupling constant (dimensionless)
+            rho_scm: [SCm] vacuum density (J/m³)
+            rho_ua: [UA] vacuum density (J/m³)
+            omega_s: Angular string rotation frequency (rad/s)
+            t_n: Negative time parameter (s), default from params
+            f_trz: Time-reversal zone factor (dimensionless)
+            
+        Returns:
+            dict with U_t value, component breakdown, and equation
+        """
+        import math
+        
+        if rho_scm is None:
+            rho_scm = ORB_ANALYSIS_60_PARAMS['RHO_VAC_SCM']
+        if rho_ua is None:
+            rho_ua = ORB_ANALYSIS_60_PARAMS['RHO_VAC_UA']
+        if t_n is None:
+            t_n = ORB_ANALYSIS_60_PARAMS['NEGATIVE_TIME_EXAMPLE']
+        
+        rho_ratio = rho_scm / rho_ua
+        cos_term = math.cos(math.pi * t_n)
+        trz_factor = 1.0 + f_trz
+        
+        U_t = lambda_t * rho_ratio * omega_s * cos_term * trz_factor
+        
+        return {
+            'U_t': U_t,
+            'lambda_t': lambda_t,
+            'rho_ratio': rho_ratio,
+            't_n': t_n,
+            'cos_pi_tn': cos_term,
+            'f_trz': f_trz,
+            'equation': f'U_t = λ_t × (ρ[SCm]/ρ[UA]) × ω_s × cos(π·t_n) × (1+f_TRZ)',
+            'result_equation': f'U_t = {U_t:.6e} (dimensionless time factor)'
+        }
+
+
+class UnifiedFieldCalculator:
+    """
+    Unified Field F_U from UQFF framework.
+    
+    Calculates the complete unified field equation integrating all UQFF components:
+    Universal Gravity (Ug1-4), Universal Buoyancy (Ub), Universal Magnetism (Um),
+    Universal Inertia (Ui), and Aether metric (A_μν).
+    
+    Equation:
+        F_U = Σᵢ[k_i·U_gi - β_i·U_bi] + Σⱼ[μⱼ/rⱼ·(1-e^(-γt·cos(πtₙ)))·φⱼ] 
+              + A_μν - Σᵢ[λᵢ·Uᵢ·E_react]
+    
+    This is the master equation unifying all UQFF field components into a 
+    single energy density (J/m³).
+    """
+    
+    def compute(self, Ug: list = None, k: list = None, beta: list = None,
+                Um_sum: float = 0.0, A_munu: float = 0.0,
+                Ui_sum: float = 0.0, E_react: float = 1.0) -> dict:
+        """
+        Compute unified field F_U.
+        
+        Args:
+            Ug: List of Universal Gravity components [Ug1, Ug2, Ug3, Ug4] (J/m³)
+            k: List of gravity coupling constants [k1, k2, k3, k4]
+            beta: List of buoyancy coupling constants [β1, β2, β3, β4]
+            Um_sum: Summed Universal Magnetism contribution (J/m³)
+            A_munu: Aether metric tensor contribution (dimensionless)
+            Ui_sum: Summed Universal Inertia contribution (dimensionless)
+            E_react: Reaction energy factor (J)
+            
+        Returns:
+            dict with F_U value, component breakdown, and equation
+        """
+        # Default values
+        if Ug is None:
+            Ug = [1e-20, 1e-21, 1e-22, 1e-23]  # Example Ug1-4 values
+        if k is None:
+            k = [ORB_ANALYSIS_60_PARAMS['K_UG1'],
+                 ORB_ANALYSIS_60_PARAMS['K_UG2'],
+                 ORB_ANALYSIS_60_PARAMS['K_UG3'],
+                 ORB_ANALYSIS_60_PARAMS['K_UG4']]
+        if beta is None:
+            beta = [ORB_ANALYSIS_60_PARAMS['BETA_BUOYANCY']] * 4
+        
+        # Sum over gravity-buoyancy terms: k_i·Ug_i - β_i·Ug_i (simplified: buoyancy opposes gravity)
+        gravity_sum = 0.0
+        for i in range(min(len(Ug), len(k), len(beta))):
+            gravity_sum += k[i] * Ug[i] - beta[i] * Ug[i]
+        
+        # Unified field
+        F_U = gravity_sum + Um_sum + A_munu - Ui_sum * E_react
+        
+        return {
+            'F_U': F_U,
+            'F_U_unit': 'J/m³',
+            'gravity_sum': gravity_sum,
+            'Um_contribution': Um_sum,
+            'A_munu_contribution': A_munu,
+            'Ui_contribution': Ui_sum * E_react,
+            'k_values': k,
+            'beta_values': beta,
+            'Ug_values': Ug,
+            'equation': 'F_U = Σ[k_i·U_gi - β_i·U_bi] + Σ[μⱼ/rⱼ·...] + A_μν - Σ[λᵢ·Uᵢ·E_react]',
+            'result_equation': f'F_U = {F_U:.6e} J/m³'
+        }
+
+
+class AetherCouplingCalculator:
+    """
+    Aether Coupling Constant η from UQFF framework.
+    
+    The Aether coupling constant η scales stress-energy perturbations in the
+    Aether metric tensor A_μν.
+    
+    Equation:
+        A_μν = g_μν + η × T_s^(μν)
+    
+    Where:
+        g_μν = background Minkowski metric diag[1, -1, -1, -1]
+        η = 10⁻²² (dimensionless coupling)
+        T_s^(μν) = stress-energy tensor (~1.123×10⁷ J/m³)
+    """
+    
+    def compute(self, T_stress: float = None, eta: float = None) -> dict:
+        """
+        Compute Aether metric perturbation.
+        
+        Args:
+            T_stress: Stress-energy tensor magnitude (J/m³)
+            eta: Aether coupling constant (dimensionless)
+            
+        Returns:
+            dict with η, A_μν perturbation, and equation
+        """
+        if eta is None:
+            eta = ORB_ANALYSIS_60_PARAMS['ETA_AETHER']
+        if T_stress is None:
+            T_stress = ORB_ANALYSIS_60_PARAMS['T_STRESS_ENERGY']
+        
+        # Perturbation term
+        perturbation = eta * T_stress
+        
+        # Background metric (Minkowski)
+        g_munu = [1, -1, -1, -1]  # diag components
+        
+        return {
+            'eta': eta,
+            'T_stress': T_stress,
+            'perturbation': perturbation,
+            'g_munu': g_munu,
+            'A_munu_00': g_munu[0] + perturbation,
+            'A_munu_11': g_munu[1] + perturbation,
+            'A_munu_22': g_munu[2] + perturbation,
+            'A_munu_33': g_munu[3] + perturbation,
+            'equation': 'A_μν = g_μν + η × T_s^(μν)',
+            'result_equation': f'η × T_s = {eta:.2e} × {T_stress:.3e} = {perturbation:.6e}'
+        }
+
+
+class BackgroundMetricCalculator:
+    """
+    Background Aether Metric g_μν from UQFF framework.
+    
+    The background metric for flat Minkowski spacetime, serving as the 
+    foundation for UQFF Aether perturbations.
+    
+    Metric:
+        g_μν = diag[1, -1, -1, -1] (signature +---)
+    
+    This is the zero-perturbation limit of the Aether metric A_μν.
+    """
+    
+    def compute(self, signature: str = '+---') -> dict:
+        """
+        Compute background Minkowski metric.
+        
+        Args:
+            signature: Metric signature convention ('+---' or '-+++')
+            
+        Returns:
+            dict with metric components and properties
+        """
+        if signature == '+---':
+            g_00, g_11, g_22, g_33 = 1, -1, -1, -1
+        elif signature == '-+++':
+            g_00, g_11, g_22, g_33 = -1, 1, 1, 1
+        else:
+            g_00, g_11, g_22, g_33 = 1, -1, -1, -1  # default
+        
+        # Determinant of Minkowski metric
+        det_g = g_00 * g_11 * g_22 * g_33  # = -1
+        
+        return {
+            'g_00': g_00,
+            'g_11': g_11,
+            'g_22': g_22,
+            'g_33': g_33,
+            'signature': signature,
+            'determinant': det_g,
+            'is_minkowski': True,
+            'curvature': 0.0,  # Flat spacetime
+            'matrix': [[g_00, 0, 0, 0], [0, g_11, 0, 0], [0, 0, g_22, 0], [0, 0, 0, g_33]],
+            'equation': 'g_μν = diag[1, -1, -1, -1]'
+        }
+
+
+class BuoyancyCouplingCalculator:
+    """
+    Buoyancy Coupling Constant β_i from UQFF framework.
+    
+    The buoyancy coupling β_i scales the opposition of Universal Buoyancy
+    to the gravity fields Ug/Ub/Um/Ui and Aether A.
+    
+    Value:
+        β_i = 0.6 (uniform across all i components)
+    
+    Used in:
+        U_bi = -β_i × U_gi × Ω_g × (M_bh/d_g) × (1 + ε_sw × ρ_vac,sw) × U_UA × cos(π × t_n)
+    """
+    
+    def compute(self, i: int = None) -> dict:
+        """
+        Return the buoyancy coupling constant.
+        
+        Args:
+            i: Component index (1-4), all have same value
+            
+        Returns:
+            dict with β_i value and properties
+        """
+        beta = ORB_ANALYSIS_60_PARAMS['BETA_BUOYANCY']
+        
+        return {
+            'beta_i': beta,
+            'beta_1': beta,
+            'beta_2': beta,
+            'beta_3': beta,
+            'beta_4': beta,
+            'is_uniform': True,
+            'unit': 'dimensionless',
+            'description': 'Scales buoyancy opposition to gravity fields',
+            'equation': 'β_i = 0.6 (uniform for all i)'
+        }
+
+
+class BuoyancyModulationCalculator:
+    """
+    Buoyancy Modulation by Solar Wind Density from UQFF framework.
+    
+    Calculates the buoyancy enhancement factor due to solar wind vacuum 
+    density variations at heliospheric scales (~100 AU).
+    
+    Equation:
+        Modulation = (1 + ε_sw × ρ_vac,sw)
+    
+    Where:
+        ε_sw = 0.001 (solar wind coupling, dimensionless)
+        ρ_vac,sw = solar wind vacuum density (~8×10⁻²¹ J/m³ at 100 AU)
+    """
+    
+    def compute(self, epsilon_sw: float = None, rho_sw: float = 8e-21) -> dict:
+        """
+        Compute buoyancy modulation factor.
+        
+        Args:
+            epsilon_sw: Solar wind coupling constant (dimensionless)
+            rho_sw: Solar wind vacuum density (J/m³)
+            
+        Returns:
+            dict with modulation factor and components
+        """
+        if epsilon_sw is None:
+            epsilon_sw = ORB_ANALYSIS_60_PARAMS['EPSILON_SW']
+        
+        modulation = 1.0 + epsilon_sw * rho_sw
+        enhancement_percent = (modulation - 1.0) * 100
+        
+        return {
+            'modulation_factor': modulation,
+            'epsilon_sw': epsilon_sw,
+            'rho_sw': rho_sw,
+            'enhancement_percent': enhancement_percent,
+            'equation': f'Mod = (1 + {epsilon_sw} × {rho_sw:.2e}) = {modulation:.10f}',
+            'description': 'Buoyancy enhancement from solar wind density'
+        }
+
+
+class FinalParsecCalculator:
+    """
+    Final Parsec Problem Energy Extraction from UQFF framework.
+    
+    Calculates the energy available for extraction via [SCm]-[UA] reactions
+    to resolve the final parsec problem in SMBH binary mergers.
+    
+    Equation:
+        E_extract = ρ_vac,[SCm] × V_binary × f_ign
+    
+    Where:
+        ρ_vac,[SCm] = [SCm] vacuum density (~10⁻²⁶ J/m³ in binary region)
+        V_binary = binary region volume ~(1 pc)³
+        f_ign = ignition fraction (~0.01)
+    """
+    
+    def compute(self, rho_scm: float = 1e-26, V_binary: float = None,
+                f_ign: float = None) -> dict:
+        """
+        Compute final parsec energy extraction.
+        
+        Args:
+            rho_scm: [SCm] vacuum density in binary region (J/m³)
+            V_binary: Binary region volume (m³), default 1 pc³
+            f_ign: Ignition fraction, default 0.01
+            
+        Returns:
+            dict with E_extract and merger implications
+        """
+        if V_binary is None:
+            V_binary = ORB_ANALYSIS_60_PARAMS['V_PARSEC_CUBED']
+        if f_ign is None:
+            f_ign = ORB_ANALYSIS_60_PARAMS['F_IGNITION']
+        
+        E_extract = rho_scm * V_binary * f_ign
+        
+        # Compare to typical GW energy
+        GW_power = ORB_ANALYSIS_60_PARAMS['GW_POWER_SMBH']
+        
+        return {
+            'E_extract': E_extract,
+            'E_extract_unit': 'J',
+            'rho_scm': rho_scm,
+            'V_binary': V_binary,
+            'V_binary_pc3': V_binary / ORB_ANALYSIS_60_PARAMS['V_PARSEC_CUBED'],
+            'f_ign': f_ign,
+            'GW_power_comparison': GW_power,
+            'equation': 'E_extract = ρ_vac,[SCm] × V_binary × f_ign',
+            'result_equation': f'E_extract = {E_extract:.3e} J'
+        }
+
+
+class MergerTimescaleCalculator:
+    """
+    SMBH Binary Merger Timescale from UQFF framework.
+    
+    Calculates the merger timescale for SMBH binaries using UQFF energy
+    extraction vs GW radiation power.
+    
+    Equation:
+        t_merge = E_extract / P_GW
+    
+    If t_merge > t_Hubble, the binary is "stalled" without [SCm]-[UA] assistance.
+    """
+    
+    def compute(self, E_extract: float = None, GW_power: float = None) -> dict:
+        """
+        Compute merger timescale.
+        
+        Args:
+            E_extract: Energy available for extraction (J)
+            GW_power: Gravitational wave power (W)
+            
+        Returns:
+            dict with timescale in various units, stall assessment
+        """
+        if E_extract is None:
+            # Use FinalParsecCalculator default
+            E_extract = 1e-26 * ORB_ANALYSIS_60_PARAMS['V_PARSEC_CUBED'] * 0.01
+        if GW_power is None:
+            GW_power = ORB_ANALYSIS_60_PARAMS['GW_POWER_SMBH']
+        
+        # Timescale in seconds
+        t_merge_sec = E_extract / GW_power
+        
+        # Convert to years and Gyr
+        t_merge_yr = t_merge_sec / 3.156e7
+        t_merge_Gyr = t_merge_sec / 3.156e16
+        
+        # Check against Hubble time
+        hubble_time = ORB_ANALYSIS_60_PARAMS['HUBBLE_TIME_SEC']
+        is_stalled = t_merge_sec > hubble_time
+        
+        return {
+            't_merge_sec': t_merge_sec,
+            't_merge_yr': t_merge_yr,
+            't_merge_Gyr': t_merge_Gyr,
+            'E_extract': E_extract,
+            'GW_power': GW_power,
+            'hubble_time_sec': hubble_time,
+            'is_stalled': is_stalled,
+            'status': 'STALLED' if is_stalled else 'MERGING',
+            'equation': 't_merge = E_extract / P_GW',
+            'result_equation': f't_merge = {t_merge_Gyr:.3f} Gyr ({'STALLED' if is_stalled else 'OK'})'
+        }
+
+
+class MetalRetentionCalculator:
+    """
+    CGM Metal Retention Fraction f_Z from UQFF framework.
+    
+    Calculates the fraction of metals retained in the circumgalactic medium
+    based on SMBH mass deviation from M-σ relation (Sanchez et al. model).
+    
+    Equation:
+        f_Z = 0.89 - 0.04 × ΔM_BH
+    
+    Where:
+        ΔM_BH = deviation from M-σ relation (in dex)
+        Over-massive SMBHs (ΔM_BH > 0) → stronger feedback → flatter gradients
+    """
+    
+    def compute(self, delta_MBH: float = 0.0) -> dict:
+        """
+        Compute metal retention fraction.
+        
+        Args:
+            delta_MBH: SMBH mass deviation from M-σ in dex
+            
+        Returns:
+            dict with f_Z and implications
+        """
+        fZ_base = ORB_ANALYSIS_60_PARAMS['FZ_BASE']
+        fZ_coeff = ORB_ANALYSIS_60_PARAMS['FZ_COEFF']
+        
+        f_Z = fZ_base - fZ_coeff * delta_MBH
+        
+        # Interpretation
+        if delta_MBH > 0:
+            interpretation = 'Over-massive SMBH: stronger AGN feedback, flatter gradient'
+        elif delta_MBH < 0:
+            interpretation = 'Under-massive SMBH: weaker feedback, steeper gradient'
+        else:
+            interpretation = 'M-σ relation: nominal feedback level'
+        
+        return {
+            'f_Z': f_Z,
+            'delta_MBH': delta_MBH,
+            'fZ_base': fZ_base,
+            'fZ_coeff': fZ_coeff,
+            'interpretation': interpretation,
+            'equation': f'f_Z = {fZ_base} - {fZ_coeff} × ΔM_BH',
+            'result_equation': f'f_Z = {f_Z:.4f} ({f_Z*100:.1f}% metals retained)'
+        }
+
+
+class CGMBaryonCalculator:
+    """
+    CGM Baryon Fraction f_CGM from UQFF framework.
+    
+    Calculates the baryon fraction in the circumgalactic medium based on
+    SMBH feedback strength (Sanchez et al. model).
+    
+    Equation:
+        f_CGM = 0.73 - 0.11 × ΔM_BH
+    
+    Star-forming galaxies have f_CGM ≈ 0.73 at M-σ, decreasing with
+    over-massive SMBHs due to gas expulsion.
+    """
+    
+    def compute(self, delta_MBH: float = 0.0) -> dict:
+        """
+        Compute CGM baryon fraction.
+        
+        Args:
+            delta_MBH: SMBH mass deviation from M-σ in dex
+            
+        Returns:
+            dict with f_CGM and implications
+        """
+        fCGM_base = ORB_ANALYSIS_60_PARAMS['FCGM_BASE']
+        fCGM_coeff = ORB_ANALYSIS_60_PARAMS['FCGM_DELTA_COEFF']
+        
+        f_CGM = fCGM_base - fCGM_coeff * delta_MBH
+        
+        return {
+            'f_CGM': f_CGM,
+            'delta_MBH': delta_MBH,
+            'fCGM_base': fCGM_base,
+            'fCGM_coeff': fCGM_coeff,
+            'equation': f'f_CGM = {fCGM_base} - {fCGM_coeff} × ΔM_BH',
+            'result_equation': f'f_CGM = {f_CGM:.4f} ({f_CGM*100:.1f}% baryons in CGM)'
+        }
+
+
+class CGMMetalGradientCalculator:
+    """
+    CGM Metallicity Gradient from UQFF framework.
+    
+    Calculates the radial metallicity gradient in the CGM as influenced
+    by SMBH feedback and AGN-driven metal redistribution.
+    
+    Equation:
+        dZ/dr = -α × r + β × ΔM_BH
+    
+    Where:
+        α = gradient coefficient (~0.01 dex/kpc)
+        β = flattening factor (~0.3)
+        ΔM_BH = SMBH mass deviation (dex)
+        r = galactocentric radius (kpc)
+    """
+    
+    def compute(self, r_kpc: float = 10.0, delta_MBH: float = 0.0,
+                alpha: float = 0.01, beta: float = 0.3) -> dict:
+        """
+        Compute metallicity at given radius.
+        
+        Args:
+            r_kpc: Galactocentric radius (kpc)
+            delta_MBH: SMBH mass deviation (dex)
+            alpha: Gradient coefficient (dex/kpc)
+            beta: Flattening factor (dimensionless)
+            
+        Returns:
+            dict with metallicity gradient and value at r
+        """
+        # Metallicity relative to solar at radius r
+        Z = -alpha * r_kpc + beta * delta_MBH  # [Z/H] in dex
+        
+        # Gradient at this radius (derivative)
+        dZ_dr = -alpha  # constant
+        
+        return {
+            'Z_at_r': Z,
+            'r_kpc': r_kpc,
+            'dZ_dr': dZ_dr,
+            'dZ_dr_unit': 'dex/kpc',
+            'delta_MBH': delta_MBH,
+            'alpha': alpha,
+            'beta': beta,
+            'equation': 'Z(r) = -α×r + β×ΔM_BH',
+            'result_equation': f'Z({r_kpc} kpc) = {Z:.3f} dex'
+        }
+
+
+class ZetaPiWaveCalculator:
+    """
+    Zeta-Pi Wave Function from UQFF framework.
+    
+    Calculates the wave function involving Riemann zeta function at π⁶,
+    encoding bio-quantum resonance frequencies for vacuum interactions.
+    
+    Equation:
+        Ψ = ζ(π⁶) × cos(2π × f × t)
+    
+    Where:
+        ζ(π⁶) ≈ 1.000018... (Riemann zeta near 1)
+        f = π-frequency (up to 3.14×10⁹ Hz)
+    """
+    
+    def compute(self, f: float = None, t: float = 0.0) -> dict:
+        """
+        Compute zeta-pi wave value.
+        
+        Args:
+            f: Frequency (Hz), default max π-frequency
+            t: Time (s)
+            
+        Returns:
+            dict with wave function value and components
+        """
+        import math
+        
+        if f is None:
+            f = ORB_ANALYSIS_60_PARAMS['PI_FREQ_MAX']
+        
+        # Approximate ζ(π⁶) ≈ ζ(961.39...) ≈ 1 + 1/2^961 + ... ≈ 1.0
+        # For practical purposes, ζ(x) → 1 as x → ∞
+        pi_6 = math.pi ** 6  # ≈ 961.39
+        zeta_pi6 = 1.0 + 2**(-pi_6)  # Excellent approximation for large arguments
+        
+        # Wave function
+        wave = zeta_pi6 * math.cos(2 * math.pi * f * t)
+        
+        return {
+            'wave': wave,
+            'zeta_pi6': zeta_pi6,
+            'pi_6': pi_6,
+            'frequency': f,
+            'time': t,
+            'phase': 2 * math.pi * f * t,
+            'equation': 'Ψ = ζ(π⁶) × cos(2πft)',
+            'result_equation': f'Ψ(t={t}) = {wave:.10f}'
+        }
+
+
+class SchwarzschildProtonCalculator:
+    """
+    Schwarzschild Proton Properties from UQFF framework.
+    
+    Calculates properties of the Schwarzschild proton model where the 
+    proton is treated as a mini black hole with Schwarzschild radius effects.
+    
+    Properties:
+        Volume: ~10⁻³⁹ cm³ (classical proton)
+        Force: ~1.75×10⁻⁴⁷ dynes (gravitational at proton scale)
+        Velocity: ~2.91×10⁻²² cm/s (gravitational orbital)
+    """
+    
+    def compute(self, proton_radius_fm: float = 0.84) -> dict:
+        """
+        Compute Schwarzschild proton properties.
+        
+        Args:
+            proton_radius_fm: Proton charge radius (fm), default 0.84 fm
+            
+        Returns:
+            dict with proton properties
+        """
+        import math
+        
+        # Convert to cm
+        r_cm = proton_radius_fm * 1e-13
+        
+        # Volume
+        V_cm3 = (4/3) * math.pi * r_cm**3
+        
+        # Proton mass
+        m_p = 1.6726e-24  # g
+        
+        # Gravitational constant in CGS
+        G_cgs = 6.674e-8  # cm³/(g·s²)
+        
+        # Schwarzschild radius
+        c_cgs = 2.998e10  # cm/s
+        r_s = 2 * G_cgs * m_p / c_cgs**2
+        
+        # Gravitational force at proton surface (self-gravity)
+        F_grav = G_cgs * m_p**2 / r_cm**2
+        
+        # Orbital velocity at proton radius
+        v_orb = math.sqrt(G_cgs * m_p / r_cm)
+        
+        return {
+            'proton_radius_fm': proton_radius_fm,
+            'proton_radius_cm': r_cm,
+            'volume_cm3': V_cm3,
+            'proton_mass_g': m_p,
+            'schwarzschild_radius_cm': r_s,
+            'gravitational_force_dyn': F_grav,
+            'orbital_velocity_cm_s': v_orb,
+            'is_black_hole': r_cm < r_s,  # Classical proton is NOT a black hole
+            'equation': 'V = (4/3)πr³, F = Gm²/r², v = √(Gm/r)'
+        }
+
+
+class HiggsStabilityCalculator:
+    """
+    Higgs-[SCm] Stability Energy from UQFF framework.
+    
+    Calculates the stability energy contribution from Higgs field coupling
+    to the [SCm] vacuum field, stabilizing protons via exotic mode (level 18).
+    
+    Equation:
+        E_stab = κ_H × E_H
+    
+    Where:
+        κ_H = Higgs-[SCm] coupling (~0.01)
+        E_H = Higgs field energy (~2×10⁻⁸ J)
+    """
+    
+    def compute(self, kappa_H: float = None, E_H: float = None) -> dict:
+        """
+        Compute Higgs stability energy.
+        
+        Args:
+            kappa_H: Higgs-[SCm] coupling constant
+            E_H: Higgs field energy (J)
+            
+        Returns:
+            dict with E_stab and implications
+        """
+        if kappa_H is None:
+            kappa_H = ORB_ANALYSIS_60_PARAMS['KAPPA_HIGGS']
+        if E_H is None:
+            E_H = ORB_ANALYSIS_60_PARAMS['E_HIGGS_STABILITY']
+        
+        E_stab = kappa_H * E_H
+        
+        return {
+            'E_stab': E_stab,
+            'E_stab_unit': 'J',
+            'kappa_H': kappa_H,
+            'E_H': E_H,
+            'quantum_level': 18,  # Exotic Higgs level
+            'stabilizes': 'proton via [SCm] coupling',
+            'equation': 'E_stab = κ_H × E_H',
+            'result_equation': f'E_stab = {E_stab:.3e} J'
+        }
+
+
+class UgCouplingCalculator:
+    """
+    Universal Gravity Coupling Constants k_i from UQFF framework.
+    
+    Returns the coupling constants that scale each Universal Gravity 
+    component (Ug1-Ug4) in the unified field equation.
+    
+    Values:
+        k₁ = 1.5 (magnetic dipole Ug1)
+        k₂ = 1.2 (charge-reactivity Ug2)
+        k₃ = 1.8 (string rotation Ug3)
+        k₄ = 1.0 (vacuum concentration Ug4)
+    """
+    
+    def compute(self) -> dict:
+        """
+        Return all Ug coupling constants.
+        
+        Returns:
+            dict with k1-k4 values and descriptions
+        """
+        k1 = ORB_ANALYSIS_60_PARAMS['K_UG1']
+        k2 = ORB_ANALYSIS_60_PARAMS['K_UG2']
+        k3 = ORB_ANALYSIS_60_PARAMS['K_UG3']
+        k4 = ORB_ANALYSIS_60_PARAMS['K_UG4']
+        
+        return {
+            'k_1': k1,
+            'k_2': k2,
+            'k_3': k3,
+            'k_4': k4,
+            'k_vector': [k1, k2, k3, k4],
+            'descriptions': {
+                'k_1': 'Magnetic dipole (Ug1)',
+                'k_2': 'Charge-reactivity (Ug2)',
+                'k_3': 'String rotation (Ug3)',
+                'k_4': 'Vacuum concentration (Ug4)'
+            },
+            'unit': 'dimensionless',
+            'sum': k1 + k2 + k3 + k4,
+            'average': (k1 + k2 + k3 + k4) / 4
+        }
+
+
+class FeedbackFactorCalculator:
+    """
+    AGN Feedback Factor from UQFF framework.
+    
+    Calculates the feedback amplification factor relating SMBH mass 
+    deviation to field strength enhancement.
+    
+    Equation:
+        f_factor = 1 + f × ΔM_BH
+    
+    Where:
+        f = 0.1 (10% boost per 1 dex ΔM_BH)
+        ΔM_BH = SMBH mass deviation from M-σ (dex)
+    """
+    
+    def compute(self, delta_MBH: float = 1.0, f: float = None) -> dict:
+        """
+        Compute feedback factor.
+        
+        Args:
+            delta_MBH: SMBH mass deviation (dex)
+            f: Feedback coefficient, default 0.1
+            
+        Returns:
+            dict with feedback factor and implications
+        """
+        if f is None:
+            f = ORB_ANALYSIS_60_PARAMS['F_FEEDBACK_1DEX']
+        
+        f_factor = 1.0 + f * delta_MBH
+        boost_percent = f * delta_MBH * 100
+        
+        return {
+            'f_factor': f_factor,
+            'delta_MBH': delta_MBH,
+            'f_coefficient': f,
+            'boost_percent': boost_percent,
+            'application': 'Scales Ug4 in unified field',
+            'equation': f'f_factor = 1 + {f} × ΔM_BH',
+            'result_equation': f'f_factor = {f_factor:.3f} ({boost_percent:.1f}% boost)'
+        }
+
+
+class GalacticDistanceCalculator:
+    """
+    Distance from Galactic Center d_g from UQFF framework.
+    
+    Returns the canonical distance from the Galactic Center used in
+    UQFF calculations for Milky Way applications.
+    
+    Value:
+        d_g ≈ 2.55×10²⁰ m ≈ 27,000 light-years ≈ 8.3 kpc
+    """
+    
+    def compute(self, d_g_m: float = None) -> dict:
+        """
+        Return galactic center distance in various units.
+        
+        Args:
+            d_g_m: Override distance (m), default ~27 kly
+            
+        Returns:
+            dict with distance in multiple units
+        """
+        if d_g_m is None:
+            d_g_m = ORB_ANALYSIS_60_PARAMS['D_GALACTIC_27KLY']
+        
+        # Conversions
+        ly_m = 9.461e15  # light-year in meters
+        pc_m = 3.086e16  # parsec in meters
+        kpc_m = 3.086e19  # kiloparsec in meters
+        
+        d_ly = d_g_m / ly_m
+        d_kly = d_ly / 1000
+        d_pc = d_g_m / pc_m
+        d_kpc = d_g_m / kpc_m
+        
+        return {
+            'd_g_m': d_g_m,
+            'd_g_ly': d_ly,
+            'd_g_kly': d_kly,
+            'd_g_pc': d_pc,
+            'd_g_kpc': d_kpc,
+            'description': 'Distance from Galactic Center (Sun position)',
+            'result_equation': f'd_g = {d_kpc:.2f} kpc = {d_kly:.1f} kly'
+        }
+
+
+class StringDistanceCalculator:
+    """
+    Distance Along Magnetic String r_j from UQFF framework.
+    
+    Returns the canonical string distance scale used in UQFF Um calculations,
+    corresponding to ~100 AU (heliospheric boundary).
+    
+    Value:
+        r_j ≈ 1.496×10¹³ m ≈ 100 AU
+    """
+    
+    def compute(self, r_j_m: float = None) -> dict:
+        """
+        Return string distance in various units.
+        
+        Args:
+            r_j_m: Override distance (m), default ~100 AU
+            
+        Returns:
+            dict with distance in multiple units
+        """
+        if r_j_m is None:
+            r_j_m = ORB_ANALYSIS_60_PARAMS['R_STRING_100AU']
+        
+        # Conversions
+        AU_m = 1.496e11  # Astronomical Unit in meters
+        ly_m = 9.461e15  # light-year in meters
+        
+        r_AU = r_j_m / AU_m
+        r_ly = r_j_m / ly_m
+        
+        return {
+            'r_j_m': r_j_m,
+            'r_j_AU': r_AU,
+            'r_j_ly': r_ly,
+            'quantum_level': 13,  # Heliosphere level
+            'description': 'Magnetic string distance scale (heliospheric boundary)',
+            'result_equation': f'r_j = {r_AU:.1f} AU = {r_j_m:.3e} m'
+        }
+
+
+# Registry for Orb Analysis 60
+ORB_ANALYSIS_60_CALCULATORS = {
+    'UniversalInertiaOrb60Calculator': UniversalInertiaOrb60Calculator(),
+    'UniversalTimeCalculator': UniversalTimeCalculator(),
+    'UnifiedFieldCalculator': UnifiedFieldCalculator(),
+    'AetherCouplingCalculator': AetherCouplingCalculator(),
+    'BackgroundMetricCalculator': BackgroundMetricCalculator(),
+    'BuoyancyCouplingCalculator': BuoyancyCouplingCalculator(),
+    'BuoyancyModulationCalculator': BuoyancyModulationCalculator(),
+    'FinalParsecCalculator': FinalParsecCalculator(),
+    'MergerTimescaleCalculator': MergerTimescaleCalculator(),
+    'MetalRetentionCalculator': MetalRetentionCalculator(),
+    'CGMBaryonCalculator': CGMBaryonCalculator(),
+    'CGMMetalGradientCalculator': CGMMetalGradientCalculator(),
+    'ZetaPiWaveCalculator': ZetaPiWaveCalculator(),
+    'SchwarzschildProtonCalculator': SchwarzschildProtonCalculator(),
+    'HiggsStabilityCalculator': HiggsStabilityCalculator(),
+    'UgCouplingCalculator': UgCouplingCalculator(),
+    'FeedbackFactorCalculator': FeedbackFactorCalculator(),
+    'GalacticDistanceCalculator': GalacticDistanceCalculator(),
+    'StringDistanceCalculator': StringDistanceCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -33013,6 +34051,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_57_CALCULATORS,
     **ORB_ANALYSIS_58_CALCULATORS,
     **ORB_ANALYSIS_59_CALCULATORS,
+    **ORB_ANALYSIS_60_CALCULATORS,
 }
 
 # Update class count
@@ -33669,6 +34708,29 @@ __all__ = [
     'NewtonRaphsonCalculator',
     'UnitConversionCalculator',
     'ORB_ANALYSIS_59_CALCULATORS',
+    
+    # Orb 60: Star Magic UQFF Core Framework (Grok ScientificCalculatorDialog Complete)
+    'ORB_ANALYSIS_60_PARAMS',
+    'UniversalInertiaOrb60Calculator',
+    'UniversalTimeCalculator',
+    'UnifiedFieldCalculator',
+    'AetherCouplingCalculator',
+    'BackgroundMetricCalculator',
+    'BuoyancyCouplingCalculator',
+    'BuoyancyModulationCalculator',
+    'FinalParsecCalculator',
+    'MergerTimescaleCalculator',
+    'MetalRetentionCalculator',
+    'CGMBaryonCalculator',
+    'CGMMetalGradientCalculator',
+    'ZetaPiWaveCalculator',
+    'SchwarzschildProtonCalculator',
+    'HiggsStabilityCalculator',
+    'UgCouplingCalculator',
+    'FeedbackFactorCalculator',
+    'GalacticDistanceCalculator',
+    'StringDistanceCalculator',
+    'ORB_ANALYSIS_60_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
