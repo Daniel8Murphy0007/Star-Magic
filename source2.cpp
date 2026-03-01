@@ -70,6 +70,7 @@
 #include <QMenuBar>              // Menu bar - for Window menu (Phase 3)
 #include <QSystemTrayIcon>       // System tray - duplicated include guard (Phase 3)
 #include <QMenu>                 // Menu widget - for tray context menu (Phase 3)
+#include "UQFF_CalculatorDialog.h"  // UQFF Scientific Calculator (Grok Thread Integration)
 
 // VTK (Visualization Toolkit) - For scientific data visualization (3D plots, charts, graphs)
 #ifndef NO_VTK
@@ -9951,6 +9952,32 @@ public:
         }
         motionLayout->addStretch();
         formulaTabs->addTab(motionPanel, "Motion");
+        
+        // ================================================================
+        // UQFF TAB (Grok Thread Integration - GROK_UQFF_CALC_65)
+        // ================================================================
+        QWidget *uqffPanel = new QWidget;
+        QHBoxLayout *uqffLayout = new QHBoxLayout(uqffPanel);
+        uqffLayout->setSpacing(2);
+        uqffLayout->setContentsMargins(2, 2, 2, 2);
+        QStringList uqffFormulas = {"F_U_Bi_i", "Um(t,r,n)", "Ug₁+Ug₂+Ug₃+Ug₄", "Ui(τ)", "g_MUGE", "R=F_EM/F_g", "[SSq]·H_SCm"};
+        for (const QString &f : uqffFormulas) {
+            QPushButton *btn = new QPushButton(f, uqffPanel);
+            btn->setFixedSize(85, 25);
+            connect(btn, &QPushButton::clicked, [this, f]() { insertSymbol(f); });
+            uqffLayout->addWidget(btn);
+        }
+        
+        // UQFF Calculator dialog launcher
+        QPushButton *uqffCalcBtn = new QPushButton("⚛ UQFF Calc", uqffPanel);
+        uqffCalcBtn->setToolTip("Open UQFF Scientific Calculator (Grok Thread)");
+        connect(uqffCalcBtn, &QPushButton::clicked, [this]() {
+            UQFFCalculatorDialog *dlg = new UQFFCalculatorDialog(this);
+            dlg->show();
+        });
+        uqffLayout->addWidget(uqffCalcBtn);
+        uqffLayout->addStretch();
+        formulaTabs->addTab(uqffPanel, "UQFF");
 
         // ================================================================
         // ADVANCED FEATURES (S-C Iteration 30+ - Voice/MPI/LLVM/Quantum)

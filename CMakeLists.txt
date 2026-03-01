@@ -470,7 +470,15 @@ set(IPC_HEADERS
 #   vcpkg install curl:x64-windows sqlite3:x64-windows
 #   vcpkg install aws-sdk-cpp[cognito-idp,s3]:x64-windows
 if(Qt6_FOUND)
-    add_executable(Source2 source2.cpp source2_mainwindow.h UQFFResultsWidget.h equation_renderer.h ${IPC_SOURCES} ${IPC_HEADERS}
+    add_executable(Source2 
+        source2.cpp 
+        source2_mainwindow.h 
+        UQFFResultsWidget.h 
+        equation_renderer.h 
+        UQFF_ScientificCalculator.cpp    # UQFF core equations (GROK_UQFF_CALC_65)
+        UQFF_CalculatorDialog.h          # UQFF Qt dialog (GROK_UQFF_CALC_65)
+        ${IPC_SOURCES} 
+        ${IPC_HEADERS}
         ${CMAKE_SOURCE_DIR}/resources/Star-Magic.rc  # Windows icon/version resources
     )
     
