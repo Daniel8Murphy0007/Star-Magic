@@ -565,6 +565,356 @@ inline QString simplify(const QString& expression) { return expression; }
 } // namespace NativeSymbolic
 
 // ============================================================================
+// PROCEDURAL COMPUTE COMPONENTS (Integrated from clone_1958048552090800339.txt)
+// VR/simulation support: procedural generation, dimensional analysis, solvers
+// ============================================================================
+
+namespace ProceduralCompute {
+
+/**
+ * @brief Fortran extern "C" declarations for high-precision polynomial operations
+ * Integrates with Fortran routines for 26th-degree polynomial solving
+ */
+#ifdef FORTRAN_POLY_ENABLED
+extern "C" {
+    double eval_poly_double(double x, double* coeffs);                    // Horner double
+    __float128 eval_poly_quad(__float128 x, __float128* coeffs);          // Horner quad
+    void solve_roots_double(double* a_real, std::complex<double>* roots); // Companion LAPACK double
+    void aberth_quad_defl(__float128* aq, std::complex<__float128>* rootsq, 
+                          int* it_counts, __float128* resid, int* info);  // Improved Aberth quad
+}
+#endif
+
+/**
+ * @brief SymEngineAllocator - Custom memory management for symbolic computations
+ * Provides optimized allocation for SymEngine expression trees
+ */
+class SymEngineAllocator {
+public:
+    void* operator new(size_t size) {
+        return std::malloc(size); // Can be replaced with arena allocator
+    }
+    void operator delete(void* ptr) {
+        std::free(ptr);
+    }
+};
+
+/**
+ * @brief Units - SI dimensional analysis class
+ * Tracks physical dimensions for unit consistency checking
+ */
+class Units {
+public:
+    int mass = 0, length = 0, time = 0, current = 0, temp = 0, amount = 0, luminous = 0;
+    
+    Units() {}
+    Units(int m, int l, int t, int c = 0, int te = 0, int a = 0, int lu = 0) 
+        : mass(m), length(l), time(t), current(c), temp(te), amount(a), luminous(lu) {}
+    
+    Units operator+(const Units& other) const {
+        Units res = *this;
+        res.mass += other.mass; res.length += other.length; res.time += other.time;
+        res.current += other.current; res.temp += other.temp; 
+        res.amount += other.amount; res.luminous += other.luminous;
+        return res;
+    }
+    
+    Units operator-(const Units& other) const {
+        Units res = *this;
+        res.mass -= other.mass; res.length -= other.length; res.time -= other.time;
+        res.current -= other.current; res.temp -= other.temp;
+        res.amount -= other.amount; res.luminous -= other.luminous;
+        return res;
+    }
+    
+    Units operator*(int scalar) const {
+        Units res = *this;
+        res.mass *= scalar; res.length *= scalar; res.time *= scalar;
+        res.current *= scalar; res.temp *= scalar; 
+        res.amount *= scalar; res.luminous *= scalar;
+        return res;
+    }
+    
+    bool operator==(const Units& other) const {
+        return mass == other.mass && length == other.length && time == other.time &&
+               current == other.current && temp == other.temp && 
+               amount == other.amount && luminous == other.luminous;
+    }
+    
+    bool isDimensionless() const {
+        return mass == 0 && length == 0 && time == 0 && current == 0 &&
+               temp == 0 && amount == 0 && luminous == 0;
+    }
+    
+    std::string toString() const {
+        std::stringstream ss;
+        ss << "M^" << mass << " L^" << length << " T^" << time 
+           << " I^" << current << " Θ^" << temp << " N^" << amount << " J^" << luminous;
+        return ss.str();
+    }
+    
+    QString toQString() const {
+        return QString::fromStdString(toString());
+    }
+    
+    // Common physical units
+    static Units Mass() { return Units(1,0,0); }
+    static Units Length() { return Units(0,1,0); }
+    static Units Time() { return Units(0,0,1); }
+    static Units Velocity() { return Units(0,1,-1); }
+    static Units Acceleration() { return Units(0,1,-2); }
+    static Units Force() { return Units(1,1,-2); }
+    static Units Energy() { return Units(1,2,-2); }
+    static Units Power() { return Units(1,2,-3); }
+};
+
+// Map of SI base units
+inline std::map<std::string, Units> getBaseUnits() {
+    return {
+        {"kg", Units(1,0,0)}, {"m", Units(0,1,0)}, {"s", Units(0,0,1)},
+        {"A", Units(0,0,0,1)}, {"K", Units(0,0,0,0,1)}, 
+        {"mol", Units(0,0,0,0,0,1)}, {"cd", Units(0,0,0,0,0,0,1)},
+        // Derived units
+        {"N", Units(1,1,-2)}, {"J", Units(1,2,-2)}, {"W", Units(1,2,-3)},
+        {"Pa", Units(1,-1,-2)}, {"Hz", Units(0,0,-1)}, {"C", Units(0,0,1,1)}
+    };
+}
+
+/**
+ * @brief PerlinNoise - 1D/2D/3D Perlin noise for procedural generation
+ * Used for terrain, texture, and field perturbation in VR simulations
+ */
+class PerlinNoise {
+public:
+    PerlinNoise(unsigned seed = 0) {
+        std::mt19937 gen(seed);
+        for (int i = 0; i < 256; ++i) p[i] = i;
+        std::shuffle(p, p + 256, gen);
+        for (int i = 0; i < 256; ++i) p[256 + i] = p[i];
+    }
+    
+    double noise(double x) {
+        int X = (int)std::floor(x) & 255;
+        x -= std::floor(x);
+        double u = fade(x);
+        return lerp(grad(p[X], x), grad(p[X+1], x-1), u);
+    }
+    
+    double noise2D(double x, double y) {
+        int X = (int)std::floor(x) & 255;
+        int Y = (int)std::floor(y) & 255;
+        x -= std::floor(x);
+        y -= std::floor(y);
+        double u = fade(x);
+        double v = fade(y);
+        int A = p[X] + Y;
+        int B = p[X+1] + Y;
+        return lerp(
+            lerp(grad2D(p[A], x, y), grad2D(p[B], x-1, y), u),
+            lerp(grad2D(p[A+1], x, y-1), grad2D(p[B+1], x-1, y-1), u),
+            v
+        );
+    }
+    
+    // Fractal Brownian motion for terrain
+    double fBm(double x, int octaves = 4, double persistence = 0.5) {
+        double total = 0.0, frequency = 1.0, amplitude = 1.0, maxValue = 0.0;
+        for (int i = 0; i < octaves; ++i) {
+            total += noise(x * frequency) * amplitude;
+            maxValue += amplitude;
+            amplitude *= persistence;
+            frequency *= 2.0;
+        }
+        return total / maxValue;
+    }
+
+private:
+    int p[512];
+    
+    double fade(double t) { return t * t * t * (t * (t * 6 - 15) + 10); }
+    double lerp(double a, double b, double t) { return a + t * (b - a); }
+    double grad(int hash, double x) {
+        return (hash & 1) ? x : -x;
+    }
+    double grad2D(int hash, double x, double y) {
+        int h = hash & 3;
+        return ((h & 1) ? x : -x) + ((h & 2) ? y : -y);
+    }
+};
+
+/**
+ * @brief ControlPointItem - Draggable control point for interactive graphs
+ * Used in VR for manipulating function plots and field visualizations
+ */
+#ifndef NO_QT_WIDGETS
+class ControlPointItem : public QGraphicsItem {
+public:
+    ControlPointItem(QGraphicsItem* parent = nullptr) : QGraphicsItem(parent) {
+        setFlag(ItemIsMovable);
+        setFlag(ItemSendsGeometryChanges);
+    }
+    
+    QRectF boundingRect() const override {
+        return QRectF(-5, -5, 10, 10);
+    }
+    
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override {
+        Q_UNUSED(option); Q_UNUSED(widget);
+        painter->setBrush(Qt::red);
+        painter->setPen(Qt::darkRed);
+        painter->drawEllipse(boundingRect());
+    }
+    
+protected:
+    QVariant itemChange(GraphicsItemChange change, const QVariant &value) override {
+        if (change == ItemPositionHasChanged) {
+            // Emit position change signal for graph update
+        }
+        return QGraphicsItem::itemChange(change, value);
+    }
+};
+#endif
+
+/**
+ * @brief rungeKuttaODE - 4th order Runge-Kutta ODE solver
+ * @param f Function f(t, y) returning dy/dt
+ * @param y0 Initial value
+ * @param t0 Initial time
+ * @param dt Time step
+ * @param steps Number of integration steps
+ * @return Vector of (t, y) pairs
+ */
+inline std::vector<std::pair<double, double>> rungeKuttaODE(
+    std::function<double(double, double)> f,
+    double y0, double t0, double dt, int steps) {
+    
+    std::vector<std::pair<double, double>> result;
+    double y = y0, t = t0;
+    result.emplace_back(t, y);
+    
+    for (int i = 0; i < steps; ++i) {
+        double k1 = f(t, y);
+        double k2 = f(t + dt/2, y + dt*k1/2);
+        double k3 = f(t + dt/2, y + dt*k2/2);
+        double k4 = f(t + dt, y + dt*k3);
+        y += (dt/6) * (k1 + 2*k2 + 2*k3 + k4);
+        t += dt;
+        result.emplace_back(t, y);
+    }
+    return result;
+}
+
+/**
+ * @brief nelderMeadOpt - Nelder-Mead simplex optimizer
+ * @param objective Function to minimize
+ * @param initial Initial parameter guess
+ * @param tol Convergence tolerance
+ * @param maxIter Maximum iterations
+ * @return Optimized parameters
+ */
+inline std::vector<double> nelderMeadOpt(
+    std::function<double(const std::vector<double>&)> objective,
+    std::vector<double> initial,
+    double tol = 1e-8, int maxIter = 1000) {
+    
+    int n = initial.size();
+    std::vector<std::vector<double>> simplex(n + 1, initial);
+    
+    // Initialize simplex
+    for (int i = 0; i < n; ++i) {
+        simplex[i + 1][i] += 0.1;
+    }
+    
+    // Evaluate all vertices
+    std::vector<double> values(n + 1);
+    for (int i = 0; i <= n; ++i) {
+        values[i] = objective(simplex[i]);
+    }
+    
+    for (int iter = 0; iter < maxIter; ++iter) {
+        // Find best, worst, second-worst
+        int best = 0, worst = 0, secondWorst = 0;
+        for (int i = 0; i <= n; ++i) {
+            if (values[i] < values[best]) best = i;
+            if (values[i] > values[worst]) worst = i;
+        }
+        for (int i = 0; i <= n; ++i) {
+            if (i != worst && values[i] > values[secondWorst]) secondWorst = i;
+        }
+        
+        // Check convergence
+        double range = values[worst] - values[best];
+        if (range < tol) break;
+        
+        // Compute centroid (excluding worst)
+        std::vector<double> centroid(n, 0.0);
+        for (int i = 0; i <= n; ++i) {
+            if (i != worst) {
+                for (int j = 0; j < n; ++j) {
+                    centroid[j] += simplex[i][j] / n;
+                }
+            }
+        }
+        
+        // Reflection
+        std::vector<double> reflected(n);
+        for (int j = 0; j < n; ++j) {
+            reflected[j] = 2 * centroid[j] - simplex[worst][j];
+        }
+        double reflectedVal = objective(reflected);
+        
+        if (reflectedVal < values[secondWorst] && reflectedVal >= values[best]) {
+            simplex[worst] = reflected;
+            values[worst] = reflectedVal;
+        } else if (reflectedVal < values[best]) {
+            // Expansion
+            std::vector<double> expanded(n);
+            for (int j = 0; j < n; ++j) {
+                expanded[j] = centroid[j] + 2 * (reflected[j] - centroid[j]);
+            }
+            double expandedVal = objective(expanded);
+            if (expandedVal < reflectedVal) {
+                simplex[worst] = expanded;
+                values[worst] = expandedVal;
+            } else {
+                simplex[worst] = reflected;
+                values[worst] = reflectedVal;
+            }
+        } else {
+            // Contraction
+            std::vector<double> contracted(n);
+            for (int j = 0; j < n; ++j) {
+                contracted[j] = centroid[j] + 0.5 * (simplex[worst][j] - centroid[j]);
+            }
+            double contractedVal = objective(contracted);
+            if (contractedVal < values[worst]) {
+                simplex[worst] = contracted;
+                values[worst] = contractedVal;
+            } else {
+                // Shrink
+                for (int i = 0; i <= n; ++i) {
+                    if (i != best) {
+                        for (int j = 0; j < n; ++j) {
+                            simplex[i][j] = simplex[best][j] + 0.5 * (simplex[i][j] - simplex[best][j]);
+                        }
+                        values[i] = objective(simplex[i]);
+                    }
+                }
+            }
+        }
+    }
+    
+    // Return best vertex
+    int best = 0;
+    for (int i = 1; i <= n; ++i) {
+        if (values[i] < values[best]) best = i;
+    }
+    return simplex[best];
+}
+
+} // namespace ProceduralCompute
+
+// ============================================================================
 // VR/VM RUNTIME LAYER (Merged from vr/vr_runtime.cpp)
 // Part of 5 Principal Programs - Simultaneous Joint Operation Pipeline
 // ============================================================================

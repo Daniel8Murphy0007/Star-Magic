@@ -498,6 +498,290 @@ inline PythonResult ProcessPythonResult(const QByteArray& stdout_data,
 }
 
 // ============================================================================
+// CALCULATOR UI COMPONENTS (Integrated from clone_1958048552090800339.txt)
+// UI interaction classes for Scientific Calculator workflow
+// ============================================================================
+
+namespace CalculatorUI {
+
+#ifdef ANTLR4_ENABLED
+/**
+ * @brief Custom error listener for ANTLR4 to capture parsing errors
+ * Provides structured error messages for syntax highlighting and user feedback
+ */
+class MathErrorListener : public antlr4::BaseErrorListener {
+public:
+    std::string errorMsg;
+    bool hasError = false;
+    
+    virtual void syntaxError(antlr4::Recognizer *recognizer, antlr4::Token *offendingSymbol,
+                             size_t line, size_t charPositionInLine,
+                             const std::string &msg, std::exception_ptr e) override {
+        errorMsg = "Line " + std::to_string(line) + ":" + std::to_string(charPositionInLine) + " " + msg;
+        hasError = true;
+    }
+    
+    void reset() {
+        errorMsg.clear();
+        hasError = false;
+    }
+};
+
+/**
+ * @brief VarCollectorVisitor - Collect variables from parse tree
+ * Extended for multi-equation systems and parametric expressions
+ */
+class VarCollectorVisitor : public MathBaseVisitor {
+public:
+    std::set<std::string> variables;
+    
+    std::any visitVariable(MathParser::VariableContext *ctx) override {
+        variables.insert(ctx->VARIABLE()->getText());
+        return visitChildren(ctx);
+    }
+    
+    void reset() {
+        variables.clear();
+    }
+    
+    std::set<std::string> getVariables() const {
+        return variables;
+    }
+};
+#endif // ANTLR4_ENABLED
+
+/**
+ * @brief MathHighlighter - Syntax highlighter using ANTLR4 tokenization
+ * Provides real-time syntax highlighting for mathematical expressions
+ */
+class MathHighlighter : public QSyntaxHighlighter {
+    Q_OBJECT
+public:
+    explicit MathHighlighter(QTextDocument *parent = nullptr) : QSyntaxHighlighter(parent) {
+        initFormats();
+    }
+
+protected:
+    void highlightBlock(const QString &text) override {
+#ifdef ANTLR4_ENABLED
+        std::string str = text.toStdString();
+        antlr4::ANTLRInputStream input(str);
+        MathLexer lexer(&input);
+        antlr4::CommonTokenStream tokens(&lexer);
+        tokens.fill();
+        
+        for (auto token : tokens.getTokens()) {
+            if (token->getType() == antlr4::Token::EOF) break;
+            int start = token->getStartIndex();
+            int len = token->getStopIndex() - start + 1;
+            QTextCharFormat fmt;
+            
+            switch (token->getType()) {
+                case MathLexer::NUMBER:
+                    fmt = numberFormat;
+                    break;
+                case MathLexer::VARIABLE:
+                    fmt = variableFormat;
+                    break;
+                case MathLexer::PLUS:
+                case MathLexer::MINUS:
+                case MathLexer::MUL:
+                case MathLexer::DIV:
+                    fmt = operatorFormat;
+                    break;
+                case MathLexer::INTEGRAL:
+                case MathLexer::SUM:
+                case MathLexer::PROD:
+                    fmt = functionFormat;
+                    break;
+                default:
+                    continue;
+            }
+            setFormat(start, len, fmt);
+        }
+#else
+        // Fallback: simple regex-based highlighting
+        highlightNumbers(text);
+        highlightOperators(text);
+#endif
+    }
+
+private:
+    QTextCharFormat numberFormat;
+    QTextCharFormat variableFormat;
+    QTextCharFormat operatorFormat;
+    QTextCharFormat functionFormat;
+    
+    void initFormats() {
+        numberFormat.setForeground(Qt::blue);
+        variableFormat.setForeground(Qt::darkGreen);
+        operatorFormat.setForeground(Qt::red);
+        functionFormat.setForeground(Qt::magenta);
+    }
+    
+    void highlightNumbers(const QString &text) {
+        QRegularExpression numRe("\\b\\d+\\.?\\d*\\b");
+        QRegularExpressionMatchIterator i = numRe.globalMatch(text);
+        while (i.hasNext()) {
+            QRegularExpressionMatch match = i.next();
+            setFormat(match.capturedStart(), match.capturedLength(), numberFormat);
+        }
+    }
+    
+    void highlightOperators(const QString &text) {
+        QRegularExpression opRe("[+\\-*/^=]");
+        QRegularExpressionMatchIterator i = opRe.globalMatch(text);
+        while (i.hasNext()) {
+            QRegularExpressionMatch match = i.next();
+            setFormat(match.capturedStart(), match.capturedLength(), operatorFormat);
+        }
+    }
+};
+
+/**
+ * @brief DraggableButton - Symbol palette button with drag-drop support
+ * Enables intuitive symbol insertion via drag and drop
+ */
+class DraggableButton : public QPushButton {
+    Q_OBJECT
+public:
+    explicit DraggableButton(const QString& text, QWidget* parent = nullptr)
+        : QPushButton(text, parent) {
+        setCursor(Qt::OpenHandCursor);
+        setToolTip(QString("Drag to insert: %1").arg(text));
+    }
+
+protected:
+    void mousePressEvent(QMouseEvent* event) override {
+        if (event->button() == Qt::LeftButton) {
+            QDrag* drag = new QDrag(this);
+            QMimeData* mimeData = new QMimeData;
+            mimeData->setText(text());
+            drag->setMimeData(mimeData);
+            drag->exec(Qt::CopyAction);
+        } else {
+            QPushButton::mousePressEvent(event);
+        }
+    }
+};
+
+/**
+ * @brief InsertCommand - Undo/redo command for text insertion
+ * Supports full undo/redo stack for equation editing
+ */
+class InsertCommand : public QUndoCommand {
+public:
+    InsertCommand(QTextEdit *edit, const QString &text, QUndoCommand *parent = nullptr)
+        : QUndoCommand(parent), m_edit(edit), m_text(text) {
+        m_cursor = edit->textCursor();
+        m_start = m_cursor.position();
+        setText(QString("Insert '%1'").arg(text));
+    }
+    
+    void undo() override {
+        QTextCursor cursor = m_edit->textCursor();
+        cursor.setPosition(m_start);
+        cursor.setPosition(m_start + m_text.length(), QTextCursor::KeepAnchor);
+        cursor.removeSelectedText();
+        m_edit->setTextCursor(cursor);
+    }
+    
+    void redo() override {
+        QTextCursor cursor = m_edit->textCursor();
+        cursor.setPosition(m_start);
+        cursor.insertText(m_text);
+        m_edit->setTextCursor(cursor);
+    }
+
+private:
+    QTextEdit *m_edit;
+    QString m_text;
+    QTextCursor m_cursor;
+    int m_start;
+};
+
+/**
+ * @brief MacroCommand - Grouping command for multiple operations
+ * Allows batching multiple edits into single undo/redo step
+ */
+class MacroCommand : public QUndoCommand {
+public:
+    explicit MacroCommand(const QString& text, QUndoCommand *parent = nullptr)
+        : QUndoCommand(text, parent) {}
+    
+    void addCommand(QUndoCommand *cmd) {
+        m_commands.push_back(cmd);
+    }
+    
+    void undo() override {
+        for (auto it = m_commands.rbegin(); it != m_commands.rend(); ++it) {
+            (*it)->undo();
+        }
+    }
+    
+    void redo() override {
+        for (auto cmd : m_commands) {
+            cmd->redo();
+        }
+    }
+
+private:
+    std::vector<QUndoCommand*> m_commands;
+};
+
+/**
+ * @brief EquationSuggestModel - Auto-complete suggestion model
+ * Uses TF Lite ML for intelligent equation suggestions based on history
+ */
+class EquationSuggestModel : public QAbstractListModel {
+    Q_OBJECT
+public:
+    explicit EquationSuggestModel(QObject *parent = nullptr) : QAbstractListModel(parent) {}
+    
+    int rowCount(const QModelIndex &parent = QModelIndex()) const override {
+        Q_UNUSED(parent);
+        return m_suggestions.size();
+    }
+    
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override {
+        if (!index.isValid() || index.row() >= m_suggestions.size())
+            return QVariant();
+        
+        if (role == Qt::DisplayRole)
+            return m_suggestions.at(index.row());
+        
+        return QVariant();
+    }
+    
+    void updateSuggestions(const QString &prefix) {
+        beginResetModel();
+        m_suggestions.clear();
+        // Future: Query TF Lite model for suggestions based on prefix and history
+        // For now, provide common mathematical expressions
+        if (prefix.contains("d")) {
+            m_suggestions << "d/dx" << "d²/dx²" << "∂/∂x";
+        }
+        if (prefix.contains("int") || prefix.contains("∫")) {
+            m_suggestions << "∫...dx" << "∫₀^∞" << "∬...dxdy";
+        }
+        endResetModel();
+    }
+    
+    void addToHistory(const QString &equation) {
+        if (!m_history.contains(equation)) {
+            m_history.prepend(equation);
+            if (m_history.size() > 100) m_history.removeLast();
+        }
+    }
+
+private:
+    QStringList m_suggestions;
+    QStringList m_history;
+};
+
+} // namespace CalculatorUI
+
+// ============================================================================
 // VIDEO QUERY HANDLER - OpenCV integration for video input processing
 // ============================================================================
 
