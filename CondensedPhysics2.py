@@ -33993,6 +33993,1009 @@ ORB_ANALYSIS_60_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB_ANALYSIS_61: Universal Gravity Components & Extended UQFF Framework
+# Source: Star Magic Calculator C++ ScientificCalculatorDialog (reanalyzed)
+# 20 Calculator classes for Ug1-4 components, buoyancy, magnetism, DE power,
+# time-reversal zones, plasma orb dynamics, 26-level quantum scaling
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Parameters for ORB_ANALYSIS_61
+ORB_ANALYSIS_61_PARAMS = {
+    # Universal Gravity coupling constants (k_i for Ug_i)
+    'k1_Ug': 1.5,                        # Magnetic dipole coupling
+    'k2_Ug': 1.2,                        # Charge-reactivity coupling
+    'k3_Ug': 1.8,                        # String rotation coupling
+    'k4_Ug': 1.0,                        # Vacuum concentration coupling
+    
+    # Vacuum densities (J/m³)
+    'rho_vac_SCm': 1e-26,                # [SCm] vacuum energy density
+    'rho_vac_UA': 1e-30,                 # [UA] vacuum energy density
+    'rho_vac_A': 1e-29,                  # Aether vacuum density
+    
+    # Magnetic/dipole parameters
+    'mu_dipole': 7.94e22,                # Magnetic dipole moment (A·m²)
+    'mu_j_string': 1e15,                 # String magnetic moment
+    
+    # Time parameters
+    'tn_negative': -2512,                # Negative time (s)
+    'pi_freq_min': 0.314,                # Pi cycle minimum (Hz)
+    'pi_freq_max': 3.14e9,               # Pi cycle maximum (Hz)
+    'f_TRZ': 0.1,                        # Time-reversal zone factor
+    
+    # Plasma/reactor parameters
+    'reactor_efficiency': 555,           # 555:1 ratio
+    'plasma_freq': 3.14,                 # Plasma resonance (Hz)
+    'bio_quantum_freq_min': 200,         # Bio-quantum minimum (Hz)
+    'bio_quantum_freq_max': 600,         # Bio-quantum maximum (Hz)
+    
+    # 26-level quantum scaling
+    'n_levels': 26,                      # Total quantum levels
+    'level_atomic': 10,                  # Atomic (solids)
+    'level_plasma': 13,                  # Cosmic plasma/CGM
+    'level_higgs': 18,                   # Higgs/exotic
+    'E0_base': 1e-19,                    # Base energy (J)
+    'alpha_level': 2.0,                  # Level scaling exponent
+    
+    # Orbit/rotation
+    'omega_s_solar': 2.87e-6,            # Solar rotation (rad/s)
+    'Omega_g_galactic': 8.1e-16,         # Galactic rotation (rad/s)
+    
+    # DE Power
+    'eta_DE': 1e-22,                     # DE coupling constant
+    
+    # Stress-energy tensor component
+    'T_s_density': 1.123e7,              # Stress-energy density (J/m³)
+}
+
+
+class Ug1MagneticDipoleCalculator:
+    """
+    Universal Gravity component 1: Magnetic dipole contribution.
+    
+    Equation:
+        Ug1 = λ_g1 × (ρ_SCm/ρ_UA) × (μ_dipole / r³)
+    
+    Where:
+        λ_g1 = k1_Ug coupling constant
+        ρ_SCm, ρ_UA = vacuum densities
+        μ_dipole = magnetic dipole moment
+        r = distance from dipole center
+    
+    Physics: Magnetic dipole gravity contribution in UQFF framework
+    """
+    
+    def compute(self, r: float, mu_dipole: float = None, 
+                rho_SCm: float = None, rho_UA: float = None,
+                k1: float = None) -> dict:
+        """Compute Ug1 magnetic dipole gravity component."""
+        P = ORB_ANALYSIS_61_PARAMS
+        
+        k1 = k1 if k1 is not None else P['k1_Ug']
+        mu_dipole = mu_dipole if mu_dipole is not None else P['mu_dipole']
+        rho_SCm = rho_SCm if rho_SCm is not None else P['rho_vac_SCm']
+        rho_UA = rho_UA if rho_UA is not None else P['rho_vac_UA']
+        
+        if r <= 0:
+            return {'Ug1': float('inf'), 'status': 'singularity'}
+        
+        # Vacuum density ratio
+        rho_ratio = rho_SCm / rho_UA
+        
+        # Dipole field scaling (1/r³)
+        dipole_field = mu_dipole / (r ** 3)
+        
+        # Ug1 component
+        Ug1 = k1 * rho_ratio * dipole_field
+        
+        return {
+            'Ug1': Ug1,
+            'rho_ratio': rho_ratio,
+            'dipole_field': dipole_field,
+            'k1': k1,
+            'r': r
+        }
+
+
+class Ug2ChargeReactivityCalculator:
+    """
+    Universal Gravity component 2: Charge-reactivity contribution.
+    
+    Equation:
+        Ug2 = λ_g2 × (ρ_SCm/ρ_UA) × (Q_eff / r²)
+    
+    Where:
+        λ_g2 = k2_Ug coupling constant
+        Q_eff = effective charge-reactivity parameter
+        r = distance
+    
+    Physics: Coulomb-like gravity contribution from vacuum charge
+    """
+    
+    def compute(self, r: float, Q_eff: float = 1e10,
+                rho_SCm: float = None, rho_UA: float = None,
+                k2: float = None) -> dict:
+        """Compute Ug2 charge-reactivity gravity component."""
+        P = ORB_ANALYSIS_61_PARAMS
+        
+        k2 = k2 if k2 is not None else P['k2_Ug']
+        rho_SCm = rho_SCm if rho_SCm is not None else P['rho_vac_SCm']
+        rho_UA = rho_UA if rho_UA is not None else P['rho_vac_UA']
+        
+        if r <= 0:
+            return {'Ug2': float('inf'), 'status': 'singularity'}
+        
+        rho_ratio = rho_SCm / rho_UA
+        
+        # Coulomb-like scaling (1/r²)
+        charge_field = Q_eff / (r ** 2)
+        
+        Ug2 = k2 * rho_ratio * charge_field
+        
+        return {
+            'Ug2': Ug2,
+            'rho_ratio': rho_ratio,
+            'charge_field': charge_field,
+            'k2': k2,
+            'r': r
+        }
+
+
+class Ug3StringRotationCalculator:
+    """
+    Universal Gravity component 3: String rotation contribution.
+    
+    Equation:
+        Ug3 = λ_g3 × (ρ_SCm/ρ_UA) × ω_s(t) × cos(πt_n) × (1/r)
+    
+    Where:
+        ω_s(t) = rotation angular velocity
+        t_n = negative time parameter
+        r = radial distance
+    
+    Physics: Rotating string gravity with π-cycle modulation
+    """
+    
+    def compute(self, r: float, t: float = 0,
+                omega_s: float = None, tn: float = None,
+                rho_SCm: float = None, rho_UA: float = None,
+                k3: float = None) -> dict:
+        """Compute Ug3 string rotation gravity component."""
+        import math
+        P = ORB_ANALYSIS_61_PARAMS
+        
+        k3 = k3 if k3 is not None else P['k3_Ug']
+        omega_s = omega_s if omega_s is not None else P['omega_s_solar']
+        tn = tn if tn is not None else P['tn_negative']
+        rho_SCm = rho_SCm if rho_SCm is not None else P['rho_vac_SCm']
+        rho_UA = rho_UA if rho_UA is not None else P['rho_vac_UA']
+        
+        if r <= 0:
+            return {'Ug3': float('inf'), 'status': 'singularity'}
+        
+        rho_ratio = rho_SCm / rho_UA
+        
+        # π-cycle modulation with negative time
+        pi_modulation = math.cos(math.pi * tn)
+        
+        # String rotation field (1/r)
+        string_field = omega_s / r
+        
+        Ug3 = k3 * rho_ratio * string_field * pi_modulation
+        
+        return {
+            'Ug3': Ug3,
+            'rho_ratio': rho_ratio,
+            'pi_modulation': pi_modulation,
+            'string_field': string_field,
+            'k3': k3,
+            'omega_s': omega_s,
+            'tn': tn
+        }
+
+
+class Ug4VacuumConcentrationCalculator:
+    """
+    Universal Gravity component 4: Vacuum concentration contribution.
+    
+    Equation:
+        Ug4 = λ_g4 × (ρ_SCm - ρ_UA) × (M_bh/d_g) × (1 + f_feedback × ΔM_BH)
+    
+    Where:
+        ρ_SCm - ρ_UA = vacuum gradient
+        M_bh/d_g = black hole mass to galactic distance ratio
+        f_feedback = AGN feedback factor
+        ΔM_BH = mass deviation (dex)
+    
+    Physics: Vacuum concentration gravity with SMBH feedback
+    """
+    
+    def compute(self, M_bh: float, d_g: float = None,
+                delta_MBH: float = 0, f_feedback: float = 0.1,
+                rho_SCm: float = None, rho_UA: float = None,
+                k4: float = None) -> dict:
+        """Compute Ug4 vacuum concentration gravity component."""
+        P = ORB_ANALYSIS_61_PARAMS
+        
+        k4 = k4 if k4 is not None else P['k4_Ug']
+        d_g = d_g if d_g is not None else 2.55e20  # 27 kly in meters
+        rho_SCm = rho_SCm if rho_SCm is not None else P['rho_vac_SCm']
+        rho_UA = rho_UA if rho_UA is not None else P['rho_vac_UA']
+        
+        # Vacuum gradient
+        vacuum_gradient = rho_SCm - rho_UA
+        
+        # Mass-distance ratio
+        mass_ratio = M_bh / d_g
+        
+        # Feedback enhancement
+        feedback_factor = 1 + f_feedback * delta_MBH
+        
+        Ug4 = k4 * vacuum_gradient * mass_ratio * feedback_factor
+        
+        return {
+            'Ug4': Ug4,
+            'vacuum_gradient': vacuum_gradient,
+            'mass_ratio': mass_ratio,
+            'feedback_factor': feedback_factor,
+            'k4': k4,
+            'M_bh': M_bh
+        }
+
+
+class UniversalBuoyancyCalculator:
+    """
+    Universal Buoyancy (U_bi) calculator.
+    
+    Equation:
+        U_bi = -β_i × U_gi × Ω_g × (M_bh/d_g) × (1 + ε_sw×ρ_sw) × U_UA × cos(πt_n)
+    
+    Where:
+        β_i = buoyancy coupling (0.6)
+        U_gi = gravity component i
+        Ω_g = galactic rotation
+        ε_sw = solar wind modulation (0.001)
+        
+    Physics: Buoyancy opposition to gravity in UQFF framework
+    """
+    
+    def compute(self, U_gi: float, M_bh: float, d_g: float = None,
+                tn: float = None, rho_sw: float = 8e-21,
+                beta_i: float = 0.6, epsilon_sw: float = 0.001,
+                Omega_g: float = None) -> dict:
+        """Compute universal buoyancy component."""
+        import math
+        P = ORB_ANALYSIS_61_PARAMS
+        
+        d_g = d_g if d_g is not None else 2.55e20
+        tn = tn if tn is not None else P['tn_negative']
+        Omega_g = Omega_g if Omega_g is not None else P['Omega_g_galactic']
+        
+        # Mass-distance ratio
+        mass_ratio = M_bh / d_g
+        
+        # Solar wind modulation
+        sw_modulation = 1 + epsilon_sw * rho_sw
+        
+        # π-cycle term
+        pi_term = math.cos(math.pi * tn)
+        
+        # Universal buoyancy (negative = opposition)
+        U_bi = -beta_i * U_gi * Omega_g * mass_ratio * sw_modulation * pi_term
+        
+        return {
+            'U_bi': U_bi,
+            'beta_i': beta_i,
+            'U_gi': U_gi,
+            'mass_ratio': mass_ratio,
+            'sw_modulation': sw_modulation,
+            'pi_term': pi_term
+        }
+
+
+class UniversalMagnetismOrb61Calculator:
+    """
+    Universal Magnetism (Um) calculator.
+    
+    Equation:
+        Um = Σ_j [μ_j/r_j × (1 - e^(-γt cos(πt_n))) × φ_j]
+    
+    Where:
+        μ_j = magnetic moment of string j
+        r_j = distance along string j (~100 AU)
+        γ = decay constant
+        φ_j = directional unit vector
+    
+    Physics: Magnetic string contribution to unified field
+    """
+    
+    def compute(self, r_j: float = None, t: float = 1.0,
+                mu_j: float = None, tn: float = None,
+                gamma: float = 1e-10, phi_j: float = 1.0) -> dict:
+        """Compute universal magnetism component."""
+        import math
+        P = ORB_ANALYSIS_61_PARAMS
+        
+        r_j = r_j if r_j is not None else 1.496e13  # 100 AU
+        mu_j = mu_j if mu_j is not None else P['mu_j_string']
+        tn = tn if tn is not None else P['tn_negative']
+        
+        if r_j <= 0:
+            return {'Um': float('inf'), 'status': 'singularity'}
+        
+        # String field
+        string_base = mu_j / r_j
+        
+        # Exponential decay term with π-cycle
+        exp_arg = -gamma * t * math.cos(math.pi * tn)
+        decay_term = 1 - math.exp(exp_arg)
+        
+        Um = string_base * decay_term * phi_j
+        
+        return {
+            'Um': Um,
+            'string_base': string_base,
+            'decay_term': decay_term,
+            'gamma': gamma,
+            'r_j': r_j
+        }
+
+
+class DEPowerTransformCalculator:
+    """
+    Dark Energy Power transformation calculator.
+    
+    Equation:
+        DE_power = η × ∫[T_s^μν × ∂A_μν/∂t] dt
+    
+    Simplified (instantaneous):
+        P_DE = η × T_s × dA/dt
+    
+    Where:
+        η = DE coupling (~1e-22)
+        T_s^μν = stress-energy tensor density
+        A_μν = Aether metric perturbation
+    
+    Physics: Power transfer from Aether to matter via DE coupling
+    """
+    
+    def compute(self, dA_dt: float = 1e-15, T_s: float = None,
+                eta: float = None, dt: float = 1.0) -> dict:
+        """Compute DE power transformation."""
+        P = ORB_ANALYSIS_61_PARAMS
+        
+        eta = eta if eta is not None else P['eta_DE']
+        T_s = T_s if T_s is not None else P['T_s_density']
+        
+        # Instantaneous power
+        P_DE_instant = eta * T_s * dA_dt
+        
+        # Integrated energy over dt
+        E_DE = P_DE_instant * dt
+        
+        return {
+            'P_DE': P_DE_instant,
+            'E_DE': E_DE,
+            'eta': eta,
+            'T_s': T_s,
+            'dA_dt': dA_dt
+        }
+
+
+class TimeReversalZoneCalculator:
+    """
+    Time-Reversal Zone (TRZ) factor calculator.
+    
+    Equation:
+        f_TRZ_eff = f_TRZ × sign(cos(πt_n)) × amplitude(t)
+    
+    Where:
+        f_TRZ = base TRZ factor (~0.1)
+        t_n = negative time parameter
+        amplitude = oscillation envelope
+    
+    Physics: Negentropic time-reversal effects (Bearden framework)
+    """
+    
+    def compute(self, t: float = 0, tn: float = None,
+                f_TRZ_base: float = None,
+                amplitude: float = 1.0) -> dict:
+        """Compute time-reversal zone effective factor."""
+        import math
+        P = ORB_ANALYSIS_61_PARAMS
+        
+        f_TRZ_base = f_TRZ_base if f_TRZ_base is not None else P['f_TRZ']
+        tn = tn if tn is not None else P['tn_negative']
+        
+        # π-cycle value
+        cos_pi_tn = math.cos(math.pi * tn)
+        
+        # Sign function for direction
+        sign_term = 1 if cos_pi_tn >= 0 else -1
+        
+        # Effective TRZ factor
+        f_TRZ_eff = f_TRZ_base * sign_term * amplitude * abs(cos_pi_tn)
+        
+        # Enhancement multiplier (1 + f_TRZ)
+        enhancement = 1 + f_TRZ_eff
+        
+        return {
+            'f_TRZ_eff': f_TRZ_eff,
+            'enhancement': enhancement,
+            'cos_pi_tn': cos_pi_tn,
+            'sign': sign_term,
+            'tn': tn
+        }
+
+
+class NegativeTimeOrb61Calculator:
+    """
+    Negative Time (t_n) dynamics calculator.
+    
+    Equation:
+        t_n = -|t_base| × n_cycle
+        
+    Canonical values:
+        t_n = -2512 s (primary)
+        t_n = -5024 s (double cycle)
+    
+    Physics: Negative time loop states in UQFF reactor dynamics
+    """
+    
+    def compute(self, t_base: float = 2512, n_cycle: int = 1,
+                compute_derivatives: bool = True) -> dict:
+        """Compute negative time and related quantities."""
+        import math
+        P = ORB_ANALYSIS_61_PARAMS
+        
+        # Negative time
+        tn = -abs(t_base) * n_cycle
+        
+        # π-cycle effects
+        cos_pi_tn = math.cos(math.pi * tn)
+        sin_pi_tn = math.sin(math.pi * tn)
+        
+        result = {
+            'tn': tn,
+            'n_cycle': n_cycle,
+            'cos_pi_tn': cos_pi_tn,
+            'sin_pi_tn': sin_pi_tn,
+            'period_seconds': 2 * t_base
+        }
+        
+        if compute_derivatives:
+            # d/dt[cos(πt_n)]
+            result['d_cos_dt'] = -math.pi * sin_pi_tn
+            result['d_sin_dt'] = math.pi * cos_pi_tn
+        
+        return result
+
+
+class PiCycleEncoderCalculator:
+    """
+    π-Cycle Quantum Encoder calculator.
+    
+    Equation:
+        f_π = 0.314 to 3.14×10⁹ Hz (quantum encoding range)
+        phase(t) = 2π × f_π × t
+        amplitude(f) = A_0 × sinc(π(f - f_0)/Δf)
+    
+    Physics: π-cycle frequency encoding for quantum information
+    """
+    
+    def compute(self, f: float = 3.14, t: float = 1.0,
+                A_0: float = 1.0, f_0: float = 3.14,
+                delta_f: float = 1.0) -> dict:
+        """Compute π-cycle encoded quantum state."""
+        import math
+        P = ORB_ANALYSIS_61_PARAMS
+        
+        # Phase evolution
+        phase = 2 * math.pi * f * t
+        
+        # Sinc envelope
+        if delta_f != 0:
+            x = math.pi * (f - f_0) / delta_f
+            sinc = math.sin(x) / x if x != 0 else 1.0
+        else:
+            sinc = 1.0
+        
+        amplitude = A_0 * sinc
+        
+        # Complex state
+        state_real = amplitude * math.cos(phase)
+        state_imag = amplitude * math.sin(phase)
+        
+        # Check frequency bounds
+        in_quantum_range = P['pi_freq_min'] <= f <= P['pi_freq_max']
+        
+        return {
+            'frequency': f,
+            'phase': phase,
+            'amplitude': amplitude,
+            'state_real': state_real,
+            'state_imag': state_imag,
+            'in_quantum_range': in_quantum_range,
+            'f_min': P['pi_freq_min'],
+            'f_max': P['pi_freq_max']
+        }
+
+
+class PlasmaOrbMassCalculator:
+    """
+    Plasma Orb Mass calculator.
+    
+    Equation:
+        m_orb = ρ_SCm × V_orb × f_plasma
+    
+    Where:
+        ρ_SCm = [SCm] vacuum density
+        V_orb = plasma orb volume
+        f_plasma = plasma formation factor
+    
+    Physics: Mass of plasma orbs in reactor/cosmic contexts
+             (analogous to globular clusters ~10⁵-10⁶ stars)
+    """
+    
+    def compute(self, R_orb: float = 1e5, f_plasma: float = 0.1,
+                rho_SCm: float = None) -> dict:
+        """Compute plasma orb mass."""
+        import math
+        P = ORB_ANALYSIS_61_PARAMS
+        
+        rho_SCm = rho_SCm if rho_SCm is not None else P['rho_vac_SCm']
+        
+        # Orb volume (sphere)
+        V_orb = (4/3) * math.pi * (R_orb ** 3)
+        
+        # Plasma orb mass
+        m_orb = rho_SCm * V_orb * f_plasma
+        
+        # Number density (for reactor ~10k-15k orbs)
+        n_density_reactor = 12500  # typical
+        total_reactor_mass = m_orb * n_density_reactor
+        
+        return {
+            'm_orb': m_orb,
+            'V_orb': V_orb,
+            'R_orb': R_orb,
+            'f_plasma': f_plasma,
+            'rho_SCm': rho_SCm,
+            'n_reactor_orbs': n_density_reactor,
+            'total_reactor_mass': total_reactor_mass
+        }
+
+
+class ReactorEfficiencyOrb61Calculator:
+    """
+    Reactor Efficiency (555:1 ratio) calculator.
+    
+    Equation:
+        η_reactor = P_out / P_in = 555
+        P_out = η_reactor × P_in
+    
+    Optimal at f = 3.14 Hz plasma resonance
+    
+    Physics: UQFF reactor power amplification via [SCm]-[UA] reactions
+    """
+    
+    def compute(self, P_in: float = 1.0, f_plasma: float = None,
+                efficiency_base: float = None) -> dict:
+        """Compute reactor efficiency and output power."""
+        import math
+        P = ORB_ANALYSIS_61_PARAMS
+        
+        efficiency_base = efficiency_base if efficiency_base is not None else P['reactor_efficiency']
+        f_plasma = f_plasma if f_plasma is not None else P['plasma_freq']
+        
+        # Frequency detuning factor
+        f_optimal = P['plasma_freq']
+        detuning = 1 - abs(f_plasma - f_optimal) / f_optimal
+        detuning = max(0, min(1, detuning))  # Clamp to [0,1]
+        
+        # Effective efficiency
+        eta_eff = efficiency_base * detuning
+        
+        # Output power
+        P_out = eta_eff * P_in
+        
+        # Energy gain per cycle
+        E_gain = P_out - P_in
+        
+        return {
+            'efficiency': eta_eff,
+            'efficiency_base': efficiency_base,
+            'P_in': P_in,
+            'P_out': P_out,
+            'E_gain': E_gain,
+            'f_plasma': f_plasma,
+            'f_optimal': f_optimal,
+            'detuning_factor': detuning
+        }
+
+
+class BioQuantumResonanceCalculator:
+    """
+    Bio-Quantum Resonance (200-600 Hz) calculator.
+    
+    Equation:
+        R_bio(f) = A × sin(2πft) × exp(-f/f_max) × cos(πt_n)
+    
+    Where:
+        f ∈ [200, 600] Hz = bio-quantum frequency band
+        t_n = negative time modulation
+    
+    Physics: Bio-quantum resonance for life-form interactions with vacuum
+    """
+    
+    def compute(self, f: float = 400, t: float = 0.01,
+                tn: float = None, A: float = 1.0) -> dict:
+        """Compute bio-quantum resonance amplitude."""
+        import math
+        P = ORB_ANALYSIS_61_PARAMS
+        
+        tn = tn if tn is not None else P['tn_negative']
+        
+        f_min = P['bio_quantum_freq_min']
+        f_max = P['bio_quantum_freq_max']
+        
+        # Check if in bio-quantum band
+        in_band = f_min <= f <= f_max
+        
+        # Oscillation
+        oscillation = math.sin(2 * math.pi * f * t)
+        
+        # Decay envelope
+        decay = math.exp(-f / f_max)
+        
+        # Negative time modulation
+        tn_modulation = math.cos(math.pi * tn)
+        
+        # Bio-quantum resonance
+        R_bio = A * oscillation * decay * tn_modulation
+        
+        return {
+            'R_bio': R_bio,
+            'frequency': f,
+            'in_bio_band': in_band,
+            'oscillation': oscillation,
+            'decay': decay,
+            'tn_modulation': tn_modulation,
+            'f_range': (f_min, f_max)
+        }
+
+
+class QuantumLevel26Calculator:
+    """
+    26-Level Quantum Energy Scaling calculator.
+    
+    Equation:
+        E_n = E_0 × (n/26)^α
+    
+    Level ranges:
+        n=10: Atomic/solids
+        n=13: Cosmic plasma/CGM
+        n=18: Higgs/exotic
+    
+    Physics: 26-dimensional quantum level scaling in UQFF
+    """
+    
+    def compute(self, n: int = 13, E_0: float = None,
+                alpha: float = None) -> dict:
+        """Compute energy at quantum level n."""
+        P = ORB_ANALYSIS_61_PARAMS
+        
+        E_0 = E_0 if E_0 is not None else P['E0_base']
+        alpha = alpha if alpha is not None else P['alpha_level']
+        n_max = P['n_levels']
+        
+        # Clamp level
+        n = max(1, min(n_max, n))
+        
+        # Energy at level
+        E_n = E_0 * ((n / n_max) ** alpha)
+        
+        # Level classifications
+        level_type = 'unknown'
+        if n <= 10:
+            level_type = 'atomic/solid'
+        elif n <= 13:
+            level_type = 'plasma/CGM'
+        elif n <= 18:
+            level_type = 'exotic/Higgs'
+        else:
+            level_type = 'cosmic/unified'
+        
+        return {
+            'n': n,
+            'E_n': E_n,
+            'E_0': E_0,
+            'alpha': alpha,
+            'n_max': n_max,
+            'level_type': level_type
+        }
+
+
+class VacuumDensityFieldCalculator:
+    """
+    Vacuum Density Field calculator.
+    
+    Equation:
+        ρ_vac(r) = ρ_0 × exp(-r/r_scale) + ρ_background
+    
+    Where:
+        ρ_0 = central vacuum density
+        r_scale = characteristic scale
+        ρ_background = asymptotic background
+    
+    Physics: Spatial variation of vacuum energy density
+    """
+    
+    def compute(self, r: float, rho_0: float = None,
+                r_scale: float = 1e13, rho_bg: float = None) -> dict:
+        """Compute vacuum density at distance r."""
+        import math
+        P = ORB_ANALYSIS_61_PARAMS
+        
+        rho_0 = rho_0 if rho_0 is not None else P['rho_vac_SCm']
+        rho_bg = rho_bg if rho_bg is not None else P['rho_vac_UA']
+        
+        # Exponential profile
+        if r_scale > 0:
+            exp_term = math.exp(-r / r_scale)
+        else:
+            exp_term = 1.0
+        
+        rho_vac = rho_0 * exp_term + rho_bg
+        
+        # Gradient (derivative)
+        if r_scale > 0:
+            d_rho_dr = -(rho_0 / r_scale) * exp_term
+        else:
+            d_rho_dr = 0.0
+        
+        return {
+            'rho_vac': rho_vac,
+            'rho_0': rho_0,
+            'rho_bg': rho_bg,
+            'r': r,
+            'r_scale': r_scale,
+            'd_rho_dr': d_rho_dr
+        }
+
+
+class StressEnergyTensorCalculator:
+    """
+    Stress-Energy Tensor (T_s^μν) component calculator.
+    
+    Equation:
+        T_s^μν = ρ_s × diag(1, -P/ρ, -P/ρ, -P/ρ)
+    
+    For vacuum-dominated:
+        P = -ρ (equation of state w = -1)
+        T_s^μν = ρ_s × diag(1, 1, 1, 1)
+    
+    Physics: Stress-energy source for Aether metric perturbation
+    """
+    
+    def compute(self, rho_s: float = None, w: float = -1.0,
+                compute_trace: bool = True) -> dict:
+        """Compute stress-energy tensor components."""
+        P = ORB_ANALYSIS_61_PARAMS
+        
+        rho_s = rho_s if rho_s is not None else P['T_s_density']
+        
+        # Pressure from equation of state
+        pressure = w * rho_s
+        
+        # Diagonal components
+        T_00 = rho_s       # Energy density
+        T_11 = pressure    # Pressure components
+        T_22 = pressure
+        T_33 = pressure
+        
+        result = {
+            'T_00': T_00,
+            'T_11': T_11,
+            'T_22': T_22,
+            'T_33': T_33,
+            'rho_s': rho_s,
+            'pressure': pressure,
+            'w': w
+        }
+        
+        if compute_trace:
+            # Trace: T = g^μν T_μν = T_00 - T_11 - T_22 - T_33
+            # With Minkowski: T = ρ - 3P = ρ(1 - 3w)
+            trace = rho_s * (1 - 3 * w)
+            result['trace'] = trace
+        
+        return result
+
+
+class SymbolicIntegratorCalculator:
+    """
+    Symbolic Integrator for UQFF equations.
+    
+    Handles common physics integrals:
+        ∫ x^n dx = x^(n+1)/(n+1) + C
+        ∫ e^ax dx = e^ax/a + C
+        ∫ cos(kx) dx = sin(kx)/k + C
+    
+    Physics: Analytical integration for energy/action calculations
+    """
+    
+    def compute(self, expr_type: str = 'power', 
+                params: dict = None) -> dict:
+        """Compute symbolic integral."""
+        import math
+        
+        params = params or {}
+        
+        if expr_type == 'power':
+            # ∫ x^n dx
+            x = params.get('x', 1.0)
+            n = params.get('n', 2)
+            C = params.get('C', 0)
+            
+            if n == -1:
+                # ln case
+                result = math.log(abs(x)) + C if x != 0 else float('inf')
+                formula = 'ln|x| + C'
+            else:
+                result = (x ** (n + 1)) / (n + 1) + C
+                formula = f'x^{n+1}/{n+1} + C'
+            
+        elif expr_type == 'exponential':
+            # ∫ e^ax dx
+            x = params.get('x', 1.0)
+            a = params.get('a', 1.0)
+            C = params.get('C', 0)
+            
+            result = math.exp(a * x) / a + C if a != 0 else x + C
+            formula = 'e^(ax)/a + C'
+            
+        elif expr_type == 'trig_cos':
+            # ∫ cos(kx) dx
+            x = params.get('x', 1.0)
+            k = params.get('k', 1.0)
+            C = params.get('C', 0)
+            
+            result = math.sin(k * x) / k + C if k != 0 else x + C
+            formula = 'sin(kx)/k + C'
+            
+        else:
+            result = None
+            formula = 'unknown integral type'
+        
+        return {
+            'result': result,
+            'formula': formula,
+            'expr_type': expr_type,
+            'params': params
+        }
+
+
+class NumericalNewtonSolverCalculator:
+    """
+    Numerical Newton-Raphson solver calculator.
+    
+    Iteration:
+        x_{n+1} = x_n - f(x_n)/f'(x_n)
+    
+    Convergence: |x_{n+1} - x_n| < tolerance
+    
+    Physics: Root-finding for transcendental UQFF equations
+    """
+    
+    def compute(self, f_lambda, df_lambda, x0: float = 1.0,
+                tolerance: float = 1e-10, max_iter: int = 100) -> dict:
+        """Solve f(x) = 0 using Newton-Raphson."""
+        x = x0
+        history = [x]
+        converged = False
+        
+        for i in range(max_iter):
+            fx = f_lambda(x)
+            dfx = df_lambda(x)
+            
+            if abs(dfx) < 1e-15:
+                # Derivative too small
+                break
+            
+            x_new = x - fx / dfx
+            history.append(x_new)
+            
+            if abs(x_new - x) < tolerance:
+                converged = True
+                x = x_new
+                break
+            
+            x = x_new
+        
+        return {
+            'root': x,
+            'converged': converged,
+            'iterations': len(history) - 1,
+            'f_at_root': f_lambda(x),
+            'history': history[-5:]  # Last 5 iterations
+        }
+
+
+class CategoryFunctorOrb61Calculator:
+    """
+    Category Theory Functor transformation calculator.
+    
+    Functor F: C → D maps:
+        Objects: F(A) → F(B)
+        Morphisms: F(f: A→B) = F(f): F(A)→F(B)
+    
+    Example: Add-to-Mul functor
+        F(a + b) = a × b
+    
+    Physics: Mathematical structure transformations in UQFF
+    """
+    
+    def compute(self, functor_type: str = 'add_to_mul',
+                a: float = 2.0, b: float = 3.0) -> dict:
+        """Apply category functor transformation."""
+        import math
+        
+        if functor_type == 'add_to_mul':
+            source = a + b
+            target = a * b
+            morphism = 'sum → product'
+            
+        elif functor_type == 'mul_to_exp':
+            source = a * b
+            target = a ** b
+            morphism = 'product → exponentiation'
+            
+        elif functor_type == 'exp_to_log':
+            source = math.exp(a) if abs(a) < 700 else float('inf')
+            target = math.log(abs(b)) if b > 0 else float('-inf')
+            morphism = 'exp → log'
+            
+        else:
+            source = a + b
+            target = a + b
+            morphism = 'identity'
+        
+        return {
+            'functor_type': functor_type,
+            'source': source,
+            'target': target,
+            'morphism': morphism,
+            'a': a,
+            'b': b,
+            'preserved_structure': source != 0  # Non-trivial
+        }
+
+
+# Registry for Orb Analysis 61
+ORB_ANALYSIS_61_CALCULATORS = {
+    'Ug1MagneticDipoleCalculator': Ug1MagneticDipoleCalculator(),
+    'Ug2ChargeReactivityCalculator': Ug2ChargeReactivityCalculator(),
+    'Ug3StringRotationCalculator': Ug3StringRotationCalculator(),
+    'Ug4VacuumConcentrationCalculator': Ug4VacuumConcentrationCalculator(),
+    'UniversalBuoyancyCalculator': UniversalBuoyancyCalculator(),
+    'UniversalMagnetismOrb61Calculator': UniversalMagnetismOrb61Calculator(),
+    'DEPowerTransformCalculator': DEPowerTransformCalculator(),
+    'TimeReversalZoneCalculator': TimeReversalZoneCalculator(),
+    'NegativeTimeOrb61Calculator': NegativeTimeOrb61Calculator(),
+    'PiCycleEncoderCalculator': PiCycleEncoderCalculator(),
+    'PlasmaOrbMassCalculator': PlasmaOrbMassCalculator(),
+    'ReactorEfficiencyOrb61Calculator': ReactorEfficiencyOrb61Calculator(),
+    'BioQuantumResonanceCalculator': BioQuantumResonanceCalculator(),
+    'QuantumLevel26Calculator': QuantumLevel26Calculator(),
+    'VacuumDensityFieldCalculator': VacuumDensityFieldCalculator(),
+    'StressEnergyTensorCalculator': StressEnergyTensorCalculator(),
+    'SymbolicIntegratorCalculator': SymbolicIntegratorCalculator(),
+    'NumericalNewtonSolverCalculator': NumericalNewtonSolverCalculator(),
+    'CategoryFunctorOrb61Calculator': CategoryFunctorOrb61Calculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -34052,6 +35055,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_58_CALCULATORS,
     **ORB_ANALYSIS_59_CALCULATORS,
     **ORB_ANALYSIS_60_CALCULATORS,
+    **ORB_ANALYSIS_61_CALCULATORS,
 }
 
 # Update class count
@@ -34731,6 +35735,29 @@ __all__ = [
     'GalacticDistanceCalculator',
     'StringDistanceCalculator',
     'ORB_ANALYSIS_60_CALCULATORS',
+    
+    # Orb 61: Universal Gravity Components & Extended UQFF Framework
+    'ORB_ANALYSIS_61_PARAMS',
+    'Ug1MagneticDipoleCalculator',
+    'Ug2ChargeReactivityCalculator',
+    'Ug3StringRotationCalculator',
+    'Ug4VacuumConcentrationCalculator',
+    'UniversalBuoyancyCalculator',
+    'UniversalMagnetismOrb61Calculator',
+    'DEPowerTransformCalculator',
+    'TimeReversalZoneCalculator',
+    'NegativeTimeOrb61Calculator',
+    'PiCycleEncoderCalculator',
+    'PlasmaOrbMassCalculator',
+    'ReactorEfficiencyOrb61Calculator',
+    'BioQuantumResonanceCalculator',
+    'QuantumLevel26Calculator',
+    'VacuumDensityFieldCalculator',
+    'StressEnergyTensorCalculator',
+    'SymbolicIntegratorCalculator',
+    'NumericalNewtonSolverCalculator',
+    'CategoryFunctorOrb61Calculator',
+    'ORB_ANALYSIS_61_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
