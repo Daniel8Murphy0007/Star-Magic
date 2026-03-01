@@ -93787,6 +93787,166 @@ Physical interpretation:
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# QUERY() ENTRY POINT - NATURAL LANGUAGE QUERY HANDLER
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def query(text: str, limit: int = 50) -> dict:
+    """
+    Natural language query handler for CondensedPhysics.py.
+    
+    Parses human-readable queries and searches calculators, equations, and physics
+    terms across the entire module.
+    
+    Parameters:
+        text: Natural language query (e.g., "show me all inertial equations")
+        limit: Maximum number of results to return (default 50)
+    
+    Returns:
+        Dict with:
+            - query: Original query text
+            - matches: List of matching calculator/equation names
+            - count: Number of matches found
+            - categories: Dict grouping matches by physics domain
+            - examples: Sample usage for top matches
+    
+    Supported query patterns:
+        - "show me all inertial equations"
+        - "find gravity calculators"
+        - "list black hole physics"
+        - "search resonance"
+        - "what equations involve magnetic fields?"
+    
+    Examples:
+        >>> query("show me all inertial equations")
+        >>> query("gravity calculators")
+        >>> query("black hole")
+    """
+    import re
+    
+    # Normalize query text
+    text_lower = text.lower().strip()
+    
+    # Extract search keywords (remove common words)
+    stop_words = {'show', 'me', 'all', 'the', 'find', 'list', 'search', 'get', 
+                  'what', 'which', 'where', 'how', 'equations', 'equation', 
+                  'calculators', 'calculator', 'with', 'for', 'that', 'involve',
+                  'involving', 'about', 'related', 'to', 'a', 'an', 'is', 'are'}
+    
+    words = re.findall(r'\b[a-z]+\b', text_lower)
+    keywords = [w for w in words if w not in stop_words and len(w) > 2]
+    
+    # If no keywords extracted, use all words except very short ones
+    if not keywords:
+        keywords = [w for w in words if len(w) > 2]
+    
+    # Search through __all__ exports
+    matches = []
+    all_exports = __all__ if '__all__' in dir() else []
+    
+    for name in all_exports:
+        name_lower = name.lower()
+        # Check if any keyword matches the name
+        for kw in keywords:
+            if kw in name_lower:
+                matches.append(name)
+                break
+    
+    # Also search through globals for classes not in __all__
+    class_matches = []
+    for name, obj in globals().items():
+        if isinstance(obj, type) and not name.startswith('_'):
+            name_lower = name.lower()
+            docstring = (obj.__doc__ or '').lower()
+            for kw in keywords:
+                if kw in name_lower or kw in docstring:
+                    if name not in matches and name not in class_matches:
+                        class_matches.append(name)
+                    break
+    
+    # Combine and sort matches
+    all_matches = list(set(matches + class_matches))[:limit]
+    all_matches.sort()
+    
+    # Categorize matches
+    categories = {
+        'inertial': [],
+        'gravity': [],
+        'magnetic': [],
+        'quantum': [],
+        'resonance': [],
+        'buoyancy': [],
+        'cosmological': [],
+        'black_hole': [],
+        'vacuum': [],
+        'triadic': [],
+        'other': []
+    }
+    
+    for name in all_matches:
+        name_lower = name.lower()
+        categorized = False
+        for cat in categories:
+            if cat.replace('_', '') in name_lower or cat in name_lower:
+                categories[cat].append(name)
+                categorized = True
+                break
+        if not categorized:
+            categories['other'].append(name)
+    
+    # Remove empty categories
+    categories = {k: v for k, v in categories.items() if v}
+    
+    # Generate example usage for top matches
+    examples = []
+    for name in all_matches[:5]:
+        obj = globals().get(name)
+        if obj:
+            if hasattr(obj, 'compute'):
+                examples.append(f"{name}.compute()  # Use compute() method")
+            elif hasattr(obj, 'solve'):
+                examples.append(f"{name}.solve()  # Use solve() method")
+            elif callable(obj):
+                examples.append(f"{name}()  # Callable function/class")
+            else:
+                examples.append(f"{name}  # Instance or constant")
+    
+    result = {
+        'query': text,
+        'keywords': keywords,
+        'matches': all_matches,
+        'count': len(all_matches),
+        'categories': categories,
+        'examples': examples,
+    }
+    
+    # Pretty print for interactive use
+    print(f"\n{'=' * 80}")
+    print(f"QUERY: \"{text}\"")
+    print(f"Keywords extracted: {keywords}")
+    print(f"{'=' * 80}")
+    print(f"\nFound {len(all_matches)} matches:\n")
+    
+    if categories:
+        for cat, names in categories.items():
+            print(f"  [{cat.upper()}]")
+            for name in names:
+                print(f"    - {name}")
+            print()
+    else:
+        for name in all_matches:
+            print(f"  - {name}")
+    
+    if examples:
+        print(f"\nExample usage:")
+        for ex in examples:
+            print(f"  >>> {ex}")
+    
+    print(f"\n{'=' * 80}")
+    
+    return result
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # MISSING CLASSES BATCH 3: TriadicGravity, UnifiedFieldSolver, MagnetarMUGE,
 # SgrAStarCalculator, Phase2Calculator, ConsciousnessCloud, StarMagic* classes
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -124999,6 +125159,7 @@ __all__ = [
     
     # Main entry points
     'solve',
+    'query',  # Natural language query handler
     'solve_galaxy_rotation',
     
     # Quantum/Wave functions (standalone)
