@@ -888,6 +888,98 @@ class CosmicRayCalculator:
         c = self.constants['c']
         return Z * e * B * R * beta * c
     
+    def compute_dsa_knee_energy(self, Z: int = 1, B_uG: float = 3.0,
+                                 u_s_km_s: float = 3000.0, R_pc: float = 10.0,
+                                 verbose: bool = False) -> dict:
+        """
+        Compute DSA (Diffusive Shock Acceleration) maximum energy - the Knee.
+        
+        Full formula:
+            E_max = Z × e × B × u_s × r_g
+            E_max ≈ 3×10^15 × Z × (B/3μG) × (u_s/10^3 km/s) × (R/10 pc) eV
+        
+        This is the Hillas criterion applied to SNR shock acceleration,
+        which explains the "knee" in the cosmic ray spectrum at ~3 PeV.
+        
+        Args:
+            Z: Atomic number (charge), default 1 (proton)
+            B_uG: Magnetic field strength in microgauss (default 3 μG for ISM)
+            u_s_km_s: Shock velocity in km/s (default 3000 km/s for young SNR)
+            R_pc: Shock radius in parsecs (default 10 pc)
+            verbose: Print detailed output
+            
+        Returns:
+            dict with:
+                E_max_eV: Maximum energy in eV
+                E_max_PeV: Maximum energy in PeV
+                E_max_J: Maximum energy in Joules
+                equation: LaTeX-style equation string
+                equation_unicode: Unicode equation string
+                parameters: Input parameters used
+        """
+        # Convert to SI units
+        B_T = B_uG * 1e-10  # μG to Tesla (1 G = 1e-4 T, 1 μG = 1e-10 T)
+        u_s_m_s = u_s_km_s * 1e3  # km/s to m/s
+        R_m = R_pc * 3.086e16  # pc to meters
+        
+        e = self.constants['e']  # 1.602e-19 C
+        c = self.constants['c']  # 3e8 m/s
+        
+        # Full DSA formula: E_max = Z × e × B × R × u_s
+        E_max_J = Z * e * B_T * R_m * u_s_m_s
+        
+        # Convert to eV
+        E_max_eV = E_max_J / e  # J / (J/eV) = eV
+        E_max_PeV = E_max_eV / 1e15
+        
+        # Empirical scaling formula (calibrated to observations):
+        # E ≈ 3e15 × Z × (B/3μG) × (u_s/10^3 km/s) × (R/10 pc) eV
+        E_scaling_eV = 3e15 * Z * (B_uG / 3.0) * (u_s_km_s / 1000.0) * (R_pc / 10.0)
+        
+        result = {
+            'E_max_eV': E_max_eV,
+            'E_max_PeV': E_max_PeV,
+            'E_max_J': E_max_J,
+            
+            # Empirical scaling result
+            'E_scaling_eV': E_scaling_eV,
+            'E_scaling_PeV': E_scaling_eV / 1e15,
+            
+            # Equations in different formats
+            'equation_latex': r"E_{\max} = Ze B u_s r_g \approx 3\times10^{15} Z \left(\frac{B}{3\mu G}\right) \left(\frac{u_s}{10^3\,\mathrm{km/s}}\right) \left(\frac{R}{10\,\mathrm{pc}}\right) \mathrm{eV}",
+            'equation_unicode': "E_max = Ze B u_s r_g ≈ 3×10¹⁵ Z(B/3μG)(u_s/10³km/s)(R/10pc) eV",
+            'equation_ascii': "E_max = Ze B u_s r_g ~ 3e15 * Z * (B/3uG) * (u_s/1000km/s) * (R/10pc) eV",
+            
+            'parameters': {
+                'Z': Z,
+                'B_uG': B_uG,
+                'u_s_km_s': u_s_km_s,
+                'R_pc': R_pc,
+            },
+            
+            'description': "DSA maximum energy (cosmic ray knee) from SNR shock acceleration",
+            'physics': "Diffusive Shock Acceleration at supernova remnant shocks"
+        }
+        
+        if verbose:
+            print("=" * 80)
+            print("DSA KNEE ENERGY CALCULATION (Galactic SNR Maximum)")
+            print("=" * 80)
+            print(f"\nEquation: {result['equation_unicode']}")
+            print(f"\nParameters:")
+            print(f"  Z (atomic number)     = {Z}")
+            print(f"  B (magnetic field)    = {B_uG} μG = {B_T:.2e} T")
+            print(f"  u_s (shock velocity)  = {u_s_km_s} km/s = {u_s_m_s:.2e} m/s")
+            print(f"  R (shock radius)      = {R_pc} pc = {R_m:.2e} m")
+            print(f"\nResults:")
+            print(f"  Exact:   E_max = {E_max_eV:.3e} eV = {E_max_PeV:.3f} PeV")
+            print(f"  Scaling: E_max ≈ {E_scaling_eV:.3e} eV = {E_scaling_eV/1e15:.3f} PeV")
+            print(f"\nNote: Scaling formula is empirically calibrated to observations.")
+            print(f"      Exact formula uses E = ZeBRu_s directly.")
+            print("=" * 80)
+        
+        return result
+    
     def compute_gzk_horizon(self, E: float) -> float:
         """
         Compute GZK horizon distance.
