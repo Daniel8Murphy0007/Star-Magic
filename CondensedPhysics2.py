@@ -30734,6 +30734,2226 @@ ORB_ANALYSIS_56_CALCULATORS = {
 }
 
 
+# ============================================================================
+# ORB_ANALYSIS_57: CLASSICAL MECHANICS & NUMERICAL METHODS CALCULATORS
+# Source: Grok ScientificCalculatorDialog (March 2026)
+# Physics: Core kinematics, dynamics, energy, and numerical solving methods
+#          from Qt-based symbolic calculator with SymEngine integration
+# Classes: 15 Calculator classes
+# ============================================================================
+
+ORB_ANALYSIS_57_PARAMS = {
+    # Physical constants
+    'c': 299792458.0,              # m/s (speed of light)
+    'G': 6.67430e-11,              # m³/kg·s² (gravitational constant)
+    'h': 6.62607015e-34,           # J·s (Planck constant)
+    'hbar': 1.054571817e-34,       # J·s (reduced Planck constant)
+    'e': 1.602176634e-19,          # C (elementary charge)
+    'me': 9.1093837015e-31,        # kg (electron mass)
+    'mp': 1.67262192369e-27,       # kg (proton mass)
+    'k_B': 1.380649e-23,           # J/K (Boltzmann constant)
+    'mu_0': 1.25663706212e-6,      # H/m (vacuum permeability)
+    'epsilon_0': 8.8541878128e-12, # F/m (vacuum permittivity)
+    # Numerical method defaults
+    'newton_tol': 1e-6,            # Newton-Raphson tolerance
+    'newton_max_iter': 100,        # max iterations
+}
+
+
+class NewtonSecondLawCalculator:
+    """
+    Newton's Second Law: F = ma
+    
+    Computes force from mass and acceleration, or solves for any variable.
+    
+    Physics:
+        F = m × a
+        a = F / m
+        m = F / a
+        
+    Source: Grok ScientificCalculatorDialog Physics Palette
+    """
+    
+    def __init__(self, params: dict = None):
+        self.params = params or ORB_ANALYSIS_57_PARAMS.copy()
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute Newton's second law.
+        
+        Args:
+            dataset: Contains at least 2 of {F, m, a}
+        
+        Returns:
+            dict: All three values plus derived quantities
+        """
+        F = dataset.get('F')
+        m = dataset.get('m')
+        a = dataset.get('a')
+        
+        # Solve for the missing variable
+        if F is None and m is not None and a is not None:
+            F = m * a
+        elif m is None and F is not None and a is not None:
+            m = F / a if a != 0 else float('inf')
+        elif a is None and F is not None and m is not None:
+            a = F / m if m != 0 else float('inf')
+        
+        # Derived quantities
+        impulse = F * dataset.get('dt', 1.0) if F else None
+        work = F * dataset.get('dx', 0.0) if F else None
+        
+        return {
+            'F': F,
+            'm': m,
+            'a': a,
+            'impulse_J': impulse,
+            'work_J': work,
+            'equation': 'F = m × a',
+            'units': {'F': 'N', 'm': 'kg', 'a': 'm/s²'}
+        }
+
+
+class EinsteinMassEnergyCalculator:
+    """
+    Einstein's Mass-Energy Equivalence: E = mc²
+    
+    Computes rest energy from mass or vice versa.
+    
+    Physics:
+        E = m × c²
+        m = E / c²
+        Δm = ΔE / c² (mass defect)
+        
+    Source: Grok ScientificCalculatorDialog Physics Palette
+    """
+    
+    def __init__(self, params: dict = None):
+        self.params = params or ORB_ANALYSIS_57_PARAMS.copy()
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute mass-energy equivalence.
+        
+        Args:
+            dataset: Contains 'm' (kg) or 'E' (J)
+        
+        Returns:
+            dict: Energy, mass, and conversions
+        """
+        c = self.params['c']
+        c2 = c * c
+        
+        m = dataset.get('m')
+        E = dataset.get('E')
+        
+        if E is None and m is not None:
+            E = m * c2
+        elif m is None and E is not None:
+            m = E / c2
+        
+        # Mass defect if binding energy provided
+        binding_E = dataset.get('binding_energy')
+        mass_defect = binding_E / c2 if binding_E else None
+        
+        return {
+            'E_joules': E,
+            'E_eV': E / self.params['e'] if E else None,
+            'E_MeV': E / (self.params['e'] * 1e6) if E else None,
+            'm_kg': m,
+            'm_u': m / 1.66054e-27 if m else None,  # atomic mass units
+            'mass_defect_kg': mass_defect,
+            'c': c,
+            'equation': 'E = mc²'
+        }
+
+
+class KinematicMotionCalculator:
+    """
+    Kinematic Equations of Motion.
+    
+    Computes linear motion variables using standard kinematics.
+    
+    Physics:
+        v = u + at           (final velocity)
+        s = ut + ½at²        (displacement)
+        v² = u² + 2as        (velocity-displacement)
+        s = ½(u + v)t        (average velocity)
+        
+    Source: Grok ScientificCalculatorDialog Motion Palette
+    """
+    
+    def __init__(self, params: dict = None):
+        self.params = params or ORB_ANALYSIS_57_PARAMS.copy()
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Solve kinematic equations.
+        
+        Args:
+            dataset: Contains {u, v, a, s, t} (any 3 to solve for others)
+        
+        Returns:
+            dict: All kinematic variables
+        """
+        import math
+        
+        u = dataset.get('u')  # initial velocity (m/s)
+        v = dataset.get('v')  # final velocity (m/s)
+        a = dataset.get('a')  # acceleration (m/s²)
+        s = dataset.get('s')  # displacement (m)
+        t = dataset.get('t')  # time (s)
+        
+        results = {'u': u, 'v': v, 'a': a, 's': s, 't': t}
+        
+        # v = u + at
+        if v is None and u is not None and a is not None and t is not None:
+            v = u + a * t
+            results['v'] = v
+        
+        # s = ut + ½at²
+        if s is None and u is not None and a is not None and t is not None:
+            s = u * t + 0.5 * a * t * t
+            results['s'] = s
+        
+        # v² = u² + 2as
+        if v is None and u is not None and a is not None and s is not None:
+            v_squared = u * u + 2 * a * s
+            v = math.sqrt(v_squared) if v_squared >= 0 else None
+            results['v'] = v
+        
+        # t from v = u + at
+        if t is None and v is not None and u is not None and a is not None and a != 0:
+            t = (v - u) / a
+            results['t'] = t
+        
+        # a from v² = u² + 2as
+        if a is None and v is not None and u is not None and s is not None and s != 0:
+            a = (v * v - u * u) / (2 * s)
+            results['a'] = a
+        
+        results['equations'] = [
+            'v = u + at',
+            's = ut + ½at²',
+            'v² = u² + 2as',
+            's = ½(u + v)t'
+        ]
+        
+        return results
+
+
+class GravitationalForceCalculator:
+    """
+    Newton's Law of Universal Gravitation: F = Gm₁m₂/r²
+    
+    Computes gravitational force between two masses.
+    
+    Physics:
+        F = G × m₁ × m₂ / r²
+        g = G × M / r² (surface gravity)
+        
+    Source: Grok ScientificCalculatorDialog Physics Palette
+    """
+    
+    def __init__(self, params: dict = None):
+        self.params = params or ORB_ANALYSIS_57_PARAMS.copy()
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute gravitational force.
+        
+        Args:
+            dataset: {m1, m2, r} or {M, r} for surface gravity
+        
+        Returns:
+            dict: Force, potential, binding energy
+        """
+        G = self.params['G']
+        
+        m1 = dataset.get('m1')
+        m2 = dataset.get('m2')
+        r = dataset.get('r')
+        M = dataset.get('M', m1)  # primary mass for surface gravity
+        
+        F = None
+        g = None
+        U = None
+        
+        if m1 and m2 and r and r > 0:
+            F = G * m1 * m2 / (r * r)
+            U = -G * m1 * m2 / r  # gravitational potential energy
+        
+        if M and r and r > 0:
+            g = G * M / (r * r)  # surface gravity
+        
+        return {
+            'F_N': F,
+            'g_surface': g,
+            'U_potential_J': U,
+            'G': G,
+            'equation': 'F = Gm₁m₂/r²',
+            'units': {'F': 'N', 'g': 'm/s²', 'U': 'J'}
+        }
+
+
+class KineticEnergyCalculator:
+    """
+    Kinetic Energy: KE = ½mv²
+    
+    Computes kinetic energy from mass and velocity.
+    
+    Physics:
+        KE = ½ × m × v²
+        KE_relativistic = (γ - 1)mc² where γ = 1/√(1 - v²/c²)
+        
+    Source: Grok ScientificCalculatorDialog Physics Palette
+    """
+    
+    def __init__(self, params: dict = None):
+        self.params = params or ORB_ANALYSIS_57_PARAMS.copy()
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute kinetic energy.
+        
+        Args:
+            dataset: {m, v} or {m, KE} to solve for v
+        
+        Returns:
+            dict: Classical and relativistic KE
+        """
+        import math
+        
+        c = self.params['c']
+        m = dataset.get('m')
+        v = dataset.get('v')
+        KE = dataset.get('KE')
+        
+        # Solve for missing variable
+        if KE is None and m is not None and v is not None:
+            KE = 0.5 * m * v * v
+        elif v is None and m is not None and KE is not None:
+            v = math.sqrt(2 * KE / m) if m > 0 else 0
+        
+        # Relativistic correction
+        KE_rel = None
+        gamma = None
+        if v is not None and v < c:
+            beta = v / c
+            gamma = 1.0 / math.sqrt(1 - beta * beta) if beta < 1 else float('inf')
+            KE_rel = (gamma - 1) * m * c * c if m else None
+        
+        return {
+            'KE_classical_J': KE,
+            'KE_relativistic_J': KE_rel,
+            'm_kg': m,
+            'v_m_s': v,
+            'gamma': gamma,
+            'equation': 'KE = ½mv²'
+        }
+
+
+class PotentialEnergyCalculator:
+    """
+    Gravitational Potential Energy: PE = mgh
+    
+    Computes potential energy in uniform gravitational field.
+    
+    Physics:
+        PE = m × g × h
+        PE_general = -GMm/r (general form)
+        
+    Source: Grok ScientificCalculatorDialog Physics Palette
+    """
+    
+    def __init__(self, params: dict = None):
+        self.params = params or ORB_ANALYSIS_57_PARAMS.copy()
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute potential energy.
+        
+        Args:
+            dataset: {m, g, h} or {M, m, r} for general form
+        
+        Returns:
+            dict: PE values and escape velocity
+        """
+        import math
+        
+        G = self.params['G']
+        
+        m = dataset.get('m')
+        g = dataset.get('g', 9.80665)  # default Earth surface
+        h = dataset.get('h')
+        M = dataset.get('M')
+        r = dataset.get('r')
+        
+        PE_local = None
+        PE_general = None
+        v_escape = None
+        
+        if m and h:
+            PE_local = m * g * h
+        
+        if G and M and m and r and r > 0:
+            PE_general = -G * M * m / r
+            v_escape = math.sqrt(2 * G * M / r)
+        
+        return {
+            'PE_local_J': PE_local,
+            'PE_general_J': PE_general,
+            'v_escape_m_s': v_escape,
+            'equation_local': 'PE = mgh',
+            'equation_general': 'PE = -GMm/r'
+        }
+
+
+class MomentumCalculator:
+    """
+    Linear Momentum: p = mv
+    
+    Computes momentum and impulse.
+    
+    Physics:
+        p = m × v
+        J = Δp = F × Δt (impulse-momentum theorem)
+        F = dp/dt (Newton's second law, momentum form)
+        
+    Source: Grok ScientificCalculatorDialog Physics/Motion Palettes
+    """
+    
+    def __init__(self, params: dict = None):
+        self.params = params or ORB_ANALYSIS_57_PARAMS.copy()
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute momentum and related quantities.
+        
+        Args:
+            dataset: {m, v} or collision data
+        
+        Returns:
+            dict: Momentum, impulse, force
+        """
+        m = dataset.get('m')
+        v = dataset.get('v')
+        v_initial = dataset.get('v_initial', 0)
+        dt = dataset.get('dt')
+        F = dataset.get('F')
+        
+        p = None
+        p_initial = None
+        J = None
+        
+        if m is not None and v is not None:
+            p = m * v
+        if m is not None and v_initial is not None:
+            p_initial = m * v_initial
+        
+        # Impulse
+        if p is not None and p_initial is not None:
+            J = p - p_initial
+        elif F is not None and dt is not None:
+            J = F * dt
+        
+        # Force from momentum change
+        F_derived = None
+        if J is not None and dt is not None and dt > 0:
+            F_derived = J / dt
+        
+        return {
+            'p_kg_m_s': p,
+            'p_initial': p_initial,
+            'impulse_J_Ns': J,
+            'F_average_N': F_derived,
+            'equation_momentum': 'p = mv',
+            'equation_impulse': 'J = Δp = FΔt',
+            'equation_newton': 'F = dp/dt'
+        }
+
+
+class AngularFrequencyCalculator:
+    """
+    Angular Frequency: ω = 2πf
+    
+    Converts between frequency, period, and angular frequency.
+    
+    Physics:
+        ω = 2πf
+        ω = 2π/T
+        f = ω/(2π)
+        T = 2π/ω
+        
+    Source: Grok ScientificCalculatorDialog Physics Palette
+    """
+    
+    def __init__(self, params: dict = None):
+        self.params = params or ORB_ANALYSIS_57_PARAMS.copy()
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute angular frequency relations.
+        
+        Args:
+            dataset: Contains {f, T, omega} (any one)
+        
+        Returns:
+            dict: All frequency quantities
+        """
+        import math
+        
+        f = dataset.get('f')        # frequency (Hz)
+        T = dataset.get('T')        # period (s)
+        omega = dataset.get('omega')  # angular frequency (rad/s)
+        
+        two_pi = 2 * math.pi
+        
+        if f is not None:
+            omega = two_pi * f
+            T = 1.0 / f if f > 0 else float('inf')
+        elif T is not None and T > 0:
+            f = 1.0 / T
+            omega = two_pi / T
+        elif omega is not None:
+            f = omega / two_pi
+            T = two_pi / omega if omega > 0 else float('inf')
+        
+        return {
+            'f_Hz': f,
+            'T_s': T,
+            'omega_rad_s': omega,
+            'equations': ['ω = 2πf', 'T = 1/f', 'ω = 2π/T']
+        }
+
+
+class WavelengthCalculator:
+    """
+    Wave Velocity: λ = v/f
+    
+    Relates wavelength, frequency, and wave velocity.
+    
+    Physics:
+        v = f × λ
+        λ = v / f
+        f = v / λ
+        
+    Source: Grok ScientificCalculatorDialog Physics Palette
+    """
+    
+    def __init__(self, params: dict = None):
+        self.params = params or ORB_ANALYSIS_57_PARAMS.copy()
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute wavelength relations.
+        
+        Args:
+            dataset: Contains 2 of {v, f, lambda}
+        
+        Returns:
+            dict: All wave quantities
+        """
+        v = dataset.get('v')
+        f = dataset.get('f')
+        wavelength = dataset.get('lambda') or dataset.get('wavelength')
+        
+        # Solve for missing variable
+        if wavelength is None and v is not None and f is not None and f > 0:
+            wavelength = v / f
+        elif v is None and wavelength is not None and f is not None:
+            v = f * wavelength
+        elif f is None and v is not None and wavelength is not None and wavelength > 0:
+            f = v / wavelength
+        
+        # Wave number
+        k = 2 * 3.141592653589793 / wavelength if wavelength and wavelength > 0 else None
+        
+        return {
+            'v_m_s': v,
+            'f_Hz': f,
+            'lambda_m': wavelength,
+            'k_wavenumber': k,
+            'equation': 'v = fλ'
+        }
+
+
+class ElectricalPowerCalculator:
+    """
+    Electrical Power: P = VI
+    
+    Computes electrical power from voltage and current.
+    
+    Physics:
+        P = V × I
+        P = I²R
+        P = V²/R
+        
+    Source: Grok ScientificCalculatorDialog Physics Palette
+    """
+    
+    def __init__(self, params: dict = None):
+        self.params = params or ORB_ANALYSIS_57_PARAMS.copy()
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute electrical power.
+        
+        Args:
+            dataset: Contains 2 of {V, I, R, P}
+        
+        Returns:
+            dict: Power, energy, and Ohm's law values
+        """
+        V = dataset.get('V')  # voltage
+        I = dataset.get('I')  # current
+        R = dataset.get('R')  # resistance
+        P = dataset.get('P')  # power
+        t = dataset.get('t', 1.0)  # time for energy calculation
+        
+        # Solve using different forms
+        if P is None:
+            if V is not None and I is not None:
+                P = V * I
+            elif I is not None and R is not None:
+                P = I * I * R
+            elif V is not None and R is not None and R > 0:
+                P = V * V / R
+        
+        # Derive missing values
+        if V is None and I is not None and R is not None:
+            V = I * R
+        if I is None and V is not None and R is not None and R > 0:
+            I = V / R
+        if R is None and V is not None and I is not None and I > 0:
+            R = V / I
+        
+        E = P * t if P else None  # Energy
+        
+        return {
+            'P_W': P,
+            'V_V': V,
+            'I_A': I,
+            'R_Ohm': R,
+            'E_J': E,
+            'equations': ['P = VI', 'P = I²R', 'P = V²/R', 'V = IR']
+        }
+
+
+class PhotonEnergyCalculator:
+    """
+    Photon Energy: E = hf
+    
+    Computes photon energy from frequency or wavelength.
+    
+    Physics:
+        E = h × f
+        E = hc/λ
+        p = h/λ (photon momentum)
+        
+    Source: Grok ScientificCalculatorDialog Physics Palette
+    """
+    
+    def __init__(self, params: dict = None):
+        self.params = params or ORB_ANALYSIS_57_PARAMS.copy()
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute photon properties.
+        
+        Args:
+            dataset: Contains {f} or {wavelength} or {E}
+        
+        Returns:
+            dict: Energy, frequency, wavelength, momentum
+        """
+        h = self.params['h']
+        c = self.params['c']
+        e_charge = self.params['e']
+        
+        f = dataset.get('f')
+        wavelength = dataset.get('wavelength') or dataset.get('lambda')
+        E = dataset.get('E')
+        
+        # Solve for missing variables
+        if E is None:
+            if f is not None:
+                E = h * f
+            elif wavelength is not None and wavelength > 0:
+                E = h * c / wavelength
+        
+        if f is None and E is not None:
+            f = E / h
+        
+        if wavelength is None:
+            if f is not None and f > 0:
+                wavelength = c / f
+            elif E is not None and E > 0:
+                wavelength = h * c / E
+        
+        # Photon momentum
+        p = h / wavelength if wavelength and wavelength > 0 else None
+        
+        return {
+            'E_J': E,
+            'E_eV': E / e_charge if E else None,
+            'f_Hz': f,
+            'wavelength_m': wavelength,
+            'wavelength_nm': wavelength * 1e9 if wavelength else None,
+            'p_photon': p,
+            'equations': ['E = hf', 'E = hc/λ', 'p = h/λ']
+        }
+
+
+class ParametricMotionCalculator:
+    """
+    Parametric Motion Equations: x(t), v(t)
+    
+    Computes position and velocity as functions of time.
+    
+    Physics:
+        x(t) = x₀ + v₀t + ½at²
+        v(t) = v₀ + at
+        v²(x) = v₀² + 2a(x - x₀)
+        
+    Source: Grok ScientificCalculatorDialog Motion Palette
+    """
+    
+    def __init__(self, params: dict = None):
+        self.params = params or ORB_ANALYSIS_57_PARAMS.copy()
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute parametric motion.
+        
+        Args:
+            dataset: {x0, v0, a, t} or time array
+        
+        Returns:
+            dict: Position and velocity at time(s)
+        """
+        import numpy as np
+        
+        x0 = dataset.get('x0', 0)
+        v0 = dataset.get('v0', 0)
+        a = dataset.get('a', 0)
+        t = dataset.get('t', 0)
+        
+        # Handle array of times
+        t_arr = np.atleast_1d(t)
+        
+        # Position: x(t) = x₀ + v₀t + ½at²
+        x = x0 + v0 * t_arr + 0.5 * a * t_arr * t_arr
+        
+        # Velocity: v(t) = v₀ + at
+        v = v0 + a * t_arr
+        
+        # Trajectory data
+        trajectory = [{'t': ti, 'x': xi, 'v': vi} 
+                     for ti, xi, vi in zip(t_arr, x, v)]
+        
+        return {
+            'x_t': x.tolist() if hasattr(x, 'tolist') else x,
+            'v_t': v.tolist() if hasattr(v, 'tolist') else v,
+            'x0': x0,
+            'v0': v0,
+            'a': a,
+            'trajectory': trajectory[:100],  # limit output
+            'equations': ['x(t) = x₀ + v₀t + ½at²', 'v(t) = v₀ + at']
+        }
+
+
+class NewtonRaphsonSolverCalculator:
+    """
+    Newton-Raphson Numerical Root Finding.
+    
+    Finds roots of functions using iterative Newton's method.
+    
+    Algorithm:
+        x_{n+1} = x_n - f(x_n)/f'(x_n)
+        
+    Source: Grok ScientificCalculatorDialog solveEquations() method
+    """
+    
+    def __init__(self, params: dict = None):
+        self.params = params or ORB_ANALYSIS_57_PARAMS.copy()
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Find root using Newton-Raphson method.
+        
+        Args:
+            dataset: {f, df, x0} where f is function, df is derivative, x0 is initial guess
+                    OR {coefficients, x0} for polynomial
+        
+        Returns:
+            dict: Root, iterations, convergence info
+        """
+        import math
+        
+        tol = self.params['newton_tol']
+        max_iter = self.params['newton_max_iter']
+        
+        f = dataset.get('f')
+        df = dataset.get('df')
+        x0 = dataset.get('x0', 1.0)
+        coefficients = dataset.get('coefficients')  # for polynomials
+        
+        # If polynomial coefficients given, create f and df
+        if coefficients and not f:
+            def f(x):
+                return sum(c * x**i for i, c in enumerate(coefficients))
+            def df(x):
+                return sum(i * c * x**(i-1) for i, c in enumerate(coefficients) if i > 0)
+        
+        if not callable(f) or not callable(df):
+            return {'error': 'Function f and derivative df must be provided'}
+        
+        x = x0
+        iterations = []
+        converged = False
+        
+        for i in range(max_iter):
+            fx = f(x)
+            dfx = df(x)
+            
+            iterations.append({'n': i, 'x': x, 'f(x)': fx, "f'(x)": dfx})
+            
+            if abs(dfx) < 1e-12:
+                break  # derivative too small
+            
+            dx = fx / dfx
+            x = x - dx
+            
+            if abs(dx) < tol:
+                converged = True
+                break
+        
+        return {
+            'root': x if converged else None,
+            'x_final': x,
+            'converged': converged,
+            'iterations': len(iterations),
+            'iteration_history': iterations[:20],  # limit output
+            'tolerance': tol,
+            'algorithm': 'x_{n+1} = x_n - f(x_n)/f\'(x_n)'
+        }
+
+
+class UnitConversionCalculator:
+    """
+    Physical Unit Conversion Calculator.
+    
+    Converts between common physics units.
+    
+    Categories: Length, Mass, Time, Energy, Force, Temperature
+    
+    Source: Grok ScientificCalculatorDialog unit_factors
+    """
+    
+    def __init__(self, params: dict = None):
+        self.params = params or ORB_ANALYSIS_57_PARAMS.copy()
+        
+        # Conversion factors to SI base units
+        self.unit_factors = {
+            # Length → meters
+            'm': 1.0, 'cm': 0.01, 'mm': 0.001, 'km': 1000.0,
+            'in': 0.0254, 'ft': 0.3048, 'mi': 1609.344,
+            'au': 1.495978707e11, 'ly': 9.4607e15, 'pc': 3.0857e16,
+            # Mass → kg
+            'kg': 1.0, 'g': 0.001, 'mg': 1e-6, 'lb': 0.453592,
+            'oz': 0.0283495, 'u': 1.66054e-27, 'me': 9.1094e-31,
+            # Time → seconds
+            's': 1.0, 'ms': 0.001, 'us': 1e-6, 'ns': 1e-9,
+            'min': 60, 'hr': 3600, 'day': 86400, 'yr': 3.156e7,
+            # Energy → joules
+            'J': 1.0, 'kJ': 1000, 'MJ': 1e6, 'eV': 1.602e-19,
+            'keV': 1.602e-16, 'MeV': 1.602e-13, 'GeV': 1.602e-10,
+            'cal': 4.184, 'kcal': 4184, 'kWh': 3.6e6,
+            # Force → newtons
+            'N': 1.0, 'kN': 1000, 'dyn': 1e-5, 'lbf': 4.44822,
+        }
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Convert between units.
+        
+        Args:
+            dataset: {value, from_unit, to_unit}
+        
+        Returns:
+            dict: Converted value and factor
+        """
+        value = dataset.get('value')
+        from_unit = dataset.get('from_unit')
+        to_unit = dataset.get('to_unit')
+        
+        if from_unit not in self.unit_factors:
+            return {'error': f'Unknown unit: {from_unit}'}
+        if to_unit not in self.unit_factors:
+            return {'error': f'Unknown unit: {to_unit}'}
+        
+        # Convert via SI base unit
+        factor = self.unit_factors[from_unit] / self.unit_factors[to_unit]
+        result = value * factor
+        
+        return {
+            'input_value': value,
+            'input_unit': from_unit,
+            'output_value': result,
+            'output_unit': to_unit,
+            'conversion_factor': factor,
+            'expression': f'{value} {from_unit} = {result} {to_unit}'
+        }
+
+
+class ErrorPropagationCalculator:
+    """
+    Error Propagation Calculator.
+    
+    Computes uncertainty propagation through calculations.
+    
+    Physics:
+        σ_f = √(Σ (∂f/∂xᵢ × σ_xᵢ)²)
+        
+    Source: Grok ScientificCalculatorDialog computeErrorPropagation()
+    """
+    
+    def __init__(self, params: dict = None):
+        self.params = params or ORB_ANALYSIS_57_PARAMS.copy()
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute error propagation.
+        
+        Args:
+            dataset: {values: {x: value}, errors: {x: error}, 
+                     operation: 'sum'|'product'|'power'|'custom'}
+        
+        Returns:
+            dict: Result with propagated uncertainty
+        """
+        import math
+        
+        values = dataset.get('values', {})
+        errors = dataset.get('errors', {})
+        operation = dataset.get('operation', 'sum')
+        power = dataset.get('power', 1)
+        
+        result = None
+        sigma = None
+        
+        if operation == 'sum':
+            # f = x + y + ...; σ_f = √(σ_x² + σ_y² + ...)
+            result = sum(values.values())
+            sigma = math.sqrt(sum(e**2 for e in errors.values()))
+            
+        elif operation == 'product':
+            # f = x × y × ...; σ_f/f = √((σ_x/x)² + (σ_y/y)² + ...)
+            result = 1.0
+            for v in values.values():
+                result *= v
+            rel_sigma_sq = sum((errors.get(k, 0)/v)**2 
+                              for k, v in values.items() if v != 0)
+            sigma = abs(result) * math.sqrt(rel_sigma_sq)
+            
+        elif operation == 'power':
+            # f = x^n; σ_f = |n × x^(n-1) × σ_x|
+            x = list(values.values())[0] if values else 1
+            sigma_x = list(errors.values())[0] if errors else 0
+            result = x ** power
+            sigma = abs(power * (x ** (power - 1)) * sigma_x)
+            
+        elif operation == 'division':
+            # f = x/y; σ_f/f = √((σ_x/x)² + (σ_y/y)²)
+            keys = list(values.keys())
+            if len(keys) >= 2:
+                x, y = values[keys[0]], values[keys[1]]
+                sx, sy = errors.get(keys[0], 0), errors.get(keys[1], 0)
+                result = x / y if y != 0 else float('inf')
+                rel_sigma = math.sqrt((sx/x)**2 + (sy/y)**2) if x != 0 and y != 0 else 0
+                sigma = abs(result) * rel_sigma
+        
+        return {
+            'result': result,
+            'uncertainty': sigma,
+            'relative_uncertainty': sigma / abs(result) if result and result != 0 else None,
+            'values': values,
+            'errors': errors,
+            'equation': 'σ_f = √(Σ(∂f/∂xᵢ × σ_xᵢ)²)'
+        }
+
+
+# Registry for Orb Analysis 57
+ORB_ANALYSIS_57_CALCULATORS = {
+    'NewtonSecondLawCalculator': NewtonSecondLawCalculator(),
+    'EinsteinMassEnergyCalculator': EinsteinMassEnergyCalculator(),
+    'KinematicMotionCalculator': KinematicMotionCalculator(),
+    'GravitationalForceCalculator': GravitationalForceCalculator(),
+    'KineticEnergyCalculator': KineticEnergyCalculator(),
+    'PotentialEnergyCalculator': PotentialEnergyCalculator(),
+    'MomentumCalculator': MomentumCalculator(),
+    'AngularFrequencyCalculator': AngularFrequencyCalculator(),
+    'WavelengthCalculator': WavelengthCalculator(),
+    'ElectricalPowerCalculator': ElectricalPowerCalculator(),
+    'PhotonEnergyCalculator': PhotonEnergyCalculator(),
+    'ParametricMotionCalculator': ParametricMotionCalculator(),
+    'NewtonRaphsonSolverCalculator': NewtonRaphsonSolverCalculator(),
+    'UnitConversionCalculator': UnitConversionCalculator(),
+    'ErrorPropagationCalculator': ErrorPropagationCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ORB_ANALYSIS_58: Geometry, Advanced Kinematics & Calculus
+# Source: ScientificCalculatorDialog Grok URL Integration (Extended)
+# Date: 2026-03-01
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Physical constants registry for Orb 58
+ORB_ANALYSIS_58_PARAMS = {
+    # SI Base Unit Exponents: M^mass L^length T^time I^current Θ^temp N^amount J^luminous
+    'SI_UNITS': {
+        'kg': {'M': 1, 'L': 0, 'T': 0, 'I': 0, 'Θ': 0, 'N': 0, 'J': 0},
+        'm': {'M': 0, 'L': 1, 'T': 0, 'I': 0, 'Θ': 0, 'N': 0, 'J': 0},
+        's': {'M': 0, 'L': 0, 'T': 1, 'I': 0, 'Θ': 0, 'N': 0, 'J': 0},
+        'A': {'M': 0, 'L': 0, 'T': 0, 'I': 1, 'Θ': 0, 'N': 0, 'J': 0},
+        'K': {'M': 0, 'L': 0, 'T': 0, 'I': 0, 'Θ': 1, 'N': 0, 'J': 0},
+        'mol': {'M': 0, 'L': 0, 'T': 0, 'I': 0, 'Θ': 0, 'N': 1, 'J': 0},
+        'cd': {'M': 0, 'L': 0, 'T': 0, 'I': 0, 'Θ': 0, 'N': 0, 'J': 1},
+        # Derived units
+        'N': {'M': 1, 'L': 1, 'T': -2, 'I': 0, 'Θ': 0, 'N': 0, 'J': 0},  # Newton
+        'J': {'M': 1, 'L': 2, 'T': -2, 'I': 0, 'Θ': 0, 'N': 0, 'J': 0},  # Joule
+        'W': {'M': 1, 'L': 2, 'T': -3, 'I': 0, 'Θ': 0, 'N': 0, 'J': 0},  # Watt
+        'Pa': {'M': 1, 'L': -1, 'T': -2, 'I': 0, 'Θ': 0, 'N': 0, 'J': 0},  # Pascal
+        'V': {'M': 1, 'L': 2, 'T': -3, 'I': -1, 'Θ': 0, 'N': 0, 'J': 0},  # Volt
+        'Hz': {'M': 0, 'L': 0, 'T': -1, 'I': 0, 'Θ': 0, 'N': 0, 'J': 0},  # Hertz
+    }
+}
+
+
+class CircleAreaCalculator:
+    """
+    Circle area calculation: A = πr²
+    
+    From Geometry symbol palette in ScientificCalculatorDialog.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Calculate circle area.
+        
+        Args:
+            dataset: {'r': radius in meters}
+        
+        Returns:
+            dict with area, circumference, and related values
+        """
+        import math
+        r = dataset.get('r', 1.0)
+        
+        area = math.pi * r**2
+        circumference = 2 * math.pi * r
+        diameter = 2 * r
+        
+        return {
+            'A': area,
+            'circumference': circumference,
+            'diameter': diameter,
+            'r': r,
+            'equation': 'A = πr²',
+            'circumference_equation': 'C = 2πr'
+        }
+
+
+class SphereVolumeCalculator:
+    """
+    Sphere volume calculation: V = (4/3)πr³
+    
+    From Geometry symbol palette in ScientificCalculatorDialog.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Calculate sphere volume and surface area.
+        
+        Args:
+            dataset: {'r': radius in meters}
+        
+        Returns:
+            dict with volume, surface area, and related values
+        """
+        import math
+        r = dataset.get('r', 1.0)
+        
+        volume = (4/3) * math.pi * r**3
+        surface_area = 4 * math.pi * r**2
+        
+        return {
+            'V': volume,
+            'surface_area': surface_area,
+            'r': r,
+            'equation': 'V = (4/3)πr³',
+            'surface_equation': 'A = 4πr²'
+        }
+
+
+class PythagoreanTheoremCalculator:
+    """
+    Pythagorean theorem: a² + b² = c²
+    
+    Solves for any missing side given two known sides.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Calculate missing side of right triangle.
+        
+        Args:
+            dataset: Any two of {'a': side_a, 'b': side_b, 'c': hypotenuse}
+        
+        Returns:
+            dict with all three sides
+        """
+        import math
+        a = dataset.get('a')
+        b = dataset.get('b')
+        c = dataset.get('c')
+        
+        if a is not None and b is not None:
+            c = math.sqrt(a**2 + b**2)
+        elif a is not None and c is not None:
+            b = math.sqrt(c**2 - a**2) if c > a else None
+        elif b is not None and c is not None:
+            a = math.sqrt(c**2 - b**2) if c > b else None
+        
+        return {
+            'a': a,
+            'b': b,
+            'c': c,
+            'equation': 'a² + b² = c²',
+            'is_valid': a is not None and b is not None and c is not None
+        }
+
+
+class TriangleAreaCalculator:
+    """
+    Triangle area calculation: A = (1/2)bh
+    
+    From Geometry symbol palette in ScientificCalculatorDialog.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Calculate triangle area using base and height.
+        
+        Args:
+            dataset: {'b': base, 'h': height} or {'a': side_a, 'b': side_b, 'C': angle_rad}
+        
+        Returns:
+            dict with area and perimeter info
+        """
+        import math
+        
+        # Method 1: Base × Height
+        if 'b' in dataset and 'h' in dataset:
+            b = dataset['b']
+            h = dataset['h']
+            area = 0.5 * b * h
+            return {
+                'A': area,
+                'b': b,
+                'h': h,
+                'equation': 'A = (1/2)bh'
+            }
+        
+        # Method 2: Two sides and included angle
+        if 'a' in dataset and 'b' in dataset and 'C' in dataset:
+            a = dataset['a']
+            b = dataset['b']
+            C = dataset['C']  # Angle in radians
+            area = 0.5 * a * b * math.sin(C)
+            return {
+                'A': area,
+                'a': a,
+                'b': b,
+                'C': C,
+                'C_degrees': math.degrees(C),
+                'equation': 'A = (1/2)ab·sin(C)'
+            }
+        
+        return {'error': 'Insufficient parameters'}
+
+
+class CylinderVolumeCalculator:
+    """
+    Cylinder volume calculation: V = πr²h
+    
+    From Geometry symbol palette in ScientificCalculatorDialog.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Calculate cylinder volume and surface area.
+        
+        Args:
+            dataset: {'r': radius, 'h': height}
+        
+        Returns:
+            dict with volume and surface area
+        """
+        import math
+        r = dataset.get('r', 1.0)
+        h = dataset.get('h', 1.0)
+        
+        volume = math.pi * r**2 * h
+        lateral_surface = 2 * math.pi * r * h
+        total_surface = 2 * math.pi * r * (r + h)
+        
+        return {
+            'V': volume,
+            'lateral_surface': lateral_surface,
+            'total_surface': total_surface,
+            'r': r,
+            'h': h,
+            'equation': 'V = πr²h',
+            'surface_equation': 'A = 2πr(r + h)'
+        }
+
+
+class QuadraticFormulaCalculator:
+    """
+    Quadratic equation solver: x = (-b ± √(b²-4ac)) / 2a
+    
+    From Formulas symbol palette in ScientificCalculatorDialog.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Solve quadratic equation ax² + bx + c = 0.
+        
+        Args:
+            dataset: {'a': coefficient_a, 'b': coefficient_b, 'c': coefficient_c}
+        
+        Returns:
+            dict with solutions x1, x2, discriminant, nature
+        """
+        import math
+        a = dataset.get('a', 1.0)
+        b = dataset.get('b', 0.0)
+        c = dataset.get('c', 0.0)
+        
+        discriminant = b**2 - 4*a*c
+        
+        if discriminant > 0:
+            x1 = (-b + math.sqrt(discriminant)) / (2*a)
+            x2 = (-b - math.sqrt(discriminant)) / (2*a)
+            nature = 'two_real_distinct'
+        elif discriminant == 0:
+            x1 = x2 = -b / (2*a)
+            nature = 'one_real_repeated'
+        else:
+            real_part = -b / (2*a)
+            imag_part = math.sqrt(-discriminant) / (2*a)
+            x1 = complex(real_part, imag_part)
+            x2 = complex(real_part, -imag_part)
+            nature = 'two_complex_conjugates'
+        
+        # Vertex of parabola
+        vertex_x = -b / (2*a)
+        vertex_y = a * vertex_x**2 + b * vertex_x + c
+        
+        return {
+            'x1': x1,
+            'x2': x2,
+            'discriminant': discriminant,
+            'nature': nature,
+            'vertex': (vertex_x, vertex_y),
+            'a': a, 'b': b, 'c': c,
+            'equation': 'x = (-b ± √(b²-4ac)) / 2a'
+        }
+
+
+class VelocityTimeRelationCalculator:
+    """
+    Velocity-time kinematic equation: v(t) = v₀ + at
+    
+    From Motion symbol palette in ScientificCalculatorDialog.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Calculate velocity at time t.
+        
+        Args:
+            dataset: {'v0': initial_velocity, 'a': acceleration, 't': time}
+        
+        Returns:
+            dict with final velocity and related quantities
+        """
+        v0 = dataset.get('v0', 0.0)
+        a = dataset.get('a', 0.0)
+        t = dataset.get('t', 0.0)
+        
+        v = v0 + a*t
+        delta_v = v - v0
+        
+        return {
+            'v': v,
+            'v0': v0,
+            'a': a,
+            't': t,
+            'delta_v': delta_v,
+            'equation': 'v(t) = v₀ + at'
+        }
+
+
+class SUVATEquationCalculator:
+    """
+    SUVAT kinematic equation: v² = v₀² + 2a(x - x₀)
+    
+    Time-independent velocity-displacement relation.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Solve v² = u² + 2as for any unknown.
+        
+        Args:
+            dataset: Any three of {'v': final_velocity, 'u': initial_velocity, 
+                                   'a': acceleration, 's': displacement}
+        
+        Returns:
+            dict with all SUVAT parameters
+        """
+        import math
+        v = dataset.get('v')
+        u = dataset.get('u', dataset.get('v0'))
+        a = dataset.get('a')
+        s = dataset.get('s', dataset.get('x', dataset.get('displacement')))
+        
+        # Solve for missing variable
+        if v is None and u is not None and a is not None and s is not None:
+            v_squared = u**2 + 2*a*s
+            v = math.sqrt(v_squared) if v_squared >= 0 else None
+        elif u is None and v is not None and a is not None and s is not None:
+            u_squared = v**2 - 2*a*s
+            u = math.sqrt(u_squared) if u_squared >= 0 else None
+        elif a is None and v is not None and u is not None and s is not None:
+            a = (v**2 - u**2) / (2*s) if s != 0 else None
+        elif s is None and v is not None and u is not None and a is not None:
+            s = (v**2 - u**2) / (2*a) if a != 0 else None
+        
+        return {
+            'v': v,
+            'u': u,
+            'a': a,
+            's': s,
+            'equation': 'v² = u² + 2as'
+        }
+
+
+class MomentumForceCalculator:
+    """
+    Force as rate of momentum change: F = dp/dt
+    
+    Newton's second law in momentum form.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Calculate force from momentum change.
+        
+        Args:
+            dataset: {'p1': initial_momentum, 'p2': final_momentum, 'dt': time_interval}
+                     OR {'m': mass, 'v1': initial_velocity, 'v2': final_velocity, 'dt': time}
+        
+        Returns:
+            dict with force and impulse
+        """
+        # Method 1: Direct momentum change
+        if 'p1' in dataset and 'p2' in dataset and 'dt' in dataset:
+            p1 = dataset['p1']
+            p2 = dataset['p2']
+            dt = dataset['dt']
+            dp = p2 - p1
+            F = dp / dt if dt != 0 else float('inf')
+            return {
+                'F': F,
+                'dp': dp,
+                'dt': dt,
+                'impulse': dp,
+                'equation': 'F = dp/dt'
+            }
+        
+        # Method 2: From mass and velocities
+        if 'm' in dataset and 'v1' in dataset and 'v2' in dataset and 'dt' in dataset:
+            m = dataset['m']
+            v1 = dataset['v1']
+            v2 = dataset['v2']
+            dt = dataset['dt']
+            p1 = m * v1
+            p2 = m * v2
+            dp = p2 - p1
+            F = dp / dt if dt != 0 else float('inf')
+            return {
+                'F': F,
+                'p1': p1,
+                'p2': p2,
+                'dp': dp,
+                'impulse': dp,
+                'a': (v2 - v1) / dt if dt != 0 else None,
+                'equation': 'F = dp/dt = m(v₂-v₁)/Δt'
+            }
+        
+        return {'error': 'Insufficient parameters'}
+
+
+class PowerIntegrationCalculator:
+    """
+    Power rule integration: ∫x^n dx = x^(n+1)/(n+1) + C
+    
+    Basic integration rule for polynomial terms.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Integrate monomial x^n.
+        
+        Args:
+            dataset: {'n': exponent, 'x': evaluation_point (optional), 
+                     'C': constant (optional), 'a': lower_bound, 'b': upper_bound}
+        
+        Returns:
+            dict with antiderivative and definite integral if bounds given
+        """
+        n = dataset.get('n', 1)
+        C = dataset.get('C', 0)
+        
+        if n == -1:
+            # Special case: ∫x^(-1) dx = ln|x| + C
+            antiderivative_formula = 'ln|x| + C'
+            if 'x' in dataset:
+                import math
+                x = dataset['x']
+                value = math.log(abs(x)) + C if x != 0 else None
+            else:
+                value = None
+        else:
+            new_exp = n + 1
+            antiderivative_formula = f'x^{new_exp}/{new_exp} + C'
+            if 'x' in dataset:
+                x = dataset['x']
+                value = (x**(new_exp)) / new_exp + C
+            else:
+                value = None
+        
+        # Definite integral
+        definite = None
+        if 'a' in dataset and 'b' in dataset and n != -1:
+            a = dataset['a']
+            b = dataset['b']
+            new_exp = n + 1
+            F_b = (b**(new_exp)) / new_exp
+            F_a = (a**(new_exp)) / new_exp
+            definite = F_b - F_a
+        
+        return {
+            'antiderivative': antiderivative_formula,
+            'value': value,
+            'definite_integral': definite,
+            'n': n,
+            'equation': '∫x^n dx = x^(n+1)/(n+1) + C (n ≠ -1)'
+        }
+
+
+class TaylorSeriesCalculator:
+    """
+    Taylor series expansion: f(x) = Σ (f^(n)(a)/n!) × (x-a)^n
+    
+    Expands common functions around a point.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Compute Taylor series expansion.
+        
+        Args:
+            dataset: {'function': 'exp'|'sin'|'cos'|'ln', 'x': eval_point, 
+                     'a': expansion_point (default 0), 'order': num_terms}
+        
+        Returns:
+            dict with series terms and approximation
+        """
+        import math
+        func = dataset.get('function', 'exp')
+        x = dataset.get('x', 1.0)
+        a = dataset.get('a', 0)  # Maclaurin series if a=0
+        order = dataset.get('order', 10)
+        
+        terms = []
+        approximation = 0
+        
+        if func == 'exp':
+            # e^x = Σ x^n / n!
+            for n in range(order):
+                term = ((x - a)**n) / math.factorial(n)
+                terms.append(term)
+                approximation += term
+            exact = math.exp(x)
+            
+        elif func == 'sin':
+            # sin(x) = Σ (-1)^n × x^(2n+1) / (2n+1)!
+            for n in range(order):
+                term = ((-1)**n) * ((x - a)**(2*n + 1)) / math.factorial(2*n + 1)
+                terms.append(term)
+                approximation += term
+            exact = math.sin(x)
+            
+        elif func == 'cos':
+            # cos(x) = Σ (-1)^n × x^(2n) / (2n)!
+            for n in range(order):
+                term = ((-1)**n) * ((x - a)**(2*n)) / math.factorial(2*n)
+                terms.append(term)
+                approximation += term
+            exact = math.cos(x)
+            
+        elif func == 'ln':
+            # ln(1+x) = Σ (-1)^(n+1) × x^n / n for |x| < 1
+            if a == 0 and abs(x) < 1:
+                for n in range(1, order + 1):
+                    term = ((-1)**(n + 1)) * (x**n) / n
+                    terms.append(term)
+                    approximation += term
+                exact = math.log(1 + x)
+            else:
+                return {'error': 'ln(1+x) series requires |x| < 1 and a=0'}
+        else:
+            return {'error': f'Unknown function: {func}'}
+        
+        return {
+            'approximation': approximation,
+            'exact_value': exact,
+            'error': abs(exact - approximation),
+            'relative_error': abs(exact - approximation) / abs(exact) if exact != 0 else None,
+            'terms': terms[:5],  # First 5 terms
+            'order': order,
+            'equation': f'Taylor series of {func}(x) around a={a}'
+        }
+
+
+class RungeKuttaSolverCalculator:
+    """
+    4th-order Runge-Kutta ODE solver: dy/dx = f(x,y)
+    
+    Numerical integration for ordinary differential equations.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Solve ODE using RK4 method.
+        
+        Args:
+            dataset: {'ode_type': 'exponential'|'harmonic'|'logistic'|'free_fall',
+                     'y0': initial_value, 'x0': initial_x, 'x_final': end_x,
+                     'h': step_size, 'params': dict of equation parameters}
+        
+        Returns:
+            dict with solution trajectory {x: [], y: []}
+        """
+        import math
+        
+        ode_type = dataset.get('ode_type', 'exponential')
+        y0 = dataset.get('y0', 1.0)
+        x0 = dataset.get('x0', 0.0)
+        x_final = dataset.get('x_final', 1.0)
+        h = dataset.get('h', 0.1)
+        params = dataset.get('params', {})
+        
+        # Define ODE function based on type
+        if ode_type == 'exponential':
+            # dy/dx = ky → y = y0 × e^(kx)
+            k = params.get('k', 1.0)
+            def f(x, y): return k * y
+            def exact(x): return y0 * math.exp(k * x)
+            
+        elif ode_type == 'harmonic':
+            # dy/dx = -ω²y (simplified SHM second-order as first-order)
+            omega = params.get('omega', 1.0)
+            def f(x, y): return -omega**2 * y
+            def exact(x): return y0 * math.cos(omega * x)  # Approximate
+            
+        elif ode_type == 'logistic':
+            # dy/dx = ry(1 - y/K)
+            r = params.get('r', 1.0)
+            K = params.get('K', 10.0)
+            def f(x, y): return r * y * (1 - y/K)
+            def exact(x): return K / (1 + (K/y0 - 1) * math.exp(-r * x))
+            
+        elif ode_type == 'free_fall':
+            # dv/dt = g (velocity under gravity)
+            g = params.get('g', 9.8)
+            def f(x, y): return g
+            def exact(x): return y0 + g * x
+        else:
+            return {'error': f'Unknown ODE type: {ode_type}'}
+        
+        # RK4 integration
+        x_vals = [x0]
+        y_vals = [y0]
+        x = x0
+        y = y0
+        
+        while x < x_final:
+            k1 = h * f(x, y)
+            k2 = h * f(x + h/2, y + k1/2)
+            k3 = h * f(x + h/2, y + k2/2)
+            k4 = h * f(x + h, y + k3)
+            
+            y = y + (k1 + 2*k2 + 2*k3 + k4) / 6
+            x = x + h
+            
+            x_vals.append(x)
+            y_vals.append(y)
+        
+        # Compare with exact solution
+        exact_final = exact(x_final)
+        
+        return {
+            'x': x_vals,
+            'y': y_vals,
+            'y_final': y_vals[-1],
+            'exact_final': exact_final,
+            'error': abs(y_vals[-1] - exact_final),
+            'step_size': h,
+            'num_steps': len(x_vals) - 1,
+            'equation': f'RK4 solver for {ode_type} ODE'
+        }
+
+
+class LinearRegressionCalculator:
+    """
+    Linear regression fitting: y = mx + b
+    
+    Least squares fit from data points.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Fit linear model to data points.
+        
+        Args:
+            dataset: {'x': [x_values], 'y': [y_values]}
+        
+        Returns:
+            dict with slope, intercept, R², residuals
+        """
+        import math
+        
+        x_data = dataset.get('x', [1, 2, 3, 4, 5])
+        y_data = dataset.get('y', [2, 4, 5, 4, 5])
+        
+        n = len(x_data)
+        if n != len(y_data) or n < 2:
+            return {'error': 'x and y must have same length >= 2'}
+        
+        # Compute sums
+        sum_x = sum(x_data)
+        sum_y = sum(y_data)
+        sum_xy = sum(x * y for x, y in zip(x_data, y_data))
+        sum_x2 = sum(x**2 for x in x_data)
+        sum_y2 = sum(y**2 for y in y_data)
+        
+        # Slope and intercept
+        denom = n * sum_x2 - sum_x**2
+        if denom == 0:
+            return {'error': 'Cannot fit: all x values identical'}
+        
+        m = (n * sum_xy - sum_x * sum_y) / denom
+        b = (sum_y - m * sum_x) / n
+        
+        # Predictions and residuals
+        y_pred = [m * x + b for x in x_data]
+        residuals = [y - yp for y, yp in zip(y_data, y_pred)]
+        
+        # R² (coefficient of determination)
+        y_mean = sum_y / n
+        ss_tot = sum((y - y_mean)**2 for y in y_data)
+        ss_res = sum(r**2 for r in residuals)
+        r_squared = 1 - (ss_res / ss_tot) if ss_tot != 0 else 0
+        
+        # Correlation coefficient
+        r = math.sqrt(r_squared) * (1 if m >= 0 else -1)
+        
+        return {
+            'm': m,
+            'b': b,
+            'slope': m,
+            'intercept': b,
+            'r_squared': r_squared,
+            'r': r,
+            'residuals': residuals,
+            'y_predicted': y_pred,
+            'equation': f'y = {m:.4f}x + {b:.4f}'
+        }
+
+
+class DimensionalAnalysisOrb58Calculator:
+    """
+    SI dimensional analysis for derived quantities.
+    
+    Based on the 7 SI base units: M, L, T, I, Θ, N, J
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Analyze dimensions of physical quantity.
+        
+        Args:
+            dataset: {'quantity': 'force'|'energy'|'power'|'pressure'|...}
+                     OR {'M': mass_exp, 'L': length_exp, 'T': time_exp, ...}
+        
+        Returns:
+            dict with SI units and dimensional formula
+        """
+        # Pre-defined quantities
+        quantities = {
+            'force': {'M': 1, 'L': 1, 'T': -2, 'unit': 'N'},
+            'energy': {'M': 1, 'L': 2, 'T': -2, 'unit': 'J'},
+            'power': {'M': 1, 'L': 2, 'T': -3, 'unit': 'W'},
+            'pressure': {'M': 1, 'L': -1, 'T': -2, 'unit': 'Pa'},
+            'velocity': {'M': 0, 'L': 1, 'T': -1, 'unit': 'm/s'},
+            'acceleration': {'M': 0, 'L': 1, 'T': -2, 'unit': 'm/s²'},
+            'momentum': {'M': 1, 'L': 1, 'T': -1, 'unit': 'kg·m/s'},
+            'angular_momentum': {'M': 1, 'L': 2, 'T': -1, 'unit': 'kg·m²/s'},
+            'frequency': {'M': 0, 'L': 0, 'T': -1, 'unit': 'Hz'},
+            'electric_charge': {'M': 0, 'L': 0, 'T': 1, 'I': 1, 'unit': 'C'},
+            'voltage': {'M': 1, 'L': 2, 'T': -3, 'I': -1, 'unit': 'V'},
+            'resistance': {'M': 1, 'L': 2, 'T': -3, 'I': -2, 'unit': 'Ω'},
+            'capacitance': {'M': -1, 'L': -2, 'T': 4, 'I': 2, 'unit': 'F'},
+            'magnetic_field': {'M': 1, 'T': -2, 'I': -1, 'unit': 'T'},
+        }
+        
+        if 'quantity' in dataset:
+            q = dataset['quantity'].lower()
+            if q in quantities:
+                dims = quantities[q]
+                formula = self._format_dimensions(dims)
+                return {
+                    'quantity': q,
+                    'SI_unit': dims.get('unit', ''),
+                    'dimensions': formula,
+                    **{k: v for k, v in dims.items() if k != 'unit'}
+                }
+            else:
+                return {'error': f'Unknown quantity: {q}'}
+        else:
+            # Custom dimensions
+            dims = {k: dataset.get(k, 0) for k in ['M', 'L', 'T', 'I', 'Θ', 'N', 'J']}
+            formula = self._format_dimensions(dims)
+            return {
+                'dimensions': formula,
+                **dims
+            }
+    
+    def _format_dimensions(self, dims: dict) -> str:
+        """Format dimensional formula."""
+        parts = []
+        names = {'M': 'M', 'L': 'L', 'T': 'T', 'I': 'I', 'Θ': 'Θ', 'N': 'N', 'J': 'J'}
+        for key, val in dims.items():
+            if key in names and val != 0:
+                parts.append(f'{names[key]}^{val}' if val != 1 else names[key])
+        return ' '.join(parts) if parts else 'dimensionless'
+
+
+class ConeVolumeCalculator:
+    """
+    Cone volume calculation: V = (1/3)πr²h
+    
+    Extended geometry from ScientificCalculatorDialog.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Calculate cone volume and surface area.
+        
+        Args:
+            dataset: {'r': base_radius, 'h': height}
+        
+        Returns:
+            dict with volume and surface areas
+        """
+        import math
+        r = dataset.get('r', 1.0)
+        h = dataset.get('h', 1.0)
+        
+        volume = (1/3) * math.pi * r**2 * h
+        slant_height = math.sqrt(r**2 + h**2)
+        lateral_surface = math.pi * r * slant_height
+        total_surface = math.pi * r * (r + slant_height)
+        
+        return {
+            'V': volume,
+            'slant_height': slant_height,
+            'lateral_surface': lateral_surface,
+            'total_surface': total_surface,
+            'r': r,
+            'h': h,
+            'equation': 'V = (1/3)πr²h'
+        }
+
+
+class TrigIdentityCalculator:
+    """
+    Trigonometric identities and evaluations.
+    
+    Computes sin, cos, tan and their identities.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Evaluate trigonometric functions and identities.
+        
+        Args:
+            dataset: {'angle': angle_in_radians} OR {'angle_deg': angle_in_degrees}
+        
+        Returns:
+            dict with sin, cos, tan and related identities
+        """
+        import math
+        
+        if 'angle_deg' in dataset:
+            angle = math.radians(dataset['angle_deg'])
+            angle_deg = dataset['angle_deg']
+        else:
+            angle = dataset.get('angle', 0)
+            angle_deg = math.degrees(angle)
+        
+        sin_val = math.sin(angle)
+        cos_val = math.cos(angle)
+        tan_val = math.tan(angle) if cos_val != 0 else float('inf')
+        
+        return {
+            'sin': sin_val,
+            'cos': cos_val,
+            'tan': tan_val,
+            'csc': 1/sin_val if sin_val != 0 else float('inf'),
+            'sec': 1/cos_val if cos_val != 0 else float('inf'),
+            'cot': 1/tan_val if tan_val != 0 else float('inf'),
+            'angle_rad': angle,
+            'angle_deg': angle_deg,
+            'sin²_plus_cos²': sin_val**2 + cos_val**2,  # Should be 1
+            'identity_check': abs(sin_val**2 + cos_val**2 - 1) < 1e-10,
+            'equation': 'sin²θ + cos²θ = 1'
+        }
+
+
+# Registry for Orb Analysis 58
+ORB_ANALYSIS_58_CALCULATORS = {
+    'CircleAreaCalculator': CircleAreaCalculator(),
+    'SphereVolumeCalculator': SphereVolumeCalculator(),
+    'PythagoreanTheoremCalculator': PythagoreanTheoremCalculator(),
+    'TriangleAreaCalculator': TriangleAreaCalculator(),
+    'CylinderVolumeCalculator': CylinderVolumeCalculator(),
+    'QuadraticFormulaCalculator': QuadraticFormulaCalculator(),
+    'VelocityTimeRelationCalculator': VelocityTimeRelationCalculator(),
+    'SUVATEquationCalculator': SUVATEquationCalculator(),
+    'MomentumForceCalculator': MomentumForceCalculator(),
+    'PowerIntegrationCalculator': PowerIntegrationCalculator(),
+    'TaylorSeriesCalculator': TaylorSeriesCalculator(),
+    'RungeKuttaSolverCalculator': RungeKuttaSolverCalculator(),
+    'LinearRegressionCalculator': LinearRegressionCalculator(),
+    'DimensionalAnalysisOrb58Calculator': DimensionalAnalysisOrb58Calculator(),
+    'ConeVolumeCalculator': ConeVolumeCalculator(),
+    'TrigIdentityCalculator': TrigIdentityCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ORB_ANALYSIS_59: NUMERICAL METHODS & UTILITY CALCULATORS
+# ═══════════════════════════════════════════════════════════════════════════════
+# Source: Grok ScientificCalculatorDialog - Final extraction
+# Contains: Error Propagation, Newton-Raphson root finding, Unit Conversion
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Parameters for Orb Analysis 59
+ORB_ANALYSIS_59_PARAMS = {
+    # Common unit conversion factors (to SI base units)
+    'UNIT_FACTORS': {
+        # Length
+        'm': 1.0,
+        'cm': 0.01,
+        'mm': 0.001,
+        'km': 1000.0,
+        'in': 0.0254,
+        'ft': 0.3048,
+        'yd': 0.9144,
+        'mi': 1609.344,
+        # Mass
+        'kg': 1.0,
+        'g': 0.001,
+        'mg': 1e-6,
+        'lb': 0.453592,
+        'oz': 0.0283495,
+        # Time
+        's': 1.0,
+        'ms': 0.001,
+        'min': 60.0,
+        'hr': 3600.0,
+        'day': 86400.0,
+        # Temperature offsets (for conversion functions)
+        'K': {'offset': 0, 'scale': 1.0},
+        'C': {'offset': 273.15, 'scale': 1.0},
+        'F': {'offset': 459.67, 'scale': 5/9},
+    },
+    # Newton-Raphson defaults
+    'NEWTON_DEFAULTS': {
+        'tolerance': 1e-10,
+        'max_iterations': 100,
+        'dx': 1e-8,  # For numerical derivative
+    }
+}
+
+
+class ErrorPropagationCalculator:
+    """
+    Error propagation using partial derivatives.
+    
+    Computes σ_f = √(Σ(∂f/∂x_i × σ_i)²) for functions with uncertain inputs.
+    Supports common physics formulas with analytical derivatives.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Propagate uncertainties through a function.
+        
+        Args:
+            dataset: {
+                'formula': str (e.g., 'product', 'sum', 'power', 'division'),
+                'values': list of values,
+                'uncertainties': list of corresponding uncertainties,
+                'exponents': list of exponents (for power law)
+            }
+        
+        Returns:
+            dict with result, propagated uncertainty, and relative error
+        """
+        import math
+        
+        formula = dataset.get('formula', 'product')
+        values = dataset.get('values', [])
+        uncertainties = dataset.get('uncertainties', [])
+        exponents = dataset.get('exponents', [1] * len(values))
+        
+        if len(values) != len(uncertainties):
+            return {'error': 'Values and uncertainties must have same length'}
+        
+        if formula == 'product':
+            # f = x1^n1 * x2^n2 * ... (power law product)
+            # σ_f/f = √(Σ(n_i * σ_i/x_i)²)
+            result = 1.0
+            for v, n in zip(values, exponents):
+                result *= v ** n
+            
+            relative_terms = []
+            for v, u, n in zip(values, uncertainties, exponents):
+                if v != 0:
+                    relative_terms.append((n * u / v) ** 2)
+            
+            relative_uncertainty = math.sqrt(sum(relative_terms))
+            absolute_uncertainty = abs(result) * relative_uncertainty
+            
+        elif formula == 'sum':
+            # f = x1 + x2 + ... (linear sum)
+            # σ_f = √(Σ σ_i²)
+            result = sum(values)
+            absolute_uncertainty = math.sqrt(sum(u**2 for u in uncertainties))
+            relative_uncertainty = absolute_uncertainty / abs(result) if result != 0 else float('inf')
+            
+        elif formula == 'difference':
+            # f = x1 - x2 (for two values)
+            # σ_f = √(σ_1² + σ_2²)
+            if len(values) < 2:
+                return {'error': 'Difference requires at least 2 values'}
+            result = values[0] - sum(values[1:])
+            absolute_uncertainty = math.sqrt(sum(u**2 for u in uncertainties))
+            relative_uncertainty = absolute_uncertainty / abs(result) if result != 0 else float('inf')
+            
+        elif formula == 'division':
+            # f = x1 / x2
+            # σ_f/f = √((σ_1/x_1)² + (σ_2/x_2)²)
+            if len(values) < 2 or values[1] == 0:
+                return {'error': 'Division requires 2 non-zero values'}
+            result = values[0] / values[1]
+            rel_1 = uncertainties[0] / values[0] if values[0] != 0 else 0
+            rel_2 = uncertainties[1] / values[1]
+            relative_uncertainty = math.sqrt(rel_1**2 + rel_2**2)
+            absolute_uncertainty = abs(result) * relative_uncertainty
+            
+        elif formula == 'power':
+            # f = x^n
+            # σ_f = |n| * x^(n-1) * σ_x = |n * f/x| * σ_x
+            if len(values) < 1:
+                return {'error': 'Power requires at least 1 value'}
+            x = values[0]
+            n = exponents[0]
+            sigma_x = uncertainties[0]
+            result = x ** n
+            absolute_uncertainty = abs(n * result / x * sigma_x) if x != 0 else 0
+            relative_uncertainty = abs(n * sigma_x / x) if x != 0 else float('inf')
+            
+        else:
+            return {'error': f'Unknown formula type: {formula}'}
+        
+        return {
+            'result': result,
+            'absolute_uncertainty': absolute_uncertainty,
+            'relative_uncertainty': relative_uncertainty,
+            'percent_uncertainty': relative_uncertainty * 100,
+            'formula': formula,
+            'equation': 'σ_f = √(Σ(∂f/∂x_i × σ_i)²)'
+        }
+
+
+class NewtonRaphsonCalculator:
+    """
+    Newton-Raphson root finding method.
+    
+    Finds roots of f(x) = 0 using iterative formula:
+    x_{n+1} = x_n - f(x_n) / f'(x_n)
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Find root using Newton-Raphson method.
+        
+        Args:
+            dataset: {
+                'function': callable f(x) OR str for common functions,
+                'derivative': callable f'(x) (optional, uses numerical if not provided),
+                'initial_guess': float,
+                'tolerance': float (default 1e-10),
+                'max_iterations': int (default 100),
+                'coefficients': list for polynomial [a_n, ..., a_1, a_0]
+            }
+        
+        Returns:
+            dict with root, iterations, convergence info
+        """
+        import math
+        
+        x0 = dataset.get('initial_guess', 1.0)
+        tol = dataset.get('tolerance', 1e-10)
+        max_iter = dataset.get('max_iterations', 100)
+        dx = dataset.get('dx', 1e-8)
+        
+        # Handle polynomial case
+        if 'coefficients' in dataset:
+            coeffs = dataset['coefficients']
+            
+            def f(x):
+                result = 0
+                for i, c in enumerate(coeffs):
+                    result += c * x ** (len(coeffs) - 1 - i)
+                return result
+            
+            def df(x):
+                result = 0
+                for i, c in enumerate(coeffs[:-1]):
+                    power = len(coeffs) - 1 - i
+                    result += c * power * x ** (power - 1)
+                return result
+        
+        # Handle string function names
+        elif isinstance(dataset.get('function'), str):
+            func_name = dataset['function']
+            if func_name == 'sqrt':
+                # Find sqrt(a): solve x² - a = 0
+                a = dataset.get('target', 2)
+                f = lambda x: x**2 - a
+                df = lambda x: 2*x
+            elif func_name == 'cbrt':
+                # Find cbrt(a): solve x³ - a = 0
+                a = dataset.get('target', 2)
+                f = lambda x: x**3 - a
+                df = lambda x: 3*x**2
+            elif func_name == 'exp_root':
+                # Solve e^x = a
+                a = dataset.get('target', math.e)
+                f = lambda x: math.exp(x) - a
+                df = lambda x: math.exp(x)
+            else:
+                return {'error': f'Unknown function: {func_name}'}
+        
+        # Handle callable function
+        elif callable(dataset.get('function')):
+            f = dataset['function']
+            if callable(dataset.get('derivative')):
+                df = dataset['derivative']
+            else:
+                # Numerical derivative
+                df = lambda x: (f(x + dx) - f(x - dx)) / (2 * dx)
+        else:
+            return {'error': 'Must provide function, coefficients, or function name'}
+        
+        # Newton-Raphson iteration
+        x = x0
+        iterations = []
+        converged = False
+        
+        for i in range(max_iter):
+            fx = f(x)
+            dfx = df(x)
+            
+            iterations.append({
+                'iteration': i,
+                'x': x,
+                'f(x)': fx,
+                "f'(x)": dfx
+            })
+            
+            if abs(fx) < tol:
+                converged = True
+                break
+            
+            if abs(dfx) < 1e-15:
+                return {
+                    'error': 'Derivative too small - method diverging',
+                    'last_x': x,
+                    'iterations': iterations
+                }
+            
+            x_new = x - fx / dfx
+            
+            if abs(x_new - x) < tol:
+                x = x_new
+                converged = True
+                break
+            
+            x = x_new
+        
+        return {
+            'root': x,
+            'f(root)': f(x),
+            'converged': converged,
+            'iterations_count': len(iterations),
+            'initial_guess': x0,
+            'tolerance': tol,
+            'equation': 'x_{n+1} = x_n - f(x_n) / f\'(x_n)'
+        }
+
+
+class UnitConversionCalculator:
+    """
+    Unit conversion between common physical units.
+    
+    Converts values between different units of the same dimension.
+    """
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Convert value between units.
+        
+        Args:
+            dataset: {
+                'value': float,
+                'from_unit': str,
+                'to_unit': str
+            }
+        
+        Returns:
+            dict with converted value and conversion factor
+        """
+        value = dataset.get('value', 1.0)
+        from_unit = dataset.get('from_unit', 'm')
+        to_unit = dataset.get('to_unit', 'cm')
+        
+        # Length conversions (to meters)
+        length_factors = {
+            'm': 1.0, 'cm': 0.01, 'mm': 0.001, 'km': 1000.0,
+            'in': 0.0254, 'ft': 0.3048, 'yd': 0.9144, 'mi': 1609.344,
+            'nm': 1e-9, 'um': 1e-6, 'au': 1.496e11, 'ly': 9.461e15, 'pc': 3.086e16
+        }
+        
+        # Mass conversions (to kg)
+        mass_factors = {
+            'kg': 1.0, 'g': 0.001, 'mg': 1e-6, 'ug': 1e-9,
+            'lb': 0.453592, 'oz': 0.0283495, 'ton': 1000.0,
+            'solar_mass': 1.989e30, 'earth_mass': 5.972e24
+        }
+        
+        # Time conversions (to seconds)
+        time_factors = {
+            's': 1.0, 'ms': 0.001, 'us': 1e-6, 'ns': 1e-9,
+            'min': 60.0, 'hr': 3600.0, 'day': 86400.0,
+            'week': 604800.0, 'year': 31557600.0
+        }
+        
+        # Energy conversions (to Joules)
+        energy_factors = {
+            'J': 1.0, 'kJ': 1000.0, 'MJ': 1e6, 'GJ': 1e9,
+            'eV': 1.602e-19, 'keV': 1.602e-16, 'MeV': 1.602e-13, 'GeV': 1.602e-10,
+            'cal': 4.184, 'kcal': 4184.0, 'BTU': 1055.06, 'kWh': 3.6e6,
+            'erg': 1e-7
+        }
+        
+        # Pressure conversions (to Pascals)
+        pressure_factors = {
+            'Pa': 1.0, 'kPa': 1000.0, 'MPa': 1e6, 'GPa': 1e9,
+            'bar': 1e5, 'mbar': 100.0, 'atm': 101325.0,
+            'psi': 6894.76, 'torr': 133.322, 'mmHg': 133.322
+        }
+        
+        # Find which category units belong to
+        all_factors = {
+            'length': length_factors,
+            'mass': mass_factors,
+            'time': time_factors,
+            'energy': energy_factors,
+            'pressure': pressure_factors
+        }
+        
+        from_category = None
+        to_category = None
+        
+        for cat, factors in all_factors.items():
+            if from_unit in factors:
+                from_category = cat
+                from_factor = factors[from_unit]
+            if to_unit in factors:
+                to_category = cat
+                to_factor = factors[to_unit]
+        
+        if from_category is None:
+            return {'error': f'Unknown unit: {from_unit}'}
+        if to_category is None:
+            return {'error': f'Unknown unit: {to_unit}'}
+        if from_category != to_category:
+            return {'error': f'Cannot convert {from_category} to {to_category}'}
+        
+        # Convert: value * from_factor / to_factor
+        conversion_factor = from_factor / to_factor
+        converted_value = value * conversion_factor
+        
+        return {
+            'original_value': value,
+            'original_unit': from_unit,
+            'converted_value': converted_value,
+            'converted_unit': to_unit,
+            'conversion_factor': conversion_factor,
+            'category': from_category,
+            'equation': f'{value} {from_unit} = {converted_value} {to_unit}'
+        }
+
+
+# Registry for Orb Analysis 59
+ORB_ANALYSIS_59_CALCULATORS = {
+    'ErrorPropagationCalculator': ErrorPropagationCalculator(),
+    'NewtonRaphsonCalculator': NewtonRaphsonCalculator(),
+    'UnitConversionCalculator': UnitConversionCalculator(),
+}
+
+
 # ═══════════════════════════════════════════════════════════════════════════════
 
 
@@ -30790,6 +33010,9 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_54_CALCULATORS,
     **ORB_ANALYSIS_55_CALCULATORS,
     **ORB_ANALYSIS_56_CALCULATORS,
+    **ORB_ANALYSIS_57_CALCULATORS,
+    **ORB_ANALYSIS_58_CALCULATORS,
+    **ORB_ANALYSIS_59_CALCULATORS,
 }
 
 # Update class count
@@ -31400,6 +33623,52 @@ __all__ = [
     'PhotonLatticeProjectionCalculator',
     'ShadowTearingCalculator',
     'ORB_ANALYSIS_56_CALCULATORS',
+    
+    # Orb 57: Classical Mechanics & Numerical Methods (Grok ScientificCalculatorDialog)
+    'ORB_ANALYSIS_57_PARAMS',
+    'NewtonSecondLawCalculator',
+    'EinsteinMassEnergyCalculator',
+    'KinematicMotionCalculator',
+    'GravitationalForceCalculator',
+    'KineticEnergyCalculator',
+    'PotentialEnergyCalculator',
+    'MomentumCalculator',
+    'AngularFrequencyCalculator',
+    'WavelengthCalculator',
+    'ElectricalPowerCalculator',
+    'PhotonEnergyCalculator',
+    'ParametricMotionCalculator',
+    'NewtonRaphsonSolverCalculator',
+    'UnitConversionCalculator',
+    'ErrorPropagationCalculator',
+    'ORB_ANALYSIS_57_CALCULATORS',
+    
+    # Orb 58: Geometry, Advanced Kinematics & Calculus (Grok Extended)
+    'ORB_ANALYSIS_58_PARAMS',
+    'CircleAreaCalculator',
+    'SphereVolumeCalculator',
+    'PythagoreanTheoremCalculator',
+    'TriangleAreaCalculator',
+    'CylinderVolumeCalculator',
+    'QuadraticFormulaCalculator',
+    'VelocityTimeRelationCalculator',
+    'SUVATEquationCalculator',
+    'MomentumForceCalculator',
+    'PowerIntegrationCalculator',
+    'TaylorSeriesCalculator',
+    'RungeKuttaSolverCalculator',
+    'LinearRegressionCalculator',
+    'DimensionalAnalysisOrb58Calculator',
+    'ConeVolumeCalculator',
+    'TrigIdentityCalculator',
+    'ORB_ANALYSIS_58_CALCULATORS',
+    
+    # Orb 59: Numerical Methods & Utility (Grok Final)
+    'ORB_ANALYSIS_59_PARAMS',
+    'ErrorPropagationCalculator',
+    'NewtonRaphsonCalculator',
+    'UnitConversionCalculator',
+    'ORB_ANALYSIS_59_CALCULATORS',
     
     # Aggregated registry
     'CP2_CALCULATORS',
