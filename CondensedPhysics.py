@@ -190,6 +190,44 @@ except ImportError:
     BH_MASS_AVAILABLE = False
     BH_MASS_CALCULATORS = {}
 
+# galaxy_mergers_sfr_module - EPS merger rates, SFR, BH accretion, GW physics
+try:
+    from galaxy_mergers_sfr_module import (
+        EPSMergerCalculator, StarFormationCalculator, BlackHoleAccretionCalculator,
+        GWChirpMassCalculator, UQFFMergerBuoyancyCalculator, UQFFBHAccretionBuoyancyCalculator,
+        GalaxyMergerSFRCalculator, MERGER_SFR_CALCULATORS,
+        MILKY_WAY, HIGH_Z_STARBURST, MERGER_REMNANT, HIGH_Z_QUASAR, BINARY_BH
+    )
+    MERGER_SFR_AVAILABLE = True
+except ImportError:
+    MERGER_SFR_AVAILABLE = False
+    MERGER_SFR_CALCULATORS = {}
+
+# cosmology_equations_module - Friedmann, inflation, dark energy, LQC, BH thermo
+try:
+    from cosmology_equations_module import (
+        FriedmannCalculator, InflationCalculator, DarkEnergyCalculator,
+        BHThermodynamicsCalculator as CosmosBHThermo, LQCCalculator, PrimordialGWCalculator,
+        CosmologyCalculator, CosmologyParams, COSMOLOGY_CALCULATORS
+    )
+    COSMOLOGY_AVAILABLE = True
+except ImportError:
+    COSMOLOGY_AVAILABLE = False
+    COSMOLOGY_CALCULATORS = {}
+
+# compact_objects_module - Neutron stars, SNR, magnetars, WD physics
+try:
+    from compact_objects_module import (
+        NeutronStarCalculator, SNRCalculator, MagnetarCalculator,
+        CoreCollapseSNCalculator, WhiteDwarfCalculator, CompactObjectCalculator,
+        COMPACT_OBJECT_CALCULATORS,
+        CRAB_PULSAR, VELA_PULSAR, SGR_1806_20, TYCHO_SNR, CAS_A_SNR
+    )
+    COMPACT_OBJECTS_AVAILABLE = True
+except ImportError:
+    COMPACT_OBJECTS_AVAILABLE = False
+    COMPACT_OBJECT_CALCULATORS = {}
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # UQFF C++ BINDINGS (Phase 2 Integration - Feb 2026)
 # ═══════════════════════════════════════════════════════════════════════════════
