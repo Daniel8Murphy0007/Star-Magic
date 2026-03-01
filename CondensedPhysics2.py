@@ -35042,7 +35042,7 @@ ORB_ANALYSIS_61_CALCULATORS = {
 # ═══════════════════════════════════════════════════════════════════════════════
 
 
-class PiEncodingCalculator(Calculator):
+class PiEncodingCalculator:
     """
     π-Cycle Frequency Encoding Calculator.
     
@@ -35132,7 +35132,7 @@ class PiEncodingCalculator(Calculator):
         return "F_π = π × 10^n × h (n ∈ [0,8], h = harmonic)"
 
 
-class PiDigitPatternCalculator(Calculator):
+class PiDigitPatternCalculator:
     """
     π Digit Pattern Analysis Calculator.
     
@@ -35204,7 +35204,7 @@ class PiDigitPatternCalculator(Calculator):
         return "χ² = Σ (O_i - E)² / E, E = N/10"
 
 
-class Polynomial26RootCalculator(Calculator):
+class Polynomial26RootCalculator:
     """
     26th-Degree Polynomial Root Finder Calculator.
     
@@ -35338,7 +35338,7 @@ class Polynomial26RootCalculator(Calculator):
         return "P(x) = Σ_{i=0}^{26} c_i × x^i = 0, solved via Aberth-Ehrlich"
 
 
-class SIMDVacuumDensityCalculator(Calculator):
+class SIMDVacuumDensityCalculator:
     """
     SIMD-Inspired Vacuum Density Calculator.
     
@@ -35419,7 +35419,7 @@ class SIMDVacuumDensityCalculator(Calculator):
         return "U_bi = -β_i × U_gi × Ω_g × cos(π×t_n) [SIMD vectorized]"
 
 
-class MIPSOpcodePhysicsCalculator(Calculator):
+class MIPSOpcodePhysicsCalculator:
     """
     MIPS Opcode Physics Translation Calculator.
     
@@ -35479,7 +35479,7 @@ class MIPSOpcodePhysicsCalculator(Calculator):
         return "R-type: op(6)|rs(5)|rt(5)|rd(5)|shamt(5)|funct(6)"
 
 
-class X86VectorOpCalculator(Calculator):
+class X86VectorOpCalculator:
     """
     x86-64 Vector Operation Calculator.
     
@@ -35564,7 +35564,7 @@ class X86VectorOpCalculator(Calculator):
         return "XMM: 2×64-bit | YMM: 4×64-bit packed double"
 
 
-class AssemblyDisassemblyCalculator(Calculator):
+class AssemblyDisassemblyCalculator:
     """
     Assembly/Disassembly Physics Mapping Calculator.
     
@@ -35631,6 +35631,940 @@ ORB_ANALYSIS_62_CALCULATORS = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ORB_ANALYSIS_63: Scientific Calculator Dialog Extraction
+# Source: clone_1956030704904757394.txt (ScientificCalculatorDialog C++ Qt6)
+# Extracted: SI Dimensional Analysis, QuTiP Quantum, Astropy Ephemeris,
+#            Distributed Newton Solver, Perlin Noise Field Generation
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# ORB_ANALYSIS_63 Parameters
+ORB_ANALYSIS_63_PARAMS = {
+    'source_file': 'clone_1956030704904757394.txt',
+    'source_class': 'ScientificCalculatorDialog',
+    'source_lines': 22327,
+    'extraction_date': '2026-03-01',
+    'description': 'Scientific calculator C++ dialog with Qt6, SymEngine, ANTLR4, VR/AR',
+    # SI Base Units (7 dimensions)
+    'si_base_units': {
+        'kg': {'mass': 1, 'length': 0, 'time': 0, 'current': 0, 'temp': 0, 'amount': 0, 'luminous': 0},
+        'm': {'mass': 0, 'length': 1, 'time': 0, 'current': 0, 'temp': 0, 'amount': 0, 'luminous': 0},
+        's': {'mass': 0, 'length': 0, 'time': 1, 'current': 0, 'temp': 0, 'amount': 0, 'luminous': 0},
+        'A': {'mass': 0, 'length': 0, 'time': 0, 'current': 1, 'temp': 0, 'amount': 0, 'luminous': 0},
+        'K': {'mass': 0, 'length': 0, 'time': 0, 'current': 0, 'temp': 1, 'amount': 0, 'luminous': 0},
+        'mol': {'mass': 0, 'length': 0, 'time': 0, 'current': 0, 'temp': 0, 'amount': 1, 'luminous': 0},
+        'cd': {'mass': 0, 'length': 0, 'time': 0, 'current': 0, 'temp': 0, 'amount': 0, 'luminous': 1},
+    },
+    # Derived Units (dimensional formula)
+    'derived_units': {
+        'N': {'mass': 1, 'length': 1, 'time': -2},   # Newton = kg·m/s²
+        'J': {'mass': 1, 'length': 2, 'time': -2},   # Joule = kg·m²/s²
+        'W': {'mass': 1, 'length': 2, 'time': -3},   # Watt = kg·m²/s³
+        'Pa': {'mass': 1, 'length': -1, 'time': -2}, # Pascal = kg/(m·s²)
+        'C': {'time': 1, 'current': 1},               # Coulomb = A·s
+        'V': {'mass': 1, 'length': 2, 'time': -3, 'current': -1},  # Volt
+        'Ω': {'mass': 1, 'length': 2, 'time': -3, 'current': -2},  # Ohm
+        'Hz': {'time': -1},                           # Hertz
+        'T': {'mass': 1, 'time': -2, 'current': -1},  # Tesla
+    },
+    # Perlin Noise Parameters
+    'perlin_permutation_size': 256,
+    'perlin_octaves': 4,
+    'perlin_persistence': 0.5,
+    # Newton Solver Parameters
+    'newton_max_iterations': 100,
+    'newton_tolerance': 1e-10,
+    'newton_damping_factor': 1.0,
+    # QuTiP Quantum Parameters
+    'pauli_matrices': {
+        'sigma_x': [[0, 1], [1, 0]],
+        'sigma_y': [[0, -1j], [1j, 0]],
+        'sigma_z': [[1, 0], [0, -1]],
+    },
+    'quantum_basis_dim': 2,
+}
+
+
+class SIDimensionalAnalysisCalculator:
+    """
+    ORB_ANALYSIS_63: SI Dimensional Analysis Calculator
+    
+    Implements 7-dimensional SI unit tracking for physical equations.
+    Based on Units class from ScientificCalculatorDialog.
+    
+    Dimensions: [Mass, Length, Time, Current, Temperature, Amount, Luminous]
+    
+    Key Operations:
+    - Unit multiplication/division with dimension propagation
+    - Unit compatibility checking for equation validity
+    - Derived unit decomposition to base units
+    - Dimensional formula generation
+    
+    Source: clone_1956030704904757394.txt lines 3-50 (Units struct)
+    """
+    
+    def __init__(self):
+        self.dimensions = ['mass', 'length', 'time', 'current', 'temp', 'amount', 'luminous']
+        self.base_units = ORB_ANALYSIS_63_PARAMS['si_base_units']
+        self.derived_units = ORB_ANALYSIS_63_PARAMS['derived_units']
+    
+    def create_unit(self, mass=0, length=0, time=0, current=0, temp=0, amount=0, luminous=0):
+        """Create a unit with specified dimensional exponents."""
+        return {
+            'mass': mass, 'length': length, 'time': time,
+            'current': current, 'temp': temp, 'amount': amount, 'luminous': luminous
+        }
+    
+    def multiply_units(self, unit1: dict, unit2: dict) -> dict:
+        """Multiply two units: exponents add."""
+        return {dim: unit1.get(dim, 0) + unit2.get(dim, 0) for dim in self.dimensions}
+    
+    def divide_units(self, unit1: dict, unit2: dict) -> dict:
+        """Divide two units: exponents subtract."""
+        return {dim: unit1.get(dim, 0) - unit2.get(dim, 0) for dim in self.dimensions}
+    
+    def power_unit(self, unit: dict, power: float) -> dict:
+        """Raise unit to a power: exponents multiply."""
+        return {dim: unit.get(dim, 0) * power for dim in self.dimensions}
+    
+    def units_compatible(self, unit1: dict, unit2: dict) -> bool:
+        """Check if two units have same dimensions (can be added/compared)."""
+        return all(unit1.get(dim, 0) == unit2.get(dim, 0) for dim in self.dimensions)
+    
+    def is_dimensionless(self, unit: dict) -> bool:
+        """Check if unit is dimensionless."""
+        return all(unit.get(dim, 0) == 0 for dim in self.dimensions)
+    
+    def to_formula_string(self, unit: dict) -> str:
+        """Convert unit to dimensional formula string like [M L^2 T^-2]."""
+        symbols = {'mass': 'M', 'length': 'L', 'time': 'T', 'current': 'I', 
+                   'temp': 'Θ', 'amount': 'N', 'luminous': 'J'}
+        parts = []
+        for dim in self.dimensions:
+            exp = unit.get(dim, 0)
+            if exp != 0:
+                if exp == 1:
+                    parts.append(symbols[dim])
+                else:
+                    parts.append(f"{symbols[dim]}^{exp}")
+        return '[' + ' '.join(parts) + ']' if parts else '[1]'
+    
+    def lookup_unit(self, unit_name: str) -> dict:
+        """Lookup a unit by name (base or derived)."""
+        if unit_name in self.base_units:
+            return self.base_units[unit_name].copy()
+        if unit_name in self.derived_units:
+            full = {dim: 0 for dim in self.dimensions}
+            full.update(self.derived_units[unit_name])
+            return full
+        raise ValueError(f"Unknown unit: {unit_name}")
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Perform dimensional analysis on physics equation.
+        
+        Input dataset:
+            - operation: 'multiply', 'divide', 'power', 'check', 'formula'
+            - units: list of unit dicts or names
+            - power: exponent (for power operation)
+        
+        Returns:
+            - result_unit: resulting dimensional unit
+            - formula: dimensional formula string
+            - compatible: boolean for check operation
+        """
+        operation = dataset.get('operation', 'formula')
+        units = dataset.get('units', [])
+        power = dataset.get('power', 1.0)
+        
+        # Convert string names to unit dicts
+        unit_dicts = []
+        for u in units:
+            if isinstance(u, str):
+                unit_dicts.append(self.lookup_unit(u))
+            else:
+                unit_dicts.append(u)
+        
+        if operation == 'multiply' and len(unit_dicts) >= 2:
+            result = unit_dicts[0]
+            for u in unit_dicts[1:]:
+                result = self.multiply_units(result, u)
+        elif operation == 'divide' and len(unit_dicts) >= 2:
+            result = self.divide_units(unit_dicts[0], unit_dicts[1])
+        elif operation == 'power' and len(unit_dicts) >= 1:
+            result = self.power_unit(unit_dicts[0], power)
+        elif operation == 'check' and len(unit_dicts) >= 2:
+            compatible = self.units_compatible(unit_dicts[0], unit_dicts[1])
+            return {
+                'operation': 'dimensional_check',
+                'compatible': compatible,
+                'unit1_formula': self.to_formula_string(unit_dicts[0]),
+                'unit2_formula': self.to_formula_string(unit_dicts[1]),
+            }
+        else:
+            result = unit_dicts[0] if unit_dicts else self.create_unit()
+        
+        return {
+            'operation': f'dimensional_{operation}',
+            'result_unit': result,
+            'formula': self.to_formula_string(result),
+            'is_dimensionless': self.is_dimensionless(result),
+        }
+
+
+class QuTiPQuantumStateCalculator:
+    """
+    ORB_ANALYSIS_63: QuTiP-Inspired Quantum State Calculator
+    
+    Implements quantum state operations based on ScientificCalculatorDialog
+    quantum simulation code using Pauli matrices and basis states.
+    
+    Features:
+    - Pauli operator application (σx, σy, σz)
+    - Basis state construction |0⟩, |1⟩
+    - State probability extraction
+    - Expectation value calculation
+    
+    Source: clone_1956030704904757394.txt lines 1670-1720 (simulateMotion quantum branch)
+    """
+    
+    def __init__(self):
+        self.pauli = ORB_ANALYSIS_63_PARAMS['pauli_matrices']
+        self.basis_dim = ORB_ANALYSIS_63_PARAMS['quantum_basis_dim']
+    
+    def basis_state(self, n: int, dim: int = None) -> list:
+        """Create basis state |n⟩ in dim-dimensional Hilbert space."""
+        if dim is None:
+            dim = self.basis_dim
+        state = [[0.0] for _ in range(dim)]
+        if 0 <= n < dim:
+            state[n] = [1.0]
+        return state
+    
+    def pauli_matrix(self, name: str) -> list:
+        """Get Pauli matrix by name: 'x', 'y', 'z'."""
+        key = f'sigma_{name.lower()}'
+        if key in self.pauli:
+            return self.pauli[key]
+        raise ValueError(f"Unknown Pauli matrix: {name}")
+    
+    def matrix_vector_mult(self, matrix: list, vector: list) -> list:
+        """Multiply matrix by column vector."""
+        result = []
+        for row in matrix:
+            val = sum(row[j] * vector[j][0] for j in range(len(row)))
+            result.append([val])
+        return result
+    
+    def inner_product(self, bra: list, ket: list) -> complex:
+        """Compute ⟨bra|ket⟩ inner product."""
+        return sum(complex(bra[i][0]).conjugate() * complex(ket[i][0]) for i in range(len(bra)))
+    
+    def state_probabilities(self, state: list) -> list:
+        """Compute |amplitude|² for each basis state."""
+        return [abs(complex(s[0]))**2 for s in state]
+    
+    def normalize_state(self, state: list) -> list:
+        """Normalize quantum state to unit norm."""
+        norm = sum(abs(complex(s[0]))**2 for s in state) ** 0.5
+        if norm == 0:
+            return state
+        return [[s[0] / norm] for s in state]
+    
+    def expectation_value(self, state: list, operator: list) -> float:
+        """Compute ⟨ψ|A|ψ⟩ expectation value."""
+        applied = self.matrix_vector_mult(operator, state)
+        return self.inner_product(state, applied).real
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Perform quantum state calculation.
+        
+        Input dataset:
+            - operation: 'apply_pauli', 'basis', 'probability', 'expectation'
+            - pauli: 'x', 'y', or 'z' for Pauli matrix
+            - state: quantum state vector [[a], [b], ...]
+            - basis_n: integer for basis state |n⟩
+        
+        Returns:
+            - result_state: output quantum state
+            - probabilities: |amplitude|² list
+            - expectation: ⟨ψ|A|ψ⟩ value
+        """
+        operation = dataset.get('operation', 'basis')
+        pauli_name = dataset.get('pauli', 'x')
+        state = dataset.get('state', None)
+        basis_n = dataset.get('basis_n', 0)
+        
+        if operation == 'basis':
+            state = self.basis_state(basis_n)
+            return {
+                'operation': 'quantum_basis_state',
+                'basis_n': basis_n,
+                'state': state,
+                'probabilities': self.state_probabilities(state),
+            }
+        
+        if state is None:
+            state = self.basis_state(0)
+        
+        if operation == 'apply_pauli':
+            pauli_mat = self.pauli_matrix(pauli_name)
+            result_state = self.matrix_vector_mult(pauli_mat, state)
+            return {
+                'operation': f'pauli_{pauli_name}_applied',
+                'input_state': state,
+                'result_state': result_state,
+                'probabilities': self.state_probabilities(result_state),
+            }
+        
+        if operation == 'probability':
+            return {
+                'operation': 'state_probabilities',
+                'state': state,
+                'probabilities': self.state_probabilities(state),
+            }
+        
+        if operation == 'expectation':
+            pauli_mat = self.pauli_matrix(pauli_name)
+            exp_val = self.expectation_value(state, pauli_mat)
+            return {
+                'operation': f'expectation_sigma_{pauli_name}',
+                'state': state,
+                'expectation_value': exp_val,
+            }
+        
+        return {'operation': 'unknown', 'error': f'Unknown operation: {operation}'}
+
+
+class AstropyEphemerisCalculator:
+    """
+    ORB_ANALYSIS_63: Astropy-Inspired Ephemeris Calculator
+    
+    Implements astronomical ephemeris calculations based on
+    ScientificCalculatorDialog astropy integration.
+    
+    Features:
+    - Julian Date conversion
+    - Solar position approximation
+    - Planetary orbital elements
+    - Coordinate transforms (equatorial/ecliptic/galactic)
+    
+    Source: clone_1956030704904757394.txt lines 1685-1695 (astropy branch)
+    """
+    
+    def __init__(self):
+        # Astronomical constants
+        self.j2000_epoch = 2451545.0  # JD of J2000.0
+        self.days_per_year = 365.25
+        self.deg_to_rad = 3.141592653589793 / 180.0
+        self.au_to_km = 149597870.7
+        # Mean orbital elements at J2000 (simplified)
+        self.orbital_elements = {
+            'earth': {'a': 1.0, 'e': 0.0167, 'i': 0.0, 'L': 100.46, 'omega_bar': 102.94, 'Omega': 0.0},
+            'mars': {'a': 1.524, 'e': 0.0934, 'i': 1.85, 'L': 355.45, 'omega_bar': 336.04, 'Omega': 49.56},
+            'jupiter': {'a': 5.203, 'e': 0.0484, 'i': 1.30, 'L': 34.40, 'omega_bar': 14.33, 'Omega': 100.56},
+        }
+    
+    def date_to_jd(self, year: int, month: int, day: float) -> float:
+        """Convert calendar date to Julian Date."""
+        if month <= 2:
+            year -= 1
+            month += 12
+        A = int(year / 100)
+        B = 2 - A + int(A / 4)
+        jd = int(365.25 * (year + 4716)) + int(30.6001 * (month + 1)) + day + B - 1524.5
+        return jd
+    
+    def jd_to_centuries(self, jd: float) -> float:
+        """Convert JD to Julian centuries since J2000."""
+        return (jd - self.j2000_epoch) / 36525.0
+    
+    def solar_position_approx(self, jd: float) -> dict:
+        """
+        Approximate solar ecliptic longitude and distance.
+        Simple low-accuracy formula for educational use.
+        """
+        import math
+        T = self.jd_to_centuries(jd)
+        # Mean longitude of Sun
+        L0 = 280.46646 + 36000.76983 * T + 0.0003032 * T**2
+        L0 = L0 % 360
+        # Mean anomaly of Sun
+        M = 357.52911 + 35999.05029 * T - 0.0001537 * T**2
+        M_rad = M * self.deg_to_rad
+        # Equation of center
+        C = (1.914602 - 0.004817 * T - 0.000014 * T**2) * math.sin(M_rad)
+        C += (0.019993 - 0.000101 * T) * math.sin(2 * M_rad)
+        C += 0.000289 * math.sin(3 * M_rad)
+        # True longitude
+        sun_lon = L0 + C
+        # Distance in AU
+        sun_dist = 1.000001018 * (1 - 0.016708634**2) / (1 + 0.016708634 * math.cos(M_rad + C * self.deg_to_rad))
+        return {
+            'ecliptic_longitude_deg': sun_lon % 360,
+            'distance_au': sun_dist,
+            'distance_km': sun_dist * self.au_to_km,
+        }
+    
+    def planet_mean_longitude(self, planet: str, jd: float) -> float:
+        """Compute mean longitude of planet at given JD."""
+        if planet not in self.orbital_elements:
+            raise ValueError(f"Unknown planet: {planet}")
+        elem = self.orbital_elements[planet]
+        T = self.jd_to_centuries(jd)
+        # Simplified: L = L0 + n*T where n ≈ 360/period
+        n = 360.0 / (elem['a']**1.5 * self.days_per_year / 36525.0)  # deg/century
+        L = elem['L'] + n * T
+        return L % 360
+    
+    def equatorial_to_ecliptic(self, ra_deg: float, dec_deg: float, obliquity: float = 23.4393) -> dict:
+        """Convert equatorial (RA, Dec) to ecliptic (lon, lat)."""
+        import math
+        ra_rad = ra_deg * self.deg_to_rad
+        dec_rad = dec_deg * self.deg_to_rad
+        eps_rad = obliquity * self.deg_to_rad
+        
+        sin_lon = math.sin(ra_rad) * math.cos(eps_rad) + math.tan(dec_rad) * math.sin(eps_rad)
+        cos_lon = math.cos(ra_rad)
+        ecl_lon = math.atan2(sin_lon, cos_lon) / self.deg_to_rad
+        ecl_lat = math.asin(math.sin(dec_rad) * math.cos(eps_rad) - 
+                           math.cos(dec_rad) * math.sin(eps_rad) * math.sin(ra_rad)) / self.deg_to_rad
+        return {'ecliptic_lon_deg': ecl_lon % 360, 'ecliptic_lat_deg': ecl_lat}
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Perform ephemeris calculation.
+        
+        Input dataset:
+            - operation: 'solar_position', 'planet_longitude', 'jd_convert', 'coord_transform'
+            - year, month, day: calendar date
+            - jd: Julian Date (alternative to calendar)
+            - planet: planet name for orbital calculation
+            - ra_deg, dec_deg: equatorial coordinates
+        
+        Returns:
+            - solar/planetary position data
+            - Julian Date
+            - coordinate transforms
+        """
+        operation = dataset.get('operation', 'solar_position')
+        
+        # Get JD from input
+        if 'jd' in dataset:
+            jd = dataset['jd']
+        elif all(k in dataset for k in ['year', 'month', 'day']):
+            jd = self.date_to_jd(dataset['year'], dataset['month'], dataset['day'])
+        else:
+            # Default to J2000
+            jd = self.j2000_epoch
+        
+        if operation == 'jd_convert':
+            return {
+                'operation': 'julian_date_conversion',
+                'julian_date': jd,
+                'centuries_since_j2000': self.jd_to_centuries(jd),
+            }
+        
+        if operation == 'solar_position':
+            pos = self.solar_position_approx(jd)
+            return {
+                'operation': 'solar_ephemeris',
+                'julian_date': jd,
+                **pos,
+            }
+        
+        if operation == 'planet_longitude':
+            planet = dataset.get('planet', 'earth')
+            mean_lon = self.planet_mean_longitude(planet, jd)
+            return {
+                'operation': f'{planet}_mean_longitude',
+                'julian_date': jd,
+                'mean_longitude_deg': mean_lon,
+            }
+        
+        if operation == 'coord_transform':
+            ra = dataset.get('ra_deg', 0.0)
+            dec = dataset.get('dec_deg', 0.0)
+            ecl = self.equatorial_to_ecliptic(ra, dec)
+            return {
+                'operation': 'equatorial_to_ecliptic',
+                'input_ra_deg': ra,
+                'input_dec_deg': dec,
+                **ecl,
+            }
+        
+        return {'operation': 'unknown', 'error': f'Unknown operation: {operation}'}
+
+
+class DistributedNewtonSolverCalculator:
+    """
+    ORB_ANALYSIS_63: Distributed Newton-Raphson Solver Calculator
+    
+    Implements multivariate Newton-Raphson solver based on
+    ScientificCalculatorDialog numerical solving with MPI distribution.
+    
+    Features:
+    - Single-variable Newton-Raphson
+    - Multivariate Newton with Jacobian
+    - Numerical differentiation
+    - Convergence tracking
+    
+    Source: clone_1956030704904757394.txt lines 1130-1170 (newtonMethod, newtonMulti)
+    """
+    
+    def __init__(self):
+        self.max_iterations = ORB_ANALYSIS_63_PARAMS['newton_max_iterations']
+        self.tolerance = ORB_ANALYSIS_63_PARAMS['newton_tolerance']
+        self.damping = ORB_ANALYSIS_63_PARAMS['newton_damping_factor']
+        self.h = 1e-8  # Numerical differentiation step
+    
+    def numerical_derivative(self, f, x: float) -> float:
+        """Compute numerical derivative f'(x) using central difference."""
+        return (f(x + self.h) - f(x - self.h)) / (2 * self.h)
+    
+    def newton_1d(self, f, x0: float, max_iter: int = None, tol: float = None) -> dict:
+        """
+        Newton-Raphson method for single-variable equation f(x) = 0.
+        
+        Args:
+            f: function to find root of
+            x0: initial guess
+            max_iter: maximum iterations
+            tol: convergence tolerance
+        
+        Returns:
+            root, iterations, converged, residual history
+        """
+        if max_iter is None:
+            max_iter = self.max_iterations
+        if tol is None:
+            tol = self.tolerance
+        
+        x = x0
+        history = []
+        
+        for i in range(max_iter):
+            fx = f(x)
+            history.append({'iteration': i, 'x': x, 'f(x)': fx})
+            
+            if abs(fx) < tol:
+                return {
+                    'root': x,
+                    'iterations': i + 1,
+                    'converged': True,
+                    'final_residual': abs(fx),
+                    'history': history,
+                }
+            
+            fpx = self.numerical_derivative(f, x)
+            if abs(fpx) < 1e-15:
+                return {
+                    'root': x,
+                    'iterations': i + 1,
+                    'converged': False,
+                    'error': 'Zero derivative encountered',
+                    'history': history,
+                }
+            
+            x = x - self.damping * fx / fpx
+        
+        return {
+            'root': x,
+            'iterations': max_iter,
+            'converged': False,
+            'final_residual': abs(f(x)),
+            'history': history,
+        }
+    
+    def numerical_jacobian(self, f_vec, x_vec: list) -> list:
+        """
+        Compute numerical Jacobian matrix for vector function.
+        J[i][j] = ∂f_i/∂x_j
+        """
+        n = len(x_vec)
+        m = len(f_vec(x_vec))
+        J = [[0.0] * n for _ in range(m)]
+        
+        for j in range(n):
+            x_plus = x_vec.copy()
+            x_minus = x_vec.copy()
+            x_plus[j] += self.h
+            x_minus[j] -= self.h
+            f_plus = f_vec(x_plus)
+            f_minus = f_vec(x_minus)
+            for i in range(m):
+                J[i][j] = (f_plus[i] - f_minus[i]) / (2 * self.h)
+        
+        return J
+    
+    def solve_linear_system(self, A: list, b: list) -> list:
+        """Solve Ax = b using Gaussian elimination with partial pivoting."""
+        n = len(b)
+        # Augmented matrix
+        aug = [row[:] + [b[i]] for i, row in enumerate(A)]
+        
+        for col in range(n):
+            # Partial pivoting
+            max_row = max(range(col, n), key=lambda r: abs(aug[r][col]))
+            aug[col], aug[max_row] = aug[max_row], aug[col]
+            
+            if abs(aug[col][col]) < 1e-15:
+                return None  # Singular matrix
+            
+            # Eliminate
+            for row in range(col + 1, n):
+                factor = aug[row][col] / aug[col][col]
+                for k in range(col, n + 1):
+                    aug[row][k] -= factor * aug[col][k]
+        
+        # Back substitution
+        x = [0.0] * n
+        for i in range(n - 1, -1, -1):
+            x[i] = aug[i][n]
+            for j in range(i + 1, n):
+                x[i] -= aug[i][j] * x[j]
+            x[i] /= aug[i][i]
+        
+        return x
+    
+    def newton_nd(self, f_vec, x0: list, max_iter: int = None, tol: float = None) -> dict:
+        """
+        Newton-Raphson method for multivariate system F(x) = 0.
+        
+        Args:
+            f_vec: function returning list of residuals [f1, f2, ...]
+            x0: initial guess vector [x1_0, x2_0, ...]
+            max_iter: maximum iterations
+            tol: convergence tolerance (norm of residual)
+        
+        Returns:
+            root vector, iterations, converged, history
+        """
+        if max_iter is None:
+            max_iter = self.max_iterations
+        if tol is None:
+            tol = self.tolerance
+        
+        x = x0[:]
+        history = []
+        
+        for i in range(max_iter):
+            f = f_vec(x)
+            norm_f = sum(fi**2 for fi in f) ** 0.5
+            history.append({'iteration': i, 'x': x[:], 'norm_residual': norm_f})
+            
+            if norm_f < tol:
+                return {
+                    'root': x,
+                    'iterations': i + 1,
+                    'converged': True,
+                    'final_residual': norm_f,
+                    'history': history,
+                }
+            
+            J = self.numerical_jacobian(f_vec, x)
+            neg_f = [-fi for fi in f]
+            delta = self.solve_linear_system(J, neg_f)
+            
+            if delta is None:
+                return {
+                    'root': x,
+                    'iterations': i + 1,
+                    'converged': False,
+                    'error': 'Singular Jacobian',
+                    'history': history,
+                }
+            
+            x = [xi + self.damping * di for xi, di in zip(x, delta)]
+        
+        return {
+            'root': x,
+            'iterations': max_iter,
+            'converged': False,
+            'final_residual': sum(fi**2 for fi in f_vec(x)) ** 0.5,
+            'history': history,
+        }
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Perform Newton-Raphson root finding.
+        
+        Input dataset:
+            - operation: 'solve_1d', 'solve_nd', 'jacobian'
+            - function: callable f(x) for 1D or f_vec([x1,x2,...]) for ND
+            - initial_guess: float or list
+            - max_iterations: optional override
+            - tolerance: optional override
+        
+        Returns:
+            - root, convergence info, history
+        """
+        operation = dataset.get('operation', 'solve_1d')
+        func = dataset.get('function')
+        x0 = dataset.get('initial_guess', 0.0)
+        max_iter = dataset.get('max_iterations', self.max_iterations)
+        tol = dataset.get('tolerance', self.tolerance)
+        
+        if func is None:
+            return {'error': 'No function provided'}
+        
+        if operation == 'solve_1d':
+            return self.newton_1d(func, x0, max_iter, tol)
+        
+        if operation == 'solve_nd':
+            if not isinstance(x0, list):
+                x0 = [x0]
+            return self.newton_nd(func, x0, max_iter, tol)
+        
+        if operation == 'jacobian':
+            if not isinstance(x0, list):
+                x0 = [x0]
+            J = self.numerical_jacobian(func, x0)
+            return {
+                'operation': 'jacobian_matrix',
+                'point': x0,
+                'jacobian': J,
+            }
+        
+        return {'error': f'Unknown operation: {operation}'}
+
+
+class PerlinNoiseCalculator:
+    """
+    ORB_ANALYSIS_63: Perlin Noise Field Calculator
+    
+    Implements Perlin noise for procedural physics field generation
+    based on ScientificCalculatorDialog PerlinNoise class.
+    
+    Applications:
+    - Turbulence field simulation
+    - Stochastic force generation
+    - Terrain/potential field modeling
+    - Test function input generation
+    
+    Source: clone_1956030704904757394.txt lines 550-575 (PerlinNoise class)
+    """
+    
+    def __init__(self, seed: int = 0):
+        self.perm_size = ORB_ANALYSIS_63_PARAMS['perlin_permutation_size']
+        self.octaves = ORB_ANALYSIS_63_PARAMS['perlin_octaves']
+        self.persistence = ORB_ANALYSIS_63_PARAMS['perlin_persistence']
+        self._init_permutation(seed)
+    
+    def _init_permutation(self, seed: int):
+        """Initialize permutation table."""
+        import random
+        random.seed(seed)
+        p = list(range(self.perm_size))
+        random.shuffle(p)
+        self.p = p + p  # Double for wrapping
+    
+    def _fade(self, t: float) -> float:
+        """Smoothstep fade function: 6t^5 - 15t^4 + 10t^3"""
+        return t * t * t * (t * (t * 6 - 15) + 10)
+    
+    def _lerp(self, a: float, b: float, t: float) -> float:
+        """Linear interpolation."""
+        return a + t * (b - a)
+    
+    def _grad(self, hash_val: int, x: float) -> float:
+        """Gradient function for 1D."""
+        return x if (hash_val & 1) == 0 else -x
+    
+    def _grad2d(self, hash_val: int, x: float, y: float) -> float:
+        """Gradient function for 2D."""
+        h = hash_val & 3
+        if h == 0:
+            return x + y
+        elif h == 1:
+            return -x + y
+        elif h == 2:
+            return x - y
+        else:
+            return -x - y
+    
+    def noise_1d(self, x: float) -> float:
+        """1D Perlin noise value at x."""
+        import math
+        X = int(math.floor(x)) & (self.perm_size - 1)
+        x -= math.floor(x)
+        u = self._fade(x)
+        return self._lerp(self._grad(self.p[X], x), self._grad(self.p[X + 1], x - 1), u)
+    
+    def noise_2d(self, x: float, y: float) -> float:
+        """2D Perlin noise value at (x, y)."""
+        import math
+        X = int(math.floor(x)) & (self.perm_size - 1)
+        Y = int(math.floor(y)) & (self.perm_size - 1)
+        x -= math.floor(x)
+        y -= math.floor(y)
+        u = self._fade(x)
+        v = self._fade(y)
+        
+        A = self.p[X] + Y
+        B = self.p[X + 1] + Y
+        
+        return self._lerp(
+            self._lerp(self._grad2d(self.p[A], x, y), self._grad2d(self.p[B], x - 1, y), u),
+            self._lerp(self._grad2d(self.p[A + 1], x, y - 1), self._grad2d(self.p[B + 1], x - 1, y - 1), u),
+            v
+        )
+    
+    def fbm_1d(self, x: float, octaves: int = None, persistence: float = None) -> float:
+        """Fractal Brownian Motion (multi-octave noise) 1D."""
+        if octaves is None:
+            octaves = self.octaves
+        if persistence is None:
+            persistence = self.persistence
+        
+        total = 0.0
+        amplitude = 1.0
+        frequency = 1.0
+        max_value = 0.0
+        
+        for _ in range(octaves):
+            total += self.noise_1d(x * frequency) * amplitude
+            max_value += amplitude
+            amplitude *= persistence
+            frequency *= 2.0
+        
+        return total / max_value
+    
+    def fbm_2d(self, x: float, y: float, octaves: int = None, persistence: float = None) -> float:
+        """Fractal Brownian Motion (multi-octave noise) 2D."""
+        if octaves is None:
+            octaves = self.octaves
+        if persistence is None:
+            persistence = self.persistence
+        
+        total = 0.0
+        amplitude = 1.0
+        frequency = 1.0
+        max_value = 0.0
+        
+        for _ in range(octaves):
+            total += self.noise_2d(x * frequency, y * frequency) * amplitude
+            max_value += amplitude
+            amplitude *= persistence
+            frequency *= 2.0
+        
+        return total / max_value
+    
+    def generate_field_1d(self, x_start: float, x_end: float, num_points: int, 
+                          octaves: int = None, persistence: float = None) -> dict:
+        """Generate array of 1D noise values."""
+        step = (x_end - x_start) / (num_points - 1) if num_points > 1 else 0
+        x_values = [x_start + i * step for i in range(num_points)]
+        noise_values = [self.fbm_1d(x, octaves, persistence) for x in x_values]
+        return {'x': x_values, 'noise': noise_values}
+    
+    def generate_field_2d(self, x_range: tuple, y_range: tuple, resolution: tuple,
+                          octaves: int = None, persistence: float = None) -> dict:
+        """Generate 2D grid of noise values."""
+        x_step = (x_range[1] - x_range[0]) / (resolution[0] - 1) if resolution[0] > 1 else 0
+        y_step = (y_range[1] - y_range[0]) / (resolution[1] - 1) if resolution[1] > 1 else 0
+        
+        grid = []
+        for j in range(resolution[1]):
+            row = []
+            y = y_range[0] + j * y_step
+            for i in range(resolution[0]):
+                x = x_range[0] + i * x_step
+                row.append(self.fbm_2d(x, y, octaves, persistence))
+            grid.append(row)
+        
+        return {'x_range': x_range, 'y_range': y_range, 'resolution': resolution, 'grid': grid}
+    
+    def compute(self, dataset: dict) -> dict:
+        """
+        Generate Perlin noise field.
+        
+        Input dataset:
+            - operation: 'noise_1d', 'noise_2d', 'fbm_1d', 'fbm_2d', 'field_1d', 'field_2d'
+            - x, y: coordinates for point evaluation
+            - x_range, y_range: tuples (min, max) for field generation
+            - resolution: int (1D) or tuple (2D)
+            - octaves, persistence: FBM parameters
+            - seed: random seed for permutation
+        
+        Returns:
+            - noise values or field grids
+        """
+        operation = dataset.get('operation', 'noise_1d')
+        x = dataset.get('x', 0.0)
+        y = dataset.get('y', 0.0)
+        octaves = dataset.get('octaves')
+        persistence = dataset.get('persistence')
+        
+        if 'seed' in dataset:
+            self._init_permutation(dataset['seed'])
+        
+        if operation == 'noise_1d':
+            return {
+                'operation': 'perlin_noise_1d',
+                'x': x,
+                'value': self.noise_1d(x),
+            }
+        
+        if operation == 'noise_2d':
+            return {
+                'operation': 'perlin_noise_2d',
+                'x': x, 'y': y,
+                'value': self.noise_2d(x, y),
+            }
+        
+        if operation == 'fbm_1d':
+            return {
+                'operation': 'fractal_brownian_motion_1d',
+                'x': x,
+                'octaves': octaves or self.octaves,
+                'persistence': persistence or self.persistence,
+                'value': self.fbm_1d(x, octaves, persistence),
+            }
+        
+        if operation == 'fbm_2d':
+            return {
+                'operation': 'fractal_brownian_motion_2d',
+                'x': x, 'y': y,
+                'octaves': octaves or self.octaves,
+                'persistence': persistence or self.persistence,
+                'value': self.fbm_2d(x, y, octaves, persistence),
+            }
+        
+        if operation == 'field_1d':
+            x_start = dataset.get('x_start', 0.0)
+            x_end = dataset.get('x_end', 10.0)
+            num_points = dataset.get('num_points', 100)
+            field = self.generate_field_1d(x_start, x_end, num_points, octaves, persistence)
+            return {
+                'operation': 'perlin_field_1d',
+                **field,
+            }
+        
+        if operation == 'field_2d':
+            x_range = dataset.get('x_range', (0.0, 10.0))
+            y_range = dataset.get('y_range', (0.0, 10.0))
+            resolution = dataset.get('resolution', (50, 50))
+            field = self.generate_field_2d(x_range, y_range, resolution, octaves, persistence)
+            return {
+                'operation': 'perlin_field_2d',
+                **field,
+            }
+        
+        return {'error': f'Unknown operation: {operation}'}
+
+
+# ORB_ANALYSIS_63 Calculator Registry
+ORB_ANALYSIS_63_CALCULATORS = {
+    'SIDimensionalAnalysisCalculator': SIDimensionalAnalysisCalculator(),
+    'QuTiPQuantumStateCalculator': QuTiPQuantumStateCalculator(),
+    'AstropyEphemerisCalculator': AstropyEphemerisCalculator(),
+    'DistributedNewtonSolverCalculator': DistributedNewtonSolverCalculator(),
+    'PerlinNoiseCalculator': PerlinNoiseCalculator(),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -35692,6 +36626,7 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_60_CALCULATORS,
     **ORB_ANALYSIS_61_CALCULATORS,
     **ORB_ANALYSIS_62_CALCULATORS,
+    **ORB_ANALYSIS_63_CALCULATORS,
 }
 
 # Update class count
@@ -36406,6 +37341,13 @@ __all__ = [
     'AssemblyDisassemblyCalculator',
     'ORB_ANALYSIS_62_CALCULATORS',
     
-    # Aggregated registry
-    'CP2_CALCULATORS',
+    # Orb 63: Scientific Calculator Dialog Extraction (SI Units, Quantum, Astropy, Newton, Perlin)
+    'ORB_ANALYSIS_63_PARAMS',
+    'SIDimensionalAnalysisCalculator',
+    'QuTiPQuantumStateCalculator',
+    'AstropyEphemerisCalculator',
+    'DistributedNewtonSolverCalculator',
+    'PerlinNoiseCalculator',
+    'ORB_ANALYSIS_63_CALCULATORS',
+
 ]
