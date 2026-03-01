@@ -154,6 +154,42 @@ except ImportError:
     COSMIC_DOMAINS_AVAILABLE = False
     COSMIC_DOMAIN_CALCULATORS = {}
 
+# alpha_clustering_lenr_module - Nuclear alpha clustering, Widom-Larsen LENR
+try:
+    from alpha_clustering_lenr_module import (
+        AlphaClusteringCalculator, WidomLarsenCalculator, NuclearAstroScaler,
+        ALPHA_LENR_CALCULATORS, CA40_CA40_35MEV, SI28_SI28_35MEV,
+        METALLIC_HYDRIDE, SOLAR_CORONA
+    )
+    ALPHA_LENR_AVAILABLE = True
+except ImportError:
+    ALPHA_LENR_AVAILABLE = False
+    ALPHA_LENR_CALCULATORS = {}
+
+# electric_universe_gyro_module - EU validation, gyroscopic torque nullification
+try:
+    from electric_universe_gyro_module import (
+        ElectricUniverseCalculator, GyroscopicCalculator, EUGyroUnifiedCalculator,
+        EU_GYRO_CALCULATORS, ALPHA_PARTICLE_EU, MAGNETAR_SURFACE_EU,
+        NEUTRON_STAR_EU, PLANET_NINE_EU
+    )
+    EU_GYRO_AVAILABLE = True
+except ImportError:
+    EU_GYRO_AVAILABLE = False
+    EU_GYRO_CALCULATORS = {}
+
+# bh_mass_scaler_module - Harvard BH mass distribution, thermodynamics, mergers
+try:
+    from bh_mass_scaler_module import (
+        BHMassEnergyScaler, BHThermodynamicsCalculator, MergerHierarchyCalculator,
+        BH_MASS_CALCULATORS, HARVARD_DISTRIBUTION, GWTC_MERGER_PEAKS,
+        STELLAR_BH_10, IMBH_1000, SGRA_4M, TON618_66B, PHOENIX_100B
+    )
+    BH_MASS_AVAILABLE = True
+except ImportError:
+    BH_MASS_AVAILABLE = False
+    BH_MASS_CALCULATORS = {}
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # UQFF C++ BINDINGS (Phase 2 Integration - Feb 2026)
 # ═══════════════════════════════════════════════════════════════════════════════
