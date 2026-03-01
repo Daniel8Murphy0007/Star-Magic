@@ -8899,6 +8899,512 @@ MUGE_CALCULATOR = MUGECalculator()
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# UPDATED UQFF EQUATIONS (from Grok Conversation b4469997f5324be48bc0697cdeaf21f9)
+# Includes: Tailored F_UBii for jets/mergers/BH, Updated Um, MUGE extensions
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class UpdatedUQFFCalculator:
+    """
+    Updated UQFF Equations from Grok Deep Analysis Session
+    
+    New equations tailored to specific astrophysical domains:
+    - Protostellar Jets (F_UBii,jet with C-type damping)
+    - Galaxy Mergers (F_UBii,merger with redshift evolution)
+    - Black Hole Accretion (F_UBii,BH with feedback regulation)
+    - Ising Anyon QC (F_UBii,anyons for error-resistant QC)
+    - Polariton QFT (Um,polariton for curved spacetime analogs)
+    
+    Reference: GROK_UQFF_EQUATIONS_REFERENCE.md
+    """
+    
+    def __init__(self):
+        # Core UQFF constants
+        self.F_rel = 4.30e33           # Relativistic coherence force (N)
+        self.E_LEP = 200e9 * 1.6e-19   # LEP 1998 baseline (J) = 200 GeV
+        self.Q_wave = 1e12             # THz resonance factor
+        self.rho_vac_SCm = 7.09e-37    # Superconductive vacuum (J/m³)
+        self.rho_vac_UA = 7.09e-36     # Aether vacuum (J/m³)
+        self.gamma = 5e-5 / 86400      # Decay constant (s⁻¹) = 5e-5 day⁻¹
+        self.omega_c = 1.585e-8        # Characteristic frequency (rad/s)
+        self.mu_0_UQFF = 3.38e20       # Magnetic moment base (T·pm³)
+        self.kappa = 0.0005 / 86400    # κ calibration (s⁻¹)
+        self.G = 6.674e-11
+        self.c = 2.998e8
+        self.PI = np.pi
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # TAILORED BUOYANCY EQUATIONS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_F_UBii_jet(self, E_shock: float, g_disk: float, t: float,
+                           tau_damp: float = 3.156e10) -> tuple:
+        """
+        Buoyancy in Jet Shocks (negative for C-type damping)
+        
+        F_UBii,jet = -F_rel × (E_shock / E_LEP) × Q_wave(t) × g_disk × e^(-t/τ_damp)
+        
+        Parameters:
+            E_shock: Shock energy ~ (1/2)ρv_j² (J)
+            g_disk: Disk gravity GM/r² (m/s²)
+            t: Time (s)
+            tau_damp: C-type damping timescale ~10³ yr (s)
+        
+        Returns:
+            F_UBii_jet: Negative for stabilization (N)
+        """
+        Q_t = self.Q_wave * (1 + np.sin(2 * self.PI * t / (3.156e7)))  # Annual modulation
+        exp_damp = np.exp(-t / tau_damp)
+        
+        F_jet = -self.F_rel * (E_shock / self.E_LEP) * Q_t * g_disk * exp_damp
+        
+        derivation = f"""Updated UQFF: Buoyancy in Jet Shocks (F_UBii,jet)
+═══════════════════════════════════════════════════════════════════════════════
+Formula: F_UBii,jet = -F_rel × (E_shock / E_LEP) × Q_wave(t) × g_disk × e^(-t/τ_damp)
+
+Parameters:
+  F_rel = {self.F_rel:.4e} N
+  E_shock = {E_shock:.4e} J  →  E_shock/E_LEP = {E_shock/self.E_LEP:.4e}
+  Q_wave(t) = {Q_t:.4e}  (with annual modulation)
+  g_disk = {g_disk:.4e} m/s²
+  τ_damp = {tau_damp:.4e} s  →  e^(-t/τ) = {exp_damp:.6f}
+
+Result: F_UBii,jet = {F_jet:.4e} N
+        [NEGATIVE = C-type shock stabilization, prevents discontinuous J-type]
+═══════════════════════════════════════════════════════════════════════════════"""
+        
+        return F_jet, derivation
+    
+    def compute_F_UBii_merger(self, E_burst: float, g_halo: float, z: float,
+                              m_EPS: float = 2.5) -> tuple:
+        """
+        Buoyancy in Merger-Induced Bursts (positive for SFR enhancement)
+        
+        F_UBii,merger = F_rel × (E_burst / E_LEP) × Q_wave,z × g_halo × (1+z)^m
+        
+        Parameters:
+            E_burst: Burst energy ~10-100× quiescent SFR (J)
+            g_halo: Halo virial gravity GM/r² (m/s²)
+            z: Redshift
+            m_EPS: EPS exponent ~2.5
+        """
+        Q_z = self.Q_wave * (1 + 0.1 * z)  # Redshift modulation
+        redshift_factor = (1 + z) ** m_EPS
+        
+        F_merger = self.F_rel * (E_burst / self.E_LEP) * Q_z * g_halo * redshift_factor
+        
+        derivation = f"""Updated UQFF: Buoyancy in Merger-Induced Bursts (F_UBii,merger)
+═══════════════════════════════════════════════════════════════════════════════
+Formula: F_UBii,merger = F_rel × (E_burst / E_LEP) × Q_wave,z × g_halo × (1+z)^m
+
+Parameters:
+  F_rel = {self.F_rel:.4e} N
+  E_burst = {E_burst:.4e} J  →  E_burst/E_LEP = {E_burst/self.E_LEP:.4e}
+  Q_wave,z = {Q_z:.4e}  (redshift-modulated)
+  g_halo = {g_halo:.4e} m/s²
+  z = {z:.4f}  →  (1+z)^{m_EPS} = {redshift_factor:.4f}
+
+Result: F_UBii,merger = {F_merger:.4e} N
+        [POSITIVE = SFR enhancement, starburst trigger]
+═══════════════════════════════════════════════════════════════════════════════"""
+        
+        return F_merger, derivation
+    
+    def compute_F_UBii_BH(self, M_dot_BH: float, M_BH: float, r: float,
+                          sigma_M_z: float = 1.0, z: float = 0) -> tuple:
+        """
+        Buoyancy in BH Accretion (negative for feedback regulation)
+        
+        F_UBii,BH = -F_rel × (Ṁ_BH·c² / E_LEP) × Q_wave × (4πGM_BH / c²r) × erfc(δ_c / √2σ)
+        
+        Parameters:
+            M_dot_BH: Accretion rate (kg/s)
+            M_BH: Black hole mass (kg)
+            r: Distance from BH (m)
+            sigma_M_z: EPS variance σ(M,z)
+            z: Redshift
+        """
+        from scipy.special import erfc
+        
+        E_acc = M_dot_BH * self.c * self.c
+        gravity_factor = 4 * self.PI * self.G * M_BH / (self.c * self.c * r)
+        delta_c = 1.686 * (1 + z)
+        erfc_term = erfc(delta_c / (np.sqrt(2) * sigma_M_z))
+        
+        F_BH = -self.F_rel * (E_acc / self.E_LEP) * self.Q_wave * gravity_factor * erfc_term
+        
+        derivation = f"""Updated UQFF: Buoyancy in BH Accretion (F_UBii,BH)
+═══════════════════════════════════════════════════════════════════════════════
+Formula: F_UBii,BH = -F_rel × (Ṁ_BH·c² / E_LEP) × Q_wave × (4πGM_BH / c²r) × erfc(δ_c/√2σ)
+
+Parameters:
+  F_rel = {self.F_rel:.4e} N
+  Ṁ_BH = {M_dot_BH:.4e} kg/s  →  Ṁ·c² = {E_acc:.4e} J/s
+  M_BH = {M_BH:.4e} kg
+  r = {r:.4e} m
+  gravity_factor = {gravity_factor:.4e}
+  z = {z:.4f}  →  δ_c = {delta_c:.4f}
+  σ(M,z) = {sigma_M_z:.4f}  →  erfc(...) = {erfc_term:.6f}
+
+Result: F_UBii,BH = {F_BH:.4e} N
+        [NEGATIVE = Jet feedback regulation, delays growth to z~2]
+═══════════════════════════════════════════════════════════════════════════════"""
+        
+        return F_BH, derivation
+    
+    def compute_F_UBii_anyons(self, E_anyons: float, g: float, t: float,
+                              sigma: float = 1.0) -> tuple:
+        """
+        Buoyancy with Ising Anyon Universality (for error-resistant QC)
+        
+        F_UBii,anyons = -F_rel × (E_anyons / E_LEP) × Q_wave × g × exp(-δ_c² / 2σ²)
+        
+        Parameters:
+            E_anyons: Ising braiding energy ~MeV from UTe2 (J)
+            g: Local gravity (m/s²)
+            t: Time (s)
+            sigma: TQFT variance (neglectons)
+        """
+        delta_c = 1.686
+        exp_term = np.exp(-delta_c**2 / (2 * sigma**2))
+        
+        F_anyons = -self.F_rel * (E_anyons / self.E_LEP) * self.Q_wave * g * exp_term
+        
+        derivation = f"""Updated UQFF: Buoyancy with Ising Anyon Universality (F_UBii,anyons)
+═══════════════════════════════════════════════════════════════════════════════
+Formula: F_UBii,anyons = -F_rel × (E_anyons / E_LEP) × Q_wave × g × exp(-δ_c² / 2σ²)
+
+Parameters:
+  F_rel = {self.F_rel:.4e} N
+  E_anyons = {E_anyons:.4e} J  →  E_anyons/E_LEP = {E_anyons/self.E_LEP:.4e}
+  Q_wave = {self.Q_wave:.4e}
+  g = {g:.4e} m/s²
+  δ_c = {delta_c:.4f}
+  σ = {sigma:.4f}  →  exp(-δ²/2σ²) = {exp_term:.6f}
+
+Result: F_UBii,anyons = {F_anyons:.4e} N
+        [NEGATIVE = Error-resistant topological QC stabilization]
+═══════════════════════════════════════════════════════════════════════════════"""
+        
+        return F_anyons, derivation
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # TAILORED MAGNETISM EQUATIONS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_Um_jet(self, r: float, t: float, n: int = 0,
+                       T_B: float = 1e20, r_A: float = 1.5e12) -> tuple:
+        """
+        Magnetism in Jet Launching (with Alfvén torque)
+        
+        Um_jet = Σ[μ_j / r × (1 - e^(-γt·cos(πtn)))] × T_B / (B·r_A²)
+        
+        Parameters:
+            r: Distance (m)
+            t: Time (s)
+            n: Mode number
+            T_B: Magnetic torque B²r³/(4π) (N·m)
+            r_A: Alfvén radius ~10 AU (m)
+        """
+        # Oscillating magnetic moment
+        mu_j = (1e3 + 0.4 * np.sin(self.omega_c * t)) * self.mu_0_UQFF
+        
+        # Exponential term (handle n=0 case)
+        if n == 0:
+            exp_term = 1 - np.exp(-self.gamma * t)
+        else:
+            exp_term = 1 - np.exp(-self.gamma * t * np.cos(self.PI * t * n))
+        
+        # Base Um
+        Um_base = (mu_j / r) * exp_term
+        
+        # Alfvén correction
+        B_est = np.sqrt(4 * self.PI * T_B / (r_A**3))  # Estimate B from T_B
+        alfven_factor = T_B / (B_est * r_A * r_A) if B_est > 0 else 1.0
+        
+        Um_jet = Um_base * alfven_factor
+        
+        derivation = f"""Updated UQFF: Magnetism in Jet Launching (Um,jet)
+═══════════════════════════════════════════════════════════════════════════════
+Formula: Um_jet = [μ_j(t) / r × (1 - e^(-γt·cos(πtn)))] × T_B / (B·r_A²)
+
+Parameters:
+  μ_j(t) = {mu_j:.4e} T·pm³  (oscillating)
+  r = {r:.4e} m
+  γ = {self.gamma:.4e} s⁻¹
+  t = {t:.4e} s
+  n = {n}  →  exp term = {exp_term:.6f}
+  T_B = {T_B:.4e} N·m
+  r_A = {r_A:.4e} m  (~{r_A/1.496e11:.1f} AU)
+
+Result: Um_jet = {Um_jet:.4e} T·pm³
+        [With MHD Alfvén torque for jet ejection]
+═══════════════════════════════════════════════════════════════════════════════"""
+        
+        return Um_jet, derivation
+    
+    def compute_Um_polariton(self, r: float, t: float, n: int = 0,
+                             v_sound: float = 1e3, Delta_T: float = 1e-10) -> tuple:
+        """
+        Magnetism with Polariton QFT Simulation (curved spacetime analogs)
+        
+        Um_polariton = [μ_j / r × (1 - e^(-γt·cos(πtn)))] × (v_sound/c)² × (1 + ΔT/T)
+        
+        Parameters:
+            r: Distance (m)
+            t: Time (s)
+            n: Mode number
+            v_sound: Polariton speed ~km/s (m/s)
+            Delta_T: Hawking-like temperature analog (K)
+        """
+        mu_j = (1e3 + 0.4 * np.sin(self.omega_c * t)) * self.mu_0_UQFF
+        
+        if n == 0:
+            exp_term = 1 - np.exp(-self.gamma * t)
+        else:
+            exp_term = 1 - np.exp(-self.gamma * t * np.cos(self.PI * t * n))
+        
+        Um_base = (mu_j / r) * exp_term
+        
+        # Relativistic polariton factor
+        rel_factor = (v_sound / self.c) ** 2
+        
+        # Hawking analog
+        T_ref = 2.725  # CMB temperature
+        hawking_factor = 1 + Delta_T / T_ref
+        
+        Um_polariton = Um_base * rel_factor * hawking_factor
+        
+        derivation = f"""Updated UQFF: Magnetism with Polariton QFT (Um,polariton)
+═══════════════════════════════════════════════════════════════════════════════
+Formula: Um_polariton = [μ_j / r × (1 - e^(-γt·cos(πtn)))] × (v_sound/c)² × (1 + ΔT/T)
+
+Parameters:
+  μ_j(t) = {mu_j:.4e} T·pm³
+  r = {r:.4e} m
+  exp term = {exp_term:.6f}
+  v_sound = {v_sound:.4e} m/s  →  (v/c)² = {rel_factor:.4e}
+  ΔT = {Delta_T:.4e} K  →  1 + ΔT/T_CMB = {hawking_factor:.6f}
+
+Result: Um_polariton = {Um_polariton:.4e} T·pm³
+        [For curved spacetime analog simulations]
+═══════════════════════════════════════════════════════════════════════════════"""
+        
+        return Um_polariton, derivation
+    
+    def compute_Um_BH(self, M_BH: float, a: float, B: float, t: float) -> tuple:
+        """
+        Magnetism in BH Jets (with Blandford-Znajek spin extraction)
+        
+        Um_BH = μ(ρ_vac) × (1 - e^(-γt)) × (ac³ / 2GM) × B²r_H⁴ / (4πc)
+        
+        Parameters:
+            M_BH: Black hole mass (kg)
+            a: Dimensionless spin ~0.9
+            B: Magnetic field at horizon (T)
+            t: Time (s)
+        """
+        mu_j = 1e3 * self.mu_0_UQFF  # Base moment with vacuum density
+        exp_term = 1 - np.exp(-self.gamma * t)
+        
+        # Horizon radius
+        r_H = self.G * M_BH / (self.c * self.c)
+        
+        # Angular velocity
+        Omega_H = a * self.c**3 / (2 * self.G * M_BH)
+        
+        # BZ power factor
+        BZ_factor = B**2 * r_H**4 / (4 * self.PI * self.c)
+        
+        Um_BH = mu_j * exp_term * Omega_H * BZ_factor / r_H
+        
+        derivation = f"""Updated UQFF: Magnetism in BH Jets (Um,BH - Blandford-Znajek)
+═══════════════════════════════════════════════════════════════════════════════
+Formula: Um_BH = μ(ρ_vac) × (1 - e^(-γt)) × (ac³ / 2GM) × B²r_H⁴ / (4πc)
+
+Parameters:
+  M_BH = {M_BH:.4e} kg  ({M_BH/(1.989e30):.2e} M_☉)
+  a = {a:.4f}  (dimensionless spin)
+  B = {B:.4e} T
+  r_H = GM/c² = {r_H:.4e} m
+  Ω_H = ac³/2GM = {Omega_H:.4e} rad/s
+  BZ factor = {BZ_factor:.4e}
+
+Result: Um_BH = {Um_BH:.4e} T·pm³
+        [Blandford-Znajek spin extraction for relativistic jets]
+═══════════════════════════════════════════════════════════════════════════════"""
+        
+        return Um_BH, derivation
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # PSEUDO-MONOPOLE AND TOPOLOGICAL STATES
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_delta_n_UTe2(self, n: int = 0, SSq: float = 0.57, t: float = 0,
+                              f_topo: float = 0.1) -> tuple:
+        """
+        Pseudo-Monopole with UTe2 Topological Superconductivity
+        
+        δ_n,UTe2 = (2π)^n/6 × e^(-[SSq]^n/26) × (1 + f_topo) × e^(-π-t)
+        
+        Parameters:
+            n: Mode number
+            SSq: Quantum state entropy ~0.57
+            t: Time (s)
+            f_topo: Topological factor ~0.1-0.3 (Andreev STM)
+        """
+        # Base term
+        delta_base = (2 * self.PI)**n / 6
+        
+        # SSq exponential
+        if n == 0:
+            ssq_exp = 1.0
+        else:
+            ssq_exp = np.exp(-SSq**n / 26)
+        
+        # Topological enhancement
+        topo_factor = 1 + f_topo
+        
+        # Time-reversal exponential
+        tr_exp = np.exp(-self.PI - t) if t > 0 else np.exp(-self.PI)
+        
+        delta_UTe2 = delta_base * ssq_exp * topo_factor * tr_exp
+        
+        derivation = f"""Updated UQFF: Pseudo-Monopole with UTe2 (δ_n,UTe2)
+═══════════════════════════════════════════════════════════════════════════════
+Formula: δ_n,UTe2 = (2π)^n/6 × e^(-[SSq]^n/26) × (1 + f_topo) × e^(-π-t)
+
+Parameters:
+  n = {n}  →  (2π)^n/6 = {delta_base:.6f}
+  [SSq] = {SSq:.4f}  →  e^(-[SSq]^n/26) = {ssq_exp:.6f}
+  f_topo = {f_topo:.4f}  →  1 + f_topo = {topo_factor:.4f}
+  t = {t:.4e} s  →  e^(-π-t) = {tr_exp:.6e}
+
+Result: δ_n,UTe2 = {delta_UTe2:.6e}
+        [For intrinsic topological superconductivity (Majorana fermions)]
+═══════════════════════════════════════════════════════════════════════════════"""
+        
+        return delta_UTe2, derivation
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # ELECTRIC UNIVERSE INTEGRATION
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_EU_ratio(self, Um: float, r: float, q: float = 1.6e-19,
+                         v: float = 3e7, M: float = 6.68e-27, m: float = 6.68e-27) -> tuple:
+        """
+        Electric Universe Dominance Ratio R = F_EM / F_g
+        
+        Proves EU locally valid (R >> 10^39) while buoyancy resolves cosmic gravity
+        
+        Parameters:
+            Um: Universal magnetism (T·pm³)
+            r: Distance (m)
+            q: Charge (C) - default electron
+            v: Velocity (m/s) - default ~0.1c nuclear
+            M, m: Masses (kg) - default alpha particle
+        """
+        # Electric field from Um
+        E = Um * self.rho_vac_UA / r
+        
+        # Lorentz force
+        F_EM = q * E * v
+        
+        # Gravitational force
+        F_g = self.G * M * m / (r * r)
+        
+        # Ratio
+        R = F_EM / F_g if F_g > 0 else float('inf')
+        
+        derivation = f"""Updated UQFF: Electric Universe Dominance Ratio (R = F_EM / F_g)
+═══════════════════════════════════════════════════════════════════════════════
+Formulas:
+  E = Um × ρ_vac,[UA] / r
+  F_EM = q × E × v
+  F_g = G × M × m / r²
+  R = F_EM / F_g
+
+Parameters:
+  Um = {Um:.4e} T·pm³
+  r = {r:.4e} m
+  ρ_vac,[UA] = {self.rho_vac_UA:.4e} J/m³
+  E = {E:.4e} V/m
+  
+  q = {q:.4e} C
+  v = {v:.4e} m/s
+  F_EM = {F_EM:.4e} N
+  
+  G = {self.G:.4e} m³/(kg·s²)
+  M = {M:.4e} kg
+  m = {m:.4e} kg
+  F_g = {F_g:.4e} N
+
+Result: R = F_EM / F_g = {R:.4e}
+        [R >> 10^39 proves EU locally; R ~ 10^71 at nuclear scales]
+        [Buoyancy F_UBii resolves macro gravity emergence]
+═══════════════════════════════════════════════════════════════════════════════"""
+        
+        return R, derivation
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # GYROSCOPIC INTEGRATION
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    def compute_gyro_nullification(self, I: float, omega: float, alpha: float,
+                                   r: float, F_UBii: float = None) -> tuple:
+        """
+        Gyroscopic Torque Nullification via Buoyancy
+        
+        τ = I × ω × α  →  Nullified when τ + F_UBii × r = 0
+        
+        Parameters:
+            I: Moment of inertia (kg·m²)
+            omega: Angular velocity (rad/s)
+            alpha: Precession rate (rad/s²)
+            r: Lever arm (m)
+            F_UBii: Buoyancy force for nullification (N)
+        """
+        tau = I * omega * alpha
+        
+        # Required F for nullification
+        F_req = -tau / r if r > 0 else 0
+        
+        # Check if provided F_UBii nullifies
+        if F_UBii is not None:
+            residual = tau + F_UBii * r
+            is_nullified = abs(residual) < abs(tau) * 0.01
+        else:
+            residual = tau
+            is_nullified = False
+        
+        derivation = f"""Updated UQFF: Gyroscopic Torque Nullification
+═══════════════════════════════════════════════════════════════════════════════
+Formula: τ = I × ω × α
+Nullification condition: τ + F_UBii × r = 0  →  F_UBii = -τ/r
+
+Parameters:
+  I = {I:.4e} kg·m²
+  ω = {omega:.4e} rad/s
+  α = {alpha:.4e} rad/s²
+  τ = I × ω × α = {tau:.4e} N·m
+  
+  r = {r:.4e} m
+  F_required = -τ/r = {F_req:.4e} N
+  
+  F_UBii (provided) = {F_UBii if F_UBii else 'Not provided'}
+  Residual torque = {residual:.4e} N·m
+  Nullified? {is_nullified}
+
+Result: τ = {tau:.4e} N·m  →  F_req = {F_req:.4e} N
+        [Nullification stabilizes rotations in jets, clusters, Planet Nine epochs]
+═══════════════════════════════════════════════════════════════════════════════"""
+        
+        return tau, F_req, derivation
+
+
+UPDATED_UQFF_CALCULATOR = UpdatedUQFFCalculator()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # FOUNDATIONAL PHYSICS CALCULATORS (Floyd Sweet, Cosmic Egg, Heisenberg, Negative Time)
 # ═══════════════════════════════════════════════════════════════════════════════
 
