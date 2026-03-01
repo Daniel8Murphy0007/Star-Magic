@@ -42,6 +42,61 @@ import sys
 import argparse
 import math
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# GROK 100+ EQUATIONS MODULE IMPORTS
+# ═══════════════════════════════════════════════════════════════════════════════
+try:
+    from grok_100_equations_module import (
+        PhysicsConstants,
+        ProtostellarJetCalculator,
+        GalaxyMergerSFRCalculator,
+        BlackHoleGrowthCalculator,
+        SupernovaRemnantCalculator,
+        GravitationalWaveMergerCalculator,
+        QuasarJetCalculator,
+        NeutronStarCalculator,
+        GammaRayBurstCalculator,
+        CMBCalculator,
+        AGNFeedbackCalculator,
+        ExoplanetCalculator,
+        DarkMatterHaloCalculator,
+        GalaxyClusterCalculator,
+        CosmicVoidCalculator,
+        ReionizationCalculator,
+        ISMTurbulenceCalculator,
+        StellarEvolutionCalculator,
+        BBNCalculator,
+        FriedmannCosmologyCalculator,
+        InflationCalculator,
+        PrimordialGWCalculator,
+        BinaryBHMergerCalculator,
+        SupernovaCalculator,
+        PlanetaryNebulaCalculator,
+        UQFFBuoyancyCalculator,
+        UQFFMagnetismCalculator,
+        UQFFGyroCalculator,
+    )
+    from grok_100_equations_module_part2 import (
+        ClusterCollisionCalculator,
+        StarClusterCalculator,
+        QuasarWindCalculator,
+        NSBinaryCalculator,
+        CosmicRayPhysicsCalculator,
+        IGMCalculator,
+        FirstGalaxyCalculator,
+        QuantumFluctuationCalculator,
+        MHDDynamoCalculator,
+        DarkEnergyCalculator,
+        BHThermodynamicsCalculator,
+        LQCCalculator,
+        ExoplanetAtmosphereCalculator,
+        MUGECalculator,
+        ElectricUniverseValidator,
+    )
+    GROK_MODULES_AVAILABLE = True
+except ImportError:
+    GROK_MODULES_AVAILABLE = False
+
 # NumPy 2.0 compatibility: trapz was renamed to trapezoid
 if not hasattr(np, 'trapz'):
     np.trapz = np.trapezoid
