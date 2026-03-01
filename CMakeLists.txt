@@ -470,7 +470,9 @@ set(IPC_HEADERS
 #   vcpkg install curl:x64-windows sqlite3:x64-windows
 #   vcpkg install aws-sdk-cpp[cognito-idp,s3]:x64-windows
 if(Qt6_FOUND)
-    add_executable(Source2 source2.cpp source2_mainwindow.h UQFFResultsWidget.h equation_renderer.h ${IPC_SOURCES} ${IPC_HEADERS})
+    add_executable(Source2 source2.cpp source2_mainwindow.h UQFFResultsWidget.h equation_renderer.h ${IPC_SOURCES} ${IPC_HEADERS}
+        ${CMAKE_SOURCE_DIR}/resources/Star-Magic.rc  # Windows icon/version resources
+    )
     
     # Enable Qt AUTOMOC/AUTOUIC/AUTORCC for Source2 (Q_OBJECT in header file)
     set_target_properties(Source2 PROPERTIES 
@@ -482,7 +484,10 @@ if(Qt6_FOUND)
     )
     
     # IPC include directory (Phase 1 - VR Architecture)
-    target_include_directories(Source2 PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/ipc)
+    target_include_directories(Source2 PRIVATE 
+        ${CMAKE_CURRENT_SOURCE_DIR}/ipc
+        ${CMAKE_CURRENT_SOURCE_DIR}/resources
+    )
     
     # Base Qt6 dependencies (always required)
     target_link_libraries(Source2 PRIVATE 
@@ -667,7 +672,9 @@ if(Qt6_FOUND)
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
                 "C:/Program Files/Wolfram Research/Wolfram Engine/14.3/SystemFiles/Links/WSTP/DeveloperKit/Windows-x86-64/SystemAdditions/wstp64i4.dll"
                 "$<TARGET_FILE_DIR:Source2>/"
-            COMMAND ${CMAKE_COMMAND} -E echo "✅ MAIN_1_CoAnQi.exe + Python wrappers (UQFF, QCalc, CondensedPhysics, ValidationData, GrokAPI, OllamaAPI) + OpenSSL + VC++ Runtime + WSTP DLLs deployed"
+            # Deploy Qt DLLs (including WebEngine) using windeployqt
+            COMMAND "C:/Qt/6.10.0/msvc2022_64/bin/windeployqt.exe" --release --no-translations "$<TARGET_FILE:Source2>"
+            COMMAND ${CMAKE_COMMAND} -E echo "✅ MAIN_1_CoAnQi.exe + Python wrappers (UQFF, QCalc, CondensedPhysics, ValidationData, GrokAPI, OllamaAPI) + OpenSSL + VC++ Runtime + WSTP DLLs + Qt6 deployed"
             COMMENT "Deploying MAIN_1_CoAnQi.exe, Python wrappers, OpenSSL, VC++ Runtime, and Wolfram WSTP for cross-platform integration"
         )
     endif()
@@ -684,7 +691,27 @@ if(Qt6_FOUND)
         # Q_OBJECT macros handled manually without MOC (no Qt signals/slots used)
         set_source_files_properties("source2(HEAD PROGRAM).cpp" PROPERTIES SKIP_AUTOMOC ON)
         
-        add_executable(Source2_HEAD_PROGRAM "source2(HEAD PROGRAM).cpp" ${IPC_SOURCES} ${IPC_HEADERS})
+        # VR/Astro graphics sources
+        # NOTE: External VR files (task_bot, poseidon_task_bot, etc.) have incomplete implementations
+        # VR runtime is embedded in source2(HEAD PROGRAM).cpp via namespace VR {}
+        # Enable these when APIs are complete:
+        # set(VR_SOURCES
+        #     ${CMAKE_SOURCE_DIR}/vr/astro_graphics.cpp
+        #     ${CMAKE_SOURCE_DIR}/vr/vulkan_compositor.cpp
+        #     ${CMAKE_SOURCE_DIR}/vr/vr_runtime.cpp
+        #     ${CMAKE_SOURCE_DIR}/vr/openxr_session.cpp
+        #     ${CMAKE_SOURCE_DIR}/vr/task_bot.cpp
+        #     ${CMAKE_SOURCE_DIR}/vr/poseidon_task_bot.cpp
+        #     ${CMAKE_SOURCE_DIR}/vr/CoAnQi_bot.cpp
+        # )
+        
+        add_executable(Source2_HEAD_PROGRAM 
+            "source2(HEAD PROGRAM).cpp"
+            ${IPC_SOURCES}
+            ${IPC_HEADERS}
+            # ${VR_SOURCES}  # Disabled until VR files are complete
+            ${CMAKE_SOURCE_DIR}/resources/Star-Magic.rc  # Windows icon/version resources
+        )
         
         set_target_properties(Source2_HEAD_PROGRAM PROPERTIES 
             AUTOMOC OFF
@@ -697,6 +724,7 @@ if(Qt6_FOUND)
         target_include_directories(Source2_HEAD_PROGRAM PRIVATE 
             ${CMAKE_CURRENT_SOURCE_DIR}/ipc
             ${CMAKE_CURRENT_SOURCE_DIR}/vr
+            ${CMAKE_CURRENT_SOURCE_DIR}/resources
         )
         
         # Link Qt6 (including WebEngineWidgets for jqMath)
@@ -736,16 +764,19 @@ if(Qt6_FOUND)
             target_compile_definitions(Source2_HEAD_PROGRAM PRIVATE NO_CURL)
         endif()
         
-        # AWS SDK (optional - for cloud sync)
-        if(aws-cpp-sdk-core_FOUND)
-            target_link_libraries(Source2_HEAD_PROGRAM PRIVATE 
-                aws-cpp-sdk-core
-                aws-cpp-sdk-s3
-                aws-cpp-sdk-cognito-idp
-            )
-        else()
-            target_compile_definitions(Source2_HEAD_PROGRAM PRIVATE NO_AWS)
-        endif()
+        # AWS SDK (DISABLED for HEAD PROGRAM - causes runtime library conflicts)
+        # Enable when AWS SDK is rebuilt with matching runtime library
+        target_compile_definitions(Source2_HEAD_PROGRAM PRIVATE NO_AWS)
+        # AWS linking disabled - causes MSVC runtime library conflicts
+        # if(aws-cpp-sdk-core_FOUND)
+        #     target_link_libraries(Source2_HEAD_PROGRAM PRIVATE 
+        #         aws-cpp-sdk-core
+        #         aws-cpp-sdk-s3
+        #         aws-cpp-sdk-cognito-idp
+        #     )
+        # else()
+        #     target_compile_definitions(Source2_HEAD_PROGRAM PRIVATE NO_AWS)
+        # endif()
         
         # OpenCV (optional - for vision processing)
         if(OpenCV_FOUND)

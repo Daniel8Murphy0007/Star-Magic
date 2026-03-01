@@ -47,6 +47,11 @@
 #include <curl/curl.h> // libcurl - HTTP/HTTPS requests for fetching data from web APIs
 // #include <websocket.h> // WebSocket protocol - DISABLED (not available)
 
+// Fix Python/Qt slots keyword conflict - must be before pybind11
+#ifdef slots
+#undef slots
+#endif
+
 // Database and Cloud Storage
 #ifndef NO_SQLITE
 #include <sqlite3.h> // SQLite database - embedded SQL database for local caching
@@ -81,6 +86,7 @@
 // System and Standard Libraries
 #ifdef _WIN32
 #include <windows.h>         // Windows API - Windows-specific system functions
+#include "resource.h"        // Star-Magic resource IDs (icons, version info)
 #else
 // POSIX system headers for Linux/macOS
 #include <unistd.h>          // POSIX API - close(), read(), write(), pipe()
@@ -105,11 +111,25 @@
 #include <QProcess>          // Qt subprocess - for calling Python scripts (S-C Iteration 37+)
 #include <QJsonDocument>     // JSON parsing for Python bridge responses
 #include <QJsonObject>       // JSON object handling
+#include <QJsonArray>        // JSON array handling for Python bridge
 
 // VR Runtime Integration (merged from vr_runtime.cpp)
 #include "ipc/uqff_ipc.h"    // IPC layer - Named Pipes, SharedMem for pipeline communication
 #include "ipc/physics_service.h"  // Physics Backend Service (Phase 2 - headless mode)
-#include "vr/astro_graphics.h"    // Phase 4: Astronomical Graphics Engine IPC Integration
+// NOTE: astro_graphics.h disabled until VR external files are complete
+// #include "vr/astro_graphics.h"    // Phase 4: Astronomical Graphics Engine IPC Integration
+
+// ============================================================================
+// FORWARD DECLARATIONS - Functions defined later but used early
+// ============================================================================
+size_t WriteCallback(void *contents, size_t size, size_t nmemb, std::string *data);
+std::string SummarizeWithOpenAI(const std::string &query);
+std::string FetchJDCalJD(const std::string &jd);
+std::string FetchJDCalCD(const std::string &cd);
+std::string GetOAuthToken();
+#ifndef NO_AWS
+void SyncCacheToCloud(const std::string &token);
+#endif
 
 // ============================================================================
 // PYTHON BRIDGE - Advanced Features (S-C Iteration 37+)
@@ -293,6 +313,45 @@ inline QJsonObject runPlugin(const QString& pluginName, const QString& equation)
 
 namespace VR {
 
+// Forward declaration / stub for FieldOverlayConfig (full impl in vr/astro_graphics.h)
+struct FieldOverlayConfig {
+    bool enabled = false;
+    bool show_field_lines = false;
+    bool show_field_magnitude = false;
+    bool show_gradient = false;
+    double field_line_density = 1.0;
+    double min_field_magnitude = 1e-12;
+    double max_field_magnitude = 1e3;
+    std::string colormap = "viridis";
+};
+
+// Stub CatalogEntry for findEntry return type
+struct CatalogEntry {
+    std::string name;
+    double distance_pc = 0.0;
+    double mass_solar = 0.0;
+    double ra = 0.0;
+    double dec = 0.0;
+};
+
+// Stub class for AstroGraphics (full impl in vr/astro_graphics.cpp)
+// Provides minimal API for VRRuntime when external VR files not compiled
+class AstroGraphics {
+public:
+    bool initialize(void* compositor) { 
+        (void)compositor;
+        return true;  // Stub always succeeds
+    }
+    void setPhysicsChannel(void* channel) { (void)channel; }
+    void loadCatalog(const std::string& path) { (void)path; }
+    void calculateAllFieldsViaIPC() {}
+    void setFieldOverlay(const FieldOverlayConfig& config) { (void)config; }
+    void setFieldOverlayConfig(const FieldOverlayConfig& config) { (void)config; }
+    CatalogEntry* findEntry(const std::string& name) { (void)name; return nullptr; }
+    void flyTo(const std::string& target, double duration) { (void)target; (void)duration; }
+    void selectObject(const std::string& name) { (void)name; }
+};
+
 // Runtime state enumeration
 enum class RuntimeState {
     Uninitialized,
@@ -342,6 +401,8 @@ struct PerformanceMetrics {
     double frame_time_ms = 0.0;
     double avg_fps = 0.0;
     uint64_t frames_rendered = 0;
+    uint64_t rendered_frames = 0;  // Alias for compatibility
+    uint64_t physics_samples = 0;   // Physics sample count
     double physics_latency_ms = 0.0;
 };
 
@@ -1272,12 +1333,16 @@ private:
 
         QString result; // String to accumulate all results for display
 
+#ifndef NO_QALCULATE
         // Initialize Qalculate library for mathematical calculations
         Qalculate calc;
+#endif
 
+#ifndef NO_PYTHON
         // Initialize Python interpreter for symbolic math (SymPy library)
         py::scoped_interpreter guard{};                   // RAII guard - automatically starts/stops interpreter
         py::module_ sympy = py::module_::import("sympy"); // Import SymPy for derivatives/integrals
+#endif
 
         // Vector to collect system of equations (multiple equations with multiple unknowns)
         std::vector<std::string> system_eqs;
@@ -1321,6 +1386,7 @@ private:
             // ================================================================
             else if (eq.find("d/d") != std::string::npos)
             {
+#ifndef NO_PYTHON
                 // Parse derivative notation like "d/dx(x^2)"
                 // Extract variable (usually "x") and function expression
                 std::string var = "x"; // Variable to differentiate with respect to (default x)
@@ -1338,12 +1404,16 @@ private:
                 result += QString("d/dx(%1) = %2\n")
                               .arg(QString::fromStdString(func),
                                    QString::fromStdString(deriv.attr("__str__")().cast<std::string>()));
+#else
+                result += QString("%1 (Python/SymPy not available for derivatives)\n").arg(QString::fromStdString(eq));
+#endif
             }
             // ================================================================
             // DEFINITE INTEGRAL CALCULATION: ? notation
             // ================================================================
             else if (eq.find("?") != std::string::npos)
             {
+#ifndef NO_PYTHON
                 // Parse integral notation like "?(0,1) x^2 dx"
                 // Extract bounds (a, b) and function expression
 
@@ -1365,6 +1435,9 @@ private:
                 result += QString("?(%1,%2) %3 dx = %4\n")
                               .arg(QString::number(a), QString::number(b), QString::fromStdString(func),
                                    QString::fromStdString(integral.attr("__str__")().cast<std::string>()));
+#else
+                result += QString("%1 (Python/SymPy not available for integrals)\n").arg(QString::fromStdString(eq));
+#endif
             }
             // ================================================================
             // ALGEBRAIC EQUATIONS: Contains "=" sign
@@ -1385,17 +1458,23 @@ private:
             // ================================================================
             else
             {
+#ifndef NO_QALCULATE
                 // Use Qalculate library for general math expressions
                 // e.g., "2 + 2", "sqrt(16)", "sin(pi/2)", etc.
                 result += QString("%1 = %2\n")
                               .arg(QString::fromStdString(eq),
                                    QString::fromStdString(calc.evaluate(eq)));
+#else
+                // Fallback: just echo the expression
+                result += QString("%1 (Qalculate not available)\n").arg(QString::fromStdString(eq));
+#endif
             }
         }
 
         // ====================================================================
         // SOLVE SYSTEM OF EQUATIONS (if 2 or more equations collected)
         // ====================================================================
+#ifndef NO_PYTHON
         if (system_eqs.size() >= 2)
         {
             // Use SymPy to solve simultaneous equations with multiple unknowns
@@ -1417,6 +1496,7 @@ private:
                                QString::fromStdString(system_eqs[1]),
                                QString::fromStdString(solutions.attr("__str__")().cast<std::string>()));
         }
+#endif
 
         // Display all results in the output text area
         output->setText(result);
@@ -1546,6 +1626,7 @@ private:
         }
 
         QString result;
+#ifndef NO_PYTHON
         py::scoped_interpreter guard{};
         py::module_ sympy = py::module_::import("sympy");
 
@@ -1584,6 +1665,10 @@ def ramanujan_tau(n):
                 result += QString("Invalid input: %1\n").arg(QString::fromStdString(eq));
             }
         }
+#else
+        result = "Python/SymPy not available for Ramanujan calculations.\n";
+        result += "Install Python and pybind11 to enable partition and tau functions.\n";
+#endif
         output->setText(result);
     }
 };
@@ -1885,6 +1970,7 @@ std::string SummarizeWithOpenAI(const std::string &query)
 // CLOUD AUTHENTICATION AND SYNC FUNCTIONS
 // ============================================================================
 
+#ifndef NO_CURL
 // GetOAuthToken - Obtains OAuth2 access token from AWS Cognito
 //
 // Authenticates with AWS Cognito to get a token for cloud operations.
@@ -1920,6 +2006,10 @@ std::string GetOAuthToken()
     // TODO: Parse JSON response to extract actual access_token
     return "mock_access_token"; // Placeholder - replace with: json::parse(response)["access_token"]
 }
+#else
+// Stub when cURL is not available
+std::string GetOAuthToken() { return ""; }
+#endif // NO_CURL
 
 // SyncCacheToCloud - Uploads local SQLite cache to AWS S3 for backup/sync
 //
@@ -1929,15 +2019,18 @@ std::string GetOAuthToken()
 //   - Offline data recovery
 //
 // Parameters:
-//   token - OAuth2 access token from GetOAuthToken()
+//   token - OAuth2 access token from GetOAuthToken() (for logging only - S3 uses IAM)
 //
+#ifndef NO_AWS
 void SyncCacheToCloud(const std::string &token)
 {
+    (void)token; // IAM handles authentication, token is informational only
+    
     // Create S3 upload request
     Aws::S3::Model::PutObjectRequest request;
     request.SetBucket("coanqi-cache");                                  // S3 bucket name (replace with your bucket)
     request.SetKey("cache.db");                                         // Object key (filename in S3)
-    request.SetCustomRequestHeader("Authorization", "Bearer " + token); // Add auth token
+    // Note: AWS SDK uses IAM credentials for authentication, not custom headers
 
     // Open local cache file using AWS SDK stream
     auto inputData = Aws::MakeShared<Aws::FStream>("PutObjectStream", 
@@ -1949,6 +2042,7 @@ void SyncCacheToCloud(const std::string &token)
     // Execute S3 upload (synchronizes local cache to cloud)
     s3_client->PutObject(request);
 }
+#endif // NO_AWS
 
 // ============================================================================
 // OFFLINE SEARCH FUNCTION
@@ -2814,16 +2908,16 @@ class MainWindow : public QMainWindow
     // Sets up entire UI: widgets, layouts, connections, databases, AWS clients
     MainWindow()
     {
-// WINDOWS-SPECIFIC: System tray icon (optional, only on Windows)
+// WINDOWS-SPECIFIC: System tray icon (embedded resource - persistent across builds)
 #ifdef _WIN32
         // Create notification icon data structure
-        NOTIFYICONDATAW nid = {sizeof(nid)};                      // Initialize with struct size
-        nid.hWnd = (HWND)winId();                                // Window handle (Qt's winId() gets native HWND)
-        nid.uID = 1;                                             // Unique icon ID
-        nid.uFlags = NIF_ICON | NIF_TIP;                         // Icon and tooltip enabled
-        nid.hIcon = LoadIconW(GetModuleHandle(nullptr), L"Z.ico"); // Load icon from resources
-        wcscpy(nid.szTip, L"CoAnQi");                            // Tooltip text when hovering over tray icon
-        Shell_NotifyIconW(NIM_ADD, &nid);                        // Add icon to system tray
+        NOTIFYICONDATAW nid = {sizeof(nid)};                        // Initialize with struct size
+        nid.hWnd = (HWND)winId();                                   // Window handle (Qt's winId() gets native HWND)
+        nid.uID = 1;                                                // Unique icon ID
+        nid.uFlags = NIF_ICON | NIF_TIP;                            // Icon and tooltip enabled
+        nid.hIcon = LoadIconW(GetModuleHandle(nullptr), MAKEINTRESOURCEW(IDI_STAR_MAGIC)); // Load from embedded resource
+        wcscpy(nid.szTip, L"Star-Magic UQFF");                      // Tooltip text when hovering over tray icon
+        Shell_NotifyIconW(NIM_ADD, &nid);                           // Add icon to system tray
 #endif
 
         // CENTRAL WIDGET: Main container for all UI elements
@@ -2944,6 +3038,7 @@ class MainWindow : public QMainWindow
         // Schema: url (TEXT), title (TEXT), summary (TEXT), isLive (INTEGER boolean)
         sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS cache (url TEXT, title TEXT, summary TEXT, isLive INTEGER)", nullptr, nullptr, nullptr);
 
+#ifndef NO_AWS
         // Initialize AWS SDK (required before using S3 or Cognito clients)
         Aws::SDKOptions options; // Default SDK options
         Aws::InitAPI(options);   // Initialize SDK (loads credentials, configs)
@@ -2951,6 +3046,7 @@ class MainWindow : public QMainWindow
         // Create AWS clients for cloud services
         s3_client = new Aws::S3::S3Client();                                                // For caching to cloud storage
         cognito_client = new Aws::CognitoIdentityProvider::CognitoIdentityProviderClient(); // For authentication
+#endif
 
         // OAUTH AUTHENTICATION: Get token for authenticated API access
         std::string oauth_token = GetOAuthToken(); // Calls AWS Cognito (see GetOAuthToken function)
@@ -3076,12 +3172,14 @@ class MainWindow : public QMainWindow
         // Close SQLite database (flush buffers, release file locks)
         sqlite3_close(db);
 
+#ifndef NO_AWS
         // Delete AWS clients (free network connections and memory)
         delete s3_client;
         delete cognito_client;
 
         // Shutdown AWS SDK (opposite of InitAPI - releases global resources)
         Aws::ShutdownAPI(Aws::SDKOptions());
+#endif
 
 // WINDOWS-SPECIFIC: Remove system tray icon
 #ifdef _WIN32

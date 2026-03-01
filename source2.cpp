@@ -152,6 +152,7 @@
 
 // System and Standard Libraries
 #include <windows.h>         // Windows API - Windows-specific system functions
+#include "resource.h"        // Star-Magic resource IDs (icons, version info)
 #include <string>            // std::string - standard string class for text manipulation
 #include <vector>            // std::vector - dynamic array container for storing collections
 #include <thread>            // std::thread - multithreading support for parallel operations
@@ -5821,20 +5822,20 @@ public:
     // Setup system tray icon (platform-specific implementations)
     static void setupSystemTray(void* windowHandle) {
 #ifdef _WIN32
-        // Windows-specific tray icon using native Win32 API
+        // Windows-specific tray icon using native Win32 API with embedded resource
         NOTIFYICONDATA nid = {sizeof(nid)};
         nid.hWnd = (HWND)windowHandle;
         nid.uID = 1;
         nid.uFlags = NIF_ICON | NIF_TIP | NIF_MESSAGE;
         nid.uCallbackMessage = WM_USER + 1; // Custom message for tray events
-        // Try loading custom icon, fallback to system application icon
-        nid.hIcon = (HICON)LoadImageW(nullptr, L"Z.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE);
+        // Load icon from embedded resource (persistent across builds)
+        nid.hIcon = LoadIcon(GetModuleHandle(nullptr), MAKEINTRESOURCE(IDI_STAR_MAGIC));
         if (!nid.hIcon) {
-            nid.hIcon = LoadIcon(nullptr, IDI_APPLICATION); // System default
+            nid.hIcon = LoadIcon(nullptr, IDI_APPLICATION); // System default fallback
         }
-        wcscpy_s(nid.szTip, L"CoAnQi Scientific Platform");
+        wcscpy_s(nid.szTip, L"Star-Magic UQFF Platform");
         Shell_NotifyIcon(NIM_ADD, &nid);
-        std::cout << "System tray icon: ADDED" << std::endl;
+        std::cout << "System tray icon: ADDED (Star-Magic)" << std::endl;
 #else
         // For non-Windows platforms, use Qt's cross-platform QSystemTrayIcon
         // (Implementation requires QSystemTrayIcon* to be created in Qt context)
@@ -14838,19 +14839,38 @@ void MainWindow::setupSystemTrayIcon()
     // Create tray icon with application icon
     trayIcon = new QSystemTrayIcon(this);
     
-    // Create a simple colored pixmap as icon (guaranteed to work)
-    QPixmap pixmap(32, 32);
-    pixmap.fill(QColor(0, 100, 200));  // Blue color
-    // Draw a "C" for CoAnQi
-    QPainter painter(&pixmap);
-    painter.setPen(Qt::white);
-    painter.setFont(QFont("Arial", 20, QFont::Bold));
-    painter.drawText(pixmap.rect(), Qt::AlignCenter, "C");
-    painter.end();
+    // Use embedded Windows icon resource for the tray icon
+#ifdef _WIN32
+    // Extract icon from embedded resource and convert to QIcon
+    HICON hIcon = LoadIcon(GetModuleHandle(nullptr), MAKEINTRESOURCE(IDI_STAR_MAGIC));
+    if (hIcon) {
+        QPixmap pixmap = QPixmap::fromImage(QImage::fromHICON(hIcon));
+        trayIcon->setIcon(QIcon(pixmap));
+        DestroyIcon(hIcon);
+    } else {
+#endif
+        // Fallback: Create a pixmap with star design
+        QPixmap pixmap(32, 32);
+        pixmap.fill(QColor(10, 10, 40));  // Dark space blue
+        QPainter painter(&pixmap);
+        painter.setRenderHint(QPainter::Antialiasing);
+        painter.setPen(QPen(QColor(255, 200, 50), 1));  // Gold
+        painter.setBrush(QColor(255, 220, 100));  // Bright gold
+        // Draw 5-pointed star
+        QPolygonF star;
+        for (int i = 0; i < 10; ++i) {
+            double angle = (i * 36 - 90) * M_PI / 180.0;
+            double r = (i % 2 == 0) ? 14.0 : 6.0;
+            star << QPointF(16 + r * cos(angle), 16 + r * sin(angle));
+        }
+        painter.drawPolygon(star);
+        painter.end();
+        trayIcon->setIcon(QIcon(pixmap));
+#ifdef _WIN32
+    }
+#endif
     
-    QIcon icon(pixmap);
-    trayIcon->setIcon(icon);
-    trayIcon->setToolTip("CoAnQi Scientific Platform - UQFF");
+    trayIcon->setToolTip("Star-Magic UQFF Platform");
     
     // Create context menu for tray icon
     trayMenu = new QMenu(this);
@@ -14860,6 +14880,52 @@ void MainWindow::setupSystemTrayIcon()
     
     QAction* hideAction = trayMenu->addAction("Minimize to Tray");
     connect(hideAction, &QAction::triggered, this, &QMainWindow::hide);
+    
+    trayMenu->addSeparator();
+    
+    // ============================================================================
+    // STAR-MAGIC PROGRAM LAUNCHERS
+    // ============================================================================
+    QMenu* launchMenu = trayMenu->addMenu("🚀 Launch Programs");
+    
+    // MAIN_1_CoAnQi - Main physics library/calculator
+    QAction* launchMainAction = launchMenu->addAction("📊 MAIN_1_CoAnQi (Physics Library)");
+    connect(launchMainAction, &QAction::triggered, this, [this]() {
+        QString exePath = QCoreApplication::applicationDirPath() + "/MAIN_1_CoAnQi.exe";
+        if (!QProcess::startDetached(exePath, {})) {
+            trayIcon->showMessage("Launch Failed", "Could not start MAIN_1_CoAnQi.exe", 
+                                  QSystemTrayIcon::Warning, 3000);
+        }
+    });
+    
+    // Source2_HEAD_PROGRAM - VR/GPU backend
+    QAction* launchHeadAction = launchMenu->addAction("🎮 VR/GPU Backend (HEAD PROGRAM)");
+    connect(launchHeadAction, &QAction::triggered, this, [this]() {
+        QString exePath = QCoreApplication::applicationDirPath() + "/Source2_HEAD_PROGRAM.exe";
+        if (!QProcess::startDetached(exePath, {})) {
+            trayIcon->showMessage("Launch Failed", "Could not start Source2_HEAD_PROGRAM.exe", 
+                                  QSystemTrayIcon::Warning, 3000);
+        }
+    });
+    
+    launchMenu->addSeparator();
+    
+    // Python Calculators submenu
+    QMenu* pythonMenu = launchMenu->addMenu("🐍 Python Calculators");
+    
+    // CondensedPhysics.py - Main validation calculator
+    QAction* launchCondensedAction = pythonMenu->addAction("CondensedPhysics.py (Validation)");
+    connect(launchCondensedAction, &QAction::triggered, this, [this]() {
+        QString scriptPath = QCoreApplication::applicationDirPath() + "/../CondensedPhysics.py";
+        QProcess::startDetached("python", {scriptPath});
+    });
+    
+    // QCalc.py - Stripped calculator
+    QAction* launchQCalcAction = pythonMenu->addAction("QCalc.py (Quick Calculator)");
+    connect(launchQCalcAction, &QAction::triggered, this, [this]() {
+        QString scriptPath = QCoreApplication::applicationDirPath() + "/../QCalc.py";
+        QProcess::startDetached("python", {scriptPath});
+    });
     
     trayMenu->addSeparator();
     

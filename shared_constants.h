@@ -62,6 +62,10 @@ constexpr double N_A = 6.02214076e23;
 /// Stefan-Boltzmann constant (W m⁻² K⁻⁴)
 constexpr double sigma_SB = 5.670374419e-8;
 
+/// Pi (mathematical constant)
+constexpr double PI = 3.14159265358979323846;
+constexpr double pi = PI;  // lowercase alias
+constexpr double TWO_PI = 2.0 * PI;
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // PARTICLE MASSES

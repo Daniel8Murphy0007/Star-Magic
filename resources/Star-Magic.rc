@@ -1,0 +1,51 @@
+// ============================================================================
+// Star-Magic Windows Resource Script
+// ============================================================================
+// This file defines Windows resources embedded in the executable.
+// Compile with rc.exe or via CMake's built-in resource compiler support.
+// ============================================================================
+
+#include <windows.h>
+#include "resource.h"
+
+// Application Version Info (optional, for file properties dialog)
+#ifdef _DEBUG
+#define VER_DEBUG VS_FF_DEBUG
+#else
+#define VER_DEBUG 0
+#endif
+
+// Application Icons
+// The first icon in the .rc file becomes the default application icon (shown in Explorer)
+IDI_STAR_MAGIC      ICON "star_magic.ico"
+IDI_STAR_MAGIC_SMALL ICON "star_magic.ico"
+
+// Version Information Block
+1 VERSIONINFO
+FILEVERSION     1,0,0,0
+PRODUCTVERSION  1,0,0,0
+FILEFLAGSMASK   0x3fL
+FILEFLAGS       VER_DEBUG
+FILEOS          0x40004L
+FILETYPE        0x1L
+FILESUBTYPE     0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"  // English (US), Unicode
+        BEGIN
+            VALUE "CompanyName",      "Daniel8Murphy0007"
+            VALUE "FileDescription",  "Star-Magic UQFF Calculator - Principal GUI"
+            VALUE "FileVersion",      "1.0.0.0"
+            VALUE "InternalName",     "Star-Magic"
+            VALUE "LegalCopyright",   "Copyright (C) 2024-2026 Daniel8Murphy0007"
+            VALUE "OriginalFilename", "Source2_HEAD_PROGRAM.exe"
+            VALUE "ProductName",      "Star-Magic UQFF Framework"
+            VALUE "ProductVersion",   "1.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200  // English (US), Unicode
+    END
+END

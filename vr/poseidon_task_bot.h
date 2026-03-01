@@ -32,6 +32,11 @@
 #ifndef POSEIDON_TASK_BOT_H
 #define POSEIDON_TASK_BOT_H
 
+// Prevent Windows min/max macro conflicts with std::min/std::max
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+
 // Cross-platform compatibility
 #ifdef _WIN32
     #include <windows.h>
@@ -50,6 +55,7 @@
 #include "../ipc/uqff_ipc.h"
 #include "../uqff_cross_platform.h"
 #include "../shared_constants.h"
+#include "../CelestialBody.h"
 #include "../csv_body_reader.h"
 #include "../uqff_tracing.h"
 

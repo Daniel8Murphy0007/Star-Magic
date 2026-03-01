@@ -60,6 +60,11 @@
 namespace UQFF {
 namespace CrossPlatform {
 
+// Import constants from UQFF::Constants namespace
+using UQFF::Constants::PI;
+using UQFF::Constants::rho_vac_UA;
+using UQFF::Constants::rho_vac_SCm;
+
 // ═══════════════════════════════════════════════════════════════════════════════
 // UNIFIED COUPLING CONSTANTS (from Grok 4 analysis Sept 14-21, 2025)
 // ═══════════════════════════════════════════════════════════════════════════════
