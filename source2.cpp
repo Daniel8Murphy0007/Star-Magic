@@ -3807,15 +3807,18 @@ private slots:
             }
             
             // Call Python to save key to config file
+            QString projectDir = QCoreApplication::applicationDirPath() + "/../..";
+            QString venvPython = projectDir + "/.venv_py314_backup/Scripts/python.exe";
+            
             QString pythonScript = QString(
                 "import sys; sys.path.insert(0, '%1'); "
                 "from APIKeyManager import set_xai_api_key; "
                 "result = set_xai_api_key('%2'); "
                 "print('SUCCESS' if result else 'FAILED')"
-            ).arg(QCoreApplication::applicationDirPath()).arg(key);
+            ).arg(projectDir).arg(key);
             
             QProcess process;
-            process.start("python", QStringList() << "-c" << pythonScript);
+            process.start(venvPython, QStringList() << "-c" << pythonScript);
             process.waitForFinished();
             
             QString output = process.readAllStandardOutput();
@@ -3851,15 +3854,18 @@ private slots:
                 "This will NOT affect your environment variable.");
             
             if (ret == QMessageBox::Yes) {
+                QString projectDir = QCoreApplication::applicationDirPath() + "/../..";
+                QString venvPython = projectDir + "/.venv_py314_backup/Scripts/python.exe";
+                
                 QString pythonScript = QString(
                     "import sys; sys.path.insert(0, '%1'); "
                     "from APIKeyManager import set_xai_api_key; "
                     "result = set_xai_api_key(''); "
                     "print('CLEARED' if result else 'FAILED')"
-                ).arg(QCoreApplication::applicationDirPath());
+                ).arg(projectDir);
                 
                 QProcess process;
-                process.start("python", QStringList() << "-c" << pythonScript);
+                process.start(venvPython, QStringList() << "-c" << pythonScript);
                 process.waitForFinished();
                 
                 QMessageBox::information(this, "Cleared", "[SUCCESS] Saved API key has been cleared.");
