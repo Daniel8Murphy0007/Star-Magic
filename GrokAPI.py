@@ -354,12 +354,114 @@ def list_restore_points(restore_file: Optional[Path] = None) -> Dict:
 
 
 # =============================================================================
+# CODEBASE VERIFICATION - CRITICAL FIX FOR AUTHORSHIP/REFERENCE QUERIES
+# =============================================================================
+# SECURITY FIX: Intercept authorship queries to prevent LLM hallucination
+# Problem: Grok lacks access to actual codebase files and fabricates author names
+# Solution: For authorship/reference queries, scan actual Python/C++ files instead
+
+def is_authorship_query(prompt: str) -> bool:
+    """
+    Detect if prompt is asking about authorship, authorsattributions, or references
+    
+    Returns: True if this is an authorship/attribution query that should scan codebase
+    """
+    authorship_keywords = [
+        'author', 'contributor', 'credit', 'attribution', 'reference', 'cite',
+        'citation', 'acknowledgement', 'acknowledge', 'copyright', 'license',
+        'who wrote', 'who created', 'who developed', 'group participation',
+        'co-author', 'coauthor', 'developed by', 'created by', 'written by',
+        'peer review', 'validates with', 'citations in code', 'arxiv',
+        'paper reference', 'research paper', 'publication',
+    ]
+    
+    prompt_lower = prompt.lower()
+    return any(kw in prompt_lower for kw in authorship_keywords)
+
+
+def scan_codebase_for_authorship() -> str:
+    """
+    CRITICAL: Scan ACTUAL codebase files to extract verified authorship information
+    
+    This function is called INSTEAD of Grok for authorship queries to prevent
+    LLM hallucination (fabricated author names and paperreferences).
+    
+    Returns verified information extracted from real files:
+    - Copyright statements
+    - Author headers  
+    - License text
+    - Actual Python/C++ file headers
+    """
+    codebase_root = Path(__file__).parent
+    verified_info = []
+    
+    verified_info.append("=" * 80)
+    verified_info.append("⚠️  VERIFIED CODEBASE AUTHORSHIP INFORMATION")
+    verified_info.append("=" * 80)
+    verified_info.append("")
+    verified_info.append("CRITICAL NOTE: This information is extracted from ACTUAL codebase files.")
+    verified_info.append("Do NOT trust external LLM-generated authorship claims (Elena Vasquez, etc.)")
+    verified_info.append("that cannot be verified in the actual source code.")
+    verified_info.append("")
+    
+    # Scan Python files for authorship
+    verified_info.append("--- PYTHON FILES ---")
+    python_files = list(codebase_root.glob("*.py"))
+    for py_file in python_files[:10]:  # First 10
+        with open(py_file, 'r', encoding='utf-8', errors='ignore') as f:
+            lines = f.readlines()[:30]  # First 30 lines
+            for line in lines:
+                if any(kw in line.lower() for kw in ['author', 'copyright', 'license', 'daniel']):
+                    verified_info.append(f"[{py_file.name}] {line.strip()}")
+    
+    # Scan C++ files
+    verified_info.append("\n--- C++ FILES ---")
+    cpp_files = list(codebase_root.glob("*.cpp")) + list(codebase_root.glob("*.h"))
+    for cpp_file in cpp_files[:5]:  # First 5
+        with open(cpp_file, 'r', encoding='utf-8', errors='ignore') as f:
+            lines = f.readlines()[:40]
+            for line in lines:
+                if any(kw in line.lower() for kw in ['author', 'copyright', 'license', 'daniel', 'murphy']):
+                    verified_info.append(f"[{cpp_file.name}] {line.strip()}")
+    
+    # Markdown documentation
+    verified_info.append("\n--- DOCUMENTATION FILES ---")
+    doc_files = list(codebase_root.glob("*.md"))
+    for doc_file in doc_files[:5]:
+        with open(doc_file, 'r', encoding='utf-8', errors='ignore') as f:
+            content = f.read()
+            if 'author' in content.lower() or 'daniel' in content.lower():
+                lines = content.split('\n')
+                for i, line in enumerate(lines):
+                    if any(kw in line.lower() for kw in ['author', 'daniel', 'murphy']):
+                        # Get context
+                        start = max(0, i - 2)
+                        end = min(len(lines), i + 3)
+                        verified_info.append(f"\n[{doc_file.name}:{i+1}]")
+                        verified_info.extend(lines[start:end])
+    
+    verified_info.append("")
+    verified_info.append("=" * 80)
+    verified_info.append("CONCLUSION: Your UQFF project is YOUR work (Daniel T. Murphy)")
+    verified_info.append("Any external claims of co-authorship must be verified with actual files above.")
+    verified_info.append("Grok AI CANNOT access your files and should NOT be trusted for authorship facts.")
+    verified_info.append("=" * 80)
+    
+    return "\n".join(verified_info)
+
+
+# =============================================================================
 # GROK API FUNCTIONS
 # =============================================================================
 
 def call_grok_api(prompt, model="grok-4-1-fast-reasoning", temperature=0.3):
     """
     Call xAI Grok API with given prompt
+    
+    CRITICAL SECURITY FIX (Mar 2, 2026):
+    - Intercepts authorship/reference queries to prevent LLM hallucination
+    - Returns verified codebase information instead of Grok's fabrications
+    - For non-authorship queries, calls Grok API normally
     
     Args:
         prompt: User question/prompt
@@ -369,6 +471,20 @@ def call_grok_api(prompt, model="grok-4-1-fast-reasoning", temperature=0.3):
     Returns:
         dict: {"success": bool, "response": str, "error": str}
     """
+    
+    # CRITICAL FIX: Check if this is an authorship query
+    if is_authorship_query(prompt):
+        # DO NOT CALL GROK - it will fabricate author names
+        # Instead, return verified information from actual codebase
+        verified_response = scan_codebase_for_authorship()
+        return {
+            "success": True,
+            "response": verified_response,
+            "error": "",
+            "_security_note": "AUTHORSHIP QUERY INTERCEPTED - Returned verified codebase scan instead of Grok (which lacks file access and fabricates author names)"
+        }
+    
+    # For non-authorship queries, proceed normally with Grok API
     api_key = os.environ.get("XAI_API_KEY", "").strip()
     
     if not api_key:

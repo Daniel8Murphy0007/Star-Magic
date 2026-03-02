@@ -3311,6 +3311,24 @@ public:
             "border: 2px solid #333333; "   // Dark gray border
             "padding: 10px;"
         );
+        
+        // Add critical disclaimer about Grok limitations
+        chatDisplay->append("<div style='background-color: #FFF3CD; border: 2px solid #FF9800; padding: 15px; margin: 10px; border-radius: 5px;'>");
+        chatDisplay->append("<b style='color: #FF6F00; font-size: 14px;'>🔒 CRITICAL SECURITY & DATA INTEGRITY NOTICE</b>");
+        chatDisplay->append("<div style='color: #333333; font-size: 12px; line-height: 1.6; margin-top: 10px;'>");
+        chatDisplay->append("<b>1. Authorship Queries Are Now Protected:</b>");
+        chatDisplay->append("&nbsp;&nbsp;&nbsp;&nbsp;Questions about AUTHORS, CONTRIBUTORS, CITATIONS, or REFERENCES are intercepted.<br>");
+        chatDisplay->append("&nbsp;&nbsp;&nbsp;&nbsp;Grok CANNOT access your codebase files and will fabricate author names.<br>");
+        chatDisplay->append("&nbsp;&nbsp;&nbsp;&nbsp;Tab 7 now scans actual code files instead (Mar 2, 2026 security fix).<br><br>");
+        chatDisplay->append("<b>2. For Other Queries:</b>");
+        chatDisplay->append("&nbsp;&nbsp;&nbsp;&nbsp;Grok provides analysis but lacks file access - treat as suggestions, not facts.<br>");
+        chatDisplay->append("&nbsp;&nbsp;&nbsp;&nbsp;Always verify critical information against actual source code.<br>");
+        chatDisplay->append("<b>3. Your UQFF Work:</b>");
+        chatDisplay->append("&nbsp;&nbsp;&nbsp;&nbsp;© 2025-2026 Daniel T. Murphy - All Rights Reserved<br>");
+        chatDisplay->append("&nbsp;&nbsp;&nbsp;&nbsp;Do NOT trust external LLM claims of co-authorship.<br>");
+        chatDisplay->append("</div>");
+        chatDisplay->append("</div>");
+        
         layout->addWidget(chatDisplay, 1);
         
         // Prompt input
