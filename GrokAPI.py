@@ -25,14 +25,21 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Union
 
+# Ensure project directory is in Python path (needed when called from C++ app)
+PROJECT_DIR = Path(__file__).parent
+if str(PROJECT_DIR) not in sys.path:
+    sys.path.insert(0, str(PROJECT_DIR))
+
 # Import API Key Manager for config file support
 try:
     from APIKeyManager import get_xai_api_key, set_xai_api_key, get_api_key_status
-except ImportError:
+except ImportError as e:
     # Fallback if APIKeyManager not available
+    print(f"⚠️  Warning: Could not import APIKeyManager: {e}", file=sys.stderr)
     def get_xai_api_key():
         return os.environ.get("XAI_API_KEY", "").strip()
     def set_xai_api_key(key):
+
         return False
     def get_api_key_status():
         return "❌ APIKeyManager not available"
