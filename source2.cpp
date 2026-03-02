@@ -3471,8 +3471,33 @@ private slots:
             return;
         }
         
-        // Check for API key (trim any whitespace)
-        QString apiKey = QString::fromLocal8Bit(qgetenv("XAI_API_KEY")).trimmed();
+        // Priority 1: Check for API key in grok_api_config.json (user-saved)
+        QString apiKey;
+        
+        // Get the project directory (exe is in build_msvc/Release)
+        QString projectDir = QCoreApplication::applicationDirPath() + "/../..";
+        QString configPath = projectDir + "/grok_api_config.json";
+        
+        // Try to read from config file
+        if (QFile::exists(configPath)) {
+            QFile configFile(configPath);
+            if (configFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                QJsonDocument doc = QJsonDocument::fromJson(configFile.readAll());
+                configFile.close();
+                
+                if (!doc.isNull() && doc.isObject()) {
+                    QJsonObject obj = doc.object();
+                    apiKey = obj["api_keys"].toObject()["xai_grok"].toString().trimmed();
+                    qDebug() << "Read API key from config file:" << (apiKey.isEmpty() ? "EMPTY" : apiKey.left(10) + "...");
+                }
+            }
+        }
+        
+        // Priority 2: Fall back to environment variable if config file key is empty
+        if (apiKey.isEmpty()) {
+            apiKey = QString::fromLocal8Bit(qgetenv("XAI_API_KEY")).trimmed();
+            qDebug() << "Read API key from environment variable:" << (apiKey.isEmpty() ? "EMPTY" : apiKey.left(10) + "...");
+        }
         
         // Debug output for API key status
         qDebug() << "API Key length:" << apiKey.length();
@@ -3480,7 +3505,8 @@ private slots:
         
         if (apiKey.isEmpty()) {
             chatDisplay->append("<div style='background-color: #FFEBEE; padding: 10px; margin: 5px; border-radius: 10px;'>");
-            chatDisplay->append("<b>Error:</b> XAI_API_KEY not set. Click '🔑 Configure API Key' button to set it.");
+            chatDisplay->append("<b>Error:</b> XAI_API_KEY not found. Click '🔑 Configure API Key' button to set it.");
+            chatDisplay->append("<br><b>Checked:</b> grok_api_config.json and \$XAI_API_KEY environment variable");
             chatDisplay->append("</div>");
             statusLabel->setText("Status: API Key Required");
             statusLabel->setStyleSheet("color: #F44336; font-weight: bold; background-color: #000000; padding: 5px; border-radius: 3px;");
