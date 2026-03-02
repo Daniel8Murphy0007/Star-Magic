@@ -1,0 +1,122 @@
+ID,Calculator Class Name,Category,Source Equation,Key Variables,Status
+1,AngularMomentumTransportCalculator,Protostellar Jets,Eq. 1: dL/dt = Ṁr²Ω - T_B,"L, Ṁ, r, Ω, T_B, G, M",IMPLEMENTED
+2,MHDJetVelocityCalculator,Protostellar Jets,Eq. 2: v_j ≈ v_K(r_A/r_0)^(1/2),"v_K, r_A, r_0, G, M",IMPLEMENTED
+3,JTypeShockRankineHugoniotCalculator,Protostellar Jets,Eq. 3: Rankine-Hugoniot conditions,"ρ₁, ρ₂, v₁, v₂, P₁, P₂, γ",IMPLEMENTED
+4,CTypeShockDampingCalculator,Protostellar Jets,Eq. 4: v(z) ≈ v_s exp(-z/L_d),"v_s, L_d, z, ν_ni, B",IMPLEMENTED
+5,EPSMergerRateCalculator,Galaxy Mergers,Eq. 5: EPS dN/dtdM,"σ_M, σ_m, δ_c, z",IMPLEMENTED
+6,OrbitalTorqueTimeCalculator,Galaxy Mergers,Eq. 6: t_orb = 2π√(r³/GM),"r, G, M",IMPLEMENTED
+7,SFRDEvolutionCalculator,Galaxy Mergers,Eq. 7: SFRD ∝ (1+z)^2.7,"z, SFRD",IMPLEMENTED
+8,EPSBHMassFunctionCalculator,BH Growth,Eq. 8: N(>M z) EPS cumulative,"ρ̄, M, z, σ, δ_c",IMPLEMENTED
+9,EddingtonAccretionCalculator,BH Growth,Eq. 9: Ṁ_BH = 4πGM_BH m_p/(ε_r σ_T c),"G, M_BH, m_p, ε_r, σ_T, c",IMPLEMENTED
+10,SedovTaylorExpansionCalculator,SN Remnants,Eq. 10: R(t) = (Et²/ρ)^(1/5),"E, t, ρ",IMPLEMENTED
+11,DSAParticleAccelerationCalculator,SN Remnants,Eq. 11: dp/dt = (4/3)(u_s²/r_d)p,"u_s, r_d, p",IMPLEMENTED
+12,ChirpMassFormulaCalculator,GW Mergers,Eq. 12: M = (m₁m₂)^(3/5)/(m₁+m₂)^(1/5),"m₁, m₂, f, ḟ, c, G",IMPLEMENTED
+13,QNMRingdownCalculator,GW Mergers,Eq. 13: f_QNM formula,"M_f, a_f, c, G",IMPLEMENTED
+14,BlandfordZnajekPowerCalculator,Quasar Jets,Eq. 14: P_BZ = (1/32)B²R_H⁴Ω_H²c,"B, R_H, Ω_H, c, G, M, a",IMPLEMENTED
+15,RelativisticJetVelocityCalculator,Quasar Jets,Eq. 15: Γ(z) profile,"Γ_0, Γ_∞, z, z_acc",IMPLEMENTED
+16,TOVEquationCalculator,Neutron Stars,Eq. 16: TOV hydrostatic,"P, ρ, r, m(r), G, c",IMPLEMENTED
+17,PulsarSpinDownAgeCalculator,Neutron Stars,Eq. 17: τ = P/(2Ṗ),"P, Ṗ",IMPLEMENTED
+18,GlitchRecoveryCalculator,Neutron Stars,Eq. 18: Δν = (I_s/I)ν_0(1-e^(-t/τ_q)),"I_s, I, ν_0, τ_q, t",IMPLEMENTED
+19,FireballExpansionCalculator,GRBs,Eq. 19: Γ(r) fireball,"R_0, R_s, η, r",IMPLEMENTED
+20,AfterglowSynchrotronCalculator,GRBs,Eq. 20: F_ν power-law,"p, ν, t",IMPLEMENTED
+21,CMBAngularPowerCalculator,CMB,Eq. 21: C_ℓ spectrum,"ℓ, P(k), Δ_ℓ^T",IMPLEMENTED
+22,OpticalDepthCalculator,CMB,Eq. 22: τ(z) integral,"n_e, σ_T, c, z",IMPLEMENTED
+23,MomentumFeedbackCalculator,AGN Feedback,Eq. 23: p_term = Ṁ_out v_out,"Ṁ_out, v_out, L_AGN, c",IMPLEMENTED
+24,BZJetPowerUpdatedCalculator,AGN Feedback,Eq. 24: P_jet = (κ/16π)Φ_BH²Ω_BH²/c,"κ, Φ_BH, Ω_BH, c",IMPLEMENTED
+25,FeedbackDutyCycleCalculator,AGN Feedback,Eq. 25: f_duty formula,"τ_cool, Ṁ_acc, Ṁ_Edd, t",IMPLEMENTED
+26,PhotoevaporationRateCalculator,Exoplanets,Eq. 26: Ṁ = εF_X R_p³/(GM_p/R_p),"ε, F_X, R_p, G, M_p",IMPLEMENTED
+27,TypeIMigrationTorqueCalculator,Exoplanets,Eq. 27: Γ torque,"f, G, M_p, Σ, Ω, r_p, H",IMPLEMENTED
+28,RadialVelocitySemiAmplitudeCalculator,Exoplanets,Eq. 28: K formula,"P, M_p, M_*, i, e, G",IMPLEMENTED
+29,NFWDensityProfileCalculator,Dark Matter,Eq. 29: ρ(r) NFW,"ρ_s, r_s, r",IMPLEMENTED
+30,RotationCurveCalculator,Dark Matter,Eq. 30: v(r)² = GM(r)/r,"G, ρ(r'), r",IMPLEMENTED
+31,SIDMCoreFormationCalculator,Dark Matter,Eq. 31: t_core formula,"ρ, σ/m",IMPLEMENTED
+32,StrongLensingMassCalculator,Galaxy Clusters,Eq. 32: θ_E Einstein angle,"G, M, c, D_LS, D_L, D_S",IMPLEMENTED
+33,XRayMassEstimateCalculator,Galaxy Clusters,Eq. 33: M(<r) X-ray,"k, T, r, G, μ, m_H, ρ",IMPLEMENTED
+34,MergerShockMachCalculator,Galaxy Clusters,Eq. 34: Mach from ρ jump,"γ, ρ₂/ρ₁",IMPLEMENTED
+35,VoidDensityEvolutionCalculator,Cosmic Voids,Eq. 35: δ_v(a),"Ω_m, Ω_Λ, a, δ_v0",IMPLEMENTED
+36,OutflowVelocityCalculator,Cosmic Voids,Eq. 36: v_pec,"f, H, δ(r), r",IMPLEMENTED
+37,IonizationFractionCalculator,Reionization,Eq. 37: dx_e/dt,"ṅ_γ, ε_esc, f_*, α_B, n_e, C",IMPLEMENTED
+38,BubbleRadiusCalculator,Reionization,Eq. 38: R_b(t),"Ṅ_γ, t, n_H",IMPLEMENTED
+39,JeansLengthCalculator,ISM,Eq. 39: λ_J = √(πc_s²/(Gρ)),"c_s, G, ρ",IMPLEMENTED
+40,AlfvenVelocityCalculator,ISM,Eq. 40: v_A = B/√(4πρ),"B, ρ",IMPLEMENTED
+41,TurbulentCascadeCalculator,ISM,Eq. 41: ε = v_ℓ³/ℓ,"v_ℓ, ℓ",IMPLEMENTED
+42,MainSequenceLifetimeCalculator,Stellar Evolution,Eq. 42: τ_MS ≈ 10¹⁰(M/M_⊙)^(-2.5),"M, M_⊙",IMPLEMENTED
+43,MassLuminosityRelationCalculator,Stellar Evolution,Eq. 43: L ∝ M^3.5,"M, L",IMPLEMENTED
+44,ConvectiveTurnoverCalculator,Stellar Evolution,Eq. 44: t_conv = H_p/v_conv,"H_p, v_conv, α, g, δT, T",IMPLEMENTED
+45,BaryonPhotonRatioCalculator,BBN,Eq. 45: η = n_b/n_γ = 6×10^(-10),"n_b, n_γ",IMPLEMENTED
+46,DeuteriumBottleneckCalculator,BBN,Eq. 46: t_D formula,"G, ρ_rad",IMPLEMENTED
+47,FirstFriedmannCalculator,Cosmology,Eq. 47: (ȧ/a)² = 8πGρ/3 - kc²/a² + Λc²/3,"G, ρ, k, a, Λ, c",IMPLEMENTED
+48,SecondFriedmannCalculator,Cosmology,Eq. 48: ä/a acceleration,"G, ρ, p, Λ, c",IMPLEMENTED
+49,DensityParameterCalculator,Cosmology,Eq. 49: Ω(z),"G, ρ(z), H(z)",IMPLEMENTED
+50,SlowRollParametersCalculator,Inflation,Eq. 50: ε and η,"V, V', V''",IMPLEMENTED
+51,CurvaturePowerSpectrumCalculator,Inflation,Eq. 51: P_R(k),"H, ε, c_s, k, a",IMPLEMENTED
+52,EFoldsCalculator,Inflation,Eq. 52: N = ∫H dt,"H, φ, ε",IMPLEMENTED
+53,TensorPowerSpectrumCalculator,GW Backgrounds,Eq. 53: P_T(k),"H, M_pl, k, a",IMPLEMENTED
+54,StochasticGWDensityCalculator,GW Backgrounds,Eq. 54: Ω_GW(f),"f, H_0, P_T(k)",IMPLEMENTED
+55,InspiralFrequencyEvolutionCalculator,Binary BH,Eq. 55: ḟ evolution,"G, M, c, f",IMPLEMENTED
+56,MergerTimeCalculator,Binary BH,Eq. 56: t_merge,"c, G, f_i, M",IMPLEMENTED
+57,RingdownDampingTimeCalculator,Binary BH,Eq. 57: τ_ℓm,"M_f, c, Q_ℓm, a_f",IMPLEMENTED
+58,ArnettLawLightCurveCalculator,Supernovae,Eq. 58: L_peak = M_Ni ε_Ni / t_d,"M_Ni, ε_Ni, t_d",IMPLEMENTED
+59,EjectaVelocityCalculator,Supernovae,Eq. 59: v_ej = √(2E_kin/M_ej),"E_kin, M_ej",IMPLEMENTED
+60,NucleosynthesisYieldCalculator,Supernovae,Eq. 60: Y_i = ∫ρX_i dt,"ρ, X_i, t",IMPLEMENTED
+61,PNExpansionRadiusCalculator,Planetary Nebulae,Eq. 61: R(t) = v_exp t,"v_exp, t",IMPLEMENTED
+62,IonizationFrontVelocityCalculator,Planetary Nebulae,Eq. 62: v_IF,"Ṅ_UV, R, n, α_B",IMPLEMENTED
+63,AGBMassLossReimersCalculator,Planetary Nebulae,Eq. 63: Reimers formula,"L, R, M",IMPLEMENTED
+64,ShockMachNumberTempCalculator,Galaxy Clusters,Eq. 64: Mach from T jump,"γ, T₂, T₁",IMPLEMENTED
+65,MergerTimescaleVirialCalculator,Galaxy Clusters,Eq. 65: t_merge = r_vir/σ_v,"r_vir, σ_v, G, M",IMPLEMENTED
+66,CoolCoreHeatingCalculator,Galaxy Clusters,Eq. 66: Ė_heat = L_cool/f_duty,"L_cool, f_duty",IMPLEMENTED
+67,EvaporationRateCalculator,Open Clusters,Eq. 67: Ṅ = -N/t_evap,"N, t_evap, t_relax",IMPLEMENTED
+68,RelaxationTimeCalculator,Open Clusters,Eq. 68: t_relax formula,"N, r, σ_v",IMPLEMENTED
+69,VirialMassCalculator,Open Clusters,Eq. 69: M_vir = 3σ_X² r_h/G,"σ_X, r_h, G",IMPLEMENTED
+70,WindTerminalVelocityCalculator,Quasar Feedback,Eq. 70: v_∞,"G, M, Γ, r_launch",IMPLEMENTED
+71,IonizationParameterUCalculator,Quasar Feedback,Eq. 71: U = Q_H/(4πr²n_H c),"Q_H, r, n_H, c",IMPLEMENTED
+72,EnergyCouplingEfficiencyCalculator,Quasar Feedback,Eq. 72: ε_f formula,"Ė_kin, Ṁ_acc, c",IMPLEMENTED
+73,OrbitalDecayCalculator,Binary Pulsars,Eq. 73: Ṗ_b GW decay,"P_b, m₁, m₂, G, c, e",IMPLEMENTED
+74,PeriastronAdvanceCalculator,Binary Pulsars,Eq. 74: ω̇ GR precession,"P_b, m₁, m₂, G, c, e",IMPLEMENTED
+75,KilonovaPeakLuminosityCalculator,Binary Pulsars,Eq. 75: L_peak ≈ 10⁴¹...,"M_ej, v_ej, κ",IMPLEMENTED
+76,FermiSecondOrderCalculator,Cosmic Rays,Eq. 76: dE/dt second-order,"v_c, c, E, λ",IMPLEMENTED
+77,KneeEnergyDSACalculator,Cosmic Rays,Eq. 77: E_max = ZeBu_s r_g,"Z, e, B, u_s, R",IMPLEMENTED
+78,DiffusionCoefficientCalculator,Cosmic Rays,Eq. 78: D(E) power-law,"E, index",IMPLEMENTED
+79,WHIMTemperatureCalculator,IGM,Eq. 79: T = μm_H GM/(2kr),"μ, m_H, G, M, k, r",IMPLEMENTED
+80,MetalEnrichmentRateCalculator,IGM,Eq. 80: Ż = Y × SFR/Ṁ_gas - Z × Ṁ_out/M_gas,"Y, SFR, Ṁ_gas, Z, Ṁ_out, M_gas",IMPLEMENTED
+81,CoolingTimeBremsstrahlungCalculator,IGM,Eq. 81: t_cool = 3nkT/(2n_e n_i Λ),"n, k, T, n_e, n_i, Λ",IMPLEMENTED
+82,PressSchechterMassFunctionCalculator,First Galaxies,Eq. 82: dn/dM PS,"ρ_0, M, δ_c, σ",IMPLEMENTED
+83,SFEfficiencyCalculator,First Galaxies,Eq. 83: ε_* formula,"f_b, Ṁ_halo, M_halo, H(z), M_crit",IMPLEMENTED
+84,FeedbackEnergyInjectionCalculator,First Galaxies,Eq. 84: E_fb = η Ṁ_* c²,"η, Ṁ_*, c",IMPLEMENTED
+85,CurvaturePerturbationAmplitudeCalculator,Quantum Fluctuations,Eq. 85: Δ_R² formula,"H, ε, M_pl",IMPLEMENTED
+86,NonGaussianityFNLCalculator,Quantum Fluctuations,Eq. 86: f_NL formula,"Γ, Γ̇",IMPLEMENTED
+87,ReheatingTemperatureCalculator,Quantum Fluctuations,Eq. 87: T_reh formula,"V_end, g_*, N_reh",IMPLEMENTED
+88,SmallScaleDynamoGrowthCalculator,MHD Dynamos,Eq. 88: dE_M/dt formula,"E_M, t_eddy, Re_m",IMPLEMENTED
+89,AlfvenMachNumberCalculator,MHD Dynamos,Eq. 89: M_A formula,"ρ, v_turb, B",IMPLEMENTED
+90,FieldReversalScaleCalculator,MHD Dynamos,Eq. 90: ℓ_rev formula,"α_dynamo, η, ℓ_force",IMPLEMENTED
+91,EquationOfStateWCalculator,Dark Energy,Eq. 91: w = p/(ρc²),"p, ρ, c, a",IMPLEMENTED
+92,CPLDensityEvolutionCalculator,Dark Energy,Eq. 92: ρ_DE(a) CPL,"ρ_DE_0, w_0, w_a, a",IMPLEMENTED
+93,GrowthSuppressionCalculator,Dark Energy,Eq. 93: D(a) suppression,"Ω_m, H(a), H_0, a",IMPLEMENTED
+94,HawkingTemperatureCalculator,BH Thermodynamics,Eq. 94: T_H = ℏc³/(8πGMk_B),"ℏ, c, G, M, k_B",IMPLEMENTED
+95,BekensteinHawkingEntropyCalculator,BH Thermodynamics,Eq. 95: S = k_B c³ A/(4Gℏ),"k_B, c, A, G, ℏ, M",IMPLEMENTED
+96,EvaporationLifetimeCalculator,BH Thermodynamics,Eq. 96: τ_evap formula,"G, M, ℏ, c",IMPLEMENTED
+97,LQCEffectiveFriedmannCalculator,LQC Bounce,Eq. 97: H² modified Friedmann,"G, ρ, ρ_crit",IMPLEMENTED
+98,LQCPerturbationSpectrumCalculator,LQC Bounce,Eq. 98: P(k) LQC,"k, n_s, k_*, α",IMPLEMENTED
+99,BounceTimescaleCalculator,LQC Bounce,Eq. 99: t_b Planck scale,"G, ρ_crit, t_pl",IMPLEMENTED
+100,RocheLobeRadiusCalculator,Exoplanets,Eq. 100: R_L Roche,"q, a",IMPLEMENTED
+101,UQFFBuoyancyCalculator,UQFF Framework,F_UBii = F_rel × (E_cm/E_LEP) × Q_wave × g(r t),"F_rel, E_cm, E_LEP, Q_wave, g, r, t, ρ_vac",IMPLEMENTED
+102,UQFFMagnetismCalculator,UQFF Framework,Um(t r n) = Σ_j [μ_j/r_j × (1-e^(-γt cos(πtn))) × ...],"μ_j, r_j, γ, t, n, P_SCm, E_react, f_Heav, f_quasi",IMPLEMENTED
+103,UQFFElectricFieldCalculator,UQFF Framework,E = Um × ρ_vac [UA] / r,"Um, ρ_vac, r",IMPLEMENTED
+104,UQFFNeutronProductionCalculator,UQFF Framework,η = k_η × e^(-[SSq]^n/26) × e^(-π-t) × Um / ρ_vac,"k_η, SSq, n, t, Um, ρ_vac",IMPLEMENTED
+105,UQFFPseudoMonopoleCalculator,UQFF Framework,δ_n = (2π)^n / 6,"n",IMPLEMENTED
+106,UQFFVacuumDensityCalculator,UQFF Framework,ρ_vac [UA']:SCm(n t),"n, t, SSq",IMPLEMENTED
+107,UQFFGinzburgLandauCalculator,UQFF Framework,L_Ug = |∇ψ|² - (m²/2)|ψ|² + (λ/4)|ψ|⁴,"ψ, m, λ",IMPLEMENTED
+108,MUGEHydrogenAtomCalculator,MUGE Systems,g_MUGE for H atom + superconductive species,"G, m_eff, m_p, r, M_Z, r_Z, f_sc, H_0, t, c",IMPLEMENTED
+109,MUGERingsOfRelativityCalculator,MUGE Systems,g_Rings Einstein ring equation,"G, M, r, H(z), t, B, B_crit, L(t), Ug1-4",IMPLEMENTED
+110,MUGEMagnetarCalculator,MUGE Systems,B(t) = 10¹⁰ exp(-t/4000) magnetar field,"B_0, t, τ_decay, Ω(t)",IMPLEMENTED
+111,MUGEGlobularClusterCalculator,MUGE Systems,f_core f_BH globular dynamics,"t, t_cc, α, M, Fe/H, Y",IMPLEMENTED
+112,MUGESagittariusAStarCalculator,MUGE Systems,M(t) = 4.3×10⁶ M_sun growth equation,"M_0, Ṁ, t, τ, spin",IMPLEMENTED
+113,MUGESunPlanetarySystemCalculator,MUGE Systems,U_r U_dp resonance reciprocation,"A, f, t, φ, k, f_dp, SC_m, P_stable",IMPLEMENTED
+114,UQFFProtostellarJetCalculator,UQFF Updated,F_UBii jet and Um_jet for jets,"F_rel, E_shock, E_LEP, Q_wave, g_disk, τ_damp, t, T_B, B, r_A",IMPLEMENTED
+115,UQFFGalaxyMergerCalculator,UQFF Updated,F_UBii merger and Um_merger,"F_rel, E_burst, Q_wave_z, g_halo, z, m, σ_M, σ_m, δ_c",IMPLEMENTED
+116,UQFFBlackHoleGrowthCalculator,UQFF Updated,F_UBii BH and Um_BH with spin,"F_rel, Ṁ_BH, c, E_LEP, Q_wave, G, M_BH, r, σ, a",IMPLEMENTED
+117,UQFFIssingAnyonCalculator,UQFF 2025,F_UBii anyons with Ising braiding,"F_rel, E_anyons, E_LEP, Q_wave, g, δ_c, σ",IMPLEMENTED
+118,UQFFPolaritonQFTCalculator,UQFF 2025,Um_polariton with curved spacetime,"μ_j, r_j, γ, t, n, v_sound, c, ΔT, T",IMPLEMENTED
+119,UQFFUTe2TopologicalCalculator,UQFF 2025,δ_n UTe2 with topological factor,"n, SSq, f_topo, t",IMPLEMENTED
+120,UQFFElectricUniverseRatioCalculator,UQFF Extensions,R = F_EM / F_g for EU proof,"q, Um, ρ_vac, v, r, G, M, m",IMPLEMENTED
+121,UQFFGyroTorqueNullificationCalculator,UQFF Extensions,τ + Ui = 0 gyro nullification,"I, ω, α, F_UBii, r, θ",IMPLEMENTED

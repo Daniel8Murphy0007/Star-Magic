@@ -97,6 +97,75 @@ try:
 except ImportError:
     GROK_MODULES_AVAILABLE = False
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# GROK URL EQUATIONS - 121 Calculator Classes (March 2026)
+# Source: https://x.com/i/grok/share/683542a41e744554928bfcd8b0a19e40
+# ═══════════════════════════════════════════════════════════════════════════════
+try:
+    from grok_url_calculators import (
+        GROK_URL_CALCULATORS,
+        CONST as GROK_URL_CONST,
+        UQFF_CONST as GROK_URL_UQFF_CONST,
+        COSMO as GROK_URL_COSMO,
+        # Standard Physics (1-100)
+        AngularMomentumTransportCalculator, MHDJetVelocityCalculator,
+        JTypeShockRankineHugoniotCalculator, CTypeShockDampingCalculator,
+        EPSMergerRateCalculator, OrbitalTorqueTimeCalculator, SFRDEvolutionCalculator,
+        EPSBHMassFunctionCalculator, EddingtonAccretionCalculator,
+        SedovTaylorExpansionCalculator, DSAParticleAccelerationCalculator,
+        ChirpMassFormulaCalculator, QNMRingdownCalculator,
+        BlandfordZnajekPowerCalculator, RelativisticJetVelocityCalculator,
+        TOVEquationCalculator, PulsarSpinDownAgeCalculator, GlitchRecoveryCalculator,
+        FireballExpansionCalculator, AfterglowSynchrotronCalculator,
+        CMBAngularPowerCalculator, OpticalDepthCalculator,
+        MomentumFeedbackCalculator, BZJetPowerUpdatedCalculator, FeedbackDutyCycleCalculator,
+        PhotoevaporationRateCalculator, TypeIMigrationTorqueCalculator, RadialVelocitySemiAmplitudeCalculator,
+        NFWDensityProfileCalculator, RotationCurveCalculator, SIDMCoreFormationCalculator,
+        StrongLensingMassCalculator, XRayMassEstimateCalculator, MergerShockMachCalculator,
+        VoidDensityEvolutionCalculator, OutflowVelocityCalculator,
+        IonizationFractionCalculator, BubbleRadiusCalculator,
+        JeansLengthCalculator, AlfvenVelocityCalculator, TurbulentCascadeCalculator,
+        MainSequenceLifetimeCalculator, MassLuminosityRelationCalculator, ConvectiveTurnoverCalculator,
+        BaryonPhotonRatioCalculator, DeuteriumBottleneckCalculator,
+        FirstFriedmannCalculator, SecondFriedmannCalculator, DensityParameterCalculator,
+        SlowRollParametersCalculator, CurvaturePowerSpectrumCalculator, EFoldsCalculator,
+        TensorPowerSpectrumCalculator, StochasticGWDensityCalculator,
+        InspiralFrequencyEvolutionCalculator, MergerTimeCalculator, RingdownDampingTimeCalculator,
+        ArnettLawLightCurveCalculator, EjectaVelocityCalculator, NucleosynthesisYieldCalculator,
+        PNExpansionRadiusCalculator, IonizationFrontVelocityCalculator, AGBMassLossReimersCalculator,
+        ShockMachNumberTempCalculator, MergerTimescaleVirialCalculator, CoolCoreHeatingCalculator,
+        EvaporationRateCalculator, RelaxationTimeCalculator, VirialMassCalculator,
+        WindTerminalVelocityCalculator, IonizationParameterUCalculator, EnergyCouplingEfficiencyCalculator,
+        OrbitalDecayCalculator, PeriastronAdvanceCalculator, KilonovaPeakLuminosityCalculator,
+        FermiSecondOrderCalculator, KneeEnergyDSACalculator, DiffusionCoefficientCalculator,
+        WHIMTemperatureCalculator, MetalEnrichmentRateCalculator, CoolingTimeBremsstrahlungCalculator,
+        PressSchechterMassFunctionCalculator, SFEfficiencyCalculator, FeedbackEnergyInjectionCalculator,
+        CurvaturePerturbationAmplitudeCalculator, NonGaussianityFNLCalculator, ReheatingTemperatureCalculator,
+        SmallScaleDynamoGrowthCalculator, AlfvenMachNumberCalculator, FieldReversalScaleCalculator,
+        EquationOfStateWCalculator, CPLDensityEvolutionCalculator, GrowthSuppressionCalculator,
+        HawkingTemperatureCalculator, BekensteinHawkingEntropyCalculator, EvaporationLifetimeCalculator,
+        LQCEffectiveFriedmannCalculator, LQCPerturbationSpectrumCalculator, BounceTimescaleCalculator,
+        RocheLobeRadiusCalculator,
+        # UQFF Framework (101-107) - aliased to avoid name conflicts
+        UQFFBuoyancyCalculator as GrokUQFFBuoyancyCalculator,
+        UQFFMagnetismCalculator as GrokUQFFMagnetismCalculator,
+        UQFFElectricFieldCalculator, UQFFNeutronProductionCalculator,
+        UQFFPseudoMonopoleCalculator, UQFFVacuumDensityCalculator, UQFFGinzburgLandauCalculator,
+        # MUGE Systems (108-113)
+        MUGEHydrogenAtomCalculator, MUGERingsOfRelativityCalculator,
+        MUGEMagnetarCalculator, MUGEGlobularClusterCalculator,
+        MUGESagittariusAStarCalculator, MUGESunPlanetarySystemCalculator,
+        # Updated UQFF (114-121)
+        UQFFProtostellarJetCalculator, UQFFGalaxyMergerCalculator,
+        UQFFBlackHoleGrowthCalculator, UQFFIssingAnyonCalculator,
+        UQFFPolaritonQFTCalculator, UQFFUTe2TopologicalCalculator,
+        UQFFElectricUniverseRatioCalculator, UQFFGyroTorqueNullificationCalculator,
+    )
+    GROK_URL_MODULES_AVAILABLE = True
+except ImportError:
+    GROK_URL_MODULES_AVAILABLE = False
+    GROK_URL_CALCULATORS = {}
+
 # NumPy 2.0 compatibility: trapz was renamed to trapezoid
 if not hasattr(np, 'trapz'):
     np.trapz = np.trapezoid
@@ -123409,6 +123478,10 @@ HIGH_VALUE_PHYSICS_CALCULATORS = {
     'ValidationCoverageFramework': VALIDATION_FRAMEWORK,
 }
 
+# Merge Grok URL Calculators (121 classes) into HIGH_VALUE registry
+if GROK_URL_MODULES_AVAILABLE:
+    HIGH_VALUE_PHYSICS_CALCULATORS.update(GROK_URL_CALCULATORS)
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # CONVENIENCE FUNCTIONS - HIGH VALUE PHYSICS
@@ -125552,6 +125625,10 @@ __all__ = [
     'explain_cmb_anomaly',
     'compute_cmb_power_spectrum',
     'model_cold_spot',
+
+    # Grok URL Calculators (121 classes - March 2026)
+    'GROK_URL_CALCULATORS',
+    'GROK_URL_MODULES_AVAILABLE',
 ]
 
 
