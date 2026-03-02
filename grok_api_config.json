@@ -1,0 +1,13 @@
+{
+    "api_keys": {
+        "xai_grok": "",
+        "openai": ""
+    },
+    "preferences": {
+        "default_provider": "grok",
+        "auto_save": true,
+        "remember_model": true,
+        "last_model": "grok-4-1-fast-reasoning"
+    },
+    "version": "1.0"
+}

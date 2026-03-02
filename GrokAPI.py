@@ -10,6 +10,11 @@ Restore Point Features (Feb 24, 2026):
 - get_context_from_history(): Extract relevant context for API injection
 - save_restore_point(): Append new entries to consolidated restore point file
 - call_grok_api_with_context(): Enhanced API call with history injection
+
+API Key Management Features (Mar 2, 2026):
+- Integrated APIKeyManager for persistent config file storage
+- Supports multiple key sources: config file (priority), environment variable (fallback)
+- Session-persistent API key recall
 """
 
 import sys
@@ -19,6 +24,18 @@ import requests
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Union
+
+# Import API Key Manager for config file support
+try:
+    from APIKeyManager import get_xai_api_key, set_xai_api_key, get_api_key_status
+except ImportError:
+    # Fallback if APIKeyManager not available
+    def get_xai_api_key():
+        return os.environ.get("XAI_API_KEY", "").strip()
+    def set_xai_api_key(key):
+        return False
+    def get_api_key_status():
+        return "❌ APIKeyManager not available"
 
 # Default restore point file path
 RESTORE_POINT_FILE = Path(__file__).parent / "SuperGrok4_RestorePoint.json"
@@ -485,7 +502,8 @@ def call_grok_api(prompt, model="grok-4-1-fast-reasoning", temperature=0.3):
         }
     
     # For non-authorship queries, proceed normally with Grok API
-    api_key = os.environ.get("XAI_API_KEY", "").strip()
+    # Get API key from: config file (priority) → environment variable (fallback)
+    api_key = get_xai_api_key()
     
     if not api_key:
         return {

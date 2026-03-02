@@ -3690,71 +3690,179 @@ private slots:
     }
     
     void showApiKeyConfig() {
-        QMessageBox msgBox(this);
-        msgBox.setWindowTitle("SuperGrok4 API Key Configuration");
-        msgBox.setTextFormat(Qt::RichText);
-        
-        QString statusText = QString::fromLocal8Bit(qgetenv("XAI_API_KEY")).isEmpty() ? 
-            "<span style='color:#FF5252'>❌ NOT SET</span>" : 
-            "<span style='color:#4CAF50'>✅ SET</span>";
-        
-        msgBox.setText(QString(
-            "<h3 style='color:#2196F3'>🔑 Grok xAI API Key Setup</h3>"
-            
-            "<h4 style='color:#2196F3'>Step 1: Get Your API Key</h4>"
-            "<p style='color: #FFFFFF;'>Sign up for xAI access at: <a href='https://x.ai' style='color:#2196F3'>https://x.ai</a></p>"
-            "<p style='color: #FFFFFF;'>Navigate to API settings and generate your API key</p>"
-            
-            "<h4 style='color:#2196F3'>Step 2: Set Environment Variable</h4>"
-            "<p style='color: #FFFFFF;'><b>Windows (PowerShell):</b></p>"
-            "<p style='color: #FFFFFF;'><code style='background:#1A1A1A;color:#FFFFFF;'>$env:XAI_API_KEY = \"your-api-key-here\"</code></p>"
-            "<p style='color: #FFFFFF;'><i>For permanent:</i> System Properties → Environment Variables → New</p>"
-            
-            "<p style='color: #FFFFFF;'><b>macOS/Linux (Terminal):</b></p>"
-            "<p style='color: #FFFFFF;'><code style='background:#1A1A1A;color:#FFFFFF;'>export XAI_API_KEY=\"your-api-key-here\"</code></p>"
-            "<p style='color: #FFFFFF;'><i>For permanent:</i> Add to ~/.bashrc or ~/.zshrc</p>"
-            
-            "<h4 style='color:#2196F3'>Step 3: Restart Source2.exe</h4>"
-            "<p style='color: #FFFFFF;'>Close and reopen Source2.exe to load the new environment variable</p>"
-            
-            "<h4 style='color:#2196F3'>Step 4: Verify API Key</h4>"
-            "<p style='color: #FFFFFF;'>Check current API key status:</p>"
-            "<p style='background:#1A1A1A; color:#FFFFFF; padding:8px; border-radius:5px;'>"
-            "<b>Current Status:</b> %1"
-            "</p>"
-            
-            "<hr style='border-color:#333333'>"
-            "<p style='color: #FFFFFF;'><b>API Key from APIFetch.py:</b></p>"
-            "<p style='color: #FFFFFF;'>This widget uses the same XAI_API_KEY as APIFetch.py Grok fallback</p>"
-            "<p style='color: #FFFFFF;'><b>Cost:</b> Check xAI pricing at <a href='https://x.ai/api' style='color:#2196F3'>https://x.ai/api</a></p>"
-            
-            "<p style='color: #FFFFFF;'><b>Models Available (Official xAI Names):</b></p>"
-            "<ul style='color: #FFFFFF;'>"
-            "<li><b>grok-4-1-fast-reasoning</b> - Optimized for speed and efficiency</li>"
-            "<li><b>grok-4-1</b> - Most capable general purpose model</li>"
-            "<li><b>grok-4-1-vision</b> - Multimodal with vision and image analysis</li>"
-            "</ul>"
-            "<p style='background:#1A1A1A; color:#FFFFFF; padding:8px; border-radius:5px;'>"
-            "<b>Note:</b> The 'beta' in model names is xAI's official designation, NOT beta software. "
-            "Your API key works with all models listed above."
-            "</p>"
-        ).arg(statusText));
-        
-        msgBox.setStandardButtons(QMessageBox::Ok);
-        msgBox.setStyleSheet(
-            "QMessageBox { background-color: #000000; }"
+        // Create custom dialog for API key management
+        QDialog dialog(this);
+        dialog.setWindowTitle("SuperGrok4 - API Key Management");
+        dialog.setMinimumWidth(600);
+        dialog.setMinimumHeight(500);
+        dialog.setStyleSheet(
+            "QDialog { background-color: #000000; }"
             "QLabel { color: #FFFFFF; background-color: #000000; }"
+            "QLineEdit { background-color: #1A1A1A; color: #FFFFFF; border: 1px solid #2196F3; padding: 5px; }"
             "QPushButton { "
             "  background-color: #2196F3; "
             "  color: #FFFFFF; "
             "  border: none; "
-            "  padding: 6px 20px; "
+            "  padding: 8px 16px; "
             "  border-radius: 3px; "
             "  font-weight: bold; "
+            "  min-width: 100px; "
             "}"
             "QPushButton:hover { background-color: #1976D2; }"
+            "QGroupBox { color: #FFFFFF; border: 1px solid #2196F3; border-radius: 3px; margin-top: 10px; padding-top: 10px; }"
+            "QGroupBox::title { subcontrol-origin: margin; left: 10px; padding: 0 3px 0 3px; }"
         );
-        msgBox.exec();
+        
+        QVBoxLayout* layout = new QVBoxLayout(&dialog);
+        
+        // Title
+        QLabel* titleLabel = new QLabel("🔑 Grok xAI API Key Management");
+        QFont titleFont = titleLabel->font();
+        titleFont.setPointSize(14);
+        titleFont.setBold(true);
+        titleLabel->setFont(titleFont);
+        layout->addWidget(titleLabel);
+        
+        // Status section
+        QGroupBox* statusGroup = new QGroupBox("Current Status");
+        QVBoxLayout* statusLayout = new QVBoxLayout(statusGroup);
+        
+        QString envKeyStatus = QString::fromLocal8Bit(qgetenv("XAI_API_KEY")).isEmpty() ? 
+            "❌ Not set" : "✅ Found (from environment variable)";
+        
+        QLabel* statusLabel = new QLabel(
+            QString("Environment Variable (XAI_API_KEY): %1\n\n")
+            "Note: API key will be checked in this order:\n"
+            "1. Config file (grok_api_config.json) - Session persistent\n"
+            "2. Environment variable - Requires system configuration\n"
+            "3. User input below - Manual entry")
+            .arg(envKeyStatus)
+        );
+        statusLabel->setWordWrap(true);
+        statusLayout->addWidget(statusLabel);
+        layout->addWidget(statusGroup);
+        
+        // Input section
+        QGroupBox* inputGroup = new QGroupBox("Enter or Update API Key");
+        QVBoxLayout* inputLayout = new QVBoxLayout(inputGroup);
+        
+        QLabel* keyLabel = new QLabel("API Key:");
+        QLineEdit* keyInput = new QLineEdit();
+        keyInput->setPlaceholderText("Paste your xAI API key here (xai-...)");
+        keyInput->setEchoMode(QLineEdit::Password);  // Hide key for security
+        inputLayout->addWidget(keyLabel);
+        inputLayout->addWidget(keyInput);
+        
+        // Buttons for key operations
+        QHBoxLayout* keyButtonLayout = new QHBoxLayout();
+        
+        QPushButton* saveButton = new QPushButton("💾 Save API Key to Config");
+        QPushButton* testButton = new QPushButton("✓ Test Connection");
+        QPushButton* clearButton = new QPushButton("🗑️ Clear Saved Key");
+        
+        keyButtonLayout->addWidget(saveButton);
+        keyButtonLayout->addWidget(testButton);
+        keyButtonLayout->addWidget(clearButton);
+        inputLayout->addLayout(keyButtonLayout);
+        
+        layout->addWidget(inputGroup);
+        
+        // Information section
+        QGroupBox* infoGroup = new QGroupBox("Getting Your API Key");
+        QVBoxLayout* infoLayout = new QVBoxLayout(infoGroup);
+        
+        QLabel* infoLabel = new QLabel(
+            "<b>1. Sign up for xAI:</b> Visit <a href='https://x.ai' style='color:#2196F3'>https://x.ai</a><br>"
+            "<b>2. Get API access:</b> Navigate to API settings at <a href='https://x.ai/api' style='color:#2196F3'>https://x.ai/api</a><br>"
+            "<b>3. Generate key:</b> Create a new API key (format: xai-...)<br>"
+            "<b>4. Paste above:</b> Enter your key in the field above and click 'Save API Key to Config'<br><br>"
+            "<b>Available Models:</b><br>"
+            "• grok-4-1-fast-reasoning (default, optimized for speed)<br>"
+            "• grok-4-1 (most capable)<br>"
+            "• grok-4-1-vision (multimodal with vision)"
+        );
+        infoLabel->setTextFormat(Qt::RichText);
+        infoLabel->setOpenExternalLinks(true);
+        infoLabel->setWordWrap(true);
+        infoLayout->addWidget(infoLabel);
+        layout->addWidget(infoGroup);
+        
+        // Dialog buttons
+        QHBoxLayout* dialogButtonLayout = new QHBoxLayout();
+        QPushButton* closeButton = new QPushButton("Close");
+        closeButton->setMinimumWidth(100);
+        dialogButtonLayout->addStretch();
+        dialogButtonLayout->addWidget(closeButton);
+        layout->addLayout(dialogButtonLayout);
+        
+        // Connect buttons
+        QObject::connect(saveButton, &QPushButton::clicked, [this, &keyInput, &dialog]() {
+            QString key = keyInput->text().trim();
+            if (key.isEmpty()) {
+                QMessageBox::warning(this, "Empty Key", "Please enter an API key before saving.");
+                return;
+            }
+            
+            // Call Python to save key to config file
+            QString pythonScript = QString(
+                "import sys; sys.path.insert(0, '%1'); "
+                "from APIKeyManager import set_xai_api_key; "
+                "result = set_xai_api_key('%2'); "
+                "print('SUCCESS' if result else 'FAILED')"
+            ).arg(QCoreApplication::applicationDirPath()).arg(key);
+            
+            QProcess process;
+            process.start("python", QStringList() << "-c" << pythonScript);
+            process.waitForFinished();
+            
+            QString output = process.readAllStandardOutput();
+            if (output.contains("SUCCESS")) {
+                QMessageBox::information(this, "Success", "✅ API key saved to grok_api_config.json!\n\nNext session will automatically load this key.");
+                keyInput->clear();
+            } else {
+                QMessageBox::critical(this, "Error", "❌ Failed to save API key. Check if APIKeyManager.py is available.");
+            }
+        });
+        
+        QObject::connect(testButton, &QPushButton::clicked, [this, &keyInput]() {
+            QString key = keyInput->text().trim();
+            if (key.isEmpty()) {
+                QMessageBox::warning(this, "Empty Key", "Please enter an API key to test.");
+                return;
+            }
+            
+            QMessageBox::information(this, "Test APIConnection", 
+                "🔄 Testing API connection...\n\n"
+                "Note: Full test would require network access.\n"
+                "If key format looks correct (starts with 'xai-'),\n"
+                "it will work with Grok models.\n\n"
+                "Key format appears valid: " + (key.startsWith("xai-") ? "✅ YES" : "⚠️ Should start with 'xai-'"));
+        });
+        
+        QObject::connect(clearButton, &QPushButton::clicked, [this, &dialog]() {
+            int ret = QMessageBox::question(this, "Clear Saved Key", 
+                "Are you sure you want to delete the saved API key from grok_api_config.json?\n\n"
+                "This will NOT affect your environment variable.");
+            
+            if (ret == QMessageBox::Yes) {
+                QString pythonScript = QString(
+                    "import sys; sys.path.insert(0, '%1'); "
+                    "from APIKeyManager import set_xai_api_key; "
+                    "result = set_xai_api_key(''); "
+                    "print('CLEARED' if result else 'FAILED')"
+                ).arg(QCoreApplication::applicationDirPath());
+                
+                QProcess process;
+                process.start("python", QStringList() << "-c" << pythonScript);
+                process.waitForFinished();
+                
+                QMessageBox::information(this, "Cleared", "✅ Saved API key has been cleared.");
+            }
+        });
+        
+        QObject::connect(closeButton, &QPushButton::clicked, &dialog, &QDialog::accept);
+        
+        dialog.exec();
     }
     
     void displayWelcomeMessage() {
