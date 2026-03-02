@@ -17,6 +17,8 @@
 
 #pragma once
 
+#define _USE_MATH_DEFINES  // Enable M_PI on Windows MSVC
+
 #include <cmath>
 #include <map>
 #include <string>
