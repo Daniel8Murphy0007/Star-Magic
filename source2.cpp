@@ -29,6 +29,7 @@
 #include <QToolBar>         // Toolbar container - holds action buttons and widgets
 #include <QScreen>          // Screen information - provides info about physical screen properties
 #include <QDragEnterEvent>  // Drag-and-drop enter event - sent when drag operation enters a widget
+#include <QDrag>            // Drag object - for drag-and-drop operations
 #include <QDropEvent>       // Drag-and-drop drop event - sent when user drops data on widget
 #include <QMimeData>        // MIME data container - holds data in different formats for clipboard/drag-drop
 #include <QFile>            // File I/O operations - interface for reading/writing files
@@ -68,9 +69,12 @@
 #include <QWidgetAction>         // Widget action - for Retry Logic button menu (Phase 3)
 #include <QDateTimeEdit>         // DateTime edit - for Retry Logic time capture (Phase 3)
 #include <QMenuBar>              // Menu bar - for Window menu (Phase 3)
+#include <QSyntaxHighlighter>    // Syntax highlighter base class - for MathHighlighter (UQFF Calculator)
+#include <QUndoCommand>          // Undo/redo command - for undo stack operations
 #include <QSystemTrayIcon>       // System tray - duplicated include guard (Phase 3)
 #include <QMenu>                 // Menu widget - for tray context menu (Phase 3)
-#include "UQFF_CalculatorDialog.h"  // UQFF Scientific Calculator (Grok Thread Integration)
+// TEMPORARILY DISABLED: #include "UQFF_CalculatorDialog.h"  // UQFF Scientific Calculator (Grok Thread Integration)
+// MOC compilation issues - Tab 7 will use fallback C++ implementation, Python API key manager is primary
 
 // VTK (Visualization Toolkit) - For scientific data visualization (3D plots, charts, graphs)
 #ifndef NO_VTK
@@ -3716,7 +3720,7 @@ private slots:
         QVBoxLayout* layout = new QVBoxLayout(&dialog);
         
         // Title
-        QLabel* titleLabel = new QLabel("🔑 Grok xAI API Key Management");
+        QLabel* titleLabel = new QLabel("[KEY] Grok xAI API Key Management");
         QFont titleFont = titleLabel->font();
         titleFont.setPointSize(14);
         titleFont.setBold(true);
@@ -3728,16 +3732,15 @@ private slots:
         QVBoxLayout* statusLayout = new QVBoxLayout(statusGroup);
         
         QString envKeyStatus = QString::fromLocal8Bit(qgetenv("XAI_API_KEY")).isEmpty() ? 
-            "❌ Not set" : "✅ Found (from environment variable)";
+            "[NOT SET]" : "[YES] (from environment variable)";
         
-        QLabel* statusLabel = new QLabel(
-            QString("Environment Variable (XAI_API_KEY): %1\n\n")
+        QString statusText = QString("Environment Variable (XAI_API_KEY): %1\n\n"
             "Note: API key will be checked in this order:\n"
             "1. Config file (grok_api_config.json) - Session persistent\n"
             "2. Environment variable - Requires system configuration\n"
-            "3. User input below - Manual entry")
-            .arg(envKeyStatus)
-        );
+            "3. User input below - Manual entry").arg(envKeyStatus);
+        
+        QLabel* statusLabel = new QLabel(statusText);
         statusLabel->setWordWrap(true);
         statusLayout->addWidget(statusLabel);
         layout->addWidget(statusGroup);
@@ -3756,9 +3759,9 @@ private slots:
         // Buttons for key operations
         QHBoxLayout* keyButtonLayout = new QHBoxLayout();
         
-        QPushButton* saveButton = new QPushButton("💾 Save API Key to Config");
-        QPushButton* testButton = new QPushButton("✓ Test Connection");
-        QPushButton* clearButton = new QPushButton("🗑️ Clear Saved Key");
+        QPushButton* saveButton = new QPushButton("[SAVE] Save API Key to Config");
+        QPushButton* testButton = new QPushButton("[TEST] Test Connection");
+        QPushButton* clearButton = new QPushButton("[CLEAR] Clear Saved Key");
         
         keyButtonLayout->addWidget(saveButton);
         keyButtonLayout->addWidget(testButton);
@@ -3777,9 +3780,9 @@ private slots:
             "<b>3. Generate key:</b> Create a new API key (format: xai-...)<br>"
             "<b>4. Paste above:</b> Enter your key in the field above and click 'Save API Key to Config'<br><br>"
             "<b>Available Models:</b><br>"
-            "• grok-4-1-fast-reasoning (default, optimized for speed)<br>"
-            "• grok-4-1 (most capable)<br>"
-            "• grok-4-1-vision (multimodal with vision)"
+            "- grok-4-1-fast-reasoning (default, optimized for speed)<br>"
+            "- grok-4-1 (most capable)<br>"
+            "- grok-4-1-vision (multimodal with vision)"
         );
         infoLabel->setTextFormat(Qt::RichText);
         infoLabel->setOpenExternalLinks(true);
@@ -3797,7 +3800,7 @@ private slots:
         
         // Connect buttons
         QObject::connect(saveButton, &QPushButton::clicked, [this, &keyInput, &dialog]() {
-            QString key = keyInput->text().trim();
+            QString key = keyInput->text().trimmed();
             if (key.isEmpty()) {
                 QMessageBox::warning(this, "Empty Key", "Please enter an API key before saving.");
                 return;
@@ -3825,18 +3828,21 @@ private slots:
         });
         
         QObject::connect(testButton, &QPushButton::clicked, [this, &keyInput]() {
-            QString key = keyInput->text().trim();
+            QString key = keyInput->text().trimmed();
             if (key.isEmpty()) {
                 QMessageBox::warning(this, "Empty Key", "Please enter an API key to test.");
                 return;
             }
             
-            QMessageBox::information(this, "Test APIConnection", 
-                "🔄 Testing API connection...\n\n"
+            QString statusMsg = key.startsWith("xai-") ? "✅ YES" : "⚠️ Should start with 'xai-'";
+            QString message = QString(
+                "[TEST] Testing API connection...\n\n"
                 "Note: Full test would require network access.\n"
                 "If key format looks correct (starts with 'xai-'),\n"
                 "it will work with Grok models.\n\n"
-                "Key format appears valid: " + (key.startsWith("xai-") ? "✅ YES" : "⚠️ Should start with 'xai-'"));
+                "Key format appears valid: %1").arg(statusMsg);
+            
+            QMessageBox::information(this, "Test API Connection", message);
         });
         
         QObject::connect(clearButton, &QPushButton::clicked, [this, &dialog]() {
@@ -3856,7 +3862,7 @@ private slots:
                 process.start("python", QStringList() << "-c" << pythonScript);
                 process.waitForFinished();
                 
-                QMessageBox::information(this, "Cleared", "✅ Saved API key has been cleared.");
+                QMessageBox::information(this, "Cleared", "[SUCCESS] Saved API key has been cleared.");
             }
         });
         
@@ -10094,14 +10100,14 @@ public:
             uqffLayout->addWidget(btn);
         }
         
-        // UQFF Calculator dialog launcher
-        QPushButton *uqffCalcBtn = new QPushButton("⚛ UQFF Calc", uqffPanel);
-        uqffCalcBtn->setToolTip("Open UQFF Scientific Calculator (Grok Thread)");
-        connect(uqffCalcBtn, &QPushButton::clicked, [this]() {
-            UQFFCalculatorDialog *dlg = new UQFFCalculatorDialog(this);
-            dlg->show();
-        });
-        uqffLayout->addWidget(uqffCalcBtn);
+        // UQFF Calculator dialog launcher - TEMPORARILY DISABLED (MOC compilation issues)
+        // QPushButton *uqffCalcBtn = new QPushButton("⚛ UQFF Calc", uqffPanel);
+        // uqffCalcBtn->setToolTip("Open UQFF Scientific Calculator (Grok Thread)");
+        // connect(uqffCalcBtn, &QPushButton::clicked, [this]() {
+        //     UQFFCalculatorDialog *dlg = new UQFFCalculatorDialog(this);
+        //     dlg->show();
+        // });
+        // uqffLayout->addWidget(uqffCalcBtn);
         uqffLayout->addStretch();
         formulaTabs->addTab(uqffPanel, "UQFF");
 

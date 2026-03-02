@@ -475,11 +475,10 @@ if(Qt6_FOUND)
         source2_mainwindow.h 
         UQFFResultsWidget.h 
         equation_renderer.h 
-        UQFF_ScientificCalculator.cpp    # UQFF core equations (GROK_UQFF_CALC_65)
-        UQFF_CalculatorDialog.h          # UQFF Qt dialog (GROK_UQFF_CALC_65)
+        UQFF_ScientificCalculator.cpp
         ${IPC_SOURCES} 
         ${IPC_HEADERS}
-        ${CMAKE_SOURCE_DIR}/resources/Star-Magic.rc  # Windows icon/version resources
+        ${CMAKE_SOURCE_DIR}/resources/Star-Magic.rc
     )
     
     # Enable Qt AUTOMOC/AUTOUIC/AUTORCC for Source2 (Q_OBJECT in header file)
