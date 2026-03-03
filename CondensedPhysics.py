@@ -94254,85 +94254,97 @@ class TriadicGravityCalculator:
         }
 
 
-class UnifiedFieldSolver:
-    """
-    UQFF Universal Field Solver - Computes all equations from input parameters.
+# ═══════════════════════════════════════════════════════════════════════════
+# PHASE 1 DEDUPLICATION: UnifiedFieldSolver redirects to QCalc.py (March 3, 2026)
+# ═══════════════════════════════════════════════════════════════════════════
+# REASON: QCalc.py has the complete, production-ready UnifiedFieldSolver with:
+#   - 8 UQFF Master Equation Calculators
+#   - Structured EquationResult returns
+#   - Phase 2-7 equation support
+#   - Data layer integration
+#   - Comprehensive error handling
+# 
+# CondensedPhysics.py's version was a minimal stub. This redirect maintains
+# backward compatibility while eliminating duplication (Critical Gap #4).
+# ═══════════════════════════════════════════════════════════════════════════
+
+try:
+    from QCalc import UnifiedFieldSolver as _QCalcUnifiedFieldSolver
+    from QCalc import ComputeParams, EquationResult
     
-    This is a PURE CALCULATOR:
-    - Takes parameters from APIFetch.py or user input
-    - Computes applicable equations
-    - Returns long-form equations with solutions
-    - NO hardcoded system data
-    """
-    
-    def __init__(self):
-        """Initialize solver with fundamental constants."""
-        self.C = CONSTANTS
-        self.triadic_calc = TriadicGravityCalculator()
-        self.muge_calc = MUGECalculator()
-        self.buoyancy_calc = BuoyancyCalculator()
-        
-    def solve(self, params: dict) -> dict:
+    class UnifiedFieldSolver(_QCalcUnifiedFieldSolver):
         """
-        Main entry point: Compute all applicable equations for given parameters.
+        REDIRECTED TO QCalc.py (Phase 1 Deduplication - March 3, 2026)
         
-        Args:
-            params: dict with M, r, B, P, z, etc.
+        This class now inherits from QCalc.py's comprehensive UnifiedFieldSolver.
+        All functionality is provided by the canonical implementation in QCalc.py.
+        
+        DEPRECATED: Direct instantiation of this class is deprecated.
+        USE: from QCalc import UnifiedFieldSolver, ComputeParams
+        
+        This is a PURE CALCULATOR:
+        - Takes parameters from APIFetch.py or user input (ComputeParams object)
+        - Computes applicable equations across all UQFF phases
+        - Returns long-form equations with solutions (structured EquationResult objects)
+        - NO hardcoded system data
+        
+        Backward Compatibility:
+        - Old dict-based params still supported (auto-converted to ComputeParams)
+        - Old dict result format available via .solve()
+        """
+        
+        def __init__(self):
+            """Initialize solver - delegates to QCalc.py's implementation."""
+            import warnings
+            warnings.warn(
+                "CondensedPhysics.UnifiedFieldSolver is deprecated. "
+                "Use 'from QCalc import UnifiedFieldSolver, ComputeParams' instead. "
+                "(Phase 1 Deduplication - March 3, 2026)",
+                DeprecationWarning,
+                stacklevel=2
+            )
+            super().__init__()
+        
+        def solve(self, params):
+            """
+            Backward compatible solve method.
             
-        Returns:
-            {
-                'query_id': str,
-                'timestamp': str,
-                'input_params': dict,
-                'equations': list,
-                'solutions': dict,
-                'available_equations': list
+            Accepts both dict (old style) and ComputeParams (new style).
+            Returns dict result for compatibility with old code.
+            """
+            # Convert dict to ComputeParams if needed
+            if isinstance(params, dict):
+                from QCalc import ComputeParams
+                params = ComputeParams.from_dict(params)
+            
+            # Call parent solve()
+            return super().solve(params)
+
+except ImportError as e:
+    # Fallback if QCalc.py not available (should never happen)
+    import warnings
+    warnings.warn(f"Cannot import QCalc.UnifiedFieldSolver: {e}. Using minimal fallback.", ImportWarning)
+    
+    class UnifiedFieldSolver:
+        """FALLBACK: Minimal UnifiedFieldSolver if QCalc.py unavailable."""
+        def __init__(self):
+            self.C = CONSTANTS
+            self.triadic_calc = TriadicGravityCalculator()
+            self.muge_calc = MUGECalculator()
+            self.buoyancy_calc = BuoyancyCalculator()
+        
+        def solve(self, params: dict) -> dict:
+            """Minimal fallback solve method."""
+            import datetime
+            return {
+                'query_id': f"FALLBACK_{datetime.datetime.now().isoformat()[:10]}",
+                'timestamp': datetime.datetime.now().isoformat(),
+                'input_params': params,
+                'equations': ["FALLBACK MODE: QCalc.py not available"],
+                'solutions': {},
+                'available_equations': [],
+                '_warning': 'QCalc.UnifiedFieldSolver import failed - using minimal fallback'
             }
-        """
-        import datetime
-        timestamp = datetime.datetime.now().isoformat()
-        
-        equations = []
-        solutions = {}
-        
-        M = params.get('M')
-        r = params.get('r')
-        B = params.get('B')
-        
-        # Gravitational equations
-        if M is not None and r is not None:
-            G = self.C.get('G', 6.6743e-11)
-            g_newton = G * M / (r * r)
-            solutions['g_newton'] = g_newton
-            equations.append(f"g = G·M/r² = {g_newton:.4e} m/s²")
-            
-            # Triadic gravity
-            triadic_result = self.triadic_calc.compute({'M': M, 'r': r})
-            solutions['g_triadic'] = triadic_result['solutions']['g_triadic']
-            equations.append(f"g_triadic = {solutions['g_triadic']:.4e} m/s²")
-            
-            # Master buoyant force
-            rho_vac_UA = self.C.get('rho_vac_UA', 7.09e-36)
-            rho_vac_SCm = self.C.get('rho_vac_SCm', 7.09e-37)
-            F_Bi = rho_vac_UA * (4/3) * 3.14159 * (r**3) * g_newton
-            solutions['F_U_Bi_i'] = F_Bi
-            equations.append(f"F_U_Bi_i = {F_Bi:.4e} N")
-        
-        # Magnetic equations
-        if B is not None:
-            mu_0 = self.C.get('mu_0', 1.2566e-6)
-            B_energy = (B * B) / (2 * mu_0)
-            solutions['B_energy_density'] = B_energy
-            equations.append(f"u_B = B²/(2μ₀) = {B_energy:.4e} J/m³")
-        
-        return {
-            'query_id': f"UQFF_{timestamp[:10]}",
-            'timestamp': timestamp,
-            'input_params': params,
-            'equations': equations,
-            'solutions': solutions,
-            'available_equations': list(solutions.keys())
-        }
 
 
 class MagnetarMUGECalculator:

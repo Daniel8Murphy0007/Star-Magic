@@ -1240,6 +1240,50 @@ class ComputeParams:
         return {k: v for k, v in self.__dict__.items() if v is not None}
     
     @classmethod
+    def from_dict(cls, data: dict):
+        """
+        Create ComputeParams from dictionary (backward compatibility).
+        
+        Supports old-style dict params from CondensedPhysics.py.
+        Phase 1 Deduplication - March 3, 2026
+        """
+        params = cls()
+        
+        # Map dict keys to ComputeParams attributes
+        mapping = {
+            'M': 'M', 'mass': 'M',
+            'r': 'r', 'radius': 'r', 'distance': 'r',
+            'T': 'T', 'temperature': 'T',
+            'L': 'L', 'luminosity': 'L',
+            'R': 'R',
+            'z': 'z', 'redshift': 'z',
+            'd': 'd',
+            'v': 'v', 'velocity': 'v',
+            'omega': 'omega', 'Omega': 'omega',
+            'P': 'P', 'period': 'P',
+            'B': 'B', 'magnetic_field': 'B', 'B_field': 'B',
+            'mu': 'mu',
+            'psi': 'psi',
+            'Delta': 'Delta',
+            'Phi': 'Phi',
+            'M_bh': 'M_bh',
+            'd_g': 'd_g',
+            'Omega_g': 'Omega_g',
+            'sigma': 'sigma',
+            'SFR': 'SFR', 'star_formation_rate': 'SFR',
+            't': 't', 'time': 't',
+            't_n': 't_n',
+            'object_name': 'query_name', 'name': 'query_name'
+        }
+        
+        for key, value in data.items():
+            if key in mapping:
+                attr_name = mapping[key]
+                setattr(params, attr_name, value)
+        
+        return params
+    
+    @classmethod
     def from_api_response(cls, api_data: dict, query_name: str = "api_query"):
         """Create ComputeParams from API fetch response."""
         return cls(
