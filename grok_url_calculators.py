@@ -205,22 +205,124 @@ class SFRDEvolutionCalculator:
 # ═══════════════════════════════════════════════════════════════════════════════
 
 class EPSBHMassFunctionCalculator:
-    """Eq. 8: EPS BH mass function N(>M,z)."""
+    """Eq. 8: EPS BH mass function N(>M,z) with Harvard distribution integration."""
+    
+    def __init__(self):
+        self.harvard_data = None
+    
+    def load_harvard_distribution(self, json_path: str = None) -> dict:
+        """
+        Load Harvard energy_distributions.json with BH mass bins.
+        
+        Args:
+            json_path: Path to energy_distributions.json (default: data/harvard_energy_distributions.json)
+            
+        Returns:
+            {
+                'bins': array of bin centers [2.75, 3.5, ..., 8.0] in log(M_sun),
+                'peaks': {
+                    3.9: 'Neutron drop resonance (Kozima, 10^3-10^4 s lifetime)',
+                    5.6: 'THz coherence (1.2 THz LENR, Colman-Gillespie 300 Hz)',
+                    6.5: 'Vacuum feedback (Ug4 galactic, levels 20-26)',
+                    7.0: 'SMBH transition (M ~ 10^7 M_sun)'
+                },
+                'integral': 0.064,
+                'distribution': array of density values,
+                'cumulative': array of cumulative distribution
+            }
+        """
+        import json
+        import os
+        
+        if json_path is None:
+            # Default to data/ directory relative to this file
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            json_path = os.path.join(script_dir, 'data', 'harvard_energy_distributions.json')
+        
+        try:
+            with open(json_path, 'r') as f:
+                data = json.load(f)
+            
+            # Extract UQFF peak interpretations
+            peaks_uqff = {}
+            for peak_key, peak_data in data['peaks'].items():
+                log_M = float(peak_key)
+                peaks_uqff[log_M] = peak_data['interpretation']
+            
+            # Store loaded data
+            self.harvard_data = {
+                'bins': data['bins']['centers'],
+                'bin_edges': data['bins']['edges'],
+                'peaks': peaks_uqff,
+                'peak_details': data['peaks'],
+                'density': data['distribution']['density'],
+                'cumulative': data['distribution']['cumulative'],
+                'integral': data['distribution']['integral'],
+                'metadata': data['metadata'],
+                'uqff_validation': data['uqff_validation'],
+                'schmidt_2016': data['schmidt_2016_validation']
+            }
+            
+            return self.harvard_data
+            
+        except FileNotFoundError:
+            print(f"Warning: Harvard distribution file not found at {json_path}")
+            return None
+        except json.JSONDecodeError as e:
+            print(f"Warning: Error parsing Harvard distribution JSON: {e}")
+            return None
+    
+    def get_peak_interpretation(self, log_M_sun: float, tolerance: float = 0.3) -> str:
+        """
+        Get UQFF interpretation for a given log(M/M_sun) value.
+        
+        Args:
+            log_M_sun: Logarithmic mass in solar masses
+            tolerance: Tolerance for peak matching (default 0.3 dex)
+            
+        Returns:
+            UQFF interpretation string or 'No peak match'
+        """
+        if self.harvard_data is None:
+            self.load_harvard_distribution()
+        
+        if self.harvard_data is None:
+            return 'Harvard data not loaded'
+        
+        for peak_log_M, interpretation in self.harvard_data['peaks'].items():
+            if abs(log_M_sun - peak_log_M) < tolerance:
+                return interpretation
+        
+        return 'No peak match'
+    
     def compute(self, dataset: dict) -> dict:
         rho_bar = dataset.get('rho_bar', COSMO['rho_c'] * COSMO['Omega_m'])
         M_BH = dataset.get('M_BH', 1e8 * CONST['M_sun'])
         z = dataset.get('z', 0.0)
         sigma = dataset.get('sigma', 1.0)
         delta_c = COSMO['delta_c'] * (1 + z)
-        from math import erfc
+        from math import erfc, log10
         arg = delta_c / (math.sqrt(2) * sigma)
         N_cumulative = rho_bar / M_BH * erfc(arg) if M_BH > 0 else 0
-        return {
+        
+        # Add Harvard distribution interpretation
+        log_M_sun = log10(M_BH / CONST['M_sun']) if M_BH > 0 else 0
+        peak_interpretation = self.get_peak_interpretation(log_M_sun)
+        
+        result = {
             'N_cumulative': N_cumulative, 'delta_c_z': delta_c,
-            'erfc_arg': arg, 'M_BH': M_BH,
+            'erfc_arg': arg, 'M_BH': M_BH, 'log_M_sun': log_M_sun,
             'equation': 'N(>M,z) = ρ̄ ∫ dM\'/M\'² erfc(δ_c/√2σ)',
-            'source': 'Grok URL Eq. 8: EPS BH Mass Function'
+            'source': 'Grok URL Eq. 8: EPS BH Mass Function',
+            'uqff_interpretation': peak_interpretation
         }
+        
+        # Add Harvard data if loaded
+        if self.harvard_data is not None:
+            result['harvard_peaks'] = self.harvard_data['peaks']
+            result['harvard_integral'] = self.harvard_data['integral']
+        
+        return result
 
 class EddingtonAccretionCalculator:
     """Eq. 9: Ṁ_BH = 4πGM_BH m_p / (ε_r σ_T c) (Eddington accretion rate)."""

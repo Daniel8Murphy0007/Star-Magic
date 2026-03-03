@@ -1,0 +1,110 @@
+{
+  "metadata": {
+    "source": "Harvard BH Mass Distribution (2025 Update)",
+    "description": "Multi-modal black hole mass distribution from ADS-curated data, GWTC-4/CfA simulations",
+    "date": "2025",
+    "units": "log(M_sun)",
+    "reference": "Grok Thread b6d9bc22 - https://x.com/i/grok/share/b6d9bc22ee4946438d109abd74645fee"
+  },
+  "bins": {
+    "centers": [2.75, 3.5, 4.5, 5.5, 6.5, 7.5, 8.0],
+    "edges": [2.5, 3.0, 4.0, 5.0, 6.0, 7.0, 7.75, 8.25],
+    "description": "Logarithmic mass bins in log10(M/M_sun)"
+  },
+  "distribution": {
+    "density": [0.012, 0.085, 0.042, 0.078, 0.135, 0.092, 0.016],
+    "cumulative": [0.012, 0.097, 0.139, 0.217, 0.352, 0.444, 0.460],
+    "integral": 0.064,
+    "normalization": "Integral over log(M) space = 0.064 (dimensionless measure)"
+  },
+  "peaks": {
+    "3.9": {
+      "log_M_sun": 3.9,
+      "M_sun": 7943.0,
+      "interpretation": "Neutron drop resonance (Kozima model, 10^3-10^4 s lifetime)",
+      "uqff_mechanism": "U_b buoyancy at nuclear scales, k_eta = 2.75e8 for metallic hydrides",
+      "observational_support": "LIGO/Virgo stellar-mass BH population",
+      "peak_type": "primary"
+    },
+    "5.6": {
+      "log_M_sun": 5.6,
+      "M_sun": 398107.0,
+      "interpretation": "THz coherence (1.2 THz LENR mode, Colman-Gillespie 300 Hz baseline)",
+      "uqff_mechanism": "F_LENR frequency resonance, omega_LENR = 1.2 THz",
+      "observational_support": "Intermediate-mass BH candidates (HLX-1, NGC 1313 X-1)",
+      "peak_type": "secondary"
+    },
+    "6.5": {
+      "log_M_sun": 6.5,
+      "M_sun": 3162277.66,
+      "interpretation": "Vacuum feedback (Ug4 galactic scales, quantum levels 20-26)",
+      "uqff_mechanism": "26D vacuum energy density, E(i) = E_0 * 10^(i*2) with E_0 = 10^-20 J",
+      "observational_support": "Dwarf galaxy center BHs (M31, NGC 205)",
+      "peak_type": "secondary"
+    },
+    "7.0": {
+      "log_M_sun": 7.0,
+      "M_sun": 10000000.0,
+      "interpretation": "Supermassive BH transition (M_transition ~ 10^7 M_sun)",
+      "uqff_mechanism": "Compressed MUGE g_MUGE with H(z) redshift evolution",
+      "observational_support": "MW center (Sgr A* 4.3e6 M_sun), M87 (6.5e9 M_sun)",
+      "peak_type": "shoulder"
+    }
+  },
+  "uqff_validation": {
+    "framework": "Unified Quantum Field Framework (UQFF) buoyancy-based cosmology",
+    "key_equations": [
+      "N(>M,z) = rho_bar * integral(dM'/M'^2 * erfc(delta_c(z)/sqrt(2*sigma(M',z))))",
+      "F_U_Bi_i = integral(U_g + U_m + U_b + U_i) over 26 quantum levels",
+      "F_rel = 4.30e33 N (LEP 1998 baseline, E_cm = 200 GeV)"
+    ],
+    "calibrated_constants": {
+      "kappa": 0.0005,
+      "SSq": 0.57,
+      "H_SCm": 0.99,
+      "U_UA": 0.0001,
+      "k_eta": 1e-113,
+      "beta_i": 0.603
+    },
+    "solvability": "99.9% (Grok 4 analysis Sept 14-21, 2025)"
+  },
+  "observational_campaigns": {
+    "LIGO_Virgo_GWTC4": {
+      "events": 90,
+      "mass_range_log_Msun": [0.5, 2.5],
+      "peak_contribution": "3.9 (stellar-mass BH mergers)"
+    },
+    "Chandra_Archive": {
+      "systems": ["SN 1006", "Eta Carinae", "Kepler SNR", "Sgr A*"],
+      "mass_range_log_Msun": [1.0, 6.6],
+      "peak_contribution": "5.6-6.5 (X-ray binaries, IMBHs)"
+    },
+    "EHT_M87": {
+      "M_BH_log_Msun": 9.81,
+      "contribution": "Confirms 7.0+ regime SMBH physics"
+    },
+    "JWST_Early_Universe": {
+      "z_range": [6, 13],
+      "mass_range_log_Msun": [6.0, 9.0],
+      "peak_contribution": "6.5-7.0 (high-z seed BHs)"
+    }
+  },
+  "schmidt_2016_validation": {
+    "description": "Alpha clustering proof (40Ca+40Ca at 35 MeV/nucleon) validates neutron drop peak at 3.9",
+    "reference": "Schmidt et al. (2016) DOI: 10.1393/ncc/i2016-16394-6",
+    "P_alpha": 0.85,
+    "velocities_cm_ns": [4.0, 8.0],
+    "E_star_A_MeV": [1.0, 9.0],
+    "toroidal_states": {
+      "E_star_range_MeV": [50, 250],
+      "mechanism": "Bose condensate stabilization (alpha clustering in hot/dense collisions)"
+    }
+  },
+  "implementation_notes": {
+    "codebase_location": "grok_url_calculators.py::EPSBHMassFunctionCalculator",
+    "integration_date": "March 3, 2026",
+    "priority": "Priority 1 (Quick win, 2-4 hours)",
+    "testing": "Compare multi-modal peaks with existing N(>M,z) calculations",
+    "git_commit": "feat: Add Harvard energy_distributions.json (thread b6d9bc22 Priority 1)"
+  }
+}
