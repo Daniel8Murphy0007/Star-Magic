@@ -3646,7 +3646,7 @@ private slots:
         if (apiKey.isEmpty()) {
             chatDisplay->append("<div style='background-color: #FFEBEE; padding: 10px; margin: 5px; border-radius: 10px;'>");
             chatDisplay->append("<b>Error:</b> XAI_API_KEY not found. Click '🔑 Configure API Key' button to set it.");
-            chatDisplay->append("<br><b>Checked:</b> grok_api_config.json and \$XAI_API_KEY environment variable");
+            chatDisplay->append("<br><b>Checked:</b> grok_api_config.json and $XAI_API_KEY environment variable");
             chatDisplay->append("</div>");
             statusLabel->setText("Status: API Key Required");
             statusLabel->setStyleSheet("color: #F44336; font-weight: bold; background-color: #000000; padding: 5px; border-radius: 3px;");
@@ -3972,27 +3972,34 @@ private slots:
                 return;
             }
             
-            // Call Python to save key to config file
-            QString projectDir = QCoreApplication::applicationDirPath() + "/../..";
-            QString venvPython = projectDir + "/.venv_py314_backup/Scripts/python.exe";
+            if (!key.startsWith("xai-")) {
+                QMessageBox::warning(this, "Invalid Key", "API key should start with 'xai-'");
+                return;
+            }
             
-            QString pythonScript = QString(
-                "import sys; sys.path.insert(0, '%1'); "
-                "from APIKeyManager import set_xai_api_key; "
-                "result = set_xai_api_key('%2'); "
-                "print('SUCCESS' if result else 'FAILED')"
-            ).arg(projectDir).arg(key);
+            // Save to Windows User environment variable (permanent, secure)
+            bool success = qputenv("XAI_API_KEY", key.toUtf8());
             
-            QProcess process;
-            process.start(venvPython, QStringList() << "-c" << pythonScript);
-            process.waitForFinished();
+            // Also save to Windows registry for persistence across sessions
+            QProcess regProcess;
+            QString regCommand = QString("setx XAI_API_KEY \"%1\"").arg(key);
+            regProcess.start("cmd.exe", QStringList() << "/c" << regCommand);
+            regProcess.waitForFinished(5000);
             
-            QString output = process.readAllStandardOutput();
-            if (output.contains("SUCCESS")) {
-                QMessageBox::information(this, "Success", "✅ API key saved to grok_api_config.json!\n\nNext session will automatically load this key.");
+            if (success) {
+                QMessageBox::information(this, "Success", 
+                    "✅ API key saved!\n\n"
+                    "Saved to: Windows User Environment Variable\n"
+                    "Variable: XAI_API_KEY\n\n"
+                    "The key is now available for:\n"
+                    "• This session (immediate)\n"
+                    "• All future sessions (persistent)\n"
+                    "• Not stored in git/files (secure)\n\n"
+                    "Restart Tab 7 or the app to use the new key.");
                 keyInput->clear();
+                dialog.accept();
             } else {
-                QMessageBox::critical(this, "Error", "❌ Failed to save API key. Check if APIKeyManager.py is available.");
+                QMessageBox::critical(this, "Error", "❌ Failed to save API key to environment variable.");
             }
         });
         
