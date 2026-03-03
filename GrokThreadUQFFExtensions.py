@@ -468,7 +468,586 @@ class AsymmetricalCapacitorCalculator:
 
 
 # ============================================================================
-# 3. VARIABLE LIGHT SPEED WITH VACUUM FLUCTUATIONS
+# 3. UNIVERSAL MAGNETISM (Um) WITH WIDOM-LARSEN LENR ENHANCEMENT
+# ============================================================================
+
+class UniversalMagnetismCalculator:
+    """
+    Complete Universal Magnetism (Um) equation with Heaviside 10^13 enhancement.
+    
+    From Grok Thread 98b2e77d - Widom-Larsen LENR theory integration.
+    
+    Um = Σ[(μ_j/r_j) × (1-e^{-γt}cos(πt_n)) × φ̂_j] × P_SCm × E_react × 
+         (1+10^13·f_Heav) × (1+f_quasi)
+    
+    Components:
+    - μ_j: Magnetic moment of dipole j (A·m²)
+    - r_j: Distance from dipole j (m)
+    - γt: Time decay parameter (dimensionless)
+    - t_n: Normalized time (0-1)
+    - φ̂_j: Angular momentum unit vector (dimensionless)
+    - P_SCm: Superconducting magnetic pressure (Pa)
+    - E_react: Energy reactivity factor (dimensionless)
+    - f_Heav: Heaviside frequency (Hz) - **CRITICAL 10^13 amplification**
+    - f_quasi: Quasi-particle frequency (Hz)
+    
+    Physical Interpretation:
+    The 10^13 Heaviside enhancement represents ultra-high-frequency magnetic
+    field oscillations characteristic of LENR processes where neutron drops
+    catalyze low-energy nuclear reactions (Widom-Larsen theory). This matches
+    Floyd Sweet's Vacuum Triode Generator observations and Colman-Gillespie
+    experimental data.
+    """
+    
+    def __init__(self):
+        self.c = UQFFConstants()
+    
+    def compute_dipole_term(self, mu_j: float, r_j: float, gamma_t: float, 
+                            t_n: float = 0.0, phi_hat: float = 1.0) -> float:
+        """
+        Compute single dipole contribution with time-reversal modulation.
+        
+        dipole_j = (μ_j/r_j) × (1 - e^{-γt} × cos(πt_n)) × φ̂_j
+        
+        Parameters:
+        -----------
+        mu_j : float
+            Magnetic moment (A·m²), typical 1e-23 (atomic) to 1e30 (magnetar)
+        r_j : float
+            Distance from dipole (m)
+        gamma_t : float
+            Time decay parameter (dimensionless), typical 0.1-10
+        t_n : float
+            Normalized time 0-1 (cyclic), default 0
+        phi_hat : float
+            Angular momentum projection (-1 to +1), default 1
+            
+        Returns:
+        --------
+        float : Dipole field strength (A·m)
+        """
+        if r_j == 0:
+            return 0.0
+        
+        # Basic dipole field
+        dipole_strength = mu_j / r_j
+        
+        # Time-reversal modulation: cos(πt_n) creates backward causality at t_n=0.5
+        time_mod = 1.0 - math.exp(-gamma_t) * math.cos(self.c.PI * t_n)
+        
+        # Angular momentum projection
+        angular_factor = phi_hat
+        
+        return dipole_strength * time_mod * angular_factor
+    
+    def compute_dipole_sum(self, dipoles: list, gamma_t: float, t_n: float = 0.0) -> float:
+        """
+        Sum contributions from multiple magnetic dipoles.
+        
+        Parameters:
+        -----------
+        dipoles : list of dict
+            Each dict contains: {'mu': float, 'r': float, 'phi_hat': float}
+        gamma_t : float
+            Global time decay parameter
+        t_n : float
+            Normalized time
+            
+        Returns:
+        --------
+        float : Total dipole field summed over all sources
+        """
+        total = 0.0
+        for dipole in dipoles:
+            mu = dipole.get('mu', 0.0)
+            r = dipole.get('r', 1.0)
+            phi_hat = dipole.get('phi_hat', 1.0)
+            total += self.compute_dipole_term(mu, r, gamma_t, t_n, phi_hat)
+        
+        return total
+    
+    def compute_Um(self, dipoles: list, gamma_t: float, P_SCm: float, 
+                   E_react: float, f_Heav: float, f_quasi: float = 0.0, 
+                   t_n: float = 0.0) -> float:
+        """
+        Compute complete Universal Magnetism with Heaviside enhancement.
+        
+        Parameters:
+        -----------
+        dipoles : list of dict
+            Magnetic dipole sources, each: {'mu': A·m², 'r': m, 'phi_hat': float}
+        gamma_t : float
+            Time decay parameter (dimensionless)
+        P_SCm : float
+            Superconducting magnetic pressure (Pa), typical 1e-12 to 1e-8 Pa
+        E_react : float
+            Energy reactivity factor (dimensionless), typical 0.1-10
+        f_Heav : float
+            Heaviside frequency (Hz), typical 1e13 Hz for LENR
+        f_quasi : float
+            Quasi-particle frequency (Hz), typical 1e12 Hz
+        t_n : float
+            Normalized time 0-1
+            
+        Returns:
+        --------
+        float : Um in Teslas × meters (T·m) or equivalent magnetic force units
+        """
+        # Dipole field summation
+        dipole_sum = self.compute_dipole_sum(dipoles, gamma_t, t_n)
+        
+        # Superconducting pressure scaling
+        pressure_factor = P_SCm
+        
+        # Energy reactivity (coupling efficiency)
+        reactivity_factor = E_react
+        
+        # **CRITICAL: Heaviside 10^13 enhancement for LENR**
+        # This represents ultra-high-frequency magnetic oscillations in neutron
+        # drop catalyzed reactions (Widom-Larsen theory)
+        heaviside_enhancement = 1.0 + (1e13 * f_Heav)
+        
+        # Quasi-particle correction (typically small)
+        quasi_enhancement = 1.0 + f_quasi
+        
+        # Complete Um equation
+        Um = (dipole_sum * pressure_factor * reactivity_factor * 
+              heaviside_enhancement * quasi_enhancement)
+        
+        return Um
+    
+    def compute_Um_with_metadata(self, dipoles: list, gamma_t: float, P_SCm: float,
+                                  E_react: float, f_Heav: float, f_quasi: float = 0.0,
+                                  t_n: float = 0.0) -> Dict:
+        """
+        Compute Um with full diagnostic metadata.
+        
+        Returns dictionary with Um value and all component factors.
+        """
+        dipole_sum = self.compute_dipole_sum(dipoles, gamma_t, t_n)
+        heaviside_enhancement = 1.0 + (1e13 * f_Heav)
+        quasi_enhancement = 1.0 + f_quasi
+        
+        Um = (dipole_sum * P_SCm * E_react * heaviside_enhancement * quasi_enhancement)
+        
+        return {
+            'Um_total': Um,
+            'dipole_sum': dipole_sum,
+            'P_SCm': P_SCm,
+            'E_react': E_react,
+            'f_Heav_Hz': f_Heav,
+            'heaviside_enhancement': heaviside_enhancement,
+            'f_quasi_Hz': f_quasi,
+            'quasi_enhancement': quasi_enhancement,
+            'gamma_t': gamma_t,
+            't_n': t_n,
+            'num_dipoles': len(dipoles),
+            'equation': 'Um = Σ[(μ_j/r_j) × (1-e^{-γt}cos(πt_n)) × φ̂_j] × P_SCm × E_react × (1+10^13·f_Heav) × (1+f_quasi)',
+            'theory': 'Widom-Larsen LENR with Heaviside 10^13 enhancement',
+            'note': '10^13 factor represents ultra-high-frequency magnetic oscillations in neutron-catalyzed reactions'
+        }
+    
+    def compute_LENR_regime(self, mu_magnetar: float = 1e30, r: float = 1e3,
+                            gamma_t: float = 1.0) -> Dict:
+        """
+        Preset calculation for LENR regime (magnetar-like fields).
+        
+        Typical parameters for Low-Energy Nuclear Reactions where strong
+        magnetic fields catalyze neutron formation and nuclear transmutation.
+        
+        Parameters:
+        -----------
+        mu_magnetar : float
+            Magnetar-strength magnetic moment (A·m²), default 1e30
+        r : float
+            Characteristic distance (m), default 1 km
+        gamma_t : float
+            Time decay, default 1.0
+            
+        Returns:
+        --------
+        Dict : Complete Um calculation with LENR-specific parameters
+        """
+        dipoles = [{'mu': mu_magnetar, 'r': r, 'phi_hat': 1.0}]
+        
+        # LENR-specific parameters
+        P_SCm = 1e-10  # Strong superconducting pressure (Pa)
+        E_react = 5.0  # High energy reactivity
+        f_Heav = 1.0   # Normalized Heaviside (actual enhancement is 10^13)
+        f_quasi = 1e12 # THz quasi-particle frequencies
+        
+        return self.compute_Um_with_metadata(dipoles, gamma_t, P_SCm, E_react, 
+                                              f_Heav, f_quasi, t_n=0.0)
+
+
+# ============================================================================
+# 3B. AETHER METRIC TENSOR AND UNIFIED FIELD EQUATION
+# ============================================================================
+
+class AetherMetricTensor:
+    """
+    Aether metric tensor A^{μν} for unified field theory.
+    
+    From Grok Thread 98b2e77d - Extends UQFF with covariant Aether geometry.
+    
+    The Aether metric represents spacetime geometry corrections from Universal
+    Aether (UA) and Superconducting Magnetic (SCm) vacuum duality. In UQFF,
+    spacetime is not empty but filled with plasmatic Aether that modulates
+    gravitational and electromagnetic field propagation.
+    
+    Tensor structure (4×4 symmetric):
+    
+        ⎡ A⁰⁰  A⁰¹  A⁰²  A⁰³ ⎤
+    A = ⎢ A¹⁰  A¹¹  A¹²  A¹³ ⎥
+        ⎢ A²⁰  A²¹  A²²  A²³ ⎥
+        ⎣ A³⁰  A³¹  A³²  A³³ ⎦
+    
+    Diagonal elements: temporal (A⁰⁰) and spatial (A¹¹, A²², A³³) metric
+    Off-diagonal: mixed spacetime couplings from frame-dragging, rotation
+    
+    Physical interpretation:
+    - A⁰⁰: Time dilation from Aether density
+    - A^ii (i=1,2,3): Spatial metric from vacuum pressure
+    - A⁰^i: Gravitomagnetic frame-dragging
+    """
+    
+    def __init__(self):
+        self.c = UQFFConstants()
+    
+    def compute_temporal_component(self, rho_UA: float, rho_SCm: float, 
+                                    r: float, M: float) -> float:
+        """
+        Compute A⁰⁰ (temporal metric component).
+        
+        A⁰⁰ = 1 - 2GM/(c²r) × (ρ_UA / ρ_SCm)^(1/2)
+        
+        Represents time dilation modulated by Aether density ratio.
+        
+        Parameters:
+        -----------
+        rho_UA : float
+            Universal Aether density (kg/m³)
+        rho_SCm : float
+            Superconducting magnetic vacuum density (kg/m³)
+        r : float
+            Distance from source (m)
+        M : float
+            Source mass (kg)
+            
+        Returns:
+        --------
+        float : A⁰⁰ metric component (dimensionless)
+        """
+        if r == 0 or rho_SCm == 0:
+            return 1.0
+        
+        G = 6.674e-11  # Gravitational constant
+        c = self.c.c_light
+        
+        # Schwarzschild factor
+        schwarzschild = 2 * G * M / (c**2 * r)
+        
+        # Aether density modulation
+        aether_ratio = math.sqrt(rho_UA / rho_SCm)
+        
+        A00 = 1.0 - schwarzschild * aether_ratio
+        return A00
+    
+    def compute_spatial_component(self, rho_UA: float, rho_SCm: float, 
+                                   r: float, M: float, direction: int = 1) -> float:
+        """
+        Compute A^ii (spatial metric components, i=1,2,3).
+        
+        A^ii = 1 + 2GM/(c²r) × (ρ_SCm / ρ_UA)^(1/2)
+        
+        Spatial metric expansion from vacuum pressure resistance.
+        
+        Parameters:
+        -----------
+        rho_UA, rho_SCm : float
+            Vacuum densities (kg/m³)
+        r : float
+            Distance (m)
+        M : float
+            Mass (kg)
+        direction : int
+            Spatial direction (1, 2, or 3 for x, y, z)
+            
+        Returns:
+        --------
+        float : A^ii metric component (dimensionless)
+        """
+        if r == 0 or rho_UA == 0:
+            return 1.0
+        
+        G = 6.674e-11
+        c = self.c.c_light
+        
+        schwarzschild = 2 * G * M / (c**2 * r)
+        
+        # Inverse Aether ratio for spatial expansion
+        aether_ratio = math.sqrt(rho_SCm / rho_UA)
+        
+        Aii = 1.0 + schwarzschild * aether_ratio
+        return Aii
+    
+    def compute_frame_dragging(self, J: float, r: float, theta: float) -> float:
+        """
+        Compute A⁰^i (frame-dragging / gravitomagnetic components).
+        
+        A⁰^i ≈ (2GJ sin²θ) / (c r²) × (ρ_UA + ρ_SCm) / (2 ρ_mean)
+        
+        Represents spacetime rotation from angular momentum (Lense-Thirring effect)
+        modulated by Aether.
+        
+        Parameters:
+        -----------
+        J : float
+            Angular momentum (kg·m²/s)
+        r : float
+            Distance (m)
+        theta : float
+            Polar angle (radians), 0=pole, π/2=equator
+            
+        Returns:
+        --------
+        float : A⁰^i off-diagonal component (dimensionless)
+        """
+        if r == 0:
+            return 0.0
+        
+        G = 6.674e-11
+        c = self.c.c_light
+        
+        # Lense-Thirring frame dragging
+        frame_drag = (2 * G * J * math.sin(theta)**2) / (c * r**2)
+        
+        # Aether symmetrization
+        aether_factor = (self.c.rho_vac_UA + self.c.rho_vac_SCm) / (2 * self.c.rho_vac_UA)
+        
+        A0i = frame_drag * aether_factor
+        return A0i
+    
+    def compute_metric_determinant(self, A00: float, A11: float, A22: float, A33: float) -> float:
+        """
+        Compute determinant of diagonal metric (simplified).
+        
+        det(A) ≈ A⁰⁰ × A¹¹ × A²² × A³³ (for diagonal-dominant metric)
+        
+        Used for volume element in curved spacetime integrals.
+        """
+        det_A = A00 * A11 * A22 * A33
+        return det_A
+    
+    def compute_full_metric_tensor(self, M: float, J: float, r: float, 
+                                     theta: float = math.pi/2) -> Dict:
+        """
+        Compute complete 4×4 Aether metric tensor.
+        
+        Parameters:
+        -----------
+        M : float
+            Mass (kg)
+        J : float
+            Angular momentum (kg·m²/s)
+        r : float
+            Distance (m)
+        theta : float
+            Polar angle (radians), default π/2 (equatorial plane)
+            
+        Returns:
+        --------
+        Dict : Full metric tensor with components and diagnostics
+        """
+        rho_UA = self.c.rho_vac_UA
+        rho_SCm = self.c.rho_vac_SCm
+        
+        # Diagonal components
+        A00 = self.compute_temporal_component(rho_UA, rho_SCm, r, M)
+        A11 = self.compute_spatial_component(rho_UA, rho_SCm, r, M, 1)
+        A22 = self.compute_spatial_component(rho_UA, rho_SCm, r, M, 2)
+        A33 = self.compute_spatial_component(rho_UA, rho_SCm, r, M, 3)
+        
+        # Off-diagonal (frame-dragging)
+        A01 = self.compute_frame_dragging(J, r, theta)
+        
+        # Determinant
+        det_A = self.compute_metric_determinant(A00, A11, A22, A33)
+        
+        return {
+            'A00_temporal': A00,
+            'A11_spatial_x': A11,
+            'A22_spatial_y': A22,
+            'A33_spatial_z': A33,
+            'A01_frame_drag': A01,
+            'determinant': det_A,
+            'M_kg': M,
+            'J_angular_momentum': J,
+            'r_m': r,
+            'theta_rad': theta,
+            'rho_UA': rho_UA,
+            'rho_SCm': rho_SCm,
+            'equation': 'A^{μν} = Aether-modulated spacetime metric',
+            'note': 'Extends Schwarzschild metric with UQFF vacuum duality'
+        }
+
+
+class UnifiedFieldCalculator:
+    """
+    Complete Unified Field Equation integrating all UQFF components.
+    
+    F_U = Σ[k_i × Ug_i - Ub_i] + Um + A^{μν}
+    
+    where:
+    - Ug_i: Gravity terms (Ug1-Ug4 from magnetic, charge, string, vacuum)
+    - Ub_i: Buoyancy terms (F_UBii variants)
+    - Um: Universal magnetism with LENR enhancement
+    - A^{μν}: Aether metric tensor contribution
+    - k_i: Coupling constants
+    
+    This is the master equation unifying gravity, electromagnetism, 
+    buoyancy, and Aether geometry in UQFF framework.
+    """
+    
+    def __init__(self):
+        self.c = UQFFConstants()
+        self.aether_metric = AetherMetricTensor()
+        self.um_calc = UniversalMagnetismCalculator()
+    
+    def compute_Ug_sum(self, Ug1: float, Ug2: float, Ug3: float, Ug4: float,
+                       k1: float = 1.0, k2: float = 1.0, k3: float = 1.0, k4: float = 1.0) -> float:
+        """
+        Compute weighted sum of gravity terms.
+        
+        Σ[k_i × Ug_i] = k1×Ug1 + k2×Ug2 + k3×Ug3 + k4×Ug4
+        
+        Parameters:
+        -----------
+        Ug1, Ug2, Ug3, Ug4 : float
+            Individual gravity components (m/s²)
+        k1, k2, k3, k4 : float
+            Coupling constants (dimensionless), default 1.0
+        """
+        return k1*Ug1 + k2*Ug2 + k3*Ug3 + k4*Ug4
+    
+    def compute_Ub_sum(self, buoyancy_terms: list) -> float:
+        """
+        Sum all buoyancy contributions.
+        
+        Σ[Ub_i] = sum of all F_UBii variants
+        
+        Parameters:
+        -----------
+        buoyancy_terms : list of float
+            Individual buoyancy forces (N)
+        """
+        return sum(buoyancy_terms)
+    
+    def compute_aether_contribution(self, M: float, J: float, r: float, 
+                                     theta: float = math.pi/2) -> float:
+        """
+        Compute effective force from Aether metric curvature.
+        
+        F_Aether ≈ -c² × ∇(A⁰⁰) for weak fields
+        
+        Parameters:
+        -----------
+        M, J, r, theta : float
+            Mass, angular momentum, distance, angle (see AetherMetricTensor)
+            
+        Returns:
+        --------
+        float : Aether metric force contribution (m/s² acceleration units)
+        """
+        metric = self.aether_metric.compute_full_metric_tensor(M, J, r, theta)
+        
+        # Gradient approximation: ∂A⁰⁰/∂r ≈ (1 - A⁰⁰)/r
+        A00 = metric['A00_temporal']
+        grad_factor = (1.0 - A00) / r if r > 0 else 0.0
+        
+        # Force from metric gradient
+        F_aether = -self.c.c_light**2 * grad_factor
+        
+        return F_aether
+    
+    def compute_F_U(self, Ug_terms: Dict, buoyancy_terms: list, 
+                    dipoles: list, gamma_t: float, P_SCm: float, E_react: float,
+                    f_Heav: float, M: float, J: float, r: float,
+                    k_couplings: Dict = None) -> Dict:
+        """
+        Compute complete Unified Field F_U.
+        
+        F_U = Σ[k_i × Ug_i - Ub_i] + Um + A^{μν}
+        
+        Parameters:
+        -----------
+        Ug_terms : dict
+            Gravity components: {'Ug1': float, 'Ug2': float, 'Ug3': float, 'Ug4': float}
+        buoyancy_terms : list of float
+            All buoyancy forces (N)
+        dipoles : list of dict
+            Magnetic dipoles for Um calculation
+        gamma_t : float
+            Time decay parameter
+        P_SCm, E_react, f_Heav : float
+            Um equation parameters
+        M, J, r : float
+            Mass, angular momentum, distance for Aether metric
+        k_couplings : dict, optional
+            Coupling constants: {'k1': float, 'k2': float, 'k3': float, 'k4': float}
+            
+        Returns:
+        --------
+        Dict : Complete unified field calculation with all components
+        """
+        # Default couplings
+        if k_couplings is None:
+            k_couplings = {'k1': 1.0, 'k2': 1.0, 'k3': 1.0, 'k4': 1.0}
+        
+        # 1. Gravity sum
+        Ug_sum = self.compute_Ug_sum(
+            Ug_terms.get('Ug1', 0.0), Ug_terms.get('Ug2', 0.0),
+            Ug_terms.get('Ug3', 0.0), Ug_terms.get('Ug4', 0.0),
+            k_couplings.get('k1', 1.0), k_couplings.get('k2', 1.0),
+            k_couplings.get('k3', 1.0), k_couplings.get('k4', 1.0)
+        )
+        
+        # 2. Buoyancy sum
+        Ub_sum = self.compute_Ub_sum(buoyancy_terms)
+        
+        # 3. Universal magnetism
+        Um = self.um_calc.compute_Um(dipoles, gamma_t, P_SCm, E_react, f_Heav)
+        
+        # 4. Aether metric contribution
+        F_aether = self.compute_aether_contribution(M, J, r)
+        
+        # 5. Complete unified field
+        F_U = Ug_sum - Ub_sum + Um + F_aether
+        
+        return {
+            'F_U_total': F_U,
+            'Ug_sum': Ug_sum,
+            'Ub_sum': Ub_sum,
+            'Um': Um,
+            'F_aether': F_aether,
+            'Ug_terms': Ug_terms,
+            'num_buoyancy_terms': len(buoyancy_terms),
+            'num_dipoles': len(dipoles),
+            'k_couplings': k_couplings,
+            'equation': 'F_U = Σ[k_i × Ug_i - Ub_i] + Um + A^{μν}',
+            'theory': 'UQFF Complete Unified Field',
+            'components': {
+                'gravity': 'Ug1-4 (magnetic, charge, string, vacuum)',
+                'buoyancy': 'F_UBii variants (17 phenomenologies)',
+                'magnetism': 'Um with Heaviside 10^13 LENR enhancement',
+                'spacetime': 'A^{μν} Aether metric tensor'
+            }
+        }
+
+
+
+# ============================================================================
+# 4. VARIABLE LIGHT SPEED WITH VACUUM FLUCTUATIONS
 # ============================================================================
 
 class VariableLightSpeedCalculator:

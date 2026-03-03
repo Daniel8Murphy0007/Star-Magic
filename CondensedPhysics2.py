@@ -43,6 +43,9 @@ from GrokThreadUQFFExtensions import (
     SystemParams,
     ResonanceGravityCalculator,
     AsymmetricalCapacitorCalculator,
+    UniversalMagnetismCalculator,
+    AetherMetricTensor,
+    UnifiedFieldCalculator,
     VariableLightSpeedCalculator,
     FractalTimeCalculator,
     VacuumFluctuationProbability,
@@ -50,6 +53,29 @@ from GrokThreadUQFFExtensions import (
     CompressedGravityCalculator,
     BuoyancyForceProofCalculator,
     GrokThreadUQFFMasterCalculator,
+)
+
+# Import Buoyancy Proof Variants (March 3, 2026 - Grok Thread 98b2e77d)
+from BuoyancyProofVariants import (
+    UQFFBuoyancyConstants,
+    FUBiiVirialXray,
+    FUBiiTerminalVelocity,
+    FUBiiIonizationParameter,
+    FUBiiEnergyCoupling,
+    FUBiiOrbitalDecay,
+    FUBiiKilonovaPeakLuminosity,
+    FUBiiFermiAcceleration,
+    FUBiiKneeEnergyCR,
+    FUBiiWHIMTemperature,
+    FUBiiPressSchechterHaloMass,
+    FUBiiStarFormationEfficiency,
+    FUBiiHawkingTemperature,
+    FUBiiBounceDensity,
+    FUBiiRocheLobeOverflow,
+    FUBiiEntanglementEntropy,
+    FUBiiDecoherenceTime,
+    FUBiiRadioLobeDynamics,
+    BuoyancyProofVariantsCalculator,
 )
 
 # NumPy 2.0 compatibility
