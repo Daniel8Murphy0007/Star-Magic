@@ -4956,6 +4956,352 @@ private:
 
 
 // ============================================================================
+// SESSION LOGGER WIDGET - Query History & Recall (Tab 9)
+// ============================================================================
+
+/**
+ * @brief Session Logger - UQFF Query History and Recall System
+ * 
+ * Displays calculation history from CondensedPhysics_OutputData.py.
+ * Users can recall previous UQFF queries and view full equation solutions.
+ * 
+ * Data Flow:
+ *   source2.cpp → QCalc.py → OUTPUT_STORE (CondensedPhysics_OutputData.py)
+ *                               ↓
+ *   SessionLogWidget.refresh() → Read JSON → Display in UI
+ * 
+ * Features:
+ * - Recent queries list (last 50 queries)
+ * - Object name filtering
+ * - Full equation solution display
+ * - Recall functionality for re-running queries
+ * - Export query history to file
+ * 
+ * Reserved for Tab 9 (index 8) exclusively at Source2 startup.
+ */
+class SessionLogWidget : public QWidget {
+    Q_OBJECT
+    
+public:
+    SessionLogWidget(QWidget* parent = nullptr) : QWidget(parent) {
+        setupUI();
+        refreshQueryHistory();
+    }
+    
+private slots:
+    void refreshQueryHistory() {
+        queryList->clear();
+        
+        // Call Python script to export OUTPUT_STORE to JSON
+        QProcess process;
+        QString pythonCmd = "python";
+        QString scriptPath = "export_output_data.py";  // We'll create this helper
+        
+        process.start(pythonCmd, QStringList() << scriptPath);
+        if (!process.waitForFinished(3000)) {
+            statusLabel->setText("⚠️ Failed to load query history (timeout)");
+            return;
+        }
+        
+        if (process.exitCode() != 0) {
+            statusLabel->setText("⚠️ Error loading query history");
+            return;
+        }
+        
+        // Read exported JSON
+        QFile jsonFile("query_history.json");
+        if (!jsonFile.open(QIODevice::ReadOnly)) {
+            statusLabel->setText("⚠️ No query history found");
+            return;
+        }
+        
+        QByteArray jsonData = jsonFile.readAll();
+        jsonFile.close();
+        
+        QJsonDocument doc = QJsonDocument::fromJson(jsonData);
+        QJsonObject root = doc.object();
+        QJsonArray history = root["query_history"].toArray();
+        QJsonObject results = root["results"].toObject();
+        
+        // Populate list (most recent first)
+        for (int i = history.size() - 1; i >= 0 && i >= history.size() - 50; --i) {
+            QString queryId = history[i].toString();
+            if (results.contains(queryId)) {
+                QJsonObject result = results[queryId].toObject();
+                QString objectName = result["object_name"].toString();
+                QString timestamp = result["timestamp"].toString();
+                
+                // Parse timestamp for display
+                QDateTime dt = QDateTime::fromString(timestamp, Qt::ISODate);
+                QString displayTime = dt.toString("yyyy-MM-dd HH:mm:ss");
+                
+                // Create list item
+                QListWidgetItem* item = new QListWidgetItem();
+                item->setText(QString("📅 %1 | 🌌 %2").arg(displayTime, objectName));
+                item->setData(Qt::UserRole, queryId);  // Store query_id for recall
+                
+                // Color coding based on object type
+                if (objectName.contains("SGR", Qt::CaseInsensitive) || 
+                    objectName.contains("Magnetar", Qt::CaseInsensitive)) {
+                    item->setForeground(QColor(255, 100, 100));  // Red for magnetars
+                } else if (objectName.contains("A*") || objectName.contains("SMBH")) {
+                    item->setForeground(QColor(150, 100, 255));  // Purple for black holes
+                } else if (objectName.contains("NGC") || objectName.contains("M87")) {
+                    item->setForeground(QColor(100, 200, 255));  // Blue for galaxies
+                } else {
+                    item->setForeground(QColor(200, 200, 200));  // Gray for others
+                }
+                
+                queryList->addItem(item);
+            }
+        }
+        
+        statusLabel->setText(QString("✓ Loaded %1 recent queries").arg(queryList->count()));
+    }
+    
+    void onQuerySelected(QListWidgetItem* item) {
+        if (!item) return;
+        
+        QString queryId = item->data(Qt::UserRole).toString();
+        
+        // Read full result from JSON
+        QFile jsonFile("query_history.json");
+        if (!jsonFile.open(QIODevice::ReadOnly)) {
+            detailDisplay->setText("⚠️ Error loading result details");
+            return;
+        }
+        
+        QByteArray jsonData = jsonFile.readAll();
+        jsonFile.close();
+        
+        QJsonDocument doc = QJsonDocument::fromJson(jsonData);
+        QJsonObject root = doc.object();
+        QJsonObject results = root["results"].toObject();
+        
+        if (!results.contains(queryId)) {
+            detailDisplay->setText("⚠️ Query details not found");
+            return;
+        }
+        
+        QJsonObject result = results[queryId].toObject();
+        
+        // Format detailed output
+        QString output;
+        output += "═══════════════════════════════════════════════════════════\n";
+        output += "                UQFF CALCULATION RESULT\n";
+        output += "═══════════════════════════════════════════════════════════\n\n";
+        
+        output += QString("Object: %1\n").arg(result["object_name"].toString());
+        output += QString("Query ID: %1\n").arg(result["query_id"].toString());
+        output += QString("Timestamp: %1\n\n").arg(result["timestamp"].toString());
+        
+        // Input parameters
+        output += "───────────────────────────────────────────────────────────\n";
+        output += "INPUT PARAMETERS:\n";
+        output += "───────────────────────────────────────────────────────────\n";
+        QJsonObject inputs = result["input_dataset"].toObject();
+        for (auto it = inputs.begin(); it != inputs.end(); ++it) {
+            output += QString("  %1 = %2\n").arg(it.key(), it.value().toVariant().toString());
+        }
+        output += "\n";
+        
+        // Primary equations
+        output += "───────────────────────────────────────────────────────────\n";
+        output += "PRIMARY EQUATIONS (Long-Form Solutions):\n";
+        output += "───────────────────────────────────────────────────────────\n";
+        QJsonArray equations = result["primary_equations"].toArray();
+        for (const QJsonValue& eqVal : equations) {
+            QJsonObject eq = eqVal.toObject();
+            output += QString("\n%1:\n").arg(eq["name"].toString());
+            output += QString("  Formula: %1\n").arg(eq["symbolic"].toString());
+            output += QString("  Value: %1 %2\n").arg(eq["value"].toDouble(), 0, 'e', 6).arg(eq["units"].toString());
+            
+            // Breakdown if available
+            if (eq.contains("breakdown") && !eq["breakdown"].toString().isEmpty()) {
+                output += QString("  Breakdown:\n%1\n").arg(eq["breakdown"].toString());
+            }
+        }
+        output += "\n";
+        
+        // Available equations
+        output += "───────────────────────────────────────────────────────────\n";
+        output += "OTHER AVAILABLE EQUATIONS FOR THIS QUERY:\n";
+        output += "───────────────────────────────────────────────────────────\n";
+        QJsonArray available = result["available_equations"].toArray();
+        int col = 0;
+        for (const QJsonValue& eqName : available) {
+            output += QString("%-30s").arg(eqName.toString());
+            if (++col % 2 == 0) output += "\n";
+        }
+        if (col % 2 != 0) output += "\n";
+        
+        detailDisplay->setText(output);
+    }
+    
+    void filterByObject() {
+        QString filter = filterInput->text().trimmed();
+        
+        if (filter.isEmpty()) {
+            // Show all
+            for (int i = 0; i < queryList->count(); ++i) {
+                queryList->item(i)->setHidden(false);
+            }
+            statusLabel->setText(QString("Showing all %1 queries").arg(queryList->count()));
+            return;
+        }
+        
+        // Filter by object name
+        int visibleCount = 0;
+        for (int i = 0; i < queryList->count(); ++i) {
+            QListWidgetItem* item = queryList->item(i);
+            QString text = item->text();
+            bool matches = text.contains(filter, Qt::CaseInsensitive);
+            item->setHidden(!matches);
+            if (matches) visibleCount++;
+        }
+        
+        statusLabel->setText(QString("Showing %1 / %2 queries (filtered by: %3)")
+            .arg(visibleCount).arg(queryList->count()).arg(filter));
+    }
+    
+    void exportHistory() {
+        QString filename = QFileDialog::getSaveFileName(
+            this,
+            "Export Query History",
+            QDir::homePath() + "/uqff_query_history_" + QDateTime::currentDateTime().toString("yyyyMMdd_HHmmss") + ".txt",
+            "Text Files (*.txt);;All Files (*)"
+        );
+        
+        if (filename.isEmpty()) return;
+        
+        QFile file(filename);
+        if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QMessageBox::warning(this, "Export Failed", "Could not write to file:\n" + filename);
+            return;
+        }
+        
+        QTextStream out(&file);
+        out << "═══════════════════════════════════════════════════════════════════════\n";
+        out << "                    UQFF QUERY HISTORY EXPORT\n";
+        out << "═══════════════════════════════════════════════════════════════════════\n";
+        out << "Generated: " << QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss") << "\n";
+        out << "Total Queries: " << queryList->count() << "\n\n";
+        
+        for (int i = 0; i < queryList->count(); ++i) {
+            QListWidgetItem* item = queryList->item(i);
+            if (!item->isHidden()) {
+                out << item->text() << "\n";
+            }
+        }
+        
+        file.close();
+        
+        QMessageBox::information(this, "Export Complete", 
+            QString("Query history exported to:\n%1\n\nTotal queries: %2").arg(filename).arg(queryList->count()));
+    }
+    
+private:  // Regular private methods (not slots)
+    void setupUI() {
+        setStyleSheet("background-color: #1A1A2E; color: #FFFFFF;");
+        
+        QVBoxLayout* mainLayout = new QVBoxLayout(this);
+        
+        // ═══════════════════════════════════════════════════════════════════
+        // TITLE HEADER
+        // ═══════════════════════════════════════════════════════════════════
+        QLabel* titleLabel = new QLabel("📋 Session Logger - UQFF Query History", this);
+        titleLabel->setStyleSheet("font-size: 24px; font-weight: bold; color: #00D4FF; padding: 10px;");
+        titleLabel->setAlignment(Qt::AlignCenter);
+        mainLayout->addWidget(titleLabel);
+        
+        // ═══════════════════════════════════════════════════════════════════
+        // TOOLBAR
+        // ═══════════════════════════════════════════════════════════════════
+        QHBoxLayout* toolbarLayout = new QHBoxLayout();
+        
+        QPushButton* refreshBtn = new QPushButton("🔄 Refresh", this);
+        refreshBtn->setStyleSheet("background-color: #4CAF50; color: white; font-weight: bold; padding: 8px 16px; border-radius: 5px;");
+        refreshBtn->setToolTip("Reload query history from CondensedPhysics_OutputData.py");
+        connect(refreshBtn, &QPushButton::clicked, this, &SessionLogWidget::refreshQueryHistory);
+        toolbarLayout->addWidget(refreshBtn);
+        
+        filterInput = new QLineEdit(this);
+        filterInput->setPlaceholderText("Filter by object name (e.g., Sagittarius, NGC, M87)...");
+        filterInput->setStyleSheet("background-color: #2E2E3E; color: #FFFFFF; border: 1px solid #555; padding: 8px; border-radius: 5px;");
+        connect(filterInput, &QLineEdit::textChanged, this, &SessionLogWidget::filterByObject);
+        toolbarLayout->addWidget(filterInput, 1);  // Stretch factor 1
+        
+        QPushButton* exportBtn = new QPushButton("💾 Export", this);
+        exportBtn->setStyleSheet("background-color: #2196F3; color: white; font-weight: bold; padding: 8px 16px; border-radius: 5px;");
+        exportBtn->setToolTip("Export query history to text file");
+        connect(exportBtn, &QPushButton::clicked, this, &SessionLogWidget::exportHistory);
+        toolbarLayout->addWidget(exportBtn);
+        
+        mainLayout->addLayout(toolbarLayout);
+        
+        // ═══════════════════════════════════════════════════════════════════
+        // SPLITTER: Query List | Result Details
+        // ═══════════════════════════════════════════════════════════════════
+        QSplitter* splitter = new QSplitter(Qt::Horizontal, this);
+        
+        // Left: Query List
+        QGroupBox* listGroup = new QGroupBox("Recent Queries (Last 50)", this);
+        listGroup->setStyleSheet(
+            "QGroupBox { font-weight: bold; color: #00D4FF; border: 2px solid #00D4FF; "
+            "border-radius: 5px; margin-top: 10px; padding-top: 15px; }"
+            "QGroupBox::title { subcontrol-origin: margin; left: 10px; padding: 0 5px; }"
+        );
+        QVBoxLayout* listLayout = new QVBoxLayout(listGroup);
+        
+        queryList = new QListWidget(this);
+        queryList->setStyleSheet(
+            "QListWidget { background-color: #0D0D1A; color: #FFFFFF; border: 1px solid #333; "
+            "font-family: monospace; font-size: 12px; }"
+            "QListWidget::item { padding: 8px; border-bottom: 1px solid #222; }"
+            "QListWidget::item:selected { background-color: #4CAF50; color: #FFFFFF; }"
+            "QListWidget::item:hover { background-color: #333; }"
+        );
+        connect(queryList, &QListWidget::itemClicked, this, &SessionLogWidget::onQuerySelected);
+        listLayout->addWidget(queryList);
+        
+        splitter->addWidget(listGroup);
+        
+        // Right: Result Details
+        QGroupBox* detailGroup = new QGroupBox("Query Result Details", this);
+        detailGroup->setStyleSheet(listGroup->styleSheet());
+        QVBoxLayout* detailLayout = new QVBoxLayout(detailGroup);
+        
+        detailDisplay = new QTextEdit(this);
+        detailDisplay->setReadOnly(true);
+        detailDisplay->setStyleSheet(
+            "QTextEdit { background-color: #0D0D1A; color: #00FF00; border: 1px solid #333; "
+            "font-family: 'Courier New', monospace; font-size: 11px; }"
+        );
+        detailDisplay->setText("Select a query from the list to view full results...");
+        detailLayout->addWidget(detailDisplay);
+        
+        splitter->addWidget(detailGroup);
+        splitter->setSizes({400, 800});
+        
+        mainLayout->addWidget(splitter);
+        
+        // ═══════════════════════════════════════════════════════════════════
+        // STATUS BAR
+        // ═══════════════════════════════════════════════════════════════════
+        statusLabel = new QLabel("Ready - Click 🔄 Refresh to load query history", this);
+        statusLabel->setStyleSheet("color: #888; font-style: italic; padding: 5px;");
+        mainLayout->addWidget(statusLabel);
+    }
+    
+    // Member variables
+    QListWidget* queryList;
+    QTextEdit* detailDisplay;
+    QLineEdit* filterInput;
+    QLabel* statusLabel;
+};
+
+
+// ============================================================================
 // GLOBAL VARIABLES - Data shared across the entire application
 // ============================================================================
 

@@ -373,8 +373,8 @@ void InitializeIPCServer() {
     // Optional: Set custom Python path if needed
     // g_ipc_handler->setPythonPath("C:/Python312/python.exe");
     
-    // Optional: Set custom script path
-    // g_ipc_handler->setScriptPath("qcalc_subprocess.py");
+    // Phase 2: Use hybrid QCalc + CP2 router
+    g_ipc_handler->setScriptPath("qcalc_cp2_hybrid.py");
     
     // Create Named Pipe server
     g_pipe_server = std::make_unique<UQFF::NamedPipeServer>("StarMagic_UQFF");
@@ -433,7 +433,7 @@ void InitializeIPCServer() {
     
     qDebug() << "[IPC Server] Initialization complete";
     qDebug() << "[IPC Server] Named Pipe: \\\\.\\pipe\\StarMagic_UQFF";
-    qDebug() << "[IPC Server] Python script: qcalc_subprocess.py";
+    qDebug() << "[IPC Server] Python script: qcalc_cp2_hybrid.py (QCalc + CP2 router)";
     qDebug() << "[IPC Server] Listening for PIPELINE_PROCESS messages...";
 }
 

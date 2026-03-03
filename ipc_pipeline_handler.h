@@ -4,18 +4,22 @@
  * 
  * Implements PIPELINE_PROCESS message handling:
  * 1. Receives PIPELINE_PROCESS message from source2.cpp
- * 2. Calls QCalc.solve() via Python subprocess (qcalc_subprocess.py)
+ * 2. Calls QCalc OR CondensedPhysics2 via Python subprocess (qcalc_cp2_hybrid.py)
  * 3. Returns RESPONSE_DATA with results
  * 
- * NOTE: We use QCalc (not CondensedPhysics) for Phase 0 because:
+ * Phase 2 Enhancement: Intelligent routing
+ * - Standard UQFF queries → QCalc.UnifiedFieldSolver (fast, 920ms)
+ * - Experimental queries → CondensedPhysics2 calculators (advanced physics)
+ * - CP2 triggers: "Orb10-16", "Red Mercury", "Plasmoid", "UFEQFET", etc.
+ * 
+ * Performance comparison:
  * - QCalc: 9,149 lines, imports in 1.09s, subprocess ~920ms
- * - CondensedPhysics: 168,494 lines, imports in 30s+, causes timeouts
- * - Both provide same 8 UQFF Master Equations
- * - QCalc gives 30x speed improvement
+ * - CondensedPhysics: 168,494 lines, imports in 30s+ (not used)
+ * - CondensedPhysics2: 37,354 lines, imports in ~2.5s, specialized calculators
  * 
  * Author: Daniel T. Murphy
- * Date: March 2, 2026
- * Phase: 0 - Unification (IPC Wiring)
+ * Date: March 3, 2026 (Phase 2: CP2 Integration)
+ * Phase: 0 - Unification (IPC Wiring), Phase 2 - Extensions (CP2)
  */
 
 #ifndef IPC_PIPELINE_HANDLER_H
@@ -86,10 +90,10 @@ class IPCPipelineHandler {
 public:
     IPCPipelineHandler() : 
         python_path_("python"),
-        script_path_("qcalc_subprocess.py"),  // Fast: ~920ms (vs CondensedPhysics 30s+)
+        script_path_("qcalc_cp2_hybrid.py"),  // Phase 2: Hybrid QCalc + CP2 router
         default_timeout_ms_(5000)  // Reduced from 30s to 5s (QCalc is fast!)
     {
-        qDebug() << "[IPC Pipeline] Handler initialized (using QCalc)";
+        qDebug() << "[IPC Pipeline] Handler initialized (using QCalc + CP2 hybrid router)";
     }
     
     ~IPCPipelineHandler() {
@@ -143,7 +147,7 @@ public:
     }
     
     /**
-     * @brief Set script path (optional, default "qcalc_subprocess.py")
+     * @brief Set script path (optional, default "qcalc_cp2_hybrid.py")
      */
     void setScriptPath(const QString& path) {
         script_path_ = path;

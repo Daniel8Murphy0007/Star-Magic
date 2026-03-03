@@ -3744,12 +3744,41 @@ class UnifiedFieldSolver:
             'simulation_set': self._build_simulation_set(params, solutions)
         }
         
-        # DATA LAYER INTEGRATION: Save result to OPData
+        # DATA LAYER INTEGRATION: Save result to CondensedPhysics_OutputData.py
         try:
-            # Create global data store if not exists
-            if not hasattr(self, '_data_store'):
-                self._data_store = OutputDataStore()
-            self._data_store.store(result)
+            from CondensedPhysics_OutputData import OUTPUT_STORE, QueryResult, EquationSolution
+            
+            # Convert equations to EquationSolution dataclass format
+            primary_equations = []
+            for eq in equations:
+                eq_solution = EquationSolution(
+                    equation_name=eq.name,
+                    symbolic_form=eq.latex,
+                    numeric_solution=eq.result,
+                    units=eq.unit,
+                    parameters_used=eq.parameters_used,
+                    long_form_breakdown=eq.substituted
+                )
+                primary_equations.append(eq_solution)
+            
+            # Create QueryResult
+            query_result = QueryResult(
+                query_id=query_id,
+                timestamp=timestamp,
+                object_name=params.query_name,
+                input_dataset=params.to_dict(),
+                primary_equations=primary_equations,
+                available_equations=available,
+                simulation_sets=self._build_simulation_set(params, solutions)
+            )
+            
+            # Store in OUTPUT_STORE
+            OUTPUT_STORE.store_result(query_result)
+            result['_storage_success'] = True
+            
+        except ImportError:
+            # CondensedPhysics_OutputData.py not available (development mode)
+            result['_storage_warning'] = "CondensedPhysics_OutputData not imported"
         except Exception as e:
             # Log but don't fail if storage fails
             result['_storage_error'] = f"Failed to save result: {str(e)}"

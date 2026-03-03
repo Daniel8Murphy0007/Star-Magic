@@ -37,6 +37,21 @@ from CondensedPhysics import (
     PHYSICS_FRAMEWORK_AVAILABLE,
 )
 
+# Import Grok Thread UQFF Extensions (March 3, 2026 Integration)
+from GrokThreadUQFFExtensions import (
+    UQFFConstants,
+    SystemParams,
+    ResonanceGravityCalculator,
+    AsymmetricalCapacitorCalculator,
+    VariableLightSpeedCalculator,
+    FractalTimeCalculator,
+    VacuumFluctuationProbability,
+    QuantumLevelEnergiesCalculator,
+    CompressedGravityCalculator,
+    BuoyancyForceProofCalculator,
+    GrokThreadUQFFMasterCalculator,
+)
+
 # NumPy 2.0 compatibility
 if not hasattr(np, 'trapz'):
     np.trapz = np.trapezoid
@@ -37349,5 +37364,23 @@ __all__ = [
     'DistributedNewtonSolverCalculator',
     'PerlinNoiseCalculator',
     'ORB_ANALYSIS_63_CALCULATORS',
+    
+    # ========================================================================
+    # GROK THREAD UQFF EXTENSIONS (March 3, 2026 Integration)
+    # Source: https://x.com/i/grok/share/9c3666463ac14753b4f3bea869caaf01
+    # Complete extraction of unique physics from Grok conversation thread
+    # 8 major categories, 45+ calculation methods, 17 buoyancy proofs
+    # ========================================================================
+    'UQFFConstants',
+    'SystemParams',
+    'ResonanceGravityCalculator',              # 13-term g_res complete
+    'AsymmetricalCapacitorCalculator',         # Open-energy integral (NEW)
+    'VariableLightSpeedCalculator',            # Vacuum fluctuation speed (NEW)
+    'FractalTimeCalculator',                   # Mandelbrot t_qplasma (NEW)
+    'VacuumFluctuationProbability',            # Monte Carlo P(Δv) (NEW)
+    'QuantumLevelEnergiesCalculator',          # 26-layer polynomial (NEW)
+    'CompressedGravityCalculator',             # 8-term g_com enhanced
+    'BuoyancyForceProofCalculator',            # ALL 17 F_U_Bi_i proofs
+    'GrokThreadUQFFMasterCalculator',          # Unified master interface
 
 ]
