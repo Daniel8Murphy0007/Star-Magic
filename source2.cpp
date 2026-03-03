@@ -503,6 +503,146 @@ inline PythonResult ProcessPythonResult(const QByteArray& stdout_data,
 }
 
 // ============================================================================
+// IPC CLIENT (Phase 0 - Unification)
+// ============================================================================
+
+/**
+ * @class IPCClient
+ * @brief IPC client to send calculation requests to backend
+ * 
+ * Connects to source2(HEAD PROGRAM).cpp backend via Named Pipe and
+ * sends PIPELINE_PROCESS messages with physics parameters.
+ * Backend spawns qcalc_subprocess.py to compute UQFF equations.
+ * 
+ * Usage:
+ *   IPCClient client;
+ *   QJsonObject params;
+ *   params["M"] = 2.0;  // Solar masses
+ *   params["r"] = 1e6;  // Meters
+ *   QJsonObject result = client.sendPipelineRequest("SGR 1745+29", params);
+ *   if (result["success"].toBool()) {
+ *       // Process UQFF equations from result["long_form_equations"]
+ *   }
+ */
+class IPCClient {
+public:
+    IPCClient(const QString& pipeName = "StarMagic_UQFF") : pipe_name_(pipeName) {}
+    
+    /**
+     * @brief Send PIPELINE_PROCESS request to backend
+     * @param objectName Name of astronomical object
+     * @param params QJsonObject with M, r, z, B, T, SFR (all optional)
+     * @return QJsonObject with UQFF calculation results or error
+     */
+    QJsonObject sendPipelineRequest(const QString& objectName, const QJsonObject& params) {
+        QJsonObject request;
+        request["type"] = "PIPELINE_PROCESS";
+        request["object_name"] = objectName;
+        request["callback_id"] = QUuid::createUuid().toString();
+        request["timeout_ms"] = 5000;  // 5 second timeout (QCalc is fast!)
+        
+        // Add optional parameters
+        if (params.contains("M")) request["M"] = params["M"];
+        if (params.contains("r")) request["r"] = params["r"];
+        if (params.contains("z")) request["z"] = params["z"];
+        if (params.contains("B")) request["B"] = params["B"];
+        if (params.contains("T")) request["T"] = params["T"];
+        if (params.contains("SFR")) request["SFR"] = params["SFR"];
+        
+        qDebug() << "[IPC Client] Sending request for:" << objectName;
+        
+#ifdef _WIN32
+        // Windows Named Pipe client
+        QString fullPipeName = QString("\\\\.\\pipe\\") + pipe_name_;
+        
+        HANDLE hPipe = CreateFileW(
+            (LPCWSTR)fullPipeName.utf16(),
+            GENERIC_READ | GENERIC_WRITE,
+            0,
+            NULL,
+            OPEN_EXISTING,
+            0,
+            NULL
+        );
+        
+        if (hPipe == INVALID_HANDLE_VALUE) {
+            DWORD error = GetLastError();
+            qWarning() << "[IPC Client] Failed to connect to pipe. Error:" << error;
+            if (error == ERROR_FILE_NOT_FOUND) {
+                qWarning() << "[IPC Client] Backend not running? Start source2(HEAD PROGRAM).exe first";
+            }
+            QJsonObject errorResponse;
+            errorResponse["success"] = false;
+            errorResponse["error"] = "Failed to connect to backend (pipe not available)";
+            return errorResponse;
+        }
+        
+        // Send request
+        QJsonDocument requestDoc(request);
+        QByteArray requestData = requestDoc.toJson(QJsonDocument::Compact);
+        DWORD bytesWritten = 0;
+        
+        BOOL success = WriteFile(hPipe, requestData.data(), requestData.size(), &bytesWritten, NULL);
+        
+        if (!success) {
+            qWarning() << "[IPC Client] WriteFile failed:" << GetLastError();
+            CloseHandle(hPipe);
+            QJsonObject errorResponse;
+            errorResponse["success"] = false;
+            errorResponse["error"] = "Failed to write to pipe";
+            return errorResponse;
+        }
+        
+        qDebug() << "[IPC Client] Sent" << bytesWritten << "bytes";
+        
+        // Read response
+        const size_t BUFFER_SIZE = 65536;  // 64KB buffer
+        char buffer[BUFFER_SIZE];
+        DWORD bytesRead = 0;
+        
+        success = ReadFile(hPipe, buffer, BUFFER_SIZE - 1, &bytesRead, NULL);
+        
+        CloseHandle(hPipe);
+        
+        if (!success) {
+            qWarning() << "[IPC Client] ReadFile failed:" << GetLastError();
+            QJsonObject errorResponse;
+            errorResponse["success"] = false;
+            errorResponse["error"] = "Failed to read from pipe";
+            return errorResponse;
+        }
+        
+        buffer[bytesRead] = '\0';
+        
+        qDebug() << "[IPC Client] Received" << bytesRead << "bytes";
+        
+        // Parse response
+        QJsonDocument responseDoc = QJsonDocument::fromJson(QByteArray(buffer, bytesRead));
+        
+        if (responseDoc.isNull() || !responseDoc.isObject()) {
+            qWarning() << "[IPC Client] Invalid JSON response";
+            QJsonObject errorResponse;
+            errorResponse["success"] = false;
+            errorResponse["error"] = "Invalid JSON response from backend";
+            return errorResponse;
+        }
+        
+        return responseDoc.object();
+#else
+        // POSIX implementation placeholder
+        qWarning() << "[IPC Client] POSIX Named Pipes not yet implemented";
+        QJsonObject errorResponse;
+        errorResponse["success"] = false;
+        errorResponse["error"] = "IPC not yet implemented for POSIX";
+        return errorResponse;
+#endif
+    }
+    
+private:
+    QString pipe_name_;
+};
+
+// ============================================================================
 // CALCULATOR UI COMPONENTS (Integrated from clone_1958048552090800339.txt)
 // UI interaction classes for Scientific Calculator workflow
 // ============================================================================
@@ -15482,52 +15622,140 @@ MainWindow::~MainWindow()
 // UQFF PHYSICS INTEGRATION METHODS
 // ============================================================================
 
-// computeUQFF - Executes MAIN_1_CoAnQi physics computation via Python wrapper
+// computeUQFF - Executes UQFF physics computation via IPC pipeline
 // Parameters:
 //   systemName - Name of astrophysical system to compute (e.g., "Sagittarius A*")
-// Purpose: Calls CoAnQi_Wrapper.py which invokes MAIN_1_CoAnQi.exe --batch
+// Purpose: Sends computation request to backend server via Named Pipe IPC
+//          Backend calls qcalc_subprocess.py with QCalc.UnifiedFieldSolver
+// Phase 0C Integration: Modernized from Python wrapper to IPC architecture
 void MainWindow::computeUQFF(const QString& systemName) {
-    // Create QProcess to run Python wrapper
-    QProcess* process = new QProcess(this);
-    process->setWorkingDirectory(QCoreApplication::applicationDirPath());
+    // ========================================================================
+    // STEP 1: Load physics parameters from most recent bodies_*.csv
+    // ========================================================================
+    std::vector<UQFF::CelestialBodyCSV> bodies;
+    try {
+        // Load latest CSV generated by APIFetch.py
+        bodies = UQFF::CSVBodyReader::read_latest(".");
+        
+        if (bodies.empty()) {
+            QMessageBox::warning(this, "No Data", 
+                QString("No bodies_*.csv found for %1.\n\n"
+                        "The system will first run APIFetch.py to gather data,\n"
+                        "then you can compute UQFF physics.")
+                       .arg(systemName));
+            
+            // TODO: Auto-trigger APIFetch.py here in future enhancement
+            return;
+        }
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, "CSV Load Error",
+            QString("Failed to load celestial body data:\n%1\n\n"
+                    "Ensure APIFetch.py has generated bodies_*.csv")
+                   .arg(e.what()));
+        return;
+    }
     
-    // Build arguments list (QStringList automatically handles spaces in arguments)
-    QStringList args;
-    args << "CoAnQi_Wrapper.py" << systemName << "--json";
+    // ========================================================================
+    // STEP 2: Find matching body by name (case-insensitive search)
+    // ========================================================================
+    const UQFF::CelestialBodyCSV* targetBody = nullptr;
+    std::string searchName = systemName.toLower().toStdString();
     
-    // Show status message
+    for (const auto& body : bodies) {
+        std::string bodyName = body.name;
+        std::transform(bodyName.begin(), bodyName.end(), bodyName.begin(), ::tolower);
+        
+        // Check if name matches (exact, partial, or acronym)
+        if (bodyName == searchName || 
+            bodyName.find(searchName) != std::string::npos ||
+            searchName.find(bodyName) != std::string::npos) {
+            targetBody = &body;
+            break;
+        }
+    }
+    
+    if (!targetBody) {
+        QMessageBox::warning(this, "System Not Found",
+            QString("Could not find '%1' in loaded data.\n\n"
+                    "Available systems: %2 bodies in bodies_*.csv")
+                   .arg(systemName).arg(bodies.size()));
+        return;
+    }
+    
+    // ========================================================================
+    // STEP 3: Build IPC request parameters
+    // ========================================================================
+    QJsonObject params;
+    params["M"] = targetBody->mass;                        // Mass (kg)
+    params["r"] = targetBody->radius > 0 ? targetBody->radius : targetBody->distance;  // Radius or distance (m)
+    params["z"] = targetBody->z;                           // Redshift
+    params["B"] = targetBody->B_field;                     // Magnetic field (T)
+    params["T"] = targetBody->temperature;                 // Temperature (K)
+    params["SFR"] = targetBody->SFR;                       // Star formation rate (M☉/yr)
+    
+    // ========================================================================
+    // STEP 4: Send IPC request to backend server
+    // ========================================================================
+    // Show progress dialog (non-blocking)
     QMessageBox* progressMsg = new QMessageBox(this);
     progressMsg->setWindowTitle("UQFF Computation");
-    progressMsg->setText(QString("Computing UQFF physics for: %1\n\nPlease wait...").arg(systemName));
+    progressMsg->setText(QString("Computing UQFF physics for: %1\n\n"
+                                "Sending request to backend server...\n"
+                                "Expected time: ~1 second")
+                                .arg(systemName));
     progressMsg->setStandardButtons(QMessageBox::NoButton);
     progressMsg->setModal(false);
     progressMsg->show();
     QApplication::processEvents();  // Force UI update
     
-    // Connect process completion signal
-    connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
-            [this, process, progressMsg, systemName](int exitCode, QProcess::ExitStatus exitStatus) {
-        progressMsg->close();
-        progressMsg->deleteLater();
-        
-        if (exitCode == 0 && exitStatus == QProcess::NormalExit) {
-            // Parse JSON output from wrapper
-            QString jsonOutput = process->readAllStandardOutput();
-            parseAndDisplayUQFFResults(jsonOutput);
-        } else {
-            QString errorMsg = process->readAllStandardError();
-            QMessageBox::critical(this, "UQFF Computation Error", 
-                QString("Failed to compute physics for: %1\n\n"
-                        "Exit Code: %2\n"
-                        "Error:\n%3\n\n"
-                        "Ensure MAIN_1_CoAnQi.exe and CoAnQi_Wrapper.py are in the application directory.")
-                       .arg(systemName).arg(exitCode).arg(errorMsg));
-        }
-        process->deleteLater();
-    });
+    // Create IPC client and send request
+    IPCClient ipcClient("StarMagic_UQFF");  // Connect to backend Named Pipe
+    QJsonObject response = ipcClient.sendPipelineRequest(systemName, params);
     
-    // Start computation (non-blocking) - use old-style API for better Windows compatibility
-    process->start("python", args);
+    // Close progress dialog
+    progressMsg->close();
+    progressMsg->deleteLater();
+    
+    // ========================================================================
+    // STEP 5: Handle response
+    // ========================================================================
+    if (!response["success"].toBool()) {
+        QString errorMsg = response["error"].toString("Unknown error");
+        
+        // Provide helpful error messages
+        QString helpText;
+        if (errorMsg.contains("pipe") || errorMsg.contains("connection")) {
+            helpText = "\n\n<b>IPC Connection Error:</b><br>"
+                      "Backend server (source2 HEAD PROGRAM.exe) is not running.<br>"
+                      "Start the backend first, then retry.<br><br>"
+                      "<b>Start Backend:</b><br>"
+                      "<code>cd build_msvc\\Release</code><br>"
+                      "<code>.\\\"source2(HEAD PROGRAM).exe\"</code>";
+        } else if (errorMsg.contains("timeout")) {
+            helpText = "\n\n<b>Timeout:</b><br>"
+                      "Backend took too long to respond (>5 seconds).<br>"
+                      "Check backend console for Python errors.";
+        } else {
+            helpText = "\n\n<b>Troubleshooting:</b><br>"
+                      "1. Check backend console for error messages<br>"
+                      "2. Verify qcalc_subprocess.py and QCalc.py exist<br>"
+                      "3. Test manually: <code>python qcalc_subprocess.py</code>";
+        }
+        
+        QMessageBox::critical(this, "UQFF Computation Error",
+            QString("<b>IPC Error:</b><br>%1%2")
+                   .arg(errorMsg).arg(helpText));
+        return;
+    }
+    
+    // ========================================================================
+    // STEP 6: Convert IPC response to format expected by parseAndDisplayUQFFResults
+    // ========================================================================
+    QJsonDocument responseDoc(response);
+    QString jsonStr = responseDoc.toJson(QJsonDocument::Compact);
+    
+    // Display results (reuses existing display logic)
+    parseAndDisplayUQFFResults(jsonStr);
 }
 
 // parseAndDisplayUQFFResults - Parses JSON from wrapper and displays results

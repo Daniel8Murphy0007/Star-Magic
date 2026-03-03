@@ -24,6 +24,11 @@
 #include <QDropEvent>       // Drag-and-drop drop event - sent when user drops data on widget
 #include <QDrag>            // Drag operation - for initiating drag-and-drop (DraggableButton)
 #include <QMimeData>        // MIME data container - holds data in different formats for clipboard/drag-drop
+#include <QGraphicsItem>    // Graphics item base class - for procedural compute control points
+#include <QGraphicsScene>   // Graphics scene - container for graphics items
+#include <QGraphicsView>    // Graphics view - viewport for displaying graphics scene
+#include <QPainter>         // Painter - for custom drawing operations
+#include <QStyleOptionGraphicsItem> // Style options for graphics items
 #include <QFile>            // File I/O operations - interface for reading/writing files
 #include <QDir>             // Directory operations - access to directory structures and contents
 #include <QStandardPaths>   // Standard system paths - provides platform-specific standard locations
@@ -108,6 +113,7 @@
 #include <functional>        // std::function - for callbacks
 #include <atomic>            // std::atomic - for thread-safe flags
 #include <mutex>             // std::mutex - for thread synchronization
+#include <random>            // std::random - random number generation (mt19937)
 #include <QProcess>          // Qt subprocess - for calling Python scripts (S-C Iteration 37+)
 #include <QJsonDocument>     // JSON parsing for Python bridge responses
 #include <QJsonObject>       // JSON object handling
@@ -116,6 +122,7 @@
 // VR Runtime Integration (merged from vr_runtime.cpp)
 #include "ipc/uqff_ipc.h"    // IPC layer - Named Pipes, SharedMem for pipeline communication
 #include "ipc/physics_service.h"  // Physics Backend Service (Phase 2 - headless mode)
+#include "ipc_pipeline_handler.h" // Phase 0: IPC Pipeline Handler (QCalc subprocess bridge)
 // NOTE: astro_graphics.h disabled - Qt3D integrated directly below
 // #include "vr/astro_graphics.h"    // Phase 4: Astronomical Graphics Engine IPC Integration
 
@@ -162,6 +169,14 @@ std::string GetOAuthToken();
 #ifndef NO_AWS
 void SyncCacheToCloud(const std::string &token);
 #endif
+
+// ============================================================================
+// IPC PIPELINE GLOBAL VARIABLES (Phase 0 - Unification)
+// ============================================================================
+std::unique_ptr<UQFF::IPCPipelineHandler> g_ipc_handler = nullptr;
+std::unique_ptr<UQFF::NamedPipeServer> g_pipe_server = nullptr;
+std::thread g_ipc_thread;
+std::atomic<bool> g_ipc_running{false};
 
 // ============================================================================
 // PYTHON BRIDGE - Advanced Features (S-C Iteration 37+)
@@ -337,6 +352,111 @@ inline QJsonObject runPlugin(const QString& pluginName, const QString& equation)
 }
 
 } // namespace PythonBridge
+
+// ============================================================================
+// IPC PIPELINE FUNCTIONS (Phase 0 - Unification)
+// ============================================================================
+
+/**
+ * @brief Initialize IPC server for physics calculation requests
+ * 
+ * Creates Named Pipe server on \\.\pipe\StarMagic_UQFF and starts
+ * listening thread. Incoming PIPELINE_PROCESS messages are handled
+ * by spawning qcalc_subprocess.py via QProcess.
+ */
+void InitializeIPCServer() {
+    qDebug() << "[IPC Server] Initializing Phase 0 pipeline...";
+    
+    // Create handler
+    g_ipc_handler = std::make_unique<UQFF::IPCPipelineHandler>();
+    
+    // Optional: Set custom Python path if needed
+    // g_ipc_handler->setPythonPath("C:/Python312/python.exe");
+    
+    // Optional: Set custom script path
+    // g_ipc_handler->setScriptPath("qcalc_subprocess.py");
+    
+    // Create Named Pipe server
+    g_pipe_server = std::make_unique<UQFF::NamedPipeServer>("StarMagic_UQFF");
+    
+    // Set message handler lambda
+    g_pipe_server->setMessageHandler([](const QJsonObject& request) -> QJsonObject {
+        if (!g_ipc_handler) {
+            QJsonObject error;
+            error["success"] = false;
+            error["error"] = "IPC handler not initialized";
+            return error;
+        }
+        
+        // Extract message type
+        QString msg_type = request["type"].toString();
+        
+        if (msg_type == "PIPELINE_PROCESS") {
+            // Convert JSON to PipelineProcessRequest
+            UQFF::PipelineProcessRequest req = {};
+            
+            // Copy object name
+            QString object_name = request["object_name"].toString();
+            strncpy(req.object_name, object_name.toUtf8().constData(), 127);
+            req.object_name[127] = '\0';
+            
+            // Optional parameters
+            req.M = request["M"].toDouble(0);
+            req.r = request["r"].toDouble(0);
+            req.z = request["z"].toDouble(0);
+            req.B = request["B"].toDouble(0);
+            req.T = request["T"].toDouble(0);
+            req.SFR = request["SFR"].toDouble(0);
+            req.timeout_ms = request["timeout_ms"].toInt(5000);
+            
+            QString callback_id = request["callback_id"].toString();
+            strncpy(req.callback_id, callback_id.toUtf8().constData(), 63);
+            req.callback_id[63] = '\0';
+            
+            // Process request
+            return g_ipc_handler->processPipelineRequest(req);
+        } else {
+            QJsonObject error;
+            error["success"] = false;
+            error["error"] = "Unknown message type: " + msg_type;
+            return error;
+        }
+    });
+    
+    // Start server in background thread
+    g_ipc_running = true;
+    g_ipc_thread = std::thread([]() {
+        qDebug() << "[IPC Server] Starting server thread...";
+        g_pipe_server->start();  // Blocks until stop()
+        qDebug() << "[IPC Server] Server thread stopped";
+    });
+    
+    qDebug() << "[IPC Server] Initialization complete";
+    qDebug() << "[IPC Server] Named Pipe: \\\\.\\pipe\\StarMagic_UQFF";
+    qDebug() << "[IPC Server] Python script: qcalc_subprocess.py";
+    qDebug() << "[IPC Server] Listening for PIPELINE_PROCESS messages...";
+}
+
+/**
+ * @brief Shutdown IPC server and cleanup resources
+ */
+void ShutdownIPCServer() {
+    qDebug() << "[IPC Server] Shutting down...";
+    
+    if (g_pipe_server) {
+        g_pipe_server->stop();
+    }
+    
+    if (g_ipc_thread.joinable()) {
+        g_ipc_thread.join();
+    }
+    
+    g_ipc_handler.reset();
+    g_pipe_server.reset();
+    g_ipc_running = false;
+    
+    qDebug() << "[IPC Server] Shutdown complete";
+}
 
 // ============================================================================
 // NATIVE GPU COMPUTE (Integrated from clone_1956030704904757394.txt)
@@ -3966,6 +4086,12 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     
     // ========================================================================
+    // PHASE 0 IPC PIPELINE INITIALIZATION
+    // Start Named Pipe server for receiving calculation requests from GUI
+    // ========================================================================
+    InitializeIPCServer();
+    
+    // ========================================================================
     // VR RUNTIME INITIALIZATION (Merged from vr_runtime.cpp)
     // Part of 5 Principal Programs - Simultaneous Joint Operation Pipeline
     // ========================================================================
@@ -4010,6 +4136,13 @@ int main(int argc, char *argv[])
     //   - Window repaints
     // Returns exit code when application quits (0 = normal exit)
     int result = app.exec();
+    
+    // ========================================================================
+    // SHUTDOWN SEQUENCE
+    // ========================================================================
+    
+    // Shutdown IPC Pipeline (Phase 0)
+    ShutdownIPCServer();
     
     // Shutdown VR Runtime (cleanup IPC channels)
     VR::VRRuntime::instance().shutdown();

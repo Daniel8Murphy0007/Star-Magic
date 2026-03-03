@@ -785,6 +785,18 @@ if(Qt6_FOUND)
         #     target_compile_definitions(Source2_HEAD_PROGRAM PRIVATE NO_AWS)
         # endif()
         
+        # Qt3D (DISABLED - not installed, causes build errors)
+        # Phase 0D: Quick fix for IPC testing - disable Qt3D includes
+        target_compile_definitions(Source2_HEAD_PROGRAM PRIVATE NO_QT3D)
+        
+        # LibTorch / PyTorch C++ (DISABLED - not installed, Phase 0 uses QCalc instead)
+        # Phase 0D: Disable libtorch for IPC testing
+        target_compile_definitions(Source2_HEAD_PROGRAM PRIVATE NO_LIBTORCH)
+        
+        # SymEngine (DISABLED - not installed)
+        # Phase 0D: Disable SymEngine for IPC testing
+        target_compile_definitions(Source2_HEAD_PROGRAM PRIVATE NO_SYMENGINE)
+        
         # OpenCV (optional - for vision processing)
         if(OpenCV_FOUND)
             target_link_libraries(Source2_HEAD_PROGRAM PRIVATE ${OpenCV_LIBS})
