@@ -78,6 +78,13 @@ from BuoyancyProofVariants import (
     BuoyancyProofVariantsCalculator,
 )
 
+# Import UQFF Systems Database (March 3, 2026 - Priority 2)
+from UQFFSystemsDatabase import (
+    UQFFPhysicalConstants,
+    AstrophysicalSystem,
+    UQFFSystemsDatabase,
+)
+
 # NumPy 2.0 compatibility
 if not hasattr(np, 'trapz'):
     np.trapz = np.trapezoid
