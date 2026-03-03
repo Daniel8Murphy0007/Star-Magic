@@ -137,6 +137,23 @@ if(SymEngine_FOUND)
     add_definitions(-DHAVE_SYMENGINE)
 endif()
 
+# Add calculator_advanced subdirectory (Grok Thread Iterations #30-32)
+# Advanced scientific calculator with ANTLR4 parser, SymEngine backend, 11 UQFF equations
+if(Qt6_FOUND AND antlr4-runtime_FOUND AND SymEngine_FOUND)
+    message(STATUS "calculator_advanced: All dependencies found - building Tab 22")
+    add_subdirectory(calculator_advanced)
+else()
+    if(NOT Qt6_FOUND)
+        message(STATUS "calculator_advanced: Qt6 not found - skipping")
+    endif()
+    if(NOT antlr4-runtime_FOUND)
+        message(STATUS "calculator_advanced: ANTLR4 not found - skipping")
+    endif()
+    if(NOT SymEngine_FOUND)
+        message(STATUS "calculator_advanced: SymEngine not found - skipping")
+    endif()
+endif()
+
 # Set C++ standard to C++20 for maximum VR/VM functionality
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -502,6 +519,13 @@ if(Qt6_FOUND)
         Qt6::Widgets 
         Qt6::Network
     )
+    
+    # Link calculator_advanced library (Tab 22)
+    if(TARGET calculator_advanced)
+        target_link_libraries(Source2 PRIVATE calculator_advanced)
+        target_include_directories(Source2 PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+        message(STATUS "Source2: Linked with calculator_advanced (Tab 22)")
+    endif()
     
     # Qt6 WebEngineWidgets (conditional)
     if(TARGET Qt6::WebEngineWidgets)

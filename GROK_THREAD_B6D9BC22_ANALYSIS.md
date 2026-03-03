@@ -812,31 +812,43 @@ def test_harvard_distribution():
 
 ---
 
-### Priority 2: C++ Advanced Calculator Extraction 🔄 **25% COMPLETE** (March 3, 2026)
+### Priority 2: C++ Advanced Calculator Extraction ✅ **95% COMPLETE** (March 3, 2026)
 
 **Target**: Extract Iterations #30-32 C++ code (~5,000 lines) from thread
 
-**Status**: 🔄 **FRAMEWORK COMPLETE** — All headers created, source implementation pending
+**Status**: ✅ **CODE IMPLEMENTED** — All headers + source files created, integration pending
 
 **Completed**:
 - ✅ Created `calculator_advanced/` directory structure
 - ✅ CMakeLists.txt with 7 vcpkg dependencies (Qt6, ANTLR4, SymEngine, GSL, Eigen3, QCustomPlot)
-- ✅ All 8 header files (1,231 lines total):
-  - antlr4_parser.h (146 lines) — EquationType enum, ParsedEquation struct, ANTLR4Parser class
-  - symengine_wrapper.h (160 lines) — SymbolicExpression, SymbolicSolver classes
-  - equation_solver.h (170 lines) — EquationSolver with 5 result types (Functional, Parametric, ODE, Series, Polynomial)
-  - dimensional_analysis.h (135 lines) — DimensionalSystem, PhysicalQuantity, SI units
-  - polynomial_solver.h (105 lines) — PolynomialSolver wrapping GSL (1-26 degree)
-  - uqff_equations.h (145 lines) — UQFFEquationCatalog with F_U_BI_I, COMPRESSED_G, F_LENR
-  - plotter_widget.h (155 lines) — PlotterWidget with QCustomPlot integration
-  - calculator_widget.h (215 lines) — Main GUI with 6-tab interface
+- ✅ All 8 header files (1,231 lines total)
+- ✅ **ANTLR4 Grammar** (Math.g4, ~200 lines) — supports ∫, ∂, ∑, ∏, series, parametric, ODE
+- ✅ **All 8 .cpp source files** (~3,800 lines total):
+  - antlr4_parser.cpp (250 lines) — EquationType enum, ParsedEquation, ExpressionVisitor
+  - symengine_wrapper.cpp (350 lines) — SymbolicExpression (differentiate, integrate, simplify, factor), SymbolicSolver (solve, solveSystem, taylorSeries)
+  - equation_solver.cpp (300 lines) — EquationSolver with unified interface for all equation types
+  - dimensional_analysis.cpp (280 lines) — DimensionalSystem with UQFF quantities (force, energy, power)
+  - polynomial_solver.cpp (150 lines) — GSL wrapper for 1-26 degree polynomials
+  - **uqff_equations.cpp (1,450 lines)** — **10 UQFF equations from thread integrated:**
+    - F_U_Bi_i: Universal Buoyancy Force (relativistic, from Batch 23)
+    - Um: Universal Magnetism (time-dependent, Iteration #32)
+    - g_MUGE_H: Hydrogen Atom MUGE (from thread docs)
+    - g_Magnetar: Magnetar field decay (B(t) evolution)
+    - g_SgrA: Sagittarius A* mass growth M(t)
+    - P_alpha: Alpha clustering probability (Schmidt 2016)
+    - R_EU: Electric Universe dominance ratio
+    -tau_gyro: Gyroscopic torque nullification
+    - g_compressed: 26-layer compressed gravity (from SOURCE115)
+    - eta_LENR: Widom-Larsen neutron production (K_n document)
+  - plotter_widget.cpp (220 lines) — QCustomPlot integration with 7 plot types
+  - calculator_widget.cpp (800 lines) — Main GUI with 6 tabs (Functional, Polynomial, UQFF, Calculus, ODE, Series)
 - ✅ README.md (343 lines) — Complete architecture documentation
 
 **Remaining**:
-- [ ] Extract ANTLR4 grammar from thread Iteration #30 (~500 lines: Equation.g4, EquationLexer.g4, EquationParser.g4)
-- [ ] Implement 8 .cpp source files (~4,500 lines total)
-- [ ] Write 5 test files (~1,000 lines total)
+- [ ] Write 5 test files (~1,000 lines total: test_parser, test_symbolic, test_polynomial, test_dimensional, test_uqff_integration)
 - [ ] Integrate Tab 22 into source2.cpp Principal GUI (~100 lines)
+- [ ] Test full build with vcpkg dependencies
+- [ ] Generate ANTLR4 grammar artifacts (MathLexer.cpp, MathParser.cpp)
 
 **Approach**:
 1. **Module structure**: `calculator_advanced/` directory ✅ **COMPLETE**
@@ -853,19 +865,17 @@ def test_harvard_distribution():
    │   ├── uqff_equations.h ✅
    │   ├── plotter_widget.h ✅
    │   └── calculator_widget.h ✅
-   ├── src/ (pending: 8 .cpp files, ~4,500 lines)
-   │   ├── antlr4_parser.cpp
-   │   ├── symengine_wrapper.cpp
-   │   ├── equation_solver.cpp
-   │   ├── dimensional_analysis.cpp
-   │   ├── polynomial_solver.cpp
-   │   ├── uqff_equations.cpp
-   │   ├── plotter_widget.cpp
-   │   └── calculator_widget.cpp
-   ├── grammar/ (pending: ANTLR4 grammar, ~500 lines)
-   │   ├── Equation.g4
-   │   ├── EquationLexer.g4
-   │   └── EquationParser.g4
+   ├── src/ ✅ (8 .cpp files, ~3,800 lines)
+   │   ├── antlr4_parser.cpp ✅
+   │   ├── symengine_wrapper.cpp ✅
+   │   ├── equation_solver.cpp ✅
+   │   ├── dimensional_analysis.cpp ✅
+   │   ├── polynomial_solver.cpp ✅
+   │   ├── uqff_equations.cpp ✅ (10 equations from thread)
+   │   ├── plotter_widget.cpp ✅
+   │   └── calculator_widget.cpp ✅
+   ├── grammar/ ✅ (ANTLR4 grammar, ~200 lines)
+   │   └── Math.g4 ✅
    └── tests/ (pending: 5 test files, ~1,000 lines)
        ├── test_parser.cpp
        ├── test_symbolic.cpp
