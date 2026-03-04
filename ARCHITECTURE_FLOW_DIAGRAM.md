@@ -140,6 +140,66 @@
 └──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 
 ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  CALCULATOR #2.5: CondensedPhysics2.py (UQFF Extensions) 37,420+ lines                                       │
+│                                                                                                               │
+│  CORE:       CondensedPhysics2.py      ─── 480+ calculator classes, UFT Orb Analysis, extensions             │
+│                                                                                                               │
+│  EXTENSION MODULES:                                                                                           │
+│  ├── MonteCarloStochasticWrapper    ─── Statistical parameter variation (230 lines, March 4, 2026)          │
+│  │   │ Purpose: Wrap any UQFF calculator for ensemble simulations                                            │
+│  │   │ Formula: result *= (1 + randn) where randn ~ Gaussian(0, std_scale)                                  │
+│  │   │ Methods: compute_single(), compute_ensemble(), get_statistics()                                       │
+│  │   │ Output: mean, std, CI, percentiles for uncertainty quantification                                     │
+│  │   │ Integration: Grok Thread e3cc481989964390 - enables probabilistic UQFF framework                      │
+│  │   └── Usage: wrapper = MonteCarloStochasticWrapper(calc); stats = wrapper.compute_with_statistics(data) │
+│  │                                                                                                            │
+│  ├── GrokThreadUQFFExtensions.py    ─── 1,287 lines (8 physics categories, March 3, 2026)                   │
+│  ├── BuoyancyProofVariants.py       ─── 17 F_UBi_i proof variants                                            │
+│  ├── UQFFSystemsDatabase.py         ─── Astrophysical systems database                                       │
+│  └── CondensedPhysicsAggregator.py  ─── Unified API aggregation                                             │
+│                                                                                                               │
+│  CAPACITY: ~500-600 calculator classes (~80-100K lines capacity)                                             │
+│                                                                                                               │
+│  DATA FLOW: bodies_*.csv → CondensedPhysics2.py → CondensedPhysics_OutputData.py (RECALL STORAGE)            │
+└──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  EXTENSION MODULE: RelativisticUQFFCalculators.py (Relativistic Extensions) 630 lines                        │
+│                                                                                                               │
+│  PURPOSE: Extend UQFF framework to high-velocity regimes (v ≥ 0.1c)                                          │
+│                                                                                                               │
+│  CALCULATOR CLASSES (5):                                                                                      │
+│  ├── RelativisticJetForceCalculator         ─── F_jet_rel = k_thz * (ω_thz/ω₀)² * (v/c) * γ² * Γ_n         │
+│  │   │ Physics: Lorentz γ² boost amplifies THz shock wave force in relativistic jets                        │
+│  │   └── Application: AGN jets, GRB, microquasars, ULX outflows                                             │
+│  │                                                                                                            │
+│  ├── RelativisticAccretionEnergyCalculator  ─── E_acc_rel = (L_X/(4πr²c)) * (1 + β)                         │
+│  │   │ Physics: Doppler blue-shift for approaching accretion disk material                                   │
+│  │   └── Application: SMBH accretion, X-ray binaries, tidal disruption events                               │
+│  │                                                                                                            │
+│  ├── RelativisticMagneticDragCalculator     ─── F_drag_rel with Poynting flux P_B = B²/(2μ₀)                │
+│  │   │ Physics: Magnetic pressure modulates vacuum drag on relativistic plasma                               │
+│  │   └── Application: Jet launching, magnetic reconnection, pulsar wind nebulae                             │
+│  │                                                                                                            │
+│  ├── RelativisticBeamingCalculator          ─── B = δ³ where δ = [γ(1 - β cos θ)]⁻¹                         │
+│  │   │ Physics: Observed flux amplified by B when viewing angle θ small                                      │
+│  │   └── Application: Jet beaming in blazars, GRB, pulsar beams                                             │
+│  │                                                                                                            │
+│  └── RelativisticLorentzContractionCalculator ─── L' = L/γ, Δt' = Δt*γ                                      │
+│      │ Physics: Spacetime corrections for high-velocity systems                                              │
+│      └── Application: Correct all UQFF spatial/temporal scales for relativistic systems                     │
+│                                                                                                               │
+│  HELPER FUNCTIONS:                                                                                            │
+│  ├── lorentz_factor(v): γ = 1/√(1 - v²/c²)                                                                   │
+│  ├── doppler_factor(v, theta): D = [γ(1 - β cos θ)]⁻¹                                                       │
+│  └── relativistic_beaming_factor(gamma, theta): B = δ³                                                       │
+│                                                                                                               │
+│  INTEGRATION: Grok Thread e3cc481989964390 (March 4, 2026) - 5% unique content                               │
+│                                                                                                               │
+│  DATA FLOW: High-velocity systems → RelativisticUQFFCalculators.py → γ-boosted results                       │
+└──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │  CALCULATOR #3: MAIN_1_CoAnQi.cpp (C++ Native Physics Engine) 107,019 lines                                  │
 │                                                                                                               │
 │  CORE:       MAIN_1_CoAnQi.cpp         ─── 446 modules, 6,688+ physics terms, 16-option interactive menu     │
