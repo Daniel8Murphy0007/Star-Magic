@@ -3,7 +3,14 @@
  * @brief Python Integration Bridge for UQFF Physics Service
  * 
  * Provides pybind11-based integration with:
- * - CondensedPhysics.py (81K lines, 8 UQFF Master Equations)
+ * - CondensedPhysics.py (81K lines, 8 UQFF Master Equations, 1005 calculators)
+ * - CondensedPhysics2.py (36.4K lines, 480+ calculators, extensions):
+ *   - MonteCarloStochasticWrapper (ensemble simulations, uncertainty quantification)
+ *   - GrokThreadUQFFExtensions (1.3K lines, 8 physics categories)
+ *   - BuoyancyProofVariants, UQFFSystemsDatabase
+ * - RelativisticUQFFCalculators.py (630 lines, 5 relativistic calculators):
+ *   - F_jet_rel, E_acc_rel, F_drag_rel (γ-boosted for v ≥ 0.1c)
+ *   - RelativisticBeamingCalculator, RelativisticLorentzContractionCalculator
  * - CondensedPhysics_InputData.py (3249 lines, observational parameters)
  * - CondensedPhysics_OutputData.py (5378 lines, query result storage)
  * - CondensedPhysics_Validation.py (5926 lines, validation references)
@@ -18,7 +25,7 @@
  * - Phase6_Consolidated.py (487 lines, SOURCE70-80: 31 funcs, 3 systems)
  * - Phase7_Consolidated.py (3581 lines, SOURCE81-95: 110 funcs, 14 systems)
  * 
- * Total Python ecosystem: ~270K lines
+ * Total Python ecosystem: ~308K lines (includes Monte Carlo + relativistic extensions)
  * 
  * Author: Daniel T. Murphy
  * Framework: UQFF Star-Magic v3.0

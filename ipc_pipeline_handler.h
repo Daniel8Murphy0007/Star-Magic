@@ -10,15 +10,18 @@
  * Phase 2 Enhancement: Intelligent routing
  * - Standard UQFF queries → QCalc.UnifiedFieldSolver (fast, 920ms)
  * - Experimental queries → CondensedPhysics2 calculators (advanced physics)
- * - CP2 triggers: "Orb10-16", "Red Mercury", "Plasmoid", "UFEQFET", etc.
+ * - CP2 triggers: "Orb10-16", "Red Mercury", "Plasmoid", "UFEQFET", "Monte Carlo", "Relativistic", etc.
  * 
  * Performance comparison:
  * - QCalc: 9,149 lines, imports in 1.09s, subprocess ~920ms
  * - CondensedPhysics: 168,494 lines, imports in 30s+ (not used)
- * - CondensedPhysics2: 37,354 lines, imports in ~2.5s, specialized calculators
+ * - CondensedPhysics2: 36,367 lines, imports in ~2.5s, specialized calculators
+ *   - Includes MonteCarloStochasticWrapper for ensemble simulations
+ *   - Includes RelativisticUQFFCalculators (630 lines, 5 calculators for v ≥ 0.1c)
  * 
  * Author: Daniel T. Murphy
  * Date: March 3, 2026 (Phase 2: CP2 Integration)
+ * Updated: March 4, 2026 (Monte Carlo + Relativistic Extensions)
  * Phase: 0 - Unification (IPC Wiring), Phase 2 - Extensions (CP2)
  */
 
