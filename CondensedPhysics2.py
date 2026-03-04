@@ -98,6 +98,238 @@ CP2_VERSION = "2.0.0"
 CP2_CLASS_COUNT = 0  # Updated dynamically
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# MONTE CARLO STOCHASTIC WRAPPER
+# ═══════════════════════════════════════════════════════════════════════════════
+# Integration: Grok Thread e3cc481989964390a3c2102a549d2429 (March 4, 2026)
+# Source: C++ UQFF Calculator probabilistic integration method
+# Purpose: Statistical parameter variation for ensemble simulations
+# 
+# USAGE:
+#   wrapper = MonteCarloStochasticWrapper(calculator_instance, std_scale=0.1)
+#   results = wrapper.compute_ensemble(dataset, mc_samples=1000)
+#   stats = wrapper.get_statistics(results, confidence=0.95)
+#   # Access: stats['mean'], stats['std'], stats['ci_lower'], stats['ci_upper']
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class MonteCarloStochasticWrapper:
+    """
+    Monte Carlo stochastic parameter variation wrapper for UQFF calculators.
+    
+    Wraps any UQFF calculator to add probabilistic parameter variation for
+    uncertainty quantification and ensemble simulations. Uses Gaussian noise
+    generation following the Grok thread formula.
+    
+    Formula:
+        randn = (rand - 0.5) × 2 × √3 × std_scale
+        result *= (1 + randn)
+    
+    This transforms uniform random [0,1] → Gaussian-like noise with
+    controlled standard deviation for parameter perturbation.
+    
+    Attributes:
+        calculator: Wrapped UQFF calculator instance
+        std_scale: Standard deviation scaling factor (default 0.1 = 10% variation)
+        mc_samples: Number of Monte Carlo samples for ensemble (default 1000)
+        seed: Random seed for reproducibility (None = random)
+    
+    Methods:
+        compute_single(dataset): Single stochastic evaluation
+        compute_ensemble(dataset, mc_samples): Full ensemble (N samples)
+        get_statistics(ensemble, confidence): Extract mean, std, CI
+        compute_with_statistics(dataset): Convenience wrapper
+    
+    Integration: Grok Thread e3cc481989964390a3c2102a549d2429 (March 4, 2026)
+    """
+    
+    def __init__(self, calculator, std_scale: float = 0.1, 
+                 mc_samples: int = 1000, seed: Optional[int] = None):
+        """
+        Initialize Monte Carlo stochastic wrapper.
+        
+        Args:
+            calculator: UQFF calculator instance to wrap
+            std_scale: Standard deviation scaling factor (0.1 = 10% variation)
+            mc_samples: Default number of Monte Carlo samples
+            seed: Random seed for reproducibility (None = random)
+        """
+        self.calculator = calculator
+        self.std_scale = std_scale
+        self.mc_samples = mc_samples
+        self.seed = seed
+        
+        if seed is not None:
+            np.random.seed(seed)
+    
+    def _generate_random_noise(self) -> float:
+        """
+        Generate Gaussian random noise following Grok thread formula.
+        
+        Formula: randn = (rand - 0.5) × 2 × √3 × std_scale
+        
+        This transforms uniform random [0,1] to approximately Gaussian
+        noise with controlled standard deviation.
+        
+        Returns:
+            float: Random noise multiplier (centered at 0)
+        """
+        rand_uniform = np.random.random()  # Uniform [0, 1]
+        rand_centered = rand_uniform - 0.5  # Center at 0 → [-0.5, 0.5]
+        randn = rand_centered * 2 * np.sqrt(3) * self.std_scale
+        return randn
+    
+    def compute_single(self, dataset: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Single stochastic evaluation with random parameter variation.
+        
+        Applies Gaussian noise to all numerical parameters in dataset,
+        then executes wrapped calculator's compute() method.
+        
+        Args:
+            dataset: Input parameters dictionary
+        
+        Returns:
+            dict: Calculator output with stochastic parameter variation
+        """
+        # Create perturbed dataset
+        perturbed_dataset = {}
+        for key, value in dataset.items():
+            if isinstance(value, (int, float)) and value != 0:
+                # Apply stochastic variation to numerical parameters
+                randn = self._generate_random_noise()
+                perturbed_dataset[key] = value * (1 + randn)
+            else:
+                # Keep non-numerical or zero values unchanged
+                perturbed_dataset[key] = value
+        
+        # Execute wrapped calculator with perturbed parameters
+        result = self.calculator.compute(perturbed_dataset)
+        return result
+    
+    def compute_ensemble(self, dataset: Dict[str, Any], 
+                         mc_samples: Optional[int] = None,
+                         return_full: bool = False) -> List[Any]:
+        """
+        Compute full Monte Carlo ensemble with N samples.
+        
+        Runs multiple stochastic evaluations with different random
+        parameter variations to build statistical ensemble.
+        
+        Args:
+            dataset: Input parameters dictionary
+            mc_samples: Number of samples (None = use default from init)
+            return_full: If True, return full result dicts; if False, 
+                        extract primary value only (faster for large ensembles)
+        
+        Returns:
+            list: Ensemble of calculator outputs (N samples)
+        """
+        if mc_samples is None:
+            mc_samples = self.mc_samples
+        
+        ensemble = []
+        for i in range(mc_samples):
+            result = self.compute_single(dataset)
+            
+            if return_full:
+                ensemble.append(result)
+            else:
+                # Extract primary value (first numerical result)
+                # Assumes calculator returns dict with numerical values
+                if isinstance(result, dict):
+                    for value in result.values():
+                        if isinstance(value, (int, float)):
+                            ensemble.append(value)
+                            break
+                else:
+                    ensemble.append(result)
+        
+        return ensemble
+    
+    def get_statistics(self, ensemble: List[Any], 
+                      confidence: float = 0.95) -> Dict[str, Any]:
+        """
+        Extract statistical properties from ensemble.
+        
+        Computes mean, standard deviation, confidence intervals,
+        and percentiles from Monte Carlo ensemble.
+        
+        Args:
+            ensemble: List of calculator outputs (from compute_ensemble)
+            confidence: Confidence level for intervals (default 0.95 = 95%)
+        
+        Returns:
+            dict: Statistical properties:
+                - 'mean': Ensemble mean
+                - 'std': Standard deviation
+                - 'ci_lower': Lower confidence bound
+                - 'ci_upper': Upper confidence bound
+                - 'median': 50th percentile
+                - 'p05': 5th percentile
+                - 'p95': 95th percentile
+                - 'min': Minimum value
+                - 'max': Maximum value
+                - 'n_samples': Number of samples
+        """
+        # Convert to numpy array for statistics
+        ensemble_array = np.array(ensemble)
+        
+        # Basic statistics
+        mean = np.mean(ensemble_array)
+        std = np.std(ensemble_array)
+        median = np.median(ensemble_array)
+        minimum = np.min(ensemble_array)
+        maximum = np.max(ensemble_array)
+        
+        # Confidence intervals (using percentiles)
+        alpha = 1 - confidence
+        ci_lower = np.percentile(ensemble_array, alpha / 2 * 100)
+        ci_upper = np.percentile(ensemble_array, (1 - alpha / 2) * 100)
+        
+        # Additional percentiles
+        p05 = np.percentile(ensemble_array, 5)
+        p95 = np.percentile(ensemble_array, 95)
+        
+        return {
+            'mean': mean,
+            'std': std,
+            'ci_lower': ci_lower,
+            'ci_upper': ci_upper,
+            'median': median,
+            'p05': p05,
+            'p95': p95,
+            'min': minimum,
+            'max': maximum,
+            'n_samples': len(ensemble),
+            'confidence': confidence,
+        }
+    
+    def compute_with_statistics(self, dataset: Dict[str, Any],
+                                mc_samples: Optional[int] = None,
+                                confidence: float = 0.95) -> Dict[str, Any]:
+        """
+        Convenience method: compute ensemble + statistics in one call.
+        
+        Executes full Monte Carlo simulation and returns statistical
+        summary without storing full ensemble (memory efficient).
+        
+        Args:
+            dataset: Input parameters dictionary
+            mc_samples: Number of samples (None = use default)
+            confidence: Confidence level for intervals (default 0.95)
+        
+        Returns:
+            dict: Statistical summary from get_statistics()
+        """
+        ensemble = self.compute_ensemble(dataset, mc_samples=mc_samples, 
+                                        return_full=False)
+        stats = self.get_statistics(ensemble, confidence=confidence)
+        return stats
+
+
+CP2_CLASS_COUNT += 1  # MonteCarloStochasticWrapper
+
+
 # ============================================================================
 # UFT ORB ANALYSIS_10 CALCULATORS (8 Calculator Classes)
 # Source: Grok UFT Orb Analysis_10 (March 4, 2025)
