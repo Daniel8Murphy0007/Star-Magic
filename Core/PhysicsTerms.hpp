@@ -179,6 +179,100 @@ public:
     }
 };
 
+/**
+ * InflationForceEpochTerm: Epoch-based unified field strength calculation
+ * 
+ * Computes F_U at specific cosmic epochs from Inflation/Force Chart framework.
+ * Source: Grok Thread 4e0ecf23 (March 4, 2026)
+ * Module: GrokThread_StarMagic_UnifiedFramework.py
+ * 
+ * Equation:
+ *   F_U(t=0) = F_core + sum_{states=1 to 26} (Ui_state + F_p_state)
+ *   F_core = ℏ ω_LENR / (σ_n ρ_vac,[UA]) ~ 10^10 N
+ *   Ui_sum ≈ 0.1 * F_core * epoch_number (internal energy contribution)
+ *   Fp_sum ≈ 0.05 * F_core * epoch_number (pressure contribution)
+ * 
+ * Epochs:
+ *   1: Fisile Nuclei/Nebular (t=1.0-1.9, no Ug ranges active)
+ *   2: Star/Planetary Atom (t=2.0-2.9, Ug1-3 active)
+ *   3: Galaxies/Quasar (t=3.0-3.9, early Ug4)
+ *   4: Magnetar/SMBH (t=4.0-4.9, Ug4 dominance)
+ *   5: Globular Clusters (t=5.0-5.9, stabilization)
+ * 
+ * Required params:
+ *   "epoch": Epoch number (1-5)
+ *   "rho_vac_UA": Universal Aether vacuum density (J/m³)
+ *   "omega_LENR": LENR resonance frequency (Hz)
+ *   "sigma_n": Neutron cross-section (m²)
+ */
+class InflationForceEpochTerm : public PhysicsTerm
+{
+private:
+    int epoch_number;     // Epoch (1-5)
+    double h_bar;         // Reduced Planck constant (J·s)
+    
+public:
+    /**
+     * Constructor
+     * @param epoch Epoch number (1-5)
+     * @param hbar_val Reduced Planck constant (default: 1.055e-34 J·s)
+     */
+    InflationForceEpochTerm(int epoch, double hbar_val = 1.054571817e-34)
+        : epoch_number(epoch), h_bar(hbar_val) {}
+    
+    double compute(double t, const std::map<std::string, double>& params) const override
+    {
+        // Extract parameters
+        double rho_vac_UA = params.count("rho_vac_UA") ? params.at("rho_vac_UA") : 7.09e-36;
+        double omega_LENR = params.count("omega_LENR") ? params.at("omega_LENR") : 1.2e12;
+        double sigma_n = params.count("sigma_n") ? params.at("sigma_n") : 1e-28;
+        
+        // F_core = ℏ ω_LENR / (σ_n ρ_vac,[UA])
+        double F_core = (h_bar * omega_LENR) / (sigma_n * rho_vac_UA);
+        
+        // Epoch-dependent contributions
+        double Ui_sum = F_core * 0.1 * epoch_number;  // Internal energy
+        double Fp_sum = F_core * 0.05 * epoch_number; // Pressure
+        
+        // Total unified field at epoch
+        double F_U = F_core + Ui_sum + Fp_sum;
+        
+        return F_U;
+    }
+    
+    std::string getName() const override
+    {
+        return "InflationForceEpochTerm_Epoch" + std::to_string(epoch_number);
+    }
+    
+    std::string getDescription() const override
+    {
+        std::string desc = "Unified field strength at Epoch " + std::to_string(epoch_number) + ": ";
+        switch(epoch_number) {
+            case 1: desc += "Fisile Nuclei/Nebular (no Ug ranges)"; break;
+            case 2: desc += "Star/Planetary Atom (Ug1-3 active)"; break;
+            case 3: desc += "Galaxies/Quasar (early Ug4)"; break;
+            case 4: desc += "Magnetar/SMBH (Ug4 dominance)"; break;
+            case 5: desc += "Globular Clusters (stabilization)"; break;
+            default: desc += "Unknown epoch";
+        }
+        return desc;
+    }
+    
+    bool validate(const std::map<std::string, double>& params) const override
+    {
+        // Epoch must be 1-5
+        if (epoch_number < 1 || epoch_number > 5) return false;
+        
+        // If parameters provided, check they're positive
+        if (params.count("rho_vac_UA") && params.at("rho_vac_UA") <= 0.0) return false;
+        if (params.count("omega_LENR") && params.at("omega_LENR") <= 0.0) return false;
+        if (params.count("sigma_n") && params.at("sigma_n") <= 0.0) return false;
+        
+        return true;
+    }
+};
+
 } // namespace UQFFCore
 
 #endif // PHYSICSTERMS_HPP

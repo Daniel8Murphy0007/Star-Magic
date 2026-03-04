@@ -27,6 +27,16 @@ struct ObservationalSystem
     // Observational context
     std::string category;  // "galaxy_cluster", "pulsar", "agn", "nebula", "tde", "snr"
     std::string telescope; // Primary observation source
+    
+    // Epoch Framework Context (Grok Thread 4e0ecf23 - March 4, 2026)
+    // Which cosmic epochs this system represents in Inflation/Force Chart
+    // Epochs: 1=Fisile, 2=Star/Planet, 3=Galaxy/Quasar, 4=Magnetar/SMBH, 5=Globular
+    int dominant_epoch;  // Primary epoch (1-5)
+    bool epoch_1_present;  // Fisile Nuclei/Nebular (pre-stellar)
+    bool epoch_2_present;  // Star/Planetary Atom (Ug1-3 active)
+    bool epoch_3_present;  // Galaxies/Quasar (early Ug4)
+    bool epoch_4_present;  // Magnetar/SMBH (Ug4 dominance)
+    bool epoch_5_present;  // Globular Clusters (stabilization)
 };
 
 // ============================================================================
@@ -46,7 +56,13 @@ static const std::map<std::string, ObservationalSystem> OBSERVATIONAL_SYSTEMS = 
                 1e7,     // T_gas (K)
                 1e-15,   // omega0 (rad/s)
                 7.72e14, // t_age (s, ~24.5 Myr)
-                "galaxy_cluster", "Chandra/ALMA/MUSE"}},
+                "galaxy_cluster", "Chandra/ALMA/MUSE",
+                3,       // Dominant Epoch: 3 (Galaxies/Quasar)
+                false,   // No Epoch 1 (pre-stellar)
+                true,    // Epoch 2 (stars in galaxy)
+                true,    // Epoch 3 (galaxy structure) ← DOMINANT
+                false,   // No Epoch 4 (no SMBH/magnetar signature)
+                false}}, // No Epoch 5 (not globular cluster)
 
     {"NGC1365", {"NGC 1365", "Barred spiral galaxy with active nucleus",
                  7.17e41, // M (kg)
@@ -136,7 +152,13 @@ static const std::map<std::string, ObservationalSystem> OBSERVATIONAL_SYSTEMS = 
               1e6,     // T_gas (K, PWN)
               1e-12,   // omega0 (rad/s, ~89 ms period)
               3.47e11, // t_age (s, ~11,000 years)
-              "pulsar", "Chandra/Fermi"}},
+              "pulsar", "Chandra/Fermi",
+              4,       // Dominant Epoch: 4 (Magnetar/SMBH scale)
+              false,   // No Epoch 1
+              true,    // Epoch 2 (formed from star)
+              true,    // Epoch 3 (in galaxy)
+              true,    // Epoch 4 (extreme field) ← DOMINANT
+              false}}, // No Epoch 5
 
     {"J1610", {"J1610+1811", "Millisecond pulsar in globular cluster",
                2.785e30, // M (kg)
@@ -182,7 +204,13 @@ static const std::map<std::string, ObservationalSystem> OBSERVATIONAL_SYSTEMS = 
                     5e6,      // T_gas (K)
                     1e-12,    // omega0 (rad/s)
                     1e14,     // t_age (s)
-                    "agn", "Chandra/ALMA/VLT"}},
+                    "agn", "Chandra/ALMA/VLT",
+                    4,        // Dominant Epoch: 4 (SMBH)
+                    false,    // No Epoch 1
+                    true,     // Epoch 2 (stars in galaxy)
+                    true,     // Epoch 3 (galaxy formed)
+                    true,     // Epoch 4 (SMBH jets) ← DOMINANT
+                    false}},  // No Epoch 5
 
     {"M104", {"M104 (Sombrero Galaxy)", "Edge-on spiral with large bulge and SMBH",
               1.5e38, // M (kg, SMBH ~8e8 solar)
@@ -219,7 +247,13 @@ static const std::map<std::string, ObservationalSystem> OBSERVATIONAL_SYSTEMS = 
                 1e4,    // T_gas (K, HII region)
                 1e-14,  // omega0 (rad/s)
                 1e14,   // t_age (s, ~3 Myr)
-                "nebula", "HST/JWST/Chandra"}},
+                "nebula", "HST/JWST/Chandra",
+                2,      // Dominant Epoch: 2 (Star formation)
+                false,  // No Epoch 1 (already past fisile)
+                true,   // Epoch 2 (active star formation) ← DOMINANT
+                false,  // No Epoch 3 (not galaxy-scale)
+                false,  // No Epoch 4
+                false}},// No Epoch 5
 
     {"M16", {"M16 (Eagle Nebula)", "Star-forming region with Pillars of Creation",
              1e36,    // M (kg)

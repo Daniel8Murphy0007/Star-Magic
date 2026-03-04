@@ -104,6 +104,13 @@ enum class MessageType : uint32_t {
     PIPELINE_EXPORT         = 0x0303,  // Export result as JSON for IPC
     PIPELINE_CALLBACK       = 0x0310,  // Real-time callback event
     
+    // Epoch Framework (March 4, 2026 - Grok Thread 4e0ecf23)
+    EPOCH_GET_CURRENT       = 0x0400,  // Get current cosmic epoch (1-5)
+    EPOCH_SET               = 0x0401,  // Set epoch for calculations
+    EPOCH_CALCULATE_F_U     = 0x0402,  // Calculate F_U at specific epoch
+    EPOCH_GET_UG_ACTIVE     = 0x0403,  // Query which Ug ranges active at epoch
+    EPOCH_VALIDATION_DATA   = 0x0410,  // Request epoch validation dataset
+    
     // Responses
     RESPONSE_SUCCESS        = 0x1000,  // Operation completed
     RESPONSE_ERROR          = 0x1001,  // Operation failed
@@ -267,6 +274,133 @@ struct PipelineCallbackPayload {
     double elapsed_ms;           // Time since process start
     uint32_t status;             // 0 = success
     uint32_t reserved[2];
+};
+
+// ============================================================================
+// EPOCH FRAMEWORK PAYLOADS (March 4, 2026 - Grok Thread 4e0ecf23)
+// ============================================================================
+
+/**
+ * @struct EpochGetCurrentRequest
+ * @brief Query for current cosmic epoch (MESSAGE_TYPE: EPOCH_GET_CURRENT)
+ */
+struct EpochGetCurrentRequest {
+    char system_name[64];        // System to query (use "default" for global)
+    double cosmic_time;          // Cosmic time scale (1.0-5.9)
+    uint32_t flags;              // Reserved
+    uint32_t reserved;
+};
+
+/**
+ * @struct EpochGetCurrentResponse
+ * @brief Response with current epoch information
+ */
+struct EpochGetCurrentResponse {
+    int epoch_number;            // Current epoch (1-5)
+    char epoch_name[64];         // "Fisile Nuclei", "Star/Planetary", etc.
+    char scm_state[16];          // SCm, SCm'', SCm''', SCm'''', SCm'''''
+    bool ug1_active;             // Internal Dipole active?
+    bool ug2_active;             // Heliosphere active?
+    bool ug3_active;             // Magnetic Strings active?
+    bool ug4_active;             // Star-Black Hole active?
+    char cosmic_structure[64];   // "Periodic Table", "Stars and Planets", etc.
+    uint32_t status;             // 0 = success
+};
+
+/**
+ * @struct EpochSetRequest
+ * @brief Set epoch for calculations (MESSAGE_TYPE: EPOCH_SET)
+ */
+struct EpochSetRequest {
+    int epoch_number;            // Epoch to set (1-5)
+    char module_name[64];        // Module to apply to ("all" for global)
+    uint32_t flags;              // Reserved
+    uint32_t reserved;
+};
+
+/**
+ * @struct EpochCalculateFURequest
+ * @brief Calculate F_U at specific epoch (MESSAGE_TYPE: EPOCH_CALCULATE_F_U)
+ */
+struct EpochCalculateFURequest {
+    int epoch_number;            // Epoch (1-5)
+    double rho_vac_UA;           // Universal Aether vacuum density (J/m³)
+    double omega_LENR;           // LENR resonance frequency (Hz)
+    double sigma_n;              // Neutron cross-section (m²)
+    uint32_t flags;              // Calculation flags
+    uint32_t reserved;
+};
+
+/**
+ * @struct EpochCalculateFUResponse
+ * @brief Response with epoch-specific F_U calculation
+ */
+struct EpochCalculateFUResponse {
+    int epoch_number;            // Epoch calculated
+    double F_U_total_N;          // Total unified field (N)
+    double F_core_N;             // Core contribution (N)
+    double Ui_sum_N;             // Internal energy sum (N)
+    double Fp_sum_N;             // Pressure sum (N)
+    char ug_ranges_active[64];   // "Ug1,Ug2,Ug3" or "All", etc.
+    uint32_t status;             // 0 = success
+    uint32_t reserved;
+};
+
+/**
+ * @struct EpochGetUgActiveRequest
+ * @brief Query which Ug ranges active at epoch (MESSAGE_TYPE: EPOCH_GET_UG_ACTIVE)
+ */
+struct EpochGetUgActiveRequest {
+    int epoch_number;            // Epoch to query (1-5)
+    uint32_t flags;              // Reserved
+    uint32_t reserved[2];
+};
+
+/**
+ * @struct EpochGetUgActiveResponse
+ * @brief Response with Ug range activation status
+ */
+struct EpochGetUgActiveResponse {
+    int epoch_number;            // Epoch queried
+    bool ug1_active;             // Ug1 (Internal Dipole)
+    bool ug2_active;             // Ug2 (Heliosphere)
+    bool ug3_active;             // Ug3 (Magnetic Strings)
+    bool ug4_active;             // Ug4 (Star-Black Hole)
+    char activation_context[128]; // Explanation of activation state
+    uint32_t status;             // 0 = success
+};
+
+/**
+ * @struct EpochValidationDataRequest
+ * @brief Request epoch validation dataset (MESSAGE_TYPE: EPOCH_VALIDATION_DATA)
+ */
+struct EpochValidationDataRequest {
+    int epoch_number;            // Epoch to validate (1-5, or 0 for all)
+    char validation_type[32];    // "gaia", "fermi", "cmb", "all"
+    uint32_t flags;              // Reserved
+    uint32_t reserved;
+};
+
+/**
+ * @struct EpochValidationDataResponse
+ * @brief Response with validation references
+ * 
+ * Variable-length JSON payload follows this header with full validation data:
+ * {
+ *   "epoch": 4,
+ *   "validation_targets": [
+ *     {"source": "Gaia DR4", "observable": "Sgr A* orbits", "prediction": "Ug4 dominance"},
+ *     {"source": "Fermi", "observable": "Solar flares", "prediction": "\u03b1 = 0.001 day⁻¹"}
+ *   ]
+ * }
+ */
+struct EpochValidationDataResponse {
+    int epoch_number;            // Epoch validated
+    uint32_t num_targets;        // Number of validation targets
+    uint32_t json_payload_size;  // Size of following JSON (bytes)
+    uint32_t status;             // 0 = success
+    uint32_t reserved;
+    // Variable-length JSON follows
 };
 
 // ============================================================================

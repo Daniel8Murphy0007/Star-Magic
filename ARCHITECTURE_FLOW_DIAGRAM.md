@@ -1,8 +1,8 @@
 # Star-Magic UQFF Architecture Flow Diagram
 
-> **Version:** 4.2.2 (CANONICAL - DO NOT DEVIATE)
+> **Version:** 4.3.0 (CANONICAL - DO NOT DEVIATE)
 > **Generated:** 2026-02-21
-> **Updated:** 2026-02-21 (v4.2.2 Dual Bot Architecture: CoAnQi + Poseidon)
+> **Updated:** 2026-03-04 (v4.3.0 Epoch Framework Integration - Grok Thread 4e0ecf23)
 > **Author:** Daniel T. Murphy
 > **CRITICAL:** This is the MASTER architecture document. All other docs must match.
 
@@ -32,6 +32,7 @@
 | v3.1b | Self-Expanding Physics Backend | ✅ Complete | 81097a8 |
 | v4.2.1 | Poseidon TaskBot Integration | ✅ Complete | 277f954 |
 | v4.2.2 | Dual Bot Architecture (CoAnQi + Poseidon) | ✅ Complete | 7436b0c |
+| **v4.3.0** | **Epoch Framework Integration (Grok Thread 4e0ecf23)** | ✅ **Complete** | **PENDING** |
 
 ---
 
@@ -382,6 +383,101 @@
 │   └── Poseidon   = GENERAL CONTRACTOR for entire codebase (all languages, cross-platform)                   │
 │                                                                                                               │
 │   INTEGRATION: Uses python_bridge.h (pybind11 → task_bot_maintenance.py), physics_service.h, IPC            │
+└──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                  EPOCH FRAMEWORK (v4.3.0 - Grok Thread 4e0ecf23 Integration, March 4, 2026)                  │
+│                                                                                                               │
+│   SOURCE: https://x.com/i/grok/share/4e0ecf23920b435cb3b2f410e93699b5                                        │
+│   FILES: 5 C++ headers (~490 lines), 3 Python modules (1,276 lines), 6 documentation files                  │
+│   STATUS: ✅ COMPLETE - Code written, documented, ready for build/commit                                     │
+│                                                                                                               │
+│   PURPOSE: 5-Epoch Cosmic Evolution Framework for time-dependent UQFF validation                             │
+│                                                                                                               │
+│   EPOCH STRUCTURE:                                                                                            │
+│   ├── Epoch 1: Fisile Nuclei (t=1.0-1.9)        ─── Pre-stellar, no Ug ranges active                        │
+│   ├── Epoch 2: Star/Planetary Atom (t=2.0-2.9)  ─── Ug1-3 active (stellar physics)                          │
+│   ├── Epoch 3: Galaxies/Quasar (t=3.0-3.9)      ─── Early Ug4, galaxy formation                             │
+│   ├── Epoch 4: Magnetar/SMBH (t=4.0-4.9)        ─── Ug4 dominance, extreme fields                           │
+│   └── Epoch 5: Globular Clusters (t=5.0-5.9)    ─── Stabilization phase                                     │
+│                                                                                                               │
+│   C++ INTEGRATION (5 headers, ~490 lines):                                                                    │
+│   ┌───────────────────────────────────────────────────────────────────────────────────────────────────────┐  │
+│   │ shared_constants.h (~150 lines added)                                                                 │  │
+│   │ ├── InflationForceChart namespace: 5 epoch constants, time ranges, F_U_EPOCH_CORE                     │  │
+│   │ ├── DPMGeometry namespace: NUM_DPM_CENTERS=26, DPM_SPHERE_RADIUS=1e-18m                               │  │
+│   │ ├── BellyButtonResonance namespace: PRE_BIG_BANG_RESONANCE_FREQ=1.855e43 Hz                          │  │
+│   │ └── Enhanced k_i documentation: Physical interpretations for k_1=1.5, k_2=1.2, k_3=1.8, k_4=1.0      │  │
+│   └───────────────────────────────────────────────────────────────────────────────────────────────────────┘  │
+│   ┌───────────────────────────────────────────────────────────────────────────────────────────────────────┐  │
+│   │ Core/PhysicsTerms.hpp (~100 lines added)                                                              │  │
+│   │ └── NEW CLASS: InflationForceEpochTerm (inherits PhysicsTerm)                                         │  │
+│   │     • compute(): F_U = F_core + Ui_sum + Fp_sum (epoch-dependent)                                     │  │
+│   │     • getName(): "InflationForceEpochTerm_N" (N=1-5)                                                  │  │
+│   │     • getDescription(): Returns human-readable epoch context                                          │  │
+│   │     • validate(): Checks for required params (rho_vac_UA, omega_LENR, sigma_n)                       │  │
+│   └───────────────────────────────────────────────────────────────────────────────────────────────────────┘  │
+│   ┌───────────────────────────────────────────────────────────────────────────────────────────────────────┐  │
+│   │ ipc/uqff_ipc.h (~200 lines added)                                                                     │  │
+│   │ ├── 5 NEW MessageTypes: EPOCH_GET_CURRENT, EPOCH_SET, EPOCH_CALCULATE_F_U,                           │  │
+│   │ │                        EPOCH_GET_UG_ACTIVE, EPOCH_VALIDATION_DATA                                  │  │
+│   │ └── 10 NEW IPC Structures:                                                                            │  │
+│   │     • EpochGetCurrentRequest/Response (query epoch for system + cosmic time)                         │  │
+│   │     • EpochSetRequest (set epoch for module)                                                          │  │
+│   │     • EpochCalculateFURequest/Response (compute F_U at specific epoch)                               │  │
+│   │     • EpochGetUgActiveRequest/Response (query which Ug1-4 active)                                    │  │
+│   │     • EpochValidationDataRequest/Response (get validation targets: Gaia, Fermi, CMB)                 │  │
+│   └───────────────────────────────────────────────────────────────────────────────────────────────────────┘  │
+│   ┌───────────────────────────────────────────────────────────────────────────────────────────────────────┐  │
+│   │ observational_systems_config.h (~40 lines added)                                                      │  │
+│   │ ├── Extended ObservationalSystem struct: 6 new fields (dominant_epoch, epoch_1-5_present)            │  │
+│   │ └── Epoch annotations for 4+ systems:                                                                 │  │
+│   │     • ESO137 (Epoch 3: Galaxy formation)                                                              │  │
+│   │     • Vela (Epoch 4: Mature pulsar with strong Ug4)                                                   │  │
+│   │     • CentaurusA (Epoch 4: SMBH accretion dominance)                                                  │  │
+│   │     • NGC346 (Epoch 2: Active star formation)                                                         │  │
+│   └───────────────────────────────────────────────────────────────────────────────────────────────────────┘  │
+│   ┌───────────────────────────────────────────────────────────────────────────────────────────────────────┐  │
+│   │ Core/UQFFCore.hpp (no changes)                                                                        │  │
+│   │ └── Already includes PhysicsTerms.hpp → InflationForceEpochTerm automatically available              │  │
+│   └───────────────────────────────────────────────────────────────────────────────────────────────────────┘  │
+│                                                                                                               │
+│   PYTHON INTEGRATION (3 modules, 1,276 lines):                                                               │
+│   ┌───────────────────────────────────────────────────────────────────────────────────────────────────────┐  │
+│   │ GrokThread_StarMagic_UnifiedFramework.py (857 lines)                                                  │  │
+│   │ ├── InflationForceEpoch (dataclass): Single epoch representation                                      │  │
+│   │ ├── InflationForceChartCalculator: Computes F_U at each epoch                                         │  │
+│   │ │   • Formula: F_U = F_core + Ui_sum + Fp_sum                                                         │  │
+│   │ │   • F_core = (ℏ * ω_LENR) / (σ_n * ρ_vac_UA)                                                        │  │
+│   │ │   • Ui_sum, Fp_sum scale with epoch_number (epoch-dependent buoyancy/pressure)                     │  │
+│   │ ├── UQFFVariableDocumentation: Documentation repository for k_i, β_i, ε_sw, d_g, etc.                │  │
+│   │ ├── birth_of_dpm_sphere(h,k,l,r): Geometric sphere equation (x-h)²+(y-k)²+(z-l)²=r²                  │  │
+│   │ └── GROK_THREAD_VALIDATION_ADDITIONS: Ready for CondensedPhysics_Validation.py integration           │  │
+│   └───────────────────────────────────────────────────────────────────────────────────────────────────────┘  │
+│   ┌───────────────────────────────────────────────────────────────────────────────────────────────────────┐  │
+│   │ selen_scraper.py (349 lines) + scrape_grok_share.py (70 lines)                                        │  │
+│   │ └── Selenium Edge WebDriver scrapers for Grok URL extraction (94KB + 960KB HTML)                     │  │
+│   └───────────────────────────────────────────────────────────────────────────────────────────────────────┘  │
+│                                                                                                               │
+│   VALIDATION TARGETS:                                                                                         │
+│   ├── Gaia DR4: Epoch 2-3 transition (star formation → galaxy formation)                                    │
+│   ├── Fermi LAT: Epoch 4 (magnetar/SMBH gamma-ray emissions)                                                │
+│   ├── Planck CMB: Epoch 1 (pre-stellar nuclei synthesis)                                                    │
+│   └── SDSS Quasars: Epoch 3 (early Ug4 activation in quasar systems)                                        │
+│                                                                                                               │
+│   UNIQUE CONTRIBUTIONS (Not in Codebase Before):                                                             │
+│   1. 5-Epoch Inflation/Force Chart ─── Time-dependent cosmic evolution framework                            │
+│   2. Enhanced Variable Documentation ─── Physical interpretations for k_i, β_i, ε_sw, etc.                  │
+│   3. DPM Birth Sphere ─── Explicit geometric equation with 26 centers                                        │
+│   4. Belly Button Resonance ─── Pre-Big Bang cosmic origin factor (1.855e43 Hz)                             │
+│                                                                                                               │
+│   ZERO DUPLICATION CONFIRMED:                                                                                 │
+│   ✅ SCm, UA, Ug1-Ug4, DPM, 26 quantum levels ALL exist in codebase (20+ matches each via grep)              │
+│   ✅ k_i values [1.5, 1.2, 1.8, 1.0] exist in CondensedPhysics_InputData.py                                  │
+│   ✅ β_i ≈ 0.6 exists (20+ matches for 0.6, 0.603, 0.61)                                                      │
+│                                                                                                               │
+│   BUILD STATUS: ✅ Ready for compilation (backward compatible, zero breaking changes)                       │
+│   COMMIT STATUS: ⏳ PENDING (git add, commit "v4.3.0 Epoch Framework", push origin master)                  │
 └──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 

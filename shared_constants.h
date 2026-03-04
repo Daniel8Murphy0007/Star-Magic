@@ -200,7 +200,12 @@ constexpr double U_UA = 0.0001;
 /// Eta coupling constant k_η
 constexpr double k_eta = 1e-113;
 
-/// Beta buoyancy factor β_i
+/// Beta buoyancy factor β_i (dimensionless)
+/// Physical interpretation: Uniform buoyancy opposition strength across all Ug ranges
+/// Grok Thread 4e0ecf23: β_i = 0.6 uniformity reflects UQFF superposition principle
+/// - Buoyancy opposes gravity uniformly regardless of Ug1-4 dominant range
+/// - No range-specific tuning needed due to SCm-UA coupling universality
+/// Ref: GrokThread_StarMagic_UnifiedFramework.py (Variable Documentation)
 constexpr double beta_i = 0.603;
 
 /// F₀ reference force (N) - UQFF normalization
@@ -211,7 +216,29 @@ constexpr double num_strings = 1e9;
 
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// UQFF COUPLING CONSTANTS
+// UQFF COUPLING CONSTANTS (k_i coefficients)
+// ═══════════════════════════════════════════════════════════════════════════════
+//
+// Physical interpretations from Grok Thread 4e0ecf23:
+//
+// k_1 = 1.5 (Ug1: Internal Dipole)
+//    HIGHER value → emphasizes strong internal stellar irregularities
+//    SCm modulation strengthens dipole distortion of gravitational field
+//
+// k_2 = 1.2 (Ug2: Heliosphere)
+//    MODERATE value → balance between wind ram pressure and SCm envelope
+//    Heliosphere acts as buffer, less dramatic than dipole or magnetic strings
+//
+// k_3 = 1.8 (Ug3: Magnetic Strings Disk)
+//    HIGHEST value → magnetic strings have largest influence on rotation curves
+//    Planetary/stellar cores trap SCm → strongest gravitational distortion
+//    Explains why galaxy rotation curves deviate most from Newtonian at this scale
+//
+// k_4 = 1.0 (Ug4: Star-Black Hole)
+//    BASELINE value → normalized reference for largest-scale interactions
+//    No SCm penetration modulation (black holes have zero internal structure)
+//
+// Ref: GrokThread_StarMagic_UnifiedFramework.py (UQFF_VARIABLE_DOCUMENTATION)
 // ═══════════════════════════════════════════════════════════════════════════════
 
 /// LENR coupling k_LENR
@@ -339,6 +366,142 @@ constexpr double Delta_x_p = 1e-68;
 
 /// Wavefunction integral normalization
 constexpr double integral_psi = 2.176e-18;
+
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// INFLATION/FORCE CHART EPOCH FRAMEWORK (Grok Thread 4e0ecf23 - March 4, 2026)
+// ═══════════════════════════════════════════════════════════════════════════════
+//
+// 5-Epoch Cosmic Evolution Framework documenting WHEN Ug ranges become active
+// in Universal History. This provides temporal context for UQFF calculations.
+//
+// Source: Grok Thread 4e0ecf23 "Star Magic: The Quest for Unity"
+// URL: https://x.com/i/grok/share/4e0ecf23920b435cb3b2f410e93699b5
+// Module: GrokThread_StarMagic_UnifiedFramework.py (857 lines)
+// Analysis: GROK_THREAD_4E0ECF23_ANALYSIS.md
+//
+// Background: This is NOT new physics (all Ug1-4 already implemented in codebase).
+// Instead, it provides VALIDATION CONTEXT showing which epochs activate which ranges.
+//
+// ═══════════════════════════════════════════════════════════════════════════════
+
+namespace InflationForceChart {
+
+/// Epoch 1: Fisile Nuclei/Nebular → Periodic Table Formation
+/// Time: t = 1.0 - 1.9 (cosmic time scale)
+/// SCm State: SCm (initial)
+/// Ug Ranges: None active (pre-stellar)
+/// Cosmic Structure: Periodic Table forming from fisile nuclei
+constexpr int EPOCH_1_FISILE_NUCLEI = 1;
+constexpr double EPOCH_1_TIME_START = 1.0;
+constexpr double EPOCH_1_TIME_END = 1.9;
+
+/// Epoch 2: Star/Planetary Atom → Ug1-Ug3 Activation
+/// Time: t = 2.0 - 2.9
+/// SCm State: SCm'' (second-order modulation)
+/// Ug Ranges: Ug1, Ug2, Ug3 ACTIVE (star ignition)
+/// Cosmic Structure: Stars and Planets (heliospheres form, planetary cores trap SCm)
+constexpr int EPOCH_2_STAR_PLANETARY = 2;
+constexpr double EPOCH_2_TIME_START = 2.0;
+constexpr double EPOCH_2_TIME_END = 2.9;
+
+/// Epoch 3: Galaxies/Quasar → Early Ug4
+/// Time: t = 3.0 - 3.9
+/// SCm State: SCm''' (third-order modulation)
+/// Ug Ranges: Ug1, Ug2, Ug3, Early Ug4 (galaxy formation)
+/// Cosmic Structure: Galaxies and Quasars
+constexpr int EPOCH_3_GALAXIES_QUASAR = 3;
+constexpr double EPOCH_3_TIME_START = 3.0;
+constexpr double EPOCH_3_TIME_END = 3.9;
+
+/// Epoch 4: Magnetar/SMBH → Ug4 DOMINANCE
+/// Time: t = 4.0 - 4.9
+/// SCm State: SCm'''' (fourth-order modulation)
+/// Ug Ranges: ALL ACTIVE, Ug4 DOMINATES
+/// Cosmic Structure: Magnetars and Supermassive Black Holes (Ug4 signature observable in Sagittarius A* orbits)
+/// Validation: Gaia DR4 (2026) should show Ug4 signatures in stellar orbits around Sgr A*
+constexpr int EPOCH_4_MAGNETAR_SMBH = 4;
+constexpr double EPOCH_4_TIME_START = 4.0;
+constexpr double EPOCH_4_TIME_END = 4.9;
+
+/// Epoch 5: Globular Clusters → Stabilization
+/// Time: t = 5.0 - 5.9
+/// SCm State: SCm''''' (fifth-order modulation)
+/// Ug Ranges: ALL ACTIVE, stabilized
+/// Cosmic Structure: Globular Clusters (long-term equilibrium)
+constexpr int EPOCH_5_GLOBULAR_CLUSTERS = 5;
+constexpr double EPOCH_5_TIME_START = 5.0;
+constexpr double EPOCH_5_TIME_END = 5.9;
+
+/// Total number of epochs
+constexpr int NUM_EPOCHS = 5;
+
+/// F_U epoch calculation baseline (N)
+/// F_U(t=0) = F_core + sum_{states=1 to 26} (Ui_state + F_p_state)
+/// F_core = ℏ ω_LENR / (σ_n ρ_vac,[UA]) ~ 10^10 N
+constexpr double F_U_EPOCH_CORE = 1e10;
+
+} // namespace InflationForceChart
+
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// DPM BIRTH SPHERE GEOMETRY (Grok Thread 4e0ecf23)
+// ═══════════════════════════════════════════════════════════════════════════════
+//
+// Birth of Di-Pseudo-Monopole (DPM) Big Bang mechanism:
+//   Sphere equation: (x - h)² + (y - k)² + (z - l)² = r²
+//
+// Interpretation: 26 quantum states = 26 centers in pre-Big Bang 26-shell EM field
+// Each of the 26 quantum levels has a center (h_i, k_i, l_i) forming a geometric
+// constellation that collapses into DPM during Big Bang.
+//
+// Pre-Big Bang: [SCm] and [UA] in vacuum → 26-shell EM field → DPM birth
+//
+// Ref: GrokThread_StarMagic_UnifiedFramework.py birth_of_dpm_sphere() function
+// ═══════════════════════════════════════════════════════════════════════════════
+
+namespace DPMGeometry {
+
+/// Number of sphere centers (one per quantum level)
+constexpr int NUM_DPM_CENTERS = 26;
+
+/// DPM sphere characteristic radius (m) - Pre-Big Bang scale
+/// Estimated from: sqrt(l_P * t_H) ~ 10^-18 m (Planck-Hubble geometric mean)
+constexpr double DPM_SPHERE_RADIUS = 1e-18;
+
+} // namespace DPMGeometry
+
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// "BELLY BUTTON" COSMIC RESONANCE FACTOR (Grok Thread 4e0ecf23)
+// ═══════════════════════════════════════════════════════════════════════════════
+//
+// Pre-Big Bang standing resonance factor:
+//   - First foundational constant/source of electrostatic mechanism
+//   - [SCm], [UA], electromagnetic, quantum envelope in 26-field ACP_massive
+//   - -1/2 states as high energy superconductive barriers
+//
+// This is the "origin point" of the UQFF - the cosmic resonance that established
+// the fundamental ratio a/b relating GM/r², e (elementary charge), and q (charge).
+//
+// Ref: GrokThread_StarMagic_UnifiedFramework.py BELLY_BUTTON_PARAMS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+namespace BellyButtonResonance {
+
+/// Pre-Big Bang resonance frequency (Hz) - estimated from Planck time
+/// f_BB = 1/t_P ≈ 1.855 × 10^43 Hz
+constexpr double PRE_BIG_BANG_RESONANCE_FREQ = 1.855e43;
+
+/// 26-field envelope coupling (dimensionless)
+/// Couples all 26 quantum levels to pre-Big Bang EM shell
+constexpr double ACP_MASSIVE_COUPLING = 1.0;
+
+/// High energy barrier for -1/2 states (J)
+/// E_barrier = k_B * T_P (Planck temperature barrier)
+constexpr double SUPERCONDUCTIVE_BARRIER_ENERGY = 1.9444e9; // k_B * T_P
+
+} // namespace BellyButtonResonance
 
 
 } // namespace Constants
