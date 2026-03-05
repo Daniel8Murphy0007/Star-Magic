@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UQFF Plasmoid Convection Simulation - Grok Thread deed728b</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a0033 100%);
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        h1 {
+            text-align: center;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #ffaa00;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        canvas {
+            border: 2px solid #00ffff;
+            background: linear-gradient(180deg, #000000 0%, #110022 100%);
+            display: block;
+            margin: 20px auto;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            border-radius: 5px;
+        }
+        #controls {
+            text-align: center;
+            max-width: 800px;
+            margin: 20px auto;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #00ffff;
+        }
+        button {
+            padding: 12px 24px;
+            margin: 5px;
+            background: linear-gradient(135deg, #004466 0%, #006688 100%);
+            color: #ffffff;
+            border: 2px solid #00ffff;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: linear-gradient(135deg, #006688 0%, #0088aa 100%);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+            transform: scale(1.05);
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        label {
+            color: #00ffaa;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+        input[type="number"] {
+            background: rgba(0, 50, 50, 0.8);
+            color: #00ffff;
+            border: 1px solid #00ffaa;
+            padding: 5px;
+            border-radius: 3px;
+            width: 80px;
+            font-size: 14px;
+        }
+        #info {
+            max-width: 900px;
+            margin: 20px auto;
+            text-align: left;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #00ffff;
+        }
+        #info h2 {
+            color: #00ffff;
+            border-bottom: 2px solid #00ffaa;
+            padding-bottom: 5px;
+        }
+        #status {
+            font-weight: bold;
+            color: #ffaa00;
+            font-size: 16px;
+        }
+        #stats {
+            color: #00ffaa;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .formula {
+            background: rgba(0, 50, 50, 0.5);
+            padding: 10px;
+            border-left: 4px solid #00ffaa;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .param-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .reference {
+            background: rgba(0, 100, 100, 0.3);
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-size: 12px;
+            color: #aaffff;
+        }
+        .reference a {
+            color: #00ffff;
+            text-decoration: none;
+        }
+        .reference a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌌 UQFF Plasmoid Convection Simulation 🌌</h1>
+    <p class="subtitle">Grok Thread deed728b636f4cd4a70bfa83a4331f9e | Daniel T. Murphy (via Grok AI DaVinci)</p>
+    
+    <div id="controls">
+        <div style="margin-bottom: 15px;">
+            <button onclick="startSimulation()">▶ Start/Reset</button>
+            <button onclick="pauseSimulation()">⏸ Pause</button>
+        </div>
+        <div class="param-grid">
+            <label>🔹 Plasmoids: <input type="number" id="numPlasmoids" value="45" min="1" max="200"></label>
+            <label>⚡ Velocity (m/s): <input type="number" id="velocity" value="0.5" step="0.1" min="0.1" max="5"></label>
+            <label>🎲 Jump Prob: <input type="number" id="jumpProb" value="0.402" step="0.01" min="0" max="1"></label>
+        </div>
+        <div style="margin-top: 10px; color: #aaffff; font-size: 12px;">
+            Frame Time: 100ms | Width: 350px | Height: 1000px | Time Range: 15.03s → 30.78s
+        </div>
+    </div>
+
+    <canvas id="simulationCanvas" width="350" height="1000"></canvas>
+
+    <div id="info">
+        <h2>📊 Simulation Status</h2>
+        <p id="status">Status: Ready to Start</p>
+        <p id="stats">Jumps: 0 | Time: 0.00s | Brightness: 0.0%</p>
+        
+        <h2>🔬 Simulation Details</h2>
+        <p><strong>Parameters:</strong></p>
+        <div class="formula">
+START_TIME = 15.03 s<br>
+END_TIME = 30.78 s<br>
+FRAME_TIME = 100 ms<br>
+SPINDLE_ORB = (175, 500) px [Center Attractor]
+        </div>
+        
+        <p><strong>Dynamics:</strong> Each frame, plasmoids move vertically (convection flow). Random jumps occur based on jump probability. Brightness modulated sinusoidally to simulate glowing plasma effect.</p>
+        
+        <div class="formula">
+Brightness(t) = [sin((t - 15.03) × π / duration) + 1] / 2 × 100%
+        </div>
+        
+        <h2>🌟 UQFF Integration</h2>
+        <p>This simulation models high-energy plasma orbs in red dwarf reactors or cosmic conduits, directly tying to:</p>
+        <ul>
+            <li><strong>THz Shocks:</strong> F_thz_shock = k_thz × (ω_thz/ω₀)² × neutron_factor × conduit_scale</li>
+            <li><strong>Neutron Factors:</strong> Phonon-mediated neutron capture (Kozima model)</li>
+            <li><strong>Conduit Dynamics:</strong> H × H₂O → COx material pathways</li>
+            <li><strong>Spooky Action:</strong> Non-local quantum effects in plasma collective behavior</li>
+        </ul>
+        
+        <h2>🎯 Physics Origin</h2>
+        <p>Derived from <strong>Plasmoid_Convection_3.html</strong> motion file (Grok thread deed728b). Models 45 plasmoid bodies undergoing convective transport with:</p>
+        <ul>
+            <li>Upward velocity (anti-gravity buoyancy)</li>
+            <li>Stochastic jumps (quantum tunneling analog, probability 0.402)</li>
+            <li>Boundary wraparound (periodic boundary conditions)</li>
+            <li>Central spindle orb (gravitational or magnetic attractor)</li>
+        </ul>
+        
+        <div class="reference">
+            <strong>🔗 Source:</strong> <a href="https://x.com/i/grok/share/deed728b636f4cd4a70bfa83a4331f9e" target="_blank">Grok Thread deed728b636f4cd4a70bfa83a4331f9e</a><br>
+            <strong>📅 Date:</strong> August 27, 2025 (Thread Creation), March 5, 2026 (HTML Integration)<br>
+            <strong>👤 Author:</strong> Daniel T. Murphy (via Grok AI DaVinci)<br>
+            <strong>🏛️ Project:</strong> Star-Magic UQFF Framework
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('simulationCanvas');
+        const ctx = canvas.getContext('2d');
+        const statusEl = document.getElementById('status');
+        const statsEl = document.getElementById('stats');
+
+        let animationId;
+        let isPaused = true;
+        let time = 15.03;
+        const startTime = 15.03;
+        const endTime = 30.78;
+        const frameTime = 0.1;  // 100ms
+        let jumpCount = 0;
+        let plasmoids = [];
+        let numPlasmoids = 45;
+        let velocity = 0.5;
+        let jumpProb = 0.402;
+        const width = 350;
+        const height = 1000;
+        const spindleX = width / 2;
+        const spindleY = height / 2;
+
+        function initPlasmoids() {
+            plasmoids = [];
+            for (let i = 0; i < numPlasmoids; i++) {
+                plasmoids.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.2,  // Small horizontal drift
+                    vy: -velocity,  // Upward convection (negative Y)
+                    size: 3 + Math.random() * 5,
+                    color: `hsl(${180 + Math.random() * 60}, 100%, ${50 + Math.random() * 30}%)`,  // Cyan to green
+                    jumpCooldown: 0
+                });
+            }
+        }
+
+        function updatePlasmoids() {
+            let jumpsThisFrame = 0;
+            plasmoids.forEach(plasmoid => {
+                // Update position
+                plasmoid.y += plasmoid.vy;
+                plasmoid.x += plasmoid.vx;
+
+                // Boundary wraparound (periodic)
+                if (plasmoid.y < 0) plasmoid.y = height;
+                if (plasmoid.y > height) plasmoid.y = 0;
+                if (plasmoid.x < 0) plasmoid.x = width;
+                if (plasmoid.x > width) plasmoid.x = 0;
+
+                // Random quantum jump (if not in cooldown)
+                if (plasmoid.jumpCooldown <= 0 && Math.random() < jumpProb) {
+                    plasmoid.vy *= 1.8;  // Boost velocity (jump)
+                    plasmoid.size *= 1.3;  // Expand during jump
+                    jumpsThisFrame++;
+                    plasmoid.jumpCooldown = 5;  // 500ms cooldown
+                    
+                    // Reset after brief time
+                    setTimeout(() => {
+                        plasmoid.vy = -velocity;
+                        plasmoid.size /= 1.3;
+                    }, 200);
+                }
+                
+                if (plasmoid.jumpCooldown > 0) {
+                    plasmoid.jumpCooldown--;
+                }
+            });
+            jumpCount += jumpsThisFrame;
+        }
+
+        function draw() {
+            // Clear canvas with gradient background
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(0, 0, width, height);
+
+            // Draw spindle orb (central attractor)
+            const gradient = ctx.createRadialGradient(spindleX, spindleY, 0, spindleX, spindleY, 20);
+            gradient.addColorStop(0, '#ffffff');
+            gradient.addColorStop(0.5, '#00ffff');
+            gradient.addColorStop(1, 'rgba(0, 255, 255, 0)');
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(spindleX, spindleY, 15, 0, 2 * Math.PI);
+            ctx.fill();
+
+            // Calculate brightness modulation
+            const duration = endTime - startTime;
+            const brightness = (Math.sin((time - startTime) * Math.PI / duration) + 1) / 2 * 100;
+
+            // Draw plasmoids
+            plasmoids.forEach(plasmoid => {
+                const plasmoidGradient = ctx.createRadialGradient(
+                    plasmoid.x, plasmoid.y, 0,
+                    plasmoid.x, plasmoid.y, plasmoid.size * 2
+                );
+                plasmoidGradient.addColorStop(0, plasmoid.color);
+                plasmoidGradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                
+                ctx.globalAlpha = brightness / 120;  // Brightness modulation
+                ctx.fillStyle = plasmoidGradient;
+                ctx.beginPath();
+                ctx.arc(plasmoid.x, plasmoid.y, plasmoid.size * 2, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                // Core glow
+                ctx.globalAlpha = brightness / 80;
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.arc(plasmoid.x, plasmoid.y, plasmoid.size / 2, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                ctx.globalAlpha = 1;
+            });
+
+            // Update stats display
+            statsEl.textContent = `Jumps: ${jumpCount} | Time: ${time.toFixed(2)}s | Brightness: ${brightness.toFixed(1)}%`;
+        }
+
+        function animate() {
+            if (isPaused || time > endTime) {
+                statusEl.textContent = time > endTime ? '✅ Simulation Completed' : '⏸ Paused';
+                statusEl.style.color = time > endTime ? '#00ff00' : '#ffaa00';
+                return;
+            }
+
+            updatePlasmoids();
+            draw();
+            time += frameTime;
+
+            animationId = requestAnimationFrame(animate);
+            statusEl.textContent = '▶ Running';
+            statusEl.style.color = '#00ff00';
+        }
+
+        function startSimulation() {
+            isPaused = false;
+            numPlasmoids = parseInt(document.getElementById('numPlasmoids').value);
+            velocity = parseFloat(document.getElementById('velocity').value);
+            jumpProb = parseFloat(document.getElementById('jumpProb').value);
+
+            time = startTime;
+            jumpCount = 0;
+            initPlasmoids();
+            plasmoids.forEach(p => { p.vy = -velocity; });
+
+            cancelAnimationFrame(animationId);
+            animate();
+        }
+
+        function pauseSimulation() {
+            isPaused = true;
+            cancelAnimationFrame(animationId);
+            statusEl.textContent = '⏸ Paused';
+            statusEl.style.color = '#ffaa00';
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            initPlasmoids();
+            draw();
+            statusEl.textContent = '🎬 Ready to Start';
+            statusEl.style.color = '#00ffaa';
+        };
+    </script>
+</body>
+</html>
