@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Star Magic — Atom Simulation (ba400fd1)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0a14;
+      color: #d0d8ff;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 1.3rem;
+      color: #88aaff;
+      margin-bottom: 4px;
+      letter-spacing: 2px;
+    }
+
+    .subtitle {
+      font-size: 0.72rem;
+      color: #556699;
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+    }
+
+    canvas {
+      border: 1px solid #223366;
+      border-radius: 6px;
+      box-shadow: 0 0 30px #0033aa55;
+      background: #000010;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button {
+      background: #112244;
+      color: #aaccff;
+      border: 1px solid #334477;
+      border-radius: 4px;
+      padding: 7px 18px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+    }
+    button:hover { background: #1e3a6a; }
+
+    label {
+      color: #7799bb;
+      font-size: 0.82rem;
+    }
+
+    input[type="range"] {
+      width: 110px;
+      accent-color: #4488ff;
+    }
+
+    .params {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(5, auto);
+      gap: 6px 20px;
+      text-align: center;
+      font-size: 0.74rem;
+      color: #556688;
+    }
+    .params span { color: #aabbdd; }
+
+    .info {
+      margin-top: 12px;
+      font-size: 0.72rem;
+      color: #334466;
+      max-width: 800px;
+      text-align: center;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+<h1>STAR MAGIC — ATOM SIMULATION</h1>
+<div class="subtitle">Grok Thread ba400fd152aa4798abb49539b92e98ed &bull; ScientificCalculatorDialog.cpp Qt6 &bull; ©2025 Daniel T. Murphy</div>
+
+<canvas id="atomCanvas" width="800" height="600"></canvas>
+
+<div class="controls">
+  <button id="btnPause">Pause</button>
+  <button id="btnReset">Reset</button>
+  <label>Speed
+    <input type="range" id="speedSlider" min="0.2" max="5" step="0.1" value="1.0">
+  </label>
+  <label>η coupling
+    <input type="range" id="etaSlider" min="0" max="1" step="0.01" value="0.5">
+  </label>
+</div>
+
+<div class="params">
+  <div>PI_FREQ<br><span id="dispPiFreq">3.14</span></div>
+  <div>NEG_TIME<br><span id="dispNegTime">-2512</span></div>
+  <div>VACUUM_E<br><span id="dispVacuum">1e-12</span></div>
+  <div>BIO_FREQ<br><span id="dispBioFreq">400 Hz</span></div>
+  <div>REACTOR_EFF<br><span id="dispReactor">555</span></div>
+</div>
+
+<div class="info">
+  Simulation uses π-phase modulation:
+  <em>scale = 1 + 0.1·sin(π·φ)·(1 + ε_vac·ε_ref)</em> &nbsp;|&nbsp;
+  Negative-time reversal when <em>sin(t + τ_neg/1000) &lt; 0</em> &nbsp;|&nbsp;
+  Aether field ring radius: <em>r = R₀·(η_eff)·|sin(π·φ)|</em> &nbsp;|&nbsp;
+  26 quantum levels (3 orbital shells rendered)
+</div>
+
+<script>
+  'use strict';
+
+  // ─── UQFF Constants (from source8_wolfram.cpp / ScientificCalculatorDialog) ───
+  const PI_FREQ          = 3.14;
+  const NEGATIVE_TIME    = -2512;   // ms — negative-time offset τ_neg
+  const VACUUM_ENERGY    = 1e-12;   // J  — ε_vac reference
+  const VACUUM_REF       = 1e12;    // normalisation so product = 1.0
+  const BIO_QUANTUM_FREQ = 400;     // Hz — biological quantum resonance
+  const REACTOR_EFF      = 555;     // dimensionless reactor efficiency
+
+  // ─── Canvas setup ───────────────────────────────────────────────────────────
+  const canvas = document.getElementById('atomCanvas');
+  const ctx    = canvas.getContext('2d');
+  const W = canvas.width;
+  const H = canvas.height;
+  const CX = W / 2;
+  const CY = H / 2;
+
+  // ─── Simulation state ───────────────────────────────────────────────────────
+  let   t         = 0;          // simulation time (seconds)
+  let   tDelta    = 0.016;      // default ~60 fps step
+  let   paused    = false;
+  let   speed     = 1.0;
+  let   etaFactor = 0.5;        // UI-controlled η scaling
+
+  // ─── Orbital shells ─────────────────────────────────────────────────────────
+  // 26 quantum levels collapsed to 3 visible shells (n=1,2,3)
+  const SHELLS = [
+    { n: 1, r: 68,  electrons: [{ angle: 0 }],                               color: '#4488ff' },
+    { n: 2, r: 130, electrons: [{ angle: 0 }, { angle: Math.PI }],            color: '#44ffcc' },
+    { n: 3, r: 200, electrons: [{ angle: 0 }, { angle: 2*Math.PI/3 }, { angle: 4*Math.PI/3 }], color: '#ffaa44' },
+  ];
+
+  // Angular velocity per shell (rad/s)
+  const OMEGA = [2.4, 1.4, 0.8];
+
+  // ─── Nucleus parameters ─────────────────────────────────────────────────────
+  const NUCLEUS_R     = 14;
+  const NUCLEUS_GLOW  = 26;
+
+  // ─── Aether ring parameters ─────────────────────────────────────────────────
+  const AETHER_R_BASE = 200 * (REACTOR_EFF / 1000);  // base radius from reactor efficiency
+
+  // ─── Utilities ──────────────────────────────────────────────────────────────
+  function piPhase(time) {
+    return (PI_FREQ * time) % (2 * Math.PI);
+  }
+
+  function negativeTimeActive(time) {
+    // Reversal when sin(t + τ_neg/1000) < 0
+    return Math.sin(time + NEGATIVE_TIME / 1000) < 0;
+  }
+
+  function orbitScale(phase) {
+    // π-phase modulation of orbit radius
+    // scale = 1 + 0.1·sin(π·φ)·(1 + ε_vac × ε_ref)
+    const product = VACUUM_ENERGY * VACUUM_REF;   // = 1.0
+    return 1.0 + 0.1 * Math.sin(Math.PI * phase) * (1 + product);
+  }
+
+  function aetherRadius(phase) {
+    return AETHER_R_BASE * etaFactor * Math.abs(Math.sin(Math.PI * phase));
+  }
+
+  // ─── Drawing helpers ─────────────────────────────────────────────────────────
+
+  function drawNucleus(phase) {
+    const pulse = 1 + 0.08 * Math.sin(phase * BIO_QUANTUM_FREQ / 100);
+
+    // outer glow
+    const grd = ctx.createRadialGradient(CX, CY, 0, CX, CY, NUCLEUS_GLOW * pulse);
+    grd.addColorStop(0,   'rgba(255, 200, 60, 0.9)');
+    grd.addColorStop(0.5, 'rgba(255, 100, 20, 0.4)');
+    grd.addColorStop(1,   'rgba(255,  50,  0, 0.0)');
+    ctx.beginPath();
+    ctx.arc(CX, CY, NUCLEUS_GLOW * pulse, 0, 2 * Math.PI);
+    ctx.fillStyle = grd;
+    ctx.fill();
+
+    // nucleus core
+    ctx.beginPath();
+    ctx.arc(CX, CY, NUCLEUS_R * pulse, 0, 2 * Math.PI);
+    ctx.fillStyle = '#ffcc44';
+    ctx.fill();
+
+    // proton count label
+    ctx.fillStyle = '#ffeeaa';
+    ctx.font      = 'bold 11px Courier New';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('He', CX, CY);
+  }
+
+  function drawShellOrbit(shell, scale) {
+    const r = shell.r * scale;
+    ctx.beginPath();
+    ctx.arc(CX, CY, r, 0, 2 * Math.PI);
+    ctx.strokeStyle = shell.color + '33';
+    ctx.lineWidth   = 0.8;
+    ctx.stroke();
+  }
+
+  function drawElectron(x, y, color, negTime) {
+    const eR = 5;
+
+    // Trail glow
+    const grd = ctx.createRadialGradient(x, y, 0, x, y, eR * 3);
+    grd.addColorStop(0, color + 'cc');
+    grd.addColorStop(1, color + '00');
+    ctx.beginPath();
+    ctx.arc(x, y, eR * 3, 0, 2 * Math.PI);
+    ctx.fillStyle = grd;
+    ctx.fill();
+
+    // Electron dot
+    ctx.beginPath();
+    ctx.arc(x, y, eR, 0, 2 * Math.PI);
+    ctx.fillStyle = negTime ? '#ff4455' : color;
+    ctx.fill();
+  }
+
+  function drawAetherRings(phase, negTime) {
+    const r = aetherRadius(phase);
+    if (r < 2) return;
+
+    for (let k = 1; k <= 3; k++) {
+      const rk = r * k * 0.6 + 20;
+      const alpha = negTime ? 0.35 : 0.18;
+      ctx.beginPath();
+      ctx.arc(CX, CY, rk, 0, 2 * Math.PI);
+      ctx.strokeStyle = negTime
+        ? `rgba(255, 80, 80, ${alpha / k})`
+        : `rgba(80, 180, 255, ${alpha / k})`;
+      ctx.lineWidth = 1.2 / k;
+      ctx.stroke();
+    }
+  }
+
+  function drawQuantumLevelBars(phase) {
+    // Compact 26-level bar chart (top-right corner)
+    const bx = W - 110, by = 20;
+    ctx.font = '9px Courier New';
+    ctx.fillStyle = '#334466';
+    ctx.fillText('Quantum levels (26)', bx - 2, by - 4);
+
+    for (let lv = 0; lv < 26; lv++) {
+      const energy = (lv + 1) * 0.2 + 0.15 * Math.sin(phase + lv * 0.4);
+      const bw     = Math.max(0, Math.min(80, energy * 18));
+      const hy     = by + lv * 11;
+      const alpha  = 0.4 + 0.4 * (lv / 25);
+
+      ctx.fillStyle = `rgba(50, 130, 255, ${alpha})`;
+      ctx.fillRect(bx, hy, bw, 8);
+
+      ctx.fillStyle = '#445566';
+      ctx.fillText(`n${lv+1}`, bx - 22, hy + 7);
+    }
+  }
+
+  function drawHUD(phase, negTime) {
+    ctx.font = '11px Courier New';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+
+    const lines = [
+      `t = ${t.toFixed(3)} s`,
+      `π-phase = ${phase.toFixed(4)} rad`,
+      `neg-time = ${negTime ? 'ACTIVE' : 'off'}`,
+      `aether-r = ${aetherRadius(phase).toFixed(1)} px`,
+      `scale = ${orbitScale(phase).toFixed(4)}`,
+    ];
+
+    lines.forEach((ln, i) => {
+      ctx.fillStyle = negTime && i === 2 ? '#ff5566' : '#445577';
+      ctx.fillText(ln, 12, 12 + i * 15);
+    });
+  }
+
+  // ─── Main frame ─────────────────────────────────────────────────────────────
+  function frame() {
+    if (!paused) {
+      t += tDelta * speed;
+    }
+
+    ctx.clearRect(0, 0, W, H);
+
+    // Background gradient
+    const bg = ctx.createRadialGradient(CX, CY, 0, CX, CY, W * 0.7);
+    bg.addColorStop(0,   '#000820');
+    bg.addColorStop(1,   '#000008');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    const phase   = piPhase(t);
+    const negTime = negativeTimeActive(t);
+    const scale   = orbitScale(phase);
+
+    // Aether rings (behind everything)
+    drawAetherRings(phase, negTime);
+
+    // Orbital paths
+    SHELLS.forEach(s => drawShellOrbit(s, scale));
+
+    // Nucleus
+    drawNucleus(phase);
+
+    // Electrons
+    SHELLS.forEach((shell, si) => {
+      const r  = shell.r * scale;
+      const dA = (2 * Math.PI) / shell.electrons.length;
+
+      shell.electrons.forEach((el, ei) => {
+        const baseAngle = OMEGA[si] * t * (negTime ? -0.8 : 1.0) + el.angle;
+        const angle     = baseAngle + ei * dA;
+        const ex = CX + r * Math.cos(angle);
+        const ey = CY + r * Math.sin(angle);
+        drawElectron(ex, ey, shell.color, negTime);
+      });
+    });
+
+    // UI overlays
+    drawQuantumLevelBars(phase);
+    drawHUD(phase, negTime);
+
+    requestAnimationFrame(frame);
+  }
+
+  // ─── Controls ────────────────────────────────────────────────────────────────
+  document.getElementById('btnPause').addEventListener('click', function () {
+    paused = !paused;
+    this.textContent = paused ? 'Resume' : 'Pause';
+  });
+
+  document.getElementById('btnReset').addEventListener('click', function () {
+    t = 0;
+    paused = false;
+    document.getElementById('btnPause').textContent = 'Pause';
+  });
+
+  document.getElementById('speedSlider').addEventListener('input', function () {
+    speed = parseFloat(this.value);
+  });
+
+  document.getElementById('etaSlider').addEventListener('input', function () {
+    etaFactor = parseFloat(this.value);
+  });
+
+  // Start
+  requestAnimationFrame(frame);
+</script>
+
+</body>
+</html>

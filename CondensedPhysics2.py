@@ -37771,6 +37771,29 @@ __all__ = [
     'StarSystemTableCalculator',                  # Star type property table (Red/White Dwarf, NS)
     'RedDwarfPlasmaAccumulatorCalculator',        # Energy accumulation in plasma convection
 
+    # =========================================================================
+    # GROK THREAD BA400FD1 — SOURCE6 + SOURCE8 COMPUTATIONAL INFRASTRUCTURE
+    # Source: https://x.com/i/grok/share/ba400fd152aa4798abb49539b92e98ed
+    # ScientificCalculatorDialog.cpp (Qt6) — star_magic source6 + source8 blocks
+    # Migrated from CondensedPhysics.py Source6+8 blocks (March 2026)
+    # =========================================================================
+    # SOURCE6 — Wolfram Physics calculators (2 classes)
+    'ReactorEnergyS6Calculator',                 # E_react = (rho_SCm * v_SCm^2 / rho_A) * exp(-kappa*t)
+    'SpacetimeMetricS6Calculator',               # Tr(A_uv) = sum(g_ii + eta*Ts00*cos(pi*t_n))
+    'SOURCE6_BA400FD1_CALCULATORS',              # Registry dict for Source6 calculators
+    # SOURCE8 — Computational infrastructure (10 classes)
+    'DimensionalAnalysisS8Calculator',           # Unit exponent consistency check (M^a L^b T^c)
+    'QAOAOptimizationS8Calculator',              # <C> = layers * cos(beta) * sin(gamma)
+    'CategoryFunctorS8Calculator',               # complexity = objects + morphisms * 0.5
+    'LLVMJITCompilerS8Calculator',               # speedup = (1 + opt*0.3) * sqrt(opcodes)
+    'FederatedLearningS8Calculator',             # accuracy = 0.5 + 0.4*(1-exp(-r/10))*sqrt(c*e/100)
+    'NeuralSymbolicEvalS8Calculator',            # error = symbolic_complexity / (layers * sqrt(samples))
+    'NeuromorphicAcceleratorS8Calculator',       # speedup = (neurons * spikes_per_s) / 1e9
+    'BlockchainECDSAS8Calculator',               # time_ms = sigs * (bits/128) * 0.5
+    'OperationalTransformS8Calculator',          # convergence_ms = clients * ops * latency / 100
+    'MPIDistributedS8Calculator',                # efficiency = 1 / ((1+ovhd/100) * log2(procs))
+    'SOURCE8_BA400FD1_CALCULATORS',              # Registry dict for Source8 calculators
+
 ]
 
 
@@ -39398,5 +39421,497 @@ class UnifiedFieldTimeSeriesCalculator:
             'frames':            frames,
             'status':            'TIER 2 simulation - unified field time-series evolution',
         }
+
+
+# ╔═══════════════════════════════════════════════════════════════════════════════╗
+# ║       GROK THREAD BA400FD1 — SOURCE6 + SOURCE8 COMPUTATIONAL INFRASTRUCTURE  ║
+# ║       ScientificCalculatorDialog.cpp (Qt6 Star Magic Calculator)              ║
+# ║       Source: https://x.com/i/grok/share/ba400fd152aa4798abb49539b92e98ed    ║
+# ║       Date: March 2026                                                        ║
+# ╚═══════════════════════════════════════════════════════════════════════════════╝
+
+# =============================================================================
+# SOURCE6_WOLFRAM_PHYSICS CALCULATORS (migrated from CondensedPhysics.py)
+# =============================================================================
+
+class ReactorEnergyS6Calculator:
+    """
+    Reactor Energy E_react from source6_wolfram_physics.cpp
+
+    E_react = (rho_SCm * v_SCm^2 / rho_A) * exp(-kappa * t)
+
+    Models the energy density produced when SCm (superconductive material)
+    moves through the Aether field at high velocity, then decays over time.
+
+    Constants:
+        rho_SCm  ~ 1e15 kg/m3   (SCm density in stellar cores)
+        v_SCm    ~ 0.99c         (near-light SCm velocity)
+        rho_A    ~ 1e-23 kg/m3  (ambient Aether density)
+        kappa    ~ 0.0005 /day   (decay constant)
+
+    Source: source6_wolfram_physics.cpp — ba400fd152aa4798abb49539b92e98ed
+    """
+
+    C = 2.99792458e8  # Speed of light (m/s)
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t       = dataset.get('t',        0.0)
+        rho_SCm = dataset.get('rho_SCm',  1e15)
+        v_SCm   = dataset.get('v_SCm',    0.99 * self.C)
+        rho_A   = dataset.get('rho_A',    1e-23)
+        kappa   = dataset.get('kappa',    0.0005)
+
+        if rho_A <= 0.0:
+            E_react = 0.0
+        else:
+            E_react = (rho_SCm * v_SCm**2 / rho_A) * math.exp(-kappa * t)
+
+        return {
+            'value':    E_react,
+            't':        t,
+            'rho_SCm':  rho_SCm,
+            'v_SCm':    v_SCm,
+            'rho_A':    rho_A,
+            'kappa':    kappa,
+            'units':    'J/m3',
+            'equation': (
+                f"E_react = ({rho_SCm:.3e} x {v_SCm:.3e}^2 / {rho_A:.3e})"
+                f" x exp(-{kappa} x {t}) = {E_react:.6e} J/m3"
+            ),
+        }
+
+
+class SpacetimeMetricS6Calculator:
+    """
+    Spacetime Metric Modulation A_uv from source6_wolfram_physics.cpp
+
+    A_uv = g_uv + eta * T_s00 * cos(pi * t_n)
+    Trace = sum_i (g_ii + modulation)
+
+    Models the perturbation of Minkowski spacetime by the stellar
+    stress-energy tensor T_s^uv mediated through Aether coupling eta.
+
+    Constants:
+        g_uv  = diag(1, -1, -1, -1)  (Minkowski signature +---)
+        eta   ~ 1e-22                  (Aether coupling constant)
+        T_s00 ~ 1.27e3 + 1.11e7 J/m3 (stellar energy-momentum component)
+
+    Named S6 to distinguish from SpacetimeMetricCalculator in CondensedPhysics.py (CP1).
+
+    Source: source6_wolfram_physics.cpp — ba400fd152aa4798abb49539b92e98ed
+    """
+
+    # Minkowski metric (signature +,-,-,-)
+    G_MU_NU = [[1.0, 0.0, 0.0, 0.0],
+               [0.0, -1.0, 0.0, 0.0],
+               [0.0, 0.0, -1.0, 0.0],
+               [0.0, 0.0, 0.0, -1.0]]
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t_n  = dataset.get('t_n',   0.0)
+        eta  = dataset.get('eta',   1e-22)
+        Ts00 = dataset.get('Ts00',  1.27e3 + 1.11e7)
+
+        mod   = eta * Ts00 * math.cos(math.pi * t_n)
+        trace = sum(self.G_MU_NU[i][i] + mod for i in range(4))
+
+        return {
+            'value':      trace,
+            't_n':        t_n,
+            'eta':        eta,
+            'Ts00':       Ts00,
+            'modulation': mod,
+            'units':      'dimensionless',
+            'equation': (
+                f"Tr(A_uv) = (1-1-1-1) + 4 x ({eta:.2e} x {Ts00:.2e}"
+                f" x cos(pi x {t_n})) = {trace:.6e}"
+            ),
+        }
+
+
+# =============================================================================
+# SOURCE8_WOLFRAM COMPUTATIONAL INFRASTRUCTURE (migrated from CondensedPhysics.py)
+# =============================================================================
+
+class DimensionalAnalysisS8Calculator:
+    """
+    Dimensional Analysis unit consistency from source8_wolfram.cpp
+
+    Returns 1.0 if [M^a L^b T^c] exponents match between two expressions,
+    0.0 if they disagree (dimensional mismatch detected).
+
+    Named with S8 suffix to distinguish from existing
+    DimensionalAnalysisOrb58Calculator and SIDimensionalAnalysisCalculator.
+
+    Source: source8_wolfram.cpp — ba400fd152aa4798abb49539b92e98ed
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        m1 = dataset.get('mass_exp1',   1.0)
+        m2 = dataset.get('mass_exp2',   1.0)
+        l1 = dataset.get('length_exp1', 1.0)
+        l2 = dataset.get('length_exp2', 1.0)
+        t1 = dataset.get('time_exp1',   -2.0)
+        t2 = dataset.get('time_exp2',   -2.0)
+
+        match = (abs(m1 - m2) < 1e-9 and abs(l1 - l2) < 1e-9 and abs(t1 - t2) < 1e-9)
+        score = 1.0 if match else 0.0
+
+        return {
+            'value':       score,
+            'match':       match,
+            'mass_diff':   abs(m1 - m2),
+            'length_diff': abs(l1 - l2),
+            'time_diff':   abs(t1 - t2),
+            'units':       'dimensionless',
+            'equation':    f"[M^{m1} L^{l1} T^{t1}] vs [M^{m2} L^{l2} T^{t2}]",
+        }
+
+
+class QAOAOptimizationS8Calculator:
+    """
+    QAOA Quantum Approximate Optimization Algorithm from source8_wolfram.cpp
+
+    <C> = layers * cos(beta) * sin(gamma)
+
+    Expectation value of the cost Hamiltonian after p layers of the
+    Quantum Approximate Optimization Algorithm using mixer angle beta
+    and cost angle gamma.
+
+    Parameters:
+        layers (int)   : Number of QAOA layers p (default 1)
+        beta   (float) : Mixer Hamiltonian rotation angle (radians, default 0.5)
+        gamma  (float) : Cost Hamiltonian rotation angle (radians, default 1.0)
+
+    Named S8 to distinguish from QAOAOptimizationCalculator in CondensedPhysics.py (CP1).
+
+    Source: source8_wolfram.cpp — ba400fd152aa4798abb49539b92e98ed
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        layers = dataset.get('layers', 1)
+        beta   = dataset.get('beta',   0.5)
+        gamma  = dataset.get('gamma',  1.0)
+
+        expectation = layers * math.cos(beta) * math.sin(gamma)
+
+        return {
+            'value':    expectation,
+            'layers':   layers,
+            'beta':     beta,
+            'gamma':    gamma,
+            'units':    'dimensionless',
+            'equation': f"<C> = {layers} x cos({beta:.3f}) x sin({gamma:.3f}) = {expectation:.6f}",
+        }
+
+
+class CategoryFunctorS8Calculator:
+    """
+    Category Theory Functor complexity from source8_wolfram.cpp
+
+    complexity = objects + morphisms * 0.5
+
+    Models the computational complexity of applying a functor
+    (structure-preserving map) between categories in the UQFF
+    algebraic framework.
+
+    Named with S8 suffix to distinguish from CategoryFunctorOrb61Calculator.
+
+    Source: source8_wolfram.cpp — ba400fd152aa4798abb49539b92e98ed
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        objects   = dataset.get('objects',   1.0)
+        morphisms = dataset.get('morphisms', 0.0)
+
+        complexity = objects + morphisms * 0.5
+
+        return {
+            'value':      complexity,
+            'objects':    objects,
+            'morphisms':  morphisms,
+            'units':      'dimensionless',
+            'equation':   f"complexity = {objects} + {morphisms} x 0.5 = {complexity}",
+        }
+
+
+class LLVMJITCompilerS8Calculator:
+    """
+    LLVM JIT Compiler speedup from source8_wolfram.cpp
+
+    speedup = (1 + opt_level * 0.3) * sqrt(opcodes)
+
+    Estimates the speedup factor of LLVM JIT-compiled UQFF physics
+    expressions vs. interpreted evaluation, as a function of optimization
+    level and bytecode size.
+
+    Parameters:
+        opcodes   (float) : Number of LLVM IR opcodes (default 100)
+        opt_level (float) : LLVM optimization level 0-3 (default 2)
+
+    Source: source8_wolfram.cpp — ba400fd152aa4798abb49539b92e98ed
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        opcodes   = dataset.get('opcodes',   100.0)
+        opt_level = dataset.get('opt_level', 2.0)
+
+        speedup = (1.0 + opt_level * 0.3) * math.sqrt(opcodes)
+
+        return {
+            'value':     speedup,
+            'opcodes':   opcodes,
+            'opt_level': opt_level,
+            'units':     'x',
+            'equation':  f"speedup = (1+{opt_level}x0.3) x sqrt({opcodes}) = {speedup:.2f}x",
+        }
+
+
+class FederatedLearningS8Calculator:
+    """
+    Federated Learning accuracy from source8_wolfram.cpp
+
+    accuracy = 0.5 + 0.4 * (1 - exp(-rounds/10)) * sqrt(clients * epochs / 100)
+
+    Models the converged model accuracy for a federated learning system
+    used in EquationSuggestModel (LSTM autocomplete) across distributed
+    Star Magic calculator nodes.
+
+    Parameters:
+        clients      (float) : Number of federated clients (default 10)
+        rounds       (float) : Communication rounds (default 5)
+        local_epochs (float) : Local epochs per round (default 3)
+
+    Source: source8_wolfram.cpp — ba400fd152aa4798abb49539b92e98ed
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        clients      = dataset.get('clients',      10.0)
+        rounds       = dataset.get('rounds',       5.0)
+        local_epochs = dataset.get('local_epochs', 3.0)
+
+        accuracy = 0.5 + 0.4 * (1.0 - math.exp(-rounds / 10.0)) * math.sqrt(
+            clients * local_epochs / 100.0
+        )
+
+        return {
+            'value':        accuracy,
+            'clients':      clients,
+            'rounds':       rounds,
+            'local_epochs': local_epochs,
+            'units':        'fraction',
+            'equation': (
+                f"accuracy = 0.5 + 0.4 x (1 - exp(-{rounds}/10))"
+                f" x sqrt({clients} x {local_epochs}/100) = {accuracy:.4f}"
+            ),
+        }
+
+
+class NeuralSymbolicEvalS8Calculator:
+    """
+    Neural-Symbolic hybrid evaluation error from source8_wolfram.cpp
+
+    error = symbolic_complexity / (neural_layers * sqrt(training_samples))
+
+    Estimates the prediction error of a neural-symbolic hybrid that
+    combines SymEngine symbolic math with a Torch neural head for
+    UQFF physics equation evaluation.
+
+    Parameters:
+        symbolic_complexity (float) : Complexity of symbolic expression (default 10)
+        neural_layers       (float) : Number of neural network layers (default 3)
+        training_samples    (float) : Number of training samples (default 1000)
+
+    Source: source8_wolfram.cpp — ba400fd152aa4798abb49539b92e98ed
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        symbolic_complexity = dataset.get('symbolic_complexity', 10.0)
+        neural_layers       = dataset.get('neural_layers',       3.0)
+        training_samples    = dataset.get('training_samples',    1000.0)
+
+        denom = neural_layers * math.sqrt(max(training_samples, 1.0))
+        error = symbolic_complexity / denom if denom > 0 else float('inf')
+
+        return {
+            'value':               error,
+            'symbolic_complexity': symbolic_complexity,
+            'neural_layers':       neural_layers,
+            'training_samples':    training_samples,
+            'units':               'dimensionless',
+            'equation': (
+                f"error = {symbolic_complexity} / ({neural_layers}"
+                f" x sqrt({training_samples})) = {error:.6f}"
+            ),
+        }
+
+
+class NeuromorphicAcceleratorS8Calculator:
+    """
+    Neuromorphic hardware speedup from source8_wolfram.cpp
+
+    speedup = (neurons * spikes_per_second) / 1e9
+
+    Computes the speedup factor (relative to 1 GFLOP/s CPU baseline)
+    of a spiking neuromorphic accelerator used for UQFF equation solving.
+
+    Parameters:
+        neurons          (float) : Number of neuromorphic neurons (default 1000)
+        spikes_per_second (float): Spike rate per neuron in Hz (default 1e6)
+
+    Source: source8_wolfram.cpp — ba400fd152aa4798abb49539b92e98ed
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        neurons           = dataset.get('neurons',           1000.0)
+        spikes_per_second = dataset.get('spikes_per_second', 1e6)
+
+        speedup = (neurons * spikes_per_second) / 1e9
+
+        return {
+            'value':             speedup,
+            'neurons':           neurons,
+            'spikes_per_second': spikes_per_second,
+            'units':             'x',
+            'equation': (
+                f"speedup = ({neurons:.0f} x {spikes_per_second:.2e}) / 1e9"
+                f" = {speedup:.4f}x"
+            ),
+        }
+
+
+class BlockchainECDSAS8Calculator:
+    """
+    ECDSA signature verification time from source8_wolfram.cpp
+
+    time_ms = signatures * (curve_bits / 128) * 0.5
+
+    Estimates elliptic-curve digital-signature verification time
+    for blockchain session logging in ScientificCalculatorDialog.
+
+    Parameters:
+        signatures (float) : Number of signatures to verify (default 1)
+        curve_bits (float) : Elliptic curve key size in bits (default 256)
+
+    Source: source8_wolfram.cpp — ba400fd152aa4798abb49539b92e98ed
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        signatures = dataset.get('signatures', 1.0)
+        curve_bits = dataset.get('curve_bits', 256.0)
+
+        time_ms = signatures * (curve_bits / 128.0) * 0.5
+
+        return {
+            'value':      time_ms,
+            'signatures': signatures,
+            'curve_bits': curve_bits,
+            'units':      'ms',
+            'equation': (
+                f"time = {signatures} x ({curve_bits}/128) x 0.5"
+                f" = {time_ms:.3f} ms"
+            ),
+        }
+
+
+class OperationalTransformS8Calculator:
+    """
+    Operational Transform convergence time from source8_wolfram.cpp
+
+    convergence_ms = clients * operations * network_latency_ms / 100
+
+    Models the time for a collaborative OT (operational-transform) system
+    to converge when multiple users simultaneously edit Star Magic expressions
+    via the MQTT / WebSocket collaborative session.
+
+    Parameters:
+        clients              (float) : Number of collaborating clients (default 2)
+        operations           (float) : Concurrent operations count (default 10)
+        network_latency_ms   (float) : One-way network latency in ms (default 50)
+
+    Source: source8_wolfram.cpp — ba400fd152aa4798abb49539b92e98ed
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        clients            = dataset.get('clients',            2.0)
+        operations         = dataset.get('operations',         10.0)
+        network_latency_ms = dataset.get('network_latency_ms', 50.0)
+
+        convergence = clients * operations * network_latency_ms / 100.0
+
+        return {
+            'value':              convergence,
+            'clients':            clients,
+            'operations':         operations,
+            'network_latency_ms': network_latency_ms,
+            'units':              'ms',
+            'equation': (
+                f"convergence = {clients} x {operations}"
+                f" x {network_latency_ms} / 100 = {convergence:.2f} ms"
+            ),
+        }
+
+
+class MPIDistributedS8Calculator:
+    """
+    MPI parallel efficiency from source8_wolfram.cpp
+
+    efficiency = 1 / ((1 + overhead/100) * log2(procs))
+
+    Estimates the parallel efficiency of an MPI-distributed UQFF
+    calculation cluster using Amdahl/Gustafson scaling.
+
+    Parameters:
+        processes                  (float) : Number of MPI processes (default 4)
+        communication_overhead_pct (float) : Communication overhead % (default 10)
+
+    Source: source8_wolfram.cpp — ba400fd152aa4798abb49539b92e98ed
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        processes     = dataset.get('processes',                     4.0)
+        overhead_pct  = dataset.get('communication_overhead_pct',   10.0)
+
+        procs      = max(2.0, processes)
+        efficiency = 1.0 / ((1.0 + overhead_pct / 100.0) * math.log2(procs))
+
+        return {
+            'value':                       efficiency,
+            'processes':                   processes,
+            'communication_overhead_pct':  overhead_pct,
+            'units':                       'fraction',
+            'equation': (
+                f"efficiency = 1 / ((1+{overhead_pct}/100)"
+                f" x log2({procs:.0f})) = {efficiency:.4f}"
+            ),
+        }
+
+
+# --- Registries ---
+
+SOURCE6_BA400FD1_CALCULATORS = {
+    'ReactorEnergyS6Calculator':    ReactorEnergyS6Calculator(),
+    'SpacetimeMetricS6Calculator':  SpacetimeMetricS6Calculator(),
+}
+
+SOURCE8_BA400FD1_CALCULATORS = {
+    'DimensionalAnalysisS8Calculator':     DimensionalAnalysisS8Calculator(),
+    'QAOAOptimizationS8Calculator':        QAOAOptimizationS8Calculator(),
+    'CategoryFunctorS8Calculator':         CategoryFunctorS8Calculator(),
+    'LLVMJITCompilerS8Calculator':         LLVMJITCompilerS8Calculator(),
+    'FederatedLearningS8Calculator':       FederatedLearningS8Calculator(),
+    'NeuralSymbolicEvalS8Calculator':      NeuralSymbolicEvalS8Calculator(),
+    'NeuromorphicAcceleratorS8Calculator': NeuromorphicAcceleratorS8Calculator(),
+    'BlockchainECDSAS8Calculator':         BlockchainECDSAS8Calculator(),
+    'OperationalTransformS8Calculator':    OperationalTransformS8Calculator(),
+    'MPIDistributedS8Calculator':          MPIDistributedS8Calculator(),
+}
 
 
