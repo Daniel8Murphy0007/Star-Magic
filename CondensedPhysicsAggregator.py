@@ -169,12 +169,38 @@ from bh_thermodynamics_module import (
 )
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# IMPORT FROM GROKTHREADUQFFEXTENSIONS.PY (Thread 9c3666463ac14753b4f3bea869caaf01)
+# 8 UQFF extension calculators + master: 13-term g_res, asymmetrical capacitor,
+# variable light speed, fractal time, vacuum probability, 26-layer energies,
+# compressed gravity (8 terms), 17 buoyancy proof variants
+# ═══════════════════════════════════════════════════════════════════════════════
+from GrokThreadUQFFExtensions import (
+    GROK_THREAD_UQFF_CALCULATORS,
+    UQFFConstants,
+    SystemParams,
+    ResonanceGravityCalculator,
+    AsymmetricalCapacitorCalculator,
+    UniversalMagnetismCalculator,
+    AetherMetricTensor,
+    UnifiedFieldCalculator,
+    VariableLightSpeedCalculator,
+    FractalTimeCalculator,
+    VacuumFluctuationProbability,
+    QuantumLevelEnergiesCalculator,
+    CompressedGravityCalculator,
+    BuoyancyForceProofCalculator,
+    GrokThreadUQFFMasterCalculator,
+)
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # AGGREGATED MASTER REGISTRY
 # ═══════════════════════════════════════════════════════════════════════════════
 
 # Aggregate all calculators from all CP modules
 ALL_CALCULATORS = {
     **CP2_CALCULATORS,
+    # Grok Thread UQFF Extensions (Thread 9c3666463ac14753b4f3bea869caaf01)
+    **GROK_THREAD_UQFF_CALCULATORS,
     # Grok Deep Analysis Modules (Equations 12-99)
     **AGN_FEEDBACK_CALCULATORS,
     **GRB_CALCULATORS,
@@ -187,8 +213,8 @@ ALL_CALCULATORS = {
 }
 
 # Module metadata
-AGGREGATOR_VERSION = "1.1.0"
-TOTAL_MODULES = 8  # CP1, CP2, + 6 Grok Deep Analysis modules
+AGGREGATOR_VERSION = "1.2.0"
+TOTAL_MODULES = 9  # CP1, CP2, GrokThreadUQFF, + 6 Grok Deep Analysis modules
 
 
 def get_calculator(name: str):

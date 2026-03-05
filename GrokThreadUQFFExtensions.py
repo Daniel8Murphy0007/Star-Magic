@@ -2225,5 +2225,31 @@ def main():
     print("="*80 + "\n")
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# MODULE REGISTRY
+# ═══════════════════════════════════════════════════════════════════════════════
+
+GROK_THREAD_UQFF_CALCULATORS = {
+    'UQFFConstants': UQFFConstants,
+    'SystemParams': SystemParams,
+    'ResonanceGravityCalculator': ResonanceGravityCalculator,
+    'AsymmetricalCapacitorCalculator': AsymmetricalCapacitorCalculator,
+    'UniversalMagnetismCalculator': UniversalMagnetismCalculator,
+    'AetherMetricTensor': AetherMetricTensor,
+    'UnifiedFieldCalculator': UnifiedFieldCalculator,
+    'VariableLightSpeedCalculator': VariableLightSpeedCalculator,
+    'FractalTimeCalculator': FractalTimeCalculator,
+    'VacuumFluctuationProbability': VacuumFluctuationProbability,
+    'QuantumLevelEnergiesCalculator': QuantumLevelEnergiesCalculator,
+    'CompressedGravityCalculator': CompressedGravityCalculator,
+    'BuoyancyForceProofCalculator': BuoyancyForceProofCalculator,
+    'GrokThreadUQFFMasterCalculator': GrokThreadUQFFMasterCalculator,
+}
+"""Registry of all 14 UQFF calculator classes from Grok thread 9c3666463ac14753b4f3bea869caaf01.
+Thread: "Star Magic UQFF Extensions" — 13-term g_res, asymmetrical capacitor,
+variable light speed, fractal time, vacuum probability, 26-layer energies,
+compressed gravity (8 terms), 17 buoyancy proof variants."""
+
+
 if __name__ == "__main__":
     main()
