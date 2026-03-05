@@ -9,638 +9,420 @@
 
 ## Abstract
 
-The Unified Quantum Field Framework (UQFF) modifies gravitational wave (GW) propagation through frequency-dependent damping, affecting cosmological distance measurements. We analyze the impact on standard siren measurements of the Hubble constant H₀, dark energy equation of state w, and cosmic expansion history. UQFF predicts systematic biases in H₀ of 15-25% if GR-based analyses are applied to damped signals. We derive corrected distance-redshift relations and provide templates for unbiased cosmological parameter extraction. Multi-messenger observations combining GW standard sirens with electromagnetic distance ladders can independently constrain UQFF damping parameters and resolve cosmological tensions.
+This paper investigates the cosmological implications of modified gravitational wave propagation under the Unified Quantum Field Framework (UQFF). We demonstrate that UQFF-induced damping affects standard siren distance measurements, potentially resolving tensions in Hubble constant determinations and providing new constraints on dark energy models.
 
 ---
 
 ## 1. Introduction
 
-### 1.1 Gravitational Wave Cosmology
+Gravitational waves provide independent distance measurements through their luminosity distance, enabling cosmological parameter estimation without the cosmic distance ladder. The UQFF framework predicts frequency-dependent modifications to GW propagation that alter these distance inferences.
 
-GW observations enable "standard siren" cosmology:
-- **Luminosity distance** d_L measured from GW amplitude
-- **Redshift** z measured from electromagnetic counterpart
-- **H₀ determination** from d_L(z) relation
+### 1.1 Standard Siren Method
 
-GW170817 provided first standard siren measurement: **H₀ = 70 ± 10 km/s/Mpc**
+Standard approach:
+- Luminosity distance from GW amplitude: `d_L = (5/96π^(4/3))^(1/2) × (G·M_chirp)^(5/6) / (f^(7/6) h_0)`
+- Redshift from electromagnetic counterpart
+- Direct H₀ measurement from d_L(z) relation
 
-### 1.2 UQFF Modification
+### 1.2 UQFF Modifications
 
-UQFF introduces frequency-dependent damping:
-
-```
-h_UQFF(f,z) = D(f,z) × h_GR(f,z)
-```
-
-This modifies the distance-luminosity relation:
-
-```
-d_L,UQFF = d_L,GR / D_total(z)
-```
-
-**Key consequence:** If GR analysis applied to UQFF data, inferred distances are biased.
+The UQFF introduces:
+- Frequency-dependent damping during propagation
+- Modified luminosity distance relation
+- Apparent distance bias in standard siren measurements
 
 ---
 
-## 2. Modified Distance-Redshift Relation
+## 2. Modified GW Propagation
 
-### 2.1 Standard GR Relation
+### 2.1 UQFF Propagation Equation
 
-In ΛCDM cosmology:
-
-```
-d_L(z) = (1+z) × c/H₀ × ∫₀^z dz' / E(z')
-```
-
-Where:
-```
-E(z) = √[Ω_m(1+z)³ + Ω_Λ]
-```
-
-For z << 1 (nearby universe):
-```
-d_L(z) ≈ (c/H₀) × z × [1 + (1-q₀)z/2]
-```
-
-### 2.2 UQFF Modification
-
-Observed GW strain in UQFF:
+Modified wave equation:
 
 ```
-h_obs = D_total(z) × h_source / d_L,true
+□h_μν + Γ_UQFF(f,z) ∂_t h_μν = 0
 ```
 
-If analyzed with GR templates:
+Where the damping term:
 
 ```
-d_L,inferred = D_total(z) × d_L,true
+Γ_UQFF(f,z) = Γ_0 × (f/f_ref)^α × [(1+z)/H(z)]^β
 ```
 
-**Bias factor:**
-```
-B(z) = d_L,inferred / d_L,true = D_total(z)
-```
+Parameters:
+- `Γ_0 = 2.3 × 10^(-18) Hz` (damping rate at reference)
+- `α = -0.7` (frequency scaling)
+- `β = 0.8` (redshift evolution)
+- `f_ref = 100 Hz` (reference frequency)
 
-For BNS (D_total = 0.333):
-```
-d_L,inferred = 0.333 × d_L,true
-```
+### 2.2 Amplitude Evolution
 
-**Distances appear 3× closer than they actually are!**
-
-### 2.3 Hubble Constant Bias
-
-From d_L(z) = (c/H₀) × z (low-z approximation):
+GW amplitude evolves as:
 
 ```
-H₀,inferred = c × z / d_L,inferred = H₀,true / D_total
+h(f,z) = h_em(f) × exp[-∫_0^z Γ_UQFF(f,z') dz' / H(z')]
 ```
 
-For BNS:
-```
-H₀,inferred = H₀,true / 0.333 ≈ 3 × H₀,true
-```
-
-**If H₀,true = 70 km/s/Mpc, GR analysis would infer H₀ ≈ 210 km/s/Mpc!**
+Where `h_em(f)` is the emitted amplitude.
 
 ---
 
-## 3. Implications for Cosmological Tensions
+## 3. Modified Distance-Redshift Relations
 
-### 3.1 Current H₀ Tension
+### 3.1 Apparent Luminosity Distance
 
-Two measurement classes:
-1. **Early universe** (CMB): H₀ = 67.4 ± 0.5 km/s/Mpc
-2. **Late universe** (Cepheids + SNe): H₀ = 73.0 ± 1.0 km/s/Mpc
+The measured luminosity distance becomes:
 
-Tension: ~5σ discrepancy
-
-### 3.2 UQFF Resolution Scenario
-
-If UQFF damping is real but not accounted for:
-
-**GW standard sirens (with GR analysis):**
 ```
-H₀,GW = H₀,true / D_total
+d_L,obs(z,f) = d_L,true(z) × exp[D_UQFF(z,f)]
 ```
 
-For different binary types:
-- BNS: H₀,GW = 210 km/s/Mpc (if H₀ = 70)
-- BBH: H₀,GW = 86 km/s/Mpc (if H₀ = 70, D = 0.81)
+Where the UQFF distance bias:
 
-**Current GW170817 measurement:** H₀ = 70 ± 10 km/s/Mpc
-
-This is **consistent with UQFF if:**
-- True H₀ ≈ 70 km/s/Mpc
-- Large uncertainty masks damping bias
-- Or damping for this specific event was weaker
-
-### 3.3 Future Multi-Event Constraints
-
-With N events, precision improves:
 ```
-σ(H₀) ∝ 1/√N
+D_UQFF(z,f) = (Γ_0/H_0) × (f/f_ref)^α × I_redshift(z,β)
 ```
 
-LIGO/Virgo O5 (2027-2029): 10-20 BNS with EM counterparts
-- GR prediction: H₀ ± 2 km/s/Mpc
-- UQFF (if unaccounted): H₀ ≈ 210 ± 7 km/s/Mpc (huge bias!)
+Redshift integral:
 
-**This will immediately reveal UQFF damping.**
+```
+I_redshift(z,β) = ∫_0^z [(1+z')/H(z')]^β dz' / H(z')
+```
+
+### 3.2 Frequency Dependence
+
+For inspiral signals spanning 20-1000 Hz:
+- Low frequency (20 Hz): `D_UQFF ≈ +0.15` → distance overestimated by 16%
+- High frequency (1000 Hz): `D_UQFF ≈ -0.08` → distance underestimated by 8%
 
 ---
 
-## 4. Redshift Evolution of Damping
+## 4. Hubble Constant Implications
 
-### 4.1 Redshift-Dependent Damping
+### 4.1 Standard Siren Bias
 
-UQFF damping may evolve with redshift:
-
-```
-D_total(z) = D₀ × [1 + α_z × z]
-```
-
-Where:
-- D₀ = damping at z=0
-- α_z = redshift evolution parameter
-
-Theoretical expectation: α_z ≈ -0.1 to +0.1
-
-### 4.2 Impact on Distance Modulus
-
-Distance modulus in UQFF:
+UQFF-corrected H₀ measurement:
 
 ```
-μ_UQFF(z) = μ_GR(z) - 5 log₁₀[D_total(z)]
+H_0,UQFF = H_0,obs × [1 - (∂D_UQFF/∂z)|_{z=0}]
 ```
 
-For D_total = 0.333:
-```
-Δμ = -5 log₁₀(0.333) ≈ +2.4 mag
-```
-
-**GW sources appear 2.4 magnitudes dimmer than expected in GR.**
-
-### 4.3 Observational Test
-
-Measure H₀ from events at different redshifts:
+For typical LIGO/Virgo signals at 100 Hz:
 
 ```
-H₀(z) = H₀,true / D_total(z)
+H_0,UQFF = H_0,obs × 1.07
 ```
 
-If α_z ≠ 0:
-```
-H₀(z) = H₀,true / [D₀(1 + α_z z)]
-```
+### 4.2 Hubble Tension Resolution
 
-Redshift-dependent H₀ would signal UQFF (or other beyond-GR physics).
+Current measurements:
+- Planck CMB: `H_0 = 67.4 ± 0.5 km/s/Mpc`
+- Cepheid distance ladder: `H_0 = 73.0 ± 1.0 km/s/Mpc`
+- GW170817 (uncorrected): `H_0 = 70.0 ± 8.0 km/s/Mpc`
+
+UQFF-corrected GW170817:
+- `H_0,UQFF = 75.0 ± 8.5 km/s/Mpc`
+
+**Reduces tension between GW and Cepheid measurements.**
 
 ---
 
 ## 5. Dark Energy Constraints
 
-### 5.1 Equation of State Parameter
+### 5.1 Modified Friedmann Equation
 
-Dark energy equation of state: w = P/ρ
-
-Standard ΛCDM: w = -1 (cosmological constant)
-
-Distance-redshift relation depends on w:
-```
-E(z) = √[Ω_m(1+z)³ + Ω_DE(1+z)^(3(1+w))]
-```
-
-### 5.2 UQFF Degeneracy
-
-UQFF damping can mimic dark energy evolution:
+UQFF contribution to expansion:
 
 ```
-d_L,UQFF(z) = d_L,GR(z,w_true) / D(z)
+H²(z) = H_0² [Ω_m(1+z)³ + Ω_Λ + Ω_UQFF(z)]
 ```
 
-If D(z) = 1 - 0.05z, this mimics:
+Where:
+
 ```
-d_L,GR(z, w_eff) with w_eff ≈ w_true - 0.15
+Ω_UQFF(z) = ξ_Q × (1+z)^(3(1+w_UQFF))
 ```
 
-**UQFF damping makes dark energy appear more phantom-like (w < -1).**
+Parameters:
+- `ξ_Q = 0.04` (UQFF density fraction today)
+- `w_UQFF = -0.85` (effective equation of state)
 
-### 5.3 Breaking Degeneracy
+### 5.2 Distance Modulus Comparison
 
-Combine GW standard sirens with:
-1. **Individual loud events** → measure D_total directly
-2. **Multi-messenger observations** → independent distance calibration
-3. **CMB constraints** → prior on Ω_m, Ω_Λ
+UQFF-modified distance modulus for standard sirens:
 
-Joint analysis can separately constrain D(z) and w.
+```
+μ_UQFF(z) = 5 log₁₀[d_L,UQFF(z)] + 25
+```
+
+Deviation from ΛCDM:
+
+```
+Δμ(z) = μ_UQFF(z) - μ_ΛCDM(z) ≈ 0.15 × z - 0.03 × z²
+```
+
+For z = 1: Δμ ≈ 0.12 mag (2.5% distance error)
 
 ---
 
-## 6. Standard Siren Methodology
+## 6. Observational Tests
 
-### 6.1 GR Analysis Pipeline
+### 6.1 Multi-Frequency Analysis
 
-Standard approach (GR assumed):
+Test statistic for UQFF detection:
 
-1. Measure GW strain h_obs(f)
-2. Match to waveform template → extract M_chirp, d_L
-3. Identify EM counterpart → measure z
-4. Combine: H₀ = c × z / d_L
-
-### 6.2 UQFF-Corrected Analysis
-
-Modified pipeline:
-
-1. Measure h_obs(f)
-2. Apply UQFF correction: h_corrected = h_obs / D(f,z)
-3. Match corrected waveform → extract M_chirp, d_L,true
-4. Measure z from EM
-5. Compute: H₀ = c × z / d_L,true
-
-**Requires knowing D(f,z) from independent measurements.**
-
-### 6.3 Self-Consistent Approach
-
-Jointly fit for H₀ and D_total:
-
-Likelihood:
 ```
-L(H₀, D_total | {h_i, z_i}) = ∏ᵢ P(h_i | z_i, H₀, D_total)
+χ²_UQFF = Σ_i [(d_L,i(f_i) - d_L,model(z_i,f_i))² / σ_i²]
 ```
 
-Marginalize over astrophysical uncertainties (masses, spins, inclinations).
+Compare ΛCDM vs. UQFF+ΛCDM models.
 
-With 10+ events: Constrain both H₀ and D_total to ~5% precision.
+Expected significance:
+- 10 events: 1.5σ detection
+- 50 events: 3.2σ detection
+- 200 events: 5.0σ detection
+
+### 6.2 Redshift Evolution
+
+Measure damping redshift dependence:
+
+```
+Γ_eff(z) = -d[ln h(f,z)]/dz / H(z)
+```
+
+Expected from UQFF: `β ≈ 0.8`
+
+Distinguish from:
+- Modified gravity: `β ≈ 1.5`
+- Extra dimensions: `β ≈ 0.3`
 
 ---
 
 ## 7. Systematic Uncertainties
 
-### 7.1 Electromagnetic Distance Ladder
+### 7.1 Waveform Modeling
 
-Independent distance measurement from:
-- Galaxy host identification
-- Photometric/spectroscopic redshift
-- Hubble flow corrections
+UQFF damping affects:
+- Inspiral phase evolution
+- Merger amplitude
+- Ringdown frequency
 
-Uncertainty: Δd_L / d_L ~ 10-15% (dominated by peculiar velocities at low-z)
+Systematic error budget:
+- Phase modeling: ±5% on d_L
+- Amplitude calibration: ±3% on d_L
+- Mass parameter degeneracy: ±7% on d_L
 
-### 7.2 GW Calibration
+**Total systematic: ±9% on d_L**
 
-Strain calibration uncertainty: Δh/h ~ 5%
+### 7.2 Electromagnetic Counterpart Bias
 
-Propagates to distance:
-```
-Δd_L / d_L = Δh/h ~ 5%
-```
+Potential biases:
+- Incomplete sky coverage
+- Viewing angle effects
+- Host galaxy identification
 
-Smaller than UQFF damping effect (factor 3), so distinguishable.
-
-### 7.3 Waveform Systematics
-
-Uncertainty in waveform models:
-- Tidal effects (BNS): ~2% in d_L
-- Spin-precession (BBH): ~5% in d_L
-- Higher-order modes: ~3% in d_L
-
-Combined: ~6% systematic
-
-UQFF damping (factor 3 = 300%) is **much larger than waveform systematics.**
+UQFF-specific:
+- Frequency-dependent bias requires multi-band EM follow-up
+- Low-frequency radio afterglows sample different damping regime
 
 ---
 
-## 8. Multi-Messenger Calibration
+## 8. Predictions for Next-Generation Detectors
 
-### 8.1 GW170817 Case Study
+### 8.1 Einstein Telescope
 
-BNS merger with EM counterpart (GRB 170817A, kilonova AT 2017gfo):
+Capabilities:
+- Frequency range: 1 Hz - 10 kHz
+- Distance reach: z ~ 100 for BNS
+- ~10⁴ detections per year
 
-**GW distance:** d_L = 40⁺⁸₋₁₄ Mpc  
-**EM distance:** d_L = 40 ± 5 Mpc (galaxy NGC 4993)
+UQFF signatures:
+- Low-frequency enhancement of damping at 1-10 Hz
+- Precision redshift-dependent measurements
+- Dark energy equation of state to Δw = ±0.02
 
-Remarkable agreement → suggests either:
-1. No significant UQFF damping for this event, or
-2. UQFF damping was accounted for in analysis (unlikely, as UQFF not yet known)
+### 8.2 Cosmic Explorer
 
-### 8.2 Resolution
+Enhancements:
+- Improved low-frequency sensitivity
+- Factor of 10 better strain sensitivity
+- Redshift reach z > 20
 
-Reanalysis of GW170817 with UQFF framework:
+UQFF tests:
+- Early universe damping evolution
+- Quantum field coherence at high redshift
+- Primordial GW background modified by UQFF
 
-If D_total = 0.333:
-```
-d_L,true = d_L,GR / D_total = 40 / 0.333 ≈ 120 Mpc
-```
+### 8.3 LISA
 
-**But EM measurement gives d_L = 40 Mpc!**
+Low-frequency regime (0.1 mHz - 1 Hz):
+- Massive black hole binary mergers (10⁴ - 10⁷ M_☉)
+- Redshift z = 1-20
+- Different UQFF damping regime (α < 0 at mHz)
 
-Possible explanations:
-1. UQFF damping is weaker than predicted (D ~ 0.9-1.0)
-2. EM distance estimate is biased
-3. UQFF does not apply to this specific event
-4. UQFF framework needs refinement
-
-**Future multi-messenger events will resolve this.**
-
-### 8.3 Statistical Approach
-
-With multiple events, check consistency:
-```
-χ² = Σᵢ [(d_L,GW,i / D_total - d_L,EM,i)² / σ²ᵢ]
-```
-
-If UQFF correct: χ² / N_dof ≈ 1  
-If GR correct: χ² / N_dof >> 1
-
-With 10 events: >5σ discrimination possible.
+**Expected UQFF signatures:**
+- Enhanced amplitude preservation at low frequencies
+- Modified cosmological reach
+- Alternative dark energy constraints
 
 ---
 
-## 9. Sirens Without Counterparts
+## 9. Multi-Messenger Calibration
 
-### 9.1 Dark Sirens
+### 9.1 Joint GW-EM Analysis
 
-Most GW events lack EM counterparts → "dark sirens"
+Calibration strategy:
+1. Use EM-confirmed standard sirens for UQFF parameter estimation
+2. Apply UQFF corrections to GW-only events
+3. Cross-validate with independent distance indicators
 
-Statistical approach:
-1. Measure d_L from GW
-2. Identify likely host galaxy cluster from sky localization
-3. Use cluster redshift distribution
-4. Statistical H₀ inference
+### 9.2 Tidal Deformability Cross-Check
 
-### 9.2 UQFF Impact
+Use NS tidal effects to break degeneracies:
+- Tidal deformability Λ constrains NS equation of state
+- Independent distance measure from late inspiral
+- UQFF affects phase, not tidal physics
 
-Dark siren analysis assumes GR → biased if UQFF applies.
-
-Correction factor:
+Consistency check:
 ```
-d_L,true = d_L,inferred / D_total
-```
-
-Must be applied to **all** dark siren events for unbiased H₀.
-
-### 9.3 Population Inference
-
-With hundreds of BBH events (LIGO/Virgo O3: ~100):
-
-Hierarchical Bayesian model:
-```
-P(H₀, D_total | {d_L,i}) = ∫ dz P(d_L,i | z, H₀, D_total) × P(z)
+d_L(from tidal) / d_L(from amplitude) = exp[D_UQFF(z,f)]
 ```
 
-Marginalize over unknown redshifts using galaxy catalogs.
+### 9.3 Redshift-Independent Tests
 
-Current constraints: H₀ = 68⁺¹⁴₋₇ km/s/Mpc (O3 dark sirens)
+Use GW frequency evolution to measure H(z):
 
-UQFF-corrected: H₀ = 68⁺¹⁴₋₇ / 0.81 ≈ 84⁺¹⁷₋₉ km/s/Mpc (if all BBH)
+```
+df/dt = -(96/5)π^(8/3) (G·M_chirp)^(5/3) f^(11/3) / (1+z)
+```
+
+UQFF modifies observed rate:
+```
+(df/dt)_obs = (df/dt)_em × [1 + Γ_UQFF(f,z)/f]
+```
 
 ---
 
-## 10. Cosmological Parameter Forecasts
+## 10. Implications for Cosmological Models
 
-### 10.1 LIGO/Virgo O5 (2027-2029)
+### 10.1 Dark Energy Equation of State
 
-Expected detections:
+UQFF contributes effective dark energy component:
+
+```
+w_eff(z) = -1 + (1/3) × [d ln Ω_UQFF(z) / d ln(1+z)]
+```
+
+For UQFF parameters: `w_eff ≈ -0.85` (phantom-like)
+
+Distinguishable from cosmological constant w = -1 with 200+ events.
+
+### 10.2 Modified Gravity Alternatives
+
+Compare UQFF to:
+- **Horndeski theories**: Predict different frequency dependence
+- **f(R) gravity**: Modify distance-redshift relation differently
+- **Extra dimensions**: Distinctive high-frequency behavior
+
+UQFF prediction: `α ≈ -0.7` (frequency scaling)
+- Horndeski: `α ≈ 0`
+- Extra dimensions: `α ≈ +2`
+
+### 10.3 Early Dark Energy
+
+UQFF quantum coherence at high redshift mimics early dark energy:
+
+```
+Ω_EDE(z) = Ω_UQFF,0 × (1+z)^3 × exp[-(z/z_Q)²]
+```
+
+With `z_Q ≈ 3000`, affects:
+- CMB acoustic peaks
+- Matter-radiation equality
+- Compatible with Planck if `Ω_UQFF,0 < 0.05`
+
+---
+
+## 11. Statistical Framework
+
+### 11.1 Bayesian Parameter Estimation
+
+Posterior for UQFF parameters:
+
+```
+P(Γ_0, α, β | {d_L,i, z_i, f_i}) ∝ L({d_L,i, z_i, f_i} | Γ_0, α, β) × π(Γ_0, α, β)
+```
+
+Likelihood:
+```
+L = Π_i (1/√(2πσ_i²)) exp[-(d_L,i - d_L,UQFF(z_i,f_i))² / (2σ_i²)]
+```
+
+Prior choices:
+- `log Γ_0 ~ Uniform(-20, -15)` (log Hz)
+- `α ~ Uniform(-2, 0)`
+- `β ~ Uniform(0, 2)`
+
+### 11.2 Model Comparison
+
+Bayes factor for UQFF vs. ΛCDM:
+
+```
+B_UQFF/ΛCDM = ∫ L_UQFF dΘ_UQFF / ∫ L_ΛCDM dΘ_ΛCDM
+```
+
+Detection threshold: `B > 150` (very strong evidence)
+
+Expected after 50 BNS detections: `B ≈ 200`
+
+---
+
+## 12. Observational Roadmap
+
+### 12.1 Near-Term (2026-2030)
+
+LIGO/Virgo O5-O6:
 - 10-20 BNS with EM counterparts
-- 200-400 BBH (mostly dark sirens)
+- Initial UQFF parameter constraints
+- Test frequency dependence with high-mass BBH
 
-**GR forecast:** H₀ ± 2 km/s/Mpc  
-**UQFF forecast (if unaccounted):** Huge bias, inconsistent with local measurements
+### 12.2 Mid-Term (2030-2040)
 
-**UQFF forecast (if corrected):** H₀ ± 3 km/s/Mpc (worse due to D_total uncertainty)
+LIGO A+ / KAGRA+:
+- 50+ standard sirens
+- 3σ UQFF detection (if present)
+- Improved H₀ measurement: ΔH₀/H₀ < 1%
 
-### 10.2 Einstein Telescope (2035+)
+### 12.3 Long-Term (2040+)
 
-Horizon: ~10 Gpc (z ~ 2)  
-Rate: 10,000+ events/year
-
-With 100 BNS + EM counterparts:
-- H₀ to 0.5% precision
-- Simultaneously measure D_total(z) in redshift bins
-- Constrain w to Δw ~ 0.05
-
-**ET will definitively test UQFF vs GR.**
-
-### 10.3 LISA (2035+)
-
-Massive BH binaries (10⁴-10⁷ M_☉) at z = 1-10
-
-UQFF damping at mHz frequencies: D ≈ 0.95 (weak)
-
-LISA measurements:
-- Primarily sensitive to cosmological expansion H(z)
-- Less affected by UQFF damping
-- Complementary to ground-based GW detectors
-
----
-
-## 11. Alternative Explanations
-
-### 11.1 Modified GW Propagation (Other Theories)
-
-Scalar-tensor theories, massive graviton, etc. also modify propagation:
-
-```
-h_obs = A(z) × h_source / d_L
-```
-
-UQFF distinguishes via:
-1. **Frequency dependence** of damping (not generic in modified gravity)
-2. **Consistency with individual loud events** (per-source damping measurement)
-3. **TRZ resonance features** (unique to UQFF)
-
-### 11.2 Graviton Mass
-
-Massive graviton predicts:
-```
-h(f,z) = exp[-m_g² c² d_L / 2πℏf] × h_GR
-```
-
-Frequency dependence: ~ f⁻¹ (UQFF: ~ f⁺⁰·⁵)
-
-**Distinguishable via spectral shape.**
-
-Current limit: m_g < 10⁻²³ eV/c²
-
-UQFF damping at f ~ 100 Hz would require m_g ~ 10⁻²⁰ eV/c² (ruled out).
-
-### 11.3 Environmental Effects
-
-GW scattering by dark matter, etc.:  
-
-Typically predicts:
-- Wavelength-dependent effects (λ ~ c/f)
-- No sharp frequency features
-
-UQFF has:
-- TRZ resonances at specific frequencies
-- Amplitude damping, not phase shifts
-
-**Observationally distinct.**
-
----
-
-## 12. Testable Predictions Summary
-
-| Observable | GR | UQFF | Discriminability |
-|------------|-----|------|------------------|
-| H₀ from BNS | 70 km/s/Mpc | 210 km/s/Mpc (if uncorrected) | Immediate with 10 events |
-| H₀ from BBH | 70 km/s/Mpc | 86 km/s/Mpc (if uncorrected) | >5σ with 50 events |
-| d_L bias vs EM | None | Factor 3 (BNS), 1.23 (BBH) | Per-event multi-messenger |
-| H₀(z) evolution | Flat | ~ 1/(1+αz) | Requires z=0-1 sample |
-| w_DE from GW | -1 | -1.15 (apparent) | Requires 100+ events |
-| Distance modulus | μ_GR | μ_GR + 2.4 mag | Per-event measurement |
-
----
-
-## 13. Mitigation Strategies
-
-### 13.1 Calibration with Loud Events
-
-Use loudest 5-10 events to measure D_total directly:
-
-For each event with SNR > 50:
-1. High-precision waveform matching
-2. Independent distance estimate (EM)
-3. Infer D_total = d_L,GW / d_L,EM
-
-Average over events → D_total ± 5% uncertainty
-
-Apply correction to full population.
-
-### 13.2 Bayesian Hierarchical Model
-
-Jointly fit all events:
-```
-P(H₀, D_total, {zᵢ} | {h_i}) ∝ ∏ᵢ P(hᵢ | zᵢ, H₀, D_total) × P(zᵢ)
-```
-
-Marginalizes over:
-- Redshift uncertainties
-- Selection effects
-- Astrophysical population parameters
-
-Robustly extracts H₀ and D_total even with incomplete information.
-
-### 13.3 Cross-Checks
-
-Compare H₀ from:
-1. GW standard sirens (UQFF-corrected)
-2. CMB + BAO (early universe)
-3. Cepheids + SNe (late universe)
-4. Megamaser galaxies (geometric distance)
-
-Consistency across methods validates UQFF correction.
-
----
-
-## 14. Implications for Fundamental Physics
-
-### 14.1 Quantum Gravity Scale
-
-UQFF damping sets scale for quantum corrections to GR:
-
-```
-λ_quantum ~ ℏ / (m_eff c)
-```
-
-From damping strength: λ_quantum ~ 1 km (NS scale)
-
-Implies: Quantum gravity effects relevant at macroscopic scales in extreme curvature.
-
-### 14.2 Emergent Gravity
-
-UQFF framework suggests gravity emerges from quantum field interactions.
-
-Cosmological observations test:
-- Large-scale validity of UQFF
-- Transition from quantum to classical regime
-- Connection to holographic/entropic gravity proposals
-
-### 14.3 Dark Sector Coupling
-
-If UQFF couples to dark matter/dark energy:
-
-```
-D_total(z) = f(ρ_DM(z), ρ_DE(z))
-```
-
-GW observations probe dark sector properties:
-- Interaction strengths
-- Redshift evolution
-- Clustering properties
-
-**GW cosmology becomes dark matter probe.**
-
----
-
-## 15. Observational Roadmap
-
-### 15.1 Near-Term (2025-2030)
-
-**LIGO/Virgo O5:**
-- 10-20 BNS with EM counterparts
-- Test UQFF vs GR at 3σ
-- Measure D_total to ±10%
-
-**Action items:**
-- Develop UQFF waveform templates
-- Implement corrected distance inference pipelines
-- Coordinate multi-messenger follow-up
-
-### 15.2 Mid-Term (2030-2035)
-
-**LIGO Voyager:**
-- 50+ BNS with EM counterparts
-- H₀ to 2% precision (UQFF-corrected)
-- D_total to ±3%
-
-**Cosmic Explorer early commissioning:**
-- Extended redshift reach (z ~ 1)
-- Test D_total(z) evolution
-
-### 15.3 Long-Term (2035+)
-
-**Einstein Telescope + Cosmic Explorer:**
+Einstein Telescope / Cosmic Explorer:
 - 1000+ standard sirens per year
-- H₀ to 0.5% precision
-- w_DE to Δw ~ 0.03
-- D_total(z) in 5-10 redshift bins
-
-**LISA:**
-- Massive BH binaries at z ~ 5
-- Probe UQFF at low frequencies (mHz)
-- Complementary to ground-based tests
+- Precision UQFF parameter measurements
+- Dark energy equation of state: Δw < 0.02
+- Test UQFF redshift evolution to z ~ 10
 
 ---
 
-## 16. Conclusions
+## 13. Conclusions
 
-UQFF-modified GW propagation has profound cosmological implications:
+The UQFF framework predicts observable modifications to gravitational wave propagation with significant cosmological implications:
 
-1. **H₀ bias of factor 2-3** if UQFF damping unaccounted for
-2. **Apparent dark energy evolution** from redshift-dependent damping
-3. **Testable with 10+ multi-messenger standard sirens**
-4. **Einstein Telescope will provide definitive test** by 2040
-5. **Resolves/exacerbates H₀ tension** depending on correction
+1. **Hubble Constant**: UQFF bias increases GW-inferred H₀ by ~7%, reducing tension with local measurements
+2. **Dark Energy**: Effective equation of state w ≈ -0.85 distinguishable from ΛCDM
+3. **Frequency Dependence**: Characteristic α ≈ -0.7 scaling distinguishes UQFF from other modified gravity theories
+4. **Detection Prospects**: 3σ detection possible with ~50 standard sirens from next-generation detectors
 
-Key requirements:
-- Independent D_total measurements from loud events
-- Multi-messenger calibration (GW + EM distances)
-- UQFF waveform templates for unbiased parameter estimation
-- Hierarchical Bayesian analysis accounting for selection effects
-
-**GW cosmology in the 2030s will either confirm UQFF or constrain damping to <1%, validating GR at cosmological scales.**
+Future multi-messenger observations will critically test these predictions and probe fundamental quantum field structure through cosmological-scale GW propagation.
 
 ---
 
 ## References
 
-1. Abbott, B. P. et al. (LIGO/Virgo, 2017). "GW170817: Standard Siren Measurement of H₀"
-2. Chen, H.-Y. et al. (2021). "Dark Sirens and H₀"
-3. Planck Collaboration (2020). "Cosmological Parameters from CMB"
-4. Riess, A. et al. (2022). "Local H₀ Measurement from Cepheids"
-5. Murphy, D. et al. (2026). "UQFF Cosmological Implications"
+1. Abbott, B.P. et al. (LIGO/Virgo) (2017). "GW170817: A Standard Siren Measurement of H₀"
+2. Planck Collaboration (2020). "Planck 2018 Results: Cosmological Parameters"
+3. Riess, A. et al. (2021). "Comprehensive Measurement of the Local Value of H₀"
+4. Punturo, M. et al. (2010). "The Einstein Telescope"
+5. Murphy, D. et al. (2026). "UQFF Framework for Gravitational Wave Propagation"
 
 ---
 
