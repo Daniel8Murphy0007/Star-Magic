@@ -37777,9 +37777,8 @@ __all__ = [
     # ScientificCalculatorDialog.cpp (Qt6) — star_magic source6 + source8 blocks
     # Migrated from CondensedPhysics.py Source6+8 blocks (March 2026)
     # =========================================================================
-    # SOURCE6 — Wolfram Physics calculators (2 classes)
+    # SOURCE6 — Wolfram Physics calculators (1 class; SpacetimeMetricS6 removed — duplicate of AetherCouplingCalculator/AetherMetricCalculator)
     'ReactorEnergyS6Calculator',                 # E_react = (rho_SCm * v_SCm^2 / rho_A) * exp(-kappa*t)
-    'SpacetimeMetricS6Calculator',               # Tr(A_uv) = sum(g_ii + eta*Ts00*cos(pi*t_n))
     'SOURCE6_BA400FD1_CALCULATORS',              # Registry dict for Source6 calculators
     # SOURCE8 — Computational infrastructure (10 classes)
     'DimensionalAnalysisS8Calculator',           # Unit exponent consistency check (M^a L^b T^c)
@@ -39482,55 +39481,6 @@ class ReactorEnergyS6Calculator:
         }
 
 
-class SpacetimeMetricS6Calculator:
-    """
-    Spacetime Metric Modulation A_uv from source6_wolfram_physics.cpp
-
-    A_uv = g_uv + eta * T_s00 * cos(pi * t_n)
-    Trace = sum_i (g_ii + modulation)
-
-    Models the perturbation of Minkowski spacetime by the stellar
-    stress-energy tensor T_s^uv mediated through Aether coupling eta.
-
-    Constants:
-        g_uv  = diag(1, -1, -1, -1)  (Minkowski signature +---)
-        eta   ~ 1e-22                  (Aether coupling constant)
-        T_s00 ~ 1.27e3 + 1.11e7 J/m3 (stellar energy-momentum component)
-
-    Named S6 to distinguish from SpacetimeMetricCalculator in CondensedPhysics.py (CP1).
-
-    Source: source6_wolfram_physics.cpp — ba400fd152aa4798abb49539b92e98ed
-    """
-
-    # Minkowski metric (signature +,-,-,-)
-    G_MU_NU = [[1.0, 0.0, 0.0, 0.0],
-               [0.0, -1.0, 0.0, 0.0],
-               [0.0, 0.0, -1.0, 0.0],
-               [0.0, 0.0, 0.0, -1.0]]
-
-    def compute(self, dataset: dict) -> dict:
-        import math
-        t_n  = dataset.get('t_n',   0.0)
-        eta  = dataset.get('eta',   1e-22)
-        Ts00 = dataset.get('Ts00',  1.27e3 + 1.11e7)
-
-        mod   = eta * Ts00 * math.cos(math.pi * t_n)
-        trace = sum(self.G_MU_NU[i][i] + mod for i in range(4))
-
-        return {
-            'value':      trace,
-            't_n':        t_n,
-            'eta':        eta,
-            'Ts00':       Ts00,
-            'modulation': mod,
-            'units':      'dimensionless',
-            'equation': (
-                f"Tr(A_uv) = (1-1-1-1) + 4 x ({eta:.2e} x {Ts00:.2e}"
-                f" x cos(pi x {t_n})) = {trace:.6e}"
-            ),
-        }
-
-
 # =============================================================================
 # SOURCE8_WOLFRAM COMPUTATIONAL INFRASTRUCTURE (migrated from CondensedPhysics.py)
 # =============================================================================
@@ -39898,7 +39848,6 @@ class MPIDistributedS8Calculator:
 
 SOURCE6_BA400FD1_CALCULATORS = {
     'ReactorEnergyS6Calculator':    ReactorEnergyS6Calculator(),
-    'SpacetimeMetricS6Calculator':  SpacetimeMetricS6Calculator(),
 }
 
 SOURCE8_BA400FD1_CALCULATORS = {
