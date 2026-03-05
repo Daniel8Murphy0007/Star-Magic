@@ -1,17 +1,31 @@
 #!/usr/bin/env python3
 """
 Scrape Grok share URL for physics and mathematical content.
+Usage: python scrape_grok_share.py <URL>
 """
 
 import os
+import sys
 import time
 import json
+import re
 from selenium import webdriver
 from selenium.webdriver.edge.service import Service
 from selenium.webdriver.edge.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
+# Get URL from command line
+if len(sys.argv) < 2:
+    print("Usage: python scrape_grok_share.py <URL>")
+    sys.exit(1)
+
+url = sys.argv[1]
+
+# Extract ID from URL for filename
+url_id_match = re.search(r'/share/([a-f0-9]+)', url)
+url_id = url_id_match.group(1) if url_id_match else 'unknown'
 
 # Initialize Edge WebDriver
 edge_driver_path = os.path.join(os.getcwd(), 'edge_driver', 'msedgedriver.exe')
@@ -26,7 +40,6 @@ service = Service(executable_path=edge_driver_path)
 driver = webdriver.Edge(service=service, options=edge_options)
 
 try:
-    url = "https://x.com/i/grok/share/4e0ecf23920b435cb3b2f410e93699b5"
     print(f"Loading: {url}")
     driver.get(url)
     
@@ -53,24 +66,28 @@ try:
         print(full_text)
         print('='*80)
         
-        # Save to file
-        with open('grok_share_4e0ecf23_content.txt', 'w', encoding='utf-8') as f:
+        # Save to file with unique ID
+        content_file = f'grok_share_{url_id}_content.txt'
+        with open(content_file, 'w', encoding='utf-8') as f:
             f.write(full_text)
         
-        print("\n✓ Content saved to: grok_share_4e0ecf23_content.txt")
+        print(f"\n✓ Content saved to: {content_file}")
+        print(f"✓ Content size: {len(full_text)} bytes")
         
         # Save HTML source
-        with open('grok_share_4e0ecf23_source.html', 'w', encoding='utf-8') as f:
+        html_file = f'grok_share_{url_id}_source.html'
+        with open(html_file, 'w', encoding='utf-8') as f:
             f.write(page_source)
         
-        print("✓ HTML source saved to: grok_share_4e0ecf23_source.html")
+        print(f"✓ HTML source saved to: {html_file}")
         
     except Exception as e:
         print(f"Error extracting content: {e}")
         # Save what we have
-        with open('grok_share_4e0ecf23_source.html', 'w', encoding='utf-8') as f:
+        html_file = f'grok_share_{url_id}_source.html'
+        with open(html_file, 'w', encoding='utf-8') as f:
             f.write(page_source)
-        print("✓ HTML source saved (extraction failed)")
+        print(f"✓ HTML source saved (extraction failed): {html_file}")
     
 finally:
     driver.quit()
