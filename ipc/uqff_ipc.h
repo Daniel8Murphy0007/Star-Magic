@@ -6,11 +6,20 @@
  * - source2.cpp (GUI Orchestrator)
  * - source2(HEAD PROGRAM).cpp (VR/VM Backend)
  * - MAIN_1_CoAnQi.exe (Physics Engine)
- * - Python calculators (CondensedPhysics.py, QCalc.py)
+ * - Python calculators (CondensedPhysics.py, QCalc.py, CondensedPhysics2.py)
+ * - GrokThreadUQFFExtensions.py (9c366646: 14 classes, 13-term g_res, AsymCap,
+ *   variable c, fractal time, Monte Carlo, 26-layer energies, 17 buoyancy proofs)
+ * - Solar UQFF module (thread 10220801: 10 solar Ug1-4 calibration calculators
+ *   with 11-year B_s(t) cycle, 2025 EHT M_bh=8.55e36 kg Sgr A*)
+ * - CondensedPhysicsAggregator.py (v1.2.0, 9 modules, ALL_CALCULATORS unified)
+ * 
+ * Python ecosystem: CP2.py 512 classes | GrokThreadUQFF 14 classes |
+ *                   Aggregator v1.2.0 | Whitepapers 15 (GW physics, UQFF)
  * 
  * Author: Daniel T. Murphy
- * Framework: UQFF Star-Magic v3.0
+ * Framework: UQFF Star-Magic v3.1
  * Phase: 3 - Full gRPC Implementation
+ * Last updated: March 5, 2026 (thread 10220801 + 9c366646 integration)
  */
 
 #ifndef UQFF_IPC_H
@@ -110,6 +119,29 @@ enum class MessageType : uint32_t {
     EPOCH_CALCULATE_F_U     = 0x0402,  // Calculate F_U at specific epoch
     EPOCH_GET_UG_ACTIVE     = 0x0403,  // Query which Ug ranges active at epoch
     EPOCH_VALIDATION_DATA   = 0x0410,  // Request epoch validation dataset
+
+    // Solar UQFF Calibration (March 5, 2026 - Thread 10220801)
+    // Full stellar-mass parametrized forms with 11-year solar magnetic cycle
+    SOLAR_UG1_DIPOLE_CYCLE  = 0x0500,  // Ug1SolarDipoleCycleCalculator (B_s(t), 11-yr)
+    SOLAR_UG2_BUBBLE        = 0x0501,  // Ug2StellarBubbleCalculator (Heaviside at 100AU)
+    SOLAR_UG3_DISK_FULL     = 0x0502,  // Ug3MagneticDiskFullCalculator (B_j(t)+E_react)
+    SOLAR_UG4_SMBH          = 0x0503,  // Ug4SMBHVacuumInteractionCalculator (2025 EHT)
+    SOLAR_FU_ASSEMBLY       = 0x0510,  // SolarFUAssemblyCalculator (full F_U solar)
+    SOLAR_INFLATION_CORE    = 0x0511,  // InflationForceCoreCalculator (LENR ~10^10N)
+    SOLAR_EPOCH_STATE       = 0x0512,  // SCmEpochStateCalculator (5-epoch table)
+    SOLAR_WIND_DENSITY      = 0x0513,  // SolarWindVacuumDensityCalculator (inv-sq)
+    SOLAR_KI_NORMALIZED     = 0x0514,  // KiNormalizedSolarCalculator (1.42e53 J/m3)
+    SOLAR_AETHER_TENSOR     = 0x0515,  // SolarAetherStressTensorCalculator (T_s^{00})
+
+    // GW Physics Query (Whitepapers 4-15, March 2026)
+    GW_WHITEPAPER_QUERY     = 0x0600,  // Request GW whitepaper physics calculation
+    GW_CHIRP_PHASE          = 0x0601,  // GW170817 chirp phase evolution (Paper 4)
+    GW_TIDAL_DEFORMABILITY  = 0x0602,  // BNS tidal deformability (Paper 7)
+    GW_POSTMERGER_QNM       = 0x0603,  // Post-merger QNM ringdown (Paper 10)
+    GW_SGWB_SPECTRUM        = 0x0604,  // Stochastic GW background (Paper 11)
+    GW_MAGNETAR_SPINDOWN    = 0x0605,  // Magnetar spin-down GW emission (Paper 13)
+    GW_PRIMORDIAL_BH        = 0x0606,  // Primordial BH formation (Paper 14)
+    GW_COSMO_PROPAGATION    = 0x0607,  // Cosmological GW propagation mod (Paper 15)
     
     // Responses
     RESPONSE_SUCCESS        = 0x1000,  // Operation completed

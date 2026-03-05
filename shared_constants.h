@@ -503,6 +503,55 @@ constexpr double SUPERCONDUCTIVE_BARRIER_ENERGY = 1.9444e9; // k_B * T_P
 
 } // namespace BellyButtonResonance
 
+/// Thread 10220801 (March 5, 2026): Solar UQFF Calibration
+/// 10 new CondensedPhysics2.py solar calculators — Ug1Solar through SolarAether
+namespace SolarUQFFCalibration {
+
+/// Sagittarius A* black hole mass (kg) — 2025 EHT GRAVITY+ measurement
+/// M_bh = (4.297 ± 0.012) × 10^6 M_sun = 8.55 × 10^36 kg
+constexpr double M_BH_SGRA_2025 = 8.55e36;
+
+/// Solar cycle angular frequency (rad/s) — 11-year solar activity cycle
+/// omega_c = 2π / (11 × 365.25 × 86400) ≈ 1.60 × 10⁻⁸ rad/s
+constexpr double OMEGA_SOLAR_CYCLE = 1.6e-8;
+
+/// Solar wind vacuum density at 1 AU (kg/m³)
+/// rho_sw_1AU ≈ 8.4 × 10⁻²¹ kg/m³ (average quiet-sun conditions)
+constexpr double RHO_SOLAR_WIND_1AU = 8.4e-21;
+
+/// Solar coupling constants (dimensionless) — UQFF magnetic disk calibration
+/// k1: poloidal coupling, k2: toroidal, k3: halo interface, k4: disk midplane
+constexpr double K1_POLOIDAL_COUPLING = 1.5;
+constexpr double K2_TOROIDAL_COUPLING = 1.2;
+constexpr double K3_HALO_INTERFACE    = 1.8;
+constexpr double K4_DISK_MIDPLANE     = 1.0;
+
+/// Solar wind energy density correction (dimensionless)
+/// epsilon_sw = 0.001 — small relativistic correction to Ug3 disk integral
+constexpr double EPSILON_SOLAR_WIND = 0.001;
+
+/// Solar wind vacuum polarization depth (dimensionless)
+/// delta_sw = 0.01 — polarization of vacuum near heliosphere boundary
+constexpr double DELTA_SOLAR_WIND = 0.01;
+
+/// Distance from Solar System to Galactic Centre (m)
+/// d_g = 26,000 ly = 2.55 × 10²⁰ m
+constexpr double D_GALACTIC_CENTRE = 2.55e20;
+
+/// AGN feedback fraction (dimensionless)
+/// f_feedback = 0.20 — fraction of AGN luminosity coupled to ISM
+constexpr double F_AGN_FEEDBACK = 0.2;
+
+/// UQFF buoyancy calibration constant (dimensionless) — from Grok 4 Sept 2025
+/// beta_i = 0.603 (calibrated against 121 astronomical systems)
+constexpr double BETA_UQFF_CALIBRATION = 0.603;
+
+/// Solar heliosphere outer bubble radius (m) — ~100 AU termination shock
+/// R_bubble = 100 AU = 1.496 × 10¹³ m
+constexpr double R_HELIOSPHERE_100AU = 1.496e13;
+
+} // namespace SolarUQFFCalibration
+
 
 } // namespace Constants
 } // namespace UQFF

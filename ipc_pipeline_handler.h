@@ -10,18 +10,31 @@
  * Phase 2 Enhancement: Intelligent routing
  * - Standard UQFF queries → QCalc.UnifiedFieldSolver (fast, 920ms)
  * - Experimental queries → CondensedPhysics2 calculators (advanced physics)
- * - CP2 triggers: "Orb10-16", "Red Mercury", "Plasmoid", "UFEQFET", "Monte Carlo", "Relativistic", etc.
+ * - CP2 triggers: "Orb10-16", "Red Mercury", "Plasmoid", "UFEQFET",
+ *   "Monte Carlo", "Relativistic",
+ *   "Solar Cycle", "11-year", "Ug1Solar", "Ug2Stellar", "Ug3Disk",
+ *   "Ug4SMBH", "SolarFU", "InflationForce", "SCmEpoch", "SolarWind",
+ *   "KiNormalized", "SolarAether" (thread 10220801 solar UQFF calculators)
+ *   "ResonanceGravity", "AsymCap", "FractalTime", "VacuumProb",
+ *   "26Layer", "CompressedGravity", "BuoyancyProof" (thread 9c366646)
+ *   "GW170817", "BNSMerger", "PostMerger", "SGWB", "Magnetar",
+ *   "PrimordialBH", "ChirpPhase", "TidalDeformability" (GW whitepapers 4-15)
  * 
  * Performance comparison:
  * - QCalc: 9,149 lines, imports in 1.09s, subprocess ~920ms
  * - CondensedPhysics: 168,494 lines, imports in 30s+ (not used)
- * - CondensedPhysics2: 36,367 lines, imports in ~2.5s, specialized calculators
+ * - CondensedPhysics2: ~40,320 lines (512 classes), imports in ~2.5s
  *   - Includes MonteCarloStochasticWrapper for ensemble simulations
- *   - Includes RelativisticUQFFCalculators (630 lines, 5 calculators for v ≥ 0.1c)
+ *   - Includes RelativisticUQFFCalculators (630 lines, 5 calcs for v ≥ 0.1c)
+ *   - Includes Thread 10220801: 10 solar Ug1-4 calibration calculators
+ *   - Includes GrokThreadUQFFExtensions (14 classes via direct import)
+ * - GrokThreadUQFFExtensions: 2,229 lines, 14 classes
+ *   (routed via CP2 when triggers match: ResonanceGravity, AsymCap, etc.)
+ * - CondensedPhysicsAggregator: v1.2.0, 9 modules, unified ALL_CALCULATORS dict
  * 
  * Author: Daniel T. Murphy
  * Date: March 3, 2026 (Phase 2: CP2 Integration)
- * Updated: March 4, 2026 (Monte Carlo + Relativistic Extensions)
+ * Updated: March 5, 2026 (Thread 10220801 solar UQFF + 9c366646 registry + GW papers)
  * Phase: 0 - Unification (IPC Wiring), Phase 2 - Extensions (CP2)
  */
 
