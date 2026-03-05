@@ -40632,3 +40632,534 @@ SOURCE_10220801_CALCULATORS = {
 }
 
 
+# =============================================================================
+# THREAD 3a469fcc -- STAR MAGIC 14Apr2025 CANONICAL UQFF DERIVATION
+# 8 new calculators from primary source document by Daniel T. Murphy
+# Source: https://x.com/i/grok/share/3a469fcc1af84841a645c923d15a1f8e
+# (C)2025 Daniel T. Murphy, daniel.murphy00@gmail.com -- All Rights Reserved
+# =============================================================================
+
+THREAD_3a469fcc_PARAMS = {
+    # Solar physical parameters (consistent with THREAD_10220801_PARAMS)
+    'M_s':           1.989e30,   # Solar mass (kg)
+    'R_s':           6.96e8,     # Solar radius (m)
+    'M_bh':          8.55e36,    # Sgr A* mass 2025 EHT (kg) -- canonical codebase value
+    'd_g':           2.55e20,    # Sun-galactic centre (m)
+    'Omega_g':       7.3e-16,    # Galactic spin rate (rad/s)
+    'omega_c':       1.6e-8,     # 11-year solar cycle frequency (rad/s)
+    'omega_s_avg':   2.5e-6,     # Differential rotation average (rad/s)
+    'delta_omega':   0.4e-6,     # Differential rotation amplitude (rad/s)
+    'omega_defect':  0.001,      # Ug1 defect frequency (rad/s)
+    'delta_def':     0.01,       # Ug1 defect amplitude (dimensionless)
+    'R_bubble':      1.496e13,   # Heliosphere bubble radius ~100 AU (m)
+    # Reactor efficiency (canonical from this thread)
+    'kappa_scm':     0.0005,     # SCm reactivity decay rate (day^-1) -- NEW
+    'rho_SCm':       1.0e15,     # SCm density in solar core (kg/m^3)
+    'v_SCm':         2.963e8,    # SCm velocity 0.99c (m/s)
+    'rho_A':         1.0e-23,    # Aether density (kg/m^3)
+    # Magnetic / SCm
+    'B0_avg':        1.0e-4,     # Average solar surface field (T)
+    'B_sunspot':     0.4,        # Sunspot field amplitude (T)
+    'B_SCm':         1.0e3,      # SCm superconductive interior field (T) -- NEW
+    'k1': 1.5, 'k2': 1.2, 'k3': 1.8, 'k4': 1.0,  # Coupling constants
+    'beta_i':        0.6,        # Buoyancy coupling (refined from 0.603)
+    'gamma_um':      5.0e-5,     # Um near-lossless decay rate (day^-1) -- refined 3a469fcc
+    'delta_bh':      0.1,        # BH field modulation factor for Ug4
+    'P_core_planet': 1.0e-3,     # Planetary core SCm/UA penetration fraction
+    'mu_0':          1.2566e-6,  # Vacuum permeability (H/m)
+    'mu_jet':        1.0e-35,    # NS quasar jet viscosity (Pa.s)
+    # Planetary liquid correlation
+    'r_helio_now':   1.496e13,   # Current heliosphere outer radius (m)
+    'vol_liq_earth': 1.335e18,   # Earth ocean + water volume (m^3)
+    'vol_liq_mars':  2.0e15,     # Mars historical liquid water volume estimate (m^3)
+    'vol_liq_venus': 5.0e14,     # Venus historical liquid volume estimate (m^3)
+    # Yang-Mills string count
+    'N_strings':     1.0e9,      # Number of Ug3 magnetic strings
+}
+
+
+class ReactorEfficiencyUQFFCanonicalCalculator:
+    """
+    UQFF Canonical Reactor Efficiency Factor E_react (Thread 3a469fcc).
+
+    E_react(t) = rho_SCm * v_SCm^2 / rho_A * exp(-kappa * t)
+
+    Physical meaning:
+        - Governs the energy output efficiency of the SCm-Aether reactor
+        - kappa = 0.0005 day^-1: SCm reactivity decays over stellar lifetime
+        - At t=0: E_react ~ 10^46 J/m^3 (dominant at creation epoch)
+        - Multiplies Ug2, Ug3, Ug4, Um in the canonical FU equation
+        - Half-life ~ ln(2)/kappa ~ 1386 days ~ 3.8 years
+
+    Distinct from ReactorEfficiencyCalculator (CP1): that uses arbitrary reactor
+    models; this computes specifically the UQFF SCm-Aether coupling factor.
+
+    Thread 3a469fcc -- NEW (not in SOURCE4 or prior CP2 calculators)
+    """
+
+    def compute(self, t_days=0.0):
+        import math
+        P = THREAD_3a469fcc_PARAMS
+        kappa = P['kappa_scm']
+        rho_SCm = P['rho_SCm']
+        v_SCm = P['v_SCm']
+        rho_A = P['rho_A']
+        E_react_0 = rho_SCm * v_SCm**2 / rho_A
+        E_react_t = E_react_0 * math.exp(-kappa * t_days)
+        return {
+            'E_react_0':       E_react_0,
+            'E_react_t':       E_react_t,
+            't_days':          t_days,
+            'kappa':           kappa,
+            'half_life_days':  math.log(2.0) / kappa,
+            'units':           'J/m^3 (normalised)',
+            'equation':        'E_react = rho_SCm*v_SCm^2/rho_A * exp(-kappa*t)',
+            'result_equation': f'E_react({t_days:.1f}d) = {E_react_t:.3e} J/m^3',
+        }
+
+
+class FUPiNegativeTimeCanonicalCalculator:
+    """
+    Canonical Unified Field FU with pi-cycles and negative time on ALL branches.
+    (Thread 3a469fcc, Star Magic 14Apr2025 -- Final Canonical Form)
+
+    Full form:
+        FU = Sum_i [ki*Ugi*exp(-alpha*t)*cos(pi*tn) - beta_i*Ugi*(Omega*Mbh/dg)*E_react*cos(pi*tn)]
+           + Sum_j [mu_j/r_j*(1 - exp(-gamma*t)*cos(pi*tn))]*E_react
+           + (g_munu + eta*T_s^munu * cos(pi*tn))
+
+        Where: tn = t - t0  (negative time allowed, t0 < t implies tn > 0)
+               gamma = gamma_um = 5e-5 day^-1  (refined in this thread)
+               E_react = rho_SCm*v_SCm^2/rho_A * exp(-kappa*t)
+
+    Extends SolarFUAssemblyCalculator by:
+        1. cos(pi*tn) applied to ALL Ub terms (not just Ug1/Ug4)
+        2. E_react multiplying Um and Ug3 (full canonical coupling)
+        3. gamma_um = 5e-5 (near-lossless, refined from 1e-4)
+        4. B_SCm = 1000 T additive in stellar dipole
+
+    Thread 3a469fcc -- NEW canonical form
+    """
+
+    def compute(self, t_days=1.0, t0_days=0.0, n_strings=int(1e9)):
+        import math
+        P = THREAD_3a469fcc_PARAMS
+        P10 = THREAD_10220801_PARAMS
+        t = t_days
+        tn = t - t0_days
+
+        alpha = P10['alpha_decay']
+        gamma = P['gamma_um']
+        omega_c = P['omega_c']
+        omega_s = P['omega_s_avg']
+        d_g = P['d_g']
+        Omega_g = P['Omega_g']
+        M_bh = P['M_bh']
+        beta = P['beta_i']
+        M_s = P['M_s']
+        R_s = P['R_s']
+        R_b = P['R_bubble']
+        k1, k2, k3, k4 = P['k1'], P['k2'], P['k3'], P['k4']
+        eta = P10['eta_aether']
+        kappa = P['kappa_scm']
+
+        cos_pi_tn = math.cos(math.pi * tn)
+        sin_wc = math.sin(omega_c * t)
+        exp_alpha = math.exp(-alpha * t)
+        exp_kappa = math.exp(-kappa * t)
+
+        E_react = P['rho_SCm'] * P['v_SCm']**2 / P['rho_A'] * exp_kappa
+
+        # SCm-amplified dipole: B_total = B_s(t) + B_SCm
+        Bs_t = P['B0_avg'] + P['B_sunspot'] * sin_wc
+        B_total = Bs_t + P['B_SCm']
+        mu_s = B_total * R_s**3
+        delta_def_t = P['delta_def'] * math.sin(P['omega_defect'] * t)
+
+        Ug1 = k1 * mu_s * (M_s / R_s**2) * exp_alpha * cos_pi_tn * (1.0 + delta_def_t)
+        Ug2 = k2 * (P10['Q_A'] + P10['Q_UA']) * M_s / R_b**2 * E_react
+        Ug3 = k3 * B_total * math.cos(omega_s * t * math.pi) * E_react
+        Ug4 = k4 * (M_s * M_bh / d_g**2) * exp_alpha * cos_pi_tn * E_react
+
+        gal_factor = Omega_g * M_bh / d_g
+        Ub1 = -beta * Ug1 * gal_factor * cos_pi_tn
+        Ub2 = -beta * Ug2 * gal_factor * cos_pi_tn
+        Ub3 = -beta * Ug3 * gal_factor * cos_pi_tn
+        Ub4 = -beta * Ug4 * gal_factor * cos_pi_tn
+
+        Um_per = mu_s / R_b * (1.0 - math.exp(-gamma * t) * cos_pi_tn)
+        Um = n_strings * Um_per * E_react
+
+        T_s_00 = P['rho_SCm'] * P['v_SCm']**2
+        A_00 = 1.0 + eta * T_s_00 * cos_pi_tn
+
+        FU = (Ug1 + Ub1) + (Ug2 + Ub2) + (Ug3 + Ub3) + (Ug4 + Ub4) + Um + A_00
+        return {
+            'FU_total': FU,
+            'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4,
+            'Ub1': Ub1, 'Ub2': Ub2, 'Ub3': Ub3, 'Ub4': Ub4,
+            'Um': Um, 'A_00': A_00, 'E_react': E_react,
+            't_n': tn, 'cos_pi_tn': cos_pi_tn,
+            'units': 'J/m^3 normalised',
+            'equation': 'FU = Sum[ki*Ugi*cos(pi*tn) - beta*Ugi*(Omega*Mbh/dg)*E_react*cos(pi*tn)] + Um*E_react + A',
+            'result_equation': f'FU({t_days:.1f}d, t0={t0_days:.1f}d) = {FU:.4e}',
+        }
+
+
+class QuasarJetNavierStokesCalculator:
+    """
+    Navier-Stokes model for quasar jet fluid dynamics (Thread 3a469fcc).
+
+    Governing equation (1D radial, Millennium Problem -- NS existence/smoothness):
+        rho * (dv/dt + v*dv/dr) = -dp/dr + mu*d2v/dr2 + F_SCm
+        F_SCm = rho_SCm * v_SCm^2 / r * exp(-kappa * t)
+
+    Physical basis:
+        - Quasars arise when FU fields cannot trap SCm; expelled as jets
+        - SCm ignites against unbound Universal Aether at ejection point
+        - Unequal opposing jets from cos(pi*tn) sign asymmetry (negative time)
+        - F_SCm decays ~ exp(-kappa*t), potentially stabilising NS solutions
+
+    Millennium Problem connection:
+        F_SCm may prevent finite-time blow-up in NS by bounding the forcing
+        term for all t >= 0 with kappa = 0.0005 day^-1.
+
+    Thread 3a469fcc -- NEW
+    """
+
+    def compute(self, r_m, t_days, t0_days=0.0, rho_aether=1.0e-23):
+        import math
+        P = THREAD_3a469fcc_PARAMS
+        rho_SCm = P['rho_SCm']
+        v_SCm = P['v_SCm']
+        kappa = P['kappa_scm']
+        mu_jet = P['mu_jet']
+        tn = t_days - t0_days
+
+        F_SCm = rho_SCm * v_SCm**2 / r_m * math.exp(-kappa * t_days)
+        grad_p = rho_aether * v_SCm**2 / r_m
+        visc_term = mu_jet * v_SCm / r_m**2
+        dv_dt = (F_SCm - grad_p + visc_term) / rho_aether
+
+        asymmetry = math.cos(math.pi * tn)
+        v_fwd = v_SCm * (1.0 + 0.5 * asymmetry)
+        v_bwd = v_SCm * (1.0 - 0.5 * asymmetry)
+        E_react = rho_SCm * v_SCm**2 / P['rho_A'] * math.exp(-kappa * t_days)
+
+        return {
+            'F_SCm':         F_SCm,
+            'grad_p':        grad_p,
+            'visc_term':     visc_term,
+            'dv_dt':         dv_dt,
+            'v_jet_fwd':     v_fwd,
+            'v_jet_bwd':     v_bwd,
+            'asymmetry_cos': asymmetry,
+            'E_react':       E_react,
+            'r_m':           r_m,
+            't_days':        t_days,
+            'rho_aether':    rho_aether,
+            'units':         'm/s^2 (dv_dt), m/s (v_jet)',
+            'equation':      'rho*(dv/dt+v.grad)=-grad(p)+mu*Lap(v)+F_SCm; F_SCm=rho_SCm*v^2/r*exp(-kappa*t)',
+            'result_equation': f'F_SCm({r_m:.2e}m, {t_days:.1f}d) = {F_SCm:.3e} Pa/m',
+        }
+
+
+class PlanetaryCoreHamiltonianCalculator:
+    """
+    Planetary core Hamiltonian (Thread 3a469fcc, Star Magic 14Apr2025).
+
+    H = H_Ug3 + H_SCm + H_UA
+
+    H_Ug3 = k3 * N_j * B_j^2/(2*mu0) * cos(omega_s*t*pi)  [per string, scaled]
+    H_SCm = rho_SCm * v_SCm^2/2 * exp(-gamma*t)            [SCm kinetic energy]
+    H_UA  = eta * rho_A * v_UA^2/2 * cos(pi*tn)            [UA Aether coupling]
+
+    Physical basis:
+        - Planetary cores contain P_core ~ 1e-3 fraction of stellar SCm + UA
+        - Non-interactive externally (isolated Hamiltonian system)
+        - Discrete energy spectrum supports Yang-Mills mass gap hypothesis
+
+    Thread 3a469fcc -- NEW
+    """
+
+    def compute(self, t_days=1.0, t0_days=0.0, P_core=1.0e-3, n_strings=int(1e9)):
+        import math
+        P = THREAD_3a469fcc_PARAMS
+        P10 = THREAD_10220801_PARAMS
+        tn = t_days - t0_days
+        omega_s = P['omega_s_avg']
+        gamma = P['gamma_um']
+        eta = P10['eta_aether']
+        v_UA = 1.0e6
+        rho_SCm_core = P['rho_SCm'] * P_core
+        v_SCm = P['v_SCm']
+        rho_A = P['rho_A']
+        mu_0 = P['mu_0']
+        k3 = P['k3']
+        Bs_t = P['B0_avg'] + P['B_sunspot'] * math.sin(P['omega_c'] * t_days)
+        B_j = Bs_t + P['B_SCm']
+
+        H_Ug3 = n_strings * k3 * B_j**2 / (2.0 * mu_0) * math.cos(omega_s * t_days * math.pi) * P_core
+        H_SCm = rho_SCm_core * v_SCm**2 / 2.0 * math.exp(-gamma * t_days)
+        H_UA = eta * rho_A * v_UA**2 / 2.0 * math.cos(math.pi * tn)
+        H_total = H_Ug3 + H_SCm + H_UA
+
+        return {
+            'H_total':  H_total,
+            'H_Ug3':    H_Ug3,
+            'H_SCm':    H_SCm,
+            'H_UA':     H_UA,
+            'P_core':   P_core,
+            'B_j':      B_j,
+            't_days':   t_days,
+            'units':    'J/m^3',
+            'equation': 'H = H_Ug3 + H_SCm + H_UA',
+            'result_equation': f'H({t_days:.1f}d) = Ug3:{H_Ug3:.3e} + SCm:{H_SCm:.3e} + UA:{H_UA:.3e} = {H_total:.3e}',
+        }
+
+
+class StellarAgeHelioCorrelationCalculator:
+    """
+    Stellar age estimation via heliosphere thickness and planetary liquid volumes.
+    (Thread 3a469fcc, Star Magic 14Apr2025)
+
+    Age_star ~ (r_helio/r_helio_sun + Sum(Vol_liq)/Vol_liq_sun) / 2 * Age_sun
+
+    Physical basis:
+        - Ug2 builds heliosphere shell by trans-mutating incoming solar wind
+        - Thicker heliosphere = older star (more Ug2 synthesis time)
+        - Planetary liquids = stellar wind penetrating magnetospheres
+        - Earth ocean volume is the primary calibration reference
+
+    Solar calibration: Age_sun = 4.6 Gyr, r_helio = 1.8e13 m (~120 AU)
+
+    Thread 3a469fcc -- NEW
+    """
+
+    AGE_SUN_GYR = 4.6
+    R_HELIO_SUN = 1.8e13      # ~120 AU termination shock (m)
+    VOL_LIQ_SUN = 1.337e18    # Earth + Mars + Venus baseline (m^3)
+
+    def compute(self, r_helio_m=None, planet_liquid_vols=None):
+        P = THREAD_3a469fcc_PARAMS
+        if r_helio_m is None:
+            r_helio_m = P['r_helio_now']
+        if planet_liquid_vols is None:
+            planet_liquid_vols = {
+                'Earth': P['vol_liq_earth'],
+                'Mars':  P['vol_liq_mars'],
+                'Venus': P['vol_liq_venus'],
+            }
+        vol_total = sum(planet_liquid_vols.values())
+        helio_ratio = r_helio_m / self.R_HELIO_SUN
+        liq_ratio = vol_total / self.VOL_LIQ_SUN
+        age_gyr = self.AGE_SUN_GYR * (helio_ratio + liq_ratio) / 2.0
+        return {
+            'age_estimate_gyr':     age_gyr,
+            'r_helio_m':            r_helio_m,
+            'helio_ratio':          helio_ratio,
+            'vol_liquids_total_m3': vol_total,
+            'liq_ratio':            liq_ratio,
+            'planets':              planet_liquid_vols,
+            'calibration_sun_gyr':  self.AGE_SUN_GYR,
+            'equation':             'Age ~ (r_helio/r_sun + Sum_Vol_liq/Vol_sun) / 2 * Age_sun',
+            'result_equation':      f'Age_est = {age_gyr:.3f} Gyr',
+        }
+
+
+class DifferentialRotationDiskCalculator:
+    """
+    Ug3 with full differential CCW/CW rotation (Thread 3a469fcc).
+
+    omega_s(t) = omega_avg - delta_omega * sin(omega_c * t)
+    omega_CCW = omega_avg + delta_omega * sin(omega_c * t)   (equatorial)
+    omega_CW  = -(omega_avg - delta_omega * sin(omega_c * t))  (coronal, reversed)
+
+    Ug3_diff = k3 * [B_s(t) + B_SCm] * cos(omega_diff * t * pi) * cos(theta) * E_react
+
+    Physical basis:
+        - Sun's equatorial CCW rotation against coronal CW rotation produces Ug3
+        - delta_omega = 0.4e-6 rad/s differential amplitude
+        - Ug3 disk moves faster than any planet or combination
+        - B_SCm = 1000 T drives Ug3 at interior scale
+
+    Distinct from Ug3MagneticDiskFullCalculator which uses static omega_s.
+
+    Thread 3a469fcc -- NEW
+    """
+
+    def compute(self, t_days=1.0, r_m=None, theta=0.2618):  # theta=15 deg default
+        import math
+        P = THREAD_3a469fcc_PARAMS
+        omega_c = P['omega_c']
+        omega_avg = P['omega_s_avg']
+        delta_omega = P['delta_omega']
+        k3 = P['k3']
+        kappa = P['kappa_scm']
+
+        if r_m is None:
+            r_m = P['R_bubble']
+
+        t = t_days
+        sin_wc = math.sin(omega_c * t)
+        omega_CCW = omega_avg + delta_omega * sin_wc
+        omega_CW = -(omega_avg - delta_omega * sin_wc)
+        omega_diff = omega_CCW - omega_CW
+
+        E_react = P['rho_SCm'] * P['v_SCm']**2 / P['rho_A'] * math.exp(-kappa * t)
+        Bs_t = P['B0_avg'] + P['B_sunspot'] * sin_wc
+        B_eff = Bs_t + P['B_SCm']
+        Ug3_diff = k3 * B_eff * math.cos(omega_diff * t * math.pi) * math.cos(theta) * E_react
+
+        return {
+            'omega_CCW':   omega_CCW,
+            'omega_CW':    omega_CW,
+            'omega_diff':  omega_diff,
+            'B_eff':       B_eff,
+            'Ug3_diff':    Ug3_diff,
+            'E_react':     E_react,
+            't_days':      t_days,
+            'theta_rad':   theta,
+            'units':       'normalised field strength',
+            'equation':    'omega_s(t)=omega_avg pm delta_omega*sin(wc*t); Ug3=k3*B_eff*cos(omega_diff*t*pi)*cos(theta)*E_react',
+            'result_equation': f'omega_CCW={omega_CCW:.4e}, omega_CW={omega_CW:.4e} rad/s; Ug3_diff={Ug3_diff:.4e}',
+        }
+
+
+class SCmDipoleAmplifiedCalculator:
+    """
+    SCm-amplified stellar magnetic dipole moment (Thread 3a469fcc).
+
+    mu_s(t, SCm) = [B_s(t) + B_SCm] * R_s^3
+    B_s(t) = B0 + B_amp * sin(omega_c * t)     11-year sunspot cycle
+    B_SCm  = 1000 T                             superconductive interior (Qs=0, undetectable)
+
+    Physical basis:
+        - Surface magnetism (1-5000 Gauss) is observable but only the surface component
+        - Interior B_SCm ~ 1000 T is undetectable due to Qs = 0 for SCm
+        - Total dipole is B_SCm-dominated at the interior scale
+        - Drives Ug3 disk formation via CCW/CW differential rotation
+
+    Distinct from Ug1SolarDipoleCycleCalculator (CP2): that uses only B_s(t)*R_s^3.
+    This class adds the B_SCm = 1000 T undetectable superconductive field.
+
+    Thread 3a469fcc -- NEW
+    """
+
+    def compute(self, t_days=0.0):
+        import math
+        P = THREAD_3a469fcc_PARAMS
+        P10 = THREAD_10220801_PARAMS
+        omega_c = P['omega_c']
+        B0 = P['B0_avg']
+        B_amp = P['B_sunspot']
+        B_SCm = P['B_SCm']
+        R_s = P['R_s']
+        M_s = P['M_s']
+        k1 = P['k1']
+        alpha = P10['alpha_decay']
+        delta_def = P['delta_def']
+        omega_d = P['omega_defect']
+
+        Bs_t = B0 + B_amp * math.sin(omega_c * t_days)
+        B_total = Bs_t + B_SCm
+        mu_s_full = B_total * R_s**3
+        mu_s_surface = Bs_t * R_s**3
+        grad_M = M_s / R_s**2
+        exp_decay = math.exp(-alpha * t_days)
+        cos_pi_tn = math.cos(math.pi * t_days)
+        delta_def_t = delta_def * math.sin(omega_d * t_days)
+
+        Ug1_full = k1 * mu_s_full * grad_M * exp_decay * cos_pi_tn * (1.0 + delta_def_t)
+        Ug1_surface = k1 * mu_s_surface * grad_M * exp_decay * cos_pi_tn * (1.0 + delta_def_t)
+        scm_amp = mu_s_full / mu_s_surface if mu_s_surface != 0.0 else float('inf')
+
+        return {
+            'mu_s_full':      mu_s_full,
+            'mu_s_surface':   mu_s_surface,
+            'B_total':        B_total,
+            'Bs_t':           Bs_t,
+            'B_SCm':          B_SCm,
+            'Ug1_amplified':  Ug1_full,
+            'Ug1_surface':    Ug1_surface,
+            'scm_amplification': scm_amp,
+            't_days':         t_days,
+            'units':          'T*m^3 (dipole), normalised (Ug1)',
+            'equation':       'mu_s = [B0 + B_amp*sin(wc*t) + B_SCm]*Rs^3',
+            'result_equation': f'mu_s({t_days:.1f}d) = {mu_s_full:.4e} T*m^3 (SCm_amp={scm_amp:.1e})',
+        }
+
+
+class YangMillsMassGapCalculator:
+    """
+    Yang-Mills mass gap hypothesis via Ug3 discrete energy spectrum (Thread 3a469fcc).
+
+    DeltaE_gap = n_strings * k3 * Bj^2 / (2*mu0) * cos(omega_s*t*pi)
+    Mass analogue: Delta_m = DeltaE_gap / c^2
+
+    Physical basis:
+        - SCm superconductivity in Ug3 may INDUCE a mass gap by stabilising
+          the magnetic string field Bj against dissipation
+        - N_strings = 1e9 discrete strings form an SU(N) gauge-like structure
+        - Each string occupies discrete B_j^2 energy state -> non-zero minimum
+
+    Millennium Problem connection (Yang-Mills mass gap):
+        If SCm pins discrete Bj^2 energy levels in Ug3, then the minimum
+        energy excitation DeltaE > 0 provides a physical mass gap mechanism.
+        DeltaE ~ k3 * B_SCm^2 / (2*mu_0 * N_strings)
+
+    NOTE: Speculative theoretical connection. Provides plausibility scale estimate.
+
+    Thread 3a469fcc -- NEW
+    """
+
+    def compute(self, t_days=1.0, n_strings=None, P_core=1.0):
+        import math
+        P = THREAD_3a469fcc_PARAMS
+        if n_strings is None:
+            n_strings = int(P['N_strings'])
+        omega_s = P['omega_s_avg']
+        k3 = P['k3']
+        mu_0 = P['mu_0']
+        B_SCm = P['B_SCm']
+        omega_c = P['omega_c']
+        gamma = P['gamma_um']
+
+        sin_wc = math.sin(omega_c * t_days)
+        Bs_t = P['B0_avg'] + P['B_sunspot'] * sin_wc
+        B_j = (Bs_t + B_SCm) * P_core
+
+        E_mag_per_str = B_j**2 / (2.0 * mu_0)
+        cos_ug3 = math.cos(omega_s * t_days * math.pi)
+        delta_E_total = n_strings * k3 * E_mag_per_str * cos_ug3
+        c = 2.998e8
+        delta_m = abs(delta_E_total) / c**2
+        scm_stability = math.exp(-gamma * t_days)
+
+        return {
+            'delta_E_total':   delta_E_total,
+            'delta_m_kg':      delta_m,
+            'E_mag_per_str':   E_mag_per_str,
+            'B_j':             B_j,
+            'cos_ug3_pi':      cos_ug3,
+            'scm_stability':   scm_stability,
+            'n_strings':       n_strings,
+            't_days':          t_days,
+            'units':           'J/m^3 (gap energy), kg (mass analogue)',
+            'millennium_note': 'Yang-Mills mass gap: Delta>0 if SCm pins discrete Bj^2 levels in Ug3',
+            'equation':        'DeltaE = n_j*k3*Bj^2/(2*mu0)*cos(omega_s*t*pi); Delta_m = DeltaE/c^2',
+            'result_equation': f'DeltaE({t_days:.1f}d) = {delta_E_total:.4e} J/m^3; Delta_m = {delta_m:.4e} kg',
+        }
+
+
+# --- Registry for Thread 3a469fcc (Star Magic 14Apr2025 Canonical) ---
+SOURCE_3a469fcc_CALCULATORS = {
+    'ReactorEfficiencyUQFFCanonicalCalculator':  ReactorEfficiencyUQFFCanonicalCalculator(),
+    'FUPiNegativeTimeCanonicalCalculator':       FUPiNegativeTimeCanonicalCalculator(),
+    'QuasarJetNavierStokesCalculator':           QuasarJetNavierStokesCalculator(),
+    'PlanetaryCoreHamiltonianCalculator':        PlanetaryCoreHamiltonianCalculator(),
+    'StellarAgeHelioCorrelationCalculator':      StellarAgeHelioCorrelationCalculator(),
+    'DifferentialRotationDiskCalculator':        DifferentialRotationDiskCalculator(),
+    'SCmDipoleAmplifiedCalculator':              SCmDipoleAmplifiedCalculator(),
+    'YangMillsMassGapCalculator':                YangMillsMassGapCalculator(),
+}

@@ -142,7 +142,18 @@ enum class MessageType : uint32_t {
     GW_MAGNETAR_SPINDOWN    = 0x0605,  // Magnetar spin-down GW emission (Paper 13)
     GW_PRIMORDIAL_BH        = 0x0606,  // Primordial BH formation (Paper 14)
     GW_COSMO_PROPAGATION    = 0x0607,  // Cosmological GW propagation mod (Paper 15)
-    
+
+    // Thread 3a469fcc: Star Magic 14Apr2025 — Canonical UQFF Derivation
+    // Source: Star Magic_14April2025.docx by Daniel T. Murphy (C)2025
+    REACTOR_EFFICIENCY_EREACT   = 0x0700,  // E_react = rho_SCm*v_SCm^2/rho_A * exp(-kappa*t)
+    FU_PI_NEGATIVE_TIME         = 0x0701,  // Full FU with cos(pi*tn) on all Ug/Ub/Um branches
+    QUASAR_JET_NS_VELOCITY      = 0x0702,  // NS quasar jet velocity: rho*(dv/dt+v.grad(v))=-grad(p)+mu*Lap(v)+F_SCm
+    QUASAR_JET_NS_FORCE         = 0x0703,  // NS SCm forcing term F_SCm = rho_SCm*v^2/r*exp(-kappa*t)
+    PLANETARY_CORE_HAMILTONIAN  = 0x0704,  // H = H_Ug3 + H_SCm + H_UA for planetary cores (P_core=1e-3)
+    STELLAR_AGE_HELIO           = 0x0705,  // Age ~ helio_thickness + Sum(Vol_liquids_planets)
+    DIFFERENTIAL_ROTATION_UG3   = 0x0706,  // omega_s(t) = omega_avg - delta_omega*sin(omega_c*t)
+    YANG_MILLS_MASS_GAP         = 0x0707,  // DeltaE_gap = k3*Bj^2/(2*mu0)*cos(omega_s*t*pi) per string
+
     // Responses
     RESPONSE_SUCCESS        = 0x1000,  // Operation completed
     RESPONSE_ERROR          = 0x1001,  // Operation failed

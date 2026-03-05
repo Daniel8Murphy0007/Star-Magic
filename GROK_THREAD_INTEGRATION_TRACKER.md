@@ -1159,3 +1159,51 @@ Successfully extracted **6 major unique physics categories** from "Star Magic: T
 **Phase 2 Validation**: **96.3% SUCCESS**
 
 �2026 Daniel T. Murphy, daniel.murphy00@gmail.com � All Rights Reserved
+
+---
+
+## Thread 3a469fcc -- Star Magic 14Apr2025 (PRIMARY SOURCE DERIVATION)
+
+**Status:** COMPLETE
+**Date Integrated:** 2026-03-05
+**URL:** https://x.com/i/grok/share/3a469fcc1af84841a645c923d15a1f8e
+**Source Document:** Star Magic_14April2025.docx -- canonical UQFF derivation
+**Author:** Daniel T. Murphy (C)2025 -- All Rights Reserved
+
+### New Physics vs Existing Codebase
+
+8 unique approaches not in any prior calculator:
+
+1. ReactorEfficiencyUQFFCanonicalCalculator -- E_react=rho_SCm*v_SCm^2/rho_A*exp(-kappa*t), kappa=0.0005
+2. FUPiNegativeTimeCanonicalCalculator -- full FU with cos(pi*tn) on ALL Ug+Ub+Um branches + E_react
+3. QuasarJetNavierStokesCalculator -- NS: rho*(dv/dt+v.grad)=-grad(p)+mu*Lap(v)+F_SCm (Millennium Problem)
+4. PlanetaryCoreHamiltonianCalculator -- H = H_Ug3 + H_SCm + H_UA; P_core=1e-3
+5. StellarAgeHelioCorrelationCalculator -- Age ~ r_helio + Sum(Vol_liq) / solar calibration
+6. DifferentialRotationDiskCalculator -- omega_s(t)=omega_avg-delta_omega*sin(omega_c*t); CCW/CW
+7. SCmDipoleAmplifiedCalculator -- mu_s=[B_s(t)+B_SCm]*Rs^3; B_SCm=1000 T (superconductive)
+8. YangMillsMassGapCalculator -- DeltaE=n_j*k3*Bj^2/(2*mu0)*cos(omega_s*t*pi) (Millennium Problem)
+
+### New Constants (shared_constants.h StarMagicCanonical namespace)
+
+kappa=0.0005/day, B_SCm=1e3 T, gamma_um=5e-5/day, delta_bh=0.1,
+P_core=1e-3, v_UA=1e6 m/s, delta_omega=0.4e-6 rad/s, mu_jet=1e-35 Pa.s
+
+### New IPC Message Types (ipc/uqff_ipc.h 0x0700-0x0707)
+
+REACTOR_EFFICIENCY_EREACT=0x0700, FU_PI_NEGATIVE_TIME=0x0701,
+QUASAR_JET_NS_VELOCITY=0x0702, QUASAR_JET_NS_FORCE=0x0703,
+PLANETARY_CORE_HAMILTONIAN=0x0704, STELLAR_AGE_HELIO=0x0705,
+DIFFERENTIAL_ROTATION_UG3=0x0706, YANG_MILLS_MASS_GAP=0x0707
+
+### Millennium Problem Connections
+
+1. Navier-Stokes: F_SCm=rho_SCm*v^2/r*exp(-kappa*t) may stabilise NS solutions
+2. Yang-Mills: Ug3 discrete energy spectrum DeltaE > 0 via SCm superconductivity
+
+### Cross-Platform Integration
+
+- C++: shared_constants.h (StarMagicCanonical namespace, 12 constants)
+- IPC: ipc/uqff_ipc.h (8 message types 0x0700-0x0707)
+- Python: CondensedPhysics2.py (8 classes + SOURCE_3a469fcc_CALCULATORS registry)
+- Docs: GROK_THREAD_14April2025_ANALYSIS.md (full analysis + integration plan)
+- CSV: INTEGRATION_TRACKER.csv (Phase 5b rows)

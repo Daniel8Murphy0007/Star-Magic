@@ -552,6 +552,56 @@ constexpr double R_HELIOSPHERE_100AU = 1.496e13;
 
 } // namespace SolarUQFFCalibration
 
+/// StarMagicCanonical — canonical constants from Star Magic 14Apr2025 derivation
+/// Thread 3a469fcc: https://x.com/i/grok/share/3a469fcc1af84841a645c923d15a1f8e
+/// Source: Star Magic_14April2025.docx — Primary UQFF derivation by Daniel T. Murphy
+namespace StarMagicCanonical {
+    /// SCm reactivity decay rate kappa (day^-1) — governs E_react fall-off over stellar lifetime
+    /// Calibrated from quasar jet observations; at t=0 E_react ~ 10^46 J/m^3
+    constexpr double KAPPA_SCM_DECAY = 0.0005;
+
+    /// B_SCm: superconductive interior field contribution to stellar dipole (T)
+    /// Undetectable at surface (Qs = 0), drives Ug3 disk formation via CCW/CW rotation
+    constexpr double B_SCM_SUPERCONDUCTIVE = 1.0e3;
+
+    /// gamma_Um: near-lossless Um decay rate (day^-1) — refined from 1e-4 in thread 10220801
+    /// Governs the magnetic string decay rate for the Um magnetism term
+    constexpr double GAMMA_UM_LOSSLESS = 5.0e-5;
+
+    /// delta_bh: Ug4 black hole field modulation factor (dimensionless)
+    /// Scales the SCm volume contribution in Ug4 star-BH interaction
+    constexpr double DELTA_BH_MODULATION = 0.1;
+
+    /// P_core_planet: planetary core SCm/UA penetration factor (dimensionless)
+    /// Fraction of stellar SCm/UA donated to planetary cores at creation epoch
+    constexpr double P_CORE_PLANET = 1.0e-3;
+
+    /// v_UA: Aether bulk velocity (m/s) — used in planetary core Hamiltonian H_UA term
+    constexpr double V_UA_AETHER = 1.0e6;
+
+    /// delta_omega: differential rotation amplitude (rad/s)
+    /// Equatorial CCW vs coronal CW rotation produces Ug3 disk; delta_omega = 0.4e-6 rad/s
+    constexpr double DELTA_OMEGA_ROTATION = 0.4e-6;
+
+    /// omega_defect: Ug1 defect oscillation frequency (rad/s)
+    /// Models surface irregularities in the internal dipole field
+    constexpr double OMEGA_DEFECT = 0.001;
+
+    /// delta_def_amp: Ug1 defect amplitude (dimensionless)
+    constexpr double DELTA_DEFECT_AMP = 0.01;
+
+    /// mu_0: vacuum permeability (H/m) — standard SI value
+    constexpr double MU_0_VACUUM = 1.2566e-6;
+
+    /// E_react_t0: reactor efficiency at t=0 (J/m^3 normalised)
+    /// E_react_t0 = rho_SCm * v_SCm^2 / rho_A ~ 10^46 (solar calibration)
+    constexpr double E_REACT_T0 = 1.0e46;
+
+    /// mu_jet: quasar jet dynamic viscosity (Pa.s) — near-zero for SCm-Aether medium
+    /// Used in Navier-Stokes quasar jet model (Millennium Problem connection)
+    constexpr double MU_QUASAR_JET_VISCOSITY = 1.0e-35;
+} // namespace StarMagicCanonical
+
 
 } // namespace Constants
 } // namespace UQFF
