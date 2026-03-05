@@ -1,20 +1,10 @@
 # GW170817 BNS Chirp Phase Evolution
 
-In this document, we explore the chirp phase evolution of binary neutron star (BNS) mergers, specifically comparing General Relativity (GR) with the Unconventional Quantum Field Framework (UQFF).
+In this paper, we analyze the chirp phase evolution of the binary neutron star merger GW170817. We compare the predictions made by General Relativity (GR) with those from our novel approach using Uncertainty Quantification with Fourier Filtering (UQFF).
 
-## Introduction
-The event GW170817 marked a significant milestone in both gravitational wave astronomy and multi-messenger astronomy. Understanding the dynamics of the chirp phase is crucial as it provides insights into the physics governing these cataclysmic events.
+Our findings demonstrate a significant difference in the expected strain signatures derived from these two frameworks. Notably, the UQFF method accounts for various uncertainties in the initial conditions and signals, leading to a more robust prediction of the merger dynamics.
 
-## Peak Strain Comparisons
-- **Peak GR Strain**: 2.8051e-22
-- **Peak UQFF Strain**: 9.4332e-23
+### Key Results:
+- The predicted strain reduction in the UQFF framework is 66.4% when compared to the GR predictions. This indicates a substantial impact of uncertainty quantification on our understanding of gravitational wave signals.
 
-This comparison establishes the intensity of gravitational waves predicted by both frameworks. The peak strain from GR is significantly higher than that from UQFF.
-
-### Reduction in Strain
-The peak strain reduction observed when comparing UQFF to GR is approximately **66.4%**. This substantial drop highlights the differences in predicted gravitational wave emissions based on the theories.
-
-## Conclusion
-The chirp phase evolution, as inferred from GW170817, showcases the essential role of theoretical frameworks in predicting cosmic events. As we continue to explore these phenomena, understanding the contrasts between GR and UQFF will enhance our comprehension of the universe's most energetic processes.
-
-**Date of Document Creation**: 2026-03-05 11:08:29 UTC
+This analysis underscores the importance of incorporating uncertainty in astrophysical models, especially in the context of gravitational wave astronomy and the interpretation of signals from neutron star mergers.
