@@ -37760,6 +37760,17 @@ __all__ = [
     'SystemParamsDeed728bCalculator',             # 8 new systems (Geminga, GSN 069, PJ352-15, etc.)
     'UnifiedFieldSimulatorCalculator',            # Ug + Um + Ui + Ua unified field framework
 
+    # GROK THREAD DEED728B - TIER 2 SIMULATION FUNCTIONS (March 5, 2026)
+    # Source: https://x.com/i/grok/share/deed728b636f4cd4a70bfa83a4331f9e
+    # 6 simulation function classes ported from C++ / HTML
+    # ========================================================================
+    'QuantumAtomSimulatorCalculator',             # Pi-phase quantum atom simulation
+    'PiSolfeggioHarmonicsCalculator',             # Pi digits → solfeggio frequency mapping
+    'PlasmoidDynamicsCalculator',                 # Plasmoid convection dynamics (Python)
+    'UnifiedFieldTimeSeriesCalculator',           # Unified field time-series evolution
+    'StarSystemTableCalculator',                  # Star type property table (Red/White Dwarf, NS)
+    'RedDwarfPlasmaAccumulatorCalculator',        # Energy accumulation in plasma convection
+
 ]
 
 
@@ -38837,4 +38848,555 @@ class UnifiedFieldSimulatorCalculator:
             'verification': 'Grok thread deed728b - Unified Field Theory Algorithm_01Mar2025_3.html',
             'status': 'NEW unified field calculator - 4-component framework'
         }
+
+
+# ============================================================================
+# GROK THREAD DEED728B - TIER 2 SIMULATION FUNCTIONS (March 5, 2026)
+# Source: https://x.com/i/grok/share/deed728b636f4cd4a70bfa83a4331f9e
+# Author: Daniel T. Murphy (via Grok AI DaVinci), August 27, 2025
+# Python port of 6 C++ / HTML simulation functions
+# ============================================================================
+
+
+class QuantumAtomSimulatorCalculator:
+    """
+    Quantum atom construction simulator from atom_construction_2.html.
+
+    Models a 2-electron quantum atom with:
+    - Pi-phase modulation (3.14 Hz driving frequency)
+    - Bio-quantum resonance frequency (400 Hz)
+    - Negative time effect (-2512 s threshold)
+    - REACTOR_EFFICIENCY gain factor (555x)
+    - Scale factor: 1 + 0.1 * sin(pi_phase)
+
+    Physics:
+        pi_phase  = (t * PI_FREQ) - 2*pi
+        scale     = 1 + 0.1 * sin(pi_phase)
+        orbit_spd = BIO_QUANTUM_FREQ / 1000
+        neg_effect= abs(t) % abs(NEGATIVE_TIME) < 1 (periodic reversal)
+
+    Cross-platform assignment: CondensedPhysics2.py (experimental quantum tier)
+    Reference: Grok thread deed728b636f4cd4a70bfa83a4331f9e
+    """
+
+    # Constants from atom_construction_2.html
+    PI_FREQ = 3.14             # Hz — Pi-phase driving frequency
+    NEGATIVE_TIME = -2512.0    # s  — Threshold for temporal reversal
+    VACUUM_ENERGY = 1e-12      # J/m³ — Vacuum energy density
+    BIO_QUANTUM_FREQ = 400.0   # Hz — Bio-quantum coherence frequency
+    REACTOR_EFFICIENCY = 555.0 # dimensionless — gain factor
+    NUM_ELECTRONS = 2
+
+    def compute(self, dataset: dict = None) -> dict:
+        """
+        Run 10-step quantum atom simulation.
+
+        Parameters (via dataset dict):
+            t_start (float): Start time in seconds (default 0.0)
+            dt      (float): Timestep in seconds (default 1.0)
+            n_steps (int):   Number of simulation steps (default 10)
+
+        Returns:
+            dict with 'steps' list, each step containing:
+                time, pi_phase, scale_factor, orbit_speed, neg_effect, energy
+        """
+        import math
+        if dataset is None:
+            dataset = {}
+
+        t_start = dataset.get('t_start', 0.0)
+        dt      = dataset.get('dt', 1.0)
+        n_steps = dataset.get('n_steps', 10)
+
+        steps = []
+        for i in range(n_steps):
+            t = t_start + i * dt
+            pi_phase   = (t * self.PI_FREQ) - 2.0 * math.pi
+            scale      = 1.0 + 0.1 * math.sin(pi_phase)
+            orbit_spd  = self.BIO_QUANTUM_FREQ / 1000.0
+            neg_effect = (abs(t) % abs(self.NEGATIVE_TIME)) < 1.0
+            energy     = self.VACUUM_ENERGY * self.REACTOR_EFFICIENCY * scale
+
+            steps.append({
+                'step':        i + 1,
+                'time_s':      round(t, 6),
+                'pi_phase':    round(pi_phase, 6),
+                'scale_factor':round(scale, 6),
+                'orbit_speed': round(orbit_spd, 6),
+                'neg_effect':  neg_effect,
+                'energy_J_m3': energy,
+            })
+
+        return {
+            'calculator':      'QuantumAtomSimulatorCalculator',
+            'source_html':     'atom_construction_2.html',
+            'grok_thread':     'deed728b636f4cd4a70bfa83a4331f9e',
+            'num_electrons':   self.NUM_ELECTRONS,
+            'bio_quantum_hz':  self.BIO_QUANTUM_FREQ,
+            'reactor_gain':    self.REACTOR_EFFICIENCY,
+            'negative_time_s': self.NEGATIVE_TIME,
+            'steps':           steps,
+            'equation':        'scale = 1 + 0.1*sin((t*PI_FREQ) - 2π)',
+            'status':          'TIER 2 simulation - experimental bio-quantum atom model',
+        }
+
+
+class PiSolfeggioHarmonicsCalculator:
+    """
+    Pi digits → Solfeggio frequency mapper from PI_construction.html.
+
+    Maps each digit (0-9) in the decimal expansion of Pi to one of the
+    9 solfeggio healing / sacred geometry frequencies (174–963 Hz).
+    Digit 9 wraps to solfeggio[0] (174 Hz).
+
+    Solfeggio scale:
+        174, 285, 396, 417, 528, 639, 741, 852, 963  Hz
+
+    Physics connection:
+        - Pi encodes the geometry of circular orbits and wave resonance
+        - Solfeggio frequencies appear in cymatics and harmonic medicine
+        - 528 Hz ("Miracle Tone") links to DNA repair research (Rein 1998)
+
+    Cross-platform assignment: CondensedPhysics2.py (harmonic resonance tier)
+    Reference: Grok thread deed728b636f4cd4a70bfa83a4331f9e
+    """
+
+    SOLFEGGIO = [174, 285, 396, 417, 528, 639, 741, 852, 963]  # Hz
+
+    # Pi to 100 decimal places
+    PI_100 = "31415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679"
+
+    def compute(self, dataset: dict = None) -> dict:
+        """
+        Map Pi digits to solfeggio frequencies.
+
+        Parameters (via dataset dict):
+            pi_str (str): String of Pi digits (default: PI_100 above)
+            n_digits (int): How many digits to map (default all in pi_str)
+
+        Returns:
+            dict with mapping list and resonance summary
+        """
+        if dataset is None:
+            dataset = {}
+
+        pi_str  = dataset.get('pi_str', self.PI_100)
+        digits  = [c for c in pi_str if c.isdigit()]
+        n_digits= dataset.get('n_digits', len(digits))
+        digits  = digits[:n_digits]
+
+        mapping = []
+        freq_count = {f: 0 for f in self.SOLFEGGIO}
+        for i, d in enumerate(digits):
+            idx  = int(d) % len(self.SOLFEGGIO)
+            freq = self.SOLFEGGIO[idx]
+            freq_count[freq] += 1
+            mapping.append({
+                'position':  i + 1,
+                'pi_digit':  int(d),
+                'solfeggio_idx': idx,
+                'frequency_hz': freq,
+            })
+
+        dominant = max(freq_count, key=freq_count.get)
+        return {
+            'calculator':     'PiSolfeggioHarmonicsCalculator',
+            'source_html':    'PI_construction.html',
+            'grok_thread':    'deed728b636f4cd4a70bfa83a4331f9e',
+            'n_digits_mapped': len(digits),
+            'solfeggio_hz':   self.SOLFEGGIO,
+            'mapping':        mapping,
+            'frequency_counts': freq_count,
+            'dominant_freq_hz': dominant,
+            'equation':       'digit → SOLFEGGIO[digit % 9]',
+            'status':         'TIER 2 simulation - Pi-harmonic resonance mapper',
+        }
+
+
+class PlasmoidDynamicsCalculator:
+    """
+    Plasmoid convection dynamics simulator (Python) from Plasmoid_Convection_3.html.
+
+    NOTE: A full interactive HTML version already exists at:
+          visualizations/plasmoid_convection_deed728b.html
+
+    This Python calculator provides the same physics as a
+    frame-by-frame numeric output suitable for integration
+    with existing CondensedPhysics pipelines.
+
+    Physics:
+        Upward convection: vy = -velocity (negative Y = upward)
+        Random quantum jump: probability jump_prob per frame
+        Brightness: [sin((t - t0) * π / duration) + 1] / 2 × 100%
+        Jump energy: E_jump ∝ jump_prob × velocity × frame_count
+
+    Constants (from HTML animation):
+        START_TIME  = 15.03 s
+        END_TIME    = 30.78 s
+        FRAME_TIME  = 0.10 s
+        SPINDLE_X   = 175 px
+        SPINDLE_Y   = 500 px
+
+    Cross-platform assignment: CondensedPhysics2.py (plasmoid / THz tier)
+    Reference: Grok thread deed728b636f4cd4a70bfa83a4331f9e
+    """
+
+    START_TIME = 15.03   # s
+    END_TIME   = 30.78   # s
+    FRAME_TIME = 0.10    # s
+    SPINDLE_X  = 175     # px
+    SPINDLE_Y  = 500     # px
+    WIDTH      = 350     # px
+    HEIGHT     = 1000    # px
+
+    def compute(self, dataset: dict = None) -> dict:
+        """
+        Simulate plasmoid convection frame by frame.
+
+        Parameters (via dataset dict):
+            num_plasmoids (int):   Number of plasmoids (default 45)
+            velocity (float):      Convection speed m/s (default 0.5)
+            jump_prob (float):     Quantum jump probability per frame (default 0.402)
+            n_frames (int):        Frames to simulate (default all in time range)
+
+        Returns:
+            dict with per-frame data and summary statistics
+        """
+        import math
+        if dataset is None:
+            dataset = {}
+
+        num_plasmoids = dataset.get('num_plasmoids', 45)
+        velocity      = dataset.get('velocity', 0.5)
+        jump_prob     = dataset.get('jump_prob', 0.402)
+        duration      = self.END_TIME - self.START_TIME  # 15.75 s
+        max_frames    = int(duration / self.FRAME_TIME)
+        n_frames      = dataset.get('n_frames', max_frames)
+
+        frames = []
+        total_jumps = 0
+        for fi in range(n_frames):
+            t = self.START_TIME + fi * self.FRAME_TIME
+            brightness = (math.sin((t - self.START_TIME) * math.pi / duration) + 1.0) / 2.0
+
+            # Expected jumps this frame (Poisson approximation)
+            expected_jumps = num_plasmoids * jump_prob
+            total_jumps += expected_jumps
+
+            frames.append({
+                'frame':          fi + 1,
+                'time_s':         round(t, 4),
+                'brightness_pct': round(brightness * 100.0, 2),
+                'expected_jumps': round(expected_jumps, 2),
+                'cumulative_jumps': round(total_jumps, 2),
+            })
+
+        convection_force = num_plasmoids * velocity  # simplified
+
+        return {
+            'calculator':          'PlasmoidDynamicsCalculator',
+            'source_html':         'Plasmoid_Convection_3.html',
+            'grok_thread':         'deed728b636f4cd4a70bfa83a4331f9e',
+            'html_visualization':  'visualizations/plasmoid_convection_deed728b.html',
+            'num_plasmoids':       num_plasmoids,
+            'velocity_m_s':        velocity,
+            'jump_probability':    jump_prob,
+            'time_range_s':        [self.START_TIME, self.END_TIME],
+            'frame_time_s':        self.FRAME_TIME,
+            'n_frames_simulated':  len(frames),
+            'total_expected_jumps': round(total_jumps, 2),
+            'convection_force':    convection_force,
+            'equation':            'brightness = [sin((t-t0)*π/dur)+1]/2',
+            'frames':              frames,
+            'status':              'TIER 2 simulation - Python plasmoid convection dynamics',
+        }
+
+
+class StarSystemTableCalculator:
+    """
+    Star system property table from SystemAnalysisSimulator_4.html.
+
+    Provides canonical parameters for prototype stellar systems:
+        Red Dwarf   — M-class main sequence
+        White Dwarf — Stellar remnant
+        Neutron Star— Ultra-compact remnant (UQFF reference object)
+
+    Each entry includes: mass, radius, temperature, luminosity,
+    magnetic field strength, and angular velocity.
+
+    Cross-platform assignment: CondensedPhysics2.py (stellar systems tier)
+    Reference: Grok thread deed728b636f4cd4a70bfa83a4331f9e
+    """
+
+    STARS = {
+        'RedDwarf': {
+            'type':           'Red Dwarf (M-class)',
+            'mass_Msun':      0.2,
+            'mass_kg':        0.2 * 1.989e30,
+            'radius_km':      200_000,
+            'radius_m':       2.0e8,
+            'temperature_K':  3_000,
+            'luminosity_Lsun':0.01,
+            'luminosity_W':   0.01 * 3.828e26,
+            'B_field_G':      1_000,
+            'B_field_T':      0.1,
+            'omega_rad_s':    0.1,
+            'color':          '#FF4500',       # OrangeRed
+            'notes':          '~70% of all stars; long-lived; habitable zone narrow',
+        },
+        'WhiteDwarf': {
+            'type':           'White Dwarf',
+            'mass_Msun':      0.6,
+            'mass_kg':        0.6 * 1.989e30,
+            'radius_km':      5_000,
+            'radius_m':       5.0e6,
+            'temperature_K':  10_000,
+            'luminosity_Lsun':0.001,
+            'luminosity_W':   0.001 * 3.828e26,
+            'B_field_G':      1e6,
+            'B_field_T':      100.0,
+            'omega_rad_s':    1.0,
+            'color':          '#FFFFFF',
+            'notes':          'Electron-degenerate matter; Chandrasekhar limit 1.4 Msun',
+        },
+        'NeutronStar': {
+            'type':           'Neutron Star',
+            'mass_Msun':      1.4,
+            'mass_kg':        1.4 * 1.989e30,
+            'radius_km':      10,
+            'radius_m':       1.0e4,
+            'temperature_K':  1e6,
+            'luminosity_Lsun':1e-5,
+            'luminosity_W':   1e-5 * 3.828e26,
+            'B_field_G':      1e12,
+            'B_field_T':      1e8,
+            'omega_rad_s':    100.0,
+            'color':          '#00BFFF',       # DeepSkyBlue
+            'notes':          'Neutron-degenerate; UQFF primary reference object',
+        },
+    }
+
+    def compute(self, dataset: dict = None) -> dict:
+        """
+        Return star system table, optionally filtering by type.
+
+        Parameters (via dataset dict):
+            star_type (str): 'RedDwarf', 'WhiteDwarf', 'NeutronStar', or None for all
+
+        Returns:
+            dict with star table and computed UQFF-relevant ratios
+        """
+        if dataset is None:
+            dataset = {}
+
+        star_type = dataset.get('star_type', None)
+        if star_type and star_type in self.STARS:
+            table = {star_type: self.STARS[star_type]}
+        else:
+            table = self.STARS
+
+        # Compute surface gravity g = GM/R² for each entry
+        G = 6.674e-11
+        summary = {}
+        for name, s in table.items():
+            g_surface = G * s['mass_kg'] / s['radius_m'] ** 2
+            escape_v  = (2.0 * G * s['mass_kg'] / s['radius_m']) ** 0.5
+            summary[name] = {
+                'surface_gravity_m_s2': g_surface,
+                'escape_velocity_m_s':  escape_v,
+            }
+
+        return {
+            'calculator':  'StarSystemTableCalculator',
+            'source_html': 'SystemAnalysisSimulator_4.html',
+            'grok_thread': 'deed728b636f4cd4a70bfa83a4331f9e',
+            'star_table':  table,
+            'computed':    summary,
+            'status':      'TIER 2 simulation - prototype stellar system parameters',
+        }
+
+
+class RedDwarfPlasmaAccumulatorCalculator:
+    """
+    Energy accumulation model for plasma convection from
+    Unified Field Theory AnalysisSimulator_8.html.
+
+    Simple energy accumulator:
+        E_i = E_{i-1} + jump_prob * velocity * t_i
+
+    Original default parameters:
+        num_plasmoids = 50
+        velocity      = 0.5 m/s
+        jump_prob     = 0.3
+
+    Suitable for estimating energy buildup in low-mass stellar plasma
+    (Red Dwarf convective zones) under UQFF field coupling.
+
+    Cross-platform assignment: CondensedPhysics2.py (plasma energy tier)
+    Reference: Grok thread deed728b636f4cd4a70bfa83a4331f9e
+    """
+
+    DT = 0.03   # s — time increment per step (from C++ source)
+
+    def compute(self, dataset: dict = None) -> dict:
+        """
+        Run energy accumulation simulation.
+
+        Parameters (via dataset dict):
+            num_plasmoids (int):   Plasmoid count (default 50)
+            velocity (float):      Plasma velocity m/s (default 0.5)
+            jump_prob (float):     Stochastic jump probability (default 0.3)
+            n_steps (int):         Number of steps (default 10)
+
+        Returns:
+            dict with per-step energy accumulation and UQFF coupling estimate
+        """
+        if dataset is None:
+            dataset = {}
+
+        num_plasmoids = dataset.get('num_plasmoids', 50)
+        velocity      = dataset.get('velocity', 0.5)
+        jump_prob     = dataset.get('jump_prob', 0.3)
+        n_steps       = dataset.get('n_steps', 10)
+
+        energy = 0.0
+        steps  = []
+        for i in range(1, n_steps + 1):
+            t       = i * self.DT
+            delta_E = jump_prob * velocity * t * num_plasmoids
+            energy += delta_E
+            steps.append({
+                'step':            i,
+                'time_s':          round(t, 4),
+                'delta_energy':    round(delta_E, 6),
+                'total_energy':    round(energy, 6),
+            })
+
+        return {
+            'calculator':       'RedDwarfPlasmaAccumulatorCalculator',
+            'source_html':      'Unified Field Theory AnalysisSimulator_8.html',
+            'grok_thread':      'deed728b636f4cd4a70bfa83a4331f9e',
+            'num_plasmoids':    num_plasmoids,
+            'velocity_m_s':     velocity,
+            'jump_probability': jump_prob,
+            'dt_s':             self.DT,
+            'n_steps':          n_steps,
+            'total_energy':     round(energy, 6),
+            'equation':         'E_i = E_{i-1} + jump_prob * velocity * t_i * N',
+            'steps':            steps,
+            'status':           'TIER 2 simulation - Red Dwarf plasma energy accumulator',
+        }
+
+
+class UnifiedFieldTimeSeriesCalculator:
+    """
+    Time-series extension of UnifiedFieldSimulatorCalculator.
+
+    Evolves the 4-component unified field (Ug, Um, Ui, Ua) over time by
+    coupling angular velocity omega_s to a time-dependent decay/growth:
+
+        omega_s(t) = omega_s0 * exp(-t / tau)       [default: decay]
+        Ug(t)      = G * M_s / r(t)²                [orbital radius grows]
+        r(t)       = r_max + dr * t                  [linear expansion]
+
+    All other components (Um, Ui, Ua) remain time-averaged; only Ug
+    and Um vary with time (dominant for compact objects).
+
+    Physics motivation:
+        - SGR 1745-2900 magnetar spin-down: omega ∝ exp(-t/tau)
+        - GSN 069 QPE: quasi-periodic orbit radius expansion
+        - MUGE Resonance: time-varying field oscillation
+
+    Cross-platform assignment: CondensedPhysics2.py (unified field time tier)
+    Reference: Grok thread deed728b636f4cd4a70bfa83a4331f9e
+    """
+
+    G   = 6.674e-11
+    mu0 = 4.0 * 3.141592653589793e-7
+    eps0= 8.854e-12
+
+    def compute(self, dataset: dict = None) -> dict:
+        """
+        Evolve 4-component unified field in time.
+
+        Parameters (via dataset dict):
+            M_s      (float): Solar/stellar mass kg (default 1 Msun)
+            mu_s     (float): Magnetic moment A·m² (default 1e20)
+            omega_s0 (float): Initial angular velocity rad/s (default 1e-6)
+            tau      (float): Decay timescale s (default 1e6)
+            r_max    (float): Initial radius m (default 2e9)
+            dr       (float): Radial expansion rate m/s (default 0)
+            Q_A      (float): Aether quality factor (default 1e10)
+            R_b      (float): Buoyancy radius m (default 1e9)
+            Omega_g  (float): Galactic angular velocity s⁻¹ (default 1e-15)
+            M_bh     (float): SMBH mass kg (default 7.956e36)
+            d_g      (float): Galactic distance m (default 1e10)
+            t_max    (float): Simulation end time s (default 10.0)
+            n_steps  (int):   Number of time steps (default 10)
+
+        Returns:
+            dict with time-series frames and statistics
+        """
+        import math
+        if dataset is None:
+            dataset = {}
+
+        M_s      = dataset.get('M_s',      1.989e30)
+        mu_s     = dataset.get('mu_s',     1e20)
+        omega_s0 = dataset.get('omega_s0', 1e-6)
+        tau      = dataset.get('tau',      1e6)
+        r_max    = dataset.get('r_max',    2e9)
+        dr       = dataset.get('dr',       0.0)
+        Q_A      = dataset.get('Q_A',      1e10)
+        R_b      = dataset.get('R_b',      1e9)
+        Omega_g  = dataset.get('Omega_g',  1e-15)
+        M_bh     = dataset.get('M_bh',     7.956e36)
+        d_g      = dataset.get('d_g',      1e10)
+        t_max    = dataset.get('t_max',    10.0)
+        n_steps  = dataset.get('n_steps',  10)
+
+        dt = t_max / max(n_steps, 1)
+
+        # Static components (time-independent)
+        Ui = Q_A  / (4.0 * math.pi * self.eps0 * R_b**2)
+        Ua = (Omega_g * M_bh) / d_g
+
+        frames = []
+        for i in range(n_steps + 1):
+            t       = i * dt
+            r_t     = r_max + dr * t
+            omega_t = omega_s0 * math.exp(-t / tau)
+            Ug      = self.G * M_s / r_t**2
+            Um      = (self.mu0 * mu_s * omega_t) / (4.0 * math.pi * r_t**2)
+            F_total = Ug + Um + Ui + Ua
+
+            frames.append({
+                'step':        i,
+                'time_s':      round(t, 6),
+                'r_m':         r_t,
+                'omega_rad_s': omega_t,
+                'Ug':          Ug,
+                'Um':          Um,
+                'Ui':          Ui,
+                'Ua':          Ua,
+                'F_total':     F_total,
+            })
+
+        F_totals = [f['F_total'] for f in frames]
+        return {
+            'calculator':        'UnifiedFieldTimeSeriesCalculator',
+            'source_html':       'Unified Field Theory Algorithm_01Mar2025_3.html',
+            'grok_thread':       'deed728b636f4cd4a70bfa83a4331f9e',
+            'n_steps':           n_steps,
+            't_max_s':           t_max,
+            'Ui_static':         Ui,
+            'Ua_static':         Ua,
+            'F_total_min':       min(F_totals),
+            'F_total_max':       max(F_totals),
+            'equation':          'F_unified(t) = Ug(t) + Um(t) + Ui + Ua',
+            'omega_decay':       'omega(t) = omega_s0 * exp(-t/tau)',
+            'frames':            frames,
+            'status':            'TIER 2 simulation - unified field time-series evolution',
+        }
+
 
