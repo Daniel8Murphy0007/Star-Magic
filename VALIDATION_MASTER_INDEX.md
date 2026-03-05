@@ -86,7 +86,7 @@
 - [ ] #9 — Aether/String/TRZ Damping in Gravitational Wave Strain
 - [ ] #10 — Time-Domain Chirp Simulation: 23 Hz Onset Analysis
 - [ ] #11 — UQFF Amplitude Reduction Factor Derivation
-- [ ] #12 — Cosmological Distance Effects on GW Strain
+- [ ] #12 — GW150914-like Waveform Validation: Peak Strain, Amplitude Ratio, Phase Lag
 
 **Key Validation Points:**
 - UQFF damping factors: Aether, SCm (superconducting manifold), TRZ (topological resonance zone), String
