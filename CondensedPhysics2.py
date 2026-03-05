@@ -37792,6 +37792,19 @@ __all__ = [
     'OperationalTransformS8Calculator',          # convergence_ms = clients * ops * latency / 100
     'MPIDistributedS8Calculator',                # efficiency = 1 / ((1+ovhd/100) * log2(procs))
     'SOURCE8_BA400FD1_CALCULATORS',              # Registry dict for Source8 calculators
+    # THREAD 10220801 — Solar UQFF Calibration (10 classes)
+    # "Superconductivity Unifies Quantum and Gravity" 09 Sept 2025
+    'Ug1SolarDipoleCycleCalculator',             # Ug1 = k1·μ_s(t)·∇(M_s/r)·e^{-αt}·cos(πt_n)·(1+δ), 11-yr B_s(t) cycle
+    'Ug2StellarBubbleCalculator',                # Ug2 = k2·(Q_A+Q_UA)·M_s/r²·S(r-R_b)·(1+δ_sw·v_sw)·H_SCm·E_react
+    'Ug3MagneticDiskFullCalculator',             # Ug3 = k3·B_j(t)·cos(ω_s·t·π)·P_core·E_react  (full disk+cycle)
+    'Ug4SMBHVacuumInteractionCalculator',        # Ug4 = k4·ρ_vac·([SCm]·M_bh)/d_g·e^{-αt}·cos(πt_n)·(1+ff); 2025 EHT M_bh
+    'SolarFUAssemblyCalculator',                 # F_U = Σ[Ug_i−Ub_i]+Um+A_μν solar assembly
+    'InflationForceCoreCalculator',              # F_core = ħ·ω_LENR/(σ_n·ρ_vac,[UA]) ~10¹⁰ N; F_U(t=0) inflation
+    'SCmEpochStateCalculator',                   # 5 cosmic epochs: SCm/UA states per Inflation/Force Chart
+    'SolarWindVacuumDensityCalculator',          # ρ_sw(r) = ρ_1AU·(1AU/r)²; buoyancy mod (1+ε_sw·ρ_vac_sw)
+    'KiNormalizedSolarCalculator',               # Σ(k_i·U_gi) solar sum ≈ 1.42×10⁵³ J/m³ at t=0
+    'SolarAetherStressTensorCalculator',         # T_s^{00} = M_s·c²/V+L_s/(c²V)+ρ_sw·v_sw²+ρ_SCm·v_SCm²+ρ_A·v_A²
+    'SOURCE_10220801_CALCULATORS',               # Registry dict for thread 10220801 calculators
 
 ]
 
@@ -39861,6 +39874,761 @@ SOURCE8_BA400FD1_CALCULATORS = {
     'BlockchainECDSAS8Calculator':         BlockchainECDSAS8Calculator(),
     'OperationalTransformS8Calculator':    OperationalTransformS8Calculator(),
     'MPIDistributedS8Calculator':          MPIDistributedS8Calculator(),
+}
+
+
+# ╔═══════════════════════════════════════════════════════════════════════════════╗
+# ║  GROK THREAD 10220801 — STAR MAGIC QUEST FOR UNITY: SOLAR UQFF CALIBRATION  ║
+# ║  "Superconductivity Unifies Quantum and Gravity" (09 Sept 2025)              ║
+# ║  Source: https://x.com/i/grok/share/10220801d6ef4efd8df5520cfc8815f7        ║
+# ║  Documents: Star Magic_14April2025.docx + 10 variable-definition .docx      ║
+# ║  10 Calculator classes: Solar-parameterized Ug1-4, F_U assembly, inflation,  ║
+# ║  SCm epoch states, solar wind density, k_i normalization, Aether tensor      ║
+# ╚═══════════════════════════════════════════════════════════════════════════════╝
+
+# Parameters for thread 10220801 (solar parameterization)
+THREAD_10220801_PARAMS = {
+    # Solar physical parameters (09 Sept 2025 values)
+    'M_s':         1.989e30,        # Solar mass (kg)
+    'R_s':         6.96e8,          # Solar radius (m)
+    'T_s':         5778.0,          # Solar effective temperature (K)
+    'L_s':         3.828e26,        # Solar luminosity (W)
+    'g_surface':   274.0,           # Solar surface gravity (m/s²)
+    # Magnetic field parameters
+    'B0_avg':      1e-4,            # Average surface field (T)
+    'B_sunspot':   0.4,             # Sunspot peak field amplitude (T)
+    'omega_c':     1.6e-8,          # 11-year solar cycle frequency (rad/s)
+    'omega_s':     2.5e-6,          # Differential rotation average (rad/s)
+    # Aether/charge parameters
+    'Q_A':         1e-10,           # Trapped Aether charge (C)
+    'Q_UA':        1e-10,           # UA charge component (C)
+    'R_bubble':    1.496e13,        # Heliosphere bubble radius ~100 AU (m)
+    'delta_sw':    0.01,            # Solar wind defect factor
+    'v_sw':        5e5,             # Solar wind velocity (m/s)
+    'H_SCm':       1.0,             # SCm superconductivity factor
+    # Time decay
+    'alpha_decay': 0.001,           # Decay rate (day⁻¹)
+    'delta_def':   0.01,            # Defect factor for irregularities
+    # Galactic / SMBH (2025 EHT updated)
+    'M_bh':        8.55e36,         # Sgr A* mass updated 2025 EHT (kg)
+    'd_g':         2.55e20,         # Sun–galactic center distance (m)
+    'Omega_g':     7.3e-16,         # Galactic spin rate (rad/s)
+    'rho_vac':     1e-9,            # Vacuum energy density (J/m³)
+    'SCm_conc':    1e15,            # [SCm] concentration in stellar cores (kg/m³)
+    'f_feedback':  0.2,             # Feedback factor for solar orbit
+    # Magnetism / buoyancy
+    'beta_i':      0.6,             # Uniform buoyancy coupling
+    'epsilon_sw':  0.001,           # Solar wind buoyancy modulation
+    'rho_sw_1AU':  8.4e-21,         # Solar wind density at 1 AU (kg/m³)
+    'gamma_decay': 1e-4,            # Magnetic string decay rate (day⁻¹)
+    # Aether metric
+    'eta_aether':  1e-22,           # Aether coupling constant (dimensionless)
+    'rho_A':       1e-23,           # Aether density (kg/m³)
+    'rho_SCm_s':   1e15,            # SCm density in solar core (kg/m³)
+    'v_SCm':       2.963e8,         # SCm velocity (0.99c, m/s)
+    'v_A':         3e5,             # Aether bulk velocity estimate (m/s)
+    # LENR inflation
+    'hbar':        1.055e-34,       # Reduced Planck constant (J·s)
+    'omega_LENR':  1e44,            # LENR nuclear frequency (rad/s)
+    'sigma_n':     1e-28,           # Nuclear cross-section (m²)
+    'rho_vac_UA':  1e-30,           # [UA] vacuum energy density (J/m³)
+    # Solar Ug values at t=0 (from thread: full solar computation)
+    'Ug1_solar_t0': 1.39e26,        # Solar Ug1 at t=0 (J/m³ normalized)
+    'Ug2_solar_t0': 1.18e53,        # Solar Ug2 at t=0 (J/m³ normalized)
+    'Ug3_solar_t0': 1.80e49,        # Solar Ug3 at t=0 (J/m³ normalized)
+    'Ug4_solar_t0': 2.50e-20,       # Solar Ug4 at t=0 (J/m³ normalized)
+    # k_i coupling constants (canonical from thread)
+    'k1': 1.5,                      # Ug1 internal dipole coupling
+    'k2': 1.2,                      # Ug2 outer bubble coupling
+    'k3': 1.8,                      # Ug3 magnetic disk coupling
+    'k4': 1.0,                      # Ug4 star-BH interaction coupling
+    # E_react (SCm reactor energy at t=0)
+    'E_react_t0':  1e46,            # E_react at t=0 (J) for solar normalization
+}
+
+
+class Ug1SolarDipoleCycleCalculator:
+    """
+    Solar Ug1 with time-varying 11-year magnetic cycle.
+
+    Full form from Star Magic 14Apr2025 / thread 10220801:
+        Ug1 = k1 · μ_s(t) · ∇(M_s/r) · e^{-α·t} · cos(π·t_n) · (1 + δ_def)
+
+    Solar magnetic dipole moment:
+        μ_s(t) = B_s(t) · R_s³
+        B_s(t) = B0 + A_B · sin(ω_c · t)   (11-year cycle)
+        B0 = 10⁻⁴ T (average), A_B = 0.4 T (sunspot amplitude)
+        ω_c = 1.6×10⁻⁸ rad/s
+
+    Solar surface gravity:
+        ∇(M_s/r) ≈ 274 m/s²
+
+    Reference values at t=0:
+        μ_s(0) = 10⁻⁴ · (6.96×10⁸)³ ≈ 3.38×10²⁰ T·m³
+        Ug1 ≈ 1.5 · 3.38×10²⁰ · 274 · 1.0 · 1.0 · 1.01 ≈ 1.39×10²³
+
+    Source: Star Magic_14April2025.docx — thread 10220801d6ef4efd8df5520cfc8815f7
+    """
+
+    def compute(self, t: float = 0.0, r: float = None, t_n: float = 0.0,
+                k1: float = None) -> dict:
+        import math
+        P = THREAD_10220801_PARAMS
+
+        k1  = k1  if k1  is not None else P['k1']
+        r   = r   if r   is not None else P['R_s']
+
+        # Time-varying solar magnetic field (11-year cycle)
+        B_s = P['B0_avg'] + P['B_sunspot'] * math.sin(P['omega_c'] * t)
+
+        # Dipole moment
+        mu_s = B_s * (P['R_s'] ** 3)
+
+        # ∇(M_s/r): simplified as surface gravity
+        grad_Ms_r = P['g_surface']
+
+        # Exponential time decay (α in day⁻¹)
+        exp_decay = math.exp(-P['alpha_decay'] * t)
+
+        # π-cycle / negative-time modulation
+        cos_pi_tn = math.cos(math.pi * t_n)
+
+        # Defect factor
+        delta_def = P['delta_def']
+
+        # Ug1
+        Ug1 = k1 * mu_s * grad_Ms_r * exp_decay * cos_pi_tn * (1.0 + delta_def)
+
+        return {
+            'Ug1':          Ug1,
+            'B_s_t':        B_s,
+            'mu_s_t':       mu_s,
+            'exp_decay':    exp_decay,
+            'cos_pi_tn':    cos_pi_tn,
+            'k1':           k1,
+            't':            t,
+            't_n':          t_n,
+            'units':        'J/m³ (normalized)',
+            'equation':     'Ug1 = k1·μ_s(t)·∇(M_s/r)·e^{-αt}·cos(πt_n)·(1+δ_def)',
+            'result_equation': f'Ug1({t:.1f}) = {Ug1:.4e} J/m³',
+        }
+
+
+class Ug2StellarBubbleCalculator:
+    """
+    Stellar outer field bubble Ug2 with full mass-charge form.
+
+    Equation (thread 10220801 / Star Magic):
+        Ug2 = k2 · (Q_A + Q_UA) · M_s / r² · S(r - R_b) · (1 + δ_sw·v_sw) · H_SCm · E_react
+
+    Where:
+        Q_A = 10⁻¹⁰ C  — trapped Aether charge
+        Q_UA = 10⁻¹⁰ C — UA component charge
+        M_s = 1.989×10³⁰ kg — stellar mass
+        R_b = 1.496×10¹³ m (~100 AU) — heliosphere bubble radius
+        S(r-R_b)  — Heaviside step: 1 if r ≥ R_b, else 0
+        δ_sw = 0.01, v_sw = 5×10⁵ m/s — solar wind modulation
+        H_SCm = 1.0 — SCm superconductivity heliosphere factor
+        k2 = 1.2
+
+    Reference: solar Ug2 ≈ 8.91×10⁶ J/m² at r=R_b (normalized, t=0).
+
+    Source: Star Magic_14April2025.docx — thread 10220801d6ef4efd8df5520cfc8815f7
+    """
+
+    def compute(self, r: float = None, E_react: float = None,
+                k2: float = None, H_SCm: float = None) -> dict:
+        P = THREAD_10220801_PARAMS
+
+        k2      = k2      if k2      is not None else P['k2']
+        r       = r       if r       is not None else P['R_bubble']
+        E_react = E_react if E_react is not None else P['E_react_t0']
+        H_SCm   = H_SCm   if H_SCm   is not None else P['H_SCm']
+
+        Q_total = P['Q_A'] + P['Q_UA']
+
+        r_safe = max(r, 1.0)
+
+        # Heaviside step: field active beyond R_b
+        step = 1.0 if r >= P['R_bubble'] else 0.0
+
+        # Solar wind modulation: (1 + δ_sw·v_sw)
+        sw_mod = 1.0 + P['delta_sw'] * P['v_sw']
+
+        Ug2 = k2 * Q_total * (P['M_s'] / (r_safe ** 2)) * step * sw_mod * H_SCm * E_react
+
+        return {
+            'Ug2':           Ug2,
+            'Q_total':       Q_total,
+            'step':          step,
+            'sw_mod':        sw_mod,
+            'H_SCm':         H_SCm,
+            'k2':            k2,
+            'r':             r,
+            'R_bubble':      P['R_bubble'],
+            'units':         'J/m³ (normalized)',
+            'equation':      'Ug2 = k2·(Q_A+Q_UA)·M_s/r²·S(r-R_b)·(1+δ_sw·v_sw)·H_SCm·E_react',
+            'result_equation': f'Ug2 = {Ug2:.4e} J/m³',
+        }
+
+
+class Ug3MagneticDiskFullCalculator:
+    """
+    Full magnetic strings disk Ug3 with 11-year B_j(t) cycle and E_react.
+
+    Equation (thread 10220801 / Star Magic):
+        Ug3 = k3 · B_j(r, θ, t, SCm) · cos(ω_s(t)·t·π) · P_core · E_react
+
+    Solar magnetic disk field with cycle:
+        B_j(t) = B0 + A_B · sin(ω_c · t)
+        B0 = 10⁻³ T (disk average), A_B = 0.4 T (sunspot contribution)
+        ω_c = 1.6×10⁻⁸ rad/s (11-year)
+
+    Differential rotation (disk average):
+        ω_s = 2.5×10⁻⁶ rad/s
+
+    P_core = 1.0 (core penetration factor for planets)
+    k3 = 1.8
+
+    Reference: Ug3 ≈ (1.8×10⁴⁹ + 7.2×10⁴⁶·sin(ω_c·t))·cos(2.5×10⁻⁶·t·π)
+
+    Source: Star Magic_14April2025.docx — thread 10220801d6ef4efd8df5520cfc8815f7
+    """
+
+    def compute(self, t: float = 0.0, E_react: float = None,
+                k3: float = None, P_core: float = 1.0) -> dict:
+        import math
+        P = THREAD_10220801_PARAMS
+
+        k3      = k3      if k3      is not None else P['k3']
+        E_react = E_react if E_react is not None else P['E_react_t0']
+
+        # Disk magnetic field with 11-year cycle
+        B_j = 1e-3 + P['B_sunspot'] * math.sin(P['omega_c'] * t)
+
+        # Differential rotation with weak time variation (simplified)
+        omega_s = P['omega_s']
+
+        # Disk modulation: cos(ω_s · t · π)
+        disk_mod = math.cos(omega_s * t * math.pi)
+
+        Ug3 = k3 * B_j * disk_mod * P_core * E_react
+
+        return {
+            'Ug3':          Ug3,
+            'B_j_t':        B_j,
+            'disk_mod':     disk_mod,
+            'omega_s':      omega_s,
+            'P_core':       P_core,
+            'k3':           k3,
+            't':            t,
+            'units':        'J/m³ (normalized)',
+            'equation':     'Ug3 = k3·B_j(t)·cos(ω_s·t·π)·P_core·E_react',
+            'result_equation': f'Ug3({t:.1f}) = {Ug3:.4e} J/m³',
+        }
+
+
+class Ug4SMBHVacuumInteractionCalculator:
+    """
+    Star–black hole vacuum interaction Ug4 with updated 2025 EHT M_bh.
+
+    Equation (thread 10220801 / Star Magic):
+        Ug4 = k4 · ρ_vac · ([SCm] · M_bh) / d_g · e^{-α·t} · cos(π·t_n) · (1 + f_feedback)
+
+    Canonical solar parameters (2025 EHT updated):
+        M_bh = 8.55×10³⁶ kg  (Sgr A*, updated from 2025 EHT)
+        d_g  = 2.55×10²⁰ m   (Sun–galactic center)
+        ρ_vac = 10⁻⁹ J/m³    (vacuum energy density)
+        [SCm] = 10¹⁵ kg/m³   (stellar core concentration)
+        f_feedback = 0.2      (solar orbit feedback)
+        k4 = 1.0
+
+    Reference at t=0, t_n=0:
+        Ug4 ≈ 1.0 × 10⁻⁹ × (10¹⁵ × 8.55×10³⁶) / 2.55×10²⁰ × 1.0 × 1.0 × 1.2
+            ≈ 4.03×10³¹ J/m³
+
+    Distinct from Ug4VacuumConcentrationCalculator (Orb61), which uses
+    (ρ_SCm−ρ_UA)·(M_bh/d_g) density-gradient form.
+
+    Source: Star Magic_14April2025.docx — thread 10220801d6ef4efd8df5520cfc8815f7
+    """
+
+    def compute(self, t: float = 0.0, t_n: float = 0.0,
+                M_bh: float = None, f_feedback: float = None,
+                k4: float = None) -> dict:
+        import math
+        P = THREAD_10220801_PARAMS
+
+        k4         = k4         if k4         is not None else P['k4']
+        M_bh       = M_bh       if M_bh       is not None else P['M_bh']
+        f_feedback = f_feedback if f_feedback is not None else P['f_feedback']
+
+        # Core vacuum term
+        vacuum_core = P['rho_vac'] * (P['SCm_conc'] * M_bh) / P['d_g']
+
+        # Time decay
+        exp_decay = math.exp(-P['alpha_decay'] * t)
+
+        # π-cycle / negative time
+        cos_pi_tn = math.cos(math.pi * t_n)
+
+        # Feedback amplification
+        feedback_amp = 1.0 + f_feedback
+
+        Ug4 = k4 * vacuum_core * exp_decay * cos_pi_tn * feedback_amp
+
+        # Buoyancy term (Ub4) for reference
+        Ub4 = -P['beta_i'] * Ug4 * P['Omega_g'] * (M_bh / P['d_g']) * cos_pi_tn
+
+        return {
+            'Ug4':          Ug4,
+            'Ub4':          Ub4,
+            'vacuum_core':  vacuum_core,
+            'exp_decay':    exp_decay,
+            'cos_pi_tn':    cos_pi_tn,
+            'feedback_amp': feedback_amp,
+            'M_bh':         M_bh,
+            'M_bh_note':    '8.55e36 kg (Sgr A*, 2025 EHT update)',
+            'k4':           k4,
+            't':            t,
+            't_n':          t_n,
+            'units':        'J/m³ (normalized)',
+            'equation':     'Ug4 = k4·ρ_vac·([SCm]·M_bh)/d_g·e^{-αt}·cos(πt_n)·(1+f_feedback)',
+            'ub4_equation': 'Ub4 = -β·Ug4·Ω_g·(M_bh/d_g)·cos(πt_n)',
+            'result_equation': f'Ug4({t:.1f}) = {Ug4:.4e}, Ub4 = {Ub4:.4e} J/m³',
+        }
+
+
+class SolarFUAssemblyCalculator:
+    """
+    Full assembled F_U for the Sun with all component terms.
+
+    Assembles the complete unified field for the Sun using solar parameterization
+    from Star Magic (14 Apr 2025 / Sept 2025 calibration):
+
+        F_U = [Ug1−Ub1] + [Ug2−Ub2] + [Ug3−Ub3] + [Ug4−Ub4] + Um + A_μν
+
+    Canonical solar reference values at t=0 (from thread 10220801):
+        Ug1 ≈ 1.39×10²³ e^{−0.001t}   (internal dipole, normalized)
+        Ug2 ≈ 1.93×10⁷               (outer bubble, static at t=0)
+        Ug3 ≈ 1.27×10⁻²·cos(...)     (magnetic disk, oscillatory)
+        Ug4 ≈ 4.03×10³¹ e^{−0.001t}·cos(πt)  (Sgr A* vacuum, dominant)
+        Um  ≈ 2.26×10¹⁶·(1−e^{−decay}) (magnetic strings)
+        A_μν ≈ 1 (tensor baseline)
+
+    Dominant term: F_U ≈ 2.34×10²³·e^{−0.001t} + 1.93×10⁷
+                        + 4.59×10³¹·e^{−0.001t}·cos(πt) + Um
+
+    Source: Star Magic_14April2025.docx — thread 10220801d6ef4efd8df5520cfc8815f7
+    """
+
+    def compute(self, t: float = 0.0, t_n: float = 0.0) -> dict:
+        import math
+        P = THREAD_10220801_PARAMS
+
+        # Time decay
+        exp_t = math.exp(-P['alpha_decay'] * t)
+        cos_t = math.cos(math.pi * t_n)
+
+        # Reference component values (solar, normalized from thread)
+        Ug1 = 1.39e23 * exp_t * math.cos(math.pi * t_n)
+        Ub1 = -P['beta_i'] * Ug1 * P['Omega_g'] * (P['M_bh'] / P['d_g']) * cos_t
+
+        Ug2 = 1.93e7  # Static (dominant at t=0, negligible decay)
+        Ub2 = -P['beta_i'] * Ug2 * P['Omega_g'] * (P['M_bh'] / P['d_g']) * cos_t
+
+        Ug3 = 1.27e-2 * math.cos(P['omega_s'] * t * math.pi)
+        Ub3 = -P['beta_i'] * Ug3 * P['Omega_g'] * (P['M_bh'] / P['d_g']) * cos_t
+
+        Ug4 = 4.03e31 * exp_t * math.cos(math.pi * t)
+        Ub4 = -P['beta_i'] * Ug4 * P['Omega_g'] * (P['M_bh'] / P['d_g']) * cos_t
+
+        # Universal Magnetism (simplified Um for solar)
+        gamma = P['gamma_decay']
+        Um_base = 2.26e16
+        Um_decay = 1.0 - math.exp(-gamma * t * math.cos(math.pi * t_n)) if t > 0 else 0.0
+        Um = Um_base * Um_decay
+
+        # Aether metric (tensor baseline ≈ 1, small perturbation)
+        A_munu = 1.0 + P['eta_aether'] * 1.27e7  # ~1 + 1.27e-15
+
+        # F_U assembly
+        gravity_buoyancy = (Ug1 - Ub1) + (Ug2 - Ub2) + (Ug3 - Ub3) + (Ug4 - Ub4)
+        F_U = gravity_buoyancy + Um + A_munu
+
+        dominant_term = 'Ug4' if abs(Ug4) > abs(Ug1) else 'Ug1'
+
+        return {
+            'F_U':              F_U,
+            'Ug1': Ug1, 'Ub1': Ub1,
+            'Ug2': Ug2, 'Ub2': Ub2,
+            'Ug3': Ug3, 'Ub3': Ub3,
+            'Ug4': Ug4, 'Ub4': Ub4,
+            'Um':               Um,
+            'A_munu':           A_munu,
+            'gravity_buoyancy': gravity_buoyancy,
+            'dominant_term':    dominant_term,
+            't':                t,
+            't_n':              t_n,
+            'units':            'J/m³ (normalized)',
+            'equation':         'F_U = Σ[Ug_i−Ub_i] + Um + A_μν (solar)',
+            'result_equation':  f'F_U({t:.1f}) = {F_U:.4e} J/m³',
+        }
+
+
+class InflationForceCoreCalculator:
+    """
+    F_U inflation formula at cosmic t=0 (Big Bang / DPM creation).
+
+    Equation (thread 10220801 Inflation/Force Chart):
+        F_U(t=0) = F_core + Σ_{s=1}^{26} (Ui_s + F_p_s)
+
+        F_core = ħ · ω_LENR / (σ_n · ρ_vac,[UA])  ~10¹⁰ N
+
+    Where:
+        ħ = 1.055×10⁻³⁴ J·s   — reduced Planck constant
+        ω_LENR = 10⁴⁴ rad/s   — LENR nuclear reaction frequency
+        σ_n = 10⁻²⁸ m²        — nuclear cross-section
+        ρ_vac,[UA] = 10⁻³⁰ J/m³ — [UA] vacuum energy density (universal k_η)
+        Ui_s = E_0·(s/26)^α   — quantum level inertia energy at state s
+        F_p_s = F_core·(s/26)  — pressure fraction at state s
+
+    This gives the pre-Big Bang force scale before SCm/UA epoch propagation.
+
+    Source: Star Magic_14April2025.docx — thread 10220801d6ef4efd8df5520cfc8815f7
+    """
+
+    def compute(self, n_states: int = 26, E_0: float = 1e-19,
+                alpha: float = 2.0) -> dict:
+        P = THREAD_10220801_PARAMS
+
+        # Core force: F_core = ħ·ω_LENR / (σ_n · ρ_vac_UA)
+        F_core = (P['hbar'] * P['omega_LENR']) / (P['sigma_n'] * P['rho_vac_UA'])
+
+        # Σ states: Ui_s = E_0·(s/n)^α and F_p_s = F_core·(s/n)
+        sum_Ui = 0.0
+        sum_Fp = 0.0
+        level_data = []
+        for s in range(1, n_states + 1):
+            frac = s / n_states
+            Ui_s = E_0 * (frac ** alpha)
+            Fp_s = F_core * frac
+            sum_Ui += Ui_s
+            sum_Fp += Fp_s
+            level_data.append({'s': s, 'Ui_s': Ui_s, 'Fp_s': Fp_s})
+
+        F_U_t0 = F_core + sum_Ui + sum_Fp
+
+        return {
+            'F_core':       F_core,
+            'F_U_t0':       F_U_t0,
+            'sum_Ui':       sum_Ui,
+            'sum_Fp':       sum_Fp,
+            'n_states':     n_states,
+            'hbar':         P['hbar'],
+            'omega_LENR':   P['omega_LENR'],
+            'sigma_n':      P['sigma_n'],
+            'rho_vac_UA':   P['rho_vac_UA'],
+            'F_core_approx': '~10¹⁰ N (universal k_η)',
+            'units':        'N (force scale)',
+            'equation':     'F_core = ħ·ω_LENR / (σ_n·ρ_vac,[UA]); F_U(t=0) = F_core + Σ(Ui_s+Fp_s)',
+            'result_equation': f'F_core = {F_core:.3e} N; F_U(t=0) = {F_U_t0:.3e} N',
+            'level_data':   level_data[:5],  # First 5 levels as sample
+        }
+
+
+class SCmEpochStateCalculator:
+    """
+    SCm Cosmic Epoch State model (5 epochs).
+
+    From the Inflation/Force Chart in Star Magic (thread 10220801):
+    The universe evolves through 5 SCm epochs, each with distinct
+    SCm superconductive states and UA vacuum occupancy:
+
+        Epoch 1 (t=1.0–1.9): Fissile / Nuclei-Nebular  → SCm  (Periodic Table formation)
+        Epoch 2 (t=2.0–2.9): Star / Planetary / Atom   → SCm'' (stellar/planetary formation)
+        Epoch 3 (t=3.0–3.9): Galaxies / Quasar         → SCm'''
+        Epoch 4 (t=4.0–4.9): Magnetar / SMBH           → SCm''''
+        Epoch 5 (t=5.0–5.9): Globular Clusters         → SCm'''''
+
+    Material states for each epoch (q-level):
+        Solid q11, Liquid q12, Gas q12, Plasma q13
+
+    UA states (vacuum pressure/density levels):
+        [UA], UA', UA'', UA''', UA''''
+        x = active SCm state; o = active UA state
+
+    Source: Star Magic_14April2025.docx — thread 10220801d6ef4efd8df5520cfc8815f7
+    """
+
+    EPOCH_TABLE = {
+        1: {
+            't_range': (1.0, 1.9),
+            'objects': ['Fissile', 'Nuclei/Nebular'],
+            'SCm_state': 'SCm',
+            'note': 'Periodic Table of Elements formed',
+            'UA_pattern': {'UA': 'x', "UA'": 'o', "UA''": 'x', "UA'''": 'o', "UA''''": 'x'},
+            'material_states': ['Solid (q11)', 'Liquid (q12)', 'Gas (q12)', 'Plasma (q13)'],
+        },
+        2: {
+            't_range': (2.0, 2.9),
+            'objects': ['Star/Planetary', 'Atom'],
+            'SCm_state': "SCm''",
+            'note': 'Stellar and planetary bodies form',
+            'UA_pattern': {'UA': 'o', "UA'": 'x', "UA''": 'o', "UA'''": 'x', "UA''''": 'o'},
+            'material_states': ['Solid (q11)', 'Liquid (q12)', 'Gas (q12)', 'Plasma (q13)'],
+        },
+        3: {
+            't_range': (3.0, 3.9),
+            'objects': ['Galaxies', 'Quasar'],
+            'SCm_state': "SCm'''",
+            'note': 'Galactic-scale structures; quasar jets from expelled SCm',
+            'UA_pattern': {'UA': '', "UA'": '', "UA''": '', "UA'''": 'x', "UA''''": ''},
+            'material_states': ['Plasma (q13)'],
+        },
+        4: {
+            't_range': (4.0, 4.9),
+            'objects': ['Magnetar', 'SMBH'],
+            'SCm_state': "SCm''''",
+            'note': 'Extreme compact objects; SMBH feedback via Ug4',
+            'UA_pattern': {'UA': '', "UA'": '', "UA''": '', "UA'''": 'x', "UA''''": ''},
+            'material_states': ['Plasma (q13)'],
+        },
+        5: {
+            't_range': (5.0, 5.9),
+            'objects': ['Globular Clusters'],
+            'SCm_state': "SCm'''''",
+            'note': 'Globular clusters; 10⁵–10⁶ stars per cluster',
+            'UA_pattern': {'UA': 'x', "UA'": '', "UA''": '', "UA'''": 'x', "UA''''": 'o'},
+            'material_states': ['Solid (q11)', 'Plasma (q13)'],
+        },
+    }
+
+    def compute(self, t_epoch: float = None) -> dict:
+        """
+        Return epoch state(s) for a given cosmic time.
+
+        Args:
+            t_epoch: Cosmic epoch time (1.0–5.9). If None, returns all epochs.
+        """
+        if t_epoch is not None:
+            for ep, data in self.EPOCH_TABLE.items():
+                lo, hi = data['t_range']
+                if lo <= t_epoch <= hi:
+                    return {
+                        'epoch':          ep,
+                        't_epoch':        t_epoch,
+                        't_range':        data['t_range'],
+                        'objects':        data['objects'],
+                        'SCm_state':      data['SCm_state'],
+                        'UA_pattern':     data['UA_pattern'],
+                        'material_states': data['material_states'],
+                        'note':           data['note'],
+                        'equation':       'F_U → epoch-specific SCm/UA vacuum occupancy',
+                    }
+            return {'error': f't_epoch={t_epoch} out of range [1.0, 5.9]'}
+
+        # Return full epoch table
+        return {
+            'all_epochs':   self.EPOCH_TABLE,
+            'n_epochs':     5,
+            'description':  '5 cosmic SCm epochs from Inflation/Force Chart',
+            'epoch_labels': {1: 'Fissile/Nuclei', 2: 'Star/Planetary',
+                             3: 'Galaxies/Quasar', 4: 'Magnetar/SMBH',
+                             5: 'Globular Clusters'},
+            'equation':     'Epoch(t) → SCm^n state + UA vacuum pattern',
+        }
+
+
+class SolarWindVacuumDensityCalculator:
+    """
+    Solar wind vacuum density profile with inverse-square radial decay.
+
+    From thread 10220801 (ε_sw document):
+        ρ_sw(r) = ρ_sw_1AU · (1 AU / r)²
+
+    Reference values:
+        ρ_sw(1 AU)   ≈ 8.4×10⁻²¹ kg/m³  (~5-10 protons/cm³)
+        ρ_sw(100 AU) ≈ 8.4×10⁻²⁵ kg/m³  (near heliosphere boundary)
+        ρ_vac,sw     = 8×10⁻²¹ J/m³      (vacuum energy from solar wind)
+
+    Used in buoyancy modulation:
+        (1 + ε_sw · ρ_vac,sw) in U_bi term
+
+    Source: Buoyancy Modulation by Solar Wind Density.docx — thread 10220801
+    """
+
+    AU_M = 1.496e11   # 1 Astronomical Unit in metres
+
+    def compute(self, r_AU: float = 1.0) -> dict:
+        P = THREAD_10220801_PARAMS
+
+        r_m = r_AU * self.AU_M
+        rho_sw = P['rho_sw_1AU'] * (self.AU_M / r_m) ** 2  # inverse-square
+
+        # Vacuum density (energy density units)
+        rho_vac_sw = 8e-21  # J/m³, from solar wind kinetic energy at 1 AU
+
+        # Buoyancy modulation factor
+        buoyancy_mod = 1.0 + P['epsilon_sw'] * rho_vac_sw
+
+        return {
+            'r_AU':           r_AU,
+            'r_m':            r_m,
+            'rho_sw_kgm3':    rho_sw,
+            'rho_sw_1AU':     P['rho_sw_1AU'],
+            'rho_vac_sw':     rho_vac_sw,
+            'epsilon_sw':     P['epsilon_sw'],
+            'buoyancy_mod':   buoyancy_mod,
+            'in_heliosphere': r_AU <= 100.0,
+            'units':          'kg/m³',
+            'equation':       'ρ_sw(r) = ρ_sw_1AU · (1AU/r)²; mod=(1+ε_sw·ρ_vac,sw)',
+            'result_equation': (
+                f'ρ_sw({r_AU:.1f} AU) = {rho_sw:.3e} kg/m³; '
+                f'buoyancy_mod = {buoyancy_mod:.6f}'
+            ),
+        }
+
+
+class KiNormalizedSolarCalculator:
+    """
+    k_i coupling constants applied to solar U_gi values.
+
+    Demonstrates normalization of unified field F_U via Σ(k_i·U_gi):
+
+        Σ_i(k_i·U_gi) = k1·U_g1 + k2·U_g2 + k3·U_g3 + k4·U_g4
+
+    Solar reference values at t=0 (from thread 10220801):
+        U_g1 = 1.39×10²⁶ J/m³  (internal dipole)
+        U_g2 = 1.18×10⁵³ J/m³  (outer field bubble — dominant)
+        U_g3 = 1.80×10⁴⁹ J/m³  (magnetic strings disk)
+        U_g4 = 2.50×10⁻²⁰ J/m³ (star–BH vacuum, negligible at t=0)
+
+    Result:
+        Σ(k_i·U_gi) ≈ 1.42×10⁵³ J/m³  (Ug2 term dominates)
+
+    Coupling constants: k1=1.5, k2=1.2, k3=1.8, k4=1.0
+
+    Source: Coupling Constant of Ugi.docx — thread 10220801d6ef4efd8df5520cfc8815f7
+    """
+
+    def compute(self, Ug1: float = None, Ug2: float = None,
+                Ug3: float = None, Ug4: float = None) -> dict:
+        P = THREAD_10220801_PARAMS
+
+        Ug1 = Ug1 if Ug1 is not None else P['Ug1_solar_t0']
+        Ug2 = Ug2 if Ug2 is not None else P['Ug2_solar_t0']
+        Ug3 = Ug3 if Ug3 is not None else P['Ug3_solar_t0']
+        Ug4 = Ug4 if Ug4 is not None else P['Ug4_solar_t0']
+
+        k_vec = [P['k1'], P['k2'], P['k3'], P['k4']]
+        Ug_vec = [Ug1, Ug2, Ug3, Ug4]
+
+        contributions = [k_vec[i] * Ug_vec[i] for i in range(4)]
+        ki_sum = sum(contributions)
+
+        dominant_idx = contributions.index(max(contributions, key=abs))
+
+        return {
+            'ki_Ugi_sum':    ki_sum,
+            'k_vec':         k_vec,
+            'Ug_vec':        Ug_vec,
+            'contributions': contributions,
+            'dominant_Ug':   f'Ug{dominant_idx+1}',
+            'k1_Ug1':        contributions[0],
+            'k2_Ug2':        contributions[1],
+            'k3_Ug3':        contributions[2],
+            'k4_Ug4':        contributions[3],
+            'units':         'J/m³',
+            'note':          'Ug2 outer bubble dominates at t=0',
+            'equation':      'Σ(k_i·U_gi) = k1·Ug1 + k2·Ug2 + k3·Ug3 + k4·Ug4',
+            'result_equation': f'Σ(k_i·U_gi) ≈ {ki_sum:.3e} J/m³',
+        }
+
+
+class SolarAetherStressTensorCalculator:
+    """
+    Solar stress-energy tensor T_s^μν for Aether metric perturbation.
+
+    From thread 10220801 (Aether Coupling Constant.docx):
+        T_s^{00} = M_s·c²/V + L_s/(c²·V) + ρ_sw·v_sw² + ρ_SCm·v_SCm² + ρ_A·v_A²
+
+    Solar values:
+        V = (4/3)π·R_s³ ≈ 1.41×10²⁷ m³  (solar volume)
+        M_s·c²/V ≈ 1.27×10³ J/m³         (rest energy density)
+        L_s/(c²·V) ≈ (3.828×10²⁶)/(9×10¹⁶·1.41×10²⁷) ≈ 3.0×10⁻¹⁸ J/m³
+        ρ_sw·v_sw² ≈ 8.4×10⁻²¹·(5×10⁵)² ≈ 2.1×10⁻⁹ J/m³
+        ρ_SCm·v_SCm² ≈ 1×10¹⁵·(2.963×10⁸)² ≈ 8.78×10³¹ J/m³
+        ρ_A·v_A² ≈ 1×10⁻²³·(3×10⁵)² ≈ 9.0×10⁻¹³ J/m³
+
+    Aether perturbation:
+        η·T_s^{00} ≈ 10⁻²² × 8.78×10³¹ ≈ 8.78×10⁹
+        A_μν ≈ [1 + η·T_s^{00}, ...]
+
+    Source: Aether Coupling Constant.docx — thread 10220801d6ef4efd8df5520cfc8815f7
+    """
+
+    C = 2.998e8       # Speed of light (m/s)
+
+    def compute(self) -> dict:
+        import math
+        P = THREAD_10220801_PARAMS
+
+        # Solar volume
+        V_sun = (4.0/3.0) * math.pi * (P['R_s'] ** 3)
+
+        # Energy density components of T_s^{00}
+        rest_energy   = P['M_s'] * (self.C ** 2) / V_sun          # M_s·c²/V
+        lum_energy    = P['L_s'] / ((self.C ** 2) * V_sun)        # L_s/(c²·V)
+        sw_kinetic    = P['rho_sw_1AU'] * (P['v_sw'] ** 2)        # ρ_sw·v_sw²
+        scm_kinetic   = P['rho_SCm_s'] * (P['v_SCm'] ** 2)       # ρ_SCm·v_SCm²
+        aether_kinetic = P['rho_A'] * (P['v_A'] ** 2)             # ρ_A·v_A²
+
+        T_s_00 = rest_energy + lum_energy + sw_kinetic + scm_kinetic + aether_kinetic
+
+        # Aether metric perturbation
+        eta = P['eta_aether']
+        perturbation = eta * T_s_00
+
+        # A_μν diagonal components
+        g_munu = [1.0, -1.0, -1.0, -1.0]
+        A_munu = [g_munu[i] + perturbation for i in range(4)]
+
+        return {
+            'T_s_00':           T_s_00,
+            'V_sun':            V_sun,
+            'rest_energy':      rest_energy,
+            'lum_energy':       lum_energy,
+            'sw_kinetic':       sw_kinetic,
+            'scm_kinetic':      scm_kinetic,
+            'aether_kinetic':   aether_kinetic,
+            'eta':              eta,
+            'perturbation':     perturbation,
+            'g_munu':           g_munu,
+            'A_munu':           A_munu,
+            'units':            'J/m³',
+            'dominant_term':    'ρ_SCm·v_SCm² dominates (stellar core)',
+            'equation':         'T_s^{00} = M_s·c²/V + L_s/(c²·V) + ρ_sw·v_sw² + ρ_SCm·v_SCm² + ρ_A·v_A²',
+            'result_equation':  (
+                f'T_s^{{00}} = {T_s_00:.3e} J/m³; '
+                f'η·T = {perturbation:.3e}; '
+                f'A_00 = {A_munu[0]:.6e}'
+            ),
+        }
+
+
+# --- Registry for Thread 10220801 ---
+SOURCE_10220801_CALCULATORS = {
+    'Ug1SolarDipoleCycleCalculator':        Ug1SolarDipoleCycleCalculator(),
+    'Ug2StellarBubbleCalculator':           Ug2StellarBubbleCalculator(),
+    'Ug3MagneticDiskFullCalculator':        Ug3MagneticDiskFullCalculator(),
+    'Ug4SMBHVacuumInteractionCalculator':   Ug4SMBHVacuumInteractionCalculator(),
+    'SolarFUAssemblyCalculator':            SolarFUAssemblyCalculator(),
+    'InflationForceCoreCalculator':         InflationForceCoreCalculator(),
+    'SCmEpochStateCalculator':             SCmEpochStateCalculator(),
+    'SolarWindVacuumDensityCalculator':     SolarWindVacuumDensityCalculator(),
+    'KiNormalizedSolarCalculator':          KiNormalizedSolarCalculator(),
+    'SolarAetherStressTensorCalculator':    SolarAetherStressTensorCalculator(),
 }
 
 
