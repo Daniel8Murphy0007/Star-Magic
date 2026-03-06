@@ -708,6 +708,44 @@ namespace StarMagicThread1a27 {
 
 } // namespace StarMagicThread1a27
 
+// ═══════════════════════════════════════════════════════════════════════════════
+// GROK THREAD 0904a12a — 52-SYSTEM MCMC CALIBRATION CONSTANTS
+// Source: grok_share_0904a12a5c2b4a639389ae084391b94f_content.txt (7121 lines)
+// Integration: GrokThread_UQFF_0904_Validation.py (March 6, 2026)
+// ═══════════════════════════════════════════════════════════════════════════════
+namespace GrokThread0904 {
+
+    /// KAPPA_MCMC: MCMC-refined κ from 52-system Bayesian fit.
+    /// Canonical value remains 0.0005 day⁻¹; this is the MCMC posterior mean.
+    /// 95% CI: (0.00048, 0.00056); std=1.23e-5; deviation from canonical: 4%.
+    /// Ref: GrokThread_UQFF_0904_Validation.py KAPPA_MCMC_CALIBRATION
+    constexpr double KAPPA_MCMC = 0.00052;       // day⁻¹ — MCMC posterior mean
+    constexpr double KAPPA_MCMC_CI_LO = 0.00048; // day⁻¹ — 95% CI lower
+    constexpr double KAPPA_MCMC_CI_HI = 0.00056; // day⁻¹ — 95% CI upper
+    constexpr double KAPPA_MCMC_STD  = 1.23e-5;  // day⁻¹ — MCMC std deviation
+
+    /// SSQ_LINEAR: MCMC coefficient in e^(-SSq_linear × n/26) form.
+    /// DISTINCT from canonical SSq=0.57 ([SSq]^26 form). Different equations.
+    /// Ref: GrokThread_UQFF_0904_Validation.py UQFF_MASTER_EQUATIONS_FULL
+    constexpr double SSQ_LINEAR = 0.507;         // dimensionless — linear form
+
+    /// Q_WAVE_52_MEAN: Mean Q_wave energy density from 52-system catalogue.
+    /// At B_ref=1e-5 T: Q_wave=3.98e-5 J/m³; at B=1e-4 T (Crab): 3.98e-3 J/m³.
+    constexpr double Q_WAVE_52_MEAN = 3.98e4;    // J/m³ × scale (n=52 average)
+    constexpr double Q_WAVE_B_REF1  = 3.98e-5;  // J/m³ at B=1e-5 T
+    constexpr double Q_WAVE_B_CRAB  = 3.98e-3;  // J/m³ at B=1e-4 T (Crab Nebula)
+
+    /// F_U_BI_I_MEAN: Mean F_U_Bi_i from 52-system catalogue (Form A integral).
+    constexpr double F_U_BI_I_MEAN = -6.05e217; // N — 52-system average
+
+    /// X2_COSMIC: Cosmic quadratic root from UQFF quadratic solver.
+    constexpr double X2_COSMIC = -3.40e172;      // m — cosmic quadratic root
+
+    /// Z_SCALING_MEAN: Mean x_2_Z from atomic Z-scaling (Z=1..118).
+    constexpr double Z_SCALING_MEAN = -3.56e116; // m — atomic Z-scaling mean
+
+} // namespace GrokThread0904
+
 
 } // namespace Constants
 } // namespace UQFF

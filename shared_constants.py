@@ -352,6 +352,38 @@ class Constants:
     integral_psi: float = 2.176e-18
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# GROK THREAD 0904a12a — MCMC CALIBRATION REFERENCE (March 6, 2026)
+# Source: GrokThread_UQFF_0904_Validation.py
+# These are reference values — canonical constants above are unchanged.
+# ═══════════════════════════════════════════════════════════════════════════════
+GROK_THREAD_0904_MCMC: dict = {
+    # MCMC-refined κ: posterior mean from 52-system Bayesian fit
+    # Canonical kappa=0.0005 unchanged; this is the MCMC measurement.
+    'kappa_mcmc':      0.00052,   # day⁻¹  — MCMC posterior mean
+    'kappa_mcmc_ci_lo': 0.00048,  # day⁻¹  — 95% CI lower
+    'kappa_mcmc_ci_hi': 0.00056,  # day⁻¹  — 95% CI upper
+    'kappa_mcmc_std':  1.23e-5,   # day⁻¹  — std deviation
+    # SSq linear coefficient — DISTINCT from SSq=0.57 ([SSq]^26 form)
+    'SSq_linear':      0.507,     # dimensionless — e^(-SSq_linear*n/26) form
+    # Q_wave statistics from 52-system catalogue
+    'Q_wave_52_n':     52,        # systems in catalogue
+    'Q_wave_52_mean':  3.98e4,    # J/m³ (scaled)
+    'Q_wave_52_std':   51200.0,   # J/m³
+    'Q_wave_B_ref1':   3.98e-5,   # J/m³ at B=1e-5 T
+    'Q_wave_B_crab':   3.98e-3,   # J/m³ at B=1e-4 T (Crab Nebula reference)
+    # F_U_Bi_i statistics from 52-system catalogue
+    'F_U_Bi_i_mean':   -6.05e217, # N  — 52-system average
+    'x2_cosmic':       -3.40e172, # m  — cosmic quadratic root
+    'Z_scaling_mean':  -3.56e116, # m  — atomic Z-scaling (Z=1..118) mean
+    # Normality test results for Δρ distribution
+    'shapiro_wilk_p':  0.00055,   # p-value (non-Gaussian confirmed)
+    'ks_p':            0.741,
+    'anderson_stat':   1.35,
+    'jarque_bera_p':   0.012,
+}
+
+
 # Create singleton instance
 _CONSTANTS_INSTANCE = Constants()
 

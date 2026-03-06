@@ -720,5 +720,102 @@ void requestEpochValidation(SharedMemoryChannel* channel, int epoch) {
 4. **Build and test**: Compile C++ with new headers, verify no regressions
 
 ---
+## ✅ Grok Thread 0904a12a — Header & Constants Updates (March 6, 2026)
 
+**Source**: `grok_share_0904a12a5c2b4a639389ae084391b94f_content.txt`  
+**Integration Date**: March 6, 2026  
+**Files Updated**: `shared_constants.h`, `shared_constants.py`, `observational_systems_config.h`
+
+### `shared_constants.h` — GrokThread0904 Namespace
+
+Added `namespace GrokThread0904` inside `namespace UQFF` (after `StarMagicThread1a27`):
+
+```cpp
+namespace GrokThread0904 {
+    // MCMC-calibrated κ (day⁻¹) — 52-system posterior; canonical 0.0005 unchanged
+    constexpr double KAPPA_MCMC       = 0.00052;
+    constexpr double KAPPA_MCMC_CI_LO = 0.00048;
+    constexpr double KAPPA_MCMC_CI_HI = 0.00056;
+    constexpr double KAPPA_MCMC_STD   = 1.23e-5;
+    // SSq in exponential form e^(-SSq_linear × n/26); canonical SSq=0.57 unchanged
+    constexpr double SSQ_LINEAR       = 0.507;
+    // Q_WAVE_52 statistics (n=52 systems, J/m³)
+    constexpr double Q_WAVE_52_MEAN   = 3.98e4;
+    constexpr double Q_WAVE_B_REF1    = 3.98e-5;   // at B=1e-5 T
+    constexpr double Q_WAVE_B_CRAB    = 3.98e-3;   // at B=1e-4 T
+    // 52-system F_U_Bi_i and dimensional results
+    constexpr double F_U_BI_I_MEAN    = -6.05e217; // N
+    constexpr double X2_COSMIC        = -3.40e172;  // m
+    constexpr double Z_SCALING_MEAN   = -3.56e116;  // m
+} // namespace GrokThread0904
+```
+
+### `shared_constants.py` — GROK_THREAD_0904_MCMC Dictionary
+
+Added `GROK_THREAD_0904_MCMC` reference dict (before `# Create singleton instance`):
+
+```python
+GROK_THREAD_0904_MCMC = {
+    # MCMC calibration (52-system posterior)
+    'kappa_mcmc': 0.00052,       # day⁻¹; CI [0.00048, 0.00056]; σ=1.23e-5
+    'kappa_mcmc_ci_lo': 0.00048, 'kappa_mcmc_ci_hi': 0.00056,
+    'kappa_mcmc_std': 1.23e-5,
+    # SSq in linear exponential form (vs canonical 0.57)
+    'SSq_linear': 0.507,
+    # Q_WAVE_52 statistics (J/m³)
+    'Q_wave_52_n': 52, 'Q_wave_52_mean': 3.98e4, 'Q_wave_52_std': 5.12e4,
+    'Q_wave_B_ref1': 3.98e-5, 'Q_wave_B_crab': 3.98e-3,
+    # 52-system dimensional results
+    'F_U_Bi_i_mean': -6.05e217,   # N
+    'x2_cosmic': -3.40e172,        # m
+    'Z_scaling_mean': -3.56e116,   # m
+    # Normality tests on 52-system F_U_Bi_i distribution
+    'shapiro_wilk_p': 0.00055,     # SW W=0.943
+    'ks_p': 0.741,                 # KS vs normal
+    'anderson_stat': 1.35,         # Anderson-Darling
+    'jarque_bera_p': 0.012,        # JB test
+}
+```
+
+**Note**: `Constants.kappa = 0.0005` and `Constants.SSq = 0.57` are **unchanged** in the dataclass — `GROK_THREAD_0904_MCMC` is a reference/history dict only.
+
+### `observational_systems_config.h` — 5 New Systems
+
+Added after `SupernovaSurvey` and before `// HELPER FUNCTIONS`:
+
+| Key | System | Category | M (kg) | Reference |
+|-----|--------|----------|--------|-----------|
+| `GRO_J1655-40` | GRO J1655-40 (micro-quasar) | `micro_quasar` | 1.28×10³¹ | RXTE/HST |
+| `CygnusLoop` | Cygnus Loop / Veil Nebula (SNR) | `snr` | 2.78×10³⁰ | ROSAT/XMM-Newton |
+| `G292.0+1.8` | G292.0+1.8 SNR/PWN | `snr_pwn` | 2.78×10³⁰ | Chandra/XMM |
+| `NGC7293` | NGC 7293 / Helix Nebula | `planetary_nebula` | 1.19×10³⁰ | Chandra/HST |
+| `PerseusCluster` | Perseus Cluster / Abell 426 | `galaxy_cluster` | 6.65×10⁴⁴ | Chandra/XMM/Hitomi |
+
+---
+
+## 🔗 Related Files
+
+### Documentation:
+- [GROK_THREAD_4E0ECF23_ANALYSIS.md](GROK_THREAD_4E0ECF23_ANALYSIS.md) - Complete analysis report
+- [GROK_THREAD_4E0ECF23_QUICK_SUMMARY.md](GROK_THREAD_4E0ECF23_QUICK_SUMMARY.md) - Quick reference
+- [GrokThread_StarMagic_UnifiedFramework.py](GrokThread_StarMagic_UnifiedFramework.py) - Python module (857 lines)
+
+### Extracted Content:
+- [grok_share_4e0ecf23_content.txt](grok_share_4e0ecf23_content.txt) - Raw Grok conversation (94KB)
+- [grok_share_4e0ecf23_source.html](grok_share_4e0ecf23_source.html) - HTML backup (960KB)
+
+### Scrapers:
+- [selen_scraper.py](selen_scraper.py) - General-purpose Selenium scraper (349 lines)
+- [scrape_grok_share.py](scrape_grok_share.py) - Task-specific scraper (70 lines)
+
+---
+
+## ✅ Next Steps (For Validation Integration)
+
+1. **CondensedPhysics_Validation.py**: Add `GROK_THREAD_4E0ECF23_VALIDATION` section
+2. **CondensedPhysics_InputData.py**: Enhance parameter comments with physical interpretations
+3. **test_grok_thread_4e0ecf23.py**: Create comprehensive test suite
+4. **Build and test**: Compile C++ with new headers, verify no regressions
+
+---
 **Watermark**: ©2025-2026 Daniel T. Murphy, daniel.murphy00@gmail.com – All Rights Reserved

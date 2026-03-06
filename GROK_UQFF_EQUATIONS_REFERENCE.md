@@ -749,3 +749,65 @@ UQFF Nullification:
 
 *Document generated for Star-Magic UQFF codebase integration*
 *Author: Daniel T. Murphy | Framework: Universal Quantum Field Superconductive Framework*
+
+---
+
+## Grok Thread 0904a12a — F_U_Bi_i Three-Form Clarification
+**Date**: March 6, 2026  
+**Source**: `grok_share_0904a12a5c2b4a639389ae084391b94f_content.txt` (7,121 lines)  
+**Module**: `GrokThread_UQFF_0904_Validation.py`
+
+The 0904 thread established that `compute_master_buoyant_equation` exists in **three distinct forms**, now renamed for clarity in the patch files:
+
+### Form A — Relativistic Coherence (Original LEP-scaling)
+```
+F_U_Bi_i = F_rel × (E_cm / E_LEP) × Q_wave × g_compressed
+```
+- `F_rel ≈ 4.30×10³³ N` (LEP Z-boson baseline)
+- `E_LEP = 200 GeV`
+- **Scale**: Astrophysical/relativistic
+
+### Form B — Atomic/Stellar Buoyancy (`compute_F_U_Bi_simple`)
+```
+F_U_Bi = Σ β_i × (Ug_i − ρ_vac,i × G)
+```
+- `β_i = 0.603` (uniform buoyancy coupling)
+- **Direction**: Inside→Out (atomic/stellar pressure)
+- **Scale**: Stellar to galactic
+- **C++ method**: `compute_F_U_Bi_simple()`
+- **In codebase**: `add_uqff_methods.py`, `add_uqff_to_8_models.py`
+
+### Form C-1 — Galactic Integral (`compute_F_U_Bi_cosmic`)
+```
+F_U_Bi_i = Ω_g × (M_bh / d_g) × Σ(Ug_i + Ub_i)
+```
+- `Ω_g = 2.5×10⁻⁸ rad/s` (MW galactic rotation)
+- `M_bh = 4×10⁶ M☉` (Sgr A*)
+- `d_g = 2.55×10²⁰ m` (Sun–GC distance)
+- **Direction**: Outside→In (vacuum support)
+- **Scale**: Galactic/cosmic
+- **C++ method**: `compute_F_U_Bi_cosmic()`
+- **In codebase**: 10 nebula/galactic model classes (NGC2264, M42, Tarantula, etc.)
+
+### Form C-2 — TRZ Resonant (`compute_F_U_Bi_resonant`)
+```
+F_U_Bi_i = F_Bi × (1 + f_TRZ) / (1 − Ω_g)
+```
+- `f_TRZ = 0.1` (Time-Reversal Zone factor)
+- `Ω_g = 7.3×10⁻¹⁶` (TRZ-scale rotation)
+- **Scale**: TRZ resonance / vacuum oscillation
+- **C++ method**: `compute_F_U_Bi_resonant()`
+- **In codebase**: 11 TRZ/vacuum/retrocausal model classes
+
+### 52-System MCMC Statistics
+| Quantity | Value |
+|----------|-------|
+| Systems | n=52 |
+| F_U_Bi_i mean | −6.05×10²¹⁷ N |
+| Q_wave mean | 3.98×10⁴ J/m³ |
+| Q_wave std | 51,200 J/m³ |
+| κ MCMC | 0.00052 day⁻¹ |
+| κ canonical | 0.0005 day⁻¹ (unchanged) |
+| SSq_linear | 0.507 (e^⁻ˢˢᵧₙ form, ≠ SSq=0.57) |
+| x_2 cosmic | −3.40×10¹⁷² m |
+| Z-scaling mean | −3.56×10¹¹⁶ m |
