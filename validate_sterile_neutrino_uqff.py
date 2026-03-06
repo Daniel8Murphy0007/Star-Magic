@@ -135,6 +135,16 @@ M_nu3_TeV = 50.7            # meV  (ν₃, TeV seesaw)
 kappa_lept_GUT = 8.877e-3   # GUT sector (M_N3 leptogenesis)
 kappa_lept_TeV = 5.778e-7   # TeV sector (M_s3 leptogenesis, K >> 1 washout)
 
+# Pre-compute leptogenesis CP asymmetries (used in validate_leptogenesis and summary)
+_eps_CP_GUT = ((3.0 / (8.0 * math.pi)) *
+               (M_N3 / M_N1) * y_0**2 * math.sin(phi_CP))
+_Im_yty2    = (y_tau**2 - y_e**2) * y_mu**2 * math.sin(phi_CP)
+_yty_11     = y_e**2 + y_mu**2 + y_tau**2
+_eps_1_TeV  = ((3.0 / (16.0 * math.pi)) *
+               (M_s3 / v_higgs**2) * _Im_yty2 / _yty_11)
+eta_B_GUT_pred = _eps_CP_GUT * kappa_lept_GUT   # ≈ 6.1e-10
+eta_B_TeV_pred = _eps_1_TeV  * kappa_lept_TeV   # ≈ 7.47e-10
+
 # UQFF DW mixing angle (full integral, Sec. 2.1)
 # sin²(2θ) = 1.78e-10  — the precision value from the complete Dodelson-Widrow
 # production integral with UQFF aether density corrections.
@@ -251,19 +261,17 @@ def validate_leptogenesis() -> bool:
     p = True
 
     # --- GUT sector ---
-    eps_CP_GUT = ((3.0 / (8.0 * math.pi)) *
-                  (M_N3 / M_N1) * y_0**2 * sin_phi)    # ≈ 6.87e-8
-    eta_B_GUT = eps_CP_GUT * kappa_lept_GUT             # full Boltzmann result
+    eps_CP_GUT = _eps_CP_GUT                                # ≈ 6.87e-8
+    eta_B_GUT = eps_CP_GUT * kappa_lept_GUT                 # full Boltzmann result
 
     p &= check("η_B^GUT (0.3% match to Planck 6.12e-10)",
                eta_B_GUT, 6.12e-10, 1.0, "")
 
     # --- TeV sector ---
-    Im_yty2 = (y_tau**2 - y_e**2) * y_mu**2 * sin_phi  # ≈ 0.02988
-    yty_11  = y_e**2 + y_mu**2 + y_tau**2               # ≈ 0.4647
-    eps_1_TeV = ((3.0 / (16.0 * math.pi)) *
-                 (M_s3 / v_higgs**2) * Im_yty2 / yty_11)
-    eta_B_TeV = eps_1_TeV * kappa_lept_TeV               # strong-washout result
+    Im_yty2 = _Im_yty2                                       # ≈ 0.02988
+    yty_11  = _yty_11                                        # ≈ 0.4647
+    eps_1_TeV = _eps_1_TeV
+    eta_B_TeV = eps_1_TeV * kappa_lept_TeV                  # strong-washout result
 
     p &= check("η_B^TeV (within 22% of Planck 6.10e-10)",
                eta_B_TeV, 7.47e-10, 25.0, "")
@@ -402,8 +410,8 @@ def run_all() -> bool:
     print("UQFF predictions summary (Paper #26 Table 9):")
     print(f"  Low-scale:  M_s1={M_s1_keV} keV, M_s2={M_s2:.2f} GeV, M_s3={M_s3/1e3:.2f} TeV")
     print(f"  GUT-scale:  M_N = {{{M_N1:.3e}, {M_N2:.3e}, {M_N3:.3e}}} GeV")
-    print(f"  Seesaw:     m_ν = {{{M_nu1_pred}, {M_nu2_pred}, {M_nu3_pred}}} meV  ΣmΝ={Sum_mv_pred:.1f} meV")
-    print(f"  Leptogen.:  η_B^GUT={6.1e-10:.2e}  η_B^TeV={7.47e-10:.2e}")
+    print(f"  Seesaw:     m_ν = {{{M_nu1_pred}, {M_nu2_pred}, {M_nu3_pred}}} meV  Σm_ν={Sum_mv_pred:.1f} meV")
+    print(f"  Leptogen.:  η_B^GUT={eta_B_GUT_pred:.2e}  η_B^TeV={eta_B_TeV_pred:.2e}")
     print(f"  0νββ:       m_ββ ≈ 12.3 meV  (CUPID-1T ~4σ by 2035)")
     print(f"  DM:         Ω_s1 h² ≈ 0.12  sin²(2θ)={sin2_2theta_uqff:.2e} < 3e-10 (XMM)")
     print(f"  Parameters: κ = {kappa}/day, [SSq] = {SSq}  (zero free parameters)")

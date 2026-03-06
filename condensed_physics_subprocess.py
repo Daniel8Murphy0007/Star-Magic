@@ -33,6 +33,8 @@ except ImportError:
     print(json.dumps({"error": "CondensedPhysics.py not available"}), file=sys.stderr, flush=True)
 
 # Import CondensedPhysics2 calculators via Aggregator (CP2 wiring, Problem 4)
+# CP2_AVAILABLE flags availability of all 529 CP2 calculators for routing.
+# Callers of process_calculation() may check CP2_AVAILABLE to enable CP2 paths.
 try:
     from CondensedPhysicsAggregator import CondensedPhysicsAggregator
     CP2_AVAILABLE = True
